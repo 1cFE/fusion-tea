@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(/home/reid/1cfe/teax/packages/teax-simkit/**)",
+      "Read(/home/reid/1cfe/agentic-mbse/**)",
+      "Read(/home/reid/1cfe/sysml-codegen/**)"
+    ]
+  }
+}

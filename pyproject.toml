@@ -1,0 +1,15 @@
+[project]
+name = "fusion-tea"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.12"
+dependencies = [
+    "agentic-mbse",
+    "sysml-codegen",
+    "teax-simkit",
+]
+
+[tool.uv.sources]
+teax-simkit = { path = "../teax/packages/teax-simkit", editable = true }
+agentic-mbse = { path = "../agentic-mbse", editable = true }
+sysml-codegen = { path = "../sysml-codegen", editable = true }
