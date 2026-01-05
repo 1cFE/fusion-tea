@@ -1,6 +1,6 @@
-# <!-- PROJECT_NAME -->
+# Fusion TEA
 
-<!-- PROJECT_DESCRIPTION -->
+SysML v2 models of nuclear fusion power plants for techno-economic analysis (LCOE estimation).
 
 ## Quick Start
 
@@ -142,7 +142,20 @@ Work flows through a **pipeline** with validation at each stage:
 
 ## Project Structure
 
-<!-- PROJECT_STRUCTURE -->
+```
+fusion-tea/
+├── models/                  # SysML v2 model files
+│   ├── library/             # Reusable definitions
+│   └── designs/             # Specific fusion concept instances
+├── project/                 # Project documentation
+│   ├── OVERVIEW.md          # Project status and goals
+│   ├── MODELING_GUIDE.md    # SysML syntax reference
+│   ├── MODELING_PROCESS.md  # MBSE methodology
+│   └── backlog/             # Work items
+├── SOURCE_INDEX.md          # Domain knowledge sources (PyFECONS)
+├── CLAUDE.md                # Context for Claude Code
+└── README.md                # This file
+```
 
 ### Model Organization
 

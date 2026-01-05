@@ -1,55 +1,47 @@
 # Source Index
 
-This file tells MBSE commands where to find domain knowledge sources.
-Commands read this file to discover what references are available for research and validation.
+This file tells MBSE commands where to find domain knowledge for fusion power plant modeling.
 
 ## Primary Sources
 
-<!-- Add your domain sources below. Each source should have: -->
-<!-- - **Type**: codebase | documentation | database | reference -->
-<!-- - **Location**: Absolute or relative path, or URL -->
-<!-- - **Use for**: What questions this source answers -->
-<!-- - **Validation**: How it's used for validation (or N/A) -->
-
-<!--
-### Reference Implementation
+### PyFECONS
 - **Type**: codebase
-- **Location**: /path/to/reference/code
-- **Use for**: Understanding existing calculations, extracting parameters, formula verification
-- **Validation**: Compare model outputs against this codebase calculations
+- **Location**: /home/reid/PyFECONS
+- **Use for**: Fusion costing algorithms, physics calculations, economic models, LCOE computation, subsystem cost breakdowns
+- **Validation**: Compare model cost outputs against PyFECONS calculations for equivalent configurations
 
-### Technical Documentation
-- **Type**: documentation
-- **Location**: data/documents/technical_spec.pdf
-- **Use for**: Physics formulas, design constraints, material properties
-- **Validation**: N/A (reference only)
+## How MBSE Commands Use This File
 
-### Standards Database
-- **Type**: database
-- **Location**: https://standards.example.com/api
-- **Use for**: Industry standards, safety requirements
-- **Validation**: N/A
--->
+When you run commands like `/design-model` or `/audit-models`, they:
 
-(No primary sources configured yet - commands will ask for references as needed)
+1. **Read this file** to discover what reference sources exist
+2. **Explore sources** to find relevant patterns, formulas, parameters
+3. **Validate outputs** by comparing against authoritative sources
 
-## How This File Is Used
+### Source Types Explained
 
-MBSE commands (design-model, plan-model, implement-model, audit-models) read this file to:
+- **codebase**: Source code to extract patterns, formulas, implementations
+  - Example: Reference implementation with physics calculations
+  - Claude can read and analyze the code
 
-1. **Discover** what reference sources exist for your domain
-2. **Research** by exploring codebase sources and reading documentation
-3. **Validate** by comparing model outputs against baseline sources
+- **documentation**: PDFs, papers, specs that define requirements or physics
+  - Example: Design specification, academic paper
+  - Claude can read if path is accessible
 
-If this file is empty or missing, commands will:
-- Ask you about relevant references
-- Use web search for general information
-- Proceed without baseline validation
+- **database**: Data files, CSVs, parameter databases
+  - Example: Material properties, cost factors
+  - Claude can read and extract values
 
-## Adding New Sources
+- **reference**: General reference material
+  - Example: Standards documents, textbooks
+  - Provides context and definitions
 
-To add a source:
-1. Add a new `### Source Name` heading under `## Primary Sources`
-2. Include all four fields: Type, Location, Use for, Validation
-3. Remove the commented examples above once you have real sources
-4. Changes take effect on the next command run
+### Adding More Sources
+
+Use `/manage-sources` to add, remove, or update sources, or edit this file directly.
+
+Good sources to consider for fusion modeling:
+- ARIES studies and reports
+- ITER design documentation
+- Fusion power plant conceptual design studies
+- Material property databases for fusion-relevant materials

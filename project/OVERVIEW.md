@@ -1,8 +1,8 @@
 # Project Overview
 
-**Project**: <!-- Your project name -->
-**Purpose**: <!-- One-line purpose statement -->
-**Start Date**: <!-- YYYY-MM-DD -->
+**Project**: Fusion TEA
+**Purpose**: SysML v2 models for fusion power plant LCOE estimation
+**Start Date**: 2026-01-05
 **Status**: Active
 
 ---
@@ -11,15 +11,15 @@
 
 <!-- Describe what you're building and why -->
 
-SysMLv2 models of <!-- your system --> that enable:
+SysMLv2 models of nuclear fusion power plants that enable:
 
 1. **Formal Integration** - Connect behavior (what system does), structure (how it's built), and physics (natural phenomena)
 2. **Validation Framework** - Constraint-based checking against physical laws and engineering limits
 3. **Design Exploration** - Parametric studies and trade-space analysis
-4. **Bottom-Up Analysis** - <!-- TEA, performance analysis, etc. --> from component specifications
+4. **Bottom-Up Analysis** - LCOE estimation from component specifications
 
-**Reference Implementation**: <!-- Your primary design/configuration -->
-**Validation Baseline**: <!-- What you validate against -->
+**Reference Implementation**: CATF MFE (Compact Advanced Tokamak Fusion)
+**Validation Baseline**: PyFECONS costing algorithms
 
 ---
 
@@ -104,9 +104,9 @@ project/
 
 ## Current Status
 
-**Active Work Item**: <!-- Current focus -->
-**Status**: <!-- Brief status -->
-**Next Up**: <!-- What's next -->
+**Active Work Item**: Initial setup complete
+**Status**: Ready to start modeling
+**Next Up**: Run /spec-model to define first feature
 
 **Completed Epics**:
 <!-- List completed work with dates -->
@@ -167,5 +167,5 @@ project/
 
 ---
 
-**Last Updated**: <!-- YYYY-MM-DD -->
-**Next Review**: <!-- When to review -->
+**Last Updated**: 2026-01-05
+**Next Review**: After first model implementation
