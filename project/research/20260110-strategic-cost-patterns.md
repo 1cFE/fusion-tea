@@ -161,25 +161,134 @@ part def 'Blanket System' :> 'Costed Component' {
 }
 ```
 
-#### Rule R3: No Hybrid Parts (Partial Aggregation + Partial Direct Calculation)
+#### Rule R3: Assembly-Level Allocation Costs (Revised from "No Hybrid Parts")
 
-**Anti-pattern to AVOID**:
+**Original concern**: Mixing direct calculation with partial aggregation creates ambiguity.
+
+**Practical reality**: Real BOMs include costs that don't decompose neatly:
+- Fasteners, seals, gaskets
+- Floor stock (consumables)
+- Miscellaneous hardware
+- Assembly tooling amortization
+
+**Revised Rule R3**: Assembly parts MAY include **allocation costs** for items that:
+1. Are **low-value** relative to the assembly (< 5% of assembly cost)
+2. Are **standard/commodity** items (not custom-engineered)
+3. Do **not warrant** their own part definition or cost model
+4. Can be **estimated as a function** of assembly characteristics
+
+**Pattern: Assembly with Allocation Costs**
 ```sysml
-// BAD: Mixes direct calculation with partial aggregation
-part def 'Confused Component' :> 'Costed Component' {
-    part child_1 : 'Costed Child' { ... }
+part def 'TF Coil System' :> 'Costed Component' {
+    // === MODELED CHILDREN (significant cost items) ===
+    part conductor : 'TF Conductor' [12] { ... }
+    part structure : 'TF Structure' [12] { ... }
+    part feedthroughs : 'Feedthroughs' [12] { ... }
 
-    // BAD: Does direct calc but also has costed child
-    calc cost_model : SomeCostCalc { ... }
+    // === ALLOCATION COSTS (bundled minor items) ===
+    // These don't warrant separate part definitions
+    calc allocation_model : TFCoilAllocationCost {
+        in n_coils = 12;
+        in conductor_mass = conductor.total_mass;
+        in structure_mass = structure.total_mass;
+    }
 
-    :>> capital_cost = cost_model.total + child_1.capital_cost;  // UNCLEAR
+    // Allocation outputs are CATEGORIZED for traceability
+    attribute fastener_allowance : Real = allocation_model.fastener_cost;
+    attribute seal_allowance : Real = allocation_model.seal_cost;
+    attribute floor_stock_allowance : Real = allocation_model.floor_stock_cost;
+    attribute misc_hardware_cost : Real =
+        fastener_allowance + seal_allowance + floor_stock_allowance;
+
+    // === COST AGGREGATION ===
+    :>> capital_cost =
+        // Children (modeled)
+        conductor.capital_cost +
+        structure.capital_cost +
+        feedthroughs.capital_cost +
+        // Allocation (bundled)
+        misc_hardware_cost +
+        // Integration (process-based, see Part 5)
+        integration_cost;
+
+    // === MATERIAL TRACKING ===
+    // Allocation items contribute to material cost for idiot index
+    :>> raw_material_cost =
+        conductor.raw_material_cost +
+        structure.raw_material_cost +
+        feedthroughs.raw_material_cost +
+        allocation_model.material_portion;  // ~80% of misc is material
 }
 ```
 
-**Rationale**:
-- Clarity for traversal algorithms
-- Prevents double-counting
-- Matches BOM aggregation patterns (SAP, Oracle)
+**Allocation Calc Def Pattern**:
+```sysml
+calc def TFCoilAllocationCost {
+    doc /*
+    Bundled allocation costs for TF Coil assembly.
+    Covers minor items not modeled as separate parts.
+
+    **Estimation Method**: Engineering judgment + historical data
+    **AACE Class**: 4 (study/feasibility level)
+    **Typical Range**: 2-5% of major component costs
+    */
+
+    in attribute n_coils : Integer;
+    in attribute conductor_mass : Real;    // [kg]
+    in attribute structure_mass : Real;    // [kg]
+
+    // Fasteners: ~$50/kg of structure (bolts, nuts, washers)
+    out attribute fastener_cost : Real = structure_mass * 50.0 / 1.0e6;
+
+    // Seals: ~$20/coil (vacuum seals, thermal barriers)
+    out attribute seal_cost : Real = n_coils * 20.0 / 1.0e6;
+
+    // Floor stock: ~1% of conductor mass value
+    out attribute floor_stock_cost : Real = conductor_mass * 0.01 * 150.0 / 1.0e6;
+
+    // Total
+    out attribute total_allocation : Real =
+        fastener_cost + seal_cost + floor_stock_cost;
+
+    // Material vs labor split (for idiot index)
+    out attribute material_portion : Real = total_allocation * 0.8;
+    out attribute labor_portion : Real = total_allocation * 0.2;
+}
+```
+
+**Enforcement Rule E3b: Allocation Cost Limits**
+```yaml
+rule_id: E3b-ALLOCATION-LIMITS
+severity: WARNING
+description: "Allocation costs should be < 5% of assembly cost"
+check:
+  for_each: PartUsage where has allocation_model calc
+  condition: misc_hardware_cost / capital_cost < 0.05
+message: "Assembly '{name}' has high allocation costs ({percent}%) - consider modeling items explicitly"
+```
+
+**When to Promote Allocation to Modeled Part**:
+- If allocation item exceeds 5% of assembly cost
+- If allocation item has significant design uncertainty
+- If allocation item affects system performance (not just cost)
+- If allocation item needs tracking for maintenance/spares
+
+**Anti-pattern STILL to AVOID**:
+```sysml
+// BAD: Uses allocation as a "fudge factor" without basis
+part def 'Mystery Assembly' :> 'Costed Component' {
+    part child_1 : 'Child' { ... }
+
+    // BAD: Unexplained overhead with no calc basis
+    attribute mystery_overhead : Real = 500.0;  // Where does this come from?
+
+    :>> capital_cost = child_1.capital_cost + mystery_overhead;
+}
+```
+
+**Key Distinction**:
+- ✅ **Allocation**: Systematic estimate based on assembly characteristics (mass, count, etc.)
+- ❌ **Fudge factor**: Arbitrary overhead with no documented basis
 
 #### Rule R4: Assembly Overhead MUST Be Explicit
 
@@ -346,10 +455,11 @@ class CostLineItem:
     installation_cost: float         # $M - on-site assembly
     total_cost: float                # $M - sum of above
 
-    # Estimation Metadata
-    estimation_method: str           # "parametric", "analogous", "engineering"
-    confidence_level: float          # 0.0-1.0
-    data_source: str                 # "PyFECONS CAS220103"
+    # Estimation Metadata (AACE-aligned)
+    estimation_method: EstimationMethod  # See enum below
+    aace_class: AACEEstimateClass        # Industry standard classification
+    data_source: str                     # "PyFECONS CAS220103"
+    basis_of_estimate: str               # Documentation reference
 
     # Efficiency Metrics
     idiot_index: float              # total_cost / raw_material_cost
@@ -438,6 +548,102 @@ CONFIDENCE SUMMARY:
   Low (<0.5):    12.7%  - Uncertain parameters
 ```
 
+#### Estimation Metadata: AACE Classification System
+
+**AACE International** (Association for the Advancement of Cost Engineering) defines a **5-class estimate classification system** that is the industry standard. We adopt this instead of generic "confidence levels."
+
+**AACE Estimate Classes (AACE 18R-97)**:
+
+| Class | Project Definition | Accuracy Range | Primary Use | Typical Methods |
+|-------|-------------------|----------------|-------------|-----------------|
+| **Class 5** | 0-2% defined | -20% to -50% / +30% to +100% | Concept screening, feasibility | Analogous, capacity-factored |
+| **Class 4** | 1-15% defined | -15% to -30% / +20% to +50% | Study, feasibility | Parametric, analogous |
+| **Class 3** | 10-40% defined | -10% to -20% / +10% to +30% | Budget authorization, control | Semi-detailed, parametric |
+| **Class 2** | 30-75% defined | -5% to -15% / +5% to +20% | Bid/tender, detailed control | Detailed, unit cost |
+| **Class 1** | 65-100% defined | -3% to -10% / +3% to +15% | Check estimate, bid validation | Detailed, actual costs |
+
+**Enum Definitions for Output Schema**:
+
+```python
+from enum import Enum
+
+class EstimationMethod(str, Enum):
+    """Primary method used for cost estimate."""
+    ANALOGOUS = "analogous"           # Based on similar historical system
+    PARAMETRIC = "parametric"         # Using cost estimating relationships (CERs)
+    ENGINEERING = "engineering"       # Detailed bottom-up from engineering data
+    EXPERT_JUDGMENT = "expert"        # Subject matter expert opinion
+    VENDOR_QUOTE = "vendor"           # Based on supplier quotation
+    ACTUAL = "actual"                 # From actual incurred costs
+
+class AACEEstimateClass(int, Enum):
+    """AACE 18R-97 estimate classification."""
+    CLASS_5 = 5  # Concept screening: -20/-50% to +30/+100%
+    CLASS_4 = 4  # Study/feasibility: -15/-30% to +20/+50%
+    CLASS_3 = 3  # Budget authorization: -10/-20% to +10/+30%
+    CLASS_2 = 2  # Bid/tender: -5/-15% to +5/+20%
+    CLASS_1 = 1  # Check estimate: -3/-10% to +3/+15%
+
+    @property
+    def accuracy_low(self) -> tuple[float, float]:
+        """Return (optimistic%, pessimistic%) for low range."""
+        ranges = {5: (-50, -20), 4: (-30, -15), 3: (-20, -10), 2: (-15, -5), 1: (-10, -3)}
+        return ranges[self.value]
+
+    @property
+    def accuracy_high(self) -> tuple[float, float]:
+        """Return (optimistic%, pessimistic%) for high range."""
+        ranges = {5: (+30, +100), 4: (+20, +50), 3: (+10, +30), 2: (+5, +20), 1: (+3, +15)}
+        return ranges[self.value]
+```
+
+**SysML Attribute Definition Pattern**:
+
+```sysml
+attribute def 'Estimate Metadata' {
+    doc /*
+    Metadata for cost estimate traceability.
+    Based on AACE 18R-97 classification system.
+    */
+
+    // Method used
+    attribute estimation_method : String;  // analogous, parametric, engineering, etc.
+
+    // AACE class (1-5, where 1 is most accurate)
+    attribute aace_class : Integer;
+
+    // Accuracy range derived from AACE class
+    attribute accuracy_low_pct : Real;     // e.g., -15% for Class 4
+    attribute accuracy_high_pct : Real;    // e.g., +50% for Class 4
+
+    // Documentation
+    attribute data_source : String;        // "PyFECONS CAS220103"
+    attribute basis_of_estimate : String;  // Reference to BOE document
+
+    // Timestamps
+    attribute estimate_date : String;      // ISO format
+    attribute last_updated : String;
+}
+
+// Usage in Costed Component
+abstract part def 'Costed Component' {
+    attribute capital_cost : Real;
+    attribute cost_metadata : 'Estimate Metadata';
+}
+```
+
+**Fusion TEA Guidelines for AACE Class Selection**:
+
+| Cost Element | Typical AACE Class | Rationale |
+|--------------|-------------------|-----------|
+| **Magnets (TF/PF)** | Class 4 | Parametric from ITER/SPARC data, ~15% defined |
+| **Blanket** | Class 4-5 | Novel designs, limited historical data |
+| **Divertor** | Class 4 | Some ITER precedent, but design-specific |
+| **Buildings** | Class 3 | Good industrial precedent for similar facilities |
+| **Turbine/BOP** | Class 3 | Standard industrial equipment |
+| **Power supplies** | Class 3-4 | Commercial equipment with scaling |
+| **Special materials (tritium)** | Class 5 | High uncertainty, limited precedent |
+
 #### JSON Output Format (Machine-Readable)
 
 ```json
@@ -459,8 +665,10 @@ CONFIDENCE SUMMARY:
       "installation_cost": 185.7,
       "total_cost": 1217.7,
       "estimation_method": "parametric",
-      "confidence_level": 0.75,
+      "aace_class": 4,
+      "accuracy_range": {"low": -30, "high": +50},
       "data_source": "PyFECONS CAS220103",
+      "basis_of_estimate": "ARIES-AT magnet scaling + SPARC cost data",
       "idiot_index": 2.9,
       "parent_path": "catf.reactor",
       "children": ["catf.reactor.magnets.tf_coils", "catf.reactor.magnets.pf_coils"],
@@ -471,7 +679,13 @@ CONFIDENCE SUMMARY:
   "aggregated": {
     "by_cas_category": {"CAS20": 4521.3, "CAS21": 199.8, "CAS22": 3247.1},
     "by_estimation_method": {"parametric": 5041.7, "analogous": 759.5, "engineering": 325.1},
-    "by_confidence_band": {"high": 0.452, "medium": 0.421, "low": 0.127}
+    "by_aace_class": {"class_3": 1200.4, "class_4": 4125.2, "class_5": 800.7}
+  },
+  "uncertainty": {
+    "p10_total": 4891.0,
+    "p50_total": 6126.3,
+    "p90_total": 9189.5,
+    "notes": "P10/P90 derived from AACE class accuracy ranges via Monte Carlo"
   },
   "efficiency": {
     "idiot_indices": {"magnets": 2.9, "blanket": 3.3, "divertor": 3.6},
@@ -786,6 +1000,626 @@ part catf_plant {
 2. **Phase 2**: Implement sysml-codegen enhancements
 3. **Phase 3**: Migrate to Alternative A (nested)
 4. **Ongoing**: Maintain both patterns during transition
+
+---
+
+## Part 5: Runtime Validation and Sanity Checks
+
+### Where in the Pipeline Can We Enforce Checks?
+
+Our cost modeling pipeline has three validation layers:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        VALIDATION PIPELINE                                   │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│   LAYER 1: Model Structure (agentic-mbse)                                   │
+│   ├─ SysML parsing (syside check)                                           │
+│   ├─ Level 9 rules (E1-E6) - interface compliance                           │
+│   └─ Calc def input/output validation                                       │
+│                                                                              │
+│   LAYER 2: Design-Time Constraints (SysML constraint defs)                  │
+│   ├─ Physical bounds (cost > 0, mass > 0)                                   │
+│   ├─ High-level parametric cross-checks                                     │
+│   └─ Ratio sanity checks (idiot index bounds)                              │
+│                                                                              │
+│   LAYER 3: Runtime Validation (teax-simkit post-execution)                  │
+│   ├─ Rollup consistency (sum of children == parent)                         │
+│   ├─ Part count verification                                                │
+│   ├─ Cross-check against high-level parametrics                             │
+│   └─ Historical comparison bounds                                           │
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Layer 2: Design-Time Constraints (SysML `constraint def`)
+
+**Purpose**: Catch obvious errors before execution
+
+#### Pattern: Physical Bound Constraints
+
+```sysml
+constraint def PositiveCost {
+    doc /* All cost values must be positive */
+    in attribute cost : Real;
+    cost > 0.0
+}
+
+constraint def ReasonableIdiotIndex {
+    doc /* Idiot index should be 1.0 < index < 20.0 for most components */
+    in attribute idiot_index : Real;
+    idiot_index > 1.0 and idiot_index < 20.0
+}
+
+constraint def MaterialFractionBounds {
+    doc /* Material cost should be 20-80% of total for manufactured items */
+    in attribute material_cost : Real;
+    in attribute total_cost : Real;
+    attribute material_fraction : Real = material_cost / total_cost;
+    material_fraction > 0.2 and material_fraction < 0.8
+}
+```
+
+**Usage in Part Definition**:
+```sysml
+part def 'TF Conductor' :> 'Costed Component' {
+    attribute capital_cost : Real;
+    attribute raw_material_cost : Real;
+
+    // Apply constraints
+    assert constraint cost_positive : PositiveCost {
+        in cost = capital_cost;
+    }
+
+    assert constraint idiot_reasonable : ReasonableIdiotIndex {
+        in idiot_index = capital_cost / raw_material_cost;
+    }
+}
+```
+
+#### Pattern: High-Level Parametric Cross-Checks
+
+Cross-check detailed bottom-up costs against simple parametrics:
+
+```sysml
+constraint def MagnetCostCrossCheck {
+    doc /*
+    Magnet system cost cross-check against high-level parametric.
+
+    Parametric: Cost ~ 0.05 × B^4 × V_coil [$M]
+    Where B = field strength [T], V = coil volume [m³]
+
+    Bottom-up should be within ±50% of parametric (AACE Class 4)
+    */
+
+    in attribute bottom_up_cost : Real;      // [$M] from detailed calcs
+    in attribute field_strength : Real;       // [T]
+    in attribute coil_volume : Real;          // [m³]
+
+    // High-level parametric estimate
+    attribute parametric_cost : Real = 0.05 * field_strength ** 4 * coil_volume;
+
+    // Bottom-up should be within 50% of parametric
+    attribute ratio : Real = bottom_up_cost / parametric_cost;
+    ratio > 0.5 and ratio < 2.0
+}
+
+// Usage in design
+part catf_plant {
+    part magnets : 'Magnet System' {
+        :>> field_strength = 12.0;
+        :>> coil_volume = 150.0;
+    }
+
+    // Cross-check constraint
+    assert constraint magnet_sanity : MagnetCostCrossCheck {
+        in bottom_up_cost = magnets.capital_cost;
+        in field_strength = magnets.field_strength;
+        in coil_volume = magnets.coil_volume;
+    }
+}
+```
+
+#### Pattern: Rollup Consistency Constraint
+
+```sysml
+constraint def RollupConsistency {
+    doc /*
+    Verify that parent cost equals sum of children.
+    Catches missing children or double-counting.
+    */
+
+    in attribute parent_cost : Real;
+    in attribute child_costs : Real[*];      // Array of child costs
+    in attribute overhead : Real default := 0.0;
+    in attribute tolerance_pct : Real default := 0.01;  // 1%
+
+    attribute child_sum : Real = child_costs->sum();
+    attribute expected : Real = child_sum + overhead;
+
+    // Within tolerance
+    (parent_cost - expected).abs() / expected < tolerance_pct
+}
+```
+
+### Layer 3: Runtime Validation (teax-simkit)
+
+**Purpose**: Validate computed results after execution
+
+#### Implementation: Post-Execution Validator Module
+
+```python
+from dataclasses import dataclass
+from simkit.core.module import SimkitModule, Input, Output
+
+@dataclass
+class CostValidationResult:
+    passed: bool
+    checks: list[dict]
+    warnings: list[str]
+    errors: list[str]
+
+class CostSanityValidator(SimkitModule):
+    """Post-execution validation for cost outputs."""
+
+    # === INPUTS: All computed costs ===
+    cas22_reactor: Input[float]
+    cas22_magnets: Input[float]
+    cas22_blanket: Input[float]
+    cas22_divertor: Input[float]
+    # ... more CAS categories
+
+    total_capital: Input[float]
+    lcoe: Input[float]
+
+    # === REFERENCE DATA ===
+    p_fusion: Input[float]  # For scaling checks
+    p_net: Input[float]
+
+    # === OUTPUT ===
+    validation_result: Output[CostValidationResult]
+
+    def run(self) -> CostValidationResult:
+        checks = []
+        warnings = []
+        errors = []
+
+        # Check 1: Rollup consistency
+        cas22_sum = (
+            self.cas22_magnets.value +
+            self.cas22_blanket.value +
+            self.cas22_divertor.value +
+            # ... other components
+        )
+        rollup_error = abs(self.cas22_reactor.value - cas22_sum) / cas22_sum
+        checks.append({
+            "name": "CAS22 Rollup",
+            "expected": cas22_sum,
+            "actual": self.cas22_reactor.value,
+            "error_pct": rollup_error * 100,
+            "passed": rollup_error < 0.01
+        })
+        if rollup_error >= 0.01:
+            errors.append(f"CAS22 rollup error: {rollup_error:.1%}")
+
+        # Check 2: Overnight cost per kW bounds
+        overnight_per_kw = self.total_capital.value * 1000 / self.p_net.value
+        checks.append({
+            "name": "Overnight $/kW bounds",
+            "value": overnight_per_kw,
+            "expected_range": [3000, 15000],
+            "passed": 3000 < overnight_per_kw < 15000
+        })
+        if overnight_per_kw < 3000:
+            warnings.append(f"Overnight cost ${overnight_per_kw:.0f}/kW suspiciously low")
+        if overnight_per_kw > 15000:
+            warnings.append(f"Overnight cost ${overnight_per_kw:.0f}/kW very high")
+
+        # Check 3: LCOE bounds
+        checks.append({
+            "name": "LCOE bounds",
+            "value": self.lcoe.value,
+            "expected_range": [30, 200],
+            "passed": 30 < self.lcoe.value < 200
+        })
+
+        # Check 4: CAS22 as fraction of total
+        cas22_fraction = self.cas22_reactor.value / self.total_capital.value
+        checks.append({
+            "name": "CAS22 fraction of total",
+            "value": cas22_fraction,
+            "expected_range": [0.3, 0.7],
+            "passed": 0.3 < cas22_fraction < 0.7
+        })
+
+        passed = len(errors) == 0
+        return CostValidationResult(
+            passed=passed,
+            checks=checks,
+            warnings=warnings,
+            errors=errors
+        )
+```
+
+#### Implementation: Part Count Tracking
+
+Track quantities through the rollup process:
+
+```python
+@dataclass
+class PartCountSummary:
+    """Track part quantities for BOM verification."""
+    part_path: str
+    part_type: str
+    quantity: int
+    unit_cost: float
+    total_cost: float
+    children: list["PartCountSummary"]
+
+class PartCountTracker(SimkitModule):
+    """Track and verify part counts through cost rollup."""
+
+    # Inputs from model (populated by sysml-codegen)
+    tf_coil_count: Input[int]      # Expected: 12-18 for tokamak
+    pf_coil_count: Input[int]      # Expected: 6-10
+    blanket_module_count: Input[int]  # Expected: 16-48
+    divertor_cassette_count: Input[int]  # Expected: 48-64
+
+    # Costs
+    tf_coil_unit_cost: Input[float]
+    pf_coil_unit_cost: Input[float]
+    blanket_module_unit_cost: Input[float]
+
+    # Outputs
+    part_count_report: Output[dict]
+    total_major_components: Output[int]
+
+    def run(self) -> dict:
+        report = {
+            "tf_coils": {
+                "count": self.tf_coil_count.value,
+                "unit_cost": self.tf_coil_unit_cost.value,
+                "total_cost": self.tf_coil_count.value * self.tf_coil_unit_cost.value,
+                "expected_range": [12, 18],
+                "in_range": 12 <= self.tf_coil_count.value <= 18
+            },
+            "pf_coils": {
+                "count": self.pf_coil_count.value,
+                # ...
+            },
+            "blanket_modules": {
+                "count": self.blanket_module_count.value,
+                # ...
+            },
+        }
+
+        total = sum(item["count"] for item in report.values())
+
+        return {
+            "report": report,
+            "total_major_components": total,
+            "all_counts_valid": all(item["in_range"] for item in report.values())
+        }
+```
+
+#### Pipeline Integration
+
+Add validation modules to generated pipeline:
+
+```yaml
+# Generated pipeline with validation
+modules:
+  # ... cost calculation modules ...
+
+  # POST-EXECUTION VALIDATION
+  cost_validator:
+    class: CostSanityValidator
+    inputs:
+      cas22_reactor: module.cas22_rollup.total
+      cas22_magnets: module.magnet_cost_model.total_cost
+      cas22_blanket: module.blanket_cost_model.total_cost
+      total_capital: module.lcoe_calc.total_capital
+      lcoe: module.lcoe_calc.lcoe
+      p_net: entry_point.p_net
+    outputs: [validation_result]
+
+  part_count_tracker:
+    class: PartCountTracker
+    inputs:
+      tf_coil_count: entry_point.n_tf_coils
+      pf_coil_count: entry_point.n_pf_coils
+      blanket_module_count: entry_point.n_blanket_modules
+      tf_coil_unit_cost: module.tf_coil_cost_model.cost_per_coil
+    outputs: [part_count_report, total_major_components]
+
+exit_points:
+  - {name: validation_result, channel: cost_validator.validation_result}
+  - {name: part_counts, channel: part_count_tracker.part_count_report}
+```
+
+### Enforcement Rule Summary for Runtime Checks
+
+| Check Type | Layer | Mechanism | When Triggered |
+|------------|-------|-----------|----------------|
+| Positive costs | 2 | `constraint def` | Model parsing |
+| Idiot index bounds | 2 | `constraint def` | Model parsing |
+| Material fraction | 2 | `constraint def` | Model parsing |
+| Parametric cross-check | 2 | `constraint def` | Model parsing |
+| Rollup consistency | 3 | Validator module | Post-execution |
+| Historical bounds | 3 | Validator module | Post-execution |
+| Part count verification | 3 | Tracker module | Post-execution |
+
+---
+
+## Part 6: Modeling Process Costs (Installation & Manufacturing)
+
+### The Challenge
+
+Your question highlights an important distinction:
+- **Structural cost**: Cost of the physical artifact (materials + fabrication)
+- **Process cost**: Cost of performing an activity (installation, manufacturing steps)
+
+Our current pattern (`capital_cost = material + fabrication + installation`) bundles these together. For detailed analysis, we may want to model processes explicitly.
+
+### SysMLv2 Pattern: Action Definitions for Processes
+
+SysMLv2 uses `action def` for behaviors/processes. We can extend this for cost modeling:
+
+```sysml
+// === PROCESS DEFINITION ===
+action def 'Install TF Coil' {
+    doc /*
+    Installation process for a single TF coil.
+    Covers transport, positioning, connection, and testing.
+    */
+
+    // Process inputs (from structural parts)
+    in item coil : 'TF Coil';
+    in item support_structure : 'TF Support Structure';
+
+    // Process parameters
+    attribute crane_hours : Real;           // Heavy lift crane time
+    attribute technician_hours : Real;      // Skilled labor
+    attribute connection_count : Integer;   // Electrical + coolant connections
+
+    // Sub-actions (sequential steps)
+    action transport : 'Transport to Bay' {
+        in item = coil;
+        out duration : Real;
+    }
+
+    action position : 'Position on Support' {
+        in item = coil;
+        in support = support_structure;
+        out duration : Real;
+    }
+
+    action connect : 'Make Connections' {
+        in count = connection_count;
+        out duration : Real;
+    }
+
+    action test : 'Functional Test' {
+        out duration : Real;
+    }
+
+    // Total duration
+    attribute total_duration : Real =
+        transport.duration + position.duration + connect.duration + test.duration;
+}
+```
+
+### Pattern: Process Cost Calculation
+
+```sysml
+calc def InstallationProcessCost {
+    doc /*
+    Calculate cost of an installation process.
+    Based on duration, labor rates, and equipment costs.
+
+    **Source**: Industrial installation standards
+    **AACE Class**: 3-4 (well-understood processes)
+    */
+
+    // Process characteristics
+    in attribute duration_hours : Real;
+    in attribute technician_count : Integer;
+    in attribute crane_required : Boolean;
+    in attribute crane_hours : Real default := 0.0;
+
+    // Cost rates
+    in attribute technician_rate : Real default := 150.0;   // $/hour (loaded)
+    in attribute crane_rate : Real default := 5000.0;       // $/hour
+    in attribute overhead_factor : Real default := 1.25;    // 25% overhead
+
+    // Cost calculation
+    out attribute labor_cost : Real =
+        duration_hours * technician_count * technician_rate / 1.0e6;
+
+    out attribute equipment_cost : Real =
+        crane_hours * crane_rate / 1.0e6;
+
+    out attribute subtotal : Real = labor_cost + equipment_cost;
+
+    out attribute total_cost : Real = subtotal * overhead_factor;
+
+    // Metrics
+    out attribute cost_per_hour : Real = total_cost / duration_hours;
+}
+```
+
+### Integration with Structural Parts
+
+**Option A: Process as Child of Assembly (Embedded)**
+
+```sysml
+part def 'TF Coil System' :> 'Costed Component' {
+    // Structural children
+    part conductor : 'TF Conductor' [12] { ... }
+    part structure : 'TF Structure' [12] { ... }
+
+    // Installation process (one per coil)
+    perform action install_coil : 'Install TF Coil' [12] {
+        in coil = conductor;
+        in support_structure = structure;
+        :>> crane_hours = 8.0;
+        :>> technician_hours = 40.0;
+        :>> connection_count = 24;
+    }
+
+    // Process cost calculation
+    calc installation_cost_model : InstallationProcessCost {
+        in duration_hours = install_coil.total_duration * 12;  // All coils
+        in technician_count = 6;
+        in crane_required = true;
+        in crane_hours = install_coil.crane_hours * 12;
+    }
+
+    // Cost aggregation (structural + process)
+    :>> capital_cost =
+        conductor.capital_cost +
+        structure.capital_cost +
+        installation_cost_model.total_cost;
+
+    // Separate tracking for analysis
+    attribute structural_cost : Real = conductor.capital_cost + structure.capital_cost;
+    :>> installation_cost = installation_cost_model.total_cost;
+}
+```
+
+**Option B: Process as Separate CAS Category (PyFECONS Pattern)**
+
+PyFECONS separates installation into CAS220111:
+
+```sysml
+package 'CATF Cost Analysis' {
+    // Structural parts (CAS220101-220108)
+    part reactor_equipment : 'Reactor Equipment' { ... }
+
+    // Separate installation cost (CAS220111)
+    calc cas220111_installation : PlantInstallationCost {
+        doc /*
+        CAS220111: Installation costs for reactor equipment.
+        Calculated as % of equipment cost + specific process costs.
+        */
+
+        in equipment_cost = reactor_equipment.capital_cost;
+        in equipment_mass = reactor_equipment.total_mass;
+
+        // Installation factor (typically 15-25% for fusion)
+        in installation_factor : Real default := 0.20;
+    }
+
+    // CAS22.1 total
+    attribute cas220100 : Real =
+        reactor_equipment.capital_cost +
+        cas220111_installation.total_cost;
+}
+```
+
+### Pattern: Manufacturing Process Cost
+
+For specialized component manufacturing (e.g., HTS tape production):
+
+```sysml
+action def 'Manufacture HTS Conductor' {
+    doc /*
+    Manufacturing process for HTS tape conductor.
+    Multi-step process with yield considerations.
+    */
+
+    // Process steps
+    action deposit_buffer : 'IBAD Buffer Deposition' {
+        attribute yield_rate : Real = 0.95;
+        attribute throughput : Real;  // m/hour
+    }
+
+    action deposit_superconductor : 'MOCVD REBCO Deposition' {
+        attribute yield_rate : Real = 0.90;
+        attribute throughput : Real;
+    }
+
+    action slit_and_test : 'Slit and Test' {
+        attribute yield_rate : Real = 0.98;
+        attribute throughput : Real;
+    }
+
+    // Overall yield
+    attribute cumulative_yield : Real =
+        deposit_buffer.yield_rate *
+        deposit_superconductor.yield_rate *
+        slit_and_test.yield_rate;  // ~0.84
+}
+
+calc def ManufacturingProcessCost {
+    doc /*
+    Manufacturing cost based on process parameters.
+    Accounts for yield losses and equipment amortization.
+    */
+
+    in attribute target_length : Real;           // [m] output needed
+    in attribute cumulative_yield : Real;        // Process yield
+    in attribute raw_material_cost : Real;       // $/m of substrate
+    in attribute equipment_depreciation : Real;  // $/m amortized
+    in attribute labor_cost_per_m : Real;        // $/m
+    in attribute energy_cost_per_m : Real;       // $/m
+
+    // Account for yield losses
+    attribute gross_length : Real = target_length / cumulative_yield;
+
+    out attribute material_cost : Real = gross_length * raw_material_cost / 1.0e6;
+    out attribute equipment_cost : Real = gross_length * equipment_depreciation / 1.0e6;
+    out attribute labor_cost : Real = gross_length * labor_cost_per_m / 1.0e6;
+    out attribute energy_cost : Real = gross_length * energy_cost_per_m / 1.0e6;
+
+    out attribute total_cost : Real =
+        material_cost + equipment_cost + labor_cost + energy_cost;
+
+    // Effective cost per meter of good output
+    out attribute effective_cost_per_m : Real = total_cost * 1.0e6 / target_length;
+}
+```
+
+### When to Use Process Modeling
+
+| Scenario | Recommended Pattern | Rationale |
+|----------|---------------------|-----------|
+| Standard installation | Factor-based (15-25%) | Well-understood, low uncertainty |
+| Complex installation | Process calc def | Many steps, equipment-intensive |
+| Commodity manufacturing | Material multiplier (`m` factor) | PyFECONS pattern, simple |
+| Specialized manufacturing | Process action + calc | Need yield tracking, step visibility |
+| Construction sequence analysis | Action decomposition | Schedule-driven analysis |
+| Labor learning curves | Process with iteration | N-th unit costs less than first |
+
+### Summary: Process Cost Integration
+
+```
+┌────────────────────────────────────────────────────────────────────────────┐
+│                     COST STRUCTURE OPTIONS                                  │
+├────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│   SIMPLE (Current Pattern):                                                 │
+│   capital_cost = raw_material + fabrication + installation                  │
+│   ├─ raw_material: Volume × density × $/kg                                 │
+│   ├─ fabrication: material × fab_factor                                    │
+│   └─ installation: material × install_factor                               │
+│                                                                             │
+│   DETAILED (Process Modeling):                                              │
+│   capital_cost = structural_cost + process_costs                           │
+│   ├─ structural_cost:                                                      │
+│   │   └─ Σ(child.capital_cost) for physical parts                         │
+│   └─ process_costs:                                                        │
+│       ├─ manufacturing_cost: action-based with yield                       │
+│       └─ installation_cost: action-based with duration                     │
+│                                                                             │
+└────────────────────────────────────────────────────────────────────────────┘
+```
+
+**Recommendation**: Start with simple factor-based approach (Option B / PyFECONS pattern). Add detailed process modeling selectively for:
+- High-uncertainty processes (novel manufacturing)
+- Schedule-critical paths (installation sequence)
+- Learning curve analysis (N-th-of-a-kind production)
 
 ---
 
