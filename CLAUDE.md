@@ -71,6 +71,10 @@ See `SOURCE_INDEX.md` for complete listing with:
 - What each source is used for
 - How to validate against each source
 
+## Installed Tools
+
+**agentic-mbse**: Installed in this project. See `README.md` for usage information. Source code is at `~/1cfe/agentic-mbse`.
+
 ## Special Considerations
 
 - PyFECONS contains validated costing algorithms - model outputs should be comparable
