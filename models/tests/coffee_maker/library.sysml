@@ -9,6 +9,8 @@ package CoffeeMakerLibrary {
 
     // Standard imports
     private import ScalarValues::Real;
+    private import ScalarValues::Integer;
+    private import NumericalFunctions::sum;
 
     // ============================================================
     // SECTION 1: ABSTRACT INTERFACE
@@ -382,16 +384,20 @@ package CoffeeMakerLibrary {
     part def 'Brewing System' :> 'Costed Component' {
         doc /*
         Sub-assembly that produces coffee.
-        Contains heating elements (x2), pump, and brew chamber.
+        Contains heating elements, pump, and brew chamber.
         Includes allocation costs for fasteners, seals, and wiring.
 
         **Pattern**: Assembly aggregation (Rule R2) + Allocation costs (Rule R3)
-        **Source**: project/research/20260110-strategic-cost-patterns.md
+        **Validated**: 2026-01-12 - Uses NumericalFunctions::sum for automatic aggregation
+        **Source**: project/research/20260112-055807_multiplicity-cost-rollup-gap.md
         **Last Updated**: 2026-01-12
         */
 
-        // Child parts
-        part heater : 'Heating Element' [2];
+        // Parameterized multiplicity - can be overridden in design
+        attribute heater_count : Integer default := 2;
+
+        // Child parts with parameterized multiplicity
+        part heater : 'Heating Element' [heater_count];
         part pump : 'Water Pump';
         part chamber : 'Brew Chamber';
 
@@ -404,35 +410,27 @@ package CoffeeMakerLibrary {
         // Expose allocation details
         attribute misc_hardware_cost : Real = allocation_model.total_allocation;
 
-        // For assembly aggregation with multiplicity, we need to handle heater[2]
-        // The heater.capital_cost reference accesses the array
-        // For now, we express 2x heater cost explicitly in the design file
-        // This is a known pattern - multiplicity handling varies by tooling
-        attribute heater_total_cost : Real;
-        attribute heater_total_material : Real;
-        attribute heater_total_fab : Real;
-        attribute heater_total_install : Real;
-
-        // Aggregate costs from children + allocation
+        // AUTOMATIC aggregation using sum() - no hardcoded values!
+        // sum() aggregates over all heater instances regardless of count
         :>> capital_cost =
-            heater_total_cost +
+            sum(heater.capital_cost) +
             pump.capital_cost +
             chamber.capital_cost +
             misc_hardware_cost;
 
         :>> raw_material_cost =
-            heater_total_material +
+            sum(heater.raw_material_cost) +
             pump.raw_material_cost +
             chamber.raw_material_cost +
             allocation_model.material_portion;
 
         :>> fabrication_cost =
-            heater_total_fab +
+            sum(heater.fabrication_cost) +
             pump.fabrication_cost +
             chamber.fabrication_cost;
 
         :>> installation_cost =
-            heater_total_install +
+            sum(heater.installation_cost) +
             pump.installation_cost +
             chamber.installation_cost;
 

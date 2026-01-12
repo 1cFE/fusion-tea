@@ -246,4 +246,56 @@ CoffeeMaker (assembly)
 
 ---
 
-**Last Updated**: 2026-01-10
+## VALIDATED PATTERNS (2026-01-12)
+
+### Critical Discovery: NumericalFunctions::sum
+
+The prior research incorrectly concluded that `sum()` doesn't exist in SysML v2. **It does exist** - it just needs to be imported from the standard library.
+
+**Required Import**:
+```sysml
+private import NumericalFunctions::sum;
+```
+
+**Correct Aggregation Pattern**:
+```sysml
+part def 'Brewing System' :> 'Costed Component' {
+    part heater : 'Heating Element' [2];
+
+    // AUTOMATIC aggregation - no hardcoded values!
+    :>> capital_cost = sum(heater.capital_cost) + pump.capital_cost;
+}
+```
+
+See research reports:
+- `project/research/20260112-055807_multiplicity-cost-rollup-gap.md`
+- `project/research/20260112-061548_sysmlv2-discovery-reflection.md`
+
+### Validated Patterns
+
+| Pattern | When to Use | Syntax |
+|---------|-------------|--------|
+| **Dot notation** | Simple attribute binding | `:>> heater.power_rating = 1000.0;` |
+| **Explicit redefines** | Adding features to part | `part redefines heater { ... }` |
+| **sum() aggregation** | Multiplicity rollup | `sum(heater.capital_cost)` |
+| **Parameterized multiplicity** | Variable counts | `part heater[heater_count]` |
+
+### Anti-Patterns (DO NOT USE)
+
+| Anti-Pattern | Problem | Correct Approach |
+|--------------|---------|------------------|
+| Re-declaring part in usage | Causes shadowing warning | Use dot notation or `redefines` |
+| Hardcoded aggregate values | Values drift when components change | Use `sum()` |
+| Bare `sum()` without import | "No Type named 'sum'" error | Import `NumericalFunctions::sum` |
+
+### Standard Library Reference
+
+From `NumericalFunctions.kerml`:
+```kerml
+abstract function sum { in collection: NumericalValue[0..*]; return : NumericalValue[1]; }
+abstract function product { in collection: NumericalValue[0..*]; return : NumericalValue[1]; }
+```
+
+---
+
+**Last Updated**: 2026-01-12

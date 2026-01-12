@@ -353,6 +353,25 @@ package MyProject::Library::Components {
 }
 ```
 
+### Cost Model Imports
+
+**REQUIRED** for any model with cost aggregation over multiplicities:
+
+```sysml
+private import NumericalFunctions::sum;
+private import NumericalFunctions::product;  // if needed
+```
+
+**Why**: `sum()` enables automatic aggregation like `sum(heater.capital_cost)` where `heater` has multiplicity `[N]`. Without this import, you'll get "No Type named 'sum' found".
+
+**Available Functions** (from `NumericalFunctions.kerml`):
+- `sum(collection)` - Sum of numeric collection
+- `product(collection)` - Product of numeric collection
+- `abs(x)` - Absolute value
+- `max(x, y)`, `min(x, y)` - Maximum/minimum
+
+**Validated**: 2026-01-12. See `project/research/20260112-055807_multiplicity-cost-rollup-gap.md`
+
 ---
 
 ## SysML Syntax Quick Reference
@@ -1389,22 +1408,80 @@ syside check models/library/file.sysml
 **Summary**: Brief description of what was validated
 ```
 
-**Example:**
-```markdown
-### Usage-Based Dataflow Pattern
-**Status**: Validated CORRECT
-**Date**: 2025-11-25
-**Evidence**: 5/5 API validation tests passing
-**Summary**: Binding expressions in calc usages (not definitions) create
-FeatureChainExpression AST nodes that enable dual navigation without
-semantic warnings. This is the recommended pattern for all cross-calc
-dependencies.
-```
-
 **Active Validations:**
 
-<!-- Add validated patterns here as they are confirmed through testing -->
+### Multiplicity Cost Aggregation Pattern
+**Status**: Validated CORRECT
+**Date**: 2026-01-12
+**Evidence**: `syside check` passes with no errors or warnings
+**Summary**: Use `import NumericalFunctions::sum` then `sum(heater.capital_cost)` to aggregate costs from parts with multiplicity `[N]`. This replaces the broken pattern of using hardcoded placeholder attributes.
+
+**Correct Pattern:**
+```sysml
+private import NumericalFunctions::sum;
+
+part def 'Assembly' :> 'Costed Component' {
+    part child : 'Child Component' [N];
+    :>> capital_cost = sum(child.capital_cost);  // Automatic aggregation!
+}
+```
+
+**Anti-Pattern (DO NOT USE):**
+```sysml
+// BROKEN: Hardcoded values that will drift
+attribute child_total_cost : Real;  // Placeholder
+:>> capital_cost = child_total_cost;  // Bound in design with hardcoded value
+```
+
+### Part Redefinition Pattern
+**Status**: Validated CORRECT
+**Date**: 2026-01-12
+**Evidence**: `syside check` passes with no shadowing warnings
+**Summary**: Use dot notation for simple attribute binding, explicit `redefines` keyword when adding features. Avoid re-declaring parts in usages.
+
+**Pattern B - Dot Notation (for simple binding):**
+```sysml
+part my_assembly : 'Assembly' {
+    :>> child.power_rating = 1000.0;  // No shadowing warning
+}
+```
+
+**Pattern C - Explicit Redefines (when adding features):**
+```sysml
+part my_assembly : 'Assembly' {
+    part redefines child {
+        :>> power_rating = 1000.0;
+        attribute extra_feature : Real;  // Can add features
+    }
+}
+```
+
+**Anti-Pattern (DO NOT USE):**
+```sysml
+part my_assembly : 'Assembly' {
+    part child : 'Child Component' [N] {  // Causes shadowing warning!
+        :>> power_rating = 1000.0;
+    }
+}
+```
+
+### Parameterized Multiplicity Pattern
+**Status**: Validated CORRECT
+**Date**: 2026-01-12
+**Evidence**: `syside check` passes
+**Summary**: Multiplicity can be an attribute, allowing design files to set counts without modifying definitions.
+
+```sysml
+part def 'Assembly' {
+    attribute child_count : Integer default := 2;
+    part child : 'Child Component' [child_count];  // Parameterized!
+}
+
+part my_assembly : 'Assembly' {
+    :>> child_count = 3;  // Override count in design
+}
+```
 
 ---
 
-**Last Updated**: <!-- YYYY-MM-DD -->
+**Last Updated**: 2026-01-12
