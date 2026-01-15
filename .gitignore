@@ -10,3 +10,10 @@ wheels/
 .venv
 
 .env
+# Tool-owned files (managed by agentic-mbse init --dev)
+.claude/commands/
+.claude/agents/
+.claude/skills/
+.claude/hooks/
+project/MODELING_GUIDE.md
+project/MODELING_PROCESS.md
