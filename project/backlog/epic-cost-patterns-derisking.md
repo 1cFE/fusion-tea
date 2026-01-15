@@ -1,8 +1,9 @@
 # Epic: Cost Modeling Patterns De-Risking
 
-**Status**: READY
+**Status**: COMPLETE
 **Priority**: P0 (blocking Phase 4 - Cost Calculations)
 **Created**: 2026-01-10
+**Completed**: 2026-01-12
 **Owner**: Reid
 
 ---
@@ -122,7 +123,7 @@ Validate that:
 
 ## Plan
 
-### Stage 1: Demo Model
+### Stage 1: Demo Model ✓ COMPLETE
 
 **Goal**: Create a coffee maker model using Pattern A that compiles and is traversable.
 
@@ -161,7 +162,9 @@ CoffeeMaker (assembly)
 
 **Exit criteria**: AST script can find all 7 leaf cost_models, trace bindings (including through multiplicity), and identify allocation costs at assembly level.
 
-### Stage 2: Expected Output Format
+**Completed**: 2026-01-12. `validate_ast.py` validates all patterns. `generate_costs.py` extracts and evaluates.
+
+### Stage 2: Expected Output Format ✓ COMPLETE
 
 **Goal**: Define the ideal CSV output by hand.
 
@@ -183,7 +186,9 @@ CoffeeMaker (assembly)
 
 **Exit criteria**: Stakeholder approves output format as "useful for cost analysis."
 
-### Stage 3: Iteration
+**Completed**: 2026-01-12. `expected_output.csv` with 14 columns, 12 rows including allocations.
+
+### Stage 3: Iteration ✓ COMPLETE
 
 **Goal**: Iterate on model and output until aligned.
 
@@ -195,7 +200,9 @@ CoffeeMaker (assembly)
 
 **Exit criteria**: Model and expected output are stable; ready for implementation.
 
-### Stage 4: Implementation Specification
+**Completed**: 2026-01-12. `generate_costs.py` produces `actual_output.csv` matching expected within tolerance.
+
+### Stage 4: Implementation Specification ✓ COMPLETE
 
 **Goal**: Document what sysml-codegen needs to produce the expected output.
 
@@ -205,6 +212,10 @@ CoffeeMaker (assembly)
 3. Handoff to sysml-codegen implementation
 
 **Exit criteria**: Spec is clear enough to implement without ambiguity.
+
+**Completed**: 2026-01-12. Deliverables:
+- `project/backlog/sysml-codegen-upgrade.md` — Technical handoff for sysml-codegen team
+- `project/docs/COST_MODELING.md` — Final modeling guide codifying all patterns
 
 ---
 
@@ -295,6 +306,35 @@ From `NumericalFunctions.kerml`:
 abstract function sum { in collection: NumericalValue[0..*]; return : NumericalValue[1]; }
 abstract function product { in collection: NumericalValue[0..*]; return : NumericalValue[1]; }
 ```
+
+---
+
+## Completion Summary
+
+**Epic completed 2026-01-12**. All four stages delivered:
+
+| Stage | Deliverables |
+|-------|--------------|
+| Stage 1: Demo Model | `models/tests/coffee_maker/library.sysml`, `design.sysml`, `validate_ast.py` |
+| Stage 2: Output Format | `models/tests/coffee_maker/expected_output.csv` (14 columns, 12 rows) |
+| Stage 3: Iteration | `models/tests/coffee_maker/generate_costs.py` (1550 lines, full evaluation) |
+| Stage 4: Specification | `project/backlog/sysml-codegen-upgrade.md`, `project/docs/COST_MODELING.md` |
+
+**Success criteria met**:
+- ✓ Model compiles (`syside check` passes)
+- ✓ Pattern is traversable (validate_ast.py, generate_costs.py prove this)
+- ✓ Output format approved (14-column CSV with leaf/assembly/allocation rows)
+- ✓ Rollup math correct (actual_output.csv matches expected within 1e-6)
+
+**Key discoveries during epic**:
+- `NumericalFunctions::sum` exists in standard library (prior research missed this)
+- Parameterized multiplicity `[heater_count]` works correctly
+- Dot notation binding `:>> child.attr = value` is cleaner than `part redefines`
+
+**Next steps** (out of scope for this epic):
+- Implement sysml-codegen upgrade per `project/backlog/sysml-codegen-upgrade.md`
+- Apply patterns to fusion plant models
+- Add agentic-mbse enforcement rules
 
 ---
 

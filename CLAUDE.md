@@ -75,6 +75,45 @@ See `SOURCE_INDEX.md` for complete listing with:
 
 **agentic-mbse**: Installed in this project. See `README.md` for usage information. Source code is at `~/1cfe/agentic-mbse`.
 
+## Python Environment
+
+**IMPORTANT: Always use `uv` for Python commands.**
+
+This project uses `uv` for Python package management and script execution. Do NOT use bare `python`, `pip`, or `python3` commands.
+
+### Correct Usage
+
+```bash
+# Running Python scripts
+uv run python script.py
+
+# Running modules
+uv run python -m pytest
+
+# Installing packages
+uv add package_name
+
+# Running syside (SysML parser)
+uv run syside check models/path/to/file.sysml
+```
+
+### Incorrect Usage (DO NOT USE)
+
+```bash
+# These will use wrong Python or miss dependencies
+python script.py        # WRONG
+python3 script.py       # WRONG
+pip install package     # WRONG
+syside check file.sysml # WRONG (unless uv shell is active)
+```
+
+### Why uv?
+
+- Ensures correct virtual environment is used
+- Manages dependencies consistently
+- Faster than pip
+- Project has `pyproject.toml` configured for uv
+
 ## Special Considerations
 
 - PyFECONS contains validated costing algorithms - model outputs should be comparable
