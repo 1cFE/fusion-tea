@@ -124,3 +124,63 @@ def test_metadata_present(extracted_result):
     assert meta["root"] == "coffee_maker"
     assert meta["total_nodes"] == 10
     assert meta["max_depth"] == 2
+
+
+# =============================================================================
+# Phase 1: Format Converters (POC Item 3)
+# =============================================================================
+
+
+def test_to_cytoscape_format(extracted_result):
+    """to_cytoscape returns correct structure."""
+    from proof_of_concept.extraction.visualization import to_cytoscape
+
+    result = to_cytoscape(extracted_result)
+
+    assert "elements" in result
+    assert len(result["elements"]) == 10  # 10 nodes
+    assert all("data" in el for el in result["elements"])
+
+
+def test_to_cytoscape_labels(extracted_result):
+    """Labels include multiplicity notation."""
+    from proof_of_concept.extraction.visualization import to_cytoscape
+
+    result = to_cytoscape(extracted_result)
+    labels = {el["data"]["label"] for el in result["elements"]}
+
+    assert "heater [2]" in labels  # Has multiplicity
+    assert "pump" in labels  # No multiplicity
+
+
+def test_to_dot_contains_structure(extracted_result):
+    """DOT output has expected keywords."""
+    from proof_of_concept.extraction.visualization import to_dot
+
+    result = to_dot(extracted_result)
+
+    assert "digraph" in result
+    assert "subgraph cluster_" in result
+    assert "coffee_maker" in result
+
+
+# =============================================================================
+# Phase 2: Model Loading Helper (POC Item 3)
+# =============================================================================
+
+
+def test_load_model_valid_path():
+    """load_model loads coffee_maker model."""
+    from proof_of_concept.extraction.visualization import load_model
+
+    model = load_model(MODEL_DIR)
+
+    assert model is not None
+
+
+def test_load_model_invalid_path():
+    """load_model raises ValueError for bad path."""
+    from proof_of_concept.extraction.visualization import load_model
+
+    with pytest.raises(ValueError, match="not found"):
+        load_model("/nonexistent/path")

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Structural View - Cytoscape Viewer</title>
+  <title>Coffee Maker Structural View - Cytoscape POC</title>
 
   <!-- Cytoscape.js core -->
   <script src="https://unpkg.com/cytoscape@3.28.1/dist/cytoscape.min.js"></script>
@@ -128,7 +128,7 @@
 <body>
   <div id="container">
     <div id="control-bar">
-      <h1>Structural View</h1>
+      <h1>Coffee Maker - Structural View</h1>
       <button id="btn-expand-all">Expand All</button>
       <button id="btn-collapse-all">Collapse All</button>
       <button id="btn-fit">Fit View</button>
@@ -146,138 +146,74 @@
   </div>
 
   <script>
-    // ==========================================================================
-    // PASTE CLI OUTPUT HERE
-    // Generate with: uv run python -m proof_of_concept.extraction <model-path>
-    // ==========================================================================
-    const cytoscapeData = {
-  "elements": [
-    {
-      "data": {
-        "id": "coffee_maker",
-        "label": "coffee_maker",
-        "name": "coffee_maker",
-        "type_name": "Coffee Maker",
-        "element_type": "part",
-        "parent": null,
-        "depth": 0,
-        "multiplicity": null
+    // Golden reference data (embedded to avoid fetch/CORS issues)
+    const goldenReference = {
+      "nodes": [
+        {"id": "n1", "name": "coffee_maker", "type_name": "Coffee Maker", "element_type": "part", "parent": null, "depth": 0, "multiplicity": null},
+        {"id": "n2", "name": "brewing", "type_name": "Brewing System", "element_type": "part", "parent": "n1", "depth": 1, "multiplicity": null},
+        {"id": "n3", "name": "heater", "type_name": "Heating Element", "element_type": "part", "parent": "n2", "depth": 2, "multiplicity": [2, 2]},
+        {"id": "n4", "name": "pump", "type_name": "Water Pump", "element_type": "part", "parent": "n2", "depth": 2, "multiplicity": null},
+        {"id": "n5", "name": "chamber", "type_name": "Brew Chamber", "element_type": "part", "parent": "n2", "depth": 2, "multiplicity": null},
+        {"id": "n6", "name": "reservoir", "type_name": "Water Reservoir", "element_type": "part", "parent": "n1", "depth": 1, "multiplicity": null},
+        {"id": "n7", "name": "carafe", "type_name": "Carafe", "element_type": "part", "parent": "n1", "depth": 1, "multiplicity": null},
+        {"id": "n8", "name": "housing", "type_name": "Housing", "element_type": "part", "parent": "n1", "depth": 1, "multiplicity": null},
+        {"id": "n9", "name": "shell", "type_name": "Outer Shell", "element_type": "part", "parent": "n8", "depth": 2, "multiplicity": null},
+        {"id": "n10", "name": "panel", "type_name": "Control Panel", "element_type": "part", "parent": "n8", "depth": 2, "multiplicity": null}
+      ],
+      "edges": [
+        {"id": "e1", "source": "n1", "target": "n2", "edge_type": "containment"},
+        {"id": "e2", "source": "n2", "target": "n3", "edge_type": "containment"},
+        {"id": "e3", "source": "n2", "target": "n4", "edge_type": "containment"},
+        {"id": "e4", "source": "n2", "target": "n5", "edge_type": "containment"},
+        {"id": "e5", "source": "n1", "target": "n6", "edge_type": "containment"},
+        {"id": "e6", "source": "n1", "target": "n7", "edge_type": "containment"},
+        {"id": "e7", "source": "n1", "target": "n8", "edge_type": "containment"},
+        {"id": "e8", "source": "n8", "target": "n9", "edge_type": "containment"},
+        {"id": "e9", "source": "n8", "target": "n10", "edge_type": "containment"}
+      ],
+      "metadata": {"view": "structural", "root": "coffee_maker", "total_nodes": 10, "max_depth": 2}
+    };
+
+    // Get node label with multiplicity notation
+    function getNodeLabel(node) {
+      const name = node.name;
+      const mult = node.multiplicity;
+      if (mult) {
+        if (mult[0] === mult[1]) {
+          return `${name} [${mult[0]}]`;
+        } else {
+          return `${name} [${mult[0]}..${mult[1] || '*'}]`;
+        }
       }
-    },
-    {
-      "data": {
-        "id": "coffee_maker.brewing",
-        "label": "brewing",
-        "name": "brewing",
-        "type_name": "Brewing System",
-        "element_type": "part",
-        "parent": "coffee_maker",
-        "depth": 1,
-        "multiplicity": null
-      }
-    },
-    {
-      "data": {
-        "id": "coffee_maker.brewing.heater",
-        "label": "heater [2]",
-        "name": "heater",
-        "type_name": "Heating Element",
-        "element_type": "part",
-        "parent": "coffee_maker.brewing",
-        "depth": 2,
-        "multiplicity": [
-          2,
-          2
-        ]
-      }
-    },
-    {
-      "data": {
-        "id": "coffee_maker.brewing.pump",
-        "label": "pump",
-        "name": "pump",
-        "type_name": "Water Pump",
-        "element_type": "part",
-        "parent": "coffee_maker.brewing",
-        "depth": 2,
-        "multiplicity": null
-      }
-    },
-    {
-      "data": {
-        "id": "coffee_maker.brewing.chamber",
-        "label": "chamber",
-        "name": "chamber",
-        "type_name": "Brew Chamber",
-        "element_type": "part",
-        "parent": "coffee_maker.brewing",
-        "depth": 2,
-        "multiplicity": null
-      }
-    },
-    {
-      "data": {
-        "id": "coffee_maker.reservoir",
-        "label": "reservoir",
-        "name": "reservoir",
-        "type_name": "Water Reservoir",
-        "element_type": "part",
-        "parent": "coffee_maker",
-        "depth": 1,
-        "multiplicity": null
-      }
-    },
-    {
-      "data": {
-        "id": "coffee_maker.carafe",
-        "label": "carafe",
-        "name": "carafe",
-        "type_name": "Carafe",
-        "element_type": "part",
-        "parent": "coffee_maker",
-        "depth": 1,
-        "multiplicity": null
-      }
-    },
-    {
-      "data": {
-        "id": "coffee_maker.housing",
-        "label": "housing",
-        "name": "housing",
-        "type_name": "Housing",
-        "element_type": "part",
-        "parent": "coffee_maker",
-        "depth": 1,
-        "multiplicity": null
-      }
-    },
-    {
-      "data": {
-        "id": "coffee_maker.housing.shell",
-        "label": "shell",
-        "name": "shell",
-        "type_name": "Outer Shell",
-        "element_type": "part",
-        "parent": "coffee_maker.housing",
-        "depth": 2,
-        "multiplicity": null
-      }
-    },
-    {
-      "data": {
-        "id": "coffee_maker.housing.panel",
-        "label": "panel",
-        "name": "panel",
-        "type_name": "Control Panel",
-        "element_type": "part",
-        "parent": "coffee_maker.housing",
-        "depth": 2,
-        "multiplicity": null
-      }
+      return name;
     }
-  ]
-};
-    // ==========================================================================
+
+    // Convert ViewResult to Cytoscape elements format
+    function convertToCytoscape(viewResult) {
+      const elements = [];
+
+      // Convert nodes
+      for (const node of viewResult.nodes) {
+        elements.push({
+          data: {
+            id: node.id,
+            label: getNodeLabel(node),
+            name: node.name,
+            type_name: node.type_name,
+            element_type: node.element_type,
+            parent: node.parent,
+            depth: node.depth,
+            multiplicity: node.multiplicity
+          }
+        });
+      }
+
+      // Note: For compound nodes, we don't add containment edges
+      // Cytoscape uses the 'parent' property to establish hierarchy
+      // Edges would be used for other relationship types (dependencies, etc.)
+
+      return elements;
+    }
 
     // Cytoscape stylesheet
     const stylesheet = [
@@ -385,7 +321,7 @@
 
       const link = document.createElement('a');
       link.href = URL.createObjectURL(png);
-      link.download = 'structural_diagram.png';
+      link.download = 'coffee_maker_diagram.png';
       link.click();
       URL.revokeObjectURL(link.href);
     }
@@ -438,8 +374,7 @@
 
     // Initialize on page load
     document.addEventListener('DOMContentLoaded', function() {
-      // Use elements directly from CLI output
-      const elements = cytoscapeData.elements;
+      const elements = convertToCytoscape(goldenReference);
       const cy = initCytoscape(elements);
       const expandCollapseApi = setupExpandCollapse(cy);
 
@@ -482,7 +417,7 @@
         }
       });
 
-      console.log('Cytoscape initialized with', elements.length, 'nodes');
+      console.log('Cytoscape initialized with', goldenReference.metadata.total_nodes, 'nodes');
       console.log('Features: expand/collapse, zoom-to-node (double-click), PNG export, info panel');
     });
   </script>
