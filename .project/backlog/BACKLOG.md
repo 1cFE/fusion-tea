@@ -19,7 +19,7 @@ Prioritized list of epics and features.
 
 | Epic | Priority | Status | Started | Notes |
 |------|----------|--------|---------|-------|
-| [None yet] | - | - | - | - |
+| [EPIC-001] Visualization POC Sprint | P0 | In Progress | 2026-01-18 | Items 1-2 complete |
 
 ---
 
@@ -29,13 +29,13 @@ Prioritized list of epics and features.
 
 **Priority**: P0
 **Effort**: 5 days
-**Status**: Ready
+**Status**: In Progress
 
 Build a proof-of-concept visualization pipeline to de-risk the technical approach and enable early user feedback. Working vertical slice from SysML model → interactive web diagram with export.
 
 **Items**:
-- [ ] Item 1: Golden Reference + Cytoscape POC (1 day)
-- [ ] Item 2: Extraction Implementation (1 day)
+- [x] Item 1: Golden Reference + Cytoscape POC (1 day) - Complete 2026-01-18
+- [x] Item 2: Extraction Implementation (1 day) - Complete 2026-01-18
 - [ ] Item 3: End-to-End Pipeline (1 day)
 - [ ] Item 4: Web Integration (1 day)
 - [ ] Item 5: Cost Annotations + Polish (1 day)
