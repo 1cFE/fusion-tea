@@ -22,7 +22,7 @@ requires-dist = [
     { name = "python-dotenv", specifier = ">=1.0" },
     { name = "pyyaml", specifier = ">=6.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.1" },
-    { name = "syside", specifier = ">=0.8.1" },
+    { name = "syside", specifier = ">=0.8.4" },
 ]
 provides-extras = ["dev"]
 
@@ -472,16 +472,17 @@ wheels = [
 
 [[package]]
 name = "syside"
-version = "0.8.3"
+version = "0.8.4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "click" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/f0/12/a884139d40fe76563597cd1dd1da8f8fb4b0983b5b9c1685d8d19d0b882e/syside-0.8.3-cp312-abi3-macosx_10_13_x86_64.whl", hash = "sha256:3d117261675fe664a7fe7361d75d5dbb6731e08d88697e71f2e70d263f37e225", size = 10017580, upload-time = "2025-11-27T11:43:26.699Z" },
-    { url = "https://files.pythonhosted.org/packages/ed/1d/be5a2354c2830be793d1f808eb0ae9ae7ba79826aea523b0b389ab731760/syside-0.8.3-cp312-abi3-macosx_11_0_arm64.whl", hash = "sha256:cdc9fc2d21d26e15ac527abae31edff55ae3aa2995cdb078e7fb83162f1b873e", size = 9096494, upload-time = "2025-11-27T11:43:24.349Z" },
-    { url = "https://files.pythonhosted.org/packages/fc/1d/e5b277fe50fb8aa605ed5e3b355763bb5134c54ca8bbb254ad66f9b63ad9/syside-0.8.3-cp312-abi3-manylinux_2_31_x86_64.whl", hash = "sha256:33958ea757be06e9a35d69482cf5d0aa55abf4cd8f80b33fb636e52c19ae9ddd", size = 11893466, upload-time = "2025-11-27T11:43:30.863Z" },
-    { url = "https://files.pythonhosted.org/packages/89/a4/508547fd9b1572dd83000c4eed083a8cd84b031f4cda534c24159657125a/syside-0.8.3-cp312-abi3-win_amd64.whl", hash = "sha256:a095e667afafbee6d1fafb72f32130c0932b1b95dd5da9a5d2ce7942e6a91ad4", size = 9974893, upload-time = "2025-11-27T11:43:28.552Z" },
+    { url = "https://files.pythonhosted.org/packages/15/e6/becf43466826dda514f47bc59d7c60eea183660c0d76193772ed423d1368/syside-0.8.4-cp312-abi3-macosx_10_13_x86_64.whl", hash = "sha256:b03b44c2c316463dce1502d2ca02b638a8ac5cc4a3535bcc0d6999b0d2948480", size = 10115753, upload-time = "2026-01-13T17:55:12.377Z" },
+    { url = "https://files.pythonhosted.org/packages/2e/eb/b2d84d9f05b9bd3013cab80890aac2a3d207c3cd77c1841a3446d3d861bf/syside-0.8.4-cp312-abi3-macosx_11_0_arm64.whl", hash = "sha256:bed4f6f29ff8fafcafad06fe1e13abfede3d411f79fc55c0664dae8bf3fb24a1", size = 9169432, upload-time = "2026-01-13T17:55:07.299Z" },
+    { url = "https://files.pythonhosted.org/packages/4e/ff/8c86b179d130b130e20165072fccb2b0d3d5ad0efc057910e732bb6a6c2a/syside-0.8.4-cp312-abi3-manylinux_2_31_x86_64.whl", hash = "sha256:230dfff7b975e43c80f8fbccd72c090f288d504797012b267c2599ce467acc38", size = 12005679, upload-time = "2026-01-13T17:55:14.458Z" },
+    { url = "https://files.pythonhosted.org/packages/ae/24/98d621177d1c1a55150f7e6fe2cbfd638f24b6377ac481475bee717c1a85/syside-0.8.4-cp312-abi3-win_amd64.whl", hash = "sha256:e1ce1c5841255e5e88c0b24f4f84d2cdb4810d6ab44509dc8aa6ede1eff7b774", size = 10078407, upload-time = "2026-01-13T17:55:16.874Z" },
+    { url = "https://files.pythonhosted.org/packages/7f/1d/745d7e86fead8f68198fae2518f6bcfa77f970e0be5e1b6180d507cde5f6/syside-0.8.4-cp312-abi3-win_arm64.whl", hash = "sha256:215dca63a58860efe07d10fa6792b3886b8ed879fe4402a7bc2425ccb61e6185", size = 9137018, upload-time = "2026-01-13T17:55:09.384Z" },
 ]
 
 [[package]]
