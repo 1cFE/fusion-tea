@@ -2,7 +2,7 @@
 
 Prioritized list of epics and features.
 
-**Last Updated**: [DATE]
+**Last Updated**: 2026-01-18
 
 ---
 
@@ -23,21 +23,30 @@ Prioritized list of epics and features.
 
 ---
 
-## P1 - High Priority
+## P0 - Critical
 
-### [EPIC-001] [Epic Name]
+### [EPIC-001] Visualization POC Sprint
 
-**Priority**: P1
-**Effort**: [X days]
+**Priority**: P0
+**Effort**: 5 days
 **Status**: Ready
 
-Brief description of the epic and why it's important.
+Build a proof-of-concept visualization pipeline to de-risk the technical approach and enable early user feedback. Working vertical slice from SysML model → interactive web diagram with export.
 
 **Items**:
-- [ ] Item 1: [Name] ([X days])
-- [ ] Item 2: [Name] ([X days])
+- [ ] Item 1: Golden Reference + Cytoscape POC (1 day)
+- [ ] Item 2: Extraction Implementation (1 day)
+- [ ] Item 3: End-to-End Pipeline (1 day)
+- [ ] Item 4: Web Integration (1 day)
+- [ ] Item 5: Cost Annotations + Polish (1 day)
 
-**File**: `epic_[name].md`
+**File**: `epic_visualization-poc.md`
+
+---
+
+## P1 - High Priority
+
+*No epics yet*
 
 ---
 
