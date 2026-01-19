@@ -102,20 +102,27 @@ Build a proof-of-concept visualization pipeline to de-risk the technical approac
 **Scope**:
 1. Add `to_cytoscape()` function - Convert ViewResult to Cytoscape.js format
 2. Add `to_dot()` function - Convert ViewResult to DOT format for Graphviz
-3. Add CLI command: `uv run python -m agentic_mbse.sysml.visualization <model-path>`
+3. Add CLI command: `uv run python -m proof_of_concept.extraction <model-path>`
 
 **Out of Scope**:
 - Web server
 - Interactive features beyond Day 1 POC
 
 **Success Criteria**:
-- [ ] CLI produces valid JSON loadable by Cytoscape POC from Day 1
-- [ ] DOT output renders correctly in Graphviz
-- [ ] End-to-end: model → extraction → JSON → Cytoscape → diagram
+- [x] CLI produces valid JSON loadable by Cytoscape POC from Day 1
+- [x] DOT output renders correctly in Graphviz (syntax validated)
+- [x] End-to-end: model → extraction → JSON → Cytoscape → diagram
 
+**Status**: Complete (2026-01-18)
 **Dependencies**: Item 2 (extraction functions)
-**Deliverables**: Updated `visualization.py` with converters and `__main__` entry
+**Deliverables**:
+- `proof_of_concept/extraction/visualization.py` - Added `load_model()`, `to_cytoscape()`, `to_dot()`
+- `proof_of_concept/extraction/__main__.py` - CLI entry point
+- `proof_of_concept/extraction/__init__.py` - Updated exports
+- `proof_of_concept/tests/test_visualization.py` - 5 new tests (24 total)
+- `proof_of_concept/cytoscape_demo.html` - Updated to accept CLI output directly
 **Reference**: Sprint Plan - Day 3 (lines 311-335)
+**Spec/Design/Plan**: `.project/active/end-to-end-pipeline/`
 
 ---
 
@@ -137,14 +144,21 @@ Build a proof-of-concept visualization pipeline to de-risk the technical approac
 - Multiple simultaneous views
 
 **Success Criteria**:
-- [ ] Navigate to `http://localhost:8000`
-- [ ] Enter `models/tests/coffee_maker`
-- [ ] See interactive diagram
-- [ ] Export PNG works
+- [x] Navigate to `http://localhost:8000`
+- [x] Enter `models/tests/coffee_maker`
+- [x] See interactive diagram
+- [x] Export PNG works
 
+**Status**: Complete (2026-01-19)
 **Dependencies**: Item 3 (CLI/converters working)
-**Deliverables**: `proof_of_concept/web/` directory
+**Deliverables**:
+- `proof_of_concept/web/__init__.py` - Package marker
+- `proof_of_concept/web/__main__.py` - Entry point for `uv run python -m proof_of_concept.web`
+- `proof_of_concept/web/server.py` - FastAPI server with API endpoint and static serving
+- `proof_of_concept/web/static/index.html` - Interactive Cytoscape viewer with model path input
+- `proof_of_concept/tests/test_web.py` - 3 API tests
 **Reference**: Sprint Plan - Day 4 (lines 337-358)
+**Spec/Design/Plan**: `.project/active/web-integration/`
 
 ---
 

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Structural View - Cytoscape Viewer</title>
+
+  <!-- Cytoscape.js core -->
+  <script src="https://unpkg.com/cytoscape@3.28.1/dist/cytoscape.min.js"></script>
+
+  <!-- Dagre layout -->
+  <script src="https://unpkg.com/dagre@0.8.5/dist/dagre.min.js"></script>
+  <script src="https://unpkg.com/cytoscape-dagre@2.5.0/cytoscape-dagre.js"></script>
+
+  <!-- Expand-collapse -->
+  <script src="https://unpkg.com/cytoscape-expand-collapse@4.1.0/cytoscape-expand-collapse.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f5f5;
+    }
+
+    #container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    #control-bar {
+      display: flex;
+      gap: 8px;
+      padding: 12px 16px;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      align-items: center;
+    }
+
+    #control-bar h1 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      margin-right: 16px;
+    }
+
+    #model-path {
+      flex: 1;
+      max-width: 400px;
+      padding: 8px 12px;
+      font-size: 13px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    #model-path:focus {
+      outline: none;
+      border-color: #1976d2;
+    }
+
+    #control-bar button {
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      border: 1px solid #1976d2;
+      background: #fff;
+      color: #1976d2;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    #control-bar button:hover:not(:disabled) {
+      background: #1976d2;
+      color: #fff;
+    }
+
+    #control-bar button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    #btn-load {
+      background: #1976d2;
+      color: #fff;
+    }
+
+    #btn-load:hover:not(:disabled) {
+      background: #1565c0;
+    }
+
+    .spacer {
+      width: 16px;
+    }
+
+    #main {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    #cy {
+      flex: 1;
+      background: white;
+      position: relative;
+    }
+
+    #message-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #666;
+    }
+
+    #message-overlay.error {
+      color: #d32f2f;
+    }
+
+    #message-overlay h2 {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    #message-overlay p {
+      font-size: 14px;
+    }
+
+    #info-panel {
+      width: 280px;
+      background: #fff;
+      border-left: 1px solid #ddd;
+      padding: 16px;
+      overflow-y: auto;
+    }
+
+    #info-panel h2 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #666;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    #info-panel .no-selection {
+      color: #999;
+      font-style: italic;
+    }
+
+    #info-panel .field {
+      margin-bottom: 12px;
+    }
+
+    #info-panel .field-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #666;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    #info-panel .field-value {
+      font-size: 14px;
+      color: #333;
+    }
+
+    #info-panel .field-value.multiplicity {
+      font-family: monospace;
+      background: #e3f2fd;
+      padding: 2px 6px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="control-bar">
+      <h1>Structural View</h1>
+      <input type="text" id="model-path" placeholder="Enter model path (e.g., models/tests/coffee_maker)" value="models/tests/coffee_maker">
+      <button id="btn-load">Load</button>
+      <div class="spacer"></div>
+      <button id="btn-expand-all" disabled>Expand All</button>
+      <button id="btn-collapse-all" disabled>Collapse All</button>
+      <button id="btn-fit" disabled>Fit View</button>
+      <button id="btn-export" disabled>Export PNG</button>
+    </div>
+    <div id="main">
+      <div id="cy">
+        <div id="message-overlay">
+          <h2>No Model Loaded</h2>
+          <p>Enter a model path and click Load</p>
+        </div>
+      </div>
+      <div id="info-panel">
+        <h2>Node Details</h2>
+        <div id="info-content">
+          <p class="no-selection">Click a node to see details</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Cytoscape stylesheet
+    const stylesheet = [
+      // All nodes - base style
+      {
+        selector: 'node',
+        style: {
+          'label': 'data(label)',
+          'text-valign': 'top',
+          'text-halign': 'center',
+          'text-margin-y': 8,
+          'font-size': 12,
+          'font-weight': 'bold',
+          'text-wrap': 'wrap',
+          'text-max-width': 100
+        }
+      },
+      // Part nodes (compound containers)
+      {
+        selector: 'node[element_type="part"]',
+        style: {
+          'shape': 'round-rectangle',
+          'background-color': '#e3f2fd',
+          'border-color': '#1976d2',
+          'border-width': 2,
+          'padding': 20
+        }
+      },
+      // Leaf nodes (no children) - smaller, centered label
+      {
+        selector: 'node:childless',
+        style: {
+          'width': 120,
+          'height': 40,
+          'text-valign': 'center',
+          'text-margin-y': 0
+        }
+      },
+      // Selection highlight
+      {
+        selector: ':selected',
+        style: {
+          'border-width': 4,
+          'border-color': '#ff5722'
+        }
+      },
+      // Collapsed node indicator (double border)
+      {
+        selector: '.cy-expand-collapse-collapsed-node',
+        style: {
+          'border-style': 'double',
+          'border-width': 6,
+          'border-color': '#1565c0'
+        }
+      }
+    ];
+
+    // Global state
+    let cy = null;
+    let expandCollapseApi = null;
+
+    // Initialize Cytoscape with elements
+    function initCytoscape(elements) {
+      // Destroy existing instance if any
+      if (cy) {
+        cy.destroy();
+      }
+
+      cy = cytoscape({
+        container: document.getElementById('cy'),
+        elements: elements,
+        style: stylesheet,
+        layout: {
+          name: 'dagre',
+          rankDir: 'TB',
+          nodeSep: 50,
+          rankSep: 80,
+          fit: true,
+          padding: 30
+        }
+      });
+
+      // Setup expand/collapse
+      expandCollapseApi = cy.expandCollapse({
+        layoutBy: {
+          name: 'dagre',
+          animate: true,
+          animationDuration: 300,
+          rankDir: 'TB',
+          nodeSep: 50,
+          rankSep: 80
+        },
+        fisheye: false,
+        animate: true,
+        undoable: false,
+        cueEnabled: false
+      });
+
+      // Double-click to zoom to node
+      cy.on('dbltap', 'node', function(evt) {
+        const node = evt.target;
+        cy.animate({
+          fit: { eles: node, padding: 50 },
+          duration: 300
+        });
+      });
+
+      // Click to show node details
+      cy.on('tap', 'node', function(evt) {
+        const node = evt.target;
+        updateInfoPanel(node);
+      });
+
+      // Click on background to clear selection
+      cy.on('tap', function(evt) {
+        if (evt.target === cy) {
+          clearInfoPanel();
+        }
+      });
+
+      // Enable buttons
+      setButtonsEnabled(true);
+
+      console.log('Cytoscape initialized with', elements.length, 'nodes');
+    }
+
+    // Export diagram as PNG
+    function exportPNG() {
+      if (!cy) return;
+
+      const png = cy.png({
+        output: 'blob',
+        scale: 2,
+        bg: 'white',
+        full: true
+      });
+
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(png);
+      link.download = 'structural_diagram.png';
+      link.click();
+      URL.revokeObjectURL(link.href);
+    }
+
+    // Update info panel with node details
+    function updateInfoPanel(node) {
+      const infoContent = document.getElementById('info-content');
+      const data = node.data();
+
+      let multiplicityHtml = '<span class="field-value">-</span>';
+      if (data.multiplicity) {
+        const mult = data.multiplicity;
+        const display = mult[0] === mult[1] ? `[${mult[0]}]` : `[${mult[0]}..${mult[1] || '*'}]`;
+        multiplicityHtml = `<span class="field-value multiplicity">${display}</span>`;
+      }
+
+      infoContent.innerHTML = `
+        <div class="field">
+          <div class="field-label">Name</div>
+          <div class="field-value">${data.name}</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Type</div>
+          <div class="field-value">${data.type_name || '-'}</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Element Type</div>
+          <div class="field-value">${data.element_type}</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Depth</div>
+          <div class="field-value">${data.depth}</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Multiplicity</div>
+          ${multiplicityHtml}
+        </div>
+        <div class="field">
+          <div class="field-label">ID</div>
+          <div class="field-value" style="font-family: monospace; color: #666;">${data.id}</div>
+        </div>
+      `;
+    }
+
+    // Clear info panel
+    function clearInfoPanel() {
+      const infoContent = document.getElementById('info-content');
+      infoContent.innerHTML = '<p class="no-selection">Click a node to see details</p>';
+    }
+
+    // Show message overlay
+    function showMessage(title, message, isError = false) {
+      const overlay = document.getElementById('message-overlay');
+      overlay.innerHTML = `<h2>${title}</h2><p>${message}</p>`;
+      overlay.className = isError ? 'error' : '';
+      overlay.style.display = 'block';
+    }
+
+    // Hide message overlay
+    function hideMessage() {
+      document.getElementById('message-overlay').style.display = 'none';
+    }
+
+    // Enable/disable diagram buttons
+    function setButtonsEnabled(enabled) {
+      document.getElementById('btn-expand-all').disabled = !enabled;
+      document.getElementById('btn-collapse-all').disabled = !enabled;
+      document.getElementById('btn-fit').disabled = !enabled;
+      document.getElementById('btn-export').disabled = !enabled;
+    }
+
+    // Load model from API
+    async function loadModel(path) {
+      const loadBtn = document.getElementById('btn-load');
+      const pathInput = document.getElementById('model-path');
+
+      // Show loading state
+      loadBtn.disabled = true;
+      loadBtn.textContent = 'Loading...';
+      pathInput.disabled = true;
+      setButtonsEnabled(false);
+      showMessage('Loading...', `Fetching model from ${path}`);
+
+      try {
+        const response = await fetch(`/api/model/${path}`);
+
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.detail || `HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (!data.elements || data.elements.length === 0) {
+          throw new Error('No structural elements found in model');
+        }
+
+        hideMessage();
+        initCytoscape(data.elements);
+
+      } catch (error) {
+        console.error('Failed to load model:', error);
+        showMessage('Error Loading Model', error.message, true);
+        setButtonsEnabled(false);
+
+        // Destroy cytoscape if exists
+        if (cy) {
+          cy.destroy();
+          cy = null;
+        }
+      } finally {
+        // Reset loading state
+        loadBtn.disabled = false;
+        loadBtn.textContent = 'Load';
+        pathInput.disabled = false;
+      }
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const loadBtn = document.getElementById('btn-load');
+      const pathInput = document.getElementById('model-path');
+
+      // Load button handler
+      loadBtn.addEventListener('click', function() {
+        const path = pathInput.value.trim();
+        if (path) {
+          loadModel(path);
+        }
+      });
+
+      // Enter key in input field
+      pathInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          const path = pathInput.value.trim();
+          if (path) {
+            loadModel(path);
+          }
+        }
+      });
+
+      // Button handlers
+      document.getElementById('btn-expand-all').addEventListener('click', function() {
+        if (expandCollapseApi) expandCollapseApi.expandAll();
+      });
+
+      document.getElementById('btn-collapse-all').addEventListener('click', function() {
+        if (expandCollapseApi) expandCollapseApi.collapseAll();
+      });
+
+      document.getElementById('btn-fit').addEventListener('click', function() {
+        if (cy) cy.fit(null, 30);
+      });
+
+      document.getElementById('btn-export').addEventListener('click', function() {
+        exportPNG();
+      });
+
+      console.log('Structural View ready. Enter a model path and click Load.');
+    });
+  </script>
+</body>
+</html>
