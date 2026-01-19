@@ -235,6 +235,14 @@
         <input type="checkbox" id="cost-styling-toggle" disabled>
         Color by Cost
       </label>
+      <label class="toggle-label">
+        <input type="checkbox" id="labels-inside-toggle" disabled>
+        Labels Inside
+      </label>
+      <select id="layout-select" disabled>
+        <option value="containment">Containment</option>
+        <option value="tree">Tree</option>
+      </select>
     </div>
     <div id="main">
       <div id="cy">
@@ -306,12 +314,35 @@
           'border-width': 6,
           'border-color': '#1565c0'
         }
+      },
+      // Edges for tree layout
+      {
+        selector: 'edge',
+        style: {
+          'width': 2,
+          'line-color': '#1976d2',
+          'target-arrow-color': '#1976d2',
+          'target-arrow-shape': 'triangle',
+          'curve-style': 'bezier'
+        }
       }
     ];
 
     // Global state
     let cy = null;
     let expandCollapseApi = null;
+
+    // Cost coloring strategy system
+    const CostColorStrategy = {
+      GLOBAL_MINMAX: 'global_minmax',
+      PERCENT_OF_PARENT: 'percent_of_parent'
+    };
+
+    let currentCostStrategy = CostColorStrategy.PERCENT_OF_PARENT;
+
+    // Layout state
+    let originalElements = null;
+    let parentLookup = new Map();
 
     // Initialize Cytoscape with elements
     function initCytoscape(elements) {
@@ -492,10 +523,14 @@
       document.getElementById('btn-fit').disabled = !enabled;
       document.getElementById('btn-export').disabled = !enabled;
       document.getElementById('cost-styling-toggle').disabled = !enabled;
+      document.getElementById('labels-inside-toggle').disabled = !enabled;
+      document.getElementById('layout-select').disabled = !enabled;
 
-      // Reset cost styling toggle when disabling
+      // Reset toggles when disabling
       if (!enabled) {
         document.getElementById('cost-styling-toggle').checked = false;
+        document.getElementById('labels-inside-toggle').checked = false;
+        document.getElementById('layout-select').value = 'containment';
       }
     }
 
@@ -526,6 +561,21 @@
         }
 
         hideMessage();
+
+        // Store original elements for layout switching
+        originalElements = data.elements;
+
+        // Cache parent relationships for cost coloring in tree mode
+        parentLookup.clear();
+        data.elements.forEach(el => {
+          if (el.data.parent) {
+            parentLookup.set(el.data.id, el.data.parent);
+          }
+        });
+
+        // Reset layout select to containment
+        document.getElementById('layout-select').value = 'containment';
+
         initCytoscape(data.elements);
 
       } catch (error) {
@@ -546,6 +596,64 @@
       }
     }
 
+    // Cost coloring strategy: Global min/max normalization
+    function computeGlobalMinMax(nodes, costAttr) {
+      const costs = nodes
+        .map(n => n.data(costAttr))
+        .filter(v => typeof v === 'number');
+
+      if (costs.length === 0) return null;
+
+      const minCost = Math.min(...costs);
+      const maxCost = Math.max(...costs);
+
+      const result = new Map();
+      nodes.forEach(node => {
+        const cost = node.data(costAttr);
+        if (typeof cost === 'number') {
+          const t = maxCost > minCost ? (cost - minCost) / (maxCost - minCost) : 0;
+          result.set(node.id(), t);
+        }
+      });
+      return result;
+    }
+
+    // Cost coloring strategy: Percentage of parent
+    function computePercentOfParent(nodes, costAttr) {
+      const result = new Map();
+
+      // Build parent lookup
+      const nodeMap = new Map();
+      nodes.forEach(n => nodeMap.set(n.id(), n));
+
+      nodes.forEach(node => {
+        const cost = node.data(costAttr);
+        // Use parentLookup fallback for tree mode (where parent property is removed)
+        const parentId = node.data('parent') || parentLookup.get(node.id());
+
+        if (typeof cost !== 'number') return;
+
+        if (!parentId) {
+          // Root node - neutral color (t = 0)
+          result.set(node.id(), 0);
+          return;
+        }
+
+        const parent = nodeMap.get(parentId);
+        const parentCost = parent ? parent.data(costAttr) : null;
+
+        if (typeof parentCost === 'number' && parentCost > 0) {
+          // Percentage of parent (capped at 1.0)
+          const t = Math.min(cost / parentCost, 1.0);
+          result.set(node.id(), t);
+        } else {
+          result.set(node.id(), 0);
+        }
+      });
+
+      return result;
+    }
+
     // Linear color interpolation between two hex colors
     function lerpColor(color1, color2, t) {
       const r1 = parseInt(color1.slice(1, 3), 16);
@@ -560,26 +668,30 @@
       return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
     }
 
-    // Apply cost-based coloring to nodes
+    // Apply cost-based coloring to nodes using current strategy
     function applyCostStyling(enabled) {
       if (!cy) return;
 
       if (enabled) {
-        // Get min/max capital_cost values
-        const costs = cy.nodes()
-          .map(n => n.data('capital_cost'))
-          .filter(v => typeof v === 'number');
+        let intensities;
 
-        if (costs.length === 0) return;
+        switch (currentCostStrategy) {
+          case CostColorStrategy.GLOBAL_MINMAX:
+            intensities = computeGlobalMinMax(cy.nodes(), 'capital_cost');
+            break;
+          case CostColorStrategy.PERCENT_OF_PARENT:
+            intensities = computePercentOfParent(cy.nodes(), 'capital_cost');
+            break;
+          default:
+            intensities = computePercentOfParent(cy.nodes(), 'capital_cost');
+        }
 
-        const minCost = Math.min(...costs);
-        const maxCost = Math.max(...costs);
+        if (!intensities) return;
 
         // Apply gradient colors (light blue -> red)
         cy.nodes().forEach(node => {
-          const cost = node.data('capital_cost');
-          if (typeof cost === 'number') {
-            const t = maxCost > minCost ? (cost - minCost) / (maxCost - minCost) : 0;
+          const t = intensities.get(node.id());
+          if (t !== undefined) {
             const color = lerpColor('#e3f2fd', '#ff5252', t);
             node.style('background-color', color);
           }
@@ -590,6 +702,87 @@
           node.style('background-color', '#e3f2fd');
         });
       }
+    }
+
+    // Apply label positioning style to container nodes
+    function applyLabelStyle(labelsInside) {
+      if (!cy) return;
+
+      // Update container nodes (non-leaf)
+      cy.nodes().not(':childless').forEach(node => {
+        if (labelsInside) {
+          node.style({
+            'text-valign': 'center',
+            'text-margin-y': 0
+          });
+        } else {
+          node.style({
+            'text-valign': 'top',
+            'text-margin-y': 8
+          });
+        }
+      });
+    }
+
+    // Transform compound node data to edge-based hierarchy for tree layout
+    function transformToTreeData(elements) {
+      const nodes = [];
+      const edges = [];
+
+      elements.forEach(el => {
+        const data = { ...el.data };
+        const parentId = data.parent;
+        delete data.parent;  // Remove compound relationship
+        nodes.push({ data });
+
+        if (parentId) {
+          edges.push({
+            data: {
+              id: `${parentId}->${data.id}`,
+              source: parentId,
+              target: data.id
+            }
+          });
+        }
+      });
+
+      return [...nodes, ...edges];
+    }
+
+    // Switch between layout types
+    function switchLayout(layoutType) {
+      if (!cy || !originalElements) return;
+
+      // Remove all existing elements first
+      cy.elements().remove();
+
+      if (layoutType === 'tree') {
+        const treeElements = transformToTreeData(originalElements);
+        cy.add(treeElements);
+        cy.layout({
+          name: 'dagre',
+          rankDir: 'TB',
+          nodeSep: 80,
+          rankSep: 100,
+          fit: true,
+          padding: 30
+        }).run();
+      } else {
+        // Restore compound node structure
+        cy.add(originalElements);
+        cy.layout({
+          name: 'dagre',
+          rankDir: 'TB',
+          nodeSep: 50,
+          rankSep: 80,
+          fit: true,
+          padding: 30
+        }).run();
+      }
+
+      // Re-apply current styling options
+      applyCostStyling(document.getElementById('cost-styling-toggle').checked);
+      applyLabelStyle(document.getElementById('labels-inside-toggle').checked);
     }
 
     // Initialize on page load
@@ -635,6 +828,16 @@
       // Cost styling toggle handler
       document.getElementById('cost-styling-toggle').addEventListener('change', function() {
         applyCostStyling(this.checked);
+      });
+
+      // Labels inside toggle handler
+      document.getElementById('labels-inside-toggle').addEventListener('change', function() {
+        applyLabelStyle(this.checked);
+      });
+
+      // Layout select handler
+      document.getElementById('layout-select').addEventListener('change', function() {
+        switchLayout(this.value);
       });
 
       console.log('Structural View ready. Enter a model path and click Load.');
