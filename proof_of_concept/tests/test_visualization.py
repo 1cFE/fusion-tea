@@ -184,3 +184,135 @@ def test_load_model_invalid_path():
 
     with pytest.raises(ValueError, match="not found"):
         load_model("/nonexistent/path")
+
+
+# =============================================================================
+# Phase 5: Cost Extraction (POC Item 5)
+# =============================================================================
+
+
+@pytest.fixture
+def extracted_result_with_costs():
+    """Run extraction with cost attributes enabled."""
+    from proof_of_concept.extraction.visualization import extract_structural_view
+
+    import syside
+
+    files = syside.collect_files_recursively(str(MODEL_DIR))
+    model, _ = syside.try_load_model(files)
+
+    return extract_structural_view(
+        model,
+        root="coffee_maker",
+        include_cost_attributes=[
+            "capital_cost",
+            "raw_material_cost",
+            "fabrication_cost",
+            "installation_cost",
+            "idiot_index",
+        ],
+        model_path=MODEL_DIR,
+    )
+
+
+def test_costs_field_present(extracted_result_with_costs):
+    """Nodes have costs field when cost extraction enabled."""
+    for node in extracted_result_with_costs["nodes"]:
+        assert "costs" in node
+
+
+def test_root_has_all_cost_attributes(extracted_result_with_costs):
+    """Root node has all requested cost attributes."""
+    root = next(
+        n for n in extracted_result_with_costs["nodes"] if n["id"] == "coffee_maker"
+    )
+    costs = root.get("costs", {})
+
+    expected_attrs = {
+        "capital_cost",
+        "raw_material_cost",
+        "fabrication_cost",
+        "installation_cost",
+        "idiot_index",
+    }
+    assert set(costs.keys()) == expected_attrs
+
+
+def test_cost_values_are_numeric(extracted_result_with_costs):
+    """All cost values are floats."""
+    for node in extracted_result_with_costs["nodes"]:
+        costs = node.get("costs")
+        if costs:
+            for value in costs.values():
+                assert isinstance(value, (int, float))
+
+
+def test_to_cytoscape_includes_costs(extracted_result_with_costs):
+    """to_cytoscape passes through cost data."""
+    from proof_of_concept.extraction.visualization import to_cytoscape
+
+    result = to_cytoscape(extracted_result_with_costs)
+
+    # Find root element
+    root_el = next(
+        el for el in result["elements"] if el["data"]["id"] == "coffee_maker"
+    )
+
+    assert "costs" in root_el["data"]
+    assert "capital_cost" in root_el["data"]  # Flattened for Cytoscape access
+
+
+def test_backward_compatible_no_costs():
+    """Extraction without cost attributes still works."""
+    from proof_of_concept.extraction.visualization import extract_structural_view
+
+    import syside
+
+    files = syside.collect_files_recursively(str(MODEL_DIR))
+    model, _ = syside.try_load_model(files)
+
+    result = extract_structural_view(model, root="coffee_maker")
+
+    # Should work, costs field should be None
+    assert len(result["nodes"]) == 10
+    for node in result["nodes"]:
+        assert node.get("costs") is None
+
+
+# =============================================================================
+# Phase 3: Golden Reference with Costs
+# =============================================================================
+
+GOLDEN_REF_COSTS = (
+    Path(__file__).parent.parent / "golden_references" / "coffee_maker_with_costs.json"
+)
+
+
+@pytest.fixture
+def golden_reference_with_costs():
+    """Load golden reference with costs."""
+    with open(GOLDEN_REF_COSTS) as f:
+        return json.load(f)
+
+
+def test_costs_match_golden_reference(extracted_result_with_costs, golden_reference_with_costs):
+    """Extracted costs match golden reference values within tolerance."""
+    # Build lookup by ID for golden reference
+    golden_by_id = {n["id"]: n for n in golden_reference_with_costs["nodes"]}
+
+    for extracted_node in extracted_result_with_costs["nodes"]:
+        node_id = extracted_node["id"]
+        assert node_id in golden_by_id, f"Node {node_id} not in golden reference"
+
+        golden_node = golden_by_id[node_id]
+        golden_costs = golden_node.get("costs", {})
+        extracted_costs = extracted_node.get("costs", {})
+
+        assert extracted_costs is not None, f"Node {node_id} missing costs"
+
+        for attr, expected_value in golden_costs.items():
+            actual_value = extracted_costs.get(attr)
+            assert actual_value is not None, f"{node_id}.{attr} missing"
+            assert abs(actual_value - expected_value) < 0.02, (
+                f"{node_id}.{attr}: expected {expected_value}, got {actual_value}"
+            )

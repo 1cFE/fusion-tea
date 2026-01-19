@@ -13,6 +13,15 @@ app = FastAPI(title="SysML Structural View")
 # Static files directory (relative to this file)
 STATIC_DIR = Path(__file__).parent / "static"
 
+# Default cost attributes to extract (for coffee maker demo)
+DEFAULT_COST_ATTRIBUTES = [
+    "capital_cost",
+    "raw_material_cost",
+    "fabrication_cost",
+    "installation_cost",
+    "idiot_index",
+]
+
 
 @app.get("/api/model/{path:path}")
 def get_model_view(path: str) -> dict:
@@ -32,7 +41,11 @@ def get_model_view(path: str) -> dict:
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
 
-    view_result = extract_structural_view(model)
+    view_result = extract_structural_view(
+        model,
+        include_cost_attributes=DEFAULT_COST_ATTRIBUTES,
+        model_path=path,
+    )
 
     # Check for extraction errors in metadata
     if view_result.get("metadata", {}).get("error"):

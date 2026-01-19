@@ -32,6 +32,7 @@ class _ExtractionConfig:
     max_depth: int
     include_multiplicity: bool
     exclude_stdlib: bool
+    cost_data: dict[str, dict[str, float]] | None = None  # path -> cost attrs
 
 
 def _find_root_part(model, root_name: str | None):
@@ -258,6 +259,11 @@ def _extract_node(
     if config.include_multiplicity:
         multiplicity = _get_multiplicity(element)
 
+    # Get costs from pre-computed cost data if available
+    costs = None
+    if config.cost_data and node_id in config.cost_data:
+        costs = config.cost_data[node_id]
+
     # Create node
     node = StructuralNode(
         id=node_id,
@@ -267,6 +273,7 @@ def _extract_node(
         parent=parent_path,
         depth=depth,
         multiplicity=multiplicity,
+        costs=costs,
     )
     nodes.append(node)
 
@@ -302,6 +309,8 @@ def extract_structural_view(
     max_depth: int = 10,
     include_multiplicity: bool = True,
     exclude_stdlib: bool = True,
+    include_cost_attributes: list[str] | None = None,
+    model_path: str | Path | None = None,
 ) -> StructuralViewResult:
     """Extract structural (containment) view from SysML model.
 
@@ -311,6 +320,10 @@ def extract_structural_view(
         max_depth: Maximum hierarchy depth to traverse
         include_multiplicity: Whether to include multiplicity info
         exclude_stdlib: Whether to filter out standard library elements
+        include_cost_attributes: List of cost attribute names to extract (e.g.,
+            ["capital_cost", "raw_material_cost"]). If None, costs not extracted.
+        model_path: Path to model directory, required if include_cost_attributes
+            is specified. Used to compute cost values.
 
     Returns:
         StructuralViewResult with nodes, edges, and metadata
@@ -319,10 +332,34 @@ def extract_structural_view(
     edges: list[ContainmentEdge] = []
     visited: set[str] = set()
 
+    # Compute cost data if requested
+    cost_data = None
+    if include_cost_attributes and model_path:
+        try:
+            import sys
+
+            # Add model path to sys.path for import
+            model_path = Path(model_path)
+            sys.path.insert(0, str(model_path))
+            try:
+                from generate_costs import compute_costs
+
+                cost_data = compute_costs(str(model_path))
+            finally:
+                sys.path.pop(0)
+        except ImportError:
+            logger.warning(
+                "Could not import generate_costs module from %s, skipping cost extraction",
+                model_path,
+            )
+        except Exception as e:
+            logger.warning("Failed to compute costs: %s", e)
+
     config = _ExtractionConfig(
         max_depth=max_depth,
         include_multiplicity=include_multiplicity,
         exclude_stdlib=exclude_stdlib,
+        cost_data=cost_data,
     )
 
     # Find root element
@@ -437,26 +474,33 @@ def to_cytoscape(view_result: StructuralViewResult) -> dict:
 
     Returns:
         Dict with "elements" key containing list of node data objects.
-        Each node has: id, label, name, type_name, element_type, parent, depth, multiplicity.
+        Each node has: id, label, name, type_name, element_type, parent, depth,
+        multiplicity, costs (if present), plus flattened cost attributes.
         No edges are included (Cytoscape uses parent property for hierarchy).
     """
     elements = []
 
     for node in view_result["nodes"]:
-        elements.append(
-            {
-                "data": {
-                    "id": node["id"],
-                    "label": _format_label(node["name"], node.get("multiplicity")),
-                    "name": node["name"],
-                    "type_name": node["type_name"],
-                    "element_type": node["element_type"],
-                    "parent": node["parent"],
-                    "depth": node["depth"],
-                    "multiplicity": node.get("multiplicity"),
-                }
-            }
-        )
+        data = {
+            "id": node["id"],
+            "label": _format_label(node["name"], node.get("multiplicity")),
+            "name": node["name"],
+            "type_name": node["type_name"],
+            "element_type": node["element_type"],
+            "parent": node["parent"],
+            "depth": node["depth"],
+            "multiplicity": node.get("multiplicity"),
+        }
+
+        # Add cost fields if present
+        costs = node.get("costs")
+        if costs:
+            data["costs"] = costs
+            # Flatten cost attributes for Cytoscape mapData access
+            for attr_name, value in costs.items():
+                data[attr_name] = value
+
+        elements.append({"data": data})
 
     return {"elements": elements}
 

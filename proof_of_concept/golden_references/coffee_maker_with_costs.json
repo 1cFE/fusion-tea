@@ -1,0 +1,226 @@
+{
+  "nodes": [
+    {
+      "id": "coffee_maker",
+      "name": "coffee_maker",
+      "type_name": "Coffee Maker",
+      "element_type": "part",
+      "parent": null,
+      "depth": 0,
+      "multiplicity": null,
+      "costs": {
+        "capital_cost": 113.96,
+        "raw_material_cost": 68.44,
+        "fabrication_cost": 37.03,
+        "installation_cost": 7.53,
+        "idiot_index": 1.67
+      }
+    },
+    {
+      "id": "coffee_maker.brewing",
+      "name": "brewing",
+      "type_name": "Brewing System",
+      "element_type": "part",
+      "parent": "coffee_maker",
+      "depth": 1,
+      "multiplicity": null,
+      "costs": {
+        "capital_cost": 55.35,
+        "raw_material_cost": 32.34,
+        "fabrication_cost": 18.45,
+        "installation_cost": 3.60,
+        "idiot_index": 1.71
+      }
+    },
+    {
+      "id": "coffee_maker.brewing.heater",
+      "name": "heater",
+      "type_name": "Heating Element",
+      "element_type": "part",
+      "parent": "coffee_maker.brewing",
+      "depth": 2,
+      "multiplicity": [2, 2],
+      "costs": {
+        "capital_cost": 26.25,
+        "raw_material_cost": 15.00,
+        "fabrication_cost": 9.00,
+        "installation_cost": 2.25,
+        "idiot_index": 1.75
+      }
+    },
+    {
+      "id": "coffee_maker.brewing.pump",
+      "name": "pump",
+      "type_name": "Water Pump",
+      "element_type": "part",
+      "parent": "coffee_maker.brewing",
+      "depth": 2,
+      "multiplicity": null,
+      "costs": {
+        "capital_cost": 17.10,
+        "raw_material_cost": 9.00,
+        "fabrication_cost": 7.20,
+        "installation_cost": 0.90,
+        "idiot_index": 1.90
+      }
+    },
+    {
+      "id": "coffee_maker.brewing.chamber",
+      "name": "chamber",
+      "type_name": "Brew Chamber",
+      "element_type": "part",
+      "parent": "coffee_maker.brewing",
+      "depth": 2,
+      "multiplicity": null,
+      "costs": {
+        "capital_cost": 7.20,
+        "raw_material_cost": 4.50,
+        "fabrication_cost": 2.25,
+        "installation_cost": 0.45,
+        "idiot_index": 1.60
+      }
+    },
+    {
+      "id": "coffee_maker.reservoir",
+      "name": "reservoir",
+      "type_name": "Water Reservoir",
+      "element_type": "part",
+      "parent": "coffee_maker",
+      "depth": 1,
+      "multiplicity": null,
+      "costs": {
+        "capital_cost": 11.25,
+        "raw_material_cost": 7.50,
+        "fabrication_cost": 3.00,
+        "installation_cost": 0.75,
+        "idiot_index": 1.50
+      }
+    },
+    {
+      "id": "coffee_maker.carafe",
+      "name": "carafe",
+      "type_name": "Carafe",
+      "element_type": "part",
+      "parent": "coffee_maker",
+      "depth": 1,
+      "multiplicity": null,
+      "costs": {
+        "capital_cost": 12.96,
+        "raw_material_cost": 9.60,
+        "fabrication_cost": 2.88,
+        "installation_cost": 0.48,
+        "idiot_index": 1.35
+      }
+    },
+    {
+      "id": "coffee_maker.housing",
+      "name": "housing",
+      "type_name": "Housing",
+      "element_type": "part",
+      "parent": "coffee_maker",
+      "depth": 1,
+      "multiplicity": null,
+      "costs": {
+        "capital_cost": 34.40,
+        "raw_material_cost": 19.00,
+        "fabrication_cost": 12.70,
+        "installation_cost": 2.70,
+        "idiot_index": 1.81
+      }
+    },
+    {
+      "id": "coffee_maker.housing.shell",
+      "name": "shell",
+      "type_name": "Outer Shell",
+      "element_type": "part",
+      "parent": "coffee_maker.housing",
+      "depth": 2,
+      "multiplicity": null,
+      "costs": {
+        "capital_cost": 4.80,
+        "raw_material_cost": 3.00,
+        "fabrication_cost": 1.50,
+        "installation_cost": 0.30,
+        "idiot_index": 1.60
+      }
+    },
+    {
+      "id": "coffee_maker.housing.panel",
+      "name": "panel",
+      "type_name": "Control Panel",
+      "element_type": "part",
+      "parent": "coffee_maker.housing",
+      "depth": 2,
+      "multiplicity": null,
+      "costs": {
+        "capital_cost": 29.60,
+        "raw_material_cost": 16.00,
+        "fabrication_cost": 11.20,
+        "installation_cost": 2.40,
+        "idiot_index": 1.85
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "coffee_maker->coffee_maker.brewing",
+      "source": "coffee_maker",
+      "target": "coffee_maker.brewing",
+      "edge_type": "containment"
+    },
+    {
+      "id": "coffee_maker.brewing->coffee_maker.brewing.heater",
+      "source": "coffee_maker.brewing",
+      "target": "coffee_maker.brewing.heater",
+      "edge_type": "containment"
+    },
+    {
+      "id": "coffee_maker.brewing->coffee_maker.brewing.pump",
+      "source": "coffee_maker.brewing",
+      "target": "coffee_maker.brewing.pump",
+      "edge_type": "containment"
+    },
+    {
+      "id": "coffee_maker.brewing->coffee_maker.brewing.chamber",
+      "source": "coffee_maker.brewing",
+      "target": "coffee_maker.brewing.chamber",
+      "edge_type": "containment"
+    },
+    {
+      "id": "coffee_maker->coffee_maker.reservoir",
+      "source": "coffee_maker",
+      "target": "coffee_maker.reservoir",
+      "edge_type": "containment"
+    },
+    {
+      "id": "coffee_maker->coffee_maker.carafe",
+      "source": "coffee_maker",
+      "target": "coffee_maker.carafe",
+      "edge_type": "containment"
+    },
+    {
+      "id": "coffee_maker->coffee_maker.housing",
+      "source": "coffee_maker",
+      "target": "coffee_maker.housing",
+      "edge_type": "containment"
+    },
+    {
+      "id": "coffee_maker.housing->coffee_maker.housing.shell",
+      "source": "coffee_maker.housing",
+      "target": "coffee_maker.housing.shell",
+      "edge_type": "containment"
+    },
+    {
+      "id": "coffee_maker.housing->coffee_maker.housing.panel",
+      "source": "coffee_maker.housing",
+      "target": "coffee_maker.housing.panel",
+      "edge_type": "containment"
+    }
+  ],
+  "metadata": {
+    "view": "structural",
+    "root": "coffee_maker",
+    "total_nodes": 10,
+    "max_depth": 2
+  }
+}

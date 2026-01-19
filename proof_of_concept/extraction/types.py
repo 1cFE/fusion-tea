@@ -57,6 +57,7 @@ class StructuralNode(TypedDict):
         parent: Parent node ID (qualified path) or None for root
         depth: Hierarchy depth (0 = root)
         multiplicity: [lower, upper] bounds or None
+        costs: Dict mapping cost attribute names to values, or None if not extracted
     """
 
     id: str
@@ -66,6 +67,7 @@ class StructuralNode(TypedDict):
     parent: str | None
     depth: int
     multiplicity: list[int] | None
+    costs: dict[str, float] | None
 
 
 class ContainmentEdge(TypedDict):

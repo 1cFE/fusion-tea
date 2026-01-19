@@ -1063,10 +1063,10 @@ def _evaluate_expression(expr: Any, values: dict[str, float]) -> float:
 # ============================================================
 
 
-def compute_costs(
+def _compute_part_hierarchy_costs(
     root: PartInstance, calc_defs: dict[str, CalcDefInfo], verbose: bool = False
 ) -> list[CostResult]:
-    """Compute costs for all parts in hierarchy.
+    """Compute costs for all parts in hierarchy (internal function).
 
     Returns:
         List of CostResult in pre-order (parent, children, allocation)
@@ -1299,6 +1299,87 @@ def _emit_preorder(
 
 
 # ============================================================
+# PUBLIC API
+# ============================================================
+
+
+def compute_costs(model_path: str, verbose: bool = False) -> dict[str, dict[str, float]]:
+    """Compute costs for all parts in a SysML model.
+
+    This is the main entry point for programmatic cost extraction. It loads
+    the model, evaluates all cost calculations, and returns a dict mapping
+    qualified paths to cost attribute dicts.
+
+    Args:
+        model_path: Path to SysML model directory
+        verbose: Enable verbose output
+
+    Returns:
+        Dict mapping qualified paths (e.g., "coffee_maker.brewing.heater") to
+        cost dicts with keys: capital_cost, raw_material_cost, fabrication_cost,
+        installation_cost, idiot_index.
+
+    Raises:
+        ImportError: If agentic-mbse is not installed
+        ValueError: If model cannot be loaded or has errors
+    """
+    from pathlib import Path
+
+    from agentic_mbse.sysml.syside_adapter import SysideAdapter
+
+    model_dir = Path(model_path)
+    if not model_dir.exists():
+        raise ValueError(f"Model directory does not exist: {model_dir}")
+
+    # Load model
+    model, diagnostics = SysideAdapter.load_model([model_dir])
+
+    # Check for parse errors
+    if diagnostics and hasattr(diagnostics, "messages"):
+        errors = [
+            m
+            for m in diagnostics.messages
+            if hasattr(m, "severity") and "Error" in str(m.severity)
+        ]
+        if errors:
+            error_msgs = [f"{m.severity}: {m.message}" for m in errors[:5]]
+            raise ValueError(f"Model has parse errors: {'; '.join(error_msgs)}")
+
+    # Extract calc definitions
+    calc_defs = extract_calc_defs(model, SysideAdapter, verbose)
+
+    # Map part defs to calcs
+    part_def_to_calc = map_part_defs_to_calcs(model, SysideAdapter)
+
+    # Extract design hierarchy
+    root = extract_design_hierarchy(
+        model, SysideAdapter, calc_defs, part_def_to_calc, verbose
+    )
+    if root is None:
+        raise ValueError("Failed to extract design hierarchy")
+
+    # Compute costs
+    results = _compute_part_hierarchy_costs(root, calc_defs, verbose)
+
+    # Convert to output format: path -> {cost_attr: value}
+    output: dict[str, dict[str, float]] = {}
+    for result in results:
+        # Skip allocation entries for the output dict (they're included in assembly totals)
+        if result.cost_type == "allocation":
+            continue
+
+        output[result.path] = {
+            "capital_cost": result.total_cost,
+            "raw_material_cost": result.total_material_cost,
+            "fabrication_cost": result.total_fab_cost,
+            "installation_cost": result.total_install_cost,
+            "idiot_index": result.idiot_index,
+        }
+
+    return output
+
+
+# ============================================================
 # OUTPUT GENERATOR
 # ============================================================
 
@@ -1516,7 +1597,7 @@ def main() -> int:
 
     # Phase 4: Compute costs
     print("Computing costs...")
-    results = compute_costs(root, calc_defs, verbose)
+    results = _compute_part_hierarchy_costs(root, calc_defs, verbose)
     print(f"  Computed costs for {len(results)} parts")
 
     # Phase 5: Write output
