@@ -3,7 +3,7 @@
 **Epic ID**: EPIC-001
 **Priority**: P0 (Critical - enables stakeholder feedback)
 **Total Effort**: 5 days
-**Status**: In Progress
+**Status**: Complete
 
 ---
 
@@ -169,23 +169,33 @@ Build a proof-of-concept visualization pipeline to de-risk the technical approac
 
 **Scope**:
 1. Update `extract_structural_view()` with `include_cost_attributes` parameter
-2. Update Cytoscape styling to show costs in tooltips or labels
+2. Update Cytoscape styling to show costs in info panel + "Color by Cost" toggle
 3. Create `golden_references/coffee_maker_with_costs.json`
 4. Update tests for cost extraction
-5. Create demo script/recording showing the workflow
+5. Demo: load coffee maker model and see costs immediately
 
 **Out of Scope**:
 - Cost rollup visualization (edges)
 - Dependency tracing
 
 **Success Criteria**:
-- [ ] Cost values appear on nodes (tooltip or label)
-- [ ] Golden reference with costs matches extraction
-- [ ] Demo is ready for stakeholder review
+- [x] Cost values appear in info panel when node selected
+- [x] "Color by Cost" toggle applies gradient styling
+- [x] Golden reference with costs matches extraction (23 tests pass)
+- [x] Demo-ready: load coffee maker and see costs immediately
 
+**Status**: Complete (2026-01-19)
 **Dependencies**: Item 4 (web integration working)
-**Deliverables**: Updated `visualization.py`, cost golden reference, demo materials
+**Deliverables**:
+- `models/tests/coffee_maker/generate_costs.py` - Added `compute_costs()` API
+- `proof_of_concept/extraction/types.py` - Added `costs` field to `StructuralNode`
+- `proof_of_concept/extraction/visualization.py` - Added cost extraction + Cytoscape passthrough
+- `proof_of_concept/web/server.py` - Passes `DEFAULT_COST_ATTRIBUTES` to extraction
+- `proof_of_concept/web/static/index.html` - Info panel costs + "Color by Cost" toggle
+- `proof_of_concept/golden_references/coffee_maker_with_costs.json` - Golden reference with costs
+- `proof_of_concept/tests/test_visualization.py` - 6 new cost tests (23 total)
 **Reference**: Sprint Plan - Day 5 (lines 360-380)
+**Spec/Design/Plan**: `.project/active/cost-annotations/`
 
 ---
 

@@ -1,6 +1,6 @@
 # Spec: Cost Annotations + Polish
 
-**Status:** Draft
+**Status:** Complete
 **Owner:** Reid Westwood
 **Created:** 2026-01-19 00:51:42 UTC
 **Complexity:** MEDIUM
@@ -16,10 +16,10 @@ This is the final item of the visualization POC sprint. It demonstrates the core
 
 ### Success Criteria
 
-- [ ] Cost values appear in the info panel when clicking a node
-- [ ] Nodes can be styled (sized or colored) by total cost
-- [ ] Golden reference with costs matches extraction output
-- [ ] Demo-ready: load coffee maker and see costs immediately
+- [x] Cost values appear in the info panel when clicking a node
+- [x] Nodes can be styled (sized or colored) by total cost
+- [x] Golden reference with costs matches extraction output
+- [x] Demo-ready: load coffee maker and see costs immediately
 
 ### Priority
 
@@ -113,17 +113,17 @@ Users can load a SysML model with cost attributes and immediately see:
 
 ### Core Functionality
 
-- [ ] Load `models/tests/coffee_maker` with cost attributes enabled
-- [ ] Click on `heater` node → info panel shows capital_cost, raw_material_cost, fabrication_cost, installation_cost, idiot_index
-- [ ] Click on `coffee_maker` root node → info panel shows aggregated costs
-- [ ] Toggle "style by cost" → nodes visually differentiate by capital_cost
-- [ ] Run `pytest proof_of_concept/tests/` → all tests pass including new cost tests
+- [x] Load `models/tests/coffee_maker` with cost attributes enabled
+- [x] Click on `heater` node → info panel shows capital_cost, raw_material_cost, fabrication_cost, installation_cost, idiot_index
+- [x] Click on `coffee_maker` root node → info panel shows aggregated costs
+- [x] Toggle "style by cost" → nodes visually differentiate by capital_cost
+- [x] Run `pytest proof_of_concept/tests/` → all tests pass including new cost tests (23 pass)
 
 ### Quality & Integration
 
-- [ ] Existing tests continue to pass
-- [ ] Golden reference `coffee_maker_with_costs.json` validates extraction
-- [ ] No console errors in browser when loading model
+- [x] Existing tests continue to pass
+- [x] Golden reference `coffee_maker_with_costs.json` validates extraction
+- [x] No console errors in browser when loading model
 
 ---
 
