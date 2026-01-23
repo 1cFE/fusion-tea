@@ -2,18 +2,100 @@
 
 SysML v2 models of nuclear fusion power plants for techno-economic analysis (LCOE estimation).
 
-## Quick Start
+## Getting Started
+
+This project uses several local dependencies that must be cloned and set up before use.
+
+### Prerequisites
+
+1. **uv** - Python package manager ([install guide](https://docs.astral.sh/uv/getting-started/installation/))
+   ```bash
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   ```
+
+2. **Syside License** - Required for SysML parsing and validation
+   - Obtain a Modeler license from [Sensmetry](https://sensmetry.com/syside/) or contact syside@sensmetry.com
+   - See [docs/SYSIDE_README.md](docs/SYSIDE_README.md) for full setup instructions
+
+3. **Claude Code** - AI-assisted modeling workflow (optional but recommended)
+   - [Install Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code)
+
+### Repository Setup
+
+This project depends on three sibling repositories. Clone them all into the same parent directory:
 
 ```bash
-# Install agentic-mbse (if not already installed)
-pip install agentic-mbse
+# Create workspace directory
+mkdir -p ~/1cfe && cd ~/1cfe
 
-# Initialize project (creates commands, templates, validation)
-agentic-mbse init
-
-# Run onboarding to configure your project
-/onboard
+# Clone all required repositories
+git clone git@github.com:1cFE/fusion-tea.git
+git clone git@github.com:1cFE/agentic-mbse.git
+git clone git@github.com:1cFE/sysml-codegen.git
+git clone git@github.com:rwestwood89/teax.git
 ```
+
+Your directory structure should look like:
+```
+~/1cfe/
+├── fusion-tea/        # This project
+├── agentic-mbse/      # MBSE toolkit & Claude commands
+├── sysml-codegen/     # SysML to Python code generation
+└── teax/              # TEAx simulation framework
+```
+
+### Environment Setup
+
+Run all commands below from inside `~/1cfe/fusion-tea`:
+
+```bash
+cd ~/1cfe/fusion-tea
+```
+
+1. **Create `.env` file** with your Syside license key:
+   ```bash
+   cd fusion-tea
+   echo 'SYSIDE_LICENSE_KEY="YOUR-LICENSE-KEY-HERE"' > .env
+   ```
+
+2. **Install Python dependencies**:
+   ```bash
+   uv sync
+   ```
+
+3. **Set up agentic-mbse** (creates Claude Code commands and agents):
+   ```bash
+   uv run agentic-mbse init --dev
+   ```
+
+   This creates symlinks for:
+   - `.claude/commands/` - MBSE workflow slash commands
+   - `.claude/agents/` - Specialized SysML/KerML agents
+   - `.claude/skills/` - Skills like `/record-learning`
+   - `modeling_pm/MODELING_GUIDE.md` - SysML syntax reference
+   - `modeling_pm/MODELING_PROCESS.md` - MBSE methodology
+
+4. **Verify installation**:
+   ```bash
+   # Check syside works
+   uv run syside --version
+
+   # Check agentic-mbse works
+   uv run agentic-mbse --help
+
+   # Validate existing models
+   uv run agentic-mbse validate models/
+   ```
+
+### VS Code Setup (Recommended)
+
+For the best editing experience, install the Syside VS Code extension:
+
+1. Open VS Code Extensions (`Ctrl+Shift+X`)
+2. Search for "Syside Modeler" by Sensmetry
+3. Install and enter your license key when prompted
+
+See [docs/SYSIDE_README.md](docs/SYSIDE_README.md) for detailed instructions.
 
 ---
 
@@ -59,14 +141,11 @@ Each document has **one clear purpose**:
 ### CLI Commands
 
 ```bash
-# Initialize a new project
-agentic-mbse init [path]
-
 # Validate SysML models (8-level quality checks)
-agentic-mbse validate [models/]
+uv run agentic-mbse validate models/
 
-# Just install/update slash commands
-agentic-mbse install-commands [--force]
+# Update slash commands (after agentic-mbse updates)
+uv run agentic-mbse install-commands --force
 ```
 
 ### Slash Commands (in Claude Code)
@@ -101,13 +180,13 @@ Models are validated at 8 levels:
 
 ```bash
 # Run all validation
-agentic-mbse validate models/
+uv run agentic-mbse validate models/
 
 # Run specific level
-agentic-mbse validate --level=3 models/
+uv run agentic-mbse validate --level=3 models/
 
 # Continue past failures
-agentic-mbse validate --complete models/
+uv run agentic-mbse validate --complete models/
 ```
 
 ---
@@ -147,11 +226,13 @@ fusion-tea/
 ├── models/                  # SysML v2 model files
 │   ├── library/             # Reusable definitions
 │   └── designs/             # Specific fusion concept instances
-├── modeling_pm/                 # Project documentation
+├── modeling_pm/             # Project documentation
 │   ├── OVERVIEW.md          # Project status and goals
 │   ├── MODELING_GUIDE.md    # SysML syntax reference
 │   ├── MODELING_PROCESS.md  # MBSE methodology
 │   └── backlog/             # Work items
+├── docs/                    # Additional documentation
+│   └── SYSIDE_README.md     # SysIDE setup guide
 ├── SOURCE_INDEX.md          # Domain knowledge sources (PyFECONS)
 ├── CLAUDE.md                # Context for Claude Code
 └── README.md                # This file
@@ -209,10 +290,35 @@ part my_component : 'Component Name' {
 
 ---
 
+## Troubleshooting
+
+### "Command not found: agentic-mbse"
+Make sure you're using `uv run`:
+```bash
+uv run agentic-mbse validate models/
+```
+
+### Missing slash commands in Claude Code
+Re-run the init command:
+```bash
+uv run agentic-mbse init --dev
+```
+
+### Syside license errors
+1. Check your `.env` file exists and has the correct key
+2. For VS Code, re-enter your license via Command Palette: "Syside Modeler: Add Syside license key to keyring"
+
+### Dependency errors on `uv sync`
+Ensure all sibling repos are cloned to the correct locations (see Repository Setup above).
+
+---
+
 ## Resources
 
+- [SysIDE Setup Guide](docs/SYSIDE_README.md)
 - [MBSE Workflow](modeling_pm/MODELING_PROCESS.md)
 - [SysML Patterns](modeling_pm/MODELING_GUIDE.md)
 - [Domain Sources](SOURCE_INDEX.md)
 - [Project Status](modeling_pm/OVERVIEW.md)
 - [Work Items](modeling_pm/backlog/BACKLOG.md)
+- [Sensmetry Syside Documentation](https://docs.sensmetry.com/)
