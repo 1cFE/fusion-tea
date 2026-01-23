@@ -214,8 +214,8 @@ CoffeeMaker (assembly)
 **Exit criteria**: Spec is clear enough to implement without ambiguity.
 
 **Completed**: 2026-01-12. Deliverables:
-- `project/backlog/sysml-codegen-upgrade.md` — Technical handoff for sysml-codegen team
-- `project/docs/COST_MODELING.md` — Final modeling guide codifying all patterns
+- `modeling_pm/backlog/sysml-codegen-upgrade.md` — Technical handoff for sysml-codegen team
+- `modeling_pm/docs/COST_MODELING.md` — Final modeling guide codifying all patterns
 
 ---
 
@@ -279,8 +279,8 @@ part def 'Brewing System' :> 'Costed Component' {
 ```
 
 See research reports:
-- `project/research/20260112-055807_multiplicity-cost-rollup-gap.md`
-- `project/research/20260112-061548_sysmlv2-discovery-reflection.md`
+- `modeling_pm/research/20260112-055807_multiplicity-cost-rollup-gap.md`
+- `modeling_pm/research/20260112-061548_sysmlv2-discovery-reflection.md`
 
 ### Validated Patterns
 
@@ -318,7 +318,7 @@ abstract function product { in collection: NumericalValue[0..*]; return : Numeri
 | Stage 1: Demo Model | `models/tests/coffee_maker/library.sysml`, `design.sysml`, `validate_ast.py` |
 | Stage 2: Output Format | `models/tests/coffee_maker/expected_output.csv` (14 columns, 12 rows) |
 | Stage 3: Iteration | `models/tests/coffee_maker/generate_costs.py` (1550 lines, full evaluation) |
-| Stage 4: Specification | `project/backlog/sysml-codegen-upgrade.md`, `project/docs/COST_MODELING.md` |
+| Stage 4: Specification | `modeling_pm/backlog/sysml-codegen-upgrade.md`, `modeling_pm/docs/COST_MODELING.md` |
 
 **Success criteria met**:
 - ✓ Model compiles (`syside check` passes)
@@ -332,7 +332,7 @@ abstract function product { in collection: NumericalValue[0..*]; return : Numeri
 - Dot notation binding `:>> child.attr = value` is cleaner than `part redefines`
 
 **Next steps** (out of scope for this epic):
-- Implement sysml-codegen upgrade per `project/backlog/sysml-codegen-upgrade.md`
+- Implement sysml-codegen upgrade per `modeling_pm/backlog/sysml-codegen-upgrade.md`
 - Apply patterns to fusion plant models
 - Add agentic-mbse enforcement rules
 

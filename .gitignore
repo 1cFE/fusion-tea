@@ -15,5 +15,5 @@ wheels/
 .claude/agents/
 .claude/skills/
 .claude/hooks/
-project/MODELING_GUIDE.md
-project/MODELING_PROCESS.md
+modeling_pm/MODELING_GUIDE.md
+modeling_pm/MODELING_PROCESS.md

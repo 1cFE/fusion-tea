@@ -858,6 +858,6 @@ System Cost → LCOE
 
 **Last Updated**: 2026-01-10
 **Related Research**:
-- `project/research/20260106-065431_cost-architecture-patterns.md`
-- `project/research/20260107-final-cost-architecture.md`
-- `project/research/NEXT_cost-architecture-patterns.md`
+- `modeling_pm/research/20260106-065431_cost-architecture-patterns.md`
+- `modeling_pm/research/20260107-final-cost-architecture.md`
+- `modeling_pm/research/NEXT_cost-architecture-patterns.md`

@@ -1683,9 +1683,9 @@ Typical range: 2.5-4.0 for complex engineered systems
 ## References
 
 ### Prior Research (This Project)
-- `project/research/20260107-final-cost-architecture.md` - Nested cost model architecture
-- `project/research/20260106-065431_cost-architecture-patterns.md` - Initial patterns
-- `project/research/20260110-mbse-cost-modeling-best-practices.md` - Industry survey
+- `modeling_pm/research/20260107-final-cost-architecture.md` - Nested cost model architecture
+- `modeling_pm/research/20260106-065431_cost-architecture-patterns.md` - Initial patterns
+- `modeling_pm/research/20260110-mbse-cost-modeling-best-practices.md` - Industry survey
 
 ### External Sources
 - PyFECONS `/home/reid/PyFECONS` - CAS structure, cost formulas

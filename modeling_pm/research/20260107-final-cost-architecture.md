@@ -1142,9 +1142,9 @@ calc def LCOECalculation {
 ## References
 
 **Prior Research**:
-- `project/research/20260106-050051_cost-modeling-lcoe-strategy.md`
-- `project/research/20260106-065431_cost-architecture-patterns.md`
-- `project/research/NEXT_cost-architecture-patterns.md`
+- `modeling_pm/research/20260106-050051_cost-modeling-lcoe-strategy.md`
+- `modeling_pm/research/20260106-065431_cost-architecture-patterns.md`
+- `modeling_pm/research/NEXT_cost-architecture-patterns.md`
 
 **Test Models**:
 - `models/tests/case1_calc_def_in_partdef.sysml` - Nested calc def pattern

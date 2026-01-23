@@ -84,7 +84,7 @@ Update the coffee_maker test models to use explicit types with `redefines` synta
 ### In Scope
 - Update `models/tests/coffee_maker/design.sysml` with explicit types on 4 redefinitions
 - Verify parsing and visualization
-- Update `project/MODELING_GUIDE.md` with pattern guidance (conditional on success)
+- Update `modeling_pm/MODELING_GUIDE.md` with pattern guidance (conditional on success)
 
 ### Out of Scope
 - Changes to `library.sysml` (no changes needed)
@@ -131,7 +131,7 @@ Update the coffee_maker test models to use explicit types with `redefines` synta
 ## Traceability
 
 ### Source Requirements
-- Research: `project/research/20260116-170015_sysmlv2-redefines-semantics-visualization.md`
+- Research: `modeling_pm/research/20260116-170015_sysmlv2-redefines-semantics-visualization.md`
 - KerML Spec: Section 7.3.4.5 (Redefinition allows combining with explicit typing)
 
 ### Downstream Impacts
@@ -159,8 +159,8 @@ Update the coffee_maker test models to use explicit types with `redefines` synta
 - Keep the explicit types in the test model (no harm, slightly more self-documenting) but don't establish as required convention
 
 ## Related Artifacts
-**Research**: `project/research/20260116-170015_sysmlv2-redefines-semantics-visualization.md`
-**Visualization Research**: `project/research/20260116-161342_sysml-v2-visualization-tools.md`
+**Research**: `modeling_pm/research/20260116-170015_sysmlv2-redefines-semantics-visualization.md`
+**Visualization Research**: `modeling_pm/research/20260116-161342_sysml-v2-visualization-tools.md`
 **Test Model**: `models/tests/coffee_maker/`
 **Design**: Implementation is simple enough to proceed directly (no separate design needed)
 **Plan**: N/A (single-file change)

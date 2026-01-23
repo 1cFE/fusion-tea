@@ -6,9 +6,9 @@
 **Created:** 2026-01-05
 
 ## Source Documents
-- **Design:** `project/active/phase1-foundation/design.md` - **PRIMARY REFERENCE**
-- **Spec:** `project/active/phase1-foundation/spec.md` - For acceptance criteria
-- **Epic:** `project/backlog/BACKLOG.md` (Phase 1 - Foundation Library)
+- **Design:** `modeling_pm/active/phase1-foundation/design.md` - **PRIMARY REFERENCE**
+- **Spec:** `modeling_pm/active/phase1-foundation/spec.md` - For acceptance criteria
+- **Epic:** `modeling_pm/backlog/BACKLOG.md` (Phase 1 - Foundation Library)
 
 ## Implementation Strategy
 
@@ -344,7 +344,7 @@ syside check models/library/**/*.sysml
 
 ### Acceptance Criteria Checklist
 
-**From spec document (project/active/phase1-foundation/spec.md):**
+**From spec document (modeling_pm/active/phase1-foundation/spec.md):**
 
 - [ ] MR-001: Package `FusionTEA` with nested `Library` and `Designs` packages defined
 - [ ] MR-002: Standard imports (ScalarValues, ISQ, SI) present in foundation
@@ -369,7 +369,7 @@ syside check models/library/**/*.sysml
 
 ### Epic Status Update
 
-**File: `project/backlog/BACKLOG.md`**
+**File: `modeling_pm/backlog/BACKLOG.md`**
 - [ ] Update Phase 1 - Foundation Library status to "Complete"
 - [ ] Note completion date
 

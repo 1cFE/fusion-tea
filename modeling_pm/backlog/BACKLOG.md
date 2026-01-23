@@ -110,11 +110,11 @@ Prioritized list of work epics for the CATF MFE model implementation.
 
 ## Documentation References
 
-- **Project Overview**: `project/OVERVIEW.md`
-- **Modeling Guide**: `project/MODELING_GUIDE.md`
-- **Workflow**: `project/MODELING_PROCESS.md`
+- **Project Overview**: `modeling_pm/OVERVIEW.md`
+- **Modeling Guide**: `modeling_pm/MODELING_GUIDE.md`
+- **Workflow**: `modeling_pm/MODELING_PROCESS.md`
 - **Source Index**: `SOURCE_INDEX.md`
-- **Architecture Research**: `project/research/20260105-103000_catf-mfe-architecture.md`
+- **Architecture Research**: `modeling_pm/research/20260105-103000_catf-mfe-architecture.md`
 
 ---
 

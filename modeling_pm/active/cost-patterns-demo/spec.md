@@ -237,9 +237,9 @@ None - creating new models. The `models/tests/` directory is empty.
 
 ### Source Requirements
 
-- Research: `project/research/20260107-final-cost-architecture.md` - Pattern A architecture
-- Research: `project/research/20260110-strategic-cost-patterns.md` - Standardization decisions, output schema
-- Epic: `project/backlog/epic-cost-patterns-derisking.md` - Stage 1 requirements
+- Research: `modeling_pm/research/20260107-final-cost-architecture.md` - Pattern A architecture
+- Research: `modeling_pm/research/20260110-strategic-cost-patterns.md` - Standardization decisions, output schema
+- Epic: `modeling_pm/backlog/epic-cost-patterns-derisking.md` - Stage 1 requirements
 
 ### Downstream Impacts
 
@@ -275,11 +275,11 @@ CoffeeMaker (assembly)
 
 ## Related Artifacts
 
-**Research**: `project/research/20260107-final-cost-architecture.md`
-**Research**: `project/research/20260110-strategic-cost-patterns.md`
-**Epic**: `project/backlog/epic-cost-patterns-derisking.md`
-**Design**: `project/active/cost-patterns-demo/design.md` (to be created)
-**Plan**: `project/active/cost-patterns-demo/plan.md` (to be created)
+**Research**: `modeling_pm/research/20260107-final-cost-architecture.md`
+**Research**: `modeling_pm/research/20260110-strategic-cost-patterns.md`
+**Epic**: `modeling_pm/backlog/epic-cost-patterns-derisking.md`
+**Design**: `modeling_pm/active/cost-patterns-demo/design.md` (to be created)
+**Plan**: `modeling_pm/active/cost-patterns-demo/plan.md` (to be created)
 
 ---
 **Next Steps**: After approval → `/design-model`

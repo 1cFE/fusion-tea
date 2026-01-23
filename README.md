@@ -30,27 +30,27 @@ Each document has **one clear purpose**:
 | **README.md** | Project overview (this file) | You |
 | **CLAUDE.md** | AI operating rules, environment setup | You |
 | **SOURCE_INDEX.md** | Domain knowledge sources | `/manage-sources` |
-| **project/OVERVIEW.md** | Project status and goals | You |
-| **project/backlog/BACKLOG.md** | Work item pipeline | `/backlog` |
-| **project/MODELING_GUIDE.md** | SysML syntax reference | Static (don't edit) |
-| **project/MODELING_PROCESS.md** | MBSE methodology | Static (don't edit) |
+| **modeling_pm/OVERVIEW.md** | Project status and goals | You |
+| **modeling_pm/backlog/BACKLOG.md** | Work item pipeline | `/backlog` |
+| **modeling_pm/MODELING_GUIDE.md** | SysML syntax reference | Static (don't edit) |
+| **modeling_pm/MODELING_PROCESS.md** | MBSE methodology | Static (don't edit) |
 
 ### What You Edit vs What Commands Manage
 
 **You edit directly:**
 - `README.md` - Project-specific setup instructions
 - `CLAUDE.md` - Environment rules (virtualenv, PYTHONPATH, lint)
-- `project/OVERVIEW.md` - Project status, goals, success criteria
+- `modeling_pm/OVERVIEW.md` - Project status, goals, success criteria
 
 **Commands manage for you:**
 - `SOURCE_INDEX.md` - Use `/manage-sources` to add/remove sources
-- `project/backlog/BACKLOG.md` - Use `/backlog add` and `/backlog clear`
-- `project/active/*` - Created by `/spec-model`, `/design-model`, `/plan-model`
+- `modeling_pm/backlog/BACKLOG.md` - Use `/backlog add` and `/backlog clear`
+- `modeling_pm/active/*` - Created by `/spec-model`, `/design-model`, `/plan-model`
 - `models/**/*.sysml` - Created by `/implement-model`
 
 **Static (from agentic-mbse, don't edit):**
-- `project/MODELING_GUIDE.md` - SysML patterns and syntax
-- `project/MODELING_PROCESS.md` - MBSE methodology and workflow
+- `modeling_pm/MODELING_GUIDE.md` - SysML patterns and syntax
+- `modeling_pm/MODELING_PROCESS.md` - MBSE methodology and workflow
 
 ---
 
@@ -147,7 +147,7 @@ fusion-tea/
 ├── models/                  # SysML v2 model files
 │   ├── library/             # Reusable definitions
 │   └── designs/             # Specific fusion concept instances
-├── project/                 # Project documentation
+├── modeling_pm/                 # Project documentation
 │   ├── OVERVIEW.md          # Project status and goals
 │   ├── MODELING_GUIDE.md    # SysML syntax reference
 │   ├── MODELING_PROCESS.md  # MBSE methodology
@@ -174,7 +174,7 @@ models/
 ### Project Management
 
 ```
-project/
+modeling_pm/
 ├── OVERVIEW.md              # Project status (you edit)
 ├── MODELING_GUIDE.md        # SysML reference (static)
 ├── MODELING_PROCESS.md      # MBSE methodology (static)
@@ -211,8 +211,8 @@ part my_component : 'Component Name' {
 
 ## Resources
 
-- [MBSE Workflow](project/MODELING_PROCESS.md)
-- [SysML Patterns](project/MODELING_GUIDE.md)
+- [MBSE Workflow](modeling_pm/MODELING_PROCESS.md)
+- [SysML Patterns](modeling_pm/MODELING_GUIDE.md)
 - [Domain Sources](SOURCE_INDEX.md)
-- [Project Status](project/OVERVIEW.md)
-- [Work Items](project/backlog/BACKLOG.md)
+- [Project Status](modeling_pm/OVERVIEW.md)
+- [Work Items](modeling_pm/backlog/BACKLOG.md)

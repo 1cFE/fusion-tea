@@ -12,10 +12,10 @@ Create a "coffee maker" demo model using Pattern A (nested cost models) to valid
 
 ### Related Artifacts
 
-- **Spec:** `project/active/cost-patterns-demo/spec.md`
-- **Research:** `project/research/20260107-final-cost-architecture.md` - Pattern A architecture
-- **Research:** `project/research/20260110-strategic-cost-patterns.md` - Standardization decisions
-- **Epic:** `project/backlog/epic-cost-patterns-derisking.md`
+- **Spec:** `modeling_pm/active/cost-patterns-demo/spec.md`
+- **Research:** `modeling_pm/research/20260107-final-cost-architecture.md` - Pattern A architecture
+- **Research:** `modeling_pm/research/20260110-strategic-cost-patterns.md` - Standardization decisions
+- **Epic:** `modeling_pm/backlog/epic-cost-patterns-derisking.md`
 
 ## Current Model State
 
@@ -136,7 +136,7 @@ abstract part def 'Costed Component' {
     Every costed part must specialize this and provide values for cost attributes.
 
     **Source**: Cost Patterns Research
-    **Reference**: project/research/20260110-strategic-cost-patterns.md
+    **Reference**: modeling_pm/research/20260110-strategic-cost-patterns.md
     **Last Updated**: 2026-01-12
     */
 
@@ -342,7 +342,7 @@ calc def AllocationCostCalc {
     Covers items not modeled as separate parts: fasteners, seals, wiring.
 
     **Pattern**: Rule R3 from strategic cost patterns
-    **Source**: project/research/20260110-strategic-cost-patterns.md
+    **Source**: modeling_pm/research/20260110-strategic-cost-patterns.md
     **Last Updated**: 2026-01-12
     */
 
@@ -375,7 +375,7 @@ part def 'Heating Element' :> 'Costed Component' {
     Contains embedded cost model that computes cost from parameters.
 
     **Pattern**: Nested cost model (Pattern A)
-    **Source**: project/research/20260107-final-cost-architecture.md
+    **Source**: modeling_pm/research/20260107-final-cost-architecture.md
     **Last Updated**: 2026-01-12
     */
 
@@ -560,7 +560,7 @@ part def 'Brewing System' :> 'Costed Component' {
     Includes allocation costs for fasteners, seals, and wiring.
 
     **Pattern**: Assembly aggregation (Rule R2) + Allocation costs (Rule R3)
-    **Source**: project/research/20260110-strategic-cost-patterns.md
+    **Source**: modeling_pm/research/20260110-strategic-cost-patterns.md
     **Last Updated**: 2026-01-12
     */
 

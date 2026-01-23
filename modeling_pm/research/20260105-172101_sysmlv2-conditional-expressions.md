@@ -53,7 +53,7 @@ attribute category : Real =
 
 ### What Failed (and Why)
 
-The design document (`project/active/phase1-foundation/design.md`) attempted this syntax:
+The design document (`modeling_pm/active/phase1-foundation/design.md`) attempted this syntax:
 ```sysml
 // WRONG - "then" and "endif" are NOT part of the expression grammar
 attribute alpha_fraction : Real =
@@ -150,7 +150,7 @@ From the [KerML specification](https://www.omg.org/spec/KerML) and grammar analy
 - `models/tests/conditional_enum_test.sysml` - PowerBalanceCalc exact use case
 
 **Project Files to Update:**
-- `project/MODELING_GUIDE.md:564-606` - Syntax 10 section needs correction
+- `modeling_pm/MODELING_GUIDE.md:564-606` - Syntax 10 section needs correction
 - `models/library/calculations/power_balance.sysml` - Can use conditionals instead of type specialization
 
 ## Architecture/Modeling Insights

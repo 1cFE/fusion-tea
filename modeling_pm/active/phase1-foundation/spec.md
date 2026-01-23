@@ -162,7 +162,7 @@ None - creating new models. The `models/` directory contains no `.sysml` files.
 ### Source Requirements
 - PyFECONS: `/home/reid/PyFECONS/pyfecons/costing/mfe/PowerBalance.py` (lines 1-105)
 - PyFECONS: `/home/reid/PyFECONS/pyfecons/enums.py` (FuelType enum)
-- Architecture: `project/research/20260105-103000_catf-mfe-architecture.md`
+- Architecture: `modeling_pm/research/20260105-103000_catf-mfe-architecture.md`
 
 ### Downstream Impacts
 - Phase 2 (Geometry): Will import foundation.sysml
@@ -180,13 +180,13 @@ None - creating new models. The `models/` directory contains no `.sysml` files.
 - [ ] Epic progress updated in BACKLOG.md
 
 ## Related Artifacts
-**Research**: `project/research/20260105-103000_catf-mfe-architecture.md`
-**Epic**: `project/backlog/BACKLOG.md` (Phase 1 - Foundation Library)
+**Research**: `modeling_pm/research/20260105-103000_catf-mfe-architecture.md`
+**Epic**: `modeling_pm/backlog/BACKLOG.md` (Phase 1 - Foundation Library)
 **PyFECONS Sources**:
 - `/home/reid/PyFECONS/pyfecons/costing/mfe/PowerBalance.py`
 - `/home/reid/PyFECONS/pyfecons/enums.py`
-**Design**: `project/active/phase1-foundation/design.md` (to be created)
-**Plan**: `project/active/phase1-foundation/plan.md` (to be created)
+**Design**: `modeling_pm/active/phase1-foundation/design.md` (to be created)
+**Plan**: `modeling_pm/active/phase1-foundation/plan.md` (to be created)
 
 ---
 **Next Steps**: After approval → `/design-model`

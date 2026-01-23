@@ -35,7 +35,7 @@ Fix the coffee maker demo model to use validated SysML v2 patterns for cost roll
 
 ### Root Cause
 
-Prior research incorrectly concluded `sum()` doesn't exist. See: `project/research/20260112-055807_multiplicity-cost-rollup-gap.md` and `project/research/20260112-061548_sysmlv2-discovery-reflection.md`
+Prior research incorrectly concluded `sum()` doesn't exist. See: `modeling_pm/research/20260112-055807_multiplicity-cost-rollup-gap.md` and `modeling_pm/research/20260112-061548_sysmlv2-discovery-reflection.md`
 
 ## Modeling Requirements
 
@@ -125,8 +125,8 @@ Prior research incorrectly concluded `sum()` doesn't exist. See: `project/resear
 
 - `models/tests/coffee_maker/library.sysml` - Add import, remove placeholders, use sum()
 - `models/tests/coffee_maker/design.sysml` - Use dot notation, remove hardcoded values
-- `project/backlog/epic-cost-patterns-derisking.md` - Add validated pattern notes
-- `project/MODELING_GUIDE.md` - Add NumericalFunctions import requirement
+- `modeling_pm/backlog/epic-cost-patterns-derisking.md` - Add validated pattern notes
+- `modeling_pm/MODELING_GUIDE.md` - Add NumericalFunctions import requirement
 
 ### Out of Scope
 
@@ -176,14 +176,14 @@ Prior research incorrectly concluded `sum()` doesn't exist. See: `project/resear
 
 ### Source Requirements
 
-- Research: `project/research/20260112-055807_multiplicity-cost-rollup-gap.md` - Discovered `sum()` works
-- Research: `project/research/20260112-061548_sysmlv2-discovery-reflection.md` - Process lessons
+- Research: `modeling_pm/research/20260112-055807_multiplicity-cost-rollup-gap.md` - Discovered `sum()` works
+- Research: `modeling_pm/research/20260112-061548_sysmlv2-discovery-reflection.md` - Process lessons
 - Standard Library: `syside/sysml.library/Kernel Libraries/Kernel Function Library/NumericalFunctions.kerml`
 
 ### Downstream Impacts
 
-- Epic: Updates `project/backlog/epic-cost-patterns-derisking.md` with validated pattern
-- Guide: Updates `project/MODELING_GUIDE.md` with required imports
+- Epic: Updates `modeling_pm/backlog/epic-cost-patterns-derisking.md` with validated pattern
+- Guide: Updates `modeling_pm/MODELING_GUIDE.md` with required imports
 - Phase 4: Unblocks cost calculation implementation with correct patterns
 
 ## Validated Patterns (from testing today)
@@ -253,10 +253,10 @@ part def 'Brewing System' {
 
 ## Related Artifacts
 
-**Research**: `project/research/20260112-055807_multiplicity-cost-rollup-gap.md`
-**Research**: `project/research/20260112-061548_sysmlv2-discovery-reflection.md`
-**Epic**: `project/backlog/epic-cost-patterns-derisking.md`
-**Existing Spec**: `project/active/cost-patterns-demo/spec.md`
+**Research**: `modeling_pm/research/20260112-055807_multiplicity-cost-rollup-gap.md`
+**Research**: `modeling_pm/research/20260112-061548_sysmlv2-discovery-reflection.md`
+**Epic**: `modeling_pm/backlog/epic-cost-patterns-derisking.md`
+**Existing Spec**: `modeling_pm/active/cost-patterns-demo/spec.md`
 
 ---
 **Next Steps**: After approval → Implement changes to library.sysml and design.sysml

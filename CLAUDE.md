@@ -43,7 +43,7 @@ Key constraints:
   - `library/` - Reusable definitions (part defs, calc defs, materials)
   - `designs/` - Specific fusion concept instances (CATF, stellarator, etc.)
 - `SOURCE_INDEX.md` - **Read this for domain knowledge sources**
-- `project/` - Project management and documentation
+- `modeling_pm/` - Project management and documentation
 
 ## MBSE Workflow
 

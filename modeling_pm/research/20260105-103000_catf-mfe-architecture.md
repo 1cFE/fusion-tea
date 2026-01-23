@@ -454,8 +454,8 @@ package FusionTEA::Designs::CATF {
 - CATF example: `/home/reid/PyFECONS/customers/CATF/mfe/DefineInputs.py`
 
 **Project Conventions**:
-- Modeling guide: `/home/reid/1cfe/fusion-tea/project/MODELING_GUIDE.md`
-- Overview: `/home/reid/1cfe/fusion-tea/project/OVERVIEW.md`
+- Modeling guide: `/home/reid/1cfe/fusion-tea/modeling_pm/MODELING_GUIDE.md`
+- Overview: `/home/reid/1cfe/fusion-tea/modeling_pm/OVERVIEW.md`
 
 **SysMLv2 Patterns**:
 - Reference: `/home/reid/1cfe/agentic-mbse/docs/sysmlv2/Cheatsheet/sysml_textual_notation_cheatsheet.md`

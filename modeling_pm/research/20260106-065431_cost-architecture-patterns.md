@@ -875,4 +875,4 @@ Both models demonstrate the binding chain and can be used as reference for futur
 ---
 
 **Last Updated**: 2026-01-06
-**Related**: `project/research/20260106-050051_cost-modeling-lcoe-strategy.md`
+**Related**: `modeling_pm/research/20260106-050051_cost-modeling-lcoe-strategy.md`

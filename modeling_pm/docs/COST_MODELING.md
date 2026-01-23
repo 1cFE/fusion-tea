@@ -519,9 +519,9 @@ Before committing a cost model:
 - `models/tests/coffee_maker/generate_costs.py` - Reference evaluation script
 
 ### Research Documents
-- `project/research/20260107-final-cost-architecture.md` - Architecture rationale
-- `project/research/20260110-strategic-cost-patterns.md` - Standardization decisions (Rules R1-R4)
-- `project/research/20260112-055807_multiplicity-cost-rollup-gap.md` - NumericalFunctions::sum solution
+- `modeling_pm/research/20260107-final-cost-architecture.md` - Architecture rationale
+- `modeling_pm/research/20260110-strategic-cost-patterns.md` - Standardization decisions (Rules R1-R4)
+- `modeling_pm/research/20260112-055807_multiplicity-cost-rollup-gap.md` - NumericalFunctions::sum solution
 
 ### Standard Library
 - `NumericalFunctions.kerml` - `sum`, `product`, `abs`, `max`, `min`

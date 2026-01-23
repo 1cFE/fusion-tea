@@ -704,11 +704,11 @@ Output row:
 | `models/tests/coffee_maker/expected_output.csv` | Expected results |
 | `models/tests/coffee_maker/generate_costs.py` | Reference implementation |
 | `models/tests/coffee_maker/validate_ast.py` | AST validation patterns |
-| `project/docs/COST_MODELING.md` | Modeling guide |
-| `project/research/20260107-final-cost-architecture.md` | Architecture rationale |
+| `modeling_pm/docs/COST_MODELING.md` | Modeling guide |
+| `modeling_pm/research/20260107-final-cost-architecture.md` | Architecture rationale |
 
 ### C. Research Documents
 
-- `project/research/20260107-final-cost-architecture.md` - Why nested cost models
-- `project/research/20260110-strategic-cost-patterns.md` - Standardization rules
-- `project/research/20260112-055807_multiplicity-cost-rollup-gap.md` - sum() solution
+- `modeling_pm/research/20260107-final-cost-architecture.md` - Why nested cost models
+- `modeling_pm/research/20260110-strategic-cost-patterns.md` - Standardization rules
+- `modeling_pm/research/20260112-055807_multiplicity-cost-rollup-gap.md` - sum() solution

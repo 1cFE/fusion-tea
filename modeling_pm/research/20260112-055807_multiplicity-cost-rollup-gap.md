@@ -490,8 +490,8 @@ The failure was a research failure - the agent team:
 - `models/tests/multiplicity_alternatives_test.sysml` - Working alternatives
 
 **Related Research**:
-- `project/research/heirarchical-cost-modeling-mbse-patterns.md`
-- `project/research/20260106-050051_cost-modeling-lcoe-strategy.md`
-- `project/research/20260106-065431_cost-architecture-patterns.md`
-- `project/research/20260107-final-cost-architecture.md`
-- `project/research/20260110-strategic-cost-patterns.md`
+- `modeling_pm/research/heirarchical-cost-modeling-mbse-patterns.md`
+- `modeling_pm/research/20260106-050051_cost-modeling-lcoe-strategy.md`
+- `modeling_pm/research/20260106-065431_cost-architecture-patterns.md`
+- `modeling_pm/research/20260107-final-cost-architecture.md`
+- `modeling_pm/research/20260110-strategic-cost-patterns.md`

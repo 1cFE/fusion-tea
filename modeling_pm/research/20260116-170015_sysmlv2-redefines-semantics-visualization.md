@@ -286,7 +286,7 @@ This should be reported to Sensmetry (Syside Modeler) as a bug/feature request: 
 
 ### Explore Alternative Visualization Tools
 
-Per `project/research/20260116-161342_sysml-v2-visualization-tools.md`, consider:
+Per `modeling_pm/research/20260116-161342_sysml-v2-visualization-tools.md`, consider:
 - **SysON** (Eclipse/Obeo) - Free, browser-based, may handle redefines differently
 - **CATIA Magic/Cameo** - Enterprise option with claimed 100% SysML v2 support
 
@@ -308,6 +308,6 @@ It only affects diagram display in Tom Sawyer. This is an acceptable trade-off u
 
 ## Related Research
 
-- `project/research/20260116-161342_sysml-v2-visualization-tools.md` - Comprehensive tool comparison
-- `project/research/20260110-strategic-cost-patterns.md` - Cost modeling patterns using this syntax
-- `project/backlog/epic-cost-patterns-derisking.md` - Epic that validated these patterns
+- `modeling_pm/research/20260116-161342_sysml-v2-visualization-tools.md` - Comprehensive tool comparison
+- `modeling_pm/research/20260110-strategic-cost-patterns.md` - Cost modeling patterns using this syntax
+- `modeling_pm/backlog/epic-cost-patterns-derisking.md` - Epic that validated these patterns

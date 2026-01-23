@@ -11,9 +11,9 @@
 Create the foundational SysML v2 library infrastructure for FusionTEA: package structure, standard imports, enumerations (FuelType, ReactorType, ConfinementType, MagnetType), and the core PowerBalanceCalc definition with full fidelity to PyFECONS (17 inputs, 16 outputs, fuel-type-dependent alpha power).
 
 ### Related Artifacts
-- **Spec:** `project/active/phase1-foundation/spec.md`
-- **Research:** `project/research/20260105-103000_catf-mfe-architecture.md`
-- **Epic:** `project/backlog/BACKLOG.md` (Phase 1 - Foundation Library)
+- **Spec:** `modeling_pm/active/phase1-foundation/spec.md`
+- **Research:** `modeling_pm/research/20260105-103000_catf-mfe-architecture.md`
+- **Epic:** `modeling_pm/backlog/BACKLOG.md` (Phase 1 - Foundation Library)
 - **PyFECONS Sources:**
   - `/home/reid/PyFECONS/pyfecons/costing/mfe/PowerBalance.py`
   - `/home/reid/PyFECONS/pyfecons/enums.py`
@@ -198,7 +198,7 @@ package FusionTEA {
     and enumeration definitions for fusion power plant modeling.
 
     **Source**: Project architecture research
-    **Reference**: project/research/20260105-103000_catf-mfe-architecture.md
+    **Reference**: modeling_pm/research/20260105-103000_catf-mfe-architecture.md
     **Last Updated**: 2026-01-05
     */
 
