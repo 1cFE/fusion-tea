@@ -1,7 +1,7 @@
 # Design: Foundation Package (MODELS)
 
 **Type:** SysMLv2 Models
-**Status:** Draft
+**Status:** Complete
 **Owner:** Reid Westwood
 **Created:** 2026-01-23
 **Last Updated:** 2026-01-23

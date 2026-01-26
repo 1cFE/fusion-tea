@@ -6,29 +6,21 @@ Prioritized list of work items for FusionTEA SysML v2 modeling, based on PyFECON
 
 ## Recently Completed
 
-<!-- Move completed items here with dates -->
+### Epic: Foundation Package - COMPLETE (2026-01-26)
+**Priority**: P0
+
+**Deliverables**:
+- `models/library/foundation/types.sysml` - 13 enum definitions
+- `models/library/foundation/units.sysml` - 6 custom attribute definitions
+- `models/library/foundation/materials.sysml` - 12 material part definitions
+- `tests/models/test_foundation.py` - 14 regression tests
+- `models/tests/foundation_import_test.sysml` - Import validation
+
+**Validation**: All tests pass, all files parse, documentation complete with Source citations
 
 ---
 
 ## Priority 0: READY
-
-### Epic: Foundation Package
-**Status**: READY
-**Priority**: P0
-**Source**: [PyFECONS Library Mapping Strategy](../research/20260123-pyfecons-library-mapping-strategy.md)
-
-**Goal**: Establish the foundational library infrastructure with types, units, and materials that all downstream components depend on.
-
-**Scope**:
-- `library/foundation/types.sysml` - All enumerations (ReactorType, FuelType, ConfinementType, MagnetType, MagnetMaterialType, BlanketFirstWall, BlanketType, BlanketPrimaryCoolant, EnergyConversion)
-- `library/foundation/units.sysml` - SI/ISQ imports, custom unit aliases (M_USD, USD_KG, USD_M3)
-- `library/foundation/materials.sysml` - Material part defs with physical properties (density, thermal conductivity, cost)
-
-**Validation**: Enums match PyFECONS `enums.py`; unit types cover all PyFECONS input parameters
-
-**Dependencies**: None
-
----
 
 ### Epic: Power Balance Calculations
 **Status**: READY
@@ -43,7 +35,7 @@ Prioritized list of work items for FusionTEA SysML v2 modeling, based on PyFECON
 
 **Validation**: Compare outputs against PyFECONS `costing/mfe/PowerBalance.py`
 
-**Dependencies**: Foundation Package
+**Dependencies**: Foundation Package (COMPLETE)
 
 ---
 
@@ -65,7 +57,7 @@ Prioritized list of work items for FusionTEA SysML v2 modeling, based on PyFECON
 
 **Validation**: Attributes map to PyFECONS `inputs/blanket.py`, `inputs/shield.py`
 
-**Dependencies**: Foundation Package
+**Dependencies**: Foundation Package (COMPLETE)
 
 ---
 
@@ -82,7 +74,7 @@ Prioritized list of work items for FusionTEA SysML v2 modeling, based on PyFECON
 
 **Validation**: Compare geometry outputs against PyFECONS CAS220101 calculations
 
-**Dependencies**: Foundation Package
+**Dependencies**: Foundation Package (COMPLETE)
 
 ---
 
@@ -226,7 +218,7 @@ Prioritized list of work items for FusionTEA SysML v2 modeling, based on PyFECON
 
 **Validation**: IFE calculations match PyFECONS `costing/ife/` modules
 
-**Dependencies**: Foundation Package, Cost Rollup and LCOE
+**Dependencies**: Foundation Package (COMPLETE), Cost Rollup and LCOE
 
 ---
 
@@ -281,5 +273,5 @@ Prioritized list of work items for FusionTEA SysML v2 modeling, based on PyFECON
 
 ---
 
-**Last Updated**: 2026-01-23
-**Next Review**: After Foundation Package completion
+**Last Updated**: 2026-01-26
+**Next Review**: After Power Balance Calculations completion

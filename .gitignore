@@ -17,3 +17,4 @@ wheels/
 .claude/hooks/
 modeling_pm/MODELING_GUIDE.md
 modeling_pm/MODELING_PROCESS.md
+.claude/.tool-hashes.json
