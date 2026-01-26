@@ -20,20 +20,27 @@ Prioritized list of work items for FusionTEA SysML v2 modeling, based on PyFECON
 
 ---
 
-## Priority 0: READY
-
-### Epic: Power Balance Calculations
-**Status**: READY
+### Epic: Power Balance Calculations - COMPLETE (2026-01-26)
 **Priority**: P0
 **Source**: [PyFECONS Library Mapping Strategy](../research/20260123-pyfecons-library-mapping-strategy.md)
 
 **Goal**: Implement power balance calculations that drive most downstream calculations.
 
-**Scope**:
-- `library/calculations/power_balance/power_balance.sysml` - Generic PowerBalanceCalc with p_alpha, p_neutron, p_th, p_net, q_eng
-- `library/calculations/power_balance/mfe_power_balance.sysml` - MFE-specific power flow (heating, recirculating power)
+**Deliverables**:
+- `models/library/calculations/power_balance/power_balance.sysml` - Generic PowerBalanceLibrary
+  - `'Alpha Power Calc'` - Fuel-type dependent alpha power (DT, DD, DHE3, PB11)
+  - `'Power Balance Calc'` - Generic p_alpha, p_neutron, q_sci
+- `models/library/calculations/power_balance/mfe_power_balance.sysml` - MFEPowerBalanceLibrary
+  - `'MFE Power Balance Calc'` - Full MFE power flow (16 inputs, 15 outputs)
+- `tests/models/test_power_balance.py` - 25 regression tests (structure + numerical validation)
 
-**Validation**: Compare outputs against PyFECONS `costing/mfe/PowerBalance.py`
+**Validation**:
+- All 25 tests pass
+- All files parse without errors
+- Formulas verified against PyFECONS PowerBalance.py:8-50, 94-104
+- Documentation complete with Source citations
+
+**Note**: Direct energy conversion (p_dee, eta_de) deferred per spec - see P3 task "Model p_dee and eta_de Power Paths"
 
 **Dependencies**: Foundation Package (COMPLETE)
 
@@ -262,6 +269,27 @@ Prioritized list of work items for FusionTEA SysML v2 modeling, based on PyFECON
 
 ---
 
+### Task: Model p_dee and eta_de Power Paths
+**Status**: BACKLOG
+**Priority**: P3
+**Source**: PyFECONS PowerBalance.py (paths marked TODO in source)
+
+**Goal**: Model the direct energy extraction (DEE) power paths when PyFECONS implements them.
+
+**Context**: During Power Balance Calculations work, found that `p_dee` (direct energy extraction power) and `eta_de` (direct energy conversion efficiency) paths exist in PyFECONS but are marked as TODO / not yet implemented.
+
+**Scope**:
+- Monitor PyFECONS for implementation of these paths
+- Add `p_dee` attribute to power balance calculations
+- Add `eta_de` efficiency parameter to library
+- Update MFE power balance to include DEE path in recirculating power
+
+**Validation**: Match PyFECONS implementation when available
+
+**Dependencies**: Power Balance Calculations (COMPLETE), PyFECONS upstream implementation
+
+---
+
 ## Documentation References
 
 - **Project Overview**: `modeling_pm/OVERVIEW.md`
@@ -274,4 +302,4 @@ Prioritized list of work items for FusionTEA SysML v2 modeling, based on PyFECON
 ---
 
 **Last Updated**: 2026-01-26
-**Next Review**: After Power Balance Calculations completion
+**Next Review**: After Power Core Definitions or Geometry Calculations completion

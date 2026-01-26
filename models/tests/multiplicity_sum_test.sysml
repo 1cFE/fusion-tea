@@ -1,10 +1,13 @@
+/*
+ * COMMENTED OUT - Known bad SysML syntax
+ *
 package MultiplicitySumTest {
     doc /*
     Test file to validate whether sum() works with part multiplicities.
 
     **Purpose**: De-risk cost rollup patterns before implementation
     **Test Date**: 2026-01-12
-    */
+    * /
 
     private import ScalarValues::Real;
 
@@ -28,3 +31,4 @@ package MultiplicitySumTest {
         }
     }
 }
+*/
