@@ -46,7 +46,48 @@ Prioritized list of work items for FusionTEA SysML v2 modeling, based on PyFECON
 
 ---
 
-## Priority 1: After P0 Complete
+## Priority 0.5: Cost Infrastructure (Before P1)
+
+### Task: Create 'Costed Component' Interface
+**Status**: PENDING
+**Priority**: P0.5 (blocking P1 epics)
+**Source**: [COST_MODELING.md](../docs/COST_MODELING.md), [Strategy Update 2026-01-26](../research/20260123-pyfecons-library-mapping-strategy.md)
+
+**Goal**: Create the cost modeling infrastructure that all fusion components will use.
+
+**Scope**:
+- `library/foundation/costing.sysml` - The `'Costed Component'` abstract interface
+  - `cas_category : String` - CAS code for cost reporting (e.g., "CAS220103")
+  - `capital_cost`, `raw_material_cost`, `fabrication_cost`, `installation_cost` : Real
+  - `idiot_index : Real` - manufacturing efficiency metric
+  - Required import: `NumericalFunctions::sum` for aggregation
+
+**CAS Category Values** (from PyFECONS):
+| Code | Description |
+|------|-------------|
+| CAS21 | Buildings and Structures |
+| CAS220102 | Radiation Shield |
+| CAS220103 | Magnets/Coils (MFE) or Lasers (IFE) |
+| CAS220104 | Supplementary Heating |
+| CAS220108 | Divertor (MFE) or Target Factory (IFE) |
+| CAS23 | Turbine Plant Equipment |
+| CAS24 | Electric Plant Equipment |
+| CAS26 | Heat Rejection System |
+
+**Pattern Reference**: The validated pattern from `models/tests/coffee_maker/library.sysml` should be adapted for fusion context.
+
+**Validation**:
+- File parses with `uv run syside check`
+- Interface can be specialized by a test part def
+- Pattern matches `modeling_pm/docs/COST_MODELING.md` specification
+
+**Why P0.5?**: All P1 part definitions (magnets, blanket, shield, etc.) must specialize this interface. Creating it first ensures consistent cost modeling across the library.
+
+**Dependencies**: Foundation Package (COMPLETE)
+
+---
+
+## Priority 1: After P0.5 Complete
 
 ### Epic: Power Core Definitions
 **Status**: PENDING
@@ -56,15 +97,20 @@ Prioritized list of work items for FusionTEA SysML v2 modeling, based on PyFECON
 **Goal**: Define core reactor components shared across fusion concepts.
 
 **Scope**:
-- `library/definitions/plant.sysml` - Top-level 'Fusion Power Plant' part def
-- `library/definitions/power_core/plasma.sysml` - 'Plasma' part def with confinement parameters
-- `library/definitions/power_core/blanket.sysml` - 'Blanket System' with material variants
-- `library/definitions/power_core/shield.sysml` - 'Radiation Shield' part def
-- `library/definitions/power_core/vacuum_vessel.sysml` - 'Vacuum Vessel' part def
+- `library/definitions/plant.sysml` - Top-level `'Fusion Power Plant' :> 'Costed Component'`
+- `library/definitions/power_core/plasma.sysml` - `'Plasma'` part def (physics only, not costed)
+- `library/definitions/power_core/blanket.sysml` - `'Blanket System' :> 'Costed Component'` with embedded cost_model
+- `library/definitions/power_core/shield.sysml` - `'Radiation Shield' :> 'Costed Component'` with embedded cost_model
+- `library/definitions/power_core/vacuum_vessel.sysml` - `'Vacuum Vessel' :> 'Costed Component'` with embedded cost_model
+
+**Cost Pattern Requirements** (see [COST_MODELING.md](../docs/COST_MODELING.md)):
+- All costed parts must specialize `'Costed Component'`
+- Leaf parts: embed `cost_model` calc usage, bind all 5 cost attributes via `:>>`
+- Assembly parts: use `sum()` aggregation from `NumericalFunctions`
 
 **Validation**: Attributes map to PyFECONS `inputs/blanket.py`, `inputs/shield.py`
 
-**Dependencies**: Foundation Package (COMPLETE)
+**Dependencies**: Foundation Package (COMPLETE), **'Costed Component' Interface (P0.5)**
 
 ---
 
@@ -93,15 +139,21 @@ Prioritized list of work items for FusionTEA SysML v2 modeling, based on PyFECON
 **Goal**: Define magnet coil components and cost calculations for MFE reactors.
 
 **Scope**:
-- `library/definitions/magnets/coil.sysml` - Base 'Magnet Coil' part def
-- `library/definitions/magnets/tf_coil.sysml` - 'TF Coil' specialization
-- `library/definitions/magnets/pf_coil.sysml` - 'PF Coil' specialization
-- `library/definitions/magnets/cs_coil.sysml` - 'Central Solenoid' specialization
-- `library/calculations/costing/magnet_cost.sysml` - Magnet costing calc (CAS220103)
+- `library/definitions/magnets/coil.sysml` - Base `'Magnet Coil' :> 'Costed Component'` with embedded cost_model
+- `library/definitions/magnets/tf_coil.sysml` - `'TF Coil' :> 'Magnet Coil'` specialization
+- `library/definitions/magnets/pf_coil.sysml` - `'PF Coil' :> 'Magnet Coil'` specialization
+- `library/definitions/magnets/cs_coil.sysml` - `'Central Solenoid' :> 'Magnet Coil'` specialization
+- `library/definitions/magnets/magnet_system.sysml` - `'Magnet System' :> 'Costed Component'` assembly with `sum()` aggregation
+- `library/calculations/costing/magnet_cost.sysml` - `calc def MagnetCoilCostCalc` (CAS220103)
+
+**Cost Pattern Requirements**:
+- `'Magnet Coil'` is a **leaf** with embedded cost_model
+- `'Magnet System'` is an **assembly** aggregating TF[12], PF[6], CS via `sum()`
+- Reference: [COST_MODELING.md](../docs/COST_MODELING.md) Section 4
 
 **Validation**: Coil attributes map to PyFECONS `inputs/coils.py`; cost calc validates against `costing/mfe/cas22/cas220103_coils.py`
 
-**Dependencies**: Foundation Package, Power Core Definitions
+**Dependencies**: Foundation Package, **'Costed Component' Interface (P0.5)**, Power Core Definitions
 
 ---
 
@@ -294,12 +346,14 @@ Prioritized list of work items for FusionTEA SysML v2 modeling, based on PyFECON
 
 - **Project Overview**: `modeling_pm/OVERVIEW.md`
 - **Modeling Guide**: `modeling_pm/MODELING_GUIDE.md`
+- **Cost Modeling Guide**: `modeling_pm/docs/COST_MODELING.md` **(REQUIRED for all costed parts)**
 - **Workflow**: `modeling_pm/MODELING_PROCESS.md`
 - **Source Index**: `SOURCE_INDEX.md`
 - **Architecture Research**: `modeling_pm/research/20260105-103000_catf-mfe-architecture.md`
 - **Library Mapping Strategy**: `modeling_pm/research/20260123-pyfecons-library-mapping-strategy.md`
+- **Cost Pattern Validation**: `models/tests/coffee_maker/` (reference implementation)
 
 ---
 
 **Last Updated**: 2026-01-26
-**Next Review**: After Power Core Definitions or Geometry Calculations completion
+**Next Review**: After 'Costed Component' Interface (P0.5) or Power Core Definitions completion

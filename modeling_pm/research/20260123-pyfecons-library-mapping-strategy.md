@@ -4,7 +4,7 @@ researcher: Claude
 topic: "PyFECONS to SysMLv2 Library Mapping Strategy"
 tags: [research, integration, architecture, pyfecons, library-design]
 status: complete
-last_updated: 2026-01-23
+last_updated: 2026-01-26
 ---
 
 # Research: PyFECONS to SysMLv2 Library Mapping Strategy
@@ -251,7 +251,7 @@ Inputs (AllInputs)
 
 ### 6. Library Structure Proposal
 
-Based on PyFECONS patterns and our modeling conventions (MODELING_GUIDE.md):
+Based on PyFECONS patterns, our modeling conventions (MODELING_GUIDE.md), and the **validated cost modeling patterns** (COST_MODELING.md):
 
 ```
 models/
@@ -259,7 +259,8 @@ models/
 │   ├── foundation/
 │   │   ├── types.sysml              # Enums: ReactorType, FuelType, etc.
 │   │   ├── units.sysml              # SI imports, custom units
-│   │   └── materials.sysml          # Material part defs with properties
+│   │   ├── materials.sysml          # Material part defs with properties
+│   │   └── costing.sysml            # 'Costed Component' abstract interface ✓
 │   │
 │   ├── definitions/
 │   │   ├── plant.sysml              # 'Fusion Power Plant' top-level
@@ -394,22 +395,42 @@ package FusionTEA::Library::Foundation {
 
 #### 8.1 Shared Definitions (Library)
 
-Define **concept-agnostic** components usable by any reactor type:
+Define **concept-agnostic** components usable by any reactor type. **All costed components must specialize `'Costed Component'`** to enable automatic cost rollup:
 
 ```sysml
+// REQUIRED: Import NumericalFunctions for cost aggregation
+private import NumericalFunctions::sum;
+
 // Shared: Any reactor has power conversion
-part def 'Power Conversion System' {
+part def 'Power Conversion System' :> 'Costed Component' {
     attribute thermal_efficiency : Real;
     attribute gross_electric_power : ISQ::PowerValue;
     attribute net_electric_power : ISQ::PowerValue;
+
+    // Embedded cost model (leaf pattern)
+    calc cost_model : PowerConversionCostCalc {
+        in efficiency = thermal_efficiency;
+        in power = gross_electric_power;
+    }
+
+    :>> capital_cost = cost_model.total_cost;
+    :>> raw_material_cost = cost_model.material_cost;
+    :>> fabrication_cost = cost_model.fab_cost;
+    :>> installation_cost = cost_model.install_cost;
+    :>> idiot_index = cost_model.idiot_index;
 }
 
 // Shared: Any reactor needs cooling
-part def 'Heat Rejection System' {
+part def 'Heat Rejection System' :> 'Costed Component' {
     attribute heat_load : ISQ::PowerValue;
     attribute cooling_capacity : ISQ::PowerValue;
+
+    calc cost_model : HeatRejectionCostCalc { /* ... */ }
+    // Cost attribute bindings follow same pattern
 }
 ```
+
+**Reference**: See `modeling_pm/docs/COST_MODELING.md` for the complete validated pattern.
 
 #### 8.2 Specialization for Reactor Types
 
@@ -470,53 +491,207 @@ package FusionTEA::Designs::CATF_MFE {
 
 ### 9. Mapping to CAS Cost Structure
 
-#### 9.1 Cost Attribute Pattern
+**IMPORTANT**: This section describes the **validated cost modeling pattern** from the Coffee Maker de-risking effort. All fusion components must follow this pattern to enable automatic cost rollup and multi-category visibility.
 
-Every costed component has a cost attribute:
+**Reference**: `modeling_pm/docs/COST_MODELING.md` is the authoritative guide.
+
+#### 9.1 The 'Costed Component' Interface
+
+Every cost-bearing component must specialize the abstract `'Costed Component'` interface:
+
+**Implementation**: See `models/library/foundation/costing.sysml` for production definition.
 
 ```sysml
-part def 'Magnet Coil' {
-    // Physical attributes
-    attribute radius : ISQ::LengthValue;
-    attribute mass : ISQ::MassValue;
+// library/foundation/costing.sysml
+private import Costing::*;  // Provides CASCategory enum and 'Costed Component'
 
-    // Cost attributes (aligned to CAS)
-    attribute material_cost : Real;      // CAS subcomponent
-    attribute fabrication_cost : Real;   // CAS subcomponent
-    attribute total_cost : Real;         // CAS line item
+abstract part def 'Costed Component' {
+    doc /*
+    Abstract interface for all cost-bearing components.
+    Every costed part must specialize this and provide values for cost attributes.
+
+    **Source**: Validated by Coffee Maker demo model
+    **Reference**: modeling_pm/docs/COST_MODELING.md
+    */
+
+    // CAS category for cost reporting (type-safe enum)
+    attribute cas_category : CASCategory;   // Maps to PyFECONS CAS hierarchy
+
+    // Required cost attributes (aligned to CAS multi-category breakdown)
+    attribute capital_cost : Real;          // Total cost for LCOE calculation
+    attribute raw_material_cost : Real;     // Material portion for cost driver analysis
+    attribute fabrication_cost : Real;      // Manufacturing labor/overhead
+    attribute installation_cost : Real;     // On-site assembly and integration
+
+    // Derived efficiency metric (SpaceX "idiot index")
+    attribute idiot_index : Real;           // capital_cost / raw_material_cost
 }
 ```
 
-#### 9.2 Cost Rollup Hierarchy
+> **Note**: The `CASCategory` enum is defined in `costing.sysml` with all 35 PyFECONS CAS codes.
+
+#### 9.2 Leaf Part Pattern (Direct Calculation)
+
+Leaf parts compute their own cost via an embedded `cost_model` calc usage:
+
+```sysml
+part def 'Magnet Coil' :> 'Costed Component' {
+    // CAS category - inherited by specializations (TF, PF, CS all roll up to CAS220103)
+    :>> cas_category = CASCategory::CAS220103;
+
+    // Physical attributes
+    attribute radius : ISQ::LengthValue;
+    attribute mass : ISQ::MassValue;
+    attribute material_type : MagnetMaterialType;
+
+    // Embedded cost model - computes cost from physical parameters
+    calc cost_model : MagnetCoilCostCalc {
+        in coil_mass = mass;
+        in mat_type = material_type;
+        // Cost factors have defaults in calc def
+    }
+
+    // Expose cost outputs via redefinition binding
+    :>> capital_cost = cost_model.total_cost;
+    :>> raw_material_cost = cost_model.material_cost;
+    :>> fabrication_cost = cost_model.fab_cost;
+    :>> installation_cost = cost_model.install_cost;
+    :>> idiot_index = cost_model.idiot_index;
+}
+```
+
+#### 9.3 Assembly Part Pattern (Aggregation)
+
+Assembly parts aggregate costs from their children using `sum()`:
+
+```sysml
+private import NumericalFunctions::sum;  // REQUIRED IMPORT
+
+part def 'Magnet System' :> 'Costed Component' {
+    // CAS category for this assembly (same as children for CAS220103)
+    :>> cas_category = CASCategory::CAS220103;
+
+    // Child parts (with multiplicity)
+    part tf_coils : 'TF Coil' [12];
+    part pf_coils : 'PF Coil' [6];
+    part cs_coil : 'Central Solenoid';
+
+    // AUTOMATIC aggregation using sum()
+    :>> capital_cost =
+        sum(tf_coils.capital_cost) +
+        sum(pf_coils.capital_cost) +
+        cs_coil.capital_cost;
+
+    :>> raw_material_cost =
+        sum(tf_coils.raw_material_cost) +
+        sum(pf_coils.raw_material_cost) +
+        cs_coil.raw_material_cost;
+
+    :>> fabrication_cost =
+        sum(tf_coils.fabrication_cost) +
+        sum(pf_coils.fabrication_cost) +
+        cs_coil.fabrication_cost;
+
+    :>> installation_cost =
+        sum(tf_coils.installation_cost) +
+        sum(pf_coils.installation_cost) +
+        cs_coil.installation_cost;
+
+    :>> idiot_index = capital_cost / raw_material_cost;
+}
+```
+
+#### 9.4 Allocation Costs (Assembly-Level Minor Items)
+
+For items not worth modeling as separate parts (<5% of assembly cost):
+
+```sysml
+calc def AllocationCostCalc {
+    in attribute child_count : Real;
+    in attribute total_child_mass : Real;
+
+    in attribute fastener_cost_per_child : Real default := 0.50;
+    in attribute seal_cost_per_child : Real default := 0.30;
+    in attribute wiring_cost_per_kg : Real default := 2.0;
+
+    out attribute total_allocation : Real =
+        child_count * fastener_cost_per_child +
+        child_count * seal_cost_per_child +
+        total_child_mass * wiring_cost_per_kg;
+
+    out attribute material_portion : Real = total_allocation * 0.8;
+}
+
+part def 'Reactor Core Assembly' :> 'Costed Component' {
+    part blanket : 'Blanket System';
+    part shield : 'Radiation Shield';
+
+    // Allocation for minor items
+    calc allocation_model : AllocationCostCalc {
+        in child_count = 2.0;
+        in total_child_mass = 1000.0;  // kg
+    }
+
+    :>> capital_cost =
+        blanket.capital_cost +
+        shield.capital_cost +
+        allocation_model.total_allocation;
+
+    :>> raw_material_cost =
+        blanket.raw_material_cost +
+        shield.raw_material_cost +
+        allocation_model.material_portion;
+    // ... other aggregations
+}
+```
+
+#### 9.5 Cost Attribute Pattern (DEPRECATED)
+
+~~Every costed component has a cost attribute:~~
+
+**NOTE**: The inline cost attribute pattern below is **deprecated**. Use the `'Costed Component'` interface pattern above instead, which provides:
+- Consistent multi-category breakdown
+- Automatic cost rollup via `sum()`
+- Idiot index tracking for manufacturing efficiency
+- Clean separation of physical attributes from cost attributes
+
+#### 9.6 Cost Rollup Hierarchy (CAS Mapping)
+
+The `'Costed Component'` pattern enables automatic rollup through the CAS hierarchy:
 
 ```
-Plant Total Cost (CAS Total)
+Plant Total Cost (CAS Total)          ← 'Fusion Power Plant'.capital_cost
 ├── Pre-Construction (CAS10)
 ├── Direct Costs (CAS20)
-│   ├── Buildings (CAS21) ← sum of building parts
+│   ├── Buildings (CAS21)             ← sum(building.capital_cost)
 │   ├── Reactor Equipment (CAS22)
-│   │   ├── Reactor Equipment (CAS220101) ← geometry-driven
-│   │   ├── Shield (CAS220102) ← shield.total_cost
-│   │   ├── Magnets/Lasers (CAS220103) ← magnet_system.total_cost
-│   │   ├── Heating (CAS220104) ← heating.total_cost
+│   │   ├── CAS220101                 ← 'Reactor Core'.capital_cost
+│   │   ├── CAS220102                 ← 'Radiation Shield'.capital_cost
+│   │   ├── CAS220103                 ← 'Magnet System'.capital_cost (sum of coils)
+│   │   ├── CAS220104                 ← 'Heating System'.capital_cost
 │   │   └── ... (other CAS22 items)
-│   ├── Turbine (CAS23)
+│   ├── Turbine (CAS23)               ← 'Turbine Plant'.capital_cost
 │   └── ... (CAS24-29)
 ├── Indirect (CAS30-60)
 └── Annualized (CAS70-90)
 ```
 
+Each CAS line item corresponds to a `capital_cost` attribute from a `'Costed Component'` part.
+
 ### 10. Implementation Roadmap
 
-#### Phase 1: Foundation (Week 1)
+#### Phase 1: Foundation (Week 1) ✓ COMPLETE
 1. **Create foundation package** (`library/foundation/`)
-   - `types.sysml` - All enumerations (ReactorType, FuelType, etc.)
-   - `units.sysml` - SI imports, custom unit aliases
-   - `materials.sysml` - Material definitions with properties
+   - `types.sysml` - All enumerations (ReactorType, FuelType, etc.) ✓
+   - `units.sysml` - SI imports, custom unit aliases ✓
+   - `materials.sysml` - Material definitions with properties ✓
+   - **`costing.sysml` - `'Costed Component'` abstract interface with `CASCategory` enum** ✓ (see Section 9.1)
 
 2. **Create power balance** (`library/calculations/power_balance/`)
-   - Generic `'Power Balance Calc'` with inputs/outputs
-   - Validate against PyFECONS PowerBalance.py
+   - Generic `'Power Balance Calc'` with inputs/outputs ✓
+   - Validate against PyFECONS PowerBalance.py ✓
+
+**NOTE on costing.sysml**: This file defines the `'Costed Component'` interface that all cost-bearing parts must specialize. See `modeling_pm/docs/COST_MODELING.md` for the validated pattern.
 
 #### Phase 2: Core Components (Week 2-3)
 3. **Radial build and geometry** (`library/definitions/power_core/`)
@@ -524,13 +699,18 @@ Plant Total Cost (CAS Total)
    - Volume and area calculations
 
 4. **Magnet system** (MFE) (`library/definitions/magnets/`)
-   - `'Magnet Coil'` base definition
-   - TF, CS, PF specializations
-   - Magnet cost calculations
+   - `'Magnet Coil' :> 'Costed Component'` base definition with embedded cost_model
+   - TF, CS, PF specializations (inherit cost pattern)
+   - `'Magnet System' :> 'Costed Component'` assembly with sum() aggregation
 
 5. **Blanket and shield** (`library/definitions/power_core/`)
-   - `'Blanket System'` with material options
-   - `'Radiation Shield'`
+   - `'Blanket System' :> 'Costed Component'` with material options
+   - `'Radiation Shield' :> 'Costed Component'`
+
+**IMPORTANT**: All part definitions in Phase 2 must:
+- Specialize `'Costed Component'`
+- Include embedded `cost_model` calc usage (leaf parts) OR `sum()` aggregation (assemblies)
+- Bind all five cost attributes (`:>>` redefinition pattern)
 
 #### Phase 3: First Design (Week 4)
 6. **CATF MFE design** (`designs/catf_mfe/`)
@@ -617,9 +797,10 @@ Plant Total Cost (CAS Total)
 | 1 | `library/foundation/types.sysml` | All enumerations |
 | 2 | `library/foundation/units.sysml` | Unit imports |
 | 3 | `library/foundation/materials.sysml` | Material properties |
-| 4 | `library/calculations/power_balance/power_balance.sysml` | Power flow calc |
-| 5 | `library/definitions/plant.sysml` | Top-level plant definition |
-| 6 | `designs/catf_mfe/parameters.sysml` | Input parameter values |
+| **4** | **`library/foundation/costing.sysml`** | **`'Costed Component'` interface** |
+| 5 | `library/calculations/power_balance/power_balance.sysml` | Power flow calc |
+| 6 | `library/definitions/plant.sysml` | Top-level plant definition |
+| 7 | `designs/catf_mfe/parameters.sysml` | Input parameter values |
 
 ---
 
@@ -636,6 +817,9 @@ Plant Total Cost (CAS Total)
 
 ### Project References
 - `/home/reid/1cfe/fusion-tea/modeling_pm/MODELING_GUIDE.md` - SysML conventions
+- **`/home/reid/1cfe/fusion-tea/modeling_pm/docs/COST_MODELING.md`** - **Validated cost modeling patterns (REQUIRED READING)**
+- `/home/reid/1cfe/fusion-tea/modeling_pm/backlog/epic-cost-patterns-derisking.md` - Cost pattern de-risking epic (completed)
+- `/home/reid/1cfe/fusion-tea/models/tests/coffee_maker/` - Validated cost pattern demo model
 - `/home/reid/1cfe/fusion-tea/modeling_pm/research/20260105-103000_catf-mfe-architecture.md` - Prior research
 
 ---
@@ -645,8 +829,17 @@ Plant Total Cost (CAS Total)
 1. **MIF support timeline**: Should we design library to support MIF from the start, or defer?
 2. **Calculation fidelity**: Which PyFECONS calculations need full fidelity vs. simplified versions?
 3. **Learning curves**: How to model Nth-of-a-kind cost reduction in SysML?
-4. **Code generation**: Will we use sysml-codegen for validation against PyFECONS?
+4. ~~**Code generation**: Will we use sysml-codegen for validation against PyFECONS?~~ **ANSWERED**: Custom evaluation scripts (e.g., `generate_costs.py`) handle cost evaluation; sysml-codegen handles structural extraction.
 
 ---
 
-**Last Updated**: 2026-01-23
+## Revision History
+
+| Date | Changes |
+|------|---------|
+| 2026-01-23 | Initial strategy document |
+| 2026-01-26 | **Integrated validated 'Costed Component' pattern** from Coffee Maker de-risking. Updated Sections 6, 8, 9, 10. Added references to COST_MODELING.md. |
+
+---
+
+**Last Updated**: 2026-01-26

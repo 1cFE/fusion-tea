@@ -1,8 +1,11 @@
 # Cost Modeling Guide
 
 **Status**: Final
-**Last Updated**: 2026-01-12
+**Last Updated**: 2026-01-26
 **Validated By**: Coffee Maker Test Model (`models/tests/coffee_maker/`)
+**Production Interface**: `models/library/foundation/costing.sysml`
+
+> **2026-01-26 Update**: Added `cas_category` attribute to interface for CAS-based cost extraction and reporting.
 
 ---
 
@@ -33,7 +36,13 @@ This pattern co-locates structure with cost analysis, making design files clean 
 Every cost-bearing part must specialize the abstract `'Costed Component'` interface:
 
 ```sysml
+// Import the costing foundation
+private import Costing::*;
+
 abstract part def 'Costed Component' {
+    // CAS category for cost reporting (type-safe enum)
+    attribute cas_category : CASCategory;
+
     // Required cost attributes
     attribute capital_cost : Real;
     attribute raw_material_cost : Real;
@@ -45,17 +54,25 @@ abstract part def 'Costed Component' {
 }
 ```
 
-**Reference**: `models/tests/coffee_maker/library.sysml:19-37`
+**Reference**: `models/library/foundation/costing.sysml` (production definition)
 
 ### Why This Interface?
 
 | Attribute | Purpose |
 |-----------|---------|
+| `cas_category` | CAS category enum value (e.g., `CASCategory::CAS220103` for magnets) |
 | `capital_cost` | Total cost for LCOE calculation |
 | `raw_material_cost` | Material portion for cost driver analysis |
 | `fabrication_cost` | Manufacturing labor/overhead |
 | `installation_cost` | On-site assembly and integration |
 | `idiot_index` | `capital_cost / raw_material_cost` - manufacturing overhead ratio |
+
+The **cas_category** attribute enables extraction of costs by CAS hierarchy for reporting and validation against PyFECONS. Common values:
+- `CASCategory::CAS21` - Buildings and Structures
+- `CASCategory::CAS220103` - Magnets/Coils (MFE) or Lasers (IFE)
+- `CASCategory::CAS220104` - Supplementary Heating
+- `CASCategory::CAS23` - Turbine Plant Equipment
+- See `models/library/foundation/costing.sysml` for full enum definition
 
 The **idiot index** (term from SpaceX) indicates manufacturing complexity. Values of 2-4 are typical for complex engineered systems; values >5 suggest cost reduction opportunities.
 
@@ -63,7 +80,7 @@ The **idiot index** (term from SpaceX) indicates manufacturing complexity. Value
 
 When a part specializes `'Costed Component'`:
 
-- It **inherits** all five attributes (they exist but are unbound)
+- It **inherits** all six attributes (they exist but are unbound)
 - It **must** redefine (`:>>`) each attribute to provide values
 - Failure to bind leaves the attribute unbound (no parse error, but evaluation fails)
 
@@ -504,7 +521,10 @@ Before committing a cost model:
 - [ ] No "member name shadows" warnings
 - [ ] All leaf parts have exactly one `cost_model` calc usage
 - [ ] All assemblies aggregate all costed children
-- [ ] All five `'Costed Component'` attributes are bound (`:>>`)
+- [ ] All six `'Costed Component'` attributes are bound (`:>>`)
+  - [ ] `cas_category` - valid `CASCategory` enum value (e.g., `CASCategory::CAS220103`)
+  - [ ] `capital_cost`, `raw_material_cost`, `fabrication_cost`, `installation_cost`
+  - [ ] `idiot_index`
 - [ ] `NumericalFunctions::sum` is imported if arrays are used
 - [ ] Cost values are reasonable (spot-check against expected)
 
