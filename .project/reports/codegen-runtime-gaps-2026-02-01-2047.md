@@ -2,8 +2,13 @@
 
 **Date:** 2026-02-01
 **Context:** Audit of codegen-chain-spike (Item 2, end-to-end pipeline derisking epic)
-**Severity:** Major — generated code does not run without manual intervention
+**Severity:** ~~Major~~ **Resolved** — all 3 gaps fixed in upstream commits
 **Codegen repo:** `/home/reid/1cfe/sysml-codegen/`
+**Resolution date:** 2026-02-01
+**Resolution commits:**
+- `agentic-mbse`: `7413072` (L8 extractability validation)
+- `sysml-codegen`: `61aa907` (Fix three codegen runtime gaps)
+**Verification:** `plan_revisit.md` — Attempt 1 (no workarounds) succeeded with correct outputs (`area=50.0`, `total_cost=600.0`, `cost_per_area=12.0`)
 
 ---
 

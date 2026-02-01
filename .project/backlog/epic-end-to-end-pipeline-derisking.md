@@ -31,7 +31,7 @@ Prove the full pipeline — SysML model → sysml-codegen → TEAx execution →
 | Capability | Status | Gap |
 |------------|--------|-----|
 | Codegen handles nested CalcUsages | NOT PROVEN | Codegen finds top-level CalcUsages only; embedded `cost_model` in PartDefs invisible |
-| Codegen extracts a CalcUsage DAG (inter-calc dependencies) | NOT PROVEN | Untested whether codegen correctly wires calc-to-calc data flow |
+| Codegen extracts a CalcUsage DAG (inter-calc dependencies) | PROVEN (Item 2) | 3-calc chain spike: correct extraction, wiring, ordering, and runtime execution |
 | Codegen generates correct TEAx modules | NOT PROVEN | Never run on a cost model |
 | TEAx executes generated cost pipeline | NOT PROVEN | Battery demo works but no SysML-derived pipeline tested |
 | LCOE comes out the other end | NOT PROVEN | No end-to-end test exists |
@@ -205,7 +205,7 @@ The solar model's `annual_fuel_cost = 0` is a realistic value (solar has no fuel
 
 - [ ] Solar+battery SysML model compiles (`syside check` passes)
 - [ ] Model has 3 hierarchy levels, 9 leaf parts, 3 assemblies, ~15 calc defs
-- [ ] Codegen spike confirms CalcUsage-chain extraction works (Item 2)
+- [x] Codegen spike confirms CalcUsage-chain extraction works (Item 2)
 - [ ] `generate_costs.py` evaluates all component costs correctly (matches expected CSV)
 - [ ] `sysml-codegen` generates TEAx modules for system-level calcs (5 modules)
 - [ ] Handwritten implementations filled in and passing generated tests
@@ -219,7 +219,7 @@ The solar model's `annual_fuel_cost = 0` is a realistic value (solar has no fuel
 
 | Risk | Likelihood | Impact | Mitigation |
 |------|------------|--------|------------|
-| Codegen can't resolve inter-CalcUsage dependencies (DAG wiring) | Medium | High | Item 2 spike tests this before full model investment |
+| ~~Codegen can't resolve inter-CalcUsage dependencies (DAG wiring)~~ | ~~Medium~~ | ~~High~~ | **RETIRED** — Item 2 spike confirmed DAG wiring works end-to-end |
 | Codegen produces incorrect module structure | Medium | High | Run on solar model early; fix issues iteratively |
 | TEAx registry integration unclear | Medium | Medium | Battery demo is reference pattern; follow exactly |
 | Pipeline YAML wiring errors | Medium | Low | TEAx validator catches type mismatches |
@@ -293,7 +293,7 @@ The solar model's `annual_fuel_cost = 0` is a realistic value (solar has no fuel
 
 ---
 
-### Item 2: Codegen CalcUsage-Chain Spike
+### Item 2: Codegen CalcUsage-Chain Spike ✅ COMPLETE
 
 **Type**: Spike / Risk Reduction
 
@@ -314,8 +314,9 @@ If codegen can't resolve these inter-calc dependencies — recognizing that LCOE
 
 **Current State**:
 - ✅ Codegen works for independent top-level CalcUsages
-- ❓ Unknown whether codegen resolves calc-to-calc data flow
-- ❓ Unknown whether generated pipeline YAML orders modules correctly for a DAG
+- ✅ Codegen resolves calc-to-calc data flow (3-calc chain verified)
+- ✅ Generated pipeline YAML orders modules correctly for a DAG
+- ✅ End-to-end pipeline execution produces correct results with zero manual workarounds
 
 **Scope**:
 1. **Create minimal test model** (`models/tests/codegen_chain_spike/`):
@@ -343,10 +344,12 @@ If codegen can't resolve these inter-calc dependencies — recognizing that LCOE
 - Filling in handwritten implementations (just need codegen output structure)
 
 **Success Criteria**:
-- [ ] Minimal chain model compiles (`syside check` passes)
-- [ ] Codegen discovers all CalcUsages in the chain
-- [ ] Generated pipeline YAML has correct inter-module data wiring
-- [ ] Go/no-go decision documented for Items 4–5
+- [x] Minimal chain model compiles (`syside check` passes)
+- [x] Codegen discovers all CalcUsages in the chain
+- [x] Generated pipeline YAML has correct inter-module data wiring
+- [x] Go/no-go decision documented for Items 4–5
+
+**Go/No-Go Decision**: **GO.** CalcUsage-chain extraction, pipeline ordering, and end-to-end execution all work. Items 4–5 can proceed as planned.
 
 **Dependencies**: None (uses a standalone minimal model, not the solar+battery model)
 
@@ -354,6 +357,34 @@ If codegen can't resolve these inter-calc dependencies — recognizing that LCOE
 - `models/tests/codegen_chain_spike/` — minimal test model
 - `generated/codegen_chain_spike/` — codegen output
 - Spike findings document (pass/fail + any issues found)
+
+**Issues Encountered & Resolved**:
+
+The initial spike (structural evaluation) passed all 4 stages. However, when attempting to **execute** the generated pipeline at runtime, 3 gaps were discovered:
+
+| Gap | Issue | Root Cause | Fix |
+|-----|-------|-----------|-----|
+| 1 | `design_params.json` generated empty | Path filter default `"models/designs"` excluded test models | Changed default to `""` (accept all) in `sysml-codegen` |
+| 2 | `RootModel[float]` exit point type had no output handler | Exit point types not included in `CUSTOM_SCHEMA_TYPES` | Codegen now generates `primitives.py` with `Float = RootModel[float]` and includes it in `CUSTOM_SCHEMA_TYPES` |
+| 3 | Static `FusionParams` template copied into every package | Unconditional `shutil.copy` of hardcoded template | Removed the unconditional copy |
+
+All 3 gaps were fixed in upstream commits:
+- `sysml-codegen` commit `61aa907` (Fix three codegen runtime gaps)
+- `agentic-mbse` commit `7413072` (L8 extractability validation)
+
+**Verification**: After fixes, `execute_pipeline()` on freshly-regenerated output produced correct results (`area=50.0`, `total_cost=600.0`, `cost_per_area=12.0`) with zero manual workarounds (Attempt 1 in `plan_revisit.md`).
+
+**Reports**:
+- `.project/reports/codegen-runtime-gaps-2026-02-01-2047.md` — Gap analysis with root causes and reproduction steps
+- `.project/active/gap1-default-value-debug/findings.md` — Deep diagnostic of the path filter root cause (4 scripts, delta-by-delta analysis)
+- `.project/active/gap1-default-value-debug/fix-plan.md` — 5-change fix plan with prioritization
+- `.project/active/codegen-chain-spike/plan.md` — Original spike plan (structural evaluation)
+- `.project/active/codegen-chain-spike/plan_revisit.md` — Fix verification plan (runtime evaluation)
+
+**Operational Notes**:
+- Regeneration overwrites handwritten implementations. Use `--preserve-handwritten` flag to avoid this.
+- Pipeline filename is now `pipeline.yaml` (not `{package_name}_pipeline.yaml`).
+- Package symlink still needed: `ln -sfn codegen_chain_spike generated/chain_spike` for imports.
 
 ---
 
@@ -423,9 +454,16 @@ If codegen can't resolve these inter-calc dependencies — recognizing that LCOE
 - ✅ sysml-codegen exists at `/home/reid/1cfe/sysml-codegen` with full extraction → analysis → resolution → generation pipeline
 - ✅ Generates TEAx-compatible modules (ModuleBase subclasses), stencils, pipeline YAML, schemas, registry
 - ✅ Battery demo in TEAx shows reference module pattern
-- ✅ Item 2 spike has confirmed codegen handles CalcUsage chains (or identified workarounds)
+- ✅ Item 2 spike confirmed: codegen handles CalcUsage chains, end-to-end execution works with zero workarounds
+- ✅ Three runtime gaps fixed in sysml-codegen (`61aa907`): empty JSON, missing RootModel handler, stale FusionParams template
 - ❌ Never run on a model with cost patterns
 - ❌ System-level CalcUsages (5 PyFECONS-aligned calcs) untested with codegen
+
+**Lessons from Item 2 (apply to this item)**:
+- Use `--preserve-handwritten` flag when re-running codegen to avoid overwriting implementations
+- Pipeline filename is `pipeline.yaml` (not `{package_name}_pipeline.yaml`)
+- Package symlink needed for imports: `ln -sfn {output_dir} generated/{package_name}`
+- `CUSTOM_SCHEMA_TYPES` now includes primitive wrappers (`Float`, etc.) — no manual router needed
 
 **Scope**:
 1. **Run codegen**:
@@ -485,8 +523,8 @@ If codegen can't resolve these inter-calc dependencies — recognizing that LCOE
 - ✅ TEAx framework (`/home/reid/1cfe/teax/packages/teax-simkit`) is functional
 - ✅ Battery demo shows complete pipeline pattern (registry, YAML, execution, outputs)
 - ✅ `execute_pipeline()` API takes registry parameter for custom module packages
+- ✅ sysml-codegen → TEAx integration proven in chain spike (Item 2): `execute_pipeline()` with `registry` + `custom_schema_types` works
 - ❌ No fusion/solar pipeline has been executed
-- ❌ No integration between sysml-codegen output and TEAx execution
 
 **Scope**:
 1. **Create registry** (`generated/solar_battery/registry.py`):
@@ -627,7 +665,7 @@ Item 6 is the **completeness path**: eliminate the workaround by enhancing codeg
 |------------|--------|-------|
 | Coffee maker model (reference pattern) | Ready | Stage 1–3 complete |
 | `'Costed Component'` interface | Ready | `costing.sysml` complete (pending commit) |
-| sysml-codegen | Ready | Functional for top-level CalcUsages; chain handling TBD (Item 2) |
+| sysml-codegen | Ready | Functional for top-level CalcUsages; chain handling confirmed (Item 2). Runtime gaps fixed in `61aa907`. |
 | TEAx/teax-simkit | Ready | Battery demo proves framework works |
 | agentic-mbse (SysideAdapter) | Ready | Used by all scripts |
 
@@ -653,4 +691,4 @@ Item 6 is the **completeness path**: eliminate the workaround by enhancing codeg
 
 ---
 
-**Last Updated**: 2026-01-31
+**Last Updated**: 2026-02-01
