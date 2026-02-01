@@ -1,0 +1,15 @@
+path,part_def,quantity,unit_material_cost,unit_fab_cost,unit_install_cost,unit_total_cost,total_material_cost,total_fab_cost,total_install_cost,total_cost,idiot_index,cost_type,calc_def
+solar_battery_plant,Solar Battery Plant,1,,,,,22716.00,10179.00,6786.00,41205.00,1.81,assembly,
+solar_battery_plant.solar_array,Solar Array,1,,,,,12144.00,5421.60,3614.40,21204.00,1.75,assembly,
+solar_battery_plant.solar_array.pv_module,PV Module,20,428.00,192.60,128.40,749.00,8560.00,3852.00,2568.00,14980.00,1.75,leaf,PVModuleCostCalc
+solar_battery_plant.solar_array.inverter,String Inverter,4,572.00,257.40,171.60,1001.00,2288.00,1029.60,686.40,4004.00,1.75,leaf,InverterCostCalc
+solar_battery_plant.solar_array.array_bos,Array BOS,1,1200.00,540.00,360.00,2100.00,1200.00,540.00,360.00,2100.00,1.75,leaf,ArrayBOSCostCalc
+solar_battery_plant.solar_array.allocation,Solar Array Allocation,1,96.00,0.00,0.00,120.00,96.00,0.00,0.00,120.00,1.25,allocation,AllocationCostCalc
+solar_battery_plant.battery_system,Battery System,1,,,,,9146.00,4115.70,2743.80,16005.50,1.75,assembly,
+solar_battery_plant.battery_system.battery_pack,Battery Pack,8,857.50,385.875,257.25,1500.625,6860.00,3087.00,2058.00,12005.00,1.75,leaf,BatteryPackCostCalc
+solar_battery_plant.battery_system.hybrid_inverter,Hybrid Inverter,1,1714.00,771.30,514.20,2999.50,1714.00,771.30,514.20,2999.50,1.75,leaf,HybridInverterCostCalc
+solar_battery_plant.battery_system.battery_bos,Battery BOS,1,572.00,257.40,171.60,1001.00,572.00,257.40,171.60,1001.00,1.75,leaf,BatteryBOSCostCalc
+solar_battery_plant.site_infra,Site Infrastructure,1,,,,,1426.00,641.70,427.80,3995.50,2.80,assembly,
+solar_battery_plant.site_infra.racking,Racking & Mounting,1,1140.00,513.00,342.00,1995.00,1140.00,513.00,342.00,1995.00,1.75,leaf,RackingCostCalc
+solar_battery_plant.site_infra.electrical_panel,Electrical Panel,1,286.00,128.70,85.80,500.50,286.00,128.70,85.80,500.50,1.75,leaf,ElectricalPanelCostCalc
+solar_battery_plant.site_infra.permitting,Permitting & Interconnect,1,0.00,0.00,0.00,1500.00,0.00,0.00,0.00,1500.00,0.00,leaf,PermittingCostCalc

@@ -172,10 +172,13 @@ def _find_bound_outputs(owner: Any, calc_name: str) -> list[str]:
     """
     bound = []
 
-    if not hasattr(owner, "owned_members"):
-        return bound
+    # Use owned_features (includes :>> redefinition usages created by
+    # FeatureMembership), falling back to owned_members
+    features = getattr(owner, "owned_features", None)
+    if features is None:
+        features = getattr(owner, "owned_members", [])
 
-    for member in owner.owned_members:
+    for member in features:
         # Look for redefinitions
         if not hasattr(member, "owned_redefinitions"):
             continue
@@ -197,17 +200,31 @@ def _find_bound_outputs(owner: Any, calc_name: str) -> list[str]:
 
 
 def _expression_references_calc(expr: Any, calc_name: str) -> bool:
-    """Check if expression references the given calc name."""
-    # Check for FeatureChainExpression referencing calc_name
+    """Check if expression references the given calc name.
+
+    For FeatureChainExpressions like `cost_model.total_cost`, the chain structure
+    is: FeatureChainExpression -> owned_memberships[0] -> Feature ->
+    owned_memberships[0] -> FeatureReferenceExpression with referent.name == calc_name.
+    """
     type_name = type(expr).__name__
 
     if "FeatureChain" in type_name:
-        if hasattr(expr, "memberships"):
-            for membership in expr.memberships:
-                if hasattr(membership, "member_element"):
-                    target = membership.member_element
-                    if hasattr(target, "name") and target.name == calc_name:
-                        return True
+        # Walk owned_memberships to find the chain root's referent
+        for om in getattr(expr, "owned_memberships", []):
+            me = getattr(om, "member_element", None)
+            if me is None:
+                continue
+            # Direct name match
+            if getattr(me, "name", None) == calc_name:
+                return True
+            # Check nested: Feature -> owned_memberships -> FeatureReferenceExpression
+            for sub_om in getattr(me, "owned_memberships", []):
+                sub_me = getattr(sub_om, "member_element", None)
+                if sub_me is None:
+                    continue
+                referent = getattr(sub_me, "referent", None)
+                if referent and getattr(referent, "name", None) == calc_name:
+                    return True
 
     # Check string representation as fallback
     expr_str = str(expr)
