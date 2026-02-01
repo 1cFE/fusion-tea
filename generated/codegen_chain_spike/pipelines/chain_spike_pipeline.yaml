@@ -1,0 +1,52 @@
+# Generated Pipeline Configuration for chain_spike
+#
+# Auto-generated from SysML calc def dependency analysis
+# DO NOT EDIT - Regenerate using code generator
+
+metadata:
+  run_description: "Generated pipeline for chain_spike"
+  output_folder: "chain_spike_results"
+
+modules:
+  # Entry point - load inputs from JSON
+  entry_fusion:
+    module_type: EntryPoint
+    inputs:
+      design_params: DesignParams ../inputs/design_params.json
+
+
+  # chainspikelibrary.AreaCalcModule
+  chainspikedesign__spike_design__area_calc:
+    module_type: chainspikelibrary.AreaCalcModule
+    inputs:
+      length: float design_params.ChainSpikeDesign__spike_design__area_calc__length
+      width: float design_params.ChainSpikeDesign__spike_design__area_calc__width
+    outputs:
+      root: RootModel[float] ChainSpikeDesign__spike_design__area_calc__area
+
+  # chainspikelibrary.CostCalcModule
+  chainspikedesign__spike_design__cost_calc:
+    module_type: chainspikelibrary.CostCalcModule
+    inputs:
+      area: float ChainSpikeDesign__spike_design__area_calc__area.root
+      rate: float design_params.ChainSpikeDesign__spike_design__cost_calc__rate
+    outputs:
+      root: RootModel[float] ChainSpikeDesign__spike_design__cost_calc__total_cost
+
+  # chainspikelibrary.SummaryCalcModule
+  chainspikedesign__spike_design__summary:
+    module_type: chainspikelibrary.SummaryCalcModule
+    inputs:
+      area: float ChainSpikeDesign__spike_design__area_calc__area.root
+      cost: float ChainSpikeDesign__spike_design__cost_calc__total_cost.root
+    outputs:
+      root: RootModel[float] ChainSpikeDesign__spike_design__summary__cost_per_area
+
+
+  # Exit point - capture all results
+  exit_point:
+    module_type: ExitPoint
+    outputs:
+      ChainSpikeDesign__spike_design__area_calc__area: RootModel[float] ChainSpikeDesign__spike_design__area_calc__area.json
+      ChainSpikeDesign__spike_design__cost_calc__total_cost: RootModel[float] ChainSpikeDesign__spike_design__cost_calc__total_cost.json
+      ChainSpikeDesign__spike_design__summary__cost_per_area: RootModel[float] ChainSpikeDesign__spike_design__summary__cost_per_area.json

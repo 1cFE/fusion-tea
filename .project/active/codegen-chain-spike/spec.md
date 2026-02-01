@@ -1,6 +1,6 @@
 # Spec: Codegen CalcUsage-Chain Spike
 
-**Status:** Draft
+**Status:** Complete
 **Owner:** Reid Westwood
 **Created:** 2026-02-01 20:17:47 UTC
 **Complexity:** LOW
