@@ -26,6 +26,9 @@ requires-dist = [
 ]
 provides-extras = ["dev"]
 
+[package.metadata.requires-dev]
+dev = [{ name = "tiktoken", specifier = ">=0.12.0" }]
+
 [[package]]
 name = "annotated-doc"
 version = "0.0.4"

@@ -1,5 +1,5 @@
 ---
-Status: active
+Status: completed
 Priority: P0
 Created: 2026-01-10
 Updated: 2026-01-12
