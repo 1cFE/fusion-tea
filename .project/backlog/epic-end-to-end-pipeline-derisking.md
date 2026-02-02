@@ -206,7 +206,7 @@ The solar model's `annual_fuel_cost = 0` is a realistic value (solar has no fuel
 - [ ] Solar+battery SysML model compiles (`syside check` passes)
 - [ ] Model has 3 hierarchy levels, 9 leaf parts, 3 assemblies, ~15 calc defs
 - [x] Codegen spike confirms CalcUsage-chain extraction works (Item 2)
-- [ ] `generate_costs.py` evaluates all component costs correctly (matches expected CSV)
+- [x] `generate_costs.py` evaluates all component costs correctly (matches expected CSV)
 - [ ] `sysml-codegen` generates TEAx modules for system-level calcs (5 modules)
 - [ ] Handwritten implementations filled in and passing generated tests
 - [ ] TEAx pipeline executes without errors
@@ -388,7 +388,7 @@ All 3 gaps were fixed in upstream commits:
 
 ---
 
-### Item 3: Cost Evaluation & Entry Point Generation
+### Item 3: Cost Evaluation & Entry Point Generation ✅ COMPLETE
 
 **Type**: Implementation
 
@@ -397,8 +397,9 @@ All 3 gaps were fixed in upstream commits:
 **Current State**:
 - ✅ `generate_costs.py` pattern proven in coffee maker (1631 lines, 7/7 tests)
 - ✅ `compute_costs()` API exists and is importable
-- ❌ No evaluation script for solar+battery
-- ❌ No JSON entry point generation for TEAx
+- ✅ Solar+battery `generate_costs.py` adapted from coffee maker (10/10 tests)
+- ✅ `component_costs.json` and `design_params.json` generated
+- ✅ System-level LCOE verification passes ($288.68/MWh within 1%)
 
 **Scope**:
 1. **`models/tests/solar_battery/generate_costs.py`**:
@@ -426,12 +427,12 @@ All 3 gaps were fixed in upstream commits:
 - Changes to agentic-mbse
 
 **Success Criteria**:
-- [ ] `generate_costs.py` runs without errors
-- [ ] `actual_output.csv` matches `expected_output.csv` within tolerance (1e-6)
-- [ ] `component_costs.json` and `design_params.json` generated
-- [ ] All tests pass
-- [ ] CAPEX total within sanity-check range ($35k–$45k)
-- [ ] Computed LCOE matches `expected_output.csv` value (within 1%)
+- [x] `generate_costs.py` runs without errors
+- [x] `actual_output.csv` matches `expected_output.csv` within tolerance (1e-6)
+- [x] `component_costs.json` and `design_params.json` generated
+- [x] All tests pass (10/10)
+- [x] CAPEX total within sanity-check range ($35k–$45k) — $41,205.00
+- [x] Computed LCOE matches `expected_output.csv` value (within 1%) — $288.68/MWh
 
 **Dependencies**: Item 1 (SysML model)
 
@@ -691,4 +692,4 @@ Item 6 is the **completeness path**: eliminate the workaround by enhancing codeg
 
 ---
 
-**Last Updated**: 2026-02-01
+**Last Updated**: 2026-02-02
