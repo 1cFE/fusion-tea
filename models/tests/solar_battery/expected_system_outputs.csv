@@ -1,0 +1,7 @@
+calc_name,calc_def,output_name,output_value,unit,notes
+energy_production,EnergyProductionCalc,annual_energy_mwh,11.14272,MWh,8760 * 0.008 * 1.0 * 0.159
+annualized_om,AnnualizedOMCalc,annual_om_cost,160.00,USD,20.0 * 8.0
+annualized_fuel,AnnualizedFuelCalc,annual_fuel_cost,0.00,USD,0.0 * 0.0
+annualized_financial,AnnualizedFinancialCalc,capital_recovery_factor,0.070952,ratio,r*(1+r)^n/((1+r)^n-1) with r=0.05 n=25
+annualized_financial,AnnualizedFinancialCalc,annualized_capital_cost,2923.60,USD,CRF * 41205.00 total CAPEX
+lcoe,LCOECalc,lcoe_per_mwh,288.68,USD/MWh,(2923.60 + (160 + 0) * 1.8315) / 11.14272

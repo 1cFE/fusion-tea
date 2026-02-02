@@ -1,0 +1,100 @@
+# Solar+Battery LCOE Pipeline (hybrid: generate_costs.py + codegen)
+#
+# Hand-crafted pipeline that wires ComponentCostEvaluator (wrapping
+# generate_costs.py) with codegen-generated system-level modules.
+#
+# Replaces codegen-generated pipeline.yaml — only uses the 5 system-level
+# modules, not the 10 component-level ones (those are handled by compute_costs).
+
+metadata:
+  run_description: "Solar+Battery LCOE Pipeline (hybrid: generate_costs.py + codegen)"
+  output_folder: "solar_battery_results"
+
+modules:
+  # Entry point: pipeline configuration with model path
+  entry_point:
+    module_type: EntryPoint
+    inputs:
+      config: PipelineConfig ../inputs/pipeline_config.json
+
+  # Component cost evaluator (wraps generate_costs.py)
+  # MultiOutput module: each field becomes a separate RootModel[float] channel
+  # Downstream modules reference channels with .root to extract float values
+  component_costs:
+    module_type: ComponentCostEvaluator
+    inputs:
+      model_path: str config.model_path
+    outputs:
+      total_capex: RootModel[float] component_costs__total_capex
+      p_net_mw: RootModel[float] component_costs__p_net_mw
+      n_mod: RootModel[float] component_costs__n_mod
+      plant_availability: RootModel[float] component_costs__plant_availability
+      plant_lifetime: RootModel[float] component_costs__plant_lifetime
+      yearly_inflation: RootModel[float] component_costs__yearly_inflation
+      discount_rate: RootModel[float] component_costs__discount_rate
+      om_rate_per_kw_year: RootModel[float] component_costs__om_rate_per_kw_year
+      fuel_unit_cost: RootModel[float] component_costs__fuel_unit_cost
+      fuel_consumption: RootModel[float] component_costs__fuel_consumption
+      p_net_kw: RootModel[float] component_costs__p_net_kw
+
+  # System-level modules (codegen-generated wrappers, handwritten impls)
+  energy_production:
+    module_type: solarbatterylibrary.EnergyProductionCalcModule
+    inputs:
+      p_net_mw: float component_costs__p_net_mw.root
+      n_mod: float component_costs__n_mod.root
+      plant_availability: float component_costs__plant_availability.root
+    outputs:
+      root: RootModel[float] annual_energy_mwh
+
+  annualized_om:
+    module_type: solarbatterylibrary.AnnualizedOMCalcModule
+    inputs:
+      om_rate_per_kw_year: float component_costs__om_rate_per_kw_year.root
+      p_net_kw: float component_costs__p_net_kw.root
+    outputs:
+      root: RootModel[float] annual_om_cost
+
+  annualized_fuel:
+    module_type: solarbatterylibrary.AnnualizedFuelCalcModule
+    inputs:
+      fuel_unit_cost: float component_costs__fuel_unit_cost.root
+      fuel_consumption: float component_costs__fuel_consumption.root
+    outputs:
+      root: RootModel[float] annual_fuel_cost
+
+  annualized_financial:
+    module_type: solarbatterylibrary.AnnualizedFinancialCalcModule
+    inputs:
+      total_capex: float component_costs__total_capex.root
+      discount_rate: float component_costs__discount_rate.root
+      plant_lifetime: float component_costs__plant_lifetime.root
+    outputs:
+      capital_recovery_factor: RootModel[float] capital_recovery_factor
+      annualized_capital_cost: RootModel[float] annualized_capital_cost
+
+  lcoe:
+    module_type: solarbatterylibrary.LCOECalcModule
+    inputs:
+      annualized_capital_cost: float annualized_capital_cost.root
+      annual_om_cost: float annual_om_cost.root
+      annual_fuel_cost: float annual_fuel_cost.root
+      yearly_inflation: float component_costs__yearly_inflation.root
+      plant_lifetime: float component_costs__plant_lifetime.root
+      annual_energy_mwh: float annual_energy_mwh.root
+    outputs:
+      root: RootModel[float] lcoe_per_mwh
+
+  # Exit point: capture all 7 key metrics
+  # ExitPoint format: channel_name: Type filename.json
+  # The field key IS the channel name (must match a provided channel)
+  exit_point:
+    module_type: ExitPoint
+    outputs:
+      component_costs__total_capex: RootModel[float] total_capex.json
+      annual_energy_mwh: RootModel[float] annual_energy_mwh.json
+      annual_om_cost: RootModel[float] annual_om_cost.json
+      annual_fuel_cost: RootModel[float] annual_fuel_cost.json
+      capital_recovery_factor: RootModel[float] capital_recovery_factor.json
+      annualized_capital_cost: RootModel[float] annualized_capital_cost.json
+      lcoe_per_mwh: RootModel[float] lcoe_per_mwh.json

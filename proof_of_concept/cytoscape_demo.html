@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Structural View - Cytoscape Viewer</title>
+
+  <!-- Cytoscape.js core -->
+  <script src="https://unpkg.com/cytoscape@3.28.1/dist/cytoscape.min.js"></script>
+
+  <!-- Dagre layout -->
+  <script src="https://unpkg.com/dagre@0.8.5/dist/dagre.min.js"></script>
+  <script src="https://unpkg.com/cytoscape-dagre@2.5.0/cytoscape-dagre.js"></script>
+
+  <!-- Expand-collapse -->
+  <script src="https://unpkg.com/cytoscape-expand-collapse@4.1.0/cytoscape-expand-collapse.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f5f5;
+    }
+
+    #container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    #control-bar {
+      display: flex;
+      gap: 8px;
+      padding: 12px 16px;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      align-items: center;
+    }
+
+    #control-bar h1 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      margin-right: auto;
+    }
+
+    #control-bar button {
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      border: 1px solid #1976d2;
+      background: #fff;
+      color: #1976d2;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    #control-bar button:hover {
+      background: #1976d2;
+      color: #fff;
+    }
+
+    #main {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    #cy {
+      flex: 1;
+      background: white;
+    }
+
+    #info-panel {
+      width: 280px;
+      background: #fff;
+      border-left: 1px solid #ddd;
+      padding: 16px;
+      overflow-y: auto;
+    }
+
+    #info-panel h2 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #666;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    #info-panel .no-selection {
+      color: #999;
+      font-style: italic;
+    }
+
+    #info-panel .field {
+      margin-bottom: 12px;
+    }
+
+    #info-panel .field-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #666;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    #info-panel .field-value {
+      font-size: 14px;
+      color: #333;
+    }
+
+    #info-panel .field-value.multiplicity {
+      font-family: monospace;
+      background: #e3f2fd;
+      padding: 2px 6px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="control-bar">
+      <h1>Structural View</h1>
+      <button id="btn-expand-all">Expand All</button>
+      <button id="btn-collapse-all">Collapse All</button>
+      <button id="btn-fit">Fit View</button>
+      <button id="btn-export">Export PNG</button>
+    </div>
+    <div id="main">
+      <div id="cy"></div>
+      <div id="info-panel">
+        <h2>Node Details</h2>
+        <div id="info-content">
+          <p class="no-selection">Click a node to see details</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ==========================================================================
+    // PASTE CLI OUTPUT HERE
+    // Generate with: uv run python -m proof_of_concept.extraction <model-path>
+    // ==========================================================================
+    const cytoscapeData = {
+  "elements": [
+    {
+      "data": {
+        "id": "coffee_maker",
+        "label": "coffee_maker",
+        "name": "coffee_maker",
+        "type_name": "Coffee Maker",
+        "element_type": "part",
+        "parent": null,
+        "depth": 0,
+        "multiplicity": null
+      }
+    },
+    {
+      "data": {
+        "id": "coffee_maker.brewing",
+        "label": "brewing",
+        "name": "brewing",
+        "type_name": "Brewing System",
+        "element_type": "part",
+        "parent": "coffee_maker",
+        "depth": 1,
+        "multiplicity": null
+      }
+    },
+    {
+      "data": {
+        "id": "coffee_maker.brewing.heater",
+        "label": "heater [2]",
+        "name": "heater",
+        "type_name": "Heating Element",
+        "element_type": "part",
+        "parent": "coffee_maker.brewing",
+        "depth": 2,
+        "multiplicity": [
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "data": {
+        "id": "coffee_maker.brewing.pump",
+        "label": "pump",
+        "name": "pump",
+        "type_name": "Water Pump",
+        "element_type": "part",
+        "parent": "coffee_maker.brewing",
+        "depth": 2,
+        "multiplicity": null
+      }
+    },
+    {
+      "data": {
+        "id": "coffee_maker.brewing.chamber",
+        "label": "chamber",
+        "name": "chamber",
+        "type_name": "Brew Chamber",
+        "element_type": "part",
+        "parent": "coffee_maker.brewing",
+        "depth": 2,
+        "multiplicity": null
+      }
+    },
+    {
+      "data": {
+        "id": "coffee_maker.reservoir",
+        "label": "reservoir",
+        "name": "reservoir",
+        "type_name": "Water Reservoir",
+        "element_type": "part",
+        "parent": "coffee_maker",
+        "depth": 1,
+        "multiplicity": null
+      }
+    },
+    {
+      "data": {
+        "id": "coffee_maker.carafe",
+        "label": "carafe",
+        "name": "carafe",
+        "type_name": "Carafe",
+        "element_type": "part",
+        "parent": "coffee_maker",
+        "depth": 1,
+        "multiplicity": null
+      }
+    },
+    {
+      "data": {
+        "id": "coffee_maker.housing",
+        "label": "housing",
+        "name": "housing",
+        "type_name": "Housing",
+        "element_type": "part",
+        "parent": "coffee_maker",
+        "depth": 1,
+        "multiplicity": null
+      }
+    },
+    {
+      "data": {
+        "id": "coffee_maker.housing.shell",
+        "label": "shell",
+        "name": "shell",
+        "type_name": "Outer Shell",
+        "element_type": "part",
+        "parent": "coffee_maker.housing",
+        "depth": 2,
+        "multiplicity": null
+      }
+    },
+    {
+      "data": {
+        "id": "coffee_maker.housing.panel",
+        "label": "panel",
+        "name": "panel",
+        "type_name": "Control Panel",
+        "element_type": "part",
+        "parent": "coffee_maker.housing",
+        "depth": 2,
+        "multiplicity": null
+      }
+    }
+  ]
+};
+    // ==========================================================================
+
+    // Cytoscape stylesheet
+    const stylesheet = [
+      // All nodes - base style
+      {
+        selector: 'node',
+        style: {
+          'label': 'data(label)',
+          'text-valign': 'top',
+          'text-halign': 'center',
+          'text-margin-y': 8,
+          'font-size': 12,
+          'font-weight': 'bold',
+          'text-wrap': 'wrap',
+          'text-max-width': 100
+        }
+      },
+      // Part nodes (compound containers)
+      {
+        selector: 'node[element_type="part"]',
+        style: {
+          'shape': 'round-rectangle',
+          'background-color': '#e3f2fd',
+          'border-color': '#1976d2',
+          'border-width': 2,
+          'padding': 20
+        }
+      },
+      // Leaf nodes (no children) - smaller, centered label
+      {
+        selector: 'node:childless',
+        style: {
+          'width': 120,
+          'height': 40,
+          'text-valign': 'center',
+          'text-margin-y': 0
+        }
+      },
+      // Selection highlight
+      {
+        selector: ':selected',
+        style: {
+          'border-width': 4,
+          'border-color': '#ff5722'
+        }
+      },
+      // Collapsed node indicator (double border)
+      {
+        selector: '.cy-expand-collapse-collapsed-node',
+        style: {
+          'border-style': 'double',
+          'border-width': 6,
+          'border-color': '#1565c0'
+        }
+      }
+    ];
+
+    // Initialize Cytoscape
+    function initCytoscape(elements) {
+      const cy = cytoscape({
+        container: document.getElementById('cy'),
+        elements: elements,
+        style: stylesheet,
+        layout: {
+          name: 'dagre',
+          rankDir: 'TB',
+          nodeSep: 50,
+          rankSep: 80,
+          fit: true,
+          padding: 30
+        }
+      });
+
+      return cy;
+    }
+
+    // Setup expand/collapse functionality
+    function setupExpandCollapse(cy) {
+      const api = cy.expandCollapse({
+        layoutBy: {
+          name: 'dagre',
+          animate: true,
+          animationDuration: 300,
+          rankDir: 'TB',
+          nodeSep: 50,
+          rankSep: 80
+        },
+        fisheye: false,
+        animate: true,
+        undoable: false,
+        cueEnabled: false
+      });
+
+      return api;
+    }
+
+    // Export diagram as PNG
+    function exportPNG(cy) {
+      const png = cy.png({
+        output: 'blob',
+        scale: 2,
+        bg: 'white',
+        full: true
+      });
+
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(png);
+      link.download = 'structural_diagram.png';
+      link.click();
+      URL.revokeObjectURL(link.href);
+    }
+
+    // Update info panel with node details
+    function updateInfoPanel(node) {
+      const infoContent = document.getElementById('info-content');
+      const data = node.data();
+
+      let multiplicityHtml = '<span class="field-value">-</span>';
+      if (data.multiplicity) {
+        const mult = data.multiplicity;
+        const display = mult[0] === mult[1] ? `[${mult[0]}]` : `[${mult[0]}..${mult[1] || '*'}]`;
+        multiplicityHtml = `<span class="field-value multiplicity">${display}</span>`;
+      }
+
+      infoContent.innerHTML = `
+        <div class="field">
+          <div class="field-label">Name</div>
+          <div class="field-value">${data.name}</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Type</div>
+          <div class="field-value">${data.type_name}</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Element Type</div>
+          <div class="field-value">${data.element_type}</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Depth</div>
+          <div class="field-value">${data.depth}</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Multiplicity</div>
+          ${multiplicityHtml}
+        </div>
+        <div class="field">
+          <div class="field-label">ID</div>
+          <div class="field-value" style="font-family: monospace; color: #666;">${data.id}</div>
+        </div>
+      `;
+    }
+
+    // Clear info panel
+    function clearInfoPanel() {
+      const infoContent = document.getElementById('info-content');
+      infoContent.innerHTML = '<p class="no-selection">Click a node to see details</p>';
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      // Use elements directly from CLI output
+      const elements = cytoscapeData.elements;
+      const cy = initCytoscape(elements);
+      const expandCollapseApi = setupExpandCollapse(cy);
+
+      // Button handlers
+      document.getElementById('btn-expand-all').addEventListener('click', function() {
+        expandCollapseApi.expandAll();
+      });
+
+      document.getElementById('btn-collapse-all').addEventListener('click', function() {
+        expandCollapseApi.collapseAll();
+      });
+
+      document.getElementById('btn-fit').addEventListener('click', function() {
+        cy.fit(null, 30);
+      });
+
+      document.getElementById('btn-export').addEventListener('click', function() {
+        exportPNG(cy);
+      });
+
+      // Double-click to zoom to node
+      cy.on('dbltap', 'node', function(evt) {
+        const node = evt.target;
+        cy.animate({
+          fit: { eles: node, padding: 50 },
+          duration: 300
+        });
+      });
+
+      // Click to show node details
+      cy.on('tap', 'node', function(evt) {
+        const node = evt.target;
+        updateInfoPanel(node);
+      });
+
+      // Click on background to clear selection
+      cy.on('tap', function(evt) {
+        if (evt.target === cy) {
+          clearInfoPanel();
+        }
+      });
+
+      console.log('Cytoscape initialized with', elements.length, 'nodes');
+      console.log('Features: expand/collapse, zoom-to-node (double-click), PNG export, info panel');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Structural View - Cytoscape Viewer</title>
+
+  <!-- Cytoscape.js core -->
+  <script src="https://unpkg.com/cytoscape@3.28.1/dist/cytoscape.min.js"></script>
+
+  <!-- Dagre layout -->
+  <script src="https://unpkg.com/dagre@0.8.5/dist/dagre.min.js"></script>
+  <script src="https://unpkg.com/cytoscape-dagre@2.5.0/cytoscape-dagre.js"></script>
+
+  <!-- Expand-collapse -->
+  <script src="https://unpkg.com/cytoscape-expand-collapse@4.1.0/cytoscape-expand-collapse.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f5f5;
+    }
+
+    #container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    #control-bar {
+      display: flex;
+      gap: 8px;
+      padding: 12px 16px;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      align-items: center;
+    }
+
+    #control-bar h1 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      margin-right: 16px;
+    }
+
+    #model-path {
+      flex: 1;
+      max-width: 400px;
+      padding: 8px 12px;
+      font-size: 13px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    #model-path:focus {
+      outline: none;
+      border-color: #1976d2;
+    }
+
+    #control-bar button {
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      border: 1px solid #1976d2;
+      background: #fff;
+      color: #1976d2;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    #control-bar button:hover:not(:disabled) {
+      background: #1976d2;
+      color: #fff;
+    }
+
+    #control-bar button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    #btn-load {
+      background: #1976d2;
+      color: #fff;
+    }
+
+    #btn-load:hover:not(:disabled) {
+      background: #1565c0;
+    }
+
+    .spacer {
+      width: 16px;
+    }
+
+    #main {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    #cy {
+      flex: 1;
+      background: white;
+      position: relative;
+    }
+
+    #message-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #666;
+    }
+
+    #message-overlay.error {
+      color: #d32f2f;
+    }
+
+    #message-overlay h2 {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    #message-overlay p {
+      font-size: 14px;
+    }
+
+    #info-panel {
+      width: 280px;
+      background: #fff;
+      border-left: 1px solid #ddd;
+      padding: 16px;
+      overflow-y: auto;
+    }
+
+    #info-panel h2 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #666;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    #info-panel .no-selection {
+      color: #999;
+      font-style: italic;
+    }
+
+    #info-panel .field {
+      margin-bottom: 12px;
+    }
+
+    #info-panel .field-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #666;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    #info-panel .field-value {
+      font-size: 14px;
+      color: #333;
+    }
+
+    #info-panel .field-value.multiplicity {
+      font-family: monospace;
+      background: #e3f2fd;
+      padding: 2px 6px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    /* Cost display styles */
+    .cost-table {
+      font-family: monospace;
+      font-size: 13px;
+    }
+
+    .cost-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 2px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cost-row:last-child {
+      border-bottom: none;
+    }
+
+    .cost-name {
+      color: #666;
+    }
+
+    .cost-value {
+      font-weight: 500;
+    }
+
+    /* Cost styling toggle */
+    .toggle-label {
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .toggle-label input {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="control-bar">
+      <h1>Structural View</h1>
+      <input type="text" id="model-path" placeholder="Enter model path (e.g., models/tests/coffee_maker)" value="models/tests/coffee_maker">
+      <button id="btn-load">Load</button>
+      <div class="spacer"></div>
+      <button id="btn-expand-all" disabled>Expand All</button>
+      <button id="btn-collapse-all" disabled>Collapse All</button>
+      <button id="btn-fit" disabled>Fit View</button>
+      <button id="btn-export" disabled>Export PNG</button>
+      <div class="spacer"></div>
+      <label class="toggle-label">
+        <input type="checkbox" id="cost-styling-toggle" disabled>
+        Color by Cost
+      </label>
+      <label class="toggle-label">
+        <input type="checkbox" id="labels-inside-toggle" disabled>
+        Labels Inside
+      </label>
+      <select id="layout-select" disabled>
+        <option value="containment">Containment</option>
+        <option value="tree">Tree</option>
+      </select>
+    </div>
+    <div id="main">
+      <div id="cy">
+        <div id="message-overlay">
+          <h2>No Model Loaded</h2>
+          <p>Enter a model path and click Load</p>
+        </div>
+      </div>
+      <div id="info-panel">
+        <h2>Node Details</h2>
+        <div id="info-content">
+          <p class="no-selection">Click a node to see details</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Cytoscape stylesheet
+    const stylesheet = [
+      // All nodes - base style
+      {
+        selector: 'node',
+        style: {
+          'label': 'data(label)',
+          'text-valign': 'top',
+          'text-halign': 'center',
+          'text-margin-y': 8,
+          'font-size': 12,
+          'font-weight': 'bold',
+          'text-wrap': 'wrap',
+          'text-max-width': 100
+        }
+      },
+      // Part nodes (compound containers)
+      {
+        selector: 'node[element_type="part"]',
+        style: {
+          'shape': 'round-rectangle',
+          'background-color': '#e3f2fd',
+          'border-color': '#1976d2',
+          'border-width': 2,
+          'padding': 20
+        }
+      },
+      // Leaf nodes (no children) - smaller, centered label
+      {
+        selector: 'node:childless',
+        style: {
+          'width': 120,
+          'height': 40,
+          'text-valign': 'center',
+          'text-margin-y': 0
+        }
+      },
+      // Selection highlight
+      {
+        selector: ':selected',
+        style: {
+          'border-width': 4,
+          'border-color': '#ff5722'
+        }
+      },
+      // Collapsed node indicator (double border)
+      {
+        selector: '.cy-expand-collapse-collapsed-node',
+        style: {
+          'border-style': 'double',
+          'border-width': 6,
+          'border-color': '#1565c0'
+        }
+      },
+      // Edges for tree layout
+      {
+        selector: 'edge',
+        style: {
+          'width': 2,
+          'line-color': '#1976d2',
+          'target-arrow-color': '#1976d2',
+          'target-arrow-shape': 'triangle',
+          'curve-style': 'bezier'
+        }
+      }
+    ];
+
+    // Global state
+    let cy = null;
+    let expandCollapseApi = null;
+
+    // Cost coloring strategy system
+    const CostColorStrategy = {
+      GLOBAL_MINMAX: 'global_minmax',
+      PERCENT_OF_PARENT: 'percent_of_parent'
+    };
+
+    let currentCostStrategy = CostColorStrategy.PERCENT_OF_PARENT;
+
+    // Layout state
+    let originalElements = null;
+    let parentLookup = new Map();
+
+    // Initialize Cytoscape with elements
+    function initCytoscape(elements) {
+      // Destroy existing instance if any
+      if (cy) {
+        cy.destroy();
+      }
+
+      cy = cytoscape({
+        container: document.getElementById('cy'),
+        elements: elements,
+        style: stylesheet,
+        layout: {
+          name: 'dagre',
+          rankDir: 'TB',
+          nodeSep: 50,
+          rankSep: 80,
+          fit: true,
+          padding: 30
+        }
+      });
+
+      // Setup expand/collapse
+      expandCollapseApi = cy.expandCollapse({
+        layoutBy: {
+          name: 'dagre',
+          animate: true,
+          animationDuration: 300,
+          rankDir: 'TB',
+          nodeSep: 50,
+          rankSep: 80
+        },
+        fisheye: false,
+        animate: true,
+        undoable: false,
+        cueEnabled: false
+      });
+
+      // Double-click to zoom to node
+      cy.on('dbltap', 'node', function(evt) {
+        const node = evt.target;
+        cy.animate({
+          fit: { eles: node, padding: 50 },
+          duration: 300
+        });
+      });
+
+      // Click to show node details
+      cy.on('tap', 'node', function(evt) {
+        const node = evt.target;
+        updateInfoPanel(node);
+      });
+
+      // Click on background to clear selection
+      cy.on('tap', function(evt) {
+        if (evt.target === cy) {
+          clearInfoPanel();
+        }
+      });
+
+      // Enable buttons
+      setButtonsEnabled(true);
+
+      console.log('Cytoscape initialized with', elements.length, 'nodes');
+    }
+
+    // Export diagram as PNG
+    function exportPNG() {
+      if (!cy) return;
+
+      const png = cy.png({
+        output: 'blob',
+        scale: 2,
+        bg: 'white',
+        full: true
+      });
+
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(png);
+      link.download = 'structural_diagram.png';
+      link.click();
+      URL.revokeObjectURL(link.href);
+    }
+
+    // Format cost attribute name for display (capital_cost -> Capital Cost)
+    function formatCostName(name) {
+      return name.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+    }
+
+    // Format cost value for display
+    function formatCostValue(value) {
+      if (typeof value !== 'number') return '-';
+      return value.toFixed(2);
+    }
+
+    // Update info panel with node details
+    function updateInfoPanel(node) {
+      const infoContent = document.getElementById('info-content');
+      const data = node.data();
+
+      let multiplicityHtml = '<span class="field-value">-</span>';
+      if (data.multiplicity) {
+        const mult = data.multiplicity;
+        const display = mult[0] === mult[1] ? `[${mult[0]}]` : `[${mult[0]}..${mult[1] || '*'}]`;
+        multiplicityHtml = `<span class="field-value multiplicity">${display}</span>`;
+      }
+
+      // Build costs section if costs are present
+      let costsHtml = '';
+      if (data.costs && Object.keys(data.costs).length > 0) {
+        costsHtml = `
+          <div class="field">
+            <div class="field-label">Costs</div>
+            <div class="field-value cost-table">
+              ${Object.entries(data.costs).map(([name, value]) => `
+                <div class="cost-row">
+                  <span class="cost-name">${formatCostName(name)}</span>
+                  <span class="cost-value">${formatCostValue(value)}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      infoContent.innerHTML = `
+        <div class="field">
+          <div class="field-label">Name</div>
+          <div class="field-value">${data.name}</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Type</div>
+          <div class="field-value">${data.type_name || '-'}</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Element Type</div>
+          <div class="field-value">${data.element_type}</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Depth</div>
+          <div class="field-value">${data.depth}</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Multiplicity</div>
+          ${multiplicityHtml}
+        </div>
+        ${costsHtml}
+        <div class="field">
+          <div class="field-label">ID</div>
+          <div class="field-value" style="font-family: monospace; color: #666;">${data.id}</div>
+        </div>
+      `;
+    }
+
+    // Clear info panel
+    function clearInfoPanel() {
+      const infoContent = document.getElementById('info-content');
+      infoContent.innerHTML = '<p class="no-selection">Click a node to see details</p>';
+    }
+
+    // Show message overlay
+    function showMessage(title, message, isError = false) {
+      const overlay = document.getElementById('message-overlay');
+      overlay.innerHTML = `<h2>${title}</h2><p>${message}</p>`;
+      overlay.className = isError ? 'error' : '';
+      overlay.style.display = 'block';
+    }
+
+    // Hide message overlay
+    function hideMessage() {
+      document.getElementById('message-overlay').style.display = 'none';
+    }
+
+    // Enable/disable diagram buttons
+    function setButtonsEnabled(enabled) {
+      document.getElementById('btn-expand-all').disabled = !enabled;
+      document.getElementById('btn-collapse-all').disabled = !enabled;
+      document.getElementById('btn-fit').disabled = !enabled;
+      document.getElementById('btn-export').disabled = !enabled;
+      document.getElementById('cost-styling-toggle').disabled = !enabled;
+      document.getElementById('labels-inside-toggle').disabled = !enabled;
+      document.getElementById('layout-select').disabled = !enabled;
+
+      // Reset toggles when disabling
+      if (!enabled) {
+        document.getElementById('cost-styling-toggle').checked = false;
+        document.getElementById('labels-inside-toggle').checked = false;
+        document.getElementById('layout-select').value = 'containment';
+      }
+    }
+
+    // Load model from API
+    async function loadModel(path) {
+      const loadBtn = document.getElementById('btn-load');
+      const pathInput = document.getElementById('model-path');
+
+      // Show loading state
+      loadBtn.disabled = true;
+      loadBtn.textContent = 'Loading...';
+      pathInput.disabled = true;
+      setButtonsEnabled(false);
+      showMessage('Loading...', `Fetching model from ${path}`);
+
+      try {
+        const response = await fetch(`/api/model/${path}`);
+
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.detail || `HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (!data.elements || data.elements.length === 0) {
+          throw new Error('No structural elements found in model');
+        }
+
+        hideMessage();
+
+        // Store original elements for layout switching
+        originalElements = data.elements;
+
+        // Cache parent relationships for cost coloring in tree mode
+        parentLookup.clear();
+        data.elements.forEach(el => {
+          if (el.data.parent) {
+            parentLookup.set(el.data.id, el.data.parent);
+          }
+        });
+
+        // Reset layout select to containment
+        document.getElementById('layout-select').value = 'containment';
+
+        initCytoscape(data.elements);
+
+      } catch (error) {
+        console.error('Failed to load model:', error);
+        showMessage('Error Loading Model', error.message, true);
+        setButtonsEnabled(false);
+
+        // Destroy cytoscape if exists
+        if (cy) {
+          cy.destroy();
+          cy = null;
+        }
+      } finally {
+        // Reset loading state
+        loadBtn.disabled = false;
+        loadBtn.textContent = 'Load';
+        pathInput.disabled = false;
+      }
+    }
+
+    // Cost coloring strategy: Global min/max normalization
+    function computeGlobalMinMax(nodes, costAttr) {
+      const costs = nodes
+        .map(n => n.data(costAttr))
+        .filter(v => typeof v === 'number');
+
+      if (costs.length === 0) return null;
+
+      const minCost = Math.min(...costs);
+      const maxCost = Math.max(...costs);
+
+      const result = new Map();
+      nodes.forEach(node => {
+        const cost = node.data(costAttr);
+        if (typeof cost === 'number') {
+          const t = maxCost > minCost ? (cost - minCost) / (maxCost - minCost) : 0;
+          result.set(node.id(), t);
+        }
+      });
+      return result;
+    }
+
+    // Cost coloring strategy: Percentage of parent
+    function computePercentOfParent(nodes, costAttr) {
+      const result = new Map();
+
+      // Build parent lookup
+      const nodeMap = new Map();
+      nodes.forEach(n => nodeMap.set(n.id(), n));
+
+      nodes.forEach(node => {
+        const cost = node.data(costAttr);
+        // Use parentLookup fallback for tree mode (where parent property is removed)
+        const parentId = node.data('parent') || parentLookup.get(node.id());
+
+        if (typeof cost !== 'number') return;
+
+        if (!parentId) {
+          // Root node - neutral color (t = 0)
+          result.set(node.id(), 0);
+          return;
+        }
+
+        const parent = nodeMap.get(parentId);
+        const parentCost = parent ? parent.data(costAttr) : null;
+
+        if (typeof parentCost === 'number' && parentCost > 0) {
+          // Percentage of parent (capped at 1.0)
+          const t = Math.min(cost / parentCost, 1.0);
+          result.set(node.id(), t);
+        } else {
+          result.set(node.id(), 0);
+        }
+      });
+
+      return result;
+    }
+
+    // Linear color interpolation between two hex colors
+    function lerpColor(color1, color2, t) {
+      const r1 = parseInt(color1.slice(1, 3), 16);
+      const g1 = parseInt(color1.slice(3, 5), 16);
+      const b1 = parseInt(color1.slice(5, 7), 16);
+      const r2 = parseInt(color2.slice(1, 3), 16);
+      const g2 = parseInt(color2.slice(3, 5), 16);
+      const b2 = parseInt(color2.slice(5, 7), 16);
+      const r = Math.round(r1 + (r2 - r1) * t);
+      const g = Math.round(g1 + (g2 - g1) * t);
+      const b = Math.round(b1 + (b2 - b1) * t);
+      return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+    }
+
+    // Apply cost-based coloring to nodes using current strategy
+    function applyCostStyling(enabled) {
+      if (!cy) return;
+
+      if (enabled) {
+        let intensities;
+
+        switch (currentCostStrategy) {
+          case CostColorStrategy.GLOBAL_MINMAX:
+            intensities = computeGlobalMinMax(cy.nodes(), 'capital_cost');
+            break;
+          case CostColorStrategy.PERCENT_OF_PARENT:
+            intensities = computePercentOfParent(cy.nodes(), 'capital_cost');
+            break;
+          default:
+            intensities = computePercentOfParent(cy.nodes(), 'capital_cost');
+        }
+
+        if (!intensities) return;
+
+        // Apply gradient colors (light blue -> red)
+        cy.nodes().forEach(node => {
+          const t = intensities.get(node.id());
+          if (t !== undefined) {
+            const color = lerpColor('#e3f2fd', '#ff5252', t);
+            node.style('background-color', color);
+          }
+        });
+      } else {
+        // Reset to default styling
+        cy.nodes().forEach(node => {
+          node.style('background-color', '#e3f2fd');
+        });
+      }
+    }
+
+    // Apply label positioning style to container nodes
+    function applyLabelStyle(labelsInside) {
+      if (!cy) return;
+
+      // Update container nodes (non-leaf)
+      cy.nodes().not(':childless').forEach(node => {
+        if (labelsInside) {
+          node.style({
+            'text-valign': 'center',
+            'text-margin-y': 0
+          });
+        } else {
+          node.style({
+            'text-valign': 'top',
+            'text-margin-y': 8
+          });
+        }
+      });
+    }
+
+    // Transform compound node data to edge-based hierarchy for tree layout
+    function transformToTreeData(elements) {
+      const nodes = [];
+      const edges = [];
+
+      elements.forEach(el => {
+        const data = { ...el.data };
+        const parentId = data.parent;
+        delete data.parent;  // Remove compound relationship
+        nodes.push({ data });
+
+        if (parentId) {
+          edges.push({
+            data: {
+              id: `${parentId}->${data.id}`,
+              source: parentId,
+              target: data.id
+            }
+          });
+        }
+      });
+
+      return [...nodes, ...edges];
+    }
+
+    // Switch between layout types
+    function switchLayout(layoutType) {
+      if (!cy || !originalElements) return;
+
+      // Remove all existing elements first
+      cy.elements().remove();
+
+      if (layoutType === 'tree') {
+        const treeElements = transformToTreeData(originalElements);
+        cy.add(treeElements);
+        cy.layout({
+          name: 'dagre',
+          rankDir: 'TB',
+          nodeSep: 80,
+          rankSep: 100,
+          fit: true,
+          padding: 30
+        }).run();
+      } else {
+        // Restore compound node structure
+        cy.add(originalElements);
+        cy.layout({
+          name: 'dagre',
+          rankDir: 'TB',
+          nodeSep: 50,
+          rankSep: 80,
+          fit: true,
+          padding: 30
+        }).run();
+      }
+
+      // Re-apply current styling options
+      applyCostStyling(document.getElementById('cost-styling-toggle').checked);
+      applyLabelStyle(document.getElementById('labels-inside-toggle').checked);
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const loadBtn = document.getElementById('btn-load');
+      const pathInput = document.getElementById('model-path');
+
+      // Load button handler
+      loadBtn.addEventListener('click', function() {
+        const path = pathInput.value.trim();
+        if (path) {
+          loadModel(path);
+        }
+      });
+
+      // Enter key in input field
+      pathInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          const path = pathInput.value.trim();
+          if (path) {
+            loadModel(path);
+          }
+        }
+      });
+
+      // Button handlers
+      document.getElementById('btn-expand-all').addEventListener('click', function() {
+        if (expandCollapseApi) expandCollapseApi.expandAll();
+      });
+
+      document.getElementById('btn-collapse-all').addEventListener('click', function() {
+        if (expandCollapseApi) expandCollapseApi.collapseAll();
+      });
+
+      document.getElementById('btn-fit').addEventListener('click', function() {
+        if (cy) cy.fit(null, 30);
+      });
+
+      document.getElementById('btn-export').addEventListener('click', function() {
+        exportPNG();
+      });
+
+      // Cost styling toggle handler
+      document.getElementById('cost-styling-toggle').addEventListener('change', function() {
+        applyCostStyling(this.checked);
+      });
+
+      // Labels inside toggle handler
+      document.getElementById('labels-inside-toggle').addEventListener('change', function() {
+        applyLabelStyle(this.checked);
+      });
+
+      // Layout select handler
+      document.getElementById('layout-select').addEventListener('change', function() {
+        switchLayout(this.value);
+      });
+
+      console.log('Structural View ready. Enter a model path and click Load.');
+    });
+  </script>
+</body>
+</html>

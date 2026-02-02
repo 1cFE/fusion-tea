@@ -8,3 +8,15 @@ wheels/
 
 # Virtual environments
 .venv
+
+.env
+# Tool-owned files (managed by agentic-mbse init --dev)
+.claude/commands/
+.claude/agents/
+.claude/skills/
+.claude/hooks/
+modeling_project/MODELING_GUIDE.md
+modeling_project/MODELING_PROCESS.md
+work/EPIC_GUIDE.md
+work/backlog/epic_template.md
+.claude/.tool-hashes.json

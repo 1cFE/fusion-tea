@@ -1,0 +1,21 @@
+{
+  "total_capex": 41205.0,
+  "solar_array": {
+    "total_cost": 21204.0,
+    "material_cost": 12144.0,
+    "fab_cost": 5421.6,
+    "install_cost": 3614.4
+  },
+  "battery_system": {
+    "total_cost": 16005.5,
+    "material_cost": 9146.0,
+    "fab_cost": 4115.7,
+    "install_cost": 2743.7999999999997
+  },
+  "site_infra": {
+    "total_cost": 3995.5,
+    "material_cost": 1426.0,
+    "fab_cost": 641.7,
+    "install_cost": 427.8
+  }
+}
