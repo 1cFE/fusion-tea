@@ -5,7 +5,8 @@
       "Read(/home/reid/1cfe/agentic-mbse/**)",
       "Write(/home/reid/1cfe/agentic-mbse/**)",
       "Read(/home/reid/1cfe/sysml-codegen/**)",
-      "Read(/home/reid/PyFECONS/**)"
+      "Read(/home/reid/PyFECONS/**)",
+      "Bash(uv run agentic-mbse *)"
     ]
   }
 }

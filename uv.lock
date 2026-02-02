@@ -27,7 +27,10 @@ requires-dist = [
 provides-extras = ["dev"]
 
 [package.metadata.requires-dev]
-dev = [{ name = "tiktoken", specifier = ">=0.12.0" }]
+dev = [
+    { name = "tiktoken", specifier = ">=0.12.0" },
+    { name = "types-pyyaml", specifier = ">=6.0.12.20250915" },
+]
 
 [[package]]
 name = "annotated-doc"
