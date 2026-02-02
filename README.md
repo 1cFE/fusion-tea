@@ -191,31 +191,135 @@ uv run agentic-mbse validate --complete models/
 
 ---
 
-## The MBSE Workflow
+## End-to-End Workflow
 
-Work flows through a **pipeline** with validation at each stage:
+The project spans six phases, from project setup through simulation results. Each phase lists the commands used and the artifacts produced.
+
+### Phase 1: Project Initialization
+
+Set up the project, define goals, and register domain sources.
 
 ```
-/research {topic}           Optional: explore domain
-       |
-       v
-/spec-model {feature}       Define requirements
-       |
-       v
-/design-model {feature}     Design + prototype + validate
-       |
-       v
-/plan-model {feature}       Plan implementation phases
-       |
-       v
-/implement-model {feature}  Create SysML files
-       |
-       v
-/audit-models               Validate against sources
-       |
-       v
-/backlog clear              Archive completed work
+/onboard                              Set goals, scope, domain context
+    │                                 → modeling_project/OVERVIEW.md
+    ├── /manage-sources               Register authority sources
+    │                                 → knowledge/SOURCE_INDEX.md
+    └── uv run agentic-mbse          Install slash commands & agents
+            init --dev                → .claude/commands/, agents/, skills/
+
+    uv run sysml-codegen              Install codegen slash commands
+        install-commands              → .claude/commands/teax-completion.md
 ```
+
+### Phase 2: Research & Knowledge Curation
+
+Explore domain sources, capture approved insights, and record architectural decisions.
+
+```
+/research {topic}                     Deep-dive into domain sources
+    │                                 → knowledge/research/pending/*.md
+    │
+uv run agentic-mbse pm               Approve findings, register insights
+  approve-research <file>             → knowledge/KNOWLEDGE.md (DI-XXX)
+  --insights '<json>'
+    │
+uv run agentic-mbse pm               Record architectural decisions
+  register-decision ...               → modeling_project/ARCHITECTURE.md (AD-XXX)
+
+uv run agentic-mbse pm               Promote cross-cutting requirements
+  promote-requirement ...             → modeling_project/REQUIREMENTS.md (PR-XXX)
+```
+
+### Phase 3: Backlog & Epic Management
+
+Create and organize work items.
+
+```
+/backlog add {description}            Create work items (WI-XXX)
+                                      → work/BACKLOG.md
+                                      → work/backlog/epic-*.md
+
+uv run agentic-mbse status            Dashboard: progress, gaps, next steps
+```
+
+### Phase 4: Modeling Workflow (per work item)
+
+Spec → Design → Plan → Implement → Validate → Archive.
+
+```
+/spec-model {feature}                 Define requirements & success criteria
+    │                                 → work/active/{feature}/spec.md
+    ▼
+/design-model {feature}               Architecture decisions, prototyping
+    │                                 → work/active/{feature}/design.md
+    ▼
+/plan-model {feature}                 Phased plan with validation gates
+    │                                 → work/active/{feature}/plan.md
+    ▼
+/implement-model {feature}            Write SysML v2 files
+    │                                 → models/library/**/*.sysml
+    │                                 → models/designs/**/*.sysml
+    ▼
+uv run agentic-mbse validate         8-level quality checks
+  models/                             L1-3: Syntax, Structure, Dataflow (blocking)
+    │                                 L4-8: Constraints, Semantics, Traceability,
+    ▼                                        Architecture, Codegen (advisory)
+/audit-models                         Compare outputs against PyFECONS
+    │                                 and domain sources
+    ▼
+/backlog clear                        Archive completed work item
+                                      → work/completed/{feature}/
+```
+
+### Phase 5: Code Generation (sysml-codegen)
+
+Generate Python simulation code from validated SysML models.
+
+```
+uv run sysml-codegen generate         Generate Python from SysML
+  --models models/{path}              → generated/{pkg}/modules/
+  --output generated/{pkg}            → generated/{pkg}/schemas/
+                                      → generated/{pkg}/inputs/
+                                      → generated/{pkg}/pipelines/
+                                      → generated/{pkg}/handwritten/*_impl.py
+                                      → generated/{pkg}/IMPLEMENTATION_BACKLOG.md
+    │
+    ▼
+/teax-completion                      Fill in handwritten implementations
+                                      guided by IMPLEMENTATION_BACKLOG.md
+                                      → generated/{pkg}/handwritten/ (completed)
+```
+
+### Phase 6: Pipeline Execution & Analysis
+
+Run the TEAx simulation pipeline and verify results.
+
+```
+uv run python                         Execute the TEAx simulation pipeline
+  generated/{pkg}/run_pipeline.py     → generated/{pkg}/outputs/{run-id}/*.json
+    │
+    ▼
+uv run python                         Verify outputs against expected values
+  generated/{pkg}/verify_pipeline.py  (tolerances defined in verify script)
+    │
+    ▼
+uv run python scripts/                Combine per-metric JSON files
+  combine_results.py                  into single combined.json
+  generated/{pkg}/outputs/{run}/
+
+Iterate: adjust design.sysml parameters → re-run pipeline
+```
+
+### Key Tools by Repository
+
+| Repo | Tool | Purpose |
+|------|------|---------|
+| **agentic-mbse** | `agentic-mbse validate`, `status`, `pm` | Model validation, project management |
+| **agentic-mbse** | Slash commands (`/spec-model`, etc.) | Guided modeling workflow |
+| **sysml-codegen** | `sysml-codegen generate` | SysML → Python codegen |
+| **sysml-codegen** | `/teax-completion` | Fill in generated stencils |
+| **teax** | `simkit` runtime | Pipeline execution framework |
+| **fusion-tea** | `scripts/combine_results.py` | Post-processing results |
 
 ---
 

@@ -1,0 +1,148 @@
+title: {
+  label: Fusion TEA — End-to-End Workflow
+  near: top-center
+  shape: text
+  style: { font-size: 28; bold: true; font-color: "#1a1a2e" }
+}
+
+grid: {
+  label: ""
+  grid-columns: 3
+  grid-gap: 20
+  style: { fill: transparent; stroke: transparent }
+
+  # ============ ROW 1 ============
+
+  phase1: {
+    label: "1 · Project Init"
+    style: { fill: "#e8f4f8"; stroke: "#2196F3"; border-radius: 8; font-size: 16; bold: true }
+
+    a: "/onboard" { style: { fill: "#bbdefb"; border-radius: 6; font-size: 13 } }
+    b: "/manage-sources" { style: { fill: "#bbdefb"; border-radius: 6; font-size: 13 } }
+    c: "agentic-mbse init --dev" { style: { fill: "#c8e6c9"; border-radius: 6; font-size: 13 } }
+    d: "sysml-codegen install-commands" { style: { fill: "#c8e6c9"; border-radius: 6; font-size: 13 } }
+    out: "OVERVIEW.md\nSOURCE_INDEX.md\n.claude/commands/" {
+      shape: page; style: { fill: "#fff9c4"; font-size: 11; italic: true }
+    }
+
+    a -> b
+    a -> c
+    c -> d
+    b -> out
+    d -> out
+  }
+
+  phase2: {
+    label: "2 · Research & Knowledge"
+    style: { fill: "#f3e5f5"; stroke: "#9C27B0"; border-radius: 8; font-size: 16; bold: true }
+
+    a: "/research {topic}" { style: { fill: "#ce93d8"; border-radius: 6; font-size: 13 } }
+    b: "pm approve-research" { style: { fill: "#c8e6c9"; border-radius: 6; font-size: 13 } }
+    c: "pm register-decision\npm promote-requirement" { style: { fill: "#c8e6c9"; border-radius: 6; font-size: 13 } }
+    out: "KNOWLEDGE.md (DI-XXX)\nARCHITECTURE.md (AD-XXX)\nREQUIREMENTS.md (PR-XXX)" {
+      shape: page; style: { fill: "#fff9c4"; font-size: 11; italic: true }
+    }
+
+    a -> b -> c -> out
+  }
+
+  phase3: {
+    label: "3 · Backlog"
+    style: { fill: "#fff3e0"; stroke: "#FF9800"; border-radius: 8; font-size: 16; bold: true }
+
+    a: "/backlog add" { style: { fill: "#ffcc80"; border-radius: 6; font-size: 13 } }
+    b: "agentic-mbse status" { style: { fill: "#c8e6c9"; border-radius: 6; font-size: 13 } }
+    out: "BACKLOG.md (WI-XXX)\nepic-*.md" {
+      shape: page; style: { fill: "#fff9c4"; font-size: 11; italic: true }
+    }
+
+    a -> b -> out
+  }
+
+  # ============ ROW 2 ============
+
+  phase4: {
+    label: "4 · Modeling Workflow (per work item)"
+    style: { fill: "#e8f5e9"; stroke: "#4CAF50"; border-radius: 8; font-size: 16; bold: true }
+
+    a: "/spec-model" { style: { fill: "#a5d6a7"; border-radius: 6; font-size: 13 } }
+    b: "/design-model" { style: { fill: "#a5d6a7"; border-radius: 6; font-size: 13 } }
+    c: "/plan-model" { style: { fill: "#a5d6a7"; border-radius: 6; font-size: 13 } }
+    d: "/implement-model" { style: { fill: "#a5d6a7"; border-radius: 6; font-size: 13 } }
+    e: "agentic-mbse validate" { style: { fill: "#c8e6c9"; border-radius: 6; font-size: 13 } }
+    f: "/audit-models" { style: { fill: "#a5d6a7"; border-radius: 6; font-size: 13 } }
+    g: "/backlog clear" { style: { fill: "#a5d6a7"; border-radius: 6; font-size: 13 } }
+    out: "spec.md · design.md · plan.md\nmodels/**/*.sysml\nwork/completed/" {
+      shape: page; style: { fill: "#fff9c4"; font-size: 11; italic: true }
+    }
+
+    a -> b -> c -> d -> e -> f -> g -> out
+  }
+
+  phase5: {
+    label: "5 · Code Generation"
+    style: { fill: "#fce4ec"; stroke: "#E91E63"; border-radius: 8; font-size: 16; bold: true }
+
+    a: "sysml-codegen generate\n--models ... --output ..." { style: { fill: "#f48fb1"; border-radius: 6; font-size: 13 } }
+    b: "/teax-completion" { style: { fill: "#f48fb1"; border-radius: 6; font-size: 13 } }
+    out: "generated/{pkg}/\nmodules/ · schemas/ · inputs/\nhandwritten/ · pipelines/\nIMPLEMENTATION_BACKLOG.md" {
+      shape: page; style: { fill: "#fff9c4"; font-size: 11; italic: true }
+    }
+
+    a -> b -> out
+  }
+
+  phase6: {
+    label: "6 · Pipeline & Analysis"
+    style: { fill: "#efebe9"; stroke: "#795548"; border-radius: 8; font-size: 16; bold: true }
+
+    a: "run_pipeline.py" { style: { fill: "#bcaaa4"; border-radius: 6; font-size: 13 } }
+    b: "verify_pipeline.py" { style: { fill: "#bcaaa4"; border-radius: 6; font-size: 13 } }
+    c: "combine_results.py" { style: { fill: "#bcaaa4"; border-radius: 6; font-size: 13 } }
+    out: "outputs/{run-id}/\ncombined.json\nLCOE · CAPEX · energy" {
+      shape: page; style: { fill: "#fff9c4"; font-size: 11; italic: true }
+    }
+
+    a -> b -> c -> out
+  }
+}
+
+# ============ Phase flow arrows ============
+
+grid.phase1 -> grid.phase2: { style: { stroke: "#666"; stroke-width: 2 } }
+grid.phase2 -> grid.phase3: { style: { stroke: "#666"; stroke-width: 2 } }
+grid.phase3 -> grid.phase4: { style: { stroke: "#666"; stroke-width: 2 } }
+grid.phase4 -> grid.phase5: { style: { stroke: "#666"; stroke-width: 2 } }
+grid.phase5 -> grid.phase6: { style: { stroke: "#666"; stroke-width: 2 } }
+
+# ============ Iteration loop ============
+
+grid.phase6 -> grid.phase4: "iterate: adjust params, re-run" {
+  style: { stroke: "#E91E63"; stroke-width: 2; stroke-dash: 5; font-size: 11; italic: true }
+}
+
+# ============ Legend ============
+
+legend: {
+  label: Legend
+  near: bottom-center
+  grid-columns: 5
+  grid-gap: 8
+  style: { fill: "#fafafa"; stroke: "#ccc"; border-radius: 6; font-size: 12 }
+
+  a: "Slash cmd\n(Claude Code)" {
+    shape: rectangle; style: { fill: "#a5d6a7"; border-radius: 4; font-size: 11 }
+  }
+  b: "CLI cmd\n(uv run ...)" {
+    shape: rectangle; style: { fill: "#c8e6c9"; border-radius: 4; font-size: 11 }
+  }
+  c: "Codegen\ntool" {
+    shape: rectangle; style: { fill: "#f48fb1"; border-radius: 4; font-size: 11 }
+  }
+  d: "Python\nscript" {
+    shape: rectangle; style: { fill: "#bcaaa4"; border-radius: 4; font-size: 11 }
+  }
+  e: "Output\nartifact" {
+    shape: page; style: { fill: "#fff9c4"; font-size: 11 }
+  }
+}
