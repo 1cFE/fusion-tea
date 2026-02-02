@@ -42,14 +42,34 @@ Key constraints:
 - `models/` - SysML v2 models
   - `library/` - Reusable definitions (part defs, calc defs, materials)
   - `designs/` - Specific fusion concept instances (CATF, stellarator, etc.)
-- `SOURCE_INDEX.md` - **Read this for domain knowledge sources**
-- `modeling_pm/` - Project management and documentation
+- `knowledge/` - Domain knowledge and research
+  - `SOURCE_INDEX.md` - **Read this for domain knowledge sources**
+  - `KNOWLEDGE.md` - Domain insight registry (DI-XXX entries from research)
+  - `research/` - Research pipeline (`pending/`, `approved/`, `impacts/`)
+  - `sources/` - Domain source documents (e.g., COST_MODELING.md)
+- `modeling_project/` - Project definition and architecture
+  - `OVERVIEW.md` - Project overview, goals, and domain context
+  - `ARCHITECTURE.md` - Architectural decisions registry (AD-XXX entries)
+  - `REQUIREMENTS.md` - Project requirements registry (PR-XXX entries)
+  - `VALIDATION_MATRIX.md` - Verification criteria registry (SV-XXX entries)
+  - `MODELING_GUIDE.md` - SysML v2 modeling reference (tool-owned)
+  - `MODELING_PROCESS.md` - MBSE workflow process (tool-owned)
+- `work/` - Work management
+  - `BACKLOG.md` - Work item registry with YAML frontmatter (WI-XXX IDs)
+  - `EPIC_GUIDE.md` - Epic authoring guide (tool-owned)
+  - `backlog/` - Epic decomposition files
+  - `active/` - In-progress work items (spec.md, design.md, plan.md)
+  - `completed/` - Archived completed work items
+  - `learnings/` - RAW_LEARNINGS.md and session insights
+  - `analysis/` - Ad-hoc analysis artifacts
+- `data/` - Structured data
+  - `traceability_matrix.csv` - Element-to-source traceability
 
 ## MBSE Workflow
 
 When helping with MBSE tasks:
 
-1. **Always check SOURCE_INDEX.md first** for reference sources
+1. **Always check `knowledge/SOURCE_INDEX.md` first** for reference sources
 2. **Use `/research` to explore sources** when domain knowledge is needed
 3. **Follow the workflow**: spec → design → plan → implement
 4. **Validate against sources** using `/audit-models`
@@ -66,7 +86,7 @@ When helping with MBSE tasks:
 
 **Primary reference**: PyFECONS at `/home/reid/PyFECONS` - Python implementation of fusion costing algorithms, physics calculations, and economic models.
 
-See `SOURCE_INDEX.md` for complete listing with:
+See `knowledge/SOURCE_INDEX.md` for complete listing with:
 - Source locations (paths/URLs)
 - What each source is used for
 - How to validate against each source
