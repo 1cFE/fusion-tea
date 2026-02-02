@@ -1,3 +1,12 @@
+---
+Status: completed
+Scale: standard
+Epic: Power Balance Calculations
+Owner: Reid Westwood
+Created: 2026-01-26
+Updated: 2026-01-26
+---
+
 # Model Enhancement Specification: Power Balance Calculations
 
 **Type**: Model Enhancement

@@ -1,3 +1,11 @@
+---
+Status: complete
+Created: 2026-01-12
+Updated: 2026-01-12
+Related Artifacts:
+  Spec: ./spec.md
+---
+
 # Design: Cost Patterns Demo - Coffee Maker Model
 
 **Type:** SysMLv2 Models (Test/Validation)

@@ -1,3 +1,11 @@
+---
+Status: failed
+Scale: standard
+Owner: Reid Westwood
+Created: 2026-01-16
+Updated: 2026-01-16
+---
+
 # Model Enhancement Specification: Explicit Types for Redefines Pattern
 
 **Type**: Model Enhancement + Documentation Update

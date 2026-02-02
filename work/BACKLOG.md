@@ -1,359 +1,205 @@
+---
+epics:
+  - name: "Cost Modeling Patterns De-Risking"
+    priority: P0
+    status: active
+    file: backlog/epic-cost-patterns-derisking.md
+    items:
+      - id: WI-001
+        name: "Coffee Maker Pattern Fixes"
+        scale: standard
+        status: active
+      - id: WI-002
+        name: "Cost Patterns Demo"
+        scale: standard
+        status: active
+
+  - name: "sysml-codegen Upgrade"
+    priority: P1
+    status: draft
+    file: backlog/epic-sysml-codegen-upgrade.md
+    items: []
+
+standalone:
+  - id: WI-003
+    name: "Explicit Types Redefines"
+    scale: standard
+    priority: P1
+    status: failed
+  - id: WI-004
+    name: "Foundation Package"
+    scale: standard
+    priority: P0
+    status: completed
+    completed: 2026-01-26
+  - id: WI-005
+    name: "Power Balance Calculations"
+    scale: standard
+    priority: P0
+    status: completed
+    completed: 2026-01-26
+  - id: WI-006
+    name: "Create 'Costed Component' Interface"
+    scale: standard
+    priority: P0
+    status: backlog
+  - id: WI-007
+    name: "Power Core Definitions"
+    scale: standard
+    priority: P1
+    status: backlog
+  - id: WI-008
+    name: "Geometry Calculations"
+    scale: standard
+    priority: P1
+    status: backlog
+  - id: WI-009
+    name: "Magnet System (MFE)"
+    scale: standard
+    priority: P1
+    status: backlog
+  - id: WI-010
+    name: "First CATF MFE Design"
+    scale: standard
+    priority: P1
+    status: backlog
+  - id: WI-011
+    name: "CAS22 Subsystem Costing"
+    scale: standard
+    priority: P2
+    status: backlog
+  - id: WI-012
+    name: "Heating System Definitions"
+    scale: standard
+    priority: P2
+    status: backlog
+  - id: WI-013
+    name: "Balance of Plant"
+    scale: standard
+    priority: P2
+    status: backlog
+  - id: WI-014
+    name: "Cost Rollup and LCOE"
+    scale: standard
+    priority: P2
+    status: backlog
+  - id: WI-015
+    name: "IFE Variant Support"
+    scale: standard
+    priority: P2
+    status: backlog
+  - id: WI-016
+    name: "Full CAS Coverage"
+    scale: standard
+    priority: P3
+    status: backlog
+  - id: WI-017
+    name: "Additional Fusion Concepts"
+    scale: standard
+    priority: P3
+    status: backlog
+  - id: WI-018
+    name: "Model p_dee and eta_de Power Paths"
+    scale: standard
+    priority: P3
+    status: backlog
+---
+
 # Work Backlog
 
 Prioritized list of work items for FusionTEA SysML v2 modeling, based on PyFECONS library mapping strategy.
 
 ---
 
-## Recently Completed
+## Epics
 
-### Epic: Foundation Package - COMPLETE (2026-01-26)
-**Priority**: P0
+### Cost Modeling Patterns De-Risking (P0, active)
 
-**Deliverables**:
-- `models/library/foundation/types.sysml` - 13 enum definitions
-- `models/library/foundation/units.sysml` - 6 custom attribute definitions
-- `models/library/foundation/materials.sysml` - 12 material part definitions
-- `tests/models/test_foundation.py` - 14 regression tests
-- `models/tests/foundation_import_test.sysml` - Import validation
+**File**: `backlog/epic-cost-patterns-derisking.md`
 
-**Validation**: All tests pass, all files parse, documentation complete with Source citations
+| ID | Name | Scale | Status |
+|----|------|-------|--------|
+| WI-001 | Coffee Maker Pattern Fixes | standard | active |
+| WI-002 | Cost Patterns Demo | standard | active |
 
----
+**Key validated patterns**: `NumericalFunctions::sum` for multiplicity aggregation, dot notation for attribute binding, `redefines` for adding features, parameterized multiplicity.
 
-### Epic: Power Balance Calculations - COMPLETE (2026-01-26)
-**Priority**: P0
-**Source**: [PyFECONS Library Mapping Strategy](../research/20260123-pyfecons-library-mapping-strategy.md)
+### sysml-codegen Upgrade (P1, draft)
 
-**Goal**: Implement power balance calculations that drive most downstream calculations.
+**File**: `backlog/epic-sysml-codegen-upgrade.md`
 
-**Deliverables**:
-- `models/library/calculations/power_balance/power_balance.sysml` - Generic PowerBalanceLibrary
-  - `'Alpha Power Calc'` - Fuel-type dependent alpha power (DT, DD, DHE3, PB11)
-  - `'Power Balance Calc'` - Generic p_alpha, p_neutron, q_sci
-- `models/library/calculations/power_balance/mfe_power_balance.sysml` - MFEPowerBalanceLibrary
-  - `'MFE Power Balance Calc'` - Full MFE power flow (16 inputs, 15 outputs)
-- `tests/models/test_power_balance.py` - 25 regression tests (structure + numerical validation)
-
-**Validation**:
-- All 25 tests pass
-- All files parse without errors
-- Formulas verified against PyFECONS PowerBalance.py:8-50, 94-104
-- Documentation complete with Source citations
-
-**Note**: Direct energy conversion (p_dee, eta_de) deferred per spec - see P3 task "Model p_dee and eta_de Power Paths"
-
-**Dependencies**: Foundation Package (COMPLETE)
+No sub-items decomposed yet. Spec at `backlog/epic-sysml-codegen-upgrade.md` defines the sysml-codegen changes needed to process Pattern A (nested cost models).
 
 ---
 
-## Priority 0.5: Cost Infrastructure (Before P1)
+## Standalone Items
 
-### Task: Create 'Costed Component' Interface
-**Status**: PENDING
-**Priority**: P0.5 (blocking P1 epics)
-**Source**: [COST_MODELING.md](../docs/COST_MODELING.md), [Strategy Update 2026-01-26](../research/20260123-pyfecons-library-mapping-strategy.md)
+### Completed
 
-**Goal**: Create the cost modeling infrastructure that all fusion components will use.
+| ID | Name | Priority | Completed |
+|----|------|----------|-----------|
+| WI-004 | Foundation Package | P0 | 2026-01-26 |
+| WI-005 | Power Balance Calculations | P0 | 2026-01-26 |
 
-**Scope**:
-- `library/foundation/costing.sysml` - The `'Costed Component'` abstract interface
-  - `cas_category : String` - CAS code for cost reporting (e.g., "CAS220103")
-  - `capital_cost`, `raw_material_cost`, `fabrication_cost`, `installation_cost` : Real
-  - `idiot_index : Real` - manufacturing efficiency metric
-  - Required import: `NumericalFunctions::sum` for aggregation
+**Foundation Package** deliverables: 13 enum defs (types.sysml), 6 custom units (units.sysml), 12 material part defs (materials.sysml), 14 regression tests.
 
-**CAS Category Values** (from PyFECONS):
-| Code | Description |
-|------|-------------|
-| CAS21 | Buildings and Structures |
-| CAS220102 | Radiation Shield |
-| CAS220103 | Magnets/Coils (MFE) or Lasers (IFE) |
-| CAS220104 | Supplementary Heating |
-| CAS220108 | Divertor (MFE) or Target Factory (IFE) |
-| CAS23 | Turbine Plant Equipment |
-| CAS24 | Electric Plant Equipment |
-| CAS26 | Heat Rejection System |
+**Power Balance Calculations** deliverables: Generic `'Power Balance Calc'` + `'MFE Power Balance Calc'` (16 inputs, 15 outputs), 25 regression tests. Formulas verified against PyFECONS PowerBalance.py. Direct energy conversion (p_dee, eta_de) deferred — see WI-018.
 
-**Pattern Reference**: The validated pattern from `models/tests/coffee_maker/library.sysml` should be adapted for fusion context.
+### Failed
 
-**Validation**:
-- File parses with `uv run syside check`
-- Interface can be specialized by a test part def
-- Pattern matches `modeling_pm/docs/COST_MODELING.md` specification
+| ID | Name | Priority | Status |
+|----|------|----------|--------|
+| WI-003 | Explicit Types Redefines | P1 | failed |
 
-**Why P0.5?**: All P1 part definitions (magnets, blanket, shield, etc.) must specialize this interface. Creating it first ensures consistent cost modeling across the library.
+Hypothesis that explicit types on `redefines` would fix Tom Sawyer visualization was incorrect. Tool limitation, not syntax issue.
 
-**Dependencies**: Foundation Package (COMPLETE)
+### Backlog — P0
 
----
+| ID | Name | Priority | Notes |
+|----|------|----------|-------|
+| WI-006 | Create 'Costed Component' Interface | P0 | Blocks all P1 part definitions. See `knowledge/sources/COST_MODELING.md` for pattern. |
 
-## Priority 1: After P0.5 Complete
+### Backlog — P1
 
-### Epic: Power Core Definitions
-**Status**: PENDING
-**Priority**: P1
-**Source**: [PyFECONS Library Mapping Strategy](../research/20260123-pyfecons-library-mapping-strategy.md)
+| ID | Name | Priority | Dependencies |
+|----|------|----------|--------------|
+| WI-007 | Power Core Definitions | P1 | WI-004, WI-006 |
+| WI-008 | Geometry Calculations | P1 | WI-004 |
+| WI-009 | Magnet System (MFE) | P1 | WI-004, WI-006, WI-007 |
+| WI-010 | First CATF MFE Design | P1 | WI-005, WI-007, WI-008, WI-009 |
 
-**Goal**: Define core reactor components shared across fusion concepts.
+### Backlog — P2
 
-**Scope**:
-- `library/definitions/plant.sysml` - Top-level `'Fusion Power Plant' :> 'Costed Component'`
-- `library/definitions/power_core/plasma.sysml` - `'Plasma'` part def (physics only, not costed)
-- `library/definitions/power_core/blanket.sysml` - `'Blanket System' :> 'Costed Component'` with embedded cost_model
-- `library/definitions/power_core/shield.sysml` - `'Radiation Shield' :> 'Costed Component'` with embedded cost_model
-- `library/definitions/power_core/vacuum_vessel.sysml` - `'Vacuum Vessel' :> 'Costed Component'` with embedded cost_model
+| ID | Name | Priority | Dependencies |
+|----|------|----------|--------------|
+| WI-011 | CAS22 Subsystem Costing | P2 | WI-010 |
+| WI-012 | Heating System Definitions | P2 | WI-007 |
+| WI-013 | Balance of Plant | P2 | WI-007 |
+| WI-014 | Cost Rollup and LCOE | P2 | WI-011, WI-013 |
+| WI-015 | IFE Variant Support | P2 | WI-004, WI-014 |
 
-**Cost Pattern Requirements** (see [COST_MODELING.md](../docs/COST_MODELING.md)):
-- All costed parts must specialize `'Costed Component'`
-- Leaf parts: embed `cost_model` calc usage, bind all 5 cost attributes via `:>>`
-- Assembly parts: use `sum()` aggregation from `NumericalFunctions`
+### Backlog — P3
 
-**Validation**: Attributes map to PyFECONS `inputs/blanket.py`, `inputs/shield.py`
-
-**Dependencies**: Foundation Package (COMPLETE), **'Costed Component' Interface (P0.5)**
-
----
-
-### Epic: Geometry Calculations
-**Status**: PENDING
-**Priority**: P1
-**Source**: [PyFECONS Library Mapping Strategy](../research/20260123-pyfecons-library-mapping-strategy.md)
-
-**Goal**: Implement radial build and volume calculations for toroidal geometry.
-
-**Scope**:
-- `library/calculations/geometry/radial_build.sysml` - Layer thickness calculations (14 layers per PyFECONS)
-- `library/calculations/geometry/toroidal_volume.sysml` - Volume and surface area calcs
-
-**Validation**: Compare geometry outputs against PyFECONS CAS220101 calculations
-
-**Dependencies**: Foundation Package (COMPLETE)
-
----
-
-### Epic: Magnet System (MFE)
-**Status**: PENDING
-**Priority**: P1
-**Source**: [PyFECONS Library Mapping Strategy](../research/20260123-pyfecons-library-mapping-strategy.md)
-
-**Goal**: Define magnet coil components and cost calculations for MFE reactors.
-
-**Scope**:
-- `library/definitions/magnets/coil.sysml` - Base `'Magnet Coil' :> 'Costed Component'` with embedded cost_model
-- `library/definitions/magnets/tf_coil.sysml` - `'TF Coil' :> 'Magnet Coil'` specialization
-- `library/definitions/magnets/pf_coil.sysml` - `'PF Coil' :> 'Magnet Coil'` specialization
-- `library/definitions/magnets/cs_coil.sysml` - `'Central Solenoid' :> 'Magnet Coil'` specialization
-- `library/definitions/magnets/magnet_system.sysml` - `'Magnet System' :> 'Costed Component'` assembly with `sum()` aggregation
-- `library/calculations/costing/magnet_cost.sysml` - `calc def MagnetCoilCostCalc` (CAS220103)
-
-**Cost Pattern Requirements**:
-- `'Magnet Coil'` is a **leaf** with embedded cost_model
-- `'Magnet System'` is an **assembly** aggregating TF[12], PF[6], CS via `sum()`
-- Reference: [COST_MODELING.md](../docs/COST_MODELING.md) Section 4
-
-**Validation**: Coil attributes map to PyFECONS `inputs/coils.py`; cost calc validates against `costing/mfe/cas22/cas220103_coils.py`
-
-**Dependencies**: Foundation Package, **'Costed Component' Interface (P0.5)**, Power Core Definitions
-
----
-
-### Epic: First CATF MFE Design
-**Status**: PENDING
-**Priority**: P1
-**Source**: [PyFECONS Library Mapping Strategy](../research/20260123-pyfecons-library-mapping-strategy.md)
-
-**Goal**: Create first concrete CATF design instance using library definitions.
-
-**Scope**:
-- `designs/catf_mfe/parameters.sysml` - All CATF input values from PyFECONS DefineInputs.py
-- `designs/catf_mfe/radial_build.sysml` - Geometry instance with layer values
-- `designs/catf_mfe/reactor_core.sysml` - Core assembly (magnets, blanket, shield, vessel)
-- `designs/catf_mfe/plant.sysml` - Top-level plant integration
-
-**Validation Checkpoint**:
-- Power balance: p_net, q_eng match PyFECONS
-- Geometry: volumes, surface areas match PyFECONS
-- Initial cost estimates for major components
-
-**Dependencies**: Power Balance Calculations, Power Core Definitions, Geometry Calculations, Magnet System
-
----
-
-## Priority 2: Medium Term
-
-### Epic: CAS22 Subsystem Costing
-**Status**: BACKLOG
-**Priority**: P2
-**Source**: [PyFECONS Library Mapping Strategy](../research/20260123-pyfecons-library-mapping-strategy.md)
-
-**Goal**: Implement cost calculations for all CAS22 reactor equipment categories.
-
-**Scope**:
-- `library/calculations/costing/cas220101_reactor_equipment.sysml` - Geometry-driven costs
-- `library/calculations/costing/cas220102_shield.sysml` - Shield costing
-- `library/calculations/costing/cas220104_heating.sysml` - Supplementary heating (NBI, ICRF)
-- `library/calculations/costing/cas220105_structure.sysml` - Primary structure
-- `library/calculations/costing/cas220106_vacuum.sysml` - Vacuum system
-- `library/calculations/costing/cas220107_power_supplies.sysml` - Power supply costing
-- `library/calculations/costing/cas220108_divertor.sysml` - Divertor costing (MFE)
-
-**Validation**: Each calc validates against corresponding PyFECONS `costing/mfe/cas22/` module
-
-**Dependencies**: First CATF MFE Design (validated)
-
----
-
-### Epic: Heating System Definitions
-**Status**: BACKLOG
-**Priority**: P2
-**Source**: [PyFECONS Library Mapping Strategy](../research/20260123-pyfecons-library-mapping-strategy.md)
-
-**Goal**: Define heating system components for MFE reactors.
-
-**Scope**:
-- `library/definitions/heating/heating_system.sysml` - Base 'Primary Heating System' part def
-- `library/definitions/heating/nbi.sysml` - 'Neutral Beam Injection' specialization
-- `library/definitions/heating/icrf.sysml` - 'Ion Cyclotron RF' specialization
-- `library/definitions/exhaust/divertor.sysml` - 'Divertor' part def
-
-**Validation**: Attributes map to PyFECONS `inputs/supplementary_heating.py`
-
-**Dependencies**: Power Core Definitions
-
----
-
-### Epic: Balance of Plant
-**Status**: BACKLOG
-**Priority**: P2
-**Source**: [PyFECONS Library Mapping Strategy](../research/20260123-pyfecons-library-mapping-strategy.md)
-
-**Goal**: Define shared balance-of-plant components and cost calculations.
-
-**Scope**:
-- `library/definitions/bop/buildings.sysml` - Building part defs (CAS21)
-- `library/definitions/bop/electrical.sysml` - 'Electrical Plant' (CAS24)
-- `library/definitions/bop/cooling.sysml` - 'Heat Rejection System' (CAS26)
-- `library/definitions/power_conversion/turbine.sysml` - 'Turbine Plant' (CAS23)
-- `library/definitions/power_conversion/power_supplies.sysml` - 'Power Supply System'
-
-**Validation**: Shared calculations match PyFECONS `costing/calculations/`
-
-**Dependencies**: Power Core Definitions
-
----
-
-### Epic: Cost Rollup and LCOE
-**Status**: BACKLOG
-**Priority**: P2
-**Source**: [PyFECONS Library Mapping Strategy](../research/20260123-pyfecons-library-mapping-strategy.md)
-
-**Goal**: Implement cost aggregation and final LCOE calculation.
-
-**Scope**:
-- `library/calculations/costing/cas_rollup.sysml` - Cost aggregation patterns
-- `library/calculations/costing/component_cost.sysml` - Unit cost calculations
-- `library/calculations/costing/learning_curve.sysml` - Nth-of-a-kind reduction
-- `library/calculations/lcoe/lcoe.sysml` - Final LCOE calculation
-
-**Validation**: LCOE output matches PyFECONS for CATF design
-
-**Dependencies**: CAS22 Subsystem Costing, Balance of Plant
-
----
-
-### Epic: IFE Variant Support
-**Status**: BACKLOG
-**Priority**: P2
-**Source**: [PyFECONS Library Mapping Strategy](../research/20260123-pyfecons-library-mapping-strategy.md)
-
-**Goal**: Add IFE-specific components to enable laser fusion designs.
-
-**Scope**:
-- `library/definitions/lasers/laser_system.sysml` - 'Laser System' base def
-- `library/definitions/lasers/target_factory.sysml` - 'Target Factory' part def
-- `library/calculations/power_balance/ife_power_balance.sysml` - IFE power flow
-- `library/calculations/costing/cas220103_lasers.sysml` - Laser system costing
-- `library/calculations/costing/cas220108_target.sysml` - Target factory costing
-
-**Validation**: IFE calculations match PyFECONS `costing/ife/` modules
-
-**Dependencies**: Foundation Package (COMPLETE), Cost Rollup and LCOE
-
----
-
-## Priority 3: Deferred
-
-### Epic: Full CAS Coverage
-**Status**: BACKLOG
-**Priority**: P3
-**Source**: [PyFECONS Library Mapping Strategy](../research/20260123-pyfecons-library-mapping-strategy.md)
-
-**Goal**: Achieve full PyFECONS parity with all cost account categories.
-
-**Scope**:
-- CAS10 - Pre-Construction Costs (land, permits, licensing)
-- CAS21 - All 19 building categories
-- CAS27 - Special Materials
-- CAS28 - Digital Twin
-- CAS30-60 - Capitalized indirect, owner, supplementary, financial costs
-- CAS70-90 - Annualized O&M, fuel, financial costs
-
-**Validation**: Full cost breakdown matches PyFECONS output reports
-
-**Dependencies**: Cost Rollup and LCOE
-
----
-
-### Epic: Additional Fusion Concepts
-**Status**: BACKLOG
-**Priority**: P3
-**Source**: [PyFECONS Library Mapping Strategy](../research/20260123-pyfecons-library-mapping-strategy.md)
-
-**Goal**: Extend library to support stellarator, mirror, and other MFE concepts.
-
-**Scope**:
-- Stellarator-specific geometry calculations
-- Mirror machine definitions
-- Concept-specific specializations as needed
-- Refine library for maximum reuse
-
-**Dependencies**: Full CAS Coverage, IFE Variant Support
-
----
-
-### Task: Model p_dee and eta_de Power Paths
-**Status**: BACKLOG
-**Priority**: P3
-**Source**: PyFECONS PowerBalance.py (paths marked TODO in source)
-
-**Goal**: Model the direct energy extraction (DEE) power paths when PyFECONS implements them.
-
-**Context**: During Power Balance Calculations work, found that `p_dee` (direct energy extraction power) and `eta_de` (direct energy conversion efficiency) paths exist in PyFECONS but are marked as TODO / not yet implemented.
-
-**Scope**:
-- Monitor PyFECONS for implementation of these paths
-- Add `p_dee` attribute to power balance calculations
-- Add `eta_de` efficiency parameter to library
-- Update MFE power balance to include DEE path in recirculating power
-
-**Validation**: Match PyFECONS implementation when available
-
-**Dependencies**: Power Balance Calculations (COMPLETE), PyFECONS upstream implementation
+| ID | Name | Priority | Dependencies |
+|----|------|----------|--------------|
+| WI-016 | Full CAS Coverage | P3 | WI-014 |
+| WI-017 | Additional Fusion Concepts | P3 | WI-016, WI-015 |
+| WI-018 | Model p_dee and eta_de Power Paths | P3 | WI-005, PyFECONS upstream |
 
 ---
 
 ## Documentation References
 
-- **Project Overview**: `modeling_pm/OVERVIEW.md`
-- **Modeling Guide**: `modeling_pm/MODELING_GUIDE.md`
-- **Cost Modeling Guide**: `modeling_pm/docs/COST_MODELING.md` **(REQUIRED for all costed parts)**
-- **Workflow**: `modeling_pm/MODELING_PROCESS.md`
-- **Source Index**: `SOURCE_INDEX.md`
-- **Architecture Research**: `modeling_pm/research/20260105-103000_catf-mfe-architecture.md`
-- **Library Mapping Strategy**: `modeling_pm/research/20260123-pyfecons-library-mapping-strategy.md`
+- **Project Overview**: `modeling_project/OVERVIEW.md`
+- **Modeling Guide**: `modeling_project/MODELING_GUIDE.md`
+- **Cost Modeling Guide**: `knowledge/sources/COST_MODELING.md`
+- **Workflow**: `modeling_project/MODELING_PROCESS.md`
+- **Source Index**: `knowledge/SOURCE_INDEX.md`
+- **Architecture Research**: `knowledge/research/approved/20260105-103000_catf-mfe-architecture.md`
+- **Library Mapping Strategy**: `knowledge/research/approved/20260123-pyfecons-library-mapping-strategy.md`
 - **Cost Pattern Validation**: `models/tests/coffee_maker/` (reference implementation)
 
 ---
 
-**Last Updated**: 2026-01-26
-**Next Review**: After 'Costed Component' Interface (P0.5) or Power Core Definitions completion
+**Last Updated**: 2026-02-02
+**Next Review**: After WI-006 ('Costed Component' Interface) completion

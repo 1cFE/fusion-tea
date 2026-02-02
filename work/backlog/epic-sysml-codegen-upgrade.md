@@ -1,3 +1,10 @@
+---
+Status: draft
+Priority: P1
+Created: 2026-01-12
+Updated: 2026-01-12
+---
+
 # sysml-codegen Upgrade: Cost Model Processing
 
 **Status**: Ready for Implementation

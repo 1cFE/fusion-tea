@@ -1,3 +1,12 @@
+---
+Status: active
+Scale: standard
+Epic: Cost Modeling Patterns De-Risking
+Owner: Reid Westwood
+Created: 2026-01-12
+Updated: 2026-01-12
+---
+
 # Model Enhancement Specification: Cost Patterns Demo (Coffee Maker)
 
 **Type**: Model Enhancement

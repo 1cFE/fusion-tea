@@ -1,3 +1,12 @@
+---
+Status: completed
+Scale: standard
+Epic: Foundation Package
+Owner: Reid Westwood
+Created: 2026-01-23
+Updated: 2026-01-23
+---
+
 # Model Enhancement Specification: Foundation Package
 
 **Type**: Model Enhancement

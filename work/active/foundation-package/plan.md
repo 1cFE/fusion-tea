@@ -1,3 +1,12 @@
+---
+Status: complete
+Created: 2026-01-26
+Updated: 2026-01-26
+Related Artifacts:
+  Spec: ./spec.md
+  Design: ./design.md
+---
+
 # Implementation Plan: Foundation Package (MODELS)
 
 **Type:** SysMLv2 Models
