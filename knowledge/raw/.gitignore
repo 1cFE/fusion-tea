@@ -1,0 +1,3 @@
+# Raw PDFs are stored in Zotero Storage, not git.
+# This directory is a local download cache.
+*.pdf
