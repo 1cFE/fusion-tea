@@ -1,7 +1,7 @@
 # Epic: Knowledge Database Integration (Zotero + Extraction Pipeline)
 
 **Epic ID**: KNOW-DB
-**Status**: Draft
+**Status**: In Progress
 **Priority**: P1
 **Created**: 2026-02-06
 **Estimated Effort**: 4-5 days
@@ -23,7 +23,7 @@ Establish a durable, repeatable pipeline for ingesting domain reference document
 - No raw PDF storage strategy — PDFs exist ad-hoc on local machines
 - SOURCE_INDEX.md has 1 entry (PyFECONS codebase) with no checksums or extraction metadata
 - No pipeline to go from "found a paper" to "indexed and searchable in the project"
-- `agentic-mbse extract` now exists (commit 73a20d5) but hasn't been used in fusion-tea yet
+- `agentic-mbse extract` merged (PR #3, commit b9f8dbe) with 4-layer pipeline, not yet used in fusion-tea
 - Zotero account exists but is not yet configured for the project
 
 **Future State**:
@@ -54,21 +54,37 @@ Establish a durable, repeatable pipeline for ingesting domain reference document
 
 ### External Dependency
 
-The `agentic-mbse extract` command was added in commit `73a20d5d` (branch: pdf-extract). It provides:
-- PDF extraction with dual backend (Docling primary, PyMuPDF4LLM fallback)
-- DOCX extraction (Docling primary, Pandoc fallback)
-- `--index` flag for INDEX.md generation
-- `--summarize` flag for LLM-based section summaries
-- Output structure: `full_document.md`, `INDEX.md`, `summary.json`, `images/`
+The `agentic-mbse extract` command was merged in PR #3 (commit `b9f8dbed`, 2026-02-08). It provides a **4-layer extraction pipeline**:
+
+- **Layer 1 — Base extraction**: PyMuPDF4LLM (default), Docling, or Pandoc backends with automatic fallback
+- **Layer 2 — GMFT table extraction**: Detects broken pipe tables and re-extracts from PDF using GMFT (optional dep: `gmft>=0.3`)
+- **Layer 3 — Claude structural repair**: AI-powered heading detection and document structure repair (`--enhance` or `--structure-only`)
+- **Layer 4 — AI quality repair**: Cross-validated repair of equations, tables, and structure issues (`--enhance` only)
+
+Key CLI flags:
+- `--index` — Generate INDEX.md after extraction
+- `--summarize` — Include AI summaries in INDEX.md (requires `--index`)
+- `--enhance` — Enable Layers 3+4 (structural repair + quality repair)
+- `--structure-only` — Enable Layer 3 only (structural repair, skip quality repair)
+- `--no-tables` — Skip Layer 2 GMFT table extraction
+- `--model {opus,sonnet,haiku}` — Override Claude model for structural repair
+- `--max-repair-pages N` — Limit Layer 4 repair scope
+- `--backend {docling,pymupdf,pandoc}` — Force a specific backend
+
+Output structure: `full_document.md`, `INDEX.md`, `summary.json`, `images/`
+
+Optional dependencies for best quality:
+- `gmft>=0.3` — Layer 2 table extraction (`uv add gmft` or `uv add agentic-mbse[extract-tables]`)
+- `docling>=2.0` — Alternative extraction backend (`uv add agentic-mbse[extract-full]`)
 
 ---
 
 ## Success Criteria
 
-- [ ] pyzotero can connect to Zotero Web API and download a PDF attachment on the headless VM
-- [ ] At least one real fusion document fully ingested: Zotero → download → extract → SOURCE_INDEX.md → git
-- [ ] SOURCE_INDEX.md format evolved to include Zotero item key, checksums, and extraction paths
-- [ ] `knowledge/raw/` directory exists and is properly gitignored
+- [x] pyzotero can connect to Zotero Web API and download a PDF attachment on the headless VM
+- [x] At least one real fusion document fully ingested: Zotero → download → extract → SOURCE_INDEX.md → git
+- [x] SOURCE_INDEX.md format evolved to include Zotero item key, checksums, and extraction paths
+- [x] `knowledge/raw/` directory exists and is properly gitignored
 - [ ] Automation script can batch-process all `new`-tagged Zotero items in one command
 - [ ] 5+ real fusion sources ingested and committed to `knowledge/sources/`
 - [ ] At least one ingested source has been researched via `/research` and produced DI-XXX entries
@@ -127,11 +143,11 @@ The `agentic-mbse extract` command was added in commit `73a20d5d` (branch: pdf-e
 **Objective**: Ingest one real fusion reference document through the complete pipeline: Zotero → pyzotero download → `agentic-mbse extract` → register in SOURCE_INDEX.md → git commit. Proves the full architecture works.
 
 **Current State**:
-- ✅ `agentic-mbse extract` available (commit 73a20d5)
+- ✅ `agentic-mbse extract` available (PR #3 merged, commit b9f8dbe — 4-layer pipeline)
 - ✅ Zotero API connectivity proven (Item 1)
-- ❌ `knowledge/raw/` directory doesn't exist
-- ❌ `knowledge/sources/` has only 1 manually-written file (COST_MODELING.md)
-- ❌ SOURCE_INDEX.md doesn't have checksums, Zotero keys, or extraction metadata
+- ✅ `knowledge/raw/` directory exists with `.gitignore` excluding `*.pdf`
+- ✅ `knowledge/sources/tea_dt_mfe_cost_analysis/` extracted (full_document.md, INDEX.md, summary.json, images/)
+- ✅ SOURCE_INDEX.md has extended metadata format (Zotero key, checksums, extraction path)
 
 **Scope**:
 1. **Directory setup**:
@@ -139,15 +155,17 @@ The `agentic-mbse extract` command was added in commit `73a20d5d` (branch: pdf-e
    - Create `knowledge/LOCAL_SOURCES.yaml` template (gitignored) for machine-specific paths
 2. **Source acquisition**: Add one real fusion document to Zotero desktop (e.g., an ARIES study, publicly available). Tag it `new`.
 3. **Headless download**: Use pyzotero to find the `new`-tagged item and download the PDF to `knowledge/raw/`.
-4. **Extraction**: Run `uv run agentic-mbse extract knowledge/raw/<document>.pdf --output knowledge/sources/<slug>/ --index --summarize`.
+4. **Extraction**: Run `uv run agentic-mbse extract knowledge/raw/<document>.pdf --output knowledge/sources/<slug>/ --index --summarize --enhance`.
+   - `--enhance` enables Layer 3 (structural repair) + Layer 4 (AI quality repair) for best results on complex fusion PDFs.
+   - If `gmft` is installed, Layer 2 table extraction runs automatically. Skip with `--no-tables` if not needed.
 5. **SOURCE_INDEX.md evolution**: Update the format to include:
-   - Source ID (SRC-XXX)
    - Zotero item key
    - Raw file SHA256
    - Extracted path
    - Extract SHA256 (of full_document.md)
    - Date added
    - Use-for and validation notes
+   - *(SRC-XXX source ID system deferred — no toolchain support exists)*
 6. **Zotero state update**: Tag the item as `extracted` via API.
 7. **Commit**: Stage extracted output + SOURCE_INDEX.md update.
 
@@ -157,13 +175,13 @@ The `agentic-mbse extract` command was added in commit `73a20d5d` (branch: pdf-e
 - Splitting SOURCE_INDEX.md into per-type files (medium-term concern)
 
 **Success Criteria**:
-- [ ] `knowledge/raw/` exists with `.gitignore` excluding PDFs
-- [ ] `knowledge/LOCAL_SOURCES.yaml` template exists (gitignored)
-- [ ] One real fusion PDF downloaded from Zotero Storage to `knowledge/raw/`
-- [ ] `agentic-mbse extract` produces `full_document.md`, `INDEX.md`, and `images/` in `knowledge/sources/<slug>/`
-- [ ] SOURCE_INDEX.md has a new entry with Zotero key, checksums, and extraction path
-- [ ] Zotero item is tagged `extracted`
-- [ ] All extracted content committed to git
+- [x] `knowledge/raw/` exists with `.gitignore` excluding PDFs
+- [x] `knowledge/LOCAL_SOURCES.yaml` template exists (gitignored)
+- [x] One real fusion PDF downloaded from Zotero Storage to `knowledge/raw/`
+- [x] `agentic-mbse extract` produces `full_document.md`, `INDEX.md`, `summary.json`, and `images/` in `knowledge/sources/<slug>/`
+- [x] SOURCE_INDEX.md has a new entry with Zotero key, checksums, and extraction path
+- [ ] Zotero item is tagged `extracted` *(blocked: API key has read-only group access; tag manually or regenerate key)*
+- [x] All extracted content committed to git
 
 **Deliverables**:
 - `knowledge/raw/.gitignore`
@@ -192,7 +210,7 @@ The `agentic-mbse extract` command was added in commit `73a20d5d` (branch: pdf-e
 1. **Smart pull**: Query Zotero for items tagged `new` but not `extracted` (`zot.top(tag=['new', '-extracted'])`)
 2. **PDF download**: Download each item's PDF attachment to `knowledge/raw/`
 3. **Slug generation**: Generate a clean directory name from the item title
-4. **Extraction**: Run `agentic-mbse extract` for each downloaded PDF
+4. **Extraction**: Run `agentic-mbse extract --index --summarize --enhance` for each downloaded PDF
 5. **SOURCE_INDEX.md registration**: Auto-append new entries with Zotero metadata, checksums, extraction paths
 6. **Zotero state update**: Tag each processed item as `extracted`
 7. **Error handling**:
@@ -247,7 +265,7 @@ The `agentic-mbse extract` command was added in commit `73a20d5d` (branch: pdf-e
    - Material property references for fusion-relevant materials
 2. **Zotero curation**: Add selected documents to Zotero desktop, attach PDFs, tag `new`
 3. **Batch ingestion**: Run `scripts/zotero_ingest.py` to process all new items
-4. **Quality review**: Spot-check extracted markdown for quality (tables, images, section structure)
+4. **Quality review**: Spot-check extracted markdown for quality (tables, images, section structure). Re-run with `--enhance --force` on any documents with quality issues.
 5. **Research one source**: Run `/research` against at least one ingested source to validate the full knowledge pipeline (extraction → research → KNOWLEDGE.md DI-XXX entries)
 6. **Tag researched items**: Update Zotero tags for any sources that complete the research step
 7. **Commit**: Stage and commit all new extracted sources
@@ -280,7 +298,8 @@ The `agentic-mbse extract` command was added in commit `73a20d5d` (branch: pdf-e
 
 **External**:
 - Zotero Storage plan (paid, $20/yr for 2GB) — required for headless PDF download
-- `agentic-mbse` with document extraction (commit 73a20d5, branch pdf-extract) — must be installed/available
+- `agentic-mbse` with document extraction (PR #3 merged, commit b9f8dbe) — installed as editable dep, auto-updates
+- Optional: `gmft>=0.3` for Layer 2 table extraction quality; `docling>=2.0` for alternative backend
 - Network access from headless VM to api.zotero.org
 
 **Internal**:
@@ -304,7 +323,7 @@ Note: Items are strictly sequential. Each validates assumptions needed by the ne
 | Risk | Impact | Mitigation |
 |------|--------|------------|
 | Zotero Storage not activated or using WebDAV | High — blocks entire headless pipeline | Item 1 explicitly verifies this before proceeding. WebDAV does NOT work for API downloads. |
-| `agentic-mbse extract` quality issues on real fusion PDFs | Medium — garbled tables, missing images | Item 2 validates with a real document. File issues upstream if needed. Fallback backend (PyMuPDF4LLM) available. |
+| `agentic-mbse extract` quality issues on real fusion PDFs | Medium — garbled tables, missing images | Item 2 validates with a real document. File issues upstream if needed. 4-layer pipeline with `--enhance` provides structural repair + AI quality repair. GMFT table extraction available if `gmft` is installed. |
 | Zotero API rate limits | Low — unlikely at this scale | pyzotero handles rate limiting. Batch sizes will be <20 items. |
 | Large PDFs exhaust extraction memory | Medium — some fusion reports are 500+ pages | `agentic-mbse extract` has configurable timeout + fallback. Can process in sections if needed. |
 | Recurring cost sensitivity ($20-120/yr) | Low — small relative to project value | Start with 2GB/$20yr. Monitor usage. Can downgrade to local-only fallback (Path B) if needed. |
@@ -339,5 +358,5 @@ Note: Items are strictly sequential. Each validates assumptions needed by the ne
 
 ---
 
-**Last Updated**: 2026-02-06
-**Next Action**: Review and approve epic, then begin Item 1 (Zotero API De-Risk)
+**Last Updated**: 2026-02-08
+**Next Action**: Begin Item 3 (Ingestion Automation Script) — Items 1 and 2 are complete
