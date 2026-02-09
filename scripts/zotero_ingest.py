@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 """Batch-ingest Zotero sources into the knowledge base.
 
-Queries the 1cfe Zotero group library for items tagged 'new' (but not
-'extracted'), downloads their PDFs, runs agentic-mbse extract, appends
-entries to SOURCE_INDEX.md, and tags items as 'extracted'.
+Determines pending items by diffing the Zotero library against a git-side
+manifest (knowledge/MANIFEST.jsonl). Downloads PDFs, runs agentic-mbse
+extract, appends entries to SOURCE_INDEX.md, and records to the manifest.
+Zotero tagging is deferred to a separate --sync-tags step.
 
 Usage:
-    uv run python scripts/zotero_ingest.py
-    uv run python scripts/zotero_ingest.py --dry-run
-    uv run python scripts/zotero_ingest.py --no-enhance
+    uv run python scripts/zotero_ingest.py              # process all pending
+    uv run python scripts/zotero_ingest.py --dry-run     # list pending items
+    uv run python scripts/zotero_ingest.py --limit 5     # process at most 5
+    uv run python scripts/zotero_ingest.py --tag new      # only items tagged 'new'
+    uv run python scripts/zotero_ingest.py --sync-tags    # tag manifested items in Zotero
     uv run python scripts/zotero_ingest.py --local-pdf knowledge/raw/some_paper.pdf
 
 Requires .env with:
@@ -24,13 +27,17 @@ from pathlib import Path
 
 from zotero_lib import (
     GROUP_ID,
+    MANIFEST_PATH,
     RAW_DIR,
     SOURCE_INDEX_PATH,
     SOURCES_DIR,
+    append_manifest_entry,
     connect,
-    download_pdf,
-    find_pdf_attachment,
+    download_pdf_from_info,
     load_api_key,
+    load_manifest,
+    manifest_keys,
+    resolve_pdf_info,
     sha256_of,
     slugify,
     tag_extracted,
@@ -61,6 +68,21 @@ def parse_args():
         type=Path,
         default=RAW_DIR,
         help=f"Override raw PDF download dir (default: {RAW_DIR})",
+    )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        help="Process at most N items per run",
+    )
+    parser.add_argument(
+        "--tag",
+        type=str,
+        help="Only process items with this Zotero tag (e.g. --tag new)",
+    )
+    parser.add_argument(
+        "--sync-tags",
+        action="store_true",
+        help="Tag all manifested items as 'extracted' in Zotero (run after committing)",
     )
     return parser.parse_args()
 
@@ -170,23 +192,78 @@ def append_source_index_entry(
     print(f"  Appended SOURCE_INDEX.md entry: {title}")
 
 
+def fetch_all_processable_items(zot) -> list[dict]:
+    """Fetch all Zotero items that could be processed.
+
+    Returns parent items (from zot.top()) combined with standalone PDF
+    attachments (itemType='attachment', contentType='application/pdf',
+    no parentItem).
+    """
+    print("Fetching top-level items...")
+    parent_items = zot.everything(zot.top())
+    print(f"  {len(parent_items)} top-level items")
+
+    print("Fetching standalone PDF attachments...")
+    all_attachments = zot.everything(zot.items(itemType="attachment"))
+    standalone_pdfs = [
+        a for a in all_attachments
+        if a["data"].get("contentType") == "application/pdf"
+        and not a["data"].get("parentItem")
+    ]
+    print(f"  {len(standalone_pdfs)} standalone PDFs")
+
+    # Dedup: standalone PDFs may also appear in zot.top()
+    seen_keys = {i["key"] for i in parent_items}
+    new_standalone = [a for a in standalone_pdfs if a["key"] not in seen_keys]
+    if len(new_standalone) < len(standalone_pdfs):
+        print(f"  ({len(standalone_pdfs) - len(new_standalone)} already in top-level, deduped)")
+
+    return parent_items + new_standalone
+
+
+def compute_pending_queue(all_items: list[dict], known_keys: set[str]) -> list[dict]:
+    """Filter items to those not in the manifest."""
+    return [i for i in all_items if i["key"] not in known_keys]
+
+
+def sync_tags_command(zot) -> None:
+    """Tag all manifested items as 'extracted' in Zotero."""
+    manifest = load_manifest()
+    if not manifest:
+        print("Manifest is empty — nothing to sync.")
+        return
+    print(f"Syncing tags for {len(manifest)} manifest entries...")
+    newly_tagged = 0
+    already_tagged = 0
+    for key in manifest:
+        try:
+            if tag_extracted(zot, key):
+                newly_tagged += 1
+            else:
+                already_tagged += 1
+        except Exception as e:
+            print(f"  WARNING: Failed to tag {key}: {e}")
+    print(f"Done. {newly_tagged} newly tagged, {already_tagged} already tagged.")
+
+
 def process_zotero_item(zot, item: dict, args) -> str:
     """Process a single Zotero item through the full pipeline.
     Returns 'extracted', 'skipped', or 'failed'."""
-    title = item["data"].get("title", "(no title)")
     item_key = item["key"]
 
-    print(f"\n--- {title} [{item_key}] ---")
-
-    # Step 1-2: Find PDF attachment
-    pdf_child = find_pdf_attachment(zot, item_key)
-    if pdf_child is None:
+    # Step 1-2: Resolve PDF info (handles both parent items and standalone attachments)
+    pdf_info = resolve_pdf_info(zot, item)
+    if pdf_info is None:
+        print(f"\n--- {item['data'].get('title', '(no title)')} [{item_key}] ---")
         print(f"  No PDF attachment — skipping")
         return "skipped"
 
+    title = pdf_info.title
+    print(f"\n--- {title} [{item_key}] ---")
+
     # Step 3: Download PDF
     try:
-        result = download_pdf(zot, item_key, args.output_dir)
+        result = download_pdf_from_info(zot, pdf_info, args.output_dir)
     except RuntimeError as e:
         print(f"  Download failed: {e}")
         return "failed"
@@ -220,33 +297,29 @@ def process_zotero_item(zot, item: dict, args) -> str:
         print(f"  Failed to update SOURCE_INDEX.md: {e}")
         return "failed"
 
-    # Step 9: Tag item as extracted
-    try:
-        tag_extracted(zot, item_key)
-    except Exception as e:
-        print(f"  WARNING: Tagging failed: {e}")
-        # Still count as extracted since files are in place
+    # Step 9: Append to manifest (immediately, crash-safe)
+    append_manifest_entry(item_key, slug, title)
+    print(f"  Manifest updated: {item_key} → {slug}")
 
-    # Step 10: Success
     return "extracted"
 
 
-def print_dry_run(zot, items: list) -> None:
+def print_dry_run(zot, items: list, total_items: int, known_count: int) -> None:
     """List pending items without processing."""
+    print(f"\nLibrary: {total_items} total, {known_count} already extracted, {len(items)} pending\n")
     if not items:
-        print("0 items found matching tag=['new', '-extracted']")
+        print("Nothing to process.")
         return
 
-    print(f"{len(items)} item(s) pending:\n")
     for item in items:
-        title = item["data"].get("title", "(no title)")
         item_key = item["key"]
-        pdf_child = find_pdf_attachment(zot, item_key)
-        if pdf_child:
-            filename = pdf_child["data"]["filename"]
-            print(f"  [{item_key}] {title}")
-            print(f"           PDF: {filename}")
+        pdf_info = resolve_pdf_info(zot, item)
+        if pdf_info:
+            print(f"  [{item_key}] {pdf_info.title}")
+            print(f"           PDF: {pdf_info.filename}"
+                  + (" (standalone)" if pdf_info.is_standalone else ""))
         else:
+            title = item["data"].get("title", "(no title)")
             print(f"  [{item_key}] {title}")
             print(f"           (no PDF — will skip)")
 
@@ -329,18 +402,38 @@ def main():
 
     zot = connect(api_key)
 
-    # Smart pull: items tagged 'new' but NOT 'extracted'
-    print("Querying Zotero for items tagged 'new' (not 'extracted')...")
-    items = zot.everything(zot.top(tag=["new", "-extracted"]))
-    print(f"Found {len(items)} item(s)")
-
-    if args.dry_run:
-        print_dry_run(zot, items)
+    # Handle --sync-tags early exit
+    if args.sync_tags:
+        sync_tags_command(zot)
         return
 
-    stats = {"found": len(items), "extracted": 0, "skipped": 0, "failed": 0}
+    # Build queue by diffing Zotero library against manifest
+    all_items = fetch_all_processable_items(zot)
+    known = manifest_keys()
+    pending = compute_pending_queue(all_items, known)
 
-    for item in items:
+    # Optional tag filter
+    if args.tag:
+        pending = [
+            i for i in pending
+            if args.tag in [t["tag"] for t in i["data"].get("tags", [])]
+        ]
+        print(f"After --tag '{args.tag}' filter: {len(pending)} item(s)")
+
+    # Optional batch limit
+    if args.limit:
+        pending = pending[:args.limit]
+        print(f"After --limit {args.limit}: {len(pending)} item(s)")
+
+    if args.dry_run:
+        print_dry_run(zot, pending, total_items=len(all_items), known_count=len(known))
+        return
+
+    print(f"\n{len(pending)} item(s) to process")
+
+    stats = {"found": len(pending), "extracted": 0, "skipped": 0, "failed": 0}
+
+    for item in pending:
         result = process_zotero_item(zot, item, args)
         stats[result] += 1
 

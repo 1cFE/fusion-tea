@@ -180,7 +180,7 @@ Optional dependencies for best quality:
 - [x] One real fusion PDF downloaded from Zotero Storage to `knowledge/raw/`
 - [x] `agentic-mbse extract` produces `full_document.md`, `INDEX.md`, `summary.json`, and `images/` in `knowledge/sources/<slug>/`
 - [x] SOURCE_INDEX.md has a new entry with Zotero key, checksums, and extraction path
-- [ ] Zotero item is tagged `extracted` *(blocked: API key has read-only group access; tag manually or regenerate key)*
+- [x] Zotero item is tagged `extracted` *(resolved: API key updated with write access, verified 2026-02-09)*
 - [x] All extracted content committed to git
 
 **Deliverables**:
