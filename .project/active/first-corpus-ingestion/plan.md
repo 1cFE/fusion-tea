@@ -6,304 +6,221 @@
 
 ## Source Documents
 - **Spec:** `.project/active/first-corpus-ingestion/spec.md`
-- **Epic:** `.project/backlog/epic-knowledge-database-integration.md` — Item 4
+- **Pipeline V2 Design:** `.project/active/ingestion-workflow-v2/design.md` ← See here for pipeline mechanics, CLI flags, manifest format
 
 ## Implementation Strategy
 
 **Phasing Rationale:**
-This is an operational/execution task — no new code is written. The phases follow the natural pipeline flow: load the queue (Zotero curation) → drain the queue (batch ingestion) → verify output (quality audit) → validate end-to-end (research one source) → persist (commit). Each phase produces verifiable output before the next begins.
+This is an execution task (running existing tooling), not a code development task. No design doc needed. Phases follow the natural pipeline order: curate sources → ingest → audit quality → fix issues → research → commit → tag sync. Each phase has a clear gate before proceeding.
 
-**Overall Validation Approach:**
-- Each phase has concrete pass/fail checks
-- Quality audit (Phase 3) gates committing (Phase 5)
-- Re-extraction is the remediation path for quality failures
-- Repo size budget (< 100MB) checked before final commit
+**Key Constraint:** Source selection and Zotero curation (Phase 1) is a manual/human step — the user must add PDFs to Zotero. Phases 2+ are automatable.
 
 ---
 
-## Phase 1: Zotero Source Curation
+## Phase 1: Source Selection & Zotero Curation
 
 ### Goal
-Get 5 fusion reference documents into the Zotero group library with PDFs attached and tagged `new`. This is the human-driven input step — everything downstream depends on having sources in the queue.
-
-### Source Selection
-
-Per spec FR-1, these 5 documents are targeted:
-
-| # | Document | Relevance |
-|---|----------|-----------|
-| 1 | Najmabadi et al., "The ARIES-AT Advanced Tokamak" (FED, 2006) | Canonical tokamak design/cost reference |
-| 2 | Najmabadi et al., "The ARIES-CS Compact Stellarator" (FED, 2008) | Stellarator comparison point |
-| 3 | Sheffield et al., "A Cost Assessment of Future Electric Power Stations" (Fusion Technology, 2016) | Foundational fusion costing algorithms |
-| 4 | Kovari et al., "PROCESS: A Systems Code for Fusion Power Plants" (FED, 2014-2016) | Systems code documentation |
-| 5 | Entler et al., "Approximation of the Economy of Fusion Energy" (Energy, 2018) | Fusion LCOE methodology |
-
-Substitutions allowed per spec if any document is paywalled or unavailable in PDF form. Replacement must be a publicly available fusion energy reference relevant to cost modeling or plant design.
+Get 5 fusion reference documents into the Zotero group library with PDFs attached. This is the prerequisite for everything else.
 
 ### Steps
 
-For each of the 5 documents:
-- [ ] Locate PDF (publicly available or already in possession)
-- [ ] Add to Zotero group library (ID 5428393) with correct bibliographic metadata
-- [ ] Attach PDF as child item, sync to Zotero Storage
-- [ ] Tag `new`
+- [ ] Identify 5 target documents per FR-1 (spec table):
+  1. Najmabadi et al., "The ARIES-AT..." (Fusion Eng. & Design, 2006)
+  2. Najmabadi et al., "The ARIES-CS..." (Fusion Eng. & Design, 2008)
+  3. Sheffield et al., "A Cost Assessment of Future Electric Power Stations" (Fusion Technology, 2016)
+  4. Kovari et al., "PROCESS: A Systems Code..." (Fusion Eng. & Design, 2014-2016)
+  5. Entler et al., "Approximation of the Economy of Fusion Energy" (Energy, 2018)
+- [ ] For each: verify PDF is obtainable (publicly available or already in possession). If paywalled, identify substitute per spec FR-1.
+- [ ] Add each to Zotero group library (ID 5428393) with correct bibliographic metadata
+- [ ] Attach PDF to each item (child attachment or standalone) and sync to Zotero Storage
+- [ ] Record substitutions (if any) and Zotero keys for all 5 items
 
 ### Validation
 
-**Verify queue is loaded:**
-```bash
-uv run python scripts/zotero_ingest.py --dry-run
-```
-- [ ] Output shows 5 items pending
-- [ ] Each item shows a PDF filename (none say "no PDF — will skip")
+- [ ] `uv run python scripts/zotero_ingest.py --dry-run` shows 5+ pending items (the new items appear because they are not in MANIFEST.jsonl)
+- [ ] Each item has a PDF attachment visible in the dry-run output
 
-**What We Know Works After This Phase:**
-Zotero library has 5+ `new`-tagged items with PDF attachments, ready for the ingestion pipeline.
+**Gate:** Do not proceed to Phase 2 until dry-run confirms all 5 items are in the pending queue.
 
 ---
 
 ## Phase 2: Batch Ingestion
 
 ### Goal
-Run `scripts/zotero_ingest.py` to process all `new`-tagged items through the full pipeline: download → extract → register → tag.
+Run the ingestion pipeline to download, extract, and register all 5 sources.
 
 ### Steps
 
-- [ ] Run dry-run to confirm queue state:
-  ```bash
-  uv run python scripts/zotero_ingest.py --dry-run
+- [ ] Run ingestion with batch limit:
   ```
-- [ ] Run the batch ingestion (with `--enhance` default):
-  ```bash
-  uv run python scripts/zotero_ingest.py
+  uv run python scripts/zotero_ingest.py --limit 5
   ```
-- [ ] Review script output summary: N found, N extracted, N skipped, N failed
-
-### Failure Handling
-
-If any document **fails extraction** (timeout or error):
-1. Re-run with `--no-enhance` for a faster pass:
-   ```bash
-   uv run python scripts/zotero_ingest.py
-   ```
-   (Script automatically skips already-extracted items via `-extracted` tag filter)
-2. If still failing, use `--local-pdf` with the already-downloaded PDF from `knowledge/raw/`:
-   ```bash
-   uv run python scripts/zotero_ingest.py --local-pdf knowledge/raw/<filename>.pdf --no-enhance
-   ```
-3. For very large PDFs (500+ pages) hitting the 900s timeout, consider `--no-enhance` as the primary path
+- [ ] Monitor output for errors (download failures, extraction timeouts, PDF resolution failures)
+- [ ] If any item fails:
+  - Check if PDF is accessible in Zotero Storage
+  - Check for timeout (900s limit) — use `--no-enhance` for very large PDFs
+  - Re-run; already-processed items will be skipped (idempotency via manifest)
 
 ### Validation
 
-- [ ] 5+ new directories exist under `knowledge/sources/`
-- [ ] Each directory contains at minimum `full_document.md` and `INDEX.md`
-  ```bash
-  for d in knowledge/sources/*/; do echo "$d: $(ls "$d" | tr '\n' ' ')"; done
-  ```
-- [ ] SOURCE_INDEX.md has 6+ entries (1 existing + 5 new)
-- [ ] Script summary shows 5 extracted, 0 failed
-- [ ] Verify Zotero tags updated:
-  ```bash
-  uv run python -c "
-  import sys; sys.path.insert(0, 'scripts')
-  from zotero_lib import connect, load_api_key
-  zot = connect(load_api_key())
-  items = zot.everything(zot.top(tag=['extracted']))
-  print(f'{len(items)} items tagged extracted')
-  for i in items:
-      print(f'  [{i[\"key\"]}] {i[\"data\"].get(\"title\", \"?\")}')
-  "
-  ```
+- [ ] 5 new directories exist under `knowledge/sources/`
+- [ ] Each new directory contains at minimum `full_document.md` and `INDEX.md`
+- [ ] `knowledge/MANIFEST.jsonl` exists and has 6 entries (1 seed + 5 new)
+- [ ] `knowledge/SOURCE_INDEX.md` has 6+ entries total
+- [ ] Idempotency check: re-run `uv run python scripts/zotero_ingest.py --dry-run` → 0 pending items
 
-**What We Know Works After This Phase:**
-The full pipeline ran at batch scale. All 5 sources are extracted, registered, and tagged.
+**Gate:** All 5 sources extracted and manifest updated before proceeding.
 
 ---
 
 ## Phase 3: Quality Audit
 
 ### Goal
-Inspect extraction quality for each of the 5 new sources. Catch garbled text, broken tables, missing images, or incorrect heading hierarchy before committing.
-
-### Audit Checklist Per Source
-
-For each new source directory in `knowledge/sources/`:
-
-**Headings (3-5 per document):**
-- [ ] Open `full_document.md` and check that H1/H2/H3 hierarchy is correct
-- [ ] No garbled/truncated heading text
-- [ ] Section structure matches the original paper's table of contents
-
-**Tables (2-3 per document, if present):**
-- [ ] Markdown pipe tables have correct column alignment
-- [ ] No merged-cell corruption (data in wrong columns)
-- [ ] Numeric values preserved correctly (not garbled by OCR)
-
-**Images (2-3 per document, if present):**
-- [ ] Image files exist in `images/` subdirectory
-- [ ] Markdown image references (`![...](images/...)`) point to existing files
-- [ ] Images are reasonable quality (not blank or corrupted)
+Audit extraction quality for each source. Identify and remediate significant issues.
 
 ### Steps
 
-For each source:
-- [ ] **Source 1** (ARIES-AT): headings ☐ tables ☐ images ☐
-- [ ] **Source 2** (ARIES-CS): headings ☐ tables ☐ images ☐
-- [ ] **Source 3** (Sheffield costing): headings ☐ tables ☐ images ☐
-- [ ] **Source 4** (PROCESS): headings ☐ tables ☐ images ☐
-- [ ] **Source 5** (Entler LCOE): headings ☐ tables ☐ images ☐
+For each of the 5 extracted sources:
+- [ ] **Source 1** (ARIES-AT): Spot-check 3-5 headings, 2-3 tables, 2-3 images. Record pass/fail.
+- [ ] **Source 2** (ARIES-CS): Same audit.
+- [ ] **Source 3** (Sheffield cost assessment): Same audit.
+- [ ] **Source 4** (PROCESS systems code): Same audit.
+- [ ] **Source 5** (Entler fusion economy): Same audit.
 
-### Re-Extraction for Quality Failures
+Quality dimensions per source:
+- **Headings**: Correct hierarchy (H1/H2/H3)? No garbled text?
+- **Tables**: Structure preserved (rows/columns intact)? No merged-cell corruption?
+- **Images**: Files exist in `images/`? Markdown references correct?
 
-If a source has significant quality issues:
-1. Remove the extracted directory
-2. Re-extract with enhanced flags:
-   ```bash
-   uv run agentic-mbse extract knowledge/raw/<filename>.pdf \
-     --output knowledge/sources/<slug>/ \
-     --index --summarize --enhance
-   ```
-3. If tables are the problem specifically, try with `--backend docling` or `--no-tables`
-4. Re-audit after re-extraction
+### Remediation (if needed)
+
+- [ ] For sources with significant issues, re-extract:
+  ```
+  uv run python scripts/zotero_ingest.py --local-pdf knowledge/raw/<filename>.pdf --enhance --force
+  ```
+  Or try alternative flags: `--backend docling`, `--no-tables`
+- [ ] Document quality issues and remediation in this section (Implementation Notes below)
 
 ### Validation
 
-- [ ] All 5 sources pass the heading/table/image checks (or issues documented with remediation notes)
-- [ ] No PDFs accidentally committed (check `knowledge/raw/.gitignore` is intact)
+- [ ] Quality audit notes recorded for each source (pass/fail per dimension)
+- [ ] Any re-extractions completed and re-audited
 
-**What We Know Works After This Phase:**
-Extraction quality is verified across 5 diverse fusion documents. Any quality issues are documented or remediated.
+**Gate:** All 5 sources at acceptable quality before committing.
 
 ---
 
-## Phase 4: Research One Source
+## Phase 4: Commit & Size Check
 
 ### Goal
-Run the full `/research` workflow against one ingested source to produce DI-XXX entries in `knowledge/KNOWLEDGE.md`. This validates the complete knowledge pipeline end-to-end: extraction → research → domain insights.
-
-### Source Selection
-
-Recommended: **Sheffield et al., "A Cost Assessment of Future Electric Power Stations"** — most directly relevant to the fusion costing model and likely to produce immediately actionable DI-XXX entries for WI-006 through WI-018.
-
-Alternative: Implementer's choice per spec FR-5.
+Commit all extracted sources to git and verify repo size.
 
 ### Steps
 
-- [ ] Run `/research` against the selected source
-- [ ] Review pending research entries in `knowledge/research/pending/`
-- [ ] Approve relevant entries → moves to `knowledge/research/approved/`
-- [ ] Verify new DI-XXX entries appear in `knowledge/KNOWLEDGE.md`
-- [ ] Tag the Zotero item as `researched`:
-  ```bash
-  uv run python -c "
-  import sys; sys.path.insert(0, 'scripts')
-  from zotero_lib import connect, load_api_key
-  zot = connect(load_api_key())
-  item = zot.item('<ITEM_KEY>')
-  zot.add_tags(item, 'researched')
-  print('Tagged as researched')
-  "
-  ```
+- [ ] Verify `knowledge/raw/.gitignore` is intact (no PDFs staged)
+- [ ] Stage extracted sources, MANIFEST.jsonl, and SOURCE_INDEX.md updates
+- [ ] Commit with descriptive message referencing KNOW-DB Item 4
+- [ ] Run `git count-objects -vH` and verify total size < 100MB
 
 ### Validation
 
-- [ ] At least 1 new DI-XXX entry exists in `knowledge/KNOWLEDGE.md` (currently DI-001 through DI-014)
-- [ ] DI-XXX entries have proper structure: Source, Context, Model implications, Analysis implications, Status
-- [ ] Zotero item has `researched` tag
-
-**What We Know Works After This Phase:**
-The complete knowledge pipeline works end-to-end: Zotero → download → extract → research → domain insights. The project has actionable new domain knowledge.
+- [ ] `git status` is clean
+- [ ] No PDF files in the commit (`git diff --name-only HEAD~1` shows only markdown, images, jsonl, md)
+- [ ] Repo size < 100MB
 
 ---
 
-## Phase 5: Commit and Size Check
+## Phase 5: Zotero Tag Sync
 
 ### Goal
-Stage and commit all new artifacts. Verify repo size stays under the 100MB budget.
+Sync Zotero tags to reflect manifest state (deferred tagging per pipeline v2).
 
 ### Steps
 
-- [ ] Verify no secrets or PDFs are staged:
-  ```bash
-  git status
+- [ ] Run tag sync:
   ```
-  - No `.pdf` files should appear
-  - No `.env` or credential files should appear
-- [ ] Stage new source directories and updated index files:
-  ```bash
-  git add knowledge/sources/*/
-  git add knowledge/SOURCE_INDEX.md
-  git add knowledge/KNOWLEDGE.md
+  uv run python scripts/zotero_ingest.py --sync-tags
   ```
-- [ ] Commit with descriptive message
-- [ ] Verify repo size:
-  ```bash
-  git count-objects -vH
-  ```
-  - [ ] Total size < 100MB
+- [ ] Verify output shows all 5 new items tagged `extracted`
 
 ### Validation
 
-- [ ] `git status` is clean (all new sources committed)
-- [ ] `git count-objects -vH` shows size-pack < 100MB
-- [ ] `git log --oneline -1` shows the commit
-- [ ] No PDF files in the commit (`git diff --name-only HEAD~1` shows only markdown, images, json)
-
-**What We Know Works After This Phase:**
-All 5+ sources are committed, repo size is manageable, and the KNOW-DB epic is complete.
+- [ ] All 5 new Zotero items have `extracted` tag
+- [ ] Pre-existing `PMXLGPKG` item tag unchanged or also tagged
 
 ---
 
-## Environment Setup
+## Phase 6: Research One Source
 
-**See CLAUDE.md for full environment rules.** Key commands:
-- All Python via `uv run python ...`
-- Ingestion: `uv run python scripts/zotero_ingest.py`
-- Extraction: `uv run agentic-mbse extract ...`
-- Zotero API key in `.env` (gitignored)
+### Goal
+Fully research at least one ingested source to produce DI-XXX entries in KNOWLEDGE.md, validating the complete knowledge pipeline.
+
+### Steps
+
+- [ ] Select one source (recommendation: Sheffield "Cost Assessment" or Entler "Approximation of the Economy" — most directly relevant to LCOE modeling)
+- [ ] Run `/research` workflow against the selected source
+- [ ] Ensure DI-XXX entries are created in `knowledge/KNOWLEDGE.md`
+- [ ] Tag the Zotero item `researched` (manual or via API)
+- [ ] Commit KNOWLEDGE.md updates
+
+### Validation
+
+- [ ] At least 1 source fully researched with DI-XXX entries in KNOWLEDGE.md
+- [ ] Research insights are actionable for downstream modeling work (WI-006 through WI-018)
 
 ---
 
 ## Risk Management
 
-| Risk | Phase | Mitigation |
-|------|-------|------------|
-| Document paywalled/unavailable | Phase 1 | Substitute with another publicly available fusion reference per spec |
-| Large PDF timeout (900s) | Phase 2 | Use `--no-enhance` for faster extraction; process in sections if needed |
-| Poor extraction quality (garbled tables) | Phase 3 | Re-extract with `--enhance --force`, `--backend docling`, or `--no-tables` |
-| Repo size exceeds 100MB | Phase 5 | Unlikely for 5 sources; if it happens, check for oversized images and remove or compress |
+| Risk | Impact | Mitigation |
+|------|--------|------------|
+| Paywalled PDFs (can't obtain all 5 targets) | Medium — delays Phase 1 | Substitution allowed per spec FR-1. Many fusion reports are publicly available from university/lab repositories. |
+| Extraction timeout on large PDFs (500+ pages) | Low — ARIES reports are ~25-30 pages | Use `--no-enhance` for faster pass; process in sections if needed |
+| Poor extraction quality (multi-column layouts, equations) | Medium — fusion papers have complex formatting | Phase 3 catches this; re-extract with alternative backends |
+| MANIFEST.jsonl not seeded with existing source | Low — first run may re-process `PMXLGPKG` | Pipeline is idempotent; if it re-processes, just accept the manifest entry |
 
 ---
 
 ## Implementation Notes
 
-*TO BE FILLED DURING IMPLEMENTATION*
+_TO BE FILLED DURING IMPLEMENTATION_
 
 ### Phase 1 Completion
 **Completed:**
-**Sources Selected:**
+**Actual sources selected:**
 **Substitutions:**
-**Issues:**
+**Zotero keys:**
 
 ### Phase 2 Completion
 **Completed:**
-**Script Output:**
-**Failures:**
+**Items processed:**
+**Errors:**
+**MANIFEST.jsonl entries:**
 
 ### Phase 3 Completion
 **Completed:**
-**Audit Results:**
-**Re-Extractions:**
+**Quality audit results:**
+| Source | Headings | Tables | Images | Overall | Notes |
+|--------|----------|--------|--------|---------|-------|
+| 1 | | | | | |
+| 2 | | | | | |
+| 3 | | | | | |
+| 4 | | | | | |
+| 5 | | | | | |
 
 ### Phase 4 Completion
 **Completed:**
-**Source Researched:**
-**DI-XXX Entries Created:**
+**Commit hash:**
+**Repo size:**
 
 ### Phase 5 Completion
 **Completed:**
-**Repo Size:**
-**Commit SHA:**
+**Tags synced:**
+
+### Phase 6 Completion
+**Completed:**
+**Source researched:**
+**DI entries created:**
 
 ---
 

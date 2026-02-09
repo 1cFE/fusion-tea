@@ -1,0 +1,14 @@
+{
+  "source_file": "Hsu et al. - 2020 - Revisit of the 2017 Costing for Four ARPA-E ALPHA Concepts.pdf",
+  "source_format": "pdf",
+  "processed_at": "2026-02-09T19:26:44.272339+00:00",
+  "backend_used": "pymupdf",
+  "processing_completed": true,
+  "file_hash": "md5:f93cb4eaf1731510d88761e1f2379222",
+  "statistics": {
+    "total_images": 5,
+    "total_characters": 14132,
+    "file_size_bytes": 1703564
+  },
+  "error": null
+}

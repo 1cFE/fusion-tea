@@ -1,0 +1,14 @@
+{
+  "source_file": "Swanson et al. - 2026 - Overview of the Helios Design A Practical Planar Coil Stellarator Fusion Power Plant.pdf",
+  "source_format": "pdf",
+  "processed_at": "2026-02-09T19:18:57.955312+00:00",
+  "backend_used": "pymupdf",
+  "processing_completed": true,
+  "file_hash": "md5:6c284afe8039b9a23738172ee0ccbc7c",
+  "statistics": {
+    "total_images": 13,
+    "total_characters": 143658,
+    "file_size_bytes": 12286083
+  },
+  "error": null
+}
