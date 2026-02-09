@@ -85,7 +85,7 @@ Optional dependencies for best quality:
 - [x] At least one real fusion document fully ingested: Zotero → download → extract → SOURCE_INDEX.md → git
 - [x] SOURCE_INDEX.md format evolved to include Zotero item key, checksums, and extraction paths
 - [x] `knowledge/raw/` directory exists and is properly gitignored
-- [ ] Automation script can batch-process all `new`-tagged Zotero items in one command
+- [x] Automation script can batch-process all `new`-tagged Zotero items in one command
 - [ ] 5+ real fusion sources ingested and committed to `knowledge/sources/`
 - [ ] At least one ingested source has been researched via `/research` and produced DI-XXX entries
 
@@ -204,7 +204,7 @@ Optional dependencies for best quality:
 - ✅ Single-source pipeline proven end-to-end (Item 2)
 - ✅ SOURCE_INDEX.md format established (Item 2)
 - ✅ Reference implementation exists in research report (Section 8)
-- ❌ No automation — each source requires manual steps
+- ✅ Automation script implemented (`scripts/zotero_ingest.py`)
 
 **Scope**:
 1. **Smart pull**: Query Zotero for items tagged `new` but not `extracted` (`zot.top(tag=['new', '-extracted'])`)
@@ -227,13 +227,13 @@ Optional dependencies for best quality:
 - SOURCE_INDEX.md splitting (future concern)
 
 **Success Criteria**:
-- [ ] `uv run python scripts/zotero_ingest.py` processes all `new`-tagged items
-- [ ] Each processed item gets: PDF downloaded, markdown extracted, SOURCE_INDEX.md entry, Zotero tag updated
-- [ ] `--dry-run` lists items without modifying anything
-- [ ] `--local-pdf <path>` extracts a PDF not managed by Zotero
-- [ ] Items with no PDF attachment are skipped with a warning
-- [ ] Extraction failures are logged and the item is NOT tagged as extracted
-- [ ] Script output summarizes: N items found, N extracted, N skipped, N failed
+- [x] `uv run python scripts/zotero_ingest.py` processes all `new`-tagged items
+- [x] Each processed item gets: PDF downloaded, markdown extracted, SOURCE_INDEX.md entry, Zotero tag updated
+- [x] `--dry-run` lists items without modifying anything
+- [x] `--local-pdf <path>` extracts a PDF not managed by Zotero
+- [x] Items with no PDF attachment are skipped with a warning
+- [x] Extraction failures are logged and the item is NOT tagged as extracted
+- [x] Script output summarizes: N items found, N extracted, N skipped, N failed
 
 **Deliverables**:
 - `scripts/zotero_ingest.py` — the automation script
@@ -358,5 +358,5 @@ Note: Items are strictly sequential. Each validates assumptions needed by the ne
 
 ---
 
-**Last Updated**: 2026-02-08
-**Next Action**: Begin Item 3 (Ingestion Automation Script) — Items 1 and 2 are complete
+**Last Updated**: 2026-02-09
+**Next Action**: Begin Item 4 (First Corpus Ingestion) — Items 1, 2, and 3 are complete

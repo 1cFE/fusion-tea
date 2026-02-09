@@ -10,19 +10,24 @@ Requires .env with:
     ZOTERO_KEY=<api-key>
 """
 
-import argparse
-import hashlib
-import os
 import sys
 from pathlib import Path
 
-from dotenv import load_dotenv
-from pyzotero import zotero
+from pyzotero.errors import PyZoteroError
 
-GROUP_ID = 5428393
+from zotero_lib import (
+    GROUP_ID,
+    connect,
+    download_pdf,
+    find_pdf_attachment,
+    load_api_key,
+    tag_extracted,
+)
 
 
 def parse_args():
+    import argparse
+
     parser = argparse.ArgumentParser(
         description="Download a PDF from the 1cfe Zotero group library."
     )
@@ -45,87 +50,45 @@ def parse_args():
     return parser.parse_args()
 
 
-def get_api_key():
-    load_dotenv()
-    api_key = os.environ.get("ZOTERO_KEY")
-    if not api_key:
-        print("ERROR: ZOTERO_KEY must be set in .env")
-        sys.exit(1)
-    return api_key
-
-
-def find_pdf_attachment(zot, item_key):
-    """Find the PDF child attachment for an item."""
-    children = zot.children(item_key)
-    pdfs = [
-        c for c in children
-        if c["data"].get("contentType") == "application/pdf"
-    ]
-    if not pdfs:
-        print(f"ERROR: No PDF attachment found for item {item_key}")
-        sys.exit(1)
-    return pdfs[0]
-
-
-def download_pdf(zot, item_key, output_dir):
-    """Download PDF and return (filepath, metadata)."""
-    item = zot.item(item_key)
-    title = item["data"].get("title", "(no title)")
-    pdf_child = find_pdf_attachment(zot, item_key)
-    filename = pdf_child["data"]["filename"]
-    child_key = pdf_child["key"]
-
-    output_path = Path(output_dir)
-    output_path.mkdir(parents=True, exist_ok=True)
-    filepath = output_path / filename
-
-    if filepath.exists() and filepath.stat().st_size > 0:
-        print(f"Already exists, skipping download: {filepath}")
-    else:
-        zot.dump(child_key, filename, str(output_path))
-
-    if not filepath.exists() or filepath.stat().st_size == 0:
-        print(f"ERROR: Download failed — file missing or empty at {filepath}")
-        sys.exit(1)
-
-    sha256 = hashlib.sha256(filepath.read_bytes()).hexdigest()
-    size = filepath.stat().st_size
-
-    print(f"Title: {title}")
-    print(f"Zotero Key: {GROUP_ID}:{item_key}")
-    print(f"Filename: {filename}")
-    print(f"Size: {size:,} bytes")
-    print(f"SHA256: {sha256}")
-    print(f"Saved to: {filepath}")
-
-    return filepath, title
-
-
-def tag_item(zot, item_key):
-    """Tag a Zotero item as 'extracted'."""
-    item = zot.item(item_key)
-    existing_tags = item["data"].get("tags", [])
-    if any(t["tag"] == "extracted" for t in existing_tags):
-        print(f"Item {item_key} already has tag 'extracted', skipping")
-        return
-    zot.add_tags(item, "extracted")
-    print(f"Tagged {GROUP_ID}:{item_key} as 'extracted'")
-
-
 def main():
     args = parse_args()
-    api_key = get_api_key()
 
-    zot = zotero.Zotero(GROUP_ID, "group", api_key)
+    try:
+        api_key = load_api_key()
+    except ValueError as e:
+        print(f"ERROR: {e}")
+        sys.exit(1)
 
-    if args.tag_only:
-        tag_item(zot, args.item_key)
-        return
+    zot = connect(api_key)
 
-    download_pdf(zot, args.item_key, args.output_dir)
+    try:
+        if args.tag_only:
+            tag_extracted(zot, args.item_key)
+            return
+
+        pdf_child = find_pdf_attachment(zot, args.item_key)
+        if pdf_child is None:
+            print(f"ERROR: No PDF attachment found for item {args.item_key}")
+            sys.exit(1)
+
+        result = download_pdf(zot, args.item_key, Path(args.output_dir))
+    except (RuntimeError, PyZoteroError) as e:
+        print(f"ERROR: {e}")
+        sys.exit(1)
+
+    print(f"Title: {result.title}")
+    print(f"Zotero Key: {GROUP_ID}:{args.item_key}")
+    print(f"Filename: {result.path.name}")
+    print(f"Size: {result.path.stat().st_size:,} bytes")
+    print(f"SHA256: {result.sha256}")
+    print(f"Saved to: {result.path}")
 
     if args.tag_extracted:
-        tag_item(zot, args.item_key)
+        try:
+            tag_extracted(zot, args.item_key)
+        except PyZoteroError as e:
+            print(f"ERROR: Failed to tag item: {e}")
+            sys.exit(1)
 
 
 if __name__ == "__main__":
