@@ -82,6 +82,9 @@ SysML Source: models/tests/solar_battery/library.sysml:27
     SysML Source: models/tests/solar_battery/library.sysml:27
 
     Calculation Specification:
+        cost_per_watt = 1.07
+        fab_factor = 0.45
+        install_factor = 0.3
         material_cost = wattage * cost_per_watt
         fab_cost = material_cost * fab_factor
         install_cost = material_cost * install_factor

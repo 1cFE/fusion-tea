@@ -16,6 +16,7 @@ from solar_battery.modules.solarbatterylibrary.lcoecalc import LCOECalcModule
 from solar_battery.modules.solarbatterylibrary.permittingcostcalc import PermittingCostCalcModule
 from solar_battery.modules.solarbatterylibrary.pvmodulecostcalc import PVModuleCostCalcModule
 from solar_battery.modules.solarbatterylibrary.rackingcostcalc import RackingCostCalcModule
+from solar_battery.modules.solarbatterydesign.solar_battery_plant.p_net_kw import p_net_kwModule
 
 # Hand-written module
 from solar_battery.modules.component_cost_evaluator import (
@@ -23,8 +24,6 @@ from solar_battery.modules.component_cost_evaluator import (
     CostEvaluatorResult,
 )
 
-from solar_battery.schemas.design_params import DesignParams as DesignParams
-from solar_battery.schemas.library_params import LibraryParams as LibraryParams
 from solar_battery.schemas.pipeline_config import PipelineConfig
 
 from solar_battery.primitives import Float
@@ -54,6 +53,7 @@ def create_solar_battery_registry() -> PipelineModuleRegistry:
             AnnualizedFuelCalcModule,
             AnnualizedFinancialCalcModule,
             LCOECalcModule,
+            p_net_kwModule,
         ],
         module_type_override={
             ComponentCostEvaluator: "ComponentCostEvaluator",
@@ -72,6 +72,7 @@ def create_solar_battery_registry() -> PipelineModuleRegistry:
             AnnualizedFuelCalcModule: "solarbatterylibrary.AnnualizedFuelCalcModule",
             AnnualizedFinancialCalcModule: "solarbatterylibrary.AnnualizedFinancialCalcModule",
             LCOECalcModule: "solarbatterylibrary.LCOECalcModule",
+            p_net_kwModule: "solarbatterydesign.solar_battery_plant.p_net_kwModule",
         },
     )
 
@@ -79,8 +80,6 @@ def create_solar_battery_registry() -> PipelineModuleRegistry:
 # Custom schema types for TEAx pipeline registration
 # Use with: execute_pipeline(..., custom_schema_types=CUSTOM_SCHEMA_TYPES)
 CUSTOM_SCHEMA_TYPES = [
-    LibraryParams,
-    DesignParams,
     PipelineConfig,
     CostEvaluatorResult,
     Float,

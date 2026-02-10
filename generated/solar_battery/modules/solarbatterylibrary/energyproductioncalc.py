@@ -65,7 +65,7 @@ SysML Source: models/tests/solar_battery/library.sysml:267
     SysML Source: models/tests/solar_battery/library.sysml:267
 
     Calculation Specification:
-        annual_energy_mwh = ??? * p_net_mw * n_mod * plant_availability
+        annual_energy_mwh = 8760.0 * p_net_mw * n_mod * plant_availability
         
 Documentation:
 Annual energy production calculation.

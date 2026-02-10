@@ -86,6 +86,10 @@ SysML Source: models/tests/solar_battery/library.sysml:72
     SysML Source: models/tests/solar_battery/library.sysml:72
 
     Calculation Specification:
+        cost_per_string = 150.0
+        cost_per_panel_bos = 30.0
+        fab_factor = 0.45
+        install_factor = 0.3
         material_cost = string_count * cost_per_string + panel_count * cost_per_panel_bos
         fab_cost = material_cost * fab_factor
         install_cost = material_cost * install_factor

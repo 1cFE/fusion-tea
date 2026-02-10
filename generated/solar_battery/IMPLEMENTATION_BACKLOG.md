@@ -9,7 +9,7 @@ Complete all stages in order for a production-ready system.
 
 **Objective**: Implement each calculation definition in its handwritten file.
 
-**Total**: 15 functions to implement
+**Total**: 0 functions to implement
 
 **Instructions for each function**:
 1. Open the SysML source file at the line number shown below
@@ -26,21 +26,8 @@ Complete all stages in order for a production-ready system.
 
 | Status | Module | Function | SysML Source | Complexity |
 |--------|--------|----------|--------------|------------|
-| [ ] | PVModuleCostCalc | `run_pvmodulecostcalc` | `models/tests/solar_battery/library.sysml:27` | Medium |
-| [ ] | InverterCostCalc | `run_invertercostcalc` | `models/tests/solar_battery/library.sysml:50` | Medium |
-| [ ] | ArrayBOSCostCalc | `run_arrayboscostcalc` | `models/tests/solar_battery/library.sysml:72` | High |
-| [ ] | BatteryPackCostCalc | `run_batterypackcostcalc` | `models/tests/solar_battery/library.sysml:96` | Medium |
-| [ ] | HybridInverterCostCalc | `run_hybridinvertercostcalc` | `models/tests/solar_battery/library.sysml:119` | Medium |
-| [ ] | BatteryBOSCostCalc | `run_batteryboscostcalc` | `models/tests/solar_battery/library.sysml:141` | High |
-| [ ] | RackingCostCalc | `run_rackingcostcalc` | `models/tests/solar_battery/library.sysml:163` | Medium |
-| [ ] | ElectricalPanelCostCalc | `run_electricalpanelcostcalc` | `models/tests/solar_battery/library.sysml:187` | High |
-| [ ] | PermittingCostCalc | `run_permittingcostcalc` | `models/tests/solar_battery/library.sysml:210` | Medium |
-| [ ] | AllocationCostCalc | `run_allocationcostcalc` | `models/tests/solar_battery/library.sysml:235` | High |
-| [ ] | EnergyProductionCalc | `run_energyproductioncalc` | `models/tests/solar_battery/library.sysml:267` | High |
-| [ ] | AnnualizedOMCalc | `run_annualizedomcalc` | `models/tests/solar_battery/library.sysml:283` | High |
-| [ ] | AnnualizedFuelCalc | `run_annualizedfuelcalc` | `models/tests/solar_battery/library.sysml:298` | High |
-| [ ] | AnnualizedFinancialCalc | `run_annualizedfinancialcalc` | `models/tests/solar_battery/library.sysml:314` | High |
-| [ ] | LCOECalc | `run_lcoecalc` | `models/tests/solar_battery/library.sysml:335` | High |
+
+**1 computed attribute module(s) auto-implemented** (not included in manual count above).
 
 ---
 
@@ -65,7 +52,7 @@ pytest tests/test_implementations_runnable.py -v
 All tests should pass (or pytest.skip for NotImplementedError stubs)
 
 **Test Coverage**:
-- 15 implementation functions
+- 0 implementation functions
 - Each function tested for: imports, signature, return type
 - Tests tolerate NotImplementedError (pass before implementation)
 - Tests verify return types (pass after implementation)
@@ -100,7 +87,7 @@ All tests should pass (or pytest.skip for NotImplementedError stubs)
 ## Completion Criteria
 
 The implementation is complete when:
-- Stage 1: All 15 functions implemented
+- Stage 1: All 0 functions implemented
 - Stage 2: All validations pass
 - Stage 3: Integration tests pass
 

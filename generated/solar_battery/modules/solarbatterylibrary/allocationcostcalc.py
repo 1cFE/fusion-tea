@@ -90,11 +90,14 @@ SysML Source: models/tests/solar_battery/library.sysml:235
     SysML Source: models/tests/solar_battery/library.sysml:235
 
     Calculation Specification:
+        fastener_cost_per_child = 0.5
+        seal_cost_per_child = 0.3
+        wiring_cost_per_kg = 2.0
         fastener_cost = child_count * fastener_cost_per_child
         seal_cost = child_count * seal_cost_per_child
         wiring_cost = total_child_mass * wiring_cost_per_kg
         total_allocation = fastener_cost + seal_cost + wiring_cost
-        material_portion = total_allocation * ???
+        material_portion = total_allocation * 0.8
         
 Documentation:
 Bundled allocation costs for assembly-level minor items.

@@ -1,0 +1,22 @@
+# LOCAL_SOURCES.yaml — Machine-specific paths for knowledge sources
+#
+# This file maps logical source names to their local filesystem paths.
+# It is gitignored because paths vary by machine.
+#
+# STATUS: Convention only. No code currently reads this file.
+# Future agentic-mbse releases may consume it. For now, it serves as
+# documentation of where external sources live on this machine.
+#
+# To set up on a new machine:
+#   1. Copy this template (or create fresh)
+#   2. Fill in the paths for your local environment
+
+# External codebases
+pyfeconds:
+  path: /path/to/PyFECONS  # Replace with your local path
+  description: Python Fusion Energy Cost of Nuclear Systems
+
+# Zotero configuration (API key is in .env, not here)
+zotero:
+  group_id: 5428393
+  group_name: 1cfe

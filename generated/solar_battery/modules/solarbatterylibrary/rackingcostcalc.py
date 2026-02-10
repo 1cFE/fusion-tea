@@ -84,6 +84,9 @@ SysML Source: models/tests/solar_battery/library.sysml:163
     SysML Source: models/tests/solar_battery/library.sysml:163
 
     Calculation Specification:
+        cost_per_panel_rack = 57.0
+        fab_factor = 0.45
+        install_factor = 0.3
         material_cost = panel_count * cost_per_panel_rack
         fab_cost = material_cost * fab_factor
         install_cost = material_cost * install_factor

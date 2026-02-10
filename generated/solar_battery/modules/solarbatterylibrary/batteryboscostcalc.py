@@ -78,6 +78,9 @@ SysML Source: models/tests/solar_battery/library.sysml:141
     SysML Source: models/tests/solar_battery/library.sysml:141
 
     Calculation Specification:
+        cost_per_pack_bos = 71.5
+        fab_factor = 0.45
+        install_factor = 0.3
         material_cost = pack_count * cost_per_pack_bos
         fab_cost = material_cost * fab_factor
         install_cost = material_cost * install_factor

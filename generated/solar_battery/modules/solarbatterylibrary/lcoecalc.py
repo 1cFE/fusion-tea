@@ -79,7 +79,7 @@ SysML Source: models/tests/solar_battery/library.sysml:335
     SysML Source: models/tests/solar_battery/library.sysml:335
 
     Calculation Specification:
-        lcoe_per_mwh = annualized_capital_cost + annual_om_cost + annual_fuel_cost * ??? + yearly_inflation ** plant_lifetime / annual_energy_mwh
+        lcoe_per_mwh = annualized_capital_cost + annual_om_cost + annual_fuel_cost * 1.0 + yearly_inflation ** plant_lifetime / annual_energy_mwh
         
 Documentation:
 Levelized Cost of Electricity calculation.

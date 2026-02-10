@@ -72,7 +72,12 @@ SysML Source: models/tests/solar_battery/library.sysml:210
     SysML Source: models/tests/solar_battery/library.sysml:210
 
     Calculation Specification:
+        cost_per_kw = 187.5
+        material_cost = 0.0
+        fab_cost = 0.0
+        install_cost = 0.0
         total_cost = system_capacity_kw * cost_per_kw
+        idiot_index = 0.0
         
 Documentation:
 Cost calculation for permitting and interconnection.

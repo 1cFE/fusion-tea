@@ -1,0 +1,60 @@
+{
+  "artifacts": [
+    {
+      "channel": "E2EAttrExprDesign__e2e_plant__energy__annual_energy_mwh",
+      "produced": true,
+      "relative_path": "annual_energy_mwh.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "E2EAttrExprDesign__e2e_plant__power_mw__power_mw",
+      "produced": true,
+      "relative_path": "power_mw.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "E2EAttrExprDesign__e2e_plant__area__area",
+      "produced": true,
+      "relative_path": "area.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "E2EAttrExprDesign__e2e_plant__volume__volume",
+      "produced": true,
+      "relative_path": "volume.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "E2EAttrExprDesign__e2e_plant__lcoe__lcoe",
+      "produced": true,
+      "relative_path": "lcoe.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "E2EAttrExprDesign__e2e_plant__power_kw__power_kw",
+      "produced": true,
+      "relative_path": "power_kw.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "E2EAttrExprDesign__e2e_plant__surface_cost__surface_cost",
+      "produced": true,
+      "relative_path": "surface_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "E2EAttrExprDesign__e2e_plant__annual_om__annual_om",
+      "produced": true,
+      "relative_path": "annual_om.json",
+      "type_name": "RootModel[float]"
+    }
+  ],
+  "base_output_dir": "/home/reid/1cfe/fusion-tea/generated/e2e_attr_expr/outputs",
+  "metadata": {
+    "output_folder": "e2e_attr_expr_results",
+    "run_description": "Generated pipeline for e2e_attr_expr"
+  },
+  "run_directory": "e2e-attr-expr-results-a2c61a83",
+  "run_name": "e2e-attr-expr-results",
+  "short_id": "a2c61a83"
+}

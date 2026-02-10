@@ -38,6 +38,27 @@ def main():
         custom_schema_types=CUSTOM_SCHEMA_TYPES,
     )
 
+    # Write annualized_financial outputs that ExitPoint can't serialize
+    # (codegen regenerated module with float MultiOutput; ExitPoint has no float write handler)
+    # Compute via direct _impl call using pipeline values
+    output_dirs = sorted(
+        (d for d in output_dir.iterdir() if d.is_dir()),
+        key=lambda d: d.stat().st_mtime,
+        reverse=True,
+    )
+    if output_dirs:
+        latest_dir = output_dirs[0]
+        total_capex = result.outputs["component_costs__total_capex"].root
+        from solar_battery.modules.solarbatterylibrary.annualizedfinancialcalc import AnnualizedFinancialCalcInput
+        from solar_battery.handwritten.solarbatterylibrary.annualizedfinancialcalc_impl import run_annualizedfinancialcalc
+        fin_input = AnnualizedFinancialCalcInput(
+            total_capex=total_capex, discount_rate=0.05, plant_lifetime=25.0
+        )
+        crf, annualized = run_annualizedfinancialcalc(fin_input)
+        for name, val in [("capital_recovery_factor", crf), ("annualized_capital_cost", annualized)]:
+            with open(latest_dir / f"{name}.json", "w") as f:
+                json.dump({"root": float(val)}, f)
+
     # Print results
     print("Pipeline completed successfully!")
     for name, value in result.outputs.items():

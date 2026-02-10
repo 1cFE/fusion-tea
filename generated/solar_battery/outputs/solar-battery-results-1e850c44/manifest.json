@@ -1,0 +1,42 @@
+{
+  "artifacts": [
+    {
+      "channel": "component_costs__total_capex",
+      "produced": true,
+      "relative_path": "total_capex.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "annual_energy_mwh",
+      "produced": true,
+      "relative_path": "annual_energy_mwh.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "annual_om_cost",
+      "produced": true,
+      "relative_path": "annual_om_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "annual_fuel_cost",
+      "produced": true,
+      "relative_path": "annual_fuel_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "lcoe_per_mwh",
+      "produced": true,
+      "relative_path": "lcoe_per_mwh.json",
+      "type_name": "RootModel[float]"
+    }
+  ],
+  "base_output_dir": "/home/reid/1cfe/fusion-tea/generated/solar_battery/outputs",
+  "metadata": {
+    "output_folder": "solar_battery_results",
+    "run_description": "Solar+Battery LCOE Pipeline (hybrid: generate_costs.py + codegen)"
+  },
+  "run_directory": "solar-battery-results-1e850c44",
+  "run_name": "solar-battery-results",
+  "short_id": "1e850c44"
+}

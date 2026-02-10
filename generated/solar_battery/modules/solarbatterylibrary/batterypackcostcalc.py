@@ -82,6 +82,9 @@ SysML Source: models/tests/solar_battery/library.sysml:96
     SysML Source: models/tests/solar_battery/library.sysml:96
 
     Calculation Specification:
+        cost_per_kwh = 171.5
+        fab_factor = 0.45
+        install_factor = 0.3
         material_cost = capacity_kwh * cost_per_kwh * chemistry_factor
         fab_cost = material_cost * fab_factor
         install_cost = material_cost * install_factor

@@ -37,6 +37,15 @@ modules:
       fuel_consumption: RootModel[float] component_costs__fuel_consumption
       p_net_kw: RootModel[float] component_costs__p_net_kw
 
+  # Computed attribute: p_net_kw = p_net_mw * 1000.0
+  # source: computed_attribute (solarbatterydesign.solar_battery_plant.p_net_kwModule)
+  solarbatterydesign__solar_battery_plant__p_net_kw:
+    module_type: solarbatterydesign.solar_battery_plant.p_net_kwModule
+    inputs:
+      p_net_mw: float component_costs__p_net_mw.root
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__p_net_kw__p_net_kw
+
   # System-level modules (codegen-generated wrappers, handwritten impls)
   energy_production:
     module_type: solarbatterylibrary.EnergyProductionCalcModule
@@ -51,7 +60,7 @@ modules:
     module_type: solarbatterylibrary.AnnualizedOMCalcModule
     inputs:
       om_rate_per_kw_year: float component_costs__om_rate_per_kw_year.root
-      p_net_kw: float component_costs__p_net_kw.root
+      p_net_kw: float SolarBatteryDesign__solar_battery_plant__p_net_kw__p_net_kw.root
     outputs:
       root: RootModel[float] annual_om_cost
 
@@ -70,13 +79,13 @@ modules:
       discount_rate: float component_costs__discount_rate.root
       plant_lifetime: float component_costs__plant_lifetime.root
     outputs:
-      capital_recovery_factor: RootModel[float] capital_recovery_factor
-      annualized_capital_cost: RootModel[float] annualized_capital_cost
+      capital_recovery_factor: float capital_recovery_factor
+      annualized_capital_cost: float annualized_capital_cost
 
   lcoe:
     module_type: solarbatterylibrary.LCOECalcModule
     inputs:
-      annualized_capital_cost: float annualized_capital_cost.root
+      annualized_capital_cost: float annualized_capital_cost
       annual_om_cost: float annual_om_cost.root
       annual_fuel_cost: float annual_fuel_cost.root
       yearly_inflation: float component_costs__yearly_inflation.root
@@ -95,6 +104,7 @@ modules:
       annual_energy_mwh: RootModel[float] annual_energy_mwh.json
       annual_om_cost: RootModel[float] annual_om_cost.json
       annual_fuel_cost: RootModel[float] annual_fuel_cost.json
-      capital_recovery_factor: RootModel[float] capital_recovery_factor.json
-      annualized_capital_cost: RootModel[float] annualized_capital_cost.json
+      # capital_recovery_factor and annualized_capital_cost are float (not RootModel[float])
+      # due to codegen MultiOutput change — ExitPoint has no float write handler
+      # These are written manually by run_pipeline.py
       lcoe_per_mwh: RootModel[float] lcoe_per_mwh.json

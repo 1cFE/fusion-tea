@@ -82,6 +82,10 @@ SysML Source: models/tests/solar_battery/library.sysml:187
     SysML Source: models/tests/solar_battery/library.sysml:187
 
     Calculation Specification:
+        base_cost = 150.0
+        cost_per_circuit = 34.0
+        fab_factor = 0.45
+        install_factor = 0.3
         material_cost = base_cost + circuit_count * cost_per_circuit
         fab_cost = material_cost * fab_factor
         install_cost = material_cost * install_factor

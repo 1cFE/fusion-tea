@@ -72,7 +72,7 @@ SysML Source: models/tests/solar_battery/library.sysml:314
     SysML Source: models/tests/solar_battery/library.sysml:314
 
     Calculation Specification:
-        capital_recovery_factor = discount_rate * ??? + discount_rate ** plant_lifetime / ??? + discount_rate ** plant_lifetime - ???
+        capital_recovery_factor = discount_rate * 1.0 + discount_rate ** plant_lifetime / 1.0 + discount_rate ** plant_lifetime - 1.0
         annualized_capital_cost = capital_recovery_factor * total_capex
         
 Documentation:
@@ -131,11 +131,12 @@ PyFECONS's hardcoded 0.09 default.
         # Execute implementation - returns tuple of values
         capital_recovery_factor, annualized_capital_cost = run_annualizedfinancialcalc(validated_inputs)
 
+
         # Return MultiOutput container (TEAx auto-extracts to channels)
-        # MultiOutput fields use RootModel[float] so channels contain serializable values
+        # MultiOutput fields use plain float (not RootModel[float])
         return ModuleResult(
             data=AnnualizedFinancialCalcOutput(
-                capital_recovery_factor=Float(capital_recovery_factor),
-                annualized_capital_cost=Float(annualized_capital_cost),
+                capital_recovery_factor=capital_recovery_factor,
+                annualized_capital_cost=annualized_capital_cost,
             )
         )
