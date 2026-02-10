@@ -1,0 +1,55 @@
+from pydantic import BaseModel, Field
+
+
+class LibraryParams(BaseModel):
+    """Parameters from library.sysml.
+
+    Generated from SysML calculation definitions.
+    """
+    SolarBatteryLibrary__PV_Module__cost_model__wattage: float = Field(description="Entry point: wattage")
+    SolarBatteryLibrary__PV_Module__cost_model__efficiency: float = Field(description="Entry point: efficiency")
+    SolarBatteryLibrary__String_Inverter__cost_model__power_rating: float = Field(description="Entry point: power_rating")
+    SolarBatteryLibrary__Array_BOS__cost_model__string_count: float = Field(description="Entry point: string_count")
+    SolarBatteryLibrary__Array_BOS__cost_model__panel_count: float = Field(description="Entry point: panel_count")
+    SolarBatteryLibrary__Battery_Pack__cost_model__capacity_kwh: float = Field(description="Entry point: capacity_kwh")
+    SolarBatteryLibrary__Battery_Pack__cost_model__chemistry_factor: float = Field(description="Entry point: chemistry_factor")
+    SolarBatteryLibrary__Hybrid_Inverter__cost_model__power_rating: float = Field(description="Entry point: power_rating")
+    SolarBatteryLibrary__Battery_BOS__cost_model__pack_count: float = Field(default=8.0, description="Entry point: pack_count")
+    SolarBatteryLibrary__Racking_Mounting__cost_model__panel_count: float = Field(description="Entry point: panel_count")
+    SolarBatteryLibrary__Racking_Mounting__cost_model__tilt_angle: float = Field(description="Entry point: tilt_angle")
+    SolarBatteryLibrary__Electrical_Panel__cost_model__circuit_count: float = Field(description="Entry point: circuit_count")
+    SolarBatteryLibrary__Permitting_Interconnect__cost_model__system_capacity_kw: float = Field(description="Entry point: system_capacity_kw")
+    SolarBatteryLibrary__Solar_Array__allocation_model__child_count: float = Field(default=25.0, description="Entry point: child_count")
+    SolarBatteryLibrary__Solar_Array__allocation_model__total_child_mass: float = Field(default=50.0, description="Entry point: total_child_mass")
+    SolarBatteryLibrary__PV_Module__cost_model__cost_per_watt: float = Field(default=1.07, description="Entry point: cost_per_watt")
+    SolarBatteryLibrary__PV_Module__cost_model__fab_factor: float = Field(default=0.45, description="Entry point: fab_factor")
+    SolarBatteryLibrary__PV_Module__cost_model__install_factor: float = Field(default=0.3, description="Entry point: install_factor")
+    SolarBatteryLibrary__String_Inverter__cost_model__cost_per_watt: float = Field(default=0.286, description="Entry point: cost_per_watt")
+    SolarBatteryLibrary__String_Inverter__cost_model__fab_factor: float = Field(default=0.45, description="Entry point: fab_factor")
+    SolarBatteryLibrary__String_Inverter__cost_model__install_factor: float = Field(default=0.3, description="Entry point: install_factor")
+    SolarBatteryLibrary__Array_BOS__cost_model__cost_per_panel_bos: float = Field(default=30.0, description="Entry point: cost_per_panel_bos")
+    SolarBatteryLibrary__Array_BOS__cost_model__cost_per_string: float = Field(default=150.0, description="Entry point: cost_per_string")
+    SolarBatteryLibrary__Array_BOS__cost_model__fab_factor: float = Field(default=0.45, description="Entry point: fab_factor")
+    SolarBatteryLibrary__Array_BOS__cost_model__install_factor: float = Field(default=0.3, description="Entry point: install_factor")
+    SolarBatteryLibrary__Battery_Pack__cost_model__cost_per_kwh: float = Field(default=171.5, description="Entry point: cost_per_kwh")
+    SolarBatteryLibrary__Battery_Pack__cost_model__fab_factor: float = Field(default=0.45, description="Entry point: fab_factor")
+    SolarBatteryLibrary__Battery_Pack__cost_model__install_factor: float = Field(default=0.3, description="Entry point: install_factor")
+    SolarBatteryLibrary__Hybrid_Inverter__cost_model__cost_per_watt: float = Field(default=0.1714, description="Entry point: cost_per_watt")
+    SolarBatteryLibrary__Hybrid_Inverter__cost_model__fab_factor: float = Field(default=0.45, description="Entry point: fab_factor")
+    SolarBatteryLibrary__Hybrid_Inverter__cost_model__install_factor: float = Field(default=0.3, description="Entry point: install_factor")
+    SolarBatteryLibrary__Battery_BOS__cost_model__cost_per_pack_bos: float = Field(default=71.5, description="Entry point: cost_per_pack_bos")
+    SolarBatteryLibrary__Battery_BOS__cost_model__fab_factor: float = Field(default=0.45, description="Entry point: fab_factor")
+    SolarBatteryLibrary__Battery_BOS__cost_model__install_factor: float = Field(default=0.3, description="Entry point: install_factor")
+    SolarBatteryLibrary__Racking_Mounting__cost_model__cost_per_panel_rack: float = Field(default=57.0, description="Entry point: cost_per_panel_rack")
+    SolarBatteryLibrary__Racking_Mounting__cost_model__fab_factor: float = Field(default=0.45, description="Entry point: fab_factor")
+    SolarBatteryLibrary__Racking_Mounting__cost_model__install_factor: float = Field(default=0.3, description="Entry point: install_factor")
+    SolarBatteryLibrary__Electrical_Panel__cost_model__base_cost: float = Field(default=150.0, description="Entry point: base_cost")
+    SolarBatteryLibrary__Electrical_Panel__cost_model__cost_per_circuit: float = Field(default=34.0, description="Entry point: cost_per_circuit")
+    SolarBatteryLibrary__Electrical_Panel__cost_model__fab_factor: float = Field(default=0.45, description="Entry point: fab_factor")
+    SolarBatteryLibrary__Electrical_Panel__cost_model__install_factor: float = Field(default=0.3, description="Entry point: install_factor")
+    SolarBatteryLibrary__Permitting_Interconnect__cost_model__cost_per_kw: float = Field(default=187.5, description="Entry point: cost_per_kw")
+    SolarBatteryLibrary__Solar_Array__allocation_model__fastener_cost_per_child: float = Field(default=0.5, description="Entry point: fastener_cost_per_child")
+    SolarBatteryLibrary__Solar_Array__allocation_model__seal_cost_per_child: float = Field(default=0.3, description="Entry point: seal_cost_per_child")
+    SolarBatteryLibrary__Solar_Array__allocation_model__wiring_cost_per_kg: float = Field(default=2.0, description="Entry point: wiring_cost_per_kg")
+
+    model_config = {"frozen": True, "extra": "forbid"}

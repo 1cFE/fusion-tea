@@ -1,0 +1,136 @@
+# Generated Pipeline Configuration for e2e_attr_expr_v2
+#
+# Auto-generated from SysML calc def dependency analysis
+# DO NOT EDIT - Regenerate using code generator
+
+metadata:
+  run_description: "Generated pipeline for e2e_attr_expr_v2"
+  output_folder: "e2e_attr_expr_v2_results"
+
+modules:
+  # Entry point - load inputs from JSON
+  entry_fusion:
+    module_type: EntryPoint
+    inputs:
+      design_params: DesignParams ../inputs/design_params.json
+
+
+  # e2eattrexprlibrary.ComponentCostCalcModule
+  e2eattrexprdesign__e2e_plant__component_cost:
+    module_type: e2eattrexprlibrary.ComponentCostCalcModule
+    inputs:
+      quantity: float design_params.E2EAttrExprDesign__e2e_plant__component_cost__quantity
+      unit_cost: float design_params.E2EAttrExprDesign__e2e_plant__component_cost__unit_cost
+      fab_factor: float design_params.E2EAttrExprDesign__e2e_plant__component_cost__fab_factor
+      install_factor: float design_params.E2EAttrExprDesign__e2e_plant__component_cost__install_factor
+    outputs:
+      material_cost: float E2EAttrExprDesign__e2e_plant__component_cost__material_cost
+      fab_cost: float E2EAttrExprDesign__e2e_plant__component_cost__fab_cost
+      install_cost: float E2EAttrExprDesign__e2e_plant__component_cost__install_cost
+      total_cost: float E2EAttrExprDesign__e2e_plant__component_cost__total_cost
+      idiot_index: float E2EAttrExprDesign__e2e_plant__component_cost__idiot_index
+
+  # e2eattrexprlibrary.AnnualizedCostCalcModule
+  e2eattrexprdesign__e2e_plant__financial:
+    module_type: e2eattrexprlibrary.AnnualizedCostCalcModule
+    inputs:
+      total_capex: float E2EAttrExprDesign__e2e_plant__component_cost__total_cost
+      discount_rate: float design_params.E2EAttrExprDesign__e2e_plant__financial__discount_rate
+      lifetime: float design_params.E2EAttrExprDesign__e2e_plant__financial__lifetime
+    outputs:
+      crf: float E2EAttrExprDesign__e2e_plant__financial__crf
+      annualized_cost: float E2EAttrExprDesign__e2e_plant__financial__annualized_cost
+
+  # source: computed_attribute (e2eattrexprdesign.e2e_plant.power_mwModule)
+  e2eattrexprdesign__e2e_plant__power_mw:
+    module_type: e2eattrexprdesign.e2e_plant.power_mwModule
+    inputs:
+      quantity: float design_params.E2EAttrExprDesign__e2e_plant__quantity
+      unit_cost: float design_params.E2EAttrExprDesign__e2e_plant__unit_cost
+    outputs:
+      root: RootModel[float] E2EAttrExprDesign__e2e_plant__power_mw__power_mw
+
+  # source: computed_attribute (e2eattrexprdesign.e2e_plant.areaModule)
+  e2eattrexprdesign__e2e_plant__area:
+    module_type: e2eattrexprdesign.e2e_plant.areaModule
+    inputs:
+      length: float design_params.E2EAttrExprDesign__e2e_plant__length
+      width: float design_params.E2EAttrExprDesign__e2e_plant__width
+    outputs:
+      root: RootModel[float] E2EAttrExprDesign__e2e_plant__area__area
+
+  # source: computed_attribute (e2eattrexprdesign.e2e_plant.volumeModule)
+  e2eattrexprdesign__e2e_plant__volume:
+    module_type: e2eattrexprdesign.e2e_plant.volumeModule
+    inputs:
+      length: float design_params.E2EAttrExprDesign__e2e_plant__length
+      width: float design_params.E2EAttrExprDesign__e2e_plant__width
+      height: float design_params.E2EAttrExprDesign__e2e_plant__height
+    outputs:
+      root: RootModel[float] E2EAttrExprDesign__e2e_plant__volume__volume
+
+  # e2eattrexprlibrary.EnergyCalcModule
+  e2eattrexprdesign__e2e_plant__energy:
+    module_type: e2eattrexprlibrary.EnergyCalcModule
+    inputs:
+      power_mw: float E2EAttrExprDesign__e2e_plant__power_mw__power_mw.root
+      availability: float design_params.E2EAttrExprDesign__e2e_plant__energy__availability
+    outputs:
+      root: RootModel[float] E2EAttrExprDesign__e2e_plant__energy__annual_energy_mwh
+
+  # source: computed_attribute (e2eattrexprdesign.e2e_plant.power_kwModule)
+  e2eattrexprdesign__e2e_plant__power_kw:
+    module_type: e2eattrexprdesign.e2e_plant.power_kwModule
+    inputs:
+      power_mw: float E2EAttrExprDesign__e2e_plant__power_mw__power_mw.root
+    outputs:
+      root: RootModel[float] E2EAttrExprDesign__e2e_plant__power_kw__power_kw
+
+  # source: computed_attribute (e2eattrexprdesign.e2e_plant.surface_costModule)
+  e2eattrexprdesign__e2e_plant__surface_cost:
+    module_type: e2eattrexprdesign.e2e_plant.surface_costModule
+    inputs:
+      area: float E2EAttrExprDesign__e2e_plant__area__area.root
+      cost_per_sqm: float design_params.E2EAttrExprDesign__e2e_plant__cost_per_sqm
+    outputs:
+      root: RootModel[float] E2EAttrExprDesign__e2e_plant__surface_cost__surface_cost
+
+  # source: computed_attribute (e2eattrexprdesign.e2e_plant.annual_omModule)
+  e2eattrexprdesign__e2e_plant__annual_om:
+    module_type: e2eattrexprdesign.e2e_plant.annual_omModule
+    inputs:
+      om_rate: float design_params.E2EAttrExprDesign__e2e_plant__om_rate
+      power_kw: float E2EAttrExprDesign__e2e_plant__power_kw__power_kw.root
+    outputs:
+      root: RootModel[float] E2EAttrExprDesign__e2e_plant__annual_om__annual_om
+
+  # e2eattrexprlibrary.SimpleLCOECalcModule
+  e2eattrexprdesign__e2e_plant__lcoe:
+    module_type: e2eattrexprlibrary.SimpleLCOECalcModule
+    inputs:
+      annualized_capital: float E2EAttrExprDesign__e2e_plant__financial__annualized_cost
+      annual_om: float E2EAttrExprDesign__e2e_plant__annual_om__annual_om.root
+      annual_energy: float E2EAttrExprDesign__e2e_plant__energy__annual_energy_mwh.root
+    outputs:
+      root: RootModel[float] E2EAttrExprDesign__e2e_plant__lcoe__lcoe
+
+
+  # Exit point - capture all results
+  exit_point:
+    module_type: ExitPoint
+    outputs:
+      E2EAttrExprDesign__e2e_plant__component_cost__material_cost: float E2EAttrExprDesign__e2e_plant__component_cost__material_cost.json
+      E2EAttrExprDesign__e2e_plant__component_cost__fab_cost: float E2EAttrExprDesign__e2e_plant__component_cost__fab_cost.json
+      E2EAttrExprDesign__e2e_plant__component_cost__install_cost: float E2EAttrExprDesign__e2e_plant__component_cost__install_cost.json
+      E2EAttrExprDesign__e2e_plant__component_cost__total_cost: float E2EAttrExprDesign__e2e_plant__component_cost__total_cost.json
+      E2EAttrExprDesign__e2e_plant__component_cost__idiot_index: float E2EAttrExprDesign__e2e_plant__component_cost__idiot_index.json
+      E2EAttrExprDesign__e2e_plant__financial__crf: float E2EAttrExprDesign__e2e_plant__financial__crf.json
+      E2EAttrExprDesign__e2e_plant__financial__annualized_cost: float E2EAttrExprDesign__e2e_plant__financial__annualized_cost.json
+      E2EAttrExprDesign__e2e_plant__power_mw__power_mw: RootModel[float] E2EAttrExprDesign__e2e_plant__power_mw__power_mw.json
+      E2EAttrExprDesign__e2e_plant__area__area: RootModel[float] E2EAttrExprDesign__e2e_plant__area__area.json
+      E2EAttrExprDesign__e2e_plant__volume__volume: RootModel[float] E2EAttrExprDesign__e2e_plant__volume__volume.json
+      E2EAttrExprDesign__e2e_plant__energy__annual_energy_mwh: RootModel[float] E2EAttrExprDesign__e2e_plant__energy__annual_energy_mwh.json
+      E2EAttrExprDesign__e2e_plant__power_kw__power_kw: RootModel[float] E2EAttrExprDesign__e2e_plant__power_kw__power_kw.json
+      E2EAttrExprDesign__e2e_plant__surface_cost__surface_cost: RootModel[float] E2EAttrExprDesign__e2e_plant__surface_cost__surface_cost.json
+      E2EAttrExprDesign__e2e_plant__annual_om__annual_om: RootModel[float] E2EAttrExprDesign__e2e_plant__annual_om__annual_om.json
+      E2EAttrExprDesign__e2e_plant__lcoe__lcoe: RootModel[float] E2EAttrExprDesign__e2e_plant__lcoe__lcoe.json
