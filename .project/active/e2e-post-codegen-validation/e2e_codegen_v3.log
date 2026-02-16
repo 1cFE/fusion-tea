@@ -1,0 +1,109 @@
+DEBUG: agentic-mbse version: 0.1.0
+INFO: Generating code from models/tests/e2e_attr_expr
+INFO: Output to generated/e2e_attr_expr_v3
+INFO: Package name: e2e_attr_expr_v3
+INFO: Building pipeline context...
+INFO: Step 3.5: Hierarchy extraction complete — 0 redefinitions, 0 design overrides, 0 aggregation expressions, 0 bindings rewritten, 0 scoped aggregations, 0 CHAIN aliases
+INFO: Extracted 28 design attributes from 2 files (filter: '')
+DEBUG: Classified 'power_mw' on 'e2e_plant': formula (compiled=((inputs.quantity * inputs.unit_cost) / 1000000.0))
+DEBUG: Classified 'power_kw' on 'e2e_plant': formula (compiled=(inputs.power_mw * 1000.0))
+DEBUG: Classified 'annual_om' on 'e2e_plant': formula (compiled=(inputs.om_rate * inputs.power_kw))
+DEBUG: Classified 'area' on 'e2e_plant': formula (compiled=(inputs.length * inputs.width))
+DEBUG: Classified 'volume' on 'e2e_plant': formula (compiled=((inputs.length * inputs.width) * inputs.height))
+DEBUG: Classified 'surface_cost' on 'e2e_plant': formula (compiled=(inputs.area * inputs.cost_per_sqm))
+DEBUG: Classified 'total_capex' on 'e2e_plant': expose_pure (compiled=None)
+INFO: Step 4.5: Extracted 7 computed attributes (1 expose_pure, 6 formula), removed 6 FORMULA from design_attrs, 1 EXPOSE_PURE aliases
+DEBUG: Indexed attr: E2EAttrExprLibrary__ComponentCostCalc__fab_factor -> library.sysml
+DEBUG: Indexed attr: E2EAttrExprLibrary__ComponentCostCalc__install_factor -> library.sysml
+DEBUG: Indexed attr: E2EAttrExprLibrary__ComponentCostCalc__material_cost -> library.sysml
+DEBUG: Indexed attr: E2EAttrExprLibrary__ComponentCostCalc__fab_cost -> library.sysml
+DEBUG: Indexed attr: E2EAttrExprLibrary__ComponentCostCalc__install_cost -> library.sysml
+DEBUG: Indexed attr: E2EAttrExprLibrary__ComponentCostCalc__total_cost -> library.sysml
+DEBUG: Indexed attr: E2EAttrExprLibrary__ComponentCostCalc__idiot_index -> library.sysml
+DEBUG: Indexed attr: E2EAttrExprLibrary__AnnualizedCostCalc__crf -> library.sysml
+DEBUG: Indexed attr: E2EAttrExprLibrary__AnnualizedCostCalc__annualized_cost -> library.sysml
+DEBUG: Indexed attr: E2EAttrExprLibrary__EnergyCalc__annual_energy_mwh -> library.sysml
+DEBUG: Indexed attr: E2EAttrExprLibrary__SimpleLCOECalc__lcoe -> library.sysml
+DEBUG: Indexed attr: E2EAttrExprDesign__e2e_plant__quantity -> design.sysml
+DEBUG: Indexed attr: E2EAttrExprDesign__e2e_plant__unit_cost -> design.sysml
+DEBUG: Indexed attr: E2EAttrExprDesign__e2e_plant__discount_rate -> design.sysml
+DEBUG: Indexed attr: E2EAttrExprDesign__e2e_plant__lifetime -> design.sysml
+DEBUG: Indexed attr: E2EAttrExprDesign__e2e_plant__availability -> design.sysml
+DEBUG: Indexed attr: E2EAttrExprDesign__e2e_plant__om_rate -> design.sysml
+DEBUG: Indexed attr: E2EAttrExprDesign__e2e_plant__length -> design.sysml
+DEBUG: Indexed attr: E2EAttrExprDesign__e2e_plant__width -> design.sysml
+DEBUG: Indexed attr: E2EAttrExprDesign__e2e_plant__height -> design.sysml
+DEBUG: Indexed attr: E2EAttrExprDesign__e2e_plant__cost_per_sqm -> design.sysml
+DEBUG: Indexed attr: E2EAttrExprDesign__e2e_plant__total_capex -> design.sysml
+DEBUG: ParameterGroupDeriver initialized: 22 direct attrs, 10 binding-traced attrs, 2 algorithm params, 0 literal-bound params
+INFO: Step 5.5: OutputRegistry built — 15 Phase 1 channels, 0 Phase 2 CHAIN aliases, 1 Phase 3 EXPOSE_PURE aliases, 1 Phase 4 transitive aliases (52 total keys)
+WARNING: Registry unresolved: E2EAttrExprDesign__e2e_plant__component_cost|quantity source_path='E2EAttrExprDesign::e2e_plant::component_cost::quantity'
+WARNING: Registry unresolved: E2EAttrExprDesign__e2e_plant__component_cost|unit_cost source_path='E2EAttrExprDesign::e2e_plant::component_cost::unit_cost'
+WARNING: Registry unresolved: E2EAttrExprDesign__e2e_plant__financial|discount_rate source_path='E2EAttrExprDesign::e2e_plant::financial::discount_rate'
+WARNING: Registry unresolved: E2EAttrExprDesign__e2e_plant__financial|lifetime source_path='E2EAttrExprDesign::e2e_plant::financial::lifetime'
+WARNING: Registry unresolved: E2EAttrExprDesign__e2e_plant__energy|availability source_path='E2EAttrExprDesign::e2e_plant::energy::availability'
+INFO: Step 6.5: Compiling expressions for 4 calculation definitions
+INFO:   Compiled 'ComponentCostCalc': fully_compilable
+INFO:   Compiled 'AnnualizedCostCalc': fully_compilable
+INFO:   Compiled 'EnergyCalc': fully_compilable
+INFO:   Compiled 'SimpleLCOECalc': fully_compilable
+INFO: Step 6.5 complete: 4 compiled (4 fully_compilable), 0 skipped (no expressions)
+DEBUG: Could not parse default value 'component_cost.total_cost' as float
+DEBUG: Could not parse default value 'component_cost.total_cost' as float
+INFO: Derived 2 parameter groups: 2 design, 0 library
+INFO: Derived 1 parameter groups: 1 design, 0 library
+DEBUG: Could not parse default value 'component_cost.total_cost' as float
+DEBUG: Could not parse default value 'component_cost.total_cost' as float
+INFO: Derived 2 parameter groups: 2 design, 0 library
+INFO: Derived 1 parameter groups: 1 design, 0 library
+INFO: Extracted 4 calculation definitions
+INFO: Built computation graph with 10 modules
+INFO: Clearing existing output directory...
+DEBUG: Cleared output directory: generated/e2e_attr_expr_v3
+INFO: Creating output directory structure...
+DEBUG: Generated primitives: generated/e2e_attr_expr_v3/primitives.py
+INFO: Generating schemas...
+DEBUG: Generated schema: componentcostcalc_output.py
+DEBUG: Generated schema: annualizedcostcalc_output.py
+INFO: Generated 2 multi-output schemas
+INFO: Generating TEAx module wrappers...
+DEBUG: Generated module: generated/e2e_attr_expr_v3/modules/e2eattrexprlibrary/componentcostcalc.py
+DEBUG: Generated module: generated/e2e_attr_expr_v3/modules/e2eattrexprlibrary/annualizedcostcalc.py
+DEBUG: Generated module: generated/e2e_attr_expr_v3/modules/e2eattrexprlibrary/energycalc.py
+DEBUG: Generated module: generated/e2e_attr_expr_v3/modules/e2eattrexprlibrary/simplelcoecalc.py
+INFO: Generated 4 TEAx module wrappers
+INFO: Generating computed attribute module wrappers...
+DEBUG: Generated computed attr module: generated/e2e_attr_expr_v3/modules/e2eattrexprdesign/e2e_plant/power_mw.py
+DEBUG: Generated computed attr module: generated/e2e_attr_expr_v3/modules/e2eattrexprdesign/e2e_plant/power_kw.py
+DEBUG: Generated computed attr module: generated/e2e_attr_expr_v3/modules/e2eattrexprdesign/e2e_plant/annual_om.py
+DEBUG: Generated computed attr module: generated/e2e_attr_expr_v3/modules/e2eattrexprdesign/e2e_plant/area.py
+DEBUG: Generated computed attr module: generated/e2e_attr_expr_v3/modules/e2eattrexprdesign/e2e_plant/volume.py
+DEBUG: Generated computed attr module: generated/e2e_attr_expr_v3/modules/e2eattrexprdesign/e2e_plant/surface_cost.py
+INFO: Generated 6 computed attribute module wrappers
+INFO: Generating implementation stencils...
+INFO: Generated 4 implementation stencils
+INFO: Generating computed attribute auto-implementations...
+DEBUG: Generated computed attr auto-impl: generated/e2e_attr_expr_v3/handwritten/e2eattrexprdesign/e2e_plant/power_mw_impl.py
+DEBUG: Generated computed attr auto-impl: generated/e2e_attr_expr_v3/handwritten/e2eattrexprdesign/e2e_plant/power_kw_impl.py
+DEBUG: Generated computed attr auto-impl: generated/e2e_attr_expr_v3/handwritten/e2eattrexprdesign/e2e_plant/annual_om_impl.py
+DEBUG: Generated computed attr auto-impl: generated/e2e_attr_expr_v3/handwritten/e2eattrexprdesign/e2e_plant/area_impl.py
+DEBUG: Generated computed attr auto-impl: generated/e2e_attr_expr_v3/handwritten/e2eattrexprdesign/e2e_plant/volume_impl.py
+DEBUG: Generated computed attr auto-impl: generated/e2e_attr_expr_v3/handwritten/e2eattrexprdesign/e2e_plant/surface_cost_impl.py
+INFO: Generated 6 computed attribute auto-implementations
+INFO: Generating pipeline configuration...
+DEBUG: Generated pipeline: generated/e2e_attr_expr_v3/pipelines/pipeline.yaml
+INFO: Generated pipeline configuration: pipeline.yaml
+INFO: Generating module registry...
+DEBUG: Generated registry: generated/e2e_attr_expr_v3/__init__.py
+INFO: Generated module registry with 4 modules
+INFO: Generating entry point schemas and JSON templates...
+INFO: Generated 1 parameter group schemas from graph
+INFO: Generated 1 parameter group schemas
+INFO: Generated 1 JSON templates from graph
+INFO: Generated 1 JSON input templates
+INFO: Generating implementation backlog...
+INFO: Generated implementation backlog: IMPLEMENTATION_BACKLOG.md
+INFO: Generating runnable tests...
+INFO: Generated test file with 4 test classes
+INFO: Generated runnable tests: test_implementations_runnable.py
+INFO: Code generation complete

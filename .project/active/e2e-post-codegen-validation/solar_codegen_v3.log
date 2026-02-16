@@ -1,0 +1,294 @@
+DEBUG: agentic-mbse version: 0.1.0
+INFO: Generating code from models/tests/solar_battery
+INFO: Output to generated/solar_battery_v3
+INFO: Package name: solar_battery_v3
+INFO: Building pipeline context...
+INFO: Template detection: 10 templates, 5 concrete CalcUsages
+INFO: Template expansion: 10 templates → 10 virtual instances
+INFO: Scoped 20 aggregation module(s)
+INFO: Step 3.5: Hierarchy extraction complete — 78 redefinitions, 13 design overrides, 20 aggregation expressions, 13 bindings rewritten, 20 scoped aggregations, 41 CHAIN aliases
+INFO: Extracted 100 design attributes from 2 files (filter: '')
+DEBUG: Classified 'misc_hardware_cost' on 'Solar_Array': expose_pure (compiled=None)
+DEBUG: Classified 'p_net_kw' on 'solar_battery_plant': formula (compiled=(inputs.p_net_mw * 1000.0))
+INFO: Step 4.5: Extracted 2 computed attributes (1 expose_pure, 1 formula), removed 1 FORMULA from design_attrs, 0 EXPOSE_PURE aliases
+DEBUG: Indexed attr: SolarBatteryLibrary__PVModuleCostCalc__cost_per_watt -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__PVModuleCostCalc__fab_factor -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__PVModuleCostCalc__install_factor -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__PVModuleCostCalc__material_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__PVModuleCostCalc__fab_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__PVModuleCostCalc__install_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__PVModuleCostCalc__total_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__PVModuleCostCalc__idiot_index -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__InverterCostCalc__cost_per_watt -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__InverterCostCalc__fab_factor -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__InverterCostCalc__install_factor -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__InverterCostCalc__material_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__InverterCostCalc__fab_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__InverterCostCalc__install_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__InverterCostCalc__total_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__InverterCostCalc__idiot_index -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__ArrayBOSCostCalc__cost_per_string -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__ArrayBOSCostCalc__cost_per_panel_bos -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__ArrayBOSCostCalc__fab_factor -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__ArrayBOSCostCalc__install_factor -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__ArrayBOSCostCalc__material_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__ArrayBOSCostCalc__fab_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__ArrayBOSCostCalc__install_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__ArrayBOSCostCalc__total_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__ArrayBOSCostCalc__idiot_index -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__BatteryPackCostCalc__cost_per_kwh -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__BatteryPackCostCalc__fab_factor -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__BatteryPackCostCalc__install_factor -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__BatteryPackCostCalc__material_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__BatteryPackCostCalc__fab_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__BatteryPackCostCalc__install_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__BatteryPackCostCalc__total_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__BatteryPackCostCalc__idiot_index -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__HybridInverterCostCalc__cost_per_watt -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__HybridInverterCostCalc__fab_factor -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__HybridInverterCostCalc__install_factor -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__HybridInverterCostCalc__material_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__HybridInverterCostCalc__fab_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__HybridInverterCostCalc__install_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__HybridInverterCostCalc__total_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__HybridInverterCostCalc__idiot_index -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__BatteryBOSCostCalc__cost_per_pack_bos -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__BatteryBOSCostCalc__fab_factor -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__BatteryBOSCostCalc__install_factor -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__BatteryBOSCostCalc__material_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__BatteryBOSCostCalc__fab_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__BatteryBOSCostCalc__install_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__BatteryBOSCostCalc__total_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__BatteryBOSCostCalc__idiot_index -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__RackingCostCalc__cost_per_panel_rack -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__RackingCostCalc__fab_factor -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__RackingCostCalc__install_factor -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__RackingCostCalc__material_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__RackingCostCalc__fab_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__RackingCostCalc__install_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__RackingCostCalc__total_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__RackingCostCalc__idiot_index -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__ElectricalPanelCostCalc__base_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__ElectricalPanelCostCalc__cost_per_circuit -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__ElectricalPanelCostCalc__fab_factor -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__ElectricalPanelCostCalc__install_factor -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__ElectricalPanelCostCalc__material_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__ElectricalPanelCostCalc__fab_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__ElectricalPanelCostCalc__install_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__ElectricalPanelCostCalc__total_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__ElectricalPanelCostCalc__idiot_index -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__PermittingCostCalc__cost_per_kw -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__PermittingCostCalc__material_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__PermittingCostCalc__fab_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__PermittingCostCalc__install_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__PermittingCostCalc__total_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__PermittingCostCalc__idiot_index -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__AllocationCostCalc__fastener_cost_per_child -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__AllocationCostCalc__seal_cost_per_child -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__AllocationCostCalc__wiring_cost_per_kg -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__AllocationCostCalc__fastener_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__AllocationCostCalc__seal_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__AllocationCostCalc__wiring_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__AllocationCostCalc__total_allocation -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__AllocationCostCalc__material_portion -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__EnergyProductionCalc__annual_energy_mwh -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__AnnualizedOMCalc__annual_om_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__AnnualizedFuelCalc__annual_fuel_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__AnnualizedFinancialCalc__capital_recovery_factor -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__AnnualizedFinancialCalc__annualized_capital_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__LCOECalc__lcoe_per_mwh -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__Solar_Array__module_count -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__Solar_Array__inverter_count -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__Solar_Array__misc_hardware_cost -> library.sysml
+DEBUG: Indexed attr: SolarBatteryLibrary__Battery_System__pack_count -> library.sysml
+DEBUG: Indexed attr: SolarBatteryDesign__solar_battery_plant__p_net_mw -> design.sysml
+DEBUG: Indexed attr: SolarBatteryDesign__solar_battery_plant__n_mod -> design.sysml
+DEBUG: Indexed attr: SolarBatteryDesign__solar_battery_plant__plant_availability -> design.sysml
+DEBUG: Indexed attr: SolarBatteryDesign__solar_battery_plant__plant_lifetime -> design.sysml
+DEBUG: Indexed attr: SolarBatteryDesign__solar_battery_plant__yearly_inflation -> design.sysml
+DEBUG: Indexed attr: SolarBatteryDesign__solar_battery_plant__discount_rate -> design.sysml
+DEBUG: Indexed attr: SolarBatteryDesign__solar_battery_plant__om_rate_per_kw_year -> design.sysml
+DEBUG: Indexed attr: SolarBatteryDesign__solar_battery_plant__fuel_unit_cost -> design.sysml
+DEBUG: Indexed attr: SolarBatteryDesign__solar_battery_plant__fuel_consumption -> design.sysml
+DEBUG: ParameterGroupDeriver initialized: 99 direct attrs, 16 binding-traced attrs, 30 algorithm params, 2 literal-bound params
+WARNING: OutputRegistry key collision: 'capital_cost' already maps to 'SolarBatteryDesign__solar_battery_plant__solar_array__capital_cost__capital_cost', refusing to overwrite with 'SolarBatteryDesign__solar_battery_plant__battery_system__capital_cost__capital_cost'
+WARNING: OutputRegistry key collision: 'raw_material_cost' already maps to 'SolarBatteryDesign__solar_battery_plant__solar_array__raw_material_cost__raw_material_cost', refusing to overwrite with 'SolarBatteryDesign__solar_battery_plant__battery_system__raw_material_cost__raw_material_cost'
+WARNING: OutputRegistry key collision: 'fabrication_cost' already maps to 'SolarBatteryDesign__solar_battery_plant__solar_array__fabrication_cost__fabrication_cost', refusing to overwrite with 'SolarBatteryDesign__solar_battery_plant__battery_system__fabrication_cost__fabrication_cost'
+WARNING: OutputRegistry key collision: 'installation_cost' already maps to 'SolarBatteryDesign__solar_battery_plant__solar_array__installation_cost__installation_cost', refusing to overwrite with 'SolarBatteryDesign__solar_battery_plant__battery_system__installation_cost__installation_cost'
+WARNING: OutputRegistry key collision: 'idiot_index' already maps to 'SolarBatteryDesign__solar_battery_plant__solar_array__idiot_index__idiot_index', refusing to overwrite with 'SolarBatteryDesign__solar_battery_plant__battery_system__idiot_index__idiot_index'
+WARNING: OutputRegistry key collision: 'capital_cost' already maps to 'SolarBatteryDesign__solar_battery_plant__solar_array__capital_cost__capital_cost', refusing to overwrite with 'SolarBatteryDesign__solar_battery_plant__site_infra__capital_cost__capital_cost'
+WARNING: OutputRegistry key collision: 'raw_material_cost' already maps to 'SolarBatteryDesign__solar_battery_plant__solar_array__raw_material_cost__raw_material_cost', refusing to overwrite with 'SolarBatteryDesign__solar_battery_plant__site_infra__raw_material_cost__raw_material_cost'
+WARNING: OutputRegistry key collision: 'fabrication_cost' already maps to 'SolarBatteryDesign__solar_battery_plant__solar_array__fabrication_cost__fabrication_cost', refusing to overwrite with 'SolarBatteryDesign__solar_battery_plant__site_infra__fabrication_cost__fabrication_cost'
+WARNING: OutputRegistry key collision: 'installation_cost' already maps to 'SolarBatteryDesign__solar_battery_plant__solar_array__installation_cost__installation_cost', refusing to overwrite with 'SolarBatteryDesign__solar_battery_plant__site_infra__installation_cost__installation_cost'
+WARNING: OutputRegistry key collision: 'idiot_index' already maps to 'SolarBatteryDesign__solar_battery_plant__solar_array__idiot_index__idiot_index', refusing to overwrite with 'SolarBatteryDesign__solar_battery_plant__site_infra__idiot_index__idiot_index'
+WARNING: OutputRegistry key collision: 'capital_cost' already maps to 'SolarBatteryDesign__solar_battery_plant__solar_array__capital_cost__capital_cost', refusing to overwrite with 'SolarBatteryDesign__solar_battery_plant__capital_cost__capital_cost'
+WARNING: OutputRegistry key collision: 'raw_material_cost' already maps to 'SolarBatteryDesign__solar_battery_plant__solar_array__raw_material_cost__raw_material_cost', refusing to overwrite with 'SolarBatteryDesign__solar_battery_plant__raw_material_cost__raw_material_cost'
+WARNING: OutputRegistry key collision: 'fabrication_cost' already maps to 'SolarBatteryDesign__solar_battery_plant__solar_array__fabrication_cost__fabrication_cost', refusing to overwrite with 'SolarBatteryDesign__solar_battery_plant__fabrication_cost__fabrication_cost'
+WARNING: OutputRegistry key collision: 'installation_cost' already maps to 'SolarBatteryDesign__solar_battery_plant__solar_array__installation_cost__installation_cost', refusing to overwrite with 'SolarBatteryDesign__solar_battery_plant__installation_cost__installation_cost'
+WARNING: OutputRegistry key collision: 'idiot_index' already maps to 'SolarBatteryDesign__solar_battery_plant__solar_array__idiot_index__idiot_index', refusing to overwrite with 'SolarBatteryDesign__solar_battery_plant__idiot_index__idiot_index'
+INFO: Step 5.5: OutputRegistry built — 77 Phase 1 channels, 41 Phase 2 CHAIN aliases, 0 Phase 3 EXPOSE_PURE aliases, 0 Phase 4 transitive aliases (293 total keys)
+WARNING: Registry unresolved: SolarBatteryDesign__solar_battery_plant__energy_production|p_net_mw source_path='SolarBatteryDesign::solar_battery_plant::energy_production::p_net_mw'
+WARNING: Registry unresolved: SolarBatteryDesign__solar_battery_plant__energy_production|n_mod source_path='SolarBatteryDesign::solar_battery_plant::energy_production::n_mod'
+WARNING: Registry unresolved: SolarBatteryDesign__solar_battery_plant__energy_production|plant_availability source_path='SolarBatteryDesign::solar_battery_plant::energy_production::plant_availability'
+WARNING: Registry unresolved: SolarBatteryDesign__solar_battery_plant__annualized_om|om_rate_per_kw_year source_path='SolarBatteryDesign::solar_battery_plant::annualized_om::om_rate_per_kw_year'
+WARNING: Registry unresolved: SolarBatteryDesign__solar_battery_plant__annualized_fuel|fuel_unit_cost source_path='SolarBatteryDesign::solar_battery_plant::annualized_fuel::fuel_unit_cost'
+WARNING: Registry unresolved: SolarBatteryDesign__solar_battery_plant__annualized_fuel|fuel_consumption source_path='SolarBatteryDesign::solar_battery_plant::annualized_fuel::fuel_consumption'
+WARNING: Registry unresolved: SolarBatteryDesign__solar_battery_plant__annualized_financial|discount_rate source_path='SolarBatteryDesign::solar_battery_plant::annualized_financial::discount_rate'
+WARNING: Registry unresolved: SolarBatteryDesign__solar_battery_plant__annualized_financial|plant_lifetime source_path='SolarBatteryDesign::solar_battery_plant::annualized_financial::plant_lifetime'
+WARNING: Registry unresolved: SolarBatteryDesign__solar_battery_plant__lcoe|yearly_inflation source_path='SolarBatteryDesign::solar_battery_plant::lcoe::yearly_inflation'
+WARNING: Registry unresolved: SolarBatteryDesign__solar_battery_plant__lcoe|plant_lifetime source_path='SolarBatteryDesign::solar_battery_plant::lcoe::plant_lifetime'
+INFO: Step 6.5: Compiling expressions for 15 calculation definitions
+INFO:   Compiled 'PVModuleCostCalc': fully_compilable
+INFO:   Compiled 'InverterCostCalc': fully_compilable
+INFO:   Compiled 'ArrayBOSCostCalc': fully_compilable
+INFO:   Compiled 'BatteryPackCostCalc': fully_compilable
+INFO:   Compiled 'HybridInverterCostCalc': fully_compilable
+INFO:   Compiled 'BatteryBOSCostCalc': fully_compilable
+INFO:   Compiled 'RackingCostCalc': fully_compilable
+INFO:   Compiled 'ElectricalPanelCostCalc': fully_compilable
+INFO:   Compiled 'PermittingCostCalc': fully_compilable
+INFO:   Compiled 'AllocationCostCalc': fully_compilable
+INFO:   Compiled 'EnergyProductionCalc': fully_compilable
+INFO:   Compiled 'AnnualizedOMCalc': fully_compilable
+INFO:   Compiled 'AnnualizedFuelCalc': fully_compilable
+INFO:   Compiled 'AnnualizedFinancialCalc': fully_compilable
+INFO:   Compiled 'LCOECalc': fully_compilable
+INFO: Step 6.5 complete: 15 compiled (15 fully_compilable), 0 skipped (no expressions)
+WARNING: EXPOSE_PURE misc_hardware_cost: could not identify instance/output from refs ['total_allocation', 'allocation_model']
+DEBUG: Could not parse default value 'allocation_model.total_allocation' as float
+INFO: Derived 2 parameter groups: 2 design, 0 library
+INFO: Derived 1 parameter groups: 1 design, 0 library
+DEBUG: Aggregation input 'inverter.capital_cost' resolved via scoped registry key 'solar_battery_plant.solar_array.inverter.capital_cost'
+DEBUG: Aggregation input 'allocation_model.total_allocation' resolved via scoped registry key 'solar_battery_plant.solar_array.allocation_model.total_allocation'
+DEBUG: Aggregation input 'inverter.raw_material_cost' resolved via scoped registry key 'solar_battery_plant.solar_array.inverter.raw_material_cost'
+DEBUG: Aggregation input 'allocation_model.material_portion' resolved via scoped registry key 'solar_battery_plant.solar_array.allocation_model.material_portion'
+DEBUG: Aggregation input 'inverter.fabrication_cost' resolved via scoped registry key 'solar_battery_plant.solar_array.inverter.fabrication_cost'
+DEBUG: Aggregation input 'inverter.installation_cost' resolved via scoped registry key 'solar_battery_plant.solar_array.inverter.installation_cost'
+DEBUG: Aggregation input 'racking.capital_cost' resolved via scoped registry key 'solar_battery_plant.site_infra.racking.capital_cost'
+DEBUG: Aggregation input 'permitting.capital_cost' resolved via scoped registry key 'solar_battery_plant.site_infra.permitting.capital_cost'
+DEBUG: Aggregation input 'racking.raw_material_cost' resolved via scoped registry key 'solar_battery_plant.site_infra.racking.raw_material_cost'
+DEBUG: Aggregation input 'permitting.raw_material_cost' unresolved (tried scoped 'solar_battery_plant.site_infra.permitting.raw_material_cost', unscoped 'permitting.raw_material_cost')
+DEBUG: Aggregation input 'racking.fabrication_cost' resolved via scoped registry key 'solar_battery_plant.site_infra.racking.fabrication_cost'
+DEBUG: Aggregation input 'permitting.fabrication_cost' unresolved (tried scoped 'solar_battery_plant.site_infra.permitting.fabrication_cost', unscoped 'permitting.fabrication_cost')
+DEBUG: Aggregation input 'racking.installation_cost' resolved via scoped registry key 'solar_battery_plant.site_infra.racking.installation_cost'
+DEBUG: Aggregation input 'permitting.installation_cost' unresolved (tried scoped 'solar_battery_plant.site_infra.permitting.installation_cost', unscoped 'permitting.installation_cost')
+DEBUG: Aggregation input 'solar_array.capital_cost' resolved via scoped registry key 'solar_battery_plant.solar_array.capital_cost'
+DEBUG: Aggregation input 'battery_system.capital_cost' resolved via scoped registry key 'solar_battery_plant.battery_system.capital_cost'
+DEBUG: Aggregation input 'site_infra.capital_cost' resolved via scoped registry key 'solar_battery_plant.site_infra.capital_cost'
+DEBUG: Aggregation input 'solar_array.raw_material_cost' resolved via scoped registry key 'solar_battery_plant.solar_array.raw_material_cost'
+DEBUG: Aggregation input 'battery_system.raw_material_cost' resolved via scoped registry key 'solar_battery_plant.battery_system.raw_material_cost'
+DEBUG: Aggregation input 'site_infra.raw_material_cost' resolved via scoped registry key 'solar_battery_plant.site_infra.raw_material_cost'
+DEBUG: Aggregation input 'solar_array.fabrication_cost' resolved via scoped registry key 'solar_battery_plant.solar_array.fabrication_cost'
+DEBUG: Aggregation input 'battery_system.fabrication_cost' resolved via scoped registry key 'solar_battery_plant.battery_system.fabrication_cost'
+DEBUG: Aggregation input 'site_infra.fabrication_cost' resolved via scoped registry key 'solar_battery_plant.site_infra.fabrication_cost'
+DEBUG: Aggregation input 'solar_array.installation_cost' resolved via scoped registry key 'solar_battery_plant.solar_array.installation_cost'
+DEBUG: Aggregation input 'battery_system.installation_cost' resolved via scoped registry key 'solar_battery_plant.battery_system.installation_cost'
+DEBUG: Aggregation input 'site_infra.installation_cost' resolved via scoped registry key 'solar_battery_plant.site_infra.installation_cost'
+DEBUG: Could not parse default value 'allocation_model.total_allocation' as float
+INFO: Derived 2 parameter groups: 2 design, 0 library
+INFO: Derived 1 parameter groups: 1 design, 0 library
+INFO: Extracted 15 calculation definitions
+INFO: Built computation graph with 36 modules
+INFO: Clearing existing output directory...
+DEBUG: Cleared output directory: generated/solar_battery_v3
+INFO: Creating output directory structure...
+DEBUG: Generated primitives: generated/solar_battery_v3/primitives.py
+INFO: Generating schemas...
+DEBUG: Generated schema: pvmodulecostcalc_output.py
+DEBUG: Generated schema: invertercostcalc_output.py
+DEBUG: Generated schema: arrayboscostcalc_output.py
+DEBUG: Generated schema: batterypackcostcalc_output.py
+DEBUG: Generated schema: hybridinvertercostcalc_output.py
+DEBUG: Generated schema: batteryboscostcalc_output.py
+DEBUG: Generated schema: rackingcostcalc_output.py
+DEBUG: Generated schema: electricalpanelcostcalc_output.py
+DEBUG: Generated schema: permittingcostcalc_output.py
+DEBUG: Generated schema: allocationcostcalc_output.py
+DEBUG: Generated schema: annualizedfinancialcalc_output.py
+INFO: Generated 11 multi-output schemas
+INFO: Generating TEAx module wrappers...
+DEBUG: Generated module: generated/solar_battery_v3/modules/solarbatterylibrary/pvmodulecostcalc.py
+DEBUG: Generated module: generated/solar_battery_v3/modules/solarbatterylibrary/invertercostcalc.py
+DEBUG: Generated module: generated/solar_battery_v3/modules/solarbatterylibrary/arrayboscostcalc.py
+DEBUG: Generated module: generated/solar_battery_v3/modules/solarbatterylibrary/batterypackcostcalc.py
+DEBUG: Generated module: generated/solar_battery_v3/modules/solarbatterylibrary/hybridinvertercostcalc.py
+DEBUG: Generated module: generated/solar_battery_v3/modules/solarbatterylibrary/batteryboscostcalc.py
+DEBUG: Generated module: generated/solar_battery_v3/modules/solarbatterylibrary/rackingcostcalc.py
+DEBUG: Generated module: generated/solar_battery_v3/modules/solarbatterylibrary/electricalpanelcostcalc.py
+DEBUG: Generated module: generated/solar_battery_v3/modules/solarbatterylibrary/permittingcostcalc.py
+DEBUG: Generated module: generated/solar_battery_v3/modules/solarbatterylibrary/allocationcostcalc.py
+DEBUG: Generated module: generated/solar_battery_v3/modules/solarbatterylibrary/energyproductioncalc.py
+DEBUG: Generated module: generated/solar_battery_v3/modules/solarbatterylibrary/annualizedomcalc.py
+DEBUG: Generated module: generated/solar_battery_v3/modules/solarbatterylibrary/annualizedfuelcalc.py
+DEBUG: Generated module: generated/solar_battery_v3/modules/solarbatterylibrary/annualizedfinancialcalc.py
+DEBUG: Generated module: generated/solar_battery_v3/modules/solarbatterylibrary/lcoecalc.py
+INFO: Generated 15 TEAx module wrappers
+INFO: Generating computed attribute module wrappers...
+DEBUG: Generated computed attr module: generated/solar_battery_v3/modules/solarbatterydesign/solar_battery_plant/p_net_kw.py
+INFO: Generated 1 computed attribute module wrappers
+INFO: Generating implementation stencils...
+INFO: Generated 15 implementation stencils
+INFO: Generating computed attribute auto-implementations...
+DEBUG: Generated computed attr auto-impl: generated/solar_battery_v3/handwritten/solarbatterydesign/solar_battery_plant/p_net_kw_impl.py
+INFO: Generated 1 computed attribute auto-implementations
+INFO: Generating aggregation module wrappers...
+DEBUG: Generated aggregation module: generated/solar_battery_v3/modules/solarbatterydesign/solar_battery_plant/solar_array/capital_cost.py
+DEBUG: Generated aggregation module: generated/solar_battery_v3/modules/solarbatterydesign/solar_battery_plant/solar_array/raw_material_cost.py
+DEBUG: Generated aggregation module: generated/solar_battery_v3/modules/solarbatterydesign/solar_battery_plant/solar_array/fabrication_cost.py
+DEBUG: Generated aggregation module: generated/solar_battery_v3/modules/solarbatterydesign/solar_battery_plant/solar_array/installation_cost.py
+DEBUG: Generated aggregation module: generated/solar_battery_v3/modules/solarbatterydesign/solar_battery_plant/solar_array/idiot_index.py
+DEBUG: Generated aggregation module: generated/solar_battery_v3/modules/solarbatterydesign/solar_battery_plant/battery_system/capital_cost.py
+DEBUG: Generated aggregation module: generated/solar_battery_v3/modules/solarbatterydesign/solar_battery_plant/battery_system/raw_material_cost.py
+DEBUG: Generated aggregation module: generated/solar_battery_v3/modules/solarbatterydesign/solar_battery_plant/battery_system/fabrication_cost.py
+DEBUG: Generated aggregation module: generated/solar_battery_v3/modules/solarbatterydesign/solar_battery_plant/battery_system/installation_cost.py
+DEBUG: Generated aggregation module: generated/solar_battery_v3/modules/solarbatterydesign/solar_battery_plant/battery_system/idiot_index.py
+DEBUG: Generated aggregation module: generated/solar_battery_v3/modules/solarbatterydesign/solar_battery_plant/site_infra/capital_cost.py
+DEBUG: Generated aggregation module: generated/solar_battery_v3/modules/solarbatterydesign/solar_battery_plant/site_infra/raw_material_cost.py
+DEBUG: Generated aggregation module: generated/solar_battery_v3/modules/solarbatterydesign/solar_battery_plant/site_infra/fabrication_cost.py
+DEBUG: Generated aggregation module: generated/solar_battery_v3/modules/solarbatterydesign/solar_battery_plant/site_infra/installation_cost.py
+DEBUG: Generated aggregation module: generated/solar_battery_v3/modules/solarbatterydesign/solar_battery_plant/site_infra/idiot_index.py
+DEBUG: Generated aggregation module: generated/solar_battery_v3/modules/solarbatterydesign/solar_battery_plant/capital_cost.py
+DEBUG: Generated aggregation module: generated/solar_battery_v3/modules/solarbatterydesign/solar_battery_plant/raw_material_cost.py
+DEBUG: Generated aggregation module: generated/solar_battery_v3/modules/solarbatterydesign/solar_battery_plant/fabrication_cost.py
+DEBUG: Generated aggregation module: generated/solar_battery_v3/modules/solarbatterydesign/solar_battery_plant/installation_cost.py
+DEBUG: Generated aggregation module: generated/solar_battery_v3/modules/solarbatterydesign/solar_battery_plant/idiot_index.py
+INFO: Generated 20 aggregation module wrappers
+INFO: Generating aggregation auto-implementations...
+DEBUG: Generated aggregation auto-impl: generated/solar_battery_v3/handwritten/solarbatterydesign/solar_battery_plant/solar_array/capital_cost_impl.py
+DEBUG: Generated aggregation auto-impl: generated/solar_battery_v3/handwritten/solarbatterydesign/solar_battery_plant/solar_array/raw_material_cost_impl.py
+DEBUG: Generated aggregation auto-impl: generated/solar_battery_v3/handwritten/solarbatterydesign/solar_battery_plant/solar_array/fabrication_cost_impl.py
+DEBUG: Generated aggregation auto-impl: generated/solar_battery_v3/handwritten/solarbatterydesign/solar_battery_plant/solar_array/installation_cost_impl.py
+DEBUG: Generated aggregation auto-impl: generated/solar_battery_v3/handwritten/solarbatterydesign/solar_battery_plant/solar_array/idiot_index_impl.py
+DEBUG: Generated aggregation auto-impl: generated/solar_battery_v3/handwritten/solarbatterydesign/solar_battery_plant/battery_system/capital_cost_impl.py
+DEBUG: Generated aggregation auto-impl: generated/solar_battery_v3/handwritten/solarbatterydesign/solar_battery_plant/battery_system/raw_material_cost_impl.py
+DEBUG: Generated aggregation auto-impl: generated/solar_battery_v3/handwritten/solarbatterydesign/solar_battery_plant/battery_system/fabrication_cost_impl.py
+DEBUG: Generated aggregation auto-impl: generated/solar_battery_v3/handwritten/solarbatterydesign/solar_battery_plant/battery_system/installation_cost_impl.py
+DEBUG: Generated aggregation auto-impl: generated/solar_battery_v3/handwritten/solarbatterydesign/solar_battery_plant/battery_system/idiot_index_impl.py
+DEBUG: Generated aggregation auto-impl: generated/solar_battery_v3/handwritten/solarbatterydesign/solar_battery_plant/site_infra/capital_cost_impl.py
+DEBUG: Generated aggregation auto-impl: generated/solar_battery_v3/handwritten/solarbatterydesign/solar_battery_plant/site_infra/raw_material_cost_impl.py
+DEBUG: Generated aggregation auto-impl: generated/solar_battery_v3/handwritten/solarbatterydesign/solar_battery_plant/site_infra/fabrication_cost_impl.py
+DEBUG: Generated aggregation auto-impl: generated/solar_battery_v3/handwritten/solarbatterydesign/solar_battery_plant/site_infra/installation_cost_impl.py
+DEBUG: Generated aggregation auto-impl: generated/solar_battery_v3/handwritten/solarbatterydesign/solar_battery_plant/site_infra/idiot_index_impl.py
+DEBUG: Generated aggregation auto-impl: generated/solar_battery_v3/handwritten/solarbatterydesign/solar_battery_plant/capital_cost_impl.py
+DEBUG: Generated aggregation auto-impl: generated/solar_battery_v3/handwritten/solarbatterydesign/solar_battery_plant/raw_material_cost_impl.py
+DEBUG: Generated aggregation auto-impl: generated/solar_battery_v3/handwritten/solarbatterydesign/solar_battery_plant/fabrication_cost_impl.py
+DEBUG: Generated aggregation auto-impl: generated/solar_battery_v3/handwritten/solarbatterydesign/solar_battery_plant/installation_cost_impl.py
+DEBUG: Generated aggregation auto-impl: generated/solar_battery_v3/handwritten/solarbatterydesign/solar_battery_plant/idiot_index_impl.py
+INFO: Generated 20 aggregation auto-implementations
+INFO: Generating pipeline configuration...
+DEBUG: Generated pipeline: generated/solar_battery_v3/pipelines/pipeline.yaml
+INFO: Generated pipeline configuration: pipeline.yaml
+INFO: Generating module registry...
+DEBUG: Generated registry: generated/solar_battery_v3/__init__.py
+INFO: Generated module registry with 15 modules
+INFO: Generating entry point schemas and JSON templates...
+INFO: Generated 3 parameter group schemas from graph
+INFO: Generated 3 parameter group schemas
+INFO: Generated 3 JSON templates from graph
+INFO: Generated 3 JSON input templates
+INFO: Generating implementation backlog...
+INFO: Generated implementation backlog: IMPLEMENTATION_BACKLOG.md
+INFO: Generating runnable tests...
+INFO: Generated test file with 15 test classes
+INFO: Generated runnable tests: test_implementations_runnable.py
+INFO: Code generation complete
