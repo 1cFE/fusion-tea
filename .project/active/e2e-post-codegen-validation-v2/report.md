@@ -14,7 +14,9 @@ V4 validation confirms that **all 7 original codegen bugs are fully fixed** (inc
 
 The **ComponentCostEvaluator hybrid merge is no longer needed** — native codegen produces 36 pipeline modules (vs 16 in V2) that replace it entirely. One new bug was discovered (Bug 12: pipeline.yaml output mismatch for CalcDefs with defaulted outputs).
 
-**Workaround count: V1 = 7 bugs / ~15 edits → V2 = 1 workaround + 2 __init__.py → V4 = 1 new workaround (Bug 12, 2 edits)**
+**Workaround count: V1 = 7 bugs / ~15 edits → V2 = 1 workaround + 2 __init__.py → V4 = 1 new workaround (Bug 12, 2 edits) → V5 = 0 workarounds**
+
+**UPDATE (2026-02-20):** V5 clean regeneration confirms Bug 11/12 are fixed in the codegen. Both `solar_battery_v5` and `e2e_attr_expr_v5` run from clean codegen output with zero manual edits. All ground truth values pass. See V5 section at end of report.
 
 | Phase | Status | Summary |
 |-------|--------|---------|
@@ -121,10 +123,10 @@ The **ComponentCostEvaluator hybrid merge is no longer needed** — native codeg
 | 8 | `__init__.py` wrong import paths + name collisions | N/A | N/A | **PASS** | Phase 4: aliased imports handle 5 collision groups correctly |
 | 9 | Missing `system_design.` prefix on entry point channels | N/A | N/A | **PASS** | Phase 4: 3 param groups with correct prefixes (design_params, library_params, system_design) |
 | 10 | `int` type for multiplicity counts | N/A | N/A | **NOTED** | Phase 4: multiplicity counts are `float` (20.0, 4.0, 8.0). Functionally correct but semantically imprecise. |
-| 11 | `default=0.0` on MultiOutput fields | N/A | N/A | **NEW BUG 12** | Phase 5: PermittingCostCalc defaults cause registry/pipeline mismatch |
-| 12 | Pipeline.yaml declares unregistered outputs | N/A | N/A | **WORKAROUND** | Phase 5: PermittingCostCalcOutput fields with `default=0.0` not registered by TEAx. Pipeline.yaml edited to only declare `total_cost`. 2 edits. |
+| 11 | `default=0.0` on MultiOutput fields | N/A | N/A | **~~NEW BUG 12~~ FIXED V5** | Phase 5: PermittingCostCalc defaults cause registry/pipeline mismatch. **V5 UPDATE:** Schema now uses `Field(description=...)` without defaults. TEAx registers all 5 outputs. |
+| 12 | Pipeline.yaml declares unregistered outputs | N/A | N/A | **~~WORKAROUND~~ FIXED V5** | Phase 5: PermittingCostCalcOutput fields with `default=0.0` not registered by TEAx. **V5 UPDATE:** Root cause fixed — pipeline.yaml now declares all 5 outputs and they all register correctly. 0 edits needed. |
 
-**Summary:** 9 PASS, 1 NOTED (Bug 10 — cosmetic), 1 NEW with workaround (Bug 12).
+**Summary:** 9 PASS, 1 NOTED (Bug 10 — cosmetic), ~~1 NEW with workaround (Bug 12)~~ **V5: 11 PASS, 1 NOTED (Bug 10). All bugs fully resolved.**
 
 ---
 
@@ -132,12 +134,14 @@ The **ComponentCostEvaluator hybrid merge is no longer needed** — native codeg
 
 ### Workaround Count
 
-| Metric | V1 | V2 | V4 | Delta (V2→V4) |
-|--------|----|----|-----|----------------|
-| Bugs requiring workarounds | 7 | 1 (Bug 2) | 1 (Bug 12 new) | 0 (different bug) |
-| Files manually modified post-codegen | ~15 edits | 4 edits (2 Bug 2 + 2 __init__.py) | 2 edits (Bug 12 pipeline.yaml) | -2 edits |
-| ComponentCostEvaluator hybrid merge | Yes (8 files) | Yes (8 files) | **NO** | -8 files eliminated |
-| Total manual intervention | ~23 edits + hybrid merge | 4 edits + hybrid merge | 2 edits, no hybrid | **dramatic reduction** |
+| Metric | V1 | V2 | V4 | V5 (Delta) |
+|--------|----|----|-----|------------|
+| Bugs requiring workarounds | 7 | 1 (Bug 2) | 1 (Bug 12 new) | **0** |
+| Files manually modified post-codegen | ~15 edits | 4 edits (2 Bug 2 + 2 __init__.py) | 2 edits (Bug 12 pipeline.yaml) | **0 edits** |
+| ComponentCostEvaluator hybrid merge | Yes (8 files) | Yes (8 files) | **NO** | **NO** |
+| Total manual intervention | ~23 edits + hybrid merge | 4 edits + hybrid merge | 2 edits, no hybrid | **0 edits, 0 workarounds** |
+
+**V5 UPDATE:** The V4→V5 column reflects clean regeneration after Bug 11/12 fix in sysml-codegen. Zero manual intervention required.
 
 ### Module Generation
 
@@ -199,6 +203,70 @@ The **ComponentCostEvaluator hybrid merge is no longer needed** — native codeg
 - File Bug 12 (pipeline.yaml output mismatch for defaulted MultiOutput fields) against sysml-codegen — non-blocking, 2-edit workaround
 - Bug 10 (float multiplicity counts) is cosmetic — file for future cleanup
 - Smart-regen overwrites Bug 12 workaround — document in project notes
+
+---
+
+---
+
+## **UPDATE: V5 Clean Regeneration (2026-02-20)**
+
+### Purpose
+Regenerated both packages from scratch as `_v5` to confirm Bug 11/12 fixes are in the codegen itself — no manual workarounds needed.
+
+### Codegen Results
+
+| Package | Modules | CalcDefs Compiled | Manual Impls | Workarounds |
+|---------|---------|-------------------|--------------|-------------|
+| e2e_attr_expr_v5 | 10 | 4/4 fully_compilable | 0 | 0 |
+| solar_battery_v5 | 36 | 15/15 fully_compilable | 0 | 0 |
+
+### Bug 11/12 Fix Verification
+
+**Bug 11 (default=0.0 on MultiOutput fields):**
+- V4: `PermittingCostCalcOutput` had `material_cost: float = Field(default=0.0, ...)` — TEAx excluded defaulted fields from registry
+- V5: `PermittingCostCalcOutput` has `material_cost: float = Field(description="...")` — no defaults, all 5 fields registered
+
+**Bug 12 (pipeline.yaml declares unregistered outputs):**
+- V4: pipeline.yaml trimmed to only `total_cost` for PermittingCostCalc (manual workaround, 2 edits)
+- V5: pipeline.yaml declares all 5 outputs (`material_cost`, `fab_cost`, `install_cost`, `total_cost`, `idiot_index`) — matches registry, no edits needed
+
+### Pipeline Execution Results
+
+**solar_battery_v5: ALL 7 VALUES PASS**
+
+| Metric | Expected | Actual | Status |
+|--------|----------|--------|--------|
+| total_capex | 41205.0 | 41205.0 | PASS |
+| annual_energy_mwh | 11.14272 | 11.14272 | PASS |
+| annual_om_cost | 160.0 | 160.0 | PASS |
+| annual_fuel_cost | 0.0 | 0.0 | PASS |
+| capital_recovery_factor | 0.07095246 | 0.07095246 | PASS |
+| annualized_capital_cost | 2923.60 | 2923.596 | PASS |
+| lcoe_per_mwh | 288.68 | 288.676 | PASS |
+
+**e2e_attr_expr_v5: ALL 16 VALUES PASS**
+- All 15 ExitPoint values pass + EXPOSE_PURE (total_capex) verified transitively
+- Patterns 1-12 all confirmed
+
+### Revised Workaround Progression
+
+```
+V1:  ~23 edits + ComponentCostEvaluator hybrid merge
+V2:  4 edits + ComponentCostEvaluator hybrid merge
+V4:  2 edits (Bug 12), no hybrid merge
+V5:  0 edits, 0 workarounds, no hybrid merge   <<<--- CLEAN
+```
+
+### Remaining Informational Warnings (not bugs)
+- 10 "Registry unresolved" warnings for binding-traced params — resolve via JSON entry points (working as designed)
+- 3 unresolved aggregation inputs for `permitting.{raw_material_cost, fabrication_cost, installation_cost}` — fall back to `system_design` JSON defaulting to 0.0 (correct for soft-cost-only component)
+- Bug 10 (float multiplicity counts) remains cosmetic
+
+### Revised Gate Decision
+
+### PASS — All bugs fully resolved, zero workarounds
+
+The V5 clean regeneration confirms the codegen fix for Bug 11/12 is complete. The full pipeline from SysML models to verified LCOE output now runs with **zero manual intervention**. COST-PATTERN Item 5 (E2E Validation & Documentation) is fully validated.
 
 ---
 

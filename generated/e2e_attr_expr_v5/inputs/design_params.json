@@ -1,0 +1,16 @@
+{
+  "E2EAttrExprDesign__e2e_plant__component_cost__fab_factor": 0.45,
+  "E2EAttrExprDesign__e2e_plant__component_cost__install_factor": 0.3,
+  "E2EAttrExprDesign__e2e_plant__component_cost__quantity": 100.0,
+  "E2EAttrExprDesign__e2e_plant__component_cost__unit_cost": 50.0,
+  "E2EAttrExprDesign__e2e_plant__cost_per_sqm": 12.0,
+  "E2EAttrExprDesign__e2e_plant__energy__availability": 0.9,
+  "E2EAttrExprDesign__e2e_plant__financial__discount_rate": 0.05,
+  "E2EAttrExprDesign__e2e_plant__financial__lifetime": 25.0,
+  "E2EAttrExprDesign__e2e_plant__height": 3.0,
+  "E2EAttrExprDesign__e2e_plant__length": 10.0,
+  "E2EAttrExprDesign__e2e_plant__om_rate": 20.0,
+  "E2EAttrExprDesign__e2e_plant__quantity": 100.0,
+  "E2EAttrExprDesign__e2e_plant__unit_cost": 50.0,
+  "E2EAttrExprDesign__e2e_plant__width": 5.0
+}

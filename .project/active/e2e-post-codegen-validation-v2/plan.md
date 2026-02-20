@@ -643,4 +643,30 @@ Complete documentation of the COST-PATTERN epic's readiness for Item 5 (E2E Vali
 
 ---
 
+### **UPDATE: V5 Clean Regeneration (2026-02-20)**
+
+**Purpose:** Regenerated both packages from scratch as `_v5` to confirm Bug 11/12 fixes are in the codegen itself — no manual workarounds needed.
+
+**Commands run:**
+```bash
+uv run sysml-codegen generate --models models/tests/solar_battery --output generated/solar_battery_v5 --package-name solar_battery_v5 --overwrite --verbose
+uv run sysml-codegen generate --models models/tests/e2e_attr_expr --output generated/e2e_attr_expr_v5 --package-name e2e_attr_expr_v5 --overwrite --verbose
+```
+
+**Results:**
+- **Bug 11 FIXED:** `PermittingCostCalcOutput` schema no longer has `default=0.0` on fields. All fields use `Field(description=...)` — TEAx registers all 5 outputs correctly.
+- **Bug 12 FIXED:** pipeline.yaml declares all 5 PermittingCostCalc outputs (`material_cost`, `fab_cost`, `install_cost`, `total_cost`, `idiot_index`). No workaround comments. ExitPoint exports all 5.
+- **All 15 CalcDefs fully_compilable:** 0 manual implementations needed. IMPLEMENTATION_BACKLOG shows "0 functions to implement".
+- **solar_battery_v5 pipeline:** ALL 7 VALUES PASS (LCOE = 288.68 $/MWh)
+- **e2e_attr_expr_v5 pipeline:** ALL 16 VALUES PASS (all 12 patterns verified)
+- **Zero workarounds required.** Both pipelines run from clean codegen output with no manual edits.
+
+**Remaining informational warnings (not bugs):**
+- 10 "Registry unresolved" warnings for binding-traced params — resolve via JSON entry points (working as designed)
+- 3 unresolved aggregation inputs for `permitting.{raw_material_cost, fabrication_cost, installation_cost}` — fall back to `system_design` JSON defaulting to 0.0 (correct for soft-cost-only component)
+
+**Revised workaround count:** V1 = ~23 edits + hybrid merge → V2 = 4 edits + hybrid merge → V4 = 2 edits (Bug 12) → **V5 = 0 edits, 0 workarounds**
+
+---
+
 **Status**: Complete
