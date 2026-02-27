@@ -7,12 +7,13 @@ extract, appends entries to SOURCE_INDEX.md, and records to the manifest.
 Zotero tagging is deferred to a separate --sync-tags step.
 
 Usage:
-    uv run python scripts/zotero_ingest.py              # process all pending
-    uv run python scripts/zotero_ingest.py --dry-run     # list pending items
-    uv run python scripts/zotero_ingest.py --limit 5     # process at most 5
-    uv run python scripts/zotero_ingest.py --tag new      # only items tagged 'new'
-    uv run python scripts/zotero_ingest.py --sync-tags    # tag manifested items in Zotero
-    uv run python scripts/zotero_ingest.py --local-pdf knowledge/raw/some_paper.pdf
+    uv run python scripts/zotero_ingest.py                    # process all pending
+    uv run python scripts/zotero_ingest.py --dry-run           # list pending items
+    uv run python scripts/zotero_ingest.py --budget 0          # no Claude enhancement
+    uv run python scripts/zotero_ingest.py --model sonnet      # use sonnet instead of opus
+    uv run python scripts/zotero_ingest.py --re-extract        # re-extract existing sources
+    uv run python scripts/zotero_ingest.py --local-pdf path.pdf
+    uv run python scripts/zotero_ingest.py --sync-tags         # tag manifested items in Zotero
 
 Requires .env with:
     ZOTERO_KEY=<api-key>  (not needed for --local-pdf)
@@ -43,6 +44,13 @@ from zotero_lib import (
     tag_extracted,
 )
 
+# -- agentic-mbse extraction interface --
+# These reflect the agentic-mbse CLI contract. Update here if upstream changes.
+EXTRACT_OUTPUT = "output.md"
+EXTRACT_LEGACY_FILES = ("full_document.md", "summary.json", "style.json")
+DEFAULT_BUDGET = 50.0
+DEFAULT_MODEL = "opus"
+
 
 def parse_args():
     parser = argparse.ArgumentParser(
@@ -59,9 +67,20 @@ def parse_args():
         help="Process a local PDF (bypass Zotero query)",
     )
     parser.add_argument(
-        "--no-enhance",
-        action="store_true",
-        help="Disable --enhance (use basic extraction only)",
+        "--budget", type=float, default=DEFAULT_BUDGET,
+        help=f"Claude budget in USD per document (default: {DEFAULT_BUDGET}, 0 = no Claude)",
+    )
+    parser.add_argument(
+        "--model", choices=["opus", "sonnet", "haiku"], default=DEFAULT_MODEL,
+        help=f"Claude model for enhancement (default: {DEFAULT_MODEL})",
+    )
+    parser.add_argument(
+        "--re-extract", action="store_true",
+        help="Re-extract all manifested sources (uses --force, cleans up legacy files)",
+    )
+    parser.add_argument(
+        "--keep-legacy", action="store_true",
+        help="Keep old extraction files (full_document.md, etc.) for comparison",
     )
     parser.add_argument(
         "--output-dir",
@@ -87,7 +106,10 @@ def parse_args():
     return parser.parse_args()
 
 
-def run_extraction(pdf_path: Path, output_dir: Path, enhance: bool) -> bool:
+def run_extraction(
+    pdf_path: Path, output_dir: Path, *,
+    budget: float = DEFAULT_BUDGET, model: str = DEFAULT_MODEL, force: bool = False,
+) -> bool:
     """Run agentic-mbse extract on a PDF. Returns True on success.
 
     After extraction, flattens the output if agentic-mbse created a nested
@@ -96,9 +118,11 @@ def run_extraction(pdf_path: Path, output_dir: Path, enhance: bool) -> bool:
         "uv", "run", "agentic-mbse", "extract", str(pdf_path),
         "--output", str(output_dir),
         "--index", "--summarize",
+        "--budget", str(budget),
+        "--model", model,
     ]
-    if enhance:
-        cmd.append("--enhance")
+    if force:
+        cmd.append("--force")
 
     print(f"  Extracting: {' '.join(cmd)}")
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=900)
@@ -109,27 +133,50 @@ def run_extraction(pdf_path: Path, output_dir: Path, enhance: bool) -> bool:
                 print(f"    {line}")
         return False
 
+    # Surface pipeline warnings (Claude failures, output rejection, summary)
+    if result.stderr:
+        for line in result.stderr.strip().splitlines():
+            if "WARNING" in line:
+                print(f"  {line.strip()}")
+
     _flatten_extraction_output(output_dir)
     return True
 
 
 def _flatten_extraction_output(output_dir: Path) -> None:
-    """If agentic-mbse extract created a single nested subdir, move contents up."""
-    if (output_dir / "full_document.md").exists():
-        return  # already flat
+    """If agentic-mbse extract created a nested subdir, move contents up.
+
+    Handles re-extraction: even if output.md already exists at the parent level,
+    a nested subdir with a newer output.md means new extraction output needs
+    to be flattened (overwriting old files)."""
+    # Find subdirs containing extraction output (may be >1 subdir during re-extraction
+    # when old dirs like images/ already exist)
     subdirs = [d for d in output_dir.iterdir() if d.is_dir()]
-    if len(subdirs) == 1 and (subdirs[0] / "full_document.md").exists():
-        nested = subdirs[0]
-        for item in nested.iterdir():
-            dest = output_dir / item.name
-            if dest.exists():
-                # Don't overwrite existing files
-                continue
+    candidates = [d for d in subdirs if (d / EXTRACT_OUTPUT).exists()]
+    if len(candidates) != 1:
+        return  # already flat, or ambiguous (shouldn't happen)
+    nested = candidates[0]
+    for item in nested.iterdir():
+        dest = output_dir / item.name
+        if item.is_file():
+            item.rename(dest)  # atomically replaces existing files on Linux
+        elif not dest.exists():
             item.rename(dest)
-        # Remove the now-empty nested dir (may still have conflicts left)
-        if not any(nested.iterdir()):
-            nested.rmdir()
-        print(f"  Flattened extraction output from {nested.name}/")
+    # Remove the now-empty nested dir
+    if not any(nested.iterdir()):
+        nested.rmdir()
+    print(f"  Flattened extraction output from {nested.name}/")
+
+
+def _cleanup_legacy_files(output_dir: Path) -> None:
+    """Remove legacy extraction files if new output exists."""
+    if not (output_dir / EXTRACT_OUTPUT).exists():
+        return
+    for name in EXTRACT_LEGACY_FILES:
+        legacy = output_dir / name
+        if legacy.exists():
+            legacy.unlink()
+            print(f"  Removed legacy file: {name}")
 
 
 def resolve_slug(slug: str, item_key: str | None) -> str:
@@ -246,6 +293,83 @@ def sync_tags_command(zot) -> None:
     print(f"Done. {newly_tagged} newly tagged, {already_tagged} already tagged.")
 
 
+def re_extract_sources(zot, args) -> None:
+    """Re-extract all manifested sources with the current pipeline."""
+    manifest = load_manifest()
+    if not manifest:
+        print("Manifest is empty — nothing to re-extract.")
+        return
+
+    items = list(manifest.values())
+    if args.limit:
+        items = items[:args.limit]
+
+    if args.dry_run:
+        print(f"\n{len(items)} source(s) would be re-extracted:\n")
+        for entry in items:
+            print(f"  [{entry['zotero_key']}] {entry['title']}")
+            print(f"           slug: {entry['slug']}")
+        return
+
+    print(f"\n{len(items)} source(s) to re-extract")
+    stats = {"found": len(items), "extracted": 0, "skipped": 0, "failed": 0}
+
+    for entry in items:
+        slug = entry["slug"]
+        title = entry["title"]
+        zotero_key = entry["zotero_key"]
+        output_dir = SOURCES_DIR / slug
+        print(f"\n--- {title} [{zotero_key}] ---")
+
+        # Resolve PDF (download if not cached)
+        try:
+            item = zot.item(zotero_key)
+        except Exception as e:
+            print(f"  Failed to fetch Zotero item: {e}")
+            stats["failed"] += 1
+            continue
+
+        pdf_info = resolve_pdf_info(zot, item)
+        if pdf_info is None:
+            print(f"  No PDF attachment — skipping")
+            stats["skipped"] += 1
+            continue
+
+        try:
+            dl_result = download_pdf_from_info(zot, pdf_info, args.output_dir)
+        except RuntimeError as e:
+            print(f"  Download failed: {e}")
+            stats["failed"] += 1
+            continue
+
+        # Run extraction with --force
+        try:
+            ok = run_extraction(
+                dl_result.path, output_dir,
+                budget=args.budget, model=args.model, force=True,
+            )
+        except subprocess.TimeoutExpired:
+            print(f"  Extraction timed out")
+            stats["failed"] += 1
+            continue
+        if not ok:
+            stats["failed"] += 1
+            continue
+
+        # Clean up legacy files
+        if not args.keep_legacy:
+            _cleanup_legacy_files(output_dir)
+
+        # Report new SHA256
+        extract_doc = output_dir / EXTRACT_OUTPUT
+        if extract_doc.exists():
+            new_sha = sha256_of(extract_doc)
+            print(f"  New {EXTRACT_OUTPUT} SHA256: {new_sha[:16]}...")
+        stats["extracted"] += 1
+
+    print_summary(stats)
+
+
 def process_zotero_item(zot, item: dict, args) -> str:
     """Process a single Zotero item through the full pipeline.
     Returns 'extracted', 'skipped', or 'failed'."""
@@ -275,20 +399,20 @@ def process_zotero_item(zot, item: dict, args) -> str:
 
     # Step 6: Run extraction
     try:
-        ok = run_extraction(result.path, output_dir, enhance=not args.no_enhance)
+        ok = run_extraction(result.path, output_dir, budget=args.budget, model=args.model)
     except subprocess.TimeoutExpired:
         print(f"  Extraction timed out")
         return "failed"
     if not ok:
         return "failed"
 
-    # Step 7: Compute SHA256 of full_document.md
-    full_doc = output_dir / "full_document.md"
-    if not full_doc.exists():
-        print(f"  WARNING: full_document.md not found at {full_doc}")
+    # Step 7: Compute SHA256 of output.md
+    extract_doc = output_dir / EXTRACT_OUTPUT
+    if not extract_doc.exists():
+        print(f"  WARNING: {EXTRACT_OUTPUT} not found at {extract_doc}")
         extract_sha = "(not found)"
     else:
-        extract_sha = sha256_of(full_doc)
+        extract_sha = sha256_of(extract_doc)
 
     # Step 8: Append SOURCE_INDEX.md entry
     try:
@@ -364,7 +488,7 @@ def process_local_pdf(args) -> None:
 
     # Run extraction
     try:
-        ok = run_extraction(raw_copy, output_dir, enhance=not args.no_enhance)
+        ok = run_extraction(raw_copy, output_dir, budget=args.budget, model=args.model)
     except subprocess.TimeoutExpired:
         print(f"  Extraction timed out")
         print(f"\nSummary: 1 found, 0 extracted, 0 skipped (no PDF), 1 failed")
@@ -374,12 +498,12 @@ def process_local_pdf(args) -> None:
         sys.exit(1)
 
     # Compute extract SHA256
-    full_doc = output_dir / "full_document.md"
-    if not full_doc.exists():
-        print(f"  WARNING: full_document.md not found at {full_doc}")
+    extract_doc = output_dir / EXTRACT_OUTPUT
+    if not extract_doc.exists():
+        print(f"  WARNING: {EXTRACT_OUTPUT} not found at {extract_doc}")
         extract_sha = "(not found)"
     else:
-        extract_sha = sha256_of(full_doc)
+        extract_sha = sha256_of(extract_doc)
 
     # Append SOURCE_INDEX.md entry (no Zotero key)
     append_source_index_entry(title, slug, item_key=None, pdf_sha256=pdf_sha256, extract_sha256=extract_sha)
@@ -405,6 +529,11 @@ def main():
     # Handle --sync-tags early exit
     if args.sync_tags:
         sync_tags_command(zot)
+        return
+
+    # Handle --re-extract early exit
+    if args.re_extract:
+        re_extract_sources(zot, args)
         return
 
     # Build queue by diffing Zotero library against manifest

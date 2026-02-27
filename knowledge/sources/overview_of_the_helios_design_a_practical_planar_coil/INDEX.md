@@ -1,40 +1,115 @@
 ---
 document: Swanson_et_al____2026___Overview_of_the_Helios_Design_A_Practical_Planar_Coil_Stellarator_Fusion_Pow
-generated: 2026-02-09T19:20:33Z
-source_checksum: sha256:d79a182e0612701a9691506037b81682dc6ad21abec871fa190c685ae7dce50f
-total_lines: 2418
+generated: 2026-02-27T22:44:55Z
+source_checksum: sha256:444f03f762e03949ea7b720408b1f5a147a7882a8ad0d5fabefaae5705189fa6
+total_lines: 652
 depth: 3
-section_count: 6
+section_count: 21
 ---
 
 # Swanson_et_al____2026___Overview_of_the_Helios_Design_A_Practical_Planar_Coil_Stellarator_Fusion_Pow Index
 
 ## 1 Introduction
-**Lines:** 37-184
+**Lines:** 37-72
 
-Helios is a preconceptual fusion power plant design by Thea Energy based on a planar coil stellarator architecture, leveraging quasi-axisymmetric equilibria, planar convex coils, and HTS magnets to address historical stellarator challenges (complex 3D coils, tight tolerances, difficult maintenance) while offering inherent steady-state operation and disruption immunity over tokamaks. The design prioritizes practicality and engineering margin over maximizing any single performance metric, and improves significantly on the prior ARIES-CS stellarator study in coil manufacturability, blanket design, maintenance access, and quasi-symmetry quality.
+[Summary generation failed]
 
 ## 2 Summary of the design
-**Lines:** 185-298
+**Lines:** 73-152
 
-Helios is a two-field-period quasi-axisymmetric stellarator power plant design with 8 m major radius, 6 T on-axis field, 958 MW fusion power, and 390 MW net electric output, featuring planar HTS coils (20 T max on-coil), a tokamak-like nonresonant X-point divertor, vanadium first wall, lead-lithium tritium breeding blanket (TBR 1.3), and sector-based maintenance enabling 88% capacity factor. Key design parameters include aspect ratio 4.5, 40% thermal conversion efficiency, 20 K coil operating temperature, 40-year coil lifetime, and essentially ignited steady-state operation with <1 MW auxiliary heating.
+[Summary generation failed]
 
 ## 3 Plasma design and simulation
-**Lines:** 299-716
+**Lines:** 153-158 | **Subsections:** 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7
 
-Covers the full plasma design workflow for the Helios stellarator: 0D/1D scoping models with ISS04 transport scaling, startup scenario development via POPCON analysis (requiring only 10 MW ECRH), equilibrium optimization using DESC (8 m major radius, aspect ratio 4.5, 6.0 T on-axis, 2.7% beta), energetic particle confinement simulated with ASCOT5 (6.6% fusion product energy loss), MHD stability analysis via TERPSICHORE and M3D-C1 (no large-scale instabilities found), gyrokinetic turbulence/transport simulations using GENE coupled to T3D confirming H_ISS04 ≈ 1.33, the novel planar coil architecture (12 encircling + 324 circular shaping coils, max 20 T on-coil), and a tokamak-like toroidally continuous X-point divertor modeled with FLARE offering superior density compression over island divertors.
+[Summary generation failed]
+
+### 3.1 Scoping studies, heating and fueling, and dynamic accessibility
+**Lines:** 159-180
+
+[Summary generation failed]
+
+### 3.2 The stellarator equilibrium
+**Lines:** 181-196
+
+[Summary generation failed]
+
+### 3.3 Energetic particle confinement
+**Lines:** 197-206
+
+[Summary generation failed]
+
+### 3.4 Magnetohydrodynamic stability and evolution
+**Lines:** 207-222 | **Subsections:** 3.4.1
+
+[Summary generation failed]
+
+#### 3.4.1 A note on the effects of an abrupt plasma termination in Helios
+**Lines:** 223-232
+
+[Summary generation failed]
+
+### 3.5 Turbulence, transport, and profile prediction
+**Lines:** 233-244
+
+[Summary generation failed]
+
+### 3.6 Electromagnetic coil physics design
+**Lines:** 245-262
+
+[Summary generation failed]
+
+### 3.7 Divertor physics
+**Lines:** 263-282
+
+[Summary generation failed]
 
 ## 4 Engineering design of systems
-**Lines:** 717-1083
+**Lines:** 283-288 | **Subsections:** 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7
 
-Covers the engineering design of all major Helios stellarator subsystems: HTS electromagnetic coils (12 encircling + 324 shaping) with quench protection and structural analysis; tungsten-tiled helium-cooled divertor and V-4Cr-4Ti first wall; Pb-17Li tritium breeding blanket with OpenMC neutronic simulations and multi-layer neutron shield; a Rankine thermal cycle producing ~390 MW_e net from 1.1 GW thermal (40.2% efficiency) with full facility power balance; sector-based maintenance through the cryostat enabling ~88% capacity factor; electrical distribution (34.5 kV backbone, magnet power supplies, ECRH); and a hierarchical GPU/FPGA instrumentation and control architecture.
+[Summary generation failed]
+
+### 4.1 Electromagnetic coil engineering
+**Lines:** 289-302
+
+[Summary generation failed]
+
+### 4.2 Divertor engineering and the first wall
+**Lines:** 303-316
+
+[Summary generation failed]
+
+### 4.3 Neutronics, blanket, shield, and bioshield
+**Lines:** 317-336
+
+[Summary generation failed]
+
+### 4.4 Thermal cycle, power flows, and fuel cycle
+**Lines:** 337-356
+
+[Summary generation failed]
+
+### 4.5 Cryostat, maintenance, and cryogenic system
+**Lines:** 357-374
+
+[Summary generation failed]
+
+### 4.6 Electrical systems and power supplies
+**Lines:** 375-382
+
+[Summary generation failed]
+
+### 4.7 Instrumentation and control
+**Lines:** 383-388
+
+[Summary generation failed]
 
 ## 5 Conclusion
-**Lines:** 1084-1109
+**Lines:** 389-396
 
-Helios is a stellarator design using simpler, programmable magnets to address traditional stellarator challenges (complex coils, large size, lack of divertor solution), with high-fidelity analyses suggesting it is buildable with present-day engineering. Thea Energy plans to de-risk the design via the "Eos" integrated facility (first plasma ~2030) before targeting first plasma in Helios in the mid-2030s.
+[Summary generation failed]
 
 ## 6 Acknowledgments
-**Lines:** 1110-2418
+**Lines:** 397-652
 
-Funding acknowledgments for Thea Energy (DOE Milestone-Based Fusion Development Program, DE-SC0024881) and computing resources from NERSC and Princeton Research Computing, followed by a comprehensive 80+ reference bibliography covering stellarator physics, planar coil optimization, the Helios power plant design, superconductor technology, and fusion reactor engineering studies.
+[Summary generation failed]

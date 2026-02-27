@@ -1,0 +1,352 @@
+[
+  {
+    "page_num": 0,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 1,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 2,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 3,
+    "action": "claude_replace",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 4,
+    "action": "gmft_append",
+    "reasons": [
+      "GMFT found tables not in pymupdf4llm output"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (17r\u00d73c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 5,
+    "action": "claude_replace",
+    "reasons": [
+      "DENSITY: very low text density: 2 chars (threshold: 200)"
+    ],
+    "details": {
+      "table_filter": [
+        "PASS table 1 (0r\u00d70c, detector=gmft): extraction_failed (needs Claude)"
+      ]
+    }
+  },
+  {
+    "page_num": 6,
+    "action": "keep",
+    "reasons": [],
+    "details": {
+      "table_filter": [
+        "REJECT table 1 (1r\u00d711c, detector=img2table): single row, 11 cols (layout artifact)"
+      ]
+    }
+  },
+  {
+    "page_num": 7,
+    "action": "claude_replace",
+    "reasons": [
+      "DENSITY: very low text density: 2 chars (threshold: 200)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (1r\u00d74c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 8,
+    "action": "gmft_append",
+    "reasons": [
+      "GMFT found tables not in pymupdf4llm output"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (11r\u00d73c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 9,
+    "action": "claude_replace",
+    "reasons": [
+      "DENSITY: very low text density: 4 chars (threshold: 200)"
+    ],
+    "details": {
+      "table_filter": [
+        "PASS table 1 (0r\u00d70c, detector=gmft): extraction_failed (needs Claude)"
+      ]
+    }
+  },
+  {
+    "page_num": 10,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 11,
+    "action": "claude_replace",
+    "reasons": [
+      "DENSITY: very low text density: 1 chars (threshold: 200)"
+    ],
+    "details": {
+      "table_filter": [
+        "PASS table 1 (0r\u00d70c, detector=gmft): extraction_failed (needs Claude)"
+      ]
+    }
+  },
+  {
+    "page_num": 12,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 13,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 14,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 15,
+    "action": "gmft_append",
+    "reasons": [
+      "GMFT found tables not in pymupdf4llm output"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (31r\u00d73c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 16,
+    "action": "gmft_append",
+    "reasons": [
+      "GMFT found tables not in pymupdf4llm output"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (9r\u00d73c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 17,
+    "action": "gmft_append",
+    "reasons": [
+      "GMFT found tables not in pymupdf4llm output"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (9r\u00d72c, detector=gmft)",
+        "KEEP table 2 (7r\u00d72c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 18,
+    "action": "gmft_append",
+    "reasons": [
+      "GMFT found tables not in pymupdf4llm output"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (13r\u00d73c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 19,
+    "action": "gmft_append",
+    "reasons": [
+      "GMFT found tables not in pymupdf4llm output"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (9r\u00d72c, detector=gmft)",
+        "KEEP table 2 (12r\u00d73c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 20,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 21,
+    "action": "gmft_append",
+    "reasons": [
+      "GMFT found tables not in pymupdf4llm output"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (7r\u00d710c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 22,
+    "action": "gmft_append",
+    "reasons": [
+      "GMFT found tables not in pymupdf4llm output"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (8r\u00d74c, detector=gmft)",
+        "KEEP table 2 (18r\u00d73c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 23,
+    "action": "claude_replace",
+    "reasons": [
+      "DENSITY: very low text density: 180 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 24,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 25,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 26,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 27,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 28,
+    "action": "gmft_append",
+    "reasons": [
+      "GMFT found tables not in pymupdf4llm output"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (7r\u00d710c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 29,
+    "action": "keep",
+    "reasons": [],
+    "details": {
+      "table_filter": [
+        "PASS table 1 (0r\u00d70c, detector=img2table): extraction_failed (needs Claude)",
+        "PASS table 2 (0r\u00d70c, detector=img2table): extraction_failed (needs Claude)"
+      ]
+    }
+  },
+  {
+    "page_num": 30,
+    "action": "keep",
+    "reasons": [],
+    "details": {
+      "table_filter": [
+        "PASS table 1 (0r\u00d70c, detector=img2table): extraction_failed (needs Claude)"
+      ]
+    }
+  },
+  {
+    "page_num": 31,
+    "action": "keep",
+    "reasons": [],
+    "details": {
+      "table_filter": [
+        "PASS table 1 (0r\u00d70c, detector=img2table): extraction_failed (needs Claude)"
+      ]
+    }
+  },
+  {
+    "page_num": 32,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 33,
+    "action": "claude_replace",
+    "reasons": [
+      "DENSITY: very low text density: 2 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 34,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 35,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 36,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 37,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 38,
+    "action": "gmft_append",
+    "reasons": [
+      "GMFT found tables not in pymupdf4llm output"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (13r\u00d74c, detector=gmft)"
+      ]
+    }
+  }
+]
