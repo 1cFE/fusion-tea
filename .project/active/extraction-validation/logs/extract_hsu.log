@@ -1,0 +1,9 @@
+Img2Table failed on page 1: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 2: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 3: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Consider using the pymupdf_layout package for a greatly improved page layout analysis.
+Filling in gap at top of table
+   ok   Hsu et al. - 2020 - Revisit of the 2017 Costing for Four ARPA-E ALPHA Concepts.pdf [pdf_pipeline] (14,568 chars, 7 headings, 66 table rows, $0.148, 55.3s)
+        index → INDEX.md
+
+Processed: 1

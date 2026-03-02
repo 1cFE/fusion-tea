@@ -1,0 +1,14 @@
+{
+  "source_file": "Hawker - 2020 - A simplified economic model for inertial fusion.pdf",
+  "source_format": "pdf",
+  "processed_at": "2026-02-09T19:16:27.900200+00:00",
+  "backend_used": "pymupdf",
+  "processing_completed": true,
+  "file_hash": "md5:4c1b796c93a8542b02628726883dd9e4",
+  "statistics": {
+    "total_images": 5,
+    "total_characters": 60296,
+    "file_size_bytes": 1298944
+  },
+  "error": null
+}

@@ -1,53 +1,59 @@
 # Current Work
 
-**Last Updated**: [DATE]
+**Last Updated**: 2026-02-27
 
 ---
 
 ## Active Work
 
-### [Item/Epic Name]
+### Extraction Pipeline Integration (KNOW-DB Item 5)
 
-**Status**: [Not Started | In Progress | Blocked | In Review]
-**Epic**: [Link to epic in backlog/ if applicable]
-**Started**: [DATE]
+**Status**: In Progress
+**Epic**: `.project/backlog/epic-knowledge-database-integration.md`
+**Started**: 2026-02-27
 
-**Objective**: [One sentence describing what this accomplishes]
+**Objective**: Update `scripts/zotero_ingest.py` to align with redesigned agentic-mbse 8-step extraction pipeline.
 
-**Current Phase**: [Which phase of the plan]
+**Current Phase**: Phase 3 (partially complete — re-extraction done, new ingestion pending)
 
-**Tasks**:
-- [ ] Task 1
-- [ ] Task 2
-- [ ] Task 3
+**Completed**:
+- [x] Phase 1: Core script modernization (constants, CLI, run_extraction, flatten, SHA256)
+- [x] Phase 2: Re-extract mode (_cleanup_legacy_files, re_extract_sources, --re-extract flag)
+- [x] Phase 3a: Re-extract all 6 existing sources — all verified with output.md, metrics.json, decisions.json
+- [x] Phase 3b: Quality spot-checks (Delene PASS, Hsu PASS, Hawker unchanged — upstream OCR issue)
 
-**Blockers**: [None | Description of blockers]
+**Remaining**:
+- [ ] Phase 3c: User adds ~6 PDFs to Zotero, tags them `new`
+- [ ] Phase 3d: Run `uv run python scripts/zotero_ingest.py --tag new` to ingest new docs
+- [ ] Phase 3e: Verify 12+ total sources, both paths work
 
-**Location**: `.project/active/[item_name]/`
+**Blockers**: Needs user to add PDFs to Zotero for new ingestion
+
+**Location**: `.project/active/extraction-pipeline-integration/`
+
+**Key files changed**: `scripts/zotero_ingest.py` (only code change)
 
 ---
 
 ## Recently Completed
 
-### [DATE]: [Item Name]
-- Brief summary of what was accomplished
-- Key deliverables produced
-- Any notable learnings
+_(none yet)_
 
 ---
 
 ## Up Next
 
-1. [Next priority item from backlog]
-2. [Following item]
-3. [Future consideration]
+1. Complete KNOW-DB Item 5 (add ~6 new docs, verify 12+ total)
+2. KNOW-DB Item 4 completion (first corpus ingestion at scale)
+3. Downstream knowledge research work
 
 ---
 
 ## Session Notes
 
-### [DATE]
-- What was worked on
-- Progress made
-- Decisions made
-- Questions or blockers encountered
+### 2026-02-27
+- Implemented all code changes in Phases 1-2 of extraction-pipeline-integration
+- Ran full `--re-extract` of 6 sources — all succeeded with opus/$50
+- Found/fixed flatten bug: `_flatten_extraction_output()` failed during re-extraction when `images/` dir existed (changed from `len(subdirs)==1` to candidate-based search)
+- Hawker strikethrough is upstream agentic-mbse OCR limitation (17 markers, identical to old extraction)
+- All changes are uncommitted on branch `processing-work`

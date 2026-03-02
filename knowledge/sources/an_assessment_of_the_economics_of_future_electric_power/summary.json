@@ -1,0 +1,14 @@
+{
+  "source_file": "Delene et al. - 2001 - An Assessment of the Economics of Future Electric Power Generation Options and the Implications for.pdf",
+  "source_format": "pdf",
+  "processed_at": "2026-02-09T19:20:39.941361+00:00",
+  "backend_used": "pymupdf",
+  "processing_completed": true,
+  "file_hash": "md5:a235be788108d810a7f0a0a44491ed8f",
+  "statistics": {
+    "total_images": 13,
+    "total_characters": 69250,
+    "file_size_bytes": 328627
+  },
+  "error": null
+}

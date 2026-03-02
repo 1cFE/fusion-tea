@@ -1,0 +1,35 @@
+Img2Table failed on page 0: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 1: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 2: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 3: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 6: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 10: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 12: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 13: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 14: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 20: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 23: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 24: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 25: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 26: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 27: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 29: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 30: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 31: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 32: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 33: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 34: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 35: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 36: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 37: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Claude output rejected for page 4: Page 4: >50% character drop (499 vs 2381 original)
+Claude output rejected for page 7: Page 7: Claude output is empty
+Claude output rejected for page 8: Page 8: >50% character drop (551 vs 1379 original)
+Claude output rejected for page 9: Page 9: Claude output is empty
+Claude enhancement: 12/16 pages succeeded (pages [4, 7, 8, 9] failed)
+Consider using the pymupdf_layout package for a greatly improved page layout analysis.
+   ok   Delene et al. - 2001 - An Assessment of the Economics of Future Electric Power Generation Options and the Implications for.pdf [pdf_pipeline] (68,829 chars, 29 headings, 188 table rows, $1.514, 469.7s)
+        ! Claude: 12/16 pages enhanced
+        index → INDEX.md
+
+Processed: 1

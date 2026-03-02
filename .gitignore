@@ -10,6 +10,7 @@ wheels/
 .venv
 
 .env
+knowledge/LOCAL_SOURCES.yaml
 # Tool-owned files (managed by agentic-mbse init --dev)
 .claude/commands/
 .claude/agents/

@@ -1,0 +1,47 @@
+[
+  {
+    "page_num": 1,
+    "cost_usd": 0.0829665,
+    "input_tokens": 4,
+    "output_tokens": 911,
+    "model": "opus",
+    "elapsed_seconds": 42.57818603515625,
+    "table_index": null
+  },
+  {
+    "page_num": 2,
+    "cost_usd": 0.08566599999999999,
+    "input_tokens": 4,
+    "output_tokens": 1012,
+    "model": "opus",
+    "elapsed_seconds": 42.52108931541443,
+    "table_index": null
+  },
+  {
+    "page_num": 3,
+    "cost_usd": 0.0823905,
+    "input_tokens": 4,
+    "output_tokens": 889,
+    "model": "opus",
+    "elapsed_seconds": 36.90776205062866,
+    "table_index": null
+  },
+  {
+    "page_num": 6,
+    "cost_usd": 0.08577950000000001,
+    "input_tokens": 4,
+    "output_tokens": 1023,
+    "model": "opus",
+    "elapsed_seconds": 39.18780183792114,
+    "table_index": null
+  },
+  {
+    "page_num": 7,
+    "cost_usd": 0.08364150000000001,
+    "input_tokens": 4,
+    "output_tokens": 938,
+    "model": "opus",
+    "elapsed_seconds": 35.55693316459656,
+    "table_index": null
+  }
+]
