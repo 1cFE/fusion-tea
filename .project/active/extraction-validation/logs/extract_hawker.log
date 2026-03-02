@@ -1,0 +1,20 @@
+Img2Table failed on page 0: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 2: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 4: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 5: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 6: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 8: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 9: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 10: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 11: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 12: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 13: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Claude output rejected for page 3: Page 3: >50% character drop (2927 vs 8432 original)
+Claude output rejected for page 7: Page 7: >50% character drop (3227 vs 8715 original)
+Claude enhancement: 3/5 pages succeeded (pages [3, 7] failed)
+Consider using the pymupdf_layout package for a greatly improved page layout analysis.
+   ok   Hawker - 2020 - A simplified economic model for inertial fusion.pdf [pdf_pipeline] (58,329 chars, 14 headings, 8 table rows, $0.420, 218.3s)
+        ! Claude: 3/5 pages enhanced
+        index → INDEX.md
+
+Processed: 1

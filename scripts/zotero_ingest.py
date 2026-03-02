@@ -124,6 +124,11 @@ def run_extraction(
     if force:
         cmd.append("--force")
 
+    # NOTE: This must be run from a terminal, not from within Claude Code.
+    # The extraction pipeline invokes `claude` CLI for --summarize and
+    # enhancement. Claude CLI refuses to run inside another Claude Code
+    # session (detects CLAUDECODE env var). Symptoms: --summarize silently
+    # fails, --check produces no output. See extraction-validation results.md.
     print(f"  Extracting: {' '.join(cmd)}")
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=900)
     if result.returncode != 0:

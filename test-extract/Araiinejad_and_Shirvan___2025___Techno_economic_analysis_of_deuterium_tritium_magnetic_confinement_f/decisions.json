@@ -1,0 +1,135 @@
+[
+  {
+    "page_num": 0,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 1,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: strikethrough sequences: 4 (garbled content)",
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (6r\u00d73c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 2,
+    "action": "claude_replace",
+    "reasons": [
+      "EQ_FRAG: equation fragment: 3 short italic lines before (2.2)",
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (20r\u00d73c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 3,
+    "action": "claude_replace",
+    "reasons": [
+      "GMFT_XREF: GMFT found 3 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (6r\u00d72c, detector=gmft)",
+        "KEEP table 2 (15r\u00d74c, detector=gmft)",
+        "KEEP table 3 (8r\u00d72c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 4,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: strikethrough sequences: 3 (garbled content)",
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (6r\u00d74c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 5,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: strikethrough sequences: 9 (garbled content)",
+      "MATH: bracket-encoded operators: 1",
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (4r\u00d72c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 6,
+    "action": "claude_replace",
+    "reasons": [
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (6r\u00d74c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 7,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 8,
+    "action": "claude_replace",
+    "reasons": [
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (7r\u00d72c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 9,
+    "action": "claude_replace",
+    "reasons": [
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (6r\u00d73c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 10,
+    "action": "claude_replace",
+    "reasons": [
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (3r\u00d73c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 11,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  }
+]

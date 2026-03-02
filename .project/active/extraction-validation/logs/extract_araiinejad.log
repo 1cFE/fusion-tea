@@ -1,0 +1,8 @@
+Img2Table failed on page 0: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 7: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Img2Table failed on page 11: module 'cv2.ximgproc' has no attribute 'niBlackThreshold'
+Consider using the pymupdf_layout package for a greatly improved page layout analysis.
+   ok   Araiinejad and Shirvan - 2025 - Techno-economic analysis of deuterium-tritium magnetic confinement fusion power plants.pdf [pdf_pipeline] (71,710 chars, 35 headings, 134 table rows, $0.914, 571.5s)
+        index → INDEX.md
+
+Processed: 1

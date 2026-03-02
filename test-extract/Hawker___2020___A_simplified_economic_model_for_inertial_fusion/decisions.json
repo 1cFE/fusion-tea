@@ -1,0 +1,117 @@
+[
+  {
+    "page_num": 0,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 1,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: strikethrough sequences: 4 (garbled content)",
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (6r\u00d74c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 2,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: strikethrough sequences: 2",
+      "MATH: replacement char (\ufffd): 1",
+      "MATH: bracket-encoded operators: 2"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 3,
+    "action": "keep",
+    "reasons": [
+      "MATH: strikethrough sequences: 4 (garbled content)",
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)",
+      "Claude enhancement unavailable \u2014 kept original"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (14r\u00d73c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 4,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 5,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 6,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: strikethrough sequences: 1",
+      "MATH: replacement chars (\ufffd): 2",
+      "MATH: bracket-encoded operators: 1"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 7,
+    "action": "keep",
+    "reasons": [
+      "MATH: strikethrough sequences: 5 (garbled content)",
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)",
+      "Claude enhancement unavailable \u2014 kept original"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (14r\u00d74c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 8,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 9,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 10,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 11,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 12,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 13,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  }
+]
