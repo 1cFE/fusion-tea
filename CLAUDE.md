@@ -76,35 +76,105 @@ This project uses **two separate PM systems** for different types of work. They 
 For project setup, scripting, infrastructure, environment work, and any non-modeling tasks.
 
 - **State directory**: `.project/` (active/, backlog/, completed/)
-- **Commands**: `/_my_spec`, `/_my_design`, `/_my_plan`, `/_my_implement`, `/_my_audit_implementation`, `/_my_wrap_up`, `/_my_project_manage`, `/_my_research`, etc.
 - **Installed**: Globally via `~/.claude/` — always available
-- **Lifecycle**: concept → spec → design → plan → implement → review → wrap-up
-- **Work items**: `.project/active/{item-name}/` containing `spec.md`, `design.md`, `plan.md`
-- **Epics**: `.project/backlog/epic_{name}.md`
-- **When to use**: You're writing scripts, updating project docs, building tooling, setting up infrastructure, or doing any non-SysML work
+- **When to use**: Writing scripts, updating project docs, building tooling, setting up infrastructure, or any non-SysML work
+- **Validation**: Convention-enforced through commands (no external validation scripts)
+
+**Workflow:**
+```
+/_my_concept → /_my_research → /_my_spec → /_my_design → /_my_plan → /_my_implement → /_my_audit_implementation → /_my_wrap_up
+```
+
+| Command | What it does |
+|---------|-------------|
+| `/_my_concept` | Develop feature idea with success criteria |
+| `/_my_research` | Investigate a topic, save to `.project/research/` |
+| `/_my_spec` | Create `spec.md` — requirements, scope, acceptance criteria |
+| `/_my_design` | Create `design.md` — architecture, components, rationale |
+| `/_my_plan` | Create `plan.md` — phased execution with checkboxes |
+| `/_my_implement` | Execute plan phase-by-phase with validation |
+| `/_my_audit_implementation` | Verify completed work against plan (find gaps, TODOs, stubs) |
+| `/_my_code_review` | Review code against spec/design requirements |
+| `/_my_code_quality` | Run linting, tests, formatting checks |
+| `/_my_project_manage` | Status reports, epic decomposition, close items |
+| `/_my_wrap_up` | End-of-session: update `CURRENT_WORK.md`, `MEMORY.md`, docs |
+
+**Work items**: `.project/active/{item-name}/` containing `spec.md`, `design.md`, `plan.md`
+**Epics**: `.project/backlog/epic_{name}.md`
 
 ### Modeling PM (`agentic-mbse`)
 
 For SysML modeling, taxonomy development, concept analysis, and all MBSE work.
 
 - **State directory**: `work/` (active/, backlog/, completed/, learnings/)
-- **Commands**: `/spec-model`, `/design-model`, `/plan-model`, `/implement-model`, `/status`, `/backlog`, `/research`, `/analyze-models`, `/audit-models`, `/review-model`, etc.
 - **Installed**: Per-project via `agentic-mbse init --dev` — symlinked to `.claude/commands/`, `.claude/agents/`, `.claude/skills/`
-- **Lifecycle**: spec → design → plan → implement (with 6-level validation)
-- **Work items**: `work/active/WI-XXX_{name}/` containing `spec.md`, `design.md`, `plan.md`
-- **Epics**: `work/backlog/epic-{name}.md`
+- **When to use**: Building SysML models, developing taxonomy, analyzing fusion concepts, doing domain research against sources
 - **Tool-owned docs**: `modeling_project/MODELING_GUIDE.md`, `modeling_project/MODELING_PROCESS.md`, `work/EPIC_GUIDE.md` (symlinked, gitignored, auto-updated)
-- **When to use**: You're building SysML models, developing taxonomy, analyzing fusion concepts, or doing domain research against sources
+
+**Workflow:**
+```
+/backlog add → /spec-model → /design-model → /plan-model → /implement-model → /status close
+```
+
+| Command | What it does |
+|---------|-------------|
+| `/spec-model` | Create modeling spec — scope, requirements (writes to `work/active/`) |
+| `/design-model` | Create modeling design — SysML architecture, patterns |
+| `/plan-model` | Create implementation plan with validation levels |
+| `/implement-model` | Execute plan with 6-level SysML validation |
+| `/status` | Project dashboard, epic decomposition, or close items |
+| `/backlog` | Add work items, decompose epics, close completed work |
+| `/research` | Domain research against ingested sources |
+| `/manage-sources` | Source ingestion and registration |
+| `/analyze-models` | Cross-model analysis |
+| `/audit-models` | Validation audit |
+| `/review-model` | Model review against spec |
+
+**Work items**: `work/active/WI-XXX_{name}/` containing `spec.md`, `design.md`, `plan.md`
+**Epics**: `work/backlog/epic-{name}.md`
+
+### Modeling PM CLI Operations
+
+The modeling PM has deterministic CLI operations for state mutations. These are invoked by commands or directly:
+
+```bash
+# Project dashboard
+uv run agentic-mbse status              # Markdown dashboard
+uv run agentic-mbse status --json       # Structured JSON output
+
+# Work item management
+uv run agentic-mbse pm add-item --name "..." --scale standard --priority P0 [--epic "..."]
+uv run agentic-mbse pm close-item WI-XXX
+
+# Knowledge management
+uv run agentic-mbse pm add-insight --title "..." --source "..." --context "..." --model-implications "..." --analysis-implications "..."
+uv run agentic-mbse pm save-research --topic "..." --content-file path
+uv run agentic-mbse pm approve-research <pending-file> --insights '[...]'
+
+# Requirements and decisions
+uv run agentic-mbse pm promote-requirement --requirement "..." --source DI-XXX --enforcement "..."
+uv run agentic-mbse pm register-decision --title "..." --decision "..." --rationale "..."
+uv run agentic-mbse pm register-intent [--goals '[...]'] [--questions '[...]']
+
+# Traceability and validation
+uv run agentic-mbse pm trace-element --element "..." --file "..." --type "..." [--knowledge DI-XXX] [--requirement PR-XXX]
+uv run agentic-mbse pm add-validation --description "..." --type reasonableness --mechanism model --expected "..." --tolerance "..."
+uv run agentic-mbse pm update-validation SV-XXX --status passing
+uv run agentic-mbse pm impact-query DI-XXX
+```
+
+**Key principle**: Scripts own `work/BACKLOG.md` — never manually edit for state transitions. YAML frontmatter is the machine-readable source; the markdown body is rendered by the tooling.
 
 ### YAML Frontmatter Conventions
 
-The modeling PM uses YAML frontmatter as machine-readable state. The `agentic-mbse` dashboard and `/status` command parse this frontmatter to render project status.
+The modeling PM uses YAML frontmatter as machine-readable state. The parser (`agentic-mbse pm/parser.py`) validates enum values, ID patterns (WI-XXX, DI-XXX, PR-XXX, etc.), required fields, and cross-file references. The dashboard (`uv run agentic-mbse status`) derives project state by combining frontmatter with filesystem scanning.
 
 **`work/BACKLOG.md`** — modeling backlog registry:
 ```yaml
 ---
 epics:
   - name: "Epic Name"
+    goal: G-XXX           # links to OVERVIEW.md goals
     priority: P0|P1|P2|P3
     status: draft|active|completed
     file: backlog/epic-{name}.md
@@ -133,7 +203,13 @@ Updated: YYYY-MM-DD
 ---
 ```
 
-The coding PM (`.project/`) uses markdown headers for metadata (Status, Owner, Created, Complexity, Branch) — similar information, different format. The coding PM does not have a dashboard parser.
+**Validation and verification:**
+- `uv run agentic-mbse status` — validates frontmatter, detects status mismatches, warns on orphan items
+- Parser validates: ID patterns (WI-XXX, PR-XXX, DI-XXX, AD-XXX, SV-XXX), enum values (Priority, Status, Scale), required fields, YAML syntax
+- Operations validate: cross-file references (e.g., `trace-element` checks that referenced DI/PR IDs exist), duplicate detection
+- Stage detection: dashboard infers work item stage from which artifact files exist (spec.md → speccing, design.md → designing, plan.md → implementing)
+
+The coding PM (`.project/`) uses markdown headers for metadata (Status, Owner, Created, Complexity, Branch) — similar information, different format. The coding PM does not have a dashboard parser; validation is embedded in the `/_my_*` commands.
 
 ## MBSE Workflow
 
