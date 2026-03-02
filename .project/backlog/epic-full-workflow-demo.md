@@ -282,7 +282,7 @@ The primary deliverable for the "demo" aspect — a self-contained HTML file tha
 
 ---
 
-### Item 2a: Define Investigation Scope & Refresh Project Documents [1 day]
+### Item 2a: Define Investigation Scope & Refresh Project Documents [1 day] ✅ COMPLETE
 
 **Type**: Research/Writing
 
@@ -320,12 +320,12 @@ The existing project documents (OVERVIEW, ARCHITECTURE, REQUIREMENTS, BACKLOG, C
 - Detailed modeling plan (emerges from research)
 
 **Success Criteria**:
-- [ ] The investigation scope is written down: what questions, what comparison axes, what's in/out of scope, what "done" means
-- [ ] Source selection criteria exist: what literature do we need, what do we already have, what's missing
-- [ ] `CLAUDE.md` accurately describes the current project (investigation scope, toolchain state, project structure)
-- [ ] Project documents don't contradict each other or reference a CATF-first roadmap
-- [ ] CATF-specific backlog items archived (not deleted — they may be relevant once a first modeling target is chosen)
-- [ ] All changes committed
+- [x] The investigation scope is written down: what questions, what comparison axes, what's in/out of scope, what "done" means
+- [x] Source selection criteria exist: what literature do we need, what do we already have, what's missing
+- [x] `CLAUDE.md` accurately describes the current project (investigation scope, toolchain state, project structure)
+- [x] Project documents don't contradict each other or reference a CATF-first roadmap
+- [x] CATF-specific backlog items archived (not deleted — they may be relevant once a first modeling target is chosen)
+- [x] All changes committed
 
 **Estimated Effort**: 1 day
 
@@ -340,7 +340,7 @@ The existing project documents (OVERVIEW, ARCHITECTURE, REQUIREMENTS, BACKLOG, C
 
 ---
 
-### Item 2b: Start the Workflow Explainer [0.5 day]
+### Item 2b: Start the Workflow Explainer [0.5 day] ✅ COMPLETE
 
 **Type**: Implementation
 
@@ -351,10 +351,10 @@ The existing project documents (OVERVIEW, ARCHITECTURE, REQUIREMENTS, BACKLOG, C
 **For this item**: Build the HTML shell and populate it with the first section — the investigation scope and project setup from Item 2a. Snippets of the scope document, screenshots of the project structure, whatever makes sense to show what "getting started" looked like.
 
 **Success Criteria**:
-- [ ] HTML file exists, opens in a browser, looks presentable
-- [ ] First section captures the 2a work with embedded artifacts (markdown excerpts, images, etc.)
-- [ ] Easy to add new sections as future work items complete
-- [ ] Committed to git
+- [x] HTML file exists, opens in a browser, looks presentable
+- [x] First section captures the 2a work with embedded artifacts (markdown excerpts, images, etc.)
+- [x] Easy to add new sections as future work items complete
+- [x] Committed to git
 
 **Estimated Effort**: 0.5 day
 
@@ -408,5 +408,5 @@ The existing project documents (OVERVIEW, ARCHITECTURE, REQUIREMENTS, BACKLOG, C
 
 ---
 
-**Last Updated**: 2026-03-01
-**Next Action**: Item 2a (Define Investigation Scope & Refresh Project Documents). Item 1 complete — verdict: proceed with caveats (Img2Table broken, numeric spot-checking needed, INDEX.md hallucination in one source). Results at `.project/active/extraction-validation/results.md`.
+**Last Updated**: 2026-03-02
+**Next Action**: Items 1, 2a, and 2b complete. Next: Item 3 (Source Ingestion) or decompose remaining epic items based on investigation strategy in `modeling_project/OVERVIEW.md`. Work artifacts at `.project/active/project-reframing/` (Items 2a+2b) and `.project/active/extraction-validation/` (Item 1).

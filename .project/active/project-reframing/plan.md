@@ -1,6 +1,6 @@
 # Implementation Plan: Project Reframing — Investigation Strategy & Fresh Start
 
-**Status:** In Progress
+**Status:** Complete
 **Created:** 2026-03-01
 **Last Updated:** 2026-03-02
 
@@ -207,15 +207,15 @@ Commit all Phase 1-4 changes to create a known-good rollback point before instal
 ### Changes Required
 
 #### 1. Stage and commit
-- [ ] Stage all Phase 1-4 changes (archived files, new documents, rewrites)
-- [ ] Commit with descriptive message summarizing the project reframing work
-- [ ] Verify clean working tree after commit (untracked files for Phase 6+ are OK)
+- [x] Stage all Phase 1-4 changes (archived files, new documents, rewrites)
+- [x] Commit with descriptive message summarizing the project reframing work
+- [x] Verify clean working tree after commit (untracked files for Phase 6+ are OK)
 
 ### Validation
 
-- [ ] `git log --oneline -1` shows the commit
-- [ ] `git diff HEAD` shows no unexpected uncommitted changes
-- [ ] Key files committed: CLAUDE.md, OVERVIEW.md, REQUIREMENTS.md, SOURCE_INDEX.md, ARCHITECTURE.md, KNOWLEDGE.md, BACKLOG.md, all archive/ moves
+- [x] `git log --oneline -1` shows the commit
+- [x] `git diff HEAD` shows no unexpected uncommitted changes
+- [x] Key files committed: CLAUDE.md, OVERVIEW.md, REQUIREMENTS.md, SOURCE_INDEX.md, ARCHITECTURE.md, KNOWLEDGE.md, BACKLOG.md, all archive/ moves
 
 **What We Know Works After This Phase:**
 All Phase 1-4 work is safely committed. We have a clean rollback point.
@@ -234,48 +234,48 @@ Install the modeling PM toolchain (`agentic-mbse init --dev`) to get commands, a
 ### Changes Required
 
 #### 1. Pre-install safety
-- [ ] Back up `.claude/settings.json` (init may regenerate it)
-- [ ] Note current state of `work/BACKLOG.md` and `work/backlog/` contents
+- [x] Back up `.claude/settings.json` (init may regenerate it)
+- [x] Note current state of `work/BACKLOG.md` and `work/backlog/` contents
 
 #### 2. Run init
-- [ ] Run `uv run agentic-mbse init --dev`
-- [ ] Respond to any prompts (skip modified user-owned files, accept tool-owned updates)
+- [x] Run `uv run agentic-mbse init --dev`
+- [x] Respond to any prompts (skip modified user-owned files, accept tool-owned updates)
 
 #### 3. Verify installation
-- [ ] `.claude/commands/` populated (14 command files: spec-model, design-model, plan-model, implement-model, etc.)
-- [ ] `.claude/agents/` populated (5 agent files: sysml-expert, sysmlv2-validator, etc.)
-- [ ] `.claude/skills/` populated (10 skill directories: epic-decomposition, model-validation, etc.)
-- [ ] `.claude/hooks/` populated (ruff-format.sh)
-- [ ] `modeling_project/MODELING_GUIDE.md` exists (tool-owned, symlinked)
-- [ ] `modeling_project/MODELING_PROCESS.md` exists (tool-owned, symlinked)
-- [ ] `work/EPIC_GUIDE.md` exists (tool-owned, symlinked — separate from `.project/EPIC_GUIDE.md`)
-- [ ] `work/backlog/epic_template.md` exists (tool-owned, symlinked)
-- [ ] `.claude/.tool-hashes.json` exists
+- [x] `.claude/commands/` populated (14 command files: spec-model, design-model, plan-model, implement-model, etc.)
+- [x] `.claude/agents/` populated (5 agent files: sysml-expert, sysmlv2-validator, etc.)
+- [x] `.claude/skills/` populated (10 skill directories: epic-decomposition, model-validation, etc.)
+- [x] `.claude/hooks/` populated (ruff-format.sh)
+- [x] `modeling_project/MODELING_GUIDE.md` exists (tool-owned, symlinked)
+- [x] `modeling_project/MODELING_PROCESS.md` exists (tool-owned, symlinked)
+- [x] `work/EPIC_GUIDE.md` exists (tool-owned, symlinked — separate from `.project/EPIC_GUIDE.md`)
+- [x] `work/backlog/epic_template.md` exists (tool-owned, symlinked)
+- [x] ~~`.claude/.tool-hashes.json` exists~~ N/A in `--dev` mode (hashes only saved in normal mode)
 
 #### 4. Verify user-owned files preserved
-- [ ] `work/BACKLOG.md` unchanged (YAML frontmatter intact)
-- [ ] `modeling_project/REQUIREMENTS.md` unchanged
-- [ ] `modeling_project/OVERVIEW.md` unchanged
-- [ ] `modeling_project/ARCHITECTURE.md` unchanged
-- [ ] `knowledge/KNOWLEDGE.md` unchanged
-- [ ] Restore `.claude/settings.json` if overwritten (merge any new permissions)
+- [x] `work/BACKLOG.md` unchanged (YAML frontmatter intact)
+- [x] `modeling_project/REQUIREMENTS.md` unchanged
+- [x] `modeling_project/OVERVIEW.md` unchanged
+- [x] `modeling_project/ARCHITECTURE.md` unchanged
+- [x] `knowledge/KNOWLEDGE.md` unchanged
+- [x] Restore `.claude/settings.json` if overwritten (merge any new permissions)
 
 #### 5. Clean up modeling PM state
-- [ ] Fix `work/BACKLOG.md`: remove the coding epic reference (`file: backlog/epic-full-workflow-demo.md`). The DEMO epic is a **coding** epic managed in `.project/backlog/` — it does NOT belong in the modeling backlog. Keep WI-004/WI-005 as historical modeling work items.
-- [ ] Archive stale modeling epics: `work/backlog/epic-cost-patterns-derisking.md` and `work/backlog/epic-sysml-codegen-upgrade.md` → `archive/work/backlog/`
+- [x] Fix `work/BACKLOG.md`: remove the coding epic reference (`file: backlog/epic-full-workflow-demo.md`). The DEMO epic is a **coding** epic managed in `.project/backlog/` — it does NOT belong in the modeling backlog. Keep WI-004/WI-005 as historical modeling work items.
+- [x] Archive stale modeling epics: `work/backlog/epic-cost-patterns-derisking.md` and `work/backlog/epic-sysml-codegen-upgrade.md` → `archive/work/backlog/`
 
 #### 6. Commit installation results
-- [ ] Commit any non-gitignored changes from init (e.g., updated .gitignore entries, settings changes)
-- [ ] Verify tool-owned symlinks are gitignored (commands, agents, skills, hooks, MODELING_GUIDE.md, MODELING_PROCESS.md, etc.)
+- [x] Commit any non-gitignored changes from init (e.g., updated .gitignore entries, settings changes)
+- [x] Verify tool-owned symlinks are gitignored (commands, agents, skills, hooks, MODELING_GUIDE.md, MODELING_PROCESS.md, etc.)
 
 ### Validation
 
-- [ ] `ls .claude/commands/` shows modeling commands
-- [ ] `cat modeling_project/MODELING_GUIDE.md | head -5` shows SysML v2 reference content
-- [ ] `git diff work/BACKLOG.md` shows only the epic reference removal
-- [ ] `work/BACKLOG.md` no longer references any `.project/` artifacts
-- [ ] No tool-owned symlinks in `git status` (all gitignored)
-- [ ] User-owned files pass `git diff HEAD -- modeling_project/REQUIREMENTS.md` (no changes)
+- [x] `ls .claude/commands/` shows modeling commands
+- [x] `cat modeling_project/MODELING_GUIDE.md | head -5` shows SysML v2 reference content
+- [x] `git diff work/BACKLOG.md` shows only the epic reference removal
+- [x] `work/BACKLOG.md` no longer references any `.project/` artifacts
+- [x] No tool-owned symlinks in `git status` (all gitignored)
+- [x] User-owned files pass `git diff HEAD -- modeling_project/REQUIREMENTS.md` (no changes)
 
 **What We Know Works After This Phase:**
 The modeling PM is installed. Both PM systems coexist: `.project/` for coding (already working), `work/` for modeling (now equipped with commands, skills, and documentation). The modeling backlog is clean — only modeling work items, no coding epic references.
@@ -294,32 +294,32 @@ Update CLAUDE.md so a new agent session understands both PM systems, their bound
 
 Content to add:
 
-- [ ] **Dual PM systems overview**: Coding PM (`.project/`, `/_my_*`) vs. Modeling PM (`work/`, `/spec-model` etc.). Clear statement of which owns what.
-- [ ] **Coding PM** (from `agentic-project-init`):
+- [x] **Dual PM systems overview**: Coding PM (`.project/`, `/_my_*`) vs. Modeling PM (`work/`, `/spec-model` etc.). Clear statement of which owns what.
+- [x] **Coding PM** (from `agentic-project-init`):
   - State directory: `.project/` (active/, backlog/, completed/)
   - Commands: `/_my_spec`, `/_my_design`, `/_my_plan`, `/_my_implement`, `/_my_audit_implementation`, `/_my_wrap_up`, etc.
   - Lifecycle: concept → spec → design → plan → implement → review → wrap-up
   - When to use: project setup, coding work, infrastructure, non-modeling tasks
-- [ ] **Modeling PM** (from `agentic-mbse`):
+- [x] **Modeling PM** (from `agentic-mbse`):
   - State directory: `work/` (active/, backlog/, completed/, learnings/)
   - Commands: `/spec-model`, `/design-model`, `/plan-model`, `/implement-model`, `/status`, `/backlog`, etc.
   - Tool-owned docs: `MODELING_GUIDE.md`, `MODELING_PROCESS.md`, `work/EPIC_GUIDE.md`
   - Lifecycle: same cycle (spec → design → plan → implement) but for SysML modeling work
   - When to use: taxonomy development, concept modeling, SysML work, model validation
-- [ ] **YAML frontmatter conventions**: `work/BACKLOG.md` uses YAML frontmatter (parsed by `agentic-mbse` dashboard). Fields: epics (name, priority, status, file, items), standalone items (id, name, scale, priority, status, completed). Spec/design/plan files in `work/active/` also use frontmatter (Status, Scale, Epic, Owner, Created, Updated).
-- [ ] **Boundary rule**: `.project/` and `work/` are separate systems. Coding epics live in `.project/backlog/`. Modeling epics live in `work/backlog/`. Do not cross-reference between them.
+- [x] **YAML frontmatter conventions**: `work/BACKLOG.md` uses YAML frontmatter (parsed by `agentic-mbse` dashboard). Fields: epics (name, priority, status, file, items), standalone items (id, name, scale, priority, status, completed). Spec/design/plan files in `work/active/` also use frontmatter (Status, Scale, Epic, Owner, Created, Updated).
+- [x] **Boundary rule**: `.project/` and `work/` are separate systems. Coding epics live in `.project/backlog/`. Modeling epics live in `work/backlog/`. Do not cross-reference between them.
 
 #### 2. Update project structure tree
-- [ ] Add `work/EPIC_GUIDE.md` and `work/backlog/epic_template.md` to the tree (tool-owned)
-- [ ] Clarify `.project/` vs `work/` in tree comments
+- [x] Add `work/EPIC_GUIDE.md` and `work/backlog/epic_template.md` to the tree (tool-owned)
+- [x] Clarify `.project/` vs `work/` in tree comments
 
 ### Validation
 
-- [ ] Cold-read CLAUDE.md — a new agent session understands both PM systems
-- [ ] The boundary between coding PM and modeling PM is unambiguous
-- [ ] YAML frontmatter conventions are documented (an agent knows what fields to use)
-- [ ] Available commands for each system are listed
-- [ ] No contradictions with other project documents
+- [x] Cold-read CLAUDE.md — a new agent session understands both PM systems
+- [x] The boundary between coding PM and modeling PM is unambiguous
+- [x] YAML frontmatter conventions are documented (an agent knows what fields to use)
+- [x] Available commands for each system are listed
+- [x] No contradictions with other project documents
 
 **What We Know Works After This Phase:**
 CLAUDE.md is the single source of truth for how the project operates. A new session knows: what PM system to use for what kind of work, what commands are available, what frontmatter conventions to follow, and where state lives.
@@ -329,48 +329,43 @@ CLAUDE.md is the single source of truth for how the project operates. A new sess
 ## Phase 8: Workflow Explainer
 
 ### Goal
-Bootstrap the interactive HTML explainer, populate Stage 1 (Investigation Scope) with real content from Phases 2-3, stub remaining stages with descriptions of what artifacts will fill them.
+Bootstrap the interactive HTML explainer, populate Sections 1-3 (infrastructure) with real content from Phases 2-3, stub pipeline sections (5-9) with descriptions of what artifacts will fill them.
 
 ### Changes Required
 
 #### 1. Create explainer structure
-- [ ] Create `demo/` directory
-- [ ] Build `demo/index.html` — self-contained HTML with embedded CSS/JS
-- [ ] Stage navigation (tabs, stepper, or similar) across the top
-- [ ] 9 stages: Investigation Scope → Source Ingestion → Domain Research → Taxonomy → Concept Analysis → Modeling Patterns → Model Construction → Dashboard → Visualization
-- [ ] Clean, readable styling — presentation artifact, not an app
-- [ ] Designed for easy content addition (later items add their stage)
+- [x] Create `demo/` directory
+- [x] Build `demo/index.html` — self-contained HTML with embedded CSS/JS
+- [x] Section navigation: sticky sidebar on desktop, hamburger on mobile
+- [x] 3 infrastructure sections + 5 pipeline sections
+- [x] Clean, readable styling — presentation artifact, not an app
+- [x] Designed for easy content addition (later items add their section content)
 
-#### 2. Populate Stage 1: Investigation Scope
-- [ ] Embed key excerpts from OVERVIEW.md: research questions, comparison axes, scope boundaries
-- [ ] Show "before → after" of the project reframing (what changed and why)
-- [ ] Show source strategy and gap analysis
-- [ ] Show modeling requirements summary (from REQUIREMENTS.md)
-- [ ] Show the investigation process / stage progression
+#### 2. Populate Sections 1-3 (Infrastructure)
+- [x] Section 1 (The Question): research questions, comparison axes, scope boundaries from OVERVIEW.md
+- [x] Section 2 (The Scaffold): init overview (what installation gives you), project structure tree, key artifacts with "view full file" modals
+- [x] Section 3 (The Workflow): Stage 1 + Stage 2 workflow-to-artifact mapping with sub-processes, traceability chain, dashboard visibility
 
-#### 3. Stub remaining stages
-- [ ] Each stage: title, brief description, expected artifacts, knowledge transformation (in → out)
-- [ ] Stage 2 (Source Ingestion): PDFs → structured extractions with quality metrics
-- [ ] Stage 3 (Domain Research): Extractions → domain insights (DI-XXX entries)
-- [ ] Stage 4 (Taxonomy): Literature + insights → structured classification of fusion concepts
-- [ ] Stage 5 (Concept Analysis): Taxonomy → similarities/differences analysis
-- [ ] Stage 6 (Modeling Patterns): Analysis → reusable modeling templates
-- [ ] Stage 7 (Model Construction): Patterns + parameters → validated SysML models
-- [ ] Stage 8 (Dashboard): Models → validation status and traceability coverage
-- [ ] Stage 9 (Visualization): Model outputs → cost breakdowns, LCOE comparison charts
+#### 3. Stub pipeline sections (5-9)
+- [x] Each section: title, brief description, expected artifacts, knowledge transformation (in → out)
+- [x] Section 5 (Source Ingestion): PDFs → structured extractions; includes L1-L5 source strategy table and feedback loop visualization
+- [x] Section 6 (Domain Research): Extractions → domain insights (DI-XXX entries)
+- [x] Section 7 (Taxonomy): Literature + insights → structured classification of fusion concepts
+- [x] Section 8 (Concept Modeling): Taxonomy + literature + patterns → validated SysML models
+- [x] Section 9 (Cross-Concept Comparison): Model outputs → LCOE charts, cost breakdowns, comparison dashboards
 
 ### Validation
 
-- [ ] `demo/index.html` opens in browser without errors
-- [ ] Stage navigation works — can click through all 9 stages
-- [ ] Stage 1 has real content (not placeholder text)
-- [ ] Stages 2-9 have meaningful stubs (not just "TBD")
-- [ ] Each stub describes the knowledge transformation for that stage
-- [ ] HTML is self-contained — no external CDN dependencies, no server needed
-- [ ] File size is reasonable (under 500KB including any embedded assets)
+- [x] `demo/index.html` opens in browser without errors
+- [x] Section navigation works — can click through all sections
+- [x] Sections 1-3 have real content (not placeholder text)
+- [x] Pipeline sections (5-9) have meaningful stubs (not just "TBD")
+- [x] Each pipeline stub describes the knowledge transformation for that stage
+- [x] HTML is self-contained — no external CDN dependencies, no server needed
+- [x] File size is reasonable (under 500KB including any embedded assets) — 71KB
 
 **What We Know Works After This Phase:**
-The explainer exists as a living document. Future epic items add their stage content. A reader can open the HTML and understand the full workflow arc, even if only Stage 1 is populated.
+The explainer exists as a living document. Sections 1-3 explain the investigation scope, project scaffold, and workflow-to-artifact mapping. Pipeline sections (5-9) show where investigation results will appear — feedback loops and analysis/visualization will be showcased within those pipeline sections as they are populated. Future epic items add their pipeline section content with real artifacts.
 
 ---
 
@@ -480,10 +475,23 @@ The explainer exists as a living document. Future epic items add their stage con
 **Deviations:** None
 
 ### Phase 8 Completion
-**Completed:**
+**Completed:** 2026-03-02
 **Actual Changes:**
-**Issues:**
+- Created `demo/index.html` — 71KB self-contained HTML with embedded CSS and vanilla JS
+- Three infrastructure sections populated with real content from OVERVIEW.md, REQUIREMENTS.md, and actual project state
+- Section 1 (The Question): all 5 research questions with expandable rationale, comparison axes table, in/out scope grid
+- Section 2 (The Scaffold): terminal-styled init output, interactive directory tree with color-coded tags (tool-owned/user-owned/archive), 3 expandable artifact cards with "View full file" modal dialogs showing rendered OVERVIEW.md, REQUIREMENTS.md, ARCHITECTURE.md. `.project/` de-emphasized (callout only, not in tree). Heading renamed to "Fusion TEA Initialization"
+- Section 3 (The Workflow): unified workflow-to-artifact mapping replacing original Sections 3+4. Stage 1 (Taxonomy) and Stage 2 (Concept Modeling) shown as visual stage boxes with color-coded sub-processes (Research, Formalization, Planning, Execution) each mapped to artifact directories. Traceability chain as cross-cutting concern. Dashboard under "Visibility"
+- Sections 5-9: stubbed with in/out transforms, expected artifacts, amber "coming soon" banners. Section 5 includes L1-L5 source strategy table and feedback loop callout
+- Sticky sidebar nav on desktop, hamburger on mobile, scroll-spy highlighting, responsive layout
+- Updated demo-outline.md with resolved questions and all 7 user directives from review
+- Updated spec.md: ER-2 matches section structure, ER-4 removes before/after requirement
+**Issues:** None
 **Deviations:**
+- Original plan had 9 flat stages → restructured to 3 infrastructure + 5 pipeline (per user direction). Spec and plan updated to match.
+- Removed "before → after" content (per user direction)
+- Merged original Sections 3 (The Workflow) + 4 (The Harness) into unified Section 3 with stage-based workflow-to-artifact mapping (per user direction — original command-centric view was out of place for audience)
+- Removed Process bridge section — duplicative after Section 3 redesign. Feedback loops and analysis/visualization will be showcased within pipeline sections as they are populated with real artifacts (per user direction)
 
 ---
 

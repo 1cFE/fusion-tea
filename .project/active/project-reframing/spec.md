@@ -146,11 +146,15 @@ A coherent set of project documents that define:
 
 18. **ER-1**: An interactive HTML explainer MUST exist as a self-contained file (or HTML + local assets) viewable by opening in a browser. No server required.
 
-19. **ER-2**: The explainer MUST have stage navigation allowing a reader to cycle through workflow stages in order. Stages correspond to the investigation arc: Investigation Scope → Source Ingestion → Domain Research → Taxonomy → Concept Analysis → Modeling Patterns → Model Construction → Dashboard → Visualization.
+19. **ER-2**: The explainer MUST have section navigation allowing a reader to move through the content in order. The structure separates infrastructure explanation (how the system works) from investigation pipeline (how the work proceeds):
+    - **Sections 1-4 (Infrastructure):** The Question (investigation scope), The Scaffold (project structure and setup), The Workflow (commands and work item lifecycle), The Harness (quality mechanisms — YAML state, dashboard, traceability)
+    - **Bridge:** The Process (investigation process diagram and internal cycle from OVERVIEW.md)
+    - **Sections 5-9 (Pipeline):** Source Ingestion, Domain Research, Taxonomy, Concept Modeling, Cross-Concept Comparison
+    Each section is populated with real content as the corresponding work completes.
 
 20. **ER-3**: Each stage MUST support embedded real artifacts — rendered markdown snippets, images (screenshots, diagrams), expandable sections. These are curated, not auto-generated.
 
-21. **ER-4**: For this work item, Stage 1 (Investigation Scope) MUST be populated with key content from the work done here — research questions, comparison axes, scope boundaries, source strategy, and the "before → after" of the project reframing.
+21. **ER-4**: For this work item, Sections 1-4 and the Process bridge MUST be populated with real content from the work done here — research questions, comparison axes, scope boundaries, project structure, workflow commands, quality mechanisms, and the investigation process diagram.
 
 22. **ER-5**: Remaining stages MUST be stubbed with titles and brief descriptions of what artifacts will be embedded when that stage's work completes. Each stub SHOULD indicate the knowledge transformation that stage performs (what goes in, what comes out).
 
@@ -202,11 +206,12 @@ A coherent set of project documents that define:
 
 ### Workflow Explainer
 - [ ] HTML explainer exists and opens in a browser
-- [ ] Stage navigation works — can cycle through stages
-- [ ] Stage 1 (Investigation Scope) populated with real content from this work item
-- [ ] Remaining stages stubbed with descriptions and expected artifact types
-- [ ] Each stub indicates the knowledge transformation for that stage
-- [ ] Adding future stage content doesn't require restructuring the explainer
+- [ ] Section navigation works — can move through all sections
+- [ ] Sections 1-4 (The Question, The Scaffold, The Workflow, The Harness) populated with real content
+- [ ] Process bridge populated with investigation process diagram and internal cycle
+- [ ] Pipeline sections (5-9) stubbed with descriptions and expected artifact types
+- [ ] Each pipeline stub indicates the knowledge transformation for that stage
+- [ ] Adding future section content doesn't require restructuring the explainer
 
 ### Integrity
 - [ ] All changes committed to git

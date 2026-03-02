@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fusion TEA — Workflow Explainer</title>
+<style>
+/* ============================================================
+   CSS Custom Properties
+   ============================================================ */
+:root {
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-text: #1a1a2e;
+  --color-text-muted: #555;
+  --color-text-light: #777;
+  --color-border: #e0e0e0;
+  --color-accent: #2563eb;
+  --color-accent-light: #dbeafe;
+  --color-tool: #3b82f6;
+  --color-tool-bg: #eff6ff;
+  --color-user: #16a34a;
+  --color-user-bg: #f0fdf4;
+  --color-stub: #d97706;
+  --color-stub-bg: #fffbeb;
+  --color-archive: #6b7280;
+  --color-archive-bg: #f3f4f6;
+  --color-terminal-bg: #1e1e2e;
+  --color-terminal-text: #cdd6f4;
+  --color-terminal-prompt: #a6e3a1;
+  --color-process: #7c3aed;
+  --color-process-bg: #f5f3ff;
+  --color-process-border: #c4b5fd;
+  --color-artifact: #059669;
+  --color-artifact-bg: #ecfdf5;
+  --color-artifact-border: #6ee7b7;
+  --sidebar-width: 260px;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "SF Mono", "Fira Code", "Fira Mono", Menlo, Consolas, monospace;
+}
+
+/* ============================================================
+   Reset & Base
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   Layout
+   ============================================================ */
+.layout { display: flex; min-height: 100vh; }
+
+/* Sidebar */
+.sidebar {
+  position: fixed; top: 0; left: 0;
+  width: var(--sidebar-width); height: 100vh;
+  background: var(--color-text); color: #ccc;
+  overflow-y: auto; z-index: 100;
+  display: flex; flex-direction: column;
+}
+.sidebar-header { padding: 1.5rem 1.25rem 1rem; border-bottom: 1px solid #333; }
+.sidebar-header h1 { font-size: 1.1rem; color: #fff; font-weight: 700; letter-spacing: -0.02em; }
+.sidebar-header .subtitle { font-size: 0.75rem; color: #888; margin-top: 0.25rem; }
+.sidebar nav { flex: 1; padding: 0.75rem 0; }
+.sidebar nav a {
+  display: block; padding: 0.45rem 1.25rem; color: #aaa; text-decoration: none;
+  font-size: 0.82rem; border-left: 3px solid transparent; transition: all 0.15s;
+}
+.sidebar nav a:hover { color: #fff; background: rgba(255,255,255,0.05); }
+.sidebar nav a.active { color: #fff; border-left-color: var(--color-accent); background: rgba(37,99,235,0.1); }
+.sidebar nav .nav-group {
+  font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em;
+  color: #666; padding: 0.8rem 1.25rem 0.3rem; margin-top: 0.25rem;
+}
+.sidebar nav a .nav-num { display: inline-block; width: 1.2rem; color: #666; font-size: 0.75rem; }
+.sidebar nav a.stub { color: #777; }
+.sidebar nav a.stub .nav-badge {
+  font-size: 0.6rem; background: rgba(217,119,6,0.2); color: var(--color-stub);
+  padding: 0.1rem 0.35rem; border-radius: 3px; margin-left: 0.4rem; vertical-align: 1px;
+}
+
+/* Hamburger (mobile) */
+.hamburger {
+  display: none; position: fixed; top: 0.75rem; left: 0.75rem; z-index: 200;
+  background: var(--color-text); color: #fff; border: none; border-radius: 6px;
+  padding: 0.5rem 0.65rem; font-size: 1.2rem; cursor: pointer; line-height: 1;
+}
+
+/* Main content */
+.main { margin-left: var(--sidebar-width); flex: 1; max-width: 900px; padding: 3rem 3rem 6rem; }
+
+/* ============================================================
+   Typography
+   ============================================================ */
+h2 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; padding-top: 2rem; }
+h2 .section-num { color: var(--color-accent); font-weight: 400; margin-right: 0.25rem; }
+h3 { font-size: 1.15rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.5rem; }
+p { margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+.section-divider { border: none; border-top: 1px solid var(--color-border); margin: 3rem 0; }
+
+/* ============================================================
+   Cards
+   ============================================================ */
+.card {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 1rem;
+}
+
+/* Research question cards */
+.rq-card {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 0.75rem;
+}
+.rq-card .rq-id { font-size: 0.75rem; font-weight: 700; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.05em; }
+.rq-card .rq-title { font-size: 1rem; font-weight: 600; margin: 0.35rem 0 0; }
+.rq-card details summary { font-size: 0.8rem; color: var(--color-accent); cursor: pointer; margin-top: 0.5rem; }
+.rq-card details p { font-size: 0.88rem; color: var(--color-text-muted); margin-top: 0.4rem; margin-bottom: 0; }
+
+/* ============================================================
+   Tables
+   ============================================================ */
+.table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+th, td { text-align: left; padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--color-border); }
+th { font-weight: 600; background: var(--color-bg); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--color-text-muted); }
+
+/* ============================================================
+   Scope In/Out
+   ============================================================ */
+.scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0 1.5rem; }
+.scope-box { border-radius: 8px; padding: 1rem 1.25rem; }
+.scope-box.scope-in { background: var(--color-user-bg); border: 1px solid #bbf7d0; }
+.scope-box.scope-out { background: var(--color-archive-bg); border: 1px solid #d1d5db; }
+.scope-box h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+.scope-in h4 { color: var(--color-user); }
+.scope-out h4 { color: var(--color-archive); }
+.scope-box ul { list-style: none; font-size: 0.88rem; }
+.scope-box li { padding: 0.15rem 0; }
+.scope-box li::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 0.5rem; vertical-align: 1px; }
+.scope-in li::before { background: var(--color-user); }
+.scope-out li::before { background: var(--color-archive); }
+
+/* ============================================================
+   Terminal blocks
+   ============================================================ */
+.terminal {
+  background: var(--color-terminal-bg); color: var(--color-terminal-text);
+  border-radius: 8px; padding: 1rem 1.25rem; font-family: var(--font-mono);
+  font-size: 0.82rem; line-height: 1.7; overflow-x: auto; margin: 1rem 0 1.5rem;
+}
+.terminal .prompt { color: var(--color-terminal-prompt); }
+.terminal .output { color: #bac2de; }
+
+/* ============================================================
+   Code blocks
+   ============================================================ */
+code { font-family: var(--font-mono); font-size: 0.85em; background: #f1f5f9; padding: 0.15rem 0.35rem; border-radius: 4px; }
+pre {
+  background: #f8fafc; border: 1px solid var(--color-border); border-radius: 8px;
+  padding: 1rem 1.25rem; font-family: var(--font-mono); font-size: 0.82rem;
+  line-height: 1.6; overflow-x: auto; margin: 1rem 0 1.5rem;
+}
+
+/* ============================================================
+   Directory tree
+   ============================================================ */
+.dir-tree { font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.8; }
+.dir-tree details { margin-left: 1.25rem; }
+.dir-tree summary { cursor: pointer; list-style: none; }
+.dir-tree summary::before { content: '\25B6'; display: inline-block; width: 1rem; font-size: 0.6rem; transition: transform 0.15s; color: var(--color-text-light); }
+.dir-tree details[open] > summary::before { transform: rotate(90deg); }
+.dir-tree .dir { font-weight: 600; }
+.dir-tree .annotation { font-family: var(--font-sans); font-size: 0.78rem; color: var(--color-text-light); margin-left: 0.75rem; }
+.dir-tree .tag-tool { font-family: var(--font-sans); font-size: 0.6rem; background: var(--color-tool-bg); color: var(--color-tool); padding: 0.05rem 0.3rem; border-radius: 3px; margin-left: 0.5rem; vertical-align: 1px; }
+.dir-tree .tag-user { font-family: var(--font-sans); font-size: 0.6rem; background: var(--color-user-bg); color: var(--color-user); padding: 0.05rem 0.3rem; border-radius: 3px; margin-left: 0.5rem; vertical-align: 1px; }
+.dir-tree .tag-archive { font-family: var(--font-sans); font-size: 0.6rem; background: var(--color-archive-bg); color: var(--color-archive); padding: 0.05rem 0.3rem; border-radius: 3px; margin-left: 0.5rem; vertical-align: 1px; }
+.dir-tree .file { margin-left: 1.25rem; padding-left: 1rem; }
+
+/* ============================================================
+   Artifact cards (expandable) with view-file button
+   ============================================================ */
+.artifact-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 8px; margin-bottom: 0.75rem; }
+.artifact-card summary {
+  padding: 1rem 1.25rem; cursor: pointer; font-weight: 600; font-size: 0.95rem;
+  list-style: none; display: flex; align-items: center; gap: 0.5rem;
+}
+.artifact-card summary::before { content: '\25B6'; font-size: 0.6rem; color: var(--color-text-light); transition: transform 0.15s; }
+.artifact-card[open] > summary::before { transform: rotate(90deg); }
+.artifact-card .artifact-body { padding: 0 1.25rem 1rem; font-size: 0.88rem; color: var(--color-text-muted); }
+.artifact-card .artifact-body table { margin-top: 0.5rem; }
+.btn-view-file {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  margin-top: 0.75rem; padding: 0.4rem 0.8rem; background: var(--color-accent-light);
+  color: var(--color-accent); border: 1px solid #93c5fd; border-radius: 6px;
+  font-size: 0.78rem; font-weight: 600; cursor: pointer; font-family: var(--font-sans);
+  transition: background 0.15s;
+}
+.btn-view-file:hover { background: #bfdbfe; }
+
+/* ============================================================
+   Modal / Dialog
+   ============================================================ */
+dialog {
+  border: none; border-radius: 12px; padding: 0; max-width: 800px; width: 90vw;
+  max-height: 85vh; box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+}
+dialog::backdrop { background: rgba(0,0,0,0.5); }
+.dialog-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg); border-radius: 12px 12px 0 0;
+  position: sticky; top: 0; z-index: 1;
+}
+.dialog-header h3 { margin: 0; font-size: 1rem; }
+.dialog-header .dialog-path { font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-text-light); }
+.dialog-close {
+  background: none; border: 1px solid var(--color-border); border-radius: 6px;
+  padding: 0.3rem 0.6rem; cursor: pointer; font-size: 0.85rem; color: var(--color-text-muted);
+}
+.dialog-close:hover { background: var(--color-bg); }
+.dialog-body {
+  padding: 1.5rem; overflow-y: auto; max-height: calc(85vh - 4rem);
+  font-size: 0.88rem; line-height: 1.7;
+}
+.dialog-body h2 { font-size: 1.3rem; padding-top: 1.5rem; margin-bottom: 0.4rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.3rem; }
+.dialog-body h3 { font-size: 1.05rem; margin-top: 1.5rem; }
+.dialog-body h4 { font-size: 0.95rem; margin-top: 1rem; margin-bottom: 0.3rem; }
+.dialog-body ul, .dialog-body ol { margin-left: 1.5rem; margin-bottom: 1rem; }
+.dialog-body li { margin-bottom: 0.25rem; }
+.dialog-body pre { font-size: 0.78rem; }
+.dialog-body blockquote { border-left: 3px solid var(--color-border); padding-left: 1rem; color: var(--color-text-muted); margin: 1rem 0; }
+
+/* ============================================================
+   Callout
+   ============================================================ */
+.callout {
+  border-left: 3px solid var(--color-accent); background: var(--color-accent-light);
+  padding: 0.8rem 1rem; border-radius: 0 6px 6px 0; font-size: 0.88rem; margin: 1rem 0 1.5rem;
+}
+.callout.callout-important { border-left-color: #dc2626; background: #fef2f2; }
+.callout strong { font-weight: 600; }
+
+/* ============================================================
+   Workflow Stage Boxes
+   ============================================================ */
+.stage-box {
+  border: 2px solid var(--color-border); border-radius: 12px;
+  margin: 1.5rem 0; overflow: hidden;
+}
+.stage-header {
+  background: var(--color-text); color: #fff; padding: 1rem 1.5rem;
+}
+.stage-header .stage-num {
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em;
+  color: #94a3b8; margin-bottom: 0.15rem;
+}
+.stage-header .stage-title { font-size: 1.15rem; font-weight: 700; }
+.stage-header .stage-question {
+  font-size: 0.88rem; color: #94a3b8; margin-top: 0.2rem; font-style: italic;
+}
+.stage-body { padding: 1.25rem 1.5rem; }
+
+/* Sub-process row */
+.subprocess-row {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.subprocess-row.cols-2 { grid-template-columns: 1fr 1fr; }
+.subprocess-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+.subprocess {
+  border-radius: 8px; padding: 0.8rem 1rem;
+  border: 1px solid var(--color-process-border);
+  background: var(--color-process-bg);
+}
+.subprocess .sp-title {
+  font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.05em; color: var(--color-process); margin-bottom: 0.4rem;
+}
+.subprocess ul { list-style: none; font-size: 0.82rem; }
+.subprocess li { padding: 0.1rem 0; color: var(--color-text-muted); }
+.subprocess li::before { content: '\2022'; color: var(--color-process); margin-right: 0.4rem; }
+
+/* Artifact output row */
+.artifact-row {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+.artifact-target {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  background: var(--color-artifact-bg); border: 1px solid var(--color-artifact-border);
+  border-radius: 6px; padding: 0.3rem 0.65rem;
+  font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-artifact);
+}
+.artifact-target::before { content: '\2192'; margin-right: 0.15rem; }
+
+/* Subprocess-to-artifact connector */
+.sp-artifacts {
+  margin-top: 0.5rem; padding-top: 0.5rem;
+  border-top: 1px dashed var(--color-process-border);
+}
+
+/* ============================================================
+   Traceability (compact for Section 3)
+   ============================================================ */
+.trace-chain {
+  display: flex; align-items: center; gap: 0; margin: 1.5rem 0; overflow-x: auto; padding-bottom: 0.5rem;
+}
+.trace-node {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: 6px; padding: 0.6rem 0.8rem; text-align: center; min-width: 120px;
+}
+.trace-node .node-label { font-size: 0.75rem; font-weight: 600; }
+.trace-node .node-file { font-family: var(--font-mono); font-size: 0.65rem; color: var(--color-text-light); margin-top: 0.15rem; word-break: break-all; }
+.trace-arrow { font-size: 1.2rem; color: var(--color-border); padding: 0 0.3rem; flex-shrink: 0; }
+
+/* ============================================================
+   Diagram (process diagrams)
+   ============================================================ */
+.diagram {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: 8px; padding: 1.5rem 2rem; font-family: var(--font-mono);
+  font-size: 0.78rem; line-height: 1.5; overflow-x: auto; margin: 1rem 0 1.5rem; text-align: center;
+}
+
+/* ============================================================
+   Stub sections
+   ============================================================ */
+.stub-banner {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--color-stub-bg); color: var(--color-stub);
+  border: 1px solid #fde68a; border-radius: 6px; padding: 0.3rem 0.7rem;
+  font-size: 0.75rem; font-weight: 600; margin-bottom: 1rem;
+}
+.stub-content {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: 8px; padding: 1.5rem; margin: 1rem 0;
+}
+.stub-content .transform { display: flex; align-items: center; gap: 0.75rem; margin: 0.75rem 0; font-size: 0.9rem; }
+.stub-content .transform .t-in, .stub-content .transform .t-out {
+  background: var(--color-bg); border: 1px solid var(--color-border);
+  border-radius: 6px; padding: 0.5rem 0.75rem; flex: 1;
+}
+.stub-content .transform .t-arrow { font-size: 1.5rem; color: var(--color-stub); flex-shrink: 0; }
+.stub-content .transform .t-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-light); margin-bottom: 0.15rem; }
+.stub-content .artifacts { margin-top: 1rem; font-size: 0.85rem; color: var(--color-text-muted); }
+.stub-content .artifacts strong { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--color-text-light); }
+.strategy-table th:first-child { width: 10rem; }
+.feedback-loop {
+  background: var(--color-stub-bg); border: 1px solid #fde68a; border-radius: 8px;
+  padding: 1rem 1.25rem; font-size: 0.85rem; margin: 1rem 0;
+}
+.feedback-loop .loop-title { font-weight: 600; color: var(--color-stub); margin-bottom: 0.3rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.03em; }
+
+/* ============================================================
+   Color legend
+   ============================================================ */
+.color-legend {
+  display: flex; gap: 1.5rem; flex-wrap: wrap;
+  font-size: 0.78rem; color: var(--color-text-muted); margin: 1rem 0;
+}
+.color-legend .legend-item { display: flex; align-items: center; gap: 0.35rem; }
+.legend-swatch {
+  display: inline-block; width: 12px; height: 12px; border-radius: 3px;
+}
+.legend-swatch.swatch-process { background: var(--color-process-bg); border: 1px solid var(--color-process-border); }
+.legend-swatch.swatch-artifact { background: var(--color-artifact-bg); border: 1px solid var(--color-artifact-border); }
+.legend-swatch.swatch-tool { background: var(--color-tool-bg); border: 1px solid #93c5fd; }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 900px) {
+  .sidebar { transform: translateX(-100%); transition: transform 0.25s; }
+  .sidebar.open { transform: translateX(0); }
+  .hamburger { display: block; }
+  .main { margin-left: 0; padding: 2rem 1.25rem 4rem; }
+  .scope-grid { grid-template-columns: 1fr; }
+  .subprocess-row.cols-2, .subprocess-row.cols-3 { grid-template-columns: 1fr; }
+  .trace-chain { flex-wrap: wrap; gap: 0.5rem; }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<!-- Hamburger (mobile) -->
+<button class="hamburger" aria-label="Toggle navigation" onclick="document.querySelector('.sidebar').classList.toggle('open')">&#9776;</button>
+
+<!-- ============================================================
+     Sidebar Navigation
+     ============================================================ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <h1>Fusion TEA</h1>
+    <div class="subtitle">Workflow Explainer</div>
+  </div>
+  <nav>
+    <div class="nav-group">Infrastructure</div>
+    <a href="#the-question"><span class="nav-num">1</span> The Question</a>
+    <a href="#the-scaffold"><span class="nav-num">2</span> The Scaffold</a>
+    <a href="#the-workflow"><span class="nav-num">3</span> The Workflow</a>
+    <div class="nav-group">Pipeline</div>
+    <a href="#source-ingestion" class="stub"><span class="nav-num">5</span> Source Ingestion <span class="nav-badge">stub</span></a>
+    <a href="#domain-research" class="stub"><span class="nav-num">6</span> Domain Research <span class="nav-badge">stub</span></a>
+    <a href="#taxonomy" class="stub"><span class="nav-num">7</span> Taxonomy <span class="nav-badge">stub</span></a>
+    <a href="#concept-modeling" class="stub"><span class="nav-num">8</span> Concept Modeling <span class="nav-badge">stub</span></a>
+    <a href="#cross-concept" class="stub"><span class="nav-num">9</span> Cross-Concept <span class="nav-badge">stub</span></a>
+  </nav>
+</aside>
+
+<!-- ============================================================
+     Main Content
+     ============================================================ -->
+<main class="main">
+
+<!-- ************************************************************
+     SECTION 1: THE QUESTION
+     ************************************************************ -->
+<section id="the-question">
+<h2><span class="section-num">1.</span> The Question</h2>
+<p class="lead">Fusion power has 36+ competing approaches at various stages of maturity. How do you compare their economics?</p>
+
+<p>Decision-makers &mdash; investors, policymakers, researchers &mdash; need structured comparisons, not just headline LCOE numbers. But comparing fusion economics across fundamentally different approaches is hard: different confinement mechanisms, different cost structures, different data quality, different estimation maturity.</p>
+<p>This project builds the <strong>analytical infrastructure</strong> for that comparison: a taxonomy of the concept space, reusable cost modeling patterns, and traceable parameter chains from source literature to model outputs. The models are built in SysML v2 using agent-assisted tooling.</p>
+
+<h3>Research Questions</h3>
+<p>These five questions drive all downstream work &mdash; taxonomy, source selection, modeling targets, and comparison methodology.</p>
+
+<div class="rq-card">
+  <div class="rq-id">RQ-1</div>
+  <div class="rq-title">What are the dominant cost drivers for fusion power, and how do they differ across confinement approaches?</div>
+  <details><summary>Rationale</summary><p>CAS22 (reactor plant equipment) is ~60% of cost for magnetic confinement tokamaks, but inertial, magnetized target, and exotic approaches have fundamentally different power core structures, drivers, and balance-of-plant requirements. Understanding where the money goes for each approach is the foundation of any meaningful comparison.</p></details>
+</div>
+<div class="rq-card">
+  <div class="rq-id">RQ-2</div>
+  <div class="rq-title">What LCOE range is credible for each major fusion approach, and what assumptions drive those estimates?</div>
+  <details><summary>Rationale</summary><p>Published LCOE figures vary enormously (30&ndash;200+ $/MWh) and depend critically on assumptions about plant availability, magnet or driver cost, neutron economy, rep rate, and thermal conversion efficiency. We need to decompose LCOE into its constituent assumptions &mdash; not cite headline numbers.</p></details>
+</div>
+<div class="rq-card">
+  <div class="rq-id">RQ-3</div>
+  <div class="rq-title">Which cost structures are shared across fusion concepts, and where do they fundamentally diverge?</div>
+  <details><summary>Rationale</summary><p>This directly informs modeling architecture. Shared structures (e.g., thermal power conversion, buildings, site work) become reusable library components. Divergent structures (e.g., magnet systems vs. laser drivers vs. pulsed power) become concept-specific designs. The answer determines how much modeling reuse is achievable.</p></details>
+</div>
+<div class="rq-card">
+  <div class="rq-id">RQ-4</div>
+  <div class="rq-title">What is the state of cost estimation maturity across fusion approaches?</div>
+  <details><summary>Rationale</summary><p>An ARIES tokamak study with AACE Class 3&ndash;4 estimates is fundamentally different from a startup whitepaper with Class 5 estimates. Understanding estimation maturity for each concept frames how much confidence to place in any comparison and where the biggest knowledge gaps lie.</p></details>
+</div>
+<div class="rq-card">
+  <div class="rq-id">RQ-5</div>
+  <div class="rq-title">Which cost and performance parameters exhibit both high sensitivity and high uncertainty?</div>
+  <details><summary>Rationale</summary><p>A parameter that moves LCOE by 2x if wrong AND is poorly constrained by available data is more important than one that's well-known or low-impact. This is the &ldquo;where should attention focus&rdquo; question &mdash; identifying the highest-leverage unknowns across the fusion landscape.</p></details>
+</div>
+
+<h3>Comparison Axes</h3>
+<p>Every concept model must produce outputs along these dimensions to enable apples-to-apples comparison.</p>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Axis</th><th>What It Measures</th><th>Why It Matters</th></tr></thead>
+  <tbody>
+    <tr><td><strong>LCOE ($/MWh)</strong></td><td>Total lifecycle cost per unit energy</td><td>The bottom line &mdash; comparison with other energy sources</td></tr>
+    <tr><td><strong>Capital cost by CAS</strong></td><td>Where the money goes (CAS20 breakdown)</td><td>Identifies dominant cost drivers per concept</td></tr>
+    <tr><td><strong>Capacity factor</strong></td><td>Plant availability &times; thermal efficiency</td><td>Huge LCOE sensitivity; varies between pulsed and steady-state</td></tr>
+    <tr><td><strong>Fuel cycle economics</strong></td><td>Tritium breeding, fuel cost, availability</td><td>D-T needs blankets; aneutronic faces other challenges</td></tr>
+    <tr><td><strong>Technology readiness</strong></td><td>Maturity of key subsystems</td><td>Distinguishes &ldquo;ready to build&rdquo; from &ldquo;needs breakthroughs&rdquo;</td></tr>
+    <tr><td><strong>Estimation confidence</strong></td><td>AACE class of the cost estimate</td><td>Frames how seriously to take the numbers</td></tr>
+    <tr><td><strong>Sensitivity-risk profile</strong></td><td>High-sensitivity AND high-uncertainty parameters</td><td>Where better data would most change the picture</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Scope</h3>
+<div class="scope-grid">
+  <div class="scope-box scope-in">
+    <h4>In Scope</h4>
+    <ul>
+      <li>Magnetic confinement (tokamaks, stellarators, mirrors)</li>
+      <li>Inertial confinement (laser, heavy-ion)</li>
+      <li>Magnetized target fusion</li>
+      <li>Exotic concepts</li>
+      <li>~36+ concepts in taxonomy, ~13 for deeper modeling</li>
+    </ul>
+  </div>
+  <div class="scope-box scope-out">
+    <h4>Out of Scope</h4>
+    <ul>
+      <li>Non-electric fusion applications</li>
+      <li>Fission-fusion hybrids</li>
+      <li>Concepts with zero public technical data</li>
+      <li>Detailed engineering design (we model economics)</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ************************************************************
+     SECTION 2: THE SCAFFOLD
+     ************************************************************ -->
+<section id="the-scaffold">
+<h2><span class="section-num">2.</span> The Scaffold</h2>
+<p class="lead">What structure enables all downstream work?</p>
+
+<h3>Bootstrap</h3>
+<p>A single command installs the full agent-assisted MBSE workflow into a project:</p>
+
+<div class="terminal">
+<span class="prompt">$</span> uv run agentic-mbse init --dev<br>
+<br>
+<span class="output">Initializing agentic-mbse project (dev mode)...</span><br>
+<span class="output">  Symlinked 14 commands, 5 agents, 10 skills, 1 hook, 4 tool-owned docs</span><br>
+<span class="output">  Created 2 user-owned files (templates)</span><br>
+<span class="output">  Preserved 12 existing user files</span><br>
+<span class="output">34 symlinks installed.</span><br>
+</div>
+
+<p>This gives Claude Code access to the full MBSE command set &mdash; research, spec, design, plan, implement, validate, and status tracking &mdash; plus skills for SysML conventions, requirements tracking, and model validation. User-owned files are never overwritten; tool-owned files auto-update when the toolchain updates.</p>
+
+<h3>Project Structure</h3>
+
+<div class="dir-tree">
+  <div><span class="dir">fusion-tea/</span></div>
+  <details>
+    <summary><span class="dir">knowledge/</span> <span class="annotation">Domain sources and research</span></summary>
+    <div class="file">SOURCE_INDEX.md <span class="annotation">Registered domain sources</span></div>
+    <div class="file">KNOWLEDGE.md <span class="annotation">Domain insight registry (DI-XXX)</span></div>
+    <div class="file"><span class="dir">raw/</span> <span class="annotation">Source PDFs + extraction output</span></div>
+    <div class="file"><span class="dir">sources/</span> <span class="annotation">Committed source extractions</span></div>
+    <div class="file"><span class="dir">research/</span> <span class="annotation">Research pipeline (pending &rarr; approved)</span></div>
+  </details>
+  <details>
+    <summary><span class="dir">models/</span> <span class="annotation">SysML v2 models</span></summary>
+    <div class="file"><span class="dir">concepts/</span> <span class="annotation">Taxonomy and concept classification</span></div>
+    <div class="file"><span class="dir">library/</span> <span class="annotation">Reusable definitions (concept-agnostic)</span></div>
+    <div class="file"><span class="dir">designs/</span> <span class="annotation">Concept-specific model instances</span></div>
+  </details>
+  <details>
+    <summary><span class="dir">modeling_project/</span> <span class="annotation">Investigation governance</span></summary>
+    <div class="file">OVERVIEW.md <span class="annotation">Investigation scope</span> <span class="tag-user">user</span></div>
+    <div class="file">REQUIREMENTS.md <span class="annotation">Modeling requirements (MR-XXX)</span> <span class="tag-user">user</span></div>
+    <div class="file">ARCHITECTURE.md <span class="annotation">Architectural decisions (AD-XXX)</span> <span class="tag-user">user</span></div>
+    <div class="file"><span class="dir">intent/</span> <span class="annotation">Meeting notes, concept candidates</span></div>
+    <div class="file">MODELING_GUIDE.md <span class="annotation">SysML v2 reference</span> <span class="tag-tool">tool</span></div>
+    <div class="file">MODELING_PROCESS.md <span class="annotation">MBSE workflow</span> <span class="tag-tool">tool</span></div>
+  </details>
+  <details>
+    <summary><span class="dir">work/</span> <span class="annotation">Modeling work tracking</span></summary>
+    <div class="file">BACKLOG.md <span class="annotation">Work item registry (YAML frontmatter)</span></div>
+    <div class="file"><span class="dir">active/</span> <span class="annotation">In-progress work items (spec, design, plan)</span></div>
+    <div class="file"><span class="dir">completed/</span> <span class="annotation">Archived work items</span></div>
+    <div class="file"><span class="dir">learnings/</span> <span class="annotation">Session insights</span></div>
+  </details>
+  <div style="margin-left:1.25rem"><span class="dir">demo/</span> <span class="annotation">This explainer</span></div>
+  <div style="margin-left:1.25rem"><span class="dir">scripts/</span> <span class="annotation">Automation (Zotero ingestion, traceability audit)</span></div>
+  <div style="margin-left:1.25rem"><span class="dir">data/</span> <span class="annotation">Structured data and outputs</span></div>
+  <div style="margin-left:1.25rem"><span class="dir">archive/</span> <span class="annotation">Historical artifacts</span> <span class="tag-archive">archive</span></div>
+</div>
+
+<div class="callout">
+  <strong>Two PM systems.</strong> <code>.project/</code> (not shown) tracks internal development work &mdash; scripts, infrastructure, project setup &mdash; using a general-purpose PM. It&rsquo;s for tooling developers, not project users. <code>work/</code> tracks the investigation&rsquo;s modeling work &mdash; SysML models, taxonomy, domain research &mdash; using the MBSE-specific PM. They share a lifecycle pattern but manage separate state.
+</div>
+
+<h3>Fusion TEA Initialization</h3>
+<p>Three governance documents are created at project setup. They define what we're investigating, what rules our models follow, and what structural decisions have been made.</p>
+
+<details class="artifact-card">
+  <summary>OVERVIEW.md &mdash; Investigation Scope</summary>
+  <div class="artifact-body">
+    <p>The primary strategy document. Defines what we're investigating, why it matters, and how we'll proceed.</p>
+    <p><strong>Contains:</strong> 5 research questions, 7 comparison axes, scope boundaries, &ldquo;done&rdquo; criteria, source strategy (L1&ndash;L5 data layers), and the two-stage investigation process (Taxonomy &rarr; Concept Modeling).</p>
+    <p>This document drives all downstream work. If a modeling decision can't trace back to something in OVERVIEW.md, it's unanchored.</p>
+    <button class="btn-view-file" onclick="document.getElementById('dialog-overview').showModal()">View full file</button>
+  </div>
+</details>
+
+<details class="artifact-card">
+  <summary>REQUIREMENTS.md &mdash; Modeling Rules</summary>
+  <div class="artifact-body">
+    <p>Six modeling requirements (MR-1 through MR-6) that all SysML models must follow, plus five process requirements (PR-1 through PR-5) that define how the investigation progresses.</p>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>ID</th><th>Rule</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>MR-1</td><td>CAS hierarchy as primary cost decomposition</td><td>Standard structure enabling cross-concept comparison</td></tr>
+        <tr><td>MR-2</td><td>Standard costed component interface</td><td>Uniform interface for cost rollup and comparison</td></tr>
+        <tr><td>MR-3</td><td>Library concept-agnostic, designs concept-specific</td><td>Maximizes reuse (~60% shared definitions)</td></tr>
+        <tr><td>MR-4</td><td>Traceable citations on all quantitative values</td><td>Machine-checkable provenance; anti-hallucination</td></tr>
+        <tr><td>MR-5</td><td>Standard output schema for comparison</td><td>Enables apples-to-apples reporting (intent, TBD)</td></tr>
+        <tr><td>MR-6</td><td>Patterns defined before production models</td><td>Validates structure before scaling</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <button class="btn-view-file" onclick="document.getElementById('dialog-requirements').showModal()">View full file</button>
+  </div>
+</details>
+
+<details class="artifact-card">
+  <summary>ARCHITECTURE.md &mdash; Structural Decisions</summary>
+  <div class="artifact-body">
+    <p>Intentionally empty at initialization. Architectural decisions (AD-XXX) emerge from taxonomy work, concept analysis, and modeling pattern development. Populating this upfront would be speculative.</p>
+    <p>Decisions are registered here as they're made, with rationale and traceability to the research that motivated them.</p>
+    <button class="btn-view-file" onclick="document.getElementById('dialog-architecture').showModal()">View full file</button>
+  </div>
+</details>
+</section>
+
+<hr class="section-divider">
+
+<!-- ************************************************************
+     SECTION 3: THE WORKFLOW
+     ************************************************************ -->
+<section id="the-workflow">
+<h2><span class="section-num">3.</span> The Workflow</h2>
+<p class="lead">How does work flow through the system, and where do artifacts land?</p>
+
+<div class="color-legend">
+  <div class="legend-item"><span class="legend-swatch swatch-process"></span> Process activity</div>
+  <div class="legend-item"><span class="legend-swatch swatch-artifact"></span> Artifact output</div>
+  <div class="legend-item"><span class="legend-swatch swatch-tool"></span> Tooling / automation</div>
+</div>
+
+<!-- Stage 1 -->
+<div class="stage-box">
+  <div class="stage-header">
+    <div class="stage-num">Stage 1</div>
+    <div class="stage-title">Build the Taxonomy</div>
+    <div class="stage-question">&ldquo;How do we classify and compare fusion approaches?&rdquo;</div>
+  </div>
+  <div class="stage-body">
+    <div class="subprocess-row cols-2">
+      <div class="subprocess">
+        <div class="sp-title">Research</div>
+        <ul>
+          <li>Ingest domain literature (PDFs, design studies)</li>
+          <li>Extract structured text with quality metrics</li>
+          <li>Synthesize domain insights (DI-XXX)</li>
+          <li>Identify gaps &rarr; seek new sources</li>
+        </ul>
+        <div class="sp-artifacts">
+          <div class="artifact-row">
+            <span class="artifact-target">knowledge/raw/</span>
+            <span class="artifact-target">knowledge/sources/</span>
+            <span class="artifact-target">knowledge/research/</span>
+            <span class="artifact-target">KNOWLEDGE.md</span>
+          </div>
+        </div>
+      </div>
+      <div class="subprocess">
+        <div class="sp-title">Formalization</div>
+        <ul>
+          <li>Classify ~36+ concepts along meaningful dimensions</li>
+          <li>Identify shared vs. divergent cost structures</li>
+          <li>Build comparison framework</li>
+          <li>Select ~13 concepts for Stage 2</li>
+        </ul>
+        <div class="sp-artifacts">
+          <div class="artifact-row">
+            <span class="artifact-target">models/concepts/</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:0.85rem;color:var(--color-text-muted);margin:0"><strong>Exit criteria:</strong> A formalized framework that organizes the fusion concept space and identifies what&rsquo;s shared vs. divergent across approaches.</p>
+  </div>
+</div>
+
+<!-- Stage 2 -->
+<div class="stage-box">
+  <div class="stage-header">
+    <div class="stage-num">Stage 2</div>
+    <div class="stage-title">Model Individual Concepts</div>
+    <div class="stage-question">&ldquo;What does the cost structure look like for each approach?&rdquo;</div>
+  </div>
+  <div class="stage-body">
+    <div class="subprocess-row cols-3">
+      <div class="subprocess">
+        <div class="sp-title">Research</div>
+        <ul>
+          <li>Concept-specific literature</li>
+          <li>Fill L3&ndash;L5 data layers</li>
+          <li>Identify parameter gaps</li>
+        </ul>
+        <div class="sp-artifacts">
+          <div class="artifact-row">
+            <span class="artifact-target">knowledge/raw/</span>
+            <span class="artifact-target">knowledge/sources/</span>
+            <span class="artifact-target">knowledge/research/</span>
+          </div>
+        </div>
+      </div>
+      <div class="subprocess">
+        <div class="sp-title">Planning</div>
+        <ul>
+          <li>Define work items</li>
+          <li>Spec &rarr; Design &rarr; Plan</li>
+          <li>Record intent and decisions</li>
+        </ul>
+        <div class="sp-artifacts">
+          <div class="artifact-row">
+            <span class="artifact-target">modeling_project/intent/</span>
+            <span class="artifact-target">work/BACKLOG.md</span>
+            <span class="artifact-target">work/active/</span>
+          </div>
+        </div>
+      </div>
+      <div class="subprocess">
+        <div class="sp-title">Execution</div>
+        <ul>
+          <li>Build SysML v2 models</li>
+          <li>Validate (6 levels)</li>
+          <li>Verify traceability</li>
+        </ul>
+        <div class="sp-artifacts">
+          <div class="artifact-row">
+            <span class="artifact-target">models/library/</span>
+            <span class="artifact-target">models/designs/</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:0.85rem;color:var(--color-text-muted);margin:0"><strong>Exit criteria:</strong> Per-concept &mdash; a validated SysML v2 model passing all validation levels. Cross-concept &mdash; comparison along the defined axes.</p>
+  </div>
+</div>
+
+<h3>Traceability &mdash; The Cross-Cutting Concern</h3>
+<p>Every quantitative value in the system &mdash; from source documents through to model parameters &mdash; carries a structured citation chain. This is the mechanism that prevents hallucination and makes the analysis verifiable.</p>
+
+<div class="trace-chain">
+  <div class="trace-node">
+    <div class="node-label">Source PDF</div>
+    <div class="node-file">knowledge/raw/*.pdf</div>
+  </div>
+  <div class="trace-arrow">&rarr;</div>
+  <div class="trace-node">
+    <div class="node-label">Extraction</div>
+    <div class="node-file">knowledge/sources/*/output.md</div>
+  </div>
+  <div class="trace-arrow">&rarr;</div>
+  <div class="trace-node">
+    <div class="node-label">Domain Insight</div>
+    <div class="node-file">KNOWLEDGE.md (DI-XXX)</div>
+  </div>
+  <div class="trace-arrow">&rarr;</div>
+  <div class="trace-node">
+    <div class="node-label">Model Parameter</div>
+    <div class="node-file">models/designs/*/*.sysml</div>
+  </div>
+</div>
+
+<p>Each link is a file path that resolves within the repository. Citations use a standard format (<code>Source</code> / <code>Ref</code> / <code>Basis</code>) and <code>scripts/trace_audit.py</code> (planned) will walk these chains to report coverage gaps. Parameters without source data must be explicitly marked as assumed &mdash; silent invention is a rule violation (MR-4).</p>
+
+<h3>Visibility</h3>
+<p>A single command shows where everything stands:</p>
+
+<div class="terminal">
+<span class="prompt">$</span> uv run agentic-mbse status<br>
+<br>
+<span class="output">## Project: fusion-tea</span><br>
+<span class="output">### Work Items</span><br>
+<span class="output">Standalone:</span><br>
+<span class="output">  [ ] Foundation Package ........ backlog</span><br>
+<span class="output">  [ ] Power Balance Calculations .. backlog</span><br>
+<span class="output">### Project Rules (REQUIREMENTS.md)</span><br>
+<span class="output">Total: 0 | With validation method: 0 | Machine-enforceable: 0</span><br>
+<span class="output">### Validation Status (VALIDATION_MATRIX.md)</span><br>
+<span class="output">Total: 0 | Passing: 0 | Failing: 0 | Pending: 0</span><br>
+</div>
+
+<p style="font-size:0.85rem;color:var(--color-text-muted);">This is the actual current output &mdash; sparse because modeling work hasn&rsquo;t begun. As work items flow through the pipeline, the dashboard shows their stage (speccing, designing, implementing), validation status, and traceability coverage. State is derived from YAML frontmatter + filesystem scanning &mdash; no separate database.</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- ************************************************************
+     SECTION 5: SOURCE INGESTION (STUB)
+     ************************************************************ -->
+<section id="source-ingestion">
+<h2><span class="section-num">5.</span> Source Ingestion</h2>
+<div class="stub-banner">&#9711; Coming soon &mdash; populated when source ingestion work completes</div>
+<div class="stub-content">
+  <p>PDFs and technical documents are ingested through the Zotero &rarr; extract &rarr; register pipeline, producing structured markdown extractions with quality metrics.</p>
+  <div class="transform">
+    <div class="t-in"><div class="t-label">Input</div>PDFs, technical papers, design studies, cost reports</div>
+    <div class="t-arrow">&rarr;</div>
+    <div class="t-out"><div class="t-label">Output</div>Structured markdown with preserved tables, figures, and quality metrics</div>
+  </div>
+  <div class="artifacts"><strong>Expected artifacts:</strong> Zotero &rarr; extract pipeline walkthrough, extraction quality comparison, metrics.json and decisions.json examples</div>
+</div>
+
+<h3>Source Strategy</h3>
+<p>Rather than prescribing specific sources upfront, the project defines data layers needed at each depth level. Sources are selected to fill these layers as the investigation progresses.</p>
+<div class="table-wrap">
+<table class="strategy-table">
+  <thead><tr><th>Layer</th><th>Data Need</th><th>Supports</th></tr></thead>
+  <tbody>
+    <tr><td><strong>L1: Conceptual Model</strong></td><td>How does this approach work? Confinement mechanism, fuel cycle, energy conversion pathway, key subsystems</td><td>Stage 1 taxonomy</td></tr>
+    <tr><td><strong>L2: Physics &amp; Requirements</strong></td><td>Plasma parameters, confinement performance, burn conditions, power requirements</td><td>Stage 1 enrichment</td></tr>
+    <tr><td><strong>L3: Structural Composition</strong></td><td>Physical systems needed &mdash; magnets/lasers/drivers, blanket/shield, power conversion, BOP</td><td>Stage 2 CAS structure</td></tr>
+    <tr><td><strong>L4: Energy Balance</strong></td><td>Power flows, thermal conversion efficiency, recirculating power, availability, duty cycle</td><td>Stage 2 performance model</td></tr>
+    <tr><td><strong>L5: Costing</strong></td><td>Capital costs by subsystem, O&amp;M estimates, fuel costs, scaling relationships, basis of estimate</td><td>Stage 2 cost model</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="feedback-loop">
+  <div class="loop-title">Feedback Loop</div>
+  When domain research (Section 6) or modeling work (Section 8) reveals data gaps &mdash; a parameter is needed but wasn't captured, a cost estimate lacks sufficient basis, a concept has no published subsystem breakdown &mdash; the cycle returns here. New sources are sought, ingested, and extracted to fill the gap.
+</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ************************************************************
+     SECTION 6: DOMAIN RESEARCH (STUB)
+     ************************************************************ -->
+<section id="domain-research">
+<h2><span class="section-num">6.</span> Domain Research</h2>
+<div class="stub-banner">&#9711; Coming soon &mdash; populated when domain research work completes</div>
+<div class="stub-content">
+  <p>Extracted source documents are systematically researched against the investigation's questions, producing structured domain insights registered in KNOWLEDGE.md.</p>
+  <div class="transform">
+    <div class="t-in"><div class="t-label">Input</div>Extracted source documents + research questions (RQ-1 through RQ-5)</div>
+    <div class="t-arrow">&rarr;</div>
+    <div class="t-out"><div class="t-label">Output</div>Domain insights (DI-XXX entries in KNOWLEDGE.md) with source citations</div>
+  </div>
+  <div class="artifacts"><strong>Expected artifacts:</strong> Example research session walkthrough, insight extraction process, approval workflow (pending &rarr; approved &rarr; impacts), KNOWLEDGE.md with real DI-XXX entries</div>
+</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ************************************************************
+     SECTION 7: TAXONOMY (STUB)
+     ************************************************************ -->
+<section id="taxonomy">
+<h2><span class="section-num">7.</span> Taxonomy</h2>
+<div class="stub-banner">&#9711; Coming soon &mdash; populated when taxonomy work completes</div>
+<div class="stub-content">
+  <p>Domain insights and the concept candidate list are synthesized into a structured classification of the fusion concept space &mdash; the framework that makes cross-concept comparison possible.</p>
+  <div class="transform">
+    <div class="t-in"><div class="t-label">Input</div>Domain insights + ~36 concept candidates across MFE, IFE, MIF, exotic</div>
+    <div class="t-arrow">&rarr;</div>
+    <div class="t-out"><div class="t-label">Output</div>Structured classification framework with shared vs. divergent structure identified</div>
+  </div>
+  <div class="artifacts"><strong>Expected artifacts:</strong> Classification framework, concept comparison matrix, shared-vs-divergent analysis (what goes in library vs. designs)</div>
+</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ************************************************************
+     SECTION 8: CONCEPT MODELING (STUB)
+     ************************************************************ -->
+<section id="concept-modeling">
+<h2><span class="section-num">8.</span> Concept Modeling</h2>
+<div class="stub-banner">&#9711; Coming soon &mdash; populated when concept modeling work completes</div>
+<div class="stub-content">
+  <p>Using the taxonomy framework and concept-specific literature, validated SysML v2 cost models are built with traceable parameters. ~13 concepts across MFE, IFE, MIF, and exotic approaches.</p>
+  <div class="transform">
+    <div class="t-in"><div class="t-label">Input</div>Taxonomy framework + concept-specific literature + modeling patterns</div>
+    <div class="t-arrow">&rarr;</div>
+    <div class="t-out"><div class="t-label">Output</div>Validated SysML v2 cost models with CAS breakdown and traceable citations</div>
+  </div>
+  <div class="artifacts"><strong>Expected artifacts:</strong> Example SysML model, 6-level validation results, citation coverage report, cost breakdown visualization</div>
+</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ************************************************************
+     SECTION 9: CROSS-CONCEPT COMPARISON (STUB)
+     ************************************************************ -->
+<section id="cross-concept">
+<h2><span class="section-num">9.</span> Cross-Concept Comparison</h2>
+<div class="stub-banner">&#9711; Coming soon &mdash; populated when cross-concept comparison work completes</div>
+<div class="stub-content">
+  <p>Multiple concept models producing standard outputs are compared along the 7 comparison axes, generating the analysis that answers the investigation's research questions.</p>
+  <div class="transform">
+    <div class="t-in"><div class="t-label">Input</div>Validated concept models with standard output schemas</div>
+    <div class="t-arrow">&rarr;</div>
+    <div class="t-out"><div class="t-label">Output</div>LCOE charts, capital cost breakdowns, sensitivity analysis, comparison dashboards</div>
+  </div>
+  <div class="artifacts"><strong>Expected artifacts:</strong> LCOE comparison charts, CAS breakdown by concept, sensitivity-risk maps, estimation confidence matrix, cross-concept dashboard</div>
+</div>
+</section>
+
+</main>
+</div>
+
+<!-- ============================================================
+     Dialogs for "View full file"
+     ============================================================ -->
+
+<!-- OVERVIEW.md -->
+<dialog id="dialog-overview">
+  <div class="dialog-header">
+    <div>
+      <h3>OVERVIEW.md</h3>
+      <div class="dialog-path">modeling_project/OVERVIEW.md</div>
+    </div>
+    <button class="dialog-close" onclick="this.closest('dialog').close()">&times; Close</button>
+  </div>
+  <div class="dialog-body">
+    <h2>Fusion TEA &mdash; Investigation Scope</h2>
+    <p><strong>Project:</strong> Fusion TEA (Techno-Economic Analysis)<br>
+    <strong>Purpose:</strong> Investigate the economics of nuclear fusion across fundamentally different approaches<br>
+    <strong>Status:</strong> Active &mdash; Investigation scoping (DEMO epic)</p>
+
+    <h2>What We're Doing</h2>
+    <p>We are building a comparative techno-economic analysis of fusion power across the full landscape of approaches &mdash; magnetic confinement, inertial confinement, magnetized target, and exotic concepts. The goal is not to model one reactor design in detail, but to understand how fusion economics work across approaches that differ in confinement mechanism, fuel cycle, energy conversion, and engineering complexity.</p>
+    <p>The analysis is built in SysML v2 using the agentic-mbse toolchain. Models are validated against reference implementations (PyFECONS) where overlap exists, and all cost parameters trace to domain literature.</p>
+
+    <h3>Why This Matters</h3>
+    <p>Fusion has dozens of competing approaches at various stages of maturity. Decision-makers &mdash; investors, policymakers, researchers &mdash; need structured comparisons, not just headline LCOE numbers. This project builds the analytical infrastructure to produce those comparisons: a taxonomy of the concept space, reusable cost modeling patterns, and traceable parameter chains from source literature to model outputs.</p>
+
+    <h2>Research Questions</h2>
+    <p>These questions drive all downstream work &mdash; taxonomy, source selection, modeling targets, and comparison methodology.</p>
+    <h3>RQ-1: What are the dominant cost drivers for fusion power, and how do they differ across confinement approaches?</h3>
+    <p>CAS22 (reactor plant equipment) is ~60% of cost for magnetic confinement tokamaks, but inertial, magnetized target, and exotic approaches have fundamentally different power core structures, drivers, and balance-of-plant requirements.</p>
+    <h3>RQ-2: What LCOE range is credible for each major fusion approach, and what assumptions drive those estimates?</h3>
+    <p>Published LCOE figures vary enormously (30&ndash;200+ $/MWh) and depend critically on assumptions about plant availability, magnet or driver cost, neutron economy, rep rate, and thermal conversion efficiency.</p>
+    <h3>RQ-3: Which cost structures are shared across fusion concepts, and where do they fundamentally diverge?</h3>
+    <p>This directly informs modeling architecture. Shared structures become reusable library components. Divergent structures become concept-specific designs.</p>
+    <h3>RQ-4: What is the state of cost estimation maturity across fusion approaches?</h3>
+    <p>Understanding estimation maturity for each concept frames how much confidence to place in any comparison and where the biggest knowledge gaps lie.</p>
+    <h3>RQ-5: Which cost and performance parameters exhibit both high sensitivity and high uncertainty?</h3>
+    <p>Identifying the highest-leverage unknowns across the fusion landscape.</p>
+
+    <h2>Comparison Axes</h2>
+    <table>
+      <thead><tr><th>Axis</th><th>What It Measures</th><th>Why It Matters</th></tr></thead>
+      <tbody>
+        <tr><td>LCOE ($/MWh)</td><td>Total lifecycle cost per unit energy</td><td>The bottom line</td></tr>
+        <tr><td>Capital cost by CAS</td><td>CAS20 breakdown</td><td>Identifies dominant cost drivers</td></tr>
+        <tr><td>Capacity factor</td><td>Availability &times; efficiency</td><td>Huge LCOE sensitivity</td></tr>
+        <tr><td>Fuel cycle economics</td><td>Breeding, fuel cost</td><td>D-T vs. aneutronic tradeoffs</td></tr>
+        <tr><td>Technology readiness</td><td>Subsystem maturity</td><td>Ready vs. needs breakthroughs</td></tr>
+        <tr><td>Estimation confidence</td><td>AACE class</td><td>How seriously to take the numbers</td></tr>
+        <tr><td>Sensitivity-risk profile</td><td>High-sensitivity + high-uncertainty</td><td>Where better data matters most</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Scope</h2>
+    <h3>What's In</h3>
+    <p>Magnetic confinement (tokamaks, stellarators, mirrors), inertial confinement (laser, heavy-ion), magnetized target fusion, and exotic concepts. ~36 initial candidates; ~13 selected for deeper modeling.</p>
+    <h3>What's Out</h3>
+    <ul>
+      <li>Non-electric applications of fusion</li>
+      <li>Fission-fusion hybrids</li>
+      <li>Concepts with zero public technical data</li>
+    </ul>
+
+    <h2>&ldquo;Done&rdquo; Criteria</h2>
+    <h3>V1 &mdash; This Epic (DEMO)</h3>
+    <ol>
+      <li>Taxonomy exists covering MFE, IFE, MIF, and other categories</li>
+      <li>At least two concepts from different categories modeled to CAS level 2</li>
+      <li>Cross-concept comparison on at least 3 of 7 axes</li>
+      <li>Full traceability: every quantitative value cites its source</li>
+      <li>Interactive workflow explainer with real artifacts at each stage</li>
+    </ol>
+
+    <h2>Source Strategy</h2>
+    <h3>Data Needs by Modeling Depth</h3>
+    <table>
+      <thead><tr><th>Layer</th><th>Data Need</th><th>Supports</th></tr></thead>
+      <tbody>
+        <tr><td>L1: Conceptual Model</td><td>Confinement mechanism, fuel cycle, energy conversion, key subsystems</td><td>Stage 1 taxonomy</td></tr>
+        <tr><td>L2: Physics &amp; Requirements</td><td>Plasma parameters, confinement performance, burn conditions</td><td>Stage 1 enrichment</td></tr>
+        <tr><td>L3: Structural Composition</td><td>Physical systems &mdash; magnets/lasers/drivers, blanket/shield, BOP</td><td>Stage 2 CAS</td></tr>
+        <tr><td>L4: Energy Balance</td><td>Power flows, efficiency, recirculating power, availability</td><td>Stage 2 performance</td></tr>
+        <tr><td>L5: Costing</td><td>Capital costs, O&amp;M, fuel costs, scaling relationships</td><td>Stage 2 cost model</td></tr>
+      </tbody>
+    </table>
+    <h3>Iterative Selection</h3>
+    <p>Source selection is iterative. Start with the existing corpus, begin research, and let gaps surface organically. The existing 7 sources provide initial coverage across MFE, IFE, and the CAS framework.</p>
+
+    <h2>Traceability Requirements</h2>
+    <ol>
+      <li>Every quantitative value MUST cite its source</li>
+      <li>Every assumption MUST be explicitly labeled</li>
+      <li>Judgment calls MUST be flagged with reasoning</li>
+      <li>Parameters without source data MUST NOT be silently invented</li>
+    </ol>
+
+    <h2>Investigation Process</h2>
+    <p>Two stages: Taxonomy (breadth) then Concept Modeling (depth). Both follow the same internal cycle: Information Gathering &rarr; Work &rarr; Analysis, with feedback loops from Work and Analysis back to Information Gathering.</p>
+    <h3>Stage 1: Taxonomy (Breadth)</h3>
+    <p>Build the framework for organizing and comparing all ~36+ concepts. Data layers L1&ndash;L2.</p>
+    <h3>Stage 2: Concept Modeling (Depth)</h3>
+    <p>~13 concepts spanning MFE, IFE, MIF, and exotic approaches. CAS level 2&ndash;3 cost models with traceable parameters. Data layers L3&ndash;L5.</p>
+    <h3>The Internal Cycle</h3>
+    <pre>               +-----------------------------------+
+               |                                   |
+               v                                   |
+   +---------------------+                         |
+   |  1. INFORMATION     |                         |
+   |     GATHERING       |&lt;----------+             |
+   +---------+-----------+           |             |
+             |                       |             |
+        exit criteria met       data gaps      issues found
+             |                 identified           |
+             v                       |             |
+   +---------------------+           |             |
+   |  2. WORK            +-----------+             |
+   +---------+-----------+                         |
+             |                                     |
+        work complete                              |
+             v                                     |
+   +---------------------+                         |
+   |  3. ANALYSIS        +-------------------------+
+   +---------------------+</pre>
+  </div>
+</dialog>
+
+<!-- REQUIREMENTS.md -->
+<dialog id="dialog-requirements">
+  <div class="dialog-header">
+    <div>
+      <h3>REQUIREMENTS.md</h3>
+      <div class="dialog-path">modeling_project/REQUIREMENTS.md</div>
+    </div>
+    <button class="dialog-close" onclick="this.closest('dialog').close()">&times; Close</button>
+  </div>
+  <div class="dialog-body">
+    <h2>Modeling Requirements</h2>
+    <p>Project-specific rules that all modeling work must follow. These extend the standard rules in MODELING_GUIDE.md with requirements derived from the investigation scope (OVERVIEW.md).</p>
+
+    <h2>Modeling Requirements</h2>
+    <p>These define the patterns that all SysML v2 models in this project MUST follow.</p>
+
+    <h3>MR-1: CAS Hierarchy as Primary Cost Decomposition</h3>
+    <p>All models MUST use the CAS (Cost Account Structure) hierarchy as the primary cost decomposition.</p>
+    <ul>
+      <li><strong>Rationale:</strong> CAS is the standard used by ARPA-E, the ARIES program, and industry costing tools. Common decomposition enables cross-concept comparison.</li>
+      <li><strong>Enforcement:</strong> Model review &mdash; every cost-bearing element must map to a CAS category.</li>
+    </ul>
+
+    <h3>MR-2: Standard Costed Component Interface</h3>
+    <p>All cost-bearing components MUST implement a standard interface with at minimum: <code>capital_cost</code>.</p>
+    <ul>
+      <li><strong>Rationale:</strong> Uniform interface enables automated cost rollup and cross-concept comparison.</li>
+      <li><strong>Enforcement:</strong> Model validation &mdash; every cost-contributing part must specialize the interface.</li>
+    </ul>
+
+    <h3>MR-3: Library Concept-Agnostic, Designs Concept-Specific</h3>
+    <p>Library definitions (<code>models/library/</code>) MUST be concept-agnostic. Concept-specific values MUST live in <code>models/designs/{concept}/</code>.</p>
+    <ul>
+      <li><strong>Rationale:</strong> ~60% of definitions are shared across concepts. Clean separation maximizes reuse.</li>
+      <li><strong>Enforcement:</strong> No reactor-type-specific values in library/. Designs import from library and specialize.</li>
+    </ul>
+
+    <h3>MR-4: Traceable Citations on All Quantitative Values</h3>
+    <p>All quantitative values MUST carry structured citations that resolve to source files.</p>
+    <table>
+      <thead><tr><th>Field</th><th>Required</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>Source</code></td><td>MUST</td><td>Repo-relative file path to cited artifact</td></tr>
+        <tr><td><code>Ref</code></td><td>SHOULD</td><td>Location within source (line numbers or section heading)</td></tr>
+        <tr><td><code>Basis</code></td><td>SHOULD</td><td>What was derived and how</td></tr>
+      </tbody>
+    </table>
+    <ul>
+      <li><strong>Rationale:</strong> LLM agents perform significant research and modeling. Machine-checkable citations prevent hallucination.</li>
+      <li><strong>Enforcement:</strong> <code>scripts/trace_audit.py</code> (planned) walks citation chains and reports gaps.</li>
+    </ul>
+
+    <h3>MR-5: Standard Output Schema for Cross-Concept Comparison</h3>
+    <p>Models SHOULD produce standard outputs enabling comparison along the 7 axes.</p>
+    <ul><li><strong>Status:</strong> Intent defined. Specific fields TBD &mdash; informed by taxonomy and concept analysis.</li></ul>
+
+    <h3>MR-6: Modeling Patterns Defined Before Production Models</h3>
+    <p>Documented modeling patterns SHOULD be defined and validated BEFORE building production models.</p>
+    <ul><li><strong>Rationale:</strong> Pattern validation prevents rework. Discovering a broken pattern after 5 concept models is expensive.</li></ul>
+
+    <h2>Process Requirements</h2>
+
+    <h3>PR-1: Taxonomy Before Modeling</h3>
+    <p>The investigation MUST begin with taxonomy development before selecting modeling targets.</p>
+
+    <h3>PR-2: Concept Analysis Identifies Shared vs. Divergent Structure</h3>
+    <p>The taxonomy stage MUST include a concept analysis phase.</p>
+
+    <h3>PR-3: Documented Patterns Before Production Models</h3>
+    <p>The process MUST produce documented modeling patterns BEFORE production modeling begins.</p>
+
+    <h3>PR-4: Iterative Process with Feedback Loops</h3>
+    <p>The process SHOULD accommodate iteration &mdash; research reveals taxonomy gaps, concept analysis reveals literature gaps, modeling reveals pattern gaps.</p>
+
+    <h3>PR-5: Committed Artifacts at Every Phase</h3>
+    <p>Each phase MUST produce committed artifacts. Knowledge transforms are visible &mdash; a reader can see what went in and what came out at every step.</p>
+    <ul>
+      <li>Source ingestion: extracted documents in <code>knowledge/sources/</code></li>
+      <li>Domain research: DI-XXX entries in KNOWLEDGE.md</li>
+      <li>Taxonomy: classification artifact committed to repo</li>
+      <li>Concept analysis: comparison artifact committed to repo</li>
+      <li>Model construction: SysML files passing validation with citations per MR-4</li>
+      <li>Analysis: output data and visualizations committed</li>
+    </ul>
+  </div>
+</dialog>
+
+<!-- ARCHITECTURE.md -->
+<dialog id="dialog-architecture">
+  <div class="dialog-header">
+    <div>
+      <h3>ARCHITECTURE.md</h3>
+      <div class="dialog-path">modeling_project/ARCHITECTURE.md</div>
+    </div>
+    <button class="dialog-close" onclick="this.closest('dialog').close()">&times; Close</button>
+  </div>
+  <div class="dialog-body">
+    <h2>Model Architecture</h2>
+    <p>Structural decisions about how the domain is decomposed into model packages. These are the architectural choices that shape the model ecosystem &mdash; decisions that outlive any single work item and that new work must respect.</p>
+    <hr>
+    <p><em>No active decisions yet.</em> Architectural decisions (AD-XXX) will emerge from taxonomy development and modeling pattern work.</p>
+    <p><em>Previous decisions (AD-001 through AD-005) archived to <code>archive/modeling_project/ARCHITECTURE.md</code>.</em></p>
+  </div>
+</dialog>
+
+<!-- ============================================================
+     JS: Scroll-spy, hamburger, dialog click-outside-to-close
+     ============================================================ -->
+<script>
+(function() {
+  // Scroll-spy
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.sidebar nav a');
+  function onScroll() {
+    let current = '';
+    for (const section of sections) {
+      if (section.getBoundingClientRect().top <= 120) current = section.id;
+    }
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Close sidebar on mobile nav click
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 900) document.querySelector('.sidebar').classList.remove('open');
+    });
+  });
+
+  // Close dialogs on backdrop click
+  document.querySelectorAll('dialog').forEach(dialog => {
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+  });
+})();
+</script>
+</body>
+</html>
