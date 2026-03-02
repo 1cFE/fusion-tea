@@ -455,16 +455,29 @@ The explainer exists as a living document. Future epic items add their stage con
 **Deviations:** None
 
 ### Phase 6 Completion
-**Completed:**
+**Completed:** 2026-03-02
 **Actual Changes:**
-**Issues:**
-**Deviations:**
+- Backed up `.claude/settings.json` before init (restored — no changes needed, init skipped it)
+- Ran `uv run agentic-mbse init --dev` — 34 symlinks, 2 user-owned files created, 12 user files preserved
+- Init recreated `modeling_project/VALIDATION_MATRIX.md` and `data/traceability_matrix.csv` (we archived originals in Phase 1, init saw them missing and created from template — correct behavior)
+- Fixed `work/BACKLOG.md`: removed "Full Workflow Demo" epic reference (coding epic, belongs in `.project/backlog/`, not modeling backlog). Clarified header: "Modeling Work Backlog". Kept WI-004/WI-005 as historical.
+- Archived stale CATF-era modeling epics: `work/backlog/epic-cost-patterns-derisking.md` and `epic-sysml-codegen-upgrade.md` → `archive/work/backlog/`
+- Committed as `080f294`
+**Issues:** None
+**Deviations:** None — init behavior matched expectations exactly. User-owned files preserved, tool-owned files symlinked.
 
 ### Phase 7 Completion
-**Completed:**
+**Completed:** 2026-03-02
 **Actual Changes:**
-**Issues:**
-**Deviations:**
+- Added "Project Management — Two Systems" section to CLAUDE.md with clear boundary rule
+- Documented Coding PM (agentic-project-init): state dir, commands, lifecycle, when to use
+- Documented Modeling PM (agentic-mbse): state dir, commands, tool-owned docs, lifecycle, when to use
+- Added YAML frontmatter conventions section with schema examples for BACKLOG.md and work item specs
+- Updated project structure tree: annotated `.project/` as "CODING PM state" and `work/` as "MODELING PM state", added EPIC_GUIDE.md and tool-owned file annotations
+- Updated MBSE Workflow section to reference modeling PM commands specifically
+- Verified no cross-system contamination in active docs
+**Issues:** None
+**Deviations:** None
 
 ### Phase 8 Completion
 **Completed:**

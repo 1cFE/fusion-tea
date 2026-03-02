@@ -30,6 +30,12 @@ Key points:
 ```
 fusion-tea/
 ├── CLAUDE.md                        # This file — project context for agent sessions
+├── .project/                        # CODING PM state (agentic-project-init)
+│   ├── active/                      #   In-progress coding work items (spec.md, design.md, plan.md)
+│   ├── backlog/                     #   Coding epics and backlog
+│   ├── completed/                   #   Archived coding work
+│   ├── EPIC_GUIDE.md               #   Epic decomposition methodology
+│   └── epic_template.md            #   Template for new epics
 ├── models/
 │   ├── library/                     # Reusable definitions (concept-agnostic)
 │   └── designs/                     # Concept-specific model instances
@@ -43,20 +49,91 @@ fusion-tea/
 │   ├── ARCHITECTURE.md              # Architectural decisions (AD-XXX)
 │   ├── REQUIREMENTS.md              # Modeling requirements (MR-XXX) and process requirements (PR-XXX)
 │   ├── intent/                      # Internal team artifacts — meeting notes, concept candidates
-│   ├── MODELING_GUIDE.md            # SysML v2 reference (tool-owned)
-│   └── MODELING_PROCESS.md          # MBSE workflow process (tool-owned)
-├── work/
-│   ├── BACKLOG.md                   # Work item registry
-│   ├── backlog/                     # Epic decomposition files
-│   ├── active/                      # In-progress work items
-│   ├── completed/                   # Archived completed work items
-│   └── learnings/                   # Session insights
+│   ├── MODELING_GUIDE.md            # SysML v2 reference (tool-owned, symlinked)
+│   └── MODELING_PROCESS.md          # MBSE workflow process (tool-owned, symlinked)
+├── work/                            # MODELING PM state (agentic-mbse)
+│   ├── BACKLOG.md                   #   Modeling work item registry (YAML frontmatter)
+│   ├── EPIC_GUIDE.md               #   Modeling epic guide (tool-owned, symlinked)
+│   ├── backlog/                     #   Modeling epic decomposition files
+│   ├── active/                      #   In-progress modeling work items
+│   ├── completed/                   #   Archived modeling work items
+│   └── learnings/                   #   Session insights
 ├── demo/
 │   └── index.html                   # Interactive workflow explainer (built incrementally)
 ├── scripts/                         # Automation (Zotero ingestion, traceability audit, etc.)
 ├── data/                            # Structured data and outputs
 └── archive/                         # Archived CATF-era artifacts (models, research, old requirements)
 ```
+
+## Project Management — Two Systems
+
+This project uses **two separate PM systems** for different types of work. They share a similar lifecycle (spec → design → plan → implement) but have distinct authority, state directories, and commands.
+
+**CRITICAL: Do not cross-reference between them.** Coding epics belong in `.project/backlog/`. Modeling epics belong in `work/backlog/`. Each system manages its own state.
+
+### Coding PM (`agentic-project-init`)
+
+For project setup, scripting, infrastructure, environment work, and any non-modeling tasks.
+
+- **State directory**: `.project/` (active/, backlog/, completed/)
+- **Commands**: `/_my_spec`, `/_my_design`, `/_my_plan`, `/_my_implement`, `/_my_audit_implementation`, `/_my_wrap_up`, `/_my_project_manage`, `/_my_research`, etc.
+- **Installed**: Globally via `~/.claude/` — always available
+- **Lifecycle**: concept → spec → design → plan → implement → review → wrap-up
+- **Work items**: `.project/active/{item-name}/` containing `spec.md`, `design.md`, `plan.md`
+- **Epics**: `.project/backlog/epic_{name}.md`
+- **When to use**: You're writing scripts, updating project docs, building tooling, setting up infrastructure, or doing any non-SysML work
+
+### Modeling PM (`agentic-mbse`)
+
+For SysML modeling, taxonomy development, concept analysis, and all MBSE work.
+
+- **State directory**: `work/` (active/, backlog/, completed/, learnings/)
+- **Commands**: `/spec-model`, `/design-model`, `/plan-model`, `/implement-model`, `/status`, `/backlog`, `/research`, `/analyze-models`, `/audit-models`, `/review-model`, etc.
+- **Installed**: Per-project via `agentic-mbse init --dev` — symlinked to `.claude/commands/`, `.claude/agents/`, `.claude/skills/`
+- **Lifecycle**: spec → design → plan → implement (with 6-level validation)
+- **Work items**: `work/active/WI-XXX_{name}/` containing `spec.md`, `design.md`, `plan.md`
+- **Epics**: `work/backlog/epic-{name}.md`
+- **Tool-owned docs**: `modeling_project/MODELING_GUIDE.md`, `modeling_project/MODELING_PROCESS.md`, `work/EPIC_GUIDE.md` (symlinked, gitignored, auto-updated)
+- **When to use**: You're building SysML models, developing taxonomy, analyzing fusion concepts, or doing domain research against sources
+
+### YAML Frontmatter Conventions
+
+The modeling PM uses YAML frontmatter as machine-readable state. The `agentic-mbse` dashboard and `/status` command parse this frontmatter to render project status.
+
+**`work/BACKLOG.md`** — modeling backlog registry:
+```yaml
+---
+epics:
+  - name: "Epic Name"
+    priority: P0|P1|P2|P3
+    status: draft|active|completed
+    file: backlog/epic-{name}.md
+    items:
+      - id: WI-XXX
+        name: "Item Name"
+        scale: trivial|standard
+        status: backlog|active|paused|completed
+        completed: YYYY-MM-DD  # or null
+standalone:
+  - id: WI-XXX
+    name: "Item Name"
+    # ... same fields as epic items
+---
+```
+
+**Modeling work item specs** (`work/active/WI-XXX_{name}/spec.md`):
+```yaml
+---
+Status: active
+Scale: standard|trivial
+Epic: "Epic Name"
+Owner: username
+Created: YYYY-MM-DD
+Updated: YYYY-MM-DD
+---
+```
+
+The coding PM (`.project/`) uses markdown headers for metadata (Status, Owner, Created, Complexity, Branch) — similar information, different format. The coding PM does not have a dashboard parser.
 
 ## MBSE Workflow
 
@@ -65,7 +142,7 @@ When helping with MBSE tasks:
 1. **Read `modeling_project/OVERVIEW.md`** for investigation scope and process
 2. **Check `knowledge/SOURCE_INDEX.md`** for reference sources
 3. **Read `modeling_project/REQUIREMENTS.md`** for modeling constraints (MR-1→6)
-4. **Follow the work loop**: spec → design → plan → implement
+4. **Follow the modeling PM work loop**: `/spec-model` → `/design-model` → `/plan-model` → `/implement-model`
 5. **Maintain traceability**: all quantitative values must carry structured citations (see MR-4)
 
 ### Traceability
