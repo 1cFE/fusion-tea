@@ -1,99 +1,89 @@
 # CLAUDE.md
 
-## System Being Modeled
+## Project Overview
 
-**System**: Nuclear Fusion Power Plants
+**Project**: Fusion TEA (Techno-Economic Analysis)
 **Domain**: Fusion Energy / Power Generation
-**Type**: Multi-concept comparison (starting with CATF MFE, expanding to other approaches)
+**Type**: Broad comparative investigation of fusion economics across confinement approaches
 
-This project models various approaches to nuclear fusion for techno-economic analysis. We begin with Compact Advanced Tokamak Fusion (CATF) using Magnetic Fusion Energy (MFE), then expand to other traditional approaches (stellarators, mirror machines, etc.), and eventually novel fusion techniques.
+This project investigates the economics of nuclear fusion power across fundamentally different approaches — magnetic confinement (tokamaks, stellarators, mirrors), inertial confinement (laser, heavy-ion), magnetized target fusion, and exotic concepts. The goal is not to model one reactor in detail, but to build the analytical infrastructure for cross-concept comparison: taxonomy, reusable cost modeling patterns, and traceable parameter chains.
 
-### Modeling Goals
+### Investigation Strategy
 
-Estimate long-run techno-economics, specifically Levelized Cost of Electricity (LCOE), for different fusion approaches. This enables:
-- Comparison across fusion concepts
-- Identification of cost drivers
-- Design optimization for economic viability
-- Investment and policy decision support
+The investigation scope, research questions, comparison axes, and "done" criteria are defined in:
+- **`modeling_project/OVERVIEW.md`** — the investigation scope document (read this for the full strategy)
+- **`modeling_project/REQUIREMENTS.md`** — modeling requirements (MR-1→6) and process requirements (PR-1→5)
+
+Key points:
+- **Two-stage process**: Stage 1 (Taxonomy — classify all ~36+ concepts) → Stage 2 (Concept Modeling — cost models for ~13 selected concepts). Each stage follows its own cycle of information gathering → work → analysis.
+- **5 research questions** drive all work (RQ-1 through RQ-5 in OVERVIEW.md)
+- **7 comparison axes** define what model outputs are needed (LCOE, capital cost by CAS, capacity factor, fuel cycle, technology readiness, estimation confidence, sensitivity-risk)
 
 ### Key Domain Concepts
 
-Key terminology:
-- **LCOE**: Levelized Cost of Electricity - total lifecycle cost per unit energy produced
-- **CATF**: Compact Advanced Tokamak Fusion - smaller, higher-field tokamak design
-- **MFE**: Magnetic Fusion Energy - confinement using magnetic fields
-- **Tokamak**: Toroidal magnetic confinement device
-- **Stellarator**: Twisted toroidal confinement (no plasma current needed)
-
-Key physics/principles:
-- Plasma confinement and stability
-- Neutron economy and tritium breeding
-- Thermal conversion efficiency
-- Magnet technology (superconducting vs copper)
-
-Key constraints:
-- Engineering limits on magnetic field strength
-- Material limits under neutron irradiation
-- Tritium self-sufficiency requirements
-- Thermal efficiency of power conversion
+- **LCOE**: Levelized Cost of Electricity — total lifecycle cost per unit energy produced
+- **CAS**: Cost Account Structure — standardized cost decomposition hierarchy (CAS10-LCOE)
+- **MFE/IFE/MIF**: Magnetic Fusion Energy / Inertial Fusion Energy / Magneto-Inertial Fusion — the three top-level confinement categories
 
 ## Project Structure
 
-- `models/` - SysML v2 models
-  - `library/` - Reusable definitions (part defs, calc defs, materials)
-  - `designs/` - Specific fusion concept instances (CATF, stellarator, etc.)
-- `knowledge/` - Domain knowledge and research
-  - `SOURCE_INDEX.md` - **Read this for domain knowledge sources**
-  - `KNOWLEDGE.md` - Domain insight registry (DI-XXX entries from research)
-  - `research/` - Research pipeline (`pending/`, `approved/`, `impacts/`)
-  - `sources/` - Domain source documents (e.g., COST_MODELING.md)
-- `modeling_project/` - Project definition and architecture
-  - `OVERVIEW.md` - Project overview, goals, and domain context
-  - `ARCHITECTURE.md` - Architectural decisions registry (AD-XXX entries)
-  - `REQUIREMENTS.md` - Project requirements registry (PR-XXX entries)
-  - `VALIDATION_MATRIX.md` - Verification criteria registry (SV-XXX entries)
-  - `MODELING_GUIDE.md` - SysML v2 modeling reference (tool-owned)
-  - `MODELING_PROCESS.md` - MBSE workflow process (tool-owned)
-- `work/` - Work management
-  - `BACKLOG.md` - Work item registry with YAML frontmatter (WI-XXX IDs)
-  - `EPIC_GUIDE.md` - Epic authoring guide (tool-owned)
-  - `backlog/` - Epic decomposition files
-  - `active/` - In-progress work items (spec.md, design.md, plan.md)
-  - `completed/` - Archived completed work items
-  - `learnings/` - RAW_LEARNINGS.md and session insights
-  - `analysis/` - Ad-hoc analysis artifacts
-- `data/` - Structured data
-  - `traceability_matrix.csv` - Element-to-source traceability
+```
+fusion-tea/
+├── CLAUDE.md                        # This file — project context for agent sessions
+├── models/
+│   ├── library/                     # Reusable definitions (concept-agnostic)
+│   └── designs/                     # Concept-specific model instances
+├── knowledge/
+│   ├── SOURCE_INDEX.md              # Registered domain sources — read this first
+│   ├── KNOWLEDGE.md                 # Domain insight registry (DI-XXX)
+│   ├── sources/                     # Extracted source documents
+│   └── research/                    # Research pipeline (pending → approved → impacts)
+├── modeling_project/
+│   ├── OVERVIEW.md                  # Investigation scope — research questions, axes, process
+│   ├── ARCHITECTURE.md              # Architectural decisions (AD-XXX)
+│   ├── REQUIREMENTS.md              # Modeling requirements (MR-XXX) and process requirements (PR-XXX)
+│   ├── intent/                      # Internal team artifacts — meeting notes, concept candidates
+│   ├── MODELING_GUIDE.md            # SysML v2 reference (tool-owned)
+│   └── MODELING_PROCESS.md          # MBSE workflow process (tool-owned)
+├── work/
+│   ├── BACKLOG.md                   # Work item registry
+│   ├── backlog/                     # Epic decomposition files
+│   ├── active/                      # In-progress work items
+│   ├── completed/                   # Archived completed work items
+│   └── learnings/                   # Session insights
+├── demo/
+│   └── index.html                   # Interactive workflow explainer (built incrementally)
+├── scripts/                         # Automation (Zotero ingestion, traceability audit, etc.)
+├── data/                            # Structured data and outputs
+└── archive/                         # Archived CATF-era artifacts (models, research, old requirements)
+```
 
 ## MBSE Workflow
 
 When helping with MBSE tasks:
 
-1. **Always check `knowledge/SOURCE_INDEX.md` first** for reference sources
-2. **Use `/research` to explore sources** when domain knowledge is needed
-3. **Follow the workflow**: spec → design → plan → implement
-4. **Validate against sources** using `/audit-models`
+1. **Read `modeling_project/OVERVIEW.md`** for investigation scope and process
+2. **Check `knowledge/SOURCE_INDEX.md`** for reference sources
+3. **Read `modeling_project/REQUIREMENTS.md`** for modeling constraints (MR-1→6)
+4. **Follow the work loop**: spec → design → plan → implement
+5. **Maintain traceability**: all quantitative values must carry structured citations (see MR-4)
 
-### Command Guidance
+### Traceability
 
-- `/spec-model`: Help user define clear, testable requirements for fusion components
-- `/design-model`: Create SysML structure that traces to requirements
-- `/plan-model`: Break implementation into phases with validation gates
-- `/implement-model`: Generate correct SysML v2 syntax
-- `/audit-models`: Compare outputs against PyFECONS calculations
+All quantitative values in models must carry `Source`/`Ref`/`Basis` citations that resolve to files in the repo or external codebases. See MR-4 in REQUIREMENTS.md and `.project/active/traceability-system/spec.md` for the citation format specification.
 
 ## Domain Sources
 
-**Primary reference**: PyFECONS at `/home/reid/PyFECONS` - Python implementation of fusion costing algorithms, physics calculations, and economic models.
-
-See `knowledge/SOURCE_INDEX.md` for complete listing with:
+See `knowledge/SOURCE_INDEX.md` for the complete listing of ingested sources with:
 - Source locations (paths/URLs)
-- What each source is used for
-- How to validate against each source
+- What each source covers
+- Research questions it serves
+
+Source selection is iterative — sources are ingested as the investigation identifies data needs (see OVERVIEW.md, Source Strategy).
 
 ## Installed Tools
 
-**agentic-mbse**: Installed in this project. See `README.md` for usage information. Source code is at `~/1cfe/agentic-mbse`.
+**agentic-mbse**: MBSE workflow commands, 6-level model validation, and PDF extraction (v4 pipeline with quality gates and ensemble table detection). Installed as editable dependency. Source code at `~/1cfe/agentic-mbse`.
 
 ## Python Environment
 
@@ -115,28 +105,25 @@ uv add package_name
 
 # Running syside (SysML parser)
 uv run syside check models/path/to/file.sysml
+
+# Running agentic-mbse CLI
+uv run agentic-mbse extract <pdf>
+uv run agentic-mbse validate <sysml>
 ```
 
 ### Incorrect Usage (DO NOT USE)
 
 ```bash
-# These will use wrong Python or miss dependencies
-python script.py        # WRONG
-python3 script.py       # WRONG
-pip install package     # WRONG
-syside check file.sysml # WRONG (unless uv shell is active)
+python script.py        # WRONG — wrong venv
+python3 script.py       # WRONG — wrong venv
+pip install package     # WRONG — use uv add
+syside check file.sysml # WRONG — unless uv shell is active
 ```
-
-### Why uv?
-
-- Ensures correct virtual environment is used
-- Manages dependencies consistently
-- Faster than pip
-- Project has `pyproject.toml` configured for uv
 
 ## Special Considerations
 
-- PyFECONS contains validated costing algorithms - model outputs should be comparable
-- LCOE calculations depend on many subsystem costs - maintain clear traceability
-- Different fusion concepts have different cost structures - library definitions should be concept-agnostic where possible
-- Start with CATF MFE as the reference design before generalizing
+- Library definitions must be concept-agnostic; concept-specific values live in `designs/` (MR-3)
+- All quantitative values must cite their source with structured citations (MR-4)
+- LCOE calculations depend on many subsystem costs — maintain clear traceability chains
+- Different fusion concepts have different cost structures — the taxonomy (Stage 1) identifies what's shared vs. divergent before modeling begins
+- Modeling patterns must be defined and validated before production models are built (MR-6, PR-3)
