@@ -1,10 +1,5 @@
 ---
-epics:
-  - name: "Full Workflow Demo"
-    priority: P0
-    status: active
-    file: backlog/epic-full-workflow-demo.md
-    items: []
+epics: []
 
 standalone:
   - id: WI-004
@@ -21,19 +16,15 @@ standalone:
     completed: 2026-01-26
 ---
 
-# Work Backlog
+# Modeling Work Backlog
 
-Prioritized list of work items for the Fusion TEA investigation.
+Prioritized list of **modeling** work items for the Fusion TEA investigation. This backlog is managed by the modeling PM system (`agentic-mbse`). Coding and project-level work is tracked separately in `.project/backlog/`.
 
 ---
 
 ## Epics
 
-### Full Workflow Demo (P0, active)
-
-**File**: `backlog/epic-full-workflow-demo.md`
-
-The active epic driving all current work. See the epic file for item decomposition.
+*No active modeling epics. Modeling work (taxonomy, concept analysis, SysML models) begins after the investigation scope and tooling are established.*
 
 ---
 
