@@ -15,6 +15,7 @@ dependencies = [
     "numpy>=2.4.0",
     "pyzotero>=1.10.0",
     "python-dotenv>=1.2.1",
+    "graphviz>=0.21",
 ]
 
 [tool.uv.sources]

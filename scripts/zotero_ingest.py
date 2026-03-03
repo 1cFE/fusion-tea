@@ -32,6 +32,7 @@ from zotero_lib import (
     RAW_DIR,
     SOURCE_INDEX_PATH,
     SOURCES_DIR,
+    add_tag,
     append_manifest_entry,
     connect,
     download_pdf_from_info,
@@ -102,6 +103,12 @@ def parse_args():
         "--sync-tags",
         action="store_true",
         help="Tag all manifested items as 'extracted' in Zotero (run after committing)",
+    )
+    parser.add_argument(
+        "--add-tag",
+        nargs="+",
+        metavar=("TAG", "KEY"),
+        help="Add a tag to specific Zotero items: --add-tag TAG KEY1 KEY2 ...",
     )
     return parser.parse_args()
 
@@ -530,6 +537,24 @@ def main():
         sys.exit(1)
 
     zot = connect(api_key)
+
+    # Handle --add-tag early exit
+    if args.add_tag:
+        tag_name = args.add_tag[0]
+        keys = args.add_tag[1:]
+        if not keys:
+            print("ERROR: --add-tag requires TAG followed by one or more KEYs")
+            sys.exit(1)
+        print(f"Adding tag '{tag_name}' to {len(keys)} item(s)...")
+        added = 0
+        for key in keys:
+            try:
+                if add_tag(zot, key, tag_name):
+                    added += 1
+            except Exception as e:
+                print(f"  WARNING: Failed to tag {key}: {e}")
+        print(f"Done. {added} newly tagged, {len(keys) - added} already tagged or failed.")
+        return
 
     # Handle --sync-tags early exit
     if args.sync_tags:

@@ -1,7 +1,7 @@
-# Epic: Full Workflow Demo — Clean-Slate Fusion TEA
+# Epic: Full Workflow Demo — Fusion TEA
 
 **Epic ID**: DEMO
-**Status**: Draft
+**Status**: Complete
 **Priority**: P0
 **Created**: 2026-03-01
 **Estimated Effort**: TBD (pending decomposition)
@@ -10,7 +10,7 @@
 
 ## Executive Summary
 
-Initiate a broad investigation of fusion technologies for techno-economic analysis, using the full agentic-mbse workflow from scratch. This serves a dual purpose: it produces the real analytical foundation for comparing fusion approaches on cost, and it creates a documented trail demonstrating how the toolchain works end-to-end.
+Investigate fusion technologies for techno-economic analysis using the full agentic-mbse workflow. This serves a dual purpose: it produces the real analytical foundation for comparing fusion approaches on cost, and it creates a documented trail demonstrating how the toolchain works end-to-end.
 
 The workflow arc: define investigation scope → build domain frameworks (taxonomy/ontology) → ingest literature → research sources → plan first modeling exercise → build models → track on dashboard → visualize results. Each step codifies knowledge in durable, committed artifacts.
 
@@ -20,26 +20,13 @@ The workflow arc: define investigation scope → build domain frameworks (taxono
 
 ## Why This Epic?
 
-### Current State
+### What It Produces
 
-- agentic-mbse has two major unreleased changes:
-  - **Validation stack restructure** (8→6 levels, `valstack-cleanup` branch)
-  - **PDF extraction pipeline v4** (`doc-ingest-clean` branch — 8-step orchestration, quality gates, ensemble table detection)
-- fusion-tea's ingestion automation (`zotero_ingest.py`) was built against the old extraction interface — needs re-validation
-- Existing modeling work (solar+battery, coffee maker) was de-risking/POC — not the target fusion domain
-- 6 fusion sources are ingested but none have been systematically researched or connected to modeling decisions
-- No end-to-end documentation exists showing the complete workflow from goals to results
-- The agentic-mbse modeling dashboard hasn't been exercised in fusion-tea
-
-### Future State
-
-- agentic-mbse is current (validation restructure + extraction v4 integrated)
-- Ingestion pipeline re-validated against the new extraction backend
-- A durable framework exists for organizing the fusion concept space:
+- A durable framework for organizing the fusion concept space:
   - Taxonomy of fusion approaches (confinement types, fuel cycles, etc.)
   - Generalized cost structure that applies across concepts
   - Mapping of existing approaches (including startup concepts) into this framework
-- A complete workflow walkthrough exists with committed artifacts at every phase:
+- A complete workflow walkthrough with committed artifacts at every phase:
   1. Investigation scope and objectives defined
   2. Domain frameworks (taxonomy/ontology) established
   3. Curated corpus ingested with quality metrics
@@ -77,10 +64,6 @@ Each phase of work should visibly transform knowledge from one form to another:
 
 Highlighting these transformations IS the demo.
 
-### Prerequisites as gating, not as epic scope
-
-Updating agentic-mbse and re-validating the ingestion pipeline are prerequisites. They must complete before the workflow begins, but they're infrastructure maintenance, not part of the demonstrated workflow.
-
 ### Iterative source ingestion
 
 Don't try to build the perfect corpus upfront. Ingest an initial set, do research, and if gaps emerge, ingest more. The pipeline should support this naturally.
@@ -88,19 +71,6 @@ Don't try to build the perfect corpus upfront. Ingest an initial set, do researc
 ### Failures are content
 
 If something doesn't work (extraction quality issues, validation failures, data gaps), document it. A real workflow has rough edges — showing how to handle them is more valuable than a polished happy path.
-
----
-
-## Prerequisites
-
-### P1: agentic-mbse branches merged
-
-Both changes are merged to the `doc-ingest-clean` branch (not yet PR'd to main — validation comes first):
-
-1. **Validation stack restructure** (`valstack-cleanup` → merged): 8→6 levels, ADR-002 consolidation into L6
-2. **Extraction pipeline v4** (`doc-ingest-clean`): 8-step orchestrated pipeline replacing old extraction
-
-fusion-tea is synced (`uv sync` done, agentic-mbse 0.1.0 editable from `../agentic-mbse`).
 
 ---
 
@@ -129,7 +99,7 @@ Before modeling any specific concept, establish frameworks for organizing the fu
 
 **R3.1**: Curate and ingest fusion domain literature sufficient to inform both the taxonomy (R2) and eventual modeling work
 **R3.2**: All sources flow through the Zotero → extract → register pipeline
-**R3.3**: Extraction uses the v4 pipeline; quality metrics (`metrics.json`, `decisions.json`) are captured
+**R3.3**: Extraction quality metrics (`metrics.json`, `decisions.json`) are captured
 **R3.4**: Critical cost data tables are spot-checked for extraction quality
 **R3.5**: SOURCE_INDEX.md is current with all ingested sources
 **R3.6**: Source selection is iterative — initial set based on R1 scope, expanded as research (R4) reveals gaps
@@ -198,7 +168,7 @@ The primary deliverable for the "demo" aspect — a self-contained HTML file tha
 - [ ] Investigation scope and objectives are written down and committed before other work begins
 - [ ] A taxonomy of fusion approaches exists as a committed artifact, categorizing existing concepts
 - [ ] A generalized cost structure is defined that applies across fusion concepts
-- [ ] 5+ fusion sources ingested through the Zotero → extract → register pipeline with v4 extraction
+- [ ] 5+ fusion sources ingested through the Zotero → extract → register pipeline
 - [ ] At least 3 sources researched with DI-XXX entries in KNOWLEDGE.md
 - [ ] Research findings visibly informed the taxonomy and the choice of first modeling target
 - [ ] A first modeling exercise is identified, planned, and traced to research findings
@@ -235,108 +205,28 @@ The primary deliverable for the "demo" aspect — a self-contained HTML file tha
 
 **Type**: Validation/Execution
 
-**Objective**: Verify that the v4 extraction pipeline works correctly on our existing fusion corpus and is acceptable for the investigation ahead.
+**Objective**: Verify the extraction pipeline works correctly on the fusion corpus.
 
-**Current State**:
-- ✅ agentic-mbse `doc-ingest-clean` branch checked out with both merges (valstack + extraction v4)
-- ✅ fusion-tea synced via `uv sync` — CLI available
-- ✅ 6 existing extracted sources in `knowledge/sources/` (extracted with old pipeline)
-- ✅ v4 pipeline validated — all components pass, re-extraction complete
-- ✅ `--check` run — pymupdf4llm, gmft, img2table, pandoc, claude all pass
-
-**Scope**:
-1. **Installation verification** (`--check`):
-   - Run `uv run agentic-mbse extract --check` to verify all dependencies are installed and the pipeline runs correctly against the built-in test corpus
-   - Document any missing optional dependencies (GMFT, Img2Table, Docling, Pandoc)
-2. **Quality gate preview** (`--dry-run`):
-   - Run `--dry-run` on 2-3 existing source PDFs to see what the v4 quality gate would decide (which pages need enhancement, what issues it detects)
-   - Compare quality gate assessment against known issues (e.g., Hawker strikethrough)
-3. **Full re-extraction**:
-   - Re-extract all 6 existing PDFs with the v4 pipeline (`--force`)
-   - Use consistent settings: `--budget 50 --model opus --index --summarize`
-   - Compare output quality against existing `output.md` files (diff key sections, check tables, check cost data)
-4. **Verdict**:
-   - Document results: what improved, what regressed, any new issues
-   - Acceptability decision: good enough to proceed, or needs fixes before continuing?
-
-**Out of Scope**:
-- Fixing extraction bugs in agentic-mbse (file issues if found)
-- Re-validating `zotero_ingest.py` integration (that's for when we ingest new sources)
-- New source ingestion
-
-**Success Criteria**:
-- [x] `--check` runs without errors
-- [x] `--dry-run` output reviewed for at least 2 sources
-- [x] All 6 sources re-extracted with v4 pipeline
-- [x] Quality comparison documented (vs. previous extraction)
-- [x] Acceptability verdict recorded — **PROCEED WITH CAVEATS**
-
-**Estimated Effort**: 0.5 day (minimal planning — mostly execution)
+**Outcome**: All 6 sources extracted. All pipeline components pass (`--check`). Verdict: **PROCEED WITH CAVEATS** (see `.project/active/extraction-validation/results.md`).
 
 **Location**: `.project/active/extraction-validation/`
 
-**Dependencies**: P1 (agentic-mbse branches merged and synced)
-
-**Deliverables**:
-- `.project/active/extraction-validation/results.md` — comparison report and verdict
-
 ---
 
-### Item 2a: Define Investigation Scope & Refresh Project Documents [1 day] ✅ COMPLETE
+### Item 2a: Define Investigation Scope & Project Documents [1 day] ✅ COMPLETE
 
 **Type**: Research/Writing
 
-**Objective**: Answer the question "We want to broadly investigate fusion technologies for TEA — what does that mean concretely?" and make the project documents reflect the answer.
+**Objective**: Define the broad investigation scope for fusion TEA across all confinement approaches, and ensure all project documents reflect it.
 
-**The Problem**:
-
-The project currently says "we're modeling CATF MFE tokamaks, then expanding later." But we've realized the right starting point is broader: we want to understand the economics of fusion across fundamentally different approaches. This changes what questions we're asking, what literature we need, and how we organize the work.
-
-The existing project documents (OVERVIEW, ARCHITECTURE, REQUIREMENTS, BACKLOG, CLAUDE.md) all assume CATF-first. Before we can do any meaningful new work, these need to reflect what we're actually doing. Otherwise every tool, every command, every agent reads the wrong context.
-
-**The Actual Work**:
-
-1. **Think through the investigation framing**:
-   - We're doing costing and TEA. Not just for one reactor — for a landscape of approaches.
-   - What questions are we trying to answer? (e.g., "Which fusion approaches have a credible path to competitive LCOE?" / "What are the dominant cost drivers and how do they differ across concepts?" / "Where are the biggest uncertainties?")
-   - What are the comparison axes that matter? (LCOE, capital cost breakdown, capacity factor assumptions, fuel cycle economics, technology readiness)
-   - What's in scope? Traditional MFE (tokamaks, stellarators, mirrors), IFE (laser, heavy-ion), magneto-inertial, startup concepts (Commonwealth, TAE, Helion, etc.), or some subset?
-   - What defines "done" for THIS epic vs. ongoing project work?
-
-2. **Derive what literature we need**:
-   - Given the investigation scope, what kinds of sources should we seek? (Cost studies, design reports, comparison papers, startup technical disclosures)
-   - What do the 6 existing sources already cover? Where are the gaps?
-   - Produce a prioritized list of source types/topics to guide ingestion
-
-3. **Write it down in project documents**:
-   - `modeling_project/OVERVIEW.md` — the primary artifact. Rewrite to capture the investigation scope, the questions, the comparison axes, the "done" definition, and the source strategy.
-   - `CLAUDE.md` — this is what every agent session reads first. It currently says "Start with CATF MFE as the reference design." It needs to accurately describe what we're doing now, what tools are available (6-level validation, v4 extraction pipeline), and how the project is structured. Stale CLAUDE.md means every future session starts with the wrong mental model.
-   - Other project docs (`ARCHITECTURE.md`, `REQUIREMENTS.md`, `work/BACKLOG.md`) — update or archive anything that contradicts the new framing. The concept-agnostic content in these files is still valid; the CATF-specific roadmap (WI-006→018) needs to be archived since those work items will be re-derived from the investigation.
-
-**What We're NOT Doing**:
-- Building the taxonomy (that's later work, informed by research against sources)
-- Ingesting new sources (separate item)
-- HTML explainer (Item 2b)
-- Detailed modeling plan (emerges from research)
-
-**Success Criteria**:
-- [x] The investigation scope is written down: what questions, what comparison axes, what's in/out of scope, what "done" means
-- [x] Source selection criteria exist: what literature do we need, what do we already have, what's missing
-- [x] `CLAUDE.md` accurately describes the current project (investigation scope, toolchain state, project structure)
-- [x] Project documents don't contradict each other or reference a CATF-first roadmap
-- [x] CATF-specific backlog items archived (not deleted — they may be relevant once a first modeling target is chosen)
-- [x] All changes committed
-
-**Estimated Effort**: 1 day
+**Outcome**: Investigation scope defined in `modeling_project/OVERVIEW.md` — 5 research questions, 7 comparison axes, two-stage process (taxonomy → concept modeling), iterative source strategy. `CLAUDE.md` and all project docs aligned.
 
 **Location**: `.project/active/project-reframing/`
 
-**Dependencies**: Item 1 (confirms toolchain works; we need to know the tools are ready before committing to a scope that assumes them)
-
 **Deliverables**:
-- Revised `modeling_project/OVERVIEW.md` — the investigation scope document
-- Updated `CLAUDE.md` — accurate project context for all future sessions
-- Revised/archived project docs as needed to eliminate contradictions
+- `modeling_project/OVERVIEW.md` — investigation scope document
+- `CLAUDE.md` — project context for agent sessions
+- Aligned project docs (`ARCHITECTURE.md`, `REQUIREMENTS.md`, `work/BACKLOG.md`)
 
 ---
 
@@ -367,31 +257,218 @@ The existing project documents (OVERVIEW, ARCHITECTURE, REQUIREMENTS, BACKLOG, C
 
 ---
 
-*Further items TBD after decomposition.*
+### Item 3: IFE Source Ingestion [0.5 day] ✅ COMPLETE
+
+**Type**: Execution
+
+**Objective**: Ingest the 5 `demo-ife` tagged papers through the Zotero pipeline, register in SOURCE_INDEX.md, and populate the "Source Ingestion" section of the demo.
+
+**Current State**:
+- 5 IFE papers tagged `demo-ife` in Zotero, spanning 1986–2026:
+  - GI92TAS2: Economic studies for heavy-ion-fusion electric power plants (1986)
+  - BQWVRWCF: Energy from Inertial Fusion (1992)
+  - VKWLFRFK: Accelerators for Inertial Fusion Energy Production (2013)
+  - WQVP4WBW: Affordable, manageable, practical, and scalable (AMPS) high-yield inertial fusion (2025)
+  - 4PLGW7RA: Commercialization of laser fusion energy (2026)
+- Hawker 2020 (simplified IFE economic model) already extracted and registered
+
+**Scope**:
+1. Run `zotero_ingest.py` with the `demo-ife` tag to extract all 5 papers
+2. Register each in `knowledge/SOURCE_INDEX.md` with IFE-relevant "Use for" descriptions
+3. Spot-check 1–2 extractions for cost table quality (especially the 1986 HIF economics paper — richest cost data)
+4. Add content to demo/index.html section 5 — show the pipeline in action: Zotero tag → extraction → registration, with artifact snippets
+
+**Out of Scope**:
+- Fixing extraction quality issues (document and move on)
+- Researching source content (that's Item 4)
+
+**Success Criteria**:
+- [x] All 5 `demo-ife` papers extracted and stored in `knowledge/sources/`
+- [x] All 5 registered in SOURCE_INDEX.md with IFE-specific descriptions
+- [x] At least 1 extraction spot-checked for cost table quality, results documented
+- [x] Demo section 5 (Source Ingestion) populated with real pipeline artifacts
+- [x] All changes committed
+
+**Estimated Effort**: 0.5 day
+
+**Dependencies**: Items 1, 2b
+
+**Deliverables**:
+- 5 new extracted sources in `knowledge/sources/`
+- Updated `knowledge/SOURCE_INDEX.md`
+- Demo section 5 populated
+
+---
+
+### Item 4: IFE Domain Research [1 day] ✅ COMPLETE
+
+**Type**: Research
+
+**Objective**: Research 3+ IFE sources to produce DI-XXX entries, extracting cost parameters, LCOE drivers, and CAS-relevant structure needed for modeling. Identify which IFE sub-concept has the richest data for the modeling exercise.
+
+**Outcome**: 8 sources researched in a single `/research` session. 5 domain insights registered (DI-001 through DI-005). Modeling target selected: generic driver-agnostic IFE model (Hawker 14-parameter framework) with HIF as first instantiation.
+
+**Location**: `.project/active/ife-domain-research/`
+
+**Success Criteria**:
+- [x] At least 3 IFE sources researched (8 sources covered)
+- [x] 5+ DI-XXX entries in KNOWLEDGE.md covering IFE cost structure, parameters, and sensitivities
+- [x] Written recommendation for which IFE sub-concept to model, with rationale
+- [x] Demo section 6 (Domain Research) populated with real knowledge artifacts
+- [x] All changes committed
+
+**Deliverables**:
+- DI-001 through DI-005 in `knowledge/KNOWLEDGE.md`
+- Research report at `knowledge/research/approved/20260302-165055_ife-system-modeling-first-pass.md`
+- Modeling target recommendation at `modeling_project/intent/IFE Modeling Target Selection.md`
+- Demo section 6 populated (chat transcript, report highlights, DI cards, trace chain)
+
+---
+
+### Item 5: IFE Modeling Epic Setup [0.5 day] ✅ COMPLETE
+
+**Type**: Setup/Planning
+
+**Objective**: Set up the IFE modeling epic in the modeling PM and demonstrate the dashboard with real work items.
+
+**Outcome**: IFE Cost Modeling epic (P0) created with 3 work items (WI-006, WI-007, WI-008) via `/backlog add`. Dashboard output captured and embedded in demo Section 7. Stale historical items (WI-004/005) cleaned from BACKLOG.md.
+
+**Location**: `.project/active/ife-modeling-epic-setup/`
+
+**Success Criteria**:
+- [x] Modeling epic registered in `work/BACKLOG.md` with 3 work items
+- [x] Dashboard runs and shows the epic + items
+- [x] Dashboard output captured (embedded in demo + JSON at `data/dashboard-snapshot.json`)
+- [x] All changes committed
+
+**Deliverables**:
+- Modeling epic and work items in `work/BACKLOG.md`
+- Epic file at `work/backlog/epic-ife-cost-modeling.md`
+- Dashboard output in `data/dashboard-snapshot.json`
+- Demo Section 7 populated with chat transcript, epic callout, dashboard terminal block
+
+---
+
+### Item 6: IFE Cost Model — Spec Through Implementation [1.5 days] ✅ COMPLETE
+
+**Type**: Modeling
+
+**Objective**: Follow the full modeling PM workflow (spec → design → plan → implement) for a single IFE concept, running the validation stack at each stage. This is the core of the demo — showing the complete modeling pipeline with real domain content.
+
+**Scope**:
+1. **Spec** (`/spec-model`): Define what the IFE cost model covers — which CAS categories, what parameters, what sources provide the data, what the validation criteria are. Traces to DI-XXX entries from Item 4.
+2. **Design** (`/design-model`): SysML architecture — library patterns for IFE (driver, target, chamber, BOP), concept-specific parts, calculation chains from physics parameters to LCOE.
+3. **Plan** (`/plan-model`): Phased implementation with validation checkpoints at each phase.
+4. **Implement** (`/implement-model`): Build the SysML v2 model, run validation at all 6 levels, document results including any failures.
+5. Capture validation stack results as a key demo artifact — show what passes, what fails, and why.
+
+**Concept selection**: Deferred to after Item 4 research. Candidates:
+- **Generic IFE** (Hawker's 14-parameter model) — broadest coverage, technology-agnostic
+- **Heavy Ion Beam IFE** — dedicated economics papers, well-defined driver cost structure
+- **Laser indirect-drive IFE** — most current data (2025–2026 papers)
+
+**Out of Scope**:
+- Modeling multiple IFE concepts (one is sufficient for the demo)
+- Achieving all-pass on validation (documenting failures is part of the demo)
+- Cross-concept comparison (Item 7 stubs this)
+
+**Success Criteria**:
+- [x] Complete work item in `work/active/` with spec, design, plan artifacts
+- [x] SysML v2 model in `models/designs/` with IFE cost structure
+- [x] All 6 validation levels run, results captured regardless of pass/fail
+- [x] Model parameters trace to DI-XXX entries and source documents
+- [x] Modeling decisions documented in work item artifacts
+- [x] Demo section 7 (Concept Modeling) populated with modeling workflow + validation results
+- [x] All changes committed
+
+**Estimated Effort**: 1.5 days
+
+**Dependencies**: Item 5 (modeling epic and work items registered)
+
+**Deliverables**:
+- Work item artifacts in `work/active/`
+- SysML model in `models/designs/`
+- Validation results
+- Demo section 7 populated
+
+---
+
+### Item 7: Visualization & Demo Completion [0.5–1 day] ✅ COMPLETE
+
+**Type**: Implementation/Polish
+
+**Objective**: Generate cost visualizations from model data, complete all demo sections, and polish the explainer for presentation.
+
+**Scope**:
+1. **Visualizations**: At minimum — CAS cost breakdown chart (component hierarchy with costs) and LCOE decomposition showing subsystem contributions. Generated from model data, not hand-drawn.
+2. **Dashboard capture**: Final dashboard showing completed work items, validation status, traceability coverage.
+3. **Demo completion**: Populate remaining demo sections:
+   - Section 7 (Concept Modeling) — final polish with visualization embeds
+   - Section 8 (Cross-Concept) — "here's what comes next" framing: we've modeled one IFE concept, the framework supports adding MFE, MIF, etc.
+4. **Narrative polish**: Ensure the demo reads as a coherent story from investigation scope through results. Each section should show what went in, what came out, and why it matters.
+
+**Out of Scope**:
+- Building a second concept model for actual cross-concept comparison
+- New features in agentic-mbse visualization tooling
+
+**Success Criteria**:
+- [x] At least one cost visualization generated from model data
+- [x] LCOE decomposition showing subsystem contributions
+- [x] Final dashboard output captured
+- [x] All demo sections populated (sections 5–8)
+- [x] Demo reads as a coherent end-to-end narrative
+- [x] All changes committed
+
+**Estimated Effort**: 0.5–1 day
+
+**Dependencies**: Item 6 (need model and validation results to visualize)
+
+**Deliverables**:
+- Visualization artifacts in `data/` or `demo/`
+- Completed `demo/index.html`
+
+---
+
+## Summary
+
+| Item | Focus | Effort | Demo Requirement | Status |
+|------|-------|--------|------------------|--------|
+| 1 | Extraction Pipeline Validation | 0.5 day | (prerequisite) | ✅ Complete |
+| 2a | Investigation Scope & Project Docs | 1 day | (prerequisite) | ✅ Complete |
+| 2b | Workflow Explainer Shell | 0.5 day | HTML explainer | ✅ Complete |
+| 3 | IFE Source Ingestion | 0.5 day | PDF ingestion from Zotero | ✅ Complete |
+| 4 | IFE Domain Research | 1 day | Knowledge pipeline | ✅ Complete |
+| 5 | IFE Modeling Epic Setup | 0.5 day | Dashboard with epic + work items | ✅ Complete |
+| 6 | IFE Cost Model (full workflow) | 1.5 days | Validation stack in action | ✅ Complete |
+| 7 | Visualization & Demo Completion | 0.5–1 day | SysML model visualizations | ✅ Complete |
+
+**Remaining effort**: None — all items complete
 
 ---
 
 ## Open Questions
 
-1. **Dashboard readiness**: What's the current state of the agentic-mbse dashboard? Does it need setup work?
-2. **Clean slate vs. build on existing**: Re-ingest all 6 existing sources with v4, or start fresh with new source selection?
-3. **Branch strategy**: New branch from main, or continue on `processing-work`?
+None currently open.
 
 ---
 
 ## Dependencies
 
 **External**:
-- ✅ `valstack-cleanup` merged into `doc-ingest-clean` (done)
-- ✅ `doc-ingest-clean` checked out and synced (done)
-- Zotero library populated with target fusion documents (needed for R3)
+- Zotero library populated with IFE papers tagged `demo-ife`
 - Network access for Zotero API and Claude API
 
 **Internal (sequencing)**:
-- P1 + P2 → R1 (scope) → R3 (initial ingest) → R4 (research) ↔ R2 (taxonomy, iterates with research) → R5 (identify first modeling exercise) → R6 (build models) → R7 + R8 (dashboard + viz)
-- R3 and R4 iterate: research may reveal need for more sources
-- R2 and R4 iterate: taxonomy is informed by research, research is guided by taxonomy gaps
-- R9 (documentation trail) is continuous throughout
+```
+Items 1 + 2a + 2b + 3 (complete)
+    → Item 4 (research IFE sources, recommend modeling target)
+        → Item 5 (modeling epic setup, dashboard)
+            → Item 6 (IFE cost model: spec → design → plan → implement)
+                → Item 7 (visualization, demo polish)
+```
+
+- Demo/index.html is updated incrementally — each item adds its section
+- The IFE modeling target decision gates Item 5 (epic work items) and Item 6 (model scope)
 
 ---
 
@@ -399,14 +476,12 @@ The existing project documents (OVERVIEW, ARCHITECTURE, REQUIREMENTS, BACKLOG, C
 
 | Risk | Impact | Mitigation |
 |------|--------|------------|
-| v4 extraction produces worse results than old pipeline | Medium — may need upstream fixes | Item 1 validates before proceeding. Known issues are documented. |
-| Extraction v4 breaks zotero_ingest.py | Medium — delays ingestion | P2 explicitly validates this before epic begins. |
-| Dashboard not ready for fusion-tea | Medium — R6 scoped down | Assess in prerequisites. Use what's available. |
-| Source literature insufficient for LCOE | Medium — shallow results | Start with known high-value sources (ARIES). R3.6 allows iterative addition. |
-| Taxonomy work expands indefinitely | Medium — never reaches modeling | R1.4 bounds the scope. Taxonomy must be "good enough to pick a first target," not perfect. |
-| Modeling scope creep | Medium — epic stalls | R5.5 prioritizes. Better to complete a narrow piece well than stall on breadth. |
+| IFE source data insufficient for CAS-level modeling | Medium — shallow model | Hawker + HIF economics papers provide parametric data. Fall back to generic IFE (14-parameter model) if concept-specific data is too thin. |
+| Dashboard not ready for fusion-tea | Medium — demo gap | Assess in Item 5. Use what's available; capture whatever output the dashboard produces. |
+| Validation stack failures on IFE model | Low — failures ARE content | Document failures honestly. Showing how the stack catches issues is more valuable than an all-green report. |
+| Modeling scope creep within IFE | Medium — epic stalls | One concept, CAS level 2. Better to complete narrow piece well than stall on breadth. |
 
 ---
 
-**Last Updated**: 2026-03-02
-**Next Action**: Items 1, 2a, and 2b complete. Next: Item 3 (Source Ingestion) or decompose remaining epic items based on investigation strategy in `modeling_project/OVERVIEW.md`. Work artifacts at `.project/active/project-reframing/` (Items 2a+2b) and `.project/active/extraction-validation/` (Item 1).
+**Last Updated**: 2026-03-03
+**Next Action**: Epic complete. All 7 items delivered.

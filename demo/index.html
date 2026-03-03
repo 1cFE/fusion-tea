@@ -334,6 +334,13 @@ dialog::backdrop { background: rgba(0,0,0,0.5); }
 /* ============================================================
    Stub sections
    ============================================================ */
+.preview-link {
+  font-size: 0.8rem; color: var(--color-accent); text-decoration: none;
+  border: 1px solid var(--color-accent); border-radius: 4px; padding: 0.15rem 0.5rem;
+  white-space: nowrap;
+}
+.preview-link:hover { background: var(--color-accent); color: #fff; }
+
 .stub-banner {
   display: inline-flex; align-items: center; gap: 0.4rem;
   background: var(--color-stub-bg); color: var(--color-stub);
@@ -359,6 +366,81 @@ dialog::backdrop { background: rgba(0,0,0,0.5); }
   padding: 1rem 1.25rem; font-size: 0.85rem; margin: 1rem 0;
 }
 .feedback-loop .loop-title { font-weight: 600; color: var(--color-stub); margin-bottom: 0.3rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.03em; }
+
+/* ============================================================
+   Chat transcript (research session depiction)
+   ============================================================ */
+.chat-transcript {
+  background: var(--color-bg); border: 1px solid var(--color-border);
+  border-radius: 10px; padding: 1.25rem; margin: 1rem 0 1.5rem;
+  display: flex; flex-direction: column; gap: 0.75rem;
+}
+.chat-msg {
+  max-width: 85%; padding: 0.7rem 1rem; border-radius: 10px;
+  font-size: 0.85rem; line-height: 1.55;
+}
+.chat-msg.user {
+  align-self: flex-end; background: var(--color-user-bg);
+  border: 1px solid #bbf7d0; border-bottom-right-radius: 2px;
+}
+.chat-msg.agent {
+  align-self: flex-start; background: var(--color-tool-bg);
+  border: 1px solid #bfdbfe; border-bottom-left-radius: 2px;
+}
+.chat-msg .chat-role {
+  font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.06em; margin-bottom: 0.25rem;
+}
+.chat-msg.user .chat-role { color: var(--color-user); }
+.chat-msg.agent .chat-role { color: var(--color-tool); }
+.chat-msg code { font-size: 0.78em; }
+.chat-msg ul { margin: 0.3rem 0 0 1.2rem; font-size: 0.83rem; }
+.chat-msg li { margin-bottom: 0.15rem; }
+.chat-ellipsis {
+  align-self: center; color: var(--color-text-light);
+  font-size: 0.78rem; font-style: italic; padding: 0.2rem 0;
+}
+
+/* DI insight cards */
+.di-card {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent); border-radius: 0 8px 8px 0;
+  padding: 1rem 1.25rem; margin-bottom: 0.75rem;
+}
+.di-card .di-id {
+  font-size: 0.7rem; font-weight: 700; color: var(--color-accent);
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.di-card .di-title {
+  font-size: 0.95rem; font-weight: 600; margin: 0.2rem 0 0.5rem;
+}
+.di-card .di-field {
+  font-size: 0.82rem; color: var(--color-text-muted);
+  margin-bottom: 0.3rem; line-height: 1.5;
+}
+.di-card .di-field strong {
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.03em;
+  color: var(--color-text-light); font-weight: 600;
+}
+
+/* Report highlight (syntax-colored YAML/markdown) */
+.report-highlight {
+  background: var(--color-terminal-bg); color: var(--color-terminal-text);
+  border-radius: 8px; padding: 1rem 1.25rem; font-family: var(--font-mono);
+  font-size: 0.78rem; line-height: 1.65; overflow-x: auto; margin: 1rem 0 1.5rem;
+}
+.report-highlight .hl-comment { color: #6c7086; }
+.report-highlight .hl-key { color: #89b4fa; }
+.report-highlight .hl-value { color: #a6e3a1; }
+.report-highlight .hl-delim { color: #f9e2af; }
+.report-highlight .hl-heading { color: #89b4fa; font-weight: 700; }
+.report-highlight .hl-cite { color: #f9e2af; }
+.report-highlight .hl-muted { color: #6c7086; }
+.report-highlight .hl-section-label {
+  display: inline-block; background: rgba(137,180,250,0.15);
+  padding: 0 0.3rem; border-radius: 3px; margin: 0.3rem 0;
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: #89b4fa;
+}
 
 /* ============================================================
    Color legend
@@ -409,11 +491,12 @@ dialog::backdrop { background: rgba(0,0,0,0.5); }
     <a href="#the-scaffold"><span class="nav-num">2</span> The Scaffold</a>
     <a href="#the-workflow"><span class="nav-num">3</span> The Workflow</a>
     <div class="nav-group">Pipeline</div>
-    <a href="#source-ingestion" class="stub"><span class="nav-num">5</span> Source Ingestion <span class="nav-badge">stub</span></a>
-    <a href="#domain-research" class="stub"><span class="nav-num">6</span> Domain Research <span class="nav-badge">stub</span></a>
-    <a href="#taxonomy" class="stub"><span class="nav-num">7</span> Taxonomy <span class="nav-badge">stub</span></a>
-    <a href="#concept-modeling" class="stub"><span class="nav-num">8</span> Concept Modeling <span class="nav-badge">stub</span></a>
-    <a href="#cross-concept" class="stub"><span class="nav-num">9</span> Cross-Concept <span class="nav-badge">stub</span></a>
+    <a href="#source-ingestion"><span class="nav-num">5</span> Source Ingestion</a>
+    <a href="#domain-research"><span class="nav-num">6</span> Domain Research</a>
+    <a href="#concept-modeling"><span class="nav-num">7</span> Concept Modeling</a>
+    <a href="#visualization"><span class="nav-num">8</span> Visualization</a>
+    <div class="nav-group">Reference</div>
+    <a href="#appendix-pdf-processing"><span class="nav-num">A</span> PDF Processing</a>
   </nav>
 </aside>
 
@@ -732,6 +815,10 @@ dialog::backdrop { background: rgba(0,0,0,0.5); }
   </div>
 </div>
 
+<div style="background:var(--color-process-bg);border:1px solid var(--color-process-border);border-radius:8px;padding:1rem 1.25rem;margin:1.5rem 0;">
+  <strong>Demo scope:</strong> This walkthrough focuses on the Stage 2 pipeline &mdash; taking a single IFE (Inertial Fusion Energy) concept from literature through to a validated cost model. The Stage 1 taxonomy &mdash; classifying all ~36 concepts across the fusion landscape &mdash; is a separate effort covered in a future post.
+</div>
+
 <h3>Traceability &mdash; The Cross-Cutting Concern</h3>
 <p>Every quantitative value in the system &mdash; from source documents through to model parameters &mdash; carries a structured citation chain. This is the mechanism that prevents hallucination and makes the analysis verifiable.</p>
 
@@ -782,20 +869,131 @@ dialog::backdrop { background: rgba(0,0,0,0.5); }
 <hr class="section-divider">
 
 <!-- ************************************************************
-     SECTION 5: SOURCE INGESTION (STUB)
+     SECTION 5: SOURCE INGESTION
      ************************************************************ -->
 <section id="source-ingestion">
 <h2><span class="section-num">5.</span> Source Ingestion</h2>
-<div class="stub-banner">&#9711; Coming soon &mdash; populated when source ingestion work completes</div>
-<div class="stub-content">
-  <p>PDFs and technical documents are ingested through the Zotero &rarr; extract &rarr; register pipeline, producing structured markdown extractions with quality metrics.</p>
-  <div class="transform">
-    <div class="t-in"><div class="t-label">Input</div>PDFs, technical papers, design studies, cost reports</div>
-    <div class="t-arrow">&rarr;</div>
-    <div class="t-out"><div class="t-label">Output</div>Structured markdown with preserved tables, figures, and quality metrics</div>
-  </div>
-  <div class="artifacts"><strong>Expected artifacts:</strong> Zotero &rarr; extract pipeline walkthrough, extraction quality comparison, metrics.json and decisions.json examples</div>
+<p class="lead">Domain literature is ingested through a Zotero &rarr; extract &rarr; register pipeline, producing structured markdown that downstream research and modeling can cite directly.</p>
+
+<h3>Pipeline</h3>
+<p>The ingestion script searches our Zotero library by tag, downloads matching PDFs, extracts each to structured markdown, and registers the result in <code>SOURCE_INDEX.md</code>. A single command processes an entire batch:</p>
+
+<div class="terminal">
+<span class="prompt">$</span> uv run python scripts/zotero_ingest.py --tag demo-ife<br>
+<br>
+<span class="output">Zotero library: 32 item(s), manifest: 6 already processed</span><br>
+<span class="output">After --tag 'demo-ife' filter: 5 item(s)</span><br>
+<span class="output">[1/5] Commercialization of laser fusion energy &hellip; done (172s)</span><br>
+<span class="output">[2/5] AMPS high-yield inertial fusion &hellip; done (94s)</span><br>
+<span class="output">[3/5] Accelerators for Inertial Fusion Energy Production &hellip; done (118s)</span><br>
+<span class="output">[4/5] Energy from Inertial Fusion &hellip; done (85s)</span><br>
+<span class="output">[5/5] Economic studies for heavy-ion-fusion electric power plants &hellip; done (85s)</span><br>
+<span class="output">Processed 5 of 5 items. Manifest now has 11 entries.</span><br>
 </div>
+
+<h3>Corpus</h3>
+<p>For this demo, we searched Zotero for papers on inertial fusion energy (IFE) economics and identified 5 that provide a breadth of data across driver technologies and time periods:</p>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Source</th><th>Year</th><th>Focus</th><th>Key Data</th><th></th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Meier &mdash; HIF Electric Power Plants</td><td>1986</td><td>Heavy-ion IFE</td>
+      <td>COE parametric studies, driver cost scaling, multi-unit plant economics</td>
+      <td><a href="#" onclick="document.getElementById('dialog-preview-hif').showModal(); return false;" class="preview-link">Preview</a></td>
+    </tr>
+    <tr>
+      <td>Hogan &mdash; Energy from Inertial Fusion</td><td>1992</td><td>IFE overview</td>
+      <td>Driver technologies (laser, heavy-ion, light-ion), target physics, plant designs</td>
+      <td><a href="#" onclick="document.getElementById('dialog-preview-eif').showModal(); return false;" class="preview-link">Preview</a></td>
+    </tr>
+    <tr>
+      <td>Bangerter &mdash; Accelerators for IFE</td><td>2013</td><td>IFE drivers</td>
+      <td>Accelerator technology options and costs for IFE energy production</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Alexander &mdash; AMPS High-Yield IFE</td><td>2025</td><td>Pulser IFE</td>
+      <td>High-gain physics basis, practical engineering, cost projections</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Galloway &mdash; Laser Fusion Commercialization</td><td>2026</td><td>Laser IFE</td>
+      <td>KrF excimer laser at &lt;$100/J, FOAK cost breakdown, deployment roadmap</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Extractions</h3>
+<p>Each paper is converted to structured markdown that preserves headings, tables, equations, and figure references. Here&rsquo;s what that looks like &mdash; a 1986 scanned paper alongside its extracted markdown:</p>
+
+<div style="display:flex;gap:1.5rem;align-items:flex-start;margin:1.25rem 0;flex-wrap:wrap;">
+  <div style="flex:1;min-width:240px;max-width:340px;">
+    <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-text-light);margin-bottom:0.4rem;font-weight:600;">Original PDF (1986 scan)</div>
+    <img src="images/hif-1986-page1.png"
+         alt="Scanned page from 1986 HIF economics paper"
+         style="width:100%;border:1px solid var(--color-border);border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+  </div>
+  <div style="flex:1.4;min-width:300px;">
+    <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-text-light);margin-bottom:0.4rem;font-weight:600;">Extracted markdown</div>
+    <div style="background:var(--color-terminal-bg);color:var(--color-terminal-text);padding:1rem;border-radius:6px;font-family:var(--font-mono);font-size:0.75rem;line-height:1.5;overflow-x:auto;max-height:420px;overflow-y:auto;">
+<span style="color:#89b4fa;">## ECONOMIC STUDIES FOR HEAVY-ION-FUSION ELECTRIC POWER PLANTS</span><br><br>
+<span style="color:#cdd6f4;">Wayne R. Meier, William J. Hogan, Roger O. Bangerter</span><br>
+<span style="color:#a6adc8;">Lawrence Livermore National Laboratory, Livermore, CA 94550</span><br><br>
+<span style="color:#89b4fa;">## ABSTRACT</span><br><br>
+<span style="color:#cdd6f4;">We have conducted parametric economic studies for heavy-ion-</span><br>
+<span style="color:#cdd6f4;">fusion electric power plants. We examined the effects on the cost</span><br>
+<span style="color:#cdd6f4;">of electricity of several design parameters: cost and cost scaling</span><br>
+<span style="color:#cdd6f4;">for the reactor, driver, and target factory; maximum achievable</span><br>
+<span style="color:#cdd6f4;">chamber pulse rate; target gain; electric conversion efficiency; and</span><br>
+<span style="color:#cdd6f4;">net electric power. Using the most recent estimates for the</span><br>
+<span style="color:#cdd6f4;">heavy-ion-driver cost along with the Cascade reactor cost and</span><br>
+<span style="color:#cdd6f4;">efficiency, we found that a 1.5 to 3 GWe heavy-ion-fusion power</span><br>
+<span style="color:#cdd6f4;">plant, with a pulse rate of 5-10 Hz, can be competitive with</span><br>
+<span style="color:#cdd6f4;">nuclear and coal power plants.</span><br><br>
+<span style="color:#89b4fa;">## INTRODUCTION</span><br><br>
+<span style="color:#cdd6f4;">The Heavy-ion-fusion Systems Assessment Project has produced</span><br>
+<span style="color:#cdd6f4;">new estimates of the capital cost and performance of an induction</span><br>
+<span style="color:#cdd6f4;">linac accelerator for inertial fusion. &hellip;</span>
+    </div>
+  </div>
+</div>
+
+<p>And a clean modern extraction &mdash; the Xcimer laser cost table extracted perfectly from PDF to structured data:</p>
+
+<div style="display:flex;gap:1.5rem;align-items:flex-start;margin:1.25rem 0;flex-wrap:wrap;">
+  <div style="flex:1;min-width:240px;max-width:400px;">
+    <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-text-light);margin-bottom:0.4rem;font-weight:600;">Original PDF table</div>
+    <img src="images/xcimer-cost-table.png"
+         alt="Xcimer FOAK laser cost breakdown table"
+         style="width:100%;border:1px solid var(--color-border);border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+  </div>
+  <div style="flex:1.4;min-width:300px;">
+    <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--color-text-light);margin-bottom:0.4rem;font-weight:600;">Extracted markdown table</div>
+    <div style="background:var(--color-terminal-bg);color:var(--color-terminal-text);padding:1rem;border-radius:6px;font-family:var(--font-mono);font-size:0.75rem;line-height:1.6;overflow-x:auto;">
+<span style="color:#a6adc8;">| Laser Component | Cost/J |</span><br>
+<span style="color:#a6adc8;">|---|---|</span><br>
+<span style="color:#cdd6f4;">| <span style="color:#89b4fa;">Laser Pump Source</span> | |</span><br>
+<span style="color:#cdd6f4;">| &nbsp; Pulsed Energy Storage Capacitors | $10 |</span><br>
+<span style="color:#cdd6f4;">| &nbsp; Marx Generator | $24 |</span><br>
+<span style="color:#cdd6f4;">| &nbsp; Electron Beam components | $17 |</span><br>
+<span style="color:#f9e2af;">| <b>Subtotal</b> | <b>$51</b> |</span><br>
+<span style="color:#cdd6f4;">| <span style="color:#89b4fa;">Laser Gain Media, Optics, Other</span> | |</span><br>
+<span style="color:#cdd6f4;">| &nbsp; Laser Chamber &amp; Gas Systems | $19 |</span><br>
+<span style="color:#cdd6f4;">| &nbsp; Laser Output Windows &amp; Optics | $12 |</span><br>
+<span style="color:#cdd6f4;">| &nbsp; Seed Lasers / NLO Systems | $23 |</span><br>
+<span style="color:#cdd6f4;">| &nbsp; Control, Diagnostics, Other | $4 |</span><br>
+<span style="color:#f9e2af;">| <b>Subtotal</b> | <b>$58</b> |</span><br>
+<span style="color:#a6e3a1;">| <b>Total FOAK excimer-NLO</b> | <b>$109/J</b> |</span><br>
+<span style="color:#f38ba8;">| DPSSL (aggressive est.) | $700&ndash;$1000/J |</span>
+    </div>
+  </div>
+</div>
+
+<p style="font-size:0.9rem;color:var(--color-text-muted);">Extraction quality varies with source age and format. Modern PDFs (2013+) extract cleanly. Older scanned documents (1986, 1992) produce usable text with some OCR artifacts &mdash; cosmetic noise on headers, occasional garbled characters &mdash; but the equations, cost data, and parametric relationships that matter for downstream research come through. Issues are documented honestly rather than hidden. See <a href="#appendix-pdf-processing">Appendix A</a> for details.</p>
 
 <h3>Source Strategy</h3>
 <p>Rather than prescribing specific sources upfront, the project defines data layers needed at each depth level. Sources are selected to fill these layers as the investigation progresses.</p>
@@ -813,83 +1011,721 @@ dialog::backdrop { background: rgba(0,0,0,0.5); }
 </div>
 <div class="feedback-loop">
   <div class="loop-title">Feedback Loop</div>
-  When domain research (Section 6) or modeling work (Section 8) reveals data gaps &mdash; a parameter is needed but wasn't captured, a cost estimate lacks sufficient basis, a concept has no published subsystem breakdown &mdash; the cycle returns here. New sources are sought, ingested, and extracted to fill the gap.
+  When domain research (Section 6) or modeling work (Section 8) reveals data gaps &mdash; a parameter is needed but wasn&rsquo;t captured, a cost estimate lacks sufficient basis, a concept has no published subsystem breakdown &mdash; the cycle returns here. New sources are sought, ingested, and extracted to fill the gap.
 </div>
 </section>
 
 <hr class="section-divider">
 
 <!-- ************************************************************
-     SECTION 6: DOMAIN RESEARCH (STUB)
+     SECTION 6: DOMAIN RESEARCH
      ************************************************************ -->
 <section id="domain-research">
 <h2><span class="section-num">6.</span> Domain Research</h2>
-<div class="stub-banner">&#9711; Coming soon &mdash; populated when domain research work completes</div>
-<div class="stub-content">
-  <p>Extracted source documents are systematically researched against the investigation's questions, producing structured domain insights registered in KNOWLEDGE.md.</p>
-  <div class="transform">
-    <div class="t-in"><div class="t-label">Input</div>Extracted source documents + research questions (RQ-1 through RQ-5)</div>
-    <div class="t-arrow">&rarr;</div>
-    <div class="t-out"><div class="t-label">Output</div>Domain insights (DI-XXX entries in KNOWLEDGE.md) with source citations</div>
+<p class="lead">Extracted sources are systematically researched against the investigation&rsquo;s questions, producing structured domain insights (DI-XXX) that flow into modeling work. The <code>/research</code> command orchestrates this &mdash; an agent reads sources, synthesizes findings, and proposes insights for human approval.</p>
+
+<h3>The Research Session</h3>
+<p>We directed the agent to research IFE system economics for first-pass model structure, searching across all ingested sources. Here&rsquo;s how that conversation unfolded:</p>
+
+<div class="chat-transcript">
+  <div class="chat-msg user">
+    <div class="chat-role">User</div>
+    <code>/research</code> I want to plan out the modeling of my IFE system. This research will be the basis for our first pass of the model structure. Search across all relevant sources.<br><br>
+    <strong>Design Concept</strong> &mdash; Synthesize the IFE concept into a logical process. Identify the key behavioral and structural components that drive the effectiveness of the system.&hellip;<br>
+    <strong>Cost Background</strong> &mdash; What are the major cost categories? How do they map to CAS?&hellip;<br>
+    <strong>LCOE</strong> &mdash; What LCOE values do these sources project? What are Hawker&rsquo;s 14 key parameters?&hellip;
   </div>
-  <div class="artifacts"><strong>Expected artifacts:</strong> Example research session walkthrough, insight extraction process, approval workflow (pending &rarr; approved &rarr; impacts), KNOWLEDGE.md with real DI-XXX entries</div>
+
+  <div class="chat-msg agent">
+    <div class="chat-role">Agent</div>
+    I&rsquo;ll research IFE system economics across your sources. Let me gather context and then explore the sources in parallel.
+  </div>
+
+  <div class="chat-ellipsis">Agent reads SOURCE_INDEX.md, spawns parallel agents to read 8 sources&hellip;</div>
+
+  <div class="chat-msg agent">
+    <div class="chat-role">Agent &mdash; Findings</div>
+    All IFE plants share an 8-step process: fabricate target &rarr; load fuel &rarr; inject &rarr; drive &rarr; implode &rarr; burn &rarr; capture energy &rarr; convert to electricity. The central behavioral relationship is <strong>&eta; &times; G &times; M &times; &epsilon;</strong>, where &eta;&middot;G must exceed ~10 for economic viability.&hellip;<br><br>
+    The CAS framework is universal across MFE and IFE. Divergence concentrates in CAS22 sub-accounts: 22.1.3 (magnets &rarr; driver), 22.1.4 (heating &rarr; ignition), 22.1.8 (divertor &rarr; target factory).&hellip;<br><br>
+    Top 6 LCOE sensitivities (Hawker Monte Carlo): discount rate (+0.247), plant cost (+0.210), target cost (+0.186), gain (&minus;0.164), driver lifetime (&minus;0.134), availability (&minus;0.127).
+  </div>
+
+  <div class="chat-ellipsis">Agent saves research document to knowledge/research/pending/&hellip;</div>
+
+  <div class="chat-msg agent">
+    <div class="chat-role">Agent &mdash; Proposed Insights</div>
+    I&rsquo;d suggest capturing these as structured knowledge:<br>
+    <ul>
+      <li><strong>DI-A:</strong> IFE Fusion Cycle Gain Viability Threshold (&eta;&middot;G &gt; 10)</li>
+      <li><strong>DI-B:</strong> CAS22 is the IFE-MFE Divergence Point</li>
+      <li><strong>DI-C:</strong> IFE Target Cost is a Unique Operating Cost Category</li>
+      <li><strong>DI-D:</strong> IFE Driver Cost Reference Points</li>
+      <li><strong>DI-E:</strong> Hawker 14-Parameter IFE LCOE Model</li>
+    </ul>
+    Would you like to approve the research report and accept/modify/skip each of these?
+  </div>
+
+  <div class="chat-msg user">
+    <div class="chat-role">User</div>
+    I accept the DI candidates, and approve the research report.
+  </div>
+
+  <div class="chat-msg agent">
+    <div class="chat-role">Agent</div>
+    Done. Research approved and 5 domain insights registered: DI-001 through DI-005.<br>
+    The research document is now at <code>knowledge/research/approved/</code>.
+  </div>
 </div>
+
+<p style="font-size:0.85rem;color:var(--color-text-muted);">8 sources were read in parallel. The agent synthesized findings into a structured report, proposed insight candidates, and &mdash; on approval &mdash; ran <code>agentic-mbse pm approve-research</code> to move the report from <code>pending/</code> to <code>approved/</code> and register DI-XXX entries in KNOWLEDGE.md. The human reviews each element separately: the report itself, then each insight candidate.</p>
+
+<h3>The Research Report</h3>
+<p>The approved research document lives at <code>knowledge/research/approved/20260302-165055_ife-system-modeling-first-pass.md</code>. Here&rsquo;s how it&rsquo;s structured &mdash; YAML frontmatter for machine-readable metadata, then sections with source citations throughout:</p>
+
+<div class="report-highlight">
+<span class="hl-delim">---</span><br>
+<span class="hl-key">date</span>: <span class="hl-value">2026-03-02</span><br>
+<span class="hl-key">researcher</span>: <span class="hl-value">Claude (agentic)</span><br>
+<span class="hl-key">topic</span>: <span class="hl-value">ife-system-modeling-first-pass</span><br>
+<span class="hl-key">tags</span>: <span class="hl-value">[IFE, cost-modeling, LCOE, CAS, driver-comparison, system-architecture]</span><br>
+<span class="hl-key">research_type</span>: <span class="hl-value">domain</span><br>
+<span class="hl-delim">---</span><br>
+<br>
+<span class="hl-heading"># IFE System Modeling: Design Concept, Cost Structure, and LCOE Analysis</span><br>
+<br>
+<span class="hl-section-label">Sections</span><br>
+<span class="hl-muted">## Research Question</span><br>
+<span class="hl-muted">## Summary</span> <span class="hl-comment">&larr; 5 bullet points answering the research question</span><br>
+<span class="hl-muted">## Detailed Findings</span><br>
+<span class="hl-muted">&nbsp;&nbsp;### 1. IFE Design Concept &mdash; Logical Process</span> <span class="hl-comment">&larr; 8-step process chain</span><br>
+<span class="hl-muted">&nbsp;&nbsp;### 2. Structural Components</span> <span class="hl-comment">&larr; 9 subsystems identified</span><br>
+<span class="hl-muted">&nbsp;&nbsp;### 3. Behavioral Components &mdash; Fusion Cycle Gain</span><br>
+<span class="hl-muted">&nbsp;&nbsp;### 4. Hierarchical Breakdowns</span> <span class="hl-comment">&larr; by driver, target, chamber type</span><br>
+<span class="hl-muted">&nbsp;&nbsp;### 5. Cost Categories and CAS Mapping</span><br>
+<span class="hl-muted">&nbsp;&nbsp;### 6. LCOE Analysis</span> <span class="hl-comment">&larr; Hawker&rsquo;s 14 parameters with sensitivity rankings</span><br>
+<span class="hl-muted">&nbsp;&nbsp;### 7. PyFECONS Implementation Architecture</span><br>
+<span class="hl-muted">## Modeling / Architecture Insights</span><br>
+<span class="hl-muted">## Open Questions</span><br>
+<span class="hl-muted">## Source References</span><br>
+</div>
+<button class="btn-view-file" onclick="document.getElementById('dialog-research-report').showModal()">View full report</button>
+
+<p>Every claim in the report cites its source with a tag like <span style="font-family:var(--font-mono);font-size:0.82rem;background:var(--color-terminal-bg);color:#f9e2af;padding:0.15rem 0.4rem;border-radius:4px;">[Hawker-2020]</span> or <span style="font-family:var(--font-mono);font-size:0.82rem;background:var(--color-terminal-bg);color:#f9e2af;padding:0.15rem 0.4rem;border-radius:4px;">[EIF-1992]</span>, resolved at the bottom to specific file paths:</p>
+
+<div class="report-highlight" style="font-size:0.75rem;">
+<span class="hl-heading">## Source References</span><br>
+<br>
+<span class="hl-cite">[EIF-1992]</span>: Hogan, Bangerter, Kulcinski, &ldquo;Energy from Inertial Fusion,&rdquo; Physics Today, 1992.<br>
+&nbsp;&nbsp;File: <span class="hl-value">knowledge/sources/energy_from_inertial_fusion/output.md</span><br>
+<span class="hl-cite">[Hawker-2020]</span>: Hawker, &ldquo;A simplified economic model for inertial fusion,&rdquo; Phil. Trans. R. Soc. A, 2020.<br>
+&nbsp;&nbsp;File: <span class="hl-value">knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md</span><br>
+<span class="hl-cite">[HIF-1986]</span>: Meier, Hogan, Bangerter, &ldquo;Economic studies for HIF electric power plants,&rdquo; 1986.<br>
+&nbsp;&nbsp;File: <span class="hl-value">knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md</span><br>
+<span class="hl-cite">[AMPS-2025]</span>: Pacific Fusion, &ldquo;AMPS High-Yield Inertial Fusion,&rdquo; arXiv, 2025.<br>
+&nbsp;&nbsp;File: <span class="hl-value">knowledge/sources/affordable_manageable_practical_and_scalable_amps_high/output.md</span><br>
+<span class="hl-muted">&hellip; + 5 more sources (Xcimer-2026, Accel-2013, ARPA-E-2020, ARIES-2013, PyFECONS)</span>
+</div>
+
+<h3>Registered Domain Insights</h3>
+<p>The research produced 5 domain insights &mdash; structured facts approved through the curation gate and registered in <code>knowledge/KNOWLEDGE.md</code>. These are the durable knowledge artifacts that downstream modeling work cites:</p>
+
+<div class="di-card">
+  <div class="di-id">DI-001</div>
+  <div class="di-title">IFE Fusion Cycle Gain Viability Threshold</div>
+  <div class="di-field"><strong>Source: </strong>EIF-1992, Accel-2013, Xcimer-2026</div>
+  <div class="di-field"><strong>Context: </strong>The product &eta;&middot;G (driver efficiency &times; target gain) must exceed ~10 for economically viable IFE. This creates fundamentally different gain requirements by driver type: heavy-ion needs G&gt;33 (at 30% &eta;), lasers need G&gt;140 (at 7% &eta;), pulsers need G&gt;100 (at 10% &eta;).</div>
+  <div class="di-field"><strong>Model implications: </strong>The gain requirement constraint should be a validation check in all IFE concept models</div>
+  <div class="di-field"><strong>Analysis implications: </strong>Concepts below the &eta;&middot;G&gt;10 threshold should be flagged as requiring breakthrough physics</div>
+</div>
+
+<div class="di-card">
+  <div class="di-id">DI-002</div>
+  <div class="di-title">CAS22 is the IFE-MFE Divergence Point</div>
+  <div class="di-field"><strong>Source: </strong>ARIES-2013, PyFECONS, Hawker-2020</div>
+  <div class="di-field"><strong>Context: </strong>The CAS framework (20&ndash;99) is universal across fusion approaches. All concept-specific differences concentrate in CAS22 sub-accounts: 22.1.3 (magnets &rarr; driver), 22.1.4 (heating &rarr; ignition), 22.1.8 (divertor &rarr; target factory). PyFECONS confirms via polymorphic Union types.</div>
+  <div class="di-field"><strong>Model implications: </strong>Library components for CAS23&ndash;27 and indirect costs are fully reusable across MFE and IFE</div>
+  <div class="di-field"><strong>Analysis implications: </strong>Cross-concept comparison at CAS-level should normalize CAS22 sub-accounts by function</div>
+</div>
+
+<details class="artifact-card">
+  <summary>DI-003 through DI-005 (3 more insights)</summary>
+  <div class="artifact-body">
+    <p><strong>DI-003: IFE Target Cost is a Unique Operating Cost Category</strong> &mdash; IFE has a per-shot consumable cost ($0.19&ndash;100/target) with no MFE parallel. Hawker shows target cost has stronger LCOE correlation (+0.186) than driver cost (+0.075), with a threshold at ~$10/target.</p>
+    <p><strong>DI-004: IFE Driver Cost Reference Points</strong> &mdash; Driver cost spans 3 orders of magnitude: NIF $9.5/J, DPSSL $700&ndash;1000/J, Xcimer KrF $60&ndash;120/J, pulsed-power $1.7&ndash;6/J. Ranges must be set per-driver-type, not as a universal range.</p>
+    <p><strong>DI-005: Hawker 14-Parameter IFE LCOE Model</strong> &mdash; 14 technology-agnostic parameters characterize IFE LCOE. Top sensitivities: discount rate (+0.247), plant cost (+0.210), target cost (+0.186), gain (&minus;0.164). The frequency&ndash;yield trade-off is the most important interaction effect.</p>
+  </div>
+</details>
+
+<h3>What Emerged: Modeling Target</h3>
+<p>The research revealed that no single IFE driver type has sufficient CAS-level data for a bottom-up model on its own. But Hawker&rsquo;s 14-parameter framework provides a complete, technology-agnostic model that can be populated immediately &mdash; and then instantiated with driver-specific parameters.</p>
+
+<div class="callout">
+  <strong>Decision:</strong> Start with a generic, driver-agnostic IFE model built around Hawker&rsquo;s 14-parameter LCOE framework, then instantiate it with Heavy Ion Beam (HIF) parameters as the first concrete concept. HIF has the richest quantitative data &mdash; two dedicated papers with driver cost formulae, target gain curves, and a complete COE model for cross-validation.
+</div>
+
+<p>This decision is captured as a durable intent document at <code>modeling_project/intent/IFE&nbsp;Modeling&nbsp;Target&nbsp;Selection.md</code>, bridging the research findings to the modeling epic that follows.</p>
+
+<h3>The Knowledge Transformation</h3>
+<p>Here&rsquo;s what happened in this stage:</p>
+
+<div class="trace-chain">
+  <div class="trace-node">
+    <div class="node-label">8 extracted sources</div>
+    <div class="node-file">knowledge/sources/</div>
+  </div>
+  <div class="trace-arrow">&rarr;</div>
+  <div class="trace-node">
+    <div class="node-label">Research report</div>
+    <div class="node-file">knowledge/research/approved/</div>
+  </div>
+  <div class="trace-arrow">&rarr;</div>
+  <div class="trace-node">
+    <div class="node-label">5 domain insights</div>
+    <div class="node-file">knowledge/KNOWLEDGE.md</div>
+  </div>
+  <div class="trace-arrow">&rarr;</div>
+  <div class="trace-node">
+    <div class="node-label">Modeling target</div>
+    <div class="node-file">modeling_project/intent/</div>
+  </div>
+</div>
+
+<p style="font-size:0.85rem;color:var(--color-text-muted);">The pipeline: unstructured PDFs (Section 5) became structured extractions, which were researched against specific questions to produce a report with 7 detailed sections. From that report, 5 structured domain insights were extracted through human review. Those insights &mdash; plus the data gaps they revealed &mdash; drove the modeling target decision. Each step narrows and structures: 8 sources &rarr; 1 report &rarr; 5 insights &rarr; 1 decision.</p>
 </section>
 
 <hr class="section-divider">
 
 <!-- ************************************************************
-     SECTION 7: TAXONOMY (STUB)
-     ************************************************************ -->
-<section id="taxonomy">
-<h2><span class="section-num">7.</span> Taxonomy</h2>
-<div class="stub-banner">&#9711; Coming soon &mdash; populated when taxonomy work completes</div>
-<div class="stub-content">
-  <p>Domain insights and the concept candidate list are synthesized into a structured classification of the fusion concept space &mdash; the framework that makes cross-concept comparison possible.</p>
-  <div class="transform">
-    <div class="t-in"><div class="t-label">Input</div>Domain insights + ~36 concept candidates across MFE, IFE, MIF, exotic</div>
-    <div class="t-arrow">&rarr;</div>
-    <div class="t-out"><div class="t-label">Output</div>Structured classification framework with shared vs. divergent structure identified</div>
-  </div>
-  <div class="artifacts"><strong>Expected artifacts:</strong> Classification framework, concept comparison matrix, shared-vs-divergent analysis (what goes in library vs. designs)</div>
-</div>
-</section>
-
-<hr class="section-divider">
-
-<!-- ************************************************************
-     SECTION 8: CONCEPT MODELING (STUB)
+     SECTION 7: CONCEPT MODELING
      ************************************************************ -->
 <section id="concept-modeling">
-<h2><span class="section-num">8.</span> Concept Modeling</h2>
-<div class="stub-banner">&#9711; Coming soon &mdash; populated when concept modeling work completes</div>
-<div class="stub-content">
-  <p>Using the taxonomy framework and concept-specific literature, validated SysML v2 cost models are built with traceable parameters. ~13 concepts across MFE, IFE, MIF, and exotic approaches.</p>
-  <div class="transform">
-    <div class="t-in"><div class="t-label">Input</div>Taxonomy framework + concept-specific literature + modeling patterns</div>
-    <div class="t-arrow">&rarr;</div>
-    <div class="t-out"><div class="t-label">Output</div>Validated SysML v2 cost models with CAS breakdown and traceable citations</div>
+<h2><span class="section-num">7.</span> Concept Modeling</h2>
+<p class="lead">Domain research (Section 6) produced a modeling target decision. This section follows the Stage 2 pipeline from <a href="#the-workflow">Section 3</a> &mdash; Planning (turning that decision into tracked work items) and Execution (running each work item through the spec &rarr; design &rarr; plan &rarr; implement cycle).</p>
+
+<!-- ===================== PLANNING ===================== -->
+<h3>Planning</h3>
+<p>Section 6 ended with a decision: build a generic IFE cost model using Hawker&rsquo;s 14-parameter framework, then instantiate with Heavy Ion Beam parameters. That decision lives in an intent document (<code>modeling_project/intent/IFE&nbsp;Modeling&nbsp;Target&nbsp;Selection.md</code>). The first step is turning it into tracked work.</p>
+
+<p>The <code>/backlog add</code> command reads the intent document, assesses the scale of work (this is an epic &mdash; multiple items with dependencies), decomposes it into individually deliverable work items, and registers everything through the CLI:</p>
+
+<div class="chat-transcript">
+  <div class="chat-msg user">
+    <div class="chat-role">User</div>
+    <code>/backlog add</code> modeling_project/intent/IFE Modeling Target Selection.md
   </div>
-  <div class="artifacts"><strong>Expected artifacts:</strong> Example SysML model, 6-level validation results, citation coverage report, cost breakdown visualization</div>
+
+  <div class="chat-ellipsis">Agent reads intent doc, assesses scale as Epic, decomposes into work items, registers via CLI&hellip;</div>
+
+  <div class="chat-msg agent">
+    <div class="chat-role">Agent</div>
+    All three items registered. Let me verify the final backlog state.
+  </div>
+
+  <div class="chat-ellipsis">Agent reads work/BACKLOG.md&hellip;</div>
+
+  <div class="chat-msg agent">
+    <div class="chat-role">Agent &mdash; Backlog Summary</div>
+    <strong>Epic: IFE Cost Modeling</strong> (P0, draft)<br>
+    Epic file: <code>work/backlog/epic-ife-cost-modeling.md</code><br><br>
+    <table style="width:100%;font-size:0.85rem;border-collapse:collapse;">
+      <thead><tr style="border-bottom:1px solid #444;"><th style="text-align:left;padding:0.3rem 0.5rem;">ID</th><th style="text-align:left;padding:0.3rem 0.5rem;">Item</th><th style="text-align:left;padding:0.3rem 0.5rem;">Depends On</th></tr></thead>
+      <tbody>
+        <tr><td style="padding:0.3rem 0.5rem;font-family:var(--font-mono);font-size:0.8rem;">WI-006</td><td style="padding:0.3rem 0.5rem;">IFE Cost Structure Library</td><td style="padding:0.3rem 0.5rem;color:#888;">None</td></tr>
+        <tr><td style="padding:0.3rem 0.5rem;font-family:var(--font-mono);font-size:0.8rem;">WI-007</td><td style="padding:0.3rem 0.5rem;">Generic IFE Concept Model</td><td style="padding:0.3rem 0.5rem;font-family:var(--font-mono);font-size:0.8rem;">WI-006</td></tr>
+        <tr><td style="padding:0.3rem 0.5rem;font-family:var(--font-mono);font-size:0.8rem;">WI-008</td><td style="padding:0.3rem 0.5rem;">HIF Concept Instantiation</td><td style="padding:0.3rem 0.5rem;font-family:var(--font-mono);font-size:0.8rem;">WI-007</td></tr>
+      </tbody>
+    </table><br>
+    The epic file has full context: authority source dependencies, success criteria, per-item scope and requirements, sequencing rationale, and risks.<br><br>
+    Next step: <code>/spec-model</code> on WI-006 (IFE Cost Structure Library) to begin the first item.
+  </div>
 </div>
+
+<p style="font-size:0.85rem;color:var(--color-text-muted);">The agent read the intent document, identified three work items with a strictly sequential dependency chain (library &rarr; generic model &rarr; HIF instantiation), created an epic file with full context, and registered each item via <code>agentic-mbse pm add-item</code>. The YAML frontmatter in <code>work/BACKLOG.md</code> is the machine-readable source of truth; the rendered markdown table is derived from it.</p>
+
+<div class="callout">
+  <strong>Authority source dependencies:</strong> Each work item declares which ingested sources it draws from. WI-006 (library patterns) depends on Hawker 2020, ARIES 2013, and Meier 1986. WI-008 (HIF instantiation) depends on Meier 1986 and Bangerter 2013. Every parameter will carry MR-4 compliant citations back to these sources.
+</div>
+
+<p>With the epic registered, the dashboard shows the planned work &mdash; three items in the backlog, zero validations, nothing started yet:</p>
+
+<div class="terminal">
+<span class="prompt">$</span> uv run agentic-mbse status<br>
+<br>
+<span class="output">## Project: fusion-tea</span><br>
+<span class="output">### Work Items</span><br>
+<span class="output">Epic: IFE Cost Modeling &nbsp;[0/3 done]</span><br>
+<span class="output">&nbsp;&nbsp;[ ] IFE Cost Structure Library .. backlog</span><br>
+<span class="output">&nbsp;&nbsp;[ ] Generic IFE Concept Model .. backlog</span><br>
+<span class="output">&nbsp;&nbsp;[ ] HIF Concept Instantiation .. backlog</span><br>
+<span class="output">### Project Rules (REQUIREMENTS.md)</span><br>
+<span class="output">Total: 0 | With validation method: 0 | Machine-enforceable: 0</span><br>
+<span class="output">### Validation Status (VALIDATION_MATRIX.md)</span><br>
+<span class="output">Total: 0 | Passing: 0 | Failing: 0 | Pending: 0</span><br>
+</div>
+
+<!-- ===================== EXECUTION ===================== -->
+<h3>Execution</h3>
+<p>Each work item runs through the same cycle: <code>/spec-model</code> &rarr; <code>/design-model</code> &rarr; <code>/plan-model</code> &rarr; <code>/implement-model</code>. At each stage, the agent produces a durable artifact that the next stage builds on &mdash; and the dashboard tracks progress throughout.</p>
+
+<p>Three work items were executed in sequence. WI-006 (library patterns) gets the deepest showcase below &mdash; it&rsquo;s the &ldquo;from scratch&rdquo; case. WI-007 and WI-008 follow the same cycle with progressively more reuse.</p>
+
+<h3>What a Spec Looks Like</h3>
+<p>The <code>/spec-model</code> command produces a requirements specification &mdash; what to build, traced to domain insights. Here&rsquo;s the WI-006 spec, showing YAML frontmatter (machine-readable state) and the modeling requirements it derives:</p>
+
+<div class="report-highlight">
+<span class="hl-delim">---</span><br>
+<span class="hl-key">Status</span>: <span class="hl-value">completed</span><br>
+<span class="hl-key">Scale</span>: <span class="hl-value">standard</span><br>
+<span class="hl-key">Epic</span>: <span class="hl-value">IFE Cost Modeling</span><br>
+<span class="hl-key">Owner</span>: <span class="hl-value">reid</span><br>
+<span class="hl-key">Created</span>: <span class="hl-value">2026-03-02</span><br>
+<span class="hl-delim">---</span><br>
+<br>
+<span class="hl-heading"># Modeling Specification: IFE Cost Structure Library (WI-006)</span><br>
+<br>
+<span class="hl-muted">Reusable, driver-agnostic library definitions for IFE economic modeling.</span><br>
+<span class="hl-muted">All downstream work items (WI-007, WI-008) import from these definitions.</span>
+</div>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Requirement</th><th>Derives From</th><th>Summary</th></tr></thead>
+  <tbody>
+    <tr><td><code>MR-WI006-1</code></td><td>DI-005, RQ-5</td><td>Hawker&rsquo;s 14 parameters as typed attributes with metadata (min, max, sensitivity)</td></tr>
+    <tr><td><code>MR-WI006-2</code></td><td>DI-002, MR-1</td><td>CAS account hierarchy with IFE-specific classification</td></tr>
+    <tr><td><code>MR-WI006-3</code></td><td>DI-005, RQ-2</td><td>LCOE calculation framework (closed-form DCF)</td></tr>
+    <tr><td><code>MR-WI006-4</code></td><td>DI-001, RQ-1</td><td>Fusion cycle gain constraint (&eta;&middot;G &ge; 10)</td></tr>
+    <tr><td><code>MR-WI006-5</code></td><td>MR-2</td><td>Costed component interface (standard <code>capital_cost</code> attribute)</td></tr>
+    <tr><td><code>MR-WI006-6</code></td><td>MR-4, PR-5</td><td>Traceable citations on all quantitative values</td></tr>
+    <tr><td><code>MR-WI006-7</code></td><td>MR-3</td><td>All definitions concept-agnostic (no driver-specific values)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p style="font-size:0.85rem;color:var(--color-text-muted);">Every spec requirement traces backward to either a domain insight (DI-XXX from Section 6) or a project modeling requirement (MR-X from REQUIREMENTS.md). This is what makes the pipeline verifiable: you can audit any model parameter back through spec &rarr; insight &rarr; source document &rarr; page number.</p>
+
+<h3>What a Design Looks Like</h3>
+<p>The <code>/design-model</code> command takes the spec and produces an architecture &mdash; which SysML elements to create, how they relate, and why. Here&rsquo;s what the WI-006 design decided:</p>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Decision</th><th>Choice</th><th>Rationale</th></tr></thead>
+  <tbody>
+    <tr><td>Numeric types</td><td>Plain <code>Real</code></td><td>Custom monetary ISQ types are complex and untested with syside parser</td></tr>
+    <tr><td>Parameter metadata</td><td><code>attribute def &lsquo;Economic Parameter&rsquo;</code></td><td>Machine-readable; supports future Monte Carlo via codegen</td></tr>
+    <tr><td>LCOE formula</td><td>Closed-form DCF</td><td>SysML v2 <code>calc def</code> doesn&rsquo;t support looping; mathematically equivalent for constant streams</td></tr>
+    <tr><td>CAS hierarchy</td><td>Part def specializations of <code>&lsquo;Costed Component&rsquo;</code></td><td>Type-safe; each account carries a queryable scope classification enum</td></tr>
+    <tr><td>File organization</td><td>3 subdirectories: <code>foundation/</code>, <code>cost_structure/</code>, <code>analyses/</code></td><td>Follows MODELING_GUIDE.md pattern; separates concerns</td></tr>
+    <tr><td>Param vs. calc separation</td><td>Parameters and LCOE calc in separate files</td><td>Calc is pure math &mdash; can be reused with any parameter source</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>The design also includes a full prototyping phase &mdash; the agent writes SysML, runs it through the parser, fixes issues, and iterates until all files pass validation. By the time design is &ldquo;complete,&rdquo; the SysML already works:</p>
+
+<pre>models/library/
+  foundation/
+    economic_parameter.sysml    <span style="color:var(--color-text-light)"># attribute def + CAS Scope enum</span>
+    costed_component.sysml     <span style="color:var(--color-text-light)"># abstract part def (standard interface)</span>
+  cost_structure/
+    cas_hierarchy.sysml         <span style="color:var(--color-text-light)"># 9 CAS level 2 part defs</span>
+    ife_cost_parameters.sysml   <span style="color:var(--color-text-light)"># 14 Hawker parameters with metadata</span>
+  analyses/
+    ife_lcoe.sysml              <span style="color:var(--color-text-light)"># closed-form DCF calc def</span>
+    fusion_cycle.sysml          <span style="color:var(--color-text-light)"># recirculating power + viability constraint</span></pre>
+
+<h3>What a Plan Looks Like</h3>
+<p>The <code>/plan-model</code> command takes the design and produces a phased execution plan with validation checkpoints. Since the design already includes a validated prototype, the plan focuses on refinement and integration:</p>
+
+<div class="card">
+  <strong>Phase 1: Documentation Audit &amp; Refinement</strong>
+  <ul style="font-size:0.88rem;margin-top:0.5rem;">
+    <li>MR-4 citation audit across all 6 files (14 checks)</li>
+    <li>MR-WI006-7 concept-agnosticism verification (4 checks)</li>
+    <li>Naming consistency check</li>
+    <li>syside parse validation &mdash; PASSED</li>
+  </ul>
+  <strong style="display:block;margin-top:0.75rem;">Phase 2: Project Integration &amp; Verification</strong>
+  <ul style="font-size:0.88rem;margin-top:0.5rem;">
+    <li>Register architectural decisions (AD-001 through AD-006)</li>
+    <li>Update validation matrix (SV-001 through SV-005)</li>
+    <li>Verify all 8 spec acceptance criteria</li>
+    <li>Close work item via <code>agentic-mbse pm close-item WI-006</code></li>
+  </ul>
+</div>
+
+<p style="font-size:0.85rem;color:var(--color-text-muted);">Each plan phase has concrete checkboxes that get marked off during <code>/implement-model</code>. The plan is a durable artifact &mdash; if implementation spans multiple sessions, the next session reads the plan and resumes where the checkboxes stop.</p>
+
+<h3>The SysML Models</h3>
+<p>Here&rsquo;s what the actual model code looks like. This excerpt from <code>ife_cost_parameters.sysml</code> shows how each of Hawker&rsquo;s 14 parameters carries metadata and traceable citations:</p>
+
+<div class="report-highlight" style="font-size:0.75rem;">
+<span class="hl-key">part def</span> <span class="hl-value">'IFE Cost Parameters'</span> {<br>
+&nbsp;&nbsp;<span class="hl-muted">doc /* The 14 technology-agnostic parameters that characterize IFE LCOE.</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-muted">**Source**: knowledge/sources/a_simplified_economic_model.../output.md</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-muted">**Ref**: Table 1 (parameter definitions), Figure 3 (sensitivity)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-muted">**Basis**: Complete parameter set from Hawker 2020 Monte Carlo analysis */</span><br>
+<br>
+&nbsp;&nbsp;<span class="hl-key">attribute</span> <span class="hl-value">discount_rate</span> : <span class="hl-cite">'Economic Parameter'</span> {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-muted">doc /* Highest sensitivity parameter (+0.247).</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-muted">Source: Hawker 2020 Table 1, parameter d. */</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;:&gt;&gt; value = <span class="hl-value">0.08</span>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:&gt;&gt; min_value = <span class="hl-value">0.02</span>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:&gt;&gt; max_value = <span class="hl-value">0.12</span>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:&gt;&gt; sensitivity = <span class="hl-value">0.247</span>;<br>
+&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;<span class="hl-key">attribute</span> <span class="hl-value">driver_cost_constant</span> : <span class="hl-cite">'Economic Parameter'</span> {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-muted">doc /* Driver capital cost per joule of bank energy.</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-muted">Reference points: NIF $9.5/J, DPSSL $700-1000/J,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-muted">Xcimer $60-120/J, pulsed-power $1.7-6/J.</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-muted">Source: Hawker 2020 Table 1, parameter gamma.</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-muted">Basis: DI-004 driver cost reference points. */</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;:&gt;&gt; value = <span class="hl-value">5.0</span>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:&gt;&gt; min_value = <span class="hl-value">2.0</span>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:&gt;&gt; max_value = <span class="hl-value">10.0</span>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:&gt;&gt; sensitivity = <span class="hl-value">0.075</span>;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="hl-muted">// ... 12 more parameters with same structure</span><br>
+}
+</div>
+
+<p>And here&rsquo;s how a concrete concept model specializes the library. The HIF driver derives its cost from Meier&rsquo;s engineering formula, which then feeds automatically into the inherited Hawker LCOE calculation:</p>
+
+<div class="report-highlight" style="font-size:0.75rem;">
+<span class="hl-key">part def</span> <span class="hl-value">'HIF Driver'</span> :&gt; <span class="hl-cite">'IFE Driver'</span> {<br>
+&nbsp;&nbsp;<span class="hl-muted">doc /* Heavy Ion Fusion driver: induction linear accelerator.</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-muted">**Source**: knowledge/sources/energy_from_inertial_fusion/output.md</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-muted">**Ref**: Osiris column in power plant operating parameters table</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-muted">**Basis**: Osiris HIF plant design (1.0 GWe, liquid-wall chamber) */</span><br>
+<br>
+&nbsp;&nbsp;<span class="hl-muted">// Meier driver cost computation &mdash; engineering formula becomes gamma</span><br>
+&nbsp;&nbsp;<span class="hl-key">calc</span> <span class="hl-value">meier_cost</span> : <span class="hl-cite">'Meier HIF Driver Cost'</span> {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;in beam_energy_mj = beam_energy_mj;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;in driver_efficiency = efficiency;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;in num_chambers = num_chambers;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;in rep_rate = pulse_rate_ref;<br>
+&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;<span class="hl-muted">// Inherited interface &mdash; HIF-specific values</span><br>
+&nbsp;&nbsp;:&gt;&gt; efficiency = <span class="hl-value">0.35</span>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-muted">// 20-30% range, Osiris baseline</span><br>
+&nbsp;&nbsp;:&gt;&gt; cost_per_joule = <span class="hl-value">meier_cost.gamma</span>; <span class="hl-muted">// derived from engineering formula</span><br>
+&nbsp;&nbsp;:&gt;&gt; energy = <span class="hl-value">14.286e6</span>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-muted">// bank energy: 5 MJ beam / 0.35 eta</span><br>
+&nbsp;&nbsp;:&gt;&gt; lifetime_shots = <span class="hl-value">6.0e9</span>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-muted">// 30 yr * 3.5 Hz * capacity factor</span><br>
+}
+</div>
+
+<p style="font-size:0.85rem;color:var(--color-text-muted);">The key pattern: <code>:&gt;&gt; cost_per_joule = meier_cost.gamma</code> &mdash; the HIF driver&rsquo;s cost is dynamically derived from Meier&rsquo;s engineering formula (beam energy, efficiency, chamber count, rep rate), then automatically flows into the inherited Hawker LCOE calculation. One model element bridges two independent cost models from two different papers separated by 34 years.</p>
+
+<h3>Validation</h3>
+<p>Every SysML file is run through the parser. All 11 files across 3 work items pass:</p>
+
+<div class="terminal">
+<span class="prompt">$</span> uv run syside check -Werror models/library/**/*.sysml models/designs/**/*.sysml<br>
+<br>
+<span class="output">Checked 11 files: 0 errors, 0 warnings</span><br>
+</div>
+
+<p>Beyond parsing, each work item registers validation checks in the project&rsquo;s <code>VALIDATION_MATRIX.md</code>. These range from structural checks (&ldquo;are all required subsystems present?&rdquo;) to reasonableness checks (&ldquo;is the LCOE within the expected range?&rdquo;):</p>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>ID</th><th>Check</th><th>Type</th><th>Result</th></tr></thead>
+  <tbody>
+    <tr><td style="font-family:var(--font-mono);font-size:0.8rem;">SV-001</td><td>All 14 Hawker parameters present with metadata</td><td>rollup</td><td style="color:#16a34a;font-weight:600">PASS</td></tr>
+    <tr><td style="font-family:var(--font-mono);font-size:0.8rem;">SV-003</td><td>LCOE calc dimensional consistency</td><td>physical</td><td style="color:#16a34a;font-weight:600">PASS</td></tr>
+    <tr><td style="font-family:var(--font-mono);font-size:0.8rem;">SV-008</td><td>LCOE with realistic params within Hawker range ($25&ndash;120/MWh)</td><td>reasonableness</td><td style="color:#16a34a;font-weight:600">PASS</td></tr>
+    <tr><td style="font-family:var(--font-mono);font-size:0.8rem;">SV-012</td><td>Meier driver cost formula produces ~$1B</td><td>baseline</td><td style="color:#16a34a;font-weight:600">PASS</td></tr>
+    <tr><td style="font-family:var(--font-mono);font-size:0.8rem;">SV-014</td><td>Meier COE at reference case ~ 5.0 cents/kWh</td><td>baseline</td><td style="color:#16a34a;font-weight:600">PASS</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p style="font-size:0.85rem;color:var(--color-text-muted);">Showing 5 of 15 total validations. The full matrix covers parse checks, structural completeness, dimensional consistency, parameter range reasonableness, and cross-validation against reference values from the source literature. All 15 pass.</p>
+
+<h3>Requirements Compliance</h3>
+<p>We defined 6 modeling requirements in <code>REQUIREMENTS.md</code> before any models were built. Did the pipeline follow its own rules?</p>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Requirement</th><th>What It Says</th><th>Evidence</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><code>MR-1</code></td>
+      <td>CAS hierarchy as primary cost decomposition</td>
+      <td style="color:#16a34a;">9 CAS level 2 part defs in <code>cas_hierarchy.sysml</code>; every subsystem maps to a CAS account</td>
+    </tr>
+    <tr>
+      <td><code>MR-2</code></td>
+      <td>Standard costed component interface</td>
+      <td style="color:#16a34a;">Abstract <code>&lsquo;Costed Component&rsquo;</code> part def with <code>capital_cost</code>; all CAS accounts specialize it</td>
+    </tr>
+    <tr>
+      <td><code>MR-3</code></td>
+      <td>Library concept-agnostic, designs concept-specific</td>
+      <td style="color:#16a34a;">Library has zero driver-specific values; HIF params live only in <code>models/designs/hif_ife/</code></td>
+    </tr>
+    <tr>
+      <td><code>MR-4</code></td>
+      <td>Traceable citations on all quantitative values</td>
+      <td style="color:#16a34a;">Every parameter carries Source/Ref/Basis doc comments; traceability matrix has 7 HIF rows</td>
+    </tr>
+    <tr>
+      <td><code>MR-5</code></td>
+      <td>Standard output schema for comparison</td>
+      <td style="color:#16a34a;">Both Hawker LCOE and Meier COE computed for same plant; dual-output pattern established</td>
+    </tr>
+    <tr>
+      <td><code>MR-6</code></td>
+      <td>Patterns defined before production models</td>
+      <td style="color:#16a34a;">WI-006 established all patterns (parameter metadata, CAS hierarchy, calc separation); WI-007/008 reuse them</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout">
+  <strong>The costing pattern requirement:</strong> MR-1 said all models must use CAS hierarchy as the primary cost decomposition. The library established 9 CAS level 2 accounts. The generic IFE model maps every subsystem to a CAS account. The HIF instantiation inherits this structure without modification. When we audit the models against the requirement, the chain is clear: requirement &rarr; library pattern &rarr; generic model structure &rarr; concrete model inheritance.
+</div>
+
+<h3>Dashboard: After Completion</h3>
+<p>Compare this to the &ldquo;before&rdquo; dashboard above. Three work items completed, 15 validations passing, zero failing:</p>
+
+<div class="terminal">
+<span class="prompt">$</span> uv run agentic-mbse status<br>
+<br>
+<span class="output">## Project: fusion-tea</span><br>
+<span class="output">### Work Items</span><br>
+<span class="output">Epic: IFE Cost Modeling &nbsp;[3/3 done]</span><br>
+<span class="output">&nbsp;&nbsp;[x] ife-cost-structure-library .. completed 2026-03-02</span><br>
+<span class="output">&nbsp;&nbsp;[x] generic-ife-concept-model .. completed 2026-03-02</span><br>
+<span class="output">&nbsp;&nbsp;[x] hif-concept-instantiation .. completed 2026-03-03</span><br>
+<span class="output">### Project Rules (REQUIREMENTS.md)</span><br>
+<span class="output">Total: 0 | With validation method: 0 | Machine-enforceable: 0</span><br>
+<span class="output">### Validation Status (VALIDATION_MATRIX.md)</span><br>
+<span class="output">Total: 15 | Passing: 15 | Failing: 0 | Pending: 0</span><br>
+</div>
+
+<p style="font-size:0.85rem;color:var(--color-text-muted);">The dashboard is derived from YAML frontmatter and filesystem scanning &mdash; no manual state to maintain. Work item status, validation results, and completion dates are all tracked automatically. 6 architectural decisions (AD-001&ndash;006) were registered during modeling and now constrain future work.</p>
+
+<h3>The Knowledge Transformation</h3>
+
+<div class="trace-chain">
+  <div class="trace-node">
+    <div class="node-label">Intent + DI-XXX</div>
+    <div class="node-file">modeling_project/intent/</div>
+  </div>
+  <div class="trace-arrow">&rarr;</div>
+  <div class="trace-node">
+    <div class="node-label">Epic + 3 work items</div>
+    <div class="node-file">work/BACKLOG.md</div>
+  </div>
+  <div class="trace-arrow">&rarr;</div>
+  <div class="trace-node">
+    <div class="node-label">Spec &rarr; Design &rarr; Plan</div>
+    <div class="node-file">work/completed/WI-006..008/</div>
+  </div>
+  <div class="trace-arrow">&rarr;</div>
+  <div class="trace-node">
+    <div class="node-label">11 SysML files</div>
+    <div class="node-file">models/{library,designs}/</div>
+  </div>
+  <div class="trace-arrow">&rarr;</div>
+  <div class="trace-node">
+    <div class="node-label">15 validations passing</div>
+    <div class="node-file">VALIDATION_MATRIX.md</div>
+  </div>
+</div>
+
+<p style="font-size:0.85rem;color:var(--color-text-muted);">The full pipeline: domain insights and intent documents became a structured epic with 3 sequenced work items. Each work item produced spec &rarr; design &rarr; plan &rarr; SysML artifacts. The library (WI-006) established patterns, the generic model (WI-007) assembled them into a plant, and the HIF instantiation (WI-008) populated concrete values from source literature. Every quantitative value traces back to a specific page in a specific paper.</p>
 </section>
 
 <hr class="section-divider">
 
 <!-- ************************************************************
-     SECTION 9: CROSS-CONCEPT COMPARISON (STUB)
+     SECTION 8: VISUALIZATION & ANALYSIS
      ************************************************************ -->
-<section id="cross-concept">
-<h2><span class="section-num">9.</span> Cross-Concept Comparison</h2>
-<div class="stub-banner">&#9711; Coming soon &mdash; populated when cross-concept comparison work completes</div>
-<div class="stub-content">
-  <p>Multiple concept models producing standard outputs are compared along the 7 comparison axes, generating the analysis that answers the investigation's research questions.</p>
-  <div class="transform">
-    <div class="t-in"><div class="t-label">Input</div>Validated concept models with standard output schemas</div>
-    <div class="t-arrow">&rarr;</div>
-    <div class="t-out"><div class="t-label">Output</div>LCOE charts, capital cost breakdowns, sensitivity analysis, comparison dashboards</div>
+<section id="visualization">
+<h2><span class="section-num">8.</span> Visualization &amp; Analysis</h2>
+
+<p>The models built through the workflow in Section 7 aren't just SysML files &mdash; they're machine-readable, introspectable artifacts. The extraction toolchain parses them via <a href="https://github.com/Systems-Modeling/SysML-v2-Release">syside</a> and produces structural views, while the calculation definitions encode the complete cost logic with traceable parameters. This section shows what the toolchain produces from the HIF/Osiris concept model.</p>
+
+<!-- ============================================================
+     8.1 Structural View
+     ============================================================ -->
+<h3>Structural View</h3>
+
+<p>The extraction CLI walks the syside AST to build the containment hierarchy &mdash; which parts contain which sub-parts, with their type definitions. For the HIF plant, this shows the Osiris design decomposed into driver, target factory, and reaction chamber (with its CAS22 sub-accounts).</p>
+
+<div class="card" style="text-align:center;padding:1.5rem;">
+  <img src="images/structural-view-hif.svg" alt="HIF plant containment hierarchy: hif_plant containing driver, target_factory, and chamber with blanket, shield, and structure sub-parts" style="max-width:100%;height:auto;">
+</div>
+
+<div class="terminal">
+<span class="comment"># Generate structural view from SysML models</span><br>
+<span class="prompt">$</span> uv run python -m proof_of_concept.extraction models/ --format dot \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;| dot -Tsvg -o demo/images/structural-view-hif.svg<br>
+</div>
+
+<div class="callout">
+  <strong>Interactive exploration available.</strong> Run <code>uv run python -m proof_of_concept.web</code> to launch the Cytoscape.js viewer &mdash; the same extraction engine powers an interactive diagram with expand/collapse, cost coloring, and PNG export.
+</div>
+
+<!-- ============================================================
+     8.2 Calculation Data Flow
+     ============================================================ -->
+<h3>Calculation Data Flow</h3>
+
+<p>The HIF plant model encodes two independent cost calculation chains, both expressed as SysML <code>calc def</code> elements with formally declared inputs and outputs. Every parameter traces to a source subsystem and a literature citation.</p>
+
+<div class="card" style="text-align:center;padding:1.5rem;">
+  <img src="images/calc-flow-hif.svg" alt="HIF cost calculation data flow showing Hawker LCOE and Meier COE chains with parameter sources" style="max-width:100%;height:auto;">
+</div>
+
+<p>The <strong style="color:var(--color-accent);">Hawker chain</strong> (blue edges) implements a general IFE LCOE model with 14 input parameters and 15 intermediate computations. The <strong style="color:var(--color-process);">Meier chain</strong> (purple edges) uses HIF-specific parametric cost formulas from 1986 for independent cross-validation. Both chains share plant-level operating parameters but produce independent cost outputs &mdash; LCOE in $/MWh vs. COE in &cent;/kWh (1988$).</p>
+
+<details>
+<summary>Osiris baseline parameters</summary>
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th><th>Source Subsystem</th><th>Citation</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>driver.efficiency</code></td><td>0.35</td><td>HIF Driver</td><td>EIF-1992 Osiris</td></tr>
+    <tr><td><code>driver.energy</code></td><td>14.286 MJ (bank)</td><td>HIF Driver</td><td>5.0 MJ beam / 0.35 &eta;</td></tr>
+    <tr><td><code>driver.cost_per_joule</code></td><td>&gamma; (derived)</td><td>HIF Driver</td><td>Meier 1986 Eq. 5</td></tr>
+    <tr><td><code>driver.lifetime_shots</code></td><td>6.0&times;10&sup9;</td><td>HIF Driver</td><td>30 yr &times; 3.5 Hz &times; CF</td></tr>
+    <tr><td><code>chamber.blanket_energy_m</code></td><td>1.15</td><td>Reaction Chamber</td><td>hif_plant.sysml</td></tr>
+    <tr><td><code>chamber.yield_cost_const</code></td><td>$5&times;10&sup6;</td><td>Reaction Chamber</td><td>hif_plant.sysml</td></tr>
+    <tr><td><code>plant.availability</code></td><td>0.90</td><td>Plant operations</td><td>Bangerter 2013</td></tr>
+    <tr><td><code>plant.frequency</code></td><td>3.5 Hz</td><td>Plant operations</td><td>EIF-1992 Osiris</td></tr>
+    <tr><td><code>plant.gain</code></td><td>80</td><td>Plant operations</td><td>EIF-1992 Osiris</td></tr>
+    <tr><td><code>plant.thermal_efficiency</code></td><td>0.43</td><td>Plant operations</td><td>EIF-1992 Osiris</td></tr>
+    <tr><td><code>plant.discount_rate</code></td><td>0.08</td><td>Plant financial</td><td>Hawker 2020</td></tr>
+    <tr><td><code>plant.plant_cost_constant</code></td><td>$2000/kWe</td><td>Plant financial</td><td>Meier 1986 (estimated)</td></tr>
+    <tr><td><code>plant.om_cost_constant</code></td><td>$65/kWe-yr</td><td>Plant financial</td><td>Meier 1986 (estimated)</td></tr>
+    <tr><td><code>target.cost_per_target</code></td><td>$10</td><td>Target Factory</td><td>Hawker 2020 default</td></tr>
+  </tbody>
+</table>
+</div>
+</details>
+
+<!-- ============================================================
+     8.3 Library vs. Design Architecture
+     ============================================================ -->
+<h3>Library vs. Design Architecture</h3>
+
+<p>The model is organized in three layers &mdash; each more concept-specific than the last. This separation is enforced by <strong>MR-3</strong>: library definitions must remain concept-agnostic so they can be reused across any fusion approach.</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr><th>Layer</th><th>Location</th><th>What It Defines</th><th>Concept-Specific?</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Foundation</strong></td><td><code>library/foundation/</code></td><td>Economic Parameter, Costed Component</td><td>No &mdash; shared across all fusion</td></tr>
+    <tr><td><strong>Cost Structure</strong></td><td><code>library/cost_structure/</code></td><td>CAS20&ndash;CAS90, IFE Cost Parameters</td><td>No &mdash; CAS is universal</td></tr>
+    <tr><td><strong>Analyses</strong></td><td><code>library/analyses/</code></td><td>IFE LCOE, Recirculating Power, Meier costs</td><td>No &mdash; formulas are general</td></tr>
+    <tr><td><strong>Generic IFE</strong></td><td><code>designs/generic_ife/</code></td><td>IFE Power Plant template, subsystem defs</td><td>IFE-specific, driver-agnostic</td></tr>
+    <tr><td><strong>HIF Instance</strong></td><td><code>designs/hif_ife/</code></td><td>HIF Driver, Osiris plant values</td><td>HIF-specific, fully concrete</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>The pattern in action &mdash; the abstract <code>IFE Driver</code> declares <em>what</em> every inertial fusion driver must have. The concrete <code>HIF Driver</code> fills in <em>how</em> with values from source literature:</p>
+
+<div class="scope-grid">
+  <div class="scope-box scope-in">
+    <h4>Library: IFE Driver (abstract)</h4>
+    <div class="report-highlight">
+<span class="hl-key">abstract part def</span> <span class="hl-value">'IFE Driver'</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;:&gt; <span class="hl-value">'CAS22.1.3 Driver'</span> {<br>
+<br>
+&nbsp;&nbsp;<span class="hl-comment">// Interface only &mdash; no values</span><br>
+&nbsp;&nbsp;<span class="hl-key">attribute</span> efficiency : Real;<br>
+&nbsp;&nbsp;<span class="hl-key">attribute</span> cost_per_joule : Real;<br>
+&nbsp;&nbsp;<span class="hl-key">attribute</span> energy : Real;<br>
+&nbsp;&nbsp;<span class="hl-key">attribute</span> lifetime_shots : Real;<br>
+}
+    </div>
+    <p style="font-size:0.8rem;color:var(--color-text-muted);margin-top:0.5rem;"><code>designs/generic_ife/ife_subsystems.sysml</code></p>
   </div>
-  <div class="artifacts"><strong>Expected artifacts:</strong> LCOE comparison charts, CAS breakdown by concept, sensitivity-risk maps, estimation confidence matrix, cross-concept dashboard</div>
+  <div class="scope-box scope-out">
+    <h4>Design: HIF Driver (concrete)</h4>
+    <div class="report-highlight">
+<span class="hl-key">part def</span> <span class="hl-value">'HIF Driver'</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;:&gt; <span class="hl-value">'IFE Driver'</span> {<br>
+<br>
+&nbsp;&nbsp;<span class="hl-comment">// HIF-specific attributes</span><br>
+&nbsp;&nbsp;<span class="hl-key">attribute</span> beam_energy_mj : Real;<br>
+&nbsp;&nbsp;<span class="hl-key">calc</span> meier_cost : <span class="hl-value">'Meier HIF Driver Cost'</span>;<br>
+<br>
+&nbsp;&nbsp;<span class="hl-comment">// Concrete values from Osiris</span><br>
+&nbsp;&nbsp;:&gt;&gt; efficiency = <span class="hl-value">0.35</span>;<br>
+&nbsp;&nbsp;:&gt;&gt; cost_per_joule = <span class="hl-value">meier_cost.gamma</span>;<br>
+&nbsp;&nbsp;:&gt;&gt; energy = <span class="hl-value">14.286e6</span>;<br>
+&nbsp;&nbsp;:&gt;&gt; lifetime_shots = <span class="hl-value">6.0e9</span>;<br>
+}
+    </div>
+    <p style="font-size:0.8rem;color:var(--color-text-muted);margin-top:0.5rem;"><code>designs/hif_ife/hif_driver.sysml</code></p>
+  </div>
+</div>
+
+<p>The abstract definition declares four interface attributes with no defaults &mdash; each driver type <em>must</em> provide its own values. The HIF driver adds beam-energy and Meier cost-formula attributes, then fills in the interface with Osiris reference values. A laser driver or pulsed-power driver would specialize the same interface with completely different values and cost models, but the LCOE calculation chain would work identically.</p>
+
+<!-- ============================================================
+     Closing
+     ============================================================ -->
+
+<p style="font-size:0.85rem;color:var(--color-text-muted);">With one concept modeled (HIF/Osiris), the infrastructure is proven. Adding a second concept &mdash; laser IFE, pulsed-power, or magnetic fusion &mdash; means specializing the same generic template with different driver parameters and source literature. The comparison axes (LCOE, CAS breakdown, sensitivity profile) are already built into the model structure.</p>
+
+</section>
+
+<hr class="section-divider">
+
+<!-- ************************************************************
+     APPENDIX A: PDF PROCESSING
+     ************************************************************ -->
+<section id="appendix-pdf-processing">
+<h2>Appendix A: PDF Processing Details</h2>
+
+<h3>Quality Gates</h3>
+<p>The extraction pipeline doesn&rsquo;t blindly convert PDFs to markdown. Each page passes through a quality gate that compares base extraction against ensemble table detectors (GMFT, Img2Table). When the gate detects missed tables or structural issues, it routes the page to Claude for enhanced extraction.</p>
+
+<p>Example from the Xcimer laser fusion paper (28 pages):</p>
+
+<div class="terminal">
+<span class="comment"># decisions.json &mdash; per-page quality gate output</span><br>
+<br>
+<span class="output">Page 0:  claude_replace  &ldquo;GMFT found 1 table but pymupdf produced no pipe tables&rdquo;</span><br>
+<span class="output">Page 1:  keep</span><br>
+<span class="output">Page 2:  keep</span><br>
+<span class="output">&hellip;</span><br>
+<span class="output">Page 17: claude_replace  &ldquo;GMFT found 1 table but pymupdf produced no pipe tables&rdquo;</span><br>
+<span class="output">Page 19: claude_replace  &ldquo;GMFT found 1 table but pymupdf produced no pipe tables&rdquo;</span><br>
+<span class="output">&hellip;</span><br>
+<span class="output">Page 24: claude_replace  &ldquo;GMFT found 1 table but pymupdf produced no pipe tables&rdquo;</span><br>
+<span class="output">Page 25&ndash;27: keep</span><br>
+<br>
+<span class="comment"># Result: 24 pages kept as-is, 4 pages enhanced by Claude</span><br>
+</div>
+
+<p style="font-size:0.85rem;color:var(--color-text-muted);">Only 4 of 28 pages needed Claude enhancement &mdash; all triggered by tables that the base extractor missed but GMFT detected. This selective approach keeps costs down while ensuring critical data (like the FOAK laser cost breakdown at $109/J) is captured correctly.</p>
+
+<h3>Per-Paper Extraction Quality</h3>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Paper</th><th>Year</th><th>Quality</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Xcimer Laser Fusion</td><td>2026</td><td style="color:#16a34a;font-weight:600">Excellent</td><td>Clean tables, proper headings, no artifacts</td></tr>
+    <tr><td>AMPS High-Yield IFE</td><td>2025</td><td style="color:#16a34a;font-weight:600">Excellent</td><td>Extracted from arxiv HTML; all structure preserved</td></tr>
+    <tr><td>Accelerators for IFE</td><td>2013</td><td style="color:#16a34a;font-weight:600">Good</td><td>145 KB extraction; tables and references intact</td></tr>
+    <tr><td>Energy from Inertial Fusion</td><td>1992</td><td style="color:#d97706;font-weight:600">Acceptable</td><td>Shorter extraction; review article format</td></tr>
+    <tr><td>HIF Electric Power Plants</td><td>1986</td><td style="color:#d97706;font-weight:600">Acceptable</td><td>OCR noise on headers; equations and cost tables readable but some uncertain values</td></tr>
+  </tbody>
+</table>
 </div>
 </section>
 
@@ -899,6 +1735,40 @@ dialog::backdrop { background: rgba(0,0,0,0.5); }
 <!-- ============================================================
      Dialogs for "View full file"
      ============================================================ -->
+
+<!-- Paper preview: HIF 1986 -->
+<dialog id="dialog-preview-hif">
+  <div class="dialog-header">
+    <div>
+      <h3>Economic Studies for Heavy-Ion-Fusion Electric Power Plants</h3>
+      <div class="dialog-path">Meier, Hogan &amp; Bangerter &mdash; LLNL, 1986</div>
+    </div>
+    <button class="dialog-close" onclick="this.closest('dialog').close()">&times; Close</button>
+  </div>
+  <div class="dialog-body" style="text-align:center;">
+    <img src="images/hif-1986-page1.png"
+         alt="First page of HIF economics paper"
+         style="max-width:100%;border:1px solid var(--color-border);border-radius:4px;">
+    <p style="font-size:0.85rem;color:var(--color-text-muted);margin-top:1rem;">Scanned 1986 preprint from Lawrence Livermore. Parametric COE model for heavy-ion-fusion plants examining driver cost, pulse rate, target gain, and multi-unit scaling.</p>
+  </div>
+</dialog>
+
+<!-- Paper preview: Energy from Inertial Fusion 1992 -->
+<dialog id="dialog-preview-eif">
+  <div class="dialog-header">
+    <div>
+      <h3>Energy from Inertial Fusion</h3>
+      <div class="dialog-path">Hogan, Bangerter &amp; Kulcinski &mdash; Physics Today, 1992</div>
+    </div>
+    <button class="dialog-close" onclick="this.closest('dialog').close()">&times; Close</button>
+  </div>
+  <div class="dialog-body" style="text-align:center;">
+    <img src="images/eif-1992-page1.png"
+         alt="First page of Energy from Inertial Fusion"
+         style="max-width:100%;border:1px solid var(--color-border);border-radius:4px;">
+    <p style="font-size:0.85rem;color:var(--color-text-muted);margin-top:1rem;">Comprehensive 1992 review covering the full IFE landscape: laser, heavy-ion, and light-ion drivers, target physics, and power plant concepts.</p>
+  </div>
+</dialog>
 
 <!-- OVERVIEW.md -->
 <dialog id="dialog-overview">
@@ -1124,6 +1994,125 @@ dialog::backdrop { background: rgba(0,0,0,0.5); }
     <hr>
     <p><em>No active decisions yet.</em> Architectural decisions (AD-XXX) will emerge from taxonomy development and modeling pattern work.</p>
     <p><em>Previous decisions (AD-001 through AD-005) archived to <code>archive/modeling_project/ARCHITECTURE.md</code>.</em></p>
+  </div>
+</dialog>
+
+<!-- Research Report dialog -->
+<dialog id="dialog-research-report">
+  <div class="dialog-header">
+    <div>
+      <h3>IFE System Modeling: Design Concept, Cost Structure, and LCOE Analysis</h3>
+      <div class="dialog-path">knowledge/research/approved/20260302-165055_ife-system-modeling-first-pass.md</div>
+    </div>
+    <button class="dialog-close" onclick="this.closest('dialog').close()">&times; Close</button>
+  </div>
+  <div class="dialog-body">
+    <pre style="background:#1e1e2e;color:#cdd6f4;padding:0.8rem 1rem;border-radius:6px;font-size:0.75rem;line-height:1.5;border:none;"><span style="color:#f9e2af;">---</span>
+<span style="color:#89b4fa;">date</span>: <span style="color:#a6e3a1;">2026-03-02</span>
+<span style="color:#89b4fa;">researcher</span>: <span style="color:#a6e3a1;">Claude (agentic)</span>
+<span style="color:#89b4fa;">topic</span>: <span style="color:#a6e3a1;">ife-system-modeling-first-pass</span>
+<span style="color:#89b4fa;">tags</span>: <span style="color:#a6e3a1;">[IFE, cost-modeling, LCOE, CAS, driver-comparison, system-architecture]</span>
+<span style="color:#89b4fa;">research_type</span>: <span style="color:#a6e3a1;">domain</span>
+<span style="color:#f9e2af;">---</span></pre>
+
+    <h2>Research Question</h2>
+    <p>Synthesize the IFE concept for first-pass model structure: (1) logical process and hierarchy, (2) cost categories and CAS mapping, (3) LCOE models and key parameters.</p>
+
+    <h2>Summary</h2>
+    <ul>
+      <li>IFE power plants share a universal process chain (fabricate target &rarr; inject &rarr; drive &rarr; implode &rarr; burn &rarr; capture energy &rarr; convert to electricity) but diverge substantially in driver technology, chamber concept, and resulting engineering constraints</li>
+      <li>The CAS framework (CAS20&ndash;99) is shared between MFE and IFE; divergence concentrates in CAS22 sub-accounts (driver replaces magnets, target factory replaces divertor, chamber geometry changes)</li>
+      <li>Hawker&rsquo;s 14-parameter model identifies discount rate, plant cost, target cost, gain, driver lifetime, and availability as the highest-sensitivity LCOE parameters &mdash; no single parameter dominates</li>
+      <li>Cross-source LCOE projections range from ~$25/MWh (optimistic Monte Carlo) to ~$65/MWh (ARPA-E ALPHA), with heavy-ion studies at 3.9&ndash;5.8 cents/kWh (1988$)</li>
+      <li>PyFECONS implements IFE via polymorphic CAS22 accounts (Union types for lasers/coils, ignition/heating, target factory/divertor) with NIF-scaled driver costs</li>
+    </ul>
+
+    <h2>Detailed Findings</h2>
+
+    <h3>1. IFE Design Concept &mdash; Logical Process</h3>
+    <p>All IFE power plant concepts share a fundamental process chain, identified across <span style="color:#d97706;">[EIF-1992]</span>, <span style="color:#d97706;">[AMPS-2025]</span>, <span style="color:#d97706;">[Xcimer-2026]</span>, and <span style="color:#d97706;">[Accel-2013]</span>:</p>
+    <p><strong>Step 1: Target Fabrication</strong> &mdash; Targets manufactured at rates up to 10/sec. Fuel capsule is a spherical shell containing D-T fuel. For indirect-drive, capsule surrounded by a high-Z hohlraum. <span style="color:#d97706;">[EIF-1992]</span></p>
+    <p><strong>Step 2: D-T Fuel Loading</strong> &mdash; Fuel loaded by diffusion through capsule wall. Uniform fuel layer via &ldquo;beta-layering.&rdquo; Tritium throughput: 1&ndash;2 kg/day. <span style="color:#d97706;">[EIF-1992]</span></p>
+    <p><strong>Step 3: Target Injection</strong> &mdash; Targets injected into reaction chamber at repetition rate. <span style="color:#d97706;">[AMPS-2025, Section 4.2.3]</span></p>
+    <p><strong>Step 4: Driver Pulse Delivery</strong> &mdash; Driver delivers energy to target: laser beams, heavy-ion beams, or pulsed-power current. Beam intensities of 10<sup>14</sup>&ndash;10<sup>15</sup> W/cm&sup2;. Total beam energy typically 1&ndash;10 MJ. <span style="color:#d97706;">[Accel-2013, Section 1]</span></p>
+    <p><strong>Step 5: Implosion and Compression</strong> &mdash; Ablator blown off, compressing D-T fuel inward. Three modes: indirect drive (~12% absorption), direct drive (~15%), magnetically-driven (~100 km/s). Fuel compressed to ~1000&times; solid density. <span style="color:#d97706;">[Accel-2013, Section 2.2]</span></p>
+    <p><strong>Step 6: Ignition and Burn</strong> &mdash; Minimum &rho;R ~0.3 g/cm&sup2; for alpha trapping. Burnup fractions of 30%+ achievable. <span style="color:#d97706;">[Xcimer-2026]</span></p>
+    <p><strong>Step 7: Energy Capture</strong> &mdash; 14 MeV neutrons (70&ndash;80%), x-rays, and ion debris. Blanket captures neutron energy and breeds tritium. Nuclear energy multiplier M = 1.05&ndash;1.15. <span style="color:#d97706;">[EIF-1992]</span></p>
+    <p><strong>Step 8: Thermal Conversion</strong> &mdash; Efficiency typically 0.35&ndash;0.45. Advanced cycles: Sombrero 47%, Osiris 43%, Cascade 54%. <span style="color:#d97706;">[EIF-1992]</span></p>
+
+    <h3>2. Structural Components</h3>
+    <p><span style="color:#d97706;">[EIF-1992]</span> identifies four major components: (1) Driver, (2) Target Factory, (3) Reaction Chamber, (4) Generator. Additional subsystems: Blanket/Shield, Tritium Processing, Final Focusing / Beam Transport, Target Injection System, Vacuum / Chamber Clearing.</p>
+    <p><strong>Key architectural property:</strong> Driver separability &mdash; drivers can be in separate buildings and shared across multiple reactors. <span style="color:#d97706;">[EIF-1992]</span></p>
+
+    <h3>3. Behavioral Components &mdash; The Fusion Cycle Gain</h3>
+    <p>Central relationship: <strong>&eta; &times; G &times; M &times; &epsilon;</strong>, where the product &eta;&middot;G must exceed ~10 for economic viability.</p>
+    <table>
+      <thead><tr><th>Driver Type</th><th>Efficiency</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>NIF (flashlamp)</td><td>0.5%</td><td><span style="color:#d97706;">[Xcimer-2026]</span></td></tr>
+        <tr><td>KrF gas laser</td><td>6&ndash;8%</td><td><span style="color:#d97706;">[EIF-1992]</span></td></tr>
+        <tr><td>Heavy-ion induction linac</td><td>20&ndash;30%</td><td><span style="color:#d97706;">[EIF-1992; Accel-2013]</span></td></tr>
+        <tr><td>Pacific Fusion pulser</td><td>~10%</td><td><span style="color:#d97706;">[AMPS-2025]</span></td></tr>
+      </tbody>
+    </table>
+
+    <h3>4. Hierarchical Breakdowns</h3>
+    <p>By driver type (primary taxonomy), by target/implosion type (direct vs. indirect, hot-spot vs. shock vs. fast ignition), and by chamber concept (dry wall, wet wall, thick-liquid wall). See full report for detailed tables.</p>
+
+    <h3>5. Cost Categories and CAS Mapping</h3>
+    <p>The CAS framework (CAS20&ndash;99) applies universally. Divergence concentrates in CAS22:</p>
+    <table>
+      <thead><tr><th>CAS</th><th>MFE</th><th>IFE</th></tr></thead>
+      <tbody>
+        <tr><td>22.1.3</td><td>Magnets/coils</td><td>Driver (laser/accelerator/pulser)</td></tr>
+        <tr><td>22.1.4</td><td>Supplementary heating</td><td>Ignition system</td></tr>
+        <tr><td>22.1.8</td><td>Divertor</td><td>Target factory</td></tr>
+      </tbody>
+    </table>
+    <p>Hawker decomposes IFE cost into 5 technology-agnostic categories: plant cost ($1000&ndash;6000/kWe), yield cost ($500k&ndash;50M/GJ), driver cost ($2&ndash;10/J), target cost ($1&ndash;100/target), and O&amp;M ($10&ndash;100/kWe-yr).</p>
+
+    <h3>6. LCOE Analysis &mdash; Hawker&rsquo;s 14 Parameters</h3>
+    <table>
+      <thead><tr><th>#</th><th>Parameter</th><th>Symbol</th><th>MC Range</th><th>Default</th><th>Pearson r</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Availability</td><td>&mu;<sub>a</sub></td><td>0.50&ndash;1.00</td><td>0.70</td><td>&minus;0.127</td></tr>
+        <tr><td>3</td><td>Discount rate</td><td>d</td><td>0.02&ndash;0.12</td><td>0.08</td><td><strong>+0.247</strong></td></tr>
+        <tr><td>9</td><td>Gain</td><td>G</td><td>10&ndash;1000</td><td>500</td><td><strong>&minus;0.164</strong></td></tr>
+        <tr><td>11</td><td>Plant cost constant</td><td>&alpha;</td><td>$1000&ndash;6000/kWe</td><td>3000</td><td><strong>+0.210</strong></td></tr>
+        <tr><td>12</td><td>Target cost constant</td><td>&delta;</td><td>$1&ndash;100/target</td><td>10</td><td><strong>+0.186</strong></td></tr>
+        <tr><td>7</td><td>Driver lifetime</td><td>N<sub>d</sub></td><td>10<sup>6</sup>&ndash;10<sup>9</sup></td><td>5&times;10<sup>7</sup></td><td>&minus;0.134</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.82rem;color:var(--color-text-muted);">Showing top 6 by sensitivity. Full 14-parameter table in the source file. &ldquo;No single parameter is strongly dominant&rdquo; <span style="color:#d97706;">[Hawker, line 872]</span>.</p>
+
+    <h3>7. PyFECONS Implementation Architecture</h3>
+    <p>PyFECONS implements IFE via <code>FusionMachineType</code> enum with Union types for divergent CAS22 accounts. NIF scaling anchor: $1.115B for 4.7 MJ reference. Target factory: 9-process model, $0.189/target at reference. <span style="color:#d97706;">[PyFECONS]</span></p>
+
+    <h2>Modeling / Architecture Insights</h2>
+    <p><strong>Shared library elements:</strong> Thermal power conversion (CAS23), electrical plant (CAS24), heat rejection (CAS25), BOP structures (CAS21), indirect costs (CAS91&ndash;99), LCOE calculation framework, tritium processing.</p>
+    <p><strong>IFE-specific, driver-agnostic:</strong> Target, reaction chamber, target factory, fusion cycle gain relationship, recirculating power fraction model.</p>
+    <p><strong>Driver-specific:</strong> Laser driver (KrF/DPSSL/KrF-NLO), heavy-ion accelerator (induction linac/RF), pulsed-power (IMG+MITL), beam transport/final focusing.</p>
+
+    <h2>Open Questions</h2>
+    <ol>
+      <li>What CAS22 granularity to target? (ARIES sub-accounts vs. Hawker 5-category)</li>
+      <li>How to represent the driver taxonomy? (Union/variant vs. inheritance vs. parametric)</li>
+      <li>How to handle the frequency-yield trade-off coupling?</li>
+      <li>Should the initial model be driver-agnostic or driver-specific?</li>
+    </ol>
+
+    <h2>Source References</h2>
+    <ul style="font-size:0.82rem;">
+      <li><span style="color:#d97706;">[EIF-1992]</span>: Hogan, Bangerter, Kulcinski &mdash; <code>knowledge/sources/energy_from_inertial_fusion/output.md</code></li>
+      <li><span style="color:#d97706;">[AMPS-2025]</span>: Pacific Fusion &mdash; <code>knowledge/sources/affordable_manageable_practical_and_scalable_amps_high/output.md</code></li>
+      <li><span style="color:#d97706;">[Xcimer-2026]</span>: Galloway, Valys, Sutter &mdash; <code>knowledge/sources/commercialization_of_laser_fusion_energy/output.md</code></li>
+      <li><span style="color:#d97706;">[Accel-2013]</span>: Bangerter, Faltens, Seidl &mdash; <code>knowledge/sources/accelerators_for_inertial_fusion_energy_production/output.md</code></li>
+      <li><span style="color:#d97706;">[Hawker-2020]</span>: Hawker &mdash; <code>knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md</code></li>
+      <li><span style="color:#d97706;">[HIF-1986]</span>: Meier, Hogan, Bangerter &mdash; <code>knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md</code></li>
+      <li><span style="color:#d97706;">[ARPA-E-2020]</span>: Hsu et al. &mdash; <code>knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/output.md</code></li>
+      <li><span style="color:#d97706;">[ARIES-2013]</span>: Waganer &mdash; <code>knowledge/sources/aries_cost_account_documentation/output.md</code></li>
+      <li><span style="color:#d97706;">[PyFECONS]</span>: Woodruff Scientific &mdash; <code>/home/reid/PyFECONS</code></li>
+    </ul>
   </div>
 </dialog>
 

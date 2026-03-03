@@ -90,6 +90,71 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: 7ab8d40958efd4dc1f03b7064bff2b111a05a2034a75cc5b75a7124d8c11eb71
 - **Date Added**: 2026-02-09
 
+### Economic studies for heavy-ion-fusion electric power plants
+- **Type**: documentation
+- **Location**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/
+- **Use for**: Parametric economic studies for HIF electric power plants from LLNL. COE model as function of driver pulse rate, reactor/driver/target factory cost scaling, multi-unit plant economics. Key result: 1.5–3 GWe HIF plants competitive with nuclear/coal at 5–10 Hz. Serves RQ-1 (HIF cost drivers — driver cost dominates), RQ-2 (COE projections: 3.9–5.8 ¢/kWh range), RQ-5 (sensitivity to pulse rate, driver cost, target gain, conversion efficiency).
+- **Validation**: Compare HIF cost scaling relationships against PyFECONS driver cost models
+
+#### Extended Metadata
+- **Zotero Key**: 5428393:GI92TAS2
+- **Raw SHA256**: f5b969b9b56e4f45f8ba888538cf327afc224bafdb76407d117a0d15518fc63c
+- **Extracted Path**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/
+- **Extract SHA256**: 03abe48dd230228b993f56be468bd4c93d11c2a20602c55a2fee0c46355513e6
+- **Date Added**: 2026-03-02
+
+### Energy from Inertial Fusion
+- **Type**: documentation
+- **Location**: knowledge/sources/energy_from_inertial_fusion/
+- **Use for**: Comprehensive 1992 review of IFE concepts, driver technologies (laser, heavy-ion, light-ion), target physics, and power plant designs. Covers the full IFE landscape at a pivotal moment in the program. Serves RQ-1 (IFE subsystem identification and cost structure), RQ-3 (shared vs. divergent structure across IFE driver types).
+- **Validation**: Compare IFE subsystem taxonomy against our classification framework
+
+#### Extended Metadata
+- **Zotero Key**: 5428393:BQWVRWCF
+- **Raw SHA256**: 43a69e2e540aeeb156b0477190428cd0da011916c5024fff99823f26e67238e6
+- **Extracted Path**: knowledge/sources/energy_from_inertial_fusion/
+- **Extract SHA256**: 91a6780ed4109abfeb80ad30be4ec6a0a937960290f3febbc2a871d9ea2002d8
+- **Date Added**: 2026-03-02
+
+### Accelerators for Inertial Fusion Energy Production
+- **Type**: documentation
+- **Location**: knowledge/sources/accelerators_for_inertial_fusion_energy_production/
+- **Use for**: Review of accelerator technologies for IFE drivers — induction linacs, RF linacs, diode-pumped lasers — covering beam physics, target coupling, and technology readiness. Bridges the gap between driver R&D and power plant economics. Serves RQ-1 (driver cost as dominant IFE cost lever), RQ-3 (how driver choice shapes the rest of the plant architecture).
+- **Validation**: Compare accelerator cost scaling models against HIF economics paper and PyFECONS
+
+#### Extended Metadata
+- **Zotero Key**: 5428393:VKWLFRFK
+- **Raw SHA256**: 52e383bbe1d5edb98f6d3a523f3c4d16af69e9a0235fd8176205c551fde29af7
+- **Extracted Path**: knowledge/sources/accelerators_for_inertial_fusion_energy_production/
+- **Extract SHA256**: e05c712e0002dc71145793d93464a9bdc5b988121080fdb4e8f4752476167d53
+- **Date Added**: 2026-03-02
+
+### Affordable, manageable, practical, and scalable (AMPS) high-yield inertial fusion
+- **Type**: documentation
+- **Location**: knowledge/sources/affordable_manageable_practical_and_scalable_amps_high/
+- **Use for**: Pacific Fusion's 2025 paper on high-yield pulser-driven IFE — physics basis for high gain (>100) at high yield (>1 GJ), practical engineering for rep-rated operation, and cost pathway to competitive electricity. Most current IFE plant design with explicit cost projections. Serves RQ-1 (modern IFE cost drivers), RQ-2 (contemporary IFE LCOE projections), RQ-5 (sensitivity to yield, rep rate, driver efficiency).
+- **Validation**: Compare AMPS cost assumptions against Hawker's 14-parameter model and HIF economics
+
+#### Extended Metadata
+- **Zotero Key**: 5428393:WQVP4WBW
+- **Raw SHA256**: 72bf241116109b969f8bfdede2c793909b7609d4756edcb7c4ae772de64c7589
+- **Extracted Path**: knowledge/sources/affordable_manageable_practical_and_scalable_amps_high/
+- **Extract SHA256**: 7492e1df4fee48030b86ba7fae868f296a063b96f634d66e81754e7c38c94d61
+- **Date Added**: 2026-03-02
+
+### Commercialization of laser fusion energy
+- **Type**: documentation
+- **Location**: knowledge/sources/commercialization_of_laser_fusion_energy/
+- **Use for**: Xcimer Energy's 2026 whitepaper on laser IFE commercialization — KrF excimer laser architecture at <$100/J (vs. $700–1000/J for DPSSL), hybrid direct-drive targets, chamber design, and deployment roadmap. Only source with detailed laser cost breakdown by component. Serves RQ-2 (laser IFE cost pathway), RQ-4 (commercialization readiness and cost reduction trajectory).
+- **Validation**: Compare Xcimer laser cost estimates against DPSSL baselines and NIF-derived scaling
+
+#### Extended Metadata
+- **Zotero Key**: 5428393:4PLGW7RA
+- **Raw SHA256**: 13163ec4fa110042692ba31bebfc27bb9bf0967bcf88a5a699a4c8eb9d595956
+- **Extracted Path**: knowledge/sources/commercialization_of_laser_fusion_energy/
+- **Extract SHA256**: e5b23ab23f6d175920c54388e696ea4acd1f6eddf284dea1701cf7bc85c5849b
+- **Date Added**: 2026-03-02
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

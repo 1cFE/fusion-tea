@@ -1,0 +1,177 @@
+digraph calc_flow {
+    rankdir=LR;
+    bgcolor="transparent";
+    fontname="system-ui, sans-serif";
+    node [fontname="system-ui, sans-serif", fontsize=10, style="rounded,filled", penwidth=1.2];
+    edge [color="#64748b", penwidth=1, arrowsize=0.7];
+    nodesep=0.4;
+    ranksep=1.0;
+
+    // --- Source Subsystems (grouped parameters) ---
+
+    driver [
+        shape=record,
+        fillcolor="#dbeafe",
+        color="#2563eb",
+        label=<<table border="0" cellborder="0" cellspacing="2" cellpadding="3">
+            <tr><td colspan="2" bgcolor="#2563eb"><font color="white"><b>Driver</b></font></td></tr>
+            <tr><td align="left"><b>efficiency</b></td><td align="right">0.35</td></tr>
+            <tr><td align="left"><b>energy</b></td><td align="right">14.3 MJ</td></tr>
+            <tr><td align="left"><b>cost_per_joule</b></td><td align="right">&#947;</td></tr>
+            <tr><td align="left"><b>lifetime_shots</b></td><td align="right">6&#215;10&#x2079;</td></tr>
+            <tr><td align="left"><b>beam_energy_mj</b></td><td align="right">5.0 MJ</td></tr>
+            <tr><td align="left"><b>num_chambers</b></td><td align="right">1</td></tr>
+            <tr><td align="left"><b>pulse_rate_ref</b></td><td align="right">3.5 Hz</td></tr>
+        </table>>
+    ];
+
+    chamber [
+        shape=record,
+        fillcolor="#dbeafe",
+        color="#2563eb",
+        label=<<table border="0" cellborder="0" cellspacing="2" cellpadding="3">
+            <tr><td colspan="2" bgcolor="#2563eb"><font color="white"><b>Chamber</b></font></td></tr>
+            <tr><td align="left"><b>blanket_energy_m</b></td><td align="right">1.15</td></tr>
+            <tr><td align="left"><b>yield_cost_const</b></td><td align="right">$5M</td></tr>
+        </table>>
+    ];
+
+    plant [
+        shape=record,
+        fillcolor="#dbeafe",
+        color="#2563eb",
+        label=<<table border="0" cellborder="0" cellspacing="2" cellpadding="3">
+            <tr><td colspan="2" bgcolor="#2563eb"><font color="white"><b>Plant</b></font></td></tr>
+            <tr><td align="left"><b>availability</b></td><td align="right">0.90</td></tr>
+            <tr><td align="left"><b>frequency</b></td><td align="right">3.5 Hz</td></tr>
+            <tr><td align="left"><b>gain</b></td><td align="right">80</td></tr>
+            <tr><td align="left"><b>thermal_eff</b></td><td align="right">0.43</td></tr>
+            <tr><td align="left"><b>discount_rate</b></td><td align="right">0.08</td></tr>
+            <tr><td align="left"><b>plant_cost_const</b></td><td align="right">$2000/kWe</td></tr>
+            <tr><td align="left"><b>om_cost_const</b></td><td align="right">$65/kWe-yr</td></tr>
+            <tr><td align="left"><b>thermal_power</b></td><td align="right">2.054 GW</td></tr>
+            <tr><td align="left"><b>net_electric</b></td><td align="right">1.0 GW</td></tr>
+        </table>>
+    ];
+
+    target [
+        shape=record,
+        fillcolor="#dbeafe",
+        color="#2563eb",
+        label=<<table border="0" cellborder="0" cellspacing="2" cellpadding="3">
+            <tr><td colspan="2" bgcolor="#2563eb"><font color="white"><b>Target Factory</b></font></td></tr>
+            <tr><td align="left"><b>cost_per_target</b></td><td align="right">$10</td></tr>
+            <tr><td align="left"><b>factory_cost</b></td><td align="right">$0.1B</td></tr>
+        </table>>
+    ];
+
+    // --- Calculation Definitions ---
+
+    calc_meier_drv [
+        shape=box, fillcolor="#ede9fe", color="#7c3aed",
+        label=<<table border="0" cellborder="0" cellspacing="1" cellpadding="2">
+            <tr><td><b>Meier HIF</b></td></tr>
+            <tr><td><b>Driver Cost</b></td></tr>
+            <tr><td><font point-size="8">Eq. 5</font></td></tr>
+        </table>>
+    ];
+
+    calc_lcoe [
+        shape=box, fillcolor="#ede9fe", color="#7c3aed", penwidth=2,
+        label=<<table border="0" cellborder="0" cellspacing="1" cellpadding="2">
+            <tr><td><b>IFE LCOE</b></td></tr>
+            <tr><td><font point-size="8">Hawker model</font></td></tr>
+            <tr><td><font point-size="8">15 intermediates</font></td></tr>
+        </table>>
+    ];
+
+    calc_recirc [
+        shape=box, fillcolor="#ede9fe", color="#7c3aed",
+        label=<<table border="0" cellborder="0" cellspacing="1" cellpadding="2">
+            <tr><td><b>Recirculating</b></td></tr>
+            <tr><td><b>Power Fraction</b></td></tr>
+        </table>>
+    ];
+
+    calc_meier_rx [
+        shape=box, fillcolor="#ede9fe", color="#7c3aed",
+        label=<<table border="0" cellborder="0" cellspacing="1" cellpadding="2">
+            <tr><td><b>Meier</b></td></tr>
+            <tr><td><b>Reactor Cost</b></td></tr>
+            <tr><td><font point-size="8">Eq. 3</font></td></tr>
+        </table>>
+    ];
+
+    calc_meier_cap [
+        shape=box, fillcolor="#ede9fe", color="#7c3aed",
+        label=<<table border="0" cellborder="0" cellspacing="1" cellpadding="2">
+            <tr><td><b>Meier Total</b></td></tr>
+            <tr><td><b>Capital Cost</b></td></tr>
+            <tr><td><font point-size="8">Eq. 2</font></td></tr>
+        </table>>
+    ];
+
+    calc_meier_coe [
+        shape=box, fillcolor="#ede9fe", color="#7c3aed",
+        label=<<table border="0" cellborder="0" cellspacing="1" cellpadding="2">
+            <tr><td><b>Meier COE</b></td></tr>
+            <tr><td><font point-size="8">Eq. 1</font></td></tr>
+        </table>>
+    ];
+
+    // --- Outputs ---
+
+    out_lcoe [
+        shape=box, fillcolor="#d1fae5", color="#059669", penwidth=2,
+        label=<<table border="0" cellborder="0" cellspacing="1" cellpadding="2">
+            <tr><td><b>LCOE</b></td></tr>
+            <tr><td><font point-size="9">$/MWh</font></td></tr>
+        </table>>
+    ];
+
+    out_recirc [
+        shape=box, fillcolor="#d1fae5", color="#059669",
+        label=<<table border="0" cellborder="0" cellspacing="1" cellpadding="2">
+            <tr><td><b>recirculating</b></td></tr>
+            <tr><td><b>fraction</b></td></tr>
+        </table>>
+    ];
+
+    out_meier_coe [
+        shape=box, fillcolor="#d1fae5", color="#059669",
+        label=<<table border="0" cellborder="0" cellspacing="1" cellpadding="2">
+            <tr><td><b>Meier COE</b></td></tr>
+            <tr><td><font point-size="9">&#162;/kWh (1988$)</font></td></tr>
+        </table>>
+    ];
+
+    // === Layout hints ===
+    { rank=same; driver; chamber; plant; target; }
+    { rank=same; calc_meier_drv; calc_lcoe; calc_recirc; calc_meier_rx; calc_meier_cap; calc_meier_coe; }
+    { rank=same; out_lcoe; out_recirc; out_meier_coe; }
+
+    // === Edges: Hawker LCOE chain ===
+    driver -> calc_lcoe [label=<<font point-size="8">4 params</font>>, color="#2563eb"];
+    chamber -> calc_lcoe [label=<<font point-size="8">2 params</font>>, color="#2563eb"];
+    plant -> calc_lcoe [label=<<font point-size="8">7 params</font>>, color="#2563eb"];
+    target -> calc_lcoe [label=<<font point-size="8">cost</font>>, color="#2563eb"];
+    calc_lcoe -> out_lcoe [color="#059669", penwidth=1.5];
+
+    // === Edges: Recirculating Power ===
+    driver -> calc_recirc [label=<<font point-size="8">&#951;</font>>, color="#7c3aed"];
+    plant -> calc_recirc [label=<<font point-size="8">G</font>>, color="#7c3aed"];
+    calc_recirc -> out_recirc [color="#059669", penwidth=1.5];
+
+    // === Edges: Meier chain ===
+    driver -> calc_meier_drv [label=<<font point-size="8">beam, &#951;,<br/>N&#x2099;, &#957;</font>>, color="#7c3aed"];
+    calc_meier_drv -> calc_meier_cap [label=<<font point-size="8">$B</font>>, color="#7c3aed"];
+    plant -> calc_meier_rx [label=<<font point-size="8">P&#x1D57;&#x2095;</font>>, color="#7c3aed"];
+    calc_meier_rx -> calc_meier_cap [label=<<font point-size="8">$B</font>>, color="#7c3aed"];
+    target -> calc_meier_cap [label=<<font point-size="8">$0.1B</font>>, color="#7c3aed"];
+    calc_meier_cap -> calc_meier_coe [color="#7c3aed"];
+    plant -> calc_meier_coe [label=<<font point-size="8">A, P&#x2091;</font>>, color="#7c3aed"];
+    calc_meier_coe -> out_meier_coe [color="#059669", penwidth=1.5];
+
+    // === Cross-link: Meier gamma feeds Hawker ===
+    calc_meier_drv -> driver [style=dashed, color="#d97706", label=<<font point-size="8" color="#d97706">&#947; derives<br/>cost_per_joule</font>>, constraint=false];
+}

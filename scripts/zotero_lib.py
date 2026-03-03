@@ -193,17 +193,22 @@ def sha256_of(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def tag_extracted(zot, item_key: str) -> bool:
-    """Tag a Zotero item as 'extracted'. Skips if already tagged.
+def add_tag(zot, item_key: str, tag: str) -> bool:
+    """Add a tag to a Zotero item. Skips if already tagged.
     Returns True if tag was added, False if already present."""
     item = zot.item(item_key)
     existing_tags = item["data"].get("tags", [])
-    if any(t["tag"] == "extracted" for t in existing_tags):
-        print(f"Item {item_key} already has tag 'extracted', skipping")
+    if any(t["tag"] == tag for t in existing_tags):
+        print(f"  {item_key} already has tag '{tag}', skipping")
         return False
-    zot.add_tags(item, "extracted")
-    print(f"Tagged {GROUP_ID}:{item_key} as 'extracted'")
+    zot.add_tags(item, tag)
+    print(f"  Tagged {GROUP_ID}:{item_key} as '{tag}'")
     return True
+
+
+def tag_extracted(zot, item_key: str) -> bool:
+    """Tag a Zotero item as 'extracted'. Convenience wrapper around add_tag."""
+    return add_tag(zot, item_key, "extracted")
 
 
 def slugify(title: str, max_len: int = 60) -> str:

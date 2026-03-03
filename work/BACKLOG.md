@@ -1,44 +1,37 @@
 ---
-epics: []
-
-standalone:
-  - id: WI-004
-    name: "Foundation Package"
+epics:
+- name: IFE Cost Modeling
+  goal: null
+  priority: P0
+  status: active
+  file: backlog/epic-ife-cost-modeling.md
+  items:
+  - id: WI-006
+    name: IFE Cost Structure Library
     scale: standard
-    priority: P0
     status: completed
-    completed: 2026-01-26
-  - id: WI-005
-    name: "Power Balance Calculations"
+    completed: '2026-03-02'
+  - id: WI-007
+    name: Generic IFE Concept Model
     scale: standard
-    priority: P0
     status: completed
-    completed: 2026-01-26
+    completed: '2026-03-02'
+  - id: WI-008
+    name: HIF Concept Instantiation
+    scale: standard
+    status: completed
+    completed: '2026-03-03'
+standalone: []
 ---
 
-# Modeling Work Backlog
+# Project Backlog
 
-Prioritized list of **modeling** work items for the Fusion TEA investigation. This backlog is managed by the modeling PM system (`agentic-mbse`). Coding and project-level work is tracked separately in `.project/backlog/`.
+## Epic: IFE Cost Modeling
+**Priority**: P0 | **Status**: active
+**Epic file**: [backlog/epic-ife-cost-modeling.md](backlog/epic-ife-cost-modeling.md)
 
----
-
-## Epics
-
-*No active modeling epics. Modeling work (taxonomy, concept analysis, SysML models) begins after the investigation scope and tooling are established.*
-
----
-
-## Completed Items (Historical)
-
-| ID | Name | Priority | Completed |
-|----|------|----------|-----------|
-| WI-004 | Foundation Package | P0 | 2026-01-26 |
-| WI-005 | Power Balance Calculations | P0 | 2026-01-26 |
-
-These items were completed under the previous CATF-first framing. Models are archived in `archive/models/`.
-
----
-
-*Previous backlog (WI-001 through WI-018, CATF-specific epics) archived to `archive/work/BACKLOG.md`.*
-
-**Last Updated**: 2026-03-02
+| ID | Item | Scale | Status | Notes |
+|------|------|-------|--------|-------|
+| WI-006 | IFE Cost Structure Library | standard | completed | Completed 2026-03-02 |
+| WI-007 | Generic IFE Concept Model | standard | completed | Completed 2026-03-02 |
+| WI-008 | HIF Concept Instantiation | standard | completed | Completed 2026-03-03 |
