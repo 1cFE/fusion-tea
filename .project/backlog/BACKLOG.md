@@ -2,7 +2,7 @@
 
 Prioritized list of epics and features.
 
-**Last Updated**: 2026-01-18
+**Last Updated**: 2026-03-06
 
 ---
 
@@ -19,46 +19,36 @@ Prioritized list of epics and features.
 
 | Epic | Priority | Status | Started | Notes |
 |------|----------|--------|---------|-------|
-| [EPIC-001] Visualization POC Sprint | P0 | In Progress | 2026-01-18 | Items 1-2 complete |
-
----
-
-## P0 - Critical
-
-### [EPIC-001] Visualization POC Sprint
-
-**Priority**: P0
-**Effort**: 5 days
-**Status**: In Progress
-
-Build a proof-of-concept visualization pipeline to de-risk the technical approach and enable early user feedback. Working vertical slice from SysML model → interactive web diagram with export.
-
-**Items**:
-- [x] Item 1: Golden Reference + Cytoscape POC (1 day) - Complete 2026-01-18
-- [x] Item 2: Extraction Implementation (1 day) - Complete 2026-01-18
-- [ ] Item 3: End-to-End Pipeline (1 day)
-- [ ] Item 4: Web Integration (1 day)
-- [ ] Item 5: Cost Annotations + Polish (1 day)
-
-**File**: `epic_visualization-poc.md`
+| Knowledge Database Integration | P1 | In Progress | 2026-02-06 | Items 1-3 complete, pipeline proven. Items 4-5 archived (blocked on user action, infrastructure works). |
 
 ---
 
 ## P1 - High Priority
 
-*No epics yet*
+### Knowledge Database Integration
+
+**Priority**: P1
+**Effort**: ~4-5 days (4 items + ongoing)
+**Status**: In Progress (infrastructure complete)
+
+Zotero → pyzotero → agentic-mbse extract → SOURCE_INDEX.md pipeline. Batch automation script works. 6+ sources ingested. Ready to scale when new sources are needed.
+
+**Items**:
+- [x] Item 1: Zotero API De-Risk (0.5 day) - Complete 2026-02-06
+- [x] Item 2: Single-Source E2E Pipeline (1 day) - Complete 2026-02-06
+- [x] Item 3: Ingestion Automation Script (1.5 days) - Complete 2026-02-09
+- [~] Item 4: First Corpus Ingestion — Abandoned (superseded by IFE source ingestion)
+- [x] Item 5: Extraction Pipeline Integration — Complete 2026-02-27 (script modernized for v4 pipeline)
+
+**File**: `epic-knowledge-database-integration.md`
 
 ---
 
-## P2 - Medium Priority
+## Active Work Items
 
-*No epics yet*
-
----
-
-## P3 - Low Priority
-
-*No epics yet*
+| Item | Priority | Status | Location |
+|------|----------|--------|----------|
+| Traceability System | P1 | Spec + plan complete, awaiting implementation | `.project/active/traceability-system/` |
 
 ---
 
@@ -66,11 +56,15 @@ Build a proof-of-concept visualization pipeline to de-risk the technical approac
 
 | Epic | Completed | Duration | Notes |
 |------|-----------|----------|-------|
-| [None yet] | - | - | - |
+| Visualization POC Sprint | 2026-01-19 | 2 days | Full Cytoscape.js pipeline, 23+ tests |
+| Cost Modeling Patterns De-Risking | 2026-03-06 | ~2 months | Learnings handed off to sysml-codegen, all changes implemented |
+| End-to-End Pipeline De-Risking | 2026-03-06 | ~5 weeks | Solar+battery pipeline proven, codegen enhancements in open PR |
+| Full Workflow Demo | 2026-03-06 | 5 days | Interactive HTML explainer + IFE modeling demo |
 
 ---
 
 ## Ideas / Future Considerations
 
-- [Idea 1]
-- [Idea 2]
+- MFE concept modeling (next stage after IFE)
+- Cross-concept comparison tooling
+- Traceability audit automation (blocked on traceability-system implementation)

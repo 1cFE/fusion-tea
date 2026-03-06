@@ -4,6 +4,39 @@ Historical record of completed work.
 
 ---
 
+## [2026-03-06] - Project Cleanup & Archival
+
+**Type**: Housekeeping
+**Duration**: 1 session
+
+### Summary
+Comprehensive review and archival of all active work items and backlog epics. Project infrastructure phase is complete; modeling work continues under the modeling PM system.
+
+### Items Archived
+- `extraction-pipeline-integration` — Script modernized for v4 pipeline, 6 sources re-extracted. Infrastructure proven.
+- `extraction-validation` — v4 pipeline validated against 6-source corpus. Verdict: proceed.
+- `project-reframing` — Massive scope change from CATF-MFE to broad comparative investigation. 8 phases complete.
+- `ife-source-ingestion` — 5 IFE sources ingested into knowledge/sources/. SOURCE_INDEX updated.
+- `ife-domain-research` — Domain insights produced from IFE literature review.
+- `ife-modeling-epic-setup` — *Completed for demo purposes.* Set up IFE Cost Modeling epic (WI-006/007/008) in modeling PM.
+- `ife-cost-model-full-workflow` — *Completed for demo purposes.* Meta-orchestrator for IFE modeling workflow demo. All 3 WIs (WI-006/007/008) completed successfully.
+- `visualization-demo` — Section 8 of workflow explainer populated with structural view, calc flow, and parameter table.
+
+### Items Abandoned
+- `first-corpus-ingestion` — Superseded by `ife-source-ingestion` which ingested 5 IFE-focused sources.
+
+### Epics Archived
+- **Visualization POC Sprint** — Complete (all 5 items delivered 2026-01-19)
+- **Cost Modeling Patterns De-Risking** — Complete. Learnings from coffee maker and solar+battery models handed off to sysml-codegen; all changes implemented upstream.
+- **End-to-End Pipeline De-Risking** — Complete. Solar+battery LCOE pipeline proven end-to-end. Codegen enhancements (Item 6: nested CalcUsage discovery) in open PR.
+- **Full Workflow Demo** — Complete. Interactive HTML explainer shipped; IFE modeling demo delivered through modeling PM.
+
+### Remaining Active
+- `traceability-system` — Spec + plan written, ready for implementation when prioritized.
+- Knowledge DB Integration epic — Kept (infrastructure works, ready to scale).
+
+---
+
 ## [2026-01-18] - Visualization POC Sprint (EPIC-001)
 
 **Type**: Epic (5 items)

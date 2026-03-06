@@ -1,59 +1,48 @@
 # Current Work
 
-**Last Updated**: 2026-02-27
+**Last Updated**: 2026-03-06
 
 ---
 
 ## Active Work
 
-### Extraction Pipeline Integration (KNOW-DB Item 5)
+No active coding work items. Project infrastructure phase is complete.
 
-**Status**: In Progress
-**Epic**: `.project/backlog/epic-knowledge-database-integration.md`
-**Started**: 2026-02-27
+### Traceability System (on hold)
 
-**Objective**: Update `scripts/zotero_ingest.py` to align with redesigned agentic-mbse 8-step extraction pipeline.
+**Status**: Spec + plan written, awaiting prioritization
+**Location**: `.project/active/traceability-system/`
 
-**Current Phase**: Phase 3 (partially complete — re-extraction done, new ingestion pending)
-
-**Completed**:
-- [x] Phase 1: Core script modernization (constants, CLI, run_extraction, flatten, SHA256)
-- [x] Phase 2: Re-extract mode (_cleanup_legacy_files, re_extract_sources, --re-extract flag)
-- [x] Phase 3a: Re-extract all 6 existing sources — all verified with output.md, metrics.json, decisions.json
-- [x] Phase 3b: Quality spot-checks (Delene PASS, Hsu PASS, Hawker unchanged — upstream OCR issue)
-
-**Remaining**:
-- [ ] Phase 3c: User adds ~6 PDFs to Zotero, tags them `new`
-- [ ] Phase 3d: Run `uv run python scripts/zotero_ingest.py --tag new` to ingest new docs
-- [ ] Phase 3e: Verify 12+ total sources, both paths work
-
-**Blockers**: Needs user to add PDFs to Zotero for new ingestion
-
-**Location**: `.project/active/extraction-pipeline-integration/`
-
-**Key files changed**: `scripts/zotero_ingest.py` (only code change)
+Citation system for MR-4 enforcement. Ready to implement when needed.
 
 ---
 
 ## Recently Completed
 
-_(none yet)_
+### [2026-03-06] Project Cleanup
+
+Archived 9 active items and 4 epics. See `.project/completed/CHANGELOG.md` for full details.
+
+Key outcomes:
+- Infrastructure pipeline proven (Zotero → extraction → knowledge base)
+- IFE modeling demo complete (WI-006/007/008 via modeling PM)
+- Interactive workflow explainer shipped (demo/index.html)
+- Cost patterns and E2E pipeline de-risking complete, changes handed off to sysml-codegen
 
 ---
 
 ## Up Next
 
-1. Complete KNOW-DB Item 5 (add ~6 new docs, verify 12+ total)
-2. KNOW-DB Item 4 completion (first corpus ingestion at scale)
-3. Downstream knowledge research work
+1. Modeling PM work — MFE concept modeling, cross-concept comparison
+2. Traceability system implementation (when prioritized)
+3. New source ingestion (pipeline ready, add sources as needed)
 
 ---
 
 ## Session Notes
 
-### 2026-02-27
-- Implemented all code changes in Phases 1-2 of extraction-pipeline-integration
-- Ran full `--re-extract` of 6 sources — all succeeded with opus/$50
-- Found/fixed flatten bug: `_flatten_extraction_output()` failed during re-extraction when `images/` dir existed (changed from `len(subdirs)==1` to candidate-based search)
-- Hawker strikethrough is upstream agentic-mbse OCR limitation (17 markers, identical to old extraction)
-- All changes are uncommitted on branch `processing-work`
+### 2026-03-06
+- Comprehensive project cleanup: reviewed all active items and backlog
+- Archived 9 of 10 active items (1 abandoned, 8 archived)
+- Archived 4 of 5 backlog epics (Knowledge DB Integration kept)
+- Updated BACKLOG.md, CHANGELOG.md, CURRENT_WORK.md

@@ -58,8 +58,9 @@ fusion-tea/
 │   ├── active/                      #   In-progress modeling work items
 │   ├── completed/                   #   Archived modeling work items
 │   └── learnings/                   #   Session insights
-├── demo/
-│   └── index.html                   # Interactive workflow explainer (built incrementally)
+├── docs/
+│   └── demo/
+│       └── index.html               # Interactive workflow explainer (built incrementally)
 ├── scripts/                         # Automation (Zotero ingestion, traceability audit, etc.)
 ├── data/                            # Structured data and outputs
 └── archive/                         # Archived CATF-era artifacts (models, research, old requirements)
