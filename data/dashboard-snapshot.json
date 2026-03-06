@@ -1,0 +1,49 @@
+{
+  "project": "fusion-tea",
+  "state": {
+    "epics": [
+      {
+        "name": "IFE Cost Modeling",
+        "derived_status": "draft",
+        "declared_status": "draft",
+        "priority": "P0",
+        "goal": null,
+        "file": "backlog/epic-ife-cost-modeling.md",
+        "items": [
+          {
+            "id": "WI-006",
+            "name": "IFE Cost Structure Library",
+            "state": "backlog",
+            "stage": null,
+            "epic": "IFE Cost Modeling",
+            "directory": null,
+            "completed_date": null
+          },
+          {
+            "id": "WI-007",
+            "name": "Generic IFE Concept Model",
+            "state": "backlog",
+            "stage": null,
+            "epic": "IFE Cost Modeling",
+            "directory": null,
+            "completed_date": null
+          },
+          {
+            "id": "WI-008",
+            "name": "HIF Concept Instantiation",
+            "state": "backlog",
+            "stage": null,
+            "epic": "IFE Cost Modeling",
+            "directory": null,
+            "completed_date": null
+          }
+        ],
+        "total": 3,
+        "done": 0
+      }
+    ],
+    "standalone": []
+  },
+  "requirements": [],
+  "validation": []
+}

@@ -1,19 +1,21 @@
 # Source Index
 
-This file tells MBSE commands where to find domain knowledge for fusion power plant modeling.
+Registered domain knowledge sources for the Fusion TEA investigation. Each source is extracted and stored locally. Sources are selected iteratively as the investigation identifies data needs (see `modeling_project/OVERVIEW.md`, Source Strategy).
+
+Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW.md`.
 
 ## Primary Sources
 
 ### PyFECONS
 - **Type**: codebase
 - **Location**: /home/reid/PyFECONS
-- **Use for**: Fusion costing algorithms, physics calculations, economic models, LCOE computation, subsystem cost breakdowns
+- **Use for**: Reference implementation of fusion costing algorithms (MFE + IFE), CAS hierarchy implementation, LCOE computation, physics calculations. Serves RQ-1 (cost drivers), RQ-3 (shared vs. divergent structure — ~60% shared modules across reactor types).
 - **Validation**: Compare model cost outputs against PyFECONS calculations for equivalent configurations
 
 ### TEA D-T MFE Cost Analysis
 - **Type**: documentation
 - **Location**: knowledge/sources/tea_dt_mfe_cost_analysis/
-- **Use for**: Techno-economic analysis methodology, D-T MFE cost breakdowns, LCOE calculation approach, fusion power plant economics
+- **Use for**: TEA methodology for D-T MFE, detailed CAS cost breakdowns, LCOE calculation approach, fusion power plant economics. Serves RQ-1 (MFE cost drivers), RQ-2 (MFE LCOE range and assumptions).
 - **Validation**: Compare cost model structure and assumptions against this reference study
 
 #### Extended Metadata
@@ -26,8 +28,8 @@ This file tells MBSE commands where to find domain knowledge for fusion power pl
 ### A simplified economic model for inertial fusion
 - **Type**: documentation
 - **Location**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/
-- **Use for**:
-- **Validation**:
+- **Use for**: Monte Carlo exploration of 14 technology-agnostic LCOE parameters across IFE variants. Identifies which physics and target cost parameters drive economics. Serves RQ-1 (IFE cost drivers), RQ-2 (IFE LCOE ranges — competitive at ~$25/MWh under optimistic assumptions), RQ-5 (high-sensitivity parameters: gain, fusion energy per shot).
+- **Validation**: Compare IFE parameter sensitivity rankings against our sensitivity-risk analysis
 
 #### Extended Metadata
 - **Zotero Key**: 5428393:LCZMWLYM
@@ -39,8 +41,8 @@ This file tells MBSE commands where to find domain knowledge for fusion power pl
 ### Overview of the Helios Design: A Practical Planar Coil Stellarator Fusion Power Plant
 - **Type**: documentation
 - **Location**: knowledge/sources/overview_of_the_helios_design_a_practical_planar_coil/
-- **Use for**:
-- **Validation**:
+- **Use for**: Preconceptual stellarator design (390 MWe, 6T HTS, planar coils). Exemplifies steady-state MFE architecture differences from tokamaks — natural stability, thick shielding, sector maintenance, relaxed manufacturing tolerances. Serves RQ-1 (stellarator cost drivers), RQ-3 (shared vs. divergent structure — stellarator vs. tokamak BOP/power core differences).
+- **Validation**: Compare stellarator-specific subsystem assumptions against tokamak equivalents
 
 #### Extended Metadata
 - **Zotero Key**: 5428393:7E42ICWG
@@ -52,8 +54,8 @@ This file tells MBSE commands where to find domain knowledge for fusion power pl
 ### An Assessment of the Economics of Future Electric Power Generation Options and the Implications for Fusion
 - **Type**: documentation
 - **Location**: knowledge/sources/an_assessment_of_the_economics_of_future_electric_power/
-- **Use for**:
-- **Validation**:
+- **Use for**: Historical ORNL assessment positioning fusion LCOE against competing power generation (coal, nuclear, wind, etc.). Establishes benchmarking framework and early maturity baseline for fusion cost estimates. Serves RQ-2 (LCOE credibility ranges in broader energy context), RQ-4 (cost estimation maturity — historical baseline).
+- **Validation**: Compare contemporary fusion LCOE estimates against this historical benchmark
 
 #### Extended Metadata
 - **Zotero Key**: 5428393:XH2I672M
@@ -65,8 +67,8 @@ This file tells MBSE commands where to find domain knowledge for fusion power pl
 ### Revisit of the 2017 Costing for Four ARPA-E ALPHA Concepts
 - **Type**: documentation
 - **Location**: knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/
-- **Use for**:
-- **Validation**:
+- **Use for**: Re-costing of four ARPA-E ALPHA modular fusion concepts using updated CAS assumptions and cost-sensitivity analysis. Reports ~$43/MWh average LCOE ($34-54 range) for ~500 MWe plants. Strongest multi-concept source — four different approaches costed in the same CAS framework. Serves RQ-1 (cost drivers across concepts), RQ-2 (LCOE ranges), RQ-3 (shared structure via common CAS), RQ-4 (estimation maturity with expert reviews), RQ-5 (sensitivity analysis included).
+- **Validation**: Compare CAS-level cost breakdowns across the four concepts; validate our cross-concept methodology against theirs
 
 #### Extended Metadata
 - **Zotero Key**: 5428393:6I8Z5PBZ
@@ -78,8 +80,8 @@ This file tells MBSE commands where to find domain knowledge for fusion power pl
 ### ARIES Cost Account Documentation
 - **Type**: documentation
 - **Location**: knowledge/sources/aries_cost_account_documentation/
-- **Use for**:
-- **Validation**:
+- **Use for**: Definitive reference for fusion CAS framework — accounts 20-27 (direct) and 90-98 (indirect), tracing lineage from Starfire (1980) through ARIES series. Documents standardized costing algorithms, escalation methodology, contingency conventions. Foundational for MR-1 (CAS hierarchy requirement). Serves RQ-1 (cost driver structure), RQ-3 (shared cost structure across approaches), RQ-4 (estimation maturity — documents methodology evolution over 30+ years).
+- **Validation**: CAS category definitions in our models must align with this reference
 
 #### Extended Metadata
 - **Zotero Key**: 5428393:HJMWLC47
@@ -88,38 +90,84 @@ This file tells MBSE commands where to find domain knowledge for fusion power pl
 - **Extract SHA256**: 7ab8d40958efd4dc1f03b7064bff2b111a05a2034a75cc5b75a7124d8c11eb71
 - **Date Added**: 2026-02-09
 
-## How MBSE Commands Use This File
+### Economic studies for heavy-ion-fusion electric power plants
+- **Type**: documentation
+- **Location**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/
+- **Use for**: Parametric economic studies for HIF electric power plants from LLNL. COE model as function of driver pulse rate, reactor/driver/target factory cost scaling, multi-unit plant economics. Key result: 1.5–3 GWe HIF plants competitive with nuclear/coal at 5–10 Hz. Serves RQ-1 (HIF cost drivers — driver cost dominates), RQ-2 (COE projections: 3.9–5.8 ¢/kWh range), RQ-5 (sensitivity to pulse rate, driver cost, target gain, conversion efficiency).
+- **Validation**: Compare HIF cost scaling relationships against PyFECONS driver cost models
 
-When you run commands like `/design-model` or `/audit-models`, they:
+#### Extended Metadata
+- **Zotero Key**: 5428393:GI92TAS2
+- **Raw SHA256**: f5b969b9b56e4f45f8ba888538cf327afc224bafdb76407d117a0d15518fc63c
+- **Extracted Path**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/
+- **Extract SHA256**: 03abe48dd230228b993f56be468bd4c93d11c2a20602c55a2fee0c46355513e6
+- **Date Added**: 2026-03-02
 
-1. **Read this file** to discover what reference sources exist
-2. **Explore sources** to find relevant patterns, formulas, parameters
-3. **Validate outputs** by comparing against authoritative sources
+### Energy from Inertial Fusion
+- **Type**: documentation
+- **Location**: knowledge/sources/energy_from_inertial_fusion/
+- **Use for**: Comprehensive 1992 review of IFE concepts, driver technologies (laser, heavy-ion, light-ion), target physics, and power plant designs. Covers the full IFE landscape at a pivotal moment in the program. Serves RQ-1 (IFE subsystem identification and cost structure), RQ-3 (shared vs. divergent structure across IFE driver types).
+- **Validation**: Compare IFE subsystem taxonomy against our classification framework
 
-### Source Types Explained
+#### Extended Metadata
+- **Zotero Key**: 5428393:BQWVRWCF
+- **Raw SHA256**: 43a69e2e540aeeb156b0477190428cd0da011916c5024fff99823f26e67238e6
+- **Extracted Path**: knowledge/sources/energy_from_inertial_fusion/
+- **Extract SHA256**: 91a6780ed4109abfeb80ad30be4ec6a0a937960290f3febbc2a871d9ea2002d8
+- **Date Added**: 2026-03-02
 
-- **codebase**: Source code to extract patterns, formulas, implementations
-  - Example: Reference implementation with physics calculations
-  - Claude can read and analyze the code
+### Accelerators for Inertial Fusion Energy Production
+- **Type**: documentation
+- **Location**: knowledge/sources/accelerators_for_inertial_fusion_energy_production/
+- **Use for**: Review of accelerator technologies for IFE drivers — induction linacs, RF linacs, diode-pumped lasers — covering beam physics, target coupling, and technology readiness. Bridges the gap between driver R&D and power plant economics. Serves RQ-1 (driver cost as dominant IFE cost lever), RQ-3 (how driver choice shapes the rest of the plant architecture).
+- **Validation**: Compare accelerator cost scaling models against HIF economics paper and PyFECONS
 
-- **documentation**: PDFs, papers, specs that define requirements or physics
-  - Example: Design specification, academic paper
-  - Claude can read if path is accessible
+#### Extended Metadata
+- **Zotero Key**: 5428393:VKWLFRFK
+- **Raw SHA256**: 52e383bbe1d5edb98f6d3a523f3c4d16af69e9a0235fd8176205c551fde29af7
+- **Extracted Path**: knowledge/sources/accelerators_for_inertial_fusion_energy_production/
+- **Extract SHA256**: e05c712e0002dc71145793d93464a9bdc5b988121080fdb4e8f4752476167d53
+- **Date Added**: 2026-03-02
 
+### Affordable, manageable, practical, and scalable (AMPS) high-yield inertial fusion
+- **Type**: documentation
+- **Location**: knowledge/sources/affordable_manageable_practical_and_scalable_amps_high/
+- **Use for**: Pacific Fusion's 2025 paper on high-yield pulser-driven IFE — physics basis for high gain (>100) at high yield (>1 GJ), practical engineering for rep-rated operation, and cost pathway to competitive electricity. Most current IFE plant design with explicit cost projections. Serves RQ-1 (modern IFE cost drivers), RQ-2 (contemporary IFE LCOE projections), RQ-5 (sensitivity to yield, rep rate, driver efficiency).
+- **Validation**: Compare AMPS cost assumptions against Hawker's 14-parameter model and HIF economics
+
+#### Extended Metadata
+- **Zotero Key**: 5428393:WQVP4WBW
+- **Raw SHA256**: 72bf241116109b969f8bfdede2c793909b7609d4756edcb7c4ae772de64c7589
+- **Extracted Path**: knowledge/sources/affordable_manageable_practical_and_scalable_amps_high/
+- **Extract SHA256**: 7492e1df4fee48030b86ba7fae868f296a063b96f634d66e81754e7c38c94d61
+- **Date Added**: 2026-03-02
+
+### Commercialization of laser fusion energy
+- **Type**: documentation
+- **Location**: knowledge/sources/commercialization_of_laser_fusion_energy/
+- **Use for**: Xcimer Energy's 2026 whitepaper on laser IFE commercialization — KrF excimer laser architecture at <$100/J (vs. $700–1000/J for DPSSL), hybrid direct-drive targets, chamber design, and deployment roadmap. Only source with detailed laser cost breakdown by component. Serves RQ-2 (laser IFE cost pathway), RQ-4 (commercialization readiness and cost reduction trajectory).
+- **Validation**: Compare Xcimer laser cost estimates against DPSSL baselines and NIF-derived scaling
+
+#### Extended Metadata
+- **Zotero Key**: 5428393:4PLGW7RA
+- **Raw SHA256**: 13163ec4fa110042692ba31bebfc27bb9bf0967bcf88a5a699a4c8eb9d595956
+- **Extracted Path**: knowledge/sources/commercialization_of_laser_fusion_energy/
+- **Extract SHA256**: e5b23ab23f6d175920c54388e696ea4acd1f6eddf284dea1701cf7bc85c5849b
+- **Date Added**: 2026-03-02
+
+## How Sources Are Used
+
+1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md
+2. **Citations in models** use the `Source`/`Ref`/`Basis` format, pointing directly to file paths in `knowledge/sources/` (see MR-4 in REQUIREMENTS.md)
+3. **Source selection is iterative** — new sources are ingested as research identifies data needs
+
+### Source Types
+
+- **codebase**: Source code with algorithms, formulas, implementations (Claude can read and analyze)
+- **documentation**: PDFs, papers, design studies extracted via agentic-mbse v4 pipeline
 - **database**: Data files, CSVs, parameter databases
-  - Example: Material properties, cost factors
-  - Claude can read and extract values
+- **reference**: Standards documents, textbooks, general reference
 
-- **reference**: General reference material
-  - Example: Standards documents, textbooks
-  - Provides context and definitions
+### Adding Sources
 
-### Adding More Sources
-
-Use `/manage-sources` to add, remove, or update sources, or edit this file directly.
-
-Good sources to consider for fusion modeling:
-- ARIES studies and reports
-- ITER design documentation
-- Fusion power plant conceptual design studies
-- Material property databases for fusion-relevant materials
+Sources flow through the Zotero → extract → register pipeline (see `scripts/zotero_ingest.py`). Sources can also be registered manually by editing this file and placing extracted documents in `knowledge/sources/`.

@@ -2,64 +2,74 @@
 
 Structural decisions about how the domain is decomposed into model packages. These are the architectural choices that shape the model ecosystem — decisions that outlive any single work item and that new work must respect.
 
----
-
-## Domain Decomposition
-
-The fusion power plant is decomposed along two axes:
-
-**Physical hierarchy**: Plant → Subsystems → Components, following the ARPA-E CAS (Cost Account Structure) hierarchy. CAS20 (Direct Costs) subdivides into reactor plant equipment (CAS22), turbine plant (CAS23), electric plant (CAS24), and miscellaneous (CAS25–29). CAS22 further subdivides into reactor-type-specific components (magnets/lasers, heating/ignition, blanket, shield, divertor/target factory).
-
-**Concept independence**: Shared definitions live in `library/` (concept-agnostic: types, units, materials, base calc defs). Concept-specific assemblies live in `designs/` (CATF MFE, IFE variants, etc.). This separation ensures ~60% of definitions are reusable across reactor concepts.
-
-**Subsystem boundaries**:
-- **Power Core**: Everything inside the plasma-facing first wall (magnets, blanket, shield, divertor, heating). Reactor-type-specific.
-- **Balance of Plant (BOP)**: Everything outside — turbine, cooling, electrical systems. Largely shared across reactor types.
-- **Plant-Level**: Buildings, site work, indirect costs (CAS30–60). Shared.
+*Previous decisions (AD-001 through AD-005) archived to `archive/modeling_project/ARCHITECTURE.md`.*
 
 ---
 
-## Package Organization
+## AD-001: Plain `Real` for All Numeric Values
 
-| Package | Purpose | Domain Scope | Dependencies |
-|---------|---------|--------------|--------------|
-| library/foundation/ | Base types (enums), units, materials | Cross-cutting | None |
-| library/calculations/power_balance/ | Power flow calculations | Plasma → grid | foundation/ |
-| library/calculations/ | Shared calc defs (geometry, costing) | Cross-cutting | foundation/ |
-| library/definitions/ | Part definitions (plant, components) | Cross-cutting base | foundation/ |
-| library/materials/ | Material property definitions | Cross-cutting | foundation/ |
-| designs/catf_mfe/ | CATF compact tokamak configuration | Full MFE plant | All library packages |
+**Decision**: Use `Real` for all numeric values. Document units in doc comments.
+
+**Rationale**: Custom monetary unit definitions (for $, $/MWh, $/J) are complex and untested with syside's quantity arithmetic. Getting the structure right matters more than compile-time unit checking for this first modeling pass.
+
+**Trade-off**: No compile-time dimensional analysis. Mitigated by doc comment conventions per MR-4.
+
+**Upgrade path**: When MFE modeling begins and the library is shared more broadly, typed quantities can be added as an enhancement.
+
+**Origin**: WI-006 DD-1
 
 ---
 
-## Key Decisions
+## AD-002: `attribute def` Bundles Parameter Metadata
 
-### AD-001: Reactor Type Taxonomy
-**Decision**: MFE, IFE, MIF as top-level reactor categories. Each gets a separate `designs/` subdirectory. Shared components live in `library/`; type-specific assemblies in `designs/`.
-**Rationale**: Different reactor types share ~60% of components (buildings, turbine, BOP) but diverge on power core. CAS22 branch points: CAS220103 (Coils vs Lasers), CAS220104 (Heating vs Ignition), CAS220108 (Divertor vs Target Factory). (DI-010)
-**Date**: 2026-01-05
-**Status**: active
+**Decision**: Bundle value/min/max/sensitivity into a reusable `attribute def 'Economic Parameter'`. Each parameter is an attribute of this type with `:>>` feature redefinition for setting values.
 
-### AD-002: Library vs Designs Separation
-**Decision**: Concept-agnostic definitions (part defs, calc defs, enums, materials) live in `library/`. Concept-specific usages (part usages with concrete parameter values) live in `designs/{concept}/`.
-**Rationale**: Enables reuse across reactor concepts and clean dependency direction (designs depend on library, never reverse). Mirrors PyFECONS shared vs type-specific module split. (DI-007)
-**Date**: 2026-01-05
-**Status**: active
+**Rationale**: Machine-readable metadata (not just doc comments). Supports future programmatic access to ranges and sensitivities for Monte Carlo or sensitivity analysis via codegen.
 
-### AD-003: Cost Aggregation Follows CAS Hierarchy
-**Decision**: Cost rollup mirrors the ARPA-E CAS standard. Each cost account maps to a model package or component. Aggregation uses `NumericalFunctions::sum` for parent-level rollup.
-**Rationale**: Enables direct validation against PyFECONS which uses the same hierarchy. CAS provides a standardized decomposition accepted by ARPA-E and industry. (DI-001, DI-004)
-**Date**: 2026-01-06
-**Status**: active
+**Alternative rejected**: Simple `Real` attributes with ranges only in doc comments — not machine-readable, can't be validated or iterated programmatically.
 
-### AD-004: Foundation Package Structure
-**Decision**: Foundation package contains three files: `types.sysml` (13+ enums including ReactorType, ConfinementType, FuelType), `units.sysml` (economic units: M_USD, USD_KG, etc.), `materials.sysml` (10+ material definitions with density, thermal_conductivity, unit_cost).
-**Rationale**: All downstream packages depend on these base definitions. Separating types/units/materials keeps each file focused and reduces merge conflicts. Enum values match PyFECONS exactly for validation. (DI-010)
-**Date**: 2026-01-23
-**Status**: active
+**Origin**: WI-006 DD-2
 
-### AD-005: Power Balance Calculation Architecture
-**Decision**: Three-tier calc def structure: `Alpha Power Calc` (fuel-type-dependent alpha fraction), `Power Balance Calc` (abstract base with shared logic), `MFE Power Balance Calc` (MFE-specific with 16 inputs, p_net output). Calculation flow is strictly acyclic.
-**Rationale**: Power balance outputs drive all downstream costs. The tiered structure allows reactor-type specialization (MFE vs IFE vs MIF) while sharing the alpha power calculation. 16 inputs match PyFECONS PowerBalance.py interface exactly. (DI-002, DI-009)
-**Date**: 2026-01-26
-**Status**: active
+---
+
+## AD-003: Closed-Form DCF for LCOE Calculation
+
+**Decision**: Express Hawker's DCF as a closed-form ratio using present value factors, implemented in a single `calc def`.
+
+**Rationale**: SysML v2 calc defs do not support iteration/looping. The closed-form is mathematically equivalent to the year-by-year sum (geometric series) for constant annual cost/energy streams, which is exactly Hawker's model structure.
+
+**Verified**: `(1+d)**n` exponentiation parses correctly in syside.
+
+**Origin**: WI-006 DD-3
+
+---
+
+## AD-004: Library Subdirectory Organization
+
+**Decision**: Three subdirectories under `models/library/`: `foundation/`, `cost_structure/`, `analyses/`.
+
+**Rationale**: Follows MODELING_GUIDE.md package structure convention. Separates concerns: base types → domain structure → calculations. Scales to future additions (MFE parameters, additional analyses).
+
+**Origin**: WI-006 DD-4
+
+---
+
+## AD-005: CAS Hierarchy as Typed Part Def Specializations
+
+**Decision**: Each CAS level 2 account is a `part def` specializing `'CAS Account'` which specializes `'Costed Component'`. Scope classification via `'CAS Scope'` enum attribute.
+
+**Rationale**: Type-safe — downstream users instantiate `'CAS22 Power Core'`, not a generic account with a string code. The specialization hierarchy mirrors the CAS tree. Scope classification as enum (not doc comment) is queryable.
+
+**Alternative rejected**: Single generic `'CAS Account'` with string code — no type safety.
+
+**Origin**: WI-006 DD-5
+
+---
+
+## AD-006: Parameters Separate from Calculation
+
+**Decision**: `ife_cost_parameters.sysml` defines the 14 parameters with metadata. `ife_lcoe.sysml` defines the calculation. The calc def takes 14 `Real` inputs, not an `'IFE Cost Parameters'` part.
+
+**Rationale**: The calc def is pure math — it doesn't need to know about the parameter metadata (ranges, sensitivities). This separation means the calc can be reused with any parameter source (including concept-specific values that override defaults). WI-007 wires them together.
+
+**Origin**: WI-006 DD-6

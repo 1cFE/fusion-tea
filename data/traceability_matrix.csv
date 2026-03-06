@@ -1,1 +1,7 @@
 Element,File,Type,Knowledge,Requirement,Source_Type,Source_Document,Source_Location,Confidence,Assumptions,Last_Verified
+'Meier HIF Driver Cost',models/library/analyses/hif_economics.sysml,calc_def,DI-004,MR-WI008-2,authority,Meier 1986,Eq. 5 (lines 173-192),high,,2026-03-03
+'Meier Reactor Cost',models/library/analyses/hif_economics.sysml,calc_def,,MR-WI008-3,authority,Meier 1986,Eq. 3 (lines 119-137),high,,2026-03-03
+'Meier Total Capital Cost',models/library/analyses/hif_economics.sysml,calc_def,,MR-WI008-3,authority,Meier 1986,Eq. 2 (lines 102-117),high,,2026-03-03
+'Meier COE',models/library/analyses/hif_economics.sysml,calc_def,,MR-WI008-3,authority,Meier 1986,Eq. 1 (lines 76-102),high,,2026-03-03
+'HIF Driver',models/designs/hif_ife/hif_driver.sysml,part_def,"DI-002,DI-004",MR-WI008-1,authority,EIF-1992,Osiris operating parameters,high,,2026-03-03
+hif_plant,models/designs/hif_ife/hif_plant.sysml,part_usage,"DI-001,DI-003,DI-005","MR-WI008-4,MR-WI008-5",mixed,"EIF-1992,Meier 1986,Bangerter 2013",Multiple tables and equations,high,"alpha and epsilon [ESTIMATED]",2026-03-03

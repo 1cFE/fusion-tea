@@ -4,49 +4,49 @@ This directory contains SysML v2 textual models for fusion power plant techno-ec
 
 ## Structure
 
-- `library/` - Reusable definitions
-  - `foundation/` - Base types, units, materials
-    - `types.sysml` - Enums (FuelType, ReactorType, EnergyConversion, etc.)
-    - `units.sysml` - Custom unit types (Percent, Ratio, etc.)
-    - `materials.sysml` - Material part definitions
-  - `calculations/` - Calculation definitions (physics equations, formulas)
-    - `power_balance/` - Power balance calculations
-      - `power_balance.sysml` - Generic power balance
-      - `mfe_power_balance.sysml` - MFE-specific power flow
+- `library/` — Reusable definitions (part defs, calc defs, materials)
+- `designs/` — Specific fusion concept instances
 
-- `designs/` - Specific fusion concept designs
-  - CATF (Compact Advanced Tokamak Fusion) - planned
-  - Future: Stellarator, mirror machines, novel concepts
+## Library Catalog
 
-## Available Calc Definitions
+### `library/foundation/`
 
-### Power Balance (`library/calculations/power_balance/`)
+| File | Package | Key Elements | Purpose |
+|------|---------|-------------|---------|
+| `economic_parameter.sysml` | `economic_parameter` | `attribute def 'Economic Parameter'`, `enum def 'CAS Scope'` | Reusable parameter metadata type (value/min/max/sensitivity) and CAS scope classification |
+| `costed_component.sysml` | `costed_component` | `abstract part def 'Costed Component'` | Standard interface for cost-bearing components (capital_cost + cas_code) |
 
-**Generic Calculations** (`power_balance.sysml`):
-- `'Alpha Power Calc'` - Compute charged particle power by fuel type (DT, DD, DHE3, PB11)
-- `'Power Balance Calc'` - Generic power balance (p_alpha, p_neutron, q_sci)
+### `library/cost_structure/`
 
-**MFE-Specific** (`mfe_power_balance.sysml`):
-- `'MFE Power Balance Calc'` - Full MFE power flow (16 inputs, 15 outputs)
-  - Thermal power, thermal electric, recirculating power
-  - Engineering Q, recirculating fraction, net electric power
+| File | Package | Key Elements | Purpose |
+|------|---------|-------------|---------|
+| `cas_hierarchy.sysml` | `cas_hierarchy` | `part def 'CAS Account'`, 9 level 2 specializations (CAS20-27, CAS90) | CAS cost account hierarchy with shared/divergent classification |
+| `ife_cost_parameters.sysml` | `ife_cost_parameters` | `part def 'IFE Cost Parameters'` (14 attributes) | Hawker's 14 IFE cost model parameters with Monte Carlo ranges and sensitivity rankings |
 
-**Import Patterns for Design Files:**
-```sysml
-// Import generic calc
-private import PowerBalanceLibrary::'Power Balance Calc';
+### `library/analyses/`
 
-// Import MFE-specific calc
-private import MFEPowerBalanceLibrary::'MFE Power Balance Calc';
+| File | Package | Key Elements | Purpose |
+|------|---------|-------------|---------|
+| `ife_lcoe.sysml` | `ife_lcoe` | `calc def 'IFE LCOE'` | Closed-form DCF LCOE calculation taking 14 parameters, producing $/MWh |
+| `fusion_cycle.sysml` | `fusion_cycle` | `calc def 'Recirculating Power Fraction'`, `constraint def 'Viability Threshold'` | Fusion cycle gain analysis and eta*G viability constraint |
+| `hif_economics.sysml` | `hif_economics` | `calc def 'Meier HIF Driver Cost'`, `'Meier Reactor Cost'`, `'Meier Total Capital Cost'`, `'Meier COE'` | Meier 1986 HIF engineering-economic cost formulas (driver cost, reactor cost, capital cost, COE) |
 
-// Import alpha calc (also available)
-private import PowerBalanceLibrary::'Alpha Power Calc';
-```
+## Design Catalog
 
-## Getting Started
+### `designs/generic_ife/`
 
-Use `/design-model {feature}` to start creating models.
+| File | Package | Key Elements | Purpose |
+|------|---------|-------------|---------|
+| `ife_subsystems.sysml` | `ife_subsystems` | `abstract part def 'IFE Driver'`, `part def 'Target Factory'`, `part def 'Reaction Chamber'`, `enum def 'Wall Type'` | IFE subsystem type definitions with CAS22 sub-account mapping |
+| `ife_plant.sysml` | `ife_plant` | `part def 'IFE Power Plant'` | Generic IFE plant assembly with 14-param LCOE binding, power balance, and viability constraint |
 
-## Validation
+### `designs/hif_ife/`
 
-Models are validated against PyFECONS calculations. Use `/audit-models` to check alignment.
+| File | Package | Key Elements | Purpose |
+|------|---------|-------------|---------|
+| `hif_driver.sysml` | `hif_driver` | `part def 'HIF Driver'` | HIF induction linac driver specializing IFE Driver with Meier cost formula and Osiris baseline parameters |
+| `hif_plant.sysml` | `hif_plant_pkg` | `part hif_plant` | Osiris baseline HIF plant with dual cost outputs (Hawker LCOE + Meier COE) |
+
+## Note
+
+Previous CATF-oriented models (foundation package, power balance, test patterns) have been archived to `archive/models/`. They can be revived when tokamak modeling begins under the new investigation-driven workflow.

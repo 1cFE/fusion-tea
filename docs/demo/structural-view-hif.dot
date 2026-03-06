@@ -1,0 +1,36 @@
+digraph structural {
+    rankdir=TB;
+    bgcolor="transparent";
+    fontname="system-ui, sans-serif";
+    node [shape=box, style="rounded,filled", fontname="system-ui, sans-serif", fontsize=11, color="#2563eb", penwidth=1.5];
+    edge [color="#94a3b8", penwidth=1.2];
+
+    subgraph cluster_hif_plant {
+        label=<<b>hif_plant</b> : IFE Power Plant>;
+        labeljust=l;
+        style="rounded,filled";
+        color="#2563eb";
+        fillcolor="#dbeafe";
+        fontname="system-ui, sans-serif";
+        fontsize=13;
+        penwidth=2;
+
+        hif_plant_driver [label=<<b>driver</b> : IFE Driver>, fillcolor="#eff6ff"];
+        hif_plant_target_factory [label=<<b>target_factory</b> : Target Factory>, fillcolor="#eff6ff"];
+
+        subgraph cluster_hif_plant_chamber {
+            label=<<b>chamber</b> : Reaction Chamber>;
+            labeljust=l;
+            style="rounded,filled";
+            color="#7c3aed";
+            fillcolor="#f5f3ff";
+            fontname="system-ui, sans-serif";
+            fontsize=11;
+            penwidth=1.5;
+
+            hif_plant_chamber_blanket [label=<<b>blanket</b><br/><font point-size="9">CAS22.1.1 First Wall Blanket</font>>, fillcolor="#faf5ff"];
+            hif_plant_chamber_shield [label=<<b>shield</b><br/><font point-size="9">CAS22.1.2 Shield</font>>, fillcolor="#faf5ff"];
+            hif_plant_chamber_structure [label=<<b>structure</b><br/><font point-size="9">CAS22.1.5 Primary Structure</font>>, fillcolor="#faf5ff"];
+        }
+    }
+}

@@ -1,99 +1,243 @@
 # CLAUDE.md
 
-## System Being Modeled
+## Project Overview
 
-**System**: Nuclear Fusion Power Plants
+**Project**: Fusion TEA (Techno-Economic Analysis)
 **Domain**: Fusion Energy / Power Generation
-**Type**: Multi-concept comparison (starting with CATF MFE, expanding to other approaches)
+**Type**: Broad comparative investigation of fusion economics across confinement approaches
 
-This project models various approaches to nuclear fusion for techno-economic analysis. We begin with Compact Advanced Tokamak Fusion (CATF) using Magnetic Fusion Energy (MFE), then expand to other traditional approaches (stellarators, mirror machines, etc.), and eventually novel fusion techniques.
+This project investigates the economics of nuclear fusion power across fundamentally different approaches — magnetic confinement (tokamaks, stellarators, mirrors), inertial confinement (laser, heavy-ion), magnetized target fusion, and exotic concepts. The goal is not to model one reactor in detail, but to build the analytical infrastructure for cross-concept comparison: taxonomy, reusable cost modeling patterns, and traceable parameter chains.
 
-### Modeling Goals
+### Investigation Strategy
 
-Estimate long-run techno-economics, specifically Levelized Cost of Electricity (LCOE), for different fusion approaches. This enables:
-- Comparison across fusion concepts
-- Identification of cost drivers
-- Design optimization for economic viability
-- Investment and policy decision support
+The investigation scope, research questions, comparison axes, and "done" criteria are defined in:
+- **`modeling_project/OVERVIEW.md`** — the investigation scope document (read this for the full strategy)
+- **`modeling_project/REQUIREMENTS.md`** — modeling requirements (MR-1→6) and process requirements (PR-1→5)
+
+Key points:
+- **Two-stage process**: Stage 1 (Taxonomy — classify all ~36+ concepts) → Stage 2 (Concept Modeling — cost models for ~13 selected concepts). Each stage follows its own cycle of information gathering → work → analysis.
+- **5 research questions** drive all work (RQ-1 through RQ-5 in OVERVIEW.md)
+- **7 comparison axes** define what model outputs are needed (LCOE, capital cost by CAS, capacity factor, fuel cycle, technology readiness, estimation confidence, sensitivity-risk)
 
 ### Key Domain Concepts
 
-Key terminology:
-- **LCOE**: Levelized Cost of Electricity - total lifecycle cost per unit energy produced
-- **CATF**: Compact Advanced Tokamak Fusion - smaller, higher-field tokamak design
-- **MFE**: Magnetic Fusion Energy - confinement using magnetic fields
-- **Tokamak**: Toroidal magnetic confinement device
-- **Stellarator**: Twisted toroidal confinement (no plasma current needed)
-
-Key physics/principles:
-- Plasma confinement and stability
-- Neutron economy and tritium breeding
-- Thermal conversion efficiency
-- Magnet technology (superconducting vs copper)
-
-Key constraints:
-- Engineering limits on magnetic field strength
-- Material limits under neutron irradiation
-- Tritium self-sufficiency requirements
-- Thermal efficiency of power conversion
+- **LCOE**: Levelized Cost of Electricity — total lifecycle cost per unit energy produced
+- **CAS**: Cost Account Structure — standardized cost decomposition hierarchy (CAS10-LCOE)
+- **MFE/IFE/MIF**: Magnetic Fusion Energy / Inertial Fusion Energy / Magneto-Inertial Fusion — the three top-level confinement categories
 
 ## Project Structure
 
-- `models/` - SysML v2 models
-  - `library/` - Reusable definitions (part defs, calc defs, materials)
-  - `designs/` - Specific fusion concept instances (CATF, stellarator, etc.)
-- `knowledge/` - Domain knowledge and research
-  - `SOURCE_INDEX.md` - **Read this for domain knowledge sources**
-  - `KNOWLEDGE.md` - Domain insight registry (DI-XXX entries from research)
-  - `research/` - Research pipeline (`pending/`, `approved/`, `impacts/`)
-  - `sources/` - Domain source documents (e.g., COST_MODELING.md)
-- `modeling_project/` - Project definition and architecture
-  - `OVERVIEW.md` - Project overview, goals, and domain context
-  - `ARCHITECTURE.md` - Architectural decisions registry (AD-XXX entries)
-  - `REQUIREMENTS.md` - Project requirements registry (PR-XXX entries)
-  - `VALIDATION_MATRIX.md` - Verification criteria registry (SV-XXX entries)
-  - `MODELING_GUIDE.md` - SysML v2 modeling reference (tool-owned)
-  - `MODELING_PROCESS.md` - MBSE workflow process (tool-owned)
-- `work/` - Work management
-  - `BACKLOG.md` - Work item registry with YAML frontmatter (WI-XXX IDs)
-  - `EPIC_GUIDE.md` - Epic authoring guide (tool-owned)
-  - `backlog/` - Epic decomposition files
-  - `active/` - In-progress work items (spec.md, design.md, plan.md)
-  - `completed/` - Archived completed work items
-  - `learnings/` - RAW_LEARNINGS.md and session insights
-  - `analysis/` - Ad-hoc analysis artifacts
-- `data/` - Structured data
-  - `traceability_matrix.csv` - Element-to-source traceability
+```
+fusion-tea/
+├── CLAUDE.md                        # This file — project context for agent sessions
+├── .project/                        # CODING PM state (agentic-project-init)
+│   ├── active/                      #   In-progress coding work items (spec.md, design.md, plan.md)
+│   ├── backlog/                     #   Coding epics and backlog
+│   ├── completed/                   #   Archived coding work
+│   ├── EPIC_GUIDE.md               #   Epic decomposition methodology
+│   └── epic_template.md            #   Template for new epics
+├── models/
+│   ├── library/                     # Reusable definitions (concept-agnostic)
+│   └── designs/                     # Concept-specific model instances
+├── knowledge/
+│   ├── SOURCE_INDEX.md              # Registered domain sources — read this first
+│   ├── KNOWLEDGE.md                 # Domain insight registry (DI-XXX)
+│   ├── sources/                     # Extracted source documents
+│   └── research/                    # Research pipeline (pending → approved → impacts)
+├── modeling_project/
+│   ├── OVERVIEW.md                  # Investigation scope — research questions, axes, process
+│   ├── ARCHITECTURE.md              # Architectural decisions (AD-XXX)
+│   ├── REQUIREMENTS.md              # Modeling requirements (MR-XXX) and process requirements (PR-XXX)
+│   ├── intent/                      # Internal team artifacts — meeting notes, concept candidates
+│   ├── MODELING_GUIDE.md            # SysML v2 reference (tool-owned, symlinked)
+│   └── MODELING_PROCESS.md          # MBSE workflow process (tool-owned, symlinked)
+├── work/                            # MODELING PM state (agentic-mbse)
+│   ├── BACKLOG.md                   #   Modeling work item registry (YAML frontmatter)
+│   ├── EPIC_GUIDE.md               #   Modeling epic guide (tool-owned, symlinked)
+│   ├── backlog/                     #   Modeling epic decomposition files
+│   ├── active/                      #   In-progress modeling work items
+│   ├── completed/                   #   Archived modeling work items
+│   └── learnings/                   #   Session insights
+├── docs/
+│   └── demo/
+│       └── index.html               # Interactive workflow explainer (built incrementally)
+├── scripts/                         # Automation (Zotero ingestion, traceability audit, etc.)
+├── data/                            # Structured data and outputs
+└── archive/                         # Archived CATF-era artifacts (models, research, old requirements)
+```
+
+## Project Management — Two Systems
+
+This project uses **two separate PM systems** for different types of work. They share a similar lifecycle (spec → design → plan → implement) but have distinct authority, state directories, and commands.
+
+**CRITICAL: Do not cross-reference between them.** Coding epics belong in `.project/backlog/`. Modeling epics belong in `work/backlog/`. Each system manages its own state.
+
+### Coding PM (`agentic-project-init`)
+
+For project setup, scripting, infrastructure, environment work, and any non-modeling tasks.
+
+- **State directory**: `.project/` (active/, backlog/, completed/)
+- **Installed**: Globally via `~/.claude/` — always available
+- **When to use**: Writing scripts, updating project docs, building tooling, setting up infrastructure, or any non-SysML work
+- **Validation**: Convention-enforced through commands (no external validation scripts)
+
+**Workflow:**
+```
+/_my_concept → /_my_research → /_my_spec → /_my_design → /_my_plan → /_my_implement → /_my_audit_implementation → /_my_wrap_up
+```
+
+| Command | What it does |
+|---------|-------------|
+| `/_my_concept` | Develop feature idea with success criteria |
+| `/_my_research` | Investigate a topic, save to `.project/research/` |
+| `/_my_spec` | Create `spec.md` — requirements, scope, acceptance criteria |
+| `/_my_design` | Create `design.md` — architecture, components, rationale |
+| `/_my_plan` | Create `plan.md` — phased execution with checkboxes |
+| `/_my_implement` | Execute plan phase-by-phase with validation |
+| `/_my_audit_implementation` | Verify completed work against plan (find gaps, TODOs, stubs) |
+| `/_my_code_review` | Review code against spec/design requirements |
+| `/_my_code_quality` | Run linting, tests, formatting checks |
+| `/_my_project_manage` | Status reports, epic decomposition, close items |
+| `/_my_wrap_up` | End-of-session: update `CURRENT_WORK.md`, `MEMORY.md`, docs |
+
+**Work items**: `.project/active/{item-name}/` containing `spec.md`, `design.md`, `plan.md`
+**Epics**: `.project/backlog/epic_{name}.md`
+
+### Modeling PM (`agentic-mbse`)
+
+For SysML modeling, taxonomy development, concept analysis, and all MBSE work.
+
+- **State directory**: `work/` (active/, backlog/, completed/, learnings/)
+- **Installed**: Per-project via `agentic-mbse init --dev` — symlinked to `.claude/commands/`, `.claude/agents/`, `.claude/skills/`
+- **When to use**: Building SysML models, developing taxonomy, analyzing fusion concepts, doing domain research against sources
+- **Tool-owned docs**: `modeling_project/MODELING_GUIDE.md`, `modeling_project/MODELING_PROCESS.md`, `work/EPIC_GUIDE.md` (symlinked, gitignored, auto-updated)
+
+**Workflow:**
+```
+/backlog add → /spec-model → /design-model → /plan-model → /implement-model → /status close
+```
+
+| Command | What it does |
+|---------|-------------|
+| `/spec-model` | Create modeling spec — scope, requirements (writes to `work/active/`) |
+| `/design-model` | Create modeling design — SysML architecture, patterns |
+| `/plan-model` | Create implementation plan with validation levels |
+| `/implement-model` | Execute plan with 6-level SysML validation |
+| `/status` | Project dashboard, epic decomposition, or close items |
+| `/backlog` | Add work items, decompose epics, close completed work |
+| `/research` | Domain research against ingested sources |
+| `/manage-sources` | Source ingestion and registration |
+| `/analyze-models` | Cross-model analysis |
+| `/audit-models` | Validation audit |
+| `/review-model` | Model review against spec |
+
+**Work items**: `work/active/WI-XXX_{name}/` containing `spec.md`, `design.md`, `plan.md`
+**Epics**: `work/backlog/epic-{name}.md`
+
+### Modeling PM CLI Operations
+
+The modeling PM has deterministic CLI operations for state mutations. These are invoked by commands or directly:
+
+```bash
+# Project dashboard
+uv run agentic-mbse status              # Markdown dashboard
+uv run agentic-mbse status --json       # Structured JSON output
+
+# Work item management
+uv run agentic-mbse pm add-item --name "..." --scale standard --priority P0 [--epic "..."]
+uv run agentic-mbse pm close-item WI-XXX
+
+# Knowledge management
+uv run agentic-mbse pm add-insight --title "..." --source "..." --context "..." --model-implications "..." --analysis-implications "..."
+uv run agentic-mbse pm save-research --topic "..." --content-file path
+uv run agentic-mbse pm approve-research <pending-file> --insights '[...]'
+
+# Requirements and decisions
+uv run agentic-mbse pm promote-requirement --requirement "..." --source DI-XXX --enforcement "..."
+uv run agentic-mbse pm register-decision --title "..." --decision "..." --rationale "..."
+uv run agentic-mbse pm register-intent [--goals '[...]'] [--questions '[...]']
+
+# Traceability and validation
+uv run agentic-mbse pm trace-element --element "..." --file "..." --type "..." [--knowledge DI-XXX] [--requirement PR-XXX]
+uv run agentic-mbse pm add-validation --description "..." --type reasonableness --mechanism model --expected "..." --tolerance "..."
+uv run agentic-mbse pm update-validation SV-XXX --status passing
+uv run agentic-mbse pm impact-query DI-XXX
+```
+
+**Key principle**: Scripts own `work/BACKLOG.md` — never manually edit for state transitions. YAML frontmatter is the machine-readable source; the markdown body is rendered by the tooling.
+
+### YAML Frontmatter Conventions
+
+The modeling PM uses YAML frontmatter as machine-readable state. The parser (`agentic-mbse pm/parser.py`) validates enum values, ID patterns (WI-XXX, DI-XXX, PR-XXX, etc.), required fields, and cross-file references. The dashboard (`uv run agentic-mbse status`) derives project state by combining frontmatter with filesystem scanning.
+
+**`work/BACKLOG.md`** — modeling backlog registry:
+```yaml
+---
+epics:
+  - name: "Epic Name"
+    goal: G-XXX           # links to OVERVIEW.md goals
+    priority: P0|P1|P2|P3
+    status: draft|active|completed
+    file: backlog/epic-{name}.md
+    items:
+      - id: WI-XXX
+        name: "Item Name"
+        scale: trivial|standard
+        status: backlog|active|paused|completed
+        completed: YYYY-MM-DD  # or null
+standalone:
+  - id: WI-XXX
+    name: "Item Name"
+    # ... same fields as epic items
+---
+```
+
+**Modeling work item specs** (`work/active/WI-XXX_{name}/spec.md`):
+```yaml
+---
+Status: active
+Scale: standard|trivial
+Epic: "Epic Name"
+Owner: username
+Created: YYYY-MM-DD
+Updated: YYYY-MM-DD
+---
+```
+
+**Validation and verification:**
+- `uv run agentic-mbse status` — validates frontmatter, detects status mismatches, warns on orphan items
+- Parser validates: ID patterns (WI-XXX, PR-XXX, DI-XXX, AD-XXX, SV-XXX), enum values (Priority, Status, Scale), required fields, YAML syntax
+- Operations validate: cross-file references (e.g., `trace-element` checks that referenced DI/PR IDs exist), duplicate detection
+- Stage detection: dashboard infers work item stage from which artifact files exist (spec.md → speccing, design.md → designing, plan.md → implementing)
+
+The coding PM (`.project/`) uses markdown headers for metadata (Status, Owner, Created, Complexity, Branch) — similar information, different format. The coding PM does not have a dashboard parser; validation is embedded in the `/_my_*` commands.
 
 ## MBSE Workflow
 
 When helping with MBSE tasks:
 
-1. **Always check `knowledge/SOURCE_INDEX.md` first** for reference sources
-2. **Use `/research` to explore sources** when domain knowledge is needed
-3. **Follow the workflow**: spec → design → plan → implement
-4. **Validate against sources** using `/audit-models`
+1. **Read `modeling_project/OVERVIEW.md`** for investigation scope and process
+2. **Check `knowledge/SOURCE_INDEX.md`** for reference sources
+3. **Read `modeling_project/REQUIREMENTS.md`** for modeling constraints (MR-1→6)
+4. **Follow the modeling PM work loop**: `/spec-model` → `/design-model` → `/plan-model` → `/implement-model`
+5. **Maintain traceability**: all quantitative values must carry structured citations (see MR-4)
 
-### Command Guidance
+### Traceability
 
-- `/spec-model`: Help user define clear, testable requirements for fusion components
-- `/design-model`: Create SysML structure that traces to requirements
-- `/plan-model`: Break implementation into phases with validation gates
-- `/implement-model`: Generate correct SysML v2 syntax
-- `/audit-models`: Compare outputs against PyFECONS calculations
+All quantitative values in models must carry `Source`/`Ref`/`Basis` citations that resolve to files in the repo or external codebases. See MR-4 in REQUIREMENTS.md and `.project/active/traceability-system/spec.md` for the citation format specification.
 
 ## Domain Sources
 
-**Primary reference**: PyFECONS at `/home/reid/PyFECONS` - Python implementation of fusion costing algorithms, physics calculations, and economic models.
-
-See `knowledge/SOURCE_INDEX.md` for complete listing with:
+See `knowledge/SOURCE_INDEX.md` for the complete listing of ingested sources with:
 - Source locations (paths/URLs)
-- What each source is used for
-- How to validate against each source
+- What each source covers
+- Research questions it serves
+
+Source selection is iterative — sources are ingested as the investigation identifies data needs (see OVERVIEW.md, Source Strategy).
 
 ## Installed Tools
 
-**agentic-mbse**: Installed in this project. See `README.md` for usage information. Source code is at `~/1cfe/agentic-mbse`.
+**agentic-mbse**: MBSE workflow commands, 6-level model validation, and PDF extraction (v4 pipeline with quality gates and ensemble table detection). Installed as editable dependency. Source code at `~/1cfe/agentic-mbse`.
 
 ## Python Environment
 
@@ -115,28 +259,25 @@ uv add package_name
 
 # Running syside (SysML parser)
 uv run syside check models/path/to/file.sysml
+
+# Running agentic-mbse CLI
+uv run agentic-mbse extract <pdf>
+uv run agentic-mbse validate <sysml>
 ```
 
 ### Incorrect Usage (DO NOT USE)
 
 ```bash
-# These will use wrong Python or miss dependencies
-python script.py        # WRONG
-python3 script.py       # WRONG
-pip install package     # WRONG
-syside check file.sysml # WRONG (unless uv shell is active)
+python script.py        # WRONG — wrong venv
+python3 script.py       # WRONG — wrong venv
+pip install package     # WRONG — use uv add
+syside check file.sysml # WRONG — unless uv shell is active
 ```
-
-### Why uv?
-
-- Ensures correct virtual environment is used
-- Manages dependencies consistently
-- Faster than pip
-- Project has `pyproject.toml` configured for uv
 
 ## Special Considerations
 
-- PyFECONS contains validated costing algorithms - model outputs should be comparable
-- LCOE calculations depend on many subsystem costs - maintain clear traceability
-- Different fusion concepts have different cost structures - library definitions should be concept-agnostic where possible
-- Start with CATF MFE as the reference design before generalizing
+- Library definitions must be concept-agnostic; concept-specific values live in `designs/` (MR-3)
+- All quantitative values must cite their source with structured citations (MR-4)
+- LCOE calculations depend on many subsystem costs — maintain clear traceability chains
+- Different fusion concepts have different cost structures — the taxonomy (Stage 1) identifies what's shared vs. divergent before modeling begins
+- Modeling patterns must be defined and validated before production models are built (MR-6, PR-3)
