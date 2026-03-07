@@ -301,7 +301,7 @@ def invoke_claude(
     Invoke claude in print mode via stdin.
     Returns (stdout, stderr, returncode).
     """
-    cmd = ["claude", "-p"]
+    cmd = ["claude", "-p", "--dangerously-skip-permissions", "--verbose"]
     if model:
         cmd.extend(["--model", model])
 
@@ -424,10 +424,20 @@ def print_summary(concept_dir: Path):
         print("Dossier: not created")
         return
 
-    # Count column sections and TBD/Unknown values
-    sections = re.findall(r"^### .+", dossier, re.MULTILINE)
-    tbds = len(re.findall(r"\*\*Value\*\*:\s*(TBD|Unknown)", dossier))
-    nas = len(re.findall(r"\*\*Value\*\*:\s*N/A", dossier))
+    # Extract only the ## Differentiation Table Values section
+    diff_match = re.search(
+        r"^## Differentiation Table Values\s*\n(.*?)(?=^## |\Z)",
+        dossier,
+        re.MULTILINE | re.DOTALL,
+    )
+    if not diff_match:
+        print("Dossier: could not find '## Differentiation Table Values' section")
+        return
+
+    diff_section = diff_match.group(1)
+    sections = re.findall(r"^### .+", diff_section, re.MULTILINE)
+    tbds = len(re.findall(r"\*\*Value\*\*:\s*(TBD|Unknown)", diff_section))
+    nas = len(re.findall(r"\*\*Value\*\*:\s*N/A", diff_section))
     total = len(sections)
     filled = total - tbds - nas
 
