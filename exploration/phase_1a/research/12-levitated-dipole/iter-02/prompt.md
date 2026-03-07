@@ -1,3 +1,35 @@
+# Fusion Concept Research: Levitated Dipole (D-T)
+
+You are a research agent investigating a specific fusion energy concept for a differentiation table. Your job is to find accurate, cited information for each column in the table schema.
+
+## Concept
+
+- **Name**: Levitated Dipole (D-T)
+- **Company**: OpenStar Technologies
+- **Confinement approach**: Magnetic Confinement
+- **Description**: Single superconducting coil levitated inside vacuum vessel creates dipolar magnetic field. Plasma confined in external region. Inspired by planetary magnetospheres. Steady-state, inherently MHD stable.
+- **Known fuel**: D-T (Deuterium-Tritium)
+- **Operation mode**: Continuous
+
+## Task
+
+Research this concept and provide findings for each column listed under "Gaps to Fill" below. For columns already filled with high confidence, you do not need to re-research them — but if you find contradictory information, note it.
+
+## Research Strategy
+
+1. **Start broad**: Search the web for "OpenStar Technologies fusion technology" and similar queries. Look for the company's website, Wikipedia page, Fusion Industry Association profile, press releases, and investor presentations.
+2. **Go deeper on gaps**: For columns that remain unfilled after the broad search, try more targeted queries:
+   - Technical papers or preprints by the company's founders/scientists
+   - ARPA-E or DOE award descriptions
+   - Conference presentations (APS-DPP, IAEA FEC, IEEE SOFE)
+   - News articles with technical detail (not just funding announcements)
+3. **Save important sources**: When you find a page with substantial technical detail, save it to `./sources/` with a descriptive filename (e.g., `company-website-technology.md`, `arxiv-2025-paper-summary.md`). Use the Write tool. Save the key technical content, not the entire page.
+4. **Be honest about confidence**: If you can't find a value, say so. If you're inferring from general physics rather than a specific source, say so. Do not guess.
+
+## Column Schema
+
+Use these exact vocabulary values. If no value fits, use the closest match and explain in your notes.
+
 # Phase 1a: Differentiation Table Schema
 
 **Version**: 0.2 (post-Checkpoint 1)
@@ -23,8 +55,7 @@ This document defines the columns, controlled vocabulary, and rules for the fusi
 
 Every non-obvious value in the table should be traceable. In per-concept dossiers, each column value carries:
 - **Citation**: URL, paper reference, or `knowledge/sources/...` path
-- **Confidence** (per-cell): `high` (directly stated by source) · `medium` (inferred from described approach) · `low` (extrapolated from similar concepts)
-- **Overall Confidence** (per-concept, in `table.csv`): Five-level scale — `high` · `medium-high` · `medium` · `medium-low` · `low`. Reflects the aggregate quality of a concept's dossier. Per-cell confidence remains three-level.
+- **Confidence**: `high` (directly stated by source) · `medium` (inferred from described approach) · `low` (extrapolated from similar concepts)
 
 ### Controlled Vocabulary Rules
 
@@ -334,4 +365,147 @@ These columns are carried for identification but are not part of the differentia
 |------|---------|---------|---------|
 | 2026-03-06 | 0.1 | Initial schema | Sprint plan creation |
 | 2026-03-07 | 0.2 | +`Tokamak` (Col 2), +`Solid ceramic breeder (HCPB)` (Col 8), QI/modular note (Col 2), >5 min = Quasi-steady (Col 10), `Pulsed` narrowed to short events | Checkpoint 1 review |
-| 2026-03-07 | 0.2.1 | Overall Confidence expanded to five-level scale (`high` / `medium-high` / `medium` / `medium-low` / `low`); per-cell confidence remains three-level | Checkpoint 3-4 review (Realta, MagLIF used `medium-high`) |
+
+
+## Current Knowledge
+
+From previous research iterations (see dossier for full context):
+
+# Levitated Dipole (D-T)
+
+**Company**: OpenStar Technologies
+**Last updated**: 2026-03-07
+**Iterations completed**: 1
+**Overall confidence**: medium
+
+## Summary
+
+The levitated dipole confines plasma in the external region around a single superconducting coil magnetically levitated inside a vacuum vessel, creating a dipolar field inspired by planetary magnetospheres. OpenStar Technologies is the leading commercial pursuer, with a novel sacrificial two-section REBCO HTS coil design and patented on-board flux pump that enables D-T operation -- a deliberate departure from the D-D heritage of the original LDX experiment at MIT. The concept is inherently MHD stable and operates in quasi-steady mode (>95% duty cycle, pulsed only by cryogen thermal limits). OpenStar has published a detailed D-T power plant design (arXiv 2602.20564) and demonstrated levitated plasma confinement in their Junior prototype (Feb 2026).
+
+## Differentiation Table Values
+
+### Confinement Family
+- **Value**: MFE
+- **Confidence**: high
+- **Citation**: arXiv 2602.20564 -- dipole magnetic field confines plasma in quasi-steady magnetic geometry
+- **Notes**: Plasma confined by the dipolar magnetic field of a levitating superconducting coil. Inherently MHD stable via interchange mode stability.
+
+### Confinement Concept
+- **Value**: Levitated dipole
+- **Confidence**: high
+- **Citation**: https://www.openstar.tech/; arXiv 2602.20564
+- **Notes**: Single superconducting coil levitated inside a vacuum vessel creates a dipolar magnetic field. Plasma confined in the external region. OpenStar is essentially the only commercial company pursuing this for grid-scale power. Deutelio (Switzerland) also pursues levitated dipoles but with structural levitation and D-D fuel.
+
+### Fuel
+- **Value**: D-T
+- **Confidence**: high
+- **Citation**: arXiv 2602.20564 -- "In order to achieve rapid deployment of fusion power to the grid, the use of the Deuterium-Tritium (DT) fuel cycle is required due to its lower required plasma triple products."
+- **Notes**: D-T is a deliberate departure from LDX heritage, which emphasized D-D or "helium catalyzed D-D." Enabled by OpenStar's two-section coil design with a sacrificial outer section to handle neutron damage. Wikipedia's levitated dipole article (as of research date) incorrectly states OpenStar targets D-D -- this contradicts their own published paper.
+
+### Primary Heating
+- **Value**: RF (ICRH)
+- **Confidence**: high
+- **Citation**: arXiv 2602.20564 -- "Ion-cyclotron resonance heating (ICRH) as baseline"
+- **Notes**: ICRH is the baseline for the power plant design, with ECRH and NBI also evaluated. Departure from LDX heritage which used ECRH exclusively. The Junior prototype currently uses ECRH (2.45 GHz magnetrons, 15 kW each) for initial plasma experiments -- typical for early-stage devices. Power plant shifts to ICRH for ion heating at fusion-relevant temperatures.
+
+### Energy Capture
+- **Value**: Thermal (unspecified)
+- **Confidence**: medium
+- **Citation**: arXiv 2602.20564 -- thermal power plant with neutron heat captured in shield/blanket; specific cycle not specified
+- **Notes**: Neutron energy deposited in tungsten/B4C shield, radiated to first wall, captured by Li2O breeding blanket for thermal conversion. Specific thermodynamic cycle (Rankine vs. sCO2 Brayton) not specified. Paper focuses on nuclear island rather than balance of plant.
+
+### Plasma State
+- **Value**: Burning
+- **Confidence**: medium
+- **Citation**: arXiv 2602.20564 -- reactor targets ~667 MW fusion power with ~208 MW net electric, implying high Q with significant alpha self-heating
+- **Notes**: Power balance includes alpha heating as a major term. With ~667 MW fusion and ~208 MW net electric, this implies Q >> 5. However, exact Q and self-heating fraction not explicitly stated. External ICRH still required. "Burning" appropriate for target reactor state. The pulsed operation adds nuance -- plasma burns during each pulse but the plant cycles.
+
+### Magnet Type
+- **Value**: HTS (levitated dipole)
+- **Confidence**: high
+- **Citation**: arXiv 2602.20564; arXiv 2508.17691
+- **Notes**: REBCO 2nd-gen HTS tape. Junior prototype: 14 non-insulated solder-impregnated coils, 5.63 T, 550 kg, ~25 K. Power plant: 23 T peak field, CICC architecture, neon slush cooling (24.6 K). Two-section design: sacrificial outer section (~20% of coil, ~1 yr neutron lifetime) and semi-permanent inner section (decade-scale). On-board superconducting flux pump (patented) eliminates current leads during operation. External "top magnet" provides levitation and position control.
+
+### Tritium Breeding
+- **Value**: Solid ceramic breeder (HCPB)
+- **Confidence**: medium
+- **Citation**: arXiv 2602.20564 -- "Li2O ceramic blanket (other ceramic materials with neutron multipliers feasible)"
+- **Notes**: Li2O ceramic blanket with TBR target of 1.1. Classified as HCPB, though specific cooling scheme not detailed. Tungsten shield acts as neutron reflector (introducing ~1 MeV neutron population). B4C shield also produces some tritium via 10B(n,alpha)3H. Favorable geometry: only ~25% of fusion neutrons pass through the core magnet region. The mention that "other ceramic materials with neutron multipliers" are feasible suggests blanket design is not finalized.
+
+### Neutron Management
+- **Value**: Integrated blanket/shield
+- **Confidence**: high
+- **Citation**: arXiv 2602.20564 -- layered tungsten + B4C shield integrated with Li2O breeding blanket
+- **Notes**: Layered tungsten and B4C shield protects the core magnet while Li2O blanket captures neutrons for tritium breeding. Shield radiates 92% of deposited heat to first wall, captured by blanket for thermal conversion. Two-temperature shield design (hot: >2000 K, warm: ~600C). Only ~25% of fusion neutrons intercept the core magnet region. 1 MW-year/m2 fluence threshold drives sacrificial coil replacement cycle (~1 year).
+
+### Operation Mode
+- **Value**: Quasi-steady
+- **Confidence**: high
+- **Citation**: arXiv 2602.20564 -- "Pulsed operation with periodic maintenance docking" with >95% duty cycle
+- **Notes**: Initial CSV listed "Continuous" and concept is described as "steady-state, inherently MHD stable." However, the power plant design is pulsed: plasma operates until cryogenic neon slush reservoir melts, then magnet docks for coolant replacement. With >95% duty cycle, each "pulse" is likely hours to days. Per schema (>5 min = Quasi-steady). The plasma itself is steady-state capable; pulsing is driven by cryogen lifetime, not plasma physics.
+
+### Repetition Rate
+- **Value**: N/A
+- **Confidence**: high
+- **Citation**: Schema definition -- quasi-steady concepts do not have a meaningful repetition rate
+- **Notes**: N/A -- >95% duty cycle with long burn periods makes repetition rate meaningless as a differentiator.
+
+### Driver Technology
+- **Value**: Levitated HTS dipole coil (REBCO, 23 T) with on-board flux pump
+- **Confidence**: high
+- **Citation**: arXiv 2602.20564; arXiv 2508.17691
+- **Notes**: The distinguishing engineering bet is: (1) REBCO HTS achieving 23 T in the power plant design, (2) patented on-board superconducting transformer-rectifier flux pump maintaining coil current without physical connections, (3) neon slush cryogenic reservoir for extended operation, (4) sacrificial two-section coil architecture enabling D-T neutron tolerance. The flux pump eliminates current leads penetrating the vacuum -- the key unsolved challenge for levitated dipole reactors. Junior prototype demonstrated 170 kJ stored energy via flux pump (world record for HTS flux pump delivery).
+
+## Remaining Gaps
+
+1. **Energy Capture (medium)**: Specific thermal cycle (Rankine vs. sCO2) not specified in any OpenStar publication. Paper focuses on nuclear island. A future paper or investor presentation specifying balance of plant would resolve this. Another iteration unlikely to help -- this information is simply not public yet.
+
+2. **Plasma State (medium)**: Exact Q value and self-heating fraction not explicitly stated, though reactor clearly targets burning regime. A more detailed plasma physics publication with explicit Q values would raise confidence.
+
+3. **Tritium Breeding (medium)**: Paper says "Li2O ceramic blanket" but doesn't specify full blanket module design (cooling scheme). Mention that "other ceramic materials" are feasible suggests design is not finalized. Another iteration unlikely to resolve -- blanket design appears to be preliminary.
+
+## Key Sources
+
+1. **arXiv 2602.20564** -- Simpson et al. (2026), "Deuterium-Tritium Levitated Dipole Fusion Power Plants." Primary source for power plant design, 0D power balance, neutronics, and all column values. Saved: `iter-01/sources/arxiv-2602-20564-dt-dipole-power-plants.md`
+2. **arXiv 2508.17691** -- OpenStar team, "Design and Initial Results from Junior LDX." Junior prototype specs, HTS magnet details, flux pump demonstration. Saved: `iter-01/sources/arxiv-2508-17691-junior-design-results.md`
+3. **OpenStar website** -- Company overview, technology roadmap, flux pump and cryogenic details. Saved: `iter-01/sources/openstar-prototype-roadmap.md`
+4. **Wikipedia - Levitated Dipole Experiment** -- LDX history, heritage context. URL: https://en.wikipedia.org/wiki/Levitated_Dipole_Experiment
+5. **World Nuclear News** -- Junior/Tahi specs, timeline. URL: https://world-nuclear-news.org/articles/openstar-demonstrates-dipole-fusion-reactor-concept
+
+
+## Gaps to Fill
+
+The following columns need values. Focus your research on these:
+
+No obvious gaps — verify and strengthen existing values.
+
+## Output Format
+
+For EACH column in the schema (including ones already filled — confirm or update them), write:
+
+### [Column Name]
+- **Value**: [exact vocabulary value from schema]
+- **Confidence**: high | medium | low
+- **Citation**: [specific URL, paper reference, or reasoning basis]
+- **Notes**: [anything relevant — how you determined this, source disagreements, caveats, qualifiers not captured by the vocabulary value]
+
+Rules:
+- **high** confidence: value directly stated by an authoritative source (company website, peer-reviewed paper, official press release)
+- **medium** confidence: value inferred from the described approach and general domain knowledge (e.g., "stellarators use ECRH" is medium unless the specific company confirms it)
+- **low** confidence: value extrapolated from similar concepts or fragmentary information
+- If a column is structurally inapplicable, write `N/A` as the value with a one-line justification
+- If you searched and found nothing, write `Unknown` or `TBD` and explain what you tried
+
+After all columns, write a final section:
+
+## Remaining Gaps
+
+List any columns where:
+- You could not find a value (explain what sources you checked)
+- Your confidence is low (explain what would raise it)
+- You found conflicting information (summarize the conflict)
+- A specific source type (paper, patent, technical report) might resolve the gap
+
+## Sources Consulted
+
+List all URLs and documents you consulted during this research, even if they didn't yield useful information for the gaps. This helps avoid re-searching the same sources in future iterations.

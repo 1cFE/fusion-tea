@@ -1,3 +1,35 @@
+# Fusion Concept Research: Magnetized Target Fusion - Pneumatic Compression (D-T)
+
+You are a research agent investigating a specific fusion energy concept for a differentiation table. Your job is to find accurate, cited information for each column in the table schema.
+
+## Concept
+
+- **Name**: Magnetized Target Fusion - Pneumatic Compression (D-T)
+- **Company**: General Fusion
+- **Confinement approach**: Magnetized Target Fusion
+- **Description**: Magnetized plasma compressed by mechanically driven liquid metal liner. Pulsed at 1-10 Hz. Intermediate density/timescale between MCF and ICF.
+- **Known fuel**: D-T (Deuterium-Tritium)
+- **Operation mode**: Pulsed
+
+## Task
+
+Research this concept and provide findings for each column listed under "Gaps to Fill" below. For columns already filled with high confidence, you do not need to re-research them — but if you find contradictory information, note it.
+
+## Research Strategy
+
+1. **Start broad**: Search the web for "General Fusion fusion technology" and similar queries. Look for the company's website, Wikipedia page, Fusion Industry Association profile, press releases, and investor presentations.
+2. **Go deeper on gaps**: For columns that remain unfilled after the broad search, try more targeted queries:
+   - Technical papers or preprints by the company's founders/scientists
+   - ARPA-E or DOE award descriptions
+   - Conference presentations (APS-DPP, IAEA FEC, IEEE SOFE)
+   - News articles with technical detail (not just funding announcements)
+3. **Save important sources**: When you find a page with substantial technical detail, save it to `./sources/` with a descriptive filename (e.g., `company-website-technology.md`, `arxiv-2025-paper-summary.md`). Use the Write tool. Save the key technical content, not the entire page.
+4. **Be honest about confidence**: If you can't find a value, say so. If you're inferring from general physics rather than a specific source, say so. Do not guess.
+
+## Column Schema
+
+Use these exact vocabulary values. If no value fits, use the closest match and explain in your notes.
+
 # Phase 1a: Differentiation Table Schema
 
 **Version**: 0.2 (post-Checkpoint 1)
@@ -23,8 +55,7 @@ This document defines the columns, controlled vocabulary, and rules for the fusi
 
 Every non-obvious value in the table should be traceable. In per-concept dossiers, each column value carries:
 - **Citation**: URL, paper reference, or `knowledge/sources/...` path
-- **Confidence** (per-cell): `high` (directly stated by source) · `medium` (inferred from described approach) · `low` (extrapolated from similar concepts)
-- **Overall Confidence** (per-concept, in `table.csv`): Five-level scale — `high` · `medium-high` · `medium` · `medium-low` · `low`. Reflects the aggregate quality of a concept's dossier. Per-cell confidence remains three-level.
+- **Confidence**: `high` (directly stated by source) · `medium` (inferred from described approach) · `low` (extrapolated from similar concepts)
 
 ### Controlled Vocabulary Rules
 
@@ -334,4 +365,51 @@ These columns are carried for identification but are not part of the differentia
 |------|---------|---------|---------|
 | 2026-03-06 | 0.1 | Initial schema | Sprint plan creation |
 | 2026-03-07 | 0.2 | +`Tokamak` (Col 2), +`Solid ceramic breeder (HCPB)` (Col 8), QI/modular note (Col 2), >5 min = Quasi-steady (Col 10), `Pulsed` narrowed to short events | Checkpoint 1 review |
-| 2026-03-07 | 0.2.1 | Overall Confidence expanded to five-level scale (`high` / `medium-high` / `medium` / `medium-low` / `low`); per-cell confidence remains three-level | Checkpoint 3-4 review (Realta, MagLIF used `medium-high`) |
+
+
+## Current Knowledge
+
+From the initial concept CSV (no prior research):
+- **Confinement Approach**: Magnetized Target Fusion
+- **Description**: Magnetized plasma compressed by mechanically driven liquid metal liner. Pulsed at 1-10 Hz. Intermediate density/timescale between MCF and ICF.
+- **Fuel Type**: D-T (Deuterium-Tritium)
+- **Operation Mode**: Pulsed
+- **Published Machine/Plant?**: No
+- **Lab Experiments**: LANL MTF (Theta Pinch + liner), HyperJet Fusion (plasma jet driven MTF)
+
+## Gaps to Fill
+
+The following columns need values. Focus your research on these:
+
+All columns — this is the first iteration. No prior research exists.
+
+## Output Format
+
+For EACH column in the schema (including ones already filled — confirm or update them), write:
+
+### [Column Name]
+- **Value**: [exact vocabulary value from schema]
+- **Confidence**: high | medium | low
+- **Citation**: [specific URL, paper reference, or reasoning basis]
+- **Notes**: [anything relevant — how you determined this, source disagreements, caveats, qualifiers not captured by the vocabulary value]
+
+Rules:
+- **high** confidence: value directly stated by an authoritative source (company website, peer-reviewed paper, official press release)
+- **medium** confidence: value inferred from the described approach and general domain knowledge (e.g., "stellarators use ECRH" is medium unless the specific company confirms it)
+- **low** confidence: value extrapolated from similar concepts or fragmentary information
+- If a column is structurally inapplicable, write `N/A` as the value with a one-line justification
+- If you searched and found nothing, write `Unknown` or `TBD` and explain what you tried
+
+After all columns, write a final section:
+
+## Remaining Gaps
+
+List any columns where:
+- You could not find a value (explain what sources you checked)
+- Your confidence is low (explain what would raise it)
+- You found conflicting information (summarize the conflict)
+- A specific source type (paper, patent, technical report) might resolve the gap
+
+## Sources Consulted
+
+List all URLs and documents you consulted during this research, even if they didn't yield useful information for the gaps. This helps avoid re-searching the same sources in future iterations.

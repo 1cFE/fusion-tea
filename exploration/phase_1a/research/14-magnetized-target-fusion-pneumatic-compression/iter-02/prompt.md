@@ -1,3 +1,35 @@
+# Fusion Concept Research: Magnetized Target Fusion - Pneumatic Compression (D-T)
+
+You are a research agent investigating a specific fusion energy concept for a differentiation table. Your job is to find accurate, cited information for each column in the table schema.
+
+## Concept
+
+- **Name**: Magnetized Target Fusion - Pneumatic Compression (D-T)
+- **Company**: General Fusion
+- **Confinement approach**: Magnetized Target Fusion
+- **Description**: Magnetized plasma compressed by mechanically driven liquid metal liner. Pulsed at 1-10 Hz. Intermediate density/timescale between MCF and ICF.
+- **Known fuel**: D-T (Deuterium-Tritium)
+- **Operation mode**: Pulsed
+
+## Task
+
+Research this concept and provide findings for each column listed under "Gaps to Fill" below. For columns already filled with high confidence, you do not need to re-research them — but if you find contradictory information, note it.
+
+## Research Strategy
+
+1. **Start broad**: Search the web for "General Fusion fusion technology" and similar queries. Look for the company's website, Wikipedia page, Fusion Industry Association profile, press releases, and investor presentations.
+2. **Go deeper on gaps**: For columns that remain unfilled after the broad search, try more targeted queries:
+   - Technical papers or preprints by the company's founders/scientists
+   - ARPA-E or DOE award descriptions
+   - Conference presentations (APS-DPP, IAEA FEC, IEEE SOFE)
+   - News articles with technical detail (not just funding announcements)
+3. **Save important sources**: When you find a page with substantial technical detail, save it to `./sources/` with a descriptive filename (e.g., `company-website-technology.md`, `arxiv-2025-paper-summary.md`). Use the Write tool. Save the key technical content, not the entire page.
+4. **Be honest about confidence**: If you can't find a value, say so. If you're inferring from general physics rather than a specific source, say so. Do not guess.
+
+## Column Schema
+
+Use these exact vocabulary values. If no value fits, use the closest match and explain in your notes.
+
 # Phase 1a: Differentiation Table Schema
 
 **Version**: 0.2 (post-Checkpoint 1)
@@ -23,8 +55,7 @@ This document defines the columns, controlled vocabulary, and rules for the fusi
 
 Every non-obvious value in the table should be traceable. In per-concept dossiers, each column value carries:
 - **Citation**: URL, paper reference, or `knowledge/sources/...` path
-- **Confidence** (per-cell): `high` (directly stated by source) · `medium` (inferred from described approach) · `low` (extrapolated from similar concepts)
-- **Overall Confidence** (per-concept, in `table.csv`): Five-level scale — `high` · `medium-high` · `medium` · `medium-low` · `low`. Reflects the aggregate quality of a concept's dossier. Per-cell confidence remains three-level.
+- **Confidence**: `high` (directly stated by source) · `medium` (inferred from described approach) · `low` (extrapolated from similar concepts)
 
 ### Controlled Vocabulary Rules
 
@@ -334,4 +365,157 @@ These columns are carried for identification but are not part of the differentia
 |------|---------|---------|---------|
 | 2026-03-06 | 0.1 | Initial schema | Sprint plan creation |
 | 2026-03-07 | 0.2 | +`Tokamak` (Col 2), +`Solid ceramic breeder (HCPB)` (Col 8), QI/modular note (Col 2), >5 min = Quasi-steady (Col 10), `Pulsed` narrowed to short events | Checkpoint 1 review |
-| 2026-03-07 | 0.2.1 | Overall Confidence expanded to five-level scale (`high` / `medium-high` / `medium` / `medium-low` / `low`); per-cell confidence remains three-level | Checkpoint 3-4 review (Realta, MagLIF used `medium-high`) |
+
+
+## Current Knowledge
+
+From previous research iterations (see dossier for full context):
+
+# Magnetized Target Fusion - Pneumatic Compression (D-T)
+
+**Company**: General Fusion
+**Last updated**: 2026-03-07
+**Iterations completed**: 1
+**Overall confidence**: high
+
+## Summary
+
+General Fusion's magnetized target fusion (MTF) concept uses steam-driven pneumatic pistons to compress a vortex of liquid metal (lithium or lead-lithium) around a magnetized compact toroid plasma, driving it to fusion conditions. Operating at intermediate density and timescale between magnetic confinement (MFE) and inertial confinement (IFE), the system pulses at ~1 Hz in the commercial design. The liquid metal liner serves triple duty as compression medium, neutron absorber/shield, and tritium breeder — a distinctive engineering simplification. The company's current LM26 demonstration machine uses electromagnetic compression of solid lithium as a surrogate, while the commercial concept relies on mechanical/pneumatic compression.
+
+## Differentiation Table Values
+
+### Confinement Family
+- **Value**: `MIF`
+- **Confidence**: high
+- **Citation**: https://generalfusion.com/fusion-technology/ — "Magnetized Target Fusion (MTF) technology" combining magnetic confinement with inertial compression
+- **Notes**: MTF/MIF are synonymous terms. General Fusion explicitly positions between MCF and ICF — magnetized plasma compressed by an external mechanical driver at intermediate density/timescale.
+
+### Confinement Concept
+- **Value**: `Magnetized target (pneumatic)`
+- **Confidence**: high
+- **Citation**: https://generalfusion.com/fusion-technology/; schema vocabulary
+- **Notes**: The commercial design uses steam-driven pistons to compress liquid metal liner around magnetized plasma. "Pneumatic" in the schema captures the mechanical compression approach. The pistons are steam-driven (not electrically driven or laser-driven). LM26 demo uses electromagnetic compression of solid lithium as a surrogate, but the commercial concept is mechanical/pneumatic.
+
+### Fuel
+- **Value**: `D-T`
+- **Confidence**: high
+- **Citation**: https://generalfusion.com/fusion-technology/ — tritium breeding is integral to the design; 14.1 MeV neutrons are produced
+- **Notes**: Standard D-T fuel cycle. Tritium breeding from liquid lithium is a core design feature.
+
+### Primary Heating
+- **Value**: `Mechanical compression`
+- **Confidence**: high
+- **Citation**: https://generalfusion.com/fusion-technology/; https://interestingengineering.com/energy/steam-driven-nuclear-fusion-reactor — "steam-driven pistons" compress the liquid metal liner which compresses the plasma
+- **Notes**: The plasma is initially formed by a Marshall gun (coaxial plasma gun) as a compact toroid (spherical tokamak), but the primary heating to fusion-relevant temperatures comes from mechanical compression of the liquid metal liner driven by steam pistons. The initial plasma formation is at ~400 eV; compression must raise this to ~10 keV (fusion conditions). LM26 uses electromagnetic compression as a demo stand-in, but the commercial heating mechanism is mechanical compression.
+
+### Energy Capture
+- **Value**: `Thermal (steam)`
+- **Confidence**: high
+- **Citation**: https://www.comsol.com/story/compressing-the-timeline-to-a-fusion-future-141951 — "liquid metal wall of the vessel" captures neutron energy; https://interestingengineering.com/energy/steam-driven-nuclear-fusion-reactor — "lithium flows through heat exchanger → generates steam → spins generator for electricity"
+- **Notes**: Standard thermal cycle: fusion neutrons heat the liquid metal liner → liquid metal pumped through heat exchanger → steam Rankine cycle → turbine. The steam also powers the pistons in a partially self-sustaining cycle.
+
+### Plasma State
+- **Value**: `Compressed`
+- **Confidence**: high
+- **Citation**: https://generalfusion.com/fusion-technology/ — plasma is mechanically compressed to fusion conditions
+- **Notes**: The plasma starts as a compact toroid (spherical tokamak) at ~400 eV and is driven to fusion conditions by implosion of the liquid metal liner. This is characteristic MIF — plasma driven to fusion by external compression, not self-sustaining burn or steady-state confinement.
+
+### Magnet Type
+- **Value**: `Self-confined`
+- **Confidence**: high
+- **Citation**: Schema definition — "mechanically compressed (MTF). No external confinement magnets."
+- **Notes**: The plasma is a compact toroid with internal magnetic fields sustained by plasma currents. The confining compression comes from the liquid metal liner driven by pistons, not from external magnetic coils. LM26 uses electromagnetic coils for compression as a surrogate, but in the commercial design the confinement/compression is mechanical. The plasma does have magnetic fields (it's a compact toroid), but these are self-generated, not from external superconducting magnets.
+
+### Tritium Breeding
+- **Value**: `Liquid metal wall`
+- **Confidence**: high
+- **Citation**: https://generalfusion.com/fusion-technology/ — liquid metal wall "breed[s] fuel"; https://www.fusionconclusion.com/how-general-fusions-reactor-will-work-or-wont/ — tritium breeding ratio target ~1.5
+- **Notes**: The flowing liquid metal (lithium or lead-lithium) serves as both the compression liner AND the tritium breeder. This is distinct from a contained blanket — the liquid metal is the structural wall itself. Original design used lead-lithium (PbLi); current demo uses pure lithium; commercial plant may use either. TBR target ~1.5.
+
+### Neutron Management
+- **Value**: `Integrated blanket/shield`
+- **Confidence**: high
+- **Citation**: https://generalfusion.com/fusion-technology/ — liquid metal wall "absorb[s] neutrons and protect[s] the machine from fusion damage, breed[s] fuel and provide[s] efficient heat transfer"
+- **Notes**: The liquid metal liner serves triple duty: compression medium, neutron absorber/shield, and tritium breeder. 14.1 MeV D-T neutrons are produced but the thick liquid metal liner (~meters of lithium/lead-lithium) provides effective shielding.
+
+### Operation Mode
+- **Value**: `Pulsed`
+- **Confidence**: high
+- **Citation**: https://generalfusion.com/fusion-technology/ — "pulsed at 1-10 Hz"; https://www.comsol.com/story/compressing-the-timeline-to-a-fusion-future-141951 — "once per second in a commercial plant"
+- **Notes**: Discrete compression events. Each pulse: inject plasma → compress with pistons → fusion burn → extract energy → reset. Pulse duration is sub-second (compression takes ~1 ms). Well below the 5-minute threshold for quasi-steady.
+
+### Repetition Rate
+- **Value**: `~1 Hz`
+- **Confidence**: high
+- **Citation**: https://www.comsol.com/story/compressing-the-timeline-to-a-fusion-future-141951 — commercial plant repeats "once per second"; https://hackaday.com/2025/03/27/general-fusion-claims-success-with-magnetized-target-fusion/ — commercial goal "~1 cycle per second"
+- **Notes**: Current LM26 operates at approximately one cycle per day. The original concept description said "1-10 Hz" but detailed sources consistently cite ~1 Hz for the commercial target.
+
+### Driver Technology
+- **Value**: `Pneumatic pistons + liquid metal`
+- **Confidence**: high
+- **Citation**: https://generalfusion.com/fusion-technology/; https://interestingengineering.com/energy/steam-driven-nuclear-fusion-reactor; schema example vocabulary
+- **Notes**: Steam-driven pistons (dozens to hundreds) arranged around a spherical vessel compress a vortex of liquid metal (lithium or lead-lithium). The pistons must fire with precise synchronization to create a symmetric compression wave. This is General Fusion's distinguishing engineering bet — replacing lasers or pulsed power with mechanical compression.
+
+## Remaining Gaps
+
+All 12 differentiation columns are filled at high confidence. No schema-level gaps remain. Minor areas where additional detail could be valuable for later stages:
+
+1. **Liquid metal composition (commercial)**: Original design used lead-lithium (PbLi), current demo uses pure lithium. The commercial plant composition hasn't been definitively stated. This doesn't affect schema values (both qualify as `Liquid metal wall`) but matters for Stage 2 cost modeling.
+
+2. **Repetition rate range**: The original concept description says "1-10 Hz" but all detailed sources cite ~1 Hz for commercial. Whether higher rep rates are targeted in later iterations is unclear.
+
+3. **Power output target**: Only "150,000 homes" mentioned (roughly 100-200 MWe depending on assumptions). No specific GW-scale thermal power or net electric output has been published.
+
+## Key Sources
+
+1. [General Fusion Technology Page](https://generalfusion.com/fusion-technology/) — primary company source for concept description, liquid metal wall, tritium breeding
+2. [COMSOL: Compressing Timeline to Fusion Future](https://www.comsol.com/story/compressing-the-timeline-to-a-fusion-future-141951) — commercial rep rate, liquid metal wall details
+3. [Interesting Engineering: Steam-Powered Piston System (2025)](https://interestingengineering.com/energy/steam-driven-nuclear-fusion-reactor) — steam-driven piston details, energy capture cycle
+4. [Hackaday: General Fusion Claims Success (2025)](https://hackaday.com/2025/03/27/general-fusion-claims-success-with-magnetized-target-fusion/) — LM26 results, commercial rep rate target
+5. [TechCrunch: General Fusion Fires Up Steampunk Reactor (2025)](https://techcrunch.com/2025/03/11/general-fusion-fires-up-its-newest-steampunk-fusion-reactor/) — LM26 demo context
+6. [Fusion Conclusion: How General Fusion's Reactor Will Work](https://www.fusionconclusion.com/how-general-fusions-reactor-will-work-or-wont/) — TBR target ~1.5, design details
+7. [General Fusion: Liquid Wall Compression Publication](https://generalfusion.com/post/general-fusion-confirms-liquid-wall-compression-technology-for-commercial-magnetized-target-fusion-in-new-scientific-publication/) — peer-reviewed validation
+8. [General Fusion: Neutron Yield Publication](https://generalfusion.com/post/general-fusion-confirms-significant-fusion-neutron-yield-and-plasma-stability-during-mtf-compression-experiment-series-with-new-peer-reviewed-publication/) — experimental results
+9. [COMSOL: Magnetomechanical Compression Paper](https://www.comsol.com/paper/magnetomechanical-compression-of-a-solid-lithium-liner-for-magnetized-target-fusion-mtf-136162) — LM26 electromagnetic compression details
+10. [LANL MTF Page](https://fusionenergy.lanl.gov/Physics/Magnetized_Target_Fusion.htm) — LANL MTF program, FRX-L experiments
+11. [ARPA-E: HyperJet Fusion PJMIF](https://arpa-e.energy.gov/programs-and-initiatives/search-all-projects/plasma-guns-magnetized-fuel-targets-pjmif) — related MTF experiments
+12. [Metal Tech News: General Fusion Compresses Plasma with Lithium (2025)](https://www.metaltechnews.com/story/2025/05/14/tech-bytes/general-fusion-compresses-plasma-with-lithium/2278.html) — LM26 lithium compression results
+13. [World Nuclear News: Prototype Demonstrates Plasma Compression](https://www.world-nuclear-news.org/Articles/Prototype-machine-demonstrates-plasma-compression) — demo milestone coverage
+
+
+## Gaps to Fill
+
+The following columns need values. Focus your research on these:
+
+No obvious gaps — verify and strengthen existing values.
+
+## Output Format
+
+For EACH column in the schema (including ones already filled — confirm or update them), write:
+
+### [Column Name]
+- **Value**: [exact vocabulary value from schema]
+- **Confidence**: high | medium | low
+- **Citation**: [specific URL, paper reference, or reasoning basis]
+- **Notes**: [anything relevant — how you determined this, source disagreements, caveats, qualifiers not captured by the vocabulary value]
+
+Rules:
+- **high** confidence: value directly stated by an authoritative source (company website, peer-reviewed paper, official press release)
+- **medium** confidence: value inferred from the described approach and general domain knowledge (e.g., "stellarators use ECRH" is medium unless the specific company confirms it)
+- **low** confidence: value extrapolated from similar concepts or fragmentary information
+- If a column is structurally inapplicable, write `N/A` as the value with a one-line justification
+- If you searched and found nothing, write `Unknown` or `TBD` and explain what you tried
+
+After all columns, write a final section:
+
+## Remaining Gaps
+
+List any columns where:
+- You could not find a value (explain what sources you checked)
+- Your confidence is low (explain what would raise it)
+- You found conflicting information (summarize the conflict)
+- A specific source type (paper, patent, technical report) might resolve the gap
+
+## Sources Consulted
+
+List all URLs and documents you consulted during this research, even if they didn't yield useful information for the gaps. This helps avoid re-searching the same sources in future iterations.

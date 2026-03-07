@@ -1,3 +1,35 @@
+# Fusion Concept Research: MagLIF (D-T)
+
+You are a research agent investigating a specific fusion energy concept for a differentiation table. Your job is to find accurate, cited information for each column in the table schema.
+
+## Concept
+
+- **Name**: MagLIF (D-T)
+- **Company**: Pacific Fusion, Europa Fusion
+- **Confinement approach**: Magnetized Target Fusion
+- **Description**: Z-machine or pulsed power implodes metal liner around pre-magnetized, laser-preheated D-T fuel. Magneto-inertial fusion at intermediate density/timescale.
+- **Known fuel**: D-T (Deuterium-Tritium)
+- **Operation mode**: Pulsed
+
+## Task
+
+Research this concept and provide findings for each column listed under "Gaps to Fill" below. For columns already filled with high confidence, you do not need to re-research them — but if you find contradictory information, note it.
+
+## Research Strategy
+
+1. **Start broad**: Search the web for "Pacific Fusion, Europa Fusion fusion technology" and similar queries. Look for the company's website, Wikipedia page, Fusion Industry Association profile, press releases, and investor presentations.
+2. **Go deeper on gaps**: For columns that remain unfilled after the broad search, try more targeted queries:
+   - Technical papers or preprints by the company's founders/scientists
+   - ARPA-E or DOE award descriptions
+   - Conference presentations (APS-DPP, IAEA FEC, IEEE SOFE)
+   - News articles with technical detail (not just funding announcements)
+3. **Save important sources**: When you find a page with substantial technical detail, save it to `./sources/` with a descriptive filename (e.g., `company-website-technology.md`, `arxiv-2025-paper-summary.md`). Use the Write tool. Save the key technical content, not the entire page.
+4. **Be honest about confidence**: If you can't find a value, say so. If you're inferring from general physics rather than a specific source, say so. Do not guess.
+
+## Column Schema
+
+Use these exact vocabulary values. If no value fits, use the closest match and explain in your notes.
+
 # Phase 1a: Differentiation Table Schema
 
 **Version**: 0.2 (post-Checkpoint 1)
@@ -23,8 +55,7 @@ This document defines the columns, controlled vocabulary, and rules for the fusi
 
 Every non-obvious value in the table should be traceable. In per-concept dossiers, each column value carries:
 - **Citation**: URL, paper reference, or `knowledge/sources/...` path
-- **Confidence** (per-cell): `high` (directly stated by source) · `medium` (inferred from described approach) · `low` (extrapolated from similar concepts)
-- **Overall Confidence** (per-concept, in `table.csv`): Five-level scale — `high` · `medium-high` · `medium` · `medium-low` · `low`. Reflects the aggregate quality of a concept's dossier. Per-cell confidence remains three-level.
+- **Confidence**: `high` (directly stated by source) · `medium` (inferred from described approach) · `low` (extrapolated from similar concepts)
 
 ### Controlled Vocabulary Rules
 
@@ -334,4 +365,158 @@ These columns are carried for identification but are not part of the differentia
 |------|---------|---------|---------|
 | 2026-03-06 | 0.1 | Initial schema | Sprint plan creation |
 | 2026-03-07 | 0.2 | +`Tokamak` (Col 2), +`Solid ceramic breeder (HCPB)` (Col 8), QI/modular note (Col 2), >5 min = Quasi-steady (Col 10), `Pulsed` narrowed to short events | Checkpoint 1 review |
-| 2026-03-07 | 0.2.1 | Overall Confidence expanded to five-level scale (`high` / `medium-high` / `medium` / `medium-low` / `low`); per-cell confidence remains three-level | Checkpoint 3-4 review (Realta, MagLIF used `medium-high`) |
+
+
+## Current Knowledge
+
+From previous research iterations (see dossier for full context):
+
+# MagLIF (D-T)
+
+**Company**: Pacific Fusion, Fuse Energy Technologies
+**Last updated**: 2026-03-07
+**Iterations completed**: 1
+**Overall confidence**: medium-high
+
+> **Note on Europa Fusion**: The original concept CSV listed "Europa Fusion" as a company. Extensive searching found only an empty LinkedIn page (India-based). No technical information, website, press coverage, or FIA membership exists. **Fuse Energy Technologies** (San Leandro, CA) is a well-documented second MagLIF private company and has been substituted. Europa Fusion may be confused with EUROfusion (EU research consortium) or Fusion for Energy (EU ITER agency).
+
+## Summary
+
+MagLIF (Magnetized Liner Inertial Fusion) uses pulsed power to implode a metal liner around pre-magnetized, optionally laser-preheated D-T fuel, achieving fusion at intermediate density and timescale between traditional MFE and laser ICF. Developed at Sandia National Laboratories on the Z Machine (20+ MA, 70+ successful fusion-producing experiments), the concept is being commercialized by Pacific Fusion (self-magnetizing targets, impedance-matched Marx generators) and Fuse Energy Technologies (TITAN 1 TW IMG platform). Pacific Fusion's 2026 breakthrough demonstrated self-magnetizing targets that eliminate external coils and may eliminate laser preheat, significantly simplifying the reactor concept.
+
+## Differentiation Table Values
+
+### Confinement Family
+- **Value**: `MIF`
+- **Confidence**: high
+- **Citation**: Schema definition; arXiv:2408.15206 ("magneto-inertial fusion"); Wikipedia MagLIF article
+- **Notes**: MagLIF is the canonical MIF concept — magnetized plasma compressed by an external pulsed power driver. Intermediate between MFE and IFE in density (~10^20-10^23 cm^-3) and timescale (~100 ns implosion).
+
+### Confinement Concept
+- **Value**: `Magnetized target (pulsed power)`
+- **Confidence**: high
+- **Citation**: Schema vocabulary; Sandia MagLIF program (https://www.sandia.gov/z-machine/fusion/)
+- **Notes**: Distinct from `Magnetized target (pneumatic)` (General Fusion) which uses mechanical compression.
+
+### Fuel
+- **Value**: `D-T`
+- **Confidence**: high
+- **Citation**: Pacific Fusion founders' letter explicitly states "deuterium-tritium fuel" (https://www.pacificfusion.com/updates/founders-letter); Sandia MagLIF experiments use DD for diagnostics but D-T is the target commercial fuel
+- **Notes**: Sandia lab experiments typically use pure deuterium for diagnostic simplicity. The commercial concept targets D-T for higher reactivity and energy yield.
+
+### Primary Heating
+- **Value**: `Pulsed power implosion`
+- **Confidence**: high
+- **Citation**: Schema definition; arXiv:2408.15206; Pacific Fusion breakthrough article
+- **Notes**: Traditional MagLIF has three stages: (1) axial premagnetization (10-30 T), (2) laser preheat (~100s eV), (3) pulsed power implosion (20+ MA, ~100 ns). Pacific Fusion's self-magnetizing targets eliminate external premagnetization coils and aim to eliminate laser preheat. The dominant heating mechanism is adiabatic compression from the liner implosion.
+
+### Energy Capture
+- **Value**: `Thermal (unspecified)`
+- **Confidence**: medium
+- **Citation**: arXiv:2408.15206 ("~80% of the fusion energy released streams out as 14 MeV neutrons... absorbed in surrounding blankets for heat recovery"); Z-IFE power plant concept studies
+- **Notes**: ~80% of energy is in 14 MeV neutrons that must be captured thermally. Neither Pacific Fusion nor Fuse has specified the thermal cycle (steam Rankine vs. sCO2 Brayton). No direct conversion pathway has been discussed for MagLIF.
+
+### Plasma State
+- **Value**: `Compressed`
+- **Confidence**: high
+- **Citation**: Schema definition ("Plasma driven to fusion conditions by implosion... Characteristic of IFE and MIF")
+- **Notes**: Fuel is compressed by the imploding liner from initial ~mm radius to ~100 um, reaching >2 keV (demonstrated) and multi-keV target temperatures.
+
+### Magnet Type
+- **Value**: `Pulsed EM`
+- **Confidence**: high
+- **Citation**: arXiv:2408.15206; Pacific Fusion website ("fast-rising, high-current pulses")
+- **Notes**: Driving magnetic field generated by massive pulsed current (20+ MA on Z Machine) through the liner. Premagnetization field (axial, 10-30 T) is also pulsed. Pacific Fusion's self-magnetizing targets generate the axial field from the drive current itself. No superconducting magnets involved.
+
+### Tritium Breeding
+- **Value**: `TBD`
+- **Confidence**: medium
+- **Citation**: arXiv:2408.15206 ("tritium-producing blanket to replenish burnt, lost, and decayed inventory"); Z-IFE studies mention FLiBe blanket
+- **Notes**: Neither company has specified a blanket type. Z-IFE studies identified FLiBe as a candidate (breeder, coolant, partial shielding). The Z-IFE concept explored using solid FLiBe as part of the recyclable transmission line. Likely `FLiBe blanket` or `Li blanket (unspecified)` once disclosed.
+
+### Neutron Management
+- **Value**: `Integrated blanket/shield`
+- **Confidence**: medium
+- **Citation**: Z-IFE power plant concept (OSTI.GOV biblio/771517); arXiv:2408.15206
+- **Notes**: MagLIF produces 14.1 MeV D-T neutrons requiring heavy shielding. The Z-IFE concept uses a lithium-bearing blanket serving triple duty: neutron energy absorption, tritium breeding, first wall protection. Could also be classified as `Heavy shielding (14 MeV)` if the eventual commercial design uses separate blanket and shield layers. Given the Z-IFE heritage and pulsed nature (blanket must handle debris/shock), integrated is the likely architecture.
+
+### Operation Mode
+- **Value**: `Pulsed`
+- **Confidence**: high
+- **Citation**: Pacific Fusion website ("process is repeated over and over, like in a piston engine"); ~100 ns implosion pulse, target destroyed each shot
+- **Notes**: Unambiguously pulsed. Each fusion event is a discrete ~100 ns implosion with target replacement.
+
+### Repetition Rate
+- **Value**: `Sub-Hz`
+- **Confidence**: medium
+- **Citation**: Z-IFE studies (0.01-0.1 Hz target); arXiv:2408.15206 ("Hertz-scale repetition rates")
+- **Notes**: Z-IFE targeted 0.1 Hz (10 s between shots) with high yields (0.5-30 GJ per shot) to compensate. Pacific Fusion's "piston engine" analogy suggests aiming for ~1 Hz or higher, but no specific rate disclosed. Recording as `Sub-Hz` based on the most detailed engineering studies (Z-IFE), but `~1 Hz` is plausible for next-generation IMG-based designs.
+
+### Driver Technology
+- **Value**: `Pulsed power (Z-machine class)`
+- **Confidence**: high
+- **Citation**: Pacific Fusion website; arXiv:2408.15206; Fuse Energy website (https://www.f.energy/)
+- **Notes**: Both Pacific Fusion and Fuse use impedance-matched Marx generators (IMGs) — a next-generation pulsed power architecture with 90% energy efficiency, 200 kV operation (vs 6 MV for Z), and multi-million shot lifetimes. Pacific Fusion's system uses modular "bricks" (two capacitors + switch) assembled into shipping-container-sized modules. Z Machine delivers 20+ MA in ~100 ns; commercial systems target 60+ MA. Fuse's TITAN demonstrated 1 TW IMG with 100+ repetitive shots.
+
+## Remaining Gaps
+
+1. **Energy Capture** (medium): Neither company has disclosed thermal cycle choice (steam Rankine vs. sCO2 Brayton). Z-IFE studies assumed thermal conversion but didn't specify cycle. A company press release or technical paper on balance-of-plant would resolve this.
+
+2. **Tritium Breeding** (medium/TBD): No blanket type disclosed. Z-IFE studies point to FLiBe (2000s-era). Modern designs might choose LiPb or liquid Li. Company disclosures or ARPA-E award descriptions would resolve this.
+
+3. **Repetition Rate** (medium): Range spans 0.01-1 Hz. Pacific Fusion's "piston engine" analogy suggests higher than Z-IFE's 0.1 Hz target. A specific company target would resolve this.
+
+4. **Neutron Management** (medium): Classified as `Integrated blanket/shield` based on Z-IFE heritage, but actual commercial architecture not disclosed. Could shift to `Heavy shielding (14 MeV)` if separate systems used.
+
+5. **Europa Fusion**: Could not verify as a real MagLIF company. Only an empty LinkedIn page (India-based). Suggest removing from concept CSV or flagging for manual verification.
+
+## Key Sources
+
+1. [arXiv:2408.15206 — Opportunities in Pulsed Magnetic Fusion Energy](https://arxiv.org/html/2408.15206v1) — Comprehensive review of pulsed magnetic fusion including MagLIF physics, IMG technology, and power plant considerations
+2. [Pacific Fusion Homepage](https://www.pacificfusion.com/) — Company overview, technology description
+3. [Pacific Fusion Founders' Letter](https://www.pacificfusion.com/updates/founders-letter) — Confirms D-T fuel, describes vision
+4. [Pacific Fusion Experimental Breakthrough (Feb 2026)](https://www.pacificfusion.com/updates/experimental-breakthrough-by-pacific-fusion-clears-major-obstacle-to-affordable-commercial-fusion) — Self-magnetizing target demonstration
+5. [ANS: Fusion simplification demonstrated by Pacific Fusion and Sandia](https://www.ans.org/news/2026-02-06/article-7739/) — Coverage of self-magnetizing target breakthrough
+6. [OSTI: Z-Pinch Power Plant Concept](https://www.osti.gov/biblio/771517) — Z-IFE (ZP3) conceptual power plant study
+7. [Fuse Energy Homepage](https://www.f.energy/) — Second private MagLIF company, TITAN IMG platform
+8. [Wikipedia: Magnetized liner inertial fusion](https://en.wikipedia.org/wiki/Magnetized_liner_inertial_fusion) — Reference overview
+9. [Sandia Z Machine Fusion Page](https://www.sandia.gov/z-machine/fusion/) — 70+ MagLIF experiments
+10. Saved sources in `iter-01/sources/`: pacific-fusion-website-technology.md, arxiv-2408-15206-pulsed-magnetic-fusion.md, z-ife-power-plant-concept.md, fuse-energy-technology.md
+
+
+## Gaps to Fill
+
+The following columns need values. Focus your research on these:
+
+No obvious gaps — verify and strengthen existing values.
+
+## Output Format
+
+For EACH column in the schema (including ones already filled — confirm or update them), write:
+
+### [Column Name]
+- **Value**: [exact vocabulary value from schema]
+- **Confidence**: high | medium | low
+- **Citation**: [specific URL, paper reference, or reasoning basis]
+- **Notes**: [anything relevant — how you determined this, source disagreements, caveats, qualifiers not captured by the vocabulary value]
+
+Rules:
+- **high** confidence: value directly stated by an authoritative source (company website, peer-reviewed paper, official press release)
+- **medium** confidence: value inferred from the described approach and general domain knowledge (e.g., "stellarators use ECRH" is medium unless the specific company confirms it)
+- **low** confidence: value extrapolated from similar concepts or fragmentary information
+- If a column is structurally inapplicable, write `N/A` as the value with a one-line justification
+- If you searched and found nothing, write `Unknown` or `TBD` and explain what you tried
+
+After all columns, write a final section:
+
+## Remaining Gaps
+
+List any columns where:
+- You could not find a value (explain what sources you checked)
+- Your confidence is low (explain what would raise it)
+- You found conflicting information (summarize the conflict)
+- A specific source type (paper, patent, technical report) might resolve the gap
+
+## Sources Consulted
+
+List all URLs and documents you consulted during this research, even if they didn't yield useful information for the gaps. This helps avoid re-searching the same sources in future iterations.

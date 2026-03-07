@@ -1,3 +1,35 @@
+# Fusion Concept Research: Orbital Levitated Dipole (D-He3)
+
+You are a research agent investigating a specific fusion energy concept for a differentiation table. Your job is to find accurate, cited information for each column in the table schema.
+
+## Concept
+
+- **Name**: Orbital Levitated Dipole (D-He3)
+- **Company**: Zephyr Fusion
+- **Confinement approach**: Magnetic Confinement
+- **Description**: Compact HTS dipole coil deployed to LEO using vacuum of space as confinement vessel. Eliminates vacuum vessel (dominant loss channel in terrestrial dipoles). Plasma extends to magnetic separatrix (10-50 m). Claims confinement volume exceeding ITER for <$30M. Targets D-He3 for aneutronic operation. Power delivery via beaming partners.
+- **Known fuel**: D-He3 (Deuterium-Helium-3)
+- **Operation mode**: Continuous
+
+## Task
+
+Research this concept and provide findings for each column listed under "Gaps to Fill" below. For columns already filled with high confidence, you do not need to re-research them — but if you find contradictory information, note it.
+
+## Research Strategy
+
+1. **Start broad**: Search the web for "Zephyr Fusion fusion technology" and similar queries. Look for the company's website, Wikipedia page, Fusion Industry Association profile, press releases, and investor presentations.
+2. **Go deeper on gaps**: For columns that remain unfilled after the broad search, try more targeted queries:
+   - Technical papers or preprints by the company's founders/scientists
+   - ARPA-E or DOE award descriptions
+   - Conference presentations (APS-DPP, IAEA FEC, IEEE SOFE)
+   - News articles with technical detail (not just funding announcements)
+3. **Save important sources**: When you find a page with substantial technical detail, save it to `./sources/` with a descriptive filename (e.g., `company-website-technology.md`, `arxiv-2025-paper-summary.md`). Use the Write tool. Save the key technical content, not the entire page.
+4. **Be honest about confidence**: If you can't find a value, say so. If you're inferring from general physics rather than a specific source, say so. Do not guess.
+
+## Column Schema
+
+Use these exact vocabulary values. If no value fits, use the closest match and explain in your notes.
+
 # Phase 1a: Differentiation Table Schema
 
 **Version**: 0.2 (post-Checkpoint 1)
@@ -23,8 +55,7 @@ This document defines the columns, controlled vocabulary, and rules for the fusi
 
 Every non-obvious value in the table should be traceable. In per-concept dossiers, each column value carries:
 - **Citation**: URL, paper reference, or `knowledge/sources/...` path
-- **Confidence** (per-cell): `high` (directly stated by source) · `medium` (inferred from described approach) · `low` (extrapolated from similar concepts)
-- **Overall Confidence** (per-concept, in `table.csv`): Five-level scale — `high` · `medium-high` · `medium` · `medium-low` · `low`. Reflects the aggregate quality of a concept's dossier. Per-cell confidence remains three-level.
+- **Confidence**: `high` (directly stated by source) · `medium` (inferred from described approach) · `low` (extrapolated from similar concepts)
 
 ### Controlled Vocabulary Rules
 
@@ -334,4 +365,167 @@ These columns are carried for identification but are not part of the differentia
 |------|---------|---------|---------|
 | 2026-03-06 | 0.1 | Initial schema | Sprint plan creation |
 | 2026-03-07 | 0.2 | +`Tokamak` (Col 2), +`Solid ceramic breeder (HCPB)` (Col 8), QI/modular note (Col 2), >5 min = Quasi-steady (Col 10), `Pulsed` narrowed to short events | Checkpoint 1 review |
-| 2026-03-07 | 0.2.1 | Overall Confidence expanded to five-level scale (`high` / `medium-high` / `medium` / `medium-low` / `low`); per-cell confidence remains three-level | Checkpoint 3-4 review (Realta, MagLIF used `medium-high`) |
+
+
+## Current Knowledge
+
+From previous research iterations (see dossier for full context):
+
+# Orbital Levitated Dipole (D-He3)
+
+**Company**: Zephyr Fusion
+**Last updated**: 2026-03-07
+**Iterations completed**: 1
+**Overall confidence**: low
+
+## Summary
+
+Zephyr Fusion (YC F25, San Diego) proposes deploying a compact HTS dipole coil to low Earth orbit, using the vacuum of space as the confinement vessel — eliminating the dominant energy loss channel in terrestrial levitated dipoles. A meter-scale coil would create a magnetized plasma volume "exceeding that of ITER" extending to the magnetic separatrix (10-50 m radius). The concept targets D-He3 fuel for aneutronic operation, with power delivery via beaming partners. The company is pre-prototype (founded 2025, 2 employees), with the physics basis drawn from LDX (MIT/Columbia) and RT-1 (U. Tokyo) experiments and the original Hasegawa 1987 D-He3 dipole proposal. Very little technical detail has been publicly disclosed — no heating method, energy conversion approach, or reactor design has been specified.
+
+## Differentiation Table Values
+
+### Confinement Family
+- **Value**: `MFE`
+- **Confidence**: high
+- **Citation**: YC launch page — dipole magnetic confinement; schema definition — magnetic confinement in steady-state
+- **Notes**: Levitated dipole is explicitly listed under MFE in the schema. The plasma is confined by the dipolar magnetic field of a single coil; "inside-out" configuration with plasma extending into external vacuum.
+
+### Confinement Concept
+- **Value**: `Levitated dipole (orbital)`
+- **Confidence**: high
+- **Citation**: YC launch page (https://www.ycombinator.com/launches/Oox-zephyr-fusion-in-orbit-fusion-power); baseline CSV
+- **Notes**: Distinguished from terrestrial levitated dipoles (OpenStar, Deutelio) by operating in LEO. The space vacuum eliminates the vacuum vessel, which is the dominant energy loss channel in ground-based dipole experiments. Confinement scaling follows τₑ ~ R², and the unobstructed plasma can extend to large radii without a vessel wall.
+
+### Fuel
+- **Value**: `D-He3`
+- **Confidence**: medium
+- **Citation**: Baseline CSV; Hasegawa 1987 heritage — original levitated dipole concept targeted D-He3
+- **Notes**: D-He3 is stated in the concept description and is consistent with the Hasegawa 1987 proposal that inspired the concept. However, the YC launch page does not explicitly specify fuel type. The choice of D-He3 is logical for an orbital dipole (no blanket infrastructure, aneutronic operation avoids shielding mass), but has not been directly confirmed by Zephyr in public materials reviewed.
+
+### Primary Heating
+- **Value**: `RF (ECRH)`
+- **Confidence**: low
+- **Citation**: LDX heritage — iter-01/sources/levitated-dipole-technical-background.md; NASASpaceFlight forum speculation
+- **Notes**: Zephyr has not disclosed any heating method. ECRH is inferred from LDX heritage (the only levitated dipole experiment that demonstrated plasma heating used ECRH at 2.45-28 GHz). The NASASpaceFlight forum discussion mentions "neutral particle injectors and RF heating" as speculative possibilities, not confirmed by the company. ICRH is also plausible (used as baseline in the OpenStar D-T reactor study). This is a major gap requiring direct company disclosure to resolve.
+
+### Energy Capture
+- **Value**: `TBD`
+- **Confidence**: low
+- **Citation**: YC launch page (no energy conversion disclosed); NASASpaceFlight forum discussion (gap noted by community)
+- **Notes**: Zephyr has not described any power conversion mechanism. The baseline concept description mentions "power delivery via beaming partners," implying microwave or laser power beaming to ground/other spacecraft, but the conversion of fusion energy to beamable form is unspecified. For a D-He3 orbital dipole, `Direct (charged particle)` would be the natural choice (charged fusion products decelerated at magnetic cusps/separatrix), consistent with the Hasegawa heritage and academic D-He3 dipole studies. However, this is purely inference — no company confirmation exists. The NASASpaceFlight community flagged this as the biggest gap in the concept.
+
+### Plasma State
+- **Value**: `Sustained`
+- **Confidence**: medium
+- **Citation**: Inferred from steady-state operation mode and sub-ignition expected performance
+- **Notes**: The concept targets continuous operation, but a D-He3 orbital dipole at MW-class power would likely require substantial external heating (D-He3 has lower reactivity than D-T and requires ~60 keV ion temperatures). This suggests sustained rather than burning plasma, as self-heating is unlikely to dominate. However, Zephyr has not disclosed target Q or plasma parameters.
+
+### Magnet Type
+- **Value**: `HTS (levitated dipole)`
+- **Confidence**: high
+- **Citation**: YC launch page — "HTS magnets, ~10x more field per kg improvement in last decade"
+- **Notes**: Meter-scale HTS dipole coil designed to fit within SpaceX Falcon 9 launch constraints. Specific HTS conductor type (REBCO vs. other) not stated but REBCO is the standard modern HTS material. The coil is not mechanically levitated (as in terrestrial experiments) but orbits freely in LEO — the "levitation" is orbital mechanics rather than magnetic suspension.
+
+### Tritium Breeding
+- **Value**: `N/A (aneutronic)`
+- **Confidence**: medium
+- **Citation**: Schema definition — D-He3 primary reaction is aneutronic; concept has no blanket infrastructure
+- **Notes**: There is some ambiguity here. D-He3 is not truly aneutronic — DD side reactions produce ~10% neutron energy fraction and generate some tritium. The schema vocabulary `Self-bred (DD side)` could apply if Zephyr intends to capture DD-produced tritium (which decays to He3, completing the fuel cycle, as in Helion's approach). However, with no blanket or tritium handling infrastructure described for an orbital platform, `N/A (aneutronic)` is the better fit — the concept appears to treat the neutron fraction as a loss, not a fuel source. If Zephyr later describes a DD-side tritium/He3 recycling scheme, this should be upgraded to `Self-bred (DD side)`.
+
+### Neutron Management
+- **Value**: `Reduced (D-He3)`
+- **Confidence**: medium
+- **Citation**: Schema definition — D-He3 produces ~10% neutron energy from DD side reactions at 2.45 MeV
+- **Notes**: With no shielding infrastructure in orbit, the DD-produced neutrons are simply radiated into space. The NASASpaceFlight forum discussion raised radiation safety concerns — 2.45 MeV neutrons from an unshielded orbital source would be measurable and potentially hazardous to nearby spacecraft or EVA astronauts. Zephyr has not addressed neutron management. The `Reduced (D-He3)` classification captures the physics; the engineering approach to the remaining neutrons is unspecified.
+
+### Operation Mode
+- **Value**: `Steady-state`
+- **Confidence**: high
+- **Citation**: Baseline CSV — "Continuous"; YC launch page — continuous power generation implied
+- **Notes**: Levitated dipoles are inherently steady-state capable — no current drive needed, disruption-free, natural MHD stability. An orbital dipole has no cryogen depletion constraint (unlike terrestrial dipoles where coil heating limits pulse length) because the space environment provides passive thermal radiation. Continuous operation is the natural mode.
+
+### Repetition Rate
+- **Value**: `N/A`
+- **Confidence**: high
+- **Citation**: Schema definition — steady-state concept, repetition rate not applicable
+- **Notes**: N/A — continuous operation.
+
+### Driver Technology
+- **Value**: `Orbital HTS dipole coil (meter-scale, Falcon 9 deployable)`
+- **Confidence**: high
+- **Citation**: YC launch page — meter-scale HTS coil within Falcon 9 constraints; magnetized volume exceeding ITER
+- **Notes**: The distinguishing engineering bet is the deployment of an HTS dipole coil to LEO as a self-contained fusion device. Key enabling factors: (1) modern HTS magnets (~10x field per kg improvement), (2) space vacuum eliminates vacuum vessel, (3) orbital mechanics provides levitation, (4) SpaceX rideshare economics for launch. The founders (Burke, Hinson) bring experience from ORNL, LLNL, W7-X, and DIII-D. The concept claims confinement volume exceeding ITER for <$30M total cost (vs. ISS solar at ~$1B/MW and ITER at ~$650M/MW).
+
+## Remaining Gaps
+
+### Energy Capture (TBD, low confidence)
+- **Searched**: YC launch page, NASASpaceFlight forum, LDX/dipole literature
+- **What would resolve it**: Zephyr technical talk, ARPA-E filing, or investor pitch deck describing power conversion pathway. Academic D-He3 dipole studies suggest direct conversion at magnetic cusps, but Zephyr has not confirmed this.
+- **Another iteration likely to help?**: Yes — targeted search for Zephyr presentations at fusion conferences, patent filings, or interviews with founders could yield information.
+
+### Primary Heating (low confidence)
+- **Searched**: YC launch page, NASASpaceFlight forum, LDX heritage literature
+- **What would resolve it**: Any Zephyr technical disclosure specifying heating method. ECRH (LDX heritage) and ICRH (recent dipole reactor studies) are both plausible.
+- **Another iteration likely to help?**: Possibly — a Zephyr conference presentation or technical blog post might exist but was not found in this iteration.
+
+### Fuel (medium confidence — not directly confirmed by company)
+- **Searched**: YC launch page (fuel not mentioned), concept heritage
+- **What would resolve it**: Direct Zephyr statement confirming D-He3 fuel choice
+- **Another iteration likely to help?**: Yes, if Zephyr publishes more technical detail.
+
+### Tritium Breeding (medium confidence — N/A vs Self-bred ambiguity)
+- **Searched**: No company disclosure on fuel cycle management
+- **What would resolve it**: Zephyr disclosure on whether DD-side tritium is captured/recycled or treated as a loss
+- **Another iteration likely to help?**: Unlikely without new company disclosures.
+
+### Plasma State (medium confidence)
+- **Searched**: No target Q or plasma parameters disclosed
+- **What would resolve it**: Zephyr plasma performance targets or reactor design study
+- **Another iteration likely to help?**: Unlikely without new company disclosures.
+
+## Key Sources
+
+1. **YC Launch Page** — https://www.ycombinator.com/launches/Oox-zephyr-fusion-in-orbit-fusion-power (primary company source; saved: iter-01/sources/yc-launch-page.md)
+2. **NASASpaceFlight Forum Discussion** — https://forum.nasaspaceflight.com/index.php?topic=63860.0 (community technical critique; saved: iter-01/sources/nasaspaceflight-forum-discussion.md)
+3. **Levitated Dipole Technical Background** — compiled from Wikipedia, arxiv 2602.20564, MIT LDX publications, Hasegawa 1987 (heritage context; saved: iter-01/sources/levitated-dipole-technical-background.md)
+4. **Hasegawa & Chen (1987)** — "A D-3He fusion reactor based on a dipole magnetic field" — original concept proposal
+5. **LDX Nature Physics (2010)** — experimental validation of dipole confinement physics (referenced by Zephyr)
+
+
+## Gaps to Fill
+
+The following columns need values. Focus your research on these:
+
+- **Primary Heating**: low confidence — needs better source
+- **Energy Capture**: low confidence — needs better source
+
+## Output Format
+
+For EACH column in the schema (including ones already filled — confirm or update them), write:
+
+### [Column Name]
+- **Value**: [exact vocabulary value from schema]
+- **Confidence**: high | medium | low
+- **Citation**: [specific URL, paper reference, or reasoning basis]
+- **Notes**: [anything relevant — how you determined this, source disagreements, caveats, qualifiers not captured by the vocabulary value]
+
+Rules:
+- **high** confidence: value directly stated by an authoritative source (company website, peer-reviewed paper, official press release)
+- **medium** confidence: value inferred from the described approach and general domain knowledge (e.g., "stellarators use ECRH" is medium unless the specific company confirms it)
+- **low** confidence: value extrapolated from similar concepts or fragmentary information
+- If a column is structurally inapplicable, write `N/A` as the value with a one-line justification
+- If you searched and found nothing, write `Unknown` or `TBD` and explain what you tried
+
+After all columns, write a final section:
+
+## Remaining Gaps
+
+List any columns where:
+- You could not find a value (explain what sources you checked)
+- Your confidence is low (explain what would raise it)
+- You found conflicting information (summarize the conflict)
+- A specific source type (paper, patent, technical report) might resolve the gap
+
+## Sources Consulted
+
+List all URLs and documents you consulted during this research, even if they didn't yield useful information for the gaps. This helps avoid re-searching the same sources in future iterations.

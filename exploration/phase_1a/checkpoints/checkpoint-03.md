@@ -31,13 +31,11 @@ This batch is notably high-quality: 3 of 5 concepts are at all-high or near-all-
 
 ## Consistency Issues Found
 
-### 1. Overall Confidence "medium-high" not in schema vocabulary (Realta Fusion, concept 11)
+### 1. Overall Confidence "medium-high" (Realta Fusion, concept 11)
 
-**Severity**: Cosmetic — same issue flagged in Checkpoint 1 for Tokamak Energy
+**Severity**: Resolved — schema v0.2.1 expanded Overall Confidence to five-level scale (`high` / `medium-high` / `medium` / `medium-low` / `low`). Per-cell confidence remains three-level.
 
-The dossier for concept 11 (Magnetic Mirror D-T, Realta Fusion) uses `medium-high` as overall confidence, which is not in the three-level schema (`high` / `medium` / `low`). The dossier has 7 high, 3 medium, 0 low confidence values, which leans toward `high` but the medium-confidence cells are on important columns (Plasma State, Tritium Breeding, Neutron Management).
-
-**Action**: Recorded as `medium-high` in the table per the instruction not to modify dossier values. Recommend normalizing to `medium` or `high` in the dossier. This is the second occurrence of non-standard confidence (first was Tokamak Energy in Batch 1-2). Suggest adding a note to the research prompt template enforcing three-level vocabulary.
+The dossier for concept 11 (Magnetic Mirror D-T, Realta Fusion) uses `medium-high` as overall confidence. The dossier has 9 high, 3 medium, 0 low confidence values, which leans toward `high` but the medium-confidence cells are on important columns (Plasma State, Tritium Breeding, Neutron Management). `medium-high` accurately reflects this distribution.
 
 ### 2. All vocabulary values match schema — no mismatches
 
