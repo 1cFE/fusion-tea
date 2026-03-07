@@ -3,7 +3,7 @@
 **Company**: Tokamak Energy
 **Last updated**: 2026-03-06
 **Iterations completed**: 3
-**Overall confidence**: medium-high
+**Overall confidence**: medium
 
 ## Summary
 
@@ -31,7 +31,7 @@ Low aspect-ratio (spherical) tokamak using high-temperature superconducting (HTS
 
 ### Primary Heating
 - **Value**: `RF (ECRH)`
-- **Confidence**: medium-high
+- **Confidence**: high
 - **Citation**: EPJ Web of Conferences 2026 — "Progress in the pre-conceptual design of the auxiliary heating and current drive system for the Tokamak Energy Fusion Pilot Plant" (Alieva et al.); iter-03/sources/tokamak-energy-ec-heating-pilot-plant.md
 - **Notes**: FPP flat-top phase relies "exclusively on electron cyclotron (EC) waves" per Tokamak Energy's RF physics team. EC waves in O-mode polarization can be the single auxiliary power source for flat-top operations. This is a design evolution from the combined NBI + ECRH approach demonstrated on ST40 (which added a 1 MW Kyoto Fusioneering gyrotron in 2025). NBI may still play a role in startup or non-flat-top phases. Changed from `RF + NBI` (iter-02) based on this higher-authority peer-reviewed source.
 
@@ -61,15 +61,15 @@ Low aspect-ratio (spherical) tokamak using high-temperature superconducting (HTS
 
 ### Neutron Management
 - **Value**: `Integrated blanket/shield`
-- **Confidence**: medium-high
+- **Confidence**: high
 - **Citation**: Research iter-01 (outboard blanket/shield) + iter-02 (Humphry-Baker & Smith 2019 — WC cermet center-stack shielding)
 - **Notes**: Asymmetric shielding architecture: outboard side uses integrated liquid lithium blanket/shield; inboard (center stack) uses dedicated WC (tungsten carbide) cermet shielding in ~32 cm radial space. The asymmetric approach is characteristic of spherical tokamaks where the compact center stack cannot accommodate a full blanket.
 
 ### Operation Mode
-- **Value**: `Pulsed`
+- **Value**: `Quasi-steady`
 - **Confidence**: high
 - **Citation**: Research iter-01; baseline CSV — pulsed STs published as "more desirable than steady-state"; iter-02 confirms ST80-HTS targets 15-minute pulses
-- **Notes**: Pulse lengths of ~15+ minutes. Pulsed operation is a deliberate design choice, not a limitation, driven by limited central solenoid space in the spherical tokamak geometry. Power conversion literature explicitly addresses pulsed tokamak operation with molten salt thermal energy storage, reinforcing the pulsed paradigm. Long pulse duration could warrant `Quasi-steady` classification, but company self-describes as pulsed.
+- **Notes**: Pulse lengths of ~15+ minutes. Pulsed operation is a deliberate design choice, not a limitation, driven by limited central solenoid space in the spherical tokamak geometry. Power conversion literature explicitly addresses pulsed tokamak operation with molten salt thermal energy storage. Reclassified from `Pulsed` → `Quasi-steady` per schema v0.2 rule: pulse > 5 min = Quasi-steady.
 
 ### Repetition Rate
 - **Value**: `N/A`

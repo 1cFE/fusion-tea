@@ -66,16 +66,16 @@ Firefly Fusion is developing a compact, high-field tokamak optimized for negativ
 - **Notes**: Previous value was `Heavy shielding (14 MeV)` (low confidence, inferred from D-T fuel). Updated to `Integrated blanket/shield` (low confidence) based on MANTA proxy — the FLiBe blanket explicitly serves dual purpose as breeder and shield. Both values are low confidence since Firefly has not disclosed their approach. `Integrated blanket/shield` is more specific and aligns with ARC-class heritage. Per schema: "Use `Integrated blanket/shield` when the blanket explicitly serves dual purpose (CFS FLiBe...)."
 
 ### Operation Mode
-- **Value**: `Steady-state`
+- **Value**: `Quasi-steady`
 - **Confidence**: medium
-- **Citation**: Baseline CSV says "Continuous".
-- **Notes**: CONFLICT: Baseline CSV states "Continuous" (mapped to Steady-state), but multiple lines of evidence point to pulsed operation: (1) MANTA is pulsed with ~15 min inductive pulses and 2 min inter-pulse ([Rutherford et al. 2024](https://arxiv.org/abs/2405.20243)); (2) Ball's ohmic-only research implies inductive/pulsed operation; (3) MANTA uses a large central solenoid for inductive current drive. If pulsed, `Quasi-steady` would be the correct value (~15 min pulses are long enough to be quasi-steady rather than pulsed per schema). Kept as Steady-state per baseline CSV (medium confidence source vs. low confidence proxy), but this remains the most uncertain value in the dossier. Firefly website (March 2026) does not clarify.
+- **Citation**: MANTA reference design ([Rutherford et al. 2024](https://arxiv.org/abs/2405.20243)) — ~15 min inductive pulses with 2 min inter-pulse; Ball et al. ohmic-only research implies inductive/pulsed operation
+- **Notes**: Reclassified from `Steady-state` (baseline CSV "Continuous") → `Quasi-steady` per schema v0.2 rule: pulse > 5 min = Quasi-steady. Multiple lines of evidence override the CSV: (1) MANTA is pulsed with ~15 min burns; (2) Ball's ohmic-only research implies inductive operation; (3) MANTA uses a large central solenoid for inductive current drive. Firefly website (March 2026) does not clarify.
 
 ### Repetition Rate
 - **Value**: `N/A`
 - **Confidence**: medium
-- **Citation**: Follows from Operation Mode = Steady-state.
-- **Notes**: If Operation Mode is revised to Quasi-steady or Pulsed, this would need reassessment. MANTA's ~15 min pulses with 2 min inter-pulse would map to `N/A` (quasi-steady concepts use N/A per schema).
+- **Citation**: Follows from Operation Mode = Quasi-steady per schema v0.2.
+- **Notes**: N/A per schema: quasi-steady concepts use N/A for repetition rate. MANTA's ~15 min pulses with 2 min inter-pulse are long-burn, not discrete pulsed events.
 
 ### Driver Technology
 - **Value**: `HTS magnets + NT plasma shaping`
@@ -91,7 +91,7 @@ Firefly Fusion is developing a compact, high-field tokamak optimized for negativ
 | **Energy Capture** | Medium confidence (default Thermal) | All sources — none discuss power conversion, including Firefly website | Firefly technical documentation. Unlikely to be resolved until company matures. |
 | **Tritium Breeding** | TBD (MANTA uses FLiBe as proxy) | All sources — none discuss blanket; MANTA provides proxy | Firefly technical documentation. FLiBe is likely given ARC-class heritage but unconfirmed. |
 | **Neutron Management** | Low confidence (Integrated blanket/shield from MANTA proxy) | All sources; MANTA design provides best proxy | Linked to tritium breeding — blanket choice determines neutron management. |
-| **Operation Mode** | Medium confidence (Steady-state from CSV) but strong counter-evidence for pulsed/quasi-steady | CSV, all sources, MANTA design, Ball et al. | Direct Firefly statement. Most important gap — MANTA and Ball both suggest pulsed, CSV says continuous. |
+| **Operation Mode** | **Resolved** — reclassified to `Quasi-steady` per schema v0.2. MANTA and Ball evidence now aligned with value. | CSV, all sources, MANTA design, Ball et al. | Confidence remains medium; direct Firefly statement would raise to high. |
 
 Further iterations are unlikely to resolve gaps without new Firefly publications, conference presentations, or FIA member profile updates. The company is very early-stage (founded 2024) and its website (as of March 2026) discloses no reactor parameters. **Iteration 3 confirmed this assessment** — no new technical information was found. A patent search turned up an unrelated spherical tokamak NT application. Firefly joined the Impulse deep-tech incubator near ITER/CEA Cadarache, but with no technical content. Recommend marking this concept as research-complete at current confidence levels.
 

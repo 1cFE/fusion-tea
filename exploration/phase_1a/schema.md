@@ -1,7 +1,7 @@
 # Phase 1a: Differentiation Table Schema
 
-**Version**: 0.1 (initial draft, pre-Batch 1)
-**Last updated**: 2026-03-06
+**Version**: 0.2 (post-Checkpoint 1)
+**Last updated**: 2026-03-07
 
 This document defines the columns, controlled vocabulary, and rules for the fusion concept differentiation table. The schema evolves at checkpoint reviews between batches.
 
@@ -76,11 +76,15 @@ These columns are carried for identification but are not part of the differentia
 
 | Family | Standard concept names |
 |--------|-----------------------|
-| MFE | `Compact tokamak` · `Spherical tokamak` · `Negative triangularity tokamak` · `Stellarator (QI)` · `Stellarator (modular)` · `Stellarator (planar coil)` · `Stellarator (helical coil)` · `Magnetic mirror` · `FRC (beam-driven)` · `FRC (pulsed)` · `Z-pinch (sheared-flow)` · `Levitated dipole` · `Levitated dipole (orbital)` |
+| MFE | `Tokamak` · `Compact tokamak` · `Spherical tokamak` · `Negative triangularity tokamak` · `Stellarator (QI)` · `Stellarator (modular)` · `Stellarator (planar coil)` · `Stellarator (helical coil)` · `Magnetic mirror` · `FRC (beam-driven)` · `FRC (pulsed)` · `Z-pinch (sheared-flow)` · `Levitated dipole` · `Levitated dipole (orbital)` |
 | IFE | `Laser ICF (indirect drive)` · `Laser ICF (direct drive)` · `Laser ICF (fast ignition)` · `Laser ICF (ultrashort pulse)` · `Laser ICF (liquid jet)` · `Projectile ICF` · `Heavy ion beam ICF` |
 | MIF | `Magnetized target (pneumatic)` · `Magnetized target (pulsed power)` · `FRC (pulsed compression)` |
 | Electrostatic | `IEC / Fusor` · `Polywell` · `Orbital electrostatic` |
 | Other | `Dense plasma focus` · `Muon-catalyzed fusion` · `Acoustic / Sonofusion` · `Lattice confinement` |
+
+**Notes**:
+- `Tokamak` (plain) is for conventional or mid-size devices (R > 3 m) that are not explicitly compact or spherical. `Compact tokamak` connotes a high-field-enabled compact design (R < ~2.5 m).
+- `Stellarator (QI)` vs `Stellarator (modular)`: Use `(QI)` when the concept's primary innovation emphasis is the quasi-isodynamic physics optimization. Use `(modular)` when the emphasis is on manufacturing/assembly approach (modular coil cassettes). Both may be true — pick the dominant framing.
 
 **Rule**: If a company has a proprietary name for their concept, use the closest generic physics description. Note the proprietary name in the dossier.
 
@@ -216,6 +220,7 @@ These columns are carried for identification but are not part of the differentia
 | `LiPb blanket` | Lead-lithium eutectic blanket. Lead provides neutron multiplication. Various cooling schemes (water, helium, self-cooled). |
 | `Liquid Li blanket` | Pure liquid lithium blanket. Highest TBR potential (~1.8). |
 | `Li blanket (unspecified)` | Lithium-bearing blanket confirmed but specific type (solid/liquid/salt) not disclosed. |
+| `Solid ceramic breeder (HCPB)` | Helium-cooled pebble bed with solid ceramic breeding material (Li₄SiO₄ or Li₂TiO₃) and Be/Be₁₂Ti neutron multiplier. ITER TBM baseline. |
 | `Liquid metal wall` | Flowing liquid metal serves dual purpose as structural wall/liner AND tritium breeder. Distinct from a contained blanket. |
 | `Self-bred (DD side)` | Tritium produced as byproduct of DD side reactions in D-He3 plasma. Tritium decays to He3, completing fuel cycle. No external blanket. |
 | `N/A (aneutronic)` | Fuel cycle does not involve tritium. p-B11 and pure D-D concepts. |
@@ -225,7 +230,7 @@ These columns are carried for identification but are not part of the differentia
 **Notes**:
 - The tritium supply crisis is existential for D-T fusion — global civilian tritium is ~25 kg, and a single 1 GWth D-T plant needs >55 kg/year. TBR > 1 is not optional.
 - For D-He3 concepts (Helion), `Self-bred (DD side)` captures the unique fuel cycle where DD byproduct tritium decays to He3.
-- Solid ceramic breeders (Li2TiO3, Li4SiO4) are ITER TBM / DEMO concepts, not currently planned by any private company. Include if needed.
+- Solid ceramic breeders (Li₂TiO₃, Li₄SiO₄) are the ITER TBM / DEMO baseline. Type One Energy plans HCPB for their stellarator.
 
 ---
 
@@ -255,8 +260,8 @@ These columns are carried for identification but are not part of the differentia
 | Value | Description |
 |-------|-------------|
 | `Steady-state` | Continuous plasma operation. Plasma maintained indefinitely by external heating/current drive. Characteristic of stellarators, advanced tokamaks, mirrors. |
-| `Pulsed` | Discrete burn events separated by recovery/reload periods. Characteristic of IFE, MIF, pulsed FRC. |
-| `Quasi-steady` | Long-pulse operation (~minutes to hours) with brief interruptions for refueling or re-magnetization. Intermediate between steady-state and pulsed. |
+| `Pulsed` | Discrete short burn events (seconds or less) separated by recovery/reload periods. Characteristic of IFE, MIF, pulsed FRC. |
+| `Quasi-steady` | Long-pulse operation (~minutes to hours) with brief interruptions for refueling or re-magnetization. Intermediate between steady-state and pulsed. **Threshold**: pulse lengths > 5 minutes → Quasi-steady, regardless of company self-description. |
 
 ---
 
@@ -314,7 +319,7 @@ These columns are carried for identification but are not part of the differentia
 | 5 | Energy Capture | Controlled | 8 | No |
 | 6 | Plasma State | Controlled | 8 | Rare (muon catalysis) |
 | 7 | Magnet Type | Controlled | 12 | Rare |
-| 8 | Tritium Breeding | Controlled | 9 | Yes (aneutronic, non-power) |
+| 8 | Tritium Breeding | Controlled | 10 | Yes (aneutronic, non-power) |
 | 9 | Neutron Management | Controlled | 5 | Yes (non-power) |
 | 10 | Operation Mode | Controlled | 3 | No |
 | 11 | Repetition Rate | Controlled | 7 | Yes (steady-state) |
@@ -327,3 +332,4 @@ These columns are carried for identification but are not part of the differentia
 | Date | Version | Changes | Trigger |
 |------|---------|---------|---------|
 | 2026-03-06 | 0.1 | Initial schema | Sprint plan creation |
+| 2026-03-07 | 0.2 | +`Tokamak` (Col 2), +`Solid ceramic breeder (HCPB)` (Col 8), QI/modular note (Col 2), >5 min = Quasi-steady (Col 10), `Pulsed` narrowed to short events | Checkpoint 1 review |

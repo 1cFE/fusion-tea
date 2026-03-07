@@ -18,10 +18,10 @@ BEST (Burning Plasma Experimental Superconducting Tokamak) is a mid-size tokamak
 - **Notes**: Standard tokamak magnetic confinement.
 
 ### Confinement Concept
-- **Value**: `Compact tokamak`
-- **Confidence**: medium
+- **Value**: `Tokamak`
+- **Confidence**: high
 - **Citation**: BEST Research Plan v1.1, p.16 (R0=3.6m, a=1.1m, B0=6.15T)
-- **Notes**: BEST self-describes as a "compact high-field tokamak," but R=3.6m is mid-size — larger than CFS SPARC (R=1.85m) yet smaller than ITER (R=6.2m). No exact schema match for "mid-size tokamak." Using `Compact tokamak` per the project's self-description, but this is a schema fit issue worth noting. Aspect ratio A=3.27, elongation kappa=1.88, triangularity delta=0.49.
+- **Notes**: BEST self-describes as a "compact high-field tokamak," but R=3.6m is mid-size — larger than CFS SPARC (R=1.85m) yet smaller than ITER (R=6.2m). Reclassified from `Compact tokamak` → `Tokamak` per schema v0.2: `Tokamak` (plain) is for conventional/mid-size devices (R > 3 m). Aspect ratio A=3.27, elongation kappa=1.88, triangularity delta=0.49.
 
 ### Fuel
 - **Value**: `D-T`
@@ -87,7 +87,7 @@ BEST (Burning Plasma Experimental Superconducting Tokamak) is a mid-size tokamak
 
 | Column | Status | Notes |
 |--------|--------|-------|
-| Confinement Concept | medium confidence | "Compact tokamak" is the closest schema value but R=3.6m is mid-size. May warrant schema discussion at checkpoint review. |
+| Confinement Concept | **resolved** | Reclassified `Compact tokamak` → `Tokamak` per schema v0.2 (new vocabulary value for mid-size devices). Now high confidence. |
 | Energy Capture | medium confidence | Upgraded from low in iter-02. Value is `Thermal (unspecified)` because BEST is experimental, but CFETR studies strongly indicate sCO2 Brayton for the reactor lineage. Further improvement would require BEST/CFEDR to formally commit to a power conversion architecture. |
 | Plasma State | medium confidence | "Burning" reflects target Q~5, but initial ops will be sub-burning. Could be refined with more detail on operational phases. |
 
