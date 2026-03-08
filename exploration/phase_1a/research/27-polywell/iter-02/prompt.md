@@ -1,3 +1,35 @@
+# Fusion Concept Research: Polywell (D-T)
+
+You are a research agent investigating a specific fusion energy concept for a differentiation table. Your job is to find accurate, cited information for each column in the table schema.
+
+## Concept
+
+- **Name**: Polywell (D-T)
+- **Company**: EMC2
+- **Confinement approach**: Electrostatic Confinement
+- **Description**: Magnetic cusp confinement of electrons to create a deep electrostatic potential well that confines and accelerates ions. Combines magnetic and electrostatic confinement principles.
+- **Known fuel**: D-T (Deuterium-Tritium)
+- **Operation mode**: 
+
+## Task
+
+Research this concept and provide findings for each column listed under "Gaps to Fill" below. For columns already filled with high confidence, you do not need to re-research them — but if you find contradictory information, note it.
+
+## Research Strategy
+
+1. **Start broad**: Search the web for "EMC2 fusion technology" and similar queries. Look for the company's website, Wikipedia page, Fusion Industry Association profile, press releases, and investor presentations.
+2. **Go deeper on gaps**: For columns that remain unfilled after the broad search, try more targeted queries:
+   - Technical papers or preprints by the company's founders/scientists
+   - ARPA-E or DOE award descriptions
+   - Conference presentations (APS-DPP, IAEA FEC, IEEE SOFE)
+   - News articles with technical detail (not just funding announcements)
+3. **Save important sources**: When you find a page with substantial technical detail, save it to `./sources/` with a descriptive filename (e.g., `company-website-technology.md`, `arxiv-2025-paper-summary.md`). Use the Write tool. Save the key technical content, not the entire page.
+4. **Be honest about confidence**: If you can't find a value, say so. If you're inferring from general physics rather than a specific source, say so. Do not guess.
+
+## Column Schema
+
+Use these exact vocabulary values. If no value fits, use the closest match and explain in your notes.
+
 # Phase 1a: Differentiation Table Schema
 
 **Version**: 0.2 (post-Checkpoint 1)
@@ -224,7 +256,7 @@ These columns are carried for identification but are not part of the differentia
 | `Solid ceramic breeder (HCPB)` | Helium-cooled pebble bed with solid ceramic breeding material (Li₄SiO₄ or Li₂TiO₃) and Be/Be₁₂Ti neutron multiplier. ITER TBM baseline. |
 | `Liquid metal wall` | Flowing liquid metal serves dual purpose as structural wall/liner AND tritium breeder. Distinct from a contained blanket. |
 | `Self-bred (DD side)` | Tritium produced as byproduct of DD side reactions in D-He3 plasma. Tritium decays to He3, completing fuel cycle. No external blanket. |
-| `N/A (no tritium in fuel cycle)` | Fuel cycle does not involve tritium. Covers p-B11 (truly aneutronic), D-D (neutronic but no tritium), and D-He3 concepts that don't actively breed tritium. |
+| `N/A (aneutronic)` | Fuel cycle does not involve tritium. p-B11 and pure D-D concepts. |
 | `N/A (non-power)` | Concept is not a power-producing reactor (neutron source, isotope production). |
 | `TBD` | D-T concept where blanket approach has not been disclosed. |
 
@@ -242,7 +274,6 @@ These columns are carried for identification but are not part of the differentia
 | Value | Description |
 |-------|-------------|
 | `Heavy shielding (14 MeV)` | Full multi-layer shielding for 14.1 MeV D-T neutrons. Remote handling required for all internal maintenance. Dominant engineering challenge. |
-| `Heavy shielding (D-D)` | Shielding for 2.45 MeV D-D neutrons. 50% of D-D reactions produce neutrons — high flux but lower per-neutron energy and damage than D-T. Less activation, simpler materials, but still requires substantial shielding at power-relevant rates. |
 | `Integrated blanket/shield` | Blanket material (FLiBe, liquid metal) provides both tritium breeding and neutron shielding in one system. Still 14 MeV neutrons, but simplified architecture. |
 | `Reduced (D-He3)` | ~10% neutron energy fraction from DD side reactions. 2.45 MeV neutrons (less damaging than 14 MeV). Lighter shielding. Limited remote handling. |
 | `Minimal (aneutronic)` | <1% neutron energy from side reactions. Thin shielding (~1m water + boron) for secondary neutrons and X-rays. Hands-on maintenance possible. |
@@ -337,4 +368,174 @@ These columns are carried for identification but are not part of the differentia
 | 2026-03-07 | 0.2 | +`Tokamak` (Col 2), +`Solid ceramic breeder (HCPB)` (Col 8), QI/modular note (Col 2), >5 min = Quasi-steady (Col 10), `Pulsed` narrowed to short events | Checkpoint 1 review |
 | 2026-03-07 | 0.2.1 | Overall Confidence expanded to five-level scale (`high` / `medium-high` / `medium` / `medium-low` / `low`); per-cell confidence remains three-level | Checkpoint 3-4 review (Realta, MagLIF used `medium-high`) |
 | 2026-03-08 | 0.2.2 | +`Laser ICF (hybrid drive)` (Col 2) for Xcimer HDD approach. Row restructuring: concept 17 split (Xcimer → hybrid drive, Focused Energy → fast ignition); concept 23 split (Marvel-only, HB11 stays in concept 04); concept 26 now Inertia-only (Xcimer → hybrid drive row) | Checkpoint 5 restructuring decisions |
-| 2026-03-08 | 0.2.3 | Renamed `N/A (aneutronic)` → `N/A (no tritium in fuel cycle)` (Col 8) — old label was misleading for D-D concepts which ARE neutronic. Added `Heavy shielding (D-D)` (Col 9) for D-D concepts with 2.45 MeV neutrons; corrected 3 D-D cells from `Heavy shielding (14 MeV)` | Phase 1c measurement integrity |
+
+
+## Current Knowledge
+
+From previous research iterations (see dossier for full context):
+
+# Polywell (D-T)
+
+**Company**: EMC2 (Energy Matter Conversion Corporation)
+**Last updated**: 2026-03-08
+**Iterations completed**: 1
+**Overall confidence**: medium-low
+
+## Summary
+
+The Polywell is a hybrid magnetic-electrostatic confinement concept that uses a polyhedral arrangement of electromagnetic coils to create cusp magnetic fields, trapping injected electrons to form a deep electrostatic potential well that confines and accelerates fuel ions to fusion energies. Invented by Robert Bussard in 1985, the concept was developed by EMC2 through the WB-series experiments (WB-1 through WB-X) with partial US Navy funding. WB-6 demonstrated D-D fusion (~1 billion neutrons/s) and WB-X demonstrated high-beta electron confinement (published in Phys. Rev. X, 2015). The concept has not progressed to power plant design; EMC2's recent work focuses on a Fusion Point Neutron Source (FPNS) in partnership with SHINE Technologies. Company status is uncertain — possibly ceased operations in 2019 but showed activity through 2023-2024.
+
+## Differentiation Table Values
+
+### Confinement Family
+- **Value**: Electrostatic
+- **Confidence**: high
+- **Citation**: EMC2 website; Park et al., Phys. Rev. X 5, 021024 (2015)
+- **Notes**: The dominant confinement mechanism for ions is the electrostatic potential well created by magnetically confined electrons. Magnets create cusp fields to confine electrons, but the ion confinement is electrostatic.
+
+### Confinement Concept
+- **Value**: Polywell
+- **Confidence**: high
+- **Citation**: EMC2 website; Bussard (1985) original concept
+- **Notes**: Portmanteau of "polyhedral cusp" + "electrostatic potential well." Distinguished from IEC/Fusor by using magnetic cusp fields to confine electrons rather than a physical grid, eliminating grid losses.
+
+### Fuel
+- **Value**: D-T
+- **Confidence**: medium
+- **Citation**: EMC2 website ("deuterium-tritium fuels"); arXiv:2508.06761 ("deuterium-tritium fuels for achieving net energy gain")
+- **Notes**: EMC2's current focus is D-T for energy and FPNS applications. Historically the concept was discussed for p-B11 (Bussard's original vision; Rogers 2018 reactor design used p-B11). This dossier covers the D-T variant per the differentiation table row definition.
+
+### Primary Heating
+- **Value**: Electrostatic acceleration
+- **Confidence**: high
+- **Citation**: EMC2 website; Park et al. (2015); ialtenergy.com
+- **Notes**: Ions are accelerated toward the center by the electrostatic potential well. WB-6 achieved 10 keV ion energies from a 10 kV potential well. No RF, NBI, or compression involved. The FPNS variant adds external ion beam injection (150-200 keV) feeding into the electrostatic well.
+
+### Energy Capture
+- **Value**: Thermal (unspecified)
+- **Confidence**: medium
+- **Citation**: General physics reasoning; search results referencing ~40% thermal efficiency
+- **Notes**: For D-T fuel, 80% of fusion energy is in 14.1 MeV neutrons, requiring thermal conversion. EMC2 has not published a specific thermal cycle choice (Rankine vs sCO2). For a p-B11 variant, Bussard envisioned direct conversion of charged alphas at ~80% efficiency, but that does not apply to D-T.
+
+### Plasma State
+- **Value**: Confined
+- **Confidence**: medium
+- **Citation**: Park et al. (2015); EMC2 website ("high-beta cusp confinement")
+- **Notes**: Plasma is magnetically/electrostatically confined but not approaching ignition. WB-8 achieved high-beta confinement but produced no fusion. The electrostatic well continuously accelerates ions — this is a sustained confined state, not a burning plasma. Could become `Sustained` for a theoretical reactor, but no fusion burn has been demonstrated.
+
+### Magnet Type
+- **Value**: Resistive
+- **Confidence**: medium
+- **Citation**: Wikipedia (Polywell); WB-series experiment descriptions
+- **Notes**: All demonstrated devices (WB-1 through WB-X) used resistive copper electromagnets. Bussard's reactor vision involved superconducting coils, and EMC2 reportedly began superconducting Polywell work in 2012, but no results were published. WB-8 operated at 0.8 T. FPNS design targets 2-3 T at boundary / 4-5 T on coil (magnet type unspecified). A reactor design might require superconducting coils.
+
+### Tritium Breeding
+- **Value**: TBD
+- **Confidence**: medium
+- **Citation**: No EMC2 publications on blanket design found
+- **Notes**: As a D-T concept, tritium breeding is essential for a power reactor, but EMC2 has not published any blanket design or breeding approach. FPNS work is a neutron source (not a power plant) and doesn't address breeding. Rogers (2018) used p-B11, so also doesn't address breeding.
+
+### Neutron Management
+- **Value**: Heavy shielding (14 MeV)
+- **Confidence**: medium
+- **Citation**: General physics (D-T produces 14.1 MeV neutrons); FPNS design mentions shielding
+- **Notes**: Standard 14.1 MeV neutrons from D-T. FPNS facility design "includes supporting systems such as tritium handling and shielding." No blanket/shield integration described for a power reactor. Could become `Integrated blanket/shield` if EMC2 specifies a combined system.
+
+### Operation Mode
+- **Value**: Steady-state
+- **Confidence**: low
+- **Citation**: Rogers (2018) simulated steady-state; EMC2 website ("continuous fusion devices")
+- **Notes**: Most uncertain column. All experiments were pulsed (resistive coil heating limitation — pulses <1 ms to ~100 ms). However, the intended reactor design targets steady-state: Bussard's superconducting vision was continuous, Rogers (2018) simulated steady-state via diocotron-pumping, and EMC2 describes "continuous fusion devices." Pulsing was an engineering limitation, not a fundamental physics constraint.
+
+### Repetition Rate
+- **Value**: N/A
+- **Confidence**: low
+- **Citation**: Follows from steady-state operation mode assignment
+- **Notes**: N/A is consistent with intended steady-state design. If operation mode is revised to pulsed, a repetition rate would apply. Confidence matches the low confidence on operation mode.
+
+### Driver Technology
+- **Value**: Polyhedral magnetic cusp coils + electron beam injection
+- **Confidence**: high
+- **Citation**: EMC2 website; Park et al. (2015); multiple sources
+- **Notes**: The distinguishing technology is the polyhedral arrangement of electromagnetic coils creating a cusp magnetic field, combined with electron beam injection to form the electrostatic potential well. WB-X used coaxial plasma guns for high-power startup (700 MW pulsed power). FPNS variant adds external ion beam injection (150-200 keV). The "hard technology bet" is achieving and maintaining high-beta cusp confinement with sufficient electron confinement time.
+
+## Remaining Gaps
+
+### Low-confidence columns:
+
+1. **Operation Mode** (low confidence): Intended as steady-state but all experiments pulsed. The arXiv "Polywell Revisited" (2025) full text or EMC2 patents might clarify reactor-level operation mode.
+
+2. **Repetition Rate** (low confidence): Depends entirely on operation mode resolution.
+
+### TBD / medium-confidence columns:
+
+3. **Tritium Breeding** (TBD): EMC2 has published nothing on blanket design. Fundamental gap for any D-T power reactor. Unlikely to be resolved without EMC2 publishing a power plant design.
+
+4. **Energy Capture** (medium): `Thermal (unspecified)` is the physics-driven default. EMC2 hasn't specified Rankine vs sCO2.
+
+5. **Magnet Type** (medium): Resistive for all experiments. Reactor-scale may require superconducting — EMC2's plans unclear.
+
+### Sources that might resolve gaps:
+
+- **arXiv:2508.06761** "Polywell Revisited" (2025) — full text may contain updated reactor design parameters
+- **TOFE 2024 presentation** by Radel/Krall/Weber — FPNS design details, magnet specifications
+- **EMC2 patents** — may contain reactor-level design details
+- **Rogers (2018) full paper** — more detail on energy capture (though uses p-B11)
+
+### Conflicting information noted:
+
+- **Company status**: One source says EMC2 "ceased operating in 2019," but FPNS proposals with SHINE (2023-2024) and TOFE 2024 presentation suggest continued or revived activity.
+- **WB-8 fusion**: WB-8 achieved high plasma density but produced no fusion, despite earlier WB-6 producing fusion. Not fully explained in public sources.
+
+## Key Sources
+
+1. Park et al., "High-Energy Electron Confinement in a Magnetic Cusp Configuration," Phys. Rev. X 5, 021024 (2015) — https://journals.aps.org/prx/pdf/10.1103/PhysRevX.5.021024
+2. arXiv:2508.06761, "Polywell Revisited" (2025) — https://arxiv.org/abs/2508.06761
+3. Rogers, J.G., "A Polywell Fusion Reactor Designed for Net Power Generation," J. Fusion Energy 37, 1-17 (2018) — https://link.springer.com/article/10.1007/s10894-017-0147-9
+4. EMC2 Fusion website — https://www.emc2fusion.com/
+5. Park, "Polywell Fusion: Electrostatic Fusion in a Magnetic Cusp," FPA 2014 presentation — https://fire.pppl.gov/FPA14_IECM_EMC2_Park.pdf
+6. ialtenergy.com, "Polywell Fusion" — https://www.ialtenergy.com/polywell-fusion.html
+7. Sporer (2022), "Analysis of Two Fusion Reactor Designs Based on Magnetic Electrostatic Plasma Confinement" — https://plasmabay.engin.umich.edu/wp-content/uploads/sites/281/2022/10/Sporer-2022-Analysis-of-Two-Fusion-Reactor-Designs-Based-on-Magnetic-Electrostatic-Plasma-Confinement.pdf
+8. Lynceans/EMC2, "The Fork in the Road to Electric Power From Fusion" — https://lynceans.org/wp-content/uploads/2021/02/EMC2_US-converted.pdf
+9. Talk-Polywell.org forum — EMC2 FPNS proposal thread, WB-7.1/WB-8 operation mode thread
+10. Saved source files: `iter-01/sources/emc2-website-summary.md`, `iter-01/sources/polywell-technical-details.md`
+
+
+## Gaps to Fill
+
+The following columns need values. Focus your research on these:
+
+- **Tritium Breeding**: currently TBD
+- **Operation Mode**: low confidence — needs better source
+- **Repetition Rate**: low confidence — needs better source
+
+## Output Format
+
+For EACH column in the schema (including ones already filled — confirm or update them), write:
+
+### [Column Name]
+- **Value**: [exact vocabulary value from schema]
+- **Confidence**: high | medium | low
+- **Citation**: [specific URL, paper reference, or reasoning basis]
+- **Notes**: [anything relevant — how you determined this, source disagreements, caveats, qualifiers not captured by the vocabulary value]
+
+Rules:
+- **high** confidence: value directly stated by an authoritative source (company website, peer-reviewed paper, official press release)
+- **medium** confidence: value inferred from the described approach and general domain knowledge (e.g., "stellarators use ECRH" is medium unless the specific company confirms it)
+- **low** confidence: value extrapolated from similar concepts or fragmentary information
+- If a column is structurally inapplicable, write `N/A` as the value with a one-line justification
+- If you searched and found nothing, write `Unknown` or `TBD` and explain what you tried
+
+After all columns, write a final section:
+
+## Remaining Gaps
+
+List any columns where:
+- You could not find a value (explain what sources you checked)
+- Your confidence is low (explain what would raise it)
+- You found conflicting information (summarize the conflict)
+- A specific source type (paper, patent, technical report) might resolve the gap
+
+## Sources Consulted
+
+List all URLs and documents you consulted during this research, even if they didn't yield useful information for the gaps. This helps avoid re-searching the same sources in future iterations.

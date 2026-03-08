@@ -16,9 +16,13 @@
 
 1. **Cortex Fusion — Neutron Management: `Heavy shielding (14 MeV)` for D-D concept.** D-D fusion produces 2.45 MeV neutrons, not 14.1 MeV. The schema value `Heavy shielding (14 MeV)` explicitly references D-T neutrons. No schema vocabulary exists for heavy shielding of 2.45 MeV D-D neutrons at high flux. The dossier correctly notes this but applies the closest available value. **Action**: Consider adding a schema value like `Heavy shielding (D-D)` or `Heavy shielding (2.45 MeV)` for D-D concepts with significant neutron flux.
 
+   **UPDATE (2026-03-08)**: Resolved. Added `Heavy shielding (D-D)` to schema v0.2.3. Updated 3 D-D concept cells (Cortex Fusion, Sonofusion, PoloMac) from `Heavy shielding (14 MeV)` to `Heavy shielding (D-D)`.
+
 2. **Cortex Fusion — Plasma State: `Compressed` at low confidence.** The dossier explicitly states the mechanism is non-implosion plasmonic acceleration at constant density (isochoric heating), not compression. `Compressed` is the best schema fit for IFE but is a poor description of the actual physics. No schema vocabulary captures "non-thermal laser acceleration at constant density." **Action**: Flag for schema review — may need a new value or schema note.
 
 3. **Cortex Fusion — Tritium Breeding: `N/A (aneutronic)` for D-D fuel.** Schema explicitly lists D-D under this value ("p-B11 and pure D-D concepts"), so the vocabulary use is correct per schema. However, D-D is NOT aneutronic — 50% of reactions produce neutrons. The parenthetical "(aneutronic)" is misleading for D-D. **Action**: Consider renaming to `N/A (no tritium needed)` to cover D-D without implying aneutronic.
+
+   **UPDATE (2026-03-08)**: Resolved. Renamed `N/A (aneutronic)` → `N/A (no tritium in fuel cycle)` in schema v0.2.3. Updated all 9 affected cells (5 p-B11 + 3 D-D + 1 D-He3) in table and citations.
 
 ### Within-Row Divergence (Multi-Company Concept Rows)
 
@@ -119,3 +123,11 @@ These three columns are structurally invariant within IFE but provide important 
    - Consider adding a Xcimer "hybrid drive" row
 
    This would yield a cleaner set with one company per row in most cases. Defer to upstream decision.
+
+**UPDATE (2026-03-08) — Decisions made and implemented:**
+- Concepts 26 + 30: **kept separate** (both Inertia indirect drive, but user wants distinct rows)
+- Concept 17: **split** — Focused Energy → `Laser ICF (fast ignition)`, Xcimer → new row `Laser ICF (hybrid drive)`
+- Concept 23: **split** — Marvel Fusion only (HB11 consolidated into concept 04)
+- Concept 26: Xcimer removed → Inertia-only; values individualized (Liquid Li blanket, DPSSL Thunderwall)
+- Schema v0.2.2: added `Laser ICF (hybrid drive)` to Column 2 vocabulary
+- Table: 32 rows (was 31). Citations: 385 rows (was 372). All affected citations individualized for single-company rows.

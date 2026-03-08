@@ -1,3 +1,35 @@
+# Fusion Concept Research: Muon-Catalyzed Fusion (D-T)
+
+You are a research agent investigating a specific fusion energy concept for a differentiation table. Your job is to find accurate, cited information for each column in the table schema.
+
+## Concept
+
+- **Name**: Muon-Catalyzed Fusion (D-T)
+- **Company**: Acceleron Fusion
+- **Confinement approach**: Other
+- **Description**: Muon replaces electron in hydrogen molecule, shrinking bond length 207x and enabling room-temperature fusion. Real physics demonstrated. Energy balance challenge: muon production cost vs. fusion energy per muon lifetime (alpha sticking problem).
+- **Known fuel**: D-T (Deuterium-Tritium)
+- **Operation mode**: Continuous
+
+## Task
+
+Research this concept and provide findings for each column listed under "Gaps to Fill" below. For columns already filled with high confidence, you do not need to re-research them — but if you find contradictory information, note it.
+
+## Research Strategy
+
+1. **Start broad**: Search the web for "Acceleron Fusion fusion technology" and similar queries. Look for the company's website, Wikipedia page, Fusion Industry Association profile, press releases, and investor presentations.
+2. **Go deeper on gaps**: For columns that remain unfilled after the broad search, try more targeted queries:
+   - Technical papers or preprints by the company's founders/scientists
+   - ARPA-E or DOE award descriptions
+   - Conference presentations (APS-DPP, IAEA FEC, IEEE SOFE)
+   - News articles with technical detail (not just funding announcements)
+3. **Save important sources**: When you find a page with substantial technical detail, save it to `./sources/` with a descriptive filename (e.g., `company-website-technology.md`, `arxiv-2025-paper-summary.md`). Use the Write tool. Save the key technical content, not the entire page.
+4. **Be honest about confidence**: If you can't find a value, say so. If you're inferring from general physics rather than a specific source, say so. Do not guess.
+
+## Column Schema
+
+Use these exact vocabulary values. If no value fits, use the closest match and explain in your notes.
+
 # Phase 1a: Differentiation Table Schema
 
 **Version**: 0.2 (post-Checkpoint 1)
@@ -224,7 +256,7 @@ These columns are carried for identification but are not part of the differentia
 | `Solid ceramic breeder (HCPB)` | Helium-cooled pebble bed with solid ceramic breeding material (Li₄SiO₄ or Li₂TiO₃) and Be/Be₁₂Ti neutron multiplier. ITER TBM baseline. |
 | `Liquid metal wall` | Flowing liquid metal serves dual purpose as structural wall/liner AND tritium breeder. Distinct from a contained blanket. |
 | `Self-bred (DD side)` | Tritium produced as byproduct of DD side reactions in D-He3 plasma. Tritium decays to He3, completing fuel cycle. No external blanket. |
-| `N/A (no tritium in fuel cycle)` | Fuel cycle does not involve tritium. Covers p-B11 (truly aneutronic), D-D (neutronic but no tritium), and D-He3 concepts that don't actively breed tritium. |
+| `N/A (aneutronic)` | Fuel cycle does not involve tritium. p-B11 and pure D-D concepts. |
 | `N/A (non-power)` | Concept is not a power-producing reactor (neutron source, isotope production). |
 | `TBD` | D-T concept where blanket approach has not been disclosed. |
 
@@ -242,7 +274,6 @@ These columns are carried for identification but are not part of the differentia
 | Value | Description |
 |-------|-------------|
 | `Heavy shielding (14 MeV)` | Full multi-layer shielding for 14.1 MeV D-T neutrons. Remote handling required for all internal maintenance. Dominant engineering challenge. |
-| `Heavy shielding (D-D)` | Shielding for 2.45 MeV D-D neutrons. 50% of D-D reactions produce neutrons — high flux but lower per-neutron energy and damage than D-T. Less activation, simpler materials, but still requires substantial shielding at power-relevant rates. |
 | `Integrated blanket/shield` | Blanket material (FLiBe, liquid metal) provides both tritium breeding and neutron shielding in one system. Still 14 MeV neutrons, but simplified architecture. |
 | `Reduced (D-He3)` | ~10% neutron energy fraction from DD side reactions. 2.45 MeV neutrons (less damaging than 14 MeV). Lighter shielding. Limited remote handling. |
 | `Minimal (aneutronic)` | <1% neutron energy from side reactions. Thin shielding (~1m water + boron) for secondary neutrons and X-rays. Hands-on maintenance possible. |
@@ -337,4 +368,51 @@ These columns are carried for identification but are not part of the differentia
 | 2026-03-07 | 0.2 | +`Tokamak` (Col 2), +`Solid ceramic breeder (HCPB)` (Col 8), QI/modular note (Col 2), >5 min = Quasi-steady (Col 10), `Pulsed` narrowed to short events | Checkpoint 1 review |
 | 2026-03-07 | 0.2.1 | Overall Confidence expanded to five-level scale (`high` / `medium-high` / `medium` / `medium-low` / `low`); per-cell confidence remains three-level | Checkpoint 3-4 review (Realta, MagLIF used `medium-high`) |
 | 2026-03-08 | 0.2.2 | +`Laser ICF (hybrid drive)` (Col 2) for Xcimer HDD approach. Row restructuring: concept 17 split (Xcimer → hybrid drive, Focused Energy → fast ignition); concept 23 split (Marvel-only, HB11 stays in concept 04); concept 26 now Inertia-only (Xcimer → hybrid drive row) | Checkpoint 5 restructuring decisions |
-| 2026-03-08 | 0.2.3 | Renamed `N/A (aneutronic)` → `N/A (no tritium in fuel cycle)` (Col 8) — old label was misleading for D-D concepts which ARE neutronic. Added `Heavy shielding (D-D)` (Col 9) for D-D concepts with 2.45 MeV neutrons; corrected 3 D-D cells from `Heavy shielding (14 MeV)` | Phase 1c measurement integrity |
+
+
+## Current Knowledge
+
+From the initial concept CSV (no prior research):
+- **Confinement Approach**: Other
+- **Description**: Muon replaces electron in hydrogen molecule, shrinking bond length 207x and enabling room-temperature fusion. Real physics demonstrated. Energy balance challenge: muon production cost vs. fusion energy per muon lifetime (alpha sticking problem).
+- **Fuel Type**: D-T (Deuterium-Tritium)
+- **Operation Mode**: Continuous
+- **Published Machine/Plant?**: No
+- **Lab Experiments**: PSI (Switzerland), TRIUMF (Canada), ARPA-E BETHE program, RAL (UK)
+
+## Gaps to Fill
+
+The following columns need values. Focus your research on these:
+
+All columns — this is the first iteration. No prior research exists.
+
+## Output Format
+
+For EACH column in the schema (including ones already filled — confirm or update them), write:
+
+### [Column Name]
+- **Value**: [exact vocabulary value from schema]
+- **Confidence**: high | medium | low
+- **Citation**: [specific URL, paper reference, or reasoning basis]
+- **Notes**: [anything relevant — how you determined this, source disagreements, caveats, qualifiers not captured by the vocabulary value]
+
+Rules:
+- **high** confidence: value directly stated by an authoritative source (company website, peer-reviewed paper, official press release)
+- **medium** confidence: value inferred from the described approach and general domain knowledge (e.g., "stellarators use ECRH" is medium unless the specific company confirms it)
+- **low** confidence: value extrapolated from similar concepts or fragmentary information
+- If a column is structurally inapplicable, write `N/A` as the value with a one-line justification
+- If you searched and found nothing, write `Unknown` or `TBD` and explain what you tried
+
+After all columns, write a final section:
+
+## Remaining Gaps
+
+List any columns where:
+- You could not find a value (explain what sources you checked)
+- Your confidence is low (explain what would raise it)
+- You found conflicting information (summarize the conflict)
+- A specific source type (paper, patent, technical report) might resolve the gap
+
+## Sources Consulted
+
+List all URLs and documents you consulted during this research, even if they didn't yield useful information for the gaps. This helps avoid re-searching the same sources in future iterations.
