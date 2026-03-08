@@ -1,3 +1,35 @@
+# Fusion Concept Research: Laser ICF - Direct Drive (D-T)
+
+You are a research agent investigating a specific fusion energy concept for a differentiation table. Your job is to find accurate, cited information for each column in the table schema.
+
+## Concept
+
+- **Name**: Laser ICF - Direct Drive (D-T)
+- **Company**: Xcimer Energy, Focused Energy
+- **Confinement approach**: Inertial Confinement
+- **Description**: Laser directly ablates cryogenic DT target capsule. Better energy coupling than indirect drive. Requires high beam uniformity. Pulsed at rep rate for power plant.
+- **Known fuel**: D-T (Deuterium-Tritium)
+- **Operation mode**: Pulsed
+
+## Task
+
+Research this concept and provide findings for each column listed under "Gaps to Fill" below. For columns already filled with high confidence, you do not need to re-research them — but if you find contradictory information, note it.
+
+## Research Strategy
+
+1. **Start broad**: Search the web for "Xcimer Energy, Focused Energy fusion technology" and similar queries. Look for the company's website, Wikipedia page, Fusion Industry Association profile, press releases, and investor presentations.
+2. **Go deeper on gaps**: For columns that remain unfilled after the broad search, try more targeted queries:
+   - Technical papers or preprints by the company's founders/scientists
+   - ARPA-E or DOE award descriptions
+   - Conference presentations (APS-DPP, IAEA FEC, IEEE SOFE)
+   - News articles with technical detail (not just funding announcements)
+3. **Save important sources**: When you find a page with substantial technical detail, save it to `./sources/` with a descriptive filename (e.g., `company-website-technology.md`, `arxiv-2025-paper-summary.md`). Use the Write tool. Save the key technical content, not the entire page.
+4. **Be honest about confidence**: If you can't find a value, say so. If you're inferring from general physics rather than a specific source, say so. Do not guess.
+
+## Column Schema
+
+Use these exact vocabulary values. If no value fits, use the closest match and explain in your notes.
+
 # Phase 1a: Differentiation Table Schema
 
 **Version**: 0.2 (post-Checkpoint 1)
@@ -78,7 +110,7 @@ These columns are carried for identification but are not part of the differentia
 | Family | Standard concept names |
 |--------|-----------------------|
 | MFE | `Tokamak` · `Compact tokamak` · `Spherical tokamak` · `Negative triangularity tokamak` · `Stellarator (QI)` · `Stellarator (modular)` · `Stellarator (planar coil)` · `Stellarator (helical coil)` · `Magnetic mirror` · `FRC (beam-driven)` · `FRC (pulsed)` · `Z-pinch (sheared-flow)` · `Levitated dipole` · `Levitated dipole (orbital)` |
-| IFE | `Laser ICF (indirect drive)` · `Laser ICF (direct drive)` · `Laser ICF (hybrid drive)` · `Laser ICF (fast ignition)` · `Laser ICF (ultrashort pulse)` · `Laser ICF (liquid jet)` · `Projectile ICF` · `Heavy ion beam ICF` |
+| IFE | `Laser ICF (indirect drive)` · `Laser ICF (direct drive)` · `Laser ICF (fast ignition)` · `Laser ICF (ultrashort pulse)` · `Laser ICF (liquid jet)` · `Projectile ICF` · `Heavy ion beam ICF` |
 | MIF | `Magnetized target (pneumatic)` · `Magnetized target (pulsed power)` · `FRC (pulsed compression)` |
 | Electrostatic | `IEC / Fusor` · `Polywell` · `Orbital electrostatic` |
 | Other | `Dense plasma focus` · `Muon-catalyzed fusion` · `Acoustic / Sonofusion` · `Lattice confinement` |
@@ -335,4 +367,162 @@ These columns are carried for identification but are not part of the differentia
 | 2026-03-06 | 0.1 | Initial schema | Sprint plan creation |
 | 2026-03-07 | 0.2 | +`Tokamak` (Col 2), +`Solid ceramic breeder (HCPB)` (Col 8), QI/modular note (Col 2), >5 min = Quasi-steady (Col 10), `Pulsed` narrowed to short events | Checkpoint 1 review |
 | 2026-03-07 | 0.2.1 | Overall Confidence expanded to five-level scale (`high` / `medium-high` / `medium` / `medium-low` / `low`); per-cell confidence remains three-level | Checkpoint 3-4 review (Realta, MagLIF used `medium-high`) |
-| 2026-03-08 | 0.2.2 | +`Laser ICF (hybrid drive)` (Col 2) for Xcimer HDD approach. Row restructuring: concept 17 split (Xcimer → hybrid drive, Focused Energy → fast ignition); concept 23 split (Marvel-only, HB11 stays in concept 04); concept 26 now Inertia-only (Xcimer → hybrid drive row) | Checkpoint 5 restructuring decisions |
+
+
+## Current Knowledge
+
+From previous research iterations (see dossier for full context):
+
+# Laser ICF - Direct Drive (D-T)
+
+**Company**: Xcimer Energy, Focused Energy
+**Last updated**: 2026-03-07
+**Iterations completed**: 1
+**Overall confidence**: medium
+
+## Summary
+
+Laser-driven inertial confinement fusion where laser beams directly ablate a cryogenic D-T fuel capsule, compressing and heating it to fusion conditions. Better energy coupling than indirect drive (no hohlraum intermediary) but requires high beam uniformity. The two companies grouped here use substantially different variants: Xcimer Energy employs Hybrid Direct Drive (HDD) with a massive KrF excimer laser (~10+ MJ, sub-Hz), while Focused Energy uses diode-pumped solid-state lasers for compression plus a separate petawatt-class short-pulse laser for proton fast ignition (~10 Hz). Focused Energy's approach straddles the schema boundary between `Laser ICF (direct drive)` and `Laser ICF (fast ignition)` -- consider splitting in future iterations.
+
+## Differentiation Table Values
+
+### Confinement Family
+- **Value**: IFE
+- **Confidence**: high
+- **Citation**: Both companies explicitly describe inertial confinement fusion; laser-driven implosion of fuel capsules
+- **Notes**: Straightforward classification.
+
+### Confinement Concept
+- **Value**: Laser ICF (direct drive)
+- **Confidence**: medium
+- **Citation**: Xcimer: https://xcimer.energy/approach/ ; Focused Energy: https://www.focused-energy.co/technology
+- **Notes**: Combined entry with classification tension. Xcimer uses "Hybrid Direct Drive" (HDD) -- two opposed KrF beams at 248 nm, a variant of direct drive that relaxes uniformity requirements. Focused Energy uses "Direct-Drive Proton Fast Ignition" -- DPSSL compression + separate short-pulse ignition laser accelerating protons to ignite compressed fuel. Focused Energy could equally be classified as `Laser ICF (fast ignition)` per the schema definition ("Separate compression and ignition laser pulses"). The company self-describes as "direct drive" but the physics is fast ignition. Recommend considering a row split or reclassifying Focused Energy.
+
+### Fuel
+- **Value**: D-T
+- **Confidence**: high
+- **Citation**: Xcimer: "DT hydrogen isotope mixture"; Focused Energy: "Deuterium-Tritium fusion fuel"
+- **Notes**: No ambiguity. Both companies explicitly state deuterium-tritium fuel.
+
+### Primary Heating
+- **Value**: Laser (direct drive)
+- **Confidence**: high (Xcimer) / medium (Focused Energy)
+- **Citation**: Xcimer: https://xcimer.energy/approach/ ; Focused Energy: https://www.focused-energy.co/technology
+- **Notes**: Xcimer's hybrid direct drive is a variant of direct drive -- laser ablates the capsule directly (no hohlraum/X-ray intermediary). Focused Energy's approach technically combines `Laser (direct drive)` for compression with `Laser (fast ignition)` for ignition -- the proton fast ignition step is a separate physics mechanism. If using a single value, `Laser (fast ignition)` may be more accurate for Focused Energy per the schema definition.
+
+### Energy Capture
+- **Value**: Thermal (unspecified)
+- **Confidence**: medium
+- **Citation**: Xcimer: HYLIFE III concept ("heat exchanged with helium to drive a gas turbine"); Focused Energy: Physics World interview with Debbie Callahan ("conventional steam cycle")
+- **Notes**: The two companies differ: Xcimer plans a helium Brayton cycle (~45% efficiency, per HYLIFE III concept), which is neither `Thermal (steam)` nor `Thermal (sCO2)` in the schema vocabulary. Focused Energy plans `Thermal (steam)`. Using `Thermal (unspecified)` as the combined value. Schema may benefit from adding "Thermal (He Brayton)" or "Thermal (gas turbine)" vocabulary.
+
+### Plasma State
+- **Value**: Compressed
+- **Confidence**: high
+- **Citation**: Schema definition: "Plasma driven to fusion conditions by implosion (laser, projectile, pulsed power, mechanical). Characteristic of IFE and MIF."
+- **Notes**: Both approaches use laser ablation to compress fuel capsules. Standard IFE plasma state.
+
+### Magnet Type
+- **Value**: None (IFE)
+- **Confidence**: high
+- **Citation**: Schema definition: "Inertial confinement -- no magnetic confinement of plasma."
+- **Notes**: Neither company uses magnetic confinement of the plasma. Driver subsystems may contain magnets (e.g., Xcimer's electron-beam pumped laser) but these confine the beam, not the plasma.
+
+### Tritium Breeding
+- **Value**: FLiBe blanket
+- **Confidence**: high (Xcimer) / low (Focused Energy)
+- **Citation**: Xcimer: https://xcimer.energy/approach/ ("flowing liquid lithium salt"); HYLIFE III heritage from LLNL. Focused Energy: no public disclosure found.
+- **Notes**: Value reflects Xcimer's well-documented approach. Xcimer's HYLIFE III uses flowing FLiBe/FLiNaBe with TBR ~1.17, serving triple duty: neutron shielding, tritium breeding, and heat transfer. Focused Energy mentions fuel "from seawater and lithium" implying lithium breeding but has not disclosed a specific blanket architecture (effectively TBD for Focused Energy alone).
+
+### Neutron Management
+- **Value**: Integrated blanket/shield
+- **Confidence**: high (Xcimer) / medium (Focused Energy)
+- **Citation**: Xcimer: HYLIFE III concept -- thick flowing FLiBe jets shield first wall, moderate neutron spectrum, breed tritium. First solid wall designed as lifetime component.
+- **Notes**: Xcimer's approach is a textbook case of `Integrated blanket/shield` -- the FLiBe simultaneously breeds tritium and provides neutron protection. Focused Energy hasn't disclosed their neutron management approach but as a D-T IFE concept will require heavy neutron management. Value based on Xcimer's known approach.
+
+### Operation Mode
+- **Value**: Pulsed
+- **Confidence**: high
+- **Citation**: Both companies describe discrete laser shots on individual fuel capsules -- characteristic IFE pulsed operation.
+- **Notes**: No ambiguity. All laser IFE concepts are pulsed.
+
+### Repetition Rate
+- **Value**: Sub-Hz (Xcimer) / ~10 Hz (Focused Energy)
+- **Confidence**: high
+- **Citation**: Xcimer: https://xcimer.energy/approach/ ("less than 1 Hz"); Focused Energy: Physics World interview, journal references ("10 Hz")
+- **Notes**: Significant differentiator between the two companies. Xcimer's high-energy-per-shot (~10 MJ laser) approach allows sub-Hz operation. Focused Energy's lower energy per shot requires higher rep rate for competitive average power. This difference reinforces the case for separate rows.
+
+### Driver Technology
+- **Value**: Excimer laser (KrF, 248 nm, 10+ MJ) [Xcimer] / Diode-pumped solid-state laser (Nd:glass, 527 nm) + petawatt ignition laser [Focused Energy]
+- **Confidence**: high
+- **Citation**: Xcimer: https://xcimer.energy/approach/ ; Focused Energy: https://www.focused-energy.co/technology, Optica OPN article
+- **Notes**: Very different driver technologies. Xcimer: Gas laser (KrF excimer), electron-beam pumped, 248 nm UV, ~10+ MJ per pulse, heritage from SDI program, ASPEN architecture with spatial/temporal pulse compression, low cost per joule. Focused Energy: Solid-state laser (DPSSL), Nd:glass frequency-doubled to 527 nm (green), ~10% wall-plug efficiency, partnered with Amplitude, plus a separate petawatt-class short-pulse laser for proton fast ignition.
+
+## Remaining Gaps
+
+1. **Confinement Concept (medium confidence)**: Focused Energy straddles `Laser ICF (direct drive)` and `Laser ICF (fast ignition)`. Resolution requires a project-level decision on whether to split this into two rows or accept the combined classification with notes.
+
+2. **Energy Capture (medium confidence)**: Xcimer's helium Brayton cycle doesn't fit the schema's controlled vocabulary perfectly -- neither `Thermal (steam)` nor `Thermal (sCO2)`. Could be resolved by schema evolution (adding He Brayton) or by obtaining the ASPEN/HYLIFE III technical report for precise characterization.
+
+3. **Tritium Breeding (Focused Energy -- low confidence)**: No public disclosure of blanket architecture. Focused Energy journal papers (behind paywall) or investor presentations may contain chamber/blanket details.
+
+4. **Neutron Management (Focused Energy -- medium confidence)**: Inferred from D-T requirements but no specific approach disclosed. Same sources as above may help.
+
+5. **Published Machine/Plant?**: Neither company has a published full plant design. Xcimer has a pre-conceptual design under DOE program (CX-029047) and HYLIFE III heritage. Focused Energy has "LightHouse" concept but no published specifications. An iteration targeting the ASPEN workshop PDF or Focused Energy's J. Fusion Energy papers could resolve this.
+
+6. **Quantitative Plant Parameters**: Neither company has published detailed plant electrical output, thermal power, or net efficiency numbers. The ASPEN workshop presentation (PDF at LLNL) likely contains more quantitative details but was not extractable.
+
+## Key Sources
+
+1. [Xcimer Energy -- Approach](https://xcimer.energy/approach/) -- primary source for Xcimer's HDD, KrF excimer, HYLIFE III chamber
+2. [Focused Energy -- Technology](https://www.focused-energy.co/technology) -- primary source for DPSSL + proton fast ignition approach
+3. [Xcimer -- Hybrid Direct Drive blog post](https://xcimer.energy/advancing-fusion-target-design-with-hybrid-direct-drive/) -- HDD physics details
+4. [Physics World -- Debbie Callahan interview](https://physicsworld.com/a/focusing-on-fusion-debbie-callahan-talks-commercial-laser-fusion/) -- Focused Energy steam cycle, rep rate
+5. [DOE CX-029047: IFE Pilot Plant with HYLIFE Concept](https://www.energy.gov/nepa/articles/cx-029047-ife-pilot-plant-low-cost-high-energy-excimer-driver-and-hylife-concept) -- Xcimer DOE program
+6. [Hybrid direct drive with two-sided UV laser (Physics of Plasmas 2024)](https://pubs.aip.org/aip/pop/article/31/11/112708/3322685/) -- HDD physics paper
+7. [Mehlhorn 2024 -- "From KMS Fusion to HB11 Energy and Xcimer Energy" (Physics of Plasmas)](https://pubs.aip.org/aip/pop/article/31/2/020602/3267722/) -- historical context, KrF heritage
+8. [Optica OPN -- Fusion's Direct Drive (June 2023)](https://www.optica-opn.org/home/articles/volume_34/june_2023/features/fusion_s_direct_drive/) -- overview of both companies
+9. [Focused Energy -- Amplitude $40M agreement](https://www.focused-energy.co/news-release/focused-energy-and-amplitude-enter-40-million-agreement-to-advance-high-energy-lasers-beyond-the-state-of-the-art-for-inertial-fusion-energy) -- DPSSL partnership
+10. [Focused Energy J. Fusion Energy 2023 (abstract)](https://link.springer.com/article/10.1007/s10894-023-00363-x) -- technical concept paper
+11. [Direct Drive Laser Fusion Facility and Pilot Plant -- J. Fusion Energy 2024 (abstract)](https://link.springer.com/article/10.1007/s10894-024-00416-9) -- facility concept
+12. [OMEGA Experiments -- LLE Rochester](https://www.lle.rochester.edu/education/research-areas/omega_experiments/) -- direct-drive ICF experiments
+13. [U. Rochester -- Direct-drive fusion "spark plug" achievement](https://www.rochester.edu/newscenter/spark-plug-direct-drive-inertial-confinement-fusion-591822/) -- direct-drive physics milestone
+14. [Focused Energy roadmap presentation (ALP conference)](https://www.asso-alp.fr/wp-content/uploads/2023/07/2.7-Roadmap-of-Focused-Energy-Vaisseau.pdf) -- company roadmap
+
+
+## Gaps to Fill
+
+The following columns need values. Focus your research on these:
+
+No obvious gaps — verify and strengthen existing values.
+
+## Output Format
+
+For EACH column in the schema (including ones already filled — confirm or update them), write:
+
+### [Column Name]
+- **Value**: [exact vocabulary value from schema]
+- **Confidence**: high | medium | low
+- **Citation**: [specific URL, paper reference, or reasoning basis]
+- **Notes**: [anything relevant — how you determined this, source disagreements, caveats, qualifiers not captured by the vocabulary value]
+
+Rules:
+- **high** confidence: value directly stated by an authoritative source (company website, peer-reviewed paper, official press release)
+- **medium** confidence: value inferred from the described approach and general domain knowledge (e.g., "stellarators use ECRH" is medium unless the specific company confirms it)
+- **low** confidence: value extrapolated from similar concepts or fragmentary information
+- If a column is structurally inapplicable, write `N/A` as the value with a one-line justification
+- If you searched and found nothing, write `Unknown` or `TBD` and explain what you tried
+
+After all columns, write a final section:
+
+## Remaining Gaps
+
+List any columns where:
+- You could not find a value (explain what sources you checked)
+- Your confidence is low (explain what would raise it)
+- You found conflicting information (summarize the conflict)
+- A specific source type (paper, patent, technical report) might resolve the gap
+
+## Sources Consulted
+
+List all URLs and documents you consulted during this research, even if they didn't yield useful information for the gaps. This helps avoid re-searching the same sources in future iterations.

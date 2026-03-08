@@ -1,3 +1,35 @@
+# Fusion Concept Research: Laser ICF (p-B11)
+
+You are a research agent investigating a specific fusion energy concept for a differentiation table. Your job is to find accurate, cited information for each column in the table schema.
+
+## Concept
+
+- **Name**: Laser ICF (p-B11)
+- **Company**: hb11
+- **Confinement approach**: Inertial Confinement
+- **Description**: 
+- **Known fuel**: p-B11 (Proton-Boron-11)
+- **Operation mode**: Pulsed
+
+## Task
+
+Research this concept and provide findings for each column listed under "Gaps to Fill" below. For columns already filled with high confidence, you do not need to re-research them — but if you find contradictory information, note it.
+
+## Research Strategy
+
+1. **Start broad**: Search the web for "hb11 fusion technology" and similar queries. Look for the company's website, Wikipedia page, Fusion Industry Association profile, press releases, and investor presentations.
+2. **Go deeper on gaps**: For columns that remain unfilled after the broad search, try more targeted queries:
+   - Technical papers or preprints by the company's founders/scientists
+   - ARPA-E or DOE award descriptions
+   - Conference presentations (APS-DPP, IAEA FEC, IEEE SOFE)
+   - News articles with technical detail (not just funding announcements)
+3. **Save important sources**: When you find a page with substantial technical detail, save it to `./sources/` with a descriptive filename (e.g., `company-website-technology.md`, `arxiv-2025-paper-summary.md`). Use the Write tool. Save the key technical content, not the entire page.
+4. **Be honest about confidence**: If you can't find a value, say so. If you're inferring from general physics rather than a specific source, say so. Do not guess.
+
+## Column Schema
+
+Use these exact vocabulary values. If no value fits, use the closest match and explain in your notes.
+
 # Phase 1a: Differentiation Table Schema
 
 **Version**: 0.2 (post-Checkpoint 1)
@@ -78,7 +110,7 @@ These columns are carried for identification but are not part of the differentia
 | Family | Standard concept names |
 |--------|-----------------------|
 | MFE | `Tokamak` · `Compact tokamak` · `Spherical tokamak` · `Negative triangularity tokamak` · `Stellarator (QI)` · `Stellarator (modular)` · `Stellarator (planar coil)` · `Stellarator (helical coil)` · `Magnetic mirror` · `FRC (beam-driven)` · `FRC (pulsed)` · `Z-pinch (sheared-flow)` · `Levitated dipole` · `Levitated dipole (orbital)` |
-| IFE | `Laser ICF (indirect drive)` · `Laser ICF (direct drive)` · `Laser ICF (hybrid drive)` · `Laser ICF (fast ignition)` · `Laser ICF (ultrashort pulse)` · `Laser ICF (liquid jet)` · `Projectile ICF` · `Heavy ion beam ICF` |
+| IFE | `Laser ICF (indirect drive)` · `Laser ICF (direct drive)` · `Laser ICF (fast ignition)` · `Laser ICF (ultrashort pulse)` · `Laser ICF (liquid jet)` · `Projectile ICF` · `Heavy ion beam ICF` |
 | MIF | `Magnetized target (pneumatic)` · `Magnetized target (pulsed power)` · `FRC (pulsed compression)` |
 | Electrostatic | `IEC / Fusor` · `Polywell` · `Orbital electrostatic` |
 | Other | `Dense plasma focus` · `Muon-catalyzed fusion` · `Acoustic / Sonofusion` · `Lattice confinement` |
@@ -335,4 +367,150 @@ These columns are carried for identification but are not part of the differentia
 | 2026-03-06 | 0.1 | Initial schema | Sprint plan creation |
 | 2026-03-07 | 0.2 | +`Tokamak` (Col 2), +`Solid ceramic breeder (HCPB)` (Col 8), QI/modular note (Col 2), >5 min = Quasi-steady (Col 10), `Pulsed` narrowed to short events | Checkpoint 1 review |
 | 2026-03-07 | 0.2.1 | Overall Confidence expanded to five-level scale (`high` / `medium-high` / `medium` / `medium-low` / `low`); per-cell confidence remains three-level | Checkpoint 3-4 review (Realta, MagLIF used `medium-high`) |
-| 2026-03-08 | 0.2.2 | +`Laser ICF (hybrid drive)` (Col 2) for Xcimer HDD approach. Row restructuring: concept 17 split (Xcimer → hybrid drive, Focused Energy → fast ignition); concept 23 split (Marvel-only, HB11 stays in concept 04); concept 26 now Inertia-only (Xcimer → hybrid drive row) | Checkpoint 5 restructuring decisions |
+
+
+## Current Knowledge
+
+From previous research iterations (see dossier for full context):
+
+# Laser ICF (p-B11)
+
+**Company**: HB11 Energy
+**Last updated**: 2026-03-07
+**Iterations completed**: 1
+**Overall confidence**: medium-low
+
+## Summary
+
+HB11 Energy is an Australian startup pursuing proton-boron-11 (p-B11) fusion via laser-driven inertial confinement using a two-laser "Proton Fast Ignition" scheme. A nanosecond laser generates a kilotesla-scale magnetic field (via capacitor-coil target) that radially confines a cylindrical HB11 fuel pellet, while a picosecond petawatt CPA laser accelerates protons into the compressed fuel to trigger fusion. The reaction produces three alpha particles (8.7 MeV per reaction) with negligible neutron output, making it nearly aneutronic. The company targets ~1 Hz repetition rate and 1 GW baseload power, but is currently at an early stage (~10^10 alpha/sr demonstrated at Osaka, ~4 orders of magnitude from net energy gain).
+
+## Differentiation Table Values
+
+### Confinement Family
+- **Value**: `IFE`
+- **Confidence**: high
+- **Citation**: [HB11 Technology Page](https://hb11.energy/our-technology/) — "Inertial Confinement Fusion (ICF) with Fast Ignition"; iter-01/sources/hb11-technology-page.md
+- **Notes**: None.
+
+### Confinement Concept
+- **Value**: `Laser ICF (fast ignition)`
+- **Confidence**: high
+- **Citation**: [HB11 Technology Page](https://hb11.energy/our-technology/) — HB11 calls their approach "Proton Fast Ignition"; iter-01/sources/hb11-technology-page.md
+- **Notes**: HB11 uses separate compression (ns) and ignition (ps petawatt) laser pulses, matching the fast ignition paradigm. The schema also defines `Laser ICF (ultrashort pulse)` for "pico/femtosecond pulses on nanostructured targets; non-thermal acceleration (p-B11 concepts)" which partially describes HB11's mechanism. `Laser ICF (fast ignition)` chosen because HB11 explicitly brands its approach as fast ignition and uses a two-pulse architecture.
+
+### Fuel
+- **Value**: `p-B11`
+- **Confidence**: high
+- **Citation**: [HB11 Technology Page](https://hb11.energy/our-technology/); iter-01/sources/hb11-technology-page.md
+- **Notes**: Proton-Boron-11 reaction: p + B11 -> 3 He4 (8.7 MeV). Solid-state cylindrical HB11 fuel body per patent (1 cm x 0.2 mm).
+
+### Primary Heating
+- **Value**: `Laser (fast ignition)`
+- **Confidence**: high
+- **Citation**: [HB11 Technology Page](https://hb11.energy/our-technology/); Patent US10410752B2 (iter-01/sources/hb11-patent-reactor-design.md)
+- **Notes**: Two-laser system: (1) nanosecond pulse (>100 J) drives capacitor-coil target to generate kilotesla magnetic field for radial confinement, (2) picosecond petawatt CPA pulse (>=10^17 W/cm^2, <5 ps, ~30 kJ) accelerates protons for fast ignition. The `Laser (ultrashort pulse)` schema value also partially applies given the ps timescale and non-thermal proton acceleration mechanism.
+
+### Energy Capture
+- **Value**: `Direct (charged particle)`
+- **Confidence**: medium
+- **Citation**: Patent US10410752B2 (iter-01/sources/hb11-patent-reactor-design.md); [HB11 Technology Page](https://hb11.energy/our-technology/)
+- **Notes**: CONFLICT: Patent (2018) describes direct electrostatic conversion at -1.4 MV bias with Faraday cage, yielding 714 A HVDC output. Current website (2025) states "conventional steam cycle generator." This represents a significant design evolution or simplification for public messaging. `Direct (charged particle)` retained as the more technically detailed and physically motivated baseline for a p-B11 concept where nearly all energy is in charged alphas, but this needs resolution in iter-02. If the company has genuinely pivoted to thermal conversion, the value should be updated to `Thermal (steam)`.
+
+### Plasma State
+- **Value**: `Compressed`
+- **Confidence**: high
+- **Citation**: Patent US10410752B2 (iter-01/sources/hb11-patent-reactor-design.md) — laser-driven compression and ignition of fuel pellet
+- **Notes**: None.
+
+### Magnet Type
+- **Value**: `None (IFE)`
+- **Confidence**: medium
+- **Citation**: Patent US10410752B2 (iter-01/sources/hb11-patent-reactor-design.md)
+- **Notes**: HB11 uses laser-driven kilotesla magnetic fields (generated by a capacitor-coil target) to radially confine the reaction. These are transient, laser-generated fields (~ns duration), not external superconducting or resistive magnets. Per schema definition, `None (IFE)` means "no magnetic confinement of plasma (driver subsystem may contain magnets, but these confine the beam, not the plasma)." In HB11's case, the kT field does confine the fusion plasma radially, making this a borderline case. However, there are no conventional magnet systems (superconducting, resistive, or pulsed EM), so `None (IFE)` is the best schema fit. Flag for schema review if more laser-ICF concepts use laser-driven confinement fields.
+
+### Tritium Breeding
+- **Value**: `N/A (aneutronic)`
+- **Confidence**: high
+- **Citation**: Fuel is p-B11 with no tritium in the fuel cycle
+- **Notes**: N/A -- no tritium in fuel cycle.
+
+### Neutron Management
+- **Value**: `Minimal (aneutronic)`
+- **Confidence**: high
+- **Citation**: p-B11 reaction is aneutronic (<1% neutron energy from side reactions); iter-01/sources/hb11-technology-page.md
+- **Notes**: Primary reaction products are three alpha particles. Secondary neutrons from side reactions (p+B11 -> C12+gamma, minor channels) contribute <1% of energy. Thin shielding sufficient.
+
+### Operation Mode
+- **Value**: `Pulsed`
+- **Confidence**: high
+- **Citation**: [HB11 Technology Page](https://hb11.energy/our-technology/) — "pellet injection rate ~1 per second"; iter-01/sources/hb11-technology-page.md
+- **Notes**: Discrete fusion events driven by laser pulses on injected fuel pellets.
+
+### Repetition Rate
+- **Value**: `~1 Hz`
+- **Confidence**: high
+- **Citation**: [HB11 Technology Page](https://hb11.energy/our-technology/) — "~1 per second"; Patent US10410752B2 — "1 reaction per second"
+- **Notes**: Patent describes sequential loading of magnetic field devices for quasi-continuous generation at 1 Hz.
+
+### Driver Technology
+- **Value**: Petawatt ps CPA laser + laser-driven kT field
+- **Confidence**: high
+- **Citation**: Patent US10410752B2 (iter-01/sources/hb11-patent-reactor-design.md); [HB11 Technology Page](https://hb11.energy/our-technology/)
+- **Notes**: Two-laser system is the core technology bet: (1) ns laser drives capacitor-coil target to produce >=1 kT magnetic field, (2) ps petawatt CPA laser (chirped pulse amplification) initiates proton fast ignition at >=10^17 W/cm^2. Current website describes "arrays of nanosecond and picosecond lasers" (thousands of commercial lasers) rather than single monolithic lasers. Company is pursuing "components first" commercialization of high-power pulsed lasers as near-term revenue.
+
+## Remaining Gaps
+
+1. **Energy Capture (medium confidence)**: Conflicting information between patent (direct electrostatic at -1.4 MV) and current website ("conventional steam cycle generator"). The 2023 Journal of Fusion Energy review paper (Hora et al.) would likely clarify the current baseline design. Another iteration targeting this paper specifically is recommended.
+
+2. **Magnet Type (medium confidence)**: The laser-driven kilotesla field is a borderline case for the `None (IFE)` schema value. More detail on whether HB11 considers the kT field integral to their confinement (making this more like a hybrid MIF approach) or purely a reaction enhancement could sharpen this classification.
+
+3. **Published Machine/Plant?**: No specific reactor design published beyond the 2018 patent. The patent describes a conceptual reactor geometry but not a complete plant design.
+
+4. **Lab Experiments**: Osaka LFEX experiment (2022) demonstrated p-B11 reactions at ~10^10 alpha/sr, but this was a fundamental physics demonstration, not a demonstration of the full reactor concept (no kT field, no direct conversion). DOE INFUSE collaboration with LLE/Rochester is ongoing.
+
+5. **Description**: Enriched from research but could benefit from more recent company communications about their technical roadmap evolution.
+
+## Key Sources
+
+1. **HB11 Energy Technology Page** — https://hb11.energy/our-technology/ (iter-01/sources/hb11-technology-page.md)
+2. **Patent US10410752B2** — "Method for Generating Electrical Energy by Laser-Based Nuclear Fusion and Laser Reactor" (2018) (iter-01/sources/hb11-patent-reactor-design.md)
+3. **Osaka LFEX Experiment** — Batani et al., "In-Target Proton-Boron Nuclear Fusion Using a PW-Class Laser," Applied Sciences 12(3):1444, 2022. DOI: https://www.mdpi.com/2076-3417/12/3/1444 (iter-01/sources/hb11-osaka-experiment-2022.md)
+4. **HB11 Energy Company Overview** — https://hb11.energy/our-story/ and various news articles (iter-01/sources/hb11-company-overview.md)
+
+
+## Gaps to Fill
+
+The following columns need values. Focus your research on these:
+
+No obvious gaps — verify and strengthen existing values.
+
+## Output Format
+
+For EACH column in the schema (including ones already filled — confirm or update them), write:
+
+### [Column Name]
+- **Value**: [exact vocabulary value from schema]
+- **Confidence**: high | medium | low
+- **Citation**: [specific URL, paper reference, or reasoning basis]
+- **Notes**: [anything relevant — how you determined this, source disagreements, caveats, qualifiers not captured by the vocabulary value]
+
+Rules:
+- **high** confidence: value directly stated by an authoritative source (company website, peer-reviewed paper, official press release)
+- **medium** confidence: value inferred from the described approach and general domain knowledge (e.g., "stellarators use ECRH" is medium unless the specific company confirms it)
+- **low** confidence: value extrapolated from similar concepts or fragmentary information
+- If a column is structurally inapplicable, write `N/A` as the value with a one-line justification
+- If you searched and found nothing, write `Unknown` or `TBD` and explain what you tried
+
+After all columns, write a final section:
+
+## Remaining Gaps
+
+List any columns where:
+- You could not find a value (explain what sources you checked)
+- Your confidence is low (explain what would raise it)
+- You found conflicting information (summarize the conflict)
+- A specific source type (paper, patent, technical report) might resolve the gap
+
+## Sources Consulted
+
+List all URLs and documents you consulted during this research, even if they didn't yield useful information for the gaps. This helps avoid re-searching the same sources in future iterations.

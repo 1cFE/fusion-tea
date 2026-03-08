@@ -1,3 +1,35 @@
+# Fusion Concept Research: Laser ICF - Indirect Drive (D-T)
+
+You are a research agent investigating a specific fusion energy concept for a differentiation table. Your job is to find accurate, cited information for each column in the table schema.
+
+## Concept
+
+- **Name**: Laser ICF - Indirect Drive (D-T)
+- **Company**: Inertia Enterprises, Xcimer
+- **Confinement approach**: Inertial Confinement
+- **Description**: Laser-driven indirect drive ICF using a hohlraum to convert laser light to X-rays that compress a D-T fuel capsule. Building on the NIF ignition approach demonstrated at Lawrence Livermore National Laboratory.
+- **Known fuel**: D-T (Deuterium-Tritium)
+- **Operation mode**: Pulsed
+
+## Task
+
+Research this concept and provide findings for each column listed under "Gaps to Fill" below. For columns already filled with high confidence, you do not need to re-research them — but if you find contradictory information, note it.
+
+## Research Strategy
+
+1. **Start broad**: Search the web for "Inertia Enterprises, Xcimer fusion technology" and similar queries. Look for the company's website, Wikipedia page, Fusion Industry Association profile, press releases, and investor presentations.
+2. **Go deeper on gaps**: For columns that remain unfilled after the broad search, try more targeted queries:
+   - Technical papers or preprints by the company's founders/scientists
+   - ARPA-E or DOE award descriptions
+   - Conference presentations (APS-DPP, IAEA FEC, IEEE SOFE)
+   - News articles with technical detail (not just funding announcements)
+3. **Save important sources**: When you find a page with substantial technical detail, save it to `./sources/` with a descriptive filename (e.g., `company-website-technology.md`, `arxiv-2025-paper-summary.md`). Use the Write tool. Save the key technical content, not the entire page.
+4. **Be honest about confidence**: If you can't find a value, say so. If you're inferring from general physics rather than a specific source, say so. Do not guess.
+
+## Column Schema
+
+Use these exact vocabulary values. If no value fits, use the closest match and explain in your notes.
+
 # Phase 1a: Differentiation Table Schema
 
 **Version**: 0.2 (post-Checkpoint 1)
@@ -78,7 +110,7 @@ These columns are carried for identification but are not part of the differentia
 | Family | Standard concept names |
 |--------|-----------------------|
 | MFE | `Tokamak` · `Compact tokamak` · `Spherical tokamak` · `Negative triangularity tokamak` · `Stellarator (QI)` · `Stellarator (modular)` · `Stellarator (planar coil)` · `Stellarator (helical coil)` · `Magnetic mirror` · `FRC (beam-driven)` · `FRC (pulsed)` · `Z-pinch (sheared-flow)` · `Levitated dipole` · `Levitated dipole (orbital)` |
-| IFE | `Laser ICF (indirect drive)` · `Laser ICF (direct drive)` · `Laser ICF (hybrid drive)` · `Laser ICF (fast ignition)` · `Laser ICF (ultrashort pulse)` · `Laser ICF (liquid jet)` · `Projectile ICF` · `Heavy ion beam ICF` |
+| IFE | `Laser ICF (indirect drive)` · `Laser ICF (direct drive)` · `Laser ICF (fast ignition)` · `Laser ICF (ultrashort pulse)` · `Laser ICF (liquid jet)` · `Projectile ICF` · `Heavy ion beam ICF` |
 | MIF | `Magnetized target (pneumatic)` · `Magnetized target (pulsed power)` · `FRC (pulsed compression)` |
 | Electrostatic | `IEC / Fusor` · `Polywell` · `Orbital electrostatic` |
 | Other | `Dense plasma focus` · `Muon-catalyzed fusion` · `Acoustic / Sonofusion` · `Lattice confinement` |
@@ -335,4 +367,155 @@ These columns are carried for identification but are not part of the differentia
 | 2026-03-06 | 0.1 | Initial schema | Sprint plan creation |
 | 2026-03-07 | 0.2 | +`Tokamak` (Col 2), +`Solid ceramic breeder (HCPB)` (Col 8), QI/modular note (Col 2), >5 min = Quasi-steady (Col 10), `Pulsed` narrowed to short events | Checkpoint 1 review |
 | 2026-03-07 | 0.2.1 | Overall Confidence expanded to five-level scale (`high` / `medium-high` / `medium` / `medium-low` / `low`); per-cell confidence remains three-level | Checkpoint 3-4 review (Realta, MagLIF used `medium-high`) |
-| 2026-03-08 | 0.2.2 | +`Laser ICF (hybrid drive)` (Col 2) for Xcimer HDD approach. Row restructuring: concept 17 split (Xcimer → hybrid drive, Focused Energy → fast ignition); concept 23 split (Marvel-only, HB11 stays in concept 04); concept 26 now Inertia-only (Xcimer → hybrid drive row) | Checkpoint 5 restructuring decisions |
+
+
+## Current Knowledge
+
+From previous research iterations (see dossier for full context):
+
+# Laser ICF - Indirect Drive (D-T)
+
+**Company**: Inertia Enterprises, Xcimer Energy
+**Last updated**: 2026-03-07
+**Iterations completed**: 1
+**Overall confidence**: medium
+
+## Summary
+
+Laser-driven indirect drive ICF using a hohlraum to convert laser light to X-rays that compress a D-T fuel capsule, building on the NIF ignition approach demonstrated at LLNL (December 2022, repeated through 2024 with peak 5.2 MJ yield). Inertia Enterprises uses a modular DPSSL architecture (Thunderwall: 1000+ beamlines at 10 kJ each, 10 Hz) while Xcimer Energy uses a KrF excimer laser (ASPEN: 2 amplifiers, 12 MJ, sub-Hz). Both target ~10 MJ on target for GW-class power plants. Xcimer has evolved toward Hybrid Direct Drive (HDD) per their Physics of Plasmas publication, where >90% of laser energy couples directly to the capsule with hohlraum smoothing -- this may warrant reclassification in a future schema revision.
+
+## Differentiation Table Values
+
+### Confinement Family
+- **Value**: IFE
+- **Confidence**: high
+- **Citation**: Schema definition; both companies describe inertial confinement fusion
+- **Notes**: Laser-driven inertial confinement. Plasma confined by its own inertia during brief implosion.
+
+### Confinement Concept
+- **Value**: Laser ICF (indirect drive)
+- **Confidence**: high
+- **Citation**: https://inertia.com/faq/why-indirect-drive/ ; https://xcimer.energy/approach/
+- **Notes**: Inertia explicitly confirms indirect drive with hohlraum targets based on Hybrid-E design (the NIF ignition design). Xcimer originally built on NIF indirect drive but has evolved toward Hybrid Direct Drive (HDD) per their Physics of Plasmas publication -- most laser energy goes directly to capsule with hohlraum providing smoothing. Both grouped here under NIF heritage. If a "Laser ICF (hybrid drive)" row is added, Xcimer could be moved there.
+
+### Fuel
+- **Value**: D-T
+- **Confidence**: high
+- **Citation**: https://xcimer.energy/science/ ("DT fuel"); https://inertia.com/ (confirmed in technical context)
+- **Notes**: Both companies use deuterium-tritium fuel. Standard ICF fuel -- NIF ignition was achieved with D-T.
+
+### Primary Heating
+- **Value**: Laser (indirect drive)
+- **Confidence**: high
+- **Citation**: https://inertia.com/faq/why-indirect-drive/ ; https://xcimer.energy/science/
+- **Notes**: Laser energy -> hohlraum -> X-rays -> capsule ablation -> implosion compression. Inertia: DPSSL. Xcimer: KrF excimer. Both target ~10 MJ on target. Xcimer's hybrid approach blurs the indirect/direct boundary but hohlraum is still present.
+
+### Energy Capture
+- **Value**: Thermal (steam)
+- **Confidence**: medium
+- **Citation**: https://xcimer.energy/science/ ("steam, which in turn drives turbines to produce electricity"); Inertia not explicitly stated
+- **Notes**: Xcimer explicitly describes FLiBe -> heat exchanger -> steam -> turbines. Inertia describes liquid lithium capturing neutron energy but has not specified the thermal cycle (steam Rankine vs. sCO2). Value based on Xcimer's explicit statement and HYLIFE design heritage. Inertia's specific cycle choice remains TBD.
+
+### Plasma State
+- **Value**: Compressed
+- **Confidence**: high
+- **Citation**: Schema definition for IFE; NIF ignition physics
+- **Notes**: Plasma driven to fusion conditions by laser-driven implosion. Fuel capsule compressed to ~300 g/cm3 and ~100 million K in nanoseconds.
+
+### Magnet Type
+- **Value**: None (IFE)
+- **Confidence**: high
+- **Citation**: Schema definition; neither company describes magnetic confinement of plasma
+- **Notes**: No magnetic confinement of fusion plasma. Laser subsystems may contain magnets (e.g., electron beam generation for Xcimer's excimer pumping) but these confine the beam, not the plasma.
+
+### Tritium Breeding
+- **Value**: FLiBe blanket / Liquid Li blanket
+- **Confidence**: high
+- **Citation**: https://xcimer.energy/approach/ ("flowing liquid lithium salt" / FLiBe); https://inertia.com/faq/where-will-you-get-tritium/ ("pipes full of liquid lithium")
+- **Notes**: The two companies have chosen different blanket materials. Xcimer: FLiBe (Li2BeF4) molten salt based on HYLIFE-II/III design heritage, integrated breeder/coolant/shield. Inertia: liquid lithium pipes lining the chamber; tritium extraction "still an area of active development." Both are lithium-bearing liquid blankets but differ in chemistry and neutron multiplication (FLiBe uses beryllium as multiplier). For a single table value, "Li blanket (unspecified)" could serve as compromise. Startup tritium from U.S. government stockpiles (Inertia).
+
+### Neutron Management
+- **Value**: Integrated blanket/shield
+- **Confidence**: high
+- **Citation**: https://xcimer.energy/approach/ ("flowing liquid lithium salt to protect the chamber's structural walls from fusion neutrons"); https://inertia.com/faq/where-will-you-get-tritium/ (liquid lithium lining)
+- **Notes**: Both designs use flowing liquid (FLiBe or liquid Li) as an integrated blanket that simultaneously breeds tritium, absorbs 14 MeV neutrons, shields the structural first wall, and carries away heat. Classic HYLIFE "waterfall" concept. Severe 14 MeV neutron environment but integrated liquid wall consolidates blanket/shield functions.
+
+### Operation Mode
+- **Value**: Pulsed
+- **Confidence**: high
+- **Citation**: https://xcimer.energy/science/ ("every few seconds"); https://inertia.com/ ("10 times per second")
+- **Notes**: ICF is inherently pulsed -- discrete implosion events. Each shot is a self-contained fusion event lasting nanoseconds, with seconds to sub-second intervals between shots.
+
+### Repetition Rate
+- **Value**: Sub-Hz / ~10 Hz
+- **Confidence**: high
+- **Citation**: https://xcimer.energy/approach/ ("less than 1 Hz"); ASPEN presentation (0.25 Hz baseline); https://inertia.com/ ("10 times per second")
+- **Notes**: Significant divergence between companies. Xcimer: Sub-Hz (<1 Hz), ASPEN baseline 0.25 Hz, potentially 1-2 Hz with solid-state switching advances. Lower rep rate enabled by higher gain per shot. Inertia: ~10 Hz, Thunderwall beamline fires at 10 Hz, higher rep rate compensates for lower energy per beamline. Both are valid for this concept.
+
+### Driver Technology
+- **Value**: Excimer laser (KrF) / Diode-pumped solid-state laser (DPSSL)
+- **Confidence**: high
+- **Citation**: https://xcimer.energy/ (KrF excimer); https://inertia.com/ and optics.org (DPSSL)
+- **Notes**: Two fundamentally different laser technologies targeting the same fusion approach. Xcimer: KrF excimer laser, gas amplifying medium, electron-beam pumped, 248 nm UV, pulse compression via stimulated Brillouin scattering, 2 large amplifiers -> 12 MJ on target, heritage from SDI/defense programs. Inertia: DPSSL, semiconductor diode pump, 1000-4000 beamlines at 10 kJ each -> 10 MJ total, 10% wallplug efficiency, modular "delivered by truck" architecture. The concept is defined by target physics (indirect drive + hohlraum) more than by specific laser type.
+
+## Remaining Gaps
+
+1. **Energy Capture (Inertia)** -- Medium confidence. Inertia has not explicitly stated whether they plan steam Rankine, sCO2 Brayton, or another thermal cycle. Liquid lithium blanket implies thermal conversion but specific cycle is TBD. A company FAQ or technical presentation could resolve this.
+
+2. **Tritium Breeding -- single table value** -- Both companies disclosed blanket material but they differ (FLiBe vs. liquid Li). The differentiation table needs a single value or a way to represent both. Suggest "Li blanket (unspecified)" as compromise, or per-company notation.
+
+3. **Repetition Rate -- single table value** -- Xcimer (sub-Hz) and Inertia (~10 Hz) span over an order of magnitude. Both valid for this concept. Table may need to show the range.
+
+4. **Driver Technology -- single table value** -- Two fundamentally different laser technologies. Concept defined by target physics more than laser type.
+
+5. **Xcimer concept classification** -- Xcimer has published on Hybrid Direct Drive (HDD). Their approach may be better classified as "Laser ICF (hybrid drive)" rather than pure indirect drive. Doesn't affect current dossier but matters for differentiation table accuracy.
+
+6. **Target gain and power plant economics** -- Neither company has published detailed target gain calculations or LCOE projections for their commercial designs. Xcimer mentions wall-plug gain ~10. More detailed power plant studies (e.g., LLNL LIFE design) exist but are not company-specific.
+
+## Key Sources
+
+1. **LLNL NIF Ignition** -- https://lasers.llnl.gov/science/achieving-fusion-ignition -- Foundational experimental basis: ignition Dec 2022, repeated through 2024, peak 5.2 MJ yield (Feb 2024). Saved: `iter-01/sources/nif-ignition-achievements.md`
+2. **Inertia Enterprises website & FAQ** -- https://inertia.com/ -- Company overview, Thunderwall DPSSL architecture, indirect drive rationale, tritium breeding approach. Saved: `iter-01/sources/inertia-enterprises-website-and-faq.md`
+3. **Xcimer Energy website & science pages** -- https://xcimer.energy/ -- ASPEN KrF architecture, HYLIFE-III chamber, hybrid direct drive evolution, rep rate targets. Saved: `iter-01/sources/xcimer-energy-website-and-science.md`
+4. **ASPEN Laser and IFE Power Plant Concept** -- https://lasers.llnl.gov/sites/lasers/files/2023-11/galloway-xcimer-IFE-workshop-2022_0.pdf -- Xcimer's ASPEN architecture and chamber design (IFE Workshop 2022)
+5. **Physics of Plasmas -- From KMS Fusion to HB11 Energy and Xcimer Energy** -- https://pubs.aip.org/aip/pop/article/31/2/020602/3267722 -- Xcimer's Hybrid Direct Drive physics basis
+6. **GlobeNewsWire -- Inertia $450M Series A** -- https://www.globenewswire.com/news-release/2026/02/11/3236274/0/en/ -- Funding, team, timeline
+7. **Optics.org coverage** -- https://optics.org/news/14/6/1 , https://optics.org/news/17/2/9 , https://optics.org/news/15/6/6 , https://optics.org/news/16/6/22 -- DOE awards, funding, laser milestones
+
+
+## Gaps to Fill
+
+The following columns need values. Focus your research on these:
+
+No obvious gaps — verify and strengthen existing values.
+
+## Output Format
+
+For EACH column in the schema (including ones already filled — confirm or update them), write:
+
+### [Column Name]
+- **Value**: [exact vocabulary value from schema]
+- **Confidence**: high | medium | low
+- **Citation**: [specific URL, paper reference, or reasoning basis]
+- **Notes**: [anything relevant — how you determined this, source disagreements, caveats, qualifiers not captured by the vocabulary value]
+
+Rules:
+- **high** confidence: value directly stated by an authoritative source (company website, peer-reviewed paper, official press release)
+- **medium** confidence: value inferred from the described approach and general domain knowledge (e.g., "stellarators use ECRH" is medium unless the specific company confirms it)
+- **low** confidence: value extrapolated from similar concepts or fragmentary information
+- If a column is structurally inapplicable, write `N/A` as the value with a one-line justification
+- If you searched and found nothing, write `Unknown` or `TBD` and explain what you tried
+
+After all columns, write a final section:
+
+## Remaining Gaps
+
+List any columns where:
+- You could not find a value (explain what sources you checked)
+- Your confidence is low (explain what would raise it)
+- You found conflicting information (summarize the conflict)
+- A specific source type (paper, patent, technical report) might resolve the gap
+
+## Sources Consulted
+
+List all URLs and documents you consulted during this research, even if they didn't yield useful information for the gaps. This helps avoid re-searching the same sources in future iterations.

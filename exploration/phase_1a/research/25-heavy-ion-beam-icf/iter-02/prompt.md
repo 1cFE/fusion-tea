@@ -1,3 +1,35 @@
+# Fusion Concept Research: Heavy Ion Beam ICF (D-T)
+
+You are a research agent investigating a specific fusion energy concept for a differentiation table. Your job is to find accurate, cited information for each column in the table schema.
+
+## Concept
+
+- **Name**: Heavy Ion Beam ICF (D-T)
+- **Company**: Intensity Energy
+- **Confinement approach**: Inertial Confinement
+- **Description**: Linear induction accelerator drives heavy ion beams to compress DT targets. Key advantage: 30-50% wall-plug efficiency vs 1-15% for lasers. Accelerator is inherently modular (hundreds of identical induction cells), enabling factory mass production. Direct-drive HIF targets.
+- **Known fuel**: D-T (Deuterium-Tritium)
+- **Operation mode**: Pulsed
+
+## Task
+
+Research this concept and provide findings for each column listed under "Gaps to Fill" below. For columns already filled with high confidence, you do not need to re-research them — but if you find contradictory information, note it.
+
+## Research Strategy
+
+1. **Start broad**: Search the web for "Intensity Energy fusion technology" and similar queries. Look for the company's website, Wikipedia page, Fusion Industry Association profile, press releases, and investor presentations.
+2. **Go deeper on gaps**: For columns that remain unfilled after the broad search, try more targeted queries:
+   - Technical papers or preprints by the company's founders/scientists
+   - ARPA-E or DOE award descriptions
+   - Conference presentations (APS-DPP, IAEA FEC, IEEE SOFE)
+   - News articles with technical detail (not just funding announcements)
+3. **Save important sources**: When you find a page with substantial technical detail, save it to `./sources/` with a descriptive filename (e.g., `company-website-technology.md`, `arxiv-2025-paper-summary.md`). Use the Write tool. Save the key technical content, not the entire page.
+4. **Be honest about confidence**: If you can't find a value, say so. If you're inferring from general physics rather than a specific source, say so. Do not guess.
+
+## Column Schema
+
+Use these exact vocabulary values. If no value fits, use the closest match and explain in your notes.
+
 # Phase 1a: Differentiation Table Schema
 
 **Version**: 0.2 (post-Checkpoint 1)
@@ -78,7 +110,7 @@ These columns are carried for identification but are not part of the differentia
 | Family | Standard concept names |
 |--------|-----------------------|
 | MFE | `Tokamak` · `Compact tokamak` · `Spherical tokamak` · `Negative triangularity tokamak` · `Stellarator (QI)` · `Stellarator (modular)` · `Stellarator (planar coil)` · `Stellarator (helical coil)` · `Magnetic mirror` · `FRC (beam-driven)` · `FRC (pulsed)` · `Z-pinch (sheared-flow)` · `Levitated dipole` · `Levitated dipole (orbital)` |
-| IFE | `Laser ICF (indirect drive)` · `Laser ICF (direct drive)` · `Laser ICF (hybrid drive)` · `Laser ICF (fast ignition)` · `Laser ICF (ultrashort pulse)` · `Laser ICF (liquid jet)` · `Projectile ICF` · `Heavy ion beam ICF` |
+| IFE | `Laser ICF (indirect drive)` · `Laser ICF (direct drive)` · `Laser ICF (fast ignition)` · `Laser ICF (ultrashort pulse)` · `Laser ICF (liquid jet)` · `Projectile ICF` · `Heavy ion beam ICF` |
 | MIF | `Magnetized target (pneumatic)` · `Magnetized target (pulsed power)` · `FRC (pulsed compression)` |
 | Electrostatic | `IEC / Fusor` · `Polywell` · `Orbital electrostatic` |
 | Other | `Dense plasma focus` · `Muon-catalyzed fusion` · `Acoustic / Sonofusion` · `Lattice confinement` |
@@ -335,4 +367,151 @@ These columns are carried for identification but are not part of the differentia
 | 2026-03-06 | 0.1 | Initial schema | Sprint plan creation |
 | 2026-03-07 | 0.2 | +`Tokamak` (Col 2), +`Solid ceramic breeder (HCPB)` (Col 8), QI/modular note (Col 2), >5 min = Quasi-steady (Col 10), `Pulsed` narrowed to short events | Checkpoint 1 review |
 | 2026-03-07 | 0.2.1 | Overall Confidence expanded to five-level scale (`high` / `medium-high` / `medium` / `medium-low` / `low`); per-cell confidence remains three-level | Checkpoint 3-4 review (Realta, MagLIF used `medium-high`) |
-| 2026-03-08 | 0.2.2 | +`Laser ICF (hybrid drive)` (Col 2) for Xcimer HDD approach. Row restructuring: concept 17 split (Xcimer → hybrid drive, Focused Energy → fast ignition); concept 23 split (Marvel-only, HB11 stays in concept 04); concept 26 now Inertia-only (Xcimer → hybrid drive row) | Checkpoint 5 restructuring decisions |
+
+
+## Current Knowledge
+
+From previous research iterations (see dossier for full context):
+
+# Heavy Ion Beam ICF (D-T)
+
+**Company**: Intensity Energy (unverified — see Notes)
+**Last updated**: 2026-03-07
+**Iterations completed**: 1
+**Overall confidence**: medium-low
+
+## Summary
+
+Heavy ion beam ICF uses linear induction accelerators to drive heavy ion beams (e.g., Bi²⁺ at ~10 GeV) onto direct-drive DT targets, compressing fuel to ~1000x solid density. The key advantage over laser ICF is driver wall-plug efficiency of 30-40% (vs 1-15% for lasers), and the accelerator's inherent modularity — hundreds of identical induction cells enable factory mass production. Two detailed power plant designs exist (HIBALL, HYLIFE-II) from national lab programs in the 1980s-90s, but no private company is currently known to be pursuing this approach commercially. "Intensity Energy" could not be verified as an existing entity.
+
+## Differentiation Table Values
+
+### Confinement Family
+- **Value**: IFE
+- **Confidence**: high
+- **Citation**: Baseline CSV; confirmed by HIF literature (arxiv 2005.07520)
+- **Notes**: None
+
+### Confinement Concept
+- **Value**: Heavy ion beam ICF
+- **Confidence**: high
+- **Citation**: Baseline CSV; schema Column 2 vocabulary
+- **Notes**: Direct-drive targets. Heavy ions deposit energy volumetrically (stopping range ~0.5-1 mm), unlike laser surface absorption.
+
+### Fuel
+- **Value**: D-T
+- **Confidence**: high
+- **Citation**: Baseline CSV; HIBALL (KfK-3202), HYLIFE-II (OSTI 7021072)
+- **Notes**: All published HIF power plant designs use D-T fuel.
+
+### Primary Heating
+- **Value**: Heavy ion beam
+- **Confidence**: high
+- **Citation**: Schema Column 4 vocabulary; LBNL HIF program literature
+- **Notes**: US reference: induction linac. European reference: RF linac (GSI/HIDIF). Beam energy 3-8 MJ per shot. HIBALL: 10 GeV Bi²⁺ at 160 mA. HYLIFE-II: 5 MJ per shot.
+
+### Energy Capture
+- **Value**: Thermal (steam)
+- **Confidence**: medium
+- **Citation**: HIBALL (KfK-3202), HYLIFE-II final report (OSTI 7021072)
+- **Notes**: Both published power plant designs use conventional steam Rankine cycle. Value is medium confidence because it's inferred from historical designs, not a company disclosure. Modern designs might opt for sCO2.
+
+### Plasma State
+- **Value**: Compressed
+- **Confidence**: high
+- **Citation**: Schema Column 6 definition; HIF target physics literature
+- **Notes**: Fuel compressed to ~1000x solid density by ion beam-driven ablation implosion.
+
+### Magnet Type
+- **Value**: None (IFE)
+- **Confidence**: high
+- **Citation**: Schema Column 7 vocabulary; iter-01/sources/hif-technology-overview.md
+- **Notes**: The accelerator uses superconducting quadrupole magnet arrays for beam transport, but these confine the beam, not the plasma. Per schema: "Driver subsystem may contain magnets, but these confine the beam, not the plasma."
+
+### Tritium Breeding
+- **Value**: Li blanket (unspecified)
+- **Confidence**: medium
+- **Citation**: HIBALL (KfK-3202) — LiPb; HYLIFE-II (OSTI 7021072) — FLiBe
+- **Notes**: Historical designs differ: HIBALL uses LiPb blanket (TBR ~1.195), HYLIFE-II uses FLiBe molten salt jets. Recorded as "unspecified" because no company has selected a specific approach. Both designs demonstrate viable breeding. HYLIFE-II tritium inventory: 0.5 g in molten salt, 140 g in tube wall metal.
+
+### Neutron Management
+- **Value**: Integrated blanket/shield
+- **Confidence**: medium
+- **Citation**: HYLIFE-II final report (OSTI 7021072); HIBALL (KfK-3202)
+- **Notes**: Both designs use liquid blankets serving dual tritium breeding + neutron shielding function. HYLIFE-II thick flowing FLiBe jets also protect the first wall, enabling 30-year chamber lifetime with no replacement. HIBALL LiPb blanket similarly integrates functions.
+
+### Operation Mode
+- **Value**: Pulsed
+- **Confidence**: high
+- **Citation**: Baseline CSV; all HIF power plant designs
+- **Notes**: Discrete implosion events separated by target injection/reload cycles.
+
+### Repetition Rate
+- **Value**: ~10 Hz
+- **Confidence**: medium
+- **Citation**: HIBALL (KfK-3202) — 5 Hz per chamber; HYLIFE-II (OSTI 7021072) — 6 Hz
+- **Notes**: Historical designs target 5-6 Hz. Recorded as ~10 Hz (closest schema vocabulary value), though actual published values are slightly below. The baseline description mentions this is the target range for power plant economics. A dedicated HIF power plant might use multiple chambers or higher rep rates.
+
+### Driver Technology
+- **Value**: Linear induction accelerator
+- **Confidence**: high
+- **Citation**: Baseline CSV; LBNL HIF program; HIBALL (KfK-3202)
+- **Notes**: US reference design. Hundreds of identical induction cells enable factory mass production. European alternative is RF linac (GSI/HIDIF). HYLIFE-II estimated $570M direct cost for recirculating induction accelerator driver. HIBALL design requires ~3 km linac.
+
+## Remaining Gaps
+
+| Column | Status | What's been searched | What might resolve it |
+|--------|--------|---------------------|----------------------|
+| Energy Capture | medium — inferred from 1980s-90s designs | HIBALL, HYLIFE-II reports | A company disclosure would provide high confidence. Modern HIF studies might specify sCO2. |
+| Tritium Breeding | medium — two historical options, no company choice | HIBALL (LiPb), HYLIFE-II (FLiBe) | Company disclosure needed. Could default to one if a specific design basis is chosen. |
+| Neutron Management | medium — inferred from historical designs | Same as above | Same as above |
+| Repetition Rate | medium — historical designs at 5-6 Hz | HIBALL, HYLIFE-II | Modern target physics papers or company disclosure could specify updated targets. |
+| Company verification | Unresolved | FIA members, Crunchbase, LinkedIn, ARPA-E, DOE awards, Wikipedia, news, conference proceedings | "Intensity Energy" may be a placeholder. Direct outreach or updated FIA survey might clarify. |
+
+**Recommendation**: Another iteration could search for more recent HIF publications (2020s), check if any new startups have formed around this concept, and look for updated power plant studies that might specify modern energy conversion (sCO2) or blanket choices. However, the fundamental gap is the unverifiable company — if "Intensity Energy" is a placeholder, most column values will remain at medium confidence from historical studies.
+
+## Key Sources
+
+1. **HIBALL Study** (KfK-3202, 1985) — German/US heavy ion beam power plant design. LiPb blanket, 10 GeV Bi²⁺, 3.8 GWe.
+2. **HYLIFE-II Final Report** (OSTI 7021072, LLNL 1990s) — FLiBe thick-liquid-wall HIF power plant. 940 MWe baseline, 6.5 c/kWh.
+3. **arxiv 2005.07520** — HIF technology overview, driver efficiency comparisons, target physics.
+4. **iter-01/sources/hif-technology-overview.md** — Compiled technical overview from multiple sources.
+5. **iter-01/sources/intensity-energy-search-results.md** — Documentation of failed company verification searches.
+
+
+## Gaps to Fill
+
+The following columns need values. Focus your research on these:
+
+No obvious gaps — verify and strengthen existing values.
+
+## Output Format
+
+For EACH column in the schema (including ones already filled — confirm or update them), write:
+
+### [Column Name]
+- **Value**: [exact vocabulary value from schema]
+- **Confidence**: high | medium | low
+- **Citation**: [specific URL, paper reference, or reasoning basis]
+- **Notes**: [anything relevant — how you determined this, source disagreements, caveats, qualifiers not captured by the vocabulary value]
+
+Rules:
+- **high** confidence: value directly stated by an authoritative source (company website, peer-reviewed paper, official press release)
+- **medium** confidence: value inferred from the described approach and general domain knowledge (e.g., "stellarators use ECRH" is medium unless the specific company confirms it)
+- **low** confidence: value extrapolated from similar concepts or fragmentary information
+- If a column is structurally inapplicable, write `N/A` as the value with a one-line justification
+- If you searched and found nothing, write `Unknown` or `TBD` and explain what you tried
+
+After all columns, write a final section:
+
+## Remaining Gaps
+
+List any columns where:
+- You could not find a value (explain what sources you checked)
+- Your confidence is low (explain what would raise it)
+- You found conflicting information (summarize the conflict)
+- A specific source type (paper, patent, technical report) might resolve the gap
+
+## Sources Consulted
+
+List all URLs and documents you consulted during this research, even if they didn't yield useful information for the gaps. This helps avoid re-searching the same sources in future iterations.

@@ -1,3 +1,35 @@
+# Fusion Concept Research: Laser ICF - Nanostructured Target (p-B11)
+
+You are a research agent investigating a specific fusion energy concept for a differentiation table. Your job is to find accurate, cited information for each column in the table schema.
+
+## Concept
+
+- **Name**: Laser ICF - Nanostructured Target (p-B11)
+- **Company**: Marvel Fusion, HB11 Energy
+- **Confinement approach**: Inertial Confinement
+- **Description**: Ultrashort-pulse laser irradiates engineered nanostructured solid targets (nanowires, foams, layered composites) containing p-B11 fuel. Enhanced laser absorption via nanostructure (potentially 80%+ vs 5-15% for smooth surfaces). Aneutronic. Room-temperature target handling, no cryogenics.
+- **Known fuel**: p-B11 (Proton-Boron-11)
+- **Operation mode**: Pulsed
+
+## Task
+
+Research this concept and provide findings for each column listed under "Gaps to Fill" below. For columns already filled with high confidence, you do not need to re-research them — but if you find contradictory information, note it.
+
+## Research Strategy
+
+1. **Start broad**: Search the web for "Marvel Fusion, HB11 Energy fusion technology" and similar queries. Look for the company's website, Wikipedia page, Fusion Industry Association profile, press releases, and investor presentations.
+2. **Go deeper on gaps**: For columns that remain unfilled after the broad search, try more targeted queries:
+   - Technical papers or preprints by the company's founders/scientists
+   - ARPA-E or DOE award descriptions
+   - Conference presentations (APS-DPP, IAEA FEC, IEEE SOFE)
+   - News articles with technical detail (not just funding announcements)
+3. **Save important sources**: When you find a page with substantial technical detail, save it to `./sources/` with a descriptive filename (e.g., `company-website-technology.md`, `arxiv-2025-paper-summary.md`). Use the Write tool. Save the key technical content, not the entire page.
+4. **Be honest about confidence**: If you can't find a value, say so. If you're inferring from general physics rather than a specific source, say so. Do not guess.
+
+## Column Schema
+
+Use these exact vocabulary values. If no value fits, use the closest match and explain in your notes.
+
 # Phase 1a: Differentiation Table Schema
 
 **Version**: 0.2 (post-Checkpoint 1)
@@ -78,7 +110,7 @@ These columns are carried for identification but are not part of the differentia
 | Family | Standard concept names |
 |--------|-----------------------|
 | MFE | `Tokamak` · `Compact tokamak` · `Spherical tokamak` · `Negative triangularity tokamak` · `Stellarator (QI)` · `Stellarator (modular)` · `Stellarator (planar coil)` · `Stellarator (helical coil)` · `Magnetic mirror` · `FRC (beam-driven)` · `FRC (pulsed)` · `Z-pinch (sheared-flow)` · `Levitated dipole` · `Levitated dipole (orbital)` |
-| IFE | `Laser ICF (indirect drive)` · `Laser ICF (direct drive)` · `Laser ICF (hybrid drive)` · `Laser ICF (fast ignition)` · `Laser ICF (ultrashort pulse)` · `Laser ICF (liquid jet)` · `Projectile ICF` · `Heavy ion beam ICF` |
+| IFE | `Laser ICF (indirect drive)` · `Laser ICF (direct drive)` · `Laser ICF (fast ignition)` · `Laser ICF (ultrashort pulse)` · `Laser ICF (liquid jet)` · `Projectile ICF` · `Heavy ion beam ICF` |
 | MIF | `Magnetized target (pneumatic)` · `Magnetized target (pulsed power)` · `FRC (pulsed compression)` |
 | Electrostatic | `IEC / Fusor` · `Polywell` · `Orbital electrostatic` |
 | Other | `Dense plasma focus` · `Muon-catalyzed fusion` · `Acoustic / Sonofusion` · `Lattice confinement` |
@@ -335,4 +367,153 @@ These columns are carried for identification but are not part of the differentia
 | 2026-03-06 | 0.1 | Initial schema | Sprint plan creation |
 | 2026-03-07 | 0.2 | +`Tokamak` (Col 2), +`Solid ceramic breeder (HCPB)` (Col 8), QI/modular note (Col 2), >5 min = Quasi-steady (Col 10), `Pulsed` narrowed to short events | Checkpoint 1 review |
 | 2026-03-07 | 0.2.1 | Overall Confidence expanded to five-level scale (`high` / `medium-high` / `medium` / `medium-low` / `low`); per-cell confidence remains three-level | Checkpoint 3-4 review (Realta, MagLIF used `medium-high`) |
-| 2026-03-08 | 0.2.2 | +`Laser ICF (hybrid drive)` (Col 2) for Xcimer HDD approach. Row restructuring: concept 17 split (Xcimer → hybrid drive, Focused Energy → fast ignition); concept 23 split (Marvel-only, HB11 stays in concept 04); concept 26 now Inertia-only (Xcimer → hybrid drive row) | Checkpoint 5 restructuring decisions |
+
+
+## Current Knowledge
+
+From previous research iterations (see dossier for full context):
+
+# Laser ICF - Nanostructured Target (p-B11)
+
+**Company**: Marvel Fusion, HB11 Energy
+**Last updated**: 2026-03-07
+**Iterations completed**: 1
+**Overall confidence**: medium
+
+## Summary
+
+Ultrashort-pulse laser irradiation of engineered solid targets containing proton-boron-11 fuel, exploiting non-thermal acceleration mechanisms rather than classical ICF compression. Marvel Fusion uses femtosecond DPSSL lasers on nanostructured silicon targets (nanowire arrays manufactured via semiconductor lithography), while HB11 Energy uses a two-laser system (nanosecond magnetic field generation + picosecond proton fast ignition) on solid HB11 cylinders. Both approaches are aneutronic, require no cryogenics, and target direct or hybrid energy conversion of charged alpha particles. The two companies differ significantly in driver architecture, repetition rate targets, and energy conversion strategy.
+
+## Differentiation Table Values
+
+### Confinement Family
+- **Value**: IFE
+- **Confidence**: high
+- **Citation**: Baseline CSV; confirmed by Marvel Fusion website, HB11 Energy website
+- **Notes**: Both companies use laser drivers on discrete targets with inertial confinement timescales, though the physics pathway (non-thermal block ignition) differs from classical ICF implosion.
+
+### Confinement Concept
+- **Value**: Laser ICF (ultrashort pulse)
+- **Confidence**: high
+- **Citation**: Baseline CSV; confirmed by Marvel Fusion technology page (sub-100 fs pulses), HB11 Energy (picosecond ignition pulse)
+- **Notes**: Marvel Fusion uses femtosecond pulses; HB11 uses picosecond ignition pulses. Both qualify as "ultrashort pulse" relative to classical nanosecond ICF drivers. HB11's nanosecond magnetic field laser is auxiliary to the picosecond ignition pulse.
+
+### Fuel
+- **Value**: p-B11
+- **Confidence**: high
+- **Citation**: Baseline CSV; Marvel Fusion website; HB11 Energy website; Hora et al. (arXiv:1603.02579)
+- **Notes**: Marvel Fusion uses p-B11 embedded in nanostructured silicon targets. HB11 uses solid hydrogen-boron cylinders (1 cm length, 1 mm radius). Both are aneutronic fuel cycles producing alpha particles.
+
+### Primary Heating
+- **Value**: Laser (ultrashort pulse)
+- **Confidence**: high
+- **Citation**: Marvel Fusion website (sub-100 fs DPSSL); HB11 Energy technology page (picosecond ignition pulse)
+- **Notes**: "Heating" is somewhat misleading for these concepts — both exploit non-thermal acceleration mechanisms (block ignition, avalanche reactions) rather than thermal equilibrium heating. The schema value is still the best fit.
+
+### Energy Capture
+- **Value**: Hybrid (thermal + direct)
+- **Confidence**: medium
+- **Citation**: Marvel Fusion website ("magnetic, electrostatic, and steam power generation," ~70% efficiency); HB11 2023 J. Fusion Energy paper (discusses both direct electrodynamic ~50% and thermal ~35-40%)
+- **Notes**: Marvel Fusion explicitly plans hybrid conversion combining direct alpha particle capture (magnetic/electrostatic induction) with a steam cycle for residual thermal energy. HB11 has CONFLICTING information: earlier publications and Hora's original concept emphasize direct conversion (~80% efficiency), the 2023 paper discusses multiple options, but the current company website states "conventional steam cycle" for 1 GW baseload. HB11 may have pivoted or is presenting multiple options for different audiences.
+
+### Plasma State
+- **Value**: Compressed
+- **Confidence**: medium
+- **Citation**: Schema definition ("Plasma driven to fusion conditions by implosion (laser, projectile, pulsed power, mechanical)")
+- **Notes**: Best schema fit, but imprecise. These concepts use non-thermal block acceleration and avalanche reactions in solid-density targets rather than classical spherical implosion/compression. The plasma is laser-driven to fusion conditions but via direct acceleration rather than adiabatic compression. May warrant a schema note at next checkpoint review.
+
+### Magnet Type
+- **Value**: None (IFE)
+- **Confidence**: high
+- **Citation**: Marvel Fusion website; HB11 Energy technology page
+- **Notes**: No external confinement magnets. HB11 uses a laser-generated magnetic field (~10 kilotesla, nanosecond duration) for alpha particle confinement during the reaction, but this is created by the driver laser, not by external magnets. Marvel Fusion does not use magnetic confinement.
+
+### Tritium Breeding
+- **Value**: N/A (aneutronic)
+- **Confidence**: high
+- **Citation**: Baseline CSV; both company websites
+- **Notes**: p-B11 fuel cycle produces no tritium and requires no tritium breeding. No blanket infrastructure needed.
+
+### Neutron Management
+- **Value**: Minimal (aneutronic)
+- **Confidence**: high
+- **Citation**: Baseline CSV; schema definition (<1% neutron energy from side reactions)
+- **Notes**: p-B11 is truly aneutronic with <1% neutron energy from side reactions. Thin shielding for secondary neutrons and X-rays. Hands-on maintenance possible. This is a major structural advantage over D-T concepts.
+
+### Operation Mode
+- **Value**: Pulsed
+- **Confidence**: high
+- **Citation**: Baseline CSV; Marvel Fusion (10 Hz target); HB11 Energy (1 Hz target)
+- **Notes**: Both concepts fire discrete laser shots at individual targets. Pulse durations are femtosecond to picosecond, with target replacement between shots.
+
+### Repetition Rate
+- **Value**: ~10 Hz
+- **Confidence**: medium
+- **Citation**: Marvel Fusion website (10 Hz ATLAS facility design); HB11 Energy (~1 Hz target)
+- **Notes**: Company divergence. Marvel Fusion targets 10 Hz for its commercial plant (ATLAS facility at CSU designed for 10 Hz operation). HB11 Energy targets ~1 Hz. The value reflects the more developed/funded company's target. At ~1 Hz, HB11 would need ~300 kWh per shot to achieve GW-class output; at 10 Hz, Marvel Fusion can achieve similar output with lower per-shot yield.
+
+### Driver Technology
+- **Value**: Femtosecond DPSSL (Marvel Fusion); dual-laser ns+ps system (HB11 Energy)
+- **Confidence**: medium
+- **Citation**: Marvel Fusion website (DPSSL, sub-100 fs, petawatt-class, ATLAS facility ~7 PW combined at 10 Hz); HB11 Energy technology page (~10 PW ps ignition laser + ns magnetic field laser); US patent US20230073280A1 (nanostructured target design)
+- **Notes**: Significantly different driver architectures between the two companies. Marvel Fusion: multiple DPSSL beamlines (commercial plant ~500 lasers; demo 10-100), femtosecond pulses on nanostructured silicon targets (nanowire arrays, ~5000 targets per 300mm wafer, standard semiconductor lithography). HB11 Energy: two-laser scheme — Laser 1 (nanosecond) generates ~10 kT magnetic field in a coil structure, Laser 2 (~10 PW, ~1 ps) triggers proton fast ignition and avalanche reaction in solid HB11 cylinder. Key partners: Marvel — Trumpf, Thales, Siemens, Fraunhofer, CEA; HB11 — Australia-based, ~$22M raised vs Marvel's ~EUR165M+.
+
+## Remaining Gaps
+
+- **Energy Capture**: HB11's conversion strategy is internally contradictory (direct conversion in literature vs. steam cycle on website). A future iteration targeting HB11's most recent investor presentations or technical papers could clarify their current baseline.
+- **Plasma State**: `Compressed` is an imperfect fit for non-thermal block ignition. This is a schema limitation rather than a data gap. Flag for checkpoint review.
+- **Repetition Rate**: Both companies state targets but neither has demonstrated at-rate operation. Confidence limited to medium until facility commissioning (Marvel ATLAS mid-2026).
+- **Driver Technology**: Per-shot energy requirements and wall-plug efficiency for both laser systems are not well-characterized in public sources. Future iterations could target technical conference proceedings (e.g., CLEO, IFSA) for laser efficiency data.
+- **Published Machine/Plant?**: Neither company has published a detailed reactor/plant design. Marvel Fusion targets prototype ~2032, commercial ~2036. HB11 targets 1 GW baseload but has not published plant architecture.
+
+## Key Sources
+
+1. Marvel Fusion website — https://www.marvelfusion.com/ (core technology, ATLAS facility, targets)
+2. HB11 Energy website — https://hb11.energy/ and https://hb11.energy/our-technology/ (two-laser system, reactor concept)
+3. Binding Energy technical overview — https://binding.energy/ultrashort-pulse-laser-fusion/
+4. Hora et al., "Avalanche boron fusion" — https://arxiv.org/abs/1603.02579 (theoretical foundation for HB11)
+5. J. Fusion Energy 2023 paper — https://link.springer.com/article/10.1007/s10894-023-00349-9 (HB11 energy conversion options)
+6. Marvel Fusion nanostructured target patent — https://patents.google.com/patent/US20230073280A1/en
+7. Optics.org coverage — Series B (Oct 2024), EUR50M extension (Apr 2025)
+8. New Atlas HB11 coverage — company overview and experimental results
+9. Saved source files:
+   - `iter-01/sources/marvel-fusion-technology.md`
+   - `iter-01/sources/hb11-energy-technology.md`
+
+
+## Gaps to Fill
+
+The following columns need values. Focus your research on these:
+
+No obvious gaps — verify and strengthen existing values.
+
+## Output Format
+
+For EACH column in the schema (including ones already filled — confirm or update them), write:
+
+### [Column Name]
+- **Value**: [exact vocabulary value from schema]
+- **Confidence**: high | medium | low
+- **Citation**: [specific URL, paper reference, or reasoning basis]
+- **Notes**: [anything relevant — how you determined this, source disagreements, caveats, qualifiers not captured by the vocabulary value]
+
+Rules:
+- **high** confidence: value directly stated by an authoritative source (company website, peer-reviewed paper, official press release)
+- **medium** confidence: value inferred from the described approach and general domain knowledge (e.g., "stellarators use ECRH" is medium unless the specific company confirms it)
+- **low** confidence: value extrapolated from similar concepts or fragmentary information
+- If a column is structurally inapplicable, write `N/A` as the value with a one-line justification
+- If you searched and found nothing, write `Unknown` or `TBD` and explain what you tried
+
+After all columns, write a final section:
+
+## Remaining Gaps
+
+List any columns where:
+- You could not find a value (explain what sources you checked)
+- Your confidence is low (explain what would raise it)
+- You found conflicting information (summarize the conflict)
+- A specific source type (paper, patent, technical report) might resolve the gap
+
+## Sources Consulted
+
+List all URLs and documents you consulted during this research, even if they didn't yield useful information for the gaps. This helps avoid re-searching the same sources in future iterations.

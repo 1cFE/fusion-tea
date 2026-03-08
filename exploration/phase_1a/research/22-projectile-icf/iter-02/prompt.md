@@ -1,3 +1,35 @@
+# Fusion Concept Research: Projectile ICF (D-T)
+
+You are a research agent investigating a specific fusion energy concept for a differentiation table. Your job is to find accurate, cited information for each column in the table schema.
+
+## Concept
+
+- **Name**: Projectile ICF (D-T)
+- **Company**: First Light Fusion, NearStar Fusion
+- **Confinement approach**: Inertial Confinement
+- **Description**: Hypervelocity projectile compresses fuel target on impact. Simplest driver concept. Electromagnetic launcher accelerates projectile to ~20-50 km/s. Target design is key IP. Unique LCOE profile: very cheap driver, complex engineered targets.
+- **Known fuel**: D-T (Deuterium-Tritium)
+- **Operation mode**: Pulsed
+
+## Task
+
+Research this concept and provide findings for each column listed under "Gaps to Fill" below. For columns already filled with high confidence, you do not need to re-research them — but if you find contradictory information, note it.
+
+## Research Strategy
+
+1. **Start broad**: Search the web for "First Light Fusion, NearStar Fusion fusion technology" and similar queries. Look for the company's website, Wikipedia page, Fusion Industry Association profile, press releases, and investor presentations.
+2. **Go deeper on gaps**: For columns that remain unfilled after the broad search, try more targeted queries:
+   - Technical papers or preprints by the company's founders/scientists
+   - ARPA-E or DOE award descriptions
+   - Conference presentations (APS-DPP, IAEA FEC, IEEE SOFE)
+   - News articles with technical detail (not just funding announcements)
+3. **Save important sources**: When you find a page with substantial technical detail, save it to `./sources/` with a descriptive filename (e.g., `company-website-technology.md`, `arxiv-2025-paper-summary.md`). Use the Write tool. Save the key technical content, not the entire page.
+4. **Be honest about confidence**: If you can't find a value, say so. If you're inferring from general physics rather than a specific source, say so. Do not guess.
+
+## Column Schema
+
+Use these exact vocabulary values. If no value fits, use the closest match and explain in your notes.
+
 # Phase 1a: Differentiation Table Schema
 
 **Version**: 0.2 (post-Checkpoint 1)
@@ -78,7 +110,7 @@ These columns are carried for identification but are not part of the differentia
 | Family | Standard concept names |
 |--------|-----------------------|
 | MFE | `Tokamak` · `Compact tokamak` · `Spherical tokamak` · `Negative triangularity tokamak` · `Stellarator (QI)` · `Stellarator (modular)` · `Stellarator (planar coil)` · `Stellarator (helical coil)` · `Magnetic mirror` · `FRC (beam-driven)` · `FRC (pulsed)` · `Z-pinch (sheared-flow)` · `Levitated dipole` · `Levitated dipole (orbital)` |
-| IFE | `Laser ICF (indirect drive)` · `Laser ICF (direct drive)` · `Laser ICF (hybrid drive)` · `Laser ICF (fast ignition)` · `Laser ICF (ultrashort pulse)` · `Laser ICF (liquid jet)` · `Projectile ICF` · `Heavy ion beam ICF` |
+| IFE | `Laser ICF (indirect drive)` · `Laser ICF (direct drive)` · `Laser ICF (fast ignition)` · `Laser ICF (ultrashort pulse)` · `Laser ICF (liquid jet)` · `Projectile ICF` · `Heavy ion beam ICF` |
 | MIF | `Magnetized target (pneumatic)` · `Magnetized target (pulsed power)` · `FRC (pulsed compression)` |
 | Electrostatic | `IEC / Fusor` · `Polywell` · `Orbital electrostatic` |
 | Other | `Dense plasma focus` · `Muon-catalyzed fusion` · `Acoustic / Sonofusion` · `Lattice confinement` |
@@ -335,4 +367,145 @@ These columns are carried for identification but are not part of the differentia
 | 2026-03-06 | 0.1 | Initial schema | Sprint plan creation |
 | 2026-03-07 | 0.2 | +`Tokamak` (Col 2), +`Solid ceramic breeder (HCPB)` (Col 8), QI/modular note (Col 2), >5 min = Quasi-steady (Col 10), `Pulsed` narrowed to short events | Checkpoint 1 review |
 | 2026-03-07 | 0.2.1 | Overall Confidence expanded to five-level scale (`high` / `medium-high` / `medium` / `medium-low` / `low`); per-cell confidence remains three-level | Checkpoint 3-4 review (Realta, MagLIF used `medium-high`) |
-| 2026-03-08 | 0.2.2 | +`Laser ICF (hybrid drive)` (Col 2) for Xcimer HDD approach. Row restructuring: concept 17 split (Xcimer → hybrid drive, Focused Energy → fast ignition); concept 23 split (Marvel-only, HB11 stays in concept 04); concept 26 now Inertia-only (Xcimer → hybrid drive row) | Checkpoint 5 restructuring decisions |
+
+
+## Current Knowledge
+
+From previous research iterations (see dossier for full context):
+
+# Projectile ICF (D-T)
+
+**Company**: First Light Fusion, NearStar Fusion
+**Last updated**: 2026-03-07
+**Iterations completed**: 1
+**Overall confidence**: medium
+
+## Summary
+
+Projectile ICF uses a hypervelocity projectile launched by an electromagnetic gun to compress a fuel target on impact, generating fusion conditions through shockwave convergence. The concept's key appeal is driver simplicity — electromagnetic launchers are far cheaper per joule than lasers — while the complexity shifts to engineered target design. First Light Fusion demonstrated projectile-driven fusion in 2022 (validated by UKAEA) but pivoted to FLARE (pulsed-power liner implosion) in September 2025, leaving no active commercial pursuer of the pure projectile approach. NearStar Fusion uses a railgun driver but their MTIF (Magnetized Target Impact Fusion) approach magnetizes the fuel and prefers D-D fuel, placing it closer to MIF than pure projectile ICF.
+
+## Differentiation Table Values
+
+### Confinement Family
+- **Value**: IFE
+- **Confidence**: high
+- **Citation**: Schema definition; First Light Fusion technology page (firstlightfusion.com)
+- **Notes**: NearStar's MTIF approach is arguably MIF rather than IFE — their fuel is magnetized during compression. For the pure projectile ICF concept as defined here, IFE is correct. NearStar may warrant reclassification to a separate MIF concept row.
+
+### Confinement Concept
+- **Value**: Projectile ICF
+- **Confidence**: high
+- **Citation**: Schema controlled vocabulary; First Light Fusion technology descriptions
+- **Notes**: First Light's original approach (2011-2025) is the canonical example. NearStar's MTIF is a hybrid variant using a railgun driver with magnetized targets.
+
+### Fuel
+- **Value**: D-T
+- **Confidence**: high
+- **Citation**: First Light Fusion technology page; baseline CSV
+- **Notes**: First Light's power plant design assumes D-T with tritium breeding. NearStar explicitly prefers D-D fuel and lists D-T only as a backup option, further distinguishing it from this concept row.
+
+### Primary Heating
+- **Value**: Projectile impact
+- **Confidence**: high
+- **Citation**: Schema controlled vocabulary; First Light Fusion technology descriptions
+- **Notes**: Hypervelocity projectile impact creates converging shockwaves that compress and heat fuel. First Light's target design uses multiple cavities to amplify pressure, accelerating fuel to >70 km/s and compressing to 10 terapascals. NearStar uses a plasma armature railgun at ~10 km/s.
+
+### Energy Capture
+- **Value**: Thermal (steam)
+- **Confidence**: high
+- **Citation**: First Light Fusion power plant description: "150-year-old steam turbine technology"; "After the lithium heat exchanger, the plant is identical to many other already working facilities"
+- **Notes**: Liquid lithium absorbs neutron energy, transfers heat via heat exchanger to water/steam Rankine cycle. NearStar also implies thermal conversion ("retrofit the heat source in traditional hydrocarbon power plants") but has not specified the cycle.
+
+### Plasma State
+- **Value**: Compressed
+- **Confidence**: high
+- **Citation**: Schema definition for IFE concepts; First Light target physics descriptions
+- **Notes**: Fuel driven to fusion conditions by projectile-induced implosion. Fuel volume reduced from several millimeters to under 100 microns.
+
+### Magnet Type
+- **Value**: None (IFE)
+- **Confidence**: high
+- **Citation**: Schema definition; First Light Fusion technology descriptions (no magnetic confinement of plasma)
+- **Notes**: The electromagnetic launcher contains magnets/coils for projectile acceleration, but these confine the projectile, not the plasma. NearStar's MTIF magnetizes the fuel itself, which would make their magnet classification different — another reason to consider a separate concept row.
+
+### Tritium Breeding
+- **Value**: Liquid Li blanket
+- **Confidence**: high
+- **Citation**: First Light Fusion power plant description: "1-meter-thick curtains of liquid lithium metal flowing within the chamber"; TBR of 1.8 stated
+- **Notes**: Liquid lithium pool reactor with dynamically structured lithium curtains. TBR 1.8 (highest announced by any fusion concept). Net tritium surplus of 25 kg/year at 333 MWe design point. Tritium self-sufficiency claimed in as little as one week. NearStar uses molten lead for first wall but has not specified a tritium breeding approach (they prefer D-D fuel).
+
+### Neutron Management
+- **Value**: Integrated blanket/shield
+- **Confidence**: high
+- **Citation**: First Light Fusion: "Neutrons do not reach vessel wall -> lifetime-of-plant vessel"; liquid lithium curtains serve as combined breeder/shield
+- **Notes**: 1-meter-thick flowing liquid lithium curtains absorb neutrons, breed tritium, capture heat, and protect reactor walls. The vessel never needs replacement. NearStar proposes molten lead for first wall neutron protection with conventional tungsten alloy materials.
+
+### Operation Mode
+- **Value**: Pulsed
+- **Confidence**: high
+- **Citation**: Baseline CSV; inherent to all IFE concepts
+- **Notes**: Discrete projectile shots separated by reload/recovery periods.
+
+### Repetition Rate
+- **Value**: Sub-Hz
+- **Confidence**: medium
+- **Citation**: First Light Fusion: "once every 30 seconds" (0.033 Hz) for 150 MW pilot; "once every 10 seconds" for 500 MW plant; "once every 90 seconds" also mentioned
+- **Notes**: Multiple conflicting figures in First Light sources (0.011-0.1 Hz range), all sub-Hz. This is unusually slow for IFE — enabled by high target gain (200-1000x claimed). NearStar claims 1 Hz repetition rate for their railgun, which would be classified as "~1 Hz" rather than "Sub-Hz" — but NearStar is arguably a different concept. The sub-Hz rate is for the pure projectile ICF approach as pursued by First Light.
+
+### Driver Technology
+- **Value**: Electromagnetic gun
+- **Confidence**: high
+- **Citation**: First Light Fusion Machine 3 description; schema controlled vocabulary
+- **Notes**: First Light achieved 6.5 km/s with Machine 3. Machine 4 (targeting 60 km/s, 100 MJ stored energy) was cancelled February 2025. For reference, NearStar uses a plasma armature railgun (10 km/s, 50 g projectiles, >1 MJ kinetic energy per shot) — a related but distinct driver technology.
+
+## Remaining Gaps
+
+Most columns are filled at high confidence thanks to First Light Fusion's extensive public disclosures about their original projectile approach and power plant design. Key uncertainties:
+
+- **Repetition rate**: Multiple conflicting figures from First Light (30s, 10s, 90s between shots). Medium confidence — the sub-Hz classification is secure but the exact target rate is unclear. Another iteration focused on First Light's technical papers or archived Machine 4 specifications might resolve this.
+- **Commercial viability**: The concept's primary champion (First Light Fusion) has pivoted away from pure projectile ICF. No active commercial pursuer remains. This is not a schema column but is important context for the differentiation table.
+- **NearStar classification**: NearStar Fusion's MTIF approach magnetizes fuel and prefers D-D — it may belong in a separate MIF concept row rather than under Projectile ICF. This is a taxonomy decision for upstream review.
+
+## Key Sources
+
+1. **First Light Fusion technology pages** — firstlightfusion.com (multiple pages), compiled in `iter-01/sources/first-light-fusion-technology.md`. Covers original projectile approach, FLARE pivot, power plant design, tritium breeding, and cost targets.
+2. **NearStar Fusion technology pages** — nearstarfusion.com, compiled in `iter-01/sources/nearstar-fusion-technology.md`. Covers MTIF approach, railgun driver, D-D fuel preference, and power plant modularity.
+3. **Additional sources cited in research**: newatlas.com, ipgroupplc.com, neimagazine.com, nextbigfuture.com, interestingengineering.com (First Light coverage); climateinsider.com, fox40.com, nsf.gov SBIR #2304408 (NearStar coverage).
+
+
+## Gaps to Fill
+
+The following columns need values. Focus your research on these:
+
+No obvious gaps — verify and strengthen existing values.
+
+## Output Format
+
+For EACH column in the schema (including ones already filled — confirm or update them), write:
+
+### [Column Name]
+- **Value**: [exact vocabulary value from schema]
+- **Confidence**: high | medium | low
+- **Citation**: [specific URL, paper reference, or reasoning basis]
+- **Notes**: [anything relevant — how you determined this, source disagreements, caveats, qualifiers not captured by the vocabulary value]
+
+Rules:
+- **high** confidence: value directly stated by an authoritative source (company website, peer-reviewed paper, official press release)
+- **medium** confidence: value inferred from the described approach and general domain knowledge (e.g., "stellarators use ECRH" is medium unless the specific company confirms it)
+- **low** confidence: value extrapolated from similar concepts or fragmentary information
+- If a column is structurally inapplicable, write `N/A` as the value with a one-line justification
+- If you searched and found nothing, write `Unknown` or `TBD` and explain what you tried
+
+After all columns, write a final section:
+
+## Remaining Gaps
+
+List any columns where:
+- You could not find a value (explain what sources you checked)
+- Your confidence is low (explain what would raise it)
+- You found conflicting information (summarize the conflict)
+- A specific source type (paper, patent, technical report) might resolve the gap
+
+## Sources Consulted
+
+List all URLs and documents you consulted during this research, even if they didn't yield useful information for the gaps. This helps avoid re-searching the same sources in future iterations.
