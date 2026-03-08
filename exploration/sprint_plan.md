@@ -23,11 +23,23 @@ A cited, controlled-vocabulary table covering all ~36+ fusion concepts across 12
 - 100% of N/A cells have structural justification
 - Every row is uniquely distinguishable (no two identical)
 
-### 1b. Minimum Discriminating Set
+### 1b+1c. Minimum Discriminating Set & N/A Density Analysis (Combined)
 
-### 1c. N/A Density Analysis
+A combined computational analysis of the Phase 1a table. No LLM calls — pure Python script consuming `table.csv`.
 
-**Known issue — disguised N/As in Column 9 (Magnet Type):** The 1a schema encodes "no magnets" as the value `None (IFE)` rather than `N/A`, suppressing the N/A count for 10+ IFE concepts. The same logical pattern ("upstream choice makes this dimension structurally inapplicable") is encoded as `N/A` in other columns (Tritium Breeding for aneutronic fuels, Repetition Rate for steady-state). Phase 1c must either reclassify `None (IFE)` as N/A before measurement, or run the analysis both ways (as-encoded vs. corrected) to show the sensitivity. `Self-confined` (2 cells) is borderline — Z-pinch has self-generated magnetic confinement (real answer), but MTF pneumatic has no magnets at all.
+**1b (Discriminating Set):** Find the minimum column subset that uniquely identifies all 38 concepts. Brute-force enumeration of all 2^12 = 4,096 column subsets, plus greedy ranking, per-column entropy, and confusion analysis (which concepts collapse when each column is removed).
+
+**1c (N/A Density):** Measure the context-sensitivity of the design space. Per-column, per-row, and per-block N/A rates. Block structure detection (do N/As cluster by confinement family or fuel?). Structural N/A chain tracing. This is the empirical test of the core hypothesis from `context/context_dependent_design_spaces.md`.
+
+**Data preparation:** Reclassify `None (IFE)` in Magnet Type (11 cells) as `N/A` — this is a disguised structural inapplicability. Original table preserved as frozen snapshot. `Self-confined` (3 cells: Z-pinch, MTF, DPF) kept as a real value with sensitivity noted.
+
+**Plan**: [`exploration/phase_1b/sprint_plan_1b.md`](phase_1b/sprint_plan_1b.md)
+
+**Exit criteria**:
+- All minimum discriminating sets enumerated exhaustively
+- N/A density computed with block structure (per-column, per-row, per-block)
+- Core hypothesis answered with evidence (flat table vs. context-dependent)
+- Implications for Phase 1d and Chunk 2 documented
 
 ### 1d. Qualitative Assessment
 How well does the data in the different rows capture the concept — e.g. what the technique is most sensitive to, the hard problems people are working on, etc.
