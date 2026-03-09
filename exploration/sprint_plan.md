@@ -50,12 +50,13 @@ v2 replaces the 2 confinement columns (Confinement Family, Confinement Concept) 
 **Results**: Minimum discriminating set went from 2 → 4 columns (near-ID problem eliminated). N/A density went from 9.6% → 36.7%, with a clean monotonic granularity progression (10.5% → 27.7% → 36.7%). Every N/A is structurally justified and aligns with family boundaries.
 
 **Plan**: [`exploration/phase_1b_v2/plan.md`](phase_1b_v2/plan.md)
+**Report**: [`exploration/phase_1b_v2/report.md`](phase_1b_v2/report.md)
 
 **Exit criteria**:
-- Confinement Concept replaced with family-specific columns (no near-ID column)
-- N/A density measured at multiple granularity levels
-- Granularity progression confirms context-dependence hypothesis
-- v1 → v2 comparison documented
+- Confinement Concept replaced with family-specific columns (no near-ID column) ✅
+- N/A density measured at multiple granularity levels ✅
+- Granularity progression confirms context-dependence hypothesis ✅
+- v1 → v2 comparison documented ✅
 
 ---
 
@@ -63,37 +64,34 @@ v2 replaces the 2 confinement columns (Confinement Family, Confinement Concept) 
 
 Phase 1b_v2 established that the v2 table (38 concepts × 18 columns) has proper discrimination (min discriminating set = 4 columns, no near-ID), structurally justified N/A at 36.7%, and a clean monotonic granularity progression confirming context-dependence. The quantitative structure is sound.
 
-Phase 1d asks: **is this a design space or a classification scheme?** The table describes *what* each concept chose, but does it capture *why*, and could it generate *new* viable concepts? Five tests probe this from different angles.
+Phase 1d asks: **is this a design space or a classification scheme?** The table describes *what* each concept chose, but does it capture *why*, and could it generate *new* viable concepts? Four tests probe this from different angles (Test 5 skipped — preempted by Test 4 findings).
 
 **Plan**: [`exploration/phase_1d/sprint_plan_1d.md`](phase_1d/sprint_plan_1d.md)
+**Report**: [`exploration/phase_1d/report.md`](phase_1d/report.md)
 
-#### Five Tests
+**Results**: The table is a classification scheme, not a design space. 0% coherence with unconditional random sampling; 23% with family-conditional sampling but mostly trivial variants. ~2 effective degrees of freedom (concept + fuel), not the 15+ the column count implies. The effective structure is a tree (Family → Concept → determined columns; Fuel → downstream cascade), not a Cartesian grid. Columns carry approach-level information but miss strategy-level differentiation (manufacturing thesis, cost thesis, engineering innovation). Recommends AND/OR graph with explicit constraints, quantitative parameters, and pattern cards for Chunk 2.
 
-1. **Vocabulary Completeness Audit** — For each column, is the controlled vocabulary exhaustive of physically plausible options, or just empirically observed from the 38-concept sample? Identifies open vs. closed vocabularies and missing candidates.
+#### Tests Completed
 
-2. **Generative Coherence** — Generate 30 random rows by sampling from the controlled vocabulary (with structural N/A rules applied). Score each for physical coherence and engineering plausibility. The coherence rate measures how much implicit constraint the table hides — low rates mean tightly coupled columns, confirming classification over design space.
+1. **Vocabulary Completeness Audit** — 9 closed, 8 open columns. Vocabulary shaped by commercial landscape (10 historical gaps, 7 lumped gaps, 4 theoretical). Axis conflation and family-dependent semantics identified as recurring structural problems.
 
-3. **Constraint Density Matrix** — Derived from Test 2 failures + systematic review. For each column pair, estimate the fraction of value combinations that are physically forbidden. Produces a coupling heat map showing which columns are genuinely independent dimensions vs. correlated choices.
+2. **Generative Coherence** — 0/30 coherent with unconditional sampling. Hard physics incompatibilities dominate (~60%). Three tightly coupled clusters identified: Confinement-Heating-Plasma, Fuel-Neutron-Energy, Driver-Hardware.
 
-4. **Blind Row — Design Thesis Recoverability** — Present 5 rows (stripped of name/company) and score on a 4-dimension rubric: physics thesis, hard problems, trade-off rationale, differentiation. Measures whether the table carries descriptive vs. explanatory information.
+3. **Constraint Density** (derived from Test 2) — Fuel × Neutron Management is the dominant coupling (20/30 failures). ~3-4 independent choice dimensions out of 15+ columns.
 
-5. **Concept Initiation Gap Analysis** — For 3 concepts across families, enumerate what additional information (scale parameters, performance targets, physics parameters, economic framing) a systems engineer would need to begin a pre-conceptual design. Identifies the gap between classification and design specification.
+4. **Blind Row Recoverability** — 37/40 (upper bound, LLM domain knowledge contamination). Approach-level thesis recoverable for distinctive concepts; within-family differentiation fails. All 5 assessors converge on same missing information categories: scale, performance targets, cost basis, engineering strategy.
 
-#### Deliverables
-
-- `exploration/phase_1d/report.md` — synthesis report covering all five tests
-- `exploration/phase_1d/generate_random_concepts.py` — random row generation script (Test 2)
-- Vocabulary completeness table, constraint density matrix, scored rubrics, gap analysis
+5. **Concept Initiation Gap Analysis** — Skipped. Test 4's information gap convergence across all 5 concepts already identified the common gap categories.
 
 #### Exit Criteria
 
-- All 18 columns assessed for vocabulary completeness (open/closed + missing candidates)
-- ≥30 random combinations assessed for coherence with failure reasons
-- Constraint density matrix identifies all moderately/strongly coupled column pairs
-- 5 concepts scored on the explanatory power rubric
-- 3 concepts analyzed for concept initiation gaps
-- Clear verdict: classification scheme vs. design space, with evidence
-- Recommendations for Chunk 2 informed by both quantitative (1b_v2) and qualitative (1d) evidence
+- All 18 columns assessed for vocabulary completeness (open/closed + missing candidates) ✅
+- ≥30 random combinations assessed for coherence with failure reasons ✅ (60 total: 30 unconditional + 30 family-conditional)
+- Constraint density matrix identifies all moderately/strongly coupled column pairs ✅
+- 5 concepts scored on the explanatory power rubric ✅
+- 3 concepts analyzed for concept initiation gaps — skipped (preempted by Test 4)
+- Clear verdict: classification scheme vs. design space, with evidence ✅
+- Recommendations for Chunk 2 informed by both quantitative (1b_v2) and qualitative (1d) evidence ✅
 
 ---
 
