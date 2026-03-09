@@ -61,48 +61,39 @@ v2 replaces the 2 confinement columns (Confinement Family, Confinement Concept) 
 
 ### 1d. Qualitative Assessment
 
-Phase 1b+1c established two quantitative findings:
-1. **N/A density is ~9%** — the table is structurally "almost flat" at the cell level
-2. **The columns are almost perfectly correlated** — removing any 9 of 12 CV columns collapses only 1 pair of concepts
+Phase 1b_v2 established that the v2 table (38 concepts × 18 columns) has proper discrimination (min discriminating set = 4 columns, no near-ID), structurally justified N/A at 36.7%, and a clean monotonic granularity progression confirming context-dependence. The quantitative structure is sound.
 
-But the N/A metric misses a key form of context-dependence: **vocabulary disjointness**. Confinement Concept values under MFE (Tokamak, Stellarator, FRC, ...) answer a fundamentally different question than values under IFE (Laser ICF, Projectile ICF, ...). This is context-dependence that doesn't produce N/A cells — it produces *different semantics in the same column*.
+Phase 1d asks: **is this a design space or a classification scheme?** The table describes *what* each concept chose, but does it capture *why*, and could it generate *new* viable concepts? Five tests probe this from different angles.
 
-Phase 1d asks the qualitative question these numbers point to: **is this a design space or a classification scheme?**
+**Plan**: [`exploration/phase_1d/sprint_plan_1d.md`](phase_1d/sprint_plan_1d.md)
 
-#### Two Tests
+#### Five Tests
 
-**Test 1: Generative Coherence — Can the table produce viable new concepts?**
+1. **Vocabulary Completeness Audit** — For each column, is the controlled vocabulary exhaustive of physically plausible options, or just empirically observed from the 38-concept sample? Identifies open vs. closed vocabularies and missing candidates.
 
-Generate 20 random rows by sampling from the v2 controlled vocabulary. Apply known N/A constraints (Class=Inertial → Magnet Type=N/A, etc.) but NO other filtering. For each generated row, assess:
-- **Physical coherence**: Are the column values mutually compatible?
-- **Engineering plausibility**: Could this combination be a real concept?
-- **Failure reason**: If incoherent, which column pair(s) conflict and why?
+2. **Generative Coherence** — Generate 30 random rows by sampling from the controlled vocabulary (with structural N/A rules applied). Score each for physical coherence and engineering plausibility. The coherence rate measures how much implicit constraint the table hides — low rates mean tightly coupled columns, confirming classification over design space.
 
-The coherence rate directly measures how much implicit constraint the table hides. If <10% of random rows are coherent, the columns are highly coupled and the table is a classification scheme, not a combinatorial design space. The failure reasons map the inter-column constraint structure that any richer representation (AND/OR graph, CCA) would need to encode.
+3. **Constraint Density Matrix** — Derived from Test 2 failures + systematic review. For each column pair, estimate the fraction of value combinations that are physically forbidden. Produces a coupling heat map showing which columns are genuinely independent dimensions vs. correlated choices.
 
-Method: Python script generates random rows; LLM assesses coherence. No web search needed — assessment is based on physics reasoning.
+4. **Blind Row — Design Thesis Recoverability** — Present 5 rows (stripped of name/company) and score on a 4-dimension rubric: physics thesis, hard problems, trade-off rationale, differentiation. Measures whether the table carries descriptive vs. explanatory information.
 
-**Test 2: Explanatory Power — The "blind row" test**
-
-Present 5 table rows (stripped of concept name and company) and ask: what is this concept's thesis, what are its hard problems, and what trade-offs motivated these choices? Score how much is recoverable from the columns alone vs. requiring external domain knowledge.
-
-This is lighter-weight than Test 1 — a structured brainstorming exercise, not a quantitative analysis. Its value is in identifying *what information the table doesn't carry* (motivations, sensitivities, key parameters, risk profile) that matters for downstream modeling.
+5. **Concept Initiation Gap Analysis** — For 3 concepts across families, enumerate what additional information (scale parameters, performance targets, physics parameters, economic framing) a systems engineer would need to begin a pre-conceptual design. Identifies the gap between classification and design specification.
 
 #### Deliverables
 
-A short analysis report (`exploration/phase_1d/report.md`) covering:
-1. Random-combination coherence results (20 samples) with failure analysis
-2. Implicit constraint map derived from failure reasons
-3. Blind-row assessment for 5 concepts
-4. Synthesis: what the table is, what it isn't, and what Chunk 2 should build
+- `exploration/phase_1d/report.md` — synthesis report covering all five tests
+- `exploration/phase_1d/generate_random_concepts.py` — random row generation script (Test 2)
+- Vocabulary completeness table, constraint density matrix, scored rubrics, gap analysis
 
 #### Exit Criteria
 
-- At least 20 random combinations assessed for coherence
-- Coherence rate computed with confidence
-- Clear answer to: "Is this a design space or a classification scheme?"
-- Inter-column constraint structure documented (which pairs conflict and why)
-- Recommendations for Chunk 2 informed by both quantitative (1b+1c) and qualitative (1d) evidence
+- All 18 columns assessed for vocabulary completeness (open/closed + missing candidates)
+- ≥30 random combinations assessed for coherence with failure reasons
+- Constraint density matrix identifies all moderately/strongly coupled column pairs
+- 5 concepts scored on the explanatory power rubric
+- 3 concepts analyzed for concept initiation gaps
+- Clear verdict: classification scheme vs. design space, with evidence
+- Recommendations for Chunk 2 informed by both quantitative (1b_v2) and qualitative (1d) evidence
 
 ---
 

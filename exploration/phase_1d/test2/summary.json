@@ -1,0 +1,165 @@
+{
+  "stats": {
+    "total_assessed": 30,
+    "errored": 0,
+    "coherent": 0,
+    "plausible": 0,
+    "coherence_rate": 0.0,
+    "plausibility_rate": 0.0,
+    "top_constraint_pairs": [
+      {
+        "pair": "Fuel \u00d7 Neutron Management",
+        "count": 20,
+        "example_reasons": [
+          "D-T fusion produces abundant 14.1 MeV neutrons (~80% of energy output). 'Reduced (D-He3)' neutron management is designed for fuels with minimal neutron production. D-T requires full neutron shielding, moderation, and breeding blanket infrastructure, not a reduced neutron management strategy.",
+          "D-D primary fusion produces 2.45 MeV neutrons, not 14 MeV neutrons. The 14 MeV specification is for D-T reactions. While secondary D-T reactions can occur in a D-D plasma (from bred tritium), the neutron management should be labeled for the primary 2.45 MeV spectrum, not 14 MeV."
+        ]
+      },
+      {
+        "pair": "Driver Technology \u00d7 IFE Driver",
+        "count": 11,
+        "example_reasons": [
+          "An HTS dipole coil is a magnetic confinement device, not an acoustic driver. Acoustic drivers for IFE would involve pressure wave generators, pistons, or converging shock systems. A space-deployable magnetic coil has no relation to acoustic target compression.",
+          "HTS magnets are magnetic confinement hardware. An acoustic IFE driver would use pistons, pneumatic systems, or acoustic resonators \u2014 not 20 T superconducting magnets. These are from entirely different engineering domains."
+        ]
+      },
+      {
+        "pair": "Driver Technology \u00d7 Magnet Type",
+        "count": 8,
+        "example_reasons": [
+          "Self-confined means the plasma's own currents provide confinement with no external magnets. Stellarator coils are external magnets. These are mutually exclusive.",
+          "REBCO HTS is a superconducting magnet technology, directly contradicting 'Self-confined' which implies no external magnet system. These are mutually exclusive."
+        ]
+      },
+      {
+        "pair": "IFE Driver \u00d7 Primary Heating",
+        "count": 7,
+        "example_reasons": [
+          "An acoustic-driven IFE concept derives its target compression and heating from acoustic/pressure waves, not from laser pulses. These are fundamentally different driver mechanisms \u2014 pairing them is contradictory unless the laser is a separate ignition stage, but that would make it a hybrid driver concept, not purely acoustic.",
+          "An acoustic-driven IFE concept should heat/compress fuel via acoustic or mechanical pressure waves. Ultrashort-pulse laser heating is a completely different energy delivery mechanism incompatible with an acoustic driver architecture."
+        ]
+      },
+      {
+        "pair": "Confinement Family \u00d7 Primary Heating",
+        "count": 7,
+        "example_reasons": [
+          "Heavy ion beams are IFE drivers designed to deposit energy in small inertial targets. MIF heating typically comes from compression work (adiabatic or shock heating) or neutral beam injection. Heavy ion beams are not used in any MIF scheme.",
+          "NBI requires a magnetically confined plasma with sufficient density-confinement-time product for beam stopping and thermalization (typically \u03c4 > 10 ms). MIF target plasmas exist for microseconds to milliseconds before compression and are formed by plasma injectors or FRC merging, not sustained beam heating. NBI is an MFE heating method incompatible with the MIF plasma lifecycle."
+        ]
+      },
+      {
+        "pair": "Confinement Family \u00d7 Plasma State",
+        "count": 6,
+        "example_reasons": [
+          "IFE operates via discrete micro-explosions \u2014 the plasma exists only transiently during each pulse (microseconds to nanoseconds). A 'Sustained' plasma state implies continuous confinement, which is an MFE characteristic. IFE plasma states should be 'Compressed' or 'Transient'.",
+          "Pinch plasma states occur in Z-pinch, theta-pinch, or plasma focus devices where current-driven magnetic pressure compresses plasma. IFE concepts produce compressed or transient plasma states, not pinch states. Pinch belongs to Non-Standard or MIF families."
+        ]
+      },
+      {
+        "pair": "Non-Standard Mechanism \u00d7 Primary Heating",
+        "count": 6,
+        "example_reasons": [
+          "Electrostatic confinement uses electric fields to confine and accelerate ions. Magnetic compression is a heating method associated with magnetic confinement (e.g., theta pinch, FRC compression). An electrostatic device has no magnetic topology to compress \u2014 these are incompatible confinement/heating paradigms.",
+          "Plasma focus heating comes from electromagnetic compression (J\u00d7B forces from electrode discharge). Acoustic implosion is a sonofusion/cavitation mechanism with no relation to plasma focus physics."
+        ]
+      },
+      {
+        "pair": "Magnet Type \u00d7 Non-Standard Mechanism",
+        "count": 5,
+        "example_reasons": [
+          "A levitated HTS dipole coil implies dipole magnetic confinement (like MIT's LDX), which is fundamentally a magnetic confinement concept, not electrostatic. Electrostatic devices like fusors and Polywells do not use levitated superconducting dipoles for confinement.",
+          "Plasma focus devices use coaxial electrodes and self-generated magnetic fields, not external stellarator-geometry superconducting magnets. These are completely different confinement paradigms."
+        ]
+      },
+      {
+        "pair": "Operation Mode \u00d7 Primary Heating",
+        "count": 5,
+        "example_reasons": [
+          "Magnetic compression heating requires cyclic ramp-up of fields, which is fundamentally pulsed. Quasi-steady operation is incompatible with compression-based heating as the primary mechanism.",
+          "Pulsed power implosion is inherently pulsed \u2014 each shot compresses and heats plasma in a discrete event. Quasi-steady operation would require extremely high repetition rates to approximate continuous output, yet Repetition Rate is N/A. MIF concepts are fundamentally pulsed systems."
+        ]
+      },
+      {
+        "pair": "Confinement Family \u00d7 Operation Mode",
+        "count": 5,
+        "example_reasons": [
+          "IFE is inherently pulsed \u2014 targets are compressed, burn for nanoseconds to microseconds, then a new target is introduced. Quasi-steady operation implies sustained plasma on long timescales, which contradicts inertial confinement physics.",
+          "IFE is inherently pulsed \u2014 discrete targets are injected, compressed, and burned in individual micro-explosions. Steady-state operation is physically impossible for inertial confinement. All IFE concepts require a repetition rate (typically 5-15 Hz)."
+        ]
+      },
+      {
+        "pair": "Energy Capture \u00d7 Fuel",
+        "count": 4,
+        "example_reasons": [
+          "D-T releases ~80% of fusion energy as 14.1 MeV neutrons, which cannot be captured by inductive direct conversion. Direct conversion methods work for charged particle energy, which is only ~20% of D-T output. A D-T concept needs thermal conversion (steam cycle) via a neutron-absorbing blanket as its primary energy capture.",
+          "D-He3 fusion produces mostly charged particles (14.7 MeV protons). The entire rationale for choosing D-He3 over D-T is enabling direct energy conversion of charged products at higher efficiency. Using thermal/steam capture negates this advantage while retaining D-He3's far more demanding ignition requirements (~6x higher temperature than D-T)."
+        ]
+      },
+      {
+        "pair": "Driver Technology \u00d7 Non-Standard Mechanism",
+        "count": 4,
+        "example_reasons": [
+          "The driver technology describes a levitated dipole system (magnetic confinement), which contradicts the electrostatic confinement classification. This driver belongs to a dipole MFE concept.",
+          "DPSSL is a laser driver technology for inertial fusion energy targets. Electrostatic confinement devices use electric fields (and sometimes magnetic cusps) to confine ions \u2014 they have no targets and no use for laser beamlines. These belong to completely different confinement paradigms."
+        ]
+      },
+      {
+        "pair": "Operation Mode \u00d7 Plasma State",
+        "count": 4,
+        "example_reasons": [
+          "Steady-state operation implies continuous plasma maintenance, but a transient plasma state means the plasma exists only briefly. A steady-state device should have a sustained, burning, or confined plasma state, not a transient one.",
+          "A sustained plasma state implies continuous burn maintenance, which directly contradicts pulsed operation at ~1 Hz. Pulsed systems have transient or compressed plasma states, not sustained ones."
+        ]
+      },
+      {
+        "pair": "Driver Technology \u00d7 MIF Method",
+        "count": 4,
+        "example_reasons": [
+          "Stellarator coils create 3D twisted magnetic fields for steady-state MFE confinement. FRC compression uses axially converging magnetic mirrors, liners, or imploding conductors \u2014 fundamentally different hardware with no role for stellarator-type coils.",
+          "Magnetized target fusion requires a compression driver (mechanical pistons, plasma jets, liner implosion, or pulsed-power Z-pinch) to compress a pre-magnetized plasma. A femtosecond laser illuminating nanostructured semiconductor targets is an IFE energy-coupling scheme (laser-matter interaction for hot-electron generation and ignition), not a volumetric compression mechanism. These are incompatible driver paradigms."
+        ]
+      },
+      {
+        "pair": "Operation Mode \u00d7 Repetition Rate",
+        "count": 4,
+        "example_reasons": [
+          "If this were corrected to pulsed IFE, it would need a repetition rate. As stated, steady-state with N/A rep rate is internally consistent but incompatible with the IFE confinement family.",
+          "A pulsed driver (capacitor-bank EM coils) operating in quasi-steady mode requires a defined repetition rate to produce near-continuous power output. Having no repetition rate while claiming quasi-steady operation is self-contradictory for a pulsed system."
+        ]
+      }
+    ],
+    "novelty_distribution": {
+      "novel": 29,
+      "variant": 1
+    },
+    "family_distribution": {
+      "IFE": 11,
+      "Non-Standard": 6,
+      "MIF": 6,
+      "MFE": 7
+    },
+    "family_coherence": {
+      "IFE": {
+        "count": 11,
+        "coherent": 0,
+        "rate": 0.0
+      },
+      "Non-Standard": {
+        "count": 6,
+        "coherent": 0,
+        "rate": 0.0
+      },
+      "MIF": {
+        "count": 6,
+        "coherent": 0,
+        "rate": 0.0
+      },
+      "MFE": {
+        "count": 7,
+        "coherent": 0,
+        "rate": 0.0
+      }
+    }
+  },
+  "synthesis": "## Qualitative Synthesis: Fusion Concept Morphological Table Coherence Test\n\n### 1. Constraint Density Matrix\n\nPairs with observed coupling, grouped by strength. Based on failure frequency across 30 random concepts and the physics severity of the constraints.\n\n**Strong coupling** (most value combinations forbidden \u2014 these columns are essentially correlated):\n\n| Column A | Column B | Failures | Nature |\n|---|---|---|---|\n| Fuel | Neutron Management | 20/30 | Each fuel has a specific neutron spectrum; management must match |\n| Driver Technology | IFE Driver | 11/30 | Driver hardware must implement the stated driver mechanism |\n| Driver Technology | Magnet Type | 8/30 | Hardware must be consistent with stated magnet category |\n| Confinement Family | Primary Heating | 7/30 | MFE/IFE/MIF each admit different heating physics |\n| Confinement Family | Plasma State | 6/30 | IFE\u2192transient/compressed, MFE\u2192sustained/burning, MIF\u2192compressed |\n| Confinement Family | Operation Mode | 5/30 | IFE\u2192pulsed, MFE\u2192steady/quasi-steady, MIF\u2192pulsed |\n| IFE Driver | Primary Heating | 7/30 | The driver *is* the heating mechanism in IFE |\n| Non-Standard Mechanism | Primary Heating | 6/30 | Each mechanism implies its own heating physics |\n| Magnet Type | Non-Standard Mechanism | 5/30 | Electrostatic/plasma-focus don't use external magnets |\n| Operation Mode | Primary Heating | 5/30 | Pulsed heating \u2192 pulsed operation; continuous heating \u2192 steady-state |\n| Operation Mode | Plasma State | ~5 | Steady-state\u2194sustained; pulsed\u2194transient/compressed |\n\n**Moderate coupling** (some combinations forbidden):\n\n| Column A | Column B | Nature |\n|---|---|---|\n| Fuel | Energy Capture | D-He3/p-B11 strongly prefer direct conversion; D-T needs thermal |\n| Fuel | Tritium Breeding | D-T requires blanket breeding; D-D/D-He3/p-B11 don't |\n| MFE Topology | Driver Technology | Mirror coils \u2260 stellarator coils \u2260 tokamak coils |\n| MFE Topology | Magnet Type | Topology constrains coil geometry and type |\n| MIF Method | Operation Mode | All MIF methods are pulsed |\n| MIF Method | Driver Technology | Each MIF method requires specific compression hardware |\n| Confinement Family | Repetition Rate | IFE/MIF require rep rate; MFE typically N/A |\n| Fuel | MFE Topology | p-B11 requires extreme confinement quality, eliminating mirrors |\n\n**Weak coupling** (edge cases, soft constraints):\n\n| Column A | Column B | Nature |\n|---|---|---|\n| Fuel | Laser Approach | D-He3/p-B11 ignition via laser is implausible but not forbidden |\n| Energy Capture | Magnet Type | Inductive capture needs magnetic flux; minor constraint |\n| Neutron Management | Tritium Breeding | Breeding blankets need neutrons; reduced management conflicts |\n\n### 2. Independent vs. Coupled Dimensions\n\n**Genuinely independent dimensions** (can be varied freely without breaking coherence):\n\nAlmost none. The only candidates for near-independence are:\n\n- **Scale/Power level** (if it were a column) \u2014 largely decoupled from physics choices\n- **Repetition Rate** *within* a family \u2014 once you know it's pulsed IFE, the exact Hz is a free parameter\n- **Specific material choices** within a magnet type \u2014 REBCO vs YBCO vs Bi-2212 are interchangeable\n\n**Tightly coupled clusters** (must be selected together):\n\n1. **Confinement-Heating-Plasma cluster**: Confinement Family \u2194 Primary Heating \u2194 Plasma State \u2194 Operation Mode. These four columns are so tightly correlated that selecting one constrains the others to a small set. IFE forces pulsed/transient/driver-is-heater. MFE forces sustained/steady-state/RF-or-NBI. MIF forces pulsed/compressed/compression-heating.\n\n2. **Fuel-Neutron-Energy cluster**: Fuel \u2194 Neutron Management \u2194 Tritium Breeding \u2194 Energy Capture. The fuel choice cascades deterministically: D-T \u2192 heavy shielding + breeding blanket + thermal capture. p-B11 \u2192 minimal shielding + no breeding + direct conversion. These aren't independent design choices; they're consequences of the fuel selection.\n\n3. **Driver-Hardware cluster**: Driver Technology \u2194 Magnet Type \u2194 IFE Driver (or MIF Method or Non-Standard Mechanism). The hardware must implement the stated mechanism. A \"laser driver\" column paired with \"HTS stellarator coils\" hardware is nonsensical. These columns describe the same physical system at different abstraction levels.\n\n4. **Topology-Magnet cluster** (MFE only): MFE Topology \u2194 Magnet Type \u2194 Driver Technology. Tokamak/stellarator/mirror each require specific coil geometries.\n\n**Bottom line**: Of the ~15+ columns in the table, there are roughly **3-4 independent choice dimensions**, not 15+. The columns encode correlated observations of a few underlying decisions.\n\n### 3. Failure Pattern Analysis\n\nDominant failure types, in order:\n\n**Physics incompatibilities dominate (~60% of failures).** These are hard constraints where the values cannot coexist:\n- IFE + sustained plasma (inertial confinement is transient by definition)\n- Electrostatic mechanism + magnetic compression heating (different confinement universes)\n- Muon catalysis + p-B11 (muons only catalyze light isotope fusion)\n- D-T fuel + aneutronic neutron management (D-T *is* neutronic)\n- Acoustic driver + laser heating (mutually exclusive energy delivery)\n\n**Engineering mismatches are second (~25%).** The values describe hardware from incompatible paradigms:\n- Stellarator coils in a mirror machine\n- NBI heating for an IFE target (no plasma to inject into)\n- HTS dipole coil as an acoustic driver\n- Projectile impact heating in a tokamak\n\n**Coherence gaps are rare (~15%).** These are \"soft\" failures where the combination is purposeless rather than forbidden:\n- D-He3 fuel + thermal steam capture (works but defeats the purpose of choosing D-He3)\n- p-B11 + integrated blanket/shield (works but massively over-engineered)\n- D-D burning plasma (not forbidden, but no device can achieve it)\n\nThe dominance of hard physics incompatibilities \u2014 not edge-case engineering concerns \u2014 confirms that the columns encode deeply correlated physical parameters, not independent design choices.\n\n### 4. Novel Coherent Concepts\n\n**None.** Zero of 30 random concepts achieved coherence. The single \"variant\" (#1, which was still incoherent) simply happened to sample values close to an existing concept but still drew incompatible combinations.\n\nThere are no novel coherent concepts to evaluate. This is itself the most important finding: the design space is so constrained that random sampling across the full vocabulary *never* produces a viable concept. The probability of randomly generating a coherent concept from this table is effectively zero.\n\n### 5. Verdict\n\n**This is a classification scheme, not a design space.**\n\nThe evidence is unambiguous:\n\n| Indicator | Design Space | Classification Scheme | This Table |\n|---|---|---|---|\n| Coherence rate | >50% | <20% | **0%** |\n| Independent dimensions | Most columns independent | Most columns coupled | **3-4 of ~15+** |\n| Failure mode | Engineering trade-offs | Physics impossibilities | **Hard physics** |\n| Random generation | Usually viable concepts | Usually nonsense | **Always nonsense** |\n\nThe morphological table captures **how existing concepts are described** \u2014 their observable properties \u2014 not **what design choices are available**. The columns are correlated observations of a few deep choices (confinement approach, fuel, scale), not independent knobs that can be turned freely.\n\n**Implications for richer representation:**\n\n1. **AND/OR graph is the right next step.** The table should be restructured as a hierarchical decision tree where selecting a confinement family immediately constrains heating, plasma state, operation mode, and driver type. Each branch point narrows the remaining choices \u2014 this is AND/OR structure, not a flat Cartesian product.\n\n2. **Pattern cards per archetype.** The real design space has ~5-8 archetypes (tokamak, stellarator, mirror, laser-IFE, heavy-ion IFE, magnetized-target MIF, Z-pinch, electrostatic), each with a small number of genuine free parameters (scale, specific materials, fuel within a feasible subset, engineering trade-offs). Pattern cards should capture each archetype's *fixed* choices and *free* parameters.\n\n3. **The Cartesian product is misleading.** The current table implies a combinatorial space of thousands of concepts. The actual viable space contains ~36 known concepts and perhaps a few dozen plausible undiscovered variants. The table's apparent dimensionality vastly overstates the true degrees of freedom. Any generative use of this table needs pre-filtered compatibility constraints \u2014 or better, replacement with a structure that makes the constraints explicit.\n"
+}

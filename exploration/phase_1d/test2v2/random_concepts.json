@@ -1,0 +1,680 @@
+{
+  "seed": 42,
+  "count": 30,
+  "exact_matches": 0,
+  "table": "/home/reid/1cfe/fusion-tea/exploration/phase_1b/table_corrected.csv",
+  "method": "family-conditional sampling",
+  "description": "Confinement Concept sampled uniformly from unique concept types. Non-confinement columns sampled from family-conditional vocabularies (only values observed for that family in the real table). Driver Technology excluded (free-text, too concept-specific). Tests within-family design freedom, not cross-family compatibility.",
+  "family_distribution": {
+    "Electrostatic": 1,
+    "IFE": 10,
+    "MFE": 11,
+    "Other": 6,
+    "MIF": 2
+  },
+  "family_vocabularies": {
+    "MFE": {
+      "Fuel": [
+        "D-D",
+        "D-He3",
+        "D-T",
+        "p-B11"
+      ],
+      "Primary Heating": [
+        "NBI",
+        "Ohmic (self-pinch)",
+        "RF (ECRH)",
+        "RF (ICRH)",
+        "RF + NBI"
+      ],
+      "Energy Capture": [
+        "Direct (charged particle)",
+        "Hybrid (thermal + direct)",
+        "Thermal (sCO2)",
+        "Thermal (steam)",
+        "Thermal (unspecified)"
+      ],
+      "Plasma State": [
+        "Burning",
+        "Confined",
+        "Pinch",
+        "Sustained"
+      ],
+      "Magnet Type": [
+        "HTS (3D stellarator)",
+        "HTS (levitated dipole)",
+        "HTS (planar array)",
+        "HTS (wound)",
+        "LTS+HTS",
+        "Resistive",
+        "Self-confined"
+      ],
+      "Tritium Breeding": [
+        "FLiBe blanket",
+        "Li blanket (unspecified)",
+        "LiPb blanket",
+        "Liquid Li blanket",
+        "Liquid metal wall",
+        "N/A (no tritium in fuel cycle)",
+        "Solid ceramic breeder (HCPB)"
+      ],
+      "Neutron Management": [
+        "Heavy shielding (14 MeV)",
+        "Heavy shielding (D-D)",
+        "Integrated blanket/shield",
+        "Minimal (aneutronic)",
+        "Reduced (D-He3)"
+      ],
+      "Operation Mode": [
+        "Pulsed",
+        "Quasi-steady",
+        "Steady-state"
+      ],
+      "Repetition Rate": [
+        "~10 Hz"
+      ]
+    },
+    "MIF": {
+      "Fuel": [
+        "D-He3",
+        "D-T"
+      ],
+      "Primary Heating": [
+        "Magnetic compression",
+        "Mechanical compression",
+        "Pulsed power implosion"
+      ],
+      "Energy Capture": [
+        "Direct (inductive)",
+        "Thermal (steam)",
+        "Thermal (unspecified)"
+      ],
+      "Plasma State": [
+        "Compressed",
+        "Transient"
+      ],
+      "Magnet Type": [
+        "Pulsed EM",
+        "Self-confined"
+      ],
+      "Tritium Breeding": [
+        "Liquid metal wall",
+        "Self-bred (DD side)"
+      ],
+      "Neutron Management": [
+        "Integrated blanket/shield",
+        "Reduced (D-He3)"
+      ],
+      "Operation Mode": [
+        "Pulsed"
+      ],
+      "Repetition Rate": [
+        "Sub-Hz",
+        "~1 Hz"
+      ]
+    },
+    "IFE": {
+      "Fuel": [
+        "D-D",
+        "D-T",
+        "p-B11"
+      ],
+      "Primary Heating": [
+        "Heavy ion beam",
+        "Laser (direct drive)",
+        "Laser (fast ignition)",
+        "Laser (indirect drive)",
+        "Laser (ultrashort pulse)",
+        "Projectile impact"
+      ],
+      "Energy Capture": [
+        "Hybrid (thermal + direct)",
+        "Thermal (steam)",
+        "Thermal (unspecified)"
+      ],
+      "Plasma State": [
+        "Compressed"
+      ],
+      "Magnet Type": [],
+      "Tritium Breeding": [
+        "FLiBe blanket",
+        "Li blanket (unspecified)",
+        "LiPb blanket",
+        "Liquid Li blanket",
+        "N/A (no tritium in fuel cycle)"
+      ],
+      "Neutron Management": [
+        "Heavy shielding (D-D)",
+        "Integrated blanket/shield",
+        "Minimal (aneutronic)"
+      ],
+      "Operation Mode": [
+        "Pulsed"
+      ],
+      "Repetition Rate": [
+        "Sub-Hz",
+        "kHz",
+        "~1 Hz",
+        "~10 Hz"
+      ]
+    },
+    "Other": {
+      "Fuel": [
+        "D-D",
+        "D-T",
+        "p-B11"
+      ],
+      "Primary Heating": [
+        "Acoustic implosion",
+        "Electromagnetic pinch (DPF)",
+        "Muon catalysis"
+      ],
+      "Energy Capture": [
+        "Direct (charged particle)",
+        "Thermal (unspecified)"
+      ],
+      "Plasma State": [
+        "Compressed",
+        "Pinch"
+      ],
+      "Magnet Type": [
+        "Self-confined"
+      ],
+      "Tritium Breeding": [
+        "N/A (no tritium in fuel cycle)"
+      ],
+      "Neutron Management": [
+        "Heavy shielding (14 MeV)",
+        "Heavy shielding (D-D)",
+        "Minimal (aneutronic)"
+      ],
+      "Operation Mode": [
+        "Pulsed",
+        "Steady-state"
+      ],
+      "Repetition Rate": [
+        "High (>10 Hz)",
+        "kHz"
+      ]
+    },
+    "Electrostatic": {
+      "Fuel": [
+        "D-T"
+      ],
+      "Primary Heating": [
+        "Electrostatic acceleration"
+      ],
+      "Energy Capture": [
+        "Thermal (unspecified)"
+      ],
+      "Plasma State": [
+        "Confined",
+        "Non-burning"
+      ],
+      "Magnet Type": [
+        "Electrostatic",
+        "Resistive"
+      ],
+      "Tritium Breeding": [],
+      "Neutron Management": [
+        "Heavy shielding (14 MeV)"
+      ],
+      "Operation Mode": [
+        "Steady-state"
+      ],
+      "Repetition Rate": []
+    }
+  },
+  "concepts": [
+    {
+      "id": 1,
+      "exact_match": false,
+      "Confinement Family": "Electrostatic",
+      "Confinement Concept": "Polywell",
+      "Fuel": "D-T",
+      "Primary Heating": "Electrostatic acceleration",
+      "Energy Capture": "Thermal (unspecified)",
+      "Plasma State": "Confined",
+      "Magnet Type": "Electrostatic",
+      "Tritium Breeding": "N/A",
+      "Neutron Management": "Heavy shielding (14 MeV)",
+      "Operation Mode": "Steady-state",
+      "Repetition Rate": "N/A"
+    },
+    {
+      "id": 2,
+      "exact_match": false,
+      "Confinement Family": "IFE",
+      "Confinement Concept": "Projectile ICF",
+      "Fuel": "p-B11",
+      "Primary Heating": "Laser (ultrashort pulse)",
+      "Energy Capture": "Thermal (steam)",
+      "Plasma State": "Compressed",
+      "Magnet Type": "N/A",
+      "Tritium Breeding": "N/A",
+      "Neutron Management": "Heavy shielding (D-D)",
+      "Operation Mode": "Pulsed",
+      "Repetition Rate": "Sub-Hz"
+    },
+    {
+      "id": 3,
+      "exact_match": false,
+      "Confinement Family": "IFE",
+      "Confinement Concept": "Laser ICF (direct drive)",
+      "Fuel": "D-D",
+      "Primary Heating": "Laser (ultrashort pulse)",
+      "Energy Capture": "Hybrid (thermal + direct)",
+      "Plasma State": "Compressed",
+      "Magnet Type": "N/A",
+      "Tritium Breeding": "N/A",
+      "Neutron Management": "Heavy shielding (D-D)",
+      "Operation Mode": "Pulsed",
+      "Repetition Rate": "~10 Hz"
+    },
+    {
+      "id": 4,
+      "exact_match": false,
+      "Confinement Family": "MFE",
+      "Confinement Concept": "Negative triangularity tokamak",
+      "Fuel": "D-T",
+      "Primary Heating": "Ohmic (self-pinch)",
+      "Energy Capture": "Thermal (steam)",
+      "Plasma State": "Pinch",
+      "Magnet Type": "HTS (planar array)",
+      "Tritium Breeding": "Li blanket (unspecified)",
+      "Neutron Management": "Heavy shielding (D-D)",
+      "Operation Mode": "Pulsed",
+      "Repetition Rate": "~10 Hz"
+    },
+    {
+      "id": 5,
+      "exact_match": false,
+      "Confinement Family": "MFE",
+      "Confinement Concept": "FRC (beam-driven)",
+      "Fuel": "D-D",
+      "Primary Heating": "NBI",
+      "Energy Capture": "Thermal (sCO2)",
+      "Plasma State": "Pinch",
+      "Magnet Type": "LTS+HTS",
+      "Tritium Breeding": "N/A",
+      "Neutron Management": "Integrated blanket/shield",
+      "Operation Mode": "Quasi-steady",
+      "Repetition Rate": "N/A"
+    },
+    {
+      "id": 6,
+      "exact_match": false,
+      "Confinement Family": "MFE",
+      "Confinement Concept": "Stellarator (modular)",
+      "Fuel": "D-D",
+      "Primary Heating": "RF (ICRH)",
+      "Energy Capture": "Thermal (unspecified)",
+      "Plasma State": "Burning",
+      "Magnet Type": "HTS (wound)",
+      "Tritium Breeding": "N/A",
+      "Neutron Management": "Heavy shielding (14 MeV)",
+      "Operation Mode": "Steady-state",
+      "Repetition Rate": "N/A"
+    },
+    {
+      "id": 7,
+      "exact_match": false,
+      "Confinement Family": "Other",
+      "Confinement Concept": "Muon-catalyzed fusion",
+      "Fuel": "D-T",
+      "Primary Heating": "Muon catalysis",
+      "Energy Capture": "Direct (charged particle)",
+      "Plasma State": "Compressed",
+      "Magnet Type": "Self-confined",
+      "Tritium Breeding": "N/A (no tritium in fuel cycle)",
+      "Neutron Management": "Heavy shielding (D-D)",
+      "Operation Mode": "Steady-state",
+      "Repetition Rate": "N/A"
+    },
+    {
+      "id": 8,
+      "exact_match": false,
+      "Confinement Family": "Other",
+      "Confinement Concept": "Dense plasma focus",
+      "Fuel": "D-D",
+      "Primary Heating": "Electromagnetic pinch (DPF)",
+      "Energy Capture": "Thermal (unspecified)",
+      "Plasma State": "Pinch",
+      "Magnet Type": "Self-confined",
+      "Tritium Breeding": "N/A",
+      "Neutron Management": "Heavy shielding (14 MeV)",
+      "Operation Mode": "Pulsed",
+      "Repetition Rate": "kHz"
+    },
+    {
+      "id": 9,
+      "exact_match": false,
+      "Confinement Family": "IFE",
+      "Confinement Concept": "Laser ICF (ultrashort pulse)",
+      "Fuel": "D-D",
+      "Primary Heating": "Projectile impact",
+      "Energy Capture": "Thermal (unspecified)",
+      "Plasma State": "Compressed",
+      "Magnet Type": "N/A",
+      "Tritium Breeding": "N/A",
+      "Neutron Management": "Minimal (aneutronic)",
+      "Operation Mode": "Pulsed",
+      "Repetition Rate": "kHz"
+    },
+    {
+      "id": 10,
+      "exact_match": false,
+      "Confinement Family": "Other",
+      "Confinement Concept": "Muon-catalyzed fusion",
+      "Fuel": "p-B11",
+      "Primary Heating": "Acoustic implosion",
+      "Energy Capture": "Thermal (unspecified)",
+      "Plasma State": "Pinch",
+      "Magnet Type": "Self-confined",
+      "Tritium Breeding": "N/A",
+      "Neutron Management": "Minimal (aneutronic)",
+      "Operation Mode": "Pulsed",
+      "Repetition Rate": "High (>10 Hz)"
+    },
+    {
+      "id": 11,
+      "exact_match": false,
+      "Confinement Family": "IFE",
+      "Confinement Concept": "Projectile ICF",
+      "Fuel": "D-T",
+      "Primary Heating": "Laser (direct drive)",
+      "Energy Capture": "Hybrid (thermal + direct)",
+      "Plasma State": "Compressed",
+      "Magnet Type": "N/A",
+      "Tritium Breeding": "Liquid Li blanket",
+      "Neutron Management": "Integrated blanket/shield",
+      "Operation Mode": "Pulsed",
+      "Repetition Rate": "Sub-Hz"
+    },
+    {
+      "id": 12,
+      "exact_match": false,
+      "Confinement Family": "IFE",
+      "Confinement Concept": "Laser ICF (direct drive)",
+      "Fuel": "p-B11",
+      "Primary Heating": "Laser (direct drive)",
+      "Energy Capture": "Thermal (unspecified)",
+      "Plasma State": "Compressed",
+      "Magnet Type": "N/A",
+      "Tritium Breeding": "N/A",
+      "Neutron Management": "Integrated blanket/shield",
+      "Operation Mode": "Pulsed",
+      "Repetition Rate": "~10 Hz"
+    },
+    {
+      "id": 13,
+      "exact_match": false,
+      "Confinement Family": "MIF",
+      "Confinement Concept": "FRC (pulsed compression)",
+      "Fuel": "D-T",
+      "Primary Heating": "Magnetic compression",
+      "Energy Capture": "Thermal (unspecified)",
+      "Plasma State": "Transient",
+      "Magnet Type": "Self-confined",
+      "Tritium Breeding": "Self-bred (DD side)",
+      "Neutron Management": "Reduced (D-He3)",
+      "Operation Mode": "Pulsed",
+      "Repetition Rate": "Sub-Hz"
+    },
+    {
+      "id": 14,
+      "exact_match": false,
+      "Confinement Family": "MIF",
+      "Confinement Concept": "FRC (pulsed compression)",
+      "Fuel": "D-T",
+      "Primary Heating": "Magnetic compression",
+      "Energy Capture": "Direct (inductive)",
+      "Plasma State": "Compressed",
+      "Magnet Type": "Pulsed EM",
+      "Tritium Breeding": "Self-bred (DD side)",
+      "Neutron Management": "Integrated blanket/shield",
+      "Operation Mode": "Pulsed",
+      "Repetition Rate": "~1 Hz"
+    },
+    {
+      "id": 15,
+      "exact_match": false,
+      "Confinement Family": "MFE",
+      "Confinement Concept": "Levitated dipole",
+      "Fuel": "p-B11",
+      "Primary Heating": "RF (ECRH)",
+      "Energy Capture": "Thermal (unspecified)",
+      "Plasma State": "Burning",
+      "Magnet Type": "Resistive",
+      "Tritium Breeding": "N/A",
+      "Neutron Management": "Heavy shielding (14 MeV)",
+      "Operation Mode": "Steady-state",
+      "Repetition Rate": "N/A"
+    },
+    {
+      "id": 16,
+      "exact_match": false,
+      "Confinement Family": "IFE",
+      "Confinement Concept": "Projectile ICF",
+      "Fuel": "p-B11",
+      "Primary Heating": "Projectile impact",
+      "Energy Capture": "Thermal (steam)",
+      "Plasma State": "Compressed",
+      "Magnet Type": "N/A",
+      "Tritium Breeding": "N/A",
+      "Neutron Management": "Integrated blanket/shield",
+      "Operation Mode": "Pulsed",
+      "Repetition Rate": "~10 Hz"
+    },
+    {
+      "id": 17,
+      "exact_match": false,
+      "Confinement Family": "IFE",
+      "Confinement Concept": "Heavy ion beam ICF",
+      "Fuel": "D-T",
+      "Primary Heating": "Projectile impact",
+      "Energy Capture": "Thermal (unspecified)",
+      "Plasma State": "Compressed",
+      "Magnet Type": "N/A",
+      "Tritium Breeding": "N/A (no tritium in fuel cycle)",
+      "Neutron Management": "Heavy shielding (D-D)",
+      "Operation Mode": "Pulsed",
+      "Repetition Rate": "Sub-Hz"
+    },
+    {
+      "id": 18,
+      "exact_match": false,
+      "Confinement Family": "MFE",
+      "Confinement Concept": "Tokamak",
+      "Fuel": "D-T",
+      "Primary Heating": "RF + NBI",
+      "Energy Capture": "Thermal (unspecified)",
+      "Plasma State": "Confined",
+      "Magnet Type": "HTS (levitated dipole)",
+      "Tritium Breeding": "LiPb blanket",
+      "Neutron Management": "Heavy shielding (D-D)",
+      "Operation Mode": "Steady-state",
+      "Repetition Rate": "N/A"
+    },
+    {
+      "id": 19,
+      "exact_match": false,
+      "Confinement Family": "Other",
+      "Confinement Concept": "Muon-catalyzed fusion",
+      "Fuel": "p-B11",
+      "Primary Heating": "Muon catalysis",
+      "Energy Capture": "Thermal (unspecified)",
+      "Plasma State": "Pinch",
+      "Magnet Type": "Self-confined",
+      "Tritium Breeding": "N/A",
+      "Neutron Management": "Heavy shielding (14 MeV)",
+      "Operation Mode": "Pulsed",
+      "Repetition Rate": "kHz"
+    },
+    {
+      "id": 20,
+      "exact_match": false,
+      "Confinement Family": "MFE",
+      "Confinement Concept": "Z-pinch (sheared-flow)",
+      "Fuel": "D-T",
+      "Primary Heating": "NBI",
+      "Energy Capture": "Hybrid (thermal + direct)",
+      "Plasma State": "Burning",
+      "Magnet Type": "HTS (3D stellarator)",
+      "Tritium Breeding": "N/A (no tritium in fuel cycle)",
+      "Neutron Management": "Minimal (aneutronic)",
+      "Operation Mode": "Pulsed",
+      "Repetition Rate": "~10 Hz"
+    },
+    {
+      "id": 21,
+      "exact_match": false,
+      "Confinement Family": "MFE",
+      "Confinement Concept": "Stellarator (helical coil)",
+      "Fuel": "D-He3",
+      "Primary Heating": "RF (ICRH)",
+      "Energy Capture": "Thermal (unspecified)",
+      "Plasma State": "Confined",
+      "Magnet Type": "HTS (planar array)",
+      "Tritium Breeding": "N/A",
+      "Neutron Management": "Reduced (D-He3)",
+      "Operation Mode": "Pulsed",
+      "Repetition Rate": "~10 Hz"
+    },
+    {
+      "id": 22,
+      "exact_match": false,
+      "Confinement Family": "IFE",
+      "Confinement Concept": "Laser ICF (direct drive)",
+      "Fuel": "p-B11",
+      "Primary Heating": "Projectile impact",
+      "Energy Capture": "Thermal (steam)",
+      "Plasma State": "Compressed",
+      "Magnet Type": "N/A",
+      "Tritium Breeding": "N/A",
+      "Neutron Management": "Minimal (aneutronic)",
+      "Operation Mode": "Pulsed",
+      "Repetition Rate": "~1 Hz"
+    },
+    {
+      "id": 23,
+      "exact_match": false,
+      "Confinement Family": "MFE",
+      "Confinement Concept": "Magnetic mirror",
+      "Fuel": "p-B11",
+      "Primary Heating": "Ohmic (self-pinch)",
+      "Energy Capture": "Hybrid (thermal + direct)",
+      "Plasma State": "Burning",
+      "Magnet Type": "HTS (planar array)",
+      "Tritium Breeding": "N/A",
+      "Neutron Management": "Heavy shielding (14 MeV)",
+      "Operation Mode": "Pulsed",
+      "Repetition Rate": "~10 Hz"
+    },
+    {
+      "id": 24,
+      "exact_match": false,
+      "Confinement Family": "MFE",
+      "Confinement Concept": "Negative triangularity tokamak",
+      "Fuel": "D-He3",
+      "Primary Heating": "NBI",
+      "Energy Capture": "Direct (charged particle)",
+      "Plasma State": "Confined",
+      "Magnet Type": "HTS (3D stellarator)",
+      "Tritium Breeding": "N/A",
+      "Neutron Management": "Heavy shielding (14 MeV)",
+      "Operation Mode": "Pulsed",
+      "Repetition Rate": "~10 Hz"
+    },
+    {
+      "id": 25,
+      "exact_match": false,
+      "Confinement Family": "Other",
+      "Confinement Concept": "Dense plasma focus",
+      "Fuel": "p-B11",
+      "Primary Heating": "Electromagnetic pinch (DPF)",
+      "Energy Capture": "Thermal (unspecified)",
+      "Plasma State": "Compressed",
+      "Magnet Type": "Self-confined",
+      "Tritium Breeding": "N/A",
+      "Neutron Management": "Minimal (aneutronic)",
+      "Operation Mode": "Pulsed",
+      "Repetition Rate": "kHz"
+    },
+    {
+      "id": 26,
+      "exact_match": false,
+      "Confinement Family": "IFE",
+      "Confinement Concept": "Laser ICF (fast ignition)",
+      "Fuel": "D-T",
+      "Primary Heating": "Laser (direct drive)",
+      "Energy Capture": "Hybrid (thermal + direct)",
+      "Plasma State": "Compressed",
+      "Magnet Type": "N/A",
+      "Tritium Breeding": "Liquid Li blanket",
+      "Neutron Management": "Integrated blanket/shield",
+      "Operation Mode": "Pulsed",
+      "Repetition Rate": "~10 Hz"
+    },
+    {
+      "id": 27,
+      "exact_match": false,
+      "Confinement Family": "MFE",
+      "Confinement Concept": "Levitated dipole (orbital)",
+      "Fuel": "p-B11",
+      "Primary Heating": "NBI",
+      "Energy Capture": "Direct (charged particle)",
+      "Plasma State": "Burning",
+      "Magnet Type": "HTS (wound)",
+      "Tritium Breeding": "N/A",
+      "Neutron Management": "Integrated blanket/shield",
+      "Operation Mode": "Steady-state",
+      "Repetition Rate": "N/A"
+    },
+    {
+      "id": 28,
+      "exact_match": false,
+      "Confinement Family": "MFE",
+      "Confinement Concept": "Stellarator (modular)",
+      "Fuel": "D-D",
+      "Primary Heating": "Ohmic (self-pinch)",
+      "Energy Capture": "Hybrid (thermal + direct)",
+      "Plasma State": "Sustained",
+      "Magnet Type": "HTS (levitated dipole)",
+      "Tritium Breeding": "N/A",
+      "Neutron Management": "Minimal (aneutronic)",
+      "Operation Mode": "Pulsed",
+      "Repetition Rate": "~10 Hz"
+    },
+    {
+      "id": 29,
+      "exact_match": false,
+      "Confinement Family": "IFE",
+      "Confinement Concept": "Laser ICF (hybrid drive)",
+      "Fuel": "D-T",
+      "Primary Heating": "Heavy ion beam",
+      "Energy Capture": "Thermal (steam)",
+      "Plasma State": "Compressed",
+      "Magnet Type": "N/A",
+      "Tritium Breeding": "FLiBe blanket",
+      "Neutron Management": "Minimal (aneutronic)",
+      "Operation Mode": "Pulsed",
+      "Repetition Rate": "Sub-Hz"
+    },
+    {
+      "id": 30,
+      "exact_match": false,
+      "Confinement Family": "Other",
+      "Confinement Concept": "Dense plasma focus",
+      "Fuel": "D-D",
+      "Primary Heating": "Electromagnetic pinch (DPF)",
+      "Energy Capture": "Thermal (unspecified)",
+      "Plasma State": "Pinch",
+      "Magnet Type": "Self-confined",
+      "Tritium Breeding": "N/A",
+      "Neutron Management": "Heavy shielding (D-D)",
+      "Operation Mode": "Pulsed",
+      "Repetition Rate": "High (>10 Hz)"
+    }
+  ]
+}

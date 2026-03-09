@@ -1,0 +1,229 @@
+{
+  "stats": {
+    "total_assessed": 30,
+    "errored": 0,
+    "coherent": 7,
+    "plausible": 5,
+    "coherence_rate": 0.233,
+    "plausibility_rate": 0.167,
+    "exact_matches": 0,
+    "exact_match_coherent": 0,
+    "novel_count": 30,
+    "novel_coherent": 7,
+    "novel_coherence_rate": 0.233,
+    "top_constraint_pairs": [
+      {
+        "pair": "Fuel \u00d7 Neutron Management",
+        "count": 19,
+        "example_reasons": [
+          "p-B11 is nearly aneutronic; side-reaction neutron production is orders of magnitude below D-D levels. Categorizing neutron management as 'Heavy shielding (D-D)' mischaracterizes the neutron environment \u2014 p-B11 would need minimal shielding compared to D-D.",
+          "D-T fusion produces 14.1 MeV neutrons, while D-D produces 2.45 MeV neutrons. Shielding designed for D-D neutron energies would be grossly inadequate for D-T's much higher energy neutrons, which require significantly more shielding mass and different material choices."
+        ]
+      },
+      {
+        "pair": "Confinement Concept \u00d7 Primary Heating",
+        "count": 13,
+        "example_reasons": [
+          "Projectile ICF uses kinetic impactor compression as its driver \u2014 the defining feature is replacing lasers with mechanical projectiles. Ultrashort-pulse laser heating belongs to laser ICF (fast ignition). These are fundamentally different and mutually exclusive driver architectures.",
+          "Minor tension: conventional direct drive uses nanosecond shaped pulses for symmetric ablative compression. Ultrashort pulses (ps/fs) are characteristic of fast ignition, where a separate short pulse ignites pre-compressed fuel. Reconcilable as direct-drive fast ignition, but the label pairing is atypical."
+        ]
+      },
+      {
+        "pair": "Confinement Concept \u00d7 Magnet Type",
+        "count": 9,
+        "example_reasons": [
+          "Polywells use magnetic coils (conventional or superconducting) arranged in a polyhedral configuration to create magnetic cusps. The electrostatic potential well is a consequence of magnetically confined electrons, not electrostatic hardware. 'Electrostatic' is not a magnet type \u2014 it conflates the confinement mechanism with the magnet technology.",
+          "Tokamaks require D-shaped or circular toroidal field coils plus poloidal field coils arranged around a torus. A 'planar array' is a flat magnet geometry used in IFE target chambers or levitated dipole concepts \u2014 it cannot produce the toroidal magnetic field topology required for tokamak confinement."
+        ]
+      },
+      {
+        "pair": "Fuel \u00d7 Tritium Breeding",
+        "count": 6,
+        "example_reasons": [
+          "D-T fuel requires a tritium breeding system (lithium blanket or equivalent) since tritium does not occur naturally in sufficient quantities. Tritium Breeding cannot be N/A for a D-T concept.",
+          "D-T fuel absolutely requires tritium breeding \u2014 tritium is radioactive (t\u00bd = 12.3 yr), has no natural supply, and must be bred from lithium via neutron capture. The N/A rule fired incorrectly; it should only apply to non-D-T fuels."
+        ]
+      },
+      {
+        "pair": "Confinement Concept \u00d7 Fuel",
+        "count": 6,
+        "example_reasons": [
+          "p-B11 requires ~300 keV ignition temperatures and has a cross-section ~100x lower than D-T at optimal conditions. No ICF scheme \u2014 projectile or otherwise \u2014 has a credible pathway to achieving p-B11 ignition conditions, as the required convergence ratios and driver energies are far beyond any proposed projectile launcher capability.",
+          "Muon catalysis works by forming muonic molecules that allow quantum tunneling at very low energies. This has only been demonstrated with hydrogen isotopes (D-T, D-D). Boron (Z=5) presents a Coulomb barrier too high for the muon-catalyzed tunneling mechanism to achieve meaningful fusion rates."
+        ]
+      },
+      {
+        "pair": "Energy Capture \u00d7 Fuel",
+        "count": 6,
+        "example_reasons": [
+          "p-B11 fusion produces three alpha particles carrying most of the fusion energy as charged-particle kinetic energy. Thermal/steam conversion (~33-40% efficiency) wastes the primary advantage of aneutronic fuel; direct energy conversion of charged particles could achieve 60-80% efficiency. While not strictly impossible, it defeats the engineering rationale for choosing p-B11.",
+          "D-T fusion produces 14.1 MeV neutrons (80% of energy) and 3.5 MeV alphas (20%). Direct energy conversion captures only charged particles, so ~80% of the fusion energy would be lost to shielding/heating rather than converted. Thermal/steam or hybrid capture is required for D-T."
+        ]
+      },
+      {
+        "pair": "Confinement Concept \u00d7 Plasma State",
+        "count": 6,
+        "example_reasons": [
+          "Tokamak plasmas are magnetically confined in a toroidal equilibrium and achieve burning or sustained plasma states. 'Pinch' describes plasma compressed by its own current (Z-pinch, theta-pinch) \u2014 a fundamentally different confinement mechanism incompatible with tokamak geometry.",
+          "A beam-driven FRC maintains a compact toroid equilibrium sustained by NBI current drive, not a pinch equilibrium. Pinch states (z-pinch, theta-pinch) involve dynamic radial compression by magnetic pressure from driven currents. While theta-pinch coils may be used for FRC *formation*, the sustained plasma state is a closed-field-line confined plasma, not a pinch. The correct plasma state would be 'Confined' or 'Sustained.'"
+        ]
+      },
+      {
+        "pair": "Confinement Concept \u00d7 Repetition Rate",
+        "count": 4,
+        "example_reasons": [
+          "Tokamak plasma pulses last seconds to hours (or are steady-state). A 10 Hz repetition rate (100 ms cycle) is characteristic of IFE or some MIF concepts. No tokamak can ramp up current, heat to fusion temperatures, burn, and quench 10 times per second \u2014 the plasma current ramp alone takes seconds.",
+          "DPF electrode erosion and capacitor bank energy storage make kHz repetition rates engineering-implausible. Current DPF devices operate at single-shot to ~1 Hz. The intense plasma-electrode interaction ablates the anode, and no known electrode material or geometry can survive kHz cycling at fusion-relevant discharge energies."
+        ]
+      },
+      {
+        "pair": "Confinement Concept \u00d7 Operation Mode",
+        "count": 4,
+        "example_reasons": [
+          "Stellarators are inherently steady-state devices. The external coil geometry provides rotational transform without plasma current drive, eliminating any natural pulse cycle. There is no physical mechanism that would impose or benefit from pulsed operation in a stellarator.",
+          "Magnetic mirrors are inherently steady-state confinement devices. Pulsed operation at 10 Hz implies rapid formation and collapse of the mirror-confined plasma, which contradicts the steady magnetic equilibrium that defines mirror operation. No mirror concept has used pulsed cycling."
+        ]
+      },
+      {
+        "pair": "Neutron Management \u00d7 Tritium Breeding",
+        "count": 2,
+        "example_reasons": [
+          "The LiPb blanket already serves as the primary neutron management system in D-T tokamaks \u2014 it absorbs neutrons, breeds tritium, and extracts thermal energy. Pairing it with a separate 'heavy shielding (D-D)' strategy is contradictory; the blanket IS the neutron management, and its design assumes D-T-energy neutrons, not D-D.",
+          "A FLiBe tritium breeding blanket exists precisely to absorb and utilize the intense neutron flux from D-T reactions. Its presence contradicts the claim that neutron management is 'minimal (aneutronic)' \u2014 the blanket itself IS a major neutron management system."
+        ]
+      },
+      {
+        "pair": "Fuel \u00d7 Plasma State",
+        "count": 1,
+        "example_reasons": [
+          "A burning plasma requires fusion alpha heating to dominate over losses. For p-B11, bremsstrahlung radiation losses exceed fusion power at all temperatures in most analyses, making a self-sustaining burn physically unachievable. This is a fundamental plasma physics limitation, not merely an engineering challenge."
+        ]
+      },
+      {
+        "pair": "Operation Mode \u00d7 Plasma State",
+        "count": 1,
+        "example_reasons": [
+          "A 'Sustained' plasma state implies continuous burn, which contradicts 'Pulsed' operation with a defined repetition rate. These describe opposing temporal regimes."
+        ]
+      }
+    ],
+    "novelty_distribution": {
+      "variant": 16,
+      "novel": 12,
+      "existing": 2
+    },
+    "family_distribution": {
+      "Electrostatic": 1,
+      "IFE": 10,
+      "MFE": 11,
+      "Other": 6,
+      "MIF": 2
+    },
+    "family_coherence": {
+      "Electrostatic": {
+        "count": 1,
+        "coherent": 0,
+        "rate": 0.0
+      },
+      "IFE": {
+        "count": 10,
+        "coherent": 2,
+        "rate": 0.2
+      },
+      "MFE": {
+        "count": 11,
+        "coherent": 2,
+        "rate": 0.18181818181818182
+      },
+      "Other": {
+        "count": 6,
+        "coherent": 3,
+        "rate": 0.5
+      },
+      "MIF": {
+        "count": 2,
+        "coherent": 0,
+        "rate": 0.0
+      }
+    },
+    "concept_coherence": {
+      "Polywell": {
+        "count": 1,
+        "coherent": 0
+      },
+      "Projectile ICF": {
+        "count": 3,
+        "coherent": 0
+      },
+      "Laser ICF (direct drive)": {
+        "count": 3,
+        "coherent": 1
+      },
+      "Negative triangularity tokamak": {
+        "count": 2,
+        "coherent": 0
+      },
+      "FRC (beam-driven)": {
+        "count": 1,
+        "coherent": 0
+      },
+      "Stellarator (modular)": {
+        "count": 2,
+        "coherent": 1
+      },
+      "Muon-catalyzed fusion": {
+        "count": 3,
+        "coherent": 0
+      },
+      "Dense plasma focus": {
+        "count": 3,
+        "coherent": 3
+      },
+      "Laser ICF (ultrashort pulse)": {
+        "count": 1,
+        "coherent": 0
+      },
+      "FRC (pulsed compression)": {
+        "count": 2,
+        "coherent": 0
+      },
+      "Levitated dipole": {
+        "count": 1,
+        "coherent": 0
+      },
+      "Heavy ion beam ICF": {
+        "count": 1,
+        "coherent": 0
+      },
+      "Tokamak": {
+        "count": 1,
+        "coherent": 0
+      },
+      "Z-pinch (sheared-flow)": {
+        "count": 1,
+        "coherent": 0
+      },
+      "Stellarator (helical coil)": {
+        "count": 1,
+        "coherent": 0
+      },
+      "Magnetic mirror": {
+        "count": 1,
+        "coherent": 0
+      },
+      "Laser ICF (fast ignition)": {
+        "count": 1,
+        "coherent": 1
+      },
+      "Levitated dipole (orbital)": {
+        "count": 1,
+        "coherent": 1
+      },
+      "Laser ICF (hybrid drive)": {
+        "count": 1,
+        "coherent": 0
+      }
+    }
+  },
+  "synthesis": "## Family-Conditional Coherence Analysis: Synthesis\n\n### 1. Impact of Family-Conditional Sampling\n\nThe jump from **0/30 (0%)** to **7/30 (23.3%)** is significant but modest. It confirms that cross-family contamination was a real problem \u2014 IFE heating methods landing on MFE concepts, pinch plasma states on tokamaks, etc. Eliminating that source of incoherence recovered some valid combinations.\n\nBut 23% is not high. The delta tells us:\n\n- **Cross-family coupling accounted for roughly a quarter of the failure budget.** Removing it bought ~7 coherent concepts out of 30.\n- **The remaining ~77% of failures are within-family constraints.** The dominant coupling structure is not \"MFE vs IFE\" \u2014 it's \"stellarator vs ohmic heating\" or \"D-T vs aneutronic shielding.\" These are concept-level and fuel-cascade constraints that family conditioning cannot resolve.\n\nThe implication is clear: **family is necessary but far from sufficient to determine valid combinations.** The design space is not \"pick a family, then choose freely within it.\"\n\n### 2. Within-Family Constraint Structure\n\n**Families where within-family sampling works:**\n\n- **Other (3/6 = 50%)**: All three coherent cases are Dense Plasma Focus. DPF is a tightly self-consistent concept \u2014 its fuel options (D-D, p-B11), heating (electromagnetic pinch), and plasma state are all internally determined. The \"Other\" family is small and heterogeneous, but DPF happens to have few cross-column dependencies beyond its own identity. Muon-catalyzed fusion (0/3) drags the family down \u2014 it's an extreme outlier with unique physics (no plasma, no heating, non-standard fuels) that makes random column assignment almost always wrong.\n\n- **IFE (2/10 = 20%)**: Two coherent out of ten. IFE concepts are heavily coupled to their driver technology \u2014 laser direct drive, fast ignition, heavy ion, projectile impact are mutually exclusive heating methods. Family-conditional sampling still mixes these drivers freely.\n\n- **MFE (2/11 = 18%)**: Two coherent. MFE has the deepest constraint structure: magnet topology is locked to concept (stellarator \u2260 tokamak \u2260 mirror \u2260 dipole), operation mode is concept-determined (stellarator = steady-state, tokamak = pulsed or steady), and repetition rate is concept-class-determined (continuous, not Hz-scale).\n\n- **MIF (0/2 = 0%)** and **Electrostatic (0/1 = 0%)**: Too few samples to draw conclusions, but both failures involved fuel-cascade errors (D-T with wrong tritium breeding/neutron management).\n\n**The top constraint pairs confirm this:**\n\n| Pair | Failures | Nature |\n|------|----------|--------|\n| Fuel \u00d7 Neutron Management | 19 | Fuel cascade |\n| Concept \u00d7 Primary Heating | 13 | Concept-specific |\n| Concept \u00d7 Magnet Type | 9 | Concept-specific |\n| Fuel \u00d7 Tritium Breeding | 6 | Fuel cascade |\n| Concept \u00d7 Fuel | 6 | Concept feasibility |\n| Energy Capture \u00d7 Fuel | 6 | Fuel cascade |\n| Concept \u00d7 Plasma State | 6 | Concept-specific |\n\n**Fuel \u00d7 Neutron Management** dominates at 19 failures \u2014 this is the single biggest remaining coupling. It's a hard physical constraint: D-T produces 14.1 MeV neutrons requiring heavy shielding + breeding blanket; D-D produces 2.45 MeV neutrons; p-B11 is aneutronic. These are not independent columns.\n\n### 3. Remaining Failure Patterns\n\nThree distinct failure types persist, roughly in order of rigidity:\n\n**Concept-specific constraints (hard physics):** The largest category. These are cases where the confinement concept mechanistically determines one or more other columns.\n\n- Stellarator \u2192 no ohmic heating (zero plasma current by design)\n- Stellarator \u2192 steady-state (not pulsed)\n- Stellarator \u2192 non-planar or modular coils (not planar array, not levitated dipole)\n- Tokamak \u2192 not self-pinch heating, not 10 Hz rep rate\n- Levitated dipole \u2192 superconducting floating coil (not resistive)\n- Z-pinch \u2192 self-confined (not stellarator coils)\n- Laser ICF \u2192 laser driver (not projectile impact, not heavy ion beam)\n- Muon catalysis \u2192 no plasma, no heating, hydrogen isotopes only\n\nThese are **definitional** \u2014 violating them changes what the concept *is*.\n\n**Fuel-cascade constraints (hard physics):** The second largest category. Fuel choice creates a cascade through 3-4 downstream columns:\n\n```\nFuel choice\n\u251c\u2500\u2500 Neutron Management (energy spectrum, flux level)\n\u251c\u2500\u2500 Tritium Breeding (required for D-T, N/A for others)\n\u251c\u2500\u2500 Energy Capture (charged particle fraction determines optimal method)\n\u2514\u2500\u2500 Shielding mass/complexity\n```\n\nD-T, D-D, D-He3, and p-B11 each impose a distinct downstream signature. These four columns are not four degrees of freedom \u2014 they are one degree of freedom (fuel) with three dependent consequences.\n\n**Soft engineering preferences (debatable):** A minority. Cases like:\n- p-B11 with thermal steam conversion (physically possible, but defeats the purpose)\n- Integrated blanket/shield on an aneutronic concept (works, but wasteful)\n- NBI on a levitated dipole (risky due to orbit losses, but not impossible)\n\nThese appeared in ~3-4 assessments, usually as secondary complaints alongside hard failures. They represent genuine design-space ambiguity \u2014 reasonable engineers might disagree.\n\n### 4. Independent vs. Coupled Dimensions (Within-Family)\n\nWithin each family, the effective degrees of freedom are far fewer than the column count suggests.\n\n**MFE (~11 columns sampled \u2192 ~2-3 genuine DOF):**\n\n| Column | Status |\n|--------|--------|\n| Confinement Concept | Free choice (within MFE) |\n| Primary Heating | **Locked to concept** |\n| Magnet Type | **Locked to concept** |\n| Operation Mode | **Locked to concept** (stellarator=SS, tokamak=pulsed/SS) |\n| Repetition Rate | **Locked to concept** (continuous for all MFE) |\n| Plasma State | **Locked to concept** |\n| Fuel | Semi-free (concept constrains feasible fuels, but 2-3 options exist) |\n| Neutron Management | **Locked to fuel** |\n| Tritium Breeding | **Locked to fuel** |\n| Energy Capture | **Locked to fuel** |\n\nEffective DOF: **Concept** (free) + **Fuel** (semi-free) \u2248 **2**. Everything else is determined.\n\n**IFE (~11 columns \u2192 ~2-3 DOF):**\n\nConcept determines driver/heating. Fuel determines neutron/breeding/capture chain. Rep rate is somewhat free (1-10 Hz range). Similar structure to MFE: ~2-3 DOF.\n\n**Other:** Too heterogeneous to characterize as a family. Each concept (DPF, muon catalysis, etc.) is essentially its own island with 1-2 DOF.\n\n**MIF:** Small sample, but same pattern \u2014 concept + fuel determine nearly everything.\n\n### 5. Novel Coherent Concepts\n\nSeven coherent concepts emerged. Examining them:\n\n1. **#3 \u2014 Laser ICF (direct drive) / D-D / ultrashort pulse / hybrid capture**: Labeled coherent with a minor tension (ultrashort pulse is atypical for direct drive). This is a **plausible variant** \u2014 direct-drive fast ignition with D-D fuel. Genuinely interesting as a concept not well-represented in the literature, though the D-D energy balance would be challenging.\n\n2. **#6 \u2014 Stellarator (modular) / D-D / ICRH / thermal**: A straightforward D-D stellarator. The only flag was overspecified neutron shielding. This is a **trivial variation** of W7-X-class reactor studies with a fuel swap.\n\n3. **#8 \u2014 Dense plasma focus / D-D / EM pinch / thermal**: Essentially LPPFusion with D-D instead of p-B11. **Trivial variation.**\n\n4. **#25 \u2014 Dense plasma focus / p-B11 / EM pinch / thermal**: This IS LPPFusion's actual concept. **Not novel at all** (labeled \"variant\" but is essentially existing).\n\n5. **#26 \u2014 Laser ICF (fast ignition) / D-T / direct drive / hybrid capture**: HiPER-like. **Known concept**, well-studied in EU fusion roadmaps.\n\n6. **#27 \u2014 Levitated dipole (orbital) / p-B11 / NBI / direct conversion**: Interesting \u2014 an orbital dipole with aneutronic fuel. The NBI concern is real but the concept is a **genuinely interesting variant** of Kesner-Mauel proposals. One of the few cases where random sampling found something worth thinking about.\n\n7. **#30 \u2014 Dense plasma focus / D-D / EM pinch / thermal**: Duplicate of #8.\n\n**Verdict on novelty:** 3 DPF near-duplicates, 2 known concepts (fast ignition, DPF p-B11), 1 trivial fuel swap (D-D stellarator), and 1 genuinely interesting variant (orbital dipole). The hit rate for *interesting* novel concepts is roughly **1/30 (3%)**. Family-conditional sampling is not an effective concept generator.\n\n### 6. Revised Verdict\n\n**The table is a classification scheme, not a design space.**\n\nThe evidence is now quite strong:\n\n- **Unconditional sampling: 0% coherence.** Cross-family constraints dominate.\n- **Family-conditional sampling: 23% coherence.** Within-family constraints dominate what remains.\n- **The 23% that passed are mostly trivial variations** of known concepts (DPF \u00d7 {D-D, p-B11}, known fast ignition, known stellarator).\n\nThe table has approximately **2 genuine degrees of freedom**: confinement concept and fuel cycle. Everything else is either determined by concept identity (heating, magnets, operation mode, rep rate, plasma state) or determined by fuel choice (neutron management, tritium breeding, energy capture). These two choices interact (not all fuels work with all concepts), further reducing the combinatorial space.\n\n**Structural assessment:**\n\n```\nFamily (MFE/IFE/MIF/Other)          \u2190 Classification (rigid)\n  \u2514\u2500\u2500 Confinement Concept            \u2190 Classification (rigid, ~19 values)\n        \u251c\u2500\u2500 Heating                   \u2190 Determined by concept\n        \u251c\u2500\u2500 Magnet Type               \u2190 Determined by concept  \n        \u251c\u2500\u2500 Operation Mode            \u2190 Determined by concept\n        \u251c\u2500\u2500 Rep Rate                  \u2190 Determined by concept\n        \u251c\u2500\u2500 Plasma State              \u2190 Determined by concept\n        \u2514\u2500\u2500 Fuel                      \u2190 Semi-free choice (~2-4 options per concept)\n              \u251c\u2500\u2500 Neutron Management   \u2190 Determined by fuel\n              \u251c\u2500\u2500 Tritium Breeding     \u2190 Determined by fuel\n              \u2514\u2500\u2500 Energy Capture       \u2190 Determined by fuel\n```\n\nThis is a **tree**, not a grid. The table's flat structure (N independent columns) misrepresents what is actually a hierarchical dependency graph with ~2 branch points.\n\n**Implications for AND/OR graph / pattern card design:**\n\n1. **The AND/OR graph should encode the tree structure explicitly.** Concept \u2192 {determined columns} as a bundle, not as independent choices.\n\n2. **Pattern cards should be concept-centric**, not column-centric. A \"Stellarator\" pattern card includes its heating options, magnet topology, and operation mode as fixed or narrowly constrained attributes \u2014 not as free parameters to be composed.\n\n3. **Fuel is the only real cross-cutting design choice.** It should be modeled as an orthogonal axis that interacts with concept feasibility (some concept\u00d7fuel pairs are infeasible) and determines a downstream bundle (neutron management, breeding, capture).\n\n4. **The effective design space is ~19 concepts \u00d7 ~3 fuel options \u2248 57 cells**, minus infeasible pairs (p-B11 on most ICF, muon catalysis with non-hydrogen fuels, etc.), yielding perhaps **30-40 physically coherent combinations**. This is a lookup table, not a combinatorial space. The AND/OR graph's job is to encode these valid combinations and their cost-model implications, not to enable generative exploration.\n"
+}
