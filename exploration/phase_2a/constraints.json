@@ -1,0 +1,759 @@
+{
+  "constraints": [
+    {
+      "id": "DC-001",
+      "source_node": "L0",
+      "source_option": "magnetic_closed_topology",
+      "condition": {
+        "field_topology": "closed_toroidal"
+      },
+      "consequence": {
+        "geometry": "toroidal_or_quasi-toroidal_reactor_shape"
+      },
+      "constraint_type": "force",
+      "requirement_basis": "R2",
+      "reasoning": "Closed field line topology that prevents end losses requires field lines to curve back on themselves. In 3D, this necessitates a toroidal or topologically equivalent shape; there is no flat or cylindrical geometry that satisfies this constraint without artificial boundaries.",
+      "llm_text": "{\"condition\": {\"field_topology\": \"closed_toroidal\"}, \"consequence\": {\"geometry\": \"toroidal_or_quasi-toroidal_reactor_shape\"}, \"type\": \"force\", \"requirement_basis\": \"R2\", \"reasoning\": \"Closed field line topology that prevents end losses requires field lines to curve back on themselves. In 3D, this necessitates a toroidal or topologically equivalent shape; there is no flat or cylindrical geometry that satisfies this constraint without artificial boundaries.\"}",
+      "justification": [
+        {
+          "choice": "Closed magnetic topology confinement",
+          "reasoning": "This approach distinguishes itself by using field-line topology to eliminate end losses and achieve continuous steady-state confinement at moderate density, leveraging the confinement-time axis of the Lawson criterion."
+        }
+      ],
+      "validation": {
+        "table_check": "UNMAPPABLE",
+        "concepts_checked": 0,
+        "concepts_matched": 0,
+        "violations": [],
+        "notes": "Condition not mappable to table columns"
+      },
+      "consistency": {
+        "relationship": "novel",
+        "related_constraints": [],
+        "notes": "First constraint in registry"
+      },
+      "status": "unmappable"
+    },
+    {
+      "id": "DC-002",
+      "source_node": "L0",
+      "source_option": "magnetic_closed_topology",
+      "condition": {
+        "field_topology": "closed_toroidal"
+      },
+      "consequence": {
+        "rotational_transform": "required_for_radial_confinement"
+      },
+      "constraint_type": "force",
+      "requirement_basis": "R2",
+      "reasoning": "In a purely toroidal field, grad-B and curvature drifts are in opposite vertical directions for ions and electrons, causing charge separation and a radial electric field that drives plasma outward. Only helical field winding (rotational transform) averages these drifts to zero over a field-line transit, suppressing the radial loss.",
+      "llm_text": "{\"condition\": {\"field_topology\": \"closed_toroidal\"}, \"consequence\": {\"rotational_transform\": \"required_for_radial_confinement\"}, \"type\": \"force\", \"requirement_basis\": \"R2\", \"reasoning\": \"In a purely toroidal field, grad-B and curvature drifts are in opposite vertical directions for ions and electrons, causing charge separation and a radial electric field that drives plasma outward. Only helical field winding (rotational transform) averages these drifts to zero over a field-line transit, suppressing the radial loss.\"}",
+      "justification": [
+        {
+          "choice": "Closed magnetic topology confinement",
+          "reasoning": "This approach distinguishes itself by using field-line topology to eliminate end losses and achieve continuous steady-state confinement at moderate density, leveraging the confinement-time axis of the Lawson criterion."
+        }
+      ],
+      "validation": {
+        "table_check": "UNMAPPABLE",
+        "concepts_checked": 0,
+        "concepts_matched": 0,
+        "violations": [],
+        "notes": "Condition not mappable to table columns"
+      },
+      "consistency": {
+        "relationship": "novel",
+        "related_constraints": [],
+        "notes": "First constraint in registry"
+      },
+      "status": "unmappable"
+    },
+    {
+      "id": "DC-003",
+      "source_node": "L0",
+      "source_option": "magnetic_closed_topology",
+      "condition": {
+        "rotational_transform": "provided_by_plasma_current"
+      },
+      "consequence": {
+        "plasma_current_drive": "continuous_power_requirement",
+        "disruption_risk": "activated"
+      },
+      "constraint_type": "force",
+      "requirement_basis": "R3",
+      "reasoning": "Toroidal plasma current that provides rotational transform must be driven continuously (or bootstrapped from pressure gradients); if it terminates suddenly, confinement collapses rapidly (disruption), releasing stored magnetic and thermal energy into the first wall in milliseconds.",
+      "llm_text": "{\"condition\": {\"rotational_transform\": \"provided_by_plasma_current\"}, \"consequence\": {\"plasma_current_drive\": \"continuous_power_requirement\", \"disruption_risk\": \"activated\"}, \"type\": \"force\", \"requirement_basis\": \"R3\", \"reasoning\": \"Toroidal plasma current that provides rotational transform must be driven continuously (or bootstrapped from pressure gradients); if it terminates suddenly, confinement collapses rapidly (disruption), releasing stored magnetic and thermal energy into the first wall in milliseconds.\"}",
+      "justification": [
+        {
+          "choice": "Closed magnetic topology confinement",
+          "reasoning": "This approach distinguishes itself by using field-line topology to eliminate end losses and achieve continuous steady-state confinement at moderate density, leveraging the confinement-time axis of the Lawson criterion."
+        }
+      ],
+      "validation": {
+        "table_check": "UNMAPPABLE",
+        "concepts_checked": 0,
+        "concepts_matched": 0,
+        "violations": [],
+        "notes": "Condition not mappable to table columns"
+      },
+      "consistency": {
+        "relationship": "novel",
+        "related_constraints": [],
+        "notes": "First constraint in registry"
+      },
+      "status": "unmappable"
+    },
+    {
+      "id": "DC-004",
+      "source_node": "L0",
+      "source_option": "magnetic_closed_topology",
+      "condition": {
+        "rotational_transform": "provided_by_external_3d_coils"
+      },
+      "consequence": {
+        "coil_complexity": "high_3d_geometry",
+        "bootstrap_current_drive": "reduced_or_eliminated"
+      },
+      "constraint_type": "force",
+      "requirement_basis": "R6",
+      "reasoning": "Externally imposed rotational transform via shaped coils eliminates the need for net plasma current and removes disruption risk, but requires coils of complex 3D geometry that must be fabricated, assembled, and maintained around a neutron-irradiated vessel \u2014 a formidable engineering challenge.",
+      "llm_text": "{\"condition\": {\"rotational_transform\": \"provided_by_external_3d_coils\"}, \"consequence\": {\"coil_complexity\": \"high_3d_geometry\", \"bootstrap_current_drive\": \"reduced_or_eliminated\"}, \"type\": \"force\", \"requirement_basis\": \"R6\", \"reasoning\": \"Externally imposed rotational transform via shaped coils eliminates the need for net plasma current and removes disruption risk, but requires coils of complex 3D geometry that must be fabricated, assembled, and maintained around a neutron-irradiated vessel \\u2014 a formidable engineering challenge.\"}",
+      "justification": [
+        {
+          "choice": "Closed magnetic topology confinement",
+          "reasoning": "This approach distinguishes itself by using field-line topology to eliminate end losses and achieve continuous steady-state confinement at moderate density, leveraging the confinement-time axis of the Lawson criterion."
+        }
+      ],
+      "validation": {
+        "table_check": "UNMAPPABLE",
+        "concepts_checked": 0,
+        "concepts_matched": 0,
+        "violations": [],
+        "notes": "Condition not mappable to table columns"
+      },
+      "consistency": {
+        "relationship": "novel",
+        "related_constraints": [],
+        "notes": "First constraint in registry"
+      },
+      "status": "unmappable"
+    },
+    {
+      "id": "DC-005",
+      "source_node": "L0",
+      "source_option": "magnetic_closed_topology",
+      "condition": {
+        "plasma_beta": "exceeds_threshold"
+      },
+      "consequence": {
+        "mhd_stability": "lost",
+        "confinement": "degraded_or_lost"
+      },
+      "constraint_type": "force",
+      "requirement_basis": "R2",
+      "reasoning": "The ratio of plasma pressure to magnetic pressure (beta) is bounded above by MHD stability limits (typically a few percent for simple toroidal geometries). Above this limit, interchange and ballooning instabilities grow on Alfv\u00e9nic timescales, causing rapid confinement degradation. This caps the pressure (and thus fusion power density) achievable at a given field strength.",
+      "llm_text": "{\"condition\": {\"plasma_beta\": \"exceeds_threshold\"}, \"consequence\": {\"mhd_stability\": \"lost\", \"confinement\": \"degraded_or_lost\"}, \"type\": \"force\", \"requirement_basis\": \"R2\", \"reasoning\": \"The ratio of plasma pressure to magnetic pressure (beta) is bounded above by MHD stability limits (typically a few percent for simple toroidal geometries). Above this limit, interchange and ballooning instabilities grow on Alfv\\u00e9nic timescales, causing rapid confinement degradation. This caps the pressure (and thus fusion power density) achievable at a given field strength.\"}",
+      "justification": [
+        {
+          "choice": "Closed magnetic topology confinement",
+          "reasoning": "This approach distinguishes itself by using field-line topology to eliminate end losses and achieve continuous steady-state confinement at moderate density, leveraging the confinement-time axis of the Lawson criterion."
+        }
+      ],
+      "validation": {
+        "table_check": "UNMAPPABLE",
+        "concepts_checked": 0,
+        "concepts_matched": 0,
+        "violations": [],
+        "notes": "Condition not mappable to table columns"
+      },
+      "consistency": {
+        "relationship": "novel",
+        "related_constraints": [],
+        "notes": "First constraint in registry"
+      },
+      "status": "unmappable"
+    },
+    {
+      "id": "DC-006",
+      "source_node": "L0",
+      "source_option": "magnetic_closed_topology",
+      "condition": {
+        "closed_geometry": "continuous_steady_state"
+      },
+      "consequence": {
+        "neutron_fluence": "continuous_material_damage_accumulation"
+      },
+      "constraint_type": "force",
+      "requirement_basis": "R5",
+      "reasoning": "Continuous operation at fusion power levels means the first wall and blanket accumulate neutron damage (dpa) without interruption. Materials must survive multi-year fluences; no 'coast-down' period dilutes the dose rate as in pulsed systems.",
+      "llm_text": "{\"condition\": {\"closed_geometry\": \"continuous_steady_state\"}, \"consequence\": {\"neutron_fluence\": \"continuous_material_damage_accumulation\"}, \"type\": \"force\", \"requirement_basis\": \"R5\", \"reasoning\": \"Continuous operation at fusion power levels means the first wall and blanket accumulate neutron damage (dpa) without interruption. Materials must survive multi-year fluences; no 'coast-down' period dilutes the dose rate as in pulsed systems.\"}",
+      "justification": [
+        {
+          "choice": "Closed magnetic topology confinement",
+          "reasoning": "This approach distinguishes itself by using field-line topology to eliminate end losses and achieve continuous steady-state confinement at moderate density, leveraging the confinement-time axis of the Lawson criterion."
+        }
+      ],
+      "validation": {
+        "table_check": "UNMAPPABLE",
+        "concepts_checked": 0,
+        "concepts_matched": 0,
+        "violations": [],
+        "notes": "Condition not mappable to table columns"
+      },
+      "consistency": {
+        "relationship": "novel",
+        "related_constraints": [],
+        "notes": "First constraint in registry"
+      },
+      "status": "unmappable"
+    },
+    {
+      "id": "DC-007",
+      "source_node": "L0",
+      "source_option": "magnetic_open_topology",
+      "condition": {
+        "topology": "open_linear"
+      },
+      "consequence": {
+        "loss_cone": "always_populated_by_collisions"
+      },
+      "constraint_type": "force",
+      "requirement_basis": "R2",
+      "reasoning": "In any magnetic mirror, there exists a cone in velocity space (v_parallel/v_total > sin(\u03b8_min)) of particles that are not reflected. Coulomb collisions occur at rate ~n/T^(3/2) and scatter particles from the confined region into the loss cone continuously; this is irreversible without active intervention.",
+      "llm_text": "{\"condition\": {\"topology\": \"open_linear\"}, \"consequence\": {\"loss_cone\": \"always_populated_by_collisions\"}, \"type\": \"force\", \"requirement_basis\": \"R2\", \"reasoning\": \"In any magnetic mirror, there exists a cone in velocity space (v_parallel/v_total > sin(\\u03b8_min)) of particles that are not reflected. Coulomb collisions occur at rate ~n/T^(3/2) and scatter particles from the confined region into the loss cone continuously; this is irreversible without active intervention.\"}",
+      "justification": [
+        {
+          "choice": "Open magnetic topology (mirror) confinement",
+          "reasoning": "This approach is distinct in accepting end losses and using active plugging or direct energy conversion to compensate, trading confinement perfection for geometric simplicity and potential direct conversion efficiency."
+        }
+      ],
+      "validation": {
+        "table_check": "UNMAPPABLE",
+        "concepts_checked": 0,
+        "concepts_matched": 0,
+        "violations": [],
+        "notes": "Consequence not mappable to table columns"
+      },
+      "consistency": {
+        "relationship": "novel",
+        "related_constraints": [],
+        "notes": "First constraint in registry"
+      },
+      "status": "unmappable"
+    },
+    {
+      "id": "DC-008",
+      "source_node": "L0",
+      "source_option": "magnetic_open_topology",
+      "condition": {
+        "end_loss": "not_plugged"
+      },
+      "consequence": {
+        "confinement_time": "insufficient_for_lawson_at_feasible_length"
+      },
+      "constraint_type": "force",
+      "requirement_basis": "R2",
+      "reasoning": "An unplugged mirror with mirror ratio R has confinement time \u03c4 ~ (ln R) \u00d7 \u03c4_ii (ion-ion collision time). For D-T at fusion-relevant densities, this is far too short unless the device is kilometers long. Plugging is not optional for net energy.",
+      "llm_text": "{\"condition\": {\"end_loss\": \"not_plugged\"}, \"consequence\": {\"confinement_time\": \"insufficient_for_lawson_at_feasible_length\"}, \"type\": \"force\", \"requirement_basis\": \"R2\", \"reasoning\": \"An unplugged mirror with mirror ratio R has confinement time \\u03c4 ~ (ln R) \\u00d7 \\u03c4_ii (ion-ion collision time). For D-T at fusion-relevant densities, this is far too short unless the device is kilometers long. Plugging is not optional for net energy.\"}",
+      "justification": [
+        {
+          "choice": "Open magnetic topology (mirror) confinement",
+          "reasoning": "This approach is distinct in accepting end losses and using active plugging or direct energy conversion to compensate, trading confinement perfection for geometric simplicity and potential direct conversion efficiency."
+        }
+      ],
+      "validation": {
+        "table_check": "UNMAPPABLE",
+        "concepts_checked": 0,
+        "concepts_matched": 0,
+        "violations": [],
+        "notes": "Condition not mappable to table columns"
+      },
+      "consistency": {
+        "relationship": "novel",
+        "related_constraints": [],
+        "notes": "First constraint in registry"
+      },
+      "status": "unmappable"
+    },
+    {
+      "id": "DC-009",
+      "source_node": "L0",
+      "source_option": "magnetic_open_topology",
+      "condition": {
+        "end_plugging": "electrostatic_ambipolar"
+      },
+      "consequence": {
+        "plug_power": "scales_with_plug_potential_times_particle_loss_rate"
+      },
+      "constraint_type": "force",
+      "requirement_basis": "R3",
+      "reasoning": "An electrostatic plug must maintain a positive potential well in the end cells to confine electrons (which otherwise escape, creating a potential that drains ions). Sustaining this requires continuous plug heating power proportional to the particle loss rate and potential height \u2014 this power is parasitic and must be subtracted from gross fusion power.",
+      "llm_text": "{\"condition\": {\"end_plugging\": \"electrostatic_ambipolar\"}, \"consequence\": {\"plug_power\": \"scales_with_plug_potential_times_particle_loss_rate\"}, \"type\": \"force\", \"requirement_basis\": \"R3\", \"reasoning\": \"An electrostatic plug must maintain a positive potential well in the end cells to confine electrons (which otherwise escape, creating a potential that drains ions). Sustaining this requires continuous plug heating power proportional to the particle loss rate and potential height \\u2014 this power is parasitic and must be subtracted from gross fusion power.\"}",
+      "justification": [
+        {
+          "choice": "Open magnetic topology (mirror) confinement",
+          "reasoning": "This approach is distinct in accepting end losses and using active plugging or direct energy conversion to compensate, trading confinement perfection for geometric simplicity and potential direct conversion efficiency."
+        }
+      ],
+      "validation": {
+        "table_check": "UNMAPPABLE",
+        "concepts_checked": 0,
+        "concepts_matched": 0,
+        "violations": [],
+        "notes": "Condition not mappable to table columns"
+      },
+      "consistency": {
+        "relationship": "novel",
+        "related_constraints": [],
+        "notes": "First constraint in registry"
+      },
+      "status": "unmappable"
+    },
+    {
+      "id": "DC-010",
+      "source_node": "L0",
+      "source_option": "magnetic_open_topology",
+      "condition": {
+        "geometry": "linear"
+      },
+      "consequence": {
+        "direct_energy_conversion": "physically_accessible"
+      },
+      "constraint_type": "force",
+      "requirement_basis": "R4",
+      "reasoning": "Ions escaping the end mirrors carry kinetic energy in a directed beam; passing this beam through an electrostatic decelerator (inverse accelerator) recovers kinetic energy as electrical energy at efficiencies potentially >80%, far exceeding the ~40% of thermal cycles. This option is geometrically unavailable in closed topologies.",
+      "llm_text": "{\"condition\": {\"geometry\": \"linear\"}, \"consequence\": {\"direct_energy_conversion\": \"physically_accessible\"}, \"type\": \"force\", \"requirement_basis\": \"R4\", \"reasoning\": \"Ions escaping the end mirrors carry kinetic energy in a directed beam; passing this beam through an electrostatic decelerator (inverse accelerator) recovers kinetic energy as electrical energy at efficiencies potentially >80%, far exceeding the ~40% of thermal cycles. This option is geometrically unavailable in closed topologies.\"}",
+      "justification": [
+        {
+          "choice": "Open magnetic topology (mirror) confinement",
+          "reasoning": "This approach is distinct in accepting end losses and using active plugging or direct energy conversion to compensate, trading confinement perfection for geometric simplicity and potential direct conversion efficiency."
+        }
+      ],
+      "validation": {
+        "table_check": "UNMAPPABLE",
+        "concepts_checked": 0,
+        "concepts_matched": 0,
+        "violations": [],
+        "notes": "Condition not mappable to table columns"
+      },
+      "consistency": {
+        "relationship": "novel",
+        "related_constraints": [],
+        "notes": "First constraint in registry"
+      },
+      "status": "unmappable"
+    },
+    {
+      "id": "DC-011",
+      "source_node": "L0",
+      "source_option": "inertial_confinement",
+      "condition": {
+        "confinement_mode": "inertial"
+      },
+      "consequence": {
+        "target_density_required": ">200_g_per_cc_compressed"
+      },
+      "constraint_type": "force",
+      "requirement_basis": "R2",
+      "reasoning": "The burn fraction f ~ \u03c1R/(\u03c1R + H_burn), where \u03c1R is the areal density and H_burn is a fuel-dependent constant (~6 g/cm\u00b2 for D-T). For acceptable burn fraction (>30%), \u03c1R > ~3 g/cm\u00b2. Starting from solid D-T (~0.2 g/cm\u00b3), this requires radial compression by ~1000x in density.",
+      "llm_text": "{\"condition\": {\"confinement_mode\": \"inertial\"}, \"consequence\": {\"target_density_required\": \">200_g_per_cc_compressed\"}, \"type\": \"force\", \"requirement_basis\": \"R2\", \"reasoning\": \"The burn fraction f ~ \\u03c1R/(\\u03c1R + H_burn), where \\u03c1R is the areal density and H_burn is a fuel-dependent constant (~6 g/cm\\u00b2 for D-T). For acceptable burn fraction (>30%), \\u03c1R > ~3 g/cm\\u00b2. Starting from solid D-T (~0.2 g/cm\\u00b3), this requires radial compression by ~1000x in density.\"}",
+      "justification": [
+        {
+          "choice": "Inertial confinement",
+          "reasoning": "This approach achieves fusion by satisfying the Lawson criterion through extreme transient density rather than sustained confinement time, creating a fundamentally pulsed plant architecture with discrete targets and a blast chamber."
+        }
+      ],
+      "validation": {
+        "table_check": "UNMAPPABLE",
+        "concepts_checked": 0,
+        "concepts_matched": 0,
+        "violations": [],
+        "notes": "Condition not mappable to table columns"
+      },
+      "consistency": {
+        "relationship": "novel",
+        "related_constraints": [],
+        "notes": "First constraint in registry"
+      },
+      "status": "unmappable"
+    },
+    {
+      "id": "DC-012",
+      "source_node": "L0",
+      "source_option": "inertial_confinement",
+      "condition": {
+        "compression_ratio": "~1000x"
+      },
+      "consequence": {
+        "implosion_symmetry_required": "<1%_rms_nonuniformity"
+      },
+      "constraint_type": "force",
+      "requirement_basis": "R2",
+      "reasoning": "Rayleigh-Taylor instability grows at the decelerating shell surface during implosion. Perturbations with spatial modes grow exponentially, and at the high convergence ratios required, even sub-percent nonuniformities in driver illumination can seed modes that break up the shell before stagnation, preventing hot-spot formation.",
+      "llm_text": "{\"condition\": {\"compression_ratio\": \"~1000x\"}, \"consequence\": {\"implosion_symmetry_required\": \"<1%_rms_nonuniformity\"}, \"type\": \"force\", \"requirement_basis\": \"R2\", \"reasoning\": \"Rayleigh-Taylor instability grows at the decelerating shell surface during implosion. Perturbations with spatial modes grow exponentially, and at the high convergence ratios required, even sub-percent nonuniformities in driver illumination can seed modes that break up the shell before stagnation, preventing hot-spot formation.\"}",
+      "justification": [
+        {
+          "choice": "Inertial confinement",
+          "reasoning": "This approach achieves fusion by satisfying the Lawson criterion through extreme transient density rather than sustained confinement time, creating a fundamentally pulsed plant architecture with discrete targets and a blast chamber."
+        }
+      ],
+      "validation": {
+        "table_check": "UNMAPPABLE",
+        "concepts_checked": 0,
+        "concepts_matched": 0,
+        "violations": [],
+        "notes": "Condition not mappable to table columns"
+      },
+      "consistency": {
+        "relationship": "novel",
+        "related_constraints": [],
+        "notes": "First constraint in registry"
+      },
+      "status": "unmappable"
+    },
+    {
+      "id": "DC-013",
+      "source_node": "L0",
+      "source_option": "inertial_confinement",
+      "condition": {
+        "driver_energy": "deposited_in_nanoseconds"
+      },
+      "consequence": {
+        "driver_peak_power": "petawatt_scale"
+      },
+      "constraint_type": "force",
+      "requirement_basis": "R2",
+      "reasoning": "Implosion velocity must exceed ~300 km/s to reach required compression. Driver energy of ~1\u20132 MJ must be delivered faster than the shock transit time (~few ns), requiring instantaneous power of ~10^14\u201310^15 W, regardless of driver technology (laser, ion beam, z-pinch, etc.).",
+      "llm_text": "{\"condition\": {\"driver_energy\": \"deposited_in_nanoseconds\"}, \"consequence\": {\"driver_peak_power\": \"petawatt_scale\"}, \"type\": \"force\", \"requirement_basis\": \"R2\", \"reasoning\": \"Implosion velocity must exceed ~300 km/s to reach required compression. Driver energy of ~1\\u20132 MJ must be delivered faster than the shock transit time (~few ns), requiring instantaneous power of ~10^14\\u201310^15 W, regardless of driver technology (laser, ion beam, z-pinch, etc.).\"}",
+      "justification": [
+        {
+          "choice": "Inertial confinement",
+          "reasoning": "This approach achieves fusion by satisfying the Lawson criterion through extreme transient density rather than sustained confinement time, creating a fundamentally pulsed plant architecture with discrete targets and a blast chamber."
+        }
+      ],
+      "validation": {
+        "table_check": "UNMAPPABLE",
+        "concepts_checked": 0,
+        "concepts_matched": 0,
+        "violations": [],
+        "notes": "Condition not mappable to table columns"
+      },
+      "consistency": {
+        "relationship": "novel",
+        "related_constraints": [],
+        "notes": "First constraint in registry"
+      },
+      "status": "unmappable"
+    },
+    {
+      "id": "DC-014",
+      "source_node": "L0",
+      "source_option": "inertial_confinement",
+      "condition": {
+        "power_plant": "continuous_output"
+      },
+      "consequence": {
+        "driver_repetition_rate": "~1-10_Hz_required",
+        "target_factory": "required_at_scale"
+      },
+      "constraint_type": "force",
+      "requirement_basis": "R3",
+      "reasoning": "A 1 GW(e) plant at Q~50 and \u03b7_thermal~40% needs ~50 MJ/shot at 1 Hz or ~5 MJ/shot at 10 Hz. Each shot requires a precision target with cryogenic D-T ice layer of micron-scale uniformity. Fabricating, storing, and injecting ~10^8 targets/year demands an industrial-scale target factory integrated with the plant.",
+      "llm_text": "{\"condition\": {\"power_plant\": \"continuous_output\"}, \"consequence\": {\"driver_repetition_rate\": \"~1-10_Hz_required\", \"target_factory\": \"required_at_scale\"}, \"type\": \"force\", \"requirement_basis\": \"R3\", \"reasoning\": \"A 1 GW(e) plant at Q~50 and \\u03b7_thermal~40% needs ~50 MJ/shot at 1 Hz or ~5 MJ/shot at 10 Hz. Each shot requires a precision target with cryogenic D-T ice layer of micron-scale uniformity. Fabricating, storing, and injecting ~10^8 targets/year demands an industrial-scale target factory integrated with the plant.\"}",
+      "justification": [
+        {
+          "choice": "Inertial confinement",
+          "reasoning": "This approach achieves fusion by satisfying the Lawson criterion through extreme transient density rather than sustained confinement time, creating a fundamentally pulsed plant architecture with discrete targets and a blast chamber."
+        }
+      ],
+      "validation": {
+        "table_check": "UNMAPPABLE",
+        "concepts_checked": 0,
+        "concepts_matched": 0,
+        "violations": [],
+        "notes": "Condition not mappable to table columns"
+      },
+      "consistency": {
+        "relationship": "novel",
+        "related_constraints": [],
+        "notes": "First constraint in registry"
+      },
+      "status": "unmappable"
+    },
+    {
+      "id": "DC-015",
+      "source_node": "L0",
+      "source_option": "inertial_confinement",
+      "condition": {
+        "fusion_events": "pulsed_microsecond_scale"
+      },
+      "consequence": {
+        "chamber_wall_standoff": "meters_required_for_neutron_flux_dilution"
+      },
+      "constraint_type": "force",
+      "requirement_basis": "R6",
+      "reasoning": "At ~10^9 J/shot yield, the first wall at 5 m radius receives ~3 MJ/m\u00b2 per pulse in neutrons and X-rays. This impulse must not exceed the material fatigue threshold per cycle. Larger chamber radius distributes the fluence but increases structural cost and driver coupling geometry.",
+      "llm_text": "{\"condition\": {\"fusion_events\": \"pulsed_microsecond_scale\"}, \"consequence\": {\"chamber_wall_standoff\": \"meters_required_for_neutron_flux_dilution\"}, \"type\": \"force\", \"requirement_basis\": \"R6\", \"reasoning\": \"At ~10^9 J/shot yield, the first wall at 5 m radius receives ~3 MJ/m\\u00b2 per pulse in neutrons and X-rays. This impulse must not exceed the material fatigue threshold per cycle. Larger chamber radius distributes the fluence but increases structural cost and driver coupling geometry.\"}",
+      "justification": [
+        {
+          "choice": "Inertial confinement",
+          "reasoning": "This approach achieves fusion by satisfying the Lawson criterion through extreme transient density rather than sustained confinement time, creating a fundamentally pulsed plant architecture with discrete targets and a blast chamber."
+        }
+      ],
+      "validation": {
+        "table_check": "UNMAPPABLE",
+        "concepts_checked": 0,
+        "concepts_matched": 0,
+        "violations": [],
+        "notes": "Condition not mappable to table columns"
+      },
+      "consistency": {
+        "relationship": "novel",
+        "related_constraints": [],
+        "notes": "First constraint in registry"
+      },
+      "status": "unmappable"
+    },
+    {
+      "id": "DC-016",
+      "source_node": "L0",
+      "source_option": "magnetized_target",
+      "condition": {
+        "field_embedded_in_plasma": true
+      },
+      "consequence": {
+        "magnetic_flux_conserved_during_compression": true,
+        "field_scales_as_density_to_2_3": true
+      },
+      "constraint_type": "force",
+      "requirement_basis": "R2",
+      "reasoning": "In an ideal plasma (high conductivity), magnetic flux is frozen into the fluid (Alfv\u00e9n's theorem). Compressing the plasma compresses the flux: B \u221d \u03c1^(2/3) for isotropic compression. Starting from a seeded field of ~1 T, stagnation fields of ~1000 T are reached \u2014 far beyond any steady-state magnet.",
+      "llm_text": "{\"condition\": {\"field_embedded_in_plasma\": true}, \"consequence\": {\"magnetic_flux_conserved_during_compression\": true, \"field_scales_as_density_to_2_3\": true}, \"type\": \"force\", \"requirement_basis\": \"R2\", \"reasoning\": \"In an ideal plasma (high conductivity), magnetic flux is frozen into the fluid (Alfv\\u00e9n's theorem). Compressing the plasma compresses the flux: B \\u221d \\u03c1^(2/3) for isotropic compression. Starting from a seeded field of ~1 T, stagnation fields of ~1000 T are reached \\u2014 far beyond any steady-state magnet.\"}",
+      "justification": [
+        {
+          "choice": "Magnetized target (magneto-inertial) confinement",
+          "reasoning": "This hybrid approach occupies a distinct regime from both pure magnetic and pure inertial confinement, using an embedded field to reduce the compression ratio required for ignition, enabling more efficient mechanical drivers at the cost of complex pulsed plasma formation and liner fabrication logistics."
+        }
+      ],
+      "validation": {
+        "table_check": "UNMAPPABLE",
+        "concepts_checked": 0,
+        "concepts_matched": 0,
+        "violations": [],
+        "notes": "Condition not mappable to table columns"
+      },
+      "consistency": {
+        "relationship": "novel",
+        "related_constraints": [],
+        "notes": "First constraint in registry"
+      },
+      "status": "unmappable"
+    },
+    {
+      "id": "DC-017",
+      "source_node": "L0",
+      "source_option": "magnetized_target",
+      "condition": {
+        "compression_driver": "liner_or_mechanical"
+      },
+      "consequence": {
+        "liner_destroyed_each_shot": true,
+        "liner_fabrication_at_scale_required": true
+      },
+      "constraint_type": "force",
+      "requirement_basis": "R6",
+      "reasoning": "Whether the compressing element is a metal liner driven by high explosive or electromagnetic force, it is driven to velocities of ~1\u201310 km/s and compressed until the plasma reaches ignition conditions, at which point the liner is destroyed by neutron flux and plasma pressure. Each shot requires a new liner assembly.",
+      "llm_text": "{\"condition\": {\"compression_driver\": \"liner_or_mechanical\"}, \"consequence\": {\"liner_destroyed_each_shot\": true, \"liner_fabrication_at_scale_required\": true}, \"type\": \"force\", \"requirement_basis\": \"R6\", \"reasoning\": \"Whether the compressing element is a metal liner driven by high explosive or electromagnetic force, it is driven to velocities of ~1\\u201310 km/s and compressed until the plasma reaches ignition conditions, at which point the liner is destroyed by neutron flux and plasma pressure. Each shot requires a new liner assembly.\"}",
+      "justification": [
+        {
+          "choice": "Magnetized target (magneto-inertial) confinement",
+          "reasoning": "This hybrid approach occupies a distinct regime from both pure magnetic and pure inertial confinement, using an embedded field to reduce the compression ratio required for ignition, enabling more efficient mechanical drivers at the cost of complex pulsed plasma formation and liner fabrication logistics."
+        }
+      ],
+      "validation": {
+        "table_check": "UNMAPPABLE",
+        "concepts_checked": 0,
+        "concepts_matched": 0,
+        "violations": [],
+        "notes": "Condition not mappable to table columns"
+      },
+      "consistency": {
+        "relationship": "novel",
+        "related_constraints": [],
+        "notes": "First constraint in registry"
+      },
+      "status": "unmappable"
+    },
+    {
+      "id": "DC-018",
+      "source_node": "L0",
+      "source_option": "magnetized_target",
+      "condition": {
+        "plasma_formed_and_then_compressed": true
+      },
+      "consequence": {
+        "timing_precision_required": "sub-microsecond_plasma_formation_and_compression_synchronization"
+      },
+      "constraint_type": "force",
+      "requirement_basis": "R2",
+      "reasoning": "The magnetized plasma target must be formed, reach sufficient field strength and density, and be compressed before the target decays (loses its field through resistive diffusion, which scales as \u03c4_diffuse ~ \u03bc\u2080\u03c3L\u00b2). This requires tight synchronization between target formation and compression initiation, typically on microsecond timescales.",
+      "llm_text": "{\"condition\": {\"plasma_formed_and_then_compressed\": true}, \"consequence\": {\"timing_precision_required\": \"sub-microsecond_plasma_formation_and_compression_synchronization\"}, \"type\": \"force\", \"requirement_basis\": \"R2\", \"reasoning\": \"The magnetized plasma target must be formed, reach sufficient field strength and density, and be compressed before the target decays (loses its field through resistive diffusion, which scales as \\u03c4_diffuse ~ \\u03bc\\u2080\\u03c3L\\u00b2). This requires tight synchronization between target formation and compression initiation, typically on microsecond timescales.\"}",
+      "justification": [
+        {
+          "choice": "Magnetized target (magneto-inertial) confinement",
+          "reasoning": "This hybrid approach occupies a distinct regime from both pure magnetic and pure inertial confinement, using an embedded field to reduce the compression ratio required for ignition, enabling more efficient mechanical drivers at the cost of complex pulsed plasma formation and liner fabrication logistics."
+        }
+      ],
+      "validation": {
+        "table_check": "UNMAPPABLE",
+        "concepts_checked": 0,
+        "concepts_matched": 0,
+        "violations": [],
+        "notes": "Condition not mappable to table columns"
+      },
+      "consistency": {
+        "relationship": "novel",
+        "related_constraints": [],
+        "notes": "First constraint in registry"
+      },
+      "status": "unmappable"
+    },
+    {
+      "id": "DC-019",
+      "source_node": "L0",
+      "source_option": "magnetized_target",
+      "condition": {
+        "intermediate_density_regime": "10^23_to_10^27_m3"
+      },
+      "consequence": {
+        "mhd_instability_growth_timescale": "microseconds",
+        "requires_active_or_passive_stabilization": true
+      },
+      "constraint_type": "force",
+      "requirement_basis": "R2",
+      "reasoning": "At intermediate densities, the MHD instability growth time \u03c4_MHD ~ L/v_A is microseconds \u2014 slow enough that instabilities must be considered but fast enough that active feedback is impractical. Passive stabilization (wall stabilization by the conducting liner during compression) must be relied upon, which requires the liner to be in close proximity during the compression phase.",
+      "llm_text": "{\"condition\": {\"intermediate_density_regime\": \"10^23_to_10^27_m3\"}, \"consequence\": {\"mhd_instability_growth_timescale\": \"microseconds\", \"requires_active_or_passive_stabilization\": true}, \"type\": \"force\", \"requirement_basis\": \"R2\", \"reasoning\": \"At intermediate densities, the MHD instability growth time \\u03c4_MHD ~ L/v_A is microseconds \\u2014 slow enough that instabilities must be considered but fast enough that active feedback is impractical. Passive stabilization (wall stabilization by the conducting liner during compression) must be relied upon, which requires the liner to be in close proximity during the compression phase.\"}",
+      "justification": [
+        {
+          "choice": "Magnetized target (magneto-inertial) confinement",
+          "reasoning": "This hybrid approach occupies a distinct regime from both pure magnetic and pure inertial confinement, using an embedded field to reduce the compression ratio required for ignition, enabling more efficient mechanical drivers at the cost of complex pulsed plasma formation and liner fabrication logistics."
+        }
+      ],
+      "validation": {
+        "table_check": "UNMAPPABLE",
+        "concepts_checked": 0,
+        "concepts_matched": 0,
+        "violations": [],
+        "notes": "Condition not mappable to table columns"
+      },
+      "consistency": {
+        "relationship": "novel",
+        "related_constraints": [],
+        "notes": "First constraint in registry"
+      },
+      "status": "unmappable"
+    },
+    {
+      "id": "DC-020",
+      "source_node": "L0",
+      "source_option": "electrostatic_well",
+      "condition": {
+        "confinement": "purely_electrostatic"
+      },
+      "consequence": {
+        "electron_confinement": "impossible_simultaneously_with_ion_confinement"
+      },
+      "constraint_type": "force",
+      "requirement_basis": "R2",
+      "reasoning": "Earnshaw's theorem states that no stable static equilibrium exists for a charged particle in an electrostatic field in free space. A potential that confines ions (negative center) expels electrons, creating net positive space charge that self-limits the achievable well depth and density far below fusion-relevant values.",
+      "llm_text": "{\"condition\": {\"confinement\": \"purely_electrostatic\"}, \"consequence\": {\"electron_confinement\": \"impossible_simultaneously_with_ion_confinement\"}, \"type\": \"force\", \"requirement_basis\": \"R2\", \"reasoning\": \"Earnshaw's theorem states that no stable static equilibrium exists for a charged particle in an electrostatic field in free space. A potential that confines ions (negative center) expels electrons, creating net positive space charge that self-limits the achievable well depth and density far below fusion-relevant values.\"}",
+      "justification": [
+        {
+          "choice": "Electrostatic potential well confinement",
+          "reasoning": "This approach is included because it represents a distinct physical mechanism \u2014 direct ion focusing via electric fields \u2014 but is characterized primarily by its net-energy constraint; it may be viable for non-power applications but cannot satisfy R3 in its pure form."
+        }
+      ],
+      "validation": {
+        "table_check": "UNMAPPABLE",
+        "concepts_checked": 0,
+        "concepts_matched": 0,
+        "violations": [],
+        "notes": "Consequence not mappable to table columns"
+      },
+      "consistency": {
+        "relationship": "novel",
+        "related_constraints": [],
+        "notes": "First constraint in registry"
+      },
+      "status": "unmappable"
+    },
+    {
+      "id": "DC-021",
+      "source_node": "L0",
+      "source_option": "electrostatic_well",
+      "condition": {
+        "ion_recirculation": "required_for_density_buildup"
+      },
+      "consequence": {
+        "electrode_ion_loss": "unavoidable_grid_transparency_below_100%"
+      },
+      "constraint_type": "force",
+      "requirement_basis": "R3",
+      "reasoning": "Physical grids or magnetic cusps used to create the potential structure intercept a fraction of recirculating ions on every pass. Even at 99.9% transparency, the power deposited in the grid by ion impact exceeds fusion power output for all geometries satisfying the Lawson triple product \u2014 this is a direct consequence of the ratio of fusion cross-section to Coulomb scattering cross-section.",
+      "llm_text": "{\"condition\": {\"ion_recirculation\": \"required_for_density_buildup\"}, \"consequence\": {\"electrode_ion_loss\": \"unavoidable_grid_transparency_below_100%\"}, \"type\": \"force\", \"requirement_basis\": \"R3\", \"reasoning\": \"Physical grids or magnetic cusps used to create the potential structure intercept a fraction of recirculating ions on every pass. Even at 99.9% transparency, the power deposited in the grid by ion impact exceeds fusion power output for all geometries satisfying the Lawson triple product \\u2014 this is a direct consequence of the ratio of fusion cross-section to Coulomb scattering cross-section.\"}",
+      "justification": [
+        {
+          "choice": "Electrostatic potential well confinement",
+          "reasoning": "This approach is included because it represents a distinct physical mechanism \u2014 direct ion focusing via electric fields \u2014 but is characterized primarily by its net-energy constraint; it may be viable for non-power applications but cannot satisfy R3 in its pure form."
+        }
+      ],
+      "validation": {
+        "table_check": "UNMAPPABLE",
+        "concepts_checked": 0,
+        "concepts_matched": 0,
+        "violations": [],
+        "notes": "Condition not mappable to table columns"
+      },
+      "consistency": {
+        "relationship": "novel",
+        "related_constraints": [],
+        "notes": "First constraint in registry"
+      },
+      "status": "unmappable"
+    },
+    {
+      "id": "DC-022",
+      "source_node": "L0",
+      "source_option": "electrostatic_well",
+      "condition": {
+        "no_magnetic_field": "pure_electrostatic_only"
+      },
+      "consequence": {
+        "plasma_density": "space_charge_limited_orders_of_magnitude_below_lawson"
+      },
+      "constraint_type": "force",
+      "requirement_basis": "R2",
+      "reasoning": "Without a magnetic field to decouple electron and ion motion, quasi-neutrality fails above a density set by the Debye screening length, which at fusion-relevant temperatures and achievable well depths is many orders of magnitude below the density required by the Lawson criterion.",
+      "llm_text": "{\"condition\": {\"no_magnetic_field\": \"pure_electrostatic_only\"}, \"consequence\": {\"plasma_density\": \"space_charge_limited_orders_of_magnitude_below_lawson\"}, \"type\": \"force\", \"requirement_basis\": \"R2\", \"reasoning\": \"Without a magnetic field to decouple electron and ion motion, quasi-neutrality fails above a density set by the Debye screening length, which at fusion-relevant temperatures and achievable well depths is many orders of magnitude below the density required by the Lawson criterion.\"}",
+      "justification": [
+        {
+          "choice": "Electrostatic potential well confinement",
+          "reasoning": "This approach is included because it represents a distinct physical mechanism \u2014 direct ion focusing via electric fields \u2014 but is characterized primarily by its net-energy constraint; it may be viable for non-power applications but cannot satisfy R3 in its pure form."
+        }
+      ],
+      "validation": {
+        "table_check": "UNMAPPABLE",
+        "concepts_checked": 0,
+        "concepts_matched": 0,
+        "violations": [],
+        "notes": "Condition not mappable to table columns"
+      },
+      "consistency": {
+        "relationship": "novel",
+        "related_constraints": [],
+        "notes": "First constraint in registry"
+      },
+      "status": "unmappable"
+    }
+  ]
+}
