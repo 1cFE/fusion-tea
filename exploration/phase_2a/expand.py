@@ -93,11 +93,11 @@ def call_claude(prompt: str, model: str = "sonnet", log_dir: Path | None = None)
 
     # Send prompt via communicate() which handles stdin/stdout/wait
     try:
-        stdout, _ = proc.communicate(input=prompt, timeout=300)
+        stdout, _ = proc.communicate(input=prompt, timeout=600)
     except subprocess.TimeoutExpired:
         proc.kill()
         proc.wait()
-        raise RuntimeError("claude -p timed out after 300 seconds")
+        raise RuntimeError("claude -p timed out after 600 seconds")
 
     stderr_thread.join(timeout=5)
     stderr_text = "".join(stderr_lines)
@@ -317,6 +317,48 @@ def expand_node(tree, node_id: str, dry_run: bool = False, model: str = "sonnet"
     return expansion
 
 
+def _print_node_status(tree, node):
+    """Print informative message when a node can't be expanded."""
+    if node.status == "expanded":
+        n_opts = len(node.expansion.get("options", [])) if node.expansion else 0
+        n_constraints = sum(
+            len(opt.get("constraints", []))
+            for opt in (node.expansion or {}).get("options", [])
+        )
+        print(f"Node '{node.id}' is already expanded ({n_opts} options, {n_constraints} constraints).")
+
+        if node.children:
+            pending = [cid for cid in node.children
+                       if cid in tree.nodes and tree.nodes[cid].status == "pending"]
+            expanded = [cid for cid in node.children
+                        if cid in tree.nodes and tree.nodes[cid].status == "expanded"]
+
+            if pending:
+                print(f"\nPending children ({len(pending)}) — expand one of these next:")
+                for cid in pending:
+                    child = tree.nodes[cid]
+                    q = (child.question[:90] + "...") if len(child.question) > 90 else child.question
+                    print(f"  --node {cid}")
+                    print(f"       {q}")
+            if expanded:
+                print(f"\nAlready expanded ({len(expanded)}): {', '.join(expanded)}")
+    elif node.status == "pruned":
+        print(f"Node '{node.id}' is pruned and cannot be expanded.")
+    else:
+        print(f"Node '{node.id}' has status '{node.status}' — only 'pending' nodes can be expanded.")
+
+
+def _print_available_nodes(tree):
+    """Print all nodes grouped by status."""
+    by_status = {}
+    for nid, n in sorted(tree.nodes.items()):
+        by_status.setdefault(n.status, []).append(nid)
+    for status in ("pending", "expanded", "pruned"):
+        nodes = by_status.get(status, [])
+        if nodes:
+            print(f"  [{status}] {', '.join(nodes)}")
+
+
 def main():
     parser = argparse.ArgumentParser(description="Expand reasoning tree nodes via claude -p")
     parser.add_argument("--node", help="Expand a specific node by ID")
@@ -331,7 +373,22 @@ def main():
     tree = load_tree()
 
     if args.node:
-        expand_node(tree, args.node, dry_run=args.dry_run, model=args.model)
+        node = tree.nodes.get(args.node)
+        if node is None:
+            print(f"Error: Node '{args.node}' not found in tree.\n")
+            _print_available_nodes(tree)
+            sys.exit(1)
+
+        if node.status != "pending":
+            _print_node_status(tree, node)
+            sys.exit(1)
+
+        try:
+            expand_node(tree, args.node, dry_run=args.dry_run, model=args.model)
+        except (ValueError, RuntimeError) as e:
+            print(f"\nError during expansion: {e}", file=sys.stderr)
+            sys.exit(1)
+
     elif args.level is not None:
         # Find all pending nodes at the specified level
         target_prefix = f"L{args.level}"
@@ -344,12 +401,24 @@ def main():
             pending = [nid for nid, n in tree.nodes.items() if nid == "L0" and n.status == "pending"]
 
         if not pending:
-            print(f"No pending nodes at level {args.level}")
+            print(f"No pending nodes at level {args.level}.")
+            # Show what IS at that level
+            at_level = [
+                (nid, n.status) for nid, n in tree.nodes.items()
+                if nid.startswith(target_prefix) or (args.level == 0 and nid == "L0")
+            ]
+            if at_level:
+                print(f"Nodes at level {args.level}: {', '.join(f'{nid} [{s}]' for nid, s in at_level)}")
             return
 
         print(f"Found {len(pending)} pending nodes at level {args.level}: {pending}")
         for nid in pending:
-            expand_node(tree, nid, dry_run=args.dry_run, model=args.model)
+            try:
+                expand_node(tree, nid, dry_run=args.dry_run, model=args.model)
+            except (ValueError, RuntimeError) as e:
+                print(f"\nError expanding {nid}: {e}", file=sys.stderr)
+                print("Saving progress and stopping.", file=sys.stderr)
+                break
 
     if not args.dry_run:
         save_tree(tree)
