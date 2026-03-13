@@ -46,38 +46,47 @@ def build_prompt(node: TreeNode, template: str) -> str:
 
 
 def call_claude(prompt: str, model: str = "sonnet", log_dir: Path | None = None) -> dict:
-    """Call claude -p headlessly and parse JSON response.
+    """Call claude -p headlessly with streaming output.
 
-    Streams stderr to console for progress visibility.
-    Saves raw stdout/stderr to log files if log_dir is provided.
+    Uses --output-format stream-json so we can see progress in real-time.
+    Each line of stdout is a JSON event; assistant text events are printed
+    as they arrive so the user can see the model working.
 
     Returns the parsed JSON dict from the LLM's response.
     """
+    import time as _time
+
     if log_dir is None:
         log_dir = BASE_DIR / "logs"
     log_dir.mkdir(exist_ok=True)
 
     timestamp = __import__("datetime").datetime.now().strftime("%Y%m%d_%H%M%S")
-    stdout_log = log_dir / f"{timestamp}_stdout.json"
+    prompt_log = log_dir / f"{timestamp}_prompt.txt"
+    stdout_log = log_dir / f"{timestamp}_stdout.jsonl"
     stderr_log = log_dir / f"{timestamp}_stderr.txt"
 
-    print(f"  Calling claude -p --model {model} ...")
-    print(f"  Logs: {log_dir.name}/{timestamp}_*.{{json,txt}}")
+    # Save the exact prompt for debugging
+    prompt_log.write_text(prompt)
+    print(f"  Prompt: {len(prompt)} chars → {prompt_log}")
 
-    # Use Popen so we can stream stderr in real-time while capturing stdout
+    cmd = ["claude", "-p", "-", "--model", model, "--output-format", "stream-json"]
+    print(f"  Command: {' '.join(cmd)}")
+    print(f"  Logs: {log_dir.name}/{timestamp}_*.{{jsonl,txt}}")
+
     proc = subprocess.Popen(
-        [
-            "claude", "-p", "-",
-            "--model", model,
-            "--output-format", "json",
-        ],
+        cmd,
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         text=True,
     )
 
-    # Read stderr in a background thread for real-time display
+    # Write prompt to stdin and close it
+    proc.stdin.write(prompt)
+    proc.stdin.close()
+    print(f"  stdin written and closed, PID={proc.pid}")
+
+    # Read stderr in a background thread
     import threading
 
     stderr_lines = []
@@ -85,53 +94,90 @@ def call_claude(prompt: str, model: str = "sonnet", log_dir: Path | None = None)
     def _read_stderr():
         for line in proc.stderr:
             stderr_lines.append(line)
-            sys.stderr.write(f"  [claude] {line}")
-            sys.stderr.flush()
 
     stderr_thread = threading.Thread(target=_read_stderr, daemon=True)
     stderr_thread.start()
 
-    # Send prompt via communicate() which handles stdin/stdout/wait
-    try:
-        stdout, _ = proc.communicate(input=prompt, timeout=600)
-    except subprocess.TimeoutExpired:
-        proc.kill()
-        proc.wait()
-        raise RuntimeError("claude -p timed out after 600 seconds")
+    # Read stdout line-by-line, streaming content to console
+    start_time = _time.time()
+    stdout_lines = []
+    result_text = ""
+    chars_streamed = 0
+    event_count = 0
+    last_tick = start_time
 
+    print(f"  Waiting for first event...")
+
+    for line in proc.stdout:
+        stdout_lines.append(line)
+        now = _time.time()
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            evt = json.loads(line)
+        except json.JSONDecodeError:
+            print(f"  [parse-error] {line[:200]}")
+            continue
+
+        event_count += 1
+        evt_type = evt.get("type", "")
+        elapsed = int(now - start_time)
+
+        if evt_type == "system":
+            model_info = evt.get("model", "?")
+            print(f"  [{elapsed}s] system init (model={model_info})")
+
+        elif evt_type == "assistant":
+            # Extract text content and stream it
+            for block in evt.get("message", {}).get("content", []):
+                if block.get("type") == "text":
+                    text = block.get("text", "")
+                    if text:
+                        chars_streamed += len(text)
+                        # First chunk: show content preview
+                        if chars_streamed == len(text):
+                            print(f"  [{elapsed}s] first content: {text[:120]}")
+                        # Periodic updates every 5s
+                        elif now - last_tick >= 5:
+                            print(f"  [{elapsed}s] ... {chars_streamed:,} chars so far")
+                            last_tick = now
+                elif block.get("type") == "tool_use":
+                    tool = block.get("name", "?")
+                    print(f"  [{elapsed}s] TOOL USE: {tool} — {json.dumps(block.get('input', {}))[:200]}")
+
+        elif evt_type == "result":
+            result_text = evt.get("result", "")
+            cost = evt.get("total_cost_usd", "?")
+            turns = evt.get("num_turns", "?")
+            print(f"  [{elapsed}s] result ({len(result_text)} chars, cost=${cost}, turns={turns})")
+
+        else:
+            # Show any unexpected event types
+            if evt_type not in ("rate_limit_event",):
+                print(f"  [{elapsed}s] {evt_type}: {list(evt.keys())[:5]}")
+
+    proc.wait()
     stderr_thread.join(timeout=5)
     stderr_text = "".join(stderr_lines)
 
+    elapsed = int(_time.time() - start_time)
+    print(f"  Done: {elapsed}s, {event_count} events, {chars_streamed:,} chars, rc={proc.returncode}")
+
     # Save logs
-    stdout_log.write_text(stdout or "")
+    stdout_log.write_text("".join(stdout_lines))
     stderr_log.write_text(stderr_text)
+    if stderr_text:
+        print(f"  Stderr: {stderr_text[:300]}")
 
     if proc.returncode != 0:
         raise RuntimeError(f"claude -p failed (rc={proc.returncode}): {stderr_text[:500]}")
 
-    if not stdout.strip():
-        raise RuntimeError(f"claude -p returned empty stdout. stderr: {stderr_text[:500]}")
-
-    # Parse the outer JSON wrapper from --output-format json
-    # Output is a list of event objects; the result is in the last "result" event
-    outer = json.loads(stdout)
-
-    if isinstance(outer, list):
-        # Find the result event
-        result_events = [e for e in outer if isinstance(e, dict) and e.get("type") == "result"]
-        if not result_events:
-            raise RuntimeError(f"No 'result' event in claude output ({len(outer)} events)")
-        content_text = result_events[-1].get("result", "")
-    elif isinstance(outer, dict):
-        content_text = outer.get("result", "")
-    else:
-        raise RuntimeError(f"Unexpected claude output type: {type(outer)}")
-
-    if not content_text:
-        raise RuntimeError("Empty result from claude")
+    if not result_text:
+        raise RuntimeError(f"Empty result from claude. {chars_streamed} chars streamed but no result event.")
 
     # The LLM's response should be JSON, possibly wrapped in markdown fences
-    return parse_llm_json(content_text)
+    return parse_llm_json(result_text)
 
 
 def parse_llm_json(text: str) -> dict:

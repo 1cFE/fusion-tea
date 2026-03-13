@@ -737,9 +737,275 @@
         }
       ],
       "parent_id": "L0",
-      "children": [],
-      "status": "pending",
-      "expansion": null
+      "children": [
+        "L2-open-magnetic-topology-confinement-mirro-dec-maximized-minimum-plug",
+        "L2-open-magnetic-topology-confinement-mirro-moderate-plug-with-dec-energy-recycling-",
+        "L2-open-magnetic-topology-confinement-mirro-thermal-barrier-assisted-plug"
+      ],
+      "status": "expanded",
+      "expansion": {
+        "question_in_context": "In an open magnetic topology mirror machine that accepts end losses and uses active plugging to compensate, what is the minimum ratio of plug power to fusion power (\u03c6_plug = P_plug/P_fusion) at which the plant achieves net positive electricity output, given that direct energy conversion (DEC) at the mirror ends recovers fraction \u03b7_DEC of escaping charged particle kinetic energy?",
+        "requirements_bearing": {
+          "R1": null,
+          "R2": "Central lower-bound constraint. The plug must raise the effective confinement time \u03c4 sufficiently that n\u00b7\u03c4\u00b7T exceeds the Lawson threshold. Below a minimum \u03c6_plug, end losses are too large, fusion conditions cannot be sustained, and P_fusion collapses regardless of DEC efficiency. This sets the floor of the viable \u03c6 window.",
+          "R3": "Central upper-bound constraint. Net electricity requires: gross electrical output (neutron thermalization + DEC end-loss recovery) must exceed total recirculating power (plug + plant parasitic loads). This creates a ceiling \u03c6_max above which the plant is energy-negative. The viable operating window is [\u03c6_min, \u03c6_max]; DEC shifts both bounds favorably by relaxing the Q requirement.",
+          "R4": "High relevance. DEC is the mechanism that makes the \u03c6 window usable. Thermalized neutron energy follows the Rankine/Brayton thermal path at \u03b7_th \u2248 0.35; end-loss charged particle streams can be converted at \u03b7_DEC \u2248 0.60\u20130.80 via electrostatic deceleration grids. This dual-path output structure is unique to open-topology machines and is the principal economic argument for accepting end losses.",
+          "R5": "Moderate. Higher end-loss rates (lower \u03c6_plug) reduce first-wall neutron loading but increase particle flux at the DEC collector and plug hardware, which must survive neutron activation and thermal cycling in those end-cell environments.",
+          "R6": "Moderate. The plug region sustains the highest localized electromagnetic field intensity and particle bombardment in the machine. Plug coil hardware, electrostatic grid structures (if used), and DEC collector geometry must survive thermomechanical loads while maintaining precise field and potential profiles."
+        },
+        "options": [
+          {
+            "id": "dec_maximized_minimum_plug",
+            "name": "DEC-Maximized Minimum Plug",
+            "thesis": "Accept that open topology inherently produces an end-loss particle stream, and exploit that stream as an energy resource via DEC rather than suppressing it with large plug expenditure. The minimum viable \u03c6_plug is set by the Lawson confinement threshold alone \u2014 just enough electrostatic barrier to sustain fusion conditions \u2014 while DEC closes the plant energy balance by recovering most of the end-loss power. The key insight is that DEC lowers the required plasma Q from ~3 (thermal-only plant) to ~2\u20132.5, which in turn lowers \u03c6_min.",
+            "requirement_analysis": {
+              "R1": null,
+              "R2": "Plug must create a barrier height e\u03a6/T_i sufficient to extend ion confinement time from \u03c4_transit ~ L/v_th (microseconds, unconfined) to \u03c4_Lawson. For mirror ratio R and electrostatic potential \u03a6, \u03c4_eff ~ \u03c4_unconfined \u00d7 exp(e\u03a6/T_i). At e\u03a6/T_i = 3\u20134 in a long mirror, \u03c4_eff improves by factor ~20\u201355\u00d7. Electron end losses are faster by sqrt(m_i/m_e) ~ 60 unless ambipolar potential or separate electron plugging is applied; failure to address electron losses forces much higher plug potentials, dramatically raising \u03c6_min.",
+              "R3": "Plant net-electricity condition (DT, \u03b1-particle end-loss fraction f_e): \u03c6_max = \u03b7_th \u00d7 (0.8 + (1\u2212f_e)\u00d70.2) + \u03b7_DEC \u00d7 f_e \u00d7 0.2 \u2212 \u03b5_parasitic. For \u03b7_th=0.35, \u03b7_DEC=0.70, f_e=0.40, \u03b5_parasitic=0.05: \u03c6_max = 0.35\u00d70.92 + 0.70\u00d70.08 \u2212 0.05 = 0.322 + 0.056 \u2212 0.05 \u2248 0.33. Without DEC (all end losses thermalized at \u03b7_th): \u03c6_max \u2248 0.30. DEC adds ~3 percentage points to the ceiling and, more importantly, reduces the minimum Q needed, lowering \u03c6_min.",
+              "R4": "Without DEC, the f_e \u00d7 0.20 \u00d7 P_f end-loss stream is converted at \u03b7_th = 0.35 (wasted potential). DEC at \u03b7_DEC = 0.70 recovers the same stream at 2\u00d7 the efficiency, improving the effective plant efficiency. The increment \u0394P_net = (\u03b7_DEC \u2212 \u03b7_th) \u00d7 f_e \u00d7 0.2 \u00d7 P_f = 0.35 \u00d7 0.08 \u00d7 P_f = 0.028 P_f. Small in absolute terms, but reduces minimum Q requirement by ~15\u201320%.",
+              "R5": "At minimum plug fraction, end-loss current to the DEC collector is at its maximum. DEC hardware faces the highest particle flux and must be rated accordingly; beam spread and space-charge effects in the collector become engineering constraints.",
+              "R6": null
+            },
+            "constraints": [
+              {
+                "condition": {
+                  "plug_barrier_height": "e\u03a6/T_i < threshold"
+                },
+                "consequence": {
+                  "effective_confinement_time": "below_Lawson",
+                  "P_fusion": "collapses"
+                },
+                "type": "force",
+                "requirement_basis": "R2",
+                "reasoning": "Electrostatic confinement improvement is exponential in e\u03a6/T_i: \u03c4_eff \u221d exp(e\u03a6/T_i). Below the barrier height that brings n\u00b7\u03c4\u00b7T to the Lawson threshold (~2\u00d710\u00b2\u2070 m\u207b\u00b3\u00b7s at 10 keV for DT), the plasma cannot ignite and P_fusion \u2192 0, making positive net electricity impossible regardless of \u03b7_DEC."
+              },
+              {
+                "condition": {
+                  "eta_DEC": 0.7,
+                  "f_end_alpha": 0.4,
+                  "eta_th": 0.35,
+                  "eps_parasitic": 0.05
+                },
+                "consequence": {
+                  "phi_max_energy_balance": 0.33
+                },
+                "type": "force",
+                "requirement_basis": "R3",
+                "reasoning": "Solving the plant electricity balance at break-even: \u03c6_max = \u03b7_th\u00d7(0.8+(1\u2212f_e)\u00d70.2) + \u03b7_DEC\u00d7f_e\u00d70.2 \u2212 \u03b5_p = 0.35\u00d70.92 + 0.056 \u2212 0.05 \u2248 0.33. Above this plug fraction, recirculating power exceeds gross plant output."
+              },
+              {
+                "condition": {
+                  "electron_end_loss": "uncontrolled",
+                  "phi_plug": "ion-only"
+                },
+                "consequence": {
+                  "required_phi_plug": "increased_factor_~5\u201310",
+                  "ambipolar_potential": "insufficient"
+                },
+                "type": "force",
+                "requirement_basis": "R2",
+                "reasoning": "Electron thermal velocity exceeds ion thermal velocity by sqrt(m_i/m_e) \u2248 60 for deuterium. Without a separate electron plugging mechanism, electrons drain the plasma faster than ions, collapsing the electrostatic plug potential via charge imbalance. An effective electrostatic plug must confine both species, requiring the plug potential to exceed both T_i and T_e in the relevant regions."
+              },
+              {
+                "condition": {
+                  "DEC_efficiency": "eta_DEC > eta_th"
+                },
+                "consequence": {
+                  "Q_plasma_minimum_reduced": "from ~3.0 to ~2.5\u20132.7"
+                },
+                "type": "force",
+                "requirement_basis": "R3",
+                "reasoning": "DEC converts the end-loss charged particle stream at efficiency \u03b7_DEC > \u03b7_th, which means each unit of end-loss power contributes more to plant output than if thermalized. The effective plant conversion efficiency improves from \u03b7_th to \u03b7_eff = \u03b7_th\u00d7(1\u2212f_e) + \u03b7_DEC\u00d7f_e, reducing Q_plasma_min = 1/\u03b7_eff from ~2.9 (thermal-only) to ~2.6 (with DEC at \u03b7_DEC=0.70, f_e=0.40)."
+              },
+              {
+                "condition": {
+                  "phi_plug": "minimum_viable_confinement"
+                },
+                "consequence": {
+                  "phi_min_range": "0.10\u20130.20",
+                  "viability_window": "[phi_min, 0.33]"
+                },
+                "type": "force",
+                "requirement_basis": "R2",
+                "reasoning": "Empirical mirror physics suggests that sustaining Lawson-threshold confinement requires the plug barrier to deflect ~80\u201390% of end-loss current back to the plasma, corresponding to e\u03a6/T_i ~ 3\u20134. The power required for an electrostatic plug at this barrier height, against the residual end-loss current density at steady state, is roughly 10\u201320% of fusion power in the absence of thermal barriers \u2014 setting \u03c6_min \u2248 0.10\u20130.20."
+              }
+            ],
+            "new_questions": [
+              "What electrostatic barrier height e\u03a6/T_i is required at \u03c6_min to satisfy n\u00b7\u03c4 \u2265 n\u00b7\u03c4_Lawson, and how does the required mirror ratio R = B_max/B_min set by that barrier height constrain the magnet geometry?",
+              "What fraction f_plug\u2192DEC of the plug power ultimately exits as high-energy particles capturable by DEC vs. being radiated or deposited locally in the plug region? If large, the effective net plug cost drops to \u03c6_net = \u03c6_gross \u00d7 (1 \u2212 \u03b7_DEC \u00d7 f_plug\u2192DEC).",
+              "Can the ambipolar potential established by the faster-escaping electrons provide enough natural plugging to move \u03c6_min to very low values, or does turbulent transport always require supplemental active plug power?",
+              "What DEC collector geometry (venetian-blind electrostatic, traveling-wave, magnetic expansion) maximizes \u03b7_DEC at the current densities produced by a minimum-plug operation point?"
+            ],
+            "context_addition": {
+              "choice": "Minimum plug fraction \u2248 0.10\u20130.20 (set by Lawson confinement requirement), upper energy-balance limit \u03c6_max \u2248 0.33; DEC lowers the required plasma Q from ~3.0 to ~2.6 and provides a higher-efficiency second energy conversion path for the end-loss stream",
+              "reasoning": "The open topology inherently generates an end-loss particle stream; treating that stream as a recoverable resource rather than a pure loss reframes the minimum-plug question \u2014 the plant need only produce enough fusion power to cover the fraction of plug cost NOT returned by DEC, substantially relaxing the Q requirement relative to a closed-field device."
+            }
+          },
+          {
+            "id": "recycling_loop_moderate_plug",
+            "name": "Moderate Plug with DEC Energy Recycling Loop",
+            "thesis": "Operate at a higher gross plug fraction (\u03c6_gross = 0.20\u20130.30) to achieve well-confined, high-Q plasma, while using DEC to recycle a substantial fraction of plug-origin end-loss power back to electricity. The key distinction from the minimum-plug option is that the plug/DEC pair is treated as a coupled energy recycling loop: plug power improves confinement, the better-confined plasma has fewer but more energetic end losses, and DEC captures a large fraction of those losses. The net plug cost is \u03c6_net = \u03c6_gross \u00d7 (1 \u2212 \u03b7_DEC \u00d7 f_recov), which can be as low as 0.09\u20130.13 P_f even at \u03c6_gross = 0.30.",
+            "requirement_analysis": {
+              "R1": null,
+              "R2": "Higher \u03c6_gross provides substantial margin above the Lawson threshold, making ignition more robust to perturbations in density, temperature, or plug potential. The plasma operates at Q = 1/\u03c6_gross \u2248 3\u20135, well above the net-electricity threshold.",
+              "R3": "Numerical example: \u03c6_gross = 0.30, \u03b7_DEC = 0.70, f_recov = 0.50 (half of plug-origin power exits via DEC-capturable end losses), f_e = 0.40. \u03c6_net = 0.30 \u00d7 (1 \u2212 0.70\u00d70.50) = 0.30 \u00d7 0.65 = 0.195. Gross output = \u03b7_th\u00d70.8 + [\u03b7_th\u00d7(1\u2212f_e) + \u03b7_DEC\u00d7f_e] \u00d7 0.2 = 0.28 + [0.21 + 0.28]\u00d70.2 = 0.378. Net = 0.378 \u2212 0.195 \u2212 0.05 \u2248 0.133 P_f as deliverable electricity, or ~13% plant efficiency on fusion power basis.",
+              "R4": "The DEC must handle both the native plasma end losses and the recycled plug energy stream. Higher gross plug power means higher current through the DEC; space-charge effects in electrostatic collectors limit the maximum current density without \u03b7_DEC degradation, bounding how high \u03c6_gross can go while maintaining the recycling benefit.",
+              "R5": "Better confinement at higher \u03c6_gross reduces end-loss particle current per unit fusion power, relaxing DEC hardware stress even though \u03c6_gross is larger, because Q is higher and P_fusion per unit plug power is greater.",
+              "R6": "Plug coils and hardware must sustain higher electromagnetic loads at larger \u03c6_gross; structural integrity of the plug region becomes a key design driver."
+            },
+            "constraints": [
+              {
+                "condition": {
+                  "phi_gross": 0.3,
+                  "eta_DEC": "<0.45"
+                },
+                "consequence": {
+                  "net_electricity": "negative_or_marginal"
+                },
+                "type": "force",
+                "requirement_basis": "R3",
+                "reasoning": "At \u03c6_gross=0.30 with f_recov=0.50, \u03c6_net = 0.30\u00d7(1 \u2212 \u03b7_DEC\u00d70.50). For \u03c6_net < gross_output \u2212 parasitic \u2248 0.378 \u2212 0.05 = 0.328, we need \u03b7_DEC > (1 \u2212 0.328/0.30)/0.50 \u2248 0 (trivially satisfied at this \u03c6). But for net electricity: 0.378 \u2212 0.30\u00d7(1\u22120.50\u00d7\u03b7_DEC) \u2212 0.05 > 0, giving \u03b7_DEC > (0.30\u22120.328)/0.15 \u2014 the recycling loop breaks down below \u03b7_DEC \u2248 0.40 when \u03c6_gross = 0.40 or larger."
+              },
+              {
+                "condition": {
+                  "phi_gross": ">0.38"
+                },
+                "consequence": {
+                  "net_electricity": "impossible_even_at_eta_DEC_equals_1"
+                },
+                "type": "force",
+                "requirement_basis": "R3",
+                "reasoning": "Even with perfect DEC (\u03b7_DEC=1), the plant cannot achieve net electricity above \u03c6_gross \u2248 0.38 because gross output is bounded at ~0.38 P_f and plant parasitic loads (~0.05 P_f) consume the remainder before any power is returned to the plug. The recycling loop cannot produce more power than the plant generates."
+              },
+              {
+                "condition": {
+                  "DEC_current_density": "high",
+                  "phi_gross": "increasing"
+                },
+                "consequence": {
+                  "space_charge_limit": "reduces_eta_DEC"
+                },
+                "type": "force",
+                "requirement_basis": "R4",
+                "reasoning": "Electrostatic DEC collectors have a space-charge-limited current density (Child-Langmuir limit): J_max \u221d V^(3/2)/d\u00b2. At high end-loss current, the collector cannot decelerate particles efficiently, causing a fraction to pass through without being captured. This creates negative feedback: larger \u03c6_gross \u2192 more end-loss current \u2192 lower \u03b7_DEC \u2192 worse energy recycling \u2192 higher effective net cost."
+              }
+            ],
+            "new_questions": [
+              "Is there an optimal \u03c6_gross that maximizes net plant electrical output, balancing better confinement quality (higher P_fusion) against higher recirculating power cost?",
+              "At what end-loss current density does space-charge degradation in the DEC collector begin, and does this set a harder ceiling on \u03c6_gross than the simple energy balance argument?",
+              "How does plasma instability (loss-cone instability, drift-cyclotron modes) change the effective end-loss rate as a function of plug power, and does turbulent transport wash out the exponential confinement improvement expected from the potential barrier?"
+            ],
+            "context_addition": {
+              "choice": "Moderate gross plug fraction (0.20\u20130.30) with active DEC energy recycling, achieving effective net plug cost ~ 0.65\u00d7\u03c6_gross, operating Q_plasma ~ 3\u20135",
+              "reasoning": "The recycling-loop framing decouples gross plug expenditure (which determines confinement quality) from net plug cost (which determines plant economics), offering design margin and confinement reliability not available at minimum-plug operation."
+            }
+          },
+          {
+            "id": "thermal_barrier_assisted_minimum",
+            "name": "Thermal Barrier Assisted Plug",
+            "thesis": "Insert localized electrostatic potential wells (thermal barriers) between the mirror midplane and the plug region to exponentially suppress electron end losses without requiring the main plug to oppose full electron thermal energy. The dominant confinement problem in a mirror is electron drainage \u2014 electrons are ~60\u00d7 faster than ions \u2014 and a thermal barrier at depth e\u03a6_b/T_e suppresses electron end-loss rate by factor exp(e\u03a6_b/T_e). This decouples the electron and ion plugging problems, allowing \u03c6_total = \u03c6_plug + \u03c6_barrier to fall as low as 0.03\u20130.08, far below what unassisted plugging achieves, at the cost of significantly increased engineering complexity.",
+            "requirement_analysis": {
+              "R1": null,
+              "R2": "A thermal barrier of depth 3T_e (e\u03a6_b = 3T_e) reduces electron end-loss rate by e\u00b3 \u2248 20\u00d7, effectively making the electron confinement time comparable to the ion confinement time. This allows the main plug to address only the ion confinement problem at much lower potential (e\u03a6_plug ~ 2\u20133 T_i vs. the unassisted case where electron losses force \u03a6_plug >> T_e). Combined, the system achieves Lawson confinement at significantly lower total power input.",
+              "R3": "\u03c6_total = \u03c6_plug + \u03c6_barrier, where \u03c6_barrier is the ECRH power fraction needed to maintain the barrier electron temperature gradient. If \u03c6_barrier ~ 0.02\u20130.04 P_f and \u03c6_plug is reduced from 0.15 to 0.05, net \u03c6_total ~ 0.07\u20130.09, substantially below unassisted \u03c6_min ~ 0.10\u20130.20. This extends the lower end of the viable window from ~0.10 to ~0.05.",
+              "R4": "With thermal barriers suppressing electron end losses, the majority of the end-loss current is ion-dominated. Ion end-losses are more monoenergetic (peaked around T_i to 2T_i) than electron end-losses, which improves DEC efficiency because monoenergetic beams are more efficiently decelerated in electrostatic converters than broad energy spectra.",
+              "R5": null,
+              "R6": "The thermal barrier region requires ECRH microwave injection hardware at a specific cyclotron resonance field location between the central cell and the plug. This occupies the narrow mechanical space of the transition coil region and must be engineered for neutron activation, RF breakdown risk, and compatibility with the surrounding magnetic field geometry."
+            },
+            "constraints": [
+              {
+                "condition": {
+                  "thermal_barrier": "active"
+                },
+                "consequence": {
+                  "barrier_maintenance_ECRH_power": "must_be_included_in_phi_total"
+                },
+                "type": "force",
+                "requirement_basis": "R3",
+                "reasoning": "A thermal barrier is not passive \u2014 it requires continuous ECRH heating to maintain the population of warm electrons that sustain the local potential minimum. This power must be counted in the total recirculating power budget; the barrier only reduces net \u03c6 if \u03c6_barrier < (\u03c6_plug_saved)."
+              },
+              {
+                "condition": {
+                  "barrier_depth": "e\u03a6_b/T_e",
+                  "required_value": ">2.5"
+                },
+                "consequence": {
+                  "electron_end_loss_suppression": "factor > exp(2.5) \u2248 12"
+                },
+                "type": "force",
+                "requirement_basis": "R2",
+                "reasoning": "For the thermal barrier to reduce electron drainage below the ion drainage rate, the barrier depth must satisfy exp(e\u03a6_b/T_e) > sqrt(m_i/m_e) ~ 60, requiring e\u03a6_b/T_e > ln(60) \u2248 4.1. For partial benefit that relaxes plug requirements without fully solving the electron problem, e\u03a6_b/T_e > 2.5 provides a factor-12 reduction in electron end-loss rate."
+              },
+              {
+                "condition": {
+                  "ECRH_resonance": "required_at_barrier_location"
+                },
+                "consequence": {
+                  "local_B_field": "constrained_to_match_ECRH_frequency",
+                  "coil_geometry_freedom": "reduced"
+                },
+                "type": "force",
+                "requirement_basis": "R6",
+                "reasoning": "ECRH requires \u03c9_microwave = eB/m_e at the barrier location. For microwave sources at available frequencies (28 GHz, 110 GHz, 170 GHz), the resonant field must be B = \u03c9 m_e/e = 1.0 T, 3.9 T, or 6.1 T respectively. This fixes the magnetic field at the barrier location, constraining the entire coil arrangement and removing the designer's freedom to tune the barrier position independently of the field profile."
+              },
+              {
+                "condition": {
+                  "three_region_field_structure": "central_cell + barrier + plug"
+                },
+                "consequence": {
+                  "MHD_stability_modes": "increased",
+                  "flute_instabilities": "at_each_transition"
+                },
+                "type": "force",
+                "requirement_basis": "R2",
+                "reasoning": "Each potential well and hill creates a region of unfavorable field curvature or pressure gradient that is susceptible to flute and interchange instabilities absent in a simple two-mirror configuration. Stabilization methods (quadrupole minimum-B coils, wall stabilization, drift-averaged curvature) must be applied at each region independently, compounding the engineering complexity."
+              }
+            ],
+            "new_questions": [
+              "What ECRH power fraction \u03c6_barrier is required to sustain a barrier of depth e\u03a6_b/T_e = 4 against neutral gas penetration, charge-exchange erosion, and classical thermal conduction? Is there a self-sustained barrier regime where alpha-heated electrons maintain the gradient?",
+              "At what plasma \u03b2 does the thermal barrier potential structure become unstable to pressure-driven MHD modes, and does this set a ceiling on central-cell plasma pressure independent of the Lawson confinement threshold?",
+              "Can thermal barriers be operated in a pulsed or resonant mode rather than continuously, reducing time-averaged \u03c6_barrier while the barrier potential is transiently maintained during critical confinement periods?",
+              "Does the preferential loss of low-energy electrons through the barrier create a non-Maxwellian electron distribution in the central cell, and how does this affect bremsstrahlung radiation losses and fusion power density?"
+            ],
+            "context_addition": {
+              "choice": "Thermal barrier assisted plug, separating electron and ion confinement problems, enabling \u03c6_total = \u03c6_plug + \u03c6_barrier \u2248 0.03\u20130.08, well below unassisted \u03c6_min ~ 0.10\u20130.20",
+              "reasoning": "Thermal barriers are a distinct approach because they address the primary confinement asymmetry of mirrors (electron vs. ion end-loss rates) through potential structure rather than brute-force plug power, trading engineering complexity for a much lower minimum viable recirculating power fraction."
+            }
+          }
+        ],
+        "negative_space": [
+          {
+            "approach": "Zero plug power \u2014 pure mirror ratio confinement with DEC recovery of all end losses",
+            "reason_non_viable": "Without electrostatic plugging, the mirror loss cone traps all particles with pitch angle sin\u00b2\u03b8 < 1/R. For mirror ratio R \u2264 10, the loss cone captures 30\u201350% of the velocity distribution, and unconfined particles transit the machine in \u03c4 ~ L/v_th ~ microseconds \u2014 orders of magnitude below the Lawson requirement. DEC recovers kinetic energy from escaping particles but cannot return those particles to the plasma; it does not improve confinement. A perfect DEC (\u03b7_DEC=1) would recover all end-loss power but the plasma density decays in microseconds, preventing fusion conditions from ever being established.",
+            "requirement_basis": "R2",
+            "context_dependency": "The open topology was chosen accepting end losses \u2014 but accepting end losses means passive geometric confinement alone is insufficient for fusion-grade n\u00b7\u03c4\u00b7T. The topology commits the design to managing end losses, not eliminating them through geometry alone."
+          },
+          {
+            "approach": "Plug power fraction exceeding 0.38 of fusion power, regardless of DEC efficiency",
+            "reason_non_viable": "The gross electrical output of a DT plant is bounded at approximately \u03b7_th\u00d7P_n + \u03b7_DEC\u00d7P_end \u2264 0.35\u00d70.80 + 0.70\u00d70.08 \u2248 0.38 P_f (for \u03b7_th=0.35, \u03b7_DEC=0.70, 40% alpha end-loss fraction). Plant parasitic loads (~0.05 P_f) consume a portion before any power is available for plug recirculation. The maximum net power available for the plug is ~0.33 P_f, setting a hard ceiling on \u03c6_max. Above this, the plant is energy-negative regardless of DEC performance because perfect DEC (\u03b7_DEC=1) cannot return more power than the plant generates in total.",
+            "requirement_basis": "R3",
+            "context_dependency": "The plug power is an internal recirculating load unique to the mirror topology. Closed-field machines (tokamaks, stellarators) have no equivalent recirculating load for confinement maintenance, so their energy balance ceiling is higher. The open topology trades this disadvantage for potential DEC benefit and geometric simplicity."
+          },
+          {
+            "approach": "Neutral-beam-only plugging with no electrostatic potential formation",
+            "reason_non_viable": "Neutral beams injected into a mirror plasma thermalize and contribute to plasma pressure but do not, by themselves, form a confining electrostatic potential. For a potential barrier to exist, there must be a spatial charge separation \u2014 a region where ion density exceeds electron density \u2014 which requires either charge injection into a specific region or the natural ambipolar potential. Neutral beams heat the plasma and can preferentially populate certain pitch-angle regions, but the resulting pressure profile does not constitute a plug potential unless combined with a geometric or electrostatic structure that creates the necessary spatial charge asymmetry.",
+            "requirement_basis": "R2",
+            "context_dependency": "The question specifies plug power fraction, implying an active plug mechanism. Neutral-beam heating that does not form a retarding potential is auxiliary heating, not plugging; it counts toward the recirculating power budget without providing the confinement benefit that justifies it."
+          },
+          {
+            "approach": "Very-high-efficiency DEC (\u03b7_DEC \u2192 1) as a substitute for fusion Q, allowing arbitrarily low plasma Q",
+            "reason_non_viable": "Even perfect DEC converts end-loss charged particle energy perfectly, but the neutron fraction (80% of DT fusion power) is inaccessible to DEC and must follow the thermal path at \u03b7_th \u2248 0.35. The plant cannot run on DEC alone; for net electricity, the thermal path must also cover plant overhead loads not served by DEC. With 20% charged-particle power and 80% neutron power, even \u03b7_DEC=1 improves the effective conversion efficiency from \u03b7_th to at most \u03b7_th\u00d70.8 + 1.0\u00d70.2 = 0.48, requiring Q_plasma > 1/0.48 \u2248 2.1. There is a non-negotiable minimum Q below which no combination of DEC and thermal conversion yields net electricity.",
+            "requirement_basis": "R3",
+            "context_dependency": "DT fusion inherits the 80/20 neutron/alpha split from nuclear physics. The neutron fraction is fixed by the reaction kinematics (Q-value distribution between 14.1 MeV neutron and 3.5 MeV alpha), not by engineering choices. Abandoning DT for D-D or D-\u00b3He changes this split but introduces other confinement and fuel accessibility constraints."
+          },
+          {
+            "approach": "Magnetic cusp plugging as an energy-free confinement enhancement",
+            "reason_non_viable": "Cusp configurations attempt to create minimum-B regions at the ends to reduce MHD drive for loss-cone instabilities, but they fundamentally change the field topology from a simple mirror to a multi-cusp geometry with its own loss channels at the cusp points. Particle loss at cusp points can exceed mirror end losses for the same plasma volume, and the cusp hardware itself requires substantial coil current. More critically, cusp geometries have poor compatibility with DEC because the escaping particle streams from multiple cusp points are spatially spread and energy-dispersed, making efficient electrostatic deceleration geometrically difficult.",
+            "requirement_basis": "R4",
+            "context_dependency": "The accumulated context committed to open mirror topology with DEC at the ends. Cusp plugging would constitute a different confinement topology, not a plug enhancement to the mirror; the DEC compatibility that motivates this branch of the design space would be compromised."
+          }
+        ]
+      }
     },
     "L1-inertial-confinement": {
       "id": "L1-inertial-confinement",
@@ -751,9 +1017,267 @@
         }
       ],
       "parent_id": "L0",
-      "children": [],
-      "status": "pending",
-      "expansion": null
+      "children": [
+        "L2-inertial-confinement-directed-energy-laser-driver",
+        "L2-inertial-confinement-heavy-ion-accelerator-driver",
+        "L2-inertial-confinement-pulsed-power-z-pinch-driver"
+      ],
+      "status": "expanded",
+      "expansion": {
+        "question_in_context": "For an IFE power plant that achieves fusion via extreme transient density with pulsed targets in a blast chamber, which driver technology \u2014 directed-energy (lasers), heavy-ion beams, or pulsed-power/z-pinch \u2014 best simultaneously satisfies the wall-plug efficiency required for net electricity production, the repetition rate required for continuous power output (~10 Hz), and the beam uniformity required for symmetric implosion to achieve ignition?",
+        "requirements_bearing": {
+          "R1": "Driver choice determines compatible fuel target geometry. Laser and ion beam drivers are compatible with spherical pellets of any fusionable fuel. Z-pinch geometry is intrinsically cylindrical, either forcing a secondary X-ray conversion step for spherical capsules or requiring a cylindrical fuel configuration \u2014 affecting which reaction products and fuel forms are accessible.",
+          "R2": "This is the dominant lens. The Rayleigh-Taylor instability grows as the shell converges; suppressing it requires implosion symmetry better than ~1% in drive pressure uniformity at the ablation front. Convergence ratios of ~30\u201340:1 require that seed perturbations remain below growth thresholds throughout compression. Driver architecture determines whether this symmetry is achieved directly (beam geometry) or indirectly (X-ray bath from a converter), with major consequences for target design space.",
+          "R3": "Wall-plug efficiency is existential. The plant energy balance is: \u03b7_driver \u00d7 Q_target \u00d7 \u03b7_thermal > 1 + recirculating fraction. At typical thermal conversion efficiencies (~35\u201340%), a driver at \u03b7 = 0.10 requires Q_target > ~25 for breakeven and Q_target > ~50\u2013100 for commercial viability. A driver at \u03b7 = 0.35 relaxes this to Q_target > ~7\u201315. This coupling between driver choice and required target gain is non-negotiable.",
+          "R4": "Average electrical output is yield_per_shot \u00d7 rep_rate \u00d7 \u03b7_thermal. Rep rate is a continuous plant constraint, not a peak performance metric. The driver must sustain ~10 Hz over decades, not just achieve it transiently. This imposes thermal, mechanical, and materials requirements on the driver that differ fundamentally from single-shot experimental operation.",
+          "R5": "Driver terminal components near the target chamber are irradiated by 14.1 MeV neutrons, prompt X-rays, and debris from each shot. Optical elements, magnetic quadrupoles, and transmission line conductors all degrade under this environment at different rates. The architecture of the driver determines how exposed these critical components are and whether they can be shielded, replaced robotically, or designed with sufficient lifetime.",
+          "R6": "Each driver creates a distinct thermomechanical fatigue regime in its active components. Laser gain media experience thermal cycling at rep rate. Ion beam final focus magnets accumulate radiation damage. Z-pinch transmission lines and switches experience both electromagnetic stress and nuclear activation. Long-term structural integrity of the driver system sets a reliability floor below which the plant cannot sustain baseload operation."
+        },
+        "options": [
+          {
+            "id": "laser_driver",
+            "name": "Directed-Energy Laser Driver",
+            "thesis": "Photon beams, arranged in multi-beam spherical geometry, deliver precisely shaped pulses that ablate the target surface and hydrodynamically drive implosion. The high beam count and temporal pulse shaping give maximum control over implosion symmetry and Rayleigh-Taylor stability \u2014 but photon-to-wall-plug conversion is poor, making the energy balance the central physics constraint. The trade-off is symmetry fidelity against efficiency deficit.",
+            "requirement_analysis": {
+              "R1": "Compatible with spherical D-T pellets in either direct-drive or indirect-drive (hohlraum) configurations. Target fabrication rate at ~10 Hz \u00d7 plant lifetime is an independent manufacturing challenge but not driver-specific. Advanced fuels requiring different target geometries are accessible if beam geometry can be adapted.",
+              "R2": "Strongest option for symmetry control. Multi-beam direct drive illuminates the capsule from ~48\u2013192 beam ports, enabling spatial uniformity control. Beam smoothing techniques \u2014 phase plates (RPP/DPP), polarization smoothing, smoothing by spectral dispersion (SSD) \u2014 reduce intensity non-uniformities that seed RT instability. Indirect drive via hohlraum converts laser energy to thermal X-rays, which then drive the capsule in a nearly isotropic radiation bath, decoupling driver beam count from implosion symmetry. Temporal pulse shaping directly controls the adiabat of the compressed shell, managing RT growth during the acceleration phase.",
+              "R3": "Critical weakness. Wall-plug efficiency: flashlamp-pumped glass lasers ~1%, KrF excimer ~7%, diode-pumped solid-state potentially ~15%. At 10 Hz and ~1 MJ driver energy, this implies 7\u2013100 MW of electrical draw just for the driver. Consequently, Q_target must exceed ~50\u2013100 for commercial net electricity \u2014 a regime not yet demonstrated in any target campaign.",
+              "R4": "Rep rate is thermally constrained by heat deposition in the gain medium. At 10 Hz and 1 MJ driver energy with ~10% wall-plug efficiency, ~9 MW of waste heat must be extracted from the laser chain per MW of driver output. Active cooling architectures must not introduce optical path length variations that degrade beam quality. Segmented amplifier chains with inter-segment cooling are the leading approach, but the thermal engineering is tight.",
+              "R5": "Final optics are the primary R5 vulnerability. Neutrons and target debris irradiate focusing mirrors or lenses that must be within line-of-sight of the target. Grazing-incidence metal mirrors reduce fluence on optical surfaces; sacrificial debris shields intercept debris. Neutron-induced color centers in glass optics degrade transmission over time. A credible final optics lifetime and replacement architecture is required before a laser-driven IFE plant is feasible.",
+              "R6": "Gain medium materials (glass, crystal, gas) must survive thermal cycling at rep rate without fracture or optical degradation. The mismatch between the ~1 \u00b5s pulse heating and the seconds-scale thermal diffusion creates cyclic stress. Laser glass has known fatigue behavior; diode-pumped solid-state gain media with active cooling have demonstrated higher rep rate tolerance in smaller systems."
+            },
+            "constraints": [
+              {
+                "condition": {
+                  "laser_wall_plug_efficiency": "0.01\u20130.15"
+                },
+                "consequence": {
+                  "required_target_gain_Q": ">50 for breakeven, >100 for positive plant economics"
+                },
+                "type": "force",
+                "requirement_basis": "R3",
+                "reasoning": "Plant energy balance requires \u03b7_driver \u00d7 Q_target \u00d7 \u03b7_thermal > 1 + recirculating fraction (~0.3). At \u03b7_driver = 0.10 and \u03b7_thermal = 0.38, Q_target > ~26 for breakeven; commercial viability requires Q_target ~50\u2013100. This is a hard coupling between driver technology choice and target physics that constrains the entire ignition and burn physics design space."
+              },
+              {
+                "condition": {
+                  "multi_beam_spherical_geometry": true,
+                  "beam_count": "48\u2013192"
+                },
+                "consequence": {
+                  "first_wall_beam_port_area_fraction": "significant; reduces tritium breeding blanket coverage"
+                },
+                "type": "force",
+                "requirement_basis": "R4",
+                "reasoning": "Symmetric illumination requires beams entering from many angles around the sphere. Each beam port is a penetration in the first wall and tritium breeding blanket, reducing tritium breeding ratio below the ~1.05 minimum required for fuel self-sufficiency. Blanket design must compensate with higher lithium enrichment or thicker regions, adding complexity."
+              },
+              {
+                "condition": {
+                  "final_optics_proximity": "required for focus at target distance"
+                },
+                "consequence": {
+                  "optics_damage_accumulation": "neutron fluence and debris deposition; replacement cycle drives operational costs"
+                },
+                "type": "activate",
+                "requirement_basis": "R6",
+                "reasoning": "Maintaining laser intensity at the target requires focusing elements within line-of-sight of the blast chamber. This exposes them to the full neutron spectrum and target debris from every shot. This is a damage sub-problem with no analog in ion beam drivers (which can focus from greater standoff with magnetic elements that can be shielded) and creates a maintenance cost and complexity that does not exist without this driver choice."
+              },
+              {
+                "condition": {
+                  "rep_rate": "10 Hz",
+                  "driver_pulse_energy": "~1 MJ"
+                },
+                "consequence": {
+                  "gain_medium_thermal_load": "~9 MW waste heat at \u03b7=0.10; requires active cooling integrated into optical path"
+                },
+                "type": "force",
+                "requirement_basis": "R6",
+                "reasoning": "Energy deposited as heat in the gain medium per second = (1 - \u03b7_driver) \u00d7 energy/shot \u00d7 rep_rate. At \u03b7 = 0.10, this is ~9 MW of continuous thermal load that must be extracted without perturbing beam quality. Thermal gradients in the gain medium cause optical path length distortions that degrade wavefront, directly degrading implosion symmetry and coupling efficiency."
+              }
+            ],
+            "new_questions": [
+              "What target gain Q is physically achievable with laser-driven implosions at ignition-relevant scale, and does it close the energy balance at realistic laser wall-plug efficiency?",
+              "What beam smoothing and pulse shaping scheme achieves the required Rayleigh-Taylor stability suppression at convergence ratio ~35:1 without sacrificing driver efficiency?",
+              "How are final optics protected from neutron damage and target debris at 10 Hz repetition without an unacceptable efficiency penalty from grazing-incidence geometry or debris shield absorption?",
+              "Can diode-pumped solid-state laser architectures simultaneously achieve ~15% wall-plug efficiency and ~10 Hz at multi-hundred-kJ pulse energy, and what gain medium geometry enables this?",
+              "What is the minimum beam port count for adequate implosion symmetry, and how does this set a floor on the tritium breeding blanket coverage fraction?"
+            ],
+            "context_addition": {
+              "choice": "Laser directed-energy driver",
+              "reasoning": "Photon delivery maximizes implosion symmetry control and pulse shaping fidelity but imposes a severe wall-plug efficiency penalty, forcing very high target gain as the primary downstream constraint governing all target physics and ignition design decisions."
+            }
+          },
+          {
+            "id": "heavy_ion_driver",
+            "name": "Heavy-Ion Accelerator Driver",
+            "thesis": "Accelerated heavy ions (high-Z species at GeV-range kinetic energy) deposit energy at the Bragg peak within a hohlraum converter, achieving wall-plug efficiency of ~25\u201340% through induction linac or RF accelerator technology. The efficiency advantage fundamentally relaxes the required target gain \u2014 the core trade-off is between this efficiency benefit and the severe final-focusing challenge created by space-charge repulsion among beam ions at the tight spot sizes required for target ignition.",
+            "requirement_analysis": {
+              "R1": "Compatible with D-T capsules via indirect drive through a hohlraum converter. Fuel choice is fully decoupled from driver architecture. Target fabrication at rep rate is an independent challenge common to all IFE approaches.",
+              "R2": "Implosion symmetry is achieved indirectly: ion energy heats the hohlraum walls, which reradiate as near-thermal X-rays that then drive the spherical capsule in a nearly isotropic bath. The hohlraum acts as a spatial integrator, decoupling driver beam non-uniformity from capsule illumination uniformity \u2014 a major symmetry advantage. However, this requires indirect drive, adding a conversion step. Direct ion illumination of a spherical capsule faces severe non-uniformity from finite beam count and range straggling, which redistributes dose unpredictably.",
+              "R3": "Fundamental advantage over lasers. Heavy-ion induction drivers can achieve \u03b7_wall-plug \u2248 25\u201340%. At \u03b7_driver = 0.35 and \u03b7_thermal = 0.38, the required target gain drops to Q_target > ~8 for breakeven \u2014 a gain regime that may be achievable with less extreme compression conditions than laser-driven implosions require. This changes the physics operating point of the target campaign entirely.",
+              "R4": "Linear accelerators can in principle operate at high repetition rates because the rep rate is governed by the accelerator's electrical cycle time, not thermal recovery of an optical gain medium. Staged pulse compression at the end of the accelerator allows a slow accelerator cycle to deliver a fast, high-peak-power pulse. The constraint is the size of the energy store and the pulse compression hardware, not a materials fatigue limit.",
+              "R5": "Final focusing magnetic quadrupoles can be located farther from the target than laser final optics, and magnetic elements can be shielded more readily than optical elements. This reduces activation and damage accumulation at the most sensitive driver components. However, radiation-induced demagnetization of permanent magnets or quenching of superconducting magnets by radiation heating requires careful materials selection.",
+              "R6": "The accelerator complex is physically removed from the blast chamber and radiation environment. Only the final focus section is exposed. The chamber wall and first wall survival requirements are identical to other IFE drivers \u2014 the driver choice does not substantially change the chamber environment."
+            },
+            "constraints": [
+              {
+                "condition": {
+                  "beam_current": "high",
+                  "required_focal_spot": "~1 mm at target"
+                },
+                "consequence": {
+                  "space_charge_force": "defocuses beam in final drift; requires neutralization or active chromatic correction"
+                },
+                "type": "activate",
+                "requirement_basis": "R2",
+                "reasoning": "High-current ion beams experience mutual Coulomb repulsion (space charge) that grows as the beam is transversely compressed toward the target. The emittance growth rate scales as I/\u03b2\u00b3\u03b3\u00b3 (current over relativistic factors); at the beam currents needed for target illumination, this defocusing is severe. Achieving sub-mm focal spots requires injecting neutralizing electrons into the final drift or using plasma lenses \u2014 solutions that introduce their own uniformity and reproducibility challenges. This constraint has no analog in photon or pulsed-power drivers."
+              },
+              {
+                "condition": {
+                  "driver_technology": "heavy_ion",
+                  "required_implosion_symmetry": "<1% uniformity"
+                },
+                "consequence": {
+                  "drive_mode": "indirect (hohlraum) required; direct drive physically excluded"
+                },
+                "type": "force",
+                "requirement_basis": "R2",
+                "reasoning": "Heavy ions deposit energy volumetrically at the Bragg peak, not at the outer surface. Direct illumination of a spherical capsule with a finite number of ion beams creates non-uniform energy deposition amplified by range straggling. The ~1% symmetry threshold needed to suppress Rayleigh-Taylor instability is unachievable by direct ion drive with practical beam counts. Indirect drive via hohlraum is physically required, which adds ~10\u201330% energy overhead from conversion losses."
+              },
+              {
+                "condition": {
+                  "ion_energy": "~1\u201310 GeV for adequate range in target materials"
+                },
+                "consequence": {
+                  "accelerator_length": "hundreds of meters to ~1 km; large capital cost and site area"
+                },
+                "type": "force",
+                "requirement_basis": "R3",
+                "reasoning": "Accelerating heavy ions to GeV-range energies requires sustained energy gain along the accelerator. Induction linacs achieve ~1\u201310 MV/m accelerating gradient; reaching 1 GeV requires ~100\u20131000 m of active accelerating structure. This is a direct consequence of fundamental electromagnetic limits on accelerating gradient, not an engineering shortfall, and establishes a capital cost floor that must be included in the LCOE calculation."
+              },
+              {
+                "condition": {
+                  "required_peak_power": "~10^14 W at target",
+                  "accelerator_pulse_length": "~microseconds"
+                },
+                "consequence": {
+                  "pulse_compression_ratio": "~100\u20131000\u00d7; emittance budget tightly constrained"
+                },
+                "type": "force",
+                "requirement_basis": "R2",
+                "reasoning": "Liouville's theorem preserves beam phase space \u2014 emittance cannot be reduced. The long accelerator pulse (~\u00b5s, dictated by accelerator physics) must be compressed to the ~ns timescale needed for driver coupling to the target. Compression by 100\u20131000\u00d7 while preserving the phase-space quality needed for sub-mm final focusing is a tight simultaneous constraint. Any emittance growth during compression directly degrades final focus spot size and thus implosion symmetry."
+              }
+            ],
+            "new_questions": [
+              "What beam neutralization scheme achieves adequate final focusing to ~1 mm spots without unacceptable emittance growth, and how reproducible is it shot-to-shot?",
+              "What hohlraum geometry and converter material maximizes X-ray conversion efficiency and drive uniformity from heavy-ion energy deposition at the Bragg peak?",
+              "Can induction linac pulse compression achieve the required ~100\u20131000\u00d7 compression ratio while preserving the beam emittance needed for sub-mm final focus?",
+              "How do final focus superconducting or permanent quadrupole magnets survive neutron-induced demagnetization and quench events at 10 Hz repetition over plant lifetime?",
+              "Does the km-scale accelerator footprint and capital cost dominate the LCOE, and does it create site constraints that effectively exclude this driver from certain deployment contexts?"
+            ],
+            "context_addition": {
+              "choice": "Heavy-ion accelerator driver",
+              "reasoning": "High wall-plug efficiency fundamentally relaxes target gain requirements, changing the operating physics regime, but activates a unique space-charge final-focusing constraint and forces indirect drive \u2014 the downstream design space pivots on whether neutralization-assisted focusing can reliably deliver sub-mm beams at rep rate."
+            }
+          },
+          {
+            "id": "pulsed_power_driver",
+            "name": "Pulsed-Power / Z-Pinch Driver",
+            "thesis": "Capacitor banks discharge through transmission lines to deliver multi-megampere currents that create magnetic pressure (J\u00d7B) sufficient to compress a target to fusion conditions. Wall-plug efficiency is high and achievable peak power is extraordinary \u2014 but the architecture is optimized for single-shot operation. The central trade-off is between enormous peak power capability and a fundamental rep-rate incompatibility: the electrical, mechanical, and material infrastructure of pulsed power is not engineered for the ~10 Hz continuous operation a power plant requires.",
+            "requirement_analysis": {
+              "R1": "Z-pinch geometry naturally accommodates cylindrical current-carrying structures. Coupling to spherical D-T capsules requires secondary X-ray conversion (z-pinch heats a hohlraum-like converter \u2192 X-rays drive capsule), adding a conversion step. Alternatively, magnetized liner configurations compress cylindrical D-T fuel directly, which is geometrically natural but produces a different implosion hydrodynamics. Both paths are compatible with D-T fuel.",
+              "R2": "Peak pressures achievable by large pulsed-power architectures are among the highest of any driver \u2014 hundreds of TW peak power delivered in nanoseconds creates pressures exceeding any other driver class. Cylindrical implosion symmetry is natural; the J\u00d7B force acts uniformly around the azimuth if the current path is symmetric. Rayleigh-Taylor instability in cylindrical z-pinches manifests as the sausage (m=0) and kink (m=1) modes, which are manageable with pre-magnetization. X-ray conversion efficiency from stagnated z-pinch plasma can reach 10\u201320%.",
+              "R3": "Wall-plug efficiency for fast capacitor discharge is ~15\u201330%. This is better than flashlamp lasers. However, the fundamental R3 barrier is not efficiency but rep rate: average power = yield_per_shot \u00d7 rep_rate. A plant producing 1 GJ per shot at 0.1 Hz delivers 100 MW thermal \u2014 marginal for a power plant. Achieving 1 GW thermal from 1 MJ shots requires 1 kHz, which is physically impossible with any conventional pulsed-power architecture. The only resolution is very high yield per shot (which requires enormous machines) or revolutionary rep-rate technology.",
+              "R4": "This is the existential constraint. Large capacitor banks recharge over tens of seconds to minutes at current engineering. A power plant needs ~10 Hz. The factor-of-100 to factor-of-1000 gap between current recharge rates and power plant requirements is not an incremental engineering problem \u2014 it requires a fundamental change in energy storage technology (e.g., superconducting magnetic energy storage, SMES) and switching technology (solid-state switches capable of surviving 10 Hz at multi-MJ energies).",
+              "R5": "In single-shot experimental operation, each shot is followed by an extended period for radiation decay, component inspection, and setup \u2014 natural maintenance windows. In a power plant context, 100 ms between shots means no decay window. Transmission lines and electrodes accumulate neutron activation continuously. Recyclable transmission line concepts (consumed each shot, remanufactured continuously) create a radioactive waste stream that must be managed at high throughput.",
+              "R6": "High-voltage switches (spark gaps, laser-triggered, magnetically-insulated vacuum transmission lines) are the highest-stress components. Each switch operation erodes electrode material, and radiation damage degrades insulating materials. At 10 Hz and full neutron fluence, achieving switch lifetimes of ~10^8 operations (1 year at 10 Hz) requires materials and designs with no current precedent. This is not an extrapolation problem \u2014 it is a qualitative new engineering regime."
+            },
+            "constraints": [
+              {
+                "condition": {
+                  "capacitor_bank_recharge_time": "seconds to minutes at current technology"
+                },
+                "consequence": {
+                  "achievable_rep_rate": "<<1 Hz; incompatible with 10 Hz power plant requirement by 1\u20133 orders of magnitude"
+                },
+                "type": "activate",
+                "requirement_basis": "R4",
+                "reasoning": "Capacitor banks store energy in the electric field of capacitors and are recharged by power supplies limited by switch recovery time and thermal loading of dielectrics. Current large-scale machines recharge over 10 seconds to minutes. Bridging to 10 Hz requires either: (a) inductive energy storage (SMES) with solid-state switches, (b) many parallel machines firing in staggered sequence, or (c) orders-of-magnitude improvement in switch technology. Each path activates substantial new engineering sub-problems."
+              },
+              {
+                "condition": {
+                  "driver_architecture": "z_pinch",
+                  "target_coupling": "requires direct electrical connection"
+                },
+                "consequence": {
+                  "target_loading_mechanism": "fresh target must be inserted and electrically connected within 100 ms between shots in a radioactive environment"
+                },
+                "type": "force",
+                "requirement_basis": "R6",
+                "reasoning": "Unlike beam drivers that propagate through vacuum to a remote target, z-pinch requires the target to be the current-carrying element \u2014 physically integrated into the transmission line circuit. Every shot destroys the target and the terminal section of the transmission line. At 10 Hz, robotic target loading and electrical connection in a radiation environment must occur at 10 Hz continuously \u2014 a mechanical and radiological handling challenge with no analog in laser or ion beam drivers."
+              },
+              {
+                "condition": {
+                  "z_pinch_geometry": "cylindrical J\u00d7B compression"
+                },
+                "consequence": {
+                  "natural_implosion_symmetry": "cylindrical; spherical capsule drive requires secondary X-ray conversion with associated energy loss"
+                },
+                "type": "force",
+                "requirement_basis": "R2",
+                "reasoning": "The Lorentz force J\u00d7B in a z-pinch acts radially inward along the cylindrical axis of the current path. This is intrinsically cylindrical symmetry. A spherical D-T capsule cannot be directly imploded with this geometry \u2014 it requires placing the capsule inside a hohlraum that the z-pinch X-rays fill, adding a conversion step with ~10\u201330% energy loss. Alternative: magnetized liner compression of cylindrical D-T fuel, which accepts the cylindrical geometry but changes the implosion and ignition physics."
+              },
+              {
+                "condition": {
+                  "high_voltage_switch": "must operate at 10 Hz under sustained neutron fluence"
+                },
+                "consequence": {
+                  "switch_lifetime": "severely limited by electrode erosion and radiation damage to insulators; frequent replacement required"
+                },
+                "type": "activate",
+                "requirement_basis": "R6",
+                "reasoning": "Spark gap and laser-triggered switches erode electrode material with each operation via electrode vaporization and plasma jet formation. Radiation damage degrades polymer and ceramic insulator dielectric strength. At 10 Hz and full power plant fluence, achieving the ~10^8 operation lifetime needed for economic maintenance intervals requires materials performance not demonstrated in any current system. This constraint does not exist for laser or ion beam drivers, which have no high-current switches in the radiation environment."
+              }
+            ],
+            "new_questions": [
+              "Is superconducting magnetic energy storage (SMES) at the ~GJ scale physically and economically viable, and can solid-state switches handle the full discharge current at 10 Hz repetition?",
+              "Can a recyclable transmission line concept be engineered where a continuous feed of fresh conductor is advanced to the target position at 10 Hz with adequate alignment precision and electrical continuity?",
+              "What X-ray conversion efficiency is achievable from a z-pinch stagnation, and does this plus hohlraum coupling efficiency close the energy balance with a spherical capsule ignition target?",
+              "Is magnetized liner inertial fusion (MagLIF or similar) viable as a cylindrical-geometry alternative that avoids secondary X-ray conversion, and what are the ignition conditions for cylindrical fuel compression?",
+              "How many parallel pulsed-power modules, firing in staggered sequence, are required to achieve continuous 1 GW(e) at single-shot recharge times, and does this capital cost structure remain competitive with other IFE drivers?"
+            ],
+            "context_addition": {
+              "choice": "Pulsed-power/z-pinch driver",
+              "reasoning": "Achieves extraordinary peak power and competitive wall-plug efficiency but is architecturally constrained by single-shot operation; continuous power plant operation requires solving high-rep-rate energy storage and forced target reconfiguration at 10 Hz \u2014 challenges that are qualitatively absent from beam-based driver architectures."
+            }
+          }
+        ],
+        "negative_space": [
+          {
+            "approach": "Direct electron beam driver",
+            "reason_non_viable": "High-current electron beams propagating toward a dense target are unstable against the Weibel (filamentation) instability, which breaks the beam into filaments before it reaches the target. Additionally, electrons have very short range in target materials (~mm at MeV energies), depositing energy in a thin surface layer rather than volumetrically, and cannot be focused to the required spot sizes at standoff distances because beam emittance grows rapidly through space-charge effects at the required current densities. This approach was pursued historically and abandoned on fundamental physics grounds, not engineering shortfalls.",
+            "requirement_basis": "R2",
+            "context_dependency": "The pulsed IFE blast chamber requires the driver to maintain coherence during propagation through the blast-chamber environment and deliver energy with <1% spatial uniformity to a ~1 mm target. Electron beam filamentation in the partially ionized residual gas and X-ray/debris environment of the chamber is a fundamental instability, not a solvable engineering problem at the required current densities."
+          },
+          {
+            "approach": "Microwave or radio-frequency directed-energy driver",
+            "reason_non_viable": "Electromagnetic radiation at microwave frequencies cannot be focused to the sub-millimeter spot sizes required to achieve the power density needed for target ignition from any standoff distance compatible with a blast chamber. The diffraction-limited spot size scales as \u03bb \u00d7 f/D; at GHz frequencies with any practical aperture size, the minimum achievable focus is centimeters to meters \u2014 orders of magnitude larger than the ~1 mm target. Increasing frequency to recover focusing ability converges toward the optical regime and the laser approach, which is already included in the design space.",
+            "requirement_basis": "R2",
+            "context_dependency": "The IFE architecture requires delivering ~10^14 W to a ~1 mm\u00b2 spot from meter-scale standoff distance. This power density requirement is incompatible with microwave diffraction limits from any aperture that could be installed in or adjacent to a radiation-intense blast chamber environment."
+          },
+          {
+            "approach": "Chemically driven implosion (conventional explosives)",
+            "reason_non_viable": "Chemical energy density (~5\u201310 MJ/kg) is sufficient to create implosion pressures in principle, but the precision required for a fusion implosion \u2014 <1% pressure uniformity, pulse-shaped over nanoseconds, reproducible to shot-to-shot tolerances of ~0.1% \u2014 is physically unachievable with chemical detonation. Detonation velocities have inherent spatial and temporal jitter that creates seeded perturbations orders of magnitude above Rayleigh-Taylor thresholds. Furthermore, the architecture is inherently single-use and cannot be operated at 10 Hz in a power plant context.",
+            "requirement_basis": "R4",
+            "context_dependency": "The IFE power plant requires ~10 Hz repetition of identical, precisely controlled implosion events over decades of operation. The stochastic nature of chemical detonation \u2014 detonation wave irregularities, jitter, material inhomogeneities \u2014 is incompatible with the symmetry requirements even for a single shot, and the physical reconfiguration requirement makes rep rate operation impossible."
+          },
+          {
+            "approach": "Radiation pressure (photon momentum) direct drive without ablation",
+            "reason_non_viable": "Radiation pressure P = I/c is six orders of magnitude weaker than ablation pressure at the same laser intensity (ablation pressure scales as ~I^(2/3)). Achieving the ~100 Mbar pressures required for fusion-grade compression via radiation pressure alone would require laser intensities that instantly vaporize and blow off the target material before any meaningful inward momentum is imparted. Ablation-rocket hydrodynamics \u2014 where the outward-moving ablated plasma imparts inward momentum to the remaining shell \u2014 is the physically necessary coupling mechanism. There is no radiation-pressure-only path to IFE compression.",
+            "requirement_basis": "R2",
+            "context_dependency": "The transient density approach requires compressing a D-T capsule to ~1000\u20132000\u00d7 its initial density. The Mbar pressure scale required for this compression over nanosecond timescales is physically accessible only through ablative coupling; radiation pressure falls short by six orders of magnitude at any laser intensity compatible with maintaining a coherent target before and during drive."
+          }
+        ]
+      }
     },
     "L1-magnetized-target-confinement-magneto-in": {
       "id": "L1-magnetized-target-confinement-magneto-in",
@@ -765,9 +1289,207 @@
         }
       ],
       "parent_id": "L0",
-      "children": [],
-      "status": "pending",
-      "expansion": null
+      "children": [
+        "L2-magnetized-target-confinement-magneto-in-field-reversed-configuration-frc-with-fi",
+        "L2-magnetized-target-confinement-magneto-in-compact-torus-with-toroidal-field-compon"
+      ],
+      "status": "expanded",
+      "expansion": {
+        "question_in_context": "For a magnetized target fusion system using mechanical liner compression, which plasma target configuration\u2014FRC, helicity-bearing compact torus, or weakly-organized magnetized plasma ball\u2014survives rapid cylindrical compression intact and can be formed with sufficient reproducibility in a pulsed, high-repetition-rate system?",
+        "requirements_bearing": {
+          "R1": null,
+          "R2": "Target stability and configuration integrity during compression directly determine whether fusion conditions (T > 10 keV, n\u03c4 above Lawson threshold) are achieved. An unstable target dissipates compressional work into macro-instabilities rather than thermal energy. The closed vs. open field topology question is decisive: open field lines connecting the hot core to the cold liner wall defeat the purpose of magnetization on mechanical compression timescales.",
+          "R3": "Target formation consumes stored energy from formation capacitor banks, RMF antenna circuits, or helicity-injection guns. Higher formation fidelity and stable compression translate to smaller formation energy overhead and better Q_plant. An unstable or leaky target wastes driver energy on a plasma that does not reach ignition, and the driver sizing must increase to compensate\u2014multiplying capital cost.",
+          "R4": null,
+          "R5": "Target configuration affects neutron and charged-particle streaming geometry. A compact, symmetric, closed-topology target produces an approximately isotropic fusion-product source distribution, simplifying first-wall and blanket design. An asymmetric or disrupted target creates localized hot spots in the neutron flux.",
+          "R6": "The target magnetic topology during stagnation determines the spatial distribution of peak pressure loading on the liner and surrounding structure. A closed, symmetric configuration delivers load uniformly; a disrupted target delivers asymmetric impulsive loading that can cause fatigue failure of the liner-driver interface and chamber wall."
+        },
+        "options": [
+          {
+            "id": "frc_flr_stabilized",
+            "name": "Field-Reversed Configuration (FRC) with finite Larmor radius stabilization",
+            "thesis": "The FRC is a purely poloidal closed magnetic configuration with no toroidal field, giving it a simply-connected separatrix that naturally isolates the hot plasma from the liner wall without requiring any conductors to thread through or link the plasma. The critical insight is that the FRC's FLR stability parameter \u03c1_i/r_S is rigorously conserved under ideal adiabatic compression\u2014if the configuration is FLR-stable at formation, it remains so throughout the compression stroke without any additional intervention. The trade-off is the absence of magnetic shear: unlike configurations with a toroidal field component, MHD stability relies entirely on kinetic (FLR) and gyroviscous effects, which must be established at formation and maintained against symmetry-breaking perturbations.",
+            "requirement_analysis": {
+              "R1": null,
+              "R2": "FRC adiabatic compression scales as B \u221d r_S^-2 (flux conservation), n \u221d r_S^-2 (particle conservation at fixed length), T \u221d r_S^-2 (adiabatic with perpendicular invariant \u03bc = mv_\u22a5\u00b2/2B conserved). Then \u03c1_i = \u221a(m_i T)/(eB) \u221d r_S^-1 / r_S^-2 = r_S, so \u03c1_i/r_S = const throughout compression. This self-similar stability preservation is a unique property of the FRC: no other configuration automatically preserves its own stability criterion during adiabatic compression. The dangerous n=1 tilt mode, which grows on the Alfv\u00e9n timescale ~r_S/V_A, is kinetically suppressed whenever \u03c1_i/r_S > ~0.1.",
+              "R3": "Formation energy requirements are modest: either a reversed-field theta-pinch (stored energy ~1-10 kJ for laboratory-scale FRCs) or a rotating magnetic field (RMF) driver with antennas outside the liner volume. The compression scaling is highly efficient\u2014compression ratio of 10x in radius produces ~100x increase in nT product, making the energy invested in formation highly leveraged.",
+              "R4": null,
+              "R5": "Closed separatrix means fusion alphas and neutrons are born in a region topologically isolated from the liner surface during the compressed phase. Alpha heating deposits locally within the closed flux surface region. The neutron source is approximately point-like and isotropic for blanket design.",
+              "R6": "The closed separatrix prevents direct field-line conduction paths from hot plasma to liner during compression. At stagnation, the FRC is a radially confined, azimuthally symmetric structure. Symmetric liner compression preserves this symmetry; any rotational non-uniformity in the liner drives the n=2 rotational flute mode, which is the primary asymmetric load-coupling mechanism."
+            },
+            "constraints": [
+              {
+                "condition": {
+                  "rho_i_over_r_S_at_formation": "> 0.1"
+                },
+                "consequence": {
+                  "n1_tilt_mode_growth_rate": "suppressed below Alfv\u00e9n transit rate throughout compression"
+                },
+                "type": "force",
+                "requirement_basis": "R2",
+                "reasoning": "The FRC tilt mode (n=1) grows at rate \u03b3_tilt ~ V_A/r_S in the MHD limit. Finite Larmor radius effects kinetically suppress this when \u03c1_i/r_S > ~0.1 (the FLR stabilization threshold). Since \u03c1_i/r_S is conserved under ideal compression, this condition must be satisfied at formation. This sets a coupled constraint: given a target formation field B_0 and separatrix radius r_S0, the initial temperature must satisfy T_0 > (0.1 r_S0 e B_0)\u00b2 / m_i."
+              },
+              {
+                "condition": {
+                  "formation_hardware_location": "inside compression volume"
+                },
+                "consequence": {
+                  "liner_implosion": "blocked or hardware destroyed"
+                },
+                "type": "force",
+                "requirement_basis": "R2",
+                "reasoning": "The liner must close around the FRC without physical obstructions. FRC formation requires no conductors threading through the plasma (unlike tokamak or spheromak), but the formation coils themselves must be outside the liner path. This forces either (a) pre-formation and axial injection\u2014the FRC is formed upstream, accelerated along a guide field, and translated into the compression region before the liner fires\u2014or (b) in-situ RMF formation where transverse antenna coils are embedded in the liner wall and disconnected before implosion."
+              },
+              {
+                "condition": {
+                  "liner_compression_geometry": "cylindrical_radial_only"
+                },
+                "consequence": {
+                  "axial_end_loss_channel": "remains open; plasma escapes along axis during compression"
+                },
+                "type": "activate",
+                "requirement_basis": "R2",
+                "reasoning": "A purely radial cylindrical liner compresses the FRC radially but leaves the axial ends open. The FRC has no axial field-line plugging\u2014particles escape along the axis at thermal velocity v_thi. Axial loss time \u03c4_axial ~ L/v_thi must be much longer than compression time \u03c4_compression. This either requires (a) very short FRC length (prolate \u2192 oblate, which changes equilibrium character), (b) fast compression, or (c) a liner that closes both radially and axially (end-wall geometry), each of which activates downstream design constraints."
+              },
+              {
+                "condition": {
+                  "azimuthal_liner_implosion_uniformity": "< ~5% variation in current/velocity"
+                },
+                "consequence": {
+                  "n2_rotational_mode_growth": "remains below compression timescale"
+                },
+                "type": "force",
+                "requirement_basis": "R6",
+                "reasoning": "The n=2 rotational (flute) mode is driven by centrifugal and E\u00d7B effects when azimuthal symmetry is broken. Unlike the tilt mode, this mode is not robustly stabilized by FLR effects at all parameter values. A non-uniform liner implosion (e.g., from uneven detonator timing in an explosively driven liner) imposes an azimuthal pressure asymmetry that drives this mode. This sets a tight uniformity tolerance on the driver and liner fabrication that propagates into manufacturing requirements."
+              },
+              {
+                "condition": {
+                  "separatrix_radius_approaching_liner_inner_radius": "r_S/r_liner > 0.5 violated"
+                },
+                "consequence": {
+                  "closed_flux_reconnection_with_liner_wall": "open topology, thermal conduction path to liner"
+                },
+                "type": "activate",
+                "requirement_basis": "R2",
+                "reasoning": "FRC equilibrium requires a conducting-wall standoff\u2014the separatrix cannot contact the liner wall or image-current and reconnection effects destroy the closed topology. During final compression, r_S \u2192 r_liner. Ignition must be achieved before this occurs. This sets a minimum fusion yield requirement per shot: the plasma must ignite (alpha heating becomes dominant) before the separatrix contacts the stagnating liner wall."
+              }
+            ],
+            "new_questions": [
+              "What is the minimum viable FRC translation velocity, and the maximum allowable formation-to-compression transit time, before the FRC tilts or thermally decays during axial injection into the compression chamber?",
+              "Can rotating magnetic field (RMF) formation build an FRC of sufficient density and temperature within the time budget of the pulsed cycle, and what is the antenna geometry compatible with being embedded in or immediately external to the liner?",
+              "What FRC elongation (axial length to separatrix radius ratio) optimizes the trade-off between compressional efficiency (higher elongation \u2192 better radial flux concentration) and axial end-loss rate (shorter length \u2192 less loss)?",
+              "At stagnation, when \u03b2 ~ 1 and the separatrix is approaching the liner wall, what terminates the fusion burn\u2014tilt disruption, resistive flux decay, charged particle loss, or alpha-driven instability\u2014and on what timescale does each act?",
+              "What is the required azimuthal uniformity tolerance (percent variation in liner velocity or current) to keep the n=2 rotational mode growth time above the compression duration, and is this achievable with the chosen liner driver technology?"
+            ],
+            "context_addition": {
+              "choice": "FRC with FLR stabilization as primary MTF target configuration",
+              "reasoning": "The FRC's topology is uniquely compatible with external liner compression: closed separatrix isolates plasma from liner wall, purely poloidal field requires no conductors threading the plasma volume, and the self-similar compression invariant \u03c1_i/r_S = const means stability established at formation is automatically maintained throughout the compression stroke\u2014a property no other known configuration shares."
+            }
+          },
+          {
+            "id": "helicity_bearing_compact_torus",
+            "name": "Compact torus with toroidal field component (helicity-bearing, Taylor-state equilibrium)",
+            "thesis": "Adding a toroidal magnetic field component to a compact torus introduces magnetic helicity and field-line shear, providing ideal MHD stability against both tilt and kink modes through the Taylor relaxation mechanism rather than through FLR kinetic effects. This makes the configuration MHD-stable even in the fluid limit\u2014stability does not depend on maintaining a precise \u03c1_i/r_S ratio. The fundamental trade-off: the toroidal field component cannot be compressed at the same rate as the poloidal component by a cylindrical liner, and the configuration may undergo Taylor relaxation during compression\u2014reordering its magnetic topology into a new minimum-energy state\u2014rather than purely adiabatically heating the plasma, converting compressional work into magnetic reorganization energy rather than thermal energy.",
+            "requirement_analysis": {
+              "R1": null,
+              "R2": "Toroidal field introduces magnetic shear: the field-line twist (safety factor q = r B_\u03c6 / R B_\u03b8) varies with radius. Ideal MHD perturbations must bend field lines against shear, increasing the energy cost of instability. The configuration is stable against tilt in the MHD limit (no FLR required) as long as the q-profile satisfies the Kruskal-Shafranov condition q > 1. This is a major advantage when plasma parameters are uncertain or when FLR conditions are hard to guarantee at formation.",
+              "R3": "Taylor relaxation is the key risk to net energy yield. During compression, if any reconnection event occurs\u2014even driven by resistive instabilities\u2014the configuration 'jumps' to the instantaneous Taylor state (minimum energy for given helicity), redistributing free energy from thermal to magnetic. This is an energy sink not present in the FRC case. Formation also requires helicity injection (coaxial gun or specific theta-pinch timing), adding to the formation energy overhead beyond what a simple theta-pinch FRC formation requires.",
+              "R4": null,
+              "R5": "Closed topology preserves favorable alpha-heating geometry identical to FRC. The toroidal field asymmetry creates minor poloidal structure in the fusion-product distribution, but for blanket design purposes this is negligible at the spatial scales of interest.",
+              "R6": "Taylor relaxation confers a resilience to minor asymmetric perturbations: the plasma self-organizes rather than going unstable. This means minor liner non-uniformities that would drive the n=2 mode in an FRC are instead absorbed by local reconnection without catastrophic disruption. The threshold for structural failure (asymmetric stagnation loads) is higher than for FRC."
+            },
+            "constraints": [
+              {
+                "condition": {
+                  "safety_factor_q_everywhere": "> 1"
+                },
+                "consequence": {
+                  "internal_kink_mode": "stable (Kruskal-Shafranov satisfied)"
+                },
+                "type": "force",
+                "requirement_basis": "R2",
+                "reasoning": "The internal kink mode (m=1, n=1) grows on the Alfv\u00e9n timescale when q drops below 1 anywhere in the plasma. During compression, B_\u03c6 and B_\u03b8 scale differently with radius and with the compression ratio, so the q-profile evolves. Formation must target a q-profile that remains above unity throughout the entire compression stroke, which requires careful modeling of the differential flux compression scaling before the system is built."
+              },
+              {
+                "condition": {
+                  "helicity_injection_hardware": "coaxial gun or theta-pinch coil requiring axial access"
+                },
+                "consequence": {
+                  "hardware_must_be_outside_liner_compression_volume": "requiring retraction mechanism or fixed axial standoff"
+                },
+                "type": "force",
+                "requirement_basis": "R2",
+                "reasoning": "Coaxial gun injection requires axial electrode structures that thread into the plasma formation region. These cannot be inside the liner compression volume without being destroyed by the implosion. The formation gun must be axially offset, with the compact torus either translated after formation (like FRC injection) or formed and immediately detached before the liner fires. The electrode geometry also limits the accessible helicity injection rate, constraining the formation speed."
+              },
+              {
+                "condition": {
+                  "compression_timescale": "must be << resistive helicity decay time \u03c4_K"
+                },
+                "consequence": {
+                  "helicity_approximately_conserved": "Taylor state evolves continuously but configuration does not catastrophically relax"
+                },
+                "type": "force",
+                "requirement_basis": "R2",
+                "reasoning": "Helicity decays resistively on timescale \u03c4_K ~ \u03bc_0 \u03c3 L\u00b2 where \u03c3 is electrical conductivity. Ohmic heating and compression increase T (raising \u03c3), which helps preserve helicity. But rapid compression can also drive current-profile perturbations that trigger fast reconnection events on timescales much shorter than \u03c4_K. The compression must outrun both classical resistive decay and any driven reconnection events\u2014setting a lower bound on liner velocity."
+              },
+              {
+                "condition": {
+                  "toroidal_and_poloidal_flux_compress_at_different_rates": "in cylindrical geometry"
+                },
+                "consequence": {
+                  "q_profile_evolves_non-uniformly_during_compression": "potential q < 1 crossing at some radius during stroke"
+                },
+                "type": "activate",
+                "requirement_basis": "R2",
+                "reasoning": "In a cylindrical liner, radial compression increases B_\u03b8 (poloidal flux per unit length scales as B_\u03b8 \u221d r^-1) while B_\u03c6 (toroidal flux) scales as B_\u03c6 \u221d r^-2 by flux conservation in the azimuthal direction. This differential scaling means q = r B_\u03c6 / R B_\u03b8 \u221d r^-2 / r^-1 = r^-1, so q decreases during compression. A configuration with q barely above 1 at formation may cross q = 1 during the compression stroke, triggering kink activity at an intermediate compression ratio."
+              }
+            ],
+            "new_questions": [
+              "Under what plasma resistivity and compression rate conditions does the compact torus undergo adiabatic heating versus Taylor relaxation, and is there a sharp critical threshold or a continuous transition?",
+              "Given the differential flux compression scaling (B_\u03c6 \u221d r^-2, B_\u03b8 \u221d r^-1 in cylindrical geometry), can an initial q-profile be engineered to remain above unity throughout the full compression ratio without requiring active control?",
+              "What is the formation time for pulsed helicity injection (coaxial gun) at the plasma parameters required for MTF, and does this time budget conflict with the required shot repetition rate for commercial operation?",
+              "Can Taylor relaxation be exploited constructively\u2014engineering the initial helicity so that the minimum-energy Taylor state at peak compression corresponds to a higher-temperature equilibrium\u2014or does the mechanism invariably redistribute energy away from the bulk thermal population?",
+              "How does the toroidal field component affect the stagnation dynamics when the separatrix approaches the liner wall: does the finite B_\u03c6 provide additional radial pressure support that delays flux-reconnection with the wall compared to a pure FRC?"
+            ],
+            "context_addition": {
+              "choice": "Compact torus with toroidal field component as alternative MTF target",
+              "reasoning": "The toroidal field provides ideal MHD stability in the fluid limit without requiring precise FLR conditions\u2014a meaningful advantage when plasma parameters at formation carry uncertainty. The configuration is also more resilient to minor liner asymmetries via Taylor self-organization. The cost is more complex formation hardware integration and the risk that Taylor relaxation during compression converts compressional work into magnetic reorganization energy rather than thermal energy."
+            }
+          }
+        ],
+        "negative_space": [
+          {
+            "approach": "Open-topology magnetized plasma ball\u2014axial seed field applied to pre-ionized gas without field reversal or helicity injection",
+            "reason_non_viable": "Open field lines connecting the hot plasma core to the cold liner wall create a direct parallel thermal conduction channel. Parallel conductivity \u03ba_\u2225 ~ n v_{thi} \u03bb_{mfp} is many orders of magnitude larger than cross-field conductivity \u03ba_\u22a5 \u221d B^-2. For mechanical liner compression at 1\u2013100 \u03bcs timescales, the parallel conduction loss time \u03c4_\u2225 ~ L\u00b2 n k_B / \u03ba_\u2225 is shorter than or comparable to the compression time. The plasma core cools to near-liner temperature before reaching fusion conditions. The embedded field reduces cross-field transport but cannot suppress parallel losses unless the topology is made closed.",
+            "requirement_basis": "R2",
+            "context_dependency": "This approach is viable for laser-driven MTF at ns timescales where the compression outruns conduction losses even on open field lines. The accumulated context specifies mechanical liner drivers, which operate at 1\u2013100 \u03bcs\u2014three to six orders of magnitude slower than laser drivers. At these timescales, an unorganized magnetized blob cannot thermally insulate itself against parallel losses, negating the MTF advantage over pure inertial compression."
+          },
+          {
+            "approach": "Tokamak-like large-aspect-ratio torus requiring external poloidal field coils linked through the plasma hole",
+            "reason_non_viable": "A tokamak equilibrium requires toroidal field coils that physically thread through the hole of the torus. A mechanical liner compressing from outside cannot close around this topology without crushing the linking conductors. Even if the coils could somehow be removed post-formation, the plasma would immediately lose toroidal confinement. There is no way to compress a linked-torus topology with an external liner.",
+            "requirement_basis": "R2",
+            "context_dependency": "Any configuration requiring topologically linking external conductors (conductors that pass through the plasma hole) is incompatible with the mechanical liner compression approach in the accumulated context. The liner must be able to fully enclose the plasma without obstruction. This eliminates all large-aspect-ratio toroidal configurations where the external coils define the confinement topology."
+          },
+          {
+            "approach": "Magnetic mirror configuration (open-ended, with mirror coils at axial ends)",
+            "reason_non_viable": "Mirror configurations provide axial confinement only via the mirror ratio R_m = B_max/B_min > 1. The loss cone fraction scales as 1 - 1/\u221aR_m; for any finite mirror ratio, a substantial fraction of the distribution function is unconfined. More critically, a compressing cylindrical liner reduces and eventually eliminates the mirror geometry: as the liner radius approaches the plasma radius, the field topology becomes essentially uniform and the mirror ratio collapses to unity. The configuration loses its axial plugging before reaching fusion conditions. Even with initial mirror plugging, end losses at mechanical compression timescales are unsuppressed.",
+            "requirement_basis": "R2",
+            "context_dependency": "The mechanical compression process itself destroys the mirror geometry that provides axial confinement. This is a direct consequence of the compression approach in the accumulated context: the converging liner eliminates the spatial field gradient that constitutes the mirror. A mirror configuration cannot survive its own compression driver."
+          },
+          {
+            "approach": "Stellarator-like 3D helical configuration requiring fixed external coil geometry for rotational transform",
+            "reason_non_viable": "Stellarators achieve confinement and stability through 3D shaping of external coil currents that provide a rotational transform without plasma current. This requires a fixed, geometrically precise coil arrangement. A mechanical liner implosion destroys the fixed coil geometry, eliminates the rotational transform, and causes the plasma to immediately lose 3D equilibrium. The configuration is fundamentally incompatible with any driver that physically deforms the coil topology.",
+            "requirement_basis": "R2",
+            "context_dependency": "All configurations requiring fixed external coil geometry for equilibrium maintenance are eliminated by the mechanical liner approach in the accumulated context. This includes stellarators, heliotrons, and any configuration where the confining topology is provided by conductors external to the plasma that would be deformed by the driver."
+          },
+          {
+            "approach": "Dense plasma focus (DPF) geometry\u2014axial current sheet collapsing onto axis",
+            "reason_non_viable": "A dense plasma focus operates by a current sheath that collapses radially onto the axis, creating a pinch. The magnetic configuration is dynamic, not quasi-static: confinement time is nanoseconds, and the geometry self-destructs during the plasma focus phase. This is not a configuration that can be held at a target density and temperature for a liner compression timescale of microseconds. The plasma focus operates at timescales and mechanisms incompatible with the slow mechanical liner driver\u2014by the time the liner has compressed significantly, the DPF plasma would have long since expanded and cooled.",
+            "requirement_basis": "R2",
+            "context_dependency": "The DPF timescale (ns) and the mechanical liner timescale (\u03bcs) are incompatible. The accumulated context specifies mechanical drivers, which operate over timescales three orders of magnitude longer than DPF confinement times. The DPF cannot serve as a pre-formed target for mechanical compression."
+          }
+        ]
+      }
     },
     "L1-electrostatic-potential-well-confinement": {
       "id": "L1-electrostatic-potential-well-confinement",
@@ -779,9 +1501,259 @@
         }
       ],
       "parent_id": "L0",
-      "children": [],
-      "status": "pending",
-      "expansion": null
+      "children": [
+        "L2-electrostatic-potential-well-confinement-high-beta-polyhedral-cusp-with-electron-",
+        "L2-electrostatic-potential-well-confinement-closed-topology-electron-confinement-wit",
+        "L2-electrostatic-potential-well-confinement-exb-rotating-electron-cloud-with-centrif"
+      ],
+      "status": "expanded",
+      "expansion": {
+        "question_in_context": "Given that pure electrostatic confinement (Earnshaw-limited) cannot satisfy R3 in power applications, can hybridizing magnetic electron confinement with electrostatic ion confinement circumvent the static-field instability while achieving the confinement quality needed for net energy?",
+        "requirements_bearing": {
+          "R1": "Fuel choice affects the required well depth and the ion species being electrostatically confined; D-T reduces the temperature threshold but the tritium breeding chain is unchanged",
+          "R2": "The potential well must be deep enough (tens of keV) and stable enough to sustain fusion-relevant ion densities and temperatures; magnetic confinement quality of electrons directly sets the well depth achievable",
+          "R3": "The power budget must account for: (a) electron losses through magnetic cusps or mirrors, (b) the energy cost of replacing lost electrons, (c) ion thermalization and loss; all three are continuous drains that must be beaten by fusion power",
+          "R4": "Fast fusion product ions see the same electrostatic well that confines the fuel ions; energy recovery from decelerating charged products in the well is a potential advantage not available in purely magnetic schemes",
+          "R5": "Neutron flux management is geometry-dependent; the coil/electrode structure must be designed around neutron streaming paths",
+          "R6": "High-voltage electrodes or magnet coils bounding the confinement region face combined particle bombardment, sputtering, and thermal loads; material survivability constrains the maximum operating power density"
+        },
+        "options": [
+          {
+            "id": "high_beta_cusp_wiffleball",
+            "name": "High-Beta Polyhedral Cusp with Electron Pressure-Driven Field Exclusion",
+            "thesis": "A polyhedral arrangement of magnetic cusps confines electrons; at sufficiently high electron beta, the electron pressure pushes field lines outward, compressing the cusp apertures and reducing electron loss rates below what low-beta geometry would predict. This Wiffleball-like regime makes the effective electron confinement time sensitive to plasma beta rather than purely geometric \u2014 a favorable scaling if high-density operation is achievable. Ion confinement by the resulting potential well is not subject to Earnshaw's theorem because the confining field is generated dynamically by the electron distribution, not by a fixed external potential.",
+            "requirement_analysis": {
+              "R1": "No coupling to fuel choice at the confinement mechanism level; however, D-D or p-B11 reactions require higher well depths and hotter ions, increasing both the required electron density and the thermalization challenge",
+              "R2": "Satisfaction depends entirely on whether the high-beta regime is achievable and stable; if beta falls below the threshold, cusp losses increase sharply and the well collapses \u2014 a hard threshold behavior rather than a gradual degradation",
+              "R3": "The power balance is: P_fusion > P_cusp_losses + P_injection + P_thermalization. The Wiffleball effect improves the first term's ratio but does not eliminate the drain; at small scale the balance is almost certainly negative, creating a minimum viable scale constraint",
+              "R4": "Charged fusion products (alphas, protons) are decelerated by the electrostatic well as they move outward; direct energy conversion on the way out is physically possible and could improve plant efficiency substantially compared to purely thermal cycles",
+              "R5": "The cusp geometry naturally creates streaming paths along field null lines; neutron-absorbing blanket placement must cover these preferentially",
+              "R6": "Magnet coils defining the cusps see both neutron flux and proximity to the hot electron cloud; the boundary hardware must survive the combined electromagnetic, thermal, and radiation environment"
+            },
+            "constraints": [
+              {
+                "condition": {
+                  "electron_beta": "> beta_wiffleball_threshold"
+                },
+                "consequence": {
+                  "cusp_aperture": "self-compresses, reducing loss rate"
+                },
+                "type": "force",
+                "requirement_basis": "R3",
+                "reasoning": "Below the threshold beta, electron gyroradius at the cusp is set by the vacuum field, and losses scale with cusp area geometrically. Only above threshold does plasma pressure compress the cusp, making this a nonlinear operating regime with a hard lower bound on electron density times temperature."
+              },
+              {
+                "condition": {
+                  "electron_temperature": "high (>> ion temperature)"
+                },
+                "consequence": {
+                  "electron_escape_rate": "increases exponentially over magnetic barriers"
+                },
+                "type": "force",
+                "requirement_basis": "R2",
+                "reasoning": "Electrons must be hot enough to generate a deep potential well but cold enough that their thermal velocity does not carry them over the magnetic confinement barriers; this creates a window on electron temperature that may be narrow relative to the ion temperature needed for fusion."
+              },
+              {
+                "condition": {
+                  "ion_ion_collision_rate": "non-negligible at fusion density"
+                },
+                "consequence": {
+                  "ion_velocity_distribution": "thermalizes, filling loss cone"
+                },
+                "type": "force",
+                "requirement_basis": "R3",
+                "reasoning": "Ions in the potential well undergo Coulomb collisions on a timescale that depends on density and temperature; as the distribution isotropizes, the fraction of ions with sufficient energy to escape the well increases, and thermalization-driven loss becomes the dominant power drain at high density."
+              },
+              {
+                "condition": {
+                  "geometry": "polyhedral cusp"
+                },
+                "consequence": {
+                  "neutron_streaming": "concentrated along field-null lines at vertices and edges"
+                },
+                "type": "force",
+                "requirement_basis": "R5",
+                "reasoning": "The same field-null topology that defines cusp geometry creates preferential neutron streaming paths; blanket coverage must be non-uniform and the coil structures at cusp points receive disproportionate neutron dose."
+              },
+              {
+                "condition": {
+                  "high_voltage_boundary": "required for well definition"
+                },
+                "consequence": {
+                  "sputtering_contamination": "light impurity ions introduced into plasma"
+                },
+                "type": "activate",
+                "requirement_basis": "R6",
+                "reasoning": "Any electrode or coil surface at boundary potential will be struck by ions; sputtered material enters the plasma, radiates, cools the electron cloud, and reduces well depth \u2014 a feedback loop that can destabilize the potential well entirely if not managed."
+              }
+            ],
+            "new_questions": [
+              "What is the minimum electron density-temperature product needed to sustain the Wiffleball regime, and does this imply a minimum device size for the power balance to close?",
+              "Can the electron temperature be controlled independently of ion temperature, or do Coulomb collisions equilibrate the two faster than the confinement time?",
+              "What polyhedral geometry minimizes the ratio of point-cusp area to confinement volume \u2014 and does the optimal geometry change when plasma pressure deforms the field?",
+              "Is there a self-consistent steady state where electron injection rate equals cusp loss rate at the high-beta operating point, or does the system tend to drift off this balance?",
+              "Can direct energy conversion of outward-drifting charged fusion products be implemented without perturbing the electrostatic well that confines the fuel?"
+            ],
+            "context_addition": {
+              "choice": "High-beta magnetic cusp electron confinement with self-generated electrostatic ion well",
+              "reasoning": "This is the minimal hybrid that circumvents Earnshaw's theorem: the dynamic electron distribution generates the confining potential rather than fixed electrodes. The Wiffleball mechanism is the key physical discriminator \u2014 it makes confinement quality a function of operating beta rather than purely of geometry."
+            }
+          },
+          {
+            "id": "closed_field_electron_trap_electrostatic_ion_well",
+            "name": "Closed-Topology Electron Confinement with Central Electrostatic Well",
+            "thesis": "A closed magnetic field topology \u2014 one with no field-null points in the confinement region and with favorable curvature everywhere \u2014 eliminates the discrete loss channels of cusp geometry. Electrons circulate on closed drift surfaces; their density accumulates in regions of minimum magnetic field, creating a deep potential well for ions at the center. Because the magnetic topology has no loss cones in the classical sense, the dominant electron loss mechanism shifts from geometric leakage to collisional cross-field transport, which scales more favorably with size and field strength.",
+            "requirement_analysis": {
+              "R1": "Same as cusp case; no direct coupling to fuel chemistry, but reaction rate in the well depends on ion density profile set by the well shape",
+              "R2": "Closed topology removes the loss-cone problem for electrons but introduces the MHD stability question: closed-field configurations with a central pressure maximum are interchange-unstable in standard magnetohydrodynamics; a mechanism for stabilization must exist",
+              "R3": "If collisional cross-field transport can be kept small (large device, strong field), the electron confinement time improves with scale \u2014 unlike cusp geometry where losses are geometric. This is a more favorable scaling path to R3 if MHD stability is solvable",
+              "R4": "Same direct-conversion opportunity as cusp case; possibly better because the closed-field geometry may allow more controlled extraction paths for charged products",
+              "R5": "Closed topology means no preferential neutron streaming paths \u2014 neutron flux is more isotropic, simplifying blanket design",
+              "R6": "No high-voltage electrodes are needed at the plasma boundary if the well is entirely self-generated by the electron distribution; this removes one class of material failure modes but requires the magnetic structure to be maintained without direct plasma contact"
+            },
+            "constraints": [
+              {
+                "condition": {
+                  "closed_field_topology": "central pressure maximum"
+                },
+                "consequence": {
+                  "interchange_instability": "activated by unfavorable average curvature"
+                },
+                "type": "activate",
+                "requirement_basis": "R2",
+                "reasoning": "A plasma with pressure decreasing outward in a region where the magnetic field increases outward is interchange-unstable: a flux tube displaced outward encounters weaker field and expands, amplifying the displacement. This is the fundamental MHD stability challenge for any closed-topology confinement scheme with a central maximum."
+              },
+              {
+                "condition": {
+                  "stabilization_mechanism": "required for interchange modes"
+                },
+                "consequence": {
+                  "design_space": "constrained to geometries with favorable average curvature or kinetic stabilization"
+                },
+                "type": "force",
+                "requirement_basis": "R2",
+                "reasoning": "Interchange stabilization requires either (a) average magnetic field curvature that is favorable (field increasing along outward-moving flux tubes on average), or (b) kinetic effects where the particle distribution function provides stabilization unavailable to fluid models. Both impose specific geometric or operating constraints."
+              },
+              {
+                "condition": {
+                  "electron_confinement": "collisional cross-field transport dominant"
+                },
+                "consequence": {
+                  "power_loss_scaling": "improves with device size as ~1/R^2 or better"
+                },
+                "type": "force",
+                "requirement_basis": "R3",
+                "reasoning": "Unlike geometric cusp losses, collisional transport across closed field lines decreases with larger radius and stronger field; this provides a path to net energy through scaling that cusp geometry does not offer in the same form."
+              },
+              {
+                "condition": {
+                  "closed_topology": "no physical structure inside confinement region"
+                },
+                "consequence": {
+                  "magnetic_field_source": "must be external or a superconducting element floating inside"
+                },
+                "type": "force",
+                "requirement_basis": "R6",
+                "reasoning": "A purely external field source cannot produce a closed-topology minimum inside without either a superconducting ring or coil suspended inside the plasma region, or a multipole arrangement from outside. An internal superconducting ring floats in the fusion environment \u2014 a severe materials and cooling challenge."
+              }
+            ],
+            "new_questions": [
+              "What is the minimum magnetic field gradient needed to stabilize interchange modes kinetically, and does this gradient conflict with the requirement for a deep electrostatic well at the center?",
+              "If a superconducting ring is required inside the confinement volume, what neutron fluence can it tolerate before quenching, and does this limit the fusion power density?",
+              "How does the electron velocity distribution in a closed topology evolve at steady state \u2014 does it approach a Maxwellian, or do anisotropies persist that could drive additional instabilities?",
+              "Can the depth of the electrostatic well be controlled dynamically (e.g., by varying the injected electron current) to tune the ion energy distribution?",
+              "What happens to the alpha particle population (for D-T) in a closed-topology well \u2014 do thermalized alphas accumulate and displace fuel ions?"
+            ],
+            "context_addition": {
+              "choice": "Closed magnetic topology for electron confinement, with interchange stabilization as the central unsolved constraint",
+              "reasoning": "This is physically distinct from cusp confinement because the dominant loss mechanism is collisional rather than geometric, implying a qualitatively different scaling with device parameters. The MHD stability question replaces the cusp-loss question as the central physical challenge."
+            }
+          },
+          {
+            "id": "rotating_electron_cloud_exb_confinement",
+            "name": "ExB-Rotating Electron Cloud with Centrifugally-Enhanced Confinement",
+            "thesis": "If electrons are made to rotate rapidly in crossed electric and magnetic fields (ExB drift), the resulting centrifugal pseudo-force supplements magnetic confinement and can provide radial trapping for ions via both the electrostatic well and a centrifugal barrier. This approaches the problem from a different direction: rather than relying on a deep potential well generated by a static electron population, the rotation itself provides a confinement mechanism that scales with rotation velocity squared, potentially allowing operation at lower electron density for the same effective ion confinement.",
+            "requirement_analysis": {
+              "R1": "No direct coupling; fuel ions must be light enough that they can be confined centrifugally at achievable rotation rates",
+              "R2": "The rotation must be maintained against viscous (collisional) deceleration; the power required to sustain rotation is a continuous energy drain that must be covered by fusion output. Additionally, the Kelvin-Helmholtz instability and diocotron instability arise at velocity shear boundaries.",
+              "R3": "Rotation maintenance power scales with plasma density times rotation velocity squared times collision frequency; at fusion-relevant densities, this may exceed fusion output unless the collision frequency is low (high temperature) \u2014 creating a tension with the need for high reaction rates",
+              "R4": "Charged fusion products gain or lose rotational energy depending on their charge and mass; alpha particles in a rotating D-T plasma will interact with the rotation in complex ways that could either help or hinder energy extraction",
+              "R5": "Neutron streaming is not preferentially directed by the rotation geometry",
+              "R6": "The rotating plasma exerts centrifugal forces on the boundary hardware; the velocity gradient at the wall is a source of mechanical stress and erosion"
+            },
+            "constraints": [
+              {
+                "condition": {
+                  "rotation_velocity": "required for centrifugal confinement"
+                },
+                "consequence": {
+                  "diocotron_instability": "activated at any velocity shear layer"
+                },
+                "type": "activate",
+                "requirement_basis": "R2",
+                "reasoning": "A rotating electron cloud with a shear in angular velocity (which must exist at the boundary) is subject to the diocotron instability \u2014 the electromagnetic analog of the Kelvin-Helmholtz instability. This drives coherent mode growth that can rapidly destroy the rotation profile and collapse the confinement."
+              },
+              {
+                "condition": {
+                  "rotation_maintenance": "continuous power input required"
+                },
+                "consequence": {
+                  "power_balance": "third term added to loss budget alongside cusp/collisional losses"
+                },
+                "type": "force",
+                "requirement_basis": "R3",
+                "reasoning": "Unlike static magnetic or electrostatic confinement, rotation must be actively driven against collisional viscosity; at fusion densities the ion-electron and ion-ion collision rates are not negligible, and the torque input to sustain rotation represents a direct power cost that other hybrid schemes do not have."
+              },
+              {
+                "condition": {
+                  "ExB_rotation": "requires both E and B fields simultaneously"
+                },
+                "consequence": {
+                  "field_configuration": "must maintain specific E/B ratio across confinement volume"
+                },
+                "type": "force",
+                "requirement_basis": "R2",
+                "reasoning": "The rotation velocity is v = E/B; spatial gradients in either field perturb the rotation, creating velocity shear and triggering instability. Maintaining a uniform rotation requires either very precise field control or a geometry that naturally enforces the correct E/B ratio."
+              }
+            ],
+            "new_questions": [
+              "At what rotation velocity does centrifugal confinement of deuterium ions become comparable to the electrostatic well contribution, and is this velocity achievable without driving the plasma into the diocotron-unstable regime?",
+              "Can the diocotron instability be suppressed by feedback control of the electric field, or does it grow faster than any practical feedback bandwidth?",
+              "Does the rotation provide any stabilization of the interchange mode (as in centrifugal mirror machines), and if so, can this make the closed-topology option more stable?"
+            ],
+            "context_addition": {
+              "choice": "ExB rotation as supplemental confinement mechanism for the electron cloud",
+              "reasoning": "This is distinct because it introduces a dynamic, power-consuming confinement mechanism rather than relying on static equilibrium; the instability landscape and power balance are qualitatively different from the static cusp or closed-topology cases."
+            }
+          }
+        ],
+        "negative_space": [
+          {
+            "approach": "Static electrode cage providing the electrostatic well directly, with magnetic field added only for electron recirculation",
+            "reason_non_viable": "The role reversal \u2014 electrodes confine ions, magnets recirculate electrons \u2014 does not solve the Earnshaw problem for ions. Electrode surfaces are at fixed potential and their field still satisfies Laplace's equation; any ion equilibrium in the well is still a saddle point in 3D. Adding magnetic fields for electron recirculation does not change the ion potential topology.",
+            "requirement_basis": "R2",
+            "context_dependency": "The accumulated context establishes that pure electrostatic confinement violates Earnshaw's theorem; adding a magnetic field that acts only on electrons does not change the electrostatic topology experienced by ions unless the electron distribution itself is modified."
+          },
+          {
+            "approach": "Using the magnetic field to confine both electrons and ions simultaneously (fully magnetized plasma in the hybrid device)",
+            "reason_non_viable": "At fusion-relevant ion energies (tens of keV), the ion Larmor radius in any practically achievable magnetic field is comparable to or larger than the confinement device scale for a small device; ions are not meaningfully magnetized. The hybrid approach only makes physical sense when the two species are handled by distinct mechanisms.",
+            "requirement_basis": "R2",
+            "context_dependency": "The motivation for the hybrid is precisely that ions cannot be well-confined magnetically at fusion energies in small geometries; attempting to rely on magnetic confinement for both species collapses this distinction and returns to the standard tokamak/mirror design space."
+          },
+          {
+            "approach": "Asymmetric (non-polyhedral) cusp geometry to reduce the number of cusps at the cost of symmetry",
+            "reason_non_viable": "Reducing cusp number by breaking symmetry concentrates loss on fewer cusps with larger effective aperture and creates preferred directions for electron loss; the Wiffleball-type self-compression of cusps is weaker in non-symmetric geometry because the plasma pressure acts uniformly while the cusp positions are non-uniform. The net result is worse confinement than the symmetric case.",
+            "requirement_basis": "R3",
+            "context_dependency": "The Wiffleball mechanism relies on isotropic electron pressure compressing all cusps equally; symmetry breaking undermines this and eliminates the favorable high-beta scaling that motivates the cusp approach."
+          },
+          {
+            "approach": "Operating the cusp device in the low-beta regime (below Wiffleball threshold) and relying on geometric cusp area reduction through stronger magnets alone",
+            "reason_non_viable": "Cusp loss area in the low-beta regime scales as the ion gyroradius times the electron gyroradius at the cusp \u2014 reducing it requires increasing B, which increases magnet cost and complexity quadratically. The power balance does not close in this regime at any practical scale because the loss rate scales geometrically with the device rather than favorably with plasma parameters.",
+            "requirement_basis": "R3",
+            "context_dependency": "Without the high-beta Wiffleball effect, cusp confinement does not have a path to net energy; the parent node establishes that the pure electrostatic approach is already excluded, and a low-beta cusp is essentially a slightly improved version of the same physics."
+          }
+        ]
+      }
     },
     "L2-closed-magnetic-topology-confinement-plasma-current-driven-transform": {
       "id": "L2-closed-magnetic-topology-confinement-plasma-current-driven-transform",
@@ -833,6 +1805,204 @@
         }
       ],
       "parent_id": "L1-closed-magnetic-topology-confinement",
+      "children": [],
+      "status": "pending",
+      "expansion": null
+    },
+    "L2-open-magnetic-topology-confinement-mirro-dec-maximized-minimum-plug": {
+      "id": "L2-open-magnetic-topology-confinement-mirro-dec-maximized-minimum-plug",
+      "question": "What electrostatic barrier height e\u03a6/T_i is required at \u03c6_min to satisfy n\u00b7\u03c4 \u2265 n\u00b7\u03c4_Lawson, and how does the required mirror ratio R = B_max/B_min set by that barrier height constrain the magnet geometry?",
+      "accumulated_context": [
+        {
+          "choice": "Open magnetic topology (mirror) confinement",
+          "reasoning": "This approach is distinct in accepting end losses and using active plugging or direct energy conversion to compensate, trading confinement perfection for geometric simplicity and potential direct conversion efficiency."
+        },
+        {
+          "choice": "Minimum plug fraction \u2248 0.10\u20130.20 (set by Lawson confinement requirement), upper energy-balance limit \u03c6_max \u2248 0.33; DEC lowers the required plasma Q from ~3.0 to ~2.6 and provides a higher-efficiency second energy conversion path for the end-loss stream",
+          "reasoning": "The open topology inherently generates an end-loss particle stream; treating that stream as a recoverable resource rather than a pure loss reframes the minimum-plug question \u2014 the plant need only produce enough fusion power to cover the fraction of plug cost NOT returned by DEC, substantially relaxing the Q requirement relative to a closed-field device."
+        }
+      ],
+      "parent_id": "L1-open-magnetic-topology-confinement-mirro",
+      "children": [],
+      "status": "pending",
+      "expansion": null
+    },
+    "L2-open-magnetic-topology-confinement-mirro-moderate-plug-with-dec-energy-recycling-": {
+      "id": "L2-open-magnetic-topology-confinement-mirro-moderate-plug-with-dec-energy-recycling-",
+      "question": "Is there an optimal \u03c6_gross that maximizes net plant electrical output, balancing better confinement quality (higher P_fusion) against higher recirculating power cost?",
+      "accumulated_context": [
+        {
+          "choice": "Open magnetic topology (mirror) confinement",
+          "reasoning": "This approach is distinct in accepting end losses and using active plugging or direct energy conversion to compensate, trading confinement perfection for geometric simplicity and potential direct conversion efficiency."
+        },
+        {
+          "choice": "Moderate gross plug fraction (0.20\u20130.30) with active DEC energy recycling, achieving effective net plug cost ~ 0.65\u00d7\u03c6_gross, operating Q_plasma ~ 3\u20135",
+          "reasoning": "The recycling-loop framing decouples gross plug expenditure (which determines confinement quality) from net plug cost (which determines plant economics), offering design margin and confinement reliability not available at minimum-plug operation."
+        }
+      ],
+      "parent_id": "L1-open-magnetic-topology-confinement-mirro",
+      "children": [],
+      "status": "pending",
+      "expansion": null
+    },
+    "L2-open-magnetic-topology-confinement-mirro-thermal-barrier-assisted-plug": {
+      "id": "L2-open-magnetic-topology-confinement-mirro-thermal-barrier-assisted-plug",
+      "question": "What ECRH power fraction \u03c6_barrier is required to sustain a barrier of depth e\u03a6_b/T_e = 4 against neutral gas penetration, charge-exchange erosion, and classical thermal conduction? Is there a self-sustained barrier regime where alpha-heated electrons maintain the gradient?",
+      "accumulated_context": [
+        {
+          "choice": "Open magnetic topology (mirror) confinement",
+          "reasoning": "This approach is distinct in accepting end losses and using active plugging or direct energy conversion to compensate, trading confinement perfection for geometric simplicity and potential direct conversion efficiency."
+        },
+        {
+          "choice": "Thermal barrier assisted plug, separating electron and ion confinement problems, enabling \u03c6_total = \u03c6_plug + \u03c6_barrier \u2248 0.03\u20130.08, well below unassisted \u03c6_min ~ 0.10\u20130.20",
+          "reasoning": "Thermal barriers are a distinct approach because they address the primary confinement asymmetry of mirrors (electron vs. ion end-loss rates) through potential structure rather than brute-force plug power, trading engineering complexity for a much lower minimum viable recirculating power fraction."
+        }
+      ],
+      "parent_id": "L1-open-magnetic-topology-confinement-mirro",
+      "children": [],
+      "status": "pending",
+      "expansion": null
+    },
+    "L2-inertial-confinement-directed-energy-laser-driver": {
+      "id": "L2-inertial-confinement-directed-energy-laser-driver",
+      "question": "What target gain Q is physically achievable with laser-driven implosions at ignition-relevant scale, and does it close the energy balance at realistic laser wall-plug efficiency?",
+      "accumulated_context": [
+        {
+          "choice": "Inertial confinement",
+          "reasoning": "This approach achieves fusion by satisfying the Lawson criterion through extreme transient density rather than sustained confinement time, creating a fundamentally pulsed plant architecture with discrete targets and a blast chamber."
+        },
+        {
+          "choice": "Laser directed-energy driver",
+          "reasoning": "Photon delivery maximizes implosion symmetry control and pulse shaping fidelity but imposes a severe wall-plug efficiency penalty, forcing very high target gain as the primary downstream constraint governing all target physics and ignition design decisions."
+        }
+      ],
+      "parent_id": "L1-inertial-confinement",
+      "children": [],
+      "status": "pending",
+      "expansion": null
+    },
+    "L2-inertial-confinement-heavy-ion-accelerator-driver": {
+      "id": "L2-inertial-confinement-heavy-ion-accelerator-driver",
+      "question": "What beam neutralization scheme achieves adequate final focusing to ~1 mm spots without unacceptable emittance growth, and how reproducible is it shot-to-shot?",
+      "accumulated_context": [
+        {
+          "choice": "Inertial confinement",
+          "reasoning": "This approach achieves fusion by satisfying the Lawson criterion through extreme transient density rather than sustained confinement time, creating a fundamentally pulsed plant architecture with discrete targets and a blast chamber."
+        },
+        {
+          "choice": "Heavy-ion accelerator driver",
+          "reasoning": "High wall-plug efficiency fundamentally relaxes target gain requirements, changing the operating physics regime, but activates a unique space-charge final-focusing constraint and forces indirect drive \u2014 the downstream design space pivots on whether neutralization-assisted focusing can reliably deliver sub-mm beams at rep rate."
+        }
+      ],
+      "parent_id": "L1-inertial-confinement",
+      "children": [],
+      "status": "pending",
+      "expansion": null
+    },
+    "L2-inertial-confinement-pulsed-power-z-pinch-driver": {
+      "id": "L2-inertial-confinement-pulsed-power-z-pinch-driver",
+      "question": "Is superconducting magnetic energy storage (SMES) at the ~GJ scale physically and economically viable, and can solid-state switches handle the full discharge current at 10 Hz repetition?",
+      "accumulated_context": [
+        {
+          "choice": "Inertial confinement",
+          "reasoning": "This approach achieves fusion by satisfying the Lawson criterion through extreme transient density rather than sustained confinement time, creating a fundamentally pulsed plant architecture with discrete targets and a blast chamber."
+        },
+        {
+          "choice": "Pulsed-power/z-pinch driver",
+          "reasoning": "Achieves extraordinary peak power and competitive wall-plug efficiency but is architecturally constrained by single-shot operation; continuous power plant operation requires solving high-rep-rate energy storage and forced target reconfiguration at 10 Hz \u2014 challenges that are qualitatively absent from beam-based driver architectures."
+        }
+      ],
+      "parent_id": "L1-inertial-confinement",
+      "children": [],
+      "status": "pending",
+      "expansion": null
+    },
+    "L2-magnetized-target-confinement-magneto-in-field-reversed-configuration-frc-with-fi": {
+      "id": "L2-magnetized-target-confinement-magneto-in-field-reversed-configuration-frc-with-fi",
+      "question": "What is the minimum viable FRC translation velocity, and the maximum allowable formation-to-compression transit time, before the FRC tilts or thermally decays during axial injection into the compression chamber?",
+      "accumulated_context": [
+        {
+          "choice": "Magnetized target (magneto-inertial) confinement",
+          "reasoning": "This hybrid approach occupies a distinct regime from both pure magnetic and pure inertial confinement, using an embedded field to reduce the compression ratio required for ignition, enabling more efficient mechanical drivers at the cost of complex pulsed plasma formation and liner fabrication logistics."
+        },
+        {
+          "choice": "FRC with FLR stabilization as primary MTF target configuration",
+          "reasoning": "The FRC's topology is uniquely compatible with external liner compression: closed separatrix isolates plasma from liner wall, purely poloidal field requires no conductors threading the plasma volume, and the self-similar compression invariant \u03c1_i/r_S = const means stability established at formation is automatically maintained throughout the compression stroke\u2014a property no other known configuration shares."
+        }
+      ],
+      "parent_id": "L1-magnetized-target-confinement-magneto-in",
+      "children": [],
+      "status": "pending",
+      "expansion": null
+    },
+    "L2-magnetized-target-confinement-magneto-in-compact-torus-with-toroidal-field-compon": {
+      "id": "L2-magnetized-target-confinement-magneto-in-compact-torus-with-toroidal-field-compon",
+      "question": "Under what plasma resistivity and compression rate conditions does the compact torus undergo adiabatic heating versus Taylor relaxation, and is there a sharp critical threshold or a continuous transition?",
+      "accumulated_context": [
+        {
+          "choice": "Magnetized target (magneto-inertial) confinement",
+          "reasoning": "This hybrid approach occupies a distinct regime from both pure magnetic and pure inertial confinement, using an embedded field to reduce the compression ratio required for ignition, enabling more efficient mechanical drivers at the cost of complex pulsed plasma formation and liner fabrication logistics."
+        },
+        {
+          "choice": "Compact torus with toroidal field component as alternative MTF target",
+          "reasoning": "The toroidal field provides ideal MHD stability in the fluid limit without requiring precise FLR conditions\u2014a meaningful advantage when plasma parameters at formation carry uncertainty. The configuration is also more resilient to minor liner asymmetries via Taylor self-organization. The cost is more complex formation hardware integration and the risk that Taylor relaxation during compression converts compressional work into magnetic reorganization energy rather than thermal energy."
+        }
+      ],
+      "parent_id": "L1-magnetized-target-confinement-magneto-in",
+      "children": [],
+      "status": "pending",
+      "expansion": null
+    },
+    "L2-electrostatic-potential-well-confinement-high-beta-polyhedral-cusp-with-electron-": {
+      "id": "L2-electrostatic-potential-well-confinement-high-beta-polyhedral-cusp-with-electron-",
+      "question": "What is the minimum electron density-temperature product needed to sustain the Wiffleball regime, and does this imply a minimum device size for the power balance to close?",
+      "accumulated_context": [
+        {
+          "choice": "Electrostatic potential well confinement",
+          "reasoning": "This approach is included because it represents a distinct physical mechanism \u2014 direct ion focusing via electric fields \u2014 but is characterized primarily by its net-energy constraint; it may be viable for non-power applications but cannot satisfy R3 in its pure form."
+        },
+        {
+          "choice": "High-beta magnetic cusp electron confinement with self-generated electrostatic ion well",
+          "reasoning": "This is the minimal hybrid that circumvents Earnshaw's theorem: the dynamic electron distribution generates the confining potential rather than fixed electrodes. The Wiffleball mechanism is the key physical discriminator \u2014 it makes confinement quality a function of operating beta rather than purely of geometry."
+        }
+      ],
+      "parent_id": "L1-electrostatic-potential-well-confinement",
+      "children": [],
+      "status": "pending",
+      "expansion": null
+    },
+    "L2-electrostatic-potential-well-confinement-closed-topology-electron-confinement-wit": {
+      "id": "L2-electrostatic-potential-well-confinement-closed-topology-electron-confinement-wit",
+      "question": "What is the minimum magnetic field gradient needed to stabilize interchange modes kinetically, and does this gradient conflict with the requirement for a deep electrostatic well at the center?",
+      "accumulated_context": [
+        {
+          "choice": "Electrostatic potential well confinement",
+          "reasoning": "This approach is included because it represents a distinct physical mechanism \u2014 direct ion focusing via electric fields \u2014 but is characterized primarily by its net-energy constraint; it may be viable for non-power applications but cannot satisfy R3 in its pure form."
+        },
+        {
+          "choice": "Closed magnetic topology for electron confinement, with interchange stabilization as the central unsolved constraint",
+          "reasoning": "This is physically distinct from cusp confinement because the dominant loss mechanism is collisional rather than geometric, implying a qualitatively different scaling with device parameters. The MHD stability question replaces the cusp-loss question as the central physical challenge."
+        }
+      ],
+      "parent_id": "L1-electrostatic-potential-well-confinement",
+      "children": [],
+      "status": "pending",
+      "expansion": null
+    },
+    "L2-electrostatic-potential-well-confinement-exb-rotating-electron-cloud-with-centrif": {
+      "id": "L2-electrostatic-potential-well-confinement-exb-rotating-electron-cloud-with-centrif",
+      "question": "At what rotation velocity does centrifugal confinement of deuterium ions become comparable to the electrostatic well contribution, and is this velocity achievable without driving the plasma into the diocotron-unstable regime?",
+      "accumulated_context": [
+        {
+          "choice": "Electrostatic potential well confinement",
+          "reasoning": "This approach is included because it represents a distinct physical mechanism \u2014 direct ion focusing via electric fields \u2014 but is characterized primarily by its net-energy constraint; it may be viable for non-power applications but cannot satisfy R3 in its pure form."
+        },
+        {
+          "choice": "ExB rotation as supplemental confinement mechanism for the electron cloud",
+          "reasoning": "This is distinct because it introduces a dynamic, power-consuming confinement mechanism rather than relying on static equilibrium; the instability landscape and power balance are qualitatively different from the static cusp or closed-topology cases."
+        }
+      ],
+      "parent_id": "L1-electrostatic-potential-well-confinement",
       "children": [],
       "status": "pending",
       "expansion": null
