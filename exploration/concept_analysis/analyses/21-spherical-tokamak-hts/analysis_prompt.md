@@ -1,6 +1,6 @@
-# D1+ Concept Analysis: {{concept_name}}
+# D1+ Concept Analysis: Spherical Tokamak - HTS
 
-You are producing a comprehensive qualitative and quantitative concept analysis for the fusion concept **{{concept_name}}** ({{company}}).
+You are producing a comprehensive qualitative and quantitative concept analysis for the fusion concept **Spherical Tokamak - HTS** (Tokamak Energy).
 
 ## Your Task
 
@@ -11,31 +11,44 @@ Write a complete D1+ analysis following the output template structure. The analy
 Read these files in this order before writing:
 
 ### 1. Output Template (defines the section structure you must follow)
-`{{output_template_path}}`
+`/home/reid/1cfe/fusion-tea/exploration/concept_analysis/prompt_templates/output_template.md`
 
 ### 2. Analysis Brief (defines the purpose and quality expectations)
-`{{brief_path}}`
+`/home/reid/1cfe/fusion-tea/exploration/concept_analysis/concept_analysis_brief.md`
 
 ### 3. Handwritten Exemplars (calibrate your depth and style against these)
-{{exemplar_paths}}
+- `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/handwritten/01-hts-compact-tokamak.md`
+- `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/handwritten/07-maglif.md`
+- `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/handwritten/26-laser-icf-indirect-drive.md`
 
 Study the exemplars carefully. They show the expected level of technical depth, citation practice, and analytical rigor. Your output should match their quality. Note that exemplars may vary in structure — follow the output template for section structure, but match the exemplars for analytical depth and style.
 
 ### 4. Phase 1a Dossier (structured research summary for this concept)
-`{{dossier_path}}`
+`/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/21-spherical-tokamak-hts/dossier.md`
 
 The dossier contains per-column values with confidence ratings, citations, and notes from prior research iterations. This is your factual foundation.
 
 ### 5. Extracted Source Documents (primary technical sources)
 Read ALL of these — they contain the detailed technical content the dossier was derived from:
 
-{{source_paths}}
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/21-spherical-tokamak-hts/iter-01/sources/pulsed-spherical-tokamak-paper.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/21-spherical-tokamak-hts/iter-01/sources/st40-heating-systems.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/21-spherical-tokamak-hts/iter-01/sources/ste1-pilot-plant-specs.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/21-spherical-tokamak-hts/iter-01/sources/tokamak-energy-overview.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/21-spherical-tokamak-hts/iter-02/sources/spherical-tokamak-center-stack-shielding.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/21-spherical-tokamak-hts/iter-02/sources/tokamak-energy-heating-systems.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/21-spherical-tokamak-hts/iter-02/sources/tokamak-energy-roadmap.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/21-spherical-tokamak-hts/iter-02/sources/tokamak-energy-st-e1-design-evolution.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/21-spherical-tokamak-hts/iter-03/sources/tokamak-energy-demo4-magnets.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/21-spherical-tokamak-hts/iter-03/sources/tokamak-energy-ec-heating-pilot-plant.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/21-spherical-tokamak-hts/iter-03/sources/tokamak-energy-st-e1-dpp2025-abstract.md` (2 KB)
 
 ### 6. Schema (controlled vocabulary and column definitions)
-`{{schema_path}}`
+`/home/reid/1cfe/fusion-tea/exploration/phase_1a/schema.md`
 
 ### 7. Approved Prior Analyses (reuse pool — read all of these)
-{{approved_analyses}}
+- `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/01-hts-compact-tokamak/analysis.md`
+- `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/07-maglif/analysis.md`
 
 ## Writing Instructions
 
@@ -73,7 +86,7 @@ Read ALL of these — they contain the detailed technical content the dossier wa
 ### Step 1: Write the analysis body
 
 Write the complete analysis to this file using the Write tool:
-`{{output_path}}`
+`/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/21-spherical-tokamak-hts/analysis_body.md`
 
 Write ONLY the analysis content (Sections 1-8). Do NOT include:
 - YAML frontmatter (the pipeline adds it automatically)
@@ -85,7 +98,7 @@ Start the file with `# D1+ Analysis:` and end after Section 8.
 ### Step 2: Update Reuses (if applicable)
 
 If you referenced any approved prior analyses, update the Reuses field in:
-`{{analysis_path}}`
+`/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/21-spherical-tokamak-hts/analysis.md`
 
 The file already contains `Reuses: []`. Use the Edit tool to replace it with the concept IDs you referenced, e.g.:
 `Reuses: [21-spherical-tokamak-hts, 28-hts-tokamak-full-hts]`

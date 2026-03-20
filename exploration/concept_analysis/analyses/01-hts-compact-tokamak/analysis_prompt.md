@@ -46,7 +46,7 @@ No approved prior analyses available.
 
 ### Content Requirements
 - Follow the output template section structure exactly (Sections 1-8)
-- Start with the YAML frontmatter as specified in the output template
+- Do NOT include YAML frontmatter — the pipeline generates it automatically
 - Every factual claim must cite a specific source (Phase 1a source document, dossier citation, or extracted document)
 - Every quantitative value in Section 5 must have a Source and Confidence column entry
 - Values without sources must be flagged as `[inferred]`, `[analogue]`, or `[estimated]` with reasoning
@@ -64,7 +64,7 @@ No approved prior analyses available.
 - Reuse consistent assumptions where appropriate — cite the source concept
 - Note divergences in Section 7 (Cross-Concept Notes)
 - Do NOT copy text verbatim — synthesize and adapt to this concept's specifics
-- Record which concept IDs you referenced in the frontmatter `Reuses` list
+- After writing the body, update the Reuses field in the analysis file (see Output section below)
 
 ### Quality Calibration
 - Match the analytical depth of the handwritten exemplars
@@ -75,4 +75,24 @@ No approved prior analyses available.
 
 ## Output
 
-Output the complete analysis as a single markdown document. Start with the YAML frontmatter (`---` delimited), then all 8 sections. Do NOT use any tools to write files — just output the full document text directly as your response.
+### Step 1: Write the analysis body
+
+Write the complete analysis to this file using the Write tool:
+`/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/01-hts-compact-tokamak/analysis_body.md`
+
+Write ONLY the analysis content (Sections 1-8). Do NOT include:
+- YAML frontmatter (the pipeline adds it automatically)
+- Preamble or commentary
+- Code fences wrapping the document
+
+Start the file with `# D1+ Analysis:` and end after Section 8.
+
+### Step 2: Update Reuses (if applicable)
+
+If you referenced any approved prior analyses, update the Reuses field in:
+`/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/01-hts-compact-tokamak/analysis.md`
+
+The file already contains `Reuses: []`. Use the Edit tool to replace it with the concept IDs you referenced, e.g.:
+`Reuses: [21-spherical-tokamak-hts, 28-hts-tokamak-full-hts]`
+
+If you did not reference any approved analyses, leave Reuses unchanged.

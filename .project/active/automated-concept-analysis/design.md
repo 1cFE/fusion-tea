@@ -272,13 +272,33 @@ Company: Commonwealth Fusion Systems
 Status: draft                    # draft | approved
 Created: 2026-03-20
 Approved-Date:                   # set by approve command
-Reuses:                          # list of concept IDs referenced
-  - 21-spherical-tokamak-hts
-  - 28-hts-tokamak-full-hts
+Reuses: []                       # agent updates via Edit tool during analysis
 ---
 ```
 
+**Frontmatter is script-generated, then agent-editable.** The structural fields (ID, Concept, Company, Status, dates) are deterministic from table.csv + today's date. `Reuses` is initialized as `[]` and the agent updates it via the Edit tool if it references approved prior analyses. The script pre-writes frontmatter to `analysis.md` before Claude runs (see Output Assembly below).
+
 The `approve` command updates `Status` to `approved` and sets `Approved-Date`. The `analyze` command scans all `analyses/*/analysis.md` files for `Status: approved` to build the reuse pool.
+
+### Output Assembly (analysis.md)
+
+The `cmd_analyze` pipeline for each concept:
+
+1. **Script pre-writes `analysis.md`** with frontmatter from table.csv metadata (`make_frontmatter()`), including `Reuses: []`
+2. **Script invokes Claude** with `{{output_path}}` (body file) and `{{analysis_path}}` (frontmatter file)
+3. **Claude writes sections 1-8 to `{{output_path}}`** using the Write tool — narration goes to stdout (ignored)
+4. **Claude edits `Reuses` in `{{analysis_path}}`** via Edit tool if it referenced approved prior analyses
+5. **Script reads back frontmatter** from `analysis.md` (which may now have populated `Reuses`)
+6. **Script assembles** `analysis.md` = frontmatter + body file contents
+7. **Script deletes the temp body file**
+8. **Script verifies** `analysis.md` starts with `---`
+
+This cleanly separates concerns:
+- **Structured metadata** (frontmatter) — script-generated, agent-editable for `Reuses` only
+- **Analytical content** (body) — LLM-generated, written to file (not captured from stdout)
+- **Narration** (stdout) — discarded
+
+On failure (Claude error or missing body file), the script cleans up the pre-written `analysis.md` to avoid stale state. If Claude fails to write the body file, the script detects it immediately rather than silently saving narration as the analysis.
 
 ### D1+ Output Template
 
@@ -345,7 +365,10 @@ Key instructions in the template:
   - If data doesn't exist, say so — do not fabricate
   - Read approved prior analyses and reuse shared assumptions
   - Document what was reused in the cross-concept notes section
-  - Write the complete analysis to {{output_path}}
+  - Write sections 1-8 to {{output_path}} using the Write tool
+  - Edit Reuses field in {{analysis_path}} if prior analyses were referenced
+  - Do NOT include YAML frontmatter (script handles that)
+  - Do NOT output the analysis to stdout — write it to the file
 ```
 
 ### Cross-Concept Reuse Mechanism

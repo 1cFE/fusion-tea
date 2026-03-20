@@ -255,6 +255,27 @@ def get_concept_state(concept_id: str, analyses_dir: Path = ANALYSES_DIR) -> str
 # ---------------------------------------------------------------------------
 
 
+def make_frontmatter(concept: dict) -> str:
+    """Generate YAML frontmatter deterministically.
+
+    Reuses starts as [] — the agent updates it via Edit tool if it
+    references approved prior analyses during Stage 2.
+    """
+    today = date.today().isoformat()
+    lines = [
+        "---",
+        f"ID: {concept['_id']}",
+        f"Concept: {concept['Concept Name']}",
+        f"Company: {concept.get('Company', '')}",
+        "Status: draft",
+        f"Created: {today}",
+        "Approved-Date:",
+        "Reuses: []",
+        "---",
+    ]
+    return "\n".join(lines) + "\n"
+
+
 def fill_template(template_text: str, replacements: dict[str, str]) -> str:
     """Simple {{variable}} substitution in template text."""
     result = template_text
@@ -543,6 +564,10 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
         # Re-scan approved pool before each concept (mid-batch approvals picked up)
         approved = find_approved()
 
+        # Claude writes body to a temp file; script assembles final analysis.md
+        body_path = out_dir / "analysis_body.md"
+        out_dir.mkdir(parents=True, exist_ok=True)
+
         # Fill template
         prompt = fill_template(template_text, {
             "concept_id": cid,
@@ -555,10 +580,11 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
             "exemplar_paths": format_path_list(exemplars, "(no exemplars found)"),
             "approved_analyses": format_path_list(approved, "No approved prior analyses available."),
             "output_template_path": str(output_template_path),
+            "output_path": str(body_path),
+            "analysis_path": str(analysis_path),
         })
 
         # Save prompt
-        out_dir.mkdir(parents=True, exist_ok=True)
         prompt_path = out_dir / "analysis_prompt.md"
         prompt_path.write_text(prompt, encoding="utf-8")
 
@@ -566,10 +592,14 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
             print(f"  dry-run {cid}: prompt saved to {prompt_path}")
             continue
 
-        # Live invocation
+        # Pre-write analysis.md with frontmatter before invoking Claude.
+        # Claude may edit the Reuses field via Edit tool during analysis.
+        analysis_path.write_text(make_frontmatter(c), encoding="utf-8")
+
+        # Live invocation — Claude writes body to body_path via Write tool
         print(f"  analyze {cid} ...", end="", flush=True)
         t0 = time.time()
-        stdout, stderr, rc = invoke_claude(
+        _stdout, stderr, rc = invoke_claude(
             prompt, cwd=CONCEPT_ANALYSIS_DIR, timeout=args.timeout, model=args.model,
         )
         elapsed = time.time() - t0
@@ -577,11 +607,27 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
         if rc != 0:
             print(f" FAILED ({elapsed:.0f}s, rc={rc})")
             print(f"    stderr: {stderr[:500]}", file=sys.stderr)
+            analysis_path.unlink(missing_ok=True)
             continue
 
-        # Save output
-        analysis_path.write_text(stdout, encoding="utf-8")
-        print(f" done ({elapsed:.0f}s, {len(stdout)} chars)")
+        # Verify Claude wrote the body file
+        if not body_path.exists():
+            print(f" FAILED ({elapsed:.0f}s) — Claude did not write {body_path}")
+            analysis_path.unlink(missing_ok=True)
+            continue
+
+        # Assemble: read back frontmatter (Claude may have updated Reuses) + body
+        fm_raw = analysis_path.read_text(encoding="utf-8").rstrip("\n") + "\n"
+        body = body_path.read_text(encoding="utf-8")
+        analysis_path.write_text(fm_raw + "\n" + body, encoding="utf-8")
+        body_path.unlink()
+
+        # Verify assembly
+        if not analysis_path.read_text(encoding="utf-8").startswith("---"):
+            print(f" WARNING ({elapsed:.0f}s): analysis.md doesn't start with ---")
+            continue
+
+        print(f" done ({elapsed:.0f}s, {len(body)} chars)")
 
 
 def cmd_approve(concepts: list[dict], args: argparse.Namespace) -> None:

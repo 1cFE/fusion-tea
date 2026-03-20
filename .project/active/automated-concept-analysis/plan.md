@@ -202,19 +202,19 @@ Run analysis on real concepts, implement the approve command, verify the reuse p
 
 #### 1. Script updates
 **File:** `exploration/concept_analysis/scripts/run_analysis.py`
-- [ ] Wire `cmd_analyze()` to invoke Claude (not just dry-run)
-- [ ] Write output to `analyses/{id}/analysis.md` with draft frontmatter
-- [ ] `update_frontmatter()` — update Status/Approved-Date in existing frontmatter
-- [ ] `cmd_approve()` — update frontmatter to `Status: approved`, set `Approved-Date`
-- [ ] Sequential processing: each concept in a batch re-scans approved pool before starting
+- [x] Wire `cmd_analyze()` to invoke Claude (not just dry-run)
+- [x] Write output to `analyses/{id}/analysis.md` with draft frontmatter
+- [x] `update_frontmatter()` — update Status/Approved-Date in existing frontmatter
+- [x] `cmd_approve()` — update frontmatter to `Status: approved`, set `Approved-Date`
+- [x] Sequential processing: each concept in a batch re-scans approved pool before starting
 
 ### Validation
 
-- [ ] `uv run python ... analyze 01` → produces `analyses/01-.../analysis.md` with `Status: draft`
-- [ ] Review analysis quality against handwritten `01-hts-compact-tokamak.md` (holdout test)
-- [ ] `uv run python ... approve 01` → updates frontmatter to `Status: approved`
-- [ ] `uv run python ... analyze 21 --dry-run` → prompt now lists concept 01 in approved analyses
-- [ ] `uv run python ... status` → shows concept 01 as "approved", concept 21 as appropriate state
+- [x] `uv run python ... analyze 01` → produces `analyses/01-.../analysis.md` with `Status: draft`
+- [x] Review analysis quality against handwritten `01-hts-compact-tokamak.md` (holdout test)
+- [x] `uv run python ... approve 01` → updates frontmatter to `Status: approved`
+- [x] `uv run python ... analyze 21 --dry-run` → prompt now lists concept 01 in approved analyses
+- [x] `uv run python ... status` → shows concept 01 as "approved", concept 21 as appropriate state
 
 **What We Know Works After This Phase:**
 Complete pipeline: gap-check → analyze → review → approve → reuse. Quality is assessable via holdout comparison.
@@ -284,7 +284,16 @@ _TO BE FILLED DURING IMPLEMENTATION_
 **Deviations:** Added Section 8 (Sources) not in original design — matches exemplar practice of listing primary sources at the end. Added `format_path_list()` helper for cleaner path rendering in prompts.
 
 ### Phase 5 Completion
-**Completed:**
+**Completed:** 2026-03-20
 **Actual Changes:**
-**Issues:**
-**Deviations:**
+- Redesigned output assembly: script pre-writes frontmatter → Claude writes body to temp file + edits Reuses via Edit tool → script assembles final analysis.md
+- Added `make_frontmatter()` for deterministic YAML generation
+- `cmd_analyze()` rewritten: pre-write/assemble flow, failure cleanup (deletes pre-written analysis.md on error), post-assembly verification (startswith `---`)
+- `prompt_templates/analysis.md`: two-step output (write body + edit Reuses in `{{analysis_path}}`)
+- `prompt_templates/output_template.md`: frontmatter section removed (script-owned)
+- `design.md`: frontmatter uses full slug ID, Output Assembly updated to 8-step flow
+- Full pipeline validated end-to-end: 3 concepts analyzed (01, 07, 21), all approved
+- Cross-concept reuse verified: concept 21 populated `Reuses: [01-hts-compact-tokamak]` and Section 7 references the approved analysis
+- Holdout comparison: concept 01 analysis quality matches or exceeds handwritten exemplar
+**Issues:** Original stdout-capture approach failed (narration mixed into output). Redesigned to file-write approach.
+**Deviations:** Agent populates `Reuses` field via Edit tool (design originally had human populate during review — changed to reduce bottleneck).
