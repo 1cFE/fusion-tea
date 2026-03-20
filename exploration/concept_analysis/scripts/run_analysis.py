@@ -60,6 +60,8 @@ def load_table(csv_path: Path = TABLE_PATH) -> list[dict]:
             # '17a' from '17a-laser-icf-hybrid-drive'
             m = re.match(r"^(\d+[a-z]?)-", row["ID"])
             row["_num"] = m.group(1) if m else row["ID"]
+            # Research ID maps to Phase 1a directory (for split concepts like 17a/17b)
+            row["_research_id"] = row.get("Research ID") or row["_id"]
             concepts.append(row)
     return concepts
 
@@ -480,13 +482,14 @@ def cmd_gap_check(concepts: list[dict], args: argparse.Namespace) -> None:
             print(f"  skip {cid} (gap_report.md exists, use --force to re-run)")
             continue
 
-        # Gather inputs
-        dossier_path = get_dossier_path(cid)
+        # Gather inputs (use _research_id for Phase 1a lookup)
+        rid = c["_research_id"]
+        dossier_path = get_dossier_path(rid)
         if not dossier_path:
             print(f"  skip {cid} (no Phase 1a dossier found)")
             continue
 
-        sources = find_sources(cid)
+        sources = find_sources(rid)
         source_list_text = format_source_list(sources)
 
         # Fill template
@@ -553,13 +556,14 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
             print(f"  skip {cid} (analysis.md exists, use --force to re-run)")
             continue
 
-        # Gather inputs
-        dossier_path = get_dossier_path(cid)
+        # Gather inputs (use _research_id for Phase 1a lookup)
+        rid = c["_research_id"]
+        dossier_path = get_dossier_path(rid)
         if not dossier_path:
             print(f"  skip {cid} (no Phase 1a dossier found)")
             continue
 
-        sources = find_sources(cid)
+        sources = find_sources(rid)
 
         # Re-scan approved pool before each concept (mid-batch approvals picked up)
         approved = find_approved()
