@@ -1,0 +1,383 @@
+# Implementation Plan: Concept Analysis Enhancement Pipeline
+
+**Status:** Draft
+**Created:** 2026-03-22
+**Last Updated:** 2026-03-22
+
+## Source Documents
+- **Spec:** `.project/active/automated-concept-analysis/spec-enhancement.md`
+- **Design:** `.project/active/automated-concept-analysis/design-enhancement.md` ← See here for component details, prompt templates, function signatures, mapping data
+
+## Implementation Strategy
+
+**Phasing Rationale:**
+Build bottom-up: shared infrastructure first (state machine, CLI, template engine), then each pipeline stage in execution order. Each phase ends with a live run on concept 08 (FRC w/ Direct Conversion) as the real validation gate — this concept has the richest data, an existing handwritten holdout, and an existing 1costingfe example for comparison.
+
+**Overall Validation Approach:**
+- Each phase has a `--dry-run` smoke test followed by a live Claude invocation
+- Concept 08 is the test case throughout
+- User inspects real output at each phase before proceeding
+
+---
+
+## Phase 1: Foundation — State Machine, CLI Skeleton, `fill_template()` Upgrade
+
+### Goal
+Get the infrastructure in place that all new commands depend on. This is the only phase that modifies shared code paths (state detection, template engine, CLI parser), so we de-risk it first.
+
+### Changes Required
+
+**See `design-enhancement.md` for:**
+- State machine logic → `design-enhancement.md#component-5-updated-state-detection-and-cli`
+- `fill_template()` upgrade → `design-enhancement.md#2e-cmd_model_setup-implementation` (conditional support)
+- CLI parser additions → `design-enhancement.md#5b-cli-additions`
+- Status display symbols → `design-enhancement.md#5c-status-display-update`
+
+**Specific file changes:**
+
+#### 1. `fill_template()` — add `{{#if var}}...{{/if}}` conditionals
+**File:** `exploration/concept_analysis/scripts/run_analysis.py:281`
+- [ ] Add regex-based conditional processing before variable substitution (see design §2e, ~15 lines)
+- [ ] Empty/falsy values → block removed; truthy values → block content kept
+
+#### 2. `get_concept_state()` — add new states
+**File:** `exploration/concept_analysis/scripts/run_analysis.py` (find existing `get_concept_state()`)
+- [ ] Add `model-setup`, `reviewed`, `synthesized` state detection (see design §5a)
+- [ ] Detection order: approved → synthesized → reviewed → model-setup → drafted → gap-checked → not-started
+
+#### 3. Status display — new symbols
+**File:** `exploration/concept_analysis/scripts/run_analysis.py` (find `cmd_status()`)
+- [ ] Add `M` (model-setup), `R` (reviewed), `S` (synthesized) symbols
+- [ ] Update summary line to count new states
+
+#### 4. CLI parser — add 4 subcommand stubs
+**File:** `exploration/concept_analysis/scripts/run_analysis.py:680` (in `build_parser()`)
+- [ ] Add `model-setup` parser with args: `concepts`, `--all`, `--family`, `--model`, `--dry-run`, `--timeout`, `--force`
+- [ ] Add `review` parser with same args
+- [ ] Add `address-review` parser with args: `concepts`, `--all`, `--family`, `--model`, `--dry-run`, `--timeout` (no `--force`)
+- [ ] Add `synthesize` parser with same args as review
+
+#### 5. Dispatch table and stub handlers
+**File:** `exploration/concept_analysis/scripts/run_analysis.py:720`
+- [ ] Add 4 stub functions (`cmd_model_setup`, `cmd_review`, `cmd_address_review`, `cmd_synthesize`) that print "not yet implemented"
+- [ ] Add all 4 to dispatch dict
+
+### Validation
+
+**Automated:**
+- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py status` — displays correctly, no regressions on existing states
+- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py model-setup 08` — prints "not yet implemented" (stub works)
+
+**Real example — verify existing pipeline still works:**
+- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py status` — all existing concept states unchanged
+- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py gap-check 08 --dry-run` — still generates correct prompt (no regressions)
+
+**What We Know Works After This Phase:**
+- State machine correctly detects all 7 states
+- `fill_template()` handles conditionals
+- CLI accepts all new subcommands
+- Existing commands unbroken
+
+---
+
+## Phase 2: Citation Traceability Upgrade
+
+### Goal
+Upgrade the analysis prompt templates to produce directly verifiable citations (direct quotes, section-level references, derivation chains, footnotes). Then re-run analysis on concept 08 to validate the improvement.
+
+### Changes Required
+
+**See `design-enhancement.md` for:**
+- Citation format specification → `design-enhancement.md#component-1-citation-traceability-upgrade`
+- Four citation mechanisms (1a–1d) with examples
+
+**Specific file changes:**
+
+#### 1. Output template — add Citation Format section
+**File:** `exploration/concept_analysis/prompt_templates/output_template.md`
+- [ ] Add `## Citation Format` section specifying 4 mechanisms: direct quotes, section-level table refs, derivation chains, footnote-style prose refs
+- [ ] Include examples for each mechanism (from design §1a–1d)
+- [ ] Add guidance: "Use direct block quotes for the 3-5 most critical claims per section"
+
+#### 2. Analysis prompt — add citation instructions
+**File:** `exploration/concept_analysis/prompt_templates/analysis.md`
+- [ ] Add citation format instructions referencing the output template's Citation Format section
+- [ ] Emphasize: table Source column must include `§Section Name`, not just filename
+
+### Validation
+
+**Dry-run check:**
+- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py analyze 08 --dry-run --force` — prompt includes citation instructions
+
+**Real example — re-analyze concept 08 with upgraded citations:**
+- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py analyze 08 --force` — produces new `analysis.md`
+- [ ] Inspect analysis.md: are direct quotes present? Do table Source entries include section references? Are derivation chains used for inferred values?
+- [ ] Compare citation density against holdout-report-08.md findings — are the gaps identified there addressed?
+
+**What We Know Works After This Phase:**
+- Analysis prompt produces verifiable citations
+- The quality gap identified in holdout-report-08.md (citations not directly verifiable) is addressed
+
+---
+
+## Phase 3: Model Setup Stage
+
+### Goal
+Add the `model-setup` command with two-path architecture (1costingfe API vs free-form dataclass). Concept 08 should produce a runnable `model_setup.py` comparable to the existing `dhe3_pulsed_frc.py`.
+
+### Changes Required
+
+**See `design-enhancement.md` for:**
+- Two-path architecture → `design-enhancement.md#2a-two-path-architecture`
+- Concept mapping data → `design-enhancement.md#2b-concept-mapping-data`
+- 1costingfe prompt template → `design-enhancement.md#2c-prompt-template-1costingfe-path`
+- Free-form prompt template → `design-enhancement.md#2d-prompt-template-free-form-path`
+- `cmd_model_setup()` implementation → `design-enhancement.md#2e-cmd_model_setup-implementation`
+
+**Specific file changes:**
+
+#### 1. Concept mapping data
+**File:** `exploration/concept_analysis/scripts/run_analysis.py` (new section after constants)
+- [ ] Add `COSTINGFE_MAPPING` dict (family-level + concept-specific overrides)
+- [ ] Add `FREEFORM_CONCEPTS` set
+- [ ] Add `FUEL_MAPPING` dict
+- [ ] Add `get_model_path()` resolver function
+- [ ] Add `get_costingfe_mapping()` helper for family-level fallback
+
+#### 2. 1costingfe prompt template
+**File:** `exploration/concept_analysis/prompt_templates/model_setup_costingfe.md` (NEW)
+- [ ] Create template per design §2c
+- [ ] Template variables: `concept_name`, `company`, `analysis_path`, `example_path`, `defaults_path`, `readme_path`, `costing_constants_path`, `costingfe_concept`, `costingfe_fuel`, `mapping_notes`, `output_path`
+- [ ] Includes: script structure requirements, traceability requirements, anti-hallucination instructions, usage comment
+
+#### 3. Free-form prompt template
+**File:** `exploration/concept_analysis/prompt_templates/model_setup_freeform.md` (NEW)
+- [ ] Create template per design §2d
+- [ ] References MagLIF exemplar as structural template
+- [ ] 5-layer architecture instructions, parameter documentation requirements, sensitivity analysis
+
+#### 4. `cmd_model_setup()` — replace stub
+**File:** `exploration/concept_analysis/scripts/run_analysis.py`
+- [ ] Implement full `cmd_model_setup()` per design §2e
+- [ ] Two-path prompt selection based on `get_model_path()`
+- [ ] State gate: skip if no `analysis.md`
+- [ ] Skip/force logic for existing `model_setup.py`
+- [ ] Save prompt, invoke Claude, print hint for running the model
+
+### Validation
+
+**Dry-run check:**
+- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py model-setup 08 --dry-run` — prompt saved, references analysis params, dhe3_pulsed_frc.py example, MAG_TARGET defaults
+- [ ] Verify prompt includes the analysis.md content, the example script, and YAML defaults
+
+**Real example — generate model for concept 08:**
+- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py model-setup 08` — produces `model_setup.py`
+- [ ] `uv run python exploration/concept_analysis/analyses/08-frc-w-direct-conversion/model_setup.py` — script runs without errors, prints LCOE results
+- [ ] Inspect model_setup.py: does it have inline traceability comments? Are UNCERTAIN values flagged? Does it include sensitivity analysis?
+- [ ] Compare LCOE output against existing `dhe3_pulsed_frc.py` — are results in the same ballpark?
+- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py status` — concept 08 shows `M` state
+
+**What We Know Works After This Phase:**
+- Two-path model setup routing works
+- Concept 08 has a runnable LCOE model with traceable parameters
+- State detection correctly shows `model-setup` state
+
+---
+
+## Phase 4: Review Stage
+
+### Goal
+Add `review` and `address-review` commands. The review produces structured findings with Proposed Actions; the user fills in decisions; address-review applies them. This is the most complex phase due to the iterative loop and PA parsing.
+
+### Changes Required
+
+**See `design-enhancement.md` for:**
+- Review prompt template → `design-enhancement.md#3a-review-prompt-template`
+- `cmd_review()` implementation → `design-enhancement.md#3b-cmd_review-implementation`
+- PA parser → `design-enhancement.md#3c-proposed-action-parsing`
+- Address-review prompt template → `design-enhancement.md#3d-address-review-prompt-template`
+- `cmd_address_review()` implementation → `design-enhancement.md#3e-cmd_address_review-implementation`
+
+**Specific file changes:**
+
+#### 1. Review prompt template
+**File:** `exploration/concept_analysis/prompt_templates/review.md` (NEW)
+- [ ] Create template per design §3a
+- [ ] 5 review checklist categories: citation verification, calculation verification, model setup audit, consistency check, factual concerns
+- [ ] Output format with CV-N, CALC-N, MSA-N finding types and PA-N proposed actions
+- [ ] PA format: Category, Severity, Location, Finding, Proposed Fix, Decision (blank), User Notes (blank)
+
+#### 2. Address-review prompt template
+**File:** `exploration/concept_analysis/prompt_templates/address_review.md` (NEW)
+- [ ] Create template per design §3d
+- [ ] Accepts decisions block, instructs Claude to apply agree/alternative/reject
+- [ ] Appends to address_log.md
+
+#### 3. `parse_proposed_actions()` function
+**File:** `exploration/concept_analysis/scripts/run_analysis.py`
+- [ ] Implement PA parser per design §3c
+- [ ] Parse `### PA-N:` headers and `**Key:** Value` fields
+- [ ] Strip italic placeholder markers for unfilled fields
+- [ ] Handle edge cases: missing fields, extra whitespace
+
+#### 4. `format_source_list()` helper
+**File:** `exploration/concept_analysis/scripts/run_analysis.py`
+- [ ] Format source paths as numbered markdown list for the review prompt
+
+#### 5. `cmd_review()` — replace stub
+**File:** `exploration/concept_analysis/scripts/run_analysis.py`
+- [ ] Implement per design §3b
+- [ ] State gate: skip if no analysis.md; warn but proceed if no model_setup.py
+- [ ] Track iteration number from frontmatter
+- [ ] Update frontmatter: Review-Iterations, Last-Review, Review-Status
+- [ ] Detect CLEAN vs HAS ISSUES from output
+
+#### 6. `cmd_address_review()` — replace stub
+**File:** `exploration/concept_analysis/scripts/run_analysis.py`
+- [ ] Implement per design §3e
+- [ ] Parse review.md for filled-in decisions
+- [ ] Build decisions block for prompt
+- [ ] Update Review-Status → addressed after applying
+
+### Validation
+
+**Dry-run check:**
+- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py review 08 --dry-run` — prompt saved, includes analysis.md, model_setup.py, source documents
+
+**Real example — full review cycle on concept 08:**
+- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py review 08` — produces `review.md`
+- [ ] Inspect review.md: are citations actually verified against sources? Are PA-N actions properly formatted with blank Decision fields?
+- [ ] Check analysis.md frontmatter: Review-Iterations=1, Review-Status set
+- [ ] Manually fill in 2-3 PA decisions in review.md (mix of agree/reject/alternative)
+- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py address-review 08` — applies decisions
+- [ ] Inspect address_log.md: changes logged correctly
+- [ ] `git diff` analysis.md / model_setup.py: verify edits match decisions
+- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py status` — concept 08 shows `R` state
+
+**What We Know Works After This Phase:**
+- Review produces structured, verifiable findings
+- PA parsing handles real Claude output
+- Address-review applies user decisions correctly
+- Iterative review loop works (could run review again for iteration 2)
+
+---
+
+## Phase 5: Synthesis Stage and Approve Gate
+
+### Goal
+Add `synthesize` command and update `approve` to gate on synthesis. The synthesis provides editorial judgment, sensitivity insights, and decision support — the "so what?" that the automated analysis lacks.
+
+### Changes Required
+
+**See `design-enhancement.md` for:**
+- Synthesis prompt template → `design-enhancement.md#4a-synthesis-prompt-template`
+- `cmd_synthesize()` implementation → `design-enhancement.md#4b-cmd_synthesize-implementation`
+- `find_approved_syntheses()` helper → `design-enhancement.md#component-4-synthesis-stage`
+- Approve gate → `design-enhancement.md#component-4c-cmd_approve-gate-update`
+
+**Specific file changes:**
+
+#### 1. Synthesis prompt template
+**File:** `exploration/concept_analysis/prompt_templates/synthesis.md` (NEW)
+- [ ] Create template per design §4a
+- [ ] 7 mandatory sections: Executive Summary, What Matters Most for LCOE, Risk Verdicts, Structural Advantages/Disadvantages, Cross-Concept Positioning, Modeling Confidence, What Would Change My Mind
+- [ ] Voice instructions: opinionated, direct, quantified, model-backed
+- [ ] Conditionals for model_setup_path and model_output_path
+
+#### 2. `find_approved_syntheses()` helper
+**File:** `exploration/concept_analysis/scripts/run_analysis.py`
+- [ ] Find synthesis.md files from approved concepts for cross-concept context
+
+#### 3. `cmd_synthesize()` — replace stub
+**File:** `exploration/concept_analysis/scripts/run_analysis.py`
+- [ ] Implement per design §4b
+- [ ] State gate: refuse if Review-Status not in {addressed, clean}
+- [ ] Check for model_output.txt (user-generated)
+- [ ] Gather approved prior syntheses for cross-concept perspective
+
+#### 4. `cmd_approve()` — add synthesis gate
+**File:** `exploration/concept_analysis/scripts/run_analysis.py` (find existing `cmd_approve()`)
+- [ ] Add check: if no synthesis.md and not `--force`, skip with message
+- [ ] Add `--force` arg to approve parser if not already present
+
+### Validation
+
+**Gate enforcement check:**
+- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py synthesize 08` with Review-Status != addressed/clean → refuses with helpful message
+
+**Real example — full synthesis on concept 08:**
+- [ ] Optionally: `uv run python exploration/concept_analysis/analyses/08-.../model_setup.py | tee exploration/concept_analysis/analyses/08-.../model_output.txt` — save model output for synthesis
+- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py synthesize 08` — produces `synthesis.md`
+- [ ] Inspect synthesis.md: does it contain opinionated verdicts? Does it use model LCOE numbers? Are sensitivity insights quantified?
+- [ ] Compare against holdout-report-08.md handwritten analysis — does the synthesis match or exceed the editorial quality?
+- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py status` — concept 08 shows `S` state
+- [ ] Test approve gate: `uv run python exploration/concept_analysis/scripts/run_analysis.py approve 08` — works (synthesis exists)
+
+**End-to-end validation:**
+- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py status` — full state table with all 7 state symbols working
+- [ ] Concept 08 directory has the complete file set: analysis.md (with citations), model_setup.py, review.md, address_log.md, synthesis.md
+
+**What We Know Works After This Phase:**
+- Full enhanced pipeline: analyze → model-setup → review → address-review → synthesize → approve
+- Pipeline ordering enforced at every gate
+- All three holdout-report gaps addressed: verifiable citations, modeled LCOE, editorial synthesis
+
+---
+
+## Environment Setup
+
+**See CLAUDE.md for full environment rules**
+
+All commands use: `uv run python exploration/concept_analysis/scripts/run_analysis.py ...`
+
+1costingfe reference files are at `/home/reid/1cfe/1costingfe/` (read-only — we never modify these).
+
+---
+
+## Risk Management
+
+**See `design-enhancement.md#potential-risks` for detailed risk analysis**
+
+**Phase-Specific Mitigations:**
+- **Phase 1**: Changes to shared functions (`fill_template`, `get_concept_state`) — validate existing commands still work before proceeding
+- **Phase 3**: Model setup quality depends on prompt engineering — `--dry-run` lets us iterate on prompts before burning Claude credits
+- **Phase 4**: PA parsing is the most fragile component — test with real Claude output, add lenient matching
+- **Phase 5**: Synthesis quality is the hardest to validate automatically — compare against handwritten holdout as the quality bar
+
+## Implementation Notes
+
+[TO BE FILLED DURING IMPLEMENTATION]
+
+### Phase 1 Completion
+**Completed:**
+**Actual Changes:**
+**Issues:**
+**Deviations:**
+
+### Phase 2 Completion
+**Completed:**
+**Actual Changes:**
+**Issues:**
+**Deviations:**
+
+### Phase 3 Completion
+**Completed:**
+**Actual Changes:**
+**Issues:**
+**Deviations:**
+
+### Phase 4 Completion
+**Completed:**
+**Actual Changes:**
+**Issues:**
+**Deviations:**
+
+### Phase 5 Completion
+**Completed:**
+**Actual Changes:**
+**Issues:**
+**Deviations:**
+
+---
+
+**Status**: Draft → In Progress → Complete
