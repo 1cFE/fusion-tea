@@ -43,7 +43,9 @@ Read ALL of these — they contain the detailed technical content the dossier wa
 `/home/reid/1cfe/fusion-tea/exploration/phase_1a/schema.md`
 
 ### 7. Approved Prior Analyses (reuse pool — read all of these)
-No approved prior analyses available.
+- `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/01-hts-compact-tokamak/analysis.md`
+- `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/07-maglif/analysis.md`
+- `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/21-spherical-tokamak-hts/analysis.md`
 
 ## Writing Instructions
 
