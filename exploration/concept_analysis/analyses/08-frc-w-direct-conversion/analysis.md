@@ -6,6 +6,9 @@ Status: draft
 Created: 2026-03-22
 Approved-Date:
 Reuses: [07-maglif, 01-hts-compact-tokamak]
+Review-Iterations: 1
+Last-Review: 2026-03-22
+Review-Status: addressed
 ---
 
 # D1+ Analysis: FRC w/ Direct Conversion (Helion Energy)
@@ -22,7 +25,7 @@ Reuses: [07-maglif, 01-hts-compact-tokamak]
 
 **Rating: Limited**
 
-Helion Energy is the best-funded private fusion company in the world, but one of the least transparent technically. The concept has a solid experimental heritage through seven prototype generations (Grande through Polaris), and the broader FRC experimental database is extensive — spanning six decades, multiple national programs, and hundreds of published papers from U.S. and Japanese programs (LANL FRX series, University of Washington LSX, RPPL TCS experiments). However, the specific colliding-and-compressing FRC approach that Helion pursues is proprietary in its key details, and no independent cost studies, system code outputs, or peer-reviewed plant design papers exist for Helion's concept specifically.
+Helion Energy is one of the best-funded private fusion companies in the world, but one of the least transparent technically. The concept has a solid experimental heritage through seven prototype generations (Grande through Polaris), and the broader FRC experimental database is extensive — spanning six decades, multiple national programs, and hundreds of published papers from U.S. and Japanese programs (LANL FRX series, University of Washington LSX, RPPL TCS experiments). However, the specific colliding-and-compressing FRC approach that Helion pursues is proprietary in its key details, and no independent cost studies, system code outputs, or peer-reviewed plant design papers exist for Helion's concept specifically.
 
 **Experimental heritage (Helion-specific):**
 
@@ -83,7 +86,7 @@ Trenta operated at ~1 pulse per 10 minutes (~0.002 Hz) — four orders of magnit
 
 The current Polaris milestone of 150M°C (13 keV) is an intermediate demonstration step using D-T fuel. Commercial D-He3 operation requires ~200M°C (~17 keV) — a 33% ion temperature increase from the current record.[4] The D-He3 fusion cross-section peaks much higher (~300–500 keV) than D-T (~65 keV), and at operating temperatures around 200 keV, the D-D side reactions that produce He3 are also active. No public data exists on D-He3 plasma behavior in a colliding FRC configuration, and D-He3 fusion has not been demonstrated in any FRC experiment.
 
-The 20× temperature scale-up from the clearest FRC experimental database (Trenta: 8 keV ions) to the D-He3 commercial operating temperature (~17–200 keV) represents the largest single physics extrapolation in this concept's development path, as noted in the handwritten exemplar.[5] This gap is particularly concerning because the ARPA-E gain data (Q ~ 1.2) appears to represent an early design point, and no gain measurements at D-He3-relevant temperatures have been published.
+The ~2× temperature scale-up from Polaris's current D-T record (13 keV) to the D-He3 threshold (~17 keV), or the ~20× scale-up from the clearest FRC experimental database (Trenta: ~9 keV ions) to the D-He3 cross-section peak (~200 keV), represents the largest single physics extrapolation in this concept's development path, as noted in the handwritten exemplar.[5] The 17 keV figure is Helion's stated threshold for D-He3 operation; the ~200 keV range refers to the physics cross-section peak (D-He3 cross-section peaks at ~300–500 keV), not a cited Helion operating parameter. This gap is particularly concerning because the ARPA-E gain data (Q ~ 1.2) appears to represent an early design point, and no gain measurements at D-He3-relevant temperatures have been published.
 
 ### 4. He3 Breeding Bootstrap: Inventory Buildup Timeline Unknown (Impact: High)
 
@@ -107,7 +110,7 @@ The absence of a steam cycle is Helion's most cited cost advantage: no turbines,
 [5] handwritten/08-frc-w-direct-conversion.md §Maturity of Key Subsystems and Components: "The 20x temperature scale-up from demonstrated to required is the largest single physics extrapolation."
 [6] helion-website-technology.md §Fuel: "DD side reactions produce He3 directly (50%) and tritium (50%) which decays to He3 (t½ = 12.3 yr)."
 [7] handwritten/08-frc-w-direct-conversion.md §Quantitative LCOE Model: "not requiring turbines saves $127M."
-[8] dossier.md §Energy Capture: "In 2015, Helion demonstrated >95% round-trip energy recovery efficiency for over 1 million pulses using modern high-voltage IGBTs."
+[8] dossier.md §Energy Capture: "In 2015, Helion demonstrated >95% round-trip energy recovery efficiency for over 1 million pulses using modern high-voltage IGBTs." Note: dossier.md is a research synthesis document not included in the formal review scope for this analysis; this claim derives from a 2015 Helion press release as synthesized into dossier.md, and the original press release is the primary source. The claim is not independently verifiable from in-scope sources (helion-website-technology.md, helion-milestones-feb2026.md, contrary-research-helion.md, docslib-helion-arpa-e-presentation.md).
 
 ---
 
@@ -119,8 +122,8 @@ Listed in ascending order of maturity (least mature first).
 
 **D-He3 Fusion Plasma at Commercial Conditions — TRL 2**
 
-- **Demonstrated**: D-T fusion at 150M°C (13 keV) on Polaris (January 2026), making Helion the first privately funded company to demonstrate D-T fusion. Trenta demonstrated D-D plasma at 100M°C (8 keV) over >10,000 pulses for 16 months. Plasma temperature progression across prototypes: 5 keV (Grande), 2 keV ions at high density (Venti), 8 keV ions / >1 keV electrons (Trenta), 13 keV (Polaris).[1]
-- **On paper only**: D-He3 fusion in a colliding FRC geometry at ~200M°C (~17–200 keV operating window). No published D-He3 plasma operation in any FRC device from any program.
+- **Demonstrated**: D-T fusion at 150M°C (13 keV) on Polaris (January 2026), making Helion the first privately funded company to demonstrate D-T fusion. Trenta demonstrated D-D plasma at 100M°C (~9 keV) over >10,000 pulses for 16 months. Plasma temperature progression across prototypes: 5 keV (Grande), 2 keV ions at high density (Venti), ~9 keV ions / >1 keV electrons (Trenta), 13 keV (Polaris).[1]
+- **On paper only**: D-He3 fusion in a colliding FRC geometry at ~200M°C (~17 keV threshold per Helion; D-He3 cross-section peaks at ~300–500 keV). No published D-He3 plasma operation in any FRC device from any program.
 - **Missing at scale**: Demonstration of D-He3 fusion yield at any temperature; triple product measurements at D-He3-relevant conditions; scaling of Q from the ARPA-E estimate (~1.2) to commercially viable levels; compression to the 40 T reactor field needed for D-He3 temperatures.
 
 ---
@@ -151,7 +154,7 @@ Listed in ascending order of maturity (least mature first).
 
 **Direct Inductive Energy Recovery at Plant Scale — TRL 4–5**
 
-- **Demonstrated**: >95% round-trip energy recovery demonstrated at subscale for >1M pulses using IGBTs (2015 Helion press release, cited in dossier). The concept — expanding magnetized plasma inducing current in surrounding coils via Faraday's law — is well-understood physics.[6]
+- **Demonstrated**: >95% round-trip energy recovery demonstrated at subscale for >1M pulses using IGBTs (2015 Helion press release, synthesized into dossier.md §Energy Capture — primary source not independently verifiable from in-scope documents). The concept — expanding magnetized plasma inducing current in surrounding coils via Faraday's law — is well-understood physics.[6]
 - **On paper only**: Energy recovery at reactor voltage, current, and power levels (50+ MW per pulse); integration of IGBT switching with 40 T compression coils; recovery efficiency at 1–2 Hz and 50+ MJ stored energy.
 - **Missing at scale**: IGBT (or equivalent power electronics) reliability at 10⁹ switching cycles; efficiency validation at full scale; thermal management of switching losses at 1–2 Hz; capital cost of reactor-scale switching hardware.
 
@@ -186,7 +189,7 @@ Listed in ascending order of maturity (least mature first).
 
 ### Helium-3
 
-He3 is the scarcest material in Helion's supply chain, and its availability during the pre-breeding phase represents the binding constraint on fleet deployment speed. He3 is not commercially produced; global supply derives almost entirely from tritium decay in nuclear weapons programs (predominantly US DOE). The US has rationed He3 since ~2010 due to competing demand from radiation detection (homeland security), neutron scattering instruments, and medical imaging (MRI polarization). Global production is estimated at ~8 kg/year. Commercial prices have ranged from ~$2,000 to >$15,000 per NTP liter (~0.125 g/L at STP), equivalent to roughly $16,000–$120,000/g.
+He3 is the scarcest material in Helion's supply chain, and its availability during the pre-breeding phase represents the binding constraint on fleet deployment speed. He3 is not commercially produced; global supply derives almost entirely from tritium decay in nuclear weapons programs (predominantly US DOE). The US has rationed He3 since ~2010 due to competing demand from radiation detection (homeland security), neutron scattering instruments, and medical imaging (MRI polarization). Global production is estimated at ~8 kg/year. Commercial prices have ranged from ~$2,000 to >$15,000 per NTP liter (~0.125 g/L at STP), equivalent to roughly $16,000–$120,000/g.[9]
 
 Helion's long-term strategy requires only deuterium as external fuel, with He3 self-bred from DD side reactions.[1] However, each new plant requires an initial He3 inventory sufficient to sustain D-He3 ignition attempts while DD breeding accumulates. Since 50% of He3 comes via tritium decay at 12.3-year half-life, significant He3 inventory can only be built up over many years of DD operation. The size of this startup inventory and the timeline to self-sufficiency are not public. Helion's fleet deployment rate is fundamentally limited by either external He3 supply (at high cost) or the time needed to breed inventory at each new plant (at low marginal cost but multi-year delay).
 
@@ -223,6 +226,7 @@ Helion's D-He3 fuel cycle explicitly avoids the tritium breeding blanket that is
 [6] contrary-research-helion.md §In-House Manufacturing: "Supply chain identified as 'main potential risk.'"
 [7] helion-website-technology.md §Magnets / Coils: "~720 miles total" of coaxial cables.
 [8] helion-website-technology.md §Neutron Management; dossier.md §Neutron Management.
+[9] He3 supply and pricing data: [background: US DOE He3 program data and He3 market literature]. Global production (~8 kg/year), commercial price range ($2,000–$15,000/NTP liter), and DOE rationing history (~2010) derive from background domain knowledge based on published US DOE He3 program data and academic/industry market literature; no in-scope source document covers this directly. US DOE He3 supply reports are public (see §S6 Gap 12) and could be ingested to provide a primary citation.
 
 ---
 
@@ -235,8 +239,8 @@ Helion's D-He3 fuel cycle explicitly avoids the tritium breeding blanket that is
 | Net electrical output (Orion) | 50 MWe+ | helion-milestones-feb2026.md §Orion Specifications | high | First commercial plant; "after one-year ramp-up period" |
 | Net electrical output (future) | 500 MWe | helion-website-technology.md §Power Output | medium | Nucor partnership; not a published design study |
 | Plasma temperature (Polaris, achieved) | 150M°C (13 keV) | helion-milestones-feb2026.md §Key Technical Details | high | D-T interim milestone; Jan 2026 |
-| Plasma temperature (D-He3 required) | ~200M°C (~17–200 keV window) | helion-website-technology.md §Fuel | high | Helion stated threshold; actual operating window not specified |
-| Plasma temperature (Trenta, achieved) | 100M°C (8 keV ions, >1 keV electrons) | helion-prototype-generations.md §Prototype Timeline | high | |
+| Plasma temperature (D-He3 required) | ~200M°C (~17 keV threshold per Helion) | helion-website-technology.md §Fuel | high | Helion states ~17 keV as threshold; D-He3 cross-section peaks at ~300–500 keV (physics range, not a cited Helion operating parameter) |
+| Plasma temperature (Trenta, achieved) | 100M°C (~9 keV ions, >1 keV electrons) | helion-prototype-generations.md §Prototype Timeline | high | 100M°C = 8.617 keV; rounded to ~9 keV per helion-website-technology.md convention |
 | FRC velocity | >300 km/s | docslib-helion-arpa-e-presentation.md §Fusion Approach | high | Both plasmoids; collision kinetic energy → ion thermal |
 | Formation plasma density | 1×10²¹ m⁻³ | docslib-helion-arpa-e-presentation.md §Plasma Parameters | medium | ARPA-E design point; may not reflect Polaris |
 | Compressed plasma density target | 1×10²³ m⁻³ | docslib-helion-arpa-e-presentation.md §Plasma Parameters | medium | 100× compression factor |

@@ -202,57 +202,57 @@ Add `review` and `address-review` commands. The review produces structured findi
 
 #### 1. Review prompt template
 **File:** `exploration/concept_analysis/prompt_templates/review.md` (NEW)
-- [ ] Create template per design §3a
-- [ ] 5 review checklist categories: citation verification, calculation verification, model setup audit, consistency check, factual concerns
-- [ ] Output format with CV-N, CALC-N, MSA-N finding types and PA-N proposed actions
-- [ ] PA format: Category, Severity, Location, Finding, Proposed Fix, Decision (blank), User Notes (blank)
+- [x] Create template per design §3a
+- [x] 5 review checklist categories: citation verification, calculation verification, model setup audit, consistency check, factual concerns
+- [x] Output format with CV-N, CALC-N, MSA-N finding types and PA-N proposed actions
+- [x] PA format: Category, Severity, Location, Finding, Proposed Fix, Decision (blank), User Notes (blank)
 
 #### 2. Address-review prompt template
 **File:** `exploration/concept_analysis/prompt_templates/address_review.md` (NEW)
-- [ ] Create template per design §3d
-- [ ] Accepts decisions block, instructs Claude to apply agree/alternative/reject
-- [ ] Appends to address_log.md
+- [x] Create template per design §3d
+- [x] Accepts decisions block, instructs Claude to apply agree/alternative/reject
+- [x] Appends to address_log.md
 
 #### 3. `parse_proposed_actions()` function
 **File:** `exploration/concept_analysis/scripts/run_analysis.py`
-- [ ] Implement PA parser per design §3c
-- [ ] Parse `### PA-N:` headers and `**Key:** Value` fields
-- [ ] Strip italic placeholder markers for unfilled fields
-- [ ] Handle edge cases: missing fields, extra whitespace
+- [x] Implement PA parser per design §3c
+- [x] Parse `### PA-N:` headers and `**Key:** Value` fields
+- [x] Strip italic placeholder markers for unfilled fields
+- [x] Handle edge cases: missing fields, extra whitespace
 
 #### 4. `format_source_list()` helper
 **File:** `exploration/concept_analysis/scripts/run_analysis.py`
-- [ ] Format source paths as numbered markdown list for the review prompt
+- [x] Format source paths as numbered markdown list for the review prompt (already existed from Phase 1)
 
 #### 5. `cmd_review()` — replace stub
 **File:** `exploration/concept_analysis/scripts/run_analysis.py`
-- [ ] Implement per design §3b
-- [ ] State gate: skip if no analysis.md; warn but proceed if no model_setup.py
-- [ ] Track iteration number from frontmatter
-- [ ] Update frontmatter: Review-Iterations, Last-Review, Review-Status
-- [ ] Detect CLEAN vs HAS ISSUES from output
+- [x] Implement per design §3b
+- [x] State gate: skip if no analysis.md; warn but proceed if no model_setup.py
+- [x] Track iteration number from frontmatter
+- [x] Update frontmatter: Review-Iterations, Last-Review, Review-Status
+- [x] Detect CLEAN vs HAS ISSUES from output
 
 #### 6. `cmd_address_review()` — replace stub
 **File:** `exploration/concept_analysis/scripts/run_analysis.py`
-- [ ] Implement per design §3e
-- [ ] Parse review.md for filled-in decisions
-- [ ] Build decisions block for prompt
-- [ ] Update Review-Status → addressed after applying
+- [x] Implement per design §3e
+- [x] Parse review.md for filled-in decisions
+- [x] Build decisions block for prompt
+- [x] Update Review-Status → addressed after applying
 
 ### Validation
 
 **Dry-run check:**
-- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py review 08 --dry-run` — prompt saved, includes analysis.md, model_setup.py, source documents
+- [x] `uv run python exploration/concept_analysis/scripts/run_analysis.py review 08 --dry-run` — prompt saved, includes analysis.md, model_setup.py, source documents
 
 **Real example — full review cycle on concept 08:**
-- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py review 08` — produces `review.md`
-- [ ] Inspect review.md: are citations actually verified against sources? Are PA-N actions properly formatted with blank Decision fields?
-- [ ] Check analysis.md frontmatter: Review-Iterations=1, Review-Status set
-- [ ] Manually fill in 2-3 PA decisions in review.md (mix of agree/reject/alternative)
-- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py address-review 08` — applies decisions
-- [ ] Inspect address_log.md: changes logged correctly
-- [ ] `git diff` analysis.md / model_setup.py: verify edits match decisions
-- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py status` — concept 08 shows `R` state
+- [x] `uv run python exploration/concept_analysis/scripts/run_analysis.py review 08` — produces `review.md` (495s, 31889 chars, 22 citations checked, 8 calcs, 14 model params, 8 PAs)
+- [x] Inspect review.md: citations verified against sources with FOUND/NOT FOUND status; PA-N actions properly formatted with blank Decision/User Notes fields; all 8 PAs parse correctly through `parse_proposed_actions()`
+- [x] Check analysis.md frontmatter: Review-Iterations=1, Review-Status=has-actions ✓
+- [x] User filled in all 8 PA decisions as "agree" in review.md
+- [x] `uv run python exploration/concept_analysis/scripts/run_analysis.py address-review 08` — applies decisions (320s, 8 actions processed)
+- [x] Inspect address_log.md: all 8 changes logged correctly, none skipped
+- [x] `git diff HEAD` analysis.md / model_setup.py: all 8 PA edits verified against review findings — PA-1 (He3 footnote), PA-2 (softened superlative), PA-3 (17 keV threshold), PA-4 (cap bank cost clarified), PA-5 (installation arithmetic), PA-6 (8→~9 keV), PA-7 (CAS21 traceability), PA-8 (>95% demo caveat)
+- [x] `uv run python exploration/concept_analysis/scripts/run_analysis.py status` — concept 08 shows `R` state (Review-Status=addressed)
 
 **What We Know Works After This Phase:**
 - Review produces structured, verifiable findings
@@ -384,10 +384,16 @@ All commands use: `uv run python exploration/concept_analysis/scripts/run_analys
 **Deviations:** Added `FAMILY_KEY_MAP` (not explicitly in design) to cleanly resolve CSV column values to mapping keys. Also added `_get_subcategory()` helper to extract the right sub-type column per family.
 
 ### Phase 4 Completion
-**Completed:**
+**Completed:** 2026-03-22
 **Actual Changes:**
-**Issues:**
-**Deviations:**
+- Created `prompt_templates/review.md` — 5 review checklist categories (citation verification, calculation verification, model setup audit, internal consistency, factual concerns), structured output format with CV-N/CALC-N/MSA-N finding types, PA-N proposed actions with blank Decision/User Notes fields
+- Created `prompt_templates/address_review.md` — accepts decisions block, instructs Claude to apply agree/alternative/reject via Edit tool, appends change log to address_log.md
+- Added `parse_proposed_actions()` function — regex-based PA parser that splits on `### PA-N:` headers, extracts `**Key:** Value` fields, strips italic placeholder markers for unfilled fields
+- Replaced `cmd_review()` stub — full implementation with state gate (skip if no analysis.md, warn if no model_setup.py), iteration tracking from frontmatter, source gathering, template fill, Claude invocation, frontmatter update (Review-Iterations, Last-Review, Review-Status), CLEAN/HAS ISSUES detection from output
+- Replaced `cmd_address_review()` stub — parses review.md for filled-in decisions, builds decisions block for prompt, invokes Claude to apply edits, updates Review-Status → addressed
+- `format_source_list()` already existed from earlier phases — no changes needed
+**Issues:** None
+**Deviations:** Added fallback in `cmd_review()` — if Claude prints to stdout instead of writing to the output file, we capture stdout as the review content (same pattern as gap-check). Also added `--force` skip logic to review (not explicitly in design but consistent with all other commands).
 
 ### Phase 5 Completion
 **Completed:**

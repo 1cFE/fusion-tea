@@ -73,7 +73,9 @@ Key deviations from 1costingfe MIF defaults:
 
   Cost overrides (plant-wide):
     - CAS21 = $400M — no turbine hall, no cryogenics bldg, reduced hot cell,
-      added capacitor bank storage + power electronics buildings
+      added capacitor bank storage + power electronics buildings.
+      NOTE: Derived from dhe3_pulsed_frc.py baseline (out of scope); no Helion-specific
+      buildings cost source exists. High uncertainty; order-of-magnitude placeholder.
     - CAS23 = $0    — no steam turbine plant (direct EM conversion)
     - CAS26 = $7M   — reduced heat rejection (only ~10% conversion losses)
     - C220200 = $30M — minimal coolant (no steam loop; only coil cooling,
@@ -159,11 +161,14 @@ result = model.forward(
     #            IGBT/GTO switches, bus work, and pulse transformers.
     #            Polaris bank: >50 MJ at tens of kV.
     #            Source: helion-website-technology.md §Capacitor Bank
-    #            UNCERTAIN: At ~$5/J commercial capacitor price, Polaris-class bank ≈ $250M.
+    #            UNCERTAIN: At ~$5/J commercial capacitor price, Polaris-class bank ≈ $250M
+    #            (Polaris: >50 MJ; experimental prototype, not a commercial module).
     #            Source: analysis.md §S4 (High-Voltage Capacitors section);
     #                    07-maglif analysis §Key Materials (~$5/J pulsed-power industry estimate)
     #            Helion's in-house manufacturing strategy targets significant cost reduction.
-    #            $10M/module assumes NOAK volume manufacturing at ~$0.50/J or better.
+    #            $10M/module assumes ~20 MJ per commercial module (driver point: p_driver=12 MW
+    #            at 2 Hz → ~6 MJ/pulse; bank sized at ~20 MJ for headroom) at NOAK $0.50/J.
+    #            20 MJ × $0.50/J = $10M. Polaris-scale bank ($250M) is larger and experimental.
     #            Source: analysis.md §S7 Cross-Concept Notes (MagLIF capacitor cost analogy)
     #   C220107: Auxiliary power supplies only — diagnostics, control, vacuum.
     #            Main pulsed driver is costed in C220104. $3M/module.
@@ -202,18 +207,27 @@ result = model.forward(
                           # UNCERTAIN: Fatigue life at 40 T / ~10^9 shots unvalidated
         "C220104": 10.0,  # Capacitor bank + IGBT switches [M$/module]
                           # Source: dhe3_pulsed_frc.py; analysis.md §S4 (Cap bank section)
-                          # UNCERTAIN: Assumes NOAK ~$0.50/J; today $5/J → ~$250M/module
+                          # UNCERTAIN: Assumes ~20 MJ/module at NOAK $0.50/J = $10M.
+                          # Today $5/J × 20 MJ = $100M/module; Polaris bank (>50 MJ) at $5/J ≈ $250M
+                          # (Polaris is an experimental prototype, not a commercial module).
         "C220107": 3.0,   # Aux power supplies [M$/module]
                           # Source: dhe3_pulsed_frc.py baseline
         "C220108": 0.0,   # No target factory (in-situ FRC plasmoid formation from gas)
                           # Source: helion-website-technology.md §Technology
-        "C220111": 4.0,   # Installation labor (14% of ~$27M per-module subtotal)
+        "C220111": 4.0,   # Installation labor (14% of ~$29M per-module subtotal)
+                          # Per-module items: $5M coils + $10M cap bank + $3M aux power
+                          # + framework defaults for first wall, shield, structure, vacuum,
+                          # DEC, remote handling ≈ $11M → subtotal ~$29M; 14% × $29M ≈ $4M.
                           # Source: costing_constants.yaml installation_frac=0.14
         # Plant-wide
         "C220200": 30.0,  # Minimal coolant system (no steam loop) [M$]
                           # Source: analysis.md §S4 (~5% neutron fraction, no thermal cycle)
         "CAS21": 400.0,   # Adjusted buildings (no turbine/cryo/HX halls) [M$]
-                          # Source: dhe3_pulsed_frc.py; costing_constants.yaml
+                          # UNCERTAIN: $400M derives from dhe3_pulsed_frc.py baseline analogue
+                          # (itself out of scope for this review), not from Helion-specific
+                          # sources. No in-scope source provides a buildings cost estimate.
+                          # Uncertainty is high; treat as order-of-magnitude placeholder.
+                          # Source: dhe3_pulsed_frc.py; costing_constants.yaml building_costs_per_kw
         "CAS23": 0.0,     # No turbine plant (direct EM conversion)
                           # Source: handwritten §LCOE Model; analysis.md §S2 Challenge 6
         "CAS26": 7.0,     # Reduced heat rejection (~10% thermal losses) [M$]
@@ -236,7 +250,8 @@ result = model.forward(
     eta_th=0.90,     # UNCERTAIN: Direct EM energy recovery efficiency proxy.
                      # Three conflicting public data points:
                      #   >95% round-trip: subscale demo, >1M pulses with IGBTs.
-                     #     Source: dossier.md §Energy Capture
+                     #     Source: dossier.md §Energy Capture (synthesizes 2015 Helion press
+                     #     release; not independently verifiable from in-scope sources)
                      #   85-95%: range stated without test conditions.
                      #     Source: contrary-research-helion.md §Energy Recovery
                      #   η=0.70: magnetic energy recovery only (ARPA-E design point).

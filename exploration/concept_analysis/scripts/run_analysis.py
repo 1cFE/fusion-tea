@@ -540,6 +540,59 @@ def format_source_list(sources: list[Path]) -> str:
     return "\n".join(lines)
 
 
+def parse_proposed_actions(review_path: Path) -> list[dict]:
+    """Parse Proposed Actions from review.md.
+
+    Returns list of dicts with keys: id, description, category, severity,
+    location, finding, proposed_fix, decision, user_notes.
+    """
+    text = review_path.read_text(encoding="utf-8")
+    actions = []
+    # Split on ### PA-N: headers
+    pa_pattern = re.compile(r"^### (PA-\d+):\s*(.+)$", re.MULTILINE)
+
+    matches = list(pa_pattern.finditer(text))
+    for i, m in enumerate(matches):
+        start = m.end()
+        end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
+        block = text[start:end]
+
+        action = {
+            "id": m.group(1),
+            "description": m.group(2).strip(),
+        }
+
+        # Extract fields from **Key:** Value pattern
+        for field_key, dict_key in [
+            ("Category", "category"),
+            ("Severity", "severity"),
+            ("Location", "location"),
+            ("Finding", "finding"),
+            ("Proposed Fix", "proposed_fix"),
+            ("Decision", "decision"),
+            ("User Notes", "user_notes"),
+        ]:
+            field_pattern = re.compile(
+                rf"^\-\s*\*\*{re.escape(field_key)}:\*\*\s*(.+)$",
+                re.MULTILINE,
+            )
+            field_match = field_pattern.search(block)
+            if field_match:
+                val = field_match.group(1).strip()
+                # Strip italic placeholder markers
+                if val.startswith("_[") and val.endswith("]_"):
+                    val = ""  # unfilled placeholder
+                elif val.startswith("_") and val.endswith("_"):
+                    val = ""
+                action[dict_key] = val
+            else:
+                action[dict_key] = ""
+
+        actions.append(action)
+
+    return actions
+
+
 def find_approved(analyses_dir: Path = ANALYSES_DIR) -> list[Path]:
     """Find all approved analysis.md files (the reuse pool).
 
@@ -905,12 +958,193 @@ def cmd_model_setup(concepts: list[dict], args: argparse.Namespace) -> None:
 
 def cmd_review(concepts: list[dict], args: argparse.Namespace) -> None:
     """Stage 4: Structured review with proposed actions."""
-    print("review: not yet implemented")
+    targets = resolve_concepts(
+        args.concepts, concepts,
+        family=args.family,
+        all_remaining=args.all_remaining,
+        target_state="reviewed",
+    )
+    if not targets:
+        print("No concepts to review.")
+        return
+
+    template_text = (TEMPLATES_DIR / "review.md").read_text(encoding="utf-8")
+
+    for c in targets:
+        cid = c["_id"]
+        rid = c["_research_id"]
+        out_dir = ANALYSES_DIR / cid
+        analysis_path = out_dir / "analysis.md"
+        model_path = out_dir / "model_setup.py"
+        review_path = out_dir / "review.md"
+
+        if not analysis_path.exists():
+            print(f"  skip {cid} (no analysis.md — run analyze first)")
+            continue
+
+        if not model_path.exists():
+            print(f"  warn {cid}: no model_setup.py — reviewing analysis only")
+
+        if review_path.exists() and not args.force:
+            print(f"  skip {cid} (review.md exists, use --force to re-run)")
+            continue
+
+        # Determine iteration number (always increment, even with --force)
+        fm = parse_frontmatter(analysis_path)
+        prev_iterations = fm.get("Review-Iterations", "0")
+        iteration = int(prev_iterations) + 1
+
+        sources = find_sources(rid)
+
+        prompt = fill_template(template_text, {
+            "concept_name": c["Concept Name"],
+            "company": c.get("Company", ""),
+            "analysis_path": str(analysis_path),
+            "model_setup_path": str(model_path) if model_path.exists() else "",
+            "source_paths": format_source_list(sources),
+            "source_count": str(len(sources)),
+            "output_path": str(review_path),
+            "iteration": str(iteration),
+            "date": date.today().isoformat(),
+        })
+
+        # Save prompt
+        out_dir.mkdir(parents=True, exist_ok=True)
+        prompt_path = out_dir / "review_prompt.md"
+        prompt_path.write_text(prompt, encoding="utf-8")
+
+        if args.dry_run:
+            print(f"  dry-run {cid}: prompt saved to {prompt_path}")
+            continue
+
+        # Live invocation
+        print(f"  review {cid} (iteration {iteration}) ...", end="", flush=True)
+        t0 = time.time()
+        stdout, stderr, rc = invoke_claude(
+            prompt, cwd=CONCEPT_ANALYSIS_DIR, timeout=args.timeout, model=args.model,
+        )
+        elapsed = time.time() - t0
+
+        if rc != 0:
+            print(f" FAILED ({elapsed:.0f}s, rc={rc})")
+            print(f"    stderr: {stderr[:500]}", file=sys.stderr)
+            continue
+
+        # Verify Claude wrote the review file
+        if not review_path.exists():
+            # Claude may have printed output instead of writing to file
+            if stdout.strip():
+                review_path.write_text(stdout, encoding="utf-8")
+            else:
+                print(f" FAILED ({elapsed:.0f}s) — no review output")
+                continue
+
+        review_text = review_path.read_text(encoding="utf-8")
+
+        # Determine review status from output
+        review_status = "has-actions"
+        if re.search(r"\*\*Overall:\*\*\s*CLEAN", review_text, re.MULTILINE):
+            review_status = "clean"
+
+        # Update analysis frontmatter
+        text = analysis_path.read_text(encoding="utf-8")
+        text = update_frontmatter_field(text, "Review-Iterations", str(iteration))
+        text = update_frontmatter_field(text, "Last-Review", date.today().isoformat())
+        text = update_frontmatter_field(text, "Review-Status", review_status)
+        analysis_path.write_text(text, encoding="utf-8")
+
+        size = len(review_text)
+        print(f" done ({elapsed:.0f}s, {size} chars) — {review_status}")
 
 
 def cmd_address_review(concepts: list[dict], args: argparse.Namespace) -> None:
     """Apply user decisions from review report."""
-    print("address-review: not yet implemented")
+    targets = resolve_concepts(
+        args.concepts, concepts,
+        family=args.family,
+        all_remaining=args.all_remaining,
+    )
+    if not targets:
+        print("No concepts to address-review.")
+        return
+
+    template_text = (TEMPLATES_DIR / "address_review.md").read_text(encoding="utf-8")
+
+    for c in targets:
+        cid = c["_id"]
+        out_dir = ANALYSES_DIR / cid
+        review_path = out_dir / "review.md"
+        analysis_path = out_dir / "analysis.md"
+        model_path = out_dir / "model_setup.py"
+        log_path = out_dir / "address_log.md"
+
+        if not review_path.exists():
+            print(f"  skip {cid} (no review.md — run review first)")
+            continue
+
+        # Parse proposed actions
+        actions = parse_proposed_actions(review_path)
+        actionable = [
+            a for a in actions
+            if a.get("decision") and a["decision"] not in ("", "_")
+        ]
+
+        if not actionable:
+            print(f"  skip {cid} (no decisions filled in review.md — "
+                  f"edit review.md and fill in Decision fields)")
+            continue
+
+        # Build decisions block for prompt
+        decisions_lines = []
+        for a in actionable:
+            decisions_lines.append(f"### {a['id']}: {a['description']}")
+            decisions_lines.append(f"- **Decision:** {a['decision']}")
+            decisions_lines.append(f"- **User Notes:** {a.get('user_notes', '')}")
+            decisions_lines.append(f"- **Location:** {a['location']}")
+            decisions_lines.append(f"- **Proposed Fix:** {a['proposed_fix']}")
+            decisions_lines.append("")
+
+        fm = parse_frontmatter(analysis_path)
+        iteration = fm.get("Review-Iterations", "1")
+
+        prompt = fill_template(template_text, {
+            "concept_name": c["Concept Name"],
+            "analysis_path": str(analysis_path),
+            "model_setup_path": str(model_path) if model_path.exists() else "",
+            "decisions_block": "\n".join(decisions_lines),
+            "log_path": str(log_path),
+            "iteration": iteration,
+            "date": date.today().isoformat(),
+        })
+
+        # Save prompt
+        prompt_path = out_dir / "address_review_prompt.md"
+        prompt_path.write_text(prompt, encoding="utf-8")
+
+        if args.dry_run:
+            print(f"  dry-run {cid}: prompt saved to {prompt_path} "
+                  f"({len(actionable)} actions)")
+            continue
+
+        # Live invocation — Claude uses Edit tool to modify analysis.md / model_setup.py
+        print(f"  address-review {cid} ...", end="", flush=True)
+        t0 = time.time()
+        stdout, stderr, rc = invoke_claude(
+            prompt, cwd=CONCEPT_ANALYSIS_DIR, timeout=args.timeout, model=args.model,
+        )
+        elapsed = time.time() - t0
+
+        if rc != 0:
+            print(f" FAILED ({elapsed:.0f}s, rc={rc})")
+            print(f"    stderr: {stderr[:500]}", file=sys.stderr)
+            continue
+
+        # Update frontmatter: Review-Status → addressed
+        text = analysis_path.read_text(encoding="utf-8")
+        text = update_frontmatter_field(text, "Review-Status", "addressed")
+        analysis_path.write_text(text, encoding="utf-8")
+
+        print(f" done ({elapsed:.0f}s, {len(actionable)} actions processed)")
 
 
 def cmd_synthesize(concepts: list[dict], args: argparse.Namespace) -> None:
