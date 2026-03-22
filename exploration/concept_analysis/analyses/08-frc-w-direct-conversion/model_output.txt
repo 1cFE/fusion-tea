@@ -1,0 +1,143 @@
+FRC w/ Direct Conversion (Helion Energy) — 20 modules x 50 MWe
+  Concept: Pulsed colliding FRC, D-He3 fuel, direct EM energy recovery
+  Commercial ref: Orion (50 MWe, Malaga WA, 2028 target) — single module
+  1000 MWe net, 85% availability, 30 yr lifetime
+
+LCOE: 50.3 $/MWh (5.03 c/kWh) | Overnight: 1773 $/kW
+Fusion: 64 MW | Net: 50 MW | Q_eng: 3.8
+Recirculating fraction: 26.7%
+Scientific Q (P_fus/P_driver): 5.3
+
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    12.6
+CAS21    Buildings                         400.0
+CAS22    Reactor Plant Equipment           741.8
+CAS23    Turbine Plant                       0.0
+CAS24    Electrical Plant                  114.8
+CAS25    Miscellaneous                      69.9
+CAS26    Heat Rejection                      7.0
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                         0.0
+CAS30    Indirect Costs                    178.5
+CAS40    Owner's Costs                       5.1
+CAS50    Supplementary                      62.9
+CAS60    IDC                               175.7
+CAS70    O&M (annualized)                    7.7
+CAS80    Fuel (annualized)                 223.7
+CAS90    Financial                         142.9
+------------------------------------------------
+         Total Capital                    1773.2
+
+CAS22 Reactor Plant Equipment (per-module x 20 + plant-wide):
+------------------------------------------------------------
+  C220101 First Wall / Blanket                0.0 M$/mod  x20 =      0.4
+  C220102 Shield                              0.2 M$/mod  x20 =      3.4
+  C220103 Coils (Al pulsed EM)                5.0 M$/mod  x20 =    100.0
+  C220104 Pulsed Driver (cap bank + IGBT)     10.0 M$/mod  x20 =    200.0
+  C220105 Primary Structure                   0.0 M$/mod  x20 =      0.9
+  C220106 Vacuum System                       0.2 M$/mod  x20 =      4.9
+  C220107 Aux Power Supplies                  3.0 M$/mod  x20 =     60.0
+  C220110 Remote Handling                     7.8 M$/mod  x20 =    156.7
+  C220111 Installation                        4.0 M$/mod  x20 =     80.0
+          Per-module subtotal                30.3 M$/mod  x20 =    606.3
+
+  C220200 Coolant Systems                    30.0 M$ (plant-wide)
+  C220300 Aux Cooling + Cryo                  1.7 M$ (plant-wide)
+  C220400 Rad Waste                           3.0 M$ (plant-wide)
+  C220500 Fuel Handling (He-3)               40.0 M$ (plant-wide)
+  C220600 Other Equipment                    11.5 M$ (plant-wide)
+  C220700 I&C                                49.3 M$ (plant-wide)
+          Plant-wide subtotal               135.5 M$
+
+          CAS22 Total                       741.8 M$
+
+Overridden: CAS21, C220103, C220104, C220107, C220108, C220111, C220200, CAS23, CAS26
+
+Key Assumptions:
+------------------------------------------------------------
+  Direct EM conversion eff (eta_th proxy): 90%
+    UNCERTAIN — three conflicting public values:
+      >95% subscale demo  (dossier.md §Energy Capture)
+      85-95% range        (contrary-research-helion.md §Energy Recovery)
+      η=0.70 ARPA-E       (docslib-helion-arpa-e-presentation.md §Energy Efficiency)
+    0.90 is central estimate; see sensitivity output for leverage.
+  Pulsed power wall-plug eff (eta_pin):    95%
+    Source: IGBT solid-state pulsed power (dossier.md §Energy Capture)
+  Neutron multiplier (mn):                 1.0
+    Source: No breeding blanket (D-He3 eliminates this requirement)
+            analysis.md §S4; helion-website-technology.md §Fuel
+  Coil material:                           Aluminum (pulsed EM coils)
+    Source: contrary-research-helion.md (CEO: 'regular aluminum magnets')
+  Modules:                                 20 x 50 MWe
+  Commercial reference:                    Orion = 1 module, 50 MWe
+    Source: helion-milestones-feb2026.md §Orion Specifications
+  Construction time:                       4.0 yr (factory-built modular)
+  Burn fraction:                           10%  UNCERTAIN
+    Source: analysis.md §S2 Challenge 1; ARPA-E η·Gain=0.2×1.2
+  Fuel recovery:                           95%
+  Cryogenics:                              None (aluminum coils)
+    Source: contrary-research-helion.md (CEO direct quote)
+  Steam cycle:                             None (CAS23 = $0)
+    Source: analysis.md §S2 Challenge 6; handwritten §LCOE Model (~$127M/50MWe)
+  Capacitor bank cost assumption:          NOAK ~$0.50/J or better
+    UNCERTAIN: Today $5/J → Polaris bank ≈ $250M; NOAK requires ~10x reduction
+    Source: analysis.md §S4 (High-Voltage Capacitors); 07-maglif §Key Materials
+
+Modeling notes:
+  - eta_th=0.90 approximates direct EM recovery; the ~5% neutron power
+    fraction is also converted at 90% instead of ~40% thermal, introducing
+    a small upward bias in net electric. Neutron fraction:
+    helion-website-technology.md §Fuel; analysis.md §S5.
+  - He-3 fuel cost: $2M/kg (costing_constants.yaml u_he3=2000000).
+    This is the optimistic self-production (self-bred He3) cost estimate.
+    Market spot: $2,000–15,000 per NTP liter (~$16,000–120,000/g).
+    Source: analysis.md §S4 Key Materials (Helium-3 section).
+    UNCERTAIN: He3 startup inventory requirement not published.
+    If significant external He3 purchase is needed before self-breeding
+    is established, startup fuel cost could dominate LCOE.
+    Source: analysis.md §S2 Challenge 4; §S6 Gap 3.
+  - Rep rate is the dominant LCOE lever. analysis.md §S2 Challenge 2:
+    '1 Hz → 2 Hz doubles energy output from identical capital.'
+    ARPA-E design: 2 Hz; Polaris target: ~1 Hz (not yet demonstrated publicly).
+    Trenta demonstrated only ~0.002 Hz (500-1000x below commercial target).
+    Source: analysis.md §S5; docslib-helion-arpa-e-presentation.md §Power.
+  - Coil cost ($5M/mod) covers aluminum pulsed EM solenoids. Key uncertainty:
+    fatigue life at 40 T field under ~10^9 pulsed loading cycles per module.
+    Source: analysis.md §S3 (Compression to Reactor Field, TRL 3).
+  - Capacitor bank ($10M/mod) assumes NOAK volume manufacturing ~$0.50/J.
+    Current commercial $5/J → Polaris-scale hardware ≈ $250M/mod.
+    Helion's in-house manufacturing is the mitigating strategy.
+    Source: analysis.md §S4 (High-Voltage Capacitors and IGBT Switches).
+  - No independent TEA exists for Helion (analysis.md §S7 Cross-Concept Notes).
+    All quantitative values derive from sparse public disclosures.
+    Uncertainty bounds here are substantially wider than for tokamak concepts
+    that have Araiinejad & Shirvan (2025) or equivalent peer-reviewed TEA.
+
+Sensitivity (elasticity = %LCOE / %param)
+------------------------------------------------
+
+Engineering levers:
+  availability                 -0.9121
+  fuel_recovery                -0.5184
+  construction_time_yr         +0.2403
+  eta_th                       -0.1071
+  eta_pin                      -0.0317
+  burn_fraction                -0.0303
+  p_driver                     +0.0151
+  f_sub                        +0.0051
+  p_house                      +0.0050
+  mn                           -0.0041
+  p_trit                       +0.0013
+  p_coils                      +0.0013
+  p_pump                       +0.0009
+  plasma_t                     +0.0004
+  eta_p                        -0.0003
+  vessel_t                     +0.0003
+  structure_t                  +0.0001
+  ht_shield_t                  +0.0000
+  blanket_t                    +0.0000
+
+Financial:
+  interest_rate                +0.7258
+  inflation_rate               +0.0268

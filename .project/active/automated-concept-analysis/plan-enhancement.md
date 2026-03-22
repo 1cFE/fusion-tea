@@ -162,7 +162,7 @@ Add the `model-setup` command with two-path architecture (1costingfe API vs free
 - [x] Two-path prompt selection based on `get_model_path()`
 - [x] State gate: skip if no `analysis.md`
 - [x] Skip/force logic for existing `model_setup.py`
-- [x] Save prompt, invoke Claude, print hint for running the model
+- [x] Save prompt, invoke Claude, auto-run model after generation (updated Phase 6)
 
 ### Validation
 
@@ -279,34 +279,34 @@ Add `synthesize` command and update `approve` to gate on synthesis. The synthesi
 
 #### 1. Synthesis prompt template
 **File:** `exploration/concept_analysis/prompt_templates/synthesis.md` (NEW)
-- [ ] Create template per design §4a
-- [ ] 7 mandatory sections: Executive Summary, What Matters Most for LCOE, Risk Verdicts, Structural Advantages/Disadvantages, Cross-Concept Positioning, Modeling Confidence, What Would Change My Mind
-- [ ] Voice instructions: opinionated, direct, quantified, model-backed
-- [ ] Conditionals for model_setup_path and model_output_path
+- [x] Create template per design §4a
+- [x] 7 mandatory sections: Executive Summary, What Matters Most for LCOE, Risk Verdicts, Structural Advantages/Disadvantages, Cross-Concept Positioning, Modeling Confidence, What Would Change My Mind
+- [x] Voice instructions: opinionated, direct, quantified, model-backed
+- [x] Conditionals for model_setup_path and model_output_path
 
 #### 2. `find_approved_syntheses()` helper
 **File:** `exploration/concept_analysis/scripts/run_analysis.py`
-- [ ] Find synthesis.md files from approved concepts for cross-concept context
+- [x] Find synthesis.md files from approved concepts for cross-concept context
 
 #### 3. `cmd_synthesize()` — replace stub
 **File:** `exploration/concept_analysis/scripts/run_analysis.py`
-- [ ] Implement per design §4b
-- [ ] State gate: refuse if Review-Status not in {addressed, clean}
-- [ ] Check for model_output.txt (user-generated)
-- [ ] Gather approved prior syntheses for cross-concept perspective
+- [x] Implement per design §4b
+- [x] State gate: refuse if Review-Status not in {addressed, clean}
+- [x] Check for model_output.txt (auto-generated with freshness checking — Phase 6)
+- [x] Gather approved prior syntheses for cross-concept perspective
 
 #### 4. `cmd_approve()` — add synthesis gate
 **File:** `exploration/concept_analysis/scripts/run_analysis.py` (find existing `cmd_approve()`)
-- [ ] Add check: if no synthesis.md and not `--force`, skip with message
-- [ ] Add `--force` arg to approve parser if not already present
+- [x] Add check: if no synthesis.md and not `--force`, skip with message
+- [x] Add `--force` arg to approve parser if not already present
 
 ### Validation
 
 **Gate enforcement check:**
-- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py synthesize 08` with Review-Status != addressed/clean → refuses with helpful message
+- [x] `uv run python exploration/concept_analysis/scripts/run_analysis.py synthesize 08` with Review-Status != addressed/clean → refuses with helpful message
 
 **Real example — full synthesis on concept 08:**
-- [ ] Optionally: `uv run python exploration/concept_analysis/analyses/08-.../model_setup.py | tee exploration/concept_analysis/analyses/08-.../model_output.txt` — save model output for synthesis
+- [x] ~~Optionally: run model manually~~ — no longer needed; `model-setup` auto-runs the model and `synthesize` checks freshness (Phase 6)
 - [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py synthesize 08` — produces `synthesis.md`
 - [ ] Inspect synthesis.md: does it contain opinionated verdicts? Does it use model LCOE numbers? Are sensitivity insights quantified?
 - [ ] Compare against holdout-report-08.md handwritten analysis — does the synthesis match or exceed the editorial quality?
@@ -314,7 +314,7 @@ Add `synthesize` command and update `approve` to gate on synthesis. The synthesi
 - [ ] Test approve gate: `uv run python exploration/concept_analysis/scripts/run_analysis.py approve 08` — works (synthesis exists)
 
 **End-to-end validation:**
-- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py status` — full state table with all 7 state symbols working
+- [x] `uv run python exploration/concept_analysis/scripts/run_analysis.py status` — full state table with all 7 state symbols working
 - [ ] Concept 08 directory has the complete file set: analysis.md (with citations), model_setup.py, review.md, address_log.md, synthesis.md
 
 **What We Know Works After This Phase:**
@@ -396,10 +396,29 @@ All commands use: `uv run python exploration/concept_analysis/scripts/run_analys
 **Deviations:** Added fallback in `cmd_review()` — if Claude prints to stdout instead of writing to the output file, we capture stdout as the review content (same pattern as gap-check). Also added `--force` skip logic to review (not explicitly in design but consistent with all other commands).
 
 ### Phase 5 Completion
-**Completed:**
+**Completed:** 2026-03-22
 **Actual Changes:**
-**Issues:**
-**Deviations:**
+- Created `prompt_templates/synthesis.md` — 7 mandatory sections (Executive Summary, What Matters Most for LCOE, Risk Verdicts, Structural Advantages/Disadvantages, Cross-Concept Positioning, Modeling Confidence, What Would Change My Mind), voice instructions, conditionals for model_setup_path and model_output_path
+- Added `find_approved_syntheses()` function after `find_approved()` — scans approved concepts for synthesis.md files, returns sorted list of paths
+- Replaced `cmd_synthesize()` stub with full implementation — resolve_concepts with target_state="synthesized", Review-Status gate (addressed/clean), model_output.txt discovery, prior syntheses gathering, template fill, Claude invocation, stdout fallback
+- Added synthesis gate to `cmd_approve()` — checks for synthesis.md before approving, skips with message unless --force (--force was already added to approve parser in Phase 1)
+**Issues:** None
+**Deviations:** Used `format_path_list()` (existing utility) for approved syntheses formatting instead of `format_source_list()` — it's a better fit since we're listing paths, not sources with file sizes.
+
+---
+
+### Phase 6: Automated Model Execution
+
+**Completed:** 2026-03-22
+**Actual Changes:**
+- Added `run_model()` helper function after `invoke_claude()` — runs `model_setup.py` via `uv run python` subprocess, validates non-empty output contains "LCOE" (case-insensitive), writes `model_output.txt` on success, returns `(bool, str)` tuple. Resolves paths to absolute to avoid cwd path-doubling.
+- Updated `cmd_model_setup()` — after verifying Claude wrote `model_setup.py`, calls `run_model()` and displays result with LCOE extract via `r"LCOE:\s*([\d.]+)\s*\$/MWh"`. On failure, prints manual fix hint. Removed the old always-shown manual `hint:` line.
+- Updated `cmd_synthesize()` — before template fill, checks if `model_output.txt` is missing or stale (via `st_mtime` comparison against `model_setup.py`). Re-runs model if needed. On failure, warns but continues synthesis without model output.
+- Updated `cmd_address_review()` — after Claude invocation succeeds and before updating frontmatter, unconditionally re-runs model if `model_setup.py` exists. On failure, warns but doesn't block frontmatter update.
+**Issues:** Initial implementation passed relative path to subprocess with `cwd=model_path.parent`, causing path doubling. Fixed by resolving to absolute path before subprocess call.
+**Deviations:** None — design was written as a plan and implemented directly.
+
+**Design reference:** `design-enhancement.md#component-4d-automated-model-execution`
 
 ---
 

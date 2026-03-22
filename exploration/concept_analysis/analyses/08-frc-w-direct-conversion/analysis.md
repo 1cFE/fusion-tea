@@ -2,9 +2,9 @@
 ID: 08-frc-w-direct-conversion
 Concept: FRC w/ Direct Conversion
 Company: Helion Energy
-Status: draft
+Status: approved
 Created: 2026-03-22
-Approved-Date:
+Approved-Date: 2026-03-22
 Reuses: [07-maglif, 01-hts-compact-tokamak]
 Review-Iterations: 1
 Last-Review: 2026-03-22

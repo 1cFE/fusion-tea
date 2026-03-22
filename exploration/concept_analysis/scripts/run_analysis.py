@@ -496,6 +496,44 @@ def invoke_claude(
         return "", "'claude' command not found — is Claude Code installed and on PATH?", -2
 
 
+def run_model(model_path: Path, output_path: Path, timeout: int = 120) -> tuple[bool, str]:
+    """Run a model_setup.py script, save output to model_output.txt, sanity-check results.
+
+    Returns (success, message). On success, message is the stdout. On failure, message
+    is the error description.
+    """
+    model_path = model_path.resolve()
+    if not model_path.exists():
+        return False, f"model script not found: {model_path}"
+
+    try:
+        result = subprocess.run(
+            ["uv", "run", "python", str(model_path)],
+            capture_output=True,
+            text=True,
+            timeout=timeout,
+            cwd=str(model_path.parent),
+        )
+    except subprocess.TimeoutExpired:
+        return False, f"model timed out after {timeout}s"
+    except FileNotFoundError:
+        return False, "'uv' command not found — is uv installed and on PATH?"
+
+    if result.returncode != 0:
+        stderr_snippet = result.stderr.strip()[:300] if result.stderr else "(no stderr)"
+        return False, f"model failed (rc={result.returncode}): {stderr_snippet}"
+
+    stdout = result.stdout
+    if not stdout.strip():
+        return False, "model produced no output"
+
+    if "lcoe" not in stdout.lower():
+        return False, "model output missing LCOE — may be incomplete or broken"
+
+    output_path.write_text(stdout, encoding="utf-8")
+    return True, stdout
+
+
 # ---------------------------------------------------------------------------
 # Source file discovery
 # ---------------------------------------------------------------------------
@@ -608,6 +646,21 @@ def find_approved(analyses_dir: Path = ANALYSES_DIR) -> list[Path]:
         if fm.get("Status") == "approved":
             approved.append(analysis_path)
     return approved
+
+
+def find_approved_syntheses(analyses_dir: Path = ANALYSES_DIR) -> list[Path]:
+    """Find synthesis.md files from approved concepts for cross-concept context."""
+    results = []
+    if not analyses_dir.exists():
+        return results
+
+    for analysis_path in sorted(analyses_dir.glob("*/analysis.md")):
+        synthesis_path = analysis_path.parent / "synthesis.md"
+        if synthesis_path.exists():
+            fm = parse_frontmatter(analysis_path)
+            if fm.get("Status") == "approved":
+                results.append(synthesis_path)
+    return results
 
 
 def find_exemplars(handwritten_dir: Path = HANDWRITTEN_DIR) -> list[Path]:
@@ -953,7 +1006,18 @@ def cmd_model_setup(concepts: list[dict], args: argparse.Namespace) -> None:
 
         size = model_path.stat().st_size
         print(f" done ({elapsed:.0f}s, {size} bytes)")
-        print(f"    hint: uv run python {model_path} | tee {out_dir / 'model_output.txt'}")
+
+        # Run the model and capture output
+        model_output_path = out_dir / "model_output.txt"
+        print(f"    running model ...", end="", flush=True)
+        ok, msg = run_model(model_path, model_output_path)
+        if ok:
+            lcoe_match = re.search(r"LCOE:\s*([\d.]+)\s*\$/MWh", msg)
+            lcoe_str = f" (LCOE={lcoe_match.group(1)} $/MWh)" if lcoe_match else ""
+            print(f" ok{lcoe_str}")
+        else:
+            print(f" FAILED: {msg}")
+            print(f"    hint: fix model_setup.py and run: uv run python {model_path}")
 
 
 def cmd_review(concepts: list[dict], args: argparse.Namespace) -> None:
@@ -1139,6 +1203,19 @@ def cmd_address_review(concepts: list[dict], args: argparse.Namespace) -> None:
             print(f"    stderr: {stderr[:500]}", file=sys.stderr)
             continue
 
+        # Re-run model if it exists (address-review may have modified model_setup.py)
+        model_output_path = out_dir / "model_output.txt"
+        if model_path.exists():
+            print(f"    re-running model ...", end="", flush=True)
+            ok, msg = run_model(model_path, model_output_path)
+            if ok:
+                lcoe_match = re.search(r"LCOE:\s*([\d.]+)\s*\$/MWh", msg)
+                lcoe_str = f" (LCOE={lcoe_match.group(1)} $/MWh)" if lcoe_match else ""
+                print(f" ok{lcoe_str}")
+            else:
+                print(f" FAILED: {msg}")
+                print(f"    warn: model may be broken after review changes")
+
         # Update frontmatter: Review-Status → addressed
         text = analysis_path.read_text(encoding="utf-8")
         text = update_frontmatter_field(text, "Review-Status", "addressed")
@@ -1149,7 +1226,146 @@ def cmd_address_review(concepts: list[dict], args: argparse.Namespace) -> None:
 
 def cmd_synthesize(concepts: list[dict], args: argparse.Namespace) -> None:
     """Stage 5: Generate editorial synthesis."""
-    print("synthesize: not yet implemented")
+    targets = resolve_concepts(
+        args.concepts, concepts,
+        family=args.family,
+        all_remaining=args.all_remaining,
+        target_state="synthesized",
+    )
+    if not targets:
+        print("No concepts to synthesize.")
+        return
+
+    template_text = (TEMPLATES_DIR / "synthesis.md").read_text(encoding="utf-8")
+
+    # Gather approved prior syntheses for cross-concept context
+    prior_syntheses = find_approved_syntheses()
+
+    for c in targets:
+        cid = c["_id"]
+        out_dir = ANALYSES_DIR / cid
+        analysis_path = out_dir / "analysis.md"
+        model_setup_path = out_dir / "model_setup.py"
+        model_output_path = out_dir / "model_output.txt"
+        synthesis_path = out_dir / "synthesis.md"
+
+        if not analysis_path.exists():
+            print(f"  skip {cid} (no analysis.md — run analyze first)")
+            continue
+
+        # Enforce ordering: must be reviewed
+        fm = parse_frontmatter(analysis_path)
+        review_status = fm.get("Review-Status", "")
+        if review_status not in ("addressed", "clean"):
+            print(f"  skip {cid} (Review-Status is '{review_status}'; "
+                  f"run review and address-review first)")
+            continue
+
+        if synthesis_path.exists() and not args.force:
+            print(f"  skip {cid} (synthesis.md exists, use --force to re-run)")
+            continue
+
+        # Ensure model output is fresh before synthesizing
+        if model_setup_path.exists():
+            need_run = False
+            reason = ""
+            if not model_output_path.exists():
+                need_run = True
+                reason = "model_output.txt missing"
+            elif model_setup_path.stat().st_mtime > model_output_path.stat().st_mtime:
+                need_run = True
+                reason = "model_setup.py newer than model_output.txt"
+
+            if need_run:
+                print(f"    running model ({reason}) ...", end="", flush=True)
+                ok, msg = run_model(model_setup_path, model_output_path)
+                if ok:
+                    lcoe_match = re.search(r"LCOE:\s*([\d.]+)\s*\$/MWh", msg)
+                    lcoe_str = f" (LCOE={lcoe_match.group(1)} $/MWh)" if lcoe_match else ""
+                    print(f" ok{lcoe_str}")
+                else:
+                    print(f" FAILED: {msg}")
+                    print(f"    warn: synthesizing without model output")
+
+        # Format approved prior syntheses (exclude current concept)
+        synth_list = [s for s in prior_syntheses if s.parent.name != cid]
+        if synth_list:
+            approved_syntheses = format_path_list(synth_list)
+        else:
+            approved_syntheses = "(none yet — this is among the first syntheses)"
+
+        # Claude writes body to a temp file; script assembles final synthesis.md
+        body_path = out_dir / "synthesis_body.md"
+
+        prompt = fill_template(template_text, {
+            "concept_name": c["Concept Name"],
+            "company": c.get("Company", ""),
+            "analysis_path": str(analysis_path),
+            "model_setup_path": str(model_setup_path) if model_setup_path.exists() else "",
+            "model_output_path": str(model_output_path) if model_output_path.exists() else "",
+            "approved_syntheses": approved_syntheses,
+            "output_path": str(body_path),
+        })
+
+        # Save prompt
+        out_dir.mkdir(parents=True, exist_ok=True)
+        prompt_path = out_dir / "synthesis_prompt.md"
+        prompt_path.write_text(prompt, encoding="utf-8")
+
+        if args.dry_run:
+            print(f"  dry-run {cid}: prompt saved to {prompt_path}")
+            continue
+
+        # Pre-write synthesis.md with controlled frontmatter
+        today = date.today().isoformat()
+        synth_fm = (
+            f"---\n"
+            f"ID: {cid}\n"
+            f"Concept: {c['Concept Name']}\n"
+            f"Company: {c.get('Company', '')}\n"
+            f"Type: synthesis\n"
+            f"Status: draft\n"
+            f"Created: {today}\n"
+            f"---\n"
+        )
+        synthesis_path.write_text(synth_fm, encoding="utf-8")
+
+        # Live invocation — Claude writes body to body_path via Write tool
+        print(f"  synthesize {cid} ...", end="", flush=True)
+        t0 = time.time()
+        stdout, stderr, rc = invoke_claude(
+            prompt, cwd=CONCEPT_ANALYSIS_DIR, timeout=args.timeout, model=args.model,
+        )
+        elapsed = time.time() - t0
+
+        if rc != 0:
+            print(f" FAILED ({elapsed:.0f}s, rc={rc})")
+            print(f"    stderr: {stderr[:500]}", file=sys.stderr)
+            synthesis_path.unlink(missing_ok=True)
+            continue
+
+        # Verify Claude wrote the body file
+        if not body_path.exists():
+            if stdout.strip():
+                body_path.write_text(stdout, encoding="utf-8")
+            else:
+                print(f" FAILED ({elapsed:.0f}s) — Claude did not write {body_path}")
+                synthesis_path.unlink(missing_ok=True)
+                continue
+
+        # Assemble: frontmatter + body
+        fm_raw = synthesis_path.read_text(encoding="utf-8").rstrip("\n") + "\n"
+        body = body_path.read_text(encoding="utf-8")
+        # Strip any frontmatter Claude may have added to the body
+        if body.startswith("---"):
+            fm_end = body.find("---", 3)
+            if fm_end != -1:
+                body = body[fm_end + 3:].lstrip("\n")
+        synthesis_path.write_text(fm_raw + "\n" + body, encoding="utf-8")
+        body_path.unlink()
+
+        size = len(synthesis_path.read_text(encoding="utf-8"))
+        print(f" done ({elapsed:.0f}s, {size} chars)")
 
 
 def cmd_approve(concepts: list[dict], args: argparse.Namespace) -> None:
@@ -1174,11 +1390,25 @@ def cmd_approve(concepts: list[dict], args: argparse.Namespace) -> None:
             print(f"  skip {cid} (already approved on {fm.get('Approved-Date', '?')})")
             continue
 
+        # Synthesis gate: warn and skip if no synthesis.md (unless --force)
+        synthesis_path = ANALYSES_DIR / cid / "synthesis.md"
+        if not synthesis_path.exists() and not args.force:
+            print(f"  skip {cid} (no synthesis.md — run synthesize first, or use --force)")
+            continue
+
         # Update frontmatter: Status → approved, set Approved-Date
         text = analysis_path.read_text(encoding="utf-8")
         text = update_frontmatter_field(text, "Status", "approved")
         text = update_frontmatter_field(text, "Approved-Date", today)
         analysis_path.write_text(text, encoding="utf-8")
+
+        # Also update synthesis.md frontmatter if it exists
+        if synthesis_path.exists():
+            synth_text = synthesis_path.read_text(encoding="utf-8")
+            synth_text = update_frontmatter_field(synth_text, "Status", "approved")
+            synth_text = update_frontmatter_field(synth_text, "Approved-Date", today)
+            synthesis_path.write_text(synth_text, encoding="utf-8")
+
         print(f"  approved {cid}")
 
 

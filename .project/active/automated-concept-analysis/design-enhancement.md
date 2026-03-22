@@ -602,7 +602,18 @@ def cmd_model_setup(concepts: list[dict], args: argparse.Namespace) -> None:
             continue
 
         print(f" done ({elapsed:.0f}s)")
-        print(f"    hint: uv run python {model_path} | tee {out_dir / 'model_output.txt'}")
+
+        # Auto-run model and capture output (see Component 4d)
+        model_output_path = out_dir / "model_output.txt"
+        print(f"    running model ...", end="", flush=True)
+        ok, msg = run_model(model_path, model_output_path)
+        if ok:
+            lcoe_match = re.search(r"LCOE:\s*([\d.]+)\s*\$/MWh", msg)
+            lcoe_str = f" (LCOE={lcoe_match.group(1)} $/MWh)" if lcoe_match else ""
+            print(f" ok{lcoe_str}")
+        else:
+            print(f" FAILED: {msg}")
+            print(f"    hint: fix model_setup.py and run: uv run python {model_path}")
 ```
 
 **Note on `fill_template()` and conditionals:** The current `fill_template()` does simple `{{var}}` substitution only — no `{{#if}}` support. Two options:
@@ -1202,6 +1213,58 @@ This adds a soft gate: `approve` warns and skips if synthesis hasn't been run, b
 
 ---
 
+### Component 4d: Automated Model Execution
+
+**Problem:** Three gaps in the pipeline where model execution was manual or unchecked:
+1. `model-setup` generates `model_setup.py` but doesn't verify it runs — broken scripts aren't caught until the user tries them
+2. `synthesize` passively checks if `model_output.txt` exists but doesn't ensure freshness — if the user forgot to run/re-run the model, synthesis proceeds with stale or missing data
+3. `address-review` modifies `model_setup.py` (via Claude Edit tool) but doesn't re-run it — changes could break the model silently, and `model_output.txt` becomes stale
+
+**Solution:** A shared `run_model()` helper called at the right points in each command.
+
+#### `run_model()` helper
+
+```python
+def run_model(model_path: Path, output_path: Path, timeout: int = 120) -> tuple[bool, str]:
+    """Run a model_setup.py script, save output to model_output.txt, sanity-check results.
+
+    Returns (success, message). On success, message is the stdout. On failure, message
+    is the error description.
+    """
+```
+
+Logic:
+- Resolves `model_path` to absolute (avoids doubled paths when `cwd=model_path.parent`)
+- `subprocess.run(["uv", "run", "python", str(model_path)], capture_output=True, text=True, timeout=timeout, cwd=model_path.parent)`
+- Check: `returncode == 0`
+- Check: stdout is non-empty
+- Sanity check: stdout contains "LCOE" (case-insensitive) — both costingfe and freeform models print LCOE
+- On success: write stdout to `output_path`, return `(True, stdout)`
+- On failure: return `(False, error_description)` — do NOT write `output_path` (preserve any previous valid output)
+- Handle `subprocess.TimeoutExpired` and `FileNotFoundError`
+
+#### Integration points
+
+**`cmd_model_setup()`** — after confirming `model_setup.py` exists:
+- Call `run_model(model_path, out_dir / "model_output.txt")`
+- On success: extract LCOE via regex `r"LCOE:\s*([\d.]+)\s*\$/MWh"` for summary line
+- On failure: print error + hint for manual fix — do NOT fail overall command
+- Replaces the manual `hint:` line
+
+**`cmd_synthesize()`** — before template fill:
+- If `model_setup.py` exists and `model_output.txt` does not → run model
+- If both exist but `model_setup.py` is newer (`st_mtime` comparison) → re-run model (stale)
+- On failure → warn but continue synthesis without model output
+- On success or already fresh → proceed normally
+
+**`cmd_address_review()`** — after Claude invocation, before frontmatter update:
+- If `model_setup.py` exists → re-run model unconditionally (address-review may have edited it)
+- On failure → warn but do NOT block frontmatter update
+
+**Design principle:** Model execution failures are never fatal. The pipeline continues; the user gets a clear warning and can fix manually.
+
+---
+
 ### Component 5: Updated State Detection and CLI
 
 #### 5a. `get_concept_state()` Update
@@ -1312,7 +1375,8 @@ Summary line updated to include new states.
 | 1costingfe API changes break model_setup.py scripts | Low | Medium | Scripts reference specific examples; if API changes, examples change first. Pin model_setup.py to current API patterns. |
 | address-review makes incorrect edits | Medium | Medium | Append-only address_log.md provides audit trail. User can `git diff` before committing. Review can be re-run to verify. |
 | PA parsing fragile if Claude deviates from format | Medium | Low | The PA format is tightly specified in the prompt. Add lenient parsing (e.g., match `PA-\d+` regardless of surrounding formatting). |
-| Synthesis runs before model output exists | Low | Low | Synthesis handles missing model output gracefully — notes reduced confidence. User is encouraged but not forced to run the model first. |
+| Synthesis runs before model output exists | Low | Low | `cmd_synthesize()` auto-runs the model if output is missing or stale. Falls back gracefully if model fails. |
+| Generated model_setup.py fails to run | Medium | Low | `run_model()` catches failures at generation time (model-setup) and re-run time (address-review, synthesize). Failures are non-fatal warnings; manual hint provided. |
 
 ## Integration Strategy
 
@@ -1321,7 +1385,7 @@ This design adds to the existing pipeline without modifying working stages. The 
 - New stages are optional for already-approved concepts
 - The `approve` command's `--force` flag allows bypassing synthesis for special cases
 
-The 1costingfe integration is one-directional: the pipeline reads 1costingfe examples and defaults but does not modify them. The generated `model_setup.py` is a standalone script the user runs separately.
+The 1costingfe integration is one-directional: the pipeline reads 1costingfe examples and defaults but does not modify them. The generated `model_setup.py` is automatically executed after generation and after address-review edits, with freshness checking before synthesis.
 
 ## Validation Approach
 
