@@ -8,6 +8,49 @@ This template defines the required section structure for automated concept analy
 
 ---
 
+## Citation Format
+
+All factual claims, quantitative values, and technical assertions must use one of the following citation mechanisms. The goal is **direct verifiability** — a reader should be able to confirm any claim without opening additional files or searching through documents.
+
+### Direct Quotes (for critical claims)
+Use block quotes for the 3–5 most important or surprising claims per section — those a reader would most want to verify:
+
+> "Helion has achieved 100+ million degrees Celsius, reaching fusion temperatures
+> in its seventh-generation Polaris prototype"
+> — helion-milestones-feb2026.md, §Fusion Milestones
+
+### Section-Level References in Tables
+The Source column in parameter tables must include the **section or heading** within the source document, not just the filename:
+
+| Parameter | Value | Source | Confidence |
+|-----------|-------|--------|------------|
+| Compression field | 15 T+ | helion-website-technology.md §Polaris Specifications | high |
+| Rep rate | 2 Hz | docslib-helion-arpa-e-presentation.md §Design Point | medium |
+
+### Derivation Chains (for inferred values)
+When a value is derived from multiple sources, show the full chain:
+
+| Capacitor bank cost | ~$250M | [inferred: 50 MJ × $5/J; bank size from helion-website.md §Polaris Specs; unit cost from 07-maglif analysis §Capacitor Costs] | low |
+
+### Footnote-Style References (in prose)
+Use numbered footnotes for claims in narrative text. Each footnote includes source path, section, and optionally a direct quote:
+
+The ARPA-E presentation discloses a magnetic energy recovery efficiency of η = 0.7 [1],
+which is distinct from the >95% "round-trip" claim from press materials [2].
+
+---
+[1] docslib-helion-arpa-e-presentation.md, §Energy Balance: "η × Gain = 0.2 × 1.2"
+[2] helion-website-technology.md, §Direct Energy Recovery: "demonstrated >95% round-trip energy recovery"
+
+### Usage Guidance
+- **Direct quotes**: Use for the most critical or surprising claims (3–5 per section)
+- **Section-level refs**: Required for all parameter table Source entries
+- **Derivation chains**: Required for all `[inferred]` values
+- **Footnotes**: Preferred for prose claims; each section should have a footnote block at the end
+- Not every sentence needs a direct quote — the goal is verifiability, not verbosity
+
+---
+
 ## Required Sections
 
 ### Section 1: Availability of Data

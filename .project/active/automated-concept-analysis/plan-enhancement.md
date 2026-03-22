@@ -1,6 +1,6 @@
 # Implementation Plan: Concept Analysis Enhancement Pipeline
 
-**Status:** Draft
+**Status:** In Progress
 **Created:** 2026-03-22
 **Last Updated:** 2026-03-22
 
@@ -37,40 +37,40 @@ Get the infrastructure in place that all new commands depend on. This is the onl
 
 #### 1. `fill_template()` — add `{{#if var}}...{{/if}}` conditionals
 **File:** `exploration/concept_analysis/scripts/run_analysis.py:281`
-- [ ] Add regex-based conditional processing before variable substitution (see design §2e, ~15 lines)
-- [ ] Empty/falsy values → block removed; truthy values → block content kept
+- [x] Add regex-based conditional processing before variable substitution (see design §2e, ~15 lines)
+- [x] Empty/falsy values → block removed; truthy values → block content kept
 
 #### 2. `get_concept_state()` — add new states
 **File:** `exploration/concept_analysis/scripts/run_analysis.py` (find existing `get_concept_state()`)
-- [ ] Add `model-setup`, `reviewed`, `synthesized` state detection (see design §5a)
-- [ ] Detection order: approved → synthesized → reviewed → model-setup → drafted → gap-checked → not-started
+- [x] Add `model-setup`, `reviewed`, `synthesized` state detection (see design §5a)
+- [x] Detection order: approved → synthesized → reviewed → model-setup → drafted → gap-checked → not-started
 
 #### 3. Status display — new symbols
 **File:** `exploration/concept_analysis/scripts/run_analysis.py` (find `cmd_status()`)
-- [ ] Add `M` (model-setup), `R` (reviewed), `S` (synthesized) symbols
-- [ ] Update summary line to count new states
+- [x] Add `M` (model-setup), `R` (reviewed), `S` (synthesized) symbols
+- [x] Update summary line to count new states
 
 #### 4. CLI parser — add 4 subcommand stubs
 **File:** `exploration/concept_analysis/scripts/run_analysis.py:680` (in `build_parser()`)
-- [ ] Add `model-setup` parser with args: `concepts`, `--all`, `--family`, `--model`, `--dry-run`, `--timeout`, `--force`
-- [ ] Add `review` parser with same args
-- [ ] Add `address-review` parser with args: `concepts`, `--all`, `--family`, `--model`, `--dry-run`, `--timeout` (no `--force`)
-- [ ] Add `synthesize` parser with same args as review
+- [x] Add `model-setup` parser with args: `concepts`, `--all`, `--family`, `--model`, `--dry-run`, `--timeout`, `--force`
+- [x] Add `review` parser with same args
+- [x] Add `address-review` parser with args: `concepts`, `--all`, `--family`, `--model`, `--dry-run`, `--timeout` (no `--force`)
+- [x] Add `synthesize` parser with same args as review
 
 #### 5. Dispatch table and stub handlers
 **File:** `exploration/concept_analysis/scripts/run_analysis.py:720`
-- [ ] Add 4 stub functions (`cmd_model_setup`, `cmd_review`, `cmd_address_review`, `cmd_synthesize`) that print "not yet implemented"
-- [ ] Add all 4 to dispatch dict
+- [x] Add 4 stub functions (`cmd_model_setup`, `cmd_review`, `cmd_address_review`, `cmd_synthesize`) that print "not yet implemented"
+- [x] Add all 4 to dispatch dict
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py status` — displays correctly, no regressions on existing states
-- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py model-setup 08` — prints "not yet implemented" (stub works)
+- [x] `uv run python exploration/concept_analysis/scripts/run_analysis.py status` — displays correctly, no regressions on existing states
+- [x] `uv run python exploration/concept_analysis/scripts/run_analysis.py model-setup 08` — prints "not yet implemented" (stub works)
 
 **Real example — verify existing pipeline still works:**
-- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py status` — all existing concept states unchanged
-- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py gap-check 08 --dry-run` — still generates correct prompt (no regressions)
+- [x] `uv run python exploration/concept_analysis/scripts/run_analysis.py status` — all existing concept states unchanged
+- [x] `uv run python exploration/concept_analysis/scripts/run_analysis.py gap-check 08 --dry-run` — still generates correct prompt (no regressions)
 
 **What We Know Works After This Phase:**
 - State machine correctly detects all 7 states
@@ -95,19 +95,19 @@ Upgrade the analysis prompt templates to produce directly verifiable citations (
 
 #### 1. Output template — add Citation Format section
 **File:** `exploration/concept_analysis/prompt_templates/output_template.md`
-- [ ] Add `## Citation Format` section specifying 4 mechanisms: direct quotes, section-level table refs, derivation chains, footnote-style prose refs
-- [ ] Include examples for each mechanism (from design §1a–1d)
-- [ ] Add guidance: "Use direct block quotes for the 3-5 most critical claims per section"
+- [x] Add `## Citation Format` section specifying 4 mechanisms: direct quotes, section-level table refs, derivation chains, footnote-style prose refs
+- [x] Include examples for each mechanism (from design §1a–1d)
+- [x] Add guidance: "Use direct block quotes for the 3-5 most critical claims per section"
 
 #### 2. Analysis prompt — add citation instructions
 **File:** `exploration/concept_analysis/prompt_templates/analysis.md`
-- [ ] Add citation format instructions referencing the output template's Citation Format section
-- [ ] Emphasize: table Source column must include `§Section Name`, not just filename
+- [x] Add citation format instructions referencing the output template's Citation Format section
+- [x] Emphasize: table Source column must include `§Section Name`, not just filename
 
 ### Validation
 
 **Dry-run check:**
-- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py analyze 08 --dry-run --force` — prompt includes citation instructions
+- [x] `uv run python exploration/concept_analysis/scripts/run_analysis.py analyze 08 --dry-run --force` — prompt includes citation instructions
 
 **Real example — re-analyze concept 08 with upgraded citations:**
 - [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py analyze 08 --force` — produces new `analysis.md`
@@ -349,16 +349,24 @@ All commands use: `uv run python exploration/concept_analysis/scripts/run_analys
 [TO BE FILLED DURING IMPLEMENTATION]
 
 ### Phase 1 Completion
-**Completed:**
+**Completed:** 2026-03-22
 **Actual Changes:**
-**Issues:**
-**Deviations:**
+- Modified `run_analysis.py:fill_template()` — added `{{#if var}}...{{/if}}` conditional support via `re.sub` with `re.DOTALL`
+- Modified `run_analysis.py:get_concept_state()` — expanded from 4 states to 7 (added model-setup, reviewed, synthesized detection)
+- Modified `run_analysis.py:cmd_status()` — added M/R/S symbols and updated summary/legend lines
+- Added 4 subcommand parsers (`model-setup`, `review`, `address-review`, `synthesize`) to `build_parser()`
+- Added `--force` flag to `approve` parser (needed for Phase 5 synthesis gate bypass)
+- Added 4 stub handlers and updated dispatch table
+**Issues:** None
+**Deviations:** Added `--force` to approve parser proactively (needed in Phase 5 but easy to add now)
 
 ### Phase 2 Completion
-**Completed:**
+**Completed:** 2026-03-22
 **Actual Changes:**
-**Issues:**
-**Deviations:**
+- Added `## Citation Format` section to `prompt_templates/output_template.md` — 4 citation mechanisms (direct quotes, section-level table refs, derivation chains, footnote-style) with examples and usage guidance
+- Added `### Citation Format (CRITICAL)` subsection to `prompt_templates/analysis.md` under Content Requirements — 5 bullet points reinforcing the citation format requirements
+**Issues:** None
+**Deviations:** None — the "real example" validation items (re-analyze 08 with --force) are left unchecked as they require a live Claude invocation; template changes are verified via dry-run
 
 ### Phase 3 Completion
 **Completed:**

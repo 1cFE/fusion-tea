@@ -237,16 +237,34 @@ def update_frontmatter_field(text: str, key: str, value: str) -> str:
 def get_concept_state(concept_id: str, analyses_dir: Path = ANALYSES_DIR) -> str:
     """Check filesystem to determine concept state.
 
-    Returns: 'not-started' | 'gap-checked' | 'drafted' | 'approved'
+    Returns: 'not-started' | 'gap-checked' | 'drafted' | 'model-setup' |
+             'reviewed' | 'synthesized' | 'approved'
+
+    Detection order (highest to lowest):
+      approved → synthesized → reviewed → model-setup → drafted → gap-checked → not-started
     """
     analysis_path = analyses_dir / concept_id / "analysis.md"
     gap_path = analyses_dir / concept_id / "gap_report.md"
+    model_path = analyses_dir / concept_id / "model_setup.py"
+    synthesis_path = analyses_dir / concept_id / "synthesis.md"
 
     if analysis_path.exists():
         fm = parse_frontmatter(analysis_path)
+
         if fm.get("Status") == "approved":
             return "approved"
+        if synthesis_path.exists():
+            return "synthesized"
+
+        review_status = fm.get("Review-Status", "")
+        if review_status in ("addressed", "clean"):
+            return "reviewed"
+
+        if model_path.exists():
+            return "model-setup"
+
         return "drafted"
+
     if gap_path.exists():
         return "gap-checked"
     return "not-started"
@@ -279,8 +297,23 @@ def make_frontmatter(concept: dict) -> str:
 
 
 def fill_template(template_text: str, replacements: dict[str, str]) -> str:
-    """Simple {{variable}} substitution in template text."""
+    """{{variable}} substitution with {{#if var}}...{{/if}} conditionals."""
     result = template_text
+
+    # Process conditionals first
+    def replace_conditional(m):
+        var_name = m.group(1)
+        content = m.group(2)
+        return content if replacements.get(var_name) else ""
+
+    result = re.sub(
+        r"\{\{#if (\w+)\}\}(.*?)\{\{/if\}\}",
+        replace_conditional,
+        result,
+        flags=re.DOTALL,
+    )
+
+    # Then substitute variables
     for key, value in replacements.items():
         result = result.replace("{{" + key + "}}", str(value))
     return result
@@ -433,24 +466,30 @@ def cmd_status(concepts: list[dict], args: argparse.Namespace) -> None:
     state_symbols = {
         "not-started": "  -",
         "gap-checked": "  G",
-        "drafted": "  D",
-        "approved": "  A",
+        "drafted":     "  D",
+        "model-setup": "  M",
+        "reviewed":    "  R",
+        "synthesized": "  S",
+        "approved":    "  A",
     }
 
     print(f"{'ID':<45} {'Concept Name':<40} {'State'}")
     print("-" * 95)
 
-    counts = {"not-started": 0, "gap-checked": 0, "drafted": 0, "approved": 0}
+    counts = {s: 0 for s in state_symbols}
     for c in targets:
         state = get_concept_state(c["_id"])
-        counts[state] += 1
+        counts[state] = counts.get(state, 0) + 1
         sym = state_symbols.get(state, "  ?")
         print(f"{c['_id']:<45} {c['Concept Name']:<40} {sym}")
 
     print(f"\n{len(targets)} concepts: "
-          f"{counts['approved']} approved, {counts['drafted']} drafted, "
-          f"{counts['gap-checked']} gap-checked, {counts['not-started']} not-started")
-    print("\nLegend: A=approved  D=drafted  G=gap-checked  -=not-started")
+          f"{counts['approved']} approved, {counts['synthesized']} synthesized, "
+          f"{counts['reviewed']} reviewed, {counts['model-setup']} model-setup, "
+          f"{counts['drafted']} drafted, {counts['gap-checked']} gap-checked, "
+          f"{counts['not-started']} not-started")
+    print("\nLegend: A=approved  S=synthesized  R=reviewed  M=model-setup  "
+          "D=drafted  G=gap-checked  -=not-started")
 
 
 # ---------------------------------------------------------------------------
@@ -634,8 +673,28 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
         print(f" done ({elapsed:.0f}s, {len(body)} chars)")
 
 
+def cmd_model_setup(concepts: list[dict], args: argparse.Namespace) -> None:
+    """Stage 3: Generate model setup script (1costingfe or free-form)."""
+    print("model-setup: not yet implemented")
+
+
+def cmd_review(concepts: list[dict], args: argparse.Namespace) -> None:
+    """Stage 4: Structured review with proposed actions."""
+    print("review: not yet implemented")
+
+
+def cmd_address_review(concepts: list[dict], args: argparse.Namespace) -> None:
+    """Apply user decisions from review report."""
+    print("address-review: not yet implemented")
+
+
+def cmd_synthesize(concepts: list[dict], args: argparse.Namespace) -> None:
+    """Stage 5: Generate editorial synthesis."""
+    print("synthesize: not yet implemented")
+
+
 def cmd_approve(concepts: list[dict], args: argparse.Namespace) -> None:
-    """Stage 4: Approve a reviewed analysis."""
+    """Stage 6: Approve a reviewed analysis."""
     targets = resolve_concepts(args.concepts, concepts)
     if not targets:
         print("No concepts to approve.")
@@ -704,9 +763,49 @@ def build_parser() -> argparse.ArgumentParser:
     p_analyze.add_argument("--timeout", type=int, default=900, help="Per-invocation timeout in seconds")
     p_analyze.add_argument("--force", action="store_true", help="Re-run even if output exists")
 
+    # -- model-setup --
+    p_ms = sub.add_parser("model-setup", help="Generate 1costingfe model setup script")
+    p_ms.add_argument("concepts", nargs="*", default=[], help="Concept IDs")
+    p_ms.add_argument("--all", dest="all_remaining", action="store_true", help="All remaining concepts")
+    p_ms.add_argument("--family", help="Filter by confinement family")
+    p_ms.add_argument("--model", default="sonnet", help="Claude model (default: sonnet)")
+    p_ms.add_argument("--dry-run", action="store_true", help="Generate prompts without calling Claude")
+    p_ms.add_argument("--timeout", type=int, default=900, help="Per-invocation timeout in seconds")
+    p_ms.add_argument("--force", action="store_true", help="Re-run even if output exists")
+
+    # -- review --
+    p_rev = sub.add_parser("review", help="Structured review with proposed actions")
+    p_rev.add_argument("concepts", nargs="*", default=[], help="Concept IDs")
+    p_rev.add_argument("--all", dest="all_remaining", action="store_true", help="All remaining concepts")
+    p_rev.add_argument("--family", help="Filter by confinement family")
+    p_rev.add_argument("--model", default="sonnet", help="Claude model (default: sonnet)")
+    p_rev.add_argument("--dry-run", action="store_true", help="Generate prompts without calling Claude")
+    p_rev.add_argument("--timeout", type=int, default=900, help="Per-invocation timeout in seconds")
+    p_rev.add_argument("--force", action="store_true", help="Re-run even if output exists")
+
+    # -- address-review --
+    p_addr = sub.add_parser("address-review", help="Apply user decisions from review")
+    p_addr.add_argument("concepts", nargs="*", default=[], help="Concept IDs")
+    p_addr.add_argument("--all", dest="all_remaining", action="store_true", help="All remaining concepts")
+    p_addr.add_argument("--family", help="Filter by confinement family")
+    p_addr.add_argument("--model", default="sonnet", help="Claude model (default: sonnet)")
+    p_addr.add_argument("--dry-run", action="store_true", help="Generate prompts without calling Claude")
+    p_addr.add_argument("--timeout", type=int, default=900, help="Per-invocation timeout in seconds")
+
+    # -- synthesize --
+    p_syn = sub.add_parser("synthesize", help="Generate editorial synthesis")
+    p_syn.add_argument("concepts", nargs="*", default=[], help="Concept IDs")
+    p_syn.add_argument("--all", dest="all_remaining", action="store_true", help="All remaining concepts")
+    p_syn.add_argument("--family", help="Filter by confinement family")
+    p_syn.add_argument("--model", default="sonnet", help="Claude model (default: sonnet)")
+    p_syn.add_argument("--dry-run", action="store_true", help="Generate prompts without calling Claude")
+    p_syn.add_argument("--timeout", type=int, default=900, help="Per-invocation timeout in seconds")
+    p_syn.add_argument("--force", action="store_true", help="Re-run even if output exists")
+
     # -- approve --
     p_approve = sub.add_parser("approve", help="Approve a reviewed analysis")
     p_approve.add_argument("concepts", nargs="+", help="Concept IDs to approve")
+    p_approve.add_argument("--force", action="store_true", help="Approve even without synthesis")
 
     return parser
 
@@ -722,6 +821,10 @@ def main() -> None:
         "status": cmd_status,
         "gap-check": cmd_gap_check,
         "analyze": cmd_analyze,
+        "model-setup": cmd_model_setup,
+        "review": cmd_review,
+        "address-review": cmd_address_review,
+        "synthesize": cmd_synthesize,
         "approve": cmd_approve,
     }
 

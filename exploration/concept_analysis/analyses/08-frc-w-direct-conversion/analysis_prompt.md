@@ -55,6 +55,13 @@ Read ALL of these — they contain the detailed technical content the dossier wa
 - Every quantitative value in Section 5 must have a Source and Confidence column entry
 - Values without sources must be flagged as `[inferred]`, `[analogue]`, or `[estimated]` with reasoning
 
+### Citation Format (CRITICAL — read the Citation Format section in the output template)
+- **Parameter tables**: The Source column must include `§Section Name` (e.g., `helion-website.md §Polaris Specifications`), not just a bare filename
+- **Key claims**: Use direct block quotes (`>`) for the 3–5 most critical claims per section, with exact source filename and section heading
+- **Inferred values**: Show the full derivation chain in the Source column (e.g., `[inferred: 50 MJ × $5/J; bank size from source.md §Section; unit cost from ...]`)
+- **Prose claims**: Use numbered footnotes `[1]` with a footnote block at the end of each section; each footnote must include source path and section
+- The goal is **direct verifiability** — a reader should be able to confirm any claim without opening files and searching
+
 ### Anti-Hallucination Rules (CRITICAL)
 - If data does not exist in the provided sources, say "No data found in available sources"
 - Do NOT invent plausible-sounding technical facts, cost figures, or performance numbers
