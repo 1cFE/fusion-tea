@@ -12,6 +12,7 @@ Usage:
   uv run python exploration/concept_analysis/scripts/run_analysis.py gap-check 01 --dry-run
   uv run python exploration/concept_analysis/scripts/run_analysis.py analyze 01
   uv run python exploration/concept_analysis/scripts/run_analysis.py approve 01
+  uv run python exploration/concept_analysis/scripts/run_analysis.py stage1-all 01 02 03
 """
 
 import argparse
@@ -1413,6 +1414,49 @@ def cmd_approve(concepts: list[dict], args: argparse.Namespace) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Composite: stage1-all (gap-check → analyze → model-setup → review)
+# ---------------------------------------------------------------------------
+
+
+def cmd_stage1_all(concepts: list[dict], args: argparse.Namespace) -> None:
+    """Run gap-check → analyze → model-setup → review for specified concepts.
+
+    Each stage's own skip logic handles prerequisites and existing outputs,
+    so re-running is safe (picks up where it left off).
+    """
+    # Resolve once for summary display
+    targets = resolve_concepts(
+        args.concepts, concepts,
+        family=args.family,
+        all_remaining=args.all_remaining,
+    )
+    if not targets:
+        print("No concepts to process.")
+        return
+
+    names = ", ".join(c["_num"] for c in targets)
+    print(f"=== stage1-all: {len(targets)} concepts ({names}) ===")
+    print("    Pipeline: gap-check → analyze → model-setup → review")
+
+    stages = [
+        ("Gap Check", cmd_gap_check),
+        ("Analyze", cmd_analyze),
+        ("Model Setup", cmd_model_setup),
+        ("Review", cmd_review),
+    ]
+
+    for stage_name, handler in stages:
+        print(f"\n--- {stage_name} ---")
+        handler(concepts, args)
+
+    # Final status summary
+    print(f"\n=== stage1-all complete ===")
+    for c in targets:
+        state = get_concept_state(c["_id"])
+        print(f"  {c['_num']} ({c['Concept Name']}): {state}")
+
+
+# ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
@@ -1496,6 +1540,19 @@ def build_parser() -> argparse.ArgumentParser:
     p_approve.add_argument("concepts", nargs="+", help="Concept IDs to approve")
     p_approve.add_argument("--force", action="store_true", help="Approve even without synthesis")
 
+    # -- stage1-all --
+    p_s1 = sub.add_parser(
+        "stage1-all",
+        help="Run full pipeline through review: gap-check → analyze → model-setup → review",
+    )
+    p_s1.add_argument("concepts", nargs="*", default=[], help="Concept IDs")
+    p_s1.add_argument("--all", dest="all_remaining", action="store_true", help="All remaining concepts")
+    p_s1.add_argument("--family", help="Filter by confinement family")
+    p_s1.add_argument("--model", default="sonnet", help="Claude model (default: sonnet)")
+    p_s1.add_argument("--dry-run", action="store_true", help="Generate prompts without calling Claude")
+    p_s1.add_argument("--timeout", type=int, default=900, help="Per-invocation timeout in seconds")
+    p_s1.add_argument("--force", action="store_true", help="Re-run even if output exists")
+
     return parser
 
 
@@ -1515,6 +1572,7 @@ def main() -> None:
         "address-review": cmd_address_review,
         "synthesize": cmd_synthesize,
         "approve": cmd_approve,
+        "stage1-all": cmd_stage1_all,
     }
 
     handler = dispatch[args.command]
