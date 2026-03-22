@@ -138,44 +138,44 @@ Add the `model-setup` command with two-path architecture (1costingfe API vs free
 
 #### 1. Concept mapping data
 **File:** `exploration/concept_analysis/scripts/run_analysis.py` (new section after constants)
-- [ ] Add `COSTINGFE_MAPPING` dict (family-level + concept-specific overrides)
-- [ ] Add `FREEFORM_CONCEPTS` set
-- [ ] Add `FUEL_MAPPING` dict
-- [ ] Add `get_model_path()` resolver function
-- [ ] Add `get_costingfe_mapping()` helper for family-level fallback
+- [x] Add `COSTINGFE_MAPPING` dict (family-level + concept-specific overrides)
+- [x] Add `FREEFORM_CONCEPTS` set
+- [x] Add `FUEL_MAPPING` dict
+- [x] Add `get_model_path()` resolver function
+- [x] Add `get_costingfe_mapping()` helper for family-level fallback
 
 #### 2. 1costingfe prompt template
 **File:** `exploration/concept_analysis/prompt_templates/model_setup_costingfe.md` (NEW)
-- [ ] Create template per design §2c
-- [ ] Template variables: `concept_name`, `company`, `analysis_path`, `example_path`, `defaults_path`, `readme_path`, `costing_constants_path`, `costingfe_concept`, `costingfe_fuel`, `mapping_notes`, `output_path`
-- [ ] Includes: script structure requirements, traceability requirements, anti-hallucination instructions, usage comment
+- [x] Create template per design §2c
+- [x] Template variables: `concept_name`, `company`, `analysis_path`, `example_path`, `defaults_path`, `readme_path`, `costing_constants_path`, `costingfe_concept`, `costingfe_fuel`, `mapping_notes`, `output_path`
+- [x] Includes: script structure requirements, traceability requirements, anti-hallucination instructions, usage comment
 
 #### 3. Free-form prompt template
 **File:** `exploration/concept_analysis/prompt_templates/model_setup_freeform.md` (NEW)
-- [ ] Create template per design §2d
-- [ ] References MagLIF exemplar as structural template
-- [ ] 5-layer architecture instructions, parameter documentation requirements, sensitivity analysis
+- [x] Create template per design §2d
+- [x] References MagLIF exemplar as structural template
+- [x] 5-layer architecture instructions, parameter documentation requirements, sensitivity analysis
 
 #### 4. `cmd_model_setup()` — replace stub
 **File:** `exploration/concept_analysis/scripts/run_analysis.py`
-- [ ] Implement full `cmd_model_setup()` per design §2e
-- [ ] Two-path prompt selection based on `get_model_path()`
-- [ ] State gate: skip if no `analysis.md`
-- [ ] Skip/force logic for existing `model_setup.py`
-- [ ] Save prompt, invoke Claude, print hint for running the model
+- [x] Implement full `cmd_model_setup()` per design §2e
+- [x] Two-path prompt selection based on `get_model_path()`
+- [x] State gate: skip if no `analysis.md`
+- [x] Skip/force logic for existing `model_setup.py`
+- [x] Save prompt, invoke Claude, print hint for running the model
 
 ### Validation
 
 **Dry-run check:**
-- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py model-setup 08 --dry-run` — prompt saved, references analysis params, dhe3_pulsed_frc.py example, MAG_TARGET defaults
-- [ ] Verify prompt includes the analysis.md content, the example script, and YAML defaults
+- [x] `uv run python exploration/concept_analysis/scripts/run_analysis.py model-setup 08 --dry-run` — prompt saved, references analysis params, dhe3_pulsed_frc.py example, MAG_TARGET defaults
+- [x] Verify prompt includes the analysis.md content, the example script, and YAML defaults
 
 **Real example — generate model for concept 08:**
-- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py model-setup 08` — produces `model_setup.py`
-- [ ] `uv run python exploration/concept_analysis/analyses/08-frc-w-direct-conversion/model_setup.py` — script runs without errors, prints LCOE results
-- [ ] Inspect model_setup.py: does it have inline traceability comments? Are UNCERTAIN values flagged? Does it include sensitivity analysis?
-- [ ] Compare LCOE output against existing `dhe3_pulsed_frc.py` — are results in the same ballpark?
-- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py status` — concept 08 shows `M` state
+- [x] `uv run python exploration/concept_analysis/scripts/run_analysis.py model-setup 08` — produces `model_setup.py` (380s, 29059 bytes)
+- [x] `uv run python exploration/concept_analysis/analyses/08-frc-w-direct-conversion/model_setup.py` — runs, prints LCOE=50.3 $/MWh (after adding costingfe to pyproject.toml)
+- [x] Inspect model_setup.py: inline traceability comments present, UNCERTAIN flags on eta_th/burn_fraction/capacitor costs, sensitivity analysis included
+- [x] Compare LCOE output against existing `dhe3_pulsed_frc.py` — 50.3 $/MWh is in the right ballpark
+- [x] `uv run python exploration/concept_analysis/scripts/run_analysis.py status` — concept 08 shows `M` state
 
 **What We Know Works After This Phase:**
 - Two-path model setup routing works
@@ -369,10 +369,19 @@ All commands use: `uv run python exploration/concept_analysis/scripts/run_analys
 **Deviations:** None — the "real example" validation items (re-analyze 08 with --force) are left unchecked as they require a live Claude invocation; template changes are verified via dry-run
 
 ### Phase 3 Completion
-**Completed:**
+**Completed:** 2026-03-22
 **Actual Changes:**
-**Issues:**
-**Deviations:**
+- Added `COSTINGFE_DIR`, `COSTINGFE_EXAMPLES_DIR`, `COSTINGFE_DEFAULTS_DIR`, `COSTINGFE_CONSTANTS_PATH`, `COSTINGFE_README_PATH`, `FREEFORM_EXEMPLAR_PATH` path constants
+- Added `COSTINGFE_MAPPING` dict (6 family-level + 1 concept-specific entry for 08-frc)
+- Added `FREEFORM_CONCEPTS` set (9 concepts: 12, 13, 15, 16, 18, 19, 24, 27, 35)
+- Added `FUEL_MAPPING` dict (D-T, D-D, D-He3, p-B11)
+- Added `FAMILY_KEY_MAP` dict mapping CSV (Family, Sub-type) tuples → COSTINGFE_MAPPING keys
+- Added `get_model_path()`, `get_costingfe_mapping()`, `_get_subcategory()` helper functions
+- Created `prompt_templates/model_setup_costingfe.md` — 1costingfe path template with all template variables
+- Created `prompt_templates/model_setup_freeform.md` — free-form path template referencing MagLIF exemplar
+- Replaced `cmd_model_setup()` stub with full implementation (resolve, gate, two-path routing, save, invoke, verify)
+**Issues:** None
+**Deviations:** Added `FAMILY_KEY_MAP` (not explicitly in design) to cleanly resolve CSV column values to mapping keys. Also added `_get_subcategory()` helper to extract the right sub-type column per family.
 
 ### Phase 4 Completion
 **Completed:**

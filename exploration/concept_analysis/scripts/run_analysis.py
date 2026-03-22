@@ -38,6 +38,147 @@ PHASE_1A_DIR = CONCEPT_ANALYSIS_DIR.parent / "phase_1a"
 SCHEMA_PATH = PHASE_1A_DIR / "schema.md"
 RESEARCH_DIR = PHASE_1A_DIR / "research"
 
+# 1costingfe reference paths (read-only)
+COSTINGFE_DIR = Path("/home/reid/1cfe/1costingfe")
+COSTINGFE_EXAMPLES_DIR = COSTINGFE_DIR / "examples"
+COSTINGFE_DEFAULTS_DIR = COSTINGFE_DIR / "src" / "costingfe" / "data" / "defaults"
+COSTINGFE_CONSTANTS_PATH = COSTINGFE_DEFAULTS_DIR / "costing_constants.yaml"
+COSTINGFE_README_PATH = COSTINGFE_DIR / "README.md"
+
+# Free-form model exemplar
+FREEFORM_EXEMPLAR_PATH = Path("/home/reid/1cfe/tea-models/maglif/maglif_lcoe_model.py")
+
+
+# ---------------------------------------------------------------------------
+# Model setup: concept → 1costingfe mapping
+# ---------------------------------------------------------------------------
+
+# Family-level and concept-specific 1costingfe mappings
+COSTINGFE_MAPPING = {
+    # Family-level mappings (key = "Family-subcategory")
+    "MFE-tokamak": {
+        "concept": "TOKAMAK",
+        "example": "dt_tokamak.py",
+        "defaults": "mfe_tokamak.yaml",
+    },
+    "MFE-stellarator": {
+        "concept": "STELLARATOR",
+        "example": "dt_tokamak.py",  # no stellarator example; tokamak is closest
+        "defaults": "mfe_stellarator.yaml",
+    },
+    "MFE-mirror": {
+        "concept": "MIRROR",
+        "example": "dt_mirror.py",
+        "defaults": "mfe_mirror.yaml",
+    },
+    "IFE-laser": {
+        "concept": "LASER_IFE",
+        "example": "dt_tokamak.py",  # no laser IFE example
+        "defaults": "ife_laser_ife.yaml",
+    },
+    "IFE-heavy-ion": {
+        "concept": "HEAVY_ION",
+        "example": "dt_tokamak.py",  # no heavy-ion example
+        "defaults": "ife_heavy_ion.yaml",
+    },
+    "MIF-mag-target": {
+        "concept": "MAG_TARGET",
+        "example": "dt_tokamak.py",  # no generic mag-target example
+        "defaults": "mif_mag_target.yaml",
+    },
+    # Concept-specific overrides (key = concept ID)
+    "08-frc-w-direct-conversion": {
+        "concept": "MAG_TARGET",
+        "example": "dhe3_pulsed_frc.py",  # existing example for this exact concept
+        "defaults": "mif_mag_target.yaml",
+        "notes": "FRC not natively supported; use MAG_TARGET with overrides per dhe3_pulsed_frc.py",
+    },
+}
+
+# Concepts that get the free-form path (no good 1costingfe mapping)
+FREEFORM_CONCEPTS = {
+    "12",   # Levitated Dipole (OpenStar) — dipole geometry
+    "13",   # Electrostatic Hybrid — electrostatic confinement
+    "15",   # Sheared-Flow Z-Pinch (Zap Energy) — continuous MFE, not IFE z-pinch
+    "16",   # Muon-Catalyzed Fusion — no plasma confinement
+    "18",   # p-B11 FRC (TAE) — FRC + aneutronic
+    "19",   # Orbital Levitated Dipole (Zephyr) — dipole
+    "24",   # Dense Plasma Focus (LPPFusion) — DPF
+    "27",   # Polywell (EMC2) — electrostatic cusp
+    "35",   # PoloMac (Deutelio) — custom dipole
+}
+
+FUEL_MAPPING = {
+    "D-T": "DT", "D-D": "DD", "D-He3": "DHE3", "p-B11": "PB11",
+}
+
+# Maps CSV (Confinement Family, Sub-type) → COSTINGFE_MAPPING key
+FAMILY_KEY_MAP = {
+    ("MFE", "Tokamak"): "MFE-tokamak",
+    ("MFE", "Stellarator"): "MFE-stellarator",
+    ("MFE", "Open/Linear"): "MFE-mirror",
+    ("IFE", "Laser"): "IFE-laser",
+    ("IFE", "Heavy ion beam"): "IFE-heavy-ion",
+    ("MIF", "Magnetized target"): "MIF-mag-target",
+}
+
+
+def get_model_path(concept: dict) -> str:
+    """Determine model-setup path for a concept.
+
+    Returns: 'costingfe' | 'freeform'
+    """
+    if concept["_num"] in FREEFORM_CONCEPTS:
+        return "freeform"
+
+    # Check concept-specific override first
+    cid = concept["_id"]
+    if cid in COSTINGFE_MAPPING:
+        return "costingfe"
+
+    # Family-level lookup
+    family = concept.get("Confinement Family", "")
+    sub = _get_subcategory(concept)
+    family_key = FAMILY_KEY_MAP.get((family, sub))
+    if family_key and family_key in COSTINGFE_MAPPING:
+        return "costingfe"
+
+    # Default: freeform for anything not explicitly mapped
+    return "freeform"
+
+
+def get_costingfe_mapping(concept: dict) -> dict:
+    """Get the 1costingfe mapping dict for a concept.
+
+    Returns the mapping with keys: concept, example, defaults, notes (optional).
+    Checks concept-specific override first, then family-level.
+    """
+    cid = concept["_id"]
+    if cid in COSTINGFE_MAPPING:
+        return COSTINGFE_MAPPING[cid]
+
+    family = concept.get("Confinement Family", "")
+    sub = _get_subcategory(concept)
+    family_key = FAMILY_KEY_MAP.get((family, sub))
+    if family_key and family_key in COSTINGFE_MAPPING:
+        return COSTINGFE_MAPPING[family_key]
+
+    raise ValueError(f"No costingfe mapping for {cid} (family={family}, sub={sub})")
+
+
+def _get_subcategory(concept: dict) -> str:
+    """Extract the relevant sub-category column based on confinement family."""
+    family = concept.get("Confinement Family", "")
+    if family == "MFE":
+        return concept.get("MFE Topology", "")
+    elif family == "IFE":
+        return concept.get("IFE Driver", "")
+    elif family == "MIF":
+        return concept.get("MIF Method", "")
+    elif family == "Non-Standard":
+        return concept.get("Non-Standard Mechanism", "")
+    return ""
+
 
 # ---------------------------------------------------------------------------
 # CSV loading
@@ -675,7 +816,91 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
 
 def cmd_model_setup(concepts: list[dict], args: argparse.Namespace) -> None:
     """Stage 3: Generate model setup script (1costingfe or free-form)."""
-    print("model-setup: not yet implemented")
+    targets = resolve_concepts(
+        args.concepts, concepts,
+        family=args.family,
+        all_remaining=args.all_remaining,
+        target_state="model-setup",
+    )
+    if not targets:
+        print("No concepts to model-setup.")
+        return
+
+    costingfe_template = (TEMPLATES_DIR / "model_setup_costingfe.md").read_text(encoding="utf-8")
+    freeform_template = (TEMPLATES_DIR / "model_setup_freeform.md").read_text(encoding="utf-8")
+
+    for c in targets:
+        cid = c["_id"]
+        out_dir = ANALYSES_DIR / cid
+        model_path = out_dir / "model_setup.py"
+        analysis_path = out_dir / "analysis.md"
+
+        if not analysis_path.exists():
+            print(f"  skip {cid} (no analysis.md — run analyze first)")
+            continue
+
+        if model_path.exists() and not args.force:
+            print(f"  skip {cid} (model_setup.py exists, use --force)")
+            continue
+
+        model_path_type = get_model_path(c)
+
+        if model_path_type == "costingfe":
+            mapping = get_costingfe_mapping(c)
+            prompt = fill_template(costingfe_template, {
+                "concept_name": c["Concept Name"],
+                "company": c.get("Company", ""),
+                "analysis_path": str(analysis_path),
+                "example_path": str(COSTINGFE_EXAMPLES_DIR / mapping["example"]),
+                "defaults_path": str(COSTINGFE_DEFAULTS_DIR / mapping["defaults"]),
+                "readme_path": str(COSTINGFE_README_PATH),
+                "costing_constants_path": str(COSTINGFE_CONSTANTS_PATH),
+                "costingfe_concept": mapping["concept"],
+                "costingfe_fuel": FUEL_MAPPING.get(c.get("Fuel", "D-T"), "DT"),
+                "mapping_notes": mapping.get("notes", ""),
+                "output_path": str(model_path),
+            })
+            path_label = "1costingfe"
+        else:
+            prompt = fill_template(freeform_template, {
+                "concept_name": c["Concept Name"],
+                "company": c.get("Company", ""),
+                "analysis_path": str(analysis_path),
+                "costing_constants_path": str(COSTINGFE_CONSTANTS_PATH),
+                "output_path": str(model_path),
+            })
+            path_label = "free-form"
+
+        # Save prompt
+        out_dir.mkdir(parents=True, exist_ok=True)
+        prompt_path = out_dir / "model_setup_prompt.md"
+        prompt_path.write_text(prompt, encoding="utf-8")
+
+        if args.dry_run:
+            print(f"  dry-run {cid} ({path_label}): prompt saved to {prompt_path}")
+            continue
+
+        # Live invocation
+        print(f"  model-setup {cid} ({path_label}) ...", end="", flush=True)
+        t0 = time.time()
+        stdout, stderr, rc = invoke_claude(
+            prompt, cwd=CONCEPT_ANALYSIS_DIR, timeout=args.timeout, model=args.model,
+        )
+        elapsed = time.time() - t0
+
+        if rc != 0:
+            print(f" FAILED ({elapsed:.0f}s, rc={rc})")
+            print(f"    stderr: {stderr[:500]}", file=sys.stderr)
+            continue
+
+        # Verify Claude wrote the model file
+        if not model_path.exists():
+            print(f" FAILED ({elapsed:.0f}s) — Claude did not write {model_path}")
+            continue
+
+        size = model_path.stat().st_size
+        print(f" done ({elapsed:.0f}s, {size} bytes)")
+        print(f"    hint: uv run python {model_path} | tee {out_dir / 'model_output.txt'}")
 
 
 def cmd_review(concepts: list[dict], args: argparse.Namespace) -> None:
