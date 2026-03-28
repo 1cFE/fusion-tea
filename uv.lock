@@ -47,10 +47,12 @@ extract-full = [
 
 [package.metadata]
 requires-dist = [
+    { name = "beautifulsoup4", marker = "extra == 'web'", specifier = ">=4.12" },
     { name = "docling", marker = "extra == 'extract-full'", specifier = ">=2.0" },
     { name = "gmft", marker = "extra == 'extract-full'", specifier = ">=0.3" },
     { name = "gmft", marker = "extra == 'extract-tables'", specifier = ">=0.3" },
     { name = "img2table", specifier = ">=1.4.2" },
+    { name = "lxml", marker = "extra == 'web'", specifier = ">=5.0" },
     { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.0" },
     { name = "pydantic", specifier = ">=2.0" },
     { name = "pymupdf", specifier = ">=1.26.7" },
@@ -61,8 +63,9 @@ requires-dist = [
     { name = "pyyaml", specifier = ">=6.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.1" },
     { name = "syside", specifier = ">=0.8.4" },
+    { name = "trafilatura", marker = "extra == 'web'", specifier = ">=2.0" },
 ]
-provides-extras = ["extract", "extract-tables", "extract-full", "dev"]
+provides-extras = ["extract", "extract-tables", "extract-full", "web", "dev"]
 
 [package.metadata.requires-dev]
 dev = [

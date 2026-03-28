@@ -382,6 +382,8 @@ def get_concept_state(concept_id: str, analyses_dir: Path = ANALYSES_DIR) -> str
     Returns: 'not-started' | 'gap-checked' | 'drafted' | 'model-setup' |
              'reviewed' | 'synthesized' | 'approved'
 
+    Appends '*' suffix if downstream artifacts are stale.
+
     Detection order (highest to lowest):
       approved → synthesized → reviewed → model-setup → drafted → gap-checked → not-started
     """
@@ -394,22 +396,77 @@ def get_concept_state(concept_id: str, analyses_dir: Path = ANALYSES_DIR) -> str
         fm = parse_frontmatter(analysis_path)
 
         if fm.get("Status") == "approved":
-            return "approved"
-        if synthesis_path.exists():
-            return "synthesized"
+            state = "approved"
+        elif synthesis_path.exists():
+            state = "synthesized"
+        elif fm.get("Review-Status", "") in ("addressed", "clean"):
+            state = "reviewed"
+        elif model_path.exists():
+            state = "model-setup"
+        else:
+            state = "drafted"
 
-        review_status = fm.get("Review-Status", "")
-        if review_status in ("addressed", "clean"):
-            return "reviewed"
+        # Check for staleness in downstream artifacts
+        has_stale = False
+        for artifact in ["review.md", "synthesis.md"]:
+            artifact_path = analyses_dir / concept_id / artifact
+            if artifact_path.exists():
+                afm = parse_frontmatter(artifact_path)
+                if afm.get("Stale") == "true":
+                    has_stale = True
+        if not has_stale and model_path.exists():
+            first_line = model_path.read_text(encoding="utf-8").split("\n", 1)[0]
+            if "# STALE:" in first_line:
+                has_stale = True
 
-        if model_path.exists():
-            return "model-setup"
-
-        return "drafted"
+        return state + ("*" if has_stale else "")
 
     if gap_path.exists():
         return "gap-checked"
     return "not-started"
+
+
+def propagate_staleness(concept_id: str, reason: str,
+                         analyses_dir: Path = ANALYSES_DIR) -> list[str]:
+    """Mark downstream artifacts as stale when analysis.md changes.
+
+    Returns list of files marked stale.
+    """
+    out_dir = analyses_dir / concept_id
+    stale_files = []
+
+    downstream = [
+        out_dir / "model_setup.py",
+        out_dir / "review.md",
+        out_dir / "synthesis.md",
+    ]
+
+    for path in downstream:
+        if not path.exists():
+            continue
+
+        if path.suffix == ".py":
+            text = path.read_text(encoding="utf-8")
+            if "# STALE:" not in text:
+                text = f"# STALE: {reason}\n" + text
+                path.write_text(text, encoding="utf-8")
+            stale_files.append(path.name)
+        else:
+            text = path.read_text(encoding="utf-8")
+            if text.startswith("---"):
+                if "Stale: true" not in text:
+                    text = update_frontmatter_field(text, "Stale", "true")
+                    text = update_frontmatter_field(text, "Stale-Reason", reason)
+                    path.write_text(text, encoding="utf-8")
+                stale_files.append(path.name)
+
+    return stale_files
+
+
+def _has_downstream_artifacts(out_dir: Path) -> bool:
+    """Check if downstream artifacts exist (for staleness on --force)."""
+    return any((out_dir / f).exists()
+               for f in ["model_setup.py", "review.md", "synthesis.md"])
 
 
 # ---------------------------------------------------------------------------
@@ -438,11 +495,23 @@ def make_frontmatter(concept: dict) -> str:
     return "\n".join(lines) + "\n"
 
 
-def fill_template(template_text: str, replacements: dict[str, str]) -> str:
-    """{{variable}} substitution with {{#if var}}...{{/if}} conditionals."""
+def fill_template(template_text: str, replacements: dict[str, str],
+                  templates_dir: Path = TEMPLATES_DIR) -> str:
+    """{{variable}} substitution with {{#if var}}...{{/if}} conditionals
+    and {{@path}} config file inclusion."""
     result = template_text
 
-    # Process conditionals first
+    # Process file inclusions first: {{@config/analysis_goals.md}}
+    def replace_inclusion(m):
+        rel_path = m.group(1)
+        file_path = templates_dir / rel_path
+        if file_path.exists():
+            return file_path.read_text(encoding="utf-8")
+        return f"[CONFIG FILE NOT FOUND: {rel_path}]"
+
+    result = re.sub(r"\{\{@([^}]+)\}\}", replace_inclusion, result)
+
+    # Process conditionals
     def replace_conditional(m):
         var_name = m.group(1)
         content = m.group(2)
@@ -725,19 +794,25 @@ def cmd_status(concepts: list[dict], args: argparse.Namespace) -> None:
     print("-" * 95)
 
     counts = {s: 0 for s in state_symbols}
+    stale_count = 0
     for c in targets:
         state = get_concept_state(c["_id"])
-        counts[state] = counts.get(state, 0) + 1
-        sym = state_symbols.get(state, "  ?")
+        base_state = state.rstrip("*")
+        counts[base_state] = counts.get(base_state, 0) + 1
+        sym = state_symbols.get(base_state, "  ?")
+        if state.endswith("*"):
+            sym = sym + "*"
+            stale_count += 1
         print(f"{c['_id']:<45} {c['Concept Name']:<40} {sym}")
 
     print(f"\n{len(targets)} concepts: "
           f"{counts['approved']} approved, {counts['synthesized']} synthesized, "
           f"{counts['reviewed']} reviewed, {counts['model-setup']} model-setup, "
           f"{counts['drafted']} drafted, {counts['gap-checked']} gap-checked, "
-          f"{counts['not-started']} not-started")
+          f"{counts['not-started']} not-started"
+          + (f", {stale_count} stale" if stale_count else ""))
     print("\nLegend: A=approved  S=synthesized  R=reviewed  M=model-setup  "
-          "D=drafted  G=gap-checked  -=not-started")
+          "D=drafted  G=gap-checked  -=not-started  *=stale downstream")
 
 
 # ---------------------------------------------------------------------------
@@ -818,7 +893,7 @@ def cmd_gap_check(concepts: list[dict], args: argparse.Namespace) -> None:
 
 
 def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
-    """Stage 2: D1+ analysis (sequential — each concept re-scans reuse pool)."""
+    """Stage 2: D1+ analysis with iterative assessment loop."""
     targets = resolve_concepts(
         args.concepts, concepts,
         family=args.family,
@@ -829,14 +904,17 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
         print("No concepts to analyze.")
         return
 
-    template_text = (TEMPLATES_DIR / "analysis.md").read_text(encoding="utf-8")
+    analysis_template = (TEMPLATES_DIR / "analysis_v2.md").read_text(encoding="utf-8")
+    assessment_template = (TEMPLATES_DIR / "assessment.md").read_text(encoding="utf-8")
     exemplars = find_exemplars()
     output_template_path = TEMPLATES_DIR / "output_template.md"
+    max_passes = args.max_passes
 
     for c in targets:
         cid = c["_id"]
         out_dir = ANALYSES_DIR / cid
         analysis_path = out_dir / "analysis.md"
+        had_existing_downstream = _has_downstream_artifacts(out_dir)
 
         # Skip if already done (unless --force)
         if analysis_path.exists() and not args.force:
@@ -854,13 +932,10 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
 
         # Re-scan approved pool before each concept (mid-batch approvals picked up)
         approved = find_approved()
-
-        # Claude writes body to a temp file; script assembles final analysis.md
-        body_path = out_dir / "analysis_body.md"
         out_dir.mkdir(parents=True, exist_ok=True)
 
-        # Fill template
-        prompt = fill_template(template_text, {
+        # Common template vars shared across all modes
+        common_vars = {
             "concept_id": cid,
             "concept_name": c["Concept Name"],
             "company": c.get("Company", ""),
@@ -869,14 +944,24 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
             "brief_path": str(BRIEF_PATH),
             "schema_path": str(SCHEMA_PATH),
             "exemplar_paths": format_path_list(exemplars, "(no exemplars found)"),
-            "approved_analyses": format_path_list(approved, "No approved prior analyses available."),
+            "approved_analyses": format_path_list(
+                approved, "No approved prior analyses available."),
             "output_template_path": str(output_template_path),
-            "output_path": str(body_path),
             "analysis_path": str(analysis_path),
+        }
+
+        # === COLD START (analysis pass 1) ===
+        body_path = out_dir / "analysis_body.md"
+        prompt = fill_template(analysis_template, {
+            **common_vars,
+            "output_path": str(body_path),
+            "cold_start": "true",
+            "feedback_pass": "",
+            "feedback_path": "",
+            "self_advance": "",
         })
 
-        # Save prompt
-        prompt_path = out_dir / "analysis_prompt.md"
+        prompt_path = out_dir / "analysis_prompt_iter_1.md"
         prompt_path.write_text(prompt, encoding="utf-8")
 
         if args.dry_run:
@@ -887,8 +972,7 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
         # Claude may edit the Reuses field via Edit tool during analysis.
         analysis_path.write_text(make_frontmatter(c), encoding="utf-8")
 
-        # Live invocation — Claude writes body to body_path via Write tool
-        print(f"  analyze {cid} ...", end="", flush=True)
+        print(f"  analyze {cid} pass 1/{max_passes} ...", end="", flush=True)
         t0 = time.time()
         _stdout, stderr, rc = invoke_claude(
             prompt, cwd=CONCEPT_ANALYSIS_DIR, timeout=args.timeout, model=args.model,
@@ -901,7 +985,6 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
             analysis_path.unlink(missing_ok=True)
             continue
 
-        # Verify Claude wrote the body file
         if not body_path.exists():
             print(f" FAILED ({elapsed:.0f}s) — Claude did not write {body_path}")
             analysis_path.unlink(missing_ok=True)
@@ -912,13 +995,100 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
         body = body_path.read_text(encoding="utf-8")
         analysis_path.write_text(fm_raw + "\n" + body, encoding="utf-8")
         body_path.unlink()
+        print(f" done ({elapsed:.0f}s, {len(body)} chars)")
 
-        # Verify assembly
-        if not analysis_path.read_text(encoding="utf-8").startswith("---"):
-            print(f" WARNING ({elapsed:.0f}s): analysis.md doesn't start with ---")
+        # Staleness: --force cold start rewrites analysis.md
+        if args.force and had_existing_downstream:
+            stale = propagate_staleness(cid, "analysis-rewritten-by-force")
+            if stale:
+                print(f"    stale: {', '.join(stale)}")
+
+        # === ASSESSMENT LOOP ===
+        # FR-23: --max-passes 1 skips assessment entirely
+        if max_passes <= 1:
             continue
 
-        print(f" done ({elapsed:.0f}s, {len(body)} chars)")
+        converged = False
+        for pass_num in range(1, max_passes + 1):
+            # --- Assess the current analysis.md ---
+            feedback_path = out_dir / f"feedback_iter_{pass_num}.md"
+            assess_prompt = fill_template(assessment_template, {
+                "concept_name": c["Concept Name"],
+                "analysis_path": str(analysis_path),
+                "feedback_path": str(feedback_path),
+            })
+
+            assess_prompt_path = out_dir / f"assessment_prompt_iter_{pass_num}.md"
+            assess_prompt_path.write_text(assess_prompt, encoding="utf-8")
+
+            print(f"  assess {cid} iter {pass_num} ...", end="", flush=True)
+            t0 = time.time()
+            _stdout, stderr, rc = invoke_claude(
+                assess_prompt, cwd=CONCEPT_ANALYSIS_DIR,
+                timeout=args.timeout, model=args.model,
+            )
+            elapsed = time.time() - t0
+
+            if rc != 0:
+                print(f" FAILED ({elapsed:.0f}s, rc={rc})")
+                break
+
+            if not feedback_path.exists():
+                print(f" FAILED ({elapsed:.0f}s) — no feedback file")
+                break
+
+            # Parse convergence signal (anchor to start of line)
+            feedback_text = feedback_path.read_text(encoding="utf-8")
+            converged = bool(
+                re.search(r"^VERDICT:\s*PASS", feedback_text, re.MULTILINE))
+            finding_count = len(
+                re.findall(r"^### F-\d+:", feedback_text, re.MULTILINE))
+
+            if converged:
+                print(f" PASS ({elapsed:.0f}s)")
+                break
+
+            print(f" {finding_count} findings ({elapsed:.0f}s)")
+
+            # If this was the last allowed pass, no room for another analyze
+            if pass_num >= max_passes:
+                print(f"  warn: {cid} did not converge in {max_passes} passes "
+                      f"(see feedback_iter_{pass_num}.md)")
+                break
+
+            # --- Feedback pass: analyze again ---
+            next_analysis_num = pass_num + 1
+            prompt = fill_template(analysis_template, {
+                **common_vars,
+                "output_path": "",  # not used in feedback mode
+                "cold_start": "",
+                "feedback_pass": "true",
+                "feedback_path": str(feedback_path),
+                "self_advance": "",
+            })
+
+            prompt_path = out_dir / f"analysis_prompt_iter_{next_analysis_num}.md"
+            prompt_path.write_text(prompt, encoding="utf-8")
+
+            print(f"  analyze {cid} pass {next_analysis_num}/{max_passes} ...",
+                  end="", flush=True)
+            t0 = time.time()
+            _stdout, stderr, rc = invoke_claude(
+                prompt, cwd=CONCEPT_ANALYSIS_DIR,
+                timeout=args.timeout, model=args.model,
+            )
+            elapsed = time.time() - t0
+
+            if rc != 0:
+                print(f" FAILED ({elapsed:.0f}s, rc={rc})")
+                break
+
+            print(f" done ({elapsed:.0f}s)")
+
+            # Staleness: feedback pass modified analysis.md
+            stale = propagate_staleness(cid, "analysis-updated-by-feedback-loop")
+            if stale:
+                print(f"    stale: {', '.join(stale)}")
 
 
 def cmd_model_setup(concepts: list[dict], args: argparse.Namespace) -> None:
@@ -1495,6 +1665,8 @@ def build_parser() -> argparse.ArgumentParser:
     p_analyze.add_argument("--dry-run", action="store_true", help="Generate prompts without calling Claude")
     p_analyze.add_argument("--timeout", type=int, default=900, help="Per-invocation timeout in seconds")
     p_analyze.add_argument("--force", action="store_true", help="Re-run even if output exists")
+    p_analyze.add_argument("--max-passes", type=int, default=3,
+                            help="Max analyze→assess iterations (default: 3; 1=no assessment)")
 
     # -- model-setup --
     p_ms = sub.add_parser("model-setup", help="Generate 1costingfe model setup script")
@@ -1552,6 +1724,8 @@ def build_parser() -> argparse.ArgumentParser:
     p_s1.add_argument("--dry-run", action="store_true", help="Generate prompts without calling Claude")
     p_s1.add_argument("--timeout", type=int, default=900, help="Per-invocation timeout in seconds")
     p_s1.add_argument("--force", action="store_true", help="Re-run even if output exists")
+    p_s1.add_argument("--max-passes", type=int, default=3,
+                       help="Max analyze→assess iterations (default: 3; 1=no assessment)")
 
     return parser
 

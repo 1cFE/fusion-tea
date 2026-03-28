@@ -1,7 +1,7 @@
 # Epic: Concept Analysis Pipeline v2
 
 **Epic ID**: ANALYSIS-V2
-**Status**: Draft
+**Status**: Active
 **Priority**: High
 **Created**: 2026-03-28
 **Estimated Effort**: ~2 weeks
@@ -101,10 +101,11 @@ Inspired by the ralph-init.sh generate → review → refine pattern, but adapte
 
 ## Backlog Items
 
-### Item 1: Iterative Analysis Loop [3 days]
+### Item 1: Iterative Analysis Loop [3 days] — COMPLETE
 
 **Type**: Implementation
 **Effort**: 3 days (spec 2h, design 4h, plan 2h, execute 16h)
+**Status**: Complete (2026-03-28)
 **Dependencies**: None
 
 **Objective**: Replace the single-call analyze stage with an iterative analyze → assess → feedback loop, with extracted configuration and a structured feedback format.
@@ -396,9 +397,16 @@ Week 2: Items 3, 5 (depend on week 1)
 
 ## Lessons Learned (Post-Completion)
 
-*Fill in after epic is complete*
+### Item 1: Convergence Tuning Needed
+
+Assessment agent found real, progressively deeper issues each pass — only 1 of 3 test concepts converged within `--max-passes 3`. The non-convergent findings are genuinely useful (not phantom issues), suggesting the assessment is appropriately rigorous but the default iteration budget is tight. Consider:
+- Increasing `--max-passes` default to 4-5
+- Lightening assessment criteria (fewer findings per pass, or a "good enough" threshold)
+- Gathering more data across concepts before tuning — current sample is 3 concepts
+
+This is a tuning question, not a code bug. The pipeline works correctly at any `--max-passes` value.
 
 ---
 
 **Last Updated**: 2026-03-28
-**Next Action**: Review stencil, then spec Item 1 (the foundational piece)
+**Next Action**: Spec Item 2 (build-visuals), Item 3 (source addition), or Item 4 (shared memory)

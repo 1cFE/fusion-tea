@@ -1,3 +1,4 @@
+# STALE: analysis-rewritten-by-force
 """Magnetic Mirror (D-T) — Realta Fusion LCOE model setup.
 
 Usage:

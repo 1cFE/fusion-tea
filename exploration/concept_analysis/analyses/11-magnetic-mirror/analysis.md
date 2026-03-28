@@ -2,21 +2,18 @@
 ID: 11-magnetic-mirror
 Concept: Magnetic Mirror (D-T)
 Company: Realta Fusion
-Status: approved
-Created: 2026-03-22
-Approved-Date: 2026-03-22
-Reuses: [01-hts-compact-tokamak, 07-maglif, 08-frc-w-direct-conversion, 21-spherical-tokamak-hts]
-Review-Iterations: 1
-Last-Review: 2026-03-22
-Review-Status: addressed
+Status: draft
+Created: 2026-03-28
+Approved-Date:
+Reuses: []
 ---
 
 # D1+ Analysis: Magnetic Mirror (D-T) — Realta Fusion
 
-**Concept**: Axisymmetric tandem magnetic mirror — D-T fuel, hybrid thermal + direct energy conversion
-**Company**: Realta Fusion (Madison, WI; UW-Madison spin-out, founded 2022)
-**Pilot Plant**: Hammir (axisymmetric tandem mirror pilot; targeting Qe > 1, >50 MWe, ≥3 hours continuous)
-**Confinement Family**: MFE — Magnetic mirror
+**Concept**: Axisymmetric tandem mirror (CoSMo — Compact, Scalable, Modular) with HTS REBCO magnets and hybrid thermal + direct energy conversion — D-T fuel
+**Company**: Realta Fusion (Madison, WI — UW-Madison spinout, founded 2022)
+**Development Stage**: Experimental (WHAM operational July 2024) → End-plug demonstrator (Anvil, ~2028) → Pilot plant (Hammir, mid-2030s)
+**Confinement Family**: MFE (linear open-ended magnetic confinement)
 **Operation Mode**: Steady-state
 
 ---
@@ -25,250 +22,225 @@ Review-Status: addressed
 
 **Rating: Limited**
 
-Realta Fusion is at an early stage — WHAM (Wisconsin HTS Axisymmetric Mirror) achieved first plasma in July 2024, and the Hammir pre-conceptual design paper has not yet been published as of this writing (expected 2026). The company is moderately transparent about its roadmap and qualitative approach, but plant-level engineering data, capital cost estimates, and quantitative energy balance parameters are entirely absent from the public record.
+Realta Fusion is more transparent than many private fusion companies at a comparable stage. One peer-reviewed confinement modeling paper exists specifically for their commercial design (arXiv:2411.06644), and the WHAM experiment has produced citable results. The APS DPP 2025 conference talk by Sutherland provides quantitative pilot plant performance targets. However, no plant-level cost study, engineering design report, or techno-economic analysis has been published for any modern HTS-based magnetic mirror. The company explicitly expects to publish a Hammir pre-conceptual design paper in 2026, which would substantially improve data availability.
 
-**Peer-reviewed and technical literature:**
+**Peer-reviewed and conference publications:**
+The arXiv confinement predictions paper (arXiv:2411.06644) is the primary quantitative anchor for commercial performance claims. It models Q > 5 at a 50-meter center cell and notes that longer configurations enable Q > 10. The APS DPP 2025 abstract (Sutherland) states Hammir targets Qe > 1 and Pe > 50 MWe for at least 3 hours continuously, with Anvil serving as the end-plug physics demonstrator. The WHAM physics basis paper (Endrizzi et al., Journal of Plasma Physics, 2023) provides the experimental foundation.
 
-The primary technical reference is a 2024 arXiv paper from the Realta/UW-Madison team that reformulates the POPCON technique for a tandem mirror central cell and uses machine learning to optimize the design, concluding that HTS end-plugs with modern neutral beams yield a classical tandem mirror pilot plant with Q > 5 at 50-meter center cell length:
+> "50-meter center cell → Q > 5... Longer center cell → Q > 10+"
+> — arxiv-2411-06644-confinement-predictions.md, §Hammir Design
 
-> "End plug: HTS magnets + modern neutral beams → classical tandem mirror pilot plant with Q > 5"
-> — arxiv-2411-06644-confinement-predictions.md, §Key Technical Details
+> "electric gain Qe > 1, net electricity Pe,out > 50 MWe, for at least 3 hours continuously"
+> — aps-dpp-2025-sutherland.md, §Hammir Facility (Pilot Plant)
 
-This paper is the primary quantitative physics basis for Hammir but presents simulations — no Hammir hardware exists. The broader tandem mirror literature is substantial (MFTF-B, TMX, MARS study from the 1980s DOE program) but reflects copper-magnet designs and lower mirror ratios; the HTS-enabled mirror ratio of 10+ is qualitatively different from those historical experiments. No independent techno-economic analysis equivalent to the Araiinejad & Shirvan (2025) tokamak study exists for this concept. [1]
+**Company communications:**
+The Fusion Hub Startup Spotlight and The Fusion Report interview with Realta are the richest available sources for system architecture, confirming D-T fuel, HTS REBCO magnets (mirror ratio 10+), dual energy capture (venetian blind DEC + thermal blanket), and the ~7 MW/m center cell scaling law. The February 2026 SVB facility announcement ($9.5M growth capital) confirms ongoing operations and identifies industrial heat delivery as the primary near-term application.
 
-**Experimental heritage:**
-WHAM is the only currently operating Realta-relevant experiment. It uses two REBCO HTS magnets from Commonwealth Fusion Systems, achieved 17 T in-bore (>20 T on-conductor), and validated the high-field simple mirror configuration with ECH, NBI, and HHFW heating. First plasma was July 15, 2024. WHAM targets a $100M "Break Even Axisymmetric Tandem" (BEAT) conceptual design as its end-product goal — it is not itself a gain-producing device. [2]
+> "neutron energy is captured through traditional thermal blankets (which also produce tritium from lithium)... charged helium 'ash' is captured via direct energy conversion as it exits the fusion chamber. Dual approach lowers the Q required to reach net-electric while still using DT fuel"
+> — fusion-report-interview-realta.md, §Energy Conversion
 
-**Company transparency:**
-The APS DPP 2025 talk (Sutherland) provided the clearest public summary of the development roadmap and Hammir performance targets. The Fusion Hub spotlight and Fusion Report interview filled out the technical picture on heating, energy conversion, and performance scaling. The February 2026 SVB funding announcement ($9.5M facility) confirms continued development but adds no new technical parameters. [3]
+**Historical analogues:**
+The Mirror Advanced Reactor Study (MARS, 1983) and MINIMARS (1985) are the most detailed magnetic mirror plant studies in existence. MARS projected ~7 ¢/kWh (1983 dollars) with LCOE saturating around 600 MWe, using LiPb blanket (TBR 1.15) and gridless direct converters achieving ~54% efficiency. Both studies used yin-yang coils at mirror ratios of ~2, which are not directly applicable to Realta's HTS axisymmetric design, but they provide the only bottom-up cost account structure for a mirror power plant.
 
-No published items: capital cost estimates, detailed blanket design, tritium breeding TBR target, DEC efficiency characterization for Realta's venetian-blind design, NBI/ECH power requirements for Hammir, or any LCOE estimate.
+**Independent analyses:**
+No independent TEA for a modern HTS magnetic mirror exists. The 1costingfe-based quantitative models in the handwritten and automated analyses (80.2 vs. 135.2 $/MWh) represent the two available parametric estimates, but these are first-pass academic exercises with significant parameter disagreements, not peer-reviewed plant studies.
 
 **Key data gaps limiting this analysis:**
-- Hammir pre-conceptual design paper not yet published (expected 2026) — would provide the first plant-level engineering parameters
-- Tritium blanket type (FLiBe, LiPb, liquid Li, solid ceramic) undisclosed
-- Thermal power conversion cycle (steam, sCO2) undisclosed
-- NBI and ECH power requirements for Hammir → recirculating power and Qe relationship unknown
-- DEC efficiency for Realta's venetian-blind design uncharacterized (only MARS historical ~54% available)
-- No capital cost estimates at any stage (WHAM cost ~$10M ARPA-E, but no Anvil or Hammir cost data)
+1. No Hammir engineering design study (expected 2026)
+2. No published cost targets for any subsystem in the Realta design
+3. Blanket type unspecified (FLiBe, LiPb, liquid Li, HCPB)
+4. NBI and ECH input power for commercial Hammir not disclosed
+5. Recirculating power fraction for Hammir not published
+6. DEC efficiency in D-T fusion conditions not demonstrated or published by Realta
 
 ---
-[1] arxiv-2411-06644-confinement-predictions.md §Key Technical Details; dossier.md §Key Sources — historical mirror context.
-[2] wham-experiment-details.md §Key Technical Details, §Funding & Partners, §End Product Goal.
-[3] aps-dpp-2025-sutherland.md §Hammir Facility; realta-svb-funding-feb2026.md §Key Details.
+[1] arxiv-2411-06644-confinement-predictions.md, §Hammir Design
+[2] aps-dpp-2025-sutherland.md, §Hammir Facility (Pilot Plant) and §Anvil Device (Next Step)
+[3] fusion-report-interview-realta.md, §Energy Conversion; realta-fusion-hub-spotlight.md §Fuel & Reaction
 
 ---
 
 ## Section 2: Challenges in Capturing System Function
 
-Realta's LCOE structure is anchored on a novel combination of four technical bets: (1) HTS-enabled high mirror ratios resolving end-loss, (2) linear center-cell scaling at ~7 MW/m, (3) hybrid energy capture (thermal blanket + direct energy conversion), and (4) inherent steady-state operation. Each bet introduces LCOE modeling challenges ranked below by impact.
+Ranked by impact on LCOE model closure.
 
-### 1. End-Plug Tandem Mirror Confinement Is Undemonstrated — No Physics Anchor for Hammir (Impact: Critical)
+### 1. End-Plug Confinement Physics Is Concept-Gating (Impact: Blocking)
 
-The entire Hammir performance projection depends on end-plug confinement physics that has not been experimentally validated with HTS magnets. WHAM is a simple mirror — it does not have the end-plug cells that create the electrostatic potential to plug the loss cone. Anvil is specifically designed to demonstrate end-plug sustainment at commercial scale:
+The fundamental economic claim of the tandem mirror rests on end-plug stability: hot, dense end-plug plasmas must create an electrostatic potential barrier deep enough to confine the main-cell ions at commercial Q. Realta's HTS REBCO magnets achieve mirror ratios of 10+ (vs. historical ~2), which they argue fundamentally improves end-plug confinement effectiveness. However, the Anvil end-plug demonstrator has not yet been built, and the performance of electrostatic end-plugging at the conditions required for Q > 5 has never been experimentally validated.
 
-> "Primary objective: demonstrate stable sustainment of end-plug plasma conditions required for tandem mirror pilot plant"
-> — aps-dpp-2025-sutherland.md, §Anvil Device (Next Step)
+The key instability risks are DCLC (drift cyclotron loss cone) and Alfvén ion cyclotron modes, both cited as requiring active stabilization via kinetic injection (sloshing ions) and vortex flows. The arXiv paper explicitly acknowledges that "stabilization against MHD and trapped particle modes" is required and applies machine learning optimization to the design parameters — indicating that the stabilization solution is still being developed computationally [1]. If DCLC management is less effective than modeled, the achievable Q drops substantially. The comparison-report analysis from the prior automated pipeline characterized the end-plug physics challenge as "comparable to claiming Q=10 before achieving burning plasma" — a strong statement that remains operative.
 
-The Q > 5 projection in the arxiv paper is a simulation result, not an experimental extrapolation from measured confinement. The tandem mirror concept has historical precedents (MFTF-B, TMX at Livermore; GAMMA-10 in Japan), but those operated at much lower mirror ratios (~2) and with copper magnets. The HTS-enabled mirror ratio of 10+ is the key claim, but it has only been tested in the simple mirror WHAM geometry — not in the tandem configuration with end plugs. This gap is comparable to Helion's D-He3 extrapolation or a tokamak claiming Q = 10 before achieving burning plasma: the physics basis exists in simulation, but the experiment is one or two device generations away. [1]
+Quantifying the LCOE impact: a factor-of-2 reduction in Q (e.g., from Q=5 to Q=2.5) at fixed net electrical output would roughly double the required fusion power and the input heating power, driving up the recirculating fraction from ~35% to potentially >50% and eliminating net electricity production at modest plant sizes.
 
-### 2. Direct Energy Conversion: Efficiency and Capital Cost Are Undefined for Realta's Design (Impact: High)
+### 2. The Linear Scaling Thesis Is Physically Plausible but Uncosted (Impact: Critical)
 
-Realta's hybrid energy capture is central to its claimed economic advantage — DEC lowers the Q threshold for net electricity:
+Realta's core economic argument is that the center cell is modular and cheap: each additional meter adds ~7 MW of fusion power while input power remains roughly constant, enabling Q to scale with length without requiring larger or more expensive end-plug systems. This physics claim is stated in the Fusion Report interview and is consistent with the arXiv paper's Q projections. If true, it implies a uniquely favorable cost scaling — longer plants approach higher Q at roughly constant capital per MWe for the heating systems.
 
-> "Dual approach 'lowers the Q required to reach net-electric while still using DT fuel'"
-> — fusion-report-interview-realta.md, §Energy Conversion
-
-The only published DEC efficiency number for an axisymmetric tandem mirror is from the 1983 MARS study: ~54% for gridless direct converters. Realta's venetian-blind DEC design uses axisymmetric "ferromagnetic venetian blinds" to convert escaping ion beams to electrical current. This design has not been built or tested at any scale. No efficiency target, capital cost estimate, or operational lifetime for the venetian-blind system has been published. The DEC system interacts with the charged particle exhaust stream (helium ash, unburned D-T ions) in a way that creates a combined exhaust management and energy recovery challenge unique to the linear mirror geometry — there is no analogue in closed-geometry fusion concepts. [2]
-
-The fraction of fusion power captured by DEC vs. the thermal blanket is also uncharacterized. In D-T fusion, 80% of energy is in 14.1 MeV neutrons (captured in the blanket) and 20% in 3.5 MeV alpha particles. Alphas escape through the ends and are available for DEC. The DEC efficiency of ~54% thus applies to ~20% of fusion energy — a meaningful but not dominant contribution. The exact energy split (including bremsstrahlung losses, neutron wall loading on end structures, and end-plug heating power) is not published. [3]
-
-### 3. Linear Center-Cell Scaling: The Key Cost Lever, With Unknown Cost Floor (Impact: High)
-
-Realta's most compelling economic argument is that commercial-scale fusion power is achieved by adding center-cell length, with approximately constant input power:
-
-> "~7 MW per meter as center cell lengthens. Input power remains constant despite increased output."
+> "~7 MW per meter as center cell lengthens... Input power remains constant despite increased output... Theoretical: 500 MW from Q=20 system"
 > — fusion-report-interview-realta.md, §Performance Scaling
 
-This creates a favorable scaling relationship: capital cost per meter of center-cell is dominated by relatively weak, inexpensive solenoid magnets, while end-plug hardware costs remain fixed. A 50-meter center cell achieves Q > 5; longer cells approach Q > 10-20. For an LCOE model, this is the primary performance lever — but the marginal cost per meter of center cell is not characterized. The central solenoid magnets are weaker than end-plug magnets (and therefore cheaper per unit field), but the structure, vacuum vessel, blanket, and neutron shielding add cost per meter. Without a pre-conceptual design, the cost-per-meter breakdown cannot be estimated from available sources. [4]
+However, the cost per meter of center cell has never been estimated in any modern study. MARS costed its full 100-meter device, but the magnet technology, building, and blanket cost structures were completely different. The center cell coil costs scale with the number of solenoid modules; the building scales approximately linearly with length; the blanket area scales with length; but none of these have been estimated for an HTS axisymmetric design. The linear scaling thesis may be economically transformative or may simply shift cost growth from heating to structural systems — and no data exists to determine which.
 
-### 4. Plasma Stability at Full Scale: DCLC and MHD Uncertainties (Impact: Moderate)
+### 3. Recirculating Power Fraction Is Unknown and Potentially Large (Impact: Critical)
 
-The historical demise of mirror machines was driven partly by microinstabilities — particularly the Drift Cyclotron Loss Cone (DCLC) instability that enhanced particle losses and thermal conductivity beyond classical predictions. Realta addresses this with "sloshing ions" and kinetic stabilization, and relies on vortex flow stabilization for MHD modes. The arxiv paper identifies DCLC stabilization as a requirement and notes that machine learning was used to optimize parameters accounting for it. But the DCLC mitigation has not been demonstrated in a tandem mirror configuration with HTS end-plug fields — this is partly what Anvil is designed to demonstrate:
+A steady-state mirror requires continuous NBI and ECH input to sustain end-plug temperature and density. For WHAM, the heating systems include a 110 GHz gyrotron (ECH), NBI, and HHFW. The commercial Hammir input power is not published. The handwritten model used 40 MW input and the automated model used 100 MW, producing Q_plasma estimates of 28 and 17 respectively — both physically implausible at face value, indicating that the parameter is genuinely undetermined.
 
-> "Requires stabilization against MHD and trapped particle modes"
-> — arxiv-2411-06644-confinement-predictions.md, §Key Technical Details
+For context: the MARS study (1983 technology) required substantial recirculating power to maintain its end plugs. Modern NBI and ECH systems are more efficient, but the end-plug sustainment power demand depends critically on DCLC stability behavior. If end-plug conditions require more heating than modeled, the recirculating fraction could rise significantly above the ~35% baseline (automated model estimate), reducing Qe below 1 and eliminating the net electricity claim. This is the physical lever that most directly couples the Section 2.1 stability risk to LCOE.
 
-For LCOE modeling, instability at full scale would manifest as either reduced confinement time (lower effective Q) or increased heating power requirements (higher recirculating power fraction). The range of impact is large — historically, instability was the dominant failure mode of mirror machines. If Realta's stabilization approach works, it could be a non-issue; if it doesn't, it is concept-ending. The uncertainty spans from "works as modeled" to "Q is 2× lower than projected," representing large LCOE uncertainty. [5]
+### 4. DEC Contribution: Real but Modest for D-T (Impact: High)
 
-### 5. Regulatory and Licensing Context for Linear Geometry (Impact: Moderate)
+The venetian blind direct energy converter is a genuine Realta differentiator. However, its thermodynamic contribution in D-T is limited by physics: 80% of D-T fusion energy is carried by 14.1 MeV neutrons (captured in the thermal blanket) and only 20% by the 3.5 MeV alpha particles (capturable by DEC). At ~54% DEC efficiency (MARS historical value), the electrical contribution from DEC is at most 0.20 × 0.54 ≈ 11% of the thermal output. This is meaningful but not transformative. The handwritten analysis's dismissal of DEC as "not worth considering" overstates the case (11% is real), but its observation that DEC survivability — thin, uncooled electrodes downstream of a fusion reactor — is a genuine engineering concern is correct and unaddressed in Realta's published materials.
 
-Steady-state D-T magnetic confinement is the most studied category for fusion licensing (ITER, SPARC, etc.), but the linear open-field geometry creates distinct regulatory questions. End-plug plasma exhaust exits through open ends of the device — unlike a closed toroidal geometry, the neutral gas and ion exhaust must be managed in expanding "expander" regions that are part of the system boundary. Tritium handling in the exhaust stream adds regulatory complexity. Realta has not disclosed any regulatory pathway analysis, and no prior regulatory precedent exists for a commercial tandem mirror facility. The NRC's 2023 decision to regulate fusion under 10 CFR Part 30 is favorable in principle, but the detailed rulemaking applicable to a mirror machine with open-ended plasma exhaust is undefined. [6]
+The uncertainty range: if DEC is excluded entirely (f_dec = 0), LCOE rises by roughly 10-15% from the baseline. If DEC works at MARS efficiency (η_de = 0.54), it provides meaningful but not game-changing improvement. The decision of whether to include DEC in the model has modest LCOE impact but is relevant for plant complexity and cost.
+
+### 5. Tritium Breeding: Blanket Type Undisclosed, TBR Unverified (Impact: High)
+
+The Fusion Report interview confirms a lithium-based blanket that captures neutron energy and breeds tritium. The specific blanket architecture (FLiBe, LiPb, liquid Li, solid ceramic HCPB) is not disclosed by Realta. This matters for cost modeling because blanket type drives: (a) breeding ratio (TBR), (b) thermal efficiency (outlet temperature varies from ~350°C for LiPb to >700°C for FLiBe), (c) blanket structural cost, and (d) tritium extraction complexity. MARS used LiPb (TBR 1.15), but this was optimized for yin-yang coil geometry. Realta's cylindrical center cell with axisymmetric blanket geometry is well-suited to a cylindrical breeding module, which could support any of these options with different cost consequences.
 
 ---
-[1] aps-dpp-2025-sutherland.md §Anvil Device; arxiv-2411-06644-confinement-predictions.md §Key Technical Details.
-[2] fusion-report-interview-realta.md §Energy Conversion; realta-fusion-hub-spotlight.md §Energy Conversion.
-[3] realta-fusion-hub-spotlight.md §Fuel & Reaction: "80% of output energy in neutrons."
-[4] fusion-report-interview-realta.md §Performance Scaling.
-[5] arxiv-2411-06644-confinement-predictions.md §Key Technical Details.
-[6] dossier.md §Remaining Gaps; general regulatory context from 01-hts-compact-tokamak handwritten analysis.
+[1] arxiv-2411-06644-confinement-predictions.md, §Key Technical Details
+[2] fusion-report-interview-realta.md, §Performance Scaling
+[3] realta-fusion-hub-spotlight.md, §Stabilization
 
 ---
 
 ## Section 3: Maturity of Key Subsystems and Components
 
-Listed in ascending order of maturity (least mature first).
+Ordered from least mature (highest LCOE model risk) to most mature.
 
 ---
 
-**Tritium Breeding Blanket (Li type unspecified) — TRL 2–3**
+**Tritium Breeding Blanket — TRL 2–3**
 
-- **Demonstrated**: Lab-scale tritium breeding experiments shared with all D-T concepts. The MARS study (1983) modeled a Li17Pb83 (LiPb) blanket for a tandem mirror with TBR = 1.15, and the linear central-cell geometry was found favorable for a surrounding cylindrical blanket design. JET and TFTR have handled gram-scale tritium. ITER TBM program includes Li-containing concepts for toroidal geometry.
-- **On paper only**: Any blanket design specific to Realta's linear geometry — the Hammir pre-conceptual design paper has not been published. The specific blanket type (FLiBe, LiPb, liquid Li, solid ceramic) has not been disclosed. A cylindrical blanket surrounding the center cell is the obvious configuration, and the MARS geometry is a valid historical precedent, but none of this has been engineered for HTS mirror conditions.
-- **Missing at scale**: 14 MeV neutron irradiation testing at fusion-relevant fluences for the linear geometry. Tritium extraction system at kg/day rates from whatever blanket type is chosen. Full TBR validation accounting for the open ends, end-plug structure, and diagnostic penetrations, which reduce effective breeding coverage from the ideal cylindrical geometry. Compatibility of blanket choice with the DEC exhaust expander at the open ends of the device. [1]
-
----
-
-**Direct Energy Conversion (Venetian Blinds) — TRL 2–3**
-
-- **Demonstrated**: Gridless direct conversion was analyzed in the 1983 MARS study at ~54% efficiency for axisymmetric tandem mirror escaping ions. The physics basis (electrostatic deceleration of escaping ions) is understood. Helion Energy pursues a different form of DEC (inductive energy recovery from compressed FRCs), and TAE Technologies has developed DEC for aneutronic fuel cycles — neither is directly analogous to Realta's venetian-blind design for escaping end-loss ions. [2]
-- **On paper only**: Realta's "axisymmetric ferromagnetic venetian blinds" design. Efficiency characterization of the venetian-blind collector geometry for D-T alpha particles and unburned deuterium/tritium escaping through the end-plug expander. Integration of DEC with the neutral beam exhaust and helium ash management systems.
-- **Missing at scale**: Any prototype of Realta's venetian-blind DEC design. Lifetime and materials characterization of the collector surfaces under ion bombardment from the escaping plasma stream. Integration with high-voltage electrical generation and grid synchronization at power-plant scale. Performance under continuous operation with high-energy 3.5 MeV alphas and ~100 keV D-T beam ions. [3]
+- **Demonstrated**: Small-scale tritium breeding experiments in fission-neutron environments globally. MARS/MINIMARS costed LiPb blanket with TBR 1.15 for a linear mirror geometry — the closest available analogue. Kairos Power (fission) developing FLiBe at scale but at very different operating conditions.
+- **On paper only**: A blanket design for Realta's axisymmetric cylindrical center cell. No Hammir blanket architecture has been published. The 2026 pre-conceptual design paper is expected to address this.
+- **Missing at scale**: TBR >1 validated with 14 MeV fusion neutrons. Any tritium extraction system at kg/day throughput. Full-scale lithium blanket module operating under simultaneous neutron flux, thermal load, and tritium extraction for a linear device.
 
 ---
 
-**Tandem Mirror Confinement with HTS End Plugs — TRL 3–4**
+**End-Plug Confinement System (Tandem Mirror Cells) — TRL 3–4**
 
-- **Demonstrated**: WHAM has demonstrated stable simple mirror confinement with REBCO HTS magnets at 17 T, including ECH and NBI heating, with first plasma in July 2024. The simple mirror geometry is validated at these fields. Historical tandem mirror physics was extensively studied at Livermore (MFTF-B, TMX, TMX-U) and Japan (GAMMA-10), but at much lower mirror ratios (~2) and without HTS.
-- **On paper only**: Tandem mirror confinement with HTS end-plug fields at 17+ T and mirror ratios of 10+. The electrostatic plugging potential required to suppress end losses in Hammir. Machine learning–optimized design parameters for the Hammir plasma scenario at Q > 5. [4]
-- **Missing at scale**: Anvil — the device specifically designed to demonstrate stable sustainment of end-plug plasma conditions at commercial scale — has not yet been built. The transition from Anvil (single end plug demonstrator) to Hammir (tandem configuration) is itself a major integration step. DCLC and trapped-particle mode stabilization at the Hammir plasma parameters have not been demonstrated experimentally. Classical radial transport (identified in the arxiv paper as significant) may not be the only transport channel at full scale. [5]
-
----
-
-**Plasma Stability (DCLC and MHD) — TRL 4**
-
-- **Demonstrated**: Sloshing ions for DCLC stabilization were studied extensively in historical mirror experiments (the Baseball II/C2 program at Livermore, GAMMA-10). The vortex stabilization mechanism for MHD was developed theoretically and tested in simple mirrors. WHAM has demonstrated stable plasmas with ECH and NBI, validating basic plasma sustainment.
-- **On paper only**: Machine learning–optimized sloshing ion injection parameters specifically tuned for Hammir end-plug conditions. Full MHD stability in the Hammir tandem configuration with non-Maxwellian end-plug velocity distributions. Stability margins over the operational parameter range needed for commercial power production.
-- **Missing at scale**: Experimental validation of DCLC stabilization in the HTS tandem mirror configuration with mirror ratio 10+. Characterization of anomalous transport that may persist even with DCLC suppression. Stability tracking over hours-long continuous operation with slowly evolving plasma parameters. [6]
+- **Demonstrated**: Tandem mirror physics demonstrated at TMX and MFTF-B (1980s, now decommissioned). Realta's WHAM demonstrates the end-plug magnetic geometry (17 T HTS solenoid) and basic plasma operation (first plasma July 2024). WHAM targets validation of the end-plug plasma confinement physics.
+- **On paper only**: Stable, sustained end-plug operation at commercial Q conditions. Electrostatic plugging potential sufficient to confine main-cell D-T plasma at Q > 5. DCLC stabilization via sloshing ions and vortex flows at commercial densities and temperatures.
+- **Missing at scale**: The Anvil device (planned ~2028) is the first dedicated end-plug confinement demonstrator. Commercial-scale end-plug plasma parameters — end-plug density, electron temperature, and electrostatic potential barrier depth — have not been achieved or validated in any experiment.
 
 ---
 
-**HTS Mirror Magnets (REBCO, Axisymmetric) — TRL 6–7**
+**Direct Energy Conversion — Venetian Blinds — TRL 4–5**
 
-- **Demonstrated**: WHAM is operating with two CFS-built REBCO HTS magnets at 17 T in-bore (>20 T on-conductor), currently the world record for magnetically confined plasmas. Axisymmetric solenoid geometry is simpler to wind and structurally more uniform than tokamak TF coils or stellarator coils. The WHAM magnets have demonstrated the HTS mirror coil concept in the relevant geometry.
-- **On paper only**: Full Hammir magnet set — a series of end-plug magnets (17+ T) and central-cell solenoid coils (weaker field, cost-optimized). Quench protection for an integrated array of HTS mirror coils in a neutron-producing plasma. Radiation damage management for the HTS coil set over a multi-year plant lifetime.
-- **Missing at scale**: Reliable km-scale REBCO tape supply chain with consistent Jc (the same bottleneck as for tokamaks — see Section 4). Magnet performance under neutron and gamma irradiation for the end-plug coil positions closest to the plasma. Cost optimization of the center-cell solenoid array, which is less demanding field-wise but must cover the full 50+ meter length. [7]
-
----
-
-**NBI + ECH + HHFW Heating — TRL 6–8**
-
-- **Demonstrated**: All three heating technologies are operational on WHAM: 110 GHz gyrotron (ECH), NBI for ion fueling, HHFW for in-situ ion acceleration. MW-class NBI and ECH systems are routinely operated on major fusion devices worldwide (JET, DIII-D, EAST, ITER under construction). WHAM proved the specific combination in a mirror geometry.
-- **On paper only**: Hammir-scale NBI power for end-plug sustainment (specific power requirements not published). Integration of NBI beam trajectory with the tandem mirror geometry for efficient end-plug density maintenance without excessive gas injection.
-- **Missing at scale**: CW high-power NBI systems at the rep-rates and beam energies required for Hammir. Long-term NBI source lifetime under high-flux operation. ECH gyrotron efficiency improvements toward 50–60% wall-plug efficiency (current generation: ~45–55%) to reduce recirculating power. [8]
+- **Demonstrated**: Venetian blind direct energy converter demonstrated in laboratory settings in the 1970s by Moir & Barr (Nuclear Fusion, 1973). Achieves ~50–65% efficiency for monoenergetic ion beams. MARS incorporated DEC at ~54% efficiency in its plant design.
+- **On paper only**: Axisymmetric ferromagnetic venetian blind geometry as described by Realta. Integration with the full mirror end region, including magnetic field expansion to reduce heat flux on electrodes.
+- **Missing at scale**: Survival of thin uncooled electrodes under continuous bombardment from a D-T fusion plasma exhaust stream (including neutron activation, energetic neutral particles, and alpha particles). No DEC device has operated in fusion conditions. DEC survivability over commercial plant lifetime (30 years) is undemonstrated and not analyzed in available Realta materials.
 
 ---
 
-**Balance of Plant / Thermal Conversion — TRL 7–9 (BOP) / TRL 2–4 (Integrated System)**
+**End Divertor and Heat Exhaust Management — TRL 2–3**
 
-- **Demonstrated**: Conventional Rankine and sCO₂ power cycles are commercially mature. The thermal side of the tandem mirror (cylindrical blanket, heat exchangers) follows conventional D-T blanket engineering. No inherent pulsing requirement (unlike pulsed concepts), so no thermal buffer is needed — the steady-state heat source is compatible with standard thermal cycles.
-- **On paper only**: Integration of the thermal cycle with the specific Realta blanket (type unspecified). Heat exchanger design compatible with tritium-bearing primary coolant. Thermal cycle efficiency target and selection (steam vs. sCO₂) — Realta has not disclosed this.
-- **Missing at scale**: First-wall and blanket module replacement tooling for the linear geometry — the open-ended device enables more direct maintenance access than toroidal concepts (a potential advantage), but specific remote-handling tooling is undeveloped. [9]
+- **Demonstrated**: The open-ended mirror geometry naturally creates two loss-cone "divertors" at the ends of the machine. Heat load handling at relevant particle and energy fluxes has not been specifically studied for Realta's design.
+- **On paper only**: Any analysis of end divertor heat loads for a Hammir-class device operating at Q > 5.
+- **Missing at scale**: Heat flux on end structures and venetian blind electrodes at commercial fusion power. Plasma exhaust pumping and fueling systems for the tandem end regions. Remote handling of activated end structures in a linear geometry (hot-cell operations would require access along the full machine length).
 
 ---
-[1] dossier.md §Tritium Breeding; fusion-report-interview-realta.md §Energy Conversion; dossier.md §Key Sources (MARS study).
-[2] realta-fusion-hub-spotlight.md §Energy Conversion.
-[3] realta-fusion-hub-spotlight.md §Energy Conversion; fusion-report-interview-realta.md §Energy Conversion.
-[4] wham-experiment-details.md §Key Technical Details; aps-dpp-2025-sutherland.md §Anvil Device.
-[5] aps-dpp-2025-sutherland.md §Anvil Device; arxiv-2411-06644-confinement-predictions.md §Key Technical Details.
-[6] arxiv-2411-06644-confinement-predictions.md §Key Technical Details; realta-fusion-hub-spotlight.md §Stabilization.
-[7] wham-experiment-details.md §Magnet System.
-[8] wham-experiment-details.md §Heating Methods; realta-fusion-hub-spotlight.md §Heating Methods.
-[9] fusion-report-interview-realta.md §Energy Conversion.
+
+**HTS Axisymmetric Mirror Magnets — TRL 6–7**
+
+- **Demonstrated**: WHAM operates with two CFS-built REBCO HTS solenoid magnets at 17 T in-bore (>20 T on conductor), achieving a world-record field for magnetically confined plasma experiments at WHAM's scale. Axisymmetric solenoid coil geometry is geometrically simpler than 3D stellarator coils or MFTF-B yin-yang coils. CFS has demonstrated commercial HTS magnet manufacturing capability.
+- **On paper only**: Full complement of center-cell solenoid modules and end-mirror coils for Hammir (50-meter design). Cost per meter at commercial length not estimated.
+- **Missing at scale**: Radiation shielding design for HTS coils in a 14 MeV neutron environment over 30-year plant lifetime. Large-magnet-radius implications of neutron shielding layers (shielding increases the physical distance between coil and plasma, potentially increasing coil stress and cost). Integration of multiple center-cell solenoid modules with demountable connections for maintenance.
+
+> "Two 17 T HTS magnets from Commonwealth Fusion Systems... world record magnetic field strength for magnetically confined plasmas"
+> — wham-experiment-details.md, §Magnet System
+
+---
+
+**Neutral Beam Injection (NBI) — TRL 6–7**
+
+- **Demonstrated**: NBI systems routinely operated on major fusion experiments globally (JET, JT-60SA, DIII-D). WHAM uses NBI for end-plug fueling and heating. Modern NBI technology at 80–120 keV beam energy and multi-MW power levels is commercially available from multiple vendors.
+- **On paper only**: NBI power requirements for Hammir at commercial Q conditions. Optimal beam energy and injection geometry for Realta's tandem mirror configuration.
+- **Missing at scale**: High-power NBI systems with >50% wall-plug efficiency at sustained commercial operation. NBI port penetrations in a 50-meter cylindrical center cell at a small fraction of surface area (a cited Realta advantage — the long center cell allows NBI penetration without large fractional port area).
+
+---
+
+**ECH and HHFW Heating Systems — TRL 6–7**
+
+- **Demonstrated**: 110 GHz gyrotron ECH demonstrated in WHAM for electron heating and end-plug potential formation. HHFW (high-harmonic fast wave) systems demonstrated in multiple fusion devices. Gyrotron manufacturing at MW class is commercially available.
+- **On paper only**: ECH and HHFW power requirements at Hammir commercial conditions. Gyrotron wall-plug efficiency optimization for ~45–55% efficiency range at sustained high power.
+- **Missing at scale**: Long-pulse, high-reliability gyrotron operation in a neutron environment. Cost reduction pathway from current ~$1M/MW gyrotron costs to commercially competitive levels.
 
 ---
 
 ## Section 4: Key Materials and Supply Chain Considerations
 
-**REBCO HTS Tape**
+**HTS REBCO Tape**
 
-The Fusion Hub spotlight includes a striking data point: "$50 million in REBCO tape alone for WHAM++" — Realta's proposed scientific breakeven device, an intermediate step between WHAM and Anvil:
+REBCO is the most immediate supply chain constraint. Realta's WHAM required $50M in REBCO tape from CFS for its two end-mirror magnets. A commercial Hammir plant with ~50 meters of center cell solenoids plus two end-mirror coils would require substantially more — the end-mirrors are the field-intensive components while the center-cell solenoids operate at lower field (a stated cost advantage), but the total tape length could run to hundreds or thousands of km depending on center-cell field strength design. Global REBCO production capacity is currently on the order of thousands of km/year and is ramping, with key manufacturers including Shanghai Superconductor Technology, Faraday Factory Japan, and CFS. Current tape prices ($30–100/kA-m) must approach $10/kA-m for commercial viability, requiring one to two orders of magnitude scale-up in production [01-hts-compact-tokamak analysis, §Materials].
 
 > "$50 million in REBCO tape alone for WHAM++"
 > — realta-fusion-hub-spotlight.md, §Magnet Specifications
 
-This is the only published cost proxy in the Realta source set. WHAM++ is a pre-commercial, scientific-scale device. If the tape cost alone is $50M for that machine, the REBCO requirement for Hammir — which must have high-field end-plug magnets (17+ T) at commercial scale plus the center-cell solenoid array — could represent hundreds of millions of dollars. The same global supply constraints apply here as for tokamak-class devices: current global REBCO production is thousands of kilometers per year, while even a single ARC-class reactor requires >5,000 km of tape (01-hts-compact-tokamak handwritten analysis §Key Materials). Realta's axisymmetric solenoid geometry is mechanically simpler to wind than 3D tokamak TF coils, which may reduce waste and winding complexity — but the fundamental REBCO quantity required is governed by the stored magnetic energy, which scales with the mirror field strength and plasma volume.
-
-The center-cell solenoid magnets operate at lower field than end-plug magnets (~1–5 T vs. 17+ T) and can potentially use less REBCO per unit length — but the total center-cell length is 50+ meters, and the accumulated tape requirement may dominate the weaker-field sections. No Hammir-specific tape quantity has been published. [1]
+The mirror geometry's axisymmetric solenoid coils are simpler to wind than the 3D saddle coils required for stellarators or the shaped D-coils of a tokamak. This is a genuine manufacturing advantage — lower fabrication cost per unit tape length — but does not reduce the total tape quantity required, only the manufacturing complexity per coil.
 
 **Tritium**
 
-Standard D-T startup constraint. The global tritium inventory is approximately 25–30 kg, primarily from CANDU heavy-water reactor operation, decaying at 5.5% per year. Startup inventory for a D-T fusion plant is typically ~1 kg. At current market rates (~$35,000/g cited in 01-hts-compact-tokamak handwritten analysis §Key Materials), the startup tritium cost is ~$35M per plant — not the binding capital constraint, but a real sequencing issue as CANDU reactors age. The Hammir pilot plant must demonstrate tritium self-sufficiency (TBR > 1) before commercial scale-up is feasible. The blanket type for Realta (unspecified Li variety) will determine the specific Li-6 enrichment requirement and tritium extraction process — these are standard D-T supply chain issues shared with all D-T concepts. [2]
+The global tritium inventory is ~25–30 kg, produced primarily as a byproduct of CANDU heavy-water reactors, with market prices above $35,000/g. A Hammir startup inventory requirement has not been published by Realta, but is likely on the order of 1 kg (consistent with tokamak startup estimates). The tritium supply constraint binds the entire D-T fusion fleet, and Realta is no exception. The lithium blanket must achieve TBR > 1 to be self-sufficient, and demonstrated TBR > 1 at fusion-relevant 14 MeV neutron fluences does not exist for any blanket concept. Shared supply chain context is discussed in Section 7.
 
-**Lithium (Li-6 Enrichment)**
+**Lithium-6 Enrichment**
 
-The blanket will require lithium enriched in Li-6 for effective tritium breeding. Natural lithium is 7.4% Li-6; blanket designs typically target 30–90% enrichment depending on design and TBR requirements. Li-6 enrichment is a mature but geographically concentrated industrial process — Russia and China currently dominate production, and the mercury-based isotope separation process used historically is banned in most jurisdictions. A Western enrichment restart would require capital investment. The specific Li-6 requirement for Realta depends on the unspecified blanket type and TBR target. This is a shared supply chain item with all D-T concepts, flagged identically in the tokamak analyses. [3]
+The tritium-producing nuclear reaction requires Li-6, which is the minority isotope in natural lithium (~7.6%). Enrichment to 90%+ Li-6 is currently dominated by Russian and Chinese suppliers using mercury-based processes banned in the West. Developing Western enrichment capacity is a fleet-level constraint shared with all D-T fusion concepts [01-hts-compact-tokamak analysis, §Materials]. The MARS study used LiPb breeder with natural Li enrichment assumptions — modern TBR analysis typically requires higher Li-6 enrichment.
 
-**NBI Components and Gyrotrons**
+**Gyrotrons for ECH**
 
-NBI systems and ECH gyrotrons are established industrial products, but high-power CW versions at Hammir scale remain at the upper end of the commercial envelope. The ITER NBI program provides the most relevant precedent for large-scale NBI procurement. For Hammir, the NBI requirements are unusual: beams must be injected into the end-plug regions at specific angles to create the sloshing ion distribution for DCLC stabilization, requiring custom geometry. The 110 GHz gyrotrons used on WHAM are commercially available but the multi-megawatt CW versions needed for Hammir are at the frontier of current industrial capability. These are not blocking supply chain constraints but add cost and lead time to any plant procurement plan. [4]
+Continuous-wave gyrotron systems at 110 GHz for commercial Hammir heating represent a significant capital and operating cost item. Current commercial gyrotrons cost roughly $1M/MW, and sustained operation (unlike tokamak pulsed heating) means higher total cycle loading. The 40–100 MW input power range implied by the two model estimates means $40–100M in gyrotrons alone. Gyrotron technology is mature but high wall-plug efficiency (>50%) at sustained full power is still an active development area.
 
-**No Pulsed Power or Laser Components**
+**NBI System Components**
 
-Unlike MagLIF (which requires capacitor banks at $5/J current prices, with a requirement to reach $0.50/J for viability) or laser IFE (which requires multi-kJ laser systems), the magnetic mirror has no high-energy pulsed driver requirement. The capital cost structure is dominated by HTS magnets, heating systems, and blanket — not pulsed power. This is a supply chain advantage relative to IFE and MIF concepts, though the REBCO requirement remains challenging. [5]
+Modern NBI systems for tokamak and mirror applications are commercially available from INL, Budker Institute, QST (Japan), and ITER suppliers. NBI capital costs scale with beam power and energy. No Realta-specific NBI cost data has been published. NBI neutralizers and ion sources require periodic replacement, contributing to operating costs.
 
----
-[1] realta-fusion-hub-spotlight.md §Magnet Specifications; 01-hts-compact-tokamak handwritten §Key Materials (REBCO supply chain characterization reused).
-[2] 01-hts-compact-tokamak handwritten §Key Materials (tritium supply chain characterization); fusion-report-interview-realta.md §Energy Conversion (breeding confirmed).
-[3] 01-hts-compact-tokamak handwritten §Key Materials (Li-6 enrichment context).
-[4] wham-experiment-details.md §Heating Methods; dossier.md §Driver Technology.
-[5] 07-maglif handwritten §Key Materials (capacitor cost baseline for contrast).
+**First Wall and Structural Materials**
+
+The D-T first wall requires materials resistant to 14 MeV neutron damage at high fluence. Tungsten (for plasma-facing surfaces) and reduced-activation ferritic/martensitic steels (RAFM, such as Eurofer-97 or F82H) are the leading candidates, shared with all D-T fusion concepts. Beryllium, used as a neutron multiplier in some blanket designs, is a critical material with a limited Western supply chain (Materion Corp, ~300 tonnes/year). The choice of blanket type will determine whether beryllium or other multipliers are required.
 
 ---
 
 ## Section 5: LCOE-Relevant Parameters
 
-### Available Parameters
+**Available Parameters:**
 
 | Parameter | Value/Range | Source | Confidence | Notes |
 |-----------|-------------|--------|------------|-------|
-| Net electric output (Hammir pilot) | >50 MWe | aps-dpp-2025-sutherland.md §Hammir Facility | high | Pilot plant target; commercial scale not disclosed |
-| Electric gain (Hammir) | Qe > 1 | aps-dpp-2025-sutherland.md §Hammir Facility | high | Minimum pilot plant target |
-| Plasma Q (50m center cell) | >5 | arxiv-2411-06644-confinement-predictions.md §Hammir Design | high | Simulation result, not yet experimentally validated |
-| Plasma Q (longer cell variants) | >10 | arxiv-2411-06644-confinement-predictions.md §Hammir Design; fusion-report-interview-realta.md §Performance Scaling | medium | Qualitative projection from center cell length scaling |
-| Theoretical output (Q=20 variant) | 500 MW (interpreted as thermal fusion power; source does not specify unit) | fusion-report-interview-realta.md §Performance Scaling | low | Theoretical bound only; design not specified |
-| Center-cell thermal power scaling | ~7 MWt/m | fusion-report-interview-realta.md §Performance Scaling | medium | "Input power remains constant despite increased output"; scaling relation, not verified experimentally |
-| Continuous operation target | ≥3 hours | aps-dpp-2025-sutherland.md §Hammir Facility | high | National Academies pilot plant standard; not a physical limit on operation duration |
-| Operation mode | Steady-state | dossier.md §Operation Mode; schema definition | high | Inherent to mirror geometry; no inductive pulse, no disruptions |
-| D-T neutron energy fraction | 80% | realta-fusion-hub-spotlight.md §Fuel & Reaction | high | Physics constant for D-T: 14.1 MeV neutron vs. 3.5 MeV alpha |
-| Historical DEC efficiency (MARS) | ~54% | dossier.md §Key Sources (MARS study, Logan 1983) | low | Gridless direct converters, copper-magnet design; Realta's venetian-blind DEC uncharacterized |
-| REBCO tape cost proxy (WHAM++) | ~$50M (tape only) | realta-fusion-hub-spotlight.md §Magnet Specifications | medium | Unusual data point; applies to intermediate pre-commercial device, not Hammir |
-| WHAM ARPA-E grant | $10M | wham-experiment-details.md §Funding & Partners | high | Early validation experiment only; not a plant cost proxy |
-| Anvil funding context | $9.5M SVB facility (Feb 2026) | realta-svb-funding-feb2026.md §Key Details | high | Growth capital; purpose: derisking physics toward commercial delivery |
-| Magnet field strength (WHAM, operational) | 17 T in-bore; >20 T on-conductor | wham-experiment-details.md §Magnet System | high | CFS-built REBCO magnets; world record for magnetically confined plasmas |
-| Mirror ratio (HTS-enabled) | 10+ | realta-fusion-hub-spotlight.md §Magnet Specifications | high | Versus historical maximum of ~2 with copper magnets |
-| Historical plant efficiency (MARS) | ~36% overall | dossier.md §Key Sources (MARS study, OSTI 5981974) | low | 1983 copper-magnet design; not directly applicable to Realta's HTS approach |
-| Historical TBR (MARS) | 1.15 | dossier.md §Key Sources (MARS study) | low | LiPb blanket; illustrative of achievable TBR in linear geometry |
-| Hammir center cell length (design point) | 50 m | arxiv-2411-06644-confinement-predictions.md §Hammir Design | high | Minimum Q > 5 design point |
-| Tritium breeding source | Li blanket | fusion-report-interview-realta.md §Energy Conversion | medium | Specific type (FLiBe, LiPb, liquid Li) undisclosed |
+| Net electrical output (target) | >50 MWe | aps-dpp-2025-sutherland.md §Hammir Facility | high | Hammir pilot plant target; commercial plant likely larger |
+| Electrical gain Qe | >1 (target) | aps-dpp-2025-sutherland.md §Hammir Facility | medium | Target, not yet demonstrated; commercial plant needs Qe >> 1 |
+| Q plasma (50m center cell) | >5 | arxiv-2411-06644-confinement-predictions.md §Hammir Design | medium | Modeled, not demonstrated; Q>10 for longer cells |
+| Q plasma (longer center cell) | >10 | arxiv-2411-06644-confinement-predictions.md §Hammir Design | low | Projection; no length specified |
+| Center cell fusion power scaling | ~7 MW/m | fusion-report-interview-realta.md §Performance Scaling | medium | Physics claim; cost per meter unquantified |
+| Continuous operation duration | 3+ hours (target) | aps-dpp-2025-sutherland.md §Hammir Facility | medium | Milestone demonstration, not commercial steady-state |
+| DEC efficiency (historical analogue) | ~54% | [analogue: MARS study, Logan 1983 — MARS achieved ~54% with gridless direct converters] | low | Not Realta-specific; venetian blind geometry differs from gridless |
+| Charged particle fraction (D-T physics) | ~20% | [inferred: D-T produces 80% neutron energy, 20% alpha energy by physics] | high | Fixed by D-T nuclear physics; alphas captured by DEC |
+| Thermal efficiency (MARS analogue) | ~36% | [analogue: MARS study §Plant Performance — "36% plant efficiency"] | low | MARS used steam Rankine; sCO2 could reach 40-45% |
+| Magnet tape cost (WHAM++ signal) | $50M (REBCO only) | realta-fusion-hub-spotlight.md §Magnet Specifications | medium | WHAM++ sub-scale; commercial Hammir tape cost not published |
+| LCOE range (parametric models) | 80–135 $/MWh | [analogue: 11-magnetic-mirror-comparison.md §Quantitative Model Comparison — two model variants] | low | Parametric only; 69% spread reflects key parameter disagreements |
+| Overnight capital (parametric) | 5,862–9,620 $/kW | [analogue: 11-magnetic-mirror-comparison.md §Summary of Results] | low | Same caveat as LCOE; not a Realta estimate |
+| LCOE scaling saturation (historical) | ~600 MWe (1983$) | [analogue: MARS/MINIMARS studies — "LCOE saturates around 600 MWe" per handwritten exemplar §Data Availability] | low | 1983-technology MARS finding; likely different for HTS design |
+| Historical LCOE projection | ~7 ¢/kWh (1983$) | [analogue: MARS/MINIMARS — stated in handwritten exemplar §Data Availability] | low | 40-year-old estimate with fundamentally different magnet technology |
+| Input heating power (WHAM) | ~1 MW ECH class | [inferred from wham-experiment-details.md §Heating Methods — 110 GHz gyrotron listed] | low | WHAM is sub-commercial; Hammir power undisclosed |
+| Funding secured to date | $9.5M (SVB, Feb 2026) | realta-svb-funding-feb2026.md §Key Details | high | Growth capital only; total funding not published |
 
-### Missing Parameters
+**Missing Parameters:**
 
 | Parameter | Gap Type | Criticality | Notes |
 |-----------|----------|-------------|-------|
-| Total plant capital cost (Hammir or commercial) | proprietary | blocking | No cost estimate published at any level |
-| LCOE estimate or target | truly-unknown | blocking | No company or independent estimate exists |
-| Thermal efficiency / power conversion cycle | proprietary | blocking | Thermal cycle type (steam, sCO₂) undisclosed; needed for LCOE closure |
-| NBI + ECH auxiliary power for Hammir | proprietary | blocking | Determines recirculating power fraction and Qe from plasma Q |
-| Capacity factor target | truly-unknown | important | No maintenance schedule or availability model published |
-| DEC efficiency (Realta venetian-blind design) | truly-unknown | important | Only MARS historical data (~54%) available; Realta's design uncharacterized |
-| Blanket TBR target and design | proprietary | important | Li breeding confirmed but type, TBR target, and engineering undisclosed |
-| First-wall heat flux and replacement schedule | truly-unknown | important | Linear geometry creates different wall loading profile; no published data |
-| Commercial plant net electric target | truly-unknown | blocking | Only pilot (>50 MWe) disclosed; commercial scale undefined |
-| Hammir capital cost | proprietary | blocking | Expected in 2026 pre-conceptual design paper |
-| Hammir REBCO tape quantity | derivable | important | [derivable: end-plug magnets ≈ WHAM++ scale (>$50M tape); center-cell solenoids at lower field — total likely $100–500M range by analogy; extreme uncertainty without published coil specifications] |
-| DEC capital cost | truly-unknown | important | No precedent for venetian-blind DEC at this scale |
-| Center-cell solenoid magnet cost per meter | truly-unknown | important | Key parameter for scaling economics; weaker field than end plugs but covers 50+ m |
+| Total NBI + ECH input power for Hammir | proprietary | blocking | Determines recirculating power fraction and Qe; hand-written model used 40 MW, automated used 100 MW — 2.5× spread |
+| Recirculating power fraction for Hammir | proprietary | blocking | Directly determines whether Qe > 1 is achievable at target fusion power |
+| Center cell length for commercial Hammir | not-yet-sourced | blocking | 50m for pilot (Q>5); commercial length for Q>>5 and Pe >> 50 MWe unknown |
+| Blanket type and TBR | proprietary | blocking | FLiBe vs. LiPb vs. other drives thermal efficiency, TBR, and blanket cost |
+| Thermal cycle type (steam vs. sCO₂) | proprietary | important | Efficiency range 36–45% depending on choice; Realta has not disclosed |
+| Hammir fusion power | derivable | blocking | ~7 MW/m × center cell length, but commercial length unknown |
+| End-plug input power fraction | truly-unknown | blocking | Fraction of total input power consumed by end-plug heating vs. center-cell heating |
+| Capital cost breakdown by subsystem | truly-unknown | important | No Hammir cost estimate exists for any subsystem |
+| Capacity factor target | proprietary | important | Realta implies continuous operation but no availability target published |
+| DEC electrode lifetime | truly-unknown | important | No fusion-condition DEC survivability data; directly affects plant availability and replacement cost |
+| End divertor heat load | truly-unknown | important | Not analyzed in any Realta publication |
+| O&M cost drivers | truly-unknown | nice-to-have | Module replacement strategy (hot-cell vs. in-situ), component replacement schedules |
 
 ---
 
@@ -276,56 +248,108 @@ Unlike MagLIF (which requires capacitor banks at $5/J current prices, with a req
 
 | # | Gap Description | Section | Gap Type | Criticality | Source Recommendation |
 |---|-----------------|---------|----------|-------------|----------------------|
-| 1 | Hammir pre-conceptual design paper: capital cost, detailed plant parameters | S1, S5 | not-yet-sourced | blocking | Realta 2026 paper (expected); monitor arXiv and APS DPP 2026 |
-| 2 | Thermal efficiency and power conversion cycle type (steam vs. sCO₂) | S2, S5 | proprietary | blocking | Realta disclosure or MARS-analogous assumption with stated basis |
-| 3 | NBI + ECH auxiliary power for Hammir (→ recirculating power, Qe characterization) | S2, S5 | proprietary | blocking | Realta technical disclosure; arxiv paper may include in future revision |
-| 4 | Total plant capital cost at any level | S5 | proprietary | blocking | 2026 pre-conceptual design; no near-term public source expected |
-| 5 | DEC efficiency for Realta venetian-blind design | S2, S3, S5 | truly-unknown | important | Anvil will generate relevant data; no published estimate |
-| 6 | Tritium blanket type and TBR target | S3, S4, S5 | proprietary | important | 2026 pre-conceptual design paper; MARS LiPb (TBR=1.15) as analogue with caveat |
-| 7 | End-plug confinement physics validation (Anvil results) | S2, S3 | truly-unknown | blocking | Anvil experimental results (~2028) |
-| 8 | Center-cell solenoid cost per meter | S2, S5 | truly-unknown | important | No published data; derivable from REBCO requirements once coil specs known |
-| 9 | Capacity factor target and maintenance philosophy | S5 | truly-unknown | important | Open geometry may simplify maintenance; no published model |
-| 10 | DCLC stabilization validation at Hammir plasma parameters | S2, S3 | truly-unknown | important | Anvil or dedicated experiments; critical for Q projection validity |
-| 11 | Commercial plant size and net electric target | S5 | truly-unknown | blocking | Only Hammir pilot (>50 MWe) published; CoSMo modularity implies multiple units |
-| 12 | First-wall materials and replacement schedule in linear geometry | S3, S5 | truly-unknown | important | No published data; linear geometry simplifies access but wall loading differs |
+| 1 | NBI + ECH input power for commercial Hammir | S2, S5 | proprietary | blocking | Hammir pre-conceptual design paper (Realta, expected 2026) |
+| 2 | Recirculating power fraction (determines Qe > 1 viability) | S2, S5 | proprietary | blocking | Same as above |
+| 3 | Center cell length for commercial Hammir (post-pilot) | S5 | proprietary | blocking | Realta 2026 design paper; follow-on arXiv scaling study |
+| 4 | End-plug confinement validation at Q > 5 conditions | S2, S3 | truly-unknown | blocking | Anvil experiment results (~2028–2030) |
+| 5 | Blanket type and TBR for Realta's design | S2, S3, S5 | proprietary | blocking | Hammir design paper (2026); MARS LiPb as interim analogue |
+| 6 | Capital cost breakdown for Hammir (magnets, blanket, heating, building) | S5 | truly-unknown | important | No source likely until post-Anvil study; MARS CAS as rough analogue |
+| 7 | Thermal cycle selection (steam Rankine vs. sCO₂) | S2, S5 | proprietary | important | Realta communications or 2026 design paper |
+| 8 | DEC electrode lifetime in fusion conditions | S3 | truly-unknown | important | No known published data; new experiment required |
+| 9 | End divertor heat flux and handling strategy | S3 | truly-unknown | important | Not addressed in any Realta or recent mirror publication |
+| 10 | DCLC stabilization effectiveness at commercial density/temperature | S2, S3 | truly-unknown | important | Anvil + Hammir experimental results; ongoing simulation work (arxiv paper) |
+| 11 | Center cell module replacement methodology in a radioactive environment | S3 | truly-unknown | important | Not addressed by Realta; hot-cell operations for linear machines a known practical challenge |
+| 12 | Capacity factor and planned maintenance intervals | S5 | proprietary | important | Realta design paper; no current source |
+| 13 | LCOE scaling behavior vs. plant size (modern HTS equivalent of MARS saturation finding) | S2, S5 | derivable | nice-to-have | Requires costing the center cell per-meter once blanket and magnet specs are known |
+| 14 | NBI wall-plug efficiency at commercial beam power | S3, S4 | not-yet-sourced | nice-to-have | NBI vendor specifications for Hammir-class beam power |
 
 ---
 
 ## Section 7: Cross-Concept Notes
 
-Four approved prior analyses were consulted: 01-hts-compact-tokamak (handwritten), 07-maglif (handwritten), 08-frc-w-direct-conversion, and 21-spherical-tokamak-hts.
+Cross-referencing approved prior analyses: **01-HTS Compact Tokamak (CFS)** and **08-FRC w/ Direct Conversion (Helion)**.
 
-**Shared with 01-hts-compact-tokamak and 21-spherical-tokamak-hts — REBCO supply chain:**
-The characterization of the global REBCO supply chain (thousands of km/year current capacity, $30–100/kA-m current price, requirement to scale by 1–2 orders of magnitude for commercial fusion) from the tokamak analyses applies directly here. The axisymmetric mirror solenoid geometry is mechanically simpler to wind than TF coils, which may reduce winding waste and manufacturing complexity — but the tape quantity requirement is governed by stored energy and current density, not geometry complexity. The end-plug magnets (17+ T) make equivalent demands on REBCO performance to SPARC-class TF coils.
+### Shared with 01-HTS Compact Tokamak (CFS)
 
-**Shared with 01-hts-compact-tokamak — Tritium supply chain:**
-The tritium constraints (global ~25–30 kg inventory, $35,000/g market rate, CANDU-produced, 5.5% per year decay, ~1 kg startup requirement) are identical to those for all D-T concepts. The breeding blanket TRL discussion in the tokamak analysis (integrated blanket TRL 3–4) is directly analogous for the lithium blanket layer — the main difference is geometry (cylindrical linear vs. toroidal), which simplifies the blanket in some respects (more uniform neutron flux distribution along the center cell) and complicates it in others (open ends reduce total solid angle for breeding).
+**REBCO supply chain** is the most directly shared constraint. Both concepts require large quantities of REBCO tape from the same thin global supply chain (CFS, Shanghai Superconductor, Faraday Factory Japan). The Realta-CFS relationship is particularly close: CFS manufactured the WHAM magnets and has a direct supplier relationship with Realta. This creates both a benefit (proven supplier, compatible magnet technology) and a risk (single-supplier concentration, competing demand from SPARC and commercial ARC). The $30–100/kA-m current tape cost and the ~$10/kA-m commercial target are shared assumptions [01-hts-compact-tokamak analysis §Section 2].
 
-**Shared with 08-frc-w-direct-conversion — Direct energy conversion:**
-Both Helion (inductive FRC compression) and Realta (venetian blinds for escaping ions) pursue direct energy conversion as a core economic differentiator. The challenges diverge significantly in mechanism: Helion recovers magnetic energy from collapsing plasma inductance at ~1 Hz, while Realta's DEC operates continuously on a directed ion beam. The Helion analysis notes that the >95% round-trip efficiency claim was demonstrated at subscale with modern IGBTs; Realta's venetian-blind DEC has no analogous demonstration. The common thread is that DEC at plant scale — any mechanism — is TRL 2–3 and represents a significant capital and engineering uncertainty. The FRC analysis caution that DEC is "unvalidated at plant scale" applies here with even more force: no Realta DEC prototype exists, while Helion at least has subscale round-trip efficiency demonstrations.
+**Tritium supply and breeding** represent shared D-T challenges. The global 25–30 kg tritium inventory, the ~$35,000/g market price, the Li-6 enrichment geographic constraint (Russia/China), and the requirement for TBR > 1 are identical across all D-T fusion concepts [01-hts-compact-tokamak analysis §Section 4]. The specific blanket type matters for Realta (unspecified) vs. ARC (FLiBe confirmed), which drives different TBR and thermal efficiency assumptions, but the supply chain and regulatory framework are shared.
 
-**Diverges from all tokamak analyses — linear geometry advantages:**
-The magnetic mirror's open linear geometry creates a set of advantages absent from closed-geometry tokamaks: (a) no disruptions (no toroidal current, no runaway electron risk, no disruption-induced loads on vessel); (b) direct physical access for maintenance along the center cell without remote-handling robotics for every maintenance action; (c) modular scaling by adding center-cell length rather than redesigning the whole machine; (d) no need for a current-drive system to sustain plasma current (the mirror is current-free). These advantages are real but none of them translate directly into a published cost advantage — they are potential cost saving opportunities whose magnitude is unknown without a plant study.
+**Divergence — geometry and scaling economics**: The tokamak requires a specific minimum plasma volume (major radius × minor radius relationship) to achieve ignition, creating a minimum economic size that tends toward large, expensive plants. The magnetic mirror's linear center cell claims to avoid this constraint — each additional meter adds fusion power at roughly constant end-plug cost — potentially enabling smaller, cheaper plants. Whether this advantage materializes depends on the uncosted center cell cost structure. The ARC-class tokamak targets ~500–800 MWt; Hammir targets 50+ MWe from a pilot. The scaling trajectories are fundamentally different and cannot be directly compared without the missing cost-per-meter data.
 
-**Diverges from all tokamak analyses — end-loss is the dominant physics challenge:**
-All tokamak and stellarator analyses in this project deal with closed-flux-surface confinement, where the physics challenge is managing heat and particle exhaust through the divertor. The mirror's challenge is fundamentally different: particles escape along field lines through the open ends. The tandem mirror configuration with HTS end plugs addresses this, but it has not been demonstrated in the tandem configuration. There is no tokamak analogue for the Anvil/Hammir step of validating end-plug confinement — this is a concept-specific physics risk with no parallel in the tokamak development path.
+**Divergence — disruption risk**: Tokamaks carry disruption risk (sudden loss of plasma current driving large electromagnetic loads on structure). Magnetic mirrors have no plasma current and therefore no disruptions — a structural safety advantage that simplifies vacuum vessel design and potentially reduces maintenance costs. This advantage is not quantified in any available source.
+
+### Shared with 08-FRC w/ Direct Conversion (Helion)
+
+**Direct energy conversion** is the key shared feature. Both concepts exploit DEC to capture kinetic energy of charged particles that would otherwise be deposited as heat. However, the physics and economics diverge sharply: Helion pursues D-He3 fuel because ~40% of D-He3 fusion energy is in charged particles, making DEC highly impactful (potentially 35–40% efficient plant overall vs. a thermal-only alternative). For Realta's D-T fuel, only ~20% of fusion energy is in charged particles, limiting DEC's thermodynamic contribution to ~11% of plant output. The Realta DEC is a worthwhile addition; for Helion it is a design-defining requirement [08-frc-w-direct-conversion analysis §Section 2].
+
+**Linear geometry** is a second shared feature. Both concepts avoid the toroidal geometry of tokamaks and stellarators. Helion's FRC is quasi-toroidal during the compressed burn phase but the machine itself is linear and bilaterally symmetric. Realta's mirror is inherently linear and open-ended. Both benefit from simpler magnet geometry relative to a tokamak, but the similarity ends there: Helion is pulsed with magnetic compression and DEC recovery, while Realta is steady-state with continuous plasma heating and steady thermal output. The maintenance challenges are also different — Helion must maintain capacitor bank reliability over 10⁹ shots; Realta must maintain continuous NBI/ECH operation and manage steady-state neutron activation in a linear machine.
+
+**Divergence — fuel cycle**: Helion's D-He3 strategy eliminates tritium breeding (no Li blanket required) but introduces a He3 supply bootstrapping problem that has no analogue in Realta's approach. Realta's D-T fuel cycle is more technically mature but inherits all the tritium supply constraints. From a TEA perspective, Realta's fuel cycle is more analogous to the tokamak than to Helion.
 
 ---
 
 ## Section 8: Sources
 
-1. **arxiv-2411-06644-confinement-predictions.md** — Realta Fusion / UW-Madison team (2024), "Confinement performance predictions for a high field axisymmetric tandem mirror," arXiv:2411.06644. Primary quantitative physics basis: Q > 5 at 50m center cell, POPCON technique, ML optimization, DCLC stabilization requirement. Phase 1a source: `iter-01/sources/arxiv-2411-06644-confinement-predictions.md`.
+Listed in order of analytical importance to this analysis.
 
-2. **aps-dpp-2025-sutherland.md** — Derek A. Sutherland (Realta Fusion), APS DPP 2025, Session: DOE Milestone Awardee Physics Basis I, November 18, 2025. Primary source for development roadmap: WHAM → Anvil → Hammir; Hammir targets (Qe > 1, >50 MWe, ≥3 hours). Phase 1a source: `iter-01/sources/aps-dpp-2025-sutherland.md`.
+**1. arXiv:2411.06644 — Confinement predictions for Hammir pilot plant**
+- Authors: Realta Fusion team (specific authors not given in extracted source)
+- Year: 2024
+- What it contributes: The primary quantitative basis for Q > 5 at 50-meter center cell; notes Q > 10 for longer configurations; identifies DCLC and trapped-particle-mode stabilization requirements; discusses machine learning optimization of design parameters
+- Phase 1a source: `iter-01/sources/arxiv-2411-06644-confinement-predictions.md`
 
-3. **realta-fusion-hub-spotlight.md** — Fusion Hub, "Startup Spotlight: Realta Fusion," undated (retrieved 2026). Key technical overview: DT fuel, NBI + ECH, REBCO HTS magnets, venetian-blind DEC, plasma stabilization, device timeline. Notable: "$50M in REBCO tape alone for WHAM++." Phase 1a source: `iter-01/sources/realta-fusion-hub-spotlight.md`.
+**2. APS DPP 2025 — Sutherland talk on Hammir pilot plant**
+- Authors: Sutherland (Realta Fusion)
+- Year: 2025
+- What it contributes: The only public source for Hammir quantitative performance targets (Qe > 1, Pe > 50 MWe, 3+ hours continuous); Anvil as dedicated end-plug demonstrator; WHAM experimental status
+- Phase 1a source: `iter-01/sources/aps-dpp-2025-sutherland.md`
 
-4. **fusion-report-interview-realta.md** — The Fusion Report, "Interview with Realta Fusion," August 2025. Key details: tritium breeding from lithium confirmed, DEC for charged particles, ~7 MW/m center-cell scaling, Q > 10 possible with longer cell, theoretical 500 MW at Q=20. Phase 1a source: `iter-02/sources/fusion-report-interview-realta.md`.
+**3. The Fusion Report — Interview with Realta Fusion**
+- Year: ~2025
+- What it contributes: The richest available source for system architecture; confirms D-T fuel, lithium-based tritium breeding, dual energy conversion pathway, ~7 MW/m scaling law, constant-input-power scaling thesis, DEC lowers required Q for net electricity
+- Phase 1a source: `iter-02/sources/fusion-report-interview-realta.md`
 
-5. **wham-experiment-details.md** — WHAM project website (wham.physics.wisc.edu; wippl.wisc.edu). REBCO HTS magnets (17 T, CFS-built), ECH + NBI + HHFW heating, first plasma July 15, 2024, $10M ARPA-E grant, BEAT conceptual design goal. Phase 1a source: `iter-01/sources/wham-experiment-details.md`.
+**4. Fusion Hub — Startup Spotlight: Realta Fusion**
+- Year: ~2024–2025
+- What it contributes: NBI + ECH + HHFW heating confirmation; venetian blind DEC description; REBCO magnets at mirror ratio 10+; $50M REBCO tape cost for WHAM++; DCLC and Alfvén instability modes requiring stabilization; industrial heat as primary near-term application
+- Phase 1a source: `iter-01/sources/realta-fusion-hub-spotlight.md`
 
-6. **realta-svb-funding-feb2026.md** — PR Newswire, February 17, 2026. $9.5M SVB growth capital facility; CoSMo branding; target markets (industrial heat, data centers, chemical processing, heavy industry). No new technical parameters. Phase 1a source: `iter-02/sources/realta-svb-funding-feb2026.md`.
+**5. WHAM Experiment Details (wham.physics.wisc.edu)**
+- Year: 2024
+- What it contributes: WHAM operational parameters (17 T in-bore, >20 T on conductor, CFS-built magnets); first plasma July 15, 2024; ECH/NBI/HHFW heating system details; target plasma parameters (1 keV electron temperature, 20 keV average ion energy); BEAT conceptual follow-on target ($100M device)
+- Phase 1a source: `iter-01/sources/wham-experiment-details.md`
 
-7. **MARS Study** (Logan et al., 1983) — "The Mirror Advanced Reactor Study (MARS)," LLNL / DOE, OSTI 5981974 and Semantic Scholar. Historical tandem mirror power plant study: LiPb blanket (TBR = 1.15), gridless direct converters (~54% efficiency), ~36% plant efficiency, 1200 MWe design. Not directly in Phase 1a source documents but cited in dossier.md §Key Sources as a historical reference. Applies as a lower-bound analogue only — copper magnets, lower mirror ratio, 1983-era engineering.
+**6. Realta SVB Funding Feb 2026 (PR Newswire)**
+- Year: February 2026
+- What it contributes: $9.5M SVB growth capital facility; confirms CoSMo modular concept; identifies target markets (industrial heat, data centers, chemical processing, metal recycling, remote mining, heavy industry); physics derisking as stated near-term purpose
+- Phase 1a source: `iter-02/sources/realta-svb-funding-feb2026.md`
 
-8. **01-hts-compact-tokamak handwritten analysis** — Fusion TEA project, handwritten exemplar for HTS compact tokamak. Tritium supply chain characterization ($35,000/g, 25–30 kg global inventory) and REBCO supply chain characterization ($30–100/kA-m, thousands km/yr production) reused for Section 4 with adaptation to mirror geometry context.
+**7. MARS Study (Logan et al., 1983)**
+- Logan, B.G. et al., "The Mirror Advanced Reactor Study (MARS)," Lawrence Livermore National Laboratory, 1983
+- What it contributes: The most detailed magnetic mirror plant study available; LiPb blanket with TBR 1.15; ~36% plant efficiency; gridless direct converters at ~54% efficiency; LCOE ~7 ¢/kWh (1983$); LCOE saturation ~600 MWe; cost structure analogue for center cell, building, and blanket
+- Location: OSTI/Semantic Scholar (not ingested as Phase 1a source; used as historical analogue via handwritten exemplar)
+
+**8. MINIMARS Conceptual Design (Lee, 1985)**
+- Lee, J.D., "MINIMARS conceptual design," UCID-20559, Lawrence Livermore National Laboratory, 1985
+- What it contributes: Complementary to MARS; confirms LCOE saturation result and provides alternative design point; relevant to understanding historical mirror economic performance
+- Location: LLNL OSTI (not ingested as Phase 1a source; referenced via handwritten exemplar)
+
+**9. Phase 1a Dossier — Magnetic Mirror (D-T)**
+- Iteration 2, overall confidence: medium-high
+- What it contributes: Synthesized column values with citations; identifies remaining gaps (blanket type, plasma state ambiguity at Q > 10); provides key source inventory
+- Path: `exploration/phase_1a/research/11-magnetic-mirror/dossier.md`
+
+**10. Handwritten Exemplar and Comparison Report (Concept 11)**
+- What they contribute: Expert physics intuition on end-plug taxonomy (tandem, centrifugal, ponderomotive, non-axisymmetric); LCOE saturation insight; back-solve floor analysis (2.70 ¢/kWh best case); quantitative model parameter comparison; DEC survivability judgment; hot-cell operations as practical concern
+- Paths: `handwritten/11-magnetic-mirror.md`, `handwritten/11-magnetic-mirror-comparison.md`
+
+**11. Endrizzi et al. — Physics Basis for WHAM (Journal of Plasma Physics, 2023)**
+- Endrizzi, D., Anderson, J.K., Brown, M., et al., *Journal of Plasma Physics* 89(5), 2023
+- What it contributes: Foundational peer-reviewed physics basis for WHAM experiment; confinement physics validation
+- Location: Cambridge University Press (not ingested as Phase 1a source; referenced via handwritten exemplar)
+
+**12. Moir & Barr — Venetian Blind Direct Energy Converter (Nuclear Fusion, 1973)**
+- Moir, R.W. and Barr, W.L., *Nuclear Fusion* 13(1):35–45, 1973
+- What it contributes: Original DEC design reference; 50–65% efficiency range; TRL 5 basis
+- Location: IOP Publishing (not ingested; referenced via handwritten exemplar)

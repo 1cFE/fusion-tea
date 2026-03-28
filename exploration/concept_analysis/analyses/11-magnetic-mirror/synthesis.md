@@ -6,6 +6,8 @@ Type: synthesis
 Status: approved
 Created: 2026-03-22
 Approved-Date: 2026-03-22
+Stale: true
+Stale-Reason: analysis-rewritten-by-force
 ---
 
 # Synthesis: Magnetic Mirror (D-T) — Realta Fusion
