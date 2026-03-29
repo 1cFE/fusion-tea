@@ -2,14 +2,433 @@
 
 **Created:** 2026-03-28
 **Status:** Draft
-**Approach:** Jinja2 + Plotly.js (D3 escape hatch) + FastAPI (deferred, for sliders)
+**Approach:** Jinja2 + Plotly.js (D3 escape hatch) + FastAPI
 **Related:** `.project/concepts/concept-explorer.md` (vision), `.project/concepts/concept-analysis-ux-tool.md` (design space exploration)
 
 ---
 
-## 1. Architecture Overview
+## 1. Overview
 
-The Concept Explorer is a **static-first, progressively-enhanced** web tool for exploring fusion concept economics. It is built in three layers that are independently useful:
+The Concept Explorer is a **static-first, progressively-enhanced** web tool for exploring fusion concept economics. It extracts structured data from the concept analysis pipeline (cost models, sensitivities, narrative context), validates it through Pydantic models, and renders interactive visualizations — tornado charts, CAS breakdowns, parameter detail cards, and cross-concept comparison views. The primary serving mechanism is a FastAPI server; a build-only mode supports CI and archival.
+
+**Primary use cases:**
+
+- **Concept profiling** — View a single concept's identity, headline economics, sensitivity rankings, and CAS cost breakdown (US-1 through US-7)
+- **Sensitivity exploration** — Interact with tornado chart bars to see parameter metadata: source, range, confidence, modeling mechanism, category (US-4 through US-6)
+- **Cross-concept comparison** — Align shared parameters horizontally across concepts, show concept-unique parameters separately, compare CAS structures side-by-side (US-8 through US-11)
+- **Entry and navigation** — Browse all concepts (approved / in-progress), discover parameter threads across concepts (US-13, US-14)
+- **Interactive what-if** — Adjust parameter sliders and see LCOE update in real time via server computation (US-7)
+
+### Execution Modes
+
+| Mode | Command | What You Get |
+|------|---------|-------------|
+| **Server** (primary) | `uv run python server.py` → open `http://localhost:8421` | Full explorer: profiles, comparisons, tornado charts. Data via API. Sliders when implemented. |
+| **Build only** (CI/archival) | `uv run python build_explorer.py` | Regenerates HTML templates and extracts data to JSON. Required before first server run and after pipeline changes. |
+
+### File Layout
+
+```
+exploration/concept_explorer/
+├── build_explorer.py          # Build script: data/*.json + templates → dist/
+├── extract_explorer_data.py   # Data extraction: pipeline artifacts → JSON
+├── models.py                  # Pydantic data models (ConceptData, CostModelData, etc.)
+├── server.py                  # FastAPI server (primary serving mechanism)
+├── data/                      # Generated JSON (gitignored)
+│   ├── 01-hts-compact-tokamak.json
+│   ├── 04-laser-icf.json
+│   ├── ...
+│   └── manifest.json          # Index of all concepts with summary data
+├── templates/
+│   ├── base.html.j2           # Shared layout, head, nav, footer
+│   ├── index.html.j2          # Entry view: concept grid
+│   ├── concept.html.j2        # Single-concept profile
+│   └── compare.html.j2        # Multi-concept comparison
+├── static/
+│   ├── css/
+│   │   └── explorer.css       # Design system: colors, typography, layout
+│   ├── js/
+│   │   ├── tornado.js         # Tornado chart component (Plotly-based)
+│   │   ├── cas_breakdown.js   # CAS stacked bar component
+│   │   ├── parameter_card.js  # Detail card on hover/click
+│   │   ├── comparison.js      # Comparison alignment logic
+│   │   └── explorer_app.js    # Page-level orchestration, routing
+│   └── vendor/                # Vendored Plotly.js (avoid CDN dependency)
+│       └── plotly-basic.min.js
+└── dist/                      # Build output (gitignored)
+    ├── index.html
+    ├── concept/
+    │   ├── 01-hts-compact-tokamak.html
+    │   └── ...
+    ├── compare.html
+    └── static/                # Copied from above
+```
+
+---
+
+## 2. Data Model
+
+### 2.1 Pydantic Models (`exploration/concept_explorer/models.py`)
+
+These are the formal types. The extraction pipeline produces them; the server serves them; the build script serializes them to JSON for the frontend.
+
+```python
+from __future__ import annotations
+from enum import Enum
+from pydantic import BaseModel, Field
+
+
+# ── Enums ──
+
+class ConfinementFamily(str, Enum):
+    MFE = "MFE"
+    IFE = "IFE"
+    MIF = "MIF"
+    NON_STANDARD = "Non-Standard"
+
+class FuelType(str, Enum):
+    DT = "DT"
+    DHE3 = "DHE3"
+    PB11 = "PB11"
+
+class ConceptStatus(str, Enum):
+    APPROVED = "approved"
+    DRAFT = "draft"
+
+class ModelType(str, Enum):
+    COSTINGFE = "costingfe"
+    STANDALONE = "standalone"
+
+class ParameterCategory(str, Enum):
+    SHARED_BASELINE = "shared-baseline"
+    WELL_ESTABLISHED = "well-established"
+    KEY_INNOVATION = "key-innovation"
+    CONCEPT_UNIQUE = "concept-unique"
+    HIGH_RISK = "high-risk"
+    UNCLASSIFIED = "unclassified"
+
+class Confidence(str, Enum):
+    HIGH = "high"
+    MEDIUM = "medium"
+    LOW = "low"
+    UNKNOWN = "unknown"
+
+class DataAvailability(str, Enum):
+    RICH = "Rich"
+    MODERATE = "Moderate"
+    LIMITED = "Limited"
+    OPAQUE = "Opaque"
+
+class RiskSeverity(str, Enum):
+    HIGH = "high"
+    MEDIUM = "medium"
+    LOW = "low"
+
+
+# ── Cost Model Data ──
+# Derived from 1costingfe ForwardResult (see §2.3 for source types).
+# For standalone concepts, the extraction pipeline must produce the same shape.
+
+class CASAccount(BaseModel):
+    """A single CAS cost account."""
+    name: str
+    cost_m_usd: float
+    overridden: bool = False
+
+class HeadlineEconomics(BaseModel):
+    """Top-line metrics shown on the concept card and profile hero."""
+    lcoe_per_mwh: float
+    overnight_cost_per_kw: float
+    total_capital_m_usd: float
+    p_fus_mw: float
+    p_net_mw: float
+    q_eng: float
+    q_sci: float
+    recirculating_fraction: float
+    availability: float
+    lifetime_yr: float
+    noak: bool
+
+class SensitivityEntry(BaseModel):
+    """One parameter's sensitivity data."""
+    elasticity: float                           # %LCOE / %param (dimensionless)
+    baseline: float                             # baseline value used in the model
+
+class SensitivityAnalysis(BaseModel):
+    """Full sensitivity output — split into engineering levers and financial givens."""
+    engineering: dict[str, SensitivityEntry]     # param_name → entry
+    financial: dict[str, SensitivityEntry]
+
+class CostModelData(BaseModel):
+    """
+    All quantitative output from a cost model run.
+    Populated from 1costingfe ForwardResult (costingfe concepts) or
+    from a conforming standalone script.
+
+    For costingfe concepts, construction is:
+        result = model.forward(...)
+        sens = model.sensitivity(result.params)
+        data = CostModelData.from_forward_result(result, sens)
+
+    #TODO: Implement from_forward_result() classmethod that:
+      - Uses dataclasses.asdict() on CostResult and PowerTable
+      - Maps CAS fields (result.costs.cas10 → CASAccount(name="Preconstruction", ...))
+      - Maps cas22_detail dict (str keys → CASAccount with account names)
+      - Maps sensitivity dict → SensitivityAnalysis
+      - Populates overridden flags from result.overridden list
+
+    For standalone concepts:
+      - model_setup.py must expose a to_explorer_dict() function returning
+        a dict that validates against CostModelData.model_json_schema()
+      - This is a contract we enforce in the pipeline (see §4.1)
+    """
+    headline: HeadlineEconomics
+    cas: dict[str, CASAccount]                  # "CAS10", "CAS21", ..., "CAS90"
+    cas22_detail: dict[str, CASAccount]         # "C220101", "C220102", ...
+    sensitivities: SensitivityAnalysis
+    params: dict[str, float]                    # all input params (for slider recomputation)
+```
+
+#### Key Design Decisions
+
+- **`CostModelData` is a superset.** All CAS accounts (CAS10-90) and CAS22 sub-accounts (C220101-C220700) are always present as keys. Accounts that don't apply to a concept have `cost_m_usd: 0.0`. The `overridden` flag and the parameter metadata's `category` field tell the UI which fields are meaningful.
+- **Power balance diversity handled via `params` dict.** The `HeadlineEconomics` model has the fields every concept shares (p_fus, p_net, q_eng). Family-specific power balance parameters (p_cryo, p_driver, p_target, etc.) live in `CostModelData.params` — a flat `dict[str, float]` matching 1costingfe's `ForwardResult.params`. The parameter metadata provides display names and units.
+- **Narrative is a first-class model.** `NarrativeData` is not a bag of strings — it has typed fields with enums. The LLM extraction stage must produce output that validates against this schema.
+- **Standalone concepts must conform.** The `CostModelData` schema is the contract. Standalone model_setup.py scripts implement `to_explorer_dict()` returning a dict that passes `CostModelData.model_validate()`. This is enforced by the pipeline.
+
+### 2.2 Parameter Metadata
+
+Each concept with a cost model gets authored parameter metadata. This is the content that makes the explorer useful — without it, the tornado chart is just unlabeled bars.
+
+```python
+class ParameterMetadata(BaseModel):
+    """Metadata for one sensitivity parameter — authored content."""
+    display_name: str
+    display_unit: str = ""
+    display_multiplier: float = 1.0             # raw → display (e.g., 0.70 → 70%)
+    category: ParameterCategory = ParameterCategory.UNCLASSIFIED
+    confidence: Confidence = Confidence.UNKNOWN
+    range: tuple[float, float] | None = None    # [low, high] for slider bounds
+    source: str = ""                            # citation (e.g., "analysis.md §5")
+    source_quote: str = ""                      # key quote supporting the value
+    modeling_note: str = ""                     # how parameter flows through cost model
+```
+
+#### Narrative Data
+
+```python
+class Risk(BaseModel):
+    risk: str
+    severity: RiskSeverity
+    retirement_path: str = ""
+
+class NarrativeData(BaseModel):
+    """
+    Structured narrative extracted from analysis.md by an LLM pipeline stage.
+
+    This is NOT programmatic markdown parsing — it is an LLM call with a
+    structured output schema against the analysis text. The LLM summarizes
+    and restructures what is already in the analysis. Risk of hallucination
+    is low because the output is a faithful restructuring of the source,
+    and the explorer displays it alongside the source for verification.
+
+    This extraction runs BEFORE the synthesis stage — it operates on
+    analysis.md alone and helps catch issues in the analysis.
+    """
+    thesis: str                                 # One-line: what this concept IS
+    key_bets: list[str]                         # What the concept claims as breakthroughs
+    eliminated_costs: list[str]                 # Cost categories this approach avoids
+    novel_costs: list[str]                      # Cost categories unique to this approach
+    top_risks: list[Risk]
+    data_availability: DataAvailability
+    confidence_rating: Confidence               # Overall estimate confidence
+```
+
+#### Top-Level Concept Model
+
+```python
+class SourcePaths(BaseModel):
+    analysis: str | None = None
+    model_setup: str | None = None
+    model_output: str | None = None
+    synthesis: str | None = None
+
+class ConceptData(BaseModel):
+    """
+    Complete explorer data for one concept.
+    This is the type that flows between extraction → server → frontend.
+    Serializes to JSON for the static build; served directly by FastAPI.
+    """
+    # Identity
+    id: str
+    name: str
+    company: str
+    confinement_family: ConfinementFamily
+    fuel: FuelType
+    status: ConceptStatus
+    has_cost_model: bool
+    model_type: ModelType | None = None         # None if no cost model
+
+    # Cost model data (None if has_cost_model is False)
+    cost_model: CostModelData | None = None
+
+    # Parameter metadata (keyed by parameter name, matches sensitivity keys)
+    parameter_metadata: dict[str, ParameterMetadata] = Field(default_factory=dict)
+
+    # Narrative (extracted from analysis.md by LLM)
+    narrative: NarrativeData | None = None
+
+    # Traceability
+    sources: SourcePaths = Field(default_factory=SourcePaths)
+```
+
+### 2.3 Verified 1costingfe Data Structures
+
+Source: `/home/reid/1cfe/1costingfe/src/costingfe/types.py`
+
+#### ForwardResult (returned by `model.forward()`)
+
+```python
+@dataclass
+class ForwardResult:
+    power_table: PowerTable
+    costs: CostResult
+    params: dict                          # All input params (for sensitivity analysis)
+    overridden: list[str] = []            # CAS keys that were cost-overridden
+    cas22_detail: dict[str, float] = {}   # CAS22 sub-account code → cost in M$
+    plasma_state: object = None           # PlasmaState when 0D model is active
+```
+
+#### CostResult
+
+```python
+@dataclass
+class CostResult:
+    cas10: float = 0.0   # Pre-construction
+    cas21: float = 0.0   # Buildings
+    cas22: float = 0.0   # Reactor plant equipment
+    cas23: float = 0.0   # Turbine plant equipment
+    cas24: float = 0.0   # Electric plant equipment
+    cas25: float = 0.0   # Misc plant equipment
+    cas26: float = 0.0   # Heat rejection
+    cas27: float = 0.0   # Special materials
+    cas28: float = 0.0   # Digital twin
+    cas29: float = 0.0   # Contingency
+    cas20: float = 0.0   # Total direct costs (sum CAS21-29)
+    cas30: float = 0.0   # Indirect service costs
+    cas40: float = 0.0   # Owner's costs
+    cas50: float = 0.0   # Supplementary costs
+    cas60: float = 0.0   # Capitalized financial costs
+    cas70: float = 0.0   # Annualized O&M + replacement
+    cas71: float = 0.0   # Annualized O&M
+    cas72: float = 0.0   # Annualized scheduled replacement
+    cas80: float = 0.0   # Annualized fuel
+    cas90: float = 0.0   # Annualized financial (capital)
+    total_capital: float = 0.0  # CAS10-60 sum [M$]
+    lcoe: float = 0.0          # [$/MWh]
+    overnight_cost: float = 0.0 # [$/kW]
+```
+
+#### PowerTable
+
+```python
+@dataclass
+class PowerTable:
+    p_fus: float       # Fusion power [MW]
+    p_ash: float       # Charged fusion product power [MW]
+    p_neutron: float   # Neutron power [MW]
+    p_rad: float       # Plasma radiation [MW]
+    p_wall: float      # Ash thermal on walls [MW]
+    p_dee: float       # Direct energy extracted electric [MW]
+    p_dec_waste: float # DEC waste heat [MW]
+    p_th: float        # Total thermal power [MW]
+    p_the: float       # Thermal electric power [MW]
+    p_et: float        # Gross electric power [MW]
+    p_loss: float      # Lost power [MW]
+    p_net: float       # Net electric power [MW]
+    p_pump: float      # Pumping power [MW]
+    p_sub: float       # Subsystem power [MW]
+    p_aux: float       # Auxiliary power [MW]
+    p_input: float     # Effective heating power [MW]
+    p_coils: float     # Coil power [MW]
+    p_cool: float      # Cooling power [MW]
+    p_cryo: float      # Cryogenic system power [MW]
+    p_target: float    # Target factory power [MW]
+    q_sci: float       # Scientific Q
+    q_eng: float       # Engineering Q
+    rec_frac: float    # Recirculating power fraction
+```
+
+**Note**: No existing `to_dict()` / `to_json()` on any of these types. Serialization will use `dataclasses.asdict()`.
+
+#### Sensitivity return type
+
+```python
+def sensitivity(self, params: dict, cost_overrides: dict | None = None) -> dict[str, dict[str, float]]:
+    # Returns {"engineering": {param_name: elasticity, ...}, "financial": {param_name: elasticity, ...}}
+    # Elasticity = (dLCOE/dp) * (p/LCOE), dimensionless, via jax.grad
+```
+
+### 2.4 Manifest Schema
+
+```python
+class ConceptManifestEntry(BaseModel):
+    """Summary entry for the concept grid / entry view."""
+    id: str
+    name: str
+    company: str
+    confinement_family: ConfinementFamily
+    fuel: FuelType
+    status: ConceptStatus
+    has_cost_model: bool
+    lcoe_per_mwh: float | None = None
+    confidence_rating: Confidence | None = None
+    data_file: str                              # relative path to full JSON
+
+class ConceptManifest(BaseModel):
+    """Index of all concepts — drives the entry view."""
+    generated_at: str                           # ISO 8601
+    concepts: list[ConceptManifestEntry]
+```
+
+### 2.5 Parameter Metadata Authoring Strategy
+
+**Format**: Part of a `model_metadata.yaml` file alongside model_setup.py.
+
+```yaml
+# exploration/concept_analysis/analyses/01-hts-compact-tokamak/model_metadata.yaml
+
+parameters:
+  availability:
+    display_name: Plant Availability
+    display_unit: "%"
+    display_multiplier: 100
+    category: well-established
+    confidence: medium
+    range: [0.50, 0.85]
+    source: "analysis.md §5 — Availability assumed at 70%"
+    modeling_note: "Scales LCOE inversely via capacity factor in annual energy denominator"
+
+  eta_th:
+    display_name: Thermal Conversion Efficiency
+    display_unit: "%"
+    display_multiplier: 100
+    category: well-established
+    confidence: high
+    range: [0.30, 0.45]
+    source: "analysis.md §5 — Steam Rankine cycle"
+    modeling_note: "Determines gross electric output from thermal power"
+
+  # ... one entry per sensitivity parameter
+```
+
+**Authoring strategy**: New pipeline stage (`explorer-extract`) generates a draft from model_setup.py comments + analysis.md via LLM, then outputs `model_metadata.yaml`. Human reviews and adjusts `category` assignments (the field requiring the most judgment). The pipeline validates the YAML against the `ParameterMetadata` schema.
+
+---
+
+## 3. Architecture
+
+### 3.1 Architecture Overview
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -73,330 +492,48 @@ The Concept Explorer is a **static-first, progressively-enhanced** web tool for 
 └─────────────────────────────────────────────────────────────┘
 ```
 
-### Execution Modes
-
-| Mode | Command | What You Get |
-|------|---------|-------------|
-| **Server** (primary) | `uv run python server.py` → open `http://localhost:8421` | Full explorer: profiles, comparisons, tornado charts. Data via API. Sliders when implemented. |
-| **Build only** (CI/archival) | `uv run python build_explorer.py` | Regenerates HTML templates and extracts data to JSON. Required before first server run and after pipeline changes. |
-
-### File Layout
-
-```
-exploration/concept_explorer/
-├── build_explorer.py          # Build script: data/*.json + templates → dist/
-├── extract_explorer_data.py   # Data extraction: pipeline artifacts → JSON
-├── models.py                  # Pydantic data models (ConceptData, CostModelData, etc.)
-├── server.py                  # FastAPI server (primary serving mechanism)
-├── data/                      # Generated JSON (gitignored)
-│   ├── 01-hts-compact-tokamak.json
-│   ├── 04-laser-icf.json
-│   ├── ...
-│   └── manifest.json          # Index of all concepts with summary data
-├── templates/
-│   ├── base.html.j2           # Shared layout, head, nav, footer
-│   ├── index.html.j2          # Entry view: concept grid
-│   ├── concept.html.j2        # Single-concept profile
-│   └── compare.html.j2        # Multi-concept comparison
-├── static/
-│   ├── css/
-│   │   └── explorer.css       # Design system: colors, typography, layout
-│   ├── js/
-│   │   ├── tornado.js         # Tornado chart component (Plotly-based)
-│   │   ├── cas_breakdown.js   # CAS stacked bar component
-│   │   ├── parameter_card.js  # Detail card on hover/click
-│   │   ├── comparison.js      # Comparison alignment logic
-│   │   └── explorer_app.js    # Page-level orchestration, routing
-│   └── vendor/                # Vendored Plotly.js (avoid CDN dependency)
-│       └── plotly-basic.min.js
-└── dist/                      # Build output (gitignored)
-    ├── index.html
-    ├── concept/
-    │   ├── 01-hts-compact-tokamak.html
-    │   └── ...
-    ├── compare.html
-    └── static/                # Copied from above
-```
-
----
-
-## 2. Data Layer
-
-### 2.1 Design Principles
-
-1. **Typed Pydantic models** — no raw dicts. All data flowing between pipeline, server, and frontend has a Pydantic model with validated types. Mismatches raise hard errors, not silent corruption.
-2. **Two data sources** — cost model data (from 1costingfe `ForwardResult` or standalone scripts) and narrative data (from analysis.md via LLM extraction). Both produce typed models.
-3. **Sparse superset schema** — all CAS accounts and power balance fields are always present (some zero). Parameter metadata tells the UI which fields are meaningful per concept.
-
-### 2.2 Pydantic Models (`exploration/concept_explorer/models.py`)
-
-These are the formal types. The extraction pipeline produces them; the server serves them; the build script serializes them to JSON for the frontend.
+### 3.2 Build Pipeline (`build_explorer.py`)
 
 ```python
-from __future__ import annotations
-from enum import Enum
-from pydantic import BaseModel, Field
+"""
+Build the Concept Explorer static site.
 
+Usage:
+    uv run python build_explorer.py              # full build
+    uv run python build_explorer.py --data-only  # regenerate JSON only (skip HTML)
+    uv run python build_explorer.py --html-only  # regenerate HTML from existing JSON
+    uv run python build_explorer.py --concept 01 04  # rebuild specific concepts only
+    uv run python build_explorer.py --serve      # build + start local HTTP server on :8421
+"""
 
-# ── Enums ──
-
-class ConfinementFamily(str, Enum):
-    MFE = "MFE"
-    IFE = "IFE"
-    MIF = "MIF"
-    NON_STANDARD = "Non-Standard"
-
-class FuelType(str, Enum):
-    DT = "DT"
-    DHE3 = "DHE3"
-    PB11 = "PB11"
-
-class ConceptStatus(str, Enum):
-    APPROVED = "approved"
-    DRAFT = "draft"
-
-class ModelType(str, Enum):
-    COSTINGFE = "costingfe"
-    STANDALONE = "standalone"
-
-class ParameterCategory(str, Enum):
-    SHARED_BASELINE = "shared-baseline"
-    WELL_ESTABLISHED = "well-established"
-    KEY_INNOVATION = "key-innovation"
-    CONCEPT_UNIQUE = "concept-unique"
-    HIGH_RISK = "high-risk"
-    UNCLASSIFIED = "unclassified"
-
-class Confidence(str, Enum):
-    HIGH = "high"
-    MEDIUM = "medium"
-    LOW = "low"
-    UNKNOWN = "unknown"
-
-class DataAvailability(str, Enum):
-    RICH = "Rich"
-    MODERATE = "Moderate"
-    LIMITED = "Limited"
-    OPAQUE = "Opaque"
-
-class RiskSeverity(str, Enum):
-    HIGH = "high"
-    MEDIUM = "medium"
-    LOW = "low"
-
-
-# ── Cost Model Data ──
-# Derived from 1costingfe ForwardResult (see Appendix A for source types).
-# For standalone concepts, the extraction pipeline must produce the same shape.
-
-class CASAccount(BaseModel):
-    """A single CAS cost account."""
-    name: str
-    cost_m_usd: float
-    overridden: bool = False
-
-class HeadlineEconomics(BaseModel):
-    """Top-line metrics shown on the concept card and profile hero."""
-    lcoe_per_mwh: float
-    overnight_cost_per_kw: float
-    total_capital_m_usd: float
-    p_fus_mw: float
-    p_net_mw: float
-    q_eng: float
-    q_sci: float
-    recirculating_fraction: float
-    availability: float
-    lifetime_yr: float
-    noak: bool
-
-class SensitivityEntry(BaseModel):
-    """One parameter's sensitivity data."""
-    elasticity: float                           # %LCOE / %param (dimensionless)
-    baseline: float                             # baseline value used in the model
-
-class SensitivityAnalysis(BaseModel):
-    """Full sensitivity output — split into engineering levers and financial givens."""
-    engineering: dict[str, SensitivityEntry]     # param_name → entry
-    financial: dict[str, SensitivityEntry]
-
-class CostModelData(BaseModel):
-    """
-    All quantitative output from a cost model run.
-    Populated from 1costingfe ForwardResult (costingfe concepts) or
-    from a conforming standalone script.
-
-    For costingfe concepts, construction is:
-        result = model.forward(...)
-        sens = model.sensitivity(result.params)
-        data = CostModelData.from_forward_result(result, sens)
-
-    #TODO: Implement from_forward_result() classmethod that:
-      - Uses dataclasses.asdict() on CostResult and PowerTable
-      - Maps CAS fields (result.costs.cas10 → CASAccount(name="Preconstruction", ...))
-      - Maps cas22_detail dict (str keys → CASAccount with account names)
-      - Maps sensitivity dict → SensitivityAnalysis
-      - Populates overridden flags from result.overridden list
-
-    For standalone concepts:
-      - model_setup.py must expose a to_explorer_dict() function returning
-        a dict that validates against CostModelData.model_json_schema()
-      - This is a contract we enforce in the pipeline (see §2.4)
-    """
-    headline: HeadlineEconomics
-    cas: dict[str, CASAccount]                  # "CAS10", "CAS21", ..., "CAS90"
-    cas22_detail: dict[str, CASAccount]         # "C220101", "C220102", ...
-    sensitivities: SensitivityAnalysis
-    params: dict[str, float]                    # all input params (for slider recomputation)
-
-
-# ── Parameter Metadata ──
-# Authored per-concept, merged with cost model data during extraction.
-
-class ParameterMetadata(BaseModel):
-    """Metadata for one sensitivity parameter — authored content."""
-    display_name: str
-    display_unit: str = ""
-    display_multiplier: float = 1.0             # raw → display (e.g., 0.70 → 70%)
-    category: ParameterCategory = ParameterCategory.UNCLASSIFIED
-    confidence: Confidence = Confidence.UNKNOWN
-    range: tuple[float, float] | None = None    # [low, high] for slider bounds
-    source: str = ""                            # citation (e.g., "analysis.md §5")
-    source_quote: str = ""                      # key quote supporting the value
-    modeling_note: str = ""                     # how parameter flows through cost model
-
-
-# ── Narrative Data ──
-# Extracted from analysis.md (and synthesis.md if available) by an LLM
-# pipeline stage with structured output.
-
-class Risk(BaseModel):
-    risk: str
-    severity: RiskSeverity
-    retirement_path: str = ""
-
-class NarrativeData(BaseModel):
-    """
-    Structured narrative extracted from analysis.md by an LLM pipeline stage.
-
-    This is NOT programmatic markdown parsing — it is an LLM call with a
-    structured output schema against the analysis text. The LLM summarizes
-    and restructures what is already in the analysis. Risk of hallucination
-    is low because the output is a faithful restructuring of the source,
-    and the explorer displays it alongside the source for verification.
-
-    This extraction runs BEFORE the synthesis stage — it operates on
-    analysis.md alone and helps catch issues in the analysis.
-    """
-    thesis: str                                 # One-line: what this concept IS
-    key_bets: list[str]                         # What the concept claims as breakthroughs
-    eliminated_costs: list[str]                 # Cost categories this approach avoids
-    novel_costs: list[str]                      # Cost categories unique to this approach
-    top_risks: list[Risk]
-    data_availability: DataAvailability
-    confidence_rating: Confidence               # Overall estimate confidence
-
-
-# ── Top-Level Concept Model ──
-
-class SourcePaths(BaseModel):
-    analysis: str | None = None
-    model_setup: str | None = None
-    model_output: str | None = None
-    synthesis: str | None = None
-
-class ConceptData(BaseModel):
-    """
-    Complete explorer data for one concept.
-    This is the type that flows between extraction → server → frontend.
-    Serializes to JSON for the static build; served directly by FastAPI.
-    """
-    # Identity
-    id: str
-    name: str
-    company: str
-    confinement_family: ConfinementFamily
-    fuel: FuelType
-    status: ConceptStatus
-    has_cost_model: bool
-    model_type: ModelType | None = None         # None if no cost model
-
-    # Cost model data (None if has_cost_model is False)
-    cost_model: CostModelData | None = None
-
-    # Parameter metadata (keyed by parameter name, matches sensitivity keys)
-    parameter_metadata: dict[str, ParameterMetadata] = Field(default_factory=dict)
-
-    # Narrative (extracted from analysis.md by LLM)
-    narrative: NarrativeData | None = None
-
-    # Traceability
-    sources: SourcePaths = Field(default_factory=SourcePaths)
-
-
-class ConceptManifestEntry(BaseModel):
-    """Summary entry for the concept grid / entry view."""
-    id: str
-    name: str
-    company: str
-    confinement_family: ConfinementFamily
-    fuel: FuelType
-    status: ConceptStatus
-    has_cost_model: bool
-    lcoe_per_mwh: float | None = None
-    confidence_rating: Confidence | None = None
-    data_file: str                              # relative path to full JSON
-
-class ConceptManifest(BaseModel):
-    """Index of all concepts — drives the entry view."""
-    generated_at: str                           # ISO 8601
-    concepts: list[ConceptManifestEntry]
+# Key steps:
+# 1. Run extract_explorer_data.py → data/*.json + data/manifest.json
+# 2. Load Jinja2 environment from templates/
+# 3. For each concept JSON: render concept.html.j2 → dist/concept/{id}.html
+# 4. Render index.html.j2 with manifest → dist/index.html
+# 5. Render compare.html.j2 with all cost-model concepts → dist/compare.html
+# 6. Copy static/ → dist/static/
 ```
 
-#### Key Design Decisions
+#### Dependencies
 
-- **`CostModelData` is a superset.** All CAS accounts (CAS10-90) and CAS22 sub-accounts (C220101-C220700) are always present as keys. Accounts that don't apply to a concept have `cost_m_usd: 0.0`. The `overridden` flag and the parameter metadata's `category` field tell the UI which fields are meaningful.
-- **Power balance diversity handled via `params` dict.** The `HeadlineEconomics` model has the fields every concept shares (p_fus, p_net, q_eng). Family-specific power balance parameters (p_cryo, p_driver, p_target, etc.) live in `CostModelData.params` — a flat `dict[str, float]` matching 1costingfe's `ForwardResult.params`. The parameter metadata provides display names and units.
-- **Narrative is a first-class model.** `NarrativeData` is not a bag of strings — it has typed fields with enums. The LLM extraction stage must produce output that validates against this schema.
-- **Standalone concepts must conform.** The `CostModelData` schema is the contract. Standalone model_setup.py scripts implement `to_explorer_dict()` returning a dict that passes `CostModelData.model_validate()`. This is enforced by the pipeline.
+```
+# New dependencies for the explorer
+jinja2         # template rendering
+pydantic       # data models (likely already available via fastapi)
+fastapi        # server + API
+uvicorn        # ASGI server
 
-### 2.3 Parameter Metadata Authoring
-
-Each concept with a cost model gets authored parameter metadata. This is the content that makes the explorer useful — without it, the tornado chart is just unlabeled bars.
-
-**Format**: Part of a `model_metadata.yaml` file alongside model_setup.py.
-
-```yaml
-# exploration/concept_analysis/analyses/01-hts-compact-tokamak/model_metadata.yaml
-
-parameters:
-  availability:
-    display_name: Plant Availability
-    display_unit: "%"
-    display_multiplier: 100
-    category: well-established
-    confidence: medium
-    range: [0.50, 0.85]
-    source: "analysis.md §5 — Availability assumed at 70%"
-    modeling_note: "Scales LCOE inversely via capacity factor in annual energy denominator"
-
-  eta_th:
-    display_name: Thermal Conversion Efficiency
-    display_unit: "%"
-    display_multiplier: 100
-    category: well-established
-    confidence: high
-    range: [0.30, 0.45]
-    source: "analysis.md §5 — Steam Rankine cycle"
-    modeling_note: "Determines gross electric output from thermal power"
-
-  # ... one entry per sensitivity parameter
+# Already available
+costingfe      # cost model (editable dependency)
+pyyaml         # for model_metadata.yaml parsing
 ```
 
-**Authoring strategy**: New pipeline stage (`explorer-extract`) generates a draft from model_setup.py comments + analysis.md via LLM, then outputs `model_metadata.yaml`. Human reviews and adjusts `category` assignments (the field requiring the most judgment). The pipeline validates the YAML against the `ParameterMetadata` schema.
+No npm. No node. The JS visualization libraries (Plotly.js) are vendored as static files.
 
-### 2.4 Data Extraction Pipeline
+### 3.3 Data Extraction Pipeline
 
-Two extraction pathways feed the Pydantic models:
+Two extraction pathways feed the Pydantic models. See §4 for the extraction algorithm details.
 
 #### Cost Model Extraction
 
@@ -413,7 +550,7 @@ def extract_costingfe_model(concept_dir: Path) -> CostModelData:
       3. Calls model.sensitivity(result.params) → dict
       4. Calls CostModelData.from_forward_result(result, sensitivities)
       5. Writes model_output.json (validated Pydantic → JSON)
-      alongside the existing model_output.txt
+         alongside the existing model_output.txt
 
     The explorer extraction script then just reads model_output.json
     and validates: CostModelData.model_validate_json(path.read_text())
@@ -485,7 +622,7 @@ def build_manifest(data_dir: Path) -> ConceptManifest:
     ...
 ```
 
-### 2.5 Data Pipeline Integration with 1costingfe
+### 3.4 1costingfe Integration (Data Pipeline)
 
 The extraction pipeline needs to convert 1costingfe's `ForwardResult` into our `CostModelData`. Two options for where this conversion lives:
 
@@ -501,138 +638,11 @@ The extraction pipeline needs to convert 1costingfe's `ForwardResult` into our `
 
 **Recommendation**: Option A for now. The explorer's `CASAccount` model (with `name` and `overridden` fields) carries more information than a raw `asdict()` dump. The mapping logic belongs in the explorer, not in 1costingfe. If other consumers need serialization later, promote to Option B.
 
-#TODO: The CAS account names ("Preconstruction", "Buildings", etc.) are not stored in CostResult — they're implicit from the field name (cas10, cas21, etc.). The explorer needs a static mapping of CAS code → display name. Check if 1costingfe has this mapping already, or define it in the explorer.
+### 3.5 Server
 
----
+The FastAPI server is the **primary serving mechanism**. The build pipeline produces static HTML + JSON; the server serves it and provides the computation API. Full server specification is in §5.
 
-## 3. Visualization Layer
-
-### 3.1 Design System
-
-**Visual language** (from concept-explorer.md design principles):
-
-| Principle | Implementation |
-|---|---|
-| Trustworthy density | Dark background, high-contrast type, compact spacing. Data-to-ink ratio over whitespace. |
-| Uncertainty is visual | Confidence encoded via color saturation + badge. High=solid, Medium=muted, Low=desaturated+hatched. |
-| Narrative at point of need | Click/hover on any parameter → detail card with source, range, confidence, modeling note. |
-| Compare by default | Even in single-concept view, show where a value sits relative to the population (min/max markers on bars). |
-
-**Color palette**:
-
-| Category | Color | Usage |
-|---|---|---|
-| Shared baseline | `#6B7280` (gray) | Parameters same across all concepts |
-| Well-established | `#3B82F6` (blue) | Concept-specific, well-grounded |
-| Key innovation | `#10B981` (green) | The concept's claimed breakthrough |
-| Concept-unique | `#F59E0B` (amber) | Novel, no precedent to calibrate |
-| High-risk | `#EF4444` (red) | Poorly constrained + high impact |
-
-**Confidence encoding**:
-
-| Level | Treatment |
-|---|---|
-| High | Full opacity, solid fill, no badge |
-| Medium | 80% opacity, "~" badge |
-| Low | 60% opacity, hatched fill pattern, "?" badge |
-
-### 3.2 Chart Components
-
-Each chart is a standalone JS module that accepts data and a DOM container. Plotly.js is the default; D3 is the escape hatch for custom visuals.
-
-#### Tornado Chart (`static/js/tornado.js`)
-
-```javascript
-/**
- * Render a horizontal tornado chart of parameter sensitivities.
- *
- * @param {HTMLElement} container - DOM element to render into
- * @param {Object} options
- * @param {Object} options.sensitivities - { engineering: {...}, financial: {...} }
- *   Each entry: { elasticity: number, baseline: number, unit: string }
- * @param {Object} options.parameterMetadata - keyed by parameter name
- *   Each entry: { category, confidence, display_name, ... }
- * @param {number} [options.topN=15] - Number of parameters to show
- * @param {Function} [options.onParameterClick] - callback(paramName, metadata)
- *   Fired when user clicks a bar; host page shows the detail card.
- */
-function renderTornado(container, options) { ... }
-```
-
-- Horizontal bars: left = LCOE decrease, right = LCOE increase
-- Bar color = parameter category (from metadata)
-- Bar opacity = confidence level
-- Top N parameters shown (default 15), sorted by |elasticity|
-- Click handler triggers parameter detail card (§3.2.4)
-
-#### CAS Breakdown (`static/js/cas_breakdown.js`)
-
-```javascript
-/**
- * Render CAS cost breakdown as a stacked bar chart.
- *
- * @param {HTMLElement} container
- * @param {Object} options
- * @param {Object} options.cas - Top-level CAS accounts { CAS10: {name, cost_m_usd}, ... }
- * @param {Object} [options.cas22_detail] - CAS22 sub-accounts (for drill-down)
- * @param {boolean} [options.showSubAccounts=false] - Expand CAS22 detail
- * @param {Function} [options.onAccountClick] - callback(casCode, accountData)
- */
-function renderCASBreakdown(container, options) { ... }
-```
-
-- Stacked horizontal bar: one segment per CAS account
-- CAS22 can expand to show sub-accounts (click to drill down)
-- Overridden accounts flagged with a marker
-- Hover shows: account name, cost, % of total, override status
-
-#### Comparison Charts (`static/js/comparison.js`)
-
-```javascript
-/**
- * Render side-by-side comparison of multiple concepts.
- *
- * @param {HTMLElement} container
- * @param {Object} options
- * @param {Array<Object>} options.concepts - Array of concept data objects (full JSON)
- * @param {string} options.view - "tornado" | "cas" | "headline"
- * @param {Object} [options.alignmentConfig]
- *   For tornado view: which parameters to align across concepts,
- *   which to show in concept-unique sections.
- *   #TODO: Define alignment algorithm. Likely: parameters that appear
- *          in >1 concept are "shared" and aligned horizontally.
- *          Parameters unique to one concept go in a separate section.
- */
-function renderComparison(container, options) { ... }
-```
-
-#### Parameter Detail Card (`static/js/parameter_card.js`)
-
-```javascript
-/**
- * Show a detail card for a specific parameter.
- * Appears as a popover/modal anchored to the clicked bar.
- *
- * @param {HTMLElement} anchor - Element to position relative to
- * @param {Object} options
- * @param {string} options.paramName - Parameter key
- * @param {Object} options.sensitivity - { elasticity, baseline, unit }
- * @param {Object} options.metadata - from parameter_metadata
- *   { category, confidence, range, source, source_quote, modeling_note,
- *     display_name, display_unit, display_multiplier }
- */
-function showParameterCard(anchor, options) { ... }
-```
-
-Card contents (matching US-5):
-1. Display name + baseline value (with unit)
-2. Source citation
-3. Assumed range + why
-4. Confidence level (with visual badge)
-5. Modeling note (how the parameter flows through the cost model)
-6. Category badge (shared-baseline / key-innovation / etc.)
-
-### 3.3 Page Templates
+### 3.6 Page Templates
 
 #### `base.html.j2` — Shared Layout
 
@@ -736,67 +746,89 @@ Since the server is the primary serving mechanism, concept data is loaded via `f
 
 ---
 
-## 4. Build Pipeline
+## 4. Core Algorithms
 
-### 4.1 Build Script (`build_explorer.py`)
+### 4.1 Data Extraction Dispatch: costingfe-backed vs. Standalone
 
-```python
-"""
-Build the Concept Explorer static site.
+8 concepts have model_setup.py files. They fall into two architectural patterns, which determine the extraction strategy:
 
-Usage:
-    uv run python build_explorer.py              # full build
-    uv run python build_explorer.py --data-only  # regenerate JSON only (skip HTML)
-    uv run python build_explorer.py --html-only  # regenerate HTML from existing JSON
-    uv run python build_explorer.py --concept 01 04  # rebuild specific concepts only
-    uv run python build_explorer.py --serve      # build + start local HTTP server on :8421
-"""
+#### Pattern A: costingfe-backed (6 concepts)
 
-# Key steps:
-# 1. Run extract_explorer_data.py → data/*.json + data/manifest.json
-# 2. Load Jinja2 environment from templates/
-# 3. For each concept JSON: render concept.html.j2 → dist/concept/{id}.html
-# 4. Render index.html.j2 with manifest → dist/index.html
-# 5. Render compare.html.j2 with all cost-model concepts → dist/compare.html
-# 6. Copy static/ → dist/static/
-```
+| Concept | Lines | Notes |
+|---|---|---|
+| 03-laser-icf-liquid-jet-target | ~393 | Heavy docstring |
+| 04-laser-icf (HB11) | ~339 | |
+| 05-planar-coil-stellarator | ~189 | Shortest; uses framework defaults heavily |
+| 06-magnetic-mirror (Pale Blue) | ~262 | |
+| 08-frc-w-direct-conversion (Helion) | ~489 | Complex module breakdown |
+| 11-magnetic-mirror (Realta) | ~278 | Marked STALE |
 
-### 4.2 Dependencies
+**Pattern**: Import `costingfe` → instantiate `CostModel(concept=..., fuel=...)` → call `model.forward(...)` → print `result.costs` + `result.power_table` attributes.
 
-```
-# New dependencies for the explorer
-jinja2         # template rendering
-pydantic       # data models (likely already available via fastapi)
-fastapi        # server + API
-uvicorn        # ASGI server
+**Data extraction strategy**: Import the module, call `model.forward()`, use `dataclasses.asdict()` on the result. Clean and reliable.
 
-# Already available
-costingfe      # cost model (editable dependency)
-pyyaml         # for model_metadata.yaml parsing
-```
+#### Pattern B: Standalone (2 concepts)
 
-No npm. No node. The JS visualization libraries (Plotly.js) are vendored as static files.
+| Concept | Lines | Notes |
+|---|---|---|
+| 02-acoustic-icf-sonofusion | ~800-1000 | Custom `SonofusionPlantParams` dataclass |
+| 12-levitated-dipole | ~600+ | Custom `LevitatedDipolePlantParams` dataclass |
+
+**Pattern**: Define `@dataclass` with all physics/cost parameters → hand-coded CAS calculation → custom print formatting.
+
+**Data extraction strategy**: These need either:
+- (a) Refactor to return a dict matching the CostResult schema (invasive but clean)
+- (b) Parse model_output.txt (fragile, format-dependent)
+- (c) Add `model_output.json` output to the pipeline stage that generates model_output.txt (recommended — see §2.5)
+- (d) Require standalone scripts to implement a `to_explorer_dict()` function returning a standardized dict
+
+**No structured export exists** — neither pattern has `to_dict()`, `to_json()`, or any serialization method.
+
+### 4.2 Sensitivity Data Processing and Tornado Chart Ranking
+
+**VERIFIED**: `model.sensitivity(params, cost_overrides)` returns `dict[str, dict[str, float]]` → `{"engineering": {...}, "financial": {...}}`. Each inner dict maps parameter name → elasticity (single symmetric float). Uses `jax.grad` for exact autodiff. Overridden CAS accounts get zero gradient automatically.
+
+The tornado chart ranks parameters by `|elasticity|` and displays the top N (default 15). Bar color encodes parameter category (from metadata); bar opacity encodes confidence level. Engineering and financial sensitivities are merged into one ranked list for display but can be filtered by the user.
+
+### 4.3 CAS Breakdown Computation
+
+CAS data flows directly from `CostModelData.cas` (top-level accounts CAS10-90) and `CostModelData.cas22_detail` (sub-accounts C220101-C220700). The stacked bar visualization shows one segment per CAS account, with:
+- CAS22 drill-down on click (expanding sub-accounts)
+- Override markers on accounts where the concept applied manual cost overrides
+- Hover showing: account name, cost in M$, percentage of total, override status
+
+### 4.4 Narrative Extraction Approach
+
+Narrative data is extracted via `claude -p` with a structured output requirement against the `NarrativeData` JSON schema. The LLM receives the full analysis.md text and produces a faithful restructuring — not new content. The structured output serves double duty: feeding the explorer's narrative display, and surfacing issues in analysis.md by forcing content into a concrete structure.
+
+See §3.3 (Narrative Extraction) for the function signature and implementation notes.
 
 ---
 
-## 5. Server
+## 5. External Interfaces
 
-The FastAPI server is the **primary serving mechanism**, not a deferred add-on. The build pipeline produces static HTML + JSON; the server serves it and provides the computation API.
+### 5.1 CLI Commands
 
-### 5.1 API Surface (`server.py`)
+#### `build_explorer.py`
+
+```bash
+uv run python build_explorer.py              # full build
+uv run python build_explorer.py --data-only  # regenerate JSON only (skip HTML)
+uv run python build_explorer.py --html-only  # regenerate HTML from existing JSON
+uv run python build_explorer.py --concept 01 04  # rebuild specific concepts only
+uv run python build_explorer.py --serve      # build + start local HTTP server on :8421
+```
+
+#### `server.py`
+
+```bash
+uv run python server.py
+# Opens http://localhost:8421
+```
+
+### 5.2 API Endpoints (`server.py`)
 
 ```python
-"""
-FastAPI server for the Concept Explorer.
-
-Serves the static frontend AND provides data/computation API.
-This is the primary way to use the explorer.
-
-Usage:
-    uv run python server.py
-    # Opens http://localhost:8421
-"""
-
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
@@ -825,7 +857,7 @@ async def list_concepts() -> list[ConceptManifestEntry]:
     ...
 
 
-# ── Computation API (for sliders — initially deferred, add when ready) ──
+# ── Computation API (for sliders) ──
 
 @app.post("/api/compute")
 async def compute(request: ComputeRequest) -> CostModelData:
@@ -856,12 +888,11 @@ async def get_state() -> ExplorerState:
 
     The server tracks state via frontend POST calls on navigation and
     slider changes. Server maintains in-memory state.
-    Exact protocol details deferred to epic Item 5 (agent implementation).
     """
     ...
 ```
 
-### 5.2 Caching Strategy
+#### Caching Strategy
 
 ```python
 # ── Caching for model.forward() calls ──
@@ -882,7 +913,7 @@ async def get_state() -> ExplorerState:
 #        the sensitivity ranking from pre-computed data.
 ```
 
-### 5.3 Frontend Integration (Slider Mode)
+#### Frontend Slider Integration
 
 When the server is available, the static pages gain slider functionality:
 
@@ -916,11 +947,11 @@ if (await checkServer()) {
 }
 ```
 
----
+**Standalone concepts and sliders**: Standalone concepts (those not using costingfe) get the full explorer experience — profile, tornado chart, CAS breakdown, comparison views — but no sliders. The `/api/compute` endpoint returns 422 for standalone concepts. Sliders are costingfe-only. If standalone concepts are migrated to costingfe in the future, sliders light up automatically.
 
-## 6. Integration Surfaces
+### 5.3 Integration Surfaces
 
-### 6.1 Pipeline Integration
+#### Pipeline Integration
 
 The explorer reads from the concept analysis pipeline's output artifacts:
 
@@ -934,10 +965,10 @@ The explorer reads from the concept analysis pipeline's output artifacts:
 | `model_metadata.yaml` (new) | Parameter categories, confidence, ranges | Data extraction time |
 
 **New pipeline outputs needed:**
-1. `model_output.json` — structured output from the model-setup stage (see §2.3 recommendation)
-2. `model_metadata.yaml` — authored parameter metadata (see §2.2)
+1. `model_output.json` — structured output from the model-setup stage (see §2.5 recommendation)
+2. `model_metadata.yaml` — authored parameter metadata (see §2.5)
 
-### 6.2 Agent Integration (`/manage-concept`)
+#### Agent Integration (`/manage-concept`)
 
 The `/manage-concept` agent (epic Item 5, not yet built) needs to access explorer state to provide causal explanations.
 
@@ -946,9 +977,9 @@ The `/manage-concept` agent (epic Item 5, not yet built) needs to access explore
 1. **Filesystem**: Agent reads `exploration/concept_explorer/data/{concept_id}.json` directly. Has full access to all pre-computed data, parameter metadata, and narrative context. Always available regardless of whether the server is running.
 2. **API**: Agent calls `GET /api/state` on the running server to see which concept the user is viewing, what slider overrides are active, and which concepts are in the comparison set. Can also call `POST /api/compute` to run its own what-if scenarios.
 
-The agent convention: read from filesystem for concept data, check `http://localhost:8421/api/state` for live session context (fail gracefully if server isn't running). Exact protocol details deferred to epic Item 5 (agent implementation).
+The agent convention: read from filesystem for concept data, check `http://localhost:8421/api/state` for live session context (fail gracefully if server isn't running).
 
-### 6.3 1costingfe Integration
+#### 1costingfe Integration
 
 | Integration Point | How | Notes |
 |---|---|---|
@@ -957,21 +988,184 @@ The agent convention: read from filesystem for concept data, check `http://local
 | Sensitivity analysis | `model.sensitivity(result.params)` | Returns elasticities dict |
 | CAS hierarchy | `result.cas22_detail`, `result.costs` | Standardized field names |
 
-**VERIFIED**: `model.sensitivity(params, cost_overrides)` returns `dict[str, dict[str, float]]` → `{"engineering": {...}, "financial": {...}}`. Each inner dict maps parameter name → elasticity (single symmetric float). Uses `jax.grad` for exact autodiff. Overridden CAS accounts get zero gradient automatically.
+### 5.4 Chart Component JS APIs
 
-**Standalone concepts and sliders**: Standalone concepts (those not using costingfe) get the full explorer experience — profile, tornado chart, CAS breakdown, comparison views — but no sliders. The `/api/compute` endpoint returns 422 for standalone concepts. Sliders are costingfe-only. If standalone concepts are migrated to costingfe in the future, sliders light up automatically.
+Each chart is a standalone JS module that accepts data and a DOM container. Plotly.js is the default; D3 is the escape hatch for custom visuals.
+
+#### Tornado Chart (`static/js/tornado.js`)
+
+```javascript
+/**
+ * Render a horizontal tornado chart of parameter sensitivities.
+ *
+ * @param {HTMLElement} container - DOM element to render into
+ * @param {Object} options
+ * @param {Object} options.sensitivities - { engineering: {...}, financial: {...} }
+ *   Each entry: { elasticity: number, baseline: number, unit: string }
+ * @param {Object} options.parameterMetadata - keyed by parameter name
+ *   Each entry: { category, confidence, display_name, ... }
+ * @param {number} [options.topN=15] - Number of parameters to show
+ * @param {Function} [options.onParameterClick] - callback(paramName, metadata)
+ *   Fired when user clicks a bar; host page shows the detail card.
+ */
+function renderTornado(container, options) { ... }
+```
+
+- Horizontal bars: left = LCOE decrease, right = LCOE increase
+- Bar color = parameter category (from metadata)
+- Bar opacity = confidence level
+- Top N parameters shown (default 15), sorted by |elasticity|
+- Click handler triggers parameter detail card
+
+#### CAS Breakdown (`static/js/cas_breakdown.js`)
+
+```javascript
+/**
+ * Render CAS cost breakdown as a stacked bar chart.
+ *
+ * @param {HTMLElement} container
+ * @param {Object} options
+ * @param {Object} options.cas - Top-level CAS accounts { CAS10: {name, cost_m_usd}, ... }
+ * @param {Object} [options.cas22_detail] - CAS22 sub-accounts (for drill-down)
+ * @param {boolean} [options.showSubAccounts=false] - Expand CAS22 detail
+ * @param {Function} [options.onAccountClick] - callback(casCode, accountData)
+ */
+function renderCASBreakdown(container, options) { ... }
+```
+
+- Stacked horizontal bar: one segment per CAS account
+- CAS22 can expand to show sub-accounts (click to drill down)
+- Overridden accounts flagged with a marker
+- Hover shows: account name, cost, % of total, override status
+
+#### Comparison Charts (`static/js/comparison.js`)
+
+```javascript
+/**
+ * Render side-by-side comparison of multiple concepts.
+ *
+ * @param {HTMLElement} container
+ * @param {Object} options
+ * @param {Array<Object>} options.concepts - Array of concept data objects (full JSON)
+ * @param {string} options.view - "tornado" | "cas" | "headline"
+ * @param {Object} [options.alignmentConfig]
+ *   For tornado view: which parameters to align across concepts,
+ *   which to show in concept-unique sections.
+ *   #TODO: Define alignment algorithm. Likely: parameters that appear
+ *          in >1 concept are "shared" and aligned horizontally.
+ *          Parameters unique to one concept go in a separate section.
+ */
+function renderComparison(container, options) { ... }
+```
+
+#### Parameter Detail Card (`static/js/parameter_card.js`)
+
+```javascript
+/**
+ * Show a detail card for a specific parameter.
+ * Appears as a popover/modal anchored to the clicked bar.
+ *
+ * @param {HTMLElement} anchor - Element to position relative to
+ * @param {Object} options
+ * @param {string} options.paramName - Parameter key
+ * @param {Object} options.sensitivity - { elasticity, baseline, unit }
+ * @param {Object} options.metadata - from parameter_metadata
+ *   { category, confidence, range, source, source_quote, modeling_note,
+ *     display_name, display_unit, display_multiplier }
+ */
+function showParameterCard(anchor, options) { ... }
+```
+
+Card contents (matching US-5):
+1. Display name + baseline value (with unit)
+2. Source citation
+3. Assumed range + why
+4. Confidence level (with visual badge)
+5. Modeling note (how the parameter flows through the cost model)
+6. Category badge (shared-baseline / key-innovation / etc.)
 
 ---
 
-## 7. Work Item Decomposition (Sketch)
+## 6. Constraints & Invariants
 
-These are the logical work items. Sizing and sequencing are TBD — this section is for planning visibility, not commitment.
+### 6.1 Design Principles (Invariants)
+
+These principles govern all design decisions — they are the invariants, not suggestions.
+
+| Principle | Implementation |
+|---|---|
+| **Trustworthy density** | Dark background, high-contrast type, compact spacing. Data-to-ink ratio over whitespace. Bloomberg terminal, not marketing dashboard. The user is a domain expert who wants to see the data. Every number earns its space; every visualization serves a decision. |
+| **Uncertainty is visual, not footnoted** | Confidence levels are as visually prominent as the values themselves. A reviewer should never mistake a speculative estimate for a well-grounded one. Color, opacity, hatching, badges — uncertainty is impossible to ignore. |
+| **Narrative at the point of need** | Context (why this value, how it's modeled, what would change it) appears exactly where the reviewer needs it — attached to the parameter via hover/click, not in a separate document. |
+| **Compare by default** | A number in isolation is almost meaningless for TEA. The tool nudges toward "compared to what?" — showing where a value sits relative to the population of analyzed concepts, even in single-concept view. |
+| **The overview invites exploration** | The entry point shows enough to make you curious. Like a museum map — you should want to explore rooms, not need a guide to find them. |
+
+### 6.2 Visual Encoding Rules
+
+**Color palette** (parameter categories):
+
+| Category | Color | Usage |
+|---|---|---|
+| Shared baseline | `#6B7280` (gray) | Parameters same across all concepts |
+| Well-established | `#3B82F6` (blue) | Concept-specific, well-grounded |
+| Key innovation | `#10B981` (green) | The concept's claimed breakthrough |
+| Concept-unique | `#F59E0B` (amber) | Novel, no precedent to calibrate |
+| High-risk | `#EF4444` (red) | Poorly constrained + high impact |
+
+**Confidence encoding**:
+
+| Level | Treatment |
+|---|---|
+| High | Full opacity, solid fill, no badge |
+| Medium | 80% opacity, "~" badge |
+| Low | 60% opacity, hatched fill pattern, "?" badge |
+
+### 6.3 Data Integrity Rules
+
+1. **Typed Pydantic models** — no raw dicts. All data flowing between pipeline, server, and frontend has a Pydantic model with validated types. Mismatches raise hard errors, not silent corruption.
+2. **Two data sources** — cost model data (from 1costingfe `ForwardResult` or standalone scripts) and narrative data (from analysis.md via LLM extraction). Both produce typed models.
+3. **Sparse superset schema** — all CAS accounts and power balance fields are always present (some zero). Parameter metadata tells the UI which fields are meaningful per concept.
+4. **All monetary values in M$** — CAS accounts carry `cost_m_usd: float`. No unit ambiguity.
+5. **Elasticity is dimensionless** — `(dLCOE/dp) * (p/LCOE)`, directly comparable across parameters and across concepts.
+6. **Standalone concepts must conform** — `to_explorer_dict()` output must pass `CostModelData.model_validate()`. Pipeline errors on validation failure, not silent degradation.
+7. **Narrative is LLM-extracted, not hallucinated** — `NarrativeData` is a faithful restructuring of analysis.md content. The explorer displays it alongside the source for verification.
+
+### 6.4 Open Design Questions
+
+Collected from all `#TODO` markers throughout this document, with original context preserved:
+
+| ID | Location | Question | Context |
+|---|---|---|---|
+| T1 | §2.1 (CostModelData) | Implement `from_forward_result()` classmethod | Must use `dataclasses.asdict()` on CostResult and PowerTable, map CAS fields, map cas22_detail dict, map sensitivity dict → SensitivityAnalysis, populate overridden flags from result.overridden list |
+| T2 | §3.3 (Narrative Extraction) | Define the exact prompt template for narrative LLM extraction | Key choices: Should the LLM see model_output.txt alongside analysis.md? (Probably yes.) How many risks in top_risks? (Cap at 5.) How strict on eliminated_costs / novel_costs? (Only if explicitly stated or clearly implied.) |
+| T3 | §3.4 (1costingfe Integration) | CAS account display name mapping | The CAS account names ("Preconstruction", "Buildings", etc.) are not stored in CostResult — they're implicit from the field name (cas10, cas21, etc.). The explorer needs a static mapping of CAS code → display name. Check if 1costingfe has this mapping already, or define it in the explorer. |
+| T4 | §3.6 (base.html.j2) | Concept breadcrumb on concept pages | Navigation breadcrumb when viewing a single concept page — currently a placeholder comment |
+| T5 | §5.2 (Caching) | Profile model.forward() latency | If <50ms, caching may be unnecessary. If >200ms, caching is essential for slider UX. Also profile sensitivity() — if it's the slow part (JAX JIT), consider only recomputing LCOE on slider change and leaving the sensitivity ranking from pre-computed data. |
+| T6 | §5.4 (comparison.js) | Define comparison alignment algorithm | Likely: parameters that appear in >1 concept are "shared" and aligned horizontally. Parameters unique to one concept go in a separate section. |
+
+### 6.5 Resolved Design Questions
+
+| ID | Question | Resolution |
+|---|---|---|
+| Q1 | ~~Exact structure of `model.sensitivity()` return value~~ | **RESOLVED** — returns `{"engineering": {...}, "financial": {...}}`, each mapping param→elasticity (float) |
+| Q2 | ~~Best way to get structured data from model_setup.py~~ | **RESOLVED** — costingfe: `CostModelData.from_forward_result()`. Standalone: implement `to_explorer_dict()`. Pipeline writes `model_output.json`. |
+| Q3 | ~~Narrative extraction: automated vs. authored?~~ | **RESOLVED** — LLM extraction via `claude -p` with structured output against `NarrativeData` schema. Runs before synthesis stage. |
+| Q4 | ~~Comparison page data loading~~ | **RESOLVED** — Lazy fetch via `GET /api/concepts/{id}`. Server is primary. |
+| Q5 | ~~Comparison concept selection UX~~ | **RESOLVED** — Entry view focuses on one concept. Concept profile page has an option to add others for comparison. No checkboxes on entry grid. |
+| Q6 | ~~model_metadata.yaml authoring strategy~~ | **RESOLVED** — Hybrid: LLM-generated draft from model_setup.py + analysis.md, human reviews category assignments. |
+| Q7 | ~~Explorer state protocol for agent integration~~ | **RESOLVED** — Both: agent reads `data/{id}.json` from filesystem for pre-computed data, calls `GET /api/state` on running server for live slider state. |
+| Q8 | ~~Standalone concepts: sliders or pre-computed only?~~ | **RESOLVED** — Standalone concepts get full explorer experience (profile, tornado, CAS, comparison) but no sliders. Sliders are costingfe-only. |
+| Q9 | 1costingfe.forward() and sensitivity() latency | **TODO** — needs profiling (P3 work item). Determines debounce/cache strategy for sliders. |
+
+---
+
+## 7. Phasing
 
 ### Prerequisites (before any explorer work)
 
 | # | Item | Description |
 |---|---|---|
-| P1 | **Pydantic models** | Define `models.py` with all types from §2.2. This is the contract everything else builds against. |
+| P1 | **Pydantic models** | Define `models.py` with all types from §2.1. This is the contract everything else builds against. |
 | P2 | **Structured JSON output from pipeline** | Add `model_output.json` to the model-setup pipeline stage. Costingfe concepts: `CostModelData.from_forward_result()`. Standalone concepts: implement `to_explorer_dict()`. |
 | P3 | **Profile 1costingfe.forward() latency** | Benchmark forward() and sensitivity() for 2-3 concepts. Determines caching strategy. |
 
@@ -999,147 +1193,12 @@ These are the logical work items. Sizing and sequencing are TBD — this section
 | C1 | **LLM narrative extraction pipeline stage** | `claude -p` call with structured output → `NarrativeData` for each concept from analysis.md |
 | C2 | **Parameter metadata authoring** | `model_metadata.yaml` for all 8 approved concepts. LLM-generated draft from model_setup.py + analysis.md, human reviews category assignments. |
 
----
+### Build Layers
 
-## 8. Open Questions & TODOs
+All five layers are in scope:
 
-Collected from throughout this document:
-
-| ID | Question | Impact | Status |
-|---|---|---|---|
-| Q1 | ~~Exact structure of `model.sensitivity()` return value~~ | Schema design | **RESOLVED** — returns `{"engineering": {...}, "financial": {...}}`, each mapping param→elasticity (float) |
-| Q2 | ~~Best way to get structured data from model_setup.py~~ | Data extraction | **RESOLVED** — costingfe: `CostModelData.from_forward_result()`. Standalone: implement `to_explorer_dict()`. Pipeline writes `model_output.json`. |
-| Q3 | ~~Narrative extraction: automated vs. authored?~~ | Content pipeline | **RESOLVED** — LLM extraction via `claude -p` with structured output against `NarrativeData` schema. Runs before synthesis stage. |
-| Q4 | ~~Comparison page data loading~~ | Compare page architecture | **RESOLVED** — Lazy fetch via `GET /api/concepts/{id}`. Server is primary. |
-| Q5 | ~~Comparison concept selection UX~~ | UX flow | **RESOLVED** — Entry view focuses on one concept. Concept profile page has an option to add others for comparison. No checkboxes on entry grid. |
-| Q6 | ~~model_metadata.yaml authoring strategy~~ | Content strategy | **RESOLVED** — Hybrid: LLM-generated draft from model_setup.py + analysis.md, human reviews category assignments. |
-| Q7 | ~~Explorer state protocol for agent integration~~ | Agent handoff | **RESOLVED** — Both: agent reads `data/{id}.json` from filesystem for pre-computed data, calls `GET /api/state` on running server for live slider state. Exact protocol deferred to epic Item 5. |
-| Q8 | ~~Standalone concepts: sliders or pre-computed only?~~ | Scope of server mode | **RESOLVED** — Standalone concepts get full explorer experience (profile, tornado, CAS, comparison) but no sliders. Sliders are costingfe-only. |
-| Q9 | 1costingfe.forward() and sensitivity() latency | Caching strategy | TODO — needs profiling (P3 work item). Determines debounce/cache strategy for sliders. |
-
----
-
-## Appendix A: Verified 1costingfe Data Structures
-
-Source: `/home/reid/1cfe/1costingfe/src/costingfe/types.py`
-
-### ForwardResult (returned by `model.forward()`)
-
-```python
-@dataclass
-class ForwardResult:
-    power_table: PowerTable
-    costs: CostResult
-    params: dict                          # All input params (for sensitivity analysis)
-    overridden: list[str] = []            # CAS keys that were cost-overridden
-    cas22_detail: dict[str, float] = {}   # CAS22 sub-account code → cost in M$
-    plasma_state: object = None           # PlasmaState when 0D model is active
-```
-
-### CostResult
-
-```python
-@dataclass
-class CostResult:
-    cas10: float = 0.0   # Pre-construction
-    cas21: float = 0.0   # Buildings
-    cas22: float = 0.0   # Reactor plant equipment
-    cas23: float = 0.0   # Turbine plant equipment
-    cas24: float = 0.0   # Electric plant equipment
-    cas25: float = 0.0   # Misc plant equipment
-    cas26: float = 0.0   # Heat rejection
-    cas27: float = 0.0   # Special materials
-    cas28: float = 0.0   # Digital twin
-    cas29: float = 0.0   # Contingency
-    cas20: float = 0.0   # Total direct costs (sum CAS21-29)
-    cas30: float = 0.0   # Indirect service costs
-    cas40: float = 0.0   # Owner's costs
-    cas50: float = 0.0   # Supplementary costs
-    cas60: float = 0.0   # Capitalized financial costs
-    cas70: float = 0.0   # Annualized O&M + replacement
-    cas71: float = 0.0   # Annualized O&M
-    cas72: float = 0.0   # Annualized scheduled replacement
-    cas80: float = 0.0   # Annualized fuel
-    cas90: float = 0.0   # Annualized financial (capital)
-    total_capital: float = 0.0  # CAS10-60 sum [M$]
-    lcoe: float = 0.0          # [$/MWh]
-    overnight_cost: float = 0.0 # [$/kW]
-```
-
-### PowerTable
-
-```python
-@dataclass
-class PowerTable:
-    p_fus: float       # Fusion power [MW]
-    p_ash: float       # Charged fusion product power [MW]
-    p_neutron: float   # Neutron power [MW]
-    p_rad: float       # Plasma radiation [MW]
-    p_wall: float      # Ash thermal on walls [MW]
-    p_dee: float       # Direct energy extracted electric [MW]
-    p_dec_waste: float # DEC waste heat [MW]
-    p_th: float        # Total thermal power [MW]
-    p_the: float       # Thermal electric power [MW]
-    p_et: float        # Gross electric power [MW]
-    p_loss: float      # Lost power [MW]
-    p_net: float       # Net electric power [MW]
-    p_pump: float      # Pumping power [MW]
-    p_sub: float       # Subsystem power [MW]
-    p_aux: float       # Auxiliary power [MW]
-    p_input: float     # Effective heating power [MW]
-    p_coils: float     # Coil power [MW]
-    p_cool: float      # Cooling power [MW]
-    p_cryo: float      # Cryogenic system power [MW]
-    p_target: float    # Target factory power [MW]
-    q_sci: float       # Scientific Q
-    q_eng: float       # Engineering Q
-    rec_frac: float    # Recirculating power fraction
-```
-
-**Note**: No existing `to_dict()` / `to_json()` on any of these types. Serialization will use `dataclasses.asdict()`.
-
-### Sensitivity return type
-
-```python
-def sensitivity(self, params: dict, cost_overrides: dict | None = None) -> dict[str, dict[str, float]]:
-    # Returns {"engineering": {param_name: elasticity, ...}, "financial": {param_name: elasticity, ...}}
-    # Elasticity = (dLCOE/dp) * (p/LCOE), dimensionless, via jax.grad
-```
-
----
-
-## Appendix B: model_setup.py Variant Survey
-
-8 concepts have model_setup.py files. They fall into two architectural patterns:
-
-### Pattern A: costingfe-backed (6 concepts)
-
-| Concept | Lines | Notes |
-|---|---|---|
-| 03-laser-icf-liquid-jet-target | ~393 | Heavy docstring |
-| 04-laser-icf (HB11) | ~339 | |
-| 05-planar-coil-stellarator | ~189 | Shortest; uses framework defaults heavily |
-| 06-magnetic-mirror (Pale Blue) | ~262 | |
-| 08-frc-w-direct-conversion (Helion) | ~489 | Complex module breakdown |
-| 11-magnetic-mirror (Realta) | ~278 | Marked STALE |
-
-**Pattern**: Import `costingfe` → instantiate `CostModel(concept=..., fuel=...)` → call `model.forward(...)` → print `result.costs` + `result.power_table` attributes.
-
-**Data extraction strategy**: Import the module, call `model.forward()`, use `dataclasses.asdict()` on the result. Clean and reliable.
-
-### Pattern B: Standalone (2 concepts)
-
-| Concept | Lines | Notes |
-|---|---|---|
-| 02-acoustic-icf-sonofusion | ~800-1000 | Custom `SonofusionPlantParams` dataclass |
-| 12-levitated-dipole | ~600+ | Custom `LevitatedDipolePlantParams` dataclass |
-
-**Pattern**: Define `@dataclass` with all physics/cost parameters → hand-coded CAS calculation → custom print formatting.
-
-**Data extraction strategy**: These need either:
-- (a) Refactor to return a dict matching the CostResult schema (invasive but clean)
-- (b) Parse model_output.txt (fragile, format-dependent)
-- (c) Add `model_output.json` output to the pipeline stage that generates model_output.txt (recommended — see §2.3)
-- (d) Require standalone scripts to implement a `to_explorer_dict()` function returning a standardized dict
-
-**No structured export exists** — neither pattern has `to_dict()`, `to_json()`, or any serialization method.
+- **Layer 1** — Single-concept profile: identity hero + sensitivity tornado chart + CAS breakdown for one concept. Proves the information architecture.
+- **Layer 2** — Parameter detail cards: hover/click detail on each sensitivity bar. Requires resolving T2 (metadata format). This is where "narrative at point of need" comes alive.
+- **Layer 3** — Comparison view: side-by-side profiles with aligned parameters and CAS breakdowns. Entry view with approved/in-progress grouping.
+- **Layer 4** — Interactive sliders: Server-backed `POST /api/compute` for live "what-if." The 1costingfe standardization helps — the cost model structure is regular enough to drive from the frontend, though concept-specific overrides add complexity.
+- **Layer 5** — Agent integration: Explorer exposes state via `GET /api/state` for `/manage-concept` to consume. Enables the tool + agent workflow described in US-12.
