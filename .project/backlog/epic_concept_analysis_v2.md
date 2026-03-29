@@ -214,13 +214,15 @@ Inspired by the ralph-init.sh generate → review → refine pattern, but adapte
 
 ---
 
-### Item 3: Source Addition and Incremental Updates [1.5 days]
+### Item 3: Source Addition and Incremental Updates [1.5 days] — COMPLETE
 
 **Type**: Implementation
 **Effort**: 1.5 days (spec 1h, design 2h, plan 1h, execute 8h)
+**Status**: Complete (2026-03-29)
 **Dependencies**: Item 1 (reuses feedback format, modal analysis prompt, staleness propagation)
 **Conventions**: Must follow companion-directory + symlink layout established by source replacement (`.project/active/source-replacement/`)
 **External Dep**: ~~`agentic-mbse[web]` feature (in progress on `webfetch-tools` branch)~~ — RESOLVED, merged. URL and PDF modes both work.
+**Work Item**: `.project/active/source-addition/` (spec, design, plan)
 
 **Objective**: Enable adding new data sources (PDF or URL) to a concept and incrementally updating the analysis without full re-run.
 
@@ -415,5 +417,5 @@ This is a tuning question, not a code bug. The pipeline works correctly at any `
 
 ---
 
-**Last Updated**: 2026-03-28
-**Next Action**: Spec Item 2 (build-visuals), Item 3 (source addition), or Item 4 (shared memory)
+**Last Updated**: 2026-03-29
+**Next Action**: Items 2 (build-visuals, in progress), 4 (shared memory), 5 (manage-concept)
