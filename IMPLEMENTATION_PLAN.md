@@ -36,7 +36,7 @@ Task 0 (deps + scaffold + vendor Plotly) → Task 1 (models) → Tasks 2, 4, 5
   - **Specs:** `specs/04-design-system.md` (vendor constraint), `specs/05-tornado-chart.md` (Plotly location), `specs/06-cas-breakdown.md` (Plotly location)
   - **Verification:** `uv sync` exits 0; `uv run python -c "import fastapi, pydantic, jinja2, yaml"` exits 0; `ls exploration/concept_explorer/static/vendor/plotly-basic.min.js` exits 0
 
-- [ ] **Task 1 — Pydantic data models** (`exploration/concept_explorer/models.py`)
+- [x] **Task 1 — Pydantic data models** (`exploration/concept_explorer/models.py`)
   - Define enums: `ConfinementFamily`, `FuelType`, `ModelType`, `ParameterCategory`, `Confidence`, `DataAvailability`, `RiskSeverity`, `ConceptStatus`
   - Define `CASAccount(name, cost_m_usd, overridden: bool = False)`
   - Define `HeadlineEconomics(lcoe_per_mwh, overnight_cost_per_kw, p_net_mw, q_eng, capacity_factor)`
@@ -57,7 +57,7 @@ Task 0 (deps + scaffold + vendor Plotly) → Task 1 (models) → Tasks 2, 4, 5
   - **Specs:** `specs/01-data-models.md`
   - **Verification:** `uv run mypy exploration/concept_explorer/models.py`; `uv run ruff check exploration/concept_explorer/models.py`
 
-- [ ] **Task 2 — Tests for data models** (`exploration/concept_explorer/tests/test_models.py`)
+- [x] **Task 2 — Tests for data models** (`exploration/concept_explorer/tests/test_models.py`)
   - AC-1: `CostModelData.from_forward_result()` populates all CAS10–CAS90 and C220101–C220700 accounts from a stub dict; zero-filled if key absent
   - AC-2: `ConceptData` with sensitivity keys not covered by `parameter_metadata` emits `UserWarning` (use `pytest.warns`)
   - AC-3: `ConceptData` round-trips via `model_dump_json()` → `model_validate_json()` without data loss
@@ -208,6 +208,8 @@ Task 0 (deps + scaffold + vendor Plotly) → Task 1 (models) → Tasks 2, 4, 5
 ---
 
 ## Gap Analysis
+
+**Task 1 discovery**: `uv run mypy exploration/concept_explorer/models.py` fails with "source file found twice" due to `src/concept_explorer/__init__.py`; use `--explicit-package-bases` flag for mypy. Also: bare `dict` / `list[dict]` without type params fails UP042/type-arg — use `dict[str, Any]` and `StrEnum` instead of `str, Enum`.
 
 **Task 0 discovery**: Plotly GitHub releases return 404 for `plotly-basic.min.js` — use `npm registry.npmjs.org/plotly.js-basic-dist-min` instead. Also: `pytest`, `ruff`, `mypy` are only in `[project.optional-dependencies].dev` but `uv sync` doesn't install optionals by default; `uv add --dev` is needed to populate the venv for the validation commands.
 
