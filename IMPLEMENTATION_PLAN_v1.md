@@ -12,6 +12,12 @@ uv run ruff check exploration/concept_explorer/
 uv run ruff format --check exploration/concept_explorer/
 ```
 
+**Current validation status (as of 2026-03-29):**
+- `pytest`: **87 passed, 0 failed** (test_models.py ×15, test_server.py ×21, test_state_and_compute.py ×12, test_extraction.py ×39)
+- `mypy`: **no issues** (9 source files)
+- `ruff check`: **all checks passed**
+- `ruff format --check`: **9 files already formatted**
+
 **Dependency chain:**
 ```
 Task 0 (deps + scaffold + vendor Plotly) → Task 1 (models) → Tasks 2, 4, 5
