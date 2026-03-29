@@ -120,7 +120,7 @@ Task 0 (deps + scaffold + vendor Plotly) → Task 1 (models) → Tasks 2, 4, 5
 
 > JS components have no automated test runner. Verification is manual browser testing. Ruff/mypy do not apply; check for syntax errors via browser console or `node --check`.
 
-- [ ] **Task 7 — Tornado chart** (`exploration/concept_explorer/static/js/tornado.js`)
+- [x] **Task 7 — Tornado chart** (`exploration/concept_explorer/static/js/tornado.js`)
   - Implement `renderTornado(container, options)` using Plotly.js horizontal bar traces
   - `options`: `{sensitivities, parameterMetadata, populationContext?, topN=15, onParameterClick?}`
   - Sort by `|elasticity|` descending, render top `topN`; merge engineering + financial
@@ -216,6 +216,8 @@ Task 0 (deps + scaffold + vendor Plotly) → Task 1 (models) → Tasks 2, 4, 5
 **Task 4 discovery**: `model.sensitivity()` returns plain elasticity floats, not `SensitivityEntry` — baselines must be pulled from `result.params[key]`. Also: `availability` lives in `result.params`, not `result.power_table`, so it must be injected before calling `from_forward_result()`. Use `sys.path` + fully-qualified package imports (`from exploration.concept_explorer.models import ...`) to satisfy both runtime and mypy `--explicit-package-bases`.
 
 **Task 6 discovery**: `_compute_cached` is defined inside `create_app` (closure), but name resolution for `_load_model_module` still uses module globals — `monkeypatch.setattr(server_module, "_load_model_module", ...)` correctly patches it for cache-hit tests. `cost_overrides` from the original `model.forward()` call are NOT preserved in `result.params` and are not re-applied on slider recompute (same behavior as `model.sensitivity()`).
+
+**Task 7 discovery**: `populationContext` spec types it as `ConceptManifest` but the correct type is `ParameterIndex` — only `ParameterIndex` carries per-parameter cross-concept elasticities needed for whiskers. Hatched fills require a separate Plotly trace per category (fillpattern is trace-level, not per-bar). Low-confidence bars in legend deduplicated via `showlegend: false` on hatched trace when solid trace already covers that category.
 
 **Task 5 discovery**: `TestClient` fixture return type must be `Generator[TestClient, None, None]` not `TestClient` — ruff/mypy require it. Page templates (index/compare/concept) are Tasks 10–12 so test fixtures create dist/ files directly rather than rendering; `_render_templates` silently skips missing templates. `lru_cache` is defined inside `create_app` closure so it closes over the per-app `concepts` dict — one cache per server instance, correct for tests.
 
