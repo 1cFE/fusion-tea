@@ -328,76 +328,76 @@ $SOURCES_DIR/
 
 ### 13-electrostatic-hybrid (6 files)
 
-- [ ] `iter-01/sources/avalanche-29m-raise-2026.md` → `URL` https://www.avalanchefusion.com/news-release/avalanche-energy-raises-29-million-following-plasma-physics-breakthroughs
-  - Notes:
-- [ ] `iter-01/sources/avalanche-300kv-press-release.md` → `URL` https://www.avalanchefusion.com/news-release/avalanche-energy-completes-final-series-a-voltage-milestone-300-000-volts-in-compact-high-efficiency-prototype-fusion-machine
-  - Notes:
-- [ ] `iter-01/sources/avalanche-cwfest2023-blog.md` → `URL` https://www.avalanchefusion.com/blog/cwfest2023
-  - Notes:
-- [ ] `iter-01/sources/avalanche-fusionwerx-grant.md` → `URL` https://www.avalanchefusion.com/news-release/avalanche-energy-awarded-10-million-grant-from-washington-state-to-develop-fusionwerx-neutron-factory
-  - Notes:
-- [ ] `iter-01/sources/avalanche-orbitron-page.md` → `URL` https://www.avalanchefusion.com/orbitron
-  - Notes:
-- [ ] `iter-01/sources/talk-polywell-orbitron-paper-discussion.md` → `URL` https://talk-polywell.org/bb/viewtopic.php?t=6587
-  - Notes: Forum page — may extract poorly
+- [x] `iter-01/sources/avalanche-29m-raise-2026.md` → `URL` https://www.avalanchefusion.com/news-release/avalanche-energy-raises-29-million-following-plasma-physics-breakthroughs
+  - Notes: Full press release. 29 vs 13 lines. Investor quotes, peer-reviewed paper titles, FusionWERX details. YES.
+- [x] `iter-01/sources/avalanche-300kv-press-release.md` → `URL` https://www.avalanchefusion.com/news-release/avalanche-energy-completes-final-series-a-voltage-milestone-300-000-volts-in-compact-high-efficiency-prototype-fusion-machine
+  - Notes: Full press release. 29 vs 13 lines. Detailed voltage/field gradient explanation, Riordan/Langtry quotes, comparison plot reference. YES.
+- [x] `iter-01/sources/avalanche-cwfest2023-blog.md` → `URL` https://www.avalanchefusion.com/blog/cwfest2023
+  - Notes: Full CWFest 2023 talk transcript. 149 vs 42 lines. Massive improvement — complete Langtry presentation with PIC simulation details, Rider/Lampe critiques, coulomb collision analysis, WarpX results. YES.
+- [x] `iter-01/sources/avalanche-fusionwerx-grant.md` → `URL` https://www.avalanchefusion.com/news-release/avalanche-energy-awarded-10-million-grant-from-washington-state-to-develop-fusionwerx-neutron-factory
+  - Notes: Full press release. 33 vs 15 lines. 6 MV/m spec, uFPNS details, Kurion facility history, workforce/supply chain context. YES.
+- [x] `iter-01/sources/avalanche-orbitron-page.md` → `URL` https://www.avalanchefusion.com/orbitron
+  - Notes: Full product page. 35 vs 13 lines. Component descriptions (fusion core, fuel injectors, energy conversion, BOP), p-B11 mention, modular scaling. YES.
+- [x] `iter-01/sources/talk-polywell-orbitron-paper-discussion.md` → `URL` https://talk-polywell.org/bb/viewtopic.php?t=6587
+  - Notes: Forum thread. 20 vs 14 lines. MIXED — trafilatura captured partial thread (Djnz post, some Giorgio replies). Orig had curated Brillouin limit analysis and pulsed-mode speculation. WebFetch got more (30kV/50kV limits, Borghei feedthrough). New has AIP paper link but loses structured analysis.
 
 ---
 
 ### 14-magnetized-target-fusion-pneumatic-compression (5 files)
 
-- [ ] `iter-01/sources/general-fusion-technical-details.md` → `SEARCH` General Fusion technical details, COMSOL story, compression system specs
-  - Notes:
-- [ ] `iter-01/sources/general-fusion-technology-overview.md` → `URL` https://generalfusion.com/fusion-technology/
-  - Notes:
-- [ ] `iter-02/sources/general-fusion-fst-2025-fuel-cycles.md` → `URL` https://www.tandfonline.com/doi/full/10.1080/15361055.2025.2526266
-  - Notes: May be paywalled
-- [ ] `iter-02/sources/general-fusion-iaea-fec-2025-abstract.md` → `URL` https://conferences.iaea.org/event/392/contributions/35891/attachments/19864/33918/IAEA%20FEC%202025%20LM26%20Abstract%20-%20Hildebrand.pdf
-  - Notes: PDF
-- [ ] `iter-02/sources/general-fusion-lm26-milestones-2025.md` → `BODY` https://generalfusion.com/post/watch-general-fusions-lm26-... (URL in body)
-  - Notes:
+- [x] `iter-01/sources/general-fusion-technical-details.md` → `SEARCH` General Fusion technical details, COMSOL story, compression system specs
+  - Notes: Found COMSOL story (comsol.com/story/compressing-the-timeline-to-a-fusion-future-141951). 108 vs 61 lines. Full Veryst/GF engineering article: LM26 EM compressor design, Johnson-Cook lithium model, SLR/PDV validation, 40 liner compressions, impedance tuning, cluster simulation. YES.
+- [x] `iter-01/sources/general-fusion-technology-overview.md` → `URL` https://generalfusion.com/fusion-technology/
+  - Notes: Thin page — mostly JS-rendered. 17 vs 22 lines. New has Wurzel/Hsu 2025 citation and "1 of 4" claim. Orig had more content (24 prototypes, 200K experiments, LM26 targets, timeline). WebFetch returned richer content (full timeline 2002-2028, patent count). NO.
+- [x] `iter-02/sources/general-fusion-fst-2025-fuel-cycles.md` → `URL` https://www.tandfonline.com/doi/full/10.1080/15361055.2025.2526266
+  - Notes: T&F paywalled; user provided local PDF. 460 vs 29 lines. Full Flynn et al. paper (SRNL + GF): LLE vs Li fuel cycles, ~4m cavity, 350-fold compression, 1.5m blanket 4π coverage, TBR analysis, tritium inventory modeling, SRNL extraction tech. YES.
+- [x] `iter-02/sources/general-fusion-iaea-fec-2025-abstract.md` → `URL` https://conferences.iaea.org/event/392/contributions/35891/attachments/19864/33918/IAEA%20FEC%202025%20LM26%20Abstract%20-%20Hildebrand.pdf
+  - Notes: PDF downloaded locally (URL had encoding issue). 40 vs 26 lines. Full abstract text: MTF approach, LM26 50% scale, theta-pinch solid Li liner, 10 keV target, nTτ > 1e21 Lawson target 2026, MHD/solid mechanic sims. YES.
+- [x] `iter-02/sources/general-fusion-lm26-milestones-2025.md` → `BODY` https://generalfusion.com/post/watch-general-fusions-lm26-achieves-first-plasma-compression/
+  - Notes: Video-focused page, very thin. 14 vs 30 lines. Only captures April 2025 compression milestone announcement. Orig was multi-source compilation (timeline, PI3 specs, commercial targets). WebFetch returned same thin content. NO (video page).
 
 ---
 
 ### 15-sheared-flow-stabilized-z-pinch (6 files)
 
-- [ ] `iter-01/sources/century-demo-system.md` → `URL` https://www.zapenergy.com/news/zap-attracts-130m-as-demo-system-begins-operations
-  - Notes:
-- [ ] `iter-01/sources/engineering-paradigms-paper-summary.md` → `URL` https://www.tandfonline.com/doi/full/10.1080/15361055.2023.2209131
-  - Notes:
-- [ ] `iter-01/sources/fuze-q-and-fuze-3.md` → `URL` https://www.zapenergy.com/news/zap-energy-exceeds-gigapascal-fusion-plasma-pressures-on-new-fusion-device-fuze-3
-  - Notes:
-- [ ] `iter-01/sources/zap-energy-website-how-it-works.md` → `URL` https://www.zapenergy.com/how-it-works
-  - Notes:
-- [ ] `iter-02/sources/century-and-fuze-a-updates-2025.md` → `URL` https://meetings-archive.aps.org/dpp/2025/jm12/6/
-  - Notes:
-- [ ] `iter-02/sources/fuze-3-gigapascal-results-2025.md` → `URL` https://www.sciencedaily.com/releases/2025/11/251120002836.htm
-  - Notes:
+- [x] `iter-01/sources/century-demo-system.md` → `URL` https://www.zapenergy.com/news/zap-attracts-130m-as-demo-system-begins-operations
+  - Notes: Full press release. 53 vs 34 lines. $130M Series D, $330M total, Century specs (1080 shots, 100kW, bismuth, vertical Z-pinch, 50 MWe module target), Conway/Thompson quotes. YES.
+- [x] `iter-01/sources/engineering-paradigms-paper-summary.md` → `URL` https://www.tandfonline.com/doi/full/10.1080/15361055.2023.2209131
+  - Notes: T&F paywalled; user provided local PDF. 723 vs 22 lines. Full Thompson, Levitt, Nelson & Shumlak (FST 2023): 190 MWt reactor, 10 Hz, LiPb blanket, drive efficiency, neutron management, liquid metal first wall. YES.
+- [x] `iter-01/sources/fuze-q-and-fuze-3.md` → `URL` https://www.zapenergy.com/news/zap-energy-exceeds-gigapascal-fusion-plasma-pressures-on-new-fusion-device-fuze-3
+  - Notes: Full press release. 55 vs 34 lines. 830 MPa/1.6 GPa, Thomson scattering, 3-electrode design, Adams/Levitt quotes, device lineage. YES.
+- [x] `iter-01/sources/zap-energy-website-how-it-works.md` → `URL` https://www.zapenergy.com/how-it-works
+  - Notes: JS-rendered page. 27 vs 15 lines. Trafilatura captured mostly photo captions, not technical content. WebFetch returned much richer (50cm plasma, 1mm wide, <1 MA for Q>1, 10 Hz, 50 MWe, 10 ft footprint). NO.
+- [x] `iter-02/sources/century-and-fuze-a-updates-2025.md` → `URL` https://meetings-archive.aps.org/dpp/2025/jm12/6/
+  - Notes: Full APS DPP abstract. 52 vs 47 lines. Levitt presentation, FuZE-3 >10²⁴/m³, FuZE-Q electrode upgrade, FuZE-A intro, Century integration. MIXED — new has full abstract text but orig was multi-source compilation with Century FST paper, TechCrunch, DOE milestones.
+- [x] `iter-02/sources/fuze-3-gigapascal-results-2025.md` → `URL` https://www.sciencedaily.com/releases/2025/11/251120002836.htm
+  - Notes: Full ScienceDaily article. 71 vs 29 lines. Complete press coverage: 830 MPa, 1.6 GPa, Thomson scattering, 3-electrode design, Adams/Levitt quotes, quasi-steady-state distinction from ICF. YES.
 
 ---
 
 ### 16-muon-catalyzed-fusion (3 files)
 
-- [ ] `iter-01/sources/acceleron-arpa-e-presentation-2025.md` → `URL` https://arpa-e.energy.gov/sites/default/files/2025-08/Day2_09_Newburg.pdf
-  - Notes: PDF
-- [ ] `iter-01/sources/acceleron-company-overview.md` → `URL` https://www.acceleron.energy/
-  - Notes:
-- [ ] `iter-01/sources/muon-catalyzed-fusion-physics.md` → `URL` https://en.wikipedia.org/wiki/Muon-catalyzed_fusion
-  - Notes:
+- [x] `iter-01/sources/acceleron-arpa-e-presentation-2025.md` → `URL` https://arpa-e.energy.gov/sites/default/files/2025-08/Day2_09_Newburg.pdf
+  - Notes: PDF downloaded locally. 270 vs 41 lines. Full 22-slide presentation with images: active-target muon source, GEANT4/ML optimization, PSI πE1.2 beam area, diamond anvil cell, DT compression results, LCOE contour plot, Brookhaven roadmap. YES.
+- [x] `iter-01/sources/acceleron-company-overview.md` → `URL` https://www.acceleron.energy/
+  - Notes: Full company page. 53 vs 32 lines. Muon-catalyzed fusion explainer, 500-1000°C operation, 100 MW target, PSI/Fermilab/ORNL/ANL partnerships, Series A, hiring. Orig was multi-source compilation; new is single-source but covers core content. YES.
+- [x] `iter-01/sources/muon-catalyzed-fusion-physics.md` → `URL` https://en.wikipedia.org/wiki/Muon-catalyzed_fusion
+  - Notes: Full Wikipedia article. 307 vs 47 lines. Comprehensive: Sakharov/Alvarez history, 207x mass ratio, 186x closer nuclei, dtμ formation, α-sticking 0.3-0.5%, 150 fusions/muon measured, ~6 GeV/muon cost, Vesman mechanism, cycling rates, Acceleron/Norrønt mention. YES.
 
 ---
 
 ### 17-laser-icf-direct-drive (5 files)
 
-- [ ] `iter-01/sources/focused-energy-technology.md` → `BODY` https://focused-energy.co/technology (URL in sources line)
-  - Notes:
-- [ ] `iter-01/sources/xcimer-energy-approach.md` → `BODY` https://xcimer.energy/approach/ (URL in title)
-  - Notes:
-- [ ] `iter-02/sources/focused-energy-callahan-interview.md` → `URL` https://physicsworld.com/a/focusing-on-fusion-debbie-callahan-talks-commercial-laser-fusion/
-  - Notes:
-- [ ] `iter-02/sources/hylife-energy-conversion-notes.md` → `SEARCH` HYLIFE-II IFE energy conversion, helium Brayton cycle for laser fusion
-  - Notes: Research notes — may not have a single original URL
-- [ ] `iter-02/sources/xcimer-science-page.md` → `URL` https://xcimer.energy/science/
-  - Notes:
+- [x] `iter-01/sources/focused-energy-technology.md` → `BODY` https://focused-energy.co/technology (URL in sources line)
+  - Notes: JS-rendered page. 19 vs 47 lines. Marketing text only — no laser specs, no LightHouse details, no repetition rate. Orig was multi-source (4 sources) with full technical compilation. WebFetch returned richer content ($40M Amplitude, Pearl ~4mm, +30x gain). NO.
+- [x] `iter-01/sources/xcimer-energy-approach.md` → `BODY` https://xcimer.energy/approach/ (URL in title)
+  - Notes: 29 vs 45 lines. Captures core approach (30x cost reduction, <1 Hz, FLiBe, gas laser) but lacks specific specs (10+ MJ, 248 nm, HYLIFE III name, HDD). Orig had more structured detail. WebFetch returned comparable. MIXED.
+- [x] `iter-02/sources/focused-energy-callahan-interview.md` → `URL` https://physicsworld.com/a/focusing-on-fusion-debbie-callahan-talks-commercial-laser-fusion/
+  - Notes: Full interview. 127 vs 32 lines. Complete Callahan Q&A: direct drive vs indirect, NIF gain 4.1 (Apr 2025), <1% laser efficiency, 10% target, 900K shots/day, Pearl ~4mm, SRNL tritium collaboration, LightHouse pilot 2030s. YES.
+- [x] `iter-02/sources/hylife-energy-conversion-notes.md` → `SEARCH` HYLIFE-II IFE energy conversion, helium Brayton cycle for laser fusion
+  - Notes: Found OSTI bibliographic record (Hoffman, UCRL-CR-105908). 111 vs 31 lines. HYLIFE-2 BOP definition, FLiBe primary coolant, IHX/steam generator/steam plant reference design. Orig was analytical comparison of Xcimer energy conversion ambiguity. MIXED — different content, both useful.
+- [x] `iter-02/sources/xcimer-science-page.md` → `URL` https://xcimer.energy/science/
+  - Notes: Full science page. 155 vs 20 lines. NIF specs ($3.6B, 192 beams, 120t glass), capsule gain 20x, 0.2mg fuel, 250 kJ absorbed, 5 MJ output, 90% coupling (vs NIF 12%), 1000x wall-plug gain target, safety analysis, FLiBe chamber. YES.
 
 ---
 

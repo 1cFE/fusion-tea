@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Essential Meta Tags --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Google Consent Mode  — must load BEFORE Osano & GTM --><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      // SET DEFAULTS (Must be first)
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        analytics_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        personalization_storage: "denied",
+        functionality_storage: "granted",
+        security_storage: "granted",
+        wait_for_update: 500,
+      });
+      // POLL FOR INITIAL STATE
+      (function checkInitialOsano() {
+        if (
+          window.Osano &&
+          Osano.cm &&
+          typeof Osano.cm.getConsent === "function"
+        ) {
+          const consent = Osano.cm.getConsent();
+          // Only fire if the user has a stored preference
+          if (consent && Object.keys(consent).length > 0) {
+            updateGoogleConsent(consent);
+          }
+        } else {
+          setTimeout(checkInitialOsano, 50);
+        }
+      })();
+      // REUSABLE UPDATE FUNCTION
+      function updateGoogleConsent(osanoConsent) {
+        gtag("consent", "update", {
+          analytics_storage:
+            osanoConsent.ANALYTICS === "ACCEPT" ? "granted" : "denied",
+          ad_storage:
+            osanoConsent.MARKETING === "ACCEPT" ? "granted" : "denied",
+          ad_user_data:
+            osanoConsent.MARKETING === "ACCEPT" ? "granted" : "denied",
+          ad_personalization:
+            osanoConsent.MARKETING === "ACCEPT" ? "granted" : "denied",
+        });
+        // Crucial for GTM triggers
+        window.dataLayer.push({
+          event: "consent_updated",
+          osano_data: osanoConsent,
+        });
+      }
+    </script><!-- Osano --><script src="https://cmp.osano.com/alczV8f9Ax/56681b04-1a60-4545-a1a6-99b9b718a8e6/osano.js"></script><!-- Google Tag Manager --><script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-MCC945TD");
+    </script><meta name="generator" content="Astro v5.16.5"><!-- Primary Page Information --><title>Progress Towards Commercial Fusion Based on Zap Energy’s Sheared-Flow-Stabilized Z-Pinch Concept - 67th Annual Meeting of the APS Division of Plasma Physics</title><meta name="description" content="Zap Energy pursues the sheared-flow-stabilized (SFS) Z-pinch concept for fusion energy applications [1]. SFS offers a path toward pulsed, quasi-steady-state, Z "><link rel="canonical" href="https://archive.aps.org/dpp/2025/jm12/6/"><!-- Favicon and Icons --><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png"><link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png"><meta name="citation_title" content="Progress Towards Commercial Fusion Based on Zap Energy’s Sheared-Flow-Stabilized Z-Pinch Concept"><meta name="citation_author" content="Benjamin J Levitt"><meta name="citation_author_institution" content="Zap Energy Inc."><meta name="citation_abstract" content="Zap Energy pursues the sheared-flow-stabilized (SFS) Z-pinch concept for fusion energy applications [1]. SFS offers a path toward pulsed, quasi-steady-state, Z pinches, with enhanced stability properties against MHD modes characteristic of static Z pinches. Zap is the early developer and global leader of this concept. Zap adopts a strategic parallel approach, seeking to complete the physics basis for the concept, determine the scaling laws to high-gain performance by operating multiple SFS experimental platforms, while simultaneously developing the engineering solutions required for a fusion pilot plant [2]. Progress on the SFS conceptual physics basis will be presented. A new multi-electrode Zap device, FuZE-3, will be introduced. This system allows fine control of the acceleration and compression current drives and has successfully compressed plasmas to above 1024/m3. FuZE-Q has been upgraded with a new electrode stack which allows advanced studies of the initial breakdown and acceleration phase, which leads to the development and optimization of the stabilizing sheared flow. We also introduce an upcoming platform, FuZE-A, which will develop advanced accelerators required for stabilization of high-performance plasmas. Finally the main effort to develop pilot plant power handling systems is called Century, which integrates repetitive pulsed power, high-duty-cycle cathodes, and liquid metal wall systems.  [1] B. Levitt, Phys. Plasmas, 2023.[2] M. C. Thompson, Fus. Sci and Tech., 2023."><meta name="citation_publication_date" content="2025/11/18"><meta name="citation_conference_title" content="67th Annual Meeting of the APS Division of Plasma Physics"><!-- Open Graph Meta Tags (for social media sharing) --><meta property="og:title" content="Progress Towards Commercial Fusion Based on Zap Energy’s Sheared-Flow-Stabilized Z-Pinch Concept - 67th Annual Meeting of the APS Division of Plasma Physics"><meta property="og:description" content="Zap Energy pursues the sheared-flow-stabilized (SFS) Z-pinch concept for fusion energy applications [1]. SFS offers a path toward pulsed, quasi-steady-state, Z "><meta property="og:image" content="/icon-512.png"><meta property="og:image:width" content="512"><meta property="og:image:height" content="512"><meta property="og:type" content="website"><!-- Twitter Card Meta Tags --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Progress Towards Commercial Fusion Based on Zap Energy’s Sheared-Flow-Stabilized Z-Pinch Concept - 67th Annual Meeting of the APS Division of Plasma Physics"><meta name="twitter:description" content="Zap Energy pursues the sheared-flow-stabilized (SFS) Z-pinch concept for fusion energy applications [1]. SFS offers a path toward pulsed, quasi-steady-state, Z "><meta name="twitter:image" content="/icon-512.png"><!-- Stylesheets --><!-- KaTeX for math rendering --><link rel="stylesheet" href="/katex/katex.min.css"><!-- APS Archive Branding Styles --><link rel="stylesheet" href="/styles.css"><!-- Scripts --><!-- KaTeX core library and auto-render --><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js"></script><!-- KaTeX auto-render initialization --><script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (window.renderMathInElement) {
+          renderMathInElement(document.body, {
+            delimiters: [
+              { left: "$$", right: "$$", display: true },
+              { left: "\\[", right: "\\]", display: true },
+              { left: "$", right: "$", display: false },
+              { left: "\\(", right: "\\)", display: false },
+            ],
+            throwOnError: false,
+          });
+        }
+      });
+    </script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MCC945TD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <!-- Site Header --> <header id="site-header"> <a href="/" data-navigation-type="header_nav"> <img src="/aps-logo.svg" alt="APS Logo" width="200" height="auto"> </a> </header> <!-- Page Content -->  <main> <nav class="breadcrumbs" aria-label="Breadcrumb"> <ol> <li> <a href="/" data-navigation-type="breadcrumb_nav">All Archives</a> </li> <li> <a href="/dpp" data-navigation-type="breadcrumb_nav">DPP</a> </li><li> <a href="/dpp/2025" data-navigation-type="breadcrumb_nav">67th Annual Meeting of the APS Division of Plasma Physics</a> </li><li> <a href="/dpp/2025/jm12" data-navigation-type="breadcrumb_nav">DOE Milestone Awardee Physics Basis II</a> </li> <li aria-current="page">Progress Towards Commercial Fusion Based on Zap Energy’s Sheared-Flow-Stabilized Z-Pinch Concept</li> </ol> </nav> <article> <header> <h1>Progress Towards Commercial Fusion Based on Zap Energy’s Sheared-Flow-Stabilized Z-Pinch Concept</h1> <p> <data value="ORAL">ORAL</data>     </p>  <section> <h2>Abstract</h2> <div>Zap Energy pursues the sheared-flow-stabilized (SFS) Z-pinch concept for fusion energy applications [1]. SFS offers a path toward pulsed, quasi-steady-state, Z pinches, with enhanced stability properties against MHD modes characteristic of static Z pinches. Zap is the early developer and global leader of this concept. Zap adopts a strategic parallel approach, seeking to complete the physics basis for the concept, determine the scaling laws to high-gain performance by operating multiple SFS experimental platforms, while simultaneously developing the engineering solutions required for a fusion pilot plant [2].<br /><br /> <br /><br />Progress on the SFS conceptual physics basis will be presented. A new multi-electrode Zap device, FuZE-3, will be introduced. This system allows fine control of the acceleration and compression current drives and has successfully compressed plasmas to above 10<sup>24</sup>/m<sup>3</sup>. FuZE-Q has been upgraded with a new electrode stack which allows advanced studies of the initial breakdown and acceleration phase, which leads to the development and optimization of the stabilizing sheared flow. We also introduce an upcoming platform, FuZE-A, which will develop advanced accelerators required for stabilization of high-performance plasmas. Finally the main effort to develop pilot plant power handling systems is called Century, which integrates repetitive pulsed power, high-duty-cycle cathodes, and liquid metal wall systems. <br /><br /> <br /><br />[1] B. Levitt, Phys. Plasmas, 2023.<br /><br />[2] M. C. Thompson, Fus. Sci and Tech., 2023.</div> </section>  </header> <p> <time datetime="2025-11-18T23:15:00.000Z"> Nov. 18, 2025, 6:15 PM </time>  –  <time datetime="2025-11-18T23:30:00.000Z"> Nov. 18, 2025, 6:30 PM </time> </p>    <section> <h2>Presenters</h2> <ul> <li> <address> <p>Benjamin J Levitt</p> <p>Zap Energy Inc.</p> </address> </li> </ul> </section> <section> <h2>Authors</h2> <ul> <li> <address> <p>Benjamin J Levitt</p> <p>Zap Energy Inc.</p> </address> </li> </ul> </section>  </article> </main>  </body></html>
