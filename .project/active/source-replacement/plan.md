@@ -251,78 +251,78 @@ $SOURCES_DIR/
 
 ### 08-frc-w-direct-conversion (5 files)
 
-- [ ] `iter-01/sources/contrary-research-helion.md` → `URL` https://research.contrary.com/company/helion
-  - Notes:
-- [ ] `iter-01/sources/docslib-helion-arpa-e-presentation.md` → `URL` https://docslib.org/doc/9103852/helion-energy-david-kirtley-ceo-project-lead-20-tesla-arpa-e-experiment-40-tesla-reactor
-  - Notes:
-- [ ] `iter-01/sources/helion-website-technology.md` → `URL` https://www.helionenergy.com/technology/
-  - Notes: JS-heavy site — may get thin extraction
-- [ ] `iter-02/sources/helion-milestones-feb2026.md` → `URL` https://www.helionenergy.com/articles/helion-achieves-new-fusion-energy-milestones/
-  - Notes:
-- [ ] `iter-02/sources/helion-prototype-generations.md` → `SEARCH` Helion Energy prototype generations timeline (Grande, Venti, Trenta, Polaris, Orion)
-  - Notes:
+- [x] `iter-01/sources/contrary-research-helion.md` → `URL` https://research.contrary.com/company/helion
+  - Notes: JS-rendered SPA, extraction got only footer. WebFetch got rich content. Original kept. NO.
+- [x] `iter-01/sources/docslib-helion-arpa-e-presentation.md` → `URL` https://docslib.org/doc/9103852/helion-energy-david-kirtley-ceo-project-lead-20-tesla-arpa-e-experiment-40-tesla-reactor
+  - Notes: JS document viewer, extraction got sidebar only. Original kept. NO.
+- [x] `iter-01/sources/helion-website-technology.md` → `URL` https://www.helionenergy.com/technology/
+  - Notes: JS-heavy, extraction got thin single-page content. Orig is 81-line 8-URL compilation. Original kept. NO.
+- [x] `iter-02/sources/helion-milestones-feb2026.md` → `URL` https://www.helionenergy.com/articles/helion-achieves-new-fusion-energy-milestones/
+  - Notes: Full press release, 39 lines vs 21 orig. Direct quotes, expert endorsements, regulatory context. YES.
+- [x] `iter-02/sources/helion-prototype-generations.md` → `SEARCH` Helion Energy prototype generations timeline (Grande, Venti, Trenta, Polaris, Orion)
+  - Notes: Found Wikipedia (Helion Energy). 276 lines vs 31 orig. Full article with prototype table, funding, physics, research. YES.
 
 ---
 
 ### 09-qi-stellarator-hts (5 files)
 
-- [ ] `iter-01/sources/proxima-fusion-technology-page.md` → `URL` https://www.proximafusion.com/technology
-  - Notes:
-- [ ] `iter-01/sources/stellaris-design-details.md` → `URL` https://www.sciencedirect.com/science/article/pii/S0920379625300705
-  - Notes: May be paywalled — extraction may be abstract-only
-- [ ] `iter-02/sources/helios-stellarator-comparison.md` → `URL` https://arxiv.org/html/2512.08027v1
-  - Notes:
-- [ ] `iter-02/sources/proxima-fusion-2026-updates.md` → `BODY` https://www.proximafusion.com/press-news/ (URL in body text)
-  - Notes:
-- [ ] `iter-02/sources/stellaris-paper-details.md` → `CITE` DOI: 10.1016/j.fusengdes.2025.114868 → https://doi.org/10.1016/j.fusengdes.2025.114868
-  - Notes: May be paywalled
+- [x] `iter-01/sources/proxima-fusion-technology-page.md` → `URL` https://www.proximafusion.com/technology
+  - Notes: 70 vs 25 lines. StarFinder, HTS details, stellarator vs tokamak, QI physics. YES.
+- [x] `iter-01/sources/stellaris-design-details.md` → `URL` https://www.sciencedirect.com/science/article/pii/S0920379625000705
+  - Notes: ScienceDirect paywalled. User provided local PDF. 5105 lines vs 42 orig, 117 images. Full 43-page reactor study. YES.
+- [x] `iter-02/sources/helios-stellarator-comparison.md` → `URL` https://arxiv.org/html/2512.08027v1
+  - Notes: Full Helios paper via arXiv HTML. 1067 vs 24 lines. Complete power plant design. YES.
+- [x] `iter-02/sources/proxima-fusion-2026-updates.md` → `BODY` https://www.proximafusion.com/press-news/... (specific RWE/Bavaria/MPG MoU press release)
+  - Notes: Full press release with verbatim quotes, €2B Alpha cost, financing details. 53 vs 33. YES.
+- [x] `iter-02/sources/stellaris-paper-details.md` → `CITE` DOI: 10.1016/j.fusengdes.2025.114868 → https://doi.org/10.1016/j.fusengdes.2025.114868
+  - Notes: Same local PDF as stellaris-design-details. Identical extraction copied. 5105 lines vs 42 orig. YES.
 
 ---
 
 ### 10-large-scale-stellarator (5 files)
 
-- [ ] `iter-01/sources/gauss-fusion-technical-summary.md` → `SEARCH` Gauss Fusion GIGA stellarator power plant, MT29 CERN abstract, FusionXInvest profile
-  - Notes:
-- [ ] `iter-01/sources/helias-reactor-context.md` → `SEARCH` HELIAS reactor HSR4/18 stellarator design studies
-  - Notes:
-- [ ] `iter-02/sources/gauss-fusion-cdr-review-2026.md` → `URL` https://www.startbase.com/news/expertengremium-bestaetigt-designkonzept-fuer-fusionskraftwerk-von-gauss-fusion/
-  - Notes: German-language page
-- [ ] `iter-02/sources/gauss-fusion-partnerships-2025.md` → `URL` https://www.modernpowersystems.com/news/gauss-fusion-broadens-european-partnerships/
-  - Notes:
-- [ ] `iter-02/sources/helias-blanket-studies.md` → `URL` https://onlinelibrary.wiley.com/doi/full/10.1002/er.7343
-  - Notes:
+- [x] `iter-01/sources/gauss-fusion-technical-summary.md` → `SEARCH` Gauss Fusion GIGA stellarator power plant, MT29 CERN abstract, FusionXInvest profile
+  - Notes: 95-line multi-source compilation. No single URL matches breadth (gauss-fusion.com = bios, MPS = context only). SKIP.
+- [x] `iter-01/sources/helias-reactor-context.md` → `SEARCH` HELIAS reactor HSR4/18 stellarator design studies
+  - Notes: Found IAEA paper (Beidler/Wobig). 396 vs 30 lines. Full HSR4/18 specs, power balance, coil system. PDF pipeline. YES.
+- [x] `iter-02/sources/gauss-fusion-cdr-review-2026.md` → `URL` https://www.startbase.com/news/expertengremium-bestaetigt-designkonzept-fuer-fusionskraftwerk-von-gauss-fusion/
+  - Notes: English edition. 65 vs 32 lines. Full article with quotes, political context. YES.
+- [x] `iter-02/sources/gauss-fusion-partnerships-2025.md` → `URL` https://www.modernpowersystems.com/news/gauss-fusion-broadens-european-partnerships/
+  - Notes: 22 vs 26 lines. Full prose with CEO quote. Orig had better structure. MIXED.
+- [x] `iter-02/sources/helias-blanket-studies.md` → `URL` https://onlinelibrary.wiley.com/doi/full/10.1002/er.7343
+  - Notes: Wiley 403. User provided local PDF. 824 vs 36 lines, 261 table rows. Full Bongiovì HCPB paper. YES.
 
 ---
 
 ### 11-magnetic-mirror (6 files)
 
-- [ ] `iter-01/sources/aps-dpp-2025-sutherland.md` → `URL` https://meetings-archive.aps.org/dpp/2025/gm12/2/
-  - Notes:
-- [ ] `iter-01/sources/arxiv-2411-06644-confinement-predictions.md` → `URL` https://arxiv.org/abs/2411.06644
-  - Notes:
-- [ ] `iter-01/sources/realta-fusion-hub-spotlight.md` → `URL` https://fusionhub.substack.com/p/fusion-startup-spotlight-realta-fusion
-  - Notes:
-- [ ] `iter-01/sources/wham-experiment-details.md` → `URL` https://wham.physics.wisc.edu/
-  - Notes:
-- [ ] `iter-02/sources/fusion-report-interview-realta.md` → `URL` https://thefusionreport.substack.com/p/interview-with-realta-fusion
-  - Notes:
-- [ ] `iter-02/sources/realta-svb-funding-feb2026.md` → `URL` https://www.prnewswire.com/news-releases/realta-fusion-secures-9-5-million-growth-capital-facility-from-silicon-valley-bank-a-division-of-first-citizens-bank-302689285.html
-  - Notes:
+- [x] `iter-01/sources/aps-dpp-2025-sutherland.md` → `URL` https://meetings-archive.aps.org/dpp/2025/gm12/2/
+  - Notes: Abstract garbled by trafilatura (HTML entities, nav fragments). Original kept. NO.
+- [x] `iter-01/sources/arxiv-2411-06644-confinement-predictions.md` → `URL` https://arxiv.org/html/2411.06644v1
+  - Notes: Full paper via arXiv HTML. 430 vs 21 lines. POPCON analysis, ML optimization, Hammir design. YES.
+- [x] `iter-01/sources/realta-fusion-hub-spotlight.md` → `URL` https://fusionhub.substack.com/p/fusion-startup-spotlight-realta-fusion
+  - Notes: (Phase 1 test) 259 vs 37 lines. YES.
+- [x] `iter-01/sources/wham-experiment-details.md` → `URL` https://wham.physics.wisc.edu/
+  - Notes: 16 vs 31 lines. Full prose, same content but orig had better structure. MIXED.
+- [x] `iter-02/sources/fusion-report-interview-realta.md` → `URL` https://thefusionreport.substack.com/p/interview-with-realta-fusion
+  - Notes: Full interview with Q&A quotes. 42 vs 29 lines. $36M Series A, DCLC discussion. YES.
+- [x] `iter-02/sources/realta-svb-funding-feb2026.md` → `URL` https://www.prnewswire.com/news-releases/realta-fusion-secures-9-5-million-growth-capital-facility-from-silicon-valley-bank-a-division-of-first-citizens-bank-302689285.html
+  - Notes: Full press release with CEO/SVB quotes. 30 vs 14 lines. YES.
 
 ---
 
 ### 12-levitated-dipole (5 files)
 
-- [ ] `iter-01/sources/arxiv-2508-17691-junior-design-results.md` → `URL` https://arxiv.org/html/2508.17691v1
-  - Notes:
-- [ ] `iter-01/sources/arxiv-2602-20564-dt-dipole-power-plants.md` → `URL` https://arxiv.org/html/2602.20564v1
-  - Notes:
-- [ ] `iter-01/sources/openstar-prototype-roadmap.md` → `SEARCH` OpenStar Technologies prototype roadmap (Junior, Tahi, Maui, Tama Nui)
-  - Notes:
-- [ ] `iter-02/sources/arxiv-2602-20564-plasma-state-clarification.md` → `URL` https://arxiv.org/html/2602.20564
-  - Notes: Same paper as 12-02 — may produce identical extraction
-- [ ] `iter-02/sources/openstar-2026-funding-tahi-timeline.md` → `BODY` https://www.bloomberg.com/news/articles/2026-02-17/ (URL in body)
-  - Notes: Bloomberg may be paywalled
+- [x] `iter-01/sources/arxiv-2508-17691-junior-design-results.md` → `URL` https://arxiv.org/html/2508.17691v1
+  - Notes: Full Junior design paper. 393 vs 38 lines. YES.
+- [x] `iter-01/sources/arxiv-2602-20564-dt-dipole-power-plants.md` → `URL` https://arxiv.org/html/2602.20564v1
+  - Notes: Full D-T dipole power plant paper. 1025 vs 60 lines. YES.
+- [x] `iter-01/sources/openstar-prototype-roadmap.md` → `SEARCH` OpenStar Technologies prototype roadmap (Junior, Tahi, Maui, Tama Nui)
+  - Notes: Found IEEE Spectrum feature article. 62 vs 45 lines. Mataira quotes, LDX heritage, physics advantages. YES.
+- [x] `iter-02/sources/arxiv-2602-20564-plasma-state-clarification.md` → `URL` https://arxiv.org/html/2602.20564
+  - Notes: Same paper as iter-01. Identical extraction copied. 1025 vs 26 lines. YES.
+- [x] `iter-02/sources/openstar-2026-funding-tahi-timeline.md` → `BODY` https://www.energyconnects.com/... (Bloomberg paywalled, used Energy Connects syndication)
+  - Notes: Full article. 74 vs 35 lines. PM demo, NZD 35M, roadmap. YES.
 
 ---
 

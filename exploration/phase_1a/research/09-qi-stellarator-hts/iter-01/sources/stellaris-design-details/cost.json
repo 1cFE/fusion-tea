@@ -1,0 +1,92 @@
+[
+  {
+    "page_num": 1,
+    "cost_usd": 0.1159194,
+    "input_tokens": 4,
+    "output_tokens": 380,
+    "model": "sonnet",
+    "elapsed_seconds": 18.875643730163574,
+    "table_index": null
+  },
+  {
+    "page_num": 2,
+    "cost_usd": 0.08411025000000001,
+    "input_tokens": 4,
+    "output_tokens": 1371,
+    "model": "sonnet",
+    "elapsed_seconds": 42.95649528503418,
+    "table_index": null
+  },
+  {
+    "page_num": 3,
+    "cost_usd": 0.09163995,
+    "input_tokens": 4,
+    "output_tokens": 1866,
+    "model": "sonnet",
+    "elapsed_seconds": 55.19272446632385,
+    "table_index": null
+  },
+  {
+    "page_num": 8,
+    "cost_usd": 0.08047305,
+    "input_tokens": 4,
+    "output_tokens": 1128,
+    "model": "sonnet",
+    "elapsed_seconds": 39.440613746643066,
+    "table_index": null
+  },
+  {
+    "page_num": 9,
+    "cost_usd": 0.09814244999999999,
+    "input_tokens": 4,
+    "output_tokens": 2307,
+    "model": "sonnet",
+    "elapsed_seconds": 66.04859566688538,
+    "table_index": null
+  },
+  {
+    "page_num": 20,
+    "cost_usd": 0.08956305,
+    "input_tokens": 4,
+    "output_tokens": 1734,
+    "model": "sonnet",
+    "elapsed_seconds": 60.87595343589783,
+    "table_index": null
+  },
+  {
+    "page_num": 21,
+    "cost_usd": 0.09064305,
+    "input_tokens": 4,
+    "output_tokens": 1806,
+    "model": "sonnet",
+    "elapsed_seconds": 61.20948672294617,
+    "table_index": null
+  },
+  {
+    "page_num": 22,
+    "cost_usd": 0.09704085,
+    "input_tokens": 4,
+    "output_tokens": 2232,
+    "model": "sonnet",
+    "elapsed_seconds": 54.50287866592407,
+    "table_index": null
+  },
+  {
+    "page_num": 32,
+    "cost_usd": 0.14405564999999998,
+    "input_tokens": 4,
+    "output_tokens": 2255,
+    "model": "sonnet",
+    "elapsed_seconds": 61.80851745605469,
+    "table_index": null
+  },
+  {
+    "page_num": 33,
+    "cost_usd": 0.09123525000000002,
+    "input_tokens": 4,
+    "output_tokens": 1846,
+    "model": "sonnet",
+    "elapsed_seconds": 49.30860090255737,
+    "table_index": null
+  }
+]
