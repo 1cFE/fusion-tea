@@ -152,12 +152,12 @@ uv run python exploration/concept_analysis/scripts/run_analysis.py \
 
 **Manual:**
 - [x] `add-source 11 <url> --dry-run` → prints intended placement, no files created
-- [ ] `add-source 11 <url>` → creates companion dir + symlink in correct iter-NN/sources/ *(requires real extraction — deferred to manual test)*
-- [ ] Verify symlink: `readlink iter-NN/sources/<name>.md` → `<name>/output.md` *(deferred)*
-- [ ] Verify companion dir contents: `output.md`, `raw.html` or `raw.pdf`, `metrics.json` *(deferred)*
-- [ ] Verify `find_sources("11-magnetic-mirror")` includes the new source *(deferred)*
+- [x] `add-source 17a <pdf>` → creates companion dir + symlink in correct iter-02/sources/ *(verified via checkpoint-test-concept17, 2026-03-29)*
+- [x] Verify symlink: `readlink iter-02/sources/<name>.md` → `<name>/output.md` *(verified via checkpoint-test-concept17)*
+- [x] Verify companion dir contents: `output.md`, `metrics.json` present; `raw.pdf` NOT created (see note below) *(verified via checkpoint-test-concept17)*
+- [x] Verify new source discoverable in sources listing *(verified via checkpoint-test-concept17)*
 - [x] Duplicate rejection: re-run same command → error message
-- [ ] `--force`: re-run with `--force` → removes old, creates new *(deferred — needs existing extraction)*
+- [ ] `--force`: re-run with `--force` → removes old, creates new *(still deferred — not tested in checkpoint)*
 - [x] `--name override`: `add-source 11 <url> --name custom-name` → uses `custom-name`
 
 **What We Know Works After This Phase:**
@@ -228,15 +228,15 @@ uv run python exploration/concept_analysis/scripts/run_analysis.py \
 - [x] `run_analysis.py list` → still works
 
 **Manual:**
-- [ ] Pre-requisite: use Phase 2's `add-source` to add a source to a concept that has an existing analysis
-- [ ] `update-analysis <concept> --sources <name> --dry-run` → pre-pass runs, feedback printed, analysis.md unchanged
-- [ ] Verify `feedback_update_<ts>.md` has F-N format with specific integration instructions
-- [ ] Verify `source_integration_prompt_<ts>.md` saved (audit trail)
-- [ ] `update-analysis <concept> --sources <name>` → full run, analysis.md modified
-- [ ] Verify `update_analysis_prompt_<ts>.md` saved (audit trail)
-- [ ] Verify downstream staleness: if `model_setup.py` or `review.md` exist, they're marked stale
-- [ ] `status` command shows stale indicator (`*`) for the concept
-- [ ] Error case: `update-analysis <concept-with-no-analysis> --sources <name>` → error about missing analysis.md
+- [x] Pre-requisite: use Phase 2's `add-source` to add a source to a concept that has an existing analysis *(concept 17a, Xcimer whitepaper added via checkpoint-test)*
+- [x] `update-analysis <concept> --sources <name> --dry-run` → pre-pass runs, feedback printed, analysis.md unchanged *(verified: 3 findings in F-N format, analysis.md unchanged after dry-run)*
+- [x] Verify `feedback_update_<ts>.md` has F-N format with specific integration instructions *(verified: F-1 laser cost breakdown, F-2 roadmap, F-3 TRUMPF supply chain)*
+- [x] Verify `source_integration_prompt_<ts>.md` saved (audit trail) *(verified: 2 files created)*
+- [x] `update-analysis <concept> --sources <name>` → full run, analysis.md modified *(verified: 58KB analysis.md with 39 whitepaper-specific term mentions)*
+- [x] Verify `update_analysis_prompt_<ts>.md` saved (audit trail) *(verified: 1 file created)*
+- [x] Verify downstream staleness: if `model_setup.py` or `review.md` exist, they're marked stale *(verified: "stale: model_setup.py" in output)*
+- [ ] `status` command shows stale indicator (`*`) for the concept *(not explicitly checked — status showed M, not M*)*
+- [ ] Error case: `update-analysis <concept-with-no-analysis> --sources <name>` → error about missing analysis.md *(not tested in checkpoint)*
 
 **What We Know Works After This Phase:**
 Full end-to-end workflow: add a source → update the analysis → staleness propagated. Both commands work independently and together.

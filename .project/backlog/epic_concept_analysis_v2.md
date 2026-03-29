@@ -245,11 +245,11 @@ Inspired by the ralph-init.sh generate → review → refine pattern, but adapte
 - Phase 1a prompt redesign
 
 **Success Criteria**:
-- [ ] `run_analysis.py add-source 11 path/to/paper.pdf` creates `iter-NN/sources/paper.md` (symlink) + `paper/` companion dir with `output.md`, `raw.pdf`, `metrics.json`
-- [ ] `run_analysis.py add-source 11 https://example.com/article` creates same layout with `raw.html`
-- [ ] Companion dir includes provenance artifacts (`--save-source`)
-- [ ] `run_analysis.py update-analysis 11 --sources iter-03/sources/paper.md` updates analysis via analysis agent
-- [ ] Downstream artifacts marked stale after update
+- [x] `run_analysis.py add-source 17a <pdf>` creates `iter-02/sources/<name>.md` (symlink) + `<name>/` companion dir with `output.md`, `metrics.json` — verified via checkpoint-test-concept17 (2026-03-29)
+- [ ] `run_analysis.py add-source 11 https://example.com/article` creates same layout with `raw.html` — URL mode not tested
+- [~] Companion dir includes provenance artifacts — `output.md`, `metrics.json`, `cost.json`, `decisions.json`, `images/` present; `raw.pdf` NOT created (extraction pipeline does not copy source by default)
+- [x] `run_analysis.py update-analysis 17a --sources <name>` updates `analysis.md` via analysis agent — verified: 3 findings applied, 39 whitepaper-specific term mentions
+- [x] Downstream artifacts marked stale after update — verified: `model_setup.py` flagged stale
 
 **Deliverables**:
 - Updated `run_analysis.py` with `cmd_add_source` and `cmd_update_analysis`
@@ -414,6 +414,29 @@ Assessment agent found real, progressively deeper issues each pass — only 1 of
 - Gathering more data across concepts before tuning — current sample is 3 concepts
 
 This is a tuning question, not a code bug. The pipeline works correctly at any `--max-passes` value.
+
+### Item 3: Checkpoint Test Results (concept 17a, Xcimer Whitepaper)
+
+**Verified by**: `.project/active/checkpoint-test-concept17/` (spec, plan — both Complete)
+**Date**: 2026-03-29
+
+**End-to-end pipeline validated**: gap-check → analyze (3-pass, PASS) → model-setup (LCOE $101.6/MWh) → review → add-source (28-page PDF, 89KB extraction) → update-analysis (3 findings applied) → spot checks (6/8 PASS).
+
+**Quality observations to watch for**:
+
+1. **Feedback-pass partial implementation**: The pre-pass generated 3 high-quality findings (F-1: laser cost component breakdown, F-2: development roadmap milestones, F-3: TRUMPF supply chain). The feedback-pass successfully applied F-1 and F-3 but only partially implemented F-2 — Phoenix/Argos/Athena milestones appear in the analysis but Anvil and Vulcan were dropped. This suggests the feedback-pass agent may lose detail on multi-item recommendations. Watch for this pattern on future `update-analysis` runs.
+
+2. **No `raw.pdf` provenance copy**: The `add-source` pipeline does not create a `raw.pdf` copy in the companion directory despite the design calling for `--save-source`. The extraction produces `output.md`, `metrics.json`, `cost.json`, `decisions.json`, and `images/` but no source copy. Low severity — source PDF path is known externally — but the `--save-source` flag may not be wired through correctly.
+
+3. **`update-analysis` targets `analysis.md`, not `output.md`**: The spec and plan assumed `output.md` (differentiation table in `iter-02/`) would be modified, but the pipeline correctly modifies `analysis.md` (detailed analysis in `analyses/`). This is correct behavior — the spec language was inaccurate. Future specs referencing update-analysis should say `analysis.md`.
+
+4. **Spot check SC-8 (tritium specifics) failed**: The specific values (TBR ~1.05, inventory <200g) come from the HYLIFE-III paper which is behind a ScienceDirect paywall and not extracted. The analysis discusses TBR and tritium conceptually but lacks these quantitative anchors. This is a data availability gap, not a pipeline issue.
+
+**Remaining untested Item 3 features**:
+- URL-based source addition (only PDF tested)
+- `--force` re-extraction
+- Error case: `update-analysis` on concept with no existing analysis
+- Staleness indicator (`*`) in `status` output after update
 
 ---
 

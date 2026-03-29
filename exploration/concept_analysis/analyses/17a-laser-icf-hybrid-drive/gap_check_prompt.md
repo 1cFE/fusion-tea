@@ -24,10 +24,15 @@ The dossier contains per-column values with confidence ratings (high/medium/low)
 These are the primary technical sources extracted during Phase 1a research. Read each one to assess what technical depth is available:
 
 - `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/17-laser-icf-direct-drive/iter-01/sources/focused-energy-technology.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/17-laser-icf-direct-drive/iter-01/sources/focused-energy-technology.orig.md` (2 KB)
 - `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/17-laser-icf-direct-drive/iter-01/sources/xcimer-energy-approach.md` (2 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/17-laser-icf-direct-drive/iter-02/sources/focused-energy-callahan-interview.md` (1 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/17-laser-icf-direct-drive/iter-02/sources/hylife-energy-conversion-notes.md` (2 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/17-laser-icf-direct-drive/iter-02/sources/xcimer-science-page.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/17-laser-icf-direct-drive/iter-01/sources/xcimer-energy-approach.orig.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/17-laser-icf-direct-drive/iter-02/sources/focused-energy-callahan-interview.md` (14 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/17-laser-icf-direct-drive/iter-02/sources/focused-energy-callahan-interview.orig.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/17-laser-icf-direct-drive/iter-02/sources/hylife-energy-conversion-notes.md` (4 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/17-laser-icf-direct-drive/iter-02/sources/hylife-energy-conversion-notes.orig.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/17-laser-icf-direct-drive/iter-02/sources/xcimer-science-page.md` (17 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/17-laser-icf-direct-drive/iter-02/sources/xcimer-science-page.orig.md` (1 KB)
 
 ### Reference Documents
 - **Analysis brief** (defines the D1+ section requirements): `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/concept_analysis_brief.md`

@@ -1,0 +1,38 @@
+[
+  {
+    "page_num": 0,
+    "cost_usd": 0.06882255000000001,
+    "input_tokens": 4,
+    "output_tokens": 449,
+    "model": "sonnet",
+    "elapsed_seconds": 19.82162356376648,
+    "table_index": null
+  },
+  {
+    "page_num": 17,
+    "cost_usd": 0.07585035000000001,
+    "input_tokens": 4,
+    "output_tokens": 917,
+    "model": "sonnet",
+    "elapsed_seconds": 36.536293268203735,
+    "table_index": null
+  },
+  {
+    "page_num": 19,
+    "cost_usd": 0.07265535000000001,
+    "input_tokens": 4,
+    "output_tokens": 704,
+    "model": "sonnet",
+    "elapsed_seconds": 28.515594244003296,
+    "table_index": null
+  },
+  {
+    "page_num": 24,
+    "cost_usd": 0.07242314999999999,
+    "input_tokens": 4,
+    "output_tokens": 688,
+    "model": "sonnet",
+    "elapsed_seconds": 29.625945806503296,
+    "table_index": null
+  }
+]
