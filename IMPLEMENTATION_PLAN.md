@@ -134,7 +134,7 @@ Task 0 (deps + scaffold + vendor Plotly) → Task 1 (models) → Tasks 2, 4, 5
   - **Specs:** `specs/05-tornado-chart.md`
   - **Verification:** Manual — verify ACs 1–7 in browser with fixture data; confirm standalone placeholder, whiskers absent for unique params, bar direction
 
-- [ ] **Task 8 — CAS breakdown chart** (`exploration/concept_explorer/static/js/cas_breakdown.js`)
+- [x] **Task 8 — CAS breakdown chart** (`exploration/concept_explorer/static/js/cas_breakdown.js`)
   - Implement `renderCASBreakdown(container, options)` using Plotly.js stacked horizontal bar
   - `options`: `{cas, cas22_detail?, showSubAccounts=false, sharedScale?, onAccountClick?}`
   - Render one segment per top-level CAS account (CAS10–CAS90 ascending); skip zero-value accounts
