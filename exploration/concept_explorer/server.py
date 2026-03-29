@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import dataclasses
 import importlib.util
+import sys
 import types
 from collections.abc import AsyncGenerator, Callable
 from contextlib import asynccontextmanager, redirect_stdout
@@ -25,13 +26,19 @@ from io import StringIO
 from pathlib import Path
 from typing import Any
 
-import uvicorn
-from fastapi import FastAPI, HTTPException
-from fastapi.responses import FileResponse
-from fastapi.staticfiles import StaticFiles
-from jinja2 import Environment, FileSystemLoader, TemplateNotFound
+# Ensure project root is on sys.path so fully-qualified package imports work
+# when the script is run directly (uv run python exploration/.../server.py)
+_PROJECT_ROOT = Path(__file__).parent.parent.parent
+if str(_PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(_PROJECT_ROOT))
 
-from exploration.concept_explorer.models import (
+import uvicorn  # noqa: E402
+from fastapi import FastAPI, HTTPException  # noqa: E402
+from fastapi.responses import FileResponse  # noqa: E402
+from fastapi.staticfiles import StaticFiles  # noqa: E402
+from jinja2 import Environment, FileSystemLoader, TemplateNotFound  # noqa: E402
+
+from exploration.concept_explorer.models import (  # noqa: E402
     ComputeRequest,
     ConceptData,
     ConceptManifest,
