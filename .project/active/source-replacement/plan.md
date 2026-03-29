@@ -403,86 +403,86 @@ $SOURCES_DIR/
 
 ### 18-p-b11-frc (6 files)
 
-- [ ] `iter-01/sources/grokipedia-tae-technologies.md` → `URL` https://grokipedia.com/page/TAE_Technologies
-  - Notes:
-- [ ] `iter-01/sources/tae-energy-conversion-notes.md` → `SEARCH` TAE Technologies energy conversion: FAQ page, ICC patent US7459654
-  - Notes: Compiled from 3 sources with conflicting info
-- [ ] `iter-01/sources/tae-nbi-breakthrough-2025.md` → `URL` https://tae.com/tae-technologies-delivers-fusion-breakthrough-that-dramatically-reduces-cost-of-a-future-power-plant/
-  - Notes:
-- [ ] `iter-02/sources/tae-c2w-machine-details.md` → `SEARCH` TAE Technologies C-2W Norman machine dimensions and specifications
-  - Notes:
-- [ ] `iter-02/sources/tae-djt-merger-davinci-specs.md` → `SEARCH` TAE Technologies DJT/Trump Media merger, Da Vinci power plant specs
-  - Notes:
-- [ ] `iter-02/sources/tae-energy-conversion-clarification.md` → `SEARCH` TAE Technologies FAQ fusion energy conversion (tae.com/faq-fusion/)
-  - Notes: Resolves 3-narrative tension; try tae.com/faq-fusion/ directly
+- [x] `iter-01/sources/grokipedia-tae-technologies.md` → `URL` https://grokipedia.com/page/TAE_Technologies
+  - Notes: 911 lines vs 78 orig. Full encyclopedia article. WebFetch 403. YES.
+- [x] `iter-01/sources/tae-energy-conversion-notes.md` → `SEARCH` TAE Technologies energy conversion: FAQ page, ICC patent US7459654
+  - Notes: Used ICC patent US7459654B2 from Google Patents. 1618 lines vs 30 orig. Full patent text. Orig was multi-source analytical note; loses comparison but gains complete ICC spec. MIXED.
+- [x] `iter-01/sources/tae-nbi-breakthrough-2025.md` → `URL` https://tae.com/tae-technologies-delivers-fusion-breakthrough-that-dramatically-reduces-cost-of-a-future-power-plant/
+  - Notes: Full press release with Tajima/Binderbauer quotes. 55 lines vs 23 orig. WebFetch got only metadata (JS). YES.
+- [x] `iter-02/sources/tae-c2w-machine-details.md` → `SEARCH` TAE Technologies C-2W Norman machine dimensions and specifications
+  - Notes: Found Gota et al. IAEA FEC 2020 paper. Downloaded locally (IAEA portal encoding issue). 96 lines vs 49 orig. Primary peer-reviewed source. YES.
+- [x] `iter-02/sources/tae-djt-merger-davinci-specs.md` → `SEARCH` TAE Technologies DJT/Trump Media merger, Da Vinci power plant specs
+  - Notes: Used ANS Nuclear Newswire article. 23 lines vs 25 orig. Gains journalism/governance; loses detailed Da Vinci timeline from TAE press release. MIXED.
+- [x] `iter-02/sources/tae-energy-conversion-clarification.md` → `SEARCH` TAE Technologies FAQ fusion energy conversion (tae.com/faq-fusion/)
+  - Notes: Extracted tae.com/faq-fusion/ directly. 87 lines vs 30 orig. Full FAQ with verbatim energy conversion description. YES.
 
 ---
 
 ### 19-orbital-levitated-dipole (5 files)
 
-- [ ] `iter-01/sources/levitated-dipole-technical-background.md` → `URL` https://en.wikipedia.org/wiki/Levitated_dipole
-  - Notes:
-- [ ] `iter-01/sources/nasaspaceflight-forum-discussion.md` → `URL` https://forum.nasaspaceflight.com/index.php?topic=63860.0
-  - Notes: Forum page
-- [ ] `iter-01/sources/yc-launch-page.md` → `URL` https://www.ycombinator.com/launches/Oox-zephyr-fusion-in-orbit-fusion-power
-  - Notes:
-- [ ] `iter-02/sources/dipole-reactor-heating-energy-conversion.md` → `URL` https://arxiv.org/html/2602.20564
-  - Notes:
-- [ ] `iter-02/sources/zephyr-fusion-web-sources-2026.md` → `SEARCH` Zephyr Fusion company updates 2026, DCD news, Fondo blog, LinkedIn
-  - Notes: Compiled from many sources — pick primary
+- [x] `iter-01/sources/levitated-dipole-technical-background.md` → `URL` https://en.wikipedia.org/wiki/Levitated_dipole
+  - Notes: 59 lines vs 49 orig. Wikipedia article with Hasegawa origin, LDX/CTX, OpenStar/Deutelio. Orig was multi-source (Wikipedia+arXiv+MIT+Hasegawa); loses heating/fuel/magnet detail. WebFetch 403. MIXED.
+- [x] `iter-01/sources/nasaspaceflight-forum-discussion.md` → `URL` https://forum.nasaspaceflight.com/index.php?topic=63860.0
+  - Notes: 30 lines vs 26 orig. Verbatim forum posts with usernames/quotes. Orig was curated summary. YES.
+- [x] `iter-01/sources/yc-launch-page.md` → `URL` https://www.ycombinator.com/launches/Oox-zephyr-fusion-in-orbit-fusion-power
+  - Notes: 89 lines vs 33 orig. Full YC launch text with founder bios, physics rationale, cost comparisons. YES.
+- [x] `iter-02/sources/dipole-reactor-heating-energy-conversion.md` → `URL` https://arxiv.org/html/2602.20564
+  - Notes: 1025 lines vs 55 orig. Full Simpson et al. OpenStar D-T dipole reactor paper. 667 MW fusion / 208 MW net electric. YES.
+- [x] `iter-02/sources/zephyr-fusion-web-sources-2026.md` → `SEARCH` Zephyr Fusion company updates 2026, DCD news, Fondo blog, LinkedIn
+  - Notes: Used DCD article. 30 lines vs 41 orig. Single journalism source vs 8+ source compilation. Gains direct quotes; loses breadth. MIXED.
 
 ---
 
 ### 20-modular-hts-stellarator (4 files)
 
-- [ ] `iter-01/sources/renaissance-fusion-technology.md` → `URL` https://renfusion.eu/technology
-  - Notes:
-- [ ] `iter-01/sources/type-one-energy-infinity-two-design.md` → `URL` https://typeoneenergy.com/our-technology/
-  - Notes:
-- [ ] `iter-02/sources/renaissance-fusion-specs.md` → `CITE` Nuclear Fusion 64 (2024) 026007 → https://doi.org/10.1088/1741-4326/ad0dde
-  - Notes: May be paywalled
-- [ ] `iter-02/sources/type-one-infinity-two-specs.md` → `CITE` Journal of Plasma Physics (2025) → https://www.cambridge.org/core/journals/journal-of-plasma-physics/collections/physics-basis-of-the-infinity-two-fusion-power-plant
-  - Notes: Collection page with multiple papers
+- [x] `iter-01/sources/renaissance-fusion-technology.md` → `URL` https://renfusion.eu/technology
+  - Notes: 66 lines vs 48 orig. Full tech page with stellarator advantages, HTS deposition, liquid walls. Loses quantitative specs from papers. MIXED.
+- [x] `iter-01/sources/type-one-energy-infinity-two-design.md` → `URL` https://typeoneenergy.com/our-technology/
+  - Notes: 61 lines vs 51 orig. Marketing page, no quantitative specs. Orig had all design parameters from JoPP papers. NO.
+- [x] `iter-02/sources/renaissance-fusion-specs.md` → `CITE` Nuclear Fusion 64 (2024) 026007 → https://doi.org/10.1088/1741-4326/ad0dde
+  - Notes: IOP Science blocked by captcha. User provided local PDF. 2149 lines vs 75 orig. Full Prost & Volpe paper. YES.
+- [x] `iter-02/sources/type-one-infinity-two-specs.md` → `CITE` Journal of Plasma Physics (2025) → https://www.cambridge.org/core/journals/journal-of-plasma-physics/article/.../CB8A21D770BFA375A9865A28EFBE800B
+  - Notes: Found Hegna et al. comprehensive overview paper (not collection page). 34 dense lines vs 64 orig. Full physics basis paper. YES.
 
 ---
 
 ### 21-spherical-tokamak-hts (11 files)
 
-- [ ] `iter-01/sources/pulsed-spherical-tokamak-paper.md` → `URL` https://www.mdpi.com/2571-6182/5/2/19
-  - Notes:
-- [ ] `iter-01/sources/st40-heating-systems.md` → `URL` https://tokamakenergy.com/2025/01/21/high-power-gyrotron-heating-to-boost-performance-on-road-to-clean-and-limitless-fusion-energy/
-  - Notes:
-- [ ] `iter-01/sources/ste1-pilot-plant-specs.md` → `URL` https://archive.aps.org/dpp/2025/gm12/8/
-  - Notes:
-- [ ] `iter-01/sources/tokamak-energy-overview.md` → `URL` https://tokamakenergy.com/
-  - Notes:
-- [ ] `iter-02/sources/spherical-tokamak-center-stack-shielding.md` → `URL` https://pmc.ncbi.nlm.nih.gov/articles/PMC6365859/
-  - Notes:
-- [ ] `iter-02/sources/tokamak-energy-heating-systems.md` → `BODY` https://interestingengineering.com/energy/tokamak-energy-gets-1mw-gyrotron (URL in body)
-  - Notes:
-- [ ] `iter-02/sources/tokamak-energy-roadmap.md` → `BODY` https://www.ans.org/news/article-4447/tokamak-energy-bets-its-spherical-design-will-deliver-fusion-energy-in-the-early-2030s/ (URL in body)
-  - Notes:
-- [ ] `iter-02/sources/tokamak-energy-st-e1-design-evolution.md` → `SEARCH` Tokamak Energy ST-E1 design evolution DPP 2024/2025, World Nuclear News, NEI Magazine
-  - Notes:
-- [ ] `iter-03/sources/tokamak-energy-demo4-magnets.md` → `URL` https://tokamakenergy.com/2025/11/19/tokamak-energy-announces-fusion-power-plant-magnet-technology-breakthrough/
-  - Notes:
-- [ ] `iter-03/sources/tokamak-energy-ec-heating-pilot-plant.md` → `URL` https://epjwoc.epj.org/articles/epjconf/abs/2026/02/epjconf_rfppc2026_02014/epjconf_rfppc2026_02014.html
-  - Notes:
-- [ ] `iter-03/sources/tokamak-energy-st-e1-dpp2025-abstract.md` → `URL` https://meetings-archive.aps.org/dpp/2025/gm12/8/
-  - Notes:
+- [x] `iter-01/sources/pulsed-spherical-tokamak-paper.md` → `URL` https://www.mdpi.com/2571-6182/5/2/19
+  - Notes: MDPI 403. User provided local PDF (plasma-05-00019.pdf). 505 lines vs 22 orig. Full Gryaznevich & Chuyanov paper. YES.
+- [x] `iter-01/sources/st40-heating-systems.md` → `URL` https://tokamakenergy.com/2025/01/21/high-power-gyrotron-heating.../
+  - Notes: 36 lines vs 25 orig. Full press release, 1 MW gyrotron from Kyoto Fusioneering. YES.
+- [x] `iter-01/sources/ste1-pilot-plant-specs.md` → `URL` https://archive.aps.org/dpp/2025/gm12/8/
+  - Notes: 53 lines vs 40 orig. DPP 2025 abstract with ST-E1 rev D specs (5.0m, A=2.3, 5.25T, 450-750 MWe). YES.
+- [x] `iter-01/sources/tokamak-energy-overview.md` → `URL` https://tokamakenergy.com/
+  - Notes: 44 lines vs 46 orig. Thin JS homepage — marketing taglines only. Orig had full company profile. NO.
+- [x] `iter-02/sources/spherical-tokamak-center-stack-shielding.md` → `URL` https://pmc.ncbi.nlm.nih.gov/articles/PMC6365859/
+  - Notes: 688 lines vs 33 orig. Full Humphry-Baker & Smith paper from PMC. YES.
+- [x] `iter-02/sources/tokamak-energy-heating-systems.md` → `BODY` https://interestingengineering.com/energy/tokamak-energy-gets-1mw-gyrotron
+  - Notes: 102 lines vs 21 orig. Full IE article with context and quotes. YES.
+- [x] `iter-02/sources/tokamak-energy-roadmap.md` → `BODY` https://www.ans.org/news/article-4447/...
+  - Notes: 17 lines vs 40 orig. ANS partially paywalled — only teaser. Loses full roadmap. NO.
+- [x] `iter-02/sources/tokamak-energy-st-e1-design-evolution.md` → `SEARCH` → WNN article
+  - Notes: 21 lines vs 41 orig. WNN DPP 2024 coverage. Loses design evolution (DPP 2024→2025 parameter changes). MIXED.
+- [x] `iter-03/sources/tokamak-energy-demo4-magnets.md` → `URL` https://tokamakenergy.com/2025/11/19/...magnet-technology-breakthrough/
+  - Notes: 32 lines vs 26 orig. Full Demo4 press release. YES.
+- [x] `iter-03/sources/tokamak-energy-ec-heating-pilot-plant.md` → `URL` https://epjwoc.epj.org/.../epjconf_rfppc2026_02014.html
+  - Notes: 29 lines vs 31 orig. Abstract page only — similar content. MIXED.
+- [x] `iter-03/sources/tokamak-energy-st-e1-dpp2025-abstract.md` → `URL` https://meetings-archive.aps.org/dpp/2025/gm12/8/
+  - Notes: 53 lines vs 44 orig. Same URL as ste1-pilot-plant-specs. Full DPP 2025 abstract. YES.
 
 ---
 
 ### 22-projectile-icf (4 files)
 
-- [ ] `iter-01/sources/first-light-fusion-technology.md` → `SEARCH` First Light Fusion technology overview, FLARE pivot, firstlightfusion.com
-  - Notes:
-- [ ] `iter-01/sources/nearstar-fusion-technology.md` → `SEARCH` NearStar Fusion MTIF technology, nearstarfusion.com/learn-more
-  - Notes:
-- [ ] `iter-02/sources/first-light-flare-pivot-update.md` → `SEARCH` First Light Fusion FLARE white paper September 2025
-  - Notes:
-- [ ] `iter-02/sources/nearstar-fusion-2025-update.md` → `SEARCH` NearStar Fusion 2025 updates, Virginia Venture Partners investment
-  - Notes:
+- [x] `iter-01/sources/first-light-fusion-technology.md` → `SEARCH` First Light Fusion technology overview, FLARE pivot, firstlightfusion.com
+  - Notes: 31 lines vs 93 orig. Thin JS homepage. Loses all technical specs. NO.
+- [x] `iter-01/sources/nearstar-fusion-technology.md` → `SEARCH` NearStar Fusion MTIF technology, nearstarfusion.com/learn-more
+  - Notes: 69 lines vs 62 orig. Full learn-more page with railgun specs, D-D fuel, modularity. YES.
+- [x] `iter-02/sources/first-light-flare-pivot-update.md` → `SEARCH` First Light Fusion FLARE white paper September 2025
+  - Notes: Used WNN article. 27 lines vs 51 orig. FLARE overview, gain 1000, fast ignition. Loses detailed specs/timeline. MIXED.
+- [x] `iter-02/sources/nearstar-fusion-2025-update.md` → `SEARCH` NearStar Fusion 2025 updates, Virginia Venture Partners investment
+  - Notes: Used VIPC announcement. 51 lines vs 47 orig. Full investment details with quotes, MTIF description. YES.
 
 ---
 

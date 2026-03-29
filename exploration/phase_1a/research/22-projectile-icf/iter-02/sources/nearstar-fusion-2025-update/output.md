@@ -1,0 +1,52 @@
+---
+source: "https://vipc.org/vipc-invests-in-nearstar-fusion-to-advance-clean-energy-and-virginias-nuclear-fusion-ecosystem/"
+source_type: "url"
+extracted_at: "2026-03-29T20:58:11.647971+00:00"
+content_hash_sha256: "ae6c28e54cea4461aee4c67c18ff440a0e12069ff37a87c6e9682724e0d39b1f"
+backend: "trafilatura"
+title: "VIPC Invests in NearStar Fusion to Advance Clean Energy and Virginia’s Nuclear Fusion Ecosystem"
+---
+
+## NearStar Fusion is pioneering a streamlined approach to fusion energy, transforming decades of proven science into a scalable solution.
+
+The [Virginia Innovation Partnership Corporation (VIPC)](https://www.VIPC.org/) today announced that Virginia Venture Partners (VVP), VIPC’s venture capital program, has invested in Chantilly, Virginia-based startup [NearStar Fusion Inc.](https://www.nearstarfusion.com/) On a mission to deliver unlimited clean energy within the next decade, NearStar Fusion provides a scalable and modular solution that overcomes the traditional challenges of nuclear fusion energy, paving the way for globally sustainable and widely accessible energy future. Joining VIPC in this latest venture round were Houston, Texas-based [Ecosphere Ventures](https://ecosphere.vc/) and Malcolm Handley.
+
+For the past 60 years, scientists worldwide have pursued nuclear fusion energy as the key to solving global energy and environmental challenges. Fusion is inherently safe and produces no carbon emissions while generating electricity. However, sustaining a fusion reaction with energy gains of 20x or more remains a significant challenge. NearStar Fusion is tackling this challenge with a breakthrough approach built on decades of proven research and expertise in hypervelocity plasma railguns. Instead of relying on high-powered lasers, NearStar’s innovative method harnesses plasma railguns to efficiently and repeatedly deliver the kinetic energy needed for controlled fusion reactions. This pioneering technology paves the way for a commercially viable fusion power plant, bringing the world closer to limitless, clean energy.
+
+“We at NearStar Fusion are thankful and excited to continue our journey for affordable, clean, and robust fusion energy with VIPC’s investment,” said **Amit Singh, CEO of NearStar Fusion**. “As a leading state for science and technology, Virginia offers us access to a talented workforce, ability to expand, and the opportunity to serve a diverse set of customers. We are committed to continuing scaling our startup and our fusion technology here in the Commonwealth.”
+
+The NearStar team has decades of experience with plasma physics and plasma railguns including working with Department of Energy (DOE), NASA, ARPA-E, Los Alamos National Laboratory, National Science Foundation (NSF), and the U.S. Navy, Army, and Strategic Defense Initiative.
+
+NearStar’s scalable, modular fusion power plants leverage conventional materials and existing technologies to deliver clean, carbon-free, and cost-effective energy to the grid. By eliminating the need for costly superconducting magnets or high-powered lasers, NearStar significantly reduces capital and operational expenses while enhancing reliability, maintainability, and overall performance. Its modular design makes NearStar an ideal solution to support the growing demand of data centers, a particularly promising market given that the Commonwealth is the data center capital of the world. Additionally, their use of deuterium-deuterium fuel, which is safer and more abundant than tritium-based alternatives, further strengthens the scalability and sustainability of their technology. This innovative approach could offer a reliable, long-term energy solution with reduced technical and environmental risks, positioning it as a strong contender among traditional and emerging energy technologies. While data centers are an initial target, NearStar’s technology is capable of scaling to meet the energy needs of larger enterprises, such as steelmaking plants or even utility customers.
+
+**VIPC President and CEO, Joe Benevento**, said, “Virginia is a leader in clean energy innovation, and startups like NearStar Fusion are at the forefront of that transformation. Their advancements in fusion energy have the potential to revolutionize our power grid, create high-paying jobs, and further solidify the Commonwealth as a hub for cutting-edge technology. This is the kind of forward-thinking commitment that will drive our economy and energy independence for generations to come, and VIPC is proud to invest in companies poised to have such tremendous impact.”
+
+NearStar Fusion has also previously received funding through the Commonwealth Commercialization Fund (CCF), VIPC’s technology commercialization grant program. With this early-stage grant in 2022, the startup was able to design, computationally model, build, and experimentally demonstrate the operation of a plasma side injector, a critical enabling component of NearStar’s technology. Funding for innovative technology development has also been received from NSF and Fairfax County through its Fairfax Founders Fund initiative.
+
+“VVP is delighted to invest in NearStar Fusion as they continue to develop an elegantly simple approach to magneto-inertial fusion, which builds on the recent breakthroughs at the U.S. National Labs. We believe the NearStar team, led by exited entrepreneur Amit Singh, CEO, and renown plasma physicist Doug Witherspoon, Founder and CSO, is uniquely well positioned to prove the viability of this transformational energy technology,” said **Marco Rubin, Senior Investment Director for VIPC’s Virginia Venture Partners**.
+
+VIPC’s investment in NearStar Fusion draws upon funds made available through the U.S. Treasury’s State Small Business Credit Initiative (SSBCI) Equity / Venture Capital Program.
+
+“As an early investor in NearStar, I am excited about the team’s ability to iterate and simplify the Magnetized Target Impact Fusion, or MTIF, concept while performing target experiments to derisk the physics. I’m pleased to see other VCs invest in a promising approach to fusion energy and look forward to the continued progress by the NearStar team,” said **Malcolm Handley, Managing Partner of Strong Atomics**.
+
+** ****About NearStar Fusion**
+
+Founded in 2021 by Dr. Douglas Witherspoon and Chris Faranetta and headquartered in Chantilly, VA, NearStar Fusion is developing fusion energy power plants using a proprietary hypervelocity plasma-armature railgun design. The NearStar team has decades of experience with plasma physics and plasma railguns including working with Department of Energy, NASA, ARPA-E, Los Alamos National Laboratory, National Science Foundation, United States Navy, Army and Strategic Defense Initiative (aka Star Wars).
+
+NearStar Fusion’s approach combines magnetic confinement (MCF) and inertial confinement (ICF) into a hybrid approach called Magnetized Target Impact Fusion (MTIF). The MTIF approach is focused on leveraging COTS materials and technologies with deuterium-only (D-D) fusion fuel. Each instance of a NearStar fusion machine is expected to generate 50-100MW of baseload electricity. For more information, visit [www.NearStarFusion.com](http://www.NearStarFusion.com).
+
+**About Virginia Innovation Partnership Corporation (VIPC)**
+
+*Connecting innovators with opportunities**. *VIPC operates as the nonprofit corporation on behalf of the Virginia Innovation Partnership Authority (VIPA). VIPA / VIPC is Virginia’s designated authority for leading innovation and economic development in the Commonwealth of Virginia through research, commercialization, and technology advancement; entrepreneurship, startup, and venture capital growth; and regional ecosystem, innovation network, and industry sector expansion. As part of its operations, VIPC helps attract and catalyze private investment into early-stage startup companies, provides research and technology commercialization grants to universities and entrepreneurs, and offers resource and funding support for entrepreneurial ecosystems, innovation networks, and public-private partnerships at local, state, federal levels.
+
+VIPC’s programs include: Virginia Invests | Virginia Venture Partners (VVP) | Commonwealth Commercialization Fund (CCF) | Entrepreneurial Ecosystems Development | Regional Innovation Fund (RIF) | Smart Communities | The Virginia Smart Community Testbed | The Virginia Unmanned Systems Center | Virginia Advanced Air Mobility Alliance (VAAMA) | The Public Safety Innovation Center (PSIC) | Federal Funding Assistance Program (FFAP) for SBIR & STTR | University Partnerships | Startup Company Mentoring & Engagement.
+
+For more information, please visit [www.VIPC.org](https://www.vipc.org/). Explore the [latest news](https://www.vipc.org/press) from VIPC and [images](https://vipcvirginiainnovationpartnershipcorporation.pixieset.com/) from VIPC-supported stakeholder events. Follow VIPC on [LinkedIn](https://www.linkedin.com/company/virginia-innovation-partnership-corporation), [X](https://x.com/VirginiaIPC), and [Facebook](https://www.facebook.com/VirginiaIPC), .
+
+** ****About Virginia Venture Partners (VVP)**
+
+Virginia Venture Partners (VVP) is VIPC’s venture capital investment platform that makes direct investments in Virginia-based startups with a high potential for achieving rapid growth and generating a significant economic return for entrepreneurs, co-investors, and the Commonwealth of Virginia. Since its inception in 2004, Virginia Venture Partners has helped catalyze investment in more than 300 startups and attract more than $2 billion of private industry capital into Virginia, resulting in 35x capital leverage.
+
+*Virginia Invests* is a VIPC-led initiative that expands investment and growth opportunities for Virginia-based, innovation-driven startups and entrepreneurial ecosystems throughout the Commonwealth. The investment program is designed to accelerate capital invested, from both in-state and out-of-state fund managers, into Virginia startups. *Virginia Invests* is expected to catalyze and attract $250 million of investment into more than 100 high-growth Virginia startups during the next 3-5 years.
+
+For more information about VVP and *Virginia Invests*, visit [www.VIPC.org](https://www.vipc.org/).
