@@ -190,7 +190,7 @@ Task 0 (deps + scaffold + vendor Plotly) → Task 1 (models) → Tasks 2, 4, 5
   - **Specs:** `specs/08-concept-profile.md`, `specs/12-computation-api.md` (UI side)
   - **Verification:** Manual — verify ACs 1–8 from spec 08 and slider ACs from spec 12; test: standalone placeholder, null narrative omission, slider debounce, compute error state, state POST on navigation, risks severity badges render
 
-- [ ] **Task 12 — Comparison view** (`exploration/concept_explorer/templates/compare.html.j2` + `exploration/concept_explorer/static/js/comparison.js`)
+- [x] **Task 12 — Comparison view** (`exploration/concept_explorer/templates/compare.html.j2` + `exploration/concept_explorer/static/js/comparison.js`)
   - `compare.html.j2`: extend `base.html.j2`; concept selector (add/remove, max 4); three tab containers (Sensitivity, CAS, Headline); empty selector state when 0 concepts
   - `comparison.js`:
     - Concept selector: fetch `GET /api/concepts/{id}` lazily when concept added (not on page load); enforce max 4
@@ -250,5 +250,7 @@ Task 0 (deps + scaffold + vendor Plotly) → Task 1 (models) → Tasks 2, 4, 5
 5. **`POST /api/compute` and sensitivity**: The compute endpoint returns a full `CostModelData` including `sensitivities`, but the `sensitivities` field carries **pre-computed baseline values** — it is never re-ranked on slider change. Slider changes update headline economics and CAS only. This is consistent across specs 06, 08, 11, and 12.
 
 **Task 11 discovery**: `GET /api/manifest` is specified for population-context whiskers (spec 08) but the tornado chart requires `ParameterIndex` (per Task 7 note). No `/api/parameter_index` endpoint exists. `concept_page.js` fetches manifest as required but passes `null` for `populationContext` — whiskers are silently omitted. Adding a `/api/parameter_index` endpoint is the clean fix if whiskers are needed.
+
+**Task 12 discovery**: `confinement_family` enum values are uppercase in `ConceptData` (as returned by `/api/concepts`) but lowercase in `ConceptManifestEntry` (as returned by `/api/manifest`). `comparison.js` FAMILY_META covers both. Tornado chart alignment uses `Plotly.relayout` post-render to force a shared `yaxis.categoryarray` and `xaxis.range` across all concept columns. Gap markers use `diamond-open` scatter symbols at x=0 — visually distinct from bars, so "absent" is distinguishable from "elasticity=0". No JS runtime available on this machine; syntax verified by careful review against existing JS patterns.
 
 7. **Spec internal cross-reference numbering errors (no implementation impact)**: Several spec files contain off-by-one cross-references (e.g., spec 03 says `specs/10-explorer-state.md` but the actual file is `specs/11-explorer-state.md`; `specs/12-slider-controls.md` is referenced by specs 05, 07, 08, 11 but the actual file is `specs/12-computation-api.md`). These are documentation errors only — requirements are unambiguous from each spec's own body. No implementation changes needed.
