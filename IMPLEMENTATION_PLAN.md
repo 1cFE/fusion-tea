@@ -94,7 +94,7 @@ Task 0 (deps + scaffold + vendor Plotly) → Task 1 (models) → Tasks 2, 4, 5
   - **Specs:** `specs/02-data-extraction.md`
   - **Verification:** `uv run python -m pytest exploration/concept_explorer/tests/test_extraction.py -v` (unit tests with mocked costingfe and subprocess); manual smoke: `uv run python exploration/concept_explorer/extract_explorer_data.py --skip-narrative --concept 01`
 
-- [ ] **Task 5 — FastAPI server: startup + data/health/manifest/concepts/parameters endpoints** (`exploration/concept_explorer/server.py`)
+- [x] **Task 5 — FastAPI server: startup + data/health/manifest/concepts/parameters endpoints** (`exploration/concept_explorer/server.py`)
   - On startup: load all `data/*.json` into memory; fail clearly if `data/` missing or empty; render Jinja2 templates to `dist/`
   - Mount `static/` at `/static`; serve `dist/` files at page routes
   - `GET /api/health` → `{"status": "ok"}`
@@ -214,6 +214,8 @@ Task 0 (deps + scaffold + vendor Plotly) → Task 1 (models) → Tasks 2, 4, 5
 **Task 0 discovery**: Plotly GitHub releases return 404 for `plotly-basic.min.js` — use `npm registry.npmjs.org/plotly.js-basic-dist-min` instead. Also: `pytest`, `ruff`, `mypy` are only in `[project.optional-dependencies].dev` but `uv sync` doesn't install optionals by default; `uv add --dev` is needed to populate the venv for the validation commands.
 
 **Task 4 discovery**: `model.sensitivity()` returns plain elasticity floats, not `SensitivityEntry` — baselines must be pulled from `result.params[key]`. Also: `availability` lives in `result.params`, not `result.power_table`, so it must be injected before calling `from_forward_result()`. Use `sys.path` + fully-qualified package imports (`from exploration.concept_explorer.models import ...`) to satisfy both runtime and mypy `--explicit-package-bases`.
+
+**Task 5 discovery**: `TestClient` fixture return type must be `Generator[TestClient, None, None]` not `TestClient` — ruff/mypy require it. Page templates (index/compare/concept) are Tasks 10–12 so test fixtures create dist/ files directly rather than rendering; `_render_templates` silently skips missing templates. `lru_cache` is defined inside `create_app` closure so it closes over the per-app `concepts` dict — one cache per server instance, correct for tests.
 
 **`exploration/concept_explorer/` does not exist** — all 12 tasks are new work.
 
