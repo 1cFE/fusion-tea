@@ -13,11 +13,17 @@ The server:
 from __future__ import annotations
 
 import argparse
+import dataclasses
+import importlib.util
+import types
 from collections.abc import AsyncGenerator, Callable
-from contextlib import asynccontextmanager
-from dataclasses import dataclass
+from contextlib import asynccontextmanager, redirect_stdout
+from dataclasses import dataclass, field
+from datetime import UTC, datetime
 from functools import lru_cache
+from io import StringIO
 from pathlib import Path
+from typing import Any
 
 import uvicorn
 from fastapi import FastAPI, HTTPException
@@ -26,13 +32,79 @@ from fastapi.staticfiles import StaticFiles
 from jinja2 import Environment, FileSystemLoader, TemplateNotFound
 
 from exploration.concept_explorer.models import (
+    ComputeRequest,
     ConceptData,
     ConceptManifest,
+    CostModelData,
+    ExplorerState,
     ParameterIndex,
     ParameterIndexEntry,
 )
 
 BASE_DIR = Path(__file__).parent
+
+# ---------------------------------------------------------------------------
+# Parameter sets for model.forward() re-invocation (compute endpoint)
+# ---------------------------------------------------------------------------
+
+# Named args that forward() takes explicitly (not via **overrides)
+_FORWARD_NAMED = frozenset(
+    {
+        "net_electric_mw",
+        "availability",
+        "lifetime_yr",
+        "n_mod",
+        "construction_time_yr",
+        "interest_rate",
+        "inflation_rate",
+        "noak",
+    }
+)
+# Keys present in result.params that are model properties — never re-pass to forward()
+_FORWARD_SKIP = frozenset({"fuel", "concept"})
+
+
+def _load_model_module(path: Path, module_name: str = "_concept_module") -> types.ModuleType:
+    """Import a model_setup.py file, suppressing stdout from module-level prints.
+
+    Module-level print() calls in model_setup.py are suppressed so they don't
+    pollute server logs during live recompute requests.
+    """
+    spec = importlib.util.spec_from_file_location(module_name, path)
+    if spec is None or spec.loader is None:
+        raise ImportError(f"Cannot load module from {path}")
+    module = importlib.util.module_from_spec(spec)
+    buf = StringIO()
+    with redirect_stdout(buf):
+        spec.loader.exec_module(module)
+    return module
+
+
+def _forward_with_overrides(
+    model: Any, base_params: dict[str, Any], overrides: dict[str, Any]
+) -> Any:
+    """Re-run model.forward() with base_params updated by overrides.
+
+    Follows costingfe's _build_lcoe_fn param-extraction pattern: the named args
+    required by forward() are extracted explicitly; remaining physics/plant params
+    pass as **kwargs. `fuel` and `concept` are skipped — they are model instance
+    properties inferred from self, not caller-supplied kwargs.
+    cost_overrides are not re-applied; this is consistent with how
+    model.sensitivity() works (it also omits cost_overrides).
+    """
+    params = {**base_params, **overrides}
+    extra = {k: v for k, v in params.items() if k not in _FORWARD_NAMED and k not in _FORWARD_SKIP}
+    return model.forward(
+        net_electric_mw=float(params["net_electric_mw"]),
+        availability=float(params["availability"]),
+        lifetime_yr=float(params["lifetime_yr"]),
+        n_mod=int(float(params.get("n_mod", 1))),
+        construction_time_yr=float(params.get("construction_time_yr", 6.0)),
+        interest_rate=float(params.get("interest_rate", 0.07)),
+        inflation_rate=float(params.get("inflation_rate", 0.02)),
+        noak=bool(params.get("noak", True)),
+        **extra,
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -47,6 +119,8 @@ class _State:
     parameter_index: ParameterIndex
     # lru_cache-wrapped concept lookup; keyed on concept_id string
     get_concept: Callable[[str], ConceptData | None]
+    # Explorer session state (in-memory only; resets on server restart)
+    explorer_state: ExplorerState = field(default_factory=ExplorerState)
 
 
 # ---------------------------------------------------------------------------
@@ -222,6 +296,69 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
         if entry is None:
             raise HTTPException(status_code=404, detail=f"Parameter {param_name} not found")
         return entry
+
+    # ------------------------------------------------------------------
+    # Explorer state API — in-memory session context for the /manage-concept agent
+    # ------------------------------------------------------------------
+
+    @app.get("/api/state", response_model=ExplorerState)
+    def get_state() -> ExplorerState:
+        return _s().explorer_state
+
+    @app.post("/api/state")
+    def post_state(body: ExplorerState) -> dict[str, str]:
+        """Store explorer state; timestamp is set server-side (client value ignored)."""
+        ts = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
+        _s().explorer_state = body.model_copy(update={"timestamp": ts})
+        return {"status": "ok"}
+
+    # ------------------------------------------------------------------
+    # Computation API — slider-driven model recompute (costingfe concepts only)
+    # ------------------------------------------------------------------
+
+    @lru_cache(maxsize=128)
+    def _compute_cached(
+        concept_id: str, overrides_frozen: frozenset[tuple[str, float]]
+    ) -> CostModelData:
+        """Compute CostModelData with overridden params; result is LRU-cached.
+
+        Cache key is (concept_id, frozenset(overrides.items())).  Identical
+        param combos return the cached result without reloading the module.
+        Baseline sensitivities come from the stored concept data — they are
+        never recomputed on slider change (per spec 12).
+        """
+        concept = _s().get_concept(concept_id)
+        assert concept is not None, f"Concept {concept_id!r} not found in loaded data"
+        model_setup = concept.sources.model_setup
+        assert model_setup is not None, "compute called for a concept with no model_setup"
+
+        module = _load_model_module(Path(model_setup))
+        model = getattr(module, "model")
+        result = getattr(module, "result")
+
+        new_result = _forward_with_overrides(model, result.params, dict(overrides_frozen))
+
+        raw: dict[str, Any] = dataclasses.asdict(new_result)
+        params_dict: dict[str, Any] = raw.get("params", {})
+        # Inject availability into power_table for capacity_factor fallback (same
+        # fix as extract_explorer_data.py — availability lives in params, not power_table)
+        if "availability" in params_dict:
+            raw.setdefault("power_table", {})["availability"] = params_dict["availability"]
+
+        baseline_sensitivities = concept.cost_model.sensitivities if concept.cost_model else None
+        return CostModelData.from_forward_result(raw, baseline_sensitivities)
+
+    @app.post("/api/compute", response_model=CostModelData)
+    def compute(body: ComputeRequest) -> CostModelData:
+        concept = _s().get_concept(body.concept_id)
+        if concept is None:
+            raise HTTPException(status_code=404, detail=f"Concept {body.concept_id} not found")
+        if concept.sources.model_setup is None:
+            raise HTTPException(
+                status_code=422,
+                detail="Slider computation only available for costingfe-backed concepts",
+            )
+        return _compute_cached(body.concept_id, frozenset(body.overrides.items()))
 
     # ------------------------------------------------------------------
     # Page routes — serve pre-rendered HTML from dist/
