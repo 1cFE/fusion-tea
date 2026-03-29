@@ -73,18 +73,6 @@
 }
 
 /* --------------------------------------------------------------------------
-   Hatched fill pattern for low-confidence bars (referenced by JS components)
-   -------------------------------------------------------------------------- */
-
-/* SVG pattern defined inline here so JS can reference the id "hatch-low-confidence" */
-.hatch-pattern-defs {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-/* --------------------------------------------------------------------------
    Reset / Base
    -------------------------------------------------------------------------- */
 

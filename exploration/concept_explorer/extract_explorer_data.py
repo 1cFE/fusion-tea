@@ -474,7 +474,7 @@ def build_parameter_index(concepts: list[ConceptData]) -> ParameterIndex:
                 if pm is not None:
                     param_info[param_name] = (pm.display_name, pm.category)
                 else:
-                    param_info[param_name] = (param_name, ParameterCategory.SHARED_BASELINE)
+                    param_info[param_name] = (param_name, ParameterCategory.UNCLASSIFIED)
 
     parameters: dict[str, ParameterIndexEntry] = {
         param_name: ParameterIndexEntry(

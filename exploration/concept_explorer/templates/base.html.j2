@@ -10,26 +10,6 @@
   {% block head_extra %}{% endblock %}
 </head>
 <body>
-  {#
-    Inline SVG defs for hatched fill pattern used by low-confidence bars.
-    The pattern id "hatch-low-confidence" is referenced by tornado.js and
-    cas_breakdown.js via Plotly fillpattern.fgcolor / custom SVG paths.
-    Width/height zero — this element has no layout footprint.
-  #}
-  <svg class="hatch-pattern-defs" aria-hidden="true">
-    <defs>
-      <pattern id="hatch-low-confidence"
-               patternUnits="userSpaceOnUse"
-               width="6" height="6"
-               patternTransform="rotate(45)">
-        <line x1="0" y1="0" x2="0" y2="6"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-opacity="0.45"/>
-      </pattern>
-    </defs>
-  </svg>
-
   <nav class="nav" aria-label="Main navigation">
     <span class="nav__brand">Fusion TEA</span>
     <div class="nav__links">

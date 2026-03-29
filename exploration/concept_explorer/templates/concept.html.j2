@@ -4,9 +4,9 @@
 
 {% block breadcrumb %}
 <nav class="breadcrumb" aria-label="Breadcrumb">
-  <a href="/" class="breadcrumb__link">All Concepts</a>
+  <a href="/" class="breadcrumb__item">All Concepts</a>
   <span class="breadcrumb__sep" aria-hidden="true">›</span>
-  <span class="breadcrumb__current" id="breadcrumb-name" aria-current="page">{{ concept_id }}</span>
+  <span class="breadcrumb__item breadcrumb__item--current" id="breadcrumb-name" aria-current="page">{{ concept_id }}</span>
 </nav>
 {% endblock %}
 

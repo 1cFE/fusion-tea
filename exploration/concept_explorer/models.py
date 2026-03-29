@@ -38,16 +38,19 @@ class ModelType(StrEnum):
 
 
 class ParameterCategory(StrEnum):
-    SHARED_BASELINE = "shared_baseline"  # Common to most fusion concepts
-    WELL_ESTABLISHED = "well_established"  # Physics / engineering consensus
-    KEY_INNOVATION = "key_innovation"  # The concept's core performance claim
-    CONCEPT_UNIQUE = "concept_unique"  # Specific to this concept only
+    SHARED_BASELINE = "shared-baseline"  # Common to most fusion concepts
+    WELL_ESTABLISHED = "well-established"  # Physics / engineering consensus
+    KEY_INNOVATION = "key-innovation"  # The concept's core performance claim
+    CONCEPT_UNIQUE = "concept-unique"  # Specific to this concept only
+    HIGH_RISK = "high-risk"  # Poorly constrained AND high LCOE impact
+    UNCLASSIFIED = "unclassified"  # No authored metadata yet
 
 
 class Confidence(StrEnum):
     HIGH = "high"
     MEDIUM = "medium"
     LOW = "low"
+    UNKNOWN = "unknown"
 
 
 class DataAvailability(StrEnum):

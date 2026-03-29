@@ -163,7 +163,7 @@ def _make_concept_dir(
         meta = {
             "availability": {
                 "display_name": "Plant Availability",
-                "category": "shared_baseline",
+                "category": "shared-baseline",
                 "confidence": "high",
                 "baseline": 0.85,
                 "display_multiplier": 100.0,

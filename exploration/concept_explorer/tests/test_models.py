@@ -402,7 +402,7 @@ def test_invalid_confidence_enum_raises_validation_error() -> None:
     payload = json.dumps(
         {
             "display_name": "eta_th",
-            "category": "key_innovation",
+            "category": "key-innovation",
             "confidence": "very_high",  # not a valid Confidence
             "baseline": 0.35,
             "range": [0.25, 0.50],
