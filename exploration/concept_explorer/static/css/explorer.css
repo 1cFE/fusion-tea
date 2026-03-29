@@ -1197,3 +1197,342 @@ a:hover {
   align-items: center;
   justify-content: space-between;
 }
+
+/* ==========================================================================
+   Taxonomy page
+   ========================================================================== */
+
+.taxonomy-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: var(--space-4);
+  min-height: 70vh;
+}
+
+.taxonomy-sidebar {
+  background-color: var(--color-surface-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  overflow-y: auto;
+  max-height: calc(100vh - 120px);
+  position: sticky;
+  top: var(--space-4);
+}
+
+.taxonomy-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+@media (max-width: 768px) {
+  .taxonomy-layout {
+    grid-template-columns: 1fr;
+  }
+  .taxonomy-sidebar {
+    position: static;
+    max-height: 40vh;
+  }
+}
+
+/* Tree view */
+
+.tree-node {
+  margin-left: var(--space-2);
+}
+
+.tree-node__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.tree-node__header:hover {
+  color: var(--color-text-primary);
+}
+
+.tree-node__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  transition: transform 0.15s;
+  flex-shrink: 0;
+}
+
+.tree-node__toggle--open {
+  transform: rotate(90deg);
+}
+
+.tree-node__label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.tree-node__count {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin-left: var(--space-1);
+}
+
+.tree-node__children {
+  display: none;
+}
+
+.tree-node__children--open {
+  display: block;
+}
+
+.tree-leaf {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-2);
+  margin-left: calc(var(--space-2) + 16px);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  border-left: 2px solid transparent;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  transition: background-color 0.1s, border-color 0.1s;
+}
+
+.tree-leaf:hover {
+  background-color: var(--color-surface-2);
+  color: var(--color-text-primary);
+}
+
+.tree-leaf--selected {
+  border-left-color: var(--color-well-established);
+  background-color: var(--color-surface-2);
+  color: var(--color-text-primary);
+}
+
+.tree-leaf__name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Taxonomy card */
+
+.taxonomy-card {
+  background-color: var(--color-surface-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.taxonomy-card__header {
+  margin-bottom: var(--space-3);
+}
+
+.taxonomy-card__name {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+}
+
+.taxonomy-card__company {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-1);
+}
+
+.taxonomy-card__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.taxonomy-card__attrs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.taxonomy-card__attr {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding: var(--space-1) 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.taxonomy-card__label {
+  flex: 0 0 120px;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.taxonomy-card__value {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+}
+
+.taxonomy-card__value--tbd {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.taxonomy-card__value--na {
+  color: var(--color-text-muted);
+}
+
+.taxonomy-card__driver {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin-top: var(--space-2);
+  padding: var(--space-2);
+  background-color: var(--color-surface-2);
+  border-radius: var(--radius-sm);
+}
+
+.taxonomy-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-3);
+  font-size: var(--font-size-sm);
+  color: var(--color-well-established);
+  text-decoration: none;
+}
+
+.taxonomy-card__link:hover {
+  text-decoration: underline;
+}
+
+/* Similarity card */
+
+.similarity-card {
+  background-color: var(--color-surface-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.similarity-card__title {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.similarity-entry {
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+
+.similarity-entry:last-child {
+  border-bottom: none;
+}
+
+.similarity-entry:hover {
+  background-color: var(--color-surface-2);
+}
+
+.similarity-entry__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.similarity-entry__name {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.similarity-entry__score {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  flex-shrink: 0;
+}
+
+.similarity-entry__dims {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.similarity-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-xs);
+}
+
+.similarity-bar__label {
+  flex: 0 0 90px;
+  color: var(--color-text-muted);
+  text-transform: capitalize;
+}
+
+.similarity-bar__track {
+  flex: 1;
+  height: 4px;
+  background-color: var(--color-surface-3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.similarity-bar__fill {
+  height: 100%;
+  background-color: var(--color-well-established);
+  border-radius: 2px;
+  transition: width 0.3s;
+}
+
+.similarity-bar__ratio {
+  flex: 0 0 30px;
+  text-align: right;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+}
+
+.similarity-bridge {
+  margin-top: var(--space-2);
+  padding: var(--space-2);
+  background-color: var(--color-surface-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.similarity-bridge__field {
+  color: var(--color-text-muted);
+}
+
+.similarity-bridge__concept {
+  color: var(--color-well-established);
+  cursor: pointer;
+}
+
+.similarity-bridge__concept:hover {
+  text-decoration: underline;
+}

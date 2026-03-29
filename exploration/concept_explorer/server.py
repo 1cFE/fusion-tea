@@ -47,6 +47,20 @@ from exploration.concept_explorer.models import (  # noqa: E402
     ParameterIndex,
     ParameterIndexEntry,
 )
+from exploration.concept_explorer.similarity import (  # noqa: E402
+    ConceptSimilarityReport,
+    ConstellationData,
+    SimilarityResult,
+    compare_pair,
+    compute_constellation,
+    compute_similarity_matrix,
+    explain_difference,
+    find_nearest,
+)
+from exploration.concept_explorer.taxonomy_models import (  # noqa: E402
+    ConceptRegistry,
+    ConceptTaxonomy,
+)
 
 BASE_DIR = Path(__file__).parent
 
@@ -128,6 +142,11 @@ class _State:
     get_concept: Callable[[str], ConceptData | None]
     # Explorer session state (in-memory only; resets on server restart)
     explorer_state: ExplorerState = field(default_factory=ExplorerState)
+    # Taxonomy data (loaded if concept_registry.json exists)
+    registry: ConceptRegistry | None = None
+    decision_tree: dict | None = None
+    similarity_reports: dict[str, ConceptSimilarityReport] = field(default_factory=dict)
+    constellation: ConstellationData | None = None
 
 
 # ---------------------------------------------------------------------------
@@ -163,10 +182,14 @@ def _load_data(
             "Re-run extract_explorer_data.py to regenerate it."
         )
 
+    _NON_CONCEPT_FILES = {
+        "manifest.json", "parameter_index.json",
+        "concept_registry.json", "decision_tree.json",
+    }
     concept_files = [
         f
         for f in data_dir.glob("*.json")
-        if f.name not in ("manifest.json", "parameter_index.json")
+        if f.name not in _NON_CONCEPT_FILES
     ]
     if not concept_files:
         raise RuntimeError(
@@ -183,6 +206,47 @@ def _load_data(
         concepts[concept.concept_id] = concept
 
     return concepts, manifest, parameter_index
+
+
+def _load_taxonomy(
+    data_dir: Path,
+) -> tuple[
+    ConceptRegistry | None,
+    dict | None,
+    dict[str, ConceptSimilarityReport],
+    ConstellationData | None,
+]:
+    """Load taxonomy data if available. Returns (registry, tree, reports, constellation).
+
+    Non-fatal: if taxonomy files don't exist, returns all None/empty.
+    Taxonomy is an additive feature — the server works without it.
+    """
+    import json
+
+    registry_path = data_dir / "concept_registry.json"
+    tree_path = data_dir / "decision_tree.json"
+
+    if not registry_path.exists() or not tree_path.exists():
+        return None, None, {}, None
+
+    registry = ConceptRegistry.model_validate_json(registry_path.read_text())
+    decision_tree = json.loads(tree_path.read_text())
+
+    # Precompute similarity reports for all concepts
+    similarity_reports: dict[str, ConceptSimilarityReport] = {}
+    for concept in registry.concepts:
+        nearest = find_nearest(concept, registry, top_n=5)
+        similarity_reports[concept.concept_id] = ConceptSimilarityReport(
+            query_concept_id=concept.concept_id,
+            query_concept_name=concept.name,
+            nearest=nearest,
+        )
+
+    # Compute constellation
+    matrix = compute_similarity_matrix(registry)
+    constellation = compute_constellation(matrix, registry)
+
+    return registry, decision_tree, similarity_reports, constellation
 
 
 # ---------------------------------------------------------------------------
@@ -217,6 +281,7 @@ def _render_templates(
 
     _try_render("index.html.j2", dist_dir / "index.html", active_nav="concepts")
     _try_render("compare.html.j2", dist_dir / "compare.html", active_nav="compare")
+    _try_render("taxonomy.html.j2", dist_dir / "taxonomy.html", active_nav="taxonomy")
 
     for concept_id in concepts:
         _try_render(
@@ -249,6 +314,9 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
     @asynccontextmanager
     async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:  # noqa: ARG001
         concepts, manifest, parameter_index = _load_data(data_dir)
+        registry, decision_tree, similarity_reports, constellation = _load_taxonomy(
+            data_dir
+        )
         _render_templates(templates_dir, dist_dir, concepts)
 
         # Build a per-app LRU cache so repeated /api/concepts calls skip the dict
@@ -262,6 +330,10 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
             manifest=manifest,
             parameter_index=parameter_index,
             get_concept=_get_concept_cached,
+            registry=registry,
+            decision_tree=decision_tree,
+            similarity_reports=similarity_reports,
+            constellation=constellation,
         )
         yield
         _state[0] = None
@@ -372,6 +444,79 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
         return _compute_cached(body.concept_id, frozenset(body.overrides.items()))
 
     # ------------------------------------------------------------------
+    # Taxonomy API — concept registry, decision tree, similarity
+    # ------------------------------------------------------------------
+
+    @app.get("/api/taxonomy/tree")
+    def taxonomy_tree() -> dict:
+        """Return the full decision tree structure."""
+        tree = _s().decision_tree
+        if tree is None:
+            raise HTTPException(status_code=404, detail="Taxonomy data not loaded")
+        return tree
+
+    @app.get("/api/taxonomy/registry", response_model=ConceptRegistry)
+    def taxonomy_registry() -> ConceptRegistry:
+        """Return the full concept registry."""
+        reg = _s().registry
+        if reg is None:
+            raise HTTPException(status_code=404, detail="Taxonomy data not loaded")
+        return reg
+
+    @app.get("/api/taxonomy/concepts/{concept_id}", response_model=ConceptTaxonomy)
+    def taxonomy_concept(concept_id: str) -> ConceptTaxonomy:
+        """Return a single concept's taxonomy record."""
+        reg = _s().registry
+        if reg is None:
+            raise HTTPException(status_code=404, detail="Taxonomy data not loaded")
+        concept = reg.by_id(concept_id)
+        if concept is None:
+            raise HTTPException(
+                status_code=404, detail=f"Concept '{concept_id}' not found in registry"
+            )
+        return concept
+
+    @app.get("/api/taxonomy/similarity/{concept_id}", response_model=ConceptSimilarityReport)
+    def taxonomy_similarity(concept_id: str) -> ConceptSimilarityReport:
+        """Return precomputed similarity report (nearest neighbors + bridges)."""
+        report = _s().similarity_reports.get(concept_id)
+        if report is None:
+            raise HTTPException(
+                status_code=404, detail=f"No similarity report for '{concept_id}'"
+            )
+        return report
+
+    @app.get("/api/taxonomy/compare/{concept_a}/{concept_b}", response_model=SimilarityResult)
+    def taxonomy_compare(concept_a: str, concept_b: str) -> SimilarityResult:
+        """Compare any two concepts on demand."""
+        reg = _s().registry
+        if reg is None:
+            raise HTTPException(status_code=404, detail="Taxonomy data not loaded")
+        a = reg.by_id(concept_a)
+        b = reg.by_id(concept_b)
+        if a is None or b is None:
+            raise HTTPException(
+                status_code=404, detail="One or both concept IDs not found"
+            )
+        comparison = compare_pair(a, b)
+        bridges = explain_difference(a, b, reg)
+        return SimilarityResult(
+            concept_id=b.concept_id,
+            concept_name=b.name,
+            confinement_family=b.confinement_family,
+            comparison=comparison,
+            bridges=bridges,
+        )
+
+    @app.get("/api/taxonomy/constellation", response_model=ConstellationData)
+    def taxonomy_constellation() -> ConstellationData:
+        """Return 2D constellation coordinates for all concepts."""
+        const = _s().constellation
+        if const is None:
+            raise HTTPException(status_code=404, detail="Taxonomy data not loaded")
+        return const
+
+    # ------------------------------------------------------------------
     # Page routes — serve pre-rendered HTML from dist/
     # NEVER embed concept data here; pages are shells, data fetched by JS.
     # ------------------------------------------------------------------
@@ -389,6 +534,10 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
     @app.get("/compare")
     def compare_page() -> FileResponse:
         return _serve(dist_dir / "compare.html")
+
+    @app.get("/taxonomy")
+    def taxonomy_page() -> FileResponse:
+        return _serve(dist_dir / "taxonomy.html")
 
     @app.get("/concept/{concept_id}")
     def concept_page(concept_id: str) -> FileResponse:

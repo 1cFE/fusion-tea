@@ -1,0 +1,29 @@
+{% extends "base.html.j2" %}
+
+{% block title %}Fusion TEA — Taxonomy Explorer{% endblock %}
+
+{% block body %}
+<div id="loading-state" class="loading" style="text-align:center; padding: var(--space-8);">
+  Loading taxonomy data...
+</div>
+<div id="error-state" style="display:none; text-align:center; padding: var(--space-8); color: var(--color-text-muted);">
+  Failed to load taxonomy data. Check server logs.
+</div>
+<div id="taxonomy-content" style="display:none;">
+  <div class="taxonomy-layout">
+    <aside class="taxonomy-sidebar" id="tree-container"></aside>
+    <section class="taxonomy-main">
+      <div id="constellation-container" style="min-height: 350px;"></div>
+      <div id="taxonomy-card-container"></div>
+      <div id="similarity-card-container"></div>
+    </section>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/tree_view.js"></script>
+<script src="/static/js/constellation.js"></script>
+<script src="/static/js/taxonomy_card.js"></script>
+<script src="/static/js/taxonomy.js"></script>
+{% endblock %}
