@@ -139,9 +139,12 @@ def build_sensitivity_analysis(model: Any, result: Any) -> SensitivityAnalysis:
     params: dict[str, Any] = result.params
 
     def _entries(group: dict[str, float]) -> dict[str, SensitivityEntry]:
+        import math
+
         return {
             k: SensitivityEntry(elasticity=float(v), baseline=float(params.get(k, 0.0)))
             for k, v in group.items()
+            if v is not None and math.isfinite(float(v))
         }
 
     return SensitivityAnalysis(
