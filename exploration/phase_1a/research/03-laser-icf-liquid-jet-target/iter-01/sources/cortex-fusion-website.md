@@ -1,33 +1,84 @@
-# Cortex Fusion Systems Website
-**Source**: https://www.cortexfusion.systems/
-**Accessed**: 2026-03-07
+---
+source: "https://www.cortexfusion.systems/"
+source_type: "url"
+extracted_at: "2026-03-29T16:45:27.556432+00:00"
+content_hash_sha256: "362e0659eba61b007a99ae96529e136e6878612d0c0fac7484d745e4e6737bb3"
+backend: "trafilatura"
+title: "Patents"
+---
 
-## Company Overview
-- Founded: 2021 by Jacob (Jake) Levitt
-- Location: 250 Park Avenue, New York, NY
-- Funding: $2.6M reported equity funding (per Dealroom/Crunchbase)
-- Self-described as "a quantum technology company and the first energy company to address sustained nuclear fusion with recent and rapidly developing advances in coherent control and photonics"
+Our team combines expertise in ultrafast laser physics, plasma science, nuclear engineering, and energy systems to build the first practical fusion power plants.
 
-## Key Personnel
-- **President & CTO**: Jake Levitt (UC Santa Barbara background, ultrafast spectroscopy)
-- **Collaborators**: Dr. Niranjan Shivaram, Dr. Stylianos Chatzidakis, Dr. Carlos Trallero-Herrero
-- **Consultants**: Dr. Dmitri Kharzeev (Stony Brook/BNL), Dr. Artur Izmaylov
-- **Academic partnerships**: Purdue University, University of Connecticut
+## Patents
 
-## Technology Description
-- **Laser**: Femtosecond ultrafast lasers with orbital angular momentum (commercially available)
-- **Mechanism**: Femtosecond laser pulses carrying orbital angular momentum generate solenoidal magnetic fields exceeding 1000 Tesla via the inverse Faraday effect
-- **Target**: Room-temperature liquid jet containing nanostructured fusion fuel (nanophotonic targets using plasmonic nanostructures)
-- **Physics**: Isochoric (constant density) bulk heating — laser is waveguided via plasmonic nanostructures and absorbed throughout the target volume. Avoids hydrodynamic instabilities of conventional ICF implosion
-- **Confinement**: Self-generated kilo-Tesla fields confine hot electrons on micron-scale gyro-orbits, enabling efficient electron-ion thermalization
-- **Repetition rate**: "thousands of pulses per second" (kHz regime)
-- **Key advantage**: Eliminates cryogenic pellet fabrication and injection systems
+### Bichromatic Femtosecond Direct Acceleration in
 
-## IP
-- Over 11 patent applications filed covering quantum tunneling control, chiral fusion catalysis, and nanoshell approaches
-- Four peer-reviewed/preprint papers
+Renewing Liquid Jets Using Nanoparticle-Gap Near-Fields for High-Gain Fusion
 
-## Status
-- Claims to be "currently building the first electricity-producing fusion reactor"
-- No published machine or plant design
-- No disclosed energy capture/conversion method
+US 19/316,087
+
+### System for Seabed Mineral Prospecting and Mining: High-Resolution Geochemical Mapping and Resource Assessment of Deep-Sea Critical Minerals
+
+US 63/817,085
+
+### D2O-Moderated, Fluid-Cooled, Hybrid Fusion-Fission Reactor System Utilizing Unenriched Uranium Fuel and Direct Brayton Cycle
+
+US 63/802,958
+
+### Modern Small Modular Hybrid Fusion-Fission Reactor
+
+US 63/792,117
+
+### Fusion Reactor Using Laser Control of Nanoshell Surface Plasmon Resonance
+
+US 63/748,178
+
+### Neutron Source, Thermal Management System, and Electrical Generator Assembly Using Poincaré Engineering of Nuclear Fusion
+
+US 63/682,691
+
+### Fusion Reactor Using Bichromatic Optical Control of Quantum Tunneling
+
+US 17/855,476, PCT/US2022/035845,
+
+EP 22927541.7, & JP 2023-581035
+
+EP 22927541.7, & JP 2023-581035
+
+### Coherent Control Based on Quantum Zeno and Anti-Zeno Effects
+
+US 63/472,657
+
+### Chiral Catalysis of Nuclear Fusion in Molecules
+
+US 63/596,122
+
+### Infrared-Class Chiral Fusion Reactors
+
+US 63/653,161 & US 63/668,615
+
+### Quantum Phase Control of Nuclear Wavepacket Tunneling Incorporating Multiphoton Processes or Relativistic Gain Media
+
+US 18/479,950
+
+## Publications
+
+### Fusion in a nanoshell: Harnessing plasmonic fields for nuclear reactions
+
+### Chiral catalysis of nuclear fusion in molecules
+
+### Ultrafast laser architectures for quantum control of nuclear fusion
+
+
+arXiv:2308.07417
+
+### Coherent control based on quantum Zeno and anti-Zeno effects: Role of coherences and timing
+
+
+arXiv:2306.08311
+
+Contact us and we will get back to you in less than 24h
+
+Thank you! Your submission has been received!
+
+Oops! Something went wrong while submitting the form.

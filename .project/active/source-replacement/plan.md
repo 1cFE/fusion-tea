@@ -160,44 +160,44 @@ $SOURCES_DIR/
 
 ### 02-acoustic-icf-sonofusion (3 files)
 
-- [ ] `iter-01/sources/bubble-fusion-scientific-history.md` → `SEARCH` Bubble fusion / sonofusion scientific history, Taleyarkhan 2002
-  - Notes:
-- [ ] `iter-01/sources/sonofusion-energy-website.md` → `URL` https://www.sonofusion.energy/
-  - Notes:
-- [ ] `iter-01/sources/ucla-putterman-group-sonoluminescence.md` → `URL` http://acoustics-research.physics.ucla.edu/sonoluminescence/
-  - Notes:
+- [x] `iter-01/sources/bubble-fusion-scientific-history.md` → `SEARCH` Bubble fusion / sonofusion scientific history, Taleyarkhan 2002
+  - Notes: Source cited "Wikipedia (Bubble fusion)" → https://en.wikipedia.org/wiki/Bubble_fusion. 177 lines vs 42 orig. Full article with citations. YES.
+- [x] `iter-01/sources/sonofusion-energy-website.md` → `URL` https://www.sonofusion.energy/
+  - Notes: Page is genuinely thin (698 chars, 2 marketing paragraphs). 11 lines vs 21 orig. WebFetch got additional JS-rendered content (climate stats, scalability claims). MIXED.
+- [x] `iter-01/sources/ucla-putterman-group-sonoluminescence.md` → `URL` http://acoustics-research.physics.ucla.edu/sonoluminescence/
+  - Notes: Full page with experiment descriptions, dense microplasma physics, publication links. 70 lines vs 29 orig. YES.
 
 ---
 
 ### 03-laser-icf-liquid-jet-target (4 files)
 
-- [ ] `iter-01/sources/arxiv-2308-levitt-quantum-control.md` → `URL` https://arxiv.org/abs/2308.07417
-  - Notes:
-- [ ] `iter-01/sources/arxiv-2503-nanoshell-paper.md` → `URL` https://arxiv.org/abs/2503.15531
-  - Notes:
-- [ ] `iter-01/sources/cortex-fusion-website.md` → `URL` https://www.cortexfusion.systems/
-  - Notes:
-- [ ] `iter-01/sources/kHz-liquid-sheet-fusion-paper.md` → `URL` https://www.cambridge.org/core/journals/high-power-laser-science-and-engineering/article/BE37DB81EB33A9E60DC770BFEA37DC08
-  - Notes:
+- [x] `iter-01/sources/arxiv-2308-levitt-quantum-control.md` → `URL` https://arxiv.org/pdf/2308.07417
+  - Notes: Used /pdf/ URL. 478 lines vs 18 orig. Full paper via PDF pipeline, 7 images. YES.
+- [x] `iter-01/sources/arxiv-2503-nanoshell-paper.md` → `URL` https://arxiv.org/pdf/2503.15531
+  - Notes: Used /pdf/ URL. 220 lines vs 54 orig. Full nanoshell paper. YES.
+- [x] `iter-01/sources/cortex-fusion-website.md` → `URL` https://www.cortexfusion.systems/
+  - Notes: JS-heavy SPA. Extraction got Patents/Publications (11 US patent numbers), missed tech description (isochoric heating, >1000T). 83 vs 33. MIXED.
+- [x] `iter-01/sources/kHz-liquid-sheet-fusion-paper.md` → `URL` Cambridge Core (full slug URL needed)
+  - Notes: Short URL 404'd; full slug URL worked. 562 vs 21. Full Knight et al. paper. YES.
 
 ---
 
 ### 04-laser-icf (7 files)
 
-- [ ] `iter-01/sources/hb11-company-overview.md` → `URL` https://hb11.energy/our-story/
-  - Notes:
-- [ ] `iter-01/sources/hb11-osaka-experiment-2022.md` → `URL` https://www.mdpi.com/2076-3417/12/3/1444
-  - Notes:
-- [ ] `iter-01/sources/hb11-patent-reactor-design.md` → `URL` https://patents.google.com/patent/US20170125129A1/en
-  - Notes:
-- [ ] `iter-01/sources/hb11-technology-page.md` → `URL` https://hb11.energy/our-technology/
-  - Notes:
-- [ ] `iter-02/sources/hb11-newatlas-article.md` → `URL` https://newatlas.com/energy/hb11-hydrogen-boron-fusion-clean-energy/
-  - Notes:
-- [ ] `iter-02/sources/hb11-recent-developments-2024-2025.md` → `URL` https://h2-tech.com/news/2023/08-2023/hb11-energy-receives-grant-from-u-s-department-of-energy/
-  - Notes:
-- [ ] `iter-02/sources/hb11-technology-page-2025.md` → `URL` https://hb11.energy/our-technology/
-  - Notes:
+- [x] `iter-01/sources/hb11-company-overview.md` → `URL` https://hb11.energy/our-story/
+  - Notes: JS-rendered page. 13 vs 36. Thin marketing text; orig had team, partnerships, funding. NO.
+- [x] `iter-01/sources/hb11-osaka-experiment-2022.md` → `URL` https://www.mdpi.com/2076-3417/12/3/1444
+  - Notes: MDPI 403. Used local PDF (~/1cfe/applsci-12-01444-v2.pdf). 320 vs 24. Full Margarone/Batani paper. YES.
+- [x] `iter-01/sources/hb11-patent-reactor-design.md` → `URL` https://patents.google.com/patent/US20170125129A1/en
+  - Notes: Full patent text + Google Patents metadata. 671 vs 42. YES.
+- [x] `iter-01/sources/hb11-technology-page.md` → `URL` https://hb11.energy/our-technology/
+  - Notes: JS-rendered page. 15 vs 19. Thin; missed ICF specs, 8.7 MeV, steam cycle details. NO.
+- [x] `iter-02/sources/hb11-newatlas-article.md` → `URL` https://newatlas.com/energy/hb11-hydrogen-boron-fusion-clean-energy/
+  - Notes: Required sanitizer bugfix (html_sanitize.py:69). 38 vs 27. Full article with direct quotes. YES.
+- [x] `iter-02/sources/hb11-recent-developments-2024-2025.md` → `URL` https://h2-tech.com/news/2023/08-2023/hb11-energy-receives-grant-from-u-s-department-of-energy/
+  - Notes: Single DOE INFUSE article; orig compiled 6+ sources. 23 vs 65. MIXED.
+- [x] `iter-02/sources/hb11-technology-page-2025.md` → `URL` https://hb11.energy/our-technology/
+  - Notes: Same URL as hb11-technology-page. Copied extraction. 15 vs 29. NO.
 
 ---
 

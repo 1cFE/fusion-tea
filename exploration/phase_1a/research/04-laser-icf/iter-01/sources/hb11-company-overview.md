@@ -1,36 +1,14 @@
-# HB11 Energy - Company Overview
-**Sources**: https://hb11.energy/our-story/, https://hb11.energy/, various news articles
-**Fetched**: 2026-03-07
+---
+source: "https://hb11.energy/our-story/"
+source_type: "url"
+extracted_at: "2026-03-29T16:47:16.476622+00:00"
+content_hash_sha256: "f694869c39fe48a17711a83e574f1327e1121cb3d068a872de4714b981820e5a"
+backend: "trafilatura"
+title: "The Team and Technology for an Energy Abundant World"
+---
 
-## Company
-- **Name**: HB11 Energy Pty Ltd
-- **Founded**: 2017 (Sydney, Australia)
-- **HQ**: Sydney, Australia
-- **Funding**: ~$23M raised (PitchBook); DOE INFUSE grant (2023)
+HB11 Energy is developing fusion as a safe, green baseload power source while commercialising core fusion technologies. The laser and laser targets businesses, through scale, allow for faster improvement in fusion technology cost and performance.
 
-## Key People
-- **Prof. Heinrich Hora** — Co-founder, Non-Executive Director; Professor Emeritus UNSW; predicted p-B11 viability in 1970s; transitioning to retirement
-- **Dr. Warren McKenzie** — Managing Director, co-founder; PhD Materials Science/Nanotechnology
-- **Greg Ainsworth** — COO; former media executive
-- **Dr. Sergey Pikuz** — CTO; high-energy density physics and laser systems
-- **Prof. Tom Mehlhorn** — Lead Theoretician
-- **Dr. Max Tabak** — Consultant Scientist; Edward Teller Award winner (notable: Tabak is a pioneer of fast ignition at LLNL)
-- **Dr. Igor Morozov** — Head of Simulations
-- **Prof. Thomas Kuehl** — Laser Technology Lead
+Not dependent on intermittent renewables or dangerous & difficult radioactive fuels, Laser Boron Fusion is the long-term solution for climate and ever increasing demand for power. The viable alternative to conventional uranium nuclear power.
 
-## Key Partnerships
-- **DOE INFUSE**: Collaboration with Laboratory for Laser Energetics (LLE), University of Rochester (Prof. Adam Sefkow)
-- **TINEX**: $180M US Government laser fusion initiative; HB11 is only non-US member of Industrial Council; led by General Atomics; includes LLNL, SLAC, UC San Diego, Colorado State
-- **Osaka University**: LFEX petawatt laser experiments
-
-## Commercial Model (Nov 2024)
-- "Components first" strategy — commercializing individual technologies before full reactor
-- Two revenue streams:
-  1. High-powered pulsed lasers (defense, exploration, research; >$10B market)
-  2. Boron fuel targets (medical isotope production)
-
-## Technical Evolution
-- Original concept (2016-2017): Two-laser system — one for kilotesla magnetic field (ns pulse), one for proton fast ignition (ps petawatt pulse); direct electrostatic energy conversion at -1.4 MV
-- Current website (2025): References "arrays of nanosecond and picosecond lasers" and "conventional steam cycle generator" — suggests significant evolution from patent concept
-- Calls approach "Proton Fast Ignition"
-- Target: 1 GW baseload power
+As rapidly advancing laser technology accelerates the timeline for commercial fusion energy, our global team of fusion experts, engineers and award-winning physicists are making it a reality.

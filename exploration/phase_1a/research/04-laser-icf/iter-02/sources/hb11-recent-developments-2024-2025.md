@@ -1,65 +1,24 @@
-# HB11 Energy Recent Developments (2024-2025)
+---
+source: "https://h2-tech.com/news/2023/08-2023/hb11-energy-receives-grant-from-u-s-department-of-energy/"
+source_type: "url"
+extracted_at: "2026-03-29T16:47:22.350352+00:00"
+content_hash_sha256: "4560184d8451053b5b1d5b7c498beb366cbc2f1bfa9242ca70de5c2b93cecf7c"
+backend: "trafilatura"
+title: "HB11 Energy receives grant from U.S. Department of Energy | H2TECH"
+---
 
-**Sources**: Multiple (see below)
-**Compiled**: 2026-03-07
+The U.S. Department of Energy (DOE) has awarded a grant to HB11 Energy as part of its ‘Innovation Network for Fusion Energy’ (INFUSE) program with the objective, “to accelerate basic research to develop cost-effective, innovative fusion energy technologies in the private sector.”
 
-## DOE INFUSE Grant (2023)
-- DOE awarded grant under Innovation Network for Fusion Energy (INFUSE) program
-- Led by Prof. Thomas Mehlhorn (HB11) and Prof. Adam Sefkow (LLE/University of Rochester)
-- Focus: innovative hydrogen-boron fuel targets
-- Source: https://h2-tech.com/news/2023/08-2023/hb11-energy-receives-grant-from-u-s-department-of-energy/
+The program will provide access to world-leading expertise from the Laboratory for Laser Energetics (LLE) at the University of Rochester, an institutional partner of the National Ignition Facility which recently demonstrated net energy gain from laser fusion. Led by HB11 Energy’s Prof. Thomas Mehlhorn and Prof. Adam Sefkow from LLE, the research will be focused on innovative H2-boron fuel targets in its program to develop clean and safe fusion energy.
 
-## TINEX Membership (2025)
-- HB11 joined TINEX (Target Injector Nexus Collaboration for Inertial Fusion Energy Concepts)
-- $180M US Government program for laser fusion
-- HB11 on Industrial Council — one of only few non-US participants
-- Led by General Atomics, with Colorado State, SLAC, UC San Diego, LLNL
-- Source: https://hb11.energy/2025/02/11/hb11-energy-joins-180m-u-s-fusion-initiative/
+INFUSE is one of the first public-private-partnership (PPP) programs established to accelerate fusion energy R&D in partnership with the private sector as part of a broader vision announced by the White House to realize a fusion power plant on a decadal time scale. To achieve this vision, the DOE is planning a greater PPP program, which is expected to be based on the NASA COTS program that supported SpaceX and established the commercial space launch industry.
 
-## Adelaide Laser Partnership (2025)
-- $8.2M collaboration with University of Adelaide DualTech-USPL Group
-- Goal: develop high-powered USPL (ultra-short pulse laser) systems
-- Target: demonstrate >10% wall-plug efficiency
-- First Australian sovereign laser manufacturing capability
-- Source: https://www.adelaide.edu.au/newsroom/news/list/2025/03/31/
+The project will see H2-boron developed as an alternative fuel to the deuterium-tritium used in most other fusion approaches, which faces enormous challenges to reach economic viability. Bypassing many of these challenges, the HB11 Energy technology uses a laser to drive the aneutronic H2-boron-11 fusion reaction enabling a clean, safe, reliable and virtually unlimited source of energy that uses abundant fuels resulting in little or no harmful waste.
 
-## Leadership
-- CEO: Dr. Warren McKenzie
-- CTO: Sergey Pikuz
-- Lead Theoretician: Tom Mehlhorn
+“It is a great honor to us all at HB11 Energy to have the DoE’s fusion program supporting our world-leading researchers and their scientific developments towards H2-boron fusion energy generation—an approach previously thought by many to be impossible,” said Dr. Warren McKenzie, founder & Managing Director of HB11. “We are now one step closer to realising the 1970s theories of our co-founder Professor Hora. Being aneutronic, the technology pathway to a functioning HB11 fusion energy reactor is significantly less complicated and therefore, shorter and much less expensive than any other proposed method of fusion energy. HB11 Energy’s technologies could create the world’s safest, most economic, lowest-carbon source of abundant clean energy.”
 
-## Optica OPN Profile (June 2025)
-- McKenzie named "Entrepreneurs to Watch 2025"
-- HB11 described as using "hybrid burn target design" combining compression with fast ignition
-- Confirmed fast ignition method: ns laser for compression, ps laser as "spark plug"
-- McKenzie quote: "with hydrogen-boron, fast ignition, those protons are actually one of the reactants in the fuel"
-- Business lines: laser manufacturing and target production (selling targets to external customers)
-- Source: https://www.optica-opn.org/home/newsroom/2025/june/entrepreneurs_to_watch_2025_warren_mckenzie/
+The INFUSE project builds upon another recent milestone for HB11—the publication of a special issue of Laser & Particle Beam journal, including thirteen scientific papers advancing the field of H2-boron fusion as a new clean energy source. The papers are published by HB11’s network of scientific collaborators, led by HB11’s Chief Scientist, Professor Dimitri Batani. The editorial headlining the special issue describes the origins of the field as the theoretical physics work by Emeritus Professor Heinrich Hora since the 1970’s at UNSW Sydney and more recently through his company, HB11 Energy.
 
-## Experimental Progress
-- 12 experiments at international laser facilities
-- Osaka LFEX (2022): ~10^10 alpha/sr demonstrated
-- Belfast TARANIS laser: demonstrated high H-B11 fusion reaction rates; results suggested directional alpha particle production
-- PALS laser facility, Prague (2024): equation of state experiments
-- HB11 claims "first private company to generate an order of magnitude higher fusion rate than expected"
-- 4th International Workshop on Proton-Boron Fusion, Frascati, Italy (Oct 2024): major contributor
-- Three simulation programs developed for mapping burn-space
+The new research published in the special issue analyses novel approaches to laser-driven H2-boron fusion energy and the applications of high-brightness alpha-particle sources by the world leading physicists including members of HB11 Energy’s Scientific Advisory Board:
 
-## FusionXInvest Profile
-- Founded 2017, Sydney, Australia
-- Pre-seed: A$4.6M (Feb 2021)
-- Defence Trailblazer: A$8.2M (2025)
-- Total funding: ~$3.57M USD (as of profile date)
-- Source: https://fusionxinvest.com/company-profile/4353/hb11-energy/
-
-## Publication: Phys. Rev. Research (2025)
-- "Alpha particle prod Novel Targets Laser-Driver PBFusion"
-- DOI link: PhysRevResearch.7.013230
-- PDF hosted at: https://hb11.energy/wp-content/uploads/2025/03/
-- Could not extract content (PDF binary)
-
-## Publication: Mehlhorn Perspective (2024)
-- "From KMS Fusion to HB11 Energy, a personal 50 year IFE perspective"
-- Physics of Plasmas 31(2), Feb 2024
-- DOI: 10.1063/5.0170661
-- Could not extract content (PDF binary)
+According to HB11 Energy, the National Ignition Facility’s net energy gain breakthrough, which also observed suprathermal effects in recent experiments, brings greater focus to the possibilities of laser fusion and what it can achieve, particularly with many of the economic and engineering benefits of using H2-boron-11 as the fuel.

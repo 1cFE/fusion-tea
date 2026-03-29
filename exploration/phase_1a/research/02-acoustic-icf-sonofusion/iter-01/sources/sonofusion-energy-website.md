@@ -1,21 +1,12 @@
-# Sonofusion Energy — Company Website
-**URL**: https://www.sonofusion.energy/
-**Accessed**: 2026-03-08
+---
+source: "https://www.sonofusion.energy/"
+source_type: "url"
+extracted_at: "2026-03-29T16:40:37.332410+00:00"
+content_hash_sha256: "0e1dde56df340e16cf72eab8531218c7ce84c88ab640af857cc7075aeb2d0189"
+backend: "trafilatura"
+title: "Thermonuclear fusion created by imploding shockwaves."
+---
 
-## Key Facts
-- Developing "a novel approach to Inertial Confinement Fusion (ICF) for commercially viable fusion energy"
-- "Thermonuclear (hot) fusion energy technology spun off from UCLA"
-- "Originally developed with over $10M in government funding"
-- Co-founders: Seth Putterman (UCLA Professor) and Carlos Camara, PhD
-- Both described as "leading authorities on energy focusing phenomena and cavitation"
-- Research "featured on the covers of Nature Magazine and the New York Times"
-- Claims "relative simplicity avoids significant commercialization hurdles"
-- Reactors will be "built for a fraction of the cost and complexity"
-- Design is "modular and scalable" — from "table-top fusion generators" for buildings to "utility-scale reactors" for cities
+**Sonofusion Energy** is developing a novel approach to Inertial Confinement Fusion (ICF) for commercially viable fusion energy. Sonofusion is based on a thermonuclear (hot) fusion energy technology spun off from UCLA that was originally developed with over $10M in government funding. The company’s unique technology solves the problem of commercially viable, scalable fusion generation in a way that will finally unlock the potential of fusion energy.
 
-## Technical Details Absent
-- No specification of fuel type
-- No specification of heating method, energy capture, magnet type, repetition rate, driver technology
-- No published reactor design
-- No disclosed funding amounts (beyond the $10M in government research funding at UCLA)
-- No timeline or milestones disclosed
+Co-founders include UCLA Professor Seth Putterman and Carlos Camara, PhD, leading authorities on energy focusing phenomena and cavitation. Their groundbreaking research has been featured on the covers of Nature Magazine and the New York Times.
