@@ -146,7 +146,7 @@ Task 0 (deps + scaffold + vendor Plotly) → Task 1 (models) → Tasks 2, 4, 5
   - **Specs:** `specs/06-cas-breakdown.md`
   - **Verification:** Manual — verify ACs 1–6; test CAS22 expand/collapse; test `sharedScale` alignment with two charts side-by-side
 
-- [ ] **Task 9 — Parameter card** (`exploration/concept_explorer/static/js/parameter_card.js`)
+- [x] **Task 9 — Parameter card** (`exploration/concept_explorer/static/js/parameter_card.js`)
   - Implement `showParameterCard(anchor, options)` and `hideParameterCard()`
   - `options`: `{paramName, sensitivity, metadata, crossConceptData?}` where `crossConceptData` is `ParameterIndexEntry | null`
   - Render popover anchored near `anchor` element
