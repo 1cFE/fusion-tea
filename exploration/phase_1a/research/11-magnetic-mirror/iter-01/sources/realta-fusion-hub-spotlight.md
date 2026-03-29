@@ -1,10 +1,11 @@
 ---
-source_url: "https://fusionhub.substack.com/p/fusion-startup-spotlight-realta-fusion"
-access_date: "2026-03-28T21:54:08.564386+00:00"
-content_hash_sha256: "1a29b7997a009ea16ea9b4d23d035b909e8dceff7b5b9468f8985016a0479cc7"
+source: "https://fusionhub.substack.com/p/fusion-startup-spotlight-realta-fusion"
+source_type: "url"
+extracted_at: "2026-03-29T16:04:19.257066+00:00"
+content_hash_sha256: "eccd03cbad4a72b4ad1c8cf07932e13a10bf523e0c5cc87954604fb13363a96b"
+backend: "trafilatura"
 title: "Fusion Startup Spotlight: Realta Fusion"
 author: "Fusion Hub"
-extraction_tool: "trafilatura 2.0.0"
 ---
 
 # Fusion Startup Spotlight: Realta Fusion

@@ -2,26 +2,52 @@
 
 **Status:** Draft
 **Created:** 2026-03-28
-**Last Updated:** 2026-03-28
+**Last Updated:** 2026-03-29
 
 ## Source Documents
 - **Spec:** `.project/active/source-replacement/spec.md`
+- **Tooling (web capture):** `~/1cfe/agentic-mbse/.project/active/web-source-capture/spec.md`
+- **Tooling (provenance):** `~/1cfe/agentic-mbse/.project/active/extraction-provenance/spec.md`
 
 ## Implementation Strategy
 
 **No design document** — this is an operational task (run extractions, review output), not a code change. The plan IS the operational document.
 
 **Phasing Rationale:**
-Setup first to verify tooling works. Then process all 166 files concept-by-concept. Each file gets: rename → extract → WebFetch comparison → quality note. Report is built incrementally as each concept completes.
+Setup first to verify tooling works. Then process all 166 files concept-by-concept. Each file gets: rename → extract with provenance → WebFetch comparison → quality note. Report is built incrementally as each concept completes.
 
 **Execution Model:**
 The executing agent processes one concept at a time. For each file:
 1. Rename `source.md` → `source.orig.md`
-2. Run `uv run agentic-mbse extract <url>` (or find URL first if SEARCH)
-3. Move extraction output to `source.md`
-4. Call WebFetch on the same URL for comparison
-5. Read both files, write quality comment to report
-6. If extraction fails, restore from `.orig.md`
+2. Run `uv run agentic-mbse extract <url> --save-source --output <sources-dir>/<source-name>/`
+3. Copy extraction `output.md` → `<source-name>.md` (top-level, for `find_sources()`)
+4. Remove `output.md` from the companion dir (it's a duplicate of the top-level `.md`)
+5. Call WebFetch on the same URL for comparison
+6. Read both files, write quality comment to report
+7. If extraction fails, restore from `.orig.md` and remove the companion dir
+
+**Output Directory Layout:**
+Each replaced source gets a top-level `.md` file (pipeline-compatible) plus a companion directory holding the raw source and extraction artifacts:
+```
+iter-01/sources/
+  realta-fusion-hub-spotlight.md              ← extracted markdown (with YAML frontmatter)
+  realta-fusion-hub-spotlight.orig.md         ← preserved original Haiku paraphrase
+  realta-fusion-hub-spotlight/                ← companion extraction dir
+    raw.html (or raw.pdf)                     ← original fetched content
+    metrics.json                              ← extraction metrics
+    decisions.json                            ← pipeline decisions (PDF only)
+    images/                                   ← extracted figures (PDF only, if any)
+```
+
+`find_sources()` globs `sources/*.md` which matches **files** only, not directories. The companion directory is invisible to the pipeline. The `.orig.md` files DO match the glob but will be cleaned up later (per spec FR-12).
+
+**Tooling Prerequisites (resolved 2026-03-29):**
+- `agentic-mbse[web]` provides HTML extraction via trafilatura with sanitization
+- Extraction provenance feature provides:
+  - Universal YAML frontmatter on ALL outputs (HTML, PDF, DOCX) with `source`, `source_type`, `extracted_at`, `content_hash_sha256`, `backend`
+  - `--save-source` flag to preserve raw fetched content (`raw.html` or `raw.pdf`)
+  - `--no-frontmatter` opt-out (not needed here)
+  - Content hash of **original source bytes** (not extracted markdown) for change detection
 
 **Category Key:**
 - `URL` — URL in file header, extract directly
@@ -34,25 +60,29 @@ The executing agent processes one concept at a time. For each file:
 ## Phase 1: Setup & Tooling Verification
 
 ### Goal
-Verify `agentic-mbse extract` works on URLs (HTML and PDF), create the report file, and establish the workflow.
+Verify `agentic-mbse extract --save-source` works on URLs (HTML and PDF), produces universal frontmatter and preserves raw sources, create the report file, and establish the companion-directory workflow.
 
 ### Steps
 
-- [ ] Verify `agentic-mbse[web]` is installed: `uv run agentic-mbse extract https://en.wikipedia.org/wiki/Fusion_energy --output /tmp/test-extract/`
-- [ ] Verify PDF extraction works: `uv run agentic-mbse extract https://arxiv.org/pdf/2411.06644 --output /tmp/test-extract/`
-- [ ] Verify output format: check that extracted markdown has YAML frontmatter with `source_url`, `access_date`, `title`
-- [ ] Create report file: `exploration/phase_1a/research/source_replacement_report.md` with header template
-- [ ] Test the full workflow on ONE file (e.g., `11-magnetic-mirror/iter-01/sources/realta-fusion-hub-spotlight.md`):
-  - Rename to `.orig.md`
-  - Extract from URL
+- [x] Verify `agentic-mbse[web]` is installed and HTML extraction works
+- [x] Verify PDF extraction works
+- [x] Verify universal YAML frontmatter: HTML and PDF both produce `source`, `source_type`, `extracted_at`, `content_hash_sha256`, `backend`
+- [x] Verify `--save-source` saves `raw.html` (HTML) and `raw.pdf` + `raw.html` (PDF via arXiv shortcut) in output dir
+- [x] Create report file: `exploration/phase_1a/research/source_replacement_report.md` with header template
+- [x] Test the full companion-directory workflow on ONE file (`11-magnetic-mirror/iter-01/sources/realta-fusion-hub-spotlight.md`):
+  - Rename to `.orig.md` (already done from prior test — verify state)
+  - Extract with `--save-source` into companion dir
+  - Copy `output.md` to top-level `.md`, remove `output.md` from companion dir
   - WebFetch the same URL
   - Write quality comment
-  - Verify `find_sources()` still finds the new file
+  - Verify `find_sources()` glob finds the `.md` file but not the companion directory
+  - Verify companion dir contains `raw.html` and `metrics.json`
 
 ### Validation
-- [ ] Extraction produces markdown with frontmatter
-- [ ] Report file exists with template
-- [ ] Test file replacement is drop-in compatible
+- [x] Extraction produces markdown with universal frontmatter (`source`, `source_type`, `extracted_at`, `content_hash_sha256`, `backend`)
+- [x] Companion directory exists with `raw.html` (or `raw.pdf`) and `metrics.json`
+- [x] `find_sources()` equivalent glob (`sources/*.md`) returns the `.md` file, not the directory
+- [x] Report file exists with template
 
 ---
 
@@ -60,28 +90,71 @@ Verify `agentic-mbse extract` works on URLs (HTML and PDF), create the report fi
 
 ### Execution Instructions for Implementing Agent
 
+**Variables used below:**
+- `SOURCES_DIR` = `exploration/phase_1a/research/<concept>/iter-NN/sources`
+- `NAME` = source filename without `.md` extension (e.g., `realta-fusion-hub-spotlight`)
+
 For each file below:
 1. **If category is SEARCH**: Use WebSearch to find the original URL from the file title and content. Read the `.orig.md` first for context. If URL found, proceed with extraction. If not found after reasonable search, mark as SKIP in notes.
 2. **If category is CITE**: Construct the URL (arXiv ID → `https://arxiv.org/abs/{id}`, DOI → `https://doi.org/{doi}`).
-3. **Rename**: `mv source.md source.orig.md`
-4. **Extract**: `uv run agentic-mbse extract <url> --output <concept-dir>/iter-NN/sources/`
-5. **Flatten**: Move the extraction output file to match the original filename
-6. **WebFetch**: Call WebFetch on the same URL with prompt "Extract all technical and quantitative content from this page"
-7. **Compare**: Read new extraction, `.orig.md`, and WebFetch result. Write quality comment.
-8. **On failure**: Restore `mv source.orig.md source.md`, log failure reason.
+3. **Rename**: `mv $SOURCES_DIR/$NAME.md $SOURCES_DIR/$NAME.orig.md`
+4. **Extract**: `uv run agentic-mbse extract <url> --save-source --output $SOURCES_DIR/$NAME/`
+5. **Flatten** (PDF only): If extraction created a nested subdirectory inside the companion dir, move its contents up one level and remove the empty subdir.
+6. **Promote**: `cp $SOURCES_DIR/$NAME/output.md $SOURCES_DIR/$NAME.md`
+7. **Deduplicate**: `rm $SOURCES_DIR/$NAME/output.md` (the top-level `.md` is the canonical copy)
+8. **WebFetch**: Call WebFetch on the same URL with prompt "Extract all technical and quantitative content from this page"
+9. **Compare**: Read new extraction, `.orig.md`, and WebFetch result. Write quality comment.
+10. **On failure**: Restore `mv $SOURCES_DIR/$NAME.orig.md $SOURCES_DIR/$NAME.md`, remove companion dir `rm -rf $SOURCES_DIR/$NAME/`, log failure reason.
+
+### Lessons & Instructions for Future Agents
+
+**arXiv URLs — always use `/pdf/` or `/html/`, never `/abs/`:**
+The `/abs/` page returns only the abstract (~4K chars, ~20 lines). Use `/pdf/` for full paper content via the PDF pipeline, or `/html/` if the paper has an HTML version (most post-2020 papers do). The PDF pipeline produces richer output (images, tables) but takes longer (2-12 minutes per paper). The `/html/` path is faster but produces no images.
+
+**PDF pipeline creates nested subdirectories:**
+When extracting a PDF URL, the output lands inside a nested subdirectory (named after the temp file). You MUST flatten this: `mv $NAME/tmp*/* $NAME/ && rmdir $NAME/tmp*/`. Forgetting this step breaks the companion dir layout.
+
+**403 / paywall / access errors — ask the user:**
+If extraction fails with HTTP 403, paywall, or similar access errors, DO NOT skip the file. Instead:
+1. Tell the user which URL failed and why
+2. Ask if they can provide a local copy of the PDF/document
+3. If they provide one, extract from the local path: `uv run agentic-mbse extract /path/to/local.pdf --save-source --output $SOURCES_DIR/$NAME/`
+4. Note in the report that the original URL was inaccessible and a local copy was used. The `source_type` in frontmatter will be `local_file` — this is expected.
+
+**SEARCH files — aim for the original source, not a replacement summary:**
+Many SEARCH files are multi-source compilations (the Phase 1a agent synthesized content from 3-5 URLs into one file). When replacing these:
+1. Read the `.orig.md` carefully — note all distinct sources mentioned
+2. Try to find the single most comprehensive original source rather than picking an arbitrary one
+3. If the original was a genuine multi-source synthesis, the replacement will likely be MIXED (richer per-source content but narrower scope). Flag this in the report so the user can decide whether to add supplementary sources later via `add-source`.
+4. Do NOT try to re-create the multi-source synthesis — that's the analysis pipeline's job, not ours.
+
+**WebFetch comparison is informational, not blocking:**
+WebFetch sometimes returns garbage (JS tracking code, cookie banners, empty content) instead of page content. This is expected — it uses Haiku 3.5 as intermediary. When WebFetch returns unusable output, note "WebFetch: no usable content" in the report and base your quality verdict on the `.orig.md` vs new extraction comparison only.
+
+**Result per file:**
+```
+$SOURCES_DIR/
+  $NAME.md              ← extracted markdown with YAML frontmatter (pipeline reads this)
+  $NAME.orig.md         ← preserved original Haiku paraphrase
+  $NAME/                ← companion extraction dir
+    raw.html or raw.pdf ← original fetched source (traceability anchor)
+    metrics.json        ← extraction quality metrics
+    decisions.json      ← pipeline decisions (PDF only)
+    images/             ← extracted figures (PDF only, if any)
+```
 
 ---
 
 ### 01-hts-compact-tokamak (4 files)
 
-- [ ] `iter-03/sources/arc-reactor-specifications.md` → `URL` https://arxiv.org/abs/1409.3540
-  - Notes:
-- [ ] `iter-03/sources/sparc-icrf-heating-paper.md` → `URL` https://www.cambridge.org/core/journals/journal-of-plasma-physics/article/physics-basis-for-the-icrf-system-of-the-sparc-tokamak/22016DD64F3C5CAD47563A1E4AE59934
-  - Notes:
-- [ ] `iter-04/sources/arc-power-conversion-studies.md` → `URL` https://www.mdpi.com/2071-1050/16/17/7480
-  - Notes:
-- [ ] `iter-04/sources/cfs-2025-2026-updates.md` → `SEARCH` CFS/SPARC 2025-2026 milestones, CES 2026 magnet announcement
-  - Notes:
+- [x] `iter-03/sources/arc-reactor-specifications.md` → `URL` https://arxiv.org/pdf/1409.3540
+  - Notes: Used /pdf/ URL (not /abs/) to get full paper. PDF pipeline, 2219 lines, 94 images. YES.
+- [x] `iter-03/sources/sparc-icrf-heating-paper.md` → `URL` https://www.cambridge.org/core/journals/journal-of-plasma-physics/article/physics-basis-for-the-icrf-system-of-the-sparc-tokamak/22016DD64F3C5CAD47563A1E4AE59934
+  - Notes: Open-access paper, full content via trafilatura. 428 lines. YES.
+- [x] `iter-04/sources/arc-power-conversion-studies.md` → `URL` https://www.mdpi.com/2071-1050/16/17/7480
+  - Notes: MDPI returned 403. Used local PDF (~/1cfe/ssrn-4482183.pdf) of SSRN preprint. 579 lines, 20 images. YES.
+- [x] `iter-04/sources/cfs-2025-2026-updates.md` → `SEARCH` CFS/SPARC 2025-2026 milestones, CES 2026 magnet announcement
+  - Notes: Found Fortune CES 2026 article. 52 lines vs 34 orig. Single-source vs multi-source synthesis. MIXED.
 
 ---
 
@@ -599,7 +672,7 @@ For each file below:
 ## Phase 3: Report Finalization
 
 ### Goal
-Review the completed report, generate summary statistics, and flag any concepts that need follow-up.
+Review the completed report, generate summary statistics, verify the companion directory structure, and flag any concepts that need follow-up.
 
 ### Steps
 
@@ -607,13 +680,19 @@ Review the completed report, generate summary statistics, and flag any concepts 
 - [ ] Identify concepts where >50% of sources got MIXED or NO quality verdicts — these may need new sources entirely
 - [ ] Write summary section at top of report with aggregate stats
 - [ ] Verify all `.orig.md` files are still intact
-- [ ] Spot-check 5 random concepts: run `find_sources()` equivalent glob to confirm new files are discoverable
+- [ ] Spot-check 5 random concepts:
+  - Run `find_sources()` equivalent glob to confirm new `.md` files are discoverable
+  - Verify companion directories exist with `raw.html`/`raw.pdf` and `metrics.json`
+  - Verify top-level `.md` files have YAML frontmatter with `source`, `content_hash_sha256`, `backend`
+  - Verify companion dirs do NOT contain `output.md` (it should only exist at top level)
 
 ### Validation
 
 - [ ] Report has an entry for every one of the 166 files
 - [ ] Every entry has a quality verdict (YES/NO/MIXED/SKIP)
 - [ ] No `.md` source files were lost (count of `.md` files ≥ count of `.orig.md` files)
+- [ ] Each successfully replaced file has a companion directory with raw source
+- [ ] YAML frontmatter `content_hash_sha256` hashes original source bytes (not extracted markdown)
 - [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py status` runs without errors
 
 ---
@@ -623,22 +702,30 @@ Review the completed report, generate summary statistics, and flag any concepts 
 [TO BE FILLED DURING IMPLEMENTATION]
 
 ### Phase 1 Completion
-**Completed:** 2026-03-28
+**Completed:** 2026-03-28 (initial), 2026-03-29 (revised with provenance features)
 **Actual Changes:**
-- Installed `agentic-mbse[web]` extra (trafilatura + deps) — was not pre-installed
-- HTML extraction: works, produces YAML frontmatter (`source_url`, `access_date`, `title`, `extraction_tool`)
-- PDF extraction: works, but nests output in subdirectory and has NO YAML frontmatter — just raw converted markdown
+- Installed `agentic-mbse[web]` extra (trafilatura + deps)
+- Verified HTML extraction: universal frontmatter (`source`, `source_type`, `extracted_at`, `content_hash_sha256`, `backend`)
+- Verified PDF extraction: universal frontmatter now present (provenance feature shipped 2026-03-28)
+- Verified `--save-source`: produces `raw.html` and/or `raw.pdf` in output dir
 - Created report file: `exploration/phase_1a/research/source_replacement_report.md`
-- Test file: `11-magnetic-mirror/iter-01/sources/realta-fusion-hub-spotlight.md` — 259 lines (new) vs 37 lines (orig), verdict YES
-**Issues:**
-- PDF output lacks YAML frontmatter (HTML has it). For PDF sources, we'll need to note this gap in the report — the extraction is still much richer but won't have `source_url` metadata in frontmatter.
-- PDF output nests in subdirectory (flatten step needed per MEMORY.md)
-**Deviations:** None
+- Initial test file done with old workflow (no companion dir) — needs redo with revised workflow
+**Issues resolved by agentic-mbse provenance feature:**
+- PDF frontmatter gap: FIXED — all outputs now have universal YAML frontmatter
+- Raw source preservation: FIXED — `--save-source` saves original HTML/PDF bytes
+- Content hash semantics: FIXED — hashes original source bytes for change detection
+**Phase 1 test (companion-dir workflow) completed 2026-03-29:**
+- Extracted `realta-fusion-hub-spotlight.md` with `--save-source` into companion dir
+- Top-level `.md`: 259 lines, universal frontmatter (`source`, `source_type: url`, `extracted_at`, `content_hash_sha256`, `backend: trafilatura`, `title`, `author`)
+- Companion dir: `raw.html` (392KB original page), `metrics.json`
+- `find_sources()` glob returns 5 files (4 original + 1 .orig.md), 0 directories — companion dir invisible
+- WebFetch comparison: ~25-line bullet summary vs 259-line full article — verdict YES
+- All Phase 1 validation items pass
 
 ### Phase 2 Progress
 **Started:**
-**Concepts Completed:** 0/36
-**Files Replaced:** 0/166
+**Concepts Completed:** 1/36
+**Files Replaced:** 4/166
 **Last Concept:**
 **Issues:**
 
