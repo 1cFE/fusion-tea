@@ -7,5 +7,7 @@ __pycache__/
 *.egg-info/
 dist/
 build/
+exploration/concept_explorer/data/
+exploration/concept_explorer/dist/
 .DS_Store
 ralph-init.log

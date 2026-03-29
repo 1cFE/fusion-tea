@@ -27,7 +27,7 @@ Task 0 (deps + scaffold + vendor Plotly) → Task 1 (models) → Tasks 2, 4, 5
 
 ### Foundation
 
-- [ ] **Task 0 — Project dependencies + directory scaffold + vendor Plotly**
+- [x] **Task 0 — Project dependencies + directory scaffold + vendor Plotly**
   - Add `fastapi`, `uvicorn[standard]`, `pydantic>=2`, `jinja2`, `pyyaml`, `httpx` to `pyproject.toml` dependencies via `uv add`
   - Create directory tree: `exploration/concept_explorer/{templates,static/css,static/js,static/vendor,static/images/concepts,data,dist}/`
   - Download `plotly-basic.min.js` from Plotly's GitHub releases (v2.x) and place at `exploration/concept_explorer/static/vendor/plotly-basic.min.js`
@@ -208,6 +208,8 @@ Task 0 (deps + scaffold + vendor Plotly) → Task 1 (models) → Tasks 2, 4, 5
 ---
 
 ## Gap Analysis
+
+**Task 0 discovery**: Plotly GitHub releases return 404 for `plotly-basic.min.js` — use `npm registry.npmjs.org/plotly.js-basic-dist-min` instead. Also: `pytest`, `ruff`, `mypy` are only in `[project.optional-dependencies].dev` but `uv sync` doesn't install optionals by default; `uv add --dev` is needed to populate the venv for the validation commands.
 
 **`exploration/concept_explorer/` does not exist** — all 12 tasks are new work.
 

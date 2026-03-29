@@ -71,6 +71,8 @@ These are backpressure. All three must pass before shipping.
 ## Known Gotchas
 
 - **`uv run` always** — never `python`, `python3`, or `pip` directly.
+- **Plotly vendor source**: GitHub releases return 404 for `plotly-basic.min.js`. Fetch from npm: `registry.npmjs.org/plotly.js-basic-dist-min/-/plotly.js-basic-dist-min-{version}.tgz`, extract `package/plotly-basic.min.js`.
+- **Dev deps not auto-installed**: `pytest`, `ruff`, `mypy` live in `[project.optional-dependencies].dev` — run `uv add --dev pytest ruff mypy` to populate the venv for validation commands.
 - **`data/` must be populated** before `server.py` starts. If the server returns 404s for all concepts, run `extract_explorer_data.py` first.
 - **Standalone concepts** (`02-acoustic-icf-sonofusion`, `12-levitated-dipole`) have `sensitivities=None` and `model_type != "costingfe"`. The frontend must show the no-sensitivity placeholder — never render an empty tornado chart.
 - **`POST /api/compute` returns 422** for standalone concepts — this is correct behavior, not a bug.

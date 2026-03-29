@@ -2,7 +2,14 @@
 name = "ralph-project"
 version = "0.1.0"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "fastapi>=0.135.2",
+    "httpx>=0.28.1",
+    "jinja2>=3.1.6",
+    "pydantic>=2",
+    "pyyaml>=6.0.3",
+    "uvicorn[standard]>=0.42.0",
+]
 
 [project.optional-dependencies]
 dev = [
@@ -21,3 +28,10 @@ select = ["E", "F", "I", "UP"]
 [tool.mypy]
 python_version = "3.11"
 strict = true
+
+[dependency-groups]
+dev = [
+    "mypy>=1.19.1",
+    "pytest>=9.0.2",
+    "ruff>=0.15.8",
+]
