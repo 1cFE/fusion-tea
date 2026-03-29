@@ -171,7 +171,7 @@ Task 0 (deps + scaffold + vendor Plotly) → Task 1 (models) → Tasks 2, 4, 5
   - **Specs:** `specs/09-entry-view.md`
   - **Verification:** Manual — verify ACs 1–7; confirm: loading state appears before cards, LCOE absent for non-cost-model concepts, card count matches manifest, illustration absent when null
 
-- [ ] **Task 11 — Concept profile page** (`exploration/concept_explorer/templates/concept.html.j2` + `exploration/concept_explorer/static/js/concept_page.js`)
+- [x] **Task 11 — Concept profile page** (`exploration/concept_explorer/templates/concept.html.j2` + `exploration/concept_explorer/static/js/concept_page.js`)
   - `concept.html.j2`: extend `base.html.j2`; inject `{{ concept_id }}` only; breadcrumb slot; section mounting points: identity hero, headline summary card, narrative (key bets / eliminated costs / novel costs), risks table (each entry with severity badge per design system), sensitivity (tornado mount point), CAS breakdown, "Add to comparison" button
   - `concept_page.js`:
     - `Promise.all([GET /api/concepts/{id}, GET /api/manifest])` on load; show loading state until both resolve
@@ -249,4 +249,6 @@ Task 0 (deps + scaffold + vendor Plotly) → Task 1 (models) → Tasks 2, 4, 5
 
 5. **`POST /api/compute` and sensitivity**: The compute endpoint returns a full `CostModelData` including `sensitivities`, but the `sensitivities` field carries **pre-computed baseline values** — it is never re-ranked on slider change. Slider changes update headline economics and CAS only. This is consistent across specs 06, 08, 11, and 12.
 
-6. **Spec internal cross-reference numbering errors (no implementation impact)**: Several spec files contain off-by-one cross-references (e.g., spec 03 says `specs/10-explorer-state.md` but the actual file is `specs/11-explorer-state.md`; `specs/12-slider-controls.md` is referenced by specs 05, 07, 08, 11 but the actual file is `specs/12-computation-api.md`). These are documentation errors only — requirements are unambiguous from each spec's own body. No implementation changes needed.
+**Task 11 discovery**: `GET /api/manifest` is specified for population-context whiskers (spec 08) but the tornado chart requires `ParameterIndex` (per Task 7 note). No `/api/parameter_index` endpoint exists. `concept_page.js` fetches manifest as required but passes `null` for `populationContext` — whiskers are silently omitted. Adding a `/api/parameter_index` endpoint is the clean fix if whiskers are needed.
+
+7. **Spec internal cross-reference numbering errors (no implementation impact)**: Several spec files contain off-by-one cross-references (e.g., spec 03 says `specs/10-explorer-state.md` but the actual file is `specs/11-explorer-state.md`; `specs/12-slider-controls.md` is referenced by specs 05, 07, 08, 11 but the actual file is `specs/12-computation-api.md`). These are documentation errors only — requirements are unambiguous from each spec's own body. No implementation changes needed.

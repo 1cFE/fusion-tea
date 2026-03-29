@@ -1,0 +1,105 @@
+{% extends "base.html.j2" %}
+
+{% block title %}Concept {{ concept_id }} — Fusion TEA{% endblock %}
+
+{% block breadcrumb %}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/" class="breadcrumb__link">All Concepts</a>
+  <span class="breadcrumb__sep" aria-hidden="true">›</span>
+  <span class="breadcrumb__current" id="breadcrumb-name" aria-current="page">{{ concept_id }}</span>
+</nav>
+{% endblock %}
+
+{% block body %}
+<div class="page-content" id="app">
+
+  {# Loading state: visible until both API fetches resolve #}
+  <div id="loading-state" class="loading-state" role="status" aria-live="polite">
+    <span class="loading-spinner" aria-hidden="true"></span>
+    <span class="loading-text">Loading concept…</span>
+  </div>
+
+  {# Error state: shown on fetch failure #}
+  <div id="error-state" style="display: none;" role="alert" class="error-state">
+    Failed to load concept data. Check the server and try again.
+  </div>
+
+  {# Main content: hidden until data loads, then revealed atomically #}
+  <div id="concept-content" style="display: none;">
+
+    {# Identity hero: name, company, family badge, illustration #}
+    <section id="hero" class="hero" aria-label="Concept identity"></section>
+
+    {# Headline economics card + optional slider controls #}
+    <section id="headline-section" class="section">
+      <h2 class="section__heading">Economics</h2>
+      <div id="headline-card" class="headline-card" role="region" aria-label="Headline economics"></div>
+      <div id="headline-loading" class="loading-inline" style="display: none;" role="status" aria-live="polite">
+        <span class="loading-spinner loading-spinner--sm" aria-hidden="true"></span>
+        <span class="loading-text">Recomputing…</span>
+      </div>
+      <div id="compute-error" style="display: none;" role="alert" class="error-inline"></div>
+      {# Slider controls: JS populates and shows only for costingfe + sensitivities #}
+      <div id="sliders-section" style="display: none;">
+        <h3 class="section__subheading">Parameter What-If</h3>
+        <div id="sliders-container" class="sliders-container"></div>
+      </div>
+    </section>
+
+    {# Narrative sections: omitted entirely when narrative === null #}
+    <section id="narrative-section" style="display: none;" class="section">
+      <h2 class="section__heading">Narrative</h2>
+      <div id="narrative-content"></div>
+    </section>
+
+    {# Risks table: omitted entirely when narrative === null or risks empty #}
+    <section id="risks-section" style="display: none;" class="section">
+      <h2 class="section__heading">Risks</h2>
+      <table id="risks-table" class="risks-table" role="table">
+        <thead>
+          <tr>
+            <th scope="col">Severity</th>
+            <th scope="col">Description</th>
+            <th scope="col">Retirement Path</th>
+          </tr>
+        </thead>
+        <tbody id="risks-tbody"></tbody>
+      </table>
+    </section>
+
+    {# Sensitivity (tornado): omitted when cost_model === null #}
+    <section id="sensitivity-section" style="display: none;" class="section">
+      <h2 class="section__heading">Sensitivity Analysis</h2>
+      <div id="tornado-mount"></div>
+    </section>
+
+    {# CAS cost breakdown: omitted when cost_model === null #}
+    <section id="cas-section" style="display: none;" class="section">
+      <h2 class="section__heading">CAS Cost Breakdown</h2>
+      <div id="cas-mount"></div>
+    </section>
+
+    {# Add to comparison action #}
+    <div class="comparison-actions">
+      <a href="/compare" class="btn btn--secondary">Add to Comparison</a>
+    </div>
+
+  </div>{# /concept-content #}
+</div>{# /app #}
+
+{#
+  Inject concept ID as a JS constant — the ONLY server-rendered data on this page.
+  All concept data is fetched at runtime via GET /api/concepts/{id}.
+#}
+<script>
+  const CONCEPT_ID = {{ concept_id | tojson }};
+</script>
+{% endblock %}
+
+{% block scripts %}
+{# Component dependencies loaded before concept_page.js #}
+<script src="/static/js/parameter_card.js"></script>
+<script src="/static/js/tornado.js"></script>
+<script src="/static/js/cas_breakdown.js"></script>
+<script src="/static/js/concept_page.js"></script>
+{% endblock %}
