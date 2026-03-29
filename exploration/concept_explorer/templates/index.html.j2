@@ -1,0 +1,44 @@
+{% extends "base.html.j2" %}
+
+{% block title %}All Concepts — Fusion TEA{% endblock %}
+
+{% block body %}
+<div class="page-content" id="app">
+  {#
+    Loading state: shown while manifest is fetching.
+    JS replaces this with the full grid once data arrives.
+    Per spec: never show partial grids — either loading or full grid.
+  #}
+  <div id="loading-state" class="loading-state" role="status" aria-live="polite">
+    <span class="loading-spinner" aria-hidden="true"></span>
+    <span class="loading-text">Loading concepts…</span>
+  </div>
+
+  {#
+    Concept groups: hidden until JS populates them.
+    Two groups are always present in the DOM; "In Progress" shows an
+    empty-state message when no concepts have that status.
+  #}
+  <div id="concept-groups" style="display: none;">
+    <section class="concept-group" id="group-approved" aria-labelledby="heading-approved">
+      <h2 class="concept-group__heading" id="heading-approved">Approved</h2>
+      <div class="concept-grid" id="grid-approved"></div>
+    </section>
+
+    <section class="concept-group" id="group-in-progress" aria-labelledby="heading-in-progress">
+      <h2 class="concept-group__heading" id="heading-in-progress">In Progress</h2>
+      <div class="concept-grid" id="grid-in-progress">
+        {# JS populates; empty-state text injected by JS if no concepts #}
+      </div>
+    </section>
+  </div>
+
+  <div id="error-state" style="display: none;" role="alert" class="error-state">
+    Failed to load concepts. Check the server and try again.
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/index_page.js"></script>
+{% endblock %}

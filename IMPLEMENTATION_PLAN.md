@@ -161,7 +161,7 @@ Task 0 (deps + scaffold + vendor Plotly) → Task 1 (models) → Tasks 2, 4, 5
 
 ### Page Templates
 
-- [ ] **Task 10 — Entry view** (`exploration/concept_explorer/templates/index.html.j2` + `exploration/concept_explorer/static/js/index_page.js`)
+- [x] **Task 10 — Entry view** (`exploration/concept_explorer/templates/index.html.j2` + `exploration/concept_explorer/static/js/index_page.js`)
   - `index.html.j2`: extend `base.html.j2`; two static group containers ("Approved", "In Progress"); concept card slot template (cloned by JS); no embedded data
   - `index_page.js`:
     - `GET /api/manifest` on load; show loading state during fetch; never show partial grid
