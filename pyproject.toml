@@ -29,6 +29,7 @@ select = ["E", "F", "I", "UP"]
 [tool.mypy]
 python_version = "3.11"
 strict = true
+explicit_package_bases = true
 
 [tool.uv.sources]
 costingfe = { path = "../1costingfe", editable = true }
