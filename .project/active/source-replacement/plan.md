@@ -697,6 +697,62 @@ Review the completed report, generate summary statistics, verify the companion d
 
 ---
 
+## Phase 4: Remediation of NO/MIXED Replacements
+
+### Goal
+After the mechanical first pass (Phase 2), address files where the extraction lost information compared to the original Haiku paraphrase. These fall into two distinct categories requiring different remediation strategies.
+
+### Category 1: JS-Rendered Company Pages
+
+**Problem:** Trafilatura extracts static HTML only. Company pages (HB11 Energy, potentially others) load content dynamically via JavaScript. The original Phase 1a agent saw the rendered page through WebFetch's browser pipeline and captured details that trafilatura cannot access.
+
+**Known instances so far:**
+- `04-laser-icf/iter-01/sources/hb11-company-overview.md` (NO — 13 vs 36 lines, lost team/partnerships/funding)
+- `04-laser-icf/iter-01/sources/hb11-technology-page.md` (NO — 15 vs 19 lines, lost ICF specs, 8.7 MeV, steam cycle)
+- `04-laser-icf/iter-02/sources/hb11-technology-page-2025.md` (NO — 15 vs 29 lines, same URL/issue)
+
+**Remediation strategy:**
+1. Use WebFetch to retrieve the JS-rendered content (it already returned the missing tech specs in our comparison step)
+2. Merge the WebFetch output into the extracted `.md` as a supplementary section, clearly marked with its provenance
+3. Alternatively, if WebFetch returns substantively richer content than trafilatura, replace the trafilatura extraction with WebFetch output — but add YAML frontmatter manually since WebFetch doesn't produce it
+4. The `.orig.md` remains as fallback
+
+**Steps:**
+- [ ] After Phase 2 completes, enumerate all NO-verdict files from the report
+- [ ] For each: call WebFetch, assess whether it captures the missing content
+- [ ] If YES: merge or replace, update report verdict
+- [ ] If NO (WebFetch also thin): keep `.orig.md` as primary, note in report that original agent synthesis is the best available capture
+
+### Category 2: Multi-Source Compilations
+
+**Problem:** The Phase 1a agent sometimes synthesized content from 3-6 different URLs into a single source file. Our replacement extracts from only one URL (the one listed in the plan), producing a narrower but deeper single-source capture. The breadth of the original is lost.
+
+**Known instances so far:**
+- `04-laser-icf/iter-02/sources/hb11-recent-developments-2024-2025.md` (MIXED — 23 vs 65 lines, 1 source vs 6+)
+- `01-hts-compact-tokamak/iter-04/sources/cfs-2025-2026-updates.md` (MIXED — 52 vs 34 lines, 1 source vs 5+)
+- `03-laser-icf-liquid-jet-target/iter-01/sources/cortex-fusion-website.md` (MIXED — 83 vs 33 lines, different section of same SPA)
+
+**Remediation strategy:**
+1. For genuine multi-source compilations: keep the `.orig.md` as the primary source file (rename it back to `.md`) and rename the single-source extraction to a supplementary role. The analysis pipeline will re-synthesize from individual sources anyway — the compilation is more useful as analysis input than a single-URL extraction.
+2. For SPA navigation issues (like Cortex, where the extraction landed on Patents instead of Technology): re-extract with a more specific URL if available, or use WebFetch to capture the missing section.
+3. In both cases, update the report verdict and add a note explaining the decision.
+
+**Steps:**
+- [ ] After Phase 2 completes, enumerate all MIXED-verdict files from the report
+- [ ] Classify each as multi-source-compilation or SPA-navigation-issue
+- [ ] Multi-source: restore `.orig.md` as primary, keep extraction as supplementary reference in companion dir
+- [ ] SPA: attempt targeted re-extraction or WebFetch supplement
+- [ ] Update report verdicts
+
+### Validation
+
+- [ ] No NO-verdict files remain without a documented remediation decision
+- [ ] No MIXED-verdict files remain without a classification and action
+- [ ] All remediated files still pass `find_sources()` glob discovery
+- [ ] Report accurately reflects final state of each file
+
+---
+
 ## Implementation Notes
 
 [TO BE FILLED DURING IMPLEMENTATION]
