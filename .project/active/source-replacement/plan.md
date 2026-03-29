@@ -100,13 +100,16 @@ For each file below:
 3. **Rename**: `mv $SOURCES_DIR/$NAME.md $SOURCES_DIR/$NAME.orig.md`
 4. **Extract**: `uv run agentic-mbse extract <url> --save-source --output $SOURCES_DIR/$NAME/`
 5. **Flatten** (PDF only): If extraction created a nested subdirectory inside the companion dir, move its contents up one level and remove the empty subdir.
-6. **Promote**: `cp $SOURCES_DIR/$NAME/output.md $SOURCES_DIR/$NAME.md`
-7. **Deduplicate**: `rm $SOURCES_DIR/$NAME/output.md` (the top-level `.md` is the canonical copy)
+6. **Promote (symlink)**: `ln -s $NAME/output.md $SOURCES_DIR/$NAME.md`
+   (`output.md` stays in companion dir so relative image paths like `![](images/foo.png)` resolve correctly)
 8. **WebFetch**: Call WebFetch on the same URL with prompt "Extract all technical and quantitative content from this page"
 9. **Compare**: Read new extraction, `.orig.md`, and WebFetch result. Write quality comment.
 10. **On failure**: Restore `mv $SOURCES_DIR/$NAME.orig.md $SOURCES_DIR/$NAME.md`, remove companion dir `rm -rf $SOURCES_DIR/$NAME/`, log failure reason.
 
 ### Lessons & Instructions for Future Agents
+
+**Always symlink, never copy — image paths break otherwise:**
+PDF extractions contain relative image references like `![](images/foo.png)`. If you copy `output.md` out of the companion dir, these paths break. Instead, create a symlink: `ln -s $NAME/output.md $SOURCES_DIR/$NAME.md`. The symlink is transparent to `find_sources()` (Python glob follows symlinks) and to any tool that reads the file. Git tracks symlinks natively on Linux.
 
 **arXiv URLs — always use `/pdf/` or `/html/`, never `/abs/`:**
 The `/abs/` page returns only the abstract (~4K chars, ~20 lines). Use `/pdf/` for full paper content via the PDF pipeline, or `/html/` if the paper has an HTML version (most post-2020 papers do). The PDF pipeline produces richer output (images, tables) but takes longer (2-12 minutes per paper). The `/html/` path is faster but produces no images.
@@ -203,46 +206,46 @@ $SOURCES_DIR/
 
 ### 05-planar-coil-stellarator (4 files)
 
-- [ ] `iter-01/sources/thea-energy-helios-arxiv-2512-08027.md` → `URL` https://arxiv.org/html/2512.08027v1
-  - Notes:
-- [ ] `iter-01/sources/thea-energy-website-and-press.md` → `URL` https://thea.energy/
-  - Notes:
-- [ ] `iter-02/sources/thea-energy-canis-prototype-arxiv-2503-18960.md` → `URL` https://arxiv.org/html/2503.18960v1
-  - Notes:
-- [ ] `iter-02/sources/thea-energy-doe-certification-jan2026.md` → `URL` https://thea.energy/press-release/u-s-department-of-energy-certifies-thea-energys-fusion-pilot-plant-preconceptual-design/
-  - Notes:
+- [x] `iter-01/sources/thea-energy-helios-arxiv-2512-08027.md` → `URL` https://arxiv.org/html/2512.08027v1
+  - Notes: Full Swanson et al. paper via arXiv HTML. 1067 lines vs 104 orig. Complete plasma, magnet, blanket, divertor, and power balance details. YES.
+- [x] `iter-01/sources/thea-energy-website-and-press.md` → `URL` https://thea.energy/
+  - Notes: Landing page is marketing copy only (23 lines vs 57 orig). Orig compiled 6+ subpages with specs, funding, timeline. NO.
+- [x] `iter-02/sources/thea-energy-canis-prototype-arxiv-2503-18960.md` → `URL` https://arxiv.org/html/2503.18960v1
+  - Notes: Full Nash et al. paper via arXiv HTML. 427 lines vs 42 orig. Complete HTS coil array design, cryogenics, field shaping results. YES.
+- [x] `iter-02/sources/thea-energy-doe-certification-jan2026.md` → `URL` https://thea.energy/press-release/u-s-department-of-energy-certifies-thea-energys-fusion-pilot-plant-preconceptual-design/
+  - Notes: Full verbatim press release with direct quotes from CEO, DOE, PPPL. 31 vs 30 lines but richer content. YES.
 
 ---
 
 ### 06-magnetic-mirror (4 files)
 
-- [ ] `iter-01/sources/arpa-e-fisch-2025-presentation.md` → `URL` https://arpa-e.energy.gov/sites/default/files/2025-08/Day2_08_Fisch.pdf
-  - Notes: PDF — routes through PDF pipeline
-- [ ] `iter-01/sources/princeton-arpa-e-funding-2022.md` → `URL` https://www.princeton.edu/news/2022/03/10/fisch-receives-funding-unlikely-fantastic-clean-energy-technology
-  - Notes:
-- [ ] `iter-01/sources/technical-papers-summary.md` → `SEARCH` Fisch group papers: alpha channeling mirrors PRL 2006, wave-supported hybrid pB11 PoP 2022
-  - Notes:
-- [ ] `iter-02/sources/arpa-e-2025-fisch-presentation-notes.md` → `URL` https://arpa-e.energy.gov/sites/default/files/2025-08/Day2_08_Fisch.pdf
-  - Notes: Same PDF as 06-01 above — may produce identical extraction
+- [x] `iter-01/sources/arpa-e-fisch-2025-presentation.md` → `URL` https://arpa-e.energy.gov/sites/default/files/2025-08/Day2_08_Fisch.pdf
+  - Notes: PDF pipeline. 450 lines vs 70 orig, 39 images. Full 20-slide presentation. YES.
+- [x] `iter-01/sources/princeton-arpa-e-funding-2022.md` → `URL` https://www.princeton.edu/news/2022/03/10/fisch-receives-funding-unlikely-fantastic-clean-energy-technology
+  - Notes: Full article with extensive quotes. 48 vs 22 lines. YES.
+- [x] `iter-01/sources/technical-papers-summary.md` → `SEARCH` Fisch group papers: alpha channeling mirrors PRL 2006, wave-supported hybrid pB11 PoP 2022
+  - Notes: SKIP. Multi-source compilation (7 papers + SWDEC + CMFX). ARPA-E project page JS-rendered (empty). No single URL replaces this breadth. Kept original.
+- [x] `iter-02/sources/arpa-e-2025-fisch-presentation-notes.md` → `URL` https://arpa-e.energy.gov/sites/default/files/2025-08/Day2_08_Fisch.pdf
+  - Notes: Same PDF as 06-01 — identical 450-line extraction. YES.
 
 ---
 
 ### 07-maglif (7 files)
 
-- [ ] `iter-01/sources/arxiv-2408-15206-pulsed-magnetic-fusion.md` → `URL` https://arxiv.org/html/2408.15206v1
-  - Notes:
-- [ ] `iter-01/sources/fuse-energy-technology.md` → `URL` https://www.f.energy/
-  - Notes:
-- [ ] `iter-01/sources/pacific-fusion-website-technology.md` → `URL` https://www.pacificfusion.com/
-  - Notes:
-- [ ] `iter-01/sources/z-ife-power-plant-concept.md` → `URL` https://www.osti.gov/biblio/771517
-  - Notes:
-- [ ] `iter-02/sources/fuse-energy-not-boring-details.md` → `URL` https://www.notboring.co/p/fuse-energy
-  - Notes:
-- [ ] `iter-02/sources/pacific-fusion-interview-fusion-report.md` → `URL` https://thefusionreport.substack.com/p/interview-with-pacific-fusion-on
-  - Notes:
-- [ ] `iter-02/sources/z-ife-sand2006-7148-thermal-cycles.md` → `URL` https://www.osti.gov/servlets/purl/901970/
-  - Notes: PDF — routes through PDF pipeline
+- [x] `iter-01/sources/arxiv-2408-15206-pulsed-magnetic-fusion.md` → `URL` https://arxiv.org/html/2408.15206v1
+  - Notes: Full paper via arXiv HTML. 462 vs 38 lines. IMG specs, MagLIF scaling, codes, chamber engineering. YES.
+- [x] `iter-01/sources/fuse-energy-technology.md` → `URL` https://www.f.energy/
+  - Notes: 47 vs 42. Thin landing page; orig compiled f.energy + Wikipedia. Loses APEIRON-I fission details. MIXED.
+- [x] `iter-01/sources/pacific-fusion-website-technology.md` → `URL` https://www.pacificfusion.com/
+  - Notes: 53 vs 61. Marketing copy only; orig compiled 5 subpages with specs, funding, self-mag targets. NO.
+- [x] `iter-01/sources/z-ife-power-plant-concept.md` → `URL` https://www.osti.gov/biblio/771517
+  - Notes: 71 vs 36. OSTI bibliographic record with verbatim abstract. Orig had broader 3-source synthesis. MIXED.
+- [x] `iter-02/sources/fuse-energy-not-boring-details.md` → `URL` https://www.notboring.co/p/fuse-energy
+  - Notes: Full Not Boring deep dive. 846 vs 40 lines. Complete TITAN/Z STAR/APEIRON-I specs, defense market. YES.
+- [x] `iter-02/sources/pacific-fusion-interview-fusion-report.md` → `URL` https://thefusionreport.substack.com/p/interview-with-pacific-fusion-on
+  - Notes: Full interview. 47 vs 37. DS architecture specs (156 modules, 320 bricks each, 80 MJ). YES.
+- [x] `iter-02/sources/z-ife-sand2006-7148-thermal-cycles.md` → `URL` https://www.osti.gov/servlets/purl/901970/
+  - Notes: Full 147-page SAND2006-7148 via PDF pipeline. 4618 vs 43 lines, 225 images, $2.01. YES.
 
 ---
 
