@@ -107,6 +107,7 @@ Inspired by the ralph-init.sh generate → review → refine pattern, but adapte
 **Effort**: 3 days (spec 2h, design 4h, plan 2h, execute 16h)
 **Status**: Complete (2026-03-28)
 **Dependencies**: None
+**Work Item**: `.project/active/iterative-analysis-loop/` (spec, design, plan)
 
 **Objective**: Replace the single-call analyze stage with an iterative analyze → assess → feedback loop, with extracted configuration and a structured feedback format.
 
@@ -155,14 +156,14 @@ Inspired by the ralph-init.sh generate → review → refine pattern, but adapte
 - Human-driven change request workflow (that's Item 5)
 
 **Success Criteria**:
-- [ ] No goals/checklists remain inline in prompt templates — all in `config/`
-- [ ] Loop runs end-to-end for ≥3 concepts
-- [ ] Assessment finds real issues on pass 1 that pass 2 fixes
-- [ ] Loop converges (pass 2 or 3 comes back clean) for most concepts
-- [ ] Each thread stays well under context limit
-- [ ] `feedback_iter_N.md` files provide clear audit trail
-- [ ] `--max-passes 1` reproduces current single-pass behavior (backward compatible)
-- [ ] `status` command shows stale indicators for downstream artifacts
+- [x] No goals/checklists remain inline in prompt templates — all in `config/`
+- [x] Loop runs end-to-end for ≥3 concepts (ran on concepts 09, 14, 22)
+- [x] Assessment finds real issues on pass 1 that pass 2 fixes
+- [~] Loop converges (pass 2 or 3 comes back clean) for most concepts — 1/3 converged (concept 14); see Lessons Learned re: tuning
+- [x] Each thread stays well under context limit
+- [x] `feedback_iter_N.md` files provide clear audit trail
+- [x] `--max-passes 1` reproduces current single-pass behavior (backward compatible)
+- [x] `status` command shows stale indicators for downstream artifacts
 
 **Deliverables**:
 - `prompt_templates/config/` directory with extracted config files
@@ -173,11 +174,13 @@ Inspired by the ralph-init.sh generate → review → refine pattern, but adapte
 
 ---
 
-### Item 2: Build-Visuals Stage [1.5 days]
+### Item 2: Build-Visuals Stage [1.5 days] — IN PROGRESS
 
 **Type**: Implementation
-**Effort**: 1.5 days (spec 1h, design 2h, plan 1h, execute 8h)
+**Effort**: 1.5 days (spec 1h, design 2h, plan 1h, execute 8h) — revised scope is more ambitious
 **Dependencies**: None
+**Concept**: `.project/concepts/concept-explorer.md`
+**Worktree**: `/home/reid/1cfe/fusion-tea_concept-explorer`
 
 **Objective**: Add a stage that generates an interactive HTML sensitivity explorer from the cost model, allowing users to sanity-check parameter impacts before review.
 
@@ -216,16 +219,18 @@ Inspired by the ralph-init.sh generate → review → refine pattern, but adapte
 **Type**: Implementation
 **Effort**: 1.5 days (spec 1h, design 2h, plan 1h, execute 8h)
 **Dependencies**: Item 1 (reuses feedback format, modal analysis prompt, staleness propagation)
-**External Dep**: `agentic-mbse[web]` feature (in progress on `webfetch-tools` branch). URL mode blocks on this; PDF mode works without it.
+**Conventions**: Must follow companion-directory + symlink layout established by source replacement (`.project/active/source-replacement/`)
+**External Dep**: ~~`agentic-mbse[web]` feature (in progress on `webfetch-tools` branch)~~ — RESOLVED, merged. URL and PDF modes both work.
 
 **Objective**: Enable adding new data sources (PDF or URL) to a concept and incrementally updating the analysis without full re-run.
 
 **Scope**:
 1. New `cmd_add_source` subcommand:
    - Accepts a local PDF path or URL
-   - Determines next `iter-NN` number for the concept
-   - Runs extraction (`agentic-mbse extract`)
-   - Flattens output to expected `sources/` structure
+   - Determines placement: add to latest existing `iter-NN/sources/` directory (supplementary material), not a new iteration. New `iter-NN` only if no iterations exist yet.
+   - Runs extraction (`agentic-mbse extract <source> --save-source --output <sources-dir>/<name>/`)
+   - Flattens nested PDF subdirectories if needed (same logic as source replacement)
+   - Creates symlink: `<name>.md` → `<name>/output.md` (preserves relative image paths)
    - Prints confirmation with new source path
 2. New `cmd_update_analysis` subcommand:
    - Accepts concept ID + `--sources` flag (specific new source files)
@@ -238,8 +243,9 @@ Inspired by the ralph-init.sh generate → review → refine pattern, but adapte
 - Phase 1a prompt redesign
 
 **Success Criteria**:
-- [ ] `run_analysis.py add-source 11 path/to/paper.pdf` creates `iter-NN/sources/paper.md`
-- [ ] `run_analysis.py add-source 11 https://example.com/article` works (requires agentic-mbse[web])
+- [ ] `run_analysis.py add-source 11 path/to/paper.pdf` creates `iter-NN/sources/paper.md` (symlink) + `paper/` companion dir with `output.md`, `raw.pdf`, `metrics.json`
+- [ ] `run_analysis.py add-source 11 https://example.com/article` creates same layout with `raw.html`
+- [ ] Companion dir includes provenance artifacts (`--save-source`)
 - [ ] `run_analysis.py update-analysis 11 --sources iter-03/sources/paper.md` updates analysis via analysis agent
 - [ ] Downstream artifacts marked stale after update
 
@@ -334,7 +340,8 @@ Inspired by the ralph-init.sh generate → review → refine pattern, but adapte
 ## Dependencies
 
 **External**:
-- `agentic-mbse[web]` — web source capture feature (in progress, `webfetch-tools` branch). Blocks URL mode of Item 3's `add-source`, but PDF mode works without it.
+- ~~`agentic-mbse[web]` — web source capture feature~~ — RESOLVED, merged. No longer blocks Item 3.
+- Source replacement conventions (`.project/active/source-replacement/`) — companion-dir + symlink layout. Not a blocking dep (conventions are established), but Item 3 must follow them.
 
 **Internal**:
 - Items 1, 2, and 4 can proceed in parallel (no dependencies between them)
