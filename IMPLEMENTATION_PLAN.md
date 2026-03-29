@@ -71,7 +71,7 @@ Task 0 (deps + scaffold + vendor Plotly) → Task 1 (models) → Tasks 2, 4, 5
 
 ### Design System & Server
 
-- [ ] **Task 3 — Design system CSS + base template**
+- [x] **Task 3 — Design system CSS + base template**
   - `exploration/concept_explorer/static/css/explorer.css`:
     - Dark background `#0D1117`, body text `#E6EDF3`
     - CSS custom properties: `--color-shared-baseline: #6B7280`, `--color-well-established: #3B82F6`, `--color-key-innovation: #10B981`, `--color-concept-unique: #F59E0B`, `--color-high-risk: #EF4444`

@@ -1,0 +1,1211 @@
+/* ==========================================================================
+   Fusion TEA Concept Explorer — Design System
+   "Bloomberg terminal, not marketing dashboard"
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   CSS Custom Properties — Design Tokens
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* Background / surface */
+  --color-bg: #0d1117;
+  --color-surface-1: #161b22;
+  --color-surface-2: #21262d;
+  --color-surface-3: #30363d;
+
+  /* Text */
+  --color-text-primary: #e6edf3;
+  --color-text-secondary: #8b949e;
+  --color-text-muted: #6e7681;
+
+  /* Borders */
+  --color-border: #30363d;
+  --color-border-subtle: #21262d;
+
+  /* Parameter category colors — NEVER deviate from these */
+  --color-shared-baseline: #6b7280;
+  --color-well-established: #3b82f6;
+  --color-key-innovation: #10b981;
+  --color-concept-unique: #f59e0b;
+  --color-high-risk: #ef4444;
+
+  /* Confidence encoding — opacity only */
+  --opacity-confidence-high: 1;
+  --opacity-confidence-medium: 0.8;
+  --opacity-confidence-low: 0.6;
+
+  /* Confinement family badge colors */
+  --color-badge-mfe: #3b82f6;
+  --color-badge-ife: #a855f7;
+  --color-badge-mif: #f59e0b;
+  --color-badge-nonstandard: #6b7280;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* Typography */
+  --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", ui-monospace, monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 15px;
+  --font-size-lg: 18px;
+  --font-size-xl: 22px;
+  --font-size-2xl: 28px;
+
+  /* Border radius */
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+
+  /* Nav */
+  --nav-height: 48px;
+}
+
+/* --------------------------------------------------------------------------
+   Hatched fill pattern for low-confidence bars (referenced by JS components)
+   -------------------------------------------------------------------------- */
+
+/* SVG pattern defined inline here so JS can reference the id "hatch-low-confidence" */
+.hatch-pattern-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   Reset / Base
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: var(--font-size-base);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--color-well-established);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   Navigation Bar
+   -------------------------------------------------------------------------- */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--nav-height);
+  background-color: var(--color-surface-1);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-6);
+  gap: var(--space-8);
+}
+
+.nav__brand {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  flex: 1;
+}
+
+.nav__link {
+  display: flex;
+  align-items: center;
+  height: var(--nav-height);
+  padding: 0 var(--space-3);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+  text-decoration: none;
+}
+
+.nav__link:hover {
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.nav__link--active {
+  color: var(--color-text-primary);
+  border-bottom-color: var(--color-well-established);
+}
+
+/* --------------------------------------------------------------------------
+   Breadcrumb
+   -------------------------------------------------------------------------- */
+
+.breadcrumb {
+  background-color: var(--color-surface-1);
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding: var(--space-2) var(--space-6);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.breadcrumb__sep {
+  color: var(--color-text-muted);
+  margin: 0 var(--space-1);
+}
+
+.breadcrumb__item {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+
+.breadcrumb__item:hover {
+  color: var(--color-text-primary);
+}
+
+.breadcrumb__item--current {
+  color: var(--color-text-primary);
+  cursor: default;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Page Layout
+   -------------------------------------------------------------------------- */
+
+.page-content {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: var(--space-6);
+}
+
+.page-content--wide {
+  max-width: 1600px;
+}
+
+/* --------------------------------------------------------------------------
+   Cards
+   -------------------------------------------------------------------------- */
+
+.card {
+  background-color: var(--color-surface-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.card--hover {
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+
+.card--hover:hover {
+  border-color: var(--color-well-established);
+  background-color: var(--color-surface-2);
+}
+
+.card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.card__title {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+}
+
+.card__subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-1);
+}
+
+.card__body {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   Concept Card (entry view grid)
+   -------------------------------------------------------------------------- */
+
+.concept-card {
+  background-color: var(--color-surface-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.concept-card:hover {
+  border-color: var(--color-well-established);
+  background-color: var(--color-surface-2);
+}
+
+.concept-card__illustration {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-3);
+}
+
+.concept-card__name {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+}
+
+.concept-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.concept-card__company {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.concept-card__lcoe {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.concept-card__indicators {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* --------------------------------------------------------------------------
+   Concept Grid (entry view)
+   -------------------------------------------------------------------------- */
+
+.concept-group {
+  margin-bottom: var(--space-10);
+}
+
+.concept-group__heading {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.concept-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-4);
+}
+
+.concept-grid--empty {
+  padding: var(--space-6);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  text-align: center;
+  background-color: var(--color-surface-1);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+/* --------------------------------------------------------------------------
+   Badges — Confinement Family
+   -------------------------------------------------------------------------- */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.badge-mfe {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: var(--color-badge-mfe);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.badge-ife {
+  background-color: rgba(168, 85, 247, 0.15);
+  color: var(--color-badge-ife);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.badge-mif {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: var(--color-badge-mif);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.badge-nonstandard {
+  background-color: rgba(107, 114, 128, 0.15);
+  color: var(--color-badge-nonstandard);
+  border: 1px solid rgba(107, 114, 128, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   Badges — Confidence
+   -------------------------------------------------------------------------- */
+
+.badge-confidence {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.badge-confidence--high {
+  background-color: rgba(16, 185, 129, 0.12);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  opacity: var(--opacity-confidence-high);
+}
+
+.badge-confidence--medium {
+  background-color: rgba(245, 158, 11, 0.12);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  opacity: var(--opacity-confidence-medium);
+}
+
+.badge-confidence--low {
+  background-color: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  opacity: var(--opacity-confidence-low);
+}
+
+/* --------------------------------------------------------------------------
+   Badges — Parameter Category
+   -------------------------------------------------------------------------- */
+
+.badge-category {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge-category--shared-baseline {
+  background-color: rgba(107, 114, 128, 0.12);
+  color: var(--color-shared-baseline);
+  border: 1px solid rgba(107, 114, 128, 0.25);
+}
+
+.badge-category--well-established {
+  background-color: rgba(59, 130, 246, 0.12);
+  color: var(--color-well-established);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.badge-category--key-innovation {
+  background-color: rgba(16, 185, 129, 0.12);
+  color: var(--color-key-innovation);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.badge-category--concept-unique {
+  background-color: rgba(245, 158, 11, 0.12);
+  color: var(--color-concept-unique);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.badge-category--high-risk {
+  background-color: rgba(239, 68, 68, 0.12);
+  color: var(--color-high-risk);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+/* --------------------------------------------------------------------------
+   Risk Severity Badges (concept profile)
+   -------------------------------------------------------------------------- */
+
+.badge-risk--critical {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.badge-risk--high {
+  background-color: rgba(245, 158, 11, 0.18);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.badge-risk--medium {
+  background-color: rgba(59, 130, 246, 0.12);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.badge-risk--low {
+  background-color: rgba(107, 114, 128, 0.12);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+}
+
+/* --------------------------------------------------------------------------
+   Sensitivity Indicator Icon
+   -------------------------------------------------------------------------- */
+
+.icon-sensitivity {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  font-size: 9px;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  background-color: rgba(59, 130, 246, 0.15);
+  color: var(--color-well-established);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  flex-shrink: 0;
+  title: "Has sensitivity data";
+}
+
+/* --------------------------------------------------------------------------
+   Grid Layouts
+   -------------------------------------------------------------------------- */
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+/* --------------------------------------------------------------------------
+   Loading State
+   -------------------------------------------------------------------------- */
+
+.loading-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-12);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  gap: var(--space-3);
+}
+
+.loading-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-surface-3);
+  border-top-color: var(--color-well-established);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --------------------------------------------------------------------------
+   Error State
+   -------------------------------------------------------------------------- */
+
+.error-state {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background-color: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: var(--radius-md);
+  color: #ef4444;
+  font-size: var(--font-size-sm);
+}
+
+/* --------------------------------------------------------------------------
+   Tooltips (Plotly overrides + generic)
+   -------------------------------------------------------------------------- */
+
+.tooltip {
+  position: absolute;
+  z-index: 200;
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   Parameter Card Popover
+   -------------------------------------------------------------------------- */
+
+.parameter-card {
+  position: fixed;
+  z-index: 300;
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  max-width: 360px;
+  min-width: 240px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+}
+
+.parameter-card__name {
+  font-weight: 700;
+  font-size: var(--font-size-md);
+  margin-bottom: var(--space-2);
+}
+
+.parameter-card__baseline {
+  font-family: var(--font-mono);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-3);
+}
+
+.parameter-card__section {
+  margin-top: var(--space-3);
+}
+
+.parameter-card__section-label {
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-1);
+}
+
+.parameter-card__range {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.parameter-card__note {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-top: var(--space-2);
+}
+
+.parameter-card__source {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin-top: var(--space-2);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-2);
+}
+
+.parameter-card__also-sensitive {
+  margin-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-3);
+}
+
+.parameter-card__concept-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+}
+
+.parameter-card__concept-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--font-size-xs);
+}
+
+.parameter-card__concept-link {
+  color: var(--color-well-established);
+}
+
+.parameter-card__elasticity {
+  font-family: var(--font-mono);
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Headline Economics Section
+   -------------------------------------------------------------------------- */
+
+.headline-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--space-3);
+}
+
+.headline-metric {
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+}
+
+.headline-metric__label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: var(--space-1);
+}
+
+.headline-metric__value {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.1;
+}
+
+.headline-metric__unit {
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  margin-left: var(--space-1);
+}
+
+.headline-metric--loading {
+  opacity: 0.5;
+  position: relative;
+}
+
+.headline-metric--loading::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-md);
+  background: linear-gradient(90deg, transparent 0%, rgba(230, 237, 243, 0.04) 50%, transparent 100%);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* --------------------------------------------------------------------------
+   Concept Hero / Identity
+   -------------------------------------------------------------------------- */
+
+.concept-hero {
+  display: flex;
+  gap: var(--space-6);
+  align-items: flex-start;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.concept-hero__illustration {
+  width: 180px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-3);
+  flex-shrink: 0;
+}
+
+.concept-hero__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.concept-hero__name {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.concept-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* --------------------------------------------------------------------------
+   Narrative Sections
+   -------------------------------------------------------------------------- */
+
+.narrative-section {
+  margin-bottom: var(--space-6);
+}
+
+.narrative-section__title {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: var(--font-size-xs);
+  margin-bottom: var(--space-3);
+}
+
+.narrative-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.narrative-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.narrative-list__item::before {
+  content: "–";
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* --------------------------------------------------------------------------
+   Risks Table
+   -------------------------------------------------------------------------- */
+
+.risks-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+
+.risks-table th {
+  text-align: left;
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-muted);
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  font-weight: 600;
+}
+
+.risks-table td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border-subtle);
+  color: var(--color-text-secondary);
+  vertical-align: top;
+}
+
+.risks-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* --------------------------------------------------------------------------
+   Section Headers
+   -------------------------------------------------------------------------- */
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+.section-title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.section-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+}
+
+/* --------------------------------------------------------------------------
+   Sliders (concept profile — costingfe-backed only)
+   -------------------------------------------------------------------------- */
+
+.sliders-panel {
+  background-color: var(--color-surface-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.slider-row:last-child {
+  border-bottom: none;
+}
+
+.slider-row__label {
+  flex: 0 0 160px;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.slider-row__input {
+  flex: 1;
+  accent-color: var(--color-well-established);
+}
+
+.slider-row__value {
+  flex: 0 0 80px;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Comparison View
+   -------------------------------------------------------------------------- */
+
+.comparison-selector {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.comparison-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+}
+
+.comparison-chip__remove {
+  cursor: pointer;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-base);
+  line-height: 1;
+  transition: color 0.15s;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.comparison-chip__remove:hover {
+  color: var(--color-high-risk);
+}
+
+.comparison-add-btn {
+  padding: var(--space-1) var(--space-3);
+  background-color: transparent;
+  border: 1px dashed var(--color-border);
+  border-radius: 20px;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.comparison-add-btn:hover {
+  border-color: var(--color-well-established);
+  color: var(--color-well-established);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: var(--space-1);
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: var(--space-6);
+}
+
+.tab-btn {
+  padding: var(--space-2) var(--space-4);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  margin-bottom: -1px;
+}
+
+.tab-btn:hover {
+  color: var(--color-text-primary);
+}
+
+.tab-btn--active {
+  color: var(--color-text-primary);
+  border-bottom-color: var(--color-well-established);
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel--active {
+  display: block;
+}
+
+/* Comparison table (headline tab) */
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+
+.comparison-table th {
+  text-align: left;
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-muted);
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  font-weight: 600;
+}
+
+.comparison-table td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border-subtle);
+  color: var(--color-text-secondary);
+  font-family: var(--font-mono);
+}
+
+.comparison-table td.text-col {
+  font-family: var(--font-sans);
+}
+
+/* --------------------------------------------------------------------------
+   "Add to comparison" button
+   -------------------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.btn--primary {
+  background-color: var(--color-well-established);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background-color: #2563eb;
+}
+
+.btn--secondary {
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+}
+
+.btn--secondary:hover {
+  background-color: var(--color-surface-2);
+}
+
+.btn--ghost {
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  border-color: transparent;
+}
+
+.btn--ghost:hover {
+  background-color: var(--color-surface-2);
+  color: var(--color-text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Plotly overrides — keep charts on dark background
+   -------------------------------------------------------------------------- */
+
+.js-plotly-plot .plotly .bg {
+  fill: transparent !important;
+}
+
+.js-plotly-plot .plotly .gridlayer path,
+.js-plotly-plot .plotly .gridlayer line {
+  stroke: var(--color-surface-3) !important;
+}
+
+.js-plotly-plot .plotly .xtick text,
+.js-plotly-plot .plotly .ytick text {
+  fill: var(--color-text-muted) !important;
+  font-size: 11px !important;
+}
+
+.js-plotly-plot .plotly .gtitle,
+.js-plotly-plot .plotly .xtitle,
+.js-plotly-plot .plotly .ytitle {
+  fill: var(--color-text-secondary) !important;
+}
+
+/* Modebar (Plotly toolbar) */
+.js-plotly-plot .modebar {
+  background-color: transparent !important;
+}
+
+.js-plotly-plot .modebar-btn path {
+  fill: var(--color-text-muted) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Utility Classes
+   -------------------------------------------------------------------------- */
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-sm {
+  font-size: var(--font-size-sm);
+}
+
+.text-xs {
+  font-size: var(--font-size-xs);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+
+.footer {
+  margin-top: var(--space-12);
+  padding: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
