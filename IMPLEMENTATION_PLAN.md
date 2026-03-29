@@ -82,7 +82,7 @@ Task 0 (deps + scaffold + vendor Plotly) → Task 1 (models) → Tasks 2, 4, 5
   - **Specs:** `specs/04-design-system.md`
   - **Verification:** Manual — open any rendered page at 1280px; confirm dark background, nav links, no horizontal overflow; WCAG AA contrast (4.5:1) for body text; verify Plotly loads from `/static/vendor/` not a CDN URL
 
-- [ ] **Task 4 — Data extraction script** (`exploration/concept_explorer/extract_explorer_data.py`)
+- [x] **Task 4 — Data extraction script** (`exploration/concept_explorer/extract_explorer_data.py`)
   - Concept discovery: scan `exploration/concept_analysis/analyses/` for subdirectories with `model_setup.py` (costingfe-backed) or only `analysis.md` (standalone)
   - `--concept 01 04` flag: restrict to matching concept IDs
   - `--skip-narrative` flag: set `narrative=None` without calling `claude -p`
@@ -212,6 +212,8 @@ Task 0 (deps + scaffold + vendor Plotly) → Task 1 (models) → Tasks 2, 4, 5
 **Task 1 discovery**: `uv run mypy exploration/concept_explorer/models.py` fails with "source file found twice" due to `src/concept_explorer/__init__.py`; use `--explicit-package-bases` flag for mypy. Also: bare `dict` / `list[dict]` without type params fails UP042/type-arg — use `dict[str, Any]` and `StrEnum` instead of `str, Enum`.
 
 **Task 0 discovery**: Plotly GitHub releases return 404 for `plotly-basic.min.js` — use `npm registry.npmjs.org/plotly.js-basic-dist-min` instead. Also: `pytest`, `ruff`, `mypy` are only in `[project.optional-dependencies].dev` but `uv sync` doesn't install optionals by default; `uv add --dev` is needed to populate the venv for the validation commands.
+
+**Task 4 discovery**: `model.sensitivity()` returns plain elasticity floats, not `SensitivityEntry` — baselines must be pulled from `result.params[key]`. Also: `availability` lives in `result.params`, not `result.power_table`, so it must be injected before calling `from_forward_result()`. Use `sys.path` + fully-qualified package imports (`from exploration.concept_explorer.models import ...`) to satisfy both runtime and mypy `--explicit-package-bases`.
 
 **`exploration/concept_explorer/` does not exist** — all 12 tasks are new work.
 
