@@ -234,7 +234,9 @@ class CostModelData(BaseModel):
         power = result.get("power_table", {})
         detail_raw: dict[str, float] = result.get("cas22_detail", {})
         overridden_set: set[str] = set(result.get("overridden", []))
-        params: dict[str, float] = result.get("params", {})
+        params: dict[str, float] = {
+            k: v for k, v in result.get("params", {}).items() if isinstance(v, (int, float))
+        }
 
         def _cas(field_name: str) -> CASAccount:
             """Build a CASAccount from the costs sub-dict."""
