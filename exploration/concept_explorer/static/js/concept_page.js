@@ -347,16 +347,24 @@
     contentEl.style.display = "none";
     errorEl.style.display = "none";
 
-    // Parallel fetch: concept data + manifest (manifest needed per spec)
-    let concept, _manifest;
+    // Parallel fetch: concept data + manifest + parameter index
+    let concept, _manifest, parameterIndex;
     try {
-      const [conceptResp, manifestResp] = await Promise.all([
+      const [conceptResp, manifestResp, paramIndexResp] = await Promise.all([
         fetch(`/api/concepts/${conceptId}`),
         fetch("/api/manifest"),
+        fetch("/api/parameter_index"),
       ]);
 
       if (!conceptResp.ok) throw new Error(`Concept fetch returned ${conceptResp.status}`);
       if (!manifestResp.ok) throw new Error(`Manifest fetch returned ${manifestResp.status}`);
+      // Parameter index is best-effort — whiskers degrade gracefully if absent
+      if (paramIndexResp.ok) {
+        parameterIndex = await paramIndexResp.json();
+      } else {
+        console.warn("[concept_page] /api/parameter_index returned", paramIndexResp.status, "— whiskers disabled");
+        parameterIndex = null;
+      }
 
       concept   = await conceptResp.json();
       _manifest = await manifestResp.json();
@@ -412,10 +420,9 @@
       renderTornado(tornadoMount, {
         sensitivities: concept.cost_model.sensitivities,
         parameterMetadata: concept.parameter_metadata || {},
-        // manifest is fetched per spec but does not carry per-parameter elasticities;
-        // whiskers require ParameterIndex which is not available as a single endpoint.
-        // passing null is the correct graceful fallback (no whiskers shown).
-        populationContext: null,
+        // ParameterIndex provides per-parameter cross-concept elasticities for whiskers.
+        // tornado.js checks populationContext.parameters — ParameterIndex matches this shape.
+        populationContext: parameterIndex,
         topN: 15,
         onParameterClick: async (paramName, meta) => {
           let crossConceptData = null;

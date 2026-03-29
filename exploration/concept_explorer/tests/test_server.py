@@ -4,6 +4,7 @@ Coverage:
 - GET /api/health
 - GET /api/manifest  (found)
 - GET /api/concepts/{concept_id}  (found and 404)
+- GET /api/parameter_index  (full index)
 - GET /api/parameters/{param_name}  (found and 404)
 - Page routes: /, /compare, /concept/{concept_id}  (found and 404)
 - Startup failure when data/ is missing
@@ -210,6 +211,23 @@ def test_concept_not_found_detail_message(client: TestClient) -> None:
     resp = client.get("/api/concepts/nonexistent")
     # FastAPI detail format: {"detail": "..."}
     assert resp.json()["detail"] == "Concept nonexistent not found"
+
+
+# ---------------------------------------------------------------------------
+# Parameter index — full index endpoint
+# ---------------------------------------------------------------------------
+
+
+def test_parameter_index_returns_200(client: TestClient) -> None:
+    resp = client.get("/api/parameter_index")
+    assert resp.status_code == 200
+
+
+def test_parameter_index_validates_as_parameter_index(client: TestClient) -> None:
+    resp = client.get("/api/parameter_index")
+    index = ParameterIndex.model_validate(resp.json())
+    # fixture has one entry ("availability") written by _minimal_parameter_index()
+    assert "availability" in index.parameters
 
 
 # ---------------------------------------------------------------------------

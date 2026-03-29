@@ -3,6 +3,7 @@ name = "ralph-project"
 version = "0.1.0"
 requires-python = ">=3.11"
 dependencies = [
+    "costingfe",
     "fastapi>=0.135.2",
     "httpx>=0.28.1",
     "jinja2>=3.1.6",
@@ -29,9 +30,13 @@ select = ["E", "F", "I", "UP"]
 python_version = "3.11"
 strict = true
 
+[tool.uv.sources]
+costingfe = { path = "../1costingfe", editable = true }
+
 [dependency-groups]
 dev = [
     "mypy>=1.19.1",
     "pytest>=9.0.2",
     "ruff>=0.15.8",
+    "types-pyyaml>=6.0.12.20250915",
 ]

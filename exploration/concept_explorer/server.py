@@ -290,6 +290,10 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
             raise HTTPException(status_code=404, detail=f"Concept {concept_id} not found")
         return concept
 
+    @app.get("/api/parameter_index", response_model=ParameterIndex)
+    def get_parameter_index() -> ParameterIndex:
+        return _s().parameter_index
+
     @app.get("/api/parameters/{param_name}", response_model=ParameterIndexEntry)
     def get_parameter(param_name: str) -> ParameterIndexEntry:
         entry = _s().parameter_index.parameters.get(param_name)

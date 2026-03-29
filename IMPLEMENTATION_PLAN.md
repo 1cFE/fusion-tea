@@ -205,6 +205,13 @@ Task 0 (deps + scaffold + vendor Plotly) → Task 1 (models) → Tasks 2, 4, 5
   - **Specs:** `specs/10-comparison-view.md`
   - **Verification:** Manual — verify ACs 1–7; specifically test: gap markers vs zero bars, shared parameter row alignment, shared x-axis on CAS, max-4 enforcement, lazy loading, standalone concept excluded from sensitivity tab
 
+- [x] **Task 13 — `/api/parameter_index` endpoint + wire whiskers in concept page** (`server.py`, `concept_page.js`)
+  - Add `GET /api/parameter_index` → `ParameterIndex` (full index; no path params)
+  - Update `concept_page.js` `Promise.all` to also fetch `/api/parameter_index`; pass result as `populationContext` to `renderTornado()` (graceful fallback to `null` on non-200)
+  - Add `test_parameter_index_returns_200` and `test_parameter_index_validates_as_parameter_index` to `test_server.py`
+  - **Root cause:** `_State` loaded `parameter_index` but no endpoint exposed it; tornado.js was receiving `null` and silently omitting AC-3/4 whiskers
+  - **Verification:** `uv run python -m pytest exploration/concept_explorer/` passes (87 tests); manual: whiskers visible on concept pages with costingfe-backed models sharing parameters
+
 ---
 
 ## Gap Analysis
@@ -249,7 +256,7 @@ Task 0 (deps + scaffold + vendor Plotly) → Task 1 (models) → Tasks 2, 4, 5
 
 5. **`POST /api/compute` and sensitivity**: The compute endpoint returns a full `CostModelData` including `sensitivities`, but the `sensitivities` field carries **pre-computed baseline values** — it is never re-ranked on slider change. Slider changes update headline economics and CAS only. This is consistent across specs 06, 08, 11, and 12.
 
-**Task 11 discovery**: `GET /api/manifest` is specified for population-context whiskers (spec 08) but the tornado chart requires `ParameterIndex` (per Task 7 note). No `/api/parameter_index` endpoint exists. `concept_page.js` fetches manifest as required but passes `null` for `populationContext` — whiskers are silently omitted. Adding a `/api/parameter_index` endpoint is the clean fix if whiskers are needed.
+**Task 11 discovery (resolved)**: `GET /api/manifest` is specified for population-context whiskers (spec 08) but the tornado chart requires `ParameterIndex` (per Task 7 note). Fixed in Task 13: added `GET /api/parameter_index` endpoint; `concept_page.js` now fetches and passes it as `populationContext`.
 
 **Task 12 discovery**: `confinement_family` enum values are uppercase in `ConceptData` (as returned by `/api/concepts`) but lowercase in `ConceptManifestEntry` (as returned by `/api/manifest`). `comparison.js` FAMILY_META covers both. Tornado chart alignment uses `Plotly.relayout` post-render to force a shared `yaxis.categoryarray` and `xaxis.range` across all concept columns. Gap markers use `diamond-open` scatter symbols at x=0 — visually distinct from bars, so "absent" is distinguishable from "elasticity=0". No JS runtime available on this machine; syntax verified by careful review against existing JS patterns.
 
