@@ -26,8 +26,9 @@
   var _focusedId = null;
   var _comparingId = null;
   var _registry = {};           // concept_id → concept object
-  var _similarityCache = {};    // concept_id → similarity report
+  var _similarityCache = {};    // "conceptId:topN" → similarity report
   var _sidebarCollapsed = false;
+  var _neighborCount = 5;       // user-configurable, default 5
 
   // DOM references (set in init)
   var constellationContainer;
@@ -142,6 +143,12 @@
       }
     });
 
+    // Neighbor count control
+    var neighborCountSelect = document.getElementById("neighbor-count-select");
+    neighborCountSelect.addEventListener("change", function () {
+      handleNeighborCountChange(parseInt(this.value, 10));
+    });
+
     // Swap visibility
     loadingEl.style.display = "none";
     contentEl.style.display = "";
@@ -170,6 +177,7 @@
     graphTitle.textContent = "Design Space Overview";
     graphSubtitle.textContent = "Concepts positioned by design attribute similarity. Double-click to explore.";
     backButton.style.display = "none";
+    document.getElementById("neighbor-count-control").style.display = "none";
 
     _viewMode = "overview";
     _focusedId = null;
@@ -186,7 +194,7 @@
     TreeView.highlightTreeConcept(null);
   }
 
-  function switchToNeighborhood(concept, neighbors) {
+  function switchToNeighborhood(concept, report) {
     // Fade out constellation
     constellationContainer.style.opacity = "0";
     setTimeout(function () {
@@ -197,8 +205,8 @@
       void neighborhoodContainer.offsetHeight;
       neighborhoodContainer.style.opacity = "1";
 
-      // Render the SVG graph
-      NeighborhoodGraph.render(neighborhoodContainer, concept, neighbors, _registry, {
+      // Render the neighborhood graph (model-view: builds full graph once)
+      NeighborhoodGraph.render(neighborhoodContainer, concept, report, _registry, {
         onCompare: handleCompare,
         onFocus: handleFocus,
         onDeselect: handleDeselect
@@ -208,6 +216,7 @@
     graphTitle.textContent = "Neighborhood of " + concept.name;
     graphSubtitle.textContent = "Click a neighbor to compare. Double-click to navigate.";
     backButton.style.display = "";
+    document.getElementById("neighbor-count-control").style.display = "";
     _viewMode = "neighborhood";
   }
 
@@ -216,16 +225,19 @@
   // ---------------------------------------------------------------------------
 
   function fetchSimilarity(conceptId) {
-    if (_similarityCache[conceptId]) {
-      return Promise.resolve(_similarityCache[conceptId]);
+    var cacheKey = conceptId + ":" + _neighborCount;
+    if (_similarityCache[cacheKey]) {
+      return Promise.resolve(_similarityCache[cacheKey]);
     }
-    return fetch("/api/taxonomy/similarity/" + encodeURIComponent(conceptId))
+    var url = "/api/taxonomy/similarity/" + encodeURIComponent(conceptId)
+      + "?top_n=" + _neighborCount;
+    return fetch(url)
       .then(function (resp) {
         if (!resp.ok) throw new Error("Similarity API returned " + resp.status);
         return resp.json();
       })
       .then(function (report) {
-        _similarityCache[conceptId] = report;
+        _similarityCache[cacheKey] = report;
         return report;
       });
   }
@@ -257,14 +269,12 @@
       // Only proceed if still focused on this concept
       if (_focusedId !== conceptId) return;
 
-      var neighbors = report.nearest;
-
       // Switch view
-      switchToNeighborhood(concept, neighbors);
+      switchToNeighborhood(concept, report);
 
       // Update detail panel: taxonomy card + neighbor list
       TaxonomyCards.renderTaxonomyCard(taxonomyCardContainer, concept);
-      TaxonomyCards.renderNeighborList(comparisonContainer, neighbors, handleCompare);
+      TaxonomyCards.renderNeighborList(comparisonContainer, report.nearest, handleCompare);
 
       // Sync tree highlight
       TreeView.highlightTreeConcept(conceptId);
@@ -282,7 +292,7 @@
     if (neighborId === _comparingId) return;
     _comparingId = neighborId;
 
-    var report = _similarityCache[_focusedId];
+    var report = _similarityCache[_focusedId + ":" + _neighborCount];
     if (!report) return;
 
     var result = null;
@@ -297,11 +307,11 @@
     var focused = _registry[_focusedId];
     var neighbor = _registry[neighborId];
 
-    // Select bridges (up to 3, one per field, by similarity)
-    var bridges = TaxonomyCards.selectBridges(result.bridges);
+    // Show bridge nodes for this neighbor (visibility toggle)
+    NeighborhoodGraph.compare(neighborId);
 
-    // Update graph: show bridge nodes + highlight neighbor
-    NeighborhoodGraph.showBridges(neighborId, bridges);
+    // Get bridge data from the graph model for the comparison panel
+    var bridges = NeighborhoodGraph.getBridgesForNeighbor(neighborId);
 
     // Update detail panel: comparison table
     TaxonomyCards.renderComparison(
@@ -326,12 +336,23 @@
     if (!_comparingId) return;
     _comparingId = null;
 
-    NeighborhoodGraph.clearBridges();
+    NeighborhoodGraph.clearComparison();
 
     // Restore neighbor list
-    var report = _similarityCache[_focusedId];
+    var report = _similarityCache[_focusedId + ":" + _neighborCount];
     if (report) {
       TaxonomyCards.renderNeighborList(comparisonContainer, report.nearest, handleCompare);
+    }
+  }
+
+  /**
+   * Change the number of neighbors displayed.
+   * Called from: neighbor count dropdown.
+   */
+  function handleNeighborCountChange(newCount) {
+    _neighborCount = newCount;
+    if (_focusedId) {
+      handleFocus(_focusedId);
     }
   }
 

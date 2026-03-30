@@ -1,16 +1,22 @@
 "use strict";
 
 /**
- * Cytoscape.js Neighborhood Graph component.
+ * Cytoscape.js Neighborhood Graph component — Model-View architecture.
  *
- * Renders a force-directed layout of a focused concept and its nearest neighbors,
- * with bridge concept nodes for cross-cutting attribute connections.
+ * GraphModel:  Pure data structure built once from the full similarity report.
+ *              Holds all nodes (center, neighbors, bridges — deduplicated) and
+ *              all edges (similarity, bridge — with multi-field labels merged).
+ *
+ * GraphView:   Cytoscape wrapper. Renders all elements from the model. After
+ *              initial layout settles, hides bridge elements. State transitions
+ *              are visibility toggles (show/hide), not DOM mutations (add/remove).
  *
  * Exported:
- *   NeighborhoodGraph.render(container, focusedConcept, neighbors, registry, callbacks)
- *   NeighborhoodGraph.showBridges(neighborId, bridges)
- *   NeighborhoodGraph.clearBridges()
+ *   NeighborhoodGraph.render(container, focusedConcept, report, registry, callbacks)
+ *   NeighborhoodGraph.compare(neighborId)
+ *   NeighborhoodGraph.clearComparison()
  *   NeighborhoodGraph.highlightBridge(conceptId)
+ *   NeighborhoodGraph.getBridgesForNeighbor(neighborId)
  *   NeighborhoodGraph.resize()
  *   NeighborhoodGraph.destroy()
  */
@@ -59,15 +65,15 @@ var NeighborhoodGraph = (function () {
   // Module state
   // ---------------------------------------------------------------------------
 
+  var _model = null;
   var _cy = null;
   var _container = null;
-  var _focusedConcept = null;
-  var _neighbors = null;
   var _registry = null;
   var _callbacks = null;
   var _tooltipEl = null;
   var _clickTimer = null;
   var _lastClickId = null;
+  var _activeNeighborId = null;
 
   // ---------------------------------------------------------------------------
   // Helpers
@@ -133,13 +139,176 @@ var NeighborhoodGraph = (function () {
       "<span style='color:#6e7681;font-size:11px'>Click to compare &middot; Double-click to explore</span>";
   }
 
-  function tooltipBridge(bridge, concept) {
+  function tooltipBridgeNode(concept) {
     var famLabel = FAMILY_LABELS[concept.confinement_family] || concept.confinement_family;
-    var fieldLabel = FIELD_LABELS[bridge.mismatched_field] || bridge.mismatched_field;
-    return "<strong>" + esc(concept.name || bridge.bridge_concept_name) + "</strong><br>" +
+    return "<strong>" + esc(concept.name) + "</strong><br>" +
       esc(famLabel) + "<br>" +
-      "Shares " + esc(fieldLabel) + ": " + esc(bridge.query_value) + "<br>" +
       "<span style='color:#6e7681;font-size:11px'>Double-click to explore</span>";
+  }
+
+  // ---------------------------------------------------------------------------
+  // GraphModel — Pure data structure
+  // ---------------------------------------------------------------------------
+
+  function buildGraphModel(focusedConcept, report, registry) {
+    var model = {
+      centerConceptId: focusedConcept.concept_id,
+      nodes: {},
+      edges: {},
+      _bridgesByNeighbor: {}
+    };
+
+    // ---- Stage 1: center node + neighbor nodes + similarity edges ----
+
+    model.nodes[focusedConcept.concept_id] = {
+      id: focusedConcept.concept_id,
+      type: "center",
+      label: focusedConcept.name,
+      family: focusedConcept.confinement_family,
+      score: null,
+      bridgeForNeighbors: []
+    };
+
+    var nearest = report.nearest;
+    for (var i = 0; i < nearest.length; i++) {
+      var n = nearest[i];
+
+      model.nodes[n.concept_id] = {
+        id: n.concept_id,
+        type: "neighbor",
+        label: n.concept_name,
+        family: n.confinement_family,
+        score: n.comparison.overall_score,
+        bridgeForNeighbors: []
+      };
+
+      var simEdgeId = "sim:" + n.concept_id;
+      model.edges[simEdgeId] = {
+        id: simEdgeId,
+        type: "similarity",
+        source: focusedConcept.concept_id,
+        target: n.concept_id,
+        score: n.comparison.overall_score,
+        matches: n.comparison.overall_matches,
+        comparable: n.comparison.overall_comparable
+      };
+    }
+
+    // ---- Stage 2: bridge nodes + edges with deduplication ----
+
+    for (var i = 0; i < nearest.length; i++) {
+      var n = nearest[i];
+      var bridges = n.bridges || [];
+      model._bridgesByNeighbor[n.concept_id] = [];
+
+      for (var j = 0; j < bridges.length; j++) {
+        var bridge = bridges[j];
+        var bridgeConceptId = bridge.bridge_concept_id;
+
+        // Node deduplication
+        if (model.nodes[bridgeConceptId]) {
+          var existingNode = model.nodes[bridgeConceptId];
+          if (existingNode.type === "bridge") {
+            if (existingNode.bridgeForNeighbors.indexOf(n.concept_id) === -1) {
+              existingNode.bridgeForNeighbors.push(n.concept_id);
+            }
+          }
+          // If it's center or neighbor, don't change type — it stays always-visible
+        } else {
+          var bridgeConcept = registry[bridgeConceptId] || {};
+          model.nodes[bridgeConceptId] = {
+            id: bridgeConceptId,
+            type: "bridge",
+            label: bridge.bridge_concept_name,
+            family: bridgeConcept.confinement_family || "NONSTANDARD",
+            score: bridge.bridge_overall_similarity,
+            bridgeForNeighbors: [n.concept_id]
+          };
+        }
+
+        // Edge deduplication — multi-field merging
+        var edgeKey = "br:" + n.concept_id + ":" + bridgeConceptId;
+        if (model.edges[edgeKey]) {
+          var existingEdge = model.edges[edgeKey];
+          existingEdge.fields.push(bridge.mismatched_field);
+          existingEdge.queryValues[bridge.mismatched_field] = bridge.query_value;
+          existingEdge.similarValues[bridge.mismatched_field] = bridge.similar_value;
+        } else {
+          var qv = {};
+          qv[bridge.mismatched_field] = bridge.query_value;
+          var sv = {};
+          sv[bridge.mismatched_field] = bridge.similar_value;
+
+          model.edges[edgeKey] = {
+            id: edgeKey,
+            type: "bridge",
+            source: focusedConcept.concept_id,
+            target: bridgeConceptId,
+            neighborId: n.concept_id,
+            fields: [bridge.mismatched_field],
+            dimension: bridge.dimension,
+            queryValues: qv,
+            similarValues: sv
+          };
+        }
+
+        // Per-field record for the comparison panel
+        model._bridgesByNeighbor[n.concept_id].push({
+          conceptId: bridgeConceptId,
+          conceptName: bridge.bridge_concept_name,
+          field: bridge.mismatched_field,
+          queryValue: bridge.query_value,
+          similarValue: bridge.similar_value,
+          dimension: bridge.dimension,
+          edgeId: edgeKey
+        });
+      }
+    }
+
+    // ---- Stage 3: query methods ----
+
+    model.getNeighborIds = function () {
+      var ids = [];
+      for (var id in model.nodes) {
+        if (model.nodes[id].type === "neighbor") ids.push(id);
+      }
+      return ids;
+    };
+
+    model.getBridgesForNeighbor = function (neighborId) {
+      return model._bridgesByNeighbor[neighborId] || [];
+    };
+
+    model.getBridgeNodeIdsForNeighbor = function (neighborId) {
+      var entries = model._bridgesByNeighbor[neighborId] || [];
+      var seen = {};
+      var ids = [];
+      for (var i = 0; i < entries.length; i++) {
+        var cid = entries[i].conceptId;
+        // Only include nodes that are bridge-type (neighbors are already visible)
+        if (!seen[cid] && model.nodes[cid] && model.nodes[cid].type === "bridge") {
+          seen[cid] = true;
+          ids.push(cid);
+        }
+      }
+      return ids;
+    };
+
+    model.getBridgeEdgeIdsForNeighbor = function (neighborId) {
+      var entries = model._bridgesByNeighbor[neighborId] || [];
+      var seen = {};
+      var ids = [];
+      for (var i = 0; i < entries.length; i++) {
+        var eid = entries[i].edgeId;
+        if (!seen[eid]) {
+          seen[eid] = true;
+          ids.push(eid);
+        }
+      }
+      return ids;
+    };
+
+    return model;
   }
 
   // ---------------------------------------------------------------------------
@@ -284,63 +453,111 @@ var NeighborhoodGraph = (function () {
   }
 
   // ---------------------------------------------------------------------------
-  // Build graph elements
+  // Build Cytoscape elements from GraphModel
   // ---------------------------------------------------------------------------
 
-  function buildElements(focusedConcept, neighbors) {
+  function buildElements(model) {
     var elements = [];
-    var cx = 0, cy = 0;
     var radius = 200;
 
-    // Center node
-    elements.push({
-      data: {
-        id: "center",
-        label: focusedConcept.name,
-        color: familyColor(focusedConcept.confinement_family),
-        conceptId: focusedConcept.concept_id
-      },
-      classes: "center",
-      position: { x: cx, y: cy },
-      locked: false
-    });
+    // Compute neighbor positions (for initial layout hints)
+    var neighborIds = model.getNeighborIds();
+    var neighborPositions = {};
+    for (var i = 0; i < neighborIds.length; i++) {
+      var angle = (i / neighborIds.length) * 2 * Math.PI - Math.PI / 2;
+      neighborPositions[neighborIds[i]] = {
+        x: radius * Math.cos(angle),
+        y: radius * Math.sin(angle)
+      };
+    }
 
-    // Neighbor nodes + similarity edges
-    for (var i = 0; i < neighbors.length; i++) {
-      var n = neighbors[i];
-      var angle = (i / neighbors.length) * 2 * Math.PI - Math.PI / 2;
-      var concept = _registry[n.concept_id] || { name: n.concept_name, confinement_family: n.confinement_family };
-      var score = n.comparison.overall_score;
-      var sw = 1.5 + (score - 0.5) * 3; // 1.5px at 0.5, 3px at 1.0
+    // ---- Nodes ----
 
-      elements.push({
-        data: {
-          id: "n-" + n.concept_id,
-          label: n.concept_name,
-          color: familyColor(n.confinement_family),
-          conceptId: n.concept_id,
-          score: score
-        },
-        classes: "neighbor",
-        position: {
-          x: cx + radius * Math.cos(angle),
-          y: cy + radius * Math.sin(angle)
+    for (var id in model.nodes) {
+      var node = model.nodes[id];
+      var position;
+      var classes;
+
+      if (node.type === "center") {
+        position = { x: 0, y: 0 };
+        classes = "center";
+      } else if (node.type === "neighbor") {
+        position = neighborPositions[id] || { x: 0, y: 0 };
+        classes = "neighbor";
+      } else {
+        // Bridge: initial position toward associated neighbors
+        var bfn = node.bridgeForNeighbors;
+        var avgX = 0, avgY = 0, count = 0;
+        for (var k = 0; k < bfn.length; k++) {
+          var np = neighborPositions[bfn[k]];
+          if (np) { avgX += np.x; avgY += np.y; count++; }
         }
-      });
+        if (count > 0) { avgX /= count; avgY /= count; }
+        var bAngle = Math.atan2(avgY, avgX);
+        var bDist = 160;
+        position = { x: bDist * Math.cos(bAngle), y: bDist * Math.sin(bAngle) };
+        classes = "bridge";
+      }
 
       elements.push({
         data: {
-          id: "e-sim-" + n.concept_id,
-          source: "center",
-          target: "n-" + n.concept_id,
-          label: Math.round(score * 100) + "%",
-          weight: Math.max(sw, 1.5),
-          score: score,
-          matches: n.comparison.overall_matches,
-          comparable: n.comparison.overall_comparable
+          id: id,
+          label: node.label,
+          color: familyColor(node.family),
+          score: node.score,
+          family: node.family
         },
-        classes: "similarity"
+        classes: classes,
+        position: position
       });
+    }
+
+    // ---- Edges ----
+
+    for (var edgeId in model.edges) {
+      var edge = model.edges[edgeId];
+
+      if (edge.type === "similarity") {
+        var sw = 1.5 + (edge.score - 0.5) * 3;
+        elements.push({
+          data: {
+            id: edge.id,
+            source: edge.source,
+            target: edge.target,
+            label: Math.round(edge.score * 100) + "%",
+            weight: Math.max(sw, 1.5),
+            score: edge.score,
+            matches: edge.matches,
+            comparable: edge.comparable
+          },
+          classes: "similarity"
+        });
+      } else {
+        // Bridge edge — build combined field label
+        var fieldLabels = [];
+        var tooltipParts = [];
+        for (var fi = 0; fi < edge.fields.length; fi++) {
+          var f = edge.fields[fi];
+          var fl = FIELD_LABELS[f] || f;
+          fieldLabels.push(fl);
+          tooltipParts.push("Shares " + esc(fl) + ": " + esc(edge.queryValues[f]));
+        }
+        var combinedLabel = fieldLabels.join(" + ");
+        var edgeColor = DIMENSION_EDGE_COLORS[edge.dimension] || "#6e7681";
+
+        elements.push({
+          data: {
+            id: edge.id,
+            source: edge.source,
+            target: edge.target,
+            label: combinedLabel,
+            edgeColor: edgeColor,
+            tooltipContent: tooltipParts.join("<br>"),
+            neighborId: edge.neighborId
+          },
+          classes: "bridge"
+        });
+      }
     }
 
     return elements;
@@ -350,18 +567,19 @@ var NeighborhoodGraph = (function () {
   // render()
   // ---------------------------------------------------------------------------
 
-  function render(container, focusedConcept, neighbors, registry, callbacks) {
+  function render(container, focusedConcept, report, registry, callbacks) {
     destroy();
 
     _container = container;
-    _focusedConcept = focusedConcept;
-    _neighbors = neighbors;
     _registry = registry;
     _callbacks = callbacks;
+    _activeNeighborId = null;
 
     container.innerHTML = "";
 
-    var elements = buildElements(focusedConcept, neighbors);
+    // Build model and elements
+    _model = buildGraphModel(focusedConcept, report, registry);
+    var elements = buildElements(_model);
 
     _cy = cytoscape({
       container: container,
@@ -373,14 +591,25 @@ var NeighborhoodGraph = (function () {
         animationDuration: 500,
         fit: true,
         padding: 50,
-        nodeRepulsion: function () { return 8000; },
-        idealEdgeLength: function () { return 180; },
+        nodeRepulsion: function (node) {
+          return node.hasClass("bridge") ? 4000 : 8000;
+        },
+        idealEdgeLength: function (edge) {
+          return edge.hasClass("bridge") ? 140 : 180;
+        },
         edgeElasticity: function () { return 100; },
         gravity: 0.25,
         numIter: 200,
         initialTemp: 200,
         coolingFactor: 0.95,
-        randomize: false
+        randomize: false,
+        stop: function () {
+          // After layout settles, hide all bridge elements.
+          // Bridges had opacity:0 from the stylesheet during layout (invisible
+          // but participating in the force simulation). Now hide them so they
+          // don't receive pointer events until explicitly shown via compare().
+          if (_cy) _cy.elements(".bridge").hide();
+        }
       },
       minZoom: 0.3,
       maxZoom: 3,
@@ -393,8 +622,7 @@ var NeighborhoodGraph = (function () {
 
     // Neighbor: single-click (debounced) → compare, double-click → re-center
     _cy.on("tap", "node.neighbor", function (evt) {
-      var node = evt.target;
-      var conceptId = node.data("conceptId");
+      var conceptId = evt.target.id();
 
       if (_clickTimer && _lastClickId === conceptId) {
         clearTimeout(_clickTimer);
@@ -414,8 +642,7 @@ var NeighborhoodGraph = (function () {
 
     // Bridge: double-click → re-center
     _cy.on("tap", "node.bridge", function (evt) {
-      var node = evt.target;
-      var conceptId = node.data("conceptId");
+      var conceptId = evt.target.id();
 
       if (_clickTimer && _lastClickId === conceptId) {
         clearTimeout(_clickTimer);
@@ -447,7 +674,7 @@ var NeighborhoodGraph = (function () {
 
     _cy.on("mouseover", "node.neighbor", function (evt) {
       var node = evt.target;
-      var conceptId = node.data("conceptId");
+      var conceptId = node.id();
       var concept = registry[conceptId] || { name: node.data("label"), confinement_family: "NONSTANDARD" };
       showTooltip(evt, tooltipNeighbor(concept, node.data("score")));
     });
@@ -455,12 +682,9 @@ var NeighborhoodGraph = (function () {
 
     _cy.on("mouseover", "node.bridge", function (evt) {
       var node = evt.target;
-      var bridge = node.data("bridgeData");
-      var concept = registry[node.data("conceptId")] || {
-        name: bridge.bridge_concept_name,
-        confinement_family: node.data("family") || "NONSTANDARD"
-      };
-      showTooltip(evt, tooltipBridge(bridge, concept));
+      var conceptId = node.id();
+      var concept = registry[conceptId] || { name: node.data("label"), confinement_family: node.data("family") || "NONSTANDARD" };
+      showTooltip(evt, tooltipBridgeNode(concept));
     });
     _cy.on("mouseout", "node.bridge", function () { hideTooltip(); });
 
@@ -480,126 +704,84 @@ var NeighborhoodGraph = (function () {
   }
 
   // ---------------------------------------------------------------------------
-  // Bridge lifecycle
+  // Comparison lifecycle — visibility toggles
   // ---------------------------------------------------------------------------
 
-  function showBridges(neighborId, bridges) {
-    clearBridges(true);
+  function compare(neighborId) {
+    if (!_cy || !_model) return;
 
-    if (!_cy || !bridges || bridges.length === 0) return;
-
-    var neighborNode = _cy.getElementById("n-" + neighborId);
-    if (neighborNode.empty()) return;
-
-    // Highlight the compared neighbor
-    neighborNode.addClass("comparing");
-
-    var centerPos = _cy.getElementById("center").position();
-    var neighborPos = neighborNode.position();
-
-    // Compute bridge positions relative to center↔neighbor
-    var dx = neighborPos.x - centerPos.x;
-    var dy = neighborPos.y - centerPos.y;
-    var baseAngle = Math.atan2(dy, dx);
-    var dist = Math.sqrt(dx * dx + dy * dy) * 1.4;
-    var angularSpread = 0.15;
-
-    for (var i = 0; i < bridges.length; i++) {
-      var bridge = bridges[i];
-      var concept = _registry[bridge.bridge_concept_id];
-      var confinementFamily = concept ? concept.confinement_family : "NONSTANDARD";
-      var fieldLabel = FIELD_LABELS[bridge.mismatched_field] || bridge.mismatched_field;
-
-      var offset = (i - (bridges.length - 1) / 2) * angularSpread;
-      var angle = baseAngle + offset;
-      var bx = centerPos.x + dist * Math.cos(angle);
-      var by = centerPos.y + dist * Math.sin(angle);
-
-      var edgeColor = DIMENSION_EDGE_COLORS[bridge.dimension] || "#6e7681";
-      var tooltipContent = "Both use " + esc(bridge.query_value) + " for " + esc(fieldLabel);
-
-      var nodeId = "b-" + bridge.bridge_concept_id + "-" + i;
-      var edgeId = "e-bridge-" + bridge.bridge_concept_id + "-" + i;
-
-      _cy.add([
-        {
-          group: "nodes",
-          data: {
-            id: nodeId,
-            label: bridge.bridge_concept_name,
-            color: familyColor(confinementFamily),
-            conceptId: bridge.bridge_concept_id,
-            bridgeData: bridge,
-            family: confinementFamily
-          },
-          classes: "bridge",
-          position: { x: bx, y: by },
-          locked: true
-        },
-        {
-          group: "edges",
-          data: {
-            id: edgeId,
-            source: "center",
-            target: nodeId,
-            label: bridge.query_value.length > 20 ? bridge.query_value.substring(0, 19) + "\u2026" : bridge.query_value,
-            edgeColor: edgeColor,
-            tooltipContent: tooltipContent
-          },
-          classes: "bridge"
-        }
-      ]);
-
-      // Animate fade-in
-      (function (nId, eId) {
-        setTimeout(function () {
-          var bNode = _cy.getElementById(nId);
-          var bEdge = _cy.getElementById(eId);
-          if (!bNode.empty()) bNode.animate({ style: { opacity: 1 } }, { duration: 300 });
-          if (!bEdge.empty()) bEdge.animate({ style: { opacity: 1 } }, { duration: 300 });
-        }, 50);
-      })(nodeId, edgeId);
-    }
-  }
-
-  function clearBridges(synchronous) {
-    if (!_cy) return;
-
-    // Remove comparing class from all neighbors
+    // 1. Hide any previously visible bridges (instant)
+    _cy.elements(".bridge").hide().style("opacity", 0);
     _cy.nodes(".comparing").removeClass("comparing");
 
-    var bridgeNodes = _cy.nodes(".bridge");
-    var bridgeEdges = _cy.edges(".bridge");
-
-    if (synchronous || bridgeNodes.empty()) {
-      bridgeEdges.remove();
-      bridgeNodes.remove();
-    } else {
-      bridgeNodes.animate({ style: { opacity: 0 } }, { duration: 250 });
-      bridgeEdges.animate({ style: { opacity: 0 } }, { duration: 250 });
-      setTimeout(function () {
-        _cy.nodes(".bridge").remove();
-        _cy.edges(".bridge").remove();
-      }, 300);
+    // 2. Highlight the compared neighbor
+    var neighborNode = _cy.getElementById(neighborId);
+    if (!neighborNode.empty()) {
+      neighborNode.addClass("comparing");
     }
+
+    // 3. Show bridge nodes for this neighbor
+    var bridgeNodeIds = _model.getBridgeNodeIdsForNeighbor(neighborId);
+    for (var i = 0; i < bridgeNodeIds.length; i++) {
+      var node = _cy.getElementById(bridgeNodeIds[i]);
+      if (!node.empty()) {
+        node.show();
+        node.animate({ style: { opacity: 1 } }, { duration: 250 });
+      }
+    }
+
+    // 4. Show bridge edges for this neighbor
+    var bridgeEdgeIds = _model.getBridgeEdgeIdsForNeighbor(neighborId);
+    for (var i = 0; i < bridgeEdgeIds.length; i++) {
+      var edge = _cy.getElementById(bridgeEdgeIds[i]);
+      if (!edge.empty()) {
+        edge.show();
+        edge.animate({ style: { opacity: 1 } }, { duration: 250 });
+      }
+    }
+
+    _activeNeighborId = neighborId;
+  }
+
+  function clearComparison() {
+    if (!_cy || !_activeNeighborId) return;
+
+    _cy.nodes(".comparing").removeClass("comparing");
+
+    var bridges = _cy.elements(".bridge").filter(":visible");
+    bridges.animate(
+      { style: { opacity: 0 } },
+      {
+        duration: 200,
+        complete: function () { bridges.hide(); }
+      }
+    );
+
+    _activeNeighborId = null;
   }
 
   function highlightBridge(conceptId) {
     if (!_cy) return;
-    // Find bridge nodes matching this concept (may have index suffix)
-    var nodes = _cy.nodes(".bridge").filter(function (node) {
-      return node.data("conceptId") === conceptId;
-    });
-    if (nodes.empty()) return;
+    var node = _cy.getElementById(conceptId);
+    if (node.empty()) return;
 
-    nodes.addClass("highlighted");
+    node.addClass("highlighted");
     setTimeout(function () {
-      nodes.removeClass("highlighted");
+      node.removeClass("highlighted");
     }, 1500);
   }
 
   // ---------------------------------------------------------------------------
-  // Resize
+  // Model queries (delegated)
+  // ---------------------------------------------------------------------------
+
+  function getBridgesForNeighbor(neighborId) {
+    if (!_model) return [];
+    return _model.getBridgesForNeighbor(neighborId);
+  }
+
+  // ---------------------------------------------------------------------------
+  // Resize / Destroy
   // ---------------------------------------------------------------------------
 
   function resize() {
@@ -609,24 +791,20 @@ var NeighborhoodGraph = (function () {
     }
   }
 
-  // ---------------------------------------------------------------------------
-  // Cleanup
-  // ---------------------------------------------------------------------------
-
   function destroy() {
     if (_clickTimer) {
       clearTimeout(_clickTimer);
       _clickTimer = null;
     }
     _lastClickId = null;
+    _activeNeighborId = null;
 
     if (_cy) {
       _cy.destroy();
       _cy = null;
     }
+    _model = null;
     _container = null;
-    _focusedConcept = null;
-    _neighbors = null;
     _registry = null;
     _callbacks = null;
     hideTooltip();
@@ -638,9 +816,10 @@ var NeighborhoodGraph = (function () {
 
   return {
     render: render,
-    showBridges: showBridges,
-    clearBridges: clearBridges,
+    compare: compare,
+    clearComparison: clearComparison,
     highlightBridge: highlightBridge,
+    getBridgesForNeighbor: getBridgesForNeighbor,
     resize: resize,
     destroy: destroy
   };

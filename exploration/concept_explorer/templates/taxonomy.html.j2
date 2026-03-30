@@ -35,6 +35,15 @@
         <span class="graph-header__subtitle" id="graph-subtitle">
           Concepts positioned by design attribute similarity. Double-click to explore.
         </span>
+        <label class="neighbor-count" id="neighbor-count-control" style="display:none">
+          <span class="neighbor-count__label">Neighbors</span>
+          <select class="neighbor-count__select" id="neighbor-count-select">
+            <option value="3">3</option>
+            <option value="5" selected>5</option>
+            <option value="7">7</option>
+            <option value="10">10</option>
+          </select>
+        </label>
       </div>
       <!-- Constellation (default, Plotly) -->
       <div id="constellation-container" style="min-height: 350px;"></div>

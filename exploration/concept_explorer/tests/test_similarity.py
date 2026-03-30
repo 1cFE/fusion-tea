@@ -276,3 +276,64 @@ class TestConstellation:
         valid_families = set(ConfinementFamily)
         for p in constellation.points:
             assert p.confinement_family in valid_families
+
+
+# ---------------------------------------------------------------------------
+# Bridge diversity
+# ---------------------------------------------------------------------------
+
+
+class TestBridgeDiversity:
+    def test_bridges_prefer_distinct_concepts(self, registry: ConceptRegistry):
+        """When alternatives exist, bridge concepts should be distinct across fields."""
+        a = registry.by_id("hts-compact-tokamak")
+        b = registry.by_id("sheared-flow-stabilized-z-pinch")
+        assert a is not None and b is not None
+        bridges = explain_difference(a, b, registry)
+        if len(bridges) >= 2:
+            concept_ids = [br.bridge_concept_id for br in bridges]
+            # At least some diversity — not all the same concept
+            assert len(set(concept_ids)) > 1
+
+    def test_bridges_fallback_to_reuse_when_no_alternative(self, registry: ConceptRegistry):
+        """When only one concept matches a field, it can be reused."""
+        a = registry.by_id("hts-compact-tokamak")
+        b = registry.by_id("sheared-flow-stabilized-z-pinch")
+        assert a is not None and b is not None
+        bridges = explain_difference(a, b, registry)
+        assert len(bridges) > 0
+
+    def test_bridge_fields_still_covered(self, registry: ConceptRegistry):
+        """Diversity preference must not reduce field coverage."""
+        a = registry.by_id("hts-compact-tokamak")
+        b = registry.by_id("sheared-flow-stabilized-z-pinch")
+        assert a is not None and b is not None
+        bridges = explain_difference(a, b, registry)
+        fields = [br.mismatched_field for br in bridges]
+        # Each bridge covers a unique field
+        assert len(fields) == len(set(fields))
+
+
+# ---------------------------------------------------------------------------
+# Top-N slicing
+# ---------------------------------------------------------------------------
+
+
+class TestTopNSlicing:
+    def test_top_n_returns_requested_count(self, registry: ConceptRegistry):
+        """find_nearest(top_n=3) returns exactly 3."""
+        c = registry.concepts[0]
+        results = find_nearest(c, registry, top_n=3)
+        assert len(results) == 3
+
+    def test_top_n_fifteen(self, registry: ConceptRegistry):
+        """find_nearest(top_n=15) returns 15 (enough concepts in registry)."""
+        c = registry.concepts[0]
+        results = find_nearest(c, registry, top_n=15)
+        assert len(results) == 15
+
+    def test_top_n_one(self, registry: ConceptRegistry):
+        """Edge case: top_n=1 returns single result."""
+        c = registry.concepts[0]
+        results = find_nearest(c, registry, top_n=1)
+        assert len(results) == 1

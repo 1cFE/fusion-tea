@@ -1308,6 +1308,23 @@ a:hover {
   color: var(--color-text-muted);
 }
 
+.neighbor-count {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-left: auto;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+.neighbor-count__select {
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 2px var(--space-1);
+  font-size: var(--font-size-sm);
+}
+
 /* Detail panel (right column, scrollable independently) */
 .taxonomy-detail {
   overflow-y: auto;

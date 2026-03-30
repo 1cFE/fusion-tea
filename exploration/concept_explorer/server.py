@@ -274,7 +274,7 @@ def _load_taxonomy(
     # Precompute similarity reports for all concepts
     similarity_reports: dict[str, ConceptSimilarityReport] = {}
     for concept in registry.concepts:
-        nearest = find_nearest(concept, registry, top_n=5)
+        nearest = find_nearest(concept, registry, top_n=15)
         similarity_reports[concept.concept_id] = ConceptSimilarityReport(
             query_concept_id=concept.concept_id,
             query_concept_name=concept.name,
@@ -420,15 +420,24 @@ def api_taxonomy_concept(concept_id: str, state: _State = Depends(get_state)) ->
 
 
 def api_taxonomy_similarity(
-    concept_id: str, state: _State = Depends(get_state)
+    concept_id: str, top_n: int = 5, state: _State = Depends(get_state)
 ) -> ConceptSimilarityReport:
-    """Return precomputed similarity report (nearest neighbors + bridges)."""
+    """Return precomputed similarity report (nearest neighbors + bridges).
+
+    The ``top_n`` query parameter controls how many neighbors are returned
+    (default 5, clamped to 1–15).
+    """
     report = state.similarity_reports.get(concept_id)
     if report is None:
         raise HTTPException(
             status_code=404, detail=f"No similarity report for '{concept_id}'"
         )
-    return report
+    top_n = max(1, min(top_n, 15))
+    return ConceptSimilarityReport(
+        query_concept_id=report.query_concept_id,
+        query_concept_name=report.query_concept_name,
+        nearest=report.nearest[:top_n],
+    )
 
 
 def api_taxonomy_compare(

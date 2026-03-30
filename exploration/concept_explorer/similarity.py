@@ -237,9 +237,16 @@ def explain_difference(
     concepts match query in those dimensions.
 
     This is the "70% like A, but in the 30% different, more like B and C" query.
+
+    Uses greedy diverse selection: iterates fields in dimension order and
+    prefers bridge concepts not yet used by a previous field. Falls back to
+    the highest-scoring candidate when all candidates are already used.
     """
     comparison = compare_pair(query, similar)
-    bridges: list[DifferenceBridge] = []
+
+    # Stage 1: collect all candidates per mismatched field, sorted by score desc
+    fields_in_order: list[tuple[str, str, str, str]] = []  # (dimension, field, query_val, similar_val)
+    candidates_by_field: dict[str, list[tuple[float, ConceptTaxonomy]]] = {}
 
     for dim_score in comparison.dimensions:
         for field in dim_score.mismatched_fields:
@@ -248,9 +255,8 @@ def explain_difference(
             if query_val is None or similar_val is None:
                 continue
 
-            # Find the best bridge: another concept (not query, not similar)
-            # that matches query on this field and has highest overall similarity
-            best_bridge: tuple[float, ConceptTaxonomy] | None = None
+            fields_in_order.append((dim_score.dimension, field, str(query_val), str(similar_val)))
+            candidates: list[tuple[float, ConceptTaxonomy]] = []
             for candidate in registry.concepts:
                 if candidate.concept_id in (query.concept_id, similar.concept_id):
                     continue
@@ -259,21 +265,42 @@ def explain_difference(
                     continue
                 if str(cand_val) == str(query_val):
                     cand_score = compare_pair(query, candidate).overall_score
-                    if best_bridge is None or cand_score > best_bridge[0]:
-                        best_bridge = (cand_score, candidate)
+                    candidates.append((cand_score, candidate))
+            candidates.sort(key=lambda x: -x[0])
+            candidates_by_field[field] = candidates
 
-            if best_bridge is not None:
-                bridges.append(
-                    DifferenceBridge(
-                        dimension=dim_score.dimension,
-                        mismatched_field=field,
-                        query_value=str(query_val),
-                        similar_value=str(similar_val),
-                        bridge_concept_id=best_bridge[1].concept_id,
-                        bridge_concept_name=best_bridge[1].name,
-                        bridge_overall_similarity=best_bridge[0],
-                    )
-                )
+    # Stage 2: greedy diverse selection
+    used_concept_ids: set[str] = set()
+    bridges: list[DifferenceBridge] = []
+
+    for dimension, field, query_val, similar_val in fields_in_order:
+        candidates = candidates_by_field[field]
+        if not candidates:
+            continue
+
+        # Prefer an unused concept
+        selected: tuple[float, ConceptTaxonomy] | None = None
+        for score, concept in candidates:
+            if concept.concept_id not in used_concept_ids:
+                selected = (score, concept)
+                break
+
+        # Fallback: reuse the best candidate
+        if selected is None:
+            selected = candidates[0]
+
+        used_concept_ids.add(selected[1].concept_id)
+        bridges.append(
+            DifferenceBridge(
+                dimension=dimension,
+                mismatched_field=field,
+                query_value=query_val,
+                similar_value=similar_val,
+                bridge_concept_id=selected[1].concept_id,
+                bridge_concept_name=selected[1].name,
+                bridge_overall_similarity=selected[0],
+            )
+        )
 
     return bridges
 

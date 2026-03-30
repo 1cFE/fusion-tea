@@ -5,7 +5,6 @@
  *
  * Exported:
  *   TaxonomyCards.renderTaxonomyCard(container, concept)
- *   TaxonomyCards.selectBridges(bridges)
  *   TaxonomyCards.buildComparison(focused, neighbor, similarityResult)
  *   TaxonomyCards.renderNeighborList(container, nearest, onCompare, activeId)
  *   TaxonomyCards.renderComparison(container, focused, neighbor, result, selectedBridges, allNearest, onBridgeHighlight, onCompare)
@@ -156,37 +155,6 @@ var TaxonomyCards = (function () {
   var TBD_VALUES = { "TBD": true, "Unknown": true };
 
   // ---------------------------------------------------------------------------
-  // Bridge selection algorithm (FR-10)
-  // ---------------------------------------------------------------------------
-
-  var MAX_BRIDGES = 3;
-
-  /**
-   * Select at most MAX_BRIDGES bridges, each covering a different mismatched
-   * field, prioritized by overall similarity to the focused concept.
-   */
-  function selectBridges(bridges) {
-    if (!bridges || bridges.length === 0) return [];
-
-    var sorted = bridges.slice().sort(function (a, b) {
-      return (b.bridge_overall_similarity || 0) - (a.bridge_overall_similarity || 0);
-    });
-
-    var selected = [];
-    var coveredFields = {};
-
-    for (var i = 0; i < sorted.length && selected.length < MAX_BRIDGES; i++) {
-      var b = sorted[i];
-      if (!coveredFields[b.mismatched_field]) {
-        coveredFields[b.mismatched_field] = true;
-        selected.push(b);
-      }
-    }
-
-    return selected;
-  }
-
-  // ---------------------------------------------------------------------------
   // Comparison builder
   // ---------------------------------------------------------------------------
 
@@ -304,7 +272,7 @@ var TaxonomyCards = (function () {
    * @param {Object} focused - focused concept from registry
    * @param {Object} neighbor - neighbor concept from registry
    * @param {Object} similarityResult - the SimilarityResult for this neighbor
-   * @param {Array} selectedBridges - bridges already selected by selectBridges()
+   * @param {Array} selectedBridges - bridges from NeighborhoodGraph.getBridgesForNeighbor()
    * @param {Array} allNearest - all nearest neighbors (for "other neighbors" list)
    * @param {Function} onBridgeHighlight - callback(conceptId)
    * @param {Function} onCompare - callback(conceptId) for other neighbor clicks
@@ -327,11 +295,13 @@ var TaxonomyCards = (function () {
     // Build comparison rows
     var rows = buildComparison(focused, neighbor, similarityResult);
 
-    // Build a lookup of selected bridges by field
+    // Build a lookup of selected bridges by field.
+    // Bridge data comes from the GraphModel (per-field records with
+    // conceptId/conceptName/field/queryValue keys).
     var selectedByField = {};
     if (selectedBridges) {
       for (var s = 0; s < selectedBridges.length; s++) {
-        selectedByField[selectedBridges[s].mismatched_field] = selectedBridges[s];
+        selectedByField[selectedBridges[s].field] = selectedBridges[s];
       }
     }
 
@@ -396,11 +366,11 @@ var TaxonomyCards = (function () {
           bridgeTd.appendChild(document.createTextNode("\u21b3 Also uses " + row.focusedValue + ": "));
 
           var ref = el("a", "bridge-ref");
-          ref.setAttribute("data-concept-id", selBridge.bridge_concept_id);
-          ref.textContent = selBridge.bridge_concept_name + " ";
+          ref.setAttribute("data-concept-id", selBridge.conceptId);
+          ref.textContent = selBridge.conceptName + " ";
 
           // Family badge
-          var bridgeConcept = _registry ? _registry[selBridge.bridge_concept_id] : null;
+          var bridgeConcept = _registry ? _registry[selBridge.conceptId] : null;
           var bridgeFam = bridgeConcept ? bridgeConcept.confinement_family : null;
           if (bridgeFam) {
             var bBadge = el("span",
@@ -417,7 +387,7 @@ var TaxonomyCards = (function () {
               e.stopPropagation();
               if (onBridgeHighlight) onBridgeHighlight(cid);
             });
-          })(selBridge.bridge_concept_id);
+          })(selBridge.conceptId);
 
           bridgeTd.appendChild(ref);
           bridgeTr.appendChild(bridgeTd);
@@ -480,7 +450,6 @@ var TaxonomyCards = (function () {
 
   return {
     renderTaxonomyCard: renderTaxonomyCard,
-    selectBridges: selectBridges,
     buildComparison: buildComparison,
     renderNeighborList: renderNeighborList,
     renderComparison: renderComparison,
