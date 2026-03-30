@@ -1,9 +1,9 @@
 "use strict";
 
 /**
- * SVG Neighborhood Graph component.
+ * Cytoscape.js Neighborhood Graph component.
  *
- * Renders a radial layout of a focused concept and its nearest neighbors,
+ * Renders a force-directed layout of a focused concept and its nearest neighbors,
  * with bridge concept nodes for cross-cutting attribute connections.
  *
  * Exported:
@@ -11,6 +11,7 @@
  *   NeighborhoodGraph.showBridges(neighborId, bridges)
  *   NeighborhoodGraph.clearBridges()
  *   NeighborhoodGraph.highlightBridge(conceptId)
+ *   NeighborhoodGraph.resize()
  *   NeighborhoodGraph.destroy()
  */
 var NeighborhoodGraph = (function () {
@@ -18,13 +19,6 @@ var NeighborhoodGraph = (function () {
   // ---------------------------------------------------------------------------
   // Constants
   // ---------------------------------------------------------------------------
-
-  var SVG_NS = "http://www.w3.org/2000/svg";
-  var TOP_N = 5;
-  var NEIGHBOR_RADIUS_FACTOR = 0.32;
-  var BRIDGE_RADIUS_FACTOR = 0.48;
-  var BRIDGE_ANGULAR_OFFSET = 0.15; // radians between bridges near same neighbor
-  var MAX_LABEL_LEN = 25;
 
   var FAMILY_COLORS = {
     MFE: "#3b82f6",
@@ -52,92 +46,46 @@ var NeighborhoodGraph = (function () {
     repetition_rate: "Repetition Rate"
   };
 
+  var DIMENSION_EDGE_COLORS = {
+    plasma_physics: "#60a5fa",
+    engineering: "#34d399",
+    fuel_cycle: "#fbbf24",
+    operations: "#a78bfa"
+  };
+
+  var DBLCLICK_DELAY = 300;
+
   // ---------------------------------------------------------------------------
-  // Module state (reset on each render)
+  // Module state
   // ---------------------------------------------------------------------------
 
-  var _svg = null;
+  var _cy = null;
   var _container = null;
-  var _layout = null;
   var _focusedConcept = null;
   var _neighbors = null;
   var _registry = null;
   var _callbacks = null;
-  var _edgesGroup = null;
-  var _nodesGroup = null;
-  var _neighborIndexById = {}; // concept_id -> index in neighbors array
   var _tooltipEl = null;
+  var _clickTimer = null;
+  var _lastClickId = null;
 
   // ---------------------------------------------------------------------------
-  // DOM helpers
+  // Helpers
   // ---------------------------------------------------------------------------
-
-  function svgEl(tag, attrs) {
-    var node = document.createElementNS(SVG_NS, tag);
-    if (attrs) {
-      for (var k in attrs) {
-        node.setAttribute(k, attrs[k]);
-      }
-    }
-    return node;
-  }
-
-  function el(tag, cls, text) {
-    var node = document.createElement(tag);
-    if (cls) node.className = cls;
-    if (text != null) node.textContent = text;
-    return node;
-  }
-
-  function truncate(str, maxLen) {
-    if (!str) return "";
-    return str.length > maxLen ? str.substring(0, maxLen - 1) + "\u2026" : str;
-  }
 
   function familyColor(family) {
     return FAMILY_COLORS[family] || FAMILY_COLORS.NONSTANDARD;
   }
 
-  // ---------------------------------------------------------------------------
-  // Layout computation
-  // ---------------------------------------------------------------------------
-
-  function computeLayout(width, height, neighborCount) {
-    var cx = width / 2;
-    var cy = height / 2;
-    var base = Math.min(width, height);
-    var radius = base * NEIGHBOR_RADIUS_FACTOR;
-    var bridgeRadius = base * BRIDGE_RADIUS_FACTOR;
-    var neighbors = [];
-    for (var i = 0; i < neighborCount; i++) {
-      var angle = (i / neighborCount) * 2 * Math.PI - Math.PI / 2;
-      neighbors.push({
-        x: cx + radius * Math.cos(angle),
-        y: cy + radius * Math.sin(angle),
-        angle: angle
-      });
-    }
-    return { cx: cx, cy: cy, radius: radius, bridgeRadius: bridgeRadius, neighbors: neighbors };
-  }
-
-  function computeBridgePositions(layout, neighborIndex, bridgeCount) {
-    var nPos = layout.neighbors[neighborIndex];
-    var positions = [];
-    for (var i = 0; i < bridgeCount; i++) {
-      // Spread bridges around the neighbor's angle
-      var offset = (i - (bridgeCount - 1) / 2) * BRIDGE_ANGULAR_OFFSET;
-      var angle = nPos.angle + offset;
-      positions.push({
-        x: layout.cx + layout.bridgeRadius * Math.cos(angle),
-        y: layout.cy + layout.bridgeRadius * Math.sin(angle),
-        angle: angle
-      });
-    }
-    return positions;
+  function esc(s) {
+    if (!s) return "";
+    var d = document.createElement("div");
+    d.textContent = s;
+    return d.innerHTML;
   }
 
   // ---------------------------------------------------------------------------
-  // Tooltip system
+  // Tooltip
   // ---------------------------------------------------------------------------
 
   function showTooltip(event, content) {
@@ -150,13 +98,11 @@ var NeighborhoodGraph = (function () {
     _tooltipEl.style.display = "";
     _tooltipEl.style.opacity = "1";
 
-    // Position near cursor, avoid viewport overflow
-    var x = event.clientX + 12;
-    var y = event.clientY - 8;
-    // Force layout so we can measure
+    var x = event.originalEvent.clientX + 12;
+    var y = event.originalEvent.clientY - 8;
     var rect = _tooltipEl.getBoundingClientRect();
-    if (x + rect.width > window.innerWidth) x = event.clientX - rect.width - 12;
-    if (y + rect.height > window.innerHeight) y = event.clientY - rect.height;
+    if (x + rect.width > window.innerWidth) x = event.originalEvent.clientX - rect.width - 12;
+    if (y + rect.height > window.innerHeight) y = event.originalEvent.clientY - rect.height;
     if (x < 0) x = 4;
     if (y < 0) y = 4;
 
@@ -170,8 +116,6 @@ var NeighborhoodGraph = (function () {
       _tooltipEl.style.opacity = "0";
     }
   }
-
-  // Tooltip content builders
 
   function tooltipCenter(concept) {
     var lines = ["<strong>" + esc(concept.name) + "</strong>"];
@@ -198,231 +142,341 @@ var NeighborhoodGraph = (function () {
       "<span style='color:#6e7681;font-size:11px'>Double-click to explore</span>";
   }
 
-  function tooltipSimilarityEdge(score, matches, comparable) {
-    return Math.round(score * 100) + "% design similarity<br>" +
-      matches + "/" + comparable + " attributes match";
-  }
+  // ---------------------------------------------------------------------------
+  // Cytoscape stylesheet
+  // ---------------------------------------------------------------------------
 
-  function tooltipBridgeEdge(bridge) {
-    var fieldLabel = FIELD_LABELS[bridge.mismatched_field] || bridge.mismatched_field;
-    return "Both use " + esc(bridge.query_value) + " for " + esc(fieldLabel);
-  }
-
-  function esc(s) {
-    if (!s) return "";
-    var d = document.createElement("div");
-    d.textContent = s;
-    return d.innerHTML;
+  function buildStylesheet() {
+    return [
+      // Center node
+      {
+        selector: "node.center",
+        style: {
+          "background-color": "data(color)",
+          "width": 64,
+          "height": 64,
+          "label": "data(label)",
+          "font-size": "14px",
+          "font-weight": "bold",
+          "color": "#e6edf3",
+          "text-outline-color": "#0d1117",
+          "text-outline-width": 2,
+          "text-valign": "bottom",
+          "text-margin-y": 8,
+          "text-wrap": "ellipsis",
+          "text-max-width": "140px",
+          "border-width": 2,
+          "border-color": "rgba(255,255,255,0.6)",
+          "z-index": 10
+        }
+      },
+      // Neighbor node
+      {
+        selector: "node.neighbor",
+        style: {
+          "background-color": "data(color)",
+          "width": 44,
+          "height": 44,
+          "label": "data(label)",
+          "font-size": "13px",
+          "color": "#c9d1d9",
+          "text-outline-color": "#0d1117",
+          "text-outline-width": 2,
+          "text-valign": "bottom",
+          "text-margin-y": 6,
+          "text-wrap": "ellipsis",
+          "text-max-width": "130px",
+          "border-width": 1.5,
+          "border-color": "rgba(255,255,255,0.3)",
+          "cursor": "pointer",
+          "z-index": 5
+        }
+      },
+      // Neighbor hover
+      {
+        selector: "node.neighbor:active, node.neighbor:grabbed",
+        style: {
+          "border-width": 2.5,
+          "border-color": "rgba(255,255,255,0.6)"
+        }
+      },
+      // Comparing neighbor highlight
+      {
+        selector: "node.neighbor.comparing",
+        style: {
+          "border-width": 3,
+          "border-color": "#e6edf3",
+          "overlay-opacity": 0.08,
+          "overlay-color": "#ffffff"
+        }
+      },
+      // Bridge node (diamond)
+      {
+        selector: "node.bridge",
+        style: {
+          "background-color": "data(color)",
+          "width": 36,
+          "height": 36,
+          "shape": "diamond",
+          "label": "data(label)",
+          "font-size": "12px",
+          "color": "#8b949e",
+          "text-outline-color": "#0d1117",
+          "text-outline-width": 1.5,
+          "text-valign": "bottom",
+          "text-margin-y": 6,
+          "text-wrap": "ellipsis",
+          "text-max-width": "120px",
+          "border-width": 1.5,
+          "border-color": "rgba(255,255,255,0.4)",
+          "border-style": "dashed",
+          "cursor": "pointer",
+          "z-index": 4,
+          "opacity": 0
+        }
+      },
+      // Bridge highlight pulse
+      {
+        selector: "node.bridge.highlighted",
+        style: {
+          "border-width": 3,
+          "border-color": "#e6edf3",
+          "overlay-opacity": 0.15,
+          "overlay-color": "#ffffff"
+        }
+      },
+      // Similarity edge
+      {
+        selector: "edge.similarity",
+        style: {
+          "width": "data(weight)",
+          "line-color": "rgba(139,148,158,0.4)",
+          "curve-style": "bezier",
+          "label": "data(label)",
+          "font-size": "10px",
+          "color": "#6e7681",
+          "text-outline-color": "#0d1117",
+          "text-outline-width": 1.5,
+          "text-rotation": "autorotate",
+          "text-margin-y": -8
+        }
+      },
+      // Bridge edge
+      {
+        selector: "edge.bridge",
+        style: {
+          "width": 1.5,
+          "line-color": "data(edgeColor)",
+          "line-style": "dashed",
+          "line-dash-pattern": [6, 4],
+          "curve-style": "bezier",
+          "label": "data(label)",
+          "font-size": "10px",
+          "color": "#6e7681",
+          "text-outline-color": "#0d1117",
+          "text-outline-width": 1.5,
+          "text-rotation": "autorotate",
+          "text-margin-y": -8,
+          "opacity": 0
+        }
+      }
+    ];
   }
 
   // ---------------------------------------------------------------------------
-  // Edge rendering helpers
+  // Build graph elements
   // ---------------------------------------------------------------------------
 
-  function edgeMidpoint(x1, y1, x2, y2) {
-    return { x: (x1 + x2) / 2, y: (y1 + y2) / 2 };
-  }
+  function buildElements(focusedConcept, neighbors) {
+    var elements = [];
+    var cx = 0, cy = 0;
+    var radius = 200;
 
-  function similarityStrokeWidth(score) {
-    // 1.5px at 0.5, 3px at 1.0
-    return 1.5 + (score - 0.5) * 3;
-  }
-
-  function renderSimilarityEdge(cx, cy, nx, ny, score, matches, comparable) {
-    var g = svgEl("g", { "class": "ng-edge ng-edge--similarity" });
-    var sw = similarityStrokeWidth(score);
-
-    g.appendChild(svgEl("line", {
-      x1: cx, y1: cy, x2: nx, y2: ny,
-      "stroke-width": sw
-    }));
-
-    var mid = edgeMidpoint(cx, cy, nx, ny);
-    var label = svgEl("text", {
-      "class": "ng-edge__label",
-      x: mid.x, y: mid.y - 6
-    });
-    label.textContent = Math.round(score * 100) + "%";
-    g.appendChild(label);
-
-    // Invisible wider line for hover target
-    var hitArea = svgEl("line", {
-      x1: cx, y1: cy, x2: nx, y2: ny,
-      stroke: "transparent", "stroke-width": 12
-    });
-    g.appendChild(hitArea);
-
-    g.addEventListener("mouseenter", function (e) {
-      showTooltip(e, tooltipSimilarityEdge(score, matches, comparable));
-    });
-    g.addEventListener("mousemove", function (e) {
-      showTooltip(e, tooltipSimilarityEdge(score, matches, comparable));
-    });
-    g.addEventListener("mouseleave", hideTooltip);
-
-    return g;
-  }
-
-  // ---------------------------------------------------------------------------
-  // Node rendering helpers
-  // ---------------------------------------------------------------------------
-
-  function renderCenterNode(concept, cx, cy) {
-    var g = svgEl("g", {
-      "class": "ng-node ng-node--center",
-      transform: "translate(" + cx + "," + cy + ")"
+    // Center node
+    elements.push({
+      data: {
+        id: "center",
+        label: focusedConcept.name,
+        color: familyColor(focusedConcept.confinement_family),
+        conceptId: focusedConcept.concept_id
+      },
+      classes: "center",
+      position: { x: cx, y: cy },
+      locked: false
     });
 
-    var circle = svgEl("circle", {
-      r: 32,
-      "class": "ng-node__shape",
-      fill: familyColor(concept.confinement_family),
-      stroke: "rgba(255,255,255,0.6)",
-      "stroke-width": 2,
-      filter: "url(#center-shadow)"
-    });
-    g.appendChild(circle);
+    // Neighbor nodes + similarity edges
+    for (var i = 0; i < neighbors.length; i++) {
+      var n = neighbors[i];
+      var angle = (i / neighbors.length) * 2 * Math.PI - Math.PI / 2;
+      var concept = _registry[n.concept_id] || { name: n.concept_name, confinement_family: n.confinement_family };
+      var score = n.comparison.overall_score;
+      var sw = 1.5 + (score - 0.5) * 3; // 1.5px at 0.5, 3px at 1.0
 
-    var nameText = svgEl("text", { "class": "ng-node__name", dy: 48 });
-    nameText.textContent = truncate(concept.name, MAX_LABEL_LEN);
-    g.appendChild(nameText);
+      elements.push({
+        data: {
+          id: "n-" + n.concept_id,
+          label: n.concept_name,
+          color: familyColor(n.confinement_family),
+          conceptId: n.concept_id,
+          score: score
+        },
+        classes: "neighbor",
+        position: {
+          x: cx + radius * Math.cos(angle),
+          y: cy + radius * Math.sin(angle)
+        }
+      });
 
-    g.addEventListener("mouseenter", function (e) {
-      showTooltip(e, tooltipCenter(concept));
-    });
-    g.addEventListener("mousemove", function (e) {
-      showTooltip(e, tooltipCenter(concept));
-    });
-    g.addEventListener("mouseleave", hideTooltip);
+      elements.push({
+        data: {
+          id: "e-sim-" + n.concept_id,
+          source: "center",
+          target: "n-" + n.concept_id,
+          label: Math.round(score * 100) + "%",
+          weight: Math.max(sw, 1.5),
+          score: score,
+          matches: n.comparison.overall_matches,
+          comparable: n.comparison.overall_comparable
+        },
+        classes: "similarity"
+      });
+    }
 
-    return g;
-  }
-
-  function renderNeighborNode(neighbor, pos, callbacks) {
-    var conceptId = neighbor.concept_id;
-    var concept = _registry[conceptId];
-    var score = neighbor.comparison.overall_score;
-
-    var g = svgEl("g", {
-      "class": "ng-node ng-node--neighbor",
-      "data-concept-id": conceptId,
-      transform: "translate(" + pos.x + "," + pos.y + ")"
-    });
-
-    var circle = svgEl("circle", {
-      r: 22,
-      "class": "ng-node__shape",
-      fill: familyColor(neighbor.confinement_family),
-      stroke: "rgba(255,255,255,0.3)",
-      "stroke-width": 1.5
-    });
-    g.appendChild(circle);
-
-    var nameText = svgEl("text", { "class": "ng-node__name", dy: 34 });
-    nameText.textContent = truncate(neighbor.concept_name, MAX_LABEL_LEN);
-    g.appendChild(nameText);
-
-    var scoreText = svgEl("text", { "class": "ng-node__score", dy: -30 });
-    scoreText.textContent = Math.round(score * 100) + "%";
-    g.appendChild(scoreText);
-
-    // Click → compare
-    g.addEventListener("click", function (e) {
-      e.stopPropagation();
-      callbacks.onCompare(conceptId);
-    });
-
-    // Double-click → re-center
-    g.addEventListener("dblclick", function (e) {
-      e.stopPropagation();
-      callbacks.onFocus(conceptId);
-    });
-
-    // Tooltip
-    var tooltipConcept = concept || { name: neighbor.concept_name, confinement_family: neighbor.confinement_family };
-    g.addEventListener("mouseenter", function (e) {
-      showTooltip(e, tooltipNeighbor(tooltipConcept, score));
-    });
-    g.addEventListener("mousemove", function (e) {
-      showTooltip(e, tooltipNeighbor(tooltipConcept, score));
-    });
-    g.addEventListener("mouseleave", hideTooltip);
-
-    return g;
+    return elements;
   }
 
   // ---------------------------------------------------------------------------
-  // render() — main entry point
+  // render()
   // ---------------------------------------------------------------------------
 
   function render(container, focusedConcept, neighbors, registry, callbacks) {
-    destroy(); // clean up previous graph
+    destroy();
 
     _container = container;
     _focusedConcept = focusedConcept;
     _neighbors = neighbors;
     _registry = registry;
     _callbacks = callbacks;
-    _neighborIndexById = {};
-
-    // Determine SVG dimensions from container
-    var width = container.clientWidth || 700;
-    var height = Math.max(container.clientHeight || 500, 450);
-
-    _layout = computeLayout(width, height, neighbors.length);
-
-    // Create SVG
-    _svg = svgEl("svg", {
-      viewBox: "0 0 " + width + " " + height,
-      "class": "neighborhood-graph",
-      preserveAspectRatio: "xMidYMid meet"
-    });
-
-    // Defs (drop shadow for center node)
-    var defs = svgEl("defs");
-    var filter = svgEl("filter", { id: "center-shadow", x: "-50%", y: "-50%", width: "200%", height: "200%" });
-    var feDropShadow = svgEl("feDropShadow", {
-      dx: 0, dy: 2, stdDeviation: 3, "flood-color": "rgba(0,0,0,0.4)"
-    });
-    filter.appendChild(feDropShadow);
-    defs.appendChild(filter);
-    _svg.appendChild(defs);
-
-    // Edge group (rendered first so nodes are on top)
-    _edgesGroup = svgEl("g", { "class": "ng-edges" });
-    _svg.appendChild(_edgesGroup);
-
-    // Node group
-    _nodesGroup = svgEl("g", { "class": "ng-nodes" });
-    _svg.appendChild(_nodesGroup);
-
-    // Render similarity edges and neighbor nodes
-    for (var i = 0; i < neighbors.length; i++) {
-      var n = neighbors[i];
-      var pos = _layout.neighbors[i];
-      _neighborIndexById[n.concept_id] = i;
-
-      // Edge
-      var comp = n.comparison;
-      _edgesGroup.appendChild(renderSimilarityEdge(
-        _layout.cx, _layout.cy, pos.x, pos.y,
-        comp.overall_score, comp.overall_matches, comp.overall_comparable
-      ));
-
-      // Node
-      _nodesGroup.appendChild(renderNeighborNode(n, pos, callbacks));
-    }
-
-    // Render center node (on top of edges and neighbor nodes)
-    _nodesGroup.appendChild(renderCenterNode(focusedConcept, _layout.cx, _layout.cy));
-
-    // Background click → deselect
-    _svg.addEventListener("click", function () {
-      callbacks.onDeselect();
-    });
 
     container.innerHTML = "";
-    container.appendChild(_svg);
+
+    var elements = buildElements(focusedConcept, neighbors);
+
+    _cy = cytoscape({
+      container: container,
+      elements: elements,
+      style: buildStylesheet(),
+      layout: {
+        name: "cose",
+        animate: true,
+        animationDuration: 500,
+        fit: true,
+        padding: 50,
+        nodeRepulsion: function () { return 8000; },
+        idealEdgeLength: function () { return 180; },
+        edgeElasticity: function () { return 100; },
+        gravity: 0.25,
+        numIter: 200,
+        initialTemp: 200,
+        coolingFactor: 0.95,
+        randomize: false
+      },
+      minZoom: 0.3,
+      maxZoom: 3,
+      wheelSensitivity: 0.3,
+      boxSelectionEnabled: false,
+      autounselectify: true
+    });
+
+    // --- Event handlers ---
+
+    // Neighbor: single-click (debounced) → compare, double-click → re-center
+    _cy.on("tap", "node.neighbor", function (evt) {
+      var node = evt.target;
+      var conceptId = node.data("conceptId");
+
+      if (_clickTimer && _lastClickId === conceptId) {
+        clearTimeout(_clickTimer);
+        _clickTimer = null;
+        _lastClickId = null;
+        callbacks.onFocus(conceptId);
+      } else {
+        if (_clickTimer) clearTimeout(_clickTimer);
+        _lastClickId = conceptId;
+        _clickTimer = setTimeout(function () {
+          _clickTimer = null;
+          _lastClickId = null;
+          callbacks.onCompare(conceptId);
+        }, DBLCLICK_DELAY);
+      }
+    });
+
+    // Bridge: double-click → re-center
+    _cy.on("tap", "node.bridge", function (evt) {
+      var node = evt.target;
+      var conceptId = node.data("conceptId");
+
+      if (_clickTimer && _lastClickId === conceptId) {
+        clearTimeout(_clickTimer);
+        _clickTimer = null;
+        _lastClickId = null;
+        callbacks.onFocus(conceptId);
+      } else {
+        if (_clickTimer) clearTimeout(_clickTimer);
+        _lastClickId = conceptId;
+        _clickTimer = setTimeout(function () {
+          _clickTimer = null;
+          _lastClickId = null;
+        }, DBLCLICK_DELAY);
+      }
+    });
+
+    // Background click → deselect
+    _cy.on("tap", function (evt) {
+      if (evt.target === _cy) {
+        callbacks.onDeselect();
+      }
+    });
+
+    // Tooltips
+    _cy.on("mouseover", "node.center", function (evt) {
+      showTooltip(evt, tooltipCenter(focusedConcept));
+    });
+    _cy.on("mouseout", "node.center", function () { hideTooltip(); });
+
+    _cy.on("mouseover", "node.neighbor", function (evt) {
+      var node = evt.target;
+      var conceptId = node.data("conceptId");
+      var concept = registry[conceptId] || { name: node.data("label"), confinement_family: "NONSTANDARD" };
+      showTooltip(evt, tooltipNeighbor(concept, node.data("score")));
+    });
+    _cy.on("mouseout", "node.neighbor", function () { hideTooltip(); });
+
+    _cy.on("mouseover", "node.bridge", function (evt) {
+      var node = evt.target;
+      var bridge = node.data("bridgeData");
+      var concept = registry[node.data("conceptId")] || {
+        name: bridge.bridge_concept_name,
+        confinement_family: node.data("family") || "NONSTANDARD"
+      };
+      showTooltip(evt, tooltipBridge(bridge, concept));
+    });
+    _cy.on("mouseout", "node.bridge", function () { hideTooltip(); });
+
+    _cy.on("mouseover", "edge.similarity", function (evt) {
+      var edge = evt.target;
+      var content = Math.round(edge.data("score") * 100) + "% design similarity<br>" +
+        edge.data("matches") + "/" + edge.data("comparable") + " attributes match";
+      showTooltip(evt, content);
+    });
+    _cy.on("mouseout", "edge.similarity", function () { hideTooltip(); });
+
+    _cy.on("mouseover", "edge.bridge", function (evt) {
+      var edge = evt.target;
+      showTooltip(evt, edge.data("tooltipContent") || "");
+    });
+    _cy.on("mouseout", "edge.bridge", function () { hideTooltip(); });
   }
 
   // ---------------------------------------------------------------------------
@@ -430,164 +484,129 @@ var NeighborhoodGraph = (function () {
   // ---------------------------------------------------------------------------
 
   function showBridges(neighborId, bridges) {
-    clearBridges();
+    clearBridges(true);
 
-    if (!_svg || !_layout || !bridges || bridges.length === 0) return;
+    if (!_cy || !bridges || bridges.length === 0) return;
 
-    var nIdx = _neighborIndexById[neighborId];
-    if (nIdx === undefined) return;
+    var neighborNode = _cy.getElementById("n-" + neighborId);
+    if (neighborNode.empty()) return;
 
     // Highlight the compared neighbor
-    var neighborNode = _svg.querySelector('.ng-node--neighbor[data-concept-id="' + neighborId + '"]');
-    if (neighborNode) neighborNode.classList.add("ng-node--comparing");
+    neighborNode.addClass("comparing");
 
-    // Compute bridge positions
-    var positions = computeBridgePositions(_layout, nIdx, bridges.length);
+    var centerPos = _cy.getElementById("center").position();
+    var neighborPos = neighborNode.position();
+
+    // Compute bridge positions relative to center↔neighbor
+    var dx = neighborPos.x - centerPos.x;
+    var dy = neighborPos.y - centerPos.y;
+    var baseAngle = Math.atan2(dy, dx);
+    var dist = Math.sqrt(dx * dx + dy * dy) * 1.4;
+    var angularSpread = 0.15;
 
     for (var i = 0; i < bridges.length; i++) {
       var bridge = bridges[i];
-      var pos = positions[i];
       var concept = _registry[bridge.bridge_concept_id];
       var confinementFamily = concept ? concept.confinement_family : "NONSTANDARD";
       var fieldLabel = FIELD_LABELS[bridge.mismatched_field] || bridge.mismatched_field;
 
-      // Bridge edge (center → bridge)
-      var edgeG = svgEl("g", {
-        "class": "ng-edge ng-edge--bridge",
-        "data-dimension": bridge.dimension,
-        style: "opacity:0"
-      });
+      var offset = (i - (bridges.length - 1) / 2) * angularSpread;
+      var angle = baseAngle + offset;
+      var bx = centerPos.x + dist * Math.cos(angle);
+      var by = centerPos.y + dist * Math.sin(angle);
 
-      edgeG.appendChild(svgEl("line", {
-        x1: _layout.cx, y1: _layout.cy,
-        x2: pos.x, y2: pos.y,
-        "stroke-dasharray": "6,4",
-        "stroke-width": 1.5
-      }));
+      var edgeColor = DIMENSION_EDGE_COLORS[bridge.dimension] || "#6e7681";
+      var tooltipContent = "Both use " + esc(bridge.query_value) + " for " + esc(fieldLabel);
 
-      var edgeMid = edgeMidpoint(_layout.cx, _layout.cy, pos.x, pos.y);
-      var edgeLabel = svgEl("text", {
-        "class": "ng-edge__label",
-        x: edgeMid.x, y: edgeMid.y - 6
-      });
-      edgeLabel.textContent = truncate(bridge.query_value, 20);
-      edgeG.appendChild(edgeLabel);
+      var nodeId = "b-" + bridge.bridge_concept_id + "-" + i;
+      var edgeId = "e-bridge-" + bridge.bridge_concept_id + "-" + i;
 
-      // Invisible hover target for edge
-      var edgeHit = svgEl("line", {
-        x1: _layout.cx, y1: _layout.cy,
-        x2: pos.x, y2: pos.y,
-        stroke: "transparent", "stroke-width": 12
-      });
-      edgeG.appendChild(edgeHit);
+      _cy.add([
+        {
+          group: "nodes",
+          data: {
+            id: nodeId,
+            label: bridge.bridge_concept_name,
+            color: familyColor(confinementFamily),
+            conceptId: bridge.bridge_concept_id,
+            bridgeData: bridge,
+            family: confinementFamily
+          },
+          classes: "bridge",
+          position: { x: bx, y: by },
+          locked: true
+        },
+        {
+          group: "edges",
+          data: {
+            id: edgeId,
+            source: "center",
+            target: nodeId,
+            label: bridge.query_value.length > 20 ? bridge.query_value.substring(0, 19) + "\u2026" : bridge.query_value,
+            edgeColor: edgeColor,
+            tooltipContent: tooltipContent
+          },
+          classes: "bridge"
+        }
+      ]);
 
-      (function (b) {
-        edgeG.addEventListener("mouseenter", function (e) {
-          showTooltip(e, tooltipBridgeEdge(b));
-        });
-        edgeG.addEventListener("mousemove", function (e) {
-          showTooltip(e, tooltipBridgeEdge(b));
-        });
-        edgeG.addEventListener("mouseleave", hideTooltip);
-      })(bridge);
-
-      _edgesGroup.appendChild(edgeG);
-
-      // Bridge node (diamond)
-      var nodeG = svgEl("g", {
-        "class": "ng-node ng-node--bridge",
-        "data-concept-id": bridge.bridge_concept_id,
-        transform: "translate(" + pos.x + "," + pos.y + ")",
-        style: "opacity:0"
-      });
-
-      var diamond = svgEl("rect", {
-        "class": "ng-node__shape",
-        x: -14, y: -14, width: 28, height: 28,
-        rx: 3,
-        transform: "rotate(45)",
-        fill: familyColor(confinementFamily),
-        stroke: "rgba(255,255,255,0.4)",
-        "stroke-width": 1.5
-      });
-      nodeG.appendChild(diamond);
-
-      var bName = svgEl("text", { "class": "ng-node__name", dy: 28 });
-      bName.textContent = truncate(bridge.bridge_concept_name, MAX_LABEL_LEN);
-      nodeG.appendChild(bName);
-
-      var bAttr = svgEl("text", { "class": "ng-node__attr", dy: -24 });
-      bAttr.textContent = truncate(fieldLabel, 20);
-      nodeG.appendChild(bAttr);
-
-      // Bridge node interactions
-      (function (bid, b, c) {
-        nodeG.addEventListener("click", function (e) {
-          e.stopPropagation();
-          // Single-click on bridge does nothing special — only dblclick navigates
-        });
-        nodeG.addEventListener("dblclick", function (e) {
-          e.stopPropagation();
-          _callbacks.onFocus(bid);
-        });
-        nodeG.addEventListener("mouseenter", function (e) {
-          showTooltip(e, tooltipBridge(b, c || { name: b.bridge_concept_name, confinement_family: confinementFamily }));
-        });
-        nodeG.addEventListener("mousemove", function (e) {
-          showTooltip(e, tooltipBridge(b, c || { name: b.bridge_concept_name, confinement_family: confinementFamily }));
-        });
-        nodeG.addEventListener("mouseleave", hideTooltip);
-      })(bridge.bridge_concept_id, bridge, concept);
-
-      _nodesGroup.appendChild(nodeG);
-
-      // Fade in (after appending so transition triggers)
-      (function (eG, nG) {
-        requestAnimationFrame(function () {
-          eG.style.opacity = "1";
-          nG.style.opacity = "1";
-        });
-      })(edgeG, nodeG);
+      // Animate fade-in
+      (function (nId, eId) {
+        setTimeout(function () {
+          var bNode = _cy.getElementById(nId);
+          var bEdge = _cy.getElementById(eId);
+          if (!bNode.empty()) bNode.animate({ style: { opacity: 1 } }, { duration: 300 });
+          if (!bEdge.empty()) bEdge.animate({ style: { opacity: 1 } }, { duration: 300 });
+        }, 50);
+      })(nodeId, edgeId);
     }
   }
 
-  function clearBridges() {
-    if (!_svg) return;
+  function clearBridges(synchronous) {
+    if (!_cy) return;
 
-    // Remove comparing highlight from all neighbors
-    var comparing = _svg.querySelectorAll(".ng-node--comparing");
-    for (var i = 0; i < comparing.length; i++) {
-      comparing[i].classList.remove("ng-node--comparing");
-    }
+    // Remove comparing class from all neighbors
+    _cy.nodes(".comparing").removeClass("comparing");
 
-    // Fade out bridge nodes and edges, then remove
-    var bridgeNodes = _svg.querySelectorAll(".ng-node--bridge");
-    var bridgeEdges = _svg.querySelectorAll(".ng-edge--bridge");
+    var bridgeNodes = _cy.nodes(".bridge");
+    var bridgeEdges = _cy.edges(".bridge");
 
-    function removeAfterFade(els) {
-      for (var j = 0; j < els.length; j++) {
-        els[j].style.opacity = "0";
-      }
-      // Remove from DOM after transition
+    if (synchronous || bridgeNodes.empty()) {
+      bridgeEdges.remove();
+      bridgeNodes.remove();
+    } else {
+      bridgeNodes.animate({ style: { opacity: 0 } }, { duration: 250 });
+      bridgeEdges.animate({ style: { opacity: 0 } }, { duration: 250 });
       setTimeout(function () {
-        for (var j = 0; j < els.length; j++) {
-          if (els[j].parentNode) els[j].parentNode.removeChild(els[j]);
-        }
-      }, 350);
+        _cy.nodes(".bridge").remove();
+        _cy.edges(".bridge").remove();
+      }, 300);
     }
-
-    removeAfterFade(bridgeNodes);
-    removeAfterFade(bridgeEdges);
   }
 
   function highlightBridge(conceptId) {
-    if (!_svg) return;
-    var node = _svg.querySelector('.ng-node--bridge[data-concept-id="' + conceptId + '"]');
-    if (!node) return;
-    node.classList.add("ng-node--highlighted");
+    if (!_cy) return;
+    // Find bridge nodes matching this concept (may have index suffix)
+    var nodes = _cy.nodes(".bridge").filter(function (node) {
+      return node.data("conceptId") === conceptId;
+    });
+    if (nodes.empty()) return;
+
+    nodes.addClass("highlighted");
     setTimeout(function () {
-      node.classList.remove("ng-node--highlighted");
+      nodes.removeClass("highlighted");
     }, 1500);
+  }
+
+  // ---------------------------------------------------------------------------
+  // Resize
+  // ---------------------------------------------------------------------------
+
+  function resize() {
+    if (_cy) {
+      _cy.resize();
+      _cy.fit(null, 50);
+    }
   }
 
   // ---------------------------------------------------------------------------
@@ -595,19 +614,21 @@ var NeighborhoodGraph = (function () {
   // ---------------------------------------------------------------------------
 
   function destroy() {
-    if (_svg && _svg.parentNode) {
-      _svg.parentNode.removeChild(_svg);
+    if (_clickTimer) {
+      clearTimeout(_clickTimer);
+      _clickTimer = null;
     }
-    _svg = null;
+    _lastClickId = null;
+
+    if (_cy) {
+      _cy.destroy();
+      _cy = null;
+    }
     _container = null;
-    _layout = null;
     _focusedConcept = null;
     _neighbors = null;
     _registry = null;
     _callbacks = null;
-    _edgesGroup = null;
-    _nodesGroup = null;
-    _neighborIndexById = {};
     hideTooltip();
   }
 
@@ -620,6 +641,7 @@ var NeighborhoodGraph = (function () {
     showBridges: showBridges,
     clearBridges: clearBridges,
     highlightBridge: highlightBridge,
+    resize: resize,
     destroy: destroy
   };
 })();

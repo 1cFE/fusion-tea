@@ -1204,7 +1204,7 @@ a:hover {
 
 .taxonomy-layout {
   display: grid;
-  grid-template-columns: var(--tree-width, 280px) auto 1fr 360px;
+  grid-template-columns: var(--tree-width, 280px) auto 1fr minmax(340px, 25vw);
   gap: 0;
   min-height: calc(100vh - 120px);
 }
@@ -1625,110 +1625,13 @@ a:hover {
 }
 
 /* ==========================================================================
-   SVG Neighborhood Graph
+   Cytoscape Neighborhood Graph
    ========================================================================== */
 
-.neighborhood-graph {
-  width: 100%;
-  height: 100%;
+#neighborhood-container {
+  flex: 1;
   min-height: 400px;
-}
-
-/* Node groups */
-.ng-node {
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  cursor: pointer;
-}
-
-.ng-node--center {
-  cursor: default;
-}
-
-.ng-node__shape {
-  transition: transform 0.15s ease, stroke-width 0.15s, filter 0.15s;
-}
-
-.ng-node--neighbor:hover .ng-node__shape {
-  transform: scale(1.12);
-  filter: brightness(1.15);
-}
-
-.ng-node--neighbor.ng-node--comparing .ng-node__shape {
-  stroke: var(--color-text-primary);
-  stroke-width: 3;
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3));
-}
-
-.ng-node--bridge .ng-node__shape {
-  stroke-dasharray: 4, 2;
-}
-
-.ng-node__name {
-  font-size: 12px;
-  fill: var(--color-text-secondary);
-  text-anchor: middle;
-  pointer-events: none;
-}
-
-.ng-node--center .ng-node__name {
-  font-size: 13px;
-  font-weight: 600;
-  fill: var(--color-text-primary);
-}
-
-.ng-node__score {
-  font-size: 10px;
-  fill: var(--color-text-muted);
-  text-anchor: middle;
-  pointer-events: none;
-  font-family: var(--font-mono);
-}
-
-.ng-node__attr {
-  font-size: 10px;
-  fill: var(--color-text-muted);
-  text-anchor: middle;
-  font-style: italic;
-  pointer-events: none;
-}
-
-/* Edges */
-.ng-edge {
-  transition: opacity 0.3s ease;
-}
-
-.ng-edge--similarity line {
-  stroke: var(--color-text-muted);
-  opacity: 0.4;
-}
-
-.ng-edge--bridge line {
-  stroke-dasharray: 6, 4;
-  stroke-width: 1.5;
-}
-
-.ng-edge__label {
-  font-size: 10px;
-  fill: var(--color-text-muted);
-  text-anchor: middle;
-  pointer-events: none;
-}
-
-/* Bridge edge dimension colors */
-.ng-edge--bridge[data-dimension="plasma_physics"] line  { stroke: #60a5fa; }
-.ng-edge--bridge[data-dimension="engineering"] line      { stroke: #34d399; }
-.ng-edge--bridge[data-dimension="fuel_cycle"] line       { stroke: #fbbf24; }
-.ng-edge--bridge[data-dimension="operations"] line       { stroke: #a78bfa; }
-
-/* Bridge highlight pulse animation */
-@keyframes bridge-pulse {
-  0%   { transform: scale(1); }
-  50%  { transform: scale(1.2); }
-  100% { transform: scale(1); }
-}
-
-.ng-node--highlighted .ng-node__shape {
-  animation: bridge-pulse 0.5s ease 3;
+  position: relative;
 }
 
 /* ==========================================================================
@@ -1931,6 +1834,85 @@ a:hover {
   flex-shrink: 0;
   color: var(--color-key-innovation);
   font-size: var(--font-size-xs);
+}
+
+/* ==========================================================================
+   Comparison Table (COMPARING state — table layout)
+   ========================================================================== */
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+
+.comparison-table th {
+  text-align: left;
+  padding: var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.comparison-table td {
+  padding: var(--space-2);
+  border-bottom: 1px solid var(--color-border-subtle);
+  vertical-align: top;
+}
+
+.comparison-table tr.diff td {
+  background: rgba(248, 113, 113, 0.06);
+}
+
+.comparison-table .match-indicator {
+  text-align: center;
+  width: 28px;
+  font-size: var(--font-size-xs);
+}
+
+.comparison-table .match-indicator--yes {
+  color: var(--color-key-innovation);
+}
+
+.comparison-table .match-indicator--no {
+  color: var(--color-concept-unique);
+}
+
+.comparison-table .attr-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  width: 90px;
+}
+
+.comparison-table .val-self {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.comparison-table .val-other {
+  color: var(--color-text-secondary);
+}
+
+.comparison-table tr.match td {
+  color: var(--color-text-muted);
+}
+
+.comparison-table tr.match .val-self,
+.comparison-table tr.match .val-other {
+  font-weight: normal;
+  color: var(--color-text-muted);
+}
+
+.comparison-table .bridge-row td {
+  padding-top: 0;
+  border-bottom: none;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
 }
 
 /* Tooltip transition */

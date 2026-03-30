@@ -317,7 +317,7 @@ var TaxonomyCards = (function () {
 
     // Header
     var header = el("div", "comparison-panel__header");
-    var h3 = el("h3", null, "Comparing with " + (similarityResult.concept_name || ""));
+    var h3 = el("h3", null, "Comparing");
     header.appendChild(h3);
     var scoreEl = el("span", "comparison-panel__score",
       Math.round(similarityResult.comparison.overall_score * 100) + "% match");
@@ -335,48 +335,72 @@ var TaxonomyCards = (function () {
       }
     }
 
-    // Separate diffs and matches
-    var diffs = [];
-    var matches = [];
+    // Build table
+    var table = el("table", "comparison-table");
+
+    // Header row with concept names
+    var thead = document.createElement("thead");
+    var headerRow = document.createElement("tr");
+    headerRow.appendChild(el("th", "attr-label", "Attribute"));
+    var th1 = el("th", null);
+    th1.textContent = focused.name;
+    headerRow.appendChild(th1);
+    var th2 = el("th", null);
+    th2.textContent = similarityResult.concept_name || (neighbor ? neighbor.name : "");
+    headerRow.appendChild(th2);
+    var thMatch = el("th", "match-indicator", "");
+    headerRow.appendChild(thMatch);
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    var tbody = document.createElement("tbody");
+
     for (var i = 0; i < rows.length; i++) {
-      if (rows[i].match) matches.push(rows[i]);
-      else diffs.push(rows[i]);
-    }
+      var row = rows[i];
+      var tr = document.createElement("tr");
+      tr.className = row.match ? "match" : "diff";
 
-    // Differences section
-    if (diffs.length > 0) {
-      var diffSection = el("div", "comparison-section comparison-section--diff");
-      diffSection.appendChild(el("h4", "comparison-section__title",
-        diffs.length + " Difference" + (diffs.length > 1 ? "s" : "")));
+      // Attribute label
+      tr.appendChild(el("td", "attr-label", row.label));
 
-      for (var d = 0; d < diffs.length; d++) {
-        var row = diffs[d];
-        var rowEl = el("div", "comparison-row comparison-row--diff");
+      if (row.match) {
+        // Both values the same
+        tr.appendChild(el("td", "val-self", row.value));
+        tr.appendChild(el("td", "val-other", row.value));
+        var checkTd = el("td", "match-indicator match-indicator--yes", "\u2713");
+        tr.appendChild(checkTd);
+      } else {
+        // Different values
+        tr.appendChild(el("td", "val-self", row.focusedValue));
+        tr.appendChild(el("td", "val-other", row.neighborValue));
+        var xTd = el("td", "match-indicator match-indicator--no", "\u2717");
+        tr.appendChild(xTd);
+      }
 
-        rowEl.appendChild(el("div", "comparison-row__label", row.label));
+      tbody.appendChild(tr);
 
-        var vals = el("div", "comparison-row__values");
-        vals.appendChild(el("span", "comparison-row__value comparison-row__value--self", row.focusedValue));
-        vals.appendChild(el("span", "comparison-row__vs", "vs"));
-        vals.appendChild(el("span", "comparison-row__value comparison-row__value--other", row.neighborValue));
-        rowEl.appendChild(vals);
-
-        // Bridge reference (only for selected bridges)
+      // Bridge sub-row (only for selected bridges on mismatched fields)
+      if (!row.match) {
         var selBridge = selectedByField[row.field];
         if (selBridge) {
-          var bridgeDiv = el("div", "comparison-row__bridge");
-          bridgeDiv.appendChild(document.createTextNode("Also uses " + row.focusedValue + ": "));
+          var bridgeTr = document.createElement("tr");
+          bridgeTr.className = "bridge-row";
+
+          // Empty first cell
+          bridgeTr.appendChild(el("td", null, ""));
+
+          // Bridge reference spanning 3 columns
+          var bridgeTd = document.createElement("td");
+          bridgeTd.setAttribute("colspan", "3");
+
+          bridgeTd.appendChild(document.createTextNode("\u21b3 Also uses " + row.focusedValue + ": "));
 
           var ref = el("a", "bridge-ref");
           ref.setAttribute("data-concept-id", selBridge.bridge_concept_id);
-          ref.setAttribute("data-action", "highlight-bridge");
           ref.textContent = selBridge.bridge_concept_name + " ";
 
-          // Family badge on bridge ref
-          var bridgeConcept = null;
-          if (typeof _registry !== "undefined" && _registry) {
-            bridgeConcept = _registry[selBridge.bridge_concept_id];
-          }
+          // Family badge
+          var bridgeConcept = _registry ? _registry[selBridge.bridge_concept_id] : null;
           var bridgeFam = bridgeConcept ? bridgeConcept.confinement_family : null;
           if (bridgeFam) {
             var bBadge = el("span",
@@ -395,31 +419,15 @@ var TaxonomyCards = (function () {
             });
           })(selBridge.bridge_concept_id);
 
-          bridgeDiv.appendChild(ref);
-          rowEl.appendChild(bridgeDiv);
+          bridgeTd.appendChild(ref);
+          bridgeTr.appendChild(bridgeTd);
+          tbody.appendChild(bridgeTr);
         }
-
-        diffSection.appendChild(rowEl);
       }
-      panel.appendChild(diffSection);
     }
 
-    // Matches section
-    if (matches.length > 0) {
-      var matchSection = el("div", "comparison-section comparison-section--match");
-      matchSection.appendChild(el("h4", "comparison-section__title",
-        matches.length + " matching attribute" + (matches.length > 1 ? "s" : "")));
-
-      for (var j = 0; j < matches.length; j++) {
-        var mrow = matches[j];
-        var mEl = el("div", "comparison-row comparison-row--match");
-        mEl.appendChild(el("span", "comparison-row__label", mrow.label));
-        mEl.appendChild(el("span", "comparison-row__value", mrow.value));
-        mEl.appendChild(el("span", "comparison-row__check", "\u2713"));
-        matchSection.appendChild(mEl);
-      }
-      panel.appendChild(matchSection);
-    }
+    table.appendChild(tbody);
+    panel.appendChild(table);
 
     // Other neighbors (compact list)
     if (allNearest && allNearest.length > 1) {

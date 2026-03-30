@@ -79,7 +79,7 @@ var Constellation = (function () {
       paper_bgcolor: "rgba(0,0,0,0)",
       plot_bgcolor: "rgba(0,0,0,0)",
       font: { color: "#8b949e", family: "-apple-system, BlinkMacSystemFont, sans-serif" },
-      margin: { l: 30, r: 20, t: 30, b: 50 },
+      margin: { l: 30, r: 120, t: 30, b: 30 },
       xaxis: {
         showgrid: true,
         gridcolor: "rgba(48,54,61,0.5)",
@@ -95,19 +95,14 @@ var Constellation = (function () {
         title: ""
       },
       legend: {
-        orientation: "h",
-        y: -0.05,
-        font: { size: 11 }
+        orientation: "v",
+        x: 1.02,
+        y: 1,
+        font: { size: 13 }
       },
       hovermode: "closest",
       dragmode: "pan",
-      annotations: [{
-        text: "Closer = more similar. Double-click a concept to explore its neighborhood.",
-        xref: "paper", yref: "paper",
-        x: 0.5, y: -0.12,
-        showarrow: false,
-        font: { size: 11, color: "#6e7681" }
-      }]
+      annotations: []
     };
 
     var config = {

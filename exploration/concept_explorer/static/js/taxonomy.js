@@ -120,10 +120,12 @@
       layout.classList.toggle("taxonomy-layout--collapsed", _sidebarCollapsed);
       toggleBtn.innerHTML = _sidebarCollapsed ? "&#8250;" : "&#8249;";
       toggleBtn.title = _sidebarCollapsed ? "Show decision tree" : "Hide decision tree";
-      // Resize Plotly after CSS transition completes
+      // Resize graph after CSS transition completes
       setTimeout(function () {
         if (_viewMode === "overview") {
           Plotly.Plots.resize(constellationContainer);
+        } else if (_viewMode === "neighborhood") {
+          NeighborhoodGraph.resize();
         }
       }, 350);
     });
