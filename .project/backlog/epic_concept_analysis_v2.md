@@ -256,11 +256,13 @@ Inspired by the ralph-init.sh generate → review → refine pattern, but adapte
 
 ---
 
-### Item 4: Shared Memory System [1.5 days]
+### Item 4: Shared Memory System [1.5 days] — COMPLETE
 
 **Type**: Implementation
 **Effort**: 1.5 days (spec 2h, design 3h, plan 1h, execute 6h)
+**Status**: Complete (2026-03-29)
 **Dependencies**: None (but should be ready before Item 5)
+**Work Item**: `.project/active/shared-memory-system/` (spec, design, plan)
 
 **Objective**: Build a cross-concept memory system that accumulates learnings (common pitfalls, good data sources, parameter sanity ranges, recurring feedback patterns) and makes them available to all pipeline agents via a memory-handler subagent.
 
@@ -282,16 +284,18 @@ Inspired by the ralph-init.sh generate → review → refine pattern, but adapte
 - Memory pruning / expiration (manual curation)
 
 **Success Criteria**:
-- [ ] Memory files exist and can be read/written by agents
-- [ ] Memory-handler subagent returns relevant context when given a concept + task description
-- [ ] At least one pipeline stage (analyze or review) consults memory before running
-- [ ] `/manage-concept` can save learnings to shared memory
-- [ ] Memory is useful — after 3-5 concept analyses, accumulated learnings improve subsequent ones
+- [x] Memory files exist and can be read/written by agents
+- [x] Memory-handler subagent returns relevant context when given a concept + task description
+- [x] At least one pipeline stage (analyze or review) consults memory before running
+- [ ] `/manage-concept` can save learnings to shared memory *(deferred — Item 5)*
+- [ ] Memory is useful — after 3-5 concept analyses, accumulated learnings improve subsequent ones *(deferred — requires organic accumulation)*
 
 **Deliverables**:
-- `exploration/concept_analysis/memory/` directory with initial structure
-- `prompt_templates/agents/memory_handler.md`
-- Integration hooks in pipeline agents
+- `exploration/concept_analysis/memory/` directory with initial structure and 3 sample entries
+- `.claude/agents/memory-handler.md` (interactive read/write agent)
+- `load_relevant_memories()` in `run_analysis.py` (pipeline integration)
+- `{{#if memory_context}}` conditional section in `analysis_v2.md`
+- 11 unit tests in `test_memory.py`
 
 ---
 
@@ -441,4 +445,4 @@ This is a tuning question, not a code bug. The pipeline works correctly at any `
 ---
 
 **Last Updated**: 2026-03-29
-**Next Action**: Items 2 (build-visuals, in progress), 4 (shared memory), 5 (manage-concept)
+**Next Action**: Items 2 (build-visuals, in progress), 5 (manage-concept — unblocked by Items 1+4)
