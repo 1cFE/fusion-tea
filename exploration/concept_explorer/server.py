@@ -15,9 +15,12 @@ from __future__ import annotations
 import argparse
 import dataclasses
 import importlib.util
+import inspect
+import json
 import sys
+import threading
 import types
-from collections.abc import AsyncGenerator, Callable
+from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager, redirect_stdout
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
@@ -33,7 +36,7 @@ if str(_PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(_PROJECT_ROOT))
 
 import uvicorn  # noqa: E402
-from fastapi import FastAPI, HTTPException  # noqa: E402
+from fastapi import Depends, FastAPI, HTTPException, Request  # noqa: E402
 from fastapi.responses import FileResponse  # noqa: E402
 from fastapi.staticfiles import StaticFiles  # noqa: E402
 from jinja2 import Environment, FileSystemLoader, TemplateNotFound  # noqa: E402
@@ -68,36 +71,68 @@ BASE_DIR = Path(__file__).parent
 # Parameter sets for model.forward() re-invocation (compute endpoint)
 # ---------------------------------------------------------------------------
 
+
+def _derive_forward_named() -> frozenset[str]:
+    """Extract named parameters from CostModel.forward() via introspection.
+
+    Falls back to a hardcoded set if costingfe is not installed (e.g. in test
+    environments that don't depend on it).
+    """
+    try:
+        from costingfe.model import CostModel
+
+        sig = inspect.signature(CostModel.forward)
+        skip = {"self", "cost_overrides"}
+        return frozenset(
+            name
+            for name, param in sig.parameters.items()
+            if name not in skip
+            and param.kind
+            not in (inspect.Parameter.VAR_KEYWORD, inspect.Parameter.VAR_POSITIONAL)
+        )
+    except ImportError:
+        return frozenset(
+            {
+                "net_electric_mw",
+                "availability",
+                "lifetime_yr",
+                "n_mod",
+                "construction_time_yr",
+                "interest_rate",
+                "inflation_rate",
+                "noak",
+            }
+        )
+
+
 # Named args that forward() takes explicitly (not via **overrides)
-_FORWARD_NAMED = frozenset(
-    {
-        "net_electric_mw",
-        "availability",
-        "lifetime_yr",
-        "n_mod",
-        "construction_time_yr",
-        "interest_rate",
-        "inflation_rate",
-        "noak",
-    }
-)
+_FORWARD_NAMED = _derive_forward_named()
 # Keys present in result.params that are model properties — never re-pass to forward()
 _FORWARD_SKIP = frozenset({"fuel", "concept"})
 
+# ---------------------------------------------------------------------------
+# Module loading
+# ---------------------------------------------------------------------------
 
+_MODULE_LOAD_LOCK = threading.Lock()
+
+
+@lru_cache(maxsize=32)
 def _load_model_module(path: Path, module_name: str = "_concept_module") -> types.ModuleType:
     """Import a model_setup.py file, suppressing stdout from module-level prints.
 
     Module-level print() calls in model_setup.py are suppressed so they don't
-    pollute server logs during live recompute requests.
+    pollute server logs during live recompute requests.  The lock ensures
+    redirect_stdout (which modifies sys.stdout globally) is thread-safe.
     """
     spec = importlib.util.spec_from_file_location(module_name, path)
     if spec is None or spec.loader is None:
         raise ImportError(f"Cannot load module from {path}")
     module = importlib.util.module_from_spec(spec)
-    buf = StringIO()
-    with redirect_stdout(buf):
-        spec.loader.exec_module(module)
+    with _MODULE_LOAD_LOCK:
+        buf = StringIO()
+        with redirect_stdout(buf):
+            spec.loader.exec_module(module)
     return module
 
 
@@ -138,15 +173,21 @@ class _State:
     concepts: dict[str, ConceptData]
     manifest: ConceptManifest
     parameter_index: ParameterIndex
-    # lru_cache-wrapped concept lookup; keyed on concept_id string
-    get_concept: Callable[[str], ConceptData | None]
-    # Explorer session state (in-memory only; resets on server restart)
+    dist_dir: Path
     explorer_state: ExplorerState = field(default_factory=ExplorerState)
-    # Taxonomy data (loaded if concept_registry.json exists)
     registry: ConceptRegistry | None = None
     decision_tree: dict | None = None
     similarity_reports: dict[str, ConceptSimilarityReport] = field(default_factory=dict)
     constellation: ConstellationData | None = None
+    _state_lock: threading.Lock = field(default_factory=threading.Lock)
+
+
+def get_state(request: Request) -> _State:
+    """FastAPI dependency: extract _State from app.state."""
+    state: _State | None = getattr(request.app.state, "data", None)
+    if state is None:
+        raise RuntimeError("App state not initialised — lifespan must run first")
+    return state
 
 
 # ---------------------------------------------------------------------------
@@ -221,8 +262,6 @@ def _load_taxonomy(
     Non-fatal: if taxonomy files don't exist, returns all None/empty.
     Taxonomy is an additive feature — the server works without it.
     """
-    import json
-
     registry_path = data_dir / "concept_registry.json"
     tree_path = data_dir / "decision_tree.json"
 
@@ -262,7 +301,7 @@ def _render_templates(
     """Render Jinja2 page templates to *dist_dir*.
 
     Silently skips templates that do not yet exist — page templates are
-    written in Tasks 10–12 and server startup must not fail before them.
+    written in Tasks 10-12 and server startup must not fail before them.
     The corresponding page routes return 404 until those tasks complete.
     """
     if not templates_dir.is_dir():
@@ -293,6 +332,156 @@ def _render_templates(
 
 
 # ---------------------------------------------------------------------------
+# Route handlers — module-level functions, state injected via Depends()
+# ---------------------------------------------------------------------------
+
+
+def _serve(path: Path) -> FileResponse:
+    """Return FileResponse if *path* exists; 404 otherwise."""
+    if not path.is_file():
+        raise HTTPException(status_code=404, detail=f"{path.name} not found")
+    return FileResponse(
+        str(path),
+        headers={"Cache-Control": "no-cache"},
+    )
+
+
+# -- Data API --
+
+def health() -> dict[str, str]:
+    return {"status": "ok"}
+
+
+def api_get_manifest(state: _State = Depends(get_state)) -> ConceptManifest:
+    return state.manifest
+
+
+def api_get_concept(concept_id: str, state: _State = Depends(get_state)) -> ConceptData:
+    concept = state.concepts.get(concept_id)
+    if concept is None:
+        raise HTTPException(status_code=404, detail=f"Concept {concept_id} not found")
+    return concept
+
+
+def api_get_parameter_index(state: _State = Depends(get_state)) -> ParameterIndex:
+    return state.parameter_index
+
+
+def api_get_parameter(param_name: str, state: _State = Depends(get_state)) -> ParameterIndexEntry:
+    entry = state.parameter_index.parameters.get(param_name)
+    if entry is None:
+        raise HTTPException(status_code=404, detail=f"Parameter {param_name} not found")
+    return entry
+
+
+# -- Explorer state API --
+
+def api_get_state(state: _State = Depends(get_state)) -> ExplorerState:
+    return state.explorer_state
+
+
+def api_post_state(body: ExplorerState, state: _State = Depends(get_state)) -> dict[str, str]:
+    """Store explorer state; timestamp is set server-side (client value ignored)."""
+    ts = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
+    with state._state_lock:
+        state.explorer_state = body.model_copy(update={"timestamp": ts})
+    return {"status": "ok"}
+
+
+# -- Taxonomy API --
+
+def api_taxonomy_tree(state: _State = Depends(get_state)) -> dict:
+    """Return the full decision tree structure."""
+    tree = state.decision_tree
+    if tree is None:
+        raise HTTPException(status_code=404, detail="Taxonomy data not loaded")
+    return tree
+
+
+def api_taxonomy_registry(state: _State = Depends(get_state)) -> ConceptRegistry:
+    """Return the full concept registry."""
+    reg = state.registry
+    if reg is None:
+        raise HTTPException(status_code=404, detail="Taxonomy data not loaded")
+    return reg
+
+
+def api_taxonomy_concept(concept_id: str, state: _State = Depends(get_state)) -> ConceptTaxonomy:
+    """Return a single concept's taxonomy record."""
+    reg = state.registry
+    if reg is None:
+        raise HTTPException(status_code=404, detail="Taxonomy data not loaded")
+    concept = reg.by_id(concept_id)
+    if concept is None:
+        raise HTTPException(
+            status_code=404, detail=f"Concept '{concept_id}' not found in registry"
+        )
+    return concept
+
+
+def api_taxonomy_similarity(
+    concept_id: str, state: _State = Depends(get_state)
+) -> ConceptSimilarityReport:
+    """Return precomputed similarity report (nearest neighbors + bridges)."""
+    report = state.similarity_reports.get(concept_id)
+    if report is None:
+        raise HTTPException(
+            status_code=404, detail=f"No similarity report for '{concept_id}'"
+        )
+    return report
+
+
+def api_taxonomy_compare(
+    concept_a: str, concept_b: str, state: _State = Depends(get_state)
+) -> SimilarityResult:
+    """Compare any two concepts on demand."""
+    reg = state.registry
+    if reg is None:
+        raise HTTPException(status_code=404, detail="Taxonomy data not loaded")
+    a = reg.by_id(concept_a)
+    b = reg.by_id(concept_b)
+    if a is None or b is None:
+        raise HTTPException(
+            status_code=404, detail="One or both concept IDs not found"
+        )
+    comparison = compare_pair(a, b)
+    bridges = explain_difference(a, b, reg)
+    return SimilarityResult(
+        concept_id=b.concept_id,
+        concept_name=b.name,
+        confinement_family=b.confinement_family,
+        comparison=comparison,
+        bridges=bridges,
+    )
+
+
+def api_taxonomy_constellation(state: _State = Depends(get_state)) -> ConstellationData:
+    """Return 2D constellation coordinates for all concepts."""
+    const = state.constellation
+    if const is None:
+        raise HTTPException(status_code=404, detail="Taxonomy data not loaded")
+    return const
+
+
+# -- Page routes --
+
+def index_page(state: _State = Depends(get_state)) -> FileResponse:
+    return _serve(state.dist_dir / "index.html")
+
+
+def compare_page(state: _State = Depends(get_state)) -> FileResponse:
+    return _serve(state.dist_dir / "compare.html")
+
+
+def taxonomy_page(state: _State = Depends(get_state)) -> FileResponse:
+    return _serve(state.dist_dir / "taxonomy.html")
+
+
+def concept_page(concept_id: str, state: _State = Depends(get_state)) -> FileResponse:
+    return _serve(state.dist_dir / "concept" / f"{concept_id}.html")
+
+
+# ---------------------------------------------------------------------------
 # Application factory
 # ---------------------------------------------------------------------------
 
@@ -308,96 +497,30 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
     templates_dir = base_dir / "templates"
     static_dir = base_dir / "static"
 
-    # Single-element list: mutable container for nonlocal assignment in the lifespan.
-    _state: list[_State | None] = [None]
-
     @asynccontextmanager
-    async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:  # noqa: ARG001
+    async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
         concepts, manifest, parameter_index = _load_data(data_dir)
         registry, decision_tree, similarity_reports, constellation = _load_taxonomy(
             data_dir
         )
         _render_templates(templates_dir, dist_dir, concepts)
 
-        # Build a per-app LRU cache so repeated /api/concepts calls skip the dict
-        # lookup after the first hit.  Defined here so it closes over `concepts`.
-        @lru_cache(maxsize=256)
-        def _get_concept_cached(concept_id: str) -> ConceptData | None:
-            return concepts.get(concept_id)
-
-        _state[0] = _State(
+        app.state.data = _State(
             concepts=concepts,
             manifest=manifest,
             parameter_index=parameter_index,
-            get_concept=_get_concept_cached,
+            dist_dir=dist_dir,
             registry=registry,
             decision_tree=decision_tree,
             similarity_reports=similarity_reports,
             constellation=constellation,
         )
         yield
-        _state[0] = None
+        _compute_cached.cache_clear()
+        _load_model_module.cache_clear()
+        app.state.data = None
 
-    def _s() -> _State:
-        """Return the loaded state; asserts the lifespan has run."""
-        s = _state[0]
-        assert s is not None, "App state not initialised — lifespan must run first"
-        return s
-
-    app = FastAPI(title="Fusion TEA Concept Explorer", lifespan=lifespan)
-
-    # Static assets (CSS, JS, vendor libs, images)
-    if static_dir.is_dir():
-        app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
-
-    # ------------------------------------------------------------------
-    # Data API
-    # ------------------------------------------------------------------
-
-    @app.get("/api/health")
-    def health() -> dict[str, str]:
-        return {"status": "ok"}
-
-    @app.get("/api/manifest", response_model=ConceptManifest)
-    def get_manifest() -> ConceptManifest:
-        return _s().manifest
-
-    @app.get("/api/concepts/{concept_id}", response_model=ConceptData)
-    def get_concept(concept_id: str) -> ConceptData:
-        concept = _s().get_concept(concept_id)
-        if concept is None:
-            raise HTTPException(status_code=404, detail=f"Concept {concept_id} not found")
-        return concept
-
-    @app.get("/api/parameter_index", response_model=ParameterIndex)
-    def get_parameter_index() -> ParameterIndex:
-        return _s().parameter_index
-
-    @app.get("/api/parameters/{param_name}", response_model=ParameterIndexEntry)
-    def get_parameter(param_name: str) -> ParameterIndexEntry:
-        entry = _s().parameter_index.parameters.get(param_name)
-        if entry is None:
-            raise HTTPException(status_code=404, detail=f"Parameter {param_name} not found")
-        return entry
-
-    # ------------------------------------------------------------------
-    # Explorer state API — in-memory session context for the /manage-concept agent
-    # ------------------------------------------------------------------
-
-    @app.get("/api/state", response_model=ExplorerState)
-    def get_state() -> ExplorerState:
-        return _s().explorer_state
-
-    @app.post("/api/state")
-    def post_state(body: ExplorerState) -> dict[str, str]:
-        """Store explorer state; timestamp is set server-side (client value ignored)."""
-        ts = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
-        _s().explorer_state = body.model_copy(update={"timestamp": ts})
-        return {"status": "ok"}
-
-    # ------------------------------------------------------------------
-    # Computation API — slider-driven model recompute (costingfe concepts only)
-    # ------------------------------------------------------------------
+    # -- Computation closure (per-app-instance cache for test isolation) --
 
     @lru_cache(maxsize=128)
     def _compute_cached(
@@ -410,14 +533,21 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
         Baseline sensitivities come from the stored concept data — they are
         never recomputed on slider change (per spec 12).
         """
-        concept = _s().get_concept(concept_id)
-        assert concept is not None, f"Concept {concept_id!r} not found in loaded data"
+        state: _State = app.state.data
+        concept = state.concepts.get(concept_id)
+        if concept is None:
+            raise ValueError(f"Concept {concept_id!r} not found in loaded data")
         model_setup = concept.sources.model_setup
-        assert model_setup is not None, "compute called for a concept with no model_setup"
+        if model_setup is None:
+            raise ValueError("compute called for a concept with no model_setup")
 
         module = _load_model_module(Path(model_setup))
-        model = getattr(module, "model")
-        result = getattr(module, "result")
+        model = getattr(module, "model", None)
+        if model is None:
+            raise ImportError(f"Module {model_setup} does not define 'model'")
+        result = getattr(module, "result", None)
+        if result is None:
+            raise ImportError(f"Module {model_setup} does not define 'result'")
 
         new_result = _forward_with_overrides(model, result.params, dict(overrides_frozen))
 
@@ -431,9 +561,8 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
         baseline_sensitivities = concept.cost_model.sensitivities if concept.cost_model else None
         return CostModelData.from_forward_result(raw, baseline_sensitivities)
 
-    @app.post("/api/compute", response_model=CostModelData)
-    def compute(body: ComputeRequest) -> CostModelData:
-        concept = _s().get_concept(body.concept_id)
+    def compute(body: ComputeRequest, state: _State = Depends(get_state)) -> CostModelData:
+        concept = state.concepts.get(body.concept_id)
         if concept is None:
             raise HTTPException(status_code=404, detail=f"Concept {body.concept_id} not found")
         if concept.sources.model_setup is None:
@@ -443,105 +572,31 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
             )
         return _compute_cached(body.concept_id, frozenset(body.overrides.items()))
 
-    # ------------------------------------------------------------------
-    # Taxonomy API — concept registry, decision tree, similarity
-    # ------------------------------------------------------------------
+    app = FastAPI(title="Fusion TEA Concept Explorer", lifespan=lifespan)
 
-    @app.get("/api/taxonomy/tree")
-    def taxonomy_tree() -> dict:
-        """Return the full decision tree structure."""
-        tree = _s().decision_tree
-        if tree is None:
-            raise HTTPException(status_code=404, detail="Taxonomy data not loaded")
-        return tree
+    # Static assets (CSS, JS, vendor libs, images)
+    if static_dir.is_dir():
+        app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
 
-    @app.get("/api/taxonomy/registry", response_model=ConceptRegistry)
-    def taxonomy_registry() -> ConceptRegistry:
-        """Return the full concept registry."""
-        reg = _s().registry
-        if reg is None:
-            raise HTTPException(status_code=404, detail="Taxonomy data not loaded")
-        return reg
-
-    @app.get("/api/taxonomy/concepts/{concept_id}", response_model=ConceptTaxonomy)
-    def taxonomy_concept(concept_id: str) -> ConceptTaxonomy:
-        """Return a single concept's taxonomy record."""
-        reg = _s().registry
-        if reg is None:
-            raise HTTPException(status_code=404, detail="Taxonomy data not loaded")
-        concept = reg.by_id(concept_id)
-        if concept is None:
-            raise HTTPException(
-                status_code=404, detail=f"Concept '{concept_id}' not found in registry"
-            )
-        return concept
-
-    @app.get("/api/taxonomy/similarity/{concept_id}", response_model=ConceptSimilarityReport)
-    def taxonomy_similarity(concept_id: str) -> ConceptSimilarityReport:
-        """Return precomputed similarity report (nearest neighbors + bridges)."""
-        report = _s().similarity_reports.get(concept_id)
-        if report is None:
-            raise HTTPException(
-                status_code=404, detail=f"No similarity report for '{concept_id}'"
-            )
-        return report
-
-    @app.get("/api/taxonomy/compare/{concept_a}/{concept_b}", response_model=SimilarityResult)
-    def taxonomy_compare(concept_a: str, concept_b: str) -> SimilarityResult:
-        """Compare any two concepts on demand."""
-        reg = _s().registry
-        if reg is None:
-            raise HTTPException(status_code=404, detail="Taxonomy data not loaded")
-        a = reg.by_id(concept_a)
-        b = reg.by_id(concept_b)
-        if a is None or b is None:
-            raise HTTPException(
-                status_code=404, detail="One or both concept IDs not found"
-            )
-        comparison = compare_pair(a, b)
-        bridges = explain_difference(a, b, reg)
-        return SimilarityResult(
-            concept_id=b.concept_id,
-            concept_name=b.name,
-            confinement_family=b.confinement_family,
-            comparison=comparison,
-            bridges=bridges,
-        )
-
-    @app.get("/api/taxonomy/constellation", response_model=ConstellationData)
-    def taxonomy_constellation() -> ConstellationData:
-        """Return 2D constellation coordinates for all concepts."""
-        const = _s().constellation
-        if const is None:
-            raise HTTPException(status_code=404, detail="Taxonomy data not loaded")
-        return const
-
-    # ------------------------------------------------------------------
-    # Page routes — serve pre-rendered HTML from dist/
-    # NEVER embed concept data here; pages are shells, data fetched by JS.
-    # ------------------------------------------------------------------
-
-    def _serve(path: Path) -> FileResponse:
-        """Return FileResponse if *path* exists; 404 otherwise."""
-        if not path.is_file():
-            raise HTTPException(status_code=404, detail=f"{path.name} not found")
-        return FileResponse(str(path))
-
-    @app.get("/")
-    def index_page() -> FileResponse:
-        return _serve(dist_dir / "index.html")
-
-    @app.get("/compare")
-    def compare_page() -> FileResponse:
-        return _serve(dist_dir / "compare.html")
-
-    @app.get("/taxonomy")
-    def taxonomy_page() -> FileResponse:
-        return _serve(dist_dir / "taxonomy.html")
-
-    @app.get("/concept/{concept_id}")
-    def concept_page(concept_id: str) -> FileResponse:
-        return _serve(dist_dir / "concept" / f"{concept_id}.html")
+    # -- Register routes --
+    app.get("/api/health")(health)
+    app.get("/api/manifest", response_model=ConceptManifest)(api_get_manifest)
+    app.get("/api/concepts/{concept_id}", response_model=ConceptData)(api_get_concept)
+    app.get("/api/parameter_index", response_model=ParameterIndex)(api_get_parameter_index)
+    app.get("/api/parameters/{param_name}", response_model=ParameterIndexEntry)(api_get_parameter)
+    app.get("/api/state", response_model=ExplorerState)(api_get_state)
+    app.post("/api/state")(api_post_state)
+    app.post("/api/compute", response_model=CostModelData)(compute)
+    app.get("/api/taxonomy/tree")(api_taxonomy_tree)
+    app.get("/api/taxonomy/registry", response_model=ConceptRegistry)(api_taxonomy_registry)
+    app.get("/api/taxonomy/concepts/{concept_id}", response_model=ConceptTaxonomy)(api_taxonomy_concept)
+    app.get("/api/taxonomy/similarity/{concept_id}", response_model=ConceptSimilarityReport)(api_taxonomy_similarity)
+    app.get("/api/taxonomy/compare/{concept_a}/{concept_b}", response_model=SimilarityResult)(api_taxonomy_compare)
+    app.get("/api/taxonomy/constellation", response_model=ConstellationData)(api_taxonomy_constellation)
+    app.get("/")(index_page)
+    app.get("/compare")(compare_page)
+    app.get("/taxonomy")(taxonomy_page)
+    app.get("/concept/{concept_id}")(concept_page)
 
     return app
 
@@ -568,7 +623,7 @@ def main() -> None:
         help="TCP port to listen on (default: 8421)",
     )
     args = parser.parse_args()
-    uvicorn.run(app, host="0.0.0.0", port=args.port)
+    uvicorn.run(app, host="127.0.0.1", port=args.port)
 
 
 if __name__ == "__main__":

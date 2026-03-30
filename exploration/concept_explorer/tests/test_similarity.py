@@ -195,6 +195,15 @@ class TestExplainDifference:
         for bridge in bridges:
             assert bridge.bridge_concept_id in all_ids
 
+    def test_bridge_has_overall_similarity(self, registry: ConceptRegistry):
+        """Bridge data includes overall similarity to query concept."""
+        a = registry.by_id("hts-compact-tokamak")
+        nearest = find_nearest(a, registry, top_n=1)
+        assert len(nearest) == 1
+        for bridge in nearest[0].bridges:
+            assert hasattr(bridge, "bridge_overall_similarity")
+            assert 0.0 <= bridge.bridge_overall_similarity <= 1.0
+
 
 # ---------------------------------------------------------------------------
 # Similarity matrix

@@ -67,6 +67,7 @@ class DifferenceBridge(BaseModel):
     similar_value: str
     bridge_concept_id: str
     bridge_concept_name: str
+    bridge_overall_similarity: float
 
 
 class SimilarityResult(BaseModel):
@@ -270,6 +271,7 @@ def explain_difference(
                         similar_value=str(similar_val),
                         bridge_concept_id=best_bridge[1].concept_id,
                         bridge_concept_name=best_bridge[1].name,
+                        bridge_overall_similarity=best_bridge[0],
                     )
                 )
 

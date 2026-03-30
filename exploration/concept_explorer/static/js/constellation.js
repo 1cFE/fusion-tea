@@ -7,13 +7,18 @@
  * One trace per confinement family for legend grouping and coloring.
  *
  * Exported:
- *   Constellation.render(container, data, onConceptClick)
+ *   Constellation.render(container, data, onConceptClick, onDoubleClick)
  *   Constellation.highlight(conceptId)
  */
 var Constellation = (function () {
   var _container = null;
   var _data = null;
   var _selectedId = null;
+
+  // Debounced click state for double-click detection
+  var _clickTimer = null;
+  var _lastClickId = null;
+  var DBLCLICK_DELAY = 300;
 
   var FAMILY_COLORS = {
     MFE: "#3b82f6",
@@ -29,7 +34,7 @@ var Constellation = (function () {
     NONSTANDARD: "Non-Standard"
   };
 
-  function render(container, constellationData, onConceptClick) {
+  function render(container, constellationData, onConceptClick, onDoubleClick) {
     _container = container;
     _data = constellationData;
     _selectedId = null;
@@ -74,7 +79,7 @@ var Constellation = (function () {
       paper_bgcolor: "rgba(0,0,0,0)",
       plot_bgcolor: "rgba(0,0,0,0)",
       font: { color: "#8b949e", family: "-apple-system, BlinkMacSystemFont, sans-serif" },
-      margin: { l: 30, r: 20, t: 30, b: 30 },
+      margin: { l: 30, r: 20, t: 30, b: 50 },
       xaxis: {
         showgrid: true,
         gridcolor: "rgba(48,54,61,0.5)",
@@ -95,25 +100,49 @@ var Constellation = (function () {
         font: { size: 11 }
       },
       hovermode: "closest",
-      dragmode: "pan"
+      dragmode: "pan",
+      annotations: [{
+        text: "Closer = more similar. Double-click a concept to explore its neighborhood.",
+        xref: "paper", yref: "paper",
+        x: 0.5, y: -0.12,
+        showarrow: false,
+        font: { size: 11, color: "#6e7681" }
+      }]
     };
 
     var config = {
       responsive: true,
       displayModeBar: false,
-      scrollZoom: true
+      scrollZoom: true,
+      doubleClick: false // disable Plotly's built-in double-click zoom reset
     };
 
     Plotly.newPlot(container, traces, layout, config);
 
-    // Click handler
+    // Click handler with debounced double-click detection
     container.on("plotly_click", function (eventData) {
-      if (eventData.points && eventData.points.length > 0) {
-        var pt = eventData.points[0];
-        var conceptId = pt.customdata;
-        if (conceptId && onConceptClick) {
-          onConceptClick(conceptId);
-        }
+      if (!eventData.points || eventData.points.length === 0) return;
+
+      var pt = eventData.points[0];
+      var conceptId = pt.customdata;
+      if (!conceptId) return;
+
+      if (_clickTimer && _lastClickId === conceptId) {
+        // Second click on same point within delay — double-click
+        clearTimeout(_clickTimer);
+        _clickTimer = null;
+        _lastClickId = null;
+        if (onDoubleClick) onDoubleClick(conceptId);
+      } else {
+        // First click — start timer
+        if (_clickTimer) clearTimeout(_clickTimer);
+        _lastClickId = conceptId;
+        _clickTimer = setTimeout(function () {
+          _clickTimer = null;
+          _lastClickId = null;
+          // Single-click: highlight in constellation
+          if (onConceptClick) onConceptClick(conceptId);
+        }, DBLCLICK_DELAY);
       }
     });
   }
@@ -133,7 +162,6 @@ var Constellation = (function () {
 
     var families = ["MFE", "IFE", "MIF", "NONSTANDARD"];
     var traceIdx = 0;
-    var update = {};
 
     for (var f = 0; f < families.length; f++) {
       var fam = families[f];

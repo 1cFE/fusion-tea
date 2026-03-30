@@ -3,14 +3,45 @@
 /**
  * Taxonomy page orchestration.
  *
- * Fetches tree, constellation, and registry data on load.
- * Wires onConceptClick between tree, constellation, and cards.
- * Lazily fetches similarity reports on concept selection.
+ * State machine:
+ *   OVERVIEW    — Constellation visible, no concept focused
+ *   FOCUSED     — Neighborhood graph visible, taxonomy card + neighbor list in detail panel
+ *   COMPARING   — FOCUSED + neighbor selected, comparison table + bridge nodes visible
+ *
+ * Transitions:
+ *   OVERVIEW → FOCUSED:     Double-click constellation, OR single-click tree leaf
+ *   FOCUSED → COMPARING:    Single-click neighbor (graph or list)
+ *   COMPARING → COMPARING:  Single-click different neighbor
+ *   COMPARING → FOCUSED:    Click graph background (deselect)
+ *   FOCUSED → FOCUSED:      Double-click neighbor/bridge (re-center)
+ *   Any → OVERVIEW:         "← Overview" button or Escape key
  */
 (function () {
-  var _registry = {};  // concept_id -> concept object
-  var _selectedId = null;
-  var _similarityCache = {};  // concept_id -> similarity report
+
+  // ---------------------------------------------------------------------------
+  // State
+  // ---------------------------------------------------------------------------
+
+  var _viewMode = "overview"; // "overview" | "neighborhood"
+  var _focusedId = null;
+  var _comparingId = null;
+  var _registry = {};           // concept_id → concept object
+  var _similarityCache = {};    // concept_id → similarity report
+  var _sidebarCollapsed = false;
+
+  // DOM references (set in init)
+  var constellationContainer;
+  var neighborhoodContainer;
+  var taxonomyCardContainer;
+  var comparisonContainer;
+  var graphTitle;
+  var graphSubtitle;
+  var backButton;
+  var toggleBtn;
+
+  // ---------------------------------------------------------------------------
+  // Init
+  // ---------------------------------------------------------------------------
 
   async function init() {
     var loadingEl = document.getElementById("loading-state");
@@ -21,6 +52,17 @@
     contentEl.style.display = "none";
     errorEl.style.display = "none";
 
+    // Cache DOM references
+    constellationContainer = document.getElementById("constellation-container");
+    neighborhoodContainer = document.getElementById("neighborhood-container");
+    taxonomyCardContainer = document.getElementById("taxonomy-card-container");
+    comparisonContainer = document.getElementById("comparison-container");
+    graphTitle = document.getElementById("graph-title");
+    graphSubtitle = document.getElementById("graph-subtitle");
+    backButton = document.getElementById("back-to-overview");
+    toggleBtn = document.getElementById("sidebar-toggle");
+
+    // Fetch all initial data in parallel
     var treeData, constellationData, registryData;
     try {
       var responses = await Promise.all([
@@ -45,76 +87,256 @@
 
     // Build registry lookup
     var concepts = registryData.concepts || [];
-    var nameMap = {};  // id -> display name (for tree labels)
+    var nameMap = {};
     for (var c = 0; c < concepts.length; c++) {
       _registry[concepts[c].concept_id] = concepts[c];
       nameMap[concepts[c].concept_id] = concepts[c].name;
     }
 
-    // Render tree
+    // Share registry with TaxonomyCards for bridge family badge lookups
+    TaxonomyCards.setRegistry(_registry);
+
+    // Render tree (single-click focuses)
     var treeContainer = document.getElementById("tree-container");
-    TreeView.renderTreeView(treeContainer, treeData, onConceptClick);
+    TreeView.renderTreeView(treeContainer, treeData, handleFocus);
     TreeView.updateLeafLabels(nameMap);
 
-    // Render constellation
-    var constContainer = document.getElementById("constellation-container");
-    Constellation.render(constContainer, constellationData, onConceptClick);
+    // Render constellation (single-click highlights, double-click focuses)
+    Constellation.render(constellationContainer, constellationData,
+      function onSingleClick(conceptId) {
+        // Single-click in constellation: highlight the dot
+        Constellation.highlight(conceptId);
+      },
+      function onDoubleClick(conceptId) {
+        // Double-click in constellation: focus (switch to neighborhood)
+        handleFocus(conceptId);
+      }
+    );
+
+    // Set up sidebar toggle
+    toggleBtn.addEventListener("click", function () {
+      _sidebarCollapsed = !_sidebarCollapsed;
+      var layout = document.querySelector(".taxonomy-layout");
+      layout.classList.toggle("taxonomy-layout--collapsed", _sidebarCollapsed);
+      toggleBtn.innerHTML = _sidebarCollapsed ? "&#8250;" : "&#8249;";
+      toggleBtn.title = _sidebarCollapsed ? "Show decision tree" : "Hide decision tree";
+      // Resize Plotly after CSS transition completes
+      setTimeout(function () {
+        if (_viewMode === "overview") {
+          Plotly.Plots.resize(constellationContainer);
+        }
+      }, 350);
+    });
+
+    // Back to overview button
+    backButton.addEventListener("click", function () {
+      switchToOverview();
+    });
+
+    // Escape key → back to overview
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && _viewMode === "neighborhood") {
+        switchToOverview();
+      }
+    });
 
     // Swap visibility
     loadingEl.style.display = "none";
     contentEl.style.display = "";
   }
 
-  /**
-   * Central concept selection handler — called by tree, constellation, and cards.
-   */
-  async function onConceptClick(conceptId) {
-    if (conceptId === _selectedId) return;
-    _selectedId = conceptId;
+  // ---------------------------------------------------------------------------
+  // View mode switching
+  // ---------------------------------------------------------------------------
 
+  function switchToOverview() {
+    if (_viewMode === "overview") return;
+
+    // Fade out neighborhood
+    neighborhoodContainer.style.opacity = "0";
+    setTimeout(function () {
+      neighborhoodContainer.style.display = "none";
+      NeighborhoodGraph.destroy();
+
+      constellationContainer.style.display = "";
+      // Force a reflow before setting opacity for transition
+      void constellationContainer.offsetHeight;
+      constellationContainer.style.opacity = "1";
+      Plotly.Plots.resize(constellationContainer);
+    }, 300);
+
+    graphTitle.textContent = "Design Space Overview";
+    graphSubtitle.textContent = "Concepts positioned by design attribute similarity. Double-click to explore.";
+    backButton.style.display = "none";
+
+    _viewMode = "overview";
+    _focusedId = null;
+    _comparingId = null;
+
+    // Clear detail panel
+    taxonomyCardContainer.innerHTML = "";
+    comparisonContainer.innerHTML = "";
+
+    // Clear constellation highlight
+    Constellation.highlight(null);
+
+    // Clear tree highlight
+    TreeView.highlightTreeConcept(null);
+  }
+
+  function switchToNeighborhood(concept, neighbors) {
+    // Fade out constellation
+    constellationContainer.style.opacity = "0";
+    setTimeout(function () {
+      constellationContainer.style.display = "none";
+
+      neighborhoodContainer.style.display = "";
+      // Force reflow
+      void neighborhoodContainer.offsetHeight;
+      neighborhoodContainer.style.opacity = "1";
+
+      // Render the SVG graph
+      NeighborhoodGraph.render(neighborhoodContainer, concept, neighbors, _registry, {
+        onCompare: handleCompare,
+        onFocus: handleFocus,
+        onDeselect: handleDeselect
+      });
+    }, 300);
+
+    graphTitle.textContent = "Neighborhood of " + concept.name;
+    graphSubtitle.textContent = "Click a neighbor to compare. Double-click to navigate.";
+    backButton.style.display = "";
+    _viewMode = "neighborhood";
+  }
+
+  // ---------------------------------------------------------------------------
+  // Similarity data fetching (with cache)
+  // ---------------------------------------------------------------------------
+
+  function fetchSimilarity(conceptId) {
+    if (_similarityCache[conceptId]) {
+      return Promise.resolve(_similarityCache[conceptId]);
+    }
+    return fetch("/api/taxonomy/similarity/" + encodeURIComponent(conceptId))
+      .then(function (resp) {
+        if (!resp.ok) throw new Error("Similarity API returned " + resp.status);
+        return resp.json();
+      })
+      .then(function (report) {
+        _similarityCache[conceptId] = report;
+        return report;
+      });
+  }
+
+  // ---------------------------------------------------------------------------
+  // Core handlers
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Focus on a concept — make it the center of the neighborhood graph.
+   * Called from: tree single-click, constellation double-click, graph double-click.
+   */
+  function handleFocus(conceptId) {
     var concept = _registry[conceptId];
     if (!concept) {
       console.warn("[taxonomy] Unknown concept:", conceptId);
       return;
     }
 
-    // Update tree highlight
-    TreeView.highlightTreeConcept(conceptId);
+    // Allow re-focus on same concept (e.g., from tree re-click after comparing)
+    _focusedId = conceptId;
+    _comparingId = null;
 
-    // Update constellation highlight
-    Constellation.highlight(conceptId);
+    // Show loading in comparison container
+    comparisonContainer.innerHTML =
+      '<div style="color: var(--color-text-muted); font-size: var(--font-size-sm); padding: var(--space-3);">Loading similarity...</div>';
 
-    // Render taxonomy card
-    var taxContainer = document.getElementById("taxonomy-card-container");
-    TaxonomyCards.renderTaxonomyCard(taxContainer, concept);
+    fetchSimilarity(conceptId).then(function (report) {
+      // Only proceed if still focused on this concept
+      if (_focusedId !== conceptId) return;
 
-    // Fetch and render similarity card (lazy, cached)
-    var simContainer = document.getElementById("similarity-card-container");
-    if (_similarityCache[conceptId]) {
-      TaxonomyCards.renderSimilarityCard(simContainer, _similarityCache[conceptId], onConceptClick);
-    } else {
-      simContainer.innerHTML = '<div style="color: var(--color-text-muted); font-size: var(--font-size-sm); padding: var(--space-3);">Loading similarity...</div>';
-      try {
-        var resp = await fetch("/api/taxonomy/similarity/" + encodeURIComponent(conceptId));
-        if (resp.ok) {
-          var report = await resp.json();
-          _similarityCache[conceptId] = report;
-          // Only render if still the selected concept
-          if (_selectedId === conceptId) {
-            TaxonomyCards.renderSimilarityCard(simContainer, report, onConceptClick);
-          }
-        } else {
-          console.warn("[taxonomy] Similarity fetch returned", resp.status);
-          simContainer.innerHTML = "";
-        }
-      } catch (err) {
-        console.warn("[taxonomy] Similarity fetch failed:", err);
-        simContainer.innerHTML = "";
+      var neighbors = report.nearest;
+
+      // Switch view
+      switchToNeighborhood(concept, neighbors);
+
+      // Update detail panel: taxonomy card + neighbor list
+      TaxonomyCards.renderTaxonomyCard(taxonomyCardContainer, concept);
+      TaxonomyCards.renderNeighborList(comparisonContainer, neighbors, handleCompare);
+
+      // Sync tree highlight
+      TreeView.highlightTreeConcept(conceptId);
+    }).catch(function (err) {
+      console.warn("[taxonomy] Similarity fetch failed:", err);
+      comparisonContainer.innerHTML = "";
+    });
+  }
+
+  /**
+   * Compare with a neighbor — show field-by-field comparison and bridge nodes.
+   * Called from: graph single-click on neighbor, neighbor list click.
+   */
+  function handleCompare(neighborId) {
+    if (neighborId === _comparingId) return;
+    _comparingId = neighborId;
+
+    var report = _similarityCache[_focusedId];
+    if (!report) return;
+
+    var result = null;
+    for (var i = 0; i < report.nearest.length; i++) {
+      if (report.nearest[i].concept_id === neighborId) {
+        result = report.nearest[i];
+        break;
       }
+    }
+    if (!result) return;
+
+    var focused = _registry[_focusedId];
+    var neighbor = _registry[neighborId];
+
+    // Select bridges (up to 3, one per field, by similarity)
+    var bridges = TaxonomyCards.selectBridges(result.bridges);
+
+    // Update graph: show bridge nodes + highlight neighbor
+    NeighborhoodGraph.showBridges(neighborId, bridges);
+
+    // Update detail panel: comparison table
+    TaxonomyCards.renderComparison(
+      comparisonContainer, focused, neighbor, result,
+      bridges, report.nearest, handleBridgeHighlight, handleCompare
+    );
+  }
+
+  /**
+   * Highlight a bridge node in the graph (pulse animation).
+   * Called from: comparison panel bridge-ref clicks.
+   */
+  function handleBridgeHighlight(conceptId) {
+    NeighborhoodGraph.highlightBridge(conceptId);
+  }
+
+  /**
+   * Deselect the current neighbor comparison.
+   * Called from: graph background click.
+   */
+  function handleDeselect() {
+    if (!_comparingId) return;
+    _comparingId = null;
+
+    NeighborhoodGraph.clearBridges();
+
+    // Restore neighbor list
+    var report = _similarityCache[_focusedId];
+    if (report) {
+      TaxonomyCards.renderNeighborList(comparisonContainer, report.nearest, handleCompare);
     }
   }
 
-  // Initialize when DOM is ready
+  // ---------------------------------------------------------------------------
+  // Bootstrap
+  // ---------------------------------------------------------------------------
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
   } else {

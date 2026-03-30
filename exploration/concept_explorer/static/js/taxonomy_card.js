@@ -1,11 +1,15 @@
 "use strict";
 
 /**
- * Taxonomy card and similarity card components.
+ * Taxonomy card and comparison panel components.
  *
  * Exported:
  *   TaxonomyCards.renderTaxonomyCard(container, concept)
- *   TaxonomyCards.renderSimilarityCard(container, report, onConceptClick)
+ *   TaxonomyCards.selectBridges(bridges)
+ *   TaxonomyCards.buildComparison(focused, neighbor, similarityResult)
+ *   TaxonomyCards.renderNeighborList(container, nearest, onCompare, activeId)
+ *   TaxonomyCards.renderComparison(container, focused, neighbor, result, selectedBridges, allNearest, onBridgeHighlight, onCompare)
+ *   TaxonomyCards.setRegistry(registry)
  */
 var TaxonomyCards = (function () {
 
@@ -133,113 +137,345 @@ var TaxonomyCards = (function () {
     container.appendChild(card);
   }
 
+  // ---------------------------------------------------------------------------
+  // Field labels (human-readable) and TBD sentinels
+  // ---------------------------------------------------------------------------
+
+  var FIELD_LABELS = {
+    fuel: "Fuel Type",
+    primary_heating: "Primary Heating",
+    plasma_state: "Plasma State",
+    magnet_type: "Magnet Type",
+    energy_capture: "Energy Capture",
+    tritium_breeding: "Tritium Breeding",
+    neutron_management: "Neutron Management",
+    operation_mode: "Operation Mode",
+    repetition_rate: "Repetition Rate"
+  };
+
+  var TBD_VALUES = { "TBD": true, "Unknown": true };
+
+  // ---------------------------------------------------------------------------
+  // Bridge selection algorithm (FR-10)
+  // ---------------------------------------------------------------------------
+
+  var MAX_BRIDGES = 3;
+
   /**
-   * Build a single similarity entry (one neighbor).
+   * Select at most MAX_BRIDGES bridges, each covering a different mismatched
+   * field, prioritized by overall similarity to the focused concept.
    */
-  function buildSimilarityEntry(entry, onConceptClick) {
-    var wrapper = el("div", "similarity-entry");
-    wrapper.setAttribute("role", "button");
-    wrapper.setAttribute("tabindex", "0");
+  function selectBridges(bridges) {
+    if (!bridges || bridges.length === 0) return [];
 
-    // Header: name + badge + score
-    var header = el("div", "similarity-entry__header");
-    var nameEl = el("span", "similarity-entry__name", entry.concept_name);
-    var famCls = FAMILY_BADGE_CLS[entry.confinement_family] || "badge badge-nonstandard";
-    var badge = el("span", famCls, entry.confinement_family);
-    badge.style.flexShrink = "0";
-    var score = el("span", "similarity-entry__score",
-      Math.round(entry.comparison.overall_score * 100) + "%");
-
-    header.appendChild(nameEl);
-    header.appendChild(badge);
-    header.appendChild(score);
-    wrapper.appendChild(header);
-
-    // Dimension bars
-    var dims = el("div", "similarity-entry__dims");
-    var dimList = entry.comparison.dimensions;
-    for (var i = 0; i < dimList.length; i++) {
-      var d = dimList[i];
-      var bar = el("div", "similarity-bar");
-
-      var label = el("span", "similarity-bar__label",
-        DIMENSION_LABELS[d.dimension] || d.dimension);
-
-      var track = el("div", "similarity-bar__track");
-      var fill = el("div", "similarity-bar__fill");
-      var pct = d.comparable > 0 ? (d.matches / d.comparable * 100) : 0;
-      fill.style.width = pct + "%";
-      track.appendChild(fill);
-
-      var ratio = el("span", "similarity-bar__ratio",
-        d.matches + "/" + d.comparable);
-
-      bar.appendChild(label);
-      bar.appendChild(track);
-      bar.appendChild(ratio);
-      dims.appendChild(bar);
-    }
-    wrapper.appendChild(dims);
-
-    // Bridges
-    if (entry.bridges && entry.bridges.length > 0) {
-      for (var b = 0; b < entry.bridges.length; b++) {
-        var bridge = entry.bridges[b];
-        var bridgeEl = el("div", "similarity-bridge");
-
-        var fieldLabel = el("span", "similarity-bridge__field",
-          "Differs on " + bridge.mismatched_field.replace(/_/g, " ") + " \u2192 ");
-        bridgeEl.appendChild(fieldLabel);
-
-        var conceptLink = el("span", "similarity-bridge__concept",
-          bridge.bridge_concept_name);
-        conceptLink.setAttribute("data-concept-id", bridge.bridge_concept_id);
-        conceptLink.addEventListener("click", (function (cid) {
-          return function (e) {
-            e.stopPropagation();
-            if (onConceptClick) onConceptClick(cid);
-          };
-        })(bridge.bridge_concept_id));
-        bridgeEl.appendChild(conceptLink);
-
-        wrapper.appendChild(bridgeEl);
-      }
-    }
-
-    // Click to select this neighbor
-    function select() {
-      if (onConceptClick) onConceptClick(entry.concept_id);
-    }
-    wrapper.addEventListener("click", select);
-    wrapper.addEventListener("keydown", function (e) {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        select();
-      }
+    var sorted = bridges.slice().sort(function (a, b) {
+      return (b.bridge_overall_similarity || 0) - (a.bridge_overall_similarity || 0);
     });
 
-    return wrapper;
-  }
+    var selected = [];
+    var coveredFields = {};
 
-  /**
-   * Render the similarity card for a concept's nearest neighbors.
-   */
-  function renderSimilarityCard(container, report, onConceptClick) {
-    container.innerHTML = "";
-    if (!report || !report.nearest || report.nearest.length === 0) return;
-
-    var card = el("div", "similarity-card");
-    card.appendChild(el("div", "similarity-card__title", "Similar Concepts"));
-
-    for (var i = 0; i < report.nearest.length; i++) {
-      card.appendChild(buildSimilarityEntry(report.nearest[i], onConceptClick));
+    for (var i = 0; i < sorted.length && selected.length < MAX_BRIDGES; i++) {
+      var b = sorted[i];
+      if (!coveredFields[b.mismatched_field]) {
+        coveredFields[b.mismatched_field] = true;
+        selected.push(b);
+      }
     }
 
-    container.appendChild(card);
+    return selected;
   }
+
+  // ---------------------------------------------------------------------------
+  // Comparison builder
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Build comparison row data from the focused concept, neighbor concept,
+   * and similarity result. Returns an array of row objects.
+   */
+  function buildComparison(focused, neighbor, similarityResult) {
+    var comp = similarityResult.comparison;
+    var bridges = similarityResult.bridges || [];
+    var rows = [];
+
+    // Build a bridge lookup by mismatched field
+    var bridgeByField = {};
+    for (var b = 0; b < bridges.length; b++) {
+      bridgeByField[bridges[b].mismatched_field] = bridges[b];
+    }
+
+    for (var d = 0; d < comp.dimensions.length; d++) {
+      var dim = comp.dimensions[d];
+
+      // Mismatched fields first
+      for (var m = 0; m < dim.mismatched_fields.length; m++) {
+        var field = dim.mismatched_fields[m];
+        var focusedVal = focused[field];
+        var neighborVal = neighbor ? neighbor[field] : null;
+
+        // Skip N/A and TBD
+        if (focusedVal == null || neighborVal == null) continue;
+        if (TBD_VALUES[String(focusedVal)] || TBD_VALUES[String(neighborVal)]) continue;
+
+        var bridge = bridgeByField[field] || null;
+        rows.push({
+          field: field,
+          label: FIELD_LABELS[field] || field,
+          match: false,
+          focusedValue: String(focusedVal),
+          neighborValue: bridge ? bridge.similar_value : String(neighborVal),
+          bridge: bridge,
+          dimension: dim.dimension
+        });
+      }
+
+      // Matched fields
+      for (var k = 0; k < dim.matched_fields.length; k++) {
+        var mfield = dim.matched_fields[k];
+        var val = focused[mfield];
+        if (val == null || TBD_VALUES[String(val)]) continue;
+
+        rows.push({
+          field: mfield,
+          label: FIELD_LABELS[mfield] || mfield,
+          match: true,
+          value: String(val),
+          dimension: dim.dimension
+        });
+      }
+    }
+
+    return rows;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Neighbor list (FOCUSED state)
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Render a compact neighbor list in the comparison container.
+   * @param {Element} container
+   * @param {Array} nearest - similarity results array
+   * @param {Function} onCompare - callback(conceptId)
+   * @param {string} [activeId] - currently compared neighbor (for highlight)
+   */
+  function renderNeighborList(container, nearest, onCompare, activeId) {
+    container.innerHTML = "";
+    if (!nearest || nearest.length === 0) return;
+
+    var wrapper = el("div", "neighbor-list");
+    wrapper.appendChild(el("h3", "neighbor-list__title", "Similar Concepts"));
+    wrapper.appendChild(el("p", "neighbor-list__hint", "Click a concept to see how they compare"));
+
+    for (var i = 0; i < nearest.length; i++) {
+      var entry = nearest[i];
+      var row = el("div", "neighbor-entry");
+      row.setAttribute("data-concept-id", entry.concept_id);
+      if (entry.concept_id === activeId) {
+        row.className += " neighbor-entry--active";
+      }
+
+      var famCls = FAMILY_BADGE_CLS[entry.confinement_family] || "badge badge-nonstandard";
+      row.appendChild(el("span", famCls, entry.confinement_family));
+      row.appendChild(el("span", "neighbor-entry__name", entry.concept_name));
+      row.appendChild(el("span", "neighbor-entry__score",
+        Math.round(entry.comparison.overall_score * 100) + "%"));
+
+      (function (cid) {
+        row.addEventListener("click", function () {
+          onCompare(cid);
+        });
+      })(entry.concept_id);
+
+      wrapper.appendChild(row);
+    }
+
+    container.appendChild(wrapper);
+  }
+
+  // ---------------------------------------------------------------------------
+  // Comparison table (COMPARING state)
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Render the field-by-field comparison panel.
+   * @param {Element} container
+   * @param {Object} focused - focused concept from registry
+   * @param {Object} neighbor - neighbor concept from registry
+   * @param {Object} similarityResult - the SimilarityResult for this neighbor
+   * @param {Array} selectedBridges - bridges already selected by selectBridges()
+   * @param {Array} allNearest - all nearest neighbors (for "other neighbors" list)
+   * @param {Function} onBridgeHighlight - callback(conceptId)
+   * @param {Function} onCompare - callback(conceptId) for other neighbor clicks
+   */
+  function renderComparison(container, focused, neighbor, similarityResult,
+                            selectedBridges, allNearest, onBridgeHighlight, onCompare) {
+    container.innerHTML = "";
+
+    var panel = el("div", "comparison-panel");
+
+    // Header
+    var header = el("div", "comparison-panel__header");
+    var h3 = el("h3", null, "Comparing with " + (similarityResult.concept_name || ""));
+    header.appendChild(h3);
+    var scoreEl = el("span", "comparison-panel__score",
+      Math.round(similarityResult.comparison.overall_score * 100) + "% match");
+    header.appendChild(scoreEl);
+    panel.appendChild(header);
+
+    // Build comparison rows
+    var rows = buildComparison(focused, neighbor, similarityResult);
+
+    // Build a lookup of selected bridges by field
+    var selectedByField = {};
+    if (selectedBridges) {
+      for (var s = 0; s < selectedBridges.length; s++) {
+        selectedByField[selectedBridges[s].mismatched_field] = selectedBridges[s];
+      }
+    }
+
+    // Separate diffs and matches
+    var diffs = [];
+    var matches = [];
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].match) matches.push(rows[i]);
+      else diffs.push(rows[i]);
+    }
+
+    // Differences section
+    if (diffs.length > 0) {
+      var diffSection = el("div", "comparison-section comparison-section--diff");
+      diffSection.appendChild(el("h4", "comparison-section__title",
+        diffs.length + " Difference" + (diffs.length > 1 ? "s" : "")));
+
+      for (var d = 0; d < diffs.length; d++) {
+        var row = diffs[d];
+        var rowEl = el("div", "comparison-row comparison-row--diff");
+
+        rowEl.appendChild(el("div", "comparison-row__label", row.label));
+
+        var vals = el("div", "comparison-row__values");
+        vals.appendChild(el("span", "comparison-row__value comparison-row__value--self", row.focusedValue));
+        vals.appendChild(el("span", "comparison-row__vs", "vs"));
+        vals.appendChild(el("span", "comparison-row__value comparison-row__value--other", row.neighborValue));
+        rowEl.appendChild(vals);
+
+        // Bridge reference (only for selected bridges)
+        var selBridge = selectedByField[row.field];
+        if (selBridge) {
+          var bridgeDiv = el("div", "comparison-row__bridge");
+          bridgeDiv.appendChild(document.createTextNode("Also uses " + row.focusedValue + ": "));
+
+          var ref = el("a", "bridge-ref");
+          ref.setAttribute("data-concept-id", selBridge.bridge_concept_id);
+          ref.setAttribute("data-action", "highlight-bridge");
+          ref.textContent = selBridge.bridge_concept_name + " ";
+
+          // Family badge on bridge ref
+          var bridgeConcept = null;
+          if (typeof _registry !== "undefined" && _registry) {
+            bridgeConcept = _registry[selBridge.bridge_concept_id];
+          }
+          var bridgeFam = bridgeConcept ? bridgeConcept.confinement_family : null;
+          if (bridgeFam) {
+            var bBadge = el("span",
+              FAMILY_BADGE_CLS[bridgeFam] || "badge badge-nonstandard",
+              bridgeFam);
+            bBadge.style.fontSize = "10px";
+            bBadge.style.verticalAlign = "middle";
+            ref.appendChild(bBadge);
+          }
+
+          (function (cid) {
+            ref.addEventListener("click", function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+              if (onBridgeHighlight) onBridgeHighlight(cid);
+            });
+          })(selBridge.bridge_concept_id);
+
+          bridgeDiv.appendChild(ref);
+          rowEl.appendChild(bridgeDiv);
+        }
+
+        diffSection.appendChild(rowEl);
+      }
+      panel.appendChild(diffSection);
+    }
+
+    // Matches section
+    if (matches.length > 0) {
+      var matchSection = el("div", "comparison-section comparison-section--match");
+      matchSection.appendChild(el("h4", "comparison-section__title",
+        matches.length + " matching attribute" + (matches.length > 1 ? "s" : "")));
+
+      for (var j = 0; j < matches.length; j++) {
+        var mrow = matches[j];
+        var mEl = el("div", "comparison-row comparison-row--match");
+        mEl.appendChild(el("span", "comparison-row__label", mrow.label));
+        mEl.appendChild(el("span", "comparison-row__value", mrow.value));
+        mEl.appendChild(el("span", "comparison-row__check", "\u2713"));
+        matchSection.appendChild(mEl);
+      }
+      panel.appendChild(matchSection);
+    }
+
+    // Other neighbors (compact list)
+    if (allNearest && allNearest.length > 1) {
+      var others = allNearest.filter(function (n) {
+        return n.concept_id !== similarityResult.concept_id;
+      });
+      if (others.length > 0) {
+        var otherList = el("div", "neighbor-list neighbor-list--compact");
+        otherList.appendChild(el("h4", "neighbor-list__title", "Other Neighbors"));
+
+        for (var k = 0; k < others.length; k++) {
+          var other = others[k];
+          var oRow = el("div", "neighbor-entry");
+          oRow.setAttribute("data-concept-id", other.concept_id);
+
+          var oFamCls = FAMILY_BADGE_CLS[other.confinement_family] || "badge badge-nonstandard";
+          oRow.appendChild(el("span", oFamCls, other.confinement_family));
+          oRow.appendChild(el("span", "neighbor-entry__name", other.concept_name));
+          oRow.appendChild(el("span", "neighbor-entry__score",
+            Math.round(other.comparison.overall_score * 100) + "%"));
+
+          (function (cid) {
+            oRow.addEventListener("click", function () {
+              if (onCompare) onCompare(cid);
+            });
+          })(other.concept_id);
+
+          otherList.appendChild(oRow);
+        }
+        panel.appendChild(otherList);
+      }
+    }
+
+    container.appendChild(panel);
+  }
+
+  // ---------------------------------------------------------------------------
+  // Module-level registry reference (set by orchestrator via setRegistry)
+  // ---------------------------------------------------------------------------
+
+  var _registry = null;
+
+  function setRegistry(registry) {
+    _registry = registry;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Public API
+  // ---------------------------------------------------------------------------
 
   return {
     renderTaxonomyCard: renderTaxonomyCard,
-    renderSimilarityCard: renderSimilarityCard
+    selectBridges: selectBridges,
+    buildComparison: buildComparison,
+    renderNeighborList: renderNeighborList,
+    renderComparison: renderComparison,
+    setRegistry: setRegistry
   };
 })();

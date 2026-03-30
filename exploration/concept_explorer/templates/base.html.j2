@@ -13,6 +13,11 @@
   <nav class="nav" aria-label="Main navigation">
     <span class="nav__brand">Fusion TEA</span>
     <div class="nav__links">
+      <a href="/taxonomy"
+         class="nav__link{% if active_nav == 'taxonomy' %} nav__link--active{% endif %}"
+         aria-current="{% if active_nav == 'taxonomy' %}page{% else %}false{% endif %}">
+        Taxonomy
+      </a>
       <a href="/"
          class="nav__link{% if active_nav == 'concepts' %} nav__link--active{% endif %}"
          aria-current="{% if active_nav == 'concepts' %}page{% else %}false{% endif %}">
@@ -22,11 +27,6 @@
          class="nav__link{% if active_nav == 'compare' %} nav__link--active{% endif %}"
          aria-current="{% if active_nav == 'compare' %}page{% else %}false{% endif %}">
         Compare
-      </a>
-      <a href="/taxonomy"
-         class="nav__link{% if active_nav == 'taxonomy' %} nav__link--active{% endif %}"
-         aria-current="{% if active_nav == 'taxonomy' %}page{% else %}false{% endif %}">
-        Taxonomy
       </a>
     </div>
   </nav>
