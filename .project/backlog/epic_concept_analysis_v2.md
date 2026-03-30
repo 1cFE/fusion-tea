@@ -299,11 +299,13 @@ Inspired by the ralph-init.sh generate → review → refine pattern, but adapte
 
 ---
 
-### Item 5: Interactive Manage-Concept Agent [2 days]
+### Item 5: Interactive Manage-Concept Agent [2 days] — COMPLETE
 
 **Type**: Implementation
 **Effort**: 2 days (spec 2h, design 3h, plan 1h, execute 10h)
+**Status**: Complete (2026-03-29)
 **Dependencies**: Item 1 (feedback format, modal analysis prompt), Item 4 (shared memory)
+**Work Item**: `.project/active/manage-concept-agent/` (spec, design, plan)
 
 **Objective**: Create a `/manage-concept` Claude Code custom command that opens an interactive session for vetting, questioning, and improving a specific concept's analysis. Includes designing the handoff pattern for how human-driven changes flow back through the analysis agent.
 
@@ -329,12 +331,12 @@ Inspired by the ralph-init.sh generate → review → refine pattern, but adapte
 - Multi-concept comparison mode (single-concept focus)
 
 **Success Criteria**:
-- [ ] `claude /manage-concept 11` opens interactive session with full concept context
-- [ ] Agent correctly identifies pipeline state and adapts behavior
-- [ ] Key bets / assumptions / asterisks analysis is substantive and grounded in sources
-- [ ] Changes produce structured feedback that can be fed into the analysis agent
-- [ ] Change log captures session findings for audit trail
-- [ ] Agent can save learnings to shared memory via memory-handler
+- [x] `claude /manage-concept 11` opens interactive session with full concept context
+- [x] Agent correctly identifies pipeline state and adapts behavior
+- [x] Key bets / assumptions / asterisks analysis is substantive and grounded in sources
+- [x] Changes produce structured feedback that can be fed into the analysis agent — `--feedback` flag added to `cmd_analyze`
+- [x] Change log captures session findings for audit trail — change_log.md protocol in command prompt
+- [x] Agent can save learnings to shared memory via memory-handler
 
 **Deliverables**:
 - `.claude/commands/manage-concept.md`
@@ -445,4 +447,4 @@ This is a tuning question, not a code bug. The pipeline works correctly at any `
 ---
 
 **Last Updated**: 2026-03-29
-**Next Action**: Items 2 (build-visuals, in progress), 5 (manage-concept — unblocked by Items 1+4)
+**Next Action**: Item 2 (build-visuals, in progress) — only remaining incomplete item

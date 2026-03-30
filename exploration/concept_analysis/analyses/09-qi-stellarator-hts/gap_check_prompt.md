@@ -23,11 +23,16 @@ The dossier contains per-column values with confidence ratings (high/medium/low)
 ### Extracted Source Documents
 These are the primary technical sources extracted during Phase 1a research. Read each one to assess what technical depth is available:
 
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-01/sources/proxima-fusion-technology-page.md` (1 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md` (2 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-02/sources/helios-stellarator-comparison.md` (1 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-02/sources/proxima-fusion-2026-updates.md` (2 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-02/sources/stellaris-paper-details.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-01/sources/proxima-fusion-technology-page.md` (4 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-01/sources/proxima-fusion-technology-page.orig.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md` (337 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.orig.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-02/sources/helios-stellarator-comparison.md` (132 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-02/sources/helios-stellarator-comparison.orig.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-02/sources/proxima-fusion-2026-updates.md` (8 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-02/sources/proxima-fusion-2026-updates.orig.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-02/sources/stellaris-paper-details.md` (337 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-02/sources/stellaris-paper-details.orig.md` (2 KB)
 
 ### Reference Documents
 - **Analysis brief** (defines the D1+ section requirements): `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/concept_analysis_brief.md`

@@ -23,11 +23,16 @@ The dossier contains per-column values with confidence ratings (high/medium/low)
 ### Extracted Source Documents
 These are the primary technical sources extracted during Phase 1a research. Read each one to assess what technical depth is available:
 
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-01/sources/arxiv-2508-17691-junior-design-results.md` (1 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-01/sources/arxiv-2602-20564-dt-dipole-power-plants.md` (2 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-01/sources/openstar-prototype-roadmap.md` (2 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-02/sources/arxiv-2602-20564-plasma-state-clarification.md` (2 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-02/sources/openstar-2026-funding-tahi-timeline.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-01/sources/arxiv-2508-17691-junior-design-results.md` (40 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-01/sources/arxiv-2508-17691-junior-design-results.orig.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-01/sources/arxiv-2602-20564-dt-dipole-power-plants.md` (149 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-01/sources/arxiv-2602-20564-dt-dipole-power-plants.orig.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-01/sources/openstar-prototype-roadmap.md` (9 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-01/sources/openstar-prototype-roadmap.orig.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-02/sources/arxiv-2602-20564-plasma-state-clarification.md` (149 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-02/sources/arxiv-2602-20564-plasma-state-clarification.orig.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-02/sources/openstar-2026-funding-tahi-timeline.md` (8 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-02/sources/openstar-2026-funding-tahi-timeline.orig.md` (2 KB)
 
 ### Reference Documents
 - **Analysis brief** (defines the D1+ section requirements): `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/concept_analysis_brief.md`

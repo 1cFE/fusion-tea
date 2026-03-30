@@ -1086,6 +1086,21 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
         print("No concepts to analyze.")
         return
 
+    # Validate --feedback constraints
+    feedback = getattr(args, "feedback", None)
+    if feedback:
+        if args.force:
+            print("Error: --feedback and --force are mutually exclusive.")
+            print("  --feedback applies changes to existing analysis.md")
+            print("  --force re-creates analysis.md from scratch")
+            sys.exit(1)
+        if not feedback.is_file():
+            print(f"Error: feedback file not found: {feedback}")
+            sys.exit(1)
+        if len(targets) > 1:
+            print("Error: --feedback can only be used with a single concept")
+            sys.exit(1)
+
     analysis_template = (TEMPLATES_DIR / "analysis_v2.md").read_text(encoding="utf-8")
     assessment_template = (TEMPLATES_DIR / "assessment.md").read_text(encoding="utf-8")
     exemplars = find_exemplars()
@@ -1098,8 +1113,13 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
         analysis_path = out_dir / "analysis.md"
         had_existing_downstream = _has_downstream_artifacts(out_dir)
 
+        # For feedback mode, analysis.md must exist
+        if feedback:
+            if not analysis_path.exists():
+                print(f"  skip {cid} (no analysis.md — --feedback requires existing analysis)")
+                continue
         # Skip if already done (unless --force)
-        if analysis_path.exists() and not args.force:
+        elif analysis_path.exists() and not args.force:
             print(f"  skip {cid} (analysis.md exists, use --force to re-run)")
             continue
 
@@ -1137,6 +1157,54 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
             "analysis_path": str(analysis_path),
             "memory_context": memory_context,
         }
+
+        # === FEEDBACK MODE: apply external feedback file ===
+        if feedback:
+            ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+            prompt = fill_template(analysis_template, {
+                **common_vars,
+                "output_path": "",  # not used in feedback mode
+                "cold_start": "",
+                "feedback_pass": "true",
+                "feedback_path": str(feedback),
+                "self_advance": "",
+            })
+
+            # Save prompt for audit trail
+            prompt_path = out_dir / f"feedback_apply_prompt_{ts}.md"
+            prompt_path.write_text(prompt, encoding="utf-8")
+
+            if args.dry_run:
+                print(f"  dry-run {cid}: feedback prompt saved to {prompt_path}")
+                continue
+
+            print(f"  apply feedback {cid} ...", end="", flush=True)
+            t0 = time.time()
+            _stdout, stderr, rc = invoke_claude(
+                prompt, cwd=CONCEPT_ANALYSIS_DIR,
+                timeout=args.timeout, model=args.model,
+            )
+            elapsed = time.time() - t0
+
+            if rc != 0:
+                print(f" FAILED ({elapsed:.0f}s, rc={rc})")
+                print(f"    stderr: {stderr[:500]}", file=sys.stderr)
+                continue
+
+            print(f" done ({elapsed:.0f}s)")
+
+            # Propagate staleness
+            stale = propagate_staleness(cid, "feedback-applied-from-change-requests")
+            if stale:
+                print(f"    stale: {', '.join(stale)}")
+
+            # Archive consumed feedback file
+            archive_name = f"change_requests_{ts}.md"
+            archived = feedback.parent / archive_name
+            feedback.rename(archived)
+            print(f"    archived: {feedback.name} → {archive_name}")
+
+            continue
 
         # === COLD START (analysis pass 1) ===
         body_path = out_dir / "analysis_body.md"
@@ -2114,6 +2182,8 @@ def build_parser() -> argparse.ArgumentParser:
     p_analyze.add_argument("--force", action="store_true", help="Re-run even if output exists")
     p_analyze.add_argument("--max-passes", type=int, default=3,
                             help="Max analyze→assess iterations (default: 3; 1=no assessment)")
+    p_analyze.add_argument("--feedback", type=Path, metavar="PATH",
+                            help="Apply feedback file to existing analysis (skips cold-start)")
 
     # -- model-setup --
     p_ms = sub.add_parser("model-setup", help="Generate 1costingfe model setup script")

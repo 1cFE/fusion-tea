@@ -20,6 +20,7 @@ Prioritized list of epics and features.
 | Epic | Priority | Status | Started | Notes |
 |------|----------|--------|---------|-------|
 | Knowledge Database Integration | P1 | In Progress | 2026-02-06 | Items 1-3 complete, pipeline proven. Items 4-5 archived (blocked on user action, infrastructure works). |
+| Source Extraction Fix & Re-extraction | P0 | Draft | 2026-03-29 | HTML extraction broken (tables, images, quality). Fix upstream → re-extract → clean .orig.md. |
 
 ---
 
