@@ -10,7 +10,7 @@
 
 ## Executive Summary
 
-The agentic-mbse HTML extraction (trafilatura backend) produces broken tables from arxiv HTML sources — parameter names are stripped, rows are misaligned, and the output is unusable for analysis. Fix the upstream extraction, re-run all affected sources, and clean up leftover `.orig.md` files from the previous source-replacement work.
+The previous source-replacement run (concepts 01-22) used trafilatura for HTML extraction, which mangled scientific tables and equations. Arxiv HTML now routes through pandoc in agentic-mbse. Validate the fix is sufficient, define quality gates so we don't redo this again, re-run all affected sources, and clean up leftover `.orig.md` files.
 
 ---
 
@@ -42,18 +42,21 @@ Items must be completed in order:
 
 ## Backlog Items
 
-### Item 1: Fix agentic-mbse HTML Extraction (upstream)
-**Effort**: 1-3 days
-**Repo**: `~/1cfe/agentic-mbse`
+### Item 1: Validate & Fix Extraction Quality (upstream + here)
+**Effort**: 1-2 days
+**Repo**: `~/1cfe/agentic-mbse` + `fusion-tea`
 **Scope**:
-- [ ] Fix table extraction from arxiv HTML (parameter names, row alignment, units)
-- [ ] Add local image saving for HTML extractions
-- [ ] General HTML extraction quality improvements
-- [ ] Test against `arxiv-2411-06644` as reference case
+- [ ] Validate arxiv HTML extraction quality now that arxiv routes through pandoc
+- [ ] Test against `arxiv-2411-06644` Table 3 as reference case — must have parameter names, units, correct row alignment
+- [ ] Validate image saving works for HTML extractions
+- [ ] Validate general HTML quality (list markers, equations, structured content)
+- [ ] Fix any remaining issues found during validation
+- [ ] Define quality gate criteria so we don't have to redo extractions again
 
-**Known bad output**: Tables have empty parameter columns, orphaned unit rows (`m-3`), missing section headers within tables.
+**Context**: Previous source-replacement (concepts 01-22) used trafilatura for HTML, which mangled scientific tables/equations. Arxiv links now route through pandoc extraction. This item validates the fix is sufficient before re-running.
 
-**Reference**: https://arxiv.org/html/2411.06644v1#S4.T3
+**Reference bad output**: `exploration/phase_1a/research/11-magnetic-mirror/iter-01/sources/arxiv-2411-06644-confinement-predictions.md`
+**Source URL**: https://arxiv.org/html/2411.06644v1#S4.T3
 
 ### Item 2: Re-run Source Extractions
 **Effort**: 1-2 days
@@ -81,7 +84,8 @@ Items must be completed in order:
 ## Success Criteria
 
 - [ ] Table 3 from arxiv-2411-06644 renders with correct parameter names, values, and units
+- [ ] Quality gate criteria defined and documented — extraction validated before bulk re-run
 - [ ] HTML images saved locally alongside markdown
-- [ ] All arxiv HTML sources re-extracted and usable
+- [ ] All arxiv HTML (and affected HTML) sources re-extracted and usable
 - [ ] No `.orig.md` files remain in source directories
 - [ ] Analysis pipeline agents get clean source data

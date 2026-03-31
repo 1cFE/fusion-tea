@@ -19,11 +19,11 @@ issues. Produce a structured review report with Proposed Actions.
 
 
 ### Source Documents (for citation verification)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-01/sources/arxiv-2508-17691-junior-design-results.md` (1 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-01/sources/arxiv-2602-20564-dt-dipole-power-plants.md` (2 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-01/sources/openstar-prototype-roadmap.md` (2 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-02/sources/arxiv-2602-20564-plasma-state-clarification.md` (2 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-02/sources/openstar-2026-funding-tahi-timeline.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-01/sources/arxiv-2508-17691-junior-design-results.md` (55 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-01/sources/arxiv-2602-20564-dt-dipole-power-plants.md` (262 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-01/sources/openstar-prototype-roadmap.md` (9 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-02/sources/arxiv-2602-20564-plasma-state-clarification.md` (262 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/12-levitated-dipole/iter-02/sources/openstar-2026-funding-tahi-timeline.md` (8 KB)
 
 ## Review Checklist
 
@@ -75,7 +75,7 @@ Use this exact format:
 # Review: Levitated Dipole (D-T)
 
 **Iteration:** 1
-**Date:** 2026-03-22
+**Date:** 2026-03-30
 **Files reviewed:** analysis.md, model_setup.py
 **Source documents:** 5 files
 

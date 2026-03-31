@@ -5,6 +5,8 @@ Company: OpenStar Technologies
 Type: synthesis
 Status: draft
 Created: 2026-03-22
+Stale: true
+Stale-Reason: analysis-rewritten-by-force
 ---
 
 # Synthesis: Levitated Dipole (D-T) — OpenStar Technologies

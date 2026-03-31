@@ -289,7 +289,9 @@ The ARC cost database provides fabricated component costs for three subsystems o
 
 Given this structure, the appropriate approach is:
 
-**(a) Free-form scaling with analogue cost fractions for BOP and indirect costs.** A structured costing framework (pyFECONS / 1costingfe) requires a complete CAS breakdown — which does not exist for ARC. Instead: use ARC's $5.56B as the direct nuclear island cost basis; estimate BOP using ARIES-AT or ARIES-RS CAS fractions (BOP is typically 30–50% of nuclear island cost in MFE designs); apply indirect cost multipliers from Araiinejad & Shirvan (2025) as a scenario parameter. The regulatory cost multiplier (1.0× under NRC Part-30 vs. 2.2× under Part-50-equivalent, per Araiinejad 2025) is a discrete scenario branch, not a continuous variable.
+**(a) Free-form scaling with analogue cost fractions for BOP and indirect costs.** A structured costing framework (pyFECONS / 1costingfe) requires a complete CAS breakdown — which does not exist for ARC. Instead: use ARC's $5.56B as the direct nuclear island cost basis; estimate conventional BOP accounts (power conversion turbomachinery, buildings, electrical systems, water systems, site infrastructure) using ARIES-AT or ARIES-RS CAS fractions (BOP is typically 30–50% of nuclear island cost in MFE designs); apply indirect cost multipliers from Araiinejad & Shirvan (2025) as a scenario parameter. The regulatory cost multiplier (1.0× under NRC Part-30 vs. 2.2× under Part-50-equivalent, per Araiinejad 2025) is a discrete scenario branch, not a continuous variable.
+
+**ARC-specific BOP additions not covered by ARIES analogues**: ARIES-AT and ARIES-RS use solid ceramic tritium breeders with conventional steam BOPs — neither design includes a FLiBe chemistry plant or molten-salt tritium extraction system. Applying ARIES CAS fractions directly to ARC's BOP would omit a real cost line with no analogue in those studies. The FLiBe chemistry and tritium extraction plant must be treated as an additive ARC-specific BOP cost, estimated independently from the ARIES fraction approach. No published cost estimate exists for this subsystem (see Section 6, gap #15). Scope the ARIES fraction guidance strictly to conventional BOP accounts; flag the FLiBe plant as a truly-unknown additive line.
 
 **(b) Primary scaling axes — three parameters dominate model output:**
 1. **REBCO tape cost [$/kA-m]** — drives 80–90% of the nuclear island cost uncertainty. Span at least 10× the $10/kA-m commercial target in sensitivity analysis.
@@ -322,6 +324,7 @@ Given this structure, the appropriate approach is:
 | 12 | Li-6 enrichment supply chain and cost at fleet scale | S4 | not-yet-sourced | important | US DOE Li-6 enrichment program; ORNL isotope production data |
 | 13 | Regulatory cost impact specific to NRC Part 30 framework | S2 | not-yet-sourced | nice-to-have | Stewart & Shirvan 2022 (quantifies Part 50 impact); NRC fusion rulemaking docket |
 | 14 | Divertor replacement cost and frequency for compact tokamak geometry | S3, S5 | not-yet-sourced | nice-to-have | ITER divertor cost data; DEMO/EU-DEMO studies |
+| 15 | FLiBe chemistry plant and tritium extraction system capital cost — ARC-specific BOP addition with no ARIES analogue | S5 | truly-unknown | important | ARC paper explicitly excludes BOP from cost scope; tritium extraction from FLiBe is identified only as an R&D requirement with no design or cost basis [arc-reactor-specifications.md §7]. Cannot be estimated from ARIES CAS fractions. Estimate by analogy to chemical plant cost databases (e.g., IChemE) scaled to blanket flow rate and tritium throughput, or defer to a detailed ARC BOP engineering study. |
 
 ---
 

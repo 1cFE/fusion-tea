@@ -1,6 +1,6 @@
-# D1+ Concept Analysis: QI Stellarator - HTS
+# D1+ Concept Analysis: MagLIF (D-T)
 
-You are producing a D1+ analysis for the fusion concept **QI Stellarator - HTS** (Proxima Fusion).
+You are producing a D1+ analysis for the fusion concept **MagLIF (D-T)** (Pacific Fusion, Fuse Energy Technologies).
 
 ## Analysis Goals
 
@@ -97,23 +97,6 @@ to avoid known pitfalls and apply established patterns. Do not cite these
 memories as sources — they are guidance, not evidence. Verify any specific
 claims against the actual source documents.
 
-## ARIES Studies Are Best Parameter Source for MFE Concepts
-Date: 2026-03-29 | Concepts: MFE
-
-ARIES-AT and ARIES-CS studies provide the most complete parameter sets
-for magnetic confinement cost modeling — plant-level CAS breakdowns,
-thermal efficiency targets, and magnet cost estimates. Prefer these over
-individual paper estimates when available. Cross-check against PROCESS
-code outputs where overlap exists.
-
-## FLiBe Coolant Cost Data Is Consistently Sparse
-Date: 2026-03-29 | Concepts: 09, 14, 22, IFE
-
-IFE concepts using FLiBe as primary coolant/breeder consistently lack
-cost data for coolant inventory and processing. Flag as [estimated] with
-high uncertainty. The HYLIFE-II report (Moir 1994) is the only source
-with FLiBe cost estimates but uses 1994 dollars.
-
 ## Assessment Repeatedly Flags Missing O&M Breakdown
 Date: 2026-03-29 | Concepts: all
 
@@ -150,7 +133,7 @@ Read these files in this order before writing:
 Study the exemplars carefully. They show the expected level of technical depth, citation practice, and analytical rigor. Your output should match their quality. Note that exemplars may vary in structure — follow the output template for section structure, but match the exemplars for analytical depth and style.
 
 #### 4. Phase 1a Dossier (structured research summary for this concept)
-`/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/dossier.md`
+`/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/dossier.md`
 
 The dossier contains per-column values with confidence ratings, citations, and notes from prior research iterations. This is your factual foundation.
 
@@ -164,16 +147,20 @@ Spawn one subagent per source document. For cold-start analysis, ask each subage
 - What materials, supply chain, or manufacturing considerations are relevant?
 
 Sources to read via subagents:
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-01/sources/proxima-fusion-technology-page.md` (4 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-01/sources/proxima-fusion-technology-page.orig.md` (1 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md` (337 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.orig.md` (2 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-02/sources/helios-stellarator-comparison.md` (132 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-02/sources/helios-stellarator-comparison.orig.md` (1 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-02/sources/proxima-fusion-2026-updates.md` (8 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-02/sources/proxima-fusion-2026-updates.orig.md` (2 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-02/sources/stellaris-paper-details.md` (337 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-02/sources/stellaris-paper-details.orig.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-01/sources/arxiv-2408-15206-pulsed-magnetic-fusion.md` (66 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-01/sources/arxiv-2408-15206-pulsed-magnetic-fusion.orig.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-01/sources/fuse-energy-technology.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-01/sources/fuse-energy-technology.orig.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-01/sources/pacific-fusion-website-technology.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-01/sources/pacific-fusion-website-technology.orig.md` (3 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-01/sources/z-ife-power-plant-concept.md` (3 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-01/sources/z-ife-power-plant-concept.orig.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-02/sources/fuse-energy-not-boring-details.md` (91 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-02/sources/fuse-energy-not-boring-details.orig.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-02/sources/pacific-fusion-interview-fusion-report.md` (8 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-02/sources/pacific-fusion-interview-fusion-report.orig.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-02/sources/z-ife-sand2006-7148-thermal-cycles.md` (277 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-02/sources/z-ife-sand2006-7148-thermal-cycles.orig.md` (2 KB)
 
 #### 6. Schema (controlled vocabulary and column definitions)
 `/home/reid/1cfe/fusion-tea/exploration/phase_1a/schema.md`
@@ -190,7 +177,7 @@ Sources to read via subagents:
 #### Step 1: Write the analysis body
 
 Write the complete analysis to this file using the Write tool:
-`/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/09-qi-stellarator-hts/analysis_body.md`
+`/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/07-maglif/analysis_body.md`
 
 Write ONLY the analysis content (Sections 1-8). Do NOT include:
 - YAML frontmatter (the pipeline adds it automatically)
@@ -202,7 +189,7 @@ Start the file with `# D1+ Analysis:` and end after Section 8.
 #### Step 2: Update Reuses (if applicable)
 
 If you referenced any approved prior analyses, update the Reuses field in:
-`/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/09-qi-stellarator-hts/analysis.md`
+`/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/07-maglif/analysis.md`
 
 The file already contains `Reuses: []`. Use the Edit tool to replace it with the concept IDs you referenced, e.g.:
 `Reuses: [21-spherical-tokamak-hts, 28-hts-tokamak-full-hts]`
@@ -220,6 +207,8 @@ If you did not reference any approved analyses, leave Reuses unchanged.
 
 ## Cross-Concept Reuse
 
+- `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/07-maglif/analysis.md`
+- `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/08-frc-w-direct-conversion/analysis.md`
 - `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/21-spherical-tokamak-hts/analysis.md`
 
 If approved prior analyses are available:

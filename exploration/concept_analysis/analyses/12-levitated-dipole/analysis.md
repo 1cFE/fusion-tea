@@ -3,21 +3,17 @@ ID: 12-levitated-dipole
 Concept: Levitated Dipole (D-T)
 Company: OpenStar Technologies
 Status: draft
-Created: 2026-03-22
+Created: 2026-03-30
 Approved-Date:
-Reuses: [01-hts-compact-tokamak, 08-frc-w-direct-conversion, 11-magnetic-mirror, 21-spherical-tokamak-hts]
-Review-Iterations: 1
-Last-Review: 2026-03-22
-Review-Status: addressed
+Reuses: [21-spherical-tokamak-hts]
 ---
 
 # D1+ Analysis: Levitated Dipole (D-T) — OpenStar Technologies
 
-**Concept**: Single floating HTS coil levitated dipole — D-T fuel, quasi-steady-state operation
-**Company**: OpenStar Technologies (Wellington, New Zealand; founded 2021)
-**Commercial Target**: Tama Nui (50–200 MWe); preceded by Maui (~2031, neutron-producing) and Tahi (~2028, Lawson criterion demonstration)
+**Concept**: Levitated Dipole — D-T fuel
+**Company**: OpenStar Technologies (Wellington, New Zealand)
+**Design Point**: Reactor A (208 MWe net) and Reactor B (74.5 MWe net) from Simpson et al. 2026
 **Confinement Family**: MFE — Levitated Dipole
-**Operation Mode**: Quasi-steady (>95% duty cycle; pulsed only by cryogenic reservoir thermal limits)
 
 ---
 
@@ -25,193 +21,220 @@ Review-Status: addressed
 
 **Rating: Moderate**
 
-OpenStar Technologies published a detailed D-T power plant design paper in February 2026 (arXiv 2602.20564, Simpson et al.) — a rare level of transparency for a startup at this development stage. The paper includes a 0D power balance model, neutronics analysis, magnet design specifications, and a conceptual blanket configuration. This is supplemented by a companion paper on the Junior prototype (arXiv 2508.17691). Together, these two preprints form the core technical basis for this analysis. The "Moderate" rating reflects that OpenStar discloses more physics and engineering detail than most early-stage fusion startups, while stopping well short of the information needed to close an LCOE model: capital cost, thermal cycle choice, Qsci, auxiliary power requirements, and balance of plant are all absent.
+The levitated dipole concept sits in an unusual position relative to most non-mainstream fusion approaches: a single, remarkably detailed power plant design paper exists (Simpson et al., arXiv 2602.20564), providing full 0D power balance equations, neutronics calculations, coil design parameters, and mass breakdowns for two reactor variants. This is materially more than most early-stage companies publish. However, the absolute LCOE and overnight capital cost figures are deliberately withheld — described as "preliminary results from this model which are subject to change" — and no independent techno-economic analysis of the concept exists. The data is therefore deep in physics and engineering but shallow on the cost side.
 
-**Peer-reviewed and technical literature:**
+**Power plant design documentation:**
+Simpson et al. (2026), "Deuterium-Tritium Levitated Dipole Fusion Power Plants" (arXiv 2602.20564) is the primary reference. It presents a 0D power balance model, two optimized reactor design points (Reactor A at 208 MWe and Reactor B at 74.5 MWe), full neutron transport calculations for the shield and blanket, coil stress and field analysis, and a component mass table. The methodology is transparent and peer-reviewed. This is an unusually complete disclosure for a company at OpenStar's funding level.
 
-The Simpson et al. (2026) preprint is the primary engineering reference. It discloses the "Reactor A" conservative design point, magnet architecture (23 T REBCO HTS, CICC, neon slush cooling), plasma heating baseline (ICRH, ~70% wall-plug efficiency), tritium breeding approach (Li₂O ceramic, TBR 1.1), and the key performance output pair: ~667 MW fusion power and ~208 MWe net electric [arxiv-2602-20564-dt-dipole-power-plants.md §Reactor Performance]. The paper benchmarks two confinement scaling assumptions (Bohm and "improved") and selects the conservative case as the published design point [arxiv-2602-20564-dt-dipole-power-plants.md §Plasma Physics].
+> "OpenStar is currently in the process of developing a model for estimating the overnight capital cost and LCOE...This study uses preliminary results from this model which are subject to change."
+> — arxiv-2602-20564-dt-dipole-power-plants.md, §Discussion
 
-> "In order to achieve rapid deployment of fusion power to the grid, the use of the Deuterium-Tritium (DT) fuel cycle is required due to its lower required plasma triple products."
-> — arxiv-2602-20564-dt-dipole-power-plants.md, §Fuel
-
-The Junior prototype paper (arXiv 2508.17691) provides measured hardware performance: 14 NI solder-impregnated REBCO HTS coils in series, 5.63 T design field (2.35 T achieved at 42% of design current), 550 kg floating mass, and 0.095 MJ stored energy delivered via the on-board flux pump — a world record for HTS flux pump delivery at the time of publication [arxiv-2508-17691-junior-design-results.md §Junior Core Magnet Specs]. The Junior device was built in under two years for less than $10M USD [arxiv-2508-17691-junior-design-results.md §Key Notes].
-
-**Experimental heritage:**
-
-OpenStar's lineage traces to LDX (MIT/Columbia, 2004–2011), the only prior levitated dipole experiment. LDX demonstrated quasi-steady high-beta discharges (β up to ~20%, >20 seconds), observed the inward turbulent pinch phenomenon, and used ECRH heating exclusively [openstar-prototype-roadmap.md §Lab Experiments]. The University of Tokyo RT-1 device corroborated peaked density profiles in a similar geometry using Bi-2223 HTS [openstar-prototype-roadmap.md §Lab Experiments]. These experiments established the core physics phenomena — interchange-mode MHD stability, peaked pressure profiles, anomalous inward particle pinch — that OpenStar's design relies upon.
-
-OpenStar demonstrated levitated plasma confinement in February 2026: the Junior magnet levitated inside the Marsden vacuum chamber, achieving plasma at ~300,000°C for 20 seconds [openstar-2026-funding-tahi-timeline.md §February 2026 Milestone]. This is the first levitated dipole plasma demonstration by a commercial entity.
+**Prototype documentation:**
+The Junior prototype paper (arXiv 2508.17691) provides full engineering specifications for the experimental device: magnet geometry, HTS tape quantity, flux pump design, vacuum vessel dimensions, and initial plasma results. It is a clean engineering paper with no significant proprietary omissions.
 
 **Company transparency:**
+OpenStar's public communications (website, press releases, news coverage) confirm the development roadmap (Junior → Tahi → Maui → Tama Nui), funding milestones (NZ$10M seed round for Junior, public NZ$35M disclosed in 2026 coverage), and key claims. These are narrative sources without engineering detail.
 
-OpenStar is moderately transparent by startup standards. Published items include: device names and prototype roadmap, funding amounts (NZD 20M pre-2026 + NZD 35M in February 2026 from the NZ Regional Infrastructure Fund), key experimental milestones, and the power plant preprint with 0D physics modeling. Not published: capital cost estimates, numerical Qsci value, auxiliary heating power requirements, thermal power conversion cycle choice, or any plant economic analysis.
+**Independent analyses:**
+No independent techno-economic analysis of levitated dipole fusion power has been published. The LDX experiment at MIT (Boxer et al. 2010) and the RT-1 experiment at University of Tokyo provide the experimental heritage, but neither was oriented toward power plant analysis. No ARIES, PROCESS, or equivalent system-code study of a levitated dipole power plant exists in the public literature.
 
 **Phase 1a dossier completeness:**
-
-The dossier achieved high confidence on confinement family, fuel, plasma state (sustained, not ignited — explicitly verified via power balance equation analysis), magnet type, neutron management, and operation mode. Medium confidence remains on tritium breeding (Li₂O confirmed but cooling scheme and module design preliminary) and energy capture (thermal cycle genuinely unpublished — re-confirmed across arXiv HTML and all OpenStar website technical resources). After two research iterations, these are confirmed as publication gaps, not research gaps.
+After two research iterations, the dossier achieved high confidence on all structural columns (confinement family, fuel, magnet type, neutron management, operation mode) and resolved one important correction (plasma state from "Burning" to "Sustained" after careful re-reading of the power balance equation). Remaining medium-confidence items — thermal cycle specification, full blanket engineering details — are confirmed as genuinely unpublished.
 
 **Key data gaps limiting this analysis:**
-1. Qsci numerical value present in the design paper but not accessible in the HTML preprint version
-2. Auxiliary heating power (Paux) not stated → recirculating power fraction cannot be calculated
-3. Thermal power conversion cycle (Rankine vs. sCO₂) not specified in any source
-4. No capital cost estimate at any level of detail
-5. Plasma exhaust handling not discussed anywhere in the published design
-6. Li₂O blanket cooling scheme acknowledged as preliminary in the paper itself
+1. Absolute LCOE and overnight capital cost figures withheld by OpenStar
+2. Thermal conversion cycle (Rankine vs. sCO₂) not specified in any published source
+3. Sacrificial coil replacement cost not quantified
+4. No confinement scaling data beyond LDX heritage (τ_e ~ 14.5 ms) toward the 3.5 s target
+5. No independent system-code or TEA validation of the Simpson et al. design
 
 ---
 
 ## Section 2: Challenges in Capturing System Function
 
-The levitated dipole's LCOE structure rests on four central engineering bets: (1) inherent MHD interchange stability enabling high-beta operation without ELMs or disruptions; (2) the on-board flux pump enabling indefinite coil energization without current leads penetrating the vacuum vessel; (3) a two-section sacrificial coil architecture solving neutron tolerance without abandoning the levitated geometry; and (4) quasi-steady operation at >95% duty cycle eliminating pulsed-power energy storage requirements. Each bet introduces LCOE modeling challenges ranked below by impact.
+Challenges ranked by impact on LCOE modeling.
 
-**1. Flux Pump and Levitated Coil — No Cost Analogues (Impact: Critical)**
+**1. The LCOE model is deliberately withheld (Impact: Critical)**
 
-The defining engineering innovation of the OpenStar design is the on-board superconducting transformer-rectifier flux pump, which maintains the floating coil's current without any physical current leads penetrating the vacuum vessel [arxiv-2602-20564-dt-dipole-power-plants.md §Driver Technology; openstar-prototype-roadmap.md §Key Milestones]. This system is patented and has no commercial precedent — no comparable fusion device has used an on-board flux pump in a power plant context. The capital cost of the levitated coil + flux pump + docking mechanism assembly is the single most uncharacterized CAPEX item in the design.
+The Simpson et al. (2026) paper explicitly states that OpenStar's cost model exists but its outputs are "preliminary and subject to change" — absolute cost figures are not reported, only relative constraints (Reactor A maximum overnight cost set to a normalized value of 1.0; Reactor B at 0.5 of that). An LCOE model for the levitated dipole therefore has no company anchor point. All capital cost estimates must be built from analogues: REBCO tape at market price, tungsten at commodity price, blanket by mass, concrete outer vessel by standard construction rates. This is a more severe gap than for any approved prior concept, where at least the design team's own estimate provides a sanity check.
 
-The entire confinement system reduces to one floating component and one external support magnet, which is a remarkable architectural simplification relative to tokamaks (dozens of TF and PF coils). But "simpler" does not mean "cheaper" when the single component must: achieve 23 T at the winding, operate in a D-T neutron environment, undergo partial replacement annually, re-levitate after each maintenance cycle, and maintain position control to within the tolerances required for stable plasma geometry. The Junior prototype cost of <$10M [arxiv-2508-17691-junior-design-results.md §Key Notes] is a scientific device at TRL 2–3 and provides no meaningful scaling basis for the power plant coil.
+**2. Confinement scaling extrapolation spans six orders of magnitude in triple product (Impact: Critical)**
 
-**2. Confinement Scaling — Bohm Assumed, Unvalidated at Fusion-Relevant Conditions (Impact: Critical)**
+The only experimental levitated dipole database comes from LDX (MIT/Columbia, 2004–2011) and RT-1 (Tokyo, 2006–present). LDX demonstrated energy confinement times of ~14.5 ms at laboratory parameters. The Reactor A design requires τ_e = 3.5 s — roughly 240× longer. The scaling path through Tahi (the next prototype, ~2028, target 20 T) is not quantified in any publication. The paper is explicit about this dependency:
 
-The Reactor A design point uses Bohm-like confinement scaling, which the paper identifies as conservative [arxiv-2602-20564-dt-dipole-power-plants.md §Plasma Physics]. The LDX experiment demonstrated quasi-steady confinement with Bohm-level energy confinement times in hydrogen isotopes at sub-keV plasma temperatures (hundreds of eV) — but LDX operated at a fraction of the plasma pressure and stored energy of a fusion-grade device. Junior currently operates at ~300,000°C (26 eV), more than two orders of magnitude below the 10–20 keV required for D-T fusion.
+> "The assumption that these reactors will be Q_sci = 15 is only valid if a smaller demonstration device...displays adequate plasma performance."
+> — arxiv-2602-20564-dt-dipole-power-plants.md, §Discussion
 
-The entire commercial viability case depends on confinement being at least Bohm-level at the reactor design point — and preferably "improved" (a second, more optimistic scenario in the paper). The "improved confinement" scenario is not described in the HTML preprint. The extrapolation from Junior's 26 eV demonstration plasma to the Reactor A operating point has not been benchmarked against any fusion-relevant experiment. Tahi (~2028) is designed to demonstrate placement on the Lawson criterion curve — this is a critical milestone, but until it is achieved, the confinement scaling assumption remains the largest unvalidated physics element of the design.
+The designs assume Bohm-like or better confinement scaling. No empirical data confirms which scaling law applies to a high-β levitated dipole. Reactor B is specifically flagged as requiring "a more significant increase" over Bohm-like scaling — i.e., it depends on achieving better-than-Bohm transport. This propagates directly into fusion power and recirculating power fraction, both of which are LCOE-critical.
 
-**3. Unknown Qsci and Recirculating Power Fraction (Impact: High)**
+**3. Annual sacrificial coil replacement — a genuinely novel operating cost structure (Impact: High)**
 
-The plasma is not ignited: the power balance equation includes Paux (auxiliary power) as an essential term, and Section 2.2.7 of the paper describes ICRH as "required" for operation rather than supplementary [arxiv-2602-20564-plasma-state-clarification.md §Evidence]. The paper treats Qsci as a fixed design parameter but does not state its numerical value in the accessible HTML version.
+The outer ~20% of the levitated REBCO coil is "sacrificial": it accumulates neutron fluence to the 1 MW-year/m² threshold over approximately one year, then must be replaced. The inner ~80% is intended to last a decade or more. The docking operation takes ~5 minutes. But the cost of the sacrificial section — its REBCO tape content, winding labor, magnet qualification testing, and remote handling — is nowhere quantified in the public literature. This is a recurring annual operating cost with no analogue in any other fusion concept. Its magnitude relative to capital cost determines whether the modular replacement strategy is an economic advantage or a hidden cost burden. A rough estimate: if the sacrificial section contains ~20% of the 4,320 km of REBCO tape (Reactor A), that is ~864 km/year of tape replacement, at current tape prices of $50–100/kA-m.
 
-The published 667 MW fusion / 208 MWe net pair enables a partial inference. Assuming 35–40% thermal efficiency on the nuclear island and an energy multiplication of approximately 1.1 from breeding reactions, gross electric is roughly 255–290 MWe, implying ~50–80 MWe recirculating power [inferred from arxiv-2602-20564-dt-dipole-power-plants.md §Reactor Performance; thermal efficiency range from MFE analogue designs]. With ICRH wall-plug efficiency of ~70% [arxiv-2602-20564-dt-dipole-power-plants.md §Heating], implied Paux is approximately 35–55 MW, giving Qsci in the range of 12–19. This is a derivable inference with wide uncertainty from the unspecified thermal conversion efficiency, not a published value.
+> "Intrinsic decoupling of the confining magnetic field-generating REBCO magnets and the vacuum vessel offer unparalleled accessibility and maintainability."
+> — arxiv-2602-20564-dt-dipole-power-plants.md, §Introduction
 
-**4. Sacrificial Coil Replacement — Novel OPEX Structure (Impact: High)**
+The claim of accessibility is engineering-plausible, but the cost of maintaining it annually — under neutron activation conditions — has not been demonstrated or costed.
 
-The two-section coil design is innovative: the sacrificial outer section (~20% of coil volume) is designed for approximately 1 year neutron damage lifetime. The 1 MW-year/m² fluence figure is stated in the paper as the tungsten shield replacement threshold; the ~1-year coil replacement cycle is derived from the coil's design lifetime in the same neutron environment [arxiv-2602-20564-dt-dipole-power-plants.md §Magnet; dossier.md §Neutron Management]. This means the levitated coil must be docked, partially replaced, and re-levitated on an approximately annual cycle. The operational sequence — pumping out spent neon slush, docking the magnet, replacing the sacrificial outer section, recharging via flux pump, and re-levitating — is described conceptually in the paper but has never been demonstrated at any scale.
+**4. Plasma edge physics is explicitly uncharacterized (Impact: High)**
 
-This creates an unusual OPEX structure with no precedent in any approved prior analysis. Tokamak OPEX centers on blanket and divertor module replacement; FRC OPEX involves no first-wall-comparable component; mirror OPEX centers on heating system maintenance. The levitated dipole's primary scheduled maintenance item — an annual partial coil replacement — is a recurring CAPEX-like expenditure with neither a cost estimate nor a manufacturing specification in any public source.
+The paper's own assessment of the plasma boundary condition is notable for its candor:
 
-**5. Balance of Plant Undefined (Impact: Moderate)**
+> "The physics defining an upper bound on the value of p_lcfs is not well understood as no dipole experiments have yet had enough heating power to generate edge conditions applicable to fusion power plants."
+> — arxiv-2602-20564-plasma-state-clarification.md, §2.1.4
 
-No source — the arXiv paper, OpenStar website, or any news coverage — specifies the thermal power conversion cycle. The paper focuses on the nuclear island and notes BOP engineering is outside its scope [arxiv-2602-20564-dt-dipole-power-plants.md §Energy Conversion]. This is a genuine publication gap. The two-temperature shield design (hot shield >2000 K, warm shield ~600°C) with 92% of deposited heat radiated to the first wall potentially enables higher-efficiency thermodynamic cycles than typical tokamak designs, but this has not been analyzed or published.
+The design uses upper bounds on edge temperature (800 eV) and pressure (10³ Pa) borrowed from I-mode tokamak data, not from dipole experiments. If actual edge conditions are more constraining, the plasma triple product falls, Q_sci drops, and the recirculating power fraction rises — directly elevating LCOE.
 
-**6. Plasma Exhaust Handling (Impact: Moderate)**
+**5. Thermal cycle unspecified — affects thermal efficiency and BOP cost (Impact: Moderate)**
 
-The levitated dipole has no divertor equivalent. In a tokamak, plasma exhaust — helium ash, unburned fuel, and impurities — is directed to a localized target for pumping. In a levitated dipole, the closed magnetic topology has no natural exhaust channel. None of the OpenStar publications discuss helium ash accumulation, impurity seeding, fueling strategy, or first-wall heat load distribution. A device designed to sustain D-T plasma at >95% duty cycle must have an answer to this question, but it is absent from all available sources. [1]
+Despite a stated thermal efficiency of 40%, the actual thermodynamic cycle (steam Rankine, supercritical CO₂ Brayton, or organic Rankine) is nowhere specified in the Simpson et al. paper or any OpenStar public material. The 40% efficiency is consistent with sCO₂ or advanced Rankine, but this is the analyst's inference. The balance-of-plant capital cost — the major cost driver for the thermal island — cannot be accurately estimated without knowing the cycle type and working fluid temperature.
 
----
-[1] Reviewed: arxiv-2602-20564-dt-dipole-power-plants.md (full HTML); arxiv-2508-17691-junior-design-results.md; openstar-prototype-roadmap.md; openstar-2026-funding-tahi-timeline.md. No mention of divertor, plasma exhaust, helium ash, or fueling in any source.
+**6. Remote handling of an annually replaced, radioactively activated levitated HTS coil (Impact: Moderate)**
+
+The sacrificial coil replacement requires removing a 550 kg (Junior scale) to ~500 kg (sacrificial section, scaled from 2,560 tonne total) component from a radioactive environment, refurbishing it externally, and re-inserting it. The paper claims a 5-minute docking time, but this appears to refer to the cryogenic coupling operation, not the full replacement cycle including remote handling, testing, and logistics. In D-T operation, the magnet assembly accumulates activation from 14 MeV neutrons, requiring hot-cell handling. No remote handling system for this specific geometry has been designed or costed.
+
+**Modeling Approach Recommendation: Free-Form Analogue Estimation**
+
+Because no reference fusion concept shares the levitated dipole's architecture (single internal levitated coil, modular annual replacement, solid ceramic blanket, concrete outer vessel), 1costingfe-style adaptation from a reference concept is not appropriate — there is no anchor concept whose cost structure can be rescaled. The recommended approach is free-form analogue estimation anchored to the component mass data in Simpson et al. Table 5, with four primary estimation paths:
+
+1. **Core magnet** (cost-dominant): REBCO tape quantity (4,320 km, Reactor A) × $/kA-m at projected market price, plus structural CICC conduit, coil winding labor, and cryostat. The paper explicitly benchmarks magnet physical scale against CFS ARC — ARC magnet cost estimates are the nearest published analogue for a high-field REBCO coil at this stored energy (~20 GJ). Annual sacrificial section replacement (~864 km/yr of tape + remote handling + qualification testing) must be modeled as a separate recurring O&M capex line with no analogue in any other fusion concept.
+2. **Blanket and neutron shield**: Material quantities given in Table 5 (Li₂O: 3,490 t; W-B₄C-W tiles: 1,760 t) allow direct commodity-price estimates. Apply manufacturing and installation multipliers (ceramic tile fabrication, tungsten tile processing above recrystallization temperature). Li₂O uses natural lithium — no enrichment cost.
+3. **Outer vacuum vessel**: Reinforced concrete (38,700 t) and structural steel — dominated by commodity construction costs. The paper argues this is explicitly cost-advantaged vs. precision steel tokamak VVs, and the mass breakdown supports treating this as a straightforward civil engineering analogue.
+4. **Balance of plant / thermal island**: Standard thermal power island $/kWth, with cycle type held as a scenario variable (sCO₂ Brayton at ~44% vs. steam Rankine at ~37% efficiency brackets the 40% placeholder). This is the most transferable analogue from other fusion or advanced fission concepts.
+
+**Key Hypotheses for the Cost Model**
+
+The three parameters with the highest continuous LCOE leverage are:
+
+- **τ_e / Q_sci (confinement scaling)**: Required τ_e = 3.5 s (Reactor A) vs. 14.5 ms demonstrated (LDX) — a 240× extrapolation under Bohm-like scaling; Reactor B requires better-than-Bohm. Sensitivity range: 0.5–2× the required value, propagating directly into recirculating power fraction and net output. *If Tahi fails to reach the Bohm-like n·τ_e threshold (3.23×10¹⁹ s·m⁻³ at 1 keV), Reactor A is not viable as designed — the optimizer must either increase magnet scale, raising overnight capital cost above the normalized baseline, or accept Q_sci < 15, elevating LCOE.*
+- **Annual sacrificial coil replacement cost (% of overnight capex)**: Driven by REBCO tape price (~864 km/yr × $/kA-m) plus remote handling and qualification labor. The paper asserts this "does not make a significant impact" but provides no dollar figure. *If annual replacement cost exceeds ~3–5% of overnight capital per year — the threshold above which it dominates O&M — the concept loses its operating-cost edge vs. an ST-HTS that also uses REBCO but does not require annual internal component replacement.*
+- **Thermal efficiency (η_th)**: Single-point assumption of 40% with no cycle specified. Plausible range 35–47%. *A 5 percentage-point reduction (40% → 35%) lowers net output by ~12% at constant fusion power, raising LCOE proportionally — equivalent to requiring a ~12% reduction in overnight capital to maintain cost competitiveness.*
 
 ---
 
 ## Section 3: Maturity of Key Subsystems and Components
 
-Ordered from least mature (highest risk) to most mature.
+Ordered from least mature to most mature.
 
 ---
 
-**Plasma Exhaust and Fueling System — TRL 1**
+**D-T Fusion at Q_sci = 15 in a Levitated Dipole — TRL 2**
 
-- **Demonstrated**: Nothing. No plasma-facing component design for exhaust handling, no exhaust pathway, and no fueling mechanism (beyond ICRH as the heating source) has been described for any levitated dipole device in D-T operating conditions.
-- **On paper only**: Not yet addressed in any published document.
-- **Missing at scale**: The entire subsystem concept. Helium ash accumulation in a closed-field configuration, impurity control, and D-T fuel injection must all be resolved for D-T operation. This is the most significant unstated gap in the published design.
-
----
-
-**D-T Confinement at Fusion-Relevant Conditions — TRL 2**
-
-- **Demonstrated**: Junior demonstrated levitated plasma confinement at ~300,000°C (26 eV) for 20 seconds in February 2026, the first such demonstration by a commercial entity [openstar-2026-funding-tahi-timeline.md §February 2026 Milestone]. LDX previously demonstrated quasi-steady high-beta confinement (β ~20%) with hydrogen isotopes in a levitated dipole geometry for >20 seconds at keV temperatures [openstar-prototype-roadmap.md §Lab Experiments]. The Bohm-like confinement scaling used in the Reactor A design has been observed in LDX — but not at D-T-relevant triple products.
-- **On paper only**: D-T confinement at fusion-relevant nTτ on the Lawson curve. Tahi (~2028) is designed to demonstrate reaching the Lawson criterion — it is not itself expected to produce neutrons [openstar-2026-funding-tahi-timeline.md §Tahi Specifications]. Peaked pressure profile stability at the local β₀ ~ 3 optimum at fusion grade.
-- **Missing at scale**: D-T plasma operation and significant neutron production (planned for Maui, ~2031). Confinement scaling validation from current 26 eV baseline to 10–20 keV operating point. Demonstration of >95% duty cycle over months of operation.
+- **Demonstrated**: Laboratory-scale levitated dipole plasma confinement. LDX demonstrated plasma pressure peaking and good confinement properties at low parameters (ne ~ 10¹⁷ m⁻³, Te ~ 200 eV). RT-1 demonstrated high-β plasma. Junior demonstrated levitated HTS coil confinement with <50 kW ECRH heating (Feb 2026). No levitated dipole has operated with D-T fuel, neutral beam or ICRH heating, or at fusion-relevant triple products.
+- **On paper only**: Confinement scaling from laboratory parameters to τ_e = 3.5 s. D-T operation and 14 MeV neutron environment in a levitated configuration. ICRH heating at 44.5 MW in a dipole geometry. Alpha particle confinement and thermalization (ASCOT5 simulations exist but are exploratory). Q_sci = 15 operating point.
+- **Missing at scale**: Any experimental demonstration in the 10–100 keV temperature range. Triple product validation. Plasma stability at high beta with D-T alpha heating. Any in-situ neutron environment testing.
 
 ---
 
-**Tritium Breeding Blanket (Li₂O Ceramic) — TRL 3**
+**Annual Sacrificial Coil Replacement Cycle — TRL 2–3**
 
-- **Demonstrated**: Li₂O ceramic pebble-bed tritium breeding is characterized in the ITER HCPB Test Blanket Module program; tritium release kinetics and breeding performance from Li₂O under fission neutrons are established. TBR of 1.1 is analytically modeled for the OpenStar geometry, with the favorable note that only ~25% of fusion neutrons intercept the core magnet, leaving a higher fraction available for blanket breeding [arxiv-2602-20564-dt-dipole-power-plants.md §Tritium Breeding; dossier.md §Tritium Breeding].
-- **On paper only**: Complete Li₂O blanket module for the levitated dipole's spherical vessel geometry. Heat extraction pathway from the two-temperature tungsten/B₄C shield (>2000 K, ~600°C) through the first wall to the blanket. Neutron multiplier choice (paper notes "other ceramic materials with neutron multipliers feasible"). Full blanket cooling scheme.
-- **Missing at scale**: Li₂O blanket tested under 14 MeV fusion neutrons at fusion-relevant fluences (the paper acknowledges this as early-stage design). Tritium extraction from Li₂O at power-plant throughput (kg/day scale). Blanket geometry conforming to the spherical dipole vessel with the large bottom opening required for core magnet removal.
-
----
-
-**Two-Section Sacrificial Coil + Annual Replacement Scheme — TRL 3**
-
-- **Demonstrated**: The two-section design concept is described in the arXiv preprint [arxiv-2602-20564-dt-dipole-power-plants.md §Magnet]. The Junior prototype demonstrated the basic non-insulated solder-impregnated REBCO coil construction at laboratory scale. A separate sacrificial outer section has not been fabricated or tested.
-- **On paper only**: The annual docking-and-partial-replacement cycle. Neon slush rapid pump-out and recharge via the on-board reservoir mechanism ("slushy is pumped out of reservoir channels, and new slushy is quickly pumped right back in" [dossier.md §Operation Mode]). Isolation of the semi-permanent inner section from mechanical and thermal loads during outer section replacement.
-- **Missing at scale**: A coil designed for 23 T in a CICC architecture with a mechanically separable replaceable outer section that has been validated under 14 MeV neutron fluence to the 1 MW-year/m² threshold. Full docking and replacement test at any representative scale. Maui (~2031) is the first device intended for significant neutron production.
+- **Demonstrated**: In principle: Junior's modular coil design has been built and the vacuum vessel features a custom DN1240 ISO-F port sized for core magnet removal. The concept of replacing a superconducting magnet periodically is novel but the mechanical interfaces exist in Junior. The 5-minute docking operation for cryogen exchange has been described in the patent.
+- **On paper only**: Full annual replacement cycle at power-plant scale. Handling procedures for an activated (neutron-irradiated) HTS coil assembly. Qualification and testing of replacement coils prior to installation. Logistics of maintaining a coil spare pool for continuous operation.
+- **Missing at scale**: Any demonstration of coil replacement under activation conditions. REBCO tape behavior after neutron fluence at 1 MW-year/m² threshold. Full cost data for the replacement cycle including handling, testing, and refurbishment.
 
 ---
 
-**Flux Pump at Power-Plant Operating Levels — TRL 3–4**
+**Levitated HTS Coil at 23 T with On-Board Superconducting Flux Pump — TRL 3–4**
 
-- **Demonstrated**: Junior demonstrated a superconducting transformer-rectifier flux pump delivering 95 kJ (0.095 MJ) to the 550 kg REBCO coil — a world record for HTS flux pump energy delivery at the time of the Junior paper publication (arXiv 2508.17691, 2025) [arxiv-2508-17691-junior-design-results.md §Junior Core Magnet Specs; openstar-prototype-roadmap.md §Key Milestones]. The flux pump requires only ~10 W of continuous power. A subsequent milestone of 170 kJ was achieved after that publication, per the prototype roadmap [dossier.md §Driver Technology; openstar-prototype-roadmap.md §Key Milestones].
-- **On paper only**: Flux pump scaled to the power plant coil stored energy level, which substantially exceeds the Junior prototype (exact 23 T power plant coil stored energy not published; scales approximately as B²V relative to Junior's 5.63 T design).
-- **Missing at scale**: Flux pump operation in a sustained D-T neutron and gamma radiation environment. Long-term reliability of the on-board superconducting rectifier over years of continuous power plant operation. Current regulation precision sufficient to maintain levitation position stability during plasma perturbations.
+- **Demonstrated**: Junior achieved levitation with ~2.35 T core field and a world-record HTS flux pump delivery of ~170 kJ stored energy. The transformer-rectifier flux pump design (patented) functioned as intended. Tahi prototype targets 20 T (~2028). The Junior coil used 6.3 km of REBCO tape in 14 non-insulated solder-impregnated coils.
 
----
+> "greatest magnetic stored energy delivered by an HTS flux pump to date"
+> — arxiv-2508-17691-junior-design-results.md, §Flux Pump Results
 
-**HTS Coil at 23 T (REBCO CICC) — TRL 4–5**
-
-- **Demonstrated**: CFS demonstrated a full-scale 20 T REBCO TF coil for the SPARC tokamak [referenced in 01-hts-compact-tokamak handwritten §HTS Magnets]. Tokamak Energy Demo4 validated 11.8 T in full tokamak configuration [referenced in 21-spherical-tokamak-hts §Component-Level Publications]. REBCO is routinely characterized in commercial production. Junior demonstrated 2.35 T at 42% of design current (5.63 T target), validating the NI solder-impregnated coil construction approach [arxiv-2508-17691-junior-design-results.md §Junior Core Magnet Specs].
-- **On paper only**: 23 T REBCO CICC in neon slush cooling at 24.6 K. Mechanical design of a levitation-compatible coil capable of withstanding Lorentz forces at 23 T while suspended with sufficient dimensional stability for plasma position control.
-- **Missing at scale**: REBCO performance and degradation under the specific 14 MeV neutron spectrum experienced by the core magnet (which intercepts ~25% of fusion neutrons). Long-term coil performance across many neon slush thermal cycles. Full-scale 23 T CICC coil wound and tested — Tahi targets 20 T (~2028).
+- **On paper only**: 23 T peak field in the power plant CICC architecture with neon slush cooling at 24.6 K. Flux pump output sufficient to charge a 20+ GJ stored-energy coil. Two-section coil architecture with defined interface between sacrificial outer and semi-permanent inner sections. Current lead elimination during levitated operation.
+- **Missing at scale**: HTS flux pump scaling to 29.4 kA operating current (vs ~600 A demonstrated). REBCO tape performance at 23 T peak field and 30 K operating temperature under combined mechanical stress and neutron irradiation. Structural integrity of the coil conduit at the sacrificial/inner section interface under differential fluence.
 
 ---
 
-**ICRH Heating System — TRL 6–7**
+**Li₂O Solid Ceramic Tritium Breeding Blanket — TRL 3–4**
 
-- **Demonstrated**: MW-class ICRH systems routinely operated on JET, EAST, TFTR, and JT-60SA; ITER ICRH system under construction at 20 MW total. Wall-plug efficiency of ~70% demonstrated at multi-MW levels. The physics basis is well-established across many tokamak campaigns.
-- **On paper only**: ICRH antenna design integrated into the levitated dipole geometry, where the floating coil restricts physical access and the antenna must be geometrically compatible with a rotating dipolar field topology distinct from tokamak geometry.
-- **Missing at scale**: ICRH antenna positioning, coupling efficiency, and radiation hardening in a neutron-producing environment where the floating coil limits radial access. No ICRH has operated in any levitated dipole experiment; Junior uses ECRH only [arxiv-2508-17691-junior-design-results.md §Heating].
+- **Demonstrated**: Li₂O ceramic tritium breeding material tested in fission reactor environments (ITER HCPB TBM program). Small-scale neutron irradiation experiments. Solid ceramic breeders are the ITER/DEMO baseline.
+- **On paper only**: Full blanket module for the levitated dipole geometry: modular panels mounted to the inner vacuum vessel outer wall, achieving TBR = 1.1 with ~75% neutron coverage (the remaining ~25% intercepted by the core magnet region). Tritium extraction system at kg/day throughput from solid Li₂O. Cooling scheme for the blanket under simultaneous neutron and gamma heating. Blanket panel replacement schedule.
+- **Missing at scale**: 14 MeV neutron irradiation of Li₂O at fusion-relevant fluences and temperatures. Tritium inventory and permeation characterization from Li₂O at operating conditions. Structural performance of modular blanket panels under thermal cycling and neutron swelling over plant lifetime.
 
----
-
-**Cryogenics (Neon Slush at 24.6 K) — TRL 5–6**
-
-- **Demonstrated**: Liquid neon cryogenics are mature industrial technology. Neon slush (solid-liquid mixture at the melting point) is physically straightforward. Large-scale helium refrigeration systems (ITER-scale) are proven at 4 K, making 24.6 K operation less demanding.
-- **On paper only**: Neon slush delivery and recovery at the flow rates required for rapid maintenance cycling. Integration with the docking mechanism to allow coil removal and reattachment while maintaining thermal management continuity.
-- **Missing at scale**: Long-duration neon slush reservoir performance under steady-state magnet operation at the power plant coil stored energy level.
+**Note on breeding geometry**: The paper achieves TBR = 1.1 with natural (unenriched) Li₂O, relying on neutron multiplication in the tungsten shield. The core magnet region intercepts ~25% of fusion neutrons — this coverage loss is partially compensated by the high neutron multiplication factor of tungsten.
 
 ---
 
-**Balance of Plant (Thermal Power Conversion) — TRL 7–8**
+**Tritium Fuel Cycle — TRL 4–5**
 
-- **Demonstrated**: Conventional steam Rankine and sCO₂ Brayton cycles are mature at GW-class power levels in fission and fossil plants.
-- **Missing at scale**: Integration with fusion-specific heat sources — the two-temperature tungsten/B₄C shield at >2000 K / ~600°C is a non-standard thermal source profile. Tritium-compatible primary coolant loops. Thermal power conversion cycle selection is entirely unspecified for the OpenStar design.
+- **Demonstrated**: Gram-scale tritium handling in existing fusion experiments (JET, TFTR). Laboratory-scale tritium extraction from solid breeders. Tritium accountability and permeation barrier technology exists.
+- **On paper only**: Closed-loop tritium fuel cycle at kg/day scale. Self-sufficient TBR > 1 in an operating D-T power plant. Tritium extraction from Li₂O ceramic at plant operating temperatures. Startup tritium inventory (~1 kg) management during the critical initial period before self-sufficiency.
+- **Missing at scale**: Industrial-scale tritium processing. Low-inventory tritium storage compatible with the regulatory framework. Permeation-resistant primary loop materials validated under 14 MeV neutron flux.
+
+---
+
+**ICRH Heating System at 44.5 MW Wall-Plug Input — TRL 4–5**
+
+- **Demonstrated**: MW-class ICRH systems routinely operated in major tokamaks (JET, ITER construction). ICRH antenna design is mature at ~40–55 MHz. Wall-plug efficiency ~70% is achievable with current transmitter technology.
+- **On paper only**: ICRH in a dipole magnetic geometry. The field topology of a levitated dipole differs fundamentally from a tokamak — wave coupling and single-pass absorption are not characterized. Antenna placement around the levitated coil assembly. 44.5 MW total heating at 70% efficiency = 63.6 MW wall plug power.
+- **Missing at scale**: Any experimental demonstration of ICRH in a levitated dipole configuration. RF coupling models for dipole field geometry. Antenna geometry compatible with coil docking access and neutron shielding.
+
+---
+
+**Neon Slush Cryogenic System — TRL 4–5**
+
+- **Demonstrated**: Liquid neon cooling systems exist at smaller scale. Slush neon (neon + solid neon ice at melting point 24.6 K) is used in industrial applications for latent heat storage.
+- **On paper only**: Onboard neon slush reservoir sized for 45-minute float time between docking cycles. Rapid drain-and-refill system ("slushy is pumped out of reservoir channels, and new slushy is quickly pumped right back in"). Neon supply chain at the scale required for continuous plant operation.
+- **Missing at scale**: Engineering demonstration of the full dock-undock-redock cycle with the specific reservoir geometry. Neon production capacity assessment for a fleet of plants (neon is a byproduct of air liquefaction with limited dedicated production capacity). The paper acknowledges this risk: "if procuring and maintaining a supply of neon proves challenging it would be a viable alternative" [referring to hydrogen as backup].
+
+---
+
+**Layered W-B₄C-W Neutron Shield — TRL 4–5**
+
+- **Demonstrated**: Tungsten fabrication and tungsten tile technology are mature in fusion (ITER divertor, W-monoblock). B₄C neutron absorption well-characterized. The neutron transport calculation for the 475 mm shield (W/B₄C/WC layered architecture) achieves the required 4-decade attenuation of fast neutron flux to protect REBCO tape.
+- **On paper only**: Tungsten tiles at 1950 K operating temperature in steady-state — above the recrystallization temperature, requiring grain size control to manage creep. Radiatively cooled (not actively cooled) shield design for the dipole geometry. Integration of shield with blanket panel attachment.
+- **Missing at scale**: Long-term creep and mechanical performance of tungsten tiles above 1950 K under 14 MeV neutron irradiation. Joint design between shield and blanket that maintains structural integrity over plant lifetime. Tungsten tile replacement strategy as the shield activates.
+
+> "Tungsten will undergo recrystallization and it is possible that the onset of degraded mechanical properties can be delayed until other forms of damage dominate."
+> — arxiv-2602-20564-dt-dipole-power-plants.md, §4.3 Neutron Transport
+
+---
+
+**REBCO HTS Magnets (General Technology) — TRL 6–7**
+
+The underlying REBCO tape technology benefits from active commercial development across multiple fusion programs. CFS demonstrated a 20 T full-bore REBCO insert magnet in January 2024. Tokamak Energy's Demo4 validated a complete 14+2 coil HTS set at 11.8 T in November 2025. The Junior prototype demonstrated the non-insulated solder-impregnated coil architecture at 2.35 T.
+
+- **On paper only at 23 T**: The power plant peak field of 23 T has not been demonstrated in a levitated coil configuration. Consistent Jc > 150 MA/cm² at 23 T, 30 K in radiation environment is not yet demonstrated.
+- **Missing at scale**: REBCO tape production at several thousand km per year with consistent critical current properties. Long-term performance under combined radiation, mechanical stress, and cryogenic cycling.
+
+---
+
+**Balance of Plant / Power Conversion — TRL 8–9**
+
+Thermal power conversion systems (steam Rankine, sCO₂ Brayton, ORC) are fully commercial at GW scale. The specific cycle for the levitated dipole is unspecified, but no exotic BOP technology is required — the concept outputs thermal energy to a conventional cycle.
+
+- **Missing**: Integration of tritium-bearing primary coolant with the power conversion system. Heat exchanger qualification for tritium permeation control. Specific BOP design for the dipole reactor geometry has not been developed.
 
 ---
 
 ## Section 4: Key Materials and Supply Chain Considerations
 
-**REBCO HTS Tape**
+**REBCO Superconducting Tape**
 
-The OpenStar power plant's confinement system requires one primary floating coil (23 T) and one external levitation/support magnet — a qualitatively lower total tape demand than a tokamak, which requires dozens of TF and PF coils. The handwritten 01-hts-compact-tokamak analysis documents the global supply baseline: REBCO production is currently thousands of km/year; a single ARC-class tokamak requires >5,000 km; prices are $30–100/kA-m with a commercial target near $10/kA-m [01-hts-compact-tokamak handwritten §Key Materials]. The levitated dipole's single-coil architecture is a genuine supply chain advantage — even a high-stored-energy 23 T power plant coil likely requires a small fraction of the tape demanded by a tokamak's complete magnet set.
+Reactor A requires approximately 4,320 km of REBCO tape in the core magnet, plus an additional ~1,200 km equivalent for the top magnet [arxiv-2602-20564-dt-dipole-power-plants.md, §Table 5]. This total of ~5,520 km is comparable to estimates for compact HTS tokamaks (the CFS ARC reference design requires >5,000 km). However, the levitated dipole adds a recurring demand: the sacrificial outer section (~20% of core magnet tape = ~864 km) requires annual replacement. Over a 30-year plant life, cumulative tape consumption approaches ~31,000 km per Reactor A — roughly 5× the initial inventory.
 
-The specific tape quantity for the OpenStar power plant coil is not published. A rough scaling estimate: the Junior coil (5.63 T design, 550 kg) consumed some quantity of REBCO; the 23 T power plant coil, operating at ~4× higher field and larger volume, would store roughly 16× more energy per unit volume (energy ∝ B²) and occupy a substantially larger volume [inferred scaling; arxiv-2508-17691-junior-design-results.md §Junior Core Magnet Specs; arxiv-2602-20564-dt-dipole-power-plants.md §Magnet]. The annual replacement of the sacrificial outer section (~20% of the coil) creates a recurring REBCO demand without parallel in steady-state designs — approximately 20% of the total coil tape supply per year for replacement inventory.
+Global REBCO production capacity is currently on the order of 1,000–2,000 km/year across all manufacturers (SUNAM, Faraday Factory Japan, Shanghai Superconductor, SuperPower). This is already insufficient for a single Reactor A deployment let alone fleet scale. Tape prices (~$50–100/kA-m at current volumes) must fall substantially for the annual replacement cost to be acceptable. The shared supply chain with HTS tokamaks (CFS, Tokamak Energy, and others) creates both competition for limited tape and potential economies of scale if multiple programs drive down costs simultaneously.
+
+**Tungsten**
+
+The W-B₄C-W shield requires 1,760 tonnes of tungsten for Reactor A [arxiv-2602-20564-dt-dipole-power-plants.md, §Table 5]. Global tungsten production is approximately 80,000–90,000 tonnes per year (primarily from China). A single Reactor A deployment therefore represents ~2% of annual global tungsten output. A fleet of ten plants would consume ~20% of annual production for initial builds, plus replacement over time. Tungsten is not a scarce material at current production levels, but the high-temperature tile fabrication (above recrystallization temperature behavior at 1950 K) requires specialized processing that is not currently industrialized at fusion scale.
+
+**Lithium and Li₂O for Breeding Blanket**
+
+The blanket requires 3,490 tonnes of Li₂O for Reactor A [arxiv-2602-20564-dt-dipole-power-plants.md, §Table 5]. A notable advantage: the paper achieves TBR = 1.1 using natural (unenriched) lithium, exploiting neutron multiplication in tungsten. This avoids the supply chain and cost burden of Li-6 isotope enrichment — a significant differentiator from FLiBe or lithium-6-enriched blankets used in other concepts. Natural Li₂O is produced industrially; at 3,490 tonnes per plant, global lithium production (approaching 200,000 tonnes/year) presents no bottleneck.
 
 **Tritium**
 
-Standard D-T startup constraint, identical in character to all D-T concepts in this project. The global tritium inventory is approximately 25–30 kg, primarily from CANDU heavy-water reactors, decaying at 5.5% per year. Startup inventory for a plant is ~1 kg, priced at market rates exceeding $35,000/g — approximately $35M per plant [01-hts-compact-tokamak handwritten §Key Materials, tritium characterization]. The Li₂O breeding blanket targets TBR 1.1, providing a modest margin above self-sufficiency. The favorable neutron geometry (only ~25% of neutrons absorbed by the core magnet region [arxiv-2602-20564-dt-dipole-power-plants.md §Neutron Management]) means more neutrons are available for blanket breeding compared to a tokamak with equivalent fusion power — a potential TBR advantage.
+Standard D-T startup and operation constraints apply. Global civilian tritium inventory is ~25 kg; a power plant startup requires ~1 kg, but the fleet cannot scale without self-sufficient TBR > 1 breeding. The design TBR of 1.1 provides a 10% margin — adequate but not generous. Tritium decay (5.5%/year half-life element) constrains how long tritium can be stockpiled between prototype milestones. Unique to the levitated dipole: the annual coil replacement may introduce a tritium inventory disruption during docking, as the core magnet passes through the blanket region. Tritium accounting during docking cycles has not been addressed in published materials.
 
-**Lithium-6 Enrichment**
+**Neon (Cryogen)**
 
-The Li₂O ceramic breeder requires Li-6 enrichment for effective breeding at reasonable blanket thickness. Natural lithium is 7.4% Li-6. Li-6 enrichment production is dominated by Russia and China; the mercury-based isotope separation process used historically is banned in most Western jurisdictions. A supply restart would require capital investment and lead time. This constraint is shared with all D-T concepts and is not unique to the levitated dipole [01-hts-compact-tokamak handwritten §Key Materials].
+Neon is required for the onboard slush cryogen reservoir. Neon is produced as a byproduct of air liquefaction (0.0018% of atmosphere) and global supply is limited — production is approximately 200,000 m³/year, concentrated among a small number of air separation unit operators. Unlike helium (a cryogen with explicit supply chain concerns for fusion), neon is domestically producible but at low volumes. A fleet of plants requiring continuous neon circulation and top-off could create a material supply tension. The paper acknowledges this and proposes hydrogen as an alternative, requiring a 5× larger cryogen reservoir volume.
 
-**Tungsten and Boron Carbide (B₄C)**
+**Concrete and Structural Steel**
 
-The two-temperature shield uses layers of tungsten and B₄C composite. The hot shield operates above 2000 K, imposing severe thermal and radiation demands on the tungsten microstructure. High-temperature tungsten fabrication at large scale — crack resistance, thermal cycling durability, and manufacturing precision — is an active materials challenge shared with all fusion first-wall programs. B₄C is an established industrial material with no supply constraints. The B₄C also functions as a tritium producer via the ¹⁰B(n,α)³H reaction, providing a secondary TBR contribution [arxiv-2602-20564-dt-dipole-power-plants.md §Tritium Breeding].
-
-**Neon (Industrial Gas)**
-
-Neon is produced as a byproduct of oxygen production from air fractionation and is widely available as an industrial product. No supply constraints are anticipated at power plant volumes. This is a significant advantage over helium (which has supply concentration and depletion concerns) for cryogenic cooling.
-
-**Inconel 718 (Vacuum Vessel Inner Shell)**
-
-The vacuum vessel inner wall is thin Inconel 718 with tungsten coating [arxiv-2602-20564-dt-dipole-power-plants.md §Vacuum Vessel]. Inconel 718 is a widely used nickel superalloy with established aerospace-scale manufacturing. No supply constraint is anticipated. The outer reinforced concrete dome is entirely conventional.
-
-**No High-Energy Pulsed Power Requirements**
-
-Unlike MagLIF (capacitor banks requiring a reduction from ~$5/J to ~$0.50/J) or laser IFE (multi-kJ laser systems), the levitated dipole has no high-energy pulsed driver. The capital cost structure is dominated by the HTS coil assembly, ICRH heating system, and blanket. This is a material supply chain simplification relative to all IFE and MIF concepts. [1]
-
----
-[1] Contrast with 07-maglif analysis §Capacitor Costs for the MagLIF pulsed power baseline.
+The outer vacuum vessel is primarily reinforced concrete (38,700 tonnes for Reactor A) — a non-exotic material abundant at any construction site. This is a deliberate design choice: the paper notes that "can be built with contemporary materials and traditional manufacturing methods, substantially reducing cost and technology risk." The dominance of concrete in the mass budget (38,700 of 45,100 total tonnes for Reactor A) is economically favorable.
 
 ---
 
@@ -221,48 +244,63 @@ Unlike MagLIF (capacitor banks requiring a reduction from ~$5/J to ~$0.50/J) or 
 
 | Parameter | Value/Range | Source | Confidence | Notes |
 |-----------|-------------|--------|------------|-------|
-| Fusion power (Reactor A, conservative Bohm) | ~667 MW | arxiv-2602-20564-dt-dipole-power-plants.md §Reactor Performance | high | Conservative Bohm scaling design point only; improved confinement scenario not published in HTML |
-| Net electric output (Reactor A) | ~208 MWe | arxiv-2602-20564-dt-dipole-power-plants.md §Reactor Performance | high | Conservative design point |
-| Net plant electrical efficiency | ~31% | [inferred: 208 MWe / 667 MW; arxiv-2602-20564-dt-dipole-power-plants.md §Reactor Performance] | medium | Net-to-fusion ratio; thermal efficiency of conversion cycle is higher but unknown |
-| Duty cycle | >95% | arxiv-2602-20564-dt-dipole-power-plants.md §Operation Mode | high | Pulsed only by neon slush reservoir thermal limits, not plasma physics; <2 weeks downtime/year |
-| Tritium breeding ratio (TBR) | 1.1 | arxiv-2602-20564-dt-dipole-power-plants.md §Tritium Breeding | medium | Li₂O ceramic baseline; analytic model, not experimentally verified |
-| Neutron fraction reaching core magnet | ~25% | arxiv-2602-20564-dt-dipole-power-plants.md §Neutron Management | high | Geometric advantage vs. tokamaks; enables thinner shielding |
-| Core magnet peak field | 23 T | arxiv-2602-20564-dt-dipole-power-plants.md §Magnet | high | REBCO CICC, neon slush at 24.6 K |
-| Core magnet CICC operating current density | 0–300 A/mm² | arxiv-2602-20564-dt-dipole-power-plants.md §Magnet | high | Design range for REBCO in this architecture |
-| Tahi prototype target field | 20 T | openstar-2026-funding-tahi-timeline.md §Tahi Specifications | high | 4× Junior design field (~5.6 T); ~2028 target |
-| Sacrificial coil section fraction | ~20% of coil volume | arxiv-2602-20564-dt-dipole-power-plants.md §Magnet | medium | Outer section only; replaces annually |
-| Sacrificial coil replacement interval | ~1 year | arxiv-2602-20564-dt-dipole-power-plants.md §Neutron Management | medium | The 1 MW-year/m² fluence threshold is stated for tungsten shield replacement; ~1-year coil cycle is derived from coil design lifetime in the same neutron environment |
-| Optimal local plasma β | ~3 | arxiv-2602-20564-dt-dipole-power-plants.md §Plasma Physics | high | β₀ ~ 3 optimal for Bohm-like confinement scaling |
-| ICRH wall-plug efficiency | ~70% | JET/EAST published ICRH literature (primary); arxiv-2602-20564-dt-dipole-power-plants.md §Heating (context for ICRH vs. ECRH selection) | high | Demonstrated on JET, EAST at multi-MW levels; cited by OpenStar as basis for selecting ICRH over ECRH |
-| Hot shield temperature | >2000 K | arxiv-2602-20564-dt-dipole-power-plants.md §Neutron Management | high | W/B₄C shield; 92% of deposited neutron heat radiated to first wall |
-| Warm shield temperature | ~600°C | arxiv-2602-20564-dt-dipole-power-plants.md §Neutron Management | high | Second temperature zone in two-temperature design |
-| Flux pump continuous operating power | ~10 W | openstar-prototype-roadmap.md §Key Milestones | high | Maintains full coil current indefinitely after charging |
-| Flux pump delivered energy (Junior) | 0.095 MJ | arxiv-2508-17691-junior-design-results.md §Junior Core Magnet Specs | high | World record for HTS flux pump delivery at time of publication |
-| Junior floating mass | 550 kg | arxiv-2508-17691-junior-design-results.md §Junior Core Magnet Specs | high | Current prototype; power plant coil substantially larger |
-| Junior prototype cost | <$10M USD | arxiv-2508-17691-junior-design-results.md §Key Notes | high | Scientific device at TRL 2–3; no plant cost scaling basis |
-| Commercial target output (Tama Nui) | 50–200 MWe | openstar-prototype-roadmap.md §Device Naming; openstar-2026-funding-tahi-timeline.md §Tama Nui | medium | Range only; no design point or power balance |
-| Total estimated development cost to commercial | $500M–$1B | openstar-prototype-roadmap.md §Funding | low | Company estimate; no breakdown or basis provided |
-| Gross electric (inferred) | ~255–290 MWe | [inferred: 208 MWe net from 667 MW fusion at assumed 35–40% thermal efficiency and ~1.1 energy multiplication; arxiv-2602-20564-dt-dipole-power-plants.md §Reactor Performance; thermal efficiency analogue from MFE literature] | low | Wide range from unspecified thermal conversion cycle |
-| Recirculating power (inferred) | ~50–80 MWe | [inferred: gross electric minus 208 MWe net; see gross electric derivation above] | low | Includes ICRH heating + cryogenics + pumping |
-| Implied Qsci (inferred) | ~12–19 | [inferred: 667 MW fusion / Paux; Paux estimated as 35–55 MW from recirculating power at ~70% ICRH wall-plug efficiency; arxiv-2602-20564-dt-dipole-power-plants.md §Reactor Performance and §Heating] | low | Very wide uncertainty; Qsci is in the paper as a fixed design parameter but not accessible in HTML version |
+| Fusion power (Reactor A) | 667 MW | arxiv-2602-20564-dt-dipole-power-plants.md §Table 6 | high | Primary design point |
+| Fusion power (Reactor B) | 237 MW | arxiv-2602-20564-dt-dipole-power-plants.md §Table 6 | high | Smaller/industrial variant |
+| Net electrical output (A) | 208 MWe | arxiv-2602-20564-dt-dipole-power-plants.md §Table 9 | high | After all recirculating loads |
+| Net electrical output (B) | 74.5 MWe | arxiv-2602-20564-dt-dipole-power-plants.md §Table 9 | high | After all recirculating loads |
+| Q_sci (scientific gain) | 15 | arxiv-2602-20564-dt-dipole-power-plants.md §Table 6 | medium | Target requiring Tahi validation; not yet demonstrated |
+| Thermal efficiency (η_th) | 40% | arxiv-2602-20564-dt-dipole-power-plants.md §3.2.5 | medium | Assumed value; thermal cycle unspecified |
+| Auxiliary heating efficiency (η_aux) | 70% (ICRH) | arxiv-2602-20564-dt-dipole-power-plants.md §3.2.5 | high | ICRH baseline; higher than ECRH |
+| Auxiliary heating power (A) | 44.5 MW | arxiv-2602-20564-dt-dipole-power-plants.md §Table 6 | high | Wall plug: 63.6 MW |
+| Auxiliary heating power (B) | 15.8 MW | arxiv-2602-20564-dt-dipole-power-plants.md §Table 6 | high | Wall plug: 22.6 MW |
+| Gross electrical output (A) | ~296 MWe | arxiv-2602-20564-dt-dipole-power-plants.md §Table 9 | high | Before recirculating loads; "Total electrical power" |
+| Recirculating power fraction (A) | ~30% | [inferred: (296 − 208)/296 from Table 9 gross vs. net electric] | medium | Dominated by heating wall-plug (63.6 MW) + other loads (~23 MW) |
+| Plant duty cycle | 90.1% (A), 90.2% (B) | arxiv-2602-20564-dt-dipole-power-plants.md §3.2.5 | high | Pulsed by cryogenic limits, not plasma physics |
+| Plant availability | 96% | arxiv-2602-20564-dt-dipole-power-plants.md §3.2.5 | medium | Includes 2-week annual maintenance; unverified |
+| Energy confinement time (A) | 3.5 s | arxiv-2602-20564-dt-dipole-power-plants.md §Table 6 | medium | Required; not yet demonstrated at any scale |
+| Energy confinement time (B) | 5.9 s | arxiv-2602-20564-dt-dipole-power-plants.md §Table 6 | medium | Required; longer than Reactor A due to lower density |
+| Peak magnetic field (A) | 23.0 T | arxiv-2602-20564-dt-dipole-power-plants.md §Table 7 | high | At REBCO winding; CICC architecture |
+| Peak magnetic field (B) | 21.8 T | arxiv-2602-20564-dt-dipole-power-plants.md §Table 7 | high | |
+| Global plasma beta (A) | 4.37% | arxiv-2602-20564-dt-dipole-power-plants.md §Table 6 | high | |
+| Global plasma beta (B) | 4.84% | arxiv-2602-20564-dt-dipole-power-plants.md §Table 6 | high | |
+| Peak ion temperature (A) | 10.9 keV | arxiv-2602-20564-plasma-state-clarification.md §Table 9 | high | Lower than typical tokamak designs (~15–20 keV) |
+| Peak electron density (A) | 1.95 × 10²⁰ m⁻³ | arxiv-2602-20564-plasma-state-clarification.md §Table 9 | high | |
+| Tritium breeding ratio | 1.1 | arxiv-2602-20564-dt-dipole-power-plants.md §4.3 | medium | With natural Li₂O + W neutron multiplication |
+| Core magnet mass (A) | 2,560 tonnes | arxiv-2602-20564-dt-dipole-power-plants.md §Table 5 | high | Includes REBCO coil, shield, structure |
+| Total plant mass (A) | 45,100 tonnes | arxiv-2602-20564-dt-dipole-power-plants.md §Table 5 | high | Dominated by concrete (38,700 t) |
+| Tungsten shield mass (A) | 1,760 tonnes | arxiv-2602-20564-dt-dipole-power-plants.md §Table 5 | high | W-B₄C-W layers |
+| Li₂O blanket mass (A) | 3,490 tonnes | arxiv-2602-20564-dt-dipole-power-plants.md §Table 5 | high | Natural lithium; solid ceramic |
+| REBCO tape requirement (A) | 4,320 km | arxiv-2602-20564-dt-dipole-power-plants.md §Table 7 | high | Core magnet only; +~1.2 km top magnet |
+| Sacrificial coil section | ~20% of total | arxiv-2602-20564-dt-dipole-power-plants.md §4.1 | medium | Annual replacement; ~864 km/yr tape |
+| Cryogenic float time | 45.5 min (A), 46.1 min (B) | arxiv-2602-20564-dt-dipole-power-plants.md §Table 7 | high | Between docking cycles |
+| Cryogenic efficiency (η_cryo) | 1.25% | arxiv-2602-20564-dt-dipole-power-plants.md §3.2.5 | high | Neon slush at 24.6 K; very poor efficiency as expected for deep cryogenics |
+| Cryogenic cooling load (A) | 14.1 kW deposited, 1.31 MW wall plug | arxiv-2602-20564-dt-dipole-power-plants.md §Table 9 | high | [inferred: 14.1 kW / 0.0125 efficiency = 1.13 kW wall plug; paper states 1.31 MW, implying additional fixed loads] |
+| Junior prototype cost | <$10M USD | arxiv-2508-17691-junior-design-results.md §3 | high | "designed and built in under 2 years at a cost of <$10M USD" |
+| Junior HTS tape (core magnet) | 6.3 km | arxiv-2508-17691-junior-design-results.md §3 | high | 14 NI solder-impregnated coils |
+| Junior peak field (design) | 5.63 T | arxiv-2508-17691-junior-design-results.md §Table | high | Operated at 2.35 T (~42% of design) |
+| Junior flux pump stored energy | ~170 kJ (world record) | arxiv-2508-17691-junior-design-results.md §Flux Pump | high | World record for HTS flux pump delivery |
+| Tahi target field | 20 T | dossier (arXiv 2602.20564 ref.) | high | Next prototype, ~2028 |
+| Tama Nui commercial range | 50–200 MWe | openstar-2026-funding-tahi-timeline.md | medium | Fourth-generation commercial plant; scale TBD |
+| Overnight capital cost (relative) | A = 1.0, B = 0.5 (relative) | arxiv-2602-20564-dt-dipole-power-plants.md §3.3 | low | Relative only; absolute numbers withheld |
 
 ### Missing Parameters
 
 | Parameter | Gap Type | Criticality | Notes |
 |-----------|----------|-------------|-------|
-| Total plant capital cost | truly-unknown | blocking | No estimate at any level of detail |
-| LCOE estimate or target | truly-unknown | blocking | No company or independent estimate |
-| Thermal efficiency / power conversion cycle type | truly-unknown | blocking | Rankine vs. sCO₂ undisclosed; determines gross electric and LCOE |
-| Qsci numerical value | not-yet-sourced | blocking | Present in paper; request full PDF or await journal publication |
-| Auxiliary heating power (Paux) | proprietary | blocking | Determines recirculating power fraction and actual Qeng |
-| Capacity factor numerical target | not-yet-sourced | important | >95% stated; no maintenance schedule model or numerical availability target |
-| First-wall heat flux and replacement schedule | truly-unknown | important | Two-temperature shield at >2000 K radiates to first wall; no materials specification or replacement interval |
-| Li₂O blanket cooling scheme and module geometry | not-yet-sourced | important | Paper acknowledges this is preliminary |
-| Core magnet stored energy and REBCO tape quantity | derivable | important | [Derivable once coil inner/outer radius and length published; scales as B²V from Junior baseline] |
-| Plasma exhaust and fueling mechanism | truly-unknown | important | Not addressed anywhere; helium ash accumulation in closed-field geometry unresolved |
-| Flux pump capital cost | truly-unknown | important | Patented novel technology; no industry analogue or cost estimate exists |
-| Sacrificial outer section replacement cost (OPEX) | truly-unknown | important | Annual scheduled item; no cost estimate or manufacturing specification |
-| Commercial plant capital cost structure | truly-unknown | blocking | No plant study or cost account breakdown at any stage |
+| Absolute overnight capital cost ($/kWe) | proprietary | blocking | OpenStar model exists but figures withheld as "preliminary" |
+| LCOE estimate ($/MWh) | proprietary | blocking | Same withholding policy |
+| Thermal cycle type (Rankine vs. sCO₂) | truly-unknown | important | No source mentions a specific cycle; affects BOP cost and efficiency |
+| Sacrificial coil replacement cost ($/year) | truly-unknown | blocking | No cost published; critical recurring O&M item |
+| O&M cost breakdown (fixed + variable) | truly-unknown | important | No O&M estimates in any public source |
+| Disruption-driven first wall replacement rate (avoided) | not-yet-sourced | important | Section 7 identifies disruption-free operation as a genuine LCOE advantage vs. inductive tokamaks. No tokamak comparator cost figure exists to quantify the avoided cost; flag as qualitative advantage unless a reference tokamak disruption O&M cost is sourced and applied as a delta |
+| Thermal energy storage capital cost (avoided) | not-yet-sourced | important | Inductive tokamaks require thermal energy storage for grid decoupling during disruptions; levitated dipole mechanically cannot disrupt. Quantifying this avoided cost requires a tokamak BOP reference; treat as qualitative advantage until sourced |
+| First wall thermal load (MW/m²) | not-yet-sourced | important | Wall loading drives first wall replacement schedule and cost |
+| First wall material and lifetime | not-yet-sourced | important | Paper discusses shield but not first wall specifically |
+| Plasma startup time and energy | truly-unknown | nice-to-have | Affects capacity factor and heating system sizing |
+| ICRH antenna design and cost | truly-unknown | important | No ICRH design for dipole geometry exists |
+| Top magnet design and cost | truly-unknown | important | Paper states "details of levitation coil have not been considered" |
+| Li₂O blanket module unit cost | not-yet-sourced | important | Mass known; cost per tonne requires manufacturing estimate |
+| Remote handling system design | truly-unknown | important | Required for activated coil replacement; no design published |
 
 ---
 
@@ -270,65 +308,84 @@ Unlike MagLIF (capacitor banks requiring a reduction from ~$5/J to ~$0.50/J) or 
 
 | # | Gap Description | Section | Gap Type | Criticality | Source Recommendation |
 |---|-----------------|---------|----------|-------------|----------------------|
-| 1 | Qsci numerical value (present in paper but not in HTML version) | S2, S5 | not-yet-sourced | blocking | Request full PDF of arXiv 2602.20564 or await journal publication |
-| 2 | Thermal power conversion cycle type and efficiency | S2, S5 | truly-unknown | blocking | OpenStar BOP disclosure; Rankine assumption usable as analogue with caveat |
-| 3 | Auxiliary heating power Paux → recirculating fraction → Qeng | S2, S5 | proprietary | blocking | Required for LCOE closure; only inferred within wide range from net/fusion power pair |
-| 4 | Total plant capital cost at any level | S5 | truly-unknown | blocking | No near-term public source; may appear with Maui (2031) pre-conceptual design |
-| 5 | LCOE estimate or target | S5 | truly-unknown | blocking | No company or independent analysis; would require plant study |
-| 6 | Confinement scaling validation at Lawson-relevant conditions | S2, S3 | truly-unknown | blocking | Tahi (~2028) is designed to demonstrate this; currently unsupported experimentally |
-| 7 | Plasma exhaust and fueling subsystem design | S3 | truly-unknown | important | Not addressed in any OpenStar publication; fundamental gap for sustained D-T operation |
-| 8 | Capacity factor numerical model and maintenance schedule | S5 | not-yet-sourced | important | >95% stated; detailed maintenance timeline not published |
-| 9 | Core magnet stored energy and REBCO tape quantity | S4, S5 | derivable | important | [Derivable once coil geometry published; scales approximately as B²V from Junior] |
-| 10 | Sacrificial coil section replacement cost (OPEX) | S3, S5 | truly-unknown | important | Annual scheduled item; no manufacturing specification or cost analogue |
-| 11 | Flux pump capital cost | S3, S5 | truly-unknown | important | Patented novel technology; no precedent in any prior analysis |
-| 12 | Li₂O blanket module design: cooling scheme, neutron multiplier, and geometry | S3, S5 | not-yet-sourced | important | Paper acknowledges preliminary stage; detailed design may appear with Maui design work |
-| 13 | First-wall heat flux profile and replacement schedule | S3, S5 | truly-unknown | important | High-temperature radiated power from >2000 K shield; no materials specification |
-| 14 | Commercial plant net electric target and power balance | S5 | not-yet-sourced | important | Only "50–200 MWe" for Tama Nui; no design point or closed power balance |
+| 1 | Absolute overnight capital cost ($/kWe) | S1, S5 | proprietary | blocking | OpenStar internal model; watch for future publications |
+| 2 | Sacrificial coil annual replacement cost | S2, S5 | truly-unknown | blocking | Requires cost model for REBCO winding + remote handling + testing |
+| 3 | Thermal conversion cycle specification | S2, S5 | truly-unknown | important | Contact company; likely decided internally but not published |
+| 4 | Confinement scaling law for levitated dipole | S2, S3 | truly-unknown | blocking | Requires Tahi experimental results (~2028–2030); no proxies exist |
+| 5 | ICRH coupling in dipole geometry | S3 | truly-unknown | important | No published RF physics study for dipole configuration |
+| 6 | Plasma edge conditions in D-T dipole | S2, S3 | truly-unknown | important | Requires high-power dipole experiments; acknowledged gap in paper |
+| 7 | Top magnet design and cost | S3, S5 | truly-unknown | important | Explicitly out of scope in Simpson et al.; paper assumes negligible cost |
+| 8 | Remote handling system for activated coil | S3, S5 | truly-unknown | important | No design study published |
+| 9 | First wall thermal load and material choice | S3, S5 | not-yet-sourced | important | Paper focuses on shield/blanket; first wall not detailed |
+| 10 | O&M cost breakdown (fixed vs. variable) | S2, S5 | truly-unknown | important | No O&M estimates in any published source |
+| 11 | Neon supply chain assessment at fleet scale | S4 | not-yet-sourced | important | Industrial neon capacity has not been evaluated for fusion applications |
+| 12 | Tritium accounting during docking cycles | S4 | truly-unknown | nice-to-have | Core magnet passes through blanket region during replacement |
+| 13 | REBCO critical current at 23 T under neutron irradiation | S3 | truly-unknown | important | Irradiation database exists up to ~10–12 T; 23 T regime uncharacterized |
+| 14 | Li₂O blanket module unit cost | S5 | not-yet-sourced | important | Mass known; cost requires manufacturing analogues |
+| 15 | Independent TEA or system-code analysis | S1 | truly-unknown | nice-to-have | No ARIES/PROCESS equivalent for levitated dipole exists |
 
 ---
 
 ## Section 7: Cross-Concept Notes
 
-Four approved prior analyses were consulted: 01-hts-compact-tokamak (handwritten exemplar), 08-frc-w-direct-conversion, 11-magnetic-mirror, and 21-spherical-tokamak-hts. The levitated dipole shares surface-level technology categories with several approved concepts — HTS REBCO magnets, ICRH heating, ceramic tritium breeding — but the system architecture differs enough that most data transfers only at the supply chain level, not at the component engineering level.
+**Nearest neighbors**: spherical tokamak HTS (technology comparator — shared REBCO supply chain, common HTS magnet challenges, and parallel commercial timeline) and field-reversed configuration (physics comparator — high-beta compact MFE with a comparable confinement uncertainty profile and no wall-connected field lines).
 
-**Shared with 01-hts-compact-tokamak and 21-spherical-tokamak-hts — REBCO supply chain:**
+### Key Differentiators vs. Conventional Tokamak
 
-The global REBCO supply chain characterization from the tokamak analyses (thousands of km/year production, $30–100/kA-m current price, scale-up to commercial fusion requires 1–2 orders of magnitude in volume and a factor of 3–10 cost reduction) applies as the baseline constraint. The key departure: the levitated dipole's single-coil architecture is a qualitative supply chain advantage. A tokamak requires >5,000 km of tape per ARC-class plant [01-hts-compact-tokamak handwritten §Key Materials]; the levitated dipole needs one primary coil plus one support magnet. Even accounting for annual sacrificial section replacement, total REBCO demand over a plant lifetime is likely one order of magnitude lower than for a comparable tokamak. This does not eliminate the supply chain challenge — 23 T pushes to the performance frontier — but changes its scale substantially.
+The levitated dipole diverges from a conventional tokamak across all five structurally load-bearing dimensions for TEA:
 
-**Shared with 01-hts-compact-tokamak — Tritium and Li-6 supply chains:**
+- **Confinement mechanism**: Plasma confined by turbulent inward pinch in a dipole field — peaked pressure profiles arise spontaneously, not from active control. Conventional tokamaks work to suppress this same class of turbulent transport. The inverted physics challenge provides no experimental scaling database above laboratory parameters. Cost implication: this is a **binary threshold risk**, not a continuous cost penalty. If Tahi validates Bohm-like or better scaling (n·τ_e ≥ 3.23×10¹⁹ s·m⁻³ at 1 keV), the concept is viable at the modeled capital cost. If scaling is sub-Bohm, the reactor requires a larger magnet assembly — raising overnight capital above the normalized baseline — or is nonviable as designed. There is no intermediate "more expensive but viable" outcome at current design margins.
+- **Coil topology**: Single superconducting coil levitated inside the plasma volume; no toroidal field coils, no central solenoid, no plasma current drive. A conventional tokamak requires 16–18 external coils (TF + PF + CS). Cost is concentrated in one component that must be periodically replaced rather than distributed across a large fixed external coil set. Cost implication: **penalty risk**. Periodic replacement of the core magnet assembly creates a recurring O&M capital line with no analogue in any other fusion concept (or in fission). Where a tokamak's external coils are a one-time capital cost, the levitated dipole's internal coil is also a running cost — estimated at ~864 km/yr of REBCO tape plus remote handling, qualification testing, and spare pool logistics. The magnitude is unquantified, and until it is, the claim that this cost "does not make a significant impact" (Simpson et al.) cannot be verified from outside the company.
+- **No plasma current → no disruptions**: Levitated dipole carries no toroidal plasma current; MHD disruptions are mechanistically absent. No disruption mitigation system, thermal dump resistors, or first-wall fatigue from disruption energy deposition. In LCOE terms: no disruption-driven first-wall replacement schedule and no need for thermal energy storage for grid decoupling.
+- **Operating mode basis**: Plasma is inherently steady-state; the 90.1% "duty cycle" is set by cryogenic coil thermal limits, not plasma pulse length. Inductive tokamaks are pulse-limited by central solenoid flux swing. This is a more favorable capacity-factor basis — the plasma never needs to restart.
+- **Cost structure shape**: Tokamak capital cost is distributed across external coil set, blanket, divertor, and VV. The levitated dipole concentrates capital in a single magnet assembly and trades divertor scheduled maintenance for annual sacrificial coil replacement. Neither the magnitude of that trade nor which side wins is determinable without published cost figures.
 
-Tritium constraints ($35,000/g, ~25–30 kg global inventory, CANDU-produced, 5.5%/yr decay, ~1 kg startup) and Li-6 enrichment geopolitics (Russian/Chinese dominance, mercury-process ban in Western jurisdictions) are identical to all D-T concepts. The characterization from the handwritten analysis is directly reused. The levitated dipole's favorable neutron geometry — 75% of neutrons bypass the core magnet — provides a potential TBR advantage not available to tokamaks with denser magnet coverage.
+**Prior analysis referenced**: 21-spherical-tokamak-hts (approved, 2026-03-20)
 
-**Shared with 21-spherical-tokamak-hts — Undisclosed thermal cycle:**
+### Shared with Spherical Tokamak HTS (21-spherical-tokamak-hts)
 
-Both OpenStar and Tokamak Energy have published machine parameter sets (OpenStar: 667 MW / 208 MWe; Tokamak Energy: 450–750 MWe net) without specifying thermal power conversion cycle choices. In both cases, the dossiers confirm this is a genuine publication gap — not a research artifact. The modeling approach for both is to assume a thermal efficiency range (35–40% Rankine, 40–45% sCO₂) and propagate uncertainty.
+The levitated dipole and spherical tokamak share the REBCO HTS technology foundation. Both concepts require thousands of km of REBCO tape per plant, face the same tape cost trajectory challenge ($50–100/kA-m current vs. ~$10/kA-m target), and depend on the same set of manufacturers (SUNAM, Faraday Factory Japan, Shanghai Superconductor). Supply chain constraints and cost assumptions from the ST analysis apply here.
 
-**Diverges from all tokamak and mirror analyses — No disruptions, no ELMs:**
+Both concepts are D-T with unspecified thermal cycles, and both cite 40% thermal efficiency as a placeholder — suggesting this is a community default, not a design-specific value. Both analyses flag the missing thermal cycle specification as a data gap.
 
-The tokamak analyses (01-hts-compact-tokamak, 21-spherical-tokamak-hts) identify disruptions and ELMs as design constraints that drive first-wall structural specification, reduce effective availability, and add complexity to plasma-facing component replacement. The levitated dipole is inherently MHD stable via interchange mode: no toroidal plasma current means no disruption mechanism, and the peaked pressure profile in good-curvature geometry does not exhibit ELMs. The mirror analysis (11-magnetic-mirror) notes axial end losses as the dominant physics risk — the levitated dipole's closed topology eliminates this. These are genuine engineering advantages, but their magnitude in LCOE terms is unknown without a plant study.
+Neither concept has published absolute capital cost estimates. OpenStar explicitly withholds its LCOE model; Tokamak Energy has not published any cost data.
 
-**Diverges from 08-frc-w-direct-conversion — No direct energy conversion path:**
+### Key Divergences from Spherical Tokamak HTS
 
-The FRC analysis (08-frc-w-direct-conversion) notes that Helion's direct energy recovery from collapsing plasma inductance can dramatically lower the Q threshold for net electricity. The levitated dipole is a closed-field configuration where ions are confined magnetically and lose energy radiatively or through anomalous transport to the first wall rather than escaping in a directed beam. No DEC mechanism is applicable to the levitated dipole. This removes a potential economic lever; all fusion energy must be recovered thermally.
+**Coil architecture**: Where the spherical tokamak uses multiple external coils (TF + PF sets), the levitated dipole uses a single levitated internal coil. This is radically simpler in coil count but introduces the novel challenge of periodic replacement under neutron activation. The ST analysis noted center stack shielding (WC cermet) as a key TRL challenge; the levitated dipole faces an analogous geometry-specific shielding problem with its core magnet assembly.
 
-**Diverges from 11-magnetic-mirror — Single-coil vs. linear solenoid magnet architecture:**
+**Blanket geometry**: The ST uses an outboard-only liquid lithium blanket forced by the compact center stack constraint (< 32 cm shielding depth). The levitated dipole uses a modular Li₂O solid blanket covering ~75% of the neutron solid angle — the remaining 25% intercepted by the core magnet. Both face partial coverage challenges from their respective geometries. However, Li₂O ceramic requires no enrichment (unlike the ST's proposed liquid Li approach), and the levitated dipole achieves TBR = 1.1 without neutron multipliers other than the tungsten already required for shielding.
 
-The mirror analysis identifies the center-cell solenoid array as a 50+ m linear magnet system requiring substantial REBCO over its length. The levitated dipole's single floating coil is architecturally opposite — one magnet, not a distributed array. The economic implications run in opposite directions: the mirror's linear geometry enables modular scaling by adding center-cell length, while the dipole must scale by upsizing the single coil or building multiple independent units (the Tama Nui "50–200 MWe" range may reflect this flexibility).
+**Heating method**: ST-E1 uses ECRH exclusively during flat-top; levitated dipole uses ICRH as the baseline, claiming higher wall-plug efficiency (70% vs. ~50–55% for gyrotrons). If realized, this improves Q_engineering. However, ICRH coupling in a dipole geometry is undemonstrated, while ECRH in tokamaks is operationally mature.
+
+**Operating mode**: Both are quasi-steady, but for different reasons. ST pulses are limited by central solenoid flux swing. The levitated dipole "pulses" due to cryogenic reservoir thermal limits — the plasma itself is steady-state capable. This is a more favorable physical basis for high capacity factor.
+
+**Disruption risk**: The ST analysis flagged plasma disruptions as a material risk to first-wall and divertor lifetime, requiring thermal energy storage for each pulse. Levitated dipoles are inherently disruption-free. This is a genuine LCOE advantage — no disruption-driven first-wall fatigue, no thermal energy storage required for grid coupling, and no divertor component replacement schedule.
+
+**Cost structure shape**: The ST cost structure is dominated by the magnet and blanket capital costs, with divertor replacement contributing significantly to operating costs. The levitated dipole trades divertor cost for the annual sacrificial coil replacement cost. Which is lower cannot be determined without published figures from either company.
+
+### Comparison with Field-Reversed Configuration (Helion, concept 08-frc-w-direct-conversion)
+
+The FRC is the second nearest neighbor in the high-beta compact MFE space. Both concepts confine plasma without wall-connected field lines, operate at near-maximum beta, and depend on physics uncertainty as the dominant cost lever — in both cases, if confinement or plasma performance doesn't scale, LCOE is undefined rather than merely elevated. Key TEA divergences: Helion's FRC is pulsed (2 Hz commercial target), making LCOE a per-pulse × rep-rate calculation with a threshold structure (magnetic energy recovery efficiency η_recovery below ~85–90% makes the plant a net consumer) — while the levitated dipole is steady-state, with LCOE driven continuously by capacity factor and confinement scaling. Helion's D-³He mode targets elimination of the tritium breeding blanket and thermal conversion cycle entirely through direct inductive energy recovery, potentially removing two major capex categories that the levitated dipole retains; the FRC's dominant capex uncertainty is the pulsed capacitor bank (no published $/J figure), while the levitated dipole's is the internal coil system and confinement scale-up. Neither concept has a published independent plant study equivalent to ARIES or PROCESS, and neither has disclosed absolute capital costs.
 
 ---
 
 ## Section 8: Sources
 
-1. **arxiv-2602-20564-dt-dipole-power-plants.md** — T. Simpson, R.A. Badcock, et al. (OpenStar Technologies Limited, 2026), "Deuterium-Tritium Levitated Dipole Fusion Power Plants," arXiv:2602.20564v1. Primary engineering reference: Reactor A design point (667 MW fusion, 208 MWe net), 23 T REBCO CICC coil, Li₂O blanket (TBR 1.1), two-section sacrificial coil, >95% duty cycle, power balance equation (Eq. 9), ICRH baseline (~70% efficiency), neutron management (W/B₄C shield, 25% core intercept), Bohm-like confinement scaling, local β₀ ~ 3 optimal. Phase 1a source: `iter-01/sources/arxiv-2602-20564-dt-dipole-power-plants.md`.
+**1. Simpson et al. (2026). "Deuterium-Tritium Levitated Dipole Fusion Power Plants." arXiv:2602.20564.**
+The primary source for all power plant parameters: 0D power balance, two design points (Reactor A and B), coil specifications, neutronics, component masses, and the cost optimization framework. Provides the most complete publicly available design for a commercial levitated dipole D-T reactor. Path: `exploration/phase_1a/research/12-levitated-dipole/iter-01/sources/arxiv-2602-20564-dt-dipole-power-plants.md` (also accessed as iter-02 plasma-state-clarification variant).
 
-2. **arxiv-2508-17691-junior-design-results.md** — OpenStar Technologies team (2025), "Design and Initial Results from the 'Junior' Levitated Dipole Experiment," arXiv:2508.17691v1. Junior prototype specifications: 14 NI solder-impregnated HTS coils, 5.63 T design / 2.35 T achieved at 42% design current, 1.44 kA design / 600 A achieved, 550 kg floating mass, 0.095 MJ stored energy (world record for HTS flux pump delivery), ECRH heating, built in under 2 years for <$10M. Phase 1a source: `iter-01/sources/arxiv-2508-17691-junior-design-results.md`.
+**2. OpenStar Team (2025). "Design and Initial Results from Junior LDX." arXiv:2508.17691.**
+Engineering specifications for the Junior prototype: HTS coil design (14 NI solder-impregnated coils, 6.3 km REBCO tape, 550 kg floating mass), flux pump design and world-record performance (~170 kJ stored energy), vacuum vessel geometry, and first plasma results. Establishes current TRL baseline. Path: `exploration/phase_1a/research/12-levitated-dipole/iter-01/sources/arxiv-2508-17691-junior-design-results.md`
 
-3. **openstar-prototype-roadmap.md** — Compiled from multiple news sources and OpenStar website. Device naming and roadmap (Junior → Tahi → Maui → Tama Nui), company founding details (2021, Wellington; Ratu Mataira CEO, Darren Garnier CSO from MIT LDX program, Rod Badcock CTO), funding history (NZD 20M pre-2026 + NZD 35M Feb 2026), key milestones (170 kJ flux pump, 10 W continuous maintenance), LDX and RT-1 experimental heritage. Phase 1a source: `iter-01/sources/openstar-prototype-roadmap.md`.
+**3. OpenStar Technologies website and news coverage (2025–2026).**
+Development roadmap (Junior → Tahi → Maui → Tama Nui), funding disclosures (NZ$10M seed, public NZ$35M round), and levitation milestone announcement (February 2026). Commercial targets: Tama Nui at 50–200 MWe. Path: `exploration/phase_1a/research/12-levitated-dipole/iter-01/sources/openstar-prototype-roadmap.md`; `iter-02/sources/openstar-2026-funding-tahi-timeline.md`
 
-4. **arxiv-2602-20564-plasma-state-clarification.md** — iter-02 research note based on Simpson et al. (2026). Documents evidence that the power plant design is "sustained" not ignited: Paux is an essential term in power balance Eq. 9, alpha heating in good-curvature region entirely balanced by radiation losses (only bad-curvature alpha heating contributes net self-heating), ICRH is described as "required" not supplementary, fixed Qsci design framework. Phase 1a source: `iter-02/sources/arxiv-2602-20564-plasma-state-clarification.md`.
+**4. Phase 1a Dossier: Levitated Dipole (D-T). (2026-03-07).**
+Consolidated per-column values with confidence ratings from two research iterations. Corrects the plasma state classification from "Burning" to "Sustained" with evidence from the power balance equation. Path: `exploration/phase_1a/research/12-levitated-dipole/dossier.md`
 
-5. **openstar-2026-funding-tahi-timeline.md** — Compiled from Bloomberg, RNZ, World Nuclear News, Energy Connects (February–March 2026). February 2026 milestone: levitated plasma at ~300,000°C for 20 seconds. NZD 35M NZ Regional Development Fund grant. Prototype timeline with Tahi specifications (20 T, Lawson criterion, ~2028), Maui (~2031, neutron production, revenue), Tama Nui (50–200 MWe commercial). Phase 1a source: `iter-02/sources/openstar-2026-funding-tahi-timeline.md`.
+**5. Boxer, A.C. et al. (2010). "Turbulent inward pinch of plasma confined by a levitated dipole magnet." *Nature Physics* 6, 207–212.**
+Foundational LDX experimental result demonstrating peaked density profiles from turbulent pinch — the key confinement mechanism that distinguishes a levitated from a supported dipole. Not in Phase 1a sources; referenced for heritage context.
 
-6. **01-hts-compact-tokamak handwritten analysis** — Fusion TEA project handwritten exemplar. REBCO supply chain characterization (>5,000 km per ARC-class plant, $30–100/kA-m, commercial target ~$10/kA-m), tritium supply chain ($35,000/g, 25–30 kg global inventory, 5.5%/yr decay, ~1 kg startup per plant), Li-6 enrichment constraints (Russian/Chinese dominance, mercury-process ban) reused in Section 4 with adaptation to single-coil demand profile.
-
-7. **LDX (Levitated Dipole Experiment)** — MIT/Columbia University, DOE-funded, 2004–2011. First levitated dipole experiment: demonstrated quasi-steady high-beta confinement (β ~20%), inward turbulent pinch, ECRH heating at 2.45–28 GHz. Primary physics heritage for OpenStar. Cited via openstar-prototype-roadmap.md §Lab Experiments; no direct source document in Phase 1a materials. Wikipedia: https://en.wikipedia.org/wiki/Levitated_Dipole_Experiment.
+**6. Hasegawa, A. et al. (1990). "A D-³He fusion reactor based on a dipole magnetic field." *Nuclear Fusion* 30(11), 2405.**
+Original theoretical proposal for the dipole fusion concept. Not in Phase 1a sources; historical reference.
