@@ -1,0 +1,73 @@
+[
+  {
+    "page_num": 0,
+    "action": "gmft_replace",
+    "reasons": [
+      "TABLE: ColN auto-headers in 1/11 rows (likely diagram/figure falsely detected as table)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (9r\u00d74c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 1,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: strikethrough sequences: 4 (garbled content)",
+      "TABLE: ColN auto-headers in 1/6 rows (likely diagram/figure falsely detected as table)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 2,
+    "action": "strip_false",
+    "reasons": [
+      "TABLE: <br> artifacts in 3/6 table rows",
+      "TABLE: ColN auto-headers in 1/6 rows (likely diagram/figure falsely detected as table)",
+      "ColN auto-headers detected, no GMFT \u2014 stripping false tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 3,
+    "action": "strip_false",
+    "reasons": [
+      "TABLE: <br> artifacts in 1/7 table rows",
+      "TABLE: ColN auto-headers in 1/7 rows (likely diagram/figure falsely detected as table)",
+      "ColN auto-headers detected, no GMFT \u2014 stripping false tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 4,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 5,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 6,
+    "action": "gmft_replace",
+    "reasons": [
+      "TABLE: ColN auto-headers in 1/14 rows (likely diagram/figure falsely detected as table)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (12r\u00d74c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 7,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  }
+]

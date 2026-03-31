@@ -20,11 +20,16 @@ issues. Produce a structured review report with Proposed Actions.
 
 ### Source Documents (for citation verification)
 - `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/11-magnetic-mirror/iter-01/sources/aps-dpp-2025-sutherland.md` (1 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/11-magnetic-mirror/iter-01/sources/arxiv-2411-06644-confinement-predictions.md` (1 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/11-magnetic-mirror/iter-01/sources/realta-fusion-hub-spotlight.md` (2 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/11-magnetic-mirror/iter-01/sources/wham-experiment-details.md` (1 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/11-magnetic-mirror/iter-02/sources/fusion-report-interview-realta.md` (1 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/11-magnetic-mirror/iter-02/sources/realta-svb-funding-feb2026.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/11-magnetic-mirror/iter-01/sources/arxiv-2411-06644-confinement-predictions.md` (103 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/11-magnetic-mirror/iter-01/sources/arxiv-2411-06644-confinement-predictions.orig.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/11-magnetic-mirror/iter-01/sources/realta-fusion-hub-spotlight.md` (23 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/11-magnetic-mirror/iter-01/sources/realta-fusion-hub-spotlight.orig.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/11-magnetic-mirror/iter-01/sources/wham-experiment-details.md` (3 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/11-magnetic-mirror/iter-01/sources/wham-experiment-details.orig.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/11-magnetic-mirror/iter-02/sources/fusion-report-interview-realta.md` (8 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/11-magnetic-mirror/iter-02/sources/fusion-report-interview-realta.orig.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/11-magnetic-mirror/iter-02/sources/realta-svb-funding-feb2026.md` (4 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/11-magnetic-mirror/iter-02/sources/realta-svb-funding-feb2026.orig.md` (1 KB)
 
 ## Review Checklist
 
@@ -76,9 +81,9 @@ Use this exact format:
 # Review: Magnetic Mirror (D-T)
 
 **Iteration:** 1
-**Date:** 2026-03-22
+**Date:** 2026-03-29
 **Files reviewed:** analysis.md, model_setup.py
-**Source documents:** 6 files
+**Source documents:** 11 files
 
 ---
 

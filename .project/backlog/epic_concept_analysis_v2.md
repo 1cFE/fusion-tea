@@ -107,6 +107,7 @@ Inspired by the ralph-init.sh generate → review → refine pattern, but adapte
 **Effort**: 3 days (spec 2h, design 4h, plan 2h, execute 16h)
 **Status**: Complete (2026-03-28)
 **Dependencies**: None
+**Work Item**: `.project/active/iterative-analysis-loop/` (spec, design, plan)
 
 **Objective**: Replace the single-call analyze stage with an iterative analyze → assess → feedback loop, with extracted configuration and a structured feedback format.
 
@@ -155,14 +156,14 @@ Inspired by the ralph-init.sh generate → review → refine pattern, but adapte
 - Human-driven change request workflow (that's Item 5)
 
 **Success Criteria**:
-- [ ] No goals/checklists remain inline in prompt templates — all in `config/`
-- [ ] Loop runs end-to-end for ≥3 concepts
-- [ ] Assessment finds real issues on pass 1 that pass 2 fixes
-- [ ] Loop converges (pass 2 or 3 comes back clean) for most concepts
-- [ ] Each thread stays well under context limit
-- [ ] `feedback_iter_N.md` files provide clear audit trail
-- [ ] `--max-passes 1` reproduces current single-pass behavior (backward compatible)
-- [ ] `status` command shows stale indicators for downstream artifacts
+- [x] No goals/checklists remain inline in prompt templates — all in `config/`
+- [x] Loop runs end-to-end for ≥3 concepts (ran on concepts 09, 14, 22)
+- [x] Assessment finds real issues on pass 1 that pass 2 fixes
+- [~] Loop converges (pass 2 or 3 comes back clean) for most concepts — 1/3 converged (concept 14); see Lessons Learned re: tuning
+- [x] Each thread stays well under context limit
+- [x] `feedback_iter_N.md` files provide clear audit trail
+- [x] `--max-passes 1` reproduces current single-pass behavior (backward compatible)
+- [x] `status` command shows stale indicators for downstream artifacts
 
 **Deliverables**:
 - `prompt_templates/config/` directory with extracted config files
@@ -173,11 +174,13 @@ Inspired by the ralph-init.sh generate → review → refine pattern, but adapte
 
 ---
 
-### Item 2: Build-Visuals Stage [1.5 days]
+### Item 2: Build-Visuals Stage [1.5 days] — IN PROGRESS
 
 **Type**: Implementation
-**Effort**: 1.5 days (spec 1h, design 2h, plan 1h, execute 8h)
+**Effort**: 1.5 days (spec 1h, design 2h, plan 1h, execute 8h) — revised scope is more ambitious
 **Dependencies**: None
+**Concept**: `.project/concepts/concept-explorer.md`
+**Worktree**: `/home/reid/1cfe/fusion-tea_concept-explorer`
 
 **Objective**: Add a stage that generates an interactive HTML sensitivity explorer from the cost model, allowing users to sanity-check parameter impacts before review.
 
@@ -211,21 +214,25 @@ Inspired by the ralph-init.sh generate → review → refine pattern, but adapte
 
 ---
 
-### Item 3: Source Addition and Incremental Updates [1.5 days]
+### Item 3: Source Addition and Incremental Updates [1.5 days] — COMPLETE
 
 **Type**: Implementation
 **Effort**: 1.5 days (spec 1h, design 2h, plan 1h, execute 8h)
+**Status**: Complete (2026-03-29)
 **Dependencies**: Item 1 (reuses feedback format, modal analysis prompt, staleness propagation)
-**External Dep**: `agentic-mbse[web]` feature (in progress on `webfetch-tools` branch). URL mode blocks on this; PDF mode works without it.
+**Conventions**: Must follow companion-directory + symlink layout established by source replacement (`.project/active/source-replacement/`)
+**External Dep**: ~~`agentic-mbse[web]` feature (in progress on `webfetch-tools` branch)~~ — RESOLVED, merged. URL and PDF modes both work.
+**Work Item**: `.project/active/source-addition/` (spec, design, plan)
 
 **Objective**: Enable adding new data sources (PDF or URL) to a concept and incrementally updating the analysis without full re-run.
 
 **Scope**:
 1. New `cmd_add_source` subcommand:
    - Accepts a local PDF path or URL
-   - Determines next `iter-NN` number for the concept
-   - Runs extraction (`agentic-mbse extract`)
-   - Flattens output to expected `sources/` structure
+   - Determines placement: add to latest existing `iter-NN/sources/` directory (supplementary material), not a new iteration. New `iter-NN` only if no iterations exist yet.
+   - Runs extraction (`agentic-mbse extract <source> --save-source --output <sources-dir>/<name>/`)
+   - Flattens nested PDF subdirectories if needed (same logic as source replacement)
+   - Creates symlink: `<name>.md` → `<name>/output.md` (preserves relative image paths)
    - Prints confirmation with new source path
 2. New `cmd_update_analysis` subcommand:
    - Accepts concept ID + `--sources` flag (specific new source files)
@@ -238,21 +245,24 @@ Inspired by the ralph-init.sh generate → review → refine pattern, but adapte
 - Phase 1a prompt redesign
 
 **Success Criteria**:
-- [ ] `run_analysis.py add-source 11 path/to/paper.pdf` creates `iter-NN/sources/paper.md`
-- [ ] `run_analysis.py add-source 11 https://example.com/article` works (requires agentic-mbse[web])
-- [ ] `run_analysis.py update-analysis 11 --sources iter-03/sources/paper.md` updates analysis via analysis agent
-- [ ] Downstream artifacts marked stale after update
+- [x] `run_analysis.py add-source 17a <pdf>` creates `iter-02/sources/<name>.md` (symlink) + `<name>/` companion dir with `output.md`, `metrics.json` — verified via checkpoint-test-concept17 (2026-03-29)
+- [ ] `run_analysis.py add-source 11 https://example.com/article` creates same layout with `raw.html` — URL mode not tested
+- [~] Companion dir includes provenance artifacts — `output.md`, `metrics.json`, `cost.json`, `decisions.json`, `images/` present; `raw.pdf` NOT created (extraction pipeline does not copy source by default)
+- [x] `run_analysis.py update-analysis 17a --sources <name>` updates `analysis.md` via analysis agent — verified: 3 findings applied, 39 whitepaper-specific term mentions
+- [x] Downstream artifacts marked stale after update — verified: `model_setup.py` flagged stale
 
 **Deliverables**:
 - Updated `run_analysis.py` with `cmd_add_source` and `cmd_update_analysis`
 
 ---
 
-### Item 4: Shared Memory System [1.5 days]
+### Item 4: Shared Memory System [1.5 days] — COMPLETE
 
 **Type**: Implementation
 **Effort**: 1.5 days (spec 2h, design 3h, plan 1h, execute 6h)
+**Status**: Complete (2026-03-29)
 **Dependencies**: None (but should be ready before Item 5)
+**Work Item**: `.project/active/shared-memory-system/` (spec, design, plan)
 
 **Objective**: Build a cross-concept memory system that accumulates learnings (common pitfalls, good data sources, parameter sanity ranges, recurring feedback patterns) and makes them available to all pipeline agents via a memory-handler subagent.
 
@@ -274,24 +284,28 @@ Inspired by the ralph-init.sh generate → review → refine pattern, but adapte
 - Memory pruning / expiration (manual curation)
 
 **Success Criteria**:
-- [ ] Memory files exist and can be read/written by agents
-- [ ] Memory-handler subagent returns relevant context when given a concept + task description
-- [ ] At least one pipeline stage (analyze or review) consults memory before running
-- [ ] `/manage-concept` can save learnings to shared memory
-- [ ] Memory is useful — after 3-5 concept analyses, accumulated learnings improve subsequent ones
+- [x] Memory files exist and can be read/written by agents
+- [x] Memory-handler subagent returns relevant context when given a concept + task description
+- [x] At least one pipeline stage (analyze or review) consults memory before running
+- [ ] `/manage-concept` can save learnings to shared memory *(deferred — Item 5)*
+- [ ] Memory is useful — after 3-5 concept analyses, accumulated learnings improve subsequent ones *(deferred — requires organic accumulation)*
 
 **Deliverables**:
-- `exploration/concept_analysis/memory/` directory with initial structure
-- `prompt_templates/agents/memory_handler.md`
-- Integration hooks in pipeline agents
+- `exploration/concept_analysis/memory/` directory with initial structure and 3 sample entries
+- `.claude/agents/memory-handler.md` (interactive read/write agent)
+- `load_relevant_memories()` in `run_analysis.py` (pipeline integration)
+- `{{#if memory_context}}` conditional section in `analysis_v2.md`
+- 11 unit tests in `test_memory.py`
 
 ---
 
-### Item 5: Interactive Manage-Concept Agent [2 days]
+### Item 5: Interactive Manage-Concept Agent [2 days] — COMPLETE
 
 **Type**: Implementation
 **Effort**: 2 days (spec 2h, design 3h, plan 1h, execute 10h)
+**Status**: Complete (2026-03-29)
 **Dependencies**: Item 1 (feedback format, modal analysis prompt), Item 4 (shared memory)
+**Work Item**: `.project/active/manage-concept-agent/` (spec, design, plan)
 
 **Objective**: Create a `/manage-concept` Claude Code custom command that opens an interactive session for vetting, questioning, and improving a specific concept's analysis. Includes designing the handoff pattern for how human-driven changes flow back through the analysis agent.
 
@@ -317,12 +331,12 @@ Inspired by the ralph-init.sh generate → review → refine pattern, but adapte
 - Multi-concept comparison mode (single-concept focus)
 
 **Success Criteria**:
-- [ ] `claude /manage-concept 11` opens interactive session with full concept context
-- [ ] Agent correctly identifies pipeline state and adapts behavior
-- [ ] Key bets / assumptions / asterisks analysis is substantive and grounded in sources
-- [ ] Changes produce structured feedback that can be fed into the analysis agent
-- [ ] Change log captures session findings for audit trail
-- [ ] Agent can save learnings to shared memory via memory-handler
+- [x] `claude /manage-concept 11` opens interactive session with full concept context
+- [x] Agent correctly identifies pipeline state and adapts behavior
+- [x] Key bets / assumptions / asterisks analysis is substantive and grounded in sources
+- [x] Changes produce structured feedback that can be fed into the analysis agent — `--feedback` flag added to `cmd_analyze`
+- [x] Change log captures session findings for audit trail — change_log.md protocol in command prompt
+- [x] Agent can save learnings to shared memory via memory-handler
 
 **Deliverables**:
 - `.claude/commands/manage-concept.md`
@@ -334,7 +348,8 @@ Inspired by the ralph-init.sh generate → review → refine pattern, but adapte
 ## Dependencies
 
 **External**:
-- `agentic-mbse[web]` — web source capture feature (in progress, `webfetch-tools` branch). Blocks URL mode of Item 3's `add-source`, but PDF mode works without it.
+- ~~`agentic-mbse[web]` — web source capture feature~~ — RESOLVED, merged. No longer blocks Item 3.
+- Source replacement conventions (`.project/active/source-replacement/`) — companion-dir + symlink layout. Not a blocking dep (conventions are established), but Item 3 must follow them.
 
 **Internal**:
 - Items 1, 2, and 4 can proceed in parallel (no dependencies between them)
@@ -406,7 +421,30 @@ Assessment agent found real, progressively deeper issues each pass — only 1 of
 
 This is a tuning question, not a code bug. The pipeline works correctly at any `--max-passes` value.
 
+### Item 3: Checkpoint Test Results (concept 17a, Xcimer Whitepaper)
+
+**Verified by**: `.project/active/checkpoint-test-concept17/` (spec, plan — both Complete)
+**Date**: 2026-03-29
+
+**End-to-end pipeline validated**: gap-check → analyze (3-pass, PASS) → model-setup (LCOE $101.6/MWh) → review → add-source (28-page PDF, 89KB extraction) → update-analysis (3 findings applied) → spot checks (6/8 PASS).
+
+**Quality observations to watch for**:
+
+1. **Feedback-pass partial implementation**: The pre-pass generated 3 high-quality findings (F-1: laser cost component breakdown, F-2: development roadmap milestones, F-3: TRUMPF supply chain). The feedback-pass successfully applied F-1 and F-3 but only partially implemented F-2 — Phoenix/Argos/Athena milestones appear in the analysis but Anvil and Vulcan were dropped. This suggests the feedback-pass agent may lose detail on multi-item recommendations. Watch for this pattern on future `update-analysis` runs.
+
+2. **No `raw.pdf` provenance copy**: The `add-source` pipeline does not create a `raw.pdf` copy in the companion directory despite the design calling for `--save-source`. The extraction produces `output.md`, `metrics.json`, `cost.json`, `decisions.json`, and `images/` but no source copy. Low severity — source PDF path is known externally — but the `--save-source` flag may not be wired through correctly.
+
+3. **`update-analysis` targets `analysis.md`, not `output.md`**: The spec and plan assumed `output.md` (differentiation table in `iter-02/`) would be modified, but the pipeline correctly modifies `analysis.md` (detailed analysis in `analyses/`). This is correct behavior — the spec language was inaccurate. Future specs referencing update-analysis should say `analysis.md`.
+
+4. **Spot check SC-8 (tritium specifics) failed**: The specific values (TBR ~1.05, inventory <200g) come from the HYLIFE-III paper which is behind a ScienceDirect paywall and not extracted. The analysis discusses TBR and tritium conceptually but lacks these quantitative anchors. This is a data availability gap, not a pipeline issue.
+
+**Remaining untested Item 3 features**:
+- URL-based source addition (only PDF tested)
+- `--force` re-extraction
+- Error case: `update-analysis` on concept with no existing analysis
+- Staleness indicator (`*`) in `status` output after update
+
 ---
 
-**Last Updated**: 2026-03-28
-**Next Action**: Spec Item 2 (build-visuals), Item 3 (source addition), or Item 4 (shared memory)
+**Last Updated**: 2026-03-29
+**Next Action**: Item 2 (build-visuals, in progress) — only remaining incomplete item

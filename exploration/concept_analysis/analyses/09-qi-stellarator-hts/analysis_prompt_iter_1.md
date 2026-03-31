@@ -90,6 +90,41 @@ Construct each subagent call as follows:
 After receiving subagent responses, **read the cited sections yourself** to confirm the subagent's characterization before incorporating claims into the analysis. Do not blindly trust subagent summaries for critical claims.
 
 
+## Cross-Concept Memory
+
+The following insights were captured from prior concept analyses. Use them
+to avoid known pitfalls and apply established patterns. Do not cite these
+memories as sources — they are guidance, not evidence. Verify any specific
+claims against the actual source documents.
+
+## ARIES Studies Are Best Parameter Source for MFE Concepts
+Date: 2026-03-29 | Concepts: MFE
+
+ARIES-AT and ARIES-CS studies provide the most complete parameter sets
+for magnetic confinement cost modeling — plant-level CAS breakdowns,
+thermal efficiency targets, and magnet cost estimates. Prefer these over
+individual paper estimates when available. Cross-check against PROCESS
+code outputs where overlap exists.
+
+## FLiBe Coolant Cost Data Is Consistently Sparse
+Date: 2026-03-29 | Concepts: 09, 14, 22, IFE
+
+IFE concepts using FLiBe as primary coolant/breeder consistently lack
+cost data for coolant inventory and processing. Flag as [estimated] with
+high uncertainty. The HYLIFE-II report (Moir 1994) is the only source
+with FLiBe cost estimates but uses 1994 dollars.
+
+## Assessment Repeatedly Flags Missing O&M Breakdown
+Date: 2026-03-29 | Concepts: all
+
+The assessment agent flags missing O&M cost breakdown (fixed vs variable,
+scheduled maintenance, unplanned outage costs) in >80% of first-pass
+analyses. Cold-start analyses should include a placeholder O&M subsection
+in Section 3 even when source data is sparse, to avoid a guaranteed
+feedback finding.
+
+
+
 ## Mode: Cold Start
 
 You are producing a D1+ analysis from scratch. No prior analysis exists for this concept.
@@ -129,11 +164,16 @@ Spawn one subagent per source document. For cold-start analysis, ask each subage
 - What materials, supply chain, or manufacturing considerations are relevant?
 
 Sources to read via subagents:
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-01/sources/proxima-fusion-technology-page.md` (1 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md` (2 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-02/sources/helios-stellarator-comparison.md` (1 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-02/sources/proxima-fusion-2026-updates.md` (2 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-02/sources/stellaris-paper-details.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-01/sources/proxima-fusion-technology-page.md` (4 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-01/sources/proxima-fusion-technology-page.orig.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md` (337 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.orig.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-02/sources/helios-stellarator-comparison.md` (132 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-02/sources/helios-stellarator-comparison.orig.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-02/sources/proxima-fusion-2026-updates.md` (8 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-02/sources/proxima-fusion-2026-updates.orig.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-02/sources/stellaris-paper-details.md` (337 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/09-qi-stellarator-hts/iter-02/sources/stellaris-paper-details.orig.md` (2 KB)
 
 #### 6. Schema (controlled vocabulary and column definitions)
 `/home/reid/1cfe/fusion-tea/exploration/phase_1a/schema.md`
@@ -180,9 +220,6 @@ If you did not reference any approved analyses, leave Reuses unchanged.
 
 ## Cross-Concept Reuse
 
-- `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/01-hts-compact-tokamak/analysis.md`
-- `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/07-maglif/analysis.md`
-- `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/08-frc-w-direct-conversion/analysis.md`
 - `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/21-spherical-tokamak-hts/analysis.md`
 
 If approved prior analyses are available:

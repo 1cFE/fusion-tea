@@ -23,13 +23,20 @@ The dossier contains per-column values with confidence ratings (high/medium/low)
 ### Extracted Source Documents
 These are the primary technical sources extracted during Phase 1a research. Read each one to assess what technical depth is available:
 
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-01/sources/arxiv-2408-15206-pulsed-magnetic-fusion.md` (2 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-01/sources/fuse-energy-technology.md` (1 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-01/sources/pacific-fusion-website-technology.md` (3 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-01/sources/z-ife-power-plant-concept.md` (2 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-02/sources/fuse-energy-not-boring-details.md` (1 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-02/sources/pacific-fusion-interview-fusion-report.md` (1 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-02/sources/z-ife-sand2006-7148-thermal-cycles.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-01/sources/arxiv-2408-15206-pulsed-magnetic-fusion.md` (66 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-01/sources/arxiv-2408-15206-pulsed-magnetic-fusion.orig.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-01/sources/fuse-energy-technology.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-01/sources/fuse-energy-technology.orig.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-01/sources/pacific-fusion-website-technology.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-01/sources/pacific-fusion-website-technology.orig.md` (3 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-01/sources/z-ife-power-plant-concept.md` (3 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-01/sources/z-ife-power-plant-concept.orig.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-02/sources/fuse-energy-not-boring-details.md` (91 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-02/sources/fuse-energy-not-boring-details.orig.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-02/sources/pacific-fusion-interview-fusion-report.md` (8 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-02/sources/pacific-fusion-interview-fusion-report.orig.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-02/sources/z-ife-sand2006-7148-thermal-cycles.md` (277 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/07-maglif/iter-02/sources/z-ife-sand2006-7148-thermal-cycles.orig.md` (2 KB)
 
 ### Reference Documents
 - **Analysis brief** (defines the D1+ section requirements): `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/concept_analysis_brief.md`

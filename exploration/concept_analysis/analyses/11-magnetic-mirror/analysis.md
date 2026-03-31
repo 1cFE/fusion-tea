@@ -6,6 +6,9 @@ Status: draft
 Created: 2026-03-28
 Approved-Date:
 Reuses: []
+Review-Iterations: 1
+Last-Review: 2026-03-29
+Review-Status: addressed
 ---
 
 # D1+ Analysis: Magnetic Mirror (D-T) — Realta Fusion
@@ -25,10 +28,13 @@ Reuses: []
 Realta Fusion is more transparent than many private fusion companies at a comparable stage. One peer-reviewed confinement modeling paper exists specifically for their commercial design (arXiv:2411.06644), and the WHAM experiment has produced citable results. The APS DPP 2025 conference talk by Sutherland provides quantitative pilot plant performance targets. However, no plant-level cost study, engineering design report, or techno-economic analysis has been published for any modern HTS-based magnetic mirror. The company explicitly expects to publish a Hammir pre-conceptual design paper in 2026, which would substantially improve data availability.
 
 **Peer-reviewed and conference publications:**
-The arXiv confinement predictions paper (arXiv:2411.06644) is the primary quantitative anchor for commercial performance claims. It models Q > 5 at a 50-meter center cell and notes that longer configurations enable Q > 10. The APS DPP 2025 abstract (Sutherland) states Hammir targets Qe > 1 and Pe > 50 MWe for at least 3 hours continuously, with Anvil serving as the end-plug physics demonstrator. The WHAM physics basis paper (Endrizzi et al., Journal of Plasma Physics, 2023) provides the experimental foundation.
+The arXiv confinement predictions paper (arXiv:2411.06644) is the primary quantitative anchor for commercial performance claims. It models Q = 5.8 at a 50-meter center cell (Optimum operating point, Table 3). The Q > 10 extrapolation for longer center cells is a secondary characterization from The Fusion Report interview — not a direct arXiv result. The APS DPP 2025 abstract (Sutherland) states Hammir targets Qe > 1 and Pe > 50 MWe for at least 3 hours continuously, with Anvil serving as the end-plug physics demonstrator. The WHAM physics basis paper (Endrizzi et al., Journal of Plasma Physics, 2023) provides the experimental foundation.
 
-> "50-meter center cell → Q > 5... Longer center cell → Q > 10+"
-> — arxiv-2411-06644-confinement-predictions.md, §Hammir Design
+> "50-meter center cell → Q = 5.8 (Optimum operating point)"
+> — arxiv-2411-06644-confinement-predictions.md, Table 3 (primary source for 50 m operating point)
+
+> "Q > 10 possible with longer center cell" (extrapolated from 50 m scaling behavior)
+> — fusion-report-interview-realta.md (secondary-source characterization of arXiv scaling; specific length not given)
 
 > "electric gain Qe > 1, net electricity Pe,out > 50 MWe, for at least 3 hours continuously"
 > — aps-dpp-2025-sutherland.md, §Hammir Facility (Pilot Plant)
@@ -144,7 +150,7 @@ Ordered from least mature (highest LCOE model risk) to most mature.
 
 **HTS Axisymmetric Mirror Magnets — TRL 6–7**
 
-- **Demonstrated**: WHAM operates with two CFS-built REBCO HTS solenoid magnets at 17 T in-bore (>20 T on conductor), achieving a world-record field for magnetically confined plasma experiments at WHAM's scale. Axisymmetric solenoid coil geometry is geometrically simpler than 3D stellarator coils or MFTF-B yin-yang coils. CFS has demonstrated commercial HTS magnet manufacturing capability.
+- **Demonstrated**: WHAM operates with two CFS-built REBCO HTS solenoid magnets at 17 T in-bore (>20 T on conductor [unverified in ingested sources; likely from Endrizzi et al. 2023 WHAM physics basis paper]), achieving a world-record field for magnetically confined plasma experiments at WHAM's scale. Axisymmetric solenoid coil geometry is geometrically simpler than 3D stellarator coils or MFTF-B yin-yang coils. CFS has demonstrated commercial HTS magnet manufacturing capability.
 - **On paper only**: Full complement of center-cell solenoid modules and end-mirror coils for Hammir (50-meter design). Cost per meter at commercial length not estimated.
 - **Missing at scale**: Radiation shielding design for HTS coils in a 14 MeV neutron environment over 30-year plant lifetime. Large-magnet-radius implications of neutron shielding layers (shielding increases the physical distance between coil and plasma, potentially increasing coil stress and cost). Integration of multiple center-cell solenoid modules with demountable connections for maintenance.
 
@@ -223,6 +229,7 @@ The D-T first wall requires materials resistant to 14 MeV neutron damage at high
 | LCOE scaling saturation (historical) | ~600 MWe (1983$) | [analogue: MARS/MINIMARS studies — "LCOE saturates around 600 MWe" per handwritten exemplar §Data Availability] | low | 1983-technology MARS finding; likely different for HTS design |
 | Historical LCOE projection | ~7 ¢/kWh (1983$) | [analogue: MARS/MINIMARS — stated in handwritten exemplar §Data Availability] | low | 40-year-old estimate with fundamentally different magnet technology |
 | Input heating power (WHAM) | ~1 MW ECH class | [inferred from wham-experiment-details.md §Heating Methods — 110 GHz gyrotron listed] | low | WHAM is sub-commercial; Hammir power undisclosed |
+| NBI + ECH input power (arXiv pilot model) | ≈30–40 MW | arxiv-2411-06644-confinement-predictions.md Table 3 | medium | Derived: P_fusion = 175 MW, Q = 5.8 → P_input ≈ 30 MW for 50 m pilot (Optimum case); 35 MW used as midpoint for arXiv-anchored estimate. Present in full output.md but absent from .orig.md summary. |
 | Funding secured to date | $9.5M (SVB, Feb 2026) | realta-svb-funding-feb2026.md §Key Details | high | Growth capital only; total funding not published |
 
 **Missing Parameters:**

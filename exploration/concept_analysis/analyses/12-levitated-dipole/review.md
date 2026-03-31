@@ -1,410 +1,490 @@
 # Review: Levitated Dipole (D-T)
 
 **Iteration:** 1
-**Date:** 2026-03-22
+**Date:** 2026-03-30
 **Files reviewed:** analysis.md, model_setup.py
-**Source documents:** 5 files
+**Source documents:** 5 files (arxiv-2602-20564 [iter-01 and iter-02 variant], arxiv-2508-17691, openstar-prototype-roadmap, openstar-2026-funding-tahi-timeline)
 
 ---
 
 ## Citation Verification
 
-### CV-1: D-T fuel cycle quote
-- **Source cited:** arxiv-2602-20564-dt-dipole-power-plants.md §Fuel
-- **Status:** FOUND (near-match)
-- **Actual text:** "DT required for rapid deployment due to lower plasma triple product requirements"
-- **Notes:** Analysis paraphrases as a block quote: "In order to achieve rapid deployment…due to its lower required plasma triple products." The prose in the source note matches in substance; the block-quote framing implies a verbatim extract from the HTML preprint, but only the sense is captured in the source file. No material inaccuracy.
+### CV-1: "preliminary results from this model which are subject to change" (Section 1)
+- **Source cited:** arxiv-2602-20564-dt-dipole-power-plants.md §Discussion
+- **Status:** FOUND (wrong section)
+- **Actual text:** "OpenStar is currently in the process of developing a model for estimating the overnight capital cost and LCOE for levitated dipole fusion power plants which will be the topic of future work. This study uses preliminary results from this model which are subject to change as the model is developed."
+- **Notes:** Located in §3.3 Optimization Constraints, not §Discussion. The quote is accurate; the section attribution is wrong. §Discussion (§5) does not contain this passage.
 
-### CV-2: Reactor A power figures (667 MW / 208 MWe)
-- **Source cited:** arxiv-2602-20564-dt-dipole-power-plants.md §Reactor Performance
-- **Status:** FOUND
-- **Actual text:** "Reactor A (conservative Bohm scaling): ~667 MW fusion, ~208 MW net electric"
-- **Notes:** Exact match. Section 5 parameter table and model_setup.py both use these values correctly.
+---
 
-### CV-3: Junior prototype specifications (coils, field, mass, stored energy)
-- **Source cited:** arxiv-2508-17691-junior-design-results.md §Junior Core Magnet Specs
+### CV-2: "The assumption that these reactors will be Q_sci = 15 is only valid if a smaller demonstration device...displays adequate plasma performance." (Section 2)
+- **Source cited:** arxiv-2602-20564-dt-dipole-power-plants.md §Discussion
 - **Status:** FOUND
-- **Actual text:** "14 non-insulated (NI) solder impregnated HTS coils in series / Design field: 5.63 T max at windings; achieved 2.35 T (at 42% of design current) / Design current: 1.44 kA; achieved 600 A / Floating mass: 550 kg / Stored energy achieved: 0.095 MJ (record for flux pump delivery)"
-- **Notes:** All figures match. Analysis states "1.44 kA design / 600 A achieved" — cross-check: 42% × 1.44 kA = 605 A ≈ 600 A; 42% × 5.63 T = 2.365 T ≈ 2.35 T. Internally consistent.
+- **Actual text:** "The assumption that these reactors will be $Q_{sci} = 15$ is only valid if a smaller demonstration device, which we will call Tahi, displays adequate plasma performance."
+- **Notes:** Section attribution to §Discussion is correct (§5 Discussion, line 758). Quote is accurate. The bracketed editorial "[the next prototype, ~2028, target 20 T]" is correctly marked as analyst synthesis, not quotation.
 
-### CV-4: Junior built for <$10M in under 2 years
-- **Source cited:** arxiv-2508-17691-junior-design-results.md §Key Notes
+---
+
+### CV-3: "Intrinsic decoupling of the confining magnetic field-generating REBCO magnets and the vacuum vessel offer unparalleled accessibility and maintainability." (Section 2)
+- **Source cited:** arxiv-2602-20564-dt-dipole-power-plants.md §Introduction
 - **Status:** FOUND
-- **Actual text:** "Built in under 2 years for less than $10M USD"
+- **Actual text:** "The intrinsic decoupling of the confining magnetic field-generating REBCO magnets and the vacuum vessel offer unparalleled accessibility and maintainability, allowing for high plant duty factors and theoretically low electricity prices." (Abstract)
+- **Notes:** The exact quote is in the Abstract, not §Introduction. The introduction contains the same concept in paraphrase. Minor attribution imprecision; no substantive concern.
+
+---
+
+### CV-4: "The physics defining an upper bound on the value of p_lcfs is not well understood as no dipole experiments have yet had enough heating power to generate edge conditions applicable to fusion power plants." (Section 2)
+- **Source cited:** arxiv-2602-20564-plasma-state-clarification.md §2.1.4
+- **Status:** FOUND
+- **Actual text:** "The physics defining an upper bound on the value of $p_{lcfs}$ is not well understood as no dipole experiments have yet had enough heating power to generate edge conditions applicable to fusion power plants."
+- **Notes:** Section attribution §2.1.4 (Plasma Edge Conditions) is correct. Exact text match confirmed in both iter-01 and iter-02 source files.
+
+---
+
+### CV-5: "Tungsten will undergo recrystallization and it is possible that the onset of degraded mechanical properties can be delayed until other forms of damage dominate." (Section 3)
+- **Source cited:** arxiv-2602-20564-dt-dipole-power-plants.md §4.3 Neutron Transport
+- **Status:** PARTIAL MATCH
+- **Actual text:** "...the tungsten tiles in Reactor A reach a maximum steady state temperature of 1950 K which is well below the design constraint of 2500 K, but above the recrystallization temperature... As long as the shield is maintained at these elevated temperatures it is possible that the onset of the degraded mechanical properties can be delayed until other forms of damage dominate."
+- **Notes:** The first clause of the analysis quote ("Tungsten will undergo recrystallization") does not appear verbatim in the source. The source describes the tiles as operating "above the recrystallization temperature" — the analysis has converted this into a declarative sentence. The second half of the analysis quote is a close paraphrase of the actual source text. Section attribution §4.3 is correct. The blockquote presentation implies a single continuous passage; it is a composite of two separated sentences. Severity: minor — meaning is faithfully captured.
+
+---
+
+### CV-6: "greatest magnetic stored energy delivered by an HTS flux pump to date" (Section 3 / parameter table)
+- **Source cited:** arxiv-2508-17691-junior-design-results.md §Flux Pump Results
+- **Status:** FOUND
+- **Actual text:** "...charged to ~600 A which is ~42% of its design current achieving the greatest magnetic stored energy delivered by an HTS flux pump to date." (§4 Initial Results)
+- **Notes:** Located in §4 Initial Results, not a separately titled §Flux Pump Results. The claim is confirmed; section name is approximate but unambiguous.
+
+---
+
+### CV-7: Parameter table — Fusion power 667 MW / Net electric 208 MWe / Gross electric ~296 MWe
+- **Source cited:** arxiv-2602-20564-dt-dipole-power-plants.md §Table 6 and §Table 9
+- **Status:** FOUND
+- **Actual text:** Table 6: "Fusion power: 667 MW" (Reactor A); Table 9: "Net Electric Power: 208 MW", "Total Electrical Power: 296 MW" (Reactor A)
+- **Notes:** All three values confirmed exactly in Tables 6 and 9.
+
+---
+
+### CV-8: Parameter table — REBCO tape 4,320 km cited to §Table 7
+- **Source cited:** arxiv-2602-20564-dt-dipole-power-plants.md §Table 7
+- **Status:** FOUND (wrong table)
+- **Actual text:** Table 5 (mass/component breakdown): "REBCO Tape: 4,320 km" (Reactor A)
+- **Notes:** The 4,320 km value appears in Table 5 (mass table), not Table 7 (core magnet design parameters: peak field, inductance, float time, etc.). This is a citation error — wrong table number. The value itself is correct.
+
+---
+
+### CV-9: Parameter table note — "+~1.2 km top magnet" REBCO tape
+- **Source cited:** Not explicitly cited in the parameter table; marked "dossier"
+- **Status:** NOT FOUND (in any primary power plant source)
+- **Actual text:** Not present in Simpson et al. (2602.20564). The 1.2 km figure appears in the Junior top magnet Table 2 (arxiv-2508-17691): "Tape length: 1.2 km."
+- **Notes:** Simpson et al. explicitly states "the details of the levitation coil have not been considered" for the power plant. The analyst has applied the Junior prototype top magnet tape length as an estimate for the Reactor A top magnet. This analogue is invalid: the power plant core magnet operates at ~29.4 kA (Table 7) vs. ~700 A for the Junior top magnet — a 42× current difference. The power plant top magnet tape content would be on the order of tens of km, not 1.2 km. This is a factual concern in the notes column.
+
+---
+
+### CV-10: Parameter table — Plant duty cycle 90.1%, Plant availability 96%
+- **Source cited:** arxiv-2602-20564-dt-dipole-power-plants.md §3.2.5 and §Table 7
+- **Status:** FOUND
+- **Actual text:** Combined parameter table (near Table 5 in §4): "Core magnet duty cycle: 90.1% (Reactor A)"; "Plant availability factor: 96%"
+- **Notes:** Both values confirmed in source. The duty cycle appears in the reactor overview table alongside Table 5 data, not exclusively in §Table 7 (magnet design parameters). Values are correct.
+
+---
+
+### CV-11: Parameter table — Energy confinement times 3.5 s (A), 5.9 s (B)
+- **Source cited:** arxiv-2602-20564-dt-dipole-power-plants.md §Table 6
+- **Status:** FOUND
+- **Actual text:** Table 6: "Energy confinement time: 3.5 s (Reactor A), 5.9 s (Reactor B)"
 - **Notes:** Exact match.
 
-### CV-5: LDX high-beta quasi-steady discharges
-- **Source cited:** openstar-prototype-roadmap.md §Lab Experiments
+---
+
+### CV-12: Parameter table — Cryogenic load "14.1 kW deposited, 1.31 MW wall plug"
+- **Source cited:** arxiv-2602-20564-dt-dipole-power-plants.md §Table 9
+- **Status:** PARTIAL MATCH
+- **Actual text:** Table 9 Core Magnet section: total heating = 16.4 kW (neutron 13.5 + photon 0.59 + electrical 1.3 + conductive 1.0 = 16.4 kW); Table 9 Plant: "Cryogenic Cooling: -1.31 MW"
+- **Notes:** The analysis states "14.1 kW deposited" as a single value. The source does not tabulate 14.1 kW as an explicit line item; the nearest interpretation is neutron + photon = 13.5 + 0.59 = 14.09 kW ≈ 14.1 kW (excluding electrical and conductive heating). The 1.31 MW wall-plug is confirmed directly in Table 9. The 14.1 kW figure is a partial subtotal not stated as such in the source — minor documentation gap.
+
+---
+
+### CV-13: Junior prototype cost <$10M, built in under 2 years (Section 1 / parameter table)
+- **Source cited:** arxiv-2508-17691-junior-design-results.md §3
 - **Status:** FOUND
-- **Actual text:** "High-beta (20%) quasi-steady discharges >20 seconds / Inward turbulent pinch observed (Nature Physics)"
-- **Notes:** Analysis states "β up to ~20%, >20 seconds" — matches source. Analysis also claims LDX operated "at keV plasma temperatures" (Section 2 body) — this specific claim is **not supported by any extracted source**. LDX electron temperatures were typically hundreds of eV, not keV. See PA-1.
-
-### CV-6: February 2026 levitated plasma milestone
-- **Source cited:** openstar-2026-funding-tahi-timeline.md §February 2026 Milestone
-- **Status:** FOUND
-- **Actual text:** "Junior prototype achieved plasma at ~300,000°C lasting 20 seconds in a 5.2m vacuum chamber"
-- **Notes:** Analysis says "achieving plasma at ~300,000°C for 20 seconds" — exact match. Cross-check: 300,000°C = 300,000 K / 11,605 eV·K⁻¹ ≈ 25.9 eV ≈ 26 eV as stated. Correct.
-
-### CV-7: NZ government funding amounts and fund name
-- **Source cited:** openstar-prototype-roadmap.md and openstar-2026-funding-tahi-timeline.md (§NZ Government Funding)
-- **Status:** PARTIAL MATCH — fund name discrepancy
-- **Actual text (roadmap):** "Total raised by 2024: NZD 20M / Feb 2026: NZD 35M from NZ Regional Development Fund"
-- **Actual text (timeline source):** "NZD 35 million (~USD 21 million) from **Regional Infrastructure Fund** for Tahi development"
-- **Notes:** The analysis uses "NZ Regional Development Fund." The two source files disagree: roadmap says "Regional Development Fund," timeline source says "Regional Infrastructure Fund." The timeline source cites specific news outlets (Bloomberg, RNZ, World Nuclear News) and is more likely to be accurate on the fund name. See PA-2.
-
-### CV-8: Flux pump and current leads
-- **Source cited:** arxiv-2602-20564-dt-dipole-power-plants.md §Driver Technology; openstar-prototype-roadmap.md §Key Milestones
-- **Status:** FOUND
-- **Actual text:** "On-board superconducting transformer-rectifier ('flux pump') power supply / Flux pump needs only 10 W to maintain magnet indefinitely"
-- **Notes:** Both "on-board superconducting transformer-rectifier" and "10 W continuous" confirmed. The ~10 W figure is in the roadmap §Key Milestones, not §Driver Technology of the arXiv note — minor citation specificity issue.
-
-### CV-9: ICRH wall-plug efficiency ~70%
-- **Source cited:** arxiv-2602-20564-dt-dipole-power-plants.md §Heating (also §Primary Heating in Section 5 table)
-- **Status:** NOT FOUND in extracted source
-- **Actual text:** Source extract shows only: "Ion-cyclotron resonance heating (ICRH) as baseline / Also evaluated ECRH and NBI"
-- **Notes:** The 70% wall-plug efficiency figure does not appear in the extracted arxiv-2602-20564 source document. The model_setup.py comments correctly attribute this to "JET, EAST" demonstrations (general ICRH literature) and state it's the "stated reason OpenStar selected ICRH over ECRH." If the full arXiv PDF states 70% explicitly, this would be FOUND — but the extracted source does not support it. See PA-3.
-
-### CV-10: Two-section sacrificial coil (~20%, ~1 yr lifetime)
-- **Source cited:** arxiv-2602-20564-dt-dipole-power-plants.md §Magnet
-- **Status:** FOUND
-- **Actual text:** "Two-section coil: sacrificial section (~20% of coil, ~1-year neutron damage lifetime) + semi-permanent section (decade-scale)"
-- **Notes:** Exact match for both the 20% fraction and ~1-year lifetime.
-
-### CV-11: Neutron intercept fraction (~25%)
-- **Source cited:** arxiv-2602-20564-dt-dipole-power-plants.md §Neutron Management
-- **Status:** FOUND
-- **Actual text:** "Only ~25% of fusion neutrons pass through core magnet region due to geometry"
-- **Notes:** Exact match. The analysis uses "~25% of fusion neutrons intercept the core magnet" and the source says "pass through core magnet region" — equivalent wording.
-
-### CV-12: Two-temperature shield values (>2000 K, ~600°C)
-- **Source cited:** arxiv-2602-20564-dt-dipole-power-plants.md §Neutron Management
-- **Status:** FOUND
-- **Actual text:** "Two-temperature shield: hot shield (>2000 K) and warm shield (~600°C)"
-- **Notes:** Exact match. 92% radiated heat figure also FOUND: "92% of heat deposited in neutron shield radiated to first wall."
-
-### CV-13: TBR 1.1 with Li₂O ceramic blanket
-- **Source cited:** arxiv-2602-20564-dt-dipole-power-plants.md §Tritium Breeding
-- **Status:** FOUND
-- **Actual text:** "Li₂O ceramic blanket / Target TBR: 1.1 / 10B(n,α)³H reaction in B₄C shield also produces tritium"
-- **Notes:** All confirmed. B₄C secondary tritium source noted in analysis.md is supported.
-
-### CV-14: Local plasma β₀ ~ 3 optimal
-- **Source cited:** arxiv-2602-20564-dt-dipole-power-plants.md §Plasma Physics
-- **Status:** FOUND
-- **Actual text:** "Local β₀ ~ 3 optimal"
+- **Actual text:** "The Junior system described in this article was designed and built in under 2 years at a cost of < $10M USD" (§3 Experiment Overview)
 - **Notes:** Exact match.
 
-### CV-15: Tahi target field 20 T and Lawson criterion goal
-- **Source cited:** openstar-2026-funding-tahi-timeline.md §Tahi Specifications
+---
+
+### CV-14: Parameter table — Tama Nui commercial range 50–200 MWe
+- **Source cited:** openstar-2026-funding-tahi-timeline.md
 - **Status:** FOUND
-- **Actual text:** "Magnetic field: up to 20 T (4x stronger than Junior's ~5.6 T) / Goal: Place dipole on Lawson criterion curve (nTτ)"
-- **Notes:** 20 T and Lawson criterion goal confirmed. Note: source claims "4× stronger than Junior's ~5.6 T" but 4 × 5.6 = 22.4 T ≠ 20 T. This is an internal inconsistency within the source document itself (not an analysis error). The analysis correctly quotes "20 T" from the source.
+- **Actual text:** "the fourth-gen model, Tama Nui, may produce 50 to 200 megawatts of electricity"
+- **Notes:** Exact match (Bloomberg source).
 
-### CV-16: Flux pump stored energy record — value discrepancy
-- **Source cited:** arxiv-2508-17691-junior-design-results.md §Junior Core Magnet Specs and openstar-prototype-roadmap.md §Key Milestones
-- **Status:** PARTIAL MATCH — two sources give different values
-- **Actual text (arXiv):** "Stored energy achieved: 0.095 MJ (record for flux pump delivery)" = 95 kJ
-- **Actual text (roadmap):** "170 kJ stored energy via flux pump (record)"
-- **Notes:** Analysis §Section 1 uses 0.095 MJ (95 kJ) citing the arXiv paper, then §Section 3 mentions "Subsequent milestone noted 170 kJ stored energy delivery in the dossier." The "subsequent milestone" framing implies 170 kJ is a later achievement not in the Junior paper. This is plausible but not explicitly stated. The two figures are cited to different sources and likely represent different points in time. The analysis should clarify this explicitly. See PA-4.
+---
 
-### CV-17: Bohm-like confinement and conservative design point
-- **Source cited:** arxiv-2602-20564-dt-dipole-power-plants.md §Plasma Physics
+### CV-15: Neon hydrogen backup quote (Section 3)
+- **Source cited:** Analysis Section 3 narrative (not explicitly block-quoted)
 - **Status:** FOUND
-- **Actual text:** "Bohm-like confinement scaling (conservative baseline)"
-- **Notes:** Matches analysis claim.
-
-### CV-18: RT-1 (University of Tokyo) peaked density profiles
-- **Source cited:** (no citation given in Section 1 body text)
-- **Status:** FOUND in source but uncited in analysis
-- **Actual text (roadmap §Lab Experiments):** "RT-1 (University of Tokyo): Similar design, 1st-gen HTS (Bi-2223) magnet / Also observed peaked density profiles"
-- **Notes:** The claim appears in analysis.md body text without an inline citation. The supporting content is in openstar-prototype-roadmap.md. Should add citation. See PA-5.
-
-### CV-19: Plasma state clarification (sustained, not ignited)
-- **Source cited:** arxiv-2602-20564-plasma-state-clarification.md §Evidence
-- **Status:** FOUND
-- **Actual text:** "Power balance equation (Eq. 9): τe = Up/(fsh·fα·Pfus + Paux − Prad) — Paux (auxiliary power) is an essential term... Fixed Qsci assumption... Section 2.2.7 discusses ICRH, ECRH, and NBI as heating options that are 'required'"
-- **Notes:** Analysis correctly describes the sustained (non-ignited) plasma state with supporting evidence.
-
-### CV-20: 1 MW-year/m² fluence threshold applied to sacrificial coil
-- **Source cited:** arxiv-2602-20564-dt-dipole-power-plants.md §Magnet; dossier.md §Neutron Management
-- **Status:** PARTIAL MATCH — threshold is for tungsten shield in the extracted source, not explicitly for the coil outer section
-- **Actual text:** "1 MW-year/m² neutron fluence threshold for tungsten replacement" (under §Neutron Management)
-- **Notes:** The analysis applies this threshold to justify the sacrificial coil ~1 year replacement interval. The source states this threshold under "Neutron Management" for tungsten, and the arXiv source extract's §Magnet section is not separately extracted. The two-section coil design explicitly targets a ~1-year lifetime for the sacrificial outer section (confirmed in CV-10), so the claim is supported, but the specific fluence threshold tied to the coil section vs. shield tungsten is ambiguous in the available extracts. See PA-6.
+- **Actual text:** "However if procuring and maintaining a supply of neon proves challenging it would be a viable alternative." (arxiv-2602-20564 §3.2.5, discussing hydrogen as alternative cryogen; source also states hydrogen "needs ~5 times the volume to store the same amount of energy")
+- **Notes:** Analysis correctly states the source proposes hydrogen as backup requiring a 5× larger reservoir. Confirmed in source §3.2.5 (Cryogenic Cooling subsection narrative).
 
 ---
 
 ## Calculation Verification
 
-### CALC-1: Net plant electrical efficiency
-- **Claimed:** ~31% = [208 MWe / 667 MW]
-- **Re-derived:** 208 / 667 = 0.3118 ≈ 31.2%
+### CALC-1: Recirculating power fraction ~30%
+- **Claimed:** [inferred: (296 − 208)/296 from Table 9 gross vs. net electric] ~30%
+- **Re-derived:** (296 − 208) / 296 = 88 / 296 = 29.73% ≈ 30%
 - **Status:** MATCH
-- **Notes:** Straightforward ratio. Correctly labeled as net-to-fusion (not thermal efficiency).
+- **Notes:** Table 9 gross electric = 296 MW and net = 208 MW confirmed. Calculation is correct.
 
-### CALC-2: Gross electric inference range
-- **Claimed:** ~255–290 MWe [from 667 MW fusion at 35–40% thermal efficiency and ~1.1 energy multiplication]
+---
+
+### CALC-2: ICRH wall-plug power 63.6 MW from Q_sci = 15 at 70% efficiency
+- **Claimed:** P_plasma = 667/15 = 44.5 MW; P_icrh_grid = 44.5/0.70 = 63.6 MW
+- **Re-derived:** 667/15 = 44.47 MW; 44.47/0.70 = 63.52 MW ≈ 63.6 MW
+- **Status:** MATCH
+- **Notes:** Both values confirmed exactly in Table 6 (44.5 MW auxiliary heating) and Table 9 (−63.6 MW plasma heating wall power). Derivation chain is self-consistent and independently verified.
+
+---
+
+### CALC-3: Annual sacrificial tape replacement ~864 km/yr
+- **Claimed:** ~20% of 4,320 km core magnet tape = ~864 km/yr
+- **Re-derived:** 0.20 × 4,320 = 864.0 km exactly
+- **Status:** MATCH
+- **Notes:** Source Table 5 confirms 4,320 km REBCO tape (Reactor A). Source §Abstract and §4.3 confirm ~20% sacrificial section. Derivation is exact.
+
+---
+
+### CALC-4: "30-year cumulative tape ~31,000 km, roughly 5× the initial inventory" (Section 4)
+- **Claimed:** "cumulative tape consumption approaches ~31,000 km per Reactor A — roughly 5× the initial inventory"
+- **Re-derived:** 4,320 + (30 × 864) = 4,320 + 25,920 = 30,240 km; 30,240 / 4,320 = 7.0× (not 5×)
+- **Status:** MISMATCH
+- **Notes:** Two errors:
+  1. The "5×" multiplier is wrong relative to the core magnet tape inventory of 4,320 km (correct is 7.0×). The 5× figure is only approximately correct if the denominator includes an estimated top magnet tape (~1,200 km, per Junior analogue), giving 30,240 / 5,520 ≈ 5.5× — but this requires using an unvalidated analogue as the denominator without stating so.
+  2. The cumulative figure of "~31,000 km" slightly overstates the calculated 30,240 km (rounds to ~30,000 more naturally).
+  Additionally, the model uses a 40-year lifetime (see CALC-5) while the narrative says "30-year plant life" — the two are inconsistent.
+
+---
+
+### CALC-5: Plant lifetime inconsistency — analysis text vs. model
+- **Claimed:** Section 4 narrative says "30-year plant life"; model_setup.py uses plant_lifetime_years = 40.0
+- **Re-derived:** Not arithmetic — a consistency check.
+- **Status:** MISMATCH (internal inconsistency)
+- **Notes:** Section 4 explicitly uses "30-year plant life" for the supply chain narrative. The economic model uses 40 years (1costingfe default). This inconsistency means the LCOE is calculated for a 40-year plant while the supply chain analysis is framed for a 30-year plant. At 40 years, the cumulative tape consumption would be 4,320 + (40 × 864) = 38,880 km (≈9× initial). The lifetime assumption should be harmonized.
+
+---
+
+### CALC-6: Thermal efficiency back-calculation (model_setup.py comment)
+- **Claimed:** "at η_th=0.38 the model yields p_et ≈ 291 MWe (~2% low); at 40% the model gives p_et ≈ 306 MWe (~3% high)"
 - **Re-derived:**
-  - P_neutron = 0.80 × 667 = 533.6 MW; P_alpha = 0.20 × 667 = 133.4 MW
-  - Thermal power (excluding Paux for simplicity): 1.10 × 533.6 + 133.4 = 720.4 MW
-  - At 35%: 0.35 × 720.4 = 252.1 MWe
-  - At 40%: 0.40 × 720.4 = 288.2 MWe
-- **Status:** MATCH (within stated range; analysis notes Paux also contributes as heat, slightly raising the floor)
-- **Notes:** Conservative: ignoring Paux contribution to thermal power slightly underestimates gross electric, so actual range is modestly higher. The stated "255–290 MWe" is a reasonable band.
+  - Model thermal power = 1.10×(0.80×667) + 0.20×667 + 667/15 = 586.96 + 133.4 + 44.47 = 764.83 MW
+  - At 38%: 0.38 × 764.83 = 290.6 MW (model says ~291 MW — MATCH)
+  - At 40%: 0.40 × 764.83 = 305.9 MW (model says ~306 MW — MATCH)
+  - Root cause: published thermal power (Table 9) = 741 MW; at 40% = 296.4 MW = published 296 MW. The model thermal power is ~24 MW higher than published because it does not capture endothermic tungsten shield losses (−14 MW) and other effects.
+- **Status:** MATCH (model comment arithmetic is correct)
+- **Notes:** The η=0.38 calibration is reasonable and documented. The comment accurately describes the tradeoff.
 
-### CALC-3: Recirculating power inference
-- **Claimed:** ~50–80 MWe [gross electric minus 208 MWe net]
-- **Re-derived:** 252–288 MWe gross − 208 MWe = 44–80 MWe
-- **Status:** MATCH (minor: floor is ~44 not ~50, but within stated uncertainty)
-- **Notes:** The "~50–80 MWe" band is slightly conservative at the low end, which is appropriate.
+---
 
-### CALC-4: Qsci range inference
-- **Claimed:** ~12–19 [from Paux 35–55 MW at 70% ICRH wall-plug efficiency]
+### CALC-7: Model net electric vs. published 208 MWe
+- **Claimed:** Model should be close to published 208 MW net electric
 - **Re-derived:**
-  - If recirc = 50–80 MW and ~15 MW is non-ICRH aux, then P_icrh_grid ≈ 35–65 MW
-  - P_plasma = 0.70 × P_icrh_grid = 24.5–45.5 MW
-  - Qsci = 667 / 24.5 to 667 / 45.5 = 14.7 to 27.2
-  - Alternatively (as in analysis): treating Paux as plasma power directly: 667/55 = 12.1; 667/35 = 19.1
-- **Status:** MATCH for the stated derivation, but note the derivation conflates P_plasma_heating with total recirculating power
-- **Notes:** The Qsci range of 12–19 is self-consistent if Paux refers to plasma heating power (not total recirc). The analysis is slightly ambiguous about this. The range is plausible but the upper bound may be optimistic given non-ICRH aux loads. Using model defaults (Qsci=15), this is within the stated band.
+  - p_et (model at 38%) = 290.6 MW
+  - p_icrh_wallplug = 44.47/0.70 = 63.52 MW
+  - p_aux = 5.0 + 4.0 + 5.0 + 1.0 = 15.0 MW
+  - p_net = 290.6 − 63.52 − 15.0 = 212.1 MW (vs. published 208 MW; +2.0%)
+- **Status:** MATCH (within first-pass tolerance)
+- **Notes:** The 4 MW overestimate arises because the model budgets ~15 MW for non-ICRH auxiliary loads while Table 9 implies ~23 MW (= 88 MW total recirc − 63.6 MW ICRH − 1.31 MW cryo). The ~8 MW unaccounted auxiliary load explains the p_net gap. Acceptable for first-pass modeling; the gap and its magnitude should be documented (see PA-7).
 
-### CALC-5: Model power balance with default parameters
-- **Claimed:** "Baseline 38% is consistent with published p_fus=667 MW / p_net=208 MWe pair at assumed Qsci=15" (model_setup.py thermal_efficiency docstring)
-- **Re-derived with defaults (qsci=15, η_th=0.38, aux loads as specified):**
-  - P_plasma = 667/15 = 44.47 MW
-  - P_icrh_grid = 44.47/0.70 = 63.53 MW
-  - P_th = 1.10 × 533.6 + 133.4 + 44.47 = 764.87 MW
-  - P_et = 0.38 × 764.87 = **290.65 MWe**
-  - P_aux (non-ICRH) = 5 + 4 + 5 + 1 = 15 MW
-  - P_recirc = 63.53 + 15 = 78.53 MW
-  - P_net = 290.65 − 78.53 = **212.1 MWe** (not 208 MWe)
-  - For P_net = 208 MWe: η_th needed = (208 + 78.53) / 764.87 = **37.5%**
-- **Status:** MISMATCH — model with η_th=0.38 gives P_net = 212 MWe, not 208 MWe
-- **Notes:** The ~4 MWe discrepancy (2%) is small in absolute terms but the docstring claim that 38% is "consistent" with the published pair is not exactly correct. Setting η_th = 0.375 would give the exact match. See PA-7.
+---
 
-### CALC-6: REBCO energy scaling (Section 4 narrative)
-- **Claimed:** Power plant coil "would store roughly 16× more energy per unit volume (energy ∝ B²)" vs. Junior
-- **Re-derived:** B_ratio = 23 T / 5.63 T = 4.085; B² ratio = 4.085² = 16.69 ≈ "roughly 16×"
+### CALC-8: Confinement time extrapolation ratio (Section 2)
+- **Claimed:** "τ_e = 3.5 s — roughly 240× longer" than LDX 14.5 ms
+- **Re-derived:** 3.5 / 0.0145 = 241.4×
 - **Status:** MATCH
-- **Notes:** Correct application of B² scaling for magnetic energy density.
+- **Notes:** "240×" is the correct rounded figure. Confirmed against source τ_e = 14.5 ms (cited in §Discussion, line 762) and Reactor A τ_e = 3.5 s (Table 6).
 
-### CALC-7: Tritium startup cost
-- **Claimed:** ~1 kg at ~$35,000/g → ~$35M
-- **Re-derived:** 1 kg × 1000 g/kg × $35,000/g = $35,000,000 = $35M
+---
+
+### CALC-9: Cryogenic annotation unit error — "1.13 kW wall plug" (model_setup.py)
+- **Claimed:** [inline annotation] "14.1 kW / 0.0125 efficiency = 1.13 kW wall plug"
+- **Re-derived:** 14,100 W / 0.0125 = 1,128,000 W = 1.128 MW
+- **Status:** MISMATCH (unit error in annotation)
+- **Notes:** The annotation says "1.13 kW" but the result is 1.13 MW. This is a unit error in the docstring comment only; the model parameter (p_cryo_MW = 5.0) is independently estimated and not directly derived from this formula, so the model output is unaffected. The published 1.31 MW is ~16% higher than 1.128 MW, attributable to fixed cryoplant overhead as noted in the comment.
+
+---
+
+### CALC-10: Combined capacity factor
+- **Claimed:** plasma_duty_cycle × plant_availability = 0.901 × 0.96 = 0.865
+- **Re-derived:** 0.901 × 0.96 = 0.86496 ≈ 0.865
 - **Status:** MATCH
-
-### CALC-8: Blanket energy multiplication derivation comment
-- **Claimed (model_setup.py comment):** "Li-6 + n → T + He + 4.8 MeV adds ~10% to neutron energy deposited" — used to justify M = 1.10 via TBR = 1.1
-- **Re-derived:** If TBR = 1.1, then 1.1 tritium atoms produced per D-T event → 1.1 × 4.8 MeV = 5.28 MeV extra energy per event. Fraction of neutron energy: 5.28 / 14.1 = **37.4%**, not ~10%. The physically correct M from TBR = 1.1 should be ~1.37, not 1.10.
-- **Status:** MISMATCH — the stated derivation is incorrect
-- **Notes:** M = 1.10 is the standard 1costingfe D-T assumption (separately cited in the parameter docstring), and this value may be defensible as a conservative first-pass estimate. However, the comment linking M = 1.10 to the TBR = 1.1 calculation is physically wrong. The two figures (TBR and M) are independent parameters. The 10% energy multiplication likely comes from the 1costingfe default, not from the TBR via the stated formula. If M = 1.37 were used instead, P_th would increase by ~(1.37 − 1.10) × 533.6 = +144 MW (+19%), substantially changing all downstream outputs. See PA-8.
 
 ---
 
 ## Model Setup Audit
 
-### MSA-1: p_fus_MW = 667.0
+### MSA-1: p_fus_MW = 667.0 MW
 - **Value:** 667.0 MW
-- **Source:** analysis.md §Section 5; arxiv-2602-20564 §Reactor Performance
+- **Source:** analysis.md §Section 5; arxiv-2602-20564 Table 6
 - **Status:** TRACED
-- **Notes:** Directly published value.
+- **Notes:** Exact match to source Table 6.
 
-### MSA-2: blanket_energy_multiplication = 1.10
-- **Value:** 1.10
-- **Source:** "TBR 1.1 confirmed by analytic model for OpenStar geometry"; 1costingfe costing_constants.yaml
-- **Status:** TRACED (value defensible; derivation comment incorrect — see CALC-8)
-- **Notes:** The value is from 1costingfe standard D-T assumption and is plausible. The comment's claim that it derives from TBR = 1.1 via Li-6 breeding is wrong (would give M ≈ 1.37). PA-8 addresses this.
+---
 
-### MSA-3: thermal_efficiency = 0.38
-- **Value:** 0.38
-- **Source:** UNPUBLISHED; noted as HIGH UNCERTAINTY
-- **Status:** TRACED (as assumed)
-- **Notes:** Properly flagged. For exact match to published P_net = 208 MWe, η_th = 0.375 would be needed (see CALC-5). The 0.5% discrepancy from 0.375 to 0.38 is minor but the claim of consistency should be qualified.
+### MSA-2: thermal_efficiency = 0.38
+- **Value:** 0.38 (paper states 40%; model uses 38% as calibration anchor)
+- **Source:** Documented derivation in model comment; arxiv-2602-20564 §3.2.5 / §4.4
+- **Status:** TRACED
+- **Notes:** Calibration rationale is fully documented (CALC-6). The choice is intentional and well-explained; flagged HIGH UNCERTAINTY.
 
-### MSA-4: qsci = 15.0
+---
+
+### MSA-3: qsci = 15.0
 - **Value:** 15.0
-- **Source:** INFERRED; analysis.md §Section 5 (range 12–19)
+- **Source:** arxiv-2602-20564 §3.3 (design constraint), §Discussion
 - **Status:** TRACED
-- **Notes:** Within stated range. Central estimate is reasonable.
+- **Notes:** Q_sci = 15 confirmed as hard optimization constraint (Table 4 constraints; §3.3 narrative). Validation derivation (P_plasma = 44.5 MW, P_icrh = 63.6 MW) matches Table 6 and Table 9 exactly.
 
-### MSA-5: icrh_wall_plug_efficiency = 0.70
+---
+
+### MSA-4: icrh_wall_plug_efficiency = 0.70
 - **Value:** 0.70
-- **Source:** "Multi-MW ICRH systems demonstrated at ~70% wall-plug efficiency on JET, EAST" AND cited to arxiv-2602-20564 §Heating
-- **Status:** PARTIAL — JET/EAST basis is sound general ICRH literature; citation to specific OpenStar arXiv source not verified (see CV-9)
-- **Notes:** The 70% ICRH wall-plug efficiency is a well-established figure from the community; model_setup.py correctly credits JET/EAST. Citing it additionally to the arXiv §Heating section is unverified but the underlying physics is correct.
-
-### MSA-6: p_cryo_MW = 5.0
-- **Value:** 5.0 MW
-- **Source:** ASSUMED; "ITER He cryoplant is ~35 MW for 4 K; neon at 24.6 K less demanding"
-- **Status:** TRACED (as estimate)
-- **Notes:** Thermodynamic basis is sound (24.6 K neon << 4 K helium in cryogenic demand). ITER cryoplant power (~35 MW) is a known reference. Estimate is reasonable; the MODERATE UNCERTAINTY tag is appropriate.
-
-### MSA-7: duty_cycle = 0.95
-- **Value:** 0.95
-- **Source:** arxiv-2602-20564 §Operation Mode (">95% duty cycle achievable")
+- **Source:** arxiv-2602-20564 §4.4 Power Balance ("The total efficiency of the auxiliary heating systems is assumed to be 70%")
 - **Status:** TRACED
-- **Notes:** Using 0.95 as the exact value when the source says ">95%" is a slight conservative choice (could be 0.96–0.98). Acceptable for first-pass.
+- **Notes:** Confirmed in source §4.4 narrative. Published value.
 
-### MSA-8: vessel_inner_radius_m = 3.5 m
-- **Value:** 3.5 m
-- **Source:** ASSUMED; "No vessel geometry published for OpenStar Reactor A"
-- **Status:** TRACED (as estimate)
-- **Notes:** Correctly labeled HIGH UNCERTAINTY. The first-wall loading argument is reasonable but geometry-dependent costs are acknowledged to be minor vs. coil/ICRH.
+---
 
-### MSA-9: hts_coil_system_cost_M_USD = 250.0
-- **Value:** $250M
-- **Source:** ASSUMED; CFS SPARC REBCO TF coil set analogue; analysis.md §Section 2
-- **Status:** TRACED (as assumed with basis)
-- **Notes:** Correctly identified as the single most uncharacterized CAPEX item. HIGH UNCERTAINTY tag appropriate. The CFS SPARC analogue is reasonable given no OpenStar-specific cost data.
+### MSA-5: p_cryo_MW = 5.0 MW (ASSUMED)
+- **Value:** 5.0 MW; published anchor = 1.31 MW (Table 9)
+- **Source:** arxiv-2602-20564 Table 9 (1.31 MW published); analyst estimate for total cryoplant load
+- **Status:** TRACED (partially)
+- **Notes:** Published 1.31 MW correctly cited. The upward revision to 5.0 MW for fixed cryoplant infrastructure is labeled MODERATE UNCERTAINTY and is physically reasonable. No direct source for the additional ~3.7 MW.
 
-### MSA-10: sacrificial_section_fraction = 0.20
+---
+
+### MSA-6: plasma_duty_cycle = 0.901
+- **Value:** 0.901
+- **Source:** arxiv-2602-20564 combined parameter table (§4 overview)
+- **Status:** TRACED
+- **Notes:** Confirmed in source. Correct value.
+
+---
+
+### MSA-7: plant_availability = 0.96
+- **Value:** 0.96
+- **Source:** arxiv-2602-20564 combined parameter table
+- **Status:** TRACED
+- **Notes:** Confirmed in source ("Plant availability factor: 96%").
+
+---
+
+### MSA-8: hts_coil_system_cost_M_USD = 250.0 M$ (OVERRIDE)
+- **Value:** $250M; no published cost
+- **Source:** CFS ARC analogue from 01-hts-compact-tokamak analysis; analysis.md §Section 2
+- **Status:** TRACED (analogue-based)
+- **Notes:** No primary source for power plant levitated coil cost. CFS ARC $200–500M for 18 TF coils is the documented analogue. Single-coil scaling rationale is explicitly described. Flagged HIGH UNCERTAINTY. Best available basis given the data gap.
+
+---
+
+### MSA-9: icrh_system_cost_M_USD = 150.0 M$ (OVERRIDE)
+- **Value:** $150M; no published cost
+- **Source:** ITER ICRH analogue (~$200–250M for 20 MW system, FOAK)
+- **Status:** TRACED (analogue-based)
+- **Notes:** No primary source for dipole-specific ICRH cost. ITER analogue scaling is documented. Flagged MODERATE UNCERTAINTY. Note: ICRH coupling in a dipole geometry is undemonstrated (analysis Section 3), adding conceptual uncertainty beyond the parameter uncertainty.
+
+---
+
+### MSA-10: rh_scale_factor = 1.50 (C220110, OVERRIDE)
+- **Value:** 1.50× standard DT remote handling base ($150M at 1 GWe)
+- **Source:** 1costingfe costing_constants.yaml (base); analysis.md §Section 2 (novel coil docking challenge)
+- **Status:** TRACED (override)
+- **Notes:** Analyst judgment, well-documented, labeled HIGH UNCERTAINTY. Base cost source is documented. The 1.5× multiplier is an expert estimate with no direct analogue; appropriate for first-pass.
+
+---
+
+### MSA-11: sacrificial_section_fraction = 0.20
 - **Value:** 0.20
-- **Source:** arxiv-2602-20564 §Magnet — "~20% of coil"
+- **Source:** arxiv-2602-20564 §Abstract, §2.2.1, §4.3
 - **Status:** TRACED
-- **Notes:** Matches source exactly.
+- **Notes:** Source states "About 20% of the coil is designated as sacrificial" in multiple places. Confirmed.
 
-### MSA-11: sacrificial_section_material_cost_M_USD = 45.0
-- **Value:** $45M/year
-- **Source:** ASSUMED; "20% × $250M × material fraction"
-- **Status:** TRACED (as assumed)
-- **Notes:** Derived from hts_coil_system_cost_M_USD, which is itself assumed. Properly flagged HIGH UNCERTAINTY. 40-year cumulative of $1.8B is a material OPEX driver.
+---
 
-### MSA-12: C220108 (Target Factory) = $0
+### MSA-12: sacrificial_section_material_cost_M_USD = 45.0 M$/yr (ASSUMED)
+- **Value:** $45M/yr; no published cost
+- **Source:** REBCO tape price analogue (864 km/yr × $50–100/kA-m); analysis.md §Section 2, §Section 4
+- **Status:** TRACED (analogue-based)
+- **Notes:** Derivation is documented. The $45M/yr central estimate sits near the optimistic end of current-price scenarios ($52–103M/yr at current tape prices). Labeled HIGH UNCERTAINTY. The $10M/yr NOAK scenario is highly optimistic for tape costs projected 10–15 years out; this may understate the pessimistic bound.
+
+---
+
+### MSA-13: C220112 = 0.0 (Isotope Separation — no Li-6 enrichment)
 - **Value:** $0
-- **Source:** "Continuous MFE operation; no targets"
+- **Source:** arxiv-2602-20564 §Conclusions ("TBR in excess of 1.1 without the use of expensive molten salts and neutron multipliers")
 - **Status:** TRACED
-- **Notes:** Correct elimination. Not applicable to continuous MFE.
+- **Notes:** Natural Li₂O confirmed as blanket material; no enrichment required. $0 assignment appropriate.
 
-### MSA-13: C220109 (Direct Energy Converter) = $0
-- **Value:** $0
-- **Source:** "Closed-field levitated dipole; no directed ion exhaust for DEC"
+---
+
+### MSA-14: C220108 = 0.0, C220109 = 0.0 (Target Factory, Direct Energy Converter)
+- **Value:** Both $0
+- **Source:** Conceptual: continuous MFE with no targets; closed-field topology precludes DEC
 - **Status:** TRACED
-- **Notes:** Correct elimination. Consistent with analysis.md §Section 7 cross-concept note on FRC DEC.
+- **Notes:** Both eliminations are conceptually correct. Appropriate.
 
-### MSA-14: rh_scale_factor = 1.50 (C220110 Remote Handling)
-- **Value:** 1.5× multiplier on standard DT base
-- **Source:** ASSUMED; novel coil docking rationale
-- **Status:** TRACED (as assumed)
-- **Notes:** Rationale is sound (annual coil replacement with no tokamak precedent). Properly flagged HIGH UNCERTAINTY.
+---
 
-### MSA-15: C220107 power supplies — 0.5× reduction
-- **Value:** 0.50 × standard scaling
-- **Source:** "On-board flux pump (~10 W continuous) eliminates conventional power supply"
+### MSA-15: vessel_inner_radius_m = 3.5 m (ASSUMED)
+- **Value:** 3.5 m; actual first-wall radius = 20.6 m (from Table 5 overview)
+- **Source:** Analyst estimate from mass data; no published geometry for cost-model geometry
+- **Status:** UNTRACED (approximation)
+- **Notes:** The actual Reactor A first-wall radius is 20.6 m (Table 5 overview). The 3.5 m is a rough approximation for the concentric-shell geometry model — it is the analyst's geometric placeholder for cost volume scaling. The comment flags this as HIGH UNCERTAINTY. Given that cost is dominated by HTS coil and ICRH overrides (not geometry-scaled accounts), the impact on total LCOE is minor. Acceptable for first-pass with explicit uncertainty flagging.
+
+---
+
+### MSA-16: blanket_thickness_m = 0.80 m (ASSUMED — derived from mass)
+- **Value:** 0.80 m
+- **Source:** arxiv-2602-20564 Table 5 (3,490 t Li₂O mass); ITER HCPB TBM analogue
+- **Status:** TRACED (derived)
+- **Notes:** Derivation: 3,490 t / 2.01 t/m³ = 1,737 m³; at r_i = 3.5 m spherical shell → thickness ≈ 0.7–0.9 m. Reasonable. Dependent on the uncertain 3.5 m inner radius.
+
+---
+
+### MSA-17: shield_thickness_m = 0.60 m (ASSUMED)
+- **Value:** 0.60 m
+- **Source:** arxiv-2602-20564 §4.3 (475 mm W/B₄C/W shield depth); Table 5 (1,760 t tungsten)
+- **Status:** TRACED (partially)
+- **Notes:** Source gives 475 mm for the neutron-attenuating shield. The model adds ~0.12 m for outer structure to reach 0.60 m. Reasonable interpretation. Acceptable.
+
+---
+
+### MSA-18: ConfinementConcept / model architecture
+- **Value:** Standalone parameterized dataclass; no inherited ConfinementConcept base
+- **Source:** Model design
 - **Status:** TRACED
-- **Notes:** The flux pump eliminating the main confinement coil power supply is a genuine simplification. The 50% reduction relative to standard tokamak scaling is reasonable given only ICRH, cryogenic, and auxiliary supplies remain. Could be argued to be lower (since the dominant supply in a tokamak is the main coil supply, which is entirely absent here).
-
-### MSA-16: ConfinementConcept — bespoke class (no standard base)
-- **Value:** LevitatedDipolePlantParams (standalone, not inheriting standard concept)
-- **Status:** TRACED
-- **Notes:** Appropriate. The levitated dipole has no close analogue in standard cost bases. The model correctly identifies and overrides the three concept-specific accounts (C220103, C220104, C220110) and eliminates two inapplicable accounts (C220108, C220109). The inheritance decision (custom class) is well-motivated.
+- **Notes:** The model does not import from a ConfinementConcept base class. It reuses 1costingfe scaling constants by value, with explicit documentation of which accounts are overrides. The three-layer approach (power balance → geometry → CAS22 overrides) is appropriate for a novel concept without a valid reference concept to adapt. No base concept mismatch issue.
 
 ---
 
 ## Consistency Check
 
-**Section 5 parameters vs. Section 2 narrative:** All directly cited values in the Section 5 parameter table are consistent with the Section 2 narrative. The 667 MW / 208 MWe pair, >95% duty cycle, ~25% neutron intercept, TBR 1.1, 23 T field, 20% sacrificial section, and ~1-year replacement interval all appear consistently in both sections.
+**Section 5 parameters vs. Section 2 narrative:** Clean. Fusion power (667 MW), net electric (208 MWe), auxiliary heating (44.5 MW), duty cycle (90.1%), plant availability (96%), cryo efficiency (1.25%), and confinement times (3.5 s / 5.9 s) are all consistent across Sections 2, 3, and 5. The Section 2 discussion of Reactor B requiring "better-than-Bohm" scaling is consistent with Section 5 showing Reactor B requires τ_e = 5.9 s vs. 3.5 s for Reactor A.
 
-**TRL ratings vs. Section 2 challenges:** TRL assignments are internally consistent with the described challenge levels. Plasma exhaust at TRL 1 (Section 2: "not addressed in any published document") is appropriate. D-T confinement at TRL 2 (Section 2: "26 eV vs. 10–20 keV required") is appropriate. Sacrificial coil at TRL 3 (Section 2: described in paper but never fabricated) is appropriate.
+**TRL ratings vs. Section 2 challenges:** All consistent. D-T fusion at Q_sci = 15 (TRL 2) aligns with Impact: Critical for confinement scaling. Annual sacrificial coil replacement (TRL 2–3) aligns with Impact: High and documented lack of activation demonstration. REBCO HTS general (TRL 6–7) aligns with the mature commercial backdrop despite the 23 T / levitated-coil-specific gap. Balance of Plant (TRL 8–9) aligns with the thermal cycle as Impact: Moderate.
 
-**Model vs. analysis values:**
-- qsci = 15 (model) is within the 12–19 range (analysis §Section 5) ✓
-- duty_cycle = 0.95 (model) consistent with ">95%" (analysis §Section 5) ✓
-- sacrificial_section_fraction = 0.20 (model) consistent with "~20%" (analysis §Section 5) ✓
-- thermal_efficiency = 0.38 (model) consistent with "35–40% range" in analysis §Section 2 ✓
-- P_net = 212 MWe (model output) vs. P_net = 208 MWe (published) — minor 2% inconsistency (PA-7)
+**model_setup.py vs. Section 5 parameter table:** All key parameters align (p_fus, Q_sci, η_ICRH, duty cycle, availability, sacrificial fraction, tape quantity). The η_th discrepancy (model: 0.38, paper: 40%) is an intentional calibration documented in both the model and the analysis; not an inconsistency.
 
-**Missing parameter treatment:** All 14 rows of the §Section 6 data gap inventory are reflected in model parameter documentation (ASSUMED, INFERRED, or UNPUBLISHED tags). No gap is silently ignored.
+**Plant lifetime inconsistency (important):** Section 4 supply chain narrative uses "30-year plant life" while model_setup.py uses plant_lifetime_years = 40 (1costingfe default). This is a genuine inconsistency. At 40 years, the correct cumulative tape consumption is 38,880 km (~9× core inventory). The 30-year figure used in the narrative is not sourced from either the primary literature or from the model itself.
 
-**Cross-concept claims (Section 7):** All factual claims in Section 7 that reference other analyses (01-hts-compact-tokamak, 08-frc-w-direct-conversion, 11-magnetic-mirror, 21-spherical-tokamak-hts) are clearly attributed and no verification against those analysis files was required for this review. The contrast claims are logically grounded in the concept architectures.
+**Neon cryogen operating temperature (consistent):** Section 3 describes neon slush at 24.6 K (melting point); Table 7 gives 30 K operating temperature. These are consistent: the slush provides thermal absorption at 24.6 K to maintain the coil at 30 K (with margin). No inconsistency.
 
 ---
 
 ## Proposed Actions
 
-### PA-1: LDX plasma temperature claim unsupported
-- **Category:** factual-concern
+### PA-1: Correct citation — "preliminary results" quote is in §3.3, not §Discussion
+- **Category:** citation-error
+- **Severity:** minor
+- **Location:** analysis.md §Section 1, first direct quote attribution
+- **Finding:** The quote "preliminary results from this model which are subject to change" is attributed to §Discussion. It appears in §3.3 Optimization Constraints (not §5 Discussion).
+- **Proposed Fix:** Change "§Discussion" to "§3.3 Optimization Constraints."
+- **Decision:** _[USER FILLS IN: agree | reject | alternative]_
+- **User Notes:** _[USER FILLS IN]_
+
+---
+
+### PA-2: Correct citation — REBCO tape 4,320 km is in Table 5, not Table 7
+- **Category:** citation-error
+- **Severity:** minor
+- **Location:** analysis.md §Section 5 parameter table, "REBCO tape requirement (A)" row
+- **Finding:** Citation reads "§Table 7" for the 4,320 km tape value. The value appears in Table 5 (mass/component breakdown). Table 7 contains core magnet design parameters (peak field, inductance, float time) but not tape quantity.
+- **Proposed Fix:** Change citation from "§Table 7" to "§Table 5."
+- **Decision:** _[USER FILLS IN: agree | reject | alternative]_
+- **User Notes:** _[USER FILLS IN]_
+
+---
+
+### PA-3: Correct calculation — "roughly 5×" should be "roughly 7×" for REBCO cumulative tape
+- **Category:** calculation-error
 - **Severity:** important
-- **Location:** analysis.md §Section 2 (Confinement Scaling challenge, first paragraph)
-- **Finding:** Analysis states "LDX demonstrated quasi-steady confinement with Bohm-level energy confinement times in hydrogen isotopes at keV plasma temperatures." No extracted source document supports the "keV plasma temperatures" claim. LDX literature indicates electron temperatures were typically in the hundreds of eV range, not keV. The sentence is ambiguous — it may intend to say LDX operated at temperatures approaching keV, but as written it implies keV was achieved.
-- **Proposed Fix:** Qualify or remove the temperature claim for LDX. Replace with "at sub-keV plasma temperatures (hundreds of eV)" or simply remove the temperature qualifier, since the key point is that LDX did not reach fusion-relevant nTτ, not that it specifically achieved keV temperatures.
-- **Decision:** agree
+- **Location:** analysis.md §Section 4, REBCO supply chain paragraph
+- **Finding:** "roughly 5× the initial inventory" is arithmetically incorrect. Re-derived: 4,320 + (30 × 864) = 30,240 km = 7.0× the core magnet tape inventory (4,320 km). The 5× figure is only approximately correct if the denominator includes ~1,200 km of estimated top magnet tape (5,520 km total), but the power plant top magnet tape is unpublished and unknown — using the Junior top magnet tape as a power plant analogue is not valid (42× current difference).
+- **Proposed Fix:** Change to "roughly 7× the initial core magnet tape inventory (4,320 km)" and note that the top magnet tape quantity is unknown at power plant scale, so total initial inventory is higher than 4,320 km by an unquantified amount.
+- **Decision:** _[USER FILLS IN: agree | reject | alternative]_
 - **User Notes:** _[USER FILLS IN]_
 
-### PA-2: NZ government funding source name inconsistency
-- **Category:** citation-error
-- **Severity:** minor
-- **Location:** analysis.md §Section 1 (Company transparency paragraph)
-- **Finding:** Analysis states "NZD 35M in February 2026 from the NZ Regional Development Fund." The openstar-2026-funding-tahi-timeline.md (sourced from Bloomberg, RNZ, World Nuclear News) says "Regional Infrastructure Fund." The openstar-prototype-roadmap.md says "NZ Regional Development Fund." The news-outlet-sourced file is more likely to reflect the official fund name.
-- **Proposed Fix:** Update to "NZ Regional Infrastructure Fund" (per the news-sourced iter-02 source, which cites Bloomberg/RNZ directly).
-- **Decision:** agree
-- **User Notes:** _[USER FILLS IN]_
+---
 
-### PA-3: ICRH 70% wall-plug efficiency — citation to arXiv source not verified
-- **Category:** citation-error
-- **Severity:** minor
-- **Location:** analysis.md §Section 5 parameter table (ICRH wall-plug efficiency row); model_setup.py icrh_wall_plug_efficiency docstring
-- **Finding:** Both analysis.md and model_setup.py cite arxiv-2602-20564-dt-dipole-power-plants.md §Heating as the source for the 70% wall-plug efficiency. The extracted source document does not contain this figure — only lists ICRH as the baseline heating choice. The figure is from JET/EAST experience, which model_setup.py also credits correctly. If the full arXiv PDF (not HTML extract) contains the 70% figure, the citation is correct.
-- **Proposed Fix:** Either (a) confirm the figure appears in the full arXiv PDF and note it may not be in the HTML version, or (b) change the citation to reference JET/EAST published literature as the primary source, with the arXiv paper as the context for OpenStar's selection of ICRH over ECRH.
-- **Decision:** agree
-- **User Notes:** _[USER FILLS IN]_
-
-### PA-4: Flux pump stored energy record — ambiguous dual values
+### PA-4: Resolve plant lifetime inconsistency — harmonize Section 4 narrative with model's 40-year assumption
 - **Category:** inconsistency
-- **Severity:** minor
-- **Location:** analysis.md §Section 1 (0.095 MJ) and §Section 3 (170 kJ)
-- **Finding:** The Junior arXiv paper (arxiv-2508-17691) gives 0.095 MJ = 95 kJ as the record, while openstar-prototype-roadmap.md gives 170 kJ. Analysis labels 170 kJ as a "subsequent milestone" citing "dossier.md" (not a source file in this analysis set). The two values are not reconciled explicitly.
-- **Proposed Fix:** Clarify the timeline: state explicitly that 95 kJ was the record at the time of the Junior paper publication (arXiv 2508.17691, 2025) and that a subsequent milestone of 170 kJ was achieved later (per the prototype roadmap). If the dossier.md source for 170 kJ is from a later date, state that date.
-- **Decision:** agree
-- **User Notes:** _[USER FILLS IN]_
-
-### PA-5: RT-1 peaked density profiles claim lacks inline citation
-- **Category:** citation-error
-- **Severity:** minor
-- **Location:** analysis.md §Section 1 (Experimental heritage paragraph)
-- **Finding:** "The University of Tokyo RT-1 device corroborated peaked density profiles in a similar geometry using Bi-2223 HTS" — no citation. The claim is supported by openstar-prototype-roadmap.md §Lab Experiments ("RT-1 (University of Tokyo): Similar design, 1st-gen HTS (Bi-2223) magnet / Also observed peaked density profiles") but the source is not cited inline.
-- **Proposed Fix:** Add inline citation: [openstar-prototype-roadmap.md §Lab Experiments].
-- **Decision:** agree
-- **User Notes:** _[USER FILLS IN]_
-
-### PA-6: Neutron fluence threshold applied to coil lifetime — source specificity
-- **Category:** citation-error
-- **Severity:** minor
-- **Location:** analysis.md §Section 2 (Sacrificial Coil section) and §Section 5 (parameter table, sacrificial coil replacement interval)
-- **Finding:** The analysis cites "1 MW-year/m² fluence threshold" for the sacrificial coil ~1-year replacement interval from §Neutron Management and §Magnet. The extracted source file lists the 1 MW-year/m² threshold under §Neutron Management for tungsten shield replacement, not explicitly for the coil outer section. The two-section coil design (CV-10) does confirm ~1-year lifetime for the sacrificial section, so the claim is plausible, but the specific fluence figure may apply to the shield rather than directly to the coil.
-- **Proposed Fix:** Qualify the statement to note that the 1 MW-year/m² threshold is stated for tungsten shield replacement, and the ~1-year coil replacement cycle is derived from the coil's design lifetime in the same neutron environment. Alternatively, confirm that §Magnet in the full PDF explicitly states the fluence limit for the coil section.
-- **Decision:** agree
-- **User Notes:** _[USER FILLS IN]_
-
-### PA-7: Model thermal efficiency claim slightly inconsistent with published P_net
-- **Category:** model-bug
-- **Severity:** minor
-- **Location:** model_setup.py, thermal_efficiency parameter docstring; line ~88–92
-- **Finding:** Docstring states "Baseline 38% is consistent with published p_fus=667 MW / p_net=208 MWe pair at assumed Qsci=15." Independent calculation shows η_th=0.38 with Qsci=15 and the model's aux loads gives P_net = 212.1 MWe, not 208 MWe. Exact match requires η_th ≈ 37.5%.
-- **Proposed Fix:** Either (a) update the docstring to say "approximately consistent, gives P_net ≈ 212 MWe vs. published 208 MWe; exact match requires η_th ≈ 37.5%," or (b) change the default to η_th = 0.375. Option (a) is preferred since 38% is a round number within the cited uncertainty band.
-- **Decision:** agree
-- **User Notes:** _[USER FILLS IN]_
-
-### PA-8: Blanket energy multiplication comment — incorrect derivation from TBR
-- **Category:** model-bug
 - **Severity:** important
-- **Location:** model_setup.py, blanket_energy_multiplication parameter docstring; line ~74–81
-- **Finding:** The comment states "Li-6 + n → T + He + 4.8 MeV adds ~10% to neutron energy deposited" as the derivation for M = 1.10 from TBR = 1.1. The physically correct calculation is: extra energy per D-T event = TBR × 4.8 MeV = 1.1 × 4.8 = 5.28 MeV; fraction of 14.1 MeV neutron energy = 5.28/14.1 = 37.4%, giving M ≈ 1.37. The "~10%" stated in the comment is incorrect.
-  - The value M = 1.10 appears to come from the 1costingfe default (also cited in the docstring) rather than from the TBR derivation.
-  - If M should be 1.37 instead of 1.10, P_th increases by ~(0.27 × 533.6) = +144 MW (+19%), materially affecting LCOE output.
-- **Proposed Fix:** Remove or correct the sentence linking M = 1.10 to TBR = 1.1 via the stated formula. Replace with: "M = 1.10 is the 1costingfe standard D-T assumption (conservative); note TBR and M are independent parameters — full blanket energy multiplication accounting would give M ≈ 1.15–1.30 depending on breeding zone geometry." Consider adding a note that this value may underestimate P_th by ~10–20%, which is one reason the LCOE should be treated as a lower bound on required capital recovery.
-- **Decision:** agree
+- **Location:** analysis.md §Section 4 (supply chain narrative) vs. model_setup.py plant_lifetime_years = 40.0
+- **Finding:** Section 4 says "Over a 30-year plant life..." while the economic model uses 40 years. This produces a narrative/model inconsistency. The cumulative tape consumption for 40 years = 38,880 km (~9× core inventory), not ~31,000 km or ~7× as implied by the 30-year narrative.
+- **Proposed Fix:** Preferred: Update Section 4 to use "40-year plant life" (consistent with model). Note this is the 1costingfe default and is not sourced from OpenStar. If 30 years is the preferred assumption, update model_setup.py plant_lifetime_years to 30, noting departure from 1costingfe default.
+- **Decision:** _[USER FILLS IN: agree | reject | alternative]_
+- **User Notes:** _[USER FILLS IN]_
+
+---
+
+### PA-5: Fix unit error in cryogenic annotation in model_setup.py
+- **Category:** calculation-error
+- **Severity:** minor
+- **Location:** model_setup.py p_cryo_MW docstring, annotation line "14.1 kW / 0.0125 efficiency = 1.13 kW wall plug"
+- **Finding:** The annotation says "1.13 kW wall plug" but the correct result is 1.13 MW wall plug (14,100 W / 0.0125 = 1,128,000 W = 1.128 MW). The model parameter value (5.0 MW) is unaffected by this annotation error.
+- **Proposed Fix:** Change "= 1.13 kW wall plug" to "= 1.13 MW wall plug" in the docstring.
+- **Decision:** _[USER FILLS IN: agree | reject | alternative]_
+- **User Notes:** _[USER FILLS IN]_
+
+---
+
+### PA-6: Correct the composite misquotation of tungsten recrystallization (Section 3)
+- **Category:** citation-error
+- **Severity:** minor
+- **Location:** analysis.md §Section 3, Layered W-B₄C-W Neutron Shield blockquote
+- **Finding:** The blockquote presents "Tungsten will undergo recrystallization and it is possible that the onset of degraded mechanical properties can be delayed until other forms of damage dominate" as a single passage. The source does not contain the first sentence verbatim; it describes tiles as operating "above the recrystallization temperature." The second half is a close paraphrase. Presenting a synthesis as a direct quotation is misleading.
+- **Proposed Fix:** Reconstruct as: paraphrase the first part, then directly quote the second: "The neutron shield tungsten tiles reach 1,950 K — above the recrystallization temperature. The paper notes that at these temperatures, 'it is possible that the onset of the degraded mechanical properties can be delayed until other forms of damage dominate.'"
+- **Decision:** _[USER FILLS IN: agree | reject | alternative]_
+- **User Notes:** _[USER FILLS IN]_
+
+---
+
+### PA-7: Flag and correct the "+~1.2 km top magnet" tape note as invalid analogue
+- **Category:** factual-concern
+- **Severity:** minor
+- **Location:** analysis.md §Section 5 parameter table, "REBCO tape requirement (A)" notes column
+- **Finding:** The "+~1.2 km top magnet" figure is drawn from the Junior prototype top magnet (arxiv-2508-17691 Table 2). The power plant top magnet tape is explicitly out of scope in Simpson et al. The Junior top magnet operates at ~700 A; the power plant core magnet operates at ~29.4 kA (42× higher current). The power plant top magnet tape would be substantially larger — likely tens of km, not 1.2 km.
+- **Proposed Fix:** Replace "+~1.2 km top magnet" in the notes column with "+top magnet tape [unknown; out of scope in Simpson et al.; Junior top magnet analogue (1.2 km) is invalid at power plant scale due to 42× current difference — treat as unknown and not included in the total]."
+- **Decision:** _[USER FILLS IN: agree | reject | alternative]_
+- **User Notes:** _[USER FILLS IN]_
+
+---
+
+### PA-8: Document the ~8 MW auxiliary load gap vs. Table 9 in the analysis
+- **Category:** improvement
+- **Severity:** minor
+- **Location:** analysis.md §Section 5 parameter table, "Recirculating power fraction" row; model_setup.py _compute_power()
+- **Finding:** Table 9 implies total recirculating = 296 − 208 = 88 MW. Of that, 63.6 MW (ICRH) + 1.31 MW (cryo) = 64.9 MW is explicitly published. The remaining ~23 MW is not itemized in the source. The model budgets 15 MW for non-ICRH auxiliary loads, giving p_net ≈ 212 MW vs. published 208 MW (+2%). The ~8 MW gap is within first-pass tolerance but the discrepancy source is undocumented.
+- **Proposed Fix:** Add a note to the Section 5 "Recirculating power fraction" row: "Table 9 implies ~23 MW of unitemized auxiliary loads beyond ICRH (63.6 MW) and cryo (1.31 MW); model assumes ~15 MW for these loads, yielding p_net ≈ 212 MW vs. published 208 MW (+2%)." This documents the gap without overstating its significance.
+- **Decision:** _[USER FILLS IN: agree | reject | alternative]_
 - **User Notes:** _[USER FILLS IN]_
 
 ---
 
 ## Summary
 
-- **Total citations checked:** 20
-- **Citations verified (FOUND or FOUND near-match):** 15
-- **Citations partial match (value found, source specificity or name discrepancy):** 4 (CV-7, CV-16, CV-9, CV-20)
-- **Citations not found in extracted source:** 1 (CV-9 — ICRH 70% efficiency; may be in full PDF)
-- **Calculations checked:** 8
-- **Calculations matched:** 6
-- **Calculations mismatched:** 2 (CALC-5: P_net 212 vs. 208 MWe; CALC-8: blanket energy multiplication derivation)
-- **Model parameters audited:** 16
+- **Total citations checked:** 15
+- **Citations fully verified:** 10
+- **Citations with section/table attribution errors:** 2 (CV-1: §Discussion → §3.3; CV-8: §Table 7 → §Table 5)
+- **Citations with content issues:** 2 (CV-5: composite misquotation; CV-9: unsourced/invalid analogue)
+- **Citations partial match:** 1 (CV-12: "14.1 kW" subtotal not explicit in Table 9)
+- **Calculations checked:** 10
+- **Calculations matched:** 8
+- **Calculations with errors:** 2 (CALC-4: "5×" should be "7×"; CALC-9: unit error "1.13 kW" → "1.13 MW" in annotation)
+- **Internal inconsistencies:** 1 (CALC-5: 30-year Section 4 narrative vs. 40-year model)
+- **Model parameters audited:** 18
+- **Parameters fully traced:** 15
+- **Parameters traced via analogue (no primary source):** 3 (MSA-8: HTS coil cost; MSA-9: ICRH cost; MSA-12: sacrificial coil material cost)
+- **Parameters with traceability concerns:** 1 (MSA-15: vessel_inner_radius is a rough approximation, flagged appropriately)
 - **Proposed Actions:** 8 (blocking: 0, important: 2, minor: 6)
-- **Overall:** HAS ISSUES — no blocking errors; two important issues (PA-1 LDX temperature claim, PA-8 blanket multiplication derivation) should be resolved before synthesis; six minor items are clean-up level.
+- **Overall:** HAS ISSUES — no blocking errors; no findings that invalidate the LCOE model or misrepresent primary sources. The two important issues (PA-3: incorrect 5× multiplier; PA-4: 30-year/40-year inconsistency) should be corrected before synthesis. The critical data gaps (no published capital cost, no sacrificial coil cost, no thermal cycle specification) are correctly identified and propagated as HIGH UNCERTAINTY parameters. The model's calibration approach (η_th = 0.38 back-solved from published power balance) is well-reasoned.

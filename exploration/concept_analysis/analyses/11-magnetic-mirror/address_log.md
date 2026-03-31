@@ -8,3 +8,15 @@
 
 ### Changes Skipped
 _(none)_
+
+## Iteration 2 — 2026-03-29
+
+### Changes Applied
+- PA-1: Split §S1 block quote to separate arXiv (Q = 5.8 at 50 m, primary) from Fusion Report interview (Q > 10 for longer cells, secondary); updated paragraph text accordingly. In model_setup.py L85, changed Q > 10 citation from arXiv to fusion-report-interview-realta.md with note that it is a secondary-source characterization — alternative
+- PA-3: Added arXiv-derived p_input ≈ 30–40 MW row to §S5 Available Parameters table (medium confidence, citing arXiv Table 3). Updated model_setup.py p_input comment block to flag arXiv-anchored 30–40 MW estimate vs. conservative 70 MW, and note 35 MW as an optimistic bracket scenario — agree
+- PA-4: Updated PLASMA_T from 1.5 (framework default) to 0.75 m with comment citing arXiv Table 3 (0.54 m Optimum / 0.78 m Alternate for 50 m pilot); commercial radius noted as modestly larger — agree
+- PA-5: Added inline caveat "[unverified in ingested sources; likely from Endrizzi et al. 2023 WHAM physics basis paper]" after ">20 T on conductor" claim in analysis.md §S3 HTS Axisymmetric Mirror Magnets section — agree
+
+### Changes Skipped
+- PA-2: Invented section headings in citations exist in extracted .orig.md source files; citations are correct against ingested sources — rejected
+- PA-6: Same reasoning as PA-2; §Hammir Design heading exists in extracted .orig.md — rejected

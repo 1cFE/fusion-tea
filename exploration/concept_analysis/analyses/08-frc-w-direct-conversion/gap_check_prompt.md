@@ -26,8 +26,10 @@ These are the primary technical sources extracted during Phase 1a research. Read
 - `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/08-frc-w-direct-conversion/iter-01/sources/contrary-research-helion.md` (1 KB)
 - `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/08-frc-w-direct-conversion/iter-01/sources/docslib-helion-arpa-e-presentation.md` (1 KB)
 - `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/08-frc-w-direct-conversion/iter-01/sources/helion-website-technology.md` (3 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/08-frc-w-direct-conversion/iter-02/sources/helion-milestones-feb2026.md` (1 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/08-frc-w-direct-conversion/iter-02/sources/helion-prototype-generations.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/08-frc-w-direct-conversion/iter-02/sources/helion-milestones-feb2026.md` (5 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/08-frc-w-direct-conversion/iter-02/sources/helion-milestones-feb2026.orig.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/08-frc-w-direct-conversion/iter-02/sources/helion-prototype-generations.md` (36 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/08-frc-w-direct-conversion/iter-02/sources/helion-prototype-generations.orig.md` (2 KB)
 
 ### Reference Documents
 - **Analysis brief** (defines the D1+ section requirements): `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/concept_analysis_brief.md`

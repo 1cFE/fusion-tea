@@ -18,10 +18,11 @@ Usage:
 import argparse
 import csv
 import re
+import shutil
 import subprocess
 import sys
 import time
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 
 # ---------------------------------------------------------------------------
@@ -34,6 +35,7 @@ ANALYSES_DIR = CONCEPT_ANALYSIS_DIR / "analyses"
 HANDWRITTEN_DIR = CONCEPT_ANALYSIS_DIR / "handwritten"
 TEMPLATES_DIR = CONCEPT_ANALYSIS_DIR / "prompt_templates"
 BRIEF_PATH = CONCEPT_ANALYSIS_DIR / "concept_analysis_brief.md"
+MEMORY_DIR = CONCEPT_ANALYSIS_DIR / "memory"
 
 PHASE_1A_DIR = CONCEPT_ANALYSIS_DIR.parent / "phase_1a"
 SCHEMA_PATH = PHASE_1A_DIR / "schema.md"
@@ -48,6 +50,9 @@ COSTINGFE_README_PATH = COSTINGFE_DIR / "README.md"
 
 # Free-form model exemplar
 FREEFORM_EXEMPLAR_PATH = Path("/home/reid/1cfe/tea-models/maglif/maglif_lcoe_model.py")
+
+# Extraction output filename (matches agentic-mbse convention)
+EXTRACT_OUTPUT = "output.md"
 
 
 # ---------------------------------------------------------------------------
@@ -627,6 +632,126 @@ def find_sources(concept_id: str, research_dir: Path = RESEARCH_DIR) -> list[Pat
     return sources
 
 
+# ---------------------------------------------------------------------------
+# Source addition helpers
+# ---------------------------------------------------------------------------
+
+
+def _slugify_text(text: str, max_len: int = 60) -> str:
+    """Slugify text into a hyphenated lowercase string."""
+    slug = text.lower()
+    slug = re.sub(r"[^a-z0-9]+", "-", slug)
+    slug = re.sub(r"-+", "-", slug).strip("-")
+    if len(slug) <= max_len:
+        return slug
+    truncated = slug[:max_len]
+    last_sep = truncated.rfind("-")
+    return truncated[:last_sep] if last_sep > max_len // 2 else truncated
+
+
+def _slugify_url(url: str, max_len: int = 60) -> str:
+    """Slugify a URL into a descriptive hyphenated name."""
+    from urllib.parse import urlparse
+
+    parsed = urlparse(url)
+    # Use domain + path for descriptive names
+    domain = parsed.netloc.replace("www.", "").split(".")[0]  # e.g., "arxiv", "realta"
+    path = parsed.path.rstrip("/")
+    # Strip common prefixes
+    for prefix in ("/abs/", "/pdf/", "/html/", "/article/", "/papers/"):
+        if path.startswith(prefix):
+            path = path[len(prefix) :]
+            break
+    # Strip file extensions
+    path = re.sub(r"\.(pdf|html|htm)$", "", path)
+    # Combine domain + meaningful path
+    combined = f"{domain}-{path}" if path else domain
+    return _slugify_text(combined, max_len)
+
+
+def slugify_source(input_str: str, max_len: int = 60) -> str:
+    """Derive a hyphenated source name from a file path or URL."""
+    if input_str.startswith(("http://", "https://")):
+        return _slugify_url(input_str, max_len)
+    # Local file: use stem
+    name = Path(input_str).stem
+    return _slugify_text(name, max_len)
+
+
+def flatten_companion_dir(companion_dir: Path) -> None:
+    """Flatten nested extraction subdirectory if present.
+
+    PDF extraction via agentic-mbse creates a nested subdir named after the
+    input file. This moves its contents up one level and removes the empty
+    nested dir.
+    """
+    subdirs = [d for d in companion_dir.iterdir() if d.is_dir()]
+    candidates = [d for d in subdirs if (d / EXTRACT_OUTPUT).exists()]
+    if len(candidates) != 1:
+        return  # already flat or ambiguous
+    nested = candidates[0]
+    for item in nested.iterdir():
+        dest = companion_dir / item.name
+        if item.is_file():
+            item.rename(dest)
+        elif not dest.exists():
+            item.rename(dest)
+    if not any(nested.iterdir()):
+        nested.rmdir()
+
+
+def find_latest_sources_dir(
+    concept_id: str, research_dir: Path = RESEARCH_DIR
+) -> Path:
+    """Find the latest iter-NN/sources/ dir, or create iter-01/sources/."""
+    concept_dir = research_dir / concept_id
+    iter_dirs = sorted(concept_dir.glob("iter-*"))
+    if iter_dirs:
+        sources_dir = iter_dirs[-1] / "sources"
+        sources_dir.mkdir(exist_ok=True)
+        return sources_dir
+    # No iterations exist — create iter-01
+    sources_dir = concept_dir / "iter-01" / "sources"
+    sources_dir.mkdir(parents=True, exist_ok=True)
+    return sources_dir
+
+
+def check_duplicate_source(
+    concept_id: str, name: str, research_dir: Path = RESEARCH_DIR
+) -> Path | None:
+    """Check if a source with this name already exists in any iteration."""
+    concept_dir = research_dir / concept_id
+    for iter_dir in concept_dir.glob("iter-*"):
+        candidate = iter_dir / "sources" / f"{name}.md"
+        if candidate.exists():
+            return candidate
+    return None
+
+
+def resolve_source_names(
+    concept_id: str, names: list[str], research_dir: Path = RESEARCH_DIR
+) -> list[Path]:
+    """Resolve short source names to full paths under the concept."""
+    concept_dir = research_dir / concept_id
+    resolved = []
+    for name in names:
+        # Append .md if not present
+        fname = name if name.endswith(".md") else f"{name}.md"
+        matches = list(concept_dir.glob(f"iter-*/sources/{fname}"))
+        if not matches:
+            print(
+                f"  error: source '{name}' not found under {concept_dir}/iter-*/sources/"
+            )
+            sys.exit(1)
+        if len(matches) > 1:
+            print(
+                f"  error: source '{name}' found in multiple iterations: {matches}"
+            )
+            sys.exit(1)
+        resolved.append(matches[0])
+    return resolved
+
+
 def get_dossier_path(concept_id: str, research_dir: Path = RESEARCH_DIR) -> Path | None:
     """Get path to Phase 1a dossier for a concept. Returns None if not found."""
     path = research_dir / concept_id / "dossier.md"
@@ -748,6 +873,63 @@ def format_path_list(paths: list[Path], empty_msg: str = "(none)") -> str:
     if not paths:
         return empty_msg
     return "\n".join(f"- `{p}`" for p in paths)
+
+
+# ---------------------------------------------------------------------------
+# Cross-concept memory
+# ---------------------------------------------------------------------------
+
+# Regex for metadata line: "Date: 2026-03-29 | Concepts: 09, IFE, all"
+_MEMORY_META_RE = re.compile(
+    r"^Date:\s*\d{4}-\d{2}-\d{2}\s*\|\s*Concepts:\s*(.+)$", re.MULTILINE
+)
+
+
+def load_relevant_memories(
+    concept_id: str, memory_dir: Path, family: str = "",
+) -> str:
+    """Load memory entries relevant to a concept.
+
+    Args:
+        concept_id: Full concept ID, e.g. "09-laser-ife". Short ID
+            extracted as the leading numeric segment.
+        memory_dir: Path to the memory directory.
+        family: Confinement family tag, e.g. "IFE". Empty string if unknown.
+
+    Returns:
+        Matched entries as a markdown string, or "" if none found
+        or memory dir doesn't exist.
+    """
+    if not memory_dir.is_dir():
+        return ""
+
+    md_files = sorted(memory_dir.glob("*.md"))
+    if not md_files:
+        return ""
+
+    # Extract short ID: "09" from "09-laser-ife"
+    short_id = concept_id.split("-")[0]
+
+    # Build match set, dropping empty strings
+    match_set = {short_id, family.upper(), "all"} - {""}
+
+    matched: list[str] = []
+    for md_file in md_files:
+        content = md_file.read_text(encoding="utf-8")
+        # Split on H2 boundaries — everything from one "## " to the next (or EOF)
+        entries = re.split(r"(?=^## )", content, flags=re.MULTILINE)
+        for entry in entries:
+            entry = entry.strip()
+            if not entry.startswith("## "):
+                continue
+            m = _MEMORY_META_RE.search(entry)
+            if not m:
+                continue
+            tags = {t.strip() for t in m.group(1).split(",")}
+            if tags & match_set:
+                matched.append(entry)
+
+    return "\n\n".join(matched)
 
 
 # ---------------------------------------------------------------------------
@@ -904,6 +1086,21 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
         print("No concepts to analyze.")
         return
 
+    # Validate --feedback constraints
+    feedback = getattr(args, "feedback", None)
+    if feedback:
+        if args.force:
+            print("Error: --feedback and --force are mutually exclusive.")
+            print("  --feedback applies changes to existing analysis.md")
+            print("  --force re-creates analysis.md from scratch")
+            sys.exit(1)
+        if not feedback.is_file():
+            print(f"Error: feedback file not found: {feedback}")
+            sys.exit(1)
+        if len(targets) > 1:
+            print("Error: --feedback can only be used with a single concept")
+            sys.exit(1)
+
     analysis_template = (TEMPLATES_DIR / "analysis_v2.md").read_text(encoding="utf-8")
     assessment_template = (TEMPLATES_DIR / "assessment.md").read_text(encoding="utf-8")
     exemplars = find_exemplars()
@@ -916,8 +1113,13 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
         analysis_path = out_dir / "analysis.md"
         had_existing_downstream = _has_downstream_artifacts(out_dir)
 
+        # For feedback mode, analysis.md must exist
+        if feedback:
+            if not analysis_path.exists():
+                print(f"  skip {cid} (no analysis.md — --feedback requires existing analysis)")
+                continue
         # Skip if already done (unless --force)
-        if analysis_path.exists() and not args.force:
+        elif analysis_path.exists() and not args.force:
             print(f"  skip {cid} (analysis.md exists, use --force to re-run)")
             continue
 
@@ -934,6 +1136,11 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
         approved = find_approved()
         out_dir.mkdir(parents=True, exist_ok=True)
 
+        # Load cross-concept memories relevant to this concept
+        memory_context = load_relevant_memories(
+            cid, MEMORY_DIR, family=c.get("Confinement Family", ""),
+        )
+
         # Common template vars shared across all modes
         common_vars = {
             "concept_id": cid,
@@ -948,7 +1155,56 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
                 approved, "No approved prior analyses available."),
             "output_template_path": str(output_template_path),
             "analysis_path": str(analysis_path),
+            "memory_context": memory_context,
         }
+
+        # === FEEDBACK MODE: apply external feedback file ===
+        if feedback:
+            ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+            prompt = fill_template(analysis_template, {
+                **common_vars,
+                "output_path": "",  # not used in feedback mode
+                "cold_start": "",
+                "feedback_pass": "true",
+                "feedback_path": str(feedback),
+                "self_advance": "",
+            })
+
+            # Save prompt for audit trail
+            prompt_path = out_dir / f"feedback_apply_prompt_{ts}.md"
+            prompt_path.write_text(prompt, encoding="utf-8")
+
+            if args.dry_run:
+                print(f"  dry-run {cid}: feedback prompt saved to {prompt_path}")
+                continue
+
+            print(f"  apply feedback {cid} ...", end="", flush=True)
+            t0 = time.time()
+            _stdout, stderr, rc = invoke_claude(
+                prompt, cwd=CONCEPT_ANALYSIS_DIR,
+                timeout=args.timeout, model=args.model,
+            )
+            elapsed = time.time() - t0
+
+            if rc != 0:
+                print(f" FAILED ({elapsed:.0f}s, rc={rc})")
+                print(f"    stderr: {stderr[:500]}", file=sys.stderr)
+                continue
+
+            print(f" done ({elapsed:.0f}s)")
+
+            # Propagate staleness
+            stale = propagate_staleness(cid, "feedback-applied-from-change-requests")
+            if stale:
+                print(f"    stale: {', '.join(stale)}")
+
+            # Archive consumed feedback file
+            archive_name = f"change_requests_{ts}.md"
+            archived = feedback.parent / archive_name
+            feedback.rename(archived)
+            print(f"    archived: {feedback.name} → {archive_name}")
+
+            continue
 
         # === COLD START (analysis pass 1) ===
         body_path = out_dir / "analysis_body.md"
@@ -1589,8 +1845,9 @@ def cmd_approve(concepts: list[dict], args: argparse.Namespace) -> None:
 
 
 def cmd_stage1_all(concepts: list[dict], args: argparse.Namespace) -> None:
-    """Run gap-check → analyze → model-setup → review for specified concepts.
+    """Run analyze → model-setup → review for specified concepts.
 
+    Gap-check is skipped by default; pass --include-gap-analysis to include it.
     Each stage's own skip logic handles prerequisites and existing outputs,
     so re-running is safe (picks up where it left off).
     """
@@ -1606,14 +1863,19 @@ def cmd_stage1_all(concepts: list[dict], args: argparse.Namespace) -> None:
 
     names = ", ".join(c["_num"] for c in targets)
     print(f"=== stage1-all: {len(targets)} concepts ({names}) ===")
-    print("    Pipeline: gap-check → analyze → model-setup → review")
+    if getattr(args, "include_gap_analysis", False):
+        print("    Pipeline: gap-check → analyze → model-setup → review")
+    else:
+        print("    Pipeline: analyze → model-setup → review")
 
-    stages = [
-        ("Gap Check", cmd_gap_check),
+    stages = []
+    if getattr(args, "include_gap_analysis", False):
+        stages.append(("Gap Check", cmd_gap_check))
+    stages.extend([
         ("Analyze", cmd_analyze),
         ("Model Setup", cmd_model_setup),
         ("Review", cmd_review),
-    ]
+    ])
 
     for stage_name, handler in stages:
         print(f"\n--- {stage_name} ---")
@@ -1624,6 +1886,265 @@ def cmd_stage1_all(concepts: list[dict], args: argparse.Namespace) -> None:
     for c in targets:
         state = get_concept_state(c["_id"])
         print(f"  {c['_num']} ({c['Concept Name']}): {state}")
+
+
+# ---------------------------------------------------------------------------
+# cmd_add_source — add a PDF or URL source to a concept
+# ---------------------------------------------------------------------------
+
+
+def cmd_add_source(concepts: list[dict], args: argparse.Namespace) -> None:
+    """Add a PDF or URL source to a concept's sources directory."""
+    # Resolve single concept
+    matches = resolve_one(concepts, args.concept)
+    if len(matches) == 0:
+        print(f"  error: no concept matching '{args.concept}'")
+        sys.exit(1)
+    if len(matches) > 1:
+        print(f"  error: '{args.concept}' matches multiple concepts:")
+        for c in matches:
+            print(f"    {c['_num']} {c['Concept Name']}")
+        sys.exit(1)
+    concept = matches[0]
+    research_id = concept["_research_id"]
+
+    # Determine source name
+    name = args.name if args.name else slugify_source(args.source)
+    if not name:
+        print("  error: could not derive source name — use --name to specify")
+        sys.exit(1)
+
+    print(f"  concept: {concept['_num']} ({concept['Concept Name']})")
+    print(f"  source:  {args.source}")
+    print(f"  name:    {name}")
+
+    # Duplicate check
+    existing = check_duplicate_source(research_id, name)
+    if existing:
+        if args.force:
+            # NOTE: existing source may be in an older iter-NN; the new
+            # extraction will land in the latest iter (find_latest_sources_dir).
+            # This effectively moves the source forward, which is intentional.
+            print(f"  force: removing existing source '{name}' at {existing.parent}")
+            existing.unlink(missing_ok=True)
+            companion = existing.parent / name
+            if companion.is_dir():
+                shutil.rmtree(companion)
+        else:
+            print(f"  error: source '{name}' already exists: {existing}")
+            print("  use --force to re-extract")
+            sys.exit(1)
+
+    # Find placement
+    sources_dir = find_latest_sources_dir(research_id)
+    companion_dir = sources_dir / name
+    symlink_path = sources_dir / f"{name}.md"
+
+    print(f"  target:  {symlink_path}")
+
+    if args.dry_run:
+        print(f"\n  [dry-run] would create:")
+        print(f"    companion dir: {companion_dir}/")
+        print(f"    symlink:       {symlink_path} → {name}/{EXTRACT_OUTPUT}")
+        print(f"    extraction:    uv run agentic-mbse extract {args.source} --save-source --output {companion_dir}/")
+        return
+
+    # Create companion dir
+    companion_dir.mkdir(parents=True, exist_ok=True)
+
+    try:
+        # Run extraction
+        print(f"\n  extracting source...")
+        cmd = [
+            "uv", "run", "agentic-mbse", "extract", args.source,
+            "--save-source", "--output", str(companion_dir),
+        ]
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=600)
+
+        if result.returncode != 0:
+            stderr_snippet = result.stderr.strip()[:500] if result.stderr else "(no stderr)"
+            print(f"  error: extraction failed (rc={result.returncode})")
+            print(f"  stderr: {stderr_snippet}")
+            raise RuntimeError("extraction failed")
+
+        # Flatten nested PDF subdirectory if present
+        flatten_companion_dir(companion_dir)
+
+        # Verify output.md exists
+        output_path = companion_dir / EXTRACT_OUTPUT
+        if not output_path.exists():
+            print(f"  error: extraction completed but {EXTRACT_OUTPUT} not found in {companion_dir}")
+            raise RuntimeError("output.md missing")
+
+        # Create symlink (relative path)
+        symlink_path.symlink_to(f"{name}/{EXTRACT_OUTPUT}")
+        print(f"  created: {symlink_path}")
+        print(f"  done — source '{name}' added successfully")
+
+    except Exception as exc:
+        # Clean up partial artifacts
+        if companion_dir.exists():
+            shutil.rmtree(companion_dir)
+        if symlink_path.is_symlink():
+            symlink_path.unlink()
+        # RuntimeError messages already printed above; print others
+        if not isinstance(exc, RuntimeError):
+            print(f"  error: {exc}")
+        sys.exit(1)
+
+
+# ---------------------------------------------------------------------------
+# cmd_update_analysis — incrementally update analysis with new sources
+# ---------------------------------------------------------------------------
+
+
+def cmd_update_analysis(concepts: list[dict], args: argparse.Namespace) -> None:
+    """Update analysis to incorporate new sources via pre-pass + feedback-pass."""
+    # Resolve single concept
+    matches = resolve_one(concepts, args.concept)
+    if len(matches) == 0:
+        print(f"  error: no concept matching '{args.concept}'")
+        sys.exit(1)
+    if len(matches) > 1:
+        print(f"  error: '{args.concept}' matches multiple concepts:")
+        for c in matches:
+            print(f"    {c['_num']} {c['Concept Name']}")
+        sys.exit(1)
+    concept = matches[0]
+    cid = concept["_id"]
+    rid = concept["_research_id"]
+
+    print(f"  concept: {concept['_num']} ({concept['Concept Name']})")
+
+    # Resolve source names to full paths
+    new_source_paths = resolve_source_names(rid, args.sources)
+    print(f"  new sources: {len(new_source_paths)}")
+    for sp in new_source_paths:
+        print(f"    {sp.name}")
+
+    # Verify analysis.md exists
+    out_dir = ANALYSES_DIR / cid
+    analysis_path = out_dir / "analysis.md"
+    if not analysis_path.exists():
+        print(f"  error: no analysis.md for {cid} — run 'analyze' first")
+        sys.exit(1)
+
+    # Generate timestamp for filenames
+    ts = datetime.now().strftime("%Y%m%dT%H%M%S")
+
+    # === Step 1: Source-Integration Pre-Pass ===
+    print(f"\n  step 1: source-integration pre-pass...")
+
+    integration_template = (TEMPLATES_DIR / "source_integration.md").read_text(
+        encoding="utf-8"
+    )
+    feedback_path = out_dir / f"feedback_update_{ts}.md"
+
+    new_source_list = format_source_list(new_source_paths)
+    integration_prompt = fill_template(integration_template, {
+        "concept_name": concept["Concept Name"],
+        "analysis_path": str(analysis_path),
+        "new_source_paths": new_source_list,
+        "feedback_path": str(feedback_path),
+    })
+
+    # Save prompt for audit trail
+    integration_prompt_path = out_dir / f"source_integration_prompt_{ts}.md"
+    integration_prompt_path.write_text(integration_prompt, encoding="utf-8")
+    print(f"  prompt: {integration_prompt_path}")
+
+    # Invoke Claude for pre-pass
+    t0 = time.time()
+    _stdout, stderr, rc = invoke_claude(
+        integration_prompt, cwd=CONCEPT_ANALYSIS_DIR,
+        timeout=args.timeout, model=args.model,
+    )
+    elapsed = time.time() - t0
+
+    if rc != 0:
+        print(f"  pre-pass FAILED ({elapsed:.0f}s, rc={rc})")
+        print(f"    stderr: {stderr[:500]}", file=sys.stderr)
+        sys.exit(1)
+
+    if not feedback_path.exists():
+        print(f"  pre-pass FAILED ({elapsed:.0f}s) — no feedback file created")
+        sys.exit(1)
+
+    feedback_text = feedback_path.read_text(encoding="utf-8")
+    is_pass = bool(re.search(r"^VERDICT:\s*PASS", feedback_text, re.MULTILINE))
+    finding_count = len(re.findall(r"^### F-\d+:", feedback_text, re.MULTILINE))
+
+    if is_pass:
+        print(f"  pre-pass: PASS ({elapsed:.0f}s) — no material additions needed")
+        return
+
+    print(f"  pre-pass: {finding_count} findings ({elapsed:.0f}s)")
+    print(f"  feedback: {feedback_path}")
+
+    if args.dry_run:
+        print(f"\n  [dry-run] feedback content:")
+        print(feedback_text)
+        print(f"\n  [dry-run] would invoke feedback-pass on analysis.md — stopping here")
+        return
+
+    # === Step 2: Feedback Pass ===
+    print(f"\n  step 2: feedback-pass (updating analysis.md)...")
+
+    analysis_template = (TEMPLATES_DIR / "analysis_v2.md").read_text(encoding="utf-8")
+    exemplars = find_exemplars()
+    approved = find_approved()
+    sources = find_sources(rid)
+    dossier_path = get_dossier_path(rid)
+    output_template_path = TEMPLATES_DIR / "output_template.md"
+
+    common_vars = {
+        "concept_id": cid,
+        "concept_name": concept["Concept Name"],
+        "company": concept.get("Company", ""),
+        "dossier_path": str(dossier_path) if dossier_path else "",
+        "source_paths": format_source_list(sources),
+        "brief_path": str(BRIEF_PATH),
+        "schema_path": str(SCHEMA_PATH),
+        "exemplar_paths": format_path_list(exemplars, "(no exemplars found)"),
+        "approved_analyses": format_path_list(
+            approved, "No approved prior analyses available."),
+        "output_template_path": str(output_template_path),
+        "analysis_path": str(analysis_path),
+    }
+
+    feedback_prompt = fill_template(analysis_template, {
+        **common_vars,
+        "output_path": "",  # not used in feedback mode
+        "cold_start": "",
+        "feedback_pass": "true",
+        "feedback_path": str(feedback_path),
+        "self_advance": "",
+    })
+
+    # Save prompt for audit trail
+    feedback_prompt_path = out_dir / f"update_analysis_prompt_{ts}.md"
+    feedback_prompt_path.write_text(feedback_prompt, encoding="utf-8")
+
+    t0 = time.time()
+    _stdout, stderr, rc = invoke_claude(
+        feedback_prompt, cwd=CONCEPT_ANALYSIS_DIR,
+        timeout=args.timeout, model=args.model,
+    )
+    elapsed = time.time() - t0
+
+    if rc != 0:
+        print(f"  feedback-pass FAILED ({elapsed:.0f}s, rc={rc})")
+        print(f"    stderr: {stderr[:500]}", file=sys.stderr)
+        sys.exit(1)
+
+    print(f"  feedback-pass done ({elapsed:.0f}s)")
+
+    # Propagate staleness
+    stale = propagate_staleness(cid, f"analysis-updated-by-source-integration-{ts}")
+    if stale:
+        print(f"  stale: {', '.join(stale)}")
+
+    print(f"\n  done — analysis updated with {finding_count} source integration(s)")
 
 
 # ---------------------------------------------------------------------------
@@ -1667,6 +2188,8 @@ def build_parser() -> argparse.ArgumentParser:
     p_analyze.add_argument("--force", action="store_true", help="Re-run even if output exists")
     p_analyze.add_argument("--max-passes", type=int, default=3,
                             help="Max analyze→assess iterations (default: 3; 1=no assessment)")
+    p_analyze.add_argument("--feedback", type=Path, metavar="PATH",
+                            help="Apply feedback file to existing analysis (skips cold-start)")
 
     # -- model-setup --
     p_ms = sub.add_parser("model-setup", help="Generate 1costingfe model setup script")
@@ -1726,6 +2249,28 @@ def build_parser() -> argparse.ArgumentParser:
     p_s1.add_argument("--force", action="store_true", help="Re-run even if output exists")
     p_s1.add_argument("--max-passes", type=int, default=3,
                        help="Max analyze→assess iterations (default: 3; 1=no assessment)")
+    p_s1.add_argument("--include-gap-analysis", action="store_true",
+                       help="Include gap-check stage (skipped by default)")
+
+    # -- add-source --
+    p_add = sub.add_parser("add-source", help="Add a PDF or URL source to a concept")
+    p_add.add_argument("concept", help="Concept ID (single concept)")
+    p_add.add_argument("source", help="PDF path or URL to extract")
+    p_add.add_argument("--name", help="Override automatic source name")
+    p_add.add_argument("--force", action="store_true",
+                       help="Re-extract even if source name already exists")
+    p_add.add_argument("--dry-run", action="store_true", help="Show what would be created")
+
+    # -- update-analysis --
+    p_upd = sub.add_parser("update-analysis",
+                           help="Update analysis to incorporate new sources")
+    p_upd.add_argument("concept", help="Concept ID (single concept)")
+    p_upd.add_argument("--sources", nargs="+", required=True,
+                       help="Source names to incorporate (e.g., sparc-icrf-heating-paper)")
+    p_upd.add_argument("--model", default="sonnet", help="Claude model (default: sonnet)")
+    p_upd.add_argument("--timeout", type=int, default=900, help="Per-invocation timeout")
+    p_upd.add_argument("--dry-run", action="store_true",
+                       help="Run pre-pass and show feedback, but don't invoke analysis agent")
 
     return parser
 
@@ -1747,6 +2292,8 @@ def main() -> None:
         "synthesize": cmd_synthesize,
         "approve": cmd_approve,
         "stage1-all": cmd_stage1_all,
+        "add-source": cmd_add_source,
+        "update-analysis": cmd_update_analysis,
     }
 
     handler = dispatch[args.command]

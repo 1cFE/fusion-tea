@@ -3,11 +3,8 @@ ID: 11-magnetic-mirror
 Concept: Magnetic Mirror (D-T)
 Company: Realta Fusion
 Type: synthesis
-Status: approved
-Created: 2026-03-22
-Approved-Date: 2026-03-22
-Stale: true
-Stale-Reason: analysis-rewritten-by-force
+Status: draft
+Created: 2026-03-29
 ---
 
 # Synthesis: Magnetic Mirror (D-T) — Realta Fusion
@@ -16,126 +13,128 @@ Stale-Reason: analysis-rewritten-by-force
 
 ## 1. Executive Summary
 
-- **Most important risk**: End-plug confinement is experimentally undemonstrated. WHAM proved simple mirror operation with HTS magnets; Anvil (the device to demonstrate tandem end-plug sustainment) has not been built. The Q > 5 thesis is simulation-only. This is not a refinement risk — it is a concept-validity gate. If end-plug confinement at HTS-enabled mirror ratios of 10+ does not perform as modeled, the commercial premise collapses entirely.
+- **Most important risk**: End-plug confinement physics has never been demonstrated at commercial conditions. Realta's entire economic thesis — Q scaling linearly with center-cell length at constant heating cost — collapses if DCLC instability or trapped-particle modes require more end-plug heating than modeled. The Anvil demonstrator (~2028) is the first real test of this physics, and no equivalent device has operated since MFTF-B was mothballed in 1986 without ever demonstrating sustained confinement. If end-plug Q degrades by a factor of 2 from the modeled value, the concept likely cannot achieve net electricity at commercially relevant scale.
 
-- **Most important advantage**: Linear center-cell scaling decouples commercial fusion power from end-plug hardware cost. At ~7 MWt/m, lengthening the center cell from 50m (Q > 5) toward 70m (Q ~ 8–10) adds power without additional end-plug R&D. If the physics works, the primary capital marginal is weak solenoid coils and building volume — not precision high-field magnets. This is a structurally different scaling thesis from every tokamak concept in this analysis.
+- **Most important advantage**: Linear geometry and the claimed cost-invariant Q scaling. A tokamak must grow in all three dimensions to achieve higher Q, driving capital cost up roughly as volume. A magnetic mirror, if the physics holds, grows only in one dimension at roughly constant per-MWe cost for the expensive end-plug hardware. This is structurally different from any toroidal concept — it implies that a 70 m Hammir is not just a scaled-up WHAM but a qualitatively different cost regime. Whether this advantage is real depends entirely on the uncosted center-cell cost-per-meter, but the physics claim is coherent and consistent with the arXiv paper.
 
-- **LCOE ballpark**: **135.2 $/MWh (13.52 ¢/kWh)** from the 1costingfe model at NOAK, 500 MWe, 85% availability. Overnight capital: **$9,620/kW**, total capital $4.81B. This is not a competitive commercial LCOE. New nuclear (AP1000) runs $80–120/MWh at favorable financing; natural gas combined cycle is $40–70/MWh. To reach $80/MWh, the model would need roughly a 40% capital cost reduction from the baseline — which is not achievable through sensitivity levers alone given the dominant building and reactor plant equipment costs. The LCOE is best interpreted as an order-of-magnitude anchor for a concept this early.
+- **LCOE ballpark**: **118.6 $/MWh (11.9 ¢/kWh)** from the 1costingfe model at NOAK, 500 MWe, 85% availability, 70 MW input power (conservative). Overnight capital: **8,601 $/kW**. This is a parametric placeholder, not a plant estimate — every major parameter is sourced from 1983 MARS analogues or framework defaults. The arXiv-anchored optimistic case (p_input ~35 MW, consistent with Table 3 of arXiv:2411.06644) would reduce the recirculating power fraction from 30.3% and likely cut LCOE to the 85–100 $/MWh range. The $118.6/MWh central estimate should be treated as an order-of-magnitude upper bound under conservative assumptions; the range is plausibly 80–180 $/MWh given the input uncertainty spread.
 
-- **Confidence verdict: Low.** Almost every parameter is either DEFAULT (no concept-specific data) or UNCERTAIN (inference from historical proxy). The physics basis is simulation-only. No independent TEA exists. The model's primary value is structural — it shows what drives cost and what levers matter — not as a precise LCOE estimate.
+- **Confidence verdict: Low.** No plant-level cost data exists for any modern HTS magnetic mirror. Every CAS account is a framework default or MARS analogue. The dominant model uncertainties (input heating power, commercial plant length, blanket type) are all marked "blocking" in the analysis and span 2.5× ranges. This is the least data-anchored model in the analysis pipeline to date.
 
 ---
 
 ## 2. What Matters Most for LCOE
 
-Ranked by sensitivity elasticity from the 1costingfe model, supplemented with qualitative judgment for risks the model cannot capture.
+Ranked by sensitivity elasticity from the model, with qualitative context for parameters the sensitivity sweep cannot capture.
 
-### 1. Availability — elasticity: –0.88
+### 1. Availability — elasticity: −0.91
 
-**Assumed value**: 85% (DEFAULT; no Realta target published).
-**Sensitivity**: The strongest single lever in the model. Dropping from 85% to 60% availability raises LCOE by ~21% (to ~$163/MWh). A drop to 50% pushes LCOE above $175/MWh.
-**What flips the economics**: Unlike pulsed concepts where availability maps to rep rate, a mirror's availability is governed by maintenance access and component lifetimes. The open-ended linear geometry is a genuine maintenance advantage — technicians can access the center cell directly from the ends rather than through complex remote handling. But no maintenance schedule, first-wall replacement cycle, or blanket module lifetime estimate exists for Hammir. If the venetian-blind DEC collectors degrade under ion bombardment (no lifetime data exists), unplanned downtime could be a dominant failure mode. The assumption that a first-of-kind 70m device can achieve 85% availability is optimistic without a credible maintenance plan.
+**Assumed value**: 85% (framework default; no Realta target published).
+**Sensitivity**: Moving from 85% to 65% availability raises LCOE ~29%, from $119 to ~$154/MWh. At 50% availability (realistic for an early pulsed or novel continuous-plasma system with unresolved DEC electrode survivability), LCOE approaches $200/MWh.
+**What flips the economics**: Availability below ~55% pushes the concept above advanced-fission LCOE and makes it economically uninteresting. The DEC electrode survivability problem — thin uncooled electrodes operating continuously in a D-T fusion exhaust stream, with no published lifetime data — is the most likely mechanism for availability degradation that the model cannot capture. A 30% unplanned downtime factor from DEC maintenance alone would eliminate the concept's commercial case.
 
-### 2. Interest Rate — elasticity: +0.62
+### 2. Interest Rate — elasticity: +0.64
 
-**Assumed value**: 7% real.
-**Sensitivity**: At 10% interest, LCOE increases ~18% to ~$159/MWh. At 5%, decreases ~12% to ~$119/MWh.
-**What flips the economics**: At $9,620/kW overnight, interest during construction ($628M at baseline) is a large absolute cost. A project finance rate above 10% — realistic for a first-of-kind concept without an operating precedent — pushes LCOE further from commercial viability. The 5-year construction time assumption (DEFAULT) is relatively favorable; any slip to 7+ years would compound this.
+**Assumed value**: 7% real discount rate.
+**Sensitivity**: At 10% (realistic for pre-commercial fusion technology under project finance), LCOE rises ~19% to ~$141/MWh. At 12% (high-risk first-of-a-kind financing), ~$155/MWh.
+**What flips the economics**: Project finance rates above ~15% push LCOE above $170/MWh regardless of engineering assumptions. This is a structural feature of the $8,601/kW overnight cost — a high-capital plant is disproportionately sensitive to financing cost. The mirror concept does not have a capital cost advantage over tokamaks (overnight cost is similar or higher), so it does not benefit from reduced interest sensitivity.
 
-### 3. Chamber Length — elasticity: +0.30
+### 3. Construction Time — elasticity: +0.26
 
-**Assumed value**: 70m (UNCERTAIN; extrapolated from 50m Q > 5 simulation result).
-**Sensitivity**: A 10% reduction in chamber length (to 63m) reduces LCOE by ~3% — modest. A 10% increase (to 77m) raises LCOE by ~3%. The sensitivity here captures building and structure scaling costs but misses the physics interaction: shorter chamber means lower Q means higher recirculating power fraction means worse economics. The true sensitivity of LCOE to chamber length includes both the direct capital cost term (modeled) and the physics performance term (not independently modeled).
-**What flips the economics**: If the commercial Q target requires more than 90–100m of center cell (e.g., if DCLC-driven transport is worse than modeled), the building cost becomes dominant — CAS21 is already $592M at 70m. The "input power stays constant as cell lengthens" thesis is the key assumption; if end-plug power requirements scale with center-cell length, the favorable scaling breaks down.
+**Assumed value**: 5 years (framework default; modular linear geometry supports this).
+**Sensitivity**: Each additional year adds ~5% to IDC ($561M at baseline). At 8 years, LCOE increases ~$15/MWh.
+**What flips the economics**: Not a primary risk vector. The linear geometry is a genuine manufacturing advantage (modular center-cell assembly vs. complex 3D tokamak structure), and 5 years is defensible. This is the one engineering parameter where the model's assumption is on solid footing.
 
-### 4. Construction Time — elasticity: +0.25
+### 4. Center Cell Length — elasticity: +0.22
 
-**Assumed value**: 5 years (DEFAULT for mirror geometry; reflects simpler linear assembly vs. toroidal).
-**Sensitivity**: Each additional year of construction adds ~10% to IDC (IDC = $628M at baseline). At 7 years, LCOE increases by ~5% (~$7/MWh).
-**What flips the economics**: The linear geometry plausibly supports shorter construction than a tokamak. However, a 70m linear reactor is a novel first-of-kind civil structure. No mirror device larger than MFTF-B (historically canceled before operation) has been completed. Regulatory uncertainty for open linear geometry (see Section 3) could add years to licensing. This lever matters but is not primary.
+**Assumed value**: 70 m (extrapolated from arXiv 50 m pilot scaling; commercial length not published).
+**Sensitivity**: Elasticity +0.22 means a 50% increase in length raises LCOE ~11%. But this elasticity does not capture the full picture: longer length also adds fusion power at ~7 MW/m, improving Q and potentially reducing the recirculating fraction. The net LCOE impact of length changes depends on whether heating power stays constant (as Realta claims) or grows with length.
+**What flips the economics**: If the cost-invariant Q scaling breaks down — if the center cell at 70 m costs significantly more per meter than at 50 m due to building length, solenoid coil count, or blanket complexity — the economic thesis fails without the LCOE numbers obviously signaling it. This is a gap that only the uncosted center-cell cost structure can resolve.
 
-### 5. Thermal Efficiency — elasticity: –0.19
+### 5. Thermal Efficiency — elasticity: −0.15
 
-**Assumed value**: η_th = 0.40 (UNCERTAIN; MARS 1983 baseline was ~36%; modern steam or sCO₂ could reach 40–45%).
-**Sensitivity**: A drop from 0.40 to 0.35 raises LCOE by ~2.4% to ~$138/MWh. An improvement to 0.45 (optimistic sCO₂) reduces LCOE by ~2.4%.
-**What flips the economics**: Thermal efficiency is not a concept-differentiating lever here — this is a D-T thermal plant, and efficiency is governed by heat source temperature and cycle choice. The DEC system (η_de = 0.54) applies only to the ~20% of fusion power in escaping alphas, providing a modest Q boost (Q_eng = 2.8 vs. ~2.5 without DEC). DEC does not change the economic character of the concept the way it does for aneutronic fuels — it is an incremental benefit, not a structural one.
+**Assumed value**: η_th = 0.38 (MARS 1983 steam Rankine achieved ~36%; 0.38 reflects modest improvement).
+**Sensitivity**: Moving to sCO₂ at 42% would reduce LCOE by ~6%, ~$7/MWh. MARS baseline at 36% would raise it by ~3%.
+**What flips the economics**: Not a concept-altering parameter on its own. But combined with input power uncertainty and DEC uncertainty, it can shift the concept from marginally viable to clearly uncompetitive. At 36% thermal efficiency, 70 MW input power, and 85% availability, LCOE is approximately $125/MWh — already above most fusion and advanced-fission targets. This is why blanket/thermal-cycle selection matters despite its modest individual elasticity.
 
 ---
 
 ## 3. Risk Verdicts
 
-**Challenge 1: End-Plug Tandem Mirror Confinement Is Undemonstrated.**
-**Verdict: Genuinely uncertain — and concept-gating.**
-**Rationale**: WHAM validated simple mirror confinement with HTS; Anvil will test tandem end-plug sustainment; Hammir requires the full tandem configuration to produce gain. Each step is a distinct physics experiment. The Q > 5 simulation is sound in methodology (POPCON with ML optimization), but unvalidated confinement assumptions at HTS mirror ratios of 10+ could easily result in Q = 1–3 rather than Q > 5. This is not a component integration risk — it is the primary physics risk.
-**What would retire this risk**: Anvil operating and demonstrating stable end-plug sustainment with measured electrostatic potential sufficient to suppress loss-cone losses at mirror ratio 10+. A measured confinement time within 2× of POPCON predictions would be sufficient to anchor commercial Q projections.
+### Challenge 1: End-Plug Confinement Physics (electrostatic plugging at commercial Q)
 
-**Challenge 2: Direct Energy Conversion Efficiency and Capital Cost Are Undefined.**
-**Verdict: Genuinely uncertain — but economically secondary for D-T.**
-**Rationale**: The DEC contribution to Qe is modest: 54% efficiency on 20% of fusion energy recovers ~11% of fusion power from DEC. This is real but not structural. The venetian-blind design is TRL 2–3 with no prototype — both efficiency and capital cost are genuinely unknown. However, even if DEC underperforms significantly (say, 30% efficiency instead of 54%), the LCOE impact is modest (~1.2% per 10% change in η_de, elasticity = –0.012). DEC matters more for achieving Qe > 1 at the Hammir pilot scale than for commercial LCOE.
-**What would retire this risk**: A small-scale prototype of the venetian-blind collector demonstrating measured efficiency and ion bombardment lifetime. Even a 1–10 kW laboratory demonstration would anchor the efficiency assumption.
+**Verdict: Genuinely uncertain — but the timeline is slow.**
+**Rationale**: The DCLC instability that destroyed earlier tandem mirror programs (TMX, MFTF-B) was managed in 1980s experiments only through complex plasma shaping that degraded mirror ratio. Realta's HTS axisymmetric approach at mirror ratio 10+ is a genuinely new configuration, and the arXiv paper demonstrates that ML-optimized designs can achieve Q = 5.8 at 50 m in simulation. But simulation is not demonstration. The WHAM experiment (operational July 2024) validates the magnet geometry and basic plasma operation — it does not demonstrate stable end-plug confinement at commercial Q. Anvil, the end-plug demonstrator, has not been built and is planned for ~2028.
+**What would retire this risk**: Anvil demonstrating stable end-plug confinement at the density and temperature required for Q > 3 in a main cell with D-T-relevant particle sources. This is a binary outcome — either the physics holds and the concept becomes credible, or it doesn't and the concept joins TMX in history. Expected data: 2029–2031.
 
-**Challenge 3: Linear Center-Cell Scaling Cost Is Uncharacterized.**
-**Verdict: Genuinely uncertain — the most under-analyzed economic risk.**
-**Rationale**: Realta's economic thesis depends on the marginal cost per meter of center cell being dominated by cheap solenoid magnets — not on the total footprint cost. The model shows CAS21 (Buildings) at $592M for a 70m plant. This is not the solenoid cost; it is the building, shielding, vacuum vessel, and structure cost — all of which scale roughly linearly with length. The "constant input power" claim holds for heating; it does not hold for capital. The cost-per-meter breakdown between magnets, structure, blanket, shielding, and vacuum vessel is unknown.
-**What would retire this risk**: A pre-conceptual design study (the Hammir paper, expected 2026) with cost-per-meter breakdown of the center cell and a sensitivity study on commercial chamber length.
+### Challenge 2: Commercial Plant Scale and Input Power Unknown
 
-**Challenge 4: DCLC and MHD Instability at Full Scale.**
-**Verdict: Genuinely uncertain — historically fatal, now theoretically managed.**
-**Rationale**: DCLC was the dominant failure mode of 1980s mirror machines. Realta's solution (ML-optimized sloshing ions + vortex flow stabilization) is theoretically sound but undemonstrated at HTS mirror ratios. If DCLC suppression works as modeled, this risk retires entirely. If it doesn't, the effective Q is reduced by some factor — potentially 2× or more — which would manifest as either a longer required chamber or higher p_input, both of which raise LCOE substantially.
-**What would retire this risk**: Anvil data showing anomalous transport is within a factor of 2 of classical predictions under tandem mirror conditions.
+**Verdict: Likely resolvable with the 2026 design paper — but currently blocking.**
+**Rationale**: The two prior models produced LCOE estimates of 80.2 and 135.2 $/MWh using 40 MW and 100 MW input power respectively — a 69% spread from a single unknown parameter. This is not a physics uncertainty; it is a proprietary disclosure problem. Realta is expected to publish a Hammir pre-conceptual design paper in 2026 that should specify commercial plant parameters.
+**What would retire this risk**: The Hammir pre-conceptual design paper, if it discloses input heating power, commercial plant length, and net electric output target. This is the single near-term disclosure that would reduce LCOE uncertainty by ~50%.
 
-**Challenge 5: Regulatory Pathway for Linear Open Geometry.**
-**Verdict: Likely resolvable — but timeline-extending.**
-**Rationale**: The NRC's 2023 10 CFR Part 30 framework is favorable in principle. The specific questions (open plasma exhaust, tritium in expander region, end-plug discharge management) are novel but addressable through the existing hazard analysis framework. Unlike the physics risks, this is an institutional process, not a fundamental barrier.
-**What would retire this risk**: DOE or NRC pre-application engagement with Realta, or NRC issuing conceptual design criteria for open-geometry magnetic confinement systems.
+### Challenge 3: Recirculating Power Fraction Couples to End-Plug Risk
+
+**Verdict: Genuinely uncertain — cannot be de-risked without Anvil data.**
+**Rationale**: At the modeled 70 MW input, the recirculating fraction is 30.3% and Q_eng = 3.3, which is physically coherent. But if DCLC management requires 150 MW input instead of 70 MW, the recirculating fraction rises to ~50%, Q_eng drops below 2, and net electricity at commercial scale becomes marginal. The arXiv-anchored estimate of ~30–40 MW input for the 50 m pilot (derived from Table 3, P_fusion = 175 MW, Q = 5.8) is actually more optimistic than the model's 70 MW — which would put the LCOE below $100/MWh if valid.
+**What would retire this risk**: A published power balance for the Hammir pilot that specifies NBI + ECH input power and projected Qe. This is the parameter with the highest leverage on LCOE uncertainty.
+
+### Challenge 4: DEC Contribution Real but Modest for D-T Fuel
+
+**Verdict: Likely resolvable in principle — but electrode survivability is a real risk.**
+**Rationale**: The thermodynamic contribution of DEC in D-T is inherently limited. Physics caps the capturable charged-particle fraction at 20% (alpha particles); at η_de = 0.54, DEC contributes at most ~11% of total plant electrical output. Excluding DEC entirely raises LCOE by ~10–15%. That is real but not concept-defining. The harder question is whether venetian blind electrodes survive 30 years of continuous operation in a fusion exhaust stream. No fusion-condition DEC survivability data exists.
+**What would retire this risk**: Any fusion-condition DEC lifetime test — even a short-duration experiment demonstrating electrode survival under D-T plasma bombardment. This could be done on WHAM or a dedicated DEC test stand before Hammir.
+
+### Challenge 5: Tritium Breeding Blanket Type Undisclosed
+
+**Verdict: Likely resolvable — but choice materially affects thermal efficiency.**
+**Rationale**: Realta confirms a lithium blanket but has not disclosed the type. FLiBe (outlet temp ~700°C, TBR potentially >1.1 with sCO₂ cycle) vs. LiPb (outlet temp ~350°C, MARS historical baseline) drives thermal efficiency from 36% to potentially 45% — a $15–$20/MWh LCOE difference. The cylindrical center-cell geometry is well-suited to modular blanket segments; no fundamental physics barrier exists for any of the candidate blanket types.
+**What would retire this risk**: Blanket type disclosure in the 2026 design paper. Until then, the MARS LiPb analogue at η_th = 0.36–0.38 is the conservative assumption.
 
 ---
 
 ## 4. Structural Advantages and Disadvantages
 
-**Compared against a conventional D-T HTS tokamak (01-hts-compact-tokamak) baseline at ~$5,000–$9,000/kW overnight.**
+Compared against the conventional D-T tokamak baseline (CFS ARC-class, 01-hts-compact-tokamak).
 
-### Claimed Advantages
+### Advantages Over D-T Tokamak
 
-| Item | Assessment | Magnitude | Confidence |
-|---|---|---|---|
-| Simpler magnet geometry (axisymmetric solenoids vs. 3D TF coils) | Real advantage in winding complexity and coil stress analysis | ~5–15% reduction in magnet cost | Medium |
-| Steady-state operation (no disruption risk) | Real advantage — no emergency shutdown systems for sudden termination of plasma current | Minor (disruptions are manageable, not capital-dominant) | High |
-| Linear center-cell scaling for power increase | Real advantage IF cost-per-meter is truly dominated by cheap solenoids | Unknown magnitude | Low |
-| Direct maintenance access to center cell | Real advantage over toroidal geometry for first-wall/blanket replacement | Unknown magnitude — no remote-handling tooling designed | Low |
-| DEC reduces Q threshold for net electricity | Real but modest for D-T (20% of fusion energy capturable) | ~5–10% improvement in effective Q_eng | Medium |
-
-### Structural Disadvantages vs. D-T Tokamak
-
-| Item | Cost Premium | Confidence |
+| Item | Estimated Value | Confidence |
 |---|---|---|
-| Large buildings for 70m linear device (CAS21 = $592M) | +$200–$400M vs. equivalent-power tokamak building | Medium |
-| NBI+ECH for end-plug sustainment adds recirculating load (~36% circ. fraction) | Contributes to high overnight cost | Medium |
-| DEC capital cost uncharacterized (venetian-blind TRL 2–3) | Unknown positive or negative | Low |
-| Tritium breeding blanket retained in full (Li unspecified) | Same as D-T tokamak — not eliminated | Cost-equivalent |
-| 14 MeV neutron shielding retained in full | Same as D-T tokamak — not eliminated | Cost-equivalent |
-| No thermal cycle elimination (η_th = 0.40, Rankine/sCO₂) | Same as D-T tokamak — full steam plant retained | Cost-equivalent |
+| No disruption risk (no plasma current) | Vacuum vessel design simplified; no disruption loads on structure; smaller safety margins | Medium — not quantified in any available source |
+| Linear geometry modularity | Center-cell assembly in factory segments; 5-year construction plausible vs. 7+ for tokamak | Medium — consistent with linear machine manufacturing |
+| Steady-state operation (no pulsing) | No fatigue cycling in structural components; simpler thermal management than pulsed systems | High — inherent to open-ended geometry |
+| Lower magnet complexity | Axisymmetric solenoids vs. shaped D-coils or saddle coils; simpler winding, lower fabrication cost per unit tape length | High — solenoid geometry well-understood |
+| Small end-plug hardware at commercial Q (if scaling holds) | End-plug hardware cost does not scale with center-cell length — Q growth is "free" | Low — uncosted and undemonstrated at commercial scale |
+| DEC hybrid energy capture | Recovers ~11% of fusion energy electrically that would otherwise be waste heat in a pure thermal plant | Medium — MARS demonstrated DEC physics, not Realta venetian-blind design |
 
-### Net Assessment
+### Disadvantages vs. D-T Tokamak
 
-The magnetic mirror does not eliminate the expensive elements of a D-T thermal power plant — it retains the full thermal cycle, tritium breeding blanket, 14 MeV neutron shielding, and REBCO supply chain challenge. At $9,620/kW overnight vs. a competitive D-T HTS tokamak target of $4,000–$6,000/kW, the mirror is not currently cheaper on a per-kW basis. The primary potential advantage — linear scaling at ~$X/m for cheap center-cell extension — remains unquantified and may not be large enough to compensate for the large building and reactor plant equipment costs. **This concept's structural claim rests entirely on the center-cell linear scaling thesis, which has not been costed at any level of detail.**
+| Item | Estimated Cost Premium | Confidence |
+|---|---|---|
+| Large building footprint ($545M CAS21) | 70 m linear machine requires ~30–40% more building volume per MWe than compact tokamak | Medium — building scales with length; magnitude uncertain |
+| Higher overnight capital ($8,601/kW) | CFS ARC-class targets ~$3,000–5,000/kW; mirror model is $8,601/kW — approximately 2× penalty | Low — both estimates are parametric; comparison directionally valid |
+| DEC electrode replacement cost | No data; thin uncooled electrodes in continuous fusion flux require periodic replacement with hot-cell access at machine ends | Low — purely speculative without lifetime data |
+| End-plug heating system (continuous ECH/NBI) | Continuous 70 MW input at ~$1M/MW gyrotron cost = ~$70–100M in heating hardware alone; tokamak pulsed heating is cheaper per kW-installed | Medium — gyrotron costs are documented |
+| Remote handling complexity for linear machine | Hot-cell operations along 70 m length with no crane geometry advantage; MARS noted this as a significant maintenance challenge | Medium — qualitative only |
+
+### Net Capital Assessment
+
+The model's $8,601/kW overnight cost is substantially worse than the ARC-class tokamak target and Helion's $1,773/kW. The mirror concept offers structural operational advantages (no disruptions, steady-state, modularity) but does not translate these into capital cost savings under current assumptions. The key unresolved question is whether the center cell's linear scaling thesis, once costed, reveals a cost-per-MWe that drops below the tokamak at large fleet scale — the MARS finding that LCOE saturates around 600 MWe suggests this could be true, but MARS used 1983 technology and the HTS-equivalent cost structure is unknown.
 
 ---
 
 ## 5. Cross-Concept Positioning
 
-The magnetic mirror occupies a structurally distinct but economically challenged position in the fusion landscape: **the only MFE concept with a credible linear scaling thesis**, combined with physics that is two device generations from commercial validation.
+The magnetic mirror occupies a distinct but currently unproven niche: **the only steady-state linear D-T concept with a plausible path to modular scaling**. Its physics is simpler than a tokamak in some respects (no plasma current, no disruptions) and more complex in others (end-plug confinement, open-ended boundary physics). Its current LCOE model is worse than all three concepts previously analyzed in this pipeline.
 
-**Where it sits**: This is a thermal D-T concept with a novel confinement geometry. Its cost structure is closer to the D-T tokamak cluster (01-hts-compact-tokamak, 21-spherical-tokamak-hts) than to concepts that eliminate the thermal cycle (08-frc-w-direct-conversion). The $9,620/kW overnight is above the range of HTS compact tokamak targets ($3,000–$6,000/kW), not below it. This is largely because the linear geometry drives large building costs and the recirculating fraction (36%) is high.
+**Closest economic analog: 01-HTS Compact Tokamak (CFS ARC-class)**
+Both concepts are D-T with REBCO HTS magnets and thermal energy conversion. Both depend on the same REBCO supply chain and face the same tritium breeding and Li-6 enrichment constraints. The tokamak has a substantially lower modeled overnight capital and a much more developed physics basis (ARC-class machines have credible peer-reviewed system studies; Hammir does not). The mirror's only defensible structural advantage over the tokamak is the claimed Q-vs-length scaling — if costed, this could favor the mirror at large plant size. At current data availability, the tokamak wins on every metric where data exists.
 
-**Closest economic analogs**:
-- *01-HTS Compact Tokamak (CFS ARC)*: Similar REBCO supply chain challenge, similar D-T blanket requirements, similar thermal cycle. The tokamak has better-characterized physics (Q = 10 target is closer to demonstrated than mirror Q > 5), but the mirror's axisymmetric geometry genuinely simplifies magnet winding. The mirror's building costs and recirculating fraction are currently worse.
-- *Historical MARS Study (1983)*: The most direct precedent. MARS estimated a copper-magnet tandem mirror at ~$3,000–$5,000/kW (1983 dollars, escalated significantly). Realta's HTS end-plug design aims to improve on this by enabling higher mirror ratios and potentially smaller end-plug hardware. The model here ($9,620/kW) is worse than MARS on a capital basis — suggesting that the HTS advantage has not yet materialized in the cost structure at the assumptions available.
+**Conceptual contrast: 08-FRC w/ Direct Conversion (Helion)**
+Both concepts use DEC, but to completely different economic effect. Helion's D-He3 fuel routes ~40% of fusion energy through DEC, enabling a thermal-cycle-free plant at $1,773/kW. Realta's D-T fuel routes only 20% through DEC, contributing ~11% of plant output. The Realta concept is fundamentally a thermal plant that uses DEC as a bonus — Helion is a DEC plant that uses a thermal backup. The mirror's linear geometry is similar to Helion's but the operating physics (steady-state vs. pulsed, open-ended vs. closed compression) and economic structure (high capital vs. low capital) are completely different.
 
-**What makes the mirror fundamentally different**:
-1. **The only linear-geometry MFE concept** — all tokamaks, stellarators, and FRCs are toroidal or compact; the mirror's 70m footprint is unique and creates both maintenance access advantages and building cost burdens.
-2. **The only concept where fusion power scales by adding cheap material (center-cell length)** rather than by improving confinement physics parameters. This is a manufacturing problem, not a physics problem — which is a fundamentally better place to be if the physics works.
-3. **The only D-T MFE concept still early enough that the commercial plant design is almost entirely unconstrained** — for better (any design choice is still available) and worse (no design choice has been validated or costed).
+**What makes the magnetic mirror fundamentally different from everything else in this analysis:** It is the only concept with an explicit physics argument that capital cost per MWe decreases as the plant gets larger and achieves higher Q — without increasing the size or cost of the most expensive subsystems. This is the linear Q scaling thesis. It is either the most underappreciated advantage in fusion economics or an uncosted claim that will fall apart when the center-cell cost-per-meter is actually quantified. The Hammir design paper, expected 2026, will be the first real test of this claim.
 
 ---
 
@@ -143,34 +142,31 @@ The magnetic mirror occupies a structurally distinct but economically challenged
 
 **Rating: Low.**
 
-| Parameter | Data Source | Uncertainty Range |
+| Parameter | Data-Anchored? | Uncertainty |
 |---|---|---|
-| Commercial plant scale (500 MWe) | Analyst assumption; Hammir pilot is only >50 MWe | Factor of ~2 plausible |
-| Chamber length (70m) | Extrapolation from 50m Q > 5 simulation | ±30% plausible range |
-| Q_plasma (~8–10 at 70m) | Simulation-only, no experimental anchor | Factor of 2–3 uncertainty |
-| p_input (100 MW NBI+ECH) | Proprietary; estimated for Q~5 at 70m | Factor of 2 plausible |
-| η_th (0.40) | MARS 1983 historical + modern inference | ±10 percentage points |
-| η_de (0.54) | MARS 1983 historical proxy; Realta design uncharacterized | Factor of 1.5–2 uncertainty |
-| DEC capital cost | No data; framework default used | Completely unconstrained |
-| REBCO magnet cost | Only $50M proxy for WHAM++ (pre-commercial device) | Factor of 3–5 for Hammir |
-| Availability (85%) | DEFAULT; no Hammir precedent | Factor of ~2 plausible |
-| Buildings ($592M) | Framework default for 70m linear geometry | ±40% plausible |
+| Input heating power (p_input = 70 MW) | Partially — arXiv Table 3 suggests ~30 MW for 50 m pilot | Factor of ~2.5 range (40–100 MW from prior runs) |
+| Commercial plant length (70 m) | No — extrapolated from 50 m pilot | ±30 m plausible; LCOE elasticity +0.22 |
+| Thermal efficiency (η_th = 0.38) | Partially — MARS 1983 baseline ~36% | Range 36–45%; LCOE elasticity −0.15 |
+| DEC efficiency (η_de = 0.54) | Partially — MARS gridless analogue | Venetian blind ≠ gridless; factor of ~1.5 uncertainty |
+| Buildings ($545M CAS21) | No — framework default for linear geometry | Could be 2× if 70 m building is undercosted |
+| CAS22 Reactor Plant Equipment ($2,158M) | No — framework defaults throughout | All subsystem costs are placeholders |
+| Availability (85%) | No — no Realta target published | 65–85% plausible; elasticity −0.91 |
 
-**Dominant source of LCOE uncertainty**: The physics basis. If end-plug confinement achieves Q ~ 3 rather than Q ~ 8, the model would require either a longer chamber (~120m), higher p_input (~300 MW), or both — and LCOE would jump to $200–$250/MWh or higher. None of this can be bounded until Anvil data exists.
+**Dominant source of LCOE uncertainty**: Input heating power (p_input), because it directly controls Q_plasma, recirculating fraction, and whether the concept produces net electricity at all. The difference between p_input = 35 MW (arXiv-anchored optimistic) and p_input = 100 MW (automated pipeline conservative) is the difference between an LCOE near $85/MWh and one near $160/MWh. No other parameter has this range.
 
-**Secondary source**: Capital cost structure. The model uses framework defaults for DEC, REBCO magnets, and center-cell costs. The actual Hammir capital structure could be 30–50% different from these defaults in either direction. The REBCO cost alone (only $50M proxy for WHAM++) could be $300–$600M for Hammir, which would add $600–$1,200/kW to overnight cost if modeled explicitly — a 6–12% LCOE premium.
+**Secondary source**: Buildings. The 70 m linear machine requires a building roughly 2× the footprint of a compact tokamak. CAS21 at $545M is 13% of total capital — larger than the turbine plant — and is entirely a framework default. If the actual building for a 70 m device at this power level costs $800–$1,000M (plausible for nuclear-licensed facilities), overnight capital rises to $9,000–$10,000/kW.
 
-**The model is best interpreted as a structural lower bound assuming the physics performs as simulated and all framework defaults are roughly correct.** The upper bound is not well-characterized, but $200+ $/MWh is plausible if end-plug physics underperforms or capital costs come in above framework defaults.
+**The model is best interpreted as a rough upper bound on LCOE, with the range 80–180 $/MWh spanning the defensible input parameter space. Nothing in the model can be called data-anchored. The LCOE output should not be quoted to better than ±50%.**
 
 ---
 
 ## 7. What Would Change My Mind
 
-**1. Anvil operating with measured end-plug confinement data.**
-This is the single most important near-term development. A measured Q_plasma in the Anvil tandem configuration — even if lower than Hammir projections — would provide the first experimental anchor for the commercial LCOE model. If Anvil achieves classical confinement at mirror ratio 10+, Q > 5 in Hammir becomes defensible. If confinement is anomalous (e.g., 3× above classical rates), the Hammir design requires substantially longer cells or higher input power, raising LCOE by 20–50%. LCOE impact of favorable Anvil data: could compress the LCOE range from $135–$250/MWh to $120–$160/MWh and shift confidence from Low to Medium.
+**1. Hammir pre-conceptual design paper (expected 2026) disclosing input power and commercial parameters.**
+This is the highest-leverage near-term disclosure. If Realta publishes a design paper specifying NBI + ECH input power (~35 MW consistent with arXiv, vs. ~70 MW conservative), commercial plant length, and blanket type, the LCOE uncertainty range collapses from ±50% to ±20–25%. If the arXiv-implied Q of ~7 at 70 m is confirmed with ~35 MW input, the recirculating fraction drops to ~20% and LCOE falls to approximately 85–95 $/MWh — still above competitive targets but within the range where cost reductions from NOAK learning, REBCO price declines, and thermal cycle optimization could plausibly reach 70–80 $/MWh. That would put the concept in the same ballpark as the more optimistic D-T tokamak projections, making the modular scaling advantage potentially decisive.
 
-**2. The Hammir pre-conceptual design paper (expected 2026) including cost-per-meter breakdown.**
-Realta has publicly committed to publishing the Hammir design paper. If it includes even rough capital cost estimates, CAS-level breakdowns, or blanket type selection, it would replace the model's framework defaults with concept-specific anchors for the three largest cost categories (CAS22 RPE, CAS21 Buildings, REBCO magnet cost). A design paper showing center-cell cost of $5–10M/m (vs. the framework default) would either confirm or undermine the "cheap scaling" thesis. This single publication would do more to constrain the LCOE than any other near-term disclosure.
+**2. Anvil end-plug demonstrator results showing stable confinement at Q > 3.**
+If Anvil (planned ~2028, results ~2029–2031) demonstrates stable end-plug confinement at commercial Q conditions — specifically, electrostatic potential barriers sustained against DCLC perturbation at the densities and temperatures required for Q > 3 — the concept's physics gating condition is resolved. This would be the most consequential single result in Realta's development timeline. If Anvil fails to achieve stable plugging, the commercial case is over regardless of what the LCOE model says. I would immediately revise the risk verdict on Challenge 1 from "Genuinely uncertain" to "Likely resolved" and the confidence verdict from Low to Medium.
 
-**3. REBCO tape price declining below $10/m with improved production yields from announced factory expansions.**
-Realta's REBCO cost is currently the most opaque major cost item. WHAM++ alone requires $50M in tape. If REBCO commodity pricing drops to $10/m (from current ~$50–100/m) as production scales, the Hammir magnet bill drops by a factor of 5–10 — potentially reducing overnight capital by $500–$1,500/kW and LCOE by $10–$20/MWh. This development (shared across all HTS concepts) would also improve the relative position of the mirror vs. tokamak on capital cost, since the mirror's simpler winding geometry would benefit proportionally more from commodity tape pricing.
+**3. Any peer-reviewed cost or system study for a modern HTS magnetic mirror.**
+The current model uses 1983 MARS technology as its cost analogue. If an independent TEA of a modern axisymmetric HTS mirror were published — even a single-author academic study — it would either confirm or refute the framework's cost scaling for this geometry. The absence of any such study is the single biggest gap in the entire analysis. If such a study showed overnight costs below $5,000/kW by virtue of modular linear assembly, linear Q scaling, and HTS coil simplicity, I would revise the concept's LCOE estimate downward by 30–40% and its cross-concept positioning substantially upward. Conversely, if the study showed costs exceeding $10,000/kW due to building footprint, heating system scale, and center-cell complexity, the concept would be economically non-competitive at any Q.

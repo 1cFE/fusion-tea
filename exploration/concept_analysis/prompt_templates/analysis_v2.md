@@ -26,6 +26,17 @@ Construct each subagent call as follows:
 
 After receiving subagent responses, **read the cited sections yourself** to confirm the subagent's characterization before incorporating claims into the analysis. Do not blindly trust subagent summaries for critical claims.
 
+{{#if memory_context}}
+## Cross-Concept Memory
+
+The following insights were captured from prior concept analyses. Use them
+to avoid known pitfalls and apply established patterns. Do not cite these
+memories as sources — they are guidance, not evidence. Verify any specific
+claims against the actual source documents.
+
+{{memory_context}}
+{{/if}}
+
 {{#if cold_start}}
 ## Mode: Cold Start
 

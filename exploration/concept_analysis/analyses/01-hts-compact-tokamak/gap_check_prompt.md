@@ -23,10 +23,14 @@ The dossier contains per-column values with confidence ratings (high/medium/low)
 ### Extracted Source Documents
 These are the primary technical sources extracted during Phase 1a research. Read each one to assess what technical depth is available:
 
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/01-hts-compact-tokamak/iter-03/sources/arc-reactor-specifications.md` (2 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/01-hts-compact-tokamak/iter-03/sources/sparc-icrf-heating-paper.md` (1 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/01-hts-compact-tokamak/iter-04/sources/arc-power-conversion-studies.md` (2 KB)
-- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/01-hts-compact-tokamak/iter-04/sources/cfs-2025-2026-updates.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/01-hts-compact-tokamak/iter-03/sources/arc-reactor-specifications.md` (172 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/01-hts-compact-tokamak/iter-03/sources/arc-reactor-specifications.orig.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/01-hts-compact-tokamak/iter-03/sources/sparc-icrf-heating-paper.md` (65 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/01-hts-compact-tokamak/iter-03/sources/sparc-icrf-heating-paper.orig.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/01-hts-compact-tokamak/iter-04/sources/arc-power-conversion-studies.md` (35 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/01-hts-compact-tokamak/iter-04/sources/arc-power-conversion-studies.orig.md` (2 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/01-hts-compact-tokamak/iter-04/sources/cfs-2025-2026-updates.md` (6 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/01-hts-compact-tokamak/iter-04/sources/cfs-2025-2026-updates.orig.md` (2 KB)
 
 ### Reference Documents
 - **Analysis brief** (defines the D1+ section requirements): `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/concept_analysis_brief.md`

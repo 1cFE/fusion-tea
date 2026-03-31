@@ -1,3 +1,4 @@
+# STALE: analysis-rewritten-by-force
 """FRC w/ Direct Conversion (Helion Energy) — 1costingfe LCOE Model.
 
 Usage:

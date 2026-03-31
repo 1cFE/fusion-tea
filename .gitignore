@@ -21,3 +21,8 @@ modeling_project/MODELING_PROCESS.md
 work/EPIC_GUIDE.md
 work/backlog/epic_template.md
 .claude/.tool-hashes.json
+
+# Research source artifacts (too large for GitHub)
+exploration/phase_1a/research/**/sources/*/images/
+exploration/phase_1a/research/**/sources/*/raw.html
+exploration/phase_1a/research/**/sources/*/raw.pdf
