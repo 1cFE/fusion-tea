@@ -29,6 +29,7 @@ issues. Produce a structured review report with Proposed Actions.
 - `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/17-laser-icf-direct-drive/iter-02/sources/hylife-energy-conversion-notes.orig.md` (2 KB)
 - `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/17-laser-icf-direct-drive/iter-02/sources/xcimer-science-page.md` (17 KB)
 - `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/17-laser-icf-direct-drive/iter-02/sources/xcimer-science-page.orig.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/17-laser-icf-direct-drive/iter-02/sources/xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md` (88 KB)
 
 ## Review Checklist
 
@@ -80,9 +81,9 @@ Use this exact format:
 # Review: Laser ICF - Hybrid Direct Drive (D-T)
 
 **Iteration:** 1
-**Date:** 2026-03-29
+**Date:** 2026-03-31
 **Files reviewed:** analysis.md, model_setup.py
-**Source documents:** 10 files
+**Source documents:** 11 files
 
 ---
 

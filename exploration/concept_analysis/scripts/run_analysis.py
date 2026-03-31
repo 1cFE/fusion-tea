@@ -1845,8 +1845,9 @@ def cmd_approve(concepts: list[dict], args: argparse.Namespace) -> None:
 
 
 def cmd_stage1_all(concepts: list[dict], args: argparse.Namespace) -> None:
-    """Run gap-check → analyze → model-setup → review for specified concepts.
+    """Run analyze → model-setup → review for specified concepts.
 
+    Gap-check is skipped by default; pass --include-gap-analysis to include it.
     Each stage's own skip logic handles prerequisites and existing outputs,
     so re-running is safe (picks up where it left off).
     """
@@ -1862,14 +1863,19 @@ def cmd_stage1_all(concepts: list[dict], args: argparse.Namespace) -> None:
 
     names = ", ".join(c["_num"] for c in targets)
     print(f"=== stage1-all: {len(targets)} concepts ({names}) ===")
-    print("    Pipeline: gap-check → analyze → model-setup → review")
+    if getattr(args, "include_gap_analysis", False):
+        print("    Pipeline: gap-check → analyze → model-setup → review")
+    else:
+        print("    Pipeline: analyze → model-setup → review")
 
-    stages = [
-        ("Gap Check", cmd_gap_check),
+    stages = []
+    if getattr(args, "include_gap_analysis", False):
+        stages.append(("Gap Check", cmd_gap_check))
+    stages.extend([
         ("Analyze", cmd_analyze),
         ("Model Setup", cmd_model_setup),
         ("Review", cmd_review),
-    ]
+    ])
 
     for stage_name, handler in stages:
         print(f"\n--- {stage_name} ---")
@@ -2243,6 +2249,8 @@ def build_parser() -> argparse.ArgumentParser:
     p_s1.add_argument("--force", action="store_true", help="Re-run even if output exists")
     p_s1.add_argument("--max-passes", type=int, default=3,
                        help="Max analyze→assess iterations (default: 3; 1=no assessment)")
+    p_s1.add_argument("--include-gap-analysis", action="store_true",
+                       help="Include gap-check stage (skipped by default)")
 
     # -- add-source --
     p_add = sub.add_parser("add-source", help="Add a PDF or URL source to a concept")

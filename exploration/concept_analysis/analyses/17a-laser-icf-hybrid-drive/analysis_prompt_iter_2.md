@@ -90,6 +90,32 @@ Construct each subagent call as follows:
 After receiving subagent responses, **read the cited sections yourself** to confirm the subagent's characterization before incorporating claims into the analysis. Do not blindly trust subagent summaries for critical claims.
 
 
+## Cross-Concept Memory
+
+The following insights were captured from prior concept analyses. Use them
+to avoid known pitfalls and apply established patterns. Do not cite these
+memories as sources — they are guidance, not evidence. Verify any specific
+claims against the actual source documents.
+
+## FLiBe Coolant Cost Data Is Consistently Sparse
+Date: 2026-03-29 | Concepts: 09, 14, 22, IFE
+
+IFE concepts using FLiBe as primary coolant/breeder consistently lack
+cost data for coolant inventory and processing. Flag as [estimated] with
+high uncertainty. The HYLIFE-II report (Moir 1994) is the only source
+with FLiBe cost estimates but uses 1994 dollars.
+
+## Assessment Repeatedly Flags Missing O&M Breakdown
+Date: 2026-03-29 | Concepts: all
+
+The assessment agent flags missing O&M cost breakdown (fixed vs variable,
+scheduled maintenance, unplanned outage costs) in >80% of first-pass
+analyses. Cold-start analyses should include a placeholder O&M subsection
+in Section 3 even when source data is sparse, to avoid a guaranteed
+feedback finding.
+
+
+
 
 
 ## Mode: Feedback Pass
@@ -121,6 +147,7 @@ Sources available for subagent queries:
 - `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/17-laser-icf-direct-drive/iter-02/sources/hylife-energy-conversion-notes.orig.md` (2 KB)
 - `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/17-laser-icf-direct-drive/iter-02/sources/xcimer-science-page.md` (17 KB)
 - `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/17-laser-icf-direct-drive/iter-02/sources/xcimer-science-page.orig.md` (1 KB)
+- `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/17-laser-icf-direct-drive/iter-02/sources/xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md` (88 KB)
 
 Dossier (read directly — it's structured and short):
 `/home/reid/1cfe/fusion-tea/exploration/phase_1a/research/17-laser-icf-direct-drive/dossier.md`
@@ -144,9 +171,6 @@ Dossier (read directly — it's structured and short):
 
 ## Cross-Concept Reuse
 
-- `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/01-hts-compact-tokamak/analysis.md`
-- `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/07-maglif/analysis.md`
-- `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/08-frc-w-direct-conversion/analysis.md`
 - `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/21-spherical-tokamak-hts/analysis.md`
 
 If approved prior analyses are available:
