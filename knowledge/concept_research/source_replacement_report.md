@@ -8,9 +8,9 @@
 | Metric | Count |
 |--------|-------|
 | Total source files | 166 |
-| Replaced (YES) | 99 |
+| Replaced (YES) | 102 |
 | Replaced (MIXED) | 28 |
-| Not improved (NO) | 33 |
+| Not improved (NO) | 30 |
 | Skipped (SKIP) | 11 |
 | Failed | 0 |
 
@@ -299,7 +299,7 @@
 | `iter-01/sources/xcimer-energy-website-and-science.md` | URL | https://xcimer.energy/ | **NO** | 14 vs 54 orig. JS-heavy startup site — thin marketing only. Orig had excimer laser specs, ArF technology, cost roadmap. |
 | `iter-02/sources/inertia-enterprises-2026-update.md` | URL | https://www.globenewswire.com/.../Inertia-raises-450-million... | **MIXED** | 40 vs 55 orig. Single GlobeNewsWire article ($450M Series A). Orig compiled 5 sources including SPIE, ENR interview, BusinessWire. Single-source extraction loses breadth. |
 | `iter-02/sources/nif-ignition-updates-2025.md` | URL | https://lasers.llnl.gov/science/achieving-fusion-ignition | **YES** | 98 vs 24 orig. Full LLNL page with latest shot results and ignition milestones. |
-| `iter-02/sources/xcimer-hybrid-direct-drive-evolution.md` | URL | https://pubs.aip.org/... | **NO** | AIP 403 paywall. Kept original. |
+| `iter-02/sources/xcimer-hybrid-direct-drive-evolution.md` | URL | Local PDF (AIP) | **YES** | 459 vs 29 orig. Full Amendt et al. paper via local PDF: hybrid direct-drive with two-sided UV illumination, target physics, gain calculations, symmetry analysis. 18 headings, 15 table rows. AIP 403 online; user provided local PDF. |
 | `iter-02/sources/xcimer-laser-milestones-2025.md` | URL | https://xcimer.energy/...first-private-sector-electron-beam-excimer-laser/ | **YES** | 80 vs 35 orig. Full press release with detailed electron-beam excimer laser milestone, team quotes, roadmap. |
 
 ### 27-polywell
@@ -337,7 +337,7 @@
 
 | File | Category | URL | Verdict | Notes |
 |------|----------|-----|---------|-------|
-| `iter-01/sources/aip-advances-ribeyre-2025.md` | URL | https://pubs.aip.org/... | **NO** | AIP 403 paywall. Kept original. |
+| `iter-01/sources/aip-advances-ribeyre-2025.md` | URL | Local PDF (AIP Advances) | **YES** | 944 vs 15 orig. Full Ribeyre et al. paper via local PDF: perspectives in laser-driven inertial fusion energy, French national ICF programme, target design, laser architecture, power plant concepts. 10 headings. AIP 403 online; user provided local PDF. |
 | `iter-01/sources/genf-icf-article.md` | URL | https://genf-systems.com/inertial-confinement-fusion/ | **YES** | 68 vs 16 orig. Full ICF technology article with laser-driven fusion explanation, target physics, and GENF approach. |
 | `iter-01/sources/genf-news-timeline.md` | URL | https://genf-systems.com/our-news/ | **YES** | 75 vs 26 orig. Full news timeline with all milestones, partnerships, funding events. |
 | `iter-01/sources/genf-website-technology.md` | URL | https://genf-systems.com/technology/ | **YES** | 50 vs 13 orig. Full technology page with laser architecture, target design, power plant concept. |
@@ -370,7 +370,7 @@
 
 | File | Category | URL | Verdict | Notes |
 |------|----------|-----|---------|-------|
-| `iter-01/sources/aip-2023-paper-abstract.md` | URL | https://pubs.aip.org/... | **NO** | AIP 403 paywall. Kept original. |
+| `iter-01/sources/aip-2023-paper-abstract.md` | URL | Local PDF (AIP/PoP) | **YES** | 513 vs 23 orig. Full Goto et al. paper via local PDF: development of steady-state fusion reactor by helical system, FFHR design, LHD results, blanket concepts, divertor design. 15 headings, 45 table rows. AIP 403 online; user provided local PDF. |
 | `iter-01/sources/helical-fusion-technology-overview.md` | SEARCH | — | **SKIP** | Multi-source compilation. No single URL. |
 | `iter-02/sources/helical-fusion-2025-2026-updates.md` | SEARCH | — | **SKIP** | Multi-source compilation. No single URL. |
 | `iter-02/sources/nifs-ffhr-blanket-heritage.md` | SEARCH | — | **SKIP** | Multi-source compilation from Sagara et al. papers. No single URL. |
