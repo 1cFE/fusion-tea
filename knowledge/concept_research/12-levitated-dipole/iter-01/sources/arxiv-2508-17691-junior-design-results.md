@@ -1,7 +1,7 @@
 ---
 source: "https://arxiv.org/html/2508.17691v1"
 source_type: "url"
-extracted_at: "2026-03-31T02:53:54.393044+00:00"
+extracted_at: "2026-04-04T15:25:08.824367+00:00"
 content_hash_sha256: "f47dca29461271d0a84f82552ae20fe808dccbfe3c7ffe1e6ae5606146bfd0b3"
 backend: "pandoc-arxiv"
 title: "Design and initial results from the “Junior” Levitated Dipole Experiment"
@@ -42,7 +42,7 @@ The "Junior" experiment, built by OpenStar Technologies, is a new generation of 
 
 The Junior experiment is a proof of concept aiming to replicate results of LDX with a second generation HTS core magnet whilst integrating novel HTS power supplies onboard the core magnet to maintain current during levitation. The successful integration of these novel HTS technologies opens a pathway to higher field magnets which enable the production of magnetically confined plasmas with fusion relevant densities and temperatures. Beyond these initial engineering goals, the Junior facility is an attractive platform for the investigation of fundamental plasma physics phenomena including but not limited to multi-scale plasma turbulence and energy cascades \[[9](https://arxiv.org/html/2508.17691v1#bib.bib9){.ltx_ref}\], self-organization phenomena \[[21](https://arxiv.org/html/2508.17691v1#bib.bib21){.ltx_ref}, [22](https://arxiv.org/html/2508.17691v1#bib.bib22){.ltx_ref}\], high-$\beta$ ($\beta > 1$) plasma stability regimes \[[23](https://arxiv.org/html/2508.17691v1#bib.bib23){.ltx_ref}, [15](https://arxiv.org/html/2508.17691v1#bib.bib15){.ltx_ref}, [24](https://arxiv.org/html/2508.17691v1#bib.bib24){.ltx_ref}, [25](https://arxiv.org/html/2508.17691v1#bib.bib25){.ltx_ref}\], "artificial radiation belt" formation \[[7](https://arxiv.org/html/2508.17691v1#bib.bib7){.ltx_ref}, [8](https://arxiv.org/html/2508.17691v1#bib.bib8){.ltx_ref}\], non-linear Alfvén wave dynamics \[[26](https://arxiv.org/html/2508.17691v1#bib.bib26){.ltx_ref}\], wave-particle and wave-wave interactions in magnetospheric geometries \[[27](https://arxiv.org/html/2508.17691v1#bib.bib27){.ltx_ref}, [28](https://arxiv.org/html/2508.17691v1#bib.bib28){.ltx_ref}\], the effect of anisotropy on stability and confinement \[[29](https://arxiv.org/html/2508.17691v1#bib.bib29){.ltx_ref}\], and energetic particle dynamics with hot electron interchanges modes \[[30](https://arxiv.org/html/2508.17691v1#bib.bib30){.ltx_ref}, [15](https://arxiv.org/html/2508.17691v1#bib.bib15){.ltx_ref}\]. In this article, we present an overview of the "Junior" levitated dipole experiment and some initial results from the first plasma campaign, conducted with the magnet mechanically supported.
 
-![Refer to caption](/html/2508.17691v1/x1.png){#S1.F1.g1 .ltx_graphics .ltx_img_square height="339" width="354"}
+![Refer to caption](images/x1.png){#S1.F1.g1 .ltx_graphics .ltx_img_square height="339" width="354"}
 
 Figure 1: Radial cross-section showing the magnetic flux of the Junior levitated dipole device. The floating core magnet is levitated by the fixed top magnet. The solid colored lines show the equilibrium flux contours for a plasma confined by the core magnet operating at $60$ % of its design current (see Sec. [3.2](https://arxiv.org/html/2508.17691v1#S3.SS2 "3.2 Core Magnet Description ‣ 3 Experiment Overview ‣ Design and initial results from the “Junior” Levitated Dipole Experiment"){.ltx_ref}). The FCFS and LCFS are represented by dashed orange lines.
 
@@ -64,7 +64,7 @@ In Junior, a separatrix may be formed that defines the LCFS when the core magnet
 
 The Junior system described in this article was designed and built in under $2$ years at a cost of $< {\$ 10}$M USD and serves as a proof of concept for powering the Core Magnet using an HTS transformer rectifier \[[37](https://arxiv.org/html/2508.17691v1#bib.bib37){.ltx_ref}, [38](https://arxiv.org/html/2508.17691v1#bib.bib38){.ltx_ref}\] known as a flux pump \[[39](https://arxiv.org/html/2508.17691v1#bib.bib39){.ltx_ref}, [40](https://arxiv.org/html/2508.17691v1#bib.bib40){.ltx_ref}\] housed inside the magnet coils. As such, many of the key design choices were based on the design of LDX \[[33](https://arxiv.org/html/2508.17691v1#bib.bib33){.ltx_ref}\] which saw electron temperatures and densities of $T_{e} \sim 200$ eV and $n_{e} \sim 10^{18}$ m^-3^ \[[21](https://arxiv.org/html/2508.17691v1#bib.bib21){.ltx_ref}\].
 
-![Refer to caption](/html/2508.17691v1/Figure_2.png){#S3.F2.g1 .ltx_graphics .ltx_img_landscape height="709" width="1063"}
+![Refer to caption](images/Figure_2.png){#S3.F2.g1 .ltx_graphics .ltx_img_landscape height="709" width="1063"}
 
 Figure 2: A photograph of the $5.2$ m wide vacuum vessel for the Junior experiment.
 
@@ -94,7 +94,7 @@ The Junior core magnet is a $1.44$ kA, $5.7$ T magnet consisting of 14 non-ins
 
 During plasma experiments, the core magnet has no connection to external services and current will be maintained using an HTS flux pump (see Sec. [3.3](https://arxiv.org/html/2508.17691v1#S3.SS3 "3.3 Flux Pump Description ‣ 3 Experiment Overview ‣ Design and initial results from the “Junior” Levitated Dipole Experiment"){.ltx_ref}). The HTS circuit in the flux pump as well as iron yokes used for electromagnet switching are sensitive to magnetic field. A differential evolution algorithm \[[43](https://arxiv.org/html/2508.17691v1#bib.bib43){.ltx_ref}\] was used to optimize the distribution of current carrying HTS coils to achieve an adequately low flux such that iron shielding could be used to eliminate stray field at sensitive components. Figure [3](https://arxiv.org/html/2508.17691v1#S3.F3 "Figure 3 ‣ 3.2 Core Magnet Description ‣ 3 Experiment Overview ‣ Design and initial results from the “Junior” Levitated Dipole Experiment"){.ltx_ref} shows a cross section of the core magnet after coil placement optimization.
 
-![Refer to caption](/html/2508.17691v1/x2.png){#S3.F3.g1 .ltx_graphics .ltx_img_square height="295" width="354"}
+![Refer to caption](images/x2.png){#S3.F3.g1 .ltx_graphics .ltx_img_square height="295" width="354"}
 
 Figure 3: Cross section view of the Junior core magnet showing the positions of the 14 NI HTS coils (orange boxes) and the calculated magnetic field strength, $B$.
 
@@ -102,7 +102,7 @@ Figure 3: Cross section view of the Junior core magnet showing the positions of 
 
 The core magnet is powered by a superconducting transformer rectifier \[[44](https://arxiv.org/html/2508.17691v1#bib.bib44){.ltx_ref}\], a type of "flux pump" \[[39](https://arxiv.org/html/2508.17691v1#bib.bib39){.ltx_ref}, [40](https://arxiv.org/html/2508.17691v1#bib.bib40){.ltx_ref}\]. A schematic representation of this flux pump is shown in Fig. [4](https://arxiv.org/html/2508.17691v1#S3.F4 "Figure 4 ‣ 3.3 Flux Pump Description ‣ 3 Experiment Overview ‣ Design and initial results from the “Junior” Levitated Dipole Experiment"){.ltx_ref}. An AC waveform is applied on the normal conducting primary circuit. A stepped down AC voltage is produced on the HTS secondary circuit. The waveform is rectified to the load by actuating two switches, which are parallel to the load, out of phase with each other. Each switch consists of lengths of HTS tape kept at an elevated operating temperature. Normal conducting electromagnets are used to apply magnetic field to the switch tape thus driving the switches into a partially resistive state thereby generating voltage. The tape is cut and joined to run back past the electromagnet without capturing magnetic flux in a loop of tape.
 
-![Refer to caption](/html/2508.17691v1/x3.png){#S3.F4.g1 .ltx_graphics .ltx_img_landscape height="185" width="354"}
+![Refer to caption](images/x3.png){#S3.F4.g1 .ltx_graphics .ltx_img_landscape height="185" width="354"}
 
 Figure 4: A schematic representation of a flux pump. The primary circuit (left side) is constructed from normal copper conductor and is driven with a low current oscillating waveform. The secondary circuit (right side) is made of HTS and rectifies the current through the inductive load using electromagnets to drive HTS into the normal conducting state.
 
@@ -127,7 +127,7 @@ Table 2: Key parameters of the Junior top magnet.
 
 Plasma heating is via electron cyclotron resonance heating (ECRH). Microwaves with a frequency of $2.45$ GHz are generated by two magnetron heads (Rell GEN15KW2I400-50-0). Each head is capable of generating up to 15 kW of microwave power. The magnetrons are connected to the vacuum chamber using WR430 waveguide and the interface between atmospheric pressure and vacuum pressure is a glass window (Muegge MW0003B-110DC). Similarly to the LDX experiment, we rely on "cavity heating" with small first pass absorption and multiple reflections from the vacuum vessel walls to achieve isotropic power distribution \[[14](https://arxiv.org/html/2508.17691v1#bib.bib14){.ltx_ref}\].
 
-![Refer to caption](/html/2508.17691v1/x4.png){#S3.F5.g1 .ltx_graphics .ltx_img_portrait height="630" width="354"}
+![Refer to caption](images/x4.png){#S3.F5.g1 .ltx_graphics .ltx_img_portrait height="630" width="354"}
 
 Figure 5: (a) A side view schematic of the Junior experiment showing the vacuum vessel, the core and top magnets, calculated equilibrium flux contours, and a subset of diagnostics (see main text). The first and last closed flux surfaces are shown as dashed blue lines. ECRH resonance contours at $2.45$ GHz, $6.4$ GHz, and $10.5$ GHz are shown as orange, red, and brown lines respectively. (b) A top view schematic of the Junior experiment showing the vacuum vessel, the core magnet, and a subset of diagnostics (see main text).
 
@@ -188,11 +188,11 @@ There is very little restriction on space available for plasma diagnostics since
 
 The four chord interferometer consists of a single transmitter horn and four receiver horns. As microwaves transmit through the plasma they are phase shifted proportionally to the integrated electron density. This phase shift is measured by beating with a local oscillator which is sent through waveguide on the outside of the chamber and demodulating the signal \[[17](https://arxiv.org/html/2508.17691v1#bib.bib17){.ltx_ref}\]. The four chords pass through the plasma with tangency radii of $0.93$ m, $0.97$ m, $1.01$ m, and $1.04$ m. We intend to upgrade the interferometer with four additional channels doubling the span of tangency radii. Visible light data is collected using a UV-vis spectrometer (Avantes, Avaspec-2048) and horizontal (Basler a2A2448-105g5cBAS) and top mounted (Basler a2A4096-44g5cBAS) visible light video cameras.
 
-![Refer to caption](/html/2508.17691v1/x5.png){#S3.F6.g1 .ltx_graphics .ltx_img_portrait height="496" width="354"}
+![Refer to caption](images/x5.png){#S3.F6.g1 .ltx_graphics .ltx_img_portrait height="496" width="354"}
 
 Figure 6: (a) Cooling of the core magnet to cryogenic temperatures. Cooling rates were maintained at $\sim 1$ K/minute with temperature differences around coils controlled at $\lesssim 10$ K. (b) Charging the core magnet with a flux pump. Magnet current is shown as a function of time on the left axis and calculated magnet stored energy is shown on the right axis.
 
-![Refer to caption](/html/2508.17691v1/x6.png){#S3.F7.g1 .ltx_graphics .ltx_img_landscape height="425" width="722"}
+![Refer to caption](images/x6.png){#S3.F7.g1 .ltx_graphics .ltx_img_landscape height="425" width="722"}
 
 Figure 7: (a) Gas fueling (top), chamber pressure (middle) and $2.45$ GHz ECRH heating power for plasma discharge $241031007$. (b) Line integrated plasma density showing flat density profiles due to end point losses and modest densities. (c) A color photograph of the plasma.
 

@@ -1,14 +1,36 @@
 {
-  "char_count": 60599,
-  "heading_count": 22,
+  "char_count": 88647,
+  "heading_count": 23,
   "heading_by_level": {
     "1": 1,
     "6": 2,
-    "2": 9,
+    "2": 10,
     "3": 10
   },
-  "table_row_count": 55,
+  "table_row_count": 7,
   "math_symbol_count": 1,
-  "figure_ref_count": 0,
-  "extraction_time_seconds": 2.183962139301002
+  "figure_ref_count": 46,
+  "extraction_time_seconds": 5.372870028018951,
+  "warnings": [
+    "Failed to download image: https://arxiv.org/html/2503.18960v1/fig_canis_render_detail.png (HTTP Error 404: Not Found)",
+    "Failed to download image: https://arxiv.org/html/2503.18960v1/fig_dp_trends.png (HTTP Error 404: Not Found)",
+    "Failed to download image: https://arxiv.org/html/2503.18960v1/fig_wp_trends.png (HTTP Error 404: Not Found)",
+    "Failed to download image: https://arxiv.org/html/2503.18960v1/fig_array_layout.png (HTTP Error 404: Not Found)",
+    "Failed to download image: https://arxiv.org/html/2503.18960v1/fig_canis_structure.png (HTTP Error 404: Not Found)",
+    "Failed to download image: https://arxiv.org/html/2503.18960v1/fig_cold_mass.png (HTTP Error 404: Not Found)",
+    "Failed to download image: https://arxiv.org/html/2503.18960v1/fig_fluids_network.png (HTTP Error 404: Not Found)",
+    "Failed to download image: https://arxiv.org/html/2503.18960v1/fig_current_leads.png (HTTP Error 404: Not Found)",
+    "Failed to download image: https://arxiv.org/html/2503.18960v1/fig_atlas.png (HTTP Error 404: Not Found)",
+    "Failed to download image: https://arxiv.org/html/2503.18960v1/fig_array_photo.png (HTTP Error 404: Not Found)",
+    "Failed to download image: https://arxiv.org/html/2503.18960v1/fig_wp_20k.png (HTTP Error 404: Not Found)",
+    "Failed to download image: https://arxiv.org/html/2503.18960v1/fig_atlas_checkerboard.png (HTTP Error 404: Not Found)",
+    "Failed to download image: https://arxiv.org/html/2503.18960v1/fig_atlas_workflow.png (HTTP Error 404: Not Found)",
+    "Failed to download image: https://arxiv.org/html/2503.18960v1/fig_eos_patches.png (HTTP Error 404: Not Found)",
+    "Failed to download image: https://arxiv.org/html/2503.18960v1/fig_eos1.png (HTTP Error 404: Not Found)",
+    "Failed to download image: https://arxiv.org/html/2503.18960v1/fig_eos2.png (HTTP Error 404: Not Found)",
+    "Failed to download image: https://arxiv.org/html/2503.18960v1/fig_eos_scans.png (HTTP Error 404: Not Found)",
+    "Failed to download image: https://arxiv.org/html/2503.18960v1/fig_eos1_error.png (HTTP Error 404: Not Found)",
+    "Failed to download image: https://arxiv.org/html/2503.18960v1/fig_eos2_error.png (HTTP Error 404: Not Found)",
+    "Failed to download image: https://arxiv.org/html/2503.18960v1/fig_error_hist.png (HTTP Error 404: Not Found)"
+  ]
 }

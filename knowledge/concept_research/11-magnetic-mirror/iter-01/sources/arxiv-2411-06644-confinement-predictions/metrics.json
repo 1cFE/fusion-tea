@@ -1,5 +1,5 @@
 {
-  "char_count": 105290,
+  "char_count": 165548,
   "heading_count": 18,
   "heading_by_level": {
     "1": 1,
@@ -7,8 +7,8 @@
     "2": 9,
     "3": 7
   },
-  "table_row_count": 78,
+  "table_row_count": 2,
   "math_symbol_count": 0,
-  "figure_ref_count": 0,
-  "extraction_time_seconds": 6.341286084149033
+  "figure_ref_count": 29,
+  "extraction_time_seconds": 14.693865424953401
 }

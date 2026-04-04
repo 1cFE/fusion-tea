@@ -1,7 +1,7 @@
 ---
 source: "https://arxiv.org/html/2602.20564v1"
 source_type: "url"
-extracted_at: "2026-03-31T02:54:00.288122+00:00"
+extracted_at: "2026-04-04T15:25:16.563261+00:00"
 content_hash_sha256: "719316805637e9c39b96d8febfae50a00937cfe1fb8b8dacfe363610e411c5fa"
 backend: "pandoc-arxiv"
 title: "Deuterium–Tritium Levitated Dipole Fusion Power Plants"
@@ -65,11 +65,11 @@ Levitated Dipole, Fusion power plants, Fusion reactor study, Neutron Shielding, 
 
 ## 1 Introduction
 
-![Refer to caption](/html/2602.20564v1/Figure_1.png){#S1.F1.g1 .ltx_graphics .ltx_centering .ltx_img_landscape height="328" width="598"}
+![Refer to caption](images/Figure_1.png){#S1.F1.g1 .ltx_graphics .ltx_centering .ltx_img_landscape height="328" width="598"}
 
 Figure 1: Artistic render of a first-of-a-kind levitated dipole reactor. The core magnet pictured within the plasma in the center of the image is levitated in a large, simple two layer vacuum vessel. The levitation force is provided by a smaller magnet mounted at the top of the inner vacuum vessel. The inner vacuum vessel is surrounded by a tritium breeding blanket. The outer vacuum vessel is constructed from reinforced concrete and is designed to handle the atmospheric forces required for such a large vacuum vessel. Supporting systems and infrastructure are also depicted.
 
-![Refer to caption](/html/2602.20564v1/Figure_2.png){#S1.F2.g1 .ltx_graphics .ltx_centering .ltx_img_landscape height="254" width="598"}
+![Refer to caption](images/Figure_2.png){#S1.F2.g1 .ltx_graphics .ltx_centering .ltx_img_landscape height="254" width="598"}
 
 Figure 2: A comparison of scale between the core magnet of a $\sim 500$ MW thermal power levitated dipole and the magnet systems of similar power output tokamaks. The vacuum vessel of a levitated dipole is approximately twice the diameter of ITER's outer vacuum vessel, however, it has been excluded from this diagram as the magnet systems are the highest cost component of any magnetic confinement concept.
 
@@ -81,7 +81,7 @@ Operating a superconducting coil in the core plasma region introduces engineerin
 
 The structure of this study aims to offer a concise introduction to the aspects of a levitated dipole reactor that differ from other magnetically confined fusion concepts. Section [2](https://arxiv.org/html/2602.20564v1#S2 "2 Design Principles ‣ Deuterium–Tritium Levitated Dipole Fusion Power Plants"){.ltx_ref} discusses the equilibrium and stability of the dipole plasma and details the engineering of a levitated dipole reactor and the considerations necessary to satisfy the requirements of a viable FOAK fusion power plant. Section [3](https://arxiv.org/html/2602.20564v1#S3 "3 Design Methodology ‣ Deuterium–Tritium Levitated Dipole Fusion Power Plants"){.ltx_ref} describes the workflow and optimizer used to find viable operating points. This work presents for the first time a dipole magnet design that has been optimized for fusion performance within demonstrated engineering limits Hartwig and others \[[2024](https://arxiv.org/html/2602.20564v1#bib.bib18 "The SPARC Toroidal Field Model Coil Program"){.ltx_ref}\]. Section [4](https://arxiv.org/html/2602.20564v1#S4 "4 Design Points and Analysis ‣ Deuterium–Tritium Levitated Dipole Fusion Power Plants"){.ltx_ref} then presents two design points and provides an analysis of key parameters.
 
-![Refer to caption](/html/2602.20564v1/x1.png){#S1.F3.g1 .ltx_graphics .ltx_centering .ltx_img_landscape height="995" width="1245"}
+![Refer to caption](images/x1.png){#S1.F3.g1 .ltx_graphics .ltx_centering .ltx_img_landscape height="995" width="1245"}
 
 Figure 3: (a) Radial cross section showing the poloidal magnetic flux of a fusion power plant scale dipole at low $\beta$. The first closed flux surface is determined by the core magnet cryostat shell which acts as an inner limiter and the last closed flux surface is set by the vacuum vessel which acts as an outer limiter. The blue and green flux-tubes contain equal amounts of poloidal magnetic flux but the blue flux tube encloses a larger volume. When the two flux tubes interchange position, the volume of the blue flux-tube decreases and the plasma within is compressed and heated in accordance with Eq. ([1](https://arxiv.org/html/2602.20564v1#S2.E1 "In 2.1.1 Equilibrium and Stability ‣ 2.1 Dipole Physics Basis ‣ 2 Design Principles ‣ Deuterium–Tritium Levitated Dipole Fusion Power Plants"){.ltx_ref}). Simultaneously, the volume of the green flux-tube increases and the plasma within expands and cools. (b) Pressure (green solid line, left axis) and magnetic field at the midplane (dashed orange line, right axis) from the equilibrium shown in (a) as functions of poloidal magnetic flux, $\Psi$. (c) Radial cross section showing the poloidal magnetic flux at high $\beta$ (solid lines) overlayed with low $\beta$ contours from (a) (dotted lines). (d) Total fusion power as a function of $\beta_{0}$ with the pressure peak location adjusted to ensure it remains two $\alpha$ gyro-orbits away from $\Psi_{fcfs}$. The plasma expansion observed in (c) results in the maximum fusion power being achieved at $\beta_{0} \sim 3$.
 
@@ -159,7 +159,7 @@ However, it is worth noting the differences in the construction of the confineme
 
 One key advantage of the levitated dipole concept is the relative simplicity of the confinement magnet geometry, consisting of only poloidal field coils, in contrast to other magnetic confinement fusion systems. This simplicity would allow a dipole fusion power plant to be inherently maintainable and simple to manufacture at scale, enabling the rapid roll-out and iteration needed to make a significant impact in the electricity market. However, the cost of this overall system simplicity is the extreme operating environment experienced by the levitating high field core magnet. The core magnet must function without any physical connection to external systems for extended periods of time while being surrounded by the fusing core plasma. The engineering and radiation shielding of the core magnet is the main focus of this study. The remaining systems are not spatially constrained nor coupled to the core magnet, resulting in greatly reduced complexity and risk.
 
-![Refer to caption](/html/2602.20564v1/x2.png){#S2.F4.g1 .ltx_graphics .ltx_centering .ltx_img_square height="802" width="830"}
+![Refer to caption](images/x2.png){#S2.F4.g1 .ltx_graphics .ltx_centering .ltx_img_square height="802" width="830"}
 
 Figure 4: Representative cross section of a DT fusion power plant levitated dipole core magnet. (a) Radiatively cooled tungsten tiles. (b) $B_{4}\operatorname{}C$ and WC neutron shield structure. (c) Sacrificial section of the REBCO coil where the neutron flux is higher. (d) Permanent section of the REBCO coil. (e) Low-field region. (f) Hoop stress retaining structural overband. (g) Cryogenic slush reservoir. (h) Reservoir for cooling the neutron shield structure.
 
@@ -181,7 +181,7 @@ The strict spatial constraints make shielding the REBCO coil from the $14.1$ Me
 
 While required for the economic viability of a levitated dipole fusion power plant, the use of REBCO tape in the core magnet coil introduces the issue of resistive losses. There is no process for creating a superconducting joint with performance equal to that of a commercially available REBCO tapes Park et al. \[[2014](https://arxiv.org/html/2602.20564v1#bib.bib10 "A superconducting joint for GdBa2Cu3O7-δ-coated conductors"){.ltx_ref}\], Kim et al. \[[2013](https://arxiv.org/html/2602.20564v1#bib.bib9 "YBCO and bi2223 coils for high field lts/hts nmr magnets: hts-hts joint resistivity"){.ltx_ref}\]. Therefore, the coil requires the use of normal-conducting jointing methods which will result in the dissipation of the current in the core magnet. This means that some form of power supply, including its auxiliary systems and energy source, are required to be installed on-board to compensate for the ohmic losses and enable the quasi-persistent operation of the core magnet coil.
 
-![Refer to caption](/html/2602.20564v1/x3.png){#S2.F5.g1 .ltx_graphics .ltx_centering .ltx_img_landscape height="524" width="830"}
+![Refer to caption](images/x3.png){#S2.F5.g1 .ltx_graphics .ltx_centering .ltx_img_landscape height="524" width="830"}
 
 Figure 5: Circuit diagram of a center-tapped transformer-rectifier type superconducting power supply. On the primary side (orange) are the primary windings and the power electronics needed to drive the power supply. A transition from room temperature to cryogenic conditions occurs accross the transformer. The secondary side (blue) consists of a pair of secondary windings, a pair of superconducting switches, and the core magnet itself.
 
@@ -199,7 +199,7 @@ There are two viable choices of cryogen for a high field REBCO magnet: Neon with
 
 #### 2.2.4 Neutron Shielding
 
-![Refer to caption](/html/2602.20564v1/x4.png){#S2.F6.g1 .ltx_graphics .ltx_centering .ltx_img_square height="703" width="830"}
+![Refer to caption](images/x4.png){#S2.F6.g1 .ltx_graphics .ltx_centering .ltx_img_square height="703" width="830"}
 
 Figure 6: Sketch depicting the effective line of sight of neutrons emitted from the plasma. The core magnet takes up a small portion, resulting in only $\sim 25$ % of neutrons passing through the $\Psi_{fcfs}$ surface. The neutron shield is then defined to take all necessary space up to $\Psi_{fcfs}$ to maximize performance.
 
@@ -207,7 +207,7 @@ The problem of shielding the core magnet from fusion neutrons is aided by the ge
 
 The most suitable materials for the core magnet neutron shield are tungsten borides and metal hydrides Brand et al. \[[2025](https://arxiv.org/html/2602.20564v1#bib.bib52 "Material selection charts for optimised radiation shielding"){.ltx_ref}\], Windsor et al. \[[2021](https://arxiv.org/html/2602.20564v1#bib.bib40 "Tungsten boride shields in a spherical tokamak fusion power plant"){.ltx_ref}\] as they both offer superior flux attenuation. However, the physical isolation of the core magnet imposes extra constraints. Like the cryogenic region of the core magnet, there is no way to actively extract thermal energy from the shield during a fusion pulse. The only methods available in this scenario are radiating the thermal energy from the shield surface to the first wall, or storing it in an on-board reservoir to be extracted later at the end of the pulse. The internal space constraints make radiative cooling the preferable option as an on-board reservoir would need to store a significant portion of the plants output power and therefore require a significant amount of volume. Hence, the neutron shield requires materials with extremely high working temperatures exceeding $2000$ K in order to effectively reject the heat without placing severe constraints on the achievable fusion power density. Surface temperatures exceeding $2000$ K allow for wall loadings in excess of $1$ MW m^-2^ which is required for any form of moderately compact, and therefore economically viable, fusion reactor. Increasing the temperature of the neutron shield beyond this point would allow for even higher wall loadings resulting in smaller an more attractive reactor designs. Therefore, the operating temperature of the neutron shield material is a key parameter that must be maximized in order to build economically attractive fusion power plants.
 
-![Refer to caption](/html/2602.20564v1/x5.png){#S2.F7.g1 .ltx_graphics .ltx_centering .ltx_img_square height="703" width="830"}
+![Refer to caption](images/x5.png){#S2.F7.g1 .ltx_graphics .ltx_centering .ltx_img_square height="703" width="830"}
 
 Figure 7: Plot of the neutron transmittance of a layered W-$B_{4}\operatorname{}C$-W neutron shield with varying $B_{4}\operatorname{}C$ layer thicknesses. The absolute thickness of the optimal $B_{4}\operatorname{}C$ layer remains relatively constant as the overall thickness of the shield changes.
 
@@ -217,7 +217,7 @@ One advantage of pure tungsten is its extremely high melting temperature ($> 300
 
 It is also important for the neutron shield to maintain structural integrity during its operational lifetime. Here we will consider three main mechanisms that will lead to shield failure: tungsten recrystallization, thermal creep, and neutron damage. Tungsten undergoes recrystallization above temperatures of $\sim 1600$ K Richou et al. \[[2020](https://arxiv.org/html/2602.20564v1#bib.bib77 "Recrystallization at high temperature of two tungsten materials complying with the ITER specifications"){.ltx_ref}\], Suslova et al. \[[2014](https://arxiv.org/html/2602.20564v1#bib.bib78 "Recrystallization and grain growth induced by ELMs-like transient heat loads in deformed tungsten samples"){.ltx_ref}\] which can make the material excessively brittle when cooled. The ductile-brittle transition temperature is a function of the level of recrystallization and is typically $< 900$ K Tietz and Wilson \[[1965](https://arxiv.org/html/2602.20564v1#bib.bib97 "Behavior and properties of refractory metals"){.ltx_ref}\]. Therefore, if the shield is held above $900$ K, as it would be during standard plant operation, then the tungsten will only become brittle during infrequent plant maintenance shutdowns discussed in further detail in Section [2.3](https://arxiv.org/html/2602.20564v1#S2.SS3 "2.3 Plant Operation ‣ 2 Design Principles ‣ Deuterium–Tritium Levitated Dipole Fusion Power Plants"){.ltx_ref}.
 
-![Refer to caption](/html/2602.20564v1/x6.png){#S2.F8.g1 .ltx_graphics .ltx_centering .ltx_img_square height="703" width="830"}
+![Refer to caption](images/x6.png){#S2.F8.g1 .ltx_graphics .ltx_centering .ltx_img_square height="703" width="830"}
 
 Figure 8: Comparison of the neutron attenuation performance of an optimal layered W-$B_{4}\operatorname{}C$-W shield and other commonly selected shielding materials.
 
@@ -229,7 +229,7 @@ Finally, the end of life of the shield is considered here as it can have a signi
 
 #### 2.2.5 Vacuum Vessel
 
-![Refer to caption](/html/2602.20564v1/Figure_9.png){#S2.F9.g1 .ltx_graphics .ltx_centering .ltx_img_square height="532" width="598"}
+![Refer to caption](images/Figure_9.png){#S2.F9.g1 .ltx_graphics .ltx_centering .ltx_img_square height="532" width="598"}
 
 Figure 9: Representative cross section of a levitated dipole vacuum chamber, showing: (a) a reinforced concrete outer wall, (b) an inner, plasma facing wall, (c) the tritium breeding and thermal capture components, and (d) an annulus for plant services and maintenance access. The core magnet (e) is supported with a the top magnet (f). Structural members (g) transfer loads to the outer wall.
 
@@ -243,11 +243,11 @@ The reactors proposed in this study will use a DT fuel cycle which will require 
 
 The simple vacuum vessel structure lends itself to thick breeder blankets capable of achieving high TBRs. Additionally, the magnetic field at the first wall is small and steady state allowing for liquid metal blanket materials to be used without the need to consider MHD effects. These benefits would theoretically free up the choice of blanket material, however, in reality the size of the inner vessel places constraints on the cost of blanket material per square meter. As shown in Fig. [11](https://arxiv.org/html/2602.20564v1#S2.F11 "Figure 11 ‣ 2.2.6 Tritium Breeding ‣ 2.2 Engineering Considerations ‣ 2 Design Principles ‣ Deuterium–Tritium Levitated Dipole Fusion Power Plants"){.ltx_ref}, materials such as LiPb and Li can achieve high TBRs with thick blankets, however the surface area these blankets need to cover would make the material costs prohibitive. Instead ceramic blanket materials show the most promise due to the lower blanket thickness Shanliang and Yican \[[2003](https://arxiv.org/html/2602.20564v1#bib.bib50 "Neutronic Comparison of Tritium-Breeding Performance of Candidate Tritium-Breeding Materials"){.ltx_ref}\], aiming to reduce overall system cost. Traditionally, ceramic blankets are discounted due to the increased maintenance requirements. This is not expected to be an issue for a levitated dipole due to the simple vacuum vessel structure allowing ample room for blanket access. This study assumes the use of a ${Li}_{2}\operatorname{}O$ blanket as a performance benchmark. Other materials can match the TBR of ${Li}_{2}\operatorname{}O$ with the help of a neutron multiplier, however the exact composition is not needed in order to determine the overall plant performance.
 
-![Refer to caption](/html/2602.20564v1/x7.png){#S2.F10.g1 .ltx_graphics .ltx_centering .ltx_img_square height="703" width="830"}
+![Refer to caption](images/x7.png){#S2.F10.g1 .ltx_graphics .ltx_centering .ltx_img_square height="703" width="830"}
 
 Figure 10: Macroscopic cross section of neutron multiplication reactions in the neutron shield calculated from the ENDF/B-VII.1 database Chadwick and others \[[2011](https://arxiv.org/html/2602.20564v1#bib.bib49 "ENDF/B-VII.1 Nuclear Data for Science and Technology: Cross Sections, Covariances, Fission Product Yields and Decay Data"){.ltx_ref}\]. The outer tungsten layer will see significant numbers of both (n, 2n) and (n, 3n) reactions.
 
-![Refer to caption](/html/2602.20564v1/x8.png){#S2.F11.g1 .ltx_graphics .ltx_centering .ltx_img_square height="703" width="830"}
+![Refer to caption](images/x8.png){#S2.F11.g1 .ltx_graphics .ltx_centering .ltx_img_square height="703" width="830"}
 
 Figure 11: TBRs of varying thicknesses of materials Shanliang and Yican \[[2003](https://arxiv.org/html/2602.20564v1#bib.bib50 "Neutronic Comparison of Tritium-Breeding Performance of Candidate Tritium-Breeding Materials"){.ltx_ref}\] relevant to levitated dipole reactors.
 
@@ -346,7 +346,7 @@ with a constraint placed on the total overnight capital cost of the implied powe
 
 Table 1: Reactor optimization variables and their respective allowed ranges.
 
-![Refer to caption](/html/2602.20564v1/x9.png){#S3.F12.g1 .ltx_graphics .ltx_centering .ltx_img_landscape height="400" width="830"}
+![Refer to caption](images/x9.png){#S3.F12.g1 .ltx_graphics .ltx_centering .ltx_img_landscape height="400" width="830"}
 
 Figure 12: Flow chart of the reactor optimization process. A reactor is described using the set of variables given in Table [1](https://arxiv.org/html/2602.20564v1#S3.T1 "Table 1 ‣ 3.2 Optimization Process ‣ 3 Design Methodology ‣ Deuterium–Tritium Levitated Dipole Fusion Power Plants"){.ltx_ref} and progressively built up using the shown modeling tool-chain.
 
@@ -555,7 +555,7 @@ Table 5: High level reactor target parameters and material usage for two optimiz
 
 ## 4 Design Points and Analysis
 
-![Refer to caption](/html/2602.20564v1/x10.png){#S4.F13.g1 .ltx_graphics .ltx_centering .ltx_img_portrait height="1290" width="830"}
+![Refer to caption](images/x10.png){#S4.F13.g1 .ltx_graphics .ltx_centering .ltx_img_portrait height="1290" width="830"}
 
 Figure 13: Cross section and radial build of Reactor A (208 MWe).
 
@@ -589,7 +589,7 @@ Table 6: Reactor plasma equilibrium parameters for the Reactor A ($208$ MWe) an
 
 The total stored energy in Reactor A is $U_{p} = 543$ MJ. From this the energy confinement time required in this device was calculated using Eq. ([9](https://arxiv.org/html/2602.20564v1#S3.E9 "In 3.1 Cost Function ‣ 3 Design Methodology ‣ Deuterium–Tritium Levitated Dipole Fusion Power Plants"){.ltx_ref}) to be $\tau_{e} = 3.5$ s. This is lower than the energy confinement time required for Reactor B of $5.9$ s. This implies that Reactor A is a more conservative design of a $Q_{sci} = 15$ device, which is discussed further in Section [5](https://arxiv.org/html/2602.20564v1#S5 "5 Discussion ‣ Deuterium–Tritium Levitated Dipole Fusion Power Plants"){.ltx_ref}. For now it is worth noting the implications of such a high energy confinement time. Due to the convective cells that form in the bad curvature region the particle confinement time in a dipole plasma will be short. In ideal conditions, marginal stability to interchange modes will result in these convective cells transporting no energy. However, due to losses at the plasma edge there must be some energy transport to maintain the MHD stable profile. It is expected that the resultant energy confinement time, which we have presented here, will be an order of magnitude larger than the particle confinement time Kesner et al. \[[2003](https://arxiv.org/html/2602.20564v1#bib.bib24 "Helium catalysed D–D fusion in a levitated dipole"){.ltx_ref}\]. This will allow for efficient removal of ash and refueling to occur near $\Psi_{lcfs}$ without excess loss of plasma energy.
 
-![Refer to caption](/html/2602.20564v1/x11.png){#S4.F14.g1 .ltx_graphics .ltx_centering .ltx_img_square height="912" width="830"}
+![Refer to caption](images/x11.png){#S4.F14.g1 .ltx_graphics .ltx_centering .ltx_img_square height="912" width="830"}
 
 Figure 14: Plasma equilibrium of the Reactor A ($208$ MWe) design point. (a) The ion temperature and density profiles along the midplane. (b) The calculated Grad-Shafranov equilibrium showing contours of magnetic flux. Contours of magnetic field strength have also been included as the dash-dotted lines to highlight the effects of $\beta_{0}$. (c) Fusion and bremsstrahlung power density profiles along the midplane.
 
@@ -617,7 +617,7 @@ In order to focus on the key engineering challenges in a levitated dipole fusion
 
 Table 7: Core magnet design parameters for the Reactor A ($208$ MWe) and Reactor B ($75$ MWe) design point plants.
 
-![Refer to caption](/html/2602.20564v1/x12.png){#S4.F15.g1 .ltx_graphics .ltx_centering .ltx_img_landscape height="585" width="830"}
+![Refer to caption](images/x12.png){#S4.F15.g1 .ltx_graphics .ltx_centering .ltx_img_landscape height="585" width="830"}
 
 Figure 15: The magnetic field produced by the Reactor A ($208$ MWe) core magnet coil. The coil produces a peak field of $23.0$ T at the inboard midplane while simultaneously creating a low-field region in its core with field strengths $< 100$ mT. The shape of the magnet was optimized in part to minimize induced stresses.
 
@@ -625,11 +625,11 @@ Also presented in Table [5](https://arxiv.org/html/2602.20564v1#S3.T5 "Table 5 
 
 ### 4.1 Magnet Design
 
-![Refer to caption](/html/2602.20564v1/x13.png){#S4.F16.g1 .ltx_graphics .ltx_centering .ltx_img_portrait height="1240" width="830"}
+![Refer to caption](images/x13.png){#S4.F16.g1 .ltx_graphics .ltx_centering .ltx_img_portrait height="1240" width="830"}
 
 Figure 16: Cross section of the Reactor A ($208$ MWe) core magnet and radial build. A thermal break between the outer tungsten shield and the $B_{4}\operatorname{}C$ layer is assumed, but is not shown here. The thickness of the shield required to get acceptable core magnet coil lifetimes results in only a small amount of neutron heating. Therefore the required volume of cryogen slush to achieve adequate float times is small.
 
-![Refer to caption](/html/2602.20564v1/x14.png){#S4.F17.g1 .ltx_graphics .ltx_centering .ltx_img_landscape height="555" width="830"}
+![Refer to caption](images/x14.png){#S4.F17.g1 .ltx_graphics .ltx_centering .ltx_img_landscape height="555" width="830"}
 
 Figure 17: Calculated (a) Von Mises stress, (b) hoop stress, (c) axial stress, and (d) hoop strain for a 2D axisymmetric finite element linear elastic model of Reactor A ($208$ MWe). The low-field region at the core of the core magnet coil is assumed to be able to carry load only in the $r\operatorname{}z$ plane, however it has been excluded from these plots to avoid confusion.
 
@@ -647,7 +647,7 @@ The results of this modeling, presented for Reactor A in Fig. [17](https://arxi
 
 ### 4.2 Fast Ion Confinement
 
-![Refer to caption](/html/2602.20564v1/x15.png){#S4.F18.g1 .ltx_graphics .ltx_centering .ltx_img_landscape height="332" width="830"}
+![Refer to caption](images/x15.png){#S4.F18.g1 .ltx_graphics .ltx_centering .ltx_img_landscape height="332" width="830"}
 
 Figure 18: Results from OpenMC calculations displaying (a) the fast ($E_{n} > 0.1$ MeV) neutron flux, (b) the neutron and radiation wall loading on the neutron shield, and (c) the average neutron flux energy spectrum for Reactor A ($208$ MWe). The neutron shield sees a peak wall loading of $0.753$ MW m^-2^ and results in a peak neutron flux on the core magnet coil of $8.05 \times 10^{10}$ cm^-2^s^-1^ which, due to the way in which the neutron shield was designed, is also the average flux at the inner surface of the neutron shield. Neutron moderation in the neutron shield results in the majority of the remaining neutron power being in the $0.01$-$1$ MeV range.
 
@@ -659,11 +659,11 @@ Steep profiles are a key signature of dipole equilibria, where peak pressure, de
 
 ### 4.3 Neutron Transport
 
-![Refer to caption](/html/2602.20564v1/x16.png){#S4.F19.g1 .ltx_graphics .ltx_centering .ltx_img_landscape height="469" width="830"}
+![Refer to caption](images/x16.png){#S4.F19.g1 .ltx_graphics .ltx_centering .ltx_img_landscape height="469" width="830"}
 
 Figure 19: Average neutron flux energy spectrum at the inner surface of the first wall of Reactor A ($208$ MWe). Significant neutron scattering and endothermic multiplication in the tungsten neutron shield results in a population of neutrons with energies in the order of $1$ MeV and similar fluxes to the $2.5$ MeV DD neutrons.
 
-![Refer to caption](/html/2602.20564v1/x17.png){#S4.F20.g1 .ltx_graphics .ltx_centering .ltx_img_landscape height="332" width="830"}
+![Refer to caption](images/x17.png){#S4.F20.g1 .ltx_graphics .ltx_centering .ltx_img_landscape height="332" width="830"}
 
 Figure 20: (a) OpenMC calculations of neutron and photon heating power density in the Reactor A ($208$ MWe) core magnet. $92.2$ % of the heating is localized in the outer neutron tiles. (b) Modeled temperature of the neutron shield including bremsstrahlung and prompt loss heating. A thermal break was modeled between the outer tungsten tiles and the middle $B_{4}\operatorname{}C$ layer to encourage radiative cooling. The maximum steady state temperature in this scenario is $1950$ K.
 
@@ -701,7 +701,7 @@ At these temperatures the lifetime of the tungsten tiles is also determined by t
 
 At a preliminary level, the neutron shielding presented in this study satisfies all the requirements of an economically viable DT fusion power plant without the use of advanced materials. Further advancements in neutron shielding material science will only aid in the shield performance, allowing for more compact reactor designs and higher overall fusion power outputs.
 
-![Refer to caption](/html/2602.20564v1/Figure_21.png){#S4.F21.g1 .ltx_graphics .ltx_centering .ltx_img_landscape height="425" width="598"}
+![Refer to caption](images/Figure_21.png){#S4.F21.g1 .ltx_graphics .ltx_centering .ltx_img_landscape height="425" width="598"}
 
 Figure 21: Sankey diagrams of the energy balance in Reactor A for (a) the full plant, (b) the plasma, and (c) the core magnet.
 
@@ -743,7 +743,7 @@ Table 9: Plant power fluxes to and from various systems/regions. The total power
 
 ### 4.4 Power Balance
 
-![Refer to caption](/html/2602.20564v1/x18.png){#S4.F22.g1 .ltx_graphics .ltx_centering .ltx_img_landscape height="332" width="830"}
+![Refer to caption](images/x18.png){#S4.F22.g1 .ltx_graphics .ltx_centering .ltx_img_landscape height="332" width="830"}
 
 Figure 22: Performance acceptability plots for the optimized design points of (a) Reactor A ($208$ MWe) and (b) Reactor B ($75$ MWe). Both reactors are assumed to be $Q_{sci} = 15$ which then implies that a smaller device with a device index $\xi_{\alpha}^{\prime}$ (Eq. ([8](https://arxiv.org/html/2602.20564v1#S3.E8 "In 3.1 Cost Function ‣ 3 Design Methodology ‣ Deuterium–Tritium Levitated Dipole Fusion Power Plants"){.ltx_ref})) must show double products greater than the back-scaled Bohm-like (green) or gyro-Bohm-like (yellow) operational contours in order for this assumption to be valid. The expected performance of the demonstration device, known as Tahi, is forward-calculated from LDX and used to illustrate the viability of each reactor. In both cases the expected performance band lies above the required gyro-Bohm performance. However, Reactor A being the larger device allows it to impose lower performance targets on Tahi, implying that a $Q_{sci} = 15$ Reactor A can be achieved with Bohm-like scaling.
 
@@ -799,7 +799,7 @@ and the conductive power losses
      $${\lambda_{\kappa} \equiv \frac{\langle{n\operatorname{}T}\rangle}{n_{0}\operatorname{}T_{0}}}.$$      \(29\)
   -- ---------------------------------------------------------------------------------------------------- -- --------
 
-![Refer to caption](/html/2602.20564v1/x19.png){#A1.F23.g1 .ltx_graphics .ltx_centering .ltx_img_square height="830" width="830"}
+![Refer to caption](images/x19.png){#A1.F23.g1 .ltx_graphics .ltx_centering .ltx_img_square height="830" width="830"}
 
 Figure 23: Dependence of the value of the geometry factors discussed in the text on (a) the plasma pressure at the last closed flux surface and (b) the core temperature of the plasma. The model used here is the same as in Fig. [3](https://arxiv.org/html/2602.20564v1#S1.F3 "Figure 3 ‣ 1 Introduction ‣ Deuterium–Tritium Levitated Dipole Fusion Power Plants"){.ltx_ref}.
 
