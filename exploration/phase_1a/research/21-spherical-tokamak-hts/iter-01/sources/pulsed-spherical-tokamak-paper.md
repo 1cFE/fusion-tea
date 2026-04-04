@@ -1,1 +1,0 @@
-pulsed-spherical-tokamak-paper/output.md

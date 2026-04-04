@@ -1,1 +1,0 @@
-arxiv-2408-15206-pulsed-magnetic-fusion/output.md

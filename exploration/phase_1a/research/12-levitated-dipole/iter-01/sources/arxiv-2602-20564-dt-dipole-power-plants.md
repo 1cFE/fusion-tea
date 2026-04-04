@@ -1,1 +1,0 @@
-arxiv-2602-20564-dt-dipole-power-plants/output.md

@@ -1,1 +1,0 @@
-first-light-flare-pivot-update/output.md

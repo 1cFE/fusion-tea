@@ -1,1 +1,0 @@
-type-one-infinity-two-specs/output.md

@@ -1,1 +1,0 @@
-fusion-report-interview-realta/output.md

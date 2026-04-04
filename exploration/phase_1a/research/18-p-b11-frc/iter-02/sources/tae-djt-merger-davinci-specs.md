@@ -1,1 +1,0 @@
-tae-djt-merger-davinci-specs/output.md

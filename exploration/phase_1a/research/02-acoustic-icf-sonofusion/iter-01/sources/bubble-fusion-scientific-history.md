@@ -1,1 +1,0 @@
-bubble-fusion-scientific-history/output.md

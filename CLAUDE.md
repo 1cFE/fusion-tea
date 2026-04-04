@@ -274,6 +274,33 @@ pip install package     # WRONG — use uv add
 syside check file.sysml # WRONG — unless uv shell is active
 ```
 
+## Research Artifact Sync (R2)
+
+Concept research binary artifacts (PDFs, HTML snapshots, extracted images) are stored in Cloudflare R2 and gitignored. Markdown and JSON remain in git. The analysis pipeline works without binaries — they're only needed for source inspection.
+
+**Sync commands**:
+```bash
+./scripts/sync_research.sh pull                          # pull all binaries from R2
+./scripts/sync_research.sh push                          # push local binaries to R2
+./scripts/sync_research.sh pull --dry-run                # preview
+./scripts/sync_research.sh pull 01-hts-compact-tokamak   # single concept
+```
+
+**rclone setup** (one-time): R2 credentials go in `.env` as `R2_ACCESS_KEY` and `R2_SECRET_ACCESS_KEY` (from Cloudflare dashboard → R2 → Manage R2 API Tokens → the Access Key ID and Secret Access Key shown on the token success page). Then configure rclone:
+```bash
+source .env
+rclone config create r2 s3 provider Cloudflare \
+  access_key_id "$R2_ACCESS_KEY" secret_access_key "$R2_SECRET_ACCESS_KEY" \
+  endpoint https://985ab2e0dede4b8be7f56c00b861ca9b.r2.cloudflarestorage.com env_auth false
+```
+See `knowledge/concept_research/README.md` for full setup including Windows instructions.
+
+**Key paths**:
+- `knowledge/concept_research/` — canonical research location (38 concepts)
+- `exploration/phase_1a/research/` — symlink to above (backward compat)
+- `scripts/sync_research.sh` — rclone wrapper
+- `scripts/migrate_research.py` — migration script (with `--reindex` to regenerate SOURCE_INDEX.md)
+
 ## Special Considerations
 
 - Library definitions must be concept-agnostic; concept-specific values live in `designs/` (MR-3)

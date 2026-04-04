@@ -1,1 +1,0 @@
-muon-catalyzed-fusion-physics/output.md

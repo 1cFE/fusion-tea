@@ -1,1 +1,0 @@
-z-ife-power-plant-concept/output.md

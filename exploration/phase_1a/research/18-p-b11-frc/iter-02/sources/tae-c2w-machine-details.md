@@ -1,1 +1,0 @@
-tae-c2w-machine-details/output.md

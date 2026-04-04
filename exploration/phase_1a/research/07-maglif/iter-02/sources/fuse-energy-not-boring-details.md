@@ -1,1 +1,0 @@
-fuse-energy-not-boring-details/output.md

@@ -1,1 +1,0 @@
-general-fusion-technical-details/output.md

@@ -1,1 +1,0 @@
-engineering-paradigms-paper-summary/output.md

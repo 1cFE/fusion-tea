@@ -1,1 +1,0 @@
-yc-launch-page/output.md

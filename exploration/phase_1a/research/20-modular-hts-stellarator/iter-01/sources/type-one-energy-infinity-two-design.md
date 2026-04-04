@@ -1,1 +1,0 @@
-type-one-energy-infinity-two-design/output.md

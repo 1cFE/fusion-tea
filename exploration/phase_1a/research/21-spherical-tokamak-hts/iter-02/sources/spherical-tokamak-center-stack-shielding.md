@@ -1,1 +1,0 @@
-spherical-tokamak-center-stack-shielding/output.md

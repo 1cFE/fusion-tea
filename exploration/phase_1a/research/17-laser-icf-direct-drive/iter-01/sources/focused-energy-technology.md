@@ -1,1 +1,0 @@
-focused-energy-technology/output.md

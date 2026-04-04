@@ -1,1 +1,0 @@
-focused-energy-callahan-interview/output.md

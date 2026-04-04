@@ -1,1 +1,0 @@
-nearstar-fusion-2025-update/output.md

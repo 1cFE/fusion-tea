@@ -1,1 +1,0 @@
-fuze-3-gigapascal-results-2025/output.md

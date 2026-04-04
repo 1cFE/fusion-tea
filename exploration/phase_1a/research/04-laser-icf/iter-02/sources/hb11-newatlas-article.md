@@ -1,1 +1,0 @@
-hb11-newatlas-article/output.md

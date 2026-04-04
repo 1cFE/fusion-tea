@@ -1,1 +1,0 @@
-grokipedia-tae-technologies/output.md

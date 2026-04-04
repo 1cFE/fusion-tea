@@ -1,1 +1,0 @@
-arc-reactor-specifications/output.md

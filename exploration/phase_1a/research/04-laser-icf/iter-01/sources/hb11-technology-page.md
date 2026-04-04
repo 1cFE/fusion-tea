@@ -1,1 +1,0 @@
-hb11-technology-page/output.md

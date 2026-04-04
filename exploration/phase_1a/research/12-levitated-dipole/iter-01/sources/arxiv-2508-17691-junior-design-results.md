@@ -1,1 +1,0 @@
-arxiv-2508-17691-junior-design-results/output.md

@@ -1,1 +1,0 @@
-sparc-icrf-heating-paper/output.md

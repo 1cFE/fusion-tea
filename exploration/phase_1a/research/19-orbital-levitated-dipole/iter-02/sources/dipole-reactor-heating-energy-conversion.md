@@ -1,1 +1,0 @@
-dipole-reactor-heating-energy-conversion/output.md

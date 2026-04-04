@@ -1,1 +1,0 @@
-tokamak-energy-st-e1-dpp2025-abstract/output.md

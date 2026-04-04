@@ -1,1 +1,0 @@
-tokamak-energy-demo4-magnets/output.md

@@ -1,1 +1,0 @@
-princeton-arpa-e-funding-2022/output.md

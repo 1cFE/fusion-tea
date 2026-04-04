@@ -37,9 +37,11 @@ TEMPLATES_DIR = CONCEPT_ANALYSIS_DIR / "prompt_templates"
 BRIEF_PATH = CONCEPT_ANALYSIS_DIR / "concept_analysis_brief.md"
 MEMORY_DIR = CONCEPT_ANALYSIS_DIR / "memory"
 
+REPO_ROOT = Path(__file__).resolve().parents[3]
+RESEARCH_DIR = REPO_ROOT / "knowledge" / "concept_research"
+
 PHASE_1A_DIR = CONCEPT_ANALYSIS_DIR.parent / "phase_1a"
 SCHEMA_PATH = PHASE_1A_DIR / "schema.md"
-RESEARCH_DIR = PHASE_1A_DIR / "research"
 
 # 1costingfe reference paths (read-only)
 COSTINGFE_DIR = Path("/home/reid/1cfe/1costingfe")

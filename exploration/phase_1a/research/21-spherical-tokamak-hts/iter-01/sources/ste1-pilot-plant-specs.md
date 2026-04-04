@@ -1,1 +1,0 @@
-ste1-pilot-plant-specs/output.md

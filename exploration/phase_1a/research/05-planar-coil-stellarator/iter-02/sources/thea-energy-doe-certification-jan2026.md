@@ -1,1 +1,0 @@
-thea-energy-doe-certification-jan2026/output.md

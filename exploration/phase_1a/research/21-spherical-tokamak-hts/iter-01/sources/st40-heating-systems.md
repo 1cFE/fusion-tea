@@ -1,1 +1,0 @@
-st40-heating-systems/output.md

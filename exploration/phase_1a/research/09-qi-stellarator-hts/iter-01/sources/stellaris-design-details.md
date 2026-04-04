@@ -1,1 +1,0 @@
-stellaris-design-details/output.md

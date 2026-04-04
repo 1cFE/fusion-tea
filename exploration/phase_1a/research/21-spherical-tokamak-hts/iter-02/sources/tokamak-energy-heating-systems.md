@@ -1,1 +1,0 @@
-tokamak-energy-heating-systems/output.md

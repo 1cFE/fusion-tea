@@ -1,1 +1,0 @@
-arxiv-2411-06644-confinement-predictions/output.md

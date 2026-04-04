@@ -1,1 +1,0 @@
-nearstar-fusion-technology/output.md

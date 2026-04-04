@@ -1,1 +1,0 @@
-openstar-prototype-roadmap/output.md

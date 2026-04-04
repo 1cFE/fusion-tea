@@ -1,1 +1,0 @@
-levitated-dipole-technical-background/output.md

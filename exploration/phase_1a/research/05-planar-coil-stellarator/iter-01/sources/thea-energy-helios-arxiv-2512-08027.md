@@ -1,1 +1,0 @@
-thea-energy-helios-arxiv-2512-08027/output.md

@@ -1,1 +1,0 @@
-tokamak-energy-ec-heating-pilot-plant/output.md

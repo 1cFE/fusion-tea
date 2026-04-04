@@ -1,1 +1,0 @@
-talk-polywell-orbitron-paper-discussion/output.md

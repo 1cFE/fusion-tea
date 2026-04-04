@@ -1,1 +1,0 @@
-realta-fusion-hub-spotlight/output.md

@@ -1,1 +1,0 @@
-arc-power-conversion-studies/output.md

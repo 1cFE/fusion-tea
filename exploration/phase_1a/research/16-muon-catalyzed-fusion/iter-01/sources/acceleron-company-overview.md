@@ -1,1 +1,0 @@
-acceleron-company-overview/output.md

@@ -1,1 +1,0 @@
-stellaris-paper-details/output.md

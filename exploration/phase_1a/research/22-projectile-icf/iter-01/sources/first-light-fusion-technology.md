@@ -1,1 +1,0 @@
-first-light-fusion-technology/output.md

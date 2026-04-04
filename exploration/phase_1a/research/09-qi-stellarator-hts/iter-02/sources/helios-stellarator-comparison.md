@@ -1,1 +1,0 @@
-helios-stellarator-comparison/output.md

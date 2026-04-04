@@ -1,1 +1,0 @@
-helias-blanket-studies/output.md

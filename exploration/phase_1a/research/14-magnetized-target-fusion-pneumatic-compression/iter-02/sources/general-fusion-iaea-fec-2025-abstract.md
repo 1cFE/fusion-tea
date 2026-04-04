@@ -1,1 +1,0 @@
-general-fusion-iaea-fec-2025-abstract/output.md

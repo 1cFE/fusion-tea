@@ -1,1 +1,0 @@
-gauss-fusion-partnerships-2025/output.md

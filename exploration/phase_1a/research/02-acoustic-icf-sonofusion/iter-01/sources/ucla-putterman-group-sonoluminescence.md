@@ -1,1 +1,0 @@
-ucla-putterman-group-sonoluminescence/output.md

@@ -1,1 +1,0 @@
-xcimer-energy-approach/output.md
