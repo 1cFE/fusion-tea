@@ -8,10 +8,10 @@
 | Metric | Count |
 |--------|-------|
 | Total source files | 166 |
-| Replaced (YES) | 81 |
-| Replaced (MIXED) | 22 |
-| Not improved (NO) | 20 |
-| Skipped (SKIP) | 3 |
+| Replaced (YES) | 99 |
+| Replaced (MIXED) | 28 |
+| Not improved (NO) | 33 |
+| Skipped (SKIP) | 11 |
 | Failed | 0 |
 
 ## Quality Verdicts
@@ -264,6 +264,116 @@
 | `iter-01/sources/venture-kick-profile.md` | URL | https://www.venturekick.ch/firefly-fusion | **NO** | Extraction FAILED — page requires JS/cookies (redirect loop). WebFetch also failed (got only loading animation). Kept original Haiku paraphrase which captured CHF 50K funding, "microwaves" heating hint (ECRH), Cohort 24-2. No companion dir. |
 | `iter-02/sources/firefly-website-2026.md` | URL | https://fireflyfusion.energy/ | **MIXED** | 57 lines vs 36 orig. Extraction captured team bios (Ospanov, Gibson), all 4 advisors (Bucalossi/WEST, Kikuchi/JT-60, Huguet/ITER+JET, Peters), collaborator quotes. But lost "About" section and tech description from JS-rendered portions — orig had tagline, "60 Years" framing, and structured "Notable Absence" analysis. WebFetch got full content including About section. Companion: `raw.html`, `metrics.json`. |
 | `iter-02/sources/manta-reference-design.md` | CITE | https://arxiv.org/pdf/2405.20243 | **YES** | 3007 lines vs 62 orig. Full 50+ page Rutherford et al. MANTA design study via PDF pipeline. 62 extracted images, 162 table rows, $1.96 extraction cost. Complete reactor design: 450 MW fusion, Q=11.5, 90 MWe net, $3.4B overnight cost, FLiBe blanket (TBR 1.15), REBCO HTS magnets (11T), ICRF heating (40 MW, 110 MHz), pulsed operation (15-min pulses), divertor design, neutronics, maintenance concept. Orig was an excellent 62-line curated summary but new has full paper text with all subsystem details. WebFetch returned structured summary from abstract page. Companion: `raw.pdf`, `images/` (62), `metrics.json`, `decisions.json`, `cost.json`. |
+
+### 23-laser-icf-nanostructured-target
+
+| File | Category | URL | Verdict | Notes |
+|------|----------|-----|---------|-------|
+| `iter-01/sources/hb11-energy-technology.md` | URL | https://hb11.energy/ | **NO** | 11 lines vs 76 orig. Very thin — JS-heavy landing page. Only captured a few paragraphs of marketing text. Orig was a detailed multi-source compilation with technical specs, team, and reactor design. |
+| `iter-01/sources/marvel-fusion-technology.md` | URL | https://www.marvelfusion.com/ | **NO** | 21 lines vs 68 orig. JS-heavy site. Captured basic company description and Siemens partnership. Orig had nanostructured target details, fast ignition approach, NIF heritage. |
+| `iter-02/sources/hb11-energy-2025-updates.md` | URL | https://hb11.energy/our-technology/ | **NO** | 15 lines vs 56 orig. Same JS issue as HB11 landing page. Orig had proton fast ignition details, reactor specs, and recent developments. |
+| `iter-02/sources/marvel-fusion-2025-updates.md` | URL | https://cordis.europa.eu/project/id/101189082 | **YES** | 84 lines vs 42 orig. Full CORDIS EU project page: EIC Transition grant €2.5M, nanostructured target fabrication objectives, laser-target interaction science, project timeline 2025-2027. Good structured data from EU database. |
+
+### 24-dense-plasma-focus
+
+| File | Category | URL | Verdict | Notes |
+|------|----------|-----|---------|-------|
+| `iter-01/sources/lerner-2023-jfe-paper.md` | CITE | https://link.springer.com/article/10.1007/s10894-023-00345-z | **YES** | 455 lines vs 18 orig. Full Lerner et al. JFE paper via Springer open access. Complete experimental results, plasma focus device specs, fusion yield measurements, scaling laws. Massive improvement over 18-line summary. |
+| `iter-01/sources/lerner-2024-frontiers-pB11-prep.md` | CITE | https://www.frontiersin.org/journals/physics/articles/10.3389/fphy.2024.1438880/full | **YES** | 216 lines vs 36 orig. Full Frontiers in Physics paper: p-B11 preparation strategies, plasma focus optimization, confinement and heating mechanisms. |
+| `iter-01/sources/lppfusion-website-technology.md` | URL | https://www.lppfusion.com/technology/focus-fusion-energy/ | **NO** | 28 lines vs 76 orig. JS-heavy site extracted thin marketing content. Orig had detailed Focus Fusion description with physics, device specs, and development timeline. |
+
+### 25-heavy-ion-beam-icf
+
+| File | Category | URL | Verdict | Notes |
+|------|----------|-----|---------|-------|
+| `iter-01/sources/hif-technology-overview.md` | SEARCH | — | **SKIP** | Multi-source compilation from HIBALL study, LBNL references, arXiv papers. No single URL. |
+| `iter-01/sources/intensity-energy-search-results.md` | SEARCH | — | **SKIP** | Search failure document — company "Intensity Energy" unverifiable. Kept as-is. |
+| `iter-02/sources/hif-recent-research-compilation.md` | SEARCH | — | **SKIP** | Multi-source compilation from iter-02 research. No single URL. |
+
+### 26-laser-icf-indirect-drive
+
+| File | Category | URL | Verdict | Notes |
+|------|----------|-----|---------|-------|
+| `iter-01/sources/inertia-enterprises-website-and-faq.md` | URL | https://inertia.com/ | **MIXED** | 45 vs 41 orig. Captured landing page content. Orig was multi-source compilation including FAQ. Similar breadth. |
+| `iter-01/sources/nif-ignition-achievements.md` | URL | https://lasers.llnl.gov/science/achieving-fusion-ignition | **YES** | 98 lines vs 21 orig. Full LLNL ignition page with milestones, shot results, and facility details. |
+| `iter-01/sources/xcimer-energy-website-and-science.md` | URL | https://xcimer.energy/ | **NO** | 14 vs 54 orig. JS-heavy startup site — thin marketing only. Orig had excimer laser specs, ArF technology, cost roadmap. |
+| `iter-02/sources/inertia-enterprises-2026-update.md` | URL | https://www.globenewswire.com/.../Inertia-raises-450-million... | **MIXED** | 40 vs 55 orig. Single GlobeNewsWire article ($450M Series A). Orig compiled 5 sources including SPIE, ENR interview, BusinessWire. Single-source extraction loses breadth. |
+| `iter-02/sources/nif-ignition-updates-2025.md` | URL | https://lasers.llnl.gov/science/achieving-fusion-ignition | **YES** | 98 vs 24 orig. Full LLNL page with latest shot results and ignition milestones. |
+| `iter-02/sources/xcimer-hybrid-direct-drive-evolution.md` | URL | https://pubs.aip.org/... | **NO** | AIP 403 paywall. Kept original. |
+| `iter-02/sources/xcimer-laser-milestones-2025.md` | URL | https://xcimer.energy/...first-private-sector-electron-beam-excimer-laser/ | **YES** | 80 vs 35 orig. Full press release with detailed electron-beam excimer laser milestone, team quotes, roadmap. |
+
+### 27-polywell
+
+| File | Category | URL | Verdict | Notes |
+|------|----------|-----|---------|-------|
+| `iter-01/sources/emc2-website-summary.md` | URL | https://www.emc2fusion.com/ | **NO** | 13 vs 35 orig. Very thin — JS-heavy site. Orig had device specs and development history. |
+| `iter-01/sources/polywell-technical-details.md` | SEARCH | https://en.wikipedia.org/wiki/Polywell | **YES** | 812 vs 66 orig. Full Wikipedia article: physics principle, cusp confinement, Bussard history, Navy funding, WB-1 through WB-8, PZL-1 Australian experiment, theoretical critiques, Rider thesis. Massive quality improvement. |
+| `iter-02/sources/emc2-fpns-talk-polywell-2023.md` | URL | https://talk-polywell.org/bb/viewtopic.php?t=6553 | **YES** | 72 vs 29 orig. Forum post with EMC2 FPNS technical details and community analysis. |
+| `iter-02/sources/polywell-revisited-2025-park.md` | CITE | https://arxiv.org/pdf/2508.06761 | **YES** | 1210 vs 66 orig. Full Park paper via PDF pipeline: complete polywell physics revisitation, PIC simulations, parameter scans, performance projections. 31 pages. |
+
+### 28-hts-tokamak-full-hts
+
+| File | Category | URL | Verdict | Notes |
+|------|----------|-----|---------|-------|
+| `iter-01/sources/energy-singularity-overview.md` | SEARCH | — | **SKIP** | Multi-source compilation about Energy Singularity (Chinese company). No single URL. |
+| `iter-02/sources/energy-singularity-technical-summary.md` | URL | https://english.news.cn/... | **MIXED** | 23 vs 62 orig. Xinhua article about HH70 world record (72.6s plasma). Orig compiled 9+ sources with broader scope. |
+
+### 30-laser-icf-nif-commercialization
+
+| File | Category | URL | Verdict | Notes |
+|------|----------|-----|---------|-------|
+| `iter-01/sources/enr-mike-dunne-interview.md` | URL | https://www.enr.com/.../ten-minutes-with-mike-dunne... | **YES** | 67 vs 28 orig. Full ENR interview with Inertia co-founder/CTO Mike Dunne. Detailed facility plans, NIF commercialization strategy, laser technology roadmap. |
+| `iter-01/sources/globenewswire-series-a-press-release.md` | URL | https://www.globenewswire.com/.../Inertia-raises-450-million... | **YES** | 40 vs 22 orig. Full Series A press release: $450M raise, investor list, facility plans, team quotes. |
+| `iter-01/sources/inertia-website-technical.md` | URL | https://inertia.com/ | **MIXED** | 45 vs 55 orig. Landing page content. Orig was multi-source compilation with FAQ and deeper technical details. |
+
+### 31-laser-icf-oec-architecture
+
+| File | Category | URL | Verdict | Notes |
+|------|----------|-----|---------|-------|
+| `iter-01/sources/blf-website-and-news.md` | URL | https://bluelaserfusion.com | **NO** | 26 vs 58 orig. JS-heavy site — thin marketing. Orig had OEC architecture details, team, and recent milestones. |
+| `iter-01/sources/optics-express-2025-paper.md` | URL | BLF PDF | **YES** | 845 vs 71 orig. Full paper via PDF pipeline: optical enhancement cavity design, direct-drive reactor configuration, laser system specs, target physics, gain calculations. |
+
+### 32-laser-icf-french-national
+
+| File | Category | URL | Verdict | Notes |
+|------|----------|-----|---------|-------|
+| `iter-01/sources/aip-advances-ribeyre-2025.md` | URL | https://pubs.aip.org/... | **NO** | AIP 403 paywall. Kept original. |
+| `iter-01/sources/genf-icf-article.md` | URL | https://genf-systems.com/inertial-confinement-fusion/ | **YES** | 68 vs 16 orig. Full ICF technology article with laser-driven fusion explanation, target physics, and GENF approach. |
+| `iter-01/sources/genf-news-timeline.md` | URL | https://genf-systems.com/our-news/ | **YES** | 75 vs 26 orig. Full news timeline with all milestones, partnerships, funding events. |
+| `iter-01/sources/genf-website-technology.md` | URL | https://genf-systems.com/technology/ | **YES** | 50 vs 13 orig. Full technology page with laser architecture, target design, power plant concept. |
+| `iter-01/sources/taranis-project-details.md` | URL | https://www.cnrs.fr/.../projet-taranis... | **MIXED** | 43 vs 49 orig. CNRS French-language article about TARANIS project. Similar length; new has verbatim text, orig had English summary from multiple sources. |
+
+### 33-state-backed-tokamak-best
+
+| File | Category | URL | Verdict | Notes |
+|------|----------|-----|---------|-------|
+| `iter-01/sources/best-research-plan-v1.1-summary.md` | URL | https://euro-fusion.org/.../BEST-Research-Plan-v1.1.pdf | **YES** | 8085 vs 93 orig. Full 200+ page EUROfusion BEST Research Plan via PDF pipeline. 115 headings, 522 table rows, $2.03. Complete research programme: DEMO baseline, magnet systems, blanket/divertor, plasma scenarios, materials, safety, socio-economics. Massive quality improvement. |
+| `iter-01/sources/neo-fusion-company-profile.md` | URL | http://jbxnah.com | **NO** | Connection timeout — Chinese company site appears down. Kept original. |
+| `iter-02/sources/cfetr-power-conversion-studies.md` | URL | https://www.sciencedirect.com/... | **YES** | 180 vs 38 orig. ScienceDirect abstract + open preview section: CFETR power conversion system analysis, Brayton and Rankine cycle comparison, thermal efficiency calculations. |
+
+### 34-compact-spherical-tokamak-india
+
+| File | Category | URL | Verdict | Notes |
+|------|----------|-----|---------|-------|
+| `iter-01/sources/pranos-fusion-overview.md` | SEARCH | — | **SKIP** | Multi-source compilation. No single URL. |
+| `iter-02/sources/iaea-fuse-pranos-profile.md` | URL | https://nucleus.iaea.org/... | **NO** | IAEA FUSE is SharePoint-based, requires authentication. No content extracted. Kept original. |
+
+### 35-polomac-magnetic-confinement
+
+| File | Category | URL | Verdict | Notes |
+|------|----------|-----|---------|-------|
+| `iter-01/sources/deutelio-company-profile.md` | URL | https://www.deutelio.com/ | **NO** | JS-heavy, no content extracted. Kept original. |
+| `iter-01/sources/elio-2014-fed-poloidal-confinement.md` | URL | https://www.sciencedirect.com/.../S0920379614003834 | **YES** | 121 vs 16 orig. Full ScienceDirect article (open access): Elio et al. 2014 FED paper on poloidal magnetic confinement concept, plasma equilibria, stability analysis. |
+| `iter-01/sources/jtsp-2024-polomac-technical-report.md` | URL | https://www.jtsp.eu/jtsp/article/view/32 | **MIXED** | 20 vs 18 orig. Journal abstract page — limited content. Similar to original. |
+
+### 36-helical-coil-stellarator
+
+| File | Category | URL | Verdict | Notes |
+|------|----------|-----|---------|-------|
+| `iter-01/sources/aip-2023-paper-abstract.md` | URL | https://pubs.aip.org/... | **NO** | AIP 403 paywall. Kept original. |
+| `iter-01/sources/helical-fusion-technology-overview.md` | SEARCH | — | **SKIP** | Multi-source compilation. No single URL. |
+| `iter-02/sources/helical-fusion-2025-2026-updates.md` | SEARCH | — | **SKIP** | Multi-source compilation. No single URL. |
+| `iter-02/sources/nifs-ffhr-blanket-heritage.md` | SEARCH | — | **SKIP** | Multi-source compilation from Sagara et al. papers. No single URL. |
 
 <!-- Entries added concept-by-concept during Phase 2 -->
 

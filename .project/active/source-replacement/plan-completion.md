@@ -21,10 +21,10 @@ Concepts 01-22 (124 files) are replaced. Concepts 23-36 (76 files) remain. Durin
 Additionally, `knowledge/concept_research/SOURCE_INDEX.md` was auto-generated during migration but needs validation against the actual post-replacement disk state and enrichment with source URLs from YAML frontmatter.
 
 **Phasing Rationale:**
-Validate the fix first (Phase 1) to confirm no information loss. Then re-extract the 9 affected files (Phase 2) while quality is fresh in mind. Run one complete concept end-to-end as a dry run (Phase 3) to validate the full workflow works in the new `knowledge/concept_research/` location. Then bulk-execute remaining concepts (Phase 4). Finally, reconcile SOURCE_INDEX.md against reality (Phase 5).
+Validate the fix first (Phase 1) to confirm no information loss. Then re-extract the 9 affected files (Phase 2) while quality is fresh in mind. Run one complete concept end-to-end as a dry run (Phase 3) to validate the full workflow works in the new `knowledge/concept_research/` location. Write agent research instructions (Phase 4) before bulk execution so verification quality is high. Bulk-execute remaining concepts (Phase 5). Review quality verdicts and clean up `.orig.md` files (Phase 6). Finally, reconcile SOURCE_INDEX.md against reality (Phase 7).
 
 **Execution Model:**
-Phases 1-3 are human-validated (user reviews extraction quality). Phase 4 follows the established workflow from the prior plan. Phase 5 is scripted.
+Phases 1-3 are human-validated (user reviews extraction quality). Phase 4 is documentation. Phase 5 follows the established extraction workflow from the prior plan. Phase 6 is triage decisions requiring human judgment. Phase 7 is scripted.
 
 ---
 
@@ -213,7 +213,52 @@ The full workflow works end-to-end in the migrated directory structure. Any path
 
 ---
 
-## Phase 4: Complete Remaining Concepts (23-28, 30-36)
+## Phase 4: Agent Research Guide
+
+### Goal
+Write clear instructions for how agents (and humans) navigate, read, and research within `knowledge/concept_research/`. This is critical infrastructure: agents doing source replacement verification, concept analysis, and model building all need to know how to work with the post-replacement source layout — especially that images exist and should be inspected, and that original sources can be traced.
+
+### Deliverable
+`knowledge/concept_research/RESEARCH_GUIDE.md` — a single reference document. Also update `CLAUDE.md` to point agents to it.
+
+### Content to Cover
+
+- [ ] **Directory layout walkthrough**: dossier.md, iter-NN/, sources/, companion dirs — what each file is and when to read it
+- [ ] **Source quality tiers** (in priority order):
+  1. **Replaced sources** (have YAML frontmatter + companion dir) — authoritative extraction from original URL/PDF
+  2. **Original Haiku paraphrases** (`.orig.md` or unreplaced `.md` without frontmatter) — lossy summaries, use as fallback only
+  3. **Dossier** (`dossier.md`) — synthesized from sources, useful for overview but not authoritative for specific claims
+- [ ] **How to read images**: Companion dirs may contain `images/` with extracted figures (PDF) or downloaded arXiv images. Agents MUST read these when:
+  - Verifying quantitative claims (tables in figures, parameter plots)
+  - Building cost models (cost breakdown charts, sensitivity plots)
+  - Cross-checking extracted text against visual data
+  - Image paths in the `.md` are relative to the companion dir (e.g., `images/fig3.png`)
+- [ ] **Tracing to original source**:
+  - YAML frontmatter `source:` field has the original URL
+  - `raw.html` or `raw.pdf` in companion dir is the original fetched content
+  - `metrics.json` has extraction quality metrics
+  - If the extraction seems incomplete, go back to `raw.html`/`raw.pdf` or fetch the URL directly
+- [ ] **Known limitations**:
+  - JS-heavy company sites often extract thin — the original Haiku paraphrase may have more content
+  - Some arXiv papers have missing images (404 on arXiv's HTML viewer)
+  - Paywalled papers were extracted from local PDFs — `source_type: local_file` in frontmatter
+- [ ] **For the analysis pipeline**: `find_sources()` globs `sources/*.md` (files only, not dirs). The companion dir is invisible to the pipeline. `.orig.md` files DO match the glob — this is why Phase 6 cleans them up.
+
+### Update CLAUDE.md
+- [ ] Add a pointer in the "Domain Sources" section: "For how to navigate and read concept research, see `knowledge/concept_research/RESEARCH_GUIDE.md`"
+- [ ] Add a note in the "Special Considerations" section about reading images when verifying claims
+
+### Validation
+- [ ] RESEARCH_GUIDE.md exists and covers all items above
+- [ ] CLAUDE.md updated with pointers
+- [ ] An agent following the guide could find and read: (a) a replaced source's URL, (b) its companion dir images, (c) the original Haiku paraphrase for comparison
+
+**What We Know After This Phase:**
+Agents have clear, documented instructions for working with concept research. Verification quality during Phase 5 (bulk extraction) will be higher because agents know to check images and trace to originals.
+
+---
+
+## Phase 5: Complete Remaining Concepts (23-28, 30-36)
 
 ### Goal
 Replace all remaining 69 source files (76 minus 7 from Phase 3) across 13 concepts using the established workflow.
@@ -238,65 +283,116 @@ Same workflow as Phase 3 and the original plan (lines 98-132). For each file:
 Process in batches of 3-5 concepts, committing after each batch:
 
 **Batch A (14 files):**
-- [ ] 23-laser-icf-nanostructured-target (4 files)
-- [ ] 24-dense-plasma-focus (3 files)
-- [ ] 25-heavy-ion-beam-icf (3 files)
-- [ ] 26-laser-icf-indirect-drive — partial (4 of 7 files)
-- Commit
+- [x] 23-laser-icf-nanostructured-target (4 files) — 1 YES, 3 NO
+- [x] 24-dense-plasma-focus (3 files) — 2 YES, 1 NO
+- [x] 25-heavy-ion-beam-icf (3 files) — 3 SKIP (all multi-source)
+- [x] 26-laser-icf-indirect-drive — partial (4 of 7 files) — 1 YES, 2 MIXED, 1 NO
+- Commit `957e240`
 
 **Batch B (14 files):**
-- [ ] 26-laser-icf-indirect-drive — remaining (3 files)
-- [ ] 27-polywell (4 files)
-- [ ] 28-hts-tokamak-full-hts (2 files)
-- [ ] 30-laser-icf-nif-commercialization (3 files)
-- [ ] 31-laser-icf-oec-architecture (2 files)
-- Commit
+- [x] 26-laser-icf-indirect-drive — remaining (3 files) — 2 YES, 1 NO (AIP 403)
+- [x] 27-polywell (4 files) — 3 YES (Wikipedia 812, Park PDF 1210), 1 NO
+- [x] 28-hts-tokamak-full-hts (2 files) — 1 SKIP, 1 MIXED
+- [x] 30-laser-icf-nif-commercialization (3 files) — 2 YES, 1 MIXED
+- [x] 31-laser-icf-oec-architecture (2 files) — 1 YES (PDF 845), 1 NO
+- Commit `c67069a`
 
 **Batch C (17 files):**
-- [ ] 32-laser-icf-french-national (5 files)
-- [ ] 33-state-backed-tokamak-best (3 files)
-- [ ] 34-compact-spherical-tokamak-india (2 files)
-- [ ] 35-polomac-magnetic-confinement (3 files)
-- [ ] 36-helical-coil-stellarator (4 files)
-- Commit
+- [x] 32-laser-icf-french-national (5 files) — 3 YES (GENF pages), 1 MIXED (CNRS), 1 NO (AIP 403)
+- [x] 33-state-backed-tokamak-best (3 files) — 2 YES (BEST PDF 8085 lines!, CFETR), 1 NO (jbxnah timeout)
+- [x] 34-compact-spherical-tokamak-india (2 files) — 1 SKIP (multi-source), 1 NO (IAEA SharePoint auth)
+- [x] 35-polomac-magnetic-confinement (3 files) — 1 YES (ScienceDirect), 1 MIXED (JTSP), 1 NO (deutelio JS)
+- [x] 36-helical-coil-stellarator (4 files) — 1 NO (AIP 403), 3 SKIP (multi-source)
+- Commit `148e7a1`
 
-### Known Challenges (from original plan notes)
+### Known Challenges — Outcomes
 
-| Concept | File | Issue |
-|---------|------|-------|
-| 25 | `intensity-energy-search-results.md` | Original search found nothing — company likely doesn't exist. May not be replaceable. |
-| 28 | `energy-singularity-overview.md` | Chinese company site — may extract poorly |
-| 33 | `best-research-plan-v1.1-summary.md` | Large PDF — may produce very long extraction |
-| 33 | `neo-fusion-company-profile.md` | Chinese company site — may be down |
-| 33 | `cfetr-power-conversion-studies.md` | ScienceDirect paywalled |
-| 35 | `elio-2014-fed-poloidal-confinement.md` | ScienceDirect paywalled |
-| 32 | `taranis-project-details.md` | French-language CNRS page |
+| Concept | File | Predicted Issue | Actual Outcome |
+|---------|------|----------------|----------------|
+| 25 | `intensity-energy-search-results.md` | Company doesn't exist | SKIP — confirmed unverifiable |
+| 28 | `energy-singularity-overview.md` | Chinese site extraction | SKIP — multi-source compilation, no single URL |
+| 33 | `best-research-plan-v1.1-summary.md` | Large PDF | YES — 8085 lines, 522 tables, $2.03. Biggest win in the project. |
+| 33 | `neo-fusion-company-profile.md` | Chinese site down | NO — jbxnah.com connection timeout. Site appears dead. |
+| 33 | `cfetr-power-conversion-studies.md` | ScienceDirect paywall | YES — ScienceDirect served abstract + preview (180 lines, open enough) |
+| 35 | `elio-2014-fed-poloidal-confinement.md` | ScienceDirect paywall | YES — Open access! Full 121-line paper. |
+| 32 | `taranis-project-details.md` | French-language CNRS | MIXED — French text extracted successfully, 43 vs 49 lines |
 
 ### Validation (per batch)
-- [ ] All files have YAML frontmatter (or are documented SKIPs)
-- [ ] Companion directories present where extraction succeeded
-- [ ] `.orig.md` preserved for all files
-- [ ] Quality notes in report
-- [ ] No broken symlinks or missing files
+- [x] All files have YAML frontmatter (or are documented SKIPs/restores)
+- [x] Companion directories present where extraction succeeded
+- [x] `.orig.md` preserved for all extracted files (not for SKIPs/restores)
+- [x] Quality notes in report
+- [x] No broken symlinks or missing files
 
 **What We Know After This Phase:**
 All 200 source files across 36 concepts have been processed. The replacement report is complete.
 
 ---
 
-## Phase 5: SOURCE_INDEX Reconciliation
+## Phase 6: Post-Replacement Quality Review + orig.md Cleanup
+
+### Goal
+Review all NO and MIXED verdicts to decide whether to keep the replacement or revert to the original. Then delete all `.orig.md` files — they confuse agents that glob for `*.md` sources and can't distinguish originals from replacements.
+
+### Steps
+
+#### 6a: Triage NO verdicts
+- [ ] Compile the full list of NO verdicts across all concepts (currently ~21 from 01-22+29, plus whatever comes from Phase 5 bulk extraction)
+- [ ] For each NO verdict, decide:
+  - **REVERT** — original Haiku paraphrase had more content. Action: `mv NAME.orig.md NAME.md`, remove companion dir
+  - **KEEP** — replacement is thin but at least has provenance (YAML frontmatter, traceable URL). The original was also thin.
+  - **SUPPLEMENT** — neither version is good. Flag for future `add-source` with a better URL.
+- [ ] Apply decisions: revert where needed, log in report
+
+**Expected pattern from concepts 01-22**: Most NOs are JS-heavy company sites (hb11.energy, helionenergy.com, generalfusion.com, zapenergy.com, tokamakenergy.com, etc.) where:
+- The new extraction is thin (15-50 lines of marketing copy)
+- The Haiku paraphrase had more content because WebFetch used a headless browser
+- In these cases, REVERT is likely correct — the Haiku paraphrase, while lossy, captured more signal than static extraction
+
+#### 6b: Triage MIXED verdicts
+- [ ] Compile MIXED verdicts (~23 from 01-22+29, plus Phase 5 bulk extraction)
+- [ ] For each MIXED verdict, decide:
+  - **KEEP** — replacement has clear gains even if some content was lost (e.g., single-source vs multi-source, but the single source is richer)
+  - **REVERT** — losses outweigh gains
+- [ ] Apply decisions, log in report
+
+#### 6c: Delete all .orig.md files
+- [ ] Verify all revert decisions have been applied (no .orig.md we still need)
+- [ ] Run: `find knowledge/concept_research/ -name "*.orig.md" -type f` to list all remaining
+- [ ] Delete them: `find knowledge/concept_research/ -name "*.orig.md" -type f -delete`
+- [ ] Verify `find_sources()` equivalent glob no longer picks up any .orig.md files
+- [ ] Update RESEARCH_GUIDE.md to remove references to .orig.md files
+
+#### 6d: Update replacement report
+- [ ] Add final triage decisions to report summary
+- [ ] Update verdict counts
+- [ ] Note which NOs were reverted vs kept vs flagged for supplementation
+- [ ] Commit
+
+### Validation
+- [ ] No `.orig.md` files remain anywhere in `knowledge/concept_research/`
+- [ ] All REVERT decisions restored the original `.md` and removed companion dirs
+- [ ] Replacement report summary stats are accurate
+- [ ] `find knowledge/concept_research/ -name "*.md" -path "*/sources/*" | wc -l` matches expected source count
+
+**What We Know After This Phase:**
+Every source `.md` file in the tree is the best available version of that source. No ambiguous `.orig.md` files confuse agents. The replacement report documents all decisions.
+
+---
+
+## Phase 7: SOURCE_INDEX Reconciliation
 
 ### Goal
 Ensure `knowledge/concept_research/SOURCE_INDEX.md` accurately reflects the post-replacement state, including source URLs from YAML frontmatter.
 
 ### Steps
 
-#### 5a: Assess current index accuracy
+#### 7a: Assess current index accuracy
 - [ ] Run `uv run python scripts/migrate_research.py --reindex` to regenerate from disk state
 - [ ] Diff the regenerated index against the current index to identify discrepancies
 - [ ] Catalog what's missing: the current index shows file types (`[PDF]`, `[HTML]`, `[processed .md]`) but not source URLs, quality verdicts, or replacement status
 
-#### 5b: Enhance index generation (if warranted)
+#### 7b: Enhance index generation (if warranted)
 - [ ] **Decision point with user:** Is the current format (file listing + type) sufficient, or should the index include:
   - Source URLs (from YAML frontmatter of replaced `.md` files)
   - Replacement status (replaced vs original Haiku paraphrase)
@@ -307,7 +403,7 @@ Ensure `knowledge/concept_research/SOURCE_INDEX.md` accurately reflects the post
   - Optionally include quality verdict (would need to parse the replacement report)
 - [ ] Re-run `--reindex` with enhanced logic
 
-#### 5c: Final validation
+#### 7c: Final validation
 - [ ] Spot-check 5 concepts across the spectrum (1 early, 1 mid, 1 late, 1 with SKIPs, 1 with NO verdicts):
   - Index entry matches actual disk contents
   - Source count matches actual file count
@@ -316,7 +412,7 @@ Ensure `knowledge/concept_research/SOURCE_INDEX.md` accurately reflects the post
 - [ ] Verify concepts 20a and 20b still show "Sources: none"
 - [ ] Verify no `.orig.md` files appear in the index (the current script already skips these)
 
-#### 5d: Cross-reference with replacement report
+#### 7d: Cross-reference with replacement report
 - [ ] Compare SOURCE_INDEX source count per concept against replacement report file count
 - [ ] Flag any concepts where counts don't match (indicates missed files or extra files)
 - [ ] Commit final SOURCE_INDEX.md
@@ -343,6 +439,8 @@ SOURCE_INDEX.md is the authoritative, accurate index of all concept research sou
 | JS-heavy company sites produce thin output | High | Low | Expected — note NO/MIXED in report, keep original. Not a blocker. |
 | `--reindex` script doesn't handle new edge cases | Low | Low | Script is simple glob-based scanner — easy to fix inline. |
 | Extraction costs accumulate | Low | Medium | arXiv HTML is free (no Claude call). PDF extractions ~$1-2 each. Budget ~$50-75 for remaining 69 files. |
+| `.orig.md` files confuse agents | High | Medium | Phase 6 deletes all `.orig.md` after triage. Until then, RESEARCH_GUIDE.md (Phase 4) explains the difference. |
+| NO revert loses provenance | Low | Low | Reverted files lose YAML frontmatter + companion dir, but the original URL is in the replacement report. Can re-extract later if tooling improves. |
 
 ---
 
@@ -405,12 +503,27 @@ _To be filled during execution._
 - arXiv HTML not available for all papers — 2405.20243 required PDF fallback
 - Fusion Energy Base and Firefly website are JS-heavy — static extraction captures less than the original Haiku paraphrases which had access to JS-rendered content via WebFetch's headless browser
 
-### Phase 4 Completion
+### Phase 4 Completion (was Phase 5 — Bulk Extraction)
+**Completed:** 2026-04-04
+**Batch A (concepts 23-25, partial 26):** `957e240` — 1 YES (CORDIS), 2 YES (Springer/Frontiers papers), 3 SKIP (HIF multi-source), 4 NO (JS-heavy sites), 2 MIXED
+**Batch B (26 remaining, 27-28, 30-31):** `c67069a` — Park PDF 1210 lines, Wikipedia 812 lines, Optics Express PDF 845 lines. 2 YES NIF LLNL, 2 YES (ENR, GlobeNewsWire). AIP 403 paywall.
+**Batch C (32-36):** `148e7a1` — BEST Research Plan 8085 lines/$2.03 (biggest win). 3 YES GENF pages. ScienceDirect elio-2014 was open access (predicted paywall). jbxnah.com dead, deutelio.com JS-empty, IAEA SharePoint auth-required.
+**Totals across Phase 4:** 99 YES, 28 MIXED, 33 NO, 11 SKIP (171 total, all 36 concepts complete)
+**Issues:**
+- AIP consistently 403s (3 papers: xcimer hybrid, ribeyre-2025, AIP-2023 stellarator)
+- Chinese company sites unreliable (jbxnah.com dead, energy-singularity multi-source)
+- IAEA FUSE is SharePoint-based, requires auth — cannot extract
+- JS-heavy startup sites (HB11, Marvel, Xcimer, BLF, LPPFusion, EMC2, Deutelio) consistently produce thin static content
+- Multi-source compilations (SEARCH category) are not replaceable by design — they're research agent synthesis, not single-source captures
+
+### Phase 6 Completion (Quality Review + orig.md Cleanup)
 **Completed:**
-**Batch A:** / **Batch B:** / **Batch C:**
+**NO verdicts triaged:** / reverted / kept / flagged
+**MIXED verdicts triaged:** / reverted / kept
+**orig.md files deleted:**
 **Issues:**
 
-### Phase 5 Completion
+### Phase 7 Completion (SOURCE_INDEX)
 **Completed:**
 **Index enhancements:**
 **Issues:**
