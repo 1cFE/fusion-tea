@@ -8,10 +8,10 @@
 | Metric | Count |
 |--------|-------|
 | Total source files | 166 |
-| Replaced (YES) | 75 |
-| Replaced (MIXED) | 20 |
-| Not improved (NO) | 17 |
-| Skipped (SKIP) | 2 |
+| Replaced (YES) | 81 |
+| Replaced (MIXED) | 22 |
+| Not improved (NO) | 20 |
+| Skipped (SKIP) | 3 |
 | Failed | 0 |
 
 ## Quality Verdicts
@@ -252,6 +252,18 @@
 | `iter-01/sources/nearstar-fusion-technology.md` | SEARCH | https://nearstarfusion.com/learn-more | **YES** | 69 lines vs 62 orig. Full NearStar learn-more page: railgun specs (50g, 10 km/s, 1 Hz, >1 MJ, COTS), D-D fuel rationale, molten lead first wall, modular mass-production design (50 MW to 1 GW+), ADVANCE Act regulatory context, operations/maintenance simplicity. Orig was multi-source compilation; new is primary company technical page with comparable breadth. Companion: `raw.html`, `metrics.json`. |
 | `iter-02/sources/first-light-flare-pivot-update.md` | SEARCH | https://world-nuclear-news.org/.../first-light-fusion-presents-novel-approach-to-fusion | **MIXED** | 27 lines vs 51 orig. WNN article: FLARE white paper publication, fast ignition concept (decoupled compression/ignition), gain up to 1000 (min 200 for commercial), demonstrator 1/20th NIF cost, driver $2/J, Mark Thomas quote, Feb 2025 partnership pivot context, founding history. Orig was detailed multi-source compilation with comparison table (projectile vs FLARE), TBR 1.8 validation, plant specs (333 MWe, liquid Li), full pivot timeline. New gains verbatim journalism; loses technical depth. Companion: `raw.html`, `metrics.json`. |
 | `iter-02/sources/nearstar-fusion-2025-update.md` | SEARCH | https://vipc.org/.../vipc-invests-in-nearstar-fusion.../ | **YES** | 51 lines vs 47 orig. Full VIPC investment announcement: VVP/Ecosphere Ventures/Handley investment, SSBCI funding, quotes from CEO Singh, VIPC President Benevento, VVP's Rubin, Strong Atomics' Handley, team background (DOE, NASA, ARPA-E, LANL, NSF, Navy/Army/SDI), CCF prior grant for plasma side injector, MTIF description, D-D fuel, 50-100 MW per machine, data center market. Companion: `raw.html`, `metrics.json`. |
+
+### 29-negative-triangularity-tokamak
+
+| File | Category | URL | Verdict | Notes |
+|------|----------|-----|---------|-------|
+| `iter-01/sources/ball-balestri-ohmic-nt-paper.md` | URL | https://arxiv.org/html/2407.06439v2 | **YES** | 252 lines vs 27 orig. Full Balestri/Ball/Coda paper via arXiv HTML (Pandoc): complete zero-dimensional power balance analysis, four reference devices (SPARC Q~80, MANTA Q~500, ITER, DEMO), confinement enhancement factors (H_NA=2.0, H_98=1.0, H_89=1.4-1.8), optimal operating temperatures (6.4 keV H-mode, 13.6 keV L-mode), 16 downloaded images (figures, plots). Orig was a curated 27-line parameter summary. WebFetch returned comprehensive structured summary with tables and equations. Companion: `raw.html`, `images/` (16), `metrics.json`. |
+| `iter-01/sources/firefly-fusion-diii-d-collaboration.md` | URL | https://d3dfusion.org/fireflyfusion/ | **YES** | 28 lines vs 20 orig. Full page verbatim text: About section, DIII-D collaboration description, Ospanov bio (PhD + 18yr CERN/Fermilab), CTO job posting link, LUCIOLE copper-magnet prototype. Orig captured same facts in summary form but missed Ospanov bio detail and CTO search. WebFetch returned comparable structured summary. Companion: `raw.html`, `metrics.json`. |
+| `iter-01/sources/fusion-energy-base-profile.md` | URL | https://www.fusionenergybase.com/organizations/firefly-fusion | **NO** | 14 lines vs 16 orig. Very thin — JS-heavy page. Extraction captured truncated "compact, high-field tokamaks" description, location (Aix-en-Provence), founded 2024. Orig had same facts plus explicit two-phase magnet strategy (copper→HTS) note. WebFetch got richer content including full magnet strategy quote. Companion: `raw.html`, `metrics.json`. |
+| `iter-01/sources/greyb-firefly-interview.md` | URL | https://greyb.com/blog/firefly-fusion-scouted-interview | **YES** | 89 lines vs 27 orig. Full interview article with verbatim Ospanov quotes: R~2-2.5m, B=10-12T, Q>5, 50-100 MW fusion, 20-30 MW heating, NT plasma shape, HTS magnet specs, heat management challenges. Orig captured key specs but lost all quotes and explanatory context. WebFetch returned comparable structured summary. Companion: `raw.html`, `metrics.json`. |
+| `iter-01/sources/venture-kick-profile.md` | URL | https://www.venturekick.ch/firefly-fusion | **NO** | Extraction FAILED — page requires JS/cookies (redirect loop). WebFetch also failed (got only loading animation). Kept original Haiku paraphrase which captured CHF 50K funding, "microwaves" heating hint (ECRH), Cohort 24-2. No companion dir. |
+| `iter-02/sources/firefly-website-2026.md` | URL | https://fireflyfusion.energy/ | **MIXED** | 57 lines vs 36 orig. Extraction captured team bios (Ospanov, Gibson), all 4 advisors (Bucalossi/WEST, Kikuchi/JT-60, Huguet/ITER+JET, Peters), collaborator quotes. But lost "About" section and tech description from JS-rendered portions — orig had tagline, "60 Years" framing, and structured "Notable Absence" analysis. WebFetch got full content including About section. Companion: `raw.html`, `metrics.json`. |
+| `iter-02/sources/manta-reference-design.md` | CITE | https://arxiv.org/pdf/2405.20243 | **YES** | 3007 lines vs 62 orig. Full 50+ page Rutherford et al. MANTA design study via PDF pipeline. 62 extracted images, 162 table rows, $1.96 extraction cost. Complete reactor design: 450 MW fusion, Q=11.5, 90 MWe net, $3.4B overnight cost, FLiBe blanket (TBR 1.15), REBCO HTS magnets (11T), ICRF heating (40 MW, 110 MHz), pulsed operation (15-min pulses), divertor design, neutronics, maintenance concept. Orig was an excellent 62-line curated summary but new has full paper text with all subsystem details. WebFetch returned structured summary from abstract page. Companion: `raw.pdf`, `images/` (62), `metrics.json`, `decisions.json`, `cost.json`. |
 
 <!-- Entries added concept-by-concept during Phase 2 -->
 

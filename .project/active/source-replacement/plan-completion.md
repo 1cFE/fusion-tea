@@ -141,7 +141,7 @@ For each file (skipping #5, done in Phase 1):
 - [x] Shared papers (#1=#4, #7=#8=#9) have identical byte counts
 - [x] All companion dirs have `images/` subdirectories with downloaded figures (except #2 — see bug below)
 - [x] No content regressions (line counts should be similar or better)
-- [ ] Commit re-extractions
+- [x] Commit re-extractions — `8aba464`
 
 ### Known Limitation: Paper #2 (2503.18960) images unavailable on arXiv
 All 20 images for this paper return 404 from arXiv. This is NOT an agentic-mbse bug — arXiv's HTML viewer isn't serving the images for this paper (they exist in the e-print source tarball but not via HTTP). The URL construction is correct (`/html/2503.18960v1/fig_canis_render_detail.png`). The HTML source has `src=".//fig_..."` which is how LaTeXML generates paths when images are at the document root. Other papers (e.g., 2411.06644v1) work because their images are under an `extracted/` subdirectory. Text/markdown extraction is unaffected; only local image copies are missing for this one paper.
@@ -176,41 +176,37 @@ From the original plan manifest (`.project/active/source-replacement/plan.md` li
 
 For each file, follow the established workflow from the original plan (lines 98-107):
 
-- [ ] **#1** `ball-balestri-ohmic-nt-paper` — arXiv HTML URL
-  - Rename `.md` → `.orig.md`
-  - Extract: `uv run agentic-mbse extract https://arxiv.org/html/2407.06439v2 --save-source --output <companion-dir>/`
-  - Copy `output.md` → top-level `.md`
-  - WebFetch comparison
-  - Quality note: compare line counts, content coverage vs `.orig.md`
+- [x] **#1** `ball-balestri-ohmic-nt-paper` — arXiv HTML URL
+  - 252 lines vs 27 orig. pandoc-arxiv. 16 images. Full paper text. **YES**
 
-- [ ] **#2** `firefly-fusion-diii-d-collaboration` — regular URL
-  - Same workflow: rename → extract → copy → WebFetch → quality note
+- [x] **#2** `firefly-fusion-diii-d-collaboration` — regular URL
+  - 28 lines vs 20 orig. trafilatura. Full page verbatim. **YES**
 
-- [ ] **#3** `fusion-energy-base-profile` — regular URL
-  - Same workflow
+- [x] **#3** `fusion-energy-base-profile` — regular URL
+  - 14 lines vs 16 orig. trafilatura. JS-heavy, thin extraction. **NO**
 
-- [ ] **#4** `greyb-firefly-interview` — regular URL
-  - Same workflow
+- [x] **#4** `greyb-firefly-interview` — regular URL
+  - 89 lines vs 27 orig. trafilatura. Full interview with quotes. **YES**
 
-- [ ] **#5** `venture-kick-profile` — regular URL
-  - Same workflow
+- [x] **#5** `venture-kick-profile` — regular URL
+  - Extraction FAILED (JS/cookie redirect). WebFetch also failed. Kept original. **NO**
 
-- [ ] **#6** `firefly-website-2026` — regular URL
-  - Same workflow (likely JS-heavy company site — may be thin)
+- [x] **#6** `firefly-website-2026` — regular URL
+  - 57 lines vs 36 orig. trafilatura. Team/advisors captured but lost About section (JS). **MIXED**
 
-- [ ] **#7** `manta-reference-design` — CITE (arXiv paper)
-  - Construct URL: `https://arxiv.org/html/2405.20243` (try HTML first; fall back to `/pdf/`)
-  - Same workflow
+- [x] **#7** `manta-reference-design` — CITE (arXiv paper)
+  - arXiv HTML 404 (no HTML version). Fell back to PDF pipeline.
+  - 3007 lines vs 62 orig. 62 images, 162 table rows, $1.96. Full 50+ page design study. **YES**
 
-- [ ] **Write quality notes** to source replacement report for all 7 files
-- [ ] **User reviews** extraction quality for the concept
+- [x] **Write quality notes** to source replacement report for all 7 files
+- [x] **User reviews** extraction quality for the concept — approved 2026-04-04
 
 ### Validation
-- [ ] All 7 files have YAML frontmatter
-- [ ] Companion directories exist with `raw.html` or `raw.pdf` + `metrics.json`
-- [ ] `.orig.md` files preserved for all 7
-- [ ] Quality notes written to report
-- [ ] Commit concept 29
+- [x] All 7 files have YAML frontmatter (except #5 which kept original)
+- [x] Companion directories exist with `raw.html` or `raw.pdf` + `metrics.json` (6 of 7 — #5 failed)
+- [x] `.orig.md` files preserved for 6 of 7 (#5 restored to .md since extraction failed)
+- [x] Quality notes written to report
+- [x] Commit concept 29
 
 **What We Know After This Phase:**
 The full workflow works end-to-end in the migrated directory structure. Any path issues, tooling quirks, or workflow gaps are caught before bulk execution.
@@ -394,9 +390,20 @@ _To be filled during execution._
 **Issues:** Paper #2 (2503.18960) has a double-slash in image URLs causing all 18 downloads to 404. Bug in agentic-mbse `_download_arxiv_images()` URL resolution. Text/markdown extraction unaffected.
 
 ### Phase 3 Completion
-**Completed:**
+**Completed:** 2026-04-04
 **Quality summary for concept 29:**
+- 7 files processed: 4 YES, 1 MIXED, 2 NO (1 extraction failure, 1 JS-thin)
+- #1 ball-balestri: arXiv HTML via Pandoc, 252 lines, 16 images — full paper
+- #2 diii-d-collaboration: 28 lines, full page verbatim text
+- #3 fusion-energy-base: JS-heavy, 14 lines — thinner than orig
+- #4 greyb-interview: 89 lines, full interview with CEO quotes
+- #5 venture-kick: FAILED — JS/cookie redirect, both trafilatura and WebFetch fail. Kept original.
+- #6 firefly-website: 57 lines, team/advisors but lost JS-rendered About section
+- #7 manta-reference-design: arXiv HTML not available (404). PDF pipeline: 3007 lines, 62 images, 162 tables, $1.96
 **Issues:**
+- Venture Kick (venturekick.ch) uses a cookie/JS redirect that blocks all automated extraction. The original Haiku paraphrase is the only capture of this content.
+- arXiv HTML not available for all papers — 2405.20243 required PDF fallback
+- Fusion Energy Base and Firefly website are JS-heavy — static extraction captures less than the original Haiku paraphrases which had access to JS-rendered content via WebFetch's headless browser
 
 ### Phase 4 Completion
 **Completed:**
