@@ -1,71 +1,60 @@
 # Current Work
 
-**Last Updated**: 2026-03-10
+**Last Updated**: 2026-04-04
 
 ---
 
 ## Active Work
 
-### Phase 2a: Generative Reasoning Tree
+### Concept Explorer — Taxonomy Visualizer (shipped, assessing next steps)
+
+**Status**: Core features landed, evaluating UX and feature gaps
+**Location**: `exploration/concept_explorer/`
+**Branch**: `ralph/concept-explorer`
+
+Built Mar 29: taxonomy data layer (38 concepts), similarity engine, interactive frontend with tree view, constellation scatter plot, taxonomy cards, and Cytoscape neighborhood graph (model-view architecture). 140+ tests passing.
+
+**Components**:
+- Data: `taxonomy_models.py`, `similarity.py`, `seed_registry.py`
+- API: 7 taxonomy endpoints in `server.py`
+- Frontend: `taxonomy.js` (orchestrator), `taxonomy_card.js`, `neighborhood_graph.js`, `constellation.js`, `tree_view.js`
+
+### Phase 2a: Generative Reasoning Tree (paused)
 
 **Status**: Round 0 complete, awaiting Round 1 (L1→L2 expansion)
 **Location**: `exploration/phase_2a/`
-**Branch**: `design-space-explore`
 
-Infrastructure built and tested. Round 0 expanded root node → 5 confinement options (closed magnetic, open magnetic/mirror, inertial, magnetized target, electrostatic well) with 22 constraints. All L0 constraints are novel variables (physics-level, below table resolution) — table validation will become meaningful at L2+.
-
-**Scripts**: `expand.py`, `validate.py`, `render.py` (all working, tested end-to-end)
-**Data**: `tree.json` (6 nodes), `constraints.json` (22 constraints), `reasoning_tree.md` (rendered)
-**Logs**: `exploration/phase_2a/logs/` (raw claude stdout/stderr per call)
-
-**Next steps**:
-1. Expand L1 nodes (start with `L1-closed-magnetic-topology-confinement` — should produce tokamak/stellarator/mirror/FRC)
-2. Validate L2 constraints against table — this is where the validation layer earns its keep
-3. See `exploration/phase_2a/plan.md` for full execution checklist
+Infrastructure built and tested. Round 0 expanded root → 5 confinement options, 22 constraints. L0 constraints are all novel physics-level variables — table validation meaningful at L2+.
 
 ### Traceability System (on hold)
 
 **Status**: Spec + plan written, awaiting prioritization
 **Location**: `.project/active/traceability-system/`
 
-Citation system for MR-4 enforcement. Ready to implement when needed.
+---
+
+## Remaining Active Work Items
+
+- `automated-concept-analysis` — status unknown
+- `constraint-atms-spike` — status unknown
+- `iterative-analysis-loop` — status unknown
+- `source-replacement` — status unknown
+- `traceability-system` — spec + plan written, on hold
 
 ---
 
 ## Recently Completed
 
+### [2026-03-29] Concept Taxonomy & Interactive Explorer
+4 work items archived (2 complete, 2 superseded). See `CHANGELOG.md`.
+
 ### [2026-03-06] Project Cleanup
-
-Archived 9 active items and 4 epics. See `.project/completed/CHANGELOG.md` for full details.
-
-Key outcomes:
-- Infrastructure pipeline proven (Zotero → extraction → knowledge base)
-- IFE modeling demo complete (WI-006/007/008 via modeling PM)
-- Interactive workflow explainer shipped (demo/index.html)
-- Cost patterns and E2E pipeline de-risking complete, changes handed off to sysml-codegen
+9 active items and 4 epics archived. Infrastructure phase complete.
 
 ---
 
 ## Up Next
 
-1. **Phase 2a Round 1+**: Expand L1→L2→L3, validate constraints, assess against spec criteria
-2. Modeling PM work — MFE concept modeling, cross-concept comparison
+1. Assess taxonomy visualizer UX — identify rough edges and feature gaps
+2. Phase 2a Round 1+ — expand L1→L2→L3, validate constraints
 3. Traceability system implementation (when prioritized)
-4. New source ingestion (pipeline ready, add sources as needed)
-
----
-
-## Session Notes
-
-### 2026-03-10
-- Built Phase 2a generative reasoning tree infrastructure (6 scripts + data files + prompt template)
-- Ran Round 0: expanded root → 5 confinement options, 22 physics-level constraints
-- Fixed 3 bugs during execution: `--max-tokens` flag, subprocess stdin handling, claude output format
-- All L0 constraints correctly unmappable (novel variables at physics level below table resolution)
-- Key insight: constraint validation layer won't fire until L2+ where LLM uses categorical vocabulary
-
-### 2026-03-06
-- Comprehensive project cleanup: reviewed all active items and backlog
-- Archived 9 of 10 active items (1 abandoned, 8 archived)
-- Archived 4 of 5 backlog epics (Knowledge DB Integration kept)
-- Updated BACKLOG.md, CHANGELOG.md, CURRENT_WORK.md

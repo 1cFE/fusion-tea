@@ -4,6 +4,31 @@ Historical record of completed work.
 
 ---
 
+## [2026-03-29] - Concept Taxonomy & Interactive Explorer
+
+**Type**: Feature (4 work items, 2 superseded)
+**Duration**: 1 day
+
+### Summary
+Built taxonomy visualizer for all 38 fusion concepts: Pydantic data models, pairwise similarity engine (4-dimension decomposition + classical MDS), 7 API endpoints, and interactive frontend with tree view, Plotly constellation scatter, taxonomy cards, and Cytoscape neighborhood graph.
+
+Neighborhood graph went through two failed iterations (procedural add/remove causing re-renders) before landing on a proper model-view architecture (GraphModel built once, GraphView toggles visibility).
+
+### Items Archived
+- `concept-taxonomy-and-similarity` — Foundation: data models, similarity engine, API, tree/constellation/cards. Complete.
+- `graph-model-rewrite` — Model-view rewrite of neighborhood graph. Complete.
+- `taxonomy-viz-redesign` — Intermediate attempt, superseded by graph-model-rewrite.
+- `taxonomy-viz-polish` — Intermediate attempt, superseded by graph-model-rewrite.
+
+### Deliverables
+- `exploration/concept_explorer/taxonomy_models.py` — Pydantic models with typed enums
+- `exploration/concept_explorer/similarity.py` — Pairwise similarity + MDS + diversity-aware bridges
+- `exploration/concept_explorer/seed_registry.py` — Canonical JSON registry seeded from table_v2.csv
+- Frontend: `taxonomy.js`, `taxonomy_card.js`, `neighborhood_graph.js`, `constellation.js`, `tree_view.js`
+- 140+ tests (54 new for taxonomy/similarity)
+
+---
+
 ## [2026-03-06] - Project Cleanup & Archival
 
 **Type**: Housekeeping

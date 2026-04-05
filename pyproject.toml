@@ -37,6 +37,7 @@ costingfe = { path = "../1costingfe", editable = true }
 [dependency-groups]
 dev = [
     "mypy>=1.19.1",
+    "playwright>=1.58.0",
     "pytest>=9.0.2",
     "ruff>=0.15.8",
     "types-pyyaml>=6.0.12.20250915",
