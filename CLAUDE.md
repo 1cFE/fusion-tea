@@ -233,6 +233,8 @@ See `knowledge/SOURCE_INDEX.md` for the complete listing of ingested sources wit
 - What each source covers
 - Research questions it serves
 
+For directory layout, source quality tiers, image inspection, and R2 sync setup, see `knowledge/concept_research/README.md`. The `concept-research-navigation` skill provides methodology for evaluating sources, cross-referencing claims, and assessing data sufficiency.
+
 Source selection is iterative — sources are ingested as the investigation identifies data needs (see OVERVIEW.md, Source Strategy).
 
 ## Installed Tools
@@ -305,6 +307,7 @@ See `knowledge/concept_research/README.md` for full setup including Windows inst
 
 - Library definitions must be concept-agnostic; concept-specific values live in `designs/` (MR-3)
 - All quantitative values must cite their source with structured citations (MR-4)
+- Text extraction from sources is lossy — tables, equations, and figures may be incomplete or garbled in the `.md` text. Always cross-check quantitative data against images in companion directories (`sources/{name}/images/`). For PDF sources, equations exist ONLY as images. See `knowledge/concept_research/README.md` for the image inspection protocol.
 - LCOE calculations depend on many subsystem costs — maintain clear traceability chains
 - Different fusion concepts have different cost structures — the taxonomy (Stage 1) identifies what's shared vs. divergent before modeling begins
 - Modeling patterns must be defined and validated before production models are built (MR-6, PR-3)

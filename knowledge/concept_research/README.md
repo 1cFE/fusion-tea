@@ -137,3 +137,82 @@ rclone sync knowledge/concept_research r2:1cfe-research/concept_research --inclu
 ## Relationship to Concept Analysis Pipeline
 
 The concept analysis pipeline at `exploration/concept_analysis/scripts/run_analysis.py` reads research dossiers and source extractions from this directory. It resolves the path via `RESEARCH_DIR` in the script constants. A symlink at `exploration/phase_1a/research/` also points here for backward compatibility.
+
+## Reading Research Data
+
+Start with `{concept-id}/dossier.md` for a synthesized overview: what the concept is, company, key parameters, differentiation table values. Use it for orientation, but do NOT treat it as authoritative for specific numbers — trace quantitative claims to the individual sources.
+
+Evidence lives in `{concept-id}/iter-NN/sources/`. Each iteration may add new sources — check ALL `iter-*` directories when gathering evidence on a topic.
+
+**Companion directory pattern.** Each source appears as a `.md` file plus a same-named directory:
+
+```
+iter-NN/sources/
+├── {name}.md        # Source text — read this
+├── {name}/          # Companion directory (artifact bundle)
+│   ├── output.md    # Same content as ../{name}.md (a copy)
+│   ├── images/      # Tables, equations, figures (R2-synced)
+│   ├── metrics.json # Extraction quality metrics
+│   ├── raw.html     # Original HTML snapshot (R2-synced)
+│   └── raw.pdf      # Original PDF (R2-synced)
+```
+
+`{name}.md` and `{name}/output.md` are identical. Read `{name}.md`; use the companion dir for images and provenance artifacts.
+
+## Source Quality Tiers
+
+Sources fall into three tiers. Check the first lines of `sources/{name}.md` to identify which:
+
+| Tier | How to identify | Trust level |
+|------|----------------|-------------|
+| **Direct extraction** | Starts with `---` and has `source:`, `backend:`, `content_hash_sha256:` in YAML frontmatter | Authoritative for what it contains. Text may still be lossy — verify quantitative data against images. |
+| **Haiku paraphrase** | Starts with `# Title` directly, no YAML frontmatter (or is a `.orig.md` file) | Lossy summary. Specific numbers and technical details may be wrong. Flag as unverified if citing values. |
+| **Dossier** | `{concept-id}/dossier.md` | Synthesized overview. Good for orientation. Not authoritative for specific claims — trace to sources. |
+
+When sources disagree: peer-reviewed paper > technical report > company website > news article > Haiku paraphrase. Direct extraction beats Haiku paraphrase for the same underlying source. Later iterations supersede earlier ones on the same topic.
+
+## Image Inspection
+
+Text extraction from sources is **lossy**. Tables get garbled (dropped columns, merged cells, corrupted scientific notation like `1.66 1020` instead of `1.66 × 10²⁰`). Equations in PDFs have no text form at all. The `images/` directory in the companion dir holds the ground truth.
+
+### When you MUST read images
+
+1. **You see `![](images/page_NNN_eq_N.png)` in the text.** The equation exists ONLY in the image.
+2. **You are extracting a number for analysis or modeling.** Cross-check against the table image — do not trust text-extracted tables for quantitative work.
+3. **The text references a table or figure by number** ("see Table 3", "Figure 7 shows"). Find and read the corresponding image.
+4. **Numbers don't add up or text seems incomplete.** The missing data is probably in a table/figure image.
+
+### Image path resolution
+
+Image references in the source `.md` file (like `![](images/page_003_table_0.png)`) are relative to the **companion directory**, not to the `.md` file. Resolve as:
+
+```
+iter-NN/sources/{name}/images/page_003_table_0.png
+```
+
+### What's in `images/`
+
+**PDF sources** (YAML `backend: "agentic-mbse"` or `source_type: "local_file"`):
+- `page_NNN_table_N.png` — tables (authoritative; text extraction mangles them)
+- `page_NNN_eq_N.png` — equations (no text form; markdown only has the image reference)
+- `tmp*.pdf-N-N.png` — figures, charts, diagrams, schematics
+
+**arXiv HTML sources** (YAML `backend: "pandoc-arxiv"`):
+- Original filenames (e.g., `flux_contours.png`). Figures only — tables and equations are in the text as markdown.
+
+Images are R2-synced binaries, not in git. If `images/` is empty or missing, run `./scripts/sync_research.sh pull`.
+
+## Tracing to Original Source
+
+When extraction seems wrong or incomplete, trace back:
+
+1. **YAML frontmatter `source:` field** — the original URL or PDF path
+2. **`sources/{name}/raw.html` or `raw.pdf`** — the original fetched content in the companion dir (R2-synced)
+3. **`sources/{name}/metrics.json`** — extraction quality warnings and metrics
+4. **Fetch the URL directly** if the above are still insufficient
+
+## Known Limitations
+
+- **JS-heavy company websites** extract thinly — the rendered page often relies on JavaScript that the fetcher doesn't execute. Haiku paraphrases of these sites may actually contain more information than direct extraction.
+- **arXiv HTML viewer image 404s** — some arXiv papers have missing images in the HTML viewer output, even when the PDF contains them. Fall back to the PDF (`raw.pdf`) if available.
+- **Paywalled papers** — extracted from local PDFs supplied by the user. Identified by `source_type: local_file` in frontmatter. No URL to re-fetch; the `raw.pdf` in the companion dir is the only copy.

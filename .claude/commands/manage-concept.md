@@ -58,7 +58,7 @@ Load files based on the state determined above:
 
 All paths relative to `exploration/concept_analysis/analyses/<concept-id>/`.
 
-For sources, use the glob pattern: `exploration/phase_1a/research/<concept-id>/iter-*/sources/*.md` (e.g., `exploration/phase_1a/research/11-magnetic-mirror/iter-*/sources/*.md`). Sources live in the Phase 1a research directory, not in the concept analysis directory.
+For sources, use the glob pattern: `knowledge/concept_research/<concept-id>/iter-*/sources/*.md` (e.g., `knowledge/concept_research/11-magnetic-mirror/iter-*/sources/*.md`). Sources live in the concept research directory, not in the concept analysis directory.
 
 ### Phase 3: Memory Loading
 
