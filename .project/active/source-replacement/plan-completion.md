@@ -329,104 +329,48 @@ All 200 source files across 36 concepts have been processed. The replacement rep
 
 ---
 
-## Phase 6: Post-Replacement Quality Review + orig.md Cleanup
+## Phase 6: Clean Up + Re-source
 
-### Goal
-Review all NO and MIXED verdicts to decide whether to keep the replacement or revert to the original. Then delete all `.orig.md` files — they confuse agents that glob for `*.md` sources and can't distinguish originals from replacements.
+Three steps. The provenance investigation (documented in `.project/active/source-replacement/triage-report.md`) revealed that NO-verdict `.orig.md` files are multi-source Haiku compilations with broken provenance — the data is real but untraceable. The fix requires an autonomous research module that can search for and extract the actual source URLs.
 
-### Steps
+### Provenance Investigation Summary
 
-#### 6a: Triage NO verdicts
-- [ ] Compile the full list of NO verdicts across all concepts (currently ~21 from 01-22+29, plus whatever comes from Phase 5 bulk extraction)
-- [ ] For each NO verdict, decide:
-  - **REVERT** — original Haiku paraphrase had more content. Action: `mv NAME.orig.md NAME.md`, remove companion dir
-  - **KEEP** — replacement is thin but at least has provenance (YAML frontmatter, traceable URL). The original was also thin.
-  - **SUPPLEMENT** — neither version is good. Flag for future `add-source` with a better URL.
-- [ ] Apply decisions: revert where needed, log in report
+- `.orig.md` files are multi-source compilations (3-8 URLs per file), not single-URL captures
+- WebFetch does NOT use a headless browser — it's HTTP GET → HTML-to-markdown → Haiku 3.5 summary
+- The "JS-heavy site" explanation was wrong: the data lives on standard HTML news sites that our extraction handles fine
+- Spot-checked 10/10 quantitative claims across 3 concepts — all real, independently verifiable
+- The real gap: we extracted only the primary URL; the originals compiled from many URLs without recording which
+- Original research prompt (`exploration/phase_1a/prompt_templates/research.md` line 26) instructed agents to "save the key technical content" — no URL-per-fact requirement, no quotes, no provenance
 
-**Expected pattern from concepts 01-22**: Most NOs are JS-heavy company sites (hb11.energy, helionenergy.com, generalfusion.com, zapenergy.com, tokamakenergy.com, etc.) where:
-- The new extraction is thin (15-50 lines of marketing copy)
-- The Haiku paraphrase had more content because WebFetch used a headless browser
-- In these cases, REVERT is likely correct — the Haiku paraphrase, while lossy, captured more signal than static extraction
+### Step 1: Delete YES/MIXED .orig.md files ✅
 
-#### 6b: Triage MIXED verdicts
-- [ ] Compile MIXED verdicts (~23 from 01-22+29, plus Phase 5 bulk extraction)
-- [ ] For each MIXED verdict, decide:
-  - **KEEP** — replacement has clear gains even if some content was lost (e.g., single-source vs multi-source, but the single source is richer)
-  - **REVERT** — losses outweigh gains
-- [ ] Apply decisions, log in report
+- [x] Deleted 122 `.orig.md` files for YES and MIXED verdicts
+- [x] Verified: all 122 had corresponding `.md` with YAML frontmatter
+- [x] 21 NO-verdict `.orig.md` files preserved as test inputs for Step 3
 
-#### 6c: Delete all .orig.md files
-- [ ] Verify all revert decisions have been applied (no .orig.md we still need)
-- [ ] Run: `find knowledge/concept_research/ -name "*.orig.md" -type f` to list all remaining
-- [ ] Delete them: `find knowledge/concept_research/ -name "*.orig.md" -type f -delete`
-- [ ] Verify `find_sources()` equivalent glob no longer picks up any .orig.md files
-- [ ] Update RESEARCH_GUIDE.md to remove references to .orig.md files
+### Step 2: Build autonomous research module
 
-#### 6d: Update replacement report
-- [ ] Add final triage decisions to report summary
-- [ ] Update verdict counts
-- [ ] Note which NOs were reverted vs kept vs flagged for supplementation
-- [ ] Commit
+Build the "search → extract" module described in `.project/concepts/autonomous-source-acquisition.md`. This module:
+1. Takes a gap description (or an `.orig.md` file with claims + domain hints)
+2. Uses WebSearch to find the actual URLs where claims originate
+3. Uses `agentic-mbse extract <url>` to capture each URL with full provenance
+4. Saves each as an individual source file (YAML frontmatter, companion dir)
 
-### Validation
-- [ ] No `.orig.md` files remain anywhere in `knowledge/concept_research/`
-- [ ] All REVERT decisions restored the original `.md` and removed companion dirs
-- [ ] Replacement report summary stats are accurate
-- [ ] `find knowledge/concept_research/ -name "*.md" -path "*/sources/*" | wc -l` matches expected source count
+Key design principle: **research (finding URLs) and capture (extracting content) are separate operations with different tools.** WebSearch/WebFetch for discovery. `agentic-mbse extract` for capture. Never mix them.
 
-**What We Know After This Phase:**
-Every source `.md` file in the tree is the best available version of that source. No ambiguous `.orig.md` files confuse agents. The replacement report documents all decisions.
+- [ ] Module built and working
+- [ ] Produces individual source files with YAML frontmatter + companion dirs
+- [ ] Audit trail: what was searched, found, extracted, rejected, queued
 
----
+### Step 3: Test module on NO-verdict .orig.md files
 
-## Phase 7: SOURCE_INDEX Reconciliation
+The 21 NO `.orig.md` files are ideal test cases: verified-real data, domain hints in headers, measurable success criteria.
 
-### Goal
-Ensure `knowledge/concept_research/SOURCE_INDEX.md` accurately reflects the post-replacement state, including source URLs from YAML frontmatter.
-
-### Steps
-
-#### 7a: Assess current index accuracy
-- [ ] Run `uv run python scripts/migrate_research.py --reindex` to regenerate from disk state
-- [ ] Diff the regenerated index against the current index to identify discrepancies
-- [ ] Catalog what's missing: the current index shows file types (`[PDF]`, `[HTML]`, `[processed .md]`) but not source URLs, quality verdicts, or replacement status
-
-#### 7b: Enhance index generation (if warranted)
-- [ ] **Decision point with user:** Is the current format (file listing + type) sufficient, or should the index include:
-  - Source URLs (from YAML frontmatter of replaced `.md` files)
-  - Replacement status (replaced vs original Haiku paraphrase)
-  - Quality verdict from the replacement report (YES/NO/MIXED/SKIP)
-- [ ] If enhancements wanted: update `generate_source_index()` in `scripts/migrate_research.py` to:
-  - Read YAML frontmatter from `.md` files and extract `source` URL
-  - Distinguish replaced sources (have companion dir + frontmatter) from unreplaced (no companion dir)
-  - Optionally include quality verdict (would need to parse the replacement report)
-- [ ] Re-run `--reindex` with enhanced logic
-
-#### 7c: Final validation
-- [ ] Spot-check 5 concepts across the spectrum (1 early, 1 mid, 1 late, 1 with SKIPs, 1 with NO verdicts):
-  - Index entry matches actual disk contents
-  - Source count matches actual file count
-  - URLs in index (if added) match YAML frontmatter
-  - Companion dirs listed match actual dirs
-- [ ] Verify concepts 20a and 20b still show "Sources: none"
-- [ ] Verify no `.orig.md` files appear in the index (the current script already skips these)
-
-#### 7d: Cross-reference with replacement report
-- [ ] Compare SOURCE_INDEX source count per concept against replacement report file count
-- [ ] Flag any concepts where counts don't match (indicates missed files or extra files)
-- [ ] Commit final SOURCE_INDEX.md
-
-### Validation
-- [ ] `--reindex` runs without errors
-- [ ] All 38 concepts listed (36 numbered + 20a + 20b)
-- [ ] Source counts match reality for spot-checked concepts
-- [ ] No stale entries (files listed that don't exist on disk)
-- [ ] No missing entries (files on disk not listed)
-- [ ] Commit
-
-**What We Know After This Phase:**
-SOURCE_INDEX.md is the authoritative, accurate index of all concept research sources. It can be trusted by the analysis pipeline and future agents.
+- [ ] Run module on each `.orig.md` — pass the content + domain hints, get back individually-traced source files
+- [ ] Verify: key quantitative claims from `.orig.md` appear in at least one extracted source
+- [ ] Delete `.orig.md` files that have been fully re-sourced
+- [ ] For partially-sourced: keep `.orig.md`, flag remaining gaps for human action
+- [ ] Commit new source files
 
 ---
 
@@ -436,11 +380,9 @@ SOURCE_INDEX.md is the authoritative, accurate index of all concept research sou
 |------|-----------|--------|------------|
 | arXiv HTML fix doesn't improve quality | Low | High | Phase 1 validates before bulk re-extraction. If FAIL, debug agentic-mbse first. |
 | Paywalled sources in 23-36 (ScienceDirect, Wiley, T&F) | High | Low | Same pattern as 01-22: ask user for local PDF copy. |
-| JS-heavy company sites produce thin output | High | Low | Expected — note NO/MIXED in report, keep original. Not a blocker. |
-| `--reindex` script doesn't handle new edge cases | Low | Low | Script is simple glob-based scanner — easy to fix inline. |
-| Extraction costs accumulate | Low | Medium | arXiv HTML is free (no Claude call). PDF extractions ~$1-2 each. Budget ~$50-75 for remaining 69 files. |
-| `.orig.md` files confuse agents | High | Medium | Phase 6 deletes all `.orig.md` after triage. Until then, RESEARCH_GUIDE.md (Phase 4) explains the difference. |
-| NO revert loses provenance | Low | Low | Reverted files lose YAML frontmatter + companion dir, but the original URL is in the replacement report. Can re-extract later if tooling improves. |
+| Single-source extraction misses multi-source data | High | Medium | Understood and accepted for YES/MIXED. NO files addressed by Step 2-3 (autonomous research module). |
+| Extraction costs accumulate | Low | Medium | arXiv HTML is free (no Claude call). PDF extractions ~$1-2 each. |
+| `.orig.md` claims can't be re-sourced | Low | Low | Spot-check confirmed data is real and on accessible sites. WebSearch finds URLs quickly. Main risk: sites that went offline since March 2026. |
 
 ---
 
@@ -501,7 +443,7 @@ _To be filled during execution._
 **Issues:**
 - Venture Kick (venturekick.ch) uses a cookie/JS redirect that blocks all automated extraction. The original Haiku paraphrase is the only capture of this content.
 - arXiv HTML not available for all papers — 2405.20243 required PDF fallback
-- Fusion Energy Base and Firefly website are JS-heavy — static extraction captures less than the original Haiku paraphrases which had access to JS-rendered content via WebFetch's headless browser
+- Fusion Energy Base and Firefly website are JS-heavy — static extraction captures less content. Note: the original `.orig.md` files were not just WebFetch on the primary URL. They are multi-source compilations where the research agent visited multiple URLs (subpages, news articles, press releases) and compiled Haiku summaries into one file. WebFetch does NOT use a headless browser — it fetches HTML via HTTP GET, converts to markdown, then passes through Haiku 3.5 for summarization. The richer content in originals came from visiting more URLs, not from better rendering of a single URL. See Phase 6 provenance investigation for full analysis.
 
 ### Phase 4 Completion (was Phase 5 — Bulk Extraction)
 **Completed:** 2026-04-04
@@ -513,14 +455,23 @@ _To be filled during execution._
 - AIP consistently 403s (3 papers: xcimer hybrid, ribeyre-2025, AIP-2023 stellarator)
 - Chinese company sites unreliable (jbxnah.com dead, energy-singularity multi-source)
 - IAEA FUSE is SharePoint-based, requires auth — cannot extract
-- JS-heavy startup sites (HB11, Marvel, Xcimer, BLF, LPPFusion, EMC2, Deutelio) consistently produce thin static content
-- Multi-source compilations (SEARCH category) are not replaceable by design — they're research agent synthesis, not single-source captures
+- JS-heavy startup sites (HB11, Marvel, Xcimer, BLF, LPPFusion, EMC2, Deutelio) consistently produce thin static content from the primary URL. However, the Phase 6 provenance investigation revealed that the data in the original `.orig.md` files mostly came from *external* news sites and press releases (standard HTML, fully extractable) — not from the JS-heavy primary URLs. The thin extraction is a single-source problem, not a JS problem.
+- Multi-source compilations (SEARCH category) are not replaceable by single-source extraction — they're research agent synthesis from multiple URLs. The autonomous research module (Phase 8) addresses this by searching for and individually extracting the component URLs.
 
-### Phase 6 Completion (Quality Review + orig.md Cleanup)
+### Phase 6 Step 1 Completion (Delete YES/MIXED .orig.md)
+**Completed:** 2026-04-04
+**Deleted:** 122 `.orig.md` files (all YES + MIXED verdicts)
+**Preserved:** 21 NO-verdict `.orig.md` files as test inputs for Step 3
+**Issues:** None
+
+### Phase 6 Step 2 (Build autonomous research module)
+**Depends on:** `.project/concepts/autonomous-source-acquisition.md`
 **Completed:**
-**NO verdicts triaged:** / reverted / kept / flagged
-**MIXED verdicts triaged:** / reverted / kept
-**orig.md files deleted:**
+**Issues:**
+
+### Phase 6 Step 3 (Test module on NO .orig.md files)
+**Completed:**
+**Files re-sourced:**
 **Issues:**
 
 ### Phase 7 Completion (SOURCE_INDEX)
