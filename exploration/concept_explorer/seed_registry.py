@@ -1,4 +1,4 @@
-"""Seed the concept registry and decision tree from table_v2.csv.
+"""Seed the concept registry and decision tree from concept_analysis/table.csv.
 
 One-time migration script. Reads the taxonomy CSV, validates each row
 through ConceptTaxonomy Pydantic models, and writes:
@@ -16,7 +16,9 @@ import json
 import re
 import sys
 from collections import defaultdict
+from enum import Enum
 from pathlib import Path
+from typing import TypeVar
 
 # Ensure project root is on sys.path
 _PROJECT_ROOT = Path(__file__).parent.parent.parent
@@ -45,19 +47,8 @@ from exploration.concept_explorer.taxonomy_models import (  # noqa: E402
     TritiumBreeding,
 )
 
-CSV_PATH = Path(__file__).parent.parent / "phase_1b_v2" / "table_v2.csv"
+CSV_PATH = Path(__file__).parent.parent / "concept_analysis" / "table.csv"
 DATA_DIR = Path(__file__).parent / "data"
-
-# ---------------------------------------------------------------------------
-# Known cost model IDs (concept name -> explorer ID)
-# ---------------------------------------------------------------------------
-
-COST_MODEL_IDS: dict[str, str] = {
-    "Laser ICF - p-B11 Fast Ignition": "04",
-    "Planar Coil Stellarator": "05",
-    "Magnetic Mirror (p-B11)": "06",
-    "FRC w/ Direct Conversion": "08",
-}
 
 # ---------------------------------------------------------------------------
 # Value mappings: CSV string -> enum value
@@ -78,7 +69,10 @@ FUEL_MAP: dict[str, FuelType] = {
 }
 
 
-def _na_or_enum(value: str, enum_cls: type) -> object | None:
+E = TypeVar("E", bound=Enum)
+
+
+def _na_or_enum(value: str, enum_cls: type[E]) -> E | None:
     """Map CSV value to enum, treating 'N/A' as None."""
     value = value.strip()
     if value == "N/A":
@@ -137,7 +131,7 @@ def _parse_row(row: dict[str, str]) -> ConceptTaxonomy:
         repetition_rate=_na_or_enum(row["Repetition Rate"], RepetitionRate),
         driver_technology=row["Driver Technology"].strip() or None,
         confidence=TaxonomyConfidence(row["Overall Confidence"].strip()),
-        cost_model_id=COST_MODEL_IDS.get(name),
+        analysis_id=row["ID"].split("-", 1)[0] or None,
     )
 
 
@@ -332,7 +326,7 @@ def main() -> None:
     # Build registry
     registry = ConceptRegistry(
         version="1.0",
-        generated_from="table_v2.csv",
+        generated_from="concept_analysis/table.csv",
         concepts=concepts,
     )
 

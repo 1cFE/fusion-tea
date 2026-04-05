@@ -214,7 +214,7 @@ class ConceptTaxonomy(BaseModel):
 
     # Metadata
     confidence: TaxonomyConfidence
-    cost_model_id: str | None = None
+    analysis_id: str | None = None
 
     @model_validator(mode="after")
     def _validate_hierarchy(self) -> ConceptTaxonomy:

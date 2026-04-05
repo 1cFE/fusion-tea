@@ -116,11 +116,11 @@ var TaxonomyCards = (function () {
       card.appendChild(driver);
     }
 
-    // Cost model link
-    if (concept.cost_model_id) {
+    // Cost model link — only show if this concept has a modeled page available
+    if (concept.analysis_id && _modeledIds && _modeledIds.has(concept.analysis_id)) {
       var link = document.createElement("a");
       link.className = "taxonomy-card__link";
-      link.href = "/concept/" + concept.cost_model_id;
+      link.href = "/concept/" + concept.analysis_id;
       link.textContent = "View cost model \u2192";
       card.appendChild(link);
     }
@@ -439,9 +439,14 @@ var TaxonomyCards = (function () {
   // ---------------------------------------------------------------------------
 
   var _registry = null;
+  var _modeledIds = null;
 
   function setRegistry(registry) {
     _registry = registry;
+  }
+
+  function setModeledIds(ids) {
+    _modeledIds = ids;
   }
 
   // ---------------------------------------------------------------------------
@@ -453,6 +458,7 @@ var TaxonomyCards = (function () {
     buildComparison: buildComparison,
     renderNeighborList: renderNeighborList,
     renderComparison: renderComparison,
-    setRegistry: setRegistry
+    setRegistry: setRegistry,
+    setModeledIds: setModeledIds
   };
 })();

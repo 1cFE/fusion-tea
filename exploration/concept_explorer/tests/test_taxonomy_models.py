@@ -252,17 +252,35 @@ class TestConceptRegistry:
         assert tae.mfe_topology == MFETopology.COMPACT_TOROID
         assert tae.fuel == FuelType.PB11
 
-    def test_cost_model_id_set_for_known_concepts(self, registry: ConceptRegistry):
-        """Concepts with cost models should have cost_model_id set."""
-        # Concept 04 = Laser ICF - p-B11 Fast Ignition
+    def test_analysis_id_populated_for_all_concepts(self, registry: ConceptRegistry):
+        """Every concept must have an analysis_id from the authoritative CSV."""
+        missing = [c.concept_id for c in registry.concepts if c.analysis_id is None]
+        assert not missing, f"Concepts missing analysis_id: {missing}"
+
+    def test_analysis_id_spot_checks(self, registry: ConceptRegistry):
+        """Spot-check analysis_id values against the authoritative directory mapping."""
+        # Concept with existing cost model
         hb11 = registry.by_id("laser-icf-p-b11-fast-ignition")
         assert hb11 is not None
-        assert hb11.cost_model_id == "04"
+        assert hb11.analysis_id == "04"
 
-        # Concept without a cost model should have None
+        # Previously unmapped concept (no cost model)
         cfs = registry.by_id("hts-compact-tokamak")
         assert cfs is not None
-        assert cfs.cost_model_id is None
+        assert cfs.analysis_id == "01"
+
+        # Disambiguated magnetic mirror variants
+        mm_pb11 = registry.by_id("magnetic-mirror-p-b11")
+        assert mm_pb11 is not None
+        assert mm_pb11.analysis_id == "06"
+        mm_dt = registry.by_id("magnetic-mirror-d-t")
+        assert mm_dt is not None
+        assert mm_dt.analysis_id == "11"
+
+        # Alphanumeric sub-variant (17a/17b split)
+        fi_dt = registry.by_id("laser-icf-fast-ignition-d-t")
+        assert fi_dt is not None
+        assert fi_dt.analysis_id == "17b"
 
 
 class TestDecisionTree:

@@ -64,12 +64,13 @@
     toggleBtn = document.getElementById("sidebar-toggle");
 
     // Fetch all initial data in parallel
-    var treeData, constellationData, registryData;
+    var treeData, constellationData, registryData, manifestData;
     try {
       var responses = await Promise.all([
         fetch("/api/taxonomy/tree"),
         fetch("/api/taxonomy/constellation"),
-        fetch("/api/taxonomy/registry")
+        fetch("/api/taxonomy/registry"),
+        fetch("/api/manifest")
       ]);
       for (var i = 0; i < responses.length; i++) {
         if (!responses[i].ok) {
@@ -79,6 +80,7 @@
       treeData = await responses[0].json();
       constellationData = await responses[1].json();
       registryData = await responses[2].json();
+      manifestData = await responses[3].json();
     } catch (err) {
       console.error("[taxonomy] Failed to load data:", err);
       loadingEl.style.display = "none";
@@ -96,6 +98,15 @@
 
     // Share registry with TaxonomyCards for bridge family badge lookups
     TaxonomyCards.setRegistry(_registry);
+
+    // Build set of analysis IDs that have cost model data available.
+    // Manifest entries are keyed by analysis ID (e.g. "04", "05").
+    var modeledIds = new Set();
+    var manifestConcepts = (manifestData && manifestData.concepts) || [];
+    for (var m = 0; m < manifestConcepts.length; m++) {
+      modeledIds.add(manifestConcepts[m].concept_id);
+    }
+    TaxonomyCards.setModeledIds(modeledIds);
 
     // Render tree (single-click focuses)
     var treeContainer = document.getElementById("tree-container");
