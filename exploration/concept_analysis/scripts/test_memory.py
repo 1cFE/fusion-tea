@@ -4,7 +4,7 @@
 import tempfile
 from pathlib import Path
 
-from run_analysis import load_relevant_memories
+from lib.memory import load_relevant_memories
 
 SAMPLE_ENTRIES = """\
 # Cross-Concept Learnings
