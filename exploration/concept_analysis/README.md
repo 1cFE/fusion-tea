@@ -61,7 +61,7 @@ Side door:
   add-source → stage1-all --resume  (auto-selects source-integration feedback)
 
 † Research step runs autonomous source acquisition when `--research` is
-  enabled. See `lib/research.py` and Planned: Autonomous Source Acquisition.
+  enabled. See `lib/research.py` and the Autonomous Source Acquisition section.
 ```
 
 ### Phase 1: Autonomous Quality Loop
@@ -224,6 +224,8 @@ name/company substring. Ambiguous matches produce an error listing all hits.
 | `--feedback PATH` | `analyze` | — | Apply external feedback file to existing analysis (separate code path, does not enter loop) |
 | `--resume` | `analyze`, `stage1-all` | off | Continue from last iteration |
 | `--research` | `analyze`, `stage1-all` | off | Enable autonomous source acquisition on iter > 1 |
+| `--max-research-searches` | `analyze`, `stage1-all` | 5 | Max WebSearch calls per research step |
+| `--max-research-extractions` | `analyze`, `stage1-all` | 3 | Max `add-source` extractions per research step |
 | `--include-gap-analysis` | `stage1-all` | off | Prepend gap-check to the pipeline |
 | `--name` | `add-source` | auto-slugified | Override source name |
 
@@ -460,6 +462,7 @@ All templates live in `prompt_templates/`. The template engine
 | `analysis_v2.md` | concept_name, company, dossier_path, source_paths, brief_path, schema_path, exemplar_paths, approved_analyses, output_template_path, analysis_path, output_path, feedback_path, memory_context | cold_start, feedback_pass, self_advance, memory_context | @config/analysis_goals.md, @config/quality_standards.md, @agents/source_reader.md | `analysis_body.md` (cold) or edits to `analysis.md` (feedback) | — |
 | `assessment.md` | concept_name, analysis_path, feedback_path, model_output_path | model_output_path | @config/analysis_goals.md, @config/assessment_checklist.md, @config/feedback_format.md | `feedback.md` | `VERDICT: PASS` or `VERDICT: FINDINGS` + `### F-N:` |
 | `source_integration.md` | concept_name, analysis_path, new_source_paths, feedback_path | — | @config/analysis_goals.md, @config/feedback_format.md | `feedback.md` | `VERDICT: PASS` or `VERDICT: FINDINGS` + `### F-N:` |
+| `research.md` | concept_name, concept_id, concept_num, analysis_path, output_path, max_searches, max_extractions, prior_attempts | prior_attempts | — | `research_output.json` (Write tool) | — (orchestrator detects sources via filesystem diff) |
 | `model_setup_costingfe.md` | concept_name, company, analysis_path, example_path, defaults_path, readme_path, costing_constants_path, costingfe_concept, costingfe_fuel, mapping_notes, output_path | mapping_notes | — | `model_setup.py` | — |
 | `model_setup_freeform.md` | concept_name, company, analysis_path, costing_constants_path, output_path | — | — | `model_setup.py` | — |
 | `review.md` | concept_name, company, analysis_path, model_setup_path, model_output_path, approved_syntheses, source_paths, source_count, output_path, iteration, date | model_setup_path, model_output_path | — | `review.md` with VERDICT + PA-N/F-N | `VERDICT: PROCEED` or `VERDICT: REVISE` |
@@ -583,6 +586,7 @@ scripts/
     ├── memory.py             # Reuse pool, exemplars, cross-concept memory (109 lines)
     ├── templating.py         # Template engine: {{var}}, {{#if}}, {{@path}} (47 lines)
     ├── claude.py             # invoke_claude(), run_model() (73 lines)
+    ├── research.py           # Autonomous source acquisition: run_research_step(), research log I/O (175 lines)
     ├── step_runner.py        # Shared handler boilerplate: run_claude_step() (153 lines)
     ├── iteration.py          # IterationState, LoopState, verdict I/O (165 lines)
     └── loop.py               # Stage 1 loop runner: run_stage1_loop() (604 lines)
@@ -596,6 +600,7 @@ prompt_templates/
 ├── analysis_v2.md            # D1+ analysis (cold-start / feedback / self-advance modes)
 ├── assessment.md             # Quality evaluation (in-loop)
 ├── source_integration.md     # Source-integration feedback producer
+├── research.md               # Autonomous source acquisition agent
 ├── output_template.md        # 8-section output structure reference
 ├── model_setup_costingfe.md  # Model generation (1costingfe path)
 ├── model_setup_freeform.md   # Model generation (free-form path)
@@ -624,6 +629,7 @@ analyses/{concept-id}/
 ├── review.md                # Review with PA-N proposed actions
 ├── address_log.md           # Log of applied review actions
 ├── synthesis.md             # Editorial synthesis
+├── research_log.json        # Append-only research history (if --research used)
 ├── iter-1/
 │   ├── analyze_prompt.md
 │   ├── analysis_output.md   # Raw body (concatenated into analysis.md)
@@ -638,8 +644,14 @@ analyses/{concept-id}/
 │   ├── analysis_output.md
 │   ├── ...
 │   └── verdict.json
-├── iter-3/
-│   └── ...
+├── iter-N/                  # (research iteration, if --research enabled)
+│   ├── research_prompt.md   # Rendered research agent prompt
+│   ├── research_output.json # Agent's structured output (gaps, queries, candidates)
+│   ├── source_integration_prompt.md  # (if sources acquired)
+│   ├── source_integration_output.md  # (if sources acquired)
+│   ├── analyze_prompt.md
+│   ├── ...
+│   └── verdict.json         # feedback_source: "research", research_ran: true
 └── prompts/                 # Non-iteration prompts (audit trail)
     ├── gap_check_prompt.md
     ├── analysis_prompt.md   # Legacy pre-loop prompt (if exists)
@@ -696,17 +708,56 @@ Each concept's analysis draws from:
 Note: split concepts (17a/17b) share Phase 1a sources via `_research_id`
 but write analyses to their own directories under `_id`.
 
-## Planned Changes
+## Autonomous Source Acquisition (`--research`)
 
-### Autonomous Source Acquisition (spec: `.project/active/autonomous-source-acquisition/spec_v2.md`)
+When `--research` is enabled and iter > 1, a research agent autonomously
+searches the web for data gaps identified in the analysis's Section 6
+(Data Gap Inventory). Implementation: `lib/research.py` + `prompt_templates/research.md`.
 
-Fills the `_run_research_step` stub in `lib/loop.py:570-581`. When
-`--research` is enabled and iter > 1, a research agent will:
-1. Read Section 6 (Data Gap Inventory) for `not-yet-sourced` gaps
-2. Run WebSearch for candidate URLs
-3. Triage with WebFetch (relevance, paywall, JS-empty detection)
-4. Extract promising sources via `add-source`
-5. Write a `research_log.json` (per-concept, append-only)
-6. Generate feedback in `config/feedback_format.md` format
+### How It Works
 
-**Status**: Implemented. See `lib/research.py`.
+```
+1. Orchestrator (research.py) snapshots find_sources(), loads research log
+2. Builds prompt from research.md template with gap context + prior attempts
+3. Invokes claude -p → research agent runs:
+   a. Reads analysis.md Section 6 for not-yet-sourced gaps
+   b. WebSearch for candidate URLs (up to --max-research-searches)
+   c. WebFetch for triage (relevance, paywall, JS-empty detection)
+   d. Bash: add-source for extraction (up to --max-research-extractions)
+   e. Writes research_output.json with per-gap results
+4. Orchestrator diffs find_sources() → detects acquired source paths
+5. Updates research_log.json (append-only, per-concept)
+6. Returns acquired paths to loop
+7. Loop chains into source-integration (if sources acquired) → analyze
+```
+
+### Research Log (`research_log.json`)
+
+Per-concept append-only JSON at `analyses/{concept-id}/research_log.json`.
+Two sections:
+- `entries[]` — per-gap records from the agent (queries, candidates, extracted, failed, status)
+- `acquired_by_iteration` — filesystem-diffed paths keyed by iteration number (source of truth)
+
+The `format_prior_attempts()` function formats log entries for the next
+iteration's research prompt, so the agent skips `closed`/`failed` gaps
+and can re-attempt `partial` gaps with different queries.
+
+### Source of Truth
+
+The orchestrator detects new sources via `find_sources()` diff (before vs
+after the agent runs), NOT from the agent's self-reported output. This
+means even if the agent's `research_output.json` is missing or malformed,
+sources acquired via `add-source` are still detected and chained into
+source-integration.
+
+### Cost Control
+
+Each `add-source` extraction runs `agentic-mbse extract` which costs $5-50.
+Default caps: 5 searches, 3 extractions per concept per pass. Control via
+`--max-research-searches` and `--max-research-extractions`.
+
+### Design Documents
+
+- Spec: `.project/active/autonomous-source-acquisition/spec_v2.md`
+- Design: `.project/active/autonomous-source-acquisition/design.md`
+- Plan: `.project/active/autonomous-source-acquisition/plan.md`

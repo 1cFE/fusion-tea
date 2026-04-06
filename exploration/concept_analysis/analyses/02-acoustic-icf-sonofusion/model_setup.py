@@ -1,3 +1,4 @@
+# STALE: analysis-updated-iter-2
 """
 Acoustic ICF / Sonofusion (D-D) — First-Pass LCOE Model
 ========================================================
