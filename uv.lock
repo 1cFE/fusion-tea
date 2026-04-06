@@ -918,11 +918,13 @@ dev = [
     { name = "pytest" },
     { name = "ruff" },
 ]
+e2e = [
+    { name = "playwright" },
+]
 
 [package.dev-dependencies]
 dev = [
     { name = "mypy" },
-    { name = "playwright" },
     { name = "pytest" },
     { name = "ruff" },
     { name = "types-pyyaml" },
@@ -935,18 +937,18 @@ requires-dist = [
     { name = "httpx", specifier = ">=0.28.1" },
     { name = "jinja2", specifier = ">=3.1.6" },
     { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.10" },
+    { name = "playwright", marker = "extra == 'e2e'", specifier = ">=1.58.0" },
     { name = "pydantic", specifier = ">=2" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.0" },
     { name = "pyyaml", specifier = ">=6.0.3" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.4" },
     { name = "uvicorn", extras = ["standard"], specifier = ">=0.42.0" },
 ]
-provides-extras = ["dev"]
+provides-extras = ["dev", "e2e"]
 
 [package.metadata.requires-dev]
 dev = [
     { name = "mypy", specifier = ">=1.19.1" },
-    { name = "playwright", specifier = ">=1.58.0" },
     { name = "pytest", specifier = ">=9.0.2" },
     { name = "ruff", specifier = ">=0.15.8" },
     { name = "types-pyyaml", specifier = ">=6.0.12.20250915" },

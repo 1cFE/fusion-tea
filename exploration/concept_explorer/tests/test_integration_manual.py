@@ -7,8 +7,16 @@ Usage: uv run python exploration/concept_explorer/tests/test_integration_manual.
 Requires server running on 127.0.0.1:8765
 """
 
-import time
-from playwright.sync_api import sync_playwright, Page
+import pytest
+
+pytest.importorskip(
+    "playwright",
+    reason="playwright not installed — install with: uv sync --extra e2e && playwright install chromium",
+)
+
+import time  # noqa: E402
+
+from playwright.sync_api import Page, sync_playwright  # noqa: E402
 
 BASE = "http://127.0.0.1:8765"
 

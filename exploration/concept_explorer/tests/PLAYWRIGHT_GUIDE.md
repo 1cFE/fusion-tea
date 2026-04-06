@@ -4,7 +4,12 @@ Reference for agents writing browser-based acceptance tests against the Concept 
 
 ## Setup
 
-**Playwright is installed in the project venv.** No extra install needed.
+**Playwright is an optional dependency.** Install with:
+
+```bash
+uv sync --extra e2e
+playwright install chromium
+```
 
 ```bash
 # Run tests (server must be running separately)
@@ -14,7 +19,7 @@ uv run python exploration/concept_explorer/tests/test_views_manual.py
 uv run python -m exploration.concept_explorer.server --port 8765
 ```
 
-There is no pytest integration — tests are plain Python scripts using `playwright.sync_api`. Run them directly.
+Tests are plain Python scripts using `playwright.sync_api`. Run them directly. If playwright is not installed, pytest will skip these test files automatically.
 
 ## Concept IDs
 
