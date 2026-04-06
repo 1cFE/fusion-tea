@@ -124,6 +124,19 @@ Then read the feedback:
 
 The feedback contains specific findings (F-1, F-2, etc.) with targets, findings, and recommendations. Address each finding.
 
+Findings marked `Category: model` primarily target the model code (sensitivity
+sweeps, scenarios, parameters in model_setup.py). You should still update
+analysis prose where relevant (e.g., Section 5 parameter tables, modeling
+approach descriptions) to support the model change, but do NOT try to resolve
+model findings solely through narrative rewording — the model-setup agent
+will receive these findings directly.
+
+If the feedback contains a "Carried-Forward Assessment Findings" section,
+those are unresolved findings from the prior assessment that were preserved
+across a source-integration pass. Treat them with the same priority as
+regular findings — they represent issues the assessment flagged that you
+haven't yet had a chance to address.
+
 ### Source Documents (use subagents for targeted evidence gathering)
 
 For each finding in the feedback, spawn subagents to gather targeted evidence from the relevant sources. Ask questions specific to the feedback — e.g., if the feedback says "missing cost implication for direct energy conversion", ask subagents: "Does this source contain evidence about direct energy conversion costs, BOP impact, or conversion efficiency?"

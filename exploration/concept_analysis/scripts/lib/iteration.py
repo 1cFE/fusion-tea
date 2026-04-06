@@ -111,6 +111,7 @@ def write_verdict(
     model_ok: bool,
     research_ran: bool,
     sources: list[str],
+    merged_assess: bool = False,
 ) -> Path:
     """Write verdict.json with ISO timestamp and source list. Returns path."""
     data = {
@@ -121,6 +122,7 @@ def write_verdict(
         "model_ran": model_ran,
         "model_ok": model_ok,
         "research_ran": research_ran,
+        "merged_assess": merged_assess,
         "sources": sources,
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }

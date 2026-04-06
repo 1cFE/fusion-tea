@@ -27,6 +27,15 @@ Follow its structure, commenting style, and output format.
 ### 5. Costing Constants
 `{{costing_constants_path}}`
 
+{{#if model_feedback}}
+## Assessment Feedback (Model-Targeted)
+
+The following findings from the most recent assessment specifically target
+the model code. Address each one when generating the script:
+
+{{model_feedback}}
+{{/if}}
+
 ## Concept Mapping
 - **ConfinementConcept:** `{{costingfe_concept}}`
 - **Fuel:** `{{costingfe_fuel}}`

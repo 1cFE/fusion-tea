@@ -14,6 +14,7 @@ Each feedback file contains:
 ### F-N: [Short title]
 - **Target:** [Section number or aspect of analysis, e.g., "Section 2" or
   "Cross-concept comparison"]
+- **Category:** analysis | model
 - **Finding:** [What is insufficient, missing, or incorrectly framed — in
   terms of shape/framing, NOT numerical accuracy]
 - **Recommendation:** [What the analysis agent should do differently —
@@ -22,6 +23,10 @@ Each feedback file contains:
 
 ## Rules
 - Maximum 3 findings per pass (focus on the most impactful issues)
+- Each finding must include a `Category` field:
+  - `analysis` — the fix requires changes to the analysis text
+  - `model` — the fix requires changes to the model code or parameters
+    (sensitivity sweeps, scenario branches, parameter values in model_setup.py)
 - Findings must reference specific analysis goals from analysis_goals.md
 - Findings about numerical accuracy should focus on plausibility (order of
   magnitude, physical reasonableness), not verification (re-deriving calculations
@@ -36,6 +41,7 @@ VERDICT: FINDINGS
 
 ### F-1: Missing cost implication for direct energy conversion
 - **Target:** Section 2 (Challenges) and Section 5 (Parameters)
+- **Category:** analysis
 - **Finding:** The analysis identifies direct energy conversion as a key
   differentiator (Goal 2) but does not state the cost implication (Goal 3).
   No parameter row exists for direct conversion efficiency or its impact on

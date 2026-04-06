@@ -32,6 +32,15 @@ This is your structural template. Follow its architecture exactly:
 Use the scaling laws and unit costs from 1costingfe as reference values,
 even though you're not using the API. Document which scaling laws you adopt.
 
+{{#if model_feedback}}
+## Assessment Feedback (Model-Targeted)
+
+The following findings from the most recent assessment specifically target
+the model code. Address each one when generating the script:
+
+{{model_feedback}}
+{{/if}}
+
 ## Model Architecture
 
 Follow the MagLIF exemplar's 5-layer structure adapted for {{concept_name}}:

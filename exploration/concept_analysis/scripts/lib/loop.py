@@ -105,6 +105,7 @@ def run_stage1_loop(
         # --- Select and run feedback-producer (FR-16) ---
         feedback_source = "cold_start"
         feedback_path = None
+        merged_assess = False
 
         if iter_num == 1 and not resume:
             # Cold start — no feedback producer
@@ -145,10 +146,16 @@ def run_stage1_loop(
 
             if acquired:
                 # Chain to source-integration for rich feedback (FR-10)
-                feedback_path = _run_source_integration(
+                si_path = _run_source_integration(
                     concept, iter_dir, acquired, analysis_path, args)
-                if feedback_path is None:
-                    # Source integration found no material additions
+                if si_path is not None:
+                    # Merge with prior assess findings so they aren't dropped (FR-8)
+                    assess_fb = _get_prior_feedback(concept_dir, iter_num)
+                    merged_assess = assess_fb is not None and assess_fb.exists()
+                    feedback_path = _merge_feedback(
+                        assess_fb, si_path, iter_dir / "feedback.md")
+                else:
+                    # Source integration found PASS — use assess feedback as-is
                     feedback_source = "assess"
                     feedback_path = _get_prior_feedback(concept_dir, iter_num)
             else:
@@ -184,7 +191,7 @@ def run_stage1_loop(
         _capture_analysis_output(analysis_path, iter_dir)
 
         # --- Model-setup inside loop (FR-6) ---
-        model_ran, model_ok = _run_model_in_iteration(concept, iter_dir, args)
+        model_ran, model_ok = _run_model_in_iteration(concept, iter_dir, args, feedback_path)
 
         # --- Update canonical model files (FR-5) ---
         _update_canonical_files(concept_dir, iter_dir)
@@ -207,7 +214,8 @@ def run_stage1_loop(
                       finding_count=finding_count, feedback_source=feedback_source,
                       model_ran=model_ran, model_ok=model_ok,
                       research_ran=(feedback_source == "research"),
-                      sources=[str(p) for p in current_sources])
+                      sources=[str(p) for p in current_sources],
+                      merged_assess=merged_assess)
 
         # --- Propagate staleness ---
         propagate_staleness(cid, f"analysis-updated-iter-{iter_num}")
@@ -226,6 +234,84 @@ def run_stage1_loop(
 # ---------------------------------------------------------------------------
 # Internal helpers
 # ---------------------------------------------------------------------------
+
+
+def _split_findings(text: str) -> list[str]:
+    """Split feedback text into individual F-N finding blocks.
+
+    Returns a list of stripped finding blocks (each starting with '### F-N:').
+    Non-finding preamble (VERDICT line, etc.) is excluded.
+    """
+    parts = re.split(r"(?=^### F-\d+:)", text, flags=re.MULTILINE)
+    return [p.strip() for p in parts if re.match(r"^### F-\d+:", p)]
+
+
+def _extract_model_findings(feedback_path: Path | None) -> str:
+    """Extract model-targeted findings from a feedback file.
+
+    Returns formatted text of model-targeted findings, or empty string
+    if none exist. Findings without a Category field default to 'analysis'
+    (backward compatibility).
+    """
+    if feedback_path is None or not feedback_path.exists():
+        return ""
+
+    text = feedback_path.read_text(encoding="utf-8")
+    finding_blocks = _split_findings(text)
+
+    model_findings = []
+    for block in finding_blocks:
+        cat_match = re.search(
+            r"^\-\s+\**Category\**:?\s*(analysis|model)",
+            block, re.MULTILINE,
+        )
+        if cat_match and cat_match.group(1) == "model":
+            model_findings.append(block.strip())
+
+    return "\n\n".join(model_findings)
+
+
+def _merge_feedback(
+    assess_feedback_path: Path | None,
+    source_integration_path: Path,
+    output_path: Path,
+) -> Path:
+    """Merge carried-forward assess findings with source-integration output.
+
+    Writes a combined feedback file to output_path. The source-integration
+    output is the primary content; assess findings are carried forward
+    under a separate header so the analysis agent can distinguish them.
+
+    Returns output_path (always — even if no assess findings to carry).
+    """
+    si_text = source_integration_path.read_text(encoding="utf-8")
+
+    if assess_feedback_path is None or not assess_feedback_path.exists():
+        output_path.write_text(si_text, encoding="utf-8")
+        return output_path
+
+    assess_text = assess_feedback_path.read_text(encoding="utf-8")
+    assess_verdict, assess_count = parse_verdict_from_feedback(assess_text)
+
+    if assess_verdict == "PASS" or assess_count == 0:
+        output_path.write_text(si_text, encoding="utf-8")
+        return output_path
+
+    assess_findings = _split_findings(assess_text)
+
+    merged = si_text.rstrip() + "\n\n"
+    merged += "---\n\n"
+    merged += "## Carried-Forward Assessment Findings\n\n"
+    merged += (
+        "The following findings were flagged by the prior assessment but have not "
+        "yet been addressed (they were carried forward across a source-integration "
+        "pass). Address these alongside the source-integration findings above.\n\n"
+    )
+    merged += "\n\n".join(assess_findings)
+    merged += "\n"
+
+    output_path.write_text(merged, encoding="utf-8")
+    return output_path
 
 
 def _run_cold_start(
@@ -366,6 +452,7 @@ def _run_model_in_iteration(
     concept: dict,
     iter_dir: Path,
     args: argparse.Namespace,
+    feedback_path: Path | None = None,
 ) -> tuple[bool, bool]:
     """Run model-setup inside the loop. Returns (model_ran, model_ok).
 
@@ -382,7 +469,9 @@ def _run_model_in_iteration(
         return False, False
 
     # Build model vars using shared helper
-    model_vars = build_model_vars(concept, model_script, iter_dir)
+    model_feedback = _extract_model_findings(feedback_path)
+    model_vars = build_model_vars(concept, model_script, iter_dir,
+                                  model_feedback=model_feedback)
     if model_vars is None:
         return False, False
 
@@ -430,6 +519,7 @@ def build_model_vars(
     iter_dir_or_out_dir: Path,
     *,
     standalone: bool = False,
+    model_feedback: str = "",
 ) -> tuple[str, dict] | None:
     """Build template name and variables for model-setup.
 
@@ -464,6 +554,7 @@ def build_model_vars(
             "costingfe_fuel": FUEL_MAPPING.get(concept.get("Fuel", "D-T"), "DT"),
             "mapping_notes": mapping.get("notes", ""),
             "output_path": str(model_path),
+            "model_feedback": model_feedback,
         }
     else:
         template_name = "model_setup_freeform.md"
@@ -473,6 +564,7 @@ def build_model_vars(
             "analysis_path": str(analysis_path),
             "costing_constants_path": str(COSTINGFE_CONSTANTS_PATH),
             "output_path": str(model_path),
+            "model_feedback": model_feedback,
         }
 
     return template_name, vars_dict

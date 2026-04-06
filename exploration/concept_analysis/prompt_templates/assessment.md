@@ -24,6 +24,23 @@ Read this file completely:
 4. For each finding, explain what is insufficient and what should change
 5. If the analysis adequately addresses all goals, return PASS
 
+### Finding Categories
+
+Each finding must include a `Category` field:
+- **`analysis`** — the fix requires changes to the analysis text (Section 2 framing,
+  Section 5 parameter tables, Section 7 differentiator discussion, etc.)
+- **`model`** — the fix requires changes to the model code or parameters:
+  sensitivity sweeps, scenario branches, parameter values in model_setup.py,
+  model output formatting, or computational methodology
+
+A finding is `model` when the recommendation says to change what the model
+*computes or sweeps*. A finding is `analysis` when the recommendation says
+to change what the analysis *says or frames*.
+
+When a finding touches both (e.g., "add parameter to Section 5 table AND
+to sensitivity sweep"), assign the **primary** target — the one that would
+resolve the core issue.
+
 {{#if model_output_path}}
 ## Model Output
 
