@@ -108,12 +108,28 @@
     }
     TaxonomyCards.setModeledIds(modeledIds);
 
-    // Render tree (single-click focuses)
+    // Init selection tray (reads URL params to restore prior selection)
+    SelectionTray.init(document.querySelector("main"), _registry);
+
+    // Wire visual indicator updates
+    SelectionTray.onChange(function (selectedIds) {
+      TreeView.updateTrayIndicators(selectedIds);
+      Constellation.updateTrayIndicators(selectedIds);
+      if (_viewMode === "neighborhood") {
+        NeighborhoodGraph.updateTrayIndicators(selectedIds);
+      }
+    });
+
+    // Render tree (single-click focuses, Ctrl+click adds to tray)
     var treeContainer = document.getElementById("tree-container");
-    TreeView.renderTreeView(treeContainer, treeData, handleFocus);
+    TreeView.renderTreeView(treeContainer, treeData, handleFocus, function onCtrlClick(conceptId, e) {
+      var concept = _registry[conceptId];
+      if (!concept) return;
+      handleTrayToggle(concept, e.target.getBoundingClientRect());
+    });
     TreeView.updateLeafLabels(nameMap);
 
-    // Render constellation (single-click highlights, double-click focuses)
+    // Render constellation (single-click highlights, double-click focuses, Ctrl+click adds to tray)
     Constellation.render(constellationContainer, constellationData,
       function onSingleClick(conceptId) {
         // Single-click in constellation: highlight the dot
@@ -122,6 +138,11 @@
       function onDoubleClick(conceptId) {
         // Double-click in constellation: focus (switch to neighborhood)
         handleFocus(conceptId);
+      },
+      function onCtrlClick(conceptId, nativeEvent) {
+        var concept = _registry[conceptId];
+        if (!concept) return;
+        handleTrayToggle(concept, { left: nativeEvent.clientX, top: nativeEvent.clientY, width: 0, height: 0 });
       }
     );
 
@@ -183,6 +204,9 @@
       void constellationContainer.offsetHeight;
       constellationContainer.style.opacity = "1";
       Plotly.Plots.resize(constellationContainer);
+
+      // Refresh tray indicators (may have changed while constellation was hidden)
+      Constellation.updateTrayIndicators(SelectionTray.getIds());
     }, 300);
 
     graphTitle.textContent = "Design Space Overview";
@@ -220,8 +244,16 @@
       NeighborhoodGraph.render(neighborhoodContainer, concept, report, _registry, {
         onCompare: handleCompare,
         onFocus: handleFocus,
-        onDeselect: handleDeselect
+        onDeselect: handleDeselect,
+        onCtrlClick: function (conceptId, nativeEvent) {
+          var c = _registry[conceptId];
+          if (!c) return;
+          handleTrayToggle(c, { left: nativeEvent.clientX, top: nativeEvent.clientY, width: 0, height: 0 });
+        }
       });
+
+      // Refresh tray indicators after graph render
+      NeighborhoodGraph.updateTrayIndicators(SelectionTray.getIds());
     }, 300);
 
     graphTitle.textContent = "Neighborhood of " + concept.name;
@@ -256,6 +288,17 @@
   // ---------------------------------------------------------------------------
   // Core handlers
   // ---------------------------------------------------------------------------
+
+  /**
+   * Handle Ctrl+click on a concept in any view — toggle tray selection.
+   * If concept is already selected, removes it. Otherwise shows popover.
+   */
+  function handleTrayToggle(concept, anchorRect) {
+    var result = SelectionTray.toggle(concept);
+    if (result === "pending") {
+      SelectionTray.showPopover(concept, anchorRect);
+    }
+  }
 
   /**
    * Focus on a concept — make it the center of the neighborhood graph.

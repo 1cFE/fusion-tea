@@ -404,6 +404,15 @@ var NeighborhoodGraph = (function () {
           "opacity": 0
         }
       },
+      // Selection tray indicator (neighbor or center in tray)
+      {
+        selector: "node.in-tray",
+        style: {
+          "border-width": 3,
+          "border-color": "#e6edf3",
+          "border-style": "double"
+        }
+      },
       // Bridge highlight pulse
       {
         selector: "node.bridge.highlighted",
@@ -624,6 +633,13 @@ var NeighborhoodGraph = (function () {
     _cy.on("tap", "node.neighbor", function (evt) {
       var conceptId = evt.target.id();
 
+      // Ctrl/Cmd+click: selection tray (short-circuits debounce)
+      var nativeEvent = evt.originalEvent;
+      if (nativeEvent && (nativeEvent.metaKey || nativeEvent.ctrlKey)) {
+        if (callbacks.onCtrlClick) callbacks.onCtrlClick(conceptId, nativeEvent);
+        return;
+      }
+
       if (_clickTimer && _lastClickId === conceptId) {
         clearTimeout(_clickTimer);
         _clickTimer = null;
@@ -656,6 +672,15 @@ var NeighborhoodGraph = (function () {
           _clickTimer = null;
           _lastClickId = null;
         }, DBLCLICK_DELAY);
+      }
+    });
+
+    // Center node: Ctrl/Cmd+click only → selection tray
+    _cy.on("tap", "node.center", function (evt) {
+      var conceptId = evt.target.id();
+      var nativeEvent = evt.originalEvent;
+      if (nativeEvent && (nativeEvent.metaKey || nativeEvent.ctrlKey)) {
+        if (callbacks.onCtrlClick) callbacks.onCtrlClick(conceptId, nativeEvent);
       }
     });
 
@@ -781,6 +806,25 @@ var NeighborhoodGraph = (function () {
   }
 
   // ---------------------------------------------------------------------------
+  // Selection tray indicators
+  // ---------------------------------------------------------------------------
+
+  function updateTrayIndicators(selectedIds) {
+    if (!_cy) return;
+    var idSet = {};
+    for (var i = 0; i < selectedIds.length; i++) {
+      idSet[selectedIds[i]] = true;
+    }
+    _cy.nodes(".neighbor, .center").forEach(function (node) {
+      if (idSet[node.id()]) {
+        node.addClass("in-tray");
+      } else {
+        node.removeClass("in-tray");
+      }
+    });
+  }
+
+  // ---------------------------------------------------------------------------
   // Resize / Destroy
   // ---------------------------------------------------------------------------
 
@@ -820,6 +864,7 @@ var NeighborhoodGraph = (function () {
     clearComparison: clearComparison,
     highlightBridge: highlightBridge,
     getBridgesForNeighbor: getBridgesForNeighbor,
+    updateTrayIndicators: updateTrayIndicators,
     resize: resize,
     destroy: destroy
   };

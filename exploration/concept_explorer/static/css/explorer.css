@@ -1936,3 +1936,211 @@ a:hover {
 .tooltip {
   transition: opacity 0.15s;
 }
+
+/* ==========================================================================
+   Selection Tray — persistent concept collection bar
+   ========================================================================== */
+
+/* Reserve space so tray doesn't obscure content */
+main {
+  padding-bottom: 56px;
+}
+
+.selection-tray {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-surface-1);
+  border-top: 1px solid var(--color-border);
+  min-height: 48px;
+}
+
+.selection-tray__clear {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  padding: var(--space-1) var(--space-2);
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.selection-tray__clear:hover:not(:disabled) {
+  color: var(--color-text-primary);
+  border-color: var(--color-text-muted);
+}
+
+.selection-tray__clear:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.selection-tray__chips {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  overflow-x: auto;
+  min-width: 0;
+}
+
+.selection-tray__empty {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  white-space: nowrap;
+}
+
+.selection-tray__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 2px var(--space-2) 2px var(--space-1);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.selection-tray__chip--no-model {
+  opacity: 0.6;
+}
+
+.selection-tray__chip-badge {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.selection-tray__chip-badge.badge-mfe { background: var(--color-badge-mfe); }
+.selection-tray__chip-badge.badge-ife { background: var(--color-badge-ife); }
+.selection-tray__chip-badge.badge-mif { background: var(--color-badge-mif); }
+.selection-tray__chip-badge.badge-nonstandard { background: var(--color-badge-nonstandard); }
+
+.selection-tray__chip-name {
+  color: var(--color-text-primary);
+}
+
+.selection-tray__chip-remove {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-base);
+  line-height: 1;
+  padding: 0 2px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.selection-tray__chip-remove:hover {
+  color: var(--color-text-primary);
+}
+
+.selection-tray__actions {
+  display: flex;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.selection-tray__action {
+  background: var(--color-well-established);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  padding: var(--space-1) var(--space-3);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.selection-tray__action:hover:not(:disabled) {
+  filter: brightness(1.15);
+}
+
+.selection-tray__action:disabled {
+  background: var(--color-surface-3);
+  color: var(--color-text-muted);
+  cursor: default;
+}
+
+/* --------------------------------------------------------------------------
+   Selection Popover
+   -------------------------------------------------------------------------- */
+
+.selection-popover {
+  position: fixed;
+  z-index: 200;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  min-width: 200px;
+  max-width: 280px;
+}
+
+.selection-popover__header {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.selection-popover__name {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.selection-popover__info {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-bottom: var(--space-2);
+}
+
+.selection-popover__count {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-3);
+}
+
+.selection-popover__confirm {
+  background: var(--color-well-established);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  padding: var(--space-1) var(--space-4);
+  cursor: pointer;
+  width: 100%;
+}
+
+.selection-popover__confirm:hover {
+  filter: brightness(1.15);
+}
+
+/* --------------------------------------------------------------------------
+   Tree Leaf — Selection Tray Indicator
+   -------------------------------------------------------------------------- */
+
+.tree-leaf--in-tray::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-text-muted);
+  margin-left: auto;
+  flex-shrink: 0;
+}

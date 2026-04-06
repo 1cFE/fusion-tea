@@ -34,7 +34,7 @@ var Constellation = (function () {
     NONSTANDARD: "Non-Standard"
   };
 
-  function render(container, constellationData, onConceptClick, onDoubleClick) {
+  function render(container, constellationData, onConceptClick, onDoubleClick, onCtrlClick) {
     _container = container;
     _data = constellationData;
     _selectedId = null;
@@ -122,6 +122,13 @@ var Constellation = (function () {
       var conceptId = pt.customdata;
       if (!conceptId) return;
 
+      // Ctrl/Cmd+click: selection tray (short-circuits debounce)
+      var nativeEvent = eventData.event;
+      if (nativeEvent && (nativeEvent.metaKey || nativeEvent.ctrlKey)) {
+        if (onCtrlClick) onCtrlClick(conceptId, nativeEvent);
+        return;
+      }
+
       if (_clickTimer && _lastClickId === conceptId) {
         // Second click on same point within delay — double-click
         clearTimeout(_clickTimer);
@@ -184,8 +191,57 @@ var Constellation = (function () {
     }
   }
 
+  /**
+   * Update visual ring indicators on selected constellation dots.
+   */
+  function updateTrayIndicators(selectedIds) {
+    if (!_container || !_data) return;
+
+    var idSet = {};
+    for (var i = 0; i < selectedIds.length; i++) {
+      idSet[selectedIds[i]] = true;
+    }
+
+    var points = _data.points;
+    var byFamily = {};
+    for (var k = 0; k < points.length; k++) {
+      var p = points[k];
+      if (!byFamily[p.confinement_family]) byFamily[p.confinement_family] = [];
+      byFamily[p.confinement_family].push(p);
+    }
+
+    var families = ["MFE", "IFE", "MIF", "NONSTANDARD"];
+    var traceIdx = 0;
+
+    for (var f = 0; f < families.length; f++) {
+      var fam = families[f];
+      var pts = byFamily[fam] || [];
+      if (pts.length === 0) continue;
+
+      var lineWidths = [];
+      var lineColors = [];
+      for (var j = 0; j < pts.length; j++) {
+        if (idSet[pts[j].concept_id]) {
+          lineWidths.push(3);
+          lineColors.push("#e6edf3");
+        } else {
+          lineWidths.push(1);
+          lineColors.push("rgba(255,255,255,0.2)");
+        }
+      }
+
+      Plotly.restyle(_container, {
+        "marker.line.width": [lineWidths],
+        "marker.line.color": [lineColors]
+      }, [traceIdx]);
+
+      traceIdx++;
+    }
+  }
+
   return {
     render: render,
-    highlight: highlight
+    highlight: highlight,
+    updateTrayIndicators: updateTrayIndicators
   };
 })();

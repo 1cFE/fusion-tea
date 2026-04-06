@@ -37,7 +37,7 @@ var TreeView = (function () {
   /**
    * Build a branch node (expandable).
    */
-  function buildBranch(node, onConceptClick, depth) {
+  function buildBranch(node, onConceptClick, depth, onCtrlClick) {
     var wrapper = el("div", "tree-node");
     var count = countConcepts(node);
 
@@ -63,14 +63,14 @@ var TreeView = (function () {
     // Build child branches
     if (node.children) {
       for (var i = 0; i < node.children.length; i++) {
-        childrenEl.appendChild(buildBranch(node.children[i], onConceptClick, depth + 1));
+        childrenEl.appendChild(buildBranch(node.children[i], onConceptClick, depth + 1, onCtrlClick));
       }
     }
 
     // Build leaf concepts at this level
     if (node.concepts) {
       for (var j = 0; j < node.concepts.length; j++) {
-        childrenEl.appendChild(buildLeaf(node.concepts[j], onConceptClick));
+        childrenEl.appendChild(buildLeaf(node.concepts[j], onConceptClick, onCtrlClick));
       }
     }
 
@@ -94,7 +94,7 @@ var TreeView = (function () {
   /**
    * Build a leaf concept node.
    */
-  function buildLeaf(conceptId, onConceptClick) {
+  function buildLeaf(conceptId, onConceptClick, onCtrlClick) {
     var leaf = el("div", "tree-leaf");
     leaf.setAttribute("role", "button");
     leaf.setAttribute("tabindex", "0");
@@ -108,6 +108,10 @@ var TreeView = (function () {
     }
     leaf.addEventListener("click", function (e) {
       e.stopPropagation();
+      if ((e.metaKey || e.ctrlKey) && onCtrlClick) {
+        onCtrlClick(conceptId, e);
+        return;
+      }
       select();
     });
     leaf.addEventListener("keydown", function (e) {
@@ -174,7 +178,7 @@ var TreeView = (function () {
   /**
    * Render the decision tree into a container element.
    */
-  function renderTreeView(container, treeData, onConceptClick) {
+  function renderTreeView(container, treeData, onConceptClick, onCtrlClick) {
     _container = container;
     container.innerHTML = "";
 
@@ -185,13 +189,30 @@ var TreeView = (function () {
     }
 
     for (var i = 0; i < root.children.length; i++) {
-      container.appendChild(buildBranch(root.children[i], onConceptClick, 0));
+      container.appendChild(buildBranch(root.children[i], onConceptClick, 0, onCtrlClick));
+    }
+  }
+
+  /**
+   * Toggle .tree-leaf--in-tray class on leaves based on selected IDs.
+   */
+  function updateTrayIndicators(selectedIds) {
+    if (!_container) return;
+    var idSet = {};
+    for (var i = 0; i < selectedIds.length; i++) {
+      idSet[selectedIds[i]] = true;
+    }
+    var leaves = _container.querySelectorAll(".tree-leaf");
+    for (var j = 0; j < leaves.length; j++) {
+      var id = leaves[j].getAttribute("data-concept-id");
+      leaves[j].classList.toggle("tree-leaf--in-tray", !!idSet[id]);
     }
   }
 
   return {
     renderTreeView: renderTreeView,
     highlightTreeConcept: highlightTreeConcept,
-    updateLeafLabels: updateLeafLabels
+    updateLeafLabels: updateLeafLabels,
+    updateTrayIndicators: updateTrayIndicators
   };
 })();
