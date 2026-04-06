@@ -30,7 +30,8 @@ var SelectionTray = (function () {
   // Module state
   // ---------------------------------------------------------------------------
 
-  var _selected = new Map();       // concept_id -> { concept_id, name, confinement_family, analysis_id }
+  var _selected = new Map();       // concept_id -> { concept_id, name, confinement_family }
+  var _modeledIds = null;          // Set of analysis IDs with cost models
   var _registry = null;            // concept_id -> ConceptTaxonomy (for URL restore)
   var _changeListeners = [];       // Array<Function(selectedIds: string[])>
   var _trayEl = null;              // .selection-tray root element
@@ -128,8 +129,7 @@ var SelectionTray = (function () {
     _selected.set(concept.concept_id, {
       concept_id: concept.concept_id,
       name: concept.name,
-      confinement_family: concept.confinement_family,
-      analysis_id: concept.analysis_id
+      confinement_family: concept.confinement_family
     });
     _renderChips();
     _syncUrl();
@@ -194,7 +194,7 @@ var SelectionTray = (function () {
     _popoverEl.appendChild(nameRow);
 
     // FR-14: cost model info line (only shown when absent)
-    if (!concept.analysis_id) {
+    if (!_modeledIds || !_modeledIds.has(concept.concept_id)) {
       var info = el("div", "selection-popover__info", "No cost model \u2014 Categorical view only");
       _popoverEl.appendChild(info);
     }
@@ -284,7 +284,7 @@ var SelectionTray = (function () {
       _selected.forEach(function (concept) {
         var chip = el("div", "selection-tray__chip");
         chip.setAttribute("data-concept-id", concept.concept_id);
-        if (!concept.analysis_id) {
+        if (!_modeledIds || !_modeledIds.has(concept.concept_id)) {
           chip.classList.add("selection-tray__chip--no-model");
         }
 
@@ -383,6 +383,7 @@ var SelectionTray = (function () {
     getIds: getIds,
     showPopover: showPopover,
     hidePopover: hidePopover,
-    onChange: onChange
+    onChange: onChange,
+    setModeledIds: function(ids) { _modeledIds = ids; }
   };
 })();

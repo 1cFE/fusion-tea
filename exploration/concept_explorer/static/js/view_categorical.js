@@ -86,10 +86,7 @@
     const data = await resp.json();
     _taxonomyCache = {};
     for (const c of data.concepts) {
-      // Key by analysis_id — this matches ConceptData.concept_id used by the
-      // comparison shell (e.g. "04"), not ConceptTaxonomy.concept_id (e.g.
-      // "hts-compact-tokamak").
-      const key = c.analysis_id || c.concept_id;
+      const key = c.concept_id;
       _taxonomyCache[key] = c;
     }
     return _taxonomyCache;

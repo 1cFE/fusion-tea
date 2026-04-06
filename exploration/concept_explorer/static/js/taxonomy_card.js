@@ -117,10 +117,10 @@ var TaxonomyCards = (function () {
     }
 
     // Cost model link — only show if this concept has a modeled page available
-    if (concept.analysis_id && _modeledIds && _modeledIds.has(concept.analysis_id)) {
+    if (_modeledIds && _modeledIds.has(concept.concept_id)) {
       var link = document.createElement("a");
       link.className = "taxonomy-card__link";
-      link.href = "/concept/" + concept.analysis_id;
+      link.href = "/concept/" + concept.concept_id;
       link.textContent = "View cost model \u2192";
       card.appendChild(link);
     }

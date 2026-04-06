@@ -105,7 +105,8 @@ def _parse_row(row: dict[str, str]) -> ConceptTaxonomy:
     family = CONFINEMENT_FAMILY_MAP[row["Confinement Family"].strip()]
 
     return ConceptTaxonomy(
-        concept_id=slugify(name),
+        concept_id=row["ID"].split("-", 1)[0],
+        slug=slugify(name),
         name=name,
         company=row["Company"].strip() or None,
         confinement_family=family,
@@ -131,7 +132,6 @@ def _parse_row(row: dict[str, str]) -> ConceptTaxonomy:
         repetition_rate=_na_or_enum(row["Repetition Rate"], RepetitionRate),
         driver_technology=row["Driver Technology"].strip() or None,
         confidence=TaxonomyConfidence(row["Overall Confidence"].strip()),
-        analysis_id=row["ID"].split("-", 1)[0] or None,
     )
 
 

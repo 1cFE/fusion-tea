@@ -186,7 +186,8 @@ class ConceptTaxonomy(BaseModel):
     """Complete taxonomy record for a single fusion concept."""
 
     # Identity
-    concept_id: str
+    concept_id: str  # Analysis directory ID, e.g. "01"
+    slug: str  # URL-safe slug, e.g. "hts-compact-tokamak"
     name: str
     company: str | None = None
 
@@ -214,7 +215,6 @@ class ConceptTaxonomy(BaseModel):
 
     # Metadata
     confidence: TaxonomyConfidence
-    analysis_id: str | None = None
 
     @model_validator(mode="after")
     def _validate_hierarchy(self) -> ConceptTaxonomy:
@@ -301,6 +301,13 @@ class ConceptRegistry(BaseModel):
         """Look up a concept by ID."""
         for c in self.concepts:
             if c.concept_id == concept_id:
+                return c
+        return None
+
+    def by_slug(self, slug: str) -> ConceptTaxonomy | None:
+        """Look up a concept by slug (e.g. 'hts-compact-tokamak')."""
+        for c in self.concepts:
+            if c.slug == slug:
                 return c
         return None
 

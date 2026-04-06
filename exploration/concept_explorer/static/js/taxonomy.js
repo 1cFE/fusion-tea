@@ -107,6 +107,7 @@
       modeledIds.add(manifestConcepts[m].concept_id);
     }
     TaxonomyCards.setModeledIds(modeledIds);
+    SelectionTray.setModeledIds(modeledIds);
 
     // Init selection tray (reads URL params to restore prior selection)
     SelectionTray.init(document.querySelector("main"), _registry);

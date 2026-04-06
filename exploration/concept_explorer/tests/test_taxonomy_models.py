@@ -48,7 +48,8 @@ class TestConceptTaxonomyModel:
     def test_round_trip(self):
         """A hand-built ConceptTaxonomy serializes to JSON and back."""
         concept = ConceptTaxonomy(
-            concept_id="hts-compact-tokamak",
+            concept_id="01",
+            slug="hts-compact-tokamak",
             name="HTS Compact Tokamak",
             company="Commonwealth Fusion Systems",
             confinement_family=ConfinementFamily.MFE,
@@ -74,6 +75,7 @@ class TestConceptTaxonomyModel:
         with pytest.raises(ValidationError):
             ConceptTaxonomy(
                 concept_id="bad",
+                slug="bad",
                 name="Bad",
                 confinement_family=ConfinementFamily.MFE,
                 mfe_topology=MFETopology.TOKAMAK,
@@ -88,6 +90,7 @@ class TestConceptTaxonomyModel:
         with pytest.raises(ValidationError):
             ConceptTaxonomy(
                 concept_id="bad",
+                slug="bad",
                 name="Bad",
                 confinement_family=ConfinementFamily.IFE,
                 ife_driver=IFEDriver.LASER,
@@ -102,6 +105,7 @@ class TestConceptTaxonomyModel:
         with pytest.raises(ValidationError):
             ConceptTaxonomy(
                 concept_id="bad",
+                slug="bad",
                 name="Bad",
                 confinement_family=ConfinementFamily.MFE,
                 # Missing mfe_topology!
@@ -115,6 +119,7 @@ class TestConceptTaxonomyModel:
         with pytest.raises(ValidationError):
             ConceptTaxonomy(
                 concept_id="bad",
+                slug="bad",
                 name="Bad",
                 confinement_family=ConfinementFamily.IFE,
                 # Missing ife_driver!
@@ -127,6 +132,7 @@ class TestConceptTaxonomyModel:
         """TBD enum members serialize as 'TBD', not null."""
         concept = ConceptTaxonomy(
             concept_id="test",
+            slug="test",
             name="Test",
             confinement_family=ConfinementFamily.MFE,
             mfe_topology=MFETopology.TOKAMAK,
@@ -142,6 +148,7 @@ class TestConceptTaxonomyModel:
         """Optional fields left as None serialize as null in JSON."""
         concept = ConceptTaxonomy(
             concept_id="test",
+            slug="test",
             name="Test",
             confinement_family=ConfinementFamily.MFE,
             mfe_topology=MFETopology.TOKAMAK,
@@ -159,6 +166,7 @@ class TestConceptTaxonomyModel:
         with pytest.raises(ValidationError):
             ConceptTaxonomy(
                 concept_id="bad",
+                slug="bad",
                 name="Bad",
                 confinement_family=ConfinementFamily.MFE,
                 mfe_topology=MFETopology.STELLARATOR,
@@ -173,6 +181,7 @@ class TestConceptTaxonomyModel:
         with pytest.raises(ValidationError):
             ConceptTaxonomy(
                 concept_id="bad",
+                slug="bad",
                 name="Bad",
                 confinement_family=ConfinementFamily.IFE,
                 ife_driver=IFEDriver.PROJECTILE,
@@ -215,7 +224,7 @@ class TestConceptRegistry:
 
     def test_by_id(self, registry: ConceptRegistry):
         """by_id returns correct concept or None."""
-        concept = registry.by_id("hts-compact-tokamak")
+        concept = registry.by_id("01")
         assert concept is not None
         assert concept.name == "HTS Compact Tokamak"
         assert registry.by_id("nonexistent") is None
@@ -238,7 +247,7 @@ class TestConceptRegistry:
 
     def test_known_concept_helion(self, registry: ConceptRegistry):
         """Spot-check Helion FRC: MIF family, D-He3 fuel, pulsed operation."""
-        helion = registry.by_id("frc-w-direct-conversion")
+        helion = registry.by_id("08")
         assert helion is not None
         assert helion.confinement_family == ConfinementFamily.MIF
         assert helion.fuel == FuelType.DHE3
@@ -246,41 +255,40 @@ class TestConceptRegistry:
 
     def test_known_concept_tae(self, registry: ConceptRegistry):
         """Spot-check TAE p-B11 FRC: MFE/Compact Toroid, p-B11 fuel."""
-        tae = registry.by_id("p-b11-frc")
+        tae = registry.by_id("18")
         assert tae is not None
         assert tae.confinement_family == ConfinementFamily.MFE
         assert tae.mfe_topology == MFETopology.COMPACT_TOROID
         assert tae.fuel == FuelType.PB11
 
-    def test_analysis_id_populated_for_all_concepts(self, registry: ConceptRegistry):
-        """Every concept must have an analysis_id from the authoritative CSV."""
-        missing = [c.concept_id for c in registry.concepts if c.analysis_id is None]
-        assert not missing, f"Concepts missing analysis_id: {missing}"
-
-    def test_analysis_id_spot_checks(self, registry: ConceptRegistry):
-        """Spot-check analysis_id values against the authoritative directory mapping."""
-        # Concept with existing cost model
-        hb11 = registry.by_id("laser-icf-p-b11-fast-ignition")
-        assert hb11 is not None
-        assert hb11.analysis_id == "04"
-
-        # Previously unmapped concept (no cost model)
-        cfs = registry.by_id("hts-compact-tokamak")
+    def test_concept_id_is_analysis_id(self, registry: ConceptRegistry):
+        """Spot-check that concept_id is the analysis directory ID."""
+        cfs = registry.by_id("01")
         assert cfs is not None
-        assert cfs.analysis_id == "01"
+        assert cfs.slug == "hts-compact-tokamak"
 
-        # Disambiguated magnetic mirror variants
-        mm_pb11 = registry.by_id("magnetic-mirror-p-b11")
+        hb11 = registry.by_id("04")
+        assert hb11 is not None
+        assert hb11.slug == "laser-icf-p-b11-fast-ignition"
+
+        mm_pb11 = registry.by_id("06")
         assert mm_pb11 is not None
-        assert mm_pb11.analysis_id == "06"
-        mm_dt = registry.by_id("magnetic-mirror-d-t")
-        assert mm_dt is not None
-        assert mm_dt.analysis_id == "11"
+        assert mm_pb11.slug == "magnetic-mirror-p-b11"
 
-        # Alphanumeric sub-variant (17a/17b split)
-        fi_dt = registry.by_id("laser-icf-fast-ignition-d-t")
+        mm_dt = registry.by_id("11")
+        assert mm_dt is not None
+        assert mm_dt.slug == "magnetic-mirror-d-t"
+
+        fi_dt = registry.by_id("17b")
         assert fi_dt is not None
-        assert fi_dt.analysis_id == "17b"
+        assert fi_dt.slug == "laser-icf-fast-ignition-d-t"
+
+    def test_by_slug(self, registry: ConceptRegistry):
+        """by_slug returns correct concept."""
+        concept = registry.by_slug("hts-compact-tokamak")
+        assert concept is not None
+        assert concept.concept_id == "01"
+        assert registry.by_slug("nonexistent") is None
 
 
 class TestDecisionTree:

@@ -171,7 +171,7 @@ def test_taxonomy_registry_endpoint(client: TestClient):
 
 
 def test_taxonomy_concept_endpoint(client: TestClient):
-    resp = client.get("/api/taxonomy/concepts/hts-compact-tokamak")
+    resp = client.get("/api/taxonomy/concepts/01")
     assert resp.status_code == 200
     data = resp.json()
     assert data["name"] == "HTS Compact Tokamak"
@@ -189,10 +189,10 @@ def test_taxonomy_concept_404(client: TestClient):
 
 
 def test_taxonomy_similarity_endpoint(client: TestClient):
-    resp = client.get("/api/taxonomy/similarity/hts-compact-tokamak")
+    resp = client.get("/api/taxonomy/similarity/01")
     assert resp.status_code == 200
     data = resp.json()
-    assert data["query_concept_id"] == "hts-compact-tokamak"
+    assert data["query_concept_id"] == "01"
     assert len(data["nearest"]) > 0
 
 
@@ -207,15 +207,15 @@ def test_taxonomy_similarity_404(client: TestClient):
 
 
 def test_taxonomy_compare_endpoint(client: TestClient):
-    resp = client.get("/api/taxonomy/compare/hts-compact-tokamak/qi-stellarator-hts")
+    resp = client.get("/api/taxonomy/compare/01/09")
     assert resp.status_code == 200
     data = resp.json()
     assert "comparison" in data
-    assert data["concept_id"] == "qi-stellarator-hts"
+    assert data["concept_id"] == "09"
 
 
 def test_taxonomy_compare_404(client: TestClient):
-    resp = client.get("/api/taxonomy/compare/hts-compact-tokamak/nonexistent")
+    resp = client.get("/api/taxonomy/compare/01/nonexistent")
     assert resp.status_code == 404
 
 
