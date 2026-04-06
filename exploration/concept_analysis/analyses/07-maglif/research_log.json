@@ -439,6 +439,129 @@
       "notes": "No new searches conducted this iteration — budget consumed by G-11/G-10/G-13 searches. Prior iterations (5 and 6) already exhausted the most promising search angles (ARPA-E awards, Pacific Fusion TEA publications, company technical blogs). No public IMG-architecture plant study exists as of April 2026. Gap remains BLOCKING.",
       "timestamp": "2026-04-06T14:57:23.740197+00:00",
       "iteration": 7
+    },
+    {
+      "gap_id": "G-1",
+      "gap_description": "No plant study for IMG architecture: all TEA data from Z-IFE LTD-era (2006)",
+      "queries": [
+        "Pacific Fusion IMG pulsed power plant cost model pilot plant economics arxiv 2025 2026"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/abs/2602.19389",
+          "title": "Extension of the Fusion Power Plant Costing Standard",
+          "triage": "relevant",
+          "notes": "Extends CATF costing framework to three architecture tracks: MFE, IFE, and Magneto-Inertial Fusion Energy (MIFE), with pulsed-power systems as a cost-driver for MIFE. Methodology paper, not a specific IMG capital cost study. Does not provide IMG driver cost numbers, but establishes the costing vocabulary and framework applicable to MagLIF. Open access on arXiv."
+        },
+        {
+          "url": "https://arxiv.org/abs/2601.21724",
+          "title": "A costing framework for fusion power plants",
+          "triage": "methodology-only",
+          "notes": "Related costing framework paper; appears to be the base document that 2602.19389 extends. Not triage-checked independently given similar scope."
+        },
+        {
+          "url": "https://techcrunch.com/2025/04/15/heres-how-pacific-fusion-plans-to-build-a-fusion-power-plant/",
+          "title": "Exclusive: Here's how Pacific Fusion plans to build a fusion power plant",
+          "triage": "inaccessible",
+          "notes": "TechCrunch article from April 15, 2025. WebFetch returned only CSS/metadata — article body not accessible (JS-rendered or paywalled). No cost data visible."
+        },
+        {
+          "url": "https://www.ans.org/news/2026-02-05/article-7735/llnl-offers-tools-to-model-the-economics-of-inertial-fusion-power-plants/",
+          "title": "LLNL offers tools to model the economics of inertial fusion power plants",
+          "triage": "irrelevant",
+          "notes": "LLNL GEM tool covers only laser IFE (DPSSL driver). No coverage of pulsed magnetic fusion, pulsed power, or MagLIF architectures. Not useful for G-1."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/abs/2602.19389",
+          "source_name": "arxiv-2602-19389"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "Best available source is a costing methodology paper that introduces a MIFE cost-driver track — not the plant-specific IMG capital cost study the gap requires. No 2025-era Pacific Fusion plant economics paper found on arXiv or elsewhere in open access.",
+      "timestamp": "2026-04-06T15:27:10.963243+00:00",
+      "iteration": 8
+    },
+    {
+      "gap_id": "G-11",
+      "gap_description": "Pacific Fusion self-magnetizing target gain at 60+ MA (eliminates coils and laser)",
+      "queries": [
+        "arxiv \"auto-magnetizing\" OR \"self-magnetizing\" MagLIF liner thermonuclear preheat-free 2025 2026",
+        "arxiv \"dynamic screw pinch\" OR \"DSP-driven MagLIF\" self-magnetizing fusion 2025",
+        "site:osti.gov \"self-magnetizing\" OR \"dynamic screw pinch\" MagLIF 2025"
+      ],
+      "candidates": [
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/32/5/052708/3347081/Integrated-simulations-of-premagnetized-and-self",
+          "title": "Integrated simulations of premagnetized and self-magnetizing dynamic screw pinch-driven MagLIF",
+          "triage": "paywall",
+          "notes": "AIP Physics of Plasmas, May 2025. Directly relevant: shows self-magnetizing DSP-driven MagLIF without external field coils; 40 MA simulation shows burn-averaged Lawson parameter above unity and DT yield >1 MJ. Behind AIP paywall. No arXiv preprint found. OSTI ID 2566921 exists but purl/2566921 returns 404 (no open-access copy). ResearchGate PDF returned 403."
+        },
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/32/4/042707/3344537/Simulated-thermonuclear-performance-of-auto",
+          "title": "Simulated thermonuclear performance of auto-magnetizing helical liner MagLIF target implosions",
+          "triage": "paywall",
+          "notes": "AIP Physics of Plasmas, April 2025. Auto-magnetizing helical liner MagLIF, >30 T axial field without external coils, higher yield than standard MagLIF. Previously identified in iter-7 as paywalled (extraction rc=1). No open-access preprint found."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/1562628",
+          "title": "Auto-magnetizing (AutoMag) liners for MagLIF: Helically-wound composite liners",
+          "triage": "outdated",
+          "notes": "OSTI technical report, 2019. Prospective report — tests 'will soon be conducted.' Provides >30 T field specification but no fusion yield or gain data. Predates the 2025 AIP papers reporting actual simulation results. Not worth extracting."
+        },
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/32/7/072710/3352390/Numerical-investigation-of-magneto-inertial-fusion",
+          "title": "Numerical investigation of magneto-inertial fusion targets magnetized by dynamic enforcement of helical current flow",
+          "triage": "paywall",
+          "notes": "AIP Physics of Plasmas, July 2025. Also relevant to self-magnetizing MagLIF but behind paywall."
+        }
+      ],
+      "extracted": [],
+      "failed": [
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/32/5/052708/3347081/Integrated-simulations-of-premagnetized-and-self",
+          "reason": "AIP paywall. OSTI purl 404. ResearchGate 403. No open-access version found."
+        }
+      ],
+      "status": "failed",
+      "notes": "Multiple highly relevant 2025 Physics of Plasmas papers exist (DSP self-magnetizing MagLIF, AutoMag helical liner), all behind AIP paywall with no accessible preprints. Gap remains open until institutional access or author-hosted preprints become available.",
+      "timestamp": "2026-04-06T15:27:10.963243+00:00",
+      "iteration": 8
+    },
+    {
+      "gap_id": "G-10",
+      "gap_description": "Thermal cycle above 900 K: high-temperature materials availability for He Brayton or combined cycle",
+      "queries": [],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "Skipped due to search budget exhaustion after prioritizing blocking gaps G-1 and G-11. Frontiers paper already extracted in iter-5 provides partial coverage. Recommend separate search iteration targeting ODS steel and SiC/SiC composite availability timelines for fusion applications.",
+      "timestamp": "2026-04-06T15:27:10.963243+00:00",
+      "iteration": 8
+    },
+    {
+      "gap_id": "G-13",
+      "gap_description": "Laser preheat elimination: feasibility at commercially relevant yields",
+      "queries": [
+        "arxiv \"auto-magnetizing\" OR \"self-magnetizing\" MagLIF liner thermonuclear preheat-free 2025 2026"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/abs/2504.11432",
+          "title": "Analysis of Preheat Propagation in MagLIF-like Plasmas",
+          "triage": "irrelevant",
+          "notes": "arXiv, April 2025. Studies how laser preheat propagates through magnetized fuel — establishes preheat energy transport dynamics. Does NOT address eliminating preheat or laserless operation feasibility. Open access but not useful for G-13."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "failed",
+      "notes": "No open-access paper found specifically addressing laser preheat elimination feasibility at commercially relevant yields. The self-magnetizing DSP work (G-11 candidates) is directly related but all behind AIP paywall. The GlobeNewsWire announcement already extracted in iter-6 remains the primary source for G-13.",
+      "timestamp": "2026-04-06T15:27:10.963243+00:00",
+      "iteration": 8
     }
   ],
   "acquired_by_iteration": {
@@ -453,6 +576,9 @@
     ],
     "7": [
       "/home/reid/1cfe/fusion-tea/knowledge/concept_research/07-maglif/iter-03/sources/ans-news-2026-02-06-article-7739-fusion-simplification.md"
+    ],
+    "8": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/07-maglif/iter-03/sources/arxiv-2602-19389.md"
     ]
   }
 }
