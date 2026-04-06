@@ -35,22 +35,23 @@ Rebuild the concept explorer's comparison experience to bridge taxonomy explorat
 
 ## Success Criteria
 
-- [ ] Selection interaction on tree leaf, constellation dot, or graph node adds concept to tray
-- [ ] Selection tray appears on all taxonomy pages with family-colored chips
-- [ ] Integrated mode renders two side-by-side panels with independent view selectors (mutual exclusion)
-- [ ] Landscape mode renders grid of concept panels with synchronized axes
-- [ ] All four view types (Categorical, Summary, CapEx, Sensitivity) render in both modes
-- [ ] URL encodes mode + selected concepts (shareable, bookmarkable)
-- [ ] Existing taxonomy views (tree, constellation, neighborhood graph) continue to work unchanged
-- [ ] Existing concept profile pages unaffected
+- [x] Selection interaction on tree leaf, constellation dot, or graph node adds concept to tray
+- [x] Selection tray appears on all taxonomy pages with family-colored chips
+- [x] Integrated mode renders two side-by-side panels with independent view selectors (mutual exclusion)
+- [x] Landscape mode renders grid of concept panels with synchronized axes
+- [x] All four view types (Categorical, Summary, CapEx, Sensitivity) render in both modes
+- [x] URL encodes mode + selected concepts (shareable, bookmarkable)
+- [x] Existing taxonomy views (tree, constellation, neighborhood graph) continue to work unchanged
+- [x] Existing concept profile pages unaffected
 
 ---
 
 ## Backlog Items
 
-### Item 1: Selection Tray & Taxonomy Integration [1–1.5 days]
+### Item 1: Selection Tray & Taxonomy Integration [1–1.5 days] ✅ COMPLETE
 
 **Type**: Implementation
+**Completed**: 2026-04-06
 
 **Objective**: Add a persistent bottom-bar selection tray to all taxonomy pages with selection interactions on tree, constellation, and neighborhood graph elements.
 
@@ -296,9 +297,10 @@ Rebuild the concept explorer's comparison experience to bridge taxonomy explorat
 
 ---
 
-### Item 4: End-to-End Wiring & Polish [0.5–1 day]
+### Item 4: End-to-End Wiring & Polish [0.5–1 day] ✅ COMPLETE
 
 **Type**: Integration
+**Completed**: 2026-04-06
 
 **Objective**: Wire the selection tray (Item 1) to the comparison page (Items 2/3a/3b), verify end-to-end flow, URL shareability, and visual consistency. Regression-test existing pages.
 
@@ -325,11 +327,11 @@ Rebuild the concept explorer's comparison experience to bridge taxonomy explorat
 - Automated test suite
 
 **Success Criteria**:
-- [ ] Full flow works: taxonomy selection → tray → comparison page → all four views
-- [ ] URL copy/paste reproduces comparison state (mode + concepts + view selections)
-- [ ] No regressions on concept profile, index grid, or taxonomy views
-- [ ] Loading and error states display correctly
-- [ ] Visual consistency across tray and comparison page
+- [x] Full flow works: taxonomy selection → tray → comparison page → all four views
+- [x] URL copy/paste reproduces comparison state (mode + concepts + view selections)
+- [x] No regressions on concept profile, index grid, or taxonomy views
+- [x] Loading and error states display correctly
+- [x] Visual consistency across tray and comparison page
 
 **Estimated Effort**: 0.5–1 day (no formal spec/design — plan.md with test checklist + execution)
 
@@ -416,4 +418,4 @@ Items 1 and 2 can be developed in parallel. Item 3a depends on Item 2's shell. I
 ---
 
 **Last Updated**: 2026-04-06
-**Next Action**: Begin Item 4 (End-to-End Wiring & Polish)
+**Next Action**: All items complete — epic ready for closure
