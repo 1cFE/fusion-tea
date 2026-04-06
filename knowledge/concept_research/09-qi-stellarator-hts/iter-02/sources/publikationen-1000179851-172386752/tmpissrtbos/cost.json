@@ -1,0 +1,92 @@
+[
+  {
+    "page_num": 1,
+    "cost_usd": 0.07352505,
+    "input_tokens": 4,
+    "output_tokens": 407,
+    "model": "sonnet",
+    "elapsed_seconds": 23.690478563308716,
+    "table_index": null
+  },
+  {
+    "page_num": 2,
+    "cost_usd": 0.0914763,
+    "input_tokens": 4,
+    "output_tokens": 1614,
+    "model": "sonnet",
+    "elapsed_seconds": 44.20803117752075,
+    "table_index": null
+  },
+  {
+    "page_num": 3,
+    "cost_usd": 0.09496379999999999,
+    "input_tokens": 4,
+    "output_tokens": 1839,
+    "model": "sonnet",
+    "elapsed_seconds": 59.30270481109619,
+    "table_index": null
+  },
+  {
+    "page_num": 8,
+    "cost_usd": 0.0839685,
+    "input_tokens": 4,
+    "output_tokens": 1114,
+    "model": "sonnet",
+    "elapsed_seconds": 36.786309242248535,
+    "table_index": null
+  },
+  {
+    "page_num": 9,
+    "cost_usd": 0.15195809999999998,
+    "input_tokens": 4,
+    "output_tokens": 2319,
+    "model": "sonnet",
+    "elapsed_seconds": 61.751752853393555,
+    "table_index": null
+  },
+  {
+    "page_num": 20,
+    "cost_usd": 0.09343409999999999,
+    "input_tokens": 4,
+    "output_tokens": 1744,
+    "model": "sonnet",
+    "elapsed_seconds": 53.85379338264465,
+    "table_index": null
+  },
+  {
+    "page_num": 21,
+    "cost_usd": 0.09395534999999999,
+    "input_tokens": 4,
+    "output_tokens": 1866,
+    "model": "sonnet",
+    "elapsed_seconds": 61.20676279067993,
+    "table_index": null
+  },
+  {
+    "page_num": 22,
+    "cost_usd": 0.09090599999999999,
+    "input_tokens": 4,
+    "output_tokens": 1569,
+    "model": "sonnet",
+    "elapsed_seconds": 37.232094049453735,
+    "table_index": null
+  },
+  {
+    "page_num": 32,
+    "cost_usd": 0.1012035,
+    "input_tokens": 4,
+    "output_tokens": 2263,
+    "model": "sonnet",
+    "elapsed_seconds": 59.18271470069885,
+    "table_index": null
+  },
+  {
+    "page_num": 33,
+    "cost_usd": 0.0991407,
+    "input_tokens": 4,
+    "output_tokens": 2126,
+    "model": "sonnet",
+    "elapsed_seconds": 52.32801270484924,
+    "table_index": null
+  }
+]

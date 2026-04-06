@@ -1,0 +1,94 @@
+{
+  "status": "complete",
+  "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-01/sources/focused-energy-technology.orig.md",
+  "concept_id": "17-laser-icf-direct-drive",
+  "concept_num": "17",
+  "elapsed_s": 319.8,
+  "return_code": 0,
+  "acquired": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/laserfocusworld-lasers-sources-article-14274951-can-high.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/optica-opn-home-articles-volume-34-june-2023-features.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/prnewswire-news-releases-focused-energy-and-amplitude-enter.md"
+  ],
+  "acquired_count": 3,
+  "agent_report": {
+    "orig_file": "focused-energy-technology.orig.md",
+    "urls_found": [
+      "focused-energy.co/technology",
+      "focused-energy.co/technology/lighthouse",
+      "Physics World interview (not a URL)",
+      "Optica OPN article (not a URL)"
+    ],
+    "extractions": [
+      {
+        "url": "https://www.focused-energy.co/technology",
+        "outcome": "skipped",
+        "notes": "Company site, already extracted as thin replacement in iter-01 (20 lines of marketing text). Domain-style URL, JS-heavy."
+      },
+      {
+        "url": "https://www.focused-energy.co/technology/lighthouse",
+        "outcome": "skipped",
+        "notes": "Company site subpage, JS-heavy. Skipped per domain-name heuristic."
+      },
+      {
+        "url": "https://physicsworld.com/a/focusing-on-fusion-debbie-callahan-talks-commercial-laser-fusion/",
+        "outcome": "duplicate",
+        "notes": "Already extracted as focused-energy-callahan-interview in iter-02. Covers: direct drive approach, target gain 50-100x, DPSSL, ~10% WPE, Pearl capsules, LightHouse plant, 900K shots/day, pilot plant timeline, tritium breeding, steam cycle."
+      },
+      {
+        "url": "https://www.prnewswire.com/news-releases/focused-energy-and-amplitude-enter-40-million-agreement-to-advance-high-energy-lasers-beyond-the-state-of-the-art-for-inertial-fusion-energy-302333235.html",
+        "source_name": "prnewswire-news-releases-focused-energy-and-amplitude-enter",
+        "outcome": "success",
+        "covers": [
+          "$40M Amplitude partnership",
+          "$65M laser facility in Bay Area",
+          "Colorado State University proton fast ignition experiments (DOE milestone)",
+          "$175M total funding raised",
+          "Kilo-joule class lasers at enhanced rep rate",
+          "DOE Milestone-Based Fusion Development Program selection",
+          "SPRIND/German government backing",
+          "Fuel targetry lab in Darmstadt"
+        ]
+      },
+      {
+        "url": "https://www.laserfocusworld.com/lasers-sources/article/14274951/can-high-intensity-lasers-help-save-the-planet",
+        "source_name": "laserfocusworld-lasers-sources-article-14274951-can-high",
+        "outcome": "success",
+        "covers": [
+          "Direct-drive proton fast ignition approach description",
+          "150 kJ picosecond ignition laser specs",
+          "400 kJ long-pulse (10 ns) compression lasers",
+          "80 beamlines onto fusion target",
+          "CPA (chirped-pulse amplification) technology",
+          "10 Hz rep rate for power plant",
+          "Diode-pumped solid-state laser roadmap for 2030s",
+          "Todd Ditmire co-founder details",
+          "ELI Beamlines connection",
+          "Credible ignition experiment by end of 2029"
+        ]
+      },
+      {
+        "url": "https://www.optica-opn.org/home/articles/volume_34/june_2023/features/fusion_s_direct_drive/",
+        "source_name": "optica-opn-home-articles-volume-34-june-2023-features",
+        "outcome": "success",
+        "covers": [
+          "Direct drive vs indirect drive context",
+          "Fast ignition concept description",
+          "Markus Roth as CSO and TU Darmstadt professor",
+          "Pilot plant by end of 2030s",
+          "OMEGA laser at U. Rochester (30 kJ, 60 beams)",
+          "Broader direct-drive IFE landscape (LLE, NRL, argon fluoride)"
+        ]
+      }
+    ],
+    "uncovered_claims": [
+      "527 nm compression wavelength (2\u03c9 instead of 3\u03c9) \u2014 only documented in Springer journal paper (doi:10.1007/s10894-023-00363-x), which is paywalled",
+      "3 kJ laser demonstrator at 10 Hz with >10% WPE \u2014 same Springer paper",
+      "Pearl capsule ~4 mm diameter \u2014 not in any accessible source; company site is JS-heavy",
+      "Claimed +30x output vs NIF indirect drive \u2014 only in thin company page extraction (iter-01)"
+    ],
+    "recommendation": "delete",
+    "replacement_md_note": "Thin replacement (20 lines, iter-01) is a subset of the Physics World interview (iter-02) plus the 3 newly extracted sources (iter-03). The .orig.md can be removed. The 4 uncovered claims are quantitative details from the paywalled Springer journal paper \u2014 if needed, that paper should be acquired separately (doi:10.1007/s10894-023-00363-x)."
+  },
+  "recommendation": "delete"
+}

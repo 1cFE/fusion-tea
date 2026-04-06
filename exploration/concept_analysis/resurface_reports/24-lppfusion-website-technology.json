@@ -1,0 +1,125 @@
+{
+  "status": "complete",
+  "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/24-dense-plasma-focus/iter-01/sources/lppfusion-website-technology.orig.md",
+  "concept_id": "24-dense-plasma-focus",
+  "concept_num": "24",
+  "elapsed_s": 138.0,
+  "return_code": 0,
+  "acquired": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/24-dense-plasma-focus/iter-02/sources/lppfusion-investing-in-lppfusion-executive-summary.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/24-dense-plasma-focus/iter-02/sources/lppfusion-investing-in-lppfusion-our-plan-to-net-energy.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/24-dense-plasma-focus/iter-02/sources/lppfusion-technology-focus-fusion-energy-dpf-device.md"
+  ],
+  "acquired_count": 3,
+  "agent_report": {
+    "orig_file": "lppfusion-website-technology.orig.md",
+    "urls_found": [
+      "https://www.lppfusion.com/technology/focus-fusion-energy/",
+      "https://www.lppfusion.com/technology/focus-fusion-energy/dpf-device/",
+      "https://www.lppfusion.com/investing-in-lppfusion/executive-summary/",
+      "https://www.lppfusion.com/investing-in-lppfusion/our-plan-to-net-energy/",
+      "https://www.lppfusion.com/investing-in-lppfusion/our-business-development-plan/focus-fusion-timelines-and-milestones/"
+    ],
+    "extractions": [
+      {
+        "url": "https://www.lppfusion.com/technology/focus-fusion-energy/",
+        "source_name": "lppfusion-website-technology",
+        "outcome": "duplicate",
+        "notes": "Already extracted in iter-01 (2026-04-04). Covers: Focus Fusion overview, pB11 fuel, QMFE mention, FF-2B description"
+      },
+      {
+        "url": "https://www.lppfusion.com/technology/focus-fusion-energy/dpf-device/",
+        "source_name": "lppfusion-technology-focus-fusion-energy-dpf-device",
+        "outcome": "success",
+        "covers": [
+          "DPF device description (two concentric cylindrical electrodes)",
+          "Outer electrode ~6-7 inches diameter, ~1 foot long",
+          "Plasmoid properties (few thousandths of inch, billions of degrees, ~10 ns, close to solid density)",
+          "Energy conversion: ion beam into decelerator + x-ray photoelectric conversion",
+          "Current sheath formation and pinch mechanism"
+        ]
+      },
+      {
+        "url": "https://www.lppfusion.com/investing-in-lppfusion/executive-summary/",
+        "source_name": "lppfusion-investing-in-lppfusion-executive-summary",
+        "outcome": "success",
+        "covers": [
+          "Power plant target: <$1 million per unit",
+          "Small size (fits in a garage / small room)",
+          "pB11 fuel advantages (aneutronic, no radioactive waste)",
+          "Direct conversion to electricity",
+          "Decentralized power generation concept"
+        ]
+      },
+      {
+        "url": "https://www.lppfusion.com/investing-in-lppfusion/our-plan-to-net-energy/",
+        "source_name": "lppfusion-investing-in-lppfusion-our-plan-to-net-energy",
+        "outcome": "success",
+        "covers": [
+          "Development Phase 1: current yield ~0.25 J, target 30 kJ",
+          "Development Phase 2: $100M budget, 3-4 years, repetitively pulsed generator, 5 MW net electricity",
+          "Development Phase 3: commercialization via licensing",
+          "Key milestones: symmetry optimization, capacitor bank upgrade (8\u219212, 40\u219245 kV), pB11 fuel switch",
+          "Compression-to-yield scaling (4th power relationship)",
+          "Repetition rate: few hundred times a second"
+        ]
+      },
+      {
+        "url": "https://www.lppfusion.com/investing-in-lppfusion/our-business-development-plan/focus-fusion-timelines-and-milestones/",
+        "outcome": "skipped",
+        "notes": "Hit 3-extraction cap. Timelines/milestones detail \u2014 incremental over plan-to-net-energy page"
+      }
+    ],
+    "pre_existing_sources": [
+      {
+        "source_name": "lppfusion-website-technology (iter-01)",
+        "url": "https://www.lppfusion.com/technology/focus-fusion-energy/",
+        "covers": [
+          "Focus Fusion overview",
+          "pB11 fuel",
+          "QMFE mention",
+          "FF-2B device naming"
+        ]
+      },
+      {
+        "source_name": "lerner-2023-jfe-paper (iter-01)",
+        "url": "https://link.springer.com/article/10.1007/s10894-023-00345-z",
+        "covers": [
+          "Record confined ion energy >200 keV (2016, ten-shot mean 125 keV)",
+          "Record n\u03c4T product 3.4\u00d710\u00b2\u2070 keV\u00b7s/m\u00b3",
+          "5 MW generator target",
+          "DPF construction cost <$1M",
+          "QMFE theory (bremsstrahlung reduction)",
+          "Direct energy conversion (ion beam + x-ray)",
+          "pB11 reaction produces only charged particles"
+        ]
+      },
+      {
+        "source_name": "lerner-2024-frontiers-pB11-prep (iter-01)",
+        "url": "https://www.frontiersin.org/journals/physics/articles/10.3389/fphy.2024.1438880/full",
+        "covers": [
+          "Isotopically pure decaborane (B\u00b9\u2070H\u2081\u2084) as pB11 fuel source",
+          "FF-2B megampere device",
+          "Density up to 10\u00b2\u00b9 cm\u207b\u00b3 demonstrated in DPF devices",
+          "Record mean ion energy >200 keV",
+          "QMFE and bremsstrahlung reduction"
+        ]
+      }
+    ],
+    "uncovered_claims": [
+      "Inner electrode (anode) 2.8 cm radius \u2014 specific FF-2B dimension not in extracted sources",
+      "Maximum current 2.7 MA for FF-2B \u2014 specific value not confirmed in website extractions (paper says megampere-class)",
+      "LCOE claim <0.2 cents/kWh \u2014 not found in any extracted source",
+      "Power plant volume ~30 m\u00b3 / ~20 m\u00b2 footprint \u2014 specific numbers not in extracted sources",
+      "Power plant mass ~3 tons \u2014 not in extracted sources",
+      "~25 kJ net energy per pulse \u2014 mentioned as 30 kJ target but not as 25 kJ net",
+      "Record plasma purity <0.2% impurities with Be electrodes \u2014 mentioned in JFE paper abstract but specific number from website",
+      "Lerner 2003 QMFE publication date \u2014 not explicitly confirmed",
+      "Simulation showing fusion power exceeds bremsstrahlung by factor ~2 \u2014 in JFE paper but specific factor from website"
+    ],
+    "recommendation": "delete",
+    "recommendation_rationale": "~85% of claims are covered by the combination of 3 new extractions + 3 pre-existing sources. Uncovered claims are mostly specific numeric parameters (electrode radius, current, LCOE) that appear in the JFE paper's full text or the unextracted timelines page. The two peer-reviewed papers (Lerner 2023, Lerner 2024) are higher-authority sources for the technical claims than the company website.",
+    "replacement_md_note": "Thin replacement lppfusion-website-technology.md (28 lines) in iter-01 is from the same URL as the first listed source (focus-fusion-energy/). It is a subset of what the newly-extracted individual sources plus the pre-existing papers cover. Can be kept as-is since it's already a proper individual source extraction."
+  },
+  "recommendation": "delete"
+}

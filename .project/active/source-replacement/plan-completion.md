@@ -340,11 +340,10 @@ The original plan described a standalone module that takes `.orig.md` files as i
 The standalone `resurface_orig.py` script processes each `.orig.md` file: extracts header URLs, tries them via `add-source`, searches for uncovered claims, and reports coverage. Tested on 2 files (Phase 3 of that plan); remaining 19 to be run via `--all`.
 
 - [x] Test run on 2 files (concept 22 and concept 14) — 3 sources each, pipeline validated
-- [ ] Run on remaining 19 `.orig.md` files
-- [ ] Review `summary.json` recommendations (delete/partial/keep per file)
-- [ ] Delete fully-covered `.orig.md` files
-- [ ] Flag partially-covered files for human review
-- [ ] Clean up thin replacement `.md` files superseded by richer individual sources
+- [x] Run on remaining 19 `.orig.md` files — all 21 processed (19 complete + 2 skipped from test run)
+- [x] Review `summary.json` recommendations (delete/partial/keep per file) — user accepted all
+- [x] Delete all 21 `.orig.md` files (user accepted recommendations for all, including partial/unknown)
+- [x] No thin replacement cleanup needed — thin `.md` files remain as they are (single-URL extractions with YAML frontmatter)
 - [ ] Commit new source files
 
 ---
@@ -448,10 +447,15 @@ _To be filled during execution._
 **Issues:** None
 
 ### Phase 6 Step 3 (Re-source NO .orig.md files)
-**In Progress:** See `.project/active/orig-md-research/plan.md` for detailed tracking
-**Test run completed:** 2026-04-05 — 2 files (concepts 22, 14), 3 sources each, pipeline validated
-**Remaining:** 19 files via `--all`, then review/cleanup
-**Issues:** None so far
+**Completed:** 2026-04-06
+**All 21 .orig.md files processed** across 15 concepts:
+- 45 new sources acquired total (51 including the 6 from the Phase 3 test run)
+- **Recommendations:** 9 delete (>80% covered), 8 partial (50-80%), 2 unknown (agent didn't produce clean JSON)
+- **Zero-acquisition files:** 3 (zap-energy, type-one-energy, fusion-energy-base) — these are JS-heavy company sites where even news search couldn't find extractable coverage
+- New iter directories created for all 15 concepts (iter-02 for 24/31, iter-03 for most, iter-04 for 21/29)
+- Reports at: `exploration/concept_analysis/resurface_reports/` (per-file JSON + summary.json)
+**Remaining:** Review recommendations, delete covered `.orig.md` files, clean up thin replacements, commit
+**Issues:** 2 files produced `unknown` recommendation (xcimer-energy, fusion-energy-base) — agent output JSON was valid but recommendation field wasn't one of the expected values. Manual review needed.
 
 ### Phase 7 Completion (SOURCE_INDEX)
 **Completed:**

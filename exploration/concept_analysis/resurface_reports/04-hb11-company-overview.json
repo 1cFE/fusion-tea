@@ -1,0 +1,80 @@
+{
+  "status": "complete",
+  "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/04-laser-icf/iter-01/sources/hb11-company-overview.orig.md",
+  "concept_id": "04-laser-icf",
+  "concept_num": "04",
+  "elapsed_s": 201.1,
+  "return_code": 0,
+  "acquired": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/04-laser-icf/iter-03/sources/fusionxinvest-company-profile-4353-hb11-energy.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/04-laser-icf/iter-03/sources/globenewswire-news-release-2025-02-10-3023820-0-en-general.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/04-laser-icf/iter-03/sources/prnewswire-news-releases-hb11-energy-receives-grant-from-us.md"
+  ],
+  "acquired_count": 3,
+  "agent_report": {
+    "orig_file": "hb11-company-overview.orig.md",
+    "urls_found": [
+      "https://hb11.energy/our-story/",
+      "https://hb11.energy/"
+    ],
+    "extractions": [
+      {
+        "url": "https://hb11.energy/our-story/",
+        "outcome": "duplicate",
+        "notes": "Already extracted as hb11-company-overview.md in iter-01 (thin JS-heavy content, only 3 marketing paragraphs)"
+      },
+      {
+        "url": "https://hb11.energy/",
+        "outcome": "skipped",
+        "notes": "Bare homepage domain \u2014 skipped per instructions (JS-heavy company site)"
+      },
+      {
+        "url": "https://www.prnewswire.com/news-releases/hb11-energy-receives-grant-from-us-department-of-energy-to-develop-clean-safe-and-unlimited-fusion-energy-301899494.html",
+        "source_name": "prnewswire-news-releases-hb11-energy-receives-grant-from-us",
+        "outcome": "success",
+        "covers": [
+          "DOE INFUSE grant (2023)",
+          "Key people: Prof Thomas Mehlhorn (lead target design), Dr Warren McKenzie (founder & MD), Prof Adam Sefkow (Rochester), Max Tabak (fast ignition pioneer, Edward Teller Award), Prof Hora (co-founder)",
+          "University of Rochester / LLE partnership",
+          "Proton fast ignition / aneutronic hydrogen-boron approach",
+          "INFUSE as public-private partnership program"
+        ]
+      },
+      {
+        "url": "https://www.globenewswire.com/news-release/2025/02/10/3023820/0/en/General-Atomics-Secures-DOE-Funding-to-Advance-Vital-Fusion-Energy-Research-and-Development.html",
+        "source_name": "globenewswire-news-release-2025-02-10-3023820-0-en-general",
+        "outcome": "success",
+        "covers": [
+          "TINEX initiative \u2014 GA-led, DOE FIRE Collaboratives funding ($107M across 6 projects)",
+          "TINEX Industrial Council members: Xcimer Energy, Marvel Fusion, Longview Energy Systems, LaserFusionX, HB11, Focused Energy, Blue Laser Fusion",
+          "Partner institutions: SLAC, Colorado State, UC San Diego, LLNL",
+          "Technical scope: fuel target fabrication, precision injection, tracking, debris management"
+        ]
+      },
+      {
+        "url": "https://fusionxinvest.com/company-profile/4353/hb11-energy/",
+        "source_name": "fusionxinvest-company-profile-4353-hb11-energy",
+        "outcome": "success",
+        "covers": [
+          "Founded 2017, Sydney Australia",
+          "Laser-ignited hydrogen-boron (pB11) fuel approach",
+          "Petawatt-class laser experiments",
+          "Collaborations with European and Japanese research institutions"
+        ]
+      }
+    ],
+    "uncovered_claims": [
+      "~$23M total funding (PitchBook figure) \u2014 FusionXInvest paywalled, only free preview extracted",
+      "Key people: Greg Ainsworth (COO), Dr Sergey Pikuz (CTO), Dr Igor Morozov (Head of Simulations), Prof Thomas Kuehl (Laser Technology Lead) \u2014 not in any extracted source",
+      "'Components first' commercial strategy (Nov 2024) \u2014 no accessible source found covering this announcement",
+      "Two revenue streams: high-powered pulsed lasers (>$10B market) and boron fuel targets (medical isotopes) \u2014 no accessible source found",
+      "Osaka University LFEX petawatt laser experiments (specific partnership) \u2014 partially covered by FusionXInvest mentioning 'Japan' but no specifics",
+      "Technical evolution: original two-laser system (ns pulse for kilotesla field + ps petawatt for proton fast ignition), direct electrostatic conversion at -1.4 MV \u2014 covered by existing patent source in iter-01, not by new extractions",
+      "1 GW baseload power target \u2014 not in any extracted source",
+      "TINEX described as '$180M' in orig vs $107M across 6 projects in GlobeNewsWire \u2014 discrepancy (orig figure may be total program including industry contributions)"
+    ],
+    "recommendation": "partial",
+    "replacement_md_note": "Thin replacement hb11-company-overview.md (iter-01) contains only 3 paragraphs of marketing text from JS-heavy hb11.energy/our-story/ \u2014 is a strict subset of what new extracted sources cover. Could be deleted, but orig.md should be kept since ~40% of claims (commercial strategy, several key people, funding total, 1 GW target) remain uncovered by any individual source."
+  },
+  "recommendation": "partial"
+}

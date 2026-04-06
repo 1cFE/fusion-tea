@@ -1,0 +1,94 @@
+{
+  "status": "complete",
+  "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/20-modular-hts-stellarator/iter-01/sources/type-one-energy-infinity-two-design.orig.md",
+  "concept_id": "20-modular-hts-stellarator",
+  "concept_num": "20",
+  "elapsed_s": 139.3,
+  "return_code": 0,
+  "acquired": [],
+  "acquired_count": 0,
+  "agent_report": {
+    "orig_file": "type-one-energy-infinity-two-design.orig.md",
+    "urls_found": [
+      "https://typeoneenergy.com/our-technology/",
+      "https://typeoneenergy.com/type-one-energy-issues-first-realistic-unified-fusion-power-plant-design-basis/",
+      "https://www.ans.org/news/2025-04-01/article-6903/",
+      "https://modernsciences.org/type-one-energy-fusion-pilot-plant-design-april-2025/",
+      "https://www.cambridge.org/core/journals/journal-of-plasma-physics/collections/physics-basis-of-the-infinity-two-fusion-power-plant"
+    ],
+    "extractions": [
+      {
+        "url": "https://typeoneenergy.com/our-technology/",
+        "source_name": "type-one-energy-infinity-two-design",
+        "outcome": "duplicate",
+        "notes": "Already extracted as existing iter-01 source"
+      },
+      {
+        "url": "https://www.ans.org/news/2025-04-01/article-6903/",
+        "source_name": "ans-news-2025-04-01-article-6903",
+        "outcome": "success",
+        "covers": [
+          "Publication of baseline physics design basis in JPP",
+          "Infinity Two stellarator fusion pilot plant announcement"
+        ],
+        "notes": "Paywalled \u2014 only preview paragraph extracted (15 lines). Thin but confirms key facts."
+      },
+      {
+        "url": "https://typeoneenergy.com/type-one-energy-issues-first-realistic-unified-fusion-power-plant-design-basis/",
+        "source_name": "typeoneenergy-type-one-energy-issues-first-realistic",
+        "outcome": "success",
+        "covers": [
+          "800 MW fusion power, ~350 MWe net electric",
+          "D-T burning plasma stellarator",
+          "Island divertors for helium ash exhaust",
+          "Blanket with shielding and tritium breeding",
+          "W7-X heritage",
+          "DOE Frontier exascale supercomputer usage",
+          "7 peer-reviewed papers in JPP",
+          "TVA partnership for Infinity Two",
+          "Capacity factor and LCOE considerations",
+          "HTS modular superconducting magnets"
+        ]
+      },
+      {
+        "url": "https://modernsciences.org/type-one-energy-fusion-pilot-plant-design-april-2025/",
+        "source_name": "modernsciences-type-one-energy-fusion-pilot-plant-design",
+        "outcome": "success",
+        "covers": [
+          "800 MW fusion power",
+          "Q = 40 fusion gain",
+          "Gas-cooled solid breeder blankets (HCPB)",
+          "Divertor systems for heat and particle management",
+          "D-T fusion",
+          "6 JPP paper DOIs and full references",
+          "TVA partnership",
+          "Stellarator with high magnetic fields"
+        ]
+      },
+      {
+        "url": "https://www.cambridge.org/core/journals/journal-of-plasma-physics/collections/physics-basis-of-the-infinity-two-fusion-power-plant",
+        "outcome": "skipped",
+        "notes": "Journal collection page \u2014 individual papers are behind paywall. DOIs captured in Modern Sciences extraction."
+      }
+    ],
+    "uncovered_claims": [
+      "Aspect ratio A = 10 \u2014 from JPP papers, not in press/news sources",
+      "Volume-averaged magnetic field <B> = 9 T \u2014 from JPP papers",
+      "Plasma density n_e \u2248 2\u00d710\u00b2\u2070 m\u207b\u00b3 \u2014 from JPP papers",
+      "ECRH + pellet injection as only external sources \u2014 from JPP papers",
+      "TBR = 1.30, required TBR < 1.05 \u2014 from JPP blanket paper",
+      "Tritium inventory ~675 grams operational \u2014 from JPP blanket paper",
+      "FLiBe considered as alternative blanket \u2014 from JPP blanket paper",
+      "Rankine cycle with reheat, thermal efficiency > 30% \u2014 from JPP papers",
+      "Steady-state operation, 2-year operating cycle, 30-day maintenance outages \u2014 source unclear",
+      "HTS REBCO magnets '200x current carrying capacity of copper' \u2014 from company marketing",
+      "Infinity One target completion early 2029 \u2014 from company announcements",
+      "Maximum-J optimization approach \u2014 from JPP papers",
+      "70,000+ simulations on DOE Frontier \u2014 specific number not in extracted sources"
+    ],
+    "recommendation": "partial",
+    "recommendation_rationale": "High-level claims (800MW, 350MWe, Q=40, D-T, HCPB blanket, divertors, JPP papers, TVA, W7-X heritage) are well covered by the press release and Modern Sciences article. However, detailed quantitative specs (aspect ratio, field strength, plasma density, TBR values, tritium inventory, thermal cycle details) originate from the JPP papers which are behind Cambridge paywall. These constitute ~40% of the orig file's unique value.",
+    "replacement_md_note": "Thin replacement type-one-energy-infinity-two-design.md (30 lines) is from typeoneenergy.com/our-technology/ \u2014 its content (Infinity One details, company overview) is a subset of the newly extracted press release. Could be deleted if press release is retained."
+  },
+  "recommendation": "partial"
+}

@@ -1,0 +1,113 @@
+[
+  {
+    "page_num": 0,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 1,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 2,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 3,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 4,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 5,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 6,
+    "action": "keep",
+    "reasons": [
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)",
+      "Claude enhancement unavailable \u2014 kept original"
+    ],
+    "details": {
+      "table_filter": [
+        "PASS table 1 (0r\u00d70c, detector=gmft): extraction_failed (needs Claude)"
+      ]
+    }
+  },
+  {
+    "page_num": 7,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 8,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 9,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 10,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 11,
+    "action": "claude_replace",
+    "reasons": [
+      "GMFT_XREF: GMFT found 3 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (2r\u00d72c, detector=gmft)",
+        "KEEP table 2 (1r\u00d72c, detector=gmft)",
+        "KEEP table 3 (1r\u00d72c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 12,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 13,
+    "action": "strip_false",
+    "reasons": [
+      "TABLE: <br> artifacts in 15/16 table rows",
+      "TABLE: ColN auto-headers in 1/16 rows (likely diagram/figure falsely detected as table)",
+      "ColN auto-headers detected, no GMFT \u2014 stripping false tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 14,
+    "action": "claude_replace",
+    "reasons": [
+      "DENSITY: very low text density: 193 chars (threshold: 200)"
+    ],
+    "details": {}
+  }
+]

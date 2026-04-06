@@ -1,0 +1,71 @@
+{
+  "status": "complete",
+  "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/21-spherical-tokamak-hts/iter-01/sources/tokamak-energy-overview.orig.md",
+  "concept_id": "21-spherical-tokamak-hts",
+  "concept_num": "21",
+  "elapsed_s": 133.3,
+  "return_code": 0,
+  "acquired": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/21-spherical-tokamak-hts/iter-04/sources/tokamakenergy-about-us-fusion-energy-high-temperature.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/21-spherical-tokamak-hts/iter-04/sources/tokamakenergy-our-fusion-energy-and-hts-technology-fusion.md"
+  ],
+  "acquired_count": 2,
+  "agent_report": {
+    "orig_file": "tokamak-energy-overview.orig.md",
+    "urls_found": [
+      "https://tokamakenergy.com/",
+      "https://tokamakenergy.com/about-us-fusion-energy-high-temperature-superconducting-magnets/",
+      "https://tokamakenergy.com/our-fusion-energy-and-hts-technology/fusion-energy-technology/"
+    ],
+    "extractions": [
+      {
+        "url": "https://tokamakenergy.com/",
+        "outcome": "duplicate",
+        "notes": "Already extracted as tokamak-energy-overview.md in iter-01 (thin/JS-heavy, marketing text only)"
+      },
+      {
+        "url": "https://tokamakenergy.com/about-us-fusion-energy-high-temperature-superconducting-magnets/",
+        "source_name": "tokamakenergy-about-us-fusion-energy-high-temperature",
+        "outcome": "success",
+        "covers": [
+          "Founded 2009, spin-out from UKAEA",
+          "HQ UK, subsidiaries in US and Japan",
+          "Staff count (updated: 300+ vs orig ~280)",
+          "$335M funding ($275M private, $60M government)",
+          "DOE Milestone-Based Fusion Development Program",
+          "24 Tesla at 20K world record (2019 per source, orig said 2020)",
+          "ST40 100M\u00b0C plasma temperature",
+          "Demo4 world-first HTS fusion magnet system",
+          "ST40 $52M upgrade with DOE and UK DESNZ",
+          "Partnerships (PPPL, ORNL, LANL, SNL, GA, Sumitomo, Kyoto Fusioneering, U Tokyo, UIUC)"
+        ]
+      },
+      {
+        "url": "https://tokamakenergy.com/our-fusion-energy-and-hts-technology/fusion-energy-technology/",
+        "source_name": "tokamakenergy-our-fusion-energy-and-hts-technology-fusion",
+        "outcome": "success",
+        "covers": [
+          "Spherical tokamak geometry with HTS magnets",
+          "Low aspect ratio benefits (efficiency, stability, cost)",
+          "REBCO tape specs (12mm wide, <0.1mm thick)",
+          "ST40 world's highest-field spherical tokamak",
+          "100M\u00b0C plasma ion temperature (2022)",
+          "Highest triple product of any private fusion company",
+          "Demo4: 44 HTS coils, 14 TF limbs, 2 PF coils, 20K, 11.8T"
+        ]
+      }
+    ],
+    "uncovered_claims": [
+      "HTS magnets >5x more energy-efficient than conventional superconductors \u2014 marketing claim, not found verbatim in extracted sources",
+      "ST40 plasma volume <1 cubic meter / 15x less \u2014 covered by existing iter-02 tokamak-energy-roadmap.md (ANS article), not by new extractions",
+      "ST80-HTS 15-minute pulse duration target \u2014 covered by existing iter-02 tokamak-energy-roadmap.md, not by new extractions",
+      "ST-E1 earlier specs (A=2.0, R=4.25m, B=4.25T, 800MW/85MWe) \u2014 covered by existing iter-01 ste1-pilot-plant-specs.md",
+      "ST-E1 Revision D (R=5.0m, A=2.3, B=5.25T, 450-750MWe) \u2014 covered by existing iter-02 tokamak-energy-st-e1-design-evolution.md",
+      "Outboard-only liquid lithium breeder blanket, TBR=1.2 \u2014 covered by existing iter-02 tokamak-energy-st-e1-design-evolution.md",
+      "NBI 2MW + ECRH 1MW gyrotron details \u2014 covered by existing iter-01 st40-heating-systems.md and iter-02 tokamak-energy-heating-systems.md"
+    ],
+    "recommendation": "delete",
+    "replacement_md_note": "Thin replacement tokamak-energy-overview.md (45 lines) is just JS-extracted marketing text from homepage \u2014 complete subset of the two new about/technology page sources. Can also be deleted."
+  },
+  "recommendation": "delete"
+}
