@@ -58,12 +58,64 @@ cd ~/1cfe/fusion-tea
    echo 'SYSIDE_LICENSE_KEY="YOUR-LICENSE-KEY-HERE"' > .env
    ```
 
-2. **Install Python dependencies**:
+2. **Set up R2 artifact sync** (for research PDFs, images, HTML snapshots):
+
+   Get your R2 credentials (Access Key ID + Secret Access Key) from the project owner, then add them to `.env`:
+   ```bash
+   echo 'R2_ACCESS_KEY="your-access-key-id"' >> .env
+   echo 'R2_SECRET_ACCESS_KEY="your-secret-access-key"' >> .env
+   ```
+
+   Install [rclone](https://rclone.org/install/) (v1.63+):
+   ```bash
+   # Linux
+   curl https://rclone.org/install.sh | sudo bash
+
+   # macOS
+   brew install rclone
+
+   # Windows (winget)
+   winget install Rclone.Rclone
+
+   # Windows (scoop)
+   scoop install rclone
+   ```
+
+   Configure the remote:
+   ```bash
+   source .env
+   rclone config create r2 s3 \
+     provider Cloudflare \
+     access_key_id "$R2_ACCESS_KEY" \
+     secret_access_key "$R2_SECRET_ACCESS_KEY" \
+     endpoint https://985ab2e0dede4b8be7f56c00b861ca9b.r2.cloudflarestorage.com \
+     env_auth false
+   ```
+
+   On Windows (PowerShell), set the variables manually:
+   ```powershell
+   rclone config create r2 s3 `
+     provider Cloudflare `
+     access_key_id "your-access-key-id" `
+     secret_access_key "your-secret-access-key" `
+     endpoint https://985ab2e0dede4b8be7f56c00b861ca9b.r2.cloudflarestorage.com `
+     env_auth false
+   ```
+
+   Verify and pull artifacts:
+   ```bash
+   rclone lsd r2:1cfe-research          # should return without error
+   ./scripts/sync_research.sh pull       # pull all binary artifacts
+   ```
+
+   > **Windows note:** `sync_research.sh` requires bash. Use WSL or Git Bash, or run rclone directly — see `knowledge/concept_research/README.md` for the raw rclone commands.
+
+3. **Install Python dependencies**:
    ```bash
    uv sync
    ```
 
-3. **Set up agentic-mbse** (creates Claude Code commands and agents):
+4. **Set up agentic-mbse** (creates Claude Code commands and agents):
    ```bash
    uv run agentic-mbse init --dev
    ```
@@ -75,7 +127,7 @@ cd ~/1cfe/fusion-tea
    - `modeling_pm/MODELING_GUIDE.md` - SysML syntax reference
    - `modeling_pm/MODELING_PROCESS.md` - MBSE methodology
 
-4. **Verify installation**:
+5. **Verify installation**:
    ```bash
    # Check syside works
    uv run syside --version
