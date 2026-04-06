@@ -6,6 +6,9 @@ Status: draft
 Created: 2026-03-28
 Approved-Date:
 Reuses: [07-maglif, 01-hts-compact-tokamak, 21-spherical-tokamak-hts, 08-frc-w-direct-conversion]
+Review-Iterations: 1
+Last-Review: 2026-04-05
+Review-Status: proceed
 ---
 
 # D1+ Analysis: Magnetized Target Fusion - Pneumatic Compression (D-T)

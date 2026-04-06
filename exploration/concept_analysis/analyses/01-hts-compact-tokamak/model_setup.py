@@ -1,359 +1,436 @@
-# STALE: analysis-updated-iter-4
-"""HTS Compact Tokamak (CFS ARC) — 1costingfe parametric LCOE model.
+# STALE: analysis-updated-iter-7
+"""HTS Compact Tokamak (Commonwealth Fusion Systems ARC) — LCOE estimate.
 
 Usage:
     uv run python model_setup.py              # print results to terminal
     uv run python model_setup.py | tee model_output.txt  # also save for synthesis stage
 
 Modeling approach:
-    The ARC cost database (Sorbom et al. 2015) covers only three fabricated
-    subsystems — vacuum vessel, FLiBe blanket, and magnet/structure — explicitly
-    excluding balance of plant. The analysis (analysis.md §5) recommends a
-    free-form parametric scaling approach, not a full structured CAS build.
-    This script uses the 1costingfe CAS framework with three targeted
-    cost_overrides where ARC-specific data exists:
-      - C220103: coil cost from ARC's published REBCO tape requirement (5,730 km)
-      - C220104: heating cost from ARC's LHCD+ICRF mix (no NBI)
-      - CAS27:   FLiBe blanket fill from Araiinejad & Shirvan (2025) NOAK estimate
-    All other CAS accounts use framework defaults calibrated to reference D-T
-    tokamaks — appropriate order-of-magnitude estimates, but not validated against
-    ARC-specific design data.
+    Uses 1costingfe CostModel (TOKAMAK / DT) with selective CAS overrides anchored
+    to the Sorbom 2015 ARC paper (arc-reactor-specifications.md §6). ARC's published
+    cost data covers only three fabricated components (vacuum vessel, blanket,
+    magnets/structure); BOP and indirect accounts are computed by the framework
+    using its ARIES-calibrated defaults.
+
+    The nuclear island overrides (C220103, C220101, C220106) inflate ARC's 2014-USD
+    fabricated costs to 2024 USD via CPI ×1.34 (BLS CPI-U: ~236 in 2014 → ~315 in
+    2024). CAS27 (FLiBe special materials) uses Araiinejad 2025 NOAK estimate, which
+    is already in ~2025 USD.
+
+    Indirect cost framing:
+    The FECONS/pyFECONS framework (arxiv-2601-21724 §8.2) provides a structural
+    split: direct costs ~71% of total capital cost, indirect/owner/supplementary/
+    financial ~29% of TCC. This implies total plant cost is roughly 1.41× the direct
+    cost (nuclear island + BOP) — not 2–3× the nuclear island alone. The framework
+    defaults encode this split via CAS30/40/50/60 fractions.
+
+    FOAK scenario:
+    The NOAK central estimate (noak=True, C220103 at paper value) is paired with a
+    discrete FOAK scenario that applies a 2× multiplier to the nuclear island magnets
+    cost and sets noak=False. CATF IWG methodology (arxiv-2602-19389 §2.1.5) cites
+    FOAK fusion plants at 150–200 $/MWh vs. 60–100 $/MWh NOAK — this is a
+    step-function risk, not a continuous sensitivity parameter.
+
+    iter-7 updates (vs. iter-6):
+    1. Capacity factor framing corrected to Schwartz et al. (2024, arXiv:2405.01514):
+       naive inverse-availability LCOE scaling overstates the economic penalty by up to
+       15% when maintenance is scheduled in low-price windows. 80% availability retains
+       91% of maintenance-free value (not 80%). Simple inverse used as conservative
+       upper bound; Schwartz et al. grid-value curve is the central estimate.
+    2. FLiBe chemistry + tritium processing cost now has an order-of-magnitude floor:
+       Woodruff Scientific (2020) ARPA-E ALPHA re-costing (OSTI:1820946) gives
+       CAS22.5 Fuel Processing averaging $124M at ~500 MWe for compact MIF/Z-pinch
+       concepts — structural analogue, not direct match. Treat $100–200M as floor for
+       ARC's FLiBe chemistry plant (additive BOP line, not yet in C220500 override).
+    3. ARPA-E ALPHA cross-concept NOAK LCOE ($43/MWh, ~$2.4/W, non-HTS compact
+       fusion, 90% availability, zero contingency) added to Key Assumptions as a
+       non-HTS lower-bound reference.
 
 Concept choice rationale:
-    CFS ARC is the most extensively published private HTS compact tokamak.
-    Sorbom et al. (2015) provides component-level costs; the 2020 power
-    conversion study establishes 46% net Rankine efficiency. The September 2021
-    CFS magnet demonstration (20 T large-bore HTS) directly validates the core
-    technology at the design operating point.
+    ConfinementConcept.TOKAMAK / Fuel.DT — directly maps to ARC's configuration.
+    The CATF spherical-tokamak geometry defaults are replaced with ARC's published
+    radial build (R0=3.3 m, a=1.13 m) from Sorbom 2015.
 
-Key deviations from the reference dt_tokamak.py (CATF spherical tokamak):
-    1. Net electric: 270 MWe (ARC 2015 aggressive pilot ~261 MWe, rounded)
-       vs. 1,000 MWe CATF reference. CFS 2025 target is 400 MWe (not documented).
-    2. Geometry: R0=3.3 m, a=1.13 m (aspect ratio 3) vs. CATF R0=3.0 m, a=1.1 m.
-    3. eta_th=0.46 from ARC-specific supercritical Rankine analysis.
-    4. C220103 overridden from ARC's 5,730 km REBCO tape requirement at NOAK prices.
-    5. C220104 overridden for LHCD+ICRF heating (no NBI — ARC uses klystrons/tetrodes).
-    6. CAS27 overridden for FLiBe (950 t × $154/kg NOAK) vs. default PbLi assumption.
-    7. CRITICAL UNCERTAINTY — availability (capacity factor) is unpublished for ARC.
-       80% is a medium assumption. Analysis shows 50%→90% produces near-2× LCOE swing.
+Key deviations from dt_tokamak.py reference:
+    - Much smaller plant (261 MWe vs 1 GWe reference); ARC aggressive-pilot output.
+    - eta_th = 0.46: supercritical Rankine at 250 bar / 540°C, ARC recommended cycle.
+    - p_input = 38.6 MW: 25 MW LHCD + 13.6 MW ICRF (no NBI in ARC design).
+    - C220103 dominates: REBCO-heavy magnet/structure = ~$6,901 M$ 2024 USD — the
+      single largest uncertainty in the cost model (5.5× REBCO price spread in 2014).
+    - Availability is UNCERTAIN (not published in any CFS source); 0.75 is the
+      central estimate; sensitivity to 0.50–0.90 is the primary output sweep.
+    - CAS27 (FLiBe) overridden to 950 t × $154/kg NOAK ≈ $146 M$; framework default
+      (PbLi-based) underestimates by ~20× at this plant size.
 """
 
 from costingfe import ConfinementConcept, CostModel, Fuel
 
+# ── Model creation ────────────────────────────────────────────────────────
+
 model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
 
-# ── Cost Override Pre-computation ────────────────────────────────────────────
-#
-# C220103: Coil cost from ARC's REBCO tape requirement
-# ARC TF + PF coils require 5,730 km REBCO tape [arc-reactor-specifications.md §4.1, §6].
-# Critical current: ~250 A per meter of tape at 20 K, 20 T
-#   [analysis.md §S4: "250 A/m at 20K, 20T"].
-# NOAK conductor target: $50/kAm [costingfe costing_constants.yaml CoilMaterial.REBCO_HTS].
-# Manufacturing markup: 8× for tokamak [costingfe layers/cas22.py _COIL_DEFAULTS].
-# This overrides the framework's geometry-based formula (default b_max=12 T, r_coil=1.85 m)
-# with the published tape figure — ARC's 23 T peak field is not propagated through
-# model.forward() to the coil scaling formula.
-_REBCO_KM = 5730.0         # km; arc-reactor-specifications.md §4.1
-_IC_A_PER_M = 250.0        # A/m at 20 K, 20 T; analysis.md §S4
-_REBCO_NOAK_PER_KAM = 50.0 # $/kAm NOAK target; costing_constants.yaml
-_TOKAMAK_MARKUP = 8.0      # manufacturing complexity; cas22.py _COIL_DEFAULTS TOKAMAK
-_total_kAm = (_REBCO_KM * 1e3) * (_IC_A_PER_M / 1000.0)   # 1,432,500 kA-m
-_conductor_cost_M = _total_kAm * _REBCO_NOAK_PER_KAM / 1e6
-C220103_COILS = _conductor_cost_M * _TOKAMAK_MARKUP  # M$
+# ── CPI inflation constant (2014 → 2024) ─────────────────────────────────
+# BLS CPI-U: ~236 (2014) → ~315 (2024) ≈ 1.336; rounded to 1.34.
+# Applied to all ARC 2014-USD fabricated component costs from arc-reactor-specifications.md §6.
+_CPI_2014_TO_2024 = 1.34
 
-# C220104: Heating system — LHCD + ICRF (no NBI)
-# ARC aux heating: 25 MW LHCD (8 GHz) + 13.6 MW ICRF (120 MHz)
-#   [arc-reactor-specifications.md §5.1; sparc-icrf-heating-paper.md §Introduction].
-# ICRF selected specifically for cost-effectiveness using existing technology
-#   [sparc-icrf-heating-paper.md §Introduction: "can be built cost-effectively"].
-# Unit costs: LHCD $4.0 M/MW, ICRF $4.1494 M/MW [costingfe defaults.py].
-# Framework default uses p_nbi=50 MW ($353 M); ARC uses no NBI (klystrons/tetrodes).
-_P_LHCD_MW = 25.0   # MW LHCD; arc-reactor-specifications.md §5.1
-_P_ICRF_MW = 13.6   # MW ICRF; arc-reactor-specifications.md §5.1
-_LHCD_PER_MW = 4.0      # M$/MW; costingfe defaults.py heating_lhcd_per_mw
-_ICRF_PER_MW = 4.1494   # M$/MW; costingfe defaults.py heating_icrf_per_mw
-C220104_HEATING = _P_LHCD_MW * _LHCD_PER_MW + _P_ICRF_MW * _ICRF_PER_MW  # M$
+# ── Nuclear island cost overrides (ARC-specific, 2024 USD) ───────────────
+# Source: arc-reactor-specifications.md §6, "Identification of Cost Feasibility"
+# These cover ONLY the three costed subsystems; all BOP accounts use framework defaults.
+# ARC paper explicitly excludes BOP: "a full costing of the ARC reactor is beyond
+# the scope of this paper." — arc-reactor-specifications.md §6
 
-# CAS27: FLiBe blanket material fill (not PbLi)
-# ARC blanket tank contains ~950 t FLiBe (LiF-BeF₂) [arc-reactor-specifications.md §5.4].
-# NOAK unit cost: ~$154/kg (Araiinejad & Shirvan 2025, 20% learning rate assumed)
-#   [analysis.md §S4: "FLiBe unit cost (NOAK): ~$154/kg"].
-# Default CAS27 assumes PbLi at $3/kg (~$15 M at 1 GWe) — underestimates FLiBe by ~50×.
-_FLIBE_TONNES = 950.0       # t; arc-reactor-specifications.md §5.4
-_FLIBE_NOAK_PER_KG = 154.0  # $/kg NOAK; Araiinejad & Shirvan 2025; analysis.md §S5
-CAS27_FLIBE = _FLIBE_TONNES * 1e3 * _FLIBE_NOAK_PER_KG / 1e6  # M$; ~$146 M
+# C220103: Magnets + structural support — midpoint of $5.1–5.2B 2014 USD
+# "The cost of ARC is approximately one-third the cost of the 8 T ARIES-RS (~$14B)"
+# Dominated by REBCO tape fabrication; materials only $160–260M; rest is labor/tooling.
+# UNCERTAIN: REBCO price ranged $36–198/m in 2014 (5.5× spread); ~$20/m in 2025 (~$100/kA-m).
+# Commercial viability target ~$10/kA-m — still ~10× above 2025 market prices.
+# Source: arc-reactor-specifications.md §4.1, §6;
+#         sciencedirect-science-article-pii-s2772830725000390.md §Introduction
+_C220103_2014_M = 5150.0        # M$, midpoint of $5.1–5.2B; arc-reactor-specifications.md §6
+C220103_OVERRIDE = _C220103_2014_M * _CPI_2014_TO_2024  # ≈ 6,901 M$ 2024 USD
 
-# ── Plant Configuration ──────────────────────────────────────────────────────
+# C220101: First wall + FLiBe blanket — $260M 2014 USD
+# Liquid FLiBe immersion blanket (breeder + coolant + shield combined).
+# $160M materials + ~$100M fabrication; arc-reactor-specifications.md §6.
+_C220101_2014_M = 260.0         # M$; arc-reactor-specifications.md §6
+C220101_OVERRIDE = _C220101_2014_M * _CPI_2014_TO_2024  # ≈ 348 M$ 2024 USD
+
+# C220106: Vacuum vessel — $92M 2014 USD
+# Inconel-718 double-walled structure; $5.5M materials + fabrication.
+# Source: arc-reactor-specifications.md §6
+_C220106_2014_M = 92.0          # M$; arc-reactor-specifications.md §6
+C220106_OVERRIDE = _C220106_2014_M * _CPI_2014_TO_2024  # ≈ 123 M$ 2024 USD
+
+# CAS27: FLiBe special materials inventory
+# 950 t FLiBe × $154/kg NOAK (20% learning rate assumed by Araiinejad 2025).
+# Framework default (PbLi @ $3/kg) would yield ~$8M at this plant size — ~20× low.
+# NOTE: FLiBe chemistry plant + tritium extraction system capital cost is NOT included
+# here. iter-7 update: Woodruff Scientific (2020) ARPA-E ALPHA re-costing (OSTI:1820946)
+# gives CAS22.5 Fuel Processing averaging $124M at ~500 MWe for compact MIF/Z-pinch
+# concepts. Structural analogue only (different blanket chemistry, no FLiBe); treat
+# $100–200M as an order-of-magnitude floor for ARC's additive FLiBe chemistry +
+# tritium extraction BOP line. Not yet included in model — still a truly-unknown additive.
+# Source: arc-reactor-specifications.md §6 (quantity); Araiinejad & Shirvan 2025 (price);
+#         analysis.md §6, gap #15; osti-servlets-purl-1820946.md (ALPHA re-costing floor)
+CAS27_OVERRIDE = 146.0          # M$ ~2025 USD; no CPI adjustment needed
+
+# Shared cost_overrides dict (used by both NOAK run and sensitivity)
+_NOAK_OVERRIDES = {
+    "C220103": round(C220103_OVERRIDE, 1),  # Magnets+structure: $5,150M×1.34 ≈ $6,901 M$
+    "C220101": round(C220101_OVERRIDE, 1),  # FLiBe blanket:     $260M×1.34   ≈ $348 M$
+    "C220106": round(C220106_OVERRIDE, 1),  # Vacuum vessel:     $92M×1.34    ≈ $123 M$
+    "CAS27":   CAS27_OVERRIDE,              # FLiBe: 950 t × $154/kg NOAK = $146 M$
+}
+
+# ── NOAK forward run (central estimate) ──────────────────────────────────
+
 result = model.forward(
-    # ── Customer requirements ───────────────────────────────────────────────
-    # ARC 2015 paper: 190 MWe (FNSF phase) to 261 MWe (aggressive pilot phase)
-    # [arc-power-conversion-studies.md §Results]. Using 270 MWe as the aggressive
-    # pilot rounded up slightly. CFS 2025 communications describe 400 MWe (updated
-    # design, parameters not published) [cfs-2025-2026-updates.md].
-    net_electric_mw=270.0,
-    # UNCERTAIN: Capacity factor not published anywhere for ARC [analysis.md §S5].
-    # Analysis §S2 Hypothesis 2: sub-$100/MWh LCOE requires >70-80% CF sustained.
-    # 80% is a medium assumption; see sensitivity section below for 50-90% sweep.
-    availability=0.80,
-    # ARC TF coil fluence limit: 9 FPY [arc-reactor-specifications.md §5].
-    # Demountable coil design enables in-situ replacement; 30-year plant life
-    # assumes ~3 magnet generations. Standard nuclear plant lifetime analogue.
-    lifetime_yr=30.0,
-    n_mod=1,
-    # UNCERTAIN: Construction time not published; analogue to large nuclear (6-10 yr).
-    # ARC's novel HTS technology and regulatory path suggest upper end of range.
-    construction_time_yr=7.0,
-    interest_rate=0.07,      # DEFAULT: standard utility financing assumption
-    inflation_rate=0.0245,   # DEFAULT: ~2.5% long-run US inflation
-    noak=True,
+    # ── Customer requirements ─────────────────────────────────────────────
+    # ARC aggressive pilot: supercritical Rankine at 1200 K FLiBe outlet → 261 MWe.
+    # Source: arc-power-conversion-studies.md §Results, Table 15 (recommended cycle).
+    # NOTE: 2025 CFS public target is 400 MWe — updated design not publicly documented.
+    net_electric_mw=261.0,
 
-    # ── ARC Reactor Geometry ────────────────────────────────────────────────
-    # ARC major radius R0 = 3.3 m [arc-reactor-specifications.md §2]
-    R0=3.3,
-    # ARC minor radius a = 1.13 m, aspect ratio A = 3 [arc-reactor-specifications.md §2]
-    plasma_t=1.13,
-    # UNCERTAIN: Elongation κ not stated in analysis; 1.84 is typical for compact
-    # D-T tokamak (I-mode regime). SPARC uses κ≈1.97; ARC power plant may differ.
-    elon=1.84,
-    # FLiBe liquid blanket: compact radial build. ~20 cm outboard + inboard layers.
-    # UNCERTAIN: exact radial build not fully published for ARC.
-    blanket_t=0.35,
-    # TiH₂ neutron shielding, ~380 t [arc-reactor-specifications.md §6].
-    # UNCERTAIN: exact shield thickness not stated.
-    ht_shield_t=0.10,
-    structure_t=0.10,  # DEFAULT: compact primary structure estimate
-    # Inconel-718 double-wall vacuum vessel [arc-reactor-specifications.md §4.3].
-    # UNCERTAIN: exact VV thickness not stated; ARC VV cost = $92 M (2014 USD).
-    vessel_t=0.10,
+    # UNCERTAIN: Capacity factor not stated in any CFS/ARC publication (blocking gap).
+    # Central estimate = 0.75. Physically meaningful range: 0.50–0.90.
+    # iter-7 note: naive 2× LCOE swing from 50% → 90% availability is an upper bound.
+    # Schwartz et al. (2024, arXiv:2405.01514) show grid-value-weighted penalty is up
+    # to 15% smaller when maintenance is scheduled in low-price windows (spring/summer).
+    # At 80% availability, a fusion plant retains 91% of maintenance-free plant value.
+    # Simple inverse scaling (used below) is the conservative upper bound, not central.
+    # Depends on: divertor/FW replacement frequency, FLiBe maintenance, remote handling TRL.
+    # Source gap: analysis.md §2, Challenge 2; §5 Missing Parameters (capacity factor row);
+    #             arxiv-2405-01514.md §2.2 Results (Schwartz et al. grid-value correction)
+    availability=0.75,
 
-    # ── Power Balance ───────────────────────────────────────────────────────
-    # Total auxiliary heating: 25 MW LHCD + 13.6 MW ICRF = 38.6 MW
-    # [arc-reactor-specifications.md §5.1]
-    p_input=38.6,
-    mn=1.1,          # DEFAULT: standard DT neutron energy multiplier
-    # Supercritical Rankine steam cycle at 250 bar, 540°C inlet: 46% net efficiency.
-    # [arc-power-conversion-studies.md §3.2, Table 15; Colliva et al. 2024 independently].
-    # 645 MWth to PCS → 297 MWe gross → ~261-270 MWe net at this output level.
+    lifetime_yr=30,               # Standard 30-yr plant lifetime; DEFAULT
+                                  # NOTE: TF coil fluence limit = 9 FPY (REBCO neutron limit).
+                                  # Coil replacement required at ~9 FPY — cost not yet modeled.
+                                  # Source: arc-reactor-specifications.md §5
+
+    n_mod=1,                      # Single-module plant
+    construction_time_yr=5.0,     # DEFAULT — compact; shorter than large LTS tokamak (6 yr)
+    interest_rate=0.07,           # DEFAULT — standard capital cost rate
+    inflation_rate=0.0245,        # DEFAULT
+    noak=True,                    # NOAK case; consistent with $154/kg FLiBe and $1.06M/tonne scaling
+
+    # ── ARC geometry ─────────────────────────────────────────────────────
+    # Primary geometry from Sorbom 2015 (arc-reactor-specifications.md §2).
+    R0=3.3,                       # Major radius [m]; arc-reactor-specifications.md §2
+    plasma_t=1.13,                # Minor radius a [m]; arc-reactor-specifications.md §2
+    elon=1.84,                    # Elongation κ; ARC equilibrium; arc-reactor-specifications.md §2
+    blanket_t=0.80,               # DEFAULT — FLiBe blanket thickness not stated in sources
+    ht_shield_t=0.20,             # DEFAULT
+    structure_t=0.20,             # DEFAULT
+    vessel_t=0.20,                # DEFAULT
+
+    # ── Power balance ────────────────────────────────────────────────────
+    # Auxiliary heating: 25 MW LHCD (8 GHz, non-inductive) + 13.6 MW ICRF (120 MHz).
+    # Source: arc-reactor-specifications.md §5.1.
+    # NOTE: 8 GHz LHCD system is TRL 5–6 — not yet demonstrated at required power level.
+    #        analysis.md §2, Challenge 5; analysis.md §3 (LHCD)
+    p_input=38.6,                 # [MW]; 25 MW LHCD + 13.6 MW ICRF; arc-reactor-specifications.md §5.1
+
+    mn=1.1,                       # DEFAULT neutron energy multiplier
+
+    # Supercritical Rankine cycle at 250 bar, 540°C steam inlet.
+    # "Supercritical Rankine is recommended" — arc-power-conversion-studies.md §3.2.
+    # Net efficiency 46% confirmed independently by Colliva et al. 2024.
+    # Source: arc-power-conversion-studies.md §3.2, Table 15
     eta_th=0.46,
-    eta_p=0.5,       # DEFAULT: pumping efficiency
-    # Wall-plug efficiency: weighted average LHCD klystrons (~45%) + ICRF tetrodes (~65%).
-    # (25×0.45 + 13.6×0.65) / 38.6 ≈ 0.52.
-    # UNCERTAIN: LHCD at 8 GHz not yet demonstrated at required power; analysis.md §S2 Ch.5.
-    eta_pin=0.52,
-    # No direct energy conversion — ARC is purely thermal cycle (supercritical Rankine).
-    # [analysis.md §S7: "Borrowed: supercritical steam Rankine BOP"]
-    f_dec=0.0,
-    # Subsystem power fraction elevated for ARC: cryo at 20 K + FLiBe pumping.
-    # Default 0.03 calibrated to LTS tokamaks. ARC's 20 K cryoplant + FLiBe
-    # chemistry plant add parasitic load. UNCERTAIN: no published ARC estimate.
-    f_sub=0.05,
-    # HTS magnet power supplies (persistent current mode, ramp control).
-    # UNCERTAIN: analogue; 20 K operation smaller steady-state supply load than 4 K LTS.
-    p_coils=3.0,
-    # Primary circuit heat rejection (FLiBe loop).
-    # UNCERTAIN: analogue; FLiBe MHD effects may increase pumping/cooling load.
-    p_cool=13.0,
-    # FLiBe blanket primary pumping against MHD pressure drop (≤0.2 m/s design limit).
-    # MHD drag in 9.2 T field may substantially increase pumping requirement.
-    # [arc-reactor-specifications.md §7: "detailed investigation is needed"]
-    p_pump=2.5,
-    # Tritium processing from FLiBe molten-salt extraction system.
-    # Elevated vs. solid-blanket baseline; chemistry plant scale uncertain.
-    # UNCERTAIN: FLiBe tritium extraction at kg/day rates not demonstrated; analysis.md §S2 Ch.3.
-    p_trit=15.0,
-    p_house=4.0,  # DEFAULT: housekeeping (control, instrumentation, HVAC)
-    # Cryogenic plant at 20 K (REBCO operating temperature).
-    # 20 K is ~3× more efficient than 4 K (LHe) but ARC's compact high-field coils
-    # have substantial heat load. UNCERTAIN: no published ARC cryoplant estimate.
-    p_cryo=2.0,
 
-    # ── Cost Overrides (justified from ARC sources) ─────────────────────────
-    cost_overrides={
-        # Coil cost from ARC's published REBCO tape figure (5,730 km at 250 A/m),
-        # NOAK $50/kAm × 8× tokamak manufacturing markup.
-        # Overrides geometry-based formula; b_max=23 T not propagated through forward().
-        # Source: arc-reactor-specifications.md §4.1, §6; analysis.md §S5
-        "C220103": C220103_COILS,
-        # Heating from LHCD (25 MW) + ICRF (13.6 MW); eliminates default NBI (p_nbi=50 MW).
-        # Source: arc-reactor-specifications.md §5.1; sparc-icrf-heating-paper.md §Intro
-        "C220104": C220104_HEATING,
-        # FLiBe blanket fill (950 t × $154/kg NOAK); replaces default PbLi assumption.
-        # Source: arc-reactor-specifications.md §5.4; Araiinejad & Shirvan 2025
-        "CAS27": CAS27_FLIBE,
-    },
+    eta_p=0.5,                    # DEFAULT pumping efficiency
+    eta_pin=0.5,                  # DEFAULT heating system wall-plug efficiency
+    eta_de=0.85,                  # DEFAULT
+    f_sub=0.03,                   # DEFAULT subsystem power fraction
+                                  # Cross-check: Schwartz et al. (arXiv:2405.01514) report
+                                  # 5% active + 10% passive = 15% total parasitic load.
+                                  # f_sub=0.03 captures part of active load only; passive
+                                  # (cryogenics, vacuum pumps, tritium handling) encoded
+                                  # in p_cryo, p_trit, p_house below. Net derating ≈ 0.85×
+                                  # gross. Source: arxiv-2405-01514.md §2.1
+    f_dec=0.0,                    # No direct energy conversion — thermal-only BOP.
+                                  # Source: dossier §Energy Capture; arc-power-conversion-studies.md
+
+    p_coils=2.0,                  # DEFAULT coil resistive power [MW]; REBCO has low resistive loss
+    p_cool=13.7,                  # DEFAULT cooling system power [MW] (FLiBe pumping included)
+    p_pump=1.0,                   # DEFAULT
+    p_trit=10.0,                  # DEFAULT tritium processing power [MW]
+    p_house=4.0,                  # DEFAULT housekeeping power [MW]
+    p_cryo=0.5,                   # DEFAULT cryogenic power [MW]; REBCO at 20 K (less than LHe)
+
+    # ── CAS cost overrides ───────────────────────────────────────────────
+    cost_overrides=_NOAK_OVERRIDES,
+    # All other CAS accounts (CAS21, CAS23, CAS24, CAS25, CAS26, CAS30, CAS40, CAS50)
+    # use framework defaults (ARIES-AT analogue calibration). Indirect cost structure:
+    # direct costs ~71% of TCC, indirect/owner/supplementary/financial ~29% of TCC.
+    # Source: arxiv-2601-21724 §8.2 (FECONS reference design). Implies total plant cost
+    # ≈ 1.41× direct cost (nuclear island + BOP), not 2–3× nuclear island alone.
 )
 
-# ── Results ──────────────────────────────────────────────────────────────────
-c = result.costs
+# ── Results ───────────────────────────────────────────────────────────────
+
+c  = result.costs
 pt = result.power_table
 
-print("HTS Compact Tokamak (CFS ARC) — NOAK, 270 MWe, 80% availability, 30 yr")
-print(f"LCOE:         {c.lcoe:.1f} $/MWh")
-print(f"Overnight:    {c.overnight_cost:.0f} $/kW")
-print(f"Fusion power: {pt.p_fus:.0f} MW  |  Net: {pt.p_net:.0f} MW  |  Q_eng: {pt.q_eng:.2f}")
-print(f"Recirculating fraction: {pt.rec_frac:.3f}")
+print("HTS Compact Tokamak — CFS ARC (261 MWe, 75% avail, 30 yr, NOAK)")
+print(f"LCOE: {c.lcoe:.1f} $/MWh | Overnight: {c.overnight_cost:.0f} $/kW")
+print(f"Fusion: {pt.p_fus:.0f} MW | Net: {pt.p_net:.0f} MW | Q_eng: {pt.q_eng:.1f}")
 print()
 
-# Override echo
-print(f"[Overrides applied]")
-print(f"  C220103 coils  = {C220103_COILS:.1f} M$ "
-      f"({_REBCO_KM:.0f} km REBCO × {_IC_A_PER_M:.0f} A/m × ${_REBCO_NOAK_PER_KAM:.0f}/kAm × {_TOKAMAK_MARKUP:.0f}× markup)")
-print(f"  C220104 heat   = {C220104_HEATING:.1f} M$ "
-      f"({_P_LHCD_MW:.0f} MW LHCD + {_P_ICRF_MW:.1f} MW ICRF, no NBI)")
-print(f"  CAS27 FLiBe    = {CAS27_FLIBE:.1f} M$ "
-      f"({_FLIBE_TONNES:.0f} t × ${_FLIBE_NOAK_PER_KG:.0f}/kg NOAK)")
-print()
-
-# ── CAS Breakdown ─────────────────────────────────────────────────────────────
-cas = [
-    ("CAS10", "Preconstruction",          c.cas10),
-    ("CAS21", "Buildings",                c.cas21),
-    ("CAS22", "Reactor Plant Equipment",  c.cas22),
-    ("CAS23", "Turbine Plant",            c.cas23),
-    ("CAS24", "Electrical Plant",         c.cas24),
-    ("CAS25", "Miscellaneous",            c.cas25),
-    ("CAS26", "Heat Rejection",           c.cas26),
-    ("CAS27", "Special Materials (FLiBe)",c.cas27),
-    ("CAS28", "Digital Twin",             c.cas28),
-    ("CAS29", "Contingency",              c.cas29),
-    ("CAS30", "Indirect Costs",           c.cas30),
-    ("CAS40", "Owner's Costs",            c.cas40),
-    ("CAS50", "Supplementary",            c.cas50),
-    ("CAS60", "IDC",                      c.cas60),
-    ("CAS70", "O&M (annualized)",         c.cas70),
-    ("CAS80", "Fuel (annualized)",        c.cas80),
-    ("CAS90", "Financial",                c.cas90),
+cas_rows = [
+    ("CAS10", "Preconstruction",         c.cas10),
+    ("CAS21", "Buildings",               c.cas21),
+    ("CAS22", "Reactor Plant Equipment", c.cas22),
+    ("CAS23", "Turbine Plant",           c.cas23),
+    ("CAS24", "Electrical Plant",        c.cas24),
+    ("CAS25", "Miscellaneous",           c.cas25),
+    ("CAS26", "Heat Rejection",          c.cas26),
+    ("CAS27", "Special Materials",       c.cas27),
+    ("CAS28", "Digital Twin",            c.cas28),
+    ("CAS29", "Contingency",             c.cas29),
+    ("CAS30", "Indirect Costs",          c.cas30),
+    ("CAS40", "Owner's Costs",           c.cas40),
+    ("CAS50", "Supplementary",           c.cas50),
+    ("CAS60", "IDC",                     c.cas60),
+    ("CAS70", "O&M (annualized)",        c.cas70),
+    ("CAS80", "Fuel (annualized)",       c.cas80),
+    ("CAS90", "Financial",               c.cas90),
 ]
 
-print(f"{'Code':<8} {'Account':<30} {'M$':>10}")
-print("-" * 50)
-for code, name, val in cas:
-    print(f"{code:<8} {name:<30} {float(val):>10.1f}")
-print("-" * 50)
-print(f"{'':8} {'Total Capital':<30} {float(c.total_capital):>10.1f}")
-print()
+print(f"{'Code':<8} {'Account':<28} {'M$':>10}")
+print("-" * 48)
+for code, name, val in cas_rows:
+    print(f"{code:<8} {name:<28} {float(val):>10.1f}")
+print("-" * 48)
+print(f"{'':8} {'Total Capital':<28} {float(c.total_capital):>10.1f}")
 
-# ── CAS22 Sub-Account Detail ─────────────────────────────────────────────────
-_CAS22_NAMES = {
-    "C220101": "First Wall + Blanket",
+# ── CAS22 sub-account detail ──────────────────────────────────────────────
+
+print("\nCAS22 Sub-accounts (Reactor Plant Equipment):")
+print(f"{'Code':<12} {'Account':<32} {'M$':>8}  {'Note'}")
+print("-" * 72)
+
+cas22_labels = {
+    "C220101": "First Wall + FLiBe Blanket",
     "C220102": "Shield",
-    "C220103": "Coils (REBCO HTS) [ovr]",
-    "C220104": "Heating LHCD+ICRF [ovr]",
+    "C220103": "Coils (REBCO magnets+struct)",
+    "C220104": "Heating System (ICRF+LHCD)",
     "C220105": "Primary Structure",
-    "C220106": "Vacuum System (Inconel-718)",
+    "C220106": "Vacuum Vessel (Inconel-718)",
     "C220107": "Power Supplies",
     "C220108": "Divertor",
-    "C220109": "Direct Energy Converter",
-    "C220110": "Remote Handling",
-    "C220111": "Installation Labor",
+    "C220109": "DEC",
+    "C220111": "Installation",
+    "C220112": "Isotope Separation",
+    "C220200": "Coolant (FLiBe circuits)",
+    "C220300": "Aux Cooling",
+    "C220400": "Rad Waste",
     "C220500": "Fuel Handling (tritium)",
-    "C220000": "CAS22 TOTAL",
+    "C220600": "Other Equipment",
+    "C220700": "I&C",
 }
-print("CAS22 Reactor Plant Equipment — sub-account detail")
-print(f"  {'Code':<12} {'Account':<30} {'M$':>10}")
-print("  " + "-" * 54)
-for key in sorted(k for k in result.cas22_detail if k != "C220000"):
-    name = _CAS22_NAMES.get(key, key)
-    print(f"  {key:<12} {name:<30} {float(result.cas22_detail[key]):>10.1f}")
-print("  " + "-" * 54)
-total22 = result.cas22_detail.get("C220000", c.cas22)
-print(f"  {'C220000':<12} {'CAS22 TOTAL':<30} {float(total22):>10.1f}")
-print()
+overridden = set(result.overridden) if hasattr(result, "overridden") else set()
+for code, label in cas22_labels.items():
+    val = result.cas22_detail.get(code, 0.0)
+    note = "[ARC §6 override]" if code in overridden else "[DEFAULT]"
+    print(f"{code:<12} {label:<32} {float(val):>8.1f}  {note}")
+print("-" * 72)
+total22 = result.cas22_detail.get("C220000", float(c.cas22))
+print(f"{'C220000':<12} {'TOTAL':<32} {float(total22):>8.1f}")
 
-# ── Key Assumptions ──────────────────────────────────────────────────────────
-print("Key Assumptions:")
-print(f"  Net electric:   {result.params.get('net_electric_mw', 270):.0f} MWe  "
-      f"(ARC 2015 aggressive pilot ~261 MWe; 2025 target 400 MWe not modeled)")
-print(f"  Availability:   {result.params.get('availability', 0.80):.0%}  "
-      f"[UNCERTAIN — not published by CFS; primary LCOE lever]")
-print(f"  Lifetime:       {result.params.get('lifetime_yr', 30):.0f} yr  "
-      f"(30 yr with ~3 magnet replacements at 9 FPY fluence limit each)")
-print(f"  eta_th:         46%  [supercritical Rankine; arc-power-conversion-studies.md §3.2]")
-print(f"  REBCO tape:     {_REBCO_KM:.0f} km at {_IC_A_PER_M:.0f} A/m → "
-      f"{_total_kAm:,.0f} kA-m at NOAK ${_REBCO_NOAK_PER_KAM:.0f}/kAm")
-print(f"  FLiBe fill:     {_FLIBE_TONNES:.0f} t at ${_FLIBE_NOAK_PER_KG:.0f}/kg NOAK = "
-      f"${CAS27_FLIBE:.0f} M  [Araiinejad & Shirvan 2025]")
-print(f"  Regulatory:     NRC Part 30 framework modeled (no Part 50 multiplier)")
-print()
-print("Unmodeled risks that could substantially change LCOE:")
-print("  - REBCO tape price above NOAK target ($50/kAm): see sensitivity below")
-print("  - I-mode non-accessible at ARC parameters → net output drops to ~80-100 MWe")
-print("  - FLiBe/Inconel corrosion requiring blanket material substitution")
-print("  - ARC 400 MWe updated design (2025) vs. 270 MWe modeled here")
-print("  - NRC Part 50 vs. Part 30 regulation: 2.2× building cost multiplier possible")
-print()
+# ── FOAK scenario (discrete branch) ──────────────────────────────────────
+# FOAK premiums for advanced nuclear / novel manufacturing are NOT a continuous
+# sensitivity parameter. They are a step-function cost risk for plants 1–3 in the
+# deployment sequence, disappearing after fleet learning.
+# CATF IWG methodology (arxiv-2602-19389 §2.1.5): FOAK fusion = 150–200 $/MWh,
+# NOAK fusion = 60–100 $/MWh. Approx. 2–3× gap.
+# Modeled here as 2× C220103 (REBCO manufacturing learning, quality assurance rework,
+# supply chain immaturity) + noak=False (adds 10% contingency per CAS29).
+# Source: analysis.md §2 Hypothesis 4; arxiv-2602-19389 §2.1.3, §2.1.5
 
-# ── Sensitivity Analysis ─────────────────────────────────────────────────────
-sens = model.sensitivity(result.params, cost_overrides={
-    "C220103": C220103_COILS,
-    "C220104": C220104_HEATING,
-    "CAS27":   CAS27_FLIBE,
-})
+_FOAK_OVERRIDES = {
+    "C220103": round(C220103_OVERRIDE * 2.0, 1),  # 2× NOAK magnet cost — manufacturing immaturity
+    "C220101": round(C220101_OVERRIDE, 1),         # Blanket: unchanged (conventional fabrication)
+    "C220106": round(C220106_OVERRIDE, 1),         # VV: unchanged (Inconel-718 is mature)
+    "CAS27":   CAS27_OVERRIDE,
+}
 
-print("Sensitivity (elasticity = %ΔLCOE / %Δparam):")
+result_foak = model.forward(
+    net_electric_mw=261.0,
+    availability=0.75,
+    lifetime_yr=30,
+    n_mod=1,
+    construction_time_yr=5.0,
+    interest_rate=0.07,
+    inflation_rate=0.0245,
+    noak=False,                   # FOAK: adds 10% contingency (CAS29); plant_studies_foak
+    R0=3.3,
+    plasma_t=1.13,
+    elon=1.84,
+    blanket_t=0.80,
+    ht_shield_t=0.20,
+    structure_t=0.20,
+    vessel_t=0.20,
+    p_input=38.6,
+    mn=1.1,
+    eta_th=0.46,
+    eta_p=0.5,
+    eta_pin=0.5,
+    eta_de=0.85,
+    f_sub=0.03,
+    f_dec=0.0,
+    p_coils=2.0,
+    p_cool=13.7,
+    p_pump=1.0,
+    p_trit=10.0,
+    p_house=4.0,
+    p_cryo=0.5,
+    cost_overrides=_FOAK_OVERRIDES,
+)
+
+cf = result_foak.costs
+print(f"\nFOAK scenario (2× C220103 + contingency, same availability):")
+print(f"  LCOE: {cf.lcoe:.1f} $/MWh | Overnight: {cf.overnight_cost:.0f} $/kW")
+print(f"  (CATF IWG FOAK range: 150–200 $/MWh; NOAK range: 60–100 $/MWh)")
+print(f"  Source: arxiv-2602-19389 §2.1.5; analysis.md §2 Hypothesis 4")
+
+# ── Key Assumptions ───────────────────────────────────────────────────────
+
+print("""
+Key Assumptions
+===============
+1. Net electric output: 261 MWe — ARC aggressive pilot, supercritical Rankine cycle.
+   Source: arc-power-conversion-studies.md §Results, Table 15.
+   NOTE: 2025 CFS public target = 400 MWe; updated design not publicly documented. Not modeled.
+
+2. Availability: 75% [UNCERTAIN — blocking data gap; analysis.md §5 Missing Parameters]
+   Not published in any CFS or ARC document. Physically meaningful range: 50–90%.
+   Naive inverse scaling implies 2× LCOE swing for 50% vs 90% availability — this is
+   an upper bound. Schwartz et al. (2024, arXiv:2405.01514) show grid-value-weighted
+   penalty is up to 15% smaller with strategic maintenance scheduling (low-price windows);
+   at 80% availability, a plant retains 91% of maintenance-free value (not 80%).
+   Source: analysis.md §2, Challenge 2; Hypothesis 2; arxiv-2405-01514.md §2.2 Results
+
+3. Magnet/structure cost (NOAK): ~$6,901 M$ 2024 USD [UNCERTAIN — primary LCOE uncertainty]
+   Basis: $5,150 M$ 2014 USD (midpoint of $5.1–5.2B) × CPI 1.34.
+   Source: arc-reactor-specifications.md §6.
+   REBCO price in 2014: $36–198/m (5.5× spread → $206–1,134 M$ materials alone).
+   REBCO price in 2025: ~$20/m (~$100/kA-m) — still ~10× above $10/kA-m commercial target.
+   Source: sciencedirect-science-article-pii-s2772830725000390.md §Introduction
+   Sensitivity sweep: vary C220103 by ±50% to bracket REBCO price uncertainty.
+
+4. FOAK scenario (discrete scenario branch, NOT a sensitivity parameter):
+   C220103 × 2.0 + noak=False → LCOE approximately 2–3× NOAK central estimate.
+   Consistent with CATF IWG range: FOAK = 150–200 $/MWh, NOAK = 60–100 $/MWh.
+   Source: arxiv-2602-19389 §2.1.5; analysis.md §2 Hypothesis 4.
+
+5. Thermal efficiency: 46% net — supercritical Rankine at 250 bar / 540°C.
+   Source: arc-power-conversion-studies.md §3.2, Table 15 (recommended cycle).
+   Confirmed by Colliva et al. 2024 as "most promising solution" for ARC.
+
+6. Indirect cost structure: framework defaults encode ~29% of TCC for indirect/owner/
+   supplementary/financial costs, with direct costs ~71% of TCC.
+   Total plant cost ≈ 1.41× direct cost (nuclear island + BOP) — not 2–3× nuclear island alone.
+   Source: arxiv-2601-21724 §8.2 (FECONS/pyFECONS reference design).
+   Reference LCOE benchmarks:
+     - FECONS illustrative DT tokamak: 55.1 $/MWh at 636.75 MWe, 0.9 availability, 30-yr life
+       (arxiv-2601-21724 §8.3 Table 3)
+     - ARPA-E ALPHA compact fusion NOAK (non-HTS): 43 $/MWh (~$2.4/W) at ~500 MWe,
+       90% availability, 3-yr construction, zero contingency (osti-servlets-purl-1820946.md
+       Table 4, COE2); LOWER BOUND for ARC — excludes HTS magnet cost premium entirely.
+     - ARIES-AT: ~5 ¢/kWh at ~1,000 MWe (~2000–2003 USD); order-of-magnitude only.
+
+7. FLiBe special materials: $146 M$ (~2025 USD).
+   Basis: 950 t FLiBe × $154/kg NOAK (20% learning rate).
+   Source: arc-reactor-specifications.md §6 (quantity); Araiinejad & Shirvan 2025 (price).
+   NOTE: FLiBe chemistry plant + tritium extraction system capital cost is NOT included.
+   iter-7 order-of-magnitude floor: Woodruff Scientific ARPA-E ALPHA re-costing
+   (OSTI:1820946) gives CAS22.5 Fuel Processing averaging $124M at ~500 MWe for compact
+   MIF/Z-pinch concepts (structural analogue only — different blanket chemistry, no FLiBe).
+   Treat $100–200M as a floor for ARC's additive FLiBe chemistry/tritium processing BOP
+   line; ARC-specific scope (FLiBe redox control, MHD-driven flow purification) may push
+   above this range. Source: analysis.md §6, gap #15; osti-servlets-purl-1820946.md
+
+8. O&M (CAS70): framework default DT O&M scaling.
+   Fusion-specific anchor: $60/kWe-yr (FECONS/pyFECONS, arxiv-2601-21724 §6.5)
+   → ~$15.7M/yr at 261 MWe. Not ARC-specific; 2–4× below fission-BoP analogue.
+   Cross-check: Schwartz et al. (2024) VO&M = $2.07/MWh_net ($1.74/MWh_gross) at ~261 MWe.
+   Annual O&M breakdown not published in any ARC/CFS source (analysis.md §6, gap #7).
+   Source: arxiv-2601-21724 §6.5; arxiv-2405-01514.md §2.1
+
+9. No direct energy conversion: f_dec = 0.0. ARC uses thermal Rankine cycle only.
+   Source: dossier §Energy Capture; arc-power-conversion-studies.md.
+
+10. ARC's $5.56B fabricated component cost reflects NOAK/learning-assumed scaling
+    ($1.06M/tonne benchmarked against ARIES/FIRE conceptual designs). FOAK costs for
+    the first physical ARC plant would be substantially higher. The inferred
+    $/kWe figures ($21,300–29,200/kWe from nuclear island alone) represent the NOAK
+    floor, not the first-plant expectation. Source: analysis.md §2 Hypothesis 4;
+    arxiv-2602-19389 §2.1.3.
+
+11. Parasitic power split (Schwartz et al. 2024): 5% active (plasma heating, magnets,
+    coolant pumps) + 10% passive (cryogenics, vacuum pumps, tritium handling) = 15%
+    total. Passive load persists during maintenance outages, raising effective cost of
+    downtime. f_sub=0.03 captures part of active load; remaining active/passive load
+    encoded in p_cryo, p_trit, p_house, p_cool. Source: arxiv-2405-01514.md §2.1
+""")
+
+# ── Sensitivity analysis ──────────────────────────────────────────────────
+
+sens = model.sensitivity(
+    result.params,
+    cost_overrides=_NOAK_OVERRIDES,
+)
+
+print("Sensitivity (elasticity = %LCOE / %param) — NOAK central estimate")
 print("-" * 50)
 
 print("\nEngineering levers:")
 for k, v in sorted(sens["engineering"].items(), key=lambda x: abs(x[1]), reverse=True):
-    print(f"  {k:<30} {v:+.4f}")
+    print(f"  {k:<28} {v:+.4f}")
 
 print("\nFinancial:")
 for k, v in sorted(sens["financial"].items(), key=lambda x: abs(x[1]), reverse=True):
-    print(f"  {k:<30} {v:+.4f}")
-
-# ── Capacity Factor Sweep ─────────────────────────────────────────────────────
-# ARC is CAPEX-heavy: analysis §S2 Hypothesis 2 shows ~2× LCOE swing from 50%→90% CF.
-print("\nCapacity Factor Sweep (primary LCOE lever — unpublished for ARC):")
-print(f"  {'Availability':>14} {'LCOE ($/MWh)':>14}")
-print("  " + "-" * 30)
-cf_values = [0.50, 0.60, 0.70, 0.80, 0.85, 0.90]
-lcoes_cf = model.batch_lcoe(
-    {"availability": cf_values},
-    result.params,
-    cost_overrides={
-        "C220103": C220103_COILS,
-        "C220104": C220104_HEATING,
-        "CAS27":   CAS27_FLIBE,
-    },
-)
-for cf, lcoe in zip(cf_values, lcoes_cf):
-    marker = " ← baseline" if cf == 0.80 else ""
-    print(f"  {cf:>14.0%} {lcoe:>14.1f}{marker}")
-
-# ── REBCO Tape Cost Scenarios ─────────────────────────────────────────────────
-# REBCO cost is the largest single cost uncertainty in ARC [analysis.md §S2 Ch.1].
-# Span: NOAK target $50/kAm → current market ~$300/kAm (2025); 6× range.
-# This drives C220103 proportionally (all other accounts held constant).
-print()
-print("REBCO Tape Cost Scenarios (C220103 varies; all other accounts held at NOAK):")
-print(f"  {'Price ($/kAm)':>14} {'C220103 (M$)':>14} {'LCOE ($/MWh)':>14} {'Scenario'}")
-print("  " + "-" * 70)
-rebco_prices = [
-    (50.0,  "NOAK target — commercial viability threshold"),
-    (100.0, "2× NOAK — near-term optimistic"),
-    (200.0, "4× NOAK — near-term realistic (improving from 2014 high-end)"),
-    (300.0, "6× NOAK — current market (2025 estimate)"),
-    (500.0, "10× NOAK — 2014 mid-range ($198/m at 250 A/m ≈ $792/kAm, FOAK)"),
-]
-base_co = {"C220104": C220104_HEATING, "CAS27": CAS27_FLIBE}
-for price, label in rebco_prices:
-    c103 = (_total_kAm * price / 1e6) * _TOKAMAK_MARKUP
-    co = {**base_co, "C220103": c103}
-    r = model.forward(
-        net_electric_mw=270.0,
-        availability=0.80,
-        lifetime_yr=30.0,
-        n_mod=1,
-        construction_time_yr=7.0,
-        interest_rate=0.07,
-        inflation_rate=0.0245,
-        noak=True,
-        R0=3.3, elon=1.84, plasma_t=1.13,
-        blanket_t=0.35, ht_shield_t=0.10, structure_t=0.10, vessel_t=0.10,
-        p_input=38.6, mn=1.1, eta_th=0.46, eta_p=0.5, eta_pin=0.52,
-        f_dec=0.0, f_sub=0.05, p_coils=3.0, p_cool=13.0,
-        p_pump=2.5, p_trit=15.0, p_house=4.0, p_cryo=2.0,
-        cost_overrides=co,
-    )
-    marker = " ← baseline" if price == 50.0 else ""
-    print(f"  {price:>14.0f} {c103:>14.1f} {r.costs.lcoe:>14.1f}  {label}{marker}")
+    print(f"  {k:<28} {v:+.4f}")

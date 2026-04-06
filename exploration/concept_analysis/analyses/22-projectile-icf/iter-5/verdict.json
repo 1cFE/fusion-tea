@@ -1,0 +1,23 @@
+{
+  "iteration": 5,
+  "verdict": "PASS",
+  "finding_count": 0,
+  "feedback_source": "research",
+  "model_ran": false,
+  "model_ok": false,
+  "research_ran": true,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-01/sources/first-light-fusion-technology.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-01/sources/first-light-fusion-technology.orig.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-01/sources/nearstar-fusion-technology.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-02/sources/first-light-flare-pivot-update.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-02/sources/nearstar-fusion-2025-update.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-03/sources/ipgroupplc-news-and-events-portfolio-news-2025-2025-09-19.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-03/sources/osti-servlets-purl-6360934.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-03/sources/osti-servlets-purl-6780071.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-03/sources/pmc-articles-pmc7658748.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-03/sources/prnewswire-news-releases-first-light-achieves-world-first.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-03/sources/theengineer-content-news-first-light-fusion-claims-tritium.md"
+  ],
+  "timestamp": "2026-04-06T06:00:28.064623+00:00"
+}

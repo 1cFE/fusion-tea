@@ -16,7 +16,12 @@ structured review with a clear PROCEED or REVISE verdict.
 
 ### Model Setup (if exists)
 
+`/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/07-maglif/model_setup.py`
 
+
+
+### Model Output
+`/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/07-maglif/model_output.txt`
 
 
 ### Source Documents
@@ -28,6 +33,14 @@ structured review with a clear PROCEED or REVISE verdict.
 - `/home/reid/1cfe/fusion-tea/knowledge/concept_research/07-maglif/iter-02/sources/fuse-energy-not-boring-details.md` (91 KB)
 - `/home/reid/1cfe/fusion-tea/knowledge/concept_research/07-maglif/iter-02/sources/pacific-fusion-interview-fusion-report.md` (8 KB)
 - `/home/reid/1cfe/fusion-tea/knowledge/concept_research/07-maglif/iter-02/sources/z-ife-sand2006-7148-thermal-cycles.md` (277 KB)
+- `/home/reid/1cfe/fusion-tea/knowledge/concept_research/07-maglif/iter-03/sources/ans-news-2025-04-24-article-6980-pacific-fusion-fusing.md` (10 KB)
+- `/home/reid/1cfe/fusion-tea/knowledge/concept_research/07-maglif/iter-03/sources/arxiv-2504-10680.md` (5 KB)
+- `/home/reid/1cfe/fusion-tea/knowledge/concept_research/07-maglif/iter-03/sources/frontiersin-journals-nuclear-engineering-articles-10-3389.md` (91 KB)
+- `/home/reid/1cfe/fusion-tea/knowledge/concept_research/07-maglif/iter-03/sources/globenewswire-news-release-2025-04-24-3067836-0-en-pacific.md` (5 KB)
+- `/home/reid/1cfe/fusion-tea/knowledge/concept_research/07-maglif/iter-03/sources/osti-biblio-895981.md` (5 KB)
+- `/home/reid/1cfe/fusion-tea/knowledge/concept_research/07-maglif/iter-03/sources/pacificfusion-updates-crada-sandia-national-laboratories.md` (3 KB)
+- `/home/reid/1cfe/fusion-tea/knowledge/concept_research/07-maglif/iter-03/sources/pacificfusion-updates-experimental-breakthrough-by-pacific.md` (8 KB)
+- `/home/reid/1cfe/fusion-tea/knowledge/concept_research/07-maglif/iter-03/sources/pacificfusion-updates-founders-letter.md` (7 KB)
 
 ### Approved Prior Syntheses (for cross-concept consistency)
 (none yet — this is among the first reviews)
@@ -71,9 +84,9 @@ Use this exact format:
 # Review: MagLIF (D-T)
 
 **Iteration:** 1
-**Date:** 2026-04-05
-**Files reviewed:** analysis.md
-**Source documents:** 8 files
+**Date:** 2026-04-06
+**Files reviewed:** analysis.md, model_setup.py
+**Source documents:** 16 files
 
 ---
 

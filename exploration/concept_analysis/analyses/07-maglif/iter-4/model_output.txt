@@ -1,0 +1,115 @@
+====================================================================
+MagLIF (D-T) — Pacific Fusion / Fuse Energy Technologies
+Z-IFE reference: 1 GWe, 0.5 Hz single-chamber, frozen-FLiBe RTL
+WARNING: Framework approximation — dominant cost categories not in
+         framework databases. Treat outputs as ±50%+ uncertain.
+====================================================================
+LCOE:            82.8 $/MWh
+Overnight cost:  5003 $/kW
+Fusion power:    2345 MW
+Net electric:    1000 MW
+Q_sci:           111.6  (p_fus / p_driver)
+Q_eng:           14.79 (p_net / recirculating)
+
+Code     Account                              M$
+--------------------------------------------------
+CAS10    Preconstruction                    38.0
+CAS21    Buildings                         896.3
+CAS22    Reactor Plant Equipment          1574.9
+CAS23    Turbine Plant                     212.0
+CAS24    Electrical Plant                   90.3
+CAS25    Miscellaneous                      55.0
+CAS26    Heat Rejection                     36.6
+CAS27    Special Materials                  15.0
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                       288.5
+CAS30    Indirect Costs                    528.9
+CAS40    Owner's Costs                      39.0
+CAS50    Supplementary                     345.7
+CAS60    IDC                               877.8
+CAS70    O&M (annualized)                   99.6
+CAS80    Fuel (annualized)                   1.1
+CAS90    Financial                         515.7
+--------------------------------------------------
+         Total Capital                    5002.9
+
+CAS22 Sub-account Detail (Reactor Plant Equipment):
+--------------------------------------------------
+  C220101  Blanket/First Wall (FLiBe)                172.3 M$
+  C220102  Shield                                    105.8 M$
+  C220103  Coils [OVERRIDE: ~0, no SC magnets]         5.0 M$ *
+  C220104  Driver [OVERRIDE: Z-IFE LTD $372M]        372.0 M$ *
+  C220105  Structure                                   8.2 M$
+  C220106  Vacuum System                              28.4 M$
+  C220107  Power Supplies                             84.0 M$
+  C220108  Divertor [OVERRIDE: $0, no divertor]        0.0 M$ *
+  C220109  Direct Energy Conversion                    0.0 M$
+  C220110  Remote Handling                           155.3 M$
+  C220111  Installation                              235.1 M$
+  C220112  Isotope Separation                          0.0 M$
+  C220200  Coolant Handling (FLiBe)                  200.1 M$
+  C220300  Aux Cooling                                 2.8 M$
+  C220400  Radwaste                                    5.0 M$
+  C220500  Fuel Handling (tritium)                   120.0 M$
+  C220600  Other Equip (target factory)               11.5 M$
+  C220700  I&C                                        69.3 M$
+  C220000  TOTAL CAS22                              1574.9 M$
+
+====================================================================
+Key Assumptions
+====================================================================
+  Rep rate (modeled):    0.5 Hz  (Z-IFE optimized; 0.1 Hz baseline = 10-chamber)
+  Driver energy/shot:    42 MJ   (gain formula G = 30.15*(E-1.22)^2.038)
+  Yield/shot:            ~4,600 MJ  (2D HYDRA simulation, unvalidated)
+  Driver capital:        $372M   (Z-IFE LTD; IMG uncosted; UNCERTAIN ±5x)
+  Driver efficiency:     90%     (IMG claim; LTD was 60%)
+  Thermal efficiency:    42%     (Combined Brayton-Rankine, steel chamber)
+  Capacity factor:       85%     (Z-IFE assumption; liquid wall undemonstrated)
+  No SC magnets:         C220103 overridden to $5M (self-magnetizing targets)
+  No divertor:           C220108 overridden to $0 (thick liquid FLiBe wall)
+
+Critical unmodeled risks (see analysis.md §Section 2):
+  1. RTL consumable O&M: $0.70/shot historical steel → ~$20M/yr at 0.5 Hz
+     Cryo-ice-layer target cost is UNKNOWN; commercial viability req <$2/shot
+  2. Rep rate not demonstrated: 0.5 Hz requires 10-second cycle unvalidated
+     If limited to 0.1 Hz, Z-IFE shows COE ~20 ¢/kWeh (3-4x competitive threshold)
+  3. Driver cost cliff: commercial pulsed power ~$5/J; target <$0.50/J (10x gap)
+  4. Gain scaling unvalidated: chi ~ 0.1 on Z; GJ yields require 60+ MA untested
+  5. Chamber lifetime under repetitive GJ shock: no experimental facility exists
+
+====================================================================
+Sensitivity Analysis (elasticity = %LCOE / %param)
+Overridden accounts have zero gradient by construction.
+====================================================================
+
+Engineering levers:
+  availability                 -0.9570
+  construction_time_yr         +0.3319
+  plasma_t                     +0.2180
+  blanket_t                    +0.0975
+  eta_th                       -0.0951
+  ht_shield_t                  +0.0185
+  fuel_recovery                -0.0166
+  f_sub                        +0.0155
+  eta_pin                      -0.0113
+  p_driver                     +0.0113
+  vessel_t                     +0.0095
+  p_trit                       +0.0048
+  structure_t                  +0.0039
+  p_house                      +0.0019
+  mn                           -0.0015
+  p_target                     +0.0010
+  burn_fraction                -0.0009
+  p_pump                       +0.0005
+  eta_p                        -0.0000
+
+Financial:
+  interest_rate                +0.8251
+  inflation_rate               +0.0504
+
+Interpretation notes:
+  eta_th: 42% → 50% (C-C composite) would reduce LCOE by ~elasticity factor
+  availability: 0.85 baseline; 0.65 failure case multiplies LCOE by ~1.3x
+  Note: rep_rate and p_driver are coupled — p_driver = rep_rate * E_driver
+        LCOE sensitivity to rep rate is approximately -1.0 (10x rep rate → 10x LCOE)
+        This elasticity is NOT captured in the framework sensitivity above

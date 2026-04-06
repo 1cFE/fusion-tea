@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Fusion TEA — Concept Explorer{% endblock %}</title>
+  <link rel="stylesheet" href="/static/css/explorer.css">
+  {# Plotly vendored — never load from CDN #}
+  <script src="/static/vendor/plotly-basic.min.js"></script>
+  {% block head_extra %}{% endblock %}
+</head>
+<body>
+  <nav class="nav" aria-label="Main navigation">
+    <span class="nav__brand">Fusion TEA</span>
+    <div class="nav__links">
+      <a href="/taxonomy"
+         class="nav__link{% if active_nav == 'taxonomy' %} nav__link--active{% endif %}"
+         aria-current="{% if active_nav == 'taxonomy' %}page{% else %}false{% endif %}">
+        Taxonomy
+      </a>
+      <a href="/"
+         class="nav__link{% if active_nav == 'concepts' %} nav__link--active{% endif %}"
+         aria-current="{% if active_nav == 'concepts' %}page{% else %}false{% endif %}">
+        All Concepts
+      </a>
+      <a href="/compare"
+         class="nav__link{% if active_nav == 'compare' %} nav__link--active{% endif %}"
+         aria-current="{% if active_nav == 'compare' %}page{% else %}false{% endif %}">
+        Compare
+      </a>
+    </div>
+  </nav>
+
+  {% block breadcrumb %}{% endblock %}
+
+  <main>
+    {% block body %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <span>Fusion TEA — Techno-Economic Analysis</span>
+    <span class="mono">Concept Explorer</span>
+  </footer>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>

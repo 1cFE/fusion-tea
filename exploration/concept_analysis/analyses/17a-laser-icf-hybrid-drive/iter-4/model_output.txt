@@ -1,0 +1,160 @@
+======================================================================
+Laser ICF — Hybrid Direct Drive, D-T  (Xcimer Energy / Athena)
+Base scenario: NOAK | He Brayton 45% | η_laser 7% | laser $70/J
+Net electric: 400 MWe | Availability: 85% | Lifetime: 30 yr
+======================================================================
+LCOE:         115.8 $/MWh
+Overnight:    8046 $/kW
+Fusion power: 1053 MW | Net: 400 MW | Q_eng: 4.41
+Qsci: 211 | Qwp: 14.7 | Recirc: 22.7% (laser: 13.8% of gross)
+
+──────────────────────────────────────────────────────────────────────
+H-1  Laser cost range (NOAK $60–80/J) + H-3 thermal cycle gap:
+  Scenario                                            LCOE      OCC
+                                                     $/MWh     $/kW
+  ------------------------------------------------
+  NOAK / He Brayton 45% / laser $60/J                112.0     7698
+  NOAK / He Brayton 45% / laser $70/J                115.8     8046 ← base
+  NOAK / He Brayton 45% / laser $80/J                119.5     8394
+  NOAK / Steam Rankine 33% / laser $70/J             119.0     8244 ← H-3 alt
+  FOAK / He Brayton 45% / laser $110/J               144.3    10610 ← FOAK ref
+
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    17.0
+CAS21    Buildings                         393.1
+CAS22    Reactor Plant Equipment          1625.4
+CAS23    Turbine Plant                     102.3
+CAS24    Electrical Plant                   43.6
+CAS25    Miscellaneous                      26.5
+CAS26    Heat Rejection                     17.7
+CAS27    Special Materials                   6.0
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                         0.0
+CAS30    Indirect Costs                    369.9
+CAS40    Owner's Costs                      24.7
+CAS50    Supplementary                     167.2
+CAS60    IDC                               420.2
+CAS70    O&M (annualized)                   85.0
+CAS80    Fuel (annualized)                   0.5
+CAS90    Financial                         259.4
+------------------------------------------------
+         Total Capital                    3218.5
+
+CAS22 detail (base scenario — NOAK He Brayton $70/J):
+  Account                M$  Notes
+  ------------------------------------------------------
+  C220101             106.7  
+  C220102              74.5  
+  C220103               0.0  ← 0 override (no magnets, IFE)
+  C220104             700.0  ← laser driver override ($70.0/J × 10 MJ)
+  C220105               5.8  
+  C220106              18.7  
+  C220107              50.4  
+  C220108             153.9  ← target factory (IFE default; FLiBe wall = no divertor)
+  C220109               0.0  
+  C220110             107.9  
+  C220111             194.2  
+  C220112               0.0  
+  C220200              88.4  
+  C220300              12.6  
+  C220400               2.3  
+  C220500              63.2  
+  C220600               5.5  
+  C220700              41.2  
+  C220000 TOTAL      1625.4
+
+======================================================================
+Key Assumptions
+======================================================================
+  Laser system:     KrF excimer ASPEN, 10 MJ/pulse, 0.5 Hz → 5 MW avg optical output
+                    Source: [XEC] §Executive Summary; [an] §S5 Table
+  iter-4 note:      NRL has moved primary gas-laser IFE program to ArF (193 nm).
+                    KrF heritage stands as rep-rate/efficiency milestone but
+                    Xcimer has no active government co-development at KrF scale.
+                    Source: Optica OPN Jun 2023 §Glass vs. gas
+
+  Laser capital:    NOAK $70.0/J × 10 MJ = $700M  (range: $600M – $800M)
+                    FOAK $110.0/J × 10 MJ = $1100M
+  UNCERTAIN:        Self-reported; no independent verification.
+                    Depends on capacitor cost <$0.40/J (current market ~$10/J).
+                    Source: [XEC] §Xcimer Laser Cost and Schedule; [an] §S5 Table
+
+  Thermal eff:      45% He Brayton (base) vs 33% Steam Rankine (H-3 alt)
+  UNCERTAIN:        Blocking gap; HYLIFE heritage = Brayton; [sci] implies steam.
+                    Source: [an] §S2 Challenge 5; §S5 Missing Parameters gap #2
+
+  Laser wall-plug:  7% (NOAK KrF demonstrated at Electra 750 J)
+  UNCERTAIN:        Xcimer aspirational target 10%; not demonstrated at MJ scale.
+                    Source: [XEC] §Challenge 3; [an] §S5 Table
+
+  Availability:     85% upper scenario
+  UNCERTAIN:        No maintenance model published. FLiBe liquid wall eliminates
+                    first-wall replacement outages (advantage), but pump/nozzle
+                    maintenance interval unknown. Source: [an] §S5 gap #3
+
+  FLiBe pumping:    15 MW (estimated; UNCERTAIN)
+                    Framework default (1 MW) calibrated for thin-coolant IFE.
+                    Thick-liquid-wall jet pump: no published estimate.
+                    Source: [an] §S2 Challenge 4; [XEC] §Xcimer's Chamber Design
+
+  Qsci (implied):   211 (from inverse power balance at 400 MWe)
+                    XEC target ~250. At Qsci ~211 and η_wpe=7%:
+                    Qwp = 211 × 7% = 14.7 (XEC claims ~17.5 at Qsci=250, η_wpe=7%). [XEC] §Challenge 3
+
+  Target factory:   Framework default (target_factory_base IFE scaling)
+  CAS27 / FLiBe:    Framework default (FLiBe inventory at Xcimer scale unknown)
+                    Default PbLi-calibrated; likely understates FLiBe/Be cost.
+                    Source: [an] §S6 gap #7
+  Magnets C220103:  0.0 M$ override — no superconducting coils in IFE
+                    Source: [app]; [an] §S7 cross-concept table
+
+──────────────────────────────────────────────────────────────────────
+H-4  Target fabrication cost threshold (Goodin et al. criterion)
+     13.4M shots/yr at 0.5 Hz × 85% CF   |   2978 GWh/yr
+     Goodin criterion: targets <10% of electricity produced/shot → ~$2–3/target
+     Source: [an] §Section 2.6; §Section 7 (cross-concept analysis)
+
+   Cost/target    Annual M$/yr    LCOE contrib $/MWh
+  --------------------------------------------------
+  $      1.00/target            13.4                 4.5
+  $      2.50/target            33.5                11.2 ← Goodin threshold (~$2–3/target at 400 MWe)
+  $      5.00/target            67.0                22.5
+  $     10.00/target           134.0                45.0 ← 10× over threshold: economically disqualifying
+
+  Note: this recurring cost has NO analogue in MFE and is NOT in CAS70/80
+  defaults. Target cost at commercial throughput (8–31M shots/yr) is a
+  blocking gap — no Xcimer estimate published. Source: [an] §S5 gap #4
+
+──────────────────────────────────────────────────────────────────────
+Sensitivity  (elasticity = %ΔLCOE / %Δparam)
+Base case: NOAK | He Brayton 45% | laser $70/J | η_laser 7%
+Overridden accounts (C220103, C220104) have zero gradient by construction.
+-------------------------------------------------------
+
+Engineering levers:
+  availability                 -0.9021
+  construction_time_yr         +0.2523
+  plasma_t                     +0.1958
+  blanket_t                    +0.0890
+  eta_th                       -0.0819
+  eta_pin1                     -0.0563
+  p_implosion                  +0.0563
+  ht_shield_t                  +0.0176
+  fuel_recovery                -0.0132
+  f_sub                        +0.0122
+  p_pump                       +0.0118
+  p_trit                       +0.0079
+  vessel_t                     +0.0075
+  structure_t                  +0.0032
+  p_house                      +0.0032
+  p_cryo                       +0.0030
+  mn                           -0.0012
+  p_target                     +0.0008
+  burn_fraction                -0.0007
+  eta_p                        -0.0000
+  eta_pin2                     +0.0000
+
+Financial:
+  interest_rate                +0.6018
+  inflation_rate               +0.0548

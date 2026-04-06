@@ -1,0 +1,178 @@
+=================================================================
+MagLIF (D-T) — Pacific Fusion / Fuse Energy Technologies
+=================================================================
+
+SCENARIO A: 1000 MWe — Z-IFE single-chamber reference plant
+  Driver: LTD pulsed power ($372M) | eta_pin=60% | eta_th=42%
+
+  LCOE:        67.5 $/MWh  (6.75 c/kWh)
+  Overnight:   4585 $/kW
+  Fusion pwr:  2392 MW  |  Net: 1000 MW
+  Q_eng:       11.41  |  Q_sci: 95.7
+  Recirc frac: 8.8%
+
+SCENARIO B: 250 MWe — Pacific Fusion commercial design point
+  Same engineering parameters; 4× smaller plant vs. Z-IFE reference.
+  Z-IFE shows economy-of-scale penalty below 1000 MWe (scale law on capital).
+
+  LCOE:        125.5 $/MWh  (12.55 c/kWh)
+  Overnight:   8461 $/kW
+  Fusion pwr:  688 MW  |  Net: 250 MW
+  Q_eng:       4.43  |  Q_sci: 27.5
+  Recirc frac: 22.6%
+
+  Scale penalty vs. 1000 MWe: +85.9% LCOE
+
+Z-IFE published COE reference points (LTD architecture):
+  10-chamber, 0.1 Hz: ~20.0 c/kWh  [Z-IFE §3.1.1.6]  ← baseline (RTL-limited)
+  1-chamber,  0.5 Hz:  ~7.0 c/kWh  [Z-IFE §3.1.1.6]  ← Scenario A design point
+  2-chamber, 2000 MWe:  ~5.7 c/kWh [Z-IFE §3.1.1.6]  ← scale economy case
+  Advanced fission:    4–6 c/kWh   [Z-IFE §3.1.1.6]  ← competitive threshold
+
+CAS BREAKDOWN — Scenario A (1000 MWe):
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    18.5
+CAS21    Buildings                         832.7
+CAS22    Reactor Plant Equipment          1845.3
+CAS23    Turbine Plant                     216.6
+CAS24    Electrical Plant                   92.3
+CAS25    Miscellaneous                      56.2
+CAS26    Heat Rejection                     37.4
+CAS27    Special Materials                  15.0
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                         0.0
+CAS30    Indirect Costs                    516.7
+CAS40    Owner's Costs                      39.0
+CAS50    Supplementary                     311.4
+CAS60    IDC                               598.5
+CAS70    O&M (annualized)                  132.4
+CAS80    Fuel (annualized)                   1.0
+CAS90    Financial                         369.5
+------------------------------------------------
+         Total Capital                    4584.7
+
+CONSUMABLE O&M (PER-SHOT, NOT CAPTURED IN CAS70):
+  Rep rate:                          0.5 Hz [Z-IFE §3.1.1.5]
+  Shots per year at 0.5 Hz:         15.78M shots/yr
+
+  Scenario                                M$/yr  % of CAS70
+  ----------------------------------------------------------
+  CAS70 (modeled O&M, Scenario A)         132.4  100% baseline
+  Add: hist. steel RTL (~$0.70/shot)       11.0        8.3%
+  Add: base case ($1.00/shot)              15.8       11.9%
+  Commercial viability max ($2.00/shot)     31.6       23.8%
+  Pessimistic cryo ($10.00/shot)          157.8      119.2%
+
+  CAS70 + base consumable (true O&M lower bound): 148.2 M$/yr
+  CAS70 + cryo pessimistic (O&M upper bound):     290.2 M$/yr
+
+  *** IMPORTANT: If cryo target cost cannot reach <$2/shot, annual O&M at 1 Hz
+  *** exceeds $300M/yr at 1 Hz — comparable to annual capital amortization on
+  *** the driver, making O&M the binding LCOE constraint. Commercial viability
+  *** threshold: <$2/shot [analysis.md §2 Challenge 2].
+
+CAS22 Reactor Plant Equipment breakdown (Scenario A, 1000 MWe):
+------------------------------------------------------------
+  C220101  First Wall / FLiBe Blanket          174.5 M$
+  C220102  Shield                              107.2 M$
+  C220103  Pre-magnetization Coils (Cu)          5.0 M$ [OVERRIDE]
+  C220104  Pulsed Power Driver (LTD)           372.0 M$ [OVERRIDE]
+  C220105  Primary Structure                     8.3 M$
+  C220106  Vacuum System                        28.8 M$
+  C220107  Power Supplies (aux)                 85.3 M$
+  C220108  RTL + Target Factory                260.2 M$
+  C220110  Remote Handling                     157.0 M$
+  C220111  Installation                        236.7 M$
+  C220200  Coolant Systems (FLiBe)             200.5 M$
+  C220300  Aux Cooling / Cryo                    2.9 M$
+  C220400  Rad Waste                             5.1 M$
+  C220500  Fuel Handling (DT)                  120.0 M$
+  C220600  Other Equipment                      11.5 M$
+  C220700  I&C                                  70.2 M$
+
+          CAS22 Total                        1845.3 M$
+
+Overridden accounts: C220103, C220104, C220109
+
+=================================================================
+KEY ASSUMPTIONS
+=================================================================
+  Scenario A / B net electric:  1000 / 250 MWe
+  Availability:                 85%   (UNCERTAIN: thick-LW success scenario)
+  Lifetime:                     30 yr
+  Thermal efficiency:           42%   (Brayton-Rankine, steel chamber)
+    [Z-IFE §3.2; 50% possible with C-C composite, unavailable commercially]
+  Driver wall-plug efficiency:  60%   (LTD; IMG claims 90%, unverified)
+    [Z-IFE §3.1.1.5; analysis.md §5; IMG claim: PMF §3.2]
+  Driver capital:               $372M (LTD Z-IFE median; IMG may be 5–10× lower)
+    [Z-IFE §3.1.2; 12,600 LTD cavities at ~$28k each = 96% of driver cost]
+  Rep rate (implied):           ~0.5 Hz (Z-IFE optimized frozen-FLiBe RTL case)
+    [Z-IFE §3.1.1.5; 1.0–1.8 Hz minimum-COE rate 'beyond reach of RTL']
+  No superconducting magnets    (HTS/Nb3Sn fully eliminated; $5M Cu coils only)
+  Thick liquid FLiBe wall       (scheduled FW replacement eliminated IF demonstrated)
+  Frozen-FLiBe RTL              (eliminates 170 MWe steel RTL remanufacturing load)
+  Gain basis:                   Multi-dim. simulations anchored to Z data
+    [arXiv:2504.10680: 50–60 MA → net facility gain; ignition undemonstrated on Z]
+
+CRITICAL UNCERTAINTIES NOT CAPTURED IN THIS ESTIMATE:
+  1. Rep rate achievement: COE scales ~10:1 with rep rate
+     (0.1 Hz → ~20 c/kWh; 1.0 Hz → ~5 c/kWh at 1 GWe per Z-IFE)
+  2. Per-shot consumable O&M: target cost must reach <$2/shot
+     (see CONSUMABLE O&M table above for explicit bounding estimates)
+     ($0.70/shot historical steel RTL; cryo ice-layer targets orders-of-magnitude higher)
+  3. Gain scaling unvalidated: χ ≈ 0.1 on Z; GJ-class yields undemonstrated
+     (simulation-anchored at 50–60 MA per arXiv:2504.10680; not experimentally tested)
+  4. IMG driver capital: may be 2–5× lower than $372M LTD reference
+     (PMF §3.2.4: must decrease 5–10× from $5/J current commercial pricing)
+  5. Chamber lifetime under GJ-scale repetitive shots: untested environment
+  6. 250 MWe commercial target (Scenario B) faces economy-of-scale penalty
+     vs. 1000 MWe Z-IFE reference — all published COE figures are lower
+     bounds for Pacific Fusion's actual commercial design point.
+     Source: ans-news-2025-04-24-article-6980-pacific-fusion-fusing.md
+
+  See analysis.md §Section 2 and §Section 6 for full gap inventory.
+
+=================================================================
+SENSITIVITY — Scenario A (elasticity = %LCOE / %param)
+=================================================================
+
+Engineering levers:
+  availability                     -0.8987
+  construction_time_yr             +0.2496
+  plasma_t                         +0.1921
+  blanket_t                        +0.0888
+  eta_th                           -0.0819
+  eta_pin                          -0.0179
+  p_driver                         +0.0179
+  fuel_recovery                    -0.0172
+  f_sub                            +0.0141
+  ht_shield_t                      +0.0139
+  vessel_t                         +0.0071
+  p_trit                           +0.0043
+  structure_t                      +0.0029
+  p_target                         +0.0021
+  p_house                          +0.0017
+  mn                               -0.0015
+  burn_fraction                    -0.0010
+  p_pump                           +0.0009
+  p_coils                          +0.0002
+  eta_p                            -0.0000
+
+Financial:
+  interest_rate                    +0.6124
+  inflation_rate                   +0.0403
+
+NOTE: The sensitivity table above reflects standard 1costingfe gradients
+and does NOT capture the dominant MagLIF LCOE drivers:
+  - Rep rate (no framework parameter; must be swept as p_driver × scale factor)
+  - Per-shot target/RTL cost (not parameterized in CAS70 or C220108)
+    → See CONSUMABLE O&M table above for the explicit gap quantification
+  - Driver capital uncertainty (C220104 overridden; gradient = 0 by construction)
+  - Plant scale (Scenario A vs. B shows this directly in the output above)
+
+For MagLIF, the four dominant LCOE levers identified in analysis.md §2 are:
+  1. Rep rate (Hz)       — C220104 capital amortized per MWh
+  2. Target $/shot       — variable O&M floor (quantified above; not in framework)
+  3. Driver $/J capital  — C220104 sensitivity to IMG vs. LTD architecture
+  4. Plant scale (MWe)   — economy-of-scale; 250 MWe raises LCOE vs. 1 GWe

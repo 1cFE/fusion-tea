@@ -6,6 +6,9 @@ Status: draft
 Created: 2026-03-29
 Approved-Date:
 Reuses: [08-frc-w-direct-conversion, 21-spherical-tokamak-hts]
+Review-Iterations: 1
+Last-Review: 2026-04-06
+Review-Status: proceed
 ---
 
 # D1+ Analysis: MagLIF (D-T) — Pacific Fusion, Fuse Energy Technologies
@@ -18,6 +21,11 @@ Reuses: [08-frc-w-direct-conversion, 21-spherical-tokamak-hts]
 ---
 
 ## Key Differentiators from Conventional Tokamak
+
+**Nearest neighbors** (most structurally similar concepts, in order of similarity):
+- **MTF / General Fusion** — closest structural analog: same MIF liner-compression architecture, per-shot consumable compression element, rep rate as the central LCOE lever. Key distinction: pneumatic piston driver vs. pulsed-power electrical driver. Both destroy a compression element each shot; both face chamber-clearing and cycle-time constraints that determine commercially achievable rep rate; neither has demonstrated sustained gain.
+- **Helion Energy (FRC-w-direct-conversion)** — same pulsed MIF rep-rate economics, same capacitor-bank driver category. Key distinction: magnetic compression of merging FRC plasmoids vs. metal liner implosion; D-He3 fuel eliminates tritium breeding entirely and enables direct electromagnetic energy recovery — both structural differences with large cost implications.
+- **Laser ICF / IFE** — same IFE consumable-target economics (per-shot gain requirement, target factory, chamber clearing). Key distinction: driver capital category (laser driver at 5–15% efficiency vs. IMG at ~90%), target alignment tolerance (µm vs. mm scale), and absence of final-optics survivability problem for MagLIF.
 
 The following differences define MagLIF's cost structure relative to a conventional (ITER/ARC-class) tokamak. Each entry notes whether the feature is novel to MagLIF, shared with other MIF concepts, or borrowed from the broader IFE family.
 
@@ -38,7 +46,7 @@ The following differences define MagLIF's cost structure relative to a conventio
 
 MagLIF has a substantial body of peer-reviewed literature anchored at Sandia National Laboratories, where the concept was proposed (Slutz et al., *Phys. Plasmas* 17, 2010) and experimentally demonstrated since 2013 on the Z Machine (27 MA, now ZR). Over 70 integrated experiments have been conducted, with results documented in high-quality publications including Gomez et al. (*Phys. Rev. Lett.* 113, 2014) and the comprehensive 2022 review by Yager-Elorriaga et al. (*Nucl. Fusion* 62, 042015). The Lawson parameter χ ≈ 0.1 was established with Bayesian inference from Z data — an unusually rigorous standard for an early-stage concept.[1]
 
-The most recent community roadmap paper, Ellison et al. (arXiv:2408.15206, 2025), is a multi-institutional document co-authored by Pacific Fusion, Sandia, LLNL, LANL, and University of Rochester. It serves as the public consensus statement on PMF scaling strategy and provides quantitative targets for pilot-plant operation.
+The most recent community roadmap paper, Ellison et al. (arXiv:2408.15206, 2025), is a multi-institutional document co-authored by Pacific Fusion, Sandia, LLNL, LANL, and University of Rochester. It serves as the public consensus statement on PMF scaling strategy and provides quantitative targets for pilot-plant operation. Pacific Fusion formalized a Cooperative Research and Development Agreement (CRADA) with Sandia National Laboratories in December 2024 — a formal DOE/NNSA legal instrument that grants Pacific Fusion access to Sandia's technical expertise and facilities for pulsed magnetic fusion research, going substantially beyond the co-authorship relationship established by Ellison et al.[1a] Future Z Machine experiments supporting DS development will likely occur under CRADA terms, potentially including a confidentiality period before public disclosure.
 
 > "PMF has the potential to operate at lower stored energy and to be significantly more compact than competing technologies"
 > — arxiv-2408-15206-pulsed-magnetic-fusion.md, §1 (Introduction)
@@ -58,6 +66,7 @@ The primary power plant engineering reference is the Z-IFE program (SAND2006-714
 - No tritium breeding blanket design specific to commercial MagLIF
 
 ---
+[1a] pacificfusion-updates-crada-sandia-national-laboratories.md: "we have established a Cooperative Research and Development Agreement with Sandia National Laboratories" — dated December 18, 2024; references NNSA's national laboratories; explicitly targets "high-yield fusion (100+ megajoules) capabilities"
 [1] arxiv-2408-15206-pulsed-magnetic-fusion.md, §4.2: "χ ~ 0.1 demonstrated on Z (Knapp et al. 2022), established with Bayesian inference"
 [2] z-ife-sand2006-7148-thermal-cycles.md, §2.1.1: "Currently, the Z-machine cannot produce a sustainable fusion burn" — the 2006 study explicitly identified the 6+ order-of-magnitude yield gap from ZR to a power plant
 
@@ -73,17 +82,35 @@ MagLIF presents distinctive LCOE modeling challenges that differ structurally fr
 
 **3. Driver cost is a novel capital cost category.** The pulsed power driver (capacitor banks, switches, transmission lines) has no analogue in MFE or conventional power generation. The Z-IFE bottom-up cost model estimated $372M for a 1 PW LTD driver, with LTD cavities (12,600 units at ~$28k each) comprising 96% of the total.[6] The modern IMG architecture (Sirius-I, TITAN I, Pacific Fusion DS) has not been costed at plant scale. The arxiv roadmap paper identified that "the cost of energy storage and switching must decrease by a factor of 5 to 10" from current commercial pulsed power pricing (~$5/J) to meet CapEx targets.[7] This gap is quantified but unresolved. **TEA consequence of failure**: If commercial pulsed power pricing cannot fall below ~$0.50/J, a 60+ MA plant-scale driver (storing tens to hundreds of MJ) would cost multiple billions of dollars in capital alone, pushing total plant CapEx above any plausible LCOE target regardless of rep rate or yield achievements.
 
-**4. Yield scaling is simulated, not demonstrated.** Current Z experiments achieve χ ≈ 0.1 with gas-fill targets at ~20 MA. Commercial operation requires GJ-class yields, which simulations (HYDRA 2D) project require cryogenic DT ice-layer targets and 60+ MA drive currents — configurations never tested experimentally. The gain scaling formula from Z-IFE (G = 30.15 × (E − 1.22)^2.038 for E in MJ driver energy) projects ~4,600 MJ at 42 MJ driver energy, but this scaling has no experimental validation above χ ≈ 0.1.[8] **TEA consequence of failure**: If the gain scaling formula is optimistic and GJ-class yields require 10× higher driver energy than projected, driver CapEx scales roughly as TW^0.6 — meaning a 10× energy increase roughly triples driver capital cost, compounding the driver cost problem above and likely pushing COE above 20 ¢/kWeh even at achievable rep rates. If ignition is not achievable at practical currents, MagLIF has no viable commercial path.
+**4. Yield scaling is simulation-anchored but not experimentally demonstrated.** Current Z experiments achieve χ ≈ 0.1 with gas-fill targets at ~20 MA. Commercial operation requires GJ-class yields, which simulations project require cryogenic DT ice-layer targets and 60+ MA drive currents — configurations never tested experimentally. The gain scaling formula from Z-IFE (G = 30.15 × (E − 1.22)^2.038 for E in MJ driver energy) projects ~4,600 MJ at 42 MJ driver energy; as of April 2025, multi-dimensional simulations benchmarked against Z facility data (arXiv:2504.10680) confirm that scaling from 20 MA to 50–60 MA enables net facility gain, upgrading the physics basis from pure extrapolation to simulation extrapolation anchored to observed Z data.[8][8a] Ignition itself remains experimentally undemonstrated above χ ≈ 0.1. **TEA consequence of failure**: If the gain scaling formula is optimistic and GJ-class yields require 10× higher driver energy than projected, driver CapEx scales roughly as TW^0.6 — meaning a 10× energy increase roughly triples driver capital cost, compounding the driver cost problem above and likely pushing COE above 20 ¢/kWeh even at achievable rep rates. If ignition is not achievable at practical currents, MagLIF has no viable commercial path.
 
 **5. Chamber clearing and RTL cycle time constrain achievable rep rate.** After a GJ-class shot, the chamber must clear debris, re-establish vacuum, regenerate the liquid wall, insert and align a new RTL, and prepare the target — all within one second for 1 Hz operation. The RTL insertion step (aligning a multi-ton transmission line to carry 60+ MA, post-blast) may be the binding mechanical constraint. The Z-IFE study selected 0.1 Hz as the baseline specifically because these steps were assessed as manageable on a 10-second cycle; 1 Hz requires parallelizing all steps by 10×. PMFE's advantage is that targets can be mechanically positioned (mm-scale tolerances) rather than free-flighted like laser IFE targets, but the RTL alignment problem is substantial.[9]
 
 **6. TEA tools for pulsed fusion are underdeveloped.** The arxiv paper explicitly flags this: "cost optimization models and tools have been developed for tokamaks; investment in new reduced models is required so those tools may be applied to pulsed fusion systems." No equivalent of ARIES or PROCESS exists for MagLIF. The Z-IFE systems code is the only published plant-level model, and it is two decades old and based on a different driver architecture.
 
-**Modeling recommendation.** Reference-class scaling approaches (1costingfe, ARIES-analogous tools, PROCESS) are not applicable to MagLIF because the dominant cost categories — pulsed power driver capital, per-shot consumables, rep-rated chamber clearing — have no analogues in the databases those tools are built on. A free-form parametric model is required, treating rep rate (Hz), yield per shot (GJ), driver capital cost ($/J), and target cost ($/shot) as the four primary free variables and deriving COE algebraically from their interactions. The Z-IFE systems code provides the structural template; it should be updated with IMG architecture driver cost estimates when available. The cost model should be designed to evaluate the following explicit hypotheses:
+**Modeling recommendation.** Reference-class scaling approaches (1costingfe, ARIES-analogous tools, PROCESS) are not applicable to MagLIF because the dominant cost categories — pulsed power driver capital, per-shot consumables, rep-rated chamber clearing — have no analogues in the databases those tools are built on. A free-form parametric model is required, treating rep rate (Hz), yield per shot (GJ), driver capital cost ($/J), and target cost ($/shot) as the four primary free variables and deriving COE algebraically from their interactions. The Z-IFE systems code provides the structural template; it should be updated with IMG architecture driver cost estimates when available.
+
+**Scale note**: Pacific Fusion's stated commercial target is 250 net MWe with a footprint of ≤25 acres — 4× smaller than the 1000 MWe Z-IFE reference plant used for all current COE estimates.[F1] Z-IFE data shows economy-of-scale favoring larger plants (7.0 ¢/kWeh at 1000 MWe vs. 5.7 ¢/kWeh at 2000 MWe single chamber); a 250 MWe first plant sits well below both reference cases. All COE figures cited in this analysis should be treated as lower bounds for Pacific Fusion's commercial design point — the LCOE risk at 250 MWe is materially higher than the Z-IFE data implies, and the cost model must include a plant-size sensitivity axis.
+
+The cost model should be designed to evaluate the following explicit hypotheses:
 
 1. **Rep rate break-even**: At what rep rate does MagLIF COE reach parity with advanced fission (4–6 ¢/kWeh), given the Z-IFE LTD architecture capital costs? Does this threshold change materially with the IMG architecture if driver capital drops by 5×?
 2. **Target cost tolerance**: What is the maximum viable target cost per shot ($/shot) as a function of rep rate and yield, and does the self-magnetizing non-cryo target pathway (if it achieves sufficient gain) fall within that tolerance?
 3. **Driver cost cliff**: Is there a discontinuous transition in COE as driver capital cost per joule crosses the ~$0.50/J commercial threshold, or does COE improve smoothly? At what driver cost does MagLIF become competitive with laser IFE?
+
+**Hypothesis 1 evaluation (Z-IFE LTD architecture, indicative only).**
+The Z-IFE study provides COE as a function of rep rate for the LTD architecture. All data below are from z-ife-sand2006-7148-thermal-cycles.md §3.1.1.6. Values at 1.0–1.8 Hz are not stated numerically in the text (only in figures); the table uses the text-quoted data points.
+
+| Rep Rate (Hz) | Configuration | Net Output | COE (¢/kWeh) | Status |
+|--------------|---------------|------------|--------------|--------|
+| 0.1 | 10-chamber, steel RTL baseline | 1000 MWe | ~20 | Demonstrated architecture (extrapolated) |
+| 0.5 | 1-chamber, frozen-FLiBe RTL | 1000 MWe | 7.0 | Best modeled LTD result |
+| 0.5 | 2-chamber, frozen-FLiBe RTL | 500 MWe | >10 | Economy-of-scale penalty; smaller plant |
+| 0.5 | 2-chamber, frozen-FLiBe RTL | 2000 MWe | 5.7 | Economy-of-scale benefit; larger plant |
+| 1.0–1.8 | 1–3 chamber | 1000 MWe | Not stated (minimum-COE rep rates; beyond RTL reach per §3.1.1.6) | Figures only; numerical value absent from source |
+| — | — | 250 MWe | No data; implied >>10 ¢/kWeh | Extrapolated: 500 MWe already >10 ¢/kWeh |
+
+**Interpretation**: At Pacific Fusion's 250 MWe commercial design point, the Z-IFE LTD architecture cannot reach the 4–6 ¢/kWeh competitive threshold at any modeled rep rate — the 500 MWe case is already above 10 ¢/kWeh across the full 0.1–0.5 Hz range. The 1000 MWe reference plant approaches 7.0 ¢/kWeh only at 0.5 Hz with frozen-FLiBe RTL, still above the advanced fission threshold. Break-even (Hypothesis 1) at 1000 MWe scale requires either rep rates above 0.5 Hz (beyond the RTL technology) or the IMG architecture's claimed 5–10× driver cost reduction — which directly feeds Hypothesis 3. For Pacific Fusion's actual 250 MWe target, achieving competitive LCOE depends on the IMG driver cost reduction and plant-size economy-of-scale cannot be assumed.
 
 **CAS-level cost structure.** The Z-IFE study decomposes total plant capital into four direct accounts: (1) Driver, (2) Chamber, (3) Balance of Plant (BOP), and (4) RTL/Target Factory — with indirect costs (contingency, owner's costs, etc.) set at 93.6% of direct capital.[2a] This differs structurally from MFE CAS accounts in the following ways:
 
@@ -104,13 +131,16 @@ A "free-form parametric model" is required because neither the driver account no
 [2a] z-ife-sand2006-7148-thermal-cycles.md §3.1.1.5: "The total capital cost of the Z-IFE power plant is calculated from the sum of the direct capital costs of the driver, chamber, balance-of-plant, RTL and target factory using indirect costs equal to 93.6% of the total direct capital cost"
 
 ---
+[F1] ans-news-2025-04-24-article-6980-pacific-fusion-fusing.md §Combined power: "One attractive combination would let us produce about 250 net MWe with a very compact footprint of 25 acres or less" — Keith LeChien, Pacific Fusion CTO, April 2025
 [3] z-ife-sand2006-7148-thermal-cycles.md, §3.1.1.6: "minimum-COE rep-rates (1.0–1.8 Hz) are beyond the reach of the replaceable RTL concept"
 [4] z-ife-sand2006-7148-thermal-cycles.md, §3.1.1.6: COE results — single-chamber 0.5 Hz → 7.0 ¢/kWeh; two-chamber 1000 MWe 0.5 Hz → 7.7 ¢/kWeh; 2000 MWe 0.5 Hz → 5.7 ¢/kWeh; 10-chamber 0.1 Hz → ~20 ¢/kWeh
 [5] z-ife-sand2006-7148-thermal-cycles.md, §3.1.1.3: steel RTL remanufacturing consumes 170 MWe on a 1000 MWe plant
 [6] z-ife-sand2006-7148-thermal-cycles.md, §3.1.2: driver cost $372M median, LTD cavities $358M of that; 12,600 cavities at ~$28k each
 [7] arxiv-2408-15206-pulsed-magnetic-fusion.md, §3.2.4: "cost of energy storage and switching must decrease by a factor of 5 to 10"
 [8] z-ife-sand2006-7148-thermal-cycles.md, §3.1.1.5: target gain formula G = 30.15 × (E − 1.22)^2.038 for E > 1.22 MJ
+[8a] arxiv-2504-10680.md, §Abstract: "Our multi-dimensional simulations, benchmarked against experiments at the Z facility, show that scaling from 20 MA to 50-60 MA of current enables net facility gain."
 [9] arxiv-2408-15206-pulsed-magnetic-fusion.md, §7.1: RTL coupling at mm-scale vs. µm-scale tolerances for laser IFE
+[13] pacificfusion-updates-experimental-breakthrough-by-pacific.md: "Demonstration System, designed to achieve net facility gain — more fusion energy out than all the energy stored in the system — by 2030" and "first commercial fusion system by the mid-2030s"
 
 ---
 
@@ -143,7 +173,7 @@ Subsystems are listed in ascending order of maturity (least mature first).
 
 **MagLIF Target Physics for Commercial Gain — TRL 3–4**
 - **Demonstrated**: χ ≈ 0.1 on Z with Bayesian inference validation (Knapp et al. 2022, Yager-Elorriaga et al. 2022). Fusion-relevant temperatures (>2 keV), significant neutron yields, magnetic trapping of fusion products demonstrated. Self-magnetizing composite targets (layered plastic + aluminum, 50–200 µm Al thickness) demonstrated October 2025 on Z at 22 MA — B-dot probe confirmed magnetic field penetration without external Helmholtz coils. FLASH code validated against Z liner implosion experiments.
-- **On paper only**: Ignition (χ ≥ 1) accessible at 20–60 MA from HYDRA 2D simulations ("clean" — no mix, no radiation transport, 2D not 3D). GJ-class yields via cryogenic DT ice-layer targets — "not yet tested on Z." Pacific Fusion's next objective is elimination of laser preheat following the October 2025 coil elimination demonstration.
+- **On paper only**: Ignition (χ ≥ 1) accessible at 20–60 MA, supported by multi-dimensional simulations benchmarked against Z facility experiments (arXiv:2504.10680, April 2025). Earlier work rested on HYDRA 2D simulations ("clean" — no mix, no radiation transport, 2D not 3D); the 2025 paper provides higher-fidelity multi-dimensional simulations calibrated to observed Z data confirming the 50–60 MA threshold with stronger physics basis. GJ-class yields via cryogenic DT ice-layer targets — "not yet tested on Z." Ignition has not been demonstrated experimentally. Pacific Fusion's next objective is elimination of laser preheat following the October 2025 coil elimination demonstration.
 
 > "Adding a cryogenic DT fuel liner to the implosion can mitigate impurity mix and increase the potential yield"
 > — arxiv-2408-15206-pulsed-magnetic-fusion.md, §4.2
@@ -158,7 +188,7 @@ Subsystems are listed in ascending order of maturity (least mature first).
 > "TITAN is described as 3x more compact, 1,000x higher lifetime, 2x more energy efficient, and at least 5x cheaper than current pulsed energy drivers"
 > — fuse-energy-not-boring-details.md, §"What Fuse is Building"
 
-- **On paper only**: Fuse Z STAR (2027 target): 16 TITAN units in a ring, 12.8 MA, ~15 TW — first Fuse facility to implode a liner and produce D-T neutrons. Pacific Fusion DS goal: 100× higher facility-level gain than NIF. Plant-scale IMG at 60+ MA rep-rated at ~1 Hz.
+- **On paper only**: Fuse Z STAR (2027 target): 16 TITAN units in a ring, 12.8 MA, ~15 TW — first Fuse facility to implode a liner and produce D-T neutrons. Pacific Fusion DS target: **net facility gain (Q_facility > 1 — more fusion energy out than all energy stored in the system) by 2030**, with a first commercial system targeted for the mid-2030s.[13] The CRADA-stated yield target of 100+ MJ from ~80 MJ stored implies Q_facility ≥ 1.25. Note: the "100× NIF facility-level gain" framing sometimes used in coverage understates this ambition — since NIF facility gain ≈ 0.007, 100× NIF resolves to Q_facility ≈ 0.7, which is sub-breakeven; the actual DS goal is net energy gain. Plant-scale IMG at 60+ MA rep-rated at ~1 Hz.
 - **Missing at scale**: Rep-rated operation at Hz scale (requires 1000× lifetime improvement in capacitors/switches, per Ellison et al.); demonstrated 60+ MA drive current for ignition-class shots; plant-scale cost validation for IMG architecture (Z-IFE $372M estimate is for LTD architecture, not IMG).
 
 ---
@@ -167,6 +197,7 @@ Subsystems are listed in ascending order of maturity (least mature first).
 - **Demonstrated**: Gas-fill beryllium cylindrical targets at Sandia scale (single-shot). Self-magnetizing composite targets (plastic + aluminum, room temperature) demonstrated on Z. Ellison et al. characterize surface roughness requirements as comparable to "22-caliber bullet casings using rapid, low-cost honing processes."
 - **On paper only**: Mass production at Hz repetition rates using automated manufacturing analogous to ammunition production. Cost target implied to be sub-$1/shot to meet commercial viability.
 - **Missing at scale**: Cryogenic DT ice-layer target production at volume (no demonstrated path; NIF cryo targets take 15–20 hours each; Sandia MagLIF cryostat takes ~5 minutes; a 1 Hz plant needs one cryo-ready target per second, requiring massive parallel batch cooling infrastructure with no published design or cost estimate). If Pacific Fusion can achieve adequate gain with non-cryo composite targets, the cryogenic fabrication challenge may be bypassed — but this has not been demonstrated.
+- **Organizational development (April 2025)**: Pacific Fusion's expanded partnership with General Atomics explicitly covers cryogenics, manufacturing at production scale, and target fabrication for full-scale power plant components. GA has direct NIF ICF target fabrication experience (NIF's primary target vendor) and fusion cryogenics capability. This does not resolve the TRL gap or the cost-at-scale unknown, but represents a meaningful organizational step toward acquiring the necessary fabrication expertise.[F2]
 
 ---
 
@@ -174,6 +205,9 @@ Subsystems are listed in ascending order of maturity (least mature first).
 - **Demonstrated**: All four thermal cycle options studied in SAND2006-7148 use mature industrial technology. Combined Brayton-Rankine (recommended) achieves ~42% efficiency with current steel chamber, ~50% with carbon-composite chamber (requires high-temperature materials not yet commercially available). Near-term plant constrained to 600–900 K operating range.
 - **On paper only**: Integration with pulsed thermal source; coupling to FLiBe primary loop at 850 K max; managing thermal cycling on turbomachinery from pulsed heat input.
 - **Missing at scale**: High-temperature materials for >900 K operation (He Brayton above 1000–1210 K) — the largest efficiency improvement lever. FLiBe pump/heat exchanger integration at plant scale. Z-IFE study found that only heat rejection (cooling towers) is shared across multiple chambers; all other BOP systems are per-chamber, limiting economies of scale for multi-chamber configurations.
+
+---
+[F2] globenewswire-news-release-2025-04-24-3067836-0-en-pacific.md §The Collaboration: "The relationship is now evolving to include collaboration on full-scale fusion power plant components, such as system operations, cryogenics, manufacturing at production scale, and target fabrication." GA described as "a global leader in fabricating cutting-edge fusion ignition targets."
 
 ---
 
@@ -218,6 +252,7 @@ The Z-IFE 1 PW LTD driver requires 12,600 LTD cavities at ~$28k each = ~$353M, c
 | Comparison: direct-drive laser IFE COE | 7.2 ¢/kWeh | z-ife-sand2006-7148-thermal-cycles.md §3.1.1.6 | medium | Same study's estimate for laser IFE; not independent |
 | Comparison: advanced fission COE | 4–6 ¢/kWeh | z-ife-sand2006-7148-thermal-cycles.md §3.1.1.6 | medium | Stated comparison point in Z-IFE study |
 | Net electric output (reference plant) | 1000 MWe | z-ife-sand2006-7148-thermal-cycles.md §3.1.1 | medium | Single Z-IFE design point |
+| Commercial plant net output (Pacific Fusion target) | 250 net MWe | ans-news-2025-04-24-article-6980-pacific-fusion-fusing.md §Combined power | low | "One attractive combination would let us produce about 250 net MWe with a very compact footprint of 25 acres or less"; 4× smaller than Z-IFE reference — all current COE estimates understate LCOE risk at this scale |
 | Thermal efficiency — steel chamber | 42% | z-ife-sand2006-7148-thermal-cycles.md §3.2 | medium | Combined Brayton-Rankine; best near-term option |
 | Thermal efficiency — C-C composite | 50% | z-ife-sand2006-7148-thermal-cycles.md §3.2 | low | Requires high-T materials not yet commercially available |
 | Driver efficiency (LTD) | 60% | z-ife-sand2006-7148-thermal-cycles.md §3.1.1.5 | medium | 2005 workshop estimate; IMG claimed ~90% wall-plug |
@@ -244,11 +279,13 @@ The Z-IFE 1 PW LTD driver requires 12,600 LTD cavities at ~$28k each = ~$353M, c
 | RTL steel remanufacturing power | 170 MWe (on 1000 MWe plant) | z-ife-sand2006-7148-thermal-cycles.md §3.1.1.3 | medium | Forces frozen-FLiBe RTL as base case |
 | Fuse TITAN I specs | 0.8 MA, 1.6 MV, 1 TW | fuse-energy-not-boring-details.md §TITAN Path | high | Published hardware; 238 bricks, 14 stages |
 | Fuse Z STAR (2027 target) | 12.8 MA, ~15 TW | fuse-energy-not-boring-details.md §Z STAR | medium | Not yet built; 16 TITANs in ring configuration |
-| Apeiron I (fusion-fission): 20 MW fusion → output | ~3,000 MWth, ~1 GWe | fuse-energy-not-boring-details.md §APEIRON I | low | Fission amplification; Q << 1 fusion, subcritical |
+| Apeiron I (fusion-fission): 20 MW fusion → output | ~3,000 MWth, ~1 GWe | fuse-energy-not-boring-details.md §APEIRON I; osti-biblio-895981.md (SAND2006-6590) | medium | 150× fission amplification confirmed by Sandia primary literature (SAND2006-6590, In-Zinerator); Q << 1 fusion, subcritical; actinide fluid blanket eliminates fuel fabrication cost |
 | FLiBe freeze point | 733 K | z-ife-sand2006-7148-thermal-cycles.md §3.4.1 | high | Hard thermodynamic constraint on blanket/RTL design |
 | FLiBe max operating temperature | ≤850 K | z-ife-sand2006-7148-thermal-cycles.md §3.3 | medium | Per Z-IFE study; tritium permeation analysis basis |
 | Tritium permeation (piping) | 0.0467 g/yr | z-ife-sand2006-7148-thermal-cycles.md §3.3 | low | 304 SS, PRF=100 barrier at 850 K; pumps/valves not included |
 | Blanket geometry (Z-IFE ref) | 80 cm FLiBe sphere, 4 m radius chamber, 20 cm 6061-T6 Al wall | z-ife-power-plant-concept.md §Abstract | medium | Only available design point; LTD-era architecture |
+| Milestone: DS net facility gain | 2030 (target) | pacificfusion-updates-experimental-breakthrough-by-pacific.md | medium | "net facility gain — more fusion energy out than all the energy stored in the system — by 2030"; 100+ MJ yield from ~80 MJ stored per CRADA announcement |
+| Milestone: first commercial system | Mid-2030s (target) | pacificfusion-updates-experimental-breakthrough-by-pacific.md | low | "first commercial fusion system by the mid-2030s" — stated after October 2025 self-magnetizing target breakthrough |
 
 **Missing Parameters:**
 
@@ -272,8 +309,8 @@ The Z-IFE 1 PW LTD driver requires 12,600 LTD cavities at ~$28k each = ~$353M, c
 | # | Gap Description | Section | Gap Type | Criticality | TEA Impact if Unresolved | Source Recommendation |
 |---|-----------------|---------|----------|-------------|-------------------------|-----------------------|
 | 1 | No plant study for IMG architecture: all TEA data from Z-IFE LTD-era (2006) | S1, S5 | not-yet-sourced | blocking | All COE estimates carry ±50%+ uncertainty; driver capital (96% of CapEx) may be wrong by a factor of 2–5× in either direction | ARPA-E award documents, company technical blogs, future Pacific Fusion publications |
-| 2 | Commercially viable target cost at volume production for cryo ice-layer design | S2, S5 | truly-unknown | blocking | If cryo target cost cannot reach <$2/shot, annual consumable O&M at 1 Hz exceeds $50M/yr and becomes the binding LCOE term, not capital amortization | IFE target fabrication literature (GA IFE Workshop); analogous laser ICF cost studies |
-| 3 | Rep-rated yield demonstration: gain not validated above χ ≈ 0.1 | S2, S3 | not-yet-sourced | blocking | If gain scaling fails, driver energy requirement could be 10× higher, tripling driver CapEx via power-law scaling and making commercial operation infeasible | Pacific Fusion DS experiment publications (expected 2028+); Fuse Z STAR data (2027+) |
+| 2 | Commercially viable target cost at volume production for cryo ice-layer design | S2, S5 | truly-unknown | blocking | If cryo target cost cannot reach <$2/shot, annual consumable O&M at 1 Hz exceeds $50M/yr and becomes the binding LCOE term, not capital amortization | IFE target fabrication literature (GA IFE Workshop); analogous laser ICF cost studies; Pacific Fusion / General Atomics partnership outputs (April 2025 announcement — GA's stated scope includes cryogenics and target fabrication at production scale, representing an organizational step toward addressing this gap, though no cost data has been published) |
+| 3 | Rep-rated yield demonstration: gain not validated above χ ≈ 0.1 | S2, S3 | not-yet-sourced | blocking | If gain scaling fails, driver energy requirement could be 10× higher, tripling driver CapEx via power-law scaling and making commercial operation infeasible | Pacific Fusion DS net facility gain milestone (2030 target per public statements); Fuse Z STAR data (2027+); note that near-term MagLIF physics experiments on Z Machine will occur under the December 2024 CRADA — some results may have a confidentiality period before public disclosure |
 | 4 | RTL insertion automation: no demonstrated cycle time or cost for Hz-rate operation | S2, S3 | truly-unknown | blocking | If RTL cycle time cannot reach <1 second, rep rate is capped at <0.1 Hz, locking COE at ~20 ¢/kWeh regardless of driver capital or yield improvements | Z-IFE follow-on chamber engineering studies if any exist post-2006 |
 | 5 | Chamber lifetime: combined shock + neutron + thermal + FLiBe corrosion environment untested | S3, S5 | truly-unknown | blocking | Short chamber lifetime forces high replacement frequency, increasing scheduled downtime (capacity factor penalty) and adding replacement capital costs not captured in current Z-IFE COE estimates | No current test facility exists; gap acknowledged in Z-IFE and PMF roadmap |
 | 6 | IMG driver capital cost at 60+ MA plant scale | S2, S5 | proprietary / not-yet-sourced | blocking | If IMG architecture does not deliver the claimed 5–10× cost reduction vs. LTD, driver capital exceeds $1–2B per plant and dominates COE regardless of rep rate | Pacific Fusion investor documents; DoE ARPA-E/FES grant filings |
@@ -282,14 +319,25 @@ The Z-IFE 1 PW LTD driver requires 12,600 LTD cavities at ~$28k each = ~$353M, c
 | 9 | First-wall / electrode lifetime at axial neutron streaming exposure | S3 | truly-unknown | important | Short electrode lifetime forces periodic plant shutdowns not captured in 85% capacity factor assumption; could add 5–15% downtime penalty | Requires 14 MeV neutron irradiation facility with combined loading; none currently available |
 | 10 | Thermal cycle above 900 K: high-temperature materials availability for He Brayton or combined cycle | S3 | not-yet-sourced | important | If limited to ≤900 K, thermal efficiency is capped at ~42% (steel chamber); 50% C-C composite case unavailable → 20% higher thermal BOP capital per unit output | Advanced materials programs (ODS steels, SiC/SiC composites) |
 | 11 | Pacific Fusion self-magnetizing target gain at 60+ MA (eliminates coils and laser) | S3 | not-yet-sourced | important | Watch for upcoming Pacific Fusion experimental publications |
-| 12 | Apeiron I hybrid fusion-fission: independent review of 150x fission amplification claim | S3 | not-yet-sourced | nice-to-have | Review cited Sandia 2007 paper directly (not just Not Boring summary) |
+| 12 | ~~Apeiron I hybrid fusion-fission: independent review of 150x fission amplification claim~~ **[RESOLVED]** | S3, S5 | resolved | nice-to-have | SAND2006-6590 (In-Zinerator, 2006) confirmed: 20 MW fusion → 3,000 MWth, 1,280 kg/yr actinide burn; 150× amplification validated against Sandia primary literature, not just Not Boring summary |
 | 13 | Laser preheat elimination: feasibility at commercially relevant yields | S3 | not-yet-sourced | nice-to-have | Pacific Fusion blog posts and preprints |
 
 ---
 
 ## Section 7: Cross-Concept Notes
 
-Two approved prior analyses are available for cross-referencing: 08-frc-w-direct-conversion (Helion Energy) and 21-spherical-tokamak-hts (Tokamak Energy).
+Two approved prior analyses are available for cross-referencing: 08-frc-w-direct-conversion (Helion Energy) and 21-spherical-tokamak-hts (Tokamak Energy). The three nearest-neighbor concepts and their single key distinguishing feature relative to MagLIF are summarized below.
+
+**Nearest-neighbor comparison summary:**
+
+| Concept | MIF Sub-family | Key Distinguishing Feature vs. MagLIF |
+|---------|---------------|---------------------------------------|
+| MTF / General Fusion | Liner-compression MIF | Pneumatic piston driver vs. pulsed-power electrical driver; same per-shot consumable liner and rep-rate-dominated LCOE |
+| Helion (FRC-w-direct-conversion) | Pulsed MIF | Magnetic FRC compression vs. metal liner implosion; D-He3 fuel eliminates tritium blanket and enables direct energy recovery |
+| Laser IFE | Inertial (laser driver) | Laser driver at ~10% efficiency vs. IMG at ~90%; µm vs. mm target tolerance; final optics survivability problem absent in MagLIF |
+
+**Shared with MTF / General Fusion (nearest structural analog):**
+Both MagLIF and MTF are liner-compression MIF concepts: an imploding geometry compresses a magnetized plasma target, a compression element is consumed each shot, and rep rate is the central LCOE lever. Both face chamber-clearing constraints between shots, both destroy a compression element per shot (MagLIF: metal liner + RTL; MTF: plasma-facing surface of imploding plasma vessel), and both have no demonstrated high-gain operation. The key structural distinction is the driver: MTF/General Fusion uses a pneumatic piston array (no pulsed-power capacitor banks, no RTL), while MagLIF requires a large pulsed-power electrical driver. MTF's driver capital avoids the pulsed-power cost-per-joule challenge that dominates MagLIF's CapEx, but introduces a different precision-machining challenge for the pneumatic system. No analysis of MTF is available in the approved prior analyses set; this comparison is based on structural analogy.
 
 **Shared with 08-frc-w-direct-conversion (Helion):**
 Both MagLIF and Helion are MIF/pulsed concepts with discrete burn events separated by recovery periods. Both face the rep rate problem as the central LCOE lever — Helion targets ~2 Hz with a 50 MJ capacitor bank system; MagLIF targets ~1 Hz with 60+ MA pulsed power. Both use pulsed electromagnetic drivers (capacitor banks + coils), though MagLIF uses metal liner implosion while Helion uses magnetic compression of merging FRC plasmoids. Both concepts destroy consumable hardware each shot (MagLIF: target liner + RTL; Helion: nothing stated as consumable, but coil drive energy must be recovered electromagnetically). The Helion analysis identified capacitor bank capital cost and rep rate as the two dominant LCOE levers — exactly the same cost structure as MagLIF. The key divergence: Helion's D-He3 fuel eliminates the tritium breeding blanket requirement, enabling direct electromagnetic energy recovery and eliminating the FLiBe supply chain problem entirely. MagLIF's D-T fuel requires the full blanket/tritium system but benefits from far higher fuel reactivity.
@@ -327,3 +375,9 @@ MagLIF shares the IFE cost architecture (pulsed, per-shot consumables, target fa
 
 8. **Phase 1a Dossier, 07-maglif** — Structured research summary covering all 12 differentiation table columns with citations and confidence ratings. Key values: Rep rate Sub-Hz (Z-IFE 0.1 Hz baseline; ~1 Hz plausible), Driver Technology "Pulsed power (Z-machine class)," Tritium Breeding "TBD," Neutron Management "Integrated blanket/shield."
    - Path: `research/07-maglif/dossier.md`
+
+9. **Schmit et al. (2025)** — arXiv:2504.10680 (April 2025). Multi-dimensional MagLIF simulations benchmarked against Z facility experiments. Confirms 50–60 MA threshold for net facility gain; also examines engineering requirements for repetitive operation, target fabrication, and chamber maintenance. Upgrades the gain scaling physics basis from pure simulation extrapolation to simulation extrapolation anchored to observed Z data. Key source for Section 2 (Challenge 4) and Section 3 (Target Physics).
+   - Path: `iter-03/sources/arxiv-2504-10680.md`
+
+10. **Cipiti et al. — SAND2006-6590 (2006)** — "Fusion Transmutation of Waste: Design and Analysis of the In-Zinerator Concept," Sandia National Laboratories. The primary Sandia technical basis for the Z-pinch fusion-fission hybrid architecture underlying Fuse Energy's Apeiron I concept. Parameters confirmed: ~20 MW fusion input, ~3,000 MWth thermal output (150× fission amplification), 1,280 kg/yr actinide burn rate, fluid fuel blanket eliminating fuel fabrication cost. Resolves Gap #12.
+    - Path: `iter-03/sources/osti-biblio-895981.md`

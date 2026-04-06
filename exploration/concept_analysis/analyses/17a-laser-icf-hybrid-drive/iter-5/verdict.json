@@ -1,0 +1,25 @@
+{
+  "iteration": 5,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "assess",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": false,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-01/sources/focused-energy-technology.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-01/sources/focused-energy-technology.orig.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-01/sources/xcimer-energy-approach.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/focused-energy-callahan-interview.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/hylife-energy-conversion-notes.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/xcimer-science-page.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/digital-ark-67531-metadc626683.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/laserfocusworld-lasers-sources-article-14274951-can-high.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/optica-opn-home-articles-volume-34-june-2023-features.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/osti-servlets-purl-6137961.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/prnewswire-news-releases-focused-energy-and-amplitude-enter.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/sciencedirect-science-article-pii-s0920379624001868.md"
+  ],
+  "timestamp": "2026-04-06T06:49:19.625186+00:00"
+}

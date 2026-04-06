@@ -1,0 +1,148 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-3",
+      "gap_description": "Rep-rated yield demonstration: gain not validated above chi ≈ 0.1",
+      "queries": [
+        "MagLIF repetitive operation rep rate pulsed magnetic fusion experimental yield demonstration 2024 2025 2026",
+        "arxiv 'pulsed magnetic fusion' 'repetitive' OR 'rep rate' site:arxiv.org 2025"
+      ],
+      "candidates": [
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/32/2/022507/3336518/Progress-and-issues-with-pulsed-magnetic-fusion",
+          "title": "Progress and issues with pulsed magnetic fusion (Physics of Plasmas, Feb 2025)",
+          "triage": "paywall",
+          "notes": "403 Forbidden — AIP subscription required. Most directly relevant paper found for rep rate discussion."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/2526283",
+          "title": "Magnetized liner inertial fusion platform development to assess performance scaling with drive parameters",
+          "triage": "abstract-only",
+          "notes": "OSTI biblio page only, not full text. Abstract shows scaling data up to 1.1×10^13 DD neutrons, 3.1 keV ion temperatures, >10 kJ fusion yield projections. Relevant but not extractable."
+        },
+        {
+          "url": "https://arxiv.org/abs/2504.10680",
+          "title": "AMPS high-yield and high-gain inertial fusion (arXiv:2504.10680)",
+          "triage": "already-extracted",
+          "notes": "Already in iter-03/sources. The arxiv roadmap paper discusses rep rate requirements but does not report demonstrations."
+        },
+        {
+          "url": "https://arxiv.org/abs/2408.15206",
+          "title": "Opportunities in Pulsed Magnetic Fusion Energy (arXiv:2408.15206)",
+          "triage": "already-extracted",
+          "notes": "Already in iter-01/sources. Discusses rep rate requirements and challenges but no experimental rep rate demonstrations."
+        }
+      ],
+      "extracted": [],
+      "failed": [
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/32/2/022507/3336518/Progress-and-issues-with-pulsed-magnetic-fusion",
+          "reason": "403 Forbidden — AIP paywall. No open-access preprint found."
+        }
+      ],
+      "status": "failed",
+      "notes": "No experimentally demonstrated rep rate or yield above chi~0.1 found in public literature. The gap reflects a genuine experimental state — no Z Machine experiment has operated rep-rated or demonstrated higher gain. Existing extracted sources (2408.15206, 2504.10680) cover the projected requirements. The AIP 'Progress and issues with pulsed magnetic fusion' (Pop 32:2, Feb 2025) is the most likely source for any updated experimental data but is paywalled."
+    },
+    {
+      "gap_id": "G-1",
+      "gap_description": "No plant study for IMG architecture: all TEA data from Z-IFE LTD-era (2006)",
+      "queries": [
+        "Pacific Fusion IMG pulsed power plant TEA cost model techno-economic analysis 2025 2026 preprint"
+      ],
+      "candidates": [
+        {
+          "url": "https://techcrunch.com/2025/04/15/heres-how-pacific-fusion-plans-to-build-a-fusion-power-plant/",
+          "title": "Here's how Pacific Fusion plans to build a fusion power plant (TechCrunch, April 2025)",
+          "triage": "js-empty",
+          "notes": "JS-heavy page — no article body content accessible via WebFetch."
+        },
+        {
+          "url": "https://www.ans.org/news/2025-04-24/article-6980/pacific-fusion-fusing-pulser-innovation-with-general-atomics-expertise/",
+          "title": "Pacific Fusion: Fusing pulser innovation with General Atomics' expertise (ANS, April 2025)",
+          "triage": "relevant",
+          "notes": "Contains commercial plant parameters: ~250 net MWe on ~25 acres, 156 modules, ~80 MJ stored, >60 MA, 73×80 m demo footprint. Not a formal plant study but provides partial parametric data for the IMG architecture. GA collaboration on target fabrication noted. Extracted."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.ans.org/news/2025-04-24/article-6980/pacific-fusion-fusing-pulser-innovation-with-general-atomics-expertise/",
+          "source_name": "ans-news-2025-04-24-article-6980-pacific-fusion-fusing"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "No formal IMG architecture plant study exists in public literature. The ANS article provides commercial plant parameters (~250 MWe on ~25 acres) that partially address the gap, but no CAS-level cost breakdown, COE estimate, or driver cost model is available for the IMG architecture. Gap remains structurally unresolved — a formal plant study simply does not yet exist."
+    },
+    {
+      "gap_id": "G-11",
+      "gap_description": "Pacific Fusion self-magnetizing target gain at 60+ MA (eliminates coils and laser)",
+      "queries": [
+        "Pacific Fusion IMG pulsed power plant TEA cost model techno-economic analysis 2025 2026 preprint",
+        "MagLIF laser preheat elimination laserless magnetized liner inertial fusion feasibility Pacific Fusion 2024 2025"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.pacificfusion.com/updates/experimental-breakthrough-by-pacific-fusion-clears-major-obstacle-to-affordable-commercial-fusion",
+          "title": "Pacific Fusion Experimental Breakthrough — self-magnetizing target (Feb 2026)",
+          "triage": "relevant",
+          "notes": "Full page content confirmed. Reports: 22 MA in 120 ns, aluminum liner 50μm and 200μm, B-dot probe magnetic field penetration measurement, simulation match. Explicitly states coil elimination achieved; laser preheat NOT yet eliminated (next iteration target)."
+        },
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/32/5/052708/3347081/Integrated-simulations-of-premagnetized-and-self",
+          "title": "Integrated simulations of premagnetized and self-magnetizing dynamic screw pinch-driven MagLIF (Physics of Plasmas, May 2025)",
+          "triage": "paywall",
+          "notes": "403 Forbidden — AIP subscription required. Would be the most technically rigorous source for self-magnetizing DSP-driven MagLIF simulations."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "partial",
+      "notes": "The Pacific Fusion experimental breakthrough page was attempted for extraction but returned 'already exists' — it was previously extracted to iter-03/sources/pacificfusion-updates-experimental-breakthrough-by-pacific.md. This source covers the self-magnetizing target demonstration at 22 MA. Gap G-11 remains partial because: (1) only 22 MA demonstrated, not 60+ MA; (2) no yield/gain measurement reported for self-magnetizing targets specifically; (3) the AIP simulation paper is paywalled."
+    },
+    {
+      "gap_id": "G-13",
+      "gap_description": "Laser preheat elimination: feasibility at commercially relevant yields",
+      "queries": [
+        "MagLIF laser preheat elimination laserless magnetized liner inertial fusion feasibility Pacific Fusion 2024 2025",
+        "MagLIF 'without laser' OR 'no laser' OR 'laser-free' OR 'preheat-free' target self-heating self-magnetizing 2024 2025 2026"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/abs/2504.11432",
+          "title": "Analysis of Preheat Propagation in MagLIF-like Plasmas (arXiv:2504.11432)",
+          "triage": "not-relevant",
+          "notes": "Analyzes preheat dynamics within existing MagLIF design. Does not address laser preheat elimination — assumes preheat as given and models its effects."
+        },
+        {
+          "url": "https://www.pacificfusion.com/updates/experimental-breakthrough-by-pacific-fusion-clears-major-obstacle-to-affordable-commercial-fusion",
+          "title": "Pacific Fusion Experimental Breakthrough (Feb 2026)",
+          "triage": "relevant",
+          "notes": "Directly states that laser preheat is NOT yet eliminated: 'in the next iteration of experiments, we will aim to show that we can eliminate the need for laser pre-heating in addition to pre-magnetization.' Establishes current state and near-term direction. Source already extracted (iter-03)."
+        },
+        {
+          "url": "https://www.globenewswire.com/news-release/2025/04/24/3067836/0/en/Pacific-Fusion-and-General-Atomics-Team-Up-to-Deliver-Breakthroughs-in-Inertial-Fusion-Energy.html",
+          "title": "Pacific Fusion and General Atomics Team Up to Deliver Breakthroughs in IFE (GlobeNewsWire, April 2025)",
+          "triage": "limited-relevance",
+          "notes": "Mentions GA role in target fabrication, module reliability (100 consecutive tests/day), 2 TW per module, 250 MWe commercial plant footprint. Does not address laser preheat specifically."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.globenewswire.com/news-release/2025/04/24/3067836/0/en/Pacific-Fusion-and-General-Atomics-Team-Up-to-Deliver-Breakthroughs-in-Inertial-Fusion-Energy.html",
+          "source_name": "globenewswire-news-release-2025-04-24-3067836-0-en-pacific"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "Laser preheat elimination is an aspirational next step for Pacific Fusion, not yet demonstrated. The Pacific Fusion experimental breakthrough source (already extracted) is the primary source establishing this status. G-13 represents a genuine frontier — no peer-reviewed paper addresses laser-free MagLIF feasibility at commercial yields because no one has demonstrated it experimentally yet. The AIP paper on self-magnetizing DSP-driven MagLIF (paywalled) would be the closest academic analog."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 4,
+    "sources_extracted": 2,
+    "sources_failed": 0,
+    "searches_used": 5,
+    "extractions_used": 2,
+    "notes": "One attempted extraction (Pacific Fusion experimental breakthrough) returned 'already exists' — it was previously extracted in iter-03 but not yet integrated into the analysis. Two new sources were successfully extracted: (1) GlobeNewsWire Pacific Fusion + General Atomics press release covering commercial plant parameters and module reliability; (2) ANS article on Pacific Fusion + GA partnership with commercial plant scale data (~250 MWe on ~25 acres). G-3 (rep rate demonstration) has no accessible public source — gap reflects genuine experimental state. G-1 (IMG plant study) has no formal study in public literature; partial data from ANS article."
+  }
+}

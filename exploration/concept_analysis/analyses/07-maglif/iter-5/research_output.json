@@ -1,0 +1,182 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-1",
+      "gap_description": "No plant study for IMG architecture: all TEA data from Z-IFE LTD-era (2006)",
+      "queries": [
+        "Pacific Fusion IMG magnetized liner inertial fusion self-magnetizing target gain 60 MA preprint 2024 2025",
+        "ARPA-E MagLIF magnetized liner fusion IMG inertial gun driver capital cost award 2023 2024"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/abs/2504.10680",
+          "title": "Affordable, manageable, practical, and scalable (AMPS) high-yield and high-gain inertial fusion",
+          "triage": "relevant",
+          "notes": "April 2025 preprint (Sandia/collaborators). Covers DS (Demonstration System) architecture targeting 60+ MA and net facility gain by 2030. Claims 1000x improvement over NIF at 1/10 capital cost. Full text accessible. Directly addresses the DS machine concept as the successor to Z-IFE LTD architecture."
+        },
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/32/3/032702/3338343/Magnetized-liner-inertial-fusion-platform",
+          "title": "Magnetized liner inertial fusion platform development to assess performance scaling with drive parameters",
+          "triage": "likely-relevant",
+          "notes": "Physics of Plasmas March 2025 peer-reviewed paper on MagLIF experimental scaling. OSTI page (osti.gov/biblio/2526283) may have free access. Not triaged further due to extraction budget allocation."
+        },
+        {
+          "url": "https://www.ans.org/news/2025-04-21/article-6938/pacific-fusion-predicts-1000fold-leap-in-performance-net-facility-gain-by-2030/",
+          "title": "Pacific Fusion predicts '1,000-fold leap' in performance, net facility gain by 2030",
+          "triage": "low-priority",
+          "notes": "ANS Nuclear Newswire summary article. Likely repeats content from Pacific Fusion corporate announcement already extracted in iter-03. Not extracted."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/abs/2504.10680",
+          "source_name": "arxiv-2504-10680"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "arXiv AMPS paper provides DS architecture concept and 60+ MA scaling claims, but does not constitute a full plant engineering or TEA study — it is a physics case paper, not a cost model. The ±50%+ driver capital uncertainty noted in the gap remains unresolved; no public cost breakdown for the IMG/DS architecture found."
+    },
+    {
+      "gap_id": "G-6",
+      "gap_description": "IMG driver capital cost at 60+ MA plant scale",
+      "queries": [
+        "ARPA-E MagLIF magnetized liner fusion IMG inertial gun driver capital cost award 2023 2024"
+      ],
+      "candidates": [
+        {
+          "url": "https://arpa-e.energy.gov/programs-and-initiatives/search-all-projects/magnetization-and-heating-tools-low-cost-fusion",
+          "title": "Magnetization and Heating Tools for Low-Cost Fusion | ARPA-E",
+          "triage": "low-priority",
+          "notes": "ARPA-E project page for heating/magnetization tools, not driver capital cost. Not fetched further."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "failed",
+      "notes": "No publicly accessible source found with specific IMG driver capital cost estimates at 60+ MA scale. ARPA-E award search did not surface IMG-specific cost data. Gap remains proprietary — Pacific Fusion's investor documents and DOE grant filings are not publicly accessible. The AMPS arXiv paper (extracted for G-1) makes a qualitative '1/10 capital cost' claim vs. NIF but provides no cost breakdown for the LTD/IMG pulsed-power architecture itself."
+    },
+    {
+      "gap_id": "G-10",
+      "gap_description": "Thermal cycle above 900 K: high-temperature materials availability for He Brayton or combined cycle",
+      "queries": [
+        "ODS ferritic steel SiC composite fusion reactor blanket 900K thermal efficiency He Brayton cycle material availability"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.frontiersin.org/journals/nuclear-engineering/articles/10.3389/fnuen.2025.1683702/full",
+          "title": "Assessment of structural materials in compact fusion reactor design",
+          "triage": "relevant",
+          "notes": "Open-access 2025 paper in Frontiers in Nuclear Engineering. Covers ODS steels and SiC/SiC composites for compact fusion. Operating temperatures: ITER ~750K, DEMO ~570K, STEP ~670K, ARC ~850K. ODS identified as 'most promising candidates for high-temperature compact fusion devices.' Does not specifically discuss He Brayton cycle compatibility or >900K operation for MagLIF, but provides the best available open-access materials survey for this gap."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.frontiersin.org/journals/nuclear-engineering/articles/10.3389/fnuen.2025.1683702/full",
+          "source_name": "frontiersin-journals-nuclear-engineering-articles-10-3389"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "Extracted paper provides relevant ODS/SiC materials context but focuses on ARC-class tokamak (~850K FLiBe blanket) rather than Z-pinch chamber at >900K. The gap asks specifically about He Brayton cycle and C-C composite availability above 900K for MagLIF thermal BOP; the Frontiers paper's thermal efficiency analysis does not directly address this. The z-ife-sand2006-7148-thermal-cycles source (iter-02) remains the primary thermal cycle reference for MagLIF; this new source supplements it with materials TRL context."
+    },
+    {
+      "gap_id": "G-11",
+      "gap_description": "Pacific Fusion self-magnetizing target gain at 60+ MA (eliminates coils and laser)",
+      "queries": [
+        "Pacific Fusion IMG magnetized liner inertial fusion self-magnetizing target gain 60 MA preprint 2024 2025"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/abs/2504.10680",
+          "title": "Affordable, manageable, practical, and scalable (AMPS) high-yield and high-gain inertial fusion",
+          "triage": "relevant",
+          "notes": "Covers 60+ MA scaling and DS net facility gain target. The self-magnetizing target concept (eliminating external coils and laser) is related work — the experimental breakthrough (already in iter-03 sources) described this, while the AMPS paper covers the physics scaling case for the DS machine."
+        },
+        {
+          "url": "https://www.pacificfusion.com/updates/experimental-breakthrough-by-pacific-fusion-clears-major-obstacle-to-affordable-commercial-fusion",
+          "title": "Pacific Fusion experimental breakthrough",
+          "triage": "already-extracted",
+          "notes": "Already present as pacificfusion-updates-experimental-breakthrough-by-pacific in iter-03/sources. Describes self-magnetizing target eliminating external coils. Laser preheat elimination stated as 'next iteration' — not yet demonstrated."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/abs/2504.10680",
+          "source_name": "arxiv-2504-10680"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "AMPS arXiv paper covers the DS machine scaling physics case. However, specific gain data for self-magnetizing targets at 60+ MA has not yet been experimentally published — the Pacific Fusion breakthrough paper (iter-03) covers the concept at 22 MA on Z. Full gain characterization awaits future DS-scale experiments (2030 target)."
+    },
+    {
+      "gap_id": "G-12",
+      "gap_description": "Apeiron I hybrid fusion-fission: independent review of 150x fission amplification claim",
+      "queries": [
+        "Apeiron fusion fission hybrid z-pinch amplification Sandia 2007 neutron multiplication subcritical blanket",
+        "Sandia 'In-Zinerator' Z-pinch fusion fission hybrid subcritical 2007 OSTI report Meier"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/biblio/895981",
+          "title": "Fusion transmutation of waste: design and analysis of the in-zinerator concept",
+          "triage": "relevant",
+          "notes": "Sandia National Laboratories technical report (November 2006 original, updated October 2007). Describes Z-pinch fusion-fission hybrid: 20 MW fusion → 3,000 MWth = 150x amplification. This is the primary Sandia source underlying the Apeiron I fission amplification claim referenced in the Not Boring article. Full text accessible via OSTI."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/1142686",
+          "title": "Z-Pinch-Driven Fusion-Fission Hybrids for Nuclear Waste Transmutation",
+          "triage": "relevant",
+          "notes": "Related conference paper on same topic with direct PDF access at osti.gov/servlets/purl/1142686. Not extracted separately — the biblio/895981 technical report is the primary reference."
+        },
+        {
+          "url": "https://www.academia.edu/14007184/Fusion_transmutation_of_waste_design_and_analysis_of_the_in_zinerator_concept",
+          "title": "Fusion transmutation of waste: design and analysis of the in-zinerator concept (Academia.edu)",
+          "triage": "duplicate",
+          "notes": "Same report as OSTI 895981 — skipped in favor of official OSTI version."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/biblio/895981",
+          "source_name": "osti-biblio-895981"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "notes": "In-Zinerator technical report is the Sandia source underlying the 150x fission amplification claim. The 20 MW fusion → 3,000 MWth figure (ratio = 150) directly corresponds to the claim referenced in the analysis. This provides the independent technical basis for evaluating the Apeiron I claim beyond the Not Boring summary."
+    },
+    {
+      "gap_id": "G-13",
+      "gap_description": "Laser preheat elimination: feasibility at commercially relevant yields",
+      "queries": [],
+      "candidates": [
+        {
+          "url": "https://www.pacificfusion.com/updates/experimental-breakthrough-by-pacific-fusion-clears-major-obstacle-to-affordable-commercial-fusion",
+          "title": "Pacific Fusion experimental breakthrough",
+          "triage": "already-extracted",
+          "notes": "Already in iter-03/sources. States laser preheat elimination is 'next iteration' work — not yet demonstrated. No other accessible publication on this specific topic found."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "Gap deprioritized (nice-to-have) due to extraction budget exhaustion. The existing iter-03 Pacific Fusion breakthrough source contains the most current public statement on laser preheat elimination status (planned for future experiments, not yet demonstrated). No preprint or publication on self-magnetizing + no-laser targets at commercial yields found in search results."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 6,
+    "sources_extracted": 3,
+    "sources_failed": 0,
+    "searches_used": 5,
+    "extractions_used": 3,
+    "gap_statuses": {
+      "closed": 1,
+      "partial": 3,
+      "failed": 1,
+      "skipped": 1
+    },
+    "notes": "G-12 (Apeiron In-Zinerator) fully closed with Sandia OSTI report. G-1/G-11 partially addressed by arXiv AMPS paper covering DS physics scaling — no public cost model for IMG driver found. G-10 partially addressed by Frontiers materials survey (up to ~850K, not 900K+ specifically). G-6 remains unresolved — driver capital cost data is proprietary. G-13 skipped due to budget; existing iter-03 source already covers current public status."
+  }
+}

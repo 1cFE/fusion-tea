@@ -1,10 +1,17 @@
 # Current Work
 
-**Last Updated**: 2026-04-05
+**Last Updated**: 2026-04-06
 
 ---
 
 ## Active Work
+
+### Explorer Merge
+
+**Status**: In-progress
+**Location**: `.project/active/explorer-merge/`
+
+Merging `ralph/concept-explorer` (FastAPI explorer UX) into `design-space-explore` (analysis pipeline). Phase 1 (pre-merge fixes) complete. Phase 2 (merge + conflict resolution) in progress.
 
 ### Source Replacement Cleanup
 
@@ -13,12 +20,17 @@
 
 All 36 concepts extracted. Remaining: run `resurface_orig.py` on 19 NO-verdict `.orig.md` files, review recommendations, clean up.
 
+### Concept Explorer (merged from ralph/concept-explorer)
+
+**Status**: Merged, functional
+**Location**: `exploration/concept_explorer/`
+
+4-page interactive explorer (Index, Concept Profile, Comparison, Taxonomy) with FastAPI backend. Extracts data from pipeline artifacts. 140+ tests. See `exploration/concept_explorer/README.md`.
+
 ### Traceability System (on hold)
 
 **Status**: Spec + plan written, awaiting prioritization
 **Location**: `.project/active/traceability-system/`
-
-Citation system for MR-4 enforcement. Ready to implement when needed.
 
 ---
 
@@ -38,6 +50,9 @@ Key outcomes:
 - R2 binary sync for research artifacts
 - Concept research navigation skill
 
+### [2026-03-29] Concept Taxonomy & Interactive Explorer
+4 work items archived (2 complete, 2 superseded). See `CHANGELOG.md`.
+
 ### [2026-03-06] Project Cleanup
 
 Archived 9 active items and 4 epics. Infrastructure pipeline proven, IFE modeling demo complete, workflow explainer shipped.
@@ -46,6 +61,7 @@ Archived 9 active items and 4 epics. Infrastructure pipeline proven, IFE modelin
 
 ## Up Next
 
-1. Finish `.orig.md` re-sourcing (19 files remaining)
-2. Traceability system implementation (when prioritized)
-3. Modeling PM work — concept modeling, cross-concept comparison
+1. Complete explorer merge (Phases 3-4: cleanup + operator guide)
+2. Finish `.orig.md` re-sourcing (19 files remaining)
+3. Batch pipeline run on remaining concepts
+4. Traceability system implementation (when prioritized)

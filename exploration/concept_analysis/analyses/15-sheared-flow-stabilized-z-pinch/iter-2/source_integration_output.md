@@ -1,0 +1,3 @@
+VERDICT: PASS
+
+The new source (`zap-energy-website-how-it-works.orig.md`) is a 1 KB marketing/overview document that is the original-capture variant of `zap-energy-website-how-it-works.md`, already listed as an iter-1 source in `verdict.json` and cited in the gap report. The source explains the operating principle (sheared-flow stabilization, self-generated magnetic field, pulsed operation at 10 Hz, FuZE-Q operating up to 1 MA, liquid metal walls for energy capture and tritium breeding) but contains no quantitative performance metrics, economic data, or risk information beyond what the gap report already covers. No analysis updates are required.

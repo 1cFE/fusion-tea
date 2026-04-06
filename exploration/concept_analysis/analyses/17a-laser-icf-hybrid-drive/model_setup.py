@@ -1,3 +1,4 @@
+# STALE: analysis-updated-iter-6
 """Laser ICF — Hybrid Direct Drive, D-T (Xcimer Energy / Athena pilot)
 =====================================================================
 
@@ -37,14 +38,87 @@ Framework limitations / manual overrides for this concept
 Key hypotheses tested
 ---------------------
   H-1: Laser cost range (FOAK $110/J vs NOAK $60–80/J) → LCOE spread
+  H-2: Capsule gain floor (Qsci 100–300) → viability threshold per η_laser
   H-3: Thermal cycle gap (He Brayton 45% vs Steam Rankine 33%)
   H-4: Target fabrication cost threshold ($1 / $5 / $10 per target)
 
+iter-4 notes
+-------------
+  Source integration (iter-4) confirmed three qualitative findings that do not
+  change the model parameters but update the architecture narrative:
+  - NRL converted Electra from KrF to ArF after the original KrF program;
+    Xcimer's MJ-scale KrF path has no active government co-development at
+    the same medium. The 750 J KrF demonstrations stand as a TRL milestone
+    but the government and Xcimer are pursuing different gas media.
+    Source: Optica OPN, June 2023, §Glass vs. gas.
+  - Focused Energy commercial facility targets ~80 beamlines (DPSSL, CPA);
+    this beam count is architecturally incompatible with Xcimer's two-beam
+    thick-liquid-wall geometry. The two concepts are on diverging design paths.
+    Source: Laser Focus World, 2021, §Ditmire interview.
+  - DPSSL advocates claim 15–20% wall-plug efficiency (vs. the ~10% near-term
+    target used in the Focused Energy comparison in analysis.md §S7). This
+    widens the potential efficiency advantage of DPSSL over KrF if the upper
+    range is achieved. Does not affect the Xcimer Athena model parameters.
+
+iter-5 notes
+-------------
+  - Phoenix milestone: Xcimer completed the first private-sector electron-beam
+    excimer laser (Phoenix, 1–2 kJ) in Q2 2026. This is the first hardware
+    milestone on the ASPEN development path (Phoenix → Anvil 200 kJ → Vulcan
+    4–12 MJ → commercial). It does not change model parameters — Phoenix is
+    still far below Anvil-scale and does not validate NLO pulse compression or
+    two-beam HDD geometry — but it demonstrates that the company is executing
+    its roadmap and confirms the rep-rate viability benchmark at sub-kJ scale.
+    Source: iter-5/analysis_output.md §Section 3, KrF Excimer Laser subsystem.
+  - H-2 capsule gain floor implemented: iter-4 described the Qsci floor test
+    but did not implement the scenario table. This iter adds the H-2 sweep,
+    varying implied Qsci via net_electric_mw at η_laser = 5% and 7%, and
+    identifying the LCOE and viability (Q_wp ≥ 10) at each operating point.
+    Source: analysis.md §Modeling Approach, Testable Hypotheses, H-2.
+
+iter-6 notes
+-------------
+  Source integration (iter-6) produced two qualitative findings; no model
+  parameters changed.
+
+  F-1 (HYLIFE-II O&M anchor): OSTI-biblio-7021072 (HYLIFE-II system study,
+    Moir et al. 1991) provides the only published IFE-heritage O&M and plant
+    availability data: 6% of direct cost annually (conservative O&M), 75%
+    plant availability (conservative); optimistic case 3% O&M / 85%
+    availability reduces LCOE by ~1–2¢/kWh. Gap #6 classification updated
+    from "truly-unknown" to "not-yet-sourced." Caveat: HYLIFE-II uses a
+    heavy-ion driver ($570M direct); these figures apply to non-driver plant
+    systems only — laser driver O&M remains unknown.
+    Source: iter-6/source_integration_output.md §F-1
+
+  F-2 (Betti 2024 — external authoritative assessment): OSTI-servlets-purl-
+    2561299 (Betti 2024, peer-reviewed IFE physics review) provides two
+    explicit assessments that sharpen the risk framing:
+    (a) "it is unclear at the moment if a gain of ~100x can be achieved with
+        a few megajoules of laser light" — Xcimer requires Qc > 200, which
+        is above even the level Betti characterizes as unclear.
+    (b) "it is unlikely that the implosion quality of direct drive can rival
+        that of indirect drive with current laser technology" — conventional
+        multi-beam direct drive already falls short; Xcimer's two-beam HDD
+        faces this limitation plus the additional two-beam geometry constraint.
+    Betti identifies ultra-broadband laser operation (ArF ~10 THz, KrF ~3 THz
+    bandwidth) as the key enabling condition for closing the gap — contextua-
+    lizing Xcimer's KrF choice as a partial answer, not a resolution at
+    current demonstrated scale. No model parameters change, but the H-2
+    capsule gain floor section should be read in conjunction with this
+    independent expert characterization.
+    Source: iter-6/source_integration_output.md §F-2;
+            osti-servlets-purl-2561299.md §Laser Fusion Schemes Pursued in USA
+
 Sources:
-    [XEC]     xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md
-    [sci]     xcimer-science-page.md
-    [app]     xcimer-energy-approach.md
-    [an]      analyses/17a-laser-icf-hybrid-drive/analysis.md
+    [XEC]  xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md
+    [sci]  xcimer-science-page.md
+    [app]  xcimer-energy-approach.md
+    [an]   analyses/17a-laser-icf-hybrid-drive/analysis.md
+    [i5]   analyses/17a-laser-icf-hybrid-drive/iter-5/analysis_output.md
+    [i6si] analyses/17a-laser-icf-hybrid-drive/iter-6/source_integration_output.md
+    [B24]  osti-servlets-purl-2561299.md (Betti 2024, peer-reviewed IFE review)
+    [HY2]  osti-biblio-7021072.md (HYLIFE-II system study, Moir et al. 1991)
 """
 
 from costingfe import ConfinementConcept, CostModel, Fuel
@@ -67,7 +141,11 @@ NET_ELECTRIC_MW = 400.0
 # Lower scenario: 0.70 — conservative, pulsed-power maintenance analogue
 # UNCERTAIN: blocking gap — no maintenance schedule, laser diode lifetime, or
 #   FLiBe pump/nozzle service interval published.
-# Source: [an] §Section 5 Missing Parameters (gap #3 "truly-unknown")
+# iter-6 (F-1): HYLIFE-II [HY2] reports 75% availability (conservative) and
+#   85% (optimistic) for the non-driver plant systems; 0.85 here matches the
+#   optimistic analogue. Laser driver service interval remains unknown.
+# Source: [an] §Section 5 Missing Parameters (gap #3 "truly-unknown" → "not-yet-sourced")
+#         [i6si] §F-1; [HY2] §Plant Availability
 AVAILABILITY = 0.85  # upper scenario; run with 0.70 for conservative bound
 
 # Plant lifetime — 30-year structural chamber lifetime claimed by Xcimer
@@ -81,6 +159,17 @@ LIFETIME_YR = 30
 # Laser energy per pulse: 8–12 MJ (KrF excimer ASPEN architecture)
 # Source: [XEC] §Executive Summary: "8–12 MJ on target"; [an] §Section 5 Table
 # Confidence: medium (commercial design point; NIF comparison: 2.1 MJ)
+# iter-4 note: NRL has moved its gas-laser program to ArF (193 nm, larger bandwidth).
+#   Xcimer's KrF MJ-scale path has no active government co-development at the same
+#   medium. The 750 J KrF demonstrations (NRL Electra) remain a heritage milestone
+#   for rep-rate viability but predate the ArF transition.
+#   Source: Optica OPN, June 2023, §Glass vs. gas
+# iter-5 note: Xcimer Phoenix (1–2 kJ, Q2 2026) is the first private-sector excimer
+#   laser at any scale. Still far below Anvil (200 kJ) and Vulcan (4–12 MJ) targets.
+#   Source: [i5] §Section 3, KrF Excimer Laser
+# iter-6 note: Betti [B24] identifies ultra-broadband operation as key enabling
+#   condition for closing direct-drive symmetry gap; KrF provides ~3 THz bandwidth —
+#   a partial answer at current scales, not a resolution.
 LASER_ENERGY_MJ = 10.0  # MJ per pulse — midpoint of 8–12 MJ range
 
 # Rep rate: sub-Hz, "every couple seconds" → 0.25–1 Hz
@@ -103,11 +192,17 @@ P_IGNITION_MW = 0.0
 
 # Laser wall-plug efficiency (eta_pin1)
 # NOAK target (Nth-of-a-kind): 7%, achieved with full Argos/SBS/NLO architecture
-# Demonstrated (NRL Electra, 750 J): 7% at sub-kJ scale
+# Demonstrated (NRL Electra, 750 J KrF): 7% at sub-kJ scale
 # Source: [XEC] §Challenge 3: "7% laser efficiency" for NOAK system
 # UNCERTAIN: not yet demonstrated at MJ scale; Xcimer aspirational target is 10%
-ETA_PIN1 = 0.07  # NOAK target — [XEC] §Challenge 3
-                 # Conservative vs Xcimer 10% aspirational; see sensitivity sweep
+# iter-4 note: NRL Electra has since been converted to ArF; the 7% KrF wall-plug
+#   efficiency figure stands as a physical lower bound for the medium but the
+#   demonstration platform is no longer active as a KrF facility.
+# iter-5 note: Phoenix (1–2 kJ, Q2 2026) first private electron-beam excimer;
+#   will provide new efficiency data at this scale. Source: [i5] §Section 3.
+ETA_PIN1 = 0.07   # NOAK target — [XEC] §Challenge 3
+                  # Conservative vs Xcimer 10% aspirational; see sensitivity sweep
+ETA_PIN1_LOW = 0.05  # UNCERTAIN lower bound — used in H-2 capsule gain floor
 
 # ── Thermal cycle ─────────────────────────────────────────────────────────────
 # BLOCKING AMBIGUITY: cycle type unresolved in available sources.
@@ -154,19 +249,19 @@ P_PUMP_MW = 15.0  # UNCERTAIN: FLiBe thick-liquid-wall hydraulics; [an] §2.4
 #   NOAK mid  $70/J:  $700 M$  ← primary design-point
 #   NOAK high $80/J:  $800 M$
 #   FOAK      $110/J: $1,100 M$  (midpoint $100–120/J)
-LASER_NOAK_LOW_PER_J = 60.0   # $/J; [XEC] §Xcimer Laser Cost (NOAK lower bound)
-LASER_NOAK_MID_PER_J = 70.0   # $/J; midpoint of NOAK range
-LASER_NOAK_HIGH_PER_J = 80.0  # $/J; [XEC] §Xcimer Laser Cost (NOAK upper bound)
-LASER_FOAK_PER_J = 110.0      # $/J; midpoint FOAK range; [XEC] §Xcimer Laser Cost
+LASER_NOAK_LOW_PER_J  = 60.0   # $/J; [XEC] §Xcimer Laser Cost (NOAK lower bound)
+LASER_NOAK_MID_PER_J  = 70.0   # $/J; midpoint of NOAK range
+LASER_NOAK_HIGH_PER_J = 80.0   # $/J; [XEC] §Xcimer Laser Cost (NOAK upper bound)
+LASER_FOAK_PER_J      = 110.0  # $/J; midpoint FOAK range; [XEC] §Xcimer Laser Cost
 
-# M$ = $/J × MJ (unit identity: $/J × 10^6 J / 10^6 $/M$ = $/J × MJ = M$)
-LASER_NOAK_LOW_MS = LASER_NOAK_LOW_PER_J * LASER_ENERGY_MJ    #  600 M$
-LASER_NOAK_MID_MS = LASER_NOAK_MID_PER_J * LASER_ENERGY_MJ    #  700 M$
+# M$ = $/J × MJ  (unit identity: $/J × 10^6 J / 10^6 $/M$ = $/J × MJ = M$)
+LASER_NOAK_LOW_MS  = LASER_NOAK_LOW_PER_J  * LASER_ENERGY_MJ  #  600 M$
+LASER_NOAK_MID_MS  = LASER_NOAK_MID_PER_J  * LASER_ENERGY_MJ  #  700 M$
 LASER_NOAK_HIGH_MS = LASER_NOAK_HIGH_PER_J * LASER_ENERGY_MJ  #  800 M$
-LASER_FOAK_MS = LASER_FOAK_PER_J * LASER_ENERGY_MJ            # 1100 M$
+LASER_FOAK_MS      = LASER_FOAK_PER_J      * LASER_ENERGY_MJ  # 1100 M$
 
 # ── Cost overrides (shared structure) ────────────────────────────────────────
-def _overrides(laser_ms: float, noak: bool) -> dict:
+def _overrides(laser_ms: float) -> dict:
     return {
         # Laser driver capital — C220104 (supplementary heating / driver account)
         # No standard CAS account covers a KrF excimer MJ-class laser; C220104 is
@@ -231,7 +326,7 @@ result_noak = model.forward(
     lifetime_yr=LIFETIME_YR,
     noak=True,
     eta_th=ETA_TH_BRAYTON,        # 0.45 He Brayton; HYLIFE heritage; [an] §2.5 scenario A
-    cost_overrides=_overrides(LASER_NOAK_MID_MS, noak=True),
+    cost_overrides=_overrides(LASER_NOAK_MID_MS),
     **_ENG,
 )
 
@@ -242,7 +337,7 @@ result_steam = model.forward(
     lifetime_yr=LIFETIME_YR,
     noak=True,
     eta_th=ETA_TH_STEAM,          # 0.33 Steam Rankine; UNCERTAIN; [sci] §Energy Conversion
-    cost_overrides=_overrides(LASER_NOAK_MID_MS, noak=True),
+    cost_overrides=_overrides(LASER_NOAK_MID_MS),
     **_ENG,
 )
 
@@ -253,7 +348,7 @@ result_foak = model.forward(
     lifetime_yr=LIFETIME_YR,
     noak=False,                   # FOAK: 10% contingency premium
     eta_th=ETA_TH_BRAYTON,
-    cost_overrides=_overrides(LASER_FOAK_MS, noak=False),
+    cost_overrides=_overrides(LASER_FOAK_MS),
     **_ENG,
 )
 
@@ -264,7 +359,7 @@ result_noak_low = model.forward(
     lifetime_yr=LIFETIME_YR,
     noak=True,
     eta_th=ETA_TH_BRAYTON,
-    cost_overrides=_overrides(LASER_NOAK_LOW_MS, noak=True),
+    cost_overrides=_overrides(LASER_NOAK_LOW_MS),
     **_ENG,
 )
 result_noak_high = model.forward(
@@ -273,7 +368,7 @@ result_noak_high = model.forward(
     lifetime_yr=LIFETIME_YR,
     noak=True,
     eta_th=ETA_TH_BRAYTON,
-    cost_overrides=_overrides(LASER_NOAK_HIGH_MS, noak=True),
+    cost_overrides=_overrides(LASER_NOAK_HIGH_MS),
     **_ENG,
 )
 
@@ -298,27 +393,97 @@ print(f"Qsci: {pt.q_sci:.0f} | Qwp: {qwp:.1f} | Recirc: {pt.rec_frac:.1%} "
       f"(laser: {100 * (P_IMPLOSION_MW / ETA_PIN1) / float(pt.p_et):.1f}% of gross)")
 print()
 
-# ── Scenario comparison: H-1 (laser cost range) ──────────────────────────────
-cs = result_steam.costs
-cf = result_foak.costs
-
+# ── Scenario comparison: H-1 (laser cost range) + H-3 (thermal cycle) ────────
 print("─" * 70)
 print("H-1  Laser cost range (NOAK $60–80/J) + H-3 thermal cycle gap:")
 print(f"  {'Scenario':<48} {'LCOE':>7}  {'OCC':>7}")
 print(f"  {'':48} {'$/MWh':>7}  {'$/kW':>7}")
 print(f"  {'':-<48}")
 rows_scenario = [
-    ("NOAK / He Brayton 45% / laser $60/J",  result_noak_low.costs),
-    ("NOAK / He Brayton 45% / laser $70/J",  result_noak.costs),    # base
-    ("NOAK / He Brayton 45% / laser $80/J",  result_noak_high.costs),
-    ("NOAK / Steam Rankine 33% / laser $70/J", result_steam.costs),  # H-3 alt
-    ("FOAK / He Brayton 45% / laser $110/J", result_foak.costs),     # FOAK ref
+    ("NOAK / He Brayton 45% / laser $60/J",    result_noak_low.costs),
+    ("NOAK / He Brayton 45% / laser $70/J",    result_noak.costs),      # base
+    ("NOAK / He Brayton 45% / laser $80/J",    result_noak_high.costs),
+    ("NOAK / Steam Rankine 33% / laser $70/J", result_steam.costs),     # H-3 alt
+    ("FOAK / He Brayton 45% / laser $110/J",   result_foak.costs),      # FOAK ref
 ]
 for label, rc in rows_scenario:
-    marker = " ← base" if "70/J" in label and "Brayton" in label and "NOAK" in label else ""
-    if "Steam" in label: marker = " ← H-3 alt"
-    if "FOAK" in label:  marker = " ← FOAK ref"
+    marker = ""
+    if "70/J" in label and "Brayton" in label and "NOAK" in label:
+        marker = " ← base"
+    elif "Steam" in label:
+        marker = " ← H-3 alt"
+    elif "FOAK" in label:
+        marker = " ← FOAK ref"
     print(f"  {label:<48} {rc.lcoe:>7.1f}  {rc.overnight_cost:>7.0f}{marker}")
+print()
+
+# ════════════════════════════════════════════════════════════════════════════
+# H-2: Capsule gain floor analysis
+# ════════════════════════════════════════════════════════════════════════════
+#
+# The analysis identifies the following wall-plug breakeven minima:
+#   η_laser = 7%: Qsci ≥ 143  →  Q_wp = 10  (commercial viability floor)
+#   η_laser = 5%: Qsci ≥ 200  →  Q_wp = 10
+# Below these thresholds the concept is commercially non-viable regardless of
+# laser capital cost. Source: [an] §Modeling Approach, Testable Hypotheses H-2.
+#
+# iter-6 (F-2, Betti 2024 [B24]): Independent expert assessment sharpens risk:
+#   "it is unclear at the moment if a gain of ~100x can be achieved with a few
+#   megajoules of laser light" — Xcimer requires Qc > 200, which is above even
+#   the level Betti characterizes as unclear. The H-2 NO rows below should be
+#   read in conjunction with this independent characterization.
+#
+# Method: vary net_electric_mw with all laser parameters fixed. The framework
+# back-calculates fusion power from the net output requirement, so the implied
+# Qsci (= p_fus / p_laser_absorbed, inferred from pt.q_sci) changes with the
+# requested net output. Higher net output at fixed laser → higher Qsci.
+# Source: [an] §Modeling Approach: "vary the implied Qsci...by adjusting net
+#         electrical output and reporting recirculating power fraction and LCOE"
+#
+# Reported columns:
+#   P_net (MWe)  Qsci (implied)  Q_wp = Qsci×η  rec_frac  LCOE ($/MWh)  viable?
+
+print("─" * 70)
+print("H-2  Capsule gain floor — wall-plug breakeven  (Goodin Q_wp ≥ 10 criterion)")
+print("     Fixed: 10 MJ/pulse, 0.5 Hz, $70/J NOAK laser, He Brayton 45%")
+print("     Source: [an] §Modeling Approach H-2; Qsci_min = 143 (7%) or 200 (5%)")
+print("     iter-6: Betti [B24] — gains of ~100× 'unclear' at current MJ-scale laser light")
+print()
+
+# Net electric sweep points representing different implied Qsci values
+# Low P_net → low Qsci (marginal physics); high P_net → high Qsci (optimistic)
+H2_NET_ELEC_MW = [150, 200, 250, 300, 350, 400, 500]
+
+for eta_label, eta_val in [("7% (NOAK target)", ETA_PIN1), ("5% (conservative)", ETA_PIN1_LOW)]:
+    print(f"  η_laser = {eta_label}   Q_wp breakeven: Qsci ≥ {10/eta_val:.0f}")
+    print(f"  {'P_net MWe':>10}  {'Qsci':>6}  {'Q_wp':>5}  {'Recirc':>7}  "
+          f"{'LCOE $/MWh':>11}  {'Viable?':>8}")
+    print(f"  {'':-<58}")
+    # Build ENG kwargs with this eta_pin1 value
+    _eng_h2 = {**_ENG, "eta_pin1": eta_val, "eta_pin2": eta_val}
+    for p_net in H2_NET_ELEC_MW:
+        r = model.forward(
+            net_electric_mw=float(p_net),
+            availability=AVAILABILITY,
+            lifetime_yr=LIFETIME_YR,
+            noak=True,
+            eta_th=ETA_TH_BRAYTON,
+            cost_overrides=_overrides(LASER_NOAK_MID_MS),
+            **_eng_h2,
+        )
+        pt_h2 = r.power_table
+        qsci = float(pt_h2.q_sci)
+        qwp_h2 = qsci * eta_val
+        viable = "YES" if qwp_h2 >= 10.0 else "NO (<10)"
+        base_flag = " ← base" if p_net == 400 and eta_val == ETA_PIN1 else ""
+        print(f"  {p_net:>10}  {qsci:>6.0f}  {qwp_h2:>5.1f}  "
+              f"{float(pt_h2.rec_frac):>7.1%}  {float(r.costs.lcoe):>11.1f}  "
+              f"{viable:>8}{base_flag}")
+    print()
+print("  Note: Qsci is inferred from the framework power balance; it is NOT a direct")
+print("  input. The Q_wp < 10 rows represent operating points where recirculating power")
+print("  exceeds the Xcimer design target (11–13%) and commercial viability is at risk.")
+print("  Source: [XEC] §Challenge 3: Qsci ~250 and η_wpe 7% → Q_wp ~17.5 (design)")
 print()
 
 # ── CAS breakdown (base scenario) ────────────────────────────────────────────
@@ -376,6 +541,16 @@ print("=" * 70)
 print(f"  Laser system:     KrF excimer ASPEN, {LASER_ENERGY_MJ:.0f} MJ/pulse, "
       f"{REP_RATE_HZ} Hz → {P_IMPLOSION_MW:.0f} MW avg optical output")
 print(f"                    Source: [XEC] §Executive Summary; [an] §S5 Table")
+print(f"  iter-4 note:      NRL has moved primary gas-laser IFE program to ArF (193 nm).")
+print(f"                    KrF heritage stands as rep-rate/efficiency milestone but")
+print(f"                    Xcimer has no active government co-development at KrF scale.")
+print(f"                    Source: Optica OPN Jun 2023 §Glass vs. gas")
+print(f"  iter-5 note:      Xcimer Phoenix (1–2 kJ, Q2 2026) first private-sector")
+print(f"                    electron-beam excimer laser. Roadmap milestone confirmed;")
+print(f"                    does not change model parameters. Source: [i5] §Section 3")
+print(f"  iter-6 note:      Betti 2024 [B24]: KrF ~3 THz bandwidth is partial answer")
+print(f"                    to implosion symmetry gap; ArF (~10 THz) is the leading")
+print(f"                    government path. No model parameter change.")
 print()
 print(f"  Laser capital:    NOAK ${LASER_NOAK_MID_PER_J}/J × {LASER_ENERGY_MJ:.0f} MJ = "
       f"${LASER_NOAK_MID_MS:.0f}M  (range: "
@@ -393,12 +568,18 @@ print(f"                    Source: [an] §S2 Challenge 5; §S5 Missing Paramete
 print()
 print(f"  Laser wall-plug:  {ETA_PIN1*100:.0f}% (NOAK KrF demonstrated at Electra 750 J)")
 print(f"  UNCERTAIN:        Xcimer aspirational target 10%; not demonstrated at MJ scale.")
-print(f"                    Source: [XEC] §Challenge 3; [an] §S5 Table")
+print(f"                    H-2 also tests {ETA_PIN1_LOW*100:.0f}% lower bound "
+      f"(→ Qsci_min = {10/ETA_PIN1_LOW:.0f} for viability).")
+print(f"                    Source: [XEC] §Challenge 3; [an] §S5 Table; [an] §S2 H-2")
 print()
 print(f"  Availability:     {AVAILABILITY:.0%} upper scenario")
 print(f"  UNCERTAIN:        No maintenance model published. FLiBe liquid wall eliminates")
 print(f"                    first-wall replacement outages (advantage), but pump/nozzle")
-print(f"                    maintenance interval unknown. Source: [an] §S5 gap #3")
+print(f"                    maintenance interval unknown.")
+print(f"  iter-6 (F-1):     HYLIFE-II [HY2] reports 75% CF (conservative) / 85%")
+print(f"                    (optimistic) for non-driver plant systems — IFE heritage")
+print(f"                    anchor for availability. Driver O&M component still unknown.")
+print(f"                    Source: [i6si] §F-1; [an] §S5 gap #3 (→ not-yet-sourced)")
 print()
 print(f"  FLiBe pumping:    {P_PUMP_MW:.0f} MW (estimated; UNCERTAIN)")
 print(f"                    Framework default (1 MW) calibrated for thin-coolant IFE.")
@@ -409,6 +590,9 @@ print(f"  Qsci (implied):   {pt.q_sci:.0f} (from inverse power balance at 400 MW
 print(f"                    XEC target ~250. At Qsci ~{pt.q_sci:.0f} and η_wpe={ETA_PIN1:.0%}:")
 print(f"                    Qwp = {pt.q_sci:.0f} × {ETA_PIN1:.0%} = {qwp:.1f} "
       f"(XEC claims ~17.5 at Qsci=250, η_wpe=7%). [XEC] §Challenge 3")
+print(f"  iter-6 (F-2):     Betti [B24] — gains of ~100× are 'unclear at the moment';")
+print(f"                    Xcimer requires Qc > 200, above even Betti's unclear lower")
+print(f"                    bound. Independent risk characterization, not model change.")
 print()
 print(f"  Target factory:   Framework default (target_factory_base IFE scaling)")
 print(f"  CAS27 / FLiBe:    Framework default (FLiBe inventory at Xcimer scale unknown)")
@@ -421,7 +605,7 @@ print()
 # ════════════════════════════════════════════════════════════════════════════
 # H-4: Target fabrication cost threshold analysis
 # ════════════════════════════════════════════════════════════════════════════
-SHOTS_PER_YEAR = REP_RATE_HZ * 86400 * 365 * AVAILABILITY   # shots/yr at availability
+SHOTS_PER_YEAR   = REP_RATE_HZ * 86400 * 365 * AVAILABILITY  # shots/yr at availability
 ANNUAL_ENERGY_GWH = NET_ELECTRIC_MW * AVAILABILITY * 8760 / 1000  # GWh/yr
 
 print("─" * 70)
@@ -434,7 +618,7 @@ print()
 print(f"  {'Cost/target':>12}  {'Annual M$/yr':>14}  {'LCOE contrib $/MWh':>20}")
 print(f"  {'':-<50}")
 for tgt_cost in [1.0, 2.5, 5.0, 10.0]:
-    annual_ms = tgt_cost * SHOTS_PER_YEAR / 1e6     # M$/yr
+    annual_ms = tgt_cost * SHOTS_PER_YEAR / 1e6      # M$/yr
     lcoe_add  = annual_ms * 1000 / ANNUAL_ENERGY_GWH  # $/MWh
     flag = ""
     if tgt_cost == 2.5:
@@ -447,6 +631,12 @@ print("  Note: this recurring cost has NO analogue in MFE and is NOT in CAS70/80
 print("  defaults. Target cost at commercial throughput (8–31M shots/yr) is a")
 print("  blocking gap — no Xcimer estimate published. Source: [an] §S5 gap #4")
 print()
+print("  LCOE floor note (from analysis.md §Modeling Approach):")
+print(f"  Base LCOE ({c.lcoe:.1f} $/MWh) EXCLUDES target fabrication entirely.")
+print(f"  Realistic central estimate at $2.50/target: ~{c.lcoe + 11.2:.1f} $/MWh")
+print(f"  At $5.00/target: ~{c.lcoe + 22.4:.1f} $/MWh")
+print(f"  The base figure is a LOWER BOUND. Always present alongside H-4 range.")
+print()
 
 # ════════════════════════════════════════════════════════════════════════════
 # Sensitivity analysis
@@ -455,11 +645,15 @@ print("─" * 70)
 print("Sensitivity  (elasticity = %ΔLCOE / %Δparam)")
 print("Base case: NOAK | He Brayton 45% | laser $70/J | η_laser 7%")
 print("Overridden accounts (C220103, C220104) have zero gradient by construction.")
+print("Note: laser $/J (dominant lever per narrative) has ZERO sensitivity gradient")
+print("  because it is injected as a fixed C220104 override, not a scaling variable.")
+print("  The $/J range is captured in the H-1 scenario table above instead.")
+print("  Source: [an] §Modeling Approach, Top LCOE Sensitivity Parameters item 1")
 print("-" * 55)
 
 sens = model.sensitivity(
     result_noak.params,
-    cost_overrides=_overrides(LASER_NOAK_MID_MS, noak=True),
+    cost_overrides=_overrides(LASER_NOAK_MID_MS),
 )
 
 print("\nEngineering levers:")

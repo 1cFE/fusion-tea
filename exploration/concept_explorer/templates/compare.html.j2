@@ -1,0 +1,94 @@
+{% extends "base.html.j2" %}
+
+{% block title %}Compare — Fusion TEA{% endblock %}
+
+{% block body %}
+<div id="app" class="page-content page-content--wide">
+
+  <div id="loading-state" class="loading-state" role="status" aria-live="polite">
+    <span class="loading-spinner" aria-hidden="true"></span>
+    <span class="loading-text">Loading comparison…</span>
+  </div>
+  <div id="error-state" class="error-state" style="display:none" role="alert">
+    Failed to load concept list. Check the server and
+    <a href="javascript:location.reload()" style="color: var(--color-well-established); text-decoration: underline;">try again</a>.
+  </div>
+  <div id="warning-banner" class="warning-banner" style="display:none"></div>
+
+  <div id="compare-content" style="display:none">
+    <!-- Header -->
+    <header class="compare-header">
+      <h1 class="section-title">Compare Concepts</h1>
+    </header>
+
+    <!-- Concept bar -->
+    <div id="concept-bar" class="comparison-selector"></div>
+
+    <!-- Concept picker dropdown -->
+    <div id="concept-picker" class="card" style="display:none; max-width: 560px; margin-top: var(--space-2);" role="listbox" aria-label="Select concept to add">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-3);">
+        <span style="font-size: var(--font-size-sm); font-weight: 600; color: var(--color-text-primary);">
+          Select a concept to add
+        </span>
+        <button id="close-picker" class="btn btn--ghost"
+                style="padding: 2px var(--space-2); font-size: var(--font-size-base);"
+                aria-label="Close concept picker">✕</button>
+      </div>
+      <div id="picker-list" class="picker-list"
+           style="max-height: 320px; overflow-y: auto; display: flex; flex-direction: column; gap: var(--space-1);">
+      </div>
+    </div>
+
+    <!-- Empty state -->
+    <div id="empty-state" class="compare-empty" style="display:none">
+      <p>Select concepts on the <a href="/taxonomy">Taxonomy</a> page,
+         or use the <strong>+ Add concept</strong> button above.</p>
+    </div>
+
+    <!-- Mode toggle -->
+    <div id="mode-toggle" class="mode-toggle" style="display:none">
+      <button id="mode-integrated" class="btn btn--primary" data-mode="integrated">
+        Integrated
+      </button>
+      <button id="mode-landscape" class="btn btn--ghost" data-mode="landscape">
+        Landscape
+      </button>
+    </div>
+
+    <!-- Integrated layout -->
+    <div id="compare-integrated" class="compare-integrated" style="display:none">
+      <div class="compare-panel" id="panel-left">
+        <div class="compare-panel__header">
+          <select id="select-left" class="compare-view-select"></select>
+        </div>
+        <div class="compare-panel__content" id="content-left"></div>
+      </div>
+      <div class="compare-panel" id="panel-right">
+        <div class="compare-panel__header">
+          <select id="select-right" class="compare-view-select"></select>
+        </div>
+        <div class="compare-panel__content" id="content-right"></div>
+      </div>
+    </div>
+
+    <!-- Landscape layout -->
+    <div id="compare-landscape" style="display:none">
+      <div class="compare-landscape__header">
+        <select id="select-landscape" class="compare-view-select"></select>
+      </div>
+      <div id="landscape-grid" class="compare-landscape-grid"></div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/cas_breakdown.js"></script>
+<script src="/static/js/tornado.js"></script>
+<script src="/static/js/comparison.js"></script>
+<script src="/static/js/view_categorical.js"></script>
+<script src="/static/js/view_summary.js"></script>
+<script src="/static/js/view_capex.js"></script>
+<script src="/static/js/view_sensitivity.js"></script>
+{% endblock %}
