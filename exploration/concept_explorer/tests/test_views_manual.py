@@ -1,6 +1,6 @@
 """
-Playwright-based acceptance tests for Categorical & Summary views.
-Covers Phase 1-3 checklist items from the implementation plan.
+Playwright-based acceptance tests for comparison views
+(Categorical, Summary, CapEx, Sensitivity).
 
 Usage: uv run python exploration/concept_explorer/tests/test_views_manual.py
 
@@ -295,22 +295,248 @@ def test_url_persistence(page: Page):
     print("  PASS")
 
 
-def test_full_flow_4_concepts(page: Page):
-    """All 4 concepts, both views, both modes, no errors."""
-    print("\n--- Full Flow (4 concepts) ---")
+def test_capex_integrated(page: Page):
+    """CapEx integrated: grouped bars, 2 concepts, CAS accounts as categories."""
+    print("\n--- CapEx Integrated ---")
+    page.goto(f"{BASE}/compare?concepts={MFE_1},{IFE}&left=capex")
+    wait_for_compare(page)
+    time.sleep(2)
+
+    left = page.locator("#content-left")
+    plotly = left.locator(".js-plotly-plot")
+    assert plotly.count() >= 1, "No Plotly chart"
+
+    toggle = left.locator(".capex-toggle")
+    assert toggle.count() == 1, "No CAS22 toggle button"
+
+    totals = left.locator(".capex-totals")
+    assert totals.count() == 1, "No totals summary"
+
+    totals_text = totals.text_content()
+    assert "M$" in totals_text, "Totals should show M$"
+    print(f"  Totals: {totals_text.strip()}")
+
+    ss(page, "capex_integrated")
+    print("  PASS")
+
+
+def test_capex_cas22_toggle(page: Page):
+    """CAS22 expand/collapse via toggle button."""
+    print("\n--- CapEx CAS22 Toggle ---")
+    page.goto(f"{BASE}/compare?concepts={MFE_1},{IFE}&left=capex")
+    wait_for_compare(page)
+    time.sleep(2)
+
+    toggle = page.locator("#content-left .capex-toggle")
+    assert "Expand" in toggle.text_content(), "Should start collapsed"
+
+    # Expand
+    toggle.click()
+    time.sleep(1.5)
+
+    toggle = page.locator("#content-left .capex-toggle")
+    assert "Collapse" in toggle.text_content(), "Should show Collapse after expanding"
+
+    ss(page, "capex_cas22_expanded")
+
+    # Collapse
+    toggle.click()
+    time.sleep(1.5)
+
+    toggle = page.locator("#content-left .capex-toggle")
+    assert "Expand" in toggle.text_content(), "Should show Expand after collapsing"
+
+    ss(page, "capex_cas22_collapsed")
+    print("  PASS")
+
+
+def test_capex_landscape(page: Page):
+    """CapEx landscape: per-concept charts with synced axes."""
+    print("\n--- CapEx Landscape ---")
+    page.goto(f"{BASE}/compare?concepts={MFE_1},{IFE},{MIF}&view=capex&mode=landscape")
+    wait_for_compare(page)
+    time.sleep(1)
+
+    if not page.locator("#landscape-grid").is_visible():
+        page.click("#mode-landscape")
+    time.sleep(2)
+
+    landscape_select = page.locator("#select-landscape")
+    if landscape_select.is_visible() and landscape_select.input_value() != "capex":
+        landscape_select.select_option("capex")
+        time.sleep(2)
+
+    grid = page.locator("#landscape-grid")
+    charts = grid.locator(".js-plotly-plot")
+    print(f"  Plotly charts: {charts.count()}")
+    assert charts.count() >= 3, f"Expected 3+ charts, got {charts.count()}"
+
+    totals = grid.locator(".capex-totals")
+    print(f"  Totals lines: {totals.count()}")
+    assert totals.count() >= 3
+
+    ss(page, "capex_landscape")
+    print("  PASS")
+
+
+def test_sensitivity_integrated(page: Page):
+    """Sensitivity integrated: grouped tornado, shared params at top."""
+    print("\n--- Sensitivity Integrated ---")
+    page.goto(f"{BASE}/compare?concepts={MFE_1},{IFE}&left=sensitivity")
+    wait_for_compare(page)
+    time.sleep(2)
+
+    left = page.locator("#content-left")
+    plotly = left.locator(".js-plotly-plot")
+    assert plotly.count() >= 1, "No Plotly chart"
+
+    ss(page, "sensitivity_integrated")
+    print("  PASS")
+
+
+def test_sensitivity_integrated_3_concepts(page: Page):
+    """Sensitivity integrated: 3 concepts, union of top-8 params."""
+    print("\n--- Sensitivity Integrated (3 concepts) ---")
+    page.goto(f"{BASE}/compare?concepts={MFE_1},{IFE},{MIF}&left=sensitivity")
+    wait_for_compare(page)
+    time.sleep(2)
+
+    left = page.locator("#content-left")
+    plotly = left.locator(".js-plotly-plot")
+    assert plotly.count() >= 1, "No Plotly chart"
+
+    ss(page, "sensitivity_integrated_3")
+    print("  PASS")
+
+
+def test_sensitivity_landscape(page: Page):
+    """Sensitivity landscape: per-concept tornado with confidence encoding."""
+    print("\n--- Sensitivity Landscape ---")
+    page.goto(f"{BASE}/compare?concepts={MFE_1},{IFE},{MIF}&view=sensitivity&mode=landscape")
+    wait_for_compare(page)
+    time.sleep(1)
+
+    if not page.locator("#landscape-grid").is_visible():
+        page.click("#mode-landscape")
+    time.sleep(2)
+
+    landscape_select = page.locator("#select-landscape")
+    if landscape_select.is_visible() and landscape_select.input_value() != "sensitivity":
+        landscape_select.select_option("sensitivity")
+        time.sleep(2)
+
+    grid = page.locator("#landscape-grid")
+    charts = grid.locator(".js-plotly-plot")
+    print(f"  Plotly charts: {charts.count()}")
+    assert charts.count() >= 3, f"Expected 3+ charts, got {charts.count()}"
+
+    ss(page, "sensitivity_landscape")
+    print("  PASS")
+
+
+def test_capex_sensitivity_side_by_side(page: Page):
+    """CapEx left + Sensitivity right simultaneously."""
+    print("\n--- CapEx + Sensitivity Side by Side ---")
+    page.goto(f"{BASE}/compare?concepts={MFE_1},{IFE}&left=capex&right=sensitivity")
+    wait_for_compare(page)
+    time.sleep(2)
+
+    left_chart = page.locator("#content-left .js-plotly-plot")
+    right_chart = page.locator("#content-right .js-plotly-plot")
+    assert left_chart.count() >= 1, "CapEx chart missing"
+    assert right_chart.count() >= 1, "Sensitivity chart missing"
+
+    left_toggle = page.locator("#content-left .capex-toggle")
+    assert left_toggle.count() == 1, "CapEx toggle missing"
+
+    ss(page, "capex_sensitivity_side_by_side")
+    print("  PASS")
+
+
+def test_all_four_views_switching(page: Page):
+    """Cycle through all 4 views in both panels, no JS errors.
+
+    Respects mutual exclusion: left and right can't show the same view.
+    Strategy: cycle through valid (left, right) pairs that cover all 4 views.
+    """
+    print("\n--- All 4 Views Switching ---")
+    page.goto(f"{BASE}/compare?concepts={MFE_1},{IFE}&left=categorical&right=summary")
+    wait_for_compare(page)
+    time.sleep(2)
+
     errors = []
     page.on("console", lambda msg: errors.append(msg.text) if msg.type == "error" else None)
 
-    page.goto(f"{BASE}/compare?concepts={MFE_1},{MFE_2},{IFE},{MIF}&left=categorical&right=summary")
+    # Valid pairs: change one dropdown at a time, never selecting a disabled option
+    pairs = [
+        ("categorical", "summary"),      # start
+        ("capex",       "summary"),      # change left
+        ("capex",       "sensitivity"),  # change right
+        ("categorical", "sensitivity"),  # change left
+        ("categorical", "summary"),      # change right (back to start)
+    ]
+    for left_v, right_v in pairs:
+        page.locator("#select-left").select_option(left_v)
+        time.sleep(0.3)
+        page.locator("#select-right").select_option(right_v)
+        time.sleep(0.8)
+
+    # Toggle modes
+    page.click("#mode-landscape")
+    time.sleep(1.5)
+    page.click("#mode-integrated")
+    time.sleep(1.5)
+
+    js_errors = [e for e in errors if "favicon" not in e.lower()]
+    print(f"  Console errors: {js_errors}")
+    assert len(js_errors) == 0, f"JS errors: {js_errors}"
+
+    ss(page, "all_four_views_switching")
+    print("  PASS")
+
+
+def test_full_flow_4_concepts(page: Page):
+    """All 4 concepts in landscape (4 > MAX_INTEGRATED=3), all views, no errors."""
+    print("\n--- Full Flow (4 concepts, landscape) ---")
+    errors = []
+    page.on("console", lambda msg: errors.append(msg.text) if msg.type == "error" else None)
+
+    # 4 concepts auto-forces landscape mode
+    page.goto(f"{BASE}/compare?concepts={MFE_1},{MFE_2},{IFE},{MIF}")
+    wait_for_compare(page)
+    time.sleep(2)
+
+    landscape_select = page.locator("#select-landscape")
+    for view in ["categorical", "summary", "capex", "sensitivity"]:
+        landscape_select.select_option(view)
+        time.sleep(2)
+        ss(page, f"full_4_landscape_{view}")
+
+    js_errors = [e for e in errors if "favicon" not in e.lower()]
+    print(f"  Console errors: {js_errors}")
+    assert len(js_errors) == 0, f"JS errors: {js_errors}"
+    print("  PASS")
+
+
+def test_full_flow_3_concepts_integrated(page: Page):
+    """3 concepts, CapEx + Sensitivity in integrated mode, no errors."""
+    print("\n--- Full Flow (3 concepts, integrated) ---")
+    errors = []
+    page.on("console", lambda msg: errors.append(msg.text) if msg.type == "error" else None)
+
+    page.goto(f"{BASE}/compare?concepts={MFE_1},{IFE},{MIF}&left=capex&right=sensitivity")
     wait_for_compare(page)
     time.sleep(3)
+    ss(page, "full_3_capex_sensitivity")
 
-    ss(page, "full_4_integrated")
-
+    # Switch to landscape and back
     page.click("#mode-landscape")
-    time.sleep(3)
+    time.sleep(2)
+    ss(page, "full_3_landscape")
 
-    ss(page, "full_4_landscape")
+    page.click("#mode-integrated")
+    time.sleep(2)
+    ss(page, "full_3_integrated_back")
 
     js_errors = [e for e in errors if "favicon" not in e.lower()]
     print(f"  Console errors: {js_errors}")
@@ -359,10 +585,19 @@ def main():
         test_cat_mode_switch,
         test_summary_integrated,
         test_summary_landscape,
+        test_capex_integrated,
+        test_capex_cas22_toggle,
+        test_capex_landscape,
+        test_sensitivity_integrated,
+        test_sensitivity_integrated_3_concepts,
+        test_sensitivity_landscape,
+        test_capex_sensitivity_side_by_side,
         test_both_views_side_by_side,
+        test_all_four_views_switching,
         test_view_switching_no_errors,
         test_url_persistence,
         test_full_flow_4_concepts,
+        test_full_flow_3_concepts_integrated,
         test_regression_concept_page,
         test_regression_taxonomy,
         test_regression_index,

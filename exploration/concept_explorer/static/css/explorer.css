@@ -2336,3 +2336,45 @@ main {
   font-family: var(--font-mono);
   font-weight: 600;
 }
+
+/* ------------------------------------------------------------------ */
+/* CapEx view                                                          */
+/* ------------------------------------------------------------------ */
+
+/* Total cost summary below chart */
+.capex-totals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  font-size: var(--font-size-sm);
+}
+.capex-totals__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.capex-totals__value {
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+/* CAS22 expand/collapse toggle */
+.capex-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  margin-top: var(--space-2);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  background: none;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: color 0.12s, border-color 0.12s;
+}
+.capex-toggle:hover {
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+}

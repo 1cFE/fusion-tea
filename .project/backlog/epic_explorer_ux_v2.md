@@ -234,9 +234,10 @@ Rebuild the concept explorer's comparison experience to bridge taxonomy explorat
 
 ---
 
-### Item 3b: CapEx & Sensitivity Views [1–1.5 days]
+### Item 3b: CapEx & Sensitivity Views [1–1.5 days] ✅ COMPLETE
 
 **Type**: Implementation
+**Completed**: 2026-04-06
 
 **Objective**: Rebuild the CapEx and Sensitivity views for the new comparison modes. Both are Plotly chart rebuilds that share the grouped/overlaid rendering concern and axis synchronization.
 
@@ -272,12 +273,12 @@ Rebuild the concept explorer's comparison experience to bridge taxonomy explorat
 - Population whiskers (concept profile feature, not comparison)
 
 **Success Criteria**:
-- [ ] CapEx view renders in both modes, improves on current stacked bars for cross-concept comparison
-- [ ] CAS22 sub-accounts expandable in both modes
-- [ ] Sensitivity view renders in both modes with filtered/prioritized parameters
-- [ ] Shared parameters visually emphasized in Sensitivity Integrated mode
-- [ ] Both views degrade gracefully for concepts without cost models or sensitivities
-- [ ] Both views follow the rendering API contract from Item 3a
+- [x] CapEx view renders in both modes, improves on current stacked bars for cross-concept comparison
+- [x] CAS22 sub-accounts expandable in both modes
+- [x] Sensitivity view renders in both modes with filtered/prioritized parameters
+- [x] Shared parameters visually emphasized in Sensitivity Integrated mode
+- [x] Both views degrade gracefully for concepts without cost models or sensitivities
+- [x] Both views follow the rendering API contract from Item 3a
 
 **Estimated Effort**: 1.5 days (spec 1h, design 2.5h, plan 1h, execute 7h)
 
@@ -414,5 +415,5 @@ Items 1 and 2 can be developed in parallel. Item 3a depends on Item 2's shell. I
 
 ---
 
-**Last Updated**: 2026-04-05
-**Next Action**: Begin Item 3b (CapEx + Sensitivity Views)
+**Last Updated**: 2026-04-06
+**Next Action**: Begin Item 4 (End-to-End Wiring & Polish)
