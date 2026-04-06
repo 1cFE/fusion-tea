@@ -55,8 +55,8 @@ class TestComparePair:
         """Two QI stellarators should score > 0.5 (they share fuel, heating,
         plasma state, energy capture, operation mode but differ on magnets,
         tritium breeding, and neutron management)."""
-        proxima = registry.by_id("qi-stellarator-hts")
-        gauss = registry.by_id("large-scale-stellarator")
+        proxima = registry.by_slug("qi-stellarator-hts")
+        gauss = registry.by_slug("large-scale-stellarator")
         assert proxima is not None and gauss is not None
         result = compare_pair(proxima, gauss)
         assert result.overall_score > 0.5
@@ -64,8 +64,8 @@ class TestComparePair:
     def test_tokamak_vs_laser_ife_low_similarity(self, registry: ConceptRegistry):
         """Tokamak vs laser IFE should score < 0.5 (different confinement
         approach but share some fuel cycle and energy capture attributes)."""
-        tok = registry.by_id("hts-compact-tokamak")
-        ife = registry.by_id("laser-icf-fast-ignition-d-t")
+        tok = registry.by_slug("hts-compact-tokamak")
+        ife = registry.by_slug("laser-icf-fast-ignition-d-t")
         assert tok is not None and ife is not None
         result = compare_pair(tok, ife)
         assert result.overall_score < 0.5
@@ -73,11 +73,11 @@ class TestComparePair:
     def test_stellarators_more_similar_than_cross_family(self, registry: ConceptRegistry):
         """QI stellarators should be more similar to each other than a
         tokamak is to a laser IFE concept."""
-        proxima = registry.by_id("qi-stellarator-hts")
-        gauss = registry.by_id("large-scale-stellarator")
-        tok = registry.by_id("hts-compact-tokamak")
-        ife = registry.by_id("laser-icf-fast-ignition-d-t")
-        assert all(c is not None for c in [proxima, gauss, tok, ife])
+        proxima = registry.by_slug("qi-stellarator-hts")
+        gauss = registry.by_slug("large-scale-stellarator")
+        tok = registry.by_slug("hts-compact-tokamak")
+        ife = registry.by_slug("laser-icf-fast-ignition-d-t")
+        assert proxima is not None and gauss is not None and tok is not None and ife is not None
         stell_score = compare_pair(proxima, gauss).overall_score
         cross_score = compare_pair(tok, ife).overall_score
         assert stell_score > cross_score
@@ -102,8 +102,8 @@ class TestTBDAndNAExclusion:
     def test_tbd_excluded_from_comparison(self, registry: ConceptRegistry):
         """TBD values should not count as match or mismatch."""
         # Compact Spherical Tokamak - India has TBD for primary_heating and magnet_type=Unknown
-        india = registry.by_id("compact-spherical-tokamak-india")
-        cfs = registry.by_id("hts-compact-tokamak")
+        india = registry.by_slug("compact-spherical-tokamak-india")
+        cfs = registry.by_slug("hts-compact-tokamak")
         assert india is not None and cfs is not None
         result = compare_pair(india, cfs)
         # primary_heating is TBD for India, so it should be excluded
@@ -113,8 +113,8 @@ class TestTBDAndNAExclusion:
 
     def test_na_excluded_from_comparison(self, registry: ConceptRegistry):
         """N/A (None) values should not count as match or mismatch."""
-        tok = registry.by_id("hts-compact-tokamak")  # has magnet_type
-        ife = registry.by_id("laser-icf-fast-ignition-d-t")  # magnet_type is None
+        tok = registry.by_slug("hts-compact-tokamak")  # has magnet_type
+        ife = registry.by_slug("laser-icf-fast-ignition-d-t")  # magnet_type is None
         assert tok is not None and ife is not None
         result = compare_pair(tok, ife)
         eng = next(d for d in result.dimensions if d.dimension == "engineering")
@@ -128,8 +128,8 @@ class TestDimensionDecomposition:
         higher than engineering (assuming fuel matches but magnets differ)."""
         # HTS Compact Tokamak: D-T, HTS (wound)
         # Sheared-Flow Z-Pinch: D-T, Self-confined
-        cfs = registry.by_id("hts-compact-tokamak")
-        zap = registry.by_id("sheared-flow-stabilized-z-pinch")
+        cfs = registry.by_slug("hts-compact-tokamak")
+        zap = registry.by_slug("sheared-flow-stabilized-z-pinch")
         assert cfs is not None and zap is not None
         result = compare_pair(cfs, zap)
         plasma = next(d for d in result.dimensions if d.dimension == "plasma_physics")
@@ -168,7 +168,7 @@ class TestFindNearest:
 
     def test_tokamak_nearest_are_tokamaks(self, registry: ConceptRegistry):
         """HTS Compact Tokamak's top neighbors should be mostly tokamaks."""
-        cfs = registry.by_id("hts-compact-tokamak")
+        cfs = registry.by_slug("hts-compact-tokamak")
         assert cfs is not None
         results = find_nearest(cfs, registry, top_n=3)
         # At least 2 of top 3 should be MFE
@@ -184,8 +184,8 @@ class TestFindNearest:
 class TestExplainDifference:
     def test_returns_bridges_for_mismatched_fields(self, registry: ConceptRegistry):
         """explain_difference returns bridge concepts for differing dimensions."""
-        a = registry.by_id("hts-compact-tokamak")
-        b = registry.by_id("sheared-flow-stabilized-z-pinch")
+        a = registry.by_slug("hts-compact-tokamak")
+        b = registry.by_slug("sheared-flow-stabilized-z-pinch")
         assert a is not None and b is not None
         bridges = explain_difference(a, b, registry)
         # They differ on multiple fields, so there should be bridges
@@ -197,7 +197,8 @@ class TestExplainDifference:
 
     def test_bridge_has_overall_similarity(self, registry: ConceptRegistry):
         """Bridge data includes overall similarity to query concept."""
-        a = registry.by_id("hts-compact-tokamak")
+        a = registry.by_slug("hts-compact-tokamak")
+        assert a is not None
         nearest = find_nearest(a, registry, top_n=1)
         assert len(nearest) == 1
         for bridge in nearest[0].bridges:
@@ -286,8 +287,8 @@ class TestConstellation:
 class TestBridgeDiversity:
     def test_bridges_prefer_distinct_concepts(self, registry: ConceptRegistry):
         """When alternatives exist, bridge concepts should be distinct across fields."""
-        a = registry.by_id("hts-compact-tokamak")
-        b = registry.by_id("sheared-flow-stabilized-z-pinch")
+        a = registry.by_slug("hts-compact-tokamak")
+        b = registry.by_slug("sheared-flow-stabilized-z-pinch")
         assert a is not None and b is not None
         bridges = explain_difference(a, b, registry)
         if len(bridges) >= 2:
@@ -297,16 +298,16 @@ class TestBridgeDiversity:
 
     def test_bridges_fallback_to_reuse_when_no_alternative(self, registry: ConceptRegistry):
         """When only one concept matches a field, it can be reused."""
-        a = registry.by_id("hts-compact-tokamak")
-        b = registry.by_id("sheared-flow-stabilized-z-pinch")
+        a = registry.by_slug("hts-compact-tokamak")
+        b = registry.by_slug("sheared-flow-stabilized-z-pinch")
         assert a is not None and b is not None
         bridges = explain_difference(a, b, registry)
         assert len(bridges) > 0
 
     def test_bridge_fields_still_covered(self, registry: ConceptRegistry):
         """Diversity preference must not reduce field coverage."""
-        a = registry.by_id("hts-compact-tokamak")
-        b = registry.by_id("sheared-flow-stabilized-z-pinch")
+        a = registry.by_slug("hts-compact-tokamak")
+        b = registry.by_slug("sheared-flow-stabilized-z-pinch")
         assert a is not None and b is not None
         bridges = explain_difference(a, b, registry)
         fields = [br.mismatched_field for br in bridges]
