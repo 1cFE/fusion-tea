@@ -174,9 +174,10 @@ Rebuild the concept explorer's comparison experience to bridge taxonomy explorat
 
 ---
 
-### Item 3a: Categorical & Summary Views [1–1.5 days]
+### Item 3a: Categorical & Summary Views [1–1.5 days] ✅ COMPLETE
 
 **Type**: Implementation
+**Completed**: 2026-04-05
 
 **Objective**: Implement the two new view types — Categorical (taxonomy attribute comparison) and Summary (LCOE driver breakdown) — for both Integrated and Landscape rendering contexts. These are the highest-value views for the immediate sanity-checking use case.
 
@@ -210,11 +211,11 @@ Rebuild the concept explorer's comparison experience to bridge taxonomy explorat
 - Slider-driven recomputation on comparison page
 
 **Success Criteria**:
-- [ ] Categorical view renders in both modes for any selection of concepts
-- [ ] Summary view renders LCOE breakdown + metrics table in both modes
-- [ ] Summary view degrades gracefully for concepts without cost models (placeholder, no error)
-- [ ] Landscape mode synchronizes axes across concept panels
-- [ ] View rendering API contract documented and usable by Item 3b
+- [x] Categorical view renders in both modes for any selection of concepts
+- [x] Summary view renders LCOE breakdown + metrics table in both modes
+- [x] Summary view degrades gracefully for concepts without cost models (placeholder, no error)
+- [x] Landscape mode synchronizes axes across concept panels
+- [x] View rendering API contract documented and usable by Item 3b
 
 **Estimated Effort**: 1 day (spec 1h, design 2h, plan 1h, execute 6h)
 
@@ -414,4 +415,4 @@ Items 1 and 2 can be developed in parallel. Item 3a depends on Item 2's shell. I
 ---
 
 **Last Updated**: 2026-04-05
-**Next Action**: Begin Item 3a (Categorical + Summary Views)
+**Next Action**: Begin Item 3b (CapEx + Sensitivity Views)

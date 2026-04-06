@@ -2268,3 +2268,71 @@ main {
   justify-content: center;
   gap: var(--space-3);
 }
+
+/* ==========================================================================
+   Categorical View — value state sub-classes for .comparison-table
+   ========================================================================== */
+
+.comparison-table .val--na {
+  color: var(--color-text-muted);
+  font-style: italic;
+  font-family: var(--font-sans);
+}
+.comparison-table .val--tbd {
+  color: var(--color-text-muted);
+  font-family: var(--font-sans);
+}
+
+/* No-data placeholder (inline, within view area) */
+.view-no-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-style: italic;
+}
+
+/* ==========================================================================
+   Summary View — metrics table + landscape metric rows
+   ========================================================================== */
+
+.comparison-table--summary td {
+  text-align: right;
+  font-family: var(--font-mono);
+}
+.comparison-table--summary td:first-child,
+.comparison-table--summary th:first-child {
+  text-align: left;
+  font-family: var(--font-sans);
+}
+.comparison-table--summary .unit {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  margin-left: var(--space-1);
+}
+.comparison-table--summary .no-data {
+  color: var(--color-text-muted);
+  font-style: italic;
+  font-family: var(--font-sans);
+}
+
+/* Summary landscape — compact metric list */
+.summary-metric-row {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-1) 0;
+  font-size: var(--font-size-sm);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+.summary-metric-row:last-child {
+  border-bottom: none;
+}
+.summary-metric-row__label {
+  color: var(--color-text-muted);
+}
+.summary-metric-row__value {
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
