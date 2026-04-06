@@ -213,48 +213,16 @@ The full workflow works end-to-end in the migrated directory structure. Any path
 
 ---
 
-## Phase 4: Agent Research Guide
+## Phase 4: Agent Research Guide ✅
 
-### Goal
-Write clear instructions for how agents (and humans) navigate, read, and research within `knowledge/concept_research/`. This is critical infrastructure: agents doing source replacement verification, concept analysis, and model building all need to know how to work with the post-replacement source layout — especially that images exist and should be inspected, and that original sources can be traced.
+**Superseded by:** `.project/active/concept-research-skill/spec.md` (Status: Complete)
 
-### Deliverable
-`knowledge/concept_research/RESEARCH_GUIDE.md` — a single reference document. Also update `CLAUDE.md` to point agents to it.
+The original plan called for a standalone `RESEARCH_GUIDE.md`. During execution, this was rescoped into a more comprehensive deliverable: consolidating `RESEARCH_GUIDE.md` content into `README.md` (one reference doc, not two) and creating a `concept-research-navigation` skill that auto-triggers for agents working with concept research data. The skill covers source evaluation methodology, image inspection protocol, cross-referencing, and confidence assessment — all the topics originally planned for Phase 4, but delivered as an auto-triggering skill rather than a document agents must choose to read.
 
-### Content to Cover
-
-- [ ] **Directory layout walkthrough**: dossier.md, iter-NN/, sources/, companion dirs — what each file is and when to read it
-- [ ] **Source quality tiers** (in priority order):
-  1. **Replaced sources** (have YAML frontmatter + companion dir) — authoritative extraction from original URL/PDF
-  2. **Original Haiku paraphrases** (`.orig.md` or unreplaced `.md` without frontmatter) — lossy summaries, use as fallback only
-  3. **Dossier** (`dossier.md`) — synthesized from sources, useful for overview but not authoritative for specific claims
-- [ ] **How to read images**: Companion dirs may contain `images/` with extracted figures (PDF) or downloaded arXiv images. Agents MUST read these when:
-  - Verifying quantitative claims (tables in figures, parameter plots)
-  - Building cost models (cost breakdown charts, sensitivity plots)
-  - Cross-checking extracted text against visual data
-  - Image paths in the `.md` are relative to the companion dir (e.g., `images/fig3.png`)
-- [ ] **Tracing to original source**:
-  - YAML frontmatter `source:` field has the original URL
-  - `raw.html` or `raw.pdf` in companion dir is the original fetched content
-  - `metrics.json` has extraction quality metrics
-  - If the extraction seems incomplete, go back to `raw.html`/`raw.pdf` or fetch the URL directly
-- [ ] **Known limitations**:
-  - JS-heavy company sites often extract thin — the original Haiku paraphrase may have more content
-  - Some arXiv papers have missing images (404 on arXiv's HTML viewer)
-  - Paywalled papers were extracted from local PDFs — `source_type: local_file` in frontmatter
-- [ ] **For the analysis pipeline**: `find_sources()` globs `sources/*.md` (files only, not dirs). The companion dir is invisible to the pipeline. `.orig.md` files DO match the glob — this is why Phase 6 cleans them up.
-
-### Update CLAUDE.md
-- [ ] Add a pointer in the "Domain Sources" section: "For how to navigate and read concept research, see `knowledge/concept_research/RESEARCH_GUIDE.md`"
-- [ ] Add a note in the "Special Considerations" section about reading images when verifying claims
-
-### Validation
-- [ ] RESEARCH_GUIDE.md exists and covers all items above
-- [ ] CLAUDE.md updated with pointers
-- [ ] An agent following the guide could find and read: (a) a replaced source's URL, (b) its companion dir images, (c) the original Haiku paraphrase for comparison
-
-**What We Know After This Phase:**
-Agents have clear, documented instructions for working with concept research. Verification quality during Phase 5 (bulk extraction) will be higher because agents know to check images and trace to originals.
+- [x] `knowledge/concept_research/README.md` consolidated with quality tiers, image inspection, source tracing
+- [x] `concept-research-navigation` skill created at `.claude/skills/`
+- [x] CLAUDE.md updated with pointers
+- [x] `/manage-concept` path fixed to canonical location
 
 ---
 
@@ -348,28 +316,35 @@ Three steps. The provenance investigation (documented in `.project/active/source
 - [x] Verified: all 122 had corresponding `.md` with YAML frontmatter
 - [x] 21 NO-verdict `.orig.md` files preserved as test inputs for Step 3
 
-### Step 2: Build autonomous research module
+### Step 2: Build autonomous research module ✅
 
-Build the "search → extract" module described in `.project/concepts/autonomous-source-acquisition.md`. This module:
-1. Takes a gap description (or an `.orig.md` file with claims + domain hints)
-2. Uses WebSearch to find the actual URLs where claims originate
-3. Uses `agentic-mbse extract <url>` to capture each URL with full provenance
-4. Saves each as an individual source file (YAML frontmatter, companion dir)
+The original plan described a standalone module that takes `.orig.md` files as input. What was built is broader: an autonomous research step integrated into the analysis pipeline (`lib/research.py`, `prompt_templates/research.md`), plus a standalone re-sourcing script for `.orig.md` files specifically.
 
-Key design principle: **research (finding URLs) and capture (extracting content) are separate operations with different tools.** WebSearch/WebFetch for discovery. `agentic-mbse extract` for capture. Never mix them.
+**Analysis loop research module** (complete — `.project/active/autonomous-source-acquisition/plan.md`):
+- [x] `lib/research.py` — orchestrates `claude -p` research agent within the analysis loop
+- [x] `prompt_templates/research.md` — search→triage→extract prompt for data gap filling
+- [x] Produces individual source files via `add-source` with YAML frontmatter + companion dirs
+- [x] Audit trail: `research_log.json` (cross-iteration memory), `research_output.json` (per-iteration)
+- [x] Tested on concept 01: acquired 1 source from OSTI, full chain validated
 
-- [ ] Module built and working
-- [ ] Produces individual source files with YAML frontmatter + companion dirs
-- [ ] Audit trail: what was searched, found, extracted, rejected, queued
+**`.orig.md` re-sourcing script** (in progress — `.project/active/orig-md-research/plan.md`):
+- [x] `scripts/resurface_orig.py` — standalone script for processing `.orig.md` files
+- [x] `prompt_templates/resurface.md` — adapted prompt: reads `.orig.md` content, tries header URLs first, searches for uncovered claims
+- [x] Creates new `iter-NN+1/sources/` per concept (treats re-sourcing as new research)
+- [x] Per-file JSON reports with coverage assessment and delete/partial/keep recommendations
 
-### Step 3: Test module on NO-verdict .orig.md files
+### Step 3: Run re-sourcing on 21 NO-verdict .orig.md files
 
-The 21 NO `.orig.md` files are ideal test cases: verified-real data, domain hints in headers, measurable success criteria.
+**Tracked in:** `.project/active/orig-md-research/plan.md` (Phase 3+)
 
-- [ ] Run module on each `.orig.md` — pass the content + domain hints, get back individually-traced source files
-- [ ] Verify: key quantitative claims from `.orig.md` appear in at least one extracted source
-- [ ] Delete `.orig.md` files that have been fully re-sourced
-- [ ] For partially-sourced: keep `.orig.md`, flag remaining gaps for human action
+The standalone `resurface_orig.py` script processes each `.orig.md` file: extracts header URLs, tries them via `add-source`, searches for uncovered claims, and reports coverage. Tested on 2 files (Phase 3 of that plan); remaining 19 to be run via `--all`.
+
+- [x] Test run on 2 files (concept 22 and concept 14) — 3 sources each, pipeline validated
+- [ ] Run on remaining 19 `.orig.md` files
+- [ ] Review `summary.json` recommendations (delete/partial/keep per file)
+- [ ] Delete fully-covered `.orig.md` files
+- [ ] Flag partially-covered files for human review
+- [ ] Clean up thin replacement `.md` files superseded by richer individual sources
 - [ ] Commit new source files
 
 ---
@@ -465,14 +440,18 @@ _To be filled during execution._
 **Issues:** None
 
 ### Phase 6 Step 2 (Build autonomous research module)
-**Depends on:** `.project/concepts/autonomous-source-acquisition.md`
-**Completed:**
-**Issues:**
+**Completed:** 2026-04-05
+**Actual work:**
+- Analysis loop research module: `lib/research.py` + `prompt_templates/research.md` (see `.project/active/autonomous-source-acquisition/plan.md`)
+- `.orig.md` re-sourcing script: `scripts/resurface_orig.py` + `prompt_templates/resurface.md` (see `.project/active/orig-md-research/plan.md`)
+- Design divergence from original plan: built two complementary tools (pipeline-integrated + standalone) instead of one generic module. The pipeline research step fills data gaps during analysis; the standalone script re-sources legacy `.orig.md` files.
+**Issues:** None
 
-### Phase 6 Step 3 (Test module on NO .orig.md files)
-**Completed:**
-**Files re-sourced:**
-**Issues:**
+### Phase 6 Step 3 (Re-source NO .orig.md files)
+**In Progress:** See `.project/active/orig-md-research/plan.md` for detailed tracking
+**Test run completed:** 2026-04-05 — 2 files (concepts 22, 14), 3 sources each, pipeline validated
+**Remaining:** 19 files via `--all`, then review/cleanup
+**Issues:** None so far
 
 ### Phase 7 Completion (SOURCE_INDEX)
 **Completed:**

@@ -1,0 +1,112 @@
+{
+  "status": "complete",
+  "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-01/sources/first-light-fusion-technology.orig.md",
+  "concept_id": "22-projectile-icf",
+  "concept_num": "22",
+  "elapsed_s": 181.8,
+  "return_code": 0,
+  "acquired": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-03/sources/ipgroupplc-news-and-events-portfolio-news-2025-2025-09-19.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-03/sources/prnewswire-news-releases-first-light-achieves-world-first.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-03/sources/theengineer-content-news-first-light-fusion-claims-tritium.md"
+  ],
+  "acquired_count": 3,
+  "agent_report": {
+    "orig_file": "first-light-fusion-technology.orig.md",
+    "urls_found": [],
+    "domain_names_found": [
+      "firstlightfusion.com",
+      "newatlas.com",
+      "ipgroupplc.com",
+      "neimagazine.com",
+      "nextbigfuture.com",
+      "interestingengineering.com"
+    ],
+    "extractions": [
+      {
+        "url": "https://www.prnewswire.com/news-releases/first-light-achieves-world-first-fusion-result-proving-unique-new-target-technology-301517509.html",
+        "source_name": "prnewswire-news-releases-first-light-achieves-world-first",
+        "outcome": "success",
+        "covers": [
+          "2022 fusion achievement, UKAEA validation",
+          "Projectile approach description, 6.5 km/s velocity",
+          "Target design: fuel accelerated to >70 km/s, amplifier technology",
+          "Gas gun used for achievement",
+          "Liquid lithium chamber, heat exchanger, steam turbine energy conversion",
+          "LCOE under $50/MWh (peer-reviewed)",
+          "Spent less than \u00a345M to achieve fusion",
+          "Founded as Oxford spin-out"
+        ]
+      },
+      {
+        "url": "https://www.theengineer.co.uk/content/news/first-light-fusion-claims-tritium-breeding-breakthrough",
+        "source_name": "theengineer-content-news-first-light-fusion-claims-tritium",
+        "outcome": "success",
+        "covers": [
+          "TBR of 1.8 (highest announced)",
+          "333 MWe design point",
+          "Net tritium surplus 25 kg/yr",
+          "Tritium self-sufficiency in one week",
+          "Liquid lithium bath reactor design",
+          "Mark Thomas as CEO",
+          "T\u00dcV S\u00dcD UK independent validation"
+        ]
+      },
+      {
+        "url": "https://www.ipgroupplc.com/news-and-events/portfolio-news/2025/2025-09-19",
+        "source_name": "ipgroupplc-news-and-events-portfolio-news-2025-2025-09-19",
+        "outcome": "success",
+        "covers": [
+          "FLARE concept (Fusion via Low-power Assembly and Rapid Excitation)",
+          "Decoupled compression and ignition (fast ignition)",
+          "Gain up to 1000x, minimum 200x for commercial viability",
+          "Current world record 4x at NIF",
+          "400 MW reactor capacity",
+          "FLARE demonstrator $100-200M (1/20th of NIF)",
+          "Driver cost $2/joule vs $6-13 for alternatives",
+          "Energy delivery system 1/10th cost of previous fast ignition",
+          "Pulsed power with low voltage",
+          "Amplifier technology adapted to cylindrical implosions",
+          "Mark Thomas CEO quote",
+          "Commercial demonstration mid-2030s",
+          "Founded 2011 Oxford spin-out, seed from IP Group"
+        ]
+      }
+    ],
+    "existing_sources_also_covering": [
+      {
+        "source_name": "first-light-flare-pivot-update",
+        "location": "iter-02/sources/",
+        "covers": [
+          "FLARE white paper details",
+          "WNN coverage of FLARE announcement",
+          "Feb 2025 partnership pivot mention",
+          "Gain 1000x, fast ignition concept"
+        ]
+      },
+      {
+        "source_name": "first-light-fusion-technology",
+        "location": "iter-01/sources/",
+        "covers": [
+          "FLF homepage (thin JS extraction, limited content)"
+        ]
+      }
+    ],
+    "uncovered_claims": [
+      "Machine 3 specifics: electromagnetic launcher, 200kV, 14MA, parallel plate architecture \u2014 only available on FLF website (JS-heavy)",
+      "Big Friendly Gun (BFG) name and two-stage hyper-velocity gas gun details",
+      "Target cubic form ~1 cm sides, multiple cavities creating interacting shockwaves",
+      "Fuel compressed to 10 terapascals (100 million atmospheres), volume reduced to <100 microns",
+      "Machine 4 planned specs (60 km/s, 100 MJ) and Feb 2025 cancellation",
+      "150 MWe pilot plant <$1B target and 500 MWe commercial plant <$5B target",
+      "Specific repetition rates: once every 30 seconds (150 MW), once every 10 seconds (500 MW), once every 90 seconds",
+      "Lithium curtain '1-meter-thick' specification",
+      "Lifetime-of-plant vessel claim (neutrons don't reach wall)",
+      "Feb 2025 strategic pivot: cancelled Machine 4, partnership-only model, Mark Thomas appointment from Reaction Engines"
+    ],
+    "recommendation": "partial",
+    "recommendation_rationale": "~75% of claims covered. Core technical achievements (2022 fusion, FLARE concept, TBR, gain targets, LCOE, cost comparisons) are well-sourced. Uncovered claims are mostly detailed machine specs and specific plant size variants that originate from FLF's JS-heavy website pages, New Atlas, and nextbigfuture \u2014 these would need additional extraction attempts. The Feb 2025 pivot details are partially covered by the existing WNN source in iter-02.",
+    "replacement_md_note": "Thin replacement first-light-fusion-technology.md (iter-01) is a JS-heavy FLF homepage extraction with minimal content \u2014 it is a subset of the newly extracted sources and could be removed."
+  },
+  "recommendation": "partial"
+}

@@ -1,0 +1,17 @@
+{
+  "total_files": 1,
+  "total_concepts": 1,
+  "statuses": {
+    "skipped": 1
+  },
+  "total_acquired": 0,
+  "recommendations": {},
+  "results": [
+    {
+      "status": "skipped",
+      "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-01/sources/first-light-fusion-technology.orig.md",
+      "concept_id": "22-projectile-icf",
+      "reason": "existing report"
+    }
+  ]
+}

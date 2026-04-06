@@ -1,0 +1,79 @@
+{
+  "status": "complete",
+  "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/14-magnetized-target-fusion-pneumatic-compression/iter-02/sources/general-fusion-lm26-milestones-2025.orig.md",
+  "concept_id": "14-magnetized-target-fusion-pneumatic-compression",
+  "concept_num": "14",
+  "elapsed_s": 92.6,
+  "return_code": 0,
+  "acquired": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/14-magnetized-target-fusion-pneumatic-compression/iter-03/sources/generalfusion-fusion-demo-plant.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/14-magnetized-target-fusion-pneumatic-compression/iter-03/sources/generalfusion-post-peer-reviewed-publication-confirms.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/14-magnetized-target-fusion-pneumatic-compression/iter-03/sources/metaltechnews-story-2025-05-14-tech-bytes-general-fusion.md"
+  ],
+  "acquired_count": 3,
+  "agent_report": {
+    "orig_file": "general-fusion-lm26-milestones-2025.orig.md",
+    "urls_found": [
+      "https://generalfusion.com/post/watch-general-fusions-lm26-achieves-first-plasma-compression/",
+      "https://www.metaltechnews.com/story/2025/05/14/tech-bytes/general-fusion-compresses-plasma-with-lithium/2278.html",
+      "https://generalfusion.com/post/peer-reviewed-publication-confirms-plasma-energy-confinement-time-for-lm26/",
+      "https://generalfusion.com/fusion-demo-plant/"
+    ],
+    "extractions": [
+      {
+        "url": "https://generalfusion.com/post/watch-general-fusions-lm26-achieves-first-plasma-compression/",
+        "outcome": "duplicate",
+        "notes": "Already exists as iter-02/sources/general-fusion-lm26-milestones-2025.md (thin \u2014 only 3 lines of content with duplication)"
+      },
+      {
+        "url": "https://www.metaltechnews.com/story/2025/05/14/tech-bytes/general-fusion-compresses-plasma-with-lithium/2278.html",
+        "source_name": "metaltechnews-story-2025-05-14-tech-bytes-general-fusion",
+        "outcome": "success",
+        "covers": [
+          "April 29, 2025 first plasma compression with lithium liner",
+          "Ion temperature and density increases observed",
+          "Lithium liner trapped plasma's magnetic field",
+          "May 2025 Metal Tech News coverage",
+          "Reference to earlier March 2025 first plasma milestone",
+          "Mechanical compression approach (MTF description)"
+        ]
+      },
+      {
+        "url": "https://generalfusion.com/post/peer-reviewed-publication-confirms-plasma-energy-confinement-time-for-lm26/",
+        "source_name": "generalfusion-post-peer-reviewed-publication-confirms",
+        "outcome": "success",
+        "covers": [
+          "PI3 plasma injector energy confinement time >10 ms (peer-reviewed in Nuclear Fusion)",
+          "LM26 is 50% scale of commercial plasma",
+          "300 MWe power output (two 150 MWe machines)",
+          "~150,000 Canadian homes",
+          "Lithium wall benefits (neutron protection, fuel breeding, energy extraction)",
+          "No superconducting magnets needed"
+        ]
+      },
+      {
+        "url": "https://generalfusion.com/fusion-demo-plant/",
+        "source_name": "generalfusion-fusion-demo-plant",
+        "outcome": "success",
+        "covers": [
+          "LM26 at 50% power plant scale",
+          "Built and operational in under two years",
+          "Pneumatic piston compression (mentions piston-compression technology)",
+          "Liquid metal wall approach",
+          "Commercialization timeline (FOAK plant ~2035)",
+          "Partners: UKAEA, DOE, Hatch, Kyoto Fusioneering"
+        ]
+      }
+    ],
+    "uncovered_claims": [
+      "Aug 2023: LM26 announced \u2014 no source explicitly covers announcement date",
+      "Late 2024: LM26 assembly complete \u2014 implied but not explicitly stated",
+      "Electromagnetic theta-pinch of solid lithium liner (LM26 surrogate method) \u2014 technical detail not in any extracted source",
+      "Pioneered method for creating solid lithium rings \u2014 not in any extracted source",
+      "~1 Hz repetition rate \u2014 not in any extracted source"
+    ],
+    "recommendation": "delete",
+    "replacement_md_note": "Thin replacement at iter-02/sources/general-fusion-lm26-milestones-2025.md (15 lines, 3 content lines) is a subset of the newly extracted Metal Tech News article which covers the same first-plasma-compression event in much greater detail. The three new iter-03 sources collectively cover >80% of the orig.md claims including all major milestones, technical parameters, and commercial targets."
+  },
+  "recommendation": "delete"
+}

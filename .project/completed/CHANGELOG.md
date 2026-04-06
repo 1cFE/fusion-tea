@@ -4,6 +4,36 @@ Historical record of completed work.
 
 ---
 
+## [2026-04-05] - Analysis Pipeline Bulk Archival
+
+**Type**: Housekeeping
+**Duration**: 1 session
+
+### Summary
+Archived 13 completed work items from the analysis pipeline development phase. The pipeline (`run_analysis.py` + `lib/` modules) is fully operational with iterative analysis, autonomous source acquisition, cross-concept memory, PROCEED/REVISE review verdicts, and concept management tooling.
+
+### Items Archived
+- `automated-concept-analysis` — Core analysis pipeline with gap-check/analyze/approve workflows and Claude invocation. All 5 phases complete.
+- `autonomous-source-acquisition` — WebSearch/WebFetch research step for automated data gap resolution. Live-tested.
+- `checkpoint-test-concept17` — End-to-end validation on concept 17a with replaced sources. 6/8 spot checks passed.
+- `concept-research-skill` — Consolidated research docs into README.md + `concept-research-navigation` skill.
+- `constraint-atms-spike` — ATMS constraint propagation prototype for design space exploration.
+- `iterative-analysis-loop` — Multi-pass analysis with config extraction, modal prompts, and convergence tracking.
+- `manage-concept-agent` — Interactive `/manage-concept` command for concept vetting and comparison.
+- `refactor-final-stages` — Rescoped review/synthesize/approve to PROCEED/REVISE verdicts with kick-back.
+- `refactor-run-analysis` — Extracted `run_analysis.py` (2306→1380 lines) into 9 `lib/` modules.
+- `refactor-stage1-loop` — `iter-N/` directory layout, `--resume` support, verdict.json tracking, migration.
+- `research-artifact-sync` — R2 binary sync + migration to `knowledge/concept_research/`.
+- `shared-memory-system` — Cross-concept tagged memory (concept/family/universal) loaded into analysis prompts.
+- `source-addition` — `add-source` and `update-analysis` commands for incremental source addition.
+
+### Remaining Active
+- `orig-md-research` — Re-sourcing NO-verdict `.orig.md` files (3/21 processed)
+- `source-replacement` — Coupled to above; extraction complete, cleanup remains
+- `traceability-system` — Spec/design/plan written, awaiting prioritization
+
+---
+
 ## [2026-03-06] - Project Cleanup & Archival
 
 **Type**: Housekeeping
