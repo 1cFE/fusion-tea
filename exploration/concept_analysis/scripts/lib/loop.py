@@ -90,6 +90,7 @@ def run_stage1_loop(
     current_sources = find_sources(rid)
     new_sources = detect_new_sources(loop_state, current_sources) if resume else []
     used_source_integration = False
+    used_review_feedback = False
 
     verdict = "NONE"
 
@@ -108,6 +109,19 @@ def run_stage1_loop(
         if iter_num == 1 and not resume:
             # Cold start — no feedback producer
             feedback_source = "cold_start"
+        elif not used_review_feedback and _has_revise_status(analysis_path):
+            # Review kick-back (FR-6): one-shot, fires once then falls through
+            used_review_feedback = True
+            feedback_text = _get_review_feedback(concept_dir)
+            if feedback_text is not None:
+                feedback_source = "review"
+                feedback_path = iter_dir / "feedback.md"
+                feedback_path.write_text(feedback_text, encoding="utf-8")
+                print(f"  {cid} iter {iter_num}: using review corrective actions as feedback")
+            else:
+                # review.md exists but no extractable F-N findings — fall through
+                feedback_source = "assess"
+                feedback_path = _get_prior_feedback(concept_dir, iter_num)
         elif new_sources and not used_source_integration:
             # Source-integration producer (FR-17)
             feedback_source = "source_integration"
@@ -120,16 +134,27 @@ def run_stage1_loop(
                 feedback_path = _get_prior_feedback(concept_dir, iter_num)
             used_source_integration = True
         elif getattr(args, "research", False) and iter_num > 1:
-            # Research extension point (FR-13, FR-14)
             feedback_source = "research"
-            feedback_path = _run_research_step(concept, iter_dir, args)
-            if feedback_path is None:
-                # Research not yet implemented — fall through to normal
-                feedback_source = "assess"
-                feedback_path = _get_prior_feedback(concept_dir, iter_num)
-            # FR-15: re-find sources after research
+            from lib.research import run_research_step
+            acquired = run_research_step(concept, iter_dir, args)
+
+            # Refresh sources after research (FR-15) — must happen before
+            # source-integration so it can see the new files
             current_sources = find_sources(rid)
             common_vars["source_paths"] = format_source_list(current_sources)
+
+            if acquired:
+                # Chain to source-integration for rich feedback (FR-10)
+                feedback_path = _run_source_integration(
+                    concept, iter_dir, acquired, analysis_path, args)
+                if feedback_path is None:
+                    # Source integration found no material additions
+                    feedback_source = "assess"
+                    feedback_path = _get_prior_feedback(concept_dir, iter_num)
+            else:
+                # Nothing acquired — fall through to assess
+                feedback_source = "assess"
+                feedback_path = _get_prior_feedback(concept_dir, iter_num)
         else:
             # Normal: prior iteration's assess output
             feedback_source = "assess" if iter_num > 1 else "cold_start"
@@ -567,19 +592,6 @@ def _run_source_integration(
     return output_path
 
 
-def _run_research_step(
-    concept: dict,
-    iter_dir: Path,
-    args: argparse.Namespace,
-) -> Path | None:
-    """Extension point for autonomous-source-acquisition (FR-A3).
-
-    Returns path to research feedback file, or None if no-op.
-    Until autonomous-source-acquisition is implemented, this is a stub.
-    """
-    print(f"  research step not yet implemented — skipping")
-    return None
-
 
 def _get_prior_feedback(concept_dir: Path, iter_num: int) -> Path | None:
     """Return the feedback file from the prior iteration, if it exists."""
@@ -587,6 +599,50 @@ def _get_prior_feedback(concept_dir: Path, iter_num: int) -> Path | None:
         return None
     prior = concept_dir / f"iter-{iter_num - 1}" / "feedback.md"
     return prior if prior.exists() else None
+
+
+def _has_revise_status(analysis_path: Path) -> bool:
+    """Check if analysis.md has Review-Status: revise."""
+    if not analysis_path.exists():
+        return False
+    fm = parse_frontmatter(analysis_path)
+    return fm.get("Review-Status") == "revise"
+
+
+def _get_review_feedback(concept_dir: Path) -> str | None:
+    """Extract F-N findings from review.md as feedback text for stage1.
+
+    Returns feedback text content (caller writes to iter-N/feedback.md),
+    or None if review.md has no extractable corrective actions.
+    """
+    review_path = concept_dir / "review.md"
+    if not review_path.exists():
+        return None
+
+    text = review_path.read_text(encoding="utf-8")
+
+    # Verify this is a REVISE review
+    verdict_match = re.search(r"^VERDICT:\s*REVISE", text, re.MULTILINE)
+    if not verdict_match:
+        return None
+
+    # Extract everything from "## Corrective Actions" to end or next ## section
+    ca_match = re.search(r"^## Corrective Actions.*$", text[verdict_match.end():],
+                         re.MULTILINE)
+    if not ca_match:
+        return None
+
+    ca_start = verdict_match.end() + ca_match.end()
+    # Find next ## header (not ###) or end of file
+    next_section = re.search(r"^## ", text[ca_start:], re.MULTILINE)
+    ca_text = text[ca_start:ca_start + next_section.start()] if next_section else text[ca_start:]
+
+    if not ca_text.strip():
+        return None
+
+    # Format as feedback — VERDICT: FINDINGS so the analysis agent's
+    # feedback-pass parser recognizes it
+    return f"VERDICT: FINDINGS\n\n{ca_text.strip()}\n"
 
 
 def _update_canonical_files(concept_dir: Path, iter_dir: Path) -> None:

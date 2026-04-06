@@ -1,16 +1,3 @@
----
-ID: 01-hts-compact-tokamak
-Concept: HTS Compact Tokamak
-Company: Commonwealth Fusion Systems
-Status: draft
-Created: 2026-03-29
-Approved-Date:
-Reuses: [07-maglif, 08-frc-w-direct-conversion, 21-spherical-tokamak-hts]
-Review-Iterations: 1
-Last-Review: 2026-04-05
-Review-Status: has-actions
----
-
 # D1+ Analysis: HTS Compact Tokamak (Commonwealth Fusion Systems)
 
 **Concept**: HTS Compact Tokamak — D-T fuel

@@ -452,14 +452,20 @@ def cmd_review(concepts: list[dict], args: argparse.Namespace) -> None:
         iteration = int(prev_iterations) + 1
 
         sources = find_sources(rid)
+        model_output_path = out_dir / "model_output.txt"
+        synth_list = [s for s in find_approved_syntheses() if s.parent.name != cid]
 
         def _build_vars(c, _ap=analysis_path, _mp=model_path, _rp=review_path,
-                        _sources=sources, _iteration=iteration):
+                        _sources=sources, _iteration=iteration,
+                        _mop=model_output_path, _synths=synth_list):
             return {
                 "concept_name": c["Concept Name"],
                 "company": c.get("Company", ""),
                 "analysis_path": str(_ap),
                 "model_setup_path": str(_mp) if _mp.exists() else "",
+                "model_output_path": str(_mop) if _mop.exists() else "",
+                "approved_syntheses": format_path_list(
+                    _synths, "(none yet — this is among the first reviews)"),
                 "source_paths": format_source_list(_sources),
                 "source_count": str(len(_sources)),
                 "output_path": str(_rp),
@@ -468,9 +474,17 @@ def cmd_review(concepts: list[dict], args: argparse.Namespace) -> None:
             }
 
         def _post(c, r, _ap=analysis_path, _iteration=iteration):
-            review_status = "has-actions"
-            if re.search(r"\*\*Overall:\*\*\s*CLEAN", r.output_text, re.MULTILINE):
-                review_status = "clean"
+            # Detect verdict from new strategic review format
+            if re.search(r"^VERDICT:\s*PROCEED", r.output_text, re.MULTILINE):
+                review_status = "proceed"
+            elif re.search(r"^VERDICT:\s*REVISE", r.output_text, re.MULTILINE):
+                review_status = "revise"
+            else:
+                # Legacy fallback for old-format review output
+                if re.search(r"\*\*Overall:\*\*\s*CLEAN", r.output_text, re.MULTILINE):
+                    review_status = "clean"
+                else:
+                    review_status = "has-actions"
             text = _ap.read_text(encoding="utf-8")
             text = update_frontmatter_field(text, "Review-Iterations", str(_iteration))
             text = update_frontmatter_field(text, "Last-Review", date.today().isoformat())
@@ -514,6 +528,15 @@ def cmd_address_review(concepts: list[dict], args: argparse.Namespace) -> None:
 
         if not review_path.exists():
             print(f"  skip {cid} (no review.md — run review first)")
+            continue
+
+        # Guard: address-review only valid for PROCEED verdict
+        fm = parse_frontmatter(analysis_path)
+        review_status = fm.get("Review-Status", "")
+        if review_status == "revise":
+            print(f"  skip {cid} (Review-Status is 'revise' — "
+                  f"run stage1-all --resume to address review findings, "
+                  f"not address-review)")
             continue
 
         # Parse proposed actions
@@ -629,7 +652,7 @@ def cmd_synthesize(concepts: list[dict], args: argparse.Namespace) -> None:
         # Enforce ordering: must be reviewed
         fm = parse_frontmatter(analysis_path)
         review_status = fm.get("Review-Status", "")
-        if review_status not in ("addressed", "clean"):
+        if review_status not in ("addressed", "clean", "proceed"):
             print(f"  skip {cid} (Review-Status is '{review_status}'; "
                   f"run review and address-review first)")
             continue
@@ -753,6 +776,13 @@ def cmd_approve(concepts: list[dict], args: argparse.Namespace) -> None:
         fm = parse_frontmatter(analysis_path)
         if fm.get("Status") == "approved":
             print(f"  skip {cid} (already approved on {fm.get('Approved-Date', '?')})")
+            continue
+
+        # Review gate: must have a PROCEED review (unless --force)
+        review_status = fm.get("Review-Status", "")
+        if review_status not in ("proceed", "addressed", "clean") and not args.force:
+            print(f"  skip {cid} (Review-Status is '{review_status}' — "
+                  f"run review first, or use --force)")
             continue
 
         # Synthesis gate: warn and skip if no synthesis.md (unless --force)
@@ -977,7 +1007,12 @@ def build_parser() -> argparse.ArgumentParser:
     p_analyze.add_argument("--resume", action="store_true",
                             help="Continue from last iteration (add more passes)")
     p_analyze.add_argument("--research", action="store_true",
-                            help="Enable autonomous research step between iterations (not yet implemented)")
+                            help="Enable autonomous research step between iterations "
+                                 "(searches web for data gaps, extracts via add-source)")
+    p_analyze.add_argument("--max-research-searches", type=int, default=5,
+                            help="Max WebSearch calls per research step (default: 5)")
+    p_analyze.add_argument("--max-research-extractions", type=int, default=3,
+                            help="Max source extractions per research step (default: 3)")
 
     # -- model-setup --
     p_ms = sub.add_parser("model-setup", help="Generate 1costingfe model setup script")
@@ -1042,7 +1077,12 @@ def build_parser() -> argparse.ArgumentParser:
     p_s1.add_argument("--resume", action="store_true",
                        help="Resume analysis from last iteration")
     p_s1.add_argument("--research", action="store_true",
-                       help="Enable autonomous research step between iterations (not yet implemented)")
+                       help="Enable autonomous research step between iterations "
+                            "(searches web for data gaps, extracts via add-source)")
+    p_s1.add_argument("--max-research-searches", type=int, default=5,
+                       help="Max WebSearch calls per research step (default: 5)")
+    p_s1.add_argument("--max-research-extractions", type=int, default=3,
+                       help="Max source extractions per research step (default: 3)")
 
     # -- add-source --
     p_add = sub.add_parser("add-source", help="Add a PDF or URL source to a concept")

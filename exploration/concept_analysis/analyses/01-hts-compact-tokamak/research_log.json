@@ -1,0 +1,148 @@
+{
+  "entries": [
+    {
+      "gap_id": "G-1",
+      "gap_description": "Full plant capital cost including BoP, indirect costs, construction financing",
+      "queries": [
+        "ARIES-AT fusion power plant full capital cost study Najmabadi 2006 site:osti.gov",
+        "ARIES-AT fusion power plant LCOE cost breakdown balance of plant"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/etdeweb/servlets/purl/20261446",
+          "title": "ARIES-AT: An Advanced Tokamak, Advanced Technology Fusion Power Plant (Najmabadi et al.)",
+          "triage": "relevant",
+          "notes": "Accessible PDF (148.5 KB). WebFetch cannot parse binary PDF but add-source extraction succeeded. 176-line document — confirmed ARIES-AT conference paper with headline COE = 5¢/kWh for 1000 MWe plant. Summary paper: includes major parameters and design philosophy but not the full CAS cost breakdown (direct costs, indirect costs, BoP fractions by account). Partial coverage of G-1."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/820081",
+          "title": "Physics Basis for the Advanced Tokamak Fusion Power Plant ARIES-AT (Technical Report, 2003)",
+          "triage": "likely-relevant",
+          "notes": "Not fetched due to budget constraints. Technical report likely has more detailed cost data than conference paper. Recommended for future iteration."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1178069",
+          "title": "The ARIES Advanced and Conservative Tokamak Power Plant Study (ACT, ~2017)",
+          "triage": "likely-relevant",
+          "notes": "Not fetched due to budget constraints. More recent ARIES-ACT study — may have updated cost methodology. Recommended for future iteration."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/1127358",
+          "title": "The ARIES Advanced and Conservative Tokamak (ACT) Power Plant Study (Technical Report)",
+          "triage": "likely-relevant",
+          "notes": "Not fetched. Full technical report version of the ACT study. Likely contains detailed CAS breakdown."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/etdeweb/servlets/purl/20261446",
+          "source_name": "osti-etdeweb-servlets-purl-20261446",
+          "notes": "Conference summary paper. Confirms COE = 5¢/kWh for ARIES-AT 1000 MWe plant. Does NOT contain detailed CAS direct/indirect cost breakdown or BoP cost fractions. Full project report (biblio/820081) would be needed for that."
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "ARIES-AT headline COE extracted. Detailed BoP/CAS cost breakdown requires the full ARIES-AT project report (OSTI 820081) or ARIES-ACT study (OSTI 1127358). Both are accessible OSTI documents — recommended for next iteration.",
+      "timestamp": "2026-04-06T02:24:37.017586+00:00",
+      "iteration": 4
+    },
+    {
+      "gap_id": "G-12",
+      "gap_description": "Li-6 enrichment supply chain and cost at fleet scale",
+      "queries": [
+        "Li-6 lithium-6 enrichment cost supply chain fusion tritium DOE ORNL site:osti.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://science.osti.gov/-/media/fes/pdf/fes-presentations/2022/Pearson_resource-availability-and-supply_presentation.pdf",
+          "title": "Fuels for Fusion — Resource Availability and Supply (Pearson, FES 2022 presentation)",
+          "triage": "accessible-but-not-parsed",
+          "notes": "1.6 MB PDF — accessible (not 403/404) but WebFetch returns only binary structure. Likely contains Li-6 supply chain data for fusion. Candidate for future extraction."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/6574527",
+          "title": "Potential Lithium Requirements for Fusion Power Plants",
+          "triage": "likely-relevant",
+          "notes": "OSTI direct purl — older report but directly addresses fleet-scale lithium requirements for fusion. Not fetched due to budget. Candidate for future extraction."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1179125",
+          "title": "LLNL-TR-658973-REV-1 Assessment of Tritium Breeding Blankets",
+          "triage": "likely-relevant",
+          "notes": "LLNL report on tritium breeding blanket assessment — likely covers Li-6 enrichment requirements and supply considerations."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "Budget exhausted after G-1 extraction. Three accessible candidates identified (Pearson 2022 FES presentation, OSTI 6574527, LLNL-TR-658973). All recommended for next iteration.",
+      "timestamp": "2026-04-06T02:24:37.017586+00:00",
+      "iteration": 4
+    },
+    {
+      "gap_id": "G-8",
+      "gap_description": "REBCO tape learning rate ($/kA-m trajectory to commercial target)",
+      "queries": [],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "Not attempted — search budget (2 searches) consumed by G-1 and G-12. Suggested queries for next iteration: 'REBCO HTS tape cost learning rate $/kA-m roadmap' and 'Rocky Mountain Institute superconductor cost trajectory fusion'.",
+      "timestamp": "2026-04-06T02:24:37.017586+00:00",
+      "iteration": 4
+    },
+    {
+      "gap_id": "G-10",
+      "gap_description": "Blanket replacement schedule / FLiBe system service life",
+      "queries": [],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "Not attempted — search budget exhausted. Suggested query: 'ITER TBM test blanket module replacement schedule FLiBe service life site:osti.gov'.",
+      "timestamp": "2026-04-06T02:24:37.017586+00:00",
+      "iteration": 4
+    },
+    {
+      "gap_id": "G-11",
+      "gap_description": "LHCD system (8 GHz, 25 MW) cost and technology readiness",
+      "queries": [],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "Not attempted — search budget exhausted. Suggested query: 'ITER lower hybrid current drive LHCD cost 8 GHz technology readiness site:osti.gov'.",
+      "timestamp": "2026-04-06T02:24:37.017586+00:00",
+      "iteration": 4
+    },
+    {
+      "gap_id": "G-13",
+      "gap_description": "Regulatory cost impact specific to NRC Part 30 framework",
+      "queries": [],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "Not attempted — search budget exhausted and nice-to-have priority. Stewart & Shirvan 2022 is already cited in the analysis — the paper itself may be accessible via MIT DSpace or arXiv.",
+      "timestamp": "2026-04-06T02:24:37.017586+00:00",
+      "iteration": 4
+    },
+    {
+      "gap_id": "G-14",
+      "gap_description": "Divertor replacement cost and frequency for compact tokamak geometry",
+      "queries": [],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "Not attempted — search budget exhausted and nice-to-have priority. ITER divertor cost data available via OSTI ITER design reports.",
+      "timestamp": "2026-04-06T02:24:37.017586+00:00",
+      "iteration": 4
+    }
+  ],
+  "acquired_by_iteration": {
+    "4": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/osti-etdeweb-servlets-purl-20261446.md"
+    ]
+  }
+}
