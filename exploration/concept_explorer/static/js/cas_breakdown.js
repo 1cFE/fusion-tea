@@ -22,8 +22,8 @@ const CAS_ORDER = [
 // CAS22 sub-account keys in ascending display order
 const CAS22_ORDER = [
   "C220101", "C220102", "C220103", "C220104", "C220105", "C220106",
-  "C220107", "C220108", "C220200", "C220300", "C220400", "C220500",
-  "C220600", "C220700",
+  "C220107", "C220108", "C220109", "C220110", "C220111", "C220112",
+  "C220200", "C220300", "C220400", "C220500", "C220600", "C220700",
 ];
 
 // Distinct color per CAS account slot — chosen to be readable on dark background

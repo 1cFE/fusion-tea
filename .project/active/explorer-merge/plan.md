@@ -159,24 +159,24 @@ Relocate explorer design artifacts from repo root to `exploration/concept_explor
 
 ### Changes
 
-- [ ] `mkdir -p exploration/concept_explorer/docs/specs`
-- [ ] `git mv DESIGN.md exploration/concept_explorer/docs/`
-- [ ] `git mv DESIGN_v1.md exploration/concept_explorer/docs/`
-- [ ] `git mv DESIGN_REVIEW.md exploration/concept_explorer/docs/`
-- [ ] `git mv IMPLEMENTATION_PLAN_v1.md exploration/concept_explorer/docs/`
-- [ ] `git mv AGENTS.md exploration/concept_explorer/docs/`
-- [ ] `git mv PROMPT_build.md exploration/concept_explorer/docs/`
-- [ ] `git mv PROMPT_plan.md exploration/concept_explorer/docs/`
-- [ ] `git mv specs/* exploration/concept_explorer/docs/specs/ && rmdir specs`
-- [ ] `git mv loop.sh exploration/concept_explorer/` (or `git rm` if no longer needed — check if referenced)
-- [ ] `git rm -r src/concept_explorer/` (inert scaffold — real code is in `exploration/concept_explorer/`)
-- [ ] Check if `tests/__init__.py` from explorer is empty/stub — if so, `git rm` it (pipeline's tests/ doesn't need it)
+- [x] `mkdir -p exploration/concept_explorer/docs/specs`
+- [x] `git mv DESIGN.md exploration/concept_explorer/docs/`
+- [x] `git mv DESIGN_v1.md exploration/concept_explorer/docs/`
+- [x] `git mv DESIGN_REVIEW.md exploration/concept_explorer/docs/`
+- [x] `git mv IMPLEMENTATION_PLAN_v1.md exploration/concept_explorer/docs/`
+- [x] `git mv AGENTS.md exploration/concept_explorer/docs/`
+- [x] `git mv PROMPT_build.md exploration/concept_explorer/docs/`
+- [x] `git mv PROMPT_plan.md exploration/concept_explorer/docs/`
+- [x] `git mv specs/* exploration/concept_explorer/docs/specs/ && rmdir specs`
+- [x] `git mv loop.sh exploration/concept_explorer/` (kept — not referenced elsewhere but harmless)
+- [x] `git rm -r src/concept_explorer/` (inert scaffold — real code is in `exploration/concept_explorer/`)
+- [x] `tests/__init__.py` — explorer scaffold stub, removed
 
 ### Validation
 
-- [ ] `uv run pytest exploration/concept_explorer/tests/ -x` → Still passes (no import path changes)
-- [ ] `ls` at repo root → No explorer-specific design docs cluttering root
-- [ ] Commit: `chore: relocate explorer design artifacts to exploration/concept_explorer/docs/`
+- [x] `uv run pytest exploration/concept_explorer/tests/ -x` → 148 passed, 2 skipped
+- [x] `ls` at repo root → Clean (only CLAUDE.md, README.md)
+- [x] Commit: `chore: relocate explorer design artifacts to exploration/concept_explorer/docs/`
 
 **What We Know Works After Phase 3:**
 - Repo root is clean
@@ -192,24 +192,24 @@ Write `exploration/concept_analysis/OPERATOR_GUIDE.md` — the 7-section human o
 ### Changes
 
 **File:** `exploration/concept_analysis/OPERATOR_GUIDE.md` (NEW)
-- [ ] Write preamble with "Typical Workflow" diagram (happy path overview)
-- [ ] Section 1: Pipeline Quick Reference — status, stage1-all, add-source, review commands (correct path: `exploration/concept_analysis/scripts/run_analysis.py`)
-- [ ] Section 2: Launching the Explorer — extract command, server command (port 8421), prerequisites
-- [ ] Section 3: Explorer Tour — page-by-page walkthrough (Index, Profile, Comparison, Taxonomy) with red-flag checklists
-- [ ] Section 4: Issue Triage via `/manage-concept` — modes A-D, change request protocol
-- [ ] Section 5: Adding Sources Mid-Review — `add-source` → `stage1-all --resume` flow
-- [ ] Section 6: Final Review, Feedback, and Synthesis — PROCEED/REVISE paths, address-review, synthesize
-- [ ] Section 7: Final Approval — `approve` command, re-extract to see status change
+- [x] Write preamble with "Typical Workflow" diagram (happy path overview)
+- [x] Section 1: Pipeline Quick Reference — status, stage1-all, add-source, review commands (correct path: `exploration/concept_analysis/scripts/run_analysis.py`)
+- [x] Section 2: Launching the Explorer — extract command, server command (port 8421), prerequisites
+- [x] Section 3: Explorer Tour — page-by-page walkthrough (Index, Profile, Comparison, Taxonomy) with red-flag checklists
+- [x] Section 4: Issue Triage via `/manage-concept` — modes A-D, change request protocol
+- [x] Section 5: Adding Sources Mid-Review — `add-source` → `stage1-all --resume` flow
+- [x] Section 6: Final Review, Feedback, and Synthesis — PROCEED/REVISE paths, address-review, synthesize
+- [x] Section 7: Final Approval — `approve` command, re-extract to see status change
 
 See `design.md#phase-5-operator-guide` for section-by-section implementation notes and corrected commands.
 
 ### Validation
 
 **Manual — execute each key command from the guide against concept 01:**
-- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py status 01` → Shows concept state
-- [ ] `uv run python exploration/concept_explorer/extract_explorer_data.py --concepts 01 --skip-narrative` → Extracts successfully
-- [ ] `uv run python exploration/concept_explorer/server.py` → Starts, concept 01 visible
-- [ ] Verify all other commands in the guide have correct syntax (flags, argument order) by checking `--help` output
+- [x] `uv run python exploration/concept_analysis/scripts/run_analysis.py status 01` → Shows concept state
+- [x] `uv run python exploration/concept_explorer/extract_explorer_data.py --concept 01 --skip-narrative` → Extracts successfully
+- [x] `uv run python exploration/concept_explorer/server.py` → Starts, data loads (port in use, startup confirmed)
+- [x] Verify all other commands in the guide have correct syntax (flags, argument order) by checking `--help` output
 - [ ] Commit: `docs: add operator guide for concept analysis → explorer → approval workflow`
 
 **What We Know Works After Phase 4:**
@@ -266,17 +266,34 @@ See `design.md#phase-5-operator-guide` for section-by-section implementation not
 - Server port already in use so couldn't do full HTTP check, but startup + data loading confirmed working.
 
 ### Phase 3 Completion
-**Completed:**
+**Completed:** 2026-04-06
 **Actual Changes:**
-**Issues:**
-**Deviations:**
+- Moved 8 design docs + 12 spec files to `exploration/concept_explorer/docs/`
+- Moved `loop.sh` to `exploration/concept_explorer/`
+- Removed `src/concept_explorer/__init__.py` (inert scaffold)
+- Removed `tests/__init__.py` (explorer stub, pipeline uses conftest.py)
+
+**Issues:** None
+**Deviations:** None
 
 ### Phase 4 Completion
-**Completed:**
+**Completed:** 2026-04-06
 **Actual Changes:**
+- Created `exploration/concept_analysis/OPERATOR_GUIDE.md` with all 7 sections
+- Preamble includes ASCII workflow diagram showing pipeline → explorer → feedback loop
+- All commands verified against actual `--help` output from each script
+- Section 3 includes per-page "red flags to check" checklists
+- Section 4 documents `/manage-concept` modes A-D with change request protocol
+- Used shell variables at top for DRY command references
+
 **Issues:**
+- Extraction flag confirmed as `--concept` (singular), not `--concepts` as spec stated — guide uses correct flag
+- Server port 8421 confirmed (spec said 8000) — guide uses correct port
+- Script path confirmed as `exploration/concept_analysis/scripts/run_analysis.py` (spec said `scripts/run_analysis.py`) — guide uses correct path
+
 **Deviations:**
+- None — guide follows design section-by-section notes faithfully
 
 ---
 
-**Status**: Draft → In Progress → Complete
+**Status**: Complete
