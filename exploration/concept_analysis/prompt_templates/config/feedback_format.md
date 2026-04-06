@@ -23,8 +23,9 @@ Each feedback file contains:
 ## Rules
 - Maximum 3 findings per pass (focus on the most impactful issues)
 - Findings must reference specific analysis goals from analysis_goals.md
-- Findings must NOT address numerical accuracy, citation correctness, or
-  calculations (those are the review stage's responsibility)
+- Findings about numerical accuracy should focus on plausibility (order of
+  magnitude, physical reasonableness), not verification (re-deriving calculations
+  or matching citations to source text)
 - Each finding must be specific enough that the analysis agent can address
   it without access to the assessment agent's reasoning
 - If the analysis adequately addresses all goals: `VERDICT: PASS`

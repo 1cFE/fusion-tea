@@ -15,334 +15,698 @@ uv run python scripts/run_analysis.py list
 # Check progress
 uv run python scripts/run_analysis.py status
 
-# Run everything through review for one or more concepts
+# Run the autonomous quality loop for one or more concepts
 uv run python scripts/run_analysis.py stage1-all 02 03 04
+
+# Resume an existing analysis (add more iterations without restarting)
+uv run python scripts/run_analysis.py stage1-all 02 --resume
+
+# Resume with autonomous research enabled
+uv run python scripts/run_analysis.py stage1-all 02 --resume --research
 
 # Dry-run to preview prompts without calling Claude
 uv run python scripts/run_analysis.py stage1-all 02 --dry-run
 ```
 
-## Pipeline Stages
+## Pipeline Overview
 
-The pipeline has 6 core stages plus utility commands. Each is a subcommand
-of `run_analysis.py`.
+The pipeline has three phases separated by who is acting, plus a side door
+for adding sources mid-analysis.
 
 ```
-[gap-check] → analyze ⟲ assess → model-setup → review → synthesize → approve
-   (opt)        (2)                   (3)          (4)       (5)         (6)
-                  ↑                                 ↑
-          iterative loop                   human inspection gate
-        (--max-passes, default 3)
+Phase 1 — AGENT (autonomous quality loop)
+┌────────────────────────────────────────────────────────────┐
+│                                                            │
+│   [optional research†] → analyze → model-setup → assess    │
+│         ↑                                           │      │
+│         └────────────────── FAIL ◄──────────────────┘      │
+│                               │                            │
+│                              PASS (or --max-passes hit)    │
+└───────────────────────────────┼────────────────────────────┘
+                                ▼
+Phase 2 — HUMAN (review gate)
+┌────────────────────────────────────────────────────────────┐
+│                                                            │
+│   review → (human confirms verdict)                        │
+│     ├── PROCEED → [address-review] → synthesize → approve  │
+│     └── REVISE  → stage1-all --resume ─────────────────┐   │
+│                                                        │   │
+└────────────────────────────────────────────────────────┼───┘
+                                                        │
+                     ┌──────────────────────────────────┘
+                     ▼
+              back to Phase 1 (review as feedback-producer)
 
-Side channels:
-  add-source → update-analysis     (incremental source addition)
+Side door:
+  add-source → stage1-all --resume  (auto-selects source-integration feedback)
+
+† Research step runs autonomous source acquisition when `--research` is
+  enabled. See `lib/research.py` and Planned: Autonomous Source Acquisition.
 ```
 
-| Stage | Command | What it does | Output |
-|-------|---------|-------------|--------|
-| 1 (opt) | `gap-check` | Assess source coverage gaps | `gap_report.md` |
-| 2 | `analyze` | Iterative D1+ analysis (analyze → assess loop) | `analysis.md` + `feedback_iter_N.md` |
-| 3 | `model-setup` | Generate Python cost model (1costingfe or free-form) | `model_setup.py` + `model_output.txt` |
-| 4 | `review` | Structured review with proposed actions | `review.md` |
-| 4b | `address-review` | Apply user decisions from review | Updates `analysis.md` / `model_setup.py` |
-| 5 | `synthesize` | Editorial synthesis with cross-concept context | `synthesis.md` |
-| 6 | `approve` | Mark as approved (enters reuse pool) | Sets `Status: approved` in frontmatter |
-| — | `add-source` | Add a PDF or URL source to a concept | Extracted source in `iter-NN/sources/` |
-| — | `update-analysis` | Incorporate new sources into existing analysis | Updates `analysis.md` (marks downstream stale) |
+### Phase 1: Autonomous Quality Loop
 
-### Composite Command
+The `analyze` command runs an iterative loop managed by `lib/loop.py`.
+Each iteration produces artifacts in an `iter-N/` subdirectory:
 
-**`stage1-all`** chains analyze → model-setup → review in one invocation.
-Gap-check is **opt-in** via `--include-gap-analysis`.
-
-```bash
-# Single concept
-uv run python scripts/run_analysis.py stage1-all 11
-
-# Multiple concepts
-uv run python scripts/run_analysis.py stage1-all 02 03 04 05
-
-# All remaining, filtered by family
-uv run python scripts/run_analysis.py stage1-all --all --family MFE
-
-# Include gap-check (skipped by default)
-uv run python scripts/run_analysis.py stage1-all 11 --include-gap-analysis
+```
+Iteration body:
+  1. [Feedback-producer]  — selects input for analyze (see table below)
+  2. Analyze              — cold-start (iter 1) or feedback-pass (iter 2+)
+  3. Model-setup          — generates and runs model_setup.py (in-loop, FR-6)
+  4. Assess               — evaluates framing, completeness, model consistency
+  5. Write verdict.json   — structured outcome record
 ```
 
-After `stage1-all`, you read the generated `review.md` files, fill in
-Decision fields for each proposed action, then continue:
+The loop repeats until assess returns `VERDICT: PASS` or `--max-passes` is
+reached. `stage1-all` wraps this as: `[gap-check] → analyze loop → model-setup → review`,
+where the standalone `model-setup` and `review` stages run *after* the loop
+exits (the model-setup call is effectively a no-op since the loop already
+produced `model_setup.py`).
 
-```bash
-uv run python scripts/run_analysis.py address-review 02
-uv run python scripts/run_analysis.py synthesize 02
-uv run python scripts/run_analysis.py approve 02
+#### Feedback-Producer Selection
+
+On iterations > 1, the analyze step runs in feedback-pass mode, consuming
+feedback from a context-dependent producer. All producers output in the
+shared `config/feedback_format.md` schema (`VERDICT: PASS` or
+`VERDICT: FINDINGS` + `### F-N:` findings).
+
+Selection logic (`lib/loop.py:104-136`):
+
+| Priority | Condition | Producer | Template |
+|----------|-----------|----------|----------|
+| 1 | Iter 1, no resume | **cold_start** | `analysis_v2.md` `{{cold_start}}` mode |
+| 2 | Resume + `Review-Status: revise` | **review** (one-shot) | Extracts F-N from `review.md` → `analysis_v2.md` feedback mode |
+| 3 | Resume with new sources detected | **source_integration** (one-shot) | `source_integration.md` → then `analysis_v2.md` feedback mode |
+| 4 | `--research` flag, iter > 1 | **research** | `lib/research.py` → source-integration chain |
+| 5 | Iter > 1 (default) | **assess** | Prior iter's `feedback.md` → `analysis_v2.md` feedback mode |
+
+"New sources detected" means `find_sources()` returns paths not recorded in
+any prior iteration's `verdict.json` `sources` field. Detection is in
+`lib/iteration.py:detect_new_sources()`.
+
+Source-integration runs at most once per resume session (flag
+`used_source_integration` prevents re-triggering on later iterations).
+
+### Phase 2: Review
+
+The `review` command generates a strategic quality assessment evaluating:
+1. Modeling approach (cost drivers, abstraction level, CAS mapping)
+2. Strategic positioning (cross-concept framing, comparison axes)
+3. Risk and uncertainty framing (TRL, confidence, economic risks)
+4. Data sufficiency (gaps, source adequacy)
+5. Cross-concept consistency (shared assumptions, aligned estimates)
+
+Output is `review.md` with a structured verdict:
+- `VERDICT: PROCEED` — analysis is strategically sound. May include optional
+  minor fixes in `PA-N:` format for `address-review`.
+- `VERDICT: REVISE` — significant strategic issues require another stage1 pass.
+  Includes corrective actions in `F-N:` format (same schema as
+  `config/feedback_format.md`), consumable by `stage1-all --resume`.
+
+**PROCEED path**: human reads review, optionally fills PA-N decisions,
+runs `address-review`, then proceeds to synthesize.
+
+**REVISE path** (kick-back): human confirms verdict, runs
+`stage1-all --resume`. The loop detects `Review-Status: revise` and
+uses the review's corrective actions as feedback for the next iteration
+(`feedback_source: "review"` in verdict.json). One-shot — subsequent
+iterations fall through to normal assess feedback.
+
+The review determines `Review-Status` in `analysis.md` frontmatter:
+- `VERDICT: PROCEED` → `Review-Status: proceed`
+- `VERDICT: REVISE` → `Review-Status: revise`
+- After `address-review` → `Review-Status: addressed`
+- Legacy: `**Overall:** CLEAN` → `clean`, otherwise → `has-actions`
+
+(Code: `run_analysis.py:476-487` sets the value; `lib/state.py:33`
+reads it.)
+
+### Phase 3: Synthesis & Approval
+
+`synthesize` requires `Review-Status` to be `addressed`, `clean`, or
+`proceed` (code: `run_analysis.py:655`). It generates an editorial synthesis
+with cross-concept positioning, risk verdicts, and LCOE sensitivity.
+
+`approve` requires both a PROCEED review (`Review-Status` in `proceed`,
+`addressed`, `clean`) and `synthesis.md` to exist (unless `--force`). Sets
+`Status: approved` and `Approved-Date` on both `analysis.md` and
+`synthesis.md`.
+
+## Commands
+
+11 subcommands. The dispatch table (`run_analysis.py:main()`):
+
+```python
+dispatch = {
+    "list":           cmd_list,
+    "status":         cmd_status,
+    "gap-check":      cmd_gap_check,
+    "analyze":        cmd_analyze,
+    "model-setup":    cmd_model_setup,
+    "review":         cmd_review,
+    "address-review": cmd_address_review,
+    "synthesize":     cmd_synthesize,
+    "approve":        cmd_approve,
+    "stage1-all":     cmd_stage1_all,
+    "add-source":     cmd_add_source,
+}
 ```
 
-## Subcommand Reference
+### Command Reference
+
+| Command | What it does | Calls Claude? | Output |
+|---------|-------------|:---:|--------|
+| `list` | Print all 38 concepts | no | stdout table |
+| `status` | Per-concept state table | no | stdout table |
+| `gap-check` | Assess source coverage | yes | `gap_report.md` |
+| `analyze` | Iterative D1+ analysis loop | yes | `analysis.md` + `iter-N/` |
+| `model-setup` | Generate Python cost model | yes | `model_setup.py` + `model_output.txt` |
+| `review` | Structured quality review | yes | `review.md` |
+| `address-review` | Apply user decisions from review | yes | Edits `analysis.md` / `model_setup.py` |
+| `synthesize` | Editorial synthesis | yes | `synthesis.md` |
+| `approve` | Mark as approved | no | Frontmatter update |
+| `stage1-all` | Chain: [gap-check] → analyze → model-setup → review | yes | All of the above |
+| `add-source` | Add PDF or URL source | no* | Extracted source in `iter-NN/sources/` |
+
+\* `add-source` calls `agentic-mbse extract`, not Claude directly.
 
 ### Concept Selection
 
-Every stage subcommand accepts concepts by:
+Every command accepts concepts by:
 
 - **Numeric prefix**: `01`, `17a`
 - **Full ID**: `01-hts-compact-tokamak`
 - **Partial name/company** (case-insensitive): `Commonwealth`, `tokamak`
-- **`--all`**: All remaining concepts (skips those already at the target state)
+- **`--all`**: All remaining (skips those at target state)
 - **`--family`**: Filter by confinement family (`MFE`, `IFE`, `MIF`, `Non-Standard`)
 
-### Common Flags
+Resolution order (`lib/concepts.py:resolve_one()`):
+exact ID → numeric prefix → slug (after numeric prefix) → case-insensitive
+name/company substring. Ambiguous matches produce an error listing all hits.
+
+### Flags
+
+**Common flags** (on all Claude-calling commands):
 
 | Flag | Default | Description |
 |------|---------|-------------|
-| `--model` | `sonnet` | Claude model (`sonnet`, `opus`, `haiku`) |
-| `--dry-run` | off | Generate and save prompts without calling Claude |
-| `--force` | off | Re-run even if output files already exist |
-| `--timeout` | 900 | Per-invocation timeout in seconds |
+| `--model` | `sonnet` | Claude model |
+| `--dry-run` | off | Save prompts without calling Claude |
+| `--force` | off | Re-run even if output exists; for `analyze`, clears all `iter-*/` dirs |
+| `--timeout` | 900 | Per-invocation timeout (seconds) |
 
 **Stage-specific flags:**
 
-| Flag | Stages | Default | Description |
-|------|--------|---------|-------------|
-| `--max-passes` | `analyze`, `stage1-all` | 3 | Max analyze→assess iterations (1 = no assessment) |
-| `--feedback PATH` | `analyze` | — | Apply a feedback file to existing analysis (skips cold-start) |
-| `--include-gap-analysis` | `stage1-all` | off | Include gap-check stage (skipped by default) |
+| Flag | Commands | Default | Description |
+|------|----------|---------|-------------|
+| `--max-passes` | `analyze`, `stage1-all` | 3 | Max iterations (1 = skip assessment entirely → `SINGLE_PASS` verdict) |
+| `--feedback PATH` | `analyze` | — | Apply external feedback file to existing analysis (separate code path, does not enter loop) |
+| `--resume` | `analyze`, `stage1-all` | off | Continue from last iteration |
+| `--research` | `analyze`, `stage1-all` | off | Enable autonomous source acquisition on iter > 1 |
+| `--include-gap-analysis` | `stage1-all` | off | Prepend gap-check to the pipeline |
+| `--name` | `add-source` | auto-slugified | Override source name |
 
-### Individual Stages
+**Mutual exclusions:**
+- `--resume` and `--force` cannot be used together (exit with error, `run_analysis.py:212-216`)
+- `--feedback` and `--force` are mutually exclusive
+- `--feedback` and `--resume` are mutually exclusive
+
+### Resume Semantics
+
+`--resume` adds iterations without restarting, regardless of the last
+iteration's verdict:
 
 ```bash
-# Stage 1: Gap check
-uv run python scripts/run_analysis.py gap-check 02 03
+# Run 2 vanilla iterations
+uv run python scripts/run_analysis.py analyze 02 --max-passes 2
 
-# Stage 2: Full analysis (sequential — each sees the reuse pool)
-uv run python scripts/run_analysis.py analyze 02 03
+# Add 2 more iterations (total now capped at 4)
+uv run python scripts/run_analysis.py analyze 02 --resume --max-passes 4
 
-# Stage 3: Generate cost model
-uv run python scripts/run_analysis.py model-setup 02 03
-
-# Stage 4: Automated review
-uv run python scripts/run_analysis.py review 02
-
-# Stage 4b: Apply review decisions (after human fills in Decision fields)
-uv run python scripts/run_analysis.py address-review 02
-
-# Stage 5: Synthesis (requires Review-Status = addressed or clean)
-uv run python scripts/run_analysis.py synthesize 02
-
-# Stage 6: Approve (requires synthesis unless --force)
-uv run python scripts/run_analysis.py approve 02
-
-# Add a new source (PDF or URL) to a concept
-uv run python scripts/run_analysis.py add-source 17a /path/to/paper.pdf
-uv run python scripts/run_analysis.py add-source 11 https://example.com/article
-
-# Update analysis to incorporate newly added sources
-uv run python scripts/run_analysis.py update-analysis 17a --sources sparc-icrf-heating-paper
+# Add a source, then resume (auto-selects source-integration feedback)
+uv run python scripts/run_analysis.py add-source 02 /path/to/paper.pdf
+uv run python scripts/run_analysis.py analyze 02 --resume
 ```
 
-### Info Commands
+How it works (`lib/loop.py:78-92`, `lib/iteration.py:42-46`):
+
+1. `read_loop_state()` scans `iter-*/` directories, reads each `verdict.json`.
+2. `LoopState.next_iteration` returns:
+   - The incomplete iteration number (if one has artifacts but no `verdict.json`).
+   - Otherwise, `last_complete + 1`.
+3. If `next_iteration > max_passes`, exit with "max passes reached".
+4. `detect_new_sources()` compares current `find_sources()` against all
+   `verdict.json` `sources` fields to identify newly-added sources.
+
+`--max-passes` applies to **total** iteration count, not new iterations.
+E.g., 2 existing iters + `--max-passes 4` = at most 2 more.
+
+### Typical Workflow
 
 ```bash
-# List all 38 concepts with ID, name, company, family
-uv run python scripts/run_analysis.py list
+# Phase 1: autonomous quality loop
+uv run python scripts/run_analysis.py stage1-all 11
 
-# Status table (all or filtered)
-uv run python scripts/run_analysis.py status
-uv run python scripts/run_analysis.py status --family MFE
-uv run python scripts/run_analysis.py status 01 07 11
+# Phase 2: human review
+uv run python scripts/run_analysis.py review 11
+# Read review.md — if VERDICT: PROCEED, optionally fill PA-N Decision fields:
+uv run python scripts/run_analysis.py address-review 11
+# If VERDICT: REVISE, kick back to stage1:
+uv run python scripts/run_analysis.py stage1-all 11 --resume
+
+# Phase 3: synthesis and approval
+uv run python scripts/run_analysis.py synthesize 11
+uv run python scripts/run_analysis.py approve 11
 ```
 
 ## State Detection
 
-State is determined by filesystem inspection — no database. Detection order
-(highest to lowest):
+State is derived from filesystem (`lib/state.py:get_concept_state()`).
+Detection order (highest to lowest):
 
-| State | Condition |
-|-------|-----------|
-| `approved` | `analysis.md` exists with `Status: approved` |
-| `synthesized` | `synthesis.md` exists |
-| `reviewed` | `analysis.md` has `Review-Status: addressed` or `clean` |
-| `model-setup` | `model_setup.py` exists |
-| `drafted` | `analysis.md` exists |
-| `gap-checked` | `gap_report.md` exists |
-| `not-started` | None of the above |
+| State | Condition | Code reference |
+|-------|-----------|----------------|
+| `approved` | `analysis.md` has `Status: approved` | `state.py:28` |
+| `synthesized` | `synthesis.md` exists | `state.py:30` |
+| `reviewed` | `Review-Status` is `addressed`, `clean`, or `proceed` | `state.py:33` |
+| `model-setup` | `model_setup.py` exists | `state.py:35` |
+| `drafted` | `analysis.md` exists | `state.py:37` |
+| `gap-checked` | `gap_report.md` exists | `state.py:42` |
+| `not-started` | None of the above | `state.py:43` |
 
-A `*` suffix (e.g., `model-setup*`) indicates **stale downstream artifacts** —
-`analysis.md` was updated (via feedback pass, `update-analysis`, or
-`/manage-concept`) after those artifacts were generated. Re-run the stale
-stage(s) to reconcile.
+**Staleness** (`state.py:48-82`): A `*` suffix indicates downstream
+artifacts are stale. Checked via:
+- `Stale: true` in `review.md` or `synthesis.md` frontmatter
+- `# STALE:` as first line of `model_setup.py`
 
-Every stage checks prerequisites and skips concepts that already have output,
-making re-runs safe and idempotent.
+`propagate_staleness()` is called when `analysis.md` is mutated (feedback
+pass, force rewrite, source integration). It marks `model_setup.py`,
+`review.md`, and `synthesis.md` with a reason string.
 
-## Cross-Concept Reuse Pool
-
-The `analyze` stage scans for all approved prior analyses and injects their
-paths into the prompt. Claude reads them and reuses consistent assumptions
-(materials costs, discount rates, shared subsystems) with attribution.
-
-This means **ordering matters for `analyze`**: earlier concepts provide inputs
-to later ones. The stage processes concepts sequentially, re-scanning the
-approved pool before each concept.
-
-Approved analyses are tracked via the `Status: approved` field in
-`analysis.md` YAML frontmatter. The `Reuses: []` field records which prior
-concepts were referenced.
-
-## Shared Memory
-
-The `memory/` directory accumulates cross-concept learnings (common pitfalls,
-parameter sanity ranges, recurring feedback patterns). The `analyze` stage
-loads relevant memories before each run via a memory-handler subagent. Memories
-are saved explicitly — via the interactive `/manage-concept` agent or after
-review sessions.
-
-## Directory Layout
-
+**Status display** (`run_analysis.py:cmd_status()`):
 ```
-concept_analysis/
-├── README.md                    # This file
-├── table.csv                    # 38-concept registry (read-only reference)
-├── concept_analysis_brief.md    # D1+ deliverable specification
-├── add_ids.py                   # Helper: map concept names → canonical IDs
-├── scripts/
-│   └── run_analysis.py          # Pipeline orchestrator (single entry point)
-├── prompt_templates/            # Stage-specific prompt templates
-│   ├── gap_check.md             #   Stage 1 prompt
-│   ├── analysis_v2.md           #   Stage 2 prompt (modal: cold-start / feedback / self-advance)
-│   ├── assessment.md            #   Stage 2 assessment prompt (analyze→assess loop)
-│   ├── source_integration.md    #   update-analysis pre-pass prompt
-│   ├── output_template.md       #   D1+ output section structure
-│   ├── model_setup_costingfe.md #   Stage 3 prompt (1costingfe path)
-│   ├── model_setup_freeform.md  #   Stage 3 prompt (free-form path)
-│   ├── review.md                #   Stage 4 prompt
-│   ├── address_review.md        #   Stage 4b prompt
-│   ├── synthesis.md             #   Stage 5 prompt
-│   ├── config/                  #   Extracted goals and checklists
-│   │   ├── analysis_goals.md    #     What the analysis should cover
-│   │   ├── assessment_checklist.md #  What the assessor checks
-│   │   ├── review_checklist.md  #     Numerical accuracy checks (for review stage)
-│   │   ├── quality_standards.md #     Citation format, anti-hallucination, depth
-│   │   └── feedback_format.md   #     Structured feedback entry format
-│   └── agents/
-│       └── source_reader.md     #   Subagent prompt for source reading
-├── memory/                      # Cross-concept shared learnings
-│   └── learnings.md             #   Accumulated insights from analysis sessions
-├── handwritten/                 # Human-written exemplar analyses
-│   ├── 01-hts-compact-tokamak.md
-│   ├── 07-maglif.md
-│   ├── 07-maglif.py
-│   ├── 08-frc-w-direct-conversion.md
-│   ├── 11-magnetic-mirror.md
-│   ├── 11-magnetic-mirror.py
-│   ├── 11-magnetic-mirror-comparison.md
-│   └── 26-laser-icf-indirect-drive.md
-└── analyses/                    # Generated outputs (one dir per concept)
-    ├── 01-hts-compact-tokamak/
-    ├── 02-acoustic-icf-sonofusion/
-    ├── ...                      # 38 concept directories
-    └── 36-helical-coil-stellarator/
+ID                                            Concept Name                             State
+-----------------------------------------------------------------------------------------------
+01-hts-compact-tokamak                        HTS Compact Tokamak (CFS ARC/SPARC)       D
+02-acoustic-icf-sonofusion                    Acoustic ICF (Sonofusion)                  R
+...
+Legend: A=approved  S=synthesized  R=reviewed  M=model-setup  D=drafted  G=gap-checked  -=not-started  *=stale
 ```
 
-### Per-Concept Output Files
+## Data Structures
 
-A fully completed concept directory contains:
+### verdict.json
 
+Written by `lib/iteration.py:write_verdict()` at the end of each iteration.
+Read by `lib/iteration.py:read_loop_state()` for resume.
+
+```json
+{
+  "iteration": 2,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "assess",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": false,
+  "sources": [
+    "/home/.../knowledge/concept_research/01-hts.../iter-01/sources/sparc-overview.md",
+    "/home/.../knowledge/concept_research/01-hts.../iter-02/sources/arc-design.md"
+  ],
+  "timestamp": "2026-04-05T14:30:00+00:00"
+}
 ```
-analyses/{concept-id}/
-├── gap_check_prompt.md      # Saved Stage 1 prompt (audit trail)
-├── gap_report.md            # Stage 1 output: source coverage assessment
-├── analysis_prompt.md       # Saved Stage 2 prompt (each iteration)
-├── analysis.md              # Stage 2 output: D1+ analysis (YAML frontmatter + body)
-├── feedback_iter_1.md       # Assessment feedback from iteration 1
-├── feedback_iter_2.md       # Assessment feedback from iteration 2 (if needed)
-├── assessment_prompt.md     # Saved assessment prompt
-├── model_setup_prompt.md    # Saved Stage 3 prompt
-├── model_setup.py           # Stage 3 output: runnable Python cost model
-├── model_output.txt         # Model execution output (LCOE values)
-├── review_prompt.md         # Saved Stage 4 prompt
-├── review.md                # Stage 4 output: findings + proposed actions
-├── address_review_prompt.md # Saved Stage 4b prompt (if review had actions)
-├── address_log.md           # Log of applied review actions
-├── synthesis_prompt.md      # Saved Stage 5 prompt
-└── synthesis.md             # Stage 5 output: editorial synthesis (YAML frontmatter + body)
-```
 
-Every prompt is saved before invocation for full reproducibility.
+| Field | Type | Values |
+|-------|------|--------|
+| `verdict` | string | `PASS` · `FAIL` · `ERROR` · `INTERRUPTED` · `SINGLE_PASS` |
+| `feedback_source` | string | `cold_start` · `assess` · `source_integration` · `research` · `review` |
+| `model_ran` | bool | Whether model-setup executed this iteration |
+| `model_ok` | bool | False if model errored or output missing "lcoe" |
+| `research_ran` | bool | True only when `feedback_source == "research"` |
+| `sources` | string[] | Absolute paths of all sources in `find_sources()` at time of verdict |
 
-## YAML Frontmatter
+### analysis.md Frontmatter
 
-### analysis.md
+Generated by `lib/frontmatter.py:make_frontmatter()`, updated by review and
+approve commands:
 
 ```yaml
 ---
-ID: 11-magnetic-mirror
-Concept: Magnetic Mirror (D-T)
-Company: Realta Fusion
-Status: draft              # draft → approved
-Created: 2026-03-20
-Approved-Date:             # set on approval
-Reuses: []                 # prior concept IDs referenced
-Review-Iterations: 1       # incremented each review cycle
-Last-Review: 2026-03-20
-Review-Status: addressed   # has-actions → addressed → clean
+ID: 02-acoustic-icf-sonofusion
+Concept: Acoustic ICF (Sonofusion)
+Company: First Light Fusion
+Status: draft                  # draft → approved
+Created: 2026-03-22
+Approved-Date:                 # set by approve command
+Reuses: []                     # agent updates via Edit tool during cold-start
+Review-Iterations: 1           # incremented each review cycle
+Last-Review: 2026-03-22        # set by review command
+Review-Status: addressed       # proceed | revise | addressed (legacy: has-actions | clean)
 ---
 ```
 
-### synthesis.md
+| Field | Set by | Values |
+|-------|--------|--------|
+| `Status` | `approve` | `draft` → `approved` |
+| `Reuses` | Agent (Edit tool during cold-start) | List of concept IDs |
+| `Review-Status` | `review` / `address-review` | `proceed` (VERDICT: PROCEED) · `revise` (VERDICT: REVISE) · `addressed` (address-review applied decisions) · legacy: `has-actions` · `clean` (`**Overall:** CLEAN`) |
+| `Review-Iterations` | `review` | Integer, incremented each cycle |
+
+### synthesis.md Frontmatter
 
 ```yaml
 ---
-ID: 11-magnetic-mirror
-Concept: Magnetic Mirror (D-T)
-Company: Realta Fusion
+ID: 02-acoustic-icf-sonofusion
+Concept: Acoustic ICF (Sonofusion)
+Company: First Light Fusion
 Type: synthesis
-Status: draft              # draft → approved
-Created: 2026-03-20
+Status: draft                  # draft → approved (updated alongside analysis.md)
+Created: 2026-03-22
 ---
+```
+
+### LoopState / IterationState
+
+Data model for resume (`lib/iteration.py`):
+
+```python
+@dataclass(frozen=True)
+class IterationState:
+    iteration: int
+    verdict: str           # "PASS" | "FAIL" | "ERROR" | "INTERRUPTED" | "SINGLE_PASS"
+    finding_count: int
+    feedback_source: str   # "cold_start" | "assess" | "source_integration" | "research"
+    model_ran: bool
+    model_ok: bool
+    research_ran: bool
+    sources: list[str]
+    timestamp: str         # ISO 8601
+
+@dataclass
+class LoopState:
+    iterations: list[IterationState]
+    last_complete: int         # highest iter with verdict.json (0 if none)
+    last_incomplete: int | None  # iter with artifacts but no verdict.json
+
+    @property
+    def next_iteration(self) -> int:
+        """Resume incomplete, or start new."""
+        if self.last_incomplete is not None:
+            return self.last_incomplete
+        return self.last_complete + 1
+
+    @property
+    def all_prior_sources(self) -> set[str]:
+        """Union of all sources across all completed iterations."""
+```
+
+### StepResult
+
+Return type of `lib/step_runner.py:run_claude_step()`:
+
+```python
+@dataclass
+class StepResult:
+    status: Literal["done", "skipped", "failed", "dry_run"]
+    stdout: str
+    stderr: str
+    rc: int
+    elapsed: float
+    output_text: str   # contents of the output file (or stdout fallback)
+
+OutputMode = Literal[
+    "stdout_to_file",      # write stdout to output_path
+    "file_with_fallback",  # expect Claude to write file; fall back to stdout
+    "file_exists",         # expect Claude to write file; no fallback
+    "no_output",           # Claude uses Edit tool; only verify rc==0
+]
+```
+
+## Prompt Templates
+
+All templates live in `prompt_templates/`. The template engine
+(`lib/templating.py:fill_template()`) supports:
+- `{{variable}}` — string substitution
+- `{{#if var}}...{{/if}}` — conditional blocks (truthy-string gate)
+- `{{@path/to/file.md}}` — file inclusion (resolved relative to `prompt_templates/`)
+
+### Template Inventory
+
+| Template | Variables | Conditionals | Inclusions | Output | Verdict |
+|----------|-----------|-------------|------------|--------|---------|
+| `gap_check.md` | concept_name, company, dossier_path, source_file_list, brief_path, schema_path | — | — | `gap_report.md` (stdout) | Rating: Ready / Mostly Ready / Significant Gaps / Insufficient |
+| `analysis_v2.md` | concept_name, company, dossier_path, source_paths, brief_path, schema_path, exemplar_paths, approved_analyses, output_template_path, analysis_path, output_path, feedback_path, memory_context | cold_start, feedback_pass, self_advance, memory_context | @config/analysis_goals.md, @config/quality_standards.md, @agents/source_reader.md | `analysis_body.md` (cold) or edits to `analysis.md` (feedback) | — |
+| `assessment.md` | concept_name, analysis_path, feedback_path, model_output_path | model_output_path | @config/analysis_goals.md, @config/assessment_checklist.md, @config/feedback_format.md | `feedback.md` | `VERDICT: PASS` or `VERDICT: FINDINGS` + `### F-N:` |
+| `source_integration.md` | concept_name, analysis_path, new_source_paths, feedback_path | — | @config/analysis_goals.md, @config/feedback_format.md | `feedback.md` | `VERDICT: PASS` or `VERDICT: FINDINGS` + `### F-N:` |
+| `model_setup_costingfe.md` | concept_name, company, analysis_path, example_path, defaults_path, readme_path, costing_constants_path, costingfe_concept, costingfe_fuel, mapping_notes, output_path | mapping_notes | — | `model_setup.py` | — |
+| `model_setup_freeform.md` | concept_name, company, analysis_path, costing_constants_path, output_path | — | — | `model_setup.py` | — |
+| `review.md` | concept_name, company, analysis_path, model_setup_path, model_output_path, approved_syntheses, source_paths, source_count, output_path, iteration, date | model_setup_path, model_output_path | — | `review.md` with VERDICT + PA-N/F-N | `VERDICT: PROCEED` or `VERDICT: REVISE` |
+| `address_review.md` | concept_name, analysis_path, model_setup_path, decisions_block, log_path, iteration, date | model_setup_path | — | Edits to `analysis.md`/`model_setup.py` + `address_log.md` | — |
+| `synthesis.md` | concept_name, company, analysis_path, model_setup_path, model_output_path, approved_syntheses, output_path | model_setup_path, model_output_path | — | `synthesis_body.md` | — |
+| `output_template.md` | — | — | — | (reference: 8 required sections) | — |
+
+### Shared Config Fragments (`config/`)
+
+| File | Included by | Purpose |
+|------|-------------|---------|
+| `analysis_goals.md` | analysis_v2, assessment, source_integration | 5 analysis objectives (positioning, differentiators, TEA implications, modeling approach, risks) |
+| `assessment_checklist.md` | assessment | Quality criteria: shape/framing, TEA impact, modeling recommendations, risk identification |
+| `quality_standards.md` | analysis_v2 | Citation format, anti-hallucination rules, depth expectations |
+| `feedback_format.md` | assessment, source_integration | Shared feedback schema: `VERDICT: PASS \| FINDINGS` + `### F-N:` with Target/Finding/Recommendation/Priority. Max 3 findings. Numerical plausibility OK; not verification. |
+
+### Subagent Templates (`agents/`)
+
+| File | Used by | Purpose |
+|------|---------|---------|
+| `source_reader.md` | analysis_v2.md | Per-source reading subagent — spawned once per source document for context-efficient parallel reading |
+
+### Feedback Format Contract
+
+All feedback-producers (assess, source-integration, research, review
+kick-back) output in the `config/feedback_format.md` schema. The analyze step's feedback-pass
+mode consumes this format agnostically:
+
+```markdown
+VERDICT: FINDINGS
+
+### F-1: Missing cost implication for direct energy conversion
+- **Target:** Section 2 (Challenges) and Section 5 (Parameters)
+- **Finding:** The analysis identifies direct energy conversion as a key
+  differentiator but does not state the cost implication.
+- **Recommendation:** Add a paragraph explaining how direct conversion
+  changes the BOP cost structure. Add conversion efficiency and BOP cost
+  delta to the Section 5 parameter table.
+- **Priority:** blocking
+```
+
+Convergence check (`lib/iteration.py:parse_verdict_from_feedback()`):
+```python
+converged = bool(re.search(r"^VERDICT:\s*PASS", text, re.MULTILINE))
+finding_count = len(re.findall(r"^### F-\d+:", text, re.MULTILINE))
 ```
 
 ## Model Setup Paths
 
-Each concept maps to one of two model generation paths:
+Each concept maps to one of two model generation paths based on
+`lib/concepts.py:get_model_path()`:
 
 **1costingfe path** (29 concepts) — generates a script using the
-[1costingfe](../../1costingfe/) library with family-level defaults
-(e.g., `mfe_tokamak.yaml`) and concept-specific overrides.
+[1costingfe](../../1costingfe/) library with family-level defaults and
+concept-specific overrides. Mapping table in `lib/concepts.py:COSTINGFE_MAPPING`.
 
 **Free-form path** (9 concepts: 12, 13, 15, 16, 18, 19, 24, 27, 35) —
-concepts without a clean 1costingfe mapping get a standalone Python LCOE
-model using `maglif_lcoe_model.py` as a structural reference.
+standalone Python LCOE model using `maglif_lcoe_model.py` as structural
+reference. Set: `lib/concepts.py:FREEFORM_CONCEPTS`.
 
-After generating `model_setup.py`, the pipeline automatically executes it
-and saves output to `model_output.txt`, checking that LCOE appears in the
-results.
+**Family key resolution** (`lib/concepts.py:FAMILY_KEY_MAP`):
 
-## Review Workflow
+| CSV (Family, Sub-type) | Mapping key |
+|------------------------|-------------|
+| (MFE, Tokamak) | MFE-tokamak |
+| (MFE, Stellarator) | MFE-stellarator |
+| (MFE, Open/Linear) | MFE-mirror |
+| (IFE, Laser) | IFE-laser |
+| (IFE, Heavy ion beam) | IFE-heavy-ion |
+| (MIF, Magnetized target) | MIF-mag-target |
 
-The review stage produces structured findings with proposed actions:
+After generating `model_setup.py`, the pipeline runs it via
+`lib/claude.py:run_model()` (`uv run python <script>`, 120s timeout) and
+validates that stdout contains "lcoe" (case-insensitive). LCOE value is
+extracted via regex `LCOE:\s*([\d.]+)\s*\$/MWh` for display.
+
+## Cross-Concept Reuse Pool
+
+The `analyze` stage scans `analyses/*/analysis.md` for `Status: approved`
+(`lib/memory.py:find_approved()`). The approved pool is re-scanned before
+each concept in a batch so mid-batch approvals are picked up.
+
+Approved analysis paths are injected as `{{approved_analyses}}` in the
+analyze prompt. Claude reads them and reuses consistent assumptions with
+attribution. The `Reuses: []` frontmatter field records which prior concepts
+were referenced (agent updates via Edit tool during cold-start).
+
+**Ordering matters**: earlier concepts in a batch provide inputs to later
+ones via the reuse pool.
+
+## Shared Memory
+
+The `memory/` directory contains cross-concept learnings. Memory entries
+use H2 headers with metadata lines:
 
 ```markdown
-### PA-1: Missing citation for plasma beta assumption
-- **Category:** Citation gap
-- **Severity:** medium
-- **Location:** analysis.md, §Plasma Parameters
-- **Finding:** Beta value of 0.15 has no source citation
-- **Proposed Fix:** Add citation from [source] §section
-- **Decision:** _[fill in: accept / reject / modify]_
-- **User Notes:** _[optional context]_
+## Learning title
+Date: 2026-03-29 | Concepts: 09, IFE, all
+[content]
 ```
 
-After reading `review.md`, fill in the **Decision** and **User Notes** fields,
-then run `address-review` to apply the changes. The cycle can repeat
-(`review` → `address-review` → `review` → ...) until the review comes back
-clean.
+`lib/memory.py:load_relevant_memories()` matches entries against the
+current concept's short ID (`09`), family (`IFE`), and the literal `all`
+tag. Matched entries are injected as `{{memory_context}}` in the analyze
+prompt (gated by `{{#if memory_context}}`).
+
+## Directory Layout
+
+### Scripts
+
+```
+scripts/
+├── run_analysis.py          # CLI entry point: argparse, dispatch, handlers (1084 lines)
+└── lib/                     # Pipeline modules
+    ├── __init__.py           # (empty)
+    ├── paths.py              # Path constants (35 lines)
+    ├── concepts.py           # CSV loader, resolver, costingfe mappings (235 lines)
+    ├── frontmatter.py        # YAML frontmatter parse/update/generate (102 lines)
+    ├── state.py              # State detection, staleness propagation (122 lines)
+    ├── sources.py            # Source discovery, add-source helpers, PA-N parsing (214 lines)
+    ├── memory.py             # Reuse pool, exemplars, cross-concept memory (109 lines)
+    ├── templating.py         # Template engine: {{var}}, {{#if}}, {{@path}} (47 lines)
+    ├── claude.py             # invoke_claude(), run_model() (73 lines)
+    ├── step_runner.py        # Shared handler boilerplate: run_claude_step() (153 lines)
+    ├── iteration.py          # IterationState, LoopState, verdict I/O (165 lines)
+    └── loop.py               # Stage 1 loop runner: run_stage1_loop() (604 lines)
+```
+
+### Prompt Templates
+
+```
+prompt_templates/
+├── gap_check.md              # Gap assessment
+├── analysis_v2.md            # D1+ analysis (cold-start / feedback / self-advance modes)
+├── assessment.md             # Quality evaluation (in-loop)
+├── source_integration.md     # Source-integration feedback producer
+├── output_template.md        # 8-section output structure reference
+├── model_setup_costingfe.md  # Model generation (1costingfe path)
+├── model_setup_freeform.md   # Model generation (free-form path)
+├── review.md                 # Strategic quality review (PROCEED/REVISE verdict)
+├── address_review.md         # Apply review decisions
+├── synthesis.md              # Editorial synthesis
+├── config/
+│   ├── analysis_goals.md     # 5 analysis objectives
+│   ├── assessment_checklist.md # Quality criteria for assessor
+│   ├── quality_standards.md  # Citation, anti-hallucination, depth
+│   └── feedback_format.md    # Shared feedback schema (VERDICT + F-N findings)
+└── agents/
+    └── source_reader.md      # Per-source reading subagent
+```
+
+### Per-Concept Directory (iter-N layout)
+
+Concepts that have been through the refactored loop have this structure:
+
+```
+analyses/{concept-id}/
+├── analysis.md              # Canonical (frontmatter + latest iter body)
+├── model_setup.py           # Copy of latest iter's model
+├── model_output.txt         # Copy of latest iter's model output
+├── gap_report.md            # Gap check output (if run)
+├── review.md                # Review with PA-N proposed actions
+├── address_log.md           # Log of applied review actions
+├── synthesis.md             # Editorial synthesis
+├── iter-1/
+│   ├── analyze_prompt.md
+│   ├── analysis_output.md   # Raw body (concatenated into analysis.md)
+│   ├── model_setup_prompt.md
+│   ├── model_setup.py
+│   ├── model_output.txt
+│   ├── assess_prompt.md
+│   ├── feedback.md          # Assess output (VERDICT + findings)
+│   └── verdict.json
+├── iter-2/
+│   ├── analyze_prompt.md    # feedback-pass mode
+│   ├── analysis_output.md
+│   ├── ...
+│   └── verdict.json
+├── iter-3/
+│   └── ...
+└── prompts/                 # Non-iteration prompts (audit trail)
+    ├── gap_check_prompt.md
+    ├── analysis_prompt.md   # Legacy pre-loop prompt (if exists)
+    ├── model_setup_prompt.md
+    ├── review_prompt.md
+    ├── synthesis_prompt.md
+    └── address_review_prompt.md
+```
+
+**Current migration status**: 16/38 concepts have `iter-N/` directories.
+22/38 remain in the pre-refactor flat layout (iteration files like
+`feedback_iter_1.md` at concept root). All 38 have `prompts/` subdirectories.
+
+### Per-Concept Directory (legacy flat layout)
+
+Concepts that predate the loop refactor have:
+
+```
+analyses/{concept-id}/
+├── analysis.md
+├── gap_report.md
+├── model_setup.py
+├── model_output.txt
+├── review.md
+├── address_log.md
+├── synthesis.md
+├── feedback_iter_1.md       # Assessment feedback (flat)
+├── feedback_iter_2.md
+└── prompts/
+    ├── gap_check_prompt.md
+    ├── analysis_prompt.md
+    ├── analysis_prompt_iter_1.md
+    ├── assessment_prompt_iter_1.md
+    ├── model_setup_prompt.md
+    ├── review_prompt.md
+    ├── synthesis_prompt.md
+    └── address_review_prompt.md
+```
+
+Both layouts are fully functional — the commands read `analysis.md` and
+`model_setup.py` from the concept root regardless of layout. Only
+`--resume` requires the `iter-N/` layout (it reads `verdict.json`).
 
 ## Data Sources
 
 Each concept's analysis draws from:
 
-1. **Phase 1a research dossier** — `knowledge/concept_research/{concept-id}/dossier.md`
-2. **Extracted source documents** — `knowledge/concept_research/{concept-id}/iter-*/sources/*.md`
-3. **Handwritten exemplars** — `handwritten/*.md` (injected as quality references)
-4. **Approved prior analyses** — the reuse pool (discovered automatically)
-5. **Shared memory** — `memory/learnings.md` (cross-concept accumulated insights)
+1. **Phase 1a research dossier** — `knowledge/concept_research/{research-id}/dossier.md`
+2. **Extracted source documents** — `knowledge/concept_research/{research-id}/iter-*/sources/*.md`
+3. **Handwritten exemplars** — `handwritten/*.md` (8 files, injected as quality references)
+4. **Approved prior analyses** — the reuse pool (discovered via `find_approved()`)
+5. **Shared memory** — `memory/learnings.md` (cross-concept insights, tag-matched)
+
+Note: split concepts (17a/17b) share Phase 1a sources via `_research_id`
+but write analyses to their own directories under `_id`.
+
+## Planned Changes
+
+### Autonomous Source Acquisition (spec: `.project/active/autonomous-source-acquisition/spec_v2.md`)
+
+Fills the `_run_research_step` stub in `lib/loop.py:570-581`. When
+`--research` is enabled and iter > 1, a research agent will:
+1. Read Section 6 (Data Gap Inventory) for `not-yet-sourced` gaps
+2. Run WebSearch for candidate URLs
+3. Triage with WebFetch (relevance, paywall, JS-empty detection)
+4. Extract promising sources via `add-source`
+5. Write a `research_log.json` (per-concept, append-only)
+6. Generate feedback in `config/feedback_format.md` format
+
+**Status**: Implemented. See `lib/research.py`.

@@ -30,7 +30,7 @@ def get_concept_state(concept_id: str, analyses_dir: Path = ANALYSES_DIR) -> str
             state = "approved"
         elif synthesis_path.exists():
             state = "synthesized"
-        elif fm.get("Review-Status", "") in ("addressed", "clean"):
+        elif fm.get("Review-Status", "") in ("addressed", "clean", "proceed"):
             state = "reviewed"
         elif model_path.exists():
             state = "model-setup"

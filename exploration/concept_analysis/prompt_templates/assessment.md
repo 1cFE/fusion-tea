@@ -1,6 +1,6 @@
 # Assessment: {{concept_name}}
 
-You are evaluating a D1+ concept analysis for quality of framing and completeness relative to the analysis goals. You are NOT checking numerical accuracy — that is the review stage's responsibility.
+You are evaluating a D1+ concept analysis for quality of framing, completeness, and numerical plausibility relative to the analysis goals.
 
 ## Files to Read
 
@@ -30,20 +30,25 @@ Read this file completely:
 The concept also has a quantitative LCOE model. The model output is at:
 `{{model_output_path}}`
 
-Evaluate whether the model's assumptions and parameter values are consistent
-with the analysis. Note any discrepancies in your findings.
+Evaluate whether:
+1. The model's assumptions and parameter values are consistent with the analysis.
+2. The LCOE result is plausible for this concept type (order of magnitude).
+3. Key cost drivers in the model match the analysis narrative's emphasis.
+Note any discrepancies in your findings.
 {{/if}}
 
-## What You Are NOT Checking
+## Scope
 
-Do NOT evaluate any of the following — they are the review stage's responsibility:
-- Numerical accuracy of parameter values
-- Citation correctness (whether quotes match sources)
-- Calculation verification (whether inferred values are derived correctly)
-- Formatting or style consistency
-- Whether the analysis matches the output template structure exactly
+Focus on whether the analysis captures the **shape** of the concept:
+positioning, differentiators, TEA implications, modeling approach, and risks.
 
-Focus exclusively on whether the analysis captures the **shape** of the concept: positioning, differentiators, TEA implications, modeling approach, and risks.
+Additionally, check **numerical plausibility**:
+- Are parameter values the right order of magnitude for this concept type?
+- Does the model output LCOE align with the analysis narrative's claims?
+- Are physical parameters (temperatures, pressures, efficiencies) within
+  physically plausible ranges for the stated technology?
+
+You are NOT checking formatting, style consistency, or template structure compliance.
 
 ## Output
 

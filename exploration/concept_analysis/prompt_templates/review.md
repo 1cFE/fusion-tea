@@ -1,12 +1,13 @@
-# Review: {{concept_name}}
+# Strategic Review: {{concept_name}}
 
-You are performing a structured quality review of the concept analysis and model
-setup for **{{concept_name}}** ({{company}}).
+You are performing a strategic quality review of the concept analysis for
+**{{concept_name}}** ({{company}}).
 
 ## Your Task
 
-Verify factual claims, check calculations, audit model parameters, and identify
-issues. Produce a structured review report with Proposed Actions.
+Evaluate the strategic quality of this analysis — modeling approach, positioning,
+risk framing, data sufficiency, and cross-concept consistency. Produce a
+structured review with a clear PROCEED or REVISE verdict.
 
 ## Files to Review
 
@@ -18,48 +19,45 @@ issues. Produce a structured review report with Proposed Actions.
 `{{model_setup_path}}`
 {{/if}}
 
-### Source Documents (for citation verification)
+{{#if model_output_path}}
+### Model Output
+`{{model_output_path}}`
+{{/if}}
+
+### Source Documents
 {{source_paths}}
 
-## Review Checklist
+### Approved Prior Syntheses (for cross-concept consistency)
+{{approved_syntheses}}
 
-### 1. Citation Verification
-For each direct quote in the analysis:
-- Search the cited source file for the quoted text
-- Report: FOUND (exact or near-match) or NOT FOUND
-- If NOT FOUND, search other source files for the claim
+## Strategic Assessment Dimensions
 
-For section-level references in the parameter table:
-- Verify the cited section exists in the source file
-- Verify the claimed value appears in that section
+### 1. Modeling Approach
+- Are the key cost drivers and differentiators captured?
+- Is the concept being modeled at the right level of abstraction?
+- Are the CAS mapping choices defensible?
 
-### 2. Calculation Verification
-For each derived/inferred value (marked with [inferred] or derivation chain):
-- Re-derive the calculation independently
-- Report: MATCH or MISMATCH with your derivation shown
-- Check units and order of magnitude
+### 2. Strategic Positioning
+- Does the analysis correctly characterize where this concept sits relative
+  to others?
+- Are comparison axes meaningful for this concept type?
+- Is the cross-concept framing consistent with approved analyses?
 
-### 3. Model Setup Audit (if model_setup.py exists)
-For each `model.forward()` parameter:
-- Verify it traces to a value in analysis.md
-- Check the comment citation is accurate
-- Flag any parameter without a source citation
-For each cost_override:
-- Verify the override value is justified
-- Check that eliminated cost items (=0) are appropriate for this concept
-For the ConfinementConcept choice:
-- Is it the right base concept for this fusion approach?
-- Are the override notes adequate?
+### 3. Risk and Uncertainty Framing
+- Are the right risks highlighted (not just technical — also economic,
+  supply chain, regulatory)?
+- Is the confidence assessment realistic given data availability?
+- Are TRL ratings defensible?
 
-### 4. Internal Consistency
-- Do Section 5 parameter values match Section 2 narrative claims?
-- Do TRL ratings in Section 3 align with the challenges in Section 2?
-- Does the model setup use values consistent with the parameter table?
+### 4. Data Sufficiency
+- Are there critical gaps that should trigger more research before proceeding?
+- Are the sources adequate for the claims being made?
+- Is the analysis honest about what it doesn't know?
 
-### 5. Factual Concerns
-- Any claims that appear unsupported by the cited sources?
-- Any numbers that seem physically implausible?
-- Any potential hallucinations (specific claims with no traceable source)?
+### 5. Cross-Concept Consistency
+- Are assumptions consistent with approved analyses of related concepts?
+- Are shared subsystem cost estimates aligned?
+- Are differentiator claims supported by the comparison?
 
 ## Output Format
 
@@ -77,68 +75,50 @@ Use this exact format:
 
 ---
 
-## Citation Verification
+## Strategic Assessment
 
-[For each verified citation:]
-
-### CV-N: [quoted claim or parameter]
-- **Source cited:** [filename §section]
-- **Status:** FOUND | NOT FOUND | PARTIAL MATCH
-- **Actual text:** "[text found in source, or 'not found']"
-- **Notes:** [any discrepancy]
+[Narrative assessment organized by the 5 dimensions above.
+ Not a checklist — a reasoned evaluation. Address each dimension
+ but focus depth on where this concept has notable strengths or
+ concerns.]
 
 ---
 
-## Calculation Verification
+## Verdict
 
-### CALC-N: [inferred value]
-- **Claimed:** [value with derivation]
-- **Re-derived:** [your independent calculation]
-- **Status:** MATCH | MISMATCH
-- **Notes:** [explanation if mismatch]
+VERDICT: [PROCEED | REVISE]
+<!-- MACHINE-PARSED: emit exactly "VERDICT: PROCEED" or "VERDICT: REVISE" on its own line -->
 
----
-
-## Model Setup Audit
-
-### MSA-N: [parameter or override]
-- **Value:** [from model_setup.py]
-- **Source:** [cited analysis section]
-- **Status:** TRACED | UNTRACED | INCORRECT
-- **Notes:** [issues found]
+[If PROCEED]: This analysis is strategically sound. [Brief justification.]
+[If REVISE]: The following issues require another pass through stage1. [Brief justification.]
 
 ---
 
-## Consistency Check
+## Minor Fixes (PROCEED only)
+<!-- MACHINE-PARSED: use exactly "## Minor Fixes" as the heading -->
+[Optional PA-N format actions for address-review. Only for small fixes
+ that don't warrant a full stage1 re-run. Omit this section entirely
+ if there are no minor fixes.]
 
-[Narrative of consistency findings]
-
----
-
-## Proposed Actions
-
-### PA-1: [Short description]
-- **Category:** citation-error | calculation-error | model-bug | inconsistency | factual-concern | improvement
-- **Severity:** blocking | important | minor
-- **Location:** [file §section or line]
+### PA-N: [title]
+- **Category:** improvement | inconsistency | factual-concern
+- **Severity:** minor
+- **Location:** [file §section]
 - **Finding:** [what the review found]
 - **Proposed Fix:** [what should change]
 - **Decision:** _[USER FILLS IN: agree | reject | alternative]_
 - **User Notes:** _[USER FILLS IN]_
 
-### PA-2: ...
-[Continue for all issues found]
-
 ---
 
-## Summary
+## Corrective Actions (REVISE only)
+<!-- MACHINE-PARSED: use exactly "## Corrective Actions" as the heading -->
+[F-N format findings per config/feedback_format.md. These feed back into
+ stage1-all --resume as the feedback source. Only include for REVISE verdict.]
 
-- **Total citations checked:** N
-- **Citations verified:** N
-- **Citations not found:** N
-- **Calculations checked:** N
-- **Calculations matched:** N
-- **Model parameters audited:** N
-- **Proposed Actions:** N (blocking: N, important: N, minor: N)
-- **Overall:** CLEAN | HAS ISSUES
+### F-N: [title]
+- **Target:** [Section or aspect]
+- **Finding:** [Strategic issue — what is wrong with the current approach]
+- **Recommendation:** [What stage1 should do differently]
+- **Priority:** blocking | important | minor
 ```
