@@ -3,118 +3,86 @@
 {% block title %}Compare — Fusion TEA{% endblock %}
 
 {% block body %}
-<div class="page-content page-content--wide" id="app">
+<div id="app" class="page-content page-content--wide">
 
-  {# Loading state while manifest fetches #}
   <div id="loading-state" class="loading-state" role="status" aria-live="polite">
     <span class="loading-spinner" aria-hidden="true"></span>
-    <span class="loading-text">Loading concepts…</span>
+    <span class="loading-text">Loading comparison…</span>
   </div>
-
-  {# Error state: shown on fetch failure #}
-  <div id="error-state" style="display: none;" role="alert" class="error-state">
-    Failed to load concept list. Check the server and try again.
+  <div id="error-state" class="error-state" style="display:none" role="alert">
+    Failed to load concept list. Check the server and
+    <a href="javascript:location.reload()" style="color: var(--color-well-established); text-decoration: underline;">try again</a>.
   </div>
+  <div id="warning-banner" class="warning-banner" style="display:none"></div>
 
-  {# Main content: hidden until manifest loads #}
-  <div id="compare-content" style="display: none;">
-
-    <div class="section-header" style="margin-bottom: var(--space-6);">
+  <div id="compare-content" style="display:none">
+    <!-- Header -->
+    <header class="compare-header">
       <h1 class="section-title">Compare Concepts</h1>
-      <span class="text-muted text-sm">Select up to 4 concepts to compare side-by-side</span>
+    </header>
+
+    <!-- Concept bar -->
+    <div id="concept-bar" class="comparison-selector"></div>
+
+    <!-- Concept picker dropdown -->
+    <div id="concept-picker" class="card" style="display:none; max-width: 560px; margin-top: var(--space-2);" role="listbox" aria-label="Select concept to add">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-3);">
+        <span style="font-size: var(--font-size-sm); font-weight: 600; color: var(--color-text-primary);">
+          Select a concept to add
+        </span>
+        <button id="close-picker" class="btn btn--ghost"
+                style="padding: 2px var(--space-2); font-size: var(--font-size-base);"
+                aria-label="Close concept picker">✕</button>
+      </div>
+      <div id="picker-list" class="picker-list"
+           style="max-height: 320px; overflow-y: auto; display: flex; flex-direction: column; gap: var(--space-1);">
+      </div>
     </div>
 
-    {# Concept selector: chips + add button #}
-    <div id="selector-area" style="margin-bottom: var(--space-6);">
-      <div id="selected-chips" class="comparison-selector" aria-label="Selected concepts" role="group">
-        {# JS populates concept chips + add button here #}
-      </div>
+    <!-- Empty state -->
+    <div id="empty-state" class="compare-empty" style="display:none">
+      <p>Select concepts on the <a href="/taxonomy">Taxonomy</a> page,
+         or use the <strong>+ Add concept</strong> button above.</p>
+    </div>
 
-      {# Inline concept picker: shown when add button clicked #}
-      <div id="concept-picker"
-           style="display: none; max-width: 560px; margin-top: var(--space-2);"
-           class="card"
-           role="listbox"
-           aria-label="Select concept to add">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-3);">
-          <span style="font-size: var(--font-size-sm); font-weight: 600; color: var(--color-text-primary);">
-            Select a concept to add
-          </span>
-          <button id="close-picker"
-                  class="btn btn--ghost"
-                  style="padding: 2px var(--space-2); font-size: var(--font-size-base);"
-                  aria-label="Close concept picker">✕</button>
+    <!-- Mode toggle -->
+    <div id="mode-toggle" class="mode-toggle" style="display:none">
+      <button id="mode-integrated" class="btn btn--primary" data-mode="integrated">
+        Integrated
+      </button>
+      <button id="mode-landscape" class="btn btn--ghost" data-mode="landscape">
+        Landscape
+      </button>
+    </div>
+
+    <!-- Integrated layout -->
+    <div id="compare-integrated" class="compare-integrated" style="display:none">
+      <div class="compare-panel" id="panel-left">
+        <div class="compare-panel__header">
+          <select id="select-left" class="compare-view-select"></select>
         </div>
-        <div id="picker-list"
-             style="max-height: 320px; overflow-y: auto; display: flex; flex-direction: column; gap: var(--space-1);">
-          {# JS populates picker items here #}
+        <div class="compare-panel__content" id="content-left"></div>
+      </div>
+      <div class="compare-panel" id="panel-right">
+        <div class="compare-panel__header">
+          <select id="select-right" class="compare-view-select"></select>
         </div>
+        <div class="compare-panel__content" id="content-right"></div>
       </div>
     </div>
 
-    {# Empty state: invitation when 0 concepts selected #}
-    <div id="empty-state"
-         class="concept-grid--empty"
-         style="padding: var(--space-12) var(--space-6);">
-      Select one or more concepts above to compare their economics.
+    <!-- Landscape layout -->
+    <div id="compare-landscape" style="display:none">
+      <div class="compare-landscape__header">
+        <select id="select-landscape" class="compare-view-select"></select>
+      </div>
+      <div id="landscape-grid" class="compare-landscape-grid"></div>
     </div>
 
-    {# Tabs + content: shown when ≥1 concept selected #}
-    <div id="tabs-section" style="display: none;">
-
-      <div class="tabs" role="tablist" aria-label="Comparison views">
-        <button class="tab-btn tab-btn--active"
-                role="tab"
-                id="tab-btn-sensitivity"
-                data-tab="sensitivity"
-                aria-selected="true"
-                aria-controls="tab-sensitivity">Sensitivity</button>
-        <button class="tab-btn"
-                role="tab"
-                id="tab-btn-cas"
-                data-tab="cas"
-                aria-selected="false"
-                aria-controls="tab-cas">CAS Breakdown</button>
-        <button class="tab-btn"
-                role="tab"
-                id="tab-btn-headline"
-                data-tab="headline"
-                aria-selected="false"
-                aria-controls="tab-headline">Headline</button>
-      </div>
-
-      {# Sensitivity tab: aligned tornado charts, one per eligible concept #}
-      <div id="tab-sensitivity"
-           class="tab-panel tab-panel--active"
-           role="tabpanel"
-           aria-labelledby="tab-btn-sensitivity">
-        <div id="sensitivity-content"></div>
-      </div>
-
-      {# CAS tab: side-by-side stacked bars with shared x-axis #}
-      <div id="tab-cas"
-           class="tab-panel"
-           role="tabpanel"
-           aria-labelledby="tab-btn-cas">
-        <div id="cas-content"></div>
-      </div>
-
-      {# Headline tab: comparison table for all selected concepts #}
-      <div id="tab-headline"
-           class="tab-panel"
-           role="tabpanel"
-           aria-labelledby="tab-btn-headline">
-        <div id="headline-content"></div>
-      </div>
-
-    </div>{# /tabs-section #}
-
-  </div>{# /compare-content #}
-</div>{# /app #}
+  </div>
+</div>
 {% endblock %}
 
 {% block scripts %}
-<script src="/static/js/tornado.js"></script>
-<script src="/static/js/cas_breakdown.js"></script>
 <script src="/static/js/comparison.js"></script>
 {% endblock %}

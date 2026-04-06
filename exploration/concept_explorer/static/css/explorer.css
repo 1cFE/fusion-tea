@@ -2144,3 +2144,127 @@ main {
   margin-left: auto;
   flex-shrink: 0;
 }
+
+/* --------------------------------------------------------------------------
+   Comparison Page — Mode Toggle, Layouts, View Selectors
+   -------------------------------------------------------------------------- */
+
+/* Mode toggle */
+.mode-toggle {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+/* Integrated: two-panel grid */
+.compare-integrated {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+/* Panel */
+.compare-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+}
+.compare-panel__header {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--space-3);
+}
+.compare-panel__content {
+  flex: 1;
+}
+
+/* View selector dropdown */
+.compare-view-select {
+  padding: var(--space-1) var(--space-3);
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-sans);
+  cursor: pointer;
+}
+.compare-view-select option:disabled {
+  color: var(--color-text-muted);
+}
+
+/* Landscape: header + grid */
+.compare-landscape__header {
+  margin-bottom: var(--space-4);
+}
+.compare-landscape-grid {
+  display: grid;
+  gap: var(--space-4);
+}
+.compare-landscape-grid--1up {
+  grid-template-columns: 1fr;
+  max-width: 50%;
+}
+.compare-landscape-grid--2up {
+  grid-template-columns: repeat(2, 1fr);
+}
+.compare-landscape-grid--3up {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Landscape cell */
+.compare-landscape-cell {
+  background-color: var(--color-surface-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+.compare-landscape-cell__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  font-size: var(--font-size-md);
+  font-weight: 600;
+}
+.compare-landscape-cell__content {
+  min-height: 200px;
+}
+
+/* Warning banner */
+.warning-banner {
+  background-color: rgba(234, 179, 8, 0.1);
+  border: 1px solid rgba(234, 179, 8, 0.3);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-4);
+  margin-bottom: var(--space-4);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* Empty state */
+.compare-empty {
+  text-align: center;
+  padding: var(--space-12) var(--space-6);
+  color: var(--color-text-muted);
+}
+.compare-empty a {
+  color: var(--color-well-established);
+}
+
+/* Placeholder card (temporary until Items 3a/3b) */
+.compare-placeholder {
+  background-color: var(--color-surface-2);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+}

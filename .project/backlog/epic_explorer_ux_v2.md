@@ -113,9 +113,10 @@ Rebuild the concept explorer's comparison experience to bridge taxonomy explorat
 
 ---
 
-### Item 2: Comparison Page Shell — Routing, Modes & Layout [1–1.5 days]
+### Item 2: Comparison Page Shell — Routing, Modes & Layout [1–1.5 days] ✅ COMPLETE
 
 **Type**: Implementation
+**Completed**: 2026-04-05
 
 **Objective**: Replace the current comparison page with the new two-mode (Integrated/Landscape) shell — routing, URL encoding, mode switching, panel layout, and view selector UI. View content rendering is stubbed (placeholder panels).
 
@@ -149,13 +150,13 @@ Rebuild the concept explorer's comparison experience to bridge taxonomy explorat
 - Responsive/mobile layout
 
 **Success Criteria**:
-- [ ] URL encodes mode + concepts and is bookmarkable
-- [ ] Navigating to URL with query params loads correct mode and concepts
-- [ ] Integrated mode shows two panels with independent view selectors
-- [ ] View mutual exclusion works in Integrated mode
-- [ ] Landscape mode shows responsive grid (2-up or 3-up based on concept count)
-- [ ] Mode toggle switches layout without full page reload
-- [ ] Placeholder panels confirm correct concept data is available in each slot
+- [x] URL encodes mode + concepts and is bookmarkable
+- [x] Navigating to URL with query params loads correct mode and concepts
+- [x] Integrated mode shows two panels with independent view selectors
+- [x] View mutual exclusion works in Integrated mode
+- [x] Landscape mode shows responsive grid (2-up or 3-up based on concept count)
+- [x] Mode toggle switches layout without full page reload
+- [x] Placeholder panels confirm correct concept data is available in each slot
 
 **Estimated Effort**: 1.5 days (spec 1h, design 2h, plan 1h, execute 8h)
 
@@ -413,4 +414,4 @@ Items 1 and 2 can be developed in parallel. Item 3a depends on Item 2's shell. I
 ---
 
 **Last Updated**: 2026-04-05
-**Next Action**: Begin Item 2 (Compare Shell)
+**Next Action**: Begin Item 3a (Categorical + Summary Views)

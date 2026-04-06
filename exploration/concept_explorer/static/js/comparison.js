@@ -1,47 +1,35 @@
 /**
- * comparison.js — Comparison view controller.
+ * comparison.js — Comparison page controller (v2).
  *
- * Manages a set of up to 4 selected concepts and renders side-by-side
- * sensitivity tornado charts, CAS cost breakdowns, and a headline economics table.
+ * Two comparison modes:
+ *   - Integrated (1–3 concepts): dual side-by-side panels with independent view selectors
+ *   - Landscape  (1–6 concepts): single view selector, responsive concept grid
  *
- * Data is fetched lazily: the manifest on page load, each concept's full data
- * only when it is added to the comparison set.  The comparison set is synced to
- * POST /api/state on every add/remove.
+ * URL-driven state: /compare?mode=integrated&concepts=arc,sparc&left=categorical&right=summary
  *
- * Depends on:
- *   - tornado.js       (renderTornado)
- *   - cas_breakdown.js (renderCASBreakdown)
- *   - explorer.css     (badge, tab, comparison-* classes)
+ * VIEW_REGISTRY: Items 3a/3b register render functions here; shell falls back to placeholders.
+ *
+ * Carries over: fetchManifest, fetchConcept, conceptCache, postState, FAMILY_META
  */
 
 "use strict";
 
 (function () {
   // ---------------------------------------------------------------------------
-  // State
+  // Constants
   // ---------------------------------------------------------------------------
 
-  /** @type {string[]} Selected concept IDs, ordered by insertion. Max 4. */
-  let comparisonSet = [];
-
-  /** @type {Record<string, Object>} Lazily populated ConceptData cache. */
-  let conceptCache = {};
-
-  /** @type {Object|null} ConceptManifest fetched on init. */
-  let manifest = null;
-
-  /** @type {string} Currently active tab name. */
-  let activeTab = "sensitivity";
-
-  /** @type {boolean} Whether the inline concept picker is open. */
-  let pickerOpen = false;
+  const MAX_INTEGRATED = 3;
+  const MAX_LANDSCAPE = 6;
+  const VALID_VIEWS = ["categorical", "summary", "capex", "sensitivity"];
+  const DEFAULT_LEFT = "categorical";
+  const DEFAULT_RIGHT = "summary";
+  const DEFAULT_VIEW = "categorical";
 
   // ---------------------------------------------------------------------------
-  // Display metadata (mirrors concept_page.js — confinement_family enum values
-  // are uppercase in ConceptData, lowercase in ConceptManifestEntry)
+  // Display metadata (carried over from v1)
   // ---------------------------------------------------------------------------
 
-  /** Maps both uppercase (ConceptData) and lowercase (manifest) family values. */
   const FAMILY_META = {
     MFE: { label: "MFE", cls: "badge badge-mfe" },
     IFE: { label: "IFE", cls: "badge badge-ife" },
@@ -59,18 +47,45 @@
     low: { label: "Low", cls: "badge badge-confidence badge-confidence--low" },
   };
 
-  // Top-level CAS account keys — must match models.py CAS_NAMES ordering
-  const CAS_KEYS = [
-    "cas10", "cas21", "cas22", "cas23", "cas24", "cas25",
-    "cas26", "cas27", "cas28", "cas29", "cas30",
-    "cas40", "cas50", "cas60", "cas70", "cas80", "cas90",
-  ];
+  // ---------------------------------------------------------------------------
+  // View Registry — Items 3a/3b register render functions here
+  // ---------------------------------------------------------------------------
+
+  const VIEW_REGISTRY = {
+    categorical:  { label: "Categorical",  renderIntegrated: null, renderLandscape: null },
+    summary:      { label: "Summary",      renderIntegrated: null, renderLandscape: null },
+    capex:        { label: "CapEx",        renderIntegrated: null, renderLandscape: null },
+    sensitivity:  { label: "Sensitivity",  renderIntegrated: null, renderLandscape: null },
+  };
+
+  // Expose globally so Items 3a/3b scripts can register renderers
+  window.VIEW_REGISTRY = VIEW_REGISTRY;
+
+  // ---------------------------------------------------------------------------
+  // State
+  // ---------------------------------------------------------------------------
+
+  let _state = {
+    concepts: [],          // Ordered concept IDs (validated against manifest)
+    mode: "integrated",    // "integrated" | "landscape"
+    left: DEFAULT_LEFT,    // View for integrated left panel
+    right: DEFAULT_RIGHT,  // View for integrated right panel
+    view: DEFAULT_VIEW,    // View for landscape mode
+  };
+
+  /** @type {Object|null} ConceptManifest fetched on init. */
+  let manifest = null;
+
+  /** @type {Record<string, Object>} Lazily populated ConceptData cache. */
+  let conceptCache = {};
+
+  /** @type {boolean} Whether the inline concept picker is open. */
+  let pickerOpen = false;
 
   // ---------------------------------------------------------------------------
   // DOM helpers
   // ---------------------------------------------------------------------------
 
-  /** Create element with optional className and text content. */
   function el(tag, cls, text) {
     const node = document.createElement(tag);
     if (cls) node.className = cls;
@@ -78,7 +93,6 @@
     return node;
   }
 
-  /** Append multiple children to a parent. */
   function append(parent, ...children) {
     for (const c of children) {
       if (c != null) parent.appendChild(c);
@@ -87,13 +101,9 @@
   }
 
   // ---------------------------------------------------------------------------
-  // API helpers
+  // API helpers (carried over from v1)
   // ---------------------------------------------------------------------------
 
-  /**
-   * Sync comparison set to server state.
-   * Fires-and-forgets — comparison view doesn't depend on the server ACK.
-   */
   function postState() {
     fetch("/api/state", {
       method: "POST",
@@ -101,7 +111,7 @@
       body: JSON.stringify({
         current_concept_id: null,
         slider_overrides: {},
-        comparison_set: [...comparisonSet],
+        comparison_set: [..._state.concepts],
         timestamp: "",
       }),
     }).catch((err) => console.warn("[compare] POST /api/state failed:", err));
@@ -113,10 +123,6 @@
     return resp.json();
   }
 
-  /**
-   * Fetch and cache a concept's full data.
-   * Returns cached copy if already fetched.
-   */
   async function fetchConcept(conceptId) {
     if (conceptCache[conceptId]) return conceptCache[conceptId];
     const resp = await fetch(`/api/concepts/${conceptId}`);
@@ -127,39 +133,154 @@
   }
 
   // ---------------------------------------------------------------------------
-  // Concept add / remove
+  // URL State Manager
   // ---------------------------------------------------------------------------
 
   /**
-   * Add a concept to the comparison set.
-   * Fetches concept data lazily before adding.
-   * No-op if already in set or at max 4.
+   * Parse URL query parameters into a state object with defaults applied.
    */
-  async function addConcept(conceptId) {
-    if (comparisonSet.length >= 4) return;
-    if (comparisonSet.includes(conceptId)) return;
+  function parseUrl() {
+    const params = new URLSearchParams(window.location.search);
 
-    try {
-      await fetchConcept(conceptId);
-    } catch (err) {
-      console.error("[compare] Failed to fetch concept:", conceptId, err);
-      return;
+    const conceptsRaw = params.get("concepts") || "";
+    const concepts = conceptsRaw.split(",").filter((s) => s.length > 0);
+
+    const modeRaw = params.get("mode");
+    let mode;
+    if (modeRaw === "integrated" || modeRaw === "landscape") {
+      mode = modeRaw;
+    } else {
+      // Auto-select based on concept count (FR-4)
+      mode = concepts.length > MAX_INTEGRATED ? "landscape" : "integrated";
     }
 
-    comparisonSet.push(conceptId);
-    postState();
-    closePicker();
-    renderAll();
+    const leftRaw = params.get("left");
+    const left = VALID_VIEWS.includes(leftRaw) ? leftRaw : DEFAULT_LEFT;
+
+    const rightRaw = params.get("right");
+    const right = VALID_VIEWS.includes(rightRaw) ? rightRaw : DEFAULT_RIGHT;
+
+    const viewRaw = params.get("view");
+    const view = VALID_VIEWS.includes(viewRaw) ? viewRaw : DEFAULT_VIEW;
+
+    return { concepts, mode, left, right, view };
   }
 
-  function removeConcept(conceptId) {
-    comparisonSet = comparisonSet.filter((id) => id !== conceptId);
-    postState();
-    renderAll();
+  /**
+   * Write current state to URL via history.replaceState.
+   * Only includes non-default values to keep URLs clean.
+   */
+  function syncUrl() {
+    const params = new URLSearchParams();
+
+    if (_state.concepts.length > 0) {
+      params.set("concepts", _state.concepts.join(","));
+    }
+    if (_state.concepts.length > 0) {
+      params.set("mode", _state.mode);
+    }
+
+    // Only include view params if not defaults
+    if (_state.mode === "integrated") {
+      if (_state.left !== DEFAULT_LEFT) params.set("left", _state.left);
+      if (_state.right !== DEFAULT_RIGHT) params.set("right", _state.right);
+    } else {
+      if (_state.view !== DEFAULT_VIEW) params.set("view", _state.view);
+    }
+
+    const qs = params.toString();
+    const url = qs ? `${window.location.pathname}?${qs}` : window.location.pathname;
+    history.replaceState(null, "", url);
+  }
+
+  /**
+   * Validate and correct state against the manifest.
+   * Returns { state, warnings } where warnings is an array of strings.
+   */
+  function validateAndCorrect(state) {
+    const warnings = [];
+    const validIds = new Set(manifest.concepts.map((c) => c.concept_id));
+
+    // Filter concepts to those present in manifest
+    const validConcepts = [];
+    const invalidConcepts = [];
+    for (const id of state.concepts) {
+      if (validIds.has(id)) {
+        validConcepts.push(id);
+      } else {
+        invalidConcepts.push(id);
+      }
+    }
+    if (invalidConcepts.length > 0) {
+      warnings.push(`Skipped unknown concept(s): ${invalidConcepts.join(", ")}`);
+    }
+
+    // Enforce MAX_LANDSCAPE
+    if (validConcepts.length > MAX_LANDSCAPE) {
+      warnings.push(`Trimmed to ${MAX_LANDSCAPE} concepts (maximum)`);
+      validConcepts.length = MAX_LANDSCAPE;
+    }
+
+    state.concepts = validConcepts;
+
+    // FR-6: auto-correct integrated with >MAX_INTEGRATED concepts
+    if (state.mode === "integrated" && state.concepts.length > MAX_INTEGRATED) {
+      state.mode = "landscape";
+      warnings.push("Switched to Landscape mode (too many concepts for Integrated)");
+    }
+
+    return { state, warnings };
   }
 
   // ---------------------------------------------------------------------------
-  // Concept picker open / close
+  // Concept Bar — chips + add button (FR-20)
+  // ---------------------------------------------------------------------------
+
+  function renderConceptBar() {
+    const barEl = document.getElementById("concept-bar");
+    barEl.innerHTML = "";
+
+    for (const conceptId of _state.concepts) {
+      const concept = conceptCache[conceptId];
+      if (!concept) continue;
+
+      const chip = el("div", "comparison-chip");
+
+      const familyInfo = FAMILY_META[concept.confinement_family] ?? {
+        label: concept.confinement_family,
+        cls: "badge badge-nonstandard",
+      };
+      const badge = el("span", familyInfo.cls, familyInfo.label);
+
+      const nameSpan = document.createElement("span");
+      nameSpan.textContent = concept.name;
+
+      const removeBtn = el("button", "comparison-chip__remove");
+      removeBtn.setAttribute("aria-label", `Remove ${concept.name} from comparison`);
+      removeBtn.textContent = "×";
+      removeBtn.addEventListener("click", () => removeConcept(conceptId));
+
+      append(chip, badge, nameSpan, removeBtn);
+      barEl.appendChild(chip);
+    }
+
+    // Show add button when below max
+    if (_state.concepts.length < MAX_LANDSCAPE) {
+      const addBtn = el("button", "comparison-add-btn");
+      addBtn.textContent = "+ Add concept";
+      addBtn.addEventListener("click", () => {
+        if (pickerOpen) {
+          closePicker();
+        } else {
+          openPicker();
+        }
+      });
+      barEl.appendChild(addBtn);
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Concept Picker — add concepts inline (FR-20–22)
   // ---------------------------------------------------------------------------
 
   function openPicker() {
@@ -173,58 +294,27 @@
     document.getElementById("concept-picker").style.display = "none";
   }
 
-  // ---------------------------------------------------------------------------
-  // Selector chips
-  // ---------------------------------------------------------------------------
-
-  function renderSelector() {
-    const chipsEl = document.getElementById("selected-chips");
-    chipsEl.innerHTML = "";
-
-    for (const conceptId of comparisonSet) {
-      const concept = conceptCache[conceptId];
-      if (!concept) continue;
-
-      const chip = el("div", "comparison-chip");
-
-      const nameSpan = document.createElement("span");
-      nameSpan.textContent = concept.name;
-
-      const removeBtn = el("button", "comparison-chip__remove");
-      removeBtn.setAttribute("aria-label", `Remove ${concept.name} from comparison`);
-      removeBtn.textContent = "×";
-      removeBtn.addEventListener("click", () => removeConcept(conceptId));
-
-      append(chip, nameSpan, removeBtn);
-      chipsEl.appendChild(chip);
-    }
-
-    // Show add button when fewer than 4 concepts selected
-    if (comparisonSet.length < 4) {
-      const addBtn = el("button", "comparison-add-btn");
-      addBtn.textContent = "+ Add concept";
-      addBtn.addEventListener("click", () => {
-        if (pickerOpen) {
-          closePicker();
-        } else {
-          openPicker();
-        }
-      });
-      chipsEl.appendChild(addBtn);
-    }
-  }
-
-  // ---------------------------------------------------------------------------
-  // Concept picker list
-  // ---------------------------------------------------------------------------
-
   function renderPickerList() {
     const listEl = document.getElementById("picker-list");
     listEl.innerHTML = "";
 
+    const selectedSet = new Set(_state.concepts);
     const available = manifest.concepts.filter(
-      (entry) => !comparisonSet.includes(entry.concept_id)
+      (entry) => !selectedSet.has(entry.concept_id)
     );
+
+    // Count header
+    const countEl = el("div", "text-muted text-xs");
+    countEl.style.cssText = "padding: 0 var(--space-3); margin-bottom: var(--space-2);";
+    countEl.textContent = `${_state.concepts.length} of ${MAX_LANDSCAPE} selected`;
+    listEl.appendChild(countEl);
+
+    if (_state.concepts.length >= MAX_LANDSCAPE) {
+      listEl.appendChild(
+        el("p", "text-muted text-sm", "Maximum concepts selected.")
+      );
+      return;
+    }
 
     if (available.length === 0) {
       listEl.appendChild(
@@ -273,507 +363,266 @@
     }
   }
 
-  // ---------------------------------------------------------------------------
-  // Tab switching
-  // ---------------------------------------------------------------------------
+  async function addConcept(conceptId) {
+    if (_state.concepts.length >= MAX_LANDSCAPE) return;
+    if (_state.concepts.includes(conceptId)) return;
 
-  function switchTab(tabName) {
-    activeTab = tabName;
-    document.querySelectorAll(".tab-btn[data-tab]").forEach((btn) => {
-      const isActive = btn.dataset.tab === tabName;
-      btn.classList.toggle("tab-btn--active", isActive);
-      btn.setAttribute("aria-selected", String(isActive));
-    });
-    document.querySelectorAll(".tab-panel").forEach((panel) => {
-      panel.classList.toggle("tab-panel--active", panel.id === `tab-${tabName}`);
-    });
-    renderActiveTab();
-  }
-
-  function renderActiveTab() {
-    if (activeTab === "sensitivity") renderSensitivity();
-    else if (activeTab === "cas") renderCAS();
-    else if (activeTab === "headline") renderHeadline();
-  }
-
-  // ---------------------------------------------------------------------------
-  // Utility: resolve a parameter display name across loaded concepts.
-  // Why: parameter_metadata may be sparse — search all loaded concepts for the first hit.
-  // ---------------------------------------------------------------------------
-
-  function getDisplayName(paramName) {
-    for (const conceptId of comparisonSet) {
-      const concept = conceptCache[conceptId];
-      if (concept && concept.parameter_metadata && concept.parameter_metadata[paramName]) {
-        return concept.parameter_metadata[paramName].display_name || paramName;
-      }
-    }
-    return paramName;
-  }
-
-  // ---------------------------------------------------------------------------
-  // Sensitivity Tab
-  // ---------------------------------------------------------------------------
-
-  /**
-   * Render aligned tornado charts for all concepts with sensitivity data.
-   *
-   * Alignment strategy:
-   * 1. Build a union parameter set across all eligible concepts.
-   * 2. Classify each param as shared (≥2 concepts) or unique (exactly 1 concept).
-   * 3. Sort each group by max |elasticity| descending across the set.
-   * 4. Call renderTornado() for each concept with filtered sensitivities and
-   *    topN = orderedParams.length (union size).
-   * 5. Use Plotly.relayout to force the same categoryarray and x-axis range on
-   *    every chart — this is what produces visual row alignment.
-   * 6. Add gap marker traces (scatter, open-diamond symbol) for shared parameters
-   *    absent in a given concept.  These are visually distinct from zero-value bars.
-   */
-  function renderSensitivity() {
-    const contentEl = document.getElementById("sensitivity-content");
-    contentEl.innerHTML = "";
-
-    const concepts = comparisonSet.map((id) => conceptCache[id]).filter(Boolean);
-    if (concepts.length === 0) return;
-
-    const eligible = concepts.filter((c) => c.has_cost_model && c.has_sensitivities);
-    const ineligible = concepts.filter((c) => !c.has_cost_model || !c.has_sensitivities);
-
-    // Warn for ineligible concepts (no sensitivity data)
-    if (ineligible.length > 0) {
-      const notice = el("div", "error-state");
-      notice.style.marginBottom = "var(--space-4)";
-      const reasons = ineligible.map((c) => {
-        const why = !c.has_cost_model ? "no cost model" : "no sensitivity data";
-        return `${c.name} (${why})`;
-      });
-      notice.textContent = `Sensitivity unavailable for: ${reasons.join("; ")}`;
-      contentEl.appendChild(notice);
-    }
-
-    if (eligible.length === 0) {
-      contentEl.appendChild(
-        el(
-          "p",
-          "text-muted text-sm",
-          "None of the selected concepts have sensitivity data."
-        )
-      );
+    try {
+      await fetchConcept(conceptId);
+    } catch (err) {
+      console.error("[compare] Failed to fetch concept:", conceptId, err);
       return;
     }
 
-    // Build union parameter set
-    const paramCounts = {};           // paramName → count of eligible concepts that have it
-    const paramMaxAbsElasticity = {}; // paramName → max |elasticity| across all concepts
+    _state.concepts.push(conceptId);
 
-    for (const concept of eligible) {
-      const sens = concept.cost_model.sensitivities;
-      const allParams = {
-        ...(sens.engineering || {}),
-        ...(sens.financial || {}),
-      };
-      for (const [paramName, entry] of Object.entries(allParams)) {
-        paramCounts[paramName] = (paramCounts[paramName] || 0) + 1;
-        const absE = Math.abs(entry.elasticity);
-        if (paramMaxAbsElasticity[paramName] == null || absE > paramMaxAbsElasticity[paramName]) {
-          paramMaxAbsElasticity[paramName] = absE;
-        }
-      }
+    // Auto-switch to landscape if exceeding integrated max
+    if (_state.concepts.length > MAX_INTEGRATED && _state.mode === "integrated") {
+      _state.mode = "landscape";
     }
 
-    // Shared: ≥2 concepts have the parameter; unique: exactly 1 concept has it
-    const sharedParams = Object.keys(paramCounts).filter((p) => paramCounts[p] >= 2);
-    const uniqueParams = Object.keys(paramCounts).filter((p) => paramCounts[p] === 1);
+    syncUrl();
+    postState();
+    closePicker();
+    renderAll();
+  }
 
-    // Sort each group by max |elasticity| descending across the set
-    sharedParams.sort((a, b) => paramMaxAbsElasticity[b] - paramMaxAbsElasticity[a]);
-    uniqueParams.sort((a, b) => paramMaxAbsElasticity[b] - paramMaxAbsElasticity[a]);
+  function removeConcept(conceptId) {
+    _state.concepts = _state.concepts.filter((id) => id !== conceptId);
+    // Don't force switch back to integrated on removal — keep current mode
+    syncUrl();
+    postState();
+    renderAll();
+  }
 
-    // Shared first, then unique — this is the uniform order for all tornado charts
-    const orderedParams = [...sharedParams, ...uniqueParams];
+  // ---------------------------------------------------------------------------
+  // Mode Toggle (FR-4–6)
+  // ---------------------------------------------------------------------------
 
-    // Compute shared x-axis range: max |elasticity| across all eligible concepts
-    let maxAbsE = 0;
-    for (const concept of eligible) {
-      const sens = concept.cost_model.sensitivities;
-      for (const e of Object.values(sens.engineering || {})) {
-        if (Math.abs(e.elasticity) > maxAbsE) maxAbsE = Math.abs(e.elasticity);
-      }
-      for (const e of Object.values(sens.financial || {})) {
-        if (Math.abs(e.elasticity) > maxAbsE) maxAbsE = Math.abs(e.elasticity);
-      }
-    }
-    const xRange = maxAbsE > 0 ? maxAbsE * 1.15 : 1.0;
+  function renderModeToggle() {
+    const toggleEl = document.getElementById("mode-toggle");
+    const count = _state.concepts.length;
+    const hasConcepts = count > 0;
 
-    // Shared height so rows align across columns
-    const chartHeight = Math.max(300, orderedParams.length * 28 + 120);
+    toggleEl.style.display = hasConcepts ? "" : "none";
+    if (!hasConcepts) return;
 
-    // Section heading
-    if (sharedParams.length > 0) {
-      const heading = document.createElement("div");
-      heading.style.cssText =
-        "display: flex; align-items: baseline; gap: var(--space-3); margin-bottom: var(--space-3);";
-      const h3 = el("h3", "section-title");
-      h3.style.fontSize = "var(--font-size-base)";
-      h3.textContent = "Shared Parameters";
-      const sub = el(
-        "span",
-        "text-muted text-xs",
-        `${sharedParams.length} params present in ≥2 concepts — sorted by max |elasticity|` +
-          (uniqueParams.length > 0
-            ? `; ${uniqueParams.length} concept-unique param(s) below`
-            : "")
-      );
-      append(heading, h3, sub);
-      contentEl.appendChild(heading);
-    }
+    const intBtn = document.getElementById("mode-integrated");
+    const lndBtn = document.getElementById("mode-landscape");
 
-    // Grid: one column per eligible concept
-    const gridEl = document.createElement("div");
-    const cols = Math.min(eligible.length, 4);
-    gridEl.style.cssText =
-      `display: grid; grid-template-columns: repeat(${cols}, 1fr);` +
-      " gap: var(--space-4); align-items: start;";
-    contentEl.appendChild(gridEl);
+    // Labels with count
+    intBtn.textContent = `Integrated (${count})`;
+    lndBtn.textContent = `Landscape (${count})`;
 
-    // Build display-name list for the shared categoryarray.
-    // Plotly renders category axis bottom→top, so the last entry in categoryarray
-    // appears at the top of the chart — we reverse the display order here.
-    const displayNames = orderedParams.map((p) => getDisplayName(p));
-    const plotlyCategoryArray = [...displayNames].reverse();
+    // Integrated disabled when > MAX_INTEGRATED
+    const intDisabled = count > MAX_INTEGRATED;
+    intBtn.disabled = intDisabled;
 
-    for (const concept of eligible) {
-      const colEl = document.createElement("div");
-
-      // Column header: concept name + family badge
-      const header = document.createElement("div");
-      header.style.cssText =
-        "display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2);";
-
-      const nameEl = el("span", null, concept.name);
-      nameEl.style.cssText =
-        "font-weight: 600; font-size: var(--font-size-sm); color: var(--color-text-primary);";
-
-      const familyInfo = FAMILY_META[concept.confinement_family] ?? {
-        label: concept.confinement_family,
-        cls: "badge badge-nonstandard",
-      };
-      append(header, nameEl, el("span", familyInfo.cls, familyInfo.label));
-      colEl.appendChild(header);
-
-      // Mount point for the tornado chart
-      const mountEl = document.createElement("div");
-      mountEl.id = `tornado-compare-${concept.concept_id}`;
-      colEl.appendChild(mountEl);
-      gridEl.appendChild(colEl);
-
-      // Build filtered sensitivities — include only params from the union set.
-      // Why: renderTornado sorts by |elasticity|; without filtering it would show
-      // params in a different order than the shared union, breaking alignment.
-      const allConceptParams = {
-        ...(concept.cost_model.sensitivities.engineering || {}),
-        ...(concept.cost_model.sensitivities.financial || {}),
-      };
-      const filteredEng = {};
-      const filteredFin = {};
-      for (const p of orderedParams) {
-        if (concept.cost_model.sensitivities.engineering?.[p]) {
-          filteredEng[p] = concept.cost_model.sensitivities.engineering[p];
-        } else if (concept.cost_model.sensitivities.financial?.[p]) {
-          filteredFin[p] = concept.cost_model.sensitivities.financial[p];
-        }
-      }
-
-      renderTornado(mountEl, {
-        sensitivities: { engineering: filteredEng, financial: filteredFin },
-        parameterMetadata: concept.parameter_metadata || {},
-        topN: orderedParams.length,
-        // No onParameterClick in comparison view — no parameter card popovers here
-        onParameterClick: null,
-      });
-
-      // Force shared axis ordering and range so all columns are visually aligned.
-      // This overrides whatever categoryarray renderTornado computed from sorted order.
-      Plotly.relayout(mountEl, {
-        "yaxis.categoryarray": plotlyCategoryArray,
-        "yaxis.categoryorder": "array",
-        "xaxis.range": [-xRange, xRange],
-        height: chartHeight,
-      });
-
-      // Gap markers: add for shared parameters this concept is missing.
-      // NEVER use a zero-value bar — gap markers are visually distinct open shapes
-      // so reviewers can tell "parameter absent" from "parameter has zero elasticity".
-      const missingShared = sharedParams.filter((p) => !(p in allConceptParams));
-      if (missingShared.length > 0) {
-        const gapDisplayNames = missingShared.map((p) => getDisplayName(p));
-        Plotly.addTraces(mountEl, {
-          type: "scatter",
-          x: Array(missingShared.length).fill(0),
-          y: gapDisplayNames,
-          mode: "markers",
-          name: "n/a",
-          marker: {
-            symbol: "diamond-open",
-            color: "rgba(107, 114, 128, 0.40)",
-            size: 8,
-            line: { width: 2, color: "rgba(107, 114, 128, 0.45)" },
-          },
-          hovertemplate: "%{y}: not applicable to this concept<extra></extra>",
-          showlegend: true,
-          legendrank: 9999,
-        });
-      }
+    // Active styling
+    if (_state.mode === "integrated") {
+      intBtn.className = "btn btn--primary";
+      lndBtn.className = "btn btn--ghost";
+    } else {
+      intBtn.className = "btn btn--ghost";
+      lndBtn.className = "btn btn--primary";
     }
   }
 
   // ---------------------------------------------------------------------------
-  // CAS Tab
+  // View Selector Utility
   // ---------------------------------------------------------------------------
 
   /**
-   * Render side-by-side CAS breakdown charts with a shared x-axis scale.
-   * Only concepts with a cost model are shown; concepts without cost data are noted.
+   * Populate a <select> element with VIEW_REGISTRY options.
+   * @param {HTMLSelectElement} selectEl
+   * @param {string} selectedValue — currently selected view key
+   * @param {string|null} disabledValue — view key to disable (for mutual exclusion)
    */
-  function renderCAS() {
-    const contentEl = document.getElementById("cas-content");
-    contentEl.innerHTML = "";
-
-    const concepts = comparisonSet.map((id) => conceptCache[id]).filter(Boolean);
-    const eligible = concepts.filter((c) => c.has_cost_model && c.cost_model);
-    const ineligible = concepts.filter((c) => !c.has_cost_model || !c.cost_model);
-
-    if (ineligible.length > 0) {
-      const notice = el("div", "error-state");
-      notice.style.marginBottom = "var(--space-4)";
-      notice.textContent =
-        "No CAS data for: " + ineligible.map((c) => c.name).join(", ");
-      contentEl.appendChild(notice);
+  function populateViewSelect(selectEl, selectedValue, disabledValue) {
+    selectEl.innerHTML = "";
+    for (const [key, view] of Object.entries(VIEW_REGISTRY)) {
+      const option = document.createElement("option");
+      option.value = key;
+      option.textContent = view.label;
+      if (key === selectedValue) option.selected = true;
+      if (key === disabledValue) option.disabled = true;
+      selectEl.appendChild(option);
     }
+  }
 
-    if (eligible.length === 0) {
-      contentEl.appendChild(
-        el("p", "text-muted text-sm", "No selected concepts have cost model data.")
-      );
+  // ---------------------------------------------------------------------------
+  // View Dispatch & Placeholder (FR-15, FR-16)
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Build concept data array from current state for rendering.
+   */
+  function getConceptDataArray() {
+    return _state.concepts
+      .map((id) => conceptCache[id])
+      .filter(Boolean)
+      .map((c) => ({
+        concept_id: c.concept_id,
+        name: c.name,
+        confinement_family: c.confinement_family,
+        data: c,
+      }));
+  }
+
+  /**
+   * Render view content into a container. Dispatches to registered renderer
+   * or falls back to placeholder.
+   */
+  function renderViewContent(container, viewName, concepts, mode) {
+    container.innerHTML = "";
+    const view = VIEW_REGISTRY[viewName];
+    if (!view) {
+      renderPlaceholder(container, viewName, concepts);
       return;
     }
 
-    // Shared x-axis scale: max total capital cost across all eligible concepts.
-    // Why: aligned x-axes make it easy to compare absolute cost magnitudes at a glance.
-    let maxTotal = 0;
-    for (const concept of eligible) {
-      const total = CAS_KEYS.reduce(
-        (sum, key) => sum + (concept.cost_model[key]?.cost_m_usd || 0),
-        0
-      );
-      if (total > maxTotal) maxTotal = total;
-    }
-    const sharedScale = maxTotal > 0 ? maxTotal : null;
-
-    // Grid of CAS charts
-    const gridEl = document.createElement("div");
-    const cols = Math.min(eligible.length, 4);
-    gridEl.style.cssText =
-      `display: grid; grid-template-columns: repeat(${cols}, 1fr);` +
-      " gap: var(--space-4); align-items: start;";
-    contentEl.appendChild(gridEl);
-
-    for (const concept of eligible) {
-      const colEl = document.createElement("div");
-
-      // Column header
-      const header = document.createElement("div");
-      header.style.cssText =
-        "display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2);";
-
-      const nameEl = el("span", null, concept.name);
-      nameEl.style.cssText =
-        "font-weight: 600; font-size: var(--font-size-sm); color: var(--color-text-primary);";
-
-      const familyInfo = FAMILY_META[concept.confinement_family] ?? {
-        label: concept.confinement_family,
-        cls: "badge badge-nonstandard",
-      };
-      append(header, nameEl, el("span", familyInfo.cls, familyInfo.label));
-      colEl.appendChild(header);
-
-      // CAS mount point
-      const mountEl = document.createElement("div");
-      colEl.appendChild(mountEl);
-      gridEl.appendChild(colEl);
-
-      // Build cas object from the flat cost_model properties
-      const casObj = {};
-      for (const key of CAS_KEYS) {
-        if (concept.cost_model[key]) {
-          casObj[key] = concept.cost_model[key];
-        }
-      }
-
-      renderCASBreakdown(mountEl, {
-        cas: casObj,
-        cas22_detail: concept.cost_model.cas22_detail || {},
-        sharedScale,
+    if (mode === "integrated" && view.renderIntegrated) {
+      view.renderIntegrated(container, concepts);
+    } else if (mode === "landscape" && view.renderLandscape) {
+      // For landscape, concepts is a single concept object
+      view.renderLandscape(container, concepts, {
+        allConcepts: getConceptDataArray(),
+        sharedScales: {},
       });
+    } else {
+      renderPlaceholder(container, viewName, concepts);
     }
   }
 
-  // ---------------------------------------------------------------------------
-  // Headline Tab
-  // ---------------------------------------------------------------------------
-
   /**
-   * Render a comparison table: one row per metric, one column per concept.
+   * Render placeholder card confirming data routing (FR-16).
+   * @param {HTMLElement} container
+   * @param {string} viewName
+   * @param {Object|Object[]} concepts — single concept or array
    */
-  function renderHeadline() {
-    const contentEl = document.getElementById("headline-content");
-    contentEl.innerHTML = "";
+  function renderPlaceholder(container, viewName, concepts) {
+    const view = VIEW_REGISTRY[viewName];
+    const label = view ? view.label : viewName;
+    const conceptArr = Array.isArray(concepts) ? concepts : [concepts];
 
-    const concepts = comparisonSet.map((id) => conceptCache[id]).filter(Boolean);
-    if (concepts.length === 0) return;
+    const card = el("div", "compare-placeholder");
 
-    // Metric row definitions
-    const rows = [
-      {
-        label: "LCOE",
-        render: (c) => {
-          if (!c.has_cost_model || !c.cost_model?.headline) return "—";
-          const v = c.cost_model.headline.lcoe_per_mwh;
-          return v != null ? `${v.toFixed(1)} $/MWh` : "—";
-        },
-      },
-      {
-        label: "Overnight Cost",
-        render: (c) => {
-          if (!c.has_cost_model || !c.cost_model?.headline) return "—";
-          const v = c.cost_model.headline.overnight_cost_per_kw;
-          return v != null ? `${v.toFixed(0)} $/kW` : "—";
-        },
-      },
-      {
-        label: "P_net",
-        render: (c) => {
-          if (!c.has_cost_model || !c.cost_model?.headline) return "—";
-          const v = c.cost_model.headline.p_net_mw;
-          return v != null ? `${v.toFixed(0)} MW` : "—";
-        },
-      },
-      {
-        label: "Q_eng",
-        render: (c) => {
-          if (!c.has_cost_model || !c.cost_model?.headline) return "—";
-          const v = c.cost_model.headline.q_eng;
-          return v != null ? v.toFixed(2) : "—";
-        },
-      },
-      {
-        label: "Capacity Factor",
-        render: (c) => {
-          if (!c.has_cost_model || !c.cost_model?.headline) return "—";
-          const v = c.cost_model.headline.capacity_factor;
-          return v != null ? `${(v * 100).toFixed(0)}%` : "—";
-        },
-      },
-      {
-        label: "Confidence",
-        // Confidence lives on the manifest entry, not ConceptData
-        render: (c) => {
-          const entry = manifest.concepts.find((m) => m.concept_id === c.concept_id);
-          if (!entry || !entry.confidence) return { text: "—" };
-          const info = CONFIDENCE_BADGE[entry.confidence];
-          if (!info) return { text: entry.confidence };
-          return { badge: true, label: info.label, cls: info.cls };
-        },
-      },
-    ];
+    const heading = el("div", null, label);
+    heading.style.cssText = "font-size: var(--font-size-md); font-weight: 600; color: var(--color-text-secondary);";
+    card.appendChild(heading);
 
-    const table = document.createElement("table");
-    table.className = "comparison-table";
+    const subtitle = el("div", null, "View renderer not yet registered");
+    subtitle.style.cssText = "font-size: var(--font-size-xs); margin-bottom: var(--space-3);";
+    card.appendChild(subtitle);
 
-    // Header row: "Metric" column + one column per concept
-    const thead = document.createElement("thead");
-    const headerRow = document.createElement("tr");
+    for (const c of conceptArr) {
+      const row = document.createElement("div");
+      row.style.cssText = "display: flex; align-items: center; gap: var(--space-2);";
 
-    const metricTh = document.createElement("th");
-    metricTh.textContent = "Metric";
-    headerRow.appendChild(metricTh);
+      const familyInfo = FAMILY_META[c.confinement_family] ?? {
+        label: c.confinement_family,
+        cls: "badge badge-nonstandard",
+      };
+      append(
+        row,
+        el("span", familyInfo.cls, familyInfo.label),
+        el("span", null, c.name),
+        el("span", "text-muted text-xs", c.concept_id)
+      );
+      card.appendChild(row);
+    }
+
+    container.appendChild(card);
+  }
+
+  // ---------------------------------------------------------------------------
+  // Integrated Layout (FR-7–10)
+  // ---------------------------------------------------------------------------
+
+  function renderIntegrated() {
+    document.getElementById("compare-integrated").style.display = "";
+    document.getElementById("compare-landscape").style.display = "none";
+
+    const concepts = getConceptDataArray();
+
+    // Populate view selectors with mutual exclusion
+    const selectLeft = document.getElementById("select-left");
+    const selectRight = document.getElementById("select-right");
+
+    populateViewSelect(selectLeft, _state.left, _state.right);
+    populateViewSelect(selectRight, _state.right, _state.left);
+
+    // Render panel contents
+    renderViewContent(document.getElementById("content-left"), _state.left, concepts, "integrated");
+    renderViewContent(document.getElementById("content-right"), _state.right, concepts, "integrated");
+  }
+
+  function renderLandscape() {
+    document.getElementById("compare-landscape").style.display = "";
+    document.getElementById("compare-integrated").style.display = "none";
+
+    const concepts = getConceptDataArray();
+
+    // Populate view selector
+    const selectLandscape = document.getElementById("select-landscape");
+    populateViewSelect(selectLandscape, _state.view, null);
+
+    // Build grid
+    const gridEl = document.getElementById("landscape-grid");
+    gridEl.innerHTML = "";
+
+    // Grid class based on concept count
+    gridEl.className = "compare-landscape-grid";
+    if (concepts.length === 1) {
+      gridEl.classList.add("compare-landscape-grid--1up");
+    } else if (concepts.length <= 3) {
+      gridEl.classList.add("compare-landscape-grid--2up");
+    } else {
+      gridEl.classList.add("compare-landscape-grid--3up");
+    }
 
     for (const concept of concepts) {
-      const th = document.createElement("th");
-      th.style.fontFamily = "var(--font-sans)";
-      th.style.fontWeight = "600";
-      th.style.color = "var(--color-text-primary)";
+      const cell = el("div", "compare-landscape-cell");
 
-      const link = document.createElement("a");
-      link.href = `/concept/${concept.concept_id}`;
-      link.textContent = concept.name;
-      link.style.color = "inherit";
-      th.appendChild(link);
+      // Cell header: name + family badge
+      const header = el("div", "compare-landscape-cell__header");
+      const familyInfo = FAMILY_META[concept.confinement_family] ?? {
+        label: concept.confinement_family,
+        cls: "badge badge-nonstandard",
+      };
+      append(header, el("span", null, concept.name), el("span", familyInfo.cls, familyInfo.label));
+      cell.appendChild(header);
 
-      const familyInfo = FAMILY_META[concept.confinement_family];
-      if (familyInfo) {
-        const badge = el("span", familyInfo.cls, familyInfo.label);
-        badge.style.marginLeft = "var(--space-2)";
-        th.appendChild(badge);
-      }
+      // Cell content area
+      const content = el("div", "compare-landscape-cell__content");
+      renderViewContent(content, _state.view, concept, "landscape");
+      cell.appendChild(content);
 
-      headerRow.appendChild(th);
+      gridEl.appendChild(cell);
     }
-
-    thead.appendChild(headerRow);
-    table.appendChild(thead);
-
-    // Data rows
-    const tbody = document.createElement("tbody");
-
-    for (const row of rows) {
-      const tr = document.createElement("tr");
-
-      const labelTd = document.createElement("td");
-      labelTd.style.fontFamily = "var(--font-sans)";
-      labelTd.style.color = "var(--color-text-muted)";
-      labelTd.style.fontSize = "var(--font-size-xs)";
-      labelTd.style.textTransform = "uppercase";
-      labelTd.style.letterSpacing = "0.07em";
-      labelTd.style.whiteSpace = "nowrap";
-      labelTd.textContent = row.label;
-      tr.appendChild(labelTd);
-
-      for (const concept of concepts) {
-        const td = document.createElement("td");
-        const val = row.render(concept);
-
-        if (val && typeof val === "object" && val.badge) {
-          td.appendChild(el("span", val.cls, val.label));
-        } else if (val && typeof val === "object") {
-          td.textContent = val.text || "—";
-        } else {
-          td.textContent = val || "—";
-        }
-
-        tr.appendChild(td);
-      }
-
-      tbody.appendChild(tr);
-    }
-
-    table.appendChild(tbody);
-    contentEl.appendChild(table);
   }
 
   // ---------------------------------------------------------------------------
-  // Full page render (selector + active tab content)
+  // Render orchestrator
   // ---------------------------------------------------------------------------
 
   function renderAll() {
-    renderSelector();
+    const hasConcepts = _state.concepts.length > 0;
 
-    const hasConcepts = comparisonSet.length > 0;
     document.getElementById("empty-state").style.display = hasConcepts ? "none" : "";
-    document.getElementById("tabs-section").style.display = hasConcepts ? "" : "none";
+
+    renderConceptBar();
+    renderModeToggle();
 
     if (hasConcepts) {
-      renderActiveTab();
+      if (_state.mode === "integrated") {
+        renderIntegrated();
+      } else {
+        renderLandscape();
+      }
+    } else {
+      document.getElementById("compare-integrated").style.display = "none";
+      document.getElementById("compare-landscape").style.display = "none";
     }
   }
 
@@ -784,12 +633,15 @@
   async function init() {
     const loadingEl = document.getElementById("loading-state");
     const errorEl = document.getElementById("error-state");
+    const warningEl = document.getElementById("warning-banner");
     const contentEl = document.getElementById("compare-content");
 
     loadingEl.style.display = "";
     contentEl.style.display = "none";
     errorEl.style.display = "none";
+    warningEl.style.display = "none";
 
+    // Step 1-2: Fetch manifest
     try {
       manifest = await fetchManifest();
     } catch (err) {
@@ -799,13 +651,48 @@
       return;
     }
 
+    // Step 3: Parse URL and validate
+    const parsed = parseUrl();
+    const { state: corrected, warnings } = validateAndCorrect(parsed);
+    _state = corrected;
+
+    // Step 4: Show warnings
+    if (warnings.length > 0) {
+      warningEl.textContent = warnings.join(" · ");
+      warningEl.style.display = "";
+    }
+
+    // Step 5: Fetch concept data for all valid IDs (parallel)
+    if (_state.concepts.length > 0) {
+      const results = await Promise.allSettled(
+        _state.concepts.map((id) => fetchConcept(id))
+      );
+      // Remove concepts that failed to fetch
+      const failed = [];
+      for (let i = results.length - 1; i >= 0; i--) {
+        if (results[i].status === "rejected") {
+          failed.push(_state.concepts[i]);
+          _state.concepts.splice(i, 1);
+        }
+      }
+      if (failed.length > 0) {
+        const msg = `Failed to load: ${failed.join(", ")}`;
+        warningEl.textContent = warningEl.style.display === "none"
+          ? msg
+          : warningEl.textContent + " · " + msg;
+        warningEl.style.display = "";
+      }
+    }
+
+    // Step 6: Write corrected state back to URL
+    syncUrl();
+
+    // Step 7: Sync comparison_set to server (fire-and-forget)
+    postState();
+
+    // Step 8-9: Show content, wire events, render
     loadingEl.style.display = "none";
     contentEl.style.display = "";
-
-    // Wire tab buttons
-    document.querySelectorAll(".tab-btn[data-tab]").forEach((btn) => {
-      btn.addEventListener("click", () => switchTab(btn.dataset.tab));
-    });
 
     // Wire close-picker button
     document.getElementById("close-picker").addEventListener("click", closePicker);
@@ -814,16 +701,91 @@
     document.addEventListener("click", (e) => {
       if (!pickerOpen) return;
       const pickerEl = document.getElementById("concept-picker");
-      // If click is inside the picker or on the chips area (which holds the add button),
-      // don't close — the add-button click handler manages its own open/close toggle.
       if (pickerEl.contains(e.target)) return;
-      if (document.getElementById("selected-chips").contains(e.target)) return;
+      if (document.getElementById("concept-bar").contains(e.target)) return;
       closePicker();
     });
 
-    // Initial render with empty set
+    // Wire mode toggle buttons
+    document.getElementById("mode-integrated").addEventListener("click", () => {
+      if (_state.concepts.length > MAX_INTEGRATED) return;
+      _state.mode = "integrated";
+      syncUrl();
+      renderAll();
+    });
+    document.getElementById("mode-landscape").addEventListener("click", () => {
+      _state.mode = "landscape";
+      syncUrl();
+      renderAll();
+    });
+
+    // Wire integrated view selectors
+    document.getElementById("select-left").addEventListener("change", (e) => {
+      _state.left = e.target.value;
+      syncUrl();
+      // Update mutual exclusion on right dropdown
+      populateViewSelect(document.getElementById("select-right"), _state.right, _state.left);
+      // Re-render left panel only
+      renderViewContent(
+        document.getElementById("content-left"),
+        _state.left,
+        getConceptDataArray(),
+        "integrated"
+      );
+    });
+    document.getElementById("select-right").addEventListener("change", (e) => {
+      _state.right = e.target.value;
+      syncUrl();
+      // Update mutual exclusion on left dropdown
+      populateViewSelect(document.getElementById("select-left"), _state.left, _state.right);
+      // Re-render right panel only
+      renderViewContent(
+        document.getElementById("content-right"),
+        _state.right,
+        getConceptDataArray(),
+        "integrated"
+      );
+    });
+
+    // Wire landscape view selector
+    document.getElementById("select-landscape").addEventListener("change", (e) => {
+      _state.view = e.target.value;
+      syncUrl();
+      // Re-render all landscape cells (scoped to grid container)
+      const concepts = getConceptDataArray();
+      const cells = document.getElementById("landscape-grid")
+        .querySelectorAll(".compare-landscape-cell__content");
+      cells.forEach((cell, i) => {
+        if (concepts[i]) {
+          renderViewContent(cell, _state.view, concepts[i], "landscape");
+        }
+      });
+    });
+
     renderAll();
   }
+
+  // ---------------------------------------------------------------------------
+  // popstate — browser back/forward
+  // ---------------------------------------------------------------------------
+
+  window.addEventListener("popstate", () => {
+    if (!manifest) return;
+    const parsed = parseUrl();
+    const { state: corrected } = validateAndCorrect(parsed);
+    _state = corrected;
+    // Only replaceState if validation changed something, to preserve history entries
+    const parsed2 = parseUrl();
+    if (corrected.concepts.join(",") !== parsed2.concepts.join(",") ||
+        corrected.mode !== parsed2.mode) {
+      syncUrl();
+    }
+    renderAll();
+  });
+
+  // ---------------------------------------------------------------------------
+  // Boot
+  // ---------------------------------------------------------------------------
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
