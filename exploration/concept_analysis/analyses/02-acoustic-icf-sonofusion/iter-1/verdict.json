@@ -1,0 +1,11 @@
+{
+  "iteration": 1,
+  "verdict": "INTERRUPTED",
+  "finding_count": 0,
+  "feedback_source": "cold_start",
+  "model_ran": false,
+  "model_ok": false,
+  "research_ran": false,
+  "sources": [],
+  "timestamp": "2026-04-06T00:54:21.135677+00:00"
+}

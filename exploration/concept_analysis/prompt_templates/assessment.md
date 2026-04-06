@@ -24,6 +24,16 @@ Read this file completely:
 4. For each finding, explain what is insufficient and what should change
 5. If the analysis adequately addresses all goals, return PASS
 
+{{#if model_output_path}}
+## Model Output
+
+The concept also has a quantitative LCOE model. The model output is at:
+`{{model_output_path}}`
+
+Evaluate whether the model's assumptions and parameter values are consistent
+with the analysis. Note any discrepancies in your findings.
+{{/if}}
+
 ## What You Are NOT Checking
 
 Do NOT evaluate any of the following — they are the review stage's responsibility:

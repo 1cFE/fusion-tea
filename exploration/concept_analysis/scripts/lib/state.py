@@ -3,6 +3,7 @@
 from pathlib import Path
 
 from lib.frontmatter import parse_frontmatter, update_frontmatter_field
+from lib.iteration import read_loop_state
 from lib.paths import ANALYSES_DIR
 
 
@@ -91,6 +92,28 @@ def propagate_staleness(concept_id: str, reason: str,
                 stale_files.append(path.name)
 
     return stale_files
+
+
+def get_iteration_summary(concept_id: str,
+                          analyses_dir: Path = ANALYSES_DIR) -> str | None:
+    """Return human-readable iteration summary for status display.
+
+    E.g., 'iter-3/PASS' or 'iter-2/FAIL (3 findings)' or None if no iterations.
+    Does not surface model_ran for migrated iterations (pre-loop era).
+    """
+    concept_dir = analyses_dir / concept_id
+    loop_state = read_loop_state(concept_dir)
+
+    if not loop_state.iterations and loop_state.last_incomplete is None:
+        return None
+
+    if loop_state.iterations:
+        last = loop_state.iterations[-1]
+        suffix = f" ({last.finding_count} findings)" if last.finding_count else ""
+        return f"iter-{last.iteration}/{last.verdict}{suffix}"
+
+    # Only incomplete iteration exists (no verdict)
+    return f"iter-{loop_state.last_incomplete}/INCOMPLETE"
 
 
 def _has_downstream_artifacts(out_dir: Path) -> bool:

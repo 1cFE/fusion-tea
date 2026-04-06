@@ -66,11 +66,10 @@ def run_claude_step(
     """
     cid = concept["_id"]
 
-    # 1. Ensure output directory exists
+    # 1. Ensure output and prompt directories exist
     if output_path is not None:
         output_path.parent.mkdir(parents=True, exist_ok=True)
-    else:
-        prompt_path.parent.mkdir(parents=True, exist_ok=True)
+    prompt_path.parent.mkdir(parents=True, exist_ok=True)
 
     # 2. Skip if exists
     if skip_if_exists and output_path and output_path.exists() and not args.force:

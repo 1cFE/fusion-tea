@@ -29,11 +29,7 @@ from lib.paths import (
     ANALYSES_DIR,
     BRIEF_PATH,
     CONCEPT_ANALYSIS_DIR,
-    COSTINGFE_CONSTANTS_PATH,
-    COSTINGFE_DEFAULTS_DIR,
     COSTINGFE_DIR,
-    COSTINGFE_EXAMPLES_DIR,
-    COSTINGFE_README_PATH,
     EXTRACT_OUTPUT,
     FREEFORM_EXEMPLAR_PATH,
     HANDWRITTEN_DIR,
@@ -51,14 +47,11 @@ from lib.concepts import (
     COSTINGFE_MAPPING,
     FAMILY_KEY_MAP,
     FREEFORM_CONCEPTS,
-    FUEL_MAPPING,
-    get_costingfe_mapping,
-    get_model_path,
     load_table,
     resolve_concepts,
     resolve_one,
 )
-from lib.state import get_concept_state, propagate_staleness, _has_downstream_artifacts
+from lib.state import get_concept_state, get_iteration_summary, propagate_staleness, _has_downstream_artifacts
 from lib.sources import (
     check_duplicate_source,
     find_latest_sources_dir,
@@ -78,6 +71,7 @@ from lib.memory import (
     load_relevant_memories,
 )
 from lib.claude import invoke_claude, run_model
+from lib.loop import build_model_vars, run_stage1_loop
 from lib.step_runner import run_claude_step, StepResult
 
 
@@ -116,8 +110,8 @@ def cmd_status(concepts: list[dict], args: argparse.Namespace) -> None:
         "approved":    "  A",
     }
 
-    print(f"{'ID':<45} {'Concept Name':<40} {'State'}")
-    print("-" * 95)
+    print(f"{'ID':<45} {'Concept Name':<40} {'State':<6} {'Iterations'}")
+    print("-" * 120)
 
     counts = {s: 0 for s in state_symbols}
     stale_count = 0
@@ -129,7 +123,8 @@ def cmd_status(concepts: list[dict], args: argparse.Namespace) -> None:
         if state.endswith("*"):
             sym = sym + "*"
             stale_count += 1
-        print(f"{c['_id']:<45} {c['Concept Name']:<40} {sym}")
+        iter_summary = get_iteration_summary(c["_id"]) or ""
+        print(f"{c['_id']:<45} {c['Concept Name']:<40} {sym:<6} {iter_summary}")
 
     print(f"\n{len(targets)} concepts: "
           f"{counts['approved']} approved, {counts['synthesized']} synthesized, "
@@ -189,7 +184,7 @@ def cmd_gap_check(concepts: list[dict], args: argparse.Namespace) -> None:
             c,
             template_name="gap_check.md",
             build_vars=_build_vars,
-            prompt_path=out_dir / "gap_check_prompt.md",
+            prompt_path=out_dir / "prompts" / "gap_check_prompt.md",
             output_path=out_dir / "gap_report.md",
             label="gap-check",
             args=args,
@@ -211,9 +206,20 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
         print("No concepts to analyze.")
         return
 
-    # Validate --feedback constraints
+    resume = getattr(args, "resume", False)
+
+    # Validate flag constraints
+    if resume and args.force:
+        print("Error: --resume and --force are mutually exclusive.")
+        print("  --resume continues from the last iteration")
+        print("  --force restarts from scratch")
+        sys.exit(1)
+
     feedback = getattr(args, "feedback", None)
     if feedback:
+        if resume:
+            print("Error: --feedback and --resume are mutually exclusive.")
+            sys.exit(1)
         if args.force:
             print("Error: --feedback and --force are mutually exclusive.")
             print("  --feedback applies changes to existing analysis.md")
@@ -226,250 +232,134 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
             print("Error: --feedback can only be used with a single concept")
             sys.exit(1)
 
+    # Feedback-apply mode: separate path (not part of the loop)
+    if feedback:
+        _apply_external_feedback(targets, args, feedback)
+        return
+
+    # Load templates once
     analysis_template = (TEMPLATES_DIR / "analysis_v2.md").read_text(encoding="utf-8")
     assessment_template = (TEMPLATES_DIR / "assessment.md").read_text(encoding="utf-8")
-    exemplars = find_exemplars()
-    output_template_path = TEMPLATES_DIR / "output_template.md"
-    max_passes = args.max_passes
 
     for c in targets:
         cid = c["_id"]
         out_dir = ANALYSES_DIR / cid
         analysis_path = out_dir / "analysis.md"
-        had_existing_downstream = _has_downstream_artifacts(out_dir)
 
-        # For feedback mode, analysis.md must exist
-        if feedback:
-            if not analysis_path.exists():
-                print(f"  skip {cid} (no analysis.md — --feedback requires existing analysis)")
-                continue
-        # Skip if already done (unless --force)
-        elif analysis_path.exists() and not args.force:
-            print(f"  skip {cid} (analysis.md exists, use --force to re-run)")
+        # Skip logic (unchanged behavior without --resume)
+        if not resume and not args.force and analysis_path.exists():
+            print(f"  skip {cid} (analysis.md exists, use --force or --resume)")
             continue
 
-        # Gather inputs (use _research_id for Phase 1a lookup)
-        rid = c["_research_id"]
-        dossier_path = get_dossier_path(rid)
-        if not dossier_path:
-            print(f"  skip {cid} (no Phase 1a dossier found)")
-            continue
+        common_vars = _build_common_vars(c)
+        if common_vars is None:
+            continue  # skip message already printed
 
-        sources = find_sources(rid)
-
-        # Re-scan approved pool before each concept (mid-batch approvals picked up)
-        approved = find_approved()
         out_dir.mkdir(parents=True, exist_ok=True)
 
-        # Load cross-concept memories relevant to this concept
-        memory_context = load_relevant_memories(
-            cid, MEMORY_DIR, family=c.get("Confinement Family", ""),
-        )
+        # Delegate to loop runner
+        run_stage1_loop(c, args, resume=resume,
+                        common_vars=common_vars,
+                        analysis_template=analysis_template,
+                        assessment_template=assessment_template)
 
-        # Common template vars shared across all modes
-        common_vars = {
-            "concept_id": cid,
-            "concept_name": c["Concept Name"],
-            "company": c.get("Company", ""),
-            "dossier_path": str(dossier_path),
-            "source_paths": format_source_list(sources),
-            "brief_path": str(BRIEF_PATH),
-            "schema_path": str(SCHEMA_PATH),
-            "exemplar_paths": format_path_list(exemplars, "(no exemplars found)"),
-            "approved_analyses": format_path_list(
-                approved, "No approved prior analyses available."),
-            "output_template_path": str(output_template_path),
-            "analysis_path": str(analysis_path),
-            "memory_context": memory_context,
-        }
 
-        # === FEEDBACK MODE: apply external feedback file ===
-        if feedback:
-            ts = datetime.now().strftime("%Y%m%d_%H%M%S")
-            prompt = fill_template(analysis_template, {
-                **common_vars,
-                "output_path": "",  # not used in feedback mode
-                "cold_start": "",
-                "feedback_pass": "true",
-                "feedback_path": str(feedback),
-                "self_advance": "",
-            })
+def _build_common_vars(concept: dict) -> dict | None:
+    """Build common template variables for a concept. Returns None if dossier missing."""
+    cid = concept["_id"]
+    rid = concept["_research_id"]
+    analysis_path = ANALYSES_DIR / cid / "analysis.md"
 
-            # Save prompt for audit trail
-            prompt_path = out_dir / f"feedback_apply_prompt_{ts}.md"
-            prompt_path.write_text(prompt, encoding="utf-8")
+    dossier_path = get_dossier_path(rid)
+    if not dossier_path:
+        print(f"  skip {cid} (no Phase 1a dossier found)")
+        return None
 
-            if args.dry_run:
-                print(f"  dry-run {cid}: feedback prompt saved to {prompt_path}")
-                continue
+    sources = find_sources(rid)
+    approved = find_approved()
+    exemplars = find_exemplars()
+    output_template_path = TEMPLATES_DIR / "output_template.md"
 
-            print(f"  apply feedback {cid} ...", end="", flush=True)
-            t0 = time.time()
-            _stdout, stderr, rc = invoke_claude(
-                prompt, cwd=CONCEPT_ANALYSIS_DIR,
-                timeout=args.timeout, model=args.model,
-            )
-            elapsed = time.time() - t0
+    memory_context = load_relevant_memories(
+        cid, MEMORY_DIR, family=concept.get("Confinement Family", ""),
+    )
 
-            if rc != 0:
-                print(f" FAILED ({elapsed:.0f}s, rc={rc})")
-                print(f"    stderr: {stderr[:500]}", file=sys.stderr)
-                continue
+    return {
+        "concept_id": cid,
+        "concept_name": concept["Concept Name"],
+        "company": concept.get("Company", ""),
+        "dossier_path": str(dossier_path),
+        "source_paths": format_source_list(sources),
+        "brief_path": str(BRIEF_PATH),
+        "schema_path": str(SCHEMA_PATH),
+        "exemplar_paths": format_path_list(exemplars, "(no exemplars found)"),
+        "approved_analyses": format_path_list(
+            approved, "No approved prior analyses available."),
+        "output_template_path": str(output_template_path),
+        "analysis_path": str(analysis_path),
+        "memory_context": memory_context,
+    }
 
-            print(f" done ({elapsed:.0f}s)")
 
-            # Propagate staleness
-            stale = propagate_staleness(cid, "feedback-applied-from-change-requests")
-            if stale:
-                print(f"    stale: {', '.join(stale)}")
+def _apply_external_feedback(
+    targets: list[dict], args: argparse.Namespace, feedback: Path,
+) -> None:
+    """Apply an external feedback file to existing analysis. Preserves old behavior."""
+    analysis_template = (TEMPLATES_DIR / "analysis_v2.md").read_text(encoding="utf-8")
 
-            # Archive consumed feedback file
-            archive_name = f"change_requests_{ts}.md"
-            archived = feedback.parent / archive_name
-            feedback.rename(archived)
-            print(f"    archived: {feedback.name} → {archive_name}")
+    for c in targets:
+        cid = c["_id"]
+        out_dir = ANALYSES_DIR / cid
+        analysis_path = out_dir / "analysis.md"
 
+        if not analysis_path.exists():
+            print(f"  skip {cid} (no analysis.md — --feedback requires existing analysis)")
             continue
 
-        # === COLD START (analysis pass 1) ===
-        body_path = out_dir / "analysis_body.md"
+        common_vars = _build_common_vars(c)
+        if common_vars is None:
+            continue
+
+        ts = datetime.now().strftime("%Y%m%d_%H%M%S")
         prompt = fill_template(analysis_template, {
             **common_vars,
-            "output_path": str(body_path),
-            "cold_start": "true",
-            "feedback_pass": "",
-            "feedback_path": "",
+            "output_path": "",
+            "cold_start": "",
+            "feedback_pass": "true",
+            "feedback_path": str(feedback),
             "self_advance": "",
         })
 
-        prompt_path = out_dir / "analysis_prompt_iter_1.md"
+        prompt_path = out_dir / f"feedback_apply_prompt_{ts}.md"
         prompt_path.write_text(prompt, encoding="utf-8")
 
         if args.dry_run:
-            print(f"  dry-run {cid}: prompt saved to {prompt_path}")
+            print(f"  dry-run {cid}: feedback prompt saved to {prompt_path}")
             continue
 
-        # Pre-write analysis.md with frontmatter before invoking Claude.
-        # Claude may edit the Reuses field via Edit tool during analysis.
-        analysis_path.write_text(make_frontmatter(c), encoding="utf-8")
-
-        print(f"  analyze {cid} pass 1/{max_passes} ...", end="", flush=True)
+        print(f"  apply feedback {cid} ...", end="", flush=True)
         t0 = time.time()
         _stdout, stderr, rc = invoke_claude(
-            prompt, cwd=CONCEPT_ANALYSIS_DIR, timeout=args.timeout, model=args.model,
+            prompt, cwd=CONCEPT_ANALYSIS_DIR,
+            timeout=args.timeout, model=args.model,
         )
         elapsed = time.time() - t0
 
         if rc != 0:
             print(f" FAILED ({elapsed:.0f}s, rc={rc})")
             print(f"    stderr: {stderr[:500]}", file=sys.stderr)
-            analysis_path.unlink(missing_ok=True)
             continue
 
-        if not body_path.exists():
-            print(f" FAILED ({elapsed:.0f}s) — Claude did not write {body_path}")
-            analysis_path.unlink(missing_ok=True)
-            continue
+        print(f" done ({elapsed:.0f}s)")
 
-        # Assemble: read back frontmatter (Claude may have updated Reuses) + body
-        fm_raw = analysis_path.read_text(encoding="utf-8").rstrip("\n") + "\n"
-        body = body_path.read_text(encoding="utf-8")
-        analysis_path.write_text(fm_raw + "\n" + body, encoding="utf-8")
-        body_path.unlink()
-        print(f" done ({elapsed:.0f}s, {len(body)} chars)")
+        stale = propagate_staleness(cid, "feedback-applied-from-change-requests")
+        if stale:
+            print(f"    stale: {', '.join(stale)}")
 
-        # Staleness: --force cold start rewrites analysis.md
-        if args.force and had_existing_downstream:
-            stale = propagate_staleness(cid, "analysis-rewritten-by-force")
-            if stale:
-                print(f"    stale: {', '.join(stale)}")
-
-        # === ASSESSMENT LOOP ===
-        # FR-23: --max-passes 1 skips assessment entirely
-        if max_passes <= 1:
-            continue
-
-        converged = False
-        for pass_num in range(1, max_passes + 1):
-            # --- Assess the current analysis.md ---
-            feedback_path = out_dir / f"feedback_iter_{pass_num}.md"
-            assess_prompt = fill_template(assessment_template, {
-                "concept_name": c["Concept Name"],
-                "analysis_path": str(analysis_path),
-                "feedback_path": str(feedback_path),
-            })
-
-            assess_prompt_path = out_dir / f"assessment_prompt_iter_{pass_num}.md"
-            assess_prompt_path.write_text(assess_prompt, encoding="utf-8")
-
-            print(f"  assess {cid} iter {pass_num} ...", end="", flush=True)
-            t0 = time.time()
-            _stdout, stderr, rc = invoke_claude(
-                assess_prompt, cwd=CONCEPT_ANALYSIS_DIR,
-                timeout=args.timeout, model=args.model,
-            )
-            elapsed = time.time() - t0
-
-            if rc != 0:
-                print(f" FAILED ({elapsed:.0f}s, rc={rc})")
-                break
-
-            if not feedback_path.exists():
-                print(f" FAILED ({elapsed:.0f}s) — no feedback file")
-                break
-
-            # Parse convergence signal (anchor to start of line)
-            feedback_text = feedback_path.read_text(encoding="utf-8")
-            converged = bool(
-                re.search(r"^VERDICT:\s*PASS", feedback_text, re.MULTILINE))
-            finding_count = len(
-                re.findall(r"^### F-\d+:", feedback_text, re.MULTILINE))
-
-            if converged:
-                print(f" PASS ({elapsed:.0f}s)")
-                break
-
-            print(f" {finding_count} findings ({elapsed:.0f}s)")
-
-            # If this was the last allowed pass, no room for another analyze
-            if pass_num >= max_passes:
-                print(f"  warn: {cid} did not converge in {max_passes} passes "
-                      f"(see feedback_iter_{pass_num}.md)")
-                break
-
-            # --- Feedback pass: analyze again ---
-            next_analysis_num = pass_num + 1
-            prompt = fill_template(analysis_template, {
-                **common_vars,
-                "output_path": "",  # not used in feedback mode
-                "cold_start": "",
-                "feedback_pass": "true",
-                "feedback_path": str(feedback_path),
-                "self_advance": "",
-            })
-
-            prompt_path = out_dir / f"analysis_prompt_iter_{next_analysis_num}.md"
-            prompt_path.write_text(prompt, encoding="utf-8")
-
-            print(f"  analyze {cid} pass {next_analysis_num}/{max_passes} ...",
-                  end="", flush=True)
-            t0 = time.time()
-            _stdout, stderr, rc = invoke_claude(
-                prompt, cwd=CONCEPT_ANALYSIS_DIR,
-                timeout=args.timeout, model=args.model,
-            )
-            elapsed = time.time() - t0
-
-            if rc != 0:
-                print(f" FAILED ({elapsed:.0f}s, rc={rc})")
-                break
-
-            print(f" done ({elapsed:.0f}s)")
-
-            # Staleness: feedback pass modified analysis.md
-            stale = propagate_staleness(cid, "analysis-updated-by-feedback-loop")
-            if stale:
-                print(f"    stale: {', '.join(stale)}")
+        archive_name = f"change_requests_{ts}.md"
+        archived = feedback.parent / archive_name
+        feedback.rename(archived)
+        print(f"    archived: {feedback.name} → {archive_name}")
 
 
 def cmd_model_setup(concepts: list[dict], args: argparse.Namespace) -> None:
@@ -488,44 +378,16 @@ def cmd_model_setup(concepts: list[dict], args: argparse.Namespace) -> None:
         cid = c["_id"]
         out_dir = ANALYSES_DIR / cid
         model_path = out_dir / "model_setup.py"
-        analysis_path = out_dir / "analysis.md"
 
-        if not analysis_path.exists():
+        result = build_model_vars(c, model_path, out_dir, standalone=True)
+        if result is None:
             print(f"  skip {cid} (no analysis.md — run analyze first)")
             continue
+        template_name, cached_vars = result
+        path_label = "1costingfe" if "costingfe_concept" in cached_vars else "free-form"
 
-        model_path_type = get_model_path(c)
-        path_label = "1costingfe" if model_path_type == "costingfe" else "free-form"
-
-        if model_path_type == "costingfe":
-            template_name = "model_setup_costingfe.md"
-
-            def _build_vars(c, _ap=analysis_path, _mp=model_path):
-                mapping = get_costingfe_mapping(c)
-                return {
-                    "concept_name": c["Concept Name"],
-                    "company": c.get("Company", ""),
-                    "analysis_path": str(_ap),
-                    "example_path": str(COSTINGFE_EXAMPLES_DIR / mapping["example"]),
-                    "defaults_path": str(COSTINGFE_DEFAULTS_DIR / mapping["defaults"]),
-                    "readme_path": str(COSTINGFE_README_PATH),
-                    "costing_constants_path": str(COSTINGFE_CONSTANTS_PATH),
-                    "costingfe_concept": mapping["concept"],
-                    "costingfe_fuel": FUEL_MAPPING.get(c.get("Fuel", "D-T"), "DT"),
-                    "mapping_notes": mapping.get("notes", ""),
-                    "output_path": str(_mp),
-                }
-        else:
-            template_name = "model_setup_freeform.md"
-
-            def _build_vars(c, _ap=analysis_path, _mp=model_path):
-                return {
-                    "concept_name": c["Concept Name"],
-                    "company": c.get("Company", ""),
-                    "analysis_path": str(_ap),
-                    "costing_constants_path": str(COSTINGFE_CONSTANTS_PATH),
-                    "output_path": str(_mp),
-                }
+        def _build_vars(c, _vars=cached_vars):
+            return _vars
 
         def _post(c, r, _model_path=model_path, _out_dir=out_dir):
             size = _model_path.stat().st_size
@@ -545,7 +407,7 @@ def cmd_model_setup(concepts: list[dict], args: argparse.Namespace) -> None:
             c,
             template_name=template_name,
             build_vars=_build_vars,
-            prompt_path=out_dir / "model_setup_prompt.md",
+            prompt_path=out_dir / "prompts" / "model_setup_prompt.md",
             output_path=model_path,
             label="model-setup",
             label_suffix=f" ({path_label})",
@@ -620,7 +482,7 @@ def cmd_review(concepts: list[dict], args: argparse.Namespace) -> None:
             c,
             template_name="review.md",
             build_vars=_build_vars,
-            prompt_path=out_dir / "review_prompt.md",
+            prompt_path=out_dir / "prompts" / "review_prompt.md",
             output_path=review_path,
             label=f"review",
             args=args,
@@ -711,7 +573,7 @@ def cmd_address_review(concepts: list[dict], args: argparse.Namespace) -> None:
             _ap.write_text(text, encoding="utf-8")
             print(f" done ({r.elapsed:.0f}s, {len(_actionable)} actions processed)")
 
-        prompt_path = out_dir / "address_review_prompt.md"
+        prompt_path = out_dir / "prompts" / "address_review_prompt.md"
 
         # address-review has a custom dry-run format with action count;
         # handle dry-run in caller before reaching the helper
@@ -858,7 +720,7 @@ def cmd_synthesize(concepts: list[dict], args: argparse.Namespace) -> None:
             c,
             template_name="synthesis.md",
             build_vars=_build_vars,
-            prompt_path=out_dir / "synthesis_prompt.md",
+            prompt_path=out_dir / "prompts" / "synthesis_prompt.md",
             output_path=body_path,
             label="synthesize",
             args=args,
@@ -1070,160 +932,6 @@ def cmd_add_source(concepts: list[dict], args: argparse.Namespace) -> None:
 
 
 # ---------------------------------------------------------------------------
-# cmd_update_analysis — incrementally update analysis with new sources
-# ---------------------------------------------------------------------------
-
-
-def cmd_update_analysis(concepts: list[dict], args: argparse.Namespace) -> None:
-    """Update analysis to incorporate new sources via pre-pass + feedback-pass."""
-    # Resolve single concept
-    matches = resolve_one(concepts, args.concept)
-    if len(matches) == 0:
-        print(f"  error: no concept matching '{args.concept}'")
-        sys.exit(1)
-    if len(matches) > 1:
-        print(f"  error: '{args.concept}' matches multiple concepts:")
-        for c in matches:
-            print(f"    {c['_num']} {c['Concept Name']}")
-        sys.exit(1)
-    concept = matches[0]
-    cid = concept["_id"]
-    rid = concept["_research_id"]
-
-    print(f"  concept: {concept['_num']} ({concept['Concept Name']})")
-
-    # Resolve source names to full paths
-    new_source_paths = resolve_source_names(rid, args.sources)
-    print(f"  new sources: {len(new_source_paths)}")
-    for sp in new_source_paths:
-        print(f"    {sp.name}")
-
-    # Verify analysis.md exists
-    out_dir = ANALYSES_DIR / cid
-    analysis_path = out_dir / "analysis.md"
-    if not analysis_path.exists():
-        print(f"  error: no analysis.md for {cid} — run 'analyze' first")
-        sys.exit(1)
-
-    # Generate timestamp for filenames
-    ts = datetime.now().strftime("%Y%m%dT%H%M%S")
-
-    # === Step 1: Source-Integration Pre-Pass ===
-    print(f"\n  step 1: source-integration pre-pass...")
-
-    integration_template = (TEMPLATES_DIR / "source_integration.md").read_text(
-        encoding="utf-8"
-    )
-    feedback_path = out_dir / f"feedback_update_{ts}.md"
-
-    new_source_list = format_source_list(new_source_paths)
-    integration_prompt = fill_template(integration_template, {
-        "concept_name": concept["Concept Name"],
-        "analysis_path": str(analysis_path),
-        "new_source_paths": new_source_list,
-        "feedback_path": str(feedback_path),
-    })
-
-    # Save prompt for audit trail
-    integration_prompt_path = out_dir / f"source_integration_prompt_{ts}.md"
-    integration_prompt_path.write_text(integration_prompt, encoding="utf-8")
-    print(f"  prompt: {integration_prompt_path}")
-
-    # Invoke Claude for pre-pass
-    t0 = time.time()
-    _stdout, stderr, rc = invoke_claude(
-        integration_prompt, cwd=CONCEPT_ANALYSIS_DIR,
-        timeout=args.timeout, model=args.model,
-    )
-    elapsed = time.time() - t0
-
-    if rc != 0:
-        print(f"  pre-pass FAILED ({elapsed:.0f}s, rc={rc})")
-        print(f"    stderr: {stderr[:500]}", file=sys.stderr)
-        sys.exit(1)
-
-    if not feedback_path.exists():
-        print(f"  pre-pass FAILED ({elapsed:.0f}s) — no feedback file created")
-        sys.exit(1)
-
-    feedback_text = feedback_path.read_text(encoding="utf-8")
-    is_pass = bool(re.search(r"^VERDICT:\s*PASS", feedback_text, re.MULTILINE))
-    finding_count = len(re.findall(r"^### F-\d+:", feedback_text, re.MULTILINE))
-
-    if is_pass:
-        print(f"  pre-pass: PASS ({elapsed:.0f}s) — no material additions needed")
-        return
-
-    print(f"  pre-pass: {finding_count} findings ({elapsed:.0f}s)")
-    print(f"  feedback: {feedback_path}")
-
-    if args.dry_run:
-        print(f"\n  [dry-run] feedback content:")
-        print(feedback_text)
-        print(f"\n  [dry-run] would invoke feedback-pass on analysis.md — stopping here")
-        return
-
-    # === Step 2: Feedback Pass ===
-    print(f"\n  step 2: feedback-pass (updating analysis.md)...")
-
-    analysis_template = (TEMPLATES_DIR / "analysis_v2.md").read_text(encoding="utf-8")
-    exemplars = find_exemplars()
-    approved = find_approved()
-    sources = find_sources(rid)
-    dossier_path = get_dossier_path(rid)
-    output_template_path = TEMPLATES_DIR / "output_template.md"
-
-    common_vars = {
-        "concept_id": cid,
-        "concept_name": concept["Concept Name"],
-        "company": concept.get("Company", ""),
-        "dossier_path": str(dossier_path) if dossier_path else "",
-        "source_paths": format_source_list(sources),
-        "brief_path": str(BRIEF_PATH),
-        "schema_path": str(SCHEMA_PATH),
-        "exemplar_paths": format_path_list(exemplars, "(no exemplars found)"),
-        "approved_analyses": format_path_list(
-            approved, "No approved prior analyses available."),
-        "output_template_path": str(output_template_path),
-        "analysis_path": str(analysis_path),
-    }
-
-    feedback_prompt = fill_template(analysis_template, {
-        **common_vars,
-        "output_path": "",  # not used in feedback mode
-        "cold_start": "",
-        "feedback_pass": "true",
-        "feedback_path": str(feedback_path),
-        "self_advance": "",
-    })
-
-    # Save prompt for audit trail
-    feedback_prompt_path = out_dir / f"update_analysis_prompt_{ts}.md"
-    feedback_prompt_path.write_text(feedback_prompt, encoding="utf-8")
-
-    t0 = time.time()
-    _stdout, stderr, rc = invoke_claude(
-        feedback_prompt, cwd=CONCEPT_ANALYSIS_DIR,
-        timeout=args.timeout, model=args.model,
-    )
-    elapsed = time.time() - t0
-
-    if rc != 0:
-        print(f"  feedback-pass FAILED ({elapsed:.0f}s, rc={rc})")
-        print(f"    stderr: {stderr[:500]}", file=sys.stderr)
-        sys.exit(1)
-
-    print(f"  feedback-pass done ({elapsed:.0f}s)")
-
-    # Propagate staleness
-    stale = propagate_staleness(cid, f"analysis-updated-by-source-integration-{ts}")
-    if stale:
-        print(f"  stale: {', '.join(stale)}")
-
-    print(f"\n  done — analysis updated with {finding_count} source integration(s)")
-
-
-# ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
@@ -1266,6 +974,10 @@ def build_parser() -> argparse.ArgumentParser:
                             help="Max analyze→assess iterations (default: 3; 1=no assessment)")
     p_analyze.add_argument("--feedback", type=Path, metavar="PATH",
                             help="Apply feedback file to existing analysis (skips cold-start)")
+    p_analyze.add_argument("--resume", action="store_true",
+                            help="Continue from last iteration (add more passes)")
+    p_analyze.add_argument("--research", action="store_true",
+                            help="Enable autonomous research step between iterations (not yet implemented)")
 
     # -- model-setup --
     p_ms = sub.add_parser("model-setup", help="Generate 1costingfe model setup script")
@@ -1327,6 +1039,10 @@ def build_parser() -> argparse.ArgumentParser:
                        help="Max analyze→assess iterations (default: 3; 1=no assessment)")
     p_s1.add_argument("--include-gap-analysis", action="store_true",
                        help="Include gap-check stage (skipped by default)")
+    p_s1.add_argument("--resume", action="store_true",
+                       help="Resume analysis from last iteration")
+    p_s1.add_argument("--research", action="store_true",
+                       help="Enable autonomous research step between iterations (not yet implemented)")
 
     # -- add-source --
     p_add = sub.add_parser("add-source", help="Add a PDF or URL source to a concept")
@@ -1336,17 +1052,6 @@ def build_parser() -> argparse.ArgumentParser:
     p_add.add_argument("--force", action="store_true",
                        help="Re-extract even if source name already exists")
     p_add.add_argument("--dry-run", action="store_true", help="Show what would be created")
-
-    # -- update-analysis --
-    p_upd = sub.add_parser("update-analysis",
-                           help="Update analysis to incorporate new sources")
-    p_upd.add_argument("concept", help="Concept ID (single concept)")
-    p_upd.add_argument("--sources", nargs="+", required=True,
-                       help="Source names to incorporate (e.g., sparc-icrf-heating-paper)")
-    p_upd.add_argument("--model", default="sonnet", help="Claude model (default: sonnet)")
-    p_upd.add_argument("--timeout", type=int, default=900, help="Per-invocation timeout")
-    p_upd.add_argument("--dry-run", action="store_true",
-                       help="Run pre-pass and show feedback, but don't invoke analysis agent")
 
     return parser
 
@@ -1369,7 +1074,6 @@ def main() -> None:
         "approve": cmd_approve,
         "stage1-all": cmd_stage1_all,
         "add-source": cmd_add_source,
-        "update-analysis": cmd_update_analysis,
     }
 
     handler = dispatch[args.command]

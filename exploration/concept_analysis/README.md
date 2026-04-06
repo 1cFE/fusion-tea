@@ -24,28 +24,36 @@ uv run python scripts/run_analysis.py stage1-all 02 --dry-run
 
 ## Pipeline Stages
 
-The pipeline has 6 stages. Each is a subcommand of `run_analysis.py`.
+The pipeline has 6 core stages plus utility commands. Each is a subcommand
+of `run_analysis.py`.
 
 ```
-gap-check → analyze → model-setup → review → synthesize → approve
-   (1)        (2)        (3)          (4)       (5)         (6)
-                                       ↑
-                              human inspection gate
+[gap-check] → analyze ⟲ assess → model-setup → review → synthesize → approve
+   (opt)        (2)                   (3)          (4)       (5)         (6)
+                  ↑                                 ↑
+          iterative loop                   human inspection gate
+        (--max-passes, default 3)
+
+Side channels:
+  add-source → update-analysis     (incremental source addition)
 ```
 
 | Stage | Command | What it does | Output |
 |-------|---------|-------------|--------|
-| 1 | `gap-check` | Assess source coverage gaps | `gap_report.md` |
-| 2 | `analyze` | Produce D1+ qualitative + quantitative analysis | `analysis.md` |
+| 1 (opt) | `gap-check` | Assess source coverage gaps | `gap_report.md` |
+| 2 | `analyze` | Iterative D1+ analysis (analyze → assess loop) | `analysis.md` + `feedback_iter_N.md` |
 | 3 | `model-setup` | Generate Python cost model (1costingfe or free-form) | `model_setup.py` + `model_output.txt` |
 | 4 | `review` | Structured review with proposed actions | `review.md` |
 | 4b | `address-review` | Apply user decisions from review | Updates `analysis.md` / `model_setup.py` |
 | 5 | `synthesize` | Editorial synthesis with cross-concept context | `synthesis.md` |
 | 6 | `approve` | Mark as approved (enters reuse pool) | Sets `Status: approved` in frontmatter |
+| — | `add-source` | Add a PDF or URL source to a concept | Extracted source in `iter-NN/sources/` |
+| — | `update-analysis` | Incorporate new sources into existing analysis | Updates `analysis.md` (marks downstream stale) |
 
 ### Composite Command
 
-**`stage1-all`** chains stages 1-4 (gap-check through review) in one invocation:
+**`stage1-all`** chains analyze → model-setup → review in one invocation.
+Gap-check is **opt-in** via `--include-gap-analysis`.
 
 ```bash
 # Single concept
@@ -56,6 +64,9 @@ uv run python scripts/run_analysis.py stage1-all 02 03 04 05
 
 # All remaining, filtered by family
 uv run python scripts/run_analysis.py stage1-all --all --family MFE
+
+# Include gap-check (skipped by default)
+uv run python scripts/run_analysis.py stage1-all 11 --include-gap-analysis
 ```
 
 After `stage1-all`, you read the generated `review.md` files, fill in
@@ -88,6 +99,14 @@ Every stage subcommand accepts concepts by:
 | `--force` | off | Re-run even if output files already exist |
 | `--timeout` | 900 | Per-invocation timeout in seconds |
 
+**Stage-specific flags:**
+
+| Flag | Stages | Default | Description |
+|------|--------|---------|-------------|
+| `--max-passes` | `analyze`, `stage1-all` | 3 | Max analyze→assess iterations (1 = no assessment) |
+| `--feedback PATH` | `analyze` | — | Apply a feedback file to existing analysis (skips cold-start) |
+| `--include-gap-analysis` | `stage1-all` | off | Include gap-check stage (skipped by default) |
+
 ### Individual Stages
 
 ```bash
@@ -111,6 +130,13 @@ uv run python scripts/run_analysis.py synthesize 02
 
 # Stage 6: Approve (requires synthesis unless --force)
 uv run python scripts/run_analysis.py approve 02
+
+# Add a new source (PDF or URL) to a concept
+uv run python scripts/run_analysis.py add-source 17a /path/to/paper.pdf
+uv run python scripts/run_analysis.py add-source 11 https://example.com/article
+
+# Update analysis to incorporate newly added sources
+uv run python scripts/run_analysis.py update-analysis 17a --sources sparc-icrf-heating-paper
 ```
 
 ### Info Commands
@@ -140,6 +166,11 @@ State is determined by filesystem inspection — no database. Detection order
 | `gap-checked` | `gap_report.md` exists |
 | `not-started` | None of the above |
 
+A `*` suffix (e.g., `model-setup*`) indicates **stale downstream artifacts** —
+`analysis.md` was updated (via feedback pass, `update-analysis`, or
+`/manage-concept`) after those artifacts were generated. Re-run the stale
+stage(s) to reconcile.
+
 Every stage checks prerequisites and skips concepts that already have output,
 making re-runs safe and idempotent.
 
@@ -157,6 +188,14 @@ Approved analyses are tracked via the `Status: approved` field in
 `analysis.md` YAML frontmatter. The `Reuses: []` field records which prior
 concepts were referenced.
 
+## Shared Memory
+
+The `memory/` directory accumulates cross-concept learnings (common pitfalls,
+parameter sanity ranges, recurring feedback patterns). The `analyze` stage
+loads relevant memories before each run via a memory-handler subagent. Memories
+are saved explicitly — via the interactive `/manage-concept` agent or after
+review sessions.
+
 ## Directory Layout
 
 ```
@@ -169,13 +208,25 @@ concept_analysis/
 │   └── run_analysis.py          # Pipeline orchestrator (single entry point)
 ├── prompt_templates/            # Stage-specific prompt templates
 │   ├── gap_check.md             #   Stage 1 prompt
-│   ├── analysis.md              #   Stage 2 prompt
+│   ├── analysis_v2.md           #   Stage 2 prompt (modal: cold-start / feedback / self-advance)
+│   ├── assessment.md            #   Stage 2 assessment prompt (analyze→assess loop)
+│   ├── source_integration.md    #   update-analysis pre-pass prompt
 │   ├── output_template.md       #   D1+ output section structure
 │   ├── model_setup_costingfe.md #   Stage 3 prompt (1costingfe path)
 │   ├── model_setup_freeform.md  #   Stage 3 prompt (free-form path)
 │   ├── review.md                #   Stage 4 prompt
 │   ├── address_review.md        #   Stage 4b prompt
-│   └── synthesis.md             #   Stage 5 prompt
+│   ├── synthesis.md             #   Stage 5 prompt
+│   ├── config/                  #   Extracted goals and checklists
+│   │   ├── analysis_goals.md    #     What the analysis should cover
+│   │   ├── assessment_checklist.md #  What the assessor checks
+│   │   ├── review_checklist.md  #     Numerical accuracy checks (for review stage)
+│   │   ├── quality_standards.md #     Citation format, anti-hallucination, depth
+│   │   └── feedback_format.md   #     Structured feedback entry format
+│   └── agents/
+│       └── source_reader.md     #   Subagent prompt for source reading
+├── memory/                      # Cross-concept shared learnings
+│   └── learnings.md             #   Accumulated insights from analysis sessions
 ├── handwritten/                 # Human-written exemplar analyses
 │   ├── 01-hts-compact-tokamak.md
 │   ├── 07-maglif.md
@@ -200,8 +251,11 @@ A fully completed concept directory contains:
 analyses/{concept-id}/
 ├── gap_check_prompt.md      # Saved Stage 1 prompt (audit trail)
 ├── gap_report.md            # Stage 1 output: source coverage assessment
-├── analysis_prompt.md       # Saved Stage 2 prompt
+├── analysis_prompt.md       # Saved Stage 2 prompt (each iteration)
 ├── analysis.md              # Stage 2 output: D1+ analysis (YAML frontmatter + body)
+├── feedback_iter_1.md       # Assessment feedback from iteration 1
+├── feedback_iter_2.md       # Assessment feedback from iteration 2 (if needed)
+├── assessment_prompt.md     # Saved assessment prompt
 ├── model_setup_prompt.md    # Saved Stage 3 prompt
 ├── model_setup.py           # Stage 3 output: runnable Python cost model
 ├── model_output.txt         # Model execution output (LCOE values)
@@ -287,7 +341,8 @@ clean.
 
 Each concept's analysis draws from:
 
-1. **Phase 1a research dossier** — `exploration/phase_1a/research/{concept-id}/dossier.md`
-2. **Extracted source documents** — `exploration/phase_1a/research/{concept-id}/iter-*/sources/*.md`
+1. **Phase 1a research dossier** — `knowledge/concept_research/{concept-id}/dossier.md`
+2. **Extracted source documents** — `knowledge/concept_research/{concept-id}/iter-*/sources/*.md`
 3. **Handwritten exemplars** — `handwritten/*.md` (injected as quality references)
 4. **Approved prior analyses** — the reuse pool (discovered automatically)
+5. **Shared memory** — `memory/learnings.md` (cross-concept accumulated insights)
