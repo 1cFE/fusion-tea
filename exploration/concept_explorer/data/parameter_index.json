@@ -1,0 +1,436 @@
+{
+  "parameters": {
+    "availability": {
+      "param_name": "availability",
+      "display_name": "availability",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": -0.9549447070724808
+        }
+      ]
+    },
+    "construction_time_yr": {
+      "param_name": "construction_time_yr",
+      "display_name": "construction_time_yr",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.2673468367202025
+        }
+      ]
+    },
+    "mn": {
+      "param_name": "mn",
+      "display_name": "mn",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": -0.001670707342127202
+        }
+      ]
+    },
+    "eta_th": {
+      "param_name": "eta_th",
+      "display_name": "eta_th",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": -0.09012963459954501
+        }
+      ]
+    },
+    "eta_p": {
+      "param_name": "eta_p",
+      "display_name": "eta_p",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": -8.821094616476719e-7
+        }
+      ]
+    },
+    "f_sub": {
+      "param_name": "f_sub",
+      "display_name": "f_sub",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.012206541816201616
+        }
+      ]
+    },
+    "p_pump": {
+      "param_name": "p_pump",
+      "display_name": "p_pump",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.0008553245589919033
+        }
+      ]
+    },
+    "p_trit": {
+      "param_name": "p_trit",
+      "display_name": "p_trit",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.0042810335865846845
+        }
+      ]
+    },
+    "p_house": {
+      "param_name": "p_house",
+      "display_name": "p_house",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.0021405167932923423
+        }
+      ]
+    },
+    "p_cryo": {
+      "param_name": "p_cryo",
+      "display_name": "p_cryo",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.016923103408186962
+        }
+      ]
+    },
+    "blanket_t": {
+      "param_name": "blanket_t",
+      "display_name": "blanket_t",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.06095069890137036
+        }
+      ]
+    },
+    "ht_shield_t": {
+      "param_name": "ht_shield_t",
+      "display_name": "ht_shield_t",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.013970026810554922
+        }
+      ]
+    },
+    "structure_t": {
+      "param_name": "structure_t",
+      "display_name": "structure_t",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.0033144553977423954
+        }
+      ]
+    },
+    "vessel_t": {
+      "param_name": "vessel_t",
+      "display_name": "vessel_t",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.010761102410070248
+        }
+      ]
+    },
+    "plasma_t": {
+      "param_name": "plasma_t",
+      "display_name": "plasma_t",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.03923071559116979
+        }
+      ]
+    },
+    "burn_fraction": {
+      "param_name": "burn_fraction",
+      "display_name": "burn_fraction",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": -0.001051795392417884
+        }
+      ]
+    },
+    "fuel_recovery": {
+      "param_name": "fuel_recovery",
+      "display_name": "fuel_recovery",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": -0.018984903694185384
+        }
+      ]
+    },
+    "p_input": {
+      "param_name": "p_input",
+      "display_name": "p_input",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.032886915837875355
+        }
+      ]
+    },
+    "eta_pin": {
+      "param_name": "eta_pin",
+      "display_name": "eta_pin",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": -0.03293102809370553
+        }
+      ]
+    },
+    "eta_de": {
+      "param_name": "eta_de",
+      "display_name": "eta_de",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "p_coils": {
+      "param_name": "p_coils",
+      "display_name": "p_coils",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.0021405167932923423
+        }
+      ]
+    },
+    "p_cool": {
+      "param_name": "p_cool",
+      "display_name": "p_cool",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.006421550379877026
+        }
+      ]
+    },
+    "R0": {
+      "param_name": "R0",
+      "display_name": "R0",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.0882562457244509
+        }
+      ]
+    },
+    "elon": {
+      "param_name": "elon",
+      "display_name": "elon",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.08825624094836197
+        }
+      ]
+    },
+    "q95": {
+      "param_name": "q95",
+      "display_name": "q95",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "f_GW": {
+      "param_name": "f_GW",
+      "display_name": "f_GW",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "B": {
+      "param_name": "B",
+      "display_name": "B",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "T_e": {
+      "param_name": "T_e",
+      "display_name": "T_e",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "n_e": {
+      "param_name": "n_e",
+      "display_name": "n_e",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "Z_eff": {
+      "param_name": "Z_eff",
+      "display_name": "Z_eff",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "plasma_volume": {
+      "param_name": "plasma_volume",
+      "display_name": "plasma_volume",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "R_w": {
+      "param_name": "R_w",
+      "display_name": "R_w",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "T_edge": {
+      "param_name": "T_edge",
+      "display_name": "T_edge",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "tau_ratio": {
+      "param_name": "tau_ratio",
+      "display_name": "tau_ratio",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "interest_rate": {
+      "param_name": "interest_rate",
+      "display_name": "interest_rate",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.6531114701165706
+        }
+      ]
+    },
+    "inflation_rate": {
+      "param_name": "inflation_rate",
+      "display_name": "inflation_rate",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "28",
+          "name": "HTS Tokamak - Full HTS",
+          "elasticity": 0.05820723941307442
+        }
+      ]
+    }
+  }
+}

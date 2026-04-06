@@ -28,8 +28,7 @@ work/backlog/epic_template.md
 # Project-specific
 knowledge/LOCAL_SOURCES.yaml
 
-# Explorer generated data (re-extracted on demand)
-exploration/concept_explorer/data/
+# Explorer build artifacts
 exploration/concept_explorer/dist/
 
 # Research binary artifacts handled by knowledge/concept_research/.gitignore

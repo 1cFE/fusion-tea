@@ -475,9 +475,11 @@ def cmd_review(concepts: list[dict], args: argparse.Namespace) -> None:
 
         def _post(c, r, _ap=analysis_path, _iteration=iteration):
             # Detect verdict from new strategic review format
-            if re.search(r"^VERDICT:\s*PROCEED", r.output_text, re.MULTILINE):
+            from lib.validators import REVIEW_VERDICT_RE
+            verdict_match = REVIEW_VERDICT_RE.search(r.output_text)
+            if verdict_match and verdict_match.group(1) == "PROCEED":
                 review_status = "proceed"
-            elif re.search(r"^VERDICT:\s*REVISE", r.output_text, re.MULTILINE):
+            elif verdict_match and verdict_match.group(1) == "REVISE":
                 review_status = "revise"
             else:
                 # Legacy fallback for old-format review output
@@ -485,6 +487,12 @@ def cmd_review(concepts: list[dict], args: argparse.Namespace) -> None:
                     review_status = "clean"
                 else:
                     review_status = "has-actions"
+            if review_status == "has-actions":
+                print(
+                    f"\n  WARNING: could not detect PROCEED/REVISE verdict in review output."
+                    f"\n  Defaulting to 'has-actions'. Check review.md manually.",
+                    file=sys.stderr,
+                )
             text = _ap.read_text(encoding="utf-8")
             text = update_frontmatter_field(text, "Review-Iterations", str(_iteration))
             text = update_frontmatter_field(text, "Last-Review", date.today().isoformat())

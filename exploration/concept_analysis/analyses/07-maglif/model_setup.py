@@ -1,494 +1,609 @@
-# STALE: analysis-updated-iter-7
-"""MagLIF (D-T) — 1costingfe costing model setup (iter-7).
+# STALE: analysis-updated-iter-9
+"""MagLIF (D-T) — 1costingfe cost model setup (iter-9).
+
+Concept: Magnetized Liner Inertial Fusion (MagLIF), D-T fuel.
+Companies: Pacific Fusion (Santa Cruz, CA), Fuse Energy Technologies (San Leandro, CA).
+
+Modeling Approach
+-----------------
+MagLIF is a pulsed MIF concept whose dominant cost categories — pulsed power driver
+capital, per-shot consumables (liner + RTL), and rep-rated chamber clearing — have no
+equivalents in the MFE database that underpins 1costingfe's reference scaling laws.
+The framework is therefore used in a constrained mode:
+
+  - ConfinementConcept.MAG_TARGET provides the structural skeleton (MIF/MagLIF layout).
+  - cost_overrides inject Z-IFE reference values for the driver and consumable accounts
+    that have no framework analogue.
+  - All other CAS accounts (BOP, financial) are computed by the framework at the Z-IFE
+    reference design point (1000 MWe, 0.5 Hz frozen-FLiBe RTL).
+
+Key Deviations from Framework Defaults
+---------------------------------------
+1. Driver capital (C220104): overridden to $372M (Z-IFE LTD median); the default
+   "heating & CD" account has no physical meaning for a pulsed power driver.
+2. RTL + target factory (C220600): overridden to $120M; framework's laser-IFE-scale
+   target factory default ($244M) does not apply to frozen-FLiBe RTL.
+3. Blanket (C220101): overridden to $50M (Z-IFE FLiBe thick-liquid-wall chamber);
+   the framework's PbLi volume-based unit cost does not apply.
+4. Coils (C220103): zeroed — MagLIF has no superconducting magnets; pulsed copper
+   axial field coils are embedded in driver account.
+5. DEC (C220109): zeroed — no direct energy conversion in baseline D-T MagLIF.
+6. Divertor (C220108): zeroed — no divertor in a pulsed spherical chamber design.
+7. CAS21 Buildings: overridden to $200M (physical footprint estimate anchored to
+   Pacific Fusion DS 73m × 80m, scaled to commercial plant); the default MFE/fission
+   scaling formula produced $919M, which exceeds the driver cost and likely double-
+   counts the capacitor hall already implicit in the Z-IFE $372M driver figure.
+
+Iter-9 additions (addressing assessment F-1, F-2, F-3):
+  F-1: Rep rate scenario sweep (0.1–1.8 Hz) at fixed capital — algebraic LCOE
+       derived from baseline, calibrated against Z-IFE reference values.
+  F-2: Per-shot consumable cost sweep ($0–$10/shot) — annualized consumable O&M
+       added to LCOE numerator; break-even $/shot at 100 and 150 $/MWh reported.
+  F-3: CAS21 buildings overridden to $200M (physical footprint basis, documented
+       below); $919M MFE/fission default identified as a probable scaling artifact.
+
+Reference Design Point
+-----------------------
+  - Z-IFE "best LTD case": 1000 MWe net, single chamber, 0.5 Hz, frozen-FLiBe RTL.
+  - Source: z-ife-sand2006-7148-thermal-cycles.md §3.1.1 and §3.1.2.
+  - COE from source: 7.0 ¢/kWeh = 70 $/MWh. Target from this script: comparable range.
 
 Usage:
     uv run python model_setup.py              # print results to terminal
     uv run python model_setup.py | tee model_output.txt  # also save for synthesis stage
-
-Concept: Magnetized Liner Inertial Fusion — pulsed power implosion of magnetized D-T fuel.
-Companies: Pacific Fusion (Santa Cruz, CA); Fuse Energy Technologies (San Leandro, CA).
-Confinement family: MIF (Magneto-Inertial Fusion).
-ConfinementConcept: MAG_TARGET  |  Fuel: DT
-
-=== MODELING APPROACH AND KEY DEVIATIONS ===
-
-This model uses 1costingfe's MAG_TARGET concept as the framework skeleton, but
-MagLIF's cost structure is fundamentally different from any MFE concept in the
-framework's training data. The analysis.md (§Section 2) explicitly concludes:
-
-  "Reference-class scaling approaches (1costingfe, ARIES-analogous tools, PROCESS)
-   are not applicable to MagLIF because the dominant cost categories — pulsed power
-   driver capital, per-shot consumables, rep-rated chamber clearing — have no
-   analogues in the databases those tools are built on."
-
-Nevertheless, this script provides a structured cost estimate for cross-concept
-comparison purposes, using the Z-IFE SAND2006-7148 study as the primary quantitative
-source for all overridable cost accounts. All outputs carry very high uncertainty
-(±50–100%+ on capital cost; factor-of-several uncertainty on LCOE).
-
-ITER-7 UPDATES vs. ITER-6:
-  - Review verdict (iter-4 review, 2026-04-06): PROCEED. Review identified one
-    unresolved documentation issue: per-shot consumable O&M (~$15.75M/yr additional
-    at $1/shot × 0.5 Hz) was acknowledged in footer notes but not surfaced as a
-    concrete line item alongside the reported CAS70 figure. This creates a misleading
-    impression that the $132M/yr modeled O&M is complete when it is a material
-    undercount. Iter-7 surfaces this gap explicitly with bounding estimates in the
-    printed output table, making the omission concrete rather than buried.
-  - Added explicit consumable O&M line items: base case ($1/shot), cryo-target pessimistic
-    ($10/shot), and the commercial viability threshold ($2/shot maximum) — all printed
-    alongside the modeled CAS70 figure for direct comparison.
-  - Scenario A and B consumable O&M derived from rep rate (0.5 Hz) and plant scale.
-
-PRIMARY DESIGN POINT: Z-IFE single-chamber, 0.5 Hz scenario (7.0 ¢/kWeh Z-IFE reference).
-This is the "optimistic near-term" case: rep rate beyond baseline (0.1 Hz) but short of
-the minimum-COE target (1.0–1.8 Hz) described as "beyond reach of RTL."
-
-KEY DEVIATIONS FROM 1costingfe MAG_TARGET DEFAULTS:
-
-  Power balance:
-    - eta_th = 0.42 (Combined Brayton-Rankine, steel chamber; vs 0.40 default)
-    - eta_pin = 0.60 (LTD driver wall-plug efficiency; vs 0.30 default)
-    - p_cryo = 0.0 (no HTS superconducting magnets; pulsed Cu coils only)
-    - p_coils = 0.5 (pre-magnetization guide field; minimal per self-magnetizing target path)
-    - p_target = 5.0 (frozen-FLiBe RTL factory; eliminates 170 MWe steel RTL load)
-
-  CAS22 overrides (reactor plant equipment):
-    - C220103 = $5M   — Cu pre-magnetization coils (vs HTS ~$100M+ default)
-    - C220104 = $372M — pulsed power LTD driver (Z-IFE median; novel cost category)
-    - C220109 = $0    — no direct energy conversion (D-T uses thermal cycle, not DEC)
-
-  Geometry:
-    - plasma_t = 4.0 m (Z-IFE 4 m radius spherical chamber)
-    - blanket_t = 0.80 m (FLiBe thick liquid wall, Z-IFE baseline)
-    - R0 = 0.0 (spherical chamber, no toroidal major radius)
-
-  Unchanged from defaults:
-    - C220101 (Blanket/FW): FLiBe thick liquid wall; volume-based default used as
-      placeholder — FLiBe handling systems may offset absence of solid breeding assembly.
-    - C220108 (Target/RTL Factory): $244M at 1 GWe default — Z-IFE costed separately
-      but gave no sub-account breakdown comparable to 1costingfe's target_factory_base.
-      UNCERTAIN: cryo target production at scale could cost dramatically more.
-    - CAS21 (Buildings): DT default; pulsed power halls offset cryogenics building removal.
-    - CAS70 (O&M): DT default (~$52M/yr at 1 GWe) — does NOT capture per-shot consumable
-      O&M. See "CONSUMABLE O&M (NOT IN MODEL)" section below for explicit bounding estimates.
-
-SOURCES:
-  [Z-IFE] Olson et al. SAND2006-7148, "Z-Inertial Fusion Energy Power Plant Final
-          Report," 2006. The only published plant-level systems code for MagLIF class.
-          iter-02/sources/z-ife-sand2006-7148-thermal-cycles.md
-  [PMF]   Ellison et al. arXiv:2408.15206, "Opportunities in Pulsed Magnetic Fusion
-          Energy," 2025. Multi-institutional roadmap including Pacific Fusion/Sandia.
-          iter-01/sources/arxiv-2408-15206-pulsed-magnetic-fusion.md
-  [PF]    Pacific Fusion / The Fusion Report interview (DS architecture specs).
-          iter-02/sources/pacific-fusion-interview-fusion-report.md
-  [ANS]   ANS News, April 24, 2025 — Pacific Fusion CTO Keith LeChien quotes.
-          iter-04/sources/ans-news-2025-04-24-article-6980-pacific-fusion-fusing.md
-  [GA]    GlobeNewswire, April 24, 2025 — Pacific Fusion + General Atomics partnership.
-          iter-04/sources/globenewswire-news-release-2025-04-24-3067836-0-en-pacific.md
-  [2504]  Schmit et al. arXiv:2504.10680, April 2025 — multi-dimensional simulations
-          benchmarked against Z facility data confirming 50–60 MA → net facility gain.
-          iter-03/sources/arxiv-2504-10680.md
 """
+
+import sys
 
 from costingfe import ConfinementConcept, CostModel, Fuel
 
+# ── Model creation ──────────────────────────────────────────────────────────
 model = CostModel(concept=ConfinementConcept.MAG_TARGET, fuel=Fuel.DT)
 
-# ── Consumable O&M parameters (NOT in 1costingfe model; computed separately) ──
-# Source: analysis.md §2 Challenge 2 and §5 (RTL unit cost row)
-REP_RATE_HZ = 0.5            # Z-IFE baseline 0.5 Hz frozen-FLiBe RTL [Z-IFE §3.1.1.5]
-SECS_PER_YEAR = 3.156e7      # seconds per year
-SHOTS_PER_YEAR = REP_RATE_HZ * SECS_PER_YEAR  # ~15.75M shots/yr at 0.5 Hz
+# ── Plant configuration ──────────────────────────────────────────────────────
+# Z-IFE reference design (z-ife-sand2006-7148-thermal-cycles.md §3.1.1)
 
-# RTL/target cost scenarios [M$/yr]:
-# Historical steel RTL estimate: ~$0.70/shot [Z-IFE era, analysis.md §5]
-#   → $0.70 × 15.75M shots = ~$11.0M/yr  [optimistic; predates cryo target requirement]
-# Base case $1/shot: commercial viability analysis threshold cited in analysis.md §2
-#   → $1.00 × 15.75M shots = ~$15.75M/yr
-# Pessimistic: $10/shot cryo target (analysis.md §2 Challenge 2 "TEA consequence of failure")
-#   → $10.00 × 15.75M shots = ~$157.5M/yr
-# Commercial viability threshold: <$2/shot (analysis.md §2)
-#   → $2.00 × 15.75M shots = ~$31.5M/yr (maximum viable)
-CONSUMABLE_OM_HISTORICAL_M_PER_YR = 0.70 * SHOTS_PER_YEAR / 1e6   # ~11.0 M$/yr
-CONSUMABLE_OM_BASE_M_PER_YR = 1.00 * SHOTS_PER_YEAR / 1e6         # ~15.75 M$/yr
-CONSUMABLE_OM_MAX_VIABLE_M_PER_YR = 2.00 * SHOTS_PER_YEAR / 1e6   # ~31.5 M$/yr
-CONSUMABLE_OM_PESSIMISTIC_M_PER_YR = 10.00 * SHOTS_PER_YEAR / 1e6 # ~157.5 M$/yr
+# Customer requirements
+NET_ELECTRIC_MW = 1000.0    # MWe; Z-IFE reference plant size
+                             # Source: z-ife-sand2006-7148-thermal-cycles.md §3.1.1
+                             # NOTE: Pacific Fusion's commercial target is 250 MWe
+                             # (ans-news-2025-04-24-article-6980 §Combined power);
+                             # 1000 MWe is used to match the Z-IFE COE reference.
+                             # LCOE at 250 MWe will be materially higher.
 
-# ── Shared engineering parameters ────────────────────────────────────────────
-# All parameters shared across both scenarios. Design point: Z-IFE single-chamber,
-# ~0.5 Hz, frozen-FLiBe RTL, thick liquid FLiBe wall.
-# Source: z-ife-sand2006-7148-thermal-cycles.md §3.1.1 (reference plant).
+# UNCERTAIN: availability. Z-IFE assumes 85% without explicit attribution.
+# Thick-liquid-wall success: 85–90%; chamber/RTL clearing failure: 60–75%.
+AVAILABILITY = 0.85         # UNCERTAIN: analysis.md §Section 5 (capacity factor row);
+                             # used because it is the only published assumption
 
-SHARED_KWARGS = dict(
-    n_mod=1,                  # Single chamber — Z-IFE single-chamber baseline [Z-IFE §3.1.1.6]
-    construction_time_yr=5.0, # UNCERTAIN: 4–6 yr; no factory-build modular path yet
-    interest_rate=0.07,       # DEFAULT: standard fusion finance rate
-    inflation_rate=0.02,      # DEFAULT
-    noak=True,                # Assuming volume-production driver hardware at commercial scale
+LIFETIME_YR = 30            # DEFAULT: consistent with fusion plant finance conventions;
+                             # no MagLIF-specific data
+CONSTRUCTION_TIME_YR = 4.0  # DEFAULT: from mif_mag_target.yaml; plausible for modular
+                             # pulsed-power plant with simpler magnetics than tokamak
 
-    # ── Power balance ──────────────────────────────────────────────────────
-    # Z-IFE 0.5 Hz scenario: ~5 GJ/shot fusion yield, ~50 MJ driver energy/shot.
-    # Time-averaged driver output: 50 MJ × 0.5 Hz = 25 MW average delivered to target.
-    p_driver=25.0,    # Time-averaged pulsed power delivered to target [MW]
-                      # UNCERTAIN: derived from yield/gain estimates; Z-IFE scenario-specific.
-                      # Source: analysis.md §5, inferred from COE=7.0 ¢/kWeh at 0.5 Hz
+INTEREST_RATE = 0.0966      # Fixed charge rate 9.66%;
+                             # Source: z-ife-sand2006-7148-thermal-cycles.md §3.1.1
+INFLATION_RATE = 0.0245     # DEFAULT: consistent with tokamak reference example
+NOAK = False                # FOAK — first commercial plant in the 2030s per Pacific
+                             # Fusion timeline (pacificfusion-updates-experimental-
+                             # breakthrough-by-pacific.md); no learning curve applicable
 
-    mn=1.1,           # Neutron energy multiplier — FLiBe blanket (Be-9 → 2n reactions)
-                      # DEFAULT: same as standard DT blanket
-                      # Source: analysis.md §5 / standard DT blanket assumption
+# Repetition rate — reference scenario (frozen-FLiBe RTL, single chamber)
+REP_RATE_HZ = 0.5           # Hz; Z-IFE "best LTD case" (single chamber, frozen-FLiBe)
+                             # Source: z-ife-sand2006-7148-thermal-cycles.md §3.1.1.5
+                             # ("0.5 Hz is achievable with frozen-FLiBe RTL concept")
+                             # NOTE: 0.5 Hz is NOT the 1 Hz commercial target of Pacific
+                             # Fusion (arxiv-2408-15206 §7.1); it is the optimized Z-IFE
+                             # published data point, chosen for calibration purposes.
 
-    eta_th=0.42,      # Thermal conversion efficiency — Combined Brayton-Rankine, steel chamber
-                      # Source: z-ife-sand2006-7148-thermal-cycles.md §3.2
-                      # "Combined Brayton-Rankine achieves ~42% efficiency with current steel"
-                      # NOTE: 50% possible with C-C composite chamber [Z-IFE §3.2] but
-                      # requires high-temperature materials not commercially available;
-                      # analysis.md §3 (Energy Conversion TRL 6-7, gap #10).
+SECONDS_PER_YEAR = 365.25 * 24 * 3600  # 31,557,600 s/yr
+SHOTS_PER_YEAR = REP_RATE_HZ * SECONDS_PER_YEAR  # 15,778,800 shots/yr at 0.5 Hz
 
-    eta_p=0.50,       # DEFAULT: pumping efficiency
+# ── Power balance ────────────────────────────────────────────────────────────
+# Driver and thermal parameters from Z-IFE study
 
-    eta_pin=0.60,     # Pulsed power wall-plug efficiency — LTD driver architecture
-                      # Source: z-ife-sand2006-7148-thermal-cycles.md §3.1.1.5
-                      # "2005 workshop LTD efficiency estimate: 60%"
-                      # NOTE: IMG claims ~90% wall-plug [PMF §3.2] — not verified at plant scale.
-                      # Using LTD figure as conservative anchor.
-                      # analysis.md §5 (Driver efficiency row, confidence: medium)
+# Pulsed power driver parasitic draw: rep_rate × E_stored / eta_pin
+# At 0.5 Hz, 42 MJ stored, 60% LTD efficiency: 42 × 0.5 / 0.6 ≈ 35 MW
+P_DRIVER_MW = 35.0          # UNCERTAIN: derived from z-ife §3.1.1.5
+                             # (42 MJ stored × 0.5 Hz / 0.60 LTD efficiency ≈ 35 MW)
 
-    f_sub=0.03,       # DEFAULT: subsystem power fraction
-    f_dec=0.0,        # No direct energy conversion — D-T uses thermal cycle, not DEC
-                      # Source: analysis.md §Section 2 (CAS account cost structure table)
+ETA_TH = 0.42               # Thermal conversion efficiency, combined Brayton-Rankine,
+                             # steel chamber baseline (near-term achievable);
+                             # Source: z-ife-sand2006-7148-thermal-cycles.md §3.2
+                             # NOTE: C-C composite chamber could reach 50%, but requires
+                             # high-T materials not yet commercially available.
 
-    # Parasitic loads
-    p_coils=0.5,      # Pre-magnetization coil average power [MW]
-                      # Small: Pacific Fusion Oct 2025 self-magnetizing target demonstration
-                      # showed external Helmholtz coils can be eliminated entirely.
-                      # Source: analysis.md §3 (Target Physics TRL 3-4, self-magnetizing milestone)
-                      # UNCERTAIN: near-zero if self-magnetizing path scales; up to a few MW
-                      # if conventional external coils retained at commercial scale.
+ETA_PIN = 0.60              # LTD driver wall-plug efficiency;
+                             # Source: z-ife-sand2006-7148-thermal-cycles.md §3.1.1.5
+                             # (2005 workshop estimate: 60%)
+                             # NOTE: IMG architecture claims ~90% wall-plug efficiency
+                             # (analysis.md §Section 5; arxiv-2408-15206 §3.2),
+                             # but unverified at plant scale.
 
-    p_pump=2.0,       # FLiBe primary loop pumping [MW]
-                      # Slightly elevated vs. default (1.0 MW) — FLiBe is a viscous,
-                      # high-density molten salt at 733–850 K requiring larger pumps.
-                      # Source: analysis.md §3 (Energy Conversion / BOP TRL 6-7)
+MN = 1.1                    # DEFAULT: standard D-T neutron energy multiplier;
+                             # no MagLIF-specific blanket multiplier published
 
-    p_trit=10.0,      # DEFAULT: tritium processing power [MW]
-                      # Standard D-T tritium processing plant.
-                      # Source: analysis.md §4 (D-T fuel cycle — shared with all D-T concepts)
+# RTL steel remanufacturing parasitic load was 170 MWe for steel RTL baseline;
+# frozen-FLiBe RTL eliminates this burden entirely.
+F_SUB = 0.03                # DEFAULT: residual recirculating power fraction;
+                             # 170 MWe steel RTL factory penalty NOT present here
+                             # Source: z-ife-sand2006-7148-thermal-cycles.md §3.1.1.3
 
-    p_house=4.0,      # DEFAULT: housekeeping power [MW]
+P_TARGET_MW = 2.0           # UNCERTAIN: from mif_mag_target.yaml default; actual Z-IFE
+                             # frozen-FLiBe RTL factory parasitic power not published
+P_TRIT = 10.0               # DEFAULT: standard D-T tritium processing power [MW]
+P_HOUSE = 4.0               # DEFAULT from mif_mag_target.yaml
+P_PUMP = 1.0                # DEFAULT from mif_mag_target.yaml; FLiBe pump power [MW]
+P_CRYO = 0.2                # DEFAULT from mif_mag_target.yaml; minimal cryo [MW]
+P_COILS = 0.0               # Zero — no superconducting magnets; pulsed copper coils
+                             # are part of driver energy budget, not a separate AC load;
+                             # analysis.md §Key Differentiators: "No superconducting magnets"
 
-    p_cryo=0.0,       # No cryogenic power — no HTS superconducting magnets.
-                      # MagLIF uses pulsed copper coils (or none, self-magnetizing).
-                      # Key supply-chain advantage vs. all tokamak/stellarator concepts.
-                      # Source: analysis.md §Key Differentiators (No superconducting magnets)
+# ── Chamber geometry ─────────────────────────────────────────────────────────
+# Z-IFE reference: 4 m radius spherical chamber, 80 cm FLiBe blanket, 20 cm Al wall
+# Source: z-ife-power-plant-concept.md §Abstract (Derzon et al. 2000, via analysis.md §S5)
+PLASMA_T = 4.0              # Chamber radius [m]; Z-IFE 4 m radius
+                             # Source: analysis.md §Section 5, blanket geometry row
+BLANKET_T = 0.80            # FLiBe thick-liquid-wall blanket thickness [m];
+                             # Source: z-ife-sand2006-7148-thermal-cycles.md (analysis §S5)
+HT_SHIELD_T = 0.20          # 20 cm 6061-T6 Al first-wall structural wall;
+                             # Source: z-ife-power-plant-concept.md §Abstract
+STRUCTURE_T = 0.15          # DEFAULT from mif_mag_target.yaml
+VESSEL_T = 0.10             # DEFAULT from mif_mag_target.yaml
+R0 = 0.0                    # Not used for spherical chamber (mag_target concept)
 
-    p_target=5.0,     # RTL/liner factory parasitic electrical load [MW]
-                      # Z-IFE steel RTL remanufacturing consumed 170 MWe (17% of gross) —
-                      # forcing adoption of frozen-FLiBe RTL as base case to eliminate load.
-                      # Frozen-FLiBe RTL residual: cryo-cooling + automated fabrication.
-                      # Source: z-ife-sand2006-7148-thermal-cycles.md §3.1.1.3
-                      # UNCERTAIN: no published estimate for frozen-FLiBe RTL factory load.
+# ── CAS account cost overrides ───────────────────────────────────────────────
+# All overrides in M$ (2024$).
+# Basis: Z-IFE direct capital decomposition (z-ife-sand2006-7148-thermal-cycles.md §3.1.2)
+# and analysis.md §Section 2 "CAS-level cost structure" table.
 
-    # ── Geometry — Z-IFE spherical chamber ────────────────────────────────
-    # Source: z-ife-power-plant-concept.md §Abstract (SAND2000-3132J) and
-    #         z-ife-sand2006-7148-thermal-cycles.md §3.1.1 (chamber dimensions)
-    R0=0.0,            # No toroidal major radius — spherical chamber geometry
-    plasma_t=4.0,      # Chamber inner radius [m] — "4 m radius chamber" [Z-IFE §Abstract]
-    blanket_t=0.80,    # FLiBe thick liquid wall thickness [m] — "80 cm FLiBe" [Z-IFE §Abstract]
-    ht_shield_t=0.20,  # High-temperature shield [m] — DEFAULT order of magnitude
-    structure_t=0.15,  # Primary structure [m] — DEFAULT
-    vessel_t=0.10,     # Vacuum/pressure vessel [m] — DEFAULT
-
-    # ── Cost overrides — CAS22 reactor plant equipment ─────────────────────
-    cost_overrides={
-        # C220103: Pre-magnetization coils — conventional copper pulsed coils, not superconducting.
-        # MagLIF requires only a modest axial pre-magnetization B-field (~10 T),
-        # delivered by conventional copper coils. With Pacific Fusion's self-magnetizing
-        # composite targets (Oct 2025 demonstration at 22 MA on Z), even these may be
-        # eliminated entirely by embedding field penetration into target geometry.
-        # Compare: HTS superconducting coil default in framework >> $100M.
-        # Source: analysis.md §Key Differentiators (No superconducting magnets) and
-        #         analysis.md §3 (Target Physics TRL 3-4, self-magnetizing milestone)
-        "C220103": 5.0,   # Cu pre-magnetization coils [M$] — UNCERTAIN: $2–20M range
-
-        # C220104: Pulsed power driver — the dominant novel capital cost item.
-        # In MagLIF, the pulsed power driver performs the function of heating/current-drive
-        # systems in a tokamak: it compresses, heats, and implodes the fuel target.
-        # Z-IFE bottom-up cost model: $372M median ($862M 95th pctile) for 1 PW LTD driver.
-        #   12,600 LTD cavities at ~$28k each = ~$353M (96% of driver cost).
-        # Modern IMG (Imploding Metal Geometry) architecture claimed to be 5–10× cheaper
-        # per joule [PMF §3.2.4] — but no plant-scale cost estimate published for IMG.
-        # Using LTD Z-IFE reference as CONSERVATIVE upper bound; IMG goal: <$0.50/J.
-        # Source: z-ife-sand2006-7148-thermal-cycles.md §3.1.2
-        #   "Driver cost $372M median; LTD cavities 96% of total driver cost"
-        # UNCERTAIN: ±100%; IMG may be 2–5× lower if component cost targets met per [PMF §3.2.4]
-        "C220104": 372.0,  # Pulsed power driver [M$] — LTD Z-IFE median estimate
-
-        # C220109: Direct Energy Conversion — not applicable for D-T MagLIF.
-        # D-T fusion energy is captured as heat in the FLiBe blanket and converted
-        # via Brayton-Rankine thermal cycle. DEC is relevant for D-He3 and aneutronic
-        # fuel cycles only.
-        "C220109": 0.0,   # No DEC [M$]
-    },
-    # NOTE — accounts left at framework defaults with rationale:
+cost_overrides = {
+    # CAS21 — Buildings / Site Infrastructure (F-3 fix)
+    # The default MFE/fission scaling formula produces $919M (from ARIES/WAGANER scaling
+    # calibrated on tokamak reactor halls + tritium buildings). For MagLIF this is a
+    # probable double-count: the Z-IFE $372M driver figure already includes the capacitor
+    # hall space, and the tokamak formula is not calibrated for a capacitor bank facility.
     #
-    # C220101 (Blanket/FW): FLiBe thick liquid wall. Framework uses volume-based solid
-    #   blanket unit costs, which likely OVERestimates FLiBe capital (no structured solid
-    #   breeding assembly required). However, FLiBe handling systems and freeze/thaw
-    #   infrastructure for the frozen RTL concept may partially offset savings.
-    #   Kept at default as order-of-magnitude placeholder.
+    # Physical footprint estimate:
+    #   Pacific Fusion DS machine: 73m × 80m = 5,840 m² (published in Fusion Report
+    #   interview, pacific-fusion-interview-fusion-report.md §DS Architecture)
+    #   Commercial plant (1000 MWe, 10× DS power) → ~20,000–25,000 m² total facility
+    #   Nuclear-grade industrial construction: ~$6,000–8,000/m² (US, 2024)
+    #   20,000 m² × $7,000/m² = $140M + turbine hall, cooling towers, site work → ~$200M
     #
-    # C220108 (Target/RTL Factory): RTL + liner fabrication facility.
-    #   Z-IFE treated as a separate direct capital account; no sub-account cost breakdown
-    #   was published comparable to 1costingfe's target_factory_base ($244M at 1 GWe).
-    #   Used as placeholder. UNCERTAIN: cryo ice-layer target production at 0.5 Hz could
-    #   cost dramatically more; self-magnetizing non-cryo targets (if gain is sufficient)
-    #   could cost less. GA partnership (April 2025) provides organizational path to
-    #   address cryogenics/target fabrication but no published cost data yet.
-    #   Source for GA context: analysis.md §3 (Target Fabrication at Scale) [GA ref]
-    #
-    # CAS21 (Buildings): Pulsed power capacitor bank halls are large (Pacific Fusion DS:
-    #   73m × 80m for the experimental machine), partially offset by elimination of
-    #   cryogenics buildings (no HTS magnets). Net change vs. DT tokamak baseline unclear;
-    #   left at DT default (~$800M at 1 GWe).
-    #
-    # CAS70 (O&M): Framework DT baseline (~$52M/yr at 1 GWe). MagLIF's per-shot
-    #   consumable O&M is NOT captured — a material omission. The "CONSUMABLE O&M"
-    #   section below surfaces this gap with explicit bounding estimates.
-    #   Source: analysis.md §5 (RTL unit cost ~$0.70/shot historical steel estimate)
-    #   UNCERTAIN: cryo ice-layer targets could be $10–10,000+/shot currently; no
-    #   demonstrated path to sub-$2/shot — the commercial viability threshold.
+    # Double-count note: if the Z-IFE $372M driver already includes capacitor hall
+    # infrastructure (as implied by Z-IFE §3.1.2 scope), then CAS21 should be ~$60–80M
+    # for site work, roads, turbine hall, and non-driver buildings only. $200M is the
+    # high-end bound; the low end is closer to $80M. This model uses $200M as the best
+    # available physical estimate; $919M is treated as an artifact of MFE scaling.
+    # UNCERTAIN: ±100% (physical footprint methodology, not a calibrated fusion cost)
+    # Source: analysis.md §Section 2, §Section 5 (CAS21 row); pacific-fusion-interview-
+    #         fusion-report.md §DS Architecture
+    "CAS21": 200.0,          # M$; physical footprint estimate; replaces $919M default
+
+    # C220103 — Coils / Magnet System
+    # MagLIF has NO superconducting magnets. Framework default computes HTS coil cost
+    # from geometry. Zeroed.
+    # Source: analysis.md §Key Differentiators ("No superconducting magnets")
+    "C220103": 0.0,
+
+    # C220104 — Driver / Heating & Current Drive
+    # In MagLIF, this account is the pulsed power driver (capacitor banks, switches,
+    # transmission lines). Z-IFE LTD median: $372M for a 1 PW LTD driver.
+    # Scaling law: C = 372 × (TW/1000)^0.6 M$ (z-ife §3.1.2).
+    # LTD cavities: 12,600 units at ~$28k each = $353M (96% of driver capital).
+    # Modern IMG architecture (Pacific Fusion DS) may be 5–10× cheaper (analysis §S2
+    # Challenge 3; arxiv-2408-15206 §3.2.4 "cost of energy storage and switching must
+    # decrease by a factor of 5 to 10"), but no published plant-scale estimate exists.
+    # UNCERTAIN: ±50%
+    # Source: z-ife-sand2006-7148-thermal-cycles.md §3.1.2 (analysis.md §Section 5)
+    "C220104": 372.0,        # M$; LTD architecture median
+
+    # C220101 — First Wall + Blanket (FLiBe thick-liquid-wall)
+    # Z-IFE reference: FLiBe thick-liquid-wall, 80 cm, 4 m radius spherical chamber.
+    # Framework default uses PbLi volume-based unit cost — inapplicable.
+    # Estimated from Z-IFE §3.1.2 direct capital split:
+    #   Total direct ≈ $575M; driver $372M; chamber+BOP remaining ≈ $203M;
+    #   chamber component (FLiBe blanket + Al first wall) ≈ $46M (rough split).
+    #   Used $50M as representative of FLiBe blanket + structural first wall.
+    # UNCERTAIN: ±40%
+    # Source: z-ife-sand2006-7148-thermal-cycles.md §3.1.2
+    "C220101": 50.0,         # M$; Z-IFE FLiBe blanket + Al first wall analogue
+
+    # C220108 — Divertor
+    # MagLIF has no divertor; pulsed spherical chamber with thick liquid wall handles
+    # debris removal between shots. Framework computes a divertor cost irrelevant here.
+    # Source: analysis.md §Key Differentiators ("pulsed operation, not continuous")
+    "C220108": 0.0,
+
+    # C220109 — Direct Energy Conversion
+    # No DEC in baseline D-T MagLIF (unlike Helion D-He3 which electromagnetically
+    # recovers compression energy). Source: analysis.md §Key Differentiators vs. Helion
+    "C220109": 0.0,
+
+    # C220600 — Other Reactor Plant Equipment (RTL + Target Factory)
+    # This account captures RTL/target factory capital. Z-IFE frozen-FLiBe RTL factory
+    # cost not separately itemized; the study notes it eliminates the 170 MWe steel RTL
+    # remanufacturing plant. Proxy: ~50% of laser IFE target factory ($244M) because
+    # MagLIF RTL factory has mm-scale tolerances, metallic liner, simpler optics than
+    # laser ICF. If cryo ice-layer targets are required, factory cost could be larger.
+    # UNCERTAIN: ±100% (no published estimate for frozen-FLiBe RTL factory)
+    # Source: analysis.md §Section 2, Challenge 2; costing_constants.yaml target_factory_base
+    "C220600": 120.0,        # M$; RTL + target factory capital
+}
+
+# ── Forward pass (baseline: 0.5 Hz, 1000 MWe) ────────────────────────────────
+result = model.forward(
+    net_electric_mw=NET_ELECTRIC_MW,
+    availability=AVAILABILITY,
+    lifetime_yr=LIFETIME_YR,
+    n_mod=1,
+    construction_time_yr=CONSTRUCTION_TIME_YR,
+    interest_rate=INTEREST_RATE,
+    inflation_rate=INFLATION_RATE,
+    noak=NOAK,
+    # Chamber geometry (Z-IFE reference spherical chamber)
+    R0=R0,
+    plasma_t=PLASMA_T,
+    blanket_t=BLANKET_T,
+    ht_shield_t=HT_SHIELD_T,
+    structure_t=STRUCTURE_T,
+    vessel_t=VESSEL_T,
+    # Power balance
+    p_input=P_DRIVER_MW,
+    mn=MN,
+    eta_th=ETA_TH,
+    eta_pin=ETA_PIN,
+    f_sub=F_SUB,
+    f_dec=0.0,          # No DEC; analysis.md §Key Differentiators vs. Helion
+    p_coils=P_COILS,
+    p_pump=P_PUMP,
+    p_trit=P_TRIT,
+    p_house=P_HOUSE,
+    p_cryo=P_CRYO,
+    p_target=P_TARGET_MW,
+    cost_overrides=cost_overrides,
 )
 
-# ── Scenario A: 1000 MWe (Z-IFE single-chamber reference) ────────────────────
-# Used for cross-concept benchmarking. Matches Z-IFE reference plant scale.
-# Source: z-ife-sand2006-7148-thermal-cycles.md §3.1.1 (reference plant, 1000 MWe)
-result_a = model.forward(
-    net_electric_mw=1000.0,    # 1 GWe — Z-IFE single-chamber reference plant [Z-IFE §3.1.1]
-    availability=0.85,         # UNCERTAIN: Z-IFE assumption for thick-liquid-wall success
-                                # scenario; 85–90% success vs. 60–75% failure.
-                                # Source: analysis.md §5 (capacity factor rows)
-    lifetime_yr=30,             # DEFAULT: standard fusion plant lifetime
-    **SHARED_KWARGS,
-)
+# ── Results ──────────────────────────────────────────────────────────────────
+c = result.costs
+pt = result.power_table
 
-# ── Scenario B: 250 MWe (Pacific Fusion commercial design point) ──────────────
-# Pacific Fusion CTO LeChien (April 2025) stated 250 MWe target with ≤25 acres.
-# This is 4× smaller than the Z-IFE reference. Z-IFE economy-of-scale data:
-# 1000 MWe 0.5 Hz → 7.0 ¢/kWeh; 2000 MWe → 5.7 ¢/kWeh; 500 MWe → >10 ¢/kWeh.
-# Source: ans-news-2025-04-24-article-6980-pacific-fusion-fusing.md §Combined power
-#   "One attractive combination would let us produce about 250 net MWe with a very
-#    compact footprint of 25 acres or less" — Keith LeChien, Pacific Fusion CTO
-# analysis.md §2 Scale note: "All COE figures should be treated as lower bounds
-#   for Pacific Fusion's commercial design point."
-result_b = model.forward(
-    net_electric_mw=250.0,     # 250 MWe — Pacific Fusion commercial target [ANS April 2025]
-    availability=0.85,         # Same availability assumption as Scenario A (UNCERTAIN)
-    lifetime_yr=30,
-    **SHARED_KWARGS,
-)
-
-# ── Results — Scenario A (1000 MWe, Z-IFE reference) ─────────────────────────
-c_a = result_a.costs
-pt_a = result_a.power_table
-lcoe_ckwh_a = float(c_a.lcoe) / 10
-
-print("=" * 65)
-print("MagLIF (D-T) — Pacific Fusion / Fuse Energy Technologies")
-print("=" * 65)
-print()
-print("SCENARIO A: 1000 MWe — Z-IFE single-chamber reference plant")
-print("  Driver: LTD pulsed power ($372M) | eta_pin=60% | eta_th=42%")
-print()
-print(f"  LCOE:        {c_a.lcoe:.1f} $/MWh  ({lcoe_ckwh_a:.2f} c/kWh)")
-print(f"  Overnight:   {c_a.overnight_cost:.0f} $/kW")
-print(f"  Fusion pwr:  {pt_a.p_fus:.0f} MW  |  Net: {pt_a.p_net:.0f} MW")
-print(f"  Q_eng:       {pt_a.q_eng:.2f}  |  Q_sci: {pt_a.q_sci:.1f}")
-print(f"  Recirc frac: {pt_a.rec_frac:.1%}")
-
-# ── Results — Scenario B (250 MWe, PF commercial design point) ───────────────
-c_b = result_b.costs
-pt_b = result_b.power_table
-lcoe_ckwh_b = float(c_b.lcoe) / 10
-
-print()
-print("SCENARIO B: 250 MWe — Pacific Fusion commercial design point")
-print("  Same engineering parameters; 4× smaller plant vs. Z-IFE reference.")
-print("  Z-IFE shows economy-of-scale penalty below 1000 MWe (scale law on capital).")
-print()
-print(f"  LCOE:        {c_b.lcoe:.1f} $/MWh  ({lcoe_ckwh_b:.2f} c/kWh)")
-print(f"  Overnight:   {c_b.overnight_cost:.0f} $/kW")
-print(f"  Fusion pwr:  {pt_b.p_fus:.0f} MW  |  Net: {pt_b.p_net:.0f} MW")
-print(f"  Q_eng:       {pt_b.q_eng:.2f}  |  Q_sci: {pt_b.q_sci:.1f}")
-print(f"  Recirc frac: {pt_b.rec_frac:.1%}")
-print()
-lcoe_penalty_pct = (float(c_b.lcoe) - float(c_a.lcoe)) / float(c_a.lcoe) * 100
-print(f"  Scale penalty vs. 1000 MWe: {lcoe_penalty_pct:+.1f}% LCOE")
+print("MagLIF D-T (Z-IFE LTD reference architecture) — 1000 MWe, 85% availability, 30 yr")
+print(f"LCOE: {c.lcoe:.1f} $/MWh | Overnight: {c.overnight_cost:.0f} $/kW")
+print(f"Fusion: {pt.p_fus:.0f} MW | Net: {pt.p_net:.0f} MW | Q_eng: {pt.q_eng:.2f}")
+print(f"Overridden accounts: {result.overridden}")
 print()
 
-# ── Z-IFE reference COE comparisons ──────────────────────────────────────────
-print("Z-IFE published COE reference points (LTD architecture):")
-print("  10-chamber, 0.1 Hz: ~20.0 c/kWh  [Z-IFE §3.1.1.6]  ← baseline (RTL-limited)")
-print("  1-chamber,  0.5 Hz:  ~7.0 c/kWh  [Z-IFE §3.1.1.6]  ← Scenario A design point")
-print("  2-chamber, 2000 MWe:  ~5.7 c/kWh [Z-IFE §3.1.1.6]  ← scale economy case")
-print("  Advanced fission:    4–6 c/kWh   [Z-IFE §3.1.1.6]  ← competitive threshold")
-print()
-
-# ── CAS breakdown — Scenario A ───────────────────────────────────────────────
-cas_accounts = [
-    ("CAS10", "Preconstruction"),
-    ("CAS21", "Buildings"),
-    ("CAS22", "Reactor Plant Equipment"),
-    ("CAS23", "Turbine Plant"),
-    ("CAS24", "Electrical Plant"),
-    ("CAS25", "Miscellaneous"),
-    ("CAS26", "Heat Rejection"),
-    ("CAS27", "Special Materials"),
-    ("CAS28", "Digital Twin"),
-    ("CAS29", "Contingency"),
-    ("CAS30", "Indirect Costs"),
-    ("CAS40", "Owner's Costs"),
-    ("CAS50", "Supplementary"),
-    ("CAS60", "IDC"),
-    ("CAS70", "O&M (annualized)"),
-    ("CAS80", "Fuel (annualized)"),
-    ("CAS90", "Financial"),
+cas = [
+    ("CAS10", "Preconstruction",           c.cas10),
+    ("CAS21", "Buildings",                 c.cas21),
+    ("CAS22", "Reactor Plant Equipment",   c.cas22),
+    ("CAS23", "Turbine Plant",             c.cas23),
+    ("CAS24", "Electrical Plant",          c.cas24),
+    ("CAS25", "Miscellaneous",             c.cas25),
+    ("CAS26", "Heat Rejection",            c.cas26),
+    ("CAS27", "Special Materials",         c.cas27),
+    ("CAS28", "Digital Twin",              c.cas28),
+    ("CAS29", "Contingency",               c.cas29),
+    ("CAS30", "Indirect Costs",            c.cas30),
+    ("CAS40", "Owner's Costs",             c.cas40),
+    ("CAS50", "Supplementary",             c.cas50),
+    ("CAS60", "IDC",                       c.cas60),
+    ("CAS70", "O&M (annualized)",          c.cas70),
+    ("CAS80", "Fuel (annualized)",         c.cas80),
+    ("CAS90", "Financial",                 c.cas90),
 ]
 
-print("CAS BREAKDOWN — Scenario A (1000 MWe):")
 print(f"{'Code':<8} {'Account':<28} {'M$':>10}")
 print("-" * 48)
-for code, name in cas_accounts:
-    val = getattr(c_a, code.lower(), None)
-    if val is not None:
-        print(f"{code:<8} {name:<28} {float(val):>10.1f}")
+for code, name, val in cas:
+    print(f"{code:<8} {name:<28} {float(val):>10.1f}")
 print("-" * 48)
-print(f"{'':8} {'Total Capital':<28} {float(c_a.total_capital):>10.1f}")
+print(f"{'':8} {'Total Capital':<28} {float(c.total_capital):>10.1f}")
 
-# ── CONSUMABLE O&M (NOT IN MODEL) ────────────────────────────────────────────
-# ITER-7 ADDITION: Surface per-shot consumable O&M as concrete line items.
-# The modeled CAS70 (~$132M/yr) is a material undercount because per-shot
-# target/RTL destruction costs are not captured by the framework.
-# Source: analysis.md §2 Challenge 2; §5 (RTL unit cost); review.md §1 (iter-4 review)
+# ── CAS22 detail ─────────────────────────────────────────────────────────────
 print()
-print("CONSUMABLE O&M (PER-SHOT, NOT CAPTURED IN CAS70):")
-print(f"  Rep rate:                          {REP_RATE_HZ:.1f} Hz [Z-IFE §3.1.1.5]")
-print(f"  Shots per year at {REP_RATE_HZ:.1f} Hz:         {SHOTS_PER_YEAR / 1e6:.2f}M shots/yr")
-print()
-print(f"  {'Scenario':<36} {'M$/yr':>8}  {'% of CAS70':>10}")
-print("  " + "-" * 58)
-cas70_a = float(c_a.cas70)
-print(f"  {'CAS70 (modeled O&M, Scenario A)':<36} {cas70_a:>8.1f}  {'100% baseline':>10}")
-print(f"  {'Add: hist. steel RTL (~$0.70/shot)':<36} {CONSUMABLE_OM_HISTORICAL_M_PER_YR:>8.1f}  {CONSUMABLE_OM_HISTORICAL_M_PER_YR / cas70_a * 100:>9.1f}%")
-print(f"  {'Add: base case ($1.00/shot)':<36} {CONSUMABLE_OM_BASE_M_PER_YR:>8.1f}  {CONSUMABLE_OM_BASE_M_PER_YR / cas70_a * 100:>9.1f}%")
-print(f"  {'Commercial viability max ($2.00/shot)':<36} {CONSUMABLE_OM_MAX_VIABLE_M_PER_YR:>8.1f}  {CONSUMABLE_OM_MAX_VIABLE_M_PER_YR / cas70_a * 100:>9.1f}%")
-print(f"  {'Pessimistic cryo ($10.00/shot)':<36} {CONSUMABLE_OM_PESSIMISTIC_M_PER_YR:>8.1f}  {CONSUMABLE_OM_PESSIMISTIC_M_PER_YR / cas70_a * 100:>9.1f}%")
-print()
-print(f"  CAS70 + base consumable (true O&M lower bound): {cas70_a + CONSUMABLE_OM_BASE_M_PER_YR:.1f} M$/yr")
-print(f"  CAS70 + cryo pessimistic (O&M upper bound):     {cas70_a + CONSUMABLE_OM_PESSIMISTIC_M_PER_YR:.1f} M$/yr")
-print()
-print("  *** IMPORTANT: If cryo target cost cannot reach <$2/shot, annual O&M at 1 Hz")
-print("  *** exceeds $300M/yr at 1 Hz — comparable to annual capital amortization on")
-print("  *** the driver, making O&M the binding LCOE constraint. Commercial viability")
-print("  *** threshold: <$2/shot [analysis.md §2 Challenge 2].")
-
-# ── CAS22 sub-account detail ──────────────────────────────────────────────────
-print("\nCAS22 Reactor Plant Equipment breakdown (Scenario A, 1000 MWe):")
-print("-" * 60)
-cas22_items = [
-    ("C220101", "First Wall / FLiBe Blanket"),
-    ("C220102", "Shield"),
-    ("C220103", "Pre-magnetization Coils (Cu)"),
-    ("C220104", "Pulsed Power Driver (LTD)"),
-    ("C220105", "Primary Structure"),
-    ("C220106", "Vacuum System"),
-    ("C220107", "Power Supplies (aux)"),
-    ("C220108", "RTL + Target Factory"),
-    ("C220109", "Direct Energy Converter"),
-    ("C220110", "Remote Handling"),
-    ("C220111", "Installation"),
-    ("C220112", "Isotope Separation"),
-    ("C220200", "Coolant Systems (FLiBe)"),
-    ("C220300", "Aux Cooling / Cryo"),
-    ("C220400", "Rad Waste"),
-    ("C220500", "Fuel Handling (DT)"),
-    ("C220600", "Other Equipment"),
-    ("C220700", "I&C"),
-]
-for key, label in cas22_items:
-    v = float(result_a.cas22_detail.get(key, 0.0))
-    if v > 0.01:
-        override_flag = " [OVERRIDE]" if key in result_a.overridden else ""
-        print(f"  {key}  {label:<32} {v:>8.1f} M${override_flag}")
-print(f"\n  {'':7} {'CAS22 Total':<32} {float(c_a.cas22):>8.1f} M$")
-print(f"\nOverridden accounts: {', '.join(result_a.overridden)}")
+print("CAS22 sub-accounts (Reactor Plant Equipment):")
+cas22_labels = {
+    "C220000": "CAS22 total",
+    "C220101": "First Wall + Blanket (FLiBe)",
+    "C220102": "Shield",
+    "C220103": "Coils (zeroed — no SC magnets)",
+    "C220104": "Driver (pulsed power, LTD ref)",
+    "C220105": "Structure",
+    "C220106": "Vacuum System",
+    "C220107": "Power Supplies",
+    "C220108": "Divertor (zeroed — absent in MagLIF)",
+    "C220109": "DEC (zeroed)",
+    "C220111": "Installation",
+    "C220112": "Isotope Separation",
+    "C220200": "Coolant Handling",
+    "C220300": "Aux Cooling",
+    "C220400": "Rad Waste",
+    "C220500": "Fuel Handling",
+    "C220600": "RTL + Target Factory",
+    "C220700": "I&C",
+}
+for key, label in cas22_labels.items():
+    val = result.cas22_detail.get(key)
+    if val is not None:
+        print(f"  {key:<10} {label:<38} {float(val):>8.1f} M$")
 
 # ── Key Assumptions Summary ───────────────────────────────────────────────────
 print()
 print("=" * 65)
-print("KEY ASSUMPTIONS")
+print("KEY ASSUMPTIONS SUMMARY")
 print("=" * 65)
-print(f"  Scenario A / B net electric:  1000 / 250 MWe")
-print(f"  Availability:                 85%   (UNCERTAIN: thick-LW success scenario)")
-print(f"  Lifetime:                     30 yr")
-print(f"  Thermal efficiency:           42%   (Brayton-Rankine, steel chamber)")
-print(f"    [Z-IFE §3.2; 50% possible with C-C composite, unavailable commercially]")
-print(f"  Driver wall-plug efficiency:  60%   (LTD; IMG claims 90%, unverified)")
-print(f"    [Z-IFE §3.1.1.5; analysis.md §5; IMG claim: PMF §3.2]")
-print(f"  Driver capital:               $372M (LTD Z-IFE median; IMG may be 5–10× lower)")
-print(f"    [Z-IFE §3.1.2; 12,600 LTD cavities at ~$28k each = 96% of driver cost]")
-print(f"  Rep rate (implied):           ~0.5 Hz (Z-IFE optimized frozen-FLiBe RTL case)")
-print(f"    [Z-IFE §3.1.1.5; 1.0–1.8 Hz minimum-COE rate 'beyond reach of RTL']")
-print(f"  No superconducting magnets    (HTS/Nb3Sn fully eliminated; $5M Cu coils only)")
-print(f"  Thick liquid FLiBe wall       (scheduled FW replacement eliminated IF demonstrated)")
-print(f"  Frozen-FLiBe RTL              (eliminates 170 MWe steel RTL remanufacturing load)")
-print(f"  Gain basis:                   Multi-dim. simulations anchored to Z data")
-print(f"    [arXiv:2504.10680: 50–60 MA → net facility gain; ignition undemonstrated on Z]")
-print()
-print("CRITICAL UNCERTAINTIES NOT CAPTURED IN THIS ESTIMATE:")
-print("  1. Rep rate achievement: COE scales ~10:1 with rep rate")
-print("     (0.1 Hz → ~20 c/kWh; 1.0 Hz → ~5 c/kWh at 1 GWe per Z-IFE)")
-print("  2. Per-shot consumable O&M: target cost must reach <$2/shot")
-print("     (see CONSUMABLE O&M table above for explicit bounding estimates)")
-print("     ($0.70/shot historical steel RTL; cryo ice-layer targets orders-of-magnitude higher)")
-print("  3. Gain scaling unvalidated: χ ≈ 0.1 on Z; GJ-class yields undemonstrated")
-print("     (simulation-anchored at 50–60 MA per arXiv:2504.10680; not experimentally tested)")
-print("  4. IMG driver capital: may be 2–5× lower than $372M LTD reference")
-print("     (PMF §3.2.4: must decrease 5–10× from $5/J current commercial pricing)")
-print("  5. Chamber lifetime under GJ-scale repetitive shots: untested environment")
-print("  6. 250 MWe commercial target (Scenario B) faces economy-of-scale penalty")
-print("     vs. 1000 MWe Z-IFE reference — all published COE figures are lower")
-print("     bounds for Pacific Fusion's actual commercial design point.")
-print("     Source: ans-news-2025-04-24-article-6980-pacific-fusion-fusing.md")
-print()
-print("  See analysis.md §Section 2 and §Section 6 for full gap inventory.")
+print(f"""
+Architecture:  Z-IFE LTD reference, single chamber, 0.5 Hz,
+               frozen-FLiBe RTL (best published MagLIF scenario).
+               NOT the modern IMG architecture (Pacific Fusion DS).
 
-# ── Sensitivity Analysis ──────────────────────────────────────────────────────
-sens = model.sensitivity(result_a.params)
+Net output:    1000 MWe (Z-IFE reference, 4× larger than Pacific
+               Fusion's 250 MWe commercial target; LCOE at 250 MWe
+               will be materially higher — 500 MWe case in Z-IFE
+               is already >10 ¢/kWeh per z-ife §3.1.1.6).
 
-print()
-print("=" * 65)
-print("SENSITIVITY — Scenario A (elasticity = %LCOE / %param)")
-print("=" * 65)
+CAS21 Bldgs:   $200M (physical footprint estimate; default $919M
+               is probable MFE/fission scaling artifact — exceeds
+               driver cost and likely double-counts capacitor hall
+               already implicit in the Z-IFE $372M driver figure).
+               See analysis.md §Section 2 CAS-level cost table.
+
+Driver cost:   $372M (LTD median, C220104); IMG 5–10× reduction
+               (~$37–75M) would meaningfully lower LCOE (see sweep).
+               Scaling: C = 372 × (TW/1000)^0.6 M$ from z-ife §3.1.2.
+
+Blanket:       C220101 = $50M   [Z-IFE FLiBe chamber; ±40%]
+RTL factory:   C220600 = $120M  [analogy estimate; ±100%]
+Coils:         C220103 = $0M    [no superconducting magnets]
+Divertor:      C220108 = $0M    [no divertor in MagLIF]
+DEC:           C220109 = $0M    [D-T, no direct energy conversion]
+
+Thermal eff.:  42% (combined Brayton-Rankine, steel chamber;
+               C-C composite could reach 50% but not yet commercial)
+
+Driver eff.:   60% LTD (IMG claims ~90%; unverified at plant scale)
+
+Rep rate:      0.5 Hz (frozen-FLiBe RTL, single chamber, reference).
+               Z-IFE reference COE at 0.5 Hz: 7.0 ¢/kWeh = 70 $/MWh.
+               See REP RATE SWEEP below for full scenario range.
+
+Per-shot consumables:
+               Baseline captures frozen-FLiBe RTL (eliminates 170 MWe
+               steel RTL factory parasitic load from z-ife §3.1.1.3).
+               Cryo ice-layer target cost at scale is unknown and NOT
+               captured as explicit O&M. See CONSUMABLE SWEEP below
+               for break-even thresholds. Current cryo target cost
+               (thousands $/shot) is orders of magnitude above the
+               ~$1–2/shot commercial viability threshold.
+
+References:    z-ife-sand2006-7148-thermal-cycles.md §3.1.1, §3.1.2
+               analysis.md §Section 2 and §Section 5
+               pacific-fusion-interview-fusion-report.md §DS Architecture
+""")
+
+# ── Sensitivity Analysis ─────────────────────────────────────────────────────
+sens = model.sensitivity(result.params, cost_overrides=cost_overrides)
+
+print("Sensitivity (elasticity = %LCOE / %param)")
+print("NOTE: Overridden accounts (CAS21, C220104, C220101, C220600)")
+print("      have zero gradient — use explicit sweeps below to test.")
+print("-" * 55)
 
 print("\nEngineering levers:")
 for k, v in sorted(sens["engineering"].items(), key=lambda x: abs(x[1]), reverse=True):
-    print(f"  {k:<32} {v:+.4f}")
+    print(f"  {k:<30} {v:+.4f}")
 
 print("\nFinancial:")
 for k, v in sorted(sens["financial"].items(), key=lambda x: abs(x[1]), reverse=True):
-    print(f"  {k:<32} {v:+.4f}")
+    print(f"  {k:<30} {v:+.4f}")
+
+# ── Rep Rate Scenario Sweep — Hypothesis 1 (F-1) ─────────────────────────────
+#
+# Physics: for a pulsed concept at fixed single-chamber capital, net electric output
+# scales linearly with rep rate (P_net ∝ rep_rate × yield_per_shot × eta_th × mn).
+# LCOE consequently scales as 1/rep_rate at fixed capital.
+#
+# Calibration: baseline LCOE at 0.5 Hz anchors the sweep. Model gives ~7.6 ¢/kWeh
+# vs. Z-IFE reference 7.0 ¢/kWeh — 8% discrepancy (acceptable, from financial
+# parameter differences). Analysis confirmed this calibration in analysis.md §S2.
+#
+# Algebraic derivation:
+#   yield_per_shot_GJ: calibrated so that P_net = 1000 MWe at rep_rate = 0.5 Hz
+#   P_net(rr) = yield_per_shot_GJ × rr × eta_th × mn × 1000  [MWe]
+#   annual_energy(rr) = P_net(rr) × 8760 × availability          [MWh/yr]
+#   LCOE(rr) = LCOE_baseline × (REP_RATE_HZ / rr)              [$/MWh]
+#
+# Why algebraic and not framework calls at each net_electric_mw?
+#   The framework scales power-dependent BOP accounts (CAS23-26, buildings) with
+#   net electric, which is appropriate for differently sized plants but not for a
+#   single plant whose output changes with rep rate at fixed capital investment.
+#   The algebraic form isolates the rep rate lever correctly.
+#
+# Source for Z-IFE reference calibration points:
+#   z-ife-sand2006-7148-thermal-cycles.md §3.1.1.6
 
 print()
-print("NOTE: The sensitivity table above reflects standard 1costingfe gradients")
-print("and does NOT capture the dominant MagLIF LCOE drivers:")
-print("  - Rep rate (no framework parameter; must be swept as p_driver × scale factor)")
-print("  - Per-shot target/RTL cost (not parameterized in CAS70 or C220108)")
-print("    → See CONSUMABLE O&M table above for the explicit gap quantification")
-print("  - Driver capital uncertainty (C220104 overridden; gradient = 0 by construction)")
-print("  - Plant scale (Scenario A vs. B shows this directly in the output above)")
+print("=" * 65)
+print("REP RATE SCENARIO SWEEP — Hypothesis 1 (F-1)")
+print("LCOE at fixed single-chamber capital, varying rep rate")
+print("Baseline calibrated to 0.5 Hz → Z-IFE ref 7.0 ¢/kWeh = 70 $/MWh")
+print("=" * 65)
+
+LCOE_BASELINE = float(c.lcoe)          # $/MWh, from model at 0.5 Hz
+# Yield per shot: calibrated from baseline net power
+# P_net ≈ yield_per_shot_GJ × rep_rate_hz × eta_th × mn × 1000 MWe/GJ
+# => yield_per_shot_GJ = NET_ELECTRIC_MW / (REP_RATE_HZ × ETA_TH × MN × 1000)
+YIELD_PER_SHOT_GJ = NET_ELECTRIC_MW / (REP_RATE_HZ * ETA_TH * MN * 1000)
+
+rep_rate_scenarios = [
+    (0.1,  "10-chamber steel RTL (Z-IFE baseline)"),
+    (0.25, "Single chamber, sub-Hz"),
+    (0.5,  "Single chamber, frozen-FLiBe RTL (reference)"),
+    (1.0,  "Single chamber, commercial target"),
+    (1.8,  "Single chamber, minimum-COE (beyond RTL reach)"),
+]
+
+print(f"\n  {'Rep Rate':>8}  {'Net Power':>10}  {'LCOE $/MWh':>12}  {'LCOE ¢/kWeh':>12}  Notes")
+print("  " + "-" * 82)
+
+ZIFE_REF = {0.1: 200.0, 0.5: 70.0}  # Z-IFE reference COE in $/MWh for comparison
+
+for rr, label in rep_rate_scenarios:
+    p_net_mw = YIELD_PER_SHOT_GJ * rr * ETA_TH * MN * 1000
+    lcoe_rr = LCOE_BASELINE * (REP_RATE_HZ / rr)
+    lcoe_ckweh = lcoe_rr / 10.0  # $/MWh → ¢/kWeh
+    zife_note = ""
+    if rr in ZIFE_REF:
+        zife_note = f"  [Z-IFE ref: {ZIFE_REF[rr]:.0f} $/MWh]"
+    print(f"  {rr:>7.2f} Hz  {p_net_mw:>8.0f} MWe  {lcoe_rr:>10.1f} $/MWh"
+          f"  {lcoe_ckweh:>10.2f} ¢/kWeh  {label}{zife_note}")
+
 print()
-print("For MagLIF, the four dominant LCOE levers identified in analysis.md §2 are:")
-print("  1. Rep rate (Hz)       — C220104 capital amortized per MWh")
-print("  2. Target $/shot       — variable O&M floor (quantified above; not in framework)")
-print("  3. Driver $/J capital  — C220104 sensitivity to IMG vs. LTD architecture")
-print("  4. Plant scale (MWe)   — economy-of-scale; 250 MWe raises LCOE vs. 1 GWe")
+print("  Calibration check: model LCOE at 0.5 Hz =", f"{LCOE_BASELINE:.1f} $/MWh",
+      f"({LCOE_BASELINE/10:.2f} ¢/kWeh)")
+print("  Z-IFE reference at 0.5 Hz: 70 $/MWh (7.0 ¢/kWeh); discrepancy:",
+      f"{abs(LCOE_BASELINE - 70.0)/70.0*100:.0f}%")
+print()
+print("  Advanced fission threshold:  40–60 $/MWh (4–6 ¢/kWeh)")
+print("  Break-even rep rate (≤60 $/MWh):",
+      f"{REP_RATE_HZ * LCOE_BASELINE / 60.0:.2f} Hz")
+print("  Break-even rep rate (≤40 $/MWh):",
+      f"{REP_RATE_HZ * LCOE_BASELINE / 40.0:.2f} Hz")
+print()
+print("  NOTE: 0.1 Hz algebraic LCOE (single chamber) is HIGHER than Z-IFE's")
+print("        20 ¢/kWeh because Z-IFE uses 10 chambers at 0.1 Hz to produce")
+print("        1000 MWe total — the multi-chamber capital dilutes per-MWh cost")
+print("        vs. single-chamber at 0.1 Hz. Single-chamber at 0.1 Hz is")
+print("        economically unviable regardless of driver or target cost.")
+
+# ── Per-Shot Consumable Cost Sweep — Hypothesis 2 (F-2) ──────────────────────
+#
+# Target consumable cost (cryo ice-layer liner + RTL) is unknown at commercial scale.
+# This sweep adds annualized consumable O&M to the LCOE numerator and finds break-even.
+#
+# Consumable cost formula:
+#   annual_consumable_M = cost_per_shot_$ × shots_per_year / 1e6
+#
+# LCOE with consumables:
+#   LCOE_with_consm = LCOE_baseline + annual_consumable_M × 1e6 / annual_energy_MWh
+#
+# Break-even $/shot at threshold T $/MWh:
+#   cost_per_shot_breakeven = (T - LCOE_baseline) × annual_energy_MWh / shots_per_year
+#
+# Shots/yr at 0.5 Hz: 0.5 × 31,557,600 = 15,778,800 shots/yr
+# Annual energy: 1000 × 8760 × 0.85 = 7,446,000 MWh/yr
+#
+# Source: analysis.md §Section 2, Challenge 2 (consumable cost floor analysis)
+
+print()
+print("=" * 65)
+print("PER-SHOT CONSUMABLE COST SWEEP — Hypothesis 2 (F-2)")
+print(f"Baseline scenario: {REP_RATE_HZ} Hz, {int(NET_ELECTRIC_MW)} MWe,",
+      f"{int(SHOTS_PER_YEAR/1e6*10)/10:.1f}M shots/yr")
+print("Adding annualized cryo target + RTL consumable cost to LCOE")
+print("=" * 65)
+
+ANNUAL_ENERGY_MWH = NET_ELECTRIC_MW * 8760 * AVAILABILITY  # MWh/yr
+
+consumable_scenarios = [0, 1, 2, 5, 10]  # $/shot
+
+print(f"\n  {'$/shot':>7}  {'Annual cost M$':>14}  {'LCOE $/MWh':>12}  {'LCOE ¢/kWeh':>12}")
+print("  " + "-" * 52)
+for cps in consumable_scenarios:
+    annual_consm_M = cps * SHOTS_PER_YEAR / 1e6
+    lcoe_with = LCOE_BASELINE + annual_consm_M * 1e6 / ANNUAL_ENERGY_MWH
+    print(f"  {cps:>7.0f}  {annual_consm_M:>12.1f} M$  {lcoe_with:>10.1f} $/MWh"
+          f"  {lcoe_with/10:>10.2f} ¢/kWeh")
+
+# Break-even thresholds
+for threshold in [100.0, 150.0]:
+    if LCOE_BASELINE < threshold:
+        headroom_m = (threshold - LCOE_BASELINE) * ANNUAL_ENERGY_MWH / 1e6  # M$/yr
+        breakeven_per_shot = headroom_m * 1e6 / SHOTS_PER_YEAR
+        print(f"\n  Break-even at {threshold:.0f} $/MWh: {breakeven_per_shot:.1f} $/shot"
+              f"  (annual budget: {headroom_m:.0f} M$/yr)")
+    else:
+        print(f"\n  Baseline LCOE already exceeds {threshold:.0f} $/MWh — no headroom.")
+
+print()
+print("  Commercial viability threshold: ~$1–2/shot")
+print("  Current cryo target cost: thousands of $/shot (no production path)")
+print("  Source: analysis.md §Section 2, Challenge 2; analysis.md §Section 5")
+print("          (Consumable cost floor table: RTL unit cost ~$0.70/shot historical;")
+print("           cryo ice-layer target cost: truly-unknown, critically-blocking)")
+
+# ── Driver Cost Sweep — Hypothesis 3 ─────────────────────────────────────────
+#
+# How sensitive is LCOE to driver capital (C220104) as IMG architecture
+# (Pacific Fusion DS, Fuse Energy TITAN) potentially achieves 5–10× cost reduction
+# vs. the Z-IFE LTD reference?
+#
+# NOTE: with CAS21 corrected to $200M (vs. prior $919M), driver capital is now a
+# larger fraction of total capital than in iter-8, so driver cost sensitivity is
+# higher than the previous model implied. The $919M buildings artifact had diluted
+# the driver cost signal.
+#
+# Source: arxiv-2408-15206-pulsed-magnetic-fusion.md §3.2.4 ("factor of 5 to 10"
+#         reduction required); analysis.md §Section 2, Challenge 3
+
+print()
+print("=" * 65)
+print("DRIVER COST SWEEP (C220104) — Hypothesis 3")
+print("LCOE as pulsed power cost falls from LTD baseline to IMG target")
+print("NOTE: CAS21 corrected to $200M (iter-9), increasing driver sensitivity")
+print("vs. iter-8 where $919M buildings dominated and diluted driver signal.")
+print("=" * 65)
+
+driver_scenarios = [
+    ("LTD ref median",        372.0, "Z-IFE LTD reference ($372M)"),
+    ("2× reduction",          186.0, "2× improvement over LTD"),
+    ("4× reduction",           93.0, "4× improvement"),
+    ("5× reduction (target)",  75.0, "5× — IMG cost target (arXiv:2408.15206 §3.2.4)"),
+    ("10× reduction",          37.0, "10× — optimistic IMG (ibid.)"),
+]
+
+print(f"\n  {'Scenario':<28} {'Driver M$':>9}  {'Driver %Cap':>11}  {'LCOE $/MWh':>10}")
+print("  " + "-" * 64)
+for label, driver_m, note in driver_scenarios:
+    r = model.forward(
+        net_electric_mw=NET_ELECTRIC_MW,
+        availability=AVAILABILITY,
+        lifetime_yr=LIFETIME_YR,
+        n_mod=1,
+        construction_time_yr=CONSTRUCTION_TIME_YR,
+        interest_rate=INTEREST_RATE,
+        inflation_rate=INFLATION_RATE,
+        noak=NOAK,
+        R0=R0,
+        plasma_t=PLASMA_T,
+        blanket_t=BLANKET_T,
+        ht_shield_t=HT_SHIELD_T,
+        structure_t=STRUCTURE_T,
+        vessel_t=VESSEL_T,
+        p_input=P_DRIVER_MW,
+        mn=MN,
+        eta_th=ETA_TH,
+        eta_pin=ETA_PIN,
+        f_sub=F_SUB,
+        f_dec=0.0,
+        p_coils=P_COILS,
+        p_pump=P_PUMP,
+        p_trit=P_TRIT,
+        p_house=P_HOUSE,
+        p_cryo=P_CRYO,
+        p_target=P_TARGET_MW,
+        cost_overrides={**cost_overrides, "C220104": driver_m},
+    )
+    pct_cap = driver_m / float(r.costs.total_capital) * 100
+    print(f"  {label:<28} {driver_m:>9.0f}  {pct_cap:>9.1f}%  {float(r.costs.lcoe):>10.1f}"
+          f"  ({note})")
+
+print()
+print("  Z-IFE reference COE at 0.5 Hz: 70 $/MWh (7.0 ¢/kWeh)")
+print("  Advanced fission threshold:     40–60 $/MWh (4–6 ¢/kWeh)")
+print("  Source: z-ife-sand2006-7148-thermal-cycles.md §3.1.1.6")
+print()
+sys.stdout.flush()

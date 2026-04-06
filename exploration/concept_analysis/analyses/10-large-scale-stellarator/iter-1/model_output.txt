@@ -1,0 +1,107 @@
+Large-Scale Stellarator (Gauss Fusion GIGA) — NOAK 1 GWe
+  HELIAS HSR4/18 heritage | R0 = 18 m | Quasi-isodynamic | D-T | HCPB blanket (assumed)
+
+LCOE: 148.6 $/MWh | Overnight: 11461 $/kW
+Fusion: 3249 MW | Net: 1000 MW | Q_eng: 4.9
+
+  FOAK reality check: €15–18B stated (Gauss CDR) = ~$16,000–20,000/kWe
+  This NOAK estimate should be significantly below the FOAK figure.
+
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    18.5
+CAS21    Buildings                         953.1
+CAS22    Reactor Plant Equipment          4221.9
+CAS23    Turbine Plant                     248.0
+CAS24    Electrical Plant                  105.6
+CAS25    Miscellaneous                      64.3
+CAS26    Heat Rejection                     42.9
+CAS27    Special Materials                 200.0
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                         0.0
+CAS30    Indirect Costs                   1946.9
+CAS40    Owner's Costs                      39.0
+CAS50    Supplementary                     449.8
+CAS60    IDC                              3165.7
+CAS70    O&M (annualized)                  245.3
+CAS80    Fuel (annualized)                   1.8
+CAS90    Financial                         859.7
+------------------------------------------------
+         Total Capital                   11460.8
+
+CAS22 Sub-account Detail (Reactor Plant Equipment):
+Account              M$
+------------------------
+  C220101    First Wall + Blanket     1001.0
+  C220102    Shield                    718.9
+  C220103    Coils                     516.1
+  C220104    Heating                   353.2
+  C220105    Structure                  49.9
+  C220106    Vacuum                    174.4
+  C220107    Power Supplies             93.8
+  C220108    Divertor                  113.6
+  C220109    DEC                         0.0
+  C220111    Installation              446.5
+  C220200    Coolant                   207.1
+  C220300    Aux Cooling               154.5
+  C220400    Rad Waste                   7.0
+  C220500    Fuel Handling             120.0
+  C220600    Other Equipment            11.5
+  C220700    I&C                        86.3
+
+Key Assumptions (Large-Scale Stellarator / GIGA):
+  Concept       Quasi-isodynamic stellarator (HSR4/18 heritage, 4 field periods)
+  Company       Gauss Fusion GmbH (Munich); CDR reviewed 2025–2026
+  Scale         R0 = 18 m | a = 1.7 m | V_plasma = 1,500 m³
+  B-field       6 T on-axis | 12–13 T peak coil (Nb3Sn or REBCO required)
+  Magnets       40 non-planar coils × ~300 t each | ~250 demountable joints/coil
+  Blanket       HCPB assumed (undisclosed); eta_th = 35% (steam Rankine)
+                DCLL alternative: eta_th ~40%; blanket type is blocking gap
+  Steady-state  No current drive; ECRH ~75 MW for startup + profile control only
+  Availability  85% — no published target; disruption-free advantage
+                offset by complex 3D blanket maintenance (80 segment shapes)
+  Lifetime      40 yr (magnet + VV design life; blanket replaced ~8× at 5 yr)
+  Costing       NOAK; FOAK = €15–18B (~$16,000–20,000/kWe) — not the model output
+  NOAK unknowns No fleet learning curve published; NOAK may be 40–60% of FOAK
+  CAS27 override $200M for HCPB Be neutron multiplier (DCLL alternative: ~$25M)
+
+Sensitivity (elasticity = %LCOE / %param)
+------------------------------------------------
+
+Engineering levers:
+  availability                 -0.8621
+  construction_time_yr         +0.4973
+  elon                         +0.4121
+  R0                           +0.4121
+  plasma_t                     +0.2841
+  blanket_t                    +0.2563
+  eta_th                       -0.2562
+  ht_shield_t                  +0.0598
+  eta_pin                      -0.0593
+  p_input                      +0.0593
+  vessel_t                     +0.0275
+  p_cryo                       +0.0215
+  fuel_recovery                -0.0151
+  f_sub                        +0.0149
+  structure_t                  +0.0109
+  p_cool                       +0.0079
+  p_trit                       +0.0059
+  p_house                      +0.0020
+  p_coils                      +0.0020
+  mn                           -0.0013
+  burn_fraction                -0.0008
+  p_pump                       +0.0008
+  eta_p                        -0.0000
+  eta_de                       +0.0000
+  B                            +0.0000
+  T_e                          +0.0000
+  n_e                          +0.0000
+  Z_eff                        +0.0000
+  plasma_volume                +0.0000
+  R_w                          +0.0000
+  T_edge                       +0.0000
+  tau_ratio                    +0.0000
+
+Financial:
+  interest_rate                +0.8565
+  inflation_rate               +0.0476

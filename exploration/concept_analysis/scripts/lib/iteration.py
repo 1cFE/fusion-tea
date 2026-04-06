@@ -135,10 +135,13 @@ def parse_verdict_from_feedback(feedback_text: str) -> tuple[str, int]:
     """Parse VERDICT and finding count from feedback text.
 
     Returns (verdict_str, finding_count) where verdict_str is "PASS" or "FAIL".
-    Uses the same regex patterns as the existing cmd_analyze loop.
+    Uses shared regex constants from lib.validators.
     """
-    is_pass = bool(re.search(r"^VERDICT:\s*PASS", feedback_text, re.MULTILINE))
-    finding_count = len(re.findall(r"^### F-\d+:", feedback_text, re.MULTILINE))
+    from lib.validators import FEEDBACK_VERDICT_RE, FINDING_HEADER_RE
+
+    verdict_match = FEEDBACK_VERDICT_RE.search(feedback_text)
+    is_pass = verdict_match is not None and verdict_match.group(1) == "PASS"
+    finding_count = len(FINDING_HEADER_RE.findall(feedback_text))
     return ("PASS" if is_pass else "FAIL", finding_count)
 
 

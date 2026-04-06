@@ -1,28 +1,18 @@
 # Concept Analysis Operator Guide
 
-How to take a fusion concept from initial analysis through explorer-based review to final approval.
+This guide walks you through analyzing a fusion concept end-to-end: from raw research through cost modeling, visual review, and approval. The whole process for one concept typically takes 1-3 sessions depending on source availability and how many issues surface during review.
 
-## Typical Workflow
+## What This System Does
 
-```
-Pipeline                          Explorer                         Pipeline
-────────                          ────────                         ────────
-status → stage1-all ──────────→ extract → server ──────────────→ /manage-concept
-  (gap → analyze → model-setup     (review in browser)             (triage issues)
-   → review)                                                            │
-       ▲                                                                │
-       │                                                                ▼
-       └──── stage1-all --resume ◄──── change_requests.md ◄──── file change requests
-                    │
-                    ▼
-              address-review → synthesize → approve
-                                               │
-                                               ▼
-                                    re-extract → concept shows
-                                                 as "Approved"
-```
+The pipeline takes a fusion concept (e.g., "MagLIF" or "HTS Compact Tokamak") and iteratively builds a techno-economic analysis: identifying data gaps, pulling from research sources, constructing a cost model, and assessing the result. An LLM does the heavy lifting at each step; your job is to steer it — adding sources when data is thin, flagging issues when the model looks wrong, and deciding when the analysis is good enough.
 
-All commands below use this base path:
+The explorer is a local web app that visualizes the cost models so you can actually see what the pipeline produced — LCOE breakdowns, sensitivity charts, CAS cost structures — and compare concepts side by side.
+
+**The two systems form a loop:** pipeline produces artifacts → explorer lets you review them → you file feedback → pipeline iterates.
+
+## Shorthand Used Below
+
+All commands assume you're in the project root (`fusion-tea/`).
 
 ```bash
 PIPELINE="exploration/concept_analysis/scripts/run_analysis.py"
@@ -32,309 +22,262 @@ SERVER="exploration/concept_explorer/server.py"
 
 ---
 
-## 1. Pipeline Quick Reference
+## The Short Version
 
-### Check concept status
-
-```bash
-# All concepts
-uv run python $PIPELINE status
-
-# Single concept
-uv run python $PIPELINE status 01
-
-# Filter by confinement family
-uv run python $PIPELINE status --family MFE
-```
-
-The status table shows state codes: `A`=approved, `S`=synthesized, `R`=reviewed, `M`=model-setup, `D`=drafted, `G`=gap-checked, `-`=not-started. An asterisk (`*`) means downstream artifacts are stale.
-
-### Run the full pipeline
+If you just want to get a concept analyzed and visible:
 
 ```bash
-# Run one concept through gap-check → analyze → model-setup → review
-uv run python $PIPELINE stage1-all 01
+# 1. Run the pipeline (iterates automatically, ~20 min per pass)
+uv run python $PIPELINE stage1-all 07 --max-passes 5
 
-# Multiple concepts
-uv run python $PIPELINE stage1-all 01 07 09
+# 2. Extract data for the explorer
+uv run python $EXTRACT --concept 07
 
-# All remaining concepts
-uv run python $PIPELINE stage1-all --all
-
-# Resume after interruption or failure
-uv run python $PIPELINE stage1-all 01 --resume
-
-# Enable autonomous web research between iterations
-uv run python $PIPELINE stage1-all 01 --research
-
-# Control iteration depth (default: 3; 1 = single pass, no assessment)
-uv run python $PIPELINE stage1-all 01 --max-passes 5
-
-# Re-run even if output exists
-uv run python $PIPELINE stage1-all 01 --force
-```
-
-### Add a source
-
-```bash
-# Add a PDF
-uv run python $PIPELINE add-source 01 /path/to/paper.pdf
-
-# Add a URL (will be extracted)
-uv run python $PIPELINE add-source 01 https://example.com/report.pdf
-
-# Override automatic source name
-uv run python $PIPELINE add-source 01 /path/to/paper.pdf --name "smith-2024-compact-tokamak"
-
-# Preview without extracting
-uv run python $PIPELINE add-source 01 /path/to/paper.pdf --dry-run
-```
-
-### Other pipeline commands
-
-```bash
-# Structured review with proposed actions
-uv run python $PIPELINE review 01
-
-# Apply user decisions from review
-uv run python $PIPELINE address-review 01
-
-# Generate editorial synthesis
-uv run python $PIPELINE synthesize 01
-
-# Approve a concept (requires review + synthesis)
-uv run python $PIPELINE approve 01
-
-# Approve without synthesis (use sparingly)
-uv run python $PIPELINE approve 01 --force
-```
-
-Common flags available on most commands: `--model MODEL` (default: sonnet), `--dry-run`, `--timeout SECONDS`, `--force`.
-
----
-
-## 2. Launching the Explorer
-
-### Prerequisites
-
-At least one concept must have reached the `model-setup` state (has a `model_setup.py` file in its analysis directory). Concepts without `model_setup.py` won't appear in the explorer.
-
-### Step 1: Extract data
-
-The extraction script reads pipeline artifacts from `exploration/concept_analysis/analyses/` and writes JSON to `exploration/concept_explorer/data/`.
-
-```bash
-# Extract all concepts that have model_setup.py
-uv run python $EXTRACT
-
-# Extract specific concepts
-uv run python $EXTRACT --concept 01 07 09
-
-# Skip LLM-based narrative extraction (faster, sets narrative=null)
-uv run python $EXTRACT --concept 01 --skip-narrative
-```
-
-### Step 2: Start the server
-
-```bash
+# 3. Launch the explorer and open http://127.0.0.1:8421
 uv run python $SERVER
 ```
 
-The server starts at **http://127.0.0.1:8421**. It loads all JSON files from `exploration/concept_explorer/data/` on startup.
+That's it. The rest of this guide explains what's happening, how to steer it, and what to do when things need fixing.
 
-To use a different port:
+---
+
+## Step 1: Run the Analysis Pipeline
+
+### Starting a concept
 
 ```bash
-uv run python $SERVER --port 9000
+uv run python $PIPELINE stage1-all 07
+```
+
+This runs the concept through: **gap-check → analyze → model-setup → review**, automatically. Each pass takes roughly 15-25 minutes (it's calling Claude under the hood). By default it does 3 passes — each pass assesses the previous output and tries to fix issues.
+
+You can control how many passes it takes:
+
+```bash
+# More passes for complex concepts (MagLIF needed 9)
+uv run python $PIPELINE stage1-all 07 --max-passes 5
+
+# Single pass, no self-assessment (useful for a quick first look)
+uv run python $PIPELINE stage1-all 07 --max-passes 1
+
+# Enable web research (lets the LLM search for papers between iterations)
+uv run python $PIPELINE stage1-all 07 --research
+```
+
+### Convergence is not guaranteed
+
+The pipeline's self-assessor can be picky. A concept might sit at FAIL with 2-3 minor findings for many iterations. **That's fine.** The PASS/FAIL verdict is a quality signal, not a gate. If the cost model runs and the analysis covers the key questions, the concept is ready for human review in the explorer — that's what matters.
+
+### Resuming after interruption
+
+If a run gets interrupted or you want to pick up where you left off:
+
+```bash
+uv run python $PIPELINE stage1-all 07 --resume
+```
+
+This skips stages that already have output and continues from the last incomplete step.
+
+### Checking status
+
+```bash
+# See all concepts at a glance
+uv run python $PIPELINE status
+
+# One concept
+uv run python $PIPELINE status 07
+```
+
+State codes: `A`=approved, `S`=synthesized, `R`=reviewed, `M`=model-setup, `D`=drafted, `G`=gap-checked, `-`=not started. An asterisk (`*`) means downstream artifacts are stale (something changed upstream).
+
+---
+
+## Step 2: Get It Into the Explorer
+
+The explorer only shows concepts that have been **extracted** — the pipeline and explorer don't share data automatically. After running the pipeline, you need to extract:
+
+```bash
+# Extract one concept (fast)
+uv run python $EXTRACT --concept 07
+
+# Extract everything that has a model_setup.py or analysis.md
+uv run python $EXTRACT
+
+# Skip the slow narrative extraction if you just want numbers
+uv run python $EXTRACT --concept 07 --skip-narrative
+```
+
+This reads from `exploration/concept_analysis/analyses/` and writes JSON to `exploration/concept_explorer/data/`. The server loads from that `data/` directory.
+
+Then start the server if it's not already running:
+
+```bash
+uv run python $SERVER
+# Open http://127.0.0.1:8421
+```
+
+If the server is already running, just reload the browser after re-extracting.
+
+---
+
+## Step 3: Start With the Landscape
+
+Before diving into any single concept's numbers, start with the taxonomy page to get your bearings. The taxonomy shows **all 38 concepts** — no extraction needed — so you can see the full design space even before running a single pipeline pass.
+
+### Taxonomy page (`/taxonomy`)
+
+Go to **http://127.0.0.1:8421/taxonomy**. Three views, each showing the full concept landscape:
+
+- **Decision tree** (left panel) — The classification hierarchy. Expand branches to see how concepts are grouped: MFE vs IFE vs MIF, then by sub-type (tokamak, stellarator, mirror, z-pinch, etc.). Click any concept to focus it.
+- **Constellation** (center) — A 2D scatter plot where similar concepts cluster together. This is the quickest way to get a feel for the design space. Are the clusters sensible? Is anything obviously misclassified? Double-click a concept to focus it and see its neighborhood.
+- **Neighborhood graph** — After focusing a concept, this shows its nearest neighbors with similarity scores. Click a neighbor to see a field-by-field comparison of their taxonomy attributes. This is pure qualitative comparison — no cost model needed.
+
+**What to look for:**
+- Is each concept in the right branch of the decision tree?
+- Do the constellation clusters make physical sense? (e.g., all stellarators near each other, all IFE concepts grouped)
+- When you compare neighbors, do the taxonomy attributes (confinement, fuel cycle, magnet type, etc.) line up with your expectations?
+
+### Qualitative comparison from the taxonomy
+
+You can compare any two concepts purely on their taxonomy attributes without needing extracted cost data:
+
+1. **Focus a concept** — click it in the tree or double-click it in the constellation
+2. **Click a neighbor** in the neighborhood list — this shows a side-by-side attribute comparison (shared vs. divergent fields, bridge concepts that connect them)
+3. **Build a selection** — Ctrl+click (Cmd+click on Mac) concepts in any view to add them to the **selection tray** at the bottom of the page. The tray collects concepts as you browse.
+4. **Launch comparison** — Once you have 2-3 concepts in the tray, click "Compare" to jump to the comparison page
+
+The **Categorical** view on the comparison page works for all concepts (it reads from the taxonomy registry). The **Summary**, **CapEx**, and **Sensitivity** views require extracted cost model data — those will only populate for concepts you've run through the pipeline and extraction step.
+
+This is a good workflow for deciding which concepts to analyze next: browse the landscape, find interesting clusters or outliers, then go run the pipeline on the ones that matter.
+
+---
+
+## Step 4: Review Extracted Concepts
+
+Once you've run the pipeline and extracted data (Steps 1-2), the explorer shows the quantitative results.
+
+### Index page (`/`)
+
+The grid shows all **extracted** concepts, split into **Approved** (green) and **In Progress** (amber). Each card has the concept name, confinement family, company, LCOE, and confidence level.
+
+**Things that should make you squint:**
+- LCOE below $10/MWh or above $500/MWh (probably a modeling error)
+- Wrong confinement family (tokamak labeled as IFE, etc.)
+- "Low" confidence on a well-studied concept with good sources
+
+### Concept profile (`/concept/{id}`)
+
+This is the main review page for a single concept. Top to bottom:
+
+- **Headline economics** — LCOE, overnight capital cost, net power, Q_eng, capacity factor. Quick sanity check: Q_eng should be > 1 (otherwise it's a net energy sink), capacity factor between 0.30-0.95.
+- **Narrative** — The economic thesis: what costs are eliminated, what's novel, what are the key bets. Does the story make sense for this concept type?
+- **Tornado chart** — Sensitivity bars ranked by how much each parameter moves LCOE. The dominant parameters should match your intuition (e.g., availability and rep-rate for pulsed concepts, magnet cost for stellarators).
+- **CAS breakdown** — Cost structure with expandable CAS22 sub-accounts. Check that the right accounts are present: a tokamak should have magnet costs, a MagLIF should have a target factory, a steady-state concept shouldn't have per-shot consumables.
+- **Sliders** — Drag parameters to see LCOE respond in real-time. Great for testing "what if" scenarios.
+
+### Side-by-side comparison (`/compare`)
+
+If you collected concepts in the taxonomy selection tray, you're already here. Otherwise, select 2-3 concepts from the index page. Four views:
+
+| View | What it shows | Good for | Needs extraction? |
+|------|--------------|----------|-------------------|
+| Categorical | Taxonomy attributes | Classification consistency | No |
+| Summary | LCOE drivers | Comparing economic structure | Yes |
+| CapEx | CAS stacked bars | Spotting cost structure outliers | Yes |
+| Sensitivity | Tornado overlays | Comparing which parameters matter | Yes |
+
+---
+
+## Step 5: Fix Issues
+
+When the explorer reveals problems — wrong cost accounts, missing data, implausible sensitivities — you have two tools:
+
+### `/manage-concept` for interactive triage
+
+```
+/manage-concept 07
+```
+
+This loads the concept's full context in Claude Code and lets you explore it interactively. You can ask questions about the model, identify issues, and write change requests. The command adapts to the concept's current state (drafted, reviewed, synthesized, etc.).
+
+**Important:** Don't edit `analysis.md` by hand. Changes should flow through `change_requests.md` so the pipeline can incorporate them properly.
+
+### Adding sources when data is thin
+
+If a cost account looks wrong because there simply isn't good source data:
+
+```bash
+# Add a PDF or URL
+uv run python $PIPELINE add-source 07 /path/to/paper.pdf
+uv run python $PIPELINE add-source 07 https://example.com/report.pdf
+
+# Preview what it'll do without actually extracting
+uv run python $PIPELINE add-source 07 /path/to/paper.pdf --dry-run
+```
+
+### Re-running after changes
+
+After filing change requests or adding sources, re-run the pipeline to incorporate them:
+
+```bash
+uv run python $PIPELINE stage1-all 07 --resume
+```
+
+Then re-extract and check the explorer:
+
+```bash
+uv run python $EXTRACT --concept 07 --skip-narrative
+```
+
+Reload the browser. Repeat until it looks right.
+
+---
+
+## Step 6: Approval (When You're Ready)
+
+Once a concept's analysis holds up under review, the formal path is:
+
+```bash
+# 1. Structured review — produces review.md with PROCEED/REVISE verdict
+uv run python $PIPELINE review 07
+
+# 2. If REVISE: re-run pipeline, then review again
+uv run python $PIPELINE stage1-all 07 --resume
+
+# 3. If PROCEED with proposed actions: address them, then...
+uv run python $PIPELINE address-review 07
+
+# 4. Generate editorial synthesis
+uv run python $PIPELINE synthesize 07
+
+# 5. Approve
+uv run python $PIPELINE approve 07
+```
+
+After approval, re-extract one more time — the concept moves from "In Progress" to "Approved" on the explorer index page.
+
+**Shortcut:** If you're confident and want to skip synthesis:
+
+```bash
+uv run python $PIPELINE approve 07 --force
 ```
 
 ---
 
-## 3. Explorer Tour — Sanity-Checking a Concept
+## Reference: All Pipeline Commands
 
-### Index Page (`/`)
+| Command | What it does |
+|---------|-------------|
+| `status [ID]` | Show state table (all concepts or one) |
+| `list` | List all concepts with IDs |
+| `stage1-all ID [--max-passes N] [--resume] [--research]` | Full pipeline: gap → analyze → model → review |
+| `gap-check ID` | Run gap assessment only |
+| `analyze ID` | Run analysis only |
+| `model-setup ID` | Generate cost model only |
+| `review ID` | Structured review with verdict |
+| `address-review ID` | Apply decisions from review |
+| `synthesize ID` | Generate editorial synthesis |
+| `approve ID [--force]` | Mark concept as approved |
+| `add-source ID PATH [--name NAME] [--dry-run]` | Add a PDF or URL source |
 
-Two sections: **Approved** (green) and **In Progress** (amber). Each card shows: concept name, confinement family badge, company, LCOE, and confidence level.
-
-**Red flags to check:**
-- LCOE wildly outside expected range for the concept type (e.g., < $10/MWh or > $500/MWh)
-- Wrong confinement family badge
-- Missing company/organization
-- Confidence showing "low" for a well-studied concept
-
-### Concept Profile (`/concept/{id}`)
-
-The main review page for a single concept. Sections from top to bottom:
-
-- **Hero**: Name, confinement family, company — verify basic metadata is correct
-- **Headline Economics**: LCOE, overnight cost, P_net, Q_eng, capacity factor — check physical reasonableness
-- **Narrative**: Key bets, eliminated costs, novel costs — does the economic thesis make sense?
-- **Risk Table**: Are risks well-characterized? Do they have retirement paths?
-- **Tornado Chart**: Sensitivity bars ranked by elasticity — which parameters dominate LCOE? Are the ±ranges physically plausible?
-- **CAS Breakdown**: Stacked bar with expandable CAS22 sub-accounts — does the cost structure match expectations for this concept type?
-- **Sliders** (costingfe concepts only): Adjust parameters to see LCOE response in real-time
-
-**Red flags to check:**
-- Q_eng < 1 (net energy loss)
-- Capacity factor > 0.95 or < 0.30 without justification
-- Dominant sensitivity parameter with implausibly wide range
-- CAS22 account missing that should be present (e.g., no magnet cost for a magnetic confinement concept)
-- CAS22 account present that shouldn't be (e.g., target factory cost for a steady-state tokamak)
-
-### Comparison Page (`/compare`)
-
-Select 2–3 concepts for side-by-side analysis. Two layout modes:
-
-- **Integrated**: Side-by-side with independent view selectors per concept
-- **Landscape**: Grid layout with unified view across all selected concepts
-
-Four views available:
-
-| View | Shows | Use for |
-|------|-------|---------|
-| Categorical | Taxonomy attributes | Verifying classification consistency |
-| Summary | LCOE drivers | Comparing economic structure |
-| CapEx | CAS stacked bars | Spotting cost structure outliers |
-| Sensitivity | Tornado overlays | Comparing parameter sensitivity |
-
-**Red flags to check:**
-- Two concepts of the same type with dramatically different cost structures
-- A concept's sensitivity profile that doesn't match its peers
-- Taxonomy attributes that should be the same across a family but differ
-
-### Taxonomy Page (`/taxonomy`)
-
-- **Decision Tree** (left): Collapsible classification hierarchy
-- **Constellation** (center): 2D scatter of all concepts by similarity — are clusters sensible?
-- **Neighborhood Graph**: Double-click a concept to see its nearest neighbors
-- **Selection Tray** (bottom): Collect concepts, then click "Compare" to jump to comparison
-
-**Red flags to check:**
-- A concept classified in the wrong branch of the decision tree
-- A concept clustered far from its expected peers in the constellation
-- Unexpected neighbors in the neighborhood graph
-
----
-
-## 4. Issue Triage via `/manage-concept`
-
-When the explorer reveals issues, use the `/manage-concept` command in Claude Code:
-
-```
-/manage-concept <concept-id>
-```
-
-The command loads the concept's full context and presents stage-appropriate options:
-
-| Mode | When (state) | What you can do |
-|------|-------------|-----------------|
-| A | `drafted` or `model-setup` | Identify key bets and flags, write change requests |
-| B | `reviewed` | Walk through PA-N proposed actions, fill Decision fields |
-| C | `synthesized` or `approved` | Challenge synthesis verdicts, deep-vet assumptions |
-| D | `not-started` or `gap-checked` | Get guidance on next pipeline step to run |
-
-**Important:** Never edit `analysis.md` directly. All changes flow through `change_requests.md`:
-
-1. Use `/manage-concept` to identify issues and write change requests
-2. Re-run the pipeline with feedback:
-   ```bash
-   uv run python $PIPELINE stage1-all <concept-id> --resume
-   ```
-3. Re-extract and verify in the explorer
-
----
-
-## 5. Adding Sources Mid-Review
-
-If the explorer reveals a data gap (missing CAS account detail, uncertain parameter, thin sourcing):
-
-1. **Find the source** — paper, technical report, vendor datasheet
-2. **Add it to the concept:**
-   ```bash
-   uv run python $PIPELINE add-source <concept-id> /path/to/source.pdf
-   ```
-   Source extraction uses agentic-mbse and may take a few minutes depending on document size.
-3. **Re-run analysis** to incorporate the new source:
-   ```bash
-   uv run python $PIPELINE stage1-all <concept-id> --resume
-   ```
-4. **Re-extract and refresh** the explorer to verify the improvement:
-   ```bash
-   uv run python $EXTRACT --concept <concept-id> --skip-narrative
-   ```
-   Then reload the browser.
-
----
-
-## 6. Final Review, Feedback, and Synthesis
-
-Once you're satisfied with a concept's analysis after explorer review:
-
-### Step 1: Run structured review
-
-```bash
-uv run python $PIPELINE review <concept-id>
-```
-
-This produces a `review.md` file with a **PROCEED** or **REVISE** verdict, plus proposed actions (PA-1, PA-2, ...) with Decision fields.
-
-### Step 2: Handle the verdict
-
-**If REVISE:** The review findings become feedback for the next iteration.
-```bash
-uv run python $PIPELINE stage1-all <concept-id> --resume
-```
-Then repeat from Step 1.
-
-**If PROCEED with proposed actions:** Fill in the Decision fields in `review.md` (via `/manage-concept` Mode B or an editor), then apply:
-```bash
-uv run python $PIPELINE address-review <concept-id>
-```
-
-**If PROCEED clean** (no proposed actions): Skip to Step 3.
-
-### Step 3: Synthesize
-
-```bash
-uv run python $PIPELINE synthesize <concept-id>
-```
-
-Generates an editorial synthesis summarizing the concept's economics, key bets, risks, and comparison context.
-
-### Step 4: Verify in explorer
-
-Re-extract and check the final state in the browser:
-```bash
-uv run python $EXTRACT --concept <concept-id>
-```
-
----
-
-## 7. Final Approval
-
-### Prerequisites
-
-- Review verdict is PROCEED (with actions addressed, or clean)
-- Synthesis is complete
-
-### Approve
-
-```bash
-uv run python $PIPELINE approve <concept-id>
-```
-
-This sets `Status: approved` in the concept's `analysis.md` and `synthesis.md` frontmatter.
-
-To approve without synthesis (use sparingly):
-```bash
-uv run python $PIPELINE approve <concept-id> --force
-```
-
-### Verify
-
-Re-extract explorer data:
-```bash
-uv run python $EXTRACT --concept <concept-id> --skip-narrative
-```
-
-Reload the browser — the concept moves from "In Progress" to "Approved" on the index page. The approved analysis joins the reuse pool for future concepts.
+Common flags on most commands: `--model MODEL` (default: sonnet), `--dry-run`, `--timeout SECONDS`, `--force`.

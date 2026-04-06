@@ -1,0 +1,448 @@
+{
+  "concept_id": "10",
+  "name": "Large-Scale Stellarator",
+  "confinement_family": "NONSTANDARD",
+  "company": "Gauss Fusion",
+  "status": "in_progress",
+  "illustration": null,
+  "has_cost_model": true,
+  "has_sensitivities": true,
+  "cost_model": {
+    "cas10": {
+      "name": "Preconstruction",
+      "cost_m_usd": 18.5,
+      "overridden": false
+    },
+    "cas21": {
+      "name": "Buildings & Structures",
+      "cost_m_usd": 933.9610595703125,
+      "overridden": false
+    },
+    "cas22": {
+      "name": "Reactor Plant Equipment",
+      "cost_m_usd": 6488.625,
+      "overridden": true
+    },
+    "cas23": {
+      "name": "Turbine Plant Equipment",
+      "cost_m_usd": 242.97496032714844,
+      "overridden": false
+    },
+    "cas24": {
+      "name": "Electrical Plant Equipment",
+      "cost_m_usd": 103.48932647705078,
+      "overridden": false
+    },
+    "cas25": {
+      "name": "Miscellaneous Plant Equipment",
+      "cost_m_usd": 62.993507385253906,
+      "overridden": false
+    },
+    "cas26": {
+      "name": "Heat Rejection Systems",
+      "cost_m_usd": 41.995670318603516,
+      "overridden": false
+    },
+    "cas27": {
+      "name": "Special Materials",
+      "cost_m_usd": 200.0,
+      "overridden": true
+    },
+    "cas28": {
+      "name": "Digital Twin & Simulation",
+      "cost_m_usd": 5.0,
+      "overridden": false
+    },
+    "cas29": {
+      "name": "Contingency",
+      "cost_m_usd": 0.0,
+      "overridden": false
+    },
+    "cas30": {
+      "name": "Indirect Costs",
+      "cost_m_usd": 2693.01318359375,
+      "overridden": false
+    },
+    "cas40": {
+      "name": "Owner's Costs",
+      "cost_m_usd": 39.0,
+      "overridden": false
+    },
+    "cas50": {
+      "name": "Supplementary Costs",
+      "cost_m_usd": 550.2503662109375,
+      "overridden": false
+    },
+    "cas60": {
+      "name": "Interest During Construction",
+      "cost_m_usd": 4343.04248046875,
+      "overridden": false
+    },
+    "cas70": {
+      "name": "O&M Costs (annualised)",
+      "cost_m_usd": 254.27365112304688,
+      "overridden": false
+    },
+    "cas80": {
+      "name": "Fuel Costs (annualised)",
+      "cost_m_usd": 1.8266305923461914,
+      "overridden": false
+    },
+    "cas90": {
+      "name": "Financial Costs",
+      "cost_m_usd": 1179.3570556640625,
+      "overridden": false
+    },
+    "cas22_detail": {
+      "C220101": {
+        "name": "First Wall & Blanket",
+        "cost_m_usd": 988.870849609375,
+        "overridden": false
+      },
+      "C220102": {
+        "name": "Radiation Shield",
+        "cost_m_usd": 710.161376953125,
+        "overridden": false
+      },
+      "C220103": {
+        "name": "Magnets / Coils",
+        "cost_m_usd": 516.1008411317314,
+        "overridden": false
+      },
+      "C220104": {
+        "name": "Heating & Driver Systems",
+        "cost_m_usd": 353.21,
+        "overridden": false
+      },
+      "C220105": {
+        "name": "Primary Structure & Support",
+        "cost_m_usd": 49.441043853759766,
+        "overridden": false
+      },
+      "C220106": {
+        "name": "Vacuum System",
+        "cost_m_usd": 172.2866668701172,
+        "overridden": false
+      },
+      "C220107": {
+        "name": "Power Conditioning & Energy Storage",
+        "cost_m_usd": 92.4422836303711,
+        "overridden": false
+      },
+      "C220108": {
+        "name": "Divertor / Target Factory",
+        "cost_m_usd": 112.45028686523438,
+        "overridden": false
+      },
+      "C220109": {
+        "name": "Direct Energy Converter",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220110": {
+        "name": "Remote Handling & Maintenance Equipment",
+        "cost_m_usd": 225.0,
+        "overridden": true
+      },
+      "C220111": {
+        "name": "Installation Labor",
+        "cost_m_usd": 442.5791320800781,
+        "overridden": false
+      },
+      "C220112": {
+        "name": "Isotope Separation Plant",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220200": {
+        "name": "Main & Secondary Coolant",
+        "cost_m_usd": 206.6798095703125,
+        "overridden": false
+      },
+      "C220300": {
+        "name": "Auxiliary Cooling & Cryoplant",
+        "cost_m_usd": 38.987701416015625,
+        "overridden": false
+      },
+      "C220400": {
+        "name": "Radioactive Waste Management",
+        "cost_m_usd": 6.8845367431640625,
+        "overridden": false
+      },
+      "C220500": {
+        "name": "Fuel Handling & Storage",
+        "cost_m_usd": 120.0,
+        "overridden": false
+      },
+      "C220600": {
+        "name": "Other Reactor Plant Equipment",
+        "cost_m_usd": 11.5,
+        "overridden": false
+      },
+      "C220700": {
+        "name": "Instrumentation & Control",
+        "cost_m_usd": 85.1974868774414,
+        "overridden": false
+      }
+    },
+    "headline": {
+      "lcoe_per_mwh": 186.21023559570312,
+      "overnight_cost_per_kw": 15722.8466796875,
+      "p_net_mw": 1000.0,
+      "q_eng": 5.359550952911377,
+      "capacity_factor": 0.88
+    },
+    "sensitivities": {
+      "engineering": {
+        "availability": {
+          "elasticity": -0.8424539257822338,
+          "baseline": 0.88
+        },
+        "construction_time_yr": {
+          "elasticity": 0.487106702578936,
+          "baseline": 10.0
+        },
+        "mn": {
+          "elasticity": -0.0013991903450751829,
+          "baseline": 1.1
+        },
+        "eta_th": {
+          "elasticity": -0.26947020463494603,
+          "baseline": 0.35
+        },
+        "eta_p": {
+          "elasticity": -2.4987785069768986e-7,
+          "baseline": 0.5
+        },
+        "f_sub": {
+          "elasticity": 0.01543754327784306,
+          "baseline": 0.03
+        },
+        "p_pump": {
+          "elasticity": 0.00041832220307047135,
+          "baseline": 1.0
+        },
+        "p_trit": {
+          "elasticity": 0.004185721079262324,
+          "baseline": 10.0
+        },
+        "p_house": {
+          "elasticity": 0.0016742884317049295,
+          "baseline": 4.0
+        },
+        "p_cryo": {
+          "elasticity": 0.004349096311203411,
+          "baseline": 2.5
+        },
+        "blanket_t": {
+          "elasticity": 0.271236191098845,
+          "baseline": 0.6
+        },
+        "ht_shield_t": {
+          "elasticity": 0.06144309895717496,
+          "baseline": 0.2
+        },
+        "structure_t": {
+          "elasticity": 0.011243386496293344,
+          "baseline": 0.15
+        },
+        "vessel_t": {
+          "elasticity": 0.02828278465470647,
+          "baseline": 0.1
+        },
+        "plasma_t": {
+          "elasticity": 0.29907109643092794,
+          "baseline": 1.7
+        },
+        "burn_fraction": {
+          "elasticity": -0.0008808752779053089,
+          "baseline": 0.05
+        },
+        "fuel_recovery": {
+          "elasticity": -0.015899795374315098,
+          "baseline": 0.95
+        },
+        "p_input": {
+          "elasticity": 0.06274833046057071,
+          "baseline": 75.0
+        },
+        "eta_pin": {
+          "elasticity": -0.06278580949167915,
+          "baseline": 0.5
+        },
+        "eta_de": {
+          "elasticity": 0.0,
+          "baseline": 0.85
+        },
+        "p_coils": {
+          "elasticity": 0.002092860539631162,
+          "baseline": 5.0
+        },
+        "p_cool": {
+          "elasticity": 0.008371442158524648,
+          "baseline": 20.0
+        },
+        "R0": {
+          "elasticity": 0.43283760736349003,
+          "baseline": 18.0
+        },
+        "elon": {
+          "elasticity": 0.43283763156002675,
+          "baseline": 1.0
+        },
+        "B": {
+          "elasticity": 0.0,
+          "baseline": 6.0
+        },
+        "T_e": {
+          "elasticity": 0.0,
+          "baseline": 12.0
+        },
+        "n_e": {
+          "elasticity": 0.0,
+          "baseline": 1e20
+        },
+        "Z_eff": {
+          "elasticity": 0.0,
+          "baseline": 1.3
+        },
+        "plasma_volume": {
+          "elasticity": 0.0,
+          "baseline": 1500.0
+        },
+        "R_w": {
+          "elasticity": 0.0,
+          "baseline": 0.6
+        },
+        "T_edge": {
+          "elasticity": 0.0,
+          "baseline": 0.05
+        },
+        "tau_ratio": {
+          "elasticity": 0.0,
+          "baseline": 3.0
+        }
+      },
+      "financial": {
+        "interest_rate": {
+          "elasticity": 0.8284409191793218,
+          "baseline": 0.07
+        },
+        "inflation_rate": {
+          "elasticity": 0.04952210963836155,
+          "baseline": 0.0245
+        }
+      }
+    },
+    "params": {
+      "p_input": 75.0,
+      "mn": 1.1,
+      "eta_th": 0.35,
+      "eta_p": 0.5,
+      "eta_pin": 0.5,
+      "eta_de": 0.85,
+      "f_sub": 0.03,
+      "f_dec": 0.0,
+      "p_coils": 5.0,
+      "p_cool": 20.0,
+      "p_pump": 1.0,
+      "p_trit": 10.0,
+      "p_house": 4.0,
+      "p_cryo": 2.5,
+      "R0": 18.0,
+      "plasma_t": 1.7,
+      "elon": 1.0,
+      "blanket_t": 0.6,
+      "ht_shield_t": 0.2,
+      "structure_t": 0.15,
+      "vessel_t": 0.1,
+      "construction_time_yr": 10.0,
+      "T_edge": 0.05,
+      "tau_ratio": 3.0,
+      "R_w": 0.6,
+      "n_e": 1e20,
+      "T_e": 12.0,
+      "Z_eff": 1.3,
+      "plasma_volume": 1500.0,
+      "B": 6.0,
+      "burn_fraction": 0.05,
+      "fuel_recovery": 0.95,
+      "net_electric_mw": 1000.0,
+      "availability": 0.88,
+      "lifetime_yr": 40.0,
+      "n_mod": 1.0,
+      "interest_rate": 0.07,
+      "inflation_rate": 0.0245,
+      "noak": 1.0
+    }
+  },
+  "parameter_metadata": {},
+  "narrative": {
+    "key_bets": [
+      "NOAK capital cost reaches 50-60% of FOAK through fleet learning, bringing specific cost from €15,000-18,000/kWe down to €7,500-9,000/kWe",
+      "Non-planar HTS stellarator coils (55 mm / 100 kA) can be manufactured at 18 m major radius scale with ~10,000 demountable joints maintaining ~1 nΩ resistance",
+      "Steady-state disruption-free operation delivers 85-90% capacity factor despite complex 3D blanket maintenance geometry",
+      "REBCO HTS supply chain scales from thousands of km/year to 26,000+ km per plant at $5-10/kA-m (vs current $30-100/kA-m)",
+      "Breeding blanket achieves TBR > 1.05 in realistic HELIAS 3D geometry with 80 unique segment shapes and 20 mm inter-segment gaps",
+      "Dual LTS/HTS conductor strategy resolves to a production choice that keeps magnet costs within NOAK learning curve projections"
+    ],
+    "eliminated_costs": [
+      "No current-drive system required — saves ~50-200 MW recirculating power and eliminates central solenoid magnet cost",
+      "No disruption mitigation infrastructure — avoids PFC overdesign, unplanned outage costs, and disruption-induced component replacement",
+      "No thermal energy storage buffer needed for pulsed operation (estimated $50-200M for grid-scale storage in pulsed tokamaks)",
+      "Longer blanket component lifetime (4.6-9 years vs 2.3 years for DEMO tokamak) reduces number of replacement campaigns from ~17 to ~8 over plant life"
+    ],
+    "novel_costs": [
+      "3D non-planar modular coil fabrication at 18 m scale: 40 coils in 5 shapes, ~300 tonnes each, with tolerances compounding nonlinearly — no manufacturing precedent beyond W7-X at 5.5 m",
+      "Complex 3D blanket with 640 unique segments (80 per sector × 8 sectors) requiring diverse fabrication tooling and undefined remote maintenance procedures",
+      "~10,000 demountable superconducting joints per machine requiring nΩ-class resistance stability over decades under neutron irradiation",
+      "26 million meters of REBCO HTS tape per plant — exceeding current global annual production by >10× — or alternatively 800 tonnes of Nb3Sn with strain-sensitive non-planar winding"
+    ],
+    "risks": [
+      {
+        "description": "FOAK capital cost of €15-18B (€15,000-18,000/kWe) with no published NOAK learning projection — LCOE remains above $150/MWh if NOAK fraction exceeds 70%",
+        "severity": "high"
+      },
+      {
+        "description": "Blanket type (HCPB vs DCLL) undisclosed — determines thermal efficiency (35% vs 40%+), power cycle, TBR margin, and propagates ~20-25% LCOE uncertainty",
+        "severity": "high"
+      },
+      {
+        "description": "18 m major radius is 3× ITER scale — coil system mass ~35,000 tonnes, shipping/assembly logistics unstudied, tolerances compound nonlinearly",
+        "severity": "high"
+      },
+      {
+        "description": "Blanket Segment 5 fails RCC-MRx structural criterion under accident loads — no published resolution",
+        "severity": "high"
+      },
+      {
+        "description": "REBCO supply chain requires >10× current global production capacity for a single plant, with cost needing to drop 3-20× from current prices",
+        "severity": "high"
+      },
+      {
+        "description": "Blanket maintenance scheme explicitly undefined — 640 unique segments in 3D geometry with no published remote handling procedure or cycle time estimate",
+        "severity": "medium"
+      },
+      {
+        "description": "Demountable joint technology at 100 kA / ~1 nΩ unproven at production scale — resistance stability under neutron irradiation and thermal cycling unknown",
+        "severity": "medium"
+      },
+      {
+        "description": "QI non-planar design path may carry structural capital cost disadvantage vs QA planar-coil stellarators (Helios at 8 m) — a design-space risk not recoverable through learning",
+        "severity": "medium"
+      },
+      {
+        "description": "No published O&M cost breakdown for HELIAS or GIGA — placeholder 2-4% of NOAK capital is the only viable estimate",
+        "severity": "medium"
+      },
+      {
+        "description": "Realistic TBR (~1.15) has limited margin over unity when accounting for geometric penalties from 3D blanket gaps",
+        "severity": "medium"
+      }
+    ]
+  },
+  "sources": {
+    "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/10-large-scale-stellarator/model_setup.py",
+    "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/10-large-scale-stellarator/analysis.md"
+  }
+}

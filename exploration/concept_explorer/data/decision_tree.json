@@ -1,0 +1,246 @@
+{
+  "version": "1.0",
+  "root": {
+    "field": "confinement_family",
+    "label": "Confinement Approach",
+    "children": [
+      {
+        "value": "MFE",
+        "label": "Magnetic Fusion Energy",
+        "field": "mfe_topology",
+        "children": [
+          {
+            "value": "Compact Toroid",
+            "label": "Compact Toroid",
+            "concepts": [
+              "18"
+            ]
+          },
+          {
+            "value": "Dipole",
+            "label": "Dipole",
+            "concepts": [
+              "12",
+              "19",
+              "35"
+            ]
+          },
+          {
+            "value": "Open/Linear",
+            "label": "Open/Linear",
+            "concepts": [
+              "06",
+              "11",
+              "15"
+            ]
+          },
+          {
+            "value": "Stellarator",
+            "label": "Stellarator",
+            "field": "stellarator_type",
+            "children": [
+              {
+                "value": "Helical coil",
+                "label": "Helical coil",
+                "concepts": [
+                  "36"
+                ]
+              },
+              {
+                "value": "Modular",
+                "label": "Modular",
+                "concepts": [
+                  "20a",
+                  "20b"
+                ]
+              },
+              {
+                "value": "Planar coil",
+                "label": "Planar coil",
+                "concepts": [
+                  "05"
+                ]
+              },
+              {
+                "value": "QI",
+                "label": "QI",
+                "concepts": [
+                  "09",
+                  "10"
+                ]
+              }
+            ]
+          },
+          {
+            "value": "Tokamak",
+            "label": "Tokamak",
+            "field": "tokamak_shape",
+            "children": [
+              {
+                "value": "Compact",
+                "label": "Compact",
+                "concepts": [
+                  "01",
+                  "28"
+                ]
+              },
+              {
+                "value": "Negative triangularity",
+                "label": "Negative triangularity",
+                "concepts": [
+                  "29"
+                ]
+              },
+              {
+                "value": "Spherical",
+                "label": "Spherical",
+                "concepts": [
+                  "21",
+                  "34"
+                ]
+              },
+              {
+                "value": "Standard",
+                "label": "Standard",
+                "concepts": [
+                  "33"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "value": "IFE",
+        "label": "Inertial Fusion Energy",
+        "field": "ife_driver",
+        "children": [
+          {
+            "value": "Acoustic",
+            "label": "Acoustic",
+            "concepts": [
+              "02"
+            ]
+          },
+          {
+            "value": "Heavy ion beam",
+            "label": "Heavy ion beam",
+            "concepts": [
+              "25"
+            ]
+          },
+          {
+            "value": "Laser",
+            "label": "Laser",
+            "field": "laser_approach",
+            "children": [
+              {
+                "value": "Direct drive",
+                "label": "Direct drive",
+                "concepts": [
+                  "31",
+                  "32"
+                ]
+              },
+              {
+                "value": "Fast ignition",
+                "label": "Fast ignition",
+                "concepts": [
+                  "04",
+                  "17b"
+                ]
+              },
+              {
+                "value": "Hybrid drive",
+                "label": "Hybrid drive",
+                "concepts": [
+                  "17a"
+                ]
+              },
+              {
+                "value": "Indirect drive",
+                "label": "Indirect drive",
+                "concepts": [
+                  "26",
+                  "30"
+                ]
+              },
+              {
+                "value": "Liquid jet",
+                "label": "Liquid jet",
+                "concepts": [
+                  "03"
+                ]
+              },
+              {
+                "value": "Ultrashort pulse",
+                "label": "Ultrashort pulse",
+                "concepts": [
+                  "23"
+                ]
+              }
+            ]
+          },
+          {
+            "value": "Projectile",
+            "label": "Projectile",
+            "concepts": [
+              "22"
+            ]
+          }
+        ]
+      },
+      {
+        "value": "MIF",
+        "label": "Magneto-Inertial Fusion",
+        "field": "mif_method",
+        "children": [
+          {
+            "value": "FRC compression",
+            "label": "FRC compression",
+            "concepts": [
+              "08"
+            ]
+          },
+          {
+            "value": "Magnetized target",
+            "label": "Magnetized target",
+            "concepts": [
+              "07",
+              "14"
+            ]
+          }
+        ]
+      },
+      {
+        "value": "Non-Standard",
+        "label": "Non-Standard",
+        "field": "non_standard_mechanism",
+        "children": [
+          {
+            "value": "Electrostatic",
+            "label": "Electrostatic",
+            "concepts": [
+              "13",
+              "27"
+            ]
+          },
+          {
+            "value": "Muon-catalyzed",
+            "label": "Muon-catalyzed",
+            "concepts": [
+              "16"
+            ]
+          },
+          {
+            "value": "Plasma focus",
+            "label": "Plasma focus",
+            "concepts": [
+              "24"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

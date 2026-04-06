@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-04-06T17:29:35.455315+00:00",
+  "concepts": [
+    {
+      "concept_id": "28",
+      "name": "HTS Tokamak - Full HTS",
+      "confinement_family": "MFE",
+      "company": "Energy Singularity",
+      "status": "in_progress",
+      "illustration": null,
+      "has_cost_model": true,
+      "has_sensitivities": true,
+      "lcoe_per_mwh": 84.2583999633789,
+      "confidence": null,
+      "data_file": "data/28.json"
+    }
+  ]
+}

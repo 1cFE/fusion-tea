@@ -1,0 +1,153 @@
+========================================================================
+HTS Tokamak - Full HTS (Energy Singularity)
+Proxy model: CFS ARC/SPARC analogue | All parameters UNCERTAIN
+Net electric: 500 MWe | Lifetime: 30 yr | NOAK
+========================================================================
+
+── Base Case (CS coils reliable, AI control nominal) ──
+   Availability: 80%
+   Note: 80% availability — AI plasma control working, CS coils at design life
+   LCOE:             103.3 $/MWh
+   Overnight:         7240 $/kW
+   Fusion power:      1437 MW
+   Net electric:       500 MW
+   Q_eng:             4.54
+
+── Scenario A — CS Coil Reliability Failure ──
+   Availability: 65%
+   Note: 65% availability + CAS72 ×1.30 for CS coil reconditioning events. Represents full HTS CS coil fatigue failure at 25 T cyclic EM loading. UNCERTAIN: coil replacement cost factor is a placeholder (no source).
+   LCOE:             125.7 $/MWh
+   Overnight:         7240 $/kW
+   Fusion power:      1437 MW
+   Net electric:       500 MW
+   Q_eng:             4.54
+
+── Scenario B — AI Plasma Control Underperforms ──
+   Availability: 70%
+   Note: 70% availability — disruption-limited operation at burning-plasma conditions. Represents AI control system failing to suppress disruptions at D-T scale. No additional cost override (disruption cost absorbed into availability).
+   LCOE:             117.5 $/MWh
+   Overnight:         7240 $/kW
+   Fusion power:      1437 MW
+   Net electric:       500 MW
+   Q_eng:             4.54
+
+── LCOE Scenario Comparison ──
+  Scenario                                       Avail  LCOE ($/MWh)    vs. Base
+  -----------------------------------------------------------------------------
+  Base Case (CS coils reliable, AI control nominal)    80%         103.3        0.0%
+  Scenario A — CS Coil Reliability Failure         65%         125.7      +21.6%
+  Scenario B — AI Plasma Control Underperforms     70%         117.5      +13.7%
+
+── CAS Cost Breakdown — Base Case ──
+  Code     Account                              M$
+  ------------------------------------------------
+  CAS10    Preconstruction                    17.2
+  CAS21    Buildings                         487.1
+  CAS22    Reactor Plant Equipment          1755.7
+  CAS23    Turbine Plant                     126.7
+  CAS24    Electrical Plant                   54.0
+  CAS25    Miscellaneous                      32.9
+  CAS26    Heat Rejection                     21.9
+  CAS27    Special Materials                   7.5
+  CAS28    Digital Twin                        5.0
+  CAS29    Contingency                         0.0
+  CAS30    Indirect Costs                    415.1
+  CAS40    Owner's Costs                      27.6
+  CAS50    Supplementary                     196.8
+  CAS60    IDC                               472.6
+  CAS70    O&M (annualized)                   69.7
+  CAS80    Fuel (annualized)                   0.6
+  CAS90    Financial                         291.7
+  ------------------------------------------------
+           Total Capital                    3620.1
+
+── CAS22 Sub-Account Detail — Base Case ──
+  Sub-account  Description                            M$
+  -------------------------------------------------------
+  C220101      First Wall + Blanket                 53.7
+  C220102      Shield                               52.4
+  C220103      Coils (HTS magnet system)           516.1 *
+  C220104      Heating (ICRH)                      353.2
+  C220105      Structure                             4.0
+  C220106      Vacuum System                        20.7
+  C220107      Power Supplies                       58.6
+  C220108      Divertor                             76.0
+  C220109      DEC Equipment                         0.0
+  C220111      Installation Labor                  175.7
+  C220112      Isotope Separation                    0.0
+  C220200      Coolant System                      109.4
+  C220300      Auxiliary Cooling                    81.1
+  C220400      Radwaste                              3.1
+  C220500      Fuel Handling                        73.9
+  C220600      Other Equipment                       6.6
+  C220700      I&C                                  51.2
+  C220000      CAS22 Total                        1755.7
+  (* C220103 — full HTS coil system, TF+PF+CS; no cost override applied;
+     framework default does not distinguish full-HTS vs. partial-HTS cost penalty)
+
+── Key Assumptions ──
+  Net electric output:   500 MW  [UNCERTAIN — no HH380 design]
+  Major radius R0:       2.0 m    [UNCERTAIN — CFS ARC/SPARC analogue]
+  Minor radius a:        0.5 m   [UNCERTAIN — A = R0/a = 4.0]
+  Elongation κ:          1.7       [UNCERTAIN — standard D-shaped]
+  Blanket thickness:     0.6 m  [UNCERTAIN — no blanket design disclosed]
+  Thermal efficiency:    40%    [UNCERTAIN — cycle type unknown; steam Rankine]
+  ICRH wall-plug η:      65%   [UNCERTAIN — 60–70% range; analysis.md §Ch.5]
+  Cryo power:            8.0 MW   [UNCERTAIN — full HTS 20 K cryoplant]
+  Construction time:     5.0 yr  [UNCERTAIN — optimistic; <2 yr for HH70]
+  Interest rate:         7%     [DEFAULT — no ES financing data]
+
+  Data rating: LIMITED — Energy Singularity discloses NO commercial design
+  parameters for HH380. All engineering values are analogued from CFS ARC/
+  SPARC (Sorbom 2015) or mfe_tokamak.yaml defaults. LCOE carries ±50% or
+  greater uncertainty from parameter uncertainty alone.
+
+  Blocking gaps (analysis.md §Section 5):
+    - Net electrical output / fusion power / Q for commercial machine
+    - Blanket design, TBR, and tritium fuel cycle
+    - Power conversion cycle type and thermal efficiency
+    - Capital cost estimate or plant cost study
+
+── Sensitivity Analysis — Base Case (elasticity = %ΔLCOE / %Δparam) ──
+
+  Engineering levers:
+    availability                 -0.9605
+    construction_time_yr         +0.2699
+    eta_th                       -0.0782
+    R0                           +0.0647
+    elon                         +0.0647
+    blanket_t                    +0.0458
+    eta_pin                      -0.0426
+    p_input                      +0.0425
+    plasma_t                     +0.0252
+    p_cryo                       +0.0216
+    fuel_recovery                -0.0161
+    f_sub                        +0.0107
+    ht_shield_t                  +0.0106
+    p_cool                       +0.0083
+    vessel_t                     +0.0082
+    p_trit                       +0.0055
+    p_house                      +0.0028
+    p_coils                      +0.0028
+    structure_t                  +0.0026
+    mn                           -0.0014
+    p_pump                       +0.0011
+    burn_fraction                -0.0009
+    eta_p                        -0.0000
+    eta_de                       +0.0000
+    q95                          +0.0000
+    f_GW                         +0.0000
+    B                            +0.0000
+    T_e                          +0.0000
+    n_e                          +0.0000
+    Z_eff                        +0.0000
+    plasma_volume                +0.0000
+    R_w                          +0.0000
+    T_edge                       +0.0000
+    tau_ratio                    +0.0000
+
+  Financial:
+    interest_rate                +0.6585
+    inflation_rate               +0.0584
+
+── End of model output ──

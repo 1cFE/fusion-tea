@@ -167,12 +167,12 @@ def parse_proposed_actions(review_path: Path) -> list[dict]:
     Returns list of dicts with keys: id, description, category, severity,
     location, finding, proposed_fix, decision, user_notes.
     """
+    from lib.validators import PROPOSED_ACTION_RE
+
     text = review_path.read_text(encoding="utf-8")
     actions = []
-    # Split on ### PA-N: headers
-    pa_pattern = re.compile(r"^### (PA-\d+):\s*(.+)$", re.MULTILINE)
 
-    matches = list(pa_pattern.finditer(text))
+    matches = list(PROPOSED_ACTION_RE.finditer(text))
     for i, m in enumerate(matches):
         start = m.end()
         end = matches[i + 1].start() if i + 1 < len(matches) else len(text)

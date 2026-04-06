@@ -1,0 +1,28 @@
+{
+  "iteration": 8,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "research",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": true,
+  "merged_assess": true,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/proxima-fusion-technology-page.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/aries-cs-compact-stellarator-study.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/aries-cs-systems-optimization.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/arxiv-1401-4232.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/arxiv-2404-16440.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/arxiv-2405-19860.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/arxiv-2501-04640.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/arxiv-2512-08825.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/en-wiki-wendelstein-7-x.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/helios-stellarator-comparison.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/neimagazine-news-proxima-unveils-stellaris-fusion-plant.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/proxima-fusion-2026-updates.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/pure-rest-items-item-2140562-component-file-2140561-content.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/stellaris-paper-details.md"
+  ],
+  "timestamp": "2026-04-06T15:56:15.423219+00:00"
+}

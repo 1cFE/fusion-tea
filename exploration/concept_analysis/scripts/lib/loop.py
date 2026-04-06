@@ -17,7 +17,7 @@ import sys
 import time
 from pathlib import Path
 
-from lib.claude import invoke_claude, run_model
+from lib.claude import invoke_claude, invoke_claude_validated, run_model
 from lib.concepts import get_costingfe_mapping, get_model_path, FUEL_MAPPING
 from lib.frontmatter import make_frontmatter, parse_frontmatter
 from lib.iteration import (
@@ -242,8 +242,10 @@ def _split_findings(text: str) -> list[str]:
     Returns a list of stripped finding blocks (each starting with '### F-N:').
     Non-finding preamble (VERDICT line, etc.) is excluded.
     """
+    from lib.validators import FINDING_HEADER_RE
+
     parts = re.split(r"(?=^### F-\d+:)", text, flags=re.MULTILINE)
-    return [p.strip() for p in parts if re.match(r"^### F-\d+:", p)]
+    return [p.strip() for p in parts if FINDING_HEADER_RE.match(p)]
 
 
 def _extract_model_findings(feedback_path: Path | None) -> str:
@@ -253,6 +255,8 @@ def _extract_model_findings(feedback_path: Path | None) -> str:
     if none exist. Findings without a Category field default to 'analysis'
     (backward compatibility).
     """
+    from lib.validators import FINDING_CATEGORY_RE
+
     if feedback_path is None or not feedback_path.exists():
         return ""
 
@@ -261,10 +265,7 @@ def _extract_model_findings(feedback_path: Path | None) -> str:
 
     model_findings = []
     for block in finding_blocks:
-        cat_match = re.search(
-            r"^\-\s+\**Category\**:?\s*(analysis|model)",
-            block, re.MULTILINE,
-        )
+        cat_match = FINDING_CATEGORY_RE.search(block)
         if cat_match and cat_match.group(1) == "model":
             model_findings.append(block.strip())
 
@@ -599,16 +600,22 @@ def _run_assess(
         print(f"  dry-run {cid}: assess prompt saved to {iter_dir / 'assess_prompt.md'}")
         return "DRY_RUN", 0
 
+    from lib.validators import validate_feedback_verdict
+
     print(f"  assess {cid} iter {iter_num} ...", end="", flush=True)
     t0 = time.time()
-    _stdout, stderr, rc = invoke_claude(
+    result = invoke_claude_validated(
         assess_prompt, cwd=CONCEPT_ANALYSIS_DIR,
         timeout=args.timeout, model=args.model,
+        validator=validate_feedback_verdict,
+        output_path=feedback_path,
+        step_label="assess",
+        log_path=iter_dir / "validation_log.json",
     )
     elapsed = time.time() - t0
 
-    if rc != 0:
-        print(f" FAILED ({elapsed:.0f}s, rc={rc})")
+    if result.invoke.returncode != 0:
+        print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
         return "ERROR", 0
 
     if not feedback_path.exists():
@@ -621,7 +628,10 @@ def _run_assess(
     if verdict == "PASS":
         print(f" PASS ({elapsed:.0f}s)")
     else:
-        print(f" {finding_count} findings ({elapsed:.0f}s)")
+        suffix = ""
+        if result.attempts > 1:
+            suffix = f", {result.attempts} validation attempts"
+        print(f" {finding_count} findings ({elapsed:.0f}s{suffix})")
 
     return verdict, finding_count
 
@@ -656,17 +666,23 @@ def _run_source_integration(
         print(f"  dry-run {cid}: source-integration prompt saved to {iter_dir}")
         return output_path  # pretend it worked for dry-run flow
 
+    from lib.validators import validate_feedback_verdict
+
     print(f"  source-integration {cid} ({len(new_sources)} new sources) ...",
           end="", flush=True)
     t0 = time.time()
-    _stdout, stderr, rc = invoke_claude(
+    result = invoke_claude_validated(
         prompt, cwd=CONCEPT_ANALYSIS_DIR,
         timeout=args.timeout, model=args.model,
+        validator=validate_feedback_verdict,
+        output_path=output_path,
+        step_label="source-integration",
+        log_path=iter_dir / "validation_log.json",
     )
     elapsed = time.time() - t0
 
-    if rc != 0:
-        print(f" FAILED ({elapsed:.0f}s, rc={rc})")
+    if result.invoke.returncode != 0:
+        print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
         return None
 
     if not output_path.exists():
@@ -707,6 +723,8 @@ def _get_review_feedback(concept_dir: Path) -> str | None:
     Returns feedback text content (caller writes to iter-N/feedback.md),
     or None if review.md has no extractable corrective actions.
     """
+    from lib.validators import REVIEW_VERDICT_RE, CORRECTIVE_ACTIONS_RE
+
     review_path = concept_dir / "review.md"
     if not review_path.exists():
         return None
@@ -714,13 +732,12 @@ def _get_review_feedback(concept_dir: Path) -> str | None:
     text = review_path.read_text(encoding="utf-8")
 
     # Verify this is a REVISE review
-    verdict_match = re.search(r"^VERDICT:\s*REVISE", text, re.MULTILINE)
-    if not verdict_match:
+    verdict_match = REVIEW_VERDICT_RE.search(text)
+    if not verdict_match or verdict_match.group(1) != "REVISE":
         return None
 
     # Extract everything from "## Corrective Actions" to end or next ## section
-    ca_match = re.search(r"^## Corrective Actions.*$", text[verdict_match.end():],
-                         re.MULTILINE)
+    ca_match = CORRECTIVE_ACTIONS_RE.search(text[verdict_match.end():])
     if not ca_match:
         return None
 

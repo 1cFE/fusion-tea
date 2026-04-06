@@ -1,4 +1,4 @@
-# STALE: analysis-updated-iter-7
+# STALE: analysis-updated-iter-8
 """QI Stellarator — HTS (Proxima Fusion Stellaris) — LCOE estimate.
 
 Usage:
@@ -81,21 +81,31 @@ Modeling approach:
     Helios's 40% which uses vanadium alloy at 635°C; analysis.md §3). Net plant efficiency
     ~32% (1,000 MWe / 3,100 MWth; analysis.md §5) after recirculating power deduction.
 
-    iter-7 updates vs. iter-6 (review.md Minor Fixes PA-1, PA-2, PA-3):
-    PA-1: Add capacity factor range sweep (85%, 88%, 95%) alongside coil multiplier sweep.
-        Sensitivity analysis shows availability elasticity of −0.89 — the strongest single
-        engineering lever — but the output never showed the LCOE consequence of the published
-        85–95% range. The ~±$4–5/MWh effect is comparable to the H4 branching effect
-        ($3.9/MWh) and should be explicit, not only derivable from elasticity × range width.
-        Source: review.md §PA-1; analysis.md §5 (capacity factor range 85–95%).
-    PA-2: Add assumption #13 — QA→QI cost structure topology caveat. Framework calibration
-        uses ARIES-CS (quasi-axisymmetric) as the stellarator baseline; Stellaris is
-        quasi-isodynamic. The two symmetry classes may have different coil topology costs.
-        This caveat appears in analysis.md §1 but was absent from the model assumptions list.
-        Source: review.md §PA-2; analysis.md §1 (ARIES-CS QA/QI discussion).
-    PA-3: H2a scenario headers now include " [next-gen QI, not Stellaris v1]" qualifier to
-        prevent misreading H2a as a Stellaris design range in cross-concept comparison tables.
-        Source: review.md §PA-3.
+    iter-8 updates vs. iter-7 (review feedback PA-1 through F-3):
+    CF-F1: Blanket/divertor replacement interval (1–4 yr from Queral et al. 2025,
+        arxiv-2501-04640.md) added as a causal anchor for the 85–95% capacity factor lower
+        bound. The 85% floor is now explicitly grounded in maintenance physics: at a 4-week
+        outage per 1-year replacement interval, availability ceiling is ~92%; the 85% floor
+        allows for more frequent or longer outages. Source: feedback.md F-1 (source integration);
+        analysis.md §5 (Capacity Factor row, Blanket/divertor replacement interval row).
+    CF-H2: H2 hypothesis baseline corrected from "conventional disruption-limited tokamak
+        (83–85% CF)" to "HTS compact tokamak reference (01-hts-compact-tokamak)." The ARC-class
+        reference employs active disruption prediction and may target 87–90% CF. If true, the
+        Stellaris advantage at 88% CF shrinks to 0–1 percentage points — insufficient to offset
+        the 3D coil manufacturing premium. H2 cannot be evaluated quantitatively until the 01
+        analysis provides a comparable CF estimate. Key Assumption #2 updated accordingly.
+        Source: feedback.md Carried-Forward F-1; analysis.md §2, H2.
+    CF-CT: Construction time added explicitly as a sensitivity lever (elasticity +0.40, ranked
+        third among engineering parameters). The machine scale penalty (R0 ≈ 13 m, 3D coil
+        installation) plausibly extends the first-of-kind construction schedule vs. ARC-class
+        compact tokamaks (R0 ≈ 3–4 m). A 20% schedule extension adds ~8% to LCOE through IDC
+        (CAS60 is among the largest single cost accounts). Key Assumption #14 added.
+        Source: feedback.md Carried-Forward F-2; analysis.md §2, Recommended Modeling Approach.
+    CF-CAS21: CAS21 (Buildings) updated from "0 (neutral)" to "Small +" in Key Assumption #11.
+        Site reuse (Gundremmingen) reduces land/permitting cost but not reactor building volume.
+        A QI stellarator with R0 ≈ 13 m requires a substantially larger assembly/containment
+        building than an ARC-class compact tokamak (R0 ≈ 3–4 m).
+        Source: feedback.md Carried-Forward F-3; analysis.md §7 (CAS21 row).
 
 Concept choice rationale:
     ConfinementConcept.STELLARATOR / Fuel.DT — maps to Stellaris's quasi-isodynamic (QI)
@@ -174,9 +184,13 @@ _SHARED = dict(
     # "enabling an 88% capacity factor" — helios-stellarator-comparison.md §2
     # W7-X demonstrated >97% experimental run-time; plant availability will be lower
     # due to scheduled blanket/divertor maintenance. Analysis range: 85–95%.
+    # Lower bound calibration (CF-F1 iter-8): Queral et al. (2025) give blanket/divertor
+    # replacement interval of ~1–4 years for stellarator reactors (HSR3 context).
+    # At a 4-week outage per 1-year interval → availability ceiling ~92%; 85% floor
+    # allows for more frequent or longer outages. Source: arxiv-2501-04640.md (abstract).
     # UNCERTAIN: Proxima has not published a Stellaris capacity factor target.
     # Source: analysis.md §5 (capacity factor row); analysis.md §2, H2;
-    #         helios-stellarator-comparison.md §2
+    #         helios-stellarator-comparison.md §2; arxiv-2501-04640.md (replacement interval)
     availability=0.88,
 
     lifetime_yr=30,              # Standard 30-yr plant lifetime; DEFAULT
@@ -187,6 +201,13 @@ _SHARED = dict(
     n_mod=1,                     # Single-module plant
     construction_time_yr=8.0,    # Stellarator default: complex 3D coil fabrication + assembly
                                  # Source: mfe_stellarator.yaml default
+                                 # NOTE (CF-CT iter-8): construction_time_yr has elasticity
+                                 # +0.40 — third-highest engineering lever. A 13 m major radius
+                                 # machine with complex 3D non-planar coil installation likely
+                                 # has a longer first-of-kind schedule than an ARC-class device
+                                 # (R0 ≈ 3–4 m). IDC (CAS60) is among the largest single cost
+                                 # accounts. A 20% schedule extension adds ~8% to LCOE.
+                                 # Source: feedback.md CF-F2; analysis.md §2 (construction time)
     interest_rate=0.07,          # DEFAULT — standard capital cost rate
     inflation_rate=0.0245,       # DEFAULT
     noak=True,                   # NOAK central estimate
@@ -292,7 +313,9 @@ print(f"NOTE: Framework calibrated to ARIES-CS (QA stellarator); Stellaris is QI
 print(f"      difference may affect C220103 coil account; direction of bias unknown. (Assumption #13)")
 print(f"NOTE: CAS22 (${float(c_a.cas22):.0f} M) contains coils at C220103 and heating at C220104.")
 print(f"      CAS21 (${float(c_a.cas21):.0f} M) = Buildings only, per ARIES CAS20X convention.")
-print(f"      Source: analysis.md §7, CAS account structure note.")
+print(f"      CAS21 rated 'Small +' vs. HTS compact tokamak reference (R0≈3–4 m) due to larger")
+print(f"      reactor building footprint at R0≈13 m (partially offset by Gundremmingen site reuse).")
+print(f"      Source: analysis.md §7, CAS account structure note; feedback.md CF-CAS21.")
 print()
 
 cas_rows = [
@@ -395,8 +418,8 @@ print(f"  Source: stellaris-design-details.md Table 3 (H&CD column); analysis.md
 #
 # This is a SCENARIO BRANCH for next-generation QI designs. It is NOT a variant of
 # Stellaris v1 (which targets 2.76% beta). Proxima has stated "more commercially
-# attractive Stellarator designs are possible" — this scenario quantifies the machine
-# size reduction that would follow from a 4% beta operating point.
+# attractive designs are possible" — this scenario quantifies the machine size reduction
+# that would follow from a 4% beta operating point.
 #
 # Geometry at 4% beta (H4-true ECRH assumption):
 # Plasma volume scales linearly: V_H2a = 443 × (2.76/4.0) ≈ 306 m³ (~31% reduction)
@@ -463,7 +486,7 @@ print("  reference on the same 10-yr coil replacement schedule.")
 print("  Source: analysis.md §2, H1 (H1: premium < 2× is viability threshold);")
 print("          stellaris-design-details.md §2.8 (REBCO fluence limit → ~10 FPY at 2,700 MW)")
 
-# ── Capacity factor range sweep (PA-1 fix) ───────────────────────────────
+# ── Capacity factor range sweep ───────────────────────────────────────────
 # Sensitivity shows availability elasticity of −0.89 — the dominant engineering lever.
 # The published range is 85–95% (analysis.md §5). The LCOE consequence of this range
 # is comparable in magnitude to the H4 branching effect ($3.9/MWh) and must be
@@ -471,16 +494,25 @@ print("          stellaris-design-details.md §2.8 (REBCO fluence limit → ~10 
 # Three points: 85% (floor — blanket/divertor maintenance limits), 88% (central —
 # Helios analogue), 95% (optimistic — disruption-free + high-availability blanket).
 # Scenario A (H4-true, 5 MW ECRH), DEFAULT C220103 coil cost.
+#
+# CF-F1 iter-8 note: blanket/divertor replacement interval calibration:
+# Queral et al. (2025) arxiv-2501-04640.md — "blankets and divertor modules will have
+# to be replaced periodically (about each 1–4 years depending on the design)." At a
+# 4-week outage per 1-year interval, availability ceiling ~92%; 4-week per 4-year
+# interval gives ~98%. The 85% floor accommodates more frequent or longer outages.
 # Source: review.md §PA-1; analysis.md §5 (capacity factor row); analysis.md §2, H2;
-#         helios-stellarator-comparison.md §2; en-wiki-wendelstein-7-x.md (W7-X >97% run-time)
+#         helios-stellarator-comparison.md §2; en-wiki-wendelstein-7-x.md (>97% run-time);
+#         arxiv-2501-04640.md (blanket replacement interval, CF-F1 iter-8)
 
 print(f"\nCapacity factor range sweep (Scenario A — H4-true, DEFAULT C220103):")
-print(f"Source: analysis.md §5 (range 85–95%); review.md §PA-1; availability elasticity = −0.89")
+print(f"Source: analysis.md §5 (range 85–95%); availability elasticity = −0.89")
+print(f"CF-F1: Lower bound (85%) calibrated to ~1–4 yr blanket replacement interval")
+print(f"       (Queral et al. 2025; arxiv-2501-04640.md abstract)")
 print(f"{'CF':<8} {'Init. LCOE':>12} {'Repl $/MWh':>12} {'Incl.Repl LCOE':>16}  {'Note'}")
 print("-" * 72)
 
 _cf_cases = [
-    (0.85, "floor (maintenance limits)"),
+    (0.85, "floor (maintenance limits; ~1-yr replacement interval)"),
     (0.88, "central — Helios analogue"),
     (0.95, "optimistic — disruption-free"),
 ]
@@ -497,6 +529,14 @@ print("  The 85–95% range comes from the Helios analogue (88%), W7-X experimen
 print("  (>97%, plant lower due to scheduled maintenance), and the disruption-free argument.")
 print("  This sweep is the primary continuous LCOE lever; coil cost defines viability envelope.")
 print("  Source: analysis.md §5 (capacity factor row); analysis.md §2, H2 (viability threshold)")
+print()
+print("  CF-H2 iter-8 NOTE: H2 viability threshold must be evaluated against the actual HTS")
+print("  compact tokamak reference CF (01-hts-compact-tokamak), NOT a conventional disruption-")
+print("  limited tokamak (~83–85%). ARC-class designs employ active disruption prediction;")
+print("  if the 01 reference achieves 87–90% CF, the Stellaris advantage at 88% shrinks to")
+print("  0–1 percentage points — insufficient to offset the 3D coil manufacturing premium.")
+print("  H2 gate cannot be evaluated quantitatively until the 01 analysis provides a")
+print("  comparable CF estimate. Source: feedback.md CF-H2; analysis.md §2, H2.")
 
 # ── Key Assumptions ───────────────────────────────────────────────────────
 
@@ -510,8 +550,21 @@ Key Assumptions
    Helios: "enabling an 88% capacity factor" — helios-stellarator-comparison.md §2.
    W7-X demonstrated >97% experimental run-time; plant availability lower due to
    scheduled blanket/divertor maintenance. Analysis range: 85–95%.
+   CF-F1 (iter-8): Lower bound (85%) is now causally grounded in the blanket/divertor
+   replacement interval of ~1–4 years (Queral et al. 2025; arxiv-2501-04640.md, abstract;
+   HSR3 context). At a 4-week outage per 1-year interval → ~92% ceiling; 85% floor
+   accommodates more frequent or longer outages. This is a general stellarator reactor
+   constraint, not Stellaris-specific.
+   CF-H2 (iter-8): CRITICAL — the H2 viability threshold is relative to the HTS compact
+   tokamak reference (01-hts-compact-tokamak / CFS ARC-class), NOT to a conventional
+   disruption-limited tokamak. If the ARC-class reference targets 87–90% CF (via active
+   disruption prediction and avoidance), Stellaris's 88% advantage is 0–1 percentage
+   points — insufficient to offset the 3D coil manufacturing premium. The H2 gate cannot
+   be evaluated quantitatively until the 01 analysis provides a comparable CF estimate.
    UNCERTAIN: Proxima has not published a capacity factor target for Stellaris.
-   Source: analysis.md §5 (capacity factor row); analysis.md §2, H2.
+   Source: analysis.md §5 (capacity factor row); analysis.md §2, H2;
+           helios-stellarator-comparison.md §2; arxiv-2501-04640.md (replacement interval);
+           feedback.md CF-F1, CF-H2.
 
 3. C220103 (coils) — LOWER BOUND; 3D manufacturing premium NOT modeled [PRIMARY CAVEAT]
    Framework C220103 defaults calibrate to wound-coil (tokamak-style) geometry.
@@ -600,6 +653,21 @@ Key Assumptions
     CAS25 (power conversion):       Small −  (~−5–10%; water Rankine cheaper per GWth than
                                     sCO₂ Brayton, partially offset by larger thermal throughput
                                     at lower efficiency — direction could be neutral)
+    CAS21 (Buildings):              Small +  (CF-CAS21 iter-8): reactor building volume scales
+                                    with machine footprint — a QI stellarator at R0≈13 m requires
+                                    a substantially larger containment and assembly building than
+                                    an ARC-class compact tokamak (R0≈3–4 m). Gundremmingen site
+                                    reuse reduces land acquisition and permitting cost but not
+                                    reactor building volume. Net: Small + (not neutral as in iter-7).
+                                    Source: feedback.md CF-CAS21; analysis.md §7 (CAS21 row).
+    O&M (CAS70):                    Structural + (direction only; magnitude unknown): stellarator
+                                    coil geometry structurally limits blanket and divertor module
+                                    size relative to tokamaks — "relatively small ports for in-vessel
+                                    access and maintenance, i.e. in comparison with tokamaks"
+                                    (Queral et al. 2025; arxiv-2501-04640.md, abstract). This is a
+                                    generic consequence of modular stellarator coil architecture,
+                                    not a Stellaris-specific design choice.
+                                    Source: feedback.md CF-F2; analysis.md §7 (O&M delta paragraph).
     Net: uncertain; competitiveness depends on C220103 premium vs. H&CD saving + CF advantage.
 
 12. Scenario H2a: next-generation QI design branch — NOT a Stellaris v1 variant
@@ -611,7 +679,7 @@ Key Assumptions
     Stellaris v1 and should not be used as the upper bound of a Stellaris range.
     Source: analysis.md §2, H2a; arxiv-2512-08825.md; review.md §PA-3.
 
-13. Framework calibration: ARIES-CS (QA stellarator) applied to QI configuration [PA-2]
+13. Framework calibration: ARIES-CS (QA stellarator) applied to QI configuration
     The 1costingfe stellarator cost baseline is calibrated to ARIES-CS, which studied
     quasi-axisymmetric (QA) stellarator configurations. Stellaris is quasi-isodynamic (QI).
     These two symmetry classes may have different coil topology costs: QI requires
@@ -622,12 +690,28 @@ Key Assumptions
     The Brown (2018) multiplier range (1.5–5×) accounts for stellarator vs. tokamak geometry
     but does not separately model QA vs. QI topology differences.
     Source: analysis.md §1 (ARIES-CS discussion); review.md §PA-2; Brown (2018) IEEE TPS.
+
+14. Construction time: 8 years (framework default; elasticity +0.40) [CF-CT iter-8]
+    Construction_time_yr has the third-highest engineering elasticity (+0.40), ranking above
+    R0 (+0.31). IDC (CAS60) is among the largest single cost accounts — a 20% schedule
+    extension adds ~8% to LCOE. The 8-year stellarator default is conceptually plausible
+    for a 13 m major radius machine requiring complex 3D coil fabrication and precision
+    installation, versus an ARC-class compact tokamak (R0≈3–4 m) which may target 6–7 yr.
+    Construction time is the financial expression of the machine scale penalty: the low-beta
+    scale penalty (Challenge 2) propagates not just into nuclear island capital accounts but
+    also into the construction schedule, which compounds the cost through IDC.
+    No Stellaris-specific construction schedule has been published. The 8-year default is
+    used without override; sensitivity to this parameter is visible in the model's autodiff.
+    Source: feedback.md CF-CT; analysis.md §2 (Recommended Modeling Approach, sensitivity
+            parameter list); mfe_stellarator.yaml (default construction_time_yr=8.0).
 """)
 
 # ── Sensitivity Analysis ──────────────────────────────────────────────────
 # Uses JAX autodiff on the Scenario A (H4-true) result parameters.
 # Availability elasticity ~−0.89 is the dominant lever; confirms capacity factor sweep
 # results are the primary optimization target within a viable design.
+# Construction_time_yr ranks third at +0.40 (CF-CT iter-8: now explicitly noted in
+# Key Assumptions #14 and analysis.md §2 sensitivity parameter list).
 # Source: analysis.md §2, Sensitivity Axes (primary continuous parameter = availability)
 
 sens = model.sensitivity(result_h4true.params)

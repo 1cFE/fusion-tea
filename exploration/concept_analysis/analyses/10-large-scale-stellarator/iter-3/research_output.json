@@ -1,0 +1,135 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-2",
+      "gap_description": "Capacity factor (GIGA-specific) — Helios QA stellarator provides 88% analog (biennial 84-day outage); GIGA-specific target undisclosed. Model range 85–90% pending disclosure.",
+      "queries": [
+        "ARIES-CS stellarator power plant capacity factor availability maintenance outage schedule",
+        "ARIES-CS stellarator \"capacity factor\" OR \"availability factor\" \"85%\" power plant fusion annual report",
+        "\"ARIES-CS\" compact stellarator \"fusion power plant\" Najmabadi 2008 site:osti.gov OR site:pppl.gov OR site:princeton.edu filetype:pdf"
+      ],
+      "candidates": [
+        {
+          "url": "https://core.ac.uk/outputs/100308302/",
+          "title": "ARIES-CS MAINTENANCE SYSTEM DEFINITION AND ANALYSIS",
+          "triage": "relevant",
+          "notes": "Open-access repository. Contains 85% availability estimate for ARIES-CS stellarator power plant. Confirmed in text: 'It is estimated that the ARIES-CS plant availability could reasonably be in the range of 85%'. Discusses port-based maintenance scheme and frequency determination."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1001680",
+          "title": "ARIES-CS Engineering Design and Analysis (suspected)",
+          "triage": "binary-pdf",
+          "notes": "PDF served directly — WebFetch returned binary content. Appeared in multiple searches alongside ARIES-CS queries. add-source extraction also failed (rc=1, no stderr) — likely same server-side PDF format issue as iter-2."
+        },
+        {
+          "url": "https://www.researchgate.net/publication/230806842_The_ARIES_CS_compact_stellarator_fusion_power_plant",
+          "title": "The ARIES-CS Compact Stellarator Fusion Power Plant",
+          "triage": "blocked",
+          "notes": "403 Forbidden — ResearchGate blocks automated access."
+        },
+        {
+          "url": "https://www.academia.edu/144327326/The_ARIES_CS_Compact_Stellarator_Fusion_Power_Plant",
+          "title": "The ARIES-CS Compact Stellarator Fusion Power Plant",
+          "triage": "blocked",
+          "notes": "403 Forbidden — Academia.edu blocks automated access."
+        },
+        {
+          "url": "https://www.ans.org/pubs/journals/fst/article-1898/",
+          "title": "The ARIES-CS Compact Stellarator Fusion Power Plant (ANS FST page)",
+          "triage": "paywall",
+          "notes": "Abstract only — full text hosted on Taylor & Francis Online, paywalled. Abstract contains no availability/capacity factor numbers."
+        },
+        {
+          "url": "https://info.fusion.ciemat.es/IAEA/IAEA_2006/papers/ft_p5-26.pdf",
+          "title": "The ARIES-CS – A Compact Stellarator Power Plant (IAEA 2006 conference paper)",
+          "triage": "ssl-error",
+          "notes": "SSL certificate verification failed — could not access. Would be a 2006 conference preprint of the ARIES-CS paper."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://core.ac.uk/outputs/100308302/",
+          "source_name": "core-outputs-100308302",
+          "notes": "Waganer et al., 'ARIES-CS Maintenance System Definition and Analysis'. Provides the 85% plant availability estimate for a compact stellarator power plant with port-based maintenance. Useful as a second analog anchor (alongside Helios 88%) for GIGA capacity factor range estimate."
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1001680",
+          "reason": "add-source extraction failed (rc=1, no stderr) — binary PDF not handled by extraction pipeline"
+        }
+      ],
+      "status": "partial",
+      "notes": "G-2 now has two analog capacity factor anchors: ARIES-CS 85% (this iteration, core-outputs-100308302) and Helios/Thea Energy 88% (iter-2, arxiv-2512-08027v1). GIGA-specific figure remains undisclosed. The 85–90% model range has strong engineering grounding across both compact and large-scale stellarator analogs. G-2 can be downgraded from 'important' to effectively addressed for modeling purposes with this range."
+    },
+    {
+      "gap_id": "G-7",
+      "gap_description": "Realistic TBR with GIGA geometry gaps — full 3D MCNP calculation for GIGA geometry with 20 mm gaps and accurate segment shapes; idealistic (1.386) vs. realistic (1.15) gap is ~20%.",
+      "queries": [
+        "Bongiovi HELIAS stellarator tritium breeding ratio realistic geometry 2022 site:arxiv.org OR site:osti.gov",
+        "Bongiovi \"HELIAS\" blanket neutronics TBR 3D gaps realistic stellarator nuclear design"
+      ],
+      "candidates": [
+        {
+          "url": "https://onlinelibrary.wiley.com/doi/full/10.1002/er.7343",
+          "title": "Heterogeneous design and mechanical analysis of HELIAS 5-B helium-cooled pebble bed breeding blanket concept (Bongiovì et al., 2022)",
+          "triage": "paywall",
+          "notes": "403 Forbidden — Wiley paywall. This is the primary Bongiovi 2022 paper referenced in the analysis for realistic TBR with HELIAS geometry. Content confirmed relevant from search snippet: discusses heterogeneous model with realistic gaps. Cannot extract."
+        },
+        {
+          "url": "https://scipub.euro-fusion.org/wp-content/uploads/eurofusion/WPS2CPR17_17310_submitted-4.pdf",
+          "title": "Neutronics analyses for a stellarator power reactor (Huler et al., 2017, EuroFusion)",
+          "triage": "binary-pdf",
+          "notes": "PDF served directly — WebFetch returned binary content. add-source extraction also failed (rc=1, no stderr). Likely a 2017 EuroFusion preprint on HELIAS neutronics predating Bongiovi 2022."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0920379620304762",
+          "title": "Advancements in the HELIAS 5-B breeding blanket structural analysis (Bongiovì et al., 2020)",
+          "triage": "paywall",
+          "notes": "Abstract accessible — full text paywalled (Fusion Engineering and Design). Abstract focuses on structural FEM analysis, not TBR neutronics. Would not close G-7 even if accessible."
+        },
+        {
+          "url": "https://conferences.iaea.org/event/214/contributions/17701/contribution.pdf",
+          "title": "Neutronic design and assessments of a DCLL BB: adaptation from DEMO tokamak to HELIAS stellarator (IAEA FEC 2020)",
+          "triage": "blocked",
+          "notes": "403 Forbidden. Would be relevant (DCLL blanket neutronics for HELIAS geometry) but inaccessible."
+        },
+        {
+          "url": "https://www.mdpi.com/1996-1073/16/11/4430",
+          "title": "Neutronic Assessments towards a Novel First Wall Design for a Stellarator Fusion Reactor with Dual Coolant Lithium Lead Breeding Blanket",
+          "triage": "blocked",
+          "notes": "403 Forbidden — MDPI blocked automated access despite being open-access journal. Potentially relevant for DCLL TBR data for a stellarator."
+        },
+        {
+          "url": "https://www.frontiersin.org/journals/nuclear-engineering/articles/10.3389/fnuen.2024.1384788/full",
+          "title": "ParaStell: parametric modeling and neutronics support for stellarator fusion power plants (Moreno et al., 2024)",
+          "triage": "relevant-methodology",
+          "notes": "Open access, fully accessible. Addresses 3D TBR calculation methodology for stellarators using OpenMC. Demonstrates TBR parametric dependence on blanket/shield thickness in WISTELL-D configuration. Does NOT model HELIAS 5-B geometry or the specific 20mm segment gap effect. Useful as methodology background and demonstrates the importance of 3D geometry for stellarator neutronics, but does not close G-7 directly."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.frontiersin.org/journals/nuclear-engineering/articles/10.3389/fnuen.2024.1384788/full",
+          "source_name": "frontiersin-journals-nuclear-engineering-articles-10-3389",
+          "notes": "ParaStell paper. Background methodology for 3D stellarator neutronics and TBR. Confirms that 3D geometry is essential for accurate stellarator TBR calculations (motivates why HELIAS idealistic models overestimate TBR). Does not provide HELIAS-specific TBR-with-gaps values."
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://scipub.euro-fusion.org/wp-content/uploads/eurofusion/WPS2CPR17_17310_submitted-4.pdf",
+          "reason": "add-source extraction failed (rc=1, no stderr) — binary PDF not handled by extraction pipeline"
+        }
+      ],
+      "status": "partial",
+      "notes": "The primary source (Bongiovi 2022, Wiley doi:10.1002/er.7343) is paywalled. The realistic TBR value of ~1.15 cited in the analysis for HELIAS with 20mm gaps originates from this paper. No open-access alternative found for the specific HELIAS 5-B TBR-with-gaps calculation. The ParaStell paper provides methodological context (importance of 3D modeling) but not HELIAS-specific values. G-7 remains open; future attempts should target EuroFusion publication portal (requires institutional access) or author preprints."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 2,
+    "sources_extracted": 2,
+    "sources_failed": 2,
+    "searches_used": 5,
+    "extractions_used": 4,
+    "notes": "G-2 partially addressed: ARIES-CS 85% availability (core-outputs-100308302) adds a second analog anchor alongside Helios 88% (from iter-2). The 85–90% model range for GIGA capacity factor now has solid engineering grounding. G-7 not closed: Bongiovi 2022 (the primary source for HELIAS realistic TBR with gaps) is paywalled with no accessible preprint found; ParaStell paper extracted as methodology background only."
+  }
+}
