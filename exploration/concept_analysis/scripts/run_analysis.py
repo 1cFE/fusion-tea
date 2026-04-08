@@ -51,6 +51,7 @@ from lib.concepts import (
     resolve_concepts,
     resolve_one,
 )
+from lib.iteration import read_loop_state
 from lib.state import get_concept_state, get_extraction_state, get_iteration_summary, propagate_staleness, _has_downstream_artifacts
 from lib.sources import (
     check_duplicate_source,
@@ -245,7 +246,12 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
         print("No concepts to analyze.")
         return
 
+    add_passes = getattr(args, "add_passes", None)
     resume = getattr(args, "resume", False)
+
+    # --add-passes implies --resume
+    if add_passes is not None:
+        resume = True
 
     # Validate flag constraints
     if resume and args.force:
@@ -295,6 +301,15 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
             continue  # skip message already printed
 
         out_dir.mkdir(parents=True, exist_ok=True)
+
+        # Per-concept max_passes override for --add-passes
+        if add_passes is not None:
+            loop_state = read_loop_state(out_dir)
+            current_iter = loop_state.next_iteration - 1  # completed iterations
+            args.max_passes = current_iter + add_passes
+            if args.max_passes < 1:
+                args.max_passes = add_passes  # fresh concept: just use add_passes
+            print(f"  {cid}: at iter {current_iter}, will run up to {add_passes} more (max_passes={args.max_passes})")
 
         # Delegate to loop runner
         run_stage1_loop(c, args, resume=resume,
@@ -1054,6 +1069,9 @@ def build_parser() -> argparse.ArgumentParser:
     p_analyze.add_argument("--force", action="store_true", help="Re-run even if output exists")
     p_analyze.add_argument("--max-passes", type=int, default=3,
                             help="Max analyze→assess iterations (default: 3; 1=no assessment)")
+    p_analyze.add_argument("--add-passes", type=int, default=None, metavar="N",
+                            help="Run N additional passes from each concept's current iteration "
+                                 "(implies --resume; works across concepts at different iterations)")
     p_analyze.add_argument("--feedback", type=Path, metavar="PATH",
                             help="Apply feedback file to existing analysis (skips cold-start)")
     p_analyze.add_argument("--resume", action="store_true",
@@ -1124,6 +1142,9 @@ def build_parser() -> argparse.ArgumentParser:
     p_s1.add_argument("--force", action="store_true", help="Re-run even if output exists")
     p_s1.add_argument("--max-passes", type=int, default=3,
                        help="Max analyze→assess iterations (default: 3; 1=no assessment)")
+    p_s1.add_argument("--add-passes", type=int, default=None, metavar="N",
+                       help="Run N additional passes from each concept's current iteration "
+                            "(implies --resume; works across concepts at different iterations)")
     p_s1.add_argument("--include-gap-analysis", action="store_true",
                        help="Include gap-check stage (skipped by default)")
     p_s1.add_argument("--resume", action="store_true",

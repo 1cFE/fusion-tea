@@ -221,6 +221,7 @@ name/company substring. Ambiguous matches produce an error listing all hits.
 | Flag | Commands | Default | Description |
 |------|----------|---------|-------------|
 | `--max-passes` | `analyze`, `stage1-all` | 3 | Max iterations (1 = skip assessment entirely → `SINGLE_PASS` verdict) |
+| `--add-passes N` | `analyze`, `stage1-all` | — | Run N additional passes from each concept's current iteration (implies `--resume`; per-concept `max_passes` = current iter + N) |
 | `--feedback PATH` | `analyze` | — | Apply external feedback file to existing analysis (separate code path, does not enter loop) |
 | `--resume` | `analyze`, `stage1-all` | off | Continue from last iteration |
 | `--research` | `analyze`, `stage1-all` | off | Enable autonomous source acquisition on iter > 1 |
@@ -263,6 +264,16 @@ How it works (`lib/loop.py:78-92`, `lib/iteration.py:42-46`):
 
 `--max-passes` applies to **total** iteration count, not new iterations.
 E.g., 2 existing iters + `--max-passes 4` = at most 2 more.
+
+`--add-passes N` is the relative alternative: it computes `max_passes`
+per-concept as `current_iter + N`, so every concept gets exactly N more
+passes regardless of where it currently is. This is especially useful when
+running multiple concepts that are at different iteration counts:
+
+```bash
+# Give every concept 2 more passes, no matter where each one is
+uv run python scripts/run_analysis.py analyze 02 05 11 --add-passes 2
+```
 
 ### Typical Workflow
 

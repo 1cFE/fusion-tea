@@ -60,9 +60,15 @@ uv run python $PIPELINE stage1-all 07 --max-passes 5
 # Single pass, no self-assessment (useful for a quick first look)
 uv run python $PIPELINE stage1-all 07 --max-passes 1
 
+# Run 2 more passes from wherever each concept currently is
+# (works across multiple concepts at different iterations)
+uv run python $PIPELINE stage1-all 07 11 15 --add-passes 2
+
 # Enable web research (lets the LLM search for papers between iterations)
 uv run python $PIPELINE stage1-all 07 --research
 ```
+
+`--add-passes N` is the easiest way to extend a run. It implies `--resume` and calculates the right `--max-passes` per concept, so you don't need to know where each one is.
 
 ### Convergence is not guaranteed
 
@@ -270,7 +276,7 @@ uv run python $PIPELINE approve 07 --force
 |---------|-------------|
 | `status [ID]` | Show state table (all concepts or one) |
 | `list` | List all concepts with IDs |
-| `stage1-all ID [--max-passes N] [--resume] [--research]` | Full pipeline: gap → analyze → model → review |
+| `stage1-all ID [--max-passes N] [--add-passes N] [--resume] [--research]` | Full pipeline: gap → analyze → model → review |
 | `gap-check ID` | Run gap assessment only |
 | `analyze ID` | Run analysis only |
 | `model-setup ID` | Generate cost model only |
