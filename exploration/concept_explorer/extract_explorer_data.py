@@ -794,6 +794,12 @@ def run_extraction(
         out_path.write_text(concept_data.model_dump_json(indent=2), encoding="utf-8")
         print(f"  wrote {out_path}")
 
+        # Clear staleness sidecar if present (analysis pipeline creates these)
+        stale_marker = out_path.with_suffix(".json.stale")
+        if stale_marker.exists():
+            stale_marker.unlink()
+            print(f"  cleared stale marker: {stale_marker.name}")
+
         extracted.append(concept_data)
 
     if not extracted:

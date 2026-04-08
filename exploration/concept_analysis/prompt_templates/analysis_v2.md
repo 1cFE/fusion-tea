@@ -37,6 +37,17 @@ claims against the actual source documents.
 {{memory_context}}
 {{/if}}
 
+{{#if concept_landscape}}
+## Concept Landscape
+
+The complete taxonomy of all fusion concepts under investigation, grouped by
+pipeline maturity. Use this to identify nearest-neighbor concepts for positioning
+(Goal 1). Approved concepts have full analyses available for deep reading.
+In-progress concepts (I{N}) have N iterations completed.
+
+{{concept_landscape}}
+{{/if}}
+
 {{#if cold_start}}
 ## Mode: Cold Start
 

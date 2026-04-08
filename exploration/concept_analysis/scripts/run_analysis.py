@@ -51,7 +51,7 @@ from lib.concepts import (
     resolve_concepts,
     resolve_one,
 )
-from lib.state import get_concept_state, get_iteration_summary, propagate_staleness, _has_downstream_artifacts
+from lib.state import get_concept_state, get_extraction_state, get_iteration_summary, propagate_staleness, _has_downstream_artifacts
 from lib.sources import (
     check_duplicate_source,
     find_latest_sources_dir,
@@ -63,6 +63,7 @@ from lib.sources import (
     resolve_source_names,
     slugify_source,
 )
+from lib.landscape import build_concept_landscape
 from lib.memory import (
     find_approved,
     find_approved_syntheses,
@@ -89,6 +90,14 @@ def cmd_list(concepts: list[dict], _args: argparse.Namespace) -> None:
 # ---------------------------------------------------------------------------
 
 
+def _extract_iter_count(iter_summary: str | None) -> int:
+    """'iter-3/PASS' → 3, None → 0."""
+    if not iter_summary:
+        return 0
+    m = re.match(r"iter-(\d+)", iter_summary)
+    return int(m.group(1)) if m else 0
+
+
 def cmd_status(concepts: list[dict], args: argparse.Namespace) -> None:
     """Print per-concept status table."""
     # Resolve which concepts to show (default: all)
@@ -103,37 +112,67 @@ def cmd_status(concepts: list[dict], args: argparse.Namespace) -> None:
     state_symbols = {
         "not-started": "  -",
         "gap-checked": "  G",
-        "drafted":     "  D",
-        "model-setup": "  M",
+        "iterating":   None,  # dynamic: " I{N}"
         "reviewed":    "  R",
         "synthesized": "  S",
         "approved":    "  A",
     }
 
-    print(f"{'ID':<45} {'Concept Name':<40} {'State':<6} {'Iterations'}")
-    print("-" * 120)
+    extraction_symbols = {
+        "not-extracted": "  ",
+        "extracted":     " E",
+        "stale":         "E*",
+    }
+
+    print(f"{'ID':<45} {'Concept Name':<40} {'State':<6} {'Extr':<4} {'Iterations'}")
+    print("-" * 130)
 
     counts = {s: 0 for s in state_symbols}
     stale_count = 0
+    extracted_count = 0
+    extraction_stale_count = 0
     for c in targets:
         state = get_concept_state(c["_id"])
         base_state = state.rstrip("*")
         counts[base_state] = counts.get(base_state, 0) + 1
-        sym = state_symbols.get(base_state, "  ?")
+        iter_summary = get_iteration_summary(c["_id"])
+
+        # Build state symbol — dynamic for iterating
+        if base_state == "iterating":
+            n = _extract_iter_count(iter_summary)
+            sym = f" I{n}"
+        else:
+            sym = state_symbols.get(base_state, "  ?")
         if state.endswith("*"):
             sym = sym + "*"
             stale_count += 1
-        iter_summary = get_iteration_summary(c["_id"]) or ""
-        print(f"{c['_id']:<45} {c['Concept Name']:<40} {sym:<6} {iter_summary}")
+
+        # Extraction status
+        ext_state = get_extraction_state(c["_id"])
+        ext_sym = extraction_symbols.get(ext_state, "  ")
+        if ext_state == "extracted":
+            extracted_count += 1
+        elif ext_state == "stale":
+            extracted_count += 1
+            extraction_stale_count += 1
+
+        print(f"{c['_id']:<45} {c['Concept Name']:<40} {sym:<6} {ext_sym:<4} {iter_summary or ''}")
+
+    ext_summary = ""
+    if extracted_count:
+        ext_summary = f", {extracted_count} extracted"
+        if extraction_stale_count:
+            ext_summary += f" ({extraction_stale_count} stale)"
 
     print(f"\n{len(targets)} concepts: "
           f"{counts['approved']} approved, {counts['synthesized']} synthesized, "
-          f"{counts['reviewed']} reviewed, {counts['model-setup']} model-setup, "
-          f"{counts['drafted']} drafted, {counts['gap-checked']} gap-checked, "
+          f"{counts['reviewed']} reviewed, {counts['iterating']} iterating, "
+          f"{counts['gap-checked']} gap-checked, "
           f"{counts['not-started']} not-started"
-          + (f", {stale_count} stale" if stale_count else ""))
-    print("\nLegend: A=approved  S=synthesized  R=reviewed  M=model-setup  "
-          "D=drafted  G=gap-checked  -=not-started  *=stale downstream")
+          + (f", {stale_count} stale" if stale_count else "")
+          + ext_summary)
+    print("\nLegend: A=approved  S=synthesized  R=reviewed  I{N}=iterating(N iterations)  "
+          "G=gap-checked  -=not-started  *=stale downstream  E=extracted  E*=extraction stale")
 
 
 # ---------------------------------------------------------------------------
@@ -234,7 +273,7 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
 
     # Feedback-apply mode: separate path (not part of the loop)
     if feedback:
-        _apply_external_feedback(targets, args, feedback)
+        _apply_external_feedback(targets, args, feedback, concepts)
         return
 
     # Load templates once
@@ -251,7 +290,7 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
             print(f"  skip {cid} (analysis.md exists, use --force or --resume)")
             continue
 
-        common_vars = _build_common_vars(c)
+        common_vars = _build_common_vars(c, concepts)
         if common_vars is None:
             continue  # skip message already printed
 
@@ -264,7 +303,7 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
                         assessment_template=assessment_template)
 
 
-def _build_common_vars(concept: dict) -> dict | None:
+def _build_common_vars(concept: dict, concepts: list[dict] | None = None) -> dict | None:
     """Build common template variables for a concept. Returns None if dossier missing."""
     cid = concept["_id"]
     rid = concept["_research_id"]
@@ -284,6 +323,10 @@ def _build_common_vars(concept: dict) -> dict | None:
         cid, MEMORY_DIR, family=concept.get("Confinement Family", ""),
     )
 
+    landscape = ""
+    if concepts is not None:
+        landscape = build_concept_landscape(concepts, exclude_id=cid)
+
     return {
         "concept_id": cid,
         "concept_name": concept["Concept Name"],
@@ -298,11 +341,13 @@ def _build_common_vars(concept: dict) -> dict | None:
         "output_template_path": str(output_template_path),
         "analysis_path": str(analysis_path),
         "memory_context": memory_context,
+        "concept_landscape": landscape,
     }
 
 
 def _apply_external_feedback(
     targets: list[dict], args: argparse.Namespace, feedback: Path,
+    concepts: list[dict] | None = None,
 ) -> None:
     """Apply an external feedback file to existing analysis. Preserves old behavior."""
     analysis_template = (TEMPLATES_DIR / "analysis_v2.md").read_text(encoding="utf-8")
@@ -316,7 +361,7 @@ def _apply_external_feedback(
             print(f"  skip {cid} (no analysis.md — --feedback requires existing analysis)")
             continue
 
-        common_vars = _build_common_vars(c)
+        common_vars = _build_common_vars(c, concepts)
         if common_vars is None:
             continue
 
@@ -368,7 +413,6 @@ def cmd_model_setup(concepts: list[dict], args: argparse.Namespace) -> None:
         args.concepts, concepts,
         family=args.family,
         all_remaining=args.all_remaining,
-        target_state="model-setup",
     )
     if not targets:
         print("No concepts to model-setup.")

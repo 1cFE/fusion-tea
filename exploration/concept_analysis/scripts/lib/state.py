@@ -1,5 +1,6 @@
 """Concept state detection and staleness propagation."""
 
+import re
 from pathlib import Path
 
 from lib.frontmatter import parse_frontmatter, update_frontmatter_field
@@ -10,13 +11,13 @@ from lib.paths import ANALYSES_DIR
 def get_concept_state(concept_id: str, analyses_dir: Path = ANALYSES_DIR) -> str:
     """Check filesystem to determine concept state.
 
-    Returns: 'not-started' | 'gap-checked' | 'drafted' | 'model-setup' |
+    Returns: 'not-started' | 'gap-checked' | 'iterating' |
              'reviewed' | 'synthesized' | 'approved'
 
     Appends '*' suffix if downstream artifacts are stale.
 
     Detection order (highest to lowest):
-      approved → synthesized → reviewed → model-setup → drafted → gap-checked → not-started
+      approved → synthesized → reviewed → iterating → gap-checked → not-started
     """
     analysis_path = analyses_dir / concept_id / "analysis.md"
     gap_path = analyses_dir / concept_id / "gap_report.md"
@@ -32,10 +33,8 @@ def get_concept_state(concept_id: str, analyses_dir: Path = ANALYSES_DIR) -> str
             state = "synthesized"
         elif fm.get("Review-Status", "") in ("addressed", "clean", "proceed"):
             state = "reviewed"
-        elif model_path.exists():
-            state = "model-setup"
         else:
-            state = "drafted"
+            state = "iterating"
 
         # Check for staleness in downstream artifacts
         has_stale = False
@@ -91,6 +90,16 @@ def propagate_staleness(concept_id: str, reason: str,
                     path.write_text(text, encoding="utf-8")
                 stale_files.append(path.name)
 
+    # Mark explorer JSON as stale if it exists
+    explorer_dir = _default_explorer_data_dir()
+    num = _concept_num(concept_id)
+    explorer_json = explorer_dir / f"{num}.json"
+    if explorer_json.exists():
+        stale_marker = explorer_json.with_suffix(".json.stale")
+        if not stale_marker.exists():
+            stale_marker.write_text(reason, encoding="utf-8")
+        stale_files.append(f"explorer:{num}.json")
+
     return stale_files
 
 
@@ -120,3 +129,34 @@ def _has_downstream_artifacts(out_dir: Path) -> bool:
     """Check if downstream artifacts exist (for staleness on --force)."""
     return any((out_dir / f).exists()
                for f in ["model_setup.py", "review.md", "synthesis.md"])
+
+
+def _concept_num(concept_id: str) -> str:
+    """Extract numeric prefix: '07' from '07-maglif', '17a' from '17a-...'."""
+    m = re.match(r"^(\d+[a-z]?)", concept_id)
+    return m.group(1) if m else concept_id
+
+
+def _default_explorer_data_dir() -> Path:
+    """Default path to concept_explorer/data/ relative to ANALYSES_DIR."""
+    return ANALYSES_DIR.parent.parent / "concept_explorer" / "data"
+
+
+def get_extraction_state(
+    concept_id: str,
+    explorer_data_dir: Path | None = None,
+) -> str:
+    """Check extraction status for a concept.
+
+    Returns: 'not-extracted' | 'extracted' | 'stale'
+    """
+    if explorer_data_dir is None:
+        explorer_data_dir = _default_explorer_data_dir()
+    num = _concept_num(concept_id)
+    json_path = explorer_data_dir / f"{num}.json"
+    if not json_path.exists():
+        return "not-extracted"
+    stale_path = json_path.with_suffix(".json.stale")
+    if stale_path.exists():
+        return "stale"
+    return "extracted"

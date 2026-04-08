@@ -16,6 +16,15 @@ Read this file completely:
 
 {{@config/assessment_checklist.md}}
 
+{{#if concept_landscape}}
+## Concept Landscape
+
+Use this to verify nearest-neighbor selections. Check that named neighbors are
+structurally appropriate given the concept's taxonomy properties.
+
+{{concept_landscape}}
+{{/if}}
+
 ## Instructions
 
 1. Read the analysis completely

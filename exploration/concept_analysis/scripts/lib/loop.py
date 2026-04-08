@@ -207,7 +207,8 @@ def run_stage1_loop(
 
         # --- Assess step ---
         verdict, finding_count = _run_assess(
-            concept, iter_dir, analysis_path, assessment_template, args)
+            concept, iter_dir, analysis_path, assessment_template, args,
+            common_vars=common_vars)
 
         # --- Write verdict.json (FR-3, FR-19) ---
         write_verdict(iter_dir, iteration=iter_num, verdict=verdict,
@@ -577,6 +578,7 @@ def _run_assess(
     analysis_path: Path,
     template: str,
     args: argparse.Namespace,
+    common_vars: dict | None = None,
 ) -> tuple[str, int]:
     """Run the assessment step. Returns (verdict, finding_count).
 
@@ -587,12 +589,15 @@ def _run_assess(
     feedback_path = iter_dir / "feedback.md"
 
     model_output = iter_dir / "model_output.txt"
-    assess_prompt = fill_template(template, {
+    assess_vars = {
         "concept_name": concept["Concept Name"],
         "analysis_path": str(analysis_path),
         "feedback_path": str(feedback_path),
         "model_output_path": str(model_output) if model_output.exists() else "",
-    })
+    }
+    if common_vars and "concept_landscape" in common_vars:
+        assess_vars["concept_landscape"] = common_vars["concept_landscape"]
+    assess_prompt = fill_template(template, assess_vars)
 
     (iter_dir / "assess_prompt.md").write_text(assess_prompt, encoding="utf-8")
 
