@@ -1,260 +1,266 @@
-# STALE: analysis-updated-iter-2
-"""Large-Scale Stellarator (Gauss Fusion GIGA) — 1costingfe LCOE model.
+# STALE: analysis-updated-iter-3
+"""Large-Scale Stellarator (Gauss Fusion GIGA) — LCOE estimate.
 
-Modeling approach
------------------
-GIGA is a quasi-isodynamic (QI) D-T stellarator derived from the HELIAS HSR4/18
-reactor study (4 field periods, 18 m major radius, 1 GWe net output). The concept
-has rich scientific heritage but no public CDR cost data; this model therefore:
+Modeling approach:
+    FOAK-anchored free-form model. The only public cost reference for GIGA is a
+    single FOAK figure (€15–18B); no CAS account breakdown or NOAK projection is
+    published. The model therefore tests the FOAK-to-NOAK learning hypothesis,
+    parameterized as noak_fraction (NOAK overnight cost as a fraction of FOAK),
+    rather than validating a bottom-up cost build. The noak_fraction sweep is the
+    primary modeling contribution. The central LCOE (~$186/MWh at 55% NOAK
+    fraction) reflects this learning hypothesis applied to the FOAK midpoint.
 
-  1. Anchors the overnight cost to the disclosed FOAK range (€15–18B ≈ $16–20B at
-     ~1.1 $/€), expressed as a cost_override on CAS22.
-  2. Treats NOAK learning as the primary sensitivity parameter (`noak_fraction`,
-     0.40–0.70), which is described in the analysis as "the single most important
-     modeling gap" (Section 2, Challenge #1).
-  3. Uses the Helios/Thea Energy capacity factor (88%) as an engineering-grounded
-     analog anchor (Section 2, Challenge #6; Section 5 table).
-  4. Sets thermal efficiency from the HELIAS reference (35% gross, ~33% net after
-     recirculating power), consistent with the HCPB/steam Rankine path (Section 5).
+Concept rationale:
+    GIGA is a quasi-isodynamic (QI) non-planar-coil stellarator at 18 m major
+    radius, derived from the HELIAS HSR4/18 reactor study (IPP Garching heritage).
+    Key TEA differentiators vs. a conventional tokamak: inherent steady-state
+    operation (~88% capacity factor), no current drive (ECRH only for startup/
+    profile control), no disruption risk. Key penalties: 3× larger machine radius
+    than ITER, 80+ unique blanket segment shapes (3D geometry), complex non-planar
+    coil manufacturing at scale with no precedent above W7-X (5.5 m).
 
-Key deviations from framework defaults
----------------------------------------
-- R0: 18 m (vs. default 5.5 m) — GIGA geometry; gauss-fusion-technical-summary.md
-- plasma_t: 1.7 m minor radius — gauss-fusion-technical-summary.md
-- plasma_volume: 1500 m³ — gauss-fusion-technical-summary.md
-- eta_th: 0.35 (gross) → 0.333 net-implied; using 0.35 as gross conversion
-- availability: 0.88 (Helios analog anchor); sensitivity sweep covers 0.75–0.90
-- CAS22 override: NOAK-adjusted overnight cost derived from FOAK disclosure
-- p_input: 75 MW ECRH (startup/profile control only; no current drive needed)
-- noak=True with explicit NOAK fraction applied to CAS22
+Key deviations from stellarator defaults (mfe_stellarator.yaml):
+    - R0 = 18.0 m (vs. default 5.5 m — GIGA design point from HSR4/18 heritage)
+    - plasma_t = 1.7 m (vs. default 1.8 m — stated GIGA minor radius)
+    - plasma_volume = 1500.0 m³ (vs. default 800 m³ — stated GIGA plasma volume)
+    - B = 6.0 T (vs. default 5.0 T — stated on-axis field; peak coil 12–13 T)
+    - p_cryo = 90.0 MW (vs. default 0.8 MW — WISTELL-D analog scaling;
+      UNCERTAIN: represents ~3% of fusion power as lower bound for GIGA scale)
+    - p_input = 75.0 MW (vs. default 30.0 MW — ECRH for profile control only;
+      no current drive required; UNCERTAIN: range 50–100 MW)
+    - eta_th = 0.35 (vs. default 0.46 — HCPB/steam Rankine; UNCERTAIN pending
+      blanket type disclosure; DCLL option would yield ~0.40)
+    - construction_time_yr = 10.0 (vs. default 8.0 — 18 m scale penalty)
+    - CAS22 overridden from FOAK reference × noak_fraction (see below)
+    - CAS27 overridden to 200.0 M$ for HCPB beryllium neutron multiplier
+
+Addressing assessment feedback F-2 (blanket geometry complexity):
+    The 3D blanket segment diversity (80+ unique shapes vs. ~2 for a tokamak)
+    is GIGA's most distinctive cost-penalty differentiator. A
+    blanket_complexity_multiplier parameter is introduced and swept over 1.0–2.5×,
+    applied to the blanket/VV sub-component of CAS22. This makes the fabrication
+    cost risk visible in the output rather than hidden in the aggregate noak_fraction.
 
 Usage:
     uv run python model_setup.py              # print results to terminal
     uv run python model_setup.py | tee model_output.txt  # also save for synthesis stage
 """
 
-import sys
-
 from costingfe import ConfinementConcept, CostModel, Fuel
 
-# ── Model instantiation ──────────────────────────────────────────────────────
-model = CostModel(concept=ConfinementConcept.STELLARATOR, fuel=Fuel.DT)
+# ── FOAK-to-NOAK cost anchor ────────────────────────────────────────────────
+#
+# GIGA FOAK: €15–18B (midpoint €16.5B, analysis.md §Section 2 Challenge 1)
+# Source: gauss-fusion-technical-summary.md §Funding
+# "The GIGA fusion plant has an estimated cost of €15–18 billion for its
+#  first-of-a-kind commercial reactor."
+#
+# Currency conversion: 1.10 USD/EUR (approximate; UNCERTAIN)
+FOAK_COST_EUR_B = 16.5        # €B midpoint of stated €15–18B range
+EUR_TO_USD = 1.10             # UNCERTAIN: exchange rate assumption
+FOAK_OVERNIGHT_USD_M = FOAK_COST_EUR_B * EUR_TO_USD * 1e3  # M$ (= $18,150 M)
 
-# ── Plant configuration constants ────────────────────────────────────────────
-
-# FOAK specific capital cost: €15,000–18,000/kWe × 1.10 $/€ → ~$16,500–19,800/kWe
-# Midpoint: ~$18,150/kWe for 1 GWe = $18,150M overnight (FOAK)
-# Source: gauss-fusion-technical-summary.md §Funding; analysis.md §Section 5 table
-FOAK_OVERNIGHT_M_USD = 18_150.0   # M$ (FOAK midpoint: $18.15B)
-
-# NOAK fraction: NOAK as a fraction of FOAK.
-# Analysis Section 2, Challenge #1: "NOAK may be 40–60% of FOAK"
-# Central estimate: 55% (midpoint of disclosed uncertainty range)
-# Sensitivity sweep below covers 0.40–0.70.
+# NOAK fraction (H1 — the primary modeling lever)
+# Analysis §Key Hypotheses H1: "If NOAK capital cost reaches 50–60% of FOAK,
+# LCOE falls below ~$100/MWh." Range 0.40–0.70; central 0.55.
+# Source: analysis.md §Modeling Framework, §Key Hypotheses H1
 NOAK_FRACTION_CENTRAL = 0.55
 
-# Derived NOAK overnight cost at central estimate
-NOAK_OVERNIGHT_M_USD = FOAK_OVERNIGHT_M_USD * NOAK_FRACTION_CENTRAL   # ~$9,982M
+# CAS22 allocation fraction: 65% of overnight cost is a common fusion reference
+# (no CAS-level breakdown published for GIGA). Assumption only.
+CAS22_FRAC_OF_OVERNIGHT = 0.65  # UNCERTAIN: assumed allocation
 
-# CAS22 override: framework CAS22 covers reactor plant equipment.
-# We allocate ~65% of overnight to CAS22 (analogous to tokamak cost structure),
-# with the remainder distributed across other CAS accounts via framework defaults.
-# UNCERTAIN: CAS22 fraction — no GIGA-specific cost breakdown published (CDR not public)
-CAS22_FRACTION = 0.65   # fraction of overnight cost allocated to CAS22
-CAS22_NOAK_M_USD = NOAK_OVERNIGHT_M_USD * CAS22_FRACTION   # ~$6,489M
+# CAS22 sub-allocation (assumption — no sub-account data exists for GIGA):
+#   40% coil system (C220103) — dominant cost for 40 × 300-tonne non-planar coils
+#   40% blanket/VV (C220101 + C220106) — 3D HELIAS geometry, 640 unique segments
+#   20% other (heating, structure, power supplies, remote handling, I&C, etc.)
+CAS22_COIL_FRAC = 0.40         # UNCERTAIN
+CAS22_BLANKET_FRAC = 0.40      # UNCERTAIN — the focus of blanket complexity analysis
+CAS22_OTHER_FRAC = 0.20        # UNCERTAIN
 
-# Remote handling premium: GIGA blanket has 80 segment shapes (vs ~2 for tokamak).
-# Analysis Section 2, Challenge #3: 3D segment diversity raises fabrication and RH cost.
-# DEFAULT: framework remote_handling_dt_base = 150 M$ at 1 GWe; apply 1.5× multiplier
-# UNCERTAIN: No published GIGA RH cost estimate; factor-of-1.5 is engineering judgment.
-RH_OVERRIDE_M_USD = 225.0   # M$ (150 × 1.5× for 3D blanket geometry complexity)
+# Blanket complexity multiplier (F-2 assessment finding)
+# The 3D blanket segment diversity (80+ unique shapes vs. ~2 for tokamak) is rated
+# "High" TEA impact with no analogue in tokamak cost literature.
+# Source: analysis.md §Section 2 Challenge 3; §Section 5 Missing Parameters
+# Range: 1.0 (no premium, tokamak-equivalent fabrication) to 2.5 (extreme penalty)
+# Central: 1.5 (moderate premium for 40× segment diversity vs. tokamak)
+BLANKET_COMPLEXITY_MULTIPLIER_CENTRAL = 1.5  # UNCERTAIN: truly-unknown gap
 
-# Special materials: HCPB option uses beryllium pebble beds (~tens of tonnes).
-# costing_constants.yaml note: "For HCPB concepts with beryllium neutron multiplier,
-# override CAS27 to ~$200M."
-# Analysis Section 4: HCPB uses Be neutron multiplier; DCLL does not.
-# Using HCPB as reference path (He coolant at 445–485°C matches steam Rankine cycle).
-CAS27_OVERRIDE_M_USD = 200.0   # M$ (HCPB path with Be multiplier)
 
-# ── Forward model ────────────────────────────────────────────────────────────
+def compute_cas22_override(noak_fraction: float, blanket_complexity_multiplier: float) -> float:
+    """Compute CAS22 override (M$) from FOAK reference + learning + complexity.
+
+    Splits NOAK CAS22 into coil / blanket / other sub-components, then applies
+    blanket_complexity_multiplier to the blanket/VV sub-component before summing.
+    This makes GIGA's most distinctive cost-penalty differentiator explicit.
+    """
+    noak_overnight = FOAK_OVERNIGHT_USD_M * noak_fraction
+    base_cas22 = noak_overnight * CAS22_FRAC_OF_OVERNIGHT
+
+    coil_m = base_cas22 * CAS22_COIL_FRAC
+    blanket_m = base_cas22 * CAS22_BLANKET_FRAC
+    other_m = base_cas22 * CAS22_OTHER_FRAC
+
+    adjusted_blanket_m = blanket_m * blanket_complexity_multiplier
+    return coil_m + adjusted_blanket_m + other_m
+
+
+# ── Plant configuration constants ───────────────────────────────────────────
+
+NET_ELECTRIC_MW = 1000.0        # Net electrical output [MWe]
+                                # Source: gauss-fusion-technical-summary.md §GIGA Power Plant
+                                # "1 GWe design target"
+
+AVAILABILITY = 0.88             # Capacity factor [fraction]
+                                # Analog: Helios/Thea Energy QA stellarator (88%)
+                                # based on biennial 84-day outage.
+                                # Source: arxiv-2512-08027v1.md §2 Summary of the design
+                                # UNCERTAIN for GIGA: GIGA's 3D blanket may push lower.
+                                # Model range 0.85–0.90.
+
+LIFETIME_YR = 40.0              # Plant lifetime [yr]
+                                # Source: gauss-fusion-technical-summary.md §GIGA Power Plant
+                                # "Magnet and vacuum vessel design life: 40 years"
+
+CONSTRUCTION_TIME_YR = 10.0     # Construction time [yr]
+                                # UNCERTAIN: no GIGA estimate published.
+                                # Basis: 18 m machine is 3× ITER scale; ITER construction
+                                # has taken ~20 yr; serial-production GIGA assumed faster
+                                # but still more complex than compact concepts (default 8 yr).
+                                # Analysis §Section 2 Challenge 4 (scale extrapolation).
+
+INTEREST_RATE = 0.07            # Discount / interest rate [fraction]
+INFLATION_RATE = 0.0245         # Inflation rate [fraction]
+
+# ── Model creation ──────────────────────────────────────────────────────────
+
+model = CostModel(concept=ConfinementConcept.STELLARATOR, fuel=Fuel.DT)
+
+# ── Compute central CAS22 override ──────────────────────────────────────────
+
+cas22_central = compute_cas22_override(
+    NOAK_FRACTION_CENTRAL, BLANKET_COMPLEXITY_MULTIPLIER_CENTRAL
+)
+
+# ── model.forward() ─────────────────────────────────────────────────────────
+
 result = model.forward(
-    # ── Customer requirements ──────────────────────────────────────────────
-    net_electric_mw=1000.0,
-    # Source: gauss-fusion-technical-summary.md §GIGA Power Plant (stated design target)
-
-    availability=0.88,
-    # Helios/Thea Energy QA stellarator: 88% from ~84-day biennial outage
-    # Source: arxiv-2512-08027v1.md §2 Summary of the design
-    # Note: Helios is QA/planar at 8 m; GIGA is QI/non-planar at 18 m.
-    # GIGA's 3D blanket may push outage duration higher (Section 2, Challenge #6).
-    # 88% used as upper anchor; sensitivity sweep covers 0.75–0.90.
-
-    lifetime_yr=40,
-    # Source: gauss-fusion-technical-summary.md §GIGA Power Plant
-    # "Magnet and vacuum vessel life: 40 years"
-
+    net_electric_mw=NET_ELECTRIC_MW,
+    availability=AVAILABILITY,
+    lifetime_yr=LIFETIME_YR,
     n_mod=1,
-    # Single-module FOAK/NOAK plant; no fleet aggregation at this stage
+    construction_time_yr=CONSTRUCTION_TIME_YR,
+    interest_rate=INTEREST_RATE,
+    inflation_rate=INFLATION_RATE,
+    noak=True,  # NOAK scenario; noak_fraction baked into CAS22 override above
 
-    construction_time_yr=10.0,
-    # UNCERTAIN: No published schedule for GIGA.
-    # Basis: ITER ~15 years (complex first-of-kind); W7-X ~9 years (complex SC stellarator).
-    # GIGA is more complex than W7-X but has benefit of established HELIAS design heritage.
-    # 10 years is a conservative NOAK estimate; FOAK likely 12–15 years.
+    # ── Geometry (GIGA stated parameters) ──────────────────────────────────
+    R0=18.0,                # Major radius [m]
+                            # Source: gauss-fusion-technical-summary.md §GIGA Power Plant
+                            # "HSR4/18 heritage (4 field periods, R = 18 m)"
+    plasma_t=1.7,           # Minor radius [m]
+                            # Source: gauss-fusion-technical-summary.md §GIGA Power Plant
+    elon=1.0,               # Elongation (near-circular stellarator cross-section)
+                            # DEFAULT: standard stellarator approximation
+    blanket_t=0.60,         # Blanket thickness [m]; DEFAULT: mfe_stellarator.yaml
+    ht_shield_t=0.20,       # HT shield thickness [m]; DEFAULT
+    structure_t=0.15,       # Structure thickness [m]; DEFAULT
+    vessel_t=0.10,          # Vacuum vessel thickness [m]; DEFAULT
 
-    interest_rate=0.07,
-    # DEFAULT: 7% real weighted cost of capital (framework default for FOAK fusion projects)
-
-    inflation_rate=0.0245,
-    # DEFAULT: 2.45% (framework default)
-
-    noak=True,
-    # Modeling NOAK state: fleet learning applied; FOAK contingency (10%) not included.
-    # NOAK fraction vs. FOAK cost is the primary sensitivity parameter — see sweep below.
-
-    # ── GIGA plasma geometry ───────────────────────────────────────────────
-    R0=18.0,
-    # Source: gauss-fusion-technical-summary.md §GIGA Power Plant
-    # "HSR4/18 heritage (4 field periods, R=18m)"
-
-    plasma_t=1.7,
-    # Minor radius; Source: gauss-fusion-technical-summary.md §GIGA Power Plant
-
-    elon=1.0,
-    # Near-circular (stellarator); DEFAULT from mfe_stellarator.yaml
-
-    blanket_t=0.60,
-    # DEFAULT: mfe_stellarator.yaml
-    # UNCERTAIN: No GIGA-specific blanket thickness published.
-    # HELIAS HCPB design has ~0.55 m radial depth (helias-blanket-studies.md §3);
-    # 0.60 m rounds up to account for 3D geometry integration depth.
-
-    ht_shield_t=0.20,
-    # DEFAULT: mfe_stellarator.yaml
-
-    structure_t=0.15,
-    # DEFAULT: mfe_stellarator.yaml
-
-    vessel_t=0.10,
-    # DEFAULT: mfe_stellarator.yaml
-
-    # ── Plasma volume (explicit override) ──────────────────────────────────
-    plasma_volume=1500.0,
-    # Source: gauss-fusion-technical-summary.md §GIGA Power Plant
+    # ── Plasma parameters ──────────────────────────────────────────────────
+    plasma_volume=1500.0,   # Plasma volume [m³]
+                            # Source: gauss-fusion-technical-summary.md §GIGA Power Plant
+    B=6.0,                  # On-axis magnetic field [T]
+                            # Source: dossier.md §Driver Technology
+                            # Peak coil field: 12–13 T (requires Nb3Sn or REBCO)
+    n_e=1.0e20,             # Electron density [m⁻³]; DEFAULT
+    T_e=12.0,               # Electron temperature [keV]; DEFAULT
+    Z_eff=1.3,              # Effective charge; DEFAULT stellarator (W7-X heritage)
+    R_w=0.6,                # Wall reflectivity for synchrotron; DEFAULT (metallic W)
+    wall_material="W",      # Tungsten first wall
+                            # Source: helias-blanket-studies.md §3.2 "2 mm W armor"
+    T_edge=0.05,            # Edge ion temperature [keV] (50 eV island divertor)
+    tau_ratio=3.0,          # Impurity confinement / energy confinement time; DEFAULT
 
     # ── Power balance ──────────────────────────────────────────────────────
-    p_input=75.0,
-    # ECRH heating power (startup + profile control only; no current drive required).
-    # UNCERTAIN: Gauss has not published ECRH specification.
-    # Basis: analysis.md §Section 2, Challenge #6: "ECRH likely ~50–100 MW" at burning
-    # plasma conditions. 75 MW is midpoint. Stellarator needs no NBI/ECRH for current
-    # sustainment — this is purely auxiliary (profile control, impurity management).
+    p_input=75.0,           # ECRH heating power [MW]
+                            # UNCERTAIN: analysis.md §Section 5 Missing Parameters
+                            # "ECRH startup/profile power: ~50–100 MW range, unstated"
+                            # No current drive needed — rotational transform is geometric.
+                            # Source: analysis.md §Section 2 Challenge 6 (ECRH section)
+    mn=1.1,                 # Neutron energy multiplier; DEFAULT for DT blanket
+    eta_th=0.35,            # Gross thermal conversion efficiency [fraction]
+                            # UNCERTAIN: analysis.md §Section 2 Challenge 2
+                            # HCPB/steam Rankine ~35%; DCLL/advanced Brayton ~40%+
+                            # Source: helias-reactor-context.md §7 "~35% standard"
+                            # Net 33.3% (1 GWe / 3 GWth) consistent with 35% gross
+                            # minus ~5–7% recirculating power total.
+    eta_p=0.50,             # Pumping efficiency; DEFAULT
+    eta_pin=0.50,           # ECRH wall-plug efficiency [fraction]
+                            # Source: analysis.md §Section 3 ECRH Heating Systems
+                            # "current wall-plug efficiency ~50–55%"
+    eta_de=0.0,             # Direct energy conversion efficiency; not applicable
+                            # (stellarators do not use DEC)
+    f_sub=0.03,             # Subsystem power fraction; DEFAULT
+    f_dec=0.0,              # DEC fraction; not applicable
+    p_coils=3.0,            # Coil system auxiliary power [MW]; DEFAULT stellarator
+                            # Joint ohmic loss: ~1 nΩ × (100 kA)² × 10,000 joints
+                            # = 100 W total — negligible; dominant term is coil
+                            # control/protection electronics.
+                            # Source: gauss-fusion-technical-summary.md §Magnet System
+    p_cool=15.0,            # Coolant pumping power [MW]
+                            # Source: helias-blanket-studies.md §Table 5
+                            # He coolant at 8.0 MPa / 445–485°C; DEFAULT
+    p_pump=1.0,             # Other pumping power [MW]; DEFAULT
+    p_trit=10.0,            # Tritium processing power [MW]; DEFAULT DT
+    p_house=4.0,            # Housekeeping power [MW]; DEFAULT
+    p_cryo=90.0,            # Cryogenic system power [MW]
+                            # UNCERTAIN: analysis.md §Section 2 "Cryogenic Parasitic
+                            # Power Load" and §Section 5 Missing Parameters
+                            # WISTELL-D analog (10.1 m QI, 2113 MWth): 152 kW magnet
+                            # nuclear heating → 63.3 MWe cryogenic load (~3% of fusion
+                            # power). GIGA at 18 m / 3000 MWth: lower bound ~3% ×
+                            # 3000 MWth / thermal-to-electric = ~90 MWe (conservative).
+                            # Source: frontiersin-journals-nuclear-engineering-articles-
+                            # 10-3389.md §Discussion; analysis.md §Section 5
 
-    mn=1.1,
-    # DEFAULT: mfe_stellarator.yaml (neutron energy multiplier)
-
-    eta_th=0.35,
-    # Gross thermal conversion efficiency — HCPB/steam Rankine path.
-    # Source: helias-reactor-context.md §7: "~35% standard; >40% TAURO advanced"
-    # Note: Net implied by 1 GWe / 3 GWth = 33.3%, consistent with 35% gross minus
-    # ~5–7% recirculating power. If DCLL/sCO2 path chosen, eta_th → 0.40–0.42.
-    # Analysis Section 2, Challenge #2 (blanket type uncertainty): HCPB is reference.
-
-    eta_p=0.5,
-    # DEFAULT: mfe_stellarator.yaml (pumping system efficiency)
-
-    eta_pin=0.5,
-    # DEFAULT: mfe_stellarator.yaml (ECRH wall-plug efficiency ~50–55%)
-    # Source: analysis.md §Section 3, ECRH: "current wall-plug efficiency ~50–55%"
-
-    eta_de=0.85,
-    # DEFAULT: mfe_stellarator.yaml (direct energy conversion efficiency — not applicable
-    # to D-T; value is placeholder consistent with framework)
-
-    f_sub=0.03,
-    # DEFAULT: mfe_stellarator.yaml (subsystem power fraction)
-
-    f_dec=0.0,
-    # No direct energy conversion for D-T stellarator
-
-    p_coils=5.0,
-    # Demountable joint ohmic dissipation + cryogenic load (coil power).
-    # Basis: ~10,000 joints at ~1 nΩ × (100 kA)² = ~10 kW per joint → ~100 MW total
-    # joint loss... but this is NOT the p_coils parameter (which is LV power to coil
-    # infrastructure). Cryogenic load for LTS (~4K) dominates.
-    # UNCERTAIN: Gauss has not published coil power budget.
-    # Using 5 MW as estimate (slightly above mfe_stellarator.yaml default of 3 MW) to
-    # account for higher cryogenic load from 40 large LTS coils vs. typical stellarator.
-    # Source: analysis.md §Section 2, Challenge #5 (LTS vs. HTS cryogenic load)
-
-    p_cool=20.0,
-    # He coolant pumping power for HCPB at 8 MPa operating pressure.
-    # UNCERTAIN: No published figure. Above default (15 MW) because GIGA's larger
-    # blanket volume (1,500 m³ plasma volume, ~2,000 m² first wall area) implies
-    # proportionally higher He coolant flow. Scaling from HELIAS reactor context.
-    # Source: helias-blanket-studies.md §Table 5 (He coolant at 8 MPa / 445–485°C)
-
-    p_pump=1.0,
-    # DEFAULT: mfe_stellarator.yaml
-
-    p_trit=10.0,
-    # DEFAULT: mfe_stellarator.yaml (tritium processing power)
-    # Note: GIGA requires ~55 kg/year throughput (analysis.md §Section 3, Tritium Fuel Cycle)
-    # — consistent with ITER-class tritium system power draw.
-
-    p_house=4.0,
-    # DEFAULT: mfe_stellarator.yaml
-
-    p_cryo=2.5,
-    # Cryogenic system power for 40 LTS coils at 4 K (LTS track assumed for this model).
-    # UNCERTAIN: No published cryogenic budget. Scaled above default (0.8 MW) to reflect
-    # GIGA's 40-coil superconducting system at 18 m scale vs. smaller reference designs.
-    # Source: analysis.md §Section 2, Challenge #5 (LTS cryogenic requirements)
-
-    # ── Magnetic field ────────────────────────────────────────────────────
-    B=6.0,
-    # On-axis magnetic field.
-    # Source: dossier.md §Driver Technology (explicitly stated)
-
-    # ── Cost overrides ────────────────────────────────────────────────────
+    # ── Cost overrides ─────────────────────────────────────────────────────
     cost_overrides={
-        "CAS22": CAS22_NOAK_M_USD,
-        # CAS22 (Reactor Plant Equipment): NOAK-adjusted overnight cost component.
-        # Derivation: FOAK midpoint $18,150M × NOAK fraction 0.55 × CAS22 fraction 0.65
-        # = ~$6,489M. This is the dominant cost account and the primary source of
-        # LCOE uncertainty (analysis.md §Section 2, Challenge #1).
-        # Source: gauss-fusion-technical-summary.md §Funding (FOAK base)
+        "CAS22": cas22_central,
+        # CAS22 = $7,788 M at central assumptions (noak_fraction=0.55,
+        # blanket_complexity_multiplier=1.5, cas22_frac=65% of overnight).
+        # Derivation:
+        #   FOAK: €16.5B × 1.10 = $18.15B overnight
+        #   NOAK (55% of FOAK): $9.98B
+        #   CAS22 (65% of NOAK): $6.49B base
+        #   Blanket/VV sub-component (40% of base): $2,596M × 1.5 = $3,894M
+        #   Coil sub-component (40% of base): $2,596M
+        #   Other (20% of base): $1,298M
+        #   Total CAS22 with blanket complexity: $7,788M
+        # Source: gauss-fusion-technical-summary.md §Funding; analysis.md §S2 Ch.1, §S5
 
-        "C220110": RH_OVERRIDE_M_USD,
-        # CAS22 sub-account C220110 (Remote Handling & Maintenance Equipment):
-        # 1.5× premium on framework DT base ($150M) for 3D blanket geometry with
-        # 80 unique segment shapes per sector, complex 3D RH tooling requirement.
-        # Source: analysis.md §Section 2, Challenge #3 (blanket geometry complexity)
-        # UNCERTAIN: No published GIGA remote handling cost estimate.
-        # Note: When C220110 is set alongside CAS22, the CAS22 override takes precedence
-        # for the total; C220110 is recorded for sub-account breakdown transparency.
-
-        "CAS27": CAS27_OVERRIDE_M_USD,
-        # Special materials (HCPB path): Be neutron multiplier.
-        # Source: costing_constants.yaml note: "For HCPB concepts with beryllium
-        # neutron multiplier, override CAS27 to ~$200M."
-        # Source: helias-blanket-studies.md §3.2 (Be pebble bed multiplier)
+        "CAS27": 200.0,
+        # HCPB blanket option: beryllium pebble beds as neutron multiplier
+        # (~40 mm Be layer per blanket ring; costing_constants.yaml note:
+        # "For HCPB concepts with beryllium neutron multiplier, override to ~$200M")
+        # UNCERTAIN: blanket type (HCPB vs. DCLL) is proprietary and blocking.
+        # If DCLL chosen, CAS27 reverts to framework default (~$15M for PbLi fill).
+        # Source: helias-blanket-studies.md §3.2; analysis.md §Section 2 Challenge 2
     },
 )
 
-# ── Results output ───────────────────────────────────────────────────────────
+# ── Print results ────────────────────────────────────────────────────────────
+
 c = result.costs
 pt = result.power_table
 
-print("Large-Scale Stellarator (Gauss Fusion GIGA) — 1 GWe, 88% availability, 40 yr")
-print(f"NOAK fraction applied: {NOAK_FRACTION_CENTRAL:.0%} of FOAK (central estimate)")
-print(f"FOAK overnight: ${FOAK_OVERNIGHT_M_USD/1000:.1f}B | NOAK overnight: ${NOAK_OVERNIGHT_M_USD/1000:.1f}B")
-print()
+print("Large-Scale Stellarator (Gauss Fusion GIGA) — 1 GWe, 88% CF, 40 yr")
 print(f"LCOE: {c.lcoe:.1f} $/MWh | Overnight: {c.overnight_cost:.0f} $/kW")
-print(f"Fusion: {pt.p_fus:.0f} MW | Net: {pt.p_net:.0f} MW | Q_eng: {pt.q_eng:.1f}")
+print(f"Fusion: {pt.p_fus:.0f} MW | Net: {pt.p_net:.0f} MW | Q_eng: {pt.q_eng:.2f}")
 print()
 
 # ── CAS breakdown ────────────────────────────────────────────────────────────
+
 cas = [
     ("CAS10", "Preconstruction",           c.cas10),
     ("CAS21", "Buildings",                 c.cas21),
@@ -275,67 +281,66 @@ cas = [
     ("CAS90", "Financial",                 c.cas90),
 ]
 
-print(f"{'Code':<8} {'Account':<28} {'M$':>10}")
-print("-" * 48)
+print(f"{'Code':<8} {'Account':<30} {'M$':>10}")
+print("-" * 50)
 for code, name, val in cas:
-    print(f"{code:<8} {name:<28} {float(val):>10.1f}")
-print("-" * 48)
-print(f"{'':8} {'Total Capital':<28} {float(c.total_capital):>10.1f}")
+    print(f"{code:<8} {name:<30} {float(val):>10.1f}")
+print("-" * 50)
+print(f"{'':8} {'Total Capital':<30} {float(c.total_capital):>10.1f}")
 
-# ── CAS22 detail ─────────────────────────────────────────────────────────────
+# ── CAS22 sub-account detail (computed assumptions, not framework sub-accounts) ──
+
+noak_overnight_central = FOAK_OVERNIGHT_USD_M * NOAK_FRACTION_CENTRAL
+base_cas22_central = noak_overnight_central * CAS22_FRAC_OF_OVERNIGHT
+coil_sub = base_cas22_central * CAS22_COIL_FRAC
+blanket_sub_base = base_cas22_central * CAS22_BLANKET_FRAC
+other_sub = base_cas22_central * CAS22_OTHER_FRAC
+blanket_sub_adj = blanket_sub_base * BLANKET_COMPLEXITY_MULTIPLIER_CENTRAL
+
 print()
-print("CAS22 sub-account detail (Reactor Plant Equipment):")
-print("-" * 48)
-try:
-    cas22_detail = [
-        ("CAS2201", "First Wall + Blanket",    c.cas2201),
-        ("CAS2202", "Shield",                  c.cas2202),
-        ("CAS2203", "Magnets",                 c.cas2203),
-        ("CAS2204", "Vacuum Vessel",           c.cas2204),
-        ("CAS2205", "Power Supplies",          c.cas2205),
-        ("CAS2206", "Divertor",               c.cas2206),
-        ("CAS2207", "Direct Energy Conv.",     c.cas2207),
-        ("CAS2208", "Heating & CD",            c.cas2208),
-        ("CAS2209", "Fuel Handling",           c.cas2209),
-        ("CAS2210", "Remote Handling",         c.cas2210),
-        ("CAS2211", "Installation",            c.cas2211),
-    ]
-    for code, name, val in cas22_detail:
-        print(f"  {code:<10} {name:<26} {float(val):>10.1f}")
-except AttributeError:
-    print("  (CAS22 sub-accounts not available in this framework version)")
+print("CAS22 Sub-allocation (assumed; no published CAS breakdown for GIGA):")
+print(f"  {'Coil system (C220103)':<35} {coil_sub:>10.1f} M$  (40% of base CAS22)")
+print(f"  {'Blanket/VV (C220101+C220106) base':<35} {blanket_sub_base:>10.1f} M$  (40% of base)")
+print(f"  {'Blanket complexity ×{:.1f} penalty'.format(BLANKET_COMPLEXITY_MULTIPLIER_CENTRAL):<35} {blanket_sub_adj - blanket_sub_base:>10.1f} M$  (added cost from 3D geometry)")
+print(f"  {'Blanket/VV adjusted':<35} {blanket_sub_adj:>10.1f} M$")
+print(f"  {'Other sub-accounts':<35} {other_sub:>10.1f} M$  (20% of base)")
+print(f"  {'CAS22 total (overridden)':<35} {float(c.cas22):>10.1f} M$")
 
-# ── Key assumptions summary ──────────────────────────────────────────────────
+# ── Key assumptions ──────────────────────────────────────────────────────────
+
 print()
 print("=" * 60)
-print("KEY ASSUMPTIONS")
+print("Key Assumptions")
 print("=" * 60)
-print(f"  FOAK overnight cost:     ${FOAK_OVERNIGHT_M_USD/1000:.2f}B")
-print(f"    Source: gauss-fusion-technical-summary.md §Funding")
-print(f"    (€15–18B at ~1.10 $/€ → midpoint ~$18.15B)")
-print(f"  NOAK fraction (central): {NOAK_FRACTION_CENTRAL:.0%} of FOAK")
-print(f"    Source: analysis.md §Section 2, Challenge #1")
-print(f"    Range: 40–70% (sensitivity sweep below)")
-print(f"  Capacity factor:         88% (Helios/Thea Energy analog)")
-print(f"    Source: arxiv-2512-08027v1.md §2 (84-day biennial outage)")
-print(f"    Note: GIGA-specific target undisclosed; 85–90% model range")
-print(f"  Thermal efficiency:      35% (HCPB/steam Rankine)")
-print(f"    Source: helias-reactor-context.md §7")
-print(f"    Alt: 40%+ if DCLL/sCO2 path chosen")
-print(f"  Construction time:       10 yr (NOAK estimate)")
-print(f"    UNCERTAIN: No Gauss-published schedule")
-print(f"  CAS22 allocation:        {CAS22_FRACTION:.0%} of NOAK overnight")
-print(f"    UNCERTAIN: No CAS breakdown in public CDR")
-print(f"  Blanket type:            HCPB assumed (He coolant, steam Rankine)")
-print(f"    UNCERTAIN: Gauss internal decision, not disclosed")
+print(f"  FOAK capital:            €{FOAK_COST_EUR_B:.1f}B (midpoint of €15–18B stated range)")
+print(f"  EUR/USD:                 {EUR_TO_USD:.2f} (assumed)")
+print(f"  NOAK fraction (central): {NOAK_FRACTION_CENTRAL:.0%} of FOAK overnight")
+print(f"  NOAK overnight (central): ${noak_overnight_central/1e3:.2f}B = ${noak_overnight_central/NET_ELECTRIC_MW:.0f}/kWe")
+print(f"  CAS22 / overnight:       {CAS22_FRAC_OF_OVERNIGHT:.0%} (assumed allocation)")
+print(f"  Blanket complexity mult: {BLANKET_COMPLEXITY_MULTIPLIER_CENTRAL:.1f}× (central; range 1.0–2.5)")
+print(f"  eta_th (gross):          35.0%  [UNCERTAIN: HCPB assumption; DCLL ~40%]")
+print(f"  p_cryo:                  90 MW  [UNCERTAIN: WISTELL-D analog lower bound]")
+print(f"  p_input (ECRH):          75 MW  [UNCERTAIN: profile control only]")
+print(f"  Availability:            {AVAILABILITY:.0%}    [Helios analog; GIGA-specific undisclosed]")
+print(f"  Blanket type:            HCPB assumed (blocking gap; DCLL alternative)")
 
 # ── Sensitivity analysis ─────────────────────────────────────────────────────
-sens = model.sensitivity(result.params)
+#
+# Three sweeps:
+#   1. Engineering/financial elasticities (model.sensitivity — over model params)
+#   2. noak_fraction sweep 0.40–0.70 (primary LCOE driver; H1 hypothesis)
+#   3. blanket_complexity_multiplier sweep 1.0–2.5 (F-2 finding; made explicit)
 
 print()
 print("=" * 60)
-print("SENSITIVITY ANALYSIS (elasticity = %LCOE / %param)")
+print("Sensitivity 1: Engineering and Financial Elasticities")
+print("(Elasticity = %%LCOE / %%param, with CAS22 overridden = 0 gradient)")
 print("=" * 60)
+
+sens = model.sensitivity(result.params, cost_overrides={
+    "CAS22": cas22_central,
+    "CAS27": 200.0,
+})
 
 print("\nEngineering levers:")
 for k, v in sorted(sens["engineering"].items(), key=lambda x: abs(x[1]), reverse=True):
@@ -345,110 +350,120 @@ print("\nFinancial:")
 for k, v in sorted(sens["financial"].items(), key=lambda x: abs(x[1]), reverse=True):
     print(f"  {k:<28} {v:+.4f}")
 
-# ── NOAK fraction sweep (primary uncertainty) ────────────────────────────────
+# ── noak_fraction sweep ──────────────────────────────────────────────────────
+
 print()
 print("=" * 60)
-print("NOAK FRACTION SWEEP (primary uncertainty — analysis.md §Section 2 H1)")
-print("  FOAK overnight: ${:.1f}B | Capacity factor: {:.0%}".format(
-    FOAK_OVERNIGHT_M_USD / 1000, 0.88))
-print(f"  {'NOAK Fraction':<16} {'NOAK $/kWe':>12} {'LCOE $/MWh':>12}  Notes")
-print("-" * 60)
+print("Sensitivity 2: NOAK Fraction Sweep (H1 — primary LCOE lever)")
+print(f"  blanket_complexity_multiplier fixed at {BLANKET_COMPLEXITY_MULTIPLIER_CENTRAL:.1f}×")
+print("=" * 60)
+print(f"  {'noak_fraction':<16} {'NOAK $/kWe':>12} {'CAS22 M$':>12} {'LCOE $/MWh':>12}")
+print("  " + "-" * 54)
 
-noak_fractions = [0.40, 0.50, 0.55, 0.60, 0.70]
-for frac in noak_fractions:
-    noak_overnight = FOAK_OVERNIGHT_M_USD * frac
-    cas22_override = noak_overnight * CAS22_FRACTION
-    r = model.forward(
-        net_electric_mw=1000.0,
-        availability=0.88,
-        lifetime_yr=40,
+noak_fractions = [0.40, 0.45, 0.50, 0.55, 0.60, 0.65, 0.70]
+for nf in noak_fractions:
+    cas22_nf = compute_cas22_override(nf, BLANKET_COMPLEXITY_MULTIPLIER_CENTRAL)
+    r_nf = model.forward(
+        net_electric_mw=NET_ELECTRIC_MW,
+        availability=AVAILABILITY,
+        lifetime_yr=LIFETIME_YR,
         n_mod=1,
-        construction_time_yr=10.0,
-        interest_rate=0.07,
-        inflation_rate=0.0245,
+        construction_time_yr=CONSTRUCTION_TIME_YR,
+        interest_rate=INTEREST_RATE,
+        inflation_rate=INFLATION_RATE,
         noak=True,
-        R0=18.0,
-        plasma_t=1.7,
-        elon=1.0,
-        blanket_t=0.60,
-        ht_shield_t=0.20,
-        structure_t=0.15,
-        vessel_t=0.10,
-        plasma_volume=1500.0,
-        p_input=75.0,
-        mn=1.1,
-        eta_th=0.35,
-        eta_p=0.5,
-        eta_pin=0.5,
-        eta_de=0.85,
-        f_sub=0.03,
-        f_dec=0.0,
-        p_coils=5.0,
-        p_cool=20.0,
-        p_pump=1.0,
-        p_trit=10.0,
-        p_house=4.0,
-        p_cryo=2.5,
-        B=6.0,
-        cost_overrides={
-            "CAS22": cas22_override,
-            "C220110": RH_OVERRIDE_M_USD,
-            "CAS27": CAS27_OVERRIDE_M_USD,
-        },
+        R0=18.0, plasma_t=1.7, elon=1.0,
+        blanket_t=0.60, ht_shield_t=0.20, structure_t=0.15, vessel_t=0.10,
+        plasma_volume=1500.0, B=6.0, n_e=1.0e20, T_e=12.0, Z_eff=1.3,
+        R_w=0.6, wall_material="W", T_edge=0.05, tau_ratio=3.0,
+        p_input=75.0, mn=1.1, eta_th=0.35,
+        eta_p=0.50, eta_pin=0.50, eta_de=0.0,
+        f_sub=0.03, f_dec=0.0,
+        p_coils=3.0, p_cool=15.0, p_pump=1.0,
+        p_trit=10.0, p_house=4.0, p_cryo=90.0,
+        cost_overrides={"CAS22": cas22_nf, "CAS27": 200.0},
     )
-    noak_kwe = noak_overnight * 1000 / 1000   # $/kWe (M$ * 1000 kW/MW / 1000 MW)
-    notes = " ← central" if frac == NOAK_FRACTION_CENTRAL else ""
-    notes += " ← competitive threshold (~$100/MWh)" if r.costs.lcoe < 105 else ""
-    print(f"  {frac:<16.0%} {noak_overnight*1000/1000:>12,.0f} {r.costs.lcoe:>12.1f}  {notes}")
+    noak_spec = FOAK_OVERNIGHT_USD_M * nf / NET_ELECTRIC_MW * 1000.0  # $/kWe
+    marker = " ← central" if nf == NOAK_FRACTION_CENTRAL else ""
+    print(f"  {nf:<16.2f} {noak_spec:>12.0f} {cas22_nf:>12.0f} {float(r_nf.costs.lcoe):>12.1f}{marker}")
 
-# ── Capacity factor sweep (H3) ────────────────────────────────────────────────
+# ── blanket_complexity_multiplier sweep ─────────────────────────────────────
+
 print()
 print("=" * 60)
-print("CAPACITY FACTOR SWEEP (H3: stellarator steady-state advantage)")
-print(f"  NOAK fraction: {NOAK_FRACTION_CENTRAL:.0%} (central) | Overnight: ${NOAK_OVERNIGHT_M_USD/1000:.1f}B")
-print(f"  {'Availability':<16} {'LCOE $/MWh':>12}  Notes")
-print("-" * 60)
+print("Sensitivity 3: Blanket Complexity Multiplier Sweep (F-2 finding)")
+print(f"  noak_fraction fixed at {NOAK_FRACTION_CENTRAL:.0%}")
+print("  Range: 1.0 (tokamak-equivalent) → 2.5 (extreme 3D geometry premium)")
+print("  Applied to blanket/VV sub-component (40% of base CAS22)")
+print("=" * 60)
+print(f"  {'multiplier':<14} {'CAS22 M$':>12} {'blanket M$':>12} {'LCOE $/MWh':>12}")
+print("  " + "-" * 52)
 
-for avail in [0.75, 0.80, 0.85, 0.88, 0.90]:
-    r = model.forward(
-        net_electric_mw=1000.0,
-        availability=avail,
-        lifetime_yr=40,
+bcm_values = [1.0, 1.25, 1.5, 1.75, 2.0, 2.25, 2.5]
+for bcm in bcm_values:
+    cas22_bcm = compute_cas22_override(NOAK_FRACTION_CENTRAL, bcm)
+    blanket_m_bcm = (FOAK_OVERNIGHT_USD_M * NOAK_FRACTION_CENTRAL
+                     * CAS22_FRAC_OF_OVERNIGHT * CAS22_BLANKET_FRAC * bcm)
+    r_bcm = model.forward(
+        net_electric_mw=NET_ELECTRIC_MW,
+        availability=AVAILABILITY,
+        lifetime_yr=LIFETIME_YR,
         n_mod=1,
-        construction_time_yr=10.0,
-        interest_rate=0.07,
-        inflation_rate=0.0245,
+        construction_time_yr=CONSTRUCTION_TIME_YR,
+        interest_rate=INTEREST_RATE,
+        inflation_rate=INFLATION_RATE,
         noak=True,
-        R0=18.0,
-        plasma_t=1.7,
-        elon=1.0,
-        blanket_t=0.60,
-        ht_shield_t=0.20,
-        structure_t=0.15,
-        vessel_t=0.10,
-        plasma_volume=1500.0,
-        p_input=75.0,
-        mn=1.1,
-        eta_th=0.35,
-        eta_p=0.5,
-        eta_pin=0.5,
-        eta_de=0.85,
-        f_sub=0.03,
-        f_dec=0.0,
-        p_coils=5.0,
-        p_cool=20.0,
-        p_pump=1.0,
-        p_trit=10.0,
-        p_house=4.0,
-        p_cryo=2.5,
-        B=6.0,
-        cost_overrides={
-            "CAS22": CAS22_NOAK_M_USD,
-            "C220110": RH_OVERRIDE_M_USD,
-            "CAS27": CAS27_OVERRIDE_M_USD,
-        },
+        R0=18.0, plasma_t=1.7, elon=1.0,
+        blanket_t=0.60, ht_shield_t=0.20, structure_t=0.15, vessel_t=0.10,
+        plasma_volume=1500.0, B=6.0, n_e=1.0e20, T_e=12.0, Z_eff=1.3,
+        R_w=0.6, wall_material="W", T_edge=0.05, tau_ratio=3.0,
+        p_input=75.0, mn=1.1, eta_th=0.35,
+        eta_p=0.50, eta_pin=0.50, eta_de=0.0,
+        f_sub=0.03, f_dec=0.0,
+        p_coils=3.0, p_cool=15.0, p_pump=1.0,
+        p_trit=10.0, p_house=4.0, p_cryo=90.0,
+        cost_overrides={"CAS22": cas22_bcm, "CAS27": 200.0},
     )
-    notes = " ← Helios analog anchor (arxiv-2512-08027v1)" if avail == 0.88 else ""
-    notes = " ← pulsed tokamak (DEMO basis)" if avail == 0.80 else notes
-    notes = " ← model central" if avail == 0.88 and not notes else notes
-    print(f"  {avail:<16.0%} {r.costs.lcoe:>12.1f}  {notes}")
+    marker = " ← central" if bcm == BLANKET_COMPLEXITY_MULTIPLIER_CENTRAL else ""
+    print(f"  {bcm:<14.2f} {cas22_bcm:>12.0f} {blanket_m_bcm:>12.0f} {float(r_bcm.costs.lcoe):>12.1f}{marker}")
+
+# ── Capacity factor sweep ────────────────────────────────────────────────────
+
+print()
+print("=" * 60)
+print("Sensitivity 4: Capacity Factor Sweep (H3 — steady-state advantage)")
+print(f"  noak_fraction={NOAK_FRACTION_CENTRAL:.0%}, blanket_complexity_mult={BLANKET_COMPLEXITY_MULTIPLIER_CENTRAL:.1f}×")
+print("  Lower bound (pulsed tokamak analog) → Helios 88% upper anchor")
+print("=" * 60)
+print(f"  {'availability':<14} {'LCOE $/MWh':>12}  note")
+print("  " + "-" * 50)
+
+cf_values = [
+    (0.75, "pulsed tokamak lower bound"),
+    (0.80, "pulsed tokamak upper bound"),
+    (0.85, "GIGA conservative"),
+    (0.88, "Helios analog (central)"),
+    (0.90, "GIGA optimistic"),
+]
+for cf, note in cf_values:
+    r_cf = model.forward(
+        net_electric_mw=NET_ELECTRIC_MW,
+        availability=cf,
+        lifetime_yr=LIFETIME_YR,
+        n_mod=1,
+        construction_time_yr=CONSTRUCTION_TIME_YR,
+        interest_rate=INTEREST_RATE,
+        inflation_rate=INFLATION_RATE,
+        noak=True,
+        R0=18.0, plasma_t=1.7, elon=1.0,
+        blanket_t=0.60, ht_shield_t=0.20, structure_t=0.15, vessel_t=0.10,
+        plasma_volume=1500.0, B=6.0, n_e=1.0e20, T_e=12.0, Z_eff=1.3,
+        R_w=0.6, wall_material="W", T_edge=0.05, tau_ratio=3.0,
+        p_input=75.0, mn=1.1, eta_th=0.35,
+        eta_p=0.50, eta_pin=0.50, eta_de=0.0,
+        f_sub=0.03, f_dec=0.0,
+        p_coils=3.0, p_cool=15.0, p_pump=1.0,
+        p_trit=10.0, p_house=4.0, p_cryo=90.0,
+        cost_overrides={"CAS22": cas22_central, "CAS27": 200.0},
+    )
+    print(f"  {cf:<14.2f} {float(r_cf.costs.lcoe):>12.1f}  {note}")

@@ -315,63 +315,7 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": {
-    "key_bets": [
-      "Synchronized pneumatic piston array can compress a flowing liquid metal vortex symmetrically at commercial scale (~4 m cavity)",
-      "Repetition rate can scale from ~1 shot/day (LM26 demo) to 1 Hz commercial operation — an 86,400× increase requiring entirely new mechanical engineering",
-      "12:1 cavity compression ratio achievable in flowing liquid metal (only 8:1 demonstrated in water surrogate — 33% shortfall)",
-      "Fusion gain Q sufficient for net energy (Q ≳ 5–10 for commercial viability) — entirely undisclosed by General Fusion",
-      "Liquid metal vortex reforms reliably within ~1 second between pulses at commercial scale",
-      "Compact toroid plasma survives injection into and compression within the liquid metal cavity at 1 Hz duty cycle"
-    ],
-    "eliminated_costs": [
-      "HTS superconducting magnet system and cryoplant (CAS22 ≈ $0 vs. $1–3B for ARC-class tokamak) — confinement provided by mechanical compression of liquid metal",
-      "Per-shot consumable targets or liners ($0 OPEX vs. MagLIF's ~28M targets/year) — liquid metal liner reforms each pulse",
-      "REBCO tape supply chain dependency ($30–100/kA-m, limited global production) entirely avoided",
-      "Beryllium requirements eliminated (no FLiBe blanket) — avoids toxicity and supply constraints"
-    ],
-    "novel_costs": [
-      "Pneumatic compression driver system (piston array + vessel): dominant unknown capital account, estimated $50M–$500M+ with no industrial analogue for cost basis",
-      "Liquid metal circuit infrastructure: large Li or PbLi inventory (~50–100 tonnes), pumping, purification, and vortex formation systems",
-      "Double-walled intermediate heat exchangers required to isolate reactive liquid lithium from steam circuit (analogous to sodium fast reactor IHX)",
-      "Isotope separation system (ISS) for tritium extraction from flowing liquid metal — capital cost varies dramatically between Li and PbLi options",
-      "Piston seal wear and replacement in activated liquid metal environment at ~30M cycles/year — no materials qualification data exists"
-    ],
-    "risks": [
-      {
-        "description": "Commercial pneumatic compression system has never been built or tested — LM26 uses a fundamentally different electromagnetic surrogate; if piston synchronization in liquid metal proves infeasible, no fallback mechanism exists",
-        "severity": "high"
-      },
-      {
-        "description": "Compression ratio shortfall: 8:1 achieved in water vs. 12:1 required — failure to close this gap is a binary physics viability failure, not a tunable parameter",
-        "severity": "high"
-      },
-      {
-        "description": "Rep rate must scale 86,400× from demo to commercial (1/day → 1 Hz) — entire mechanical system must reset within 1 second at scales never attempted",
-        "severity": "high"
-      },
-      {
-        "description": "Fusion gain Q entirely undisclosed — energy balance cannot be closed; minimum Q for breakeven unknown, commercial viability likely requires Q ≳ 5–10",
-        "severity": "high"
-      },
-      {
-        "description": "Capacity factor highly uncertain for novel mechanical compression system — unplanned downtime could push CF to 50–60%, which is the dominant LCOE sensitivity (elasticity -0.94)",
-        "severity": "high"
-      },
-      {
-        "description": "Liquid metal composition (Li vs. PbLi) unresolved — creates bifurcating cost implications for tritium handling, safety infrastructure, and materials compatibility",
-        "severity": "medium"
-      },
-      {
-        "description": "Li-6 enrichment supply chain: no large-scale Western enrichment capacity exists; historically Russia/China only — shared risk with all D-T concepts",
-        "severity": "medium"
-      },
-      {
-        "description": "Tritium permeation from liquid metal into steam circuit requires costly barriers; design and cost not disclosed",
-        "severity": "medium"
-      }
-    ]
-  },
+  "narrative": null,
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/14-magnetized-target-fusion-pneumatic-compression/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/14-magnetized-target-fusion-pneumatic-compression/analysis.md"

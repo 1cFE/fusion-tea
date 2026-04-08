@@ -32,6 +32,8 @@ This is your structural template. Follow its architecture exactly:
 Use the scaling laws and unit costs from 1costingfe as reference values,
 even though you're not using the API. Document which scaling laws you adopt.
 
+
+
 ## Model Architecture
 
 Follow the MagLIF exemplar's 5-layer structure adapted for Acoustic ICF / Sonofusion (D-D):
@@ -82,6 +84,88 @@ Include in `main()`:
 2. Single-parameter sensitivity sweeps for the 5-7 most impactful parameters
 3. Scenario comparison table (conservative, moderate, optimistic)
 4. Brief "Key Binding Constraints" narrative for the top 3 LCOE drivers
+
+## Output Interface (CRITICAL)
+The concept explorer consumes module-level variables and functions for
+cross-concept comparison. You MUST expose the following at module level
+(outside `main()` or any other function):
+
+### Module-Level Variables
+```python
+# After defining the dataclass and before main():
+params = YourDataclass(...)     # The @dataclass instance with all plant parameters
+results = params.compute()      # The full output dict from compute()
+```
+
+### Required Functions
+
+#### `to_explorer_dict() -> dict`
+Returns a dict with the explorer's expected schema. Map from YOUR compute()
+output structure — the keys below are what the explorer requires:
+```python
+def to_explorer_dict() -> dict:
+    """Return structured data for the concept explorer.
+    All monetary values in M$ (millions USD). All power values in MW.
+    Map from your compute() output to this exact key structure."""
+    return {
+        "costs": {
+            # CAS accounts (lowercase keys, values in M$):
+            "cas10": ..., "cas21": ..., "cas22": ..., "cas23": ...,
+            "cas24": ..., "cas25": ..., "cas26": ..., "cas27": ...,
+            "cas28": ..., "cas29": ..., "cas20": ...,
+            "cas30": ..., "cas40": ..., "cas50": ..., "cas60": ...,
+            "cas70": ..., "cas71": ..., "cas72": ...,
+            "cas80": ..., "cas90": ...,
+            "total_capital": ...,       # CAS10-60 sum [M$]
+            "lcoe": ...,               # [$/MWh]
+            "overnight_cost": ...,     # [$/kW]
+        },
+        "power_table": {
+            "p_fus": ...,        # Fusion power [MW]
+            "p_th": ...,         # Total thermal [MW]
+            "p_et": ...,         # Gross electric [MW]
+            "p_net": ...,        # Net electric [MW]
+            "q_sci": ...,        # Scientific Q
+            "q_eng": ...,        # Engineering Q
+            "availability": ..., # Capacity factor [0-1]
+            "rec_frac": ...,     # Recirculating fraction [0-1]
+        },
+        "cas22_detail": {
+            # CAS22 sub-accounts (values in M$):
+            "C220101": ..., "C220102": ..., # ... through C220112
+            "C220200": ..., "C220300": ..., # ... through C220700
+        },
+        "params": {
+            # All numeric @dataclass fields as {name: value}
+        },
+        "overridden": [],  # Empty list (freeform scripts don't track overrides)
+    }
+```
+
+#### `compute_sensitivity() -> dict`
+Computes LCOE elasticities for all numeric parameters via central difference:
+```python
+def compute_sensitivity(dp_fraction=0.01):
+    import dataclasses as dc
+    base_lcoe = results["economics"]["lcoe_USD_per_MWh"]
+    if base_lcoe <= 0:
+        return {"engineering": {}, "financial": {}}
+    financial_keys = {"interest_rate", "inflation_rate"}
+    engineering, financial = {}, {}
+    for f in dc.fields(params):
+        val = getattr(params, f.name)
+        if not isinstance(val, (int, float)) or val == 0.0:
+            continue
+        dp = abs(val) * dp_fraction
+        kw = {**dc.asdict(params), f.name: val + dp}
+        lcoe_up = type(params)(**kw).compute()["economics"]["lcoe_USD_per_MWh"]
+        kw[f.name] = val - dp
+        lcoe_dn = type(params)(**kw).compute()["economics"]["lcoe_USD_per_MWh"]
+        elast = (lcoe_up - lcoe_dn) / (2 * dp) * val / base_lcoe
+        target = financial if f.name in financial_keys else engineering
+        target[f.name] = elast
+    return {"engineering": engineering, "financial": financial}
+```
 
 ## Anti-Hallucination
 - Parameter values MUST come from the analysis or documented analogues

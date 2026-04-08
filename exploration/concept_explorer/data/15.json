@@ -1,0 +1,362 @@
+{
+  "concept_id": "15",
+  "name": "15-sheared-flow-stabilized-z-pinch",
+  "confinement_family": "MFE",
+  "company": null,
+  "status": "in_progress",
+  "illustration": null,
+  "has_cost_model": true,
+  "has_sensitivities": true,
+  "cost_model": {
+    "cas10": {
+      "name": "Preconstruction",
+      "cost_m_usd": 14.276862857142858,
+      "overridden": false
+    },
+    "cas21": {
+      "name": "Buildings & Structures",
+      "cost_m_usd": 207.16080000000002,
+      "overridden": false
+    },
+    "cas22": {
+      "name": "Reactor Plant Equipment",
+      "cost_m_usd": 736.5917078605135,
+      "overridden": false
+    },
+    "cas23": {
+      "name": "Turbine Plant Equipment",
+      "cost_m_usd": 58.49037216000001,
+      "overridden": false
+    },
+    "cas24": {
+      "name": "Electrical Plant Equipment",
+      "cost_m_usd": 24.912565920000002,
+      "overridden": false
+    },
+    "cas25": {
+      "name": "Miscellaneous Plant Equipment",
+      "cost_m_usd": 15.16417056,
+      "overridden": false
+    },
+    "cas26": {
+      "name": "Heat Rejection Systems",
+      "cost_m_usd": 10.109447040000001,
+      "overridden": false
+    },
+    "cas27": {
+      "name": "Special Materials",
+      "cost_m_usd": 2.3305885714285717,
+      "overridden": false
+    },
+    "cas28": {
+      "name": "Digital Twin & Simulation",
+      "cost_m_usd": 5.0,
+      "overridden": false
+    },
+    "cas29": {
+      "name": "Contingency",
+      "cost_m_usd": 0.0,
+      "overridden": false
+    },
+    "cas30": {
+      "name": "Indirect Costs",
+      "cost_m_usd": 176.6266086853237,
+      "overridden": false
+    },
+    "cas40": {
+      "name": "Owner's Costs",
+      "cost_m_usd": 15.372757759844433,
+      "overridden": false
+    },
+    "cas50": {
+      "name": "Supplementary Costs",
+      "cost_m_usd": 96.56497020668722,
+      "overridden": false
+    },
+    "cas60": {
+      "name": "Interest During Construction",
+      "cost_m_usd": 236.16624122230672,
+      "overridden": false
+    },
+    "cas70": {
+      "name": "O&M Costs (annualised)",
+      "cost_m_usd": 84.41208935149879,
+      "overridden": false
+    },
+    "cas80": {
+      "name": "Fuel Costs (annualised)",
+      "cost_m_usd": 4.7304,
+      "overridden": false
+    },
+    "cas90": {
+      "name": "Financial Costs",
+      "cost_m_usd": 142.01437744129646,
+      "overridden": false
+    },
+    "cas22_detail": {
+      "C220101": {
+        "name": "First Wall & Blanket",
+        "cost_m_usd": 58.49212794591319,
+        "overridden": false
+      },
+      "C220102": {
+        "name": "Radiation Shield",
+        "cost_m_usd": 26.829244862381763,
+        "overridden": false
+      },
+      "C220103": {
+        "name": "Magnets / Coils",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220104": {
+        "name": "Heating & Driver Systems",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220105": {
+        "name": "Primary Structure & Support",
+        "cost_m_usd": 5.704605287932834,
+        "overridden": false
+      },
+      "C220106": {
+        "name": "Vacuum System",
+        "cost_m_usd": 8.654555209902332,
+        "overridden": false
+      },
+      "C220107": {
+        "name": "Power Conditioning & Energy Storage",
+        "cost_m_usd": 8.142857142857142,
+        "overridden": false
+      },
+      "C220108": {
+        "name": "Divertor / Target Factory",
+        "cost_m_usd": 15.0,
+        "overridden": false
+      },
+      "C220109": {
+        "name": "Direct Energy Converter",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220110": {
+        "name": "Remote Handling & Maintenance Equipment",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220111": {
+        "name": "Installation Labor",
+        "cost_m_usd": 18.49212720762838,
+        "overridden": false
+      },
+      "C220112": {
+        "name": "Isotope Separation Plant",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220200": {
+        "name": "Main & Secondary Coolant",
+        "cost_m_usd": 53.98862262827163,
+        "overridden": false
+      },
+      "C220300": {
+        "name": "Auxiliary Cooling & Cryoplant",
+        "cost_m_usd": 0.9864800000000001,
+        "overridden": false
+      },
+      "C220400": {
+        "name": "Radioactive Waste Management",
+        "cost_m_usd": 2.0213872,
+        "overridden": false
+      },
+      "C220500": {
+        "name": "Fuel Handling & Storage",
+        "cost_m_usd": 32.59442270343202,
+        "overridden": false
+      },
+      "C220600": {
+        "name": "Other Reactor Plant Equipment",
+        "cost_m_usd": 2.5929689907164732,
+        "overridden": false
+      },
+      "C220700": {
+        "name": "Instrumentation & Control",
+        "cost_m_usd": 42.09282586105483,
+        "overridden": false
+      }
+    },
+    "headline": {
+      "lcoe_per_mwh": 226.44726319627608,
+      "overnight_cost_per_kw": 8769.893161273714,
+      "p_net_mw": 155.37257142857143,
+      "q_eng": 6.999999999999999,
+      "capacity_factor": 0.75
+    },
+    "sensitivities": {
+      "engineering": {
+        "driver_electrical_energy_per_shot_MJ": {
+          "elasticity": 0.0,
+          "baseline": 1.9
+        },
+        "driver_wall_to_plasma_efficiency": {
+          "elasticity": -0.6368418060528123,
+          "baseline": 0.7
+        },
+        "driver_stored_energy_per_shot_MJ": {
+          "elasticity": 0.0,
+          "baseline": 2.7
+        },
+        "driver_cost_per_MJ_stored_M_USD": {
+          "elasticity": 0.0207457069982125,
+          "baseline": 3.0
+        },
+        "driver_rep_rate_Hz": {
+          "elasticity": -0.5616240433704804,
+          "baseline": 10.0
+        },
+        "fusion_energy_per_shot_MJ": {
+          "elasticity": -0.561342320828875,
+          "baseline": 19.0
+        },
+        "fusion_Q": {
+          "elasticity": -0.5352651949884472,
+          "baseline": 10.0
+        },
+        "pinch_current_MA": {
+          "elasticity": 0.0,
+          "baseline": 1.35
+        },
+        "plasma_temperature_keV": {
+          "elasticity": 0.0,
+          "baseline": 32.5
+        },
+        "blanket_energy_multiplication": {
+          "elasticity": -0.8935443975424582,
+          "baseline": 1.1
+        },
+        "thermal_efficiency": {
+          "elasticity": -1.485232447149425,
+          "baseline": 0.33
+        },
+        "plant_availability": {
+          "elasticity": -0.7093797612005212,
+          "baseline": 0.75
+        },
+        "plant_lifetime_years": {
+          "elasticity": -0.22923857091169306,
+          "baseline": 30.0
+        },
+        "chamber_inner_radius_m": {
+          "elasticity": 0.4350847868974969,
+          "baseline": 1.7
+        },
+        "blanket_thickness_m": {
+          "elasticity": 0.8649773830114589,
+          "baseline": 3.0
+        },
+        "shield_thickness_m": {
+          "elasticity": 0.08194336139568212,
+          "baseline": 0.5
+        },
+        "structure_thickness_m": {
+          "elasticity": 0.018731196097920233,
+          "baseline": 0.4
+        },
+        "vessel_thickness_m": {
+          "elasticity": 0.02263470614899286,
+          "baseline": 0.15
+        },
+        "blanket_unit_cost_M_per_m3": {
+          "elasticity": 0.3695173150745906,
+          "baseline": 0.6
+        },
+        "electrode_system_cost_M_USD": {
+          "elasticity": 0.12883860597296726,
+          "baseline": 15.0
+        },
+        "electrode_replacement_interval_yr": {
+          "elasticity": -0.07634070337209535,
+          "baseline": 2.0
+        },
+        "om_cost_per_MW_yr": {
+          "elasticity": 0.054053645907300586,
+          "baseline": 60.0
+        },
+        "core_lifetime_FPY": {
+          "elasticity": -0.19388216583145368,
+          "baseline": 3.0
+        },
+        "fuel_cost_per_shot_USD": {
+          "elasticity": 0.02046402542840534,
+          "baseline": 0.005
+        },
+        "p_libp_pumping_MW": {
+          "elasticity": 0.06807464658968225,
+          "baseline": 3.0
+        },
+        "p_tritium_MW": {
+          "elasticity": 0.06807464658968225,
+          "baseline": 3.0
+        },
+        "p_house_MW": {
+          "elasticity": 0.045383082819223,
+          "baseline": 2.0
+        },
+        "construction_time_years": {
+          "elasticity": 0.21195112133395577,
+          "baseline": 5.0
+        }
+      },
+      "financial": {
+        "interest_rate": {
+          "elasticity": 0.531570054492417,
+          "baseline": 0.08
+        },
+        "inflation_rate": {
+          "elasticity": 0.016337241459856634,
+          "baseline": 0.02
+        }
+      }
+    },
+    "params": {
+      "driver_electrical_energy_per_shot_MJ": 1.9,
+      "driver_wall_to_plasma_efficiency": 0.7,
+      "driver_stored_energy_per_shot_MJ": 2.7,
+      "driver_cost_per_MJ_stored_M_USD": 3.0,
+      "driver_rep_rate_Hz": 10.0,
+      "fusion_energy_per_shot_MJ": 19.0,
+      "fusion_Q": 10.0,
+      "pinch_current_MA": 1.35,
+      "plasma_temperature_keV": 32.5,
+      "blanket_energy_multiplication": 1.1,
+      "thermal_efficiency": 0.33,
+      "n_mod": 4.0,
+      "plant_availability": 0.75,
+      "plant_lifetime_years": 30.0,
+      "noak": 1.0,
+      "chamber_inner_radius_m": 1.7,
+      "blanket_thickness_m": 3.0,
+      "shield_thickness_m": 0.5,
+      "structure_thickness_m": 0.4,
+      "vessel_thickness_m": 0.15,
+      "blanket_unit_cost_M_per_m3": 0.6,
+      "electrode_system_cost_M_USD": 15.0,
+      "electrode_replacement_interval_yr": 2.0,
+      "om_cost_per_MW_yr": 60.0,
+      "core_lifetime_FPY": 3.0,
+      "fuel_cost_per_shot_USD": 0.005,
+      "p_libp_pumping_MW": 3.0,
+      "p_tritium_MW": 3.0,
+      "p_house_MW": 2.0,
+      "interest_rate": 0.08,
+      "inflation_rate": 0.02,
+      "construction_time_years": 5.0
+    }
+  },
+  "parameter_metadata": {},
+  "narrative": null,
+  "sources": {
+    "model_setup": null,
+    "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/15-sheared-flow-stabilized-z-pinch/analysis.md"
+  }
+}

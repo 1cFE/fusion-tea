@@ -320,66 +320,7 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": {
-    "key_bets": [
-      "Rep rate ≥1 Hz achievable with automated RTL insertion and chamber clearing in <1 second cycle time",
-      "Cryogenic DT ice-layer targets can be mass-produced at <$2/shot (current cost: thousands $/shot)",
-      "IMG pulsed power driver achieves 5-10× cost reduction vs LTD architecture (<$0.50/J vs current ~$5/J)",
-      "Gain scaling from χ≈0.1 on Z to GJ-class ignition yields at 50-60 MA drive current",
-      "Thick liquid FLiBe wall survives repetitive GJ-scale shots and eliminates scheduled first-wall replacement",
-      "Self-magnetizing composite targets achieve sufficient gain without external Helmholtz coils or laser preheat"
-    ],
-    "eliminated_costs": [
-      "No superconducting magnets — eliminates REBCO tape and Nb₃Sn supply chain entirely",
-      "No steady-state plasma heating systems (NBI, ECRH, LHCD) — pulsed power driver performs this function",
-      "No divertor system required",
-      "Thick liquid wall potentially eliminates scheduled solid first-wall replacement and associated downtime"
-    ],
-    "novel_costs": [
-      "Pulsed power driver capital (capacitor banks, switches, transmission lines) — 96% of direct capital in Z-IFE reference, no MFE analogue",
-      "Per-shot consumables (target liner + RTL destroyed each shot) — ~28 million assemblies/year at 1 Hz, creating a variable O&M cost floor with no MFE analogue",
-      "RTL + Target Factory capital and automation for Hz-rate fabrication, insertion, and alignment",
-      "Industrial-scale FLiBe production, handling, and tritium extraction infrastructure"
-    ],
-    "risks": [
-      {
-        "description": "Rep rate capped at ≤0.1 Hz due to RTL insertion/chamber clearing constraints, locking COE at ~20+ ¢/kWeh — 3-4× above competitive threshold",
-        "severity": "high"
-      },
-      {
-        "description": "Cryo ice-layer target cost cannot reach <$2/shot, making annual consumable O&M ($300M+/yr at 1 Hz) the binding LCOE constraint rather than capital",
-        "severity": "high"
-      },
-      {
-        "description": "Gain scaling fails — if GJ-class yields require 10× more driver energy than projected, driver CapEx roughly triples via TW^0.6 power law",
-        "severity": "high"
-      },
-      {
-        "description": "IMG driver cost reduction does not materialize — at current ~$5/J pricing, a 60+ MA plant-scale driver costs multiple billions, exceeding any plausible LCOE target",
-        "severity": "high"
-      },
-      {
-        "description": "Chamber lifetime under combined GJ-scale shock + neutron + thermal cycling + FLiBe corrosion is short, forcing high replacement frequency and capacity factor penalties not in current estimates",
-        "severity": "high"
-      },
-      {
-        "description": "No plant study exists for the modern IMG architecture — all COE estimates carry ±50%+ uncertainty based on 20-year-old LTD-era Z-IFE data",
-        "severity": "medium"
-      },
-      {
-        "description": "Pacific Fusion's 250 MWe commercial target is 4× smaller than the 1000 MWe Z-IFE reference — economy-of-scale penalty means actual LCOE materially higher than all cited figures",
-        "severity": "medium"
-      },
-      {
-        "description": "Capacitor/switch lifetime must improve 100,000× (from ~10⁴ to ~10⁹ shots) for 30-year plant life at 1 Hz",
-        "severity": "medium"
-      },
-      {
-        "description": "Tritium breeding blanket design for commercial MagLIF is undesigned — no FLiBe closed-loop at fusion-plant throughput demonstrated",
-        "severity": "medium"
-      }
-    ]
-  },
+  "narrative": null,
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/07-maglif/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/07-maglif/analysis.md"

@@ -1,0 +1,113 @@
+Spherical Tokamak - HTS (Tokamak Energy ST-E1 Rev D)
+  Config: 600 MWe net | 80% availability | 30 yr | NOAK
+  Geometry: R0=5.0 m, A=2.3, a=2.17 m, κ=2.5
+  Field: B=5.25 T on-axis | Heating: ECRH-only (η_pin=0.52)
+  Thermal eff.: η_th=0.33 (UNCERTAIN — steam Rankine analogue)
+
+LCOE:       183.8 $/MWh
+Overnight:  12300 $/kW
+Fusion:     2065 MW | Net: 600 MW | Q_eng: 4.93
+
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    17.5
+CAS21    Buildings                         571.9
+CAS22    Reactor Plant Equipment          3408.9
+CAS23    Turbine Plant                     148.8
+CAS24    Electrical Plant                   63.4
+CAS25    Miscellaneous                      38.6
+CAS26    Heat Rejection                     25.7
+CAS27    Special Materials                   9.0
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                         0.0
+CAS30    Indirect Costs                   1139.0
+CAS40    Owner's Costs                      30.2
+CAS50    Supplementary                     296.8
+CAS60    IDC                              1625.6
+CAS70    O&M (annualized)                  177.3
+CAS80    Fuel (annualized)                   1.0
+CAS90    Financial                         594.7
+------------------------------------------------
+         Total Capital                    7380.2
+
+CAS22 sub-account detail:
+Code                 M$
+------------------------
+  C220000        3408.9
+  C220101         823.6
+  C220102         469.9
+  C220103         516.1
+  C220104         353.2
+  C220105          44.4
+  C220106         222.1
+  C220107          65.6
+  C220108          90.6
+  C220109           0.0
+  C220110         130.1
+  C220111         380.2
+  C220112           0.0
+  C220200         131.7
+  C220300          21.0
+  C220400           4.5
+  C220500          83.9
+  C220600           7.6
+  C220700          64.4
+
+============================================================
+Key Assumptions and Data Quality
+============================================================
+  Net electric (central of 450–750 MWe range):  600 MWe  [HIGH confidence]
+  Major radius R0:                               5.0 m    [HIGH confidence]
+  Aspect ratio A → minor radius:                 2.3 → 2.17 m [HIGH confidence]
+  Elongation κ:                                  2.5     [UNCERTAIN — analogue]
+  On-axis field B:                               5.25 T  [HIGH confidence]
+  Thermal efficiency η_th:                       0.33   [UNCERTAIN — steam Rankine analogue]
+  Heating (ECRH) wall-plug η_pin:               0.52   [MEDIUM — gyrotron analogue]
+  Aux heating power p_input:                     50 MW  [DEFAULT — undisclosed]
+  Availability:                                  80%   [UNCERTAIN — no published target]
+  Blanket coverage:                              outboard-only (4π model overestimates cost)
+  Thermal buffer (pulsed TES):                   NOT MODELLED — cost unknown, downward bias
+  All capital costs:                             FRAMEWORK DEFAULTS (no published cost data)
+
+Sensitivity (elasticity = %LCOE / %param)
+------------------------------------------------
+
+Engineering levers:
+  availability                 -0.8740
+  R0                           +0.4447
+  elon                         +0.4447
+  construction_time_yr         +0.3975
+  plasma_t                     +0.3136
+  blanket_t                    +0.2996
+  eta_th                       -0.2642
+  eta_pin                      -0.0615
+  p_input                      +0.0615
+  ht_shield_t                  +0.0535
+  vessel_t                     +0.0476
+  f_sub                        +0.0144
+  structure_t                  +0.0134
+  fuel_recovery                -0.0117
+  p_cool                       +0.0096
+  p_trit                       +0.0064
+  p_cryo                       +0.0029
+  p_house                      +0.0026
+  p_coils                      +0.0013
+  p_pump                       +0.0013
+  mn                           -0.0010
+  burn_fraction                -0.0006
+  eta_p                        -0.0000
+  eta_de                       +0.0000
+  q95                          +0.0000
+  f_GW                         +0.0000
+  B                            +0.0000
+  T_e                          +0.0000
+  n_e                          +0.0000
+  Z_eff                        +0.0000
+  plasma_volume                +0.0000
+  R_w                          +0.0000
+  T_edge                       +0.0000
+  tau_ratio                    +0.0000
+
+Financial:
+  interest_rate                +0.7097
+  inflation_rate               +0.0383

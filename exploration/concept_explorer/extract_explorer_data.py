@@ -153,6 +153,33 @@ def build_sensitivity_analysis(model: Any, result: Any) -> SensitivityAnalysis:
     )
 
 
+def _build_sensitivity_from_dict(
+    sens_raw: dict[str, dict[str, float]],
+    params: dict[str, float],
+) -> SensitivityAnalysis:
+    """Build SensitivityAnalysis from freeform compute_sensitivity() output.
+
+    sens_raw: {"engineering": {param: elasticity}, "financial": {param: elasticity}}
+    params: {param: baseline_value} from to_explorer_dict()["params"]
+    """
+    import math
+
+    def _entries(group: dict[str, float]) -> dict[str, SensitivityEntry]:
+        return {
+            k: SensitivityEntry(
+                elasticity=float(v),
+                baseline=float(params.get(k, 0.0)),
+            )
+            for k, v in group.items()
+            if v is not None and math.isfinite(float(v))
+        }
+
+    return SensitivityAnalysis(
+        engineering=_entries(sens_raw.get("engineering", {})),
+        financial=_entries(sens_raw.get("financial", {})),
+    )
+
+
 def extract_costingfe(
     concept_dir: Path,
     concept_id: str,
@@ -220,6 +247,134 @@ def extract_costingfe(
 
 
 # ---------------------------------------------------------------------------
+# Centralized freeform adapters
+# ---------------------------------------------------------------------------
+
+
+def _freeform_to_explorer_dict(results: dict[str, Any], params_obj: Any) -> dict[str, Any]:
+    """Map freeform compute() output to the explorer dict schema.
+
+    All freeform scripts follow the 5-layer architecture from model_setup_freeform.md,
+    producing standardized CAS keys. This centralizes the mapping that was previously
+    required as a per-script to_explorer_dict() function.
+    """
+    c = results.get("costs", {})
+    econ = results.get("economics", {})
+    cas22 = results.get("cas22", {})
+    pw = results.get("power", {})
+
+    n_mod = getattr(params_obj, "n_mod", 1)
+    p_net_plant = pw.get("p_net_plant", pw.get("p_net", 0) * n_mod)
+    overnight = c.get("overnight_capital", 0)
+    overnight_per_kw = (overnight * 1e3 / p_net_plant) if p_net_plant > 0 else 0
+
+    return {
+        "costs": {
+            "cas10": c.get("CAS10", 0), "cas21": c.get("CAS21", 0),
+            "cas22": c.get("CAS22", 0), "cas23": c.get("CAS23", 0),
+            "cas24": c.get("CAS24", 0), "cas25": c.get("CAS25", 0),
+            "cas26": c.get("CAS26", 0), "cas27": c.get("CAS27", 0),
+            "cas28": c.get("CAS28", 0), "cas29": c.get("CAS29", 0),
+            "cas20": c.get("CAS20", 0),
+            "cas30": c.get("CAS30", 0), "cas40": c.get("CAS40", 0),
+            "cas50": c.get("CAS50", 0), "cas60": c.get("CAS60", 0),
+            "cas70": econ.get("CAS70", 0), "cas71": econ.get("CAS71", 0),
+            "cas72": econ.get("CAS72", 0),
+            "cas80": econ.get("CAS80", 0), "cas90": econ.get("CAS90", 0),
+            "total_capital": c.get("total_capital", 0),
+            "lcoe": econ.get("lcoe_USD_per_MWh", 0),
+            "overnight_cost": overnight_per_kw,
+        },
+        "power_table": {
+            "p_fus": pw.get("p_fus", 0) * n_mod,
+            "p_th": pw.get("p_th", 0) * n_mod,
+            "p_et": pw.get("p_et", 0) * n_mod,
+            "p_net": p_net_plant,
+            "q_sci": pw.get("Q_sci", 0),
+            "q_eng": pw.get("Q_eng", 0),
+            "availability": getattr(
+                params_obj, "plant_availability",
+                getattr(params_obj, "availability", 0),
+            ),
+            "rec_frac": pw.get("recirc_fraction", 0),
+        },
+        "cas22_detail": {
+            k: cas22.get(k, 0)
+            for k in [
+                "C220101", "C220102", "C220103", "C220104", "C220105",
+                "C220106", "C220107", "C220108", "C220109", "C220111", "C220112",
+                "C220200", "C220300", "C220400", "C220500", "C220600", "C220700",
+            ]
+        },
+        "params": {
+            f.name: getattr(params_obj, f.name)
+            for f in dataclasses.fields(params_obj)
+            if isinstance(getattr(params_obj, f.name), (int, float))
+        },
+        "overridden": [],
+    }
+
+
+def _find_freeform_dataclass(module: types.ModuleType) -> Any | None:
+    """Find a @dataclass in the module that has a compute() method.
+
+    Returns an instance created with default field values, or None.
+    """
+    for name in dir(module):
+        obj = getattr(module, name)
+        if (
+            isinstance(obj, type)
+            and dataclasses.is_dataclass(obj)
+            and hasattr(obj, "compute")
+            and callable(getattr(obj, "compute"))
+        ):
+            try:
+                return obj()  # instantiate with defaults
+            except Exception:
+                continue
+    return None
+
+
+def _compute_sensitivity_from_params(
+    params_obj: Any, results: dict[str, Any], dp_fraction: float = 0.01
+) -> dict[str, dict[str, float]]:
+    """Compute LCOE elasticities via central difference on a freeform params dataclass.
+
+    Returns {"engineering": {param: elasticity}, "financial": {param: elasticity}}.
+    """
+    import math
+
+    base_lcoe = results.get("economics", {}).get("lcoe_USD_per_MWh", 0)
+    if base_lcoe <= 0 or not math.isfinite(base_lcoe):
+        return {"engineering": {}, "financial": {}}
+
+    financial_keys = {"interest_rate", "inflation_rate"}
+    engineering: dict[str, float] = {}
+    financial: dict[str, float] = {}
+    base_dict = dataclasses.asdict(params_obj)
+
+    for f in dataclasses.fields(params_obj):
+        val = getattr(params_obj, f.name)
+        if not isinstance(val, float) or val == 0.0:
+            continue
+        dp = abs(val) * dp_fraction
+        try:
+            kw_up = {**base_dict, f.name: val + dp}
+            lcoe_up = type(params_obj)(**kw_up).compute()["economics"]["lcoe_USD_per_MWh"]
+            kw_dn = {**base_dict, f.name: val - dp}
+            lcoe_dn = type(params_obj)(**kw_dn).compute()["economics"]["lcoe_USD_per_MWh"]
+        except Exception:
+            continue
+        if not (math.isfinite(lcoe_up) and math.isfinite(lcoe_dn)):
+            continue
+        elast = (lcoe_up - lcoe_dn) / (2 * dp) * val / base_lcoe
+        target = financial if f.name in financial_keys else engineering
+        target[f.name] = elast
+
+    return {"engineering": engineering, "financial": financial}
+
+
+# ---------------------------------------------------------------------------
 # Standalone pathway
 # ---------------------------------------------------------------------------
 
@@ -240,13 +395,18 @@ def extract_standalone(
     """
     cost_model: CostModelData | None = None
     has_cost_model = False
+    has_sensitivities = False
 
-    # Look for any .py file in the concept dir (excluding test files)
+    # Prefer model_setup.py if present; otherwise first non-test .py file
     script_path: Path | None = None
-    for py_file in sorted(concept_dir.glob("*.py")):
-        if not py_file.name.startswith("test_"):
-            script_path = py_file
-            break
+    model_setup = concept_dir / "model_setup.py"
+    if model_setup.exists():
+        script_path = model_setup
+    else:
+        for py_file in sorted(concept_dir.glob("*.py")):
+            if not py_file.name.startswith("test_"):
+                script_path = py_file
+                break
 
     if script_path is not None:
         loaded_module: types.ModuleType | None = None
@@ -261,17 +421,76 @@ def extract_standalone(
 
         if loaded_module is not None:
             to_explorer_dict = getattr(loaded_module, "to_explorer_dict", None)
+            params_obj = getattr(loaded_module, "params", None)
+            results_obj = getattr(loaded_module, "results", None)
+
+            # Path 1: script provides its own mapping (backward compat)
             if to_explorer_dict is not None:
                 raw_dict = to_explorer_dict()
-                cost_model = CostModelData.model_validate(raw_dict)
+                cost_model = CostModelData.from_forward_result(raw_dict, sensitivities=None)
+                has_cost_model = True
+            # Path 2: centralized adapter from module-level params + results
+            elif (
+                params_obj is not None
+                and results_obj is not None
+                and isinstance(results_obj, dict)
+                and dataclasses.is_dataclass(params_obj)
+            ):
+                raw_dict = _freeform_to_explorer_dict(results_obj, params_obj)
+                cost_model = CostModelData.from_forward_result(raw_dict, sensitivities=None)
                 has_cost_model = True
             else:
-                warnings.warn(
-                    f"{concept_id}: {script_path.name} has no to_explorer_dict() "
-                    "— no cost model included",
-                    UserWarning,
-                    stacklevel=2,
-                )
+                # Path 3: discover dataclass with compute(), instantiate with defaults
+                if params_obj is None:
+                    params_obj = _find_freeform_dataclass(loaded_module)
+                if params_obj is not None and dataclasses.is_dataclass(params_obj):
+                    try:
+                        results_obj = params_obj.compute()
+                    except Exception as exc:
+                        results_obj = None
+                        warnings.warn(
+                            f"{concept_id}: compute() failed: {exc}",
+                            UserWarning,
+                            stacklevel=2,
+                        )
+                    if isinstance(results_obj, dict):
+                        raw_dict = _freeform_to_explorer_dict(results_obj, params_obj)
+                        cost_model = CostModelData.from_forward_result(
+                            raw_dict, sensitivities=None
+                        )
+                        has_cost_model = True
+
+                if not has_cost_model:
+                    raw_dict = None
+                    warnings.warn(
+                        f"{concept_id}: {script_path.name} has no to_explorer_dict(), "
+                        "no module-level params/results, and no discoverable dataclass "
+                        "with compute() — no cost model included",
+                        UserWarning,
+                        stacklevel=2,
+                    )
+
+            # Sensitivity: try script's own function, then centralized
+            if has_cost_model and raw_dict is not None:
+                compute_sensitivity = getattr(loaded_module, "compute_sensitivity", None)
+                if compute_sensitivity is not None:
+                    sens_raw = compute_sensitivity()
+                elif (
+                    params_obj is not None
+                    and results_obj is not None
+                    and isinstance(results_obj, dict)
+                    and dataclasses.is_dataclass(params_obj)
+                ):
+                    sens_raw = _compute_sensitivity_from_params(params_obj, results_obj)
+                else:
+                    sens_raw = None
+
+                if sens_raw is not None:
+                    params_dict = raw_dict.get("params", {})
+                    cost_model.sensitivities = _build_sensitivity_from_dict(
+                        sens_raw, params_dict
+                    )
+                    has_sensitivities = True
 
     name = str(frontmatter.get("Concept", concept_dir.name))
     company_raw = frontmatter.get("Company")
@@ -292,7 +511,7 @@ def extract_standalone(
             status=parse_status(frontmatter),
             illustration=None,
             has_cost_model=has_cost_model,
-            has_sensitivities=False,
+            has_sensitivities=has_sensitivities,
             cost_model=cost_model,
             parameter_metadata=param_metadata,
             narrative=narrative,
@@ -551,7 +770,17 @@ def run_extraction(
         if not skip_narrative and analysis_path.exists():
             narrative = extract_narrative(concept_dir, concept_id)
 
-        is_costingfe = (concept_dir / "model_setup.py").exists()
+        # NOTE: import-based detection logic parallels run_model() in
+        # scripts/lib/claude.py. If you change detection here, update there too.
+        model_setup_path = concept_dir / "model_setup.py"
+        if model_setup_path.exists():
+            source = model_setup_path.read_text(encoding="utf-8")
+            is_costingfe = "CostModel" in source and (
+                "from costingfe" in source or "import costingfe" in source
+            )
+        else:
+            is_costingfe = False
+
         if is_costingfe:
             concept_data = extract_costingfe(
                 concept_dir, concept_id, frontmatter, analysis_path, narrative, param_metadata

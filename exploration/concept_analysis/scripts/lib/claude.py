@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import sys
 from dataclasses import dataclass, field
@@ -92,8 +93,9 @@ def invoke_claude(
             cwd=str(cwd),
             timeout=timeout,
         )
-    except subprocess.TimeoutExpired:
-        return InvokeResult("", f"Timed out after {timeout}s", -1)
+    except subprocess.TimeoutExpired as e:
+        partial = (e.stdout or "") if e.stdout else ""
+        return InvokeResult(partial, f"Timed out after {timeout}s", -1)
     except FileNotFoundError:
         return InvokeResult(
             "", "'claude' command not found — is Claude Code installed and on PATH?", -2
@@ -257,4 +259,44 @@ def run_model(model_path: Path, output_path: Path, timeout: int = 120) -> tuple[
         return False, "model output missing LCOE — may be incomplete or broken"
 
     output_path.write_text(stdout, encoding="utf-8")
+
+    _check_interface(model_path)
+
     return True, stdout
+
+
+def _check_interface(model_path: Path) -> None:
+    """Check output interface conformance and print warnings to stderr.
+
+    NOTE: import-based detection logic parallels extract_explorer_data.py routing.
+    If you change detection here, update the extractor too.
+    """
+    source = model_path.read_text(encoding="utf-8")
+    uses_costingfe = "CostModel" in source and (
+        "from costingfe" in source or "import costingfe" in source
+    )
+
+    if uses_costingfe:
+        # costingfe path: check for module-level 'result = ...'
+        if not re.search(r"^result\s*=", source, re.MULTILINE):
+            print(
+                f"WARNING: interface: {model_path.name} uses costingfe but has no "
+                "module-level 'result = model.forward(...)'. The concept explorer "
+                "requires this for extraction.",
+                file=sys.stderr,
+            )
+    else:
+        # freeform path: check for module-level params and results
+        has_params = re.search(r"^params\s*=", source, re.MULTILINE)
+        has_results = re.search(r"^results\s*=", source, re.MULTILINE)
+        if not has_params or not has_results:
+            missing = []
+            if not has_params:
+                missing.append("params")
+            if not has_results:
+                missing.append("results")
+            print(
+                f"WARNING: interface: {model_path.name} is missing module-level "
+                f"{' and '.join(missing)}. The concept explorer requires these for extraction.",
+                file=sys.stderr,
+            )

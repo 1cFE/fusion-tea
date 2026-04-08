@@ -319,7 +319,7 @@ _ENG = dict(
     vessel_t=0.10,                # DEFAULT
 )
 
-# NOAK — He Brayton 45% (base / optimistic scenario)
+# NOAK — He Brayton 45% (base / optimistic scenario) — reference case for explorer
 result_noak = model.forward(
     net_electric_mw=NET_ELECTRIC_MW,
     availability=AVAILABILITY,
@@ -329,6 +329,7 @@ result_noak = model.forward(
     cost_overrides=_overrides(LASER_NOAK_MID_MS),
     **_ENG,
 )
+result = result_noak  # Explorer reference case (NOAK He Brayton)
 
 # NOAK — Steam Rankine 33% (H-3 alternative thermal scenario)
 result_steam = model.forward(

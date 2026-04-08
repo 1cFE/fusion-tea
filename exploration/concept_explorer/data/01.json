@@ -20,7 +20,7 @@
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 8364.00390625,
+      "cost_m_usd": 8364.0048828125,
       "overridden": false
     },
     "cas23": {
@@ -60,7 +60,7 @@
     },
     "cas30": {
       "name": "Indirect Costs",
-      "cost_m_usd": 1490.69384765625,
+      "cost_m_usd": 1490.694091796875,
       "overridden": false
     },
     "cas40": {
@@ -70,12 +70,12 @@
     },
     "cas50": {
       "name": "Supplementary Costs",
-      "cost_m_usd": 432.4393310546875,
+      "cost_m_usd": 432.4393615722656,
       "overridden": false
     },
     "cas60": {
       "name": "Interest During Construction",
-      "cost_m_usd": 1637.192626953125,
+      "cost_m_usd": 1637.1927490234375,
       "overridden": false
     },
     "cas70": {
@@ -90,7 +90,7 @@
     },
     "cas90": {
       "name": "Financial Costs",
-      "cost_m_usd": 1010.6394653320312,
+      "cost_m_usd": 1010.6395263671875,
       "overridden": false
     },
     "cas22_detail": {
@@ -186,8 +186,8 @@
       }
     },
     "headline": {
-      "lcoe_per_mwh": 639.8661499023438,
-      "overnight_cost_per_kw": 48050.05078125,
+      "lcoe_per_mwh": 639.8662719726562,
+      "overnight_cost_per_kw": 48050.0546875,
       "p_net_mw": 261.00006103515625,
       "q_eng": 3.1781816482543945,
       "capacity_factor": 0.75
@@ -394,61 +394,7 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": {
-    "key_bets": [
-      "REBCO tape cost falls to ≤$10/kA-m from current ~$100/kA-m, requiring ~10× reduction and 1-2 orders of magnitude production scale-up",
-      "I-mode confinement regime accessible at ARC operating point (0.55 MW/m²/n₂₀, 9.2 T) — fallback to H-mode cuts net electric output by 2.5-3×",
-      "FLiBe blanket performs under simultaneous neutron flux, 9.2 T magnetic field, and tritium extraction at kg/day rates — three unresolved data gaps",
-      "Demountable HTS TF coil joints enable high-availability maintenance at power-plant tempo (>70-80% capacity factor)",
-      "Compact high-field geometry (R=3.3m, B=9.2T) delivers claimed 1/3 cost of ARIES-RS at 1/4 the electrical output",
-      "8 GHz 25 MW LHCD system achievable at required power levels for non-inductive sustainment (only 6 GHz proven reliable)"
-    ],
-    "eliminated_costs": [
-      "Complex solid blanket module handling — FLiBe liquid immersion replaces discrete solid ceramic breeder modules",
-      "ELM-driven first-wall erosion and accelerated divertor replacement — I-mode operation eliminates ELMs",
-      "Massive reactor hall and structural cost of large-bore conventional tokamaks — compact geometry reduces volume"
-    ],
-    "novel_costs": [
-      "REBCO HTS magnet system dominates at ~92% of fabricated component cost ($5.1-5.2B of $5.56B), with tape price uncertainty spanning 5-10×",
-      "FLiBe chemistry plant and molten-salt tritium extraction system — no analogue in ARIES studies, estimated $100-200M+ floor",
-      "Lithium-6 enrichment facility for TBR optimization — limited Western supply, current processes banned in EU/US",
-      "Beryllium supply chain for FLiBe production at fleet scale — 10-plant fleet would exceed current global Be production by an order of magnitude"
-    ],
-    "risks": [
-      {
-        "description": "REBCO tape cost remains well above $10/kA-m commercial target — currently ~$100/kA-m, the single largest input uncertainty in the cost model",
-        "severity": "high"
-      },
-      {
-        "description": "Capacity factor unknown and unpublished — 2× swing (50% vs 90%) produces near-2× LCOE swing for this CAPEX-heavy concept",
-        "severity": "high"
-      },
-      {
-        "description": "FLiBe blanket behavior under fusion conditions unresolved: tritium extraction timescales, MHD heat transfer under 9.2T field, radiation-assisted Inconel corrosion — any could force blanket redesign",
-        "severity": "high"
-      },
-      {
-        "description": "I-mode confinement not validated at ARC parameters — exceeds published regime; failure drops net electric from ~261 MWe to ~80-100 MWe with identical capital cost",
-        "severity": "medium"
-      },
-      {
-        "description": "FOAK-to-NOAK cost gap is a step-function risk: CATF IWG estimates 150-200 $/MWh FOAK vs 60-100 $/MWh NOAK, a 2-3× gap driven by manufacturing complexity",
-        "severity": "medium"
-      },
-      {
-        "description": "Regulatory framework incomplete — NRC Part 30 favorable but detailed rulemaking unfinished; Part 50 equivalent would impose 2.2× building cost markup",
-        "severity": "medium"
-      },
-      {
-        "description": "Global tritium supply (~25-30 kg civilian inventory, decaying 5.5%/yr) constrains first-of-kind D-T deployment — no margin for breeding shortfalls",
-        "severity": "medium"
-      },
-      {
-        "description": "REBCO coil lifetime under combined radiation and fatigue truly unknown — 9 FPY is shielding-based limit, actual degradation uncharacterized",
-        "severity": "medium"
-      }
-    ]
-  },
+  "narrative": null,
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/01-hts-compact-tokamak/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/01-hts-compact-tokamak/analysis.md"

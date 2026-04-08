@@ -52,6 +52,16 @@ the model code. Address each one when generating the script:
 6. Key Assumptions summary
 7. Sensitivity analysis via `model.sensitivity()`
 
+### Output Interface (CRITICAL)
+The concept explorer consumes `model` and `result` at module level for
+cross-concept comparison. You MUST follow this convention:
+
+1. `model = CostModel(...)` at module level (NOT inside a function)
+2. `result = model.forward(...)` at module level — this variable MUST be named `result`
+3. For multi-scenario scripts (e.g., NOAK vs FOAK), choose the reference case
+   (prefer NOAK if available) and assign `result = model.forward(...)` for that case.
+   Other scenarios may use any variable name (e.g., `result_foak = model.forward(...)`).
+
 ### Traceability (CRITICAL)
 Every parameter and cost override MUST have an inline comment citing the source:
 ```python

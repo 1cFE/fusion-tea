@@ -92,6 +92,29 @@ Include in `main()`:
 3. Scenario comparison table (conservative, moderate, optimistic)
 4. Brief "Key Binding Constraints" narrative for the top 3 LCOE drivers
 
+## Output Interface (CRITICAL)
+The concept explorer consumes module-level variables for cross-concept
+comparison. You MUST expose the following at module level (outside `main()`
+or any other function):
+
+```python
+# After defining the dataclass and before main():
+params = YourDataclass(...)     # The @dataclass instance with all plant parameters
+results = params.compute()      # The full output dict from compute()
+```
+
+The extractor reads `params` and `results` directly — no additional mapping
+functions needed. Your `compute()` method MUST return a dict with these sub-dicts
+using the exact key names shown:
+
+- `"costs"`: `CAS10` through `CAS60`, `CAS20`, `total_capital`, `overnight_capital` (all in M$)
+- `"economics"`: `CAS70`, `CAS71`, `CAS72`, `CAS80`, `CAS90`, `lcoe_USD_per_MWh`
+- `"cas22"`: `C220101` through `C220112`, `C220200` through `C220700` (all in M$)
+- `"power"`: `p_fus`, `p_th`, `p_et`, `p_net`, `Q_eng`, `Q_sci`, `recirc_fraction` (per-module, in MW)
+
+For multi-module concepts, also include `p_net_plant`, `p_et_plant`, `p_th_plant`
+in the `"power"` dict.
+
 ## Anti-Hallucination
 - Parameter values MUST come from the analysis or documented analogues
 - Scaling laws MUST come from 1costingfe or published fusion engineering references

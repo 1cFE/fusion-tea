@@ -20,7 +20,7 @@
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 2141.4248046875,
+      "cost_m_usd": 2141.424560546875,
       "overridden": false
     },
     "cas23": {
@@ -60,7 +60,7 @@
     },
     "cas30": {
       "name": "Indirect Costs",
-      "cost_m_usd": 538.2484130859375,
+      "cost_m_usd": 538.2483520507812,
       "overridden": false
     },
     "cas40": {
@@ -394,62 +394,7 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": {
-    "key_bets": [
-      "Full HTS coil set (TF+PF+CS all in REBCO) operating at 25 T peak field — validated at 21.7 T test magnet but unproven at commercial scale and duty cycle",
-      "AI-based plasma control system enabling steady-state operation and high capacity factor at burning-plasma conditions",
-      "Compact high-field geometry (~14 T on-axis, ~70% SPARC volume) achieving Q > 10 in a smaller, lower-cost machine than conventional tokamaks",
-      "China-domestic supply chain with >95% localization delivering structural cost advantage through manufacturing scale",
-      "REBCO tape cost reduction from ~$30–100/kA-m to ~$10/kA-m enabling commercial magnet system economics",
-      "Blanket and tritium breeding system (entirely undisclosed) achieving adequate TBR for tritium self-sufficiency"
-    ],
-    "eliminated_costs": [
-      "Mixed LTS/HTS cryogenic systems — uniform 20 K cryoplant for all coils eliminates dual-temperature cryogenic circuits",
-      "Reduced structural material and building volume vs. conventional large-bore tokamaks (ITER-class) due to compact high-field geometry",
-      "Shorter construction timeline (<2 years demonstrated for HH70 prototype) potentially reducing IDC and construction labor costs",
-      "Reduced disruption repair costs if AI plasma control achieves projected steady-state reliability"
-    ],
-    "novel_costs": [
-      "Higher REBCO tape demand for full HTS coil set (CS+PF beyond TF-only baseline) — hts_full_coil_premium ×1.1–×1.3 on C220103",
-      "CS coil reconditioning or mid-life replacement cost under cyclic EM loading at 25 T — no fatigue data exists globally",
-      "Opaque China-domestic cost basis creating barriers to international cost benchmarking and financing risk assessment",
-      "Potential need for redundant or radiation-hardened AI control system infrastructure for burning-plasma conditions"
-    ],
-    "risks": [
-      {
-        "description": "No commercial design point exists — HH380 has no published engineering parameters, making all LCOE estimates wholesale analogue assumptions with ±50% or greater uncertainty",
-        "severity": "high"
-      },
-      {
-        "description": "Blanket design entirely undisclosed — no tritium breeding concept, material, or TBR target; structurally unresolvable until post-2030 HH380 engineering phase",
-        "severity": "high"
-      },
-      {
-        "description": "Full HTS CS coils at 25 T under cyclic EM loading have no published fatigue or reliability data — failure scenario drops availability to 65% with +21.7% LCOE impact",
-        "severity": "high"
-      },
-      {
-        "description": "Global REBCO tape production capacity (few thousand km/year) is below fleet-scale demand; tape cost must fall 3-10× for commercial viability",
-        "severity": "high"
-      },
-      {
-        "description": "AI plasma control unvalidated at burning-plasma conditions — underperformance scenario yields 70% availability with +13.7% LCOE impact",
-        "severity": "medium"
-      },
-      {
-        "description": "Chinese regulatory framework for fusion power plants still being formulated — international market access and grid-connection frameworks uncertain",
-        "severity": "medium"
-      },
-      {
-        "description": "Tritium startup inventory (~1 kg at >$35,000/g) must be acquired before first D-T burn with no evidence of procurement planning",
-        "severity": "medium"
-      },
-      {
-        "description": "Power conversion cycle type and thermal efficiency undisclosed — blocking parameter for recirculating power and net electric output estimation",
-        "severity": "medium"
-      }
-    ]
-  },
+  "narrative": null,
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/28-hts-tokamak-full-hts/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/28-hts-tokamak-full-hts/analysis.md"

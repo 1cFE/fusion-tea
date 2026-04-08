@@ -314,66 +314,7 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": {
-    "key_bets": [
-      "Direct EM energy recovery achieves ≥90% round-trip efficiency at commercial field strengths and rep rates",
-      "D-He3 fusion operation at ~200M°C / 17 keV with sufficient yield per pulse",
-      "He3 self-breeding cycle via D-D side reactions and tritium decay is economically viable at commercial scale",
-      "Rep rate scales from ~0.002 Hz (Trenta) to 2 Hz commercial design point — a 1000× increase",
-      "Pulsed aluminum coils withstand 40 T compression fields with adequate lifetime at 10⁹ pulse cycles",
-      "Capacitor bank cost achieves ~10× reduction from current $5/J to ~$0.50/J through NOAK manufacturing"
-    ],
-    "eliminated_costs": [
-      "REBCO HTS superconducting magnets and associated cryogenic plant — replaced by room-temperature pulsed aluminum coils",
-      "Tritium breeding blanket (FLiBe/WCCB, ~$200–500M) — not required for D-He3 commercial operation",
-      "Steam/thermal power conversion island (turbines, condensers, heat exchangers) — replaced by direct Faraday inductive recovery",
-      "Heavy neutron shielding and activation management — D-He3 produces only ~5% neutron energy vs ~80% for D-T"
-    ],
-    "novel_costs": [
-      "High-voltage pulsed capacitor bank and IGBT switching system — primary energy storage with no published $/J cost curve at required lifetime and rep rate",
-      "He3 self-breeding and isotopic separation plant — tritium storage for 12.3-year decay period, no commercial analogue exists",
-      "Pulsed aluminum coil replacement and fatigue management at 2+ Hz commercial duty cycle — no published maintenance data",
-      "Direct inductive energy recovery system at full commercial scale — demonstrated only at subscale in 2015"
-    ],
-    "risks": [
-      {
-        "description": "Energy recovery efficiency below ~90% threshold makes plant a net energy consumer — go/no-go cliff, not gradual degradation. Public values range 70–95% with unresolved definitional ambiguity.",
-        "severity": "high"
-      },
-      {
-        "description": "No D-He3 fusion demonstrated in any Helion prototype — failure forces fallback to D-T, requiring complete architectural redesign (breeding blanket, heavy shielding, thermal conversion)",
-        "severity": "high"
-      },
-      {
-        "description": "He3 self-breeding never demonstrated at any scale — without it, no viable fuel path exists for D-He3 commercial operation",
-        "severity": "high"
-      },
-      {
-        "description": "Rep rate gap of ~1000× from Trenta (0.002 Hz) to commercial target (2 Hz) — failure degrades LCOE proportionally, halving rep rate doubles capital cost per MWe",
-        "severity": "high"
-      },
-      {
-        "description": "No published Q (gain) value for any prototype — the most fundamental LCOE parameter is entirely uncharacterized publicly",
-        "severity": "high"
-      },
-      {
-        "description": "40 T pulsed compression field requires 25× magnetic pressure increase over Trenta's 8 T — outside demonstrated experience for pulsed aluminum coils",
-        "severity": "medium"
-      },
-      {
-        "description": "Capacitor bank cost at ~$5/J baseline yields LCOE >500 c/kWh — viability requires 10× cost reduction to ~$0.50/J with no published learning curve",
-        "severity": "medium"
-      },
-      {
-        "description": "No independent plant study (ARIES/ARC/PROCESS equivalent) exists — all cost estimates derive from sparse public disclosures with no peer review",
-        "severity": "medium"
-      },
-      {
-        "description": "O&M costs completely uncharacterized — no analogue plant exists for pulsed EM systems at commercial duty cycle",
-        "severity": "medium"
-      }
-    ]
-  },
+  "narrative": null,
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/08-frc-w-direct-conversion/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/08-frc-w-direct-conversion/analysis.md"

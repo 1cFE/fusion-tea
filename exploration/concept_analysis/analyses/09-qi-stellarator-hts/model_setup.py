@@ -1,4 +1,4 @@
-# STALE: analysis-updated-iter-8
+# STALE: analysis-updated-iter-9
 """QI Stellarator — HTS (Proxima Fusion Stellaris) — LCOE estimate.
 
 Usage:
@@ -80,6 +80,18 @@ Modeling approach:
     constraining steam Rankine to ~500°C. Gross thermal efficiency ≈ 38% (lower than
     Helios's 40% which uses vanadium alloy at 635°C; analysis.md §3). Net plant efficiency
     ~32% (1,000 MWe / 3,100 MWth; analysis.md §5) after recirculating power deduction.
+
+    iter-9 updates vs. iter-8 (review feedback F-2 and F-3):
+    F-2: Added CAS70 O&M structural uplift note to printed CAS table and added an O&M
+        multiplier sweep (1×, 1.5×, 2×). The framework CAS70 default does not model the
+        port-access O&M penalty identified as "Structural +" in analysis.md §7. The sweep
+        bounds the LCOE impact of this unknown uplift alongside the coil cost multiplier
+        sweep already present.  Source: feedback.md F-2; analysis.md §7 (O&M delta paragraph).
+    F-3: Added construction time sweep (7, 8, 10, 12 yr). construction_time_yr has the
+        third-highest engineering elasticity (+0.40) and no Stellaris-specific estimate exists.
+        IDC (CAS60 ~$1.7B) propagates schedule uncertainty directly into LCOE at ~4% per year.
+        Source: feedback.md F-3; analysis.md §2 (construction_time_yr in sensitivity list).
+    FIX: Added module-level `result = result_h4true` for concept-explorer consumption.
 
     iter-8 updates vs. iter-7 (review feedback PA-1 through F-3):
     CF-F1: Blanket/divertor replacement interval (1–4 yr from Queral et al. 2025,
@@ -295,6 +307,12 @@ result_h4true = model.forward(
     # Source: analysis.md §2, Challenge 1; §7 (C220103 row)
 )
 
+# Module-level alias for concept-explorer consumption (Scenario A = conservative reference).
+# Scenario A (H4-true, 5 MW ECRH) is the reference case: it uses the ignited ECRH assumption
+# (optimistic on H&CD cost) but conservative on coil cost (framework default = lower bound).
+# The concept-explorer reads `result` and `model` for cross-concept LCOE comparison.
+result = result_h4true
+
 # ── Results — Scenario A ──────────────────────────────────────────────────
 
 c_a  = result_h4true.costs
@@ -344,6 +362,11 @@ for code, name, val in cas_rows:
     print(f"{code:<8} {name:<28} {float(val):>10.1f}")
 print("-" * 48)
 print(f"{'':8} {'Total Capital':<28} {float(c_a.total_capital):>10.1f}")
+print(f"NOTE: CAS70 = DEFAULT ({float(c_a.cas70):.1f} M$/yr annualized) — O&M structural uplift")
+print(f"      vs. HTS compact tokamak reference NOT modeled. Port-access constraint from")
+print(f"      modular stellarator coil geometry implies higher blanket/divertor maintenance")
+print(f"      cost (direction: +; magnitude: unknown). See analysis.md §7 O&M delta paragraph")
+print(f"      and O&M multiplier sweep below. Source: feedback.md F-2; arxiv-2501-04640.md.")
 
 # ── CAS22 sub-account detail ──────────────────────────────────────────────
 
@@ -538,6 +561,84 @@ print("  0–1 percentage points — insufficient to offset the 3D coil manufact
 print("  H2 gate cannot be evaluated quantitatively until the 01 analysis provides a")
 print("  comparable CF estimate. Source: feedback.md CF-H2; analysis.md §2, H2.")
 
+# ── O&M multiplier sweep (structural uplift — F-2 finding) ───────────────
+# CAS70 uses the framework default for DT stellarator O&M. The analysis (§7, O&M delta
+# paragraph) identifies a structural O&M penalty relative to compact HTS tokamaks due to
+# port-access constraints from modular stellarator coil architecture — "relatively small
+# ports for in-vessel access and maintenance, i.e. in comparison with tokamaks" (Queral
+# et al. 2025; arxiv-2501-04640.md, abstract). This constraint is generic to advanced
+# modular stellarators, not Stellaris-specific. The magnitude is truly unknown (Gap 7).
+# This sweep bounds the LCOE impact of the O&M structural uplift, as requested in F-2.
+# Source: feedback.md F-2; analysis.md §7 (O&M delta paragraph); arxiv-2501-04640.md;
+#         analysis.md §6, Gap 7 (O&M truly-unknown gap)
+
+_base_cas70 = float(result_h4true.costs.cas70)
+# CAS70 is not a supported cost_overrides key in the framework (capital accounts only).
+# Compute O&M LCOE contribution manually: LCOE_OM = (CAS70 × 1e6) / (P_net × CF × 8760 × 1e3)
+_annual_energy_mwh = _P_NET_MWE * _AVAILABILITY_BASE * 8760.0  # MWh/yr
+_lcoe_om_base = _base_cas70 * 1e6 / _annual_energy_mwh         # $/MWh — O&M contribution to LCOE
+
+print(f"\nO&M multiplier sweep (CAS70 structural uplift — F-2 finding):")
+print(f"Base CAS70 (framework default): {_base_cas70:.1f} M$/yr → {_lcoe_om_base:.1f} $/MWh LCOE contribution")
+print(f"NOTE: DEFAULT — O&M structural uplift vs. HTS compact tokamak reference not modeled.")
+print(f"      Port-access constraint from modular coil geometry implies higher maintenance cost")
+print(f"      (direction: +; magnitude: unknown). Source: analysis.md §7; feedback.md F-2.")
+print(f"NOTE: CAS70 is not a supported cost_overrides key; LCOE delta computed analytically.")
+_lcoe_non_om = float(result_h4true.costs.lcoe) - _lcoe_om_base  # capital + fuel share of LCOE
+print(f"{'Multiplier':<14} {'CAS70 (M$/yr)':>14} {'OM $/MWh':>10} {'Total LCOE':>12} {'Repl $/MWh':>12} {'Incl.Repl LCOE':>16}")
+print("-" * 80)
+
+for _om_mult in [1.0, 1.5, 2.0]:
+    _cas70_adj = _base_cas70 * _om_mult
+    _lcoe_om_adj = _cas70_adj * 1e6 / _annual_energy_mwh
+    _total_lcoe_adj = _lcoe_non_om + _lcoe_om_adj
+    _repl_om = _repl_lcoe(_c220103_base)
+    _label = "DEFAULT" if _om_mult == 1.0 else f"{_om_mult}×"
+    print(f"  {_label:<12} {_cas70_adj:>14.1f} {_lcoe_om_adj:>10.1f} {_total_lcoe_adj:>11.1f}"
+          f" {_repl_om:>11.1f}  {_total_lcoe_adj + _repl_om:>14.1f}")
+
+print("  (1× = framework default; 1.5× = moderate uplift; 2× = high uplift)")
+print("  Magnitude is truly unknown — no stellarator reactor O&M cost models published.")
+print("  O&M is the second-largest ongoing cost after financial charges; the default is a")
+print("  lower bound for the same structural reason that C220103 is a lower bound.")
+print("  Source: analysis.md §7 (O&M row); analysis.md §6, Gap 7 (O&M truly-unknown gap)")
+
+# ── Construction time sweep (IDC sensitivity — F-3 finding) ──────────────
+# construction_time_yr elasticity +0.40 — third-highest engineering lever, above R0 (+0.31).
+# IDC (CAS60) is among the largest single cost accounts. A 20% schedule extension adds ~8%
+# to LCOE. No Stellaris-specific construction schedule has been published (Gap #11 proxy).
+# F-3 (feedback.md): "sweep absent despite being the third-highest LCOE lever."
+# Source: analysis.md §2 (construction_time_yr in sensitivity parameter list); feedback.md F-3;
+#         analysis.md §2, Challenge 4; Key Assumption #14 below.
+
+print(f"\nConstruction time sweep (IDC sensitivity — F-3 finding):")
+print(f"Scenario A (H4-true, 5 MW ECRH), DEFAULT C220103 and CAS70")
+print(f"Elasticity confirmed at +0.40 by autodiff below; ~4% LCOE per additional year")
+print(f"Source: analysis.md §2 (construction_time sensitivity parameter); feedback.md F-3")
+print(f"{'Time (yr)':<12} {'Init. LCOE':>12} {'Repl $/MWh':>12} {'Incl.Repl LCOE':>16}  Note")
+print("-" * 78)
+
+_ct_cases = [
+    (7.0,  "optimistic — ARC-class compact tokamak schedule analogue"),
+    (8.0,  "framework default (mfe_stellarator.yaml) ← central"),
+    (10.0, "pessimistic — first-of-kind 13 m machine with 3D coil install"),
+    (12.0, "worst-case — schedule slippage analogous to large fission projects"),
+]
+for _ct, _ct_note in _ct_cases:
+    _shared_ct = {k: v for k, v in _SHARED.items()}
+    _shared_ct["construction_time_yr"] = _ct
+    _r_ct = model.forward(p_input=5.0, **_shared_ct)
+    _repl_ct = _repl_lcoe(_c220103_base)
+    print(f"  {_ct:<10.0f} {float(_r_ct.costs.lcoe):>11.1f} {_repl_ct:>11.1f}  "
+          f"{float(_r_ct.costs.lcoe) + _repl_ct:>14.1f}  {_ct_note}")
+
+print("  UNCERTAIN: No Stellaris construction schedule published; 8-yr default is a")
+print("  plausible starting estimate for a 13 m machine with complex 3D coil geometry.")
+print("  The financial expression of the scale penalty (Challenge 2) propagates into IDC")
+print("  (CAS60) through construction_time_yr. This is independent of the coil cost multiplier.")
+print("  Source: analysis.md §2 (construction time as expression of scale penalty);")
+print("          analysis.md §2, Challenge 4; mfe_stellarator.yaml (default 8.0 yr)")
+
 # ── Key Assumptions ───────────────────────────────────────────────────────
 
 print("""
@@ -701,9 +802,22 @@ Key Assumptions
     scale penalty (Challenge 2) propagates not just into nuclear island capital accounts but
     also into the construction schedule, which compounds the cost through IDC.
     No Stellaris-specific construction schedule has been published. The 8-year default is
-    used without override; sensitivity to this parameter is visible in the model's autodiff.
-    Source: feedback.md CF-CT; analysis.md §2 (Recommended Modeling Approach, sensitivity
+    used without override; sensitivity quantified in the construction time sweep above.
+    Source: feedback.md CF-CT, F-3; analysis.md §2 (Recommended Modeling Approach, sensitivity
             parameter list); mfe_stellarator.yaml (default construction_time_yr=8.0).
+
+15. CAS70 O&M — DEFAULT lower bound; structural uplift not modeled [F-2 iter-8]
+    The framework CAS70 default is calibrated to a generic DT stellarator. The analysis
+    (§7, O&M delta paragraph) identifies a structural O&M penalty vs. compact HTS tokamaks:
+    non-planar modular coil architecture leaves "relatively small ports for in-vessel access
+    and maintenance, i.e. in comparison with tokamaks" (Queral et al. 2025; arxiv-2501-04640.md).
+    This is a generic consequence of modular coil geometry, not a Stellaris-specific choice.
+    The magnitude is truly unknown — no stellarator reactor O&M cost models exist (Gap 7).
+    O&M is the second-largest ongoing cost after financial charges; the framework default is
+    therefore a lower bound for the same structural reason that C220103 is a lower bound.
+    The O&M multiplier sweep above (1×–2×) brackets the LCOE impact of this uncertainty.
+    Source: feedback.md F-2; analysis.md §7 (O&M delta paragraph); arxiv-2501-04640.md;
+            analysis.md §6, Gap 7 (O&M truly-unknown gap).
 """)
 
 # ── Sensitivity Analysis ──────────────────────────────────────────────────

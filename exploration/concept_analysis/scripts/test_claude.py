@@ -4,7 +4,7 @@
 import json
 from unittest.mock import patch, MagicMock
 
-from lib.claude import InvokeResult, invoke_claude, _parse_json_events
+from lib.claude import InvokeResult, invoke_claude, _parse_json_events, _check_interface
 
 
 # ---------------------------------------------------------------------------
@@ -183,3 +183,72 @@ class TestInvokeClaude:
         assert result.returncode == 1
         assert result.session_id == "err-sid"
         assert result.stdout == "error output"
+
+
+# ---------------------------------------------------------------------------
+# Interface validation (_check_interface)
+# ---------------------------------------------------------------------------
+
+
+class TestCheckInterface:
+    def test_conforming_costingfe_no_warnings(self, tmp_path, capsys):
+        """costingfe script with 'result = ...' at module level → no warnings."""
+        script = tmp_path / "model_setup.py"
+        script.write_text(
+            "from costingfe.model import CostModel\n"
+            "model = CostModel()\n"
+            "result = model.forward()\n"
+        )
+        _check_interface(script)
+        captured = capsys.readouterr()
+        assert "WARNING" not in captured.err
+
+    def test_missing_result_warns(self, tmp_path, capsys):
+        """costingfe script without module-level 'result =' → warning."""
+        script = tmp_path / "model_setup.py"
+        script.write_text(
+            "from costingfe.model import CostModel\n"
+            "model = CostModel()\n"
+            "output = model.forward()\n"  # wrong name
+        )
+        _check_interface(script)
+        captured = capsys.readouterr()
+        assert "result" in captured.err.lower()
+
+    def test_freeform_missing_to_explorer_dict_warns(self, tmp_path, capsys):
+        """Freeform script without to_explorer_dict → warning."""
+        script = tmp_path / "model_setup.py"
+        script.write_text(
+            "# freeform script\n"
+            "params = {}\n"
+            "results = compute()\n"
+        )
+        _check_interface(script)
+        captured = capsys.readouterr()
+        assert "to_explorer_dict" in captured.err
+
+    def test_freeform_with_to_explorer_dict_no_warnings(self, tmp_path, capsys):
+        """Freeform script with to_explorer_dict → no warnings."""
+        script = tmp_path / "model_setup.py"
+        script.write_text(
+            "# freeform script\n"
+            "params = {}\n"
+            "def to_explorer_dict():\n"
+            "    return {}\n"
+        )
+        _check_interface(script)
+        captured = capsys.readouterr()
+        assert "WARNING" not in captured.err
+
+    def test_indented_result_not_counted(self, tmp_path, capsys):
+        """'result = ...' inside a function (indented) should still warn."""
+        script = tmp_path / "model_setup.py"
+        script.write_text(
+            "from costingfe.model import CostModel\n"
+            "model = CostModel()\n"
+            "def run():\n"
+            "    result = model.forward()\n"  # indented — not module-level
+        )
+        _check_interface(script)
+        captured = capsys.readouterr()
+        assert "result" in captured.err.lower()

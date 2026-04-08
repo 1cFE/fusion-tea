@@ -87,6 +87,22 @@ The Taleyarkhan misconduct case (2008) has severely damaged sonofusion's credibi
 
 ---
 
+### Conditional LCOE Framing and Testable Propositions
+
+The challenges above treat scientific viability as binary — either fusion is demonstrated or analysis cannot proceed. That framing is correct for the current moment. However, the TEA model reveals a structural insight about what would matter *if* the physics works.
+
+**Conditional LCOE sensitivity.** Conditional on achieving net-positive fusion gain, plant availability (|ε| = 0.95), WACC (|ε| = 0.94), and thermal efficiency (|ε| = 0.75) are more elastic to LCOE than Q itself (|ε| = 0.56) at the baseline operating point. Q sets the floor for net-positive operation — but once Q clears that floor, financing terms and heat-cycle efficiency dominate LCOE far more than further improvements in fusion gain. A reader finishing Section 2 might conclude "Q is everything," but the model shows that conditional on viability, plant financing and thermal conversion matter more than plasma performance. This shapes where modelling sensitivity effort should concentrate in any viable scenario.
+
+**Key uncertainties as testable propositions.** The unknowns are better framed as testable conditional propositions than as open questions:
+
+1. **Q threshold for commercial viability.** Net-positive electrical output requires Q ≥ ~3.5 at baseline driver efficiency and thermal conversion parameters. Demonstrating Q = 1 in a laboratory would place commercial viability within a factor of ~4 in gain — a defined and measurable milestone rather than an unbounded open question.
+
+2. **Vessel cost scaling.** D₂O vessel cost scales approximately as r³ with vessel radius. Vessels smaller than ~2 m radius substantially reduce capital cost but must confine the same fusion power density — a design optimisation target that is solvable in principle, independent of fusion physics.
+
+3. **Driver efficiency floor.** The acoustic driver's recirculating power fraction sets a hard efficiency floor on net electrical output. PZT transducer wall-plug efficiency above ~85% provides minimal further LCOE leverage; reducing the recirculating power fraction has substantially more impact. This creates an engineering design target for driver architecture.
+
+---
+
 ## Section 3: Maturity of Key Subsystems and Components
 
 Subsystems listed in ascending order of maturity (least mature first).
@@ -244,6 +260,14 @@ The vast majority of LCOE-relevant parameters are unknown for this concept. No r
 ## Section 7: Cross-Concept Notes
 
 **Approved prior analyses consulted**: 01-hts-compact-tokamak, 07-maglif, 08-frc-w-direct-conversion, 11-magnetic-mirror, 21-spherical-tokamak-hts.
+
+**Nearest-neighbor concepts.** By implosion physics — a pulsed driver compressing a target to fusion conditions — acoustic ICF belongs structurally to the Inertial Confinement Fusion family. The two nearest conceptual neighbors are:
+
+*Laser ICF* (NIF, ELI-NP): Shares the implosion-driven compression physics and pulsed operating mode. The key structural difference is driver energy per event. NIF delivers ~1.8 MJ per shot to a single target; acoustic cavitation delivers estimated picojoules to nanojoules per bubble implosion — roughly 15–18 orders of magnitude less energy per event. The acoustic concept compensates with high event rate (10⁷/s vs. Hz-scale for laser ICF), but cannot approach the energy density needed for thermonuclear ignition without closing the ~4-order-of-magnitude temperature gap.
+
+*Heavy-ion ICF*: Shares the concept of using a non-laser driver for inertial compression — both are "driver-of-choice" alternatives to laser ICF. But heavy-ion drivers operate at the opposite energy extreme (GeV-class accelerators, even more energetic than NIF-class lasers), while acoustic drivers are billions of times less energetic. The structural similarity is the driver-substitution concept; the practical physics could not be more different.
+
+A third structural neighbor is *Magnetized Target Fusion (MTF / MagLIF)*: like acoustic ICF, MTF uses a mechanical compression driver rather than a laser, and operates in the pressure-temperature space between MFE and IFE. The key distinction is that MTF has demonstrated plasma formation and partial fusion conditions; acoustic ICF has not demonstrated temperatures above sonoluminescence levels. Sonofusion sits at the low-driver-energy extreme of the IFE family tree — conceptually adjacent to laser ICF, practically distant in driver energy and achieved temperature.
 
 None of the approved prior analyses are directly applicable to sonofusion. All five are mature MFE or MIF concepts with demonstrated fusion physics, commercial reactor designs (at least conceptual), and quantitative LCOE parameters — conditions that do not apply here.
 

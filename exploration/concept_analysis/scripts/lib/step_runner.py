@@ -105,6 +105,8 @@ def run_claude_step(
     if rc != 0:
         print(f" FAILED ({elapsed:.0f}s, rc={rc})")
         print(f"    stderr: {stderr[:500]}", file=sys.stderr)
+        if stdout.strip():
+            print(f"    partial stdout: {stdout[:500]}", file=sys.stderr)
         if on_failure_cleanup:
             on_failure_cleanup()
         return StepResult(status="failed", stdout=stdout, stderr=stderr, rc=rc, elapsed=elapsed)

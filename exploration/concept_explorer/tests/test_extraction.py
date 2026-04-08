@@ -441,6 +441,193 @@ class TestExtractStandalone:
 
 
 # ---------------------------------------------------------------------------
+# Routing detection: import-based costingfe vs freeform
+# ---------------------------------------------------------------------------
+
+
+class TestRoutingDetection:
+    """Verify that run_extraction routes based on module content, not filename."""
+
+    def test_freeform_model_setup_routes_to_standalone(self, tmp_path: Path) -> None:
+        """model_setup.py without costingfe import → standalone pathway."""
+        analyses_dir = tmp_path / "analyses"
+        analyses_dir.mkdir()
+        concept_dir = _make_concept_dir(
+            analyses_dir, concept_id="12", with_model_setup=False, with_analysis=True
+        )
+        # Freeform model_setup.py — no costingfe imports
+        (concept_dir / "model_setup.py").write_text(
+            "# freeform script\nparams = None\n"
+            "def to_explorer_dict(): return {}\n",
+            encoding="utf-8",
+        )
+
+        valid_cost_model = _build_minimal_cost_model_dict()
+
+        def fake_to_explorer_dict() -> dict[str, Any]:
+            return valid_cost_model
+
+        mock_module = types.SimpleNamespace(to_explorer_dict=fake_to_explorer_dict)
+
+        with patch(
+            "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
+            return_value=mock_module,
+        ) as mock_load:
+            run_extraction(
+                analyses_dir=analyses_dir,
+                data_dir=tmp_path / "data",
+                skip_narrative=True,
+            )
+
+        # Verify the module was loaded (standalone pathway loads it)
+        mock_load.assert_called_once()
+        # Verify output was written and has cost model from to_explorer_dict
+        data = json.loads((tmp_path / "data" / "12.json").read_text())
+        assert data["has_cost_model"] is True
+
+    def test_costingfe_model_setup_routes_to_costingfe(self, tmp_path: Path) -> None:
+        """model_setup.py with CostModel import → costingfe pathway."""
+        analyses_dir = tmp_path / "analyses"
+        analyses_dir.mkdir()
+        concept_dir = _make_concept_dir(
+            analyses_dir, concept_id="01", with_model_setup=False, with_analysis=True
+        )
+        # Costingfe model_setup.py
+        (concept_dir / "model_setup.py").write_text(
+            "from costingfe.model import CostModel\n"
+            "model = CostModel()\nresult = model.forward()\n",
+            encoding="utf-8",
+        )
+
+        result = _make_forward_result()
+        model = _make_mock_model()
+        mock_module = types.SimpleNamespace(model=model, result=result)
+
+        with patch(
+            "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
+            return_value=mock_module,
+        ):
+            run_extraction(
+                analyses_dir=analyses_dir,
+                data_dir=tmp_path / "data",
+                skip_narrative=True,
+            )
+
+        data = json.loads((tmp_path / "data" / "01.json").read_text())
+        assert data["has_sensitivities"] is True  # Only costingfe pathway sets this
+
+    def test_costingfe_constants_only_routes_to_standalone(self, tmp_path: Path) -> None:
+        """import costingfe for constants (no CostModel) → standalone pathway."""
+        analyses_dir = tmp_path / "analyses"
+        analyses_dir.mkdir()
+        concept_dir = _make_concept_dir(
+            analyses_dir, concept_id="15", with_model_setup=False, with_analysis=True
+        )
+        # Imports costingfe but no CostModel usage
+        (concept_dir / "model_setup.py").write_text(
+            "from costingfe.constants import SOME_VALUE\n"
+            "params = None\n"
+            "def to_explorer_dict(): return {}\n",
+            encoding="utf-8",
+        )
+
+        valid_cost_model = _build_minimal_cost_model_dict()
+
+        def fake_to_explorer_dict() -> dict[str, Any]:
+            return valid_cost_model
+
+        mock_module = types.SimpleNamespace(to_explorer_dict=fake_to_explorer_dict)
+
+        with patch(
+            "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
+            return_value=mock_module,
+        ):
+            run_extraction(
+                analyses_dir=analyses_dir,
+                data_dir=tmp_path / "data",
+                skip_narrative=True,
+            )
+
+        data = json.loads((tmp_path / "data" / "15.json").read_text())
+        # Routed to standalone — has_sensitivities is False (no compute_sensitivity on mock)
+        assert data["has_sensitivities"] is False
+        assert data["has_cost_model"] is True
+
+    def test_standalone_prefers_model_setup_py(self, tmp_path: Path) -> None:
+        """When model_setup.py exists alongside other .py, it's loaded first."""
+        concept_dir = _make_concept_dir(tmp_path, with_model_setup=False, with_analysis=True)
+        # Create two .py files — aaa.py sorts first alphabetically
+        (concept_dir / "aaa_script.py").write_text("# should not be loaded\n")
+        (concept_dir / "model_setup.py").write_text("# freeform\n")
+
+        valid_cost_model = _build_minimal_cost_model_dict()
+
+        def fake_to_explorer_dict() -> dict[str, Any]:
+            return valid_cost_model
+
+        mock_module = types.SimpleNamespace(to_explorer_dict=fake_to_explorer_dict)
+
+        with patch(
+            "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
+            return_value=mock_module,
+        ) as mock_load:
+            extract_standalone(
+                concept_dir=concept_dir,
+                concept_id="12",
+                frontmatter={"Concept": "Test", "Status": "approved"},
+                analysis_path=concept_dir / "analysis.md",
+                narrative=None,
+                param_metadata={},
+            )
+
+        # model_setup.py should be the file loaded, not aaa_script.py
+        loaded_path = mock_load.call_args[0][0]
+        assert loaded_path.name == "model_setup.py"
+
+    def test_compute_sensitivity_populates_sensitivities(self, tmp_path: Path) -> None:
+        """Standalone module with compute_sensitivity() → has_sensitivities=True."""
+        concept_dir = _make_concept_dir(tmp_path, with_model_setup=False, with_analysis=True)
+        (concept_dir / "model_setup.py").write_text("# freeform\n")
+
+        valid_cost_model = _build_minimal_cost_model_dict()
+        valid_cost_model["params"] = {"availability": 0.85, "interest_rate": 0.07}
+
+        def fake_to_explorer_dict() -> dict[str, Any]:
+            return valid_cost_model
+
+        def fake_compute_sensitivity() -> dict[str, dict[str, float]]:
+            return {
+                "engineering": {"availability": 0.75},
+                "financial": {"interest_rate": 0.85},
+            }
+
+        mock_module = types.SimpleNamespace(
+            to_explorer_dict=fake_to_explorer_dict,
+            compute_sensitivity=fake_compute_sensitivity,
+        )
+
+        with patch(
+            "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
+            return_value=mock_module,
+        ):
+            concept = extract_standalone(
+                concept_dir=concept_dir,
+                concept_id="12",
+                frontmatter={"Concept": "Test", "Status": "approved"},
+                analysis_path=concept_dir / "analysis.md",
+                narrative=None,
+                param_metadata={},
+            )
+
+        assert concept.has_sensitivities is True
+        assert concept.cost_model is not None
+        assert concept.cost_model.sensitivities is not None
+        assert "availability" in concept.cost_model.sensitivities.engineering
+        assert concept.cost_model.sensitivities.engineering["availability"].elasticity == pytest.approx(0.75)
+        assert concept.cost_model.sensitivities.engineering["availability"].baseline == pytest.approx(0.85)
+
+
+# ---------------------------------------------------------------------------
 # AC-3: --skip-narrative skips claude call, narrative=null
 # ---------------------------------------------------------------------------
 
@@ -734,39 +921,31 @@ class TestDiscoverConcepts:
 
 
 def _build_minimal_cost_model_dict() -> dict[str, Any]:
-    """Return a dict that validates as CostModelData with sensitivities=None."""
-    zero_cas = {"name": "Test", "cost_m_usd": 0.0, "overridden": False}
-    cas22_detail = {
-        k: {"name": k, "cost_m_usd": 0.0, "overridden": False} for k in CostModelData.CAS22_NAMES
-    }
+    """Return a nested dict matching the to_explorer_dict() contract.
+
+    This is the format real freeform scripts produce — nested under
+    "costs", "power_table", "cas22_detail", "params", "overridden".
+    CostModelData.from_forward_result() unpacks this into the flat model.
+    """
     return {
-        "cas10": zero_cas,
-        "cas21": zero_cas,
-        "cas22": {"name": "Reactor Plant", "cost_m_usd": 100.0, "overridden": False},
-        "cas23": zero_cas,
-        "cas24": zero_cas,
-        "cas25": zero_cas,
-        "cas26": zero_cas,
-        "cas27": zero_cas,
-        "cas28": zero_cas,
-        "cas29": zero_cas,
-        "cas30": zero_cas,
-        "cas40": zero_cas,
-        "cas50": zero_cas,
-        "cas60": zero_cas,
-        "cas70": zero_cas,
-        "cas80": zero_cas,
-        "cas90": zero_cas,
-        "cas22_detail": cas22_detail,
-        "headline": {
-            "lcoe_per_mwh": 80.0,
-            "overnight_cost_per_kw": 6000.0,
-            "p_net_mw": 500.0,
+        "costs": {
+            "cas10": 0.0, "cas21": 0.0, "cas22": 100.0, "cas23": 0.0,
+            "cas24": 0.0, "cas25": 0.0, "cas26": 0.0, "cas27": 0.0,
+            "cas28": 0.0, "cas29": 0.0, "cas30": 0.0, "cas40": 0.0,
+            "cas50": 0.0, "cas60": 0.0, "cas70": 0.0, "cas80": 0.0,
+            "cas90": 0.0,
+            "total_capital": 100.0,
+            "lcoe": 80.0,
+            "overnight_cost": 6000.0,
+        },
+        "power_table": {
+            "p_net": 500.0,
             "q_eng": 5.0,
             "capacity_factor": 0.8,
         },
-        "sensitivities": None,
+        "cas22_detail": {k: 0.0 for k in CostModelData.CAS22_NAMES},
         "params": {},
+        "overridden": [],
     }
 
 

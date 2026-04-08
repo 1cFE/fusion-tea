@@ -37,6 +37,7 @@ Usage:
 """
 
 import math
+import dataclasses as dc
 from dataclasses import dataclass
 
 
@@ -858,6 +859,122 @@ class LevitatedDipolePlantParams:
             "total_capital_M_USD": costs["total_capital"],
         }
         return results
+
+
+# =============================================================================
+# MODULE-LEVEL INTERFACE FOR CONCEPT EXPLORER
+# =============================================================================
+
+params = LevitatedDipolePlantParams()
+results = params.compute()
+
+
+def to_explorer_dict() -> dict:
+    """Return structured data for the concept explorer.
+    All monetary values in M$ (millions USD). All power values in MW.
+    Maps from compute() output structure to the explorer's required schema.
+    """
+    pwr = results["power"]
+    cas = results["cas22"]
+    cst = results["costs"]
+    eco = results["economics"]
+
+    return {
+        "costs": {
+            # CAS accounts (lowercase keys, values in M$)
+            "cas10": cst["CAS10"],
+            "cas21": cst["CAS21"],
+            "cas22": cst["CAS22"],
+            "cas23": cst["CAS23"],
+            "cas24": cst["CAS24"],
+            "cas25": cst["CAS25"],
+            "cas26": cst["CAS26"],
+            "cas27": cst["CAS27"],
+            "cas28": cst["CAS28"],
+            "cas29": cst["CAS29"],
+            "cas20": cst["CAS20"],
+            "cas30": cst["CAS30"],
+            "cas40": cst["CAS40"],
+            "cas50": cst["CAS50"],
+            "cas60": cst["CAS60"],
+            "cas70": eco["CAS70"],
+            "cas71": eco["CAS71"],
+            "cas72": eco["CAS72"],
+            "cas80": eco["CAS80"],
+            "cas90": eco["CAS90"],
+            "total_capital": cst["total_capital"],                   # M$
+            "lcoe": eco["lcoe_USD_per_MWh"],                         # $/MWh
+            "overnight_cost": cst["specific_capital_USD_per_kWe"],   # $/kW
+        },
+        "power_table": {
+            "p_fus":        pwr["p_fus"],
+            "p_th":         pwr["p_th"],
+            "p_et":         pwr["p_et"],
+            "p_net":        pwr["p_net"],
+            "q_sci":        params.qsci,
+            "q_eng":        pwr["Qeng_approx"],
+            "availability": pwr["capacity_factor"],
+            "rec_frac":     pwr["recirc_fraction"],
+        },
+        "cas22_detail": {
+            "C220101": cas["C220101"],
+            "C220102": cas["C220102"],
+            "C220103": cas["C220103"],
+            "C220104": cas["C220104"],
+            "C220105": cas["C220105"],
+            "C220106": cas["C220106"],
+            "C220107": cas["C220107"],
+            "C220108": cas["C220108"],
+            "C220109": cas["C220109"],
+            "C220110": cas["C220110"],
+            "C220111": cas["C220111"],
+            "C220112": cas["C220112"],
+            "C220200": cas["C220200"],
+            "C220300": cas["C220300"],
+            "C220400": cas["C220400"],
+            "C220500": cas["C220500"],
+            "C220600": cas["C220600"],
+            "C220700": cas["C220700"],
+        },
+        "params": {
+            f.name: getattr(params, f.name)
+            for f in dc.fields(params)
+            if isinstance(getattr(params, f.name), (int, float))
+        },
+        "overridden": [],   # freeform script; overrides are documented in parameter docstrings
+    }
+
+
+def compute_sensitivity(dp_fraction: float = 0.01) -> dict:
+    """Compute LCOE elasticities for all numeric parameters via central difference.
+
+    Elasticity = (dLCOE/dParam) × (Param/LCOE_base), computed as:
+        (LCOE(param+dp) - LCOE(param-dp)) / (2×dp) × param / LCOE_base
+
+    Returns {"engineering": {param: elasticity}, "financial": {param: elasticity}}.
+    """
+    base_lcoe = results["economics"]["lcoe_USD_per_MWh"]
+    if base_lcoe <= 0:
+        return {"engineering": {}, "financial": {}}
+
+    financial_keys = {"interest_rate", "inflation_rate"}
+    engineering: dict = {}
+    financial: dict = {}
+
+    for f in dc.fields(params):
+        val = getattr(params, f.name)
+        if not isinstance(val, (int, float)) or val == 0.0:
+            continue
+        dp = abs(val) * dp_fraction
+        kw = {**dc.asdict(params), f.name: val + dp}
+        lcoe_up = type(params)(**kw).compute()["economics"]["lcoe_USD_per_MWh"]
+        kw[f.name] = val - dp
+        lcoe_dn = type(params)(**kw).compute()["economics"]["lcoe_USD_per_MWh"]
+        elast = (lcoe_up - lcoe_dn) / (2 * dp) * val / base_lcoe
+        target = financial if f.name in financial_keys else engineering
+        target[f.name] = elast
+
+    return {"engineering": engineering, "financial": financial}
 
 
 # =============================================================================

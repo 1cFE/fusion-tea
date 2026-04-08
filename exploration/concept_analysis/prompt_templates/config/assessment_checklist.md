@@ -28,3 +28,12 @@ analysis does not adequately address the criterion.
 - [ ] Each key technical bet is stated with what happens if it fails
 - [ ] Assumptions unique to this concept (vs. shared fusion assumptions) are flagged
 - [ ] Section 6 gap table distinguishes blocking vs. non-blocking data gaps
+
+## Modeling (Data Model Integrity)
+- [ ] If `model_setup.py` exists, its output interface is genuine: `result`
+      (costingfe) or `to_explorer_dict()` (freeform) reflects actual model
+      computations, not stub values or passthrough wrappers
+- [ ] CAS cost values are the result of parameter-driven calculations, not
+      hardcoded constants or placeholder zeros across all accounts
+- [ ] Sensitivity results (if present) show non-trivial variation — at least
+      3 parameters have |elasticity| > 0.01
