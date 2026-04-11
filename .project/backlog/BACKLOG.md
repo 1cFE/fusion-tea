@@ -2,7 +2,7 @@
 
 Prioritized list of epics and features.
 
-**Last Updated**: 2026-03-06
+**Last Updated**: 2026-04-11
 
 ---
 
@@ -21,6 +21,7 @@ Prioritized list of epics and features.
 |------|----------|--------|---------|-------|
 | Knowledge Database Integration | P1 | In Progress | 2026-02-06 | Items 1-3 complete, pipeline proven. Items 4-5 archived (blocked on user action, infrastructure works). |
 | Source Extraction Fix & Re-extraction | P0 | Draft | 2026-03-29 | HTML extraction broken (tables, images, quality). Fix upstream → re-extract → clean .orig.md. |
+| Pipeline Hardening (ad-hoc) | P0 | **Complete 2026-04-11** | 2026-04-05 | 6 items archived (pipeline-hardening, output-validation-retry, concept-landscape-context, orig-md-research, feedback-routing-fix, explorer-merge). Analysis pipeline now safe for batch runs. |
 
 ---
 
@@ -49,7 +50,9 @@ Zotero → pyzotero → agentic-mbse extract → SOURCE_INDEX.md pipeline. Batch
 
 | Item | Priority | Status | Location |
 |------|----------|--------|----------|
-| Traceability System | P1 | Spec + plan complete, awaiting implementation | `.project/active/traceability-system/` |
+| Batch Pipeline Run | P0 | Not started; unblocked by pipeline-hardening | `.project/active/batch-pipeline-run/` |
+| Loop Dry-Run Symmetry | P2 | Spec only (2026-04-10); LOW complexity follow-up | `.project/active/loop-dry-run-symmetry/` |
+| Traceability System | P1 | Spec + plan complete, awaiting prioritization | `.project/active/traceability-system/` |
 
 ---
 

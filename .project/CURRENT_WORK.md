@@ -1,67 +1,63 @@
 # Current Work
 
-**Last Updated**: 2026-04-06
+**Last Updated**: 2026-04-11
 
 ---
 
 ## Active Work
 
-### Explorer Merge
+### Batch Pipeline Run (unblocked, not started)
 
-**Status**: In-progress
-**Location**: `.project/active/explorer-merge/`
+**Status**: Plan drafted, ready to start
+**Location**: `.project/active/batch-pipeline-run/`
 
-Merging `ralph/concept-explorer` (FastAPI explorer UX) into `design-space-explore` (analysis pipeline). Phase 1 (pre-merge fixes) complete. Phase 2 (merge + conflict resolution) in progress.
+Run all concepts through the now-hardened pipeline to approval. Unblocked by the 2026-04-11 pipeline-hardening archival.
 
-### Source Replacement Cleanup
+### Concept Explorer (merged)
 
-**Status**: In-progress
-**Items**: `source-replacement` + `orig-md-research` (coupled)
-
-All 36 concepts extracted. Remaining: run `resurface_orig.py` on 19 NO-verdict `.orig.md` files, review recommendations, clean up.
-
-### Concept Explorer (merged from ralph/concept-explorer)
-
-**Status**: Merged, functional
+**Status**: Merged and functional
 **Location**: `exploration/concept_explorer/`
 
-4-page interactive explorer (Index, Concept Profile, Comparison, Taxonomy) with FastAPI backend. Extracts data from pipeline artifacts. 140+ tests. See `exploration/concept_explorer/README.md`.
+4-page interactive explorer (Index, Concept Profile, Comparison, Taxonomy) with FastAPI backend. Extracts data from pipeline artifacts. 140+ tests. See `exploration/concept_explorer/README.md`. The `explorer-merge` work item was archived 2026-04-11.
 
-### Traceability System (on hold)
+## Paused / Deferred
 
-**Status**: Spec + plan written, awaiting prioritization
-**Location**: `.project/active/traceability-system/`
+- **`traceability-system`** — Spec + plan written, on hold awaiting prioritization.
+- **`loop-dry-run-symmetry`** — Spec only (2026-04-10). Small follow-up from pipeline-hardening audit. LOW complexity.
 
 ---
 
 ## Recently Completed
 
+### [2026-04-11] Pipeline Hardening, Explorer Merge, Source Cleanup
+
+Archived 7 items + cleaned up 2 superseded/orphan dirs. See `.project/completed/CHANGELOG.md` for details.
+
+Key outcomes:
+- Analysis pipeline hardened against silent corruption, transient API errors, and validation gaps (`pipeline-hardening`, `output-validation-retry`)
+- Feedback routing now reaches model-setup agent directly instead of via analysis prose (`feedback-routing-fix`)
+- Cross-concept landscape context injected into analysis prompts (`concept-landscape-context`)
+- 21 NO-verdict `.orig.md` files re-sourced against real HTML (`orig-md-research`)
+- `ralph/concept-explorer` merged into `design-space-explore` (`explorer-merge`)
+- `source-replacement` closed out
+- Deleted: `extraction-interface-gap/` (empty orphan), `step-runner-validation-retry/` (superseded by pipeline-hardening Phase 5)
+- Also picked up a lingering prior-session archival of `common-output-interface/` (staged to `completed/20260407_*` but never committed)
+
 ### [2026-04-05] Analysis Pipeline Bulk Archival
 
 Archived 13 completed items. See `.project/completed/CHANGELOG.md` for full details.
 
-Key outcomes:
-- Analysis pipeline fully operational (`run_analysis.py` + 9 `lib/` modules)
-- Iterative analysis loop with convergence tracking
-- Autonomous source acquisition via WebSearch/WebFetch
-- Cross-concept memory system integrated into prompts
-- PROCEED/REVISE review verdicts with kick-back
-- `/manage-concept` interactive command
-- R2 binary sync for research artifacts
-- Concept research navigation skill
-
 ### [2026-03-29] Concept Taxonomy & Interactive Explorer
-4 work items archived (2 complete, 2 superseded). See `CHANGELOG.md`.
+4 work items archived (2 complete, 2 superseded).
 
 ### [2026-03-06] Project Cleanup
 
-Archived 9 active items and 4 epics. Infrastructure pipeline proven, IFE modeling demo complete, workflow explainer shipped.
+Archived 9 active items and 4 epics.
 
 ---
 
 ## Up Next
 
-1. Complete explorer merge (Phases 3-4: cleanup + operator guide)
-2. Finish `.orig.md` re-sourcing (19 files remaining)
-3. Batch pipeline run on remaining concepts
-4. Traceability system implementation (when prioritized)
+1. Knock out `loop-dry-run-symmetry` (small, well-scoped)
+2. Kick off `batch-pipeline-run` on all concepts
+3. Traceability system implementation (when prioritized)

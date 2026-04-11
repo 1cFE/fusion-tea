@@ -380,26 +380,25 @@ class TestCheckInterface:
         captured = capsys.readouterr()
         assert "result" in captured.err.lower()
 
-    def test_freeform_missing_to_explorer_dict_warns(self, tmp_path, capsys):
-        """Freeform script without to_explorer_dict → warning."""
+    def test_freeform_missing_results_warns(self, tmp_path, capsys):
+        """Freeform script without module-level results → warning."""
         script = tmp_path / "model_setup.py"
         script.write_text(
             "# freeform script\n"
-            "params = {}\n"
-            "results = compute()\n"
+            "params = MyParams()\n"
+            # no module-level results
         )
         _check_interface(script)
         captured = capsys.readouterr()
-        assert "to_explorer_dict" in captured.err
+        assert "results" in captured.err
 
-    def test_freeform_with_to_explorer_dict_no_warnings(self, tmp_path, capsys):
-        """Freeform script with to_explorer_dict → no warnings."""
+    def test_freeform_with_params_and_results_no_warnings(self, tmp_path, capsys):
+        """Freeform script with module-level params and results → no warnings."""
         script = tmp_path / "model_setup.py"
         script.write_text(
             "# freeform script\n"
-            "params = {}\n"
-            "def to_explorer_dict():\n"
-            "    return {}\n"
+            "params = MyParams()\n"
+            "results = params.compute()\n"
         )
         _check_interface(script)
         captured = capsys.readouterr()

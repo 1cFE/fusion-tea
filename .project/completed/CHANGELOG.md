@@ -4,6 +4,35 @@ Historical record of completed work.
 
 ---
 
+## [2026-04-11] - Pipeline Hardening, Explorer Merge, Source Cleanup
+
+**Type**: Feature + robustness (8 work items + 2 deletions)
+**Duration**: ~1 week on `design-space-explore`
+
+### Summary
+Pipeline-hardening closed a class of silent-corruption and transient-error failures that had been killing `stage1-all --all` runs and required manual re-runs. In parallel, output validation, feedback routing, concept-landscape context, and .orig.md re-sourcing landed as independent correctness fixes. The concept explorer (from `ralph/concept-explorer`) was merged into the analysis pipeline branch, and Phase 1a source replacement was closed out. The combined effect: `batch-pipeline-run` can now safely proceed against all concepts.
+
+### Items Archived
+- `pipeline-hardening` — Validated invocation, transient-error retry, state integrity across `loop.py`/`run_analysis.py`/`research.py`. Deleted legacy `step_runner` surface. 7 phases, audit passed clean. Commit 9d9605a.
+- `output-validation-retry` — `invoke_claude_validated()` wrapper with regex-based verdict/section validators; retry-via-resume on malformed output. Commit 46afb62.
+- `concept-landscape-context` — Injected cross-concept catalog into analysis prompts so agents can name verifiable nearest neighbors; simplified vestigial status codes (`D`/`M` → `iterating`). Commits 244e160, 0ab9dc0.
+- `orig-md-research` — Re-sourced 21 NO-verdict `.orig.md` Haiku-paraphrased files against real HTML sources and deleted originals. Commit a8c489a.
+- `feedback-routing-fix` — Added finding categories so assessment findings targeting model code reach `model_setup.py` directly instead of being laundered through analysis prose. Commit 73f6994.
+- `explorer-merge` — Merged `ralph/concept-explorer` (FastAPI 4-page explorer, 140+ tests) into `design-space-explore`. Commit d8cb8ce and follow-ups.
+- `source-replacement` — Phase 1a source replacement effort, coupled with `orig-md-research`. Triage report, plan, and plan-completion preserved for reference.
+- `common-output-interface` — Picked up a lingering prior-session archival (staged rename to `completed/20260407_common-output-interface/` that was never committed). Plan marked Complete as of 2026-04-07.
+
+### Deleted (not archived)
+- `extraction-interface-gap/` — Empty orphan directory, never committed.
+- `step-runner-validation-retry/` — Untracked spec only. Superseded by pipeline-hardening Phase 5, which explicitly deleted the legacy `step_runner` surface the spec targeted.
+
+### Remaining Active
+- `batch-pipeline-run` — Not started; unblocked now that pipeline is hardened
+- `loop-dry-run-symmetry` — Small follow-up from pipeline-hardening audit (spec only)
+- `traceability-system` — Still on hold awaiting prioritization
+
+---
+
 ## [2026-04-05] - Analysis Pipeline Bulk Archival
 
 **Type**: Housekeeping
