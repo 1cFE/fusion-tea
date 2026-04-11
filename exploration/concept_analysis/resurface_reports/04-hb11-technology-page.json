@@ -1,0 +1,75 @@
+{
+  "status": "complete",
+  "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/04-laser-icf/iter-01/sources/hb11-technology-page.orig.md",
+  "concept_id": "04-laser-icf",
+  "concept_num": "04",
+  "elapsed_s": 167.6,
+  "return_code": 0,
+  "acquired": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/04-laser-icf/iter-03/sources/interestingengineering-energy-hb11-joins-largest-laser-lab.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/04-laser-icf/iter-03/sources/link-10-1007-s10894-023-00349-9.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/04-laser-icf/iter-03/sources/newatlas-energy-hb11-laser-fusion-demonstration.md"
+  ],
+  "acquired_count": 3,
+  "agent_report": {
+    "orig_file": "hb11-technology-page.orig.md",
+    "urls_found": [
+      "https://hb11.energy/our-technology/"
+    ],
+    "extractions": [
+      {
+        "url": "https://hb11.energy/our-technology/",
+        "outcome": "fail_js",
+        "notes": "JS-heavy company page; only 4 lines of generic intro text extracted (15 lines total with frontmatter)"
+      },
+      {
+        "url": "https://link.springer.com/article/10.1007/s10894-023-00349-9",
+        "source_name": "link-10-1007-s10894-023-00349-9",
+        "outcome": "success",
+        "covers": [
+          "ICF with Fast Ignition / non-thermal approach",
+          "Two-pulse laser system (nanosecond + picosecond)",
+          "Hydrogen-Boron (p-11B) fuel",
+          "Three alpha particles releasing 8.7 MeV",
+          "Direct conversion vs thermal cycle discussion",
+          "Energy recycling / recirculating power fraction",
+          "Proton Fast Ignition reducing temperature requirements",
+          "Technoeconomic model with LCOE targets"
+        ]
+      },
+      {
+        "url": "https://newatlas.com/energy/hb11-laser-fusion-demonstration/",
+        "source_name": "newatlas-energy-hb11-laser-fusion-demonstration",
+        "outcome": "success",
+        "covers": [
+          "Two-laser reactor concept (metal sphere)",
+          "Kilotesla magnetic containment via capacitive coil",
+          "Hydrogen-boron fuel advantages",
+          "Chirped pulse amplification lasers",
+          "Experimental results at Osaka University",
+          "Alpha particle generation demonstration"
+        ]
+      },
+      {
+        "url": "https://interestingengineering.com/energy/hb11-joins-largest-laser-lab-nuclear-power",
+        "source_name": "interestingengineering-energy-hb11-joins-largest-laser-lab",
+        "outcome": "success",
+        "covers": [
+          "Conventional steam cycle power generation",
+          "Energy recycling to keep fusion process going",
+          "Hydrogen-boron pellet fuel",
+          "Non-thermal fusion approach",
+          "ELI ERIC laser infrastructure partnership",
+          "Micro-fabricated laser targets"
+        ]
+      }
+    ],
+    "uncovered_claims": [
+      "\"Thousands of commercial lasers\" \u2014 orig file states this but Springer paper describes a 2-laser concept; may reflect newer marketing language on the JS-heavy website not captured in any accessible source",
+      "\"Energy density a million times denser than oil\" \u2014 marketing copy from website, not found in peer-reviewed or news sources"
+    ],
+    "recommendation": "delete",
+    "replacement_md_note": "Thin replacement hb11-technology-page.md (iter-01) is a 4-line JS stub with no technical content \u2014 also deletable. Same for iter-02 hb11-technology-page-2025.orig.md. All substantive claims are now covered by the 3 extracted sources plus existing HB11 sources (fusionxinvest profile, prnewswire grant, globenewswire)."
+  },
+  "recommendation": "delete"
+}

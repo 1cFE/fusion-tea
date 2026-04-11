@@ -1,0 +1,368 @@
+{
+  "concept_id": "22",
+  "name": "Projectile ICF (D-T)",
+  "confinement_family": "IFE",
+  "company": "First Light Fusion, NearStar Fusion",
+  "status": "in_progress",
+  "illustration": null,
+  "has_cost_model": true,
+  "has_sensitivities": true,
+  "cost_model": {
+    "cas10": {
+      "name": "Preconstruction",
+      "cost_m_usd": 14.25934,
+      "overridden": false
+    },
+    "cas21": {
+      "name": "Buildings & Structures",
+      "cost_m_usd": 231.10758,
+      "overridden": false
+    },
+    "cas22": {
+      "name": "Reactor Plant Equipment",
+      "cost_m_usd": 1550.038683868319,
+      "overridden": false
+    },
+    "cas23": {
+      "name": "Turbine Plant Equipment",
+      "cost_m_usd": 69.73450704000001,
+      "overridden": false
+    },
+    "cas24": {
+      "name": "Electrical Plant Equipment",
+      "cost_m_usd": 29.701734480000002,
+      "overridden": false
+    },
+    "cas25": {
+      "name": "Miscellaneous Plant Equipment",
+      "cost_m_usd": 18.079316640000002,
+      "overridden": false
+    },
+    "cas26": {
+      "name": "Heat Rejection Systems",
+      "cost_m_usd": 12.052877760000001,
+      "overridden": false
+    },
+    "cas27": {
+      "name": "Special Materials",
+      "cost_m_usd": 70.0,
+      "overridden": false
+    },
+    "cas28": {
+      "name": "Digital Twin & Simulation",
+      "cost_m_usd": 5.0,
+      "overridden": false
+    },
+    "cas29": {
+      "name": "Contingency",
+      "cost_m_usd": 0.0,
+      "overridden": false
+    },
+    "cas30": {
+      "name": "Indirect Costs",
+      "cost_m_usd": 397.1429399576638,
+      "overridden": false
+    },
+    "cas40": {
+      "name": "Owner's Costs",
+      "cost_m_usd": 21.493777145955526,
+      "overridden": false
+    },
+    "cas50": {
+      "name": "Supplementary Costs",
+      "cost_m_usd": 266.5984176845473,
+      "overridden": false
+    },
+    "cas60": {
+      "name": "Interest During Construction",
+      "cost_m_usd": 597.8748176997511,
+      "overridden": false
+    },
+    "cas70": {
+      "name": "O&M Costs (annualised)",
+      "cost_m_usd": 25.769399981005723,
+      "overridden": false
+    },
+    "cas80": {
+      "name": "Fuel Costs (annualised)",
+      "cost_m_usd": 5.311931724,
+      "overridden": false
+    },
+    "cas90": {
+      "name": "Financial Costs",
+      "cost_m_usd": 275.31995381227165,
+      "overridden": false
+    },
+    "cas22_detail": {
+      "C220101": {
+        "name": "First Wall & Blanket",
+        "cost_m_usd": 41.141273527529606,
+        "overridden": false
+      },
+      "C220102": {
+        "name": "Radiation Shield",
+        "cost_m_usd": 30.6195752535875,
+        "overridden": false
+      },
+      "C220103": {
+        "name": "Magnets / Coils",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220104": {
+        "name": "Heating & Driver Systems",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220105": {
+        "name": "Primary Structure & Support",
+        "cost_m_usd": 5.255584961396926,
+        "overridden": false
+      },
+      "C220106": {
+        "name": "Vacuum System",
+        "cost_m_usd": 8.261299738530447,
+        "overridden": false
+      },
+      "C220107": {
+        "name": "Power Conditioning & Energy Storage",
+        "cost_m_usd": 1000.0,
+        "overridden": false
+      },
+      "C220108": {
+        "name": "Divertor / Target Factory",
+        "cost_m_usd": 117.67679979860586,
+        "overridden": false
+      },
+      "C220109": {
+        "name": "Direct Energy Converter",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220110": {
+        "name": "Remote Handling & Maintenance Equipment",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220111": {
+        "name": "Installation Labor",
+        "cost_m_usd": 168.41363465915106,
+        "overridden": false
+      },
+      "C220112": {
+        "name": "Isotope Separation Plant",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220200": {
+        "name": "Main & Secondary Coolant",
+        "cost_m_usd": 71.56826024253796,
+        "overridden": false
+      },
+      "C220300": {
+        "name": "Auxiliary Cooling & Cryoplant",
+        "cost_m_usd": 9.138263411069946,
+        "overridden": false
+      },
+      "C220400": {
+        "name": "Radioactive Waste Management",
+        "cost_m_usd": 2.095632,
+        "overridden": false
+      },
+      "C220500": {
+        "name": "Fuel Handling & Storage",
+        "cost_m_usd": 52.1109072801907,
+        "overridden": false
+      },
+      "C220600": {
+        "name": "Other Reactor Plant Equipment",
+        "cost_m_usd": 4.432970648612986,
+        "overridden": false
+      },
+      "C220700": {
+        "name": "Instrumentation & Control",
+        "cost_m_usd": 39.32448234710587,
+        "overridden": false
+      }
+    },
+    "headline": {
+      "lcoe_per_mwh": 135.47878148949525,
+      "overnight_cost_per_kw": 8840.602281509224,
+      "p_net_mw": 303.736,
+      "q_eng": 300.0,
+      "capacity_factor": 0.85
+    },
+    "sensitivities": {
+      "engineering": {
+        "driver_stored_energy_MJ": {
+          "elasticity": 0.009350265532557751,
+          "baseline": 100.0
+        },
+        "driver_efficiency": {
+          "elasticity": 0.0,
+          "baseline": 0.3
+        },
+        "driver_cost_M_USD": {
+          "elasticity": 0.4856263434373825,
+          "baseline": 1000.0
+        },
+        "driver_rep_rate_Hz": {
+          "elasticity": -0.7399822875542912,
+          "baseline": 0.033
+        },
+        "fusion_yield_MJ": {
+          "elasticity": -0.7666744965394288,
+          "baseline": 30000.0
+        },
+        "target_cost_USD": {
+          "elasticity": 0.014435069985226546,
+          "baseline": 5.0
+        },
+        "projectile_cost_USD": {
+          "elasticity": 0.0028870139970432114,
+          "baseline": 1.0
+        },
+        "blanket_energy_multiplication": {
+          "elasticity": -0.6246702337491455,
+          "baseline": 1.1
+        },
+        "thermal_efficiency": {
+          "elasticity": -0.8048274185879902,
+          "baseline": 0.33
+        },
+        "plant_availability": {
+          "elasticity": -0.9827617571234646,
+          "baseline": 0.85
+        },
+        "plant_lifetime_years": {
+          "elasticity": -0.12423807719744978,
+          "baseline": 40.0
+        },
+        "chamber_inner_radius_m": {
+          "elasticity": 0.06093707365160832,
+          "baseline": 2.5
+        },
+        "blanket_thickness_m": {
+          "elasticity": 0.03812211807331049,
+          "baseline": 1.0
+        },
+        "shield_thickness_m": {
+          "elasticity": 0.01776364760701676,
+          "baseline": 0.4
+        },
+        "structure_thickness_m": {
+          "elasticity": 0.0033099135425231777,
+          "baseline": 0.3
+        },
+        "vessel_thickness_m": {
+          "elasticity": 0.00410666843299436,
+          "baseline": 0.1
+        },
+        "blanket_unit_cost": {
+          "elasticity": 0.019979286227525657,
+          "baseline": 0.6
+        },
+        "li_inventory_cost_M_USD": {
+          "elasticity": 0.02981916143914708,
+          "baseline": 70.0
+        },
+        "tritium_startup_kg": {
+          "elasticity": 0.030116984957047115,
+          "baseline": 3.0
+        },
+        "tritium_surplus_kg_per_year": {
+          "elasticity": 0.0,
+          "baseline": 25.0
+        },
+        "p_li_pump_MW": {
+          "elasticity": 0.08500249538668118,
+          "baseline": 30.0
+        },
+        "p_trit_MW": {
+          "elasticity": 0.028334140698650444,
+          "baseline": 10.0
+        },
+        "p_house_MW": {
+          "elasticity": 0.011333655253397449,
+          "baseline": 4.0
+        },
+        "p_cryo_MW": {
+          "elasticity": 0.0032242839254217506,
+          "baseline": 0.3
+        },
+        "p_target_factory_MW": {
+          "elasticity": 0.004250120657034136,
+          "baseline": 1.5
+        },
+        "construction_time_years": {
+          "elasticity": 0.3682568432458275,
+          "baseline": 6.0
+        },
+        "om_cost_per_MW_yr": {
+          "elasticity": 0.0841034329784199,
+          "baseline": 60.0
+        },
+        "core_lifetime_FPY": {
+          "elasticity": 0.0,
+          "baseline": 40.0
+        },
+        "fuel_cost_per_shot_USD": {
+          "elasticity": 0.000014435069982646163,
+          "baseline": 0.005
+        }
+      },
+      "financial": {
+        "interest_rate": {
+          "elasticity": 0.9395134941676885,
+          "baseline": 0.08
+        },
+        "inflation_rate": {
+          "elasticity": 0.030466200438387988,
+          "baseline": 0.02
+        }
+      }
+    },
+    "params": {
+      "driver_stored_energy_MJ": 100.0,
+      "driver_efficiency": 0.3,
+      "driver_cost_M_USD": 1000.0,
+      "driver_rep_rate_Hz": 0.033,
+      "fusion_yield_MJ": 30000.0,
+      "target_cost_USD": 5.0,
+      "projectile_cost_USD": 1.0,
+      "blanket_energy_multiplication": 1.1,
+      "thermal_efficiency": 0.33,
+      "n_mod": 1.0,
+      "plant_availability": 0.85,
+      "plant_lifetime_years": 40.0,
+      "noak": 1.0,
+      "chamber_inner_radius_m": 2.5,
+      "blanket_thickness_m": 1.0,
+      "shield_thickness_m": 0.4,
+      "structure_thickness_m": 0.3,
+      "vessel_thickness_m": 0.1,
+      "blanket_unit_cost": 0.6,
+      "li_inventory_cost_M_USD": 70.0,
+      "tritium_startup_kg": 3.0,
+      "tritium_surplus_kg_per_year": 25.0,
+      "tritium_price_USD_per_g": 0.0,
+      "p_li_pump_MW": 30.0,
+      "p_trit_MW": 10.0,
+      "p_house_MW": 4.0,
+      "p_cryo_MW": 0.3,
+      "p_target_factory_MW": 1.5,
+      "interest_rate": 0.08,
+      "inflation_rate": 0.02,
+      "construction_time_years": 6.0,
+      "om_cost_per_MW_yr": 60.0,
+      "core_lifetime_FPY": 40.0,
+      "fuel_cost_per_shot_USD": 0.005
+    }
+  },
+  "parameter_metadata": {},
+  "narrative": null,
+  "sources": {
+    "model_setup": null,
+    "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/22-projectile-icf/analysis.md"
+  }
+}

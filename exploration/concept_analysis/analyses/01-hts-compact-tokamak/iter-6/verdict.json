@@ -1,0 +1,23 @@
+{
+  "iteration": 6,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "research",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": true,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-03/sources/arc-reactor-specifications.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-03/sources/sparc-icrf-heating-paper.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/arc-power-conversion-studies.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/arxiv-2601-21724.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/arxiv-2602-19389.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/cfs-2025-2026-updates.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/osti-etdeweb-servlets-purl-10149275.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/osti-etdeweb-servlets-purl-20261446.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/osti-servlets-purl-1305833.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/sciencedirect-science-article-pii-s092037961930835x.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/sciencedirect-science-article-pii-s2772830725000390.md"
+  ],
+  "timestamp": "2026-04-06T05:53:02.228475+00:00"
+}

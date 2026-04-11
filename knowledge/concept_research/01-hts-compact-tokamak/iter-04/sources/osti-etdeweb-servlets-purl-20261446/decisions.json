@@ -1,0 +1,32 @@
+[
+  {
+    "page_num": 0,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 1,
+    "action": "claude_replace",
+    "reasons": [
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (20r\u00d72c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 2,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 3,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  }
+]

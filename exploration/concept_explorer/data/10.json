@@ -1,0 +1,381 @@
+{
+  "concept_id": "10",
+  "name": "Large-Scale Stellarator",
+  "confinement_family": "NONSTANDARD",
+  "company": "Gauss Fusion",
+  "status": "in_progress",
+  "illustration": null,
+  "has_cost_model": true,
+  "has_sensitivities": true,
+  "cost_model": {
+    "cas10": {
+      "name": "Preconstruction",
+      "cost_m_usd": 18.5,
+      "overridden": false
+    },
+    "cas21": {
+      "name": "Buildings & Structures",
+      "cost_m_usd": 997.0082397460938,
+      "overridden": false
+    },
+    "cas22": {
+      "name": "Reactor Plant Equipment",
+      "cost_m_usd": 7786.350000000004,
+      "overridden": true
+    },
+    "cas23": {
+      "name": "Turbine Plant Equipment",
+      "cost_m_usd": 259.37701416015625,
+      "overridden": false
+    },
+    "cas24": {
+      "name": "Electrical Plant Equipment",
+      "cost_m_usd": 110.47539520263672,
+      "overridden": false
+    },
+    "cas25": {
+      "name": "Miscellaneous Plant Equipment",
+      "cost_m_usd": 67.24589538574219,
+      "overridden": false
+    },
+    "cas26": {
+      "name": "Heat Rejection Systems",
+      "cost_m_usd": 44.830596923828125,
+      "overridden": false
+    },
+    "cas27": {
+      "name": "Special Materials",
+      "cost_m_usd": 200.0,
+      "overridden": true
+    },
+    "cas28": {
+      "name": "Digital Twin & Simulation",
+      "cost_m_usd": 5.0,
+      "overridden": false
+    },
+    "cas29": {
+      "name": "Contingency",
+      "cost_m_usd": 0.0,
+      "overridden": false
+    },
+    "cas30": {
+      "name": "Indirect Costs",
+      "cost_m_usd": 3156.7626953125,
+      "overridden": false
+    },
+    "cas40": {
+      "name": "Owner's Costs",
+      "cost_m_usd": 39.0,
+      "overridden": false
+    },
+    "cas50": {
+      "name": "Supplementary Costs",
+      "cost_m_usd": 613.7708129882812,
+      "overridden": false
+    },
+    "cas60": {
+      "name": "Interest During Construction",
+      "cost_m_usd": 5075.23486328125,
+      "overridden": false
+    },
+    "cas70": {
+      "name": "O&M Costs (annualised)",
+      "cost_m_usd": 260.7266540527344,
+      "overridden": false
+    },
+    "cas80": {
+      "name": "Fuel Costs (annualised)",
+      "cost_m_usd": 1.9526461362838745,
+      "overridden": false
+    },
+    "cas90": {
+      "name": "Financial Costs",
+      "cost_m_usd": 1378.1846923828125,
+      "overridden": false
+    },
+    "cas22_detail": {
+      "C220101": {
+        "name": "First Wall & Blanket",
+        "cost_m_usd": 1028.39892578125,
+        "overridden": false
+      },
+      "C220102": {
+        "name": "Radiation Shield",
+        "cost_m_usd": 738.548583984375,
+        "overridden": false
+      },
+      "C220103": {
+        "name": "Magnets / Coils",
+        "cost_m_usd": 516.1008411317314,
+        "overridden": false
+      },
+      "C220104": {
+        "name": "Heating & Driver Systems",
+        "cost_m_usd": 353.21,
+        "overridden": false
+      },
+      "C220105": {
+        "name": "Primary Structure & Support",
+        "cost_m_usd": 51.082557678222656,
+        "overridden": false
+      },
+      "C220106": {
+        "name": "Vacuum System",
+        "cost_m_usd": 179.17344665527344,
+        "overridden": false
+      },
+      "C220107": {
+        "name": "Power Conditioning & Energy Storage",
+        "cost_m_usd": 96.76753234863281,
+        "overridden": false
+      },
+      "C220108": {
+        "name": "Divertor / Target Factory",
+        "cost_m_usd": 116.18379211425781,
+        "overridden": false
+      },
+      "C220109": {
+        "name": "Direct Energy Converter",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220110": {
+        "name": "Remote Handling & Maintenance Equipment",
+        "cost_m_usd": 171.83815002441406,
+        "overridden": false
+      },
+      "C220111": {
+        "name": "Installation Labor",
+        "cost_m_usd": 455.1825256347656,
+        "overridden": false
+      },
+      "C220112": {
+        "name": "Isotope Separation Plant",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220200": {
+        "name": "Main & Secondary Coolant",
+        "cost_m_usd": 208.16793823242188,
+        "overridden": false
+      },
+      "C220300": {
+        "name": "Auxiliary Cooling & Cryoplant",
+        "cost_m_usd": 435.658447265625,
+        "overridden": false
+      },
+      "C220400": {
+        "name": "Radioactive Waste Management",
+        "cost_m_usd": 7.349278450012207,
+        "overridden": false
+      },
+      "C220500": {
+        "name": "Fuel Handling & Storage",
+        "cost_m_usd": 120.0,
+        "overridden": false
+      },
+      "C220600": {
+        "name": "Other Reactor Plant Equipment",
+        "cost_m_usd": 11.5,
+        "overridden": false
+      },
+      "C220700": {
+        "name": "Instrumentation & Control",
+        "cost_m_usd": 88.8929443359375,
+        "overridden": false
+      }
+    },
+    "headline": {
+      "lcoe_per_mwh": 212.85595703125,
+      "overnight_cost_per_kw": 18373.556640625,
+      "p_net_mw": 1000.0,
+      "q_eng": 4.201320171356201,
+      "capacity_factor": 0.88
+    },
+    "sensitivities": {
+      "engineering": {
+        "availability": {
+          "elasticity": -0.8492768636911662,
+          "baseline": 0.88
+        },
+        "construction_time_yr": {
+          "elasticity": 0.49430207630021844,
+          "baseline": 10.0
+        },
+        "mn": {
+          "elasticity": -0.001376490184179906,
+          "baseline": 1.1
+        },
+        "eta_th": {
+          "elasticity": -0.25788339281030476,
+          "baseline": 0.35
+        },
+        "eta_p": {
+          "elasticity": -2.2995620395928058e-7,
+          "baseline": 0.5
+        },
+        "f_sub": {
+          "elasticity": 0.014919564498214051,
+          "baseline": 0.03
+        },
+        "p_pump": {
+          "elasticity": 0.00037871686644212104,
+          "baseline": 1.0
+        },
+        "p_trit": {
+          "elasticity": 0.0037894679061120954,
+          "baseline": 10.0
+        },
+        "p_house": {
+          "elasticity": 0.0015157871624448382,
+          "baseline": 4.0
+        },
+        "p_cryo": {
+          "elasticity": 0.07144571928983212,
+          "baseline": 90.0
+        },
+        "blanket_t": {
+          "elasticity": 0.2595716884626229,
+          "baseline": 0.6
+        },
+        "ht_shield_t": {
+          "elasticity": 0.058799707026216966,
+          "baseline": 0.2
+        },
+        "structure_t": {
+          "elasticity": 0.010711882965876425,
+          "baseline": 0.15
+        },
+        "vessel_t": {
+          "elasticity": 0.02706749061945031,
+          "baseline": 0.1
+        },
+        "plasma_t": {
+          "elasticity": 0.28619277240466645,
+          "baseline": 1.7
+        },
+        "burn_fraction": {
+          "elasticity": -0.0008665451399735272,
+          "baseline": 0.05
+        },
+        "fuel_recovery": {
+          "elasticity": -0.015641135569783998,
+          "baseline": 0.95
+        },
+        "p_input": {
+          "elasticity": 0.056807526238624104,
+          "baseline": 75.0
+        },
+        "eta_pin": {
+          "elasticity": -0.056842022866103945,
+          "baseline": 0.5
+        },
+        "p_coils": {
+          "elasticity": 0.0011368403718336286,
+          "baseline": 3.0
+        },
+        "p_cool": {
+          "elasticity": 0.005684201859168144,
+          "baseline": 15.0
+        },
+        "R0": {
+          "elasticity": 0.41419170366511365,
+          "baseline": 18.0
+        },
+        "elon": {
+          "elasticity": 0.4141917227509072,
+          "baseline": 1.0
+        },
+        "B": {
+          "elasticity": 0.0,
+          "baseline": 6.0
+        },
+        "T_e": {
+          "elasticity": 0.0,
+          "baseline": 12.0
+        },
+        "n_e": {
+          "elasticity": 0.0,
+          "baseline": 1e20
+        },
+        "Z_eff": {
+          "elasticity": 0.0,
+          "baseline": 1.3
+        },
+        "plasma_volume": {
+          "elasticity": 0.0,
+          "baseline": 1500.0
+        },
+        "R_w": {
+          "elasticity": 0.0,
+          "baseline": 0.6
+        },
+        "T_edge": {
+          "elasticity": 0.0,
+          "baseline": 0.05
+        },
+        "tau_ratio": {
+          "elasticity": 0.0,
+          "baseline": 3.0
+        }
+      },
+      "financial": {
+        "interest_rate": {
+          "elasticity": 0.8461223149357124,
+          "baseline": 0.07
+        },
+        "inflation_rate": {
+          "elasticity": 0.04563505542921807,
+          "baseline": 0.0245
+        }
+      }
+    },
+    "params": {
+      "p_input": 75.0,
+      "mn": 1.1,
+      "eta_th": 0.35,
+      "eta_p": 0.5,
+      "eta_pin": 0.5,
+      "eta_de": 0.0,
+      "f_sub": 0.03,
+      "f_dec": 0.0,
+      "p_coils": 3.0,
+      "p_cool": 15.0,
+      "p_pump": 1.0,
+      "p_trit": 10.0,
+      "p_house": 4.0,
+      "p_cryo": 90.0,
+      "R0": 18.0,
+      "plasma_t": 1.7,
+      "elon": 1.0,
+      "blanket_t": 0.6,
+      "ht_shield_t": 0.2,
+      "structure_t": 0.15,
+      "vessel_t": 0.1,
+      "construction_time_yr": 10.0,
+      "T_edge": 0.05,
+      "tau_ratio": 3.0,
+      "R_w": 0.6,
+      "n_e": 1e20,
+      "T_e": 12.0,
+      "Z_eff": 1.3,
+      "plasma_volume": 1500.0,
+      "B": 6.0,
+      "burn_fraction": 0.05,
+      "fuel_recovery": 0.95,
+      "net_electric_mw": 1000.0,
+      "availability": 0.88,
+      "lifetime_yr": 40.0,
+      "n_mod": 1.0,
+      "interest_rate": 0.07,
+      "inflation_rate": 0.0245,
+      "noak": 1.0
+    }
+  },
+  "parameter_metadata": {},
+  "narrative": null,
+  "sources": {
+    "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/10-large-scale-stellarator/model_setup.py",
+    "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/10-large-scale-stellarator/analysis.md"
+  }
+}

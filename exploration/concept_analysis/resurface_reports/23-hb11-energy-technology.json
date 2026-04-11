@@ -1,0 +1,101 @@
+{
+  "status": "complete",
+  "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-01/sources/hb11-energy-technology.orig.md",
+  "concept_id": "23-laser-icf-nanostructured-target",
+  "concept_num": "23",
+  "elapsed_s": 136.1,
+  "return_code": 0,
+  "acquired": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/arxiv-1603-02579.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/newatlas-energy-hb11-hydrogen-boron-fusion-clean-energy.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/newatlas-energy-hb11-laser-fusion-demonstration.md"
+  ],
+  "acquired_count": 3,
+  "agent_report": {
+    "orig_file": "hb11-energy-technology.orig.md",
+    "urls_found": [
+      "https://hb11.energy/",
+      "https://hb11.energy/our-technology/",
+      "https://newatlas.com/energy/hb11-hydrogen-boron-fusion-clean-energy/",
+      "https://newatlas.com/energy/hb11-laser-fusion-demonstration/",
+      "https://link.springer.com/article/10.1007/s10894-023-00349-9",
+      "https://arxiv.org/abs/1603.02579"
+    ],
+    "extractions": [
+      {
+        "url": "https://hb11.energy/",
+        "outcome": "duplicate",
+        "notes": "Already extracted in iter-01/sources/hb11-energy-technology/ \u2014 thin content (company homepage, 12 lines)"
+      },
+      {
+        "url": "https://hb11.energy/our-technology/",
+        "outcome": "skipped",
+        "notes": "Company site, likely JS-heavy based on homepage extraction being thin. Skipped in favor of news coverage."
+      },
+      {
+        "url": "https://newatlas.com/energy/hb11-hydrogen-boron-fusion-clean-energy/",
+        "source_name": "newatlas-energy-hb11-hydrogen-boron-fusion-clean-energy",
+        "outcome": "success",
+        "covers": [
+          "Core approach: two-laser system, proton fast ignition",
+          "Founded by Heinrich Hora, UNSW spin-out",
+          "Avalanche chain reaction mechanism \u2014 billion times higher than predicted",
+          "Direct charge collection from naked helium atoms (alpha particles)",
+          "Chirped Pulse Amplification lasers, 10+ petawatt",
+          "Spherical reactor geometry with fuel pellet in center",
+          "No nuclear waste, no superheated steam",
+          "Australia-based company"
+        ]
+      },
+      {
+        "url": "https://newatlas.com/energy/hb11-laser-fusion-demonstration/",
+        "source_name": "newatlas-energy-hb11-laser-fusion-demonstration",
+        "outcome": "success",
+        "covers": [
+          "Experimental results: 10x more fusion reactions than expected",
+          "Four orders of magnitude from net energy gain",
+          "World-first material number of fusion reactions by private company",
+          "Kilotesla magnetic containment field (laser + capacitive coil)",
+          "Osaka University demonstration details (Applied Sciences paper)",
+          "Alpha particle flux ~10^10/sr, ~1.4e11 alpha particles created",
+          "Conversion efficiency ~0.005% (early experiment)",
+          "Hydrogen-boron fusion creates alpha particles (direct charge collection)"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/abs/1603.02579",
+        "source_name": "arxiv-1603-02579",
+        "outcome": "success",
+        "covers": [
+          "Avalanche boron fusion theoretical basis (Hora et al.)",
+          "Picosecond block ignition mechanism",
+          "Up to 10 kilotesla magnetic trapping",
+          "Non-thermal plasma block ignition with petawatt lasers"
+        ],
+        "notes": "Only abstract page extracted (not full PDF). Contains key claims about mechanism but not detailed parameters."
+      },
+      {
+        "url": "https://link.springer.com/article/10.1007/s10894-023-00349-9",
+        "outcome": "skipped",
+        "notes": "Springer journal \u2014 likely paywalled. Not attempted due to 3-extraction cap already reached. This paper contains the most detailed quantitative parameters (fuel dimensions, energy per shot, conversion efficiencies)."
+      }
+    ],
+    "uncovered_claims": [
+      "Specific fuel dimensions: 1 cm length, 1 mm radius solid hydrogen-boron cylinder \u2014 from J. Fusion Energy 2023 paper",
+      "Alpha gyroradius ~43 \u00b5m in 10 kT field \u2014 from J. Fusion Energy 2023 paper",
+      "Energy per shot: ~300 kWh from 15 mg HB11 fuel \u2014 from J. Fusion Energy 2023 paper",
+      "Direct conversion efficiency ~80%, MHD + Rankine ~64% \u2014 from J. Fusion Energy 2023 paper",
+      "Electrodynamic conversion ~50%, thermal cycle ~35-40%, ion-to-photon ~45% \u2014 from J. Fusion Energy 2023 paper",
+      "Funding: ~$22M total raised \u2014 no source found in extracted articles",
+      "Energy conversion pivot: company website now says 'conventional steam cycle' vs original direct conversion \u2014 partially covered (both articles describe direct conversion, website says steam)"
+    ],
+    "recommendation": "partial",
+    "recommendation_rationale": "~70-75% of claims covered. Core approach, mechanism, experimental results, and reactor concept are well covered by the two New Atlas articles. However, the most detailed quantitative parameters (fuel dimensions, energy per shot, conversion efficiency options) come from the J. Fusion Energy 2023 Springer paper which was not extracted (likely paywalled, plus extraction cap reached). These quantitative details are important for techno-economic analysis.",
+    "replacement_md_note": "Thin replacement hb11-energy-technology.md (12 lines) in iter-01/sources/ is just the company homepage extraction \u2014 entirely a subset of the New Atlas articles. Can be deleted.",
+    "next_steps": [
+      "Extract J. Fusion Energy 2023 paper (https://link.springer.com/article/10.1007/s10894-023-00349-9) if accessible \u2014 it contains most of the uncovered quantitative parameters",
+      "Search for funding amount (~$22M) in FIA or Crunchbase coverage"
+    ]
+  },
+  "recommendation": "partial"
+}

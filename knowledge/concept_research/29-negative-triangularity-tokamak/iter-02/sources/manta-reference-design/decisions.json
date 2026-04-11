@@ -1,0 +1,471 @@
+[
+  {
+    "page_num": 0,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 1,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 2,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 3,
+    "action": "claude_replace",
+    "reasons": [
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (32r\u00d73c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 4,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 5,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 6,
+    "action": "strip_false",
+    "reasons": [
+      "TABLE: <br> artifacts in 1/8 table rows",
+      "TABLE: ColN auto-headers in 1/8 rows (likely diagram/figure falsely detected as table)",
+      "ColN auto-headers detected, no GMFT \u2014 stripping false tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 7,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 8,
+    "action": "strip_false",
+    "reasons": [
+      "TABLE: <br> artifacts in 5/7 table rows",
+      "TABLE: ColN auto-headers in 1/7 rows (likely diagram/figure falsely detected as table)",
+      "ColN auto-headers detected, no GMFT \u2014 stripping false tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 9,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 10,
+    "action": "claude_replace",
+    "reasons": [
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (4r\u00d72c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 11,
+    "action": "claude_replace",
+    "reasons": [
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (7r\u00d75c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 12,
+    "action": "claude_replace",
+    "reasons": [
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (7r\u00d73c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 13,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: strikethrough sequences: 3 (garbled content)",
+      "TABLE: ColN auto-headers in 1/14 rows (likely diagram/figure falsely detected as table)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 14,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: strikethrough sequences: 3 (garbled content)",
+      "TABLE: <br> artifacts in 3/30 table rows",
+      "TABLE: ColN auto-headers in 2/30 rows (likely diagram/figure falsely detected as table)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 15,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 16,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 17,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: strikethrough sequences: 1",
+      "MATH: replacement char (\ufffd): 1",
+      "TABLE: <br> artifacts in 1/3 table rows"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (10r\u00d78c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 18,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 19,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 20,
+    "action": "claude_replace",
+    "reasons": [
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (7r\u00d75c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 21,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 22,
+    "action": "claude_replace",
+    "reasons": [
+      "GMFT_XREF: GMFT found 2 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (6r\u00d76c, detector=gmft)",
+        "KEEP table 2 (4r\u00d73c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 23,
+    "action": "strip_false",
+    "reasons": [
+      "TABLE: <br> artifacts in 2/3 table rows",
+      "TABLE: ColN auto-headers in 1/3 rows (likely diagram/figure falsely detected as table)",
+      "ColN auto-headers detected, no GMFT \u2014 stripping false tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 24,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: strikethrough sequences: 10 (garbled content)",
+      "TABLE: <br> artifacts in 2/13 table rows",
+      "TABLE: ColN auto-headers in 1/13 rows (likely diagram/figure falsely detected as table)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 25,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 26,
+    "action": "strip_false",
+    "reasons": [
+      "TABLE: <br> artifacts in 2/7 table rows",
+      "TABLE: ColN auto-headers in 1/7 rows (likely diagram/figure falsely detected as table)",
+      "ColN auto-headers detected, no GMFT \u2014 stripping false tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 27,
+    "action": "claude_replace",
+    "reasons": [
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (4r\u00d75c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 28,
+    "action": "strip_false",
+    "reasons": [
+      "TABLE: <br> artifacts in 2/6 table rows",
+      "TABLE: ColN auto-headers in 1/6 rows (likely diagram/figure falsely detected as table)",
+      "ColN auto-headers detected, no GMFT \u2014 stripping false tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 29,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 30,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: strikethrough sequences: 8 (garbled content)",
+      "TABLE: <br> artifacts in 6/17 table rows",
+      "TABLE: ColN auto-headers in 1/17 rows (likely diagram/figure falsely detected as table)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 31,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 32,
+    "action": "claude_replace",
+    "reasons": [
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (4r\u00d73c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 33,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 34,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 35,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 36,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 37,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 38,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 39,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 40,
+    "action": "claude_replace",
+    "reasons": [
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (7r\u00d73c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 41,
+    "action": "keep",
+    "reasons": [],
+    "details": {
+      "table_filter": [
+        "REJECT table 1 (7r\u00d74c, detector=gmft): avg cell 159 > 80 (prose)"
+      ]
+    }
+  },
+  {
+    "page_num": 42,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 43,
+    "action": "claude_replace",
+    "reasons": [
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (11r\u00d73c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 44,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: strikethrough sequences: 1",
+      "MATH: replacement char (\ufffd): 1",
+      "MATH: bracket-encoded operators: 1"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 45,
+    "action": "claude_replace",
+    "reasons": [
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (7r\u00d75c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 46,
+    "action": "claude_replace",
+    "reasons": [
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (5r\u00d74c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 47,
+    "action": "claude_replace",
+    "reasons": [
+      "DENSITY: very low text density: 2 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 48,
+    "action": "claude_replace",
+    "reasons": [
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (11r\u00d73c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 49,
+    "action": "claude_replace",
+    "reasons": [
+      "GMFT_XREF: GMFT found 2 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (8r\u00d73c, detector=gmft)",
+        "KEEP table 2 (4r\u00d73c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 50,
+    "action": "claude_replace",
+    "reasons": [
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (7r\u00d74c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 51,
+    "action": "claude_replace",
+    "reasons": [
+      "DENSITY: very low text density: 52 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 52,
+    "action": "keep",
+    "reasons": [],
+    "details": {
+      "table_filter": [
+        "REJECT table 1 (9r\u00d72c, detector=gmft): avg cell 119 > 80 (prose)"
+      ]
+    }
+  }
+]

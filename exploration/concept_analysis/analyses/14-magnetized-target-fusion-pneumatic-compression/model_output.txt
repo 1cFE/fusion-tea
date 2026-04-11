@@ -1,0 +1,108 @@
+MTF Pneumatic Compression (D-T) — General Fusion concept
+  300 MWe net, 80% availability, 30 yr lifetime
+  FOAK | eta_th=35% | availability=80%
+
+LCOE:     101.5 $/MWh | Overnight: 6784 $/kW
+Fusion:   989 MW  | Net: 300 MW | Q_eng: 4.3
+Recirculating fraction: 23.4%
+Scientific Q (P_fus/P_driver): 19.8
+
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    36.0
+CAS21    Buildings                         327.4
+CAS22    Reactor Plant Equipment           756.9
+CAS23    Turbine Plant                      77.4
+CAS24    Electrical Plant                   33.0
+CAS25    Miscellaneous                      20.1
+CAS26    Heat Rejection                     13.4
+CAS27    Special Materials                   4.5
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                       123.8
+CAS30    Indirect Costs                    226.9
+CAS40    Owner's Costs                      21.4
+CAS50    Supplementary                     123.8
+CAS60    IDC                               265.7
+CAS70    O&M (annualized)                   49.0
+CAS80    Fuel (annualized)                   0.5
+CAS90    Financial                         164.0
+------------------------------------------------
+         Total Capital                    2035.2
+
+CAS22 Reactor Plant Equipment detail:
+--------------------------------------------------------
+  C220101 First Wall / Liquid Metal Wall       44.0 M$
+  C220102 Shield                               30.9 M$
+  C220103 Coils (Cu guide field only)          10.0 M$
+  C220104 Compression Driver [UNCERTAIN]      180.0 M$
+  C220105 Primary Structure                     3.0 M$
+  C220106 Vacuum System                        11.3 M$
+  C220107 Aux Power Supplies                   41.5 M$
+  C220110 Remote Handling                      93.9 M$
+  C220111 Installation                        170.9 M$
+  C220200 Coolant / LM Heat Exchange           71.5 M$
+  C220300 Aux Cooling + Cryo                    1.2 M$
+  C220400 Rad Waste                             2.2 M$
+  C220500 Fuel Handling (DT)                   51.7 M$
+  C220600 Other Equipment                       4.4 M$
+  C220700 I&C                                  40.5 M$
+
+          CAS22 Total                         756.9 M$
+
+Overridden: C220103, C220104, C220108
+
+Key Assumptions:
+--------------------------------------------------------
+  Net electric output:           300 MWe (stated commercial target)
+  Availability (capacity factor): 80%  [UNCERTAIN: mech. system]
+  Thermal efficiency (Rankine):   35%   [UNCERTAIN: 33–40% range]
+  Avg driver power (p_driver):    50 MW [UNCERTAIN: no design-point data]
+  Compression driver capital:     $180M [UNCERTAIN: no analogous system]
+  HTS coils / cryoplant:          None  [high confidence — no magnets in design]
+  Target factory:                 None  [high confidence — LM reforms each pulse]
+  Steam cycle (Rankine):          Yes   [shared with tokamak concepts]
+  Construction time:              5 yr
+  FOAK/NOAK:                      FOAK  [TRL 2–3 compression system]
+
+Modeling notes:
+  - BLOCKING unknowns: Q, eta_th, recirculating power fraction.
+    All three must be resolved before a reliable LCOE can be derived.
+    This model is a scenario anchor, not a prediction.
+  - Rep rate (1 Hz target) is embedded in availability and p_driver
+    rather than as a direct parameter. Halving rep rate → halving
+    annual energy → doubling LCOE from identical capital.
+  - C220104 ($180M compression driver) is the dominant unknown.
+    Range: $50M (optimistic analogue) to $500M+ (novel engineering).
+  - Liquid metal composition (Li vs PbLi) not finalized; affects
+    tritium extraction cost (ISS capital) and fire/explosion safety
+    infrastructure. Not modeled as separate scenarios here.
+  - FM-1 / FM-2 (compression ratio shortfall; piston synchronization)
+    are binary physics/engineering failure modes, not LCOE parameters.
+
+Sensitivity (elasticity = %LCOE / %param)
+------------------------------------------------
+
+Engineering levers:
+  availability                 -0.9439
+  construction_time_yr         +0.2667
+  plasma_t                     +0.0710
+  eta_pin                      -0.0547
+  p_driver                     +0.0547
+  blanket_t                    +0.0521
+  eta_th                       -0.0464
+  fuel_recovery                -0.0128
+  f_sub                        +0.0103
+  p_trit                       +0.0088
+  ht_shield_t                  +0.0075
+  vessel_t                     +0.0055
+  p_house                      +0.0035
+  p_pump                       +0.0026
+  structure_t                  +0.0025
+  mn                           -0.0011
+  burn_fraction                -0.0007
+  p_coils                      +0.0004
+  eta_p                        -0.0000
+
+Financial:
+  interest_rate                +0.6544
+  inflation_rate               +0.0586

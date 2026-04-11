@@ -1,0 +1,77 @@
+{
+  "status": "complete",
+  "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/31-laser-icf-oec-architecture/iter-01/sources/blf-website-and-news.orig.md",
+  "concept_id": "31-laser-icf-oec-architecture",
+  "concept_num": "31",
+  "elapsed_s": 181.6,
+  "return_code": 0,
+  "acquired": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/31-laser-icf-oec-architecture/iter-02/sources/finance-news-blue-laser-fusion-completes-37-114500457.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/31-laser-icf-oec-architecture/iter-02/sources/semiconductor-today-news-items-2025-oct-blue-laser-fusion.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/31-laser-icf-oec-architecture/iter-02/sources/semiconductor-today-news-items-2025-oct-bluelaserfusion.md"
+  ],
+  "acquired_count": 3,
+  "agent_report": {
+    "orig_file": "blf-website-and-news.orig.md",
+    "urls_found": [],
+    "extractions": [
+      {
+        "url": "https://www.semiconductor-today.com/news_items/2025/oct/blue-laser-fusion-031025.shtml",
+        "source_name": "semiconductor-today-news-items-2025-oct-blue-laser-fusion",
+        "outcome": "success",
+        "covers": [
+          "2025 DOE INFUSE award with Colorado State University",
+          "Prof. Carmen Menoni collaboration on optical coatings",
+          "OEC laser technology description",
+          "Founded 2022, CEO Shuji Nakamura (Nobel 2014)",
+          "DOE RISE HUB and FIRE Collaboratives membership",
+          "RSE MoU mentioned (link)"
+        ]
+      },
+      {
+        "url": "https://www.semiconductor-today.com/news_items/2025/oct/bluelaserfusion-211025.shtml",
+        "source_name": "semiconductor-today-news-items-2025-oct-bluelaserfusion",
+        "outcome": "success",
+        "covers": [
+          "JST Moonshot Program Goal 10 selection (October 2025)",
+          "Prof. Shinsuke Fujioka as project manager",
+          "BLF-Osaka University collaborative research institute",
+          "Multi-year initiative for laser, target ignition, reactor design",
+          "2024 INFUSE with Caltech mentioned in passing",
+          "MJ-class pulse energy, high repetition rate, high-gain target"
+        ]
+      },
+      {
+        "url": "https://finance.yahoo.com/news/blue-laser-fusion-completes-37-114500457.html",
+        "source_name": "finance-news-blue-laser-fusion-completes-37-114500457",
+        "outcome": "success",
+        "covers": [
+          "$37.5M Series Seed funding round (March 2024)",
+          "SoftBank Corp., Maezawa Fund, ITOCHU Corporation investors",
+          "JAFCO, SPARX (Mirai Creation Fund III), Waseda University Ventures investors",
+          "Founded 2022 by Nakamura (CEO), Ohta (co-founder), Ogawa (General Counsel)",
+          "Prototype 2025, commercial reactor by 2030 targets",
+          "Aneutronic solid target mentioned (contradicts D-T in other sources)"
+        ]
+      }
+    ],
+    "uncovered_claims": [
+      "World record 60,000x power stacking (2024) \u2014 from company website, JS-heavy",
+      "1.5m OEC prototype: finesse 419,000, enhancement factor 59,000 \u2014 likely in Optics Express paper (separate source exists)",
+      "15m OEC systems under construction at Goleta and Osaka \u2014 from company website",
+      "5 MJ laser capacity, 1 GW target plant \u2014 specific numbers from company website",
+      "CBC injection laser details (modular, single-mode, wavelength tunable, pulse shaping) \u2014 from company website",
+      "LIGO gravitational wave detection technology basis \u2014 from company website",
+      "Several hundred beams, nanosecond pulses, 1-10 Hz rep rate \u2014 from company website",
+      "1 GW pilot plant by 2032 target \u2014 from company website (funding article says 2030)",
+      "Toshiba Energy Systems & Solutions partnership \u2014 not found in news sources",
+      "YUKI Holdings partnership \u2014 not found in news sources",
+      "Boron fuel aspirational mention \u2014 from secondary Interesting Engineering article",
+      "Dual energy conversion (steam + direct conversion of charged particles) \u2014 from company website",
+      "University partners: UC San Diego, University of Rochester (others confirmed)"
+    ],
+    "recommendation": "partial",
+    "replacement_md_note": "Thin replacement blf-website-and-news.md (27 lines) contains only cookie consent text from JS-heavy site \u2014 zero useful content. Can be deleted. The .orig.md retains unique technical detail from company website not available in news coverage, particularly OEC lab specs and detailed technology page content. The optics-express-2025-paper source (already exists) likely covers the OEC finesse/enhancement numbers."
+  },
+  "recommendation": "partial"
+}

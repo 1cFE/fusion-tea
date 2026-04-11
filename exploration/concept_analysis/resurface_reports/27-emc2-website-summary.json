@@ -1,0 +1,80 @@
+{
+  "status": "complete",
+  "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/27-polywell/iter-01/sources/emc2-website-summary.orig.md",
+  "concept_id": "27-polywell",
+  "concept_num": "27",
+  "elapsed_s": 173.9,
+  "return_code": 0,
+  "acquired": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/27-polywell/iter-03/sources/arxiv-2508-06761.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/27-polywell/iter-03/sources/en-wiki-polywell.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/27-polywell/iter-03/sources/thefusionreport-p-interview-with-emc2-fusion-a-different.md"
+  ],
+  "acquired_count": 3,
+  "agent_report": {
+    "orig_file": "emc2-website-summary.orig.md",
+    "urls_found": [
+      "https://www.emc2fusion.com/"
+    ],
+    "extractions": [
+      {
+        "url": "https://www.emc2fusion.com/",
+        "outcome": "skipped",
+        "notes": "Company homepage, JS-heavy per instructions. Original file noted 403 on direct fetch."
+      },
+      {
+        "url": "https://thefusionreport.substack.com/p/interview-with-emc2-fusion-a-different",
+        "source_name": "thefusionreport-p-interview-with-emc2-fusion-a-different",
+        "outcome": "success",
+        "covers": [
+          "EMC2 founded ~1990 on government grants, Bussard inventor",
+          "Polywell technology description: magnetic cusp + electrostatic well",
+          "High-beta cusp confinement, WB formation in 2013",
+          "100 MW fusion energy with 2m diameter coils",
+          "1000x neutron yield vs commercial generators",
+          "FPNS partnership with SHINE Technologies for DOE",
+          "D-T and p-B fuel capability",
+          "20 experimental devices built and tested"
+        ]
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Polywell",
+        "source_name": "en-wiki-polywell",
+        "outcome": "success",
+        "covers": [
+          "EMC2 founded 1985 by Bussard",
+          "Jaeyoung Park became president in 2011",
+          "Polywell mechanism: electromagnets + electron trapping + potential well",
+          "Diamagnetic plasma trapping / Wiffle-Ball confinement",
+          "High-beta cusp confinement theory (Harold Grad 1955)",
+          "WB-1 through WB-8 experimental history",
+          "Bussard passing referenced"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/abs/2508.06761",
+        "source_name": "arxiv-2508-06761",
+        "outcome": "success",
+        "covers": [
+          "Polywell concept proposed by Bussard in 1985",
+          "High-beta magnetic cusp confinement + electrostatic ion confinement",
+          "D-T fuel path to net energy gain",
+          "Updated physics model with PIC simulations",
+          "Authors: Park, Krall, Lapenta, Ono (2025)"
+        ],
+        "notes": "Only abstract page extracted (arxiv landing page). Full paper PDF would need separate extraction."
+      }
+    ],
+    "uncovered_claims": [
+      "TOFE 2024 presentation FPNS specs: plasma target radius 8.5 cm, temperature 500 eV, B-field 2-3 T boundary / 4-5 T coil surface, ion beam 150-200 keV, 350 kW fusion power \u2014 conference paper not publicly accessible",
+      "$20M estimated R&D budget for initial 24 months \u2014 source unknown, possibly from TOFE 2024 presentation",
+      "1 GW upper bound electricity output claim \u2014 only 100 MW found in Substack source",
+      "San Diego area location \u2014 minor, not in extracted sources",
+      "DOE report anticipated March 2025 \u2014 mentioned in search results but not in extracted source content",
+      "Bussard served as 'technical director' specifically \u2014 sources confirm inventor/founder but not exact title"
+    ],
+    "recommendation": "partial",
+    "replacement_md_note": "Thin replacement emc2-website-summary.md (14 lines, JS-heavy homepage extract) is a strict subset of the newly-extracted sources \u2014 can be deleted."
+  },
+  "recommendation": "partial"
+}

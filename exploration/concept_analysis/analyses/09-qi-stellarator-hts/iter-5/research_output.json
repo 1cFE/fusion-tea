@@ -1,0 +1,130 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-4",
+      "gap_description": "Gross thermal efficiency and power cycle specification",
+      "queries": [],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "note": "Confirmed closed by prior iteration: gap_report.md confirms thermal efficiency ~32% ('stated as 1/3') is present in stellaris-design-details.md §7. Marked PARTIAL in iter-4 because no detailed BoP cycle study exists. This is now treated as derivable (EUROFER97 temperature limit → ~33–35% Rankine). No additional source attempted in iter-5."
+    },
+    {
+      "gap_id": "G-6",
+      "gap_description": "Q value and steady-state ECRH requirement post-ignition",
+      "queries": [],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "note": "Previously FAILED in iter-4. gap_report.md confirms Q is derivable from existing data: Q_plasma ≈ 2700 MW / 50 MW ECRH ≈ 54 (plasma), engineering Q lower. No public source explicitly states post-ignition ECRH reduction for Stellaris. Not re-attempted in iter-5 because iter-4 already established there is no public source resolving the H4 branching condition. The parameter is derivable with stated assumptions."
+    },
+    {
+      "gap_id": "G-11",
+      "gap_description": "Coil number, per-coil mass, and replacement scheme",
+      "queries": [
+        "Wendelstein 7-X W7-X modular coil mass manufacturing cost construction magnet system engineering",
+        "ARIES-CS 'Fusion Science and Technology' compact stellarator power plant cost of electricity full paper open access"
+      ],
+      "candidates": [
+        {
+          "url": "https://www-pub.iaea.org/mtcd/meetings/fec2008/ft_1-4.pdf",
+          "title": "The construction of the Wendelstein 7-X stellarator (IAEA FEC 2008)",
+          "triage": "failed",
+          "notes": "HTTP 402 error — IAEA PDF access restricted."
+        },
+        {
+          "url": "https://www.researchgate.net/publication/27280373_Fabrication_of_the_superconducting_coils_for_Wendelstein_7-X",
+          "title": "Fabrication of the superconducting coils for Wendelstein 7-X",
+          "triage": "likely_paywalled",
+          "notes": "ScienceDirect abstract page via ResearchGate. W7-X coil fabrication paper (Fusion Engineering and Design, ~2003). Not fetched — ScienceDirect source is paywalled; ResearchGate may only have abstract. Not worth extracting as source."
+        },
+        {
+          "url": "https://aries.pppl.gov/DOCS/ARIES-CS/final.shtml",
+          "title": "ARIES-CS Final Report — listing of 12 FST 2008 papers",
+          "triage": "listing_only",
+          "notes": "Fetched successfully. Lists 12 papers including 'ARIES-CS Maintenance System Definition and Analysis' (Waganer et al.) and 'ARIES-CS Magnet Conductor and Structure Evaluation' (Wang et al.) — both directly relevant to G-11. PDF download links are present on the page but exact URLs not captured by WebFetch summarizer. Not extracted as source — the page itself is a listing, not the technical content."
+        },
+        {
+          "url": "https://www.academia.edu/87401627/Maintenance_Approaches_for_ARIES_CS_Compact_Stellarator_Power_Core",
+          "title": "Maintenance Approaches for ARIES-CS Compact Stellarator Power Core",
+          "triage": "failed",
+          "notes": "Academia.edu returned HTTP 403. Full paper inaccessible via this route."
+        }
+      ],
+      "extracted": [],
+      "failed": [
+        {
+          "url": "https://www-pub.iaea.org/mtcd/meetings/fec2008/ft_1-4.pdf",
+          "reason": "HTTP 402 — restricted access"
+        },
+        {
+          "url": "https://www.academia.edu/87401627/Maintenance_Approaches_for_ARIES_CS_Compact_Stellarator_Power_Core",
+          "reason": "HTTP 403 — access denied"
+        }
+      ],
+      "status": "partial",
+      "note": "Coil count (50 modular HTS coils) is already confirmed in existing stellaris-design-details.md. Per-coil mass and detailed replacement scheme remain unsourced. The ARIES-CS maintenance paper (Waganer et al., FST 2008) was identified as the ideal analogue source but could not be accessed. The ARIES-CS final.shtml page lists 12 papers with PDF links — a future iteration should attempt to resolve individual paper PDF URLs directly from aries.pppl.gov (e.g., pattern-based URL guessing or using OSTI search for FST 54(3) 2008 papers)."
+    },
+    {
+      "gap_id": "G-12",
+      "gap_description": "Plasma current profile and bootstrap fraction",
+      "queries": [
+        "quasi-isodynamic stellarator bootstrap current fraction plasma current profile site:arxiv.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/abs/2512.08825",
+          "title": "CIEMAT-QI4X: a reactor-relevant quasi-isodynamic stellarator configuration compatible with an island divertor",
+          "triage": "relevant",
+          "notes": "Dec 2025 paper by Sánchez et al. (CIEMAT). Abstract explicitly states: 'small bootstrap current and an edge island structure compatible with an island divertor.' Four-field-period QI configuration, 4/4 island chain at edge resilient up to β=4% even with bootstrap current included. Directly relevant to G-12 and to Section 3a (alpha confinement in QI configurations). Extracted as abstract-level content (86 lines)."
+        },
+        {
+          "url": "https://arxiv.org/abs/2405.19860",
+          "title": "Quasi-isodynamic stellarators with low turbulence as fusion reactor candidates",
+          "triage": "relevant",
+          "notes": "May 2024 paper by Goodman et al. (IPP Greifswald). Combines plasma stability, fast-ion confinement, and turbulence reduction in QI designs. Triage of HTML version confirmed quantitative data: bootstrap current coefficient |D₃₁*| < 0.01 (negligible values), total bootstrap current < 10 kA, neoclassical transport ε_eff³/² lower than W7-X STD. Extracted as abstract-level content (77 lines). Full paper content not captured by trafilatura (abstract page only)."
+        },
+        {
+          "url": "https://arxiv.org/abs/2603.20125",
+          "title": "Control of the bootstrap current in approximately quasi-axisymmetric magnetic fields",
+          "triage": "not_fetched",
+          "notes": "Appeared in search results. Addresses bootstrap current control in QA (not QI) stellarators — less directly relevant. Not fetched or extracted; budget limit reached."
+        },
+        {
+          "url": "https://arxiv.org/abs/2212.01143",
+          "title": "A quasi-isodynamic configuration with good confinement of fast ions at low plasma β",
+          "triage": "not_fetched",
+          "notes": "Appeared in search results. May contain bootstrap current data for low-β QI config. Not fetched; budget limit reached."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/abs/2512.08825",
+          "source_name": "arxiv-2512-08825"
+        },
+        {
+          "url": "https://arxiv.org/abs/2405.19860",
+          "source_name": "arxiv-2405-19860"
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://www.mdpi.com/1996-1073/16/4/2069",
+          "reason": "add-source extraction failed (rc=1, no stderr) — open-access MDPI paper, but extraction pipeline could not process it"
+        }
+      ],
+      "status": "partial",
+      "note": "Two arXiv papers extracted as abstract-level sources confirming QI stellarator bootstrap current is near-zero by design. CIEMAT-QI4X (2512.08825) is the most directly relevant: reactor-relevant QI config with explicit small bootstrap current and island divertor compatibility, establishing this as a fundamental property of the QI optimization class. The theoretical context is now well-established that QI stellarators (including Stellaris) have negligible bootstrap current; the specific Stellaris current profile remains in the Stellaris paper but the physics basis is now externally confirmed. Full paper PDFs not captured — a future iteration should attempt arxiv.org/pdf/2512.08825 or arxiv.org/pdf/2405.19860 directly."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 2,
+    "sources_extracted": 2,
+    "sources_failed": 1,
+    "searches_used": 5,
+    "extractions_used": 3,
+    "key_finding": "Two arXiv papers on QI stellarator physics extracted as abstract-level sources for G-12 (bootstrap fraction). CIEMAT-QI4X (Dec 2025, CIEMAT) confirms small bootstrap current and island divertor compatibility in reactor-relevant QI configuration — directly supports Stellaris physics claims. QI low-turbulence paper (May 2024, IPP) quantifies bootstrap current at |D₃₁*| < 0.01 and total current < 10 kA — establishes neoclassical context. G-11 (per-coil mass, replacement) remains PARTIAL: ARIES-CS Maintenance paper (Waganer et al., FST 2008) identified as ideal analogue but all access routes blocked (Academia.edu 403, IAEA PDF 402). Next iteration should attempt direct aries.pppl.gov PDF URL resolution or OSTI full-text search for FST 54(3) 2008 papers."
+  }
+}

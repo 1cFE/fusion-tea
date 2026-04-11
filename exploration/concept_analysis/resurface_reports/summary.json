@@ -1,0 +1,1463 @@
+{
+  "total_files": 21,
+  "total_concepts": 15,
+  "statuses": {
+    "complete": 19,
+    "skipped": 2
+  },
+  "total_acquired": 45,
+  "recommendations": {
+    "partial": 8,
+    "delete": 9,
+    "unknown": 2
+  },
+  "results": [
+    {
+      "status": "complete",
+      "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/04-laser-icf/iter-01/sources/hb11-company-overview.orig.md",
+      "concept_id": "04-laser-icf",
+      "concept_num": "04",
+      "elapsed_s": 201.1,
+      "return_code": 0,
+      "acquired": [
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/04-laser-icf/iter-03/sources/fusionxinvest-company-profile-4353-hb11-energy.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/04-laser-icf/iter-03/sources/globenewswire-news-release-2025-02-10-3023820-0-en-general.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/04-laser-icf/iter-03/sources/prnewswire-news-releases-hb11-energy-receives-grant-from-us.md"
+      ],
+      "acquired_count": 3,
+      "agent_report": {
+        "orig_file": "hb11-company-overview.orig.md",
+        "urls_found": [
+          "https://hb11.energy/our-story/",
+          "https://hb11.energy/"
+        ],
+        "extractions": [
+          {
+            "url": "https://hb11.energy/our-story/",
+            "outcome": "duplicate",
+            "notes": "Already extracted as hb11-company-overview.md in iter-01 (thin JS-heavy content, only 3 marketing paragraphs)"
+          },
+          {
+            "url": "https://hb11.energy/",
+            "outcome": "skipped",
+            "notes": "Bare homepage domain \u2014 skipped per instructions (JS-heavy company site)"
+          },
+          {
+            "url": "https://www.prnewswire.com/news-releases/hb11-energy-receives-grant-from-us-department-of-energy-to-develop-clean-safe-and-unlimited-fusion-energy-301899494.html",
+            "source_name": "prnewswire-news-releases-hb11-energy-receives-grant-from-us",
+            "outcome": "success",
+            "covers": [
+              "DOE INFUSE grant (2023)",
+              "Key people: Prof Thomas Mehlhorn (lead target design), Dr Warren McKenzie (founder & MD), Prof Adam Sefkow (Rochester), Max Tabak (fast ignition pioneer, Edward Teller Award), Prof Hora (co-founder)",
+              "University of Rochester / LLE partnership",
+              "Proton fast ignition / aneutronic hydrogen-boron approach",
+              "INFUSE as public-private partnership program"
+            ]
+          },
+          {
+            "url": "https://www.globenewswire.com/news-release/2025/02/10/3023820/0/en/General-Atomics-Secures-DOE-Funding-to-Advance-Vital-Fusion-Energy-Research-and-Development.html",
+            "source_name": "globenewswire-news-release-2025-02-10-3023820-0-en-general",
+            "outcome": "success",
+            "covers": [
+              "TINEX initiative \u2014 GA-led, DOE FIRE Collaboratives funding ($107M across 6 projects)",
+              "TINEX Industrial Council members: Xcimer Energy, Marvel Fusion, Longview Energy Systems, LaserFusionX, HB11, Focused Energy, Blue Laser Fusion",
+              "Partner institutions: SLAC, Colorado State, UC San Diego, LLNL",
+              "Technical scope: fuel target fabrication, precision injection, tracking, debris management"
+            ]
+          },
+          {
+            "url": "https://fusionxinvest.com/company-profile/4353/hb11-energy/",
+            "source_name": "fusionxinvest-company-profile-4353-hb11-energy",
+            "outcome": "success",
+            "covers": [
+              "Founded 2017, Sydney Australia",
+              "Laser-ignited hydrogen-boron (pB11) fuel approach",
+              "Petawatt-class laser experiments",
+              "Collaborations with European and Japanese research institutions"
+            ]
+          }
+        ],
+        "uncovered_claims": [
+          "~$23M total funding (PitchBook figure) \u2014 FusionXInvest paywalled, only free preview extracted",
+          "Key people: Greg Ainsworth (COO), Dr Sergey Pikuz (CTO), Dr Igor Morozov (Head of Simulations), Prof Thomas Kuehl (Laser Technology Lead) \u2014 not in any extracted source",
+          "'Components first' commercial strategy (Nov 2024) \u2014 no accessible source found covering this announcement",
+          "Two revenue streams: high-powered pulsed lasers (>$10B market) and boron fuel targets (medical isotopes) \u2014 no accessible source found",
+          "Osaka University LFEX petawatt laser experiments (specific partnership) \u2014 partially covered by FusionXInvest mentioning 'Japan' but no specifics",
+          "Technical evolution: original two-laser system (ns pulse for kilotesla field + ps petawatt for proton fast ignition), direct electrostatic conversion at -1.4 MV \u2014 covered by existing patent source in iter-01, not by new extractions",
+          "1 GW baseload power target \u2014 not in any extracted source",
+          "TINEX described as '$180M' in orig vs $107M across 6 projects in GlobeNewsWire \u2014 discrepancy (orig figure may be total program including industry contributions)"
+        ],
+        "recommendation": "partial",
+        "replacement_md_note": "Thin replacement hb11-company-overview.md (iter-01) contains only 3 paragraphs of marketing text from JS-heavy hb11.energy/our-story/ \u2014 is a strict subset of what new extracted sources cover. Could be deleted, but orig.md should be kept since ~40% of claims (commercial strategy, several key people, funding total, 1 GW target) remain uncovered by any individual source."
+      },
+      "recommendation": "partial"
+    },
+    {
+      "status": "complete",
+      "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/04-laser-icf/iter-01/sources/hb11-technology-page.orig.md",
+      "concept_id": "04-laser-icf",
+      "concept_num": "04",
+      "elapsed_s": 167.6,
+      "return_code": 0,
+      "acquired": [
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/04-laser-icf/iter-03/sources/interestingengineering-energy-hb11-joins-largest-laser-lab.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/04-laser-icf/iter-03/sources/link-10-1007-s10894-023-00349-9.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/04-laser-icf/iter-03/sources/newatlas-energy-hb11-laser-fusion-demonstration.md"
+      ],
+      "acquired_count": 3,
+      "agent_report": {
+        "orig_file": "hb11-technology-page.orig.md",
+        "urls_found": [
+          "https://hb11.energy/our-technology/"
+        ],
+        "extractions": [
+          {
+            "url": "https://hb11.energy/our-technology/",
+            "outcome": "fail_js",
+            "notes": "JS-heavy company page; only 4 lines of generic intro text extracted (15 lines total with frontmatter)"
+          },
+          {
+            "url": "https://link.springer.com/article/10.1007/s10894-023-00349-9",
+            "source_name": "link-10-1007-s10894-023-00349-9",
+            "outcome": "success",
+            "covers": [
+              "ICF with Fast Ignition / non-thermal approach",
+              "Two-pulse laser system (nanosecond + picosecond)",
+              "Hydrogen-Boron (p-11B) fuel",
+              "Three alpha particles releasing 8.7 MeV",
+              "Direct conversion vs thermal cycle discussion",
+              "Energy recycling / recirculating power fraction",
+              "Proton Fast Ignition reducing temperature requirements",
+              "Technoeconomic model with LCOE targets"
+            ]
+          },
+          {
+            "url": "https://newatlas.com/energy/hb11-laser-fusion-demonstration/",
+            "source_name": "newatlas-energy-hb11-laser-fusion-demonstration",
+            "outcome": "success",
+            "covers": [
+              "Two-laser reactor concept (metal sphere)",
+              "Kilotesla magnetic containment via capacitive coil",
+              "Hydrogen-boron fuel advantages",
+              "Chirped pulse amplification lasers",
+              "Experimental results at Osaka University",
+              "Alpha particle generation demonstration"
+            ]
+          },
+          {
+            "url": "https://interestingengineering.com/energy/hb11-joins-largest-laser-lab-nuclear-power",
+            "source_name": "interestingengineering-energy-hb11-joins-largest-laser-lab",
+            "outcome": "success",
+            "covers": [
+              "Conventional steam cycle power generation",
+              "Energy recycling to keep fusion process going",
+              "Hydrogen-boron pellet fuel",
+              "Non-thermal fusion approach",
+              "ELI ERIC laser infrastructure partnership",
+              "Micro-fabricated laser targets"
+            ]
+          }
+        ],
+        "uncovered_claims": [
+          "\"Thousands of commercial lasers\" \u2014 orig file states this but Springer paper describes a 2-laser concept; may reflect newer marketing language on the JS-heavy website not captured in any accessible source",
+          "\"Energy density a million times denser than oil\" \u2014 marketing copy from website, not found in peer-reviewed or news sources"
+        ],
+        "recommendation": "delete",
+        "replacement_md_note": "Thin replacement hb11-technology-page.md (iter-01) is a 4-line JS stub with no technical content \u2014 also deletable. Same for iter-02 hb11-technology-page-2025.orig.md. All substantive claims are now covered by the 3 extracted sources plus existing HB11 sources (fusionxinvest profile, prnewswire grant, globenewswire)."
+      },
+      "recommendation": "delete"
+    },
+    {
+      "status": "complete",
+      "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/04-laser-icf/iter-02/sources/hb11-technology-page-2025.orig.md",
+      "concept_id": "04-laser-icf",
+      "concept_num": "04",
+      "elapsed_s": 249.6,
+      "return_code": 0,
+      "acquired": [
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/04-laser-icf/iter-03/sources/hb11-our-technology.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/04-laser-icf/iter-03/sources/power-technology-features-hb11-the-australian-start-up.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/04-laser-icf/iter-03/sources/unsw-newsroom-news-2020-02-pioneering-technology-promises.md"
+      ],
+      "acquired_count": 3,
+      "agent_report": {
+        "orig_file": "hb11-technology-page-2025.orig.md",
+        "urls_found": [
+          "https://hb11.energy/our-technology/"
+        ],
+        "extractions": [
+          {
+            "url": "https://hb11.energy/our-technology/",
+            "source_name": "hb11-our-technology",
+            "outcome": "fail_js",
+            "notes": "Trafilatura extracted only 6 lines of marketing intro text. JS-heavy company site, all technical content rendered client-side."
+          },
+          {
+            "url": "https://www.power-technology.com/features/hb11-the-australian-start-up-pursuing-a-new-form-of-fusion/",
+            "source_name": "power-technology-features-hb11-the-australian-start-up",
+            "outcome": "success",
+            "covers": [
+              "Two-laser approach (magnetic containment + avalanche trigger)",
+              "Non-thermal fusion approach using CPA lasers",
+              "Direct charge capture (no steam turbine or heat exchanger)",
+              "Hydrogen-boron (p-11B) fuel \u2014 aneutronic, abundant, safe",
+              "Smaller reactor footprint than conventional plants"
+            ]
+          },
+          {
+            "url": "https://www.unsw.edu.au/newsroom/news/2020/02/pioneering-technology-promises-unlimited--clean-and-safe-energy-",
+            "source_name": "unsw-newsroom-news-2020-02-pioneering-technology-promises",
+            "outcome": "success",
+            "covers": [
+              "Two-laser system: magnetic containment + avalanche chain reaction",
+              "Direct electrical conversion (alpha particles create electrical flow)",
+              "No need for heat exchanger or steam turbine generator",
+              "Hydrogen-boron fuel (cheap, abundant, non-radioactive)",
+              "Metal sphere reactor design with fuel pellet in center",
+              "Billion-fold higher reaction rates than thermal equilibrium predictions"
+            ]
+          }
+        ],
+        "uncovered_claims": [
+          "1 GW baseload power target \u2014 only appears on HB11 JS-rendered website, no news/academic source replicates this figure",
+          "Thousands of commercial lasers \u2014 only on HB11 JS-rendered website, not in any extractable source",
+          "Fuel pellets at approximately 1 per second \u2014 only on HB11 website",
+          "A million times denser than oil \u2014 marketing claim only on HB11 website",
+          "Conventional steam cycle generator \u2014 contradicted by all other sources (UNSW, NewAtlas, Power Tech all say direct conversion). The Springer paper (already in iter-03) discusses Rankine steam cycle as one possible combined approach but emphasizes direct conversion"
+        ],
+        "recommendation": "partial",
+        "notes": "~60% coverage. The well-supported technical claims (p-11B reaction, 8.7 MeV, three alpha particles, two-laser system, direct conversion, aneutronic benefits) are thoroughly covered by the Springer paper (already in iter-03) plus the two new sources. The uncovered claims are marketing statements from HB11's JS-heavy website that no independent source replicates. The 'conventional steam cycle' claim in the orig file is particularly interesting \u2014 it contradicts every other source including HB11's own Springer paper, which emphasizes direct conversion. The orig file itself flagged this contradiction. The Springer paper (link-10-1007-s10894-023-00349-9) already in iter-03 is the highest-quality source and covers the core technical content comprehensively.",
+        "replacement_md_note": "Thin replacement hb11-technology-page-2025.md (16 lines) is a subset of the newly-extracted hb11-our-technology.md (same URL, same thin content). Both are effectively useless \u2014 the JS-heavy site yields only marketing intro text via trafilatura."
+      },
+      "recommendation": "partial"
+    },
+    {
+      "status": "complete",
+      "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/05-planar-coil-stellarator/iter-01/sources/thea-energy-website-and-press.orig.md",
+      "concept_id": "05-planar-coil-stellarator",
+      "concept_num": "05",
+      "elapsed_s": 117.6,
+      "return_code": 0,
+      "acquired": [
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/05-planar-coil-stellarator/iter-03/sources/ans-news-2025-12-18-article-7628.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/05-planar-coil-stellarator/iter-03/sources/thea-press-release-thea-energy-announces-peer-reviewed.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/05-planar-coil-stellarator/iter-03/sources/thea-press-release-u-s-department-of-energy-certifies-thea.md"
+      ],
+      "acquired_count": 3,
+      "agent_report": {
+        "orig_file": "thea-energy-website-and-press.orig.md",
+        "urls_found": [
+          "https://thea.energy/",
+          "https://thea.energy/fusion-technology/",
+          "https://thea.energy/eos/",
+          "https://thea.energy/press-release/thea-energy-announces-peer-reviewed-publications-outlining-the-planar-coil-stellarator-approach-for-commercial-fusion-energy/",
+          "https://thea.energy/press-release/u-s-department-of-energy-certifies-thea-energys-fusion-pilot-plant-preconceptual-design/",
+          "https://www.ans.org/news/2025-12-18/article-7628/",
+          "https://interestingengineering.com/energy/thea-energy-unveils-helios-realistic-fusion-power-plant"
+        ],
+        "extractions": [
+          {
+            "url": "https://www.ans.org/news/2025-12-18/article-7628/",
+            "source_name": "ans-news-2025-12-18-article-7628",
+            "outcome": "success",
+            "covers": [
+              "Helios 1.1 GW thermal, 390 MWe net electric",
+              "Helios coil set: 12 large encircling + 324 shaping coils, 20T max field",
+              "Helios major radius 8m, most compact optimized stellarator",
+              "DOE Milestone Program selection (1 of 8, 2023)",
+              "Princeton Stellarators former name",
+              "PPPL/Princeton spin-out",
+              "Eos operational by 2030",
+              "Helios in the 2030s",
+              "Sector-based maintenance scheme"
+            ]
+          },
+          {
+            "url": "https://thea.energy/press-release/thea-energy-announces-peer-reviewed-publications-outlining-the-planar-coil-stellarator-approach-for-commercial-fusion-energy/",
+            "source_name": "thea-press-release-thea-energy-announces-peer-reviewed",
+            "outcome": "success",
+            "covers": [
+              "4 Nuclear Fusion papers (Jan 2025) with titles",
+              "Eos <40 MW electric power consumption",
+              "Eos tritium production ~0.2 g/day (70 g/year) via D-D",
+              "Founded 2022, PPPL/Princeton spin-out",
+              "CEO Brian Berzin",
+              "HQ Kearny NJ",
+              "Planar coil architecture (encircling + shaping coils)",
+              "INFUSE award 2022b mentioned"
+            ]
+          },
+          {
+            "url": "https://thea.energy/press-release/u-s-department-of-energy-certifies-thea-energys-fusion-pilot-plant-preconceptual-design/",
+            "source_name": "thea-press-release-u-s-department-of-energy-certifies-thea",
+            "outcome": "success",
+            "covers": [
+              "DOE preconceptual design certification (first awardee)",
+              "200-page report to DOE",
+              "arXiv:2512.08027 preprint",
+              "DOE Milestone Program ($46M across 8 companies)",
+              "World's first superconducting planar coil magnet array",
+              "Six INFUSE awards total",
+              "Eos online by 2030, Helios in 2030s",
+              "Founded 2022, CEO Brian Berzin, HQ Kearny NJ",
+              "Software-controlled magnet coils, stellarator divertor, sector maintenance"
+            ]
+          },
+          {
+            "url": "https://thea.energy/",
+            "outcome": "skipped",
+            "notes": "Homepage \u2014 already extracted as thin replacement (thea-energy-website-and-press.md in iter-01). JS-heavy company homepage."
+          },
+          {
+            "url": "https://thea.energy/fusion-technology/",
+            "outcome": "skipped",
+            "notes": "Company subpage, likely JS-heavy. Cap of 3 extractions reached."
+          },
+          {
+            "url": "https://thea.energy/eos/",
+            "outcome": "skipped",
+            "notes": "Company subpage, likely JS-heavy. Cap of 3 extractions reached."
+          },
+          {
+            "url": "https://interestingengineering.com/energy/thea-energy-unveils-helios-realistic-fusion-power-plant",
+            "outcome": "skipped",
+            "notes": "Cap of 3 extractions reached. Lower priority news summary."
+          }
+        ],
+        "uncovered_claims": [
+          "DOE ARPA-E $3M grant (2020) \u2014 not mentioned in any extracted source",
+          "Series A $20M (September 2024) Prelude Ventures lead \u2014 funding round not in any extracted source",
+          "LCOE target $150/MWh initially \u2192 $60/MWh at scale \u2014 not in any extracted source",
+          "Triple product target 10^21 keV\u00b7s/m^3 for Eos \u2014 not in extracted sources (likely in Nuclear Fusion papers or arXiv)",
+          "Coil field ~16T at coil (orig file) \u2014 ANS article says 20T max; discrepancy, may be different coil types",
+          "30+ year magnet lifetime \u2014 not in extracted sources",
+          "450+ independent control variables \u2014 not explicitly stated in extracted sources",
+          "Lab heritage references (Wendelstein 7-X, CNT, 3x3 array) \u2014 W7-X/CNT are general knowledge; 3x3 array mentioned in DOE cert PR"
+        ],
+        "recommendation": "delete",
+        "replacement_md_note": "Thin replacement (24 lines) is just thea.energy homepage marketing text \u2014 fully subsumed by the 3 new extracted sources plus existing iter-01 Helios arXiv source. The few uncovered claims (ARPA-E grant, Series A funding, LCOE targets) are either in the existing arXiv paper source or are minor details. >85% of substantive technical claims are now backed by extracted sources."
+      },
+      "recommendation": "delete"
+    },
+    {
+      "status": "complete",
+      "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/07-maglif/iter-01/sources/pacific-fusion-website-technology.orig.md",
+      "concept_id": "07-maglif",
+      "concept_num": "07",
+      "elapsed_s": 111.3,
+      "return_code": 0,
+      "acquired": [
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/07-maglif/iter-03/sources/pacificfusion-updates-crada-sandia-national-laboratories.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/07-maglif/iter-03/sources/pacificfusion-updates-experimental-breakthrough-by-pacific.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/07-maglif/iter-03/sources/pacificfusion-updates-founders-letter.md"
+      ],
+      "acquired_count": 3,
+      "agent_report": {
+        "orig_file": "pacific-fusion-website-technology.orig.md",
+        "urls_found": [
+          "https://www.pacificfusion.com/",
+          "https://www.pacificfusion.com/updates/founders-letter",
+          "https://www.pacificfusion.com/updates/crada-sandia-national-laboratories",
+          "https://www.pacificfusion.com/updates/experimental-breakthrough-by-pacific-fusion-clears-major-obstacle-to-affordable-commercial-fusion",
+          "https://lowercarbon.com/company/pacific-fusion/"
+        ],
+        "extractions": [
+          {
+            "url": "https://www.pacificfusion.com/",
+            "source_name": "pacific-fusion-website-technology",
+            "outcome": "duplicate",
+            "notes": "Already extracted in iter-01 as pacific-fusion-website-technology.md (thin homepage)"
+          },
+          {
+            "url": "https://www.pacificfusion.com/updates/founders-letter",
+            "source_name": "pacificfusion-updates-founders-letter",
+            "outcome": "success",
+            "covers": [
+              "Founded summer 2023 by Lander, Regan, LeChien, von Muench, Ellison",
+              "Based in Fremont, California",
+              "$900M committed funding",
+              "Team from NIF/Z Machine work",
+              "Pulsed magnetic inertial fusion approach description",
+              "IMG technology and brick architecture",
+              "D-T fuel confirmed",
+              "Net facility gain as immediate goal",
+              "Investor syndicate details"
+            ]
+          },
+          {
+            "url": "https://www.pacificfusion.com/updates/crada-sandia-national-laboratories",
+            "source_name": "pacificfusion-updates-crada-sandia-national-laboratories",
+            "outcome": "success",
+            "covers": [
+              "CRADA with Sandia National Laboratories",
+              "Developing cutting-edge pulser architectures",
+              "Advancing capabilities for high-yield fusion (100+ MJ)",
+              "Addressing challenges of operating in high fusion yield environment",
+              "Keith LeChien as CTO"
+            ]
+          },
+          {
+            "url": "https://www.pacificfusion.com/updates/experimental-breakthrough-by-pacific-fusion-clears-major-obstacle-to-affordable-commercial-fusion",
+            "source_name": "pacificfusion-updates-experimental-breakthrough-by-pacific",
+            "outcome": "success",
+            "covers": [
+              "Self-magnetizing targets (Feb 2026 breakthrough)",
+              "Partnership with Sandia on Z Machine",
+              "Targets made of plastic and aluminum",
+              "Two versions: 50 and 200 micron aluminum",
+              "Small metal cylinders about size of pencil eraser",
+              "22 million amps in 120 nanoseconds",
+              "Eliminates need for external copper coils",
+              "Goal to also eliminate laser pre-heating",
+              "Net facility gain by 2030",
+              "First commercial fusion system mid-2030s",
+              "Albuquerque Research and Manufacturing Campus"
+            ]
+          },
+          {
+            "url": "https://lowercarbon.com/company/pacific-fusion/",
+            "outcome": "skipped",
+            "notes": "Investor portfolio page \u2014 not a primary source for technical claims. Skipped due to 3-extraction cap reached."
+          }
+        ],
+        "uncovered_claims": [
+          "Electricity at 2 cents per kilowatt-hour by 2040 \u2014 not found in any of the extracted primary sources; may have been from interview or press coverage not linked in orig file"
+        ],
+        "recommendation": "delete",
+        "replacement_md_note": "Thin replacement pacific-fusion-website-technology.md (54 lines) is the homepage extraction \u2014 entirely a subset of the founders-letter content. Can also be deleted or left as-is since it's a valid individual source for the homepage."
+      },
+      "recommendation": "delete"
+    },
+    {
+      "status": "complete",
+      "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/14-magnetized-target-fusion-pneumatic-compression/iter-01/sources/general-fusion-technology-overview.orig.md",
+      "concept_id": "14-magnetized-target-fusion-pneumatic-compression",
+      "concept_num": "14",
+      "elapsed_s": 140.5,
+      "return_code": 0,
+      "acquired": [
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/14-magnetized-target-fusion-pneumatic-compression/iter-04/sources/en-wiki-general-fusion.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/14-magnetized-target-fusion-pneumatic-compression/iter-04/sources/globenewswire-news-release-2022-12-12-2571959-0-en-general.md"
+      ],
+      "acquired_count": 2,
+      "agent_report": {
+        "orig_file": "general-fusion-technology-overview.orig.md",
+        "urls_found": [
+          "https://generalfusion.com/fusion-technology/"
+        ],
+        "extractions": [
+          {
+            "url": "https://generalfusion.com/fusion-technology/",
+            "source_name": "general-fusion-technology-overview",
+            "outcome": "duplicate",
+            "notes": "Already extracted in iter-01 as general-fusion-technology-overview.md"
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/General_Fusion",
+            "source_name": "en-wiki-general-fusion",
+            "outcome": "success",
+            "covers": [
+              "Founded 2002 by Michel Laberge",
+              "Richmond, British Columbia location",
+              "MTF approach with compact toroid plasma",
+              "First at-scale plasma injector 2010",
+              "Compressive heating demonstrated 2011",
+              "Plasma lifetime in liquid metal cavity 2019",
+              "LM26 designed to achieve 10 keV by 2025",
+              "Scientific breakeven equivalent by 2026"
+            ]
+          },
+          {
+            "url": "https://www.globenewswire.com/news-release/2022/12/12/2571959/0/en/General-Fusion-exceeds-core-technology-performance-targets-with-plasma-and-compression-prototypes.html",
+            "source_name": "globenewswire-news-release-2022-12-12-2571959-0-en-general",
+            "outcome": "success",
+            "covers": [
+              "Over 200,000 plasma shots completed",
+              "Complete milestone timeline 2005-2022",
+              "First at-scale plasma injector 2010",
+              "Liquid metal cavity plasma confinement 2019",
+              "10 millisecond energy confinement time",
+              "150 patents and patents pending (as of 2022)",
+              "Compression system prototype validation",
+              "PI3 world's largest plasma injector"
+            ]
+          }
+        ],
+        "uncovered_claims": [
+          "24 prototypes \u2014 Wikipedia mentions 'more than a dozen plasma injectors' by 2016; the specific number 24 appears on the GF website but not in extracted sources. Likely updated count on generalfusion.com/fusion-technology/ which was thin-extracted.",
+          "34 peer-reviewed publications, 210 patents \u2014 the existing thin extraction of generalfusion.com/fusion-technology/ mentions this exact stat. GlobeNewsWire 2022 says 150 patents (as of 2022, count has since grown). The thin extraction covers this."
+        ],
+        "recommendation": "delete",
+        "replacement_md_note": "Thin replacement general-fusion-technology-overview.md (18 lines) from generalfusion.com/fusion-technology/ is already an extracted source in iter-01. It covers the 34 publications/210 patents claim. Combined with the two new sources (Wikipedia + GlobeNewsWire) and existing iter-01/02/03 sources, >95% of orig file claims are covered. The orig.md can be removed."
+      },
+      "recommendation": "delete"
+    },
+    {
+      "status": "skipped",
+      "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/14-magnetized-target-fusion-pneumatic-compression/iter-02/sources/general-fusion-lm26-milestones-2025.orig.md",
+      "concept_id": "14-magnetized-target-fusion-pneumatic-compression",
+      "reason": "existing report"
+    },
+    {
+      "status": "complete",
+      "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/15-sheared-flow-stabilized-z-pinch/iter-01/sources/zap-energy-website-how-it-works.orig.md",
+      "concept_id": "15-sheared-flow-stabilized-z-pinch",
+      "concept_num": "15",
+      "elapsed_s": 138.7,
+      "return_code": 0,
+      "acquired": [],
+      "acquired_count": 0,
+      "agent_report": {
+        "orig_file": "zap-energy-website-how-it-works.orig.md",
+        "urls_found": [
+          "https://www.zapenergy.com/how-it-works"
+        ],
+        "extractions": [
+          {
+            "url": "https://www.zapenergy.com/how-it-works",
+            "outcome": "duplicate",
+            "notes": "Already extracted as thin replacement (zap-energy-website-how-it-works.md). JS-heavy site yielded only image captions, no technical content."
+          }
+        ],
+        "uncovered_claims": [],
+        "coverage_detail": {
+          "sheared_flow_stabilization_no_magnets": "covered by engineering-paradigms-paper-summary + century-demo-system",
+          "plasma_layers_mechanism": "covered by engineering-paradigms-paper-summary (rigorous physics description)",
+          "current_confinement_heating": "covered by engineering-paradigms-paper-summary Table I (current scaling)",
+          "dt_fuel": "covered by engineering-paradigms-paper-summary",
+          "pulsed_10hz": "derivable from engineering-paradigms-paper-summary (200 MW thermal / 19 MJ per pulse \u2248 10.5 Hz)",
+          "capacitor_banks": "covered by century-demo-system + engineering-paradigms-paper-summary",
+          "fuzeq_1_megaamp": "covered by engineering-paradigms-paper-summary Table I (1.0 MA engineering breakeven)",
+          "liquid_metal_walls": "covered by engineering-paradigms-paper-summary + century-demo-system",
+          "lead_lithium_tritium_breeding": "covered by engineering-paradigms-paper-summary (LiPb eutectic, 17% Li / 83% Pb)"
+        },
+        "recommendation": "delete",
+        "replacement_md_note": "Thin replacement (zap-energy-website-how-it-works.md, 31 lines) contains only image captions from JS-heavy site. All substantive technical content is fully covered by engineering-paradigms-paper-summary (peer-reviewed paper) and century-demo-system (press release). Both the .orig.md and the thin .md can be deleted."
+      },
+      "recommendation": "delete"
+    },
+    {
+      "status": "complete",
+      "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-01/sources/focused-energy-technology.orig.md",
+      "concept_id": "17-laser-icf-direct-drive",
+      "concept_num": "17",
+      "elapsed_s": 319.8,
+      "return_code": 0,
+      "acquired": [
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/laserfocusworld-lasers-sources-article-14274951-can-high.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/optica-opn-home-articles-volume-34-june-2023-features.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/prnewswire-news-releases-focused-energy-and-amplitude-enter.md"
+      ],
+      "acquired_count": 3,
+      "agent_report": {
+        "orig_file": "focused-energy-technology.orig.md",
+        "urls_found": [
+          "focused-energy.co/technology",
+          "focused-energy.co/technology/lighthouse",
+          "Physics World interview (not a URL)",
+          "Optica OPN article (not a URL)"
+        ],
+        "extractions": [
+          {
+            "url": "https://www.focused-energy.co/technology",
+            "outcome": "skipped",
+            "notes": "Company site, already extracted as thin replacement in iter-01 (20 lines of marketing text). Domain-style URL, JS-heavy."
+          },
+          {
+            "url": "https://www.focused-energy.co/technology/lighthouse",
+            "outcome": "skipped",
+            "notes": "Company site subpage, JS-heavy. Skipped per domain-name heuristic."
+          },
+          {
+            "url": "https://physicsworld.com/a/focusing-on-fusion-debbie-callahan-talks-commercial-laser-fusion/",
+            "outcome": "duplicate",
+            "notes": "Already extracted as focused-energy-callahan-interview in iter-02. Covers: direct drive approach, target gain 50-100x, DPSSL, ~10% WPE, Pearl capsules, LightHouse plant, 900K shots/day, pilot plant timeline, tritium breeding, steam cycle."
+          },
+          {
+            "url": "https://www.prnewswire.com/news-releases/focused-energy-and-amplitude-enter-40-million-agreement-to-advance-high-energy-lasers-beyond-the-state-of-the-art-for-inertial-fusion-energy-302333235.html",
+            "source_name": "prnewswire-news-releases-focused-energy-and-amplitude-enter",
+            "outcome": "success",
+            "covers": [
+              "$40M Amplitude partnership",
+              "$65M laser facility in Bay Area",
+              "Colorado State University proton fast ignition experiments (DOE milestone)",
+              "$175M total funding raised",
+              "Kilo-joule class lasers at enhanced rep rate",
+              "DOE Milestone-Based Fusion Development Program selection",
+              "SPRIND/German government backing",
+              "Fuel targetry lab in Darmstadt"
+            ]
+          },
+          {
+            "url": "https://www.laserfocusworld.com/lasers-sources/article/14274951/can-high-intensity-lasers-help-save-the-planet",
+            "source_name": "laserfocusworld-lasers-sources-article-14274951-can-high",
+            "outcome": "success",
+            "covers": [
+              "Direct-drive proton fast ignition approach description",
+              "150 kJ picosecond ignition laser specs",
+              "400 kJ long-pulse (10 ns) compression lasers",
+              "80 beamlines onto fusion target",
+              "CPA (chirped-pulse amplification) technology",
+              "10 Hz rep rate for power plant",
+              "Diode-pumped solid-state laser roadmap for 2030s",
+              "Todd Ditmire co-founder details",
+              "ELI Beamlines connection",
+              "Credible ignition experiment by end of 2029"
+            ]
+          },
+          {
+            "url": "https://www.optica-opn.org/home/articles/volume_34/june_2023/features/fusion_s_direct_drive/",
+            "source_name": "optica-opn-home-articles-volume-34-june-2023-features",
+            "outcome": "success",
+            "covers": [
+              "Direct drive vs indirect drive context",
+              "Fast ignition concept description",
+              "Markus Roth as CSO and TU Darmstadt professor",
+              "Pilot plant by end of 2030s",
+              "OMEGA laser at U. Rochester (30 kJ, 60 beams)",
+              "Broader direct-drive IFE landscape (LLE, NRL, argon fluoride)"
+            ]
+          }
+        ],
+        "uncovered_claims": [
+          "527 nm compression wavelength (2\u03c9 instead of 3\u03c9) \u2014 only documented in Springer journal paper (doi:10.1007/s10894-023-00363-x), which is paywalled",
+          "3 kJ laser demonstrator at 10 Hz with >10% WPE \u2014 same Springer paper",
+          "Pearl capsule ~4 mm diameter \u2014 not in any accessible source; company site is JS-heavy",
+          "Claimed +30x output vs NIF indirect drive \u2014 only in thin company page extraction (iter-01)"
+        ],
+        "recommendation": "delete",
+        "replacement_md_note": "Thin replacement (20 lines, iter-01) is a subset of the Physics World interview (iter-02) plus the 3 newly extracted sources (iter-03). The .orig.md can be removed. The 4 uncovered claims are quantitative details from the paywalled Springer journal paper \u2014 if needed, that paper should be acquired separately (doi:10.1007/s10894-023-00363-x)."
+      },
+      "recommendation": "delete"
+    },
+    {
+      "status": "complete",
+      "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/20-modular-hts-stellarator/iter-01/sources/type-one-energy-infinity-two-design.orig.md",
+      "concept_id": "20-modular-hts-stellarator",
+      "concept_num": "20",
+      "elapsed_s": 139.3,
+      "return_code": 0,
+      "acquired": [],
+      "acquired_count": 0,
+      "agent_report": {
+        "orig_file": "type-one-energy-infinity-two-design.orig.md",
+        "urls_found": [
+          "https://typeoneenergy.com/our-technology/",
+          "https://typeoneenergy.com/type-one-energy-issues-first-realistic-unified-fusion-power-plant-design-basis/",
+          "https://www.ans.org/news/2025-04-01/article-6903/",
+          "https://modernsciences.org/type-one-energy-fusion-pilot-plant-design-april-2025/",
+          "https://www.cambridge.org/core/journals/journal-of-plasma-physics/collections/physics-basis-of-the-infinity-two-fusion-power-plant"
+        ],
+        "extractions": [
+          {
+            "url": "https://typeoneenergy.com/our-technology/",
+            "source_name": "type-one-energy-infinity-two-design",
+            "outcome": "duplicate",
+            "notes": "Already extracted as existing iter-01 source"
+          },
+          {
+            "url": "https://www.ans.org/news/2025-04-01/article-6903/",
+            "source_name": "ans-news-2025-04-01-article-6903",
+            "outcome": "success",
+            "covers": [
+              "Publication of baseline physics design basis in JPP",
+              "Infinity Two stellarator fusion pilot plant announcement"
+            ],
+            "notes": "Paywalled \u2014 only preview paragraph extracted (15 lines). Thin but confirms key facts."
+          },
+          {
+            "url": "https://typeoneenergy.com/type-one-energy-issues-first-realistic-unified-fusion-power-plant-design-basis/",
+            "source_name": "typeoneenergy-type-one-energy-issues-first-realistic",
+            "outcome": "success",
+            "covers": [
+              "800 MW fusion power, ~350 MWe net electric",
+              "D-T burning plasma stellarator",
+              "Island divertors for helium ash exhaust",
+              "Blanket with shielding and tritium breeding",
+              "W7-X heritage",
+              "DOE Frontier exascale supercomputer usage",
+              "7 peer-reviewed papers in JPP",
+              "TVA partnership for Infinity Two",
+              "Capacity factor and LCOE considerations",
+              "HTS modular superconducting magnets"
+            ]
+          },
+          {
+            "url": "https://modernsciences.org/type-one-energy-fusion-pilot-plant-design-april-2025/",
+            "source_name": "modernsciences-type-one-energy-fusion-pilot-plant-design",
+            "outcome": "success",
+            "covers": [
+              "800 MW fusion power",
+              "Q = 40 fusion gain",
+              "Gas-cooled solid breeder blankets (HCPB)",
+              "Divertor systems for heat and particle management",
+              "D-T fusion",
+              "6 JPP paper DOIs and full references",
+              "TVA partnership",
+              "Stellarator with high magnetic fields"
+            ]
+          },
+          {
+            "url": "https://www.cambridge.org/core/journals/journal-of-plasma-physics/collections/physics-basis-of-the-infinity-two-fusion-power-plant",
+            "outcome": "skipped",
+            "notes": "Journal collection page \u2014 individual papers are behind paywall. DOIs captured in Modern Sciences extraction."
+          }
+        ],
+        "uncovered_claims": [
+          "Aspect ratio A = 10 \u2014 from JPP papers, not in press/news sources",
+          "Volume-averaged magnetic field <B> = 9 T \u2014 from JPP papers",
+          "Plasma density n_e \u2248 2\u00d710\u00b2\u2070 m\u207b\u00b3 \u2014 from JPP papers",
+          "ECRH + pellet injection as only external sources \u2014 from JPP papers",
+          "TBR = 1.30, required TBR < 1.05 \u2014 from JPP blanket paper",
+          "Tritium inventory ~675 grams operational \u2014 from JPP blanket paper",
+          "FLiBe considered as alternative blanket \u2014 from JPP blanket paper",
+          "Rankine cycle with reheat, thermal efficiency > 30% \u2014 from JPP papers",
+          "Steady-state operation, 2-year operating cycle, 30-day maintenance outages \u2014 source unclear",
+          "HTS REBCO magnets '200x current carrying capacity of copper' \u2014 from company marketing",
+          "Infinity One target completion early 2029 \u2014 from company announcements",
+          "Maximum-J optimization approach \u2014 from JPP papers",
+          "70,000+ simulations on DOE Frontier \u2014 specific number not in extracted sources"
+        ],
+        "recommendation": "partial",
+        "recommendation_rationale": "High-level claims (800MW, 350MWe, Q=40, D-T, HCPB blanket, divertors, JPP papers, TVA, W7-X heritage) are well covered by the press release and Modern Sciences article. However, detailed quantitative specs (aspect ratio, field strength, plasma density, TBR values, tritium inventory, thermal cycle details) originate from the JPP papers which are behind Cambridge paywall. These constitute ~40% of the orig file's unique value.",
+        "replacement_md_note": "Thin replacement type-one-energy-infinity-two-design.md (30 lines) is from typeoneenergy.com/our-technology/ \u2014 its content (Infinity One details, company overview) is a subset of the newly extracted press release. Could be deleted if press release is retained."
+      },
+      "recommendation": "partial"
+    },
+    {
+      "status": "complete",
+      "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/21-spherical-tokamak-hts/iter-01/sources/tokamak-energy-overview.orig.md",
+      "concept_id": "21-spherical-tokamak-hts",
+      "concept_num": "21",
+      "elapsed_s": 133.3,
+      "return_code": 0,
+      "acquired": [
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/21-spherical-tokamak-hts/iter-04/sources/tokamakenergy-about-us-fusion-energy-high-temperature.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/21-spherical-tokamak-hts/iter-04/sources/tokamakenergy-our-fusion-energy-and-hts-technology-fusion.md"
+      ],
+      "acquired_count": 2,
+      "agent_report": {
+        "orig_file": "tokamak-energy-overview.orig.md",
+        "urls_found": [
+          "https://tokamakenergy.com/",
+          "https://tokamakenergy.com/about-us-fusion-energy-high-temperature-superconducting-magnets/",
+          "https://tokamakenergy.com/our-fusion-energy-and-hts-technology/fusion-energy-technology/"
+        ],
+        "extractions": [
+          {
+            "url": "https://tokamakenergy.com/",
+            "outcome": "duplicate",
+            "notes": "Already extracted as tokamak-energy-overview.md in iter-01 (thin/JS-heavy, marketing text only)"
+          },
+          {
+            "url": "https://tokamakenergy.com/about-us-fusion-energy-high-temperature-superconducting-magnets/",
+            "source_name": "tokamakenergy-about-us-fusion-energy-high-temperature",
+            "outcome": "success",
+            "covers": [
+              "Founded 2009, spin-out from UKAEA",
+              "HQ UK, subsidiaries in US and Japan",
+              "Staff count (updated: 300+ vs orig ~280)",
+              "$335M funding ($275M private, $60M government)",
+              "DOE Milestone-Based Fusion Development Program",
+              "24 Tesla at 20K world record (2019 per source, orig said 2020)",
+              "ST40 100M\u00b0C plasma temperature",
+              "Demo4 world-first HTS fusion magnet system",
+              "ST40 $52M upgrade with DOE and UK DESNZ",
+              "Partnerships (PPPL, ORNL, LANL, SNL, GA, Sumitomo, Kyoto Fusioneering, U Tokyo, UIUC)"
+            ]
+          },
+          {
+            "url": "https://tokamakenergy.com/our-fusion-energy-and-hts-technology/fusion-energy-technology/",
+            "source_name": "tokamakenergy-our-fusion-energy-and-hts-technology-fusion",
+            "outcome": "success",
+            "covers": [
+              "Spherical tokamak geometry with HTS magnets",
+              "Low aspect ratio benefits (efficiency, stability, cost)",
+              "REBCO tape specs (12mm wide, <0.1mm thick)",
+              "ST40 world's highest-field spherical tokamak",
+              "100M\u00b0C plasma ion temperature (2022)",
+              "Highest triple product of any private fusion company",
+              "Demo4: 44 HTS coils, 14 TF limbs, 2 PF coils, 20K, 11.8T"
+            ]
+          }
+        ],
+        "uncovered_claims": [
+          "HTS magnets >5x more energy-efficient than conventional superconductors \u2014 marketing claim, not found verbatim in extracted sources",
+          "ST40 plasma volume <1 cubic meter / 15x less \u2014 covered by existing iter-02 tokamak-energy-roadmap.md (ANS article), not by new extractions",
+          "ST80-HTS 15-minute pulse duration target \u2014 covered by existing iter-02 tokamak-energy-roadmap.md, not by new extractions",
+          "ST-E1 earlier specs (A=2.0, R=4.25m, B=4.25T, 800MW/85MWe) \u2014 covered by existing iter-01 ste1-pilot-plant-specs.md",
+          "ST-E1 Revision D (R=5.0m, A=2.3, B=5.25T, 450-750MWe) \u2014 covered by existing iter-02 tokamak-energy-st-e1-design-evolution.md",
+          "Outboard-only liquid lithium breeder blanket, TBR=1.2 \u2014 covered by existing iter-02 tokamak-energy-st-e1-design-evolution.md",
+          "NBI 2MW + ECRH 1MW gyrotron details \u2014 covered by existing iter-01 st40-heating-systems.md and iter-02 tokamak-energy-heating-systems.md"
+        ],
+        "recommendation": "delete",
+        "replacement_md_note": "Thin replacement tokamak-energy-overview.md (45 lines) is just JS-extracted marketing text from homepage \u2014 complete subset of the two new about/technology page sources. Can also be deleted."
+      },
+      "recommendation": "delete"
+    },
+    {
+      "status": "complete",
+      "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/21-spherical-tokamak-hts/iter-02/sources/tokamak-energy-roadmap.orig.md",
+      "concept_id": "21-spherical-tokamak-hts",
+      "concept_num": "21",
+      "elapsed_s": 118.5,
+      "return_code": 0,
+      "acquired": [
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/21-spherical-tokamak-hts/iter-04/sources/prnewswire-news-releases-tokamak-energy-announces-st80-hts.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/21-spherical-tokamak-hts/iter-04/sources/theengineer-content-news-tokamak-energy-st80-hts-hailed-as.md"
+      ],
+      "acquired_count": 2,
+      "agent_report": {
+        "orig_file": "tokamak-energy-roadmap.orig.md",
+        "urls_found": [
+          "https://www.ans.org/news/article-4447/tokamak-energy-bets-its-spherical-design-will-deliver-fusion-energy-in-the-early-2030s/",
+          "https://www.theengineer.co.uk/content/news/tokamak-energy-st80-hts-hailed-as-next-step-to-grid-fusion",
+          "https://www.prnewswire.com/news-releases/tokamak-energy-announces-st80-hts-advanced-prototype-on-path-to-demonstrate-grid-ready-fusion-power-in-the-early-2030s-301659095.html",
+          "https://royalsocietypublishing.org/doi/10.1098/rsta.2017.0438"
+        ],
+        "extractions": [
+          {
+            "url": "https://www.ans.org/news/article-4447/tokamak-energy-bets-its-spherical-design-will-deliver-fusion-energy-in-the-early-2030s/",
+            "source_name": "tokamak-energy-roadmap",
+            "outcome": "duplicate",
+            "notes": "Already extracted as iter-02/sources/tokamak-energy-roadmap.md (the thin replacement file)"
+          },
+          {
+            "url": "https://www.theengineer.co.uk/content/news/tokamak-energy-st80-hts-hailed-as-next-step-to-grid-fusion",
+            "source_name": "theengineer-content-news-tokamak-energy-st80-hts-hailed-as",
+            "outcome": "success",
+            "covers": [
+              "ST80-HTS: world's first high field spherical tokamak with HTS magnets",
+              "ST80-HTS: completion 2026",
+              "ST80-HTS: pulse duration up to 15 minutes",
+              "ST80-HTS: higher triple product than any previous fusion device",
+              "ST-E1: up to 200MW net fusion power in early 2030s",
+              "ST40: 100M C plasma temperature achieved",
+              "Commercial deployment: mid-2030s"
+            ]
+          },
+          {
+            "url": "https://www.prnewswire.com/news-releases/tokamak-energy-announces-st80-hts-advanced-prototype-on-path-to-demonstrate-grid-ready-fusion-power-in-the-early-2030s-301659095.html",
+            "source_name": "prnewswire-news-releases-tokamak-energy-announces-st80-hts",
+            "outcome": "success",
+            "covers": [
+              "ST80-HTS: world's first high field spherical tokamak with HTS magnets at scale",
+              "ST80-HTS: completion 2026",
+              "ST80-HTS: long pulse ~15 minute control",
+              "ST80-HTS: higher sustained triple product than any previous fusion device",
+              "ST-E1: up to 200MW net electrical power, early 2030s",
+              "ST40: 100M C plasma temperature (world record in compact ST)",
+              "ST40: highest triple product of any private fusion energy company",
+              "Funding: $250M raised ($200M private + $50M government)",
+              "Company: founded 2009, spin-off from Culham, 220+ employees, 69 patent families",
+              "Commercial deployment: global deployment mid-2030s"
+            ]
+          },
+          {
+            "url": "https://royalsocietypublishing.org/doi/10.1098/rsta.2017.0438",
+            "outcome": "fail_paywall",
+            "notes": "Royal Society journal paper \u2014 extraction failed (likely paywall/JS). This paper covers ST40 detailed specs (R0, R/a, Ip, Bt0) and lab experiment history (START, MAST-U, NSTX-U, Globus-M2)."
+          }
+        ],
+        "uncovered_claims": [
+          "ST40 detailed specs: R0 ~0.4m, R/a ~1.8, Ip = 2 MA, Bt0 = 3 T \u2014 from Royal Society paper (paywall)",
+          "Lab experiments: START (Culham, 1991, beta up to 12%), MAST-U, NSTX-U, Globus-M2 \u2014 from Royal Society paper (paywall)",
+          "ST-E1 Rev D specs: 5.0m major radius, A=2.3, 5.25T, 450-750 MW net \u2014 covered by separate source tokamak-energy-st-e1-design-evolution.md (not in this orig file's sources)"
+        ],
+        "recommendation": "partial",
+        "replacement_md_note": "Thin replacement (17 lines) is the ANS article extraction \u2014 a proper subset of what the 3 individually-extracted sources now cover. The thin replacement can be deleted. The .orig.md has ~80% coverage: ST80-HTS and ST-E1 claims fully covered by new extractions + existing sources in other iters. Uncovered items are ST40 detailed machine specs and lab experiment catalog from the paywalled Royal Society paper."
+      },
+      "recommendation": "partial"
+    },
+    {
+      "status": "skipped",
+      "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-01/sources/first-light-fusion-technology.orig.md",
+      "concept_id": "22-projectile-icf",
+      "reason": "existing report"
+    },
+    {
+      "status": "complete",
+      "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-01/sources/hb11-energy-technology.orig.md",
+      "concept_id": "23-laser-icf-nanostructured-target",
+      "concept_num": "23",
+      "elapsed_s": 136.1,
+      "return_code": 0,
+      "acquired": [
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/arxiv-1603-02579.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/newatlas-energy-hb11-hydrogen-boron-fusion-clean-energy.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/newatlas-energy-hb11-laser-fusion-demonstration.md"
+      ],
+      "acquired_count": 3,
+      "agent_report": {
+        "orig_file": "hb11-energy-technology.orig.md",
+        "urls_found": [
+          "https://hb11.energy/",
+          "https://hb11.energy/our-technology/",
+          "https://newatlas.com/energy/hb11-hydrogen-boron-fusion-clean-energy/",
+          "https://newatlas.com/energy/hb11-laser-fusion-demonstration/",
+          "https://link.springer.com/article/10.1007/s10894-023-00349-9",
+          "https://arxiv.org/abs/1603.02579"
+        ],
+        "extractions": [
+          {
+            "url": "https://hb11.energy/",
+            "outcome": "duplicate",
+            "notes": "Already extracted in iter-01/sources/hb11-energy-technology/ \u2014 thin content (company homepage, 12 lines)"
+          },
+          {
+            "url": "https://hb11.energy/our-technology/",
+            "outcome": "skipped",
+            "notes": "Company site, likely JS-heavy based on homepage extraction being thin. Skipped in favor of news coverage."
+          },
+          {
+            "url": "https://newatlas.com/energy/hb11-hydrogen-boron-fusion-clean-energy/",
+            "source_name": "newatlas-energy-hb11-hydrogen-boron-fusion-clean-energy",
+            "outcome": "success",
+            "covers": [
+              "Core approach: two-laser system, proton fast ignition",
+              "Founded by Heinrich Hora, UNSW spin-out",
+              "Avalanche chain reaction mechanism \u2014 billion times higher than predicted",
+              "Direct charge collection from naked helium atoms (alpha particles)",
+              "Chirped Pulse Amplification lasers, 10+ petawatt",
+              "Spherical reactor geometry with fuel pellet in center",
+              "No nuclear waste, no superheated steam",
+              "Australia-based company"
+            ]
+          },
+          {
+            "url": "https://newatlas.com/energy/hb11-laser-fusion-demonstration/",
+            "source_name": "newatlas-energy-hb11-laser-fusion-demonstration",
+            "outcome": "success",
+            "covers": [
+              "Experimental results: 10x more fusion reactions than expected",
+              "Four orders of magnitude from net energy gain",
+              "World-first material number of fusion reactions by private company",
+              "Kilotesla magnetic containment field (laser + capacitive coil)",
+              "Osaka University demonstration details (Applied Sciences paper)",
+              "Alpha particle flux ~10^10/sr, ~1.4e11 alpha particles created",
+              "Conversion efficiency ~0.005% (early experiment)",
+              "Hydrogen-boron fusion creates alpha particles (direct charge collection)"
+            ]
+          },
+          {
+            "url": "https://arxiv.org/abs/1603.02579",
+            "source_name": "arxiv-1603-02579",
+            "outcome": "success",
+            "covers": [
+              "Avalanche boron fusion theoretical basis (Hora et al.)",
+              "Picosecond block ignition mechanism",
+              "Up to 10 kilotesla magnetic trapping",
+              "Non-thermal plasma block ignition with petawatt lasers"
+            ],
+            "notes": "Only abstract page extracted (not full PDF). Contains key claims about mechanism but not detailed parameters."
+          },
+          {
+            "url": "https://link.springer.com/article/10.1007/s10894-023-00349-9",
+            "outcome": "skipped",
+            "notes": "Springer journal \u2014 likely paywalled. Not attempted due to 3-extraction cap already reached. This paper contains the most detailed quantitative parameters (fuel dimensions, energy per shot, conversion efficiencies)."
+          }
+        ],
+        "uncovered_claims": [
+          "Specific fuel dimensions: 1 cm length, 1 mm radius solid hydrogen-boron cylinder \u2014 from J. Fusion Energy 2023 paper",
+          "Alpha gyroradius ~43 \u00b5m in 10 kT field \u2014 from J. Fusion Energy 2023 paper",
+          "Energy per shot: ~300 kWh from 15 mg HB11 fuel \u2014 from J. Fusion Energy 2023 paper",
+          "Direct conversion efficiency ~80%, MHD + Rankine ~64% \u2014 from J. Fusion Energy 2023 paper",
+          "Electrodynamic conversion ~50%, thermal cycle ~35-40%, ion-to-photon ~45% \u2014 from J. Fusion Energy 2023 paper",
+          "Funding: ~$22M total raised \u2014 no source found in extracted articles",
+          "Energy conversion pivot: company website now says 'conventional steam cycle' vs original direct conversion \u2014 partially covered (both articles describe direct conversion, website says steam)"
+        ],
+        "recommendation": "partial",
+        "recommendation_rationale": "~70-75% of claims covered. Core approach, mechanism, experimental results, and reactor concept are well covered by the two New Atlas articles. However, the most detailed quantitative parameters (fuel dimensions, energy per shot, conversion efficiency options) come from the J. Fusion Energy 2023 Springer paper which was not extracted (likely paywalled, plus extraction cap reached). These quantitative details are important for techno-economic analysis.",
+        "replacement_md_note": "Thin replacement hb11-energy-technology.md (12 lines) in iter-01/sources/ is just the company homepage extraction \u2014 entirely a subset of the New Atlas articles. Can be deleted.",
+        "next_steps": [
+          "Extract J. Fusion Energy 2023 paper (https://link.springer.com/article/10.1007/s10894-023-00349-9) if accessible \u2014 it contains most of the uncovered quantitative parameters",
+          "Search for funding amount (~$22M) in FIA or Crunchbase coverage"
+        ]
+      },
+      "recommendation": "partial"
+    },
+    {
+      "status": "complete",
+      "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-01/sources/marvel-fusion-technology.orig.md",
+      "concept_id": "23-laser-icf-nanostructured-target",
+      "concept_num": "23",
+      "elapsed_s": 109.1,
+      "return_code": 0,
+      "acquired": [
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/binding-ultrashort-pulse-laser-fusion.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/optics-news-15-10-4.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/optics-news-16-4-4.md"
+      ],
+      "acquired_count": 3,
+      "agent_report": {
+        "orig_file": "marvel-fusion-technology.orig.md",
+        "urls_found": [
+          "https://www.marvelfusion.com/",
+          "https://binding.energy/ultrashort-pulse-laser-fusion/",
+          "https://optics.org/news/15/10/4",
+          "https://optics.org/news/16/4/4",
+          "https://patents.google.com/patent/US20230073280A1/en"
+        ],
+        "extractions": [
+          {
+            "url": "https://www.marvelfusion.com/",
+            "outcome": "skipped",
+            "notes": "Company homepage \u2014 JS-heavy, already extracted as thin replacement (22 lines of marketing text)"
+          },
+          {
+            "url": "https://binding.energy/ultrashort-pulse-laser-fusion/",
+            "source_name": "binding-ultrashort-pulse-laser-fusion",
+            "outcome": "success",
+            "covers": [
+              "Core approach (fs lasers, nanostructured targets, direct-drive ignition)",
+              "Laser type (femtosecond, PW-class)",
+              "10 Hz repetition rate",
+              "Nanostructured solid-state targets",
+              "Partners (Trumpf, Thales, Siemens, Fraunhofer, CEA)",
+              "80+ team",
+              "Over \u20ac200M total capital",
+              "Secondary applications (medical isotopes, neutron imaging, high-energy research)",
+              "p-B11 fuel, no cryogenics"
+            ]
+          },
+          {
+            "url": "https://optics.org/news/15/10/4",
+            "source_name": "optics-news-15-10-4",
+            "outcome": "success",
+            "covers": [
+              "Series B \u20ac62.8M round details (investors: HV Capital, b2venture, Deutsche Telekom, EIC)",
+              "CSU Fort Collins $150M lab under LaserNetUS/DOE",
+              "Two 100 J lasers initially, experiments early 2027",
+              "Silicon nanostructure targets via semiconductor lithography",
+              "Kilojoule sources at 10 Hz scaling plan",
+              "Over \u20ac120M equity + \u20ac150M public funding total at time of article",
+              "p-B11 fuel"
+            ]
+          },
+          {
+            "url": "https://optics.org/news/16/4/4",
+            "source_name": "optics-news-16-4-4",
+            "outcome": "success",
+            "covers": [
+              "\u20ac50M Series B extension (EQT Ventures, Siemens Energy, EIC Fund)",
+              "Total support: \u20ac385M (\u20ac170M private + \u20ac215M public)",
+              "Siemens Energy partnership for conceptual power plant design",
+              "Two laser prototypes in progress",
+              "500 laser systems needed for commercial plant",
+              "10-100 lasers for demonstrator plant",
+              "Pulsed Light Technologies (PLT) partnership for laser production",
+              "European Commission positioning fusion as industrial challenge"
+            ]
+          },
+          {
+            "url": "https://patents.google.com/patent/US20230073280A1/en",
+            "outcome": "skipped",
+            "notes": "Hit 3-extraction cap. Patent covers nanorod target design details (50-80 nm features, aligned nanorods with interspaces, room temperature handling). Available for future extraction."
+          }
+        ],
+        "uncovered_claims": [
+          "Timeline: prototype ~2032, commercial plant ~2036 \u2014 no extracted source covers these dates",
+          "Patent US20230073280A1 details: nanorods/nanowire arrays, 50-80 nm feature size, 5000 targets per 300mm wafer, interspaces filled with second material \u2014 patent URL not extracted (cap reached)",
+          "Energy conversion: hybrid magnetic/electrostatic/steam, up to 70% target efficiency, alpha particle capture via induction \u2014 no extracted source covers this",
+          "ATLAS Facility specifics: 3 laser systems, ~7 PW combined peak power, ~100 \u00b5m focal spot, mid-2026 online \u2014 only partial coverage (CSU lab mentioned but not these specs)"
+        ],
+        "recommendation": "delete",
+        "replacement_md_note": "Thin replacement marvel-fusion-technology.md (22 lines) is generic marketing text from marvelfusion.com \u2014 a strict subset of what the 3 newly-extracted sources cover. Can also be deleted. Note: orig file funding figure (\u20ac165M) is outdated \u2014 optics-16-4-4 reports \u20ac385M total as of Apr 2025."
+      },
+      "recommendation": "delete"
+    },
+    {
+      "status": "complete",
+      "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-02/sources/hb11-energy-2025-updates.orig.md",
+      "concept_id": "23-laser-icf-nanostructured-target",
+      "concept_num": "23",
+      "elapsed_s": 147.5,
+      "return_code": 0,
+      "acquired": [
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/energynewsbulletin-energy-transition-features-articles.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/hb11-2025-08-04-assoc-prof-patrick-burr-leads-unsw-team-to.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/newsroom-news-science-tech-pioneering-technology-promises.md"
+      ],
+      "acquired_count": 3,
+      "agent_report": {
+        "orig_file": "hb11-energy-2025-updates.orig.md",
+        "urls_found": [
+          "https://hb11.energy/our-technology/",
+          "https://www.energynewsbulletin.net/energy-transition/features-articles/4521443/feature-laser-fusion-light-bulb-moment-nears-reality",
+          "https://hb11.energy/2025/08/04/assoc-prof-patrick-burr-leads-unsw-team-to-design-materials-for-a-fusion-power-plant/",
+          "https://newsroom.unsw.edu.au/news/science-tech/pioneering-technology-promises-unlimited-clean-and-safe-energy"
+        ],
+        "extractions": [
+          {
+            "url": "https://hb11.energy/our-technology/",
+            "outcome": "duplicate",
+            "notes": "Already extracted as iter-02/sources/hb11-energy-2025-updates.md (thin \u2014 JS-heavy site, only 7 lines of content)"
+          },
+          {
+            "url": "https://www.energynewsbulletin.net/energy-transition/features-articles/4521443/feature-laser-fusion-light-bulb-moment-nears-reality",
+            "source_name": "energynewsbulletin-energy-transition-features-articles",
+            "outcome": "success",
+            "covers": [
+              "Diode-pumped solid-state lasers with wall-plug efficiency ~10% (current <1%)",
+              "Low-density foam targets \u2014 10x more efficient at proton acceleration",
+              "In-house foam target manufacturing capability",
+              "Non-critical density plasma from foam targets",
+              "Steel reactor vessel possible due to aneutronic fuel (cost advantage)",
+              "Laser efficiency as key enabler for net energy gain"
+            ]
+          },
+          {
+            "url": "https://hb11.energy/2025/08/04/assoc-prof-patrick-burr-leads-unsw-team-to-design-materials-for-a-fusion-power-plant/",
+            "source_name": "hb11-2025-08-04-assoc-prof-patrick-burr-leads-unsw-team-to",
+            "outcome": "success",
+            "covers": [
+              "UNSW collaboration \u2014 Assoc. Prof. Patrick Burr leads research group",
+              "Design and Simulations of a Fusion Reaction Chamber research group",
+              "Collaboration between HB11 Energy and UNSW Nuclear Innovation Centre",
+              "Aneutronic advantage for simplified reactor design and materials"
+            ]
+          },
+          {
+            "url": "https://newsroom.unsw.edu.au/news/science-tech/pioneering-technology-promises-unlimited-clean-and-safe-energy",
+            "source_name": "newsroom-news-science-tech-pioneering-technology-promises",
+            "outcome": "success",
+            "covers": [
+              "Direct conversion concept (Hora's original design) \u2014 alpha particles create electrical flow channeled directly to grid",
+              "Two-laser approach (magnetic containment + avalanche trigger)",
+              "Metal sphere reactor design with fuel pellet",
+              "Hydrogen-boron fuel \u2014 no radioactive waste, no neutron damage",
+              "Billion-fold higher reaction rates than predicted"
+            ]
+          }
+        ],
+        "uncovered_claims": [
+          "Steam cycle pivot \u2014 current website explicitly states 'conventional steam cycle generator' (technology page extracted but only 7 lines due to JS)",
+          "Laser array of thousands of commercial lasers (technology page claim, thin extraction)",
+          "~1 Hz repetition rate ('fuel pellets injected and burned at a rate of about 1 per second') \u2014 technology page claim",
+          "'World-first material number of fusion reactions' (Applied Sciences publication) \u2014 needs journal paper",
+          "10x more fusion reactions than expected \u2014 needs journal paper",
+          "Four orders of magnitude from net energy gain \u2014 needs journal paper or interview source",
+          "'Data centre with big laser halls' \u2014 modular plant concept description, source unknown",
+          "CA-PROBONO EU project (COST Action CA21128) \u2014 needs separate extraction from ELI ERIC or Matter Radiation Extremes paper"
+        ],
+        "recommendation": "partial",
+        "replacement_md_note": "Thin replacement hb11-energy-2025-updates.md (16 lines, 7 content lines) is from hb11.energy/our-technology/ \u2014 JS-heavy extraction captured almost nothing. The newly-extracted individual sources cover the majority of claims better than this thin file. However, the thin file is the only extraction of the technology page URL, which is the primary source for steam cycle pivot, laser array, and rep rate claims."
+      },
+      "recommendation": "partial"
+    },
+    {
+      "status": "complete",
+      "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/24-dense-plasma-focus/iter-01/sources/lppfusion-website-technology.orig.md",
+      "concept_id": "24-dense-plasma-focus",
+      "concept_num": "24",
+      "elapsed_s": 138.0,
+      "return_code": 0,
+      "acquired": [
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/24-dense-plasma-focus/iter-02/sources/lppfusion-investing-in-lppfusion-executive-summary.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/24-dense-plasma-focus/iter-02/sources/lppfusion-investing-in-lppfusion-our-plan-to-net-energy.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/24-dense-plasma-focus/iter-02/sources/lppfusion-technology-focus-fusion-energy-dpf-device.md"
+      ],
+      "acquired_count": 3,
+      "agent_report": {
+        "orig_file": "lppfusion-website-technology.orig.md",
+        "urls_found": [
+          "https://www.lppfusion.com/technology/focus-fusion-energy/",
+          "https://www.lppfusion.com/technology/focus-fusion-energy/dpf-device/",
+          "https://www.lppfusion.com/investing-in-lppfusion/executive-summary/",
+          "https://www.lppfusion.com/investing-in-lppfusion/our-plan-to-net-energy/",
+          "https://www.lppfusion.com/investing-in-lppfusion/our-business-development-plan/focus-fusion-timelines-and-milestones/"
+        ],
+        "extractions": [
+          {
+            "url": "https://www.lppfusion.com/technology/focus-fusion-energy/",
+            "source_name": "lppfusion-website-technology",
+            "outcome": "duplicate",
+            "notes": "Already extracted in iter-01 (2026-04-04). Covers: Focus Fusion overview, pB11 fuel, QMFE mention, FF-2B description"
+          },
+          {
+            "url": "https://www.lppfusion.com/technology/focus-fusion-energy/dpf-device/",
+            "source_name": "lppfusion-technology-focus-fusion-energy-dpf-device",
+            "outcome": "success",
+            "covers": [
+              "DPF device description (two concentric cylindrical electrodes)",
+              "Outer electrode ~6-7 inches diameter, ~1 foot long",
+              "Plasmoid properties (few thousandths of inch, billions of degrees, ~10 ns, close to solid density)",
+              "Energy conversion: ion beam into decelerator + x-ray photoelectric conversion",
+              "Current sheath formation and pinch mechanism"
+            ]
+          },
+          {
+            "url": "https://www.lppfusion.com/investing-in-lppfusion/executive-summary/",
+            "source_name": "lppfusion-investing-in-lppfusion-executive-summary",
+            "outcome": "success",
+            "covers": [
+              "Power plant target: <$1 million per unit",
+              "Small size (fits in a garage / small room)",
+              "pB11 fuel advantages (aneutronic, no radioactive waste)",
+              "Direct conversion to electricity",
+              "Decentralized power generation concept"
+            ]
+          },
+          {
+            "url": "https://www.lppfusion.com/investing-in-lppfusion/our-plan-to-net-energy/",
+            "source_name": "lppfusion-investing-in-lppfusion-our-plan-to-net-energy",
+            "outcome": "success",
+            "covers": [
+              "Development Phase 1: current yield ~0.25 J, target 30 kJ",
+              "Development Phase 2: $100M budget, 3-4 years, repetitively pulsed generator, 5 MW net electricity",
+              "Development Phase 3: commercialization via licensing",
+              "Key milestones: symmetry optimization, capacitor bank upgrade (8\u219212, 40\u219245 kV), pB11 fuel switch",
+              "Compression-to-yield scaling (4th power relationship)",
+              "Repetition rate: few hundred times a second"
+            ]
+          },
+          {
+            "url": "https://www.lppfusion.com/investing-in-lppfusion/our-business-development-plan/focus-fusion-timelines-and-milestones/",
+            "outcome": "skipped",
+            "notes": "Hit 3-extraction cap. Timelines/milestones detail \u2014 incremental over plan-to-net-energy page"
+          }
+        ],
+        "pre_existing_sources": [
+          {
+            "source_name": "lppfusion-website-technology (iter-01)",
+            "url": "https://www.lppfusion.com/technology/focus-fusion-energy/",
+            "covers": [
+              "Focus Fusion overview",
+              "pB11 fuel",
+              "QMFE mention",
+              "FF-2B device naming"
+            ]
+          },
+          {
+            "source_name": "lerner-2023-jfe-paper (iter-01)",
+            "url": "https://link.springer.com/article/10.1007/s10894-023-00345-z",
+            "covers": [
+              "Record confined ion energy >200 keV (2016, ten-shot mean 125 keV)",
+              "Record n\u03c4T product 3.4\u00d710\u00b2\u2070 keV\u00b7s/m\u00b3",
+              "5 MW generator target",
+              "DPF construction cost <$1M",
+              "QMFE theory (bremsstrahlung reduction)",
+              "Direct energy conversion (ion beam + x-ray)",
+              "pB11 reaction produces only charged particles"
+            ]
+          },
+          {
+            "source_name": "lerner-2024-frontiers-pB11-prep (iter-01)",
+            "url": "https://www.frontiersin.org/journals/physics/articles/10.3389/fphy.2024.1438880/full",
+            "covers": [
+              "Isotopically pure decaborane (B\u00b9\u2070H\u2081\u2084) as pB11 fuel source",
+              "FF-2B megampere device",
+              "Density up to 10\u00b2\u00b9 cm\u207b\u00b3 demonstrated in DPF devices",
+              "Record mean ion energy >200 keV",
+              "QMFE and bremsstrahlung reduction"
+            ]
+          }
+        ],
+        "uncovered_claims": [
+          "Inner electrode (anode) 2.8 cm radius \u2014 specific FF-2B dimension not in extracted sources",
+          "Maximum current 2.7 MA for FF-2B \u2014 specific value not confirmed in website extractions (paper says megampere-class)",
+          "LCOE claim <0.2 cents/kWh \u2014 not found in any extracted source",
+          "Power plant volume ~30 m\u00b3 / ~20 m\u00b2 footprint \u2014 specific numbers not in extracted sources",
+          "Power plant mass ~3 tons \u2014 not in extracted sources",
+          "~25 kJ net energy per pulse \u2014 mentioned as 30 kJ target but not as 25 kJ net",
+          "Record plasma purity <0.2% impurities with Be electrodes \u2014 mentioned in JFE paper abstract but specific number from website",
+          "Lerner 2003 QMFE publication date \u2014 not explicitly confirmed",
+          "Simulation showing fusion power exceeds bremsstrahlung by factor ~2 \u2014 in JFE paper but specific factor from website"
+        ],
+        "recommendation": "delete",
+        "recommendation_rationale": "~85% of claims are covered by the combination of 3 new extractions + 3 pre-existing sources. Uncovered claims are mostly specific numeric parameters (electrode radius, current, LCOE) that appear in the JFE paper's full text or the unextracted timelines page. The two peer-reviewed papers (Lerner 2023, Lerner 2024) are higher-authority sources for the technical claims than the company website.",
+        "replacement_md_note": "Thin replacement lppfusion-website-technology.md (28 lines) in iter-01 is from the same URL as the first listed source (focus-fusion-energy/). It is a subset of what the newly-extracted individual sources plus the pre-existing papers cover. Can be kept as-is since it's already a proper individual source extraction."
+      },
+      "recommendation": "delete"
+    },
+    {
+      "status": "complete",
+      "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/26-laser-icf-indirect-drive/iter-01/sources/xcimer-energy-website-and-science.orig.md",
+      "concept_id": "26-laser-icf-indirect-drive",
+      "concept_num": "26",
+      "elapsed_s": 600.1,
+      "return_code": -1,
+      "acquired": [
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/26-laser-icf-indirect-drive/iter-03/sources/optics-news-15-6-6.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/26-laser-icf-indirect-drive/iter-03/sources/xcimer-approach.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/26-laser-icf-indirect-drive/iter-03/sources/xcimer-science.md"
+      ],
+      "acquired_count": 3,
+      "agent_report": {
+        "error": "output file not found"
+      },
+      "recommendation": "unknown"
+    },
+    {
+      "status": "complete",
+      "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/27-polywell/iter-01/sources/emc2-website-summary.orig.md",
+      "concept_id": "27-polywell",
+      "concept_num": "27",
+      "elapsed_s": 173.9,
+      "return_code": 0,
+      "acquired": [
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/27-polywell/iter-03/sources/arxiv-2508-06761.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/27-polywell/iter-03/sources/en-wiki-polywell.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/27-polywell/iter-03/sources/thefusionreport-p-interview-with-emc2-fusion-a-different.md"
+      ],
+      "acquired_count": 3,
+      "agent_report": {
+        "orig_file": "emc2-website-summary.orig.md",
+        "urls_found": [
+          "https://www.emc2fusion.com/"
+        ],
+        "extractions": [
+          {
+            "url": "https://www.emc2fusion.com/",
+            "outcome": "skipped",
+            "notes": "Company homepage, JS-heavy per instructions. Original file noted 403 on direct fetch."
+          },
+          {
+            "url": "https://thefusionreport.substack.com/p/interview-with-emc2-fusion-a-different",
+            "source_name": "thefusionreport-p-interview-with-emc2-fusion-a-different",
+            "outcome": "success",
+            "covers": [
+              "EMC2 founded ~1990 on government grants, Bussard inventor",
+              "Polywell technology description: magnetic cusp + electrostatic well",
+              "High-beta cusp confinement, WB formation in 2013",
+              "100 MW fusion energy with 2m diameter coils",
+              "1000x neutron yield vs commercial generators",
+              "FPNS partnership with SHINE Technologies for DOE",
+              "D-T and p-B fuel capability",
+              "20 experimental devices built and tested"
+            ]
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Polywell",
+            "source_name": "en-wiki-polywell",
+            "outcome": "success",
+            "covers": [
+              "EMC2 founded 1985 by Bussard",
+              "Jaeyoung Park became president in 2011",
+              "Polywell mechanism: electromagnets + electron trapping + potential well",
+              "Diamagnetic plasma trapping / Wiffle-Ball confinement",
+              "High-beta cusp confinement theory (Harold Grad 1955)",
+              "WB-1 through WB-8 experimental history",
+              "Bussard passing referenced"
+            ]
+          },
+          {
+            "url": "https://arxiv.org/abs/2508.06761",
+            "source_name": "arxiv-2508-06761",
+            "outcome": "success",
+            "covers": [
+              "Polywell concept proposed by Bussard in 1985",
+              "High-beta magnetic cusp confinement + electrostatic ion confinement",
+              "D-T fuel path to net energy gain",
+              "Updated physics model with PIC simulations",
+              "Authors: Park, Krall, Lapenta, Ono (2025)"
+            ],
+            "notes": "Only abstract page extracted (arxiv landing page). Full paper PDF would need separate extraction."
+          }
+        ],
+        "uncovered_claims": [
+          "TOFE 2024 presentation FPNS specs: plasma target radius 8.5 cm, temperature 500 eV, B-field 2-3 T boundary / 4-5 T coil surface, ion beam 150-200 keV, 350 kW fusion power \u2014 conference paper not publicly accessible",
+          "$20M estimated R&D budget for initial 24 months \u2014 source unknown, possibly from TOFE 2024 presentation",
+          "1 GW upper bound electricity output claim \u2014 only 100 MW found in Substack source",
+          "San Diego area location \u2014 minor, not in extracted sources",
+          "DOE report anticipated March 2025 \u2014 mentioned in search results but not in extracted source content",
+          "Bussard served as 'technical director' specifically \u2014 sources confirm inventor/founder but not exact title"
+        ],
+        "recommendation": "partial",
+        "replacement_md_note": "Thin replacement emc2-website-summary.md (14 lines, JS-heavy homepage extract) is a strict subset of the newly-extracted sources \u2014 can be deleted."
+      },
+      "recommendation": "partial"
+    },
+    {
+      "status": "complete",
+      "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/29-negative-triangularity-tokamak/iter-01/sources/fusion-energy-base-profile.orig.md",
+      "concept_id": "29-negative-triangularity-tokamak",
+      "concept_num": "29",
+      "elapsed_s": 600.1,
+      "return_code": -1,
+      "acquired": [],
+      "acquired_count": 0,
+      "agent_report": {
+        "error": "output file not found"
+      },
+      "recommendation": "unknown"
+    },
+    {
+      "status": "complete",
+      "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/31-laser-icf-oec-architecture/iter-01/sources/blf-website-and-news.orig.md",
+      "concept_id": "31-laser-icf-oec-architecture",
+      "concept_num": "31",
+      "elapsed_s": 181.6,
+      "return_code": 0,
+      "acquired": [
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/31-laser-icf-oec-architecture/iter-02/sources/finance-news-blue-laser-fusion-completes-37-114500457.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/31-laser-icf-oec-architecture/iter-02/sources/semiconductor-today-news-items-2025-oct-blue-laser-fusion.md",
+        "/home/reid/1cfe/fusion-tea/knowledge/concept_research/31-laser-icf-oec-architecture/iter-02/sources/semiconductor-today-news-items-2025-oct-bluelaserfusion.md"
+      ],
+      "acquired_count": 3,
+      "agent_report": {
+        "orig_file": "blf-website-and-news.orig.md",
+        "urls_found": [],
+        "extractions": [
+          {
+            "url": "https://www.semiconductor-today.com/news_items/2025/oct/blue-laser-fusion-031025.shtml",
+            "source_name": "semiconductor-today-news-items-2025-oct-blue-laser-fusion",
+            "outcome": "success",
+            "covers": [
+              "2025 DOE INFUSE award with Colorado State University",
+              "Prof. Carmen Menoni collaboration on optical coatings",
+              "OEC laser technology description",
+              "Founded 2022, CEO Shuji Nakamura (Nobel 2014)",
+              "DOE RISE HUB and FIRE Collaboratives membership",
+              "RSE MoU mentioned (link)"
+            ]
+          },
+          {
+            "url": "https://www.semiconductor-today.com/news_items/2025/oct/bluelaserfusion-211025.shtml",
+            "source_name": "semiconductor-today-news-items-2025-oct-bluelaserfusion",
+            "outcome": "success",
+            "covers": [
+              "JST Moonshot Program Goal 10 selection (October 2025)",
+              "Prof. Shinsuke Fujioka as project manager",
+              "BLF-Osaka University collaborative research institute",
+              "Multi-year initiative for laser, target ignition, reactor design",
+              "2024 INFUSE with Caltech mentioned in passing",
+              "MJ-class pulse energy, high repetition rate, high-gain target"
+            ]
+          },
+          {
+            "url": "https://finance.yahoo.com/news/blue-laser-fusion-completes-37-114500457.html",
+            "source_name": "finance-news-blue-laser-fusion-completes-37-114500457",
+            "outcome": "success",
+            "covers": [
+              "$37.5M Series Seed funding round (March 2024)",
+              "SoftBank Corp., Maezawa Fund, ITOCHU Corporation investors",
+              "JAFCO, SPARX (Mirai Creation Fund III), Waseda University Ventures investors",
+              "Founded 2022 by Nakamura (CEO), Ohta (co-founder), Ogawa (General Counsel)",
+              "Prototype 2025, commercial reactor by 2030 targets",
+              "Aneutronic solid target mentioned (contradicts D-T in other sources)"
+            ]
+          }
+        ],
+        "uncovered_claims": [
+          "World record 60,000x power stacking (2024) \u2014 from company website, JS-heavy",
+          "1.5m OEC prototype: finesse 419,000, enhancement factor 59,000 \u2014 likely in Optics Express paper (separate source exists)",
+          "15m OEC systems under construction at Goleta and Osaka \u2014 from company website",
+          "5 MJ laser capacity, 1 GW target plant \u2014 specific numbers from company website",
+          "CBC injection laser details (modular, single-mode, wavelength tunable, pulse shaping) \u2014 from company website",
+          "LIGO gravitational wave detection technology basis \u2014 from company website",
+          "Several hundred beams, nanosecond pulses, 1-10 Hz rep rate \u2014 from company website",
+          "1 GW pilot plant by 2032 target \u2014 from company website (funding article says 2030)",
+          "Toshiba Energy Systems & Solutions partnership \u2014 not found in news sources",
+          "YUKI Holdings partnership \u2014 not found in news sources",
+          "Boron fuel aspirational mention \u2014 from secondary Interesting Engineering article",
+          "Dual energy conversion (steam + direct conversion of charged particles) \u2014 from company website",
+          "University partners: UC San Diego, University of Rochester (others confirmed)"
+        ],
+        "recommendation": "partial",
+        "replacement_md_note": "Thin replacement blf-website-and-news.md (27 lines) contains only cookie consent text from JS-heavy site \u2014 zero useful content. Can be deleted. The .orig.md retains unique technical detail from company website not available in news coverage, particularly OEC lab specs and detailed technology page content. The optics-express-2025-paper source (already exists) likely covers the OEC finesse/enhancement numbers."
+      },
+      "recommendation": "partial"
+    }
+  ]
+}

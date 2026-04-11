@@ -1,0 +1,19 @@
+VERDICT: FINDINGS
+
+### F-1: Nearest-neighbor concepts not identified
+- **Target:** Section 7 (Cross-Concept Notes) and Section 1 (concept framing)
+- **Finding:** The analysis compares the SFS Z-pinch exclusively to the ST-HTS (Goal 1), but ST-HTS is a dissimilar concept from a different design family — it was chosen as the prior analysis reference, not as a nearest neighbor. The 2-3 nearest-neighbor concepts in Z-pinch / pulsed high-density fusion space (e.g., MagLIF — Sandia's liner-driven magnetized Z-pinch; dense plasma focus; other MTF pulsed compression approaches) are not named or compared against. Without this, readers cannot understand what is specific to the sheared-flow stabilization approach vs. what is shared with other Z-pinch variants.
+- **Recommendation:** Add a brief paragraph in Section 7 (or a new subsection at the top of Section 7) naming the 2-3 nearest-neighbor concepts — at minimum MagLIF and one other pulsed high-density approach — and identifying the key differentiator for each. One sentence per neighbor is sufficient: what they share with the SFS Z-pinch (Z-pinch geometry, pulsed driver) and what diverges (magnetization strategy, liner vs. flowing liquid metal, driver type). This does not require deep analysis of those concepts, only a positioning statement.
+- **Priority:** important
+
+### F-2: Recirculating fraction inconsistency between analysis and model
+- **Target:** Section 5 parameter table (recirculating fraction row) vs. model output
+- **Finding:** Section 5 states recirculating power fraction of ~40–55% at Q=10 baseline, derived as "driver power / gross electric" (~27 MWe / ~68 MWe ≈ 40%). The model outputs 59.3% recirculating fraction, which correctly includes 13 MWe in auxiliary loads (tritium processing, house loads, LiPb pumps) on top of the driver. The analysis parameter table omits auxiliary loads from its recirculating fraction estimate, producing a value that understates the actual recirculating fraction by roughly 20 percentage points. A reader using the analysis table to estimate net power without the model would get a materially optimistic answer.
+- **Recommendation:** Update the recirculating fraction row in Section 5 to include auxiliary loads, or split into two rows: one for driver-only recirculating fraction (~40%) and one for total recirculating fraction including auxiliaries (~59%). Update the accompanying note to clarify that the Q-sensitivity calculation also depends on auxiliary load assumptions.
+- **Priority:** important
+
+### F-3: Key uncertainties framed as gaps rather than testable hypotheses
+- **Target:** Section 2 (Challenges) and Section 6 (Gap Inventory) — Goal 4 (modeling recommendations)
+- **Finding:** Section 2 ranks challenges by LCOE impact, and Section 6 lists data gaps with blocking/important ratings, but neither section states the key modeling hypotheses as testable propositions. The analysis identifies Q > 10, 10 Hz rep rate, and driver cost as the critical unknowns, but frames them as "not demonstrated" or "not published" rather than as conditional claims the cost model is designed to test. A cost model built around gap-filling is weaker than one built around explicit hypothesis testing — the latter makes it clear what result would constitute evidence for or against commercial viability.
+- **Recommendation:** Add a "Key Hypotheses" paragraph (3–5 bullet points) to Section 2 or as a standalone subsection, converting the top blocking gaps into testable propositions with failure conditions. For example: "H1: Sheared-flow stabilization scales to 200 µs and Q > 10 at 1.2–1.5 MA current — failure condition: pinch instability growth outpaces flow damping at commercial current, reducing effective Q below 5, at which point net plant power approaches zero (per sensitivity sweep)." One sentence of failure consequence per hypothesis is sufficient to make them actionable for the cost model.
+- **Priority:** important

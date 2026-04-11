@@ -1,0 +1,43 @@
+---
+source: "https://thefusionreport.substack.com/p/interview-with-realta-fusion"
+source_type: "url"
+extracted_at: "2026-03-29T18:59:15.648650+00:00"
+content_hash_sha256: "d67598edb6849fc71df4e48d53d54092b2bd9c50dccdaa0654788ee64002e0d7"
+backend: "trafilatura"
+title: "Interview with Realta Fusion"
+author: "Michael Heumann"
+---
+
+# Interview with Realta Fusion
+
+### Making tandem magnetic mirrors work for fusion energy.
+
+Earlier this week, [The Fusion Report](http://www.thefusionreport.com) sat down for an interview with Derek Sutherland, Vice President of Research and Development at [Realta Fusion](https://realtafusion.com/). Realta just put out a [press release](https://www.prnewswire.com/news-releases/realta-fusion-models-commercially-viable-energy-gain-in-magnetic-mirror-power-plant-302523527.html) today describing two journal papers that push forward Realta’s roadmap to fusion energy. The first paper is on modeling the energy gain of their tandem magnetic mirror, which shows that energy gains greater than 5 (i.e., Q>5) are possible using a 50-meter long center cell, and that longer center cells can produce Q>10 energy gain results. The second paper models the drift-cyclotron loss-cone (DCLC) instability, enabling the development of engineering solutions to tackle this issue. These papers are on the heels of a mid-May 2025[ close of a $36M Series A](https://techcrunch.com/2025/05/13/realta-fusion-taps-36m-in-fresh-funds-for-its-fusion-in-a-bottle-reactor/) funding round.
+
+## What is a Tandem Magnetic Mirror?
+
+For those of you who are not familiar with Realta’s tandem magnetic mirror approach to fusion, here is a quick tutorial. Realta’s first generation systems will use deuterium and tritium (D-T) as its fuel (as do most fusion systems under development today), but it confines the plasma between two sets of high-field superconducting magnets on either end of a linear center cell. This causes the charged particles to bounce back and forth between the magnets – in what’s known as the “mirror effect” – eventually fusing together to produce helium and a high-energy neutron.
+
+The great thing about Realta’s approach is that, while the neutron’s energy can be captured through a typical thermal blanket approach (which also produces new tritium from the lithium in the thermal blanket), the energy in the “ash” (in this case a charged helium nucleus) can be captured as well as it is expelled from the fusion chamber, and use direct energy conversion to generate electricity. Using direct energy conversion lowers the Q required to reach net-electric while still using DT fuel for first generation systems.
+
+## Interview with Derek Sutherland (VP of R&D, Realta Fusion)
+
+**A number of companies utilize computational toolkits to model and predict the behavior of fusion systems. What is different about the work you are announcing in this press release?**
+
+Our modeling approach is similar to those associated with tokamaks and stellarators, but this is the first time it has been used for a tandem magnetic mirror system. The key is that it shows there is a pathway at high fidelity to a positive fusion energy gain that is high enough to build a power plant around.**How far does the work in this press release move you towards achieving fusion in your system?**
+
+This modeling is toward completing one of our major DoE milestones. It means that the physics of the tandem mirror approach is tenable looking towards a power plant, which adds further motivation for continuing validation of our models with physical experiments for use in design. One of the advantages of the tandem mirrors when using D-T is that while the neutron energy is converted to thermal energy utilizing a thermal blanket, the energy of charged particles (the helium “ash”) can also be captured at high efficiency through direct energy conversion, improving system efficiency. Additionally, the longer the center cell is, the more power the system will put out (this increases by roughly 7 MW per meter). Interestingly, the input power does not change, even as the center cell gets longer. There is a scenario where you could get 500 MW out of a Q=20 system.**Realta is somewhat “late to the party” compared to companies such as CFS who have raised billions in funding. How challenging was getting funding, and what types of investors are you seeking?**
+
+We are dominantly privately funded, led by VCs. We also use DoE milestone funding to help out, and we “inherited” the University of Wisconsin WHAM program from DoE ARPA-E funding. Going forward, most of the funding will be private. As far as other fusion companies, Realta approaches things in a “heads-down” way, where we focus on our milestones, learn as much from others as possible, and move quickly in our advancements using first principles thinking. We don’t have time to focus too closely on what our competition is doing; our focus is to build the best product possible as soon as possible. For instance, we are currently using magnets from CFS on WHAM, which means we don’t have to build our own and can instead focus on making the mirror scale. We also do not have time to get lost in scientific minutiae and understand every facet of the physics at hand – instead, we are focused on developing a good enough understanding to make a commercial product. We are also going after a “medium-sized” fusion machine anywhere from 50-500MW of power – smaller than a CFS “gigawatt” capacity, but larger outputs than Helion’s machines, for instance. This scalable approach allows us to access a much broader range of customers than many others in the space.**What makes your approach unique in the market?**
+
+The reason that we chose the magnetic mirror is that there have been a lot of advances on other mirror experiments we can capitalize on, especially in Russia and Japan. Specifically, the use of high-temperature superconducting (HTS) magnets – such as the 17 Tesla HTS magnets we use in our experimental device – helps make high-power density mirror devices much more feasible. Because of this, there are some other companies now jumping into mirrors as well. The great thing about magnetic mirror systems is that they are steady-state but without the difficult plasma current disruption issues of tokamaks and they require a lot fewer magnets than a stellarator. When pitching this concept to investors, you find the valuable proposition of mirrors is that it has the best features of a variety of concepts in a single package, which is what makes it so compelling.**Who are your target customers?**
+
+Utilities are definitely one target, but behind the meter for hyperscalers operating massive datacenters is becoming a hot opportunity. We are also targeting industrial process applications (aluminum smelting, metals, etc.).**When will commercial fusion electricity be on the grid, and who will be the first country (and/or company) with commercial fusion?**
+
+We are working towards a first-of-a-kind (FOAK) fusion machine in the early 2030s, which could be either “on the utility grid” or “behind the meter”. Commercial scaling to NOAK will take a few more turns and probably occur in the mid-to-late 2030s.**Other Interesting Perspectives.**
+
+For Realta, there is a very strong case for publishing results in academic journals like the two papers we’ve recently announced. The approach allows outside experts to perform due diligence for potential investors, and also attract the best and the brightest in the field to work with us. Turns out, smart people like to know what they’re going to commit their time and effort to work on. But this does not mean that we are solely focused on science – we are focused on deploying fusion commercially as soon as possible, and publishing is part of the output of a fusion company that is serious about commercialization. In short, we publish because it is in our best interest as a company to do so, but it is not our focus – building fusion power plants ASAP is – and we are selective about what we publish. Notably, you can publish and protect your intellectual property.
+
+We would like to thank Realta Fusion and Derek Sutherland for their time and this interview. You can see a great video describing the technology on [YouTube](https://www.youtube.com/watch?v=j-k5QLw27rw&t=15s).
+
+Join us August 12 for * Fusion 2035: The 10-Year Shot Clock*, a half-day webinar featuring leaders from across the fusion ecosystem.

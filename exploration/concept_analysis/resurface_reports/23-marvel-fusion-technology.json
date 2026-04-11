@@ -1,0 +1,90 @@
+{
+  "status": "complete",
+  "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-01/sources/marvel-fusion-technology.orig.md",
+  "concept_id": "23-laser-icf-nanostructured-target",
+  "concept_num": "23",
+  "elapsed_s": 109.1,
+  "return_code": 0,
+  "acquired": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/binding-ultrashort-pulse-laser-fusion.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/optics-news-15-10-4.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/optics-news-16-4-4.md"
+  ],
+  "acquired_count": 3,
+  "agent_report": {
+    "orig_file": "marvel-fusion-technology.orig.md",
+    "urls_found": [
+      "https://www.marvelfusion.com/",
+      "https://binding.energy/ultrashort-pulse-laser-fusion/",
+      "https://optics.org/news/15/10/4",
+      "https://optics.org/news/16/4/4",
+      "https://patents.google.com/patent/US20230073280A1/en"
+    ],
+    "extractions": [
+      {
+        "url": "https://www.marvelfusion.com/",
+        "outcome": "skipped",
+        "notes": "Company homepage \u2014 JS-heavy, already extracted as thin replacement (22 lines of marketing text)"
+      },
+      {
+        "url": "https://binding.energy/ultrashort-pulse-laser-fusion/",
+        "source_name": "binding-ultrashort-pulse-laser-fusion",
+        "outcome": "success",
+        "covers": [
+          "Core approach (fs lasers, nanostructured targets, direct-drive ignition)",
+          "Laser type (femtosecond, PW-class)",
+          "10 Hz repetition rate",
+          "Nanostructured solid-state targets",
+          "Partners (Trumpf, Thales, Siemens, Fraunhofer, CEA)",
+          "80+ team",
+          "Over \u20ac200M total capital",
+          "Secondary applications (medical isotopes, neutron imaging, high-energy research)",
+          "p-B11 fuel, no cryogenics"
+        ]
+      },
+      {
+        "url": "https://optics.org/news/15/10/4",
+        "source_name": "optics-news-15-10-4",
+        "outcome": "success",
+        "covers": [
+          "Series B \u20ac62.8M round details (investors: HV Capital, b2venture, Deutsche Telekom, EIC)",
+          "CSU Fort Collins $150M lab under LaserNetUS/DOE",
+          "Two 100 J lasers initially, experiments early 2027",
+          "Silicon nanostructure targets via semiconductor lithography",
+          "Kilojoule sources at 10 Hz scaling plan",
+          "Over \u20ac120M equity + \u20ac150M public funding total at time of article",
+          "p-B11 fuel"
+        ]
+      },
+      {
+        "url": "https://optics.org/news/16/4/4",
+        "source_name": "optics-news-16-4-4",
+        "outcome": "success",
+        "covers": [
+          "\u20ac50M Series B extension (EQT Ventures, Siemens Energy, EIC Fund)",
+          "Total support: \u20ac385M (\u20ac170M private + \u20ac215M public)",
+          "Siemens Energy partnership for conceptual power plant design",
+          "Two laser prototypes in progress",
+          "500 laser systems needed for commercial plant",
+          "10-100 lasers for demonstrator plant",
+          "Pulsed Light Technologies (PLT) partnership for laser production",
+          "European Commission positioning fusion as industrial challenge"
+        ]
+      },
+      {
+        "url": "https://patents.google.com/patent/US20230073280A1/en",
+        "outcome": "skipped",
+        "notes": "Hit 3-extraction cap. Patent covers nanorod target design details (50-80 nm features, aligned nanorods with interspaces, room temperature handling). Available for future extraction."
+      }
+    ],
+    "uncovered_claims": [
+      "Timeline: prototype ~2032, commercial plant ~2036 \u2014 no extracted source covers these dates",
+      "Patent US20230073280A1 details: nanorods/nanowire arrays, 50-80 nm feature size, 5000 targets per 300mm wafer, interspaces filled with second material \u2014 patent URL not extracted (cap reached)",
+      "Energy conversion: hybrid magnetic/electrostatic/steam, up to 70% target efficiency, alpha particle capture via induction \u2014 no extracted source covers this",
+      "ATLAS Facility specifics: 3 laser systems, ~7 PW combined peak power, ~100 \u00b5m focal spot, mid-2026 online \u2014 only partial coverage (CSU lab mentioned but not these specs)"
+    ],
+    "recommendation": "delete",
+    "replacement_md_note": "Thin replacement marvel-fusion-technology.md (22 lines) is generic marketing text from marvelfusion.com \u2014 a strict subset of what the 3 newly-extracted sources cover. Can also be deleted. Note: orig file funding figure (\u20ac165M) is outdated \u2014 optics-16-4-4 reports \u20ac385M total as of Apr 2025."
+  },
+  "recommendation": "delete"
+}

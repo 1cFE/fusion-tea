@@ -1,0 +1,98 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-1",
+      "gap_description": "No plant study for IMG architecture: all TEA data from Z-IFE LTD-era (2006)",
+      "queries": [
+        "pyFECONs MIFE magnetized inertial fusion cost driver account 2026 woodruff arxiv"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/html/2602.19389",
+          "title": "Extension of the Fusion Power Plant Costing Standard (full HTML)",
+          "triage": "relevant-partial",
+          "notes": "Full paper accessible. WebFetch triage confirmed: methodology framework only, no MIFE cost priors. Contains installed $/J basis approach, Account 22.1.3 as pulsed-power swap-point, component category list (capacitors, switches, charging, dump circuits, buswork, diagnostics, safety/controls). No dollar figures or Z-IFE 2006 comparisons. Existing extraction was abstract-only; full HTML provides complete framework methodology."
+        },
+        {
+          "url": "https://arxiv.org/abs/2601.21724",
+          "title": "A costing framework for fusion power plants (Woodruff 2026)",
+          "triage": "not-relevant",
+          "notes": "Companion Woodruff paper. WebFetch triage: no MIFE/MagLIF cost data. Covers MFE/IFE methodology broadly (BETHE/GAMOW designs). Accessible open-access but adds no new MIFE content beyond 2602.19389."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/html/2602.19389",
+          "source_name": "arxiv-2602-19389",
+          "notes": "Force re-extracted to replace abstract-only version with full paper content. Overwrote existing iter-03/sources/arxiv-2602-19389.md. Full paper confirmed to contain only framework methodology, not cost priors — Gap #1 remains open."
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "Gap #1 remains open. The pyFECONs paper (2602.19389) is confirmed methodology-only with no MIFE cost account priors. No Pacific Fusion plant-study preprint found. Second companion paper (2601.21724) also has no MIFE cost data. The 'blocking' gap cannot be addressed from available public sources as of April 2026."
+    },
+    {
+      "gap_id": "G-10",
+      "gap_description": "Thermal cycle above 900 K: high-temperature materials availability for He Brayton or combined cycle",
+      "queries": [
+        "fusion reactor SiC ODS steel 900K He Brayton cycle thermal efficiency commercial power plant 2024 2025",
+        "SiC SiC composite fusion blanket commercial availability thermal efficiency 900K high temperature 2024 2025 site:arxiv.org OR site:osti.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/biblio/2282963",
+          "title": "Silicon carbide fiber manufacturing: Cost and technology (Yilmaz et al., 2023)",
+          "triage": "relevant",
+          "notes": "Composites Part B 2023. Covers SiC fiber manufacturing cost barriers directly: fibers >50% of finished composite cost, manufacturing 'prohibitively high' for cost-sensitive applications; crosslinking and raw material prep are high-cost bottlenecks. Confirms commercial availability limitation underpinning G-10 constraint. Accessible via OSTI biblio page."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/2573392",
+          "title": "Perspectives and challenges of ultra-high temperature ceramics for fusion plasma-facing applications (Lin et al., 2025)",
+          "triage": "relevant",
+          "notes": "April 2025, Current Opinion in Solid State and Materials Science. Reviews UHTCs for fusion including high-temperature (>1000°C) neutron irradiation behavior. Plasma-facing rather than blanket structural focus, but covers temperature range and radiation challenges relevant to G-10. Accessible via OSTI biblio page."
+        },
+        {
+          "url": "https://www.mdpi.com/2071-1050/16/17/7480",
+          "title": "Analysis of Power Conversion System Options for ARC-like Tokamak Fusion Reactor Balance of Plant",
+          "triage": "inaccessible",
+          "notes": "MDPI returned 403 Forbidden."
+        },
+        {
+          "url": "https://www.energy.gov/sites/default/files/2025-10/fusion-s&t-roadmap-101625.pdf",
+          "title": "DOE Fusion Science & Technology Roadmap (Oct 2025)",
+          "triage": "inaccessible",
+          "notes": "WebFetch returned maxContentLength exceeded (file too large for triage). Not extracted due to size and extraction budget limits."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/biblio/2282963",
+          "source_name": "osti-biblio-2282963"
+        },
+        {
+          "url": "https://www.osti.gov/biblio/2573392",
+          "source_name": "osti-biblio-2573392"
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/2282963",
+          "reason": "Direct PDF purl extraction failed (rc=1, no stderr). Biblio page URL used instead."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/2573392",
+          "reason": "Direct PDF purl not attempted after first purl failure; used biblio page directly."
+        }
+      ],
+      "status": "closed",
+      "notes": "Two sources extracted covering SiC commercial cost barriers and ultra-high-temperature ceramic behavior under fusion conditions. Combined with the Frontiers paper extracted in iter-5, G-10 now has three sources. SiC fiber cost paper confirms the commercial availability barrier is real (prohibitively high cost), supporting the analysis assumption that thermal efficiency is capped at ~42% for the near-term case."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 2,
+    "sources_extracted": 3,
+    "sources_failed": 1,
+    "searches_used": 3,
+    "extractions_used": 3
+  }
+}

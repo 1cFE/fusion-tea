@@ -1,0 +1,22 @@
+VERDICT: FINDINGS
+
+### F-1: Nearest-neighbor concepts not named
+- **Target:** Section 7 (Cross-Concept Notes)
+- **Category:** analysis
+- **Finding:** The analysis says "none of the approved prior analyses are directly applicable" and lists no nearest-neighbor concepts. The checklist requires naming 2-3 nearest neighbors to frame where this concept sits in the design space. Acoustic ICF belongs to the IFE family by implosion physics (pulsed driver compresses a target to fusion conditions), making laser ICF and heavy-ion ICF the natural structural comparators — the analysis alludes to this with the density analogy and "NIF-class laser" reference but never makes it explicit. A reader cannot place acoustic ICF in the broader landscape from Section 7 as written.
+- **Recommendation:** Add a brief nearest-neighbors paragraph to Section 7 naming laser ICF and heavy-ion ICF (or MTF as a pulsed-compression neighbour) as the closest structural analogues, and state what the acoustic driver concept shares with and differs from each. This does not require data reuse — it is a qualitative framing exercise. The core contrast is already in the analysis: acoustic drivers deliver many orders of magnitude less energy per event than a NIF-class laser, which is why IFE neighbors are nearby conceptually but distant practically.
+- **Priority:** important
+
+### F-2: Section 2 omits conditional LCOE sensitivity framing
+- **Target:** Section 2 (Challenges in Capturing System Function)
+- **Category:** analysis
+- **Finding:** Section 2 correctly identifies Q as the blocking scientific constraint, but the checklist requires Section 2 to also identify the 2-3 parameters with highest LCOE sensitivity for this specific concept. The model's elasticity table reveals that conditional on physics working, plant availability (|ε| = 0.95), WACC (|ε| = 0.94), and thermal efficiency (|ε| = 0.75) are more elastic than Q (|ε| = 0.56) at the baseline operating point. Section 2 does not surface this conditional framing at all — a reader finishing Section 2 would believe "Q is everything," when the model shows that if the physics works, financing terms and heat-cycle efficiency dominate LCOE far more than Q does (once Q is above breakeven). This misrepresents where modelling effort would concentrate in a viable scenario.
+- **Recommendation:** Add a short paragraph at the end of Section 2 (or as a new Challenge noting the conditional framing) that states: "Conditional on physics viability, the highest LCOE levers are plant availability, WACC, and thermal efficiency — not Q. Q sets the floor for net-positive operation (Q ≥ ~3.5 at baseline) but above that floor, financial and thermal-conversion parameters dominate." This can reference the model sensitivity results.
+- **Priority:** important
+
+### F-3: Hypotheses framed as open questions, not testable propositions
+- **Target:** Section 2 (Challenges) and Section 5 (Parameters)
+- **Category:** analysis
+- **Finding:** The checklist requires key hypotheses to be stated as testable propositions. The analysis frames all unknowns as open questions or gaps (e.g., "fusion from acoustic cavitation is unknown," "Q is undefined"). The model has already encoded the key testable proposition — Q ≥ ~3.5 for breakeven at baseline parameters — but the analysis text never states it that way. Similarly, the D₂O vessel size and the recirculating power threshold are testable conditional hypotheses, but they appear only as "blocking" gaps in Section 6. The distinction matters for how a reader would design the next research step: an open question says "we don't know," a testable proposition says "if we achieve X we can verify Y."
+- **Recommendation:** At the close of Section 2 (or within the relevant challenges), convert the three key engineering thresholds into explicit propositions: (1) "Net-positive electrical output requires Q ≥ ~3.5 at baseline driver/thermal parameters — demonstrating Q = 1 in a laboratory would place commercial viability within a factor of ~4 in gain." (2) "D₂O vessel cost is proportional to r³ — vessels smaller than ~2 m radius reduce capital cost substantially but must confine the same fusion power density." (3) "The acoustic driver's recirculating fraction sets a hard efficiency floor; PZT efficiency above 85% provides minimal further leverage." These are already implicit in the model but should be stated in the analysis text.
+- **Priority:** important

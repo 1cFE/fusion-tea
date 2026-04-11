@@ -1,0 +1,79 @@
+{
+  "status": "complete",
+  "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-02/sources/hb11-energy-2025-updates.orig.md",
+  "concept_id": "23-laser-icf-nanostructured-target",
+  "concept_num": "23",
+  "elapsed_s": 147.5,
+  "return_code": 0,
+  "acquired": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/energynewsbulletin-energy-transition-features-articles.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/hb11-2025-08-04-assoc-prof-patrick-burr-leads-unsw-team-to.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/newsroom-news-science-tech-pioneering-technology-promises.md"
+  ],
+  "acquired_count": 3,
+  "agent_report": {
+    "orig_file": "hb11-energy-2025-updates.orig.md",
+    "urls_found": [
+      "https://hb11.energy/our-technology/",
+      "https://www.energynewsbulletin.net/energy-transition/features-articles/4521443/feature-laser-fusion-light-bulb-moment-nears-reality",
+      "https://hb11.energy/2025/08/04/assoc-prof-patrick-burr-leads-unsw-team-to-design-materials-for-a-fusion-power-plant/",
+      "https://newsroom.unsw.edu.au/news/science-tech/pioneering-technology-promises-unlimited-clean-and-safe-energy"
+    ],
+    "extractions": [
+      {
+        "url": "https://hb11.energy/our-technology/",
+        "outcome": "duplicate",
+        "notes": "Already extracted as iter-02/sources/hb11-energy-2025-updates.md (thin \u2014 JS-heavy site, only 7 lines of content)"
+      },
+      {
+        "url": "https://www.energynewsbulletin.net/energy-transition/features-articles/4521443/feature-laser-fusion-light-bulb-moment-nears-reality",
+        "source_name": "energynewsbulletin-energy-transition-features-articles",
+        "outcome": "success",
+        "covers": [
+          "Diode-pumped solid-state lasers with wall-plug efficiency ~10% (current <1%)",
+          "Low-density foam targets \u2014 10x more efficient at proton acceleration",
+          "In-house foam target manufacturing capability",
+          "Non-critical density plasma from foam targets",
+          "Steel reactor vessel possible due to aneutronic fuel (cost advantage)",
+          "Laser efficiency as key enabler for net energy gain"
+        ]
+      },
+      {
+        "url": "https://hb11.energy/2025/08/04/assoc-prof-patrick-burr-leads-unsw-team-to-design-materials-for-a-fusion-power-plant/",
+        "source_name": "hb11-2025-08-04-assoc-prof-patrick-burr-leads-unsw-team-to",
+        "outcome": "success",
+        "covers": [
+          "UNSW collaboration \u2014 Assoc. Prof. Patrick Burr leads research group",
+          "Design and Simulations of a Fusion Reaction Chamber research group",
+          "Collaboration between HB11 Energy and UNSW Nuclear Innovation Centre",
+          "Aneutronic advantage for simplified reactor design and materials"
+        ]
+      },
+      {
+        "url": "https://newsroom.unsw.edu.au/news/science-tech/pioneering-technology-promises-unlimited-clean-and-safe-energy",
+        "source_name": "newsroom-news-science-tech-pioneering-technology-promises",
+        "outcome": "success",
+        "covers": [
+          "Direct conversion concept (Hora's original design) \u2014 alpha particles create electrical flow channeled directly to grid",
+          "Two-laser approach (magnetic containment + avalanche trigger)",
+          "Metal sphere reactor design with fuel pellet",
+          "Hydrogen-boron fuel \u2014 no radioactive waste, no neutron damage",
+          "Billion-fold higher reaction rates than predicted"
+        ]
+      }
+    ],
+    "uncovered_claims": [
+      "Steam cycle pivot \u2014 current website explicitly states 'conventional steam cycle generator' (technology page extracted but only 7 lines due to JS)",
+      "Laser array of thousands of commercial lasers (technology page claim, thin extraction)",
+      "~1 Hz repetition rate ('fuel pellets injected and burned at a rate of about 1 per second') \u2014 technology page claim",
+      "'World-first material number of fusion reactions' (Applied Sciences publication) \u2014 needs journal paper",
+      "10x more fusion reactions than expected \u2014 needs journal paper",
+      "Four orders of magnitude from net energy gain \u2014 needs journal paper or interview source",
+      "'Data centre with big laser halls' \u2014 modular plant concept description, source unknown",
+      "CA-PROBONO EU project (COST Action CA21128) \u2014 needs separate extraction from ELI ERIC or Matter Radiation Extremes paper"
+    ],
+    "recommendation": "partial",
+    "replacement_md_note": "Thin replacement hb11-energy-2025-updates.md (16 lines, 7 content lines) is from hb11.energy/our-technology/ \u2014 JS-heavy extraction captured almost nothing. The newly-extracted individual sources cover the majority of claims better than this thin file. However, the thin file is the only extraction of the technology page URL, which is the primary source for steam cycle pivot, laser array, and rep rate claims."
+  },
+  "recommendation": "partial"
+}

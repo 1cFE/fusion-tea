@@ -4,6 +4,90 @@ Historical record of completed work.
 
 ---
 
+## [2026-04-11] - Pipeline Hardening, Explorer Merge, Source Cleanup
+
+**Type**: Feature + robustness (8 work items + 2 deletions)
+**Duration**: ~1 week on `design-space-explore`
+
+### Summary
+Pipeline-hardening closed a class of silent-corruption and transient-error failures that had been killing `stage1-all --all` runs and required manual re-runs. In parallel, output validation, feedback routing, concept-landscape context, and .orig.md re-sourcing landed as independent correctness fixes. The concept explorer (from `ralph/concept-explorer`) was merged into the analysis pipeline branch, and Phase 1a source replacement was closed out. The combined effect: `batch-pipeline-run` can now safely proceed against all concepts.
+
+### Items Archived
+- `pipeline-hardening` — Validated invocation, transient-error retry, state integrity across `loop.py`/`run_analysis.py`/`research.py`. Deleted legacy `step_runner` surface. 7 phases, audit passed clean. Commit 9d9605a.
+- `output-validation-retry` — `invoke_claude_validated()` wrapper with regex-based verdict/section validators; retry-via-resume on malformed output. Commit 46afb62.
+- `concept-landscape-context` — Injected cross-concept catalog into analysis prompts so agents can name verifiable nearest neighbors; simplified vestigial status codes (`D`/`M` → `iterating`). Commits 244e160, 0ab9dc0.
+- `orig-md-research` — Re-sourced 21 NO-verdict `.orig.md` Haiku-paraphrased files against real HTML sources and deleted originals. Commit a8c489a.
+- `feedback-routing-fix` — Added finding categories so assessment findings targeting model code reach `model_setup.py` directly instead of being laundered through analysis prose. Commit 73f6994.
+- `explorer-merge` — Merged `ralph/concept-explorer` (FastAPI 4-page explorer, 140+ tests) into `design-space-explore`. Commit d8cb8ce and follow-ups.
+- `source-replacement` — Phase 1a source replacement effort, coupled with `orig-md-research`. Triage report, plan, and plan-completion preserved for reference.
+- `common-output-interface` — Picked up a lingering prior-session archival (staged rename to `completed/20260407_common-output-interface/` that was never committed). Plan marked Complete as of 2026-04-07.
+
+### Deleted (not archived)
+- `extraction-interface-gap/` — Empty orphan directory, never committed.
+- `step-runner-validation-retry/` — Untracked spec only. Superseded by pipeline-hardening Phase 5, which explicitly deleted the legacy `step_runner` surface the spec targeted.
+
+### Remaining Active
+- `batch-pipeline-run` — Not started; unblocked now that pipeline is hardened
+- `loop-dry-run-symmetry` — Small follow-up from pipeline-hardening audit (spec only)
+- `traceability-system` — Still on hold awaiting prioritization
+
+---
+
+## [2026-04-05] - Analysis Pipeline Bulk Archival
+
+**Type**: Housekeeping
+**Duration**: 1 session
+
+### Summary
+Archived 13 completed work items from the analysis pipeline development phase. The pipeline (`run_analysis.py` + `lib/` modules) is fully operational with iterative analysis, autonomous source acquisition, cross-concept memory, PROCEED/REVISE review verdicts, and concept management tooling.
+
+### Items Archived
+- `automated-concept-analysis` — Core analysis pipeline with gap-check/analyze/approve workflows and Claude invocation. All 5 phases complete.
+- `autonomous-source-acquisition` — WebSearch/WebFetch research step for automated data gap resolution. Live-tested.
+- `checkpoint-test-concept17` — End-to-end validation on concept 17a with replaced sources. 6/8 spot checks passed.
+- `concept-research-skill` — Consolidated research docs into README.md + `concept-research-navigation` skill.
+- `constraint-atms-spike` — ATMS constraint propagation prototype for design space exploration.
+- `iterative-analysis-loop` — Multi-pass analysis with config extraction, modal prompts, and convergence tracking.
+- `manage-concept-agent` — Interactive `/manage-concept` command for concept vetting and comparison.
+- `refactor-final-stages` — Rescoped review/synthesize/approve to PROCEED/REVISE verdicts with kick-back.
+- `refactor-run-analysis` — Extracted `run_analysis.py` (2306→1380 lines) into 9 `lib/` modules.
+- `refactor-stage1-loop` — `iter-N/` directory layout, `--resume` support, verdict.json tracking, migration.
+- `research-artifact-sync` — R2 binary sync + migration to `knowledge/concept_research/`.
+- `shared-memory-system` — Cross-concept tagged memory (concept/family/universal) loaded into analysis prompts.
+- `source-addition` — `add-source` and `update-analysis` commands for incremental source addition.
+
+### Remaining Active
+- `orig-md-research` — Re-sourcing NO-verdict `.orig.md` files (3/21 processed)
+- `source-replacement` — Coupled to above; extraction complete, cleanup remains
+- `traceability-system` — Spec/design/plan written, awaiting prioritization
+
+---
+
+## [2026-03-29] - Concept Taxonomy & Interactive Explorer
+
+**Type**: Feature (4 work items, 2 superseded)
+**Duration**: 1 day
+
+### Summary
+Built taxonomy visualizer for all 38 fusion concepts: Pydantic data models, pairwise similarity engine (4-dimension decomposition + classical MDS), 7 API endpoints, and interactive frontend with tree view, Plotly constellation scatter, taxonomy cards, and Cytoscape neighborhood graph.
+
+Neighborhood graph went through two failed iterations (procedural add/remove causing re-renders) before landing on a proper model-view architecture (GraphModel built once, GraphView toggles visibility).
+
+### Items Archived
+- `concept-taxonomy-and-similarity` — Foundation: data models, similarity engine, API, tree/constellation/cards. Complete.
+- `graph-model-rewrite` — Model-view rewrite of neighborhood graph. Complete.
+- `taxonomy-viz-redesign` — Intermediate attempt, superseded by graph-model-rewrite.
+- `taxonomy-viz-polish` — Intermediate attempt, superseded by graph-model-rewrite.
+
+### Deliverables
+- `exploration/concept_explorer/taxonomy_models.py` — Pydantic models with typed enums
+- `exploration/concept_explorer/similarity.py` — Pairwise similarity + MDS + diversity-aware bridges
+- `exploration/concept_explorer/seed_registry.py` — Canonical JSON registry seeded from table_v2.csv
+- Frontend: `taxonomy.js`, `taxonomy_card.js`, `neighborhood_graph.js`, `constellation.js`, `tree_view.js`
+- 140+ tests (54 new for taxonomy/similarity)
+
+---
+
 ## [2026-03-06] - Project Cleanup & Archival
 
 **Type**: Housekeeping

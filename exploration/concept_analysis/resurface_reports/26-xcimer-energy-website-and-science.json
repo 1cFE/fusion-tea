@@ -1,0 +1,18 @@
+{
+  "status": "complete",
+  "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/26-laser-icf-indirect-drive/iter-01/sources/xcimer-energy-website-and-science.orig.md",
+  "concept_id": "26-laser-icf-indirect-drive",
+  "concept_num": "26",
+  "elapsed_s": 600.1,
+  "return_code": -1,
+  "acquired": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/26-laser-icf-indirect-drive/iter-03/sources/optics-news-15-6-6.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/26-laser-icf-indirect-drive/iter-03/sources/xcimer-approach.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/26-laser-icf-indirect-drive/iter-03/sources/xcimer-science.md"
+  ],
+  "acquired_count": 3,
+  "agent_report": {
+    "error": "output file not found"
+  },
+  "recommendation": "unknown"
+}

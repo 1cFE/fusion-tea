@@ -1,0 +1,135 @@
+MagLIF D-T (Z-IFE LTD reference architecture) — 1000 MWe, 85% availability, 30 yr
+LCOE: 75.9 $/MWh | Overnight: 4683 $/kW
+Fusion: 2397 MW | Net: 1000 MW | Q_eng: 10.98
+Overridden accounts: ['C220103', 'C220104', 'C220101', 'C220108', 'C220109', 'C220600']
+
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    38.0
+CAS21    Buildings                         919.4
+CAS22    Reactor Plant Equipment          1571.5
+CAS23    Turbine Plant                     217.4
+CAS24    Electrical Plant                   92.6
+CAS25    Miscellaneous                      56.4
+CAS26    Heat Rejection                     37.6
+CAS27    Special Materials                  15.0
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                       291.5
+CAS30    Indirect Costs                    427.5
+CAS40    Owner's Costs                      39.0
+CAS50    Supplementary                     345.8
+CAS60    IDC                               626.6
+CAS70    O&M (annualized)                   81.5
+CAS80    Fuel (annualized)                   1.1
+CAS90    Financial                         482.8
+------------------------------------------------
+         Total Capital                    4683.3
+
+CAS22 sub-accounts (Reactor Plant Equipment):
+  C220000    CAS22 total                              1571.5 M$
+  C220101    First Wall + Blanket (FLiBe)               50.0 M$
+  C220102    Shield                                    107.4 M$
+  C220103    Coils (zeroed — no SC magnets)              0.0 M$
+  C220104    Driver (pulsed power, LTD ref)            372.0 M$
+  C220105    Structure                                   8.3 M$
+  C220106    Vacuum System                              28.9 M$
+  C220107    Power Supplies                             85.5 M$
+  C220108    Divertor (zeroed — absent in MagLIF)        0.0 M$
+  C220109    DEC (zeroed)                                0.0 M$
+  C220111    Installation                              237.0 M$
+  C220112    Isotope Separation                          0.0 M$
+  C220200    Coolant Handling                          200.6 M$
+  C220300    Aux Cooling                                 8.9 M$
+  C220400    Rad Waste                                   5.1 M$
+  C220500    Fuel Handling                             120.0 M$
+  C220600    RTL + Target Factory                      120.0 M$
+  C220700    I&C                                        70.4 M$
+
+============================================================
+KEY ASSUMPTIONS SUMMARY
+============================================================
+
+Architecture:  Z-IFE LTD reference, single chamber, 0.5 Hz,
+               frozen-FLiBe RTL (best published MagLIF scenario).
+               NOT the modern IMG architecture (Pacific Fusion DS).
+
+Net output:    1000 MWe (Z-IFE reference, 4× larger than Pacific
+               Fusion's 250 MWe commercial target; LCOE at 250 MWe
+               will be materially higher).
+
+Driver cost:   $372M (LTD median); if IMG achieves 5–10× reduction
+               (~$40–75M), LCOE drops significantly (see sensitivity).
+
+Driver C220104 = $372M     [Z-IFE LTD median; ±50%]
+Blanket C220101 = $50M     [Z-IFE chamber/FLiBe; ±40%]
+RTL factory C220600 = $120M [analogy estimate; ±100%]
+Coils C220103  = $0M       [no superconducting magnets]
+DEC   C220109  = $0M       [D-T, no direct conversion]
+
+Thermal eff.:  42% (combined Brayton-Rankine, steel chamber,
+               near-term achievable; C-C composite could reach 50%)
+
+Driver eff.:   60% (LTD; IMG claims ~90% — unverified at scale)
+
+Rep rate:      0.5 Hz (frozen-FLiBe RTL, single chamber);
+               COE at 0.1 Hz (10-chamber steel RTL) = ~20 ¢/kWeh
+               per Z-IFE; at 0.5 Hz (this case) = ~7 ¢/kWeh target.
+
+Per-shot consumables: frozen-FLiBe RTL eliminates steel RTL factory
+               170 MWe parasitic load. Cryo target cost at scale
+               is unknown and NOT captured as an explicit O&M line.
+               If cryo targets cost > $2/shot, annual O&M at 1 Hz
+               exceeds $50M/yr — potential binding LCOE constraint.
+
+References:    z-ife-sand2006-7148-thermal-cycles.md §3.1.1, §3.1.2
+               analysis.md §Section 2 and §Section 5
+
+Sensitivity (elasticity = %LCOE / %param)
+NOTE: Overridden accounts (driver C220104, blanket C220101,
+      RTL factory C220600) have zero gradient — sweep manually
+      via batch_lcoe or explicit cost_overrides to test their impact.
+-------------------------------------------------------
+
+Engineering levers:
+  availability                   -0.9850
+  construction_time_yr           +0.2716
+  plasma_t                       +0.0752
+  eta_th                         -0.0459
+  eta_pin                        -0.0219
+  p_driver                       +0.0219
+  blanket_t                      +0.0190
+  ht_shield_t                    +0.0190
+  fuel_recovery                  -0.0181
+  f_sub                          +0.0144
+  vessel_t                       +0.0097
+  p_trit                         +0.0044
+  structure_t                    +0.0040
+  p_house                        +0.0018
+  mn                             -0.0016
+  p_cryo                         +0.0012
+  burn_fraction                  -0.0010
+  p_target                       +0.0009
+  p_pump                         +0.0004
+  eta_p                          -0.0000
+
+Financial:
+  interest_rate                  +0.8048
+  inflation_rate                 +0.0505
+
+============================================================
+DRIVER COST SWEEP (C220104) — Hypothesis 3
+Evaluating LCOE as pulsed power cost per joule falls
+from LTD baseline to IMG target
+============================================================
+
+  Scenario                     Driver M$  LCOE $/MWh
+  ----------------------------------------------------
+  LTD ref median                     372        75.9  ($372M — Z-IFE LTD reference)
+  2× reduction                       186        72.1  ($186M — 2× improvement)
+  4× reduction                        93        70.1  ($93M  — 4× improvement)
+  5× reduction (target)               75        69.8  ($75M  — 5× (IMG cost target))
+  10× reduction                       37        69.0  ($37M  — 10× (optimistic IMG))
+
+Z-IFE reference COE at 0.5 Hz: 7.0 ¢/kWeh = 70 $/MWh
+Advanced fission threshold:     4–6 ¢/kWeh = 40–60 $/MWh
+

@@ -1,0 +1,64 @@
+{
+  "status": "complete",
+  "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/14-magnetized-target-fusion-pneumatic-compression/iter-01/sources/general-fusion-technology-overview.orig.md",
+  "concept_id": "14-magnetized-target-fusion-pneumatic-compression",
+  "concept_num": "14",
+  "elapsed_s": 140.5,
+  "return_code": 0,
+  "acquired": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/14-magnetized-target-fusion-pneumatic-compression/iter-04/sources/en-wiki-general-fusion.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/14-magnetized-target-fusion-pneumatic-compression/iter-04/sources/globenewswire-news-release-2022-12-12-2571959-0-en-general.md"
+  ],
+  "acquired_count": 2,
+  "agent_report": {
+    "orig_file": "general-fusion-technology-overview.orig.md",
+    "urls_found": [
+      "https://generalfusion.com/fusion-technology/"
+    ],
+    "extractions": [
+      {
+        "url": "https://generalfusion.com/fusion-technology/",
+        "source_name": "general-fusion-technology-overview",
+        "outcome": "duplicate",
+        "notes": "Already extracted in iter-01 as general-fusion-technology-overview.md"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/General_Fusion",
+        "source_name": "en-wiki-general-fusion",
+        "outcome": "success",
+        "covers": [
+          "Founded 2002 by Michel Laberge",
+          "Richmond, British Columbia location",
+          "MTF approach with compact toroid plasma",
+          "First at-scale plasma injector 2010",
+          "Compressive heating demonstrated 2011",
+          "Plasma lifetime in liquid metal cavity 2019",
+          "LM26 designed to achieve 10 keV by 2025",
+          "Scientific breakeven equivalent by 2026"
+        ]
+      },
+      {
+        "url": "https://www.globenewswire.com/news-release/2022/12/12/2571959/0/en/General-Fusion-exceeds-core-technology-performance-targets-with-plasma-and-compression-prototypes.html",
+        "source_name": "globenewswire-news-release-2022-12-12-2571959-0-en-general",
+        "outcome": "success",
+        "covers": [
+          "Over 200,000 plasma shots completed",
+          "Complete milestone timeline 2005-2022",
+          "First at-scale plasma injector 2010",
+          "Liquid metal cavity plasma confinement 2019",
+          "10 millisecond energy confinement time",
+          "150 patents and patents pending (as of 2022)",
+          "Compression system prototype validation",
+          "PI3 world's largest plasma injector"
+        ]
+      }
+    ],
+    "uncovered_claims": [
+      "24 prototypes \u2014 Wikipedia mentions 'more than a dozen plasma injectors' by 2016; the specific number 24 appears on the GF website but not in extracted sources. Likely updated count on generalfusion.com/fusion-technology/ which was thin-extracted.",
+      "34 peer-reviewed publications, 210 patents \u2014 the existing thin extraction of generalfusion.com/fusion-technology/ mentions this exact stat. GlobeNewsWire 2022 says 150 patents (as of 2022, count has since grown). The thin extraction covers this."
+    ],
+    "recommendation": "delete",
+    "replacement_md_note": "Thin replacement general-fusion-technology-overview.md (18 lines) from generalfusion.com/fusion-technology/ is already an extracted source in iter-01. It covers the 34 publications/210 patents claim. Combined with the two new sources (Wikipedia + GlobeNewsWire) and existing iter-01/02/03 sources, >95% of orig file claims are covered. The orig.md can be removed."
+  },
+  "recommendation": "delete"
+}

@@ -1,0 +1,89 @@
+{
+  "status": "complete",
+  "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/07-maglif/iter-01/sources/pacific-fusion-website-technology.orig.md",
+  "concept_id": "07-maglif",
+  "concept_num": "07",
+  "elapsed_s": 111.3,
+  "return_code": 0,
+  "acquired": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/07-maglif/iter-03/sources/pacificfusion-updates-crada-sandia-national-laboratories.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/07-maglif/iter-03/sources/pacificfusion-updates-experimental-breakthrough-by-pacific.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/07-maglif/iter-03/sources/pacificfusion-updates-founders-letter.md"
+  ],
+  "acquired_count": 3,
+  "agent_report": {
+    "orig_file": "pacific-fusion-website-technology.orig.md",
+    "urls_found": [
+      "https://www.pacificfusion.com/",
+      "https://www.pacificfusion.com/updates/founders-letter",
+      "https://www.pacificfusion.com/updates/crada-sandia-national-laboratories",
+      "https://www.pacificfusion.com/updates/experimental-breakthrough-by-pacific-fusion-clears-major-obstacle-to-affordable-commercial-fusion",
+      "https://lowercarbon.com/company/pacific-fusion/"
+    ],
+    "extractions": [
+      {
+        "url": "https://www.pacificfusion.com/",
+        "source_name": "pacific-fusion-website-technology",
+        "outcome": "duplicate",
+        "notes": "Already extracted in iter-01 as pacific-fusion-website-technology.md (thin homepage)"
+      },
+      {
+        "url": "https://www.pacificfusion.com/updates/founders-letter",
+        "source_name": "pacificfusion-updates-founders-letter",
+        "outcome": "success",
+        "covers": [
+          "Founded summer 2023 by Lander, Regan, LeChien, von Muench, Ellison",
+          "Based in Fremont, California",
+          "$900M committed funding",
+          "Team from NIF/Z Machine work",
+          "Pulsed magnetic inertial fusion approach description",
+          "IMG technology and brick architecture",
+          "D-T fuel confirmed",
+          "Net facility gain as immediate goal",
+          "Investor syndicate details"
+        ]
+      },
+      {
+        "url": "https://www.pacificfusion.com/updates/crada-sandia-national-laboratories",
+        "source_name": "pacificfusion-updates-crada-sandia-national-laboratories",
+        "outcome": "success",
+        "covers": [
+          "CRADA with Sandia National Laboratories",
+          "Developing cutting-edge pulser architectures",
+          "Advancing capabilities for high-yield fusion (100+ MJ)",
+          "Addressing challenges of operating in high fusion yield environment",
+          "Keith LeChien as CTO"
+        ]
+      },
+      {
+        "url": "https://www.pacificfusion.com/updates/experimental-breakthrough-by-pacific-fusion-clears-major-obstacle-to-affordable-commercial-fusion",
+        "source_name": "pacificfusion-updates-experimental-breakthrough-by-pacific",
+        "outcome": "success",
+        "covers": [
+          "Self-magnetizing targets (Feb 2026 breakthrough)",
+          "Partnership with Sandia on Z Machine",
+          "Targets made of plastic and aluminum",
+          "Two versions: 50 and 200 micron aluminum",
+          "Small metal cylinders about size of pencil eraser",
+          "22 million amps in 120 nanoseconds",
+          "Eliminates need for external copper coils",
+          "Goal to also eliminate laser pre-heating",
+          "Net facility gain by 2030",
+          "First commercial fusion system mid-2030s",
+          "Albuquerque Research and Manufacturing Campus"
+        ]
+      },
+      {
+        "url": "https://lowercarbon.com/company/pacific-fusion/",
+        "outcome": "skipped",
+        "notes": "Investor portfolio page \u2014 not a primary source for technical claims. Skipped due to 3-extraction cap reached."
+      }
+    ],
+    "uncovered_claims": [
+      "Electricity at 2 cents per kilowatt-hour by 2040 \u2014 not found in any of the extracted primary sources; may have been from interview or press coverage not linked in orig file"
+    ],
+    "recommendation": "delete",
+    "replacement_md_note": "Thin replacement pacific-fusion-website-technology.md (54 lines) is the homepage extraction \u2014 entirely a subset of the founders-letter content. Can also be deleted or left as-is since it's a valid individual source for the homepage."
+  },
+  "recommendation": "delete"
+}

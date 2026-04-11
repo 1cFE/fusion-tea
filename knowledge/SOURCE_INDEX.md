@@ -155,6 +155,14 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: e5b23ab23f6d175920c54388e696ea4acd1f6eddf284dea1701cf7bc85c5849b
 - **Date Added**: 2026-03-02
 
+### Concept Research Dossiers
+- **Type**: research collection
+- **Location**: knowledge/concept_research/
+- **Use for**: Per-concept techno-economic research across 38 fusion concepts.
+  Contains dossiers, source extractions (HTML/PDF with agentic-mbse), iteration
+  history, and synthesis outputs. See `knowledge/concept_research/SOURCE_INDEX.md`
+  for detailed per-concept source listing. Serves all RQs.
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

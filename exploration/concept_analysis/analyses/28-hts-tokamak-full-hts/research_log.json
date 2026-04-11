@@ -1,0 +1,96 @@
+{
+  "entries": [
+    {
+      "gap_id": "G-12",
+      "gap_description": "Regulatory framework for fusion power in China",
+      "queries": [
+        "China fusion power regulatory framework nuclear regulation 2024 2025",
+        "China NNSA fusion energy regulation \"10 CFR\" OR \"regulatory framework\" private fusion company 2024 2025"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.iaea.org/newscenter/pressreleases/iaea-mission-reviews-chinas-regulatory-framework-for-nuclear-safety",
+          "title": "IAEA Mission Reviews China's Regulatory Framework for Nuclear Safety",
+          "triage": "paywall",
+          "notes": "402 Payment Required — not accessible"
+        },
+        {
+          "url": "https://world-nuclear.org/information-library/country-profiles/countries-a-f/china-nuclear-power",
+          "title": "Nuclear Power in China — World Nuclear Association",
+          "triage": "not relevant",
+          "notes": "Accessible but covers only fission regulation (NNSA); no fusion-specific regulatory content"
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S2211467X25003839",
+          "title": "Global Licensing and Regulation Framework to accelerate the development and deployment of fusion energy",
+          "triage": "relevant",
+          "notes": "Open access (CC license confirmed). Peer-reviewed article covering global fusion regulatory frameworks including China's amended Atomic Energy Law draft (2024) and fusion plant classification standards expected 2025. International authorship (Italy, Austria, UK, USA). Directly addresses the regulatory gap."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S2211467X25003839",
+          "source_name": "sciencedirect-science-article-pii-s2211467x25003839"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "timestamp": "2026-04-06T16:45:50.590634+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-13",
+      "gap_description": "HH70 commissioning paper (ScienceDirect, paywalled) — 'Design, commissioning, and first operation of HH70' in Fusion Engineering and Design 2025",
+      "queries": [
+        "Energy Singularity HH70 tokamak commissioning \"Fusion Engineering and Design\" 2025",
+        "\"HH70\" \"full HTS\" tokamak design commissioning site:sciencedirect.com OR site:doi.org 2025"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.energysingularity.cn/en/overview-of-hh70-published-in-fusion-engineering-and-design/",
+          "title": "Overview of HH70 Published in Fusion Engineering and Design — Energy Singularity",
+          "triage": "not accessible",
+          "notes": "404 Not Found"
+        },
+        {
+          "url": "https://www.energysingularity.cn/en/news/",
+          "title": "News — Energy Singularity",
+          "triage": "not accessible",
+          "notes": "403 Forbidden — JS-heavy site"
+        },
+        {
+          "url": "https://ui.adsabs.harvard.edu/abs/2025FusED.22015341Y/abstract",
+          "title": "Design, commissioning, and first operation of the high-temperature superconducting tokamak Honghuang70 — NASA/Smithsonian ADS",
+          "triage": "relevant",
+          "notes": "Accessible abstract page. Contains key parameters: R0=0.7m, a=0.25-0.3m, Bmax=2.5T, B0=0.6T, 20K operating temperature, 24-month construction, June 2024 first plasma. DOI: 10.1016/j.fusengdes.2025.115341. Full paper is open access (CC BY-NC-ND 4.0) on ScienceDirect."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S092037962500537X",
+          "title": "Design, commissioning, and first operation of the high-temperature superconducting tokamak Honghuang70 — ScienceDirect",
+          "triage": "relevant",
+          "notes": "Open access (CC BY-NC-ND 4.0 confirmed). 16-page paper, 31 references. Full engineering commissioning data for HH70. Directly addresses Gap 13."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S092037962500537X",
+          "source_name": "sciencedirect-science-article-pii-s092037962500537x"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "timestamp": "2026-04-06T16:45:50.590634+00:00",
+      "iteration": 2
+    }
+  ],
+  "acquired_by_iteration": {
+    "2": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/28-hts-tokamak-full-hts/iter-03/sources/sciencedirect-science-article-pii-s092037962500537x.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/28-hts-tokamak-full-hts/iter-03/sources/sciencedirect-science-article-pii-s2211467x25003839.md"
+    ],
+    "3": {
+      "paths": [],
+      "note": "agent output missing or malformed — paths detected by filesystem diff"
+    }
+  }
+}

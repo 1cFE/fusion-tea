@@ -1,0 +1,91 @@
+[
+  {
+    "page_num": 0,
+    "action": "claude_replace",
+    "reasons": [
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (9r\u00d72c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 1,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 2,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 3,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 4,
+    "action": "gmft_replace",
+    "reasons": [
+      "TABLE: ColN auto-headers in 1/8 rows (likely diagram/figure falsely detected as table)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (6r\u00d75c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 5,
+    "action": "keep",
+    "reasons": [],
+    "details": {
+      "table_filter": [
+        "REJECT table 1 (1r\u00d717c, detector=gmft): single row, 17 cols (layout artifact)"
+      ]
+    }
+  },
+  {
+    "page_num": 6,
+    "action": "claude_replace",
+    "reasons": [
+      "GMFT_XREF: GMFT found 1 table(s) but pymupdf produced no pipe tables (severity +1.5)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (16r\u00d72c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 7,
+    "action": "gmft_replace",
+    "reasons": [
+      "TABLE: ColN auto-headers in 1/36 rows (likely diagram/figure falsely detected as table)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (34r\u00d75c, detector=gmft)"
+      ]
+    }
+  },
+  {
+    "page_num": 8,
+    "action": "gmft_replace",
+    "reasons": [
+      "TABLE: <br> artifacts in 5/12 table rows",
+      "TABLE: ColN auto-headers in 1/12 rows (likely diagram/figure falsely detected as table)"
+    ],
+    "details": {
+      "table_filter": [
+        "KEEP table 1 (10r\u00d75c, detector=gmft)"
+      ]
+    }
+  }
+]

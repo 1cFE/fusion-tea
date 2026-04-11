@@ -1,48 +1,63 @@
 # Current Work
 
-**Last Updated**: 2026-03-06
+**Last Updated**: 2026-04-11
 
 ---
 
 ## Active Work
 
-No active coding work items. Project infrastructure phase is complete.
+### Batch Pipeline Run (unblocked, not started)
 
-### Traceability System (on hold)
+**Status**: Plan drafted, ready to start
+**Location**: `.project/active/batch-pipeline-run/`
 
-**Status**: Spec + plan written, awaiting prioritization
-**Location**: `.project/active/traceability-system/`
+Run all concepts through the now-hardened pipeline to approval. Unblocked by the 2026-04-11 pipeline-hardening archival.
 
-Citation system for MR-4 enforcement. Ready to implement when needed.
+### Concept Explorer (merged)
+
+**Status**: Merged and functional
+**Location**: `exploration/concept_explorer/`
+
+4-page interactive explorer (Index, Concept Profile, Comparison, Taxonomy) with FastAPI backend. Extracts data from pipeline artifacts. 140+ tests. See `exploration/concept_explorer/README.md`. The `explorer-merge` work item was archived 2026-04-11.
+
+## Paused / Deferred
+
+- **`traceability-system`** — Spec + plan written, on hold awaiting prioritization.
+- **`loop-dry-run-symmetry`** — Spec only (2026-04-10). Small follow-up from pipeline-hardening audit. LOW complexity.
 
 ---
 
 ## Recently Completed
 
-### [2026-03-06] Project Cleanup
+### [2026-04-11] Pipeline Hardening, Explorer Merge, Source Cleanup
 
-Archived 9 active items and 4 epics. See `.project/completed/CHANGELOG.md` for full details.
+Archived 7 items + cleaned up 2 superseded/orphan dirs. See `.project/completed/CHANGELOG.md` for details.
 
 Key outcomes:
-- Infrastructure pipeline proven (Zotero → extraction → knowledge base)
-- IFE modeling demo complete (WI-006/007/008 via modeling PM)
-- Interactive workflow explainer shipped (demo/index.html)
-- Cost patterns and E2E pipeline de-risking complete, changes handed off to sysml-codegen
+- Analysis pipeline hardened against silent corruption, transient API errors, and validation gaps (`pipeline-hardening`, `output-validation-retry`)
+- Feedback routing now reaches model-setup agent directly instead of via analysis prose (`feedback-routing-fix`)
+- Cross-concept landscape context injected into analysis prompts (`concept-landscape-context`)
+- 21 NO-verdict `.orig.md` files re-sourced against real HTML (`orig-md-research`)
+- `ralph/concept-explorer` merged into `design-space-explore` (`explorer-merge`)
+- `source-replacement` closed out
+- Deleted: `extraction-interface-gap/` (empty orphan), `step-runner-validation-retry/` (superseded by pipeline-hardening Phase 5)
+- Also picked up a lingering prior-session archival of `common-output-interface/` (staged to `completed/20260407_*` but never committed)
+
+### [2026-04-05] Analysis Pipeline Bulk Archival
+
+Archived 13 completed items. See `.project/completed/CHANGELOG.md` for full details.
+
+### [2026-03-29] Concept Taxonomy & Interactive Explorer
+4 work items archived (2 complete, 2 superseded).
+
+### [2026-03-06] Project Cleanup
+
+Archived 9 active items and 4 epics.
 
 ---
 
 ## Up Next
 
-1. Modeling PM work — MFE concept modeling, cross-concept comparison
-2. Traceability system implementation (when prioritized)
-3. New source ingestion (pipeline ready, add sources as needed)
-
----
-
-## Session Notes
-
-### 2026-03-06
-- Comprehensive project cleanup: reviewed all active items and backlog
-- Archived 9 of 10 active items (1 abandoned, 8 archived)
-- Archived 4 of 5 backlog epics (Knowledge DB Integration kept)
-- Updated BACKLOG.md, CHANGELOG.md, CURRENT_WORK.md
+1. Knock out `loop-dry-run-symmetry` (small, well-scoped)
+2. Kick off `batch-pipeline-run` on all concepts
+3. Traceability system implementation (when prioritized)

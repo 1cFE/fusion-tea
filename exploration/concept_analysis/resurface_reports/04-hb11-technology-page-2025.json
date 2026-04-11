@@ -1,0 +1,64 @@
+{
+  "status": "complete",
+  "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/04-laser-icf/iter-02/sources/hb11-technology-page-2025.orig.md",
+  "concept_id": "04-laser-icf",
+  "concept_num": "04",
+  "elapsed_s": 249.6,
+  "return_code": 0,
+  "acquired": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/04-laser-icf/iter-03/sources/hb11-our-technology.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/04-laser-icf/iter-03/sources/power-technology-features-hb11-the-australian-start-up.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/04-laser-icf/iter-03/sources/unsw-newsroom-news-2020-02-pioneering-technology-promises.md"
+  ],
+  "acquired_count": 3,
+  "agent_report": {
+    "orig_file": "hb11-technology-page-2025.orig.md",
+    "urls_found": [
+      "https://hb11.energy/our-technology/"
+    ],
+    "extractions": [
+      {
+        "url": "https://hb11.energy/our-technology/",
+        "source_name": "hb11-our-technology",
+        "outcome": "fail_js",
+        "notes": "Trafilatura extracted only 6 lines of marketing intro text. JS-heavy company site, all technical content rendered client-side."
+      },
+      {
+        "url": "https://www.power-technology.com/features/hb11-the-australian-start-up-pursuing-a-new-form-of-fusion/",
+        "source_name": "power-technology-features-hb11-the-australian-start-up",
+        "outcome": "success",
+        "covers": [
+          "Two-laser approach (magnetic containment + avalanche trigger)",
+          "Non-thermal fusion approach using CPA lasers",
+          "Direct charge capture (no steam turbine or heat exchanger)",
+          "Hydrogen-boron (p-11B) fuel \u2014 aneutronic, abundant, safe",
+          "Smaller reactor footprint than conventional plants"
+        ]
+      },
+      {
+        "url": "https://www.unsw.edu.au/newsroom/news/2020/02/pioneering-technology-promises-unlimited--clean-and-safe-energy-",
+        "source_name": "unsw-newsroom-news-2020-02-pioneering-technology-promises",
+        "outcome": "success",
+        "covers": [
+          "Two-laser system: magnetic containment + avalanche chain reaction",
+          "Direct electrical conversion (alpha particles create electrical flow)",
+          "No need for heat exchanger or steam turbine generator",
+          "Hydrogen-boron fuel (cheap, abundant, non-radioactive)",
+          "Metal sphere reactor design with fuel pellet in center",
+          "Billion-fold higher reaction rates than thermal equilibrium predictions"
+        ]
+      }
+    ],
+    "uncovered_claims": [
+      "1 GW baseload power target \u2014 only appears on HB11 JS-rendered website, no news/academic source replicates this figure",
+      "Thousands of commercial lasers \u2014 only on HB11 JS-rendered website, not in any extractable source",
+      "Fuel pellets at approximately 1 per second \u2014 only on HB11 website",
+      "A million times denser than oil \u2014 marketing claim only on HB11 website",
+      "Conventional steam cycle generator \u2014 contradicted by all other sources (UNSW, NewAtlas, Power Tech all say direct conversion). The Springer paper (already in iter-03) discusses Rankine steam cycle as one possible combined approach but emphasizes direct conversion"
+    ],
+    "recommendation": "partial",
+    "notes": "~60% coverage. The well-supported technical claims (p-11B reaction, 8.7 MeV, three alpha particles, two-laser system, direct conversion, aneutronic benefits) are thoroughly covered by the Springer paper (already in iter-03) plus the two new sources. The uncovered claims are marketing statements from HB11's JS-heavy website that no independent source replicates. The 'conventional steam cycle' claim in the orig file is particularly interesting \u2014 it contradicts every other source including HB11's own Springer paper, which emphasizes direct conversion. The orig file itself flagged this contradiction. The Springer paper (link-10-1007-s10894-023-00349-9) already in iter-03 is the highest-quality source and covers the core technical content comprehensively.",
+    "replacement_md_note": "Thin replacement hb11-technology-page-2025.md (16 lines) is a subset of the newly-extracted hb11-our-technology.md (same URL, same thin content). Both are effectively useless \u2014 the JS-heavy site yields only marketing intro text via trafilatura."
+  },
+  "recommendation": "partial"
+}

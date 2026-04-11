@@ -1,0 +1,130 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-4",
+      "gap_description": "Gross thermal efficiency and power cycle specification",
+      "queries": [
+        "WCLL blanket \"thermal efficiency\" OR \"gross efficiency\" EUROfusion DEMO water cooled lithium lead steam Rankine cycle site:arxiv.org OR site:osti.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/abs/1401.4232",
+          "title": "Review article on energy conversion in fusion power plants (Rankine/Brayton cycles, structural material temperature limits)",
+          "triage": "relevant",
+          "notes": "Open-access review article discussing thermal efficiency limits from irradiated structural materials in water-cooled fusion reactors; abstract confirms discussion of WCLL-relevant temperature constraints and overall thermal efficiency. Directly relevant to sourcing the ~32% efficiency inference for Stellaris EUROFER97+WCLL."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/4153634",
+          "title": "Comparison of leading candidate combinations of blanket materials, thermodynamic cycles, and tritium systems for full scale fusion power plants",
+          "triage": "relevant",
+          "notes": "OSTI conference paper on blanket+cycle combinations — potentially directly addresses WCLL thermal efficiency. Not triaged in depth; saved as candidate for future iteration if arxiv-1401-4232 insufficient."
+        },
+        {
+          "url": "https://www.osti.gov/pages/biblio/1612980",
+          "title": "Thermo-structural design of the European DEMO water-cooled blanket (OSTI)",
+          "triage": "relevant",
+          "notes": "WCLL thermo-structural design paper — likely contains coolant outlet temperatures and thermal cycle assumptions. Paywalled journal article; OSTI page may have abstract only."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/abs/1401.4232",
+          "source_name": "arxiv-1401-4232"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "Extracted an open-access review paper on fusion power plant thermal cycles that discusses efficiency limits from structural material temperature constraints. This provides a citable basis for the ~30-35% efficiency inference for WCLL+EUROFER97 configurations. Stellaris-specific thermal efficiency not publicly disclosed; Helios analogue (40%) remains the best proxy for WCLL-alternative designs. G-4 remains not-fully-closed but now has a sourced engineering basis for the 32% estimate."
+    },
+    {
+      "gap_id": "G-6",
+      "gap_description": "Q value and steady-state ECRH requirement post-ignition",
+      "queries": [
+        "Stellaris Proxima Fusion \"Q value\" OR \"plasma gain\" OR \"thermal efficiency\" OR \"gross efficiency\" OR \"number of coils\" technical parameters 2025"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.proximafusion.com/press-news/proxima-fusion-and-partners-publish-stellaris-fusion-power-plant-concept-to-bring-limitless-safe-clean-energy-to-the-grid",
+          "title": "Proxima Fusion Stellaris Press Release",
+          "triage": "not-relevant",
+          "notes": "Press release fetched — no specific quantitative technical parameters disclosed. No Q value, ECRH power breakdown, or gross efficiency data."
+        },
+        {
+          "url": "https://www.world-nuclear-news.org/articles/german-stellarator-fusion-design-concept-unveiled",
+          "title": "World Nuclear News: German stellarator fusion design concept unveiled",
+          "triage": "not-relevant",
+          "notes": "Article fetched — only high-level qualitative description of Stellaris. No Q value or ECRH data. Mentions Alpha demo for Q>1 in 2031."
+        },
+        {
+          "url": "https://spectrum.ieee.org/stellarator",
+          "title": "IEEE Spectrum: Stellarator Showdown — Proxima vs. Type One Energy",
+          "triage": "inaccessible",
+          "notes": "JS-heavy page — article body not extractable; only schema metadata and JavaScript framework present."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "failed",
+      "notes": "Q value and post-ignition ECRH requirement are not disclosed in any accessible public source. The Stellaris paper (FED Vol. 214, DOI: 10.1016/j.fusengdes.2025.114868) is paywalled; the KIT repository version already extracted as stellaris-design-details.md is the most complete open-access version. The paper states 50 MW ECRH operational power but does not publish Q; Alpha demo (2031) targets Q>1 confirmation. No open-access preprint of the Stellaris paper found on arxiv. G-6 remains open and inaccessible without institutional access to FED."
+    },
+    {
+      "gap_id": "G-11",
+      "gap_description": "Coil number, per-coil mass, and replacement scheme",
+      "queries": [
+        "Proxima Fusion Stellaris coil number non-planar modular HTS coil mass remote maintenance",
+        "W7-X Wendelstein 7-X \"50 non-planar coils\" OR \"50 modular coils\" coil mass kg manufacturing cost stellarator"
+      ],
+      "candidates": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Wendelstein_7-X",
+          "title": "Wikipedia: Wendelstein 7-X",
+          "triage": "relevant",
+          "notes": "W7-X is the direct experimental predecessor to Stellaris (Proxima Fusion is a W7-X/IPP spin-off). Contains coil count (50 non-planar + 20 planar = 70 total), cold mass (~425 metric tons for full magnet system), and engineering construction details. Useful as quantitative proxy for G-11 coil count and per-coil mass analogue."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0920379603002321",
+          "title": "Fabrication of the superconducting coils for Wendelstein 7-X (ScienceDirect)",
+          "triage": "paywall",
+          "notes": "Primary W7-X coil fabrication paper — paywalled on ScienceDirect. ResearchGate mirror returned 403."
+        },
+        {
+          "url": "https://fusionenergyinsights.com/blog/post/fusion-energy-insights-examined-an-analysis-of-proxima-fusion-s-bold-plan-for-a-stellarator-power-plant",
+          "title": "Fusion Energy Insights: Analysis of Proxima Fusion Stellaris",
+          "triage": "not-relevant",
+          "notes": "Fetched — no specific technical parameters; directs to in-depth analysis not included on page."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Wendelstein_7-X",
+          "source_name": "en-wiki-wendelstein-7-x"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "W7-X Wikipedia provides a useful proxy for G-11: 50 non-planar + 20 planar superconducting coils, ~425 metric ton total cold mass (~6-8.5 tons per non-planar coil as rough proxy). Stellaris-specific coil count and per-coil mass are not in any public source found; Stellaris §2.11 (remote maintenance) is the authoritative reference but remains paywalled. The W7-X analogue is LTS, not HTS, and at different scale — treat as structural proxy only. G-11 remains partial."
+    },
+    {
+      "gap_id": "G-12",
+      "gap_description": "Plasma current profile and bootstrap fraction",
+      "queries": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "Two arxiv sources already extracted in iter-5 (arxiv-2512-08825 on CIEMAT-QI4X bootstrap current, arxiv-2405-19860 on QI bootstrap fraction) provide coverage for this nice-to-have gap. Deprioritized in this iteration due to budget limits; existing sources likely sufficient for analysis."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 3,
+    "gaps_skipped": 1,
+    "sources_extracted": 3,
+    "sources_failed": 0,
+    "searches_used": 5,
+    "extractions_used": 3,
+    "extractions": [
+      "arxiv-1401-4232 → G-4 (thermal efficiency basis for WCLL+EUROFER97)",
+      "en-wiki-wendelstein-7-x → G-11 (W7-X proxy for coil count and cold mass)",
+      "neimagazine-news-proxima-unveils-stellaris-fusion-plant → G-11/G-4 (news coverage, possible paper details)"
+    ]
+  }
+}

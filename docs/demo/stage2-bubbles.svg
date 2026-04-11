@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 764 214" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <style>
+      .sp-box { fill: #f5f3ff; stroke: #c4b5fd; stroke-width: 1.5; rx: 12; }
+      .sp-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; fill: #7c3aed; }
+      .sp-item { font-size: 12px; fill: #555; }
+      .sp-bullet { fill: #7c3aed; font-size: 12px; }
+      .artifact-box { fill: #ecfdf5; stroke: #6ee7b7; stroke-width: 1; rx: 6; }
+      .artifact-text { font-family: 'SF Mono', 'Fira Code', Menlo, Consolas, monospace; font-size: 11px; fill: #059669; }
+      .artifact-arrow { fill: #059669; font-size: 11px; }
+      .dashed-sep { stroke: #c4b5fd; stroke-width: 1; stroke-dasharray: 4 3; }
+    </style>
+  </defs>
+
+  <!-- RESEARCH -->
+  <rect class="sp-box" x="0" y="0" width="238" height="206"/>
+  <text class="sp-title" x="16" y="21">Research</text>
+  <text class="sp-bullet" x="16" y="42">•</text><text class="sp-item" x="28" y="42">Concept-specific literature</text>
+  <text class="sp-bullet" x="16" y="61">•</text><text class="sp-item" x="28" y="61">Fill L3–L5 data layers</text>
+  <text class="sp-bullet" x="16" y="80">•</text><text class="sp-item" x="28" y="80">Identify parameter gaps</text>
+  <line class="dashed-sep" x1="16" y1="97" x2="222" y2="97"/>
+  <rect class="artifact-box" x="12" y="106" width="116" height="24"/>
+  <text class="artifact-arrow" x="18" y="122">→</text><text class="artifact-text" x="32" y="122">knowledge/raw/</text>
+  <rect class="artifact-box" x="12" y="136" width="140" height="24"/>
+  <text class="artifact-arrow" x="18" y="152">→</text><text class="artifact-text" x="32" y="152">knowledge/sources/</text>
+  <rect class="artifact-box" x="12" y="166" width="148" height="24"/>
+  <text class="artifact-arrow" x="18" y="182">→</text><text class="artifact-text" x="32" y="182">knowledge/research/</text>
+
+  <!-- PLANNING -->
+  <rect class="sp-box" x="251" y="0" width="238" height="206"/>
+  <text class="sp-title" x="267" y="21">Planning</text>
+  <text class="sp-bullet" x="267" y="42">•</text><text class="sp-item" x="279" y="42">Define work items</text>
+  <text class="sp-bullet" x="267" y="61">•</text><text class="sp-item" x="279" y="61">Spec → Design → Plan</text>
+  <text class="sp-bullet" x="267" y="80">•</text><text class="sp-item" x="279" y="80">Record intent and decisions</text>
+  <line class="dashed-sep" x1="267" y1="97" x2="473" y2="97"/>
+  <rect class="artifact-box" x="263" y="106" width="172" height="24"/>
+  <text class="artifact-arrow" x="269" y="122">→</text><text class="artifact-text" x="283" y="122">modeling_project/intent/</text>
+  <rect class="artifact-box" x="263" y="136" width="140" height="24"/>
+  <text class="artifact-arrow" x="269" y="152">→</text><text class="artifact-text" x="283" y="152">work/BACKLOG.md</text>
+  <rect class="artifact-box" x="263" y="166" width="116" height="24"/>
+  <text class="artifact-arrow" x="269" y="182">→</text><text class="artifact-text" x="283" y="182">work/active/</text>
+
+  <!-- EXECUTION -->
+  <rect class="sp-box" x="502" y="0" width="238" height="206"/>
+  <text class="sp-title" x="518" y="21">Execution</text>
+  <text class="sp-bullet" x="518" y="42">•</text><text class="sp-item" x="530" y="42">Build SysML v2 models</text>
+  <text class="sp-bullet" x="518" y="61">•</text><text class="sp-item" x="530" y="61">Validate (6 levels)</text>
+  <text class="sp-bullet" x="518" y="80">•</text><text class="sp-item" x="530" y="80">Verify traceability</text>
+  <line class="dashed-sep" x1="518" y1="97" x2="724" y2="97"/>
+  <rect class="artifact-box" x="514" y="106" width="128" height="24"/>
+  <text class="artifact-arrow" x="520" y="122">→</text><text class="artifact-text" x="534" y="122">models/library/</text>
+  <rect class="artifact-box" x="514" y="136" width="132" height="24"/>
+  <text class="artifact-arrow" x="520" y="152">→</text><text class="artifact-text" x="534" y="152">models/designs/</text>
+</svg>

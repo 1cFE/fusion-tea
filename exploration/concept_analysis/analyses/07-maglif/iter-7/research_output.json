@@ -1,0 +1,126 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-11",
+      "gap_description": "Pacific Fusion self-magnetizing target gain at 60+ MA (eliminates coils and laser)",
+      "queries": [
+        "Pacific Fusion self-magnetizing target MagLIF arxiv preprint 2025 2026 laserless preheat-free gain",
+        "\"self-magnetizing\" OR \"self magnetizing\" MagLIF liner fusion target Z machine 2025 2026 site:arxiv.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.pacificfusion.com/updates/experimental-breakthrough-by-pacific-fusion-clears-major-obstacle-to-affordable-commercial-fusion",
+          "title": "Pacific Fusion — Experimental breakthrough clears major obstacle to affordable commercial fusion",
+          "triage": "relevant — already extracted",
+          "notes": "Already extracted in iter-03 as pacificfusion-updates-experimental-breakthrough-by-pacific.md. Contains: 22 MA, 4 shots over 5 days, 120 ns implosion time, Al layer thicknesses (50 µm vs 200 µm), B-dot probe field measurements. Confirms self-magnetizing target eliminates external copper coils. Future work: eliminate laser preheat. No gain values or fusion yield data."
+        },
+        {
+          "url": "https://www.ans.org/news/2026-02-06/article-7739/fusion-simplification-demonstrated-by-pacific-fusion-and-sandia/",
+          "title": "ANS Nuclear Newswire — Fusion simplification demonstrated by Pacific Fusion and Sandia (Feb 2026)",
+          "triage": "relevant — accessible, new source",
+          "notes": "Not previously extracted. Describes the same Feb 2026 self-magnetizing target breakthrough. No quantitative performance data (no gain, no yield), but confirms experimental demonstration and context. Secondary source corroborating the breakthrough."
+        },
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/32/4/042707/3344537/Simulated-thermonuclear-performance-of-auto",
+          "title": "Simulated thermonuclear performance of auto-magnetizing helical liner MagLIF target implosions (Physics of Plasmas, April 2025)",
+          "triage": "relevant but paywalled",
+          "notes": "Peer-reviewed paper by Shipley et al. (2025) directly addressing G-11: 3D rad-MHD simulations of AutoMag helical liner implosions, >30 T axial B-field, higher thermonuclear yield vs standard MagLIF. AIP paywall — extraction failed."
+        },
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/32/5/052708/3347081/Integrated-simulations-of-premagnetized-and-self",
+          "title": "Integrated simulations of premagnetized and self-magnetizing dynamic screw pinch-driven MagLIF (Physics of Plasmas, 2025)",
+          "triage": "relevant but likely paywalled",
+          "notes": "Another 2025 peer-reviewed paper on self-magnetizing MagLIF targets. Not attempted for extraction — AIP paywall likely."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/1562628",
+          "title": "Auto-magnetizing (AutoMag) liners for MagLIF: Helically-wound composite liners (OSTI technical report, 2016)",
+          "triage": "relevant but outdated",
+          "notes": "2016 Sandia technical report by Awe et al. — foundational AutoMag concept. PDF accessible via OSTI. Not extracted: 2016 origin limits relevance for current gain projections; 2025 Physics of Plasmas paper is the current state-of-art."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.ans.org/news/2026-02-06/article-7739/fusion-simplification-demonstrated-by-pacific-fusion-and-sandia/",
+          "source_name": "ans-news-2026-02-06-article-7739-fusion-simplification"
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/32/4/042707/3344537/Simulated-thermonuclear-performance-of-auto",
+          "reason": "AIP Publishing paywall — extraction rc=1, no stderr. No open-access preprint found for this specific paper."
+        }
+      ],
+      "status": "partial",
+      "notes": "Gap partially addressed: self-magnetizing target demonstration confirmed via existing pacificfusion-updates-experimental-breakthrough-by-pacific.md (already in iter-03) + new ANS Feb 2026 article. Both sources confirm the concept works at 22 MA on Z but provide no gain values, fusion yield measurements, or 60+ MA projections. The most directly relevant quantitative sources (2025 AIP Physics of Plasmas papers) are paywalled. Gap remains PARTIAL because 60+ MA gain projections are still only available in the AMPS paper (arxiv-2504-10680, already extracted)."
+    },
+    {
+      "gap_id": "G-13",
+      "gap_description": "Laser preheat elimination: feasibility at commercially relevant yields",
+      "queries": [],
+      "candidates": [
+        {
+          "url": "https://www.pacificfusion.com/updates/experimental-breakthrough-by-pacific-fusion-clears-major-obstacle-to-affordable-commercial-fusion",
+          "title": "Pacific Fusion experimental breakthrough update",
+          "triage": "relevant — already extracted",
+          "notes": "Existing source directly addresses G-13: 'In the next iteration of experiments, they will aim to show that they can eliminate the need for laser pre-heating.' States this is a future goal, not yet demonstrated. Self-magnetizing coil elimination is Step 1; laser preheat elimination is Step 2."
+        },
+        {
+          "url": "https://www.ans.org/news/2026-02-06/article-7739/fusion-simplification-demonstrated-by-pacific-fusion-and-sandia/",
+          "title": "ANS Feb 2026 Pacific Fusion article",
+          "triage": "relevant — extracted this iteration",
+          "notes": "Confirms laser preheat elimination is future work, not yet demonstrated."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "partial",
+      "notes": "No new searches run for G-13 — existing candidates from G-11 search cover this gap. Both sources confirm laser preheat elimination is a planned next step after the Feb 2026 coil-elimination breakthrough, but feasibility at commercially relevant yields remains undemonstrated and unquantified."
+    },
+    {
+      "gap_id": "G-10",
+      "gap_description": "Thermal cycle above 900 K: high-temperature materials availability for He Brayton or combined cycle",
+      "queries": [
+        "SiC composite ODS ferritic steel fusion blanket He Brayton cycle 900K thermal efficiency materials availability 2024 2025"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.frontiersin.org/journals/nuclear-engineering/articles/10.3389/fnuen.2025.1683702/full",
+          "title": "Frontiers — Assessment of structural materials in compact fusion reactor design (2025)",
+          "triage": "relevant — already extracted",
+          "notes": "Already extracted in iter-05 as frontiersin-journals-nuclear-engineering-articles-10-3389.md. Covers ODS steels, SiC/SiC composites, thermal efficiency projections (>40–51% with He Brayton). No new extraction needed."
+        },
+        {
+          "url": "https://fti.neep.wisc.edu/fti.neep.wisc.edu/pdf/fdm1108.pdf",
+          "title": "Wisconsin Fusion Technology Institute — SiC/SiC blanket design PDF",
+          "triage": "uncertain — URL pattern suggests older document",
+          "notes": "Not fetched. URL structure (fdm1108) suggests pre-2005 era document. Skipped in favor of more recent Frontiers article already in corpus."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "partial",
+      "notes": "No new sources extracted. The Frontiers 2025 article (already extracted) appears to be the best open-access source for this gap. All other search results were older ScienceDirect papers (likely paywalled, pre-2010) or the Frontiers article already in corpus."
+    },
+    {
+      "gap_id": "G-1",
+      "gap_description": "No plant study for IMG architecture: all TEA data from Z-IFE LTD-era (2006)",
+      "queries": [],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "No new searches conducted this iteration — budget consumed by G-11/G-10/G-13 searches. Prior iterations (5 and 6) already exhausted the most promising search angles (ARPA-E awards, Pacific Fusion TEA publications, company technical blogs). No public IMG-architecture plant study exists as of April 2026. Gap remains BLOCKING."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 3,
+    "gaps_skipped": 1,
+    "sources_extracted": 1,
+    "sources_already_existed": 1,
+    "sources_failed": 1,
+    "searches_used": 5,
+    "extractions_used": 3,
+    "notes": "Primary outcome: confirmed that Pacific Fusion's Feb 2026 self-magnetizing target breakthrough is already captured in iter-03 (pacificfusion-updates-experimental-breakthrough-by-pacific.md). Added ANS Nuclear Newswire secondary coverage. Two high-value peer-reviewed 2025 AIP Physics of Plasmas papers on auto-magnetizing helical liner MagLIF simulations are paywalled and could not be extracted. G-11 and G-13 remain PARTIAL (experimental demonstration confirmed, but no gain values at 60+ MA). G-1 remains BLOCKING (no public IMG plant study exists)."
+  }
+}

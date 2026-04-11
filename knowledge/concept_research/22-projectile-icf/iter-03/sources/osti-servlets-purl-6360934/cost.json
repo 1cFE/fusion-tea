@@ -1,0 +1,146 @@
+[
+  {
+    "page_num": 1,
+    "cost_usd": 0.07031055,
+    "input_tokens": 4,
+    "output_tokens": 294,
+    "model": "sonnet",
+    "elapsed_seconds": 17.780612230300903,
+    "table_index": null
+  },
+  {
+    "page_num": 3,
+    "cost_usd": 0.06694334999999998,
+    "input_tokens": 4,
+    "output_tokens": 95,
+    "model": "sonnet",
+    "elapsed_seconds": 12.034416437149048,
+    "table_index": null
+  },
+  {
+    "page_num": 4,
+    "cost_usd": 0.07218555,
+    "input_tokens": 4,
+    "output_tokens": 432,
+    "model": "sonnet",
+    "elapsed_seconds": 18.4946186542511,
+    "table_index": null
+  },
+  {
+    "page_num": 8,
+    "cost_usd": 0.07954334999999998,
+    "input_tokens": 4,
+    "output_tokens": 922,
+    "model": "sonnet",
+    "elapsed_seconds": 34.01703858375549,
+    "table_index": null
+  },
+  {
+    "page_num": 20,
+    "cost_usd": 0.0755643,
+    "input_tokens": 4,
+    "output_tokens": 651,
+    "model": "sonnet",
+    "elapsed_seconds": 25.38355541229248,
+    "table_index": null
+  },
+  {
+    "page_num": 22,
+    "cost_usd": 0.08336205,
+    "input_tokens": 4,
+    "output_tokens": 1176,
+    "model": "sonnet",
+    "elapsed_seconds": 33.809635400772095,
+    "table_index": null
+  },
+  {
+    "page_num": 23,
+    "cost_usd": 0.08139765,
+    "input_tokens": 4,
+    "output_tokens": 1044,
+    "model": "sonnet",
+    "elapsed_seconds": 30.503684759140015,
+    "table_index": null
+  },
+  {
+    "page_num": 24,
+    "cost_usd": 0.08563485,
+    "input_tokens": 4,
+    "output_tokens": 1327,
+    "model": "sonnet",
+    "elapsed_seconds": 40.62216305732727,
+    "table_index": null
+  },
+  {
+    "page_num": 27,
+    "cost_usd": 0.0786183,
+    "input_tokens": 4,
+    "output_tokens": 765,
+    "model": "sonnet",
+    "elapsed_seconds": 26.340070962905884,
+    "table_index": null
+  },
+  {
+    "page_num": 28,
+    "cost_usd": 0.08774984999999999,
+    "input_tokens": 4,
+    "output_tokens": 1468,
+    "model": "sonnet",
+    "elapsed_seconds": 30.985376358032227,
+    "table_index": null
+  },
+  {
+    "page_num": 29,
+    "cost_usd": 0.0870933,
+    "input_tokens": 4,
+    "output_tokens": 1330,
+    "model": "sonnet",
+    "elapsed_seconds": 28.97624373435974,
+    "table_index": null
+  },
+  {
+    "page_num": 33,
+    "cost_usd": 0.0788505,
+    "input_tokens": 4,
+    "output_tokens": 774,
+    "model": "sonnet",
+    "elapsed_seconds": 26.093310356140137,
+    "table_index": null
+  },
+  {
+    "page_num": 36,
+    "cost_usd": 0.07764735,
+    "input_tokens": 4,
+    "output_tokens": 787,
+    "model": "sonnet",
+    "elapsed_seconds": 25.77278995513916,
+    "table_index": null
+  },
+  {
+    "page_num": 37,
+    "cost_usd": 0.0763755,
+    "input_tokens": 4,
+    "output_tokens": 609,
+    "model": "sonnet",
+    "elapsed_seconds": 26.00729751586914,
+    "table_index": null
+  },
+  {
+    "page_num": 38,
+    "cost_usd": 0.13243935,
+    "input_tokens": 4,
+    "output_tokens": 1022,
+    "model": "sonnet",
+    "elapsed_seconds": 27.884802103042603,
+    "table_index": null
+  },
+  {
+    "page_num": 39,
+    "cost_usd": 0.076173,
+    "input_tokens": 4,
+    "output_tokens": 595,
+    "model": "sonnet",
+    "elapsed_seconds": 18.271701335906982,
+    "table_index": null
+  }
+]

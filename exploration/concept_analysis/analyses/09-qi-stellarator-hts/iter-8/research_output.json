@@ -1,0 +1,98 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-4",
+      "gap_description": "Gross thermal efficiency and power cycle specification",
+      "queries": [
+        "EUROfusion HELIAS stellarator power plant \"thermal efficiency\" \"gross efficiency\" power conversion 2024 2025 site:arxiv.org",
+        "quasi-isodynamic stellarator power plant \"thermal efficiency\" OR \"net efficiency\" OR \"gross efficiency\" WCLL blanket \"steam Rankine\" power conversion 2023 2024 2025",
+        "\"optimized power conversion system\" stellarator \"nuclear fusion power plant\" thermal efficiency site:arxiv.org OR site:researchgate.net OR site:osti.gov",
+        "\"First considerations\" \"Balance of Plant\" HELIAS fusion power plant thermal efficiency site:arxiv.org OR site:osti.gov OR site:eur-fusion.org OR site:iaea.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0196890422013504",
+          "title": "An optimized power conversion system for a stellarator-based nuclear fusion power plant",
+          "triage": "wrong-configuration",
+          "notes": "Famà et al. 2023, Energy Conversion and Management. Reports 51% PCS efficiency and 34% net electrical efficiency, but for a liquid metal wall stellarator at 700–900°C with sCO2 Brayton-Rankine cycle — not the WCLL/EUROFER97 Stellaris configuration. Scheduled open archive Dec 18, 2024, but extraction still returned paywall shell only. Removed after failed extraction."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0920379619305022",
+          "title": "First considerations on the Balance of Plant for a HELIAS fusion power plant",
+          "triage": "wrong-configuration-paywall",
+          "notes": "Fusion Engineering and Design, 2019. Uses HCPB blanket with helium cooling and solar salt intermediate loop (not WCLL). Thermal efficiency presented as a range (35–70%) for sensitivity analysis, not a design-point value. Paywalled — abstract only accessible. Not extracted."
+        },
+        {
+          "url": "https://arxiv.org/abs/2504.11072",
+          "title": "Fusion for high-value heat production",
+          "triage": "irrelevant",
+          "notes": "Economic/policy analysis of heat vs. electricity commercialization strategy. Does not contain thermal efficiency specifications or power conversion cycle data. Skipped."
+        },
+        {
+          "url": "https://www.researchgate.net/publication/376419861_Economically_optimized_design_point_of_high-field_stellarator_power-plant",
+          "title": "Economically optimized design point of high-field stellarator power-plant",
+          "triage": "blocked",
+          "notes": "403 Forbidden on ResearchGate. Could not assess content. Title suggests possible relevance to Stellaris design optimization (high-field stellarator). Not extractable."
+        }
+      ],
+      "extracted": [],
+      "failed": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0196890422013504",
+          "reason": "Paywall shell only — extraction returned empty section headers with no quantitative content. File removed. Note: open archive date was Dec 18, 2024 (past), but ScienceDirect extraction still failed to retrieve full text."
+        }
+      ],
+      "status": "failed",
+      "notes": "No new open-access source found specifically addressing WCLL steam Rankine thermal efficiency for a stellarator. The HELIAS BoP paper (2019, HCPB configuration) and the Famà et al. power conversion paper (liquid metal wall, sCO2) are the closest available analogues but are paywalled and/or wrong configuration. The existing sources arxiv-1401-4232 (general fusion conversion) and helios-stellarator-comparison.md (40% for vanadium-alloy Helios) remain the best proxies. The ~32% efficiency inferred from EUROFER97 temperature limits is analytically grounded but still lacks a direct primary citation for the WCLL-steam Rankine specific case."
+    },
+    {
+      "gap_id": "G-11",
+      "gap_description": "Coil number, per-coil mass, and replacement scheme",
+      "queries": [
+        "ARIES-CS compact stellarator \"number of coils\" OR \"coil mass\" modular coil replacement maintenance Raffray site:osti.gov OR site:arxiv.org",
+        "Proxima Fusion Stellaris coil number non-planar modular HTS coil mass remote maintenance (from prior iter-7)"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/abs/2501.04640",
+          "title": "Coil geometry with large openings for a HSR3-like stellarator reactor for fast replacement of in-vessel components",
+          "triage": "partial-relevant",
+          "notes": "Queral et al., Jan 2025. HSR3 (3 field periods, HELIAS-type stellarator reactor). Discusses coil geometry modifications for maintenance access. Abstract states: blanket/divertor replacement every 1–4 years; proposes coils located far from plasma at outboard region to create wide maintenance openings. Does NOT provide specific coil count or per-coil mass. Full PDF extraction failed (rc=1, no stderr). Extracted abstract page only."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/20845830",
+          "title": "Designing Coils for Compact Stellarators",
+          "triage": "uncertain",
+          "notes": "OSTI COILOPT paper. Search snippet mentioned exploring coil numbers between 3–7 per half-field period using ARIES-CS scale as reference. May contain coil count ranges but not per-coil mass data. Not extracted due to budget constraints."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/abs/2501.04640",
+          "source_name": "arxiv-2501-04640",
+          "notes": "Abstract-only extraction (trafilatura got landing page, not full PDF). Contains: blanket/divertor module replacement interval 1–4 years (important for replacement scheme component of G-11), HSR3 coil geometry description, context on modular coil maintenance access approach. Does not satisfy coil count or per-coil mass components of G-11."
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://arxiv.org/pdf/2501.04640",
+          "reason": "PDF extraction failed (rc=1, no stderr) — same pattern as other arxiv PDF failures in this pipeline"
+        },
+        {
+          "url": "https://arxiv.org/html/2501.04640",
+          "reason": "HTML extraction failed (rc=1, no stderr) — arxiv HTML version not extractable by this pipeline"
+        }
+      ],
+      "status": "partial",
+      "notes": "Blanket replacement interval (1–4 years per Queral et al. 2025) now partially sourced for the 'replacement scheme' component of G-11. Coil count and per-coil mass remain not-yet-sourced. The Stellaris paper §2.11 (remote maintenance) is the authoritative source but existing extraction may not have captured that section's quantitative detail. Future approach: attempt direct extraction of the full Stellaris paper PDF via KIT open-access download link (JavaScript-gated, may need browser automation) or contact Proxima Fusion directly."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 2,
+    "sources_extracted": 1,
+    "sources_failed": 3,
+    "searches_used": 5,
+    "extractions_used": 3,
+    "notes": "G-4 remains unaddressed by new sources — WCLL-specific thermal efficiency requires either the full Stellaris paper or a DEMO WCLL power conversion study (both paywalled or not yet found). G-11 partially addressed — replacement interval sourced from arXiv:2501.04640 abstract, but coil count and per-coil mass still not sourced. The sCO2 Brayton-Rankine stellarator paper (Famà et al. 2023) is a potential high-value source for G-4 context once full text is accessible; scheduled open archive date has passed but extraction pipeline still returned paywall shell."
+  }
+}

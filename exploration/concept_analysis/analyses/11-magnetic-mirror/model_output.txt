@@ -1,0 +1,128 @@
+============================================================
+Magnetic Mirror (D-T) — Realta Fusion / CoSMo Hammir
+Net electric: 500 MWe | Availability: 85% | Lifetime: 30 yr
+Center cell: 70 m | p_input: 70 MW | NOAK
+============================================================
+LCOE: 118.6 $/MWh (11.86 ¢/kWh) | Overnight: 8601 $/kW
+Fusion: 1652 MW | Net: 500 MW | Q_eng: 3.3
+Recirculating fraction: 30.3%
+
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    17.2
+CAS21    Buildings                         545.1
+CAS22    Reactor Plant Equipment          2158.1
+CAS23    Turbine Plant                     141.8
+CAS24    Electrical Plant                   60.4
+CAS25    Miscellaneous                      36.8
+CAS26    Heat Rejection                     24.5
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                         0.0
+CAS30    Indirect Costs                    496.5
+CAS40    Owner's Costs                      27.6
+CAS50    Supplementary                     218.4
+CAS60    IDC                               561.4
+CAS70    O&M (annualized)                   94.4
+CAS80    Fuel (annualized)                   0.7
+CAS90    Financial                         346.6
+------------------------------------------------
+         Total Capital                    4300.4
+
+CAS22 Reactor Plant Equipment Breakdown:
+------------------------------------------------
+  C220000                          2158.1 M$
+  C220101                           232.9 M$
+  C220102                           203.8 M$
+  C220103                           516.1 M$
+  C220104                           353.2 M$
+  C220105                            15.8 M$
+  C220106                            53.9 M$
+  C220107                            63.4 M$
+  C220108                            79.9 M$
+  C220110                           127.1 M$
+  C220111                           230.5 M$
+  C220200                           111.0 M$
+  C220300                            32.0 M$
+  C220400                             3.5 M$
+  C220500                            73.9 M$
+  C220600                             6.6 M$
+  C220700                            54.7 M$
+
+============================================================
+KEY ASSUMPTIONS AND UNCERTAINTIES
+============================================================
+
+HIGHLY UNCERTAIN MODEL — no plant-level cost data published by Realta.
+Data quality: Limited (analysis.md §Section 1).
+
+Physics basis:
+  Q_plasma > 5 at 50 m center cell (modeled, not experimentally validated)
+    Source: arxiv-2411-06644-confinement-predictions.md §Hammir Design
+  ~7 MWt/m center-cell thermal power scaling law
+    Source: fusion-report-interview-realta.md §Performance Scaling
+  70 m commercial center cell assumed → ~490 MWt, Q_plasma ~ 7 at 70 MW input
+  Hammir pilot electrical target: Qe > 1, Pe > 50 MWe for 3+ hours
+    Source: aps-dpp-2025-sutherland.md §Hammir Facility
+
+Key uncertainties ranked by LCOE impact:
+  1. BLOCKING — end-plug confinement physics: Anvil demonstrator (~2028) required
+     to validate stable high-Q end-plug at commercial conditions
+  2. BLOCKING — commercial plant size: only 50 MWe pilot target published
+  3. BLOCKING — p_input = 70 MW (UNCERTAIN: range 40–100 MW; truly unknown)
+     analysis.md §Section 2, Challenge 3
+  4. CRITICAL — thermal efficiency (eta_th=0.38): cycle type undisclosed
+     MARS 1983 baseline ~36%; sCO2 potential 40–45%
+  5. CRITICAL — recirculating power fraction: couples p_input uncertainty to Qe
+  6. HIGH — DEC efficiency (eta_de=0.54): MARS 1983 gridless analogue only
+     Venetian-blind design uncharacterized; TRL 4–5 for DEC class
+  7. HIGH — f_dec = 0.20: D-T alpha fraction is physics-determined (20%),
+     but fraction actually captured at electrodes is unknown
+
+Not captured by this model (framework limitation):
+  - REBCO supply chain premium: $50M tape cost for WHAM++ alone
+    (realta-fusion-hub-spotlight.md §Magnet Specifications)
+  - End-plug confinement failure risk (→ higher p_input, lower Qe)
+  - DEC electrode replacement cost / availability penalty
+  - Hot-cell remote handling complexity for linear 70 m machine
+
+SENSITIVITY ANALYSIS (elasticity = %LCOE / %param)
+============================================================
+
+Engineering levers:
+  availability                 -0.9079
+  construction_time_yr         +0.2573
+  chamber_length               +0.2216
+  blanket_t                    +0.1558
+  eta_th                       -0.1529
+  plasma_t                     +0.1110
+  eta_pin                      -0.0829
+  p_input                      +0.0814
+  ht_shield_t                  +0.0333
+  vessel_t                     +0.0171
+  fuel_recovery                -0.0150
+  p_cool                       +0.0148
+  f_sub                        +0.0128
+  f_dec                        -0.0100
+  eta_de                       -0.0097
+  structure_t                  +0.0075
+  p_trit                       +0.0071
+  p_cryo                       +0.0065
+  p_coils                      +0.0059
+  mn                           +0.0055
+  p_house                      +0.0030
+  p_pump                       +0.0012
+  burn_fraction                -0.0008
+  T_e                          +0.0002
+  B                            +0.0001
+  n_e                          +0.0001
+  elon                         +0.0000
+  plasma_volume                +0.0000
+  Z_eff                        +0.0000
+  R_w                          -0.0000
+  eta_p                        +0.0000
+  T_edge                       +0.0000
+  tau_ratio                    +0.0000
+
+Financial:
+  interest_rate                +0.6352
+  inflation_rate               +0.0360

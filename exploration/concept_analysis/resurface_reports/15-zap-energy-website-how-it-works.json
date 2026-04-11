@@ -1,0 +1,38 @@
+{
+  "status": "complete",
+  "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/15-sheared-flow-stabilized-z-pinch/iter-01/sources/zap-energy-website-how-it-works.orig.md",
+  "concept_id": "15-sheared-flow-stabilized-z-pinch",
+  "concept_num": "15",
+  "elapsed_s": 138.7,
+  "return_code": 0,
+  "acquired": [],
+  "acquired_count": 0,
+  "agent_report": {
+    "orig_file": "zap-energy-website-how-it-works.orig.md",
+    "urls_found": [
+      "https://www.zapenergy.com/how-it-works"
+    ],
+    "extractions": [
+      {
+        "url": "https://www.zapenergy.com/how-it-works",
+        "outcome": "duplicate",
+        "notes": "Already extracted as thin replacement (zap-energy-website-how-it-works.md). JS-heavy site yielded only image captions, no technical content."
+      }
+    ],
+    "uncovered_claims": [],
+    "coverage_detail": {
+      "sheared_flow_stabilization_no_magnets": "covered by engineering-paradigms-paper-summary + century-demo-system",
+      "plasma_layers_mechanism": "covered by engineering-paradigms-paper-summary (rigorous physics description)",
+      "current_confinement_heating": "covered by engineering-paradigms-paper-summary Table I (current scaling)",
+      "dt_fuel": "covered by engineering-paradigms-paper-summary",
+      "pulsed_10hz": "derivable from engineering-paradigms-paper-summary (200 MW thermal / 19 MJ per pulse \u2248 10.5 Hz)",
+      "capacitor_banks": "covered by century-demo-system + engineering-paradigms-paper-summary",
+      "fuzeq_1_megaamp": "covered by engineering-paradigms-paper-summary Table I (1.0 MA engineering breakeven)",
+      "liquid_metal_walls": "covered by engineering-paradigms-paper-summary + century-demo-system",
+      "lead_lithium_tritium_breeding": "covered by engineering-paradigms-paper-summary (LiPb eutectic, 17% Li / 83% Pb)"
+    },
+    "recommendation": "delete",
+    "replacement_md_note": "Thin replacement (zap-energy-website-how-it-works.md, 31 lines) contains only image captions from JS-heavy site. All substantive technical content is fully covered by engineering-paradigms-paper-summary (peer-reviewed paper) and century-demo-system (press release). Both the .orig.md and the thin .md can be deleted."
+  },
+  "recommendation": "delete"
+}

@@ -1,0 +1,26 @@
+VERDICT: FINDINGS
+
+### F-1: H1 commercial viability threshold is inconsistent with model output
+- **Target:** Section 2 (Key Hypotheses — H1) and Modeling Framework paragraph
+- **Category:** analysis
+- **Finding:** H1 claims that a 50–60% NOAK fraction yields "~$100–120/MWh — the threshold for commercial competitiveness." The model output directly contradicts this: the NOAK sweep (Sensitivity 2) shows $199.7/MWh at 50% and $212.9/MWh at 55% — nearly 2× the claimed threshold. Even the most optimistic case (40% NOAK fraction) produces $173.5/MWh, well above $100/MWh. A related inconsistency: the Modeling Framework paragraph states "the central LCOE estimate (~$186/MWh)" but the model's central case is $212.9/MWh (a 14% discrepancy). The $100–120/MWh estimate in H1 appears to have been derived from a simplified capital-cost-only calculation that omitted IDC ($5.1B), indirect costs (CAS30 = $3.2B), and O&M — components that together roughly double the effective overnight capital in the LCOE calculation. As written, H1 framing leads to an incorrect conclusion about commercial viability conditions: the model implies GIGA cannot approach $100/MWh through NOAK learning alone at any plausible NOAK fraction.
+- **Recommendation:** Revise H1 to state the actual LCOE range from the model's NOAK sweep ($173–252/MWh over 40–70% NOAK fraction) and update the commercial competitiveness framing accordingly. Identify what NOAK fraction and/or additional assumptions (lower FCR, longer financing term, carbon price) would be required to approach $150/MWh as a more realistic near-term competitive target. Update the Modeling Framework central estimate from "~$186/MWh" to "$212.9/MWh" to match the model output.
+- **Priority:** blocking
+
+---
+
+### F-2: No sensitivity sweep for cryogenic parasitic load
+- **Target:** Model sensitivity sweeps (Sensitivities 1–4) and Section 2 (Cryogenic Parasitic Power Load)
+- **Category:** model
+- **Finding:** The analysis identifies cryogenic parasitic load as a cost-modeling risk specific to large QI stellarators — distinct from ECRH and explicitly not present in tokamak literature — and calls 90 MW the "lower bound," citing WISTELL-D (63.3 MWe at 10.1 m) and flagging that GIGA at 18 m likely exceeds this. The Section 5 missing parameters table rates this "important" and explicitly states "total recirculating 5–7% estimate may be understated." Yet the model only includes p_cryo as a fixed point (90 MW) in the elasticity table — no dedicated sensitivity sweep exists. At the plant operating point, increasing p_cryo from 90 to 270 MW (3× the lower bound, plausible for an 18 m machine) reduces net output by ~18% and raises LCOE by a comparable fraction — comparable in range to the blanket complexity sweep ($188–261/MWh). The analysis correctly identifies this risk but the model doesn't show it.
+- **Recommendation:** Add a dedicated cryogenic load sensitivity sweep (Sensitivity 5): p_cryo from 50 to 300 MW with WISTELL-D analog (~63 MW) and GIGA lower bound (90 MW) marked as anchor points, noak_fraction and blanket_complexity_multiplier fixed at central values. This directly tests whether the stellarator's net efficiency advantage over current-drive tokamaks survives when cryogenic load is included at the higher end of plausible values, and gives the "lower bound" framing in Section 2 a quantitative consequence in the model output.
+- **Priority:** important
+
+---
+
+### F-3: Construction time not called out as a high-sensitivity LCOE lever in Section 2
+- **Target:** Section 2 (challenge ranking and Key Hypotheses)
+- **Category:** analysis
+- **Finding:** The model's elasticity table shows construction_time_yr at +0.53 — the third-highest elasticity after interest_rate (0.93) and availability (0.89), and higher than any blanket or plasma parameter. For a first-of-kind 18 m machine with non-planar coil manufacturing at 3× the scale of any prior project, construction duration is a plausible 12–18 year risk (ITER reference: ~20 years from construction start to first plasma). Yet Section 2 contains no challenge or callout for construction schedule risk, and none of H1–H4 address it. The challenge ranking in Section 2 focuses on technical bets (blanket type, coil manufacturing, scale extrapolation), but construction time is a financial lever of comparable magnitude to capacity factor and is specific to GIGA's FOAK complexity and manufacturing novelty. H1 sweeps noak_fraction as the highest-leverage parameter, but the elasticity table suggests that an extended construction schedule can impose a comparable LCOE penalty through IDC — and IDC already represents $5.1B (28% of total capital) at the central case.
+- **Recommendation:** Add construction time as a callout in Section 2 — either as a standalone challenge or as a sub-point under challenge #1 (FOAK Capital Cost) — noting that the model elasticity (+0.53) makes it the highest-leverage engineering/schedule parameter after financing cost and capacity factor, and that GIGA's scale and manufacturing novelty create real schedule elongation risk. Optionally add H5: "If construction time exceeds N years (vs. central case assumption), IDC growth pushes LCOE above $X/MWh." The existing Sensitivity 1 already computes this elasticity; the analysis text should name its consequence.
+- **Priority:** important

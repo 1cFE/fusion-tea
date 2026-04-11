@@ -1,0 +1,1 @@
+globenewswire-news-release-2022-12-12-2571959-0-en-general/output.md

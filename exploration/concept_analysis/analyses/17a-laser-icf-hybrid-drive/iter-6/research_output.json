@@ -1,0 +1,154 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-2",
+      "gap_description": "Thermal efficiency of energy conversion cycle (steam Rankine ~33% vs. He Brayton ~45%) — material difference in gross thermal power required; HYLIFE heritage suggests ~45% but Xcimer science page says 'steam'",
+      "queries": [
+        "HYLIFE-III inertial fusion energy thick liquid wall thermal efficiency energy conversion 2024 Fusion Engineering Design",
+        "HYLIFE-II inertial fusion energy power plant design final report UCRL-CR-105908 1994 Moir thermal efficiency site:osti.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0920379624001868",
+          "title": "Preliminary nuclear analysis of HYLIFE-III: A thick-liquid-wall chamber for inertial fusion energy",
+          "triage": "already_extracted",
+          "notes": "Paper is neutronics-focused (TBR, wall activation, FLiBe shielding), not energy conversion system. Does not address steam vs. Brayton cycle. Already extracted as source for concept 17 iter-03."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/7021072",
+          "title": "HYLIFE-II: A molten-salt inertial fusion energy power plant design — final report (Moir et al., Fusion Science and Technology, 1994)",
+          "triage": "relevant",
+          "notes": "Abstract confirms 940 MWe output, 75–85% availability assumptions, and electricity cost estimates. Does not state thermal efficiency % explicitly in abstract. Extracted for content check."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/7368768",
+          "title": "Improved HYLIFE-II heat transport system and steam power plant: Impact on performance and cost of electricity (Hoffman and Lee, 1992)",
+          "triage": "no_fulltext",
+          "notes": "Title directly addresses G-2 — explicitly mentions steam power plant and thermal efficiency impact. OSTI records shows 'OSTI does not have a digital full text copy available'. Report number UCRL-ID-113266, LLNL, December 1992."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/6780071",
+          "title": "The heat transport system and plant design for the HYLIFE-2 fusion reactor",
+          "triage": "no_fulltext",
+          "notes": "Abstract mentions scoping study for intermediate heat exchanger geometry and cost of electricity, but no numerical efficiency data visible. Full text not available on OSTI."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/biblio/7021072",
+          "source_name": "osti-biblio-7021072"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "HYLIFE-II final report abstract captured (economics, availability model) but does not explicitly state thermal efficiency %. The most directly relevant source (UCRL-ID-113266 heat transport paper) has no full text on OSTI. Gap remains open — HYLIFE-III 2024 paper is available but is a neutronics paper, not a power conversion paper."
+    },
+    {
+      "gap_id": "G-7",
+      "gap_description": "FLiBe/FLiNaK coolant inventory cost and FLiBe→FLiNaK cost delta — no FLiNaK cost-per-kg source; HYLIFE-II 1994 and Araiinejad 2025 cover FLiBe on 1994$/scaled basis only",
+      "queries": [
+        "Araiinejad FLiBe cost estimate 2025 inertial fusion energy coolant inventory"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0306261925012978",
+          "title": "Techno-economic analysis of deuterium-tritium magnetic confinement fusion power plants (Araiinejad 2025)",
+          "triage": "off_topic",
+          "notes": "Araiinejad 2025 is about MFE tokamak (ARC/ARAI concept), not IFE. FLiBe cost may appear in blanket section but context is MFE, not HYLIFE. Full text paywalled."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0149197025002860",
+          "title": "Assessment of the lifecycle cost of nuclear-grade coolants for advanced reactors",
+          "triage": "paywall",
+          "notes": "Directly relevant — analyzes FLiBe lifecycle cost with $/kg CAPEX and $/year per MW OPEX. Abstract confirms FLiBe is one of seven coolants studied. Full text paywalled on ScienceDirect."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/15006180/",
+          "title": "Flibe Coolant Cleanup and Processing in the HYLIFE-II Inertial Fusion Energy Power Plant",
+          "triage": "off_topic",
+          "notes": "Focused on processing methodology (volatility separation, centrifugation, chemical separation) for removing target debris from molten salt. Contains gold/gadolinium target material costs but not FLiBe coolant cost per kg."
+        }
+      ],
+      "extracted": [],
+      "failed": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0149197025002860",
+          "reason": "Paywalled — ScienceDirect institutional access required; abstract only visible"
+        }
+      ],
+      "status": "failed",
+      "notes": "No accessible source with FLiNaK cost per kg found. The best candidate ('Assessment of lifecycle cost of nuclear-grade coolants') is paywalled. The Araiinejad 2025 paper is about MFE, not IFE, and is also paywalled. Gap remains open — FLiNaK cost is genuinely underrepresented in open literature."
+    },
+    {
+      "gap_id": "G-10",
+      "gap_description": "Neutron wall loading on steel structure and 30-year lifetime claim basis — HYLIFE-III paper (behind paywall); Xcimer DOE program documents",
+      "queries": [
+        "HYLIFE-III inertial fusion energy thick liquid wall thermal efficiency energy conversion 2024 Fusion Engineering Design"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0920379624001868",
+          "title": "Preliminary nuclear analysis of HYLIFE-III: A thick-liquid-wall chamber for inertial fusion energy",
+          "triage": "already_extracted",
+          "notes": "Core paper for this gap — contains first wall neutron activation, structural damage (including gas generation), and FLiBe wet-wall thickness analysis. Already extracted as source for concept 17 iter-03 (sciencedirect-science-article-pii-s0920379624001868)."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "closed",
+      "notes": "HYLIFE-III paper already extracted in concept 17 iter-03. Content confirmed to address neutron activation and structural damage analysis, directly relevant to 30-year lifetime claim. Source is available for integration."
+    },
+    {
+      "gap_id": "G-11",
+      "gap_description": "DT burnup fraction at Xcimer capsule scale — HYLIFE-II used ~30% burnup; need to confirm applicability with citation",
+      "queries": [
+        "inertial fusion energy DT fuel burnup fraction capsule target 30% burn efficiency site:osti.gov OR site:arxiv.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/2561299",
+          "title": "Status and prospects for Inertial Fusion Energy via lasers (Betti, OSTI/DOE)",
+          "triage": "relevant",
+          "notes": "Direct PDF. Explicitly states: 'High-gain IFE targets will burn up to ~30% of the [fuel]' and discusses burn-up fraction dependence on DT layer thickness and convergence ratio."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/2561299",
+          "source_name": "osti-servlets-purl-2561299"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "notes": "Betti paper directly confirms ~30% burnup figure for high-gain IFE targets with physical explanation. Provides citable basis for the [analogue] burnup assumption in the analysis."
+    },
+    {
+      "gap_id": "G-12",
+      "gap_description": "FLiNaK TBR ~1.05 validation and nuclear design details — XEC whitepaper references (n,2n) argument without citation",
+      "queries": [],
+      "candidates": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0920379624001868",
+          "title": "Preliminary nuclear analysis of HYLIFE-III: A thick-liquid-wall chamber for inertial fusion energy",
+          "triage": "already_extracted",
+          "notes": "HYLIFE-III paper covers TBR analysis for FLiBe (TBR >1.2) and compares breeding materials. Does not address FLiNaK specifically — Xcimer's Athena design uses FLiNaK, not FLiBe."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "partial",
+      "notes": "HYLIFE-III paper is available and covers TBR for FLiBe. Gap is partially addressed for FLiBe but FLiNaK TBR ~1.05 claim (for Athena) is not directly validated by available sources. Skipped dedicated search due to budget constraints."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 5,
+    "sources_extracted": 2,
+    "sources_failed": 1,
+    "searches_used": 5,
+    "extractions_used": 3,
+    "gaps_closed": 2,
+    "gaps_partial": 2,
+    "gaps_failed": 1,
+    "notes": "G-10 and G-11 closed with available/extracted sources. G-2 and G-12 partially addressed by HYLIFE-III (already extracted) and HYLIFE-II biblio. G-7 (FLiBe/FLiNaK cost) is the most intractable gap — the best candidate is paywalled and no open FLiNaK cost-per-kg source exists in indexed literature. New extractions: osti-servlets-purl-2561299 (Betti, DT burnup), osti-biblio-7021072 (HYLIFE-II final report abstract)."
+  }
+}

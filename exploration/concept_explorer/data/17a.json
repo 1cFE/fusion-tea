@@ -1,0 +1,331 @@
+{
+  "concept_id": "17a",
+  "name": "Laser ICF - Hybrid Direct Drive (D-T)",
+  "confinement_family": "NONSTANDARD",
+  "company": "Xcimer Energy",
+  "status": "in_progress",
+  "illustration": null,
+  "has_cost_model": true,
+  "has_sensitivities": true,
+  "cost_model": {
+    "cas10": {
+      "name": "Preconstruction",
+      "cost_m_usd": 17.0,
+      "overridden": false
+    },
+    "cas21": {
+      "name": "Buildings & Structures",
+      "cost_m_usd": 393.1083873343151,
+      "overridden": false
+    },
+    "cas22": {
+      "name": "Reactor Plant Equipment",
+      "cost_m_usd": 1625.4245618738662,
+      "overridden": false
+    },
+    "cas23": {
+      "name": "Turbine Plant Equipment",
+      "cost_m_usd": 102.26924005891016,
+      "overridden": false
+    },
+    "cas24": {
+      "name": "Electrical Plant Equipment",
+      "cost_m_usd": 43.559120765832105,
+      "overridden": false
+    },
+    "cas25": {
+      "name": "Miscellaneous Plant Equipment",
+      "cost_m_usd": 26.51424742268041,
+      "overridden": false
+    },
+    "cas26": {
+      "name": "Heat Rejection Systems",
+      "cost_m_usd": 17.676164948453607,
+      "overridden": false
+    },
+    "cas27": {
+      "name": "Special Materials",
+      "cost_m_usd": 6.0,
+      "overridden": false
+    },
+    "cas28": {
+      "name": "Digital Twin & Simulation",
+      "cost_m_usd": 5.0,
+      "overridden": false
+    },
+    "cas29": {
+      "name": "Contingency",
+      "cost_m_usd": 0.0,
+      "overridden": false
+    },
+    "cas30": {
+      "name": "Indirect Costs",
+      "cost_m_usd": 369.92528706734305,
+      "overridden": false
+    },
+    "cas40": {
+      "name": "Owner's Costs",
+      "cost_m_usd": 24.66576574931336,
+      "overridden": false
+    },
+    "cas50": {
+      "name": "Supplementary Costs",
+      "cost_m_usd": 167.16151139804876,
+      "overridden": false
+    },
+    "cas60": {
+      "name": "Interest During Construction",
+      "cost_m_usd": 420.1592379629884,
+      "overridden": false
+    },
+    "cas70": {
+      "name": "O&M Costs (annualised)",
+      "cost_m_usd": 84.97486877441406,
+      "overridden": false
+    },
+    "cas80": {
+      "name": "Fuel Costs (annualised)",
+      "cost_m_usd": 0.49124202132225037,
+      "overridden": false
+    },
+    "cas90": {
+      "name": "Financial Costs",
+      "cost_m_usd": 259.3644002777381,
+      "overridden": false
+    },
+    "cas22_detail": {
+      "C220101": {
+        "name": "First Wall & Blanket",
+        "cost_m_usd": 106.72491820469178,
+        "overridden": false
+      },
+      "C220102": {
+        "name": "Radiation Shield",
+        "cost_m_usd": 74.52172784716903,
+        "overridden": false
+      },
+      "C220103": {
+        "name": "Magnets / Coils",
+        "cost_m_usd": 0.0,
+        "overridden": true
+      },
+      "C220104": {
+        "name": "Heating & Driver Systems",
+        "cost_m_usd": 700.0,
+        "overridden": true
+      },
+      "C220105": {
+        "name": "Primary Structure & Support",
+        "cost_m_usd": 5.813350964001656,
+        "overridden": false
+      },
+      "C220106": {
+        "name": "Vacuum System",
+        "cost_m_usd": 18.69776555040579,
+        "overridden": false
+      },
+      "C220107": {
+        "name": "Power Conditioning & Energy Storage",
+        "cost_m_usd": 50.44279186230162,
+        "overridden": false
+      },
+      "C220108": {
+        "name": "Divertor / Target Factory",
+        "cost_m_usd": 153.85051518001993,
+        "overridden": false
+      },
+      "C220109": {
+        "name": "Direct Energy Converter",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220110": {
+        "name": "Remote Handling & Maintenance Equipment",
+        "cost_m_usd": 107.90121893936546,
+        "overridden": false
+      },
+      "C220111": {
+        "name": "Installation Labor",
+        "cost_m_usd": 194.21683815515618,
+        "overridden": false
+      },
+      "C220112": {
+        "name": "Isotope Separation Plant",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220200": {
+        "name": "Main & Secondary Coolant",
+        "cost_m_usd": 88.41153489578322,
+        "overridden": false
+      },
+      "C220300": {
+        "name": "Auxiliary Cooling & Cryoplant",
+        "cost_m_usd": 12.64964930580523,
+        "overridden": false
+      },
+      "C220400": {
+        "name": "Radioactive Waste Management",
+        "cost_m_usd": 2.2537915234822448,
+        "overridden": false
+      },
+      "C220500": {
+        "name": "Fuel Handling & Storage",
+        "cost_m_usd": 63.1863458080434,
+        "overridden": false
+      },
+      "C220600": {
+        "name": "Other Reactor Plant Equipment",
+        "cost_m_usd": 5.525172396314584,
+        "overridden": false
+      },
+      "C220700": {
+        "name": "Instrumentation & Control",
+        "cost_m_usd": 41.228941241326,
+        "overridden": false
+      }
+    },
+    "headline": {
+      "lcoe_per_mwh": 115.77710723876953,
+      "overnight_cost_per_kw": 8046.158811454379,
+      "p_net_mw": 400.0,
+      "q_eng": 4.40564263322884,
+      "capacity_factor": 0.85
+    },
+    "sensitivities": {
+      "engineering": {
+        "availability": {
+          "elasticity": -0.9072075070283789,
+          "baseline": 0.85
+        },
+        "construction_time_yr": {
+          "elasticity": 0.255743534885923,
+          "baseline": 5.0
+        },
+        "mn": {
+          "elasticity": -0.0010999177825035073,
+          "baseline": 1.1
+        },
+        "eta_th": {
+          "elasticity": -0.07767505715613843,
+          "baseline": 0.45
+        },
+        "eta_p": {
+          "elasticity": -8.903993342492913e-6,
+          "baseline": 0.5
+        },
+        "f_sub": {
+          "elasticity": 0.011598638408344382,
+          "baseline": 0.03
+        },
+        "p_pump": {
+          "elasticity": 0.011198549669821364,
+          "baseline": 15.0
+        },
+        "p_trit": {
+          "elasticity": 0.007471635938099325,
+          "baseline": 10.0
+        },
+        "p_house": {
+          "elasticity": 0.0029886543752397302,
+          "baseline": 4.0
+        },
+        "p_cryo": {
+          "elasticity": 0.002828598177929978,
+          "baseline": 0.5
+        },
+        "blanket_t": {
+          "elasticity": 0.0843540538648207,
+          "baseline": 0.8
+        },
+        "ht_shield_t": {
+          "elasticity": 0.01665871327192289,
+          "baseline": 0.25
+        },
+        "structure_t": {
+          "elasticity": 0.003017407166797408,
+          "baseline": 0.15
+        },
+        "vessel_t": {
+          "elasticity": 0.007064635225001524,
+          "baseline": 0.1
+        },
+        "plasma_t": {
+          "elasticity": 0.18558865952742493,
+          "baseline": 4.0
+        },
+        "burn_fraction": {
+          "elasticity": -0.0006924544523998812,
+          "baseline": 0.05
+        },
+        "fuel_recovery": {
+          "elasticity": -0.0124987999730873,
+          "baseline": 0.95
+        },
+        "p_implosion": {
+          "elasticity": 0.053362890576861735,
+          "baseline": 5.0
+        },
+        "eta_pin1": {
+          "elasticity": -0.05336882136039796,
+          "baseline": 0.07
+        },
+        "eta_pin2": {
+          "elasticity": 0.0,
+          "baseline": 0.07
+        },
+        "p_target": {
+          "elasticity": 0.0007471635938099326,
+          "baseline": 1.0
+        }
+      },
+      "financial": {
+        "interest_rate": {
+          "elasticity": 0.614330072382906,
+          "baseline": 0.07
+        },
+        "inflation_rate": {
+          "elasticity": 0.05194399933056637,
+          "baseline": 0.0245
+        }
+      }
+    },
+    "params": {
+      "p_implosion": 5.0,
+      "p_ignition": 0.0,
+      "mn": 1.1,
+      "eta_th": 0.45,
+      "eta_p": 0.5,
+      "eta_pin1": 0.07,
+      "eta_pin2": 0.07,
+      "f_sub": 0.03,
+      "p_pump": 15.0,
+      "p_trit": 10.0,
+      "p_house": 4.0,
+      "p_cryo": 0.5,
+      "p_target": 1.0,
+      "R0": 0.0,
+      "plasma_t": 4.0,
+      "blanket_t": 0.8,
+      "ht_shield_t": 0.25,
+      "structure_t": 0.15,
+      "vessel_t": 0.1,
+      "construction_time_yr": 5.0,
+      "burn_fraction": 0.05,
+      "fuel_recovery": 0.95,
+      "net_electric_mw": 400.0,
+      "availability": 0.85,
+      "lifetime_yr": 30.0,
+      "n_mod": 1.0,
+      "interest_rate": 0.07,
+      "inflation_rate": 0.0245,
+      "noak": 1.0
+    }
+  },
+  "parameter_metadata": {},
+  "narrative": null,
+  "sources": {
+    "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/17a-laser-icf-hybrid-drive/model_setup.py",
+    "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/17a-laser-icf-hybrid-drive/analysis.md"
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-6",
+      "gap_description": "Net thermal efficiency including Li loop losses — Hawker (2020) IFE framework may address; steam Rankine baseline ~33–35%",
+      "queries": [
+        "Hawker 2020 inertial fusion energy economic model thermal efficiency site:osti.gov OR site:arxiv.org",
+        "Hawker \"simplified economic model for inertial fusion\" 2020 Philosophical Transactions Royal Society"
+      ],
+      "candidates": [
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7658748/",
+          "title": "A simplified economic model for inertial fusion (PMC open access)",
+          "triage": "relevant",
+          "notes": "Full HTML text of Hawker 2020 (Phil. Trans. R. Soc. A, DOI: 10.1098/rsta.2020.0053). Confirmed to contain thermal efficiency parameter: 40% default, range 30–60% explored via Monte Carlo. Notes that Li loop losses are not modeled in detail — author flags this as a limitation. Model uses 14 technology-agnostic parameters."
+        },
+        {
+          "url": "https://royalsocietypublishing.org/doi/10.1098/rsta.2020.0053",
+          "title": "A simplified economic model for inertial fusion (Royal Society publisher)",
+          "triage": "skip-duplicate",
+          "notes": "Same paper as PMC version; publisher page likely paywalled. PMC version is open access and preferred."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7658748/",
+          "source_name": "pmc-articles-pmc7658748"
+        }
+      ],
+      "failed": [],
+      "status": "closed"
+    },
+    {
+      "gap_id": "G-8",
+      "gap_description": "Liquid lithium pump power and capital cost — laser ICF liquid wall studies (FLiBe pumping) are partial analogues",
+      "queries": [
+        "liquid lithium pump capital cost inertial fusion energy liquid wall FLiBe IFE site:osti.gov OR site:arxiv.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/6780071",
+          "title": "The heat transport system and plant design for the HYLIFE-2 fusion reactor",
+          "triage": "relevant",
+          "notes": "OSTI biblio/6780071. Conference paper (LLNL, 1990). Directly addresses heat transport system and plant design for HYLIFE-2, a liquid-wall IFE concept with FLiBe jets — the closest published analogue to FLF's liquid Li curtain. Abstract mentions scoping study for 'minimum cost of electricity', implying cost data present. Accessible as PDF via OSTI purl."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/6360934",
+          "title": "Electromagnetic pumping of liquid lithium in inertial confinement fusion reactors",
+          "triage": "relevant",
+          "notes": "OSTI biblio/6360934. Technical report specifically on EM pump design for liquid Li ICF reactors. Compares annular-linear-induction pump vs. helical-rotor EM pump for HYLIFE requirements (8.08 m³/s flow at 82.5 kPa head). Pump efficiencies: 50% (normal conducting) and 60% (superconducting). Accessible as 3.5 MB PDF via OSTI purl."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/7021072",
+          "title": "HYLIFE-II: A molten-salt inertial fusion energy power plant design - final report",
+          "triage": "inaccessible",
+          "notes": "OSTI biblio page exists but no purl link for full text — returned 404 on purl attempt. Biblio page shows 6.5 cents/kWh for 940 MW but no granular pump cost breakdown accessible."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/6780071",
+          "source_name": "osti-servlets-purl-6780071"
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/6360934",
+          "source_name": "osti-servlets-purl-6360934"
+        }
+      ],
+      "failed": [],
+      "status": "closed"
+    },
+    {
+      "gap_id": "G-13",
+      "gap_description": "Projectile per-shot material cost and bore lifetime at 60 km/s",
+      "queries": [
+        "electromagnetic gun bore erosion material cost per shot hypervelocity projectile 60 km/s railgun"
+      ],
+      "candidates": [
+        {
+          "url": "https://dsiac.dtic.mil/articles/hypervelocity-projectiles-a-technology-assessment/",
+          "title": "Hypervelocity Projectiles: A Technology Assessment (DSIAC)",
+          "triage": "likely-irrelevant",
+          "notes": "Military railgun focus; max velocities ~11 km/s (research) and ~2 km/s (naval programs). FLF's 60 km/s regime is not covered in any open military literature. No cost per shot data applicable at fusion-relevant velocities. Skipped extraction."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "failed"
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 3,
+    "sources_extracted": 3,
+    "sources_failed": 0,
+    "searches_used": 4,
+    "extractions_used": 3
+  }
+}

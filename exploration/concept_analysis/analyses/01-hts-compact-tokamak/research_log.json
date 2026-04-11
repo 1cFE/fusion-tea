@@ -1,0 +1,552 @@
+{
+  "entries": [
+    {
+      "gap_id": "G-1",
+      "gap_description": "Full plant capital cost including BoP, indirect costs, construction financing",
+      "queries": [
+        "ARIES-AT fusion power plant full capital cost study Najmabadi 2006 site:osti.gov",
+        "ARIES-AT fusion power plant LCOE cost breakdown balance of plant"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/etdeweb/servlets/purl/20261446",
+          "title": "ARIES-AT: An Advanced Tokamak, Advanced Technology Fusion Power Plant (Najmabadi et al.)",
+          "triage": "relevant",
+          "notes": "Accessible PDF (148.5 KB). WebFetch cannot parse binary PDF but add-source extraction succeeded. 176-line document — confirmed ARIES-AT conference paper with headline COE = 5¢/kWh for 1000 MWe plant. Summary paper: includes major parameters and design philosophy but not the full CAS cost breakdown (direct costs, indirect costs, BoP fractions by account). Partial coverage of G-1."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/820081",
+          "title": "Physics Basis for the Advanced Tokamak Fusion Power Plant ARIES-AT (Technical Report, 2003)",
+          "triage": "likely-relevant",
+          "notes": "Not fetched due to budget constraints. Technical report likely has more detailed cost data than conference paper. Recommended for future iteration."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1178069",
+          "title": "The ARIES Advanced and Conservative Tokamak Power Plant Study (ACT, ~2017)",
+          "triage": "likely-relevant",
+          "notes": "Not fetched due to budget constraints. More recent ARIES-ACT study — may have updated cost methodology. Recommended for future iteration."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/1127358",
+          "title": "The ARIES Advanced and Conservative Tokamak (ACT) Power Plant Study (Technical Report)",
+          "triage": "likely-relevant",
+          "notes": "Not fetched. Full technical report version of the ACT study. Likely contains detailed CAS breakdown."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/etdeweb/servlets/purl/20261446",
+          "source_name": "osti-etdeweb-servlets-purl-20261446",
+          "notes": "Conference summary paper. Confirms COE = 5¢/kWh for ARIES-AT 1000 MWe plant. Does NOT contain detailed CAS direct/indirect cost breakdown or BoP cost fractions. Full project report (biblio/820081) would be needed for that."
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "ARIES-AT headline COE extracted. Detailed BoP/CAS cost breakdown requires the full ARIES-AT project report (OSTI 820081) or ARIES-ACT study (OSTI 1127358). Both are accessible OSTI documents — recommended for next iteration.",
+      "timestamp": "2026-04-06T02:24:37.017586+00:00",
+      "iteration": 4
+    },
+    {
+      "gap_id": "G-12",
+      "gap_description": "Li-6 enrichment supply chain and cost at fleet scale",
+      "queries": [
+        "Li-6 lithium-6 enrichment cost supply chain fusion tritium DOE ORNL site:osti.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://science.osti.gov/-/media/fes/pdf/fes-presentations/2022/Pearson_resource-availability-and-supply_presentation.pdf",
+          "title": "Fuels for Fusion — Resource Availability and Supply (Pearson, FES 2022 presentation)",
+          "triage": "accessible-but-not-parsed",
+          "notes": "1.6 MB PDF — accessible (not 403/404) but WebFetch returns only binary structure. Likely contains Li-6 supply chain data for fusion. Candidate for future extraction."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/6574527",
+          "title": "Potential Lithium Requirements for Fusion Power Plants",
+          "triage": "likely-relevant",
+          "notes": "OSTI direct purl — older report but directly addresses fleet-scale lithium requirements for fusion. Not fetched due to budget. Candidate for future extraction."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1179125",
+          "title": "LLNL-TR-658973-REV-1 Assessment of Tritium Breeding Blankets",
+          "triage": "likely-relevant",
+          "notes": "LLNL report on tritium breeding blanket assessment — likely covers Li-6 enrichment requirements and supply considerations."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "Budget exhausted after G-1 extraction. Three accessible candidates identified (Pearson 2022 FES presentation, OSTI 6574527, LLNL-TR-658973). All recommended for next iteration.",
+      "timestamp": "2026-04-06T02:24:37.017586+00:00",
+      "iteration": 4
+    },
+    {
+      "gap_id": "G-8",
+      "gap_description": "REBCO tape learning rate ($/kA-m trajectory to commercial target)",
+      "queries": [],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "Not attempted — search budget (2 searches) consumed by G-1 and G-12. Suggested queries for next iteration: 'REBCO HTS tape cost learning rate $/kA-m roadmap' and 'Rocky Mountain Institute superconductor cost trajectory fusion'.",
+      "timestamp": "2026-04-06T02:24:37.017586+00:00",
+      "iteration": 4
+    },
+    {
+      "gap_id": "G-10",
+      "gap_description": "Blanket replacement schedule / FLiBe system service life",
+      "queries": [],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "Not attempted — search budget exhausted. Suggested query: 'ITER TBM test blanket module replacement schedule FLiBe service life site:osti.gov'.",
+      "timestamp": "2026-04-06T02:24:37.017586+00:00",
+      "iteration": 4
+    },
+    {
+      "gap_id": "G-11",
+      "gap_description": "LHCD system (8 GHz, 25 MW) cost and technology readiness",
+      "queries": [],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "Not attempted — search budget exhausted. Suggested query: 'ITER lower hybrid current drive LHCD cost 8 GHz technology readiness site:osti.gov'.",
+      "timestamp": "2026-04-06T02:24:37.017586+00:00",
+      "iteration": 4
+    },
+    {
+      "gap_id": "G-13",
+      "gap_description": "Regulatory cost impact specific to NRC Part 30 framework",
+      "queries": [],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "Not attempted — search budget exhausted and nice-to-have priority. Stewart & Shirvan 2022 is already cited in the analysis — the paper itself may be accessible via MIT DSpace or arXiv.",
+      "timestamp": "2026-04-06T02:24:37.017586+00:00",
+      "iteration": 4
+    },
+    {
+      "gap_id": "G-14",
+      "gap_description": "Divertor replacement cost and frequency for compact tokamak geometry",
+      "queries": [],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "Not attempted — search budget exhausted and nice-to-have priority. ITER divertor cost data available via OSTI ITER design reports.",
+      "timestamp": "2026-04-06T02:24:37.017586+00:00",
+      "iteration": 4
+    },
+    {
+      "gap_id": "G-8",
+      "gap_description": "REBCO tape learning rate ($/kA-m trajectory to commercial target)",
+      "queries": [
+        "REBCO HTS tape cost learning rate $/kA-m commercial roadmap superconductor"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S2772830725000390",
+          "title": "Commercial compact fusion triggered REBCO tape industry: Pulsed laser deposition technology opportunities and challenges",
+          "triage": "relevant",
+          "notes": "Open access confirmed. Contains current PLD REBCO pricing ($20/m at 4mm width), production scale (>3,000 km/year), in-field performance (>200 A-4mm @20K, 20T, B//c). Discusses fusion demand driving HTS tape industry growth. Lacks explicit $/kA-m learning rate curve but provides current pricing anchor."
+        },
+        {
+          "url": "https://arxiv.org/pdf/2203.08736",
+          "title": "REBCO — a silver bullet for our next high-field magnet and collider budget?",
+          "triage": "inaccessible",
+          "notes": "WebFetch returned binary PDF content — could not extract text for triage. Skipped in favor of confirmed open-access ScienceDirect article."
+        },
+        {
+          "url": "https://www.nextbigfuture.com/2023/09/markets-and-future-costs-of-superconducting-magnets-and-superconducting-wire.html",
+          "title": "Markets and Future Costs of Superconducting Magnets and Superconducting Wire",
+          "triage": "low-priority",
+          "notes": "Blog/news aggregator, not a primary source. Not suitable as sole quantitative citation."
+        },
+        {
+          "url": "https://www.spacedaily.com/reports/Compact_fusion_boom_propels_PLD_REBCO_tape_production_while_spotlighting_cost_and_stability_hurdles_999.html",
+          "title": "Compact fusion boom propels PLD REBCO tape production",
+          "triage": "inaccessible",
+          "notes": "403 Forbidden on WebFetch. News summary of the ScienceDirect article — skipped."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S2772830725000390",
+          "source_name": "sciencedirect-science-article-pii-s2772830725000390"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "Current pricing anchor ($20/m PLD REBCO) extracted. Explicit $/kA-m learning rate curve or Rocky Mountain Institute roadmap not found in this iteration. Further search may identify Woodruff 2026 pyFECONS or manufacturer cost roadmaps.",
+      "timestamp": "2026-04-06T05:14:07.231911+00:00",
+      "iteration": 5
+    },
+    {
+      "gap_id": "G-10",
+      "gap_description": "Blanket replacement schedule / FLiBe system service life",
+      "queries": [
+        "FLiBe blanket replacement lifetime tritium breeding service life fusion reactor ITER TBM"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1305833",
+          "title": "Tritium Breeding Blanket for a Commercial Fusion Power Plant — A System Engineering Assessment (LLNL-TR-652984)",
+          "triage": "relevant",
+          "notes": "LLNL technical report by Wayne Meier (2014). System engineering assessment for commercial fusion tritium breeding blanket. Table of contents includes operational scenarios, system requirements, risks and TRL. Likely contains service life estimates and replacement requirements, though covers generic commercial fusion rather than FLiBe/ARC-specific."
+        },
+        {
+          "url": "https://www.energy.gov/articles/epri-fusion-blankets-report-2024",
+          "title": "2024 Technical Update: Fusion Blankets Research Objectives",
+          "triage": "not-fetched",
+          "notes": "DOE/EPRI 2024 report on fusion blanket R&D objectives. Not fetched due to budget constraints — could be a strong candidate for a future iteration (2024 data, likely covers service life targets)."
+        },
+        {
+          "url": "https://www.cambridge.org/core/journals/journal-of-plasma-physics/article/breeder-blanket-and-tritium-fuel-cycle-feasibility-of-the-infinity-two-fusion-pilot-plant/248C49CCA0B7ABEA2F7BF7031290EDC4",
+          "title": "Breeder blanket and tritium fuel cycle feasibility of the Infinity Two fusion pilot plant",
+          "triage": "not-fetched",
+          "notes": "Journal of Plasma Physics paper. May contain ARC-analogous blanket data — concept 21 (Type One Energy) uses similar FLiBe/molten salt blanket. Not fetched due to budget constraints."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1305833",
+          "source_name": "osti-servlets-purl-1305833"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "LLNL system engineering report extracted successfully. Does not appear to be FLiBe-specific (covers PbLi and other blanket types). Actual service life / replacement schedule data for FLiBe blankets remains poorly covered. The DOE/EPRI 2024 report and the Infinity Two paper are strong candidates for a next iteration.",
+      "timestamp": "2026-04-06T05:14:07.231911+00:00",
+      "iteration": 5
+    },
+    {
+      "gap_id": "G-11",
+      "gap_description": "LHCD system (8 GHz, 25 MW) cost and technology readiness",
+      "queries": [
+        "lower hybrid current drive LHCD system cost tokamak ITER 5GHz benchmark",
+        "ITER lower hybrid current drive system cost estimate million dollars klystron antenna 2026"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/etdeweb/servlets/purl/10149275",
+          "title": "Lower Hybrid Current Drive in Tokamak Plasmas (JAERI, 1999)",
+          "triage": "relevant-limited",
+          "notes": "JAERI technical report on LHCD physics in tokamaks. 1999 vintage. Extraction produced mostly scanned-image content — limited quantitative text. Contains LHCD physics basis but unlikely to have current cost benchmarks."
+        },
+        {
+          "url": "https://pure.mpg.de/rest/items/item_2141657_2/component/file_2141656/content",
+          "title": "A Lower Hybrid Current Drive System for ITER",
+          "triage": "inaccessible",
+          "notes": "WebFetch returned binary PDF — could not triage. Multiple searches confirm this is the key ITER LHCD design paper but cost estimates are not expected to be in this engineering design document."
+        },
+        {
+          "url": "https://www.researchgate.net/publication/234936878_A_Lower_Hybrid_Current_Drive_System_for_ITER_and_High_Power_CW_Klystron_Development",
+          "title": "A Lower Hybrid Current Drive System for ITER and High Power CW Klystron Development",
+          "triage": "not-fetched",
+          "notes": "ResearchGate abstract only. Conference paper combining LHCD system design and klystron development — potentially has cost benchmark data. Not fetched due to budget constraints."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/etdeweb/servlets/purl/10149275",
+          "source_name": "osti-etdeweb-servlets-purl-10149275"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "JAERI LHCD report extracted but content is primarily scanned images — limited quantitative utility. No cost estimates found for ITER LHCD system in any searched source. LHCD cost data appears to be in procurement/project management documents not publicly indexed. The ITER LHCD design paper (Hoang & Becoulet) and klystron development paper are the best untried candidates.",
+      "timestamp": "2026-04-06T05:14:07.231911+00:00",
+      "iteration": 5
+    },
+    {
+      "gap_id": "G-1",
+      "gap_description": "Full plant capital cost including BoP, indirect costs, construction financing",
+      "queries": [
+        "Woodruff pyFECONS fusion power plant balance of plant cost 2025 2026 site:osti.gov OR site:arxiv.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/abs/2601.21724",
+          "title": "A costing framework for fusion power plants (Woodruff et al., 2026)",
+          "triage": "relevant",
+          "notes": "Accessible (CC BY-SA 4.0). Covers pyFECONS baseline: ARIES-style CAS accounts, BoP benchmarking via Bechtel pilot study, standardized cost accounts aligned to IAEA/GEN-IV/EMWG/EPRI lineage. Directly addresses BoP cost structure gap."
+        },
+        {
+          "url": "https://arxiv.org/abs/2602.19389",
+          "title": "Extension of the fusion power plant costing standard (Woodruff et al., 2026)",
+          "triage": "relevant",
+          "notes": "Accessible. Extends pyFECONS with MFE/IFE/MIFE architecture-specific cost tracks, probabilistic costing with TRL/learning-curve uncertainty, and financial metrics (NPV, IRR, MIRR, WACC). Adds full cost-account development for dominant drivers per confinement class."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1820946",
+          "title": "Woodruff Scientific Revisit of 2017 Costing for Four Concepts (OSTI)",
+          "triage": "skip",
+          "notes": "Older 2017-era costing study; 2026 arxiv papers supersede this with pyFECONS framework."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/pdf/2601.21724",
+          "source_name": "arxiv-2601-21724"
+        },
+        {
+          "url": "https://arxiv.org/pdf/2602.19389",
+          "source_name": "arxiv-2602-19389"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "timestamp": "2026-04-06T05:37:03.050951+00:00",
+      "iteration": 6
+    },
+    {
+      "gap_id": "G-12",
+      "gap_description": "Li-6 enrichment supply chain and cost at fleet scale",
+      "queries": [
+        "Li-6 lithium-6 enrichment cost supply chain fusion tritium breeding DOE ORNL site:osti.gov",
+        "lithium-6 enrichment cost production fusion fleet scale supply chain 2020 2025 arxiv OR osti"
+      ],
+      "candidates": [
+        {
+          "url": "https://science.osti.gov/-/media/fes/pdf/fes-presentations/2022/Pearson_resource-availability-and-supply_presentation.pdf",
+          "title": "Fuels for Fusion (Pearson, DOE FES, 2022)",
+          "triage": "inaccessible",
+          "notes": "PDF returned binary data only. WebFetch cannot parse it. Document appears to be scanned/image-based. Contains relevant content (COLEX cost ~$4000/kg, ICOMAX, supply chain gaps) per search snippet, but not extractable via add-source."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/6574527",
+          "title": "Potential Lithium Requirements for Fusion Power Plants (OSTI)",
+          "triage": "inaccessible",
+          "notes": "Old scanned PDF — binary data only, WebFetch cannot parse. Likely 1970s/1980s era document."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S092037961930835X",
+          "title": "Development of a viable route for lithium-6 supply of DEMO and future fusion power plants (ScienceDirect, open access)",
+          "triage": "relevant",
+          "notes": "Open access (CC-BY 4.0). Covers ICOMAX vs COLEX enrichment process comparison for Li-6 supply to DEMO/fusion. Systems engineering assessment of enrichment methods. Technical focus with some supply chain methodology; quantitative cost data uncertain from abstract alone."
+        },
+        {
+          "url": "https://www.neimagazine.com/analysis/enriched-lithium-and-advanced-nuclear/",
+          "title": "Enriched lithium and advanced nuclear (NEI Magazine)",
+          "triage": "inaccessible",
+          "notes": "JavaScript-heavy page — content not rendered by WebFetch. Only meta tags visible."
+        },
+        {
+          "url": "https://www.fusionindustryassociation.org/wp-content/uploads/2025/06/FIA-Supply-Chain-2025-Report.pdf",
+          "title": "The Fusion Industry Supply Chain 2025 (FIA, 2025)",
+          "triage": "not-checked",
+          "notes": "Not triaged — extraction budget exhausted by higher-priority gaps."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S092037961930835X",
+          "source_name": "sciencedirect-science-article-pii-s092037961930835x"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "timestamp": "2026-04-06T05:37:03.050951+00:00",
+      "iteration": 6
+    },
+    {
+      "gap_id": "G-13",
+      "gap_description": "Regulatory cost impact specific to NRC Part 30 framework",
+      "queries": [
+        "NRC fusion regulatory cost impact tokamak Part 50 Stewart Shirvan 2022 licensing fee site:osti.gov OR site:arxiv.org",
+        "NRC fusion Part 30 byproduct material regulatory framework cost analysis economic impact 2023 2024 2025 site:nrc.gov OR site:federalregister.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.federalregister.gov/documents/2026/02/26/2026-03865/regulatory-framework-for-fusion-machines",
+          "title": "Regulatory Framework for Fusion Machines (NRC Proposed Rule, Feb 2026)",
+          "triage": "inaccessible",
+          "notes": "Redirects to unblock.federalregister.gov — blocked. Contains the proposed rule formally placing fusion under byproduct material framework (Part 30-like) rather than Part 50."
+        },
+        {
+          "url": "https://www.federalregister.gov/documents/2023/10/04/2023-21988/regulatory-framework-for-fusion-systems",
+          "title": "Regulatory Framework for Fusion Systems (NRC, Oct 2023)",
+          "triage": "inaccessible",
+          "notes": "Also redirects to unblock.federalregister.gov — blocked."
+        },
+        {
+          "url": "https://crcpd.org/wp-content/uploads/2025/08/25-2-Technical-White-Paper-State-Regulation-on-Fusion-Machines.pdf",
+          "title": "Technical White Paper: State Regulation of Fusion Machines (CRCPD, 2025)",
+          "triage": "inaccessible",
+          "notes": "Binary PDF — WebFetch cannot parse. No cost data extractable."
+        },
+        {
+          "url": "https://www.nrc.gov/docs/ML2102/ML21026A315.pdf",
+          "title": "NRC Preliminary White Paper on Nuclear Fusion (NRC, 2021)",
+          "triage": "inaccessible",
+          "notes": "WebFetch timed out on this URL."
+        }
+      ],
+      "extracted": [],
+      "failed": [
+        {
+          "url": "https://www.federalregister.gov/documents/2026/02/26/2026-03865/regulatory-framework-for-fusion-machines",
+          "reason": "Redirect to unblock.federalregister.gov — geo-blocking or bot protection."
+        },
+        {
+          "url": "https://www.nrc.gov/docs/ML2102/ML21026A315.pdf",
+          "reason": "WebFetch timeout."
+        }
+      ],
+      "status": "failed",
+      "timestamp": "2026-04-06T05:37:03.050951+00:00",
+      "iteration": 6
+    },
+    {
+      "gap_id": "G-14",
+      "gap_description": "Divertor replacement cost and frequency for compact tokamak geometry",
+      "queries": [
+        "divertor replacement cost frequency compact tokamak ITER EU-DEMO component maintenance schedule site:osti.gov OR site:arxiv.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1811752",
+          "title": "Recent progress in the design of the K-DEMO divertor (OSTI/LLNL-JRNL-817795)",
+          "triage": "not-checked",
+          "notes": "Not triaged — describes K-DEMO divertor design (double-null, 32 toroidal modules, vertical maintenance). May contain maintenance schedule info but likely lacks cost data. Extraction budget exhausted."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "timestamp": "2026-04-06T05:37:03.050951+00:00",
+      "iteration": 6
+    },
+    {
+      "gap_id": "G-7",
+      "gap_description": "Annual O&M cost breakdown — no published estimate for ARC O&M cost (scheduled maintenance, unplanned outage, remote handling labor, component replacement)",
+      "queries": [
+        "D-T tokamak fusion power plant annual O&M cost breakdown operations maintenance staffing PROCESS code site:osti.gov OR site:arxiv.org",
+        "Araiinejad Shirvan 2025 \"techno-economic analysis\" D-T magnetic confinement fusion O&M operations maintenance cost annual site:arxiv.org OR site:sciencedirect.com"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/abs/2405.01514",
+          "title": "Valuing maintenance strategies for fusion plants as part of a future electricity grid",
+          "triage": "relevant",
+          "notes": "Accessible HTML version. Contains $1.74/MWh gross variable O&M ($2.07/MWh net). Models blanket replacement costs as $0–$500M/GWgross sensitivity parameter. Treats FO&M as comparative parameter rather than empirical dataset, but provides O&M cost anchor and maintenance scheduling framework."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0306261925012978",
+          "title": "Techno-economic analysis of deuterium-tritium magnetic confinement fusion power plants (Araiinejad & Shirvan 2025)",
+          "triage": "paywall",
+          "notes": "Abstract-only accessible (isContentVisible: false). Abstract confirms O&M costs included in LCOE model ($140–$550/MWh range) but no breakdown visible. Full text required for component-level O&M data."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1820946",
+          "title": "Woodruff Scientific Inc. — Revisit of the 2017 Costing for Four Fusion Reactor Concepts",
+          "triage": "relevant",
+          "notes": "Binary PDF — WebFetch could not parse text. But add-source extraction should capture full content. DOE-funded costing report likely contains structured cost account data including O&M line items."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/pdf/2405.01514",
+          "source_name": "arxiv-2405-01514"
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1820946",
+          "source_name": "osti-servlets-purl-1820946"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "Two sources extracted that together bound O&M cost structure: arxiv-2405-01514 provides variable O&M anchor ($1.74/MWh) and maintenance scheduling framework; osti-servlets-purl-1820946 (Woodruff costing) may contain structured O&M line items. Araiinejad 2025 (paywalled) remains the ideal source for D-T tokamak O&M breakdown — gap not fully closed.",
+      "timestamp": "2026-04-06T06:00:38.662036+00:00",
+      "iteration": 7
+    },
+    {
+      "gap_id": "G-8",
+      "gap_description": "REBCO tape learning rate ($/kA-m trajectory to commercial target) — rate of cost reduction not just current price",
+      "queries": [
+        "REBCO HTS tape cost learning curve roadmap $/kA-m commercial target 2025 2026 site:arxiv.org OR site:osti.gov",
+        "Araiinejad Shirvan \"ARAI\" fusion power plant LCOE ARC tokamak 2025 techno-economic preprint site:arxiv.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/abs/2503.23048",
+          "title": "HTS Potential and Needs for Future [applications]",
+          "triage": "relevant",
+          "notes": "2025 paper. Abstract mentions cost reduction from private investment in fusion applications and production scaling over 15 years. Summary from search: 'current price about 100-200 $/kA-m', 'private investment in REBCO sustained for at least one decade is expected to lead to market disruption'. WebFetch couldn't parse PDF but add-source extraction may work."
+        },
+        {
+          "url": "https://arxiv.org/pdf/2203.08736",
+          "title": "REBCO — a silver bullet for our next high-field magnet and collider budget?",
+          "triage": "inaccessible",
+          "notes": "Binary PDF — WebFetch returned garbled content. Title strongly suggests cost analysis content but could not verify. Not extracted due to uncertain relevance vs. PDF extraction issues."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/2448535",
+          "title": "Scale up of High-Performance REBCO Tapes in a Pilot-Scale Advanced MOCVD Tool",
+          "triage": "not-relevant",
+          "notes": "Technical manufacturing paper (IEEE TAS) — focuses on REBCO tape production processes and material characterization, not economic data or cost trajectories."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/pdf/2503.23048",
+          "source_name": "arxiv-2503-23048"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "arxiv-2503-23048 extracted — 2025 paper on HTS potential and needs, expected to contain cost reduction context from private fusion investment and production scaling. Complements existing sciencedirect-science-article-pii-s2772830725000390 (current price ~$100/kA-m). May not contain formal learning rate; source integration step will confirm.",
+      "timestamp": "2026-04-06T06:00:38.662036+00:00",
+      "iteration": 7
+    },
+    {
+      "gap_id": "G-14",
+      "gap_description": "Divertor replacement cost and frequency for compact tokamak geometry",
+      "queries": [
+        "ITER divertor replacement cost frequency schedule million dollars compact tokamak EU-DEMO site:osti.gov OR site:arxiv.org OR site:iaea.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://inis.iaea.org/records/yyjfk-db670",
+          "title": "ITER tokamak device — INIS-IAEA",
+          "triage": "unknown",
+          "notes": "IAEA INIS record — likely an abstract reference without cost data."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1811752",
+          "title": "Recent progress in the design of the K-DEMO divertor",
+          "triage": "not-relevant",
+          "notes": "K-DEMO divertor design paper. Focused on design progress, not replacement cost/frequency. Not extracted."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "failed",
+      "notes": "Search returned divertor design and overview papers from IAEA and OSTI, none with divertor replacement cost figures in dollars or replacement frequency schedules. Gap remains unaddressed; budget exhausted.",
+      "timestamp": "2026-04-06T06:00:38.662036+00:00",
+      "iteration": 7
+    }
+  ],
+  "acquired_by_iteration": {
+    "4": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/osti-etdeweb-servlets-purl-20261446.md"
+    ],
+    "5": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/osti-etdeweb-servlets-purl-10149275.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/osti-servlets-purl-1305833.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/sciencedirect-science-article-pii-s2772830725000390.md"
+    ],
+    "6": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/arxiv-2601-21724.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/arxiv-2602-19389.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/sciencedirect-science-article-pii-s092037961930835x.md"
+    ],
+    "7": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/arxiv-2405-01514.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/arxiv-2503-23048.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/osti-servlets-purl-1820946.md"
+    ]
+  }
+}

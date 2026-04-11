@@ -1,0 +1,8 @@
+# Binary artifacts — synced via R2, not git
+*.pdf
+*.html
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg

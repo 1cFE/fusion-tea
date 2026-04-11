@@ -1,0 +1,11 @@
+[
+  {
+    "page_num": 1,
+    "cost_usd": 0.133713,
+    "input_tokens": 4,
+    "output_tokens": 848,
+    "model": "sonnet",
+    "elapsed_seconds": 38.04971194267273,
+    "table_index": null
+  }
+]

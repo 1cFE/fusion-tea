@@ -1,0 +1,262 @@
+
+######################################################################
+# Q BREAKEVEN SCAN — minimum Q for net positive electricity
+######################################################################
+
+  Scanning Q from 1 to 30 (baseline parameters, n_mod=4)...
+
+       Q     Net MWe (plant)  Status / LCOE
+  ──────  ──────────────────  ────────────────────────────
+     1.0                -169  NET NEGATIVE  (-169 MWe)
+     2.0                 -48  NET NEGATIVE  (-48 MWe)
+     2.5                  12  327.9 ¢/kWh
+     3.0                  73  61.4 ¢/kWh
+     3.5                 133  36.6 ¢/kWh
+     4.0                 194  27.2 ¢/kWh
+     5.0                 315  19.2 ¢/kWh
+     7.0                 557  13.6 ¢/kWh
+    10.0                 920  10.7 ¢/kWh
+    15.0                1525  8.8 ¢/kWh
+    20.0                2130  8.0 ¢/kWh
+    30.0                3340  7.2 ¢/kWh
+
+######################################################################
+# BASELINE SCENARIO: Moderate Q=10, standard parameters
+######################################################################
+======================================================================
+Acoustic ICF / Sonofusion (D-D) — 1cFE CAS-Structured LCOE Model
+======================================================================
+  *** SPECULATIVE — fusion from acoustic cavitation undemonstrated ***
+  *** Q is hypothetical; breakeven requires Q ≥ ~3.5 (baseline params)
+
+--- Key Input Parameters ---
+  Acoustic driver power:      100 MW (elec) per module
+  Driver efficiency (PZT):    85.0% → 85 MW acoustic
+  Fusion gain Q (acoustic):   10.0  [*** SPECULATIVE ***]
+  Acoustic frequency:         30 kHz
+  Vessel inner radius:        3.0 m  (D₂O vol = 113 m³/module)
+  Blanket mult (D-D):         1.05
+  Thermal efficiency:         35.0% (Rankine/D₂O)
+  Plant availability:         75.0%
+  Modules:                    4
+  FOAK/NOAK:                  NOAK
+  Interest rate:              10.0%
+  Plant lifetime:             40 years
+
+--- Power Balance (per module) ---
+  Acoustic power in D₂O:      85 MW
+  Fusion power (Q×acoustic):  850 MW
+    D-D neutron:              286 MW (33.6%, 2.45 MeV)
+    D-D charged (p+T):        564 MW (66.4%)
+  Thermal power in D₂O:       949 MW
+  Gross electric (Rankine):   332 MWe
+  Recirculating loads:
+    Acoustic driver:          100 MW (elec)
+    Aux (plant share/mod):    2.3 MW
+  Net electric per module:    230 MWe
+  Net electric (all modules): 920 MWe
+  Q_sci (acoustic):           10.0  (P_fus / P_acoustic)
+  Q_eng (electrical):         8.5  (P_fus / P_elec_driver)
+  Recirculating fraction:     30.8%  (plant total)
+
+--- CAS22: Reactor Plant Equipment ---
+  Per-module accounts (single module):
+    C220101 D₂O Vessel + Liquid     [OVERRIDE]     $   102.5M
+    C220102 Shield (biolog, D-D n)  [D-D scale]    $    78.1M
+    C220103 Coils                   [N/A → $0]         $0.0M
+    C220104 Supp. Heating           [N/A → $0]         $0.0M
+    C220105 Primary Structure                      $     7.2M
+    C220106 D₂O Circulation System  [OVERRIDE]     $    47.5M
+    C220107 Acoustic Transducer Arr [OVERRIDE]     $    42.5M
+    C220108 D₂O Management System   [OVERRIDE]     $    22.6M
+    C220109 Direct Energy Conv      [N/A → $0]         $0.0M
+    C220111 Installation (14%)                     $    42.0M
+    C220112 Tritium Sep (D-D byprod)               $     1.8M
+  ──────────────────────────────────────────────────────────
+    Per-module subtotal:                              $   344.1M × 4
+  Plant-wide accounts:
+    C220200 Coolant (D₂O → steam gen)              $   195.2M
+    C220300 Aux Cooling + Cryoplant                $     7.9M
+    C220400 Rad Waste (D-D, 0.5× D-T)              $     3.7M
+    C220500 Fuel Handling (D-D)                    $    56.6M
+    C220600 Other Equipment                        $    10.8M
+    C220700 Instrumentation & Control              $    89.6M
+  ──────────────────────────────────────────────────────────
+    Plant-wide subtotal:                              $   363.7M
+  CAS22 Total:                                        $  1740.1M
+
+--- Capital Costs (CAS10-60) ---
+  CAS10  Pre-construction:              $    17.1M
+  CAS21  Buildings (693 $/kWe):       $   921.0M
+  CAS22  Reactor Plant Equipment:       $  1740.1M
+  CAS23  Turbine Plant:                 $   262.7M
+  CAS24  Electric Plant:                $   111.9M
+  CAS25  Misc Plant:                    $    68.1M
+  CAS26  Heat Rejection:                $    45.4M
+  CAS27  Special Materials:             $     2.0M
+  CAS28  Digital Twin:                  $     5.0M
+  CAS29  Contingency:                   $     0.0M
+  ────────────────────────────────────────────────────
+  CAS20  Direct Costs:                  $  3156.1M
+  CAS30  Indirect Costs:                $   631.2M
+  CAS40  Owner's Costs:                 $    29.7M
+  CAS50  Supplementary:                 $   196.7M
+  ────────────────────────────────────────────────────
+  Overnight Capital:                    $  4030.8M
+  CAS60  IDC (f=0.286):               $  1152.5M
+  ════════════════════════════════════════════════════
+  Total Capital:                        $  5183.3M
+  Specific Capital:                     $    5635 $/kWe
+
+--- Annual Costs (CAS70-90) ---
+  CAS90  Capital charge (CRF=0.1023):   $   530.0M/yr
+  CAS71  O&M (levelized):               $   100.8M/yr
+  CAS72  Transducer replacement:        $     6.2M/yr  (2 repl. over 40yr)
+  CAS70  Total O&M:                     $   107.0M/yr
+  CAS80  D₂O replenishment:             $     7.0M/yr  (9.0 m³/yr)
+
+--- LCOE ---
+  Annual energy production:     6,043,690 MWh/yr
+  Annual revenue requirement:   $644.1M/yr
+  ╔══════════════════════════════════════════╗
+  ║  LCOE =  10.66 ¢/kWh                  ║
+  ║       =   106.6 $/MWh                  ║
+  ╚══════════════════════════════════════════╝
+  Capital (CAS90):    82.3%
+  O&M (CAS70):        16.6%
+  Fuel/D₂O (CAS80):   1.1%
+
+======================================================================
+SENSITIVITY SWEEPS — most impactful parameters (baseline Q=10)
+======================================================================
+  Baseline LCOE: 10.66 ¢/kWh
+
+  Fusion gain Q  [*** BLOCKING UNCERTAINTY ***]:
+           3.5  →    36.57 ¢/kWh   (133 MWe net)
+             5  →    19.21 ¢/kWh   (315 MWe net)
+             7  →    13.59 ¢/kWh   (557 MWe net)
+            10  →    10.66 ¢/kWh   (920 MWe net) <<< baseline
+            15  →     8.82 ¢/kWh   (1525 MWe net)
+            20  →     8.00 ¢/kWh   (2130 MWe net)
+            30  →     7.22 ¢/kWh   (3340 MWe net)
+            50  →     6.60 ¢/kWh   (5760 MWe net)
+
+  Acoustic driver power per module [MW]:
+            25  →    16.89 ¢/kWh   (223 MWe net)
+            50  →    12.83 ¢/kWh   (455 MWe net)
+           100  →    10.66 ¢/kWh   (920 MWe net) <<< baseline
+           200  →     9.43 ¢/kWh   (1849 MWe net)
+           500  →     8.53 ¢/kWh   (4636 MWe net)
+
+  Transducer capital cost [$/kW acoustic]:
+           100  →    10.15 ¢/kWh   (920 MWe net)
+           200  →    10.27 ¢/kWh   (920 MWe net)
+           500  →    10.66 ¢/kWh   (920 MWe net) <<< baseline
+         1e+03  →    11.29 ¢/kWh   (920 MWe net)
+         2e+03  →    12.57 ¢/kWh   (920 MWe net)
+
+  Thermal efficiency [fraction]:
+          0.28  →    12.91 ¢/kWh   (654 MWe net)
+          0.32  →    11.44 ¢/kWh   (806 MWe net)
+          0.35  →    10.66 ¢/kWh   (920 MWe net) <<< baseline
+          0.38  →    10.04 ¢/kWh   (1034 MWe net)
+          0.42  →     9.41 ¢/kWh   (1186 MWe net)
+          0.45  →     9.03 ¢/kWh   (1300 MWe net)
+
+  Plant availability [fraction]:
+           0.5  →    15.89 ¢/kWh   (920 MWe net)
+           0.6  →    13.28 ¢/kWh   (920 MWe net)
+           0.7  →    11.41 ¢/kWh   (920 MWe net)
+          0.75  →    10.66 ¢/kWh   (920 MWe net) <<< baseline
+           0.8  →    10.01 ¢/kWh   (920 MWe net)
+          0.85  →     9.43 ¢/kWh   (920 MWe net)
+           0.9  →     8.92 ¢/kWh   (920 MWe net)
+
+  Vessel inner radius [m] (affects D₂O capital cost):
+           1.5  →     8.94 ¢/kWh   (920 MWe net)
+             2  →     9.33 ¢/kWh   (920 MWe net)
+             3  →    10.66 ¢/kWh   (920 MWe net) <<< baseline
+             4  →    12.93 ¢/kWh   (920 MWe net)
+             5  →    16.41 ¢/kWh   (920 MWe net)
+
+  Interest rate / WACC [fraction]:
+          0.05  →     6.48 ¢/kWh   (920 MWe net)
+          0.07  →     7.95 ¢/kWh   (920 MWe net)
+          0.08  →     8.79 ¢/kWh   (920 MWe net)
+           0.1  →    10.66 ¢/kWh   (920 MWe net) <<< baseline
+          0.12  →    12.77 ¢/kWh   (920 MWe net)
+          0.15  →    16.42 ¢/kWh   (920 MWe net)
+
+======================================================================
+SCENARIO COMPARISON (conditional on physics viability)
+======================================================================
+
+Scenario                         Q   Net MWe    Cap $M    $/kWe         LCOE
+---------------------------------------------------------------------------
+Conservative (Q=5, FOAK)         5       253      4170   16,494  38.56 ¢/kWh
+Moderate/Baseline (Q=10)        10       920      5183    5,635  10.66 ¢/kWh
+Optimistic (Q=25, NOAK)         25      6377     18762    2,942   4.05 ¢/kWh
+
+  NOTE: All scenarios are conditional on D-D fusion from acoustic
+  cavitation being achievable — currently undemonstrated by 4 orders
+  of magnitude in temperature.
+
+======================================================================
+LCOE ELASTICITIES (central difference, dp=1%)
+======================================================================
+
+  Parameter                           Elasticity  (type)
+  ───────────────────────────────────  ──────────  ────────────
+  plant_availability                      -0.954  (engineering)
+  interest_rate                           +0.935  (financial)
+  thermal_efficiency                      -0.753  (engineering)
+  fusion_gain_Q                           -0.563  (engineering)
+  acoustic_driver_efficiency              -0.559  (engineering)
+  vessel_inner_radius_m                   +0.493  (engineering)
+  construction_time_years                 +0.407  (engineering)
+  acoustic_power_MW                       -0.217  (engineering)
+  blanket_energy_multiplication           -0.195  (engineering)
+  om_cost_per_MW_yr                       +0.156  (engineering)
+  shield_thickness_m                      +0.135  (engineering)
+  d2o_unit_cost_per_m3                    +0.114  (engineering)
+
+══════════════════════════════════════════════════════════════════════
+KEY BINDING CONSTRAINTS — top 3 LCOE drivers
+══════════════════════════════════════════════════════════════════════
+
+  1. FUSION GAIN Q: THE SINGLE BLOCKING SCIENTIFIC CONSTRAINT
+     Q is the product of an undemonstrated physics mechanism.
+     Demonstrated sonoluminescence: ~16,000 K (Flannigan & Suslick 2010).
+     Required for D-D thermonuclear fusion: ~10⁸ K.
+     Temperature gap: ~4 orders of magnitude — no published mechanism bridges it.
+     Net-positive operation (baseline params) requires Q ≥ ~3.5.
+     LCOE leverage: Q=5 → ~35–50 ¢/kWh; Q=10 → ~12–15 ¢/kWh;
+     Q=25 → ~3–5 ¢/kWh (all conditional on physics being achievable).
+     STATUS: Not demonstrated. Taleyarkhan (2002) claims discredited (2008).
+
+  2. D₂O VESSEL CAPITAL COST — $87M fill + ~$15M structure per module
+     At $700/kg and 1,105 kg/m³, a 3m-radius vessel holds ~113 m³ of D₂O.
+     D₂O fill alone: ~$87M per module (4 modules = ~$350M).
+     This is unavoidable — D₂O IS the fusion medium.
+     Higher Q → more fusion power per vessel → lower $/kWe → lower LCOE.
+     Potential mitigation: deuterated acetone (cheaper per kg) but no
+     industrial supply and radiation compatibility unknown.
+
+  3. RECIRCULATING POWER / Q THRESHOLD
+     The acoustic driver draws full electrical power continuously.
+     Breakeven requires: Q_sci × η_transducer × η_thermal > 1 + aux_fraction.
+     At η_trans=0.85, η_th=0.35: Q_sci × 0.298 > 1 → Q_sci > 3.36.
+     At Q=5: recirc fraction ~28–33% (large penalty on net output).
+     At Q=10: recirc fraction ~12% (baseline case; manageable).
+     PZT efficiency (85%) is already high — not a major lever.
+     The binding issue is Q, not transducer efficiency.
+
+  NOTE: This model makes dozens of speculative assumptions about a concept
+  that has not demonstrated fusion. All LCOE values should be treated as
+  'LCOE IF physics works at stated Q' — existence proofs, not forecasts.
+  See analysis.md §Section 2 for 5 blocking uncertainties and §Section 6
+  for the full data gap inventory (15 items, 9 blocking).
+
+NOTE: Parameters marked HIGH UNCERTAINTY or ASSUMED carry significant risk.
+CAS accounts follow 1costingfe CAS10-LCOE structure with D-D fuel parameters.
+Overrides documented inline. See parameter docstrings for full citations.

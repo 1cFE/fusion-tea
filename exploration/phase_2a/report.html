@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 2a: Generative Reasoning Tree — Fusion TEA</title>
+<style>
+:root {
+  --bg: #0f1219;
+  --surface: #181d27;
+  --surface2: #1e2433;
+  --border: #2a3244;
+  --text: #d4dae5;
+  --text-muted: #7a8599;
+  --accent: #5b8af5;
+  --accent2: #38bdf8;
+  --green: #34d399;
+  --amber: #fbbf24;
+  --red: #f87171;
+  --purple: #a78bfa;
+  --pink: #f472b6;
+  --orange: #fb923c;
+  --teal: #2dd4bf;
+  --radius: 10px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* --- Hero --- */
+.hero {
+  text-align: center;
+  padding: 80px 24px 60px;
+  background: linear-gradient(180deg, #131825 0%, var(--bg) 100%);
+  border-bottom: 1px solid var(--border);
+}
+.hero-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent2);
+  background: rgba(56,189,248,0.1);
+  border: 1px solid rgba(56,189,248,0.25);
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff 0%, var(--accent2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+}
+.hero .subtitle {
+  font-size: 18px;
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto 28px;
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.hero-stat { text-align: center; }
+.hero-stat .val {
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+}
+.hero-stat .lbl {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* --- Section --- */
+section { padding: 60px 0; }
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+section h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+section .section-desc {
+  color: var(--text-muted);
+  max-width: 700px;
+  margin-bottom: 32px;
+  font-size: 15px;
+}
+
+/* --- Cards --- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 16px;
+  transition: border-color 0.2s;
+}
+.card:hover { border-color: var(--accent); }
+.card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.card p { font-size: 14px; color: var(--text-muted); }
+
+/* --- Phase 1 Timeline --- */
+.timeline {
+  position: relative;
+  padding-left: 40px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent), var(--purple), var(--red));
+}
+.tl-item {
+  position: relative;
+  margin-bottom: 32px;
+}
+.tl-dot {
+  position: absolute;
+  left: -33px;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  background: var(--bg);
+}
+.tl-item:nth-child(2) .tl-dot { border-color: var(--amber); }
+.tl-item:nth-child(3) .tl-dot { border-color: var(--purple); }
+.tl-item:nth-child(4) .tl-dot { border-color: var(--red); }
+.tl-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+.tl-item:nth-child(1) .tl-tag { background: rgba(91,138,245,0.15); color: var(--accent); }
+.tl-item:nth-child(2) .tl-tag { background: rgba(251,191,36,0.15); color: var(--amber); }
+.tl-item:nth-child(3) .tl-tag { background: rgba(167,139,250,0.15); color: var(--purple); }
+.tl-item:nth-child(4) .tl-tag { background: rgba(248,113,113,0.15); color: var(--red); }
+.tl-item h3 { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+.tl-item p { font-size: 14px; color: var(--text-muted); }
+.tl-finding {
+  margin-top: 8px;
+  padding: 10px 14px;
+  background: var(--surface2);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  font-size: 13px;
+  color: var(--text);
+}
+.tl-item:nth-child(2) .tl-finding { border-color: var(--amber); }
+.tl-item:nth-child(3) .tl-finding { border-color: var(--purple); }
+.tl-item:nth-child(4) .tl-finding { border-color: var(--red); }
+
+/* --- N/A Density Meter --- */
+.meter-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 6px 0;
+  font-size: 13px;
+}
+.meter-label { width: 80px; text-align: right; color: var(--text-muted); }
+.meter-bar {
+  flex: 1;
+  height: 18px;
+  background: var(--surface2);
+  border-radius: 9px;
+  overflow: hidden;
+  position: relative;
+}
+.meter-fill {
+  height: 100%;
+  border-radius: 9px;
+  transition: width 0.8s ease;
+}
+.meter-val {
+  width: 44px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* --- Requirement Lenses --- */
+.req-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 14px;
+}
+.req-card {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.req-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.req-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.req-card h4 { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 2px; }
+.req-card .req-id { font-size: 11px; font-weight: 700; color: var(--text-muted); }
+.req-card p { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+
+/* --- Algorithm Flow --- */
+.flow-steps {
+  display: flex;
+  gap: 0;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+.flow-step {
+  flex: 1;
+  min-width: 220px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  position: relative;
+  text-align: center;
+}
+.flow-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 12px solid var(--accent);
+  z-index: 1;
+}
+.flow-steps { gap: 28px; }
+.flow-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+.flow-step h4 { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+.flow-step p { font-size: 13px; color: var(--text-muted); }
+
+/* --- Tree Viz --- */
+.tree-viz {
+  overflow-x: auto;
+  padding: 20px 0;
+}
+.tree-svg-wrap {
+  min-width: 900px;
+  width: 100%;
+}
+.tree-svg-wrap svg { width: 100%; height: auto; }
+.tree-node {
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+.tree-node:hover { filter: brightness(1.15); }
+.tree-node rect {
+  rx: 8;
+  ry: 8;
+  stroke-width: 1.5;
+}
+.tree-node text {
+  font-family: inherit;
+  font-size: 11px;
+  fill: var(--text);
+}
+.tree-edge {
+  stroke: var(--border);
+  stroke-width: 2;
+  fill: none;
+}
+
+/* --- Expansion Results --- */
+.option-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 14px;
+}
+.option-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.15s;
+}
+.option-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.option-header {
+  padding: 16px 18px 12px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.option-header h4 { font-size: 14px; font-weight: 600; color: #fff; flex: 1; }
+.option-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  margin-left: 8px;
+}
+.option-body { padding: 14px 18px; }
+.option-body p { font-size: 13px; color: var(--text-muted); margin-bottom: 8px; }
+.option-stats {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+  font-size: 12px;
+}
+.option-stats span { color: var(--text-muted); }
+.option-stats strong { color: var(--text); }
+
+/* --- Negative Space --- */
+.neg-list { display: flex; flex-direction: column; gap: 10px; }
+.neg-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--red);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.neg-x {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background: rgba(248,113,113,0.15);
+  color: var(--red);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+.neg-item h5 { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 2px; }
+.neg-item p { font-size: 12px; color: var(--text-muted); }
+
+/* --- Constraint Table --- */
+.constraint-table-wrap { overflow-x: auto; }
+.constraint-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.constraint-table th {
+  text-align: left;
+  padding: 10px 12px;
+  background: var(--surface2);
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+}
+.constraint-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.constraint-table tr:hover { background: rgba(91,138,245,0.04); }
+.ct-id { font-weight: 600; color: var(--accent2); white-space: nowrap; }
+.ct-type {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.ct-type.force { background: rgba(251,191,36,0.15); color: var(--amber); }
+.ct-type.eliminate { background: rgba(248,113,113,0.15); color: var(--red); }
+.ct-type.activate { background: rgba(52,211,153,0.15); color: var(--green); }
+.ct-status {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.ct-status.unmappable { background: rgba(122,133,153,0.2); color: var(--text-muted); }
+.ct-status.validated { background: rgba(52,211,153,0.15); color: var(--green); }
+
+/* --- Collapsible --- */
+details {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+details summary {
+  padding: 16px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  color: #fff;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  user-select: none;
+  transition: background 0.15s;
+}
+details summary:hover { background: var(--surface2); }
+details summary::before {
+  content: '▶';
+  font-size: 10px;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary::-webkit-details-marker { display: none; }
+.detail-count {
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--surface2);
+  color: var(--text-muted);
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: auto;
+}
+details .detail-body { padding: 0 20px 20px; }
+
+/* --- Scorecard --- */
+.scorecard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+}
+.score-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.score-badge {
+  flex-shrink: 0;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.score-badge.promising { background: rgba(52,211,153,0.15); color: var(--green); }
+.score-badge.confirmed { background: rgba(91,138,245,0.15); color: var(--accent); }
+.score-badge.strong { background: rgba(56,189,248,0.15); color: var(--accent2); }
+.score-badge.pending { background: rgba(122,133,153,0.15); color: var(--text-muted); }
+.score-item h4 { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 2px; }
+.score-item p { font-size: 12px; color: var(--text-muted); }
+
+/* --- Modal --- */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  backdrop-filter: blur(4px);
+}
+.modal-overlay.active { display: flex; }
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow);
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--surface);
+  z-index: 1;
+}
+.modal-header h3 { font-size: 18px; font-weight: 700; color: #fff; }
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+.modal-close:hover { background: var(--surface2); color: #fff; }
+.modal-body {
+  padding: 24px;
+}
+.modal-body pre {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 12px;
+  overflow-x: auto;
+  line-height: 1.5;
+  color: var(--text);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.modal-body code {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* --- Misc --- */
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-right: 4px;
+}
+.tag-blue { background: rgba(91,138,245,0.15); color: var(--accent); }
+.tag-green { background: rgba(52,211,153,0.15); color: var(--green); }
+.tag-amber { background: rgba(251,191,36,0.15); color: var(--amber); }
+.tag-red { background: rgba(248,113,113,0.15); color: var(--red); }
+.tag-purple { background: rgba(167,139,250,0.15); color: var(--purple); }
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 60px 0;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.kv-grid {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 6px 12px;
+  font-size: 13px;
+}
+.kv-grid dt { color: var(--text-muted); font-weight: 500; }
+.kv-grid dd { color: var(--text); }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 768px) {
+  .two-col { grid-template-columns: 1fr; }
+  .flow-steps { flex-direction: column; }
+  .flow-step:not(:last-child)::after { display: none; }
+  .hero-stats { gap: 20px; }
+}
+
+.novel-vars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.novel-var {
+  font-size: 11px;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  padding: 3px 8px;
+  background: rgba(167,139,250,0.1);
+  border: 1px solid rgba(167,139,250,0.25);
+  color: var(--purple);
+  border-radius: 4px;
+}
+
+/* --- Concept family mapping --- */
+.family-map {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.family-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 13px;
+}
+.family-arrow {
+  color: var(--accent2);
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.family-from { color: var(--text); font-weight: 500; flex: 1; }
+.family-to {
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(91,138,245,0.1);
+  padding: 2px 10px;
+  border-radius: 4px;
+}
+
+/* --- Open questions --- */
+.oq-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--amber);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 20px;
+  margin-bottom: 14px;
+}
+.oq-card h4 { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+.oq-card p { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+.oq-options { display: flex; flex-direction: column; gap: 6px; }
+.oq-opt {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  font-size: 13px;
+  color: var(--text);
+  padding: 6px 10px;
+  background: var(--surface2);
+  border-radius: 6px;
+}
+.oq-opt strong { color: var(--amber); flex-shrink: 0; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+</style>
+</head>
+<body>
+
+<!-- ==================== HERO ==================== -->
+<header class="hero">
+  <div class="hero-badge">Fusion TEA — Phase 2a</div>
+  <h1>Generative Reasoning Tree</h1>
+  <p class="subtitle">Deriving the structure of the fusion design space from first principles — testing whether requirements + context can explain why ~38 concepts look the way they do.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="val">9</div><div class="lbl">Tree Nodes</div></div>
+    <div class="hero-stat"><div class="val">22</div><div class="lbl">Constraints</div></div>
+    <div class="hero-stat"><div class="val">38</div><div class="lbl">Known Concepts</div></div>
+    <div class="hero-stat"><div class="val">6</div><div class="lbl">Req. Lenses</div></div>
+    <div class="hero-stat"><div class="val">2</div><div class="lbl">Levels Expanded</div></div>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- ==================== PHASE 1 RECAP ==================== -->
+<section>
+  <div class="section-label">Background</div>
+  <h2>What Phase 1 Established</h2>
+  <p class="section-desc">Before building cost models, we needed to understand the <em>structure</em> of the design space. Phase 1 tested whether morphological analysis could explain ~38 active fusion concepts. The answer was no — but the failure was deeply informative.</p>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-tag">Phase 1a</span>
+      <h3>Building the Differentiation Table</h3>
+      <p>38 concepts × 12 design columns. Each cell: a controlled-vocabulary value, N/A (structurally inapplicable), or TBD (unknown).</p>
+      <div class="tl-finding">
+        <strong>Result:</strong> One column — "Confinement Concept" — had 29 unique values for 38 rows. It was nearly a unique identifier, doing all the descriptive work. The table was a lookup, not an analysis.
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-tag">Phase 1b v2</span>
+      <h3>Restructuring Reveals Context-Dependence</h3>
+      <p>Decomposed the overloaded "Confinement Concept" column into an 8-column hierarchy. Resulting table: 38 × 18 columns.</p>
+      <div class="tl-finding">
+        <strong>Key metric — N/A density:</strong> The fraction of structurally inapplicable cells.
+      </div>
+      <div style="margin-top: 14px;">
+        <div class="meter-row">
+          <span class="meter-label">v1 flat</span>
+          <div class="meter-bar"><div class="meter-fill" style="width:9.6%; background: var(--accent);"></div></div>
+          <span class="meter-val" style="color:var(--accent);">9.6%</span>
+        </div>
+        <div class="meter-row">
+          <span class="meter-label">L1 cols</span>
+          <div class="meter-bar"><div class="meter-fill" style="width:27.7%; background: var(--amber);"></div></div>
+          <span class="meter-val" style="color:var(--amber);">27.7%</span>
+        </div>
+        <div class="meter-row">
+          <span class="meter-label">v2 (L2)</span>
+          <div class="meter-bar"><div class="meter-fill" style="width:36.7%; background: var(--purple);"></div></div>
+          <span class="meter-val" style="color:var(--purple);">36.7%</span>
+        </div>
+        <p style="font-size:12px; color:var(--text-muted); margin-top:6px;">Deeper questions → narrower applicability → more N/A. Every N/A traces to an upstream design choice. This is the empirical signature of <strong style="color:var(--purple);">context-dependence</strong>.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-tag">Phase 1d</span>
+      <h3>Is It a Design Space or a Classification Scheme?</h3>
+      <p>Four tests to determine whether the table can <em>explain</em> and <em>generate</em> — not just categorize.</p>
+      <div style="margin-top:10px; display:grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+        <div style="background:var(--surface2); border-radius:8px; padding:12px;">
+          <div style="font-size:12px; color:var(--text-muted); margin-bottom:2px;">Test 1 — Vocabulary</div>
+          <div style="font-size:14px; color:var(--amber); font-weight:600;">8 of 17 columns "open"</div>
+          <div style="font-size:11px; color:var(--text-muted);">21 missing plausible values</div>
+        </div>
+        <div style="background:var(--surface2); border-radius:8px; padding:12px;">
+          <div style="font-size:12px; color:var(--text-muted); margin-bottom:2px;">Test 2 — Generative</div>
+          <div style="font-size:14px; color:var(--red); font-weight:600;">0 of 30 coherent</div>
+          <div style="font-size:11px; color:var(--text-muted);">Random combos always violate physics</div>
+        </div>
+        <div style="background:var(--surface2); border-radius:8px; padding:12px;">
+          <div style="font-size:12px; color:var(--text-muted); margin-bottom:2px;">Test 3 — Constraints</div>
+          <div style="font-size:14px; color:var(--amber); font-weight:600;">~2 effective DoF</div>
+          <div style="font-size:11px; color:var(--text-muted);">Not 15+ as column count implies</div>
+        </div>
+        <div style="background:var(--surface2); border-radius:8px; padding:12px;">
+          <div style="font-size:12px; color:var(--text-muted); margin-bottom:2px;">Test 4 — Recoverability</div>
+          <div style="font-size:14px; color:var(--amber); font-weight:600;">Family OK, within-family fails</div>
+          <div style="font-size:11px; color:var(--text-muted);">Can't distinguish CFS from TE</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-tag">Verdict</span>
+      <h3>Classification Scheme, Not Design Space</h3>
+      <p>The table correctly categorizes by physics approach but cannot explain within-family divergence, cannot generate viable concepts, and has only ~2 effective degrees of freedom. Structure is a shallow tree, not a Cartesian grid.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ==================== THE PROBLEM ==================== -->
+<section>
+  <div class="section-label">Motivation</div>
+  <h2>The Problem Phase 2 Addresses</h2>
+  <p class="section-desc">The table records <strong>WHAT</strong> each concept chose. Phase 2 asks: can we build a representation that captures <strong>WHY</strong>?</p>
+
+  <div class="two-col">
+    <div class="card" style="border-left: 3px solid var(--red);">
+      <h3>What the Table Says</h3>
+      <p>"CFS builds a compact tokamak with HTS magnets and D-T fuel."</p>
+      <p style="margin-top:8px;">"TAE pursues p-B11 fuel in an FRC."</p>
+    </div>
+    <div class="card" style="border-left: 3px solid var(--green);">
+      <h3>What the Reasoning Reveals</h3>
+      <p>"CFS bets on high-B field (HTS-enabled) → compact device → economically competitive — but creates cascading challenges: blanket space, disruption severity, neutron flux density."</p>
+      <p style="margin-top:8px;">"TAE's fuel choice <em>eliminates</em> the entire neutron/tritium problem set while <em>creating</em> an extreme temperature challenge no other concept faces."</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 24px;">
+    <h3 style="font-size:16px; color:#fff; margin-bottom:12px;">Four Tests for the Reasoning Tree</h3>
+    <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:10px;">
+      <div class="card" style="padding:16px;">
+        <span class="tag tag-blue">Test 1</span>
+        <h3 style="font-size:14px; margin-top:6px;">Negative Space Explanation</h3>
+        <p>Explain <em>why</em> certain combos don't exist (no p-B11 tokamak, no steady-state IFE)</p>
+      </div>
+      <div class="card" style="padding:16px;">
+        <span class="tag tag-green">Test 2</span>
+        <h3 style="font-size:14px; margin-top:6px;">Constraint Validation</h3>
+        <p>Do first-principles constraints hold against 38 real concepts? Target: >70% validated</p>
+      </div>
+      <div class="card" style="padding:16px;">
+        <span class="tag tag-purple">Test 3</span>
+        <h3 style="font-size:14px; margin-top:6px;">Divergence Depth</h3>
+        <p>Does the tree provide richer reasoning than category labels at branch points?</p>
+      </div>
+      <div class="card" style="padding:16px;">
+        <span class="tag tag-amber">Test 4</span>
+        <h3 style="font-size:14px; margin-top:6px;">Concept Family Recovery</h3>
+        <p>Do tree paths arrive at recognizable families (tokamak, stellarator, laser ICF)?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ==================== REQUIREMENT LENSES ==================== -->
+<section>
+  <div class="section-label">Framework</div>
+  <h2>The Six Requirement Lenses</h2>
+  <p class="section-desc">Every fusion power plant must satisfy six universal requirements. These are not tree nodes — they are <em>lenses</em> applied at every decision point, producing context-dependent analysis.</p>
+
+  <div class="req-grid">
+    <div class="req-card">
+      <div class="req-icon" style="background:rgba(248,113,113,0.12); color:var(--red);">⛽</div>
+      <div>
+        <div class="req-id">R1</div>
+        <h4>Fuel the Reaction</h4>
+        <p>D-T → where does tritium come from? p-B11 → commercially available (trivial). The fuel choice cascades.</p>
+      </div>
+    </div>
+    <div class="req-card">
+      <div class="req-icon" style="background:rgba(91,138,245,0.12); color:var(--accent);">🔥</div>
+      <div>
+        <div class="req-id">R2</div>
+        <h4>Achieve Fusion Conditions</h4>
+        <p>Confine, heat, stabilize. How you do each depends on everything upstream.</p>
+      </div>
+    </div>
+    <div class="req-card">
+      <div class="req-icon" style="background:rgba(52,211,153,0.12); color:var(--green);">⚡</div>
+      <div>
+        <div class="req-id">R3</div>
+        <h4>Produce Net Energy</h4>
+        <p>Gain, driver efficiency, recirculating power. The economics hinge here.</p>
+      </div>
+    </div>
+    <div class="req-card">
+      <div class="req-icon" style="background:rgba(251,191,36,0.12); color:var(--amber);">🔋</div>
+      <div>
+        <div class="req-id">R4</div>
+        <h4>Extract Usable Energy</h4>
+        <p>Neutrons vs. charged particles? Thermal cycle vs. direct conversion? Geometry-dependent.</p>
+      </div>
+    </div>
+    <div class="req-card">
+      <div class="req-icon" style="background:rgba(167,139,250,0.12); color:var(--purple);">☢️</div>
+      <div>
+        <div class="req-id">R5</div>
+        <h4>Manage Nuclear Environment</h4>
+        <p>Shielding, activation, waste classification, tritium safety — all concept-dependent.</p>
+      </div>
+    </div>
+    <div class="req-card">
+      <div class="req-icon" style="background:rgba(244,114,182,0.12); color:var(--pink);">🏗️</div>
+      <div>
+        <div class="req-id">R6</div>
+        <h4>Maintain Structural Integrity</h4>
+        <p>Neutron damage, thermal loads, cyclic stress. Same requirement, completely different challenges per concept.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ==================== ALGORITHM ==================== -->
+<section>
+  <div class="section-label">Algorithm</div>
+  <h2>How the Reasoning Tree Works</h2>
+  <p class="section-desc">A three-step loop executed one tree level at a time: expand, validate, review. Each node sees only its own path from root — no cross-branch memory.</p>
+
+  <div class="flow-steps">
+    <div class="flow-step">
+      <div class="flow-num">1</div>
+      <h4>Expand</h4>
+      <p>LLM receives accumulated context + R1–R6 lenses + current question. Produces options, constraints, negative space, and new downstream questions.</p>
+      <div style="margin-top:10px;">
+        <span class="tag tag-blue">claude -p</span>
+        <span class="tag tag-purple">Sonnet</span>
+        <span class="tag tag-green">~$0.15/node</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">2</div>
+      <h4>Validate</h4>
+      <p>Extract constraints into formal format. Map to table columns. Check against 38 real concepts. Check cross-branch consistency.</p>
+      <div style="margin-top:10px;">
+        <span class="tag tag-amber">column_map.py</span>
+        <span class="tag tag-red">table_v2.csv</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">3</div>
+      <h4>Review</h4>
+      <p>Render tree + constraints as markdown. Human reviews physics, constraint quality, and selects branches for next expansion.</p>
+      <div style="margin-top:10px;">
+        <span class="tag tag-green">render.py</span>
+      </div>
+    </div>
+  </div>
+
+  <details style="margin-top: 24px;">
+    <summary>
+      Expansion Input/Output Schema
+      <span class="detail-count">JSON</span>
+    </summary>
+    <div class="detail-body">
+      <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">Each expansion call produces a structured JSON response with this schema:</p>
+      <pre><code>{
+  "question_in_context": "string — restated question with context",
+  "requirements_bearing": {
+    "R1": "how fuel requirement bears on this question",
+    "R2": "...", "R3": "...", "R4": "...", "R5": "...", "R6": "..."
+  },
+  "options": [
+    {
+      "id": "option_1",
+      "name": "Option Name",
+      "thesis": "What problem this solves, what trade-off it navigates",
+      "requirement_analysis": {
+        "R1": "...", "R2": "...", "R3": "...", "R4": "...", "R5": "...", "R6": "..."
+      },
+      "constraints": [
+        {
+          "condition": {"variable": "value"},
+          "consequence": {"variable": "value"},
+          "type": "force | eliminate | activate",
+          "requirement_basis": "R1–R6",
+          "reasoning": "1–2 sentence physics justification"
+        }
+      ],
+      "new_questions": ["Question 1", "Question 2", ...],
+      "context_addition": "Summary added to accumulated context"
+    }
+  ],
+  "negative_space": [
+    {
+      "approach": "Name of non-viable approach",
+      "reason_non_viable": "Physics/engineering explanation",
+      "requirement_basis": "Which R1–R6 it violates",
+      "context_dependency": "Why non-viable specifically in this context"
+    }
+  ]
+}</code></pre>
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      Constraint Formal Structure
+      <span class="detail-count">Registry</span>
+    </summary>
+    <div class="detail-body">
+      <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">Each constraint in the registry carries:</p>
+      <pre><code>{
+  "id": "DC-001",
+  "source_node": "L0",
+  "source_option": "closed-magnetic-topology",
+  "condition": {"confinement_approach": "closed_magnetic"},
+  "consequence": {"field_topology": "toroidal"},
+  "constraint_type": "force",
+  "requirement_basis": "R2",
+  "reasoning": "Closed field lines require toroidal geometry...",
+  "justification": [                    // ← accumulated context
+    {"choice": "...", "reasoning": "..."}
+  ],
+  "validation": {
+    "table_check": "PASS | FLAG | FAIL | UNMAPPABLE",
+    "concepts_checked": 19,
+    "concepts_matched": 19,
+    "violations": [],
+    "notes": "..."
+  },
+  "consistency": {
+    "relationship": "novel | reinforcing | contradicting | extending",
+    "related_constraints": [],
+    "notes": "..."
+  },
+  "status": "validated | flagged | rejected | unmappable"
+}</code></pre>
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      Pipeline Scripts
+      <span class="detail-count">3 files</span>
+    </summary>
+    <div class="detail-body">
+      <div style="display:grid; grid-template-columns: 100px 1fr; gap:8px 14px; font-size:13px;">
+        <dt style="color:var(--accent); font-weight:600; font-family:monospace;">expand.py</dt>
+        <dd style="color:var(--text-muted);">Builds prompt from tree state, calls <code>claude -p</code> headlessly, parses JSON response, creates child nodes in tree.json</dd>
+        <dt style="color:var(--accent); font-weight:600; font-family:monospace;">validate.py</dt>
+        <dd style="color:var(--text-muted);">Extracts constraints from expansions, maps variables to table columns via column_map.py, validates against table_v2.csv, checks cross-branch consistency</dd>
+        <dt style="color:var(--accent); font-weight:600; font-family:monospace;">render.py</dt>
+        <dd style="color:var(--text-muted);">Renders tree structure + constraint registry into human-readable reasoning_tree.md</dd>
+      </div>
+    </div>
+  </details>
+</section>
+
+<hr class="divider">
+
+<!-- ==================== TREE VISUALIZATION ==================== -->
+<section>
+  <div class="section-label">Results</div>
+  <h2>The Reasoning Tree</h2>
+  <p class="section-desc">9 nodes across 3 levels. 2 expanded (blue), 7 pending (gray). Click a node for details.</p>
+
+  <div class="tree-viz">
+    <div class="tree-svg-wrap">
+      <svg viewBox="0 0 960 520" xmlns="http://www.w3.org/2000/svg">
+        <!-- Edges -->
+        <!-- L0 to L1 children -->
+        <path class="tree-edge" d="M 480,74 C 480,110 120,110 120,148"/>
+        <path class="tree-edge" d="M 480,74 C 480,110 310,110 310,148"/>
+        <path class="tree-edge" d="M 480,74 C 480,110 500,110 500,148"/>
+        <path class="tree-edge" d="M 480,74 C 480,110 680,110 680,148"/>
+        <path class="tree-edge" d="M 480,74 C 480,110 860,110 860,148"/>
+        <!-- L1-closed to L2 children -->
+        <path class="tree-edge" d="M 120,224 C 120,264 80,264 80,302"/>
+        <path class="tree-edge" d="M 120,224 C 120,264 200,264 200,302"/>
+        <path class="tree-edge" d="M 120,224 C 120,264 340,264 340,302"/>
+
+        <!-- L0 Node -->
+        <g class="tree-node" onclick="showNodeDetail('l0')">
+          <rect x="340" y="20" width="280" height="54" fill="#1a2744" stroke="#5b8af5"/>
+          <text x="480" y="42" text-anchor="middle" font-size="10" fill="#5b8af5" font-weight="700">L0 — ROOT</text>
+          <text x="480" y="58" text-anchor="middle" font-size="11" fill="#d4dae5">How should we confine the reaction?</text>
+          <circle cx="626" cy="35" r="8" fill="#5b8af5" opacity="0.3"/>
+          <text x="626" y="39" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">5</text>
+        </g>
+
+        <!-- L1 Nodes -->
+        <g class="tree-node" onclick="showNodeDetail('l1-closed')">
+          <rect x="20" y="148" width="200" height="76" fill="#1a2744" stroke="#5b8af5"/>
+          <text x="120" y="168" text-anchor="middle" font-size="10" fill="#5b8af5" font-weight="700">L1 — EXPANDED</text>
+          <text x="120" y="183" text-anchor="middle" font-size="10.5" fill="#d4dae5">Closed Magnetic</text>
+          <text x="120" y="197" text-anchor="middle" font-size="10" fill="#7a8599">Rotational transform?</text>
+          <circle cx="224" cy="160" r="8" fill="#5b8af5" opacity="0.3"/>
+          <text x="224" y="164" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">3</text>
+        </g>
+        <g class="tree-node" onclick="showNodeDetail('l1-mirror')">
+          <rect x="230" y="148" width="160" height="58" fill="#1e2433" stroke="#2a3244"/>
+          <text x="310" y="168" text-anchor="middle" font-size="10" fill="#7a8599" font-weight="600">L1 — PENDING</text>
+          <text x="310" y="184" text-anchor="middle" font-size="10.5" fill="#aab3c4">Open Magnetic</text>
+          <text x="310" y="198" text-anchor="middle" font-size="9.5" fill="#5a6378">(Mirror)</text>
+        </g>
+        <g class="tree-node" onclick="showNodeDetail('l1-inertial')">
+          <rect x="410" y="148" width="160" height="58" fill="#1e2433" stroke="#2a3244"/>
+          <text x="490" y="168" text-anchor="middle" font-size="10" fill="#7a8599" font-weight="600">L1 — PENDING</text>
+          <text x="490" y="184" text-anchor="middle" font-size="10.5" fill="#aab3c4">Inertial</text>
+          <text x="490" y="198" text-anchor="middle" font-size="9.5" fill="#5a6378">Confinement</text>
+        </g>
+        <g class="tree-node" onclick="showNodeDetail('l1-mif')">
+          <rect x="590" y="148" width="170" height="58" fill="#1e2433" stroke="#2a3244"/>
+          <text x="675" y="168" text-anchor="middle" font-size="10" fill="#7a8599" font-weight="600">L1 — PENDING</text>
+          <text x="675" y="184" text-anchor="middle" font-size="10.5" fill="#aab3c4">Magnetized Target</text>
+          <text x="675" y="198" text-anchor="middle" font-size="9.5" fill="#5a6378">(Magneto-Inertial)</text>
+        </g>
+        <g class="tree-node" onclick="showNodeDetail('l1-es')">
+          <rect x="780" y="148" width="160" height="58" fill="#1e2433" stroke="#2a3244"/>
+          <text x="860" y="168" text-anchor="middle" font-size="10" fill="#7a8599" font-weight="600">L1 — PENDING</text>
+          <text x="860" y="184" text-anchor="middle" font-size="10.5" fill="#aab3c4">Electrostatic</text>
+          <text x="860" y="198" text-anchor="middle" font-size="9.5" fill="#5a6378">Potential Well</text>
+        </g>
+
+        <!-- L2 Nodes -->
+        <g class="tree-node">
+          <rect x="10" y="302" width="140" height="58" fill="#1e2433" stroke="#2a3244"/>
+          <text x="80" y="322" text-anchor="middle" font-size="10" fill="#7a8599" font-weight="600">L2 — PENDING</text>
+          <text x="80" y="337" text-anchor="middle" font-size="10" fill="#aab3c4">Plasma Current</text>
+          <text x="80" y="350" text-anchor="middle" font-size="9" fill="#5a6378">→ Tokamak</text>
+        </g>
+        <g class="tree-node">
+          <rect x="160" y="302" width="140" height="58" fill="#1e2433" stroke="#2a3244"/>
+          <text x="230" y="322" text-anchor="middle" font-size="10" fill="#7a8599" font-weight="600">L2 — PENDING</text>
+          <text x="230" y="337" text-anchor="middle" font-size="10" fill="#aab3c4">External 3D Coils</text>
+          <text x="230" y="350" text-anchor="middle" font-size="9" fill="#5a6378">→ Stellarator</text>
+        </g>
+        <g class="tree-node">
+          <rect x="310" y="302" width="140" height="58" fill="#1e2433" stroke="#2a3244"/>
+          <text x="380" y="322" text-anchor="middle" font-size="10" fill="#7a8599" font-weight="600">L2 — PENDING</text>
+          <text x="380" y="337" text-anchor="middle" font-size="10" fill="#aab3c4">Hybrid Transform</text>
+          <text x="380" y="350" text-anchor="middle" font-size="9" fill="#5a6378">→ Advanced</text>
+        </g>
+
+        <!-- Legend -->
+        <rect x="690" y="310" width="12" height="12" rx="3" fill="#1a2744" stroke="#5b8af5" stroke-width="1.5"/>
+        <text x="710" y="321" font-size="10" fill="#7a8599">Expanded</text>
+        <rect x="770" y="310" width="12" height="12" rx="3" fill="#1e2433" stroke="#2a3244" stroke-width="1.5"/>
+        <text x="790" y="321" font-size="10" fill="#7a8599">Pending</text>
+        <circle cx="696" y="343" r="7" fill="#5b8af5" opacity="0.3" cy="343"/>
+        <text x="696" y="347" text-anchor="middle" font-size="8" fill="#fff" font-weight="700">N</text>
+        <text x="712" y="347" font-size="10" fill="#7a8599">= option count</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ==================== L0 RESULTS ==================== -->
+<section>
+  <div class="section-label">L0 Expansion</div>
+  <h2>Root: How Should We Confine the Reaction?</h2>
+  <p class="section-desc">No prior context. The LLM reasons from scratch about fundamental confinement approaches, producing 5 options, 5 negative-space entries, and 22 constraints.</p>
+
+  <h3 style="font-size:16px; color:#fff; margin-bottom:14px;">Options Generated</h3>
+  <div class="option-cards">
+    <div class="option-card">
+      <div class="option-header">
+        <h4>Closed Magnetic Topology</h4>
+        <span class="option-badge" style="background:rgba(91,138,245,0.15); color:var(--accent);">MFE</span>
+      </div>
+      <div class="option-body">
+        <p>Eliminate end losses via toroidal geometry. Trade-off: requires rotational transform — either from plasma current (disruption risk) or 3D coil complexity.</p>
+        <div class="option-stats">
+          <span>Constraints: <strong>6</strong></span>
+          <span>Questions: <strong>6</strong></span>
+        </div>
+      </div>
+    </div>
+    <div class="option-card">
+      <div class="option-header">
+        <h4>Open Magnetic (Mirror)</h4>
+        <span class="option-badge" style="background:rgba(52,211,153,0.15); color:var(--green);">MFE</span>
+      </div>
+      <div class="option-body">
+        <p>Accept end losses for geometric simplicity. Compensate with magnetic plugging and/or direct energy conversion of escaping ions at >80% efficiency.</p>
+        <div class="option-stats">
+          <span>Constraints: <strong>4</strong></span>
+          <span>Questions: <strong>5</strong></span>
+        </div>
+      </div>
+    </div>
+    <div class="option-card">
+      <div class="option-header">
+        <h4>Inertial Confinement</h4>
+        <span class="option-badge" style="background:rgba(251,191,36,0.15); color:var(--amber);">IFE</span>
+      </div>
+      <div class="option-body">
+        <p>Invert the Lawson trade-off — extreme transient density (~1000× compression) instead of sustained confinement. Fundamentally pulsed architecture.</p>
+        <div class="option-stats">
+          <span>Constraints: <strong>5</strong></span>
+          <span>Questions: <strong>6</strong></span>
+        </div>
+      </div>
+    </div>
+    <div class="option-card">
+      <div class="option-header">
+        <h4>Magnetized Target (MIF)</h4>
+        <span class="option-badge" style="background:rgba(167,139,250,0.15); color:var(--purple);">MIF</span>
+      </div>
+      <div class="option-body">
+        <p>Embed magnetic field in target to reduce compression ratio. Enables efficient mechanical drivers at intermediate density between MFE and IFE.</p>
+        <div class="option-stats">
+          <span>Constraints: <strong>4</strong></span>
+          <span>Questions: <strong>5</strong></span>
+        </div>
+      </div>
+    </div>
+    <div class="option-card">
+      <div class="option-header">
+        <h4>Electrostatic Potential Well</h4>
+        <span class="option-badge" style="background:rgba(248,113,113,0.15); color:var(--red);">Exotic</span>
+      </div>
+      <div class="option-body">
+        <p>Use electric fields to confine ions. Fundamentally limited by Earnshaw's theorem — Coulomb scattering cross-section exceeds fusion cross-section by ~10⁴.</p>
+        <div class="option-stats">
+          <span>Constraints: <strong>3</strong></span>
+          <span>Questions: <strong>3</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <details style="margin-top: 24px;">
+    <summary>
+      Negative Space: 5 Non-Viable Approaches
+      <span class="detail-count">L0</span>
+    </summary>
+    <div class="detail-body">
+      <div class="neg-list">
+        <div class="neg-item">
+          <div class="neg-x">✕</div>
+          <div>
+            <h5>Gravitational Confinement</h5>
+            <p>Minimum mass for self-confinement exceeds ~10²⁹ kg (brown dwarf scale). The gravitational-to-electromagnetic force ratio is ~10⁻³⁶ — no terrestrial device can produce the required gravitational potential.</p>
+          </div>
+        </div>
+        <div class="neg-item">
+          <div class="neg-x">✕</div>
+          <div>
+            <h5>Direct Material Containment</h5>
+            <p>Plasma at 10⁸ K vs. wall materials at ~4000 K. The energy density gradient is insurmountable — no material survives direct contact with fusion plasma.</p>
+          </div>
+        </div>
+        <div class="neg-item">
+          <div class="neg-x">✕</div>
+          <div>
+            <h5>Beam-Target at Sub-Thermal Energies</h5>
+            <p>Coulomb scattering cross-section exceeds fusion cross-section by ~10⁴ at relevant energies. Net energy is impossible from this ratio alone — beam particles scatter before fusing.</p>
+          </div>
+        </div>
+        <div class="neg-item">
+          <div class="neg-x">✕</div>
+          <div>
+            <h5>Chemical/Molecular Confinement</h5>
+            <p>Fusion temperatures (~10 keV) exceed chemical bond energies (~eV) by four orders of magnitude. All molecular structure dissociates before fusion conditions are reached.</p>
+          </div>
+        </div>
+        <div class="neg-item">
+          <div class="neg-x">✕</div>
+          <div>
+            <h5>Purely Radiative Confinement</h5>
+            <p>Radiation pressure at fusion temperatures is ~10¹³ Pa, but producing this externally would consume more power than fusion produces — a fundamental R3 (net energy) violation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</section>
+
+<hr class="divider">
+
+<!-- ==================== L1 RESULTS ==================== -->
+<section>
+  <div class="section-label">L1 Expansion</div>
+  <h2>Closed Magnetic: How to Provide Rotational Transform?</h2>
+  <p class="section-desc">First expansion with accumulated context. The LLM sees one prior decision (closed magnetic topology) and reasons about the next branching point — producing recognizable concept families.</p>
+
+  <div class="option-cards" style="margin-bottom: 24px;">
+    <div class="option-card">
+      <div class="option-header">
+        <h4>Plasma-Current-Driven</h4>
+        <span class="option-badge" style="background:rgba(91,138,245,0.15); color:var(--accent);">→ Tokamak</span>
+      </div>
+      <div class="option-body">
+        <p>Simple axisymmetric coils. Trade-off: disruption risk is non-zero (MHD theory — no known control scheme guarantees zero disruption probability over plant lifetime) and continuous current-drive power needed.</p>
+        <div class="option-stats">
+          <span>Constraints: <strong>5</strong></span>
+          <span>Questions: <strong>5</strong></span>
+        </div>
+        <p style="margin-top:8px; font-size:12px;">Next: <em>"What bootstrap current fraction is achievable?"</em></p>
+      </div>
+    </div>
+    <div class="option-card">
+      <div class="option-header">
+        <h4>External 3D Coil-Generated</h4>
+        <span class="option-badge" style="background:rgba(167,139,250,0.15); color:var(--purple);">→ Stellarator</span>
+      </div>
+      <div class="option-body">
+        <p>Disruption risk eliminated by construction — no net current means MHD free-energy source for disruptions doesn't exist. Trade-off: 3D coil manufacturing complexity and reduced blanket coverage.</p>
+        <div class="option-stats">
+          <span>Constraints: <strong>5</strong></span>
+          <span>Questions: <strong>6</strong></span>
+        </div>
+        <p style="margin-top:8px; font-size:12px;">Next: <em>"What symmetry class (QA, QH, QI) best optimizes fast-particle confinement?"</em></p>
+      </div>
+    </div>
+    <div class="option-card">
+      <div class="option-header">
+        <h4>Hybrid: External + Supplemental Current</h4>
+        <span class="option-badge" style="background:rgba(45,212,191,0.15); color:var(--teal);">→ Advanced</span>
+      </div>
+      <div class="option-body">
+        <p>External transform provides disruption-free baseline. Plasma current enables active profile control. Disruption character changes from catastrophic collapse to graceful degradation.</p>
+        <div class="option-stats">
+          <span>Constraints: <strong>4</strong></span>
+          <span>Questions: <strong>5</strong></span>
+        </div>
+        <p style="margin-top:8px; font-size:12px;">Next: <em>"At what ratio of external-to-internal transform does disruption character change?"</em></p>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-size:16px; color:#fff; margin-bottom:14px;">Concept Family Recovery</h3>
+  <p style="font-size:14px; color:var(--text-muted); margin-bottom:16px;">Concepts emerged through reasoning about physics trade-offs, not by naming known devices:</p>
+  <div class="family-map">
+    <div class="family-row">
+      <span class="family-from">"Plasma-current-driven transform → simple axisymmetric coils, disruption risk, current-drive power"</span>
+      <span class="family-arrow">→</span>
+      <span class="family-to">Tokamak family</span>
+    </div>
+    <div class="family-row">
+      <span class="family-from">"External 3D coils → disruption-free, complex coil geometry, fixed transform profile"</span>
+      <span class="family-arrow">→</span>
+      <span class="family-to">Stellarator family</span>
+    </div>
+    <div class="family-row">
+      <span class="family-from">"Hybrid → larger optimization space, graceful degradation vs. catastrophic disruption"</span>
+      <span class="family-arrow">→</span>
+      <span class="family-to">Advanced / quasi-symmetric</span>
+    </div>
+  </div>
+
+  <details style="margin-top:20px;">
+    <summary>
+      Negative Space: 4 Non-Viable Approaches
+      <span class="detail-count">L1</span>
+    </summary>
+    <div class="detail-body">
+      <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">These are non-viable <em>specifically because</em> we chose closed magnetic topology — demonstrating context-dependent negative space:</p>
+      <div class="neg-list">
+        <div class="neg-item">
+          <div class="neg-x">✕</div>
+          <div>
+            <h5>No Rotational Transform at All</h5>
+            <p>Charge separation from grad-B drifts destroys confinement in microseconds. Direct R2 violation — the topology demands transform.</p>
+          </div>
+        </div>
+        <div class="neg-item">
+          <div class="neg-x">✕</div>
+          <div>
+            <h5>Pulsed Inductive Drive Only</h5>
+            <p>Finite flux swing limits pulse duration. For power plants, this produces unacceptable duty cycle — fundamentally incompatible with steady electricity generation.</p>
+          </div>
+        </div>
+        <div class="neg-item">
+          <div class="neg-x">✕</div>
+          <div>
+            <h5>Open Field Lines Within Closed Geometry</h5>
+            <p>Field lines terminating on material surfaces defeats the purpose of closing the geometry — you get mirror-like end losses without mirror-like geometric simplicity.</p>
+          </div>
+        </div>
+        <div class="neg-item">
+          <div class="neg-x">✕</div>
+          <div>
+            <h5>Passive (Uncontrolled) Plasma Current</h5>
+            <p>Resistive decay and uncontrolled profile evolution lead to instability. R2 and R6 demand active control of the current profile.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details style="margin-top:12px;">
+    <summary>
+      Notable L1 Constraints
+      <span class="detail-count">4 highlighted</span>
+    </summary>
+    <div class="detail-body">
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div class="card" style="border-left:3px solid var(--amber); margin-bottom:0;">
+          <div style="display:flex; gap:8px; align-items:center; margin-bottom:6px;">
+            <span class="ct-type force">FORCE</span>
+            <span style="font-size:12px; color:var(--text-muted);">R6 — Plasma-current option</span>
+          </div>
+          <h3 style="font-size:14px;">Disruption risk is non-zero</h3>
+          <p>"MHD theory shows that no known control scheme can guarantee disruption probability exactly zero over plant lifetime."</p>
+        </div>
+        <div class="card" style="border-left:3px solid var(--red); margin-bottom:0;">
+          <div style="display:flex; gap:8px; align-items:center; margin-bottom:6px;">
+            <span class="ct-type eliminate">ELIMINATE</span>
+            <span style="font-size:12px; color:var(--text-muted);">R2 — External-coils option</span>
+          </div>
+          <h3 style="font-size:14px;">Disruption risk eliminated by construction</h3>
+          <p>"With no net current, the MHD free energy source for disruptions does not exist." — The <em>same variable</em> takes opposite values depending on the transform choice. <strong style="color:var(--accent2);">This IS context-dependence.</strong></p>
+        </div>
+        <div class="card" style="border-left:3px solid var(--amber); margin-bottom:0;">
+          <div style="display:flex; gap:8px; align-items:center; margin-bottom:6px;">
+            <span class="ct-type force">FORCE</span>
+            <span style="font-size:12px; color:var(--text-muted);">R4 — External-coils option</span>
+          </div>
+          <h3 style="font-size:14px;">Blanket coverage reduced by external coils</h3>
+          <p>"Physical coil conductors, casings, and structural supports occupy radial and poloidal space around the plasma vessel." — Connects rotational-transform choice to a tritium-breeding consequence.</p>
+        </div>
+        <div class="card" style="border-left:3px solid var(--amber); margin-bottom:0;">
+          <div style="display:flex; gap:8px; align-items:center; margin-bottom:6px;">
+            <span class="ct-type force">FORCE</span>
+            <span style="font-size:12px; color:var(--text-muted);">R2 — Hybrid option</span>
+          </div>
+          <h3 style="font-size:14px;">Disruption character altered</h3>
+          <p>"When external transform is present, losing plasma current does not immediately destroy confinement — the plasma settles to a lower-transform state." — A <em>spectrum</em>, not binary.</p>
+        </div>
+      </div>
+    </div>
+  </details>
+</section>
+
+<hr class="divider">
+
+<!-- ==================== CONSTRAINTS REGISTRY ==================== -->
+<section>
+  <div class="section-label">Constraint Registry</div>
+  <h2>22 Derived Constraints (L0)</h2>
+  <p class="section-desc">All L0 constraints are "unmappable" — they reference physics-level variables absent from the engineering-classification table. This is expected: validation becomes meaningful at L2+ where the tree reaches engineering choices.</p>
+
+  <details>
+    <summary>
+      Full Constraint Table
+      <span class="detail-count">22 entries</span>
+    </summary>
+    <div class="detail-body">
+      <div class="constraint-table-wrap">
+        <table class="constraint-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Source</th>
+              <th>Type</th>
+              <th>Condition</th>
+              <th>Consequence</th>
+              <th>Req.</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="ct-id">DC-001</td><td>Closed Magnetic</td><td><span class="ct-type force">force</span></td><td>confinement = closed_magnetic</td><td>field_topology = toroidal</td><td>R2</td><td><span class="ct-status unmappable">unmappable</span></td></tr>
+            <tr><td class="ct-id">DC-002</td><td>Closed Magnetic</td><td><span class="ct-type force">force</span></td><td>field_topology = toroidal</td><td>rotational_transform = required</td><td>R2</td><td><span class="ct-status unmappable">unmappable</span></td></tr>
+            <tr><td class="ct-id">DC-003</td><td>Closed Magnetic</td><td><span class="ct-type activate">activate</span></td><td>confinement = closed_magnetic</td><td>disruption_risk = non-zero</td><td>R6</td><td><span class="ct-status unmappable">unmappable</span></td></tr>
+            <tr><td class="ct-id">DC-004</td><td>Closed Magnetic</td><td><span class="ct-type force">force</span></td><td>confinement = closed_magnetic</td><td>plasma_beta ≤ critical_beta</td><td>R2</td><td><span class="ct-status unmappable">unmappable</span></td></tr>
+            <tr><td class="ct-id">DC-005</td><td>Closed Magnetic</td><td><span class="ct-type force">force</span></td><td>confinement = closed_magnetic</td><td>neutron_fluence = sustained</td><td>R6</td><td><span class="ct-status unmappable">unmappable</span></td></tr>
+            <tr><td class="ct-id">DC-006</td><td>Closed Magnetic</td><td><span class="ct-type force">force</span></td><td>confinement = closed_magnetic</td><td>mhd_stability = active_control</td><td>R2</td><td><span class="ct-status unmappable">unmappable</span></td></tr>
+            <tr><td class="ct-id">DC-007</td><td>Open Magnetic</td><td><span class="ct-type force">force</span></td><td>confinement = open_magnetic</td><td>loss_cone = inherent</td><td>R2</td><td><span class="ct-status unmappable">unmappable</span></td></tr>
+            <tr><td class="ct-id">DC-008</td><td>Open Magnetic</td><td><span class="ct-type force">force</span></td><td>loss_cone = inherent</td><td>confinement_time &lt; closed_equiv</td><td>R2</td><td><span class="ct-status unmappable">unmappable</span></td></tr>
+            <tr><td class="ct-id">DC-009</td><td>Open Magnetic</td><td><span class="ct-type force">force</span></td><td>confinement = open_magnetic</td><td>plug_power = significant_fraction</td><td>R3</td><td><span class="ct-status unmappable">unmappable</span></td></tr>
+            <tr><td class="ct-id">DC-010</td><td>Open Magnetic</td><td><span class="ct-type activate">activate</span></td><td>confinement = open_magnetic</td><td>direct_energy_conversion = possible</td><td>R4</td><td><span class="ct-status unmappable">unmappable</span></td></tr>
+            <tr><td class="ct-id">DC-011</td><td>Inertial</td><td><span class="ct-type force">force</span></td><td>confinement = inertial</td><td>target_density = extreme</td><td>R2</td><td><span class="ct-status unmappable">unmappable</span></td></tr>
+            <tr><td class="ct-id">DC-012</td><td>Inertial</td><td><span class="ct-type force">force</span></td><td>confinement = inertial</td><td>implosion_symmetry &lt; 1% RMS</td><td>R2</td><td><span class="ct-status unmappable">unmappable</span></td></tr>
+            <tr><td class="ct-id">DC-013</td><td>Inertial</td><td><span class="ct-type force">force</span></td><td>confinement = inertial</td><td>driver_peak_power = petawatt</td><td>R3</td><td><span class="ct-status unmappable">unmappable</span></td></tr>
+            <tr><td class="ct-id">DC-014</td><td>Inertial</td><td><span class="ct-type force">force</span></td><td>confinement = inertial</td><td>driver_rep_rate ≥ Hz</td><td>R3</td><td><span class="ct-status unmappable">unmappable</span></td></tr>
+            <tr><td class="ct-id">DC-015</td><td>Inertial</td><td><span class="ct-type force">force</span></td><td>confinement = inertial</td><td>chamber_standoff = meters</td><td>R6</td><td><span class="ct-status unmappable">unmappable</span></td></tr>
+            <tr><td class="ct-id">DC-016</td><td>Magnetized Target</td><td><span class="ct-type force">force</span></td><td>confinement = magneto-inertial</td><td>mag_flux_conservation = req</td><td>R2</td><td><span class="ct-status unmappable">unmappable</span></td></tr>
+            <tr><td class="ct-id">DC-017</td><td>Magnetized Target</td><td><span class="ct-type force">force</span></td><td>confinement = magneto-inertial</td><td>liner_fabrication = precision</td><td>R6</td><td><span class="ct-status unmappable">unmappable</span></td></tr>
+            <tr><td class="ct-id">DC-018</td><td>Magnetized Target</td><td><span class="ct-type force">force</span></td><td>confinement = magneto-inertial</td><td>timing_precision = µs</td><td>R2</td><td><span class="ct-status unmappable">unmappable</span></td></tr>
+            <tr><td class="ct-id">DC-019</td><td>Magnetized Target</td><td><span class="ct-type activate">activate</span></td><td>confinement = magneto-inertial</td><td>mhd_instability_growth = concern</td><td>R2</td><td><span class="ct-status unmappable">unmappable</span></td></tr>
+            <tr><td class="ct-id">DC-020</td><td>Electrostatic</td><td><span class="ct-type force">force</span></td><td>confinement = electrostatic</td><td>electron_confinement = problem</td><td>R2</td><td><span class="ct-status unmappable">unmappable</span></td></tr>
+            <tr><td class="ct-id">DC-021</td><td>Electrostatic</td><td><span class="ct-type force">force</span></td><td>confinement = electrostatic</td><td>electrode_ion_loss = dominant</td><td>R3</td><td><span class="ct-status unmappable">unmappable</span></td></tr>
+            <tr><td class="ct-id">DC-022</td><td>Electrostatic</td><td><span class="ct-type force">force</span></td><td>confinement = electrostatic</td><td>space_charge_limit = fundamental</td><td>R3</td><td><span class="ct-status unmappable">unmappable</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </details>
+
+  <h3 style="font-size:16px; color:#fff; margin: 24px 0 14px;">Novel Physics Variables Discovered</h3>
+  <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">22 design dimensions that the flat table's 18 columns compressed away:</p>
+  <div class="novel-vars">
+    <span class="novel-var">field_topology</span>
+    <span class="novel-var">rotational_transform</span>
+    <span class="novel-var">disruption_risk</span>
+    <span class="novel-var">plasma_beta</span>
+    <span class="novel-var">mhd_stability</span>
+    <span class="novel-var">neutron_fluence</span>
+    <span class="novel-var">loss_cone</span>
+    <span class="novel-var">confinement_time</span>
+    <span class="novel-var">plug_power</span>
+    <span class="novel-var">direct_energy_conversion</span>
+    <span class="novel-var">target_density</span>
+    <span class="novel-var">compression_ratio</span>
+    <span class="novel-var">implosion_symmetry</span>
+    <span class="novel-var">driver_peak_power</span>
+    <span class="novel-var">driver_rep_rate</span>
+    <span class="novel-var">chamber_standoff</span>
+    <span class="novel-var">mag_flux_conservation</span>
+    <span class="novel-var">liner_fabrication</span>
+    <span class="novel-var">timing_precision</span>
+    <span class="novel-var">mhd_instability_growth</span>
+    <span class="novel-var">electron_confinement</span>
+    <span class="novel-var">space_charge_limit</span>
+  </div>
+
+  <div style="margin-top:20px;">
+    <h3 style="font-size:16px; color:#fff; margin-bottom:12px;">Constraint Distribution by Requirement</h3>
+    <div style="display:flex; gap:8px; align-items:flex-end; height:120px; padding:0 20px;">
+      <div style="display:flex; flex-direction:column; align-items:center; flex:1;">
+        <div style="font-size:12px; color:var(--accent); font-weight:600; margin-bottom:4px;">9</div>
+        <div style="width:100%; max-width:60px; height:90px; background:linear-gradient(180deg, var(--accent), rgba(91,138,245,0.3)); border-radius:4px 4px 0 0;"></div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">R2</div>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; flex:1;">
+        <div style="font-size:12px; color:var(--green); font-weight:600; margin-bottom:4px;">4</div>
+        <div style="width:100%; max-width:60px; height:40px; background:linear-gradient(180deg, var(--green), rgba(52,211,153,0.3)); border-radius:4px 4px 0 0;"></div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">R3</div>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; flex:1;">
+        <div style="font-size:12px; color:var(--amber); font-weight:600; margin-bottom:4px;">1</div>
+        <div style="width:100%; max-width:60px; height:10px; background:linear-gradient(180deg, var(--amber), rgba(251,191,36,0.3)); border-radius:4px 4px 0 0;"></div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">R4</div>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; flex:1;">
+        <div style="font-size:12px; color:var(--purple); font-weight:600; margin-bottom:4px;">1</div>
+        <div style="width:100%; max-width:60px; height:10px; background:linear-gradient(180deg, var(--purple), rgba(167,139,250,0.3)); border-radius:4px 4px 0 0;"></div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">R5</div>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; flex:1;">
+        <div style="font-size:12px; color:var(--pink); font-weight:600; margin-bottom:4px;">4</div>
+        <div style="width:100%; max-width:60px; height:40px; background:linear-gradient(180deg, var(--pink), rgba(244,114,182,0.3)); border-radius:4px 4px 0 0;"></div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">R6</div>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; flex:1;">
+        <div style="font-size:12px; color:var(--text-muted); font-weight:600; margin-bottom:4px;">0</div>
+        <div style="width:100%; max-width:60px; height:2px; background:rgba(122,133,153,0.3); border-radius:4px 4px 0 0;"></div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">R1</div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--text-muted); margin-top:8px; text-align:center;">R2 (achieve fusion conditions) dominates — confinement choice most directly affects how you achieve and maintain fusion.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ==================== SCORECARD ==================== -->
+<section>
+  <div class="section-label">Assessment</div>
+  <h2>Success Criteria Scorecard</h2>
+  <p class="section-desc">Preliminary assessment after L0 + L1 expansion. Several criteria require deeper expansion to evaluate fully.</p>
+
+  <div class="scorecard">
+    <div class="score-item">
+      <div>
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+          <span class="score-badge promising">Promising</span>
+          <span style="font-size:11px; color:var(--text-muted);">Primary</span>
+        </div>
+        <h4>1. Negative Space Explanation</h4>
+        <p>5 physics-grounded entries at L0, 4 context-dependent at L1. Target tests (p-B11 tokamak, steady-state IFE) need deeper expansion.</p>
+      </div>
+    </div>
+    <div class="score-item">
+      <div>
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+          <span class="score-badge pending">Not Yet Testable</span>
+          <span style="font-size:11px; color:var(--text-muted);">Primary</span>
+        </div>
+        <h4>2. Constraint Validation Rate</h4>
+        <p>All 22 L0 constraints unmappable (expected). Becomes testable at L2+ where reasoning reaches engineering vocabulary.</p>
+      </div>
+    </div>
+    <div class="score-item">
+      <div>
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+          <span class="score-badge strong">Strong</span>
+          <span style="font-size:11px; color:var(--text-muted);">Primary</span>
+        </div>
+        <h4>3. Divergence Reasoning Depth</h4>
+        <p>L0 and L1 reasoning goes well beyond table labels. Trade-offs, requirement interactions, and quantitative thresholds captured.</p>
+      </div>
+    </div>
+    <div class="score-item">
+      <div>
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+          <span class="score-badge confirmed">Confirmed</span>
+          <span style="font-size:11px; color:var(--text-muted);">Primary</span>
+        </div>
+        <h4>4. Concept Family Recovery</h4>
+        <p>Closed-magnetic → {tokamak, stellarator, hybrid} recovered through physics reasoning at L1.</p>
+      </div>
+    </div>
+    <div class="score-item">
+      <div>
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+          <span class="score-badge confirmed">Confirmed</span>
+          <span style="font-size:11px; color:var(--text-muted);">Secondary</span>
+        </div>
+        <h4>6. Novel Variables</h4>
+        <p>22 physics-level design dimensions at L0 absent from the table's 18 columns.</p>
+      </div>
+    </div>
+    <div class="score-item">
+      <div>
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+          <span class="score-badge pending">Not Yet</span>
+          <span style="font-size:11px; color:var(--text-muted);">Secondary</span>
+        </div>
+        <h4>5/7. Novel Paths & Transfer</h4>
+        <p>Require L3+ depth and multiple branches expanded, respectively.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ==================== KEY OBSERVATIONS ==================== -->
+<section>
+  <div class="section-label">Insights</div>
+  <h2>Key Early Observations</h2>
+
+  <div style="display:flex; flex-direction:column; gap:14px;">
+    <div class="card" style="border-left: 3px solid var(--purple);">
+      <h3>The Unmappability Gap Is Real and Informative</h3>
+      <p>At L0, the LLM reasons about field topology, loss cones, and compression ratios. The table talks about Confinement Family and Magnet Type. These are different levels of abstraction. The reasoning tree exposes physics-level structure the classification scheme compressed away.</p>
+    </div>
+    <div class="card" style="border-left: 3px solid var(--accent2);">
+      <h3>Requirement Lenses Produce Cross-Cutting Analysis</h3>
+      <p>At every node, the LLM examines all six requirements against each option. This reveals trade-off structures the flat table's column-per-dimension format cannot represent — how R2 trades against R3 differently for mirrors (plug power) vs. tokamaks (current-drive power) vs. IFE (driver efficiency).</p>
+    </div>
+    <div class="card" style="border-left: 3px solid var(--green);">
+      <h3>Negative Space Is the Strongest Early Signal</h3>
+      <p>The explanations for why certain approaches don't work are precise, physics-grounded, and trace to specific requirement-context interactions. This is the explanatory power the flat table lacked entirely.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ==================== OPEN QUESTIONS ==================== -->
+<section>
+  <div class="section-label">Open Questions</div>
+  <h2>Design Issues for Deeper Expansion</h2>
+  <p class="section-desc">Two design issues surfaced during early execution that need resolution before investing heavily in deeper expansion.</p>
+
+  <div class="oq-card">
+    <h4>How should the "next question" be determined?</h4>
+    <p>Currently, the first downstream question from each option automatically becomes the child node's question. The rest are discarded. The tree's entire branching structure is determined by the LLM's ordering within a single call — implicitly and invisibly.</p>
+    <div class="oq-options">
+      <div class="oq-opt"><strong>A.</strong> Human selection after each expansion — most controlled, but slowest</div>
+      <div class="oq-opt"><strong>B.</strong> Expand all questions as siblings — explores more, but multiplies LLM calls</div>
+      <div class="oq-opt"><strong>C.</strong> LLM-ranked selection — second prompt to rank by architectural discrimination</div>
+      <div class="oq-opt"><strong>D.</strong> Accept current approach — if the constraint registry matters more than tree shape</div>
+    </div>
+  </div>
+
+  <div class="oq-card">
+    <h4>How should constraints be validated?</h4>
+    <p>The current validation pipeline uses a hand-built vocabulary map (~90 entries) to translate LLM variables into table lookups. At L0, all 22 constraints are unmappable because the LLM reasons at the physics level, not the engineering-classification level.</p>
+    <div class="oq-options">
+      <div class="oq-opt"><strong>A.</strong> Structured ontology — force LLM to use table vocabulary (increases mappable rate, may lose physics insight)</div>
+      <div class="oq-opt"><strong>B.</strong> LLM-based qualitative assessment — flexible but introduces assessor bias</div>
+      <div class="oq-opt"><strong>C.</strong> Cross-branch consistency — compare independently expanded branches (doesn't need column mapping)</div>
+      <div class="oq-opt"><strong>D.</strong> Accept table validation may not be practical — value the constraint registry as a reasoning artifact</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ==================== NEXT STEPS ==================== -->
+<section>
+  <div class="section-label">Next Steps</div>
+  <h2>Expansion Roadmap</h2>
+  <div style="display:flex; flex-direction:column; gap:10px;">
+    <div class="card" style="display:flex; gap:14px; align-items:center; padding:16px 20px;">
+      <div style="flex-shrink:0; width:32px; height:32px; border-radius:50%; background:linear-gradient(135deg, var(--accent), var(--accent2)); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; color:#fff;">1</div>
+      <div>
+        <h3 style="font-size:14px;">Validate L1 constraints</h3>
+        <p>Run <code>validate.py</code> on the 14 L1-closed-magnetic constraints against table_v2.csv</p>
+      </div>
+    </div>
+    <div class="card" style="display:flex; gap:14px; align-items:center; padding:16px 20px;">
+      <div style="flex-shrink:0; width:32px; height:32px; border-radius:50%; background:linear-gradient(135deg, var(--accent), var(--accent2)); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; color:#fff;">2</div>
+      <div>
+        <h3 style="font-size:14px;">Expand remaining L1 branches</h3>
+        <p>Open magnetic, inertial, magnetized target, electrostatic — breadth for cross-branch consistency</p>
+      </div>
+    </div>
+    <div class="card" style="display:flex; gap:14px; align-items:center; padding:16px 20px;">
+      <div style="flex-shrink:0; width:32px; height:32px; border-radius:50%; background:linear-gradient(135deg, var(--accent), var(--accent2)); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; color:#fff;">3</div>
+      <div>
+        <h3 style="font-size:14px;">Selective L2 expansion</h3>
+        <p>Tokamak + stellarator (under closed-magnetic), laser-ICF (under inertial) — reach engineering-choice level</p>
+      </div>
+    </div>
+    <div class="card" style="display:flex; gap:14px; align-items:center; padding:16px 20px;">
+      <div style="flex-shrink:0; width:32px; height:32px; border-radius:50%; background:linear-gradient(135deg, var(--accent), var(--accent2)); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; color:#fff;">4</div>
+      <div>
+        <h3 style="font-size:14px;">Target negative-space tests</h3>
+        <p>Why no p-B11 tokamak? Why no steady-state IFE? Why no D-T direct energy conversion?</p>
+      </div>
+    </div>
+    <div class="card" style="display:flex; gap:14px; align-items:center; padding:16px 20px;">
+      <div style="flex-shrink:0; width:32px; height:32px; border-radius:50%; background:linear-gradient(135deg, var(--accent), var(--accent2)); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; color:#fff;">5</div>
+      <div>
+        <h3 style="font-size:14px;">Transfer visibility assessment</h3>
+        <p>Once multiple D-T branches exist — do shared tritium-breeding constraints emerge with overlapping justification sets?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer style="border-top:1px solid var(--border); padding:40px 0; text-align:center;">
+  <p style="font-size:13px; color:var(--text-muted);">
+    Fusion TEA — Phase 2a Report &middot; Branch: <code>design-space-explore</code> &middot; 2026-03-13
+  </p>
+  <p style="font-size:12px; color:var(--text-muted); margin-top:4px;">
+    Status: In progress — L0 expanded, L1 partial (1 of 5 branches)
+  </p>
+</footer>
+
+</div><!-- /container -->
+
+<!-- ==================== MODALS ==================== -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <h3 id="modal-title">Node Detail</h3>
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+const nodeDetails = {
+  'l0': {
+    title: 'L0 — Root: Confinement Question',
+    html: `
+      <dl class="kv-grid" style="margin-bottom:16px;">
+        <dt>Question</dt><dd>How should we confine the fusion reaction to achieve sustained energy production?</dd>
+        <dt>Context</dt><dd>None (root node)</dd>
+        <dt>Status</dt><dd><span class="tag tag-blue">Expanded</span></dd>
+        <dt>Options</dt><dd>5 viable approaches</dd>
+        <dt>Negative Space</dt><dd>5 non-viable approaches</dd>
+        <dt>Constraints</dt><dd>22 (all unmappable — physics-level vocabulary)</dd>
+      </dl>
+      <h4 style="font-size:14px; color:#fff; margin:16px 0 8px;">Downstream Questions Generated</h4>
+      <div style="font-size:13px; color:var(--text-muted);">
+        <p style="margin-bottom:4px;"><strong style="color:var(--accent);">Closed Magnetic:</strong> How should rotational transform be provided? <span style="color:var(--green);">✓ selected</span></p>
+        <p style="margin-bottom:4px;"><strong style="color:var(--accent);">Open Magnetic:</strong> What is the minimum plug power fraction?</p>
+        <p style="margin-bottom:4px;"><strong style="color:var(--accent);">Inertial:</strong> What driver technology best combines wall-plug efficiency, rep rate, and beam uniformity?</p>
+        <p style="margin-bottom:4px;"><strong style="color:var(--accent);">Magnetized Target:</strong> What target configuration is most stable during rapid compression?</p>
+        <p style="margin-bottom:4px;"><strong style="color:var(--accent);">Electrostatic:</strong> Can a hybrid approach overcome Earnshaw's theorem constraint?</p>
+      </div>
+    `
+  },
+  'l1-closed': {
+    title: 'L1 — Closed Magnetic Topology',
+    html: `
+      <dl class="kv-grid" style="margin-bottom:16px;">
+        <dt>Question</dt><dd>How should rotational transform be provided?</dd>
+        <dt>Context</dt><dd>Closed magnetic topology — field-line geometry eliminates end losses; requires rotational transform for radial confinement</dd>
+        <dt>Status</dt><dd><span class="tag tag-blue">Expanded</span></dd>
+        <dt>Options</dt><dd>3 (→ tokamak, stellarator, hybrid families)</dd>
+        <dt>Negative Space</dt><dd>4 context-dependent non-viable approaches</dd>
+        <dt>Constraints</dt><dd>14 (not yet validated against table)</dd>
+      </dl>
+      <h4 style="font-size:14px; color:#fff; margin:16px 0 8px;">Context-Dependence Highlight</h4>
+      <p style="font-size:13px; color:var(--text-muted);">The same variable — <code>disruption_risk</code> — takes <strong>opposite values</strong> depending on the rotational-transform choice:</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:8px;">
+        <div style="background:var(--surface2); padding:12px; border-radius:8px; border-left:3px solid var(--amber);">
+          <div style="font-size:11px; color:var(--amber); font-weight:600;">Plasma Current</div>
+          <div style="font-size:13px; color:var(--text);">disruption_risk = <strong>non-zero</strong></div>
+        </div>
+        <div style="background:var(--surface2); padding:12px; border-radius:8px; border-left:3px solid var(--green);">
+          <div style="font-size:11px; color:var(--green); font-weight:600;">External Coils</div>
+          <div style="font-size:13px; color:var(--text);">disruption_risk = <strong>eliminated</strong></div>
+        </div>
+      </div>
+      <p style="font-size:12px; color:var(--accent2); margin-top:8px;">If both validate, this IS context-dependence — the core phenomenon the tree is designed to capture.</p>
+    `
+  },
+  'l1-mirror': {
+    title: 'L1 — Open Magnetic (Mirror)',
+    html: `
+      <dl class="kv-grid" style="margin-bottom:16px;">
+        <dt>Question</dt><dd>What is the minimum plug power fraction achievable?</dd>
+        <dt>Context</dt><dd>Open magnetic topology — accept end losses for geometric simplicity; direct energy conversion possible</dd>
+        <dt>Status</dt><dd><span class="tag" style="background:rgba(122,133,153,0.15); color:var(--text-muted);">Pending</span></dd>
+      </dl>
+      <p style="font-size:13px; color:var(--text-muted);">This branch has not been expanded yet. Expansion will explore the mirror family's core trade-off: whether plug power can be reduced enough for net energy, or whether direct energy conversion of escaping ions changes the economic equation.</p>
+    `
+  },
+  'l1-inertial': {
+    title: 'L1 — Inertial Confinement',
+    html: `
+      <dl class="kv-grid" style="margin-bottom:16px;">
+        <dt>Question</dt><dd>What driver technology best combines wall-plug efficiency, rep rate, and beam uniformity?</dd>
+        <dt>Context</dt><dd>Inertial confinement — extreme transient density (~1000× compression); fundamentally pulsed architecture</dd>
+        <dt>Status</dt><dd><span class="tag" style="background:rgba(122,133,153,0.15); color:var(--text-muted);">Pending</span></dd>
+      </dl>
+      <p style="font-size:13px; color:var(--text-muted);">Pending expansion. Expected to recover laser, z-pinch, projectile, and beam-driven families. Critical for the negative-space test: why no steady-state IFE?</p>
+    `
+  },
+  'l1-mif': {
+    title: 'L1 — Magnetized Target (Magneto-Inertial)',
+    html: `
+      <dl class="kv-grid" style="margin-bottom:16px;">
+        <dt>Question</dt><dd>What target configuration is most stable during rapid compression?</dd>
+        <dt>Context</dt><dd>Magnetized target — embed magnetic field to reduce compression ratio; efficient mechanical drivers at intermediate density</dd>
+        <dt>Status</dt><dd><span class="tag" style="background:rgba(122,133,153,0.15); color:var(--text-muted);">Pending</span></dd>
+      </dl>
+      <p style="font-size:13px; color:var(--text-muted);">Pending expansion. This branch bridges MFE and IFE — magnetic confinement during compression, but pulsed operation. Expected to reveal unique constraint interactions.</p>
+    `
+  },
+  'l1-es': {
+    title: 'L1 — Electrostatic Potential Well',
+    html: `
+      <dl class="kv-grid" style="margin-bottom:16px;">
+        <dt>Question</dt><dd>Can a hybrid approach overcome Earnshaw's theorem constraint?</dd>
+        <dt>Context</dt><dd>Electrostatic confinement — fundamentally limited by Earnshaw's theorem and Coulomb-to-fusion cross-section ratio</dd>
+        <dt>Status</dt><dd><span class="tag" style="background:rgba(122,133,153,0.15); color:var(--text-muted);">Pending</span></dd>
+      </dl>
+      <p style="font-size:13px; color:var(--text-muted);">Pending expansion. The L0 analysis already identified fundamental physics limits (grid-loss power exceeds fusion power). This branch explores whether hybrid approaches can circumvent the constraints.</p>
+    `
+  }
+};
+
+function showNodeDetail(id) {
+  const d = nodeDetails[id];
+  if (!d) return;
+  document.getElementById('modal-title').textContent = d.title;
+  document.getElementById('modal-body').innerHTML = d.html;
+  document.getElementById('modal-overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e && e.target !== document.getElementById('modal-overlay')) return;
+  document.getElementById('modal-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+</script>
+</body>
+</html>

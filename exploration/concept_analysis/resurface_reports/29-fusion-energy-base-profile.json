@@ -1,0 +1,14 @@
+{
+  "status": "complete",
+  "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/29-negative-triangularity-tokamak/iter-01/sources/fusion-energy-base-profile.orig.md",
+  "concept_id": "29-negative-triangularity-tokamak",
+  "concept_num": "29",
+  "elapsed_s": 600.1,
+  "return_code": -1,
+  "acquired": [],
+  "acquired_count": 0,
+  "agent_report": {
+    "error": "output file not found"
+  },
+  "recommendation": "unknown"
+}

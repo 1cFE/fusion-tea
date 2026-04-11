@@ -1,0 +1,118 @@
+Large-Scale Stellarator (Gauss Fusion GIGA) — 1 GWe, 88% availability, 40 yr
+NOAK fraction applied: 55% of FOAK (central estimate)
+FOAK overnight: $18.1B | NOAK overnight: $10.0B
+
+LCOE: 186.2 $/MWh | Overnight: 15723 $/kW
+Fusion: 3182 MW | Net: 1000 MW | Q_eng: 5.4
+
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    18.5
+CAS21    Buildings                         934.0
+CAS22    Reactor Plant Equipment          6488.6
+CAS23    Turbine Plant                     243.0
+CAS24    Electrical Plant                  103.5
+CAS25    Miscellaneous                      63.0
+CAS26    Heat Rejection                     42.0
+CAS27    Special Materials                 200.0
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                         0.0
+CAS30    Indirect Costs                   2693.0
+CAS40    Owner's Costs                      39.0
+CAS50    Supplementary                     550.3
+CAS60    IDC                              4343.0
+CAS70    O&M (annualized)                  254.3
+CAS80    Fuel (annualized)                   1.8
+CAS90    Financial                        1179.4
+------------------------------------------------
+         Total Capital                   15722.8
+
+CAS22 sub-account detail (Reactor Plant Equipment):
+------------------------------------------------
+  (CAS22 sub-accounts not available in this framework version)
+
+============================================================
+KEY ASSUMPTIONS
+============================================================
+  FOAK overnight cost:     $18.15B
+    Source: gauss-fusion-technical-summary.md §Funding
+    (€15–18B at ~1.10 $/€ → midpoint ~$18.15B)
+  NOAK fraction (central): 55% of FOAK
+    Source: analysis.md §Section 2, Challenge #1
+    Range: 40–70% (sensitivity sweep below)
+  Capacity factor:         88% (Helios/Thea Energy analog)
+    Source: arxiv-2512-08027v1.md §2 (84-day biennial outage)
+    Note: GIGA-specific target undisclosed; 85–90% model range
+  Thermal efficiency:      35% (HCPB/steam Rankine)
+    Source: helias-reactor-context.md §7
+    Alt: 40%+ if DCLL/sCO2 path chosen
+  Construction time:       10 yr (NOAK estimate)
+    UNCERTAIN: No Gauss-published schedule
+  CAS22 allocation:        65% of NOAK overnight
+    UNCERTAIN: No CAS breakdown in public CDR
+  Blanket type:            HCPB assumed (He coolant, steam Rankine)
+    UNCERTAIN: Gauss internal decision, not disclosed
+
+============================================================
+SENSITIVITY ANALYSIS (elasticity = %LCOE / %param)
+============================================================
+
+Engineering levers:
+  availability                 -0.8425
+  construction_time_yr         +0.4871
+  elon                         +0.4328
+  R0                           +0.4328
+  plasma_t                     +0.2991
+  blanket_t                    +0.2712
+  eta_th                       -0.2695
+  eta_pin                      -0.0628
+  p_input                      +0.0627
+  ht_shield_t                  +0.0614
+  vessel_t                     +0.0283
+  fuel_recovery                -0.0159
+  f_sub                        +0.0154
+  structure_t                  +0.0112
+  p_cool                       +0.0084
+  p_cryo                       +0.0043
+  p_trit                       +0.0042
+  p_coils                      +0.0021
+  p_house                      +0.0017
+  mn                           -0.0014
+  burn_fraction                -0.0009
+  p_pump                       +0.0004
+  eta_p                        -0.0000
+  eta_de                       +0.0000
+  B                            +0.0000
+  T_e                          +0.0000
+  n_e                          +0.0000
+  Z_eff                        +0.0000
+  plasma_volume                +0.0000
+  R_w                          +0.0000
+  T_edge                       +0.0000
+  tau_ratio                    +0.0000
+
+Financial:
+  interest_rate                +0.8284
+  inflation_rate               +0.0495
+
+============================================================
+NOAK FRACTION SWEEP (primary uncertainty — analysis.md §Section 2 H1)
+  FOAK overnight: $18.1B | Capacity factor: 88%
+  NOAK Fraction      NOAK $/kWe   LCOE $/MWh  Notes
+------------------------------------------------------------
+  40%                     7,260        153.4  
+  50%                     9,075        175.3  
+  55%                     9,982        186.2   ← central
+  60%                    10,890        197.1  
+  70%                    12,705        219.0  
+
+============================================================
+CAPACITY FACTOR SWEEP (H3: stellarator steady-state advantage)
+  NOAK fraction: 55% (central) | Overnight: $10.0B
+  Availability       LCOE $/MWh  Notes
+------------------------------------------------------------
+  75%                     213.2  
+  80%                     202.0   ← pulsed tokamak (DEMO basis)
+  85%                     191.3  
+  88%                     186.2   ← Helios analog anchor (arxiv-2512-08027v1)
+  90%                     182.6  

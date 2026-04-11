@@ -1,0 +1,237 @@
+
+########################################################################
+# BASELINE SCENARIO: SFS Z-Pinch Moderate Design Point
+# Q=10, 10 Hz, 4 modules, steam Rankine 33%, availability 75%
+########################################################################
+========================================================================
+SFS Z-Pinch (Zap Energy) LCOE Model — 1cFE CAS-Structured
+Scenario: Baseline — moderate design point
+========================================================================
+
+--- Key Input Parameters ---
+  Fusion energy/pulse:        19 MJ
+  Fusion Q (plasma):          10.0
+  Rep rate:                   10.0 Hz
+  Wall-to-plasma efficiency:  70%
+  Blanket multiplication:     1.10
+  Thermal efficiency:         33%
+  Plant availability:         75%
+  Modules:                    4
+  Plant lifetime:             30 yr
+  FOAK/NOAK:                  NOAK
+  Interest rate:              8%
+  Driver cost/module:         $150M
+
+--- Power Balance (per module) ---
+  Fusion energy/pulse:        19.0 MJ
+  Rep rate:                   10.0 Hz
+  Fusion power (avg):         190.0 MWt
+    Neutron power:            152.0 MWt (80%)
+    Alpha power:              38.0 MWt (20%)
+  Plasma input power:         19.0 MWt  [P_fus / Q]
+  Driver wallplug power:      27.1 MWe  [plasma_in / η_driver]
+  Driver energy/pulse:        2.71 MJ
+  Thermal power:              205.2 MWt
+  Gross electric:             67.7 MWe
+  Auxiliary loads:            13.0 MWe  (tritium+house+LiPb pumps)
+  Net electric (per module):  27.6 MWe
+  Net electric (plant):       110.3 MWe
+  Engineering Q:              7.00  [P_fus / P_driver_wallplug]
+  Recirculating fraction:     59.3%  [of gross electric]
+
+--- Geometry (spherical approximation per module) ---
+  Inner radius:               1.5 m
+  LiPb blanket thickness:     3.0 m  (first wall + breeder + shield)
+  Blanket volume:             368 m³
+  Shield volume:              82 m³
+  Outer radius:               5.2 m
+
+--- CAS22: Reactor Plant Equipment (per module) ---
+    C220101  LiPb First Wall + Blanket                 $    49.2M
+    C220102  Structural Shield                         $    13.5M
+    C220103  Coils [OVERRIDE: $0 — no magnets]         $     0.0M
+    C220104  Heating [OVERRIDE: $0 — no aux heating]   $     0.0M
+    C220105  Primary Structure                         $     3.4M
+    C220106  Vacuum System                             $     4.5M
+    C220107  Pulsed Power Driver [OVERRIDE]            $   150.0M
+    C220108  Electrode System [OVERRIDE]               $    10.0M
+    C220111  Installation (14%)                        $    32.3M
+    ───────────────────────────────────────────────────────
+    Per-module subtotal:                             $   262.9M × 4
+  Plant-wide accounts:
+    C220200  LiPb + Steam Coolant Systems              $    36.6M
+    C220300  Auxiliary Cooling (no cryoplant)          $     0.9M
+    C220400  Radioactive Waste Management              $     1.6M
+    C220500  Fuel Handling (D-T tritium)               $    25.6M
+    C220600  Other Equipment                           $     2.0M
+    C220700  Instrumentation & Control                 $    33.1M
+    ───────────────────────────────────────────────────────
+    Plant-wide subtotal:                             $    99.8M
+  CAS22 Total:                                       $  1151.4M
+
+--- Capital Costs (CAS10-60) ---
+  CAS10  Pre-construction:              $    13.8M
+  CAS21  Buildings:                     $   195.8M
+  CAS22  Reactor Plant Equipment:       $  1151.4M
+  CAS23  Turbine Plant:                 $    53.5M
+  CAS24  Electric Plant:                $    22.8M
+  CAS25  Misc Plant:                    $    13.9M
+  CAS26  Heat Rejection:                $     9.3M
+  CAS27  Special Materials (LiPb+T):    $    14.0M
+  CAS28  Digital Twin:                  $     5.0M
+  CAS29  Contingency:                   $     0.0M
+  ────────────────────────────────────────────────────
+  CAS20  Direct Costs:                  $  1465.7M
+  CAS30  Indirect Costs:                $   244.3M
+  CAS40  Owner's Costs:                 $    13.0M
+  CAS50  Supplementary (decom+spare):   $    79.9M
+  ────────────────────────────────────────────────────
+  Overnight Capital:                    $  1816.5M
+  CAS60  IDC (f=0.173):               $   314.8M
+  ════════════════════════════════════════════════════
+  Total Capital:                        $  2131.4M
+  Specific Capital:                     $   19325 $/kWe
+
+--- Annual Costs (CAS70-90) ---
+  CAS90  Capital charge (CRF=0.0888): $   189.3M/yr
+  CAS71  O&M (levelized):               $    11.8M/yr
+  CAS72  Scheduled replacement:         $    32.2M/yr
+           Blanket (4 times): $    22.7M/yr
+           Electrode (14 times): $     9.4M/yr
+  CAS70  Total O&M:                     $    44.0M/yr
+  CAS80  Fuel & consumables:             $     2.4M/yr
+
+--- LCOE ---
+  Annual energy:                   724,622 MWh
+  Annual revenue req:         $235.7M/yr
+  ╔══════════════════════════════════════════╗
+  ║  LCOE =   32.53 ¢/kWh                    ║
+  ║       =   325.3 $/MWh                    ║
+  ╚══════════════════════════════════════════╝
+  Capital (CAS90):            80.3%
+  O&M (CAS70):                18.7%
+  Fuel/consumables (CAS80):   1.0%
+
+
+========================================================================
+SENSITIVITY SWEEPS: Impact on LCOE from baseline
+========================================================================
+  Baseline LCOE: 32.53 ¢/kWh
+
+  Fusion Q (plasma gain):
+           3  →  NET POWER NEGATIVE  (-143 MWe total)
+           5  →  1906.60 ¢/kWh  (2 MWe total)
+           7  →    54.29 ¢/kWh  (64 MWe total)
+          10  →    32.53 ¢/kWh  (110 MWe total) <<< baseline
+          15  →    25.14 ¢/kWh  (146 MWe total)
+          20  →    22.67 ¢/kWh  (165 MWe total)
+
+  Rep rate [Hz]:
+           1  →  NET POWER NEGATIVE  (-36 MWe total)
+           2  →  NET POWER NEGATIVE  (-20 MWe total)
+           5  →    92.54 ¢/kWh  (29 MWe total)
+          10  →    32.53 ¢/kWh  (110 MWe total) <<< baseline
+          15  →    22.97 ¢/kWh  (191 MWe total)
+          20  →    18.96 ¢/kWh  (273 MWe total)
+
+  Driver cost per module [$M]:
+          30  →    23.01 ¢/kWh  (110 MWe total)
+          75  →    26.58 ¢/kWh  (110 MWe total)
+     1.5e+02  →    32.53 ¢/kWh  (110 MWe total) <<< baseline
+       3e+02  →    44.42 ¢/kWh  (110 MWe total)
+       5e+02  →    60.28 ¢/kWh  (110 MWe total)
+
+  Thermal efficiency:
+        0.28  →    48.86 ¢/kWh  (69 MWe total)
+        0.33  →    32.53 ¢/kWh  (110 MWe total) <<< baseline
+        0.37  →    26.19 ¢/kWh  (143 MWe total)
+         0.4  →    23.06 ¢/kWh  (168 MWe total)
+        0.45  →    19.47 ¢/kWh  (209 MWe total)
+
+  Plant availability (capacity factor):
+         0.5  →    46.37 ¢/kWh  (110 MWe total)
+         0.6  →    39.52 ¢/kWh  (110 MWe total)
+        0.75  →    32.53 ¢/kWh  (110 MWe total) <<< baseline
+         0.8  →    30.70 ¢/kWh  (110 MWe total)
+         0.9  →    27.87 ¢/kWh  (110 MWe total)
+
+  Number of modules (plant size):
+           1  →    35.42 ¢/kWh  (28 MWe total)
+           2  →    33.59 ¢/kWh  (55 MWe total)
+           4  →    32.53 ¢/kWh  (110 MWe total) <<< baseline
+           8  →    31.87 ¢/kWh  (221 MWe total)
+          12  →    31.60 ¢/kWh  (331 MWe total)
+
+  Wall-to-plasma driver efficiency:
+         0.5  →    51.89 ¢/kWh  (67 MWe total)
+         0.6  →    38.38 ¢/kWh  (92 MWe total)
+         0.7  →    32.53 ¢/kWh  (110 MWe total) <<< baseline
+         0.8  →    29.25 ¢/kWh  (124 MWe total)
+         0.9  →    27.16 ¢/kWh  (134 MWe total)
+
+
+========================================================================
+SCENARIO COMPARISON TABLE
+========================================================================
+Scenario                                   Q    Hz   Driver$   Net MWe           LCOE
+----------------------------------------------------------------------------------
+Conservative (Q=7, 5 Hz)                 7.0   5.0     $250M        -6      N/A (neg)
+Moderate (baseline)                     10.0  10.0     $150M       110    32.53 ¢/kWh
+Optimistic (Q=15, 10 Hz, cheap driver)  15.0  10.0      $75M       269    11.48 ¢/kWh
+Q=5 stress test                          5.0  10.0     $150M         2     >999 ¢/kWh
+Single module (50 MWe)                  10.0  10.0     $150M        28    35.42 ¢/kWh
+
+
+========================================================================
+KEY BINDING CONSTRAINTS — Top LCOE Drivers
+========================================================================
+
+  1. RECIRCULATING POWER / Q VALUE (Critical leverage)
+
+     The SFS Z-pinch has the highest recirculating fraction of any concept in
+     this analysis. At Q=10 and 70% driver efficiency, the driver consumes ~43%
+     of gross electric output. If Q falls to 5, recirculating fraction climbs to
+     ~85%, leaving minimal net output.
+
+     Baseline: Q=10 gives ~59% recirculating fraction.
+     Q is a CALCULATED PROJECTION — never experimentally demonstrated at any scale.
+     Commercial Q requires 200 µs pinch lifetime; FuZE demonstrates 20–40 µs.
+     This is the dominant uncertainty in the entire model.
+
+     LCOE sensitivity: Q=7 → Q=15 spans ~3× LCOE swing.
+
+  2. PULSED POWER DRIVER COST (Dominant capital cost)
+
+     The pulsed power driver (C220107) is the largest single CAS22 sub-account,
+     substituting for the magnet system cost in tokamak concepts. With NO published
+     cost estimate for a commercial Z-pinch driver, the assumed $150M/module carries
+     HIGH UNCERTAINTY (plausible range: $30M–$500M/module).
+
+     No magnet system (C220103=$0) eliminates the dominant tokamak cost, but the
+     pulsed power driver cost offsets this advantage. The net capital advantage
+     vs. compact HTS tokamaks depends entirely on driver manufacturing economics.
+
+     LCOE sensitivity: $30M vs $500M/module spans ~2× LCOE swing.
+
+  3. MODULAR SCALE / REP RATE (Net power denominator)
+
+     Net electric per module is thin (~28 MWe at baseline). LCOE is highly
+     sensitive to anything that reduces net output further (lower Q, lower rep rate,
+     higher auxiliary loads). The 50 MWe/module target requires simultaneously:
+     Q > 10 (undemonstrated), 10 Hz (undemonstrated at Century), and ~37% thermal
+     efficiency (not published). Any one of these falling short collapses net output.
+
+     Century is at 0.2 Hz — 50× below commercial. The rep rate scaling path
+     (thermal management, electrode durability, LiPb dynamics at 10 Hz) is the
+     most concrete engineering challenge between current state and commercial viability.
+
+  NOTE: All values carry HIGH UNCERTAINTY. This model maps the plausible LCOE
+  corridor, not a point estimate. The dominant message is sensitivity to Q and
+  driver cost, both of which are currently unconstrained by experiment.
+
+========================================================================
+NOTE: All estimates carry HIGH UNCERTAINTY. This model is a first-pass
+corridor map. Key anchors (Q>10, 10 Hz, driver cost) are unvalidated.
+Parameter values sourced from engineering-paradigms-paper-summary.md,
+century-demo-system.md, and 1costingfe costing_constants.yaml.
+========================================================================

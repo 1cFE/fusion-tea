@@ -1,0 +1,106 @@
+Magnetic Mirror (p-B11) — Pale Blue Fusion (CHARM)
+500 MWe target | 80% availability | 30 yr lifetime | NOAK
+WARNING: All plasma parameters are truly-unknown estimates (see analysis.md §5-6)
+LCOE: 63.7 $/MWh (6.37 ¢/kWh) | Overnight: 4963 $/kW
+Fusion: 984 MW | Net: 500 MW | Q_eng: 4.3
+Recirculating fraction: 23.2%
+
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    12.4
+CAS21    Buildings                         200.0
+CAS22    Reactor Plant Equipment          1294.4
+CAS23    Turbine Plant                     128.7
+CAS24    Electrical Plant                   54.8
+CAS25    Miscellaneous                      33.4
+CAS26    Heat Rejection                     22.2
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                         0.0
+CAS30    Indirect Costs                    289.7
+CAS40    Owner's Costs                      14.1
+CAS50    Supplementary                     102.9
+CAS60    IDC                               324.0
+CAS70    O&M (annualized)                   23.0
+CAS80    Fuel (annualized)                   0.1
+CAS90    Financial                         200.0
+------------------------------------------------
+         Total Capital                    2481.5
+
+CAS22 Reactor Plant Equipment Breakdown:
+------------------------------------------------
+  C220000                          1294.4 M$
+  C220101                             1.9 M$
+  C220102                             1.8 M$
+  C220103                           516.1 M$
+  C220104                           353.2 M$
+  C220105                             7.6 M$
+  C220106                            25.3 M$
+  C220107                            59.2 M$
+  C220108                            24.1 M$
+  C220110                            16.1 M$
+  C220111                           140.7 M$
+  C220200                            90.5 M$
+  C220300                            30.2 M$
+  C220400                             0.3 M$
+  C220500                             9.2 M$
+  C220600                             6.6 M$
+  C220700                            11.5 M$
+
+Key Assumptions (all UNCERTAIN — no published design point):
+------------------------------------------------
+  p-B11 near-aneutronic power balance:   mn=1.0, f_dec=0.85, eta_th=0.20
+  DEC efficiency:                         eta_de=0.70  [physics limit per PRX Energy 2025]
+  Total auxiliary power:                  p_input=60 MW  [rotation + RF alpha channeling]
+  No tritium processing:                  p_trit=0.0
+  Machine geometry:                       plasma_t=1.5 m, chamber_length=30 m [no design point]
+  Net electric target:                    500 MWe  [framework reference scale]
+  Availability:                           80%  [no maintenance study]
+
+Blocking gaps (from analysis.md §Section 6):
+  - No published plant design or engineering parameters of any kind
+  - Alpha channeling efficiency η_α: analytical only, never measured experimentally
+  - Rotation sustainment power (recirculating fraction): not characterized
+  - DEC efficiency for rotation energy recovery: physics bounds only
+  - p-B11 nonthermal plasma never demonstrated in any experiment
+  - CHARM multi-chamber architecture never tested
+
+Sensitivity (elasticity = %LCOE / %param)
+------------------------------------------------
+
+Engineering levers:
+  availability                 -0.9997
+  construction_time_yr         +0.2943
+  f_dec                        -0.0823
+  eta_pin                      -0.0507
+  p_input                      +0.0507
+  chamber_length               +0.0198
+  vessel_t                     +0.0139
+  eta_de                       -0.0126
+  plasma_t                     +0.0123
+  p_cryo                       +0.0109
+  f_sub                        +0.0099
+  p_cool                       +0.0076
+  structure_t                  +0.0050
+  p_coils                      +0.0041
+  blanket_t                    +0.0029
+  p_house                      +0.0025
+  fuel_recovery                -0.0025
+  ht_shield_t                  +0.0011
+  p_pump                       +0.0008
+  eta_th                       -0.0007
+  T_e                          +0.0006
+  B                            +0.0005
+  n_e                          +0.0003
+  elon                         +0.0002
+  burn_fraction                -0.0001
+  Z_eff                        +0.0001
+  plasma_volume                +0.0001
+  R_w                          -0.0001
+  eta_p                        +0.0001
+  mn                           +0.0000
+  T_edge                       +0.0000
+  tau_ratio                    +0.0000
+
+Financial:
+  interest_rate                +nan
+  inflation_rate               +0.0305

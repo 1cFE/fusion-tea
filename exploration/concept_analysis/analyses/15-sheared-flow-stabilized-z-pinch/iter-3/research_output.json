@@ -1,0 +1,77 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-10",
+      "gap_description": "Driver cost at commercial scale ($/J stored, $/MWe) — no public cost estimate for the pulsed power capacitor bank and switching system that is the primary capital cost driver for the SFS Z-pinch. Analysis section S4/S5 notes industrial pulsed power systems run ~$1–10/J depending on rep rate and pulse shape, but no Zap-specific data exists.",
+      "queries": [
+        "pulsed power system cost $/joule capacitor bank fusion energy driver economics",
+        "NIF National Ignition Facility pulsed power driver cost per joule laser energy capital cost",
+        "Sandia Z machine pulsed power cost scaling \"dollars per joule\" fusion driver commercial",
+        "pulsed power fusion driver cost reduction \"cost per joule\" capacitor IFE commercial plant economics site:osti.gov OR site:arxiv.org",
+        "Z-pinch pulsed power driver \"cost\" \"MWe\" OR \"$/kWe\" commercial fusion plant economics capacitor bank scaling"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/abs/2408.15206",
+          "title": "Opportunities in Pulsed Magnetic Fusion Energy",
+          "triage": "relevant",
+          "notes": "Accessible HTML on arxiv. Discusses cost requirements for pulsed magnetic fusion drivers including SFS Z-pinch. Mentions cost must decrease 5–10x and component lifetimes increase ~1000x for commercial Hz-rate operation. References $4/J for refurbished Sandia Z machine and ~$11/J for Linear Transformer Drivers. Calls for cost optimization models analogous to tokamak tools."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/901970/",
+          "title": "SAND2006-7148 — Z-IFE Power Plant Study (Sandia, 2006)",
+          "triage": "relevant",
+          "notes": "Sandia OSTI report on Z-pinch IFE power plant economics. Search results indicate it contains COE estimate of ~7.0 cents/kWh for a single-chamber Z-IFE plant at 0.5 Hz, and direct-driver pulsed power cost analysis. OSTI purl = publicly accessible PDF. However, extraction timed out at 600 seconds — likely a very large document."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/2588719",
+          "title": "Challenges and Gaps in the Development of Pulsed Power (OSTI)",
+          "triage": "relevant",
+          "notes": "OSTI public document addressing challenges and gaps in pulsed power development, likely including cost scaling. Successfully extracted."
+        },
+        {
+          "url": "https://thefusionreport.com/imgs-capacitors-and-the-supply-chain-gap-facing-pulsed-power-fusion/",
+          "title": "IMGs, Capacitors, and the Supply Chain Gap Facing Pulsed Power Fusion",
+          "triage": "js-empty",
+          "notes": "The site returned only CSS/structural markup with no article body content accessible to WebFetch. Substack version also lacked cost figures — article focuses on performance requirements (5–10x cost reduction needed) without providing baseline $/joule numbers."
+        },
+        {
+          "url": "https://fire.pppl.gov/IFE_NAS2_SNL_Cuneo_Pulse_Power.pdf",
+          "title": "Pulsed Power Inertial Fusion Energy (Cuneo/SNL, PPPL)",
+          "triage": "image-pdf",
+          "notes": "Image-only PDF; WebFetch returned binary content with no extractable text. Skipped."
+        },
+        {
+          "url": "https://www.researchgate.net/publication/318215383_Conceptual_Cost_Study_for_a_Fusion_Power_Plant_Based_on_Four_Technologies_from_the_DOE_ARPA-E_ALPHA_Program",
+          "title": "Conceptual Cost Study for a Fusion Power Plant Based on Four DOE ARPA-E ALPHA Technologies",
+          "triage": "not-fetched",
+          "notes": "Appeared in final search results. A cost study covering four ARPA-E ALPHA program concepts, potentially including pulsed power. Not fetched due to budget limit (3 extractions used on higher-priority sources). Worth attempting in a future iteration — the ALPHA program explicitly included pulsed Z-pinch drivers."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/abs/2408.15206",
+          "source_name": "arxiv-2408-15206"
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/2588719",
+          "source_name": "osti-servlets-purl-2588719"
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/901970/",
+          "reason": "Extraction timed out after 600 seconds — document too large for agentic-mbse extract within timeout budget. Content is a large multi-section Sandia report (SAND2006-7148). Worth retrying with a direct PDF download + offline extraction, or targeting a specific section URL."
+        }
+      ],
+      "status": "partial"
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 1,
+    "sources_extracted": 2,
+    "sources_failed": 1,
+    "searches_used": 5,
+    "extractions_used": 3
+  }
+}

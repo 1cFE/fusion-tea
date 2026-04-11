@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Constraint Propagation + ATMS — Fusion TEA</title>
+<style>
+/* ============================================================
+   CSS Custom Properties (matching index.html conventions)
+   ============================================================ */
+:root {
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-text: #1a1a2e;
+  --color-text-muted: #555;
+  --color-text-light: #777;
+  --color-border: #e0e0e0;
+  --color-accent: #2563eb;
+  --color-accent-light: #dbeafe;
+  --color-determined: #16a34a;
+  --color-determined-bg: #f0fdf4;
+  --color-determined-border: #bbf7d0;
+  --color-reduced: #d97706;
+  --color-reduced-bg: #fffbeb;
+  --color-reduced-border: #fde68a;
+  --color-free: #6b7280;
+  --color-free-bg: #f3f4f6;
+  --color-free-border: #d1d5db;
+  --color-inactive: #9ca3af;
+  --color-inactive-bg: #f9fafb;
+  --color-contradiction: #dc2626;
+  --color-contradiction-bg: #fef2f2;
+  --color-contradiction-border: #fecaca;
+  --color-terminal-bg: #1e1e2e;
+  --color-terminal-text: #cdd6f4;
+  --color-terminal-prompt: #a6e3a1;
+  --sidebar-width: 260px;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "SF Mono", "Fira Code", "Fira Mono", Menlo, Consolas, monospace;
+}
+
+/* ============================================================
+   Reset & Base
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   Layout
+   ============================================================ */
+.layout { display: flex; min-height: 100vh; }
+
+/* Sidebar */
+.sidebar {
+  position: fixed; top: 0; left: 0;
+  width: var(--sidebar-width); height: 100vh;
+  background: var(--color-text); color: #ccc;
+  overflow-y: auto; z-index: 100;
+  display: flex; flex-direction: column;
+}
+.sidebar-header { padding: 1.5rem 1.25rem 1rem; border-bottom: 1px solid #333; }
+.sidebar-header h1 { font-size: 1.1rem; color: #fff; font-weight: 700; letter-spacing: -0.02em; }
+.sidebar-header .subtitle { font-size: 0.75rem; color: #888; margin-top: 0.25rem; }
+.sidebar nav { flex: 1; padding: 0.75rem 0; }
+.sidebar nav a {
+  display: block; padding: 0.45rem 1.25rem; color: #aaa; text-decoration: none;
+  font-size: 0.82rem; border-left: 3px solid transparent; transition: all 0.15s;
+}
+.sidebar nav a:hover { color: #fff; background: rgba(255,255,255,0.05); }
+.sidebar nav a.active { color: #fff; border-left-color: var(--color-accent); background: rgba(37,99,235,0.1); }
+.sidebar nav .nav-group {
+  font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em;
+  color: #666; padding: 0.8rem 1.25rem 0.3rem; margin-top: 0.25rem;
+}
+.sidebar nav a .nav-num { display: inline-block; width: 1.2rem; color: #666; font-size: 0.75rem; }
+.sidebar-footer { padding: 1rem 1.25rem; border-top: 1px solid #333; font-size: 0.72rem; color: #666; }
+.sidebar-footer a { color: #888; text-decoration: none; }
+.sidebar-footer a:hover { color: #fff; }
+
+/* Hamburger (mobile) */
+.hamburger {
+  display: none; position: fixed; top: 0.75rem; left: 0.75rem; z-index: 200;
+  background: var(--color-text); color: #fff; border: none; border-radius: 6px;
+  padding: 0.5rem 0.65rem; font-size: 1.2rem; cursor: pointer; line-height: 1;
+}
+
+/* Main content */
+.main { margin-left: var(--sidebar-width); flex: 1; max-width: 900px; padding: 3rem 3rem 6rem; }
+
+/* ============================================================
+   Typography
+   ============================================================ */
+h2 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; padding-top: 2rem; }
+h2 .section-num { color: var(--color-accent); font-weight: 400; margin-right: 0.25rem; }
+h3 { font-size: 1.15rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.5rem; }
+p { margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+.section-divider { border: none; border-top: 1px solid var(--color-border); margin: 3rem 0; }
+code { font-family: var(--font-mono); font-size: 0.85em; background: #f1f5f9; padding: 0.15rem 0.35rem; border-radius: 4px; }
+
+/* ============================================================
+   Cards
+   ============================================================ */
+.card {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 1rem;
+}
+
+/* ============================================================
+   Variable Cards
+   ============================================================ */
+.var-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0 1.5rem;
+}
+.var-card {
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  transition: border-color 0.3s, opacity 0.3s, background 0.3s;
+  position: relative;
+}
+.var-card.status-determined {
+  border-color: var(--color-determined-border);
+  background: var(--color-determined-bg);
+}
+.var-card.status-reduced {
+  border-color: var(--color-reduced-border);
+  background: var(--color-reduced-bg);
+}
+.var-card.status-free {
+  border-color: var(--color-free-border);
+  background: var(--color-free-bg);
+}
+.var-card.status-inactive {
+  border-color: var(--color-border);
+  background: var(--color-inactive-bg);
+  opacity: 0.5;
+}
+.var-card.status-contradiction {
+  border-color: var(--color-contradiction-border);
+  background: var(--color-contradiction-bg);
+}
+.var-card .var-name {
+  font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.04em; margin-bottom: 0.4rem; color: var(--color-text);
+}
+.var-card.status-inactive .var-name { color: var(--color-inactive); }
+.var-card .var-chips { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.5rem; }
+.var-chip {
+  font-size: 0.72rem; padding: 0.15rem 0.45rem; border-radius: 4px;
+  background: #e2e8f0; color: var(--color-text);
+  font-family: var(--font-mono); transition: all 0.3s;
+  white-space: nowrap;
+}
+.var-chip.eliminated {
+  text-decoration: line-through; opacity: 0.35; background: #f1f5f9;
+}
+.var-chip.active-value {
+  background: var(--color-accent); color: #fff; font-weight: 600;
+}
+.var-chip.clickable {
+  cursor: pointer; border: 1px solid transparent;
+}
+.var-chip.clickable:hover {
+  border-color: var(--color-accent); background: var(--color-accent-light);
+}
+.var-chip.clickable.selected {
+  background: var(--color-accent); color: #fff; font-weight: 600;
+  border-color: var(--color-accent);
+}
+.var-status {
+  font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.05em; display: flex; align-items: center; gap: 0.35rem;
+}
+.var-status .status-dot {
+  width: 6px; height: 6px; border-radius: 50%; display: inline-block;
+}
+.status-determined .var-status { color: var(--color-determined); }
+.status-determined .status-dot { background: var(--color-determined); }
+.status-reduced .var-status { color: var(--color-reduced); }
+.status-reduced .status-dot { background: var(--color-reduced); }
+.status-free .var-status { color: var(--color-free); }
+.status-free .status-dot { background: var(--color-free); }
+.status-inactive .var-status { color: var(--color-inactive); }
+.status-inactive .status-dot { background: var(--color-inactive); }
+.var-justification {
+  font-size: 0.68rem; color: var(--color-text-light);
+  font-family: var(--font-mono); margin-top: 0.25rem;
+  overflow: hidden; text-overflow: ellipsis;
+}
+.var-card .conditional-badge {
+  position: absolute; top: 0.5rem; right: 0.5rem;
+  font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--color-text-light); background: #f1f5f9;
+  padding: 0.1rem 0.35rem; border-radius: 3px;
+}
+
+/* ============================================================
+   Constraint Cards
+   ============================================================ */
+.constraint-list { margin: 1rem 0 1.5rem; }
+.constraint-item {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: 6px; padding: 0.6rem 1rem; margin-bottom: 0.5rem;
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  font-size: 0.88rem;
+}
+.constraint-id {
+  font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700;
+  color: var(--color-accent); background: var(--color-accent-light);
+  padding: 0.15rem 0.4rem; border-radius: 4px; white-space: nowrap;
+  flex-shrink: 0; margin-top: 0.1rem;
+}
+.constraint-desc { flex: 1; color: var(--color-text-muted); }
+.constraint-tags { display: flex; gap: 0.25rem; flex-shrink: 0; flex-wrap: wrap; }
+.effect-tag {
+  font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.04em;
+  padding: 0.1rem 0.35rem; border-radius: 3px; font-weight: 600;
+}
+.effect-tag.restrict { background: #dbeafe; color: #1d4ed8; }
+.effect-tag.exclude { background: #fef3c7; color: #92400e; }
+.effect-tag.activate { background: #d1fae5; color: #065f46; }
+.effect-tag.deactivate { background: #fee2e2; color: #991b1b; }
+.effect-tag.contradiction { background: #fecaca; color: #991b1b; }
+
+/* ============================================================
+   Trace Steps (Algorithm Walkthrough)
+   ============================================================ */
+.trace-steps { margin: 1rem 0 1.5rem; }
+.trace-step {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  padding: 0.6rem 1rem; border-left: 3px solid var(--color-border);
+  margin-bottom: 0.25rem; transition: border-color 0.3s, background 0.3s;
+}
+.trace-step.highlight {
+  border-left-color: var(--color-accent);
+  background: var(--color-accent-light);
+}
+.trace-step .step-num {
+  font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-text-light);
+  width: 1.5rem; flex-shrink: 0; text-align: right;
+}
+.trace-step .step-cid {
+  font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700;
+  color: var(--color-accent); width: 2.5rem; flex-shrink: 0;
+}
+.trace-step .step-effect { font-size: 0.85rem; color: var(--color-text-muted); }
+
+/* ============================================================
+   Concept Selector
+   ============================================================ */
+.concept-selector {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;
+}
+.concept-btn {
+  padding: 0.45rem 0.85rem; border: 2px solid var(--color-border);
+  border-radius: 6px; background: var(--color-surface); cursor: pointer;
+  font-size: 0.82rem; font-weight: 600; font-family: var(--font-sans);
+  transition: all 0.15s; color: var(--color-text);
+}
+.concept-btn:hover { border-color: var(--color-accent); color: var(--color-accent); }
+.concept-btn.active {
+  border-color: var(--color-accent); background: var(--color-accent);
+  color: #fff;
+}
+.concept-btn.contradiction-btn.active {
+  border-color: var(--color-contradiction); background: var(--color-contradiction);
+  color: #fff;
+}
+
+/* ============================================================
+   Controls
+   ============================================================ */
+.controls {
+  display: flex; gap: 0.5rem; margin: 1rem 0; align-items: center;
+}
+.ctrl-btn {
+  padding: 0.4rem 0.9rem; border: 1px solid var(--color-border);
+  border-radius: 6px; background: var(--color-surface); cursor: pointer;
+  font-size: 0.82rem; font-weight: 600; font-family: var(--font-sans);
+  transition: all 0.15s;
+}
+.ctrl-btn:hover { background: var(--color-bg); border-color: var(--color-accent); }
+.ctrl-btn.primary {
+  background: var(--color-accent); color: #fff; border-color: var(--color-accent);
+}
+.ctrl-btn.primary:hover { background: #1d4ed8; }
+.ctrl-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.controls .speed-label { font-size: 0.75rem; color: var(--color-text-light); margin-left: 0.5rem; }
+
+/* ============================================================
+   Propagation Log
+   ============================================================ */
+.prop-log {
+  background: var(--color-terminal-bg); color: var(--color-terminal-text);
+  border-radius: 8px; padding: 1rem 1.25rem; font-family: var(--font-mono);
+  font-size: 0.78rem; line-height: 1.7; overflow-y: auto; max-height: 300px;
+  margin: 1rem 0 1.5rem; min-height: 80px;
+}
+.prop-log .log-entry { margin-bottom: 0.15rem; }
+.prop-log .log-init { color: #89b4fa; }
+.prop-log .log-constraint { color: #a6e3a1; }
+.prop-log .log-effect { color: #cdd6f4; }
+.prop-log .log-contradiction { color: #f38ba8; font-weight: 600; }
+.prop-log .log-done { color: #f9e2af; }
+.prop-log-placeholder { color: #585b70; font-style: italic; }
+
+/* ============================================================
+   Transfer Comparison
+   ============================================================ */
+.transfer-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+  margin: 1rem 0;
+}
+.transfer-column h4 {
+  font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.04em; margin-bottom: 0.75rem; text-align: center;
+  padding: 0.4rem; border-radius: 6px;
+}
+.transfer-column:first-child h4 { background: #dbeafe; color: #1d4ed8; }
+.transfer-column:last-child h4 { background: #fce7f3; color: #9d174d; }
+.transfer-facts { margin-top: 1rem; }
+.transfer-fact-group { margin-bottom: 1rem; }
+.transfer-fact-group h4 {
+  font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em;
+  margin-bottom: 0.5rem; background: none; text-align: left; padding: 0;
+}
+.fact-item {
+  font-size: 0.82rem; padding: 0.35rem 0.65rem; border-radius: 4px;
+  margin-bottom: 0.25rem; font-family: var(--font-mono);
+}
+.fact-item.shared { background: #d1fae5; color: #065f46; }
+.fact-item.unique-a { background: #dbeafe; color: #1d4ed8; }
+.fact-item.unique-b { background: #fce7f3; color: #9d174d; }
+
+/* ============================================================
+   Callout
+   ============================================================ */
+.callout {
+  border-left: 3px solid var(--color-accent); background: var(--color-accent-light);
+  padding: 0.8rem 1rem; border-radius: 0 6px 6px 0; font-size: 0.88rem; margin: 1rem 0 1.5rem;
+}
+.callout strong { font-weight: 600; }
+
+/* ============================================================
+   Initial Assignment Display
+   ============================================================ */
+.initial-display {
+  display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.5rem 0 1rem;
+  align-items: center;
+}
+.initial-display .init-label {
+  font-size: 0.78rem; font-weight: 600; color: var(--color-text-muted);
+  margin-right: 0.25rem;
+}
+.init-chip {
+  font-family: var(--font-mono); font-size: 0.75rem;
+  padding: 0.2rem 0.5rem; border-radius: 4px;
+  background: var(--color-accent-light); color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* ============================================================
+   Summary Stats
+   ============================================================ */
+.summary-stats {
+  display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0;
+}
+.stat-box {
+  text-align: center; padding: 0.5rem 1rem; border-radius: 6px;
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  min-width: 80px;
+}
+.stat-num { font-size: 1.5rem; font-weight: 700; }
+.stat-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-text-muted); }
+.stat-box.stat-determined .stat-num { color: var(--color-determined); }
+.stat-box.stat-reduced .stat-num { color: var(--color-reduced); }
+.stat-box.stat-free .stat-num { color: var(--color-free); }
+.stat-box.stat-inactive .stat-num { color: var(--color-inactive); }
+
+/* ============================================================
+   Custom Builder
+   ============================================================ */
+.custom-builder {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: 8px; padding: 1rem 1.25rem; margin: 1rem 0;
+  display: none;
+}
+.custom-builder.visible { display: block; }
+.custom-builder h4 {
+  font-size: 0.82rem; font-weight: 700; margin-bottom: 0.75rem;
+}
+.custom-var-row {
+  display: flex; align-items: center; gap: 0.5rem;
+  margin-bottom: 0.4rem; flex-wrap: wrap;
+}
+.custom-var-label {
+  font-family: var(--font-mono); font-size: 0.78rem; font-weight: 600;
+  width: 130px; flex-shrink: 0; color: var(--color-text-muted);
+}
+
+/* ============================================================
+   Collapsible Sections
+   ============================================================ */
+details.collapsible { margin: 1rem 0 1.5rem; }
+details.collapsible summary {
+  cursor: pointer; font-weight: 600; font-size: 0.95rem;
+  padding: 0.5rem 0; list-style: none; display: flex; align-items: center; gap: 0.5rem;
+}
+details.collapsible summary::before {
+  content: '\25B6'; font-size: 0.6rem; color: var(--color-text-light);
+  transition: transform 0.15s; display: inline-block;
+}
+details.collapsible[open] > summary::before { transform: rotate(90deg); }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 768px) {
+  .hamburger { display: block; }
+  .sidebar { transform: translateX(-100%); transition: transform 0.3s; }
+  .sidebar.open { transform: translateX(0); }
+  .main { margin-left: 0; padding: 2rem 1.25rem 4rem; }
+  .var-grid { grid-template-columns: 1fr 1fr; }
+  .transfer-grid { grid-template-columns: 1fr; }
+  .constraint-item { flex-direction: column; gap: 0.35rem; }
+}
+@media (max-width: 480px) {
+  .var-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<button class="hamburger" onclick="document.querySelector('.sidebar').classList.toggle('open')">&#9776;</button>
+
+<div class="layout">
+
+<!-- ============================================================
+     Sidebar
+     ============================================================ -->
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <h1>Constraint Propagation</h1>
+    <div class="subtitle">ATMS Explainer &mdash; Fusion TEA</div>
+  </div>
+  <nav>
+    <div class="nav-group">Explainer</div>
+    <a href="#problem"><span class="nav-num">1.</span> The Problem</a>
+    <a href="#variables"><span class="nav-num">2.</span> Variables &amp; Domains</a>
+    <a href="#constraints"><span class="nav-num">3.</span> Constraints</a>
+    <a href="#algorithm"><span class="nav-num">4.</span> The Algorithm</a>
+    <a href="#atms"><span class="nav-num">5.</span> Justification Tracking</a>
+    <a href="#transfer"><span class="nav-num">6.</span> Transfer &amp; Gaps</a>
+    <div class="nav-group">Interactive</div>
+    <a href="#explorer"><span class="nav-num">7.</span> Concept Explorer</a>
+    <a href="#comparison"><span class="nav-num">8.</span> Transfer Comparison</a>
+    <div class="nav-group">Reference</div>
+    <a href="#reference"><span class="nav-num">9.</span> Constraint Table</a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="index.html">&larr; Back to Workflow Explainer</a>
+  </div>
+</aside>
+
+<!-- ============================================================
+     Main Content
+     ============================================================ -->
+<main class="main">
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Section 1: The Problem
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="problem">
+<h2><span class="section-num">1.</span> The Problem</h2>
+<p class="lead">A flat comparison table can't capture the fusion design space. Context changes everything.</p>
+
+<p>When we built a morphological table of ~36 fusion concepts across 12 design dimensions, a striking result emerged: <strong>0% of random combinations are physically coherent</strong>. The table's Cartesian product implies thousands of possibilities, but physics constraints eliminate nearly all of them.</p>
+
+<p>Worse, the table treats every column as independent. But choosing <code>fuel = D-T</code> doesn't just fill one cell &mdash; it activates tritium breeding as a new design dimension, forces heavy neutron shielding, and restricts energy conversion to thermal cycles. These are <em>cascading constraints</em> that a flat table can't represent.</p>
+
+<p>The actual design space has about <strong>2 effective degrees of freedom</strong>: once you pick a confinement approach and a fuel cycle, most other choices are determined or heavily constrained. The table obscures this by presenting ~12 independent-looking columns.</p>
+
+<div class="callout">
+  <strong>What we need:</strong> An algorithm that takes a partial design choice (e.g., "compact tokamak with D-T fuel") and automatically derives everything that follows &mdash; with a trace showing <em>why</em> each consequence holds and <em>which assumptions</em> it depends on.
+</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Section 2: Variables & Domains
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="variables">
+<h2><span class="section-num">2.</span> Variables &amp; Domains</h2>
+<p class="lead">The design space as 8 variables, each with a finite set of possible values.</p>
+
+<p>This toy problem uses a simplified fusion-like design space. Five variables are always active; three are <strong>conditionally activated</strong> &mdash; they only become relevant when certain upstream choices are made.</p>
+
+<div class="var-grid" id="static-var-grid">
+  <!-- Populated by JS -->
+</div>
+
+<p>The conditional variables are the key insight: <code>blanket</code> only matters if you need to breed tritium (D-T fuel), <code>rep_rate</code> only matters for pulsed concepts, and <code>magnet_type</code> only matters if the confinement approach uses magnets. A flat table must include all three for every concept, padding the rest with N/A.</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Section 3: Constraints
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="constraints">
+<h2><span class="section-num">3.</span> Constraints</h2>
+<p class="lead">12 rules encoding physics and engineering couplings.</p>
+
+<p>Each constraint fires when its precondition is met, then restricts domains, activates/deactivates variables, or detects contradictions. The constraints are the reusable knowledge artifact &mdash; the same rules apply to every concept.</p>
+
+<div class="constraint-list" id="constraint-list">
+  <!-- Populated by JS -->
+</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Section 4: The Algorithm
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="algorithm">
+<h2><span class="section-num">4.</span> The Algorithm</h2>
+<p class="lead">Fixed-point constraint propagation: keep firing rules until nothing changes.</p>
+
+<h3>How It Works</h3>
+<ol style="margin: 0.5rem 0 1.5rem 1.5rem; font-size: 0.92rem;">
+  <li style="margin-bottom: 0.5rem;"><strong>Initialize</strong>: every variable starts with its full domain. Apply the user's partial assignment (e.g., <code>confinement=tokamak</code>) by restricting those variables to singleton domains.</li>
+  <li style="margin-bottom: 0.5rem;"><strong>Scan constraints</strong>: check each constraint's precondition against current domains. If a variable has been determined (singleton domain) and a constraint depends on that value, it fires.</li>
+  <li style="margin-bottom: 0.5rem;"><strong>Apply effects</strong>: each fired constraint may <em>restrict</em> a domain (intersect with allowed values), <em>exclude</em> values, <em>activate</em> or <em>deactivate</em> a variable, or signal a <em>contradiction</em>.</li>
+  <li style="margin-bottom: 0.5rem;"><strong>Repeat</strong> until no constraint produces a change (fixed point reached) or a contradiction is detected.</li>
+</ol>
+
+<h3>Walkthrough: CompactTok</h3>
+<p>Starting from <code>confinement=tokamak, fuel=DT, magnet_type=hts</code>, here's what the algorithm derives:</p>
+
+<div class="trace-steps" id="walkthrough-trace">
+  <!-- Populated by JS -->
+</div>
+
+<p>In 6 constraint firings, the algorithm determined 6 of 8 variables, reduced 2 more, and left 0 fully free. The tokamak D-T HTS concept is heavily constrained &mdash; most "choices" are actually forced.</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Section 5: Justification Tracking (ATMS)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="atms">
+<h2><span class="section-num">5.</span> Justification Tracking</h2>
+<p class="lead">Every derived fact carries the minimal set of assumptions it depends on.</p>
+
+<p>Constraint propagation tells us <em>what</em> follows from a set of choices. <strong>Assumption-Based Truth Maintenance (ATMS)</strong> tells us <em>why</em> &mdash; tracking exactly which input assumptions support each conclusion.</p>
+
+<h3>Minimal Justifications</h3>
+<p>Consider CompactTok (<code>confinement=tokamak, fuel=DT, magnet_type=hts</code>). After propagation:</p>
+
+<div class="card" style="font-size: 0.88rem; margin: 1rem 0 1.5rem;">
+  <p style="margin-bottom: 0.6rem;"><code>neutron_shielding = heavy</code> &larr; <strong>{fuel=DT}</strong></p>
+  <p style="margin-bottom: 0.6rem;">The shielding requirement depends <em>only</em> on the fuel choice. It doesn't matter that we also chose tokamak or HTS magnets &mdash; any D-T concept needs heavy shielding. The ATMS records the <em>minimal</em> justification.</p>
+
+  <p style="margin-bottom: 0.6rem;"><code>blanket = flibe</code> &larr; <strong>{fuel=DT, confinement=tokamak, magnet_type=hts}</strong></p>
+  <p style="margin-bottom: 0;">This conclusion requires all three assumptions. D-T activates the blanket variable, tokamak geometry constrains the options, and HTS magnets in compact geometry force FLiBe specifically (C11). Remove any assumption and the conclusion changes.</p>
+</div>
+
+<h3>Why Minimality Matters</h3>
+<p>Minimal justifications enable precise <strong>transfer analysis</strong>. If two concepts share a derived fact, we can check whether they share the same justification. If yes, the conclusion transfers &mdash; it's the same reasoning in both contexts. If not, the conclusions are superficially similar but structurally different.</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Section 6: Transfer & Gap Analysis
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="transfer">
+<h2><span class="section-num">6.</span> Transfer &amp; Gap Analysis</h2>
+<p class="lead">Shared sub-problems emerge from shared justifications. Gaps emerge where propagation stops.</p>
+
+<h3>Transfer: Shared Derived Facts</h3>
+<p>Running the algorithm on multiple concepts reveals which engineering consequences are shared:</p>
+
+<div class="card" style="font-size: 0.88rem; margin: 1rem 0 1.5rem;">
+  <p style="margin-bottom: 0.5rem;"><strong>Shared by CompactTok, LaserDT, DTStellarator:</strong></p>
+  <ul style="margin: 0 0 0.75rem 1.25rem;">
+    <li><code>neutron_shielding = heavy</code> &larr; {fuel=DT}</li>
+    <li><code>energy_conversion &isin; {thermal_steam, thermal_sco2}</code> &larr; {fuel=DT}</li>
+  </ul>
+  <p style="margin-bottom: 0;">All three are D-T concepts. Any work on neutron shielding or thermal energy conversion transfers directly between them &mdash; the justification is identical.</p>
+</div>
+
+<h3>Gap Analysis: Novel Inputs</h3>
+<p>When we propagate from a combination not in our concept library (e.g., <code>stellarator + DHe3</code>), the algorithm reveals where existing knowledge runs out:</p>
+
+<ul style="margin: 0.5rem 0 1rem 1.25rem; font-size: 0.92rem;">
+  <li><strong>Determined</strong> (3): confinement, fuel, neutron_shielding &mdash; forced by inputs + constraints</li>
+  <li><strong>Reduced</strong> (2): heating, magnet_type &mdash; constrained but not forced (design freedom)</li>
+  <li><strong>Free</strong> (1): energy_conversion &mdash; genuinely unconstrained (gap in our rules)</li>
+  <li><strong>N/A</strong> (2): blanket, rep_rate &mdash; not relevant to this concept</li>
+</ul>
+
+<p>The "free" variables identify where we need additional domain knowledge. Energy conversion for a DHe3 stellarator is a genuine open question in the constraint set.</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Section 7: Concept Explorer (Interactive)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="explorer">
+<h2><span class="section-num">7.</span> Concept Explorer</h2>
+<p class="lead">Pick a concept, step through propagation, and see the design space unfold.</p>
+
+<div class="concept-selector" id="concept-selector">
+  <button class="concept-btn active" data-concept="CompactTok">CompactTok</button>
+  <button class="concept-btn" data-concept="AneutronicZPinch">AneutronicZPinch</button>
+  <button class="concept-btn" data-concept="LaserDT">LaserDT</button>
+  <button class="concept-btn" data-concept="DTStellarator">DTStellarator</button>
+  <button class="concept-btn contradiction-btn" data-concept="Contradiction">Contradiction</button>
+  <button class="concept-btn" data-concept="Novel">Novel</button>
+  <button class="concept-btn" data-concept="Custom">Custom</button>
+</div>
+
+<div class="custom-builder" id="custom-builder">
+  <h4>Build Your Assignment</h4>
+  <p style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 0.75rem;">Click values to select them. One value per variable, or leave unassigned.</p>
+  <div id="custom-chips">
+    <!-- Populated by JS -->
+  </div>
+</div>
+
+<div class="initial-display" id="initial-display">
+  <span class="init-label">Initial:</span>
+  <!-- Populated by JS -->
+</div>
+
+<div class="controls">
+  <button class="ctrl-btn primary" id="btn-run-all">Run All</button>
+  <button class="ctrl-btn" id="btn-step">Step</button>
+  <button class="ctrl-btn" id="btn-reset">Reset</button>
+  <span class="speed-label" id="step-count"></span>
+</div>
+
+<div class="summary-stats" id="summary-stats">
+  <!-- Populated by JS after propagation -->
+</div>
+
+<div class="var-grid" id="explorer-var-grid">
+  <!-- Populated by JS -->
+</div>
+
+<h3 style="margin-top: 1rem;">Propagation Log</h3>
+<div class="prop-log" id="prop-log">
+  <span class="prop-log-placeholder">Select a concept and click Run All or Step to begin.</span>
+</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Section 8: Transfer Comparison (Interactive)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="comparison">
+<h2><span class="section-num">8.</span> Transfer Comparison</h2>
+<p class="lead">Run two concepts side by side to see what's shared and what's unique.</p>
+
+<div style="display: flex; gap: 1.5rem; margin: 1rem 0; flex-wrap: wrap;">
+  <div>
+    <label style="font-size: 0.78rem; font-weight: 600; color: var(--color-text-muted); display: block; margin-bottom: 0.35rem;">Concept A</label>
+    <select id="compare-a" class="ctrl-btn" style="padding: 0.35rem 0.6rem; font-size: 0.82rem;">
+      <option value="CompactTok" selected>CompactTok</option>
+      <option value="AneutronicZPinch">AneutronicZPinch</option>
+      <option value="LaserDT">LaserDT</option>
+      <option value="DTStellarator">DTStellarator</option>
+      <option value="Novel">Novel (StellaratorDHe3)</option>
+    </select>
+  </div>
+  <div>
+    <label style="font-size: 0.78rem; font-weight: 600; color: var(--color-text-muted); display: block; margin-bottom: 0.35rem;">Concept B</label>
+    <select id="compare-b" class="ctrl-btn" style="padding: 0.35rem 0.6rem; font-size: 0.82rem;">
+      <option value="CompactTok">CompactTok</option>
+      <option value="AneutronicZPinch">AneutronicZPinch</option>
+      <option value="LaserDT">LaserDT</option>
+      <option value="DTStellarator" selected>DTStellarator</option>
+      <option value="Novel">Novel (StellaratorDHe3)</option>
+    </select>
+  </div>
+  <div style="display: flex; align-items: flex-end;">
+    <button class="ctrl-btn primary" id="btn-compare">Compare</button>
+  </div>
+</div>
+
+<div class="transfer-grid" id="transfer-grid">
+  <div class="transfer-column" id="transfer-col-a">
+    <h4>Concept A</h4>
+    <div class="var-grid" id="compare-grid-a"></div>
+  </div>
+  <div class="transfer-column" id="transfer-col-b">
+    <h4>Concept B</h4>
+    <div class="var-grid" id="compare-grid-b"></div>
+  </div>
+</div>
+
+<div class="transfer-facts" id="transfer-facts">
+  <!-- Populated by JS after comparison -->
+</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Section 9: Constraint Reference
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="reference">
+<h2><span class="section-num">9.</span> Constraint Reference</h2>
+<p class="lead">Complete table of all 12 constraints in the toy problem.</p>
+
+<details class="collapsible" open>
+  <summary>All Constraints</summary>
+  <div class="constraint-list" id="reference-constraint-list">
+    <!-- Populated by JS -->
+  </div>
+</details>
+</section>
+
+</main>
+</div>
+
+<!-- ============================================================
+     JavaScript: Engine Port + Interactive UI
+     ============================================================ -->
+<script>
+// ============================================================
+// Set Utilities
+// ============================================================
+function setIntersect(a, b) {
+  const result = new Set();
+  for (const x of a) if (b.has(x)) result.add(x);
+  return result;
+}
+function setUnion(a, b) {
+  const result = new Set(a);
+  for (const x of b) result.add(x);
+  return result;
+}
+function setDifference(a, b) {
+  const result = new Set();
+  for (const x of a) if (!b.has(x)) result.add(x);
+  return result;
+}
+function setsEqual(a, b) {
+  if (a.size !== b.size) return false;
+  for (const x of a) if (!b.has(x)) return false;
+  return true;
+}
+function setToSorted(s) { return [...s].sort(); }
+function fmtSet(s) {
+  if (s.size === 1) return [...s][0];
+  return '{' + setToSorted(s).join(', ') + '}';
+}
+
+// ============================================================
+// Justification Utilities
+// Justifications are Set<string> of "var=val" pairs.
+// ============================================================
+function justUnion(...justs) {
+  const result = new Set();
+  for (const j of justs) for (const x of j) result.add(x);
+  return result;
+}
+function justFormat(j) {
+  if (!j || j.size === 0) return '{}';
+  return '{' + [...j].sort().join(', ') + '}';
+}
+function domainKey(varName, values) {
+  return varName + '|domain_is|' + setToSorted(values).join(',');
+}
+
+// ============================================================
+// Domain Model (faithful port)
+// ============================================================
+function makeVariables() {
+  return [
+    { name: 'confinement', domain: new Set(['tokamak', 'stellarator', 'laser_icf', 'z_pinch']), activeByDefault: true },
+    { name: 'fuel', domain: new Set(['DT', 'DHe3', 'pB11']), activeByDefault: true },
+    { name: 'heating', domain: new Set(['rf', 'nbi', 'laser', 'ohmic', 'compression']), activeByDefault: true },
+    { name: 'blanket', domain: new Set(['flibe', 'lipb', 'solid_breeder', 'none']), activeByDefault: false },
+    { name: 'neutron_shielding', domain: new Set(['heavy', 'moderate', 'minimal']), activeByDefault: true },
+    { name: 'energy_conversion', domain: new Set(['thermal_steam', 'thermal_sco2', 'direct_electric', 'hybrid']), activeByDefault: true },
+    { name: 'rep_rate', domain: new Set(['steady_state', 'low_hz', 'high_hz']), activeByDefault: false },
+    { name: 'magnet_type', domain: new Set(['hts', 'lts', 'conventional', 'none']), activeByDefault: false },
+  ];
+}
+
+function _domainIs(domains, varName, value) {
+  const d = domains.get(varName);
+  return d && d.size === 1 && d.has(value);
+}
+
+function makeConstraints() {
+  return [
+    {
+      id: 'C1', description: 'fuel=DT → activate(blanket), neutron_shielding=heavy',
+      dependsOn: ['fuel'],
+      condition: (d, a) => _domainIs(d, 'fuel', 'DT'),
+      consequence: (d, a) => [
+        { type: 'activate', var: 'blanket' },
+        { type: 'restrict', var: 'neutron_shielding', values: new Set(['heavy']) },
+      ],
+      effectTypes: ['activate', 'restrict'],
+    },
+    {
+      id: 'C2', description: 'fuel=DHe3 → neutron_shielding=moderate',
+      dependsOn: ['fuel'],
+      condition: (d, a) => _domainIs(d, 'fuel', 'DHe3'),
+      consequence: (d, a) => [
+        { type: 'restrict', var: 'neutron_shielding', values: new Set(['moderate']) },
+      ],
+      effectTypes: ['restrict'],
+    },
+    {
+      id: 'C3', description: 'fuel=pB11 → neutron_shielding=minimal, energy_conversion ∈ {direct_electric, hybrid}',
+      dependsOn: ['fuel'],
+      condition: (d, a) => _domainIs(d, 'fuel', 'pB11'),
+      consequence: (d, a) => [
+        { type: 'restrict', var: 'neutron_shielding', values: new Set(['minimal']) },
+        { type: 'restrict', var: 'energy_conversion', values: new Set(['direct_electric', 'hybrid']) },
+      ],
+      effectTypes: ['restrict'],
+    },
+    {
+      id: 'C4', description: 'confinement=laser_icf → heating=laser, deactivate(magnet_type), activate(rep_rate)',
+      dependsOn: ['confinement'],
+      condition: (d, a) => _domainIs(d, 'confinement', 'laser_icf'),
+      consequence: (d, a) => [
+        { type: 'restrict', var: 'heating', values: new Set(['laser']) },
+        { type: 'deactivate', var: 'magnet_type' },
+        { type: 'activate', var: 'rep_rate' },
+      ],
+      effectTypes: ['restrict', 'deactivate', 'activate'],
+    },
+    {
+      id: 'C5', description: 'confinement=tokamak → heating ∈ {rf, nbi, ohmic}, activate(magnet_type)',
+      dependsOn: ['confinement'],
+      condition: (d, a) => _domainIs(d, 'confinement', 'tokamak'),
+      consequence: (d, a) => [
+        { type: 'restrict', var: 'heating', values: new Set(['rf', 'nbi', 'ohmic']) },
+        { type: 'activate', var: 'magnet_type' },
+      ],
+      effectTypes: ['restrict', 'activate'],
+    },
+    {
+      id: 'C6', description: 'confinement=stellarator → heating ∈ {rf, nbi}, activate(magnet_type), magnet_type ≠ conventional',
+      dependsOn: ['confinement'],
+      condition: (d, a) => _domainIs(d, 'confinement', 'stellarator'),
+      consequence: (d, a) => [
+        { type: 'restrict', var: 'heating', values: new Set(['rf', 'nbi']) },
+        { type: 'activate', var: 'magnet_type' },
+        { type: 'exclude', var: 'magnet_type', values: new Set(['conventional']) },
+      ],
+      effectTypes: ['restrict', 'activate', 'exclude'],
+    },
+    {
+      id: 'C7', description: 'confinement=z_pinch → heating ∈ {ohmic, compression}, activate(rep_rate)',
+      dependsOn: ['confinement'],
+      condition: (d, a) => _domainIs(d, 'confinement', 'z_pinch'),
+      consequence: (d, a) => [
+        { type: 'restrict', var: 'heating', values: new Set(['ohmic', 'compression']) },
+        { type: 'activate', var: 'rep_rate' },
+      ],
+      effectTypes: ['restrict', 'activate'],
+    },
+    {
+      id: 'C8', description: 'fuel=pB11 ∧ confinement=tokamak → CONTRADICTION',
+      dependsOn: ['fuel', 'confinement'],
+      condition: (d, a) => _domainIs(d, 'fuel', 'pB11') && _domainIs(d, 'confinement', 'tokamak'),
+      consequence: (d, a) => [
+        { type: 'contradiction', reason: 'T_i too high for tokamak confinement with p-B11' },
+      ],
+      effectTypes: ['contradiction'],
+    },
+    {
+      id: 'C9', description: 'fuel=DT → energy_conversion ∈ {thermal_steam, thermal_sco2}',
+      dependsOn: ['fuel'],
+      condition: (d, a) => _domainIs(d, 'fuel', 'DT'),
+      consequence: (d, a) => [
+        { type: 'restrict', var: 'energy_conversion', values: new Set(['thermal_steam', 'thermal_sco2']) },
+      ],
+      effectTypes: ['restrict'],
+    },
+    {
+      id: 'C10', description: 'confinement=laser_icf ∧ fuel=DT → blanket ∈ {flibe, lipb}',
+      dependsOn: ['confinement', 'fuel'],
+      condition: (d, a) => _domainIs(d, 'confinement', 'laser_icf') && _domainIs(d, 'fuel', 'DT'),
+      consequence: (d, a) => [
+        { type: 'restrict', var: 'blanket', values: new Set(['flibe', 'lipb']) },
+      ],
+      effectTypes: ['restrict'],
+    },
+    {
+      id: 'C11', description: 'confinement=tokamak ∧ magnet_type=hts → blanket ∈ {flibe}',
+      dependsOn: ['confinement', 'magnet_type'],
+      condition: (d, a) => _domainIs(d, 'confinement', 'tokamak') && _domainIs(d, 'magnet_type', 'hts'),
+      consequence: (d, a) => [
+        { type: 'restrict', var: 'blanket', values: new Set(['flibe']) },
+      ],
+      effectTypes: ['restrict'],
+    },
+    {
+      id: 'C12', description: 'heating=laser → confinement=laser_icf',
+      dependsOn: ['heating'],
+      condition: (d, a) => _domainIs(d, 'heating', 'laser'),
+      consequence: (d, a) => [
+        { type: 'restrict', var: 'confinement', values: new Set(['laser_icf']) },
+      ],
+      effectTypes: ['restrict'],
+    },
+  ];
+}
+
+// ============================================================
+// Concepts
+// ============================================================
+const CONCEPTS = {
+  CompactTok: { confinement: 'tokamak', fuel: 'DT', magnet_type: 'hts' },
+  AneutronicZPinch: { confinement: 'z_pinch', fuel: 'pB11' },
+  LaserDT: { confinement: 'laser_icf', fuel: 'DT' },
+  DTStellarator: { confinement: 'stellarator', fuel: 'DT' },
+  Contradiction: { confinement: 'tokamak', fuel: 'pB11' },
+  Novel: { confinement: 'stellarator', fuel: 'DHe3' },
+};
+
+// ============================================================
+// Propagation Engine (faithful port)
+// ============================================================
+class PropagationEngine {
+  constructor(variables, constraints) {
+    this.variables = variables; // array
+    this.constraints = constraints; // array
+    this.varMap = new Map(); // name -> variable
+    for (const v of variables) this.varMap.set(v.name, v);
+  }
+
+  propagate(initial) {
+    const domains = new Map();
+    const active = new Map();
+    const trace = [];
+    const justifications = new Map(); // domainKey -> Set<string>
+    const activationJustifications = new Map(); // varName -> Set<string>
+
+    for (const v of this.variables) {
+      domains.set(v.name, new Set(v.domain));
+      active.set(v.name, v.activeByDefault);
+    }
+
+    // Apply initial assignments
+    for (const [varName, value] of Object.entries(initial)) {
+      if (!domains.get(varName).has(value)) {
+        return {
+          initial, domains, active, trace,
+          contradiction: { constraintId: 'INIT', description: `${varName}=${value} not in domain`, justification: new Set([`${varName}=${value}`]) },
+          justifications, activationJustifications,
+        };
+      }
+      domains.set(varName, new Set([value]));
+      const selfJust = new Set([`${varName}=${value}`]);
+      justifications.set(domainKey(varName, new Set([value])), selfJust);
+      trace.push({ constraintId: 'INIT', effect: `Set ${varName}=${value}` });
+    }
+
+    // Fixed-point propagation
+    for (let iter = 0; iter < 50; iter++) {
+      let changed = false;
+      for (const constraint of this.constraints) {
+        if (!constraint.condition(domains, active)) continue;
+        const effects = constraint.consequence(domains, active);
+        const triggerJust = this._computeTriggerJustification(constraint, domains, justifications);
+
+        for (const effect of effects) {
+          const result = this._applyEffect(effect, constraint, domains, active, trace, justifications, activationJustifications, triggerJust);
+          if (result.contradiction) {
+            return { initial, domains, active, trace, contradiction: result.contradiction, justifications, activationJustifications };
+          }
+          if (result.changed) changed = true;
+        }
+      }
+      if (!changed) break;
+    }
+
+    return { initial, domains, active, trace, contradiction: null, justifications, activationJustifications };
+  }
+
+  // Generator version for step-through animation
+  *propagateSteps(initial) {
+    const domains = new Map();
+    const active = new Map();
+    const trace = [];
+    const justifications = new Map();
+    const activationJustifications = new Map();
+
+    for (const v of this.variables) {
+      domains.set(v.name, new Set(v.domain));
+      active.set(v.name, v.activeByDefault);
+    }
+
+    // Apply initial assignments
+    for (const [varName, value] of Object.entries(initial)) {
+      if (!domains.get(varName).has(value)) {
+        yield {
+          type: 'contradiction', constraintId: 'INIT',
+          effect: `${varName}=${value} not in domain`,
+          state: { domains, active, justifications, activationJustifications },
+          contradiction: { constraintId: 'INIT', description: `${varName}=${value} not in domain`, justification: new Set([`${varName}=${value}`]) },
+        };
+        return;
+      }
+      domains.set(varName, new Set([value]));
+      const selfJust = new Set([`${varName}=${value}`]);
+      justifications.set(domainKey(varName, new Set([value])), selfJust);
+      trace.push({ constraintId: 'INIT', effect: `Set ${varName}=${value}` });
+      yield {
+        type: 'init', constraintId: 'INIT',
+        effect: `Set ${varName}=${value}`,
+        state: { domains, active, justifications, activationJustifications },
+      };
+    }
+
+    // Fixed-point propagation
+    for (let iter = 0; iter < 50; iter++) {
+      let changed = false;
+      for (const constraint of this.constraints) {
+        if (!constraint.condition(domains, active)) continue;
+        const effects = constraint.consequence(domains, active);
+        const triggerJust = this._computeTriggerJustification(constraint, domains, justifications);
+
+        for (const effect of effects) {
+          const result = this._applyEffect(effect, constraint, domains, active, trace, justifications, activationJustifications, triggerJust);
+          if (result.contradiction) {
+            yield {
+              type: 'contradiction', constraintId: constraint.id,
+              effect: result.contradiction.description,
+              state: { domains, active, justifications, activationJustifications },
+              contradiction: result.contradiction,
+            };
+            return;
+          }
+          if (result.changed) {
+            changed = true;
+            yield {
+              type: 'step', constraintId: constraint.id,
+              effect: result.effectDesc,
+              state: { domains, active, justifications, activationJustifications },
+            };
+          }
+        }
+      }
+      if (!changed) break;
+    }
+
+    yield {
+      type: 'done',
+      state: { domains, active, justifications, activationJustifications },
+    };
+  }
+
+  _applyEffect(effect, constraint, domains, active, trace, justifications, activationJustifications, triggerJust) {
+    const etype = effect.type;
+
+    if (etype === 'contradiction') {
+      return {
+        changed: false,
+        contradiction: { constraintId: constraint.id, description: effect.reason, justification: triggerJust },
+      };
+    }
+
+    if (etype === 'restrict') {
+      const varName = effect.var;
+      const allowed = effect.values;
+      const old = domains.get(varName);
+      const newDomain = setIntersect(old, allowed);
+      if (!setsEqual(newDomain, old)) {
+        if (newDomain.size === 0) {
+          return {
+            changed: false,
+            contradiction: {
+              constraintId: constraint.id,
+              description: `${varName} domain became empty: ${fmtSet(old)} & ${fmtSet(allowed)} = ∅`,
+              justification: triggerJust,
+            },
+          };
+        }
+        const oldKey = domainKey(varName, old);
+        const existing = justifications.get(oldKey) || new Set();
+        justifications.delete(oldKey);
+        const actJust = activationJustifications.get(varName) || new Set();
+        domains.set(varName, newDomain);
+        justifications.set(domainKey(varName, newDomain), justUnion(triggerJust, existing, actJust));
+        const effectDesc = `${varName}: ${fmtSet(old)} → ${fmtSet(newDomain)}`;
+        trace.push({ constraintId: constraint.id, effect: effectDesc });
+        return { changed: true, effectDesc };
+      }
+      return { changed: false };
+    }
+
+    if (etype === 'exclude') {
+      const varName = effect.var;
+      const excluded = effect.values;
+      const old = domains.get(varName);
+      const newDomain = setDifference(old, excluded);
+      if (!setsEqual(newDomain, old)) {
+        if (newDomain.size === 0) {
+          const actJust = activationJustifications.get(varName) || new Set();
+          return {
+            changed: false,
+            contradiction: {
+              constraintId: constraint.id,
+              description: `${varName} domain became empty after excluding ${fmtSet(excluded)}`,
+              justification: justUnion(triggerJust, actJust),
+            },
+          };
+        }
+        const oldKey = domainKey(varName, old);
+        const existing = justifications.get(oldKey) || new Set();
+        justifications.delete(oldKey);
+        const actJust = activationJustifications.get(varName) || new Set();
+        domains.set(varName, newDomain);
+        justifications.set(domainKey(varName, newDomain), justUnion(triggerJust, existing, actJust));
+        const effectDesc = `${varName}: ${fmtSet(old)} → ${fmtSet(newDomain)} (excluded ${fmtSet(excluded)})`;
+        trace.push({ constraintId: constraint.id, effect: effectDesc });
+        return { changed: true, effectDesc };
+      }
+      return { changed: false };
+    }
+
+    if (etype === 'activate') {
+      const varName = effect.var;
+      if (!active.get(varName)) {
+        active.set(varName, true);
+        activationJustifications.set(varName, triggerJust);
+        const effectDesc = `Activated ${varName}`;
+        trace.push({ constraintId: constraint.id, effect: effectDesc });
+        return { changed: true, effectDesc };
+      }
+      return { changed: false };
+    }
+
+    if (etype === 'deactivate') {
+      const varName = effect.var;
+      if (active.get(varName)) {
+        active.set(varName, false);
+        const effectDesc = `Deactivated ${varName}`;
+        trace.push({ constraintId: constraint.id, effect: effectDesc });
+        return { changed: true, effectDesc };
+      }
+      return { changed: false };
+    }
+
+    return { changed: false };
+  }
+
+  _computeTriggerJustification(constraint, domains, justifications) {
+    const result = new Set();
+    for (const varName of constraint.dependsOn) {
+      const domain = domains.get(varName);
+      if (domain) {
+        const key = domainKey(varName, domain);
+        const j = justifications.get(key);
+        if (j) for (const x of j) result.add(x);
+      }
+    }
+    return result;
+  }
+
+  // Utility: get justification for a specific value being in a variable's domain
+  justificationFor(justifications, variable, value) {
+    for (const [key, just] of justifications) {
+      const parts = key.split('|');
+      if (parts[0] === variable && parts[1] === 'domain_is') {
+        const vals = parts[2].split(',');
+        if (vals.includes(value)) return just;
+      }
+    }
+    return null;
+  }
+}
+
+// ============================================================
+// Transfer Analysis (faithful port)
+// ============================================================
+function buildTransferMap(results, variables) {
+  const factMap = new Map(); // factKey -> [{concept, justification}]
+  const varDomains = new Map();
+  for (const v of variables) varDomains.set(v.name, v.domain);
+
+  for (const [conceptName, result] of Object.entries(results)) {
+    if (result.contradiction) continue;
+    for (const [key, just] of result.justifications) {
+      const parts = key.split('|');
+      const varName = parts[0];
+      const vals = new Set(parts[2].split(','));
+      // Skip unpruned domains
+      const origDomain = varDomains.get(varName);
+      if (origDomain && setsEqual(vals, origDomain)) continue;
+      const factKey = `${varName} = ${fmtSet(vals)}`;
+      if (!factMap.has(factKey)) factMap.set(factKey, []);
+      factMap.get(factKey).push({ concept: conceptName, justification: just });
+    }
+  }
+  return factMap;
+}
+
+// ============================================================
+// Tests (faithful port of Python's run_tests)
+// ============================================================
+function runTests() {
+  const variables = makeVariables();
+  const constraints = makeConstraints();
+  const engine = new PropagationEngine(variables, constraints);
+  let passed = 0;
+  let failed = 0;
+
+  function assert(cond, msg) {
+    if (!cond) { console.error('FAIL: ' + msg); failed++; }
+    else { passed++; }
+  }
+
+  // Test 1: fuel=DT activates blanket and forces heavy shielding
+  let r = engine.propagate({ fuel: 'DT' });
+  assert(setsEqual(r.domains.get('neutron_shielding'), new Set(['heavy'])),
+    'Test 1: Expected {heavy}, got ' + fmtSet(r.domains.get('neutron_shielding')));
+  assert(r.active.get('blanket') === true, 'Test 1: Expected blanket active');
+  assert(r.contradiction === null, 'Test 1: No contradiction expected');
+
+  // Test 2: confinement=laser_icf forces laser heating and deactivates magnets
+  r = engine.propagate({ confinement: 'laser_icf' });
+  assert(setsEqual(r.domains.get('heating'), new Set(['laser'])),
+    'Test 2: Expected {laser}, got ' + fmtSet(r.domains.get('heating')));
+  assert(r.active.get('magnet_type') === false, 'Test 2: Expected magnet_type inactive');
+
+  // Test 3: fuel=pB11 + confinement=tokamak → contradiction
+  r = engine.propagate({ fuel: 'pB11', confinement: 'tokamak' });
+  assert(r.contradiction !== null, 'Test 3: Expected contradiction');
+  assert(r.contradiction && r.contradiction.constraintId === 'C8',
+    'Test 3: Expected C8, got ' + (r.contradiction ? r.contradiction.constraintId : 'none'));
+
+  // Test 4: heavy shielding justified by {fuel=DT} alone
+  r = engine.propagate({ confinement: 'tokamak', fuel: 'DT', magnet_type: 'hts' });
+  const shieldJust = engine.justificationFor(r.justifications, 'neutron_shielding', 'heavy');
+  assert(shieldJust && setsEqual(shieldJust, new Set(['fuel=DT'])),
+    'Test 4: Expected {fuel=DT}, got ' + (shieldJust ? justFormat(shieldJust) : 'null'));
+
+  // Test 5: blanket=flibe justified by {fuel=DT, confinement=tokamak, magnet_type=hts}
+  const blanketJust = engine.justificationFor(r.justifications, 'blanket', 'flibe');
+  assert(blanketJust !== null, 'Test 5: Expected justification for blanket=flibe');
+  assert(blanketJust && blanketJust.has('fuel=DT'), 'Test 5: Expected fuel=DT in justification');
+  assert(blanketJust && blanketJust.has('confinement=tokamak'), 'Test 5: Expected confinement=tokamak');
+  assert(blanketJust && blanketJust.has('magnet_type=hts'), 'Test 5: Expected magnet_type=hts');
+
+  console.log(`Tests: ${passed} passed, ${failed} failed`);
+  return failed === 0;
+}
+
+// ============================================================
+// Rendering Utilities
+// ============================================================
+const VARIABLES = makeVariables();
+const CONSTRAINTS = makeConstraints();
+const ENGINE = new PropagationEngine(VARIABLES, CONSTRAINTS);
+
+function getVarStatus(varName, domains, active, variables) {
+  const v = variables.find(x => x.name === varName);
+  const domain = domains.get(varName);
+  const isActive = active.get(varName);
+  if (!isActive) return { status: 'inactive', label: 'N/A', count: '' };
+  if (domain.size === 1) return { status: 'determined', label: 'Determined', count: '' };
+  if (setsEqual(domain, v.domain)) return { status: 'free', label: 'Free', count: `${domain.size}/${v.domain.size}` };
+  return { status: 'reduced', label: `Reduced`, count: `${domain.size}/${v.domain.size}` };
+}
+
+function renderVarCard(v, domains, active, justifications, activationJustifications, options = {}) {
+  const domain = domains ? domains.get(v.name) : v.domain;
+  const isActive = active ? active.get(v.name) : v.activeByDefault;
+  const statusInfo = domains ? getVarStatus(v.name, domains, active, VARIABLES) : { status: v.activeByDefault ? 'free' : 'inactive', label: v.activeByDefault ? 'Free' : 'Conditional', count: '' };
+
+  const card = document.createElement('div');
+  card.className = `var-card status-${statusInfo.status}`;
+  card.dataset.var = v.name;
+
+  let chipsHtml = '';
+  const sortedDomain = setToSorted(v.domain);
+  for (const val of sortedDomain) {
+    const inDomain = domain && domain.has(val);
+    const isSingleton = domain && domain.size === 1 && inDomain;
+    let cls = 'var-chip';
+    if (!isActive || !inDomain) cls += ' eliminated';
+    else if (isSingleton) cls += ' active-value';
+    chipsHtml += `<span class="${cls}">${val}</span>`;
+  }
+
+  let justHtml = '';
+  if (justifications && isActive && domain && !setsEqual(domain, v.domain)) {
+    const key = domainKey(v.name, domain);
+    const just = justifications.get(key);
+    if (just && just.size > 0) {
+      justHtml = `<div class="var-justification">← ${justFormat(just)}</div>`;
+    }
+  }
+
+  const conditionalBadge = !v.activeByDefault ? '<span class="conditional-badge">Conditional</span>' : '';
+  const countStr = statusInfo.count ? ` (${statusInfo.count})` : '';
+
+  card.innerHTML = `
+    ${conditionalBadge}
+    <div class="var-name">${v.name}</div>
+    <div class="var-chips">${chipsHtml}</div>
+    <div class="var-status">
+      <span class="status-dot"></span>
+      ${statusInfo.label}${countStr}
+    </div>
+    ${justHtml}
+  `;
+  return card;
+}
+
+function renderVarGrid(containerId, domains, active, justifications, activationJustifications) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = '';
+  for (const v of VARIABLES) {
+    container.appendChild(renderVarCard(v, domains, active, justifications, activationJustifications));
+  }
+}
+
+function renderStaticVarGrid() {
+  const container = document.getElementById('static-var-grid');
+  container.innerHTML = '';
+  for (const v of VARIABLES) {
+    container.appendChild(renderVarCard(v, null, null, null, null));
+  }
+}
+
+function renderConstraintList(containerId) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = '';
+  for (const c of CONSTRAINTS) {
+    const item = document.createElement('div');
+    item.className = 'constraint-item';
+    let tagsHtml = '';
+    for (const et of c.effectTypes) {
+      tagsHtml += `<span class="effect-tag ${et}">${et}</span>`;
+    }
+    item.innerHTML = `
+      <span class="constraint-id">${c.id}</span>
+      <span class="constraint-desc">${c.description}</span>
+      <span class="constraint-tags">${tagsHtml}</span>
+    `;
+    container.appendChild(item);
+  }
+}
+
+function renderWalkthrough() {
+  const container = document.getElementById('walkthrough-trace');
+  const result = ENGINE.propagate(CONCEPTS.CompactTok);
+  container.innerHTML = '';
+  let stepNum = 0;
+  for (const entry of result.trace) {
+    if (entry.constraintId === 'INIT') continue;
+    stepNum++;
+    const step = document.createElement('div');
+    step.className = 'trace-step';
+    step.innerHTML = `
+      <span class="step-num">${stepNum}.</span>
+      <span class="step-cid">${entry.constraintId}</span>
+      <span class="step-effect">${entry.effect}</span>
+    `;
+    container.appendChild(step);
+  }
+}
+
+// ============================================================
+// Concept Explorer
+// ============================================================
+let explorerState = {
+  concept: 'CompactTok',
+  generator: null,
+  done: false,
+  stepCount: 0,
+};
+
+function resetExplorer() {
+  const initial = explorerState.concept === 'Custom'
+    ? getCustomAssignment()
+    : CONCEPTS[explorerState.concept];
+  explorerState.generator = ENGINE.propagateSteps(initial);
+  explorerState.done = false;
+  explorerState.stepCount = 0;
+
+  // Reset to initial state (all full domains)
+  const domains = new Map();
+  const active = new Map();
+  for (const v of VARIABLES) {
+    domains.set(v.name, new Set(v.domain));
+    active.set(v.name, v.activeByDefault);
+  }
+  renderVarGrid('explorer-var-grid', domains, active, new Map(), new Map());
+  renderInitialDisplay(initial);
+  renderSummaryStats(null);
+
+  const log = document.getElementById('prop-log');
+  log.innerHTML = '<span class="prop-log-placeholder">Click Run All or Step to begin propagation.</span>';
+
+  document.getElementById('btn-step').disabled = false;
+  document.getElementById('btn-run-all').disabled = false;
+  document.getElementById('step-count').textContent = '';
+}
+
+function renderInitialDisplay(initial) {
+  const container = document.getElementById('initial-display');
+  let html = '<span class="init-label">Initial:</span>';
+  if (Object.keys(initial).length === 0) {
+    html += '<span style="font-size:0.82rem;color:var(--color-text-light);">Empty (all domains full)</span>';
+  } else {
+    for (const [k, v] of Object.entries(initial)) {
+      html += `<span class="init-chip">${k}=${v}</span>`;
+    }
+  }
+  container.innerHTML = html;
+}
+
+function renderSummaryStats(state) {
+  const container = document.getElementById('summary-stats');
+  if (!state) { container.innerHTML = ''; return; }
+
+  const { domains, active } = state;
+  let determined = 0, reduced = 0, free = 0, inactive = 0;
+  for (const v of VARIABLES) {
+    const s = getVarStatus(v.name, domains, active, VARIABLES);
+    if (s.status === 'determined') determined++;
+    else if (s.status === 'reduced') reduced++;
+    else if (s.status === 'free') free++;
+    else if (s.status === 'inactive') inactive++;
+  }
+  container.innerHTML = `
+    <div class="stat-box stat-determined"><div class="stat-num">${determined}</div><div class="stat-label">Determined</div></div>
+    <div class="stat-box stat-reduced"><div class="stat-num">${reduced}</div><div class="stat-label">Reduced</div></div>
+    <div class="stat-box stat-free"><div class="stat-num">${free}</div><div class="stat-label">Free</div></div>
+    <div class="stat-box stat-inactive"><div class="stat-num">${inactive}</div><div class="stat-label">N/A</div></div>
+  `;
+}
+
+function stepExplorer() {
+  if (explorerState.done || !explorerState.generator) return;
+
+  const { value, done } = explorerState.generator.next();
+  if (done) {
+    explorerState.done = true;
+    document.getElementById('btn-step').disabled = true;
+    document.getElementById('btn-run-all').disabled = true;
+    return;
+  }
+
+  const log = document.getElementById('prop-log');
+  if (explorerState.stepCount === 0) log.innerHTML = '';
+
+  explorerState.stepCount++;
+  const { state } = value;
+  renderVarGrid('explorer-var-grid', state.domains, state.active, state.justifications, state.activationJustifications);
+
+  if (value.type === 'init') {
+    log.innerHTML += `<div class="log-entry log-init">[INIT] ${value.effect}</div>`;
+  } else if (value.type === 'step') {
+    log.innerHTML += `<div class="log-entry"><span class="log-constraint">[${value.constraintId}]</span> <span class="log-effect">${value.effect}</span></div>`;
+  } else if (value.type === 'contradiction') {
+    log.innerHTML += `<div class="log-entry log-contradiction">[${value.constraintId}] CONTRADICTION: ${value.effect}</div>`;
+    // Mark all cards as contradiction state
+    document.querySelectorAll('#explorer-var-grid .var-card').forEach(card => {
+      card.classList.add('status-contradiction');
+    });
+    explorerState.done = true;
+    document.getElementById('btn-step').disabled = true;
+    document.getElementById('btn-run-all').disabled = true;
+  } else if (value.type === 'done') {
+    log.innerHTML += `<div class="log-entry log-done">— Propagation complete (fixed point reached) —</div>`;
+    explorerState.done = true;
+    document.getElementById('btn-step').disabled = true;
+    document.getElementById('btn-run-all').disabled = true;
+  }
+
+  renderSummaryStats(state);
+  document.getElementById('step-count').textContent = `Step ${explorerState.stepCount}`;
+  log.scrollTop = log.scrollHeight;
+}
+
+async function runAllExplorer() {
+  if (explorerState.done) return;
+  document.getElementById('btn-step').disabled = true;
+  document.getElementById('btn-run-all').disabled = true;
+  while (!explorerState.done) {
+    stepExplorer();
+    await new Promise(r => setTimeout(r, 120));
+  }
+}
+
+// Custom builder
+let customAssignment = {};
+
+function getCustomAssignment() {
+  return { ...customAssignment };
+}
+
+function renderCustomBuilder() {
+  const container = document.getElementById('custom-chips');
+  container.innerHTML = '';
+  for (const v of VARIABLES) {
+    const row = document.createElement('div');
+    row.className = 'custom-var-row';
+    let chipsHtml = '';
+    for (const val of setToSorted(v.domain)) {
+      const selected = customAssignment[v.name] === val;
+      chipsHtml += `<span class="var-chip clickable ${selected ? 'selected' : ''}" data-var="${v.name}" data-val="${val}">${val}</span>`;
+    }
+    row.innerHTML = `<span class="custom-var-label">${v.name}</span>${chipsHtml}`;
+    container.appendChild(row);
+  }
+  // Wire click handlers
+  container.querySelectorAll('.var-chip.clickable').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const varName = chip.dataset.var;
+      const val = chip.dataset.val;
+      if (customAssignment[varName] === val) {
+        delete customAssignment[varName];
+      } else {
+        customAssignment[varName] = val;
+      }
+      renderCustomBuilder();
+      resetExplorer();
+    });
+  });
+}
+
+// ============================================================
+// Transfer Comparison
+// ============================================================
+function runComparison() {
+  const nameA = document.getElementById('compare-a').value;
+  const nameB = document.getElementById('compare-b').value;
+  const initialA = CONCEPTS[nameA];
+  const initialB = CONCEPTS[nameB];
+  const resultA = ENGINE.propagate(initialA);
+  const resultB = ENGINE.propagate(initialB);
+
+  // Update column headers
+  document.querySelector('#transfer-col-a h4').textContent = nameA;
+  document.querySelector('#transfer-col-b h4').textContent = nameB;
+
+  // Render var grids
+  renderVarGrid('compare-grid-a', resultA.domains, resultA.active, resultA.justifications, resultA.activationJustifications);
+  renderVarGrid('compare-grid-b', resultB.domains, resultB.active, resultB.justifications, resultB.activationJustifications);
+
+  // Build transfer facts
+  const results = {};
+  results[nameA] = resultA;
+  results[nameB] = resultB;
+  const transferMap = buildTransferMap(results, VARIABLES);
+
+  const factsContainer = document.getElementById('transfer-facts');
+  const shared = [];
+  const uniqueA = [];
+  const uniqueB = [];
+
+  for (const [factKey, entries] of transferMap) {
+    if (entries.length > 1) {
+      shared.push(factKey);
+    } else if (entries[0].concept === nameA) {
+      uniqueA.push(factKey);
+    } else {
+      uniqueB.push(factKey);
+    }
+  }
+
+  let html = '';
+  if (shared.length > 0) {
+    html += '<div class="transfer-fact-group"><h4 style="color:var(--color-determined);">Shared Derived Facts</h4>';
+    for (const f of shared) html += `<div class="fact-item shared">${f}</div>`;
+    html += '</div>';
+  }
+  if (uniqueA.length > 0) {
+    html += `<div class="transfer-fact-group"><h4 style="color:#1d4ed8;">Unique to ${nameA}</h4>`;
+    for (const f of uniqueA) html += `<div class="fact-item unique-a">${f}</div>`;
+    html += '</div>';
+  }
+  if (uniqueB.length > 0) {
+    html += `<div class="transfer-fact-group"><h4 style="color:#9d174d;">Unique to ${nameB}</h4>`;
+    for (const f of uniqueB) html += `<div class="fact-item unique-b">${f}</div>`;
+    html += '</div>';
+  }
+  if (shared.length === 0 && uniqueA.length === 0 && uniqueB.length === 0) {
+    html = '<p style="color:var(--color-text-light);font-size:0.88rem;">No derived facts to compare (both may have contradictions).</p>';
+  }
+
+  factsContainer.innerHTML = html;
+
+  // Highlight shared variables in the grids
+  for (const factKey of shared) {
+    const varName = factKey.split(' = ')[0];
+    document.querySelectorAll(`#compare-grid-a .var-card[data-var="${varName}"], #compare-grid-b .var-card[data-var="${varName}"]`).forEach(card => {
+      card.style.boxShadow = '0 0 0 2px var(--color-determined)';
+    });
+  }
+}
+
+// ============================================================
+// Sidebar scroll spy
+// ============================================================
+function setupScrollSpy() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.sidebar nav a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => link.classList.remove('active'));
+        const activeLink = document.querySelector(`.sidebar nav a[href="#${entry.target.id}"]`);
+        if (activeLink) activeLink.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  sections.forEach(section => observer.observe(section));
+}
+
+// ============================================================
+// Initialize
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+  // Run tests
+  const allPassed = runTests();
+  console.log(allPassed ? 'All engine tests passed.' : 'Some engine tests FAILED!');
+
+  // Render static content
+  renderStaticVarGrid();
+  renderConstraintList('constraint-list');
+  renderConstraintList('reference-constraint-list');
+  renderWalkthrough();
+  renderCustomBuilder();
+
+  // Initialize explorer
+  resetExplorer();
+
+  // Wire concept selector
+  document.querySelectorAll('#concept-selector .concept-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#concept-selector .concept-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      explorerState.concept = btn.dataset.concept;
+
+      const builder = document.getElementById('custom-builder');
+      if (explorerState.concept === 'Custom') {
+        builder.classList.add('visible');
+      } else {
+        builder.classList.remove('visible');
+      }
+
+      resetExplorer();
+    });
+  });
+
+  // Wire controls
+  document.getElementById('btn-step').addEventListener('click', stepExplorer);
+  document.getElementById('btn-run-all').addEventListener('click', runAllExplorer);
+  document.getElementById('btn-reset').addEventListener('click', resetExplorer);
+
+  // Wire comparison
+  document.getElementById('btn-compare').addEventListener('click', runComparison);
+
+  // Scroll spy
+  setupScrollSpy();
+
+  // Mobile sidebar close on link click
+  document.querySelectorAll('.sidebar nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.sidebar').classList.remove('open');
+    });
+  });
+
+  // Run initial comparison
+  runComparison();
+});
+</script>
+
+</body>
+</html>

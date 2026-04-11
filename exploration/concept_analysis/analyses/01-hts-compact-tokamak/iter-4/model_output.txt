@@ -1,0 +1,134 @@
+HTS Compact Tokamak (CFS ARC) — NOAK, 270 MWe, 80% availability, 30 yr
+LCOE:         172.0 $/MWh
+Overnight:    12313 $/kW
+Fusion power: 776 MW  |  Net: 270 MW  |  Q_eng: 3.02
+Recirculating fraction: 0.332
+
+[Overrides applied]
+  C220103 coils  = 573.0 M$ (5730 km REBCO × 250 A/m × $50/kAm × 8× markup)
+  C220104 heat   = 156.4 M$ (25 MW LHCD + 13.6 MW ICRF, no NBI)
+  CAS27 FLiBe    = 146.3 M$ (950 t × $154/kg NOAK)
+
+Code     Account                                M$
+--------------------------------------------------
+CAS10    Preconstruction                      16.7
+CAS21    Buildings                           306.9
+CAS22    Reactor Plant Equipment            1428.3
+CAS23    Turbine Plant                        79.8
+CAS24    Electrical Plant                     34.0
+CAS25    Miscellaneous                        20.7
+CAS26    Heat Rejection                       13.8
+CAS27    Special Materials (FLiBe)           146.3
+CAS28    Digital Twin                          5.0
+CAS29    Contingency                           0.0
+CAS30    Indirect Costs                      474.8
+CAS40    Owner's Costs                        20.3
+CAS50    Supplementary                       142.6
+CAS60    IDC                                 635.4
+CAS70    O&M (annualized)                     57.1
+CAS80    Fuel (annualized)                     0.4
+CAS90    Financial                           267.9
+--------------------------------------------------
+         Total Capital                      3324.5
+
+CAS22 Reactor Plant Equipment — sub-account detail
+  Code         Account                                M$
+  ------------------------------------------------------
+  C220101      First Wall + Blanket                 70.5
+  C220102      Shield                               56.2
+  C220103      Coils (REBCO HTS) [ovr]             573.0
+  C220104      Heating LHCD+ICRF [ovr]             156.4
+  C220105      Primary Structure                     4.3
+  C220106      Vacuum System (Inconel-718)          20.6
+  C220107      Power Supplies                       42.4
+  C220108      Divertor                             56.2
+  C220109      Direct Energy Converter               0.0
+  C220110      Remote Handling                      95.3
+  C220111      Installation Labor                  170.1
+  C220112      C220112                               0.0
+  C220200      C220200                              63.8
+  C220300      C220300                              31.0
+  C220400      C220400                               1.7
+  C220500      Fuel Handling (tritium)              48.0
+  C220600      C220600                               4.0
+  C220700      C220700                              34.6
+  ------------------------------------------------------
+  C220000      CAS22 TOTAL                        1428.3
+
+Key Assumptions:
+  Net electric:   270 MWe  (ARC 2015 aggressive pilot ~261 MWe; 2025 target 400 MWe not modeled)
+  Availability:   80%  [UNCERTAIN — not published by CFS; primary LCOE lever]
+  Lifetime:       30 yr  (30 yr with ~3 magnet replacements at 9 FPY fluence limit each)
+  eta_th:         46%  [supercritical Rankine; arc-power-conversion-studies.md §3.2]
+  REBCO tape:     5730 km at 250 A/m → 1,432,500 kA-m at NOAK $50/kAm
+  FLiBe fill:     950 t at $154/kg NOAK = $146 M  [Araiinejad & Shirvan 2025]
+  Regulatory:     NRC Part 30 framework modeled (no Part 50 multiplier)
+
+Unmodeled risks that could substantially change LCOE:
+  - REBCO tape price above NOAK target ($50/kAm): see sensitivity below
+  - I-mode non-accessible at ARC parameters → net output drops to ~80-100 MWe
+  - FLiBe/Inconel corrosion requiring blanket material substitution
+  - ARC 400 MWe updated design (2025) vs. 270 MWe modeled here
+  - NRC Part 50 vs. Part 30 regulation: 2.2× building cost multiplier possible
+
+Sensitivity (elasticity = %ΔLCOE / %Δparam):
+--------------------------------------------------
+
+Engineering levers:
+  availability                   -0.9578
+  construction_time_yr           +0.3795
+  R0                             +0.0946
+  elon                           +0.0946
+  eta_th                         -0.0885
+  plasma_t                       +0.0610
+  eta_pin                        -0.0597
+  p_input                        +0.0597
+  blanket_t                      +0.0463
+  f_sub                          +0.0163
+  p_trit                         +0.0121
+  p_cool                         +0.0105
+  fuel_recovery                  -0.0102
+  vessel_t                       +0.0100
+  p_cryo                         +0.0098
+  ht_shield_t                    +0.0093
+  p_house                        +0.0032
+  structure_t                    +0.0030
+  p_coils                        +0.0024
+  p_pump                         +0.0020
+  mn                             -0.0009
+  burn_fraction                  -0.0006
+  eta_p                          -0.0000
+  eta_de                         +0.0000
+  q95                            +0.0000
+  f_GW                           +0.0000
+  B                              +0.0000
+  T_e                            +0.0000
+  n_e                            +0.0000
+  Z_eff                          +0.0000
+  plasma_volume                  +0.0000
+  R_w                            +0.0000
+  T_edge                         +0.0000
+  tau_ratio                      +0.0000
+
+Financial:
+  interest_rate                  +0.7363
+  inflation_rate                 +0.0561
+
+Capacity Factor Sweep (primary LCOE lever — unpublished for ARC):
+    Availability   LCOE ($/MWh)
+  ------------------------------
+             50%          268.3
+             60%          225.8
+             70%          195.4
+             80%          172.0 ← baseline
+             85%          163.0
+             90%          154.4
+
+REBCO Tape Cost Scenarios (C220103 varies; all other accounts held at NOAK):
+   Price ($/kAm)   C220103 (M$)   LCOE ($/MWh) Scenario
+  ----------------------------------------------------------------------
+              50          573.0          172.0  NOAK target — commercial viability threshold ← baseline
+             100         1146.0          210.5  2× NOAK — near-term optimistic
+             200         2292.0          287.5  4× NOAK — near-term realistic (improving from 2014 high-end)
+             300         3438.0          364.6  6× NOAK — current market (2025 estimate)
+             500         5730.0          518.7  10× NOAK — 2014 mid-range ($198/m at 250 A/m ≈ $792/kAm, FOAK)

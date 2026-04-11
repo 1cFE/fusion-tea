@@ -1,0 +1,390 @@
+{
+  "concept_id": "11",
+  "name": "Magnetic Mirror (D-T)",
+  "confinement_family": "MFE",
+  "company": "Realta Fusion",
+  "status": "in_progress",
+  "illustration": null,
+  "has_cost_model": true,
+  "has_sensitivities": true,
+  "cost_model": {
+    "cas10": {
+      "name": "Preconstruction",
+      "cost_m_usd": 17.25,
+      "overridden": false
+    },
+    "cas21": {
+      "name": "Buildings & Structures",
+      "cost_m_usd": 545.1044311523438,
+      "overridden": false
+    },
+    "cas22": {
+      "name": "Reactor Plant Equipment",
+      "cost_m_usd": 2158.1083984375,
+      "overridden": false
+    },
+    "cas23": {
+      "name": "Turbine Plant Equipment",
+      "cost_m_usd": 141.81179809570312,
+      "overridden": false
+    },
+    "cas24": {
+      "name": "Electrical Plant Equipment",
+      "cost_m_usd": 60.40131759643555,
+      "overridden": false
+    },
+    "cas25": {
+      "name": "Miscellaneous Plant Equipment",
+      "cost_m_usd": 36.766021728515625,
+      "overridden": false
+    },
+    "cas26": {
+      "name": "Heat Rejection Systems",
+      "cost_m_usd": 24.510679244995117,
+      "overridden": false
+    },
+    "cas27": {
+      "name": "Special Materials",
+      "cost_m_usd": 7.5,
+      "overridden": false
+    },
+    "cas28": {
+      "name": "Digital Twin & Simulation",
+      "cost_m_usd": 5.0,
+      "overridden": false
+    },
+    "cas29": {
+      "name": "Contingency",
+      "cost_m_usd": 0.0,
+      "overridden": false
+    },
+    "cas30": {
+      "name": "Indirect Costs",
+      "cost_m_usd": 496.5338134765625,
+      "overridden": false
+    },
+    "cas40": {
+      "name": "Owner's Costs",
+      "cost_m_usd": 27.577163696289062,
+      "overridden": false
+    },
+    "cas50": {
+      "name": "Supplementary Costs",
+      "cost_m_usd": 218.39581298828125,
+      "overridden": false
+    },
+    "cas60": {
+      "name": "Interest During Construction",
+      "cost_m_usd": 561.3965454101562,
+      "overridden": false
+    },
+    "cas70": {
+      "name": "O&M Costs (annualised)",
+      "cost_m_usd": 94.384765625,
+      "overridden": false
+    },
+    "cas80": {
+      "name": "Fuel Costs (annualised)",
+      "cost_m_usd": 0.7174462676048279,
+      "overridden": false
+    },
+    "cas90": {
+      "name": "Financial Costs",
+      "cost_m_usd": 346.5502624511719,
+      "overridden": false
+    },
+    "cas22_detail": {
+      "C220101": {
+        "name": "First Wall & Blanket",
+        "cost_m_usd": 232.89785766601562,
+        "overridden": false
+      },
+      "C220102": {
+        "name": "Radiation Shield",
+        "cost_m_usd": 203.7520751953125,
+        "overridden": false
+      },
+      "C220103": {
+        "name": "Magnets / Coils",
+        "cost_m_usd": 516.1008411317314,
+        "overridden": false
+      },
+      "C220104": {
+        "name": "Heating & Driver Systems",
+        "cost_m_usd": 353.21,
+        "overridden": false
+      },
+      "C220105": {
+        "name": "Primary Structure & Support",
+        "cost_m_usd": 15.785195350646973,
+        "overridden": false
+      },
+      "C220106": {
+        "name": "Vacuum System",
+        "cost_m_usd": 53.91380310058594,
+        "overridden": false
+      },
+      "C220107": {
+        "name": "Power Conditioning & Energy Storage",
+        "cost_m_usd": 63.41270065307617,
+        "overridden": false
+      },
+      "C220108": {
+        "name": "Divertor / Target Factory",
+        "cost_m_usd": 79.94549560546875,
+        "overridden": false
+      },
+      "C220109": {
+        "name": "Direct Energy Converter",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220110": {
+        "name": "Remote Handling & Maintenance Equipment",
+        "cost_m_usd": 127.06033325195312,
+        "overridden": false
+      },
+      "C220111": {
+        "name": "Installation Labor",
+        "cost_m_usd": 230.45094299316406,
+        "overridden": false
+      },
+      "C220112": {
+        "name": "Isotope Separation Plant",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220200": {
+        "name": "Main & Secondary Coolant",
+        "cost_m_usd": 110.95088195800781,
+        "overridden": false
+      },
+      "C220300": {
+        "name": "Auxiliary Cooling & Cryoplant",
+        "cost_m_usd": 31.99747085571289,
+        "overridden": false
+      },
+      "C220400": {
+        "name": "Radioactive Waste Management",
+        "cost_m_usd": 3.4796977043151855,
+        "overridden": false
+      },
+      "C220500": {
+        "name": "Fuel Handling & Storage",
+        "cost_m_usd": 73.86866760253906,
+        "overridden": false
+      },
+      "C220600": {
+        "name": "Other Reactor Plant Equipment",
+        "cost_m_usd": 6.605015277862549,
+        "overridden": false
+      },
+      "C220700": {
+        "name": "Instrumentation & Control",
+        "cost_m_usd": 54.677703857421875,
+        "overridden": false
+      }
+    },
+    "headline": {
+      "lcoe_per_mwh": 118.62812042236328,
+      "overnight_cost_per_kw": 8600.712890625,
+      "p_net_mw": 500.0,
+      "q_eng": 3.2985780239105225,
+      "capacity_factor": 0.85
+    },
+    "sensitivities": {
+      "engineering": {
+        "availability": {
+          "elasticity": -0.9079421852346009,
+          "baseline": 0.85
+        },
+        "construction_time_yr": {
+          "elasticity": 0.25729904550380667,
+          "baseline": 5.0
+        },
+        "mn": {
+          "elasticity": 0.005472741877709569,
+          "baseline": 1.1
+        },
+        "eta_th": {
+          "elasticity": -0.1528757036572137,
+          "baseline": 0.38
+        },
+        "eta_p": {
+          "elasticity": 3.7663217956725685e-6,
+          "baseline": 0.5
+        },
+        "f_sub": {
+          "elasticity": 0.012751608501517691,
+          "baseline": 0.03
+        },
+        "p_pump": {
+          "elasticity": 0.0011885424256331554,
+          "baseline": 2.0
+        },
+        "p_trit": {
+          "elasticity": 0.007108656391917823,
+          "baseline": 12.0
+        },
+        "p_house": {
+          "elasticity": 0.002961940163299093,
+          "baseline": 5.0
+        },
+        "p_cryo": {
+          "elasticity": 0.006521628740128438,
+          "baseline": 2.0
+        },
+        "blanket_t": {
+          "elasticity": 0.15578771138834924,
+          "baseline": 0.6
+        },
+        "ht_shield_t": {
+          "elasticity": 0.033316244656542246,
+          "baseline": 0.2
+        },
+        "structure_t": {
+          "elasticity": 0.007528369312872503,
+          "baseline": 0.15
+        },
+        "vessel_t": {
+          "elasticity": 0.01710101736665805,
+          "baseline": 0.1
+        },
+        "plasma_t": {
+          "elasticity": 0.1110367919298885,
+          "baseline": 0.75
+        },
+        "burn_fraction": {
+          "elasticity": -0.0008330557056357079,
+          "baseline": 0.05
+        },
+        "fuel_recovery": {
+          "elasticity": -0.015036652878272123,
+          "baseline": 0.95
+        },
+        "p_input": {
+          "elasticity": 0.08143209899911447,
+          "baseline": 70.0
+        },
+        "eta_pin": {
+          "elasticity": -0.08293432155767852,
+          "baseline": 0.5
+        },
+        "eta_de": {
+          "elasticity": -0.009719204156251937,
+          "baseline": 0.54
+        },
+        "f_dec": {
+          "elasticity": -0.010018354583776042,
+          "baseline": 0.2
+        },
+        "p_coils": {
+          "elasticity": 0.005923880326598186,
+          "baseline": 10.0
+        },
+        "p_cool": {
+          "elasticity": 0.014809700816495465,
+          "baseline": 25.0
+        },
+        "elon": {
+          "elasticity": 0.000042706318256035614,
+          "baseline": 1.0
+        },
+        "chamber_length": {
+          "elasticity": 0.22158271245198433,
+          "baseline": 70.0
+        },
+        "B": {
+          "elasticity": 0.00013564721615717847,
+          "baseline": 3.0
+        },
+        "T_e": {
+          "elasticity": 0.00015834547929474368,
+          "baseline": 20.0
+        },
+        "n_e": {
+          "elasticity": 0.00009895695648049437,
+          "baseline": 5e19
+        },
+        "Z_eff": {
+          "elasticity": 0.00003621414183504946,
+          "baseline": 1.2
+        },
+        "plasma_volume": {
+          "elasticity": 0.00003621414716731885,
+          "baseline": 200.0
+        },
+        "R_w": {
+          "elasticity": -0.00001835330676562637,
+          "baseline": 0.4
+        },
+        "T_edge": {
+          "elasticity": 0.0,
+          "baseline": 0.2
+        },
+        "tau_ratio": {
+          "elasticity": 0.0,
+          "baseline": 3.0
+        }
+      },
+      "financial": {
+        "interest_rate": {
+          "elasticity": 0.6351951450272453,
+          "baseline": 0.07
+        },
+        "inflation_rate": {
+          "elasticity": 0.036000884406559436,
+          "baseline": 0.02
+        }
+      }
+    },
+    "params": {
+      "p_input": 70.0,
+      "mn": 1.1,
+      "eta_th": 0.38,
+      "eta_p": 0.5,
+      "eta_pin": 0.5,
+      "eta_de": 0.54,
+      "f_sub": 0.03,
+      "f_dec": 0.2,
+      "p_coils": 10.0,
+      "p_cool": 25.0,
+      "p_pump": 2.0,
+      "p_trit": 12.0,
+      "p_house": 5.0,
+      "p_cryo": 2.0,
+      "R0": 0.0,
+      "plasma_t": 0.75,
+      "elon": 1.0,
+      "chamber_length": 70.0,
+      "blanket_t": 0.6,
+      "ht_shield_t": 0.2,
+      "structure_t": 0.15,
+      "vessel_t": 0.1,
+      "construction_time_yr": 5.0,
+      "T_edge": 0.2,
+      "tau_ratio": 3.0,
+      "R_w": 0.4,
+      "n_e": 5e19,
+      "T_e": 20.0,
+      "Z_eff": 1.2,
+      "plasma_volume": 200.0,
+      "B": 3.0,
+      "burn_fraction": 0.05,
+      "fuel_recovery": 0.95,
+      "net_electric_mw": 500.0,
+      "availability": 0.85,
+      "lifetime_yr": 30.0,
+      "n_mod": 1.0,
+      "interest_rate": 0.07,
+      "inflation_rate": 0.02,
+      "noak": 1.0
+    }
+  },
+  "parameter_metadata": {},
+  "narrative": null,
+  "sources": {
+    "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/11-magnetic-mirror/model_setup.py",
+    "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/11-magnetic-mirror/analysis.md"
+  }
+}

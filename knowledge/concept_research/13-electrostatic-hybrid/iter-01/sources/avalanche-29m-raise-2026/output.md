@@ -1,0 +1,30 @@
+---
+source: "https://www.avalanchefusion.com/news-release/avalanche-energy-raises-29-million-following-plasma-physics-breakthroughs"
+source_type: "url"
+extracted_at: "2026-03-29T19:17:16.123274+00:00"
+content_hash_sha256: "68ca2046e911d8aa467d6b98898015287d4270c2bfaa45c857a56620920dd5c0"
+backend: "trafilatura"
+title: "Avalanche Energy | Avalanche Energy Raises $29 Million Following Plasma Physics Breakthroughs"
+---
+
+SEATTLE, Feb. 3, 2026 — [ Avalanche Energy](https://www.avalanchefusion.com/), a fusion energy startup developing modular compact fusion machines, today announced $29 million in new funding led by RA Capital Management. New investors include 8090 Industries, Overlay Capital, and others, with full participation from existing investors Congruent Ventures, Founders Fund, Lowercarbon Capital, and Toyota Ventures, demonstrating increased confidence in Avalanche's technical progress and commercial roadmap.
+
+The funding reflects significant recent advances in the performance of Avalanche's compact fusion technology and provides the private matching funds for [ Avalanche's $10M grant issued in July 2025](https://www.avalanchefusion.com/news-release/avalanche-energy-awarded-10-million-grant-from-washington-state-to-develop-fusionwerx-neutron-factory) by the Washington State Department of Commerce Green Jobs Grant Program, as well as additional capital to fund the company's continued commercial growth.
+
+"We've achieved significant breakthroughs on the plasma physics side that have kept us intensely focused on advancing our technology over the past six months," said Robin Langtry, CEO and co-founder of Avalanche Energy. "The new funding will enable us to accelerate the company to the next phase - achieving licensing for commercial-scale fusion operations and preparing for our Deuterium-Tritium Q>1 test program. The strong support from both existing and new investors validates the technical progress we're making toward practical fusion energy."
+
+The funding will primarily be deployed to scale [ FusionWERX](https://www.avalanchefusion.com/fusionwerx), Avalanche's commercial-scale fusion test facility located in Richland, WA. Funds will also be used to build out Avalanche's team, order long-lead equipment (including superconducting magnets), and advance the development of the company's next-generation compact fusion devices that will have use-cases across a broad range of applications including material irradiation, mobile power generation, and power for the electric grid.
+
+Avalanche [ launched its FusionWERX facility in April 2025](https://www.avalanchefusion.com/news-release/avalanche-energy-announces-new-fusionwerx-test-facility-to-accelerate-commercial-fusion-development) as the first commercial-scale fusion test facility designed to serve the broader fusion industry. The site will operate under a broad-scope radioactive materials license with advanced tritium handling capabilities when fully licensed and operational, expected in 2027. FusionWERX will provide critical testing infrastructure for fusion technologies, materials development, and workforce training while serving as the site for Avalanche's own Q>1 deuterium-tritium test program aimed at demonstrating the world's first net-energy compact fusion system.
+
+"Avalanche is unique among companies in the fusion space in its ability to rapidly iterate to improve and advance its compact modular technology as well as its ability to generate near-term revenue prior to energy break-even," said Kyle Teamey, Managing Partner, Planetary Health at RA Capital Management. "We're excited to support the Avalanche team as they move efficiently towards crucial mobile, stationary, and space power-generation markets with massive potential."
+
+Avalanche has reached several major technical milestones on its path to net energy production and it continues to advance its technology towards efficient, high-flux steady-state neutron production and fusion rates. In 2025, the company achieved a vacuum high-voltage breakthrough, operating their fusion machine at 300,000 volts (300 kV), which corresponds to a record 5,000 kV per meter – a major unlock for efficient magneto-electrostatic fusion. Avalanche also published three peer-reviewed papers on its novel Orbitron fusion plasma confinement scheme with plans to publish additional research in 2026:
+
+"What drew us to Avalanche is their focus on commercial systems, not just experiments," said Rayyan Islam co-founder and General Partner of 8090 Industries. "FusionWERX, modular fusion machines, isotopes and rapid iteration — this is a team building commercial infrastructure from the beginning. They are creating the industrial backbone that fusion has always needed to move out of the lab and into the real economy and they have a clear path from physics to commercial product. We are excited for Avalanche's future and equally excited for how they will accelerate the commerciality of the fusion market at large."
+
+Avalanche's compact modular fusion technology addresses critical energy needs across defense, space, and commercial applications including remote power generation, advanced propulsion systems, and applications in austere and grid-challenged environments. The company's rapid iteration approach - testing designs on a scale of days rather than years - represents a fundamental shift in fusion development methodology.
+
+**About Avalanche Energy**
+
+Avalanche Energy is a venture-backed fusion energy start-up based in Seattle, WA. Avalanche's modular design can be stacked for near-endless power applications and unprecedented energy density to provide clean energy for applications in austere and grid-challenged settings (space propulsion, underwater UAVs, data centers, military bases, etc.). This unique approach enables rapid iterations of design, build, test, and fix cycles for faster development and scalability.

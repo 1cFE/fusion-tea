@@ -1,0 +1,117 @@
+# MagLIF (D-T)
+
+**Company**: Pacific Fusion, Fuse Energy Technologies
+**Last updated**: 2026-03-07
+**Iterations completed**: 2
+**Overall confidence**: medium-high
+
+> **Note on Europa Fusion**: The original concept CSV listed "Europa Fusion" as a company. Extensive searching found only an empty LinkedIn page (India-based). No technical information, website, press coverage, or FIA membership exists. **Fuse Energy Technologies** (San Leandro, CA) is a well-documented second MagLIF private company and has been substituted. Europa Fusion may be confused with EUROfusion (EU research consortium) or Fusion for Energy (EU ITER agency).
+
+> **Note on Fuse Energy's Apeiron I**: Fuse Energy's pilot plant concept (Apeiron I) is a **hybrid fusion-fission** design — MagLIF neutrons drive fission in a uranium/spent-fuel blanket, amplifying ~20 MW fusion to ~3 GW thermal (~1 GWe at ~30% conversion). This is architecturally distinct from pure MagLIF fusion and should be tracked separately if it advances to detailed analysis.
+
+## Summary
+
+MagLIF (Magnetized Liner Inertial Fusion) uses pulsed power to implode a metal liner around pre-magnetized, optionally laser-preheated D-T fuel, achieving fusion at intermediate density and timescale between traditional MFE and laser ICF. Developed at Sandia National Laboratories on the Z Machine (20+ MA, 70+ successful fusion-producing experiments), the concept is being commercialized by Pacific Fusion (self-magnetizing targets, impedance-matched Marx generators) and Fuse Energy Technologies (TITAN 1 TW IMG platform). Pacific Fusion's 2026 breakthrough demonstrated self-magnetizing targets that eliminate external coils and may eliminate laser preheat, significantly simplifying the reactor concept. Pacific Fusion's demonstration facility uses 156 pulser modules delivering 60+ MA and ~80 MJ stored energy to a target in a deionized water tank, with facility-level energy gain targeted at 100x NIF.
+
+## Differentiation Table Values
+
+### Confinement Family
+- **Value**: `MIF`
+- **Confidence**: high
+- **Citation**: Schema definition; arXiv:2408.15206 ("magneto-inertial fusion"); Wikipedia MagLIF article
+- **Notes**: MagLIF is the canonical MIF concept — magnetized plasma compressed by an external pulsed power driver. Intermediate between MFE and IFE in density (~10^20-10^23 cm^-3) and timescale (~100 ns implosion).
+
+### Confinement Concept
+- **Value**: `Magnetized target (pulsed power)`
+- **Confidence**: high
+- **Citation**: Schema vocabulary; Sandia MagLIF program (https://www.sandia.gov/z-machine/fusion/)
+- **Notes**: Distinct from `Magnetized target (pneumatic)` (General Fusion) which uses mechanical compression.
+
+### Fuel
+- **Value**: `D-T`
+- **Confidence**: high
+- **Citation**: Pacific Fusion founders' letter explicitly states "deuterium-tritium fuel" (https://www.pacificfusion.com/updates/founders-letter); Sandia MagLIF experiments use DD for diagnostics but D-T is the target commercial fuel
+- **Notes**: Sandia lab experiments typically use pure deuterium for diagnostic simplicity. The commercial concept targets D-T for higher reactivity and energy yield.
+
+### Primary Heating
+- **Value**: `Pulsed power implosion`
+- **Confidence**: high
+- **Citation**: Schema definition; arXiv:2408.15206; Pacific Fusion breakthrough article
+- **Notes**: Traditional MagLIF has three stages: (1) axial premagnetization (10-30 T), (2) laser preheat (~100s eV), (3) pulsed power implosion (20+ MA, ~100 ns). Pacific Fusion's self-magnetizing targets eliminate external premagnetization coils and aim to eliminate laser preheat. The dominant heating mechanism is adiabatic compression from the liner implosion.
+
+### Energy Capture
+- **Value**: `Thermal (unspecified)`
+- **Confidence**: medium
+- **Citation**: arXiv:2408.15206 ("~80% of the fusion energy released streams out as 14 MeV neutrons... absorbed in surrounding blankets for heat recovery"); Z-IFE SAND2006-7148 power plant study
+- **Notes**: ~80% of energy is in 14 MeV neutrons that must be captured thermally. The Z-IFE study (SAND2006-7148) evaluated four thermal cycles — supercritical CO2 Brayton, steam Rankine, gas Brayton, and combined Brayton-Rankine — and recommended the combined cycle for highest thermal-to-electric efficiency. Neither Pacific Fusion nor Fuse has disclosed a thermal cycle choice for their commercial designs. Fuse's Apeiron I hybrid concept would use fission-amplified thermal conversion (~30% efficiency).
+
+### Plasma State
+- **Value**: `Compressed`
+- **Confidence**: high
+- **Citation**: Schema definition ("Plasma driven to fusion conditions by implosion... Characteristic of IFE and MIF")
+- **Notes**: Fuel is compressed by the imploding liner from initial ~mm radius to ~100 um, reaching >2 keV (demonstrated) and multi-keV target temperatures.
+
+### Magnet Type
+- **Value**: `Pulsed EM`
+- **Confidence**: high
+- **Citation**: arXiv:2408.15206; Pacific Fusion website ("fast-rising, high-current pulses")
+- **Notes**: Driving magnetic field generated by massive pulsed current (20+ MA on Z Machine) through the liner. Premagnetization field (axial, 10-30 T) is also pulsed. Pacific Fusion's self-magnetizing targets generate the axial field from the drive current itself. No superconducting magnets involved.
+
+### Tritium Breeding
+- **Value**: `TBD`
+- **Confidence**: medium
+- **Citation**: arXiv:2408.15206 ("tritium-producing blanket to replenish burnt, lost, and decayed inventory"); Z-IFE SAND2006-7148 identifies FLiBe as baseline blanket material
+- **Notes**: Neither company has specified a blanket type for pure-fusion power plants. Z-IFE studies identified FLiBe as the baseline blanket material (breeder, coolant, partial shielding), including use as solid FLiBe in the recyclable transmission line. Fuse Energy's Apeiron I uses a uranium/spent-fuel fission blanket — a fundamentally different approach not applicable to pure MagLIF. Likely `FLiBe blanket` or `Li blanket (unspecified)` once a pure-fusion design is disclosed.
+
+### Neutron Management
+- **Value**: `Integrated blanket/shield`
+- **Confidence**: medium
+- **Citation**: Z-IFE power plant concept (SAND2006-7148); arXiv:2408.15206
+- **Notes**: MagLIF produces 14.1 MeV D-T neutrons requiring heavy shielding. The Z-IFE concept uses a thick-liquid-wall chamber with FLiBe serving triple duty: neutron energy absorption, tritium breeding, first wall protection (mitigating blast effects on chamber wall). Pacific Fusion's demonstration facility uses a deionized water tank for neutron/X-ray absorption, but this is demo-specific, not a power plant design. Could also be classified as `Heavy shielding (14 MeV)` if the eventual commercial design uses separate blanket and shield layers. Given the Z-IFE heritage and pulsed nature (blanket must handle debris/shock), integrated thick-liquid-wall is the likely architecture.
+
+### Operation Mode
+- **Value**: `Pulsed`
+- **Confidence**: high
+- **Citation**: Pacific Fusion website ("process is repeated over and over, like in a piston engine"); ~100 ns implosion pulse, target destroyed each shot
+- **Notes**: Unambiguously pulsed. Each fusion event is a discrete ~100 ns implosion with target replacement.
+
+### Repetition Rate
+- **Value**: `Sub-Hz`
+- **Confidence**: medium
+- **Citation**: Z-IFE SAND2006-7148 (0.1 Hz baseline); arXiv:2408.15206 ("Hertz-scale repetition rates"); Fuse Energy IMG specs (>0.1 Hz capability)
+- **Notes**: Z-IFE baseline is 0.1 Hz (10 s between shots) with high yields (2-3 GJ per shot, or 20 GJ single-chamber) to compensate for low rep rate. Pacific Fusion's "piston engine" analogy suggests aiming for ~1 Hz or higher, but no specific rate disclosed. Fuse Energy's IMGs demonstrate >0.1 Hz capability with 100+ repetitive shots. Recording as `Sub-Hz` based on the most detailed engineering studies (Z-IFE), but `~1 Hz` is plausible for next-generation IMG-based designs.
+
+### Driver Technology
+- **Value**: `Pulsed power (Z-machine class)`
+- **Confidence**: high
+- **Citation**: Pacific Fusion interview (The Fusion Report); Fuse Energy (Not Boring); arXiv:2408.15206
+- **Notes**: Both companies use impedance-matched Marx generators (IMGs) — a next-generation pulsed power architecture with ~90% energy efficiency, and multi-million shot lifetimes. **Pacific Fusion demo**: 156 modules (320 bricks each, ±100 kV, 160 nF per brick, 800 J per capacitor), ~80 MJ stored energy, ~8 MJ delivered to target (~10% coupling), 60+ MA in ~100 ns, 6 m insulator stack diameter. **Fuse TITAN I**: 238 bricks, 14 stages, 0.8 MA, 1.6 MV, 1 TW peak power; claimed 3x more compact, 1000x longer lifetime, 2x more efficient, 5x cheaper than existing generators. **Fuse Z STAR** (planned 2027): 16 TITAN units, ~15 TW, 12.8 MA.
+
+## Remaining Gaps
+
+1. **Energy Capture** (medium): Neither company has disclosed thermal cycle choice. Z-IFE recommends combined Brayton-Rankine but this is a 2006 study. A company press release or technical paper on balance-of-plant would resolve this.
+
+2. **Tritium Breeding** (medium/TBD): No blanket type disclosed for pure-fusion designs. Z-IFE points to FLiBe (2006). Fuse's Apeiron I fission blanket is architecturally distinct. Company disclosures or ARPA-E award descriptions would resolve this.
+
+3. **Repetition Rate** (medium): Range spans 0.1-1 Hz. IMG hardware demonstrates >0.1 Hz capability, but commercial target rate is undisclosed.
+
+4. **Neutron Management** (medium): Classified as `Integrated blanket/shield` based on Z-IFE thick-liquid-wall heritage, but actual commercial architecture not disclosed. Could shift to `Heavy shielding (14 MeV)` if separate systems used.
+
+These gaps likely cannot be resolved without company disclosures — the information does not appear to be public. The existing values are well-supported by the Z-IFE heritage studies. Further research iterations have diminishing returns unless new company disclosures appear.
+
+## Key Sources
+
+1. [arXiv:2408.15206 — Opportunities in Pulsed Magnetic Fusion Energy](https://arxiv.org/html/2408.15206v1) — Comprehensive review of pulsed magnetic fusion including MagLIF physics, IMG technology, and power plant considerations
+2. [Pacific Fusion Homepage](https://www.pacificfusion.com/) — Company overview, technology description
+3. [Pacific Fusion Founders' Letter](https://www.pacificfusion.com/updates/founders-letter) — Confirms D-T fuel, describes vision
+4. [Pacific Fusion Experimental Breakthrough (Feb 2026)](https://www.pacificfusion.com/updates/experimental-breakthrough-by-pacific-fusion-clears-major-obstacle-to-affordable-commercial-fusion) — Self-magnetizing target demonstration
+5. [Pacific Fusion Interview — The Fusion Report](https://thefusionreport.substack.com/p/interview-with-pacific-fusion-on) — Detailed demo facility specs (156 modules, 80 MJ, 60+ MA)
+6. [ANS: Fusion simplification demonstrated by Pacific Fusion and Sandia](https://www.ans.org/news/2026-02-06/article-7739/) — Coverage of self-magnetizing target breakthrough
+7. [Z-IFE Power Plant Concept — SAND2006-7148](https://www.osti.gov/servlets/purl/901970/) — Thermal cycle comparison, FLiBe blanket baseline, 0.1 Hz rep rate
+8. [OSTI: Z-Pinch Power Plant Concept (ZP3)](https://www.osti.gov/biblio/771517) — Z-IFE conceptual power plant study
+9. [Fuse Energy Homepage](https://www.f.energy/) — Second private MagLIF company, TITAN IMG platform
+10. [Fuse Energy — Not Boring Deep Dive](https://www.notboring.co/p/fuse-energy) — TITAN I specs, Z STAR plans, Apeiron I hybrid fusion-fission concept
+11. [Wikipedia: Magnetized liner inertial fusion](https://en.wikipedia.org/wiki/Magnetized_liner_inertial_fusion) — Reference overview
+12. [Sandia Z Machine Fusion Page](https://www.sandia.gov/z-machine/fusion/) — 70+ MagLIF experiments
+13. Saved sources in `iter-01/sources/`: pacific-fusion-website-technology.md, arxiv-2408-15206-pulsed-magnetic-fusion.md, z-ife-power-plant-concept.md, fuse-energy-technology.md
+14. Saved sources in `iter-02/sources/`: pacific-fusion-interview-fusion-report.md, fuse-energy-not-boring-details.md, z-ife-sand2006-7148-thermal-cycles.md

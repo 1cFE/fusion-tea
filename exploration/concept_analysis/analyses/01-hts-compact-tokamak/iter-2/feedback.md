@@ -1,0 +1,7 @@
+VERDICT: FINDINGS
+
+### F-1: BOP modeling guidance doesn't account for ARC-specific BOP additions
+- **Target:** Section 5 (Modeling Approach) and Section 7 (differentiator table, FLiBe blanket row)
+- **Finding:** Section 7 correctly identifies that the FLiBe liquid blanket "adds chemical processing plant" as a novel cost that doesn't exist in conventional ARIES-class designs (which use solid ceramic breeders with a conventional steam BOP). However, the Section 5 modeling approach recommends estimating BOP using "ARIES-AT or ARIES-RS CAS fractions" without noting that ARC's BOP includes this ARC-specific subsystem. ARIES analogues have no FLiBe chemistry plant or molten-salt tritium extraction system in their BOP cost structure. Applying ARIES BOP fractions directly would systematically underestimate ARC's BOP cost by omitting a real cost line. The Section 6 gap inventory notes BOP cost as gap #1 and recommends ARIES analogues, but does not flag this structural mismatch.
+- **Recommendation:** In the Section 5 modeling approach, add a note identifying the FLiBe chemistry and tritium extraction plant as an ARC-specific BOP addition with no direct ARIES analogue. Recommend treating it as a separate cost line (truly-unknown) in the Section 6 gap inventory, distinct from the ARIES-borrowable BOP fractions. The ARIES fraction guidance should be scoped to "conventional BOP accounts (power conversion, buildings, electrical systems)" and the FLiBe plant flagged as an additive ARC-specific cost requiring independent estimation.
+- **Priority:** important

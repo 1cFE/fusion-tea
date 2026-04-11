@@ -1,0 +1,23 @@
+{
+  "iteration": 3,
+  "verdict": "FAIL",
+  "finding_count": 2,
+  "feedback_source": "assess",
+  "model_ran": false,
+  "model_ok": false,
+  "research_ran": false,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-01/sources/focused-energy-technology.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-01/sources/focused-energy-technology.orig.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-01/sources/xcimer-energy-approach.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-01/sources/xcimer-energy-approach.orig.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/focused-energy-callahan-interview.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/focused-energy-callahan-interview.orig.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/hylife-energy-conversion-notes.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/hylife-energy-conversion-notes.orig.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/xcimer-science-page.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/xcimer-science-page.orig.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md"
+  ],
+  "timestamp": "2026-03-31T14:10:49.636405+00:00"
+}

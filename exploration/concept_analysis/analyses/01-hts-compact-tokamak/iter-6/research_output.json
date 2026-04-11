@@ -1,0 +1,163 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-1",
+      "gap_description": "Full plant capital cost including BoP, indirect costs, construction financing",
+      "queries": [
+        "Woodruff pyFECONS fusion power plant balance of plant cost 2025 2026 site:osti.gov OR site:arxiv.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/abs/2601.21724",
+          "title": "A costing framework for fusion power plants (Woodruff et al., 2026)",
+          "triage": "relevant",
+          "notes": "Accessible (CC BY-SA 4.0). Covers pyFECONS baseline: ARIES-style CAS accounts, BoP benchmarking via Bechtel pilot study, standardized cost accounts aligned to IAEA/GEN-IV/EMWG/EPRI lineage. Directly addresses BoP cost structure gap."
+        },
+        {
+          "url": "https://arxiv.org/abs/2602.19389",
+          "title": "Extension of the fusion power plant costing standard (Woodruff et al., 2026)",
+          "triage": "relevant",
+          "notes": "Accessible. Extends pyFECONS with MFE/IFE/MIFE architecture-specific cost tracks, probabilistic costing with TRL/learning-curve uncertainty, and financial metrics (NPV, IRR, MIRR, WACC). Adds full cost-account development for dominant drivers per confinement class."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1820946",
+          "title": "Woodruff Scientific Revisit of 2017 Costing for Four Concepts (OSTI)",
+          "triage": "skip",
+          "notes": "Older 2017-era costing study; 2026 arxiv papers supersede this with pyFECONS framework."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/pdf/2601.21724",
+          "source_name": "arxiv-2601-21724"
+        },
+        {
+          "url": "https://arxiv.org/pdf/2602.19389",
+          "source_name": "arxiv-2602-19389"
+        }
+      ],
+      "failed": [],
+      "status": "closed"
+    },
+    {
+      "gap_id": "G-12",
+      "gap_description": "Li-6 enrichment supply chain and cost at fleet scale",
+      "queries": [
+        "Li-6 lithium-6 enrichment cost supply chain fusion tritium breeding DOE ORNL site:osti.gov",
+        "lithium-6 enrichment cost production fusion fleet scale supply chain 2020 2025 arxiv OR osti"
+      ],
+      "candidates": [
+        {
+          "url": "https://science.osti.gov/-/media/fes/pdf/fes-presentations/2022/Pearson_resource-availability-and-supply_presentation.pdf",
+          "title": "Fuels for Fusion (Pearson, DOE FES, 2022)",
+          "triage": "inaccessible",
+          "notes": "PDF returned binary data only. WebFetch cannot parse it. Document appears to be scanned/image-based. Contains relevant content (COLEX cost ~$4000/kg, ICOMAX, supply chain gaps) per search snippet, but not extractable via add-source."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/6574527",
+          "title": "Potential Lithium Requirements for Fusion Power Plants (OSTI)",
+          "triage": "inaccessible",
+          "notes": "Old scanned PDF — binary data only, WebFetch cannot parse. Likely 1970s/1980s era document."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S092037961930835X",
+          "title": "Development of a viable route for lithium-6 supply of DEMO and future fusion power plants (ScienceDirect, open access)",
+          "triage": "relevant",
+          "notes": "Open access (CC-BY 4.0). Covers ICOMAX vs COLEX enrichment process comparison for Li-6 supply to DEMO/fusion. Systems engineering assessment of enrichment methods. Technical focus with some supply chain methodology; quantitative cost data uncertain from abstract alone."
+        },
+        {
+          "url": "https://www.neimagazine.com/analysis/enriched-lithium-and-advanced-nuclear/",
+          "title": "Enriched lithium and advanced nuclear (NEI Magazine)",
+          "triage": "inaccessible",
+          "notes": "JavaScript-heavy page — content not rendered by WebFetch. Only meta tags visible."
+        },
+        {
+          "url": "https://www.fusionindustryassociation.org/wp-content/uploads/2025/06/FIA-Supply-Chain-2025-Report.pdf",
+          "title": "The Fusion Industry Supply Chain 2025 (FIA, 2025)",
+          "triage": "not-checked",
+          "notes": "Not triaged — extraction budget exhausted by higher-priority gaps."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S092037961930835X",
+          "source_name": "sciencedirect-science-article-pii-s092037961930835x"
+        }
+      ],
+      "failed": [],
+      "status": "partial"
+    },
+    {
+      "gap_id": "G-13",
+      "gap_description": "Regulatory cost impact specific to NRC Part 30 framework",
+      "queries": [
+        "NRC fusion regulatory cost impact tokamak Part 50 Stewart Shirvan 2022 licensing fee site:osti.gov OR site:arxiv.org",
+        "NRC fusion Part 30 byproduct material regulatory framework cost analysis economic impact 2023 2024 2025 site:nrc.gov OR site:federalregister.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.federalregister.gov/documents/2026/02/26/2026-03865/regulatory-framework-for-fusion-machines",
+          "title": "Regulatory Framework for Fusion Machines (NRC Proposed Rule, Feb 2026)",
+          "triage": "inaccessible",
+          "notes": "Redirects to unblock.federalregister.gov — blocked. Contains the proposed rule formally placing fusion under byproduct material framework (Part 30-like) rather than Part 50."
+        },
+        {
+          "url": "https://www.federalregister.gov/documents/2023/10/04/2023-21988/regulatory-framework-for-fusion-systems",
+          "title": "Regulatory Framework for Fusion Systems (NRC, Oct 2023)",
+          "triage": "inaccessible",
+          "notes": "Also redirects to unblock.federalregister.gov — blocked."
+        },
+        {
+          "url": "https://crcpd.org/wp-content/uploads/2025/08/25-2-Technical-White-Paper-State-Regulation-on-Fusion-Machines.pdf",
+          "title": "Technical White Paper: State Regulation of Fusion Machines (CRCPD, 2025)",
+          "triage": "inaccessible",
+          "notes": "Binary PDF — WebFetch cannot parse. No cost data extractable."
+        },
+        {
+          "url": "https://www.nrc.gov/docs/ML2102/ML21026A315.pdf",
+          "title": "NRC Preliminary White Paper on Nuclear Fusion (NRC, 2021)",
+          "triage": "inaccessible",
+          "notes": "WebFetch timed out on this URL."
+        }
+      ],
+      "extracted": [],
+      "failed": [
+        {
+          "url": "https://www.federalregister.gov/documents/2026/02/26/2026-03865/regulatory-framework-for-fusion-machines",
+          "reason": "Redirect to unblock.federalregister.gov — geo-blocking or bot protection."
+        },
+        {
+          "url": "https://www.nrc.gov/docs/ML2102/ML21026A315.pdf",
+          "reason": "WebFetch timeout."
+        }
+      ],
+      "status": "failed"
+    },
+    {
+      "gap_id": "G-14",
+      "gap_description": "Divertor replacement cost and frequency for compact tokamak geometry",
+      "queries": [
+        "divertor replacement cost frequency compact tokamak ITER EU-DEMO component maintenance schedule site:osti.gov OR site:arxiv.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1811752",
+          "title": "Recent progress in the design of the K-DEMO divertor (OSTI/LLNL-JRNL-817795)",
+          "triage": "not-checked",
+          "notes": "Not triaged — describes K-DEMO divertor design (double-null, 32 toroidal modules, vertical maintenance). May contain maintenance schedule info but likely lacks cost data. Extraction budget exhausted."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped"
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 4,
+    "sources_extracted": 3,
+    "sources_failed": 0,
+    "searches_used": 5,
+    "extractions_used": 3,
+    "notes": "G-1 (blocking): Two complementary Woodruff pyFECONS papers extracted — baseline costing framework (2601.21724) and extension with architecture tracks + probabilistic costing (2602.19389). Together these provide comprehensive BoP cost structure coverage. G-12 (important, PARTIAL): ScienceDirect open-access Li-6 supply route paper extracted; more quantitative DOE/ORNL documents were binary-only and inaccessible. G-13 (nice-to-have): All NRC regulatory documents blocked or timed out — Federal Register redirects, NRC PDFs inaccessible. G-14 (nice-to-have): Skipped due to budget exhaustion; no cost-quantified divertor source found in search results."
+  }
+}

@@ -1,0 +1,83 @@
+You are reasoning about fusion power plant design from first principles.
+
+ACCUMULATED CONTEXT (all decisions on the path from root to here):
+1. Inertial confinement
+   Reasoning: This approach achieves fusion by satisfying the Lawson criterion through extreme transient density rather than sustained confinement time, creating a fundamentally pulsed plant architecture with discrete targets and a blast chamber.
+
+REQUIREMENTS (apply these as lenses at every decision point):
+R1: Fuel the reaction — sustainable fuel supply for the chosen reaction
+R2: Achieve fusion conditions — create and sustain the conditions for fusion to occur
+R3: Produce net energy — more energy out than the entire plant consumes
+R4: Extract usable energy — convert fusion energy products into deliverable form
+R5: Manage the nuclear environment — safely handle all nuclear byproducts
+R6: Maintain structural and material integrity — the plant must survive the environment it creates
+
+CURRENT QUESTION:
+What driver technology (directed-energy, ion beam, pulsed-power z-pinch) best combines wall-plug efficiency, repetition rate, and beam uniformity for the required implosion symmetry?
+
+Instructions:
+Think from first principles about what approaches are physically viable given the accumulated context and requirements. Do NOT enumerate known commercial concepts or name specific companies or reactor designs. Reason about the physics and engineering.
+
+For each viable option:
+1. State the THESIS — what problem does this approach solve? What trade-off does it navigate?
+2. Apply each relevant requirement lens — which R1–R6 bear on this choice? How does this option affect satisfaction of each?
+3. Derive CONSTRAINTS — what is FORCED by this choice? What is ELIMINATED? What new problems are ACTIVATED that don't exist without this choice?
+4. Generate NEW QUESTIONS — what downstream design questions does this choice create?
+5. Identify NEGATIVE SPACE — what approaches are NOT viable given this context, and why? Which requirement lens makes them non-viable?
+
+For each constraint, be specific about the physics/engineering reason.
+
+Respond in JSON with exactly this structure (no other text before or after):
+```json
+{
+  "question_in_context": "The question restated with accumulated context",
+  "requirements_bearing": {
+    "R1": "How R1 bears on this question (or null if not relevant)",
+    "R2": "...",
+    "R3": "...",
+    "R4": "...",
+    "R5": "...",
+    "R6": "..."
+  },
+  "options": [
+    {
+      "id": "short_snake_case_id",
+      "name": "Human-readable name",
+      "thesis": "What problem this solves and what trade-off it navigates",
+      "requirement_analysis": {
+        "R1": "Impact on R1 (or null)",
+        "R2": "...",
+        "R3": "...",
+        "R4": "...",
+        "R5": "...",
+        "R6": "..."
+      },
+      "constraints": [
+        {
+          "condition": {"variable_name": "value"},
+          "consequence": {"variable_name": "value_or_description"},
+          "type": "force",
+          "requirement_basis": "R2",
+          "reasoning": "1-2 sentence physics/engineering justification"
+        }
+      ],
+      "new_questions": [
+        "Downstream design question 1",
+        "Downstream design question 2"
+      ],
+      "context_addition": {
+        "choice": "What was decided",
+        "reasoning": "Why this is a distinct approach"
+      }
+    }
+  ],
+  "negative_space": [
+    {
+      "approach": "Description of non-viable approach",
+      "reason_non_viable": "Why it fails",
+      "requirement_basis": "R2",
+      "context_dependency": "What in the accumulated context makes this non-viable"
+    }
+  ]
+}
+```

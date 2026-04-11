@@ -1,0 +1,22 @@
+VERDICT: FINDINGS
+
+### F-1: Rep rate sweep absent — Hypothesis 1 unanswered
+- **Target:** model_setup.py — rep rate scenario sweep
+- **Category:** model
+- **Finding:** The analysis identifies rep rate as the single highest-leverage LCOE parameter and frames Hypothesis 1 as a rep rate break-even question ("At what rep rate does MagLIF COE reach parity with advanced fission?"). The model fixes rep rate at 0.5 Hz (frozen-FLiBe RTL scenario) and provides no sweep. The Section 2 analysis table shows Z-IFE lookup values (0.1 Hz → ~20 ¢/kWeh, 0.5 Hz → 7.0 ¢/kWeh), but these are cited from the reference study, not computed by the model. The analysis explicitly required the model to "Parameterize output power as fusion_power ∝ rep_rate × yield_per_shot at fixed driver capital, and compute LCOE at 0.1, 0.25, 0.5, 1.0, and 1.8 Hz." The sensitivity table shows `availability` at -0.985 elasticity, but varying availability in a fixed-capital-structure model does not capture the capital reconfiguration (10 chambers → 1 chamber) that causes the large COE jump between 0.1 and 0.5 Hz in the Z-IFE data.
+- **Recommendation:** Add a rep rate scenario table to model_setup.py. At each rep rate (0.1, 0.25, 0.5, 1.0, 1.8 Hz), scale net power as `yield_per_shot_GJ × rep_rate_hz × eta_th × 1000` at fixed capital and report LCOE. Calibrate against the Z-IFE reference values (20 ¢/kWeh at 0.1 Hz, 7.0 ¢/kWeh at 0.5 Hz) to verify the algebraic model reproduces the cited COE jump before extending to IMG scenarios.
+- **Priority:** blocking
+
+### F-2: Per-shot consumable cost not swept — Hypothesis 2 unanswered
+- **Target:** model_setup.py — consumable O&M sweep
+- **Category:** model
+- **Finding:** The analysis requires a per-shot target cost sweep: "Sweep $/shot = 0, 1, 2, 5, 10 and report the $/shot at which LCOE crosses 100 and 150 $/MWh." The model output does not include this sweep. CAS80 (Fuel) = $1.1M/yr annualized represents DT fuel cost only; cryo target and RTL consumable costs are not modeled. The model notes acknowledge this: "Cryo target cost at scale is unknown and NOT captured as an explicit O&M line." The commercial viability threshold (~$2/shot) is stated in the analysis narrative but not derived from the model. Hypothesis 2 — whether target economics are a binding LCOE constraint — cannot be evaluated from the current output.
+- **Recommendation:** Add a per-shot consumable cost sweep. For the baseline scenario (0.5 Hz, 1000 MWe), compute LCOE at cost_per_shot = 0, 1, 2, 5, 10 $/shot by adding annualized consumable cost (`cost_per_shot × rep_rate_hz × seconds_per_year`) to the O&M numerator. Report the $/shot break-even thresholds at which LCOE crosses 100 $/MWh and 150 $/MWh.
+- **Priority:** blocking
+
+### F-3: Buildings account ($919M) exceeds driver ($372M) — probable scaling artifact
+- **Target:** model_setup.py — CAS21 override
+- **Category:** model
+- **Finding:** CAS21 (Buildings) = $919.4M is the second-largest capital account in the model, exceeding the pulsed power driver (C220104 = $372M). The analysis explicitly states that reference-class scaling approaches are not applicable to MagLIF and requires a free-form parametric model, yet the buildings account appears to use a generic scaling formula calibrated on MFE/fission reference plants. The Z-IFE study captures facility infrastructure within the driver and direct cost accounts; the 1costingfe framework separating CAS21 from CAS22 may double-count the capacitor hall space already implicit in the $372M driver figure. The effect is material: driver is currently 8% of total capital ($372M/$4,683M), so the 10× driver cost reduction moves LCOE only 9% (75.9 → 69.0 $/MWh). If buildings are a scaling artifact, the true driver-cost sensitivity is higher and the analysis narrative's emphasis on driver capital as the dominant CapEx challenge is understated by the model.
+- **Recommendation:** Examine the CAS21 scaling formula in model_setup.py. If it derives from a tokamak/fission reference-class formula, add a cost_override for CAS21 using a pulsed power facility footprint estimate (e.g., anchored to Pacific Fusion DS: 73m × 80m at DS scale, extrapolated to plant scale). Add a note in the model assumptions clarifying whether the Z-IFE $372M driver figure includes or excludes building costs for the capacitor hall, and whether the 1costingfe CAS21 account double-counts that space.
+- **Priority:** important

@@ -1,0 +1,121 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-2",
+      "gap_description": "Capacity factor target — no published source; requires Gauss Fusion disclosure or system code (PROCESS stellarator model)",
+      "queries": [
+        "HELIAS stellarator power plant capacity factor availability PROCESS systems code",
+        "Warmer HELIAS systems code availability factor capacity factor stellarator power plant economics 2015 2016"
+      ],
+      "candidates": [
+        {
+          "url": "https://ukaea.github.io/PROCESS/fusion-devices/stellarator/",
+          "title": "Stellarator Model — PROCESS (UKAEA)",
+          "triage": "not-useful",
+          "notes": "HTML page describes modeling capabilities and code structure but contains no quantitative capacity factor or availability factor values."
+        },
+        {
+          "url": "https://scipub.euro-fusion.org/wp-content/uploads/eurofusion/WPS2PR15_14259_submitted.pdf",
+          "title": "EUROfusion WPS2-PR(15) 14259 — F. Warmer et al., Systems Code Analysis of HELIAS",
+          "triage": "relevant",
+          "notes": "Directly relevant: systems code analysis of HELIAS reactor including economic comparison with tokamaks. Likely contains availability factor assumptions. PDF binary — WebFetch could not confirm contents; extraction attempted."
+        },
+        {
+          "url": "https://depositonce.tu-berlin.de/items/2f78cb6b-525c-463e-a10a-4038f564d2fc",
+          "title": "Systems code models for stellarator fusion power plants and application to stellarator optimisation (TU Berlin doctoral thesis, Lion 2023)",
+          "triage": "relevant",
+          "notes": "Open-access doctoral thesis (CC-BY, 53.2 MB PDF) on stellarator systems codes including cost analysis. Likely contains availability factor as input parameter in LCOE calculations. Abstract does not explicitly mention capacity factor but cost modeling requires it."
+        },
+        {
+          "url": "https://www.researchgate.net/publication/300367781_System_Code_Analysis_of_HELIAS-Type_Fusion_Reactor_and_Economic_Comparison_With_Tokamaks",
+          "title": "System Code Analysis of HELIAS-Type Fusion Reactor and Economic Comparison With Tokamaks (ResearchGate)",
+          "triage": "inaccessible",
+          "notes": "ResearchGate login required for full text. Skipped."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://depositonce.tu-berlin.de/bitstreams/39e36af5-b43a-4d14-b7fd-50c4e8b23aea/download",
+          "source_name": "depositonce-bitstreams-39e36af5-b43a-4d14-b7fd-50c4e8b23aea"
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://scipub.euro-fusion.org/wp-content/uploads/eurofusion/WPS2PR15_14259_submitted.pdf",
+          "reason": "add-source extraction failed (rc=1, no stderr) — likely server-side block or PDF fetch issue"
+        }
+      ],
+      "status": "partial",
+      "notes": "TU Berlin thesis extracted; covers stellarator systems code models including cost analysis. Warmer et al. EUROfusion PDF (the most directly relevant paper) failed extraction. Gap may be partially addressed if the thesis includes availability factor assumptions in its economic modeling."
+    },
+    {
+      "gap_id": "G-7",
+      "gap_description": "Realistic TBR with GIGA geometry gaps — full 3D MCNP calculation for GIGA geometry with 20 mm gaps and accurate segment shapes; idealistic (1.386) vs. realistic (1.15) gap is ~20%",
+      "queries": [
+        "HELIAS blanket tritium breeding ratio MCNP 3D stellarator geometry gaps site:arxiv.org OR site:osti.gov",
+        "HELIAS stellarator blanket neutronics tritium breeding ratio 3D MCNP OpenMC geometry realistic site:arxiv.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/html/2512.08027v1",
+          "title": "Overview of the Helios Design: A Practical Planar Coil Stellarator Fusion Power Plant",
+          "triage": "relevant",
+          "notes": "HTML accessible. 3D Monte Carlo neutron/photon transport simulation for a stellarator blanket (Li-Pb eutectic, 65% Li-6 enrichment), idealized TBR ~1.3. Note: Helios is a planar-coil concept distinct from HELIAS, but the 3D neutronics methodology and geometry-vs-idealized TBR comparison are directly applicable."
+        },
+        {
+          "url": "https://www.osti.gov/pages/biblio/2333714",
+          "title": "ParaStell: parametric modeling and neutronics support for stellarator fusion power plants",
+          "triage": "not-useful",
+          "notes": "OSTI page was a JS-heavy shell with no accessible full text; only CSS/metadata rendered. Full paper requires journal access."
+        },
+        {
+          "url": "https://www.osti.gov/etdeweb/biblio/20410093",
+          "title": "Recent development in Helias reactor studies",
+          "triage": "not-checked",
+          "notes": "ETDEWEB bibliography record; not checked via WebFetch due to budget constraints."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/html/2512.08027v1",
+          "source_name": "arxiv-2512-08027v1"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "Helios stellarator TBR paper extracted. This covers 3D Monte Carlo neutronics for a stellarator blanket with idealized TBR ~1.3. Gap 7 specifically needs HELIAS/GIGA geometry with 20 mm inter-segment gaps — no such HELIAS-specific MCNP paper found in accessible form. The extracted source provides methodology and comparable context but does not directly resolve the GIGA geometry gap."
+    },
+    {
+      "gap_id": "G-13",
+      "gap_description": "Segment 5 structural fix (current design fails RCC-MRx in accident loads) — helias-blanket-studies.md identifies failure; resolution (CP redesign or geometry change) not published",
+      "queries": [
+        "HELIAS blanket segment structural analysis RCC-MRx accident loads nuclear design criteria"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S092037962100394X",
+          "title": "Structural assessment of a whole toroidal sector of the HELIAS 5-B breeding blanket (2021)",
+          "triage": "paywall",
+          "notes": "Most directly relevant paper to Gap 13 (structural assessment under accident loads). Paywalled ScienceDirect article. Abstract indicates RCC-MRx analysis of HELIAS 5-B blanket segments — exactly what is needed. Full text not accessible."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S092037961830735X",
+          "title": "Preliminary structural assessment of the HELIAS 5-B breeding blanket (2018)",
+          "triage": "paywall",
+          "notes": "Likely the source cited as identifying the Segment 5 failure. Paywalled ScienceDirect article. No arXiv preprint found."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "failed",
+      "notes": "Both relevant structural assessment papers are paywalled (ScienceDirect, Fusion Engineering and Design journal). No arXiv preprint found. The gap cannot be addressed without institutional journal access."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 3,
+    "sources_extracted": 2,
+    "sources_failed": 1,
+    "searches_used": 5,
+    "extractions_used": 3
+  }
+}

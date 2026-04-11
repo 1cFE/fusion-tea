@@ -1,0 +1,163 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-2",
+      "gap_description": "Major radius and plasma volume",
+      "queries": [
+        "Proxima Fusion Stellaris stellarator paper major radius plasma volume technical parameters"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0920379625000705",
+          "title": "Stellaris: A high-field quasi-isodynamic stellarator for a prototypical fusion power plant",
+          "triage": "already_extracted",
+          "notes": "Open access paper, already extracted as stellaris-design-details.md and stellaris-paper-details.md. Gap_report.md confirms: major radius 12.7 m, minor radius 1.5 m, plasma volume 448 m³ are all present in the existing extraction. Gap is resolved by existing sources."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "closed",
+      "note": "Gap already resolved by existing stellaris-design-details.md extraction. Section 6 table was stale when this iter was initiated."
+    },
+    {
+      "gap_id": "G-4",
+      "gap_description": "Gross thermal efficiency and power cycle specification",
+      "queries": [
+        "Proxima Fusion Stellaris stellarator paper major radius plasma volume technical parameters",
+        "site:arxiv.org quasi-isodynamic stellarator HTS compact power plant Q value thermal efficiency 2024 2025"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0920379625000705",
+          "title": "Stellaris: A high-field quasi-isodynamic stellarator for a prototypical fusion power plant",
+          "triage": "already_extracted",
+          "notes": "Gap_report.md confirms thermal efficiency ~32% ('stated as 1/3') is in the Stellaris paper §7. Gap is partially resolved; no detailed cycle study exists. Best available proxy is Helios (40% Rankine) already extracted as helios-stellarator-comparison.md."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "partial",
+      "note": "32% efficiency is stated in Stellaris paper (already extracted). A full BoP/steam cycle study does not exist publicly; derivable from EUROFER97 temperature limit (~500°C → Rankine ~33-35%)."
+    },
+    {
+      "gap_id": "G-6",
+      "gap_description": "Q value and steady-state ECRH requirement post-ignition",
+      "queries": [
+        "site:arxiv.org quasi-isodynamic stellarator HTS compact power plant Q value thermal efficiency 2024 2025",
+        "\"Stellaris\" stellarator \"major radius\" OR \"plasma volume\" OR \"thermal efficiency\" OR \"Q value\" site:arxiv.org OR site:researchgate.net"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0920379625000705",
+          "title": "Stellaris: A high-field quasi-isodynamic stellarator for a prototypical fusion power plant",
+          "triage": "already_extracted",
+          "notes": "The Stellaris paper does not explicitly state Q. Gap_report.md notes it is derivable (~4-6 from 2700 MW fusion / 50 MW ECRH = Q_plasma~54, but engineering Q lower). The 50 MW ECRH as steady-state requirement is stated in the paper. No additional public source resolves H4 branching (whether ECRH drops post-ignition)."
+        },
+        {
+          "url": "https://arxiv.org/html/2512.08027v1",
+          "title": "Overview of the Helios Design: A Practical Planar Coil Stellarator Fusion Power Plant",
+          "triage": "already_extracted",
+          "notes": "Already extracted as helios-stellarator-comparison.md. Helios drops to 1 MW ECRH post-ignition, providing analogue but not confirming Stellaris behavior."
+        },
+        {
+          "url": "https://www.neimagazine.com/news/proxima-unveils-stellaris-fusion-plant-design/",
+          "title": "Proxima unveils Stellaris fusion plant design - Nuclear Engineering International",
+          "triage": "no_parameters",
+          "notes": "Fetched and confirmed: no quantitative technical parameters in this news article. Press coverage only."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "failed",
+      "note": "No new accessible source found that explicitly states Q value or post-ignition ECRH reduction for Stellaris. No arxiv preprint found for the Stellaris paper. Gap remains open; derivable from existing sources with stated assumptions."
+    },
+    {
+      "gap_id": "G-8",
+      "gap_description": "Engineering TBR after all blanket penetrations and module supports",
+      "queries": [
+        "Proxima Fusion Stellaris stellarator paper major radius plasma volume technical parameters"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0920379625000705",
+          "title": "Stellaris: A high-field quasi-isodynamic stellarator for a prototypical fusion power plant",
+          "triage": "already_extracted",
+          "notes": "Gap_report.md confirms TBR 1.07 baseline, 1.074 post-3% correction for heating ports, is in Stellaris paper §2.8. Gap is resolved by existing sources."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "closed",
+      "note": "Gap already resolved by existing stellaris-design-details.md extraction."
+    },
+    {
+      "gap_id": "G-11",
+      "gap_description": "Coil number, per-coil mass, and replacement scheme",
+      "queries": [
+        "Proxima Fusion Stellaris stellarator paper major radius plasma volume technical parameters",
+        "ARIES-CS compact stellarator power plant cost study Raffray site:osti.gov OR site:arxiv.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0920379625000705",
+          "title": "Stellaris: A high-field quasi-isodynamic stellarator for a prototypical fusion power plant",
+          "triage": "already_extracted",
+          "notes": "50 modular HTS coils confirmed in Stellaris paper. Per-coil mass and detailed replacement scheme may be in §2.11 (remote maintenance section) of the existing extraction."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/20849901",
+          "title": "Exploration of Compact Stellarators as Power Plants: Initial Results from ARIES-CS Study",
+          "triage": "relevant",
+          "notes": "ARIES-CS 2005 initial results. Abstract confirms assembly/maintenance procedure is a critical factor with major impact on optimization. Provides stellarator analogue. Extracted as abstract-level content (61 lines via trafilatura)."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/1014258",
+          "title": "Systems studies and optimization of the ARIES-CS power plant",
+          "triage": "relevant",
+          "notes": "ARIES-CS 2008 full systems study (FST vol 54 issue 3). Uses costing algorithms to optimize for minimum COE. Identifies neutron wall load, stand-off distance, and TBR as key sizing constraints. Most relevant cost analogue available. Extracted as abstract-level content (69 lines via trafilatura)."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1014258",
+          "title": "ARIES-CS Systems Optimization Full PDF",
+          "triage": "failed",
+          "notes": "Direct PDF PURL extraction failed (rc=1, no stderr). OSTI PDF access may require institutional credentials or the file may not be at this PURL."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/biblio/20849901",
+          "source_name": "aries-cs-compact-stellarator-study"
+        },
+        {
+          "url": "https://www.osti.gov/biblio/1014258",
+          "source_name": "aries-cs-systems-optimization"
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1014258",
+          "reason": "Extraction failed (rc=1, no stderr) — direct PDF access likely requires institutional credentials or PURL is incorrect for this article"
+        }
+      ],
+      "status": "partial",
+      "note": "Coil count (50) already in Stellaris paper. Added ARIES-CS 2005 and 2008 abstract-level extractions as cost/maintenance analogues for stellarator power plants. Full text of the 2008 COE study not accessible; abstracts provide structural context for analogue costing."
+    },
+    {
+      "gap_id": "G-12",
+      "gap_description": "Plasma current profile and bootstrap fraction",
+      "queries": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "note": "Deprioritized (nice-to-have) due to budget limits. QI stellarators are inherently low-current; bootstrap fraction parameter is in the Stellaris paper (operation is near-zero net current by design). Not blocking for LCOE analysis."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 6,
+    "sources_extracted": 2,
+    "sources_failed": 1,
+    "searches_used": 5,
+    "extractions_used": 3,
+    "key_finding": "Most not-yet-sourced gaps (G-2, G-4, G-8) are already resolved by the existing Stellaris paper extraction (stellaris-design-details.md). Section 6 table in analysis.md is stale relative to the gap_report.md which reflects post-extraction coverage. G-6 (Q value / post-ignition ECRH) remains open — no public source explicitly states whether steady-state ECRH drops below 50 MW after alpha self-heating. Two ARIES-CS abstracts added as stellarator power plant cost analogues."
+  }
+}

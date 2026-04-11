@@ -1,0 +1,84 @@
+Planar Coil Stellarator (Thea Energy Helios) — FOAK, 390 MWe net, 88% availability
+LCOE: 155.5 $/MWh | Overnight: 12695 $/kW
+Fusion: 1036 MW | Net: 390 MW | Q_eng: 7.7
+  (Helios targets: LCOE $150/MWh FOAK → $60/MWh at scale)
+
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    36.3
+CAS21    Buildings                         374.8
+CAS22    Reactor Plant Equipment          2023.0
+CAS23    Turbine Plant                      88.6
+CAS24    Electrical Plant                   37.8
+CAS25    Miscellaneous                      23.0
+CAS26    Heat Rejection                     15.3
+CAS27    Special Materials                   5.8
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                       257.3
+CAS30    Indirect Costs                    754.8
+CAS40    Owner's Costs                      24.4
+CAS50    Supplementary                     214.4
+CAS60    IDC                              1090.5
+CAS70    O&M (annualized)                   95.5
+CAS80    Fuel (annualized)                   0.6
+CAS90    Financial                         371.4
+------------------------------------------------
+         Total Capital                    4951.0
+
+Key Assumptions
+  Physics  : ISS04 H=1.4 sustained (analysis.md §S2 Challenge 1 — not yet
+             experimentally demonstrated in any QA stellarator; Eos 2030)
+  Geometry : R0=8m, a=1.8m, 2-field-period QA, 6T on-axis [Helios arXiv:2512.08027]
+  Power    : Net 390 MWe, 88% availability, 40-yr life, FOAK (noak=False)
+  Thermal  : eta_th=0.40 (three-stage Rankine, 635°C steam, 40.2% gross)
+  Heating  : p_input=1 MW operational ECRH (plasma ignited, Q~958)
+  Cryo     : p_cryo=15 MW UNCERTAIN (336 REBCO coils at 20K; upper-bound estimate)
+  Divertor : Novel QA X-point divertor, TRL 1-2, no hardware precedent
+             [analysis.md §S2 Challenge 2] — cost uses framework default (60 M$ base)
+  Magnets  : 12 encircling + 324 shaping planar REBCO coils, 20T max on-coil
+             [analysis.md §S5] — NO published cost account; framework default only
+  Cost basis: Framework defaults throughout (ARIES-CS analogue structure)
+              Thea Energy has NOT published a bottom-up capital cost breakdown
+  LCOE gap : Thea target $150/MWh FOAK; model result above is the costingfe
+             parametric estimate — gap reflects unmodeled magnet cost premium
+
+Sensitivity (elasticity = %LCOE / %param)
+------------------------------------------------
+
+Engineering levers:
+  availability                 -0.9140
+  construction_time_yr         +0.4157
+  R0                           +0.2043
+  elon                         +0.2043
+  eta_th                       -0.1460
+  plasma_t                     +0.1459
+  blanket_t                    +0.1138
+  p_cryo                       +0.0376
+  ht_shield_t                  +0.0306
+  vessel_t                     +0.0151
+  fuel_recovery                -0.0118
+  f_sub                        +0.0107
+  p_trit                       +0.0080
+  structure_t                  +0.0064
+  p_cool                       +0.0064
+  p_house                      +0.0040
+  p_pump                       +0.0024
+  eta_pin                      -0.0016
+  p_coils                      +0.0016
+  p_input                      +0.0016
+  mn                           -0.0010
+  burn_fraction                -0.0007
+  eta_p                        -0.0000
+  eta_de                       +0.0000
+  B                            +0.0000
+  T_e                          +0.0000
+  n_e                          +0.0000
+  Z_eff                        +0.0000
+  plasma_volume                +0.0000
+  R_w                          +0.0000
+  T_edge                       +0.0000
+  tau_ratio                    +0.0000
+
+Financial:
+  interest_rate                +0.8120
+  inflation_rate               +0.0697

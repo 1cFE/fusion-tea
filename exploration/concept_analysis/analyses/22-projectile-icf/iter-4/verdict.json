@@ -1,0 +1,20 @@
+{
+  "iteration": 4,
+  "verdict": "FAIL",
+  "finding_count": 2,
+  "feedback_source": "source_integration",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": false,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-01/sources/first-light-fusion-technology.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-01/sources/first-light-fusion-technology.orig.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-01/sources/nearstar-fusion-technology.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-02/sources/first-light-flare-pivot-update.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-02/sources/nearstar-fusion-2025-update.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-03/sources/ipgroupplc-news-and-events-portfolio-news-2025-2025-09-19.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-03/sources/prnewswire-news-releases-first-light-achieves-world-first.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-03/sources/theengineer-content-news-first-light-fusion-claims-tritium.md"
+  ],
+  "timestamp": "2026-04-06T05:20:36.595613+00:00"
+}

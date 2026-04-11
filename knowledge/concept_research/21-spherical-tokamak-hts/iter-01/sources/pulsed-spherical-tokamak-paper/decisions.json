@@ -1,0 +1,78 @@
+[
+  {
+    "page_num": 0,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 1,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 2,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 3,
+    "action": "claude_replace",
+    "reasons": [
+      "EQ_FRAG: equation fragment: 3 short italic lines before (2)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 4,
+    "action": "keep",
+    "reasons": [],
+    "details": {
+      "table_filter": [
+        "PASS table 1 (0r\u00d70c, detector=gmft): extraction_failed (needs Claude)"
+      ]
+    }
+  },
+  {
+    "page_num": 5,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 6,
+    "action": "claude_replace",
+    "reasons": [
+      "EQ_FRAG: equation fragment: 2 short italic lines before (4)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 7,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: strikethrough sequences: 18 (garbled content)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 8,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 9,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 10,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  }
+]

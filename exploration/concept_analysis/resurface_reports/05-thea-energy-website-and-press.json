@@ -1,0 +1,108 @@
+{
+  "status": "complete",
+  "orig_path": "/home/reid/1cfe/fusion-tea/knowledge/concept_research/05-planar-coil-stellarator/iter-01/sources/thea-energy-website-and-press.orig.md",
+  "concept_id": "05-planar-coil-stellarator",
+  "concept_num": "05",
+  "elapsed_s": 117.6,
+  "return_code": 0,
+  "acquired": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/05-planar-coil-stellarator/iter-03/sources/ans-news-2025-12-18-article-7628.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/05-planar-coil-stellarator/iter-03/sources/thea-press-release-thea-energy-announces-peer-reviewed.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/05-planar-coil-stellarator/iter-03/sources/thea-press-release-u-s-department-of-energy-certifies-thea.md"
+  ],
+  "acquired_count": 3,
+  "agent_report": {
+    "orig_file": "thea-energy-website-and-press.orig.md",
+    "urls_found": [
+      "https://thea.energy/",
+      "https://thea.energy/fusion-technology/",
+      "https://thea.energy/eos/",
+      "https://thea.energy/press-release/thea-energy-announces-peer-reviewed-publications-outlining-the-planar-coil-stellarator-approach-for-commercial-fusion-energy/",
+      "https://thea.energy/press-release/u-s-department-of-energy-certifies-thea-energys-fusion-pilot-plant-preconceptual-design/",
+      "https://www.ans.org/news/2025-12-18/article-7628/",
+      "https://interestingengineering.com/energy/thea-energy-unveils-helios-realistic-fusion-power-plant"
+    ],
+    "extractions": [
+      {
+        "url": "https://www.ans.org/news/2025-12-18/article-7628/",
+        "source_name": "ans-news-2025-12-18-article-7628",
+        "outcome": "success",
+        "covers": [
+          "Helios 1.1 GW thermal, 390 MWe net electric",
+          "Helios coil set: 12 large encircling + 324 shaping coils, 20T max field",
+          "Helios major radius 8m, most compact optimized stellarator",
+          "DOE Milestone Program selection (1 of 8, 2023)",
+          "Princeton Stellarators former name",
+          "PPPL/Princeton spin-out",
+          "Eos operational by 2030",
+          "Helios in the 2030s",
+          "Sector-based maintenance scheme"
+        ]
+      },
+      {
+        "url": "https://thea.energy/press-release/thea-energy-announces-peer-reviewed-publications-outlining-the-planar-coil-stellarator-approach-for-commercial-fusion-energy/",
+        "source_name": "thea-press-release-thea-energy-announces-peer-reviewed",
+        "outcome": "success",
+        "covers": [
+          "4 Nuclear Fusion papers (Jan 2025) with titles",
+          "Eos <40 MW electric power consumption",
+          "Eos tritium production ~0.2 g/day (70 g/year) via D-D",
+          "Founded 2022, PPPL/Princeton spin-out",
+          "CEO Brian Berzin",
+          "HQ Kearny NJ",
+          "Planar coil architecture (encircling + shaping coils)",
+          "INFUSE award 2022b mentioned"
+        ]
+      },
+      {
+        "url": "https://thea.energy/press-release/u-s-department-of-energy-certifies-thea-energys-fusion-pilot-plant-preconceptual-design/",
+        "source_name": "thea-press-release-u-s-department-of-energy-certifies-thea",
+        "outcome": "success",
+        "covers": [
+          "DOE preconceptual design certification (first awardee)",
+          "200-page report to DOE",
+          "arXiv:2512.08027 preprint",
+          "DOE Milestone Program ($46M across 8 companies)",
+          "World's first superconducting planar coil magnet array",
+          "Six INFUSE awards total",
+          "Eos online by 2030, Helios in 2030s",
+          "Founded 2022, CEO Brian Berzin, HQ Kearny NJ",
+          "Software-controlled magnet coils, stellarator divertor, sector maintenance"
+        ]
+      },
+      {
+        "url": "https://thea.energy/",
+        "outcome": "skipped",
+        "notes": "Homepage \u2014 already extracted as thin replacement (thea-energy-website-and-press.md in iter-01). JS-heavy company homepage."
+      },
+      {
+        "url": "https://thea.energy/fusion-technology/",
+        "outcome": "skipped",
+        "notes": "Company subpage, likely JS-heavy. Cap of 3 extractions reached."
+      },
+      {
+        "url": "https://thea.energy/eos/",
+        "outcome": "skipped",
+        "notes": "Company subpage, likely JS-heavy. Cap of 3 extractions reached."
+      },
+      {
+        "url": "https://interestingengineering.com/energy/thea-energy-unveils-helios-realistic-fusion-power-plant",
+        "outcome": "skipped",
+        "notes": "Cap of 3 extractions reached. Lower priority news summary."
+      }
+    ],
+    "uncovered_claims": [
+      "DOE ARPA-E $3M grant (2020) \u2014 not mentioned in any extracted source",
+      "Series A $20M (September 2024) Prelude Ventures lead \u2014 funding round not in any extracted source",
+      "LCOE target $150/MWh initially \u2192 $60/MWh at scale \u2014 not in any extracted source",
+      "Triple product target 10^21 keV\u00b7s/m^3 for Eos \u2014 not in extracted sources (likely in Nuclear Fusion papers or arXiv)",
+      "Coil field ~16T at coil (orig file) \u2014 ANS article says 20T max; discrepancy, may be different coil types",
+      "30+ year magnet lifetime \u2014 not in extracted sources",
+      "450+ independent control variables \u2014 not explicitly stated in extracted sources",
+      "Lab heritage references (Wendelstein 7-X, CNT, 3x3 array) \u2014 W7-X/CNT are general knowledge; 3x3 array mentioned in DOE cert PR"
+    ],
+    "recommendation": "delete",
+    "replacement_md_note": "Thin replacement (24 lines) is just thea.energy homepage marketing text \u2014 fully subsumed by the 3 new extracted sources plus existing iter-01 Helios arXiv source. The few uncovered claims (ARPA-E grant, Series A funding, LCOE targets) are either in the existing arXiv paper source or are minor details. >85% of substantive technical claims are now backed by extracted sources."
+  },
+  "recommendation": "delete"
+}
