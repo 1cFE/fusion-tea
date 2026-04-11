@@ -52,7 +52,7 @@ from lib.concepts import (
     resolve_one,
 )
 from lib.iteration import read_loop_state
-from lib.state import get_concept_state, get_extraction_state, get_iteration_summary, propagate_staleness, _has_downstream_artifacts
+from lib.state import get_concept_state, get_extraction_state, get_iteration_summary, propagate_staleness
 from lib.sources import (
     check_duplicate_source,
     find_latest_sources_dir,
@@ -64,7 +64,7 @@ from lib.sources import (
     resolve_source_names,
     slugify_source,
 )
-from lib.landscape import build_concept_landscape
+from lib.landscape import build_concept_landscape, extract_iter_count
 from lib.memory import (
     find_approved,
     find_approved_syntheses,
@@ -72,9 +72,16 @@ from lib.memory import (
     format_path_list,
     load_relevant_memories,
 )
-from lib.claude import invoke_claude, run_model
+from lib.claude import invoke_claude_validated, run_model
 from lib.loop import build_model_vars, run_stage1_loop
-from lib.step_runner import run_claude_step, StepResult
+from lib.step_runner import prepare_step, StepContext
+from lib.validators import (
+    REVIEW_VERDICT_RE,
+    make_file_modified_validator,
+    validate_non_empty,
+    validate_python_syntax,
+    validate_review_verdict,
+)
 
 
 def cmd_list(concepts: list[dict], _args: argparse.Namespace) -> None:
@@ -89,14 +96,6 @@ def cmd_list(concepts: list[dict], _args: argparse.Namespace) -> None:
 # ---------------------------------------------------------------------------
 # Subcommand: status
 # ---------------------------------------------------------------------------
-
-
-def _extract_iter_count(iter_summary: str | None) -> int:
-    """'iter-3/PASS' → 3, None → 0."""
-    if not iter_summary:
-        return 0
-    m = re.match(r"iter-(\d+)", iter_summary)
-    return int(m.group(1)) if m else 0
 
 
 def cmd_status(concepts: list[dict], args: argparse.Namespace) -> None:
@@ -140,7 +139,7 @@ def cmd_status(concepts: list[dict], args: argparse.Namespace) -> None:
 
         # Build state symbol — dynamic for iterating
         if base_state == "iterating":
-            n = _extract_iter_count(iter_summary)
+            n = extract_iter_count(iter_summary)
             sym = f" I{n}"
         else:
             sym = state_symbols.get(base_state, "  ?")
@@ -197,6 +196,7 @@ def cmd_gap_check(concepts: list[dict], args: argparse.Namespace) -> None:
         cid = c["_id"]
         rid = c["_research_id"]
         out_dir = ANALYSES_DIR / cid
+        gap_path = out_dir / "gap_report.md"
 
         # Prereq: must have a dossier
         dossier_path = get_dossier_path(rid)
@@ -206,32 +206,58 @@ def cmd_gap_check(concepts: list[dict], args: argparse.Namespace) -> None:
 
         sources = find_sources(rid)
 
-        def _build_vars(c, _dossier=dossier_path, _sources=sources):
-            return {
-                "concept_id": c["_id"],
-                "concept_name": c["Concept Name"],
-                "company": c.get("Company", ""),
-                "dossier_path": str(_dossier),
-                "source_file_list": format_source_list(_sources),
-                "brief_path": str(BRIEF_PATH),
-                "schema_path": str(SCHEMA_PATH),
-            }
+        template_text = (TEMPLATES_DIR / "gap_check.md").read_text(encoding="utf-8")
+        prompt_text = fill_template(template_text, {
+            "concept_id": cid,
+            "concept_name": c["Concept Name"],
+            "company": c.get("Company", ""),
+            "dossier_path": str(dossier_path),
+            "source_file_list": format_source_list(sources),
+            "brief_path": str(BRIEF_PATH),
+            "schema_path": str(SCHEMA_PATH),
+        })
 
-        def _post(c, r):
-            print(f" done ({r.elapsed:.0f}s, {len(r.output_text)} chars)")
-
-        run_claude_step(
-            c,
-            template_name="gap_check.md",
-            build_vars=_build_vars,
+        ctx = prepare_step(
+            step_label="gap-check",
+            concept_id=cid,
+            prompt_text=prompt_text,
             prompt_path=out_dir / "prompts" / "gap_check_prompt.md",
-            output_path=out_dir / "gap_report.md",
-            label="gap-check",
-            args=args,
-            output_mode="stdout_to_file",
-            skip_message="(gap_report.md exists, use --force to re-run)",
-            post_hook=_post,
+            out_dir=out_dir,
+            skip_if_exists=gap_path,
+            dry_run=args.dry_run,
+            force=args.force,
         )
+        if not ctx.proceed:
+            continue
+
+        # NOTE: output_path=None is DELIBERATE here. Gap-check is a stdout-mode
+        # call — Claude produces the gap report in its response, not as a file.
+        # Passing output_path=None routes invoke_claude_validated into the
+        # stdout-validation branch and bypasses the H-01 file-existence check
+        # because there is no file for Claude to write. We validate the stdout
+        # text via validate_non_empty, then explicitly write it below. Do NOT
+        # "fix" this to use output_path — see design.md#migration-6-cmd_gap_check.
+        result = invoke_claude_validated(
+            ctx.prompt_text, cwd=CONCEPT_ANALYSIS_DIR,
+            timeout=args.timeout, model=args.model,
+            validator=validate_non_empty,
+            output_path=None,
+            step_label="gap-check",
+        )
+        elapsed = time.time() - ctx.start_time
+
+        if result.invoke.returncode != 0:
+            print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
+            print(f"    stderr: {result.invoke.stderr[:500]}", file=sys.stderr)
+            continue
+
+        if not result.validation_passed:
+            print(f" FAILED ({elapsed:.0f}s) — gap-check validation exhausted")
+            continue
+
+        # Explicit write — replaces the legacy stdout_to_file mode.
+        gap_path.write_text(result.invoke.stdout, encoding="utf-8")
+        print(f" done ({elapsed:.0f}s, {len(result.invoke.stdout)} chars)")
 
 
 def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
@@ -399,15 +425,30 @@ def _apply_external_feedback(
 
         print(f"  apply feedback {cid} ...", end="", flush=True)
         t0 = time.time()
-        _stdout, stderr, rc = invoke_claude(
+
+        # Snapshot analysis.md bytes BEFORE invocation so the validator can
+        # detect that Claude actually applied the requested edits (FR-16/H-08).
+        file_modified = make_file_modified_validator(analysis_path)
+
+        result = invoke_claude_validated(
             prompt, cwd=CONCEPT_ANALYSIS_DIR,
             timeout=args.timeout, model=args.model,
+            validator=file_modified,
+            output_path=analysis_path,
+            step_label="external-feedback",
         )
         elapsed = time.time() - t0
 
-        if rc != 0:
-            print(f" FAILED ({elapsed:.0f}s, rc={rc})")
-            print(f"    stderr: {stderr[:500]}", file=sys.stderr)
+        if result.invoke.returncode != 0:
+            print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
+            print(f"    stderr: {result.invoke.stderr[:500]}", file=sys.stderr)
+            # Do NOT archive — feedback file remains in place for retry.
+            continue
+
+        if not result.validation_passed:
+            print(f" FAILED ({elapsed:.0f}s) — analysis.md was not modified")
+            print(f"    feedback file preserved (not archived)")
+            # Do NOT archive — feedback file remains in place for retry.
             continue
 
         print(f" done ({elapsed:.0f}s)")
@@ -416,6 +457,7 @@ def _apply_external_feedback(
         if stale:
             print(f"    stale: {', '.join(stale)}")
 
+        # Only archive after confirmed modification (FR-16/H-08).
         archive_name = f"change_requests_{ts}.md"
         archived = feedback.parent / archive_name
         feedback.rename(archived)
@@ -438,44 +480,61 @@ def cmd_model_setup(concepts: list[dict], args: argparse.Namespace) -> None:
         out_dir = ANALYSES_DIR / cid
         model_path = out_dir / "model_setup.py"
 
-        result = build_model_vars(c, model_path, out_dir, standalone=True)
-        if result is None:
+        mv = build_model_vars(c, model_path, out_dir, standalone=True)
+        if mv is None:
             print(f"  skip {cid} (no analysis.md — run analyze first)")
             continue
-        template_name, cached_vars = result
+        template_name, cached_vars = mv
         path_label = "1costingfe" if "costingfe_concept" in cached_vars else "free-form"
 
-        def _build_vars(c, _vars=cached_vars):
-            return _vars
+        template_text = (TEMPLATES_DIR / template_name).read_text(encoding="utf-8")
+        prompt_text = fill_template(template_text, cached_vars)
 
-        def _post(c, r, _model_path=model_path, _out_dir=out_dir):
-            size = _model_path.stat().st_size
-            print(f" done ({r.elapsed:.0f}s, {size} bytes)")
-            model_output_path = _out_dir / "model_output.txt"
-            print(f"    running model ...", end="", flush=True)
-            ok, msg = run_model(_model_path, model_output_path)
-            if ok:
-                lcoe_match = re.search(r"LCOE:\s*([\d.]+)\s*\$/MWh", msg)
-                lcoe_str = f" (LCOE={lcoe_match.group(1)} $/MWh)" if lcoe_match else ""
-                print(f" ok{lcoe_str}")
-            else:
-                print(f" FAILED: {msg}")
-                print(f"    hint: fix model_setup.py and run: uv run python {_model_path}")
-
-        run_claude_step(
-            c,
-            template_name=template_name,
-            build_vars=_build_vars,
+        ctx = prepare_step(
+            step_label=f"model-setup ({path_label})",
+            concept_id=cid,
+            prompt_text=prompt_text,
             prompt_path=out_dir / "prompts" / "model_setup_prompt.md",
-            output_path=model_path,
-            label="model-setup",
-            label_suffix=f" ({path_label})",
-            args=args,
-            output_mode="file_exists",
-            skip_message="(model_setup.py exists, use --force)",
-            missing_output_message=f"Claude did not write {model_path}",
-            post_hook=_post,
+            out_dir=out_dir,
+            skip_if_exists=model_path,
+            dry_run=args.dry_run,
+            force=args.force,
         )
+        if not ctx.proceed:
+            continue
+
+        result = invoke_claude_validated(
+            ctx.prompt_text, cwd=CONCEPT_ANALYSIS_DIR,
+            timeout=args.timeout, model=args.model,
+            validator=validate_python_syntax,
+            output_path=model_path,
+            step_label="model-setup",
+        )
+        elapsed = time.time() - ctx.start_time
+
+        if result.invoke.returncode != 0:
+            print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
+            print(f"    stderr: {result.invoke.stderr[:500]}", file=sys.stderr)
+            continue
+
+        if not result.validation_passed:
+            print(f" FAILED ({elapsed:.0f}s) — model_setup.py validation exhausted")
+            continue
+
+        size = model_path.stat().st_size
+        print(f" done ({elapsed:.0f}s, {size} bytes)")
+
+        # Post-validation: run the model and report.
+        model_output_path = out_dir / "model_output.txt"
+        print(f"    running model ...", end="", flush=True)
+        ok, msg = run_model(model_path, model_output_path)
+        if ok:
+            lcoe_match = re.search(r"LCOE:\s*([\d.]+)\s*\$/MWh", msg)
+            lcoe_str = f" (LCOE={lcoe_match.group(1)} $/MWh)" if lcoe_match else ""
+            print(f" ok{lcoe_str}")
+        else:
+            print(f" FAILED: {msg}")
+            print(f"    hint: fix model_setup.py and run: uv run python {model_path}")
 
 
 def cmd_review(concepts: list[dict], args: argparse.Namespace) -> None:
@@ -514,64 +573,80 @@ def cmd_review(concepts: list[dict], args: argparse.Namespace) -> None:
         model_output_path = out_dir / "model_output.txt"
         synth_list = [s for s in find_approved_syntheses() if s.parent.name != cid]
 
-        def _build_vars(c, _ap=analysis_path, _mp=model_path, _rp=review_path,
-                        _sources=sources, _iteration=iteration,
-                        _mop=model_output_path, _synths=synth_list):
-            return {
-                "concept_name": c["Concept Name"],
-                "company": c.get("Company", ""),
-                "analysis_path": str(_ap),
-                "model_setup_path": str(_mp) if _mp.exists() else "",
-                "model_output_path": str(_mop) if _mop.exists() else "",
-                "approved_syntheses": format_path_list(
-                    _synths, "(none yet — this is among the first reviews)"),
-                "source_paths": format_source_list(_sources),
-                "source_count": str(len(_sources)),
-                "output_path": str(_rp),
-                "iteration": str(_iteration),
-                "date": date.today().isoformat(),
-            }
+        template_text = (TEMPLATES_DIR / "review.md").read_text(encoding="utf-8")
+        prompt_text = fill_template(template_text, {
+            "concept_name": c["Concept Name"],
+            "company": c.get("Company", ""),
+            "analysis_path": str(analysis_path),
+            "model_setup_path": str(model_path) if model_path.exists() else "",
+            "model_output_path": str(model_output_path) if model_output_path.exists() else "",
+            "approved_syntheses": format_path_list(
+                synth_list, "(none yet — this is among the first reviews)"),
+            "source_paths": format_source_list(sources),
+            "source_count": str(len(sources)),
+            "output_path": str(review_path),
+            "iteration": str(iteration),
+            "date": date.today().isoformat(),
+        })
 
-        def _post(c, r, _ap=analysis_path, _iteration=iteration):
-            # Detect verdict from new strategic review format
-            from lib.validators import REVIEW_VERDICT_RE
-            verdict_match = REVIEW_VERDICT_RE.search(r.output_text)
-            if verdict_match and verdict_match.group(1) == "PROCEED":
-                review_status = "proceed"
-            elif verdict_match and verdict_match.group(1) == "REVISE":
-                review_status = "revise"
+        ctx = prepare_step(
+            step_label="review",
+            concept_id=cid,
+            prompt_text=prompt_text,
+            prompt_path=out_dir / "prompts" / "review_prompt.md",
+            out_dir=out_dir,
+            skip_if_exists=review_path,
+            dry_run=args.dry_run,
+            force=args.force,
+        )
+        if not ctx.proceed:
+            continue
+
+        result = invoke_claude_validated(
+            ctx.prompt_text, cwd=CONCEPT_ANALYSIS_DIR,
+            timeout=args.timeout, model=args.model,
+            validator=validate_review_verdict,
+            output_path=review_path,
+            step_label="review",
+        )
+        elapsed = time.time() - ctx.start_time
+
+        if result.invoke.returncode != 0:
+            print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
+            print(f"    stderr: {result.invoke.stderr[:500]}", file=sys.stderr)
+            continue
+
+        if not result.validation_passed:
+            print(f" FAILED ({elapsed:.0f}s) — review validation exhausted")
+            continue
+
+        # Detect verdict from the validated review file (not stdout). The
+        # validator already guaranteed a VERDICT line is present.
+        review_text = review_path.read_text(encoding="utf-8")
+        verdict_match = REVIEW_VERDICT_RE.search(review_text)
+        if verdict_match and verdict_match.group(1) == "PROCEED":
+            review_status = "proceed"
+        elif verdict_match and verdict_match.group(1) == "REVISE":
+            review_status = "revise"
+        else:
+            # Should be unreachable post-validation, but keep a defensive
+            # fallback for legacy review-output formats.
+            if re.search(r"\*\*Overall:\*\*\s*CLEAN", review_text, re.MULTILINE):
+                review_status = "clean"
             else:
-                # Legacy fallback for old-format review output
-                if re.search(r"\*\*Overall:\*\*\s*CLEAN", r.output_text, re.MULTILINE):
-                    review_status = "clean"
-                else:
-                    review_status = "has-actions"
-            if review_status == "has-actions":
+                review_status = "has-actions"
                 print(
                     f"\n  WARNING: could not detect PROCEED/REVISE verdict in review output."
                     f"\n  Defaulting to 'has-actions'. Check review.md manually.",
                     file=sys.stderr,
                 )
-            text = _ap.read_text(encoding="utf-8")
-            text = update_frontmatter_field(text, "Review-Iterations", str(_iteration))
-            text = update_frontmatter_field(text, "Last-Review", date.today().isoformat())
-            text = update_frontmatter_field(text, "Review-Status", review_status)
-            _ap.write_text(text, encoding="utf-8")
-            print(f" done ({r.elapsed:.0f}s, {len(r.output_text)} chars) — {review_status}")
 
-        run_claude_step(
-            c,
-            template_name="review.md",
-            build_vars=_build_vars,
-            prompt_path=out_dir / "prompts" / "review_prompt.md",
-            output_path=review_path,
-            label=f"review",
-            args=args,
-            output_mode="file_with_fallback",
-            skip_message="(review.md exists, use --force to re-run)",
-            missing_output_message="no review output",
-            post_hook=_post,
-        )
+        text = analysis_path.read_text(encoding="utf-8")
+        text = update_frontmatter_field(text, "Review-Iterations", str(iteration))
+        text = update_frontmatter_field(text, "Last-Review", date.today().isoformat())
+        text = update_frontmatter_field(text, "Review-Status", review_status)
+        analysis_path.write_text(text, encoding="utf-8")
+        print(f" done ({elapsed:.0f}s, {len(review_text)} chars) — {review_status}")
 
 
 def cmd_address_review(concepts: list[dict], args: argparse.Namespace) -> None:
@@ -631,62 +706,84 @@ def cmd_address_review(concepts: list[dict], args: argparse.Namespace) -> None:
         fm = parse_frontmatter(analysis_path)
         iteration = fm.get("Review-Iterations", "1")
 
-        def _build_vars(c, _ap=analysis_path, _mp=model_path, _lp=log_path,
-                        _decisions=decisions_lines, _iteration=iteration):
-            return {
-                "concept_name": c["Concept Name"],
-                "analysis_path": str(_ap),
-                "model_setup_path": str(_mp) if _mp.exists() else "",
-                "decisions_block": "\n".join(_decisions),
-                "log_path": str(_lp),
-                "iteration": _iteration,
-                "date": date.today().isoformat(),
-            }
-
-        def _post(c, r, _ap=analysis_path, _mp=model_path, _out_dir=out_dir,
-                  _actionable=actionable):
-            # Re-run model if it exists
-            model_output_path = _out_dir / "model_output.txt"
-            if _mp.exists():
-                print(f"    re-running model ...", end="", flush=True)
-                ok, msg = run_model(_mp, model_output_path)
-                if ok:
-                    lcoe_match = re.search(r"LCOE:\s*([\d.]+)\s*\$/MWh", msg)
-                    lcoe_str = f" (LCOE={lcoe_match.group(1)} $/MWh)" if lcoe_match else ""
-                    print(f" ok{lcoe_str}")
-                else:
-                    print(f" FAILED: {msg}")
-                    print(f"    warn: model may be broken after review changes")
-            # Update frontmatter
-            text = _ap.read_text(encoding="utf-8")
-            text = update_frontmatter_field(text, "Review-Status", "addressed")
-            _ap.write_text(text, encoding="utf-8")
-            print(f" done ({r.elapsed:.0f}s, {len(_actionable)} actions processed)")
+        template_vars = {
+            "concept_name": c["Concept Name"],
+            "analysis_path": str(analysis_path),
+            "model_setup_path": str(model_path) if model_path.exists() else "",
+            "decisions_block": "\n".join(decisions_lines),
+            "log_path": str(log_path),
+            "iteration": iteration,
+            "date": date.today().isoformat(),
+        }
 
         prompt_path = out_dir / "prompts" / "address_review_prompt.md"
+        template_text = (TEMPLATES_DIR / "address_review.md").read_text(encoding="utf-8")
+        prompt_text = fill_template(template_text, template_vars)
 
         # address-review has a custom dry-run format with action count;
-        # handle dry-run in caller before reaching the helper
+        # handle dry-run before constructing the file-modified validator (which
+        # would otherwise snapshot the file unnecessarily).
         if args.dry_run:
-            template_text = (TEMPLATES_DIR / "address_review.md").read_text(encoding="utf-8")
-            prompt = fill_template(template_text, _build_vars(c))
-            prompt_path.write_text(prompt, encoding="utf-8")
+            prompt_path.parent.mkdir(parents=True, exist_ok=True)
+            prompt_path.write_text(prompt_text, encoding="utf-8")
             print(f"  dry-run {cid}: prompt saved to {prompt_path} "
                   f"({len(actionable)} actions)")
             continue
 
-        run_claude_step(
-            c,
-            template_name="address_review.md",
-            build_vars=_build_vars,
+        ctx = prepare_step(
+            step_label="address-review",
+            concept_id=cid,
+            prompt_text=prompt_text,
             prompt_path=prompt_path,
-            output_path=None,
-            label="address-review",
-            args=args,
-            output_mode="no_output",
-            skip_if_exists=False,
-            post_hook=_post,
+            out_dir=out_dir,
+            dry_run=False,  # already handled above
+            force=False,
         )
+        if not ctx.proceed:
+            continue
+
+        # Snapshot analysis.md bytes AFTER prepare_step but BEFORE invocation,
+        # so the SHA-256 reflects the state Claude is about to edit. We
+        # validate ONLY analysis.md (not model_setup.py) — see
+        # design.md#migration-10-cmd_address_review for the scope decision.
+        file_modified = make_file_modified_validator(analysis_path)
+
+        result = invoke_claude_validated(
+            ctx.prompt_text, cwd=CONCEPT_ANALYSIS_DIR,
+            timeout=args.timeout, model=args.model,
+            validator=file_modified,
+            output_path=analysis_path,
+            step_label="address-review",
+        )
+        elapsed = time.time() - ctx.start_time
+
+        if result.invoke.returncode != 0:
+            print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
+            print(f"    stderr: {result.invoke.stderr[:500]}", file=sys.stderr)
+            continue
+
+        if not result.validation_passed:
+            print(f" FAILED ({elapsed:.0f}s) — analysis.md was not modified")
+            continue
+
+        # Re-run model if it exists
+        model_output_path = out_dir / "model_output.txt"
+        if model_path.exists():
+            print(f"    re-running model ...", end="", flush=True)
+            ok, msg = run_model(model_path, model_output_path)
+            if ok:
+                lcoe_match = re.search(r"LCOE:\s*([\d.]+)\s*\$/MWh", msg)
+                lcoe_str = f" (LCOE={lcoe_match.group(1)} $/MWh)" if lcoe_match else ""
+                print(f" ok{lcoe_str}")
+            else:
+                print(f" FAILED: {msg}")
+                print(f"    warn: model may be broken after review changes")
+
+        # Update frontmatter
+        text = analysis_path.read_text(encoding="utf-8")
+        text = update_frontmatter_field(text, "Review-Status", "addressed")
+        analysis_path.write_text(text, encoding="utf-8")
+        print(f" done ({elapsed:.0f}s, {len(actionable)} actions processed)")
 
 
 def cmd_synthesize(concepts: list[dict], args: argparse.Namespace) -> None:
@@ -759,68 +856,77 @@ def cmd_synthesize(concepts: list[dict], args: argparse.Namespace) -> None:
 
         body_path = out_dir / "synthesis_body.md"
 
-        def _build_vars(c, _ap=analysis_path, _msp=model_setup_path,
-                        _mop=model_output_path, _bp=body_path,
-                        _approved=approved_syntheses):
-            return {
-                "concept_name": c["Concept Name"],
-                "company": c.get("Company", ""),
-                "analysis_path": str(_ap),
-                "model_setup_path": str(_msp) if _msp.exists() else "",
-                "model_output_path": str(_mop) if _mop.exists() else "",
-                "approved_syntheses": _approved,
-                "output_path": str(_bp),
-            }
+        template_text = (TEMPLATES_DIR / "synthesis.md").read_text(encoding="utf-8")
+        prompt_text = fill_template(template_text, {
+            "concept_name": c["Concept Name"],
+            "company": c.get("Company", ""),
+            "analysis_path": str(analysis_path),
+            "model_setup_path": str(model_setup_path) if model_setup_path.exists() else "",
+            "model_output_path": str(model_output_path) if model_output_path.exists() else "",
+            "approved_syntheses": approved_syntheses,
+            "output_path": str(body_path),
+        })
 
-        # Pre-write synthesis.md with controlled frontmatter before Claude call
-        # (but only for live runs — dry-run should not create synthesis.md)
-        def _pre_write_fm(_cid=cid, _c=c, _sp=synthesis_path):
-            today = date.today().isoformat()
-            synth_fm = (
-                f"---\n"
-                f"ID: {_cid}\n"
-                f"Concept: {_c['Concept Name']}\n"
-                f"Company: {_c.get('Company', '')}\n"
-                f"Type: synthesis\n"
-                f"Status: draft\n"
-                f"Created: {today}\n"
-                f"---\n"
-            )
-            _sp.write_text(synth_fm, encoding="utf-8")
-
-        def _post(c, r, _sp=synthesis_path, _bp=body_path):
-            # Assemble: frontmatter + body
-            fm_raw = _sp.read_text(encoding="utf-8").rstrip("\n") + "\n"
-            body = _bp.read_text(encoding="utf-8")
-            # Strip any frontmatter Claude may have added to the body
-            if body.startswith("---"):
-                fm_end = body.find("---", 3)
-                if fm_end != -1:
-                    body = body[fm_end + 3:].lstrip("\n")
-            _sp.write_text(fm_raw + "\n" + body, encoding="utf-8")
-            _bp.unlink()
-            size = len(_sp.read_text(encoding="utf-8"))
-            print(f" done ({r.elapsed:.0f}s, {size} chars)")
-
-        # For live runs, pre-write frontmatter before the Claude call
-        if not args.dry_run:
-            _pre_write_fm()
-
-        run_claude_step(
-            c,
-            template_name="synthesis.md",
-            build_vars=_build_vars,
+        ctx = prepare_step(
+            step_label="synthesize",
+            concept_id=cid,
+            prompt_text=prompt_text,
             prompt_path=out_dir / "prompts" / "synthesis_prompt.md",
-            output_path=body_path,
-            label="synthesize",
-            args=args,
-            output_mode="file_with_fallback",
-            skip_message="(synthesis.md exists, use --force to re-run)",
-            skip_if_exists=False,  # we handle skip above (synthesis_path, not body_path)
-            missing_output_message=f"Claude did not write {body_path}",
-            on_failure_cleanup=lambda _sp=synthesis_path: _sp.unlink(missing_ok=True),
-            post_hook=_post,
+            out_dir=out_dir,
+            dry_run=args.dry_run,
+            force=False,  # we handle skip above (synthesis_path, not body_path)
         )
+        if not ctx.proceed:
+            continue
+
+        # Pre-write synthesis.md with controlled frontmatter before Claude call.
+        # Done after prepare_step (which handles dry-run) so dry-run does not
+        # create synthesis.md.
+        today = date.today().isoformat()
+        synth_fm = (
+            f"---\n"
+            f"ID: {cid}\n"
+            f"Concept: {c['Concept Name']}\n"
+            f"Company: {c.get('Company', '')}\n"
+            f"Type: synthesis\n"
+            f"Status: draft\n"
+            f"Created: {today}\n"
+            f"---\n"
+        )
+        synthesis_path.write_text(synth_fm, encoding="utf-8")
+
+        result = invoke_claude_validated(
+            ctx.prompt_text, cwd=CONCEPT_ANALYSIS_DIR,
+            timeout=args.timeout, model=args.model,
+            validator=validate_non_empty,
+            output_path=body_path,
+            step_label="synthesize",
+        )
+        elapsed = time.time() - ctx.start_time
+
+        if result.invoke.returncode != 0:
+            print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
+            print(f"    stderr: {result.invoke.stderr[:500]}", file=sys.stderr)
+            synthesis_path.unlink(missing_ok=True)
+            continue
+
+        if not result.validation_passed:
+            print(f" FAILED ({elapsed:.0f}s) — synthesis body validation exhausted")
+            synthesis_path.unlink(missing_ok=True)
+            continue
+
+        # Assemble: frontmatter + body
+        fm_raw = synthesis_path.read_text(encoding="utf-8").rstrip("\n") + "\n"
+        body = body_path.read_text(encoding="utf-8")
+        # Strip any frontmatter Claude may have added to the body
+        if body.startswith("---"):
+            fm_end = body.find("---", 3)
+            if fm_end != -1:
+                body = body[fm_end + 3:].lstrip("\n")
+        synthesis_path.write_text(fm_raw + "\n" + body, encoding="utf-8")
+        body_path.unlink()
+        size = len(synthesis_path.read_text(encoding="utf-8"))
+        print(f" done ({elapsed:.0f}s, {size} chars)")
 
 
 def cmd_approve(concepts: list[dict], args: argparse.Namespace) -> None:
@@ -1190,7 +1296,15 @@ def main() -> None:
     }
 
     handler = dispatch[args.command]
-    handler(table, args)
+    try:
+        handler(table, args)
+    except ValueError as exc:
+        # Library code (resolve_concepts, resolve_source_names) raises
+        # ValueError on user-facing errors. The CLI layer owns the exit
+        # contract — print a clean message and exit non-zero rather than
+        # surfacing a stack trace.
+        print(f"Error: {exc}", file=sys.stderr)
+        sys.exit(1)
 
 
 if __name__ == "__main__":

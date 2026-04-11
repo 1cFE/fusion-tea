@@ -316,3 +316,191 @@ class TestValidateReviewVerdictRealFiles:
             tested += 1
             if tested >= 5:
                 break
+
+
+# ---------------------------------------------------------------------------
+# New validators (FR-9, FR-10, FR-11) — added in Phase 2 of pipeline hardening.
+# Tests are intentionally RED in Phase 1 (ImportError) until implemented.
+# ---------------------------------------------------------------------------
+
+
+class TestValidateNonEmpty:
+    def test_rejects_empty_string(self):
+        from lib.validators import validate_non_empty
+
+        result = validate_non_empty("")
+        assert result.valid is False
+        assert result.fix_message is not None
+
+    def test_rejects_whitespace_only(self):
+        from lib.validators import validate_non_empty
+
+        result = validate_non_empty("   \n\t  \n")
+        assert result.valid is False
+
+    def test_accepts_content(self):
+        from lib.validators import validate_non_empty
+
+        result = validate_non_empty("hello")
+        assert result.valid is True
+
+
+class TestValidatePythonSyntax:
+    def test_rejects_bad_syntax(self):
+        from lib.validators import validate_python_syntax
+
+        result = validate_python_syntax("def f(\n")
+        assert result.valid is False
+        assert result.fix_message is not None
+        assert "1" in result.details  # lineno surfaced in details
+
+    def test_accepts_valid_python(self):
+        from lib.validators import validate_python_syntax
+
+        result = validate_python_syntax("def f(): pass\nresult = f()\n")
+        assert result.valid is True
+
+    def test_accepts_empty_string(self):
+        """An empty string IS valid Python (``compile('', ...)`` succeeds).
+        validate_non_empty is the right check for non-emptiness."""
+        from lib.validators import validate_python_syntax
+
+        result = validate_python_syntax("")
+        assert result.valid is True
+
+    def test_surfaces_lineno_and_msg_in_fix_message(self):
+        from lib.validators import validate_python_syntax
+
+        src = "a = 1\nb = 2\ndef f(\n"  # SyntaxError on line 3
+        result = validate_python_syntax(src)
+        assert result.valid is False
+        assert result.fix_message is not None
+        assert "3" in result.fix_message
+
+
+class TestMakeFileModifiedValidator:
+    def test_rejects_unchanged(self, tmp_path):
+        from lib.validators import make_file_modified_validator
+
+        f = tmp_path / "analysis.md"
+        f.write_text("original content\n", encoding="utf-8")
+        validator = make_file_modified_validator(f)
+
+        result = validator("original content\n")  # text argument is ignored
+        assert result.valid is False
+        assert result.fix_message is not None
+        assert "Edit" in result.fix_message or "edit" in result.fix_message.lower()
+
+    def test_accepts_changed(self, tmp_path):
+        from lib.validators import make_file_modified_validator
+
+        f = tmp_path / "analysis.md"
+        f.write_text("original\n", encoding="utf-8")
+        validator = make_file_modified_validator(f)
+
+        f.write_text("modified content\n", encoding="utf-8")
+        result = validator("modified content\n")
+        assert result.valid is True
+
+    def test_ignores_text_argument(self, tmp_path):
+        """The validator must re-read bytes from disk, not trust the ``text``
+        argument. Reading bytes avoids UTF-8 / line-ending / BOM round-trips
+        that produce false positives (see design §component-3).
+        """
+        from lib.validators import make_file_modified_validator
+
+        f = tmp_path / "analysis.md"
+        f.write_text("original\n", encoding="utf-8")
+        validator = make_file_modified_validator(f)
+
+        # File unchanged on disk — a different text argument must NOT fool
+        # the validator into reporting changed.
+        result = validator("something completely different")
+        assert result.valid is False
+
+    def test_crlf_identical_rewrite_rejects(self, tmp_path):
+        """Byte-exact rewrite with CRLF line endings must be rejected.
+
+        The factory snapshots ``sha256(read_bytes())``. A file with CRLF line
+        endings read through ``read_text`` normalizes to LF, so hashing the
+        encoded string can disagree with the bytes-on-disk hash. The validator
+        MUST read bytes directly to avoid this false-pass.
+        """
+        from lib.validators import make_file_modified_validator
+
+        f = tmp_path / "analysis.md"
+        crlf_content = b"line1\r\nline2\r\nline3\r\n"
+        f.write_bytes(crlf_content)
+        validator = make_file_modified_validator(f)
+
+        f.write_bytes(crlf_content)  # identical bytes
+
+        result = validator("line1\nline2\nline3\n")  # normalized text arg
+        assert result.valid is False, (
+            "CRLF file re-written byte-identical must be rejected — "
+            "the validator is hashing text not bytes (false pass)"
+        )
+
+    def test_bom_identical_rewrite_rejects(self, tmp_path):
+        """Same concern as CRLF but for a UTF-8 BOM."""
+        from lib.validators import make_file_modified_validator
+
+        f = tmp_path / "analysis.md"
+        bom_content = b"\xef\xbb\xbfhello world\n"
+        f.write_bytes(bom_content)
+        validator = make_file_modified_validator(f)
+
+        f.write_bytes(bom_content)
+        result = validator("hello world\n")  # BOM stripped in text
+        assert result.valid is False
+
+    def test_validator_name_is_validate_file_modified(self, tmp_path):
+        """Log entries use ``validator.__name__`` — the factory must rename
+        the returned callable for readable log entries."""
+        from lib.validators import make_file_modified_validator
+
+        f = tmp_path / "x.md"
+        f.write_text("x", encoding="utf-8")
+        validator = make_file_modified_validator(f)
+        assert validator.__name__ == "validate_file_modified"
+
+
+# ---------------------------------------------------------------------------
+# FR-8: existing feedback/review verdict validators must surface detected
+# verdict type in ``details`` on success.
+# ---------------------------------------------------------------------------
+
+
+class TestValidateFeedbackVerdictDetailsIncludeType:
+    def test_pass_details_contains_pass(self):
+        result = validate_feedback_verdict("VERDICT: PASS\n")
+        assert result.valid is True
+        assert "PASS" in result.details
+
+    def test_findings_details_contains_findings(self):
+        text = (
+            "VERDICT: FINDINGS\n\n"
+            "### F-1: Title\n"
+            "- **Category:** analysis\n"
+        )
+        result = validate_feedback_verdict(text)
+        assert result.valid is True
+        assert "FINDINGS" in result.details
+
+
+class TestValidateReviewVerdictDetailsIncludeType:
+    def test_proceed_details_contains_proceed(self):
+        result = validate_review_verdict("VERDICT: PROCEED\n")
+        assert result.valid is True
+        assert "PROCEED" in result.details
+
+    def test_revise_details_contains_revise(self):
+        text = (
+            "VERDICT: REVISE\n\n"
+            "## Corrective Actions\n\n"
+            "### F-1: Fix\n"
+            "- **Category:** analysis\n"
+        )
+        result = validate_review_verdict(text)
+        assert result.valid is True
+        assert "REVISE" in result.details

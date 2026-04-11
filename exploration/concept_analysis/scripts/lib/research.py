@@ -12,10 +12,11 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-from lib.claude import invoke_claude
+from lib.claude import invoke_claude_validated
 from lib.paths import ANALYSES_DIR, CONCEPT_ANALYSIS_DIR, TEMPLATES_DIR
 from lib.sources import find_sources
 from lib.templating import fill_template
+from lib.validators import validate_non_empty
 
 
 def run_research_step(
@@ -83,16 +84,25 @@ def run_research_step(
 
     import time
     t0 = time.time()
-    _stdout, stderr, rc = invoke_claude(
+    # output_path=None: research agent's primary success signal is the
+    # filesystem diff (did new sources appear?), not a written file. The
+    # validate_non_empty validator is a belt-and-suspenders check that the
+    # agent produced *some* response — without forcing it through the H-01
+    # file-existence path. The research_output.json is parsed separately
+    # below via _parse_agent_output.
+    result = invoke_claude_validated(
         prompt, cwd=CONCEPT_ANALYSIS_DIR,
         timeout=args.timeout, model=args.model,
+        validator=validate_non_empty,
+        output_path=None,
+        step_label="research",
     )
     elapsed = time.time() - t0
 
-    if rc != 0:
-        print(f" FAILED ({elapsed:.0f}s, rc={rc})")
-        if stderr:
-            print(f"    stderr: {stderr[:200]}")
+    if result.invoke.returncode != 0:
+        print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
+        if result.invoke.stderr:
+            print(f"    stderr: {result.invoke.stderr[:200]}")
         return []
 
     # Detect new sources via filesystem diff (source of truth)

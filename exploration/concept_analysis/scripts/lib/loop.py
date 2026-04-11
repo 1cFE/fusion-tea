@@ -39,7 +39,14 @@ from lib.paths import (
 )
 from lib.sources import find_sources, format_source_list
 from lib.state import propagate_staleness
+from lib.step_runner import prepare_step
 from lib.templating import fill_template
+from lib.validators import (
+    make_file_modified_validator,
+    validate_feedback_verdict,
+    validate_non_empty,
+    validate_python_syntax,
+)
 
 
 def run_stage1_loop(
@@ -193,8 +200,8 @@ def run_stage1_loop(
         # --- Model-setup inside loop (FR-6) ---
         model_ran, model_ok = _run_model_in_iteration(concept, iter_dir, args, feedback_path)
 
-        # --- Update canonical model files (FR-5) ---
-        _update_canonical_files(concept_dir, iter_dir)
+        # --- Update canonical model files (FR-5, H-16 guard via model_ok) ---
+        _update_canonical_files(concept_dir, iter_dir, model_ok=model_ok)
 
         # --- Skip assess if max_passes is 1 (current behavior) ---
         if max_passes <= 1:
@@ -326,12 +333,14 @@ def _run_cold_start(
 ) -> bool:
     """Run cold-start analysis (iteration 1). Returns True on success.
 
-    Extracted from run_analysis.py:334-386.
+    Migrated to ``invoke_claude_validated`` + ``validate_non_empty`` in Phase 4.
+    The file-existence check is now owned by ``invoke_claude_validated`` via the
+    H-01 fix (missing-file is a distinct first-class failure with retry).
     """
     cid = concept["_id"]
     body_path = iter_dir / "analysis_body.md"
 
-    prompt = fill_template(template, {
+    prompt_text = fill_template(template, {
         **common_vars,
         "output_path": str(body_path),
         "cold_start": "true",
@@ -340,32 +349,39 @@ def _run_cold_start(
         "self_advance": "",
     })
 
-    prompt_path = iter_dir / "analyze_prompt.md"
-    prompt_path.write_text(prompt, encoding="utf-8")
-
-    if args.dry_run:
-        print(f"  dry-run {cid}: cold-start prompt saved to {prompt_path}")
+    ctx = prepare_step(
+        step_label="analyze (cold start)",
+        concept_id=cid,
+        prompt_text=prompt_text,
+        prompt_path=iter_dir / "analyze_prompt.md",
+        out_dir=iter_dir,
+        dry_run=args.dry_run,
+    )
+    if not ctx.proceed:
         return True
 
-    # Pre-write analysis.md with frontmatter
+    # Pre-write analysis.md with frontmatter (before invocation so Claude can
+    # read it if the prompt points at it).
     analysis_path.write_text(make_frontmatter(concept), encoding="utf-8")
 
-    print(f"  analyze {cid} iter 1 (cold start) ...", end="", flush=True)
-    t0 = time.time()
-    _stdout, stderr, rc = invoke_claude(
-        prompt, cwd=CONCEPT_ANALYSIS_DIR,
+    result = invoke_claude_validated(
+        ctx.prompt_text, cwd=CONCEPT_ANALYSIS_DIR,
         timeout=args.timeout, model=args.model,
+        validator=validate_non_empty,
+        output_path=body_path,
+        step_label="cold-start",
+        log_path=iter_dir / "validation_log.json",
     )
-    elapsed = time.time() - t0
+    elapsed = time.time() - ctx.start_time
 
-    if rc != 0:
-        print(f" FAILED ({elapsed:.0f}s, rc={rc})")
-        print(f"    stderr: {stderr[:500]}", file=sys.stderr)
+    if result.invoke.returncode != 0:
+        print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
+        print(f"    stderr: {result.invoke.stderr[:500]}", file=sys.stderr)
         analysis_path.unlink(missing_ok=True)
         return False
 
-    if not body_path.exists():
-        print(f" FAILED ({elapsed:.0f}s) — Claude did not write {body_path}")
+    if not result.validation_passed:
+        print(f" FAILED ({elapsed:.0f}s) — body validation exhausted")
         analysis_path.unlink(missing_ok=True)
         return False
 
@@ -388,14 +404,16 @@ def _run_feedback_pass(
 ) -> bool:
     """Run feedback-pass analysis (iteration N>1). Returns True on success.
 
-    Extracted from run_analysis.py:440-472.
-    feedback_path must be a valid path — callers are responsible for ensuring
-    the prior iteration's feedback.md exists before invoking feedback-pass.
+    Migrated to ``invoke_claude_validated`` + ``make_file_modified_validator``
+    in Phase 4. The validator catches the H-03 case where Claude returns rc=0
+    without actually modifying ``analysis.md``.
     """
     cid = concept["_id"]
+    analysis_path = iter_dir.parent / "analysis.md"
     iter_num = int(iter_dir.name.split("-")[1])
+    max_passes = args.max_passes
 
-    prompt = fill_template(template, {
+    prompt_text = fill_template(template, {
         **common_vars,
         "output_path": "",  # not used in feedback mode
         "cold_start": "",
@@ -404,27 +422,40 @@ def _run_feedback_pass(
         "self_advance": "",
     })
 
-    prompt_path = iter_dir / "analyze_prompt.md"
-    prompt_path.write_text(prompt, encoding="utf-8")
-
-    if args.dry_run:
-        print(f"  dry-run {cid}: feedback-pass prompt saved to {prompt_path}")
+    ctx = prepare_step(
+        step_label=f"analyze iter {iter_num}/{max_passes} (feedback pass)",
+        concept_id=cid,
+        prompt_text=prompt_text,
+        prompt_path=iter_dir / "analyze_prompt.md",
+        out_dir=iter_dir,
+        dry_run=args.dry_run,
+    )
+    if not ctx.proceed:
         return True
 
-    max_passes = args.max_passes
-    print(f"  analyze {cid} iter {iter_num}/{max_passes} (feedback pass) ...",
-          end="", flush=True)
-    t0 = time.time()
-    _stdout, stderr, rc = invoke_claude(
-        prompt, cwd=CONCEPT_ANALYSIS_DIR,
-        timeout=args.timeout, model=args.model,
-    )
-    elapsed = time.time() - t0
+    # Construct the validator AFTER prepare_step but BEFORE invocation so the
+    # SHA-256 snapshot reflects the bytes immediately before Claude touches
+    # the file. See design.md#migration-2-_run_feedback_pass.
+    file_modified = make_file_modified_validator(analysis_path)
 
-    if rc != 0:
-        print(f" FAILED ({elapsed:.0f}s, rc={rc})")
-        print(f"    stderr: {stderr[:500]}", file=sys.stderr)
+    result = invoke_claude_validated(
+        ctx.prompt_text, cwd=CONCEPT_ANALYSIS_DIR,
+        timeout=args.timeout, model=args.model,
+        validator=file_modified,
+        output_path=analysis_path,
+        step_label="feedback-pass",
+        log_path=iter_dir / "validation_log.json",
+    )
+    elapsed = time.time() - ctx.start_time
+
+    if result.invoke.returncode != 0:
+        print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
+        print(f"    stderr: {result.invoke.stderr[:500]}", file=sys.stderr)
         return False
+
+    if not result.validation_passed:
+        print(f" WARN ({elapsed:.0f}s) — analysis.md not modified")
+        return False  # Treat as failure — no point continuing with unchanged analysis
 
     print(f" done ({elapsed:.0f}s)")
     return True
@@ -458,9 +489,9 @@ def _run_model_in_iteration(
 ) -> tuple[bool, bool]:
     """Run model-setup inside the loop. Returns (model_ran, model_ok).
 
-    Adapted from cmd_model_setup. Uses invoke_claude directly (not run_claude_step)
-    because skip-if-exists logic doesn't apply inside the loop.
-    Non-fatal on failure (FR-7).
+    Adapted from cmd_model_setup. Uses ``invoke_claude_validated`` with
+    ``validate_python_syntax`` (Phase 4 migration). Non-fatal on failure
+    (FR-7) — syntax errors leave ``model_ok=False`` but the loop continues.
     """
     cid = concept["_id"]
     model_script = iter_dir / "model_setup.py"
@@ -479,25 +510,40 @@ def _run_model_in_iteration(
 
     template_name, vars_dict = model_vars
     template = (TEMPLATES_DIR / template_name).read_text(encoding="utf-8")
-    prompt = fill_template(template, vars_dict)
+    prompt_text = fill_template(template, vars_dict)
 
-    # Save prompt for audit trail
-    (iter_dir / "model_setup_prompt.md").write_text(prompt, encoding="utf-8")
-
-    print(f"    model-setup {cid} ...", end="", flush=True)
-    t0 = time.time()
-    _stdout, stderr, rc = invoke_claude(
-        prompt, cwd=CONCEPT_ANALYSIS_DIR,
-        timeout=args.timeout, model=args.model,
+    ctx = prepare_step(
+        step_label="  model-setup",  # extra indent matches existing tail print
+        concept_id=cid,
+        prompt_text=prompt_text,
+        prompt_path=iter_dir / "model_setup_prompt.md",
+        out_dir=iter_dir,
+        dry_run=False,  # dry_run already handled above
     )
-    elapsed = time.time() - t0
+    # ctx.proceed is always True here (dry_run=False, no skip).
 
-    if rc != 0:
-        print(f" FAILED ({elapsed:.0f}s, rc={rc})")
+    result = invoke_claude_validated(
+        ctx.prompt_text, cwd=CONCEPT_ANALYSIS_DIR,
+        timeout=args.timeout, model=args.model,
+        validator=validate_python_syntax,
+        output_path=model_script,
+        step_label="model-setup",
+        log_path=iter_dir / "validation_log.json",
+    )
+    elapsed = time.time() - ctx.start_time
+
+    if result.invoke.returncode != 0:
+        print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
         return False, False
 
-    if not model_script.exists():
-        print(f" FAILED ({elapsed:.0f}s) — no model_setup.py")
+    if not result.validation_passed:
+        # Either the file was never written (H-01 path) or the script
+        # failed Python syntax validation. Both leave model_ok=False but
+        # are non-fatal to the iteration (FR-7).
+        if not model_script.exists():
+            print(f" FAILED ({elapsed:.0f}s) — no model_setup.py")
+            return True, False
+        print(f" FAILED ({elapsed:.0f}s) — syntax validation exhausted")
         return True, False
 
     print(f" done ({elapsed:.0f}s)", end="")
@@ -605,8 +651,6 @@ def _run_assess(
         print(f"  dry-run {cid}: assess prompt saved to {iter_dir / 'assess_prompt.md'}")
         return "DRY_RUN", 0
 
-    from lib.validators import validate_feedback_verdict
-
     print(f"  assess {cid} iter {iter_num} ...", end="", flush=True)
     t0 = time.time()
     result = invoke_claude_validated(
@@ -625,6 +669,13 @@ def _run_assess(
 
     if not feedback_path.exists():
         print(f" FAILED ({elapsed:.0f}s) — no feedback file")
+        return "ERROR", 0
+
+    # FR-17 / H-10: honor validation_passed. If validation exhausted all
+    # retries, the file may be present but malformed (e.g. missing VERDICT
+    # line) — parsing it would yield a misleading ("FAIL", 0) verdict.
+    if not result.validation_passed:
+        print(f" FAILED ({elapsed:.0f}s) — validation exhausted")
         return "ERROR", 0
 
     feedback_text = feedback_path.read_text(encoding="utf-8")
@@ -671,8 +722,6 @@ def _run_source_integration(
         print(f"  dry-run {cid}: source-integration prompt saved to {iter_dir}")
         return output_path  # pretend it worked for dry-run flow
 
-    from lib.validators import validate_feedback_verdict
-
     print(f"  source-integration {cid} ({len(new_sources)} new sources) ...",
           end="", flush=True)
     t0 = time.time()
@@ -692,6 +741,13 @@ def _run_source_integration(
 
     if not output_path.exists():
         print(f" FAILED ({elapsed:.0f}s) — no output file")
+        return None
+
+    # FR-17 / H-09: honor validation_passed. If validation exhausted all
+    # retries, the file may be malformed and parsing it would chain bad
+    # data into _merge_feedback / _run_feedback_pass on the next iteration.
+    if not result.validation_passed:
+        print(f" FAILED ({elapsed:.0f}s) — validation exhausted")
         return None
 
     feedback_text = output_path.read_text(encoding="utf-8")
@@ -759,16 +815,23 @@ def _get_review_feedback(concept_dir: Path) -> str | None:
     return f"VERDICT: FINDINGS\n\n{ca_text.strip()}\n"
 
 
-def _update_canonical_files(concept_dir: Path, iter_dir: Path) -> None:
+def _update_canonical_files(
+    concept_dir: Path, iter_dir: Path, *, model_ok: bool = True
+) -> None:
     """Copy iteration model files to concept root for downstream consumers (FR-5).
 
     Also ensures analysis.md at concept root is current (FR-4).
+
+    When ``model_ok`` is False (H-16 guard, FR-18) the current iteration's
+    model_setup.py/model_output.txt are considered untrustworthy and the
+    canonical copies at the concept root are left as-is, preserving the last
+    known-good versions from a prior successful iteration.
     """
-    # Model files
+    # Model files — only promote to canonical on a successful model run (H-16)
     iter_model = iter_dir / "model_setup.py"
-    if iter_model.exists():
+    if iter_model.exists() and model_ok:
         shutil.copy2(iter_model, concept_dir / "model_setup.py")
 
     iter_output = iter_dir / "model_output.txt"
-    if iter_output.exists():
+    if iter_output.exists() and model_ok:
         shutil.copy2(iter_output, concept_dir / "model_output.txt")

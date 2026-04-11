@@ -2,7 +2,6 @@
 
 import csv
 import re
-import sys
 from pathlib import Path
 
 from lib.paths import TABLE_PATH
@@ -220,13 +219,12 @@ def resolve_concepts(
     for q in args:
         matches = resolve_one(concepts, q)
         if len(matches) == 0:
-            print(f"Error: no concept matching '{q}'", file=sys.stderr)
-            sys.exit(1)
+            raise ValueError(f"No concept matching '{q}'")
         elif len(matches) > 1:
-            print(f"Error: ambiguous query '{q}' matched {len(matches)} concepts:", file=sys.stderr)
-            for m in matches:
-                print(f"  {m['_id']}: {m['Concept Name']}", file=sys.stderr)
-            sys.exit(1)
+            detail = ", ".join(f"{m['_id']}: {m['Concept Name']}" for m in matches)
+            raise ValueError(
+                f"Ambiguous query '{q}' matched {len(matches)} concepts: {detail}"
+            )
         resolved.append(matches[0])
 
     if family:

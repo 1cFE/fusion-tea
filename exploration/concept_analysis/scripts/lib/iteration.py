@@ -161,6 +161,11 @@ def clear_iterations(concept_dir: Path) -> int:
         if _parse_iter_num(d.name) is not None:
             shutil.rmtree(d)
             count += 1
+    # H-18/FR-20: research_log.json references iteration numbers that no
+    # longer exist once iter-*/ directories are gone, so nuke it here so a
+    # fresh run doesn't merge stale log entries into new iterations.
+    research_log = concept_dir / "research_log.json"
+    research_log.unlink(missing_ok=True)
     return count
 
 

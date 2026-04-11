@@ -1,7 +1,6 @@
 """Source file discovery, slugification, and management helpers."""
 
 import re
-import sys
 from pathlib import Path
 
 from lib.paths import EXTRACT_OUTPUT, RESEARCH_DIR
@@ -127,15 +126,13 @@ def resolve_source_names(
         fname = name if name.endswith(".md") else f"{name}.md"
         matches = list(concept_dir.glob(f"iter-*/sources/{fname}"))
         if not matches:
-            print(
-                f"  error: source '{name}' not found under {concept_dir}/iter-*/sources/"
+            raise ValueError(
+                f"Source '{name}' not found under {concept_dir}/iter-*/sources/"
             )
-            sys.exit(1)
         if len(matches) > 1:
-            print(
-                f"  error: source '{name}' found in multiple iterations: {matches}"
+            raise ValueError(
+                f"Source '{name}' found in multiple iterations: {matches}"
             )
-            sys.exit(1)
         resolved.append(matches[0])
     return resolved
 

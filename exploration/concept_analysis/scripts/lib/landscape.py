@@ -31,7 +31,7 @@ def build_concept_landscape(
         base_state = state.rstrip("*")
         iter_summary = get_iteration_summary(cid, analyses_dir)
         ext_state = get_extraction_state(cid)
-        iter_count = _extract_iter_count(iter_summary)
+        iter_count = extract_iter_count(iter_summary)
         rows.append({
             "concept": c,
             "base_state": base_state,
@@ -110,7 +110,7 @@ def _render_table(rows: list[dict], tax_cols: list[str], show_iterations: bool) 
     return "\n".join(lines)
 
 
-def _extract_iter_count(iter_summary: str | None) -> int:
+def extract_iter_count(iter_summary: str | None) -> int:
     """'iter-3/PASS' → 3, None → 0."""
     if not iter_summary:
         return 0
