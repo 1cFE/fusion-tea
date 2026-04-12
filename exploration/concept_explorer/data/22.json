@@ -186,9 +186,9 @@
       }
     },
     "headline": {
-      "lcoe_per_mwh": 135.47878148949525,
-      "overnight_cost_per_kw": 8840.602281509224,
-      "p_net_mw": 303.736,
+      "lcoe_per_mwh": 84.11429119474914,
+      "overnight_cost_per_kw": 5488.8373401962535,
+      "p_net_mw": 1000.0,
       "q_eng": 300.0,
       "capacity_factor": 0.85
     },
@@ -360,7 +360,73 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": null,
+  "narrative": {
+    "key_bets": [
+      "Electromagnetic launcher can accelerate macroscopic projectiles to 60 km/s at commercial scale (15-30× extrapolation from existing railguns at 2-4 km/s)",
+      "Proprietary multi-cavity 'amplifier' target design achieves 200-1000× fusion gain, versus NIF's current world record of ~4×",
+      "Flowing liquid lithium curtains (1 m thick) can simultaneously serve as first wall, blanket, tritium breeder, and structural protection while surviving repetitive blast loading",
+      "Tritium breeding ratio of 1.8 is achievable (independently validated by TÜV SÜD UK), enabling 25 kg/year surplus and fleet deployment without tritium banks",
+      "Mass production of precision multi-cavity amplifier targets at 1.5-4.3 million units/year is economically feasible",
+      "Sub-Hz repetition rate (0.033-0.1 Hz) is sufficient because high gain compensates for low shot frequency",
+      "Driver operational lifetime (bore erosion, sabot wear, capacitor cycling) can sustain ~1.3 × 10⁸ shots over 40-year plant life"
+    ],
+    "eliminated_costs": [
+      "Superconducting magnets entirely eliminated — no HTS tape, cryostats, or current leads (removes 30-50% of typical tokamak reactor plant cost)",
+      "Precision beam optics absent — no final optics survivability concern that plagues laser IFE (TRL ~2 challenge avoided)",
+      "Hohlraum per-target cost eliminated (saves $1k-$10k/target vs indirect-drive laser ICF)",
+      "Vessel replacement avoided — liquid lithium curtain protects structural walls for plant lifetime",
+      "Plasma disruption mitigation hardware unnecessary — no plasma to disrupt"
+    ],
+    "novel_costs": [
+      "Electromagnetic gun driver at 60 km/s / 100 MJ class — no industrial or defense analogue exists, genuinely uncharacterized CAS22 item",
+      "Per-shot consumables structure: 1.5-4.3 million precision amplifier targets/year plus projectiles, a recurring cost with no conventional plant cost model analogue",
+      "Flowing liquid lithium curtain engineering — pump power, reactive-metal containment, blast-loading survival of fluid geometry, all with no operating-plant basis",
+      "Driver operational lifetime as a recurring cost (barrel bore erosion, sabot degradation, capacitor replacement) with Pearson -0.134 LCOE correlation exceeding driver capital cost impact",
+      "Target positioning/injection system capable of precision delivery at 0.033-0.1 Hz synchronized with hypervelocity projectile arrival"
+    ],
+    "risks": [
+      {
+        "description": "Electromagnetic gun capital cost is completely uncharacterized — 15-30× velocity extrapolation from existing railguns with no published analogue; FLARE pivot (Sept 2025) is indirect evidence driver cost exceeded viability threshold",
+        "severity": "high"
+      },
+      {
+        "description": "Target gain of 200-1000× has never been experimentally demonstrated; Machine 3 achieved only ~50 neutrons at 6.5 km/s, and Machine 4 (60 km/s) was cancelled February 2025 before testing the claim",
+        "severity": "high"
+      },
+      {
+        "description": "Primary commercial champion (First Light Fusion) abandoned the projectile approach in September 2025 in favor of pulsed-power FLARE, leaving no active pursuer of pure projectile ICF",
+        "severity": "high"
+      },
+      {
+        "description": "Driver operational lifetime under 60 km/s bore erosion, sabot stress, and repetitive capacitor cycling is unknown; plausible range spans 4 orders of magnitude (10⁴ to 10⁹ shots), with stronger LCOE correlation than capital cost",
+        "severity": "high"
+      },
+      {
+        "description": "Flowing liquid lithium curtain is doubly load-bearing (first wall + sole tritium breeder); if unviable, both the vessel-lifetime advantage and TBR 1.8 advantage collapse together, forcing fallback to solid blanket with TBR ~1.05-1.15",
+        "severity": "high"
+      },
+      {
+        "description": "Target fabrication cost at 1.5-4.3M units/year is proprietary with no mass-manufacturing analogue; if targets contain gold or other exotic materials, per-shot cost could become prohibitive",
+        "severity": "medium"
+      },
+      {
+        "description": "Conflicting public rep rate figures (0.011-0.1 Hz) span a 10× range, propagating linearly into power output and capital amortization uncertainty",
+        "severity": "medium"
+      },
+      {
+        "description": "Chamber clearing time for liquid Li curtain after blast is unknown; may impose a cliff-edge constraint preventing rep-rate compensation for gain shortfall",
+        "severity": "medium"
+      },
+      {
+        "description": "Tritium byproduct revenue (~$750M/year at current $30,000/g scarcity pricing) is structurally self-eroding — fleet-scale deployment collapses the price, so the revenue cannot be relied upon as a base-case LCOE credit",
+        "severity": "medium"
+      },
+      {
+        "description": "NearStar MTIF is taxonomically closer to MIF (magnetized fuel, D-D preference) than pure projectile ICF, leaving First Light Fusion as the sole historical champion — and FLF has now exited the approach",
+        "severity": "low"
+      }
+    ]
+  },
   "sources": {
     "model_setup": null,
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/22-projectile-icf/analysis.md"

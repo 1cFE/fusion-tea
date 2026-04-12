@@ -186,9 +186,9 @@
       }
     },
     "headline": {
-      "lcoe_per_mwh": 155.4831085205078,
-      "overnight_cost_per_kw": 12694.7470703125,
-      "p_net_mw": 390.0,
+      "lcoe_per_mwh": 106.6863992406647,
+      "overnight_cost_per_kw": 8710.636589980331,
+      "p_net_mw": 1000.0,
       "q_eng": 7.671957492828369,
       "capacity_factor": 0.88
     },
@@ -377,7 +377,76 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": null,
+  "narrative": {
+    "key_bets": [
+      "Sustained ISS04 confinement enhancement factor H=1.4 in a quasi-axisymmetric stellarator configuration (never experimentally demonstrated in QA geometry)",
+      "Novel non-resonant toroidally continuous X-point divertor for QA stellarator achieves 10× better neutral compression than island divertors",
+      "324-coil software-controlled planar HTS array with 450+ independent control variables scales reliably from 9-coil Canis prototype to full plant",
+      "Alpha particle confinement with only 6.6% loss (12.7 MW deposited on surfaces) acceptable for first-wall lifetime",
+      "LiPb blanket with SiC MHD inserts and EUROFER97 structure achieves TBR of 1.3 (1.1 required) at 14 MeV neutron conditions",
+      "V-4Cr-4Ti first wall achieves 15 full-power-year lifetime under Helios neutron flux",
+      "Sector-based remote maintenance completes full blanket/first-wall/divertor replacement within 84-day biennial window, enabling 88% capacity factor"
+    ],
+    "eliminated_costs": [
+      "Current drive recirculating power eliminated — ignited steady-state stellarator requires only 1 MW operational ECRH vs. continuous LHCD/ECRH current drive in tokamaks",
+      "Disruption mitigation systems and disruption-induced component damage eliminated by inherent stellarator steady-state operation",
+      "Complex 3D stellarator coil manufacturing replaced by planar coil geometry that is simpler to wind and mass-producible",
+      "Port-restricted remote maintenance infrastructure eliminated in favor of sector-based removal with fewer access constraints"
+    ],
+    "novel_costs": [
+      "336 REBCO HTS coils (12 encircling + 324 shaping) — much higher coil count than conventional stellarators (~25 for a large tokamak) driving aggregate REBCO tape demand",
+      "324 individually addressable power supplies and cryogenic cooling circuits for shaping coils, plus software control infrastructure for 450+ independent control variables",
+      "V-4Cr-4Ti (V44) vanadium alloy first wall at multi-hundred-tonne scale — never produced at power plant volumes, requiring specialized purification from commodity vanadium",
+      "51,000 hexagonal tungsten divertor tiles with precision helium impingement jet cooling channels on curved stellarator geometry",
+      "Startup tritium inventory of 1–2 kg at ~$35,000/g implies $35–70M tritium capital cost per plant"
+    ],
+    "risks": [
+      {
+        "description": "ISS04 H=1.4 enhancement factor required for 958 MW fusion power has never been experimentally demonstrated in a QA stellarator; if operational H=1.2, fusion power could drop 30–50%",
+        "severity": "high"
+      },
+      {
+        "description": "Novel QA X-point divertor (TRL 1–2) has no hardware precedent; underperformance would compromise impurity control, fuel purity, and first-wall erosion rates",
+        "severity": "high"
+      },
+      {
+        "description": "No published bottom-up capital cost breakdown supporting the $150/MWh → $60/MWh LCOE targets; parametric model yields $155/MWh FOAK but framework uses defaults for magnet and divertor systems",
+        "severity": "high"
+      },
+      {
+        "description": "V-4Cr-4Ti nuclear-grade alloy has never been produced at the multi-hundred-tonne scale required for a power plant first wall; supply chain and cost largely unknown",
+        "severity": "high"
+      },
+      {
+        "description": "EUROFER97 blanket structural material lacks irradiation qualification beyond ~15 dpa vs. ~150+ dpa required over 15 full-power years; IFMIF-DONES validation not available until early 2030s",
+        "severity": "high"
+      },
+      {
+        "description": "324-coil array with 450+ control variables introduces novel failure modes (power supply MTBF, cryo circuit reliability, control software) that could degrade the 88% capacity factor target",
+        "severity": "medium"
+      },
+      {
+        "description": "6.6% alpha particle loss (12.7 MW on first wall/divertor) exceeds tokamak typical 2–4% values, increasing materials endurance burden beyond standard blanket power balance",
+        "severity": "medium"
+      },
+      {
+        "description": "Li-6 enrichment to 65% at LiPb plant scale depends on supply chain historically dominated by Russia/China mercury-based separation, with Western alternatives still under development",
+        "severity": "medium"
+      },
+      {
+        "description": "Tritium extraction from LiPb at 6.6 cm/s flow and plant throughput has no plant-scale validation anywhere; extraction efficiency and loss rates are unvalidated",
+        "severity": "medium"
+      },
+      {
+        "description": "SiC/SiCf MHD flow channel inserts have not been manufactured at Helios blanket scale or qualified under simultaneous LiPb chemistry, neutron irradiation, and thermal cycling",
+        "severity": "medium"
+      },
+      {
+        "description": "Thea Energy's $20M Series A funding is materially smaller than peers (CFS $2B+), limiting internal engineering and costing team scale for a preconceptual design of this complexity",
+        "severity": "low"
+      }
+    ]
+  },
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/05-planar-coil-stellarator/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/05-planar-coil-stellarator/analysis.md"

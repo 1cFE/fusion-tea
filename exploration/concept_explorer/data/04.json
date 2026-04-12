@@ -311,7 +311,81 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": null,
+  "narrative": {
+    "key_bets": [
+      "The 'avalanche' alpha-chain-reaction mechanism amplifies p-B11 yield by orders of magnitude beyond thermal cross-section predictions (enabling gain >500)",
+      "Picosecond petawatt CPA lasers can achieve >10% wall-plug efficiency (vs. current <1%) at commercial scale",
+      "Petawatt-class lasers can be rep-rated to 1 Hz sustained operation with adequate thermal management and optic lifetime",
+      "Laser-driven capacitor-coil targets can generate kilotesla magnetic fields with sufficient duration and uniformity for radial confinement at 1 Hz",
+      "Solid-state HB11 fuel pellets can be fabricated and injected at 1 Hz (~3.15×10^7/year) with sub-mm alignment tolerances",
+      "Arrays of thousands of commercial lasers can be synchronized and integrated into a single-pellet ignition architecture",
+      "The two-laser + kT-field + fuel geometry can be integrated into a rep-rated reactor chamber (never demonstrated together)"
+    ],
+    "eliminated_costs": [
+      "Tritium inventory, breeding, handling, and permeation infrastructure (aneutronic p-B11 fuel)",
+      "Lithium-6 enrichment supply chain and tritium breeding blanket",
+      "REBCO superconducting tape and cryogenic magnet infrastructure (transient laser-driven field)",
+      "Thick neutron shielding and activation-resistant blanket structures (aneutronic, <1% neutron fraction)",
+      "FLiBe coolant loop and associated tritium-compatible structural materials"
+    ],
+    "novel_costs": [
+      "Petawatt-class ps CPA laser systems at 1 Hz — no commercial supply chain; bespoke national-facility units currently hundreds of millions per unit",
+      "High-average-power USPL pump diodes at ~$0.007/W target vs. $0.05–0.1/W current (7–14× gap)",
+      "Dual-component per-shot consumable: HB11 fuel pellet + capacitor-coil target assembly at 31.5M units/year with no cost precedent",
+      "Specialty optics (gratings, mirrors) capable of transmitting petawatt pulses at 1 Hz with uncharacterized lifetime",
+      "Direct electrostatic alpha collector at −1.4 MV bias (if direct conversion path) — no demonstrated equivalent at any scale"
+    ],
+    "risks": [
+      {
+        "description": "Avalanche gain mechanism has zero experimental confirmation; if alphas thermalize before exciting secondary reactions, p-B11 ignition is unachievable with any near-term laser driver",
+        "severity": "high"
+      },
+      {
+        "description": "Current experimental alpha yield is ~10,000× (4 orders of magnitude) below breakeven threshold — no demonstrated path across this gap",
+        "severity": "high"
+      },
+      {
+        "description": "2018 patent energy balance is internally inconsistent by ~67× (30 kJ × gain 500 = 15 MJ vs. claimed 1 GJ output); no self-consistent design point exists publicly",
+        "severity": "high"
+      },
+      {
+        "description": "Laser wall-plug efficiency gap: <1% demonstrated vs. >10% required for energy balance closure; ~10× improvement over state-of-the-art needed",
+        "severity": "high"
+      },
+      {
+        "description": "No petawatt-class CPA laser has ever operated at ≥1 Hz; LFEX fires at ~0.01 Hz — qualitative leap in thermal management and optic lifetime required",
+        "severity": "high"
+      },
+      {
+        "description": "Energy conversion method unresolved — 2018 patent specifies direct electrostatic at −1.4 MV, 2025 website says conventional steam cycle; unexplained pivot eliminates the primary economic rationale for aneutronic fuel",
+        "severity": "high"
+      },
+      {
+        "description": "No reactor subsystem integration demonstrated — two lasers, kT field, fuel injection, chamber, and energy conversion have never operated together",
+        "severity": "high"
+      },
+      {
+        "description": "No published plant-level design, system code implementation, or independent techno-economic analysis exists for this concept",
+        "severity": "high"
+      },
+      {
+        "description": "Per-shot dual-component consumable (pellet + capacitor-coil) at 31.5M units/year has no cost estimate and no manufacturing analogue",
+        "severity": "medium"
+      },
+      {
+        "description": "Kilotesla field duration and spatial profile sufficient for radial confinement is experimentally uncharacterized in the HB11 configuration",
+        "severity": "medium"
+      },
+      {
+        "description": "Company is very early-stage (~A$12.8M total funding) with limited published experiments and contested underlying physics",
+        "severity": "medium"
+      },
+      {
+        "description": "Chamber clearing of plasma debris and residual material within ~1 second at commercial power density is unengineered",
+        "severity": "medium"
+      }
+    ]
+  },
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/04-laser-icf/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/04-laser-icf/analysis.md"

@@ -186,9 +186,9 @@
       }
     },
     "headline": {
-      "lcoe_per_mwh": 183.8320770263672,
-      "overnight_cost_per_kw": 12300.4052734375,
-      "p_net_mw": 600.0000610351562,
+      "lcoe_per_mwh": 149.85864861420336,
+      "overnight_cost_per_kw": 10027.206032274635,
+      "p_net_mw": 1000.0,
       "q_eng": 4.928349018096924,
       "capacity_factor": 0.8
     },
@@ -394,7 +394,93 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": null,
+  "narrative": {
+    "key_bets": [
+      "Spherical tokamak (A=2.3) geometry delivers higher beta that compensates for lower on-axis field (5.25 T) to achieve adequate fusion power density",
+      "REBCO HTS TF/PF coil system validated at Demo4 scale (11.8 T, 30 K, 7 MA-turns) scales to full ST-E1 (R=5.0 m) with ~32 cm center-stack shielding",
+      "Outboard-only liquid lithium metal blanket achieves TBR = 1.2 despite ~50% solid-angle coverage, providing tritium self-sufficiency",
+      "O-mode ECRH alone (no NBI, no ICRF) can sustain flat-top current drive for 15+ minute pulses in a burning plasma",
+      "WC-FeCr cermet center-stack shielding keeps fast neutron flux into the HTS core low enough (~1.4e17 m⁻² s⁻¹) to preserve REBCO lifetime",
+      "Quasi-steady pulsed operation (15+ min on / dwell off) with molten-salt thermal energy storage buffer delivers acceptable capacity factor for the grid",
+      "Burning-plasma Q high enough that 450–750 MWe net is achievable with ECRH-only auxiliary heating at tolerable recirculating power fraction"
+    ],
+    "eliminated_costs": [
+      "No beryllium supply chain exposure — liquid Li blanket avoids FLiBe's beryllium requirement",
+      "Lower REBCO tape performance requirements per unit length due to reduced on-axis field (5.25 T vs. 9.2 T for ARC), relaxing critical-current and mechanical-stress specs",
+      "No NBI or ICRF heating systems — ECRH-only flat-top removes NBI duct/first-wall integration, neutral-beam ion sources, and ICRF antenna hardware",
+      "FLiBe inventory and procurement cost avoided — liquid Li metal is commercially produced at battery scale and unconstrained relative to FLiBe",
+      "Reduced magnet-side mechanical structure mass relative to high-field compact tokamaks because lower B means lower Lorentz stress on the coil cage"
+    ],
+    "novel_costs": [
+      "Thermal energy storage buffer (molten salt) required to smooth pulsed ~15 min on / ~5 min off heat output to a steady grid — absent from steady-state designs",
+      "Dedicated WC-FeCr cermet center-stack neutron shield at nuclear-grade purity — a distinct capital and O&M line item with no equivalent in conventional aspect-ratio tokamaks",
+      "Li-6 enrichment capacity for high-enrichment liquid Li metal inventory, required to hit TBR=1.2 with only outboard coverage — limited global enrichment supply (Russia/China legacy processes)",
+      "Tritium extraction and permeation-barrier system specific to liquid Li metal circuit (vacuum degassing or permeation membranes) — different hardware than FLiBe extraction and unproven at plant scale",
+      "High ECRH recirculating power load from multi-tens of MW of gyrotrons at ~50–55% wall-plug efficiency, sized large because ECRH is the sole flat-top heating/current-drive source"
+    ],
+    "risks": [
+      {
+        "description": "Q value, fusion power, and auxiliary heating power for ST-E1 are unpublished, leaving the LCOE anchor (≈1.5–2.5 GW fusion power estimate) resting on three unanchored assumptions",
+        "severity": "high"
+      },
+      {
+        "description": "Power conversion cycle (steam Rankine vs. sCO₂ Brayton) not committed by Tokamak Energy; thermal efficiency assumption of ~33% is an analogue, and η_th elasticity on LCOE is −0.26",
+        "severity": "high"
+      },
+      {
+        "description": "Outboard-only liquid Li blanket achieving TBR=1.2 is TRL 2–3; no fusion-scale demonstration of Li metal tritium extraction or TBR validation under realistic penetrations",
+        "severity": "high"
+      },
+      {
+        "description": "WC-FeCr cermet center-stack shielding has no 14 MeV neutron irradiation database — explicitly flagged gap in Humphry-Baker & Smith (2019); REBCO lifetime under shielded flux unknown at ST-E1 scale",
+        "severity": "high"
+      },
+      {
+        "description": "Capacity factor not published and pulsed operation with CS re-magnetization dwell periods pressures the low end of the 75–90% D-T MCF range; availability elasticity on LCOE is −0.87 (largest engineering lever)",
+        "severity": "high"
+      },
+      {
+        "description": "No published capital cost estimate or plant study for ST-E1 Rev D; all CAS line items are framework defaults, and thermal buffer cost is not modelled (downward bias)",
+        "severity": "high"
+      },
+      {
+        "description": "ECRH-only heating at ~50–55% wall-plug efficiency drives high recirculating power fraction; Q_engineering cannot be validated until auxiliary heating power is disclosed",
+        "severity": "medium"
+      },
+      {
+        "description": "Design has not stabilized — DPP 2024 to DPP 2025 showed dramatic change (85 MWe → 450–750 MWe net, R=4.25 → 5.0 m, A=2.0 → 2.3), indicating further parameter drift is plausible",
+        "severity": "medium"
+      },
+      {
+        "description": "REBCO tape global production (~few thousand km/year) insufficient for fleet scale; tape cost must fall from $30–100/kA-m toward ~$10/kA-m for commercial viability",
+        "severity": "medium"
+      },
+      {
+        "description": "Liquid Li metal chemical reactivity with air/water mandates fully inert-atmosphere primary circuit operations, and tritium permeation through steel heat exchangers from liquid Li is a documented (unsolved) concern",
+        "severity": "medium"
+      },
+      {
+        "description": "Li-6 enrichment supply chain dominated by Russia/China legacy mercury amalgam processes; Western capacity not at commercial scale for fusion demand",
+        "severity": "medium"
+      },
+      {
+        "description": "Global tritium inventory ~25–30 kg declining at 5.5%/year as CANDU reactors retire; ST-E1 startup inventory (~1 kg at >$35,000/g) shares the sequencing constraint of all D-T concepts",
+        "severity": "medium"
+      },
+      {
+        "description": "Fission-style regulatory treatment could apply a 2.2× building cost multiplier (Stewart & Shirvan 2022) to ST-E1 as a D-T plant",
+        "severity": "medium"
+      },
+      {
+        "description": "Remote maintenance for compact inboard center stack and outboard blanket modules in ST geometry is TRL 5–6 with no validated cycle time supporting the availability target",
+        "severity": "medium"
+      },
+      {
+        "description": "ST-E1 plasma current for Revision D not published (pre-Rev D value 13.6 MA at R=4.25 m); disruption loads on divertor and first wall during ramp-up/ramp-down of pulsed operation reduce effective availability",
+        "severity": "low"
+      }
+    ]
+  },
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/21-spherical-tokamak-hts/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/21-spherical-tokamak-hts/analysis.md"

@@ -125,6 +125,7 @@ Acoustic ICF / Sonofusion (D-D) — 1cFE CAS-Structured LCOE Model
   Capital (CAS90):    82.3%
   O&M (CAS70):        16.6%
   Fuel/D₂O (CAS80):   1.1%
+  Scaled to 1000 MWe (α=0.6):  103.1 $/MWh,  4238 $/kW overnight
 
 ======================================================================
 SENSITIVITY SWEEPS — most impactful parameters (baseline Q=10)

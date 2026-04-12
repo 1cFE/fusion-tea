@@ -186,9 +186,9 @@
       }
     },
     "headline": {
-      "lcoe_per_mwh": 63.656978607177734,
-      "overnight_cost_per_kw": 4963.02294921875,
-      "p_net_mw": 500.0000305175781,
+      "lcoe_per_mwh": 48.24296970225547,
+      "overnight_cost_per_kw": 3761.268143878908,
+      "p_net_mw": 1000.0,
       "q_eng": 4.310580730438232,
       "capacity_factor": 0.8
     },
@@ -374,7 +374,93 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": null,
+  "narrative": {
+    "key_bets": [
+      "Alpha channeling via RF waves resonantly extracts energy from fusion-born helium ions and redirects it into fuel protons, reducing required confinement time by up to 6.9×",
+      "Centrifugal species separation in a rotating plasma exploits the 11× mass disparity between protons and boron-11 to confine boron in the fusion chamber while allowing helium ash to migrate out",
+      "Ponderomotive barriers (one-way RF walls) selectively control ion traffic between the fusion and heat exchange chambers",
+      "Nonthermal p-B11 operation maintains energetic protons far above equilibrium temperature with cold electrons/boron to suppress bremsstrahlung losses below fusion gain",
+      "Direct energy conversion recovers plasma rotational kinetic energy as electricity via adiabatic DEC in axisymmetric fields, bypassing a conventional thermal cycle",
+      "Biased central electrode sustains E×B rotation with large voltage drops at minimal dissipation",
+      "Multi-chamber CHARM architecture spatially separates boron-trapping, helium-extraction, and proton recycling into distinct physical chambers operating simultaneously"
+    ],
+    "eliminated_costs": [
+      "Tritium breeding blanket, Li-6 enrichment supply chain, and ~$35M tritium startup inventory (aneutronic p-B11 fuel)",
+      "14.1 MeV neutron first-wall damage mitigation — tungsten, ODS steels, and activation-resistant structural materials",
+      "Neutron shielding and remote handling infrastructure required by D-T concepts",
+      "Conventional thermal cycle turbine plant scaled to full fusion power (DEC recovers most charged-particle energy directly)",
+      "He-3 fuel supply constraint (~8 kg/year global, $2,000–$15,000/NTP-liter) that constrains D-He3 concepts"
+    ],
+    "novel_costs": [
+      "High-voltage biased central electrode (~100 kV) resistant to plasma erosion, sputtering, and arcing, with continuous recirculating power to sustain plasma rotation",
+      "Alpha channeling RF antenna system tuned to ion cyclotron frequencies for wave-particle energy recycling in a rotating plasma",
+      "Ponderomotive barrier RF hardware with recognized high energy cost for species-selective ion traffic control",
+      "Boron-11 enriched fuel (>99% purity) requiring isotopic purification beyond the naturally dominant ~80% B-11 fraction",
+      "Rotation-energy-recovery DEC hardware (adiabatic or SWDEC) with no existing engineering prototype or efficiency baseline"
+    ],
+    "risks": [
+      {
+        "description": "Bremsstrahlung losses at required proton temperatures (~150–300 keV) exceed fusion power in any conventional thermal plasma; viability depends entirely on maintaining a strongly nonthermal proton distribution",
+        "severity": "high"
+      },
+      {
+        "description": "Alpha channeling efficiency η_α is derived only from analytical and 0D models; no experimental measurement exists in any rotating plasma or centrifugal mirror",
+        "severity": "high"
+      },
+      {
+        "description": "Helium ash accumulation from three alpha products per p-B11 reaction will poison the plasma unless the untested multi-chamber extraction architecture works as designed",
+        "severity": "high"
+      },
+      {
+        "description": "Rotation sustainment recirculating power fraction is uncharacterized; could significantly reduce net electric output",
+        "severity": "high"
+      },
+      {
+        "description": "DEC efficiency for rotation energy recovery has only physics-limit bounds; no engineering prototype, efficiency target, or capital cost estimate exists",
+        "severity": "high"
+      },
+      {
+        "description": "No published plant design, device concept study, fusion power, Q, machine size, magnet specification, or cost estimate of any kind — every LCOE input must be assumed",
+        "severity": "high"
+      },
+      {
+        "description": "CHARM multi-chamber integrated architecture (TRL 1) has never been built or tested at any scale; integrated physics requirements compound independently",
+        "severity": "high"
+      },
+      {
+        "description": "p-B11 nonthermal reactor-relevant plasma regime (>100 keV proton temperature with cold electrons) has never been demonstrated in any laboratory experiment",
+        "severity": "high"
+      },
+      {
+        "description": "Ponderomotive barriers acknowledged to have high energy cost (slide 19: 'use is situational'); steady-state energy budget for one-way RF walls unresolved",
+        "severity": "medium"
+      },
+      {
+        "description": "Alpha channeling has not been demonstrated experimentally even in non-rotating mirrors since the 2006 theory proposal; required antenna geometry and coupling at CHARM conditions uncharacterized",
+        "severity": "medium"
+      },
+      {
+        "description": "Pale Blue Fusion was pre-incorporation as of July 2025 with only $1.5M disclosed ARPA-E funding, no FIA listing, and no device roadmap",
+        "severity": "medium"
+      },
+      {
+        "description": "Biased central electrode (~100 kV) material lifetime, erosion, and plasma contamination risk unspecified",
+        "severity": "medium"
+      },
+      {
+        "description": "If HTS magnets are adopted, same REBCO supply chain constraints apply (thousands of km/year global capacity, $30–100/kA-m, 3–5× cost reduction needed); conductor type undisclosed",
+        "severity": "medium"
+      },
+      {
+        "description": "Synchrotron radiation reabsorption efficiency and wall loading identified as manageable but never quantified",
+        "severity": "low"
+      },
+      {
+        "description": "B-11 enrichment requirement not specified by Pale Blue; enrichment is accessible by industrial methods since B-11 is the naturally dominant isotope",
+        "severity": "low"
+      }
+    ]
+  },
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/06-magnetic-mirror/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/06-magnetic-mirror/analysis.md"

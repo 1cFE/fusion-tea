@@ -373,7 +373,80 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": null,
+  "narrative": {
+    "key_bets": [
+      "FOAK-to-NOAK learning reduces capital cost to 50-60% of FOAK through fleet deployment and supply chain maturation",
+      "Non-planar modular HTS coil manufacturing can scale 3× from W7-X (5.5 m) to GIGA (18 m) while maintaining tolerances for 40 coils at ~300 tonnes each",
+      "REBCO HTS tape supply can ramp up by more than an order of magnitude to deliver ~26 million meters per plant at $5-10/kA-m",
+      "Demountable superconducting coil joints achieve ~1 nΩ resistance at 100 kA across ~10,000 joints with long-term stability under neutron irradiation",
+      "HELIAS 3D blanket geometry (80 unique segment shapes per sector) can achieve TBR > 1.15 with realistic gaps and be maintained remotely",
+      "Steady-state operation delivers 85-90% capacity factor despite 3D blanket complexity, anchored on the Helios QA 88% figure",
+      "Quasi-isodynamic physics heritage (W7-X, HELIAS) translates to a viable commercial reactor at 18 m major radius"
+    ],
+    "eliminated_costs": [
+      "Central solenoid and current drive systems (NBI/ECCD) — rotational transform is geometric, eliminating ~50-200 MW recirculating power and CS magnet capital",
+      "Thermal energy storage buffer for pulsed operation — steady-state operation removes need for grid-scale storage (~$50-200M avoided)",
+      "Disruption-driven unplanned PFC replacement and overdesign — stellarators are disruption-free, lowering CAS70 O&M uncertainty",
+      "Frequent blanket replacement campaigns — HELIAS 4.6-year wall lifetime vs. 2.3 years at DEMO tokamak power halves replacement campaigns over 40-year life"
+    ],
+    "novel_costs": [
+      "Blanket fabrication complexity premium from 80 unique 3D segment shapes per sector (640 total) vs. ~2 shapes in a tokamak — modeled as 1.0-2.5× multiplier on blanket/VV CAS22 sub-component",
+      "Non-planar modular coil manufacturing at 3× W7-X scale (40 coils, ~300 tonnes each, ~30-35 m perimeter) with nonlinearly compounding tolerances",
+      "Demountable HTS joint system (~10,000 joints plant-wide) — novel at scale, with remote replacement and resistance-stability monitoring requirements",
+      "Continuous cryogenic parasitic load from coil neutron heating — WISTELL-D analog suggests ~3-5% of fusion power, a recirculating penalty absent in pulsed tokamaks",
+      "Remote maintenance tooling for 3D-varying blanket with undefined attachment scheme and 222-component-style serial extraction challenges"
+    ],
+    "risks": [
+      {
+        "description": "FOAK capital cost of €15-18B (~€15,000-18,000/kWe) drives LCOE above €0.30/kWh; commercial viability depends entirely on unproven NOAK learning to 50-60% of FOAK",
+        "severity": "high"
+      },
+      {
+        "description": "Blanket type (HCPB vs. DCLL) undisclosed, leaving ~20-25% LCOE uncertainty via thermal efficiency (35% vs. 40%+) and TBR margin",
+        "severity": "high"
+      },
+      {
+        "description": "HELIAS 3D blanket geometry with 80 segment shapes has undefined maintenance scheme; Segment 5 fails RCC-MRx structural criterion under accident loads in published study",
+        "severity": "high"
+      },
+      {
+        "description": "18 m major radius is 3× W7-X scale — no engineering study of GIGA-scale assembly logistics, shipping, or tolerance compounding has been published",
+        "severity": "high"
+      },
+      {
+        "description": "REBCO HTS supply requirement (~26,000 km per plant) exceeds current global annual production by more than 10×; commercial $5-10/kA-m target vs. ~$30-100/kA-m market price",
+        "severity": "high"
+      },
+      {
+        "description": "TBR/shielding coupling in tight plasma-coil clearance regions (ParaStell/WISTELL-D finding) forces a direct trade between breeder fraction and magnet protection — specific to QI non-planar designs",
+        "severity": "medium"
+      },
+      {
+        "description": "Cryogenic parasitic load at GIGA scale (3-5%+ of fusion power) may make total recirculating power fraction understated, eroding the net-efficiency advantage over pulsed tokamaks",
+        "severity": "medium"
+      },
+      {
+        "description": "Demountable HTS joints (~1 nΩ at 100 kA, ~10,000 joints) have not been prototyped at production scale; long-term resistance stability under neutron flux unknown",
+        "severity": "medium"
+      },
+      {
+        "description": "QA planar-coil architecture (Helios, 8 m) may achieve similar performance at half GIGA's scale — GIGA's QI approach bears a structural design-space cost disadvantage not recoverable through learning",
+        "severity": "medium"
+      },
+      {
+        "description": "No published O&M cost breakdown for HELIAS or GIGA; placeholder 2-4% of NOAK capital per year based on fission analogs only",
+        "severity": "medium"
+      },
+      {
+        "description": "Realistic TBR with geometric penalties (~1.15) leaves limited margin above breakeven; full 3D MCNP validation at GIGA geometry not performed",
+        "severity": "medium"
+      },
+      {
+        "description": "Beryllium multiplier supply (if HCPB) requires tens to hundreds of tonnes from ~300 t/year global production dominated by a single US producer",
+        "severity": "low"
+      }
+    ]
+  },
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/10-large-scale-stellarator/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/10-large-scale-stellarator/analysis.md"

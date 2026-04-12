@@ -3,6 +3,7 @@ MTF Pneumatic Compression (D-T) — General Fusion concept
   FOAK | eta_th=35% | availability=80%
 
 LCOE:     101.5 $/MWh | Overnight: 6784 $/kW
+  Scaled to 1000 MWe: LCOE 62.7 $/MWh | Overnight 4191 $/kW
 Fusion:   989 MW  | Net: 300 MW | Q_eng: 4.3
 Recirculating fraction: 23.4%
 Scientific Q (P_fus/P_driver): 19.8

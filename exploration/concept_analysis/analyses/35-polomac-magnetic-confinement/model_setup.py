@@ -925,6 +925,22 @@ class PoloMacPlantParams:
 params = PoloMacPlantParams()
 results = params.compute()
 
+# --- Post-hoc scaling to 1000 MWe (cross-concept comparison) ---
+# Economy-of-scale exponent α=0.6 (standard for large capital projects).
+# Native power is computed from scenario assumptions; scaling adjusts capital
+# intensity without changing any physics parameters. Do NOT modify params,
+# results, p_fus_MW, Q_sci, n_mod, or any plasma physics parameters.
+_ALPHA = 0.6  # economy-of-scale exponent (standard for large capital projects)
+_p_native = results["power"].get("p_net_plant", results["power"]["p_net"])
+_factor = (_p_native / 1000.0) ** (1.0 - _ALPHA)
+_overnight = results["costs"]["overnight_capital"] * 1e3 / _p_native  # $/kW at native scale
+
+scaled_headline = {
+    "p_net_mw": 1000.0,
+    "lcoe_per_mwh": results["economics"]["lcoe_USD_per_MWh"] * _factor,
+    "overnight_per_kw": _overnight * _factor,
+}
+
 
 # ===========================================================================
 # OUTPUT FUNCTIONS
@@ -1082,6 +1098,17 @@ def print_results(p: PoloMacPlantParams, r: dict):
     print(f"  Capital fraction (CAS90):   {econ.get('capital_fraction', 0):.1%}")
     print(f"  O&M fraction (CAS70):       {econ.get('om_fraction', 0):.1%}")
     print(f"  Fuel fraction (CAS80):      {econ.get('fuel_fraction', 0):.1%}")
+
+    # --- Cross-concept scaled headline ---
+    print(f"\n--- Cross-Concept Reference (scaled to 1000 MWe, α=0.6) ---")
+    _p = r["power"].get("p_net_plant", r["power"]["p_net"])
+    _f = (_p / 1000.0) ** (1.0 - 0.6)
+    _oc = r["costs"]["overnight_capital"] * 1e3 / _p
+    print(f"  Native p_net:     {_p:.0f} MWe  →  Reference: 1000 MWe")
+    print(f"  Scale factor:     {_f:.3f}")
+    print(f"  Scaled LCOE:      {econ['lcoe_USD_per_MWh'] * _f:.1f} $/MWh")
+    print(f"  Scaled overnight: ${_oc * _f:.0f} /kWe")
+    print(f"  [All values are SCENARIO bounds — very wide uncertainty]")
 
 
 def sensitivity_sweep(base_p: PoloMacPlantParams, param_name: str,

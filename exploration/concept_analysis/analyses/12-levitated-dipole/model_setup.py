@@ -1,35 +1,33 @@
 """
-Levitated Dipole (D-T) First-Pass LCOE Model
-=============================================
+Levitated Dipole (D-T) LCOE Model — OpenStar Technologies, Reactor A
+=====================================================================
 1cFE First Pass Concept Analysis
-Concept: Levitated Dipole (D-T) — OpenStar Technologies
-Company: OpenStar Technologies (Wellington, NZ; founded 2021)
+Concept: Levitated Dipole (D-T fuel)
+Company: OpenStar Technologies (Wellington, New Zealand)
+Design Point: Reactor A (208 MWe net) from Simpson et al. 2026
 
-This is a parameterized LCOE model based on the OpenStar Technologies power plant
-preprint (Simpson et al., arXiv 2602.20564) and the Junior prototype paper
-(arXiv 2508.17691). The design point is "Reactor A" — the conservative Bohm-scaling
-scenario disclosing 667 MW fusion power and 208 MWe net electric.
+This is a free-form analogue LCOE model built from component mass data and
+published power balance equations. No 1costingfe reference concept is used
+because no standard concept shares the levitated dipole's architecture (single
+internal levitated REBCO coil, annual sacrificial section replacement, solid
+ceramic Li2O blanket, concrete outer vessel). See analysis.md §Section 2.
 
-Key architectural differences from MagLIF / IFE concepts:
-- Continuous quasi-steady MFE operation (~90% duty cycle from cryogen limits, not plasma)
-- Single floating HTS REBCO coil (23 T) + one external support magnet — no large coil array
-- On-board superconducting flux pump (~10 W continuous) eliminates conventional power supply
-- ICRH primary heating; plasma NOT ignited (Q_sci inferred 12-19, not published)
-- Annual sacrificial coil outer section replacement — novel OPEX with no precedent
-- Li₂O ceramic TBR blanket (TBR 1.1); two-temperature W/B₄C shield (>2000 K / ~600°C)
-- No direct energy converter; all fusion energy recovered thermally
+Cost accounting follows CAS (Code of Accounts System) structure with mass-based
+overrides for the four primary cost paths identified in analysis.md:
+  1. Core magnet: REBCO tape quantity x $/kA-m x engineering multiplier
+  2. Blanket + shield: component mass x unit cost (analogue estimation)
+  3. Outer vacuum vessel: reinforced concrete x civil construction rate
+  4. Balance of plant / thermal island: standard power-scaling laws
 
-Cost accounting follows the CAS (Code of Accounts System) structure from 1costingfe,
-with concept-specific overrides documented below. Scaling laws from:
-- 1costingfe costing_constants.yaml (blanket, shield, structure, vessel, fuel handling)
-- MagLIF exemplar (maglif_lcoe_model.py) for CAS21-29, CAS30-60, CAS70-90 patterns
-- Analysis-specific overrides for C220103 (HTS coil), C220104 (ICRH), C220110 (remote handling)
+Economy-of-scale post-hoc scaling for cross-concept comparison uses alpha=0.6
+(Rothwell-type power-law exponent), applied after all physics computations at
+native power level. The `scaled_headline` dict reports LCOE and $/kW normalized
+to 1000 MWe for cross-concept comparison -- it does NOT change any physics.
 
 Key references:
-- Simpson et al. (2026), arXiv:2602.20564 — Reactor A design point (primary engineering ref)
-- OpenStar team (2025), arXiv:2508.17691 — Junior prototype specifications
-- 1costingfe costing_constants.yaml — CAS scaling laws and unit costs
-- MagLIF exemplar model (maglif_lcoe_model.py) — structural template
+- Simpson et al. (2026), "D-T Levitated Dipole Fusion Power Plants", arXiv:2602.20564
+- OpenStar Team (2025), "Design and Initial Results from Junior LDX", arXiv:2508.17691
+- 1costingfe CAS structure: costing_constants.yaml (scaling law references)
 
 Usage:
     uv run python model_setup.py              # print results to terminal
@@ -37,1290 +35,1056 @@ Usage:
 """
 
 import math
-import dataclasses as dc
 from dataclasses import dataclass
 
-
-# === Reference power levels for scaling laws (from 1costingfe defaults) ===
+# === Reference power levels for standard CAS22 scaling (from 1costingfe) ===
 P_TH_REF = 2500.0   # Reference thermal power [MW]
 P_ET_REF = 1100.0   # Reference gross electric power [MW]
-
-# D-T neutron / alpha energy split
-F_NEUTRON_DT = 0.80   # 14.1 MeV / 17.6 MeV
-F_ALPHA_DT = 0.20     # 3.5 MeV / 17.6 MeV
 
 
 @dataclass
 class LevitatedDipolePlantParams:
     """
-    Parameterized Levitated Dipole (D-T) power plant LCOE model.
-    All parameters have source annotations. Uncertainty levels:
-    - No tag = well-established value with source
-    - MODERATE UNCERTAINTY = reasonable estimate from analogues
-    - HIGH UNCERTAINTY = speculative or poorly constrained
+    Parameterized Levitated Dipole (D-T) power plant LCOE model -- Reactor A design point.
+    Primary source: Simpson et al. 2026 (arXiv:2602.20564).
+
+    Uncertainty tags:
+      No tag               = well-established from primary source
+      MODERATE UNCERTAINTY = reasonable estimate from analogues
+      HIGH UNCERTAINTY     = speculative or poorly constrained
     """
 
     # =========================================================================
-    # FUSION PHYSICS
+    # PLASMA PHYSICS
     # =========================================================================
 
-    p_fus_MW: float = 667.0
+    p_fus: float = 667.0
     """Fusion power [MW].
-    Source: Reactor A conservative Bohm-scaling design point, directly published.
-    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §Table 6;
-         analysis.md §Section 5."""
+    Source: Simpson et al. 2026, Table 6, Reactor A design point.
+    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §Table 6."""
 
-    blanket_energy_multiplication: float = 1.10
-    """Blanket energy multiplication factor M applied to neutron power.
-    M = 1.10 is the 1costingfe standard D-T assumption (conservative).
-    Full blanket energy multiplication from Li-6 breeding would give M ≈ 1.15–1.30
-    depending on geometry, so this may underestimate p_th by ~10–20%.
-    Source: 1costingfe costing_constants.yaml blanket_unit_cost_dt standard assumption.
-    Ref: 1costingfe costing_constants.yaml."""
+    Q_sci: float = 15.0
+    """Scientific gain Q = fusion power / auxiliary heating power.
+    Source: Simpson et al. 2026, Table 6, Reactor A.
+    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §Table 6.
+    MODERATE UNCERTAINTY -- requires Tahi experimental validation; not yet demonstrated.
+    Key risk: entire Reactor A design is viable only if Tahi confirms Bohm-like or better
+    confinement scaling (n*tau_e >= 3.23e19 s/m3 at 1 keV). See analysis.md §Section 2."""
 
-    thermal_efficiency: float = 0.38
-    """Thermal-to-electric conversion efficiency (gross electric / total thermal power).
-    Source: UNPUBLISHED — OpenStar has not disclosed the thermal conversion cycle type.
-    The paper states 40% efficiency (arxiv-2602-20564 §3.2.5) but this is itself an
-    assumed placeholder; no cycle is specified. Back-calculation from the published
-    power balance (p_fus=667 MW, p_net=208 MWe) at Q_sci=15 gives η_th ≈ 37–38% for
-    consistency with the published gross electric of ~296 MWe: at η_th=0.38 the model
-    yields p_et ≈ 291 MWe vs published ~296 MWe (~2% low); at 40% the model gives
-    p_et ≈ 306 MWe (~3% high). Baseline 38% is the better back-solving anchor.
-    The two-temperature shield (>2000 K hot zone) is potentially compatible with sCO₂
-    Brayton (40–45%) but this is speculative.
-    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §3.2.5 (states 40%, unspecified cycle);
-         analysis.md §Section 2 (BOP gap); §Section 5 (missing parameters table).
-    HIGH UNCERTAINTY — single largest free parameter after HTS coil cost."""
+    eta_aux: float = 0.70
+    """ICRH auxiliary heating wall-plug efficiency [fraction].
+    Source: Simpson et al. 2026 §3.2.5 -- ICRH baseline at 70%.
+    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §3.2.5."""
+
+    # =========================================================================
+    # ENERGY CONVERSION
+    # =========================================================================
+
+    M_blanket: float = 1.053
+    """Blanket energy multiplication factor (energy out / neutron energy in).
+    Source: Calibrated to Simpson et al. Table 9. Working backwards from gross electric
+    output ~296 MWe: p_th = 296/0.40 = 740 MW; solving p_fus*(0.8*M + 0.2) + P_ICRH = 740
+    gives M = 1.053. Natural Li2O + W neutron multiplication; TBR = 1.1 is the tritium
+    breeding ratio (a separate quantity from energy multiplication).
+    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §4.3.
+    MODERATE UNCERTAINTY."""
+
+    eta_th: float = 0.40
+    """Thermal-to-electric conversion efficiency [fraction].
+    Source: Simpson et al. §3.2.5. Actual thermodynamic cycle unspecified in any
+    public source. 40% is consistent with sCO2 Brayton or advanced steam Rankine.
+    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §3.2.5.
+    MODERATE UNCERTAINTY -- thermal cycle specification is a blocking data gap."""
+
+    duty_cycle: float = 0.901
+    """Fraction of time plasma is active (pulsed by cryogenic reservoir limits).
+    Source: Simpson et al. §3.2.5. Float time = 45.5 min, docking ~5 min.
+    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §3.2.5 and §Table 7."""
+
+    maintenance_availability: float = 0.96
+    """Fraction of calendar time available for operation (scheduled maintenance excluded).
+    Source: Simpson et al. §3.2.5 -- includes 2-week annual maintenance window.
+    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §3.2.5.
+    MODERATE UNCERTAINTY -- no operating history to validate."""
+
+    # =========================================================================
+    # AUXILIARY LOADS (recirculating power breakdown)
+    # =========================================================================
+
+    p_cryo_MW: float = 1.31
+    """Cryogenic system wall-plug power [MW].
+    Source: Simpson et al. Table 9. 14.1 kW deposited / 0.0125 cryo efficiency = 1.13 MW;
+    paper states 1.31 MW indicating additional fixed cryogenic plant loads.
+    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §Table 9."""
+
+    p_trit_MW: float = 8.0
+    """Tritium processing system power [MW].
+    ASSUMED: no published O&M breakdown for this concept. Analogue to 1costingfe D-T
+    default (~6-10 MW). MODERATE UNCERTAINTY."""
+
+    p_house_MW: float = 5.0
+    """Housekeeping / plant services power [MW].
+    ASSUMED: controls, lighting, HVAC, instrumentation. 1costingfe analogue.
+    MODERATE UNCERTAINTY."""
+
+    p_other_MW: float = 9.19
+    """Other auxiliary loads [MW] (vacuum systems, flux pump power, etc.).
+    ASSUMED: calibrated so total non-ICRH recirculating = 23.5 MW, matching
+    paper's 208 MWe net: p_net = 296 - (63.5 ICRH + 1.31 cryo + 23.5 other) = 208 MWe.
+    HIGH UNCERTAINTY."""
+
+    # =========================================================================
+    # MAGNET SYSTEM (core levitated coil + top support coil)
+    # =========================================================================
+
+    rebco_tape_core_km: float = 4320.0
+    """REBCO tape in core levitated magnet [km].
+    Source: Simpson et al. Table 7, Reactor A. CICC architecture at 23 T peak field.
+    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §Table 7."""
+
+    rebco_tape_top_km: float = 1200.0
+    """REBCO tape in top (support/levitation) magnet [km].
+    Source: ~1,200 km estimated from Simpson et al. context; top magnet details
+    'have not been considered' (paper's own scope statement).
+    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §Table 7 context.
+    HIGH UNCERTAINTY."""
+
+    rebco_Ic_kA: float = 0.20
+    """Critical current per REBCO tape at operating conditions (23 T, 30 K) [kA].
+    ASSUMED: ~200 A per 4 mm wide tape at 23 T, 30 K. Extrapolated from available
+    Jc data; 23 T irradiation database does not exist.
+    HIGH UNCERTAINTY -- Jc under combined 23 T + neutron irradiation uncharacterized."""
+
+    rebco_price_kAm: float = 75.0
+    """REBCO tape price [$/kA-m] at projected near-term market.
+    Source: analysis.md §Section 4 -- current market $50-100/kA-m; mid-range $75.
+    Same price trajectory applies to annual replacement tape.
+    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §Section 4.
+    MODERATE UNCERTAINTY -- price is volume-dependent and declining."""
+
+    magnet_engineering_multiplier: float = 5.0
+    """Tape cost to total magnet cost multiplier (CICC conduit, winding labor,
+    impregnation, structural cold mass, cryostat, testing, commissioning).
+    ASSUMED: 4-5x tape cost based on ARC/SPARC REBCO magnet analogues.
+    HIGH UNCERTAINTY -- only experimental (Junior) data at small scale available."""
+
+    # =========================================================================
+    # BLANKET (Li2O solid ceramic)
+    # =========================================================================
+
+    Li2O_mass_t: float = 3490.0
+    """Li2O breeding blanket mass [tonnes].
+    Source: Simpson et al. Table 5, Reactor A. Natural (unenriched) Li2O -- no
+    isotope enrichment needed (TBR = 1.1 with W neutron multiplication).
+    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §Table 5."""
+
+    Li2O_unit_cost_per_kg: float = 100.0
+    """Li2O blanket fabrication + installation unit cost [$/kg].
+    ASSUMED: Raw Li2O ~$30-40/kg; ceramic pelletization + sintering +
+    modular panel fabrication + nuclear qualification ~$60-80/kg additional.
+    Total ~$80-120/kg; using $100/kg mid-range.
+    Ref: ITER HCPB TBM solid ceramic breeder cost analogues.
+    HIGH UNCERTAINTY -- no Li2O blanket module has been costed at plant scale."""
+
+    # =========================================================================
+    # TUNGSTEN SHIELD (W-B4C-W layered)
+    # =========================================================================
+
+    W_shield_mass_t: float = 1760.0
+    """W-B4C-W neutron shield mass [tonnes].
+    Source: Simpson et al. Table 5, Reactor A. 475 mm total thickness achieving
+    4-decade fast neutron attenuation to protect REBCO tape.
+    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §Table 5."""
+
+    W_shield_unit_cost_per_kg: float = 150.0
+    """W-B4C-W shield fabrication + installation unit cost [$/kg].
+    ASSUMED: Tungsten powder ~$35/kg; high-density sintering + machining into
+    tiles operating above recrystallization temperature (1950 K) + B4C layer
+    + integration ~$115/kg. Tungsten tile specialist processing required.
+    Ref: ITER divertor tungsten tile cost analogues.
+    HIGH UNCERTAINTY -- W tile fabrication at 1950 K is not industrialized at scale."""
+
+    # =========================================================================
+    # OUTER VACUUM VESSEL (reinforced concrete)
+    # =========================================================================
+
+    concrete_mass_t: float = 38700.0
+    """Reinforced concrete outer vessel mass [tonnes].
+    Source: Simpson et al. Table 5, Reactor A. Dominant mass item (~86% of total
+    45,100 t plant mass). Provides structural support + biological shielding.
+    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §Table 5."""
+
+    concrete_cost_per_t: float = 500.0
+    """Concrete outer vessel unit cost [$/tonne].
+    ASSUMED: Standard reinforced concrete ~$200/t; premium 2.5x for vacuum
+    penetrations, embedded instrumentation, nuclear biological shielding spec.
+    Paper highlights this as cost-advantaged vs. precision SS tokamak VVs.
+    Ref: Civil nuclear construction analogues. MODERATE UNCERTAINTY."""
+
+    inner_vessel_cost_M_USD: float = 30.0
+    """Inner stainless steel vacuum vessel cost [$M].
+    ASSUMED: Conventional 304 SS inner vacuum boundary for plasma containment.
+    Ref: Analogy to compact MFE inner vessels (FRC, mirror programs).
+    HIGH UNCERTAINTY."""
 
     # =========================================================================
     # ICRH HEATING SYSTEM
     # =========================================================================
 
-    qsci: float = 15.0
-    """Scientific gain factor Q_sci = P_fus / P_plasma_heating (power deposited to plasma).
-    Source: Paper states Q_sci = 15 as a fixed design parameter.
-    Validation: P_plasma = 667/15 = 44.5 MW, P_icrh_grid = 44.5/0.70 = 63.6 MW —
-    both consistent with published auxiliary heating values in Table 6 (wall plug 63.6 MW).
-    Plausible range: 12–19 per derivation in analysis.md §Section 5.
-    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §Table 6 (auxiliary heating 44.5 MW);
-         arxiv-2602-20564-plasma-state-clarification.md (plasma is sustained, not ignited);
-         analysis.md §Section 5 (Q_sci row).
-    MODERATE UNCERTAINTY."""
-
-    icrh_wall_plug_efficiency: float = 0.70
-    """ICRH wall-plug-to-plasma coupling efficiency (fraction of grid power → plasma).
-    Source: Published ICRH experimental literature (JET, EAST) demonstrates ~70%.
-    OpenStar selects ICRH over ECRH specifically for this efficiency advantage.
-    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §Heating (ICRH vs ECRH comparison)."""
-
-    # =========================================================================
-    # RECIRCULATING / AUXILIARY LOADS
-    # =========================================================================
-
-    p_cryo_MW: float = 5.0
-    """Cryogenic system continuous power [MW] — neon slush at 24.6 K.
-    Source: ASSUMED. The paper states 1.31 MW wall-plug for cryogenic cooling
-    (14.1 kW heat load at 1.25% Carnot efficiency). Additional fixed cryoplant loads
-    (compressors, controls, neon liquefaction) bring total to ~3–8 MW.
-    Using 5 MW as central estimate; less demanding than He-4 systems.
-    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §Table 9 (1.31 MW cryo load published);
-         analysis.md §Section 5.
-    MODERATE UNCERTAINTY."""
-
-    p_tritium_MW: float = 4.0
-    """Tritium processing, isotope separation, and fuel handling power [MW].
-    Source: Standard D-T fuel cycle assumption.
-    Ref: 1costingfe ife_zpinch.yaml default; analysis.md §Section 4 (D-T fuel cycle)."""
-
-    p_housekeeping_MW: float = 5.0
-    """Housekeeping, controls, diagnostics, vacuum pumping, water cooling [MW].
-    Source: ASSUMED. Standard MFE plant auxiliary load allowance.
-    Includes vacuum pumping for large vessel, instrumentation, water cooling circuits.
-    Ref: MFE plant literature analogue.
-    MODERATE UNCERTAINTY."""
-
-    p_position_control_MW: float = 1.0
-    """Active magnetic position control power for levitation feedback [MW].
-    Source: ASSUMED. The on-board flux pump requires only ~10 W continuous.
-    External position control coils for active levitation feedback have no published
-    power requirement. Using 1 MW as conservative upper bound.
-    Ref: openstar-prototype-roadmap.md §Key Milestones (flux pump ~10 W);
-         Junior device demonstration data.
-    HIGH UNCERTAINTY — novel system, no power plant precedent."""
-
-    # =========================================================================
-    # PLANT CONFIGURATION
-    # =========================================================================
-
-    plasma_duty_cycle: float = 0.901
-    """Plasma-on duty cycle — fraction of time reactor is actually producing power.
-    Source: Published directly as 90.1% for Reactor A. This pulsed downtime arises
-    from neon slush cryogen reservoir thermal limits, not plasma physics. The plasma
-    itself is steady-state capable. ~10% downtime is for cryogen replenishment docking
-    cycles (45.5-minute float time between docking).
-    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §3.2.5 and §Table 7;
-         analysis.md §Section 5."""
-
-    plant_availability: float = 0.96
-    """Annual plant availability including scheduled maintenance.
-    Source: Published as 96% for Reactor A, which includes ~2-week annual maintenance
-    window for the sacrificial coil replacement and other scheduled work.
-    Combined capacity factor = plasma_duty_cycle × plant_availability = 0.901 × 0.96 = 0.865.
-    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §3.2.5;
-         analysis.md §Section 5.
-    MODERATE UNCERTAINTY — coil replacement logistics may extend downtime."""
-
-    plant_lifetime_years: float = 40.0
-    """Plant economic lifetime [years].
-    Source: Standard fusion plant assumption.
-    Ref: 1costingfe default."""
-
-    noak: bool = True
-    """Nth-of-a-kind (True) vs First-of-a-kind (False).
-    FOAK adds contingency (10%) and higher pre-construction costs.
-    Ref: 1costingfe CAS29 convention."""
-
-    # =========================================================================
-    # GEOMETRY (all ASSUMED — no vessel geometry published for power plant)
-    # =========================================================================
-
-    vessel_inner_radius_m: float = 3.5
-    """Inner radius of spherical fusion vessel (to first wall) [m].
-    Source: ASSUMED. No vessel geometry published for OpenStar Reactor A.
-    Basis: At ~1 MW/m² first-wall loading and 667 MW fusion, 667 m² → r = 7.3 m
-    for uniform spherical loading. Dipole loading is non-uniform (concentrated near
-    equator), so effective vessel radius is substantially smaller. 3.5 m is a rough
-    approximation consistent with the stated ~2,560 tonne total magnet system mass.
-    HIGH UNCERTAINTY — affects blanket/shield volumes but these are not dominant costs."""
-
-    blanket_thickness_m: float = 0.80
-    """Li₂O ceramic breeding blanket + first-wall thickness [m].
-    Source: ASSUMED. Blanket mass = 3,490 tonnes Li₂O (published, Table 5).
-    Volume = 3490 t / (2.01 t/m³ Li₂O density) ≈ 1,737 m³. At r_i = 3.5 m and
-    spherical shell geometry, thickness ≈ 0.7–0.9 m. 0.80 m is consistent.
-    ITER HCPB TBM uses Li₂O pebble bed at 0.6–0.8 m thickness.
-    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §Table 5 (mass 3,490 t);
-         ITER HCPB TBM analogue.
-    MODERATE UNCERTAINTY."""
-
-    shield_thickness_m: float = 0.60
-    """Two-temperature W/B₄C shield thickness [m].
-    Source: ASSUMED. Shield mass = 1,760 tonnes tungsten (published, Table 5).
-    475 mm (0.475 m) shield depth cited in neutron transport calculation, with
-    W/B₄C/W layered architecture. Outer structure adds ~0.12 m.
-    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §4.3 (475 mm shield) and §Table 5.
-    MODERATE UNCERTAINTY."""
-
-    structure_thickness_m: float = 0.30
-    """Primary structure and Inconel 718 vessel skin thickness [m].
-    Source: ASSUMED. MFE analogue for structural envelope.
-    Ref: 1costingfe structure_unit_cost basis."""
-
-    vessel_thickness_m: float = 0.20
-    """Outer reinforced concrete dome thickness [m].
-    Source: ASSUMED. Outer dome is reinforced concrete (published).
-    Mass = 38,700 tonnes concrete (Table 5) — very thick, as the concrete IS the
-    vacuum boundary / bioshield. 0.20 m is a geometric approximation for cost scaling;
-    actual geometry is not a simple spherical shell.
-    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §Vacuum Vessel (concrete dome) and
-         §Table 5 (38,700 t concrete)."""
-
-    # =========================================================================
-    # CAS22 UNIT COSTS (from 1costingfe)
-    # =========================================================================
-
-    blanket_unit_cost: float = 0.60
-    """Li₂O breeding blanket unit cost [M$/m³].
-    Source: 1costingfe costing_constants.yaml blanket_unit_cost_dt = 0.60.
-    Li₂O ceramic is comparable in processing complexity to LiPb or Li₄SiO₄ blankets.
-    Ref: 1costingfe defaults."""
-
-    # =========================================================================
-    # CAS22 CONCEPT-SPECIFIC OVERRIDES
-    # =========================================================================
-
-    hts_coil_system_cost_M_USD: float = 250.0
-    """HTS levitated coil + external support magnet + flux pump + docking mechanism [$M].
-    Maps to C220103 (Magnets / Coils).
-    Source: NO DIRECT ANALOGUES — novel system with no commercial precedent.
-    System components:
-      (1) 23 T REBCO CICC floating coil (NI solder-impregnated; >550 kg prototype scale;
-          power-plant coil mass ~2,560 t total magnet system with shield; coil alone ~100 t)
-      (2) External levitation/support magnet (lower field, conventional or HTS)
-      (3) On-board superconducting transformer-rectifier flux pump (patented; ~10 W continuous)
-      (4) Neon slush cooling reservoir (45.5-min float time; ~24.6 K operating temperature)
-      (5) Precision docking mechanism for annual coil removal and re-levitation (5-min dock)
-    Basis: CFS ARC reference (18 TF REBCO coils to 20 T) estimated at $200–500M total.
-    Levitated dipole requires ONE coil at 23 T plus substantial novel subsystems.
-    Single-coil geometry reduces raw coil count by 18× but flux pump + precision docking
-    mechanism are uncosted design innovations. Nearest analogue cost is ~$15M/coil (CFS) ×
-    engineering complexity premium; central estimate $250M.
-    Ref: analysis.md §Section 2 (coil architecture), §Section 5 (REBCO tape 4,320 km);
-         01-hts-compact-tokamak analysis §HTS Magnets (CFS ARC analogue).
-    HIGH UNCERTAINTY — single most uncharacterized CAPEX item in this design."""
-
-    icrh_system_cost_M_USD: float = 150.0
-    """ICRH heating system capital cost [$M]. Maps to C220104 (Supplementary Heating).
-    Source: ASSUMED. ITER 20 MW ICRH system is ~$200–250M total (system + integration).
-    Reactor A requires ~44.5 MW plasma-coupled ICRH (63.6 MW wall-plug) — ~2× ITER scope.
-    Scaled down from ITER by maturity (NOAK vs. FOAK) but up by plasma coupling geometry
-    complexity (floating coil restricts antenna access vs. tokamak).
-    Ref: ITER ICRH analogue; analysis.md §Section 5 (44.5 MW ICRH from Table 6).
-    MODERATE UNCERTAINTY."""
-
-    rh_scale_factor: float = 1.50
-    """Scale multiplier on standard DT remote handling base cost for novel coil docking.
-    Maps to C220110 (Remote Handling Equipment).
-    Source: ASSUMED. Annual sacrificial coil docking, removal, partial replacement under
-    neutron activation conditions, and re-levitation requires specialized robotic system
-    with no tokamak precedent. Standard DT remote handling base ($150M at 1 GWe) scaled
-    by 1.5× for novel docking mechanism development, hot-cell tooling, and logistics.
-    Ref: 1costingfe costing_constants.yaml remote_handling_dt_base = 150.0;
-         analysis.md §Section 2 (Sacrificial Coil challenge, remote handling gap).
+    icrh_cost_per_MW_wallplug: float = 2.0
+    """ICRH heating system cost [M$/MW wall-plug].
+    ASSUMED: $1.5-3 M/MW range (JET-class ~$2.5M/MW to ITER-class ~$10M/MW).
+    NOAK assumption brings this toward lower end. Dipole geometry undemonstrated --
+    includes modest development risk premium over standard tokamak ICRH.
+    Ref: JET ICRH system, ITER ICRH design costs.
     HIGH UNCERTAINTY."""
 
     # =========================================================================
-    # ANNUAL COIL REPLACEMENT OPEX (unique to levitated dipole)
+    # CRYOGENIC SYSTEM (neon slush at 24.6 K)
     # =========================================================================
 
-    sacrificial_section_fraction: float = 0.20
-    """Fraction of floating coil volume constituting the replaceable outer section.
-    Source: Outer section is ~20% of coil volume, designed to reach 1 MW-year/m²
-    fluence threshold (~1 year at design neutron wall loading).
-    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §4.1 (sacrificial section concept);
-         analysis.md §Section 5 (20% fraction, ~864 km/yr tape)."""
+    cryo_system_cost_M_USD: float = 150.0
+    """Neon slush cryoplant capital cost [$M].
+    ASSUMED: Neon slush (24.6 K) is not off-the-shelf technology at this scale.
+    Float time = 45.5 min; system supplies ~14.1 kW heat removal continuously.
+    Analogues: LHC cryoplant (4 K, ~$500M); HTS tokamak cryosystems ($100-200M).
+    At 24.6 K the thermodynamic penalty is much less severe than 4 K.
+    HIGH UNCERTAINTY."""
 
-    sacrificial_section_material_cost_M_USD: float = 45.0
-    """Annual material cost for sacrificial coil outer section replacement [$M/year].
-    Source: ASSUMED. No manufacturing specification or cost estimate exists.
-    Basis: ~864 km/yr REBCO tape at $50–100/kA-m × 1.2 kA/m tape current = $52–103M
-    at current tape prices; optimistic NOAK target ~$10/kA-m would reduce to ~$10M/yr.
-    Additional: winding labor, solder-impregnation, insulation, quality assurance testing,
-    shipping logistics (activation, remote handling, spare pool management).
-    $45M/yr is a mid-range estimate between current market price and projected learning curves.
-    Ref: analysis.md §Section 2 (864 km/yr tape estimate), §Section 4 (REBCO $50–100/kA-m);
-         analysis.md §Section 5 (sacrificial coil gap as blocking uncertainty).
-    HIGH UNCERTAINTY. 40-year lifecycle: ~$1.8B nominal (undiscounted)."""
+    # =========================================================================
+    # REMOTE HANDLING SYSTEM (novel annual coil replacement)
+    # =========================================================================
 
-    coil_replacement_labor_M_USD: float = 10.0
-    """Annual labor and operations cost for coil docking, partial replacement, re-levitation [$M/yr].
-    Source: ASSUMED. Includes remote handling crew, hot-cell processing, neon pump-out
-    and recharge cycle, flux pump recharge and validation, re-levitation, position testing.
-    Ref: No analogue. HIGH UNCERTAINTY."""
+    remote_handling_cost_M_USD: float = 150.0
+    """Remote handling system capital cost [$M].
+    ASSUMED: Novel system for annual activated HTS coil extraction + replacement.
+    Base: 1costingfe D-T remote handling $150M at 1 GWe; scaled to 208 MWe then
+    multiplied 3x for unique geometry complexity (internal levitated coil in
+    activated D-T environment; no analogue in any other fusion concept).
+    HIGH UNCERTAINTY -- no design study for this specific geometry exists."""
+
+    # =========================================================================
+    # SACRIFICIAL COIL REPLACEMENT (annual OPEX -- unique to levitated dipole)
+    # =========================================================================
+
+    sacrificial_tape_km_yr: float = 864.0
+    """Annual REBCO tape consumption for sacrificial section replacement [km/yr].
+    Source: ~20% of 4,320 km core magnet = ~864 km/yr. Outer section accumulates
+    neutron fluence to 1 MW-yr/m2 threshold over approximately one year.
+    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §4.1."""
+
+    replacement_tape_multiplier: float = 2.5
+    """Multiplier from tape material cost to full replacement section cost
+    (winding labor + conditioning + qualification testing, but WITHOUT design NRE
+    which is sunk). Lower than initial magnet_engineering_multiplier.
+    ASSUMED: 2-3x tape cost for repeat manufacturing at scale.
+    HIGH UNCERTAINTY -- no analogue for annual activated-coil replacement."""
+
+    sacrificial_handling_M_USD_yr: float = 20.0
+    """Annual remote handling operations cost for sacrificial coil replacement [$M/yr].
+    Includes: coil extraction/insertion, cryogenic reconnection, activated component
+    transfer to hot cell, qualification testing of new section.
+    ASSUMED: No published cost estimate exists. See analysis.md §Section 2 (Gap #2).
+    HIGH UNCERTAINTY."""
+
+    # =========================================================================
+    # GEOMETRY (simplified spherical model for standard CAS22 scaling)
+    # =========================================================================
+
+    r_plasma_outer_m: float = 9.0
+    """Outer radius of plasma region (inner radius of blanket shell) [m].
+    ASSUMED: Inferred from Li2O mass (3490 t at density 2013 kg/m3 = 1733 m3) and
+    75% blanket coverage: a 2m-thick spherical shell at 75% solid angle at r=9m
+    gives ~1895 m3, consistent with mass data.
+    HIGH UNCERTAINTY -- plasma geometry is toroidal; this is a spherical simplification."""
+
+    blanket_thickness_m: float = 2.0
+    """Li2O blanket shell thickness [m].
+    ASSUMED: Inferred from mass data. Actual geometry more complex.
+    HIGH UNCERTAINTY."""
+
+    shield_thickness_m: float = 0.475
+    """W-B4C-W neutron shield thickness [m].
+    Source: Simpson et al. §4.3 -- 475 mm achieves 4-decade fast neutron
+    attenuation at the REBCO winding pack.
+    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §4.3."""
+
+    inner_vessel_thickness_m: float = 0.10
+    """Inner vacuum vessel wall thickness [m].
+    ASSUMED: Standard SS vacuum vessel. MODERATE UNCERTAINTY."""
+
+    blanket_coverage: float = 0.75
+    """Fraction of 4*pi solid angle covered by the Li2O blanket.
+    Source: Simpson et al. §4.3 -- ~25% intercepted by the core magnet assembly.
+    TBR = 1.1 achieved with this coverage using W neutron multiplication.
+    Ref: arxiv-2602-20564-dt-dipole-power-plants.md §4.3."""
 
     # =========================================================================
     # FINANCIAL
     # =========================================================================
 
     interest_rate: float = 0.08
-    """Real discount rate (weighted average cost of capital).
-    Ref: 1costingfe default."""
+    """Real discount rate (WACC) [fraction]. Ref: 1costingfe CAS convention."""
 
     inflation_rate: float = 0.02
-    """Inflation rate for levelizing O&M costs.
-    Ref: 1costingfe default."""
+    """Inflation rate for O&M escalation. Ref: 1costingfe default."""
 
     construction_time_years: float = 6.0
-    """Construction period [years].
-    Ref: 1costingfe reference_construction_time."""
+    """Construction period [years]. Ref: 1costingfe reference_construction_time."""
 
-    om_cost_per_MW_yr: float = 60.0
-    """Fixed O&M cost per MW net capacity per year [$/MW/yr] (excluding scheduled replacement).
-    Source: Standard fusion plant estimate, consistent with advanced nuclear analogues.
-    Ref: 1costingfe CAS71 default."""
+    plant_lifetime_years: float = 40.0
+    """Plant economic lifetime [years]."""
+
+    noak: bool = True
+    """Nth-of-a-kind (True) vs. First-of-a-kind (False)."""
+
+    # =========================================================================
+    # OPERATING COSTS
+    # =========================================================================
+
+    om_fixed_M_per_MWe_yr: float = 0.060
+    """Fixed O&M rate [M$/MWe-net/yr] -- excludes sacrificial coil replacement.
+    ASSUMED: Nuclear plant analogue from 1costingfe CAS71 default ($60/MWe/yr).
+    MODERATE UNCERTAINTY -- no O&M estimates in any public source for this concept."""
 
     core_lifetime_FPY: float = 5.0
-    """Li₂O blanket + first-wall replacement interval [full-power-years].
-    Source: 14.1 MeV D-T neutrons, ~20 dpa/yr at first wall. 5 FPY baseline.
-    Ref: 1costingfe costing_constants.yaml core_lifetime_dt = 5.0."""
-
-    tritium_startup_cost_M_USD: float = 35.0
-    """Tritium startup inventory [$M] (~1 kg at ~$35,000/g market price).
-    Source: Global tritium price >$35,000/g; ~1 kg startup required per plant before
-    self-sufficient tritium breeding from the Li₂O blanket (TBR = 1.1).
-    Ref: analysis.md §Section 4 (D-T startup and tritium inventory); also 01-hts-compact-tokamak
-         analysis §Key Materials."""
+    """Li2O blanket lifetime [full-power-years] before replacement.
+    Source: 1costingfe D-T standard -- 5 FPY at ~20 dpa/yr for 14.1 MeV neutrons.
+    Ref: 1costingfe costing_constants.yaml, core_lifetime_dt."""
 
     # =========================================================================
-    # PRIVATE HELPER
+    # MODULES
     # =========================================================================
 
-    def _sphere_shell_vol(self, r_in: float, thickness: float) -> float:
-        r_out = r_in + thickness
-        return (4.0 / 3.0) * math.pi * (r_out**3 - r_in**3)
+    n_mod: int = 1
+    """Number of reactor modules. Levitated dipole is single-module per plant."""
 
     # =========================================================================
-    # LAYER 1: POWER BALANCE
+    # COMPUTE METHODS
     # =========================================================================
 
     def _compute_power(self) -> dict:
-        """Compute power balance for continuous quasi-steady MFE operation.
-
-        Unlike pulsed IFE/MIF models, there is no driver or rep rate.
-        Energy flow: ICRH grid draw → plasma heating → fusion → thermal → electric.
-
-        Key derivation anchoring to published pair (p_fus=667 MW, p_net=208 MWe):
-          p_plasma_heating = p_fus / qsci
-          p_icrh_wallplug = p_plasma_heating / icrh_wall_plug_efficiency (grid draw)
-          p_th = M × p_neutron + p_alpha + p_plasma_heating (all ends as heat)
-          p_et = thermal_efficiency × p_th
-          p_net = p_et - p_icrh_wallplug - p_aux
-        """
+        """Layer 1: Power balance for steady-state MFE levitated dipole."""
         r = {}
 
-        # --- Fusion energy partitioning ---
-        p_neutron = F_NEUTRON_DT * self.p_fus_MW   # 14.1 MeV neutrons → blanket
-        p_alpha = F_ALPHA_DT * self.p_fus_MW        # 3.5 MeV alphas → plasma → FW
-        r["p_fus"] = self.p_fus_MW
-        r["p_neutron"] = p_neutron
-        r["p_alpha"] = p_alpha
+        # D-T split: 80% neutrons (14.1 MeV), 20% alphas (3.5 MeV)
+        p_neutron = 0.80 * self.p_fus
+        p_alpha   = 0.20 * self.p_fus
 
-        # --- ICRH: plasma heating power ---
-        p_plasma_heating = self.p_fus_MW / self.qsci           # power deposited into plasma
-        p_icrh_wallplug = p_plasma_heating / self.icrh_wall_plug_efficiency  # grid draw
-        r["p_plasma_heating_MW"] = p_plasma_heating
-        r["p_icrh_wallplug_MW"] = p_icrh_wallplug
-        r["Qsci"] = self.qsci
-        r["Qeng_approx"] = self.p_fus_MW / p_icrh_wallplug  # fusion per unit grid power
+        # ICRH auxiliary heating
+        P_aux_plasma   = self.p_fus / self.Q_sci       # MW delivered to plasma
+        P_aux_wallplug = P_aux_plasma / self.eta_aux   # MW wall-plug
 
-        # --- Total thermal power collected from nuclear island ---
-        # Neutron power multiplied by blanket, alpha power thermalizes to FW,
-        # ICRH power ultimately dumps as heat to FW/blanket/plasma losses.
-        p_th = (self.blanket_energy_multiplication * p_neutron
-                + p_alpha
-                + p_plasma_heating)
-        r["p_th"] = p_th
+        # Thermal power: neutrons thermalized in blanket (with multiplication),
+        # alphas deposited in plasma, ICRH deposited in plasma
+        p_th = p_neutron * self.M_blanket + p_alpha + P_aux_plasma
 
-        # --- Gross electric ---
-        p_et = self.thermal_efficiency * p_th
-        r["p_et"] = p_et
+        # Gross electric
+        p_et = p_th * self.eta_th
 
-        # --- Recirculating loads ---
-        p_aux = (self.p_cryo_MW
-                 + self.p_tritium_MW
-                 + self.p_housekeeping_MW
-                 + self.p_position_control_MW)
-        p_recirc = p_icrh_wallplug + p_aux
-        r["p_aux_nonheating_MW"] = p_aux
-        r["p_recirc_MW"] = p_recirc
+        # Total recirculating power (steady-state while plasma is on)
+        p_recirc = (P_aux_wallplug + self.p_cryo_MW
+                    + self.p_trit_MW + self.p_house_MW + self.p_other_MW)
 
-        # --- Net electric ---
+        # Net electric per module
         p_net = p_et - p_recirc
-        r["p_net"] = p_net
 
-        # --- Recirculating fraction ---
+        # Combined capacity factor: duty_cycle x maintenance_availability
+        capacity_factor = self.duty_cycle * self.maintenance_availability
+
+        r["p_fus"]           = self.p_fus
+        r["Q_sci"]           = self.Q_sci
+        r["p_neutron"]       = p_neutron
+        r["p_alpha"]         = p_alpha
+        r["P_aux_plasma"]    = P_aux_plasma
+        r["P_aux_wallplug"]  = P_aux_wallplug
+        r["p_th"]            = p_th
+        r["p_et"]            = p_et
+        r["p_recirc"]        = p_recirc
+        r["p_net"]           = p_net
+        r["capacity_factor"] = capacity_factor
+
+        # Engineering Q: net electric per unit ICRH wall-plug
+        r["Q_eng"]           = p_net / P_aux_wallplug if P_aux_wallplug > 0 else 0.0
         r["recirc_fraction"] = p_recirc / p_et if p_et > 0 else float("inf")
 
-        # --- Annual energy production ---
-        # Combined capacity factor = plasma_duty_cycle × plant_availability
-        # plasma_duty_cycle (90.1%): fraction of time plasma is producing power,
-        #   set by neon slush reservoir docking limits, not plasma physics
-        # plant_availability (96%): annual availability including scheduled maintenance
-        capacity_factor = self.plasma_duty_cycle * self.plant_availability
-        r["capacity_factor"] = capacity_factor
-        r["annual_energy_MWh"] = 8760.0 * p_net * capacity_factor
+        # Plant-level totals (n_mod = 1 for levitated dipole)
+        r["p_net_plant"] = p_net * self.n_mod
+        r["p_et_plant"]  = p_et  * self.n_mod
+        r["p_th_plant"]  = p_th  * self.n_mod
 
         return r
-
-    # =========================================================================
-    # LAYER 2: GEOMETRY
-    # =========================================================================
 
     def _compute_geometry(self, power: dict) -> dict:
-        """Compute spherical shell volumes for CAS22 cost scaling.
-
-        The levitated dipole uses a spherical vacuum vessel (Inconel 718 inner shell +
-        outer reinforced concrete dome). Geometry is approximated as concentric spherical
-        shells — the bottom opening for coil docking is a small fraction of total area
-        and is neglected in this first-pass model.
-        """
+        """Layer 2: Simplified spherical shell geometry.
+        C220101 and C220102 are mass-based overrides in _compute_cas22(); these
+        volumes are used only for C220105/C220106 scaling."""
         r = {}
-        ri = self.vessel_inner_radius_m
+        ri = self.r_plasma_outer_m
 
-        # Running outer radius as shells accumulate outward
+        def shell_vol(r_in, thickness):
+            r_out = r_in + thickness
+            return (4.0 / 3.0) * math.pi * (r_out ** 3 - r_in ** 3)
+
         r_blanket_out = ri + self.blanket_thickness_m
-        r_shield_out = r_blanket_out + self.shield_thickness_m
-        r_structure_out = r_shield_out + self.structure_thickness_m
-        r_vessel_out = r_structure_out + self.vessel_thickness_m
+        r_shield_out  = r_blanket_out + self.shield_thickness_m
+        r_vessel_out  = r_shield_out  + self.inner_vessel_thickness_m
 
-        r["blanket_vol_m3"] = self._sphere_shell_vol(ri, self.blanket_thickness_m)
-        r["shield_vol_m3"] = self._sphere_shell_vol(r_blanket_out, self.shield_thickness_m)
-        r["structure_vol_m3"] = self._sphere_shell_vol(r_shield_out, self.structure_thickness_m)
-        r["vessel_vol_m3"] = self._sphere_shell_vol(r_structure_out, self.vessel_thickness_m)
-        r["vessel_outer_radius_m"] = r_vessel_out
-        r["first_wall_area_m2"] = 4.0 * math.pi * ri**2
+        r["blanket_vol_eff_m3"]  = shell_vol(ri, self.blanket_thickness_m) * self.blanket_coverage
+        r["shield_vol_m3"]       = shell_vol(r_blanket_out, self.shield_thickness_m)
+        r["inner_vessel_vol_m3"] = shell_vol(r_shield_out, self.inner_vessel_thickness_m)
+        r["r_vessel_out_m"]      = r_vessel_out
+        r["concrete_vol_m3"]     = self.concrete_mass_t / 2.4   # 2.4 t/m3
 
         return r
 
-    # =========================================================================
-    # LAYER 3: CAS22 REACTOR PLANT EQUIPMENT
-    # =========================================================================
-
     def _compute_cas22(self, power: dict, geom: dict) -> dict:
-        """Compute CAS22 Reactor Plant Equipment with concept-specific overrides.
-
-        Standard accounts use 1costingfe power-scaling laws.
-        Overrides:
-          C220103 — HTS coil system (replaces standard magnet scaling; single floating coil)
-          C220104 — ICRH heating (replaces NBI/ECRH scaling)
-          C220107 — Power supplies (reduced; ICRH supplies in C220104, flux pump negligible)
-          C220110 — Remote handling (scaled up for novel coil docking mechanism)
-        Absent (not applicable):
-          C220108 — Target factory (IFE/MIF only; $0 for continuous MFE)
-          C220109 — Direct energy converter (no DEC in closed-field levitated dipole)
-        """
+        """Layer 3: CAS22 Reactor Plant Equipment sub-accounts.
+        Mass-based overrides for concept-specific components; standard 1costingfe
+        scaling for plant-wide accounts."""
         r = {}
-        p_th = max(power["p_th"], 1.0)
-        p_et = max(power["p_et"], 1.0)
+        p_th  = max(power["p_th"],  1.0)
+        p_et  = max(power["p_et"],  1.0)
         p_net = max(power["p_net"], 1.0)
 
-        # --- C220101: First Wall + Li₂O Breeding Blanket ---
-        # DEFAULT: 1costingfe blanket_unit_cost_dt = 0.60 M$/m³
-        # Formula: unit_cost × volume × (p_th / P_TH_REF)^0.6
-        # Ref: 1costingfe costing_constants.yaml
-        r["C220101"] = (self.blanket_unit_cost
-                        * geom["blanket_vol_m3"]
-                        * (p_th / P_TH_REF) ** 0.6)
+        # --- Per-module accounts ---
 
-        # --- C220102: Two-Temperature W/B₄C Shield ---
-        # DEFAULT: shield_unit_cost = 0.74 M$/m³, full D-T shielding scale
-        # Formula: 0.74 × volume × (p_th / P_TH_REF)^0.6
-        # Note: Published mass 1,760 t tungsten; tungsten is above standard tokamak shielding
-        # cost per unit volume due to high-temperature tile processing requirements.
-        # Ref: 1costingfe costing_constants.yaml shield_unit_cost = 0.74
-        shield_unit_cost = 0.74
-        r["C220102"] = (shield_unit_cost
-                        * geom["shield_vol_m3"]
-                        * (p_th / P_TH_REF) ** 0.6)
+        # C220101: Li2O blanket -- MASS-BASED OVERRIDE
+        # Ceramic blanket panels with tritium extraction. 1costingfe volume-based
+        # scaling not used; mass data from Table 5 is more reliable for this geometry.
+        r["C220101"] = self.Li2O_mass_t * 1e3 * self.Li2O_unit_cost_per_kg / 1e6  # M$
 
-        # --- C220103: HTS Coil System — OVERRIDE ---
-        # Standard tokamak magnet scaling (~18 TF coils + PF + CS) is not applicable.
-        # Single floating REBCO CICC coil (23 T) + external support magnet +
-        # on-board flux pump + neon slush reservoir + precision docking mechanism.
-        # Direct cost override; see parameter documentation for basis and uncertainty.
-        r["C220103"] = self.hts_coil_system_cost_M_USD  # [override]
+        # C220102: W-B4C-W neutron shield -- MASS-BASED OVERRIDE
+        # 475 mm layered tungsten/boron-carbide/tungsten shield. Tungsten tile
+        # fabrication above recrystallization temperature (~1950 K) is specialized.
+        r["C220102"] = self.W_shield_mass_t * 1e3 * self.W_shield_unit_cost_per_kg / 1e6  # M$
 
-        # --- C220104: ICRH Heating System — OVERRIDE ---
-        # ICRH (not NBI or laser preheat). Standard MFE NBI/ECRH scaling not applicable.
-        # Includes antenna array, RF power conditioning, transmission lines, and
-        # radiation-hardened geometry adaptation for floating-coil access constraints.
-        r["C220104"] = self.icrh_system_cost_M_USD  # [override]
+        # C220103: HTS magnet system -- TAPE-BASED OVERRIDE
+        # Core levitated coil + top support coil. Cost driven by REBCO tape
+        # quantity x $/kA-m x engineering multiplier (conduit, winding, cryostat).
+        total_tape_km = self.rebco_tape_core_km + self.rebco_tape_top_km
+        total_kAm     = total_tape_km * 1e3 * self.rebco_Ic_kA            # kA-m
+        tape_cost_M   = total_kAm * self.rebco_price_kAm / 1e6            # M$
+        r["C220103"]  = tape_cost_M * self.magnet_engineering_multiplier   # M$
 
-        # --- C220105: Primary Structure ---
-        # DEFAULT: structure_unit_cost = 0.15 M$/m³
-        # Formula: 0.15 × volume × (p_et / P_ET_REF)^0.5
-        # Ref: 1costingfe costing_constants.yaml structure_unit_cost = 0.15
-        structure_unit_cost = 0.15
-        r["C220105"] = (structure_unit_cost
-                        * geom["structure_vol_m3"]
-                        * (p_et / P_ET_REF) ** 0.5)
+        # C220104: ICRH supplementary heating -- $/MW OVERRIDE
+        # 44.5 MW plasma power / 0.70 eff = 63.5 MW wall-plug.
+        # ICRH in dipole geometry undemonstrated; cost includes modest risk premium.
+        r["C220104"] = power["P_aux_wallplug"] * self.icrh_cost_per_MW_wallplug  # M$
 
-        # --- C220106: Vacuum System (Inconel 718 inner shell + outer concrete dome) ---
-        # DEFAULT: vessel_unit_cost = 0.72 M$/m³
-        # Formula: 0.72 × volume × (p_et / P_ET_REF)^0.6
-        # Note: Concrete dome is lower unit cost than precision stainless tokamak VV;
-        # this may overestimate the concrete portion, partially offset by Inconel inner shell.
-        # Ref: 1costingfe costing_constants.yaml vessel_unit_cost = 0.72
-        vessel_unit_cost = 0.72
-        r["C220106"] = (vessel_unit_cost
-                        * geom["vessel_vol_m3"]
+        # C220105: Primary structure
+        # Inner stainless structure (volume-scaled) + reinforced concrete outer vessel
+        # (mass-based). The concrete serves as both structure and bioshield.
+        structure_unit_cost = 0.15  # M$/m3 (1costingfe standard)
+        r["C220105"] = (structure_unit_cost * geom["inner_vessel_vol_m3"]
+                        * (p_et / P_ET_REF) ** 0.5
+                        + self.concrete_mass_t * self.concrete_cost_per_t / 1e6)
+
+        # C220106: Inner vacuum vessel + vacuum pumping system
+        # The SS inner vessel forms the primary plasma boundary.
+        vessel_unit_cost = 0.72  # M$/m3 (1costingfe)
+        r["C220106"] = (self.inner_vessel_cost_M_USD
+                        + vessel_unit_cost * geom["inner_vessel_vol_m3"]
                         * (p_et / P_ET_REF) ** 0.6)
 
-        # --- C220107: Miscellaneous Power Supplies (reduced 50%) ---
-        # The main confinement coil has NO conventional power supply — the on-board
-        # flux pump (~10 W continuous) maintains coil current after initial energization.
-        # Standard power supplies for controls, diagnostics, position control coils,
-        # cryogenic plant, and vacuum systems are still needed; reduced by 0.5× vs. full
-        # tokamak power supply scaling.
-        # Standard formula: 80.0 × (p_et / 1000)^0.7
-        # Ref: 1costingfe costing_constants.yaml power_supplies_base = 80.0
-        r["C220107"] = 0.50 * 80.0 * (p_et / 1000.0) ** 0.7  # [partial override: 50% reduction]
+        # C220107: Power supplies (plant DC bus, flux pump commissioning)
+        # Flux pump maintains coil current during levitated operation (no steady
+        # external power needed). Standard 1costingfe scaling for plant DC systems.
+        r["C220107"] = 80.0 * (p_et / 1000.0) ** 0.7  # M$
 
-        # --- C220108: Target Factory — NOT APPLICABLE ---
-        # Continuous MFE operation; no targets or recyclable transmission lines.
+        # C220108: Target factory -- N/A (MFE, no targets)
         r["C220108"] = 0.0
 
-        # --- C220109: Direct Energy Converter — NOT APPLICABLE ---
-        # Closed-field levitated dipole; no directed ion exhaust for DEC.
+        # C220109: Direct energy converter -- N/A (D-T thermal cycle)
         r["C220109"] = 0.0
 
-        # --- C220110: Remote Handling Equipment — SCALED UP ---
-        # Annual sacrificial coil docking/replacement/re-levitation under neutron activation
-        # requires custom robotic handling system with no tokamak precedent.
-        # Base: 150 M$ at 1 GWe reference (1costingfe remote_handling_dt_base)
-        # Scaled by (p_et / P_ET_REF)^0.7 × rh_scale_factor (1.5× for novel docking)
-        # Ref: 1costingfe costing_constants.yaml remote_handling_dt_base = 150.0
-        rh_base = 150.0  # M$ at 1 GWe
-        r["C220110"] = rh_base * (p_et / P_ET_REF) ** 0.7 * self.rh_scale_factor  # [override]
+        # C220110: Remote handling -- OVERRIDE for novel coil replacement system
+        # Annual activated HTS coil replacement requires a unique robotic system.
+        # Base 1costingfe D-T RH ($150M at 1 GWe) scaled and 3x complexity factor.
+        r["C220110"] = self.remote_handling_cost_M_USD  # M$
 
-        # --- C220111: Installation Labor ---
-        # DEFAULT: 14% of reactor module subtotal
-        # Ref: 1costingfe installation_frac = 0.14
-        installation_frac = 0.14
+        # C220111: Installation labor (14% of reactor hardware subtotal)
         reactor_subtotal = sum(r[k] for k in [
             "C220101", "C220102", "C220103", "C220104", "C220105",
             "C220106", "C220107", "C220108", "C220109", "C220110"])
-        r["C220111"] = installation_frac * reactor_subtotal
+        r["C220111"] = 0.14 * reactor_subtotal
 
-        # --- C220112: Isotope Separation ---
-        # D-T blanket uses natural Li₂O (no enrichment needed; TBR 1.1 achieved without Li-6
-        # enrichment due to W neutron multiplication). Tritium handling costs in CAS80.
-        # This is an explicit advantage vs. FLiBe or Li-6-enriched blankets.
+        # C220112: Isotope separation -- zero (natural Li2O, no enrichment needed)
         r["C220112"] = 0.0
 
-        # Per-module subtotal (single module)
+        # Per-module subtotal
         r["CAS22_per_module"] = reactor_subtotal + r["C220111"] + r["C220112"]
 
-        # --- Plant-wide accounts (scale with total plant power) ---
-        p_net_total = p_net      # single module
-        p_th_total = p_th
+        # --- Plant-wide accounts ---
+        p_net_total = p_net * self.n_mod
+        p_th_total  = p_th  * self.n_mod
 
-        # C220200: Main & Secondary Coolant Systems
-        # PRIMARY: scales with net electric; SECONDARY: scales with thermal power
-        C220201 = 166.0 * (p_net_total / 1000.0)          # Primary loop
-        C220202 = 40.6 * (p_th_total / 3500.0) ** 0.55    # Secondary/intermediate loop
+        # C220200: Main & secondary coolant system (helium or water blanket cooling)
+        C220201 = 166.0 * (p_net_total / 1000.0)
+        C220202 = 40.6  * (p_th_total / 3500.0) ** 0.55
         r["C220200"] = C220201 + C220202
 
-        # C220300: Auxiliary Cooling + Cryoplant (neon slush at 24.6 K)
-        # Neon at 24.6 K is less thermodynamically demanding than He at 4 K.
-        # Cryoplant scaling uses published p_cryo load.
-        C220301 = 1.1e-3 * p_th_total                                          # Aux coolant
-        C220302 = 200.0 * (max(self.p_cryo_MW, 0.01) / 30.0) ** 0.7           # Cryoplant
-        r["C220300"] = C220301 + C220302
+        # C220300: Auxiliary cooling + neon slush cryoplant
+        # Standard auxiliary coolant scaling plus concept-specific neon slush system.
+        r["C220300"] = 1.1e-3 * p_th_total + self.cryo_system_cost_M_USD
 
-        # C220400: Radioactive Waste Management
+        # C220400: Radioactive waste management
         r["C220400"] = 1.96 * (p_th_total / 1000.0)
 
-        # C220500: Fuel Handling & Tritium Storage (D-T)
-        # DEFAULT: 120 M$ at 1 GWe reference, scaled by (p_net/1000)^0.7
-        # Ref: 1costingfe costing_constants.yaml fuel_handling_dt_base = 120.0
-        fuel_handling_base = 120.0  # M$ (D-T)
-        r["C220500"] = fuel_handling_base * (p_net_total / 1000.0) ** 0.7
+        # C220500: Fuel handling (D-T tritium processing + closed fuel cycle)
+        r["C220500"] = 120.0 * (p_net_total / 1000.0) ** 0.7
 
-        # C220600: Other Reactor Plant Equipment
+        # C220600: Other reactor plant equipment
         r["C220600"] = 11.5 * (p_net_total / 1000.0) ** 0.8
 
-        # C220700: Instrumentation & Control
+        # C220700: Instrumentation & control
         r["C220700"] = 85.0 * (p_th_total / 3500.0) ** 0.65
 
         r["CAS22_plant_wide"] = sum(r[k] for k in [
             "C220200", "C220300", "C220400", "C220500", "C220600", "C220700"])
 
-        r["CAS22"] = r["CAS22_per_module"] + r["CAS22_plant_wide"]
+        r["CAS22"] = r["CAS22_per_module"] * self.n_mod + r["CAS22_plant_wide"]
 
         return r
 
-    # =========================================================================
-    # LAYER 4: CAPITAL COSTS (CAS10-60)
-    # =========================================================================
-
     def _compute_costs(self, power: dict, cas22: dict) -> dict:
-        """Compute CAS10-60 capital costs following 1costingfe / MagLIF exemplar pattern."""
+        """Layer 4: CAS10-60 capital cost structure."""
         r = {}
-        p_et = max(power["p_et"], 1.0)
+        p_et  = max(power["p_et"],  1.0)
         p_net = max(power["p_net"], 1.0)
 
-        # === CAS10: Pre-construction ===
-        # Ref: 1costingfe costing_constants.yaml CAS10 defaults
-        site_permits = 3.0
-        plant_studies = 4.0 if self.noak else 20.0
-        plant_permits = 2.0
-        plant_reports = 1.0
-        other_precon = 1.0
-        land_cost = 0.25 * p_net * 10_000 / 1e6  # 0.25 acres/MWe × $10k/acre
-        licensing_cost = 2.5 if self.noak else 5.0   # D-T licensing, reduced for NOAK
-        tritium_startup = self.tritium_startup_cost_M_USD
+        # CAS10: Pre-construction
+        site_permits   = 3.0
+        plant_studies  = 4.0 if self.noak else 20.0
+        plant_permits  = 2.0
+        plant_reports  = 1.0
+        other_precon   = 1.0
+        land_cost      = 0.25 * p_net * math.sqrt(self.n_mod) * 10_000 / 1e6
+        licensing_cost = 2.5 if self.noak else 5.0
         r["CAS10"] = (site_permits + plant_studies + plant_permits + plant_reports
-                      + other_precon + land_cost + licensing_cost + tritium_startup)
+                      + other_precon + land_cost + licensing_cost)
 
-        # === CAS21: Buildings ===
-        # DEFAULT: $/kW gross electric (ARIES/NETL-based, from 1costingfe CAS21 defaults)
-        # Note: Hot cell is prominent because the sacrificial coil section accumulates
-        # neutron activation and requires hot-cell handling during annual replacement.
+        # CAS21: Ancillary buildings
+        # Concrete outer vessel (already in C220105) serves as the reactor building.
+        # CAS21 covers turbine building, hot cell, control room, ancillary services.
         building_cost_per_kW = {
-            "site_improvements": 268.0,   # $/kW
-            "fusion_heat_island": 126.0,  # Reactor building
-            "turbine_building": 54.0,
+            "turbine_building":  54.0,
             "cooling_structures": 12.0,
-            "hot_cell": 93.4,             # Elevated: annual activated coil replacement
-            "misc_buildings": 61.6,
+            "hot_cell":          93.4,
+            "misc_ancillary":    61.6,
+            "control_room":      17.0,
+            "administration":    10.0,
         }
-        total_building_per_kW = sum(building_cost_per_kW.values())  # ~615 $/kW
-        r["CAS21"] = total_building_per_kW * p_et / 1000.0  # M$
-        r["CAS21_detail"] = {k: v * p_et / 1000.0 for k, v in building_cost_per_kW.items()}
+        r["CAS21"] = sum(building_cost_per_kW.values()) * p_et / 1000.0  # M$
 
-        # === CAS22: Reactor Plant Equipment ===
+        # CAS22 (from external computation)
         r["CAS22"] = cas22["CAS22"]
 
-        # === CAS23: Turbine Plant Equipment ===
-        # DEFAULT: 0.19764 M$/MW gross electric
-        # Ref: 1costingfe costing_constants.yaml turbine_per_mw = 0.19764
-        turbine_per_mw = 0.19764
-        r["CAS23"] = p_et * turbine_per_mw
+        # CAS23-26: Standard BOP (1costingfe scaling laws)
+        r["CAS23"] = self.n_mod * p_et * 0.19764  # Turbine plant [M$/MW]
+        r["CAS24"] = self.n_mod * p_et * 0.08418  # Electric plant
+        r["CAS25"] = self.n_mod * p_et * 0.05124  # Misc plant equipment
+        r["CAS26"] = self.n_mod * p_et * 0.03416  # Heat rejection
 
-        # === CAS24: Electric Plant Equipment ===
-        # Ref: 1costingfe costing_constants.yaml electric_per_mw = 0.08418
-        electric_per_mw = 0.08418
-        r["CAS24"] = p_et * electric_per_mw
+        # CAS27: Special materials (tritium startup inventory ~1 kg at $30/mg = $30M)
+        r["CAS27"] = 30.0
 
-        # === CAS25: Miscellaneous Plant Equipment ===
-        # Ref: 1costingfe costing_constants.yaml misc_per_mw = 0.05124
-        misc_per_mw = 0.05124
-        r["CAS25"] = p_et * misc_per_mw
-
-        # === CAS26: Heat Rejection ===
-        # Ref: 1costingfe costing_constants.yaml heat_rej_per_mw = 0.03416
-        heat_rej_per_mw = 0.03416
-        r["CAS26"] = p_et * heat_rej_per_mw
-
-        # === CAS27: Special Materials ===
-        # ASSUMED: Allowance for initial Li₂O blanket inventory pre-load and specialty
-        # materials for reactor systems. Li₂O uses natural lithium (no enrichment cost).
-        # Ref: 1costingfe special_materials_dt = 15.0 M$ at 1 GWe (scaled down for 300 MWe)
-        r["CAS27"] = 10.0  # M$ ASSUMED
-
-        # === CAS28: Digital Twin ===
-        # Ref: 1costingfe digital_twin = 5.0 M$
+        # CAS28: Digital twin
         r["CAS28"] = 5.0
 
-        # === CAS29: Contingency ===
-        # Ref: 1costingfe contingency_rate_noak = 0.0, contingency_rate_foak = 0.10
+        # CAS29: Contingency (0 for NOAK, 10% for FOAK)
         cas20_subtotal = sum(r[k] for k in ["CAS21", "CAS22", "CAS23", "CAS24",
                                              "CAS25", "CAS26", "CAS27", "CAS28"])
-        contingency_rate = 0.0 if self.noak else 0.10
-        r["CAS29"] = contingency_rate * cas20_subtotal
+        r["CAS29"] = 0.0 if self.noak else 0.10 * cas20_subtotal
 
-        # === CAS20: Total Direct Costs ===
+        # CAS20: Total Direct Costs
         r["CAS20"] = cas20_subtotal + r["CAS29"]
 
-        # === CAS30: Indirect Costs ===
-        # 20% of CAS20, scaled by construction time vs. 6-year reference
-        # Ref: 1costingfe indirect_fraction = 0.20, reference_construction_time = 6.0
-        ref_T = 6.0
-        r["CAS30"] = 0.20 * r["CAS20"] * (self.construction_time_years / ref_T)
+        # CAS30: Indirect Costs (engineering, CM, commissioning)
+        r["CAS30"] = (0.20 * r["CAS20"]
+                      * (self.construction_time_years / 6.0))
 
-        # === CAS40: Owner's Costs ===
-        # 5% of direct costs (staffing, pre-operational training, etc.)
-        # Ref: 1costingfe owner_cost_dt convention (~5%)
+        # CAS40: Owner's Costs
         r["CAS40"] = 0.05 * r["CAS20"]
 
-        # === CAS50: Supplementary Costs ===
+        # CAS50: Supplementary (spare parts, D fuel startup, shipping, taxes, decom)
         spare_parts = 0.01 * sum(r[k] for k in ["CAS23", "CAS24", "CAS25",
                                                   "CAS26", "CAS27", "CAS28"])
-        fuel_load = (p_net / 1000.0) * 10.0   # M$ startup fuel + initial consumables
-        shipping = 1.0    # M$
-        taxes = 0.5       # M$
-        insurance = 0.5   # M$
-        decom = 5.0       # M$ (decommissioning provision, simplified)
-        r["CAS50"] = spare_parts + fuel_load + shipping + taxes + insurance + decom
+        fuel_load   = (p_net / 1000.0) * 10.0
+        r["CAS50"]  = spare_parts + fuel_load + 1.0 + 0.5 + 0.5 + 5.0
 
-        # === Overnight Capital ===
+        # Overnight Capital
         overnight = r["CAS10"] + r["CAS20"] + r["CAS30"] + r["CAS40"] + r["CAS50"]
         r["overnight_capital"] = overnight
 
-        # === CAS60: Interest During Construction (IDC) ===
-        # f_IDC = ((1+i)^T - 1) / (i×T) - 1
+        # CAS60: Interest During Construction
         i = self.interest_rate
         T = self.construction_time_years
-        if i > 0 and T > 0:
-            f_idc = ((1 + i) ** T - 1) / (i * T) - 1
-        else:
-            f_idc = 0.0
-        r["CAS60"] = f_idc * overnight
-        r["f_IDC"] = f_idc
-
-        # === Total Capital ===
+        f_idc = ((1 + i) ** T - 1) / (i * T) - 1 if (i > 0 and T > 0) else 0.0
+        r["CAS60"]     = f_idc * overnight
+        r["f_IDC"]     = f_idc
         r["total_capital"] = overnight + r["CAS60"]
 
         if power["p_net"] > 0:
-            r["specific_capital_USD_per_kWe"] = r["total_capital"] * 1e6 / (power["p_net"] * 1e3)
+            r["specific_capital_USD_per_kWe"] = (
+                r["total_capital"] * 1e6 / (power["p_net"] * self.n_mod * 1e3))
         else:
             r["specific_capital_USD_per_kWe"] = float("inf")
 
         return r
 
-    # =========================================================================
-    # LAYER 5: ECONOMICS (CAS70-90)
-    # =========================================================================
-
     def _compute_economics(self, power: dict, costs: dict, cas22: dict) -> dict:
-        """Compute CAS70-90 annualized costs and LCOE.
-
-        Special feature: CAS72 includes both standard blanket replacement (core_lifetime_FPY)
-        AND annual sacrificial coil section replacement — a novel OPEX item unique to
-        the levitated dipole architecture with no precedent in any other fusion concept.
-        """
+        """Layer 5: CAS70-90 annualized costs and LCOE."""
         r = {}
-        p_net = power["p_net"]
+        p_net       = power["p_net"]
+        p_net_total = p_net * self.n_mod
+        cap_factor  = power["capacity_factor"]
 
         # Capital Recovery Factor
-        i = self.interest_rate
-        n = self.plant_lifetime_years
+        i   = self.interest_rate
+        n   = self.plant_lifetime_years
         crf = i * (1 + i) ** n / ((1 + i) ** n - 1)
         r["CRF"] = crf
 
-        # === CAS90: Annualized Capital Charge ===
-        r["CAS90"] = crf * costs["total_capital"]  # M$/year
+        # CAS90: Annualized Capital Charge
+        r["CAS90"] = crf * costs["total_capital"]  # M$/yr
 
-        # === CAS71: Annual O&M (levelized with inflation) ===
-        annual_om_base = self.om_cost_per_MW_yr * p_net * 1000.0 / 1e6  # M$
-        g = self.inflation_rate
+        # CAS71: Fixed O&M (levelized with inflation)
+        # om_fixed_M_per_MWe_yr is in M$/MWe/yr; multiply directly by MWe to get M$/yr
+        annual_om_base = self.om_fixed_M_per_MWe_yr * p_net_total
+        g  = self.inflation_rate
         Tc = self.construction_time_years
-        A1 = annual_om_base * (1 + g) ** Tc   # first-year-of-operation cost
+        A1 = annual_om_base * (1 + g) ** Tc
         if abs(i - g) > 1e-10:
-            pv_growing_annuity = A1 * (1 - ((1 + g) / (1 + i)) ** n) / (i - g)
+            pv_om = A1 * (1 - ((1 + g) / (1 + i)) ** n) / (i - g)
         else:
-            pv_growing_annuity = A1 * n / (1 + i)
-        r["CAS71"] = crf * pv_growing_annuity  # M$/year (levelized)
+            pv_om = A1 * n / (1 + i)
+        r["CAS71"] = crf * pv_om
 
-        # === CAS72a: Standard Blanket/FW Replacement ===
-        # Li₂O blanket replacement every core_lifetime_FPY full-power years.
-        # Calendar years between replacements = FPY / capacity_factor
-        capacity_factor = power["capacity_factor"]
-        eff_years_per_replacement = self.core_lifetime_FPY / capacity_factor
-        n_replacements = max(0, int(math.ceil(n / eff_years_per_replacement)) - 1)
-        replacement_cost = cas22["C220101"]  # Li₂O blanket replacement cost
+        # CAS72: Scheduled Replacements
+        # (a) Li2O blanket replacement (discrete events every core_lifetime_FPY)
+        blanket_cost = cas22["C220101"]
+        yrs_per_repl = self.core_lifetime_FPY / max(cap_factor, 0.01)
+        n_repl = max(0, int(math.ceil(self.plant_lifetime_years / yrs_per_repl)) - 1)
         pv_blanket = 0.0
-        for k in range(1, n_replacements + 1):
-            year = k * eff_years_per_replacement
-            if year < n:
-                pv_blanket += replacement_cost / (1 + i) ** year
-        r["CAS72_blanket"] = crf * pv_blanket
-        r["n_blanket_replacements"] = n_replacements
+        for k in range(1, n_repl + 1):
+            yr = k * yrs_per_repl
+            if yr < self.plant_lifetime_years:
+                pv_blanket += blanket_cost / (1 + i) ** yr
+        r["CAS72_blanket"]        = crf * pv_blanket
+        r["n_blanket_replacements"] = n_repl
 
-        # === CAS72b: Annual Sacrificial Coil Section Replacement (NOVEL) ===
-        # The outer section (~20% coil volume) must be replaced annually at the
-        # scheduled 2-week maintenance window. This is a recurring CAPEX-like OPEX
-        # with no precedent in any other fusion concept.
-        # Model: annual replacement cost discounted over plant lifetime.
-        annual_coil_replacement = (self.sacrificial_section_material_cost_M_USD
-                                    + self.coil_replacement_labor_M_USD)
-        pv_coil_replacements = 0.0
-        for yr in range(1, int(n) + 1):
-            pv_coil_replacements += annual_coil_replacement / (1 + i) ** yr
-        r["CAS72_coil_annual"] = crf * pv_coil_replacements
-        r["annual_coil_replacement_cost_M_USD"] = annual_coil_replacement
+        # (b) Annual sacrificial REBCO coil section replacement (UNIQUE TO THIS CONCEPT)
+        sac_kAm       = self.sacrificial_tape_km_yr * 1e3 * self.rebco_Ic_kA
+        sac_tape_M    = sac_kAm * self.rebco_price_kAm / 1e6
+        sac_full_M_yr = (sac_tape_M * self.replacement_tape_multiplier
+                         + self.sacrificial_handling_M_USD_yr)
+        # Level annuity: CRF x PV = sac_full_M_yr exactly (annuity identity)
+        annuity_pv     = sac_full_M_yr * (1 - (1 + i) ** (-n)) / i
+        r["CAS72_coil"] = crf * annuity_pv
+        r["sac_coil_M_yr"] = sac_full_M_yr
 
-        r["CAS72"] = r["CAS72_blanket"] + r["CAS72_coil_annual"]
+        r["CAS72"] = r["CAS72_blanket"] + r["CAS72_coil"]
         r["CAS70"] = r["CAS71"] + r["CAS72"]
 
-        # === CAS80: Fuel Costs ===
-        # D-T fuel is essentially free on an ongoing basis:
-        # - Deuterium: abundant, cheap (~$1/g)
-        # - Tritium: bred in blanket (TBR 1.1); startup inventory in CAS10
-        # - Li₂O: recharged with each blanket replacement event (captured in CAS72a)
-        # Annual D-T fuel purchase: ~kg/year of deuterium + marginal tritium make-up
-        annual_dt_fuel_M = 2.0   # M$ ASSUMED: deuterium + marginal tritium top-up
-        r["CAS80"] = annual_dt_fuel_M
+        # CAS80: D-T fuel (D purchase, ongoing; T is self-bred at TBR=1.1)
+        # ~22 t/yr deuterium at ~$10/kg commercial scale = $0.22M/yr; round up.
+        r["CAS80"] = 0.5  # M$/yr -- negligible
 
-        # === LCOE ===
-        annual_revenue_req = r["CAS90"] + r["CAS70"] + r["CAS80"]
-        r["annual_revenue_req"] = annual_revenue_req
+        # LCOE
+        annual_rev = r["CAS90"] + r["CAS70"] + r["CAS80"]
+        r["annual_revenue_req"] = annual_rev
 
-        annual_energy_MWh = power["annual_energy_MWh"]
+        annual_energy_MWh = 8760.0 * p_net_total * cap_factor
         r["annual_energy_MWh"] = annual_energy_MWh
 
         if annual_energy_MWh > 0:
-            r["lcoe_USD_per_MWh"] = annual_revenue_req * 1e6 / annual_energy_MWh
-            r["lcoe_cents_per_kWh"] = r["lcoe_USD_per_MWh"] / 10.0
+            lcoe = annual_rev * 1e6 / annual_energy_MWh
+            r["lcoe_USD_per_MWh"]   = lcoe
+            r["lcoe_cents_per_kWh"] = lcoe / 10.0
         else:
-            r["lcoe_USD_per_MWh"] = float("inf")
+            r["lcoe_USD_per_MWh"]   = float("inf")
             r["lcoe_cents_per_kWh"] = float("inf")
 
-        if annual_revenue_req > 0:
-            r["capital_fraction"] = r["CAS90"] / annual_revenue_req
-            r["om_fraction"] = r["CAS70"] / annual_revenue_req
-            r["fuel_fraction"] = r["CAS80"] / annual_revenue_req
+        if annual_rev > 0:
+            r["capital_fraction"] = r["CAS90"] / annual_rev
+            r["om_fraction"]      = r["CAS70"] / annual_rev
+            r["fuel_fraction"]    = r["CAS80"] / annual_rev
 
         return r
 
-    # =========================================================================
-    # COMPUTE ALL
-    # =========================================================================
-
     def compute(self) -> dict:
-        """Run all five layers and return merged results dict."""
+        """Compute LCOE and all intermediate quantities using 5-layer CAS accounting."""
         power = self._compute_power()
-        geom = self._compute_geometry(power)
+        geom  = self._compute_geometry(power)
         cas22 = self._compute_cas22(power, geom)
         costs = self._compute_costs(power, cas22)
-        econ = self._compute_economics(power, costs, cas22)
+        econ  = self._compute_economics(power, costs, cas22)
 
         results = {
-            "power": power,
-            "geometry": geom,
-            "cas22": cas22,
-            "costs": costs,
+            "power":     power,
+            "geometry":  geom,
+            "cas22":     cas22,
+            "costs":     costs,
             "economics": econ,
-            # convenience aliases
-            "net_electric_MW": power["p_net"],
-            "lcoe_cents_per_kWh": econ["lcoe_cents_per_kWh"],
-            "total_capital_M_USD": costs["total_capital"],
         }
+        results["net_electric_MW"]     = power["p_net"]
+        results["lcoe_cents_per_kWh"]  = econ["lcoe_cents_per_kWh"]
+        results["total_capital_M_USD"] = costs["total_capital"]
         return results
 
 
 # =============================================================================
-# MODULE-LEVEL INTERFACE FOR CONCEPT EXPLORER
+# MODULE-LEVEL OUTPUT INTERFACE (consumed by concept explorer)
 # =============================================================================
 
-params = LevitatedDipolePlantParams()
+params  = LevitatedDipolePlantParams()
 results = params.compute()
 
+# Post-hoc scaling to 1000 MWe (cross-concept comparison, alpha = 0.6)
+_ALPHA     = 0.6
+_p_native  = results["power"].get("p_net_plant", results["power"]["p_net"])
+_factor    = (_p_native / 1000.0) ** (1.0 - _ALPHA)
+_overnight = results["costs"]["overnight_capital"] * 1e3 / _p_native  # $/kW at native
 
-def to_explorer_dict() -> dict:
-    """Return structured data for the concept explorer.
-    All monetary values in M$ (millions USD). All power values in MW.
-    Maps from compute() output structure to the explorer's required schema.
-    """
-    pwr = results["power"]
-    cas = results["cas22"]
-    cst = results["costs"]
-    eco = results["economics"]
-
-    return {
-        "costs": {
-            # CAS accounts (lowercase keys, values in M$)
-            "cas10": cst["CAS10"],
-            "cas21": cst["CAS21"],
-            "cas22": cst["CAS22"],
-            "cas23": cst["CAS23"],
-            "cas24": cst["CAS24"],
-            "cas25": cst["CAS25"],
-            "cas26": cst["CAS26"],
-            "cas27": cst["CAS27"],
-            "cas28": cst["CAS28"],
-            "cas29": cst["CAS29"],
-            "cas20": cst["CAS20"],
-            "cas30": cst["CAS30"],
-            "cas40": cst["CAS40"],
-            "cas50": cst["CAS50"],
-            "cas60": cst["CAS60"],
-            "cas70": eco["CAS70"],
-            "cas71": eco["CAS71"],
-            "cas72": eco["CAS72"],
-            "cas80": eco["CAS80"],
-            "cas90": eco["CAS90"],
-            "total_capital": cst["total_capital"],                   # M$
-            "lcoe": eco["lcoe_USD_per_MWh"],                         # $/MWh
-            "overnight_cost": cst["specific_capital_USD_per_kWe"],   # $/kW
-        },
-        "power_table": {
-            "p_fus":        pwr["p_fus"],
-            "p_th":         pwr["p_th"],
-            "p_et":         pwr["p_et"],
-            "p_net":        pwr["p_net"],
-            "q_sci":        params.qsci,
-            "q_eng":        pwr["Qeng_approx"],
-            "availability": pwr["capacity_factor"],
-            "rec_frac":     pwr["recirc_fraction"],
-        },
-        "cas22_detail": {
-            "C220101": cas["C220101"],
-            "C220102": cas["C220102"],
-            "C220103": cas["C220103"],
-            "C220104": cas["C220104"],
-            "C220105": cas["C220105"],
-            "C220106": cas["C220106"],
-            "C220107": cas["C220107"],
-            "C220108": cas["C220108"],
-            "C220109": cas["C220109"],
-            "C220110": cas["C220110"],
-            "C220111": cas["C220111"],
-            "C220112": cas["C220112"],
-            "C220200": cas["C220200"],
-            "C220300": cas["C220300"],
-            "C220400": cas["C220400"],
-            "C220500": cas["C220500"],
-            "C220600": cas["C220600"],
-            "C220700": cas["C220700"],
-        },
-        "params": {
-            f.name: getattr(params, f.name)
-            for f in dc.fields(params)
-            if isinstance(getattr(params, f.name), (int, float))
-        },
-        "overridden": [],   # freeform script; overrides are documented in parameter docstrings
-    }
-
-
-def compute_sensitivity(dp_fraction: float = 0.01) -> dict:
-    """Compute LCOE elasticities for all numeric parameters via central difference.
-
-    Elasticity = (dLCOE/dParam) × (Param/LCOE_base), computed as:
-        (LCOE(param+dp) - LCOE(param-dp)) / (2×dp) × param / LCOE_base
-
-    Returns {"engineering": {param: elasticity}, "financial": {param: elasticity}}.
-    """
-    base_lcoe = results["economics"]["lcoe_USD_per_MWh"]
-    if base_lcoe <= 0:
-        return {"engineering": {}, "financial": {}}
-
-    financial_keys = {"interest_rate", "inflation_rate"}
-    engineering: dict = {}
-    financial: dict = {}
-
-    for f in dc.fields(params):
-        val = getattr(params, f.name)
-        if not isinstance(val, (int, float)) or val == 0.0:
-            continue
-        dp = abs(val) * dp_fraction
-        kw = {**dc.asdict(params), f.name: val + dp}
-        lcoe_up = type(params)(**kw).compute()["economics"]["lcoe_USD_per_MWh"]
-        kw[f.name] = val - dp
-        lcoe_dn = type(params)(**kw).compute()["economics"]["lcoe_USD_per_MWh"]
-        elast = (lcoe_up - lcoe_dn) / (2 * dp) * val / base_lcoe
-        target = financial if f.name in financial_keys else engineering
-        target[f.name] = elast
-
-    return {"engineering": engineering, "financial": financial}
+scaled_headline = {
+    "p_net_mw":         1000.0,
+    "lcoe_per_mwh":     results["economics"]["lcoe_USD_per_MWh"] * _factor,
+    "overnight_per_kw": _overnight * _factor,
+}
 
 
 # =============================================================================
-# PRINT RESULTS
+# PRINT / DISPLAY
 # =============================================================================
 
-def print_results(params: LevitatedDipolePlantParams, results: dict):
-    """Pretty-print LCOE model results with full CAS-structured accounting."""
-    power = results["power"]
-    cas22 = results["cas22"]
-    costs = results["costs"]
-    econ = results["economics"]
+def print_results(p: LevitatedDipolePlantParams, res: dict):
+    """Pretty-print LCOE model results with full CAS breakdown."""
+    power = res["power"]
+    cas22 = res["cas22"]
+    costs = res["costs"]
+    econ  = res["economics"]
 
-    print("=" * 72)
-    print("Levitated Dipole (D-T) LCOE Model — OpenStar Technologies / 1cFE CAS")
-    print("=" * 72)
+    print("=" * 70)
+    print("Levitated Dipole (D-T) LCOE Model -- OpenStar Technologies, Reactor A")
+    print("=" * 70)
 
-    # --- Key Inputs ---
     print(f"\n--- Key Input Parameters ---")
-    print(f"  Fusion power (Reactor A, Bohm):   {params.p_fus_MW:.0f} MW  [published]")
-    print(f"  Blanket energy multiplication:    {params.blanket_energy_multiplication:.2f}")
-    print(f"  Thermal efficiency:               {params.thermal_efficiency:.1%}  [ASSUMED — BOP cycle unpublished; paper states 40%]")
-    print(f"  Q_sci:                            {params.qsci:.1f}  [inferred from Table 6 pair]")
-    print(f"  ICRH wall-plug efficiency:        {params.icrh_wall_plug_efficiency:.1%}  [published analogue: JET/EAST]")
-    print(f"  Plasma duty cycle:                {params.plasma_duty_cycle:.1%}  [published: 90.1%]")
-    print(f"  Plant availability:               {params.plant_availability:.1%}  [published: 96%]")
-    print(f"  Combined capacity factor:         {params.plasma_duty_cycle * params.plant_availability:.1%}")
-    print(f"  Plant lifetime:                   {params.plant_lifetime_years:.0f} years")
-    print(f"  FOAK/NOAK:                        {'NOAK' if params.noak else 'FOAK'}")
-    print(f"  Interest rate:                    {params.interest_rate:.1%}")
-    print(f"  HTS coil system cost:             ${params.hts_coil_system_cost_M_USD:.0f}M  [HIGH UNCERTAINTY]")
-    print(f"  ICRH system cost:                 ${params.icrh_system_cost_M_USD:.0f}M  [MODERATE UNCERTAINTY]")
-    print(f"  Annual coil replacement:          ${params.sacrificial_section_material_cost_M_USD + params.coil_replacement_labor_M_USD:.0f}M/yr  [HIGH UNCERTAINTY]")
+    print(f"  Fusion power:               {p.p_fus:.0f} MW")
+    print(f"  Q_sci:                      {p.Q_sci:.1f}")
+    print(f"  ICRH efficiency:            {p.eta_aux:.0%}")
+    print(f"  Blanket energy mult:        {p.M_blanket:.3f}")
+    print(f"  Thermal efficiency:         {p.eta_th:.0%}")
+    print(f"  Duty cycle:                 {p.duty_cycle:.1%}")
+    print(f"  Maintenance availability:   {p.maintenance_availability:.0%}")
+    print(f"  Combined capacity factor:   {power['capacity_factor']:.1%}")
+    print(f"  REBCO tape (core+top):      {p.rebco_tape_core_km + p.rebco_tape_top_km:,.0f} km")
+    print(f"  REBCO Ic at ops (23T,30K):  {p.rebco_Ic_kA:.2f} kA/tape")
+    print(f"  REBCO price:                ${p.rebco_price_kAm:.0f}/kA-m")
+    print(f"  Li2O blanket mass:          {p.Li2O_mass_t:,.0f} t  @ ${p.Li2O_unit_cost_per_kg:.0f}/kg")
+    print(f"  W-B4C-W shield mass:        {p.W_shield_mass_t:,.0f} t  @ ${p.W_shield_unit_cost_per_kg:.0f}/kg")
+    print(f"  Concrete vessel mass:       {p.concrete_mass_t:,.0f} t  @ ${p.concrete_cost_per_t:.0f}/t")
+    print(f"  Coil replacement tape/yr:   {p.sacrificial_tape_km_yr:.0f} km/yr")
+    print(f"  Coil handling cost/yr:      ${p.sacrificial_handling_M_USD_yr:.0f}M/yr")
+    print(f"  NOAK / Interest rate:       {'NOAK' if p.noak else 'FOAK'} / {p.interest_rate:.0%}")
+    print(f"  Plant lifetime:             {p.plant_lifetime_years:.0f} yr")
 
-    # --- Power Balance ---
     print(f"\n--- Power Balance ---")
-    print(f"  Fusion power:                    {power['p_fus']:>8.1f} MW")
-    print(f"    Neutron power (80%):           {power['p_neutron']:>8.1f} MW  → blanket (×{params.blanket_energy_multiplication:.2f})")
-    print(f"    Alpha power  (20%):            {power['p_alpha']:>8.1f} MW  → plasma → FW")
-    print(f"  Q_sci (Pfus/Pplasma):            {power['Qsci']:>8.1f}  [inferred]")
-    print(f"  ICRH plasma heating:             {power['p_plasma_heating_MW']:>8.1f} MW  (to plasma)")
-    print(f"  ICRH grid draw:                  {power['p_icrh_wallplug_MW']:>8.1f} MW  (from grid, at {params.icrh_wall_plug_efficiency:.0%} η)")
-    print(f"  Total thermal power:             {power['p_th']:>8.1f} MW")
-    print(f"  Gross electric:                  {power['p_et']:>8.1f} MWe  (η={params.thermal_efficiency:.1%})")
+    print(f"  Fusion power:               {power['p_fus']:.0f} MW  (Q_sci = {power['Q_sci']:.1f})")
+    print(f"    Neutron power:            {power['p_neutron']:.0f} MW (80%)")
+    print(f"    Alpha power:              {power['p_alpha']:.0f} MW (20%)")
+    print(f"  ICRH plasma deposit:        {power['P_aux_plasma']:.1f} MW")
+    print(f"  ICRH wall-plug:             {power['P_aux_wallplug']:.1f} MW")
+    print(f"  Thermal power (p_th):       {power['p_th']:.0f} MW")
+    print(f"  Gross electric (p_et):      {power['p_et']:.0f} MWe")
     print(f"  Recirculating power:")
-    print(f"    ICRH grid draw:                {power['p_icrh_wallplug_MW']:>8.1f} MW")
-    print(f"    Non-heating auxiliaries:       {power['p_aux_nonheating_MW']:>8.1f} MW  (cryo+trit+house+pos)")
-    print(f"    Total recirculating:           {power['p_recirc_MW']:>8.1f} MW  ({power['recirc_fraction']:.1%} of gross)")
-    print(f"  Net electric:                    {power['p_net']:>8.1f} MWe")
-    print(f"  Published target (Reactor A):      208.0 MWe  [arxiv-2602-20564 §Table 9]")
-    print(f"  Q_eng approx (Pfus/Pgrid_heat):  {power['Qeng_approx']:>8.1f}")
-    print(f"  Combined capacity factor:        {power['capacity_factor']:.1%}  ({params.plasma_duty_cycle:.1%} × {params.plant_availability:.1%})")
+    print(f"    ICRH wall-plug:           {power['P_aux_wallplug']:.1f} MW")
+    print(f"    Cryoplant (neon slush):   {p.p_cryo_MW:.2f} MW")
+    print(f"    Tritium processing:       {p.p_trit_MW:.1f} MW")
+    print(f"    Housekeeping:             {p.p_house_MW:.1f} MW")
+    print(f"    Other auxiliary:          {p.p_other_MW:.2f} MW")
+    print(f"    Total:                    {power['p_recirc']:.1f} MW ({power['recirc_fraction']:.1%})")
+    print(f"  Net electric (p_net):       {power['p_net']:.0f} MWe")
+    print(f"  Engineering Q (net/ICRH):   {power['Q_eng']:.2f}")
 
-    # --- Geometry ---
-    geom = results["geometry"]
-    print(f"\n--- Geometry (ASSUMED spherical — no published vessel dimensions) ---")
-    print(f"  First-wall inner radius:         {params.vessel_inner_radius_m:.1f} m  [ASSUMED]")
-    print(f"  First-wall area:                 {geom['first_wall_area_m2']:.0f} m²  ({power['p_fus']/geom['first_wall_area_m2']:.2f} MW/m² loading)")
-    print(f"  Blanket volume:                  {geom['blanket_vol_m3']:.0f} m³")
-    print(f"  Shield volume:                   {geom['shield_vol_m3']:.0f} m³")
-    print(f"  Total outer radius:              {geom['vessel_outer_radius_m']:.1f} m")
-
-    # --- CAS22 ---
     print(f"\n--- CAS22: Reactor Plant Equipment ---")
     cas22_labels = {
-        "C220101": ("Blanket/First Wall (Li₂O)",    ""),
-        "C220102": ("Shield (W/B₄C two-temp)",       ""),
-        "C220103": ("HTS Coil + Flux Pump System",   " [override]"),
-        "C220104": ("ICRH Heating System",            " [override]"),
-        "C220105": ("Primary Structure",              ""),
-        "C220106": ("Vacuum System (Inconel+concrete)"," "),
-        "C220107": ("Power Supplies (misc, 50% base)", " [partial override]"),
-        "C220108": ("Target Factory",                 " [N/A: MFE, $0]"),
-        "C220109": ("Direct Energy Converter",        " [N/A: closed-field, $0]"),
-        "C220110": ("Remote Handling (coil docking)", " [override ×1.5]"),
-        "C220111": ("Installation Labor (14%)",       ""),
-        "C220112": ("Isotope Separation",             " [$0: natural Li₂O, no enrichment]"),
+        "C220101": ("Li2O Blanket",             "[MASS-BASED OVERRIDE]"),
+        "C220102": ("W-B4C-W Shield",            "[MASS-BASED OVERRIDE]"),
+        "C220103": ("HTS Magnet (core+top)",     "[TAPE-BASED OVERRIDE]"),
+        "C220104": ("ICRH Heating System",       "[$/MW OVERRIDE]"),
+        "C220105": ("Structure + Outer Vessel",  "[concrete mass + vol scale]"),
+        "C220106": ("Inner Vacuum Vessel",       "[parametric + vol scale]"),
+        "C220107": ("Power Supplies",            "[1costingfe scale]"),
+        "C220108": ("Target Factory",            "[N/A=0]"),
+        "C220109": ("Direct Energy Converter",   "[N/A=0]"),
+        "C220110": ("Remote Handling",           "[NOVEL SYSTEM OVERRIDE]"),
+        "C220111": ("Installation (14%)",        ""),
+        "C220112": ("Isotope Separation",        "[N/A, natural Li2O]"),
     }
     for code, (label, note) in cas22_labels.items():
         val = cas22[code]
-        if val > 0.01 or "N/A" in note:
-            print(f"    {code}  {label:<36s} ${val:>8.1f}M{note}")
-    print(f"  {'─' * 60}")
-    print(f"    Per-module subtotal:                         ${cas22['CAS22_per_module']:>8.1f}M")
+        if val > 0.01 or code in ("C220108", "C220109", "C220112"):
+            print(f"    {code} {label:<28s} ${val:>8.1f}M  {note}")
+    print(f"    {'─'*55}")
+    print(f"    Per-module subtotal:              ${cas22['CAS22_per_module']:>8.1f}M")
+
     print(f"  Plant-wide accounts:")
     pw_labels = {
         "C220200": "Coolant Systems",
-        "C220300": "Aux Cooling + Cryoplant (neon slush)",
-        "C220400": "Radioactive Waste Management",
-        "C220500": "Fuel Handling (D-T, Li₂O blanket)",
+        "C220300": "Aux Cooling + Neon Cryoplant",
+        "C220400": "Rad Waste Management",
+        "C220500": "Fuel Handling (D-T)",
         "C220600": "Other Equipment",
         "C220700": "Instrumentation & Control",
     }
     for code, label in pw_labels.items():
-        print(f"    {code}  {label:<36s} ${cas22[code]:>8.1f}M")
-    print(f"  {'─' * 60}")
-    print(f"    Plant-wide subtotal:                         ${cas22['CAS22_plant_wide']:>8.1f}M")
-    print(f"  CAS22 Total:                                   ${cas22['CAS22']:>8.1f}M")
+        val = cas22[code]
+        if val > 0.01:
+            print(f"    {code} {label:<28s} ${val:>8.1f}M")
+    print(f"    {'─'*55}")
+    print(f"    Plant-wide subtotal:              ${cas22['CAS22_plant_wide']:>8.1f}M")
+    print(f"  CAS22 Total:                        ${cas22['CAS22']:>8.1f}M")
 
-    # --- Capital Costs ---
     print(f"\n--- Capital Costs (CAS10-60) ---")
-    print(f"  CAS10  Pre-construction:          ${costs['CAS10']:>8.1f}M  (incl. ${params.tritium_startup_cost_M_USD:.0f}M tritium startup)")
-    print(f"  CAS21  Buildings:                 ${costs['CAS21']:>8.1f}M")
-    print(f"  CAS22  Reactor Plant Equipment:   ${costs['CAS22']:>8.1f}M")
-    print(f"  CAS23  Turbine Plant:             ${costs['CAS23']:>8.1f}M")
-    print(f"  CAS24  Electric Plant:            ${costs['CAS24']:>8.1f}M")
-    print(f"  CAS25  Misc Plant:                ${costs['CAS25']:>8.1f}M")
-    print(f"  CAS26  Heat Rejection:            ${costs['CAS26']:>8.1f}M")
-    print(f"  CAS27  Special Materials:         ${costs['CAS27']:>8.1f}M")
-    print(f"  CAS28  Digital Twin:              ${costs['CAS28']:>8.1f}M")
-    print(f"  CAS29  Contingency:               ${costs['CAS29']:>8.1f}M")
-    print(f"  {'─' * 52}")
-    print(f"  CAS20  Direct Costs:              ${costs['CAS20']:>8.1f}M")
-    print(f"  CAS30  Indirect Costs:            ${costs['CAS30']:>8.1f}M")
-    print(f"  CAS40  Owner's Costs:             ${costs['CAS40']:>8.1f}M")
-    print(f"  CAS50  Supplementary:             ${costs['CAS50']:>8.1f}M")
-    print(f"  {'─' * 52}")
-    print(f"  Overnight Capital:                ${costs['overnight_capital']:>8.1f}M")
-    print(f"  CAS60  IDC (f={costs['f_IDC']:.3f}):          ${costs['CAS60']:>8.1f}M")
-    print(f"  {'═' * 52}")
-    print(f"  Total Capital:                    ${costs['total_capital']:>8.1f}M")
-    print(f"  Specific Capital:                 ${costs['specific_capital_USD_per_kWe']:>8.0f} $/kWe")
+    print(f"  CAS10 Pre-construction:             ${costs['CAS10']:>8.1f}M")
+    print(f"  CAS21 Ancillary Buildings:          ${costs['CAS21']:>8.1f}M")
+    print(f"  CAS22 Reactor Plant Equipment:      ${costs['CAS22']:>8.1f}M")
+    print(f"  CAS23 Turbine Plant:                ${costs['CAS23']:>8.1f}M")
+    print(f"  CAS24 Electric Plant:               ${costs['CAS24']:>8.1f}M")
+    print(f"  CAS25 Misc Plant:                   ${costs['CAS25']:>8.1f}M")
+    print(f"  CAS26 Heat Rejection:               ${costs['CAS26']:>8.1f}M")
+    print(f"  CAS27 Special Materials (T startup):${costs['CAS27']:>8.1f}M")
+    print(f"  CAS28 Digital Twin:                 ${costs['CAS28']:>8.1f}M")
+    print(f"  CAS29 Contingency:                  ${costs['CAS29']:>8.1f}M")
+    print(f"  {'─'*55}")
+    print(f"  CAS20 Direct Costs:                 ${costs['CAS20']:>8.1f}M")
+    print(f"  CAS30 Indirect Costs:               ${costs['CAS30']:>8.1f}M")
+    print(f"  CAS40 Owner's Costs:                ${costs['CAS40']:>8.1f}M")
+    print(f"  CAS50 Supplementary:                ${costs['CAS50']:>8.1f}M")
+    print(f"  {'─'*55}")
+    print(f"  Overnight Capital:                  ${costs['overnight_capital']:>8.1f}M")
+    print(f"  CAS60 IDC (f={costs['f_IDC']:.3f}):             ${costs['CAS60']:>8.1f}M")
+    print(f"  {'='*55}")
+    print(f"  Total Capital:                      ${costs['total_capital']:>8.1f}M")
+    print(f"  Specific Capital (native):          ${costs['specific_capital_USD_per_kWe']:>8.0f} $/kWe")
 
-    # --- Annual Costs ---
     print(f"\n--- Annual Costs (CAS70-90) ---")
-    print(f"  CAS90  Capital charge (CRF={econ['CRF']:.4f}):    ${econ['CAS90']:>8.1f}M/yr")
-    print(f"  CAS71  O&M (levelized):                    ${econ['CAS71']:>8.1f}M/yr")
-    print(f"  CAS72a Blanket replacement ({econ['n_blanket_replacements']} events):       ${econ['CAS72_blanket']:>8.1f}M/yr")
-    print(f"  CAS72b Coil section replacement (annual):  ${econ['CAS72_coil_annual']:>8.1f}M/yr  [HIGH UNCERTAINTY]")
-    print(f"         (${econ['annual_coil_replacement_cost_M_USD']:.0f}M/yr × {params.plant_lifetime_years:.0f} yr → ${econ['annual_coil_replacement_cost_M_USD']*params.plant_lifetime_years:.0f}M nominal lifecycle)")
-    print(f"  CAS70  Total O&M:                          ${econ['CAS70']:>8.1f}M/yr")
-    print(f"  CAS80  Fuel costs (D-T):                   ${econ['CAS80']:>8.1f}M/yr")
+    print(f"  CAS90 Capital charge (CRF={econ['CRF']:.4f}):  ${econ['CAS90']:>8.1f}M/yr")
+    print(f"  CAS71 O&M fixed (levelized):        ${econ['CAS71']:>8.1f}M/yr")
+    print(f"  CAS72 Scheduled replacements:       ${econ['CAS72']:>8.1f}M/yr")
+    print(f"    Blanket ({econ['n_blanket_replacements']} repl):              ${econ['CAS72_blanket']:>8.1f}M/yr")
+    sac_tape_only = econ["sac_coil_M_yr"] - params.sacrificial_handling_M_USD_yr
+    print(f"    Sacrificial coil (annual):        ${econ['CAS72_coil']:>8.1f}M/yr")
+    print(f"      (tape ${sac_tape_only:.1f}M + handling ${params.sacrificial_handling_M_USD_yr:.1f}M = ${econ['sac_coil_M_yr']:.1f}M/yr raw)")
+    print(f"  CAS70 Total O&M:                    ${econ['CAS70']:>8.1f}M/yr")
+    print(f"  CAS80 D fuel + consumables:         ${econ['CAS80']:>8.3f}M/yr")
 
-    # --- LCOE ---
     print(f"\n--- LCOE ---")
-    print(f"  Annual energy production:   {econ['annual_energy_MWh']:>12,.0f} MWh")
-    print(f"                              ({power['p_net']:.1f} MWe × {power['capacity_factor']:.1%} × 8760 hr)")
-    print(f"  Annual revenue requirement: ${econ['annual_revenue_req']:.1f}M")
-    print(f"  ╔═════════════════════════════════════════════╗")
-    print(f"  ║  LCOE = {econ['lcoe_cents_per_kWh']:>7.2f} ¢/kWh                        ║")
-    print(f"  ║       = {econ['lcoe_USD_per_MWh']:>7.1f} $/MWh                        ║")
-    print(f"  ╚═════════════════════════════════════════════╝")
-    print(f"  Capital (CAS90):            {econ.get('capital_fraction', 0):.1%}")
-    print(f"  O&M (CAS70):                {econ.get('om_fraction', 0):.1%}")
-    print(f"    of which coil repl.:      {econ['CAS72_coil_annual']/econ['annual_revenue_req']:.1%}")
-    print(f"  Fuel (CAS80):               {econ.get('fuel_fraction', 0):.1%}")
+    print(f"  Annual energy production:     {econ['annual_energy_MWh']:,.0f} MWh")
+    print(f"  Annual revenue requirement:   ${econ['annual_revenue_req']:.1f}M")
+    print(f"  ╔══════════════════════════════════════════════╗")
+    print(f"  ║  LCOE = {econ['lcoe_cents_per_kWh']:.2f} cents/kWh                    ║")
+    print(f"  ║       = {econ['lcoe_USD_per_MWh']:.1f} $/MWh                        ║")
+    print(f"  ╚══════════════════════════════════════════════╝")
+    print(f"  Capital (CAS90):              {econ.get('capital_fraction', 0):.1%}")
+    print(f"  O&M (CAS70):                  {econ.get('om_fraction', 0):.1%}")
+    print(f"  Fuel/consumables (CAS80):     {econ.get('fuel_fraction', 0):.1%}")
 
+    # Scaled headline
+    _pn  = res["power"].get("p_net_plant", res["power"]["p_net"])
+    _fac = (_pn / 1000.0) ** (1.0 - _ALPHA)
+    _ovn = res["costs"]["overnight_capital"] * 1e3 / _pn
+    print(f"\n--- Scaled Headline (1000 MWe reference, alpha=0.6) ---")
+    print(f"  Native net power:             {_pn:.0f} MWe")
+    print(f"  Scale factor:                 {_fac:.3f}  (cost scales DOWN from 208 to 1000 MWe)")
+    print(f"  Scaled LCOE:                  {res['economics']['lcoe_USD_per_MWh'] * _fac:.1f} $/MWh")
+    print(f"  Scaled overnight:             ${_ovn * _fac:.0f} /kWe")
 
-# =============================================================================
-# SENSITIVITY SWEEP
-# =============================================================================
 
 def sensitivity_sweep(base_params: LevitatedDipolePlantParams, param_name: str,
-                       values: list, label: str = "") -> list:
-    """Sweep a single parameter and return LCOE for each value."""
-    results_list = []
+                      values: list, label: str = "") -> list:
+    """Sweep a single parameter and return LCOE results for each value."""
+    out = []
     for val in values:
         p = LevitatedDipolePlantParams(**{**base_params.__dict__, param_name: val})
         r = p.compute()
-        results_list.append({
-            "param_value": float(val),
-            "lcoe_cents_kWh": r["lcoe_cents_per_kWh"],
+        out.append({
+            "param_value":     float(val),
+            "lcoe_cents_kWh":  r["lcoe_cents_per_kWh"],
             "net_electric_MW": r["net_electric_MW"],
+            "overnight_M_USD": r["costs"]["overnight_capital"],
         })
-    return results_list
+    return out
 
-
-# =============================================================================
-# MAIN
-# =============================================================================
 
 def main():
-    # -------------------------------------------------------------------------
-    # BASELINE SCENARIO
-    # -------------------------------------------------------------------------
-    print("\n" + "#" * 72)
-    print("# BASELINE SCENARIO: Reactor A (Bohm-scaling, NOAK, central estimates)")
-    print("#" * 72)
-
+    print("\n" + "=" * 70)
+    print("BASELINE SCENARIO -- Reactor A design point (Simpson et al. 2026)")
+    print("=" * 70)
     baseline = LevitatedDipolePlantParams()
-    baseline_results = baseline.compute()
-    print_results(baseline, baseline_results)
-    base_lcoe = baseline_results["lcoe_cents_per_kWh"]
+    r_base   = baseline.compute()
+    print_results(baseline, r_base)
+    base_lcoe = r_base["lcoe_cents_per_kWh"]
 
-    # -------------------------------------------------------------------------
-    # SINGLE-PARAMETER SENSITIVITY SWEEPS
-    # -------------------------------------------------------------------------
-    print("\n\n" + "=" * 72)
-    print("SENSITIVITY SWEEPS — Single-Parameter Variation from Baseline")
-    print("=" * 72)
-    print(f"  Baseline LCOE: {base_lcoe:.2f} ¢/kWh\n")
+    # =========================================================================
+    # SENSITIVITY SWEEPS
+    # =========================================================================
+    print("\n" + "=" * 70)
+    print("SENSITIVITY ANALYSIS (from baseline)")
+    print("=" * 70)
+    print(f"  Baseline LCOE: {base_lcoe:.2f} cents/kWh  ({r_base['economics']['lcoe_USD_per_MWh']:.1f} $/MWh)\n")
 
     sweeps = [
-        ("thermal_efficiency",
-         [0.32, 0.35, 0.38, 0.40, 0.42, 0.45],
-         "Thermal efficiency (BOP cycle unknown; paper states 40%)"),
+        ("Q_sci",
+         [5.0, 7.5, 10.0, 12.0, 15.0, 20.0, 30.0],
+         "Q_sci (confinement scaling)",
+         "KEY RISK: binary viability threshold near Q=5-8"),
 
-        ("hts_coil_system_cost_M_USD",
-         [100.0, 150.0, 200.0, 250.0, 400.0, 600.0, 1000.0],
-         "HTS coil system cost [$M] (critical: no published analogues)"),
+        ("rebco_price_kAm",
+         [10.0, 25.0, 50.0, 75.0, 100.0, 150.0],
+         "REBCO tape price [$/kA-m]",
+         "Affects both C220103 capital AND annual coil replacement"),
 
-        ("sacrificial_section_material_cost_M_USD",
-         [10.0, 25.0, 45.0, 75.0, 120.0],
-         "Annual sacrificial section material cost [$M/yr] (novel OPEX)"),
+        ("eta_th",
+         [0.33, 0.37, 0.40, 0.44, 0.47],
+         "Thermal efficiency (cycle unspecified)",
+         "Range: Rankine ~33-37% to sCO2 ~44-47%"),
 
-        ("qsci",
-         [8.0, 10.0, 12.0, 15.0, 19.0, 25.0],
-         "Q_sci (inferred range: 12–19; requires Tahi demonstration)"),
+        ("Li2O_unit_cost_per_kg",
+         [50.0, 75.0, 100.0, 150.0, 200.0, 300.0],
+         "Li2O blanket unit cost [$/kg]",
+         "HIGH UNCERTAINTY: ceramic manufacturing + nuclear qualification"),
 
         ("interest_rate",
          [0.04, 0.06, 0.08, 0.10, 0.12],
-         "Interest rate / WACC"),
+         "Discount rate / WACC",
+         "Capital-intensive concept strongly rate-sensitive"),
 
-        ("icrh_system_cost_M_USD",
-         [75.0, 100.0, 150.0, 200.0, 300.0],
-         "ICRH system capital cost [$M]"),
-
-        ("plasma_duty_cycle",
-         [0.80, 0.85, 0.90, 0.901, 0.95],
-         "Plasma duty cycle (published: 90.1%; cryogen limits)"),
+        ("magnet_engineering_multiplier",
+         [3.0, 4.0, 5.0, 7.0, 10.0],
+         "Magnet engineering multiplier (tape -> total)",
+         "Largest single cost item; no large-scale REBCO anchor"),
     ]
 
-    for param_name, values, label in sweeps:
-        print(f"  {label}:")
-        base_val = getattr(baseline, param_name)
-        results_list = sensitivity_sweep(baseline, param_name, values, label)
-        for entry in results_list:
-            val = entry["param_value"]
+    for param_name, values, label, note in sweeps:
+        print(f"  {label}  ({note}):")
+        res_list = sensitivity_sweep(baseline, param_name, values)
+        for entry in res_list:
+            v    = entry["param_value"]
             lcoe = entry["lcoe_cents_kWh"]
-            net = entry["net_electric_MW"]
-            marker = " ← baseline" if abs(val - base_val) < 1e-9 else ""
+            net  = entry["net_electric_MW"]
+            delta = lcoe - base_lcoe
             if net <= 0:
-                print(f"    {val:>10.3g} → NET POWER NEGATIVE ({net:.1f} MWe)")
+                print(f"    {v:>8.3g}  -> NET POWER NEGATIVE ({net:.0f} MWe)")
             else:
-                delta = lcoe - base_lcoe
-                sign = "+" if delta >= 0 else ""
-                print(f"    {val:>10.4g} → {lcoe:7.2f} ¢/kWh  ({sign}{delta:.2f})  [{net:.0f} MWe net]{marker}")
+                print(f"    {v:>8.3g}  -> {lcoe:6.2f} c/kWh  ({delta:+.2f})  net={net:.0f} MWe")
         print()
 
-    # -------------------------------------------------------------------------
+    # Manual sweep: annual sacrificial coil handling cost
+    print(f"  Annual coil handling cost [M$/yr]")
+    print(f"  (UNIQUE TO LEVITATED DIPOLE -- no analogue in any other fusion concept):")
+    for v in [5.0, 10.0, 20.0, 40.0, 60.0, 100.0]:
+        p = LevitatedDipolePlantParams(sacrificial_handling_M_USD_yr=v)
+        r = p.compute()
+        delta = r["lcoe_cents_per_kWh"] - base_lcoe
+        print(f"    {v:>6.0f} M$/yr  -> {r['lcoe_cents_per_kWh']:6.2f} c/kWh  ({delta:+.2f})")
+    print()
+
+    # =========================================================================
     # SCENARIO COMPARISON TABLE
-    # -------------------------------------------------------------------------
-    print("=" * 72)
-    print("SCENARIO COMPARISON: Conservative / Moderate (Baseline) / Optimistic")
-    print("=" * 72)
+    # =========================================================================
+    print("=" * 70)
+    print("SCENARIO COMPARISON")
+    print("=" * 70)
 
     conservative = LevitatedDipolePlantParams(
-        thermal_efficiency=0.34,              # Low-efficiency Rankine (cycle unknown)
-        qsci=11.0,                            # Low end of inferred range
-        hts_coil_system_cost_M_USD=450.0,     # High coil cost — novel technology premium
-        icrh_system_cost_M_USD=220.0,         # High ICRH cost — geometry adaptation
-        sacrificial_section_material_cost_M_USD=80.0,   # High replacement cost
-        coil_replacement_labor_M_USD=20.0,    # Complex docking procedure
-        rh_scale_factor=2.0,                  # High RH premium (novel docking)
-        interest_rate=0.10,                   # High WACC (early-stage technology risk)
-        construction_time_years=7.0,
-        plasma_duty_cycle=0.85,               # Lower duty cycle (docking complications)
-        plant_availability=0.90,              # Lower availability during initial ops
-        noak=False,                           # FOAK
+        rebco_price_kAm=100.0,
+        magnet_engineering_multiplier=7.0,
+        Li2O_unit_cost_per_kg=150.0,
+        W_shield_unit_cost_per_kg=200.0,
+        sacrificial_handling_M_USD_yr=40.0,
+        replacement_tape_multiplier=3.0,
+        eta_th=0.37,
+        maintenance_availability=0.90,
+        cryo_system_cost_M_USD=200.0,
     )
 
     optimistic = LevitatedDipolePlantParams(
-        thermal_efficiency=0.44,              # sCO₂ Brayton exploiting >2000 K hot shield
-        qsci=20.0,                            # High end / improved confinement
-        hts_coil_system_cost_M_USD=120.0,     # Learning curve; single-coil simplicity
-        icrh_system_cost_M_USD=80.0,          # Mature ICRH technology at scale
-        sacrificial_section_material_cost_M_USD=20.0,  # REBCO cost reduction + streamlined ops
-        coil_replacement_labor_M_USD=5.0,     # Automated docking procedure
-        rh_scale_factor=1.1,                  # Near-standard RH after maturation
-        interest_rate=0.06,                   # Lower WACC with demonstrated performance
-        construction_time_years=5.0,
-        plasma_duty_cycle=0.93,               # Slightly improved cryogen management
-        plant_availability=0.97,              # High availability, mature operations
-        noak=True,
+        rebco_price_kAm=25.0,
+        magnet_engineering_multiplier=4.0,
+        Li2O_unit_cost_per_kg=60.0,
+        W_shield_unit_cost_per_kg=100.0,
+        sacrificial_handling_M_USD_yr=8.0,
+        replacement_tape_multiplier=2.0,
+        eta_th=0.44,
+        maintenance_availability=0.96,
+        cryo_system_cost_M_USD=100.0,
     )
 
     scenarios = [
-        ("Conservative (FOAK, high uncertainty)", conservative),
-        ("Moderate / Baseline (NOAK, central)",   baseline),
-        ("Optimistic (NOAK, improved, learning)", optimistic),
+        ("Conservative", conservative),
+        ("Baseline",     baseline),
+        ("Optimistic",   optimistic),
     ]
 
-    print(f"\n{'Scenario':<43} {'Net MW':>8} {'CAPEX $M':>10} {'$/kWe':>8} {'LCOE ¢/kWh':>12}")
-    print("─" * 85)
-    for name, params in scenarios:
-        r = params.compute()
-        p_net = r["net_electric_MW"]
-        capex = r["total_capital_M_USD"]
-        spec = r["costs"]["specific_capital_USD_per_kWe"]
-        lcoe = r["lcoe_cents_per_kWh"]
-        print(f"  {name:<41} {p_net:>8.0f} {capex:>10.0f} {spec:>8.0f} {lcoe:>12.2f}")
+    print(f"\n  {'Scenario':<14s} {'Net(MWe)':>8s} {'Overnight($B)':>14s} "
+          f"{'$/kWe':>8s} {'LCOE(c/kWh)':>12s} {'Scaled$/MWh':>12s}")
+    print(f"  {'─'*72}")
+    for name, p_sc in scenarios:
+        r_sc = p_sc.compute()
+        net  = r_sc["power"]["p_net"]
+        ovn  = r_sc["costs"]["overnight_capital"]
+        spkw = r_sc["costs"]["specific_capital_USD_per_kWe"]
+        lc   = r_sc["lcoe_cents_per_kWh"]
+        pn   = r_sc["power"].get("p_net_plant", net)
+        fac  = (pn / 1000.0) ** (1.0 - 0.6)
+        sl   = r_sc["economics"]["lcoe_USD_per_MWh"] * fac
+        print(f"  {name:<14s} {net:>8.0f} {ovn/1000:>14.2f} "
+              f"{spkw:>8.0f} {lc:>12.2f} {sl:>12.0f}")
 
-    # -------------------------------------------------------------------------
-    # KEY BINDING CONSTRAINTS NARRATIVE
-    # -------------------------------------------------------------------------
-    print(f"\n{'=' * 72}")
-    print("KEY BINDING CONSTRAINTS (Top 3 LCOE Drivers)")
-    print("=" * 72)
-
+    # =========================================================================
+    # KEY BINDING CONSTRAINTS
+    # =========================================================================
+    print("\n" + "=" * 70)
+    print("KEY BINDING CONSTRAINTS (top 3 LCOE drivers)")
+    print("=" * 70)
     print("""
-1. HTS COIL SYSTEM COST (C220103) — HIGH UNCERTAINTY, HIGH IMPACT
-   The single floating 23 T REBCO CICC coil + on-board flux pump + precision
-   docking mechanism is the most uncharacterized CAPEX item in this analysis.
-   No direct analogue exists: CFS ARC uses 18 TF coils at $200–500M total,
-   while this design requires ONE floating coil with novel flux pump and
-   docking technology added. Sensitivity sweep shows varying coil system
-   $100M → $1000M changes LCOE by roughly ±1.5 ¢/kWh from baseline.
-   A 2× cost overrun ($500M vs $250M) adds ~0.8 ¢/kWh to LCOE.
-   Resolution: Tahi prototype cost experience (~2028–2030) will be the first
-   calibration point; power-plant-scale cost remains extrapolated until Maui.
+  1. Q_sci / Confinement Scaling -- BINARY VIABILITY RISK
+     -------------------------------------------------------
+     Reactor A requires tau_e = 3.5 s -- a 240x extrapolation over LDX data
+     (14.5 ms). The Tahi prototype (~2028) must validate Bohm-like or better
+     scaling (n*tau_e >= 3.23e19 s/m3). This is a binary threshold: if Tahi
+     fails, Reactor A is nonviable as designed (no intermediate 'more expensive
+     but viable' outcome at current design margins). The sensitivity sweep shows
+     Q_sci drives LCOE sharply via the recirculating fraction -- at Q=10 the
+     plant is marginally viable; below Q~7, net power approaches zero.
+     No cost model can resolve this risk. Only Tahi experimental data can.
 
-2. THERMAL EFFICIENCY / CONVERSION CYCLE — HIGH UNCERTAINTY, HIGH IMPACT
-   OpenStar has not disclosed the thermal power conversion cycle type or
-   efficiency. The paper states 40% as a placeholder but specifies no cycle.
-   The two-temperature shield (>2000 K hot, ~600°C warm) may enable sCO₂
-   Brayton (40–45%) but this is speculative and unconfirmed.
-   Sensitivity sweep: 32% → 45% efficiency changes LCOE by ~2 ¢/kWh
-   (roughly from ~9 to ~6.5 ¢/kWh). Baseline 38% is the back-solving anchor
-   for the published p_net = 208 MWe at Q_sci = 15.
-   A 5 pp reduction (38% → 33%) would raise LCOE by ~1 ¢/kWh and reduce
-   net output, equivalent to requiring ~15% lower overnight capital for
-   equivalent cost competitiveness.
+  2. Annual Sacrificial Coil Replacement -- UNIQUE UNQUANTIFIED OPEX
+     -----------------------------------------------------------------
+     ~864 km/yr REBCO tape + remote handling + qualification has no analogue in
+     any fusion concept. OpenStar claims it "does not make a significant impact"
+     but provides no figure. At current tape prices ($75/kA-m), the raw annual
+     cost is ~$47M/yr -- roughly 30% of the annual capital charge for 208 MWe.
+     If tape prices decline to target (~$10-25/kA-m) the annual cost drops to
+     $10-20M/yr. This is the single most important gap between the company's
+     implicit optimism and verifiable TEA. Until costed, LCOE uncertainty spans
+     a factor of ~2 from this parameter alone.
 
-3. ANNUAL SACRIFICIAL COIL REPLACEMENT COST — NOVEL OPEX, HIGH UNCERTAINTY
-   The annual partial coil replacement (~20% outer section, ~864 km/yr REBCO
-   tape) creates a recurring cost with no precedent in any other fusion concept.
-   OpenStar claims this "does not make a significant impact" but provides no
-   dollar figure. At current REBCO tape prices ($50–100/kA-m), material cost
-   alone is $52–103M/yr; with processing and remote handling, the range may
-   extend to $150M+/yr before learning-curve reductions.
-   Over 40 years, even a $55M/yr estimate accumulates to $2.2B nominal.
-   This could be a decisive OPEX penalty vs. tokamaks (which replace blanket
-   every 5 FPY but have NO annual magnet replacement) — or a modest cost if
-   REBCO price reaches the ~$10/kA-m target ($10M/yr material cost).
-   Sensitivity: $10M/yr → $120M/yr material cost changes LCOE by ~1 ¢/kWh.
+  3. Capital Cost Density -- LARGE COMPONENTS, MODEST NET POWER
+     ------------------------------------------------------------
+     At ~208 MWe net the specific capital is ~$15,000-20,000/kWe. The magnet,
+     blanket, and shield are sized by physics (not scalable to lower cost at
+     this fusion power), while net power is squeezed by the ~30% recirculating
+     fraction. Thermal efficiency (37-44%) changes net output by ~15% at fixed
+     fusion power. The economy-of-scale scaling to 1000 MWe (alpha=0.6) reduces
+     the LCOE substantially, but the concrete outer vessel and core magnet are
+     single-unit items with limited sub-linear scaling. OpenStar's Reactor B
+     (74.5 MWe) has higher $/kWe and higher LCOE, confirming the plant does not
+     benefit from smaller size. Reactor A is already near the cost-optimal point
+     given current design constraints.
 """)
-
-    print(f"\n{'─' * 72}")
-    print(f"NOTE ON MODEL CONFIDENCE:")
-    print(f"  This model is based primarily on two preprints (arXiv 2602.20564,")
-    print(f"  arXiv 2508.17691) with major gaps in thermal efficiency, Q_sci, BOP")
-    print(f"  design, and all cost parameters. The published anchor values (667 MW")
-    print(f"  fusion, 208 MWe net) constrain the power balance; capital cost is")
-    print(f"  estimated from analogues. LCOE range of ~6–14 ¢/kWh reflects genuine")
-    print(f"  parameter uncertainty, not model error. The LCOE is capital-dominated.")
-    print(f"{'─' * 72}")
 
 
 if __name__ == "__main__":

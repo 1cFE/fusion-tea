@@ -10,42 +10,42 @@
   "cost_model": {
     "cas10": {
       "name": "Preconstruction",
-      "cost_m_usd": 49.03027580952381,
+      "cost_m_usd": 14.022187942857142,
       "overridden": false
     },
     "cas21": {
       "name": "Buildings & Structures",
-      "cost_m_usd": 178.739992,
+      "cost_m_usd": 73.38294869333333,
       "overridden": false
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 916.2354030073519,
+      "cost_m_usd": 1937.4160726928,
       "overridden": false
     },
     "cas23": {
       "name": "Turbine Plant Equipment",
-      "cost_m_usd": 57.440930112000004,
+      "cost_m_usd": 58.481475724800006,
       "overridden": false
     },
     "cas24": {
       "name": "Electrical Plant Equipment",
-      "cost_m_usd": 24.465581344000004,
+      "cost_m_usd": 24.908776697600004,
       "overridden": false
     },
     "cas25": {
       "name": "Miscellaneous Plant Equipment",
-      "cost_m_usd": 14.892092992000002,
+      "cost_m_usd": 15.161864076800002,
       "overridden": false
     },
     "cas26": {
       "name": "Heat Rejection Systems",
-      "cost_m_usd": 9.928061994666669,
+      "cost_m_usd": 10.107909384533336,
       "overridden": false
     },
     "cas27": {
       "name": "Special Materials",
-      "cost_m_usd": 10.0,
+      "cost_m_usd": 30.0,
       "overridden": false
     },
     "cas28": {
@@ -60,73 +60,73 @@
     },
     "cas30": {
       "name": "Indirect Costs",
-      "cost_m_usd": 243.34041229000374,
+      "cost_m_usd": 430.8918094539734,
       "overridden": false
     },
     "cas40": {
       "name": "Owner's Costs",
-      "cost_m_usd": 60.835103072500935,
+      "cost_m_usd": 107.72295236349335,
       "overridden": false
     },
     "cas50": {
       "name": "Supplementary Costs",
-      "cost_m_usd": 10.338369902521904,
+      "cost_m_usd": 10.525352030265905,
       "overridden": false
     },
     "cas60": {
       "name": "Interest During Construction",
-      "cost_m_usd": 351.8494689940162,
+      "cost_m_usd": 605.0915452062454,
       "overridden": false
     },
     "cas70": {
       "name": "O&M Costs (annualised)",
-      "cost_m_usd": 79.29680683163298,
+      "cost_m_usd": 118.73566001548605,
       "overridden": false
     },
     "cas80": {
       "name": "Fuel Costs (annualised)",
-      "cost_m_usd": 2.0,
+      "cost_m_usd": 0.5,
       "overridden": false
     },
     "cas90": {
       "name": "Financial Costs",
-      "cost_m_usd": 162.02585672533368,
+      "cost_m_usd": 278.643239933283,
       "overridden": false
     },
     "cas22_detail": {
       "C220101": {
         "name": "First Wall & Blanket",
-        "cost_m_usd": 45.23496910804278,
+        "cost_m_usd": 349.0,
         "overridden": false
       },
       "C220102": {
         "name": "Radiation Shield",
-        "cost_m_usd": 58.08949469826179,
+        "cost_m_usd": 264.0,
         "overridden": false
       },
       "C220103": {
         "name": "Magnets / Coils",
-        "cost_m_usd": 250.0,
+        "cost_m_usd": 414.0,
         "overridden": false
       },
       "C220104": {
         "name": "Heating & Driver Systems",
-        "cost_m_usd": 150.0,
+        "cost_m_usd": 127.04761904761907,
         "overridden": false
       },
       "C220105": {
         "name": "Primary Structure & Support",
-        "cost_m_usd": 7.414976910568472,
+        "cost_m_usd": 32.33557282808017,
         "overridden": false
       },
       "C220106": {
         "name": "Vacuum System",
-        "cost_m_usd": 22.874309249942385,
+        "cost_m_usd": 84.66098190788065,
         "overridden": false
       },
       "C220107": {
         "name": "Power Conditioning & Energy Storage",
-        "cost_m_usd": 16.84234751936569,
+        "cost_m_usd": 34.110683480166266,
         "overridden": false
       },
       "C220108": {
@@ -141,12 +141,12 @@
       },
       "C220110": {
         "name": "Remote Handling & Maintenance Equipment",
-        "cost_m_usd": 88.62378033885794,
+        "cost_m_usd": 0.0,
         "overridden": false
       },
       "C220111": {
         "name": "Installation Labor",
-        "cost_m_usd": 89.47118289550548,
+        "cost_m_usd": 203.7216800169245,
         "overridden": false
       },
       "C220112": {
@@ -156,208 +156,337 @@
       },
       "C220200": {
         "name": "Main & Secondary Coolant",
-        "cost_m_usd": 52.79960220718614,
+        "cost_m_usd": 51.942968807871935,
         "overridden": false
       },
       "C220300": {
         "name": "Auxiliary Cooling & Cryoplant",
-        "cost_m_usd": 57.90030464699017,
+        "cost_m_usd": 150.81372221333334,
         "overridden": false
       },
       "C220400": {
         "name": "Radioactive Waste Management",
-        "cost_m_usd": 1.4990602666666668,
+        "cost_m_usd": 1.4499050346666666,
         "overridden": false
       },
       "C220500": {
         "name": "Fuel Handling & Storage",
-        "cost_m_usd": 40.529804690584015,
+        "cost_m_usd": 40.096090347537455,
         "overridden": false
       },
       "C220600": {
         "name": "Other Reactor Plant Equipment",
-        "cost_m_usd": 3.3261917797811855,
+        "cost_m_usd": 3.28554413384109,
         "overridden": false
       },
       "C220700": {
         "name": "Instrumentation & Control",
-        "cost_m_usd": 31.62937869559927,
+        "cost_m_usd": 30.951304874878964,
         "overridden": false
       }
     },
     "headline": {
-      "lcoe_per_mwh": 151.39816964565583,
-      "overnight_cost_per_kw": 9108.918683531958,
-      "p_net_mw": 212.11032380952383,
-      "q_eng": 10.499999999999998,
-      "capacity_factor": 0.86496
+      "lcoe_per_mwh": 134.37506261265585,
+      "overnight_cost_per_kw": 6954.354847267259,
+      "p_net_mw": 1000.0,
+      "q_eng": 3.2881399700149925,
+      "capacity_factor": 0.0
     },
     "sensitivities": {
       "engineering": {
-        "p_fus_MW": {
-          "elasticity": -0.6775156688023241,
+        "p_fus": {
+          "elasticity": -0.89985363233481,
           "baseline": 667.0
         },
-        "blanket_energy_multiplication": {
-          "elasticity": -0.7245376803819064,
-          "baseline": 1.1
-        },
-        "thermal_efficiency": {
-          "elasticity": -1.0141019759795817,
-          "baseline": 0.38
-        },
-        "qsci": {
-          "elasticity": -0.21169938499722815,
+        "Q_sci": {
+          "elasticity": -0.25670353517199374,
           "baseline": 15.0
         },
-        "icrh_wall_plug_efficiency": {
-          "elasticity": -0.2665962145954925,
+        "eta_aux": {
+          "elasticity": -0.33067972492133924,
           "baseline": 0.7
         },
-        "p_cryo_MW": {
-          "elasticity": 0.04201878112769245,
-          "baseline": 5.0
+        "M_blanket": {
+          "elasticity": -0.9346420604456611,
+          "baseline": 1.053
         },
-        "p_tritium_MW": {
-          "elasticity": 0.016784337014475438,
-          "baseline": 4.0
+        "eta_th": {
+          "elasticity": -1.2408839634075954,
+          "baseline": 0.4
         },
-        "p_housekeeping_MW": {
-          "elasticity": 0.020980421686162702,
-          "baseline": 5.0
-        },
-        "p_position_control_MW": {
-          "elasticity": 0.00419608411424708,
-          "baseline": 1.0
-        },
-        "plasma_duty_cycle": {
-          "elasticity": -0.9731617180577203,
+        "duty_cycle": {
+          "elasticity": -0.8729978773992846,
           "baseline": 0.901
         },
-        "plant_availability": {
-          "elasticity": -0.9731617180577297,
+        "maintenance_availability": {
+          "elasticity": -0.8729978773992959,
           "baseline": 0.96
         },
-        "plant_lifetime_years": {
-          "elasticity": -0.08452422577721297,
-          "baseline": 40.0
+        "p_cryo_MW": {
+          "elasticity": 0.005856070469778423,
+          "baseline": 1.31
         },
-        "noak": {
-          "elasticity": 0.0,
-          "baseline": 1.0
+        "p_trit_MW": {
+          "elasticity": 0.03576226750497031,
+          "baseline": 8.0
         },
-        "vessel_inner_radius_m": {
-          "elasticity": 0.17221339229700494,
-          "baseline": 3.5
-        },
-        "blanket_thickness_m": {
-          "elasticity": 0.08194641271709693,
-          "baseline": 0.8
-        },
-        "shield_thickness_m": {
-          "elasticity": 0.04369031534623592,
-          "baseline": 0.6
-        },
-        "structure_thickness_m": {
-          "elasticity": 0.006274282509386596,
-          "baseline": 0.3
-        },
-        "vessel_thickness_m": {
-          "elasticity": 0.014256867838003787,
-          "baseline": 0.2
-        },
-        "blanket_unit_cost": {
-          "elasticity": 0.05305818435334314,
-          "baseline": 0.6
-        },
-        "hts_coil_system_cost_M_USD": {
-          "elasticity": 0.15011769134815503,
-          "baseline": 250.0
-        },
-        "icrh_system_cost_M_USD": {
-          "elasticity": 0.09007061480889302,
-          "baseline": 150.0
-        },
-        "rh_scale_factor": {
-          "elasticity": 0.053215989212063955,
-          "baseline": 1.5
-        },
-        "sacrificial_section_fraction": {
-          "elasticity": 0.0,
-          "baseline": 0.2
-        },
-        "sacrificial_section_material_cost_M_USD": {
-          "elasticity": 0.18493961615485213,
-          "baseline": 45.0
-        },
-        "coil_replacement_labor_M_USD": {
-          "elasticity": 0.04109769247885186,
-          "baseline": 10.0
-        },
-        "construction_time_years": {
-          "elasticity": 0.2768605030654135,
-          "baseline": 6.0
-        },
-        "om_cost_per_MW_yr": {
-          "elasticity": 0.07395836170791902,
-          "baseline": 60.0
-        },
-        "core_lifetime_FPY": {
-          "elasticity": -0.026936020183161984,
+        "p_house_MW": {
+          "elasticity": 0.02235141519701288,
           "baseline": 5.0
         },
-        "tritium_startup_cost_M_USD": {
-          "elasticity": 0.014748404764033054,
-          "baseline": 35.0
+        "p_other_MW": {
+          "elasticity": 0.04108190671826298,
+          "baseline": 9.19
+        },
+        "rebco_tape_core_km": {
+          "elasticity": 0.11897851159660082,
+          "baseline": 4320.0
+        },
+        "rebco_tape_top_km": {
+          "elasticity": 0.0330495865546126,
+          "baseline": 1200.0
+        },
+        "rebco_Ic_kA": {
+          "elasticity": 0.23345991070564082,
+          "baseline": 0.2
+        },
+        "rebco_price_kAm": {
+          "elasticity": 0.23345991070564082,
+          "baseline": 75.0
+        },
+        "magnet_engineering_multiplier": {
+          "elasticity": 0.15202809815119084,
+          "baseline": 5.0
+        },
+        "Li2O_mass_t": {
+          "elasticity": 0.25034283530256435,
+          "baseline": 3490.0
+        },
+        "Li2O_unit_cost_per_kg": {
+          "elasticity": 0.25034283530256435,
+          "baseline": 100.0
+        },
+        "W_shield_mass_t": {
+          "elasticity": 0.09694545389350881,
+          "baseline": 1760.0
+        },
+        "W_shield_unit_cost_per_kg": {
+          "elasticity": 0.09694545389350881,
+          "baseline": 150.0
+        },
+        "concrete_mass_t": {
+          "elasticity": 0.007105661109248097,
+          "baseline": 38700.0
+        },
+        "concrete_cost_per_t": {
+          "elasticity": 0.007105661109248097,
+          "baseline": 500.0
+        },
+        "inner_vessel_cost_M_USD": {
+          "elasticity": 0.011016528851537534,
+          "baseline": 30.0
+        },
+        "icrh_cost_per_MW_wallplug": {
+          "elasticity": 0.046654125358565245,
+          "baseline": 2.0
+        },
+        "cryo_system_cost_M_USD": {
+          "elasticity": 0.04831810899795111,
+          "baseline": 150.0
+        },
+        "remote_handling_cost_M_USD": {
+          "elasticity": 0.05508264425768767,
+          "baseline": 150.0
+        },
+        "sacrificial_tape_km_yr": {
+          "elasticity": 0.08143181255445564,
+          "baseline": 864.0
+        },
+        "replacement_tape_multiplier": {
+          "elasticity": 0.08143181255445565,
+          "baseline": 2.5
+        },
+        "sacrificial_handling_M_USD_yr": {
+          "elasticity": 0.05026655095953969,
+          "baseline": 20.0
+        },
+        "r_plasma_outer_m": {
+          "elasticity": 0.03879699157445761,
+          "baseline": 9.0
+        },
+        "blanket_thickness_m": {
+          "elasticity": 0.008621553683205893,
+          "baseline": 2.0
+        },
+        "shield_thickness_m": {
+          "elasticity": 0.002047618999746632,
+          "baseline": 0.475
+        },
+        "inner_vessel_thickness_m": {
+          "elasticity": 0.02505685800048131,
+          "baseline": 0.1
+        },
+        "blanket_coverage": {
+          "elasticity": 0.0,
+          "baseline": 0.75
+        },
+        "construction_time_years": {
+          "elasticity": 0.290424583207501,
+          "baseline": 6.0
+        },
+        "plant_lifetime_years": {
+          "elasticity": -0.1172957972796921,
+          "baseline": 40.0
+        },
+        "om_fixed_M_per_MWe_yr": {
+          "elasticity": 0.0445393587337974,
+          "baseline": 0.06
+        },
+        "core_lifetime_FPY": {
+          "elasticity": -0.12709141382435324,
+          "baseline": 5.0
         }
       },
       "financial": {
         "interest_rate": {
-          "elasticity": 0.6908659836994231,
+          "elasticity": 0.7176011701083298,
           "baseline": 0.08
         },
         "inflation_rate": {
-          "elasticity": 0.026791180717513425,
+          "elasticity": 0.01613424069061922,
           "baseline": 0.02
         }
       }
     },
     "params": {
-      "p_fus_MW": 667.0,
-      "blanket_energy_multiplication": 1.1,
-      "thermal_efficiency": 0.38,
-      "qsci": 15.0,
-      "icrh_wall_plug_efficiency": 0.7,
-      "p_cryo_MW": 5.0,
-      "p_tritium_MW": 4.0,
-      "p_housekeeping_MW": 5.0,
-      "p_position_control_MW": 1.0,
-      "plasma_duty_cycle": 0.901,
-      "plant_availability": 0.96,
-      "plant_lifetime_years": 40.0,
-      "noak": 1.0,
-      "vessel_inner_radius_m": 3.5,
-      "blanket_thickness_m": 0.8,
-      "shield_thickness_m": 0.6,
-      "structure_thickness_m": 0.3,
-      "vessel_thickness_m": 0.2,
-      "blanket_unit_cost": 0.6,
-      "hts_coil_system_cost_M_USD": 250.0,
-      "icrh_system_cost_M_USD": 150.0,
-      "rh_scale_factor": 1.5,
-      "sacrificial_section_fraction": 0.2,
-      "sacrificial_section_material_cost_M_USD": 45.0,
-      "coil_replacement_labor_M_USD": 10.0,
+      "p_fus": 667.0,
+      "Q_sci": 15.0,
+      "eta_aux": 0.7,
+      "M_blanket": 1.053,
+      "eta_th": 0.4,
+      "duty_cycle": 0.901,
+      "maintenance_availability": 0.96,
+      "p_cryo_MW": 1.31,
+      "p_trit_MW": 8.0,
+      "p_house_MW": 5.0,
+      "p_other_MW": 9.19,
+      "rebco_tape_core_km": 4320.0,
+      "rebco_tape_top_km": 1200.0,
+      "rebco_Ic_kA": 0.2,
+      "rebco_price_kAm": 75.0,
+      "magnet_engineering_multiplier": 5.0,
+      "Li2O_mass_t": 3490.0,
+      "Li2O_unit_cost_per_kg": 100.0,
+      "W_shield_mass_t": 1760.0,
+      "W_shield_unit_cost_per_kg": 150.0,
+      "concrete_mass_t": 38700.0,
+      "concrete_cost_per_t": 500.0,
+      "inner_vessel_cost_M_USD": 30.0,
+      "icrh_cost_per_MW_wallplug": 2.0,
+      "cryo_system_cost_M_USD": 150.0,
+      "remote_handling_cost_M_USD": 150.0,
+      "sacrificial_tape_km_yr": 864.0,
+      "replacement_tape_multiplier": 2.5,
+      "sacrificial_handling_M_USD_yr": 20.0,
+      "r_plasma_outer_m": 9.0,
+      "blanket_thickness_m": 2.0,
+      "shield_thickness_m": 0.475,
+      "inner_vessel_thickness_m": 0.1,
+      "blanket_coverage": 0.75,
       "interest_rate": 0.08,
       "inflation_rate": 0.02,
       "construction_time_years": 6.0,
-      "om_cost_per_MW_yr": 60.0,
+      "plant_lifetime_years": 40.0,
+      "noak": 1.0,
+      "om_fixed_M_per_MWe_yr": 0.06,
       "core_lifetime_FPY": 5.0,
-      "tritium_startup_cost_M_USD": 35.0
+      "n_mod": 1.0
     }
   },
   "parameter_metadata": {},
-  "narrative": null,
+  "narrative": {
+    "key_bets": [
+      "Confinement scaling from LDX's 14.5 ms to the required 3.5 s energy confinement time (~240× extrapolation) holds at Bohm-like or better behavior in a high-β levitated dipole",
+      "Q_sci = 15 operating point is achievable with 44.5 MW ICRH in a dipole field geometry where RF wave coupling has never been experimentally demonstrated",
+      "A single levitated REBCO coil at 23 T peak field with on-board superconducting flux pump and neon-slush cooling can be operated with periodic (annual) sacrificial-section replacement",
+      "TBR = 1.1 is achievable with natural (unenriched) Li₂O solid ceramic blanket covering only ~75% of neutron solid angle, relying on tungsten neutron multiplication",
+      "Tungsten W-B₄C-W radiatively-cooled shield tiles can operate steady-state at 1950 K (above recrystallization) under 14 MeV neutron flux for plant-relevant lifetimes",
+      "Annual docking/replacement of an activated internal HTS coil (~864 km/yr REBCO) can be performed economically with remote handling that has not yet been designed or costed",
+      "40% thermal efficiency is realized through an unspecified thermodynamic cycle (Rankine vs. sCO₂) on a tritium-bearing primary loop"
+    ],
+    "eliminated_costs": [
+      "Disruption mitigation systems, thermal dump resistors, and disruption-driven first-wall replacement — levitated dipole carries no plasma current and is mechanistically disruption-free",
+      "Thermal energy storage for grid decoupling during pulse transitions — plasma is inherently steady-state, with duty cycle set by cryogenic limits rather than pulse physics",
+      "Lithium-6 isotope enrichment infrastructure — TBR = 1.1 achieved with natural Li₂O via tungsten neutron multiplication",
+      "External toroidal field coils, poloidal field coils, and central solenoid — replaced by a single levitated internal coil",
+      "Precision steel vacuum vessel — outer vessel is reinforced concrete (38,700 t of 45,100 t total plant mass) using standard civil construction"
+    ],
+    "novel_costs": [
+      "Annual sacrificial coil replacement: ~864 km/yr of REBCO tape plus remote handling and qualification testing (~$52M/yr at baseline, ~30% of annual capital charge) — no analogue in any other fusion concept",
+      "Remote handling system for an activated, neutron-irradiated levitated HTS coil assembly including hot-cell refurbishment and spare-coil pool logistics (~$150M capex, undesigned)",
+      "On-board neon-slush cryogenic reservoir with rapid drain-and-refill docking system, exposed to neon supply-chain constraints (byproduct of air liquefaction, ~200,000 m³/year global)",
+      "Tritium accounting and inventory management during periodic docking cycles when the core magnet passes through the blanket region",
+      "On-board superconducting flux pump scaled to charge a ~20 GJ, 29.4 kA-operating-current levitated coil with no current leads"
+    ],
+    "risks": [
+      {
+        "description": "Confinement scaling fails at Tahi (~2028): Bohm-like n·τ_e ≥ 3.23×10¹⁹ s·m⁻³ at 1 keV not achieved, making Reactor A nonviable as designed — a binary threshold with no intermediate 'more expensive but viable' outcome",
+        "severity": "high"
+      },
+      {
+        "description": "Annual sacrificial coil replacement cost unquantified; at $75/kA-m REBCO, raw cost ~$47M/yr (~30% of annual capital charge), and LCOE uncertainty spans a factor of ~2 from this single parameter until costed",
+        "severity": "high"
+      },
+      {
+        "description": "Absolute overnight capital and LCOE figures are withheld by OpenStar as 'preliminary and subject to change' — no company anchor point exists for TEA validation",
+        "severity": "high"
+      },
+      {
+        "description": "ICRH coupling in dipole magnetic geometry has never been experimentally demonstrated; 44.5 MW heating at claimed 70% wall-plug efficiency in a topology fundamentally different from tokamaks is unverified",
+        "severity": "high"
+      },
+      {
+        "description": "Plasma edge physics uncharacterized — edge temperature (800 eV) and pressure (10³ Pa) bounds borrowed from I-mode tokamak data with no dipole experimental basis; tighter limits would depress triple product, Q_sci, and net output",
+        "severity": "high"
+      },
+      {
+        "description": "REBCO tape behavior at 23 T peak field, 30 K, under combined mechanical stress and 14 MeV neutron fluence to 1 MW-yr/m² is uncharacterized — irradiation database exists only to ~10–12 T",
+        "severity": "high"
+      },
+      {
+        "description": "Thermal conversion cycle (Rankine vs. sCO₂ Brayton) unspecified; a 5-percentage-point efficiency shift (40% → 35%) lowers net output ~12% and raises LCOE proportionally",
+        "severity": "medium"
+      },
+      {
+        "description": "Tungsten tile shield creep and mechanical performance above 1950 K recrystallization under 14 MeV neutron irradiation is not demonstrated; structural integrity over plant lifetime relies on hope that 'other forms of damage dominate'",
+        "severity": "medium"
+      },
+      {
+        "description": "Li₂O solid ceramic blanket has not been tested at 14 MeV fluences and fusion-relevant temperatures; tritium inventory, permeation, and structural performance under thermal cycling and neutron swelling are unvalidated at scale",
+        "severity": "medium"
+      },
+      {
+        "description": "REBCO tape supply chain — global production of 1,000–2,000 km/year is insufficient for a single Reactor A build (~5,520 km) plus annual replacement (~864 km/yr), shared with competing HTS tokamak programs",
+        "severity": "medium"
+      },
+      {
+        "description": "Neon cryogen supply is limited (~200,000 m³/year global, air-separation byproduct); fleet-scale operation may require hydrogen fallback with 5× larger reservoir volume",
+        "severity": "medium"
+      },
+      {
+        "description": "No independent techno-economic analysis or system-code (ARIES/PROCESS equivalent) study of a levitated dipole power plant exists in the public literature",
+        "severity": "medium"
+      },
+      {
+        "description": "Top (levitation) magnet design and cost explicitly out of scope in Simpson et al. — paper assumes negligible cost without justification",
+        "severity": "low"
+      },
+      {
+        "description": "Capital cost density high (~$15,000–20,000/kWe at 208 MWe net) because physics-sized large components (magnet, blanket, shield) are paired with modest net output squeezed by ~30% recirculating fraction",
+        "severity": "medium"
+      }
+    ]
+  },
   "sources": {
     "model_setup": null,
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/12-levitated-dipole/analysis.md"

@@ -487,3 +487,17 @@ for k, v in sorted(sens["engineering"].items(), key=lambda x: abs(x[1]), reverse
 print("\nFinancial:")
 for k, v in sorted(sens["financial"].items(), key=lambda x: abs(x[1]), reverse=True):
     print(f"  {k:<28} {v:+.4f}")
+
+# ── Post-hoc scaling to 1000 MWe (cross-concept comparison) ─────────────
+# Concept 08 is a modular plant (20 x 50 MWe). costingfe computes LCOE and
+# overnight $/kW at plant level via n_mod=20, but power_table.p_net reports
+# per-module 50 MWe. scaled_headline fixes the p_net for the explorer while
+# keeping LCOE and overnight as-is (no economy-of-scale adjustment needed —
+# the plant IS 1000 MWe).
+scaled_headline = {
+    "p_net_mw": 1000.0,
+    "lcoe_per_mwh": float(result.costs.lcoe),
+    "overnight_per_kw": float(result.costs.overnight_cost),
+}
+print(f"\nScaled headline (1000 MWe plant): LCOE {scaled_headline['lcoe_per_mwh']:.1f} $/MWh | "
+      f"Overnight {scaled_headline['overnight_per_kw']:.0f} $/kW")

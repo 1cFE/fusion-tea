@@ -186,9 +186,9 @@
       }
     },
     "headline": {
-      "lcoe_per_mwh": 106.56713419974977,
-      "overnight_cost_per_kw": 4381.820279526794,
-      "p_net_mw": 919.8919999999999,
+      "lcoe_per_mwh": 103.06661757858866,
+      "overnight_cost_per_kw": 4237.886271780339,
+      "p_net_mw": 1000.0,
       "q_eng": 8.5,
       "capacity_factor": 0.75
     },
@@ -334,7 +334,76 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": null,
+  "narrative": {
+    "key_bets": [
+      "Acoustic cavitation can bridge the ~4 order-of-magnitude temperature gap from demonstrated sonoluminescence (~16,000 K) to D-D thermonuclear conditions (~10⁸ K / ~10 keV)",
+      "D-D fusion gain Q ≥ ~3.5 is achievable at baseline driver efficiency and thermal conversion parameters to enable net-positive electrical output",
+      "PZT piezoelectric transducers can operate at ~85% wall-plug efficiency at reactor scale and survive neutron irradiation over commercial lifetimes",
+      "Fusion energy deposited in a deuterated liquid medium (D₂O) can be thermalized and extracted via a conventional Rankine/sCO2 cycle at ~35% thermal efficiency",
+      "High bubble implosion event rates (~10⁷/s) can aggregate picojoule-to-nanojoule per-event energies into grid-scale continuous power output",
+      "Compressed bubble plasma density (>10²¹ cm⁻³, comparable to laser ICF) is sufficient for fusion if temperature gap is closed by acoustic compression alone"
+    ],
+    "eliminated_costs": [
+      "Tritium breeding blanket infrastructure — D-D fuel eliminates external tritium supply and breeding systems required by D-T concepts",
+      "High-temperature superconductor (REBCO/HTS tape) supply chain — no magnets required for acoustic confinement",
+      "High-energy laser driver infrastructure — no multi-kJ laser amplifiers, optics, or energy stores as in laser ICF",
+      "Multi-megajoule pulsed-power capacitor banks — acoustic driver replaces the pulsed-power systems used by MIF/MagLIF",
+      "Exotic plasma-facing materials (tungsten armor, beryllium, lithium blankets) — liquid medium serves as both target and first wall"
+    ],
+    "novel_costs": [
+      "D₂O working fluid inventory — ~$87M per module for ~113 m³ fill at $700/kg; scales as r³ with vessel radius and is unavoidable since D₂O is the fusion medium",
+      "Reactor-scale acoustic transducer arrays — PZT transducer arrays (~$42.5M/module override) optimized for maximum bubble collapse intensity in commercial geometries",
+      "D₂O circulation and management systems — closed-loop deuterated fluid handling with deuterium inventory management (~$70M/module combined)",
+      "Tritium byproduct containment — D-D produces tritium in ~50% of reactions requiring containment (not breeding) infrastructure",
+      "Neutron-irradiated PZT transducer replacement — periodic replacement driven by unstudied radiation damage to piezoelectric materials (~$6.2M/yr levelized)"
+    ],
+    "risks": [
+      {
+        "description": "Foundational scientific viability: no credible replicated evidence of fusion from acoustic cavitation; ~4 orders of magnitude temperature gap between demonstrated sonoluminescence (~16,000 K) and D-D fusion requirements (~10⁸ K) with no published theoretical mechanism to bridge it",
+        "severity": "high"
+      },
+      {
+        "description": "No reactor design exists — not even a conceptual sketch; vessel geometry, shielding, neutron management, and energy conversion pathway are all undefined, blocking standard CAS10-LCOE costing",
+        "severity": "high"
+      },
+      {
+        "description": "Energy conversion pathway undefined; thermal extraction from a deuterated liquid medium is a speculative default assumption with no engineering basis",
+        "severity": "high"
+      },
+      {
+        "description": "Taleyarkhan (2002) claims discredited by multiple failed independent replications (Putterman/Suslick, Göttingen, Illinois, Oak Ridge, ONR) and 2008 Purdue misconduct finding, creating severe reputational and funding overhang",
+        "severity": "high"
+      },
+      {
+        "description": "Q ≥ ~3.5 breakeven threshold — below this, plant is net-negative; conservative Q=5 scenario yields ~38.6 ¢/kWh LCOE, uncompetitive with grid power",
+        "severity": "high"
+      },
+      {
+        "description": "Neutron irradiation effects on PZT transducers are unstudied — lifetime and replacement schedule unknown, creating O&M cost uncertainty",
+        "severity": "medium"
+      },
+      {
+        "description": "D-D neutronic fuel cycle (~50% of reactions produce 2.45 MeV neutrons) still drives substantial shielding and activation requirements at commercial scale despite being less severe than D-T",
+        "severity": "medium"
+      },
+      {
+        "description": "Pulsed-to-continuous power balance at ~20,000–40,000 bubble events/sec with picojoule-scale per-event energy — aggregation to grid-scale output is unverified",
+        "severity": "medium"
+      },
+      {
+        "description": "Capacity factor and maintenance model undefined; plant availability has the highest LCOE elasticity (|ε|=0.954) of any parameter",
+        "severity": "medium"
+      },
+      {
+        "description": "Regulatory classification for a novel acoustic fusion concept is unclear, potentially requiring special NRC review",
+        "severity": "low"
+      },
+      {
+        "description": "Deuterated acetone alternative working fluid lacks industrial-scale production supply chain and has unknown radiation compatibility",
+        "severity": "low"
+      }
+    ]
+  },
   "sources": {
     "model_setup": null,
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/02-acoustic-icf-sonofusion/analysis.md"

@@ -68,7 +68,7 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": -0.9549447070724808
+          "elasticity": -0.9604874638827547
         }
       ]
     },
@@ -145,7 +145,7 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.2673468367202025
+          "elasticity": 0.2699008522556547
         }
       ]
     },
@@ -222,7 +222,7 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": -0.001670707342127202
+          "elasticity": -0.0014191342344512848
         }
       ]
     },
@@ -282,6 +282,11 @@
           "elasticity": -0.1528757036572137
         },
         {
+          "concept_id": "12",
+          "name": "Levitated Dipole (D-T)",
+          "elasticity": -1.2408839634075954
+        },
+        {
           "concept_id": "14",
           "name": "Magnetized Target Fusion - Pneumatic Compression (D-T)",
           "elasticity": -0.046403940499920214
@@ -299,7 +304,7 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": -0.09012963459954501
+          "elasticity": -0.078202185362498
         }
       ]
     },
@@ -376,7 +381,7 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": -8.821094616476719e-7
+          "elasticity": -1.1225811136495693e-6
         }
       ]
     },
@@ -453,7 +458,7 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.012206541816201616
+          "elasticity": 0.010651148212949069
         }
       ]
     },
@@ -530,7 +535,7 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.0008553245589919033
+          "elasticity": 0.0011063684453855463
         }
       ]
     },
@@ -592,7 +597,7 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.0042810335865846845
+          "elasticity": 0.005537455701738649
         }
       ]
     },
@@ -669,7 +674,7 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.0021405167932923423
+          "elasticity": 0.0027687278508693246
         }
       ]
     },
@@ -726,7 +731,7 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.016923103408186962
+          "elasticity": 0.021607909224684266
         }
       ]
     },
@@ -803,7 +808,7 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.06095069890137036
+          "elasticity": 0.04578976870520477
         }
       ]
     },
@@ -880,7 +885,7 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.013970026810554922
+          "elasticity": 0.010565880223126607
         }
       ]
     },
@@ -957,7 +962,7 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.0033144553977423954
+          "elasticity": 0.002623284365634872
         }
       ]
     },
@@ -1034,7 +1039,7 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.010761102410070248
+          "elasticity": 0.008188496607140477
         }
       ]
     },
@@ -1111,7 +1116,7 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.03923071559116979
+          "elasticity": 0.02524610304128854
         }
       ]
     },
@@ -1188,7 +1193,12 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": -0.001051795392417884
+          "elasticity": -0.0008934010973678201
+        },
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": -0.0005599588218314417
         }
       ]
     },
@@ -1265,7 +1275,12 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": -0.018984903694185384
+          "elasticity": -0.016125887227885462
+        },
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": -0.010106246008278766
         }
       ]
     },
@@ -1312,7 +1327,7 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.032886915837875355
+          "elasticity": 0.042539684997298655
         }
       ]
     },
@@ -1374,7 +1389,7 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": -0.03293102809370553
+          "elasticity": -0.04259581772158149
         }
       ]
     },
@@ -1473,7 +1488,7 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.0021405167932923423
+          "elasticity": 0.0027687278508693246
         }
       ]
     },
@@ -1520,7 +1535,7 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.006421550379877026
+          "elasticity": 0.008306183552607973
         }
       ]
     },
@@ -1557,7 +1572,7 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.0882562457244509
+          "elasticity": 0.06469675153712254
         }
       ]
     },
@@ -1604,7 +1619,7 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.08825624094836197
+          "elasticity": 0.06469674919902846
         }
       ]
     },
@@ -2081,7 +2096,7 @@
         {
           "concept_id": "12",
           "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.6908659836994231
+          "elasticity": 0.7176011701083298
         },
         {
           "concept_id": "14",
@@ -2091,7 +2106,7 @@
         {
           "concept_id": "15",
           "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.531570054492417
+          "elasticity": 0.7143140134259115
         },
         {
           "concept_id": "17a",
@@ -2111,7 +2126,12 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.6531114701165706
+          "elasticity": 0.6584845899394774
+        },
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": 0.8040745688900502
         }
       ]
     },
@@ -2178,7 +2198,7 @@
         {
           "concept_id": "12",
           "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.026791180717513425
+          "elasticity": 0.01613424069061922
         },
         {
           "concept_id": "14",
@@ -2188,7 +2208,7 @@
         {
           "concept_id": "15",
           "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.016337241459856634
+          "elasticity": 0.025518029966881614
         },
         {
           "concept_id": "17a",
@@ -2208,7 +2228,12 @@
         {
           "concept_id": "28",
           "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.05820723941307442
+          "elasticity": 0.058435676680121375
+        },
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": 0.05614494327818172
         }
       ]
     },
@@ -2283,14 +2308,9 @@
           "elasticity": -0.19536618839503395
         },
         {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": -0.7245376803819064
-        },
-        {
           "concept_id": "15",
           "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": -0.8935443975424582
+          "elasticity": -0.8699627117416273
         },
         {
           "concept_id": "22",
@@ -2322,19 +2342,19 @@
           "elasticity": -0.7530961992832812
         },
         {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": -1.0141019759795817
-        },
-        {
           "concept_id": "15",
           "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": -1.485232447149425
+          "elasticity": -1.2825618349400778
         },
         {
           "concept_id": "22",
           "name": "Projectile ICF (D-T)",
           "elasticity": -0.8048274185879902
+        },
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": -2.3538495214088013
         }
       ]
     },
@@ -2347,11 +2367,6 @@
           "concept_id": "02",
           "name": "Acoustic ICF / Sonofusion (D-D)",
           "elasticity": 0.493093043614703
-        },
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.17221339229700494
         }
       ]
     },
@@ -2368,17 +2383,22 @@
         {
           "concept_id": "12",
           "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.04369031534623592
+          "elasticity": 0.002047618999746632
         },
         {
           "concept_id": "15",
           "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.08194336139568212
+          "elasticity": 0.03603245167814239
         },
         {
           "concept_id": "22",
           "name": "Projectile ICF (D-T)",
           "elasticity": 0.01776364760701676
+        },
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": 0.3087586135851219
         }
       ]
     },
@@ -2393,19 +2413,19 @@
           "elasticity": 0.008989770195638824
         },
         {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.006274282509386596
-        },
-        {
           "concept_id": "15",
           "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.018731196097920233
+          "elasticity": 0.01305719712879954
         },
         {
           "concept_id": "22",
           "name": "Projectile ICF (D-T)",
           "elasticity": 0.0033099135425231777
+        },
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": 0.03603826240845118
         }
       ]
     },
@@ -2432,19 +2452,19 @@
           "elasticity": -0.9544126100109184
         },
         {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": -0.9731617180577297
-        },
-        {
           "concept_id": "15",
           "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": -0.7093797612005212
+          "elasticity": -0.6599807596451958
         },
         {
           "concept_id": "22",
           "name": "Projectile ICF (D-T)",
           "elasticity": -0.9827617571234646
+        },
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": -0.899999327263254
         }
       ]
     },
@@ -2461,17 +2481,22 @@
         {
           "concept_id": "12",
           "name": "Levitated Dipole (D-T)",
-          "elasticity": -0.08452422577721297
+          "elasticity": -0.1172957972796921
         },
         {
           "concept_id": "15",
           "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": -0.22923857091169306
+          "elasticity": 0.03676819022742412
         },
         {
           "concept_id": "22",
           "name": "Projectile ICF (D-T)",
           "elasticity": -0.12423807719744978
+        },
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": -0.11061470319749044
         }
       ]
     },
@@ -2522,14 +2547,24 @@
           "elasticity": 0.003418826667265788
         },
         {
+          "concept_id": "12",
+          "name": "Levitated Dipole (D-T)",
+          "elasticity": 0.02235141519701288
+        },
+        {
           "concept_id": "15",
           "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.045383082819223
+          "elasticity": 0.028329861695662487
         },
         {
           "concept_id": "22",
           "name": "Projectile ICF (D-T)",
           "elasticity": 0.011333655253397449
+        },
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": 0.05866404313679872
         }
       ]
     },
@@ -2546,7 +2581,7 @@
         {
           "concept_id": "12",
           "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.04201878112769245
+          "elasticity": 0.005856070469778423
         },
         {
           "concept_id": "22",
@@ -2580,17 +2615,22 @@
         {
           "concept_id": "12",
           "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.2768605030654135
+          "elasticity": 0.290424583207501
         },
         {
           "concept_id": "15",
           "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.21195112133395577
+          "elasticity": 0.2899928290502611
         },
         {
           "concept_id": "22",
           "name": "Projectile ICF (D-T)",
           "elasticity": 0.3682568432458275
+        },
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": 0.3888389857140374
         }
       ]
     },
@@ -2605,14 +2645,9 @@
           "elasticity": 0.1564565289560278
         },
         {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.07395836170791902
-        },
-        {
           "concept_id": "15",
           "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.054053645907300586
+          "elasticity": 0.07044376693447876
         },
         {
           "concept_id": "22",
@@ -2634,17 +2669,22 @@
         {
           "concept_id": "12",
           "name": "Levitated Dipole (D-T)",
-          "elasticity": -0.026936020183161984
+          "elasticity": -0.12709141382435324
         },
         {
           "concept_id": "15",
           "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": -0.19388216583145368
+          "elasticity": -0.3411403557876417
         },
         {
           "concept_id": "22",
           "name": "Projectile ICF (D-T)",
           "elasticity": 0.0
+        },
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": -0.02578134177545744
         }
       ]
     },
@@ -2821,104 +2861,347 @@
         }
       ]
     },
-    "p_fus_MW": {
-      "param_name": "p_fus_MW",
-      "display_name": "p_fus_MW",
+    "p_fus": {
+      "param_name": "p_fus",
+      "display_name": "p_fus",
       "category": "unclassified",
       "concepts": [
         {
           "concept_id": "12",
           "name": "Levitated Dipole (D-T)",
-          "elasticity": -0.6775156688023241
+          "elasticity": -0.89985363233481
         }
       ]
     },
-    "qsci": {
-      "param_name": "qsci",
-      "display_name": "qsci",
+    "Q_sci": {
+      "param_name": "Q_sci",
+      "display_name": "Q_sci",
       "category": "unclassified",
       "concepts": [
         {
           "concept_id": "12",
           "name": "Levitated Dipole (D-T)",
-          "elasticity": -0.21169938499722815
-        }
-      ]
-    },
-    "icrh_wall_plug_efficiency": {
-      "param_name": "icrh_wall_plug_efficiency",
-      "display_name": "icrh_wall_plug_efficiency",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": -0.2665962145954925
-        }
-      ]
-    },
-    "p_tritium_MW": {
-      "param_name": "p_tritium_MW",
-      "display_name": "p_tritium_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.016784337014475438
+          "elasticity": -0.25670353517199374
         },
         {
           "concept_id": "15",
           "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.06807464658968225
+          "elasticity": -0.5127650321992827
+        },
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": -0.7861233697518444
         }
       ]
     },
-    "p_housekeeping_MW": {
-      "param_name": "p_housekeeping_MW",
-      "display_name": "p_housekeeping_MW",
+    "eta_aux": {
+      "param_name": "eta_aux",
+      "display_name": "eta_aux",
       "category": "unclassified",
       "concepts": [
         {
           "concept_id": "12",
           "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.020980421686162702
+          "elasticity": -0.33067972492133924
         }
       ]
     },
-    "p_position_control_MW": {
-      "param_name": "p_position_control_MW",
-      "display_name": "p_position_control_MW",
+    "M_blanket": {
+      "param_name": "M_blanket",
+      "display_name": "M_blanket",
       "category": "unclassified",
       "concepts": [
         {
           "concept_id": "12",
           "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.00419608411424708
+          "elasticity": -0.9346420604456611
         }
       ]
     },
-    "plasma_duty_cycle": {
-      "param_name": "plasma_duty_cycle",
-      "display_name": "plasma_duty_cycle",
+    "duty_cycle": {
+      "param_name": "duty_cycle",
+      "display_name": "duty_cycle",
       "category": "unclassified",
       "concepts": [
         {
           "concept_id": "12",
           "name": "Levitated Dipole (D-T)",
-          "elasticity": -0.9731617180577203
+          "elasticity": -0.8729978773992846
         }
       ]
     },
-    "noak": {
-      "param_name": "noak",
-      "display_name": "noak",
+    "maintenance_availability": {
+      "param_name": "maintenance_availability",
+      "display_name": "maintenance_availability",
       "category": "unclassified",
       "concepts": [
         {
           "concept_id": "12",
           "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.0
+          "elasticity": -0.8729978773992959
+        }
+      ]
+    },
+    "p_trit_MW": {
+      "param_name": "p_trit_MW",
+      "display_name": "p_trit_MW",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "12",
+          "name": "Levitated Dipole (D-T)",
+          "elasticity": 0.03576226750497031
+        },
+        {
+          "concept_id": "15",
+          "name": "15-sheared-flow-stabilized-z-pinch",
+          "elasticity": 0.028329861695662487
+        },
+        {
+          "concept_id": "22",
+          "name": "Projectile ICF (D-T)",
+          "elasticity": 0.028334140698650444
+        }
+      ]
+    },
+    "p_other_MW": {
+      "param_name": "p_other_MW",
+      "display_name": "p_other_MW",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "12",
+          "name": "Levitated Dipole (D-T)",
+          "elasticity": 0.04108190671826298
+        }
+      ]
+    },
+    "rebco_tape_core_km": {
+      "param_name": "rebco_tape_core_km",
+      "display_name": "rebco_tape_core_km",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "12",
+          "name": "Levitated Dipole (D-T)",
+          "elasticity": 0.11897851159660082
+        }
+      ]
+    },
+    "rebco_tape_top_km": {
+      "param_name": "rebco_tape_top_km",
+      "display_name": "rebco_tape_top_km",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "12",
+          "name": "Levitated Dipole (D-T)",
+          "elasticity": 0.0330495865546126
+        }
+      ]
+    },
+    "rebco_Ic_kA": {
+      "param_name": "rebco_Ic_kA",
+      "display_name": "rebco_Ic_kA",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "12",
+          "name": "Levitated Dipole (D-T)",
+          "elasticity": 0.23345991070564082
+        }
+      ]
+    },
+    "rebco_price_kAm": {
+      "param_name": "rebco_price_kAm",
+      "display_name": "rebco_price_kAm",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "12",
+          "name": "Levitated Dipole (D-T)",
+          "elasticity": 0.23345991070564082
+        }
+      ]
+    },
+    "magnet_engineering_multiplier": {
+      "param_name": "magnet_engineering_multiplier",
+      "display_name": "magnet_engineering_multiplier",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "12",
+          "name": "Levitated Dipole (D-T)",
+          "elasticity": 0.15202809815119084
+        }
+      ]
+    },
+    "Li2O_mass_t": {
+      "param_name": "Li2O_mass_t",
+      "display_name": "Li2O_mass_t",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "12",
+          "name": "Levitated Dipole (D-T)",
+          "elasticity": 0.25034283530256435
+        }
+      ]
+    },
+    "Li2O_unit_cost_per_kg": {
+      "param_name": "Li2O_unit_cost_per_kg",
+      "display_name": "Li2O_unit_cost_per_kg",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "12",
+          "name": "Levitated Dipole (D-T)",
+          "elasticity": 0.25034283530256435
+        }
+      ]
+    },
+    "W_shield_mass_t": {
+      "param_name": "W_shield_mass_t",
+      "display_name": "W_shield_mass_t",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "12",
+          "name": "Levitated Dipole (D-T)",
+          "elasticity": 0.09694545389350881
+        }
+      ]
+    },
+    "W_shield_unit_cost_per_kg": {
+      "param_name": "W_shield_unit_cost_per_kg",
+      "display_name": "W_shield_unit_cost_per_kg",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "12",
+          "name": "Levitated Dipole (D-T)",
+          "elasticity": 0.09694545389350881
+        }
+      ]
+    },
+    "concrete_mass_t": {
+      "param_name": "concrete_mass_t",
+      "display_name": "concrete_mass_t",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "12",
+          "name": "Levitated Dipole (D-T)",
+          "elasticity": 0.007105661109248097
+        }
+      ]
+    },
+    "concrete_cost_per_t": {
+      "param_name": "concrete_cost_per_t",
+      "display_name": "concrete_cost_per_t",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "12",
+          "name": "Levitated Dipole (D-T)",
+          "elasticity": 0.007105661109248097
+        }
+      ]
+    },
+    "inner_vessel_cost_M_USD": {
+      "param_name": "inner_vessel_cost_M_USD",
+      "display_name": "inner_vessel_cost_M_USD",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "12",
+          "name": "Levitated Dipole (D-T)",
+          "elasticity": 0.011016528851537534
+        }
+      ]
+    },
+    "icrh_cost_per_MW_wallplug": {
+      "param_name": "icrh_cost_per_MW_wallplug",
+      "display_name": "icrh_cost_per_MW_wallplug",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "12",
+          "name": "Levitated Dipole (D-T)",
+          "elasticity": 0.046654125358565245
+        }
+      ]
+    },
+    "cryo_system_cost_M_USD": {
+      "param_name": "cryo_system_cost_M_USD",
+      "display_name": "cryo_system_cost_M_USD",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "12",
+          "name": "Levitated Dipole (D-T)",
+          "elasticity": 0.04831810899795111
+        }
+      ]
+    },
+    "remote_handling_cost_M_USD": {
+      "param_name": "remote_handling_cost_M_USD",
+      "display_name": "remote_handling_cost_M_USD",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "12",
+          "name": "Levitated Dipole (D-T)",
+          "elasticity": 0.05508264425768767
+        }
+      ]
+    },
+    "sacrificial_tape_km_yr": {
+      "param_name": "sacrificial_tape_km_yr",
+      "display_name": "sacrificial_tape_km_yr",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "12",
+          "name": "Levitated Dipole (D-T)",
+          "elasticity": 0.08143181255445564
+        }
+      ]
+    },
+    "replacement_tape_multiplier": {
+      "param_name": "replacement_tape_multiplier",
+      "display_name": "replacement_tape_multiplier",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "12",
+          "name": "Levitated Dipole (D-T)",
+          "elasticity": 0.08143181255445565
+        }
+      ]
+    },
+    "sacrificial_handling_M_USD_yr": {
+      "param_name": "sacrificial_handling_M_USD_yr",
+      "display_name": "sacrificial_handling_M_USD_yr",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "12",
+          "name": "Levitated Dipole (D-T)",
+          "elasticity": 0.05026655095953969
+        }
+      ]
+    },
+    "r_plasma_outer_m": {
+      "param_name": "r_plasma_outer_m",
+      "display_name": "r_plasma_outer_m",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "12",
+          "name": "Levitated Dipole (D-T)",
+          "elasticity": 0.03879699157445761
         }
       ]
     },
@@ -2930,98 +3213,35 @@
         {
           "concept_id": "12",
           "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.08194641271709693
-        },
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.8649773830114589
+          "elasticity": 0.008621553683205893
         },
         {
           "concept_id": "22",
           "name": "Projectile ICF (D-T)",
           "elasticity": 0.03812211807331049
-        }
-      ]
-    },
-    "vessel_thickness_m": {
-      "param_name": "vessel_thickness_m",
-      "display_name": "vessel_thickness_m",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.014256867838003787
         },
         {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.02263470614899286
-        },
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.00410666843299436
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": 0.1624780880415505
         }
       ]
     },
-    "blanket_unit_cost": {
-      "param_name": "blanket_unit_cost",
-      "display_name": "blanket_unit_cost",
+    "inner_vessel_thickness_m": {
+      "param_name": "inner_vessel_thickness_m",
+      "display_name": "inner_vessel_thickness_m",
       "category": "unclassified",
       "concepts": [
         {
           "concept_id": "12",
           "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.05305818435334314
-        },
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.019979286227525657
+          "elasticity": 0.02505685800048131
         }
       ]
     },
-    "hts_coil_system_cost_M_USD": {
-      "param_name": "hts_coil_system_cost_M_USD",
-      "display_name": "hts_coil_system_cost_M_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.15011769134815503
-        }
-      ]
-    },
-    "icrh_system_cost_M_USD": {
-      "param_name": "icrh_system_cost_M_USD",
-      "display_name": "icrh_system_cost_M_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.09007061480889302
-        }
-      ]
-    },
-    "rh_scale_factor": {
-      "param_name": "rh_scale_factor",
-      "display_name": "rh_scale_factor",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.053215989212063955
-        }
-      ]
-    },
-    "sacrificial_section_fraction": {
-      "param_name": "sacrificial_section_fraction",
-      "display_name": "sacrificial_section_fraction",
+    "blanket_coverage": {
+      "param_name": "blanket_coverage",
+      "display_name": "blanket_coverage",
       "category": "unclassified",
       "concepts": [
         {
@@ -3031,152 +3251,63 @@
         }
       ]
     },
-    "sacrificial_section_material_cost_M_USD": {
-      "param_name": "sacrificial_section_material_cost_M_USD",
-      "display_name": "sacrificial_section_material_cost_M_USD",
+    "om_fixed_M_per_MWe_yr": {
+      "param_name": "om_fixed_M_per_MWe_yr",
+      "display_name": "om_fixed_M_per_MWe_yr",
       "category": "unclassified",
       "concepts": [
         {
           "concept_id": "12",
           "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.18493961615485213
+          "elasticity": 0.0445393587337974
         }
       ]
     },
-    "coil_replacement_labor_M_USD": {
-      "param_name": "coil_replacement_labor_M_USD",
-      "display_name": "coil_replacement_labor_M_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.04109769247885186
-        }
-      ]
-    },
-    "tritium_startup_cost_M_USD": {
-      "param_name": "tritium_startup_cost_M_USD",
-      "display_name": "tritium_startup_cost_M_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.014748404764033054
-        }
-      ]
-    },
-    "driver_electrical_energy_per_shot_MJ": {
-      "param_name": "driver_electrical_energy_per_shot_MJ",
-      "display_name": "driver_electrical_energy_per_shot_MJ",
+    "fusion_energy_per_pulse_MJ": {
+      "param_name": "fusion_energy_per_pulse_MJ",
+      "display_name": "fusion_energy_per_pulse_MJ",
       "category": "unclassified",
       "concepts": [
         {
           "concept_id": "15",
           "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.0
+          "elasticity": -0.5549097914439854
         }
       ]
     },
-    "driver_wall_to_plasma_efficiency": {
-      "param_name": "driver_wall_to_plasma_efficiency",
-      "display_name": "driver_wall_to_plasma_efficiency",
+    "rep_rate_Hz": {
+      "param_name": "rep_rate_Hz",
+      "display_name": "rep_rate_Hz",
       "category": "unclassified",
       "concepts": [
         {
           "concept_id": "15",
           "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": -0.6368418060528123
+          "elasticity": -0.5542645316433277
         }
       ]
     },
-    "driver_stored_energy_per_shot_MJ": {
-      "param_name": "driver_stored_energy_per_shot_MJ",
-      "display_name": "driver_stored_energy_per_shot_MJ",
+    "driver_eta": {
+      "param_name": "driver_eta",
+      "display_name": "driver_eta",
       "category": "unclassified",
       "concepts": [
         {
           "concept_id": "15",
           "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.0
+          "elasticity": -0.512765032199297
         }
       ]
     },
-    "driver_cost_per_MJ_stored_M_USD": {
-      "param_name": "driver_cost_per_MJ_stored_M_USD",
-      "display_name": "driver_cost_per_MJ_stored_M_USD",
+    "p_lipb_pump_MW": {
+      "param_name": "p_lipb_pump_MW",
+      "display_name": "p_lipb_pump_MW",
       "category": "unclassified",
       "concepts": [
         {
           "concept_id": "15",
           "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.0207457069982125
-        }
-      ]
-    },
-    "driver_rep_rate_Hz": {
-      "param_name": "driver_rep_rate_Hz",
-      "display_name": "driver_rep_rate_Hz",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": -0.5616240433704804
-        },
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": -0.7399822875542912
-        }
-      ]
-    },
-    "fusion_energy_per_shot_MJ": {
-      "param_name": "fusion_energy_per_shot_MJ",
-      "display_name": "fusion_energy_per_shot_MJ",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": -0.561342320828875
-        }
-      ]
-    },
-    "fusion_Q": {
-      "param_name": "fusion_Q",
-      "display_name": "fusion_Q",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": -0.5352651949884472
-        }
-      ]
-    },
-    "pinch_current_MA": {
-      "param_name": "pinch_current_MA",
-      "display_name": "pinch_current_MA",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "plasma_temperature_keV": {
-      "param_name": "plasma_temperature_keV",
-      "display_name": "plasma_temperature_keV",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.0
+          "elasticity": 0.03777315204820726
         }
       ]
     },
@@ -3188,7 +3319,7 @@
         {
           "concept_id": "15",
           "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.4350847868974969
+          "elasticity": 0.3558232429405774
         },
         {
           "concept_id": "22",
@@ -3197,68 +3328,114 @@
         }
       ]
     },
-    "blanket_unit_cost_M_per_m3": {
-      "param_name": "blanket_unit_cost_M_per_m3",
-      "display_name": "blanket_unit_cost_M_per_m3",
+    "lipb_blanket_thickness_m": {
+      "param_name": "lipb_blanket_thickness_m",
+      "display_name": "lipb_blanket_thickness_m",
       "category": "unclassified",
       "concepts": [
         {
           "concept_id": "15",
           "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.3695173150745906
+          "elasticity": 0.6719921728324786
         }
       ]
     },
-    "electrode_system_cost_M_USD": {
-      "param_name": "electrode_system_cost_M_USD",
-      "display_name": "electrode_system_cost_M_USD",
+    "vessel_thickness_m": {
+      "param_name": "vessel_thickness_m",
+      "display_name": "vessel_thickness_m",
       "category": "unclassified",
       "concepts": [
         {
           "concept_id": "15",
           "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.12883860597296726
-        }
-      ]
-    },
-    "electrode_replacement_interval_yr": {
-      "param_name": "electrode_replacement_interval_yr",
-      "display_name": "electrode_replacement_interval_yr",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": -0.07634070337209535
-        }
-      ]
-    },
-    "fuel_cost_per_shot_USD": {
-      "param_name": "fuel_cost_per_shot_USD",
-      "display_name": "fuel_cost_per_shot_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.02046402542840534
+          "elasticity": 0.021025113867534712
         },
         {
           "concept_id": "22",
           "name": "Projectile ICF (D-T)",
-          "elasticity": 0.000014435069982646163
+          "elasticity": 0.00410666843299436
+        },
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": 0.051104195417795754
         }
       ]
     },
-    "p_libp_pumping_MW": {
-      "param_name": "p_libp_pumping_MW",
-      "display_name": "p_libp_pumping_MW",
+    "driver_cost_per_module_M": {
+      "param_name": "driver_cost_per_module_M",
+      "display_name": "driver_cost_per_module_M",
       "category": "unclassified",
       "concepts": [
         {
           "concept_id": "15",
           "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.06807464658968225
+          "elasticity": 0.18661513938452878
+        }
+      ]
+    },
+    "electrode_system_cost_per_module_M": {
+      "param_name": "electrode_system_cost_per_module_M",
+      "display_name": "electrode_system_cost_per_module_M",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "15",
+          "name": "15-sheared-flow-stabilized-z-pinch",
+          "elasticity": 0.04976403716920195
+        }
+      ]
+    },
+    "lipb_blanket_unit_cost": {
+      "param_name": "lipb_blanket_unit_cost",
+      "display_name": "lipb_blanket_unit_cost",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "15",
+          "name": "15-sheared-flow-stabilized-z-pinch",
+          "elasticity": 0.3037374575010118
+        }
+      ]
+    },
+    "electrode_replacement_cost_per_module_M": {
+      "param_name": "electrode_replacement_cost_per_module_M",
+      "display_name": "electrode_replacement_cost_per_module_M",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "15",
+          "name": "15-sheared-flow-stabilized-z-pinch",
+          "elasticity": 0.050166527935050775
+        }
+      ]
+    },
+    "deuterium_cost_per_kg": {
+      "param_name": "deuterium_cost_per_kg",
+      "display_name": "deuterium_cost_per_kg",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "15",
+          "name": "15-sheared-flow-stabilized-z-pinch",
+          "elasticity": 0.0006451804283096966
+        },
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": 0.0010918105105902722
+        }
+      ]
+    },
+    "dt_fuel_mass_per_pulse_kg": {
+      "param_name": "dt_fuel_mass_per_pulse_kg",
+      "display_name": "dt_fuel_mass_per_pulse_kg",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "15",
+          "name": "15-sheared-flow-stabilized-z-pinch",
+          "elasticity": 0.0006451804283096966
         }
       ]
     },
@@ -3298,6 +3475,18 @@
         }
       ]
     },
+    "driver_rep_rate_Hz": {
+      "param_name": "driver_rep_rate_Hz",
+      "display_name": "driver_rep_rate_Hz",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "22",
+          "name": "Projectile ICF (D-T)",
+          "elasticity": -0.7399822875542912
+        }
+      ]
+    },
     "fusion_yield_MJ": {
       "param_name": "fusion_yield_MJ",
       "display_name": "fusion_yield_MJ",
@@ -3331,6 +3520,18 @@
           "concept_id": "22",
           "name": "Projectile ICF (D-T)",
           "elasticity": 0.0028870139970432114
+        }
+      ]
+    },
+    "blanket_unit_cost": {
+      "param_name": "blanket_unit_cost",
+      "display_name": "blanket_unit_cost",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "22",
+          "name": "Projectile ICF (D-T)",
+          "elasticity": 0.019979286227525657
         }
       ]
     },
@@ -3382,18 +3583,6 @@
         }
       ]
     },
-    "p_trit_MW": {
-      "param_name": "p_trit_MW",
-      "display_name": "p_trit_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.028334140698650444
-        }
-      ]
-    },
     "p_target_factory_MW": {
       "param_name": "p_target_factory_MW",
       "display_name": "p_target_factory_MW",
@@ -3403,6 +3592,246 @@
           "concept_id": "22",
           "name": "Projectile ICF (D-T)",
           "elasticity": 0.004250120657034136
+        }
+      ]
+    },
+    "fuel_cost_per_shot_USD": {
+      "param_name": "fuel_cost_per_shot_USD",
+      "display_name": "fuel_cost_per_shot_USD",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "22",
+          "name": "Projectile ICF (D-T)",
+          "elasticity": 0.000014435069982646163
+        }
+      ]
+    },
+    "p_fus_MW": {
+      "param_name": "p_fus_MW",
+      "display_name": "p_fus_MW",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": -1.1511553127773837
+        }
+      ]
+    },
+    "dd_neutron_fraction": {
+      "param_name": "dd_neutron_fraction",
+      "display_name": "dd_neutron_fraction",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": -0.019338862443570276
+        }
+      ]
+    },
+    "blanket_energy_capture": {
+      "param_name": "blanket_energy_capture",
+      "display_name": "blanket_energy_capture",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": -0.6640071550683461
+        }
+      ]
+    },
+    "sc_coil_capital_M": {
+      "param_name": "sc_coil_capital_M",
+      "display_name": "sc_coil_capital_M",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": 0.21802914421180983
+        }
+      ]
+    },
+    "sc_coil_cryo_MW": {
+      "param_name": "sc_coil_cryo_MW",
+      "display_name": "sc_coil_cryo_MW",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": 0.20044436545751024
+        }
+      ]
+    },
+    "sc_coil_lifetime_FPY": {
+      "param_name": "sc_coil_lifetime_FPY",
+      "display_name": "sc_coil_lifetime_FPY",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": -0.07322100224012675
+        }
+      ]
+    },
+    "R_major_m": {
+      "param_name": "R_major_m",
+      "display_name": "R_major_m",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": 0.4408496908228575
+        }
+      ]
+    },
+    "R_minor_m": {
+      "param_name": "R_minor_m",
+      "display_name": "R_minor_m",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": 0.3233202221927716
+        }
+      ]
+    },
+    "elongation": {
+      "param_name": "elongation",
+      "display_name": "elongation",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": 0.4408496908228515
+        }
+      ]
+    },
+    "p_heat_overhead_MW": {
+      "param_name": "p_heat_overhead_MW",
+      "display_name": "p_heat_overhead_MW",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": 0.23465740148133707
+        }
+      ]
+    },
+    "heating_system_cost_M": {
+      "param_name": "heating_system_cost_M",
+      "display_name": "heating_system_cost_M",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": 0.04851721761088321
+        }
+      ]
+    },
+    "blanket_unit_cost_dd": {
+      "param_name": "blanket_unit_cost_dd",
+      "display_name": "blanket_unit_cost_dd",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": 0.09869933130821375
+        }
+      ]
+    },
+    "shield_unit_cost": {
+      "param_name": "shield_unit_cost",
+      "display_name": "shield_unit_cost",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": 0.2601273153188396
+        }
+      ]
+    },
+    "structure_unit_cost": {
+      "param_name": "structure_unit_cost",
+      "display_name": "structure_unit_cost",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": 0.031552371861671244
+        }
+      ]
+    },
+    "vessel_unit_cost": {
+      "param_name": "vessel_unit_cost",
+      "display_name": "vessel_unit_cost",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": 0.05047067233412686
+        }
+      ]
+    },
+    "remote_handling_scale": {
+      "param_name": "remote_handling_scale",
+      "display_name": "remote_handling_scale",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": 0.016321925910833285
+        }
+      ]
+    },
+    "p_vacuum_MW": {
+      "param_name": "p_vacuum_MW",
+      "display_name": "p_vacuum_MW",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": 0.023465610372717872
+        }
+      ]
+    },
+    "p_fuel_handling_MW": {
+      "param_name": "p_fuel_handling_MW",
+      "display_name": "p_fuel_handling_MW",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": 0.011732804694820366
+        }
+      ]
+    },
+    "om_base_cost_M_per_yr": {
+      "param_name": "om_base_cost_M_per_yr",
+      "display_name": "om_base_cost_M_per_yr",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "35",
+          "name": "PoloMac Magnetic Confinement",
+          "elasticity": 0.14703217285198095
         }
       ]
     }

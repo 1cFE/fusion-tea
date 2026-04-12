@@ -112,6 +112,13 @@ PoloMac Magnetic Confinement (Deutelio) — Free-Form LCOE Model
   O&M fraction (CAS70):       22.2%
   Fuel fraction (CAS80):      0.1%
 
+--- Cross-Concept Reference (scaled to 1000 MWe, α=0.6) ---
+  Native p_net:     85 MWe  →  Reference: 1000 MWe
+  Scale factor:     0.372
+  Scaled LCOE:      352.1 $/MWh
+  Scaled overnight: $15689 /kWe
+  [All values are SCENARIO bounds — very wide uncertainty]
+
 ========================================================================
 SENSITIVITY ANALYSIS — Single-Parameter Sweeps from Baseline
 Baseline LCOE: 94.57 ¢/kWh

@@ -209,6 +209,13 @@ def extract_costingfe(
     if "availability" in params_dict:
         raw.setdefault("power_table", {})["availability"] = params_dict["availability"]
 
+    # Post-hoc scaling: override headline metrics if scaled_headline is present
+    scaled_headline = getattr(module, "scaled_headline", None)
+    if scaled_headline and isinstance(scaled_headline, dict):
+        raw.setdefault("costs", {})["lcoe"] = scaled_headline.get("lcoe_per_mwh", raw.get("costs", {}).get("lcoe", 0))
+        raw.setdefault("costs", {})["overnight_cost"] = scaled_headline.get("overnight_per_kw", raw.get("costs", {}).get("overnight_cost", 0))
+        raw.setdefault("power_table", {})["p_net"] = scaled_headline.get("p_net_mw", raw.get("power_table", {}).get("p_net", 0))
+
     cost_model = CostModelData.from_forward_result(raw, sensitivities)
 
     name = str(frontmatter.get("Concept", concept_dir.name))
@@ -424,9 +431,18 @@ def extract_standalone(
             params_obj = getattr(loaded_module, "params", None)
             results_obj = getattr(loaded_module, "results", None)
 
+            # Helper: override headline metrics from scaled_headline if present
+            def _apply_scaled_headline(rd: dict[str, Any]) -> None:
+                sh = getattr(loaded_module, "scaled_headline", None)
+                if sh and isinstance(sh, dict):
+                    rd.setdefault("costs", {})["lcoe"] = sh.get("lcoe_per_mwh", rd.get("costs", {}).get("lcoe", 0))
+                    rd.setdefault("costs", {})["overnight_cost"] = sh.get("overnight_per_kw", rd.get("costs", {}).get("overnight_cost", 0))
+                    rd.setdefault("power_table", {})["p_net"] = sh.get("p_net_mw", rd.get("power_table", {}).get("p_net", 0))
+
             # Path 1: script provides its own mapping (backward compat)
             if to_explorer_dict is not None:
                 raw_dict = to_explorer_dict()
+                _apply_scaled_headline(raw_dict)
                 cost_model = CostModelData.from_forward_result(raw_dict, sensitivities=None)
                 has_cost_model = True
             # Path 2: centralized adapter from module-level params + results
@@ -437,6 +453,7 @@ def extract_standalone(
                 and dataclasses.is_dataclass(params_obj)
             ):
                 raw_dict = _freeform_to_explorer_dict(results_obj, params_obj)
+                _apply_scaled_headline(raw_dict)
                 cost_model = CostModelData.from_forward_result(raw_dict, sensitivities=None)
                 has_cost_model = True
             else:
@@ -455,6 +472,7 @@ def extract_standalone(
                         )
                     if isinstance(results_obj, dict):
                         raw_dict = _freeform_to_explorer_dict(results_obj, params_obj)
+                        _apply_scaled_headline(raw_dict)
                         cost_model = CostModelData.from_forward_result(
                             raw_dict, sensitivities=None
                         )

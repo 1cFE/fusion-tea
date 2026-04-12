@@ -73,7 +73,7 @@ from lib.memory import (
     load_relevant_memories,
 )
 from lib.claude import invoke_claude_validated, run_model
-from lib.loop import build_model_vars, run_stage1_loop
+from lib.loop import build_model_vars, extract_model_findings, run_stage1_loop
 from lib.step_runner import prepare_step, StepContext
 from lib.validators import (
     REVIEW_VERDICT_RE,
@@ -480,7 +480,13 @@ def cmd_model_setup(concepts: list[dict], args: argparse.Namespace) -> None:
         out_dir = ANALYSES_DIR / cid
         model_path = out_dir / "model_setup.py"
 
-        mv = build_model_vars(c, model_path, out_dir, standalone=True)
+        feedback_text = ""
+        if args.feedback:
+            feedback_text = extract_model_findings(args.feedback)
+            if not feedback_text:
+                feedback_text = args.feedback.read_text(encoding="utf-8")
+        mv = build_model_vars(c, model_path, out_dir, standalone=True,
+                              model_feedback=feedback_text)
         if mv is None:
             print(f"  skip {cid} (no analysis.md — run analyze first)")
             continue
@@ -1199,6 +1205,8 @@ def build_parser() -> argparse.ArgumentParser:
     p_ms.add_argument("--dry-run", action="store_true", help="Generate prompts without calling Claude")
     p_ms.add_argument("--timeout", type=int, default=900, help="Per-invocation timeout in seconds")
     p_ms.add_argument("--force", action="store_true", help="Re-run even if output exists")
+    p_ms.add_argument("--feedback", type=Path, default=None,
+                      help="Feedback file with model-targeted findings (### F-N: format)")
 
     # -- review --
     p_rev = sub.add_parser("review", help="Structured review with proposed actions")

@@ -186,9 +186,9 @@
       }
     },
     "headline": {
-      "lcoe_per_mwh": 118.62812042236328,
-      "overnight_cost_per_kw": 8600.712890625,
-      "p_net_mw": 500.0,
+      "lcoe_per_mwh": 89.90330368908324,
+      "overnight_cost_per_kw": 6518.1215060599225,
+      "p_net_mw": 1000.0,
       "q_eng": 3.2985780239105225,
       "capacity_factor": 0.85
     },
@@ -382,7 +382,85 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": null,
+  "narrative": {
+    "key_bets": [
+      "End-plug electrostatic confinement at mirror ratio 10+ produces a potential barrier deep enough to confine main-cell D-T ions at Q > 5",
+      "Linear ~7 MW/m center-cell scaling holds such that fusion power grows with length while end-plug input power remains roughly constant",
+      "DCLC and Alfvén ion cyclotron instabilities can be actively stabilized via sloshing ions and vortex flows at commercial density and temperature",
+      "HTS REBCO axisymmetric solenoids survive 14 MeV neutron flux over 30-year plant life with tractable shielding and demountable connections",
+      "Venetian-blind direct energy converter electrodes survive continuous D-T exhaust bombardment and deliver ~54% conversion of the ~20% alpha-particle energy fraction",
+      "A lithium-based blanket around the cylindrical center cell achieves TBR > 1 at 14 MeV neutron fluence",
+      "Steady-state NBI + ECH heating sustains end-plug plasma with a recirculating power fraction low enough to keep Qe > 1"
+    ],
+    "eliminated_costs": [
+      "No disruption-mitigation structure or vacuum vessel hardening — linear mirror has no plasma current and therefore no disruptions",
+      "No 3D shaped saddle or yin-yang coils — axisymmetric solenoids are simpler and cheaper to wind than tokamak D-coils or stellarator coils",
+      "No minimum-ignition plasma volume constraint — linear geometry claims to avoid the large-plant size floor that drives tokamak capital cost",
+      "Reduced end-region port-area fraction — the 50+ meter center cell allows NBI penetrations without large fractional surface-area penalty",
+      "No pulsed-magnetic-compression capacitor bank and its 10^9-shot reliability burden (as required by pulsed linear concepts like Helion)"
+    ],
+    "novel_costs": [
+      "Venetian-blind direct energy converter assembly, including magnetic field expansion hardware and periodic electrode replacement from fusion-exhaust erosion",
+      "Long linear building and civil structure scaling with 50–70+ m center-cell length rather than a compact tokamak footprint",
+      "Hot-cell remote-handling infrastructure along the full length of a linear machine for activated center-cell module replacement",
+      "Center-cell solenoid modules with demountable connections and per-module radiation shielding distributed across tens of meters",
+      "Continuous (not pulsed) high-power NBI + ECH heating plant sized for steady-state end-plug sustainment, including ~$1M/MW gyrotrons at 40–100 MW class"
+    ],
+    "risks": [
+      {
+        "description": "End-plug confinement at Q > 5 has never been experimentally validated; Anvil demonstrator (~2028) is the first dedicated test, and failure would roughly double required fusion and input power",
+        "severity": "high"
+      },
+      {
+        "description": "Recirculating power fraction is unpublished and the two parametric models disagree by 2.5× (40 vs 100 MW input), which directly determines whether Qe > 1 is achievable",
+        "severity": "high"
+      },
+      {
+        "description": "Per-meter cost of the center cell (magnets, building, blanket) has never been estimated, so the linear-scaling economic thesis is physically plausible but uncosted",
+        "severity": "high"
+      },
+      {
+        "description": "DCLC and Alfvén ion cyclotron instabilities require active stabilization still being developed computationally; degraded stabilization reduces achievable Q substantially",
+        "severity": "high"
+      },
+      {
+        "description": "Blanket architecture (FLiBe, LiPb, liquid Li, HCPB) is undisclosed, driving 36–45% thermal efficiency range, TBR uncertainty, and blanket capital cost uncertainty",
+        "severity": "high"
+      },
+      {
+        "description": "TBR > 1 has never been validated under 14 MeV fusion-neutron flux for any blanket concept, and Li-6 enrichment is dominated by Russian/Chinese supply",
+        "severity": "high"
+      },
+      {
+        "description": "DEC electrode survivability under continuous D-T exhaust (neutrons, energetic neutrals, alphas) is undemonstrated over commercial lifetime, and the thin uncooled electrode design is not analyzed in Realta's published materials",
+        "severity": "medium"
+      },
+      {
+        "description": "REBCO tape supply chain is thin (single-supplier concentration with CFS) and current $30–100/kA-m pricing must fall ~10× to reach commercial viability",
+        "severity": "medium"
+      },
+      {
+        "description": "Tritium startup inventory (~1 kg likely) must come from a global ~25–30 kg CANDU-derived supply at >$35,000/g, a fleet-level constraint",
+        "severity": "medium"
+      },
+      {
+        "description": "End divertor heat flux and handling strategy at commercial fusion power has not been analyzed in any Realta or recent mirror publication",
+        "severity": "medium"
+      },
+      {
+        "description": "Hot-cell remote handling along a 50–70 m linear machine for activated center-cell module replacement is a known practical concern not addressed in Realta materials, with direct capacity-factor implications",
+        "severity": "medium"
+      },
+      {
+        "description": "DEC thermodynamic contribution in D-T is capped at ~11% of thermal output (20% alpha fraction × 54% efficiency), so the touted differentiator provides only 10–15% LCOE swing",
+        "severity": "low"
+      },
+      {
+        "description": "Commercial Hammir center-cell length is unspecified; 50 m pilot targets Q > 5 but Q >> 5 and Pe >> 50 MWe require longer unspecified configurations",
+        "severity": "medium"
+      }
+    ]
+  },
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/11-magnetic-mirror/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/11-magnetic-mirror/analysis.md"

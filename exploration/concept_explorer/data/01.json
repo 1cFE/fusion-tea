@@ -186,9 +186,9 @@
       }
     },
     "headline": {
-      "lcoe_per_mwh": 639.8662719726562,
-      "overnight_cost_per_kw": 48050.0546875,
-      "p_net_mw": 261.00006103515625,
+      "lcoe_per_mwh": 373.89138819938205,
+      "overnight_cost_per_kw": 28076.963011004475,
+      "p_net_mw": 1000.0,
       "q_eng": 3.1781816482543945,
       "capacity_factor": 0.75
     },
@@ -394,7 +394,89 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": null,
+  "narrative": {
+    "key_bets": [
+      "REBCO HTS tape cost falls from ~$100/kA-m (2025) to ~$10/kA-m commercial target, requiring 1-2 orders of magnitude production scale-up",
+      "High-field compact geometry (B=9.2 T on-axis, ~23 T peak, R=3.3 m) yields ~1/3 the cost of ARIES-RS at ~1/4 the electrical output via B⁴/R² fusion power scaling",
+      "I-mode confinement is accessible at ARC's operating point (0.55 MW/m²/n₂₀, 9.2 T), exceeding published C-Mod demonstration range (up to 0.2–0.5 MW/m²/n₂₀ at 6 T)",
+      "Liquid FLiBe blanket achieves TBR ≥ 1.1 (optimizable to ~1.22) with Li-6 enrichment while simultaneously serving as breeder, coolant, and shield",
+      "Demountable TF coil joints perform reliably at 23 T peak field and enable in-situ blanket/vessel maintenance",
+      "Non-inductive current drive via 63% bootstrap plus 25 MW 8 GHz LHCD (not yet demonstrated; only 6 GHz klystrons proven) sustains quasi-steady operation",
+      "Capacity factor exceeds ~70–80% sustained multi-year — required for sub-$100/MWh LCOE but not yet demonstrated for any fusion device"
+    ],
+    "eliminated_costs": [
+      "Complex solid ceramic breeder module fabrication and handling (replaced by liquid FLiBe immersion)",
+      "ELM-driven first-wall erosion and frequent divertor replacement (I-mode operates without ELMs)",
+      "Full reactor disassembly for blanket/vessel maintenance (demountable TF joints enable in-situ access)",
+      "Separate coolant loop distinct from breeder (FLiBe serves breeding and thermal duty in one fluid)",
+      "Large-bore LTS magnet volume and ITER-class plant footprint (compact high-field geometry shrinks the nuclear island)"
+    ],
+    "novel_costs": [
+      "5,730 km of REBCO tape per reactor — exceeds ~1–2× current global annual production capacity for a single plant",
+      "FLiBe chemistry plant and molten-salt tritium extraction system (~$100–200M floor, ARC-specific BOP addition with no ARIES analogue)",
+      "~950 tonnes of FLiBe (~$146M NOAK) plus Li-6 enrichment supply chain at 40–90% enrichment (Western capacity gap)",
+      "Demountable TF coil joint fabrication and qualification at 23 T peak field",
+      "25 MW 8 GHz LHCD system — only 6 GHz klystrons proven reliable; no cost estimate exists for the required frequency/power"
+    ],
+    "risks": [
+      {
+        "description": "Magnet system dominates ~92% of fabricated cost ($5.1–5.2B of $5.56B); REBCO tape price at 2025 ~$100/kA-m is still ~10× above $10/kA-m commercial target, with 5.5× spread in 2014 prices",
+        "severity": "high"
+      },
+      {
+        "description": "Capacity factor is not published in any CFS/ARC source; a 2× swing (50% vs 90%) produces a near-2× LCOE swing for this CAPEX-heavy concept",
+        "severity": "high"
+      },
+      {
+        "description": "FOAK-to-NOAK step-function cost risk: CATF IWG cites 150–200 $/MWh FOAK vs 60–100 $/MWh NOAK, a 2–3× gap for plants 1–3 in deployment sequence",
+        "severity": "high"
+      },
+      {
+        "description": "FLiBe behavior under ARC conditions is uncharacterized: tritium extraction timescales, MHD heat transfer under 9.2 T, and radiation-assisted Inconel-718 corrosion are all unresolved R&D items",
+        "severity": "high"
+      },
+      {
+        "description": "I-mode confinement has only been demonstrated up to 6 T and 0.2–0.5 MW/m²/n₂₀ on C-Mod; if unavailable at ARC's 9.2 T / 0.55 MW/m²/n₂₀ operating point, fusion power drops from 525 MW to ~200 MW, pushing $/kWe up 2.5–3×",
+        "severity": "high"
+      },
+      {
+        "description": "Tritium supply constraint: global civilian inventory ~25–30 kg declining at 5.5%/year from CANDU retirements; first commercial D-T plants must demonstrate TBR ≥ 1.1 from first plasma with no breeding margin",
+        "severity": "high"
+      },
+      {
+        "description": "Beryllium supply chain: 10-plant fleet would require ~3,000 tonnes/yr, an order of magnitude above current global production (~300 tonnes/yr)",
+        "severity": "medium"
+      },
+      {
+        "description": "Remote maintenance of in-vessel ICRF antennae and blanket systems at TRL 5–6; power-plant-tempo availability (>80%) not yet demonstrated in a fusion neutron environment",
+        "severity": "medium"
+      },
+      {
+        "description": "Regulatory framework under NRC Part 30 is favorable but rulemaking incomplete; shift to Part-50-style regulation would apply 2.2× building cost markup (Araiinejad & Shirvan 2025)",
+        "severity": "medium"
+      },
+      {
+        "description": "25 MW 8 GHz LHCD system not demonstrated (only 6 GHz klystrons proven); without it, bootstrap alone at 63% may be insufficient for required current profile",
+        "severity": "medium"
+      },
+      {
+        "description": "REBCO joint performance never tested simultaneously at reactor-level field + stress + neutron flux; 2015 paper notes joints only bench-tested at 77 K without background field",
+        "severity": "medium"
+      },
+      {
+        "description": "ARC commercial design parameters have evolved to 400 MWe target but are not publicly documented; analysis uses 2015 190–261 MWe baseline",
+        "severity": "medium"
+      },
+      {
+        "description": "No published estimate for full plant capital cost (BoP, indirect, financing), capacity factor, or annual O&M breakdown — three blocking or important data gaps",
+        "severity": "medium"
+      },
+      {
+        "description": "Tungsten divertor long-term survival at ARC heat flux with simultaneous 14 MeV neutron damage not demonstrated; remote replacement at required frequency unproven",
+        "severity": "low"
+      }
+    ]
+  },
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/01-hts-compact-tokamak/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/01-hts-compact-tokamak/analysis.md"

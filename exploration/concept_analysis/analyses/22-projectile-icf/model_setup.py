@@ -1,7 +1,6 @@
-# STALE: analysis-updated-iter-4
 """
-Projectile ICF (D-T) First-Pass LCOE Model
-===========================================
+Projectile ICF (D-T) Free-Form LCOE Model
+==========================================
 1cFE First Pass Concept Analysis
 Concept: Hypervelocity Projectile-Driven Inertial Confinement Fusion (D-T)
 Companies: First Light Fusion (Oxford, UK; pivoted to FLARE, Sept 2025),
@@ -43,6 +42,13 @@ Key references:
 - SAND2006-7148 — Z-IFE Power Plant Final Report FY2006 (analogue for IFE architecture)
 - Olson et al., Fusion Eng. Design (2005) — Z-pinch IFE power plant (analogue scaling)
 - 1costingfe CAS structure — https://github.com/1cFE/1costingfe
+
+Cross-concept power scaling:
+    A module-level `scaled_headline` dict normalizes LCOE and overnight $/kW to
+    1000 MWe using post-hoc economy-of-scale scaling with exponent α=0.6.
+    This does NOT change any physics parameters — it scales only the cost outputs
+    for cross-concept comparability. The `results` dict always reflects the
+    concept's native power level.
 
 Structural departures from standard CAS tokamak model:
 - C220103 Coils = $0 (no magnets in projectile ICF)
@@ -443,9 +449,16 @@ class ProjectileICFPlantParams:
         p_net = p_et - driver_avg_power_MW - p_aux
         r["p_net"] = p_net
 
-        # Engineering Q (fusion power / driver input power)
+        # Engineering Q (fusion power / driver wall-plug power)
         r["Q_eng"] = p_fus / driver_avg_power_MW if driver_avg_power_MW > 0 else float('inf')
+        # Scientific Q (= target gain for IFE: fusion yield / energy delivered to target)
+        r["Q_sci"] = r["target_gain"]
         r["recirc_fraction"] = (driver_avg_power_MW + p_aux) / p_et if p_et > 0 else float('inf')
+
+        # Plant-level totals (for multi-module concepts; n_mod=1 for single chamber)
+        r["p_net_plant"] = p_net * self.n_mod
+        r["p_et_plant"] = p_et * self.n_mod
+        r["p_th_plant"] = p_th * self.n_mod
 
         # Annual shot count
         r["shots_per_year"] = self.driver_rep_rate_Hz * 3600 * 8760 * self.plant_availability
@@ -829,6 +842,37 @@ class ProjectileICFPlantParams:
         return results
 
 
+# =============================================================================
+# Module-level interface — consumed by concept explorer for cross-concept comparison
+# Baseline: FLF 333 MWe design point (gain=1000×, driver=$1B, rep=0.033 Hz)
+# =============================================================================
+params = ProjectileICFPlantParams(
+    fusion_yield_MJ=30_000.0,        # 30 GJ/shot — inferred 333 MWe at 0.033 Hz
+    driver_efficiency=0.30,           # Central EM launcher estimate
+    driver_stored_energy_MJ=100.0,    # Machine 4 spec
+    driver_cost_M_USD=1_000.0,        # Central from FLARE analogues
+    driver_rep_rate_Hz=0.033,         # 30s cycle (pilot design point)
+    target_cost_USD=5.0,
+    li_inventory_cost_M_USD=70.0,
+    noak=True,
+)
+results = params.compute()
+
+# Post-hoc scaling to 1000 MWe (cross-concept comparison)
+# Economy-of-scale exponent α=0.6 (standard engineering cost scaling)
+# Does NOT change physics parameters — scales costs only.
+_ALPHA = 0.6
+_p_native = results["power"].get("p_net_plant", results["power"]["p_net"])
+_factor = (_p_native / 1000.0) ** (1.0 - _ALPHA)
+_overnight = results["costs"]["overnight_capital"] * 1e3 / _p_native  # $/kW native
+
+scaled_headline = {
+    "p_net_mw": 1000.0,
+    "lcoe_per_mwh": results["economics"]["lcoe_USD_per_MWh"] * _factor,
+    "overnight_per_kw": _overnight * _factor,
+}
+
+
 def print_results(params: ProjectileICFPlantParams, results: dict, label: str = ""):
     """Pretty-print LCOE model results with CAS-structured accounting."""
     power = results["power"]
@@ -1034,6 +1078,14 @@ CRITICAL FRAMING (from analysis.md §Section 2):
 
     baseline_results = baseline.compute()
     print_results(baseline, baseline_results, label="Baseline (gain=1000×, driver=$1B, 0.033 Hz)")
+
+    # Scaled headline (cross-concept comparison at 1000 MWe reference)
+    _p_nat = baseline_results["power"].get("p_net_plant", baseline_results["power"]["p_net"])
+    _ovn = baseline_results["costs"]["overnight_capital"] * 1e3 / _p_nat
+    _fac = (_p_nat / 1000.0) ** (1.0 - 0.6)
+    print(f"\n  [Scaled to 1000 MWe, α=0.6]  "
+          f"LCOE = {baseline_results['economics']['lcoe_USD_per_MWh'] * _fac:.1f} $/MWh  |  "
+          f"Overnight = {_ovn * _fac:,.0f} $/kW")
 
     # =========================================================================
     # SENSITIVITY SWEEPS — Top 6 LCOE drivers

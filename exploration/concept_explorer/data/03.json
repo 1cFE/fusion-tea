@@ -315,7 +315,72 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": null,
+  "narrative": {
+    "key_bets": [
+      "Plasmonic field enhancement in gold nanoshells amplifies external ~10^9 V/cm laser field to ~10^11 V/cm internal field, accelerating deuterons to ~25 keV equivalent energy sufficient for D-D fusion",
+      "Continuous liquid D2O jet laden with suspended gold nanoshells can deliver 10^6 nanoshells per pulse at MHz repetition rates with spatial precision matching femtosecond laser focal spot",
+      "Commercial off-the-shelf femtosecond lasers (~1 μm, ~3 fs pulses) with orbital angular momentum beam shaping can drive fusion at plant-relevant average power without MJ-class driver energy",
+      "Projected Q~100 at ~3 kW laser input producing ~1 MW fusion power scales to commercial reactor output (implying 14 orders of magnitude increase over demonstrated 10^5 n/s Cambridge baseline to projected 10^19 n/s)",
+      "Gold nanoshells survive the plasma event and can be recovered/recycled from spent jet fluid at near-100% efficiency, keeping gold consumption economically viable",
+      "Some energy capture architecture (undisclosed) can convert D-D fusion products (charged particles + 2.45 MeV neutrons) to electricity at viable efficiency"
+    ],
+    "eliminated_costs": [
+      "Tritium supply, breeding blanket, and tritium handling infrastructure (D-D fuel cycle eliminates this entirely)",
+      "Cryogenic target fabrication and cryogenic plant systems (liquid D2O jet at room temperature, no frozen DT capsules)",
+      "MJ-class laser driver (NIF/LIFE-scale DPSSL or KrF systems) — replaced by commercial femtosecond laser at ~3 kW input",
+      "Hohlraum and associated indirect-drive target manufacturing complexity",
+      "External superconducting or normal-conducting magnet systems (no magnetic confinement components)"
+    ],
+    "novel_costs": [
+      "Gold nanoshell synthesis at industrial scale (~10^12 nanoshells/s feed rate) with ~100 nm radius, ~25 nm shell thickness precision",
+      "Gold nanoshell recovery and recycling system from spent liquid jet (critical — unrecovered gold costs ~$18,000/hr at 60 mg/s and $85k/kg)",
+      "MHz-rate liquid jet nozzle system with nanoshell-laden fluid handling and post-shot debris clearing",
+      "Orbital angular momentum (OAM) beam-shaping optics at high average power for inverse Faraday effect field generation",
+      "Nanoshell target factory as a distinct CAS22 subsystem with no cost analogue in prior fusion concepts"
+    ],
+    "risks": [
+      {
+        "description": "Plasmonic field enhancement driving D-D fusion has zero experimental validation — the entire concept rests on a theoretical preprint not yet peer-reviewed",
+        "severity": "high"
+      },
+      {
+        "description": "Anomalous 3333 MeV/event figure in arXiv:2503.15531 (vs. standard ~3.65 MeV) is unexplained; if calculation error, claimed Q~100 is unreliable",
+        "severity": "high"
+      },
+      {
+        "description": "No energy capture or conversion architecture has been disclosed in any form, blocking any grounded LCOE estimate",
+        "severity": "high"
+      },
+      {
+        "description": "14-order-of-magnitude scaling gap from Cambridge 10^5 n/s baseline to projected 10^19 n/s reactor flux",
+        "severity": "high"
+      },
+      {
+        "description": "Gold nanoshell recycling at near-100% is assumed but entirely undemonstrated; failure would impose ~$18,000/hr gold consumption cost",
+        "severity": "high"
+      },
+      {
+        "description": "Nanoshell delivery at MHz rates with suspended-particle liquid jets has no demonstrated analogue (Cambridge work is kHz, no nanoshells)",
+        "severity": "high"
+      },
+      {
+        "description": "Neutron shielding, blanket, and activation management for 10^19 n/s D-D source undisclosed; structural capital cost and regulatory classification unconstrained",
+        "severity": "medium"
+      },
+      {
+        "description": "Femtosecond laser wall-plug efficiency, lifetime, and cost at MW-class average power have no established analogues or benchmarks",
+        "severity": "medium"
+      },
+      {
+        "description": "Cortex has published zero experimental fusion results, single theoretical preprint, and $2.6M funding — extremely low institutional validation versus claim magnitude",
+        "severity": "high"
+      },
+      {
+        "description": "No peer review of primary technical claims (arXiv preprint only) and no third-party techno-economic assessment exists",
+        "severity": "medium"
+      }
+    ]
+  },
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/03-laser-icf-liquid-jet-target/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/03-laser-icf-liquid-jet-target/analysis.md"

@@ -186,9 +186,9 @@
       }
     },
     "headline": {
-      "lcoe_per_mwh": 115.77710723876953,
-      "overnight_cost_per_kw": 8046.158811454379,
-      "p_net_mw": 400.0,
+      "lcoe_per_mwh": 80.25030483797346,
+      "overnight_cost_per_kw": 5577.153487366944,
+      "p_net_mw": 1000.0,
       "q_eng": 4.40564263322884,
       "capacity_factor": 0.85
     },
@@ -323,7 +323,85 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": null,
+  "narrative": {
+    "key_bets": [
+      "KrF excimer ASPEN laser architecture with NLO pulse compression achieves $60-80/J at NOAK, requiring 25x reduction in capacitor cost to <$0.40/J via in-house manufacturing",
+      "Capsule gain Qc > 200 at 8-12 MJ on target, extrapolated from NIF's ~34 at 250 kJ via 2/3 power-law scaling (never validated above NIF scale)",
+      "Two-beam Hybrid Direct Drive (HDD) implosion achieves symmetric ignition using ring-shaped intensity profile and hohlraum pre-pulse, with only two beam penetrations through the chamber",
+      "FLiBe thick-liquid-wall chamber clears vaporized coolant (<10 kg/shot) via gravity within ~1 second, sustaining 0.25-1 Hz rep rate",
+      "Laser wall-plug efficiency of 5-7% maintained at MJ scale (demonstrated only at 750 J on NRL Electra)",
+      "SBS/NLO pulse compression preserves beam wavefront quality at >100 kJ per pulse to maintain implosion symmetry",
+      "FLiNaK substitution for FLiBe in commercial plants maintains adequate TBR (~1.05) via (n,2n) reactions, eliminating beryllium supply chain"
+    ],
+    "eliminated_costs": [
+      "Superconducting magnet system (C220103 = $0) — no TF/PF coils required in IFE",
+      "First-wall and divertor replacement cycle — thick FLiBe liquid wall self-renews each shot",
+      "Auxiliary plasma heating and current-drive systems (NBI, ECRH, ICRH) — pulsed IFE has no plasma to sustain",
+      "Final focusing optics refurbishment (>$40M/year at NIF) — Xcimer geometry keeps optics outside neutron/X-ray flux zone",
+      "Lithium-6 enrichment — thick liquid wall with large capsule yield breeds adequately from natural lithium"
+    ],
+    "novel_costs": [
+      "Laser driver capital ($600-800M NOAK at 10 MJ, $1,500-2,000/kWe) — dominates plant capex with no vendor ecosystem or independent cost history at MJ scale",
+      "Per-shot DT target consumables at 8-31 million targets/year (0.25-1 Hz) — recurring cost with no MFE analogue, $2-3/target Goodin ceiling",
+      "In-house capacitor manufacturing facility (Tucson, AZ) — vertical-integration capex committed before plant validation",
+      "FLiBe thick-liquid-wall chamber with precision jet formation, pumps, nozzles, and redox chemistry control — no industrial precedent at fusion conditions",
+      "Target fabrication and injection infrastructure for sub-Hz high-reliability shot cadence (plastic ablator + liquid DT precision sphericity at mass throughput)"
+    ],
+    "risks": [
+      {
+        "description": "Laser $/J NOAK target ($60-80/J) is self-reported, unverified, and depends on untested MJ-scale NLO architecture plus 25x capacitor cost reduction",
+        "severity": "high"
+      },
+      {
+        "description": "Capsule gain extrapolation from NIF (Qc ~34 at 250 kJ) to Xcimer (Qc >200 at 10 MJ) via 2/3 power-law is unvalidated; Betti 2024 calls even ~100x gain 'unclear' at few-MJ scale",
+        "severity": "high"
+      },
+      {
+        "description": "Two-beam HDD implosion symmetry has no experimental demonstration; Anvil (2028) is first test, and failure is an architectural kill with no LCOE mitigation path because thick-liquid-wall requires exactly two beam penetrations",
+        "severity": "high"
+      },
+      {
+        "description": "FLiBe chamber clearing dynamics at sub-Hz rep rate validated only by simulation and water/oil analogs; if clearing exceeds 1 second, rep rate drops below 0.25 Hz and LCOE rises 2-2.5x",
+        "severity": "high"
+      },
+      {
+        "description": "SBS/NLO pulse compression phase-preservation at >100 kJ per pulse is unproven; degraded beam quality would compound two-beam symmetry challenge",
+        "severity": "high"
+      },
+      {
+        "description": "Energy conversion cycle type unresolved (steam Rankine ~33% vs. He Brayton ~45%) — materially different gross thermal power requirements and BOP capital cost",
+        "severity": "medium"
+      },
+      {
+        "description": "Target fabrication cost per shot is proprietary and unvalidated at 8-31M/yr throughput; exceeding $2-3/target Goodin ceiling adds $11-22/MWh to LCOE (base excludes target cost entirely)",
+        "severity": "medium"
+      },
+      {
+        "description": "Plant availability/capacity factor has no maintenance model or component lifetime data; FLiBe pump/nozzle maintenance interval unknown",
+        "severity": "medium"
+      },
+      {
+        "description": "FLiBe → FLiNaK blanket transition between Athena and commercial plants is an architectural material change, not a learning-curve multiplier; cost delta is a blocking gap",
+        "severity": "medium"
+      },
+      {
+        "description": "NRL has moved primary US government gas-laser IFE program from KrF to ArF, leaving Xcimer's KrF MJ-scale scaling path without active government co-development at the same medium",
+        "severity": "medium"
+      },
+      {
+        "description": "Betti 2024 independent assessment: direct-drive implosion quality unlikely to rival indirect drive with current laser tech; Xcimer's two-beam geometry is a harder version of this problem",
+        "severity": "medium"
+      },
+      {
+        "description": "Tritium inventory claim of <200 g at GWe depends on rapid FLiBe extraction that has only been demonstrated at lab scale",
+        "severity": "low"
+      },
+      {
+        "description": "Beryllium supply chain (Athena FLiBe) constrained by single US producer (Materion) at ~300 tonnes/yr global output with no industrial-scale FLiBe production",
+        "severity": "low"
+      }
+    ]
+  },
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/17a-laser-icf-hybrid-drive/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/17a-laser-icf-hybrid-drive/analysis.md"
