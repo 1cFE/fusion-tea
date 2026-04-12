@@ -10,42 +10,42 @@
   "cost_model": {
     "cas10": {
       "name": "Preconstruction",
-      "cost_m_usd": 18.0,
+      "cost_m_usd": 17.25,
       "overridden": false
     },
     "cas21": {
       "name": "Buildings & Structures",
-      "cost_m_usd": 722.0463256835938,
+      "cost_m_usd": 487.087646484375,
       "overridden": false
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 2141.424560546875,
+      "cost_m_usd": 1858.966552734375,
       "overridden": false
     },
     "cas23": {
       "name": "Turbine Plant Equipment",
-      "cost_m_usd": 187.84417724609375,
+      "cost_m_usd": 126.71843719482422,
       "overridden": false
     },
     "cas24": {
       "name": "Electrical Plant Equipment",
-      "cost_m_usd": 80.00770568847656,
+      "cost_m_usd": 53.97266387939453,
       "overridden": false
     },
     "cas25": {
       "name": "Miscellaneous Plant Equipment",
-      "cost_m_usd": 48.70034408569336,
+      "cost_m_usd": 32.852928161621094,
       "overridden": false
     },
     "cas26": {
       "name": "Heat Rejection Systems",
-      "cost_m_usd": 32.466896057128906,
+      "cost_m_usd": 21.90195083618164,
       "overridden": false
     },
     "cas27": {
       "name": "Special Materials",
-      "cost_m_usd": 11.999998092651367,
+      "cost_m_usd": 7.500000953674316,
       "overridden": false
     },
     "cas28": {
@@ -60,48 +60,48 @@
     },
     "cas30": {
       "name": "Indirect Costs",
-      "cost_m_usd": 538.2483520507812,
+      "cost_m_usd": 432.3333740234375,
       "overridden": false
     },
     "cas40": {
       "name": "Owner's Costs",
-      "cost_m_usd": 34.88265609741211,
+      "cost_m_usd": 27.577165603637695,
       "overridden": false
     },
     "cas50": {
       "name": "Supplementary Costs",
-      "cost_m_usd": 281.8338928222656,
+      "cost_m_usd": 201.18338012695312,
       "overridden": false
     },
     "cas60": {
       "name": "Interest During Construction",
-      "cost_m_usd": 615.974609375,
+      "cost_m_usd": 491.3352355957031,
       "overridden": false
     },
     "cas70": {
       "name": "O&M Costs (annualised)",
-      "cost_m_usd": 91.1998291015625,
+      "cost_m_usd": 69.74274444580078,
       "overridden": false
     },
     "cas80": {
       "name": "Fuel Costs (annualised)",
-      "cost_m_usd": 0.9451389312744141,
+      "cost_m_usd": 0.6308382749557495,
       "overridden": false
     },
     "cas90": {
       "name": "Financial Costs",
-      "cost_m_usd": 380.24127197265625,
+      "cost_m_usd": 303.3013610839844,
       "overridden": false
     },
     "cas22_detail": {
       "C220101": {
         "name": "First Wall & Blanket",
-        "cost_m_usd": 95.44879150390625,
+        "cost_m_usd": 53.74173355102539,
         "overridden": false
       },
       "C220102": {
         "name": "Radiation Shield",
-        "cost_m_usd": 88.21485900878906,
+        "cost_m_usd": 52.39754104614258,
         "overridden": false
       },
       "C220103": {
@@ -116,22 +116,22 @@
       },
       "C220105": {
         "name": "Primary Structure & Support",
-        "cost_m_usd": 6.491842746734619,
+        "cost_m_usd": 3.9773738384246826,
         "overridden": false
       },
       "C220106": {
         "name": "Vacuum System",
-        "cost_m_usd": 34.85858917236328,
+        "cost_m_usd": 20.70965576171875,
         "overridden": false
       },
       "C220107": {
         "name": "Power Conditioning & Energy Storage",
-        "cost_m_usd": 77.20332336425781,
+        "cost_m_usd": 58.60915756225586,
         "overridden": false
       },
       "C220108": {
         "name": "Divertor / Target Factory",
-        "cost_m_usd": 92.4874267578125,
+        "cost_m_usd": 75.96328735351562,
         "overridden": false
       },
       "C220109": {
@@ -141,12 +141,12 @@
       },
       "C220110": {
         "name": "Remote Handling & Maintenance Equipment",
-        "cost_m_usd": 146.2354736328125,
+        "cost_m_usd": 120.1084976196289,
         "overridden": false
       },
       "C220111": {
         "name": "Installation Labor",
-        "cost_m_usd": 197.43516540527344,
+        "cost_m_usd": 175.6745147705078,
         "overridden": false
       },
       "C220112": {
@@ -156,118 +156,118 @@
       },
       "C220200": {
         "name": "Main & Secondary Coolant",
-        "cost_m_usd": 165.61050415039062,
+        "cost_m_usd": 109.42326354980469,
         "overridden": false
       },
       "C220300": {
         "name": "Auxiliary Cooling & Cryoplant",
-        "cost_m_usd": 81.90181732177734,
+        "cost_m_usd": 81.05130004882812,
         "overridden": false
       },
       "C220400": {
         "name": "Radioactive Waste Management",
-        "cost_m_usd": 4.6571364402771,
+        "cost_m_usd": 3.1416733264923096,
         "overridden": false
       },
       "C220500": {
         "name": "Fuel Handling & Storage",
-        "cost_m_usd": 102.64651489257812,
+        "cost_m_usd": 73.8686752319336,
         "overridden": false
       },
       "C220600": {
         "name": "Other Reactor Plant Equipment",
-        "cost_m_usd": 9.619882583618164,
+        "cost_m_usd": 6.605016231536865,
         "overridden": false
       },
       "C220700": {
         "name": "Instrumentation & Control",
-        "cost_m_usd": 66.08236694335938,
+        "cost_m_usd": 51.163814544677734,
         "overridden": false
       }
     },
     "headline": {
-      "lcoe_per_mwh": 84.2583999633789,
-      "overnight_cost_per_kw": 5898.0380859375,
-      "p_net_mw": 799.9998779296875,
-      "q_eng": 6.317869663238525,
+      "lcoe_per_mwh": 80.81980703886495,
+      "overnight_cost_per_kw": 5704.670682512638,
+      "p_net_mw": 1000.0,
+      "q_eng": 4.542135238647461,
       "capacity_factor": 0.8
     },
     "sensitivities": {
       "engineering": {
         "availability": {
-          "elasticity": -0.9549447070724808,
+          "elasticity": -0.9604874638827547,
           "baseline": 0.8
         },
         "construction_time_yr": {
-          "elasticity": 0.2673468367202025,
+          "elasticity": 0.2699008522556547,
           "baseline": 5.0
         },
         "mn": {
-          "elasticity": -0.001670707342127202,
+          "elasticity": -0.0014191342344512848,
           "baseline": 1.1
         },
         "eta_th": {
-          "elasticity": -0.09012963459954501,
+          "elasticity": -0.078202185362498,
           "baseline": 0.4
         },
         "eta_p": {
-          "elasticity": -8.821094616476719e-7,
+          "elasticity": -1.1225811136495693e-6,
           "baseline": 0.5
         },
         "f_sub": {
-          "elasticity": 0.012206541816201616,
+          "elasticity": 0.010651148212949069,
           "baseline": 0.03
         },
         "p_pump": {
-          "elasticity": 0.0008553245589919033,
+          "elasticity": 0.0011063684453855463,
           "baseline": 2.0
         },
         "p_trit": {
-          "elasticity": 0.0042810335865846845,
+          "elasticity": 0.005537455701738649,
           "baseline": 10.0
         },
         "p_house": {
-          "elasticity": 0.0021405167932923423,
+          "elasticity": 0.0027687278508693246,
           "baseline": 5.0
         },
         "p_cryo": {
-          "elasticity": 0.016923103408186962,
+          "elasticity": 0.021607909224684266,
           "baseline": 8.0
         },
         "blanket_t": {
-          "elasticity": 0.06095069890137036,
+          "elasticity": 0.04578976870520477,
           "baseline": 0.6
         },
         "ht_shield_t": {
-          "elasticity": 0.013970026810554922,
+          "elasticity": 0.010565880223126607,
           "baseline": 0.2
         },
         "structure_t": {
-          "elasticity": 0.0033144553977423954,
+          "elasticity": 0.002623284365634872,
           "baseline": 0.15
         },
         "vessel_t": {
-          "elasticity": 0.010761102410070248,
+          "elasticity": 0.008188496607140477,
           "baseline": 0.15
         },
         "plasma_t": {
-          "elasticity": 0.03923071559116979,
-          "baseline": 0.625
+          "elasticity": 0.02524610304128854,
+          "baseline": 0.5
         },
         "burn_fraction": {
-          "elasticity": -0.001051795392417884,
+          "elasticity": -0.0008934010973678201,
           "baseline": 0.05
         },
         "fuel_recovery": {
-          "elasticity": -0.018984903694185384,
+          "elasticity": -0.016125887227885462,
           "baseline": 0.95
         },
         "p_input": {
-          "elasticity": 0.032886915837875355,
+          "elasticity": 0.042539684997298655,
           "baseline": 50.0
         },
         "eta_pin": {
-          "elasticity": -0.03293102809370553,
+          "elasticity": -0.04259581772158149,
           "baseline": 0.65
         },
         "eta_de": {
@@ -275,19 +275,19 @@
           "baseline": 0.85
         },
         "p_coils": {
-          "elasticity": 0.0021405167932923423,
+          "elasticity": 0.0027687278508693246,
           "baseline": 5.0
         },
         "p_cool": {
-          "elasticity": 0.006421550379877026,
+          "elasticity": 0.008306183552607973,
           "baseline": 15.0
         },
         "R0": {
-          "elasticity": 0.0882562457244509,
-          "baseline": 2.5
+          "elasticity": 0.06469675153712254,
+          "baseline": 2.0
         },
         "elon": {
-          "elasticity": 0.08825624094836197,
+          "elasticity": 0.06469674919902846,
           "baseline": 1.7
         },
         "q95": {
@@ -333,11 +333,11 @@
       },
       "financial": {
         "interest_rate": {
-          "elasticity": 0.6531114701165706,
+          "elasticity": 0.6584845899394774,
           "baseline": 0.07
         },
         "inflation_rate": {
-          "elasticity": 0.05820723941307442,
+          "elasticity": 0.058435676680121375,
           "baseline": 0.0245
         }
       }
@@ -357,8 +357,8 @@
       "p_trit": 10.0,
       "p_house": 5.0,
       "p_cryo": 8.0,
-      "R0": 2.5,
-      "plasma_t": 0.625,
+      "R0": 2.0,
+      "plasma_t": 0.5,
       "elon": 1.7,
       "blanket_t": 0.6,
       "ht_shield_t": 0.2,
@@ -384,7 +384,7 @@
       "lambda_q": 0.002,
       "burn_fraction": 0.05,
       "fuel_recovery": 0.95,
-      "net_electric_mw": 800.0,
+      "net_electric_mw": 500.0,
       "availability": 0.8,
       "lifetime_yr": 30.0,
       "n_mod": 1.0,
@@ -394,7 +394,80 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": null,
+  "narrative": {
+    "key_bets": [
+      "Full HTS coil set (TF + PF + CS in REBCO) operates reliably at 25 T peak field under cyclic EM loading, including novel HTS CS coils performing plasma initiation duty cycles",
+      "Scaling from Jingtian test magnet's demonstrated 21.7 T to HH170's 25 T target is achievable despite rapid REBCO Jc falloff above 20 T at 20 K and proportionally higher Lorentz forces",
+      "AI-based plasma control enabling HH70's 1,337-second steady-state plasma will translate to burning-plasma conditions, reducing disruption frequency and sustaining high capacity factor",
+      "Compact high-field geometry (~14 T on-axis, ~70% SPARC volume) achieves Q > 10 at commercial scale, enabling the 'world's smallest and lowest-cost tokamak' value proposition",
+      "Tritium breeding blanket can be developed post-2030 (potentially leveraging CFETR WCCB/HCCB/LiPb programs) to achieve TBR > 1 for HH380 despite no disclosed design",
+      "ICRH scales from HH70's experimental levels to tens-of-MW burning-plasma operation with adequate wall-plug efficiency (~60–70%) and antenna survivability under D-T neutron flux",
+      "China-domestic supply chain (>95% localization via Shanghai Superconductor) scales from prototype to commercial REBCO tape volumes (thousands of km per plant) without significant cost increase"
+    ],
+    "eliminated_costs": [
+      "Mixed LTS/HTS cryogenic infrastructure — uniform 20 K operation across all coils eliminates need to maintain separate LTS cryogenic circuits at lower temperatures",
+      "Large-machine structural material and building volume — compact geometry (~70% SPARC volume vs. ITER's R=6.2 m) reduces site, structures (C210), and absolute capital cost at equivalent Q",
+      "International supply chain logistics and export control friction — >95% domestic Chinese sourcing bypasses geopolitical supply risks for China-domestic deployment",
+      "Spherical tokamak center-stack constraints — D-shaped conventional aspect ratio permits inboard blanket and near-4π breeding coverage, avoiding outboard-only breeding limitation"
+    ],
+    "novel_costs": [
+      "Incremental REBCO tape for PF + CS coils beyond TF-only HTS baseline — hts_full_coil_premium ×1.1–×1.3 multiplier on C220103 magnet system account",
+      "Full-HTS CS coil reconditioning or replacement under cyclic EM loading at 25 T — accrues to CAS70 O&M in reliability-failure scenarios with no published fatigue data to bound",
+      "Quench detection and energy extraction system engineered for a 26+-coil full-HTS system in a neutron environment — no commercial-scale precedent exists",
+      "AI-based plasma control system with radiation hardening and redundancy for HH380-scale burning-plasma operation — unvalidated at commercial duty cycle",
+      "High-field-specific REBCO tape procurement at 25 T / 20 K performance grade — higher per-km cost than lower-field HTS tape, at commercial plant volumes"
+    ],
+    "risks": [
+      {
+        "description": "No commercial design point exists for HH380 (net electric, fusion power, Q, major radius all undisclosed) — LCOE model has no anchor and requires wholesale CFS ARC/SPARC analogue assumptions carrying ±50% capital cost uncertainty",
+        "severity": "high"
+      },
+      {
+        "description": "Tritium breeding blanket entirely undisclosed (TRL 1–2) — no concept, material, or TBR target stated; structurally unresolvable until HH380 engineering post-2030",
+        "severity": "high"
+      },
+      {
+        "description": "Full HTS CS coils at 25 T under cyclic EM loading have no published fatigue or reliability data — CS reliability failure scenario drops availability to 65% and raises LCOE ~14–22%",
+        "severity": "high"
+      },
+      {
+        "description": "Gap from demonstrated 21.7 T (Jingtian) to 25 T (HH170 target) is non-trivial — REBCO Jc falls rapidly above 20 T at 20 K and mechanical loads scale proportionally with field",
+        "severity": "high"
+      },
+      {
+        "description": "Power conversion cycle type and thermal efficiency not specified for HH380 — no tritium-compatible heat exchanger or BOP design disclosed",
+        "severity": "high"
+      },
+      {
+        "description": "AI plasma control unvalidated at burning-plasma conditions (high neutron flux, sensor degradation, D-T disruption precursors) — underperformance scenario raises LCOE ~9–14%",
+        "severity": "medium"
+      },
+      {
+        "description": "ICRH scaling from HH70 experimental levels to tens-of-MW burning-plasma operation has undisclosed power, antenna geometry, and first-wall neutron survivability",
+        "severity": "medium"
+      },
+      {
+        "description": "Chinese regulatory framework for fusion power plants is still being formulated; international harmonization (e.g., proposed Global Organisation for Fusion Energy) may determine HH380 grid-connection and export viability",
+        "severity": "medium"
+      },
+      {
+        "description": "REBCO tape global production capacity (few thousand km/year) is below fleet-scale demand; tape cost must fall from ~$30–100/kA-m to ~$10/kA-m for commercial competitiveness",
+        "severity": "medium"
+      },
+      {
+        "description": "Tritium startup inventory (~1 kg at >$35,000/g) and declining CANDU-derived global supply (~25–30 kg, −5.5%/yr) constrain first-of-kind D-T burn; China's indigenous tritium production capability not publicly documented",
+        "severity": "medium"
+      },
+      {
+        "description": ">95% China-domestic supply chain creates opaque cost basis for international benchmarking and concentrates geopolitical supply risk",
+        "severity": "low"
+      },
+      {
+        "description": "First wall / divertor lifetime and remote maintenance scheme not disclosed — dependent on undisclosed wall loading from unknown fusion power",
+        "severity": "low"
+      }
+    ]
+  },
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/28-hts-tokamak-full-hts/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/28-hts-tokamak-full-hts/analysis.md"

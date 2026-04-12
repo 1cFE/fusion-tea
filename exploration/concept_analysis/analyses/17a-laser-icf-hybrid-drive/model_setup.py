@@ -1,4 +1,3 @@
-# STALE: analysis-updated-iter-6
 """Laser ICF — Hybrid Direct Drive, D-T (Xcimer Energy / Athena pilot)
 =====================================================================
 
@@ -373,6 +372,21 @@ result_noak_high = model.forward(
     **_ENG,
 )
 
+# ── Post-hoc scaling to 1000 MWe (cross-concept comparison) ──────────────────
+# Native design point is 400 MWe (Xcimer Athena pilot). Scale to 1000 MWe using
+# an economy-of-scale power law (α=0.6, standard for fusion plants) for a
+# normalized cross-concept LCOE and overnight cost comparison.
+# The primary result stays at 400 MWe — only the headline numbers are rescaled.
+_ALPHA = 0.6  # economy-of-scale exponent
+_p_native = float(result.power_table.p_net)
+_factor = (_p_native / 1000.0) ** (1.0 - _ALPHA)
+
+scaled_headline = {
+    "p_net_mw": 1000.0,
+    "lcoe_per_mwh": float(result.costs.lcoe) * _factor,
+    "overnight_per_kw": float(result.costs.overnight_cost) * _factor,
+}
+
 # ════════════════════════════════════════════════════════════════════════════
 # Results — base scenario (NOAK / He Brayton / $70/J laser)
 # ════════════════════════════════════════════════════════════════════════════
@@ -392,6 +406,9 @@ print(f"Overnight:    {c.overnight_cost:.0f} $/kW")
 print(f"Fusion power: {pt.p_fus:.0f} MW | Net: {pt.p_net:.0f} MW | Q_eng: {pt.q_eng:.2f}")
 print(f"Qsci: {pt.q_sci:.0f} | Qwp: {qwp:.1f} | Recirc: {pt.rec_frac:.1%} "
       f"(laser: {100 * (P_IMPLOSION_MW / ETA_PIN1) / float(pt.p_et):.1f}% of gross)")
+print(f"[1000 MWe scaled] LCOE: {scaled_headline['lcoe_per_mwh']:.1f} $/MWh | "
+      f"Overnight: {scaled_headline['overnight_per_kw']:.0f} $/kW  "
+      f"(α=0.6 from {_p_native:.0f} MWe native)")
 print()
 
 # ── Scenario comparison: H-1 (laser cost range) + H-3 (thermal cycle) ────────

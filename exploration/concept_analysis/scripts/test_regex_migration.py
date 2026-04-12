@@ -6,7 +6,7 @@ import tempfile
 from pathlib import Path
 
 from lib.iteration import parse_verdict_from_feedback
-from lib.loop import _extract_model_findings, _split_findings, _get_review_feedback
+from lib.loop import extract_model_findings, _split_findings, _get_review_feedback
 from lib.sources import parse_proposed_actions
 
 
@@ -44,7 +44,7 @@ class TestParseVerdictFromFeedback:
 
 
 # ---------------------------------------------------------------------------
-# _extract_model_findings (loop.py)
+# extract_model_findings (loop.py)
 # ---------------------------------------------------------------------------
 
 
@@ -59,7 +59,7 @@ class TestExtractModelFindings:
         )
         fb = tmp_path / "feedback.md"
         fb.write_text(text)
-        result = _extract_model_findings(fb)
+        result = extract_model_findings(fb)
         assert "F-2" in result
         assert "F-1" not in result
 
@@ -71,15 +71,15 @@ class TestExtractModelFindings:
         )
         fb = tmp_path / "feedback.md"
         fb.write_text(text)
-        result = _extract_model_findings(fb)
+        result = extract_model_findings(fb)
         assert result == ""
 
     def test_missing_file(self):
-        result = _extract_model_findings(Path("/nonexistent/feedback.md"))
+        result = extract_model_findings(Path("/nonexistent/feedback.md"))
         assert result == ""
 
     def test_none_path(self):
-        result = _extract_model_findings(None)
+        result = extract_model_findings(None)
         assert result == ""
 
     def test_colon_inside_bold(self, tmp_path):
@@ -92,7 +92,7 @@ class TestExtractModelFindings:
         )
         fb = tmp_path / "feedback.md"
         fb.write_text(text)
-        result = _extract_model_findings(fb)
+        result = extract_model_findings(fb)
         assert "F-1" in result
 
 

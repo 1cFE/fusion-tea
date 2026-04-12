@@ -1,4 +1,3 @@
-# STALE: analysis-updated-iter-7
 """HTS Compact Tokamak (Commonwealth Fusion Systems ARC) — LCOE estimate.
 
 Usage:
@@ -209,6 +208,21 @@ result = model.forward(
     # ≈ 1.41× direct cost (nuclear island + BOP), not 2–3× nuclear island alone.
 )
 
+# ── Post-hoc scaling to 1000 MWe (cross-concept comparison) ──────────────
+# ARC's native design point (261 MWe) is well below the 1 GWe reference used
+# for cross-concept LCOE comparison. Scale LCOE and overnight $/kW to 1000 MWe
+# using a power-law economy-of-scale exponent (α=0.6 is standard for large plant
+# equipment). The primary result stays at 261 MWe; this is informational only.
+_ALPHA = 0.6  # economy-of-scale exponent
+_p_native = float(result.power_table.p_net)
+_factor = (_p_native / 1000.0) ** (1.0 - _ALPHA)
+
+scaled_headline = {
+    "p_net_mw": 1000.0,
+    "lcoe_per_mwh": float(result.costs.lcoe) * _factor,
+    "overnight_per_kw": float(result.costs.overnight_cost) * _factor,
+}
+
 # ── Results ───────────────────────────────────────────────────────────────
 
 c  = result.costs
@@ -217,6 +231,9 @@ pt = result.power_table
 print("HTS Compact Tokamak — CFS ARC (261 MWe, 75% avail, 30 yr, NOAK)")
 print(f"LCOE: {c.lcoe:.1f} $/MWh | Overnight: {c.overnight_cost:.0f} $/kW")
 print(f"Fusion: {pt.p_fus:.0f} MW | Net: {pt.p_net:.0f} MW | Q_eng: {pt.q_eng:.1f}")
+print(f"Scaled to 1000 MWe: LCOE {scaled_headline['lcoe_per_mwh']:.1f} $/MWh"
+      f" | Overnight {scaled_headline['overnight_per_kw']:.0f} $/kW"
+      f"  [α=0.6 economy-of-scale, cross-concept reference]")
 print()
 
 cas_rows = [

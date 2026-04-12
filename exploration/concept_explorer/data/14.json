@@ -186,9 +186,9 @@
       }
     },
     "headline": {
-      "lcoe_per_mwh": 101.54351806640625,
-      "overnight_cost_per_kw": 6783.882455769118,
-      "p_net_mw": 300.00000000000006,
+      "lcoe_per_mwh": 62.73367183103314,
+      "overnight_cost_per_kw": 4191.088351323505,
+      "p_net_mw": 1000.0,
       "q_eng": 4.269662921348315,
       "capacity_factor": 0.8
     },
@@ -315,7 +315,81 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": null,
+  "narrative": {
+    "key_bets": [
+      "Synchronized pneumatic piston array can compress a flowing liquid metal vortex at commercial scale (~4 m cavity) with <1% timing error across dozens-to-hundreds of pistons",
+      "12:1 cavity volume compression ratio is achievable in flowing liquid metal (currently only 8:1 demonstrated in water surrogate tests)",
+      "Commercial repetition rate of ~1 Hz is reachable from the current ~1 shot/day LM26 demonstration (86,400× gap)",
+      "Self-renewing liquid metal liner (Li or PbLi) provides combined breeding (TBR ~1.5), neutron absorption, and heat transfer functions without a separate blanket or solid first wall",
+      "Compact toroid (spherical torus) plasma injector can deliver consistent shot-to-shot plasma quality at 1 Hz over 10^8 pulse lifetime",
+      "Plasma physics demonstrated on the LM26 electromagnetic theta-pinch surrogate transfers to the mechanically-driven commercial system despite fundamentally different drive mechanisms",
+      "Fusion gain Q and thermal efficiency will be sufficient for net positive generation after recirculating power (piston recharge, CT injector, LM pumping)"
+    ],
+    "eliminated_costs": [
+      "HTS superconducting magnet system and associated cryoplant (CAS22 magnets ≈ $0 vs. $1–3B for ARC-class tokamak) — confinement provided by mechanical compression of liquid metal",
+      "Per-shot target/liner consumables (liquid metal reforms each pulse; no target factory analogous to IFE/MagLIF's ~28M targets/year)",
+      "Separate solid first-wall blanket fabrication and scheduled PFC replacement (liquid metal liner is self-renewing and serves as combined breeder + heat carrier)",
+      "REBCO tape supply chain dependency ($30–100/kA-m) that constrains tokamak/stellarator concepts",
+      "Beryllium and FLiBe supply/toxicity constraints (pure Li or PbLi design avoids beryllium entirely)"
+    ],
+    "novel_costs": [
+      "Pneumatic compression driver system (piston array + steam recharge infrastructure + vessel) — $180M baseline with $50M–$500M+ range; no industrial analogue at 4 m scale / 1 Hz / activated liquid metal environment",
+      "Synchronized piston timing, seal, and wear management under combined steam pressure, shock loading, and neutron-activated environment (~3×10^7 cycles/year)",
+      "Double-walled intermediate heat exchangers for Li/PbLi-to-steam interface to manage tritium permeation and Li-water reactivity (analogous to sodium-cooled fast reactor IHX)",
+      "Liquid metal vortex formation, stability, and sub-second reformation at commercial cavity scale",
+      "Compact toroid plasma injector at 1 Hz duty cycle — no equivalent injector at this rep rate; lifetime and replacement cost unknown"
+    ],
+    "risks": [
+      {
+        "description": "FM-1: 12:1 compression ratio cannot be achieved in flowing liquid metal at commercial cavity diameter (only 8:1 demonstrated in water surrogate) — binary physics viability failure eliminating the concept",
+        "severity": "high"
+      },
+      {
+        "description": "FM-2: Synchronized pneumatic piston operation proves mechanically infeasible at commercial scale due to vortex instability, timing scatter, or acoustic asymmetry — no fallback compression mechanism in current design",
+        "severity": "high"
+      },
+      {
+        "description": "Rep rate gap of ~86,400× between LM26 (~1 shot/day) and commercial target (1 Hz); shortfall propagates linearly into LCOE (0.5 Hz doubles capital $/kWh)",
+        "severity": "high"
+      },
+      {
+        "description": "Fusion gain Q entirely undisclosed — energy balance structurally underdetermined; minimum Q ≳ 1/η_thermal required for breakeven, Q ≳ 5–10 likely needed for commercial viability",
+        "severity": "high"
+      },
+      {
+        "description": "Compression system capital cost unknown with no industrial analogue; likely dominant non-blanket capital account ranging $50M (optimistic) to $500M+ (novel engineering premium)",
+        "severity": "high"
+      },
+      {
+        "description": "Capacity factor for novel piston-and-vortex mechanical architecture at 1 Hz is unpublished; unplanned downtime could push CF to 50–60%, the dominant LCOE penalty relative to MFE concepts",
+        "severity": "high"
+      },
+      {
+        "description": "Li-6 enrichment supply chain risk — no large-scale Western capacity exists for fusion-fleet quantities (historically Russia/China)",
+        "severity": "medium"
+      },
+      {
+        "description": "Liquid metal composition (Li vs. PbLi) unresolved; first-order LCOE branching decision affecting ISS capital, safety infrastructure, tritium permeation, and neutron multiplication",
+        "severity": "medium"
+      },
+      {
+        "description": "Tritium permeation through Li/PbLi-to-steam generator interface; pure Li reacts violently with water requiring costly intermediate heat exchangers",
+        "severity": "medium"
+      },
+      {
+        "description": "LM26 electromagnetic theta-pinch demonstration is a scientific surrogate that does not validate the commercial pneumatic engineering — TRL of demo is not transferable",
+        "severity": "medium"
+      },
+      {
+        "description": "Piston seal and wear performance under combined steam pressure, shock loading, and activated liquid metal environment is unqualified; no materials data exists for this combined loading",
+        "severity": "medium"
+      },
+      {
+        "description": "Tritium startup inventory (1–5 kg) dependent on declining CANDU supply (~22 kg global, shared with all D-T fusion concepts)",
+        "severity": "low"
+      }
+    ]
+  },
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/14-magnetized-target-fusion-pneumatic-compression/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/14-magnetized-target-fusion-pneumatic-compression/analysis.md"

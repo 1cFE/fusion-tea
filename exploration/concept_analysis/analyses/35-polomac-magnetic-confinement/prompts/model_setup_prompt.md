@@ -1,6 +1,6 @@
-# Free-Form LCOE Model: Sheared-Flow Stabilized Z-Pinch
+# Free-Form LCOE Model: PoloMac Magnetic Confinement
 
-You are building a standalone LCOE model for **Sheared-Flow Stabilized Z-Pinch** (Zap Energy).
+You are building a standalone LCOE model for **PoloMac Magnetic Confinement** (Deutelio).
 This concept does not map cleanly to any standard 1costingfe ConfinementConcept,
 so you will build a self-contained model from first principles following the
 CAS cost accounting structure.
@@ -14,7 +14,7 @@ runnable via `uv run python model_setup.py`.
 ## Required Reading
 
 ### 1. Concept Analysis (primary data source)
-`/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/15-sheared-flow-stabilized-z-pinch/analysis.md`
+`/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/35-polomac-magnetic-confinement/analysis.md`
 Section 5 has the quantitative values. Section 2 has the key uncertainties.
 
 ### 2. Exemplar: MagLIF Free-Form Model (pattern to follow)
@@ -98,7 +98,7 @@ cost scaling:
 
 ## Model Architecture
 
-Follow the MagLIF exemplar's 5-layer structure adapted for Sheared-Flow Stabilized Z-Pinch:
+Follow the MagLIF exemplar's 5-layer structure adapted for PoloMac Magnetic Confinement:
 
 ### Layer 1: Power Balance (`_compute_power()`)
 - Concept-specific energy flow: driver → plasma → fusion → energy recovery
@@ -185,4 +185,4 @@ Usage:
 ```
 
 ## Output
-Write the script to: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/15-sheared-flow-stabilized-z-pinch/model_setup.py`
+Write the script to: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/35-polomac-magnetic-confinement/model_setup.py`

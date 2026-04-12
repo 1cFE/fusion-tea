@@ -7,6 +7,7 @@ LCOE:         115.8 $/MWh
 Overnight:    8046 $/kW
 Fusion power: 1053 MW | Net: 400 MW | Q_eng: 4.41
 Qsci: 211 | Qwp: 14.7 | Recirc: 22.7% (laser: 13.8% of gross)
+[1000 MWe scaled] LCOE: 80.3 $/MWh | Overnight: 5577 $/kW  (α=0.6 from 400 MWe native)
 
 ──────────────────────────────────────────────────────────────────────
 H-1  Laser cost range (NOAK $60–80/J) + H-3 thermal cycle gap:

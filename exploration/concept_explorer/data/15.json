@@ -10,42 +10,42 @@
   "cost_model": {
     "cas10": {
       "name": "Preconstruction",
-      "cost_m_usd": 14.276862857142858,
+      "cost_m_usd": 17.12342809381122,
       "overridden": false
     },
     "cas21": {
       "name": "Buildings & Structures",
-      "cost_m_usd": 207.16080000000002,
+      "cost_m_usd": 506.84400000000005,
       "overridden": false
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 736.5917078605135,
+      "cost_m_usd": 2299.5179871257637,
       "overridden": false
     },
     "cas23": {
       "name": "Turbine Plant Equipment",
-      "cost_m_usd": 58.49037216000001,
+      "cost_m_usd": 154.11176640000002,
       "overridden": false
     },
     "cas24": {
       "name": "Electrical Plant Equipment",
-      "cost_m_usd": 24.912565920000002,
+      "cost_m_usd": 65.64019680000001,
       "overridden": false
     },
     "cas25": {
       "name": "Miscellaneous Plant Equipment",
-      "cost_m_usd": 15.16417056,
+      "cost_m_usd": 39.95490240000001,
       "overridden": false
     },
     "cas26": {
       "name": "Heat Rejection Systems",
-      "cost_m_usd": 10.109447040000001,
+      "cost_m_usd": 26.636601600000006,
       "overridden": false
     },
     "cas27": {
       "name": "Special Materials",
-      "cost_m_usd": 2.3305885714285717,
+      "cost_m_usd": 6.87497142857143,
       "overridden": false
     },
     "cas28": {
@@ -60,48 +60,48 @@
     },
     "cas30": {
       "name": "Indirect Costs",
-      "cost_m_usd": 176.6266086853237,
+      "cost_m_usd": 620.9160851508672,
       "overridden": false
     },
     "cas40": {
       "name": "Owner's Costs",
-      "cost_m_usd": 15.372757759844433,
+      "cost_m_usd": 26.403069951373894,
       "overridden": false
     },
     "cas50": {
       "name": "Supplementary Costs",
-      "cost_m_usd": 96.56497020668722,
+      "cost_m_usd": 303.17571965149506,
       "overridden": false
     },
     "cas60": {
       "name": "Interest During Construction",
-      "cost_m_usd": 236.16624122230672,
+      "cost_m_usd": 906.6947541932211,
       "overridden": false
     },
     "cas70": {
       "name": "O&M Costs (annualised)",
-      "cost_m_usd": 84.41208935149879,
+      "cost_m_usd": 150.09166344753558,
       "overridden": false
     },
     "cas80": {
       "name": "Fuel Costs (annualised)",
-      "cost_m_usd": 4.7304,
+      "cost_m_usd": 30.38582325,
       "overridden": false
     },
     "cas90": {
       "name": "Financial Costs",
-      "cost_m_usd": 142.01437744129646,
+      "cost_m_usd": 417.53081156140917,
       "overridden": false
     },
     "cas22_detail": {
       "C220101": {
         "name": "First Wall & Blanket",
-        "cost_m_usd": 58.49212794591319,
+        "cost_m_usd": 49.51178020838229,
         "overridden": false
       },
       "C220102": {
         "name": "Radiation Shield",
-        "cost_m_usd": 26.829244862381763,
+        "cost_m_usd": 12.686712113122544,
         "overridden": false
       },
       "C220103": {
@@ -116,22 +116,22 @@
       },
       "C220105": {
         "name": "Primary Structure & Support",
-        "cost_m_usd": 5.704605287932834,
+        "cost_m_usd": 4.103619065719825,
         "overridden": false
       },
       "C220106": {
         "name": "Vacuum System",
-        "cost_m_usd": 8.654555209902332,
+        "cost_m_usd": 8.222385097418222,
         "overridden": false
       },
       "C220107": {
         "name": "Power Conditioning & Energy Storage",
-        "cost_m_usd": 8.142857142857142,
+        "cost_m_usd": 75.0,
         "overridden": false
       },
       "C220108": {
         "name": "Divertor / Target Factory",
-        "cost_m_usd": 15.0,
+        "cost_m_usd": 20.0,
         "overridden": false
       },
       "C220109": {
@@ -146,7 +146,7 @@
       },
       "C220111": {
         "name": "Installation Labor",
-        "cost_m_usd": 18.49212720762838,
+        "cost_m_usd": 25.189546574527142,
         "overridden": false
       },
       "C220112": {
@@ -156,205 +156,280 @@
       },
       "C220200": {
         "name": "Main & Secondary Coolant",
-        "cost_m_usd": 53.98862262827163,
+        "cost_m_usd": 106.35118649650322,
         "overridden": false
       },
       "C220300": {
         "name": "Auxiliary Cooling & Cryoplant",
-        "cost_m_usd": 0.9864800000000001,
+        "cost_m_usd": 2.2572,
         "overridden": false
       },
       "C220400": {
         "name": "Radioactive Waste Management",
-        "cost_m_usd": 2.0213872,
+        "cost_m_usd": 4.02192,
         "overridden": false
       },
       "C220500": {
         "name": "Fuel Handling & Storage",
-        "cost_m_usd": 32.59442270343202,
+        "cost_m_usd": 69.50355090336873,
         "overridden": false
       },
       "C220600": {
         "name": "Other Reactor Plant Equipment",
-        "cost_m_usd": 2.5929689907164732,
+        "cost_m_usd": 6.160862996993561,
         "overridden": false
       },
       "C220700": {
         "name": "Instrumentation & Control",
-        "cost_m_usd": 42.09282586105483,
+        "cost_m_usd": 60.07447423168804,
         "overridden": false
       }
     },
     "headline": {
-      "lcoe_per_mwh": 226.44726319627608,
-      "overnight_cost_per_kw": 8769.893161273714,
-      "p_net_mw": 155.37257142857143,
+      "lcoe_per_mwh": 145.3563663359244,
+      "overnight_cost_per_kw": 6503.111208077053,
+      "p_net_mw": 1000.0,
       "q_eng": 6.999999999999999,
       "capacity_factor": 0.75
     },
     "sensitivities": {
       "engineering": {
-        "driver_electrical_energy_per_shot_MJ": {
-          "elasticity": 0.0,
-          "baseline": 1.9
-        },
-        "driver_wall_to_plasma_efficiency": {
-          "elasticity": -0.6368418060528123,
-          "baseline": 0.7
-        },
-        "driver_stored_energy_per_shot_MJ": {
-          "elasticity": 0.0,
-          "baseline": 2.7
-        },
-        "driver_cost_per_MJ_stored_M_USD": {
-          "elasticity": 0.0207457069982125,
-          "baseline": 3.0
-        },
-        "driver_rep_rate_Hz": {
-          "elasticity": -0.5616240433704804,
-          "baseline": 10.0
-        },
-        "fusion_energy_per_shot_MJ": {
-          "elasticity": -0.561342320828875,
+        "fusion_energy_per_pulse_MJ": {
+          "elasticity": -0.5549097914439854,
           "baseline": 19.0
         },
-        "fusion_Q": {
-          "elasticity": -0.5352651949884472,
+        "Q_sci": {
+          "elasticity": -0.5127650321992827,
           "baseline": 10.0
         },
-        "pinch_current_MA": {
-          "elasticity": 0.0,
-          "baseline": 1.35
+        "rep_rate_Hz": {
+          "elasticity": -0.5542645316433277,
+          "baseline": 10.0
         },
-        "plasma_temperature_keV": {
-          "elasticity": 0.0,
-          "baseline": 32.5
+        "driver_eta": {
+          "elasticity": -0.512765032199297,
+          "baseline": 0.7
         },
         "blanket_energy_multiplication": {
-          "elasticity": -0.8935443975424582,
+          "elasticity": -0.8699627117416273,
           "baseline": 1.1
         },
         "thermal_efficiency": {
-          "elasticity": -1.485232447149425,
-          "baseline": 0.33
+          "elasticity": -1.2825618349400778,
+          "baseline": 0.38
         },
         "plant_availability": {
-          "elasticity": -0.7093797612005212,
+          "elasticity": -0.6599807596451958,
           "baseline": 0.75
         },
         "plant_lifetime_years": {
-          "elasticity": -0.22923857091169306,
-          "baseline": 30.0
+          "elasticity": 0.03676819022742412,
+          "baseline": 40.0
+        },
+        "p_lipb_pump_MW": {
+          "elasticity": 0.03777315204820726,
+          "baseline": 2.0
+        },
+        "p_house_MW": {
+          "elasticity": 0.028329861695662487,
+          "baseline": 1.5
+        },
+        "p_trit_MW": {
+          "elasticity": 0.028329861695662487,
+          "baseline": 1.5
         },
         "chamber_inner_radius_m": {
-          "elasticity": 0.4350847868974969,
-          "baseline": 1.7
+          "elasticity": 0.3558232429405774,
+          "baseline": 1.82
         },
-        "blanket_thickness_m": {
-          "elasticity": 0.8649773830114589,
+        "lipb_blanket_thickness_m": {
+          "elasticity": 0.6719921728324786,
           "baseline": 3.0
         },
         "shield_thickness_m": {
-          "elasticity": 0.08194336139568212,
-          "baseline": 0.5
+          "elasticity": 0.03603245167814239,
+          "baseline": 0.25
         },
         "structure_thickness_m": {
-          "elasticity": 0.018731196097920233,
-          "baseline": 0.4
+          "elasticity": 0.01305719712879954,
+          "baseline": 0.3
         },
         "vessel_thickness_m": {
-          "elasticity": 0.02263470614899286,
+          "elasticity": 0.021025113867534712,
           "baseline": 0.15
         },
-        "blanket_unit_cost_M_per_m3": {
-          "elasticity": 0.3695173150745906,
-          "baseline": 0.6
+        "driver_cost_per_module_M": {
+          "elasticity": 0.18661513938452878,
+          "baseline": 75.0
         },
-        "electrode_system_cost_M_USD": {
-          "elasticity": 0.12883860597296726,
-          "baseline": 15.0
+        "electrode_system_cost_per_module_M": {
+          "elasticity": 0.04976403716920195,
+          "baseline": 20.0
         },
-        "electrode_replacement_interval_yr": {
-          "elasticity": -0.07634070337209535,
-          "baseline": 2.0
+        "lipb_blanket_unit_cost": {
+          "elasticity": 0.3037374575010118,
+          "baseline": 0.5
         },
         "om_cost_per_MW_yr": {
-          "elasticity": 0.054053645907300586,
-          "baseline": 60.0
+          "elasticity": 0.07044376693447876,
+          "baseline": 65.0
+        },
+        "electrode_replacement_cost_per_module_M": {
+          "elasticity": 0.050166527935050775,
+          "baseline": 3.0
         },
         "core_lifetime_FPY": {
-          "elasticity": -0.19388216583145368,
+          "elasticity": -0.3411403557876417,
           "baseline": 3.0
-        },
-        "fuel_cost_per_shot_USD": {
-          "elasticity": 0.02046402542840534,
-          "baseline": 0.005
-        },
-        "p_libp_pumping_MW": {
-          "elasticity": 0.06807464658968225,
-          "baseline": 3.0
-        },
-        "p_tritium_MW": {
-          "elasticity": 0.06807464658968225,
-          "baseline": 3.0
-        },
-        "p_house_MW": {
-          "elasticity": 0.045383082819223,
-          "baseline": 2.0
         },
         "construction_time_years": {
-          "elasticity": 0.21195112133395577,
-          "baseline": 5.0
+          "elasticity": 0.2899928290502611,
+          "baseline": 6.0
+        },
+        "deuterium_cost_per_kg": {
+          "elasticity": 0.0006451804283096966,
+          "baseline": 2175.0
+        },
+        "dt_fuel_mass_per_pulse_kg": {
+          "elasticity": 0.0006451804283096966,
+          "baseline": 1.5e-7
         }
       },
       "financial": {
         "interest_rate": {
-          "elasticity": 0.531570054492417,
+          "elasticity": 0.7143140134259115,
           "baseline": 0.08
         },
         "inflation_rate": {
-          "elasticity": 0.016337241459856634,
+          "elasticity": 0.025518029966881614,
           "baseline": 0.02
         }
       }
     },
     "params": {
-      "driver_electrical_energy_per_shot_MJ": 1.9,
-      "driver_wall_to_plasma_efficiency": 0.7,
-      "driver_stored_energy_per_shot_MJ": 2.7,
-      "driver_cost_per_MJ_stored_M_USD": 3.0,
-      "driver_rep_rate_Hz": 10.0,
-      "fusion_energy_per_shot_MJ": 19.0,
-      "fusion_Q": 10.0,
-      "pinch_current_MA": 1.35,
-      "plasma_temperature_keV": 32.5,
+      "fusion_energy_per_pulse_MJ": 19.0,
+      "Q_sci": 10.0,
+      "rep_rate_Hz": 10.0,
+      "driver_eta": 0.7,
       "blanket_energy_multiplication": 1.1,
-      "thermal_efficiency": 0.33,
-      "n_mod": 4.0,
+      "thermal_efficiency": 0.38,
+      "n_mod": 10.0,
       "plant_availability": 0.75,
-      "plant_lifetime_years": 30.0,
+      "plant_lifetime_years": 40.0,
       "noak": 1.0,
-      "chamber_inner_radius_m": 1.7,
-      "blanket_thickness_m": 3.0,
-      "shield_thickness_m": 0.5,
-      "structure_thickness_m": 0.4,
+      "p_lipb_pump_MW": 2.0,
+      "p_house_MW": 1.5,
+      "p_trit_MW": 1.5,
+      "chamber_inner_radius_m": 1.82,
+      "lipb_blanket_thickness_m": 3.0,
+      "shield_thickness_m": 0.25,
+      "structure_thickness_m": 0.3,
       "vessel_thickness_m": 0.15,
-      "blanket_unit_cost_M_per_m3": 0.6,
-      "electrode_system_cost_M_USD": 15.0,
-      "electrode_replacement_interval_yr": 2.0,
-      "om_cost_per_MW_yr": 60.0,
+      "driver_cost_per_module_M": 75.0,
+      "electrode_system_cost_per_module_M": 20.0,
+      "lipb_blanket_unit_cost": 0.5,
+      "om_cost_per_MW_yr": 65.0,
+      "electrode_replacement_cost_per_module_M": 3.0,
       "core_lifetime_FPY": 3.0,
-      "fuel_cost_per_shot_USD": 0.005,
-      "p_libp_pumping_MW": 3.0,
-      "p_tritium_MW": 3.0,
-      "p_house_MW": 2.0,
       "interest_rate": 0.08,
       "inflation_rate": 0.02,
-      "construction_time_years": 5.0
+      "construction_time_years": 6.0,
+      "deuterium_cost_per_kg": 2175.0,
+      "dt_fuel_mass_per_pulse_kg": 1.5e-7
     }
   },
   "parameter_metadata": {},
-  "narrative": null,
+  "narrative": {
+    "key_bets": [
+      "Sheared-flow stabilization remains effective as pinch lifetime is extended 5-10x from demonstrated 20-40 µs to the 200 µs required for Q > 10",
+      "Fusion gain Q > 10 is achievable at 1.2-1.5 MA and 30-35 keV, as calculated but never experimentally demonstrated at any scale",
+      "Repetition rate can be scaled from Century's 0.2 Hz to the commercial target of 10 Hz while maintaining electrode, liquid metal, and gas injection reliability",
+      "Flowing LiPb can serve simultaneously as first wall, outer electrode, tritium breeder, and neutron shield with TBR ~1.1 in a 3 m blanket using natural (unenriched) lithium",
+      "Pulsed power driver wall-to-plasma efficiency of ~70% holds at commercial scale (2-3 MJ/pulse, 10 Hz continuous)",
+      "Electrode erosion under 14 MeV neutron bombardment and 10 Hz, 1 MA arcing yields a commercially viable replacement interval, extrapolating from industrial arc-furnace cathode analogues",
+      "Modular 50 MWe architecture (10+ modules per plant) delivers O&M and learning benefits without prohibitive common-mode failure or coordination penalties"
+    ],
+    "eliminated_costs": [
+      "REBCO HTS tape and all superconducting magnet costs — the dominant capital item in compact/spherical tokamak designs is entirely absent",
+      "Cryogenic plant: no liquid helium, cold mass, or quench protection systems",
+      "Auxiliary heating systems — no NBI beam dumps, gyrotrons, or RF launchers required",
+      "Divertor subsystem in the conventional sense — LiPb flowing wall subsumes plasma-facing and heat-exhaust functions",
+      "Beryllium first-wall material — LiPb serves directly as the first wall"
+    ],
+    "novel_costs": [
+      "Pulsed power driver (capacitor banks, pulse-forming networks, high-voltage switches) at ~50-60% of overnight capital, replacing magnets as the dominant capital item",
+      "High-duty-cycle electrode system with neutron-hardened materials and frequent replacement under 10 Hz, 1 MA, D-T conditions",
+      "Flowing LiPb quadruple-duty subsystem combining first wall, electrode, tritium breeder, and shield — with associated pumping, film-replenishment, and activation management",
+      "Capacitor and high-voltage switch supply chain buildout: 10,000-216,000 capacitors per plant with 4-6 year lead times and a 4-6 order-of-magnitude component-lifetime gap",
+      "Tritium extraction and inventory management from circulating LiPb at commercial throughput, with activation product handling for Pb/Bi isotopes"
+    ],
+    "risks": [
+      {
+        "description": "Q > 10 has never been demonstrated; entire commercial power balance is anchored on calculation, and at Q=5 recirculating fraction exceeds 70% making net output marginal",
+        "severity": "high"
+      },
+      {
+        "description": "Pinch lifetime must extend 5-10x from demonstrated 20-40 µs to 200 µs while sheared-flow stabilization continues to work at higher fusion performance",
+        "severity": "high"
+      },
+      {
+        "description": "Repetition rate scaling from Century's 0.2 Hz to commercial 10 Hz (50x gap) simultaneously stresses electrodes, liquid metal dynamics, gas injection, and pulsed-power heat rejection",
+        "severity": "high"
+      },
+      {
+        "description": "Pulsed power component lifetime shortfall: capacitors demonstrate 10^4-10^5 shots vs. 10^8-10^9 required, a 4-6 order-of-magnitude gap requiring decades-long materials R&D",
+        "severity": "high"
+      },
+      {
+        "description": "No commercial high-voltage switch meets the 50-200 kV, 100-200 kA Z-pinch specification — a capability gap requiring a new switch technology class",
+        "severity": "high"
+      },
+      {
+        "description": "Capacitor supply chain buildout for a 150-plant fleet would take 125-250 years at current Western manufacturing capacity, with 4-6 year delivery lead times per order",
+        "severity": "high"
+      },
+      {
+        "description": "Capital cost entirely uncharacterized in public literature; no independent techno-economic analysis exists for the SFS Z-pinch approach",
+        "severity": "high"
+      },
+      {
+        "description": "Electrode erosion rate under 14 MeV neutron bombardment at commercial duty cycle is unmeasured; replacement interval and cost could swing LCOE by ~30% in sensitivity sweeps",
+        "severity": "high"
+      },
+      {
+        "description": "LiPb flowing first-wall has no validated fusion analogue; TBR of 1.1 is marginal and a 10% flow-condition reduction could push the plant tritium-negative",
+        "severity": "high"
+      },
+      {
+        "description": "Tritium supply chain constraint shared with all D-T concepts: CANDU global production ~1-2 kg/year limits fleet startup inventory",
+        "severity": "medium"
+      },
+      {
+        "description": "Plant availability and capacity factor have no operational precedent for pulsed Z-pinch; 0.60-0.85 range swings LCOE by ~25%",
+        "severity": "medium"
+      },
+      {
+        "description": "Thermal conversion efficiency constrained by LiPb solidification floor (~235°C); exact steam Rankine cycle design unpublished",
+        "severity": "medium"
+      },
+      {
+        "description": "Regulatory pathway novel — LiPb flowing electrode and absence of containment magnets lack licensed precedents, potentially requiring new frameworks",
+        "severity": "medium"
+      },
+      {
+        "description": "Multi-module architecture introduces coordination complexity and common-mode failure risk across 10+ modules per plant",
+        "severity": "medium"
+      },
+      {
+        "description": "Tungsten supply for electrodes is ~80% China-dominated, a moderate geopolitical concentration risk shared with tokamak divertor programs",
+        "severity": "low"
+      },
+      {
+        "description": "LiPb activation produces Pb-204/205 and bismuth isotopes requiring long-term radioactive waste management of circuit components",
+        "severity": "low"
+      }
+    ]
+  },
   "sources": {
     "model_setup": null,
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/15-sheared-flow-stabilized-z-pinch/analysis.md"

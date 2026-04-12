@@ -5,6 +5,12 @@ Base: R=2.0m, 500 MWe, 80% avail | Lifetime: 30 yr | NOAK
 C220103 hts_full_coil_premium: ×1.20 (framework base: $516M → with premium: $619M)
 ==============================================================================
 
+LCOE:          106.6 $/MWh
+Overnight:      7527 $/kW
+
+Scaled headline (1000 MWe, α=0.6): LCOE 80.8 $/MWh | Overnight 5705 $/kW
+Fusion:         1437 MW | Net:   500 MW | Q_eng: 4.54
+
 ── Base Case ──
    R0=2.0m  |  Net electric: 500 MWe  |  Availability: 80%
    LCOE:             106.6 $/MWh

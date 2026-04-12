@@ -256,7 +256,7 @@ def _split_findings(text: str) -> list[str]:
     return [p.strip() for p in parts if FINDING_HEADER_RE.match(p)]
 
 
-def _extract_model_findings(feedback_path: Path | None) -> str:
+def extract_model_findings(feedback_path: Path | None) -> str:
     """Extract model-targeted findings from a feedback file.
 
     Returns formatted text of model-targeted findings, or empty string
@@ -502,7 +502,7 @@ def _run_model_in_iteration(
         return False, False
 
     # Build model vars using shared helper
-    model_feedback = _extract_model_findings(feedback_path)
+    model_feedback = extract_model_findings(feedback_path)
     model_vars = build_model_vars(concept, model_script, iter_dir,
                                   model_feedback=model_feedback)
     if model_vars is None:

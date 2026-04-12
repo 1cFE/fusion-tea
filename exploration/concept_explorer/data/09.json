@@ -377,7 +377,89 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": null,
+  "narrative": {
+    "key_bets": [
+      "3D non-planar HTS coil manufacturing at plant scale is feasible with a cost premium below ~2× equivalent wound-coil tokamak magnets (H1)",
+      "QI magnetic optimization yields sufficient alpha confinement (~0.8% simulated loss) for full ignition, allowing steady-state ECRH to drop from 50 MW to ~1-5 MW (H4)",
+      "Stellaris achieves a capacity factor advantage (88% target, Helios analogue) via steady-state, disruption-free operation sufficient to offset low-beta CAPEX penalty (H2)",
+      "WCLL blanket adapted to complex 3D stellarator geometry holds TBR ≥ 1.05 after all engineering losses, penetrations, and port corrections (H3)",
+      "Tungsten-based island divertor manages 4.05 MW/m² first-wall load in steady-state strong detachment at burning plasma density (H5)",
+      "REBCO tape survives ~10 full-power years at 3×10²² n/m² fluence, making scheduled magnet replacement a manageable lifecycle cost",
+      "ARIES-CS (QA) calibration is a usable cost baseline for a QI configuration despite different coil topology"
+    ],
+    "eliminated_costs": [
+      "Plasma current drive system (steady-state rotational transform supplied by external 3D coils)",
+      "In-vessel active control coils (QI stability removes need for feedback coils in high-neutron-flux environment)",
+      "Disruption mitigation systems and disruption-induced component replacement (inherent disruption-free stellarator operation)",
+      "Large auxiliary heating plant (NBI/ICRF eliminated; only ECRH retained, reducible to ~1-5 MW post-ignition if H4 holds)",
+      "Central solenoid and inductive current ramp-up hardware (no plasma current required)"
+    ],
+    "novel_costs": [
+      "3D non-planar modular HTS coil fabrication with precision winding mandrels and freeform-geometry quality assurance (no commercial precedent; 1.5-5× tokamak magnet cost)",
+      "Periodic full-coil-set replacement at ~10 full-power-year intervals due to REBCO neutron fluence limit (adds $4.5-22/MWh LCOE not borne by HTS compact tokamaks)",
+      "3D-curved tungsten tile fabrication for the non-planar first wall (vs. flat/cylindrical tokamak tiles)",
+      "Quench detection and protection engineering for 111 GJ stored magnetic energy distributed across complex 3D coil geometry",
+      "Structural O&M uplift from small in-vessel access ports imposed by modular non-planar coil architecture (limits blanket/divertor module size and replacement efficiency)"
+    ],
+    "risks": [
+      {
+        "description": "3D HTS coil manufacturing cost premium exceeds 2× wound-coil reference, making stellarator CAPEX uncompetitive regardless of availability advantage; no commercial precedent and SMC demo not until 2027",
+        "severity": "high"
+      },
+      {
+        "description": "Low volume-averaged beta (2.76%) drives larger machine scale (R0 ≈ 13 m), propagating into first wall area, blanket mass, building volume, and construction time (elasticity +0.40 on IDC)",
+        "severity": "high"
+      },
+      {
+        "description": "H4 ignition assumption fails and 50 MW ECRH is required in steady-state, eliminating the H&CD cost advantage and flipping net directional cost comparison vs. tokamak reference",
+        "severity": "high"
+      },
+      {
+        "description": "Capacity factor advantage over HTS compact tokamak reference (01) is only 0-1 percentage points if ARC-class designs achieve 87-90% CF via active disruption avoidance, insufficient to offset coil premium",
+        "severity": "high"
+      },
+      {
+        "description": "Alpha confinement in burning plasma regime not validated before Alpha device (~2031); SIMPLE/ANTS simulations exclude wave-particle interactions at design beta and scale extrapolation to 2.7 GW is untested",
+        "severity": "high"
+      },
+      {
+        "description": "Engineering TBR falls below 1.05 after full accounting of blanket penetrations, diagnostic ports, and 3D geometry losses, requiring external tritium supply during startup",
+        "severity": "medium"
+      },
+      {
+        "description": "Island divertor fails to manage 4.05 MW/m² burning-plasma heat flux; geometry is constrained by magnetic topology with no independent redesign freedom",
+        "severity": "medium"
+      },
+      {
+        "description": "Structural O&M penalty from small in-vessel ports (modular coil constraint) raises CAS70 above tokamak reference by unknown magnitude; 1.5-2× multiplier adds $11-23/MWh",
+        "severity": "medium"
+      },
+      {
+        "description": "ARIES-CS (QA) framework calibration may misprice QI coil topology in unknown direction; Brown (2018) multiplier range does not separately model QA vs. QI differences",
+        "severity": "medium"
+      },
+      {
+        "description": "Li-6 enrichment supply chain constrained (70% enrichment required); Western industrial-scale non-COLEX capacity not yet established",
+        "severity": "medium"
+      },
+      {
+        "description": "Construction schedule for 13 m first-of-kind machine with 3D coil installation slips beyond 8-year default, compounding LCOE via IDC (elasticity +0.40)",
+        "severity": "medium"
+      },
+      {
+        "description": "REBCO tape global production capacity (~thousands km/year) insufficient for fleet-scale stellarator demand (higher per-plant than tokamak due to 3D geometry and 111 GJ stored energy)",
+        "severity": "medium"
+      },
+      {
+        "description": "Tungsten sputtering causes radiative core collapse, halting operations and reducing effective availability",
+        "severity": "low"
+      },
+      {
+        "description": "Capital cost for Stellaris not published, making cross-concept LCOE comparison dependent on ARIES-CS (LTS, QA) floor analogue with multiple structural assumption gaps",
+        "severity": "low"
+      }
+    ]
+  },
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/09-qi-stellarator-hts/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/09-qi-stellarator-hts/analysis.md"

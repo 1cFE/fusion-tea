@@ -1,7 +1,7 @@
-# 1costingfe Model Setup: Magnetic Mirror (p-B11)
+# 1costingfe Model Setup: HTS Tokamak - Full HTS
 
-You are generating a runnable 1costingfe model setup script for **Magnetic Mirror (p-B11)**
-(Pale Blue Fusion).
+You are generating a runnable 1costingfe model setup script for **HTS Tokamak - Full HTS**
+(Energy Singularity).
 
 ## Your Task
 
@@ -11,15 +11,15 @@ an LCOE estimate. The script must be directly runnable via `uv run python model_
 ## Required Reading
 
 ### 1. Concept Analysis (primary data source)
-`/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/06-magnetic-mirror/analysis.md`
+`/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/28-hts-tokamak-full-hts/analysis.md`
 Section 5 has the quantitative values. Section 2 has the key uncertainties.
 
 ### 2. Closest Example (pattern to follow)
-`/home/reid/1cfe/1costingfe/examples/dt_mirror.py`
+`/home/reid/1cfe/1costingfe/examples/dt_tokamak.py`
 Follow its structure, commenting style, and output format.
 
 ### 3. Concept YAML Defaults
-`/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/mfe_mirror.yaml`
+`/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/mfe_tokamak.yaml`
 
 ### 4. 1costingfe README
 `/home/reid/1cfe/1costingfe/README.md`
@@ -64,8 +64,8 @@ the model code. Address each one when generating the script:
 
 
 ## Concept Mapping
-- **ConfinementConcept:** `MIRROR`
-- **Fuel:** `PB11`
+- **ConfinementConcept:** `TOKAMAK`
+- **Fuel:** `DT`
 
 
 ## Power Standardization (CRITICAL)
@@ -134,4 +134,4 @@ Usage:
 ```
 
 ## Output
-Write the script to: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/06-magnetic-mirror/model_setup.py`
+Write the script to: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/28-hts-tokamak-full-hts/model_setup.py`

@@ -27,10 +27,69 @@ Follow its structure, commenting style, and output format.
 ### 5. Costing Constants
 `/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml`
 
+
+## Assessment Feedback (Model-Targeted)
+
+The following findings from the most recent assessment specifically target
+the model code. Address each one when generating the script:
+
+### F-1: Add post-hoc scaling headline for 1000 MWe cross-concept comparison
+
+- **Category:** model
+- **Severity:** high
+- **Description:** For cross-concept comparability, add a `scaled_headline` dict at
+  module level with LCOE and overnight $/kW normalized to 1000 MWe using
+  economy-of-scale post-hoc scaling.
+
+  Required changes:
+  1. Do NOT change `result = model.forward(...)` — keep it at the concept's native
+     power level with all existing parameters and cost_overrides untouched.
+  2. After the existing `result` computation, add a scaling block:
+     ```python
+     # Post-hoc scaling to 1000 MWe (cross-concept comparison)
+     _ALPHA = 0.6  # economy-of-scale exponent
+     _p_native = float(result.power_table.p_net)
+     _factor = (_p_native / 1000.0) ** (1.0 - _ALPHA)
+
+     scaled_headline = {
+         "p_net_mw": 1000.0,
+         "lcoe_per_mwh": float(result.costs.lcoe) * _factor,
+         "overnight_per_kw": float(result.costs.overnight_cost) * _factor,
+     }
+     ```
+  3. Add a brief print line showing the scaled headline values for reference.
+  4. Do NOT rename `result`, do NOT add `result_native`, do NOT duplicate forward().
+  5. If the model has FOAK/NOAK scenario branches, only the primary `result` needs
+     a `scaled_headline`. Scenario branches (e.g., `result_foak`) are informational.
+
+
 ## Concept Mapping
 - **ConfinementConcept:** `LASER_IFE`
 - **Fuel:** `DT`
 
+
+## Power Standardization (CRITICAL)
+
+All concept models MUST include a `scaled_headline` dict at module level for
+cross-concept LCOE comparison at a normalized 1000 MWe reference.
+
+- The primary `result = model.forward(...)` stays at the concept's **native** power
+  level. Do NOT change `net_electric_mw` for standardization purposes.
+- After the `result` computation, add:
+  ```python
+  _ALPHA = 0.6  # economy-of-scale exponent
+  _p_native = float(result.power_table.p_net)
+  _factor = (_p_native / 1000.0) ** (1.0 - _ALPHA)
+
+  scaled_headline = {
+      "p_net_mw": 1000.0,
+      "lcoe_per_mwh": float(result.costs.lcoe) * _factor,
+      "overnight_per_kw": float(result.costs.overnight_cost) * _factor,
+  }
+  ```
+- If the concept's native design point IS 1000 MWe, `scaled_headline` may be
+  omitted (factor = 1.0, extractor falls through to native result).
+- Cost overrides stay at their published/derived values — no re-derivation needed.
 
 ## Script Requirements
 
@@ -42,6 +101,16 @@ Follow its structure, commenting style, and output format.
 5. Results printing (LCOE, CAS breakdown, CAS22 detail)
 6. Key Assumptions summary
 7. Sensitivity analysis via `model.sensitivity()`
+
+### Output Interface (CRITICAL)
+The concept explorer consumes `model` and `result` at module level for
+cross-concept comparison. You MUST follow this convention:
+
+1. `model = CostModel(...)` at module level (NOT inside a function)
+2. `result = model.forward(...)` at module level — this variable MUST be named `result`
+3. For multi-scenario scripts (e.g., NOAK vs FOAK), choose the reference case
+   (prefer NOAK if available) and assign `result = model.forward(...)` for that case.
+   Other scenarios may use any variable name (e.g., `result_foak = model.forward(...)`).
 
 ### Traceability (CRITICAL)
 Every parameter and cost override MUST have an inline comment citing the source:

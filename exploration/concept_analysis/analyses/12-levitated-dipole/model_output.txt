@@ -1,238 +1,231 @@
 
-########################################################################
-# BASELINE SCENARIO: Reactor A (Bohm-scaling, NOAK, central estimates)
-########################################################################
-========================================================================
-Levitated Dipole (D-T) LCOE Model — OpenStar Technologies / 1cFE CAS
-========================================================================
+======================================================================
+BASELINE SCENARIO -- Reactor A design point (Simpson et al. 2026)
+======================================================================
+======================================================================
+Levitated Dipole (D-T) LCOE Model -- OpenStar Technologies, Reactor A
+======================================================================
 
 --- Key Input Parameters ---
-  Fusion power (Reactor A, Bohm):   667 MW  [published]
-  Blanket energy multiplication:    1.10
-  Thermal efficiency:               38.0%  [ASSUMED — BOP cycle unpublished; paper states 40%]
-  Q_sci:                            15.0  [inferred from Table 6 pair]
-  ICRH wall-plug efficiency:        70.0%  [published analogue: JET/EAST]
-  Plasma duty cycle:                90.1%  [published: 90.1%]
-  Plant availability:               96.0%  [published: 96%]
-  Combined capacity factor:         86.5%
-  Plant lifetime:                   40 years
-  FOAK/NOAK:                        NOAK
-  Interest rate:                    8.0%
-  HTS coil system cost:             $250M  [HIGH UNCERTAINTY]
-  ICRH system cost:                 $150M  [MODERATE UNCERTAINTY]
-  Annual coil replacement:          $55M/yr  [HIGH UNCERTAINTY]
+  Fusion power:               667 MW
+  Q_sci:                      15.0
+  ICRH efficiency:            70%
+  Blanket energy mult:        1.053
+  Thermal efficiency:         40%
+  Duty cycle:                 90.1%
+  Maintenance availability:   96%
+  Combined capacity factor:   86.5%
+  REBCO tape (core+top):      5,520 km
+  REBCO Ic at ops (23T,30K):  0.20 kA/tape
+  REBCO price:                $75/kA-m
+  Li2O blanket mass:          3,490 t  @ $100/kg
+  W-B4C-W shield mass:        1,760 t  @ $150/kg
+  Concrete vessel mass:       38,700 t  @ $500/t
+  Coil replacement tape/yr:   864 km/yr
+  Coil handling cost/yr:      $20M/yr
+  NOAK / Interest rate:       NOAK / 8%
+  Plant lifetime:             40 yr
 
 --- Power Balance ---
-  Fusion power:                       667.0 MW
-    Neutron power (80%):              533.6 MW  → blanket (×1.10)
-    Alpha power  (20%):               133.4 MW  → plasma → FW
-  Q_sci (Pfus/Pplasma):                15.0  [inferred]
-  ICRH plasma heating:                 44.5 MW  (to plasma)
-  ICRH grid draw:                      63.5 MW  (from grid, at 70% η)
-  Total thermal power:                764.8 MW
-  Gross electric:                     290.6 MWe  (η=38.0%)
+  Fusion power:               667 MW  (Q_sci = 15.0)
+    Neutron power:            534 MW (80%)
+    Alpha power:              133 MW (20%)
+  ICRH plasma deposit:        44.5 MW
+  ICRH wall-plug:             63.5 MW
+  Thermal power (p_th):       740 MW
+  Gross electric (p_et):      296 MWe
   Recirculating power:
-    ICRH grid draw:                    63.5 MW
-    Non-heating auxiliaries:           15.0 MW  (cryo+trit+house+pos)
-    Total recirculating:               78.5 MW  (27.0% of gross)
-  Net electric:                       212.1 MWe
-  Published target (Reactor A):      208.0 MWe  [arxiv-2602-20564 §Table 9]
-  Q_eng approx (Pfus/Pgrid_heat):      10.5
-  Combined capacity factor:        86.5%  (90.1% × 96.0%)
-
---- Geometry (ASSUMED spherical — no published vessel dimensions) ---
-  First-wall inner radius:         3.5 m  [ASSUMED]
-  First-wall area:                 154 m²  (4.33 MW/m² loading)
-  Blanket volume:                  153 m³
-  Shield volume:                   160 m³
-  Total outer radius:              5.4 m
+    ICRH wall-plug:           63.5 MW
+    Cryoplant (neon slush):   1.31 MW
+    Tritium processing:       8.0 MW
+    Housekeeping:             5.0 MW
+    Other auxiliary:          9.19 MW
+    Total:                    87.0 MW (29.4%)
+  Net electric (p_net):       209 MWe
+  Engineering Q (net/ICRH):   3.29
 
 --- CAS22: Reactor Plant Equipment ---
-    C220101  Blanket/First Wall (Li₂O)            $    45.2M
-    C220102  Shield (W/B₄C two-temp)              $    58.1M
-    C220103  HTS Coil + Flux Pump System          $   250.0M [override]
-    C220104  ICRH Heating System                  $   150.0M [override]
-    C220105  Primary Structure                    $     7.4M
-    C220106  Vacuum System (Inconel+concrete)     $    22.9M 
-    C220107  Power Supplies (misc, 50% base)      $    16.8M [partial override]
-    C220108  Target Factory                       $     0.0M [N/A: MFE, $0]
-    C220109  Direct Energy Converter              $     0.0M [N/A: closed-field, $0]
-    C220110  Remote Handling (coil docking)       $    88.6M [override ×1.5]
-    C220111  Installation Labor (14%)             $    89.5M
-  ────────────────────────────────────────────────────────────
-    Per-module subtotal:                         $   728.6M
+    C220101 Li2O Blanket                 $   349.0M  [MASS-BASED OVERRIDE]
+    C220102 W-B4C-W Shield               $   264.0M  [MASS-BASED OVERRIDE]
+    C220103 HTS Magnet (core+top)        $   414.0M  [TAPE-BASED OVERRIDE]
+    C220104 ICRH Heating System          $   127.0M  [$/MW OVERRIDE]
+    C220105 Structure + Outer Vessel     $    32.3M  [concrete mass + vol scale]
+    C220106 Inner Vacuum Vessel          $    84.7M  [parametric + vol scale]
+    C220107 Power Supplies               $    34.1M  [1costingfe scale]
+    C220108 Target Factory               $     0.0M  [N/A=0]
+    C220109 Direct Energy Converter      $     0.0M  [N/A=0]
+    C220110 Remote Handling              $   150.0M  [NOVEL SYSTEM OVERRIDE]
+    C220111 Installation (14%)           $   203.7M  
+    C220112 Isotope Separation           $     0.0M  [N/A, natural Li2O]
+    ───────────────────────────────────────────────────────
+    Per-module subtotal:              $  1658.9M
   Plant-wide accounts:
-    C220200  Coolant Systems                      $    52.8M
-    C220300  Aux Cooling + Cryoplant (neon slush) $    57.9M
-    C220400  Radioactive Waste Management         $     1.5M
-    C220500  Fuel Handling (D-T, Li₂O blanket)    $    40.5M
-    C220600  Other Equipment                      $     3.3M
-    C220700  Instrumentation & Control            $    31.6M
-  ────────────────────────────────────────────────────────────
-    Plant-wide subtotal:                         $   187.7M
-  CAS22 Total:                                   $   916.2M
+    C220200 Coolant Systems              $    51.9M
+    C220300 Aux Cooling + Neon Cryoplant $   150.8M
+    C220400 Rad Waste Management         $     1.4M
+    C220500 Fuel Handling (D-T)          $    40.1M
+    C220600 Other Equipment              $     3.3M
+    C220700 Instrumentation & Control    $    31.0M
+    ───────────────────────────────────────────────────────
+    Plant-wide subtotal:              $   278.5M
+  CAS22 Total:                        $  1937.4M
 
 --- Capital Costs (CAS10-60) ---
-  CAS10  Pre-construction:          $    49.0M  (incl. $35M tritium startup)
-  CAS21  Buildings:                 $   178.7M
-  CAS22  Reactor Plant Equipment:   $   916.2M
-  CAS23  Turbine Plant:             $    57.4M
-  CAS24  Electric Plant:            $    24.5M
-  CAS25  Misc Plant:                $    14.9M
-  CAS26  Heat Rejection:            $     9.9M
-  CAS27  Special Materials:         $    10.0M
-  CAS28  Digital Twin:              $     5.0M
-  CAS29  Contingency:               $     0.0M
-  ────────────────────────────────────────────────────
-  CAS20  Direct Costs:              $  1216.7M
-  CAS30  Indirect Costs:            $   243.3M
-  CAS40  Owner's Costs:             $    60.8M
-  CAS50  Supplementary:             $    10.3M
-  ────────────────────────────────────────────────────
-  Overnight Capital:                $  1580.2M
-  CAS60  IDC (f=0.223):          $   351.8M
-  ════════════════════════════════════════════════════
-  Total Capital:                    $  1932.1M
-  Specific Capital:                 $    9109 $/kWe
+  CAS10 Pre-construction:             $    14.0M
+  CAS21 Ancillary Buildings:          $    73.4M
+  CAS22 Reactor Plant Equipment:      $  1937.4M
+  CAS23 Turbine Plant:                $    58.5M
+  CAS24 Electric Plant:               $    24.9M
+  CAS25 Misc Plant:                   $    15.2M
+  CAS26 Heat Rejection:               $    10.1M
+  CAS27 Special Materials (T startup):$    30.0M
+  CAS28 Digital Twin:                 $     5.0M
+  CAS29 Contingency:                  $     0.0M
+  ───────────────────────────────────────────────────────
+  CAS20 Direct Costs:                 $  2154.5M
+  CAS30 Indirect Costs:               $   430.9M
+  CAS40 Owner's Costs:                $   107.7M
+  CAS50 Supplementary:                $    10.5M
+  ───────────────────────────────────────────────────────
+  Overnight Capital:                  $  2717.6M
+  CAS60 IDC (f=0.223):             $   605.1M
+  =======================================================
+  Total Capital:                      $  3322.7M
+  Specific Capital (native):          $   15908 $/kWe
 
 --- Annual Costs (CAS70-90) ---
-  CAS90  Capital charge (CRF=0.0839):    $   162.0M/yr
-  CAS71  O&M (levelized):                    $    18.0M/yr
-  CAS72a Blanket replacement (6 events):       $     6.3M/yr
-  CAS72b Coil section replacement (annual):  $    55.0M/yr  [HIGH UNCERTAINTY]
-         ($55M/yr × 40 yr → $2200M nominal lifecycle)
-  CAS70  Total O&M:                          $    79.3M/yr
-  CAS80  Fuel costs (D-T):                   $     2.0M/yr
+  CAS90 Capital charge (CRF=0.0839):  $   278.6M/yr
+  CAS71 O&M fixed (levelized):        $    17.7M/yr
+  CAS72 Scheduled replacements:       $   101.0M/yr
+    Blanket (6 repl):              $    48.6M/yr
+    Sacrificial coil (annual):        $    52.4M/yr
+      (tape $32.4M + handling $20.0M = $52.4M/yr raw)
+  CAS70 Total O&M:                    $   118.7M/yr
+  CAS80 D fuel + consumables:         $   0.500M/yr
 
 --- LCOE ---
-  Annual energy production:      1,607,170 MWh
-                              (212.1 MWe × 86.5% × 8760 hr)
-  Annual revenue requirement: $243.3M
-  ╔═════════════════════════════════════════════╗
-  ║  LCOE =   15.14 ¢/kWh                        ║
-  ║       =   151.4 $/MWh                        ║
-  ╚═════════════════════════════════════════════╝
-  Capital (CAS90):            66.6%
-  O&M (CAS70):                32.6%
-    of which coil repl.:      22.6%
-  Fuel (CAS80):               0.8%
+  Annual energy production:     1,582,658 MWh
+  Annual revenue requirement:   $397.9M
+  ╔══════════════════════════════════════════════╗
+  ║  LCOE = 25.14 cents/kWh                    ║
+  ║       = 251.4 $/MWh                        ║
+  ╚══════════════════════════════════════════════╝
+  Capital (CAS90):              70.0%
+  O&M (CAS70):                  29.8%
+  Fuel/consumables (CAS80):     0.1%
 
+--- Scaled Headline (1000 MWe reference, alpha=0.6) ---
+  Native net power:             209 MWe
+  Scale factor:                 0.535  (cost scales DOWN from 208 to 1000 MWe)
+  Scaled LCOE:                  134.4 $/MWh
+  Scaled overnight:             $6954 /kWe
 
-========================================================================
-SENSITIVITY SWEEPS — Single-Parameter Variation from Baseline
-========================================================================
-  Baseline LCOE: 15.14 ¢/kWh
+======================================================================
+SENSITIVITY ANALYSIS (from baseline)
+======================================================================
+  Baseline LCOE: 25.14 cents/kWh  (251.4 $/MWh)
 
-  Thermal efficiency (BOP cycle unknown; paper states 40%):
-          0.32 →   18.23 ¢/kWh  (+3.09)  [166 MWe net]
-          0.35 →   16.50 ¢/kWh  (+1.36)  [189 MWe net]
-          0.38 →   15.14 ¢/kWh  (+0.00)  [212 MWe net] ← baseline
-           0.4 →   14.39 ¢/kWh  (-0.75)  [227 MWe net]
-          0.42 →   13.73 ¢/kWh  (-1.41)  [243 MWe net]
-          0.45 →   12.88 ¢/kWh  (-2.26)  [266 MWe net]
+  Q_sci (confinement scaling)  (KEY RISK: binary viability threshold near Q=5-8):
+           5  ->  48.08 c/kWh  (+22.94)  net=117 MWe
+         7.5  ->  33.40 c/kWh  (+8.26)  net=163 MWe
+          10  ->  28.76 c/kWh  (+3.62)  net=186 MWe
+          12  ->  26.85 c/kWh  (+1.71)  net=197 MWe
+          15  ->  25.14 c/kWh  (+0.00)  net=209 MWe
+          20  ->  23.61 c/kWh  (-1.53)  net=220 MWe
+          30  ->  22.23 c/kWh  (-2.91)  net=232 MWe
 
-  HTS coil system cost [$M] (critical: no published analogues):
-           100 →   13.78 ¢/kWh  (-1.36)  [212 MWe net]
-           150 →   14.23 ¢/kWh  (-0.91)  [212 MWe net]
-           200 →   14.69 ¢/kWh  (-0.45)  [212 MWe net]
-           250 →   15.14 ¢/kWh  (+0.00)  [212 MWe net] ← baseline
-           400 →   16.50 ¢/kWh  (+1.36)  [212 MWe net]
-           600 →   18.32 ¢/kWh  (+3.18)  [212 MWe net]
-          1000 →   21.96 ¢/kWh  (+6.82)  [212 MWe net]
+  REBCO tape price [$/kA-m]  (Affects both C220103 capital AND annual coil replacement):
+          10  ->  20.05 c/kWh  (-5.09)  net=209 MWe
+          25  ->  21.23 c/kWh  (-3.91)  net=209 MWe
+          50  ->  23.18 c/kWh  (-1.96)  net=209 MWe
+          75  ->  25.14 c/kWh  (+0.00)  net=209 MWe
+         100  ->  27.10 c/kWh  (+1.96)  net=209 MWe
+         150  ->  31.01 c/kWh  (+5.87)  net=209 MWe
 
-  Annual sacrificial section material cost [$M/yr] (novel OPEX):
-            10 →   12.96 ¢/kWh  (-2.18)  [212 MWe net]
-            25 →   13.90 ¢/kWh  (-1.24)  [212 MWe net]
-            45 →   15.14 ¢/kWh  (+0.00)  [212 MWe net] ← baseline
-            75 →   17.01 ¢/kWh  (+1.87)  [212 MWe net]
-           120 →   19.81 ¢/kWh  (+4.67)  [212 MWe net]
+  Thermal efficiency (cycle unspecified)  (Range: Rankine ~33-37% to sCO2 ~44-47%):
+        0.33  ->  32.39 c/kWh  (+7.25)  net=157 MWe
+        0.37  ->  27.76 c/kWh  (+2.62)  net=187 MWe
+         0.4  ->  25.14 c/kWh  (+0.00)  net=209 MWe
+        0.44  ->  22.41 c/kWh  (-2.73)  net=238 MWe
+        0.47  ->  20.76 c/kWh  (-4.38)  net=261 MWe
 
-  Q_sci (inferred range: 12–19; requires Tahi demonstration):
-             8 →   18.61 ¢/kWh  (+3.47)  [171 MWe net]
-            10 →   16.94 ¢/kWh  (+1.80)  [189 MWe net]
-            12 →   15.99 ¢/kWh  (+0.85)  [200 MWe net]
-            15 →   15.14 ¢/kWh  (+0.00)  [212 MWe net] ← baseline
-            19 →   14.49 ¢/kWh  (-0.64)  [222 MWe net]
-            25 →   13.96 ¢/kWh  (-1.18)  [231 MWe net]
+  Li2O blanket unit cost [$/kg]  (HIGH UNCERTAINTY: ceramic manufacturing + nuclear qualification):
+          50  ->  21.99 c/kWh  (-3.15)  net=209 MWe
+          75  ->  23.57 c/kWh  (-1.57)  net=209 MWe
+         100  ->  25.14 c/kWh  (+0.00)  net=209 MWe
+         150  ->  28.29 c/kWh  (+3.15)  net=209 MWe
+         200  ->  31.43 c/kWh  (+6.29)  net=209 MWe
+         300  ->  37.73 c/kWh  (+12.59)  net=209 MWe
 
-  Interest rate / WACC:
-          0.04 →   10.67 ¢/kWh  (-4.47)  [212 MWe net]
-          0.06 →   12.71 ¢/kWh  (-2.43)  [212 MWe net]
-          0.08 →   15.14 ¢/kWh  (+0.00)  [212 MWe net] ← baseline
-           0.1 →   17.94 ¢/kWh  (+2.80)  [212 MWe net]
-          0.12 →   21.10 ¢/kWh  (+5.96)  [212 MWe net]
+  Discount rate / WACC  (Capital-intensive concept strongly rate-sensitive):
+        0.04  ->  17.40 c/kWh  (-7.74)  net=209 MWe
+        0.06  ->  20.95 c/kWh  (-4.19)  net=209 MWe
+        0.08  ->  25.14 c/kWh  (+0.00)  net=209 MWe
+         0.1  ->  29.96 c/kWh  (+4.82)  net=209 MWe
+        0.12  ->  35.40 c/kWh  (+10.26)  net=209 MWe
 
-  ICRH system capital cost [$M]:
-            75 →   14.46 ¢/kWh  (-0.68)  [212 MWe net]
-           100 →   14.69 ¢/kWh  (-0.45)  [212 MWe net]
-           150 →   15.14 ¢/kWh  (+0.00)  [212 MWe net] ← baseline
-           200 →   15.59 ¢/kWh  (+0.45)  [212 MWe net]
-           300 →   16.50 ¢/kWh  (+1.36)  [212 MWe net]
+  Magnet engineering multiplier (tape -> total)  (Largest single cost item; no large-scale REBCO anchor):
+           3  ->  23.61 c/kWh  (-1.53)  net=209 MWe
+           4  ->  24.38 c/kWh  (-0.76)  net=209 MWe
+           5  ->  25.14 c/kWh  (+0.00)  net=209 MWe
+           7  ->  26.67 c/kWh  (+1.53)  net=209 MWe
+          10  ->  28.96 c/kWh  (+3.82)  net=209 MWe
 
-  Plasma duty cycle (published: 90.1%; cryogen limits):
-           0.8 →   17.00 ¢/kWh  (+1.86)  [212 MWe net]
-          0.85 →   16.02 ¢/kWh  (+0.88)  [212 MWe net]
-           0.9 →   15.16 ¢/kWh  (+0.02)  [212 MWe net]
-         0.901 →   15.14 ¢/kWh  (+0.00)  [212 MWe net] ← baseline
-          0.95 →   14.39 ¢/kWh  (-0.75)  [212 MWe net]
+  Annual coil handling cost [M$/yr]
+  (UNIQUE TO LEVITATED DIPOLE -- no analogue in any other fusion concept):
+         5 M$/yr  ->  24.19 c/kWh  (-0.95)
+        10 M$/yr  ->  24.51 c/kWh  (-0.63)
+        20 M$/yr  ->  25.14 c/kWh  (+0.00)
+        40 M$/yr  ->  26.40 c/kWh  (+1.26)
+        60 M$/yr  ->  27.67 c/kWh  (+2.53)
+       100 M$/yr  ->  30.19 c/kWh  (+5.05)
 
-========================================================================
-SCENARIO COMPARISON: Conservative / Moderate (Baseline) / Optimistic
-========================================================================
+======================================================================
+SCENARIO COMPARISON
+======================================================================
 
-Scenario                                      Net MW   CAPEX $M    $/kWe   LCOE ¢/kWh
-─────────────────────────────────────────────────────────────────────────────────────
-  Conservative (FOAK, high uncertainty)          164       2992    18254        38.87
-  Moderate / Baseline (NOAK, central)            212       1932     9109        15.14
-  Optimistic (NOAK, improved, learning)          269       1480     5504         7.32
+  Scenario       Net(MWe)  Overnight($B)    $/kWe  LCOE(c/kWh)  Scaled$/MWh
+  ────────────────────────────────────────────────────────────────────────
+  Conservative        187           3.63    23790        41.38          211
+  Baseline            209           2.72    15908        25.14          134
+  Optimistic          238           1.94     9955        14.70           83
 
-========================================================================
-KEY BINDING CONSTRAINTS (Top 3 LCOE Drivers)
-========================================================================
+======================================================================
+KEY BINDING CONSTRAINTS (top 3 LCOE drivers)
+======================================================================
 
-1. HTS COIL SYSTEM COST (C220103) — HIGH UNCERTAINTY, HIGH IMPACT
-   The single floating 23 T REBCO CICC coil + on-board flux pump + precision
-   docking mechanism is the most uncharacterized CAPEX item in this analysis.
-   No direct analogue exists: CFS ARC uses 18 TF coils at $200–500M total,
-   while this design requires ONE floating coil with novel flux pump and
-   docking technology added. Sensitivity sweep shows varying coil system
-   $100M → $1000M changes LCOE by roughly ±1.5 ¢/kWh from baseline.
-   A 2× cost overrun ($500M vs $250M) adds ~0.8 ¢/kWh to LCOE.
-   Resolution: Tahi prototype cost experience (~2028–2030) will be the first
-   calibration point; power-plant-scale cost remains extrapolated until Maui.
+  1. Q_sci / Confinement Scaling -- BINARY VIABILITY RISK
+     -------------------------------------------------------
+     Reactor A requires tau_e = 3.5 s -- a 240x extrapolation over LDX data
+     (14.5 ms). The Tahi prototype (~2028) must validate Bohm-like or better
+     scaling (n*tau_e >= 3.23e19 s/m3). This is a binary threshold: if Tahi
+     fails, Reactor A is nonviable as designed (no intermediate 'more expensive
+     but viable' outcome at current design margins). The sensitivity sweep shows
+     Q_sci drives LCOE sharply via the recirculating fraction -- at Q=10 the
+     plant is marginally viable; below Q~7, net power approaches zero.
+     No cost model can resolve this risk. Only Tahi experimental data can.
 
-2. THERMAL EFFICIENCY / CONVERSION CYCLE — HIGH UNCERTAINTY, HIGH IMPACT
-   OpenStar has not disclosed the thermal power conversion cycle type or
-   efficiency. The paper states 40% as a placeholder but specifies no cycle.
-   The two-temperature shield (>2000 K hot, ~600°C warm) may enable sCO₂
-   Brayton (40–45%) but this is speculative and unconfirmed.
-   Sensitivity sweep: 32% → 45% efficiency changes LCOE by ~2 ¢/kWh
-   (roughly from ~9 to ~6.5 ¢/kWh). Baseline 38% is the back-solving anchor
-   for the published p_net = 208 MWe at Q_sci = 15.
-   A 5 pp reduction (38% → 33%) would raise LCOE by ~1 ¢/kWh and reduce
-   net output, equivalent to requiring ~15% lower overnight capital for
-   equivalent cost competitiveness.
+  2. Annual Sacrificial Coil Replacement -- UNIQUE UNQUANTIFIED OPEX
+     -----------------------------------------------------------------
+     ~864 km/yr REBCO tape + remote handling + qualification has no analogue in
+     any fusion concept. OpenStar claims it "does not make a significant impact"
+     but provides no figure. At current tape prices ($75/kA-m), the raw annual
+     cost is ~$47M/yr -- roughly 30% of the annual capital charge for 208 MWe.
+     If tape prices decline to target (~$10-25/kA-m) the annual cost drops to
+     $10-20M/yr. This is the single most important gap between the company's
+     implicit optimism and verifiable TEA. Until costed, LCOE uncertainty spans
+     a factor of ~2 from this parameter alone.
 
-3. ANNUAL SACRIFICIAL COIL REPLACEMENT COST — NOVEL OPEX, HIGH UNCERTAINTY
-   The annual partial coil replacement (~20% outer section, ~864 km/yr REBCO
-   tape) creates a recurring cost with no precedent in any other fusion concept.
-   OpenStar claims this "does not make a significant impact" but provides no
-   dollar figure. At current REBCO tape prices ($50–100/kA-m), material cost
-   alone is $52–103M/yr; with processing and remote handling, the range may
-   extend to $150M+/yr before learning-curve reductions.
-   Over 40 years, even a $55M/yr estimate accumulates to $2.2B nominal.
-   This could be a decisive OPEX penalty vs. tokamaks (which replace blanket
-   every 5 FPY but have NO annual magnet replacement) — or a modest cost if
-   REBCO price reaches the ~$10/kA-m target ($10M/yr material cost).
-   Sensitivity: $10M/yr → $120M/yr material cost changes LCOE by ~1 ¢/kWh.
+  3. Capital Cost Density -- LARGE COMPONENTS, MODEST NET POWER
+     ------------------------------------------------------------
+     At ~208 MWe net the specific capital is ~$15,000-20,000/kWe. The magnet,
+     blanket, and shield are sized by physics (not scalable to lower cost at
+     this fusion power), while net power is squeezed by the ~30% recirculating
+     fraction. Thermal efficiency (37-44%) changes net output by ~15% at fixed
+     fusion power. The economy-of-scale scaling to 1000 MWe (alpha=0.6) reduces
+     the LCOE substantially, but the concrete outer vessel and core magnet are
+     single-unit items with limited sub-linear scaling. OpenStar's Reactor B
+     (74.5 MWe) has higher $/kWe and higher LCOE, confirming the plant does not
+     benefit from smaller size. Reactor A is already near the cost-optimal point
+     given current design constraints.
 
-
-────────────────────────────────────────────────────────────────────────
-NOTE ON MODEL CONFIDENCE:
-  This model is based primarily on two preprints (arXiv 2602.20564,
-  arXiv 2508.17691) with major gaps in thermal efficiency, Q_sci, BOP
-  design, and all cost parameters. The published anchor values (667 MW
-  fusion, 208 MWe net) constrain the power balance; capital cost is
-  estimated from analogues. LCOE range of ~6–14 ¢/kWh reflects genuine
-  parameter uncertainty, not model error. The LCOE is capital-dominated.
-────────────────────────────────────────────────────────────────────────

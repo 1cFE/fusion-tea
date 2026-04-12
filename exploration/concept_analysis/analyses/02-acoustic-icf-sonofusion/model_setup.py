@@ -372,6 +372,11 @@ class SonofusionPlantParams:
         else:
             r["recirc_fraction"] = float('inf')
 
+        # Plant-level power totals (n_mod modules combined; for cross-concept scaling)
+        r["p_net_plant"] = p_net * self.n_mod
+        r["p_et_plant"] = p_et * self.n_mod
+        r["p_th_plant"] = p_th * self.n_mod
+
         return r
 
     def _compute_geometry(self, power: dict) -> dict:
@@ -759,6 +764,22 @@ class SonofusionPlantParams:
 params = SonofusionPlantParams()
 results = params.compute()
 
+# Post-hoc scaling to 1000 MWe (cross-concept comparison)
+# Economy-of-scale exponent α=0.6 (standard engineering cost scaling law).
+# Native physics and power balance are preserved unchanged in `results` above.
+# This block scales LCOE and overnight capital to a 1000 MWe reference for
+# cross-concept comparison without altering any plasma physics parameters.
+_ALPHA = 0.6  # economy-of-scale exponent
+_p_native = results["power"].get("p_net_plant", results["power"]["p_net"])
+_factor = (_p_native / 1000.0) ** (1.0 - _ALPHA)
+_overnight = results["costs"]["overnight_capital"] * 1e3 / _p_native  # $/kW native
+
+scaled_headline = {
+    "p_net_mw": 1000.0,
+    "lcoe_per_mwh": results["economics"]["lcoe_USD_per_MWh"] * _factor,
+    "overnight_per_kw": _overnight * _factor,
+}
+
 
 def to_explorer_dict() -> dict:
     """Return structured data for the concept explorer.
@@ -1040,6 +1061,11 @@ def print_results(p: SonofusionPlantParams, r: dict):
         print(f"  Capital (CAS90):    {econ.get('capital_fraction', 0):.1%}")
         print(f"  O&M (CAS70):        {econ.get('om_fraction', 0):.1%}")
         print(f"  Fuel/D₂O (CAS80):   {econ.get('fuel_fraction', 0):.1%}")
+    # Scaled to 1000 MWe reference for cross-concept comparison (α=0.6 economy-of-scale)
+    if math.isfinite(scaled_headline["lcoe_per_mwh"]):
+        print(f"  Scaled to 1000 MWe (α=0.6):  "
+              f"{scaled_headline['lcoe_per_mwh']:.1f} $/MWh,  "
+              f"{scaled_headline['overnight_per_kw']:.0f} $/kW overnight")
 
 
 def sensitivity_sweep(base_p: SonofusionPlantParams,

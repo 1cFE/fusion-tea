@@ -1,4 +1,3 @@
-# STALE: analysis-updated-iter-3
 """HTS Tokamak - Full HTS (Energy Singularity) — 1costingfe model setup (iter-3).
 
 Modeling approach:
@@ -7,8 +6,6 @@ Modeling approach:
     analogue for a compact, high-field, D-shaped HTS tokamak (Sorbom et al. 2015 ARC;
     Araiinejad & Shirvan 2025 TEA). All engineering parameters are UNCERTAIN and must
     be replaced when HH380 engineering data becomes available (post-2030).
-
-    This iteration (iter-3) addresses two blocking/important assessment findings:
 
     F-1 (blocking): Full HTS coil cost premium applied to C220103.
         The framework default does not distinguish full-HTS (TF+PF+CS in REBCO) from
@@ -245,8 +242,8 @@ def run_scenario(label, r0, net_electric_mw, plasma_t, availability,
     """Run one costing scenario with the given overrides."""
     kwargs = _base_kwargs(r0, net_electric_mw, plasma_t, availability)
     kwargs["cost_overrides"] = cost_overrides
-    result = model.forward(**kwargs)
-    return result, label, r0, net_electric_mw, availability, extra_note
+    r = model.forward(**kwargs)
+    return r, label, r0, net_electric_mw, availability, extra_note
 
 
 # ── Five scenario branches ────────────────────────────────────────────
@@ -264,28 +261,35 @@ def run_scenario(label, r0, net_electric_mw, plasma_t, availability,
 #   operation is disruption-limited rather than steady-state.
 #   → availability = 70%; ~+9% LCOE vs. base.
 #
-# Scenario C — Small Machine (F-2: R≈1.5m, ~250 MWe)  [NEW in iter-3]
+# Scenario C — Small Machine (F-2: R≈1.5m, ~250 MWe)
 #   Lower bound on HH380 design point: compact machine near HH170 scale.
 #   R=1.5m, net electric ~250 MWe, A=4.0, full HTS premium applied.
 #   → Shows how LCOE evolves if HH380 is a smaller, cheaper plant.
 #
-# Scenario D — Large Machine (F-2: R≈2.5m, ~800 MWe)  [NEW in iter-3]
+# Scenario D — Large Machine (F-2: R≈2.5m, ~800 MWe)
 #   Upper bound on HH380 design point: ARC-class machine, larger than SPARC.
 #   R=2.5m, net electric ~800 MWe, A=4.0, full HTS premium applied.
 #   → Shows benefit of scale economies if HH380 is a larger plant.
 
-# Base case
-r_base, *_ = run_scenario(
-    label="Base Case",
-    r0=R0_BASE, net_electric_mw=500.0, plasma_t=PLASMA_T_BASE,
-    availability=0.80,
+# Base case (primary result — interface contract for concept explorer)
+result = model.forward(
+    **_base_kwargs(R0_BASE, 500.0, PLASMA_T_BASE, 0.80),
     cost_overrides={"C220103": c220103_500},
-    extra_note="R=2.0m, 500 MWe, 80% avail — CS coils reliable, AI control nominal",
 )
 
+# ── Post-hoc scaling to 1000 MWe (cross-concept comparison) ──────────
+_ALPHA = 0.6  # economy-of-scale exponent
+_p_native = float(result.power_table.p_net)
+_factor = (_p_native / 1000.0) ** (1.0 - _ALPHA)
+
+scaled_headline = {
+    "p_net_mw": 1000.0,
+    "lcoe_per_mwh": float(result.costs.lcoe) * _factor,
+    "overnight_per_kw": float(result.costs.overnight_cost) * _factor,
+}
+
 # Scenario A: CS coil reliability failure — apply CAS72 penalty on base CAS72
-# CAS72 from base case (with C220103 premium already in place)
-cas72_base_val = float(r_base.costs.cas72) if hasattr(r_base.costs, "cas72") else 0.0
+cas72_base_val = float(result.costs.cas72) if hasattr(result.costs, "cas72") else 0.0
 r_a, *_ = run_scenario(
     label="Scenario A — CS Coil Reliability Failure",
     r0=R0_BASE, net_electric_mw=500.0, plasma_t=PLASMA_T_BASE,
@@ -336,7 +340,7 @@ r_d, *_ = run_scenario(
 )
 
 scenarios = [
-    (r_base, "Base Case",                              R0_BASE, 500.0, 0.80),
+    (result, "Base Case",                              R0_BASE, 500.0, 0.80),
     (r_a,    "Scenario A — CS Coil Reliability Fail", R0_BASE, 500.0, 0.65),
     (r_b,    "Scenario B — AI Control Underperforms", R0_BASE, 500.0, 0.70),
     (r_c,    "Scenario C — Small Machine",            1.5,     250.0, 0.80),
@@ -355,26 +359,36 @@ print(f"C220103 hts_full_coil_premium: ×{HTS_FULL_COIL_PREMIUM:.2f} "
 print("=" * 78)
 print()
 
+c = result.costs
+pt = result.power_table
+print(f"LCOE:       {float(c.lcoe):>8.1f} $/MWh")
+print(f"Overnight:  {float(c.overnight_cost):>8.0f} $/kW")
+print(f"\nScaled headline (1000 MWe, α={_ALPHA}): "
+      f"LCOE {scaled_headline['lcoe_per_mwh']:.1f} $/MWh | "
+      f"Overnight {scaled_headline['overnight_per_kw']:.0f} $/kW")
+print(f"Fusion:     {float(pt.p_fus):>8.0f} MW | Net: {float(pt.p_net):>5.0f} MW | Q_eng: {float(pt.q_eng):.2f}")
+print()
+
 # Per-scenario detail
-for result, label, r0, p_net, avail in scenarios:
-    c = result.costs
-    pt = result.power_table
+for r, label, r0, p_net, avail in scenarios:
+    rc = r.costs
+    rpt = r.power_table
     print(f"── {label} ──")
     print(f"   R0={r0}m  |  Net electric: {p_net:.0f} MWe  |  Availability: {avail:.0%}")
-    print(f"   LCOE:          {float(c.lcoe):>8.1f} $/MWh")
-    print(f"   Overnight:     {float(c.overnight_cost):>8.0f} $/kW")
-    print(f"   Fusion power:  {float(pt.p_fus):>8.0f} MW")
-    print(f"   Net electric:  {float(pt.p_net):>8.0f} MW")
-    print(f"   Q_eng:         {float(pt.q_eng):>8.2f}")
+    print(f"   LCOE:          {float(rc.lcoe):>8.1f} $/MWh")
+    print(f"   Overnight:     {float(rc.overnight_cost):>8.0f} $/kW")
+    print(f"   Fusion power:  {float(rpt.p_fus):>8.0f} MW")
+    print(f"   Net electric:  {float(rpt.p_net):>8.0f} MW")
+    print(f"   Q_eng:         {float(rpt.q_eng):>8.2f}")
     print()
 
 # Unified 5-scenario LCOE comparison table
 print("── Unified LCOE Scenario Table (all five scenarios) ──")
 print(f"  {'Scenario':<45} {'R0':>4} {'MWe':>5} {'Avail':>6}  {'LCOE':>10}  {'vs. Base':>9}")
 print("  " + "-" * 82)
-base_lcoe = float(r_base.costs.lcoe)
-for result, label, r0, p_net, avail in scenarios:
-    lcoe_val = float(result.costs.lcoe)
+base_lcoe = float(result.costs.lcoe)
+for r, label, r0, p_net, avail in scenarios:
+    lcoe_val = float(r.costs.lcoe)
     delta_pct = (lcoe_val - base_lcoe) / base_lcoe * 100.0
     delta_str = f"+{delta_pct:.1f}%" if delta_pct > 0 else f"{delta_pct:.1f}%"
     print(f"  {label:<45} {r0:>4.1f} {p_net:>5.0f} {avail:>6.0%}  {lcoe_val:>10.1f}  {delta_str:>9}")
@@ -385,7 +399,6 @@ print()
 
 # CAS breakdown — base case
 print("── CAS Cost Breakdown — Base Case ──")
-c = r_base.costs
 cas = [
     ("CAS10", "Preconstruction",           c.cas10),
     ("CAS21", "Buildings",                 c.cas21),
@@ -415,7 +428,7 @@ print()
 
 # CAS22 sub-account detail — base case
 print("── CAS22 Sub-Account Detail — Base Case ──")
-cas22_detail = r_base.cas22_detail
+cas22_detail = result.cas22_detail
 cas22_labels = {
     "C220101": "First Wall + Blanket",
     "C220102": "Shield",
@@ -509,7 +522,7 @@ print()
 print("── Sensitivity Analysis — Base Case (elasticity = %ΔLCOE / %Δparam) ──")
 print("  C220103 overridden → zero gradient; sensitivity is over remaining params.")
 print()
-sens = model.sensitivity(r_base.params, cost_overrides={"C220103": c220103_500})
+sens = model.sensitivity(result.params, cost_overrides={"C220103": c220103_500})
 
 print("  Engineering levers:")
 for k, v in sorted(sens["engineering"].items(), key=lambda x: abs(x[1]), reverse=True):

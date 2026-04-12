@@ -188,7 +188,7 @@
     "headline": {
       "lcoe_per_mwh": 50.26852035522461,
       "overnight_cost_per_kw": 1773.2336074844522,
-      "p_net_mw": 50.00000000000001,
+      "p_net_mw": 1000.0,
       "q_eng": 3.750746268656717,
       "capacity_factor": 0.85
     },
@@ -314,7 +314,93 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": null,
+  "narrative": {
+    "key_bets": [
+      "D-He3 fusion achievable at ~200M°C / 17 keV with sufficient yield at commercial rep rate",
+      "Magnetic energy recovery efficiency ≥90% sustained at commercial fields (40 T) and rep rates",
+      "He3 self-breeding from D-D side reactions viable at commercial scale with manageable tritium storage during 12.3-year decay lag",
+      "Scaling rep rate from Trenta (~0.002 Hz) to commercial 2 Hz — a ~1200× increase in pulse frequency",
+      "Pulsed aluminum coils capable of 40 T compression (5× field, 25× magnetic pressure vs. Trenta's 8 T)",
+      "Capacitor bank cost reduction from ~$5/J baseline to ~$0.50/J NOAK via in-house manufacturing and volume learning",
+      "Plasma gain Q ~1.2 implied by ARPA-E η·Q = 0.24 holds and scales to commercial design point"
+    ],
+    "eliminated_costs": [
+      "Tritium breeding blanket (FLiBe/WCCB, ~$200–500M) — eliminated by D-He3 fuel",
+      "Steam/thermal conversion cycle (turbines, condensers, heat exchangers, steam generator) — replaced by direct inductive recovery",
+      "REBCO HTS superconducting magnets and associated cryogenic plant — replaced by room-temperature aluminum coils",
+      "Heavy neutron shielding required for D-T (~80% neutron energy) — reduced to ~1m borated poly/concrete for ~5% D-He3 neutron fraction",
+      "External tritium supply and recirculation at commercial scale — only interim tritium use for Polaris D-T testing"
+    ],
+    "novel_costs": [
+      "High-voltage pulsed capacitor bank (>50 MJ per module) with sustained 2 Hz duty cycle — no published $/J curve at required lifetime",
+      "Direct Faraday inductive energy recovery system at 40 T commercial fields — replaces conventional power conversion island",
+      "He3 self-breeding infrastructure with long-cycle tritium storage and isotopic separation plant for 12.3-year decay lag",
+      "Aluminum pulsed EM coils and ~720 miles of custom-alloy coaxial cables rated for 10^7–10^9 pulse fatigue life",
+      "Quartz tube FRC formation chambers (in-house manufactured) with undisclosed replacement schedule"
+    ],
+    "risks": [
+      {
+        "description": "No published Q (gain) values for any Helion prototype — all LCOE calculations based on fusion yield are speculative",
+        "severity": "high"
+      },
+      {
+        "description": "Magnetic energy recovery efficiency is a threshold parameter; drop below ~90% makes round-trip energy balance negative and LCOE undefined",
+        "severity": "high"
+      },
+      {
+        "description": "He3 self-breeding has never been demonstrated at any scale; failure leaves commercial D-He3 operation with no viable fuel path",
+        "severity": "high"
+      },
+      {
+        "description": "D-He3 operation unproven — ~30% ion temperature gap from current 13 keV to 17 keV threshold; fallback to D-T would architecturally rebuild the plant (blanket, shielding, thermal cycle)",
+        "severity": "high"
+      },
+      {
+        "description": "Rep rate scaling gap of ~1200× from Trenta (~0.002 Hz) to 2 Hz commercial design; proportional LCOE penalty below target",
+        "severity": "high"
+      },
+      {
+        "description": "40 T pulsed aluminum coils outside demonstrated experience (5× field, 25× pressure vs. Trenta's 8 T); mechanical fatigue at 10^9 cycles uncharacterized",
+        "severity": "high"
+      },
+      {
+        "description": "Capacitor bank cost must fall ~10× from $5/J industry baseline to ~$0.50/J viability threshold; no published $/J curve for Helion-spec capacitors",
+        "severity": "high"
+      },
+      {
+        "description": "Inconsistent public recovery efficiency claims (η=0.7 ARPA-E vs. 85–95% company) create modeling ambiguity across go/no-go boundary",
+        "severity": "medium"
+      },
+      {
+        "description": "Component lifetime (capacitors, coils, quartz tubes) at 1+ Hz sustained operation has no published endurance data",
+        "severity": "medium"
+      },
+      {
+        "description": "No published O&M cost literature for pulsed EM fusion plants; no analogue plant at commercial scale",
+        "severity": "medium"
+      },
+      {
+        "description": "Supply chain concentration risk for custom-alloy coaxial cables and specialty pulse capacitors — identified by Contrary Research as 'main potential risk'",
+        "severity": "medium"
+      },
+      {
+        "description": "Achieved compression field and rep rate on Polaris undisclosed despite Feb 2026 milestone announcement — limits independent verification",
+        "severity": "medium"
+      },
+      {
+        "description": "Orion plant capital cost and subsystem breakdown proprietary; no independent plant study (ARIES/ARC/PROCESS equivalent) exists",
+        "severity": "medium"
+      },
+      {
+        "description": "He3 startup inventory cost could dominate LCOE if significant external purchase needed before self-breeding is established",
+        "severity": "medium"
+      },
+      {
+        "description": "Tritium storage for 12.3-year decay lag requires regulatory framework and inventory management not yet established at commercial scale",
+        "severity": "low"
+      }
+    ]
+  },
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/08-frc-w-direct-conversion/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/08-frc-w-direct-conversion/analysis.md"

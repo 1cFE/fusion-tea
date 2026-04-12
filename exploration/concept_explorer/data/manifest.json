@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-08T01:33:49.687933+00:00",
+  "generated_at": "2026-04-12T20:38:40.718718+00:00",
   "concepts": [
     {
       "concept_id": "01",
@@ -10,7 +10,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 639.8662719726562,
+      "lcoe_per_mwh": 373.89138819938205,
       "confidence": null,
       "data_file": "data/01.json"
     },
@@ -23,7 +23,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 106.56713419974977,
+      "lcoe_per_mwh": 103.06661757858866,
       "confidence": null,
       "data_file": "data/02.json"
     },
@@ -62,7 +62,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 155.4831085205078,
+      "lcoe_per_mwh": 106.6863992406647,
       "confidence": null,
       "data_file": "data/05.json"
     },
@@ -75,7 +75,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 63.656978607177734,
+      "lcoe_per_mwh": 48.24296970225547,
       "confidence": null,
       "data_file": "data/06.json"
     },
@@ -140,7 +140,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 118.62812042236328,
+      "lcoe_per_mwh": 89.90330368908324,
       "confidence": null,
       "data_file": "data/11.json"
     },
@@ -153,7 +153,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 151.39816964565583,
+      "lcoe_per_mwh": 134.37506261265585,
       "confidence": null,
       "data_file": "data/12.json"
     },
@@ -166,7 +166,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 101.54351806640625,
+      "lcoe_per_mwh": 62.73367183103314,
       "confidence": null,
       "data_file": "data/14.json"
     },
@@ -179,7 +179,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 226.44726319627608,
+      "lcoe_per_mwh": 145.3563663359244,
       "confidence": null,
       "data_file": "data/15.json"
     },
@@ -192,7 +192,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 115.77710723876953,
+      "lcoe_per_mwh": 80.25030483797346,
       "confidence": null,
       "data_file": "data/17a.json"
     },
@@ -205,7 +205,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 183.8320770263672,
+      "lcoe_per_mwh": 149.85864861420336,
       "confidence": null,
       "data_file": "data/21.json"
     },
@@ -218,7 +218,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 135.47878148949525,
+      "lcoe_per_mwh": 84.11429119474914,
       "confidence": null,
       "data_file": "data/22.json"
     },
@@ -231,9 +231,22 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 84.2583999633789,
+      "lcoe_per_mwh": 80.81980703886495,
       "confidence": null,
       "data_file": "data/28.json"
+    },
+    {
+      "concept_id": "35",
+      "name": "PoloMac Magnetic Confinement",
+      "confinement_family": "NONSTANDARD",
+      "company": "Deutelio",
+      "status": "in_progress",
+      "illustration": null,
+      "has_cost_model": true,
+      "has_sensitivities": true,
+      "lcoe_per_mwh": 352.08383181411665,
+      "confidence": null,
+      "data_file": "data/35.json"
     }
   ]
 }

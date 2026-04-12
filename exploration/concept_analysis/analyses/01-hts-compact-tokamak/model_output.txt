@@ -1,6 +1,7 @@
 HTS Compact Tokamak — CFS ARC (261 MWe, 75% avail, 30 yr, NOAK)
 LCOE: 639.9 $/MWh | Overnight: 48050 $/kW
 Fusion: 730 MW | Net: 261 MW | Q_eng: 3.2
+Scaled to 1000 MWe: LCOE 373.9 $/MWh | Overnight 28077 $/kW  [α=0.6 economy-of-scale, cross-concept reference]
 
 Code     Account                              M$
 ------------------------------------------------

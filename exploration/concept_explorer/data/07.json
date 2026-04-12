@@ -320,7 +320,73 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": null,
+  "narrative": {
+    "key_bets": [
+      "Pulsed power driver cost can fall from ~$5/J to <$0.50/J (5-10× reduction) via IMG architecture scaling",
+      "Component lifetime of capacitors/switches can improve ~1000× to support ~1 Hz operation over 30 years",
+      "Target gain scales as projected from χ ≈ 0.1 at 20 MA to ignition-class gain at 50-60 MA per multi-dimensional simulations",
+      "Cryogenic DT ice-layer target cost can reach ~$1-2/shot at production volumes (currently thousands of $/shot)",
+      "Thick-liquid FLiBe wall can self-heal and survive repetitive GJ-scale shots, eliminating scheduled first-wall replacement",
+      "RTL insertion and alignment at 60+ MA can be automated within <1 second post-blast cycle time",
+      "IMG architecture achieves ~90% wall-plug efficiency at plant scale vs. 60% LTD baseline"
+    ],
+    "eliminated_costs": [
+      "Superconducting magnets (no REBCO tape or Nb₃Sn required; eliminates HTS supply chain dependency)",
+      "Solid first-wall scheduled replacement (thick liquid FLiBe wall concept, if demonstrated)",
+      "Steady-state plasma heating and current drive systems (NBI, ECRH, LHCD absent — driver performs this function)",
+      "Divertor system (absent in MagLIF geometry)",
+      "Final optics survivability problem (no sensitive optics exposed to blast, unlike laser IFE)"
+    ],
+    "novel_costs": [
+      "Pulsed power driver capital (capacitor banks, switches, transmission lines — 96% of direct driver capital in Z-IFE LTD; no MFE analogue)",
+      "Recyclable transmission line (RTL) per-shot consumable plus automated RTL factory capital",
+      "Cryogenic DT ice-layer target fabrication at production scale (~28M targets/yr at 1 Hz)",
+      "Per-shot variable O&M floor from liner + RTL destruction (no MFE analogue)",
+      "Chamber clearing and liquid wall reconstitution infrastructure for sub-second cycle times"
+    ],
+    "risks": [
+      {
+        "description": "Rep rate cannot exceed 0.1 Hz due to RTL insertion and chamber clearing constraints, locking LCOE at ~20 ¢/kWeh regardless of other improvements",
+        "severity": "high"
+      },
+      {
+        "description": "Yield gain scaling fails at 50-60 MA; ignition not achievable at practical currents, eliminating commercial path entirely",
+        "severity": "high"
+      },
+      {
+        "description": "Driver cost cannot fall below ~$0.50/J commercial threshold; 60+ MA plant-scale driver costs multiple billions in capital alone",
+        "severity": "high"
+      },
+      {
+        "description": "Cryo target cost cannot reach <$2/shot at volume; consumable O&M exceeds $300M/yr at 1 Hz and dominates LCOE",
+        "severity": "high"
+      },
+      {
+        "description": "Pacific Fusion's 250 MWe commercial target is 4× smaller than Z-IFE reference; economy-of-scale penalty pushes LCOE materially above published estimates",
+        "severity": "high"
+      },
+      {
+        "description": "Thick liquid FLiBe wall fails to survive repetitive GJ shots; chamber replacement cycles drop capacity factor 10-30%",
+        "severity": "medium"
+      },
+      {
+        "description": "Capacitor/switch lifetime cannot improve 1000× to support 30-year plant life at 1 Hz",
+        "severity": "medium"
+      },
+      {
+        "description": "Tritium breeding at TBR > 1 not demonstrated for thick-liquid-wall MagLIF blanket; fuel cycle closure fails",
+        "severity": "medium"
+      },
+      {
+        "description": "FLiBe industrial-scale production not established; beryllium toxicity and supply constraints delay deployment",
+        "severity": "medium"
+      },
+      {
+        "description": "TEA framework for MIFE is immature (pyFECONs MIFE track new in 2026); cost estimates carry ±50%+ uncertainty",
+        "severity": "low"
+      }
+    ]
+  },
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/07-maglif/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/07-maglif/analysis.md"

@@ -41,6 +41,29 @@ the model code. Address each one when generating the script:
 - **Fuel:** `{{costingfe_fuel}}`
 {{#if mapping_notes}}- **Notes:** {{mapping_notes}}{{/if}}
 
+## Power Standardization (CRITICAL)
+
+All concept models MUST include a `scaled_headline` dict at module level for
+cross-concept LCOE comparison at a normalized 1000 MWe reference.
+
+- The primary `result = model.forward(...)` stays at the concept's **native** power
+  level. Do NOT change `net_electric_mw` for standardization purposes.
+- After the `result` computation, add:
+  ```python
+  _ALPHA = 0.6  # economy-of-scale exponent
+  _p_native = float(result.power_table.p_net)
+  _factor = (_p_native / 1000.0) ** (1.0 - _ALPHA)
+
+  scaled_headline = {
+      "p_net_mw": 1000.0,
+      "lcoe_per_mwh": float(result.costs.lcoe) * _factor,
+      "overnight_per_kw": float(result.costs.overnight_cost) * _factor,
+  }
+  ```
+- If the concept's native design point IS 1000 MWe, `scaled_headline` may be
+  omitted (factor = 1.0, extractor falls through to native result).
+- Cost overrides stay at their published/derived values — no re-derivation needed.
+
 ## Script Requirements
 
 ### Structure

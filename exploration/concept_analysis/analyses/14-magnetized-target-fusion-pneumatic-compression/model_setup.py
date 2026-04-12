@@ -243,6 +243,17 @@ result = model.forward(
     },
 )
 
+# ── Post-hoc scaling to 1000 MWe (cross-concept comparison) ─────────────────
+_ALPHA = 0.6  # economy-of-scale exponent
+_p_native = float(result.power_table.p_net)
+_factor = (_p_native / 1000.0) ** (1.0 - _ALPHA)
+
+scaled_headline = {
+    "p_net_mw": 1000.0,
+    "lcoe_per_mwh": float(result.costs.lcoe) * _factor,
+    "overnight_per_kw": float(result.costs.overnight_cost) * _factor,
+}
+
 # ── Cost Results by CAS ──────────────────────────────────────────────────────
 c = result.costs
 pt = result.power_table
@@ -252,6 +263,7 @@ print(f"  {NET_ELECTRIC_MW:.0f} MWe net, {AVAILABILITY:.0%} availability, {LIFET
 print(f"  FOAK | eta_th={0.35:.0%} | availability={AVAILABILITY:.0%}")
 print()
 print(f"LCOE:     {c.lcoe:.1f} $/MWh | Overnight: {c.overnight_cost:.0f} $/kW")
+print(f"  Scaled to 1000 MWe: LCOE {scaled_headline['lcoe_per_mwh']:.1f} $/MWh | Overnight {scaled_headline['overnight_per_kw']:.0f} $/kW")
 print(f"Fusion:   {pt.p_fus:.0f} MW  | Net: {pt.p_net:.0f} MW | Q_eng: {pt.q_eng:.1f}")
 print(f"Recirculating fraction: {pt.rec_frac:.1%}")
 print(f"Scientific Q (P_fus/P_driver): {pt.q_sci:.1f}")

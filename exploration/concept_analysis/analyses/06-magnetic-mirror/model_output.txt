@@ -2,6 +2,8 @@ Magnetic Mirror (p-B11) — Pale Blue Fusion (CHARM)
 500 MWe target | 80% availability | 30 yr lifetime | NOAK
 WARNING: All plasma parameters are truly-unknown estimates (see analysis.md §5-6)
 LCOE: 63.7 $/MWh (6.37 ¢/kWh) | Overnight: 4963 $/kW
+
+Scaled headline (1000 MWe, α=0.6): LCOE 48.2 $/MWh | Overnight 3761 $/kW
 Fusion: 984 MW | Net: 500 MW | Q_eng: 4.3
 Recirculating fraction: 23.2%
 
