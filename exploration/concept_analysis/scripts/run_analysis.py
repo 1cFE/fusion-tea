@@ -481,7 +481,7 @@ def cmd_model_setup(concepts: list[dict], args: argparse.Namespace) -> None:
         model_path = out_dir / "model_setup.py"
 
         feedback_text = ""
-        if args.feedback:
+        if getattr(args, "feedback", None):
             feedback_text = extract_model_findings(args.feedback)
             if not feedback_text:
                 feedback_text = args.feedback.read_text(encoding="utf-8")
