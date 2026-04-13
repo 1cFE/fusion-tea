@@ -322,18 +322,18 @@ var NeighborhoodGraph = (function () {
         selector: "node.center",
         style: {
           "background-color": "data(color)",
-          "width": 64,
-          "height": 64,
+          "width": 38,
+          "height": 38,
           "label": "data(label)",
-          "font-size": "14px",
+          "font-size": "11px",
           "font-weight": "bold",
           "color": "#e6edf3",
           "text-outline-color": "#0d1117",
-          "text-outline-width": 2,
+          "text-outline-width": 1.5,
           "text-valign": "bottom",
-          "text-margin-y": 8,
-          "text-wrap": "ellipsis",
-          "text-max-width": "140px",
+          "text-margin-y": 6,
+          "text-wrap": "wrap",
+          "text-max-width": "130px",
           "border-width": 2,
           "border-color": "rgba(255,255,255,0.6)",
           "z-index": 10
@@ -344,17 +344,17 @@ var NeighborhoodGraph = (function () {
         selector: "node.neighbor",
         style: {
           "background-color": "data(color)",
-          "width": 44,
-          "height": 44,
+          "width": 30,
+          "height": 30,
           "label": "data(label)",
-          "font-size": "13px",
+          "font-size": "10px",
           "color": "#c9d1d9",
           "text-outline-color": "#0d1117",
-          "text-outline-width": 2,
+          "text-outline-width": 1.5,
           "text-valign": "bottom",
-          "text-margin-y": 6,
-          "text-wrap": "ellipsis",
-          "text-max-width": "130px",
+          "text-margin-y": 5,
+          "text-wrap": "wrap",
+          "text-max-width": "110px",
           "border-width": 1.5,
           "border-color": "rgba(255,255,255,0.3)",
           "cursor": "pointer",
@@ -384,18 +384,18 @@ var NeighborhoodGraph = (function () {
         selector: "node.bridge",
         style: {
           "background-color": "data(color)",
-          "width": 36,
-          "height": 36,
+          "width": 24,
+          "height": 24,
           "shape": "diamond",
           "label": "data(label)",
-          "font-size": "12px",
+          "font-size": "9px",
           "color": "#8b949e",
           "text-outline-color": "#0d1117",
-          "text-outline-width": 1.5,
+          "text-outline-width": 1,
           "text-valign": "bottom",
-          "text-margin-y": 6,
-          "text-wrap": "ellipsis",
-          "text-max-width": "120px",
+          "text-margin-y": 5,
+          "text-wrap": "wrap",
+          "text-max-width": "100px",
           "border-width": 1.5,
           "border-color": "rgba(255,255,255,0.4)",
           "border-style": "dashed",
@@ -431,12 +431,12 @@ var NeighborhoodGraph = (function () {
           "line-color": "rgba(139,148,158,0.4)",
           "curve-style": "bezier",
           "label": "data(label)",
-          "font-size": "10px",
+          "font-size": "7px",
           "color": "#6e7681",
           "text-outline-color": "#0d1117",
-          "text-outline-width": 1.5,
+          "text-outline-width": 1,
           "text-rotation": "autorotate",
-          "text-margin-y": -8
+          "text-margin-y": -6
         }
       },
       // Bridge edge
@@ -449,12 +449,12 @@ var NeighborhoodGraph = (function () {
           "line-dash-pattern": [6, 4],
           "curve-style": "bezier",
           "label": "data(label)",
-          "font-size": "10px",
+          "font-size": "7px",
           "color": "#6e7681",
           "text-outline-color": "#0d1117",
-          "text-outline-width": 1.5,
+          "text-outline-width": 1,
           "text-rotation": "autorotate",
-          "text-margin-y": -8,
+          "text-margin-y": -6,
           "opacity": 0
         }
       }
@@ -467,7 +467,7 @@ var NeighborhoodGraph = (function () {
 
   function buildElements(model) {
     var elements = [];
-    var radius = 200;
+    var radius = 600;
 
     // Compute neighbor positions (for initial layout hints)
     var neighborIds = model.getNeighborIds();
@@ -503,7 +503,7 @@ var NeighborhoodGraph = (function () {
         }
         if (count > 0) { avgX /= count; avgY /= count; }
         var bAngle = Math.atan2(avgY, avgX);
-        var bDist = 160;
+        var bDist = 480;
         position = { x: bDist * Math.cos(bAngle), y: bDist * Math.sin(bAngle) };
         classes = "bridge";
       }
@@ -596,32 +596,62 @@ var NeighborhoodGraph = (function () {
       style: buildStylesheet(),
       layout: {
         name: "cose",
-        animate: true,
+        animate: "end",
         animationDuration: 500,
         fit: true,
-        padding: 50,
+        padding: 30,
+        spacingFactor: 1.8,
+        nodeDimensionsIncludeLabels: true,
         nodeRepulsion: function (node) {
-          return node.hasClass("bridge") ? 4000 : 8000;
+          return node.hasClass("bridge") ? 12000 : 24000;
         },
         idealEdgeLength: function (edge) {
-          return edge.hasClass("bridge") ? 140 : 180;
+          return edge.hasClass("bridge") ? 420 : 540;
         },
         edgeElasticity: function () { return 100; },
-        gravity: 0.25,
-        numIter: 200,
-        initialTemp: 200,
+        gravity: 0.20,
+        numIter: 300,
+        initialTemp: 600,
         coolingFactor: 0.95,
         randomize: false,
         stop: function () {
-          // After layout settles, hide all bridge elements.
-          // Bridges had opacity:0 from the stylesheet during layout (invisible
-          // but participating in the force simulation). Now hide them so they
-          // don't receive pointer events until explicitly shown via compare().
-          if (_cy) _cy.elements(".bridge").hide();
+          if (!_cy) return;
+          // Normalize aspect ratio so the layout fills the container width.
+          // Force-directed layouts often converge to tall/narrow shapes for
+          // star topologies; this stretches the narrower axis to match the
+          // container's aspect ratio before fit runs.
+          var nodes = _cy.nodes();
+          var bb = nodes.boundingBox();
+          var layoutW = bb.x2 - bb.x1 || 1;
+          var layoutH = bb.y2 - bb.y1 || 1;
+          var containerW = _container.clientWidth || 1;
+          var containerH = _container.clientHeight || 1;
+          var layoutAR = layoutW / layoutH;
+          var containerAR = containerW / containerH;
+          if (containerAR > 0 && layoutAR > 0) {
+            var cx = (bb.x1 + bb.x2) / 2;
+            var cy = (bb.y1 + bb.y2) / 2;
+            // Scale x or y so layout aspect ratio approaches container's
+            var scaleX = 1, scaleY = 1;
+            if (layoutAR < containerAR) {
+              scaleX = containerAR / layoutAR;
+            } else {
+              scaleY = layoutAR / containerAR;
+            }
+            nodes.positions(function (node) {
+              var pos = node.position();
+              return {
+                x: cx + (pos.x - cx) * scaleX,
+                y: cy + (pos.y - cy) * scaleY
+              };
+            });
+          }
+          // Hide bridge elements until explicitly shown via compare().
+          _cy.elements(".bridge").hide();
         }
       },
       minZoom: 0.3,
-      maxZoom: 3,
+      maxZoom: 2.2,
       wheelSensitivity: 0.3,
       boxSelectionEnabled: false,
       autounselectify: true
