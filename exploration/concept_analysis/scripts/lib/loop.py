@@ -21,6 +21,7 @@ from lib.claude import invoke_claude, invoke_claude_validated, run_model
 from lib.concepts import get_costingfe_mapping, get_model_path, FUEL_MAPPING
 from lib.frontmatter import make_frontmatter, parse_frontmatter
 from lib.iteration import (
+    LoopState,
     clear_iterations,
     detect_new_sources,
     parse_verdict_from_feedback,
@@ -42,6 +43,8 @@ from lib.state import propagate_staleness
 from lib.step_runner import prepare_step
 from lib.templating import fill_template
 from lib.validators import (
+    chain_validators,
+    has_model_category_findings,
     make_file_modified_validator,
     validate_feedback_verdict,
     validate_non_empty,
@@ -198,7 +201,10 @@ def run_stage1_loop(
         _capture_analysis_output(analysis_path, iter_dir)
 
         # --- Model-setup inside loop (FR-6) ---
-        model_ran, model_ok = _run_model_in_iteration(concept, iter_dir, args, feedback_path)
+        model_ran, model_ok = _run_model_in_iteration(
+            concept, iter_dir, args, feedback_path,
+            loop_state=loop_state,
+        )
 
         # --- Update canonical model files (FR-5, H-16 guard via model_ok) ---
         _update_canonical_files(concept_dir, iter_dir, model_ok=model_ok)
@@ -224,6 +230,9 @@ def run_stage1_loop(
                       research_ran=(feedback_source == "research"),
                       sources=[str(p) for p in current_sources],
                       merged_assess=merged_assess)
+
+        # --- Refresh loop_state so next iteration sees this verdict ---
+        loop_state = read_loop_state(concept_dir)
 
         # --- Propagate staleness ---
         propagate_staleness(cid, f"analysis-updated-iter-{iter_num}")
@@ -256,28 +265,19 @@ def _split_findings(text: str) -> list[str]:
     return [p.strip() for p in parts if FINDING_HEADER_RE.match(p)]
 
 
-def extract_model_findings(feedback_path: Path | None) -> str:
-    """Extract model-targeted findings from a feedback file.
+def extract_findings(feedback_path: Path | None) -> str:
+    """Extract all findings from a feedback file.
 
-    Returns formatted text of model-targeted findings, or empty string
-    if none exist. Findings without a Category field default to 'analysis'
-    (backward compatibility).
+    Returns formatted text of all findings, or empty string if none exist.
+    The model agent receives all findings and judges which require model changes.
     """
-    from lib.validators import FINDING_CATEGORY_RE
-
     if feedback_path is None or not feedback_path.exists():
         return ""
 
     text = feedback_path.read_text(encoding="utf-8")
     finding_blocks = _split_findings(text)
 
-    model_findings = []
-    for block in finding_blocks:
-        cat_match = FINDING_CATEGORY_RE.search(block)
-        if cat_match and cat_match.group(1) == "model":
-            model_findings.append(block.strip())
-
-    return "\n\n".join(model_findings)
+    return "\n\n".join(b.strip() for b in finding_blocks)
 
 
 def _merge_feedback(
@@ -481,11 +481,42 @@ def _capture_analysis_output(analysis_path: Path, iter_dir: Path) -> None:
     (iter_dir / "analysis_output.md").write_text(body, encoding="utf-8")
 
 
+def _find_best_prior_model(
+    concept_dir: Path,
+    current_iter: int,
+    loop_state: LoopState,
+) -> Path | None:
+    """Find the best prior model_setup.py for edit-based continuity.
+
+    Selection order:
+    1. Most recent iter < current_iter with model_ok=True → that iter's model_setup.py
+    2. concept_dir / "model_setup.py" (canonical copy from _update_canonical_files)
+    3. None (cold start)
+    """
+    # Walk backward through completed iterations
+    for it in reversed(loop_state.iterations):
+        if it.iteration >= current_iter:
+            continue
+        if it.model_ok:
+            candidate = concept_dir / f"iter-{it.iteration}" / "model_setup.py"
+            if candidate.exists():
+                return candidate
+
+    # Fallback: canonical copy at concept root
+    canonical = concept_dir / "model_setup.py"
+    if canonical.exists():
+        return canonical
+
+    return None
+
+
 def _run_model_in_iteration(
     concept: dict,
     iter_dir: Path,
     args: argparse.Namespace,
     feedback_path: Path | None = None,
+    *,
+    loop_state: LoopState,
 ) -> tuple[bool, bool]:
     """Run model-setup inside the loop. Returns (model_ran, model_ok).
 
@@ -502,9 +533,24 @@ def _run_model_in_iteration(
         return False, False
 
     # Build model vars using shared helper
-    model_feedback = extract_model_findings(feedback_path)
+    model_feedback = extract_findings(feedback_path)
+
+    # --- Prior model continuity (FR-C1) ---
+    iter_num = int(iter_dir.name.split("-")[1])
+    prior_model_src = None
+    prior_model_path = ""
+    if iter_num > 1:
+        prior_model_src = _find_best_prior_model(
+            iter_dir.parent, iter_num, loop_state
+        )
+    if prior_model_src is not None:
+        # Copy into current iter dir so Claude can Edit it in place
+        shutil.copy2(prior_model_src, model_script)
+        prior_model_path = str(model_script)
+
     model_vars = build_model_vars(concept, model_script, iter_dir,
-                                  model_feedback=model_feedback)
+                                  model_feedback=model_feedback,
+                                  prior_model_path=prior_model_path)
     if model_vars is None:
         return False, False
 
@@ -522,10 +568,23 @@ def _run_model_in_iteration(
     )
     # ctx.proceed is always True here (dry_run=False, no skip).
 
+    # --- Validator selection (FR-C5, FR-C6) ---
+    if prior_model_path:
+        # Feedback pass: tiered validation based on finding categories
+        if has_model_category_findings(model_feedback):
+            file_modified = make_file_modified_validator(model_script)
+            validator = chain_validators(file_modified, validate_python_syntax)
+        else:
+            # All findings are analysis-only — model MAY change but isn't required to
+            validator = validate_python_syntax
+    else:
+        # Cold start: syntax only
+        validator = validate_python_syntax
+
     result = invoke_claude_validated(
         ctx.prompt_text, cwd=CONCEPT_ANALYSIS_DIR,
         timeout=args.timeout, model=args.model,
-        validator=validate_python_syntax,
+        validator=validator,
         output_path=model_script,
         step_label="model-setup",
         log_path=iter_dir / "validation_log.json",
@@ -538,12 +597,13 @@ def _run_model_in_iteration(
 
     if not result.validation_passed:
         # Either the file was never written (H-01 path) or the script
-        # failed Python syntax validation. Both leave model_ok=False but
+        # failed validation. Both leave model_ok=False but
         # are non-fatal to the iteration (FR-7).
         if not model_script.exists():
             print(f" FAILED ({elapsed:.0f}s) — no model_setup.py")
             return True, False
-        print(f" FAILED ({elapsed:.0f}s) — syntax validation exhausted")
+        validator_name = getattr(validator, "__name__", "validation")
+        print(f" FAILED ({elapsed:.0f}s) — {validator_name} exhausted")
         return True, False
 
     print(f" done ({elapsed:.0f}s)", end="")
@@ -568,6 +628,7 @@ def build_model_vars(
     *,
     standalone: bool = False,
     model_feedback: str = "",
+    prior_model_path: str = "",
 ) -> tuple[str, dict] | None:
     """Build template name and variables for model-setup.
 
@@ -587,8 +648,9 @@ def build_model_vars(
         return None
 
     model_path_type = get_model_path(concept)
+    edit_mode = bool(prior_model_path)
     if model_path_type == "costingfe":
-        template_name = "model_setup_costingfe.md"
+        template_name = "model_setup_costingfe_edit.md" if edit_mode else "model_setup_costingfe.md"
         mapping = get_costingfe_mapping(concept)
         vars_dict = {
             "concept_name": concept["Concept Name"],
@@ -603,9 +665,10 @@ def build_model_vars(
             "mapping_notes": mapping.get("notes", ""),
             "output_path": str(model_path),
             "model_feedback": model_feedback,
+            "prior_model_path": prior_model_path,
         }
     else:
-        template_name = "model_setup_freeform.md"
+        template_name = "model_setup_freeform_edit.md" if edit_mode else "model_setup_freeform.md"
         vars_dict = {
             "concept_name": concept["Concept Name"],
             "company": concept.get("Company", ""),
@@ -613,6 +676,7 @@ def build_model_vars(
             "costing_constants_path": str(COSTINGFE_CONSTANTS_PATH),
             "output_path": str(model_path),
             "model_feedback": model_feedback,
+            "prior_model_path": prior_model_path,
         }
 
     return template_name, vars_dict

@@ -46,9 +46,11 @@ A finding is `model` when the recommendation says to change what the model
 *computes or sweeps*. A finding is `analysis` when the recommendation says
 to change what the analysis *says or frames*.
 
-When a finding touches both (e.g., "add parameter to Section 5 table AND
-to sensitivity sweep"), assign the **primary** target — the one that would
-resolve the core issue.
+When a finding touches both analysis and model (e.g., "add parameter to
+Section 5 table AND to sensitivity sweep"), tag the category that best
+describes the finding's primary focus. Both the analysis agent and the
+model agent receive all findings regardless of category — the tag helps
+them prioritize, but does not gate visibility.
 
 {{#if model_output_path}}
 ## Model Output

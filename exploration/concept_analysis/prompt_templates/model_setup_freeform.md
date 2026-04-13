@@ -33,10 +33,13 @@ Use the scaling laws and unit costs from 1costingfe as reference values,
 even though you're not using the API. Document which scaling laws you adopt.
 
 {{#if model_feedback}}
-## Assessment Feedback (Model-Targeted)
+## Assessment Feedback
 
-The following findings from the most recent assessment specifically target
-the model code. Address each one when generating the script:
+The following findings were raised by the most recent assessment. Not all
+findings require model changes — address findings that affect what the model
+computes, sweeps, or parameterizes. Findings tagged `Category: analysis` may
+still have model implications (e.g., a new parameter identified in the analysis
+text that should also appear in a sensitivity sweep).
 
 {{model_feedback}}
 {{/if}}
