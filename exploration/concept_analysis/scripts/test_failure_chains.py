@@ -983,8 +983,11 @@ class TestIntegration_ModelSetup:
             patch("lib.loop.run_model", return_value=(True, "LCOE: 100.0 $/MWh")),
             fake,
         ):
+            from lib.iteration import LoopState
+
             model_ran, model_ok = _run_model_in_iteration(
                 fx.concept, iter_dir, fx.make_args(),
+                loop_state=LoopState(),
             )
 
         assert model_ran is True
@@ -1021,8 +1024,11 @@ class TestIntegration_ModelSetup:
             patch("lib.loop.run_model", return_value=(True, "LCOE: 42.0 $/MWh")),
             fake,
         ):
+            from lib.iteration import LoopState
+
             model_ran, model_ok = _run_model_in_iteration(
                 fx.concept, iter_dir, fx.make_args(),
+                loop_state=LoopState(),
             )
 
         assert model_ran is True

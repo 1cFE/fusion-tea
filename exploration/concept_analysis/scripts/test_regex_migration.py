@@ -6,7 +6,7 @@ import tempfile
 from pathlib import Path
 
 from lib.iteration import parse_verdict_from_feedback
-from lib.loop import extract_model_findings, _split_findings, _get_review_feedback
+from lib.loop import extract_findings, _split_findings, _get_review_feedback
 from lib.sources import parse_proposed_actions
 
 
@@ -44,12 +44,12 @@ class TestParseVerdictFromFeedback:
 
 
 # ---------------------------------------------------------------------------
-# extract_model_findings (loop.py)
+# extract_findings (loop.py)
 # ---------------------------------------------------------------------------
 
 
-class TestExtractModelFindings:
-    def test_extracts_model_category(self, tmp_path):
+class TestExtractFindings:
+    def test_extracts_all_findings(self, tmp_path):
         text = (
             "VERDICT: FINDINGS\n\n"
             "### F-1: Analysis issue\n"
@@ -59,11 +59,11 @@ class TestExtractModelFindings:
         )
         fb = tmp_path / "feedback.md"
         fb.write_text(text)
-        result = extract_model_findings(fb)
+        result = extract_findings(fb)
+        assert "F-1" in result
         assert "F-2" in result
-        assert "F-1" not in result
 
-    def test_no_model_findings(self, tmp_path):
+    def test_analysis_only_still_returned(self, tmp_path):
         text = (
             "VERDICT: FINDINGS\n\n"
             "### F-1: Analysis only\n"
@@ -71,19 +71,19 @@ class TestExtractModelFindings:
         )
         fb = tmp_path / "feedback.md"
         fb.write_text(text)
-        result = extract_model_findings(fb)
-        assert result == ""
+        result = extract_findings(fb)
+        assert "F-1" in result
 
     def test_missing_file(self):
-        result = extract_model_findings(Path("/nonexistent/feedback.md"))
+        result = extract_findings(Path("/nonexistent/feedback.md"))
         assert result == ""
 
     def test_none_path(self):
-        result = extract_model_findings(None)
+        result = extract_findings(None)
         assert result == ""
 
-    def test_colon_inside_bold(self, tmp_path):
-        """Real format: **Category:** not **Category**:"""
+    def test_preserves_category_field(self, tmp_path):
+        """Category field preserved so model agent can see it."""
         text = (
             "VERDICT: FINDINGS\n\n"
             "### F-1: Model fix\n"
@@ -92,8 +92,9 @@ class TestExtractModelFindings:
         )
         fb = tmp_path / "feedback.md"
         fb.write_text(text)
-        result = extract_model_findings(fb)
+        result = extract_findings(fb)
         assert "F-1" in result
+        assert "Category:" in result
 
 
 # ---------------------------------------------------------------------------

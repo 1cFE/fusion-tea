@@ -1,3 +1,36 @@
+{{#if feedback_pass}}
+# Free-Form Model Update: {{concept_name}}
+
+## Mode: Feedback Pass (Edit Existing Model)
+
+An existing model from a prior iteration has been copied to `{{output_path}}`.
+
+**Your task**: Read the existing model at `{{prior_model_path}}` and apply targeted edits based on the assessment findings below. Use the Edit tool to make changes — do NOT rewrite the file from scratch.
+
+**Rules**:
+- Preserve ALL existing sweeps, scenarios, parameters, and sensitivity analyses unless a finding specifically says to change them
+- Maintain the existing code structure and organization
+- Add new content incrementally — do not restructure working code
+- Every change must be traceable to a specific finding or a direct consequence of one
+
+{{#if model_feedback}}
+## Assessment Findings
+
+The following findings were raised by the assessor. Focus on findings tagged `Category: model`. Findings tagged `Category: analysis` are informational — they describe prose changes the analysis agent is handling. You may still adjust model parameters if an analysis finding implies the model's assumptions are wrong.
+
+{{model_feedback}}
+{{/if}}
+
+## Reference Files
+
+- **Concept Analysis:** `{{analysis_path}}`
+- **Costing Constants:** `{{costing_constants_path}}`
+
+## Output
+Write changes to: `{{output_path}}`
+{{/if}}
+
+{{#if cold_start}}
 # Free-Form LCOE Model: {{concept_name}}
 
 You are building a standalone LCOE model for **{{concept_name}}** ({{company}}).
@@ -33,10 +66,13 @@ Use the scaling laws and unit costs from 1costingfe as reference values,
 even though you're not using the API. Document which scaling laws you adopt.
 
 {{#if model_feedback}}
-## Assessment Feedback (Model-Targeted)
+## Assessment Feedback
 
-The following findings from the most recent assessment specifically target
-the model code. Address each one when generating the script:
+The following findings were raised by the most recent assessment. Not all
+findings require model changes — address findings that affect what the model
+computes, sweeps, or parameterizes. Findings tagged `Category: analysis` may
+still have model implications (e.g., a new parameter identified in the analysis
+text that should also appear in a sensitivity sweep).
 
 {{model_feedback}}
 {{/if}}
@@ -158,3 +194,4 @@ Usage:
 
 ## Output
 Write the script to: `{{output_path}}`
+{{/if}}

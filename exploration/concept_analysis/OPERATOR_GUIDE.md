@@ -28,7 +28,7 @@ If you just want to get a concept analyzed and visible:
 
 ```bash
 # 1. Run the pipeline (iterates automatically, ~20 min per pass)
-uv run python $PIPELINE stage1-all 07 --max-passes 5
+uv run python $PIPELINE analyze 07 --max-passes 5
 
 # 2. Extract data for the explorer
 uv run python $EXTRACT --concept 07
@@ -46,26 +46,26 @@ That's it. The rest of this guide explains what's happening, how to steer it, an
 ### Starting a concept
 
 ```bash
-uv run python $PIPELINE stage1-all 07
+uv run python $PIPELINE analyze 07
 ```
 
-This runs the concept through: **gap-check → analyze → model-setup → review**, automatically. Each pass takes roughly 15-25 minutes (it's calling Claude under the hood). By default it does 3 passes — each pass assesses the previous output and tries to fix issues.
+This runs the concept through an iterative **analyze → model-setup → assess** loop automatically. Each pass takes roughly 15-25 minutes (it's calling Claude under the hood). By default it does 3 passes — each pass assesses the previous output and tries to fix issues.
 
 You can control how many passes it takes:
 
 ```bash
 # More passes for complex concepts (MagLIF needed 9)
-uv run python $PIPELINE stage1-all 07 --max-passes 5
+uv run python $PIPELINE analyze 07 --max-passes 5
 
 # Single pass, no self-assessment (useful for a quick first look)
-uv run python $PIPELINE stage1-all 07 --max-passes 1
+uv run python $PIPELINE analyze 07 --max-passes 1
 
 # Run 2 more passes from wherever each concept currently is
 # (works across multiple concepts at different iterations)
-uv run python $PIPELINE stage1-all 07 11 15 --add-passes 2
+uv run python $PIPELINE analyze 07 11 15 --add-passes 2
 
 # Enable web research (lets the LLM search for papers between iterations)
-uv run python $PIPELINE stage1-all 07 --research
+uv run python $PIPELINE analyze 07 --research
 ```
 
 `--add-passes N` is the easiest way to extend a run. It implies `--resume` and calculates the right `--max-passes` per concept, so you don't need to know where each one is.
@@ -79,7 +79,7 @@ The pipeline's self-assessor can be picky. A concept might sit at FAIL with 2-3 
 If a run gets interrupted or you want to pick up where you left off:
 
 ```bash
-uv run python $PIPELINE stage1-all 07 --resume
+uv run python $PIPELINE analyze 07 --resume
 ```
 
 This skips stages that already have output and continues from the last incomplete step.
@@ -226,7 +226,7 @@ uv run python $PIPELINE add-source 07 /path/to/paper.pdf --dry-run
 After filing change requests or adding sources, re-run the pipeline to incorporate them:
 
 ```bash
-uv run python $PIPELINE stage1-all 07 --resume
+uv run python $PIPELINE analyze 07 --resume
 ```
 
 Then re-extract and check the explorer:
@@ -248,7 +248,7 @@ Once a concept's analysis holds up under review, the formal path is:
 uv run python $PIPELINE review 07
 
 # 2. If REVISE: re-run pipeline, then review again
-uv run python $PIPELINE stage1-all 07 --resume
+uv run python $PIPELINE analyze 07 --resume
 
 # 3. If PROCEED with proposed actions: address them, then...
 uv run python $PIPELINE address-review 07
@@ -276,9 +276,8 @@ uv run python $PIPELINE approve 07 --force
 |---------|-------------|
 | `status [ID]` | Show state table (all concepts or one) |
 | `list` | List all concepts with IDs |
-| `stage1-all ID [--max-passes N] [--add-passes N] [--resume] [--research]` | Full pipeline: gap → analyze → model → review |
 | `gap-check ID` | Run gap assessment only |
-| `analyze ID` | Run analysis only |
+| `analyze ID [--max-passes N] [--add-passes N] [--resume] [--research]` | Iterative analysis loop (analyze → model-setup → assess) |
 | `model-setup ID` | Generate cost model only |
 | `review ID` | Structured review with verdict |
 | `address-review ID` | Apply decisions from review |

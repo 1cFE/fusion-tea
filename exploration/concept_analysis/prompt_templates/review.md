@@ -114,7 +114,7 @@ VERDICT: [PROCEED | REVISE]
 ## Corrective Actions (REVISE only)
 <!-- MACHINE-PARSED: use exactly "## Corrective Actions" as the heading -->
 [F-N format findings per config/feedback_format.md. These feed back into
- stage1-all --resume as the feedback source. Only include for REVISE verdict.]
+ analyze --resume as the feedback source. Only include for REVISE verdict.]
 
 ### F-N: [title]
 - **Target:** [Section or aspect]
