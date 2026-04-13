@@ -22,6 +22,7 @@ from exploration.concept_explorer.models import ConfinementFamily
 from exploration.concept_explorer.taxonomy_models import ConceptRegistry
 
 from exploration.concept_explorer.similarity import (
+    _compute_classification_score,
     compare_pair,
     compute_constellation,
     compute_similarity_matrix,
@@ -237,7 +238,7 @@ class TestSimilarityMatrix:
         """Per-dimension matrices exist for all 4 dimensions."""
         matrix = compute_similarity_matrix(registry)
         assert set(matrix.by_dimension.keys()) == {
-            "plasma_physics", "engineering", "fuel_cycle", "operations"
+            "classification", "plasma_physics", "engineering", "fuel_cycle", "operations"
         }
 
 
@@ -313,6 +314,91 @@ class TestBridgeDiversity:
         fields = [br.mismatched_field for br in bridges]
         # Each bridge covers a unique field
         assert len(fields) == len(set(fields))
+
+
+# ---------------------------------------------------------------------------
+# Top-N slicing
+# ---------------------------------------------------------------------------
+
+
+# ---------------------------------------------------------------------------
+# Classification hierarchy scoring
+# ---------------------------------------------------------------------------
+
+
+class TestClassification:
+    def test_different_family(self, registry: ConceptRegistry):
+        """Tokamak vs Laser IFE → 0.0"""
+        tok = registry.by_slug("hts-compact-tokamak")
+        ife = registry.by_slug("laser-icf-fast-ignition-d-t")
+        assert tok is not None and ife is not None
+        score, matched, mismatched = _compute_classification_score(tok, ife)
+        assert score == 0.0
+        assert "confinement_family" in mismatched
+
+    def test_same_family_different_topology(self, registry: ConceptRegistry):
+        """Tokamak vs Stellarator → 0.5"""
+        tok = registry.by_slug("hts-compact-tokamak")
+        stell = registry.by_slug("qi-stellarator-hts")
+        assert tok is not None and stell is not None
+        score, matched, mismatched = _compute_classification_score(tok, stell)
+        assert score == 0.5
+        assert "confinement_family" in matched
+        assert "mfe_topology" in mismatched
+
+    def test_same_topology_no_level3(self, registry: ConceptRegistry):
+        """Two dipoles (no level-3 field) → 0.75"""
+        d1 = registry.by_slug("levitated-dipole-d-t")
+        d2 = registry.by_slug("orbital-levitated-dipole-d-he3")
+        assert d1 is not None and d2 is not None
+        score, matched, mismatched = _compute_classification_score(d1, d2)
+        assert score == 0.75
+
+    def test_same_topology_same_subtype(self, registry: ConceptRegistry):
+        """Two compact tokamaks → 1.0"""
+        c1 = registry.by_slug("hts-compact-tokamak")
+        c2 = registry.by_slug("hts-tokamak-full-hts")
+        assert c1 is not None and c2 is not None
+        score, matched, mismatched = _compute_classification_score(c1, c2)
+        assert score == 1.0
+
+    def test_same_topology_different_subtype(self, registry: ConceptRegistry):
+        """Compact tok vs Spherical tok → 0.75"""
+        compact = registry.by_slug("hts-compact-tokamak")
+        spherical = registry.by_slug("compact-spherical-tokamak-india")
+        assert compact is not None and spherical is not None
+        score, matched, mismatched = _compute_classification_score(compact, spherical)
+        assert score == 0.75
+
+
+# ---------------------------------------------------------------------------
+# Weighted scoring
+# ---------------------------------------------------------------------------
+
+
+class TestWeightedScoring:
+    def test_classification_dimension_in_pair_comparison(self, registry: ConceptRegistry):
+        """compare_pair() includes a 'classification' dimension."""
+        a = registry.concepts[0]
+        b = registry.concepts[1]
+        result = compare_pair(a, b)
+        dims = {d.dimension for d in result.dimensions}
+        assert "classification" in dims
+
+    def test_weighted_overall_same_type_high(self, registry: ConceptRegistry):
+        """Two compact HTS tokamaks score > 0.60 (classification=1.0,
+        but they differ on energy_capture, neutron_management, operation_mode)."""
+        a = registry.by_slug("hts-compact-tokamak")
+        b = registry.by_slug("hts-tokamak-full-hts")
+        assert a is not None and b is not None
+        assert compare_pair(a, b).overall_score > 0.60
+
+    def test_weighted_overall_cross_family_low(self, registry: ConceptRegistry):
+        """Tokamak vs Electrostatic < 0.20."""
+        tok = registry.by_slug("hts-compact-tokamak")
+        elec = registry.by_slug("electrostatic-hybrid-d-t")
+        assert tok is not None and elec is not None
+        assert compare_pair(tok, elec).overall_score < 0.20
 
 
 # ---------------------------------------------------------------------------

@@ -27,6 +27,37 @@ SIMILARITY_DIMENSIONS: dict[str, list[str]] = {
     "operations": ["operation_mode", "repetition_rate"],
 }
 
+# Hierarchy tree structure — derived from taxonomy_models._validate_hierarchy().
+# Update both if hierarchy changes.
+
+# Family → level-2 field name
+_FAMILY_TO_LEVEL2: dict[str, str] = {
+    "MFE": "mfe_topology",
+    "IFE": "ife_driver",
+    "MIF": "mif_method",
+    "NONSTANDARD": "non_standard_mechanism",
+}
+
+# Topology/driver → level-3 field name (only where level-3 exists)
+_LEVEL2_TO_LEVEL3: dict[str, str] = {
+    "Tokamak": "tokamak_shape",
+    "Stellarator": "stellarator_type",
+    "Laser": "laser_approach",
+}
+
+DIMENSION_WEIGHTS: dict[str, float] = {
+    "classification": 0.30,
+    "plasma_physics": 0.25,
+    "engineering": 0.15,
+    "fuel_cycle": 0.15,
+    "operations": 0.15,
+}
+
+# Consistency check: every dimension must have a weight and vice versa
+assert set(DIMENSION_WEIGHTS.keys()) == set(SIMILARITY_DIMENSIONS.keys()) | {"classification"}, (
+    "DIMENSION_WEIGHTS keys must match SIMILARITY_DIMENSIONS keys + 'classification'"
+)
+
 # Sentinel values that indicate "unknown / not yet determined"
 _TBD_SENTINELS = {"TBD", "Unknown"}
 
@@ -135,12 +166,63 @@ def _get_field(concept: ConceptTaxonomy, field: str) -> object:
 # ---------------------------------------------------------------------------
 
 
+def _compute_classification_score(
+    a: ConceptTaxonomy, b: ConceptTaxonomy,
+) -> tuple[float, list[str], list[str]]:
+    """Walk the taxonomy hierarchy tree and return (score, matched_levels, mismatched_levels).
+
+    Scoring:
+      different family         → 0.0
+      same family, diff L2     → 0.5
+      same family+L2, L3 N/A  → 0.75
+      same family+L2, diff L3  → 0.75
+      same family+L2+L3       → 1.0
+    """
+    # Level 1: confinement family
+    if str(a.confinement_family) != str(b.confinement_family):
+        return (0.0, [], ["confinement_family"])
+
+    # Level 2: topology / driver / method / mechanism
+    l2_field = _FAMILY_TO_LEVEL2[str(a.confinement_family)]
+    val_a_l2 = getattr(a, l2_field, None)
+    val_b_l2 = getattr(b, l2_field, None)
+
+    if str(val_a_l2) != str(val_b_l2):
+        return (0.5, ["confinement_family"], [l2_field])
+
+    # Level 3: subtype (only exists for some level-2 values)
+    l3_field = _LEVEL2_TO_LEVEL3.get(str(val_a_l2))
+    if l3_field is None:
+        # No level-3 defined for this topology/driver
+        return (0.75, ["confinement_family", l2_field], [])
+
+    val_a_l3 = getattr(a, l3_field, None)
+    val_b_l3 = getattr(b, l3_field, None)
+
+    if val_a_l3 is None or val_b_l3 is None:
+        # Level-3 not specified for one or both
+        return (0.75, ["confinement_family", l2_field], [])
+
+    if str(val_a_l3) == str(val_b_l3):
+        return (1.0, ["confinement_family", l2_field, l3_field], [])
+
+    return (0.75, ["confinement_family", l2_field], [l3_field])
+
+
 def compare_pair(a: ConceptTaxonomy, b: ConceptTaxonomy) -> PairComparison:
     """Compare two concepts across all similarity dimensions.
 
-    For each column in each dimension:
+    Design-attribute dimensions (plasma_physics, engineering, fuel_cycle, operations):
     - If either concept has None (N/A) or TBD/Unknown: skip (not comparable)
     - If both have values: match (1) or mismatch (0)
+
+    Classification dimension: tree-walk score (0.0/0.5/0.75/1.0) from
+    ``_compute_classification_score()``.
+
+    Overall score is a weighted average across dimensions with non-zero
+    comparable fields, using ``DIMENSION_WEIGHTS``. ``overall_matches`` and
+    ``overall_comparable`` reflect design-attribute dimensions only (legacy;
+    do not derive overall_score from them).
     """
     total_matches = 0
     total_comparable = 0
@@ -184,7 +266,28 @@ def compare_pair(a: ConceptTaxonomy, b: ConceptTaxonomy) -> PairComparison:
             )
         )
 
-    overall = total_matches / total_comparable if total_comparable > 0 else 0.0
+    # Classification dimension (tree-walk, always comparable)
+    cls_score, cls_matched, cls_mismatched = _compute_classification_score(a, b)
+    dim_scores.append(
+        DimensionScore(
+            dimension="classification",
+            matches=len(cls_matched),
+            comparable=len(cls_matched) + len(cls_mismatched),
+            score=cls_score,
+            matched_fields=cls_matched,
+            mismatched_fields=cls_mismatched,
+        )
+    )
+
+    # Weighted overall score across all dimensions
+    weighted_sum = 0.0
+    weight_sum = 0.0
+    for ds in dim_scores:
+        w = DIMENSION_WEIGHTS.get(ds.dimension, 0.0)
+        if ds.comparable > 0:
+            weighted_sum += w * ds.score
+            weight_sum += w
+    overall = weighted_sum / weight_sum if weight_sum > 0 else 0.0
 
     return PairComparison(
         concept_a_id=a.concept_id,
@@ -312,8 +415,8 @@ def compute_similarity_matrix(registry: ConceptRegistry) -> SimilarityMatrix:
 
     # Overall matrix
     overall = [[0.0] * n for _ in range(n)]
-    # Per-dimension matrices
-    dim_names = list(SIMILARITY_DIMENSIONS.keys())
+    # Per-dimension matrices (all dimensions including classification)
+    dim_names = list(DIMENSION_WEIGHTS.keys())
     by_dimension: dict[str, list[list[float]]] = {
         d: [[0.0] * n for _ in range(n)] for d in dim_names
     }
