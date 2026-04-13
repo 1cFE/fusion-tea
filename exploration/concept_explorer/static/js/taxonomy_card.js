@@ -45,6 +45,25 @@ var TaxonomyCards = (function () {
     return node;
   }
 
+  var FAMILY_LABELS = {
+    MFE: "Magnetic",
+    IFE: "Inertial",
+    MIF: "Magneto-Inertial",
+    NONSTANDARD: "Non-Standard"
+  };
+
+  /**
+   * Build confinement path string (e.g. "Inertial > Laser > Direct Drive").
+   */
+  function buildConfinementPath(concept) {
+    var parts = [FAMILY_LABELS[concept.confinement_family] || concept.confinement_family];
+    var level2 = concept.mfe_topology || concept.ife_driver || concept.mif_method || concept.non_standard_mechanism;
+    if (level2) parts.push(level2);
+    var level3 = concept.tokamak_shape || concept.stellarator_type || concept.laser_approach;
+    if (level3) parts.push(level3);
+    return parts.join(" > ");
+  }
+
   /**
    * Build hierarchy badges (family + topology/driver + sub-type).
    */
@@ -88,6 +107,13 @@ var TaxonomyCards = (function () {
 
     // Attribute rows
     var attrs = el("div", "taxonomy-card__attrs");
+
+    // Confinement path row (always first)
+    var confPathRow = el("div", "taxonomy-card__attr");
+    confPathRow.appendChild(el("span", "taxonomy-card__label", "Confinement"));
+    confPathRow.appendChild(el("span", "taxonomy-card__value", buildConfinementPath(concept)));
+    attrs.appendChild(confPathRow);
+
     for (var i = 0; i < ATTR_DISPLAY.length; i++) {
       var def = ATTR_DISPLAY[i];
       var val = concept[def.field];
