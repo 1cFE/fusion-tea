@@ -231,6 +231,9 @@ def run_stage1_loop(
                       sources=[str(p) for p in current_sources],
                       merged_assess=merged_assess)
 
+        # --- Refresh loop_state so next iteration sees this verdict ---
+        loop_state = read_loop_state(concept_dir)
+
         # --- Propagate staleness ---
         propagate_staleness(cid, f"analysis-updated-iter-{iter_num}")
 
@@ -645,8 +648,9 @@ def build_model_vars(
         return None
 
     model_path_type = get_model_path(concept)
+    edit_mode = bool(prior_model_path)
     if model_path_type == "costingfe":
-        template_name = "model_setup_costingfe.md"
+        template_name = "model_setup_costingfe_edit.md" if edit_mode else "model_setup_costingfe.md"
         mapping = get_costingfe_mapping(concept)
         vars_dict = {
             "concept_name": concept["Concept Name"],
@@ -662,11 +666,9 @@ def build_model_vars(
             "output_path": str(model_path),
             "model_feedback": model_feedback,
             "prior_model_path": prior_model_path,
-            "cold_start": "true" if not prior_model_path else "",
-            "feedback_pass": "true" if prior_model_path else "",
         }
     else:
-        template_name = "model_setup_freeform.md"
+        template_name = "model_setup_freeform_edit.md" if edit_mode else "model_setup_freeform.md"
         vars_dict = {
             "concept_name": concept["Concept Name"],
             "company": concept.get("Company", ""),
@@ -675,8 +677,6 @@ def build_model_vars(
             "output_path": str(model_path),
             "model_feedback": model_feedback,
             "prior_model_path": prior_model_path,
-            "cold_start": "true" if not prior_model_path else "",
-            "feedback_pass": "true" if prior_model_path else "",
         }
 
     return template_name, vars_dict
