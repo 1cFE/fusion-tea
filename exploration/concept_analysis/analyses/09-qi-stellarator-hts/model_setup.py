@@ -1,4 +1,3 @@
-# STALE: analysis-updated-iter-9
 """QI Stellarator — HTS (Proxima Fusion Stellaris) — LCOE estimate.
 
 Usage:
