@@ -81,6 +81,34 @@ def update_frontmatter_field(text: str, key: str, value: str) -> str:
     return "---" + fm_section + body
 
 
+def remove_frontmatter_field(text: str, key: str) -> str:
+    """Remove a field line from YAML frontmatter if present.
+
+    Returns the text unchanged when there is no frontmatter, no closing ``---``,
+    or the key is absent. Order of remaining fields is preserved.
+    """
+    if not text.startswith("---"):
+        return text
+
+    end = text.find("---", 3)
+    if end == -1:
+        return text
+
+    fm_section = text[3:end]
+    body = text[end:]
+
+    # Match the full line (including its trailing newline) so removal does
+    # not leave a blank line behind.
+    pattern = re.compile(
+        rf"^{re.escape(key)}\s*:.*(?:\r\n|\r|\n)?", re.MULTILINE
+    )
+    if not pattern.search(fm_section):
+        return text
+
+    fm_section = pattern.sub("", fm_section)
+    return "---" + fm_section + body
+
+
 def make_frontmatter(concept: dict) -> str:
     """Generate YAML frontmatter deterministically.
 

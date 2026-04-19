@@ -39,7 +39,7 @@ from lib.paths import (
     TEMPLATES_DIR,
 )
 from lib.sources import find_sources, format_source_list
-from lib.state import propagate_staleness
+from lib.state import clear_staleness, propagate_staleness
 from lib.step_runner import prepare_step
 from lib.templating import fill_template
 from lib.validators import (
@@ -235,7 +235,17 @@ def run_stage1_loop(
         loop_state = read_loop_state(concept_dir)
 
         # --- Propagate staleness ---
-        propagate_staleness(cid, f"analysis-updated-iter-{iter_num}")
+        # analysis.md was just rewritten; model_setup.py too, if the iter's
+        # model run succeeded (and therefore got promoted to canonical by
+        # _update_canonical_files). Exempt those from the stamp so the fresh
+        # copy does not get re-marked stale.
+        regenerated = {"analysis.md"}
+        if model_ok:
+            regenerated.add("model_setup.py")
+        propagate_staleness(
+            cid, f"analysis-updated-iter-{iter_num}",
+            regenerated=regenerated,
+        )
 
         if verdict == "PASS":
             return "PASS"
@@ -390,6 +400,11 @@ def _run_cold_start(
     body = body_path.read_text(encoding="utf-8")
     analysis_path.write_text(fm_raw + "\n" + body, encoding="utf-8")
     body_path.unlink()
+    # Producer-clears-on-write contract (design.md invariant #3). analysis.md
+    # is the root and does not normally carry markers, but the explicit call
+    # keeps the contract symmetric across all producers.
+    clear_staleness(cid, "analysis.md",
+                    analyses_dir=analysis_path.parent.parent)
     print(f" done ({elapsed:.0f}s, {len(body)} chars)")
     return True
 
@@ -457,6 +472,9 @@ def _run_feedback_pass(
         print(f" WARN ({elapsed:.0f}s) — analysis.md not modified")
         return False  # Treat as failure — no point continuing with unchanged analysis
 
+    # Producer-clears-on-write contract (design.md invariant #3).
+    clear_staleness(cid, "analysis.md",
+                    analyses_dir=analysis_path.parent.parent)
     print(f" done ({elapsed:.0f}s)")
     return True
 
@@ -895,6 +913,12 @@ def _update_canonical_files(
     iter_model = iter_dir / "model_setup.py"
     if iter_model.exists() and model_ok:
         shutil.copy2(iter_model, concept_dir / "model_setup.py")
+        # Belt-and-suspenders: the iter-N file should already be clean, but an
+        # explicit clear satisfies the producer contract and defends against a
+        # crash-between-copy-and-clear on a future refactor. Ordering rule:
+        # copy first, then clear (design.md#implementation-notes).
+        clear_staleness(concept_dir.name, "model_setup.py",
+                        analyses_dir=concept_dir.parent)
 
     iter_output = iter_dir / "model_output.txt"
     if iter_output.exists() and model_ok:
