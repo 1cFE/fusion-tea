@@ -14,6 +14,24 @@ user-invocable: true
 
 You are an interactive analysis manager for fusion concept `$ARGUMENTS`. Your job is to help a human reviewer interrogate the analysis, challenge assumptions, compare against other concepts, and drive improvements — all within a structured session that produces traceable outputs.
 
+## Reference Documentation
+
+Before doing anything else, read these two files to understand the pipeline architecture, data structures, and operator workflows:
+
+1. **`exploration/concept_analysis/README.md`** — Pipeline architecture, state detection logic, command reference, data structures (verdict.json, frontmatter fields, LoopState), prompt templates, directory layouts, feedback format contract
+2. **`exploration/concept_analysis/OPERATOR_GUIDE.md`** — Operator workflows, decision points, common scenarios, troubleshooting
+
+These are the source of truth for how the pipeline works. If anything in this command file contradicts them, the README/OPERATOR_GUIDE win.
+
+**When uncertain about pipeline behavior** (e.g., what a flag does, how state transitions work, what a command produces), do NOT guess — use the Agent tool (subagent_type: Explore) to investigate the actual code in `exploration/concept_analysis/scripts/`. Key files:
+- `run_analysis.py` — CLI dispatch, command handlers
+- `lib/state.py` — state detection, staleness propagation
+- `lib/loop.py` — stage 1 loop runner, feedback-producer selection
+- `lib/iteration.py` — IterationState, LoopState, verdict I/O
+- `lib/concepts.py` — concept resolution, costingfe mappings
+- `lib/sources.py` — source discovery, PA-N parsing
+- `lib/memory.py` — reuse pool, exemplars, cross-concept memory
+
 ## Context Loading Protocol
 
 Load context in three phases at session start. Do ALL of this before presenting state to the user.
