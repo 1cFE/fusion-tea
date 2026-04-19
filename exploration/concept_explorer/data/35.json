@@ -379,73 +379,7 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": {
-    "key_bets": [
-      "Superconducting in-vessel dipole coil can replace the 700 MW copper coil draw with a ~15 MW cryogenic load while surviving fusion-relevant neutron flux",
-      "Magnetic tunnel supports can physically suspend an in-vessel coil through the plasma without breaching confinement",
-      "D-D ignition is achievable in a poloidal dipole geometry at plasma temperatures of ~50-100 keV",
-      "Poloidal dipole confinement can reach plasma Q of 10+ despite historical experiments achieving only few-eV temperatures and 10^16 m^-3 densities",
-      "Claimed 3x weaker field than tokamak (for D-T equivalent) is sufficient for fusion-relevant confinement",
-      "Steady-state operation is achievable in the PoloMac topology with plasma beta of 20-30%",
-      "Radiation-hardened HTS insulation can be developed for an in-vessel coil exposed to sustained neutron flux"
-    ],
-    "eliminated_costs": [
-      "Tritium breeding blanket (FLiBe, lithium-6 enrichment, breeding ratio management) eliminated by D-D fuel cycle",
-      "Beryllium supply chain dependence (sole-sourced from Materion) avoided",
-      "Tritium fuel procurement (>$35,000/g) replaced by abundant deuterium (~$5,000-10,000/kg)",
-      "Molten salt processing infrastructure not required",
-      "External toroidal field coil set replaced by a single in-vessel dipole coil"
-    ],
-    "novel_costs": [
-      "In-vessel superconducting dipole coil with magnetic tunnel supports passing through the plasma",
-      "Scheduled replacement of the neutron-irradiated in-vessel SC coil (dominant O&M driver at short lifetimes)",
-      "Cryogenic cooling and refrigeration for an in-vessel coil exposed to plasma heat loads and neutron flux",
-      "Radiation-hardened HTS insulation qualified for sustained in-vessel neutron environments",
-      "Remote handling system enhanced (~1.5x) for segmented in-vessel coil extraction under activation"
-    ],
-    "risks": [
-      {
-        "description": "No superconducting coil design exists to replace the prohibitive 700 MW copper coil recirculating power; cryo load above ~100 MW pushes recirculating fraction past 50% and LCOE above 50 c/kWh",
-        "severity": "high"
-      },
-      {
-        "description": "D-D ignition has never been demonstrated and requires ~6x higher plasma pressure than D-T; confinement physics in PoloMac geometry is unvalidated (historical dipoles reached only few-eV temperatures)",
-        "severity": "high"
-      },
-      {
-        "description": "No plasma heating method (NBI, ECRH, ICRH, ohmic) has been specified, preventing auxiliary power sizing and recirculating power estimation",
-        "severity": "high"
-      },
-      {
-        "description": "No reactor design point (Q, major radius, thermal power, net electric output, thermal efficiency) has been published, forcing all cost outputs to be scenario bounds rather than estimates",
-        "severity": "high"
-      },
-      {
-        "description": "In-vessel coil neutron fluence limit, shielding design, and replacement interval are unknown; short SC coil lifetime (<4 FPY) contributes 20-30 c/kWh in annualized replacement alone",
-        "severity": "high"
-      },
-      {
-        "description": "MHD stability, confinement scaling, and transport coefficients for PoloMac geometry are deferred to future work by the 2014 FED paper; no plasma physics validation at any relevant parameter",
-        "severity": "high"
-      },
-      {
-        "description": "Radiation-hardened HTS coil at fusion-relevant neutron fluence is unsolved for any fusion concept, not just PoloMac",
-        "severity": "high"
-      },
-      {
-        "description": "Claimed 3x weaker field advantage for D-T equivalent is unvalidated by any design study",
-        "severity": "medium"
-      },
-      {
-        "description": "TRL-1 status of plasma physics and unsolved in-vessel coil maintenance make capacity factor estimates entirely speculative",
-        "severity": "medium"
-      },
-      {
-        "description": "Independent 'fusion company tier list' rates Deutelio C-, and no third-party plasma physics analysis, cost study, or system code output exists",
-        "severity": "medium"
-      }
-    ]
-  },
+  "narrative": null,
   "sources": {
     "model_setup": null,
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/35-polomac-magnetic-confinement/analysis.md"

@@ -27,23 +27,23 @@ Modeling approach:
     The NOAK central estimate (noak=True, C220103 at paper value) is paired with a
     discrete FOAK scenario that applies a 2× multiplier to the nuclear island magnets
     cost and sets noak=False. CATF IWG methodology (arxiv-2602-19389 §2.1.5) cites
-    FOAK fusion plants at 150–200 $/MWh vs. 60–100 $/MWh NOAK — this is a
-    step-function risk, not a continuous sensitivity parameter.
+    FOAK commercial fusion plants in the 150–200 $/MWh LCOE range, versus 60–100
+    $/MWh for NOAK plants — a step-function risk, not a continuous sensitivity
+    parameter.
 
-    iter-7 updates (vs. iter-6):
+    iter-7 notes:
     1. Capacity factor framing corrected to Schwartz et al. (2024, arXiv:2405.01514):
        naive inverse-availability LCOE scaling overstates the economic penalty by up to
        15% when maintenance is scheduled in low-price windows. 80% availability retains
-       91% of maintenance-free value (not 80%). Simple inverse used as conservative
-       upper bound; Schwartz et al. grid-value curve is the central estimate.
+       91% of maintenance-free value (not 80%). Simple inverse is a conservative bound;
+       Schwartz et al. grid-value curve is the central estimate.
     2. FLiBe chemistry + tritium processing cost now has an order-of-magnitude floor:
        Woodruff Scientific (2020) ARPA-E ALPHA re-costing (OSTI:1820946) gives
        CAS22.5 Fuel Processing averaging $124M at ~500 MWe for compact MIF/Z-pinch
-       concepts — structural analogue, not direct match. Treat $100–200M as floor for
-       ARC's FLiBe chemistry plant (additive BOP line, not yet in C220500 override).
+       concepts — structural analogue only. Treat $100–200M as floor for ARC's FLiBe
+       chemistry plant (additive BOP line, not yet modeled in C220500 override).
     3. ARPA-E ALPHA cross-concept NOAK LCOE ($43/MWh, ~$2.4/W, non-HTS compact
-       fusion, 90% availability, zero contingency) added to Key Assumptions as a
-       non-HTS lower-bound reference.
+       fusion, 90% availability, zero contingency) added as non-HTS lower-bound ref.
 
 Concept choice rationale:
     ConfinementConcept.TOKAMAK / Fuel.DT — directly maps to ARC's configuration.
@@ -105,42 +105,26 @@ C220106_OVERRIDE = _C220106_2014_M * _CPI_2014_TO_2024  # ≈ 123 M$ 2024 USD
 # 950 t FLiBe × $154/kg NOAK (20% learning rate assumed by Araiinejad 2025).
 # Framework default (PbLi @ $3/kg) would yield ~$8M at this plant size — ~20× low.
 # NOTE: FLiBe chemistry plant + tritium extraction system capital cost is NOT included
-# here. iter-7 update: Woodruff Scientific (2020) ARPA-E ALPHA re-costing (OSTI:1820946)
-# gives CAS22.5 Fuel Processing averaging $124M at ~500 MWe for compact MIF/Z-pinch
-# concepts. Structural analogue only (different blanket chemistry, no FLiBe); treat
-# $100–200M as an order-of-magnitude floor for ARC's additive FLiBe chemistry +
-# tritium extraction BOP line. Not yet included in model — still a truly-unknown additive.
+# here. Woodruff Scientific (2020) ARPA-E ALPHA re-costing (OSTI:1820946) gives
+# CAS22.5 Fuel Processing averaging $124M at ~500 MWe for compact MIF/Z-pinch concepts.
+# Structural analogue only (different blanket chemistry, no FLiBe); treat $100–200M as
+# an order-of-magnitude floor for ARC's additive FLiBe chemistry + tritium extraction
+# BOP line. Not yet included in model — still a truly-unknown additive.
 # Source: arc-reactor-specifications.md §6 (quantity); Araiinejad & Shirvan 2025 (price);
 #         analysis.md §6, gap #15; osti-servlets-purl-1820946.md (ALPHA re-costing floor)
 CAS27_OVERRIDE = 146.0          # M$ ~2025 USD; no CPI adjustment needed
 
-# Shared cost_overrides dict (used by both NOAK run and sensitivity)
-_NOAK_OVERRIDES = {
-    "C220103": round(C220103_OVERRIDE, 1),  # Magnets+structure: $5,150M×1.34 ≈ $6,901 M$
-    "C220101": round(C220101_OVERRIDE, 1),  # FLiBe blanket:     $260M×1.34   ≈ $348 M$
-    "C220106": round(C220106_OVERRIDE, 1),  # Vacuum vessel:     $92M×1.34    ≈ $123 M$
-    "CAS27":   CAS27_OVERRIDE,              # FLiBe: 950 t × $154/kg NOAK = $146 M$
-}
-
-# ── NOAK forward run (central estimate) ──────────────────────────────────
-
-result = model.forward(
+# ── Shared kwargs (used by NOAK result and result_1gw) ───────────────────
+_SHARED_KWARGS = dict(
     # ── Customer requirements ─────────────────────────────────────────────
-    # ARC aggressive pilot: supercritical Rankine at 1200 K FLiBe outlet → 261 MWe.
-    # Source: arc-power-conversion-studies.md §Results, Table 15 (recommended cycle).
-    # NOTE: 2025 CFS public target is 400 MWe — updated design not publicly documented.
-    net_electric_mw=261.0,
-
     # UNCERTAIN: Capacity factor not stated in any CFS/ARC publication (blocking gap).
     # Central estimate = 0.75. Physically meaningful range: 0.50–0.90.
     # iter-7 note: naive 2× LCOE swing from 50% → 90% availability is an upper bound.
-    # Schwartz et al. (2024, arXiv:2405.01514) show grid-value-weighted penalty is up
-    # to 15% smaller when maintenance is scheduled in low-price windows (spring/summer).
-    # At 80% availability, a fusion plant retains 91% of maintenance-free plant value.
-    # Simple inverse scaling (used below) is the conservative upper bound, not central.
-    # Depends on: divertor/FW replacement frequency, FLiBe maintenance, remote handling TRL.
-    # Source gap: analysis.md §2, Challenge 2; §5 Missing Parameters (capacity factor row);
-    #             arxiv-2405-01514.md §2.2 Results (Schwartz et al. grid-value correction)
+    # Schwartz et al. (2024, arXiv:2405.01514) show grid-value-weighted penalty is up to
+    # 15% smaller when maintenance is scheduled in low-price windows. At 80% availability,
+    # a fusion plant retains 91% of maintenance-free plant value (not 80%).
+    # Source: analysis.md §2 Challenge 2; §5 Missing Parameters (capacity factor row);
+    #         arxiv-2405-01514.md §2.2 Results
     availability=0.75,
 
     lifetime_yr=30,               # Standard 30-yr plant lifetime; DEFAULT
@@ -168,7 +152,7 @@ result = model.forward(
     # Auxiliary heating: 25 MW LHCD (8 GHz, non-inductive) + 13.6 MW ICRF (120 MHz).
     # Source: arc-reactor-specifications.md §5.1.
     # NOTE: 8 GHz LHCD system is TRL 5–6 — not yet demonstrated at required power level.
-    #        analysis.md §2, Challenge 5; analysis.md §3 (LHCD)
+    #       analysis.md §2, Challenge 5; analysis.md §3 (LHCD)
     p_input=38.6,                 # [MW]; 25 MW LHCD + 13.6 MW ICRF; arc-reactor-specifications.md §5.1
 
     mn=1.1,                       # DEFAULT neutron energy multiplier
@@ -186,9 +170,9 @@ result = model.forward(
                                   # Cross-check: Schwartz et al. (arXiv:2405.01514) report
                                   # 5% active + 10% passive = 15% total parasitic load.
                                   # f_sub=0.03 captures part of active load only; passive
-                                  # (cryogenics, vacuum pumps, tritium handling) encoded
-                                  # in p_cryo, p_trit, p_house below. Net derating ≈ 0.85×
-                                  # gross. Source: arxiv-2405-01514.md §2.1
+                                  # (cryogenics, vacuum pumps, tritium handling) encoded in
+                                  # p_cryo, p_trit, p_house below. Net derating ≈ 0.85× gross.
+                                  # Source: arxiv-2405-01514.md §2.1
     f_dec=0.0,                    # No direct energy conversion — thermal-only BOP.
                                   # Source: dossier §Energy Capture; arc-power-conversion-studies.md
 
@@ -200,7 +184,12 @@ result = model.forward(
     p_cryo=0.5,                   # DEFAULT cryogenic power [MW]; REBCO at 20 K (less than LHe)
 
     # ── CAS cost overrides ───────────────────────────────────────────────
-    cost_overrides=_NOAK_OVERRIDES,
+    cost_overrides={
+        "C220103": round(C220103_OVERRIDE, 1),  # Magnets+structure: $5,150M×1.34 ≈ $6,901 M$
+        "C220101": round(C220101_OVERRIDE, 1),  # FLiBe blanket:     $260M×1.34   ≈ $348 M$
+        "C220106": round(C220106_OVERRIDE, 1),  # Vacuum vessel:     $92M×1.34    ≈ $123 M$
+        "CAS27":   CAS27_OVERRIDE,              # FLiBe: 950 t × $154/kg NOAK = $146 M$
+    },
     # All other CAS accounts (CAS21, CAS23, CAS24, CAS25, CAS26, CAS30, CAS40, CAS50)
     # use framework defaults (ARIES-AT analogue calibration). Indirect cost structure:
     # direct costs ~71% of TCC, indirect/owner/supplementary/financial ~29% of TCC.
@@ -208,20 +197,21 @@ result = model.forward(
     # ≈ 1.41× direct cost (nuclear island + BOP), not 2–3× nuclear island alone.
 )
 
-# ── Post-hoc scaling to 1000 MWe (cross-concept comparison) ──────────────
-# ARC's native design point (261 MWe) is well below the 1 GWe reference used
-# for cross-concept LCOE comparison. Scale LCOE and overnight $/kW to 1000 MWe
-# using a power-law economy-of-scale exponent (α=0.6 is standard for large plant
-# equipment). The primary result stays at 261 MWe; this is informational only.
-_ALPHA = 0.6  # economy-of-scale exponent
-_p_native = float(result.power_table.p_net)
-_factor = (_p_native / 1000.0) ** (1.0 - _ALPHA)
+# ── NOAK forward run (central estimate, native 261 MWe) ──────────────────
+# ARC aggressive pilot: supercritical Rankine at 1200 K FLiBe outlet → 261 MWe.
+# Source: arc-power-conversion-studies.md §Results, Table 15 (recommended cycle).
+# NOTE: 2025 CFS public target is 400 MWe — updated design not publicly documented.
+result = model.forward(net_electric_mw=261.0, **_SHARED_KWARGS)
 
-scaled_headline = {
-    "p_net_mw": 1000.0,
-    "lcoe_per_mwh": float(result.costs.lcoe) * _factor,
-    "overnight_per_kw": float(result.costs.overnight_cost) * _factor,
-}
+# ── Self-consistent 1 GWe result (cross-concept comparison) ──────────────
+# ARC's native 261 MWe is well below the 1 GWe reference standard.
+# override_reference_mw tells the framework that cost_overrides are valid at 261 MWe
+# and it should scale them to 1000 MWe using per-account scaling laws.
+result_1gw = model.forward(
+    net_electric_mw=1000.0,
+    override_reference_mw=261.0,
+    **_SHARED_KWARGS,
+)
 
 # ── Results ───────────────────────────────────────────────────────────────
 
@@ -231,9 +221,6 @@ pt = result.power_table
 print("HTS Compact Tokamak — CFS ARC (261 MWe, 75% avail, 30 yr, NOAK)")
 print(f"LCOE: {c.lcoe:.1f} $/MWh | Overnight: {c.overnight_cost:.0f} $/kW")
 print(f"Fusion: {pt.p_fus:.0f} MW | Net: {pt.p_net:.0f} MW | Q_eng: {pt.q_eng:.1f}")
-print(f"Scaled to 1000 MWe: LCOE {scaled_headline['lcoe_per_mwh']:.1f} $/MWh"
-      f" | Overnight {scaled_headline['overnight_per_kw']:.0f} $/kW"
-      f"  [α=0.6 economy-of-scale, cross-concept reference]")
 print()
 
 cas_rows = [
@@ -314,38 +301,8 @@ _FOAK_OVERRIDES = {
     "CAS27":   CAS27_OVERRIDE,
 }
 
-result_foak = model.forward(
-    net_electric_mw=261.0,
-    availability=0.75,
-    lifetime_yr=30,
-    n_mod=1,
-    construction_time_yr=5.0,
-    interest_rate=0.07,
-    inflation_rate=0.0245,
-    noak=False,                   # FOAK: adds 10% contingency (CAS29); plant_studies_foak
-    R0=3.3,
-    plasma_t=1.13,
-    elon=1.84,
-    blanket_t=0.80,
-    ht_shield_t=0.20,
-    structure_t=0.20,
-    vessel_t=0.20,
-    p_input=38.6,
-    mn=1.1,
-    eta_th=0.46,
-    eta_p=0.5,
-    eta_pin=0.5,
-    eta_de=0.85,
-    f_sub=0.03,
-    f_dec=0.0,
-    p_coils=2.0,
-    p_cool=13.7,
-    p_pump=1.0,
-    p_trit=10.0,
-    p_house=4.0,
-    p_cryo=0.5,
-    cost_overrides=_FOAK_OVERRIDES,
-)
+_foak_kwargs = {**_SHARED_KWARGS, "noak": False, "cost_overrides": _FOAK_OVERRIDES}
+result_foak = model.forward(net_electric_mw=261.0, **_foak_kwargs)
 
 cf = result_foak.costs
 print(f"\nFOAK scenario (2× C220103 + contingency, same availability):")
@@ -403,9 +360,9 @@ Key Assumptions
    Basis: 950 t FLiBe × $154/kg NOAK (20% learning rate).
    Source: arc-reactor-specifications.md §6 (quantity); Araiinejad & Shirvan 2025 (price).
    NOTE: FLiBe chemistry plant + tritium extraction system capital cost is NOT included.
-   iter-7 order-of-magnitude floor: Woodruff Scientific ARPA-E ALPHA re-costing
-   (OSTI:1820946) gives CAS22.5 Fuel Processing averaging $124M at ~500 MWe for compact
-   MIF/Z-pinch concepts (structural analogue only — different blanket chemistry, no FLiBe).
+   Order-of-magnitude floor: Woodruff Scientific ARPA-E ALPHA re-costing (OSTI:1820946)
+   gives CAS22.5 Fuel Processing averaging $124M at ~500 MWe for compact MIF/Z-pinch
+   concepts (structural analogue only — different blanket chemistry, no FLiBe).
    Treat $100–200M as a floor for ARC's additive FLiBe chemistry/tritium processing BOP
    line; ARC-specific scope (FLiBe redox control, MHD-driven flow purification) may push
    above this range. Source: analysis.md §6, gap #15; osti-servlets-purl-1820946.md
@@ -438,7 +395,7 @@ Key Assumptions
 
 sens = model.sensitivity(
     result.params,
-    cost_overrides=_NOAK_OVERRIDES,
+    cost_overrides=_SHARED_KWARGS["cost_overrides"],
 )
 
 print("Sensitivity (elasticity = %LCOE / %param) — NOAK central estimate")

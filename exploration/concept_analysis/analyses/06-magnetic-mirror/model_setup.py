@@ -46,31 +46,21 @@ model = CostModel(concept=ConfinementConcept.MIRROR, fuel=Fuel.PB11)
 # UNCERTAIN: No published design point. No reactor concept study from Pale Blue.
 # 500 MWe used as reference scale, consistent with DT mirror example.
 # Source: analysis.md §Section 5, "Missing Parameters — Net electric output (plant)"
-NET_ELECTRIC_MW = 500.0
+_NATIVE_MW = 500.0
 
-# Availability
-# UNCERTAIN: No published capacity factor or maintenance philosophy.
-# Open-ended geometry may enable simpler maintenance than toroids (analysis §S5),
-# but p-B11 plasma conditions have never been sustained — reliability unknown.
-# Using 0.80 (slightly below DT mirror) to reflect greater operational uncertainty.
-AVAILABILITY = 0.80
-
-# Lifetime and financial parameters
-LIFETIME_YR = 30            # Standard reference; no concept-specific data
-CONSTRUCTION_TIME_YR = 5.0  # DEFAULT: mirror geometry simpler than tokamak; mfe_mirror.yaml
-INTEREST_RATE = 0.07        # DEFAULT: standard reference
-INFLATION_RATE = 0.02       # DEFAULT: standard reference
-
-# ── Forward model call ────────────────────────────────────────────────────
-result = model.forward(
+# ── Shared kwargs (all parameters common to both forward() calls) ──────────
+_SHARED_KWARGS = dict(
     # ── Financial / lifecycle ─────────────────────────────────────────────
-    net_electric_mw=NET_ELECTRIC_MW,
-    availability=AVAILABILITY,
-    lifetime_yr=LIFETIME_YR,
+    availability=0.80,
+    # UNCERTAIN: No published capacity factor or maintenance philosophy.
+    # Open-ended geometry may enable simpler maintenance than toroids (analysis §S5),
+    # but p-B11 plasma conditions have never been sustained — reliability unknown.
+    # Using 0.80 (slightly below DT mirror) to reflect greater operational uncertainty.
+    lifetime_yr=30,             # Standard reference; no concept-specific data
     n_mod=1,
-    construction_time_yr=CONSTRUCTION_TIME_YR,
-    interest_rate=INTEREST_RATE,
-    inflation_rate=INFLATION_RATE,
+    construction_time_yr=5.0,  # DEFAULT: mirror geometry simpler than tokamak; mfe_mirror.yaml
+    interest_rate=0.07,         # DEFAULT: standard reference
+    inflation_rate=0.02,        # DEFAULT: standard reference
     noak=True,
 
     # ── Mirror geometry (cylindrical) ─────────────────────────────────────
@@ -177,16 +167,17 @@ result = model.forward(
     cost_overrides={"CAS21": 200.0},
 )
 
-# ── Post-hoc scaling to 1000 MWe (cross-concept comparison) ──────────────
-_ALPHA = 0.6  # economy-of-scale exponent
-_p_native = float(result.power_table.p_net)
-_factor = (_p_native / 1000.0) ** (1.0 - _ALPHA)
+# ── Forward model — native design point ───────────────────────────────────
+result = model.forward(net_electric_mw=_NATIVE_MW, **_SHARED_KWARGS)
 
-scaled_headline = {
-    "p_net_mw": 1000.0,
-    "lcoe_per_mwh": float(result.costs.lcoe) * _factor,
-    "overnight_per_kw": float(result.costs.overnight_cost) * _factor,
-}
+# ── Forward model — 1 GWe comparison point ────────────────────────────────
+# Scales cost_overrides from the 500 MWe native point to 1000 MWe using
+# per-account scaling laws. Preserves physics consistency at the native point.
+result_1gw = model.forward(
+    net_electric_mw=1000.0,
+    override_reference_mw=_NATIVE_MW,
+    **_SHARED_KWARGS,
+)
 
 # ── Results ────────────────────────────────────────────────────────────────
 c = result.costs
@@ -200,8 +191,11 @@ print(
     f"LCOE: {c.lcoe:.1f} $/MWh ({lcoe_ckwh:.2f} ¢/kWh)"
     f" | Overnight: {c.overnight_cost:.0f} $/kW"
 )
-print(f"\nScaled headline (1000 MWe, \u03b1={_ALPHA}): LCOE {scaled_headline['lcoe_per_mwh']:.1f} $/MWh | "
-      f"Overnight {scaled_headline['overnight_per_kw']:.0f} $/kW")
+c1 = result_1gw.costs
+print(
+    f"1 GWe scaled: LCOE {c1.lcoe:.1f} $/MWh"
+    f" | Overnight {c1.overnight_cost:.0f} $/kW"
+)
 print(f"Fusion: {pt.p_fus:.0f} MW | Net: {pt.p_net:.0f} MW | Q_eng: {pt.q_eng:.1f}")
 print(f"Recirculating fraction: {pt.rec_frac:.1%}")
 print()
@@ -215,6 +209,7 @@ cas = [
     ("CAS24", "Electrical Plant", c.cas24),
     ("CAS25", "Miscellaneous", c.cas25),
     ("CAS26", "Heat Rejection", c.cas26),
+    ("CAS27", "Special Materials", c.cas27),
     ("CAS28", "Digital Twin", c.cas28),
     ("CAS29", "Contingency", c.cas29),
     ("CAS30", "Indirect Costs", c.cas30),
@@ -267,8 +262,13 @@ print("-" * 48)
 
 print("\nEngineering levers:")
 for k, v in sorted(sens["engineering"].items(), key=lambda x: abs(x[1]), reverse=True):
-    print(f"  {k:<28} {v:+.4f}")
+    print(f"  {k:<36} {v:+.4f}")
 
 print("\nFinancial:")
 for k, v in sorted(sens["financial"].items(), key=lambda x: abs(x[1]), reverse=True):
-    print(f"  {k:<28} {v:+.4f}")
+    print(f"  {k:<36} {v:+.4f}")
+
+print("\nCosting constants (top 15):")
+costing = sorted(sens["costing"].items(), key=lambda x: abs(x[1]), reverse=True)
+for k, v in costing[:15]:
+    print(f"  {k:<36} {v:+.4f}")

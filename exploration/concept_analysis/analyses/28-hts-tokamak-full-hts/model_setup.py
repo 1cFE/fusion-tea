@@ -1,11 +1,16 @@
-"""HTS Tokamak - Full HTS (Energy Singularity) — 1costingfe model setup (iter-3).
+"""HTS Tokamak - Full HTS (Energy Singularity HH380) — 1costingfe model setup.
+
+Usage:
+    uv run python model_setup.py              # print results to terminal
+    uv run python model_setup.py | tee model_output.txt  # also save for synthesis stage
 
 Modeling approach:
-    Energy Singularity's HH380 commercial demo has no published design parameters.
-    This script constructs a proxy model using CFS ARC/SPARC as the closest published
-    analogue for a compact, high-field, D-shaped HTS tokamak (Sorbom et al. 2015 ARC;
-    Araiinejad & Shirvan 2025 TEA). All engineering parameters are UNCERTAIN and must
-    be replaced when HH380 engineering data becomes available (post-2030).
+    Energy Singularity's commercial HH380 demo station has no published design
+    parameters. This script constructs a proxy model using CFS ARC/SPARC as the
+    closest published analogue for a compact, high-field, D-shaped HTS tokamak
+    (Sorbom et al. 2015 ARC; Araiinejad & Shirvan 2025 TEA). All engineering
+    parameters are UNCERTAIN and must be replaced when HH380 engineering data
+    becomes available (post-2030).
 
     F-1 (blocking): Full HTS coil cost premium applied to C220103.
         The framework default does not distinguish full-HTS (TF+PF+CS in REBCO) from
@@ -24,10 +29,10 @@ Modeling approach:
         third-highest structural LCOE lever and explicitly calls for discrete scenario
         runs — not marginal sensitivity perturbations — because the uncertainty is
         about the unknown design point (is HH380 a ~250 MWe machine at R≈1.5m or an
-        ~800 MWe machine at R≈2.5m?). Two new scenarios are added:
+        ~800 MWe machine at R≈2.5m?). Two scenarios are added alongside the
+        technical-bet failure scenarios (Scenarios A and B):
           Scenario C (small machine): R=1.5 m, net electric ~250 MWe
           Scenario D (large machine): R=2.5 m, net electric ~800 MWe
-        Reported in a unified 5-scenario LCOE table alongside Scenarios A and B.
         analysis.md §Section 2, Challenge 1 and §Key LCOE sensitivity parameters #3
 
 Concept choice rationale:
@@ -42,18 +47,14 @@ Key deviations from mfe_tokamak.yaml defaults:
     - eta_pin = 0.65: ICRH wall-plug efficiency midpoint (60–70% range)
     - p_cryo = 8.0 MW: full 20 K HTS cryoplant (all coils at HTS temp)
     - C220103 overridden with hts_full_coil_premium multiplier (F-1)
-
-Usage:
-    uv run python model_setup.py              # print results to terminal
-    uv run python model_setup.py | tee model_output.txt  # also save for synthesis stage
 """
 
 from costingfe import ConfinementConcept, CostModel, Fuel
 
-# ── Model instantiation ───────────────────────────────────────────────
+# ── Model instantiation ────────────────────────────────────────────────────
 model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
 
-# ── Full HTS coil cost premium (F-1) ─────────────────────────────────
+# ── Full HTS coil cost premium (F-1) ──────────────────────────────────────
 # Multiplier applied to the framework-computed C220103 (HTS magnet system) to
 # represent incremental REBCO tape demand for PF and CS coils relative to a
 # TF-only HTS baseline (CFS SPARC uses TF-only HTS; Energy Singularity extends
@@ -65,7 +66,7 @@ model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
 #   to partial-HTS competitors... magnitude unquantified"
 HTS_FULL_COIL_PREMIUM = 1.20  # base-case multiplier on C220103
 
-# ── Plant configuration constants ─────────────────────────────────────
+# ── Plant configuration constants ─────────────────────────────────────────
 # UNCERTAIN: No commercial design (HH380) parameters are published.
 # All geometry is analogued from CFS ARC/SPARC (Sorbom et al. 2015, ARC TEA).
 # analysis.md §Section 1 — data rating: Limited; §Section 5 — all commercial
@@ -92,19 +93,19 @@ INFLATION_RATE = 0.0245
 NOAK = True
 # Nth-of-a-kind assumption for concept TEA comparability.
 
-# ── Geometry at base scale (R=2.0 m) ─────────────────────────────────
-# Aspect ratio A = R0 / plasma_t = 4.0 maintained across all scale scenarios.
+# ── Geometry at base scale (R=2.0 m) ──────────────────────────────────────
+# Aspect ratio A = R0 / plasma_t ≈ 4.0 maintained across all scale scenarios.
 # analysis.md §Section 7: "D-shaped (conventional aspect ratio, ~A ≈ 3–4 estimated)."
 
-R0_BASE = 2.0
+R0_BASE   = 2.0
 # UNCERTAIN: Major radius [m]. HH170 ~70% SPARC volume (SPARC R=1.85 m) →
 # HH170 R ≈ 1.6 m. HH380 commercial demo is larger; 2.0 m is midrange estimate.
 # Bracketed by Scenarios C (1.5 m) and D (2.5 m) per F-2.
 # analysis.md §Section 2, Challenge 1; §Section 5 (major radius: truly-unknown, important).
 
 PLASMA_T_BASE = 0.50       # R0_BASE / 4.0 = 0.50 m — minor radius [m]
-PLASMA_T_C = 0.375         # 1.5 / 4.0 = 0.375 m — Scenario C (small)
-PLASMA_T_D = 0.625         # 2.5 / 4.0 = 0.625 m — Scenario D (large)
+PLASMA_T_C    = 0.375      # 1.5 / 4.0 = 0.375 m — Scenario C (small)
+PLASMA_T_D    = 0.625      # 2.5 / 4.0 = 0.625 m — Scenario D (large)
 
 ELON = 1.7
 # UNCERTAIN: Elongation κ. Standard D-shaped tokamak value; no ES disclosure.
@@ -118,7 +119,7 @@ HT_SHIELD_T = 0.20   # DEFAULT: mfe_tokamak.yaml default.
 STRUCTURE_T = 0.15   # DEFAULT: slightly below default reflecting compact geometry.
 VESSEL_T = 0.15      # DEFAULT: vacuum vessel thickness [m].
 
-# ── Power balance ─────────────────────────────────────────────────────
+# ── Power balance ──────────────────────────────────────────────────────────
 P_INPUT = 50.0
 # UNCERTAIN: Auxiliary heating power [MW]. ICRH confirmed on HH70 at low power;
 # no heating configuration disclosed for HH170 or HH380.
@@ -173,221 +174,162 @@ P_CRYO = 8.0
 # mixed LTS/HTS cryogenic circuits [analysis.md §Section 7, Differentiators].
 # UNCERTAIN — no ES disclosure; extrapolated from HTS cryoplant sizing.
 
-# CAS72 scheduled replacement penalty for Scenario A (CS coil reliability failure)
-CAS72_COIL_PENALTY = 1.30
-# UNCERTAIN: 30% increase on annualized scheduled replacement (CAS72) to represent
-# periodic CS coil reconditioning / rewinding events under 25 T cyclic EM loading.
-# No published cost for HTS CS coil replacement in tokamak operation; 30% is a
-# conservative placeholder (actual cost could be 2–5× if full replacement required).
-# analysis.md §Section 2, Challenge 3: "No published fatigue or reliability data
-# exists for full-HTS CS coils in tokamak operation."
+# ── Shared physics kwargs (no net_electric_mw, no cost_overrides) ──────────
+# Used for all forward passes. net_electric_mw and cost_overrides are passed
+# explicitly per call so the dual-result pattern and scenario branches can vary them.
 
+_SHARED_KWARGS = dict(
+    availability=0.80,           # base-case availability; overridden in Scenarios A/B
+    lifetime_yr=LIFETIME_YR,
+    n_mod=1,
+    construction_time_yr=CONSTRUCTION_TIME_YR,
+    interest_rate=INTEREST_RATE,
+    inflation_rate=INFLATION_RATE,
+    noak=NOAK,
 
-# ── Helper: base forward kwargs at a given geometry scale ─────────────
-def _base_kwargs(r0, net_electric_mw, plasma_t, availability):
-    return dict(
-        net_electric_mw=net_electric_mw,
-        availability=availability,
-        lifetime_yr=LIFETIME_YR,
-        n_mod=1,
-        construction_time_yr=CONSTRUCTION_TIME_YR,
-        interest_rate=INTEREST_RATE,
-        inflation_rate=INFLATION_RATE,
-        noak=NOAK,
-        R0=r0,
-        elon=ELON,
-        plasma_t=plasma_t,
-        blanket_t=BLANKET_T,
-        ht_shield_t=HT_SHIELD_T,
-        structure_t=STRUCTURE_T,
-        vessel_t=VESSEL_T,
-        p_input=P_INPUT,
-        mn=MN,
-        eta_th=ETA_TH,
-        eta_p=ETA_P,
-        eta_pin=ETA_PIN,
-        eta_de=ETA_DE,
-        f_sub=F_SUB,
-        f_dec=F_DEC,
-        p_coils=P_COILS,
-        p_cool=P_COOL,
-        p_pump=P_PUMP,
-        p_trit=P_TRIT,
-        p_house=P_HOUSE,
-        p_cryo=P_CRYO,
-    )
+    # Geometry (base scale: R=2.0 m, A=4.0)
+    R0=R0_BASE,                  # 2.0 m — UNCERTAIN central analogue
+    elon=ELON,                   # 1.7   — UNCERTAIN standard D-shaped
+    plasma_t=PLASMA_T_BASE,      # 0.50 m — derived from R0/A
+    blanket_t=BLANKET_T,         # 0.60 m — UNCERTAIN (undisclosed)
+    ht_shield_t=HT_SHIELD_T,     # 0.20 m — DEFAULT
+    structure_t=STRUCTURE_T,     # 0.15 m — DEFAULT
+    vessel_t=VESSEL_T,           # 0.15 m — DEFAULT
 
+    # Power balance
+    p_input=P_INPUT,             # 50 MW  — UNCERTAIN (ICRH undisclosed)
+    mn=MN,                       # 1.1    — DEFAULT
+    eta_th=ETA_TH,               # 0.40   — UNCERTAIN (cycle undisclosed)
+    eta_p=ETA_P,                 # 0.5    — DEFAULT
+    eta_pin=ETA_PIN,             # 0.65   — ICRH wall-plug (60–70% range)
+    eta_de=ETA_DE,               # 0.85   — DEFAULT (DEC not used)
+    f_sub=F_SUB,                 # 0.03   — DEFAULT
+    f_dec=F_DEC,                 # 0.0    — no DEC
+    p_coils=P_COILS,             # 5.0 MW — UNCERTAIN (full HTS CS duty cycle)
+    p_cool=P_COOL,               # 15.0 MW — UNCERTAIN
+    p_pump=P_PUMP,               # 2.0 MW — DEFAULT
+    p_trit=P_TRIT,               # 10.0 MW — DEFAULT (fuel cycle undisclosed)
+    p_house=P_HOUSE,             # 5.0 MW — UNCERTAIN (AI control system overhead)
+    p_cryo=P_CRYO,               # 8.0 MW — UNCERTAIN (full 20 K cryoplant)
+)
 
-# ── Reference pass: compute framework C220103 without premium ─────────
-# Used to anchor the hts_full_coil_premium multiplier at each scale.
+# ── Reference pass: compute framework C220103 before applying premium ──────
 # F-1: C220103 framework default assumes a "standard" HTS tokamak coil set
 # (calibrated to TF-only HTS architecture as in ARC/SPARC). Full HTS requires
-# additional tape for PF and CS coils.
-ref_base = model.forward(**_base_kwargs(R0_BASE, 500.0, PLASMA_T_BASE, 0.80))
-ref_250  = model.forward(**_base_kwargs(1.5, 250.0, PLASMA_T_C, 0.80))
-ref_800  = model.forward(**_base_kwargs(2.5, 800.0, PLASMA_T_D, 0.80))
+# additional tape for PF and CS coils. We run a no-override pass first to read
+# the framework value, then apply hts_full_coil_premium at each scale.
+_ref_base = model.forward(net_electric_mw=500.0, **_SHARED_KWARGS)
+_ref_250  = model.forward(
+    net_electric_mw=250.0,
+    **{**_SHARED_KWARGS, "R0": 1.5, "plasma_t": PLASMA_T_C},
+)
+_ref_800  = model.forward(
+    net_electric_mw=800.0,
+    **{**_SHARED_KWARGS, "R0": 2.5, "plasma_t": PLASMA_T_D},
+)
 
-c220103_framework_base = float(ref_base.cas22_detail["C220103"])
-c220103_framework_250  = float(ref_250.cas22_detail["C220103"])
-c220103_framework_800  = float(ref_800.cas22_detail["C220103"])
+_c220103_fw_base = float(_ref_base.cas22_detail["C220103"])
+_c220103_fw_250  = float(_ref_250.cas22_detail["C220103"])
+_c220103_fw_800  = float(_ref_800.cas22_detail["C220103"])
 
 # Apply hts_full_coil_premium at each scale
-c220103_500 = c220103_framework_base * HTS_FULL_COIL_PREMIUM
-c220103_250 = c220103_framework_250  * HTS_FULL_COIL_PREMIUM
-c220103_800 = c220103_framework_800  * HTS_FULL_COIL_PREMIUM
+_C220103_500 = _c220103_fw_base * HTS_FULL_COIL_PREMIUM
+_C220103_250 = _c220103_fw_250  * HTS_FULL_COIL_PREMIUM
+_C220103_800 = _c220103_fw_800  * HTS_FULL_COIL_PREMIUM
 
-
-def run_scenario(label, r0, net_electric_mw, plasma_t, availability,
-                 cost_overrides, extra_note=""):
-    """Run one costing scenario with the given overrides."""
-    kwargs = _base_kwargs(r0, net_electric_mw, plasma_t, availability)
-    kwargs["cost_overrides"] = cost_overrides
-    r = model.forward(**kwargs)
-    return r, label, r0, net_electric_mw, availability, extra_note
-
-
-# ── Five scenario branches ────────────────────────────────────────────
-#
-# Base case  — R=2.0m, 500 MWe, 80% avail
-#   CS coils reliable, AI plasma control nominal, full HTS premium applied.
-#
-# Scenario A — CS Coil Reliability Failure (analysis.md §Section 2, bet #1)
-#   Full HTS CS coils at 25 T under cyclic EM loading fail to achieve target
-#   availability. CAS72 increased ×1.30 for CS coil reconditioning events.
-#   → availability = 65%; elasticity ≈ −0.94 → ~+14% LCOE from avail alone.
-#
-# Scenario B — AI Plasma Control Underperforms (analysis.md §Section 2, bet #2)
-#   AI control does not suppress disruptions at burning-plasma conditions;
-#   operation is disruption-limited rather than steady-state.
-#   → availability = 70%; ~+9% LCOE vs. base.
-#
-# Scenario C — Small Machine (F-2: R≈1.5m, ~250 MWe)
-#   Lower bound on HH380 design point: compact machine near HH170 scale.
-#   R=1.5m, net electric ~250 MWe, A=4.0, full HTS premium applied.
-#   → Shows how LCOE evolves if HH380 is a smaller, cheaper plant.
-#
-# Scenario D — Large Machine (F-2: R≈2.5m, ~800 MWe)
-#   Upper bound on HH380 design point: ARC-class machine, larger than SPARC.
-#   R=2.5m, net electric ~800 MWe, A=4.0, full HTS premium applied.
-#   → Shows benefit of scale economies if HH380 is a larger plant.
-
-# Base case (primary result — interface contract for concept explorer)
+# ── Primary result (native 500 MWe design point, NOAK) ────────────────────
 result = model.forward(
-    **_base_kwargs(R0_BASE, 500.0, PLASMA_T_BASE, 0.80),
-    cost_overrides={"C220103": c220103_500},
+    net_electric_mw=500.0,
+    cost_overrides={"C220103": _C220103_500},
+    **_SHARED_KWARGS,
 )
 
-# ── Post-hoc scaling to 1000 MWe (cross-concept comparison) ──────────
-_ALPHA = 0.6  # economy-of-scale exponent
-_p_native = float(result.power_table.p_net)
-_factor = (_p_native / 1000.0) ** (1.0 - _ALPHA)
-
-scaled_headline = {
-    "p_net_mw": 1000.0,
-    "lcoe_per_mwh": float(result.costs.lcoe) * _factor,
-    "overnight_per_kw": float(result.costs.overnight_cost) * _factor,
-}
-
-# Scenario A: CS coil reliability failure — apply CAS72 penalty on base CAS72
-cas72_base_val = float(result.costs.cas72) if hasattr(result.costs, "cas72") else 0.0
-r_a, *_ = run_scenario(
-    label="Scenario A — CS Coil Reliability Failure",
-    r0=R0_BASE, net_electric_mw=500.0, plasma_t=PLASMA_T_BASE,
-    availability=0.65,
-    cost_overrides={
-        "C220103": c220103_500,
-        **({"CAS72": cas72_base_val * CAS72_COIL_PENALTY} if cas72_base_val else {}),
-    },
-    extra_note=(
-        "R=2.0m, 500 MWe, 65% avail + CAS72 ×1.30 for CS coil reconditioning. "
-        "UNCERTAIN: coil replacement cost is a placeholder — no published source."
-    ),
+# ── Self-consistent 1 GW result for cross-concept comparison ──────────────
+# override_reference_mw tells the framework that cost_overrides are valid at
+# 500 MWe and should scale to 1000 MWe using per-account scaling laws.
+result_1gw = model.forward(
+    net_electric_mw=1000.0,
+    override_reference_mw=500.0,
+    cost_overrides={"C220103": _C220103_500},
+    **_SHARED_KWARGS,
 )
 
-# Scenario B: AI plasma control underperforms
-r_b, *_ = run_scenario(
-    label="Scenario B — AI Plasma Control Underperforms",
-    r0=R0_BASE, net_electric_mw=500.0, plasma_t=PLASMA_T_BASE,
-    availability=0.70,
-    cost_overrides={"C220103": c220103_500},
-    extra_note="R=2.0m, 500 MWe, 70% avail — disruption-limited at burning-plasma conditions",
+# ── Scenario A: CS coil reliability failure ────────────────────────────────
+# Full HTS CS coils at 25 T under cyclic EM loading fail to achieve target
+# availability. LCOE impact vs. base case approximately +14% (elasticity ≈ −0.94).
+# Modeled as availability = 65%; CS coil reconditioning costs not separately
+# quantified (no published source for HTS CS coil replacement cost in tokamak).
+# Source: analysis.md §Section 2, Technical Bet Scenario structure
+result_scenario_a = model.forward(
+    net_electric_mw=500.0,
+    cost_overrides={"C220103": _C220103_500},
+    **{**_SHARED_KWARGS, "availability": 0.65},
 )
 
-# Scenario C: Small machine (F-2)
-r_c, *_ = run_scenario(
-    label="Scenario C — Small Machine",
-    r0=1.5, net_electric_mw=250.0, plasma_t=PLASMA_T_C,
-    availability=0.80,
-    cost_overrides={"C220103": c220103_250},
-    extra_note=(
-        "R=1.5m, ~250 MWe, 80% avail — lower bound on HH380 design point. "
-        "A=4.0 maintained. Capital scaled from R=2.0m base via geometry inputs. "
-        "UNCERTAIN: all parameters scaled from base; HH380 design unknown."
-    ),
+# ── Scenario B: AI plasma control underperforms ────────────────────────────
+# AI control does not suppress disruptions at burning-plasma conditions;
+# operation is disruption-limited rather than steady-state.
+# LCOE impact approximately +9% vs. base case.
+# Source: analysis.md §Section 2, Technical Bet Scenario structure
+result_scenario_b = model.forward(
+    net_electric_mw=500.0,
+    cost_overrides={"C220103": _C220103_500},
+    **{**_SHARED_KWARGS, "availability": 0.70},
 )
 
-# Scenario D: Large machine (F-2)
-r_d, *_ = run_scenario(
-    label="Scenario D — Large Machine",
-    r0=2.5, net_electric_mw=800.0, plasma_t=PLASMA_T_D,
-    availability=0.80,
-    cost_overrides={"C220103": c220103_800},
-    extra_note=(
-        "R=2.5m, ~800 MWe, 80% avail — upper bound on HH380 design point. "
-        "A=4.0 maintained. Capital scaled from R=2.0m base via geometry inputs. "
-        "UNCERTAIN: all parameters scaled from base; HH380 design unknown."
-    ),
+# ── Scenario C: Small machine (F-2: R≈1.5m, ~250 MWe) ────────────────────
+# Lower bound on HH380 design point; lower capital at smaller scale.
+# Source: analysis.md §Section 2, LCOE Sensitivity #3 (Scenario C)
+result_scenario_c = model.forward(
+    net_electric_mw=250.0,
+    cost_overrides={"C220103": _C220103_250},
+    **{**_SHARED_KWARGS, "R0": 1.5, "plasma_t": PLASMA_T_C},
 )
 
-scenarios = [
-    (result, "Base Case",                              R0_BASE, 500.0, 0.80),
-    (r_a,    "Scenario A — CS Coil Reliability Fail", R0_BASE, 500.0, 0.65),
-    (r_b,    "Scenario B — AI Control Underperforms", R0_BASE, 500.0, 0.70),
-    (r_c,    "Scenario C — Small Machine",            1.5,     250.0, 0.80),
-    (r_d,    "Scenario D — Large Machine",            2.5,     800.0, 0.80),
+# ── Scenario D: Large machine (F-2: R≈2.5m, ~800 MWe) ────────────────────
+# Upper bound on HH380 design point; lower LCOE through scale economies.
+# Source: analysis.md §Section 2, LCOE Sensitivity #3 (Scenario D)
+result_scenario_d = model.forward(
+    net_electric_mw=800.0,
+    cost_overrides={"C220103": _C220103_800},
+    **{**_SHARED_KWARGS, "R0": 2.5, "plasma_t": PLASMA_T_D},
+)
+
+_scenarios = [
+    (result,           "Base Case",                               R0_BASE, 500.0, 0.80),
+    (result_scenario_a, "Scenario A — CS Coil Reliability Fail", R0_BASE, 500.0, 0.65),
+    (result_scenario_b, "Scenario B — AI Control Underperforms", R0_BASE, 500.0, 0.70),
+    (result_scenario_c, "Scenario C — Small Machine",            1.5,     250.0, 0.80),
+    (result_scenario_d, "Scenario D — Large Machine",            2.5,     800.0, 0.80),
 ]
 
-
-# ── Print results ─────────────────────────────────────────────────────
+# ── Print results ──────────────────────────────────────────────────────────
 print("=" * 78)
 print("HTS Tokamak - Full HTS (Energy Singularity)")
 print("Proxy model: CFS ARC/SPARC analogue | All parameters UNCERTAIN")
 print(f"Base: R={R0_BASE}m, 500 MWe, 80% avail | Lifetime: {LIFETIME_YR} yr | NOAK")
 print(f"C220103 hts_full_coil_premium: ×{HTS_FULL_COIL_PREMIUM:.2f} "
-      f"(framework base: ${c220103_framework_base:.0f}M → "
-      f"with premium: ${c220103_500:.0f}M)")
+      f"(framework base: ${_c220103_fw_base:.0f}M → "
+      f"with premium: ${_C220103_500:.0f}M)")
 print("=" * 78)
 print()
 
-c = result.costs
+c  = result.costs
 pt = result.power_table
 print(f"LCOE:       {float(c.lcoe):>8.1f} $/MWh")
 print(f"Overnight:  {float(c.overnight_cost):>8.0f} $/kW")
-print(f"\nScaled headline (1000 MWe, α={_ALPHA}): "
-      f"LCOE {scaled_headline['lcoe_per_mwh']:.1f} $/MWh | "
-      f"Overnight {scaled_headline['overnight_per_kw']:.0f} $/kW")
 print(f"Fusion:     {float(pt.p_fus):>8.0f} MW | Net: {float(pt.p_net):>5.0f} MW | Q_eng: {float(pt.q_eng):.2f}")
 print()
+print(f"1 GW scaled (cross-concept): LCOE {result_1gw.costs.lcoe:.1f} $/MWh | "
+      f"Overnight {result_1gw.costs.overnight_cost:.0f} $/kW")
+print()
 
-# Per-scenario detail
-for r, label, r0, p_net, avail in scenarios:
-    rc = r.costs
-    rpt = r.power_table
-    print(f"── {label} ──")
-    print(f"   R0={r0}m  |  Net electric: {p_net:.0f} MWe  |  Availability: {avail:.0%}")
-    print(f"   LCOE:          {float(rc.lcoe):>8.1f} $/MWh")
-    print(f"   Overnight:     {float(rc.overnight_cost):>8.0f} $/kW")
-    print(f"   Fusion power:  {float(rpt.p_fus):>8.0f} MW")
-    print(f"   Net electric:  {float(rpt.p_net):>8.0f} MW")
-    print(f"   Q_eng:         {float(rpt.q_eng):>8.2f}")
-    print()
-
-# Unified 5-scenario LCOE comparison table
-print("── Unified LCOE Scenario Table (all five scenarios) ──")
+# ── Unified 5-scenario LCOE table ─────────────────────────────────────────
+print("── Unified Scenario LCOE Table ──")
 print(f"  {'Scenario':<45} {'R0':>4} {'MWe':>5} {'Avail':>6}  {'LCOE':>10}  {'vs. Base':>9}")
 print("  " + "-" * 82)
 base_lcoe = float(result.costs.lcoe)
-for r, label, r0, p_net, avail in scenarios:
+for r, label, r0, p_net, avail in _scenarios:
     lcoe_val = float(r.costs.lcoe)
     delta_pct = (lcoe_val - base_lcoe) / base_lcoe * 100.0
     delta_str = f"+{delta_pct:.1f}%" if delta_pct > 0 else f"{delta_pct:.1f}%"
@@ -397,7 +339,7 @@ print("  Note — Scenarios A/B bracket technical-bet failure modes at fixed des
 print("  Scenarios C/D bracket design-point uncertainty (HH380 scale unknown).")
 print()
 
-# CAS breakdown — base case
+# ── CAS cost breakdown — base case ────────────────────────────────────────
 print("── CAS Cost Breakdown — Base Case ──")
 cas = [
     ("CAS10", "Preconstruction",           c.cas10),
@@ -426,9 +368,8 @@ print("  " + "-" * 48)
 print(f"  {'':8} {'Total Capital':<28} {float(c.total_capital):>10.1f}")
 print()
 
-# CAS22 sub-account detail — base case
+# ── CAS22 sub-account detail — base case ──────────────────────────────────
 print("── CAS22 Sub-Account Detail — Base Case ──")
-cas22_detail = result.cas22_detail
 cas22_labels = {
     "C220101": "First Wall + Blanket",
     "C220102": "Shield",
@@ -452,46 +393,40 @@ cas22_labels = {
 print(f"  {'Sub-account':<12} {'Description':<34} {'M$':>10}")
 print("  " + "-" * 59)
 for key, label in cas22_labels.items():
-    if key in cas22_detail:
-        val = cas22_detail[key]
+    if key in result.cas22_detail:
+        val = result.cas22_detail[key]
         print(f"  {key:<12} {label:<34} {float(val):>10.1f}")
 print()
-print(f"  * C220103 overridden: framework ${c220103_framework_base:.0f}M "
-      f"× ×{HTS_FULL_COIL_PREMIUM:.2f} premium = ${c220103_500:.0f}M")
-print(f"    Premium represents incremental REBCO tape for PF+CS coils beyond TF-only HTS.")
+print(f"  * C220103 overridden: framework ${_c220103_fw_base:.0f}M "
+      f"× ×{HTS_FULL_COIL_PREMIUM:.2f} = ${_C220103_500:.0f}M")
+print(f"    Premium: incremental REBCO tape for PF+CS coils beyond TF-only HTS.")
 print(f"    UNCERTAIN: ×1.1–×1.3 placeholder range; no published CS+PF tape volume estimate.")
 print()
 
-# hts_full_coil_premium sensitivity sweep (F-1)
-print("── hts_full_coil_premium Sensitivity (F-1) ──")
-print("  Effect of full HTS coil scope premium on base-case LCOE")
-print(f"  Base: R={R0_BASE}m, 500 MWe, 80% avail")
-print(f"  Framework C220103 (TF-only baseline): ${c220103_framework_base:.0f}M")
+# ── hts_full_coil_premium sensitivity sweep (F-1) ─────────────────────────
+print("── hts_full_coil_premium Sensitivity Sweep (F-1) ──")
+print(f"  Framework C220103 (TF-only baseline): ${_c220103_fw_base:.0f}M")
 print()
 print(f"  {'Premium':<10} {'C220103 (M$)':>14} {'LCOE ($/MWh)':>14} {'Delta vs ×1.0':>14}")
 print("  " + "-" * 55)
-
-lcoe_no_premium = None
+_lcoe_no_premium = None
 for prem in [1.0, 1.1, 1.2, 1.3]:
-    override_val = c220103_framework_base * prem
-    r_prem = model.forward(
-        **_base_kwargs(R0_BASE, 500.0, PLASMA_T_BASE, 0.80),
-        cost_overrides={"C220103": override_val},
+    _override_val = _c220103_fw_base * prem
+    _r_prem = model.forward(
+        net_electric_mw=500.0,
+        cost_overrides={"C220103": _override_val},
+        **_SHARED_KWARGS,
     )
-    lcoe_prem = float(r_prem.costs.lcoe)
+    _lcoe_prem = float(_r_prem.costs.lcoe)
     if prem == 1.0:
-        lcoe_no_premium = lcoe_prem
-    delta = (lcoe_prem - lcoe_no_premium) / lcoe_no_premium * 100.0 if lcoe_no_premium else 0.0
-    marker = " ← base case" if prem == HTS_FULL_COIL_PREMIUM else ""
-    delta_str = f"+{delta:.2f}%" if delta > 0 else f"{delta:.2f}%"
-    print(f"  ×{prem:<8.1f} {override_val:>14.0f} {lcoe_prem:>14.1f} {delta_str:>14}{marker}")
-print()
-print("  Interpretation: each 10% increase in full-HTS coil scope cost translates")
-print("  directly to a ~proportional increase in C220103, which propagates into CAS22,")
-print("  total capital, and LCOE. Magnitude depends on C220103's fraction of total capital.")
+        _lcoe_no_premium = _lcoe_prem
+    _delta = (_lcoe_prem - _lcoe_no_premium) / _lcoe_no_premium * 100.0 if _lcoe_no_premium else 0.0
+    _marker = " ← base case" if abs(prem - HTS_FULL_COIL_PREMIUM) < 1e-9 else ""
+    _delta_str = f"+{_delta:.2f}%" if _delta > 0 else f"{_delta:.2f}%"
+    print(f"  ×{prem:<8.1f} {_override_val:>14.0f} {_lcoe_prem:>14.1f} {_delta_str:>14}{_marker}")
 print()
 
-# Key Assumptions
+# ── Key Assumptions ────────────────────────────────────────────────────────
 print("── Key Assumptions ──")
 print(f"  Net electric (base):   500 MWe  [UNCERTAIN — no HH380 design]")
 print(f"  Major radius (base):   {R0_BASE} m    [UNCERTAIN — CFS ARC/SPARC analogue]")
@@ -500,7 +435,7 @@ print(f"  Elongation κ:          {ELON}       [UNCERTAIN — standard D-shaped]
 print(f"  Blanket thickness:     {BLANKET_T} m  [UNCERTAIN — no blanket design disclosed]")
 print(f"  Thermal efficiency:    {ETA_TH:.0%}    [UNCERTAIN — cycle type unknown; steam Rankine]")
 print(f"  ICRH wall-plug η:      {ETA_PIN:.0%}   [UNCERTAIN — 60–70% range; analysis.md §Ch.5]")
-print(f"  Cryo power:            {P_CRYO} MW   [UNCERTAIN — full HTS 20 K cryoplant estimate]")
+print(f"  Cryo power:            {P_CRYO} MW  [UNCERTAIN — full HTS 20 K cryoplant estimate]")
 print(f"  Construction time:     {CONSTRUCTION_TIME_YR} yr  [UNCERTAIN — optimistic; <2 yr for HH70]")
 print(f"  Interest rate:         {INTEREST_RATE:.0%}     [DEFAULT — no ES financing data]")
 print(f"  hts_full_coil_premium: ×{HTS_FULL_COIL_PREMIUM:.2f}    [UNCERTAIN — placeholder ×1.1–×1.3]")
@@ -518,11 +453,11 @@ print("    - Capital cost estimate or plant cost study")
 print("    - Major radius / design point of HH380 (→ Scenarios C/D bracket this)")
 print()
 
-# Sensitivity analysis — base case (with C220103 override as constant)
+# ── Sensitivity analysis — base case ──────────────────────────────────────
 print("── Sensitivity Analysis — Base Case (elasticity = %ΔLCOE / %Δparam) ──")
 print("  C220103 overridden → zero gradient; sensitivity is over remaining params.")
 print()
-sens = model.sensitivity(result.params, cost_overrides={"C220103": c220103_500})
+sens = model.sensitivity(result.params, cost_overrides={"C220103": _C220103_500})
 
 print("  Engineering levers:")
 for k, v in sorted(sens["engineering"].items(), key=lambda x: abs(x[1]), reverse=True):
@@ -530,6 +465,11 @@ for k, v in sorted(sens["engineering"].items(), key=lambda x: abs(x[1]), reverse
 
 print("\n  Financial:")
 for k, v in sorted(sens["financial"].items(), key=lambda x: abs(x[1]), reverse=True):
+    print(f"    {k:<28} {v:+.4f}")
+
+print("\n  Costing constants (top 15):")
+_costing = sorted(sens["costing"].items(), key=lambda x: abs(x[1]), reverse=True)
+for k, v in _costing[:15]:
     print(f"    {k:<28} {v:+.4f}")
 
 print()

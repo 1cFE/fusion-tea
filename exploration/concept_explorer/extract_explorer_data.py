@@ -198,23 +198,20 @@ def extract_costingfe(
             f"{concept_id}: model_setup.py must define module-level 'model' and 'result'"
         )
 
-    sensitivities = build_sensitivity_analysis(model, result)
+    # Use result_1gw (per-account scaled) when present, otherwise native result
+    result_1gw = getattr(module, "result_1gw", None)
+    effective_result = result_1gw if result_1gw is not None else result
+
+    sensitivities = build_sensitivity_analysis(model, effective_result)
 
     # dataclasses.asdict() flattens the nested ForwardResult into plain dicts
-    raw: dict[str, Any] = dataclasses.asdict(result)
+    raw: dict[str, Any] = dataclasses.asdict(effective_result)
 
     # availability lives in params, not power_table — inject it so from_forward_result
     # can compute capacity_factor via its "availability" fallback
     params_dict = raw.get("params", {})
     if "availability" in params_dict:
         raw.setdefault("power_table", {})["availability"] = params_dict["availability"]
-
-    # Post-hoc scaling: override headline metrics if scaled_headline is present
-    scaled_headline = getattr(module, "scaled_headline", None)
-    if scaled_headline and isinstance(scaled_headline, dict):
-        raw.setdefault("costs", {})["lcoe"] = scaled_headline.get("lcoe_per_mwh", raw.get("costs", {}).get("lcoe", 0))
-        raw.setdefault("costs", {})["overnight_cost"] = scaled_headline.get("overnight_per_kw", raw.get("costs", {}).get("overnight_cost", 0))
-        raw.setdefault("power_table", {})["p_net"] = scaled_headline.get("p_net_mw", raw.get("power_table", {}).get("p_net", 0))
 
     cost_model = CostModelData.from_forward_result(raw, sensitivities)
 

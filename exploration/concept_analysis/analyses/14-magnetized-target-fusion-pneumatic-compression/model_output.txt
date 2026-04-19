@@ -1,54 +1,56 @@
 MTF Pneumatic Compression (D-T) — General Fusion concept
   300 MWe net, 80% availability, 30 yr lifetime
-  FOAK | eta_th=35% | availability=80%
+  FOAK | eta_th=35% | q_eng=3.0 (UNCERTAIN)
 
-LCOE:     101.5 $/MWh | Overnight: 6784 $/kW
-  Scaled to 1000 MWe: LCOE 62.7 $/MWh | Overnight 4191 $/kW
-Fusion:   989 MW  | Net: 300 MW | Q_eng: 4.3
-Recirculating fraction: 23.4%
-Scientific Q (P_fus/P_driver): 19.8
+Native (300 MWe):
+  LCOE: 103.8 $/MWh | Overnight: 6959 $/kW
+  Fusion: 1100 MW | Net: 300 MW | Q_eng: 3.0
+  Recirculating fraction: 33.3%
+
+Scaled to 1000 MWe:
+  LCOE: 77.9 $/MWh | Overnight: 5615 $/kW
 
 Code     Account                              M$
 ------------------------------------------------
 CAS10    Preconstruction                    36.0
-CAS21    Buildings                         327.4
-CAS22    Reactor Plant Equipment           756.9
-CAS23    Turbine Plant                      77.4
-CAS24    Electrical Plant                   33.0
-CAS25    Miscellaneous                      20.1
-CAS26    Heat Rejection                     13.4
+CAS21    Buildings                         391.2
+CAS22    Reactor Plant Equipment           676.2
+CAS23    Turbine Plant                      88.9
+CAS24    Electrical Plant                   37.9
+CAS25    Miscellaneous                      23.1
+CAS26    Heat Rejection                     43.9
 CAS27    Special Materials                   4.5
 CAS28    Digital Twin                        5.0
-CAS29    Contingency                       123.8
-CAS30    Indirect Costs                    226.9
+CAS29    Contingency                       127.1
+CAS30    Indirect Costs                    233.0
 CAS40    Owner's Costs                      21.4
-CAS50    Supplementary                     123.8
-CAS60    IDC                               265.7
-CAS70    O&M (annualized)                   49.0
+CAS50    Supplementary                     127.2
+CAS60    IDC                               272.6
+CAS70    O&M (annualized)                   49.5
 CAS80    Fuel (annualized)                   0.5
-CAS90    Financial                         164.0
+CAS90    Financial                         168.2
 ------------------------------------------------
-         Total Capital                    2035.2
+         Total Capital                    2087.8
 
 CAS22 Reactor Plant Equipment detail:
 --------------------------------------------------------
-  C220101 First Wall / Liquid Metal Wall       44.0 M$
-  C220102 Shield                               30.9 M$
+  C220101 First Wall / Liquid Metal Wall       47.8 M$
+  C220102 Shield                               33.6 M$
   C220103 Coils (Cu guide field only)          10.0 M$
   C220104 Compression Driver [UNCERTAIN]      180.0 M$
-  C220105 Primary Structure                     3.0 M$
-  C220106 Vacuum System                        11.3 M$
-  C220107 Aux Power Supplies                   41.5 M$
-  C220110 Remote Handling                      93.9 M$
-  C220111 Installation                        170.9 M$
-  C220200 Coolant / LM Heat Exchange           71.5 M$
-  C220300 Aux Cooling + Cryo                    1.2 M$
-  C220400 Rad Waste                             2.2 M$
+  C220105 Primary Structure                     3.2 M$
+  C220106 Vacuum System                        12.2 M$
+  C220107 Aux Power Supplies                   59.5 M$
+  C220110 Remote Handling                      50.3 M$
+  C220111 Installation                        102.0 M$
+  C220200 Coolant / LM Heat Exchange           73.2 M$
+  C220300 Aux Cooling + Cryo                    1.4 M$
+  C220400 Rad Waste                             2.5 M$
   C220500 Fuel Handling (DT)                   51.7 M$
   C220600 Other Equipment                       4.4 M$
-  C220700 I&C                                  40.5 M$
+  C220700 I&C                                  44.3 M$
 
-          CAS22 Total                         756.9 M$
+          CAS22 Total                         676.2 M$
 
 Overridden: C220103, C220104, C220108
 
@@ -57,7 +59,7 @@ Key Assumptions:
   Net electric output:           300 MWe (stated commercial target)
   Availability (capacity factor): 80%  [UNCERTAIN: mech. system]
   Thermal efficiency (Rankine):   35%   [UNCERTAIN: 33–40% range]
-  Avg driver power (p_driver):    50 MW [UNCERTAIN: no design-point data]
+  Engineering gain (q_eng):       3.0   [UNCERTAIN: recirc. power unknown]
   Compression driver capital:     $180M [UNCERTAIN: no analogous system]
   HTS coils / cryoplant:          None  [high confidence — no magnets in design]
   Target factory:                 None  [high confidence — LM reforms each pulse]
@@ -69,9 +71,8 @@ Modeling notes:
   - BLOCKING unknowns: Q, eta_th, recirculating power fraction.
     All three must be resolved before a reliable LCOE can be derived.
     This model is a scenario anchor, not a prediction.
-  - Rep rate (1 Hz target) is embedded in availability and p_driver
-    rather than as a direct parameter. Halving rep rate → halving
-    annual energy → doubling LCOE from identical capital.
+  - Rep rate (1 Hz target) enters via q_eng and availability, not as
+    a direct parameter. At 0.5 Hz with identical capital, LCOE doubles.
   - C220104 ($180M compression driver) is the dominant unknown.
     Range: $50M (optimistic analogue) to $500M+ (novel engineering).
   - Liquid metal composition (Li vs PbLi) not finalized; affects
@@ -84,26 +85,48 @@ Sensitivity (elasticity = %LCOE / %param)
 ------------------------------------------------
 
 Engineering levers:
-  availability                 -0.9439
-  construction_time_yr         +0.2667
-  plasma_t                     +0.0710
-  eta_pin                      -0.0547
-  p_driver                     +0.0547
-  blanket_t                    +0.0521
-  eta_th                       -0.0464
-  fuel_recovery                -0.0128
-  f_sub                        +0.0103
-  p_trit                       +0.0088
-  ht_shield_t                  +0.0075
-  vessel_t                     +0.0055
-  p_house                      +0.0035
-  p_pump                       +0.0026
-  structure_t                  +0.0025
-  mn                           -0.0011
-  burn_fraction                -0.0007
-  p_coils                      +0.0004
-  eta_p                        -0.0000
+  availability                 -0.9786
+  q_eng                        -0.5012
+  construction_time_yr         +0.2715
+  eta_th                       -0.1664
+  eta_pin                      +0.1497
+  plasma_t                     +0.0979
+  blanket_t                    +0.0718
+  mn                           -0.0570
+  f_rep                        -0.0324
+  f_sub                        -0.0207
+  p_trit                       -0.0153
+  ht_shield_t                  +0.0103
+  vessel_t                     +0.0076
+  p_house                      -0.0061
+  p_pump                       -0.0048
+  structure_t                  +0.0034
+  p_coils                      -0.0008
+  eta_p                        +0.0000
+  dd_f_T                       +0.0000
+  dd_f_He3                     +0.0000
+  dhe3_dd_frac                 +0.0000
+  dhe3_f_T                     +0.0000
+  f_rad                        +0.0000
+  eta_dec                      +0.0000
 
 Financial:
-  interest_rate                +0.6544
-  inflation_rate               +0.0586
+  interest_rate                +0.6601
+  inflation_rate               +0.0745
+
+Costing constants (top 15):
+  om_cost_dt                           +0.1679
+  driver_mag_target_per_mw             +0.1553
+  indirect_fraction                    +0.1067
+  contingency_rate_foak                +0.0923
+  target_factory_base                  +0.0759
+  blanket_unit_cost_dt                 +0.0490
+  installation_frac                    +0.0487
+  c_cap_allin_per_joule                +0.0324
+  remote_handling_dt_base              +0.0274
+  fuel_handling_dt_base                +0.0246
+  core_lifetime_dt                     -0.0194
+  electric_per_mw                      +0.0185
+  shield_unit_cost                     +0.0183
+  fuel_recovery                        -0.0181
+  decom_provision_dt                   +0.0150

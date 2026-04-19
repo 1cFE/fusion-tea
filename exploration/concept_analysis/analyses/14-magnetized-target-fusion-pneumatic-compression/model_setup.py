@@ -10,20 +10,23 @@ Modeling approach:
        system maintenance schedule completely unknown
     2. eta_th (thermal efficiency) — steam Rankine at unknown liquid metal
        exit temperature; range 33–40%
-    3. p_driver (average piston + plasma injector power) — proxy for
-       recirculating power; no experimental basis at commercial scale
+    3. q_eng (engineering gain = P_et / P_recirc) — proxy for recirculating
+       power fraction; no experimental basis at commercial scale
 
 Concept choice rationale:
   ConfinementConcept.MAG_TARGET / Fuel.DT matches the General Fusion MTF-
   pneumatic architecture: pulsed magnetized target compressed by a liquid
   metal driver, D-T fuel cycle with tritium bred in the liquid metal wall.
 
-Key deviations from MAG_TARGET defaults (mif_mag_target.yaml):
+Key deviations from MAG_TARGET defaults (pulsed_mag_target.yaml):
   Power balance:
-    - eta_th = 0.35 (vs 0.40 default) — conservative Rankine steam; liquid
-      metal outlet temperature not published; 33–40% range per analogues
-    - eta_pin = 0.80 (vs 0.30) — steam-driven reciprocating pistons are
-      mechanical (~70–85% efficient), not electrical pulsed power
+    - eta_th = 0.35 (vs RANKINE preset 0.40) — conservative Rankine steam;
+      liquid metal outlet temperature not published; 33–40% range per
+      analogues (analysis.md §Section 5 thermal efficiency row)
+    - eta_pin = 0.80 (vs 0.30 default) — steam-driven reciprocating pistons
+      are mechanical (~70–85% efficient), not electrical pulsed power
+    - q_eng = 3.0 (YAML default; kept explicit) — UNCERTAIN: recirculating
+      power fraction entirely unknown; piston recharge + injector + pumping
     - p_cryo = 0.0 — no superconducting coils in commercial design; liquid
       metal pressure provides confinement; CT injector uses Cu coils
     - p_target = 0.0 — no consumable targets; liquid metal liner is self-
@@ -90,10 +93,7 @@ CONSTRUCTION_TIME_YR = 5.0
 # but novel pneumatic compression system and liquid metal plumbing add time.
 # DEFAULT: intermediate between 4 yr (no-magnet modular) and 6 yr (tokamak).
 
-# ── Model forward pass ──────────────────────────────────────────────────────
-result = model.forward(
-    net_electric_mw=NET_ELECTRIC_MW,
-    # Source: general-fusion-lm26-milestones-2025.md §Commercial Target
+_SHARED_KWARGS = dict(
     availability=AVAILABILITY,
     # Source: analysis.md §Section 5 (capacity factor row); UNCERTAIN — see above
     lifetime_yr=LIFETIME_YR,
@@ -135,15 +135,14 @@ result = model.forward(
     # liquid metal fills cavity between shots). DEFAULT adjusted.
 
     # ── Power balance ──────────────────────────────────────────────────────
-    p_driver=50.0,
-    # UNCERTAIN: time-averaged piston recharge + plasma injector power [MW].
-    # LM26 (surrogate, EM theta-pinch, 50% plasma scale) uses 18 MJ/shot.
-    # Commercial: 2× plasma scale → ~8× volume → driver energy scales roughly
-    # as cavity volume compressed. Very rough upper-bound estimate ~50 MW avg.
-    # No published design-point driver energy for commercial pneumatic system.
-    # Source: general-fusion-technical-details.md §Compression System (LM26
-    #         energy reference only; commercial system not analogous).
-    # Confidence: very low — order-of-magnitude placeholder only.
+    q_eng=3.0,
+    # UNCERTAIN: engineering gain = P_et / P_recirc.
+    # Recirculating power fraction entirely unknown; piston recharge, plasma
+    # injector, liquid metal pumping, tritium processing all contribute.
+    # q_eng=3.0 implies P_recirc ≈ 33% of gross electric — a conservative
+    # assumption given the novel mechanical system and absence of HTS coils.
+    # Framework default (pulsed_mag_target.yaml); retained explicitly here.
+    # Source: analysis.md §Section 5 (recirculating power row — "truly-unknown").
     mn=1.1,
     # Neutron energy multiplier for Li or PbLi liquid metal wall.
     # Li blanket: negligible multiplication. PbLi: Pb provides ~10% boost.
@@ -183,7 +182,7 @@ result = model.forward(
     # required for heat extraction at 1 Hz rep rate.
     # UNCERTAIN: flow rate and pump head not disclosed.
     # Source: analysis.md §Section 2 Challenge #6 (liquid metal thermal circuit).
-    # DEFAULT adjusted upward from mif_mag_target.yaml (p_pump=1.0).
+    # DEFAULT adjusted upward from pulsed_mag_target.yaml (p_pump=1.0).
     p_trit=10.0,
     # D-T tritium processing system power; standard for D-T fusion plants.
     # DEFAULT: framework DT standard.
@@ -199,7 +198,7 @@ result = model.forward(
     # No manufactured target consumption: liquid metal liner is self-renewing
     # (reforms each pulse). Eliminates MagLIF-style target factory OPEX.
     # Source: analysis.md §Section 5 Table (consumable cost row);
-    #         §Section 7 (no per-shot consumables row).
+    #         §Section 7 TEA Implications (no per-shot consumables row).
     # Confidence: high.
 
     # ── Cost overrides ─────────────────────────────────────────────────────
@@ -243,16 +242,20 @@ result = model.forward(
     },
 )
 
-# ── Post-hoc scaling to 1000 MWe (cross-concept comparison) ─────────────────
-_ALPHA = 0.6  # economy-of-scale exponent
-_p_native = float(result.power_table.p_net)
-_factor = (_p_native / 1000.0) ** (1.0 - _ALPHA)
+# ── Forward pass at native design point (300 MWe) ───────────────────────────
+# Source: general-fusion-lm26-milestones-2025.md §Commercial Target
+result = model.forward(net_electric_mw=NET_ELECTRIC_MW, **_SHARED_KWARGS)
 
-scaled_headline = {
-    "p_net_mw": 1000.0,
-    "lcoe_per_mwh": float(result.costs.lcoe) * _factor,
-    "overnight_per_kw": float(result.costs.overnight_cost) * _factor,
-}
+# ── Forward pass at 1000 MWe (cross-concept comparison) ─────────────────────
+# override_reference_mw=300.0 tells the framework that cost_overrides were
+# calibrated at 300 MWe and should be scaled to 1000 MWe using per-account
+# scaling laws. Physics parameters (q_eng, eta_th, etc.) are re-evaluated
+# self-consistently at the new power level.
+result_1gw = model.forward(
+    net_electric_mw=1000.0,
+    override_reference_mw=NET_ELECTRIC_MW,
+    **_SHARED_KWARGS,
+)
 
 # ── Cost Results by CAS ──────────────────────────────────────────────────────
 c = result.costs
@@ -260,13 +263,16 @@ pt = result.power_table
 
 print("MTF Pneumatic Compression (D-T) — General Fusion concept")
 print(f"  {NET_ELECTRIC_MW:.0f} MWe net, {AVAILABILITY:.0%} availability, {LIFETIME_YR} yr lifetime")
-print(f"  FOAK | eta_th={0.35:.0%} | availability={AVAILABILITY:.0%}")
+print(f"  FOAK | eta_th=35% | q_eng=3.0 (UNCERTAIN)")
 print()
-print(f"LCOE:     {c.lcoe:.1f} $/MWh | Overnight: {c.overnight_cost:.0f} $/kW")
-print(f"  Scaled to 1000 MWe: LCOE {scaled_headline['lcoe_per_mwh']:.1f} $/MWh | Overnight {scaled_headline['overnight_per_kw']:.0f} $/kW")
-print(f"Fusion:   {pt.p_fus:.0f} MW  | Net: {pt.p_net:.0f} MW | Q_eng: {pt.q_eng:.1f}")
-print(f"Recirculating fraction: {pt.rec_frac:.1%}")
-print(f"Scientific Q (P_fus/P_driver): {pt.q_sci:.1f}")
+print(f"Native ({NET_ELECTRIC_MW:.0f} MWe):")
+print(f"  LCOE: {c.lcoe:.1f} $/MWh | Overnight: {c.overnight_cost:.0f} $/kW")
+print(f"  Fusion: {pt.p_fus:.0f} MW | Net: {pt.p_net:.0f} MW | Q_eng: {pt.q_eng:.1f}")
+print(f"  Recirculating fraction: {pt.rec_frac:.1%}")
+print()
+c1 = result_1gw.costs
+print(f"Scaled to 1000 MWe:")
+print(f"  LCOE: {c1.lcoe:.1f} $/MWh | Overnight: {c1.overnight_cost:.0f} $/kW")
 print()
 
 cas = [
@@ -334,7 +340,7 @@ print("-" * 56)
 print(f"  Net electric output:           {NET_ELECTRIC_MW:.0f} MWe (stated commercial target)")
 print(f"  Availability (capacity factor): {AVAILABILITY:.0%}  [UNCERTAIN: mech. system]")
 print(f"  Thermal efficiency (Rankine):   35%   [UNCERTAIN: 33–40% range]")
-print(f"  Avg driver power (p_driver):    50 MW [UNCERTAIN: no design-point data]")
+print(f"  Engineering gain (q_eng):       3.0   [UNCERTAIN: recirc. power unknown]")
 print(f"  Compression driver capital:     $180M [UNCERTAIN: no analogous system]")
 print(f"  HTS coils / cryoplant:          None  [high confidence — no magnets in design]")
 print(f"  Target factory:                 None  [high confidence — LM reforms each pulse]")
@@ -346,9 +352,8 @@ print("Modeling notes:")
 print("  - BLOCKING unknowns: Q, eta_th, recirculating power fraction.")
 print("    All three must be resolved before a reliable LCOE can be derived.")
 print("    This model is a scenario anchor, not a prediction.")
-print("  - Rep rate (1 Hz target) is embedded in availability and p_driver")
-print("    rather than as a direct parameter. Halving rep rate → halving")
-print("    annual energy → doubling LCOE from identical capital.")
+print("  - Rep rate (1 Hz target) enters via q_eng and availability, not as")
+print("    a direct parameter. At 0.5 Hz with identical capital, LCOE doubles.")
 print("  - C220104 ($180M compression driver) is the dominant unknown.")
 print("    Range: $50M (optimistic analogue) to $500M+ (novel engineering).")
 print("  - Liquid metal composition (Li vs PbLi) not finalized; affects")
@@ -370,3 +375,8 @@ for k, v in sorted(sens["engineering"].items(), key=lambda x: abs(x[1]), reverse
 print("\nFinancial:")
 for k, v in sorted(sens["financial"].items(), key=lambda x: abs(x[1]), reverse=True):
     print(f"  {k:<28} {v:+.4f}")
+
+print("\nCosting constants (top 15):")
+costing = sorted(sens["costing"].items(), key=lambda x: abs(x[1]), reverse=True)
+for k, v in costing[:15]:
+    print(f"  {k:<36} {v:+.4f}")

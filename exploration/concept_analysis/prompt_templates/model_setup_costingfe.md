@@ -44,28 +44,49 @@ text that should also appear in a sensitivity sweep).
 - **Fuel:** `{{costingfe_fuel}}`
 {{#if mapping_notes}}- **Notes:** {{mapping_notes}}{{/if}}
 
-## Power Standardization (CRITICAL)
+## Power Standardization: Dual-Result Pattern
 
-All concept models MUST include a `scaled_headline` dict at module level for
-cross-concept LCOE comparison at a normalized 1000 MWe reference.
+The primary `result = model.forward(...)` stays at the concept's **native** power
+level. This preserves physics consistency (Q_eng, power balance, CAS breakdown).
 
-- The primary `result = model.forward(...)` stays at the concept's **native** power
-  level. Do NOT change `net_electric_mw` for standardization purposes.
-- After the `result` computation, add:
-  ```python
-  _ALPHA = 0.6  # economy-of-scale exponent
-  _p_native = float(result.power_table.p_net)
-  _factor = (_p_native / 1000.0) ** (1.0 - _ALPHA)
+**If the concept's native design point is NOT 1000 MWe**, add a second forward()
+call to produce a self-consistent 1 GW result using per-account cost scaling:
 
-  scaled_headline = {
-      "p_net_mw": 1000.0,
-      "lcoe_per_mwh": float(result.costs.lcoe) * _factor,
-      "overnight_per_kw": float(result.costs.overnight_cost) * _factor,
-  }
-  ```
-- If the concept's native design point IS 1000 MWe, `scaled_headline` may be
-  omitted (factor = 1.0, extractor falls through to native result).
-- Cost overrides stay at their published/derived values — no re-derivation needed.
+1. Factor all shared kwargs into a `_SHARED_KWARGS` dict (avoid duplicating
+   parameters between the two forward() calls):
+
+   ```python
+   _SHARED_KWARGS = dict(
+       availability=...,
+       lifetime_yr=...,
+       # ... all engineering params, cost_overrides, noak, etc.
+   )
+   ```
+
+2. Compute both results:
+
+   ```python
+   result = model.forward(net_electric_mw=<native_power>, **_SHARED_KWARGS)
+
+   result_1gw = model.forward(
+       net_electric_mw=1000.0,
+       override_reference_mw=<native_power>,
+       **_SHARED_KWARGS,
+   )
+   ```
+
+   `override_reference_mw` tells the framework that `cost_overrides` values are
+   valid at `<native_power>` MWe, and it should scale them to 1000 MWe using
+   per-account scaling laws.
+
+3. Both `result` and `result_1gw` MUST be module-level variables (not inside a
+   function or if-block).
+
+4. Do NOT add `scaled_headline`. Do NOT compute sensitivities for `result_1gw`
+   — the extraction pipeline handles that.
+
+**If the concept's native design point IS 1000 MWe**, do NOT add `result_1gw`.
+A single `result` at 1000 MWe is sufficient.
 
 ## Script Requirements
 
