@@ -52,7 +52,7 @@ from lib.concepts import (
     resolve_one,
 )
 from lib.iteration import read_loop_state
-from lib.state import get_concept_state, get_extraction_state, get_iteration_summary, propagate_staleness
+from lib.state import clear_staleness, get_concept_state, get_extraction_state, get_iteration_summary, propagate_staleness
 from lib.sources import (
     check_duplicate_source,
     find_latest_sources_dir,
@@ -453,7 +453,10 @@ def _apply_external_feedback(
 
         print(f" done ({elapsed:.0f}s)")
 
-        stale = propagate_staleness(cid, "feedback-applied-from-change-requests")
+        stale = propagate_staleness(
+            cid, "feedback-applied-from-change-requests",
+            regenerated={"analysis.md"},
+        )
         if stale:
             print(f"    stale: {', '.join(stale)}")
 
@@ -526,6 +529,10 @@ def cmd_model_setup(concepts: list[dict], args: argparse.Namespace) -> None:
         if not result.validation_passed:
             print(f" FAILED ({elapsed:.0f}s) — model_setup.py validation exhausted")
             continue
+
+        # Producer-clears-on-write contract: a fresh model_setup.py is
+        # by definition not stale relative to the current analysis.md.
+        clear_staleness(cid, "model_setup.py")
 
         size = model_path.stat().st_size
         print(f" done ({elapsed:.0f}s, {size} bytes)")
@@ -625,6 +632,9 @@ def cmd_review(concepts: list[dict], args: argparse.Namespace) -> None:
         if not result.validation_passed:
             print(f" FAILED ({elapsed:.0f}s) — review validation exhausted")
             continue
+
+        # Producer-clears-on-write contract.
+        clear_staleness(cid, "review.md")
 
         # Detect verdict from the validated review file (not stdout). The
         # validator already guaranteed a VERDICT line is present.
@@ -931,6 +941,8 @@ def cmd_synthesize(concepts: list[dict], args: argparse.Namespace) -> None:
                 body = body[fm_end + 3:].lstrip("\n")
         synthesis_path.write_text(fm_raw + "\n" + body, encoding="utf-8")
         body_path.unlink()
+        # Producer-clears-on-write contract.
+        clear_staleness(cid, "synthesis.md")
         size = len(synthesis_path.read_text(encoding="utf-8"))
         print(f" done ({elapsed:.0f}s, {size} chars)")
 

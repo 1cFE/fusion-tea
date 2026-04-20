@@ -2,8 +2,13 @@
 
 import re
 from pathlib import Path
+from typing import Iterable
 
-from lib.frontmatter import parse_frontmatter, update_frontmatter_field
+from lib.frontmatter import (
+    parse_frontmatter,
+    remove_frontmatter_field,
+    update_frontmatter_field,
+)
 from lib.iteration import read_loop_state
 from lib.paths import ANALYSES_DIR
 
@@ -56,12 +61,25 @@ def get_concept_state(concept_id: str, analyses_dir: Path = ANALYSES_DIR) -> str
     return "not-started"
 
 
-def propagate_staleness(concept_id: str, reason: str,
-                         analyses_dir: Path = ANALYSES_DIR) -> list[str]:
+def propagate_staleness(
+    concept_id: str,
+    reason: str,
+    regenerated: Iterable[str],
+    analyses_dir: Path | None = None,
+) -> list[str]:
     """Mark downstream artifacts as stale when analysis.md changes.
+
+    ``regenerated`` is the set of bare canonical filenames the caller just
+    (re)wrote in this step. Members are exempt from stamping — that is what
+    prevents a fresh PASS iteration from re-stamping the just-promoted
+    ``model_setup.py``. Explorer JSON is never exempted here; the explorer
+    extractor owns its own sidecar lifecycle.
 
     Returns list of files marked stale.
     """
+    if analyses_dir is None:
+        analyses_dir = ANALYSES_DIR
+    regenerated_set = set(regenerated)
     out_dir = analyses_dir / concept_id
     stale_files = []
 
@@ -73,6 +91,8 @@ def propagate_staleness(concept_id: str, reason: str,
 
     for path in downstream:
         if not path.exists():
+            continue
+        if path.name in regenerated_set:
             continue
 
         if path.suffix == ".py":
@@ -160,3 +180,74 @@ def get_extraction_state(
     if stale_path.exists():
         return "stale"
     return "extracted"
+
+
+# ---------------------------------------------------------------------------
+# Staleness marker stripping — the inverse of propagate_staleness, called by
+# producers after a successful write. See
+# .project/active/staleness-propagation-fix/design.md for the contract.
+# ---------------------------------------------------------------------------
+
+
+def _strip_py_stale_marker(path: Path) -> bool:
+    """Remove a leading ``# STALE:`` line from a .py file if present.
+
+    Only the first line is inspected. Content after the marker line is
+    preserved byte-for-byte (including trailing-newline status).
+    Returns True if a marker was removed, False otherwise.
+    """
+    if not path.exists():
+        return False
+    text = path.read_text(encoding="utf-8")
+    if not text.startswith("# STALE:"):
+        return False
+    # Split off the first line including its newline terminator (if any).
+    newline_idx = text.find("\n")
+    if newline_idx == -1:
+        remainder = ""
+    else:
+        remainder = text[newline_idx + 1:]
+    path.write_text(remainder, encoding="utf-8")
+    return True
+
+
+def _strip_md_stale_marker(path: Path) -> bool:
+    """Remove ``Stale`` and ``Stale-Reason`` frontmatter fields if present.
+
+    Returns True if either field was removed, False otherwise.
+    """
+    if not path.exists():
+        return False
+    text = path.read_text(encoding="utf-8")
+    new_text = remove_frontmatter_field(text, "Stale")
+    new_text = remove_frontmatter_field(new_text, "Stale-Reason")
+    if new_text == text:
+        return False
+    path.write_text(new_text, encoding="utf-8")
+    return True
+
+
+def clear_staleness(
+    concept_id: str,
+    artifact: str,
+    analyses_dir: Path | None = None,
+) -> bool:
+    """Dispatch to the format-specific strip helper for a tracked artifact.
+
+    ``artifact`` is a bare filename (e.g., ``"model_setup.py"`` or
+    ``"review.md"``) inside the concept's canonical directory. Raises
+    ``ValueError`` for unsupported suffixes — the contract intentionally
+    covers only ``.py`` and ``.md`` artifacts. Explorer JSON sidecars are
+    handled by the extractor itself.
+    """
+    if analyses_dir is None:
+        analyses_dir = ANALYSES_DIR
+    path = analyses_dir / concept_id / artifact
+    if path.suffix == ".py":
+        return _strip_py_stale_marker(path)
+    if path.suffix == ".md":
+        return _strip_md_stale_marker(path)
+    raise ValueError(
+        f"clear_staleness: unsupported artifact suffix for {artifact!r} "
+        f"(only .py and .md are supported)"
+    )
