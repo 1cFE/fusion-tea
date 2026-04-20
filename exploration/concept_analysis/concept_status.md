@@ -1,6 +1,6 @@
 # Concept Analysis Status
 
-Snapshot: 2026-04-19 (refreshed). 38 concepts from `exploration/concept_explorer/data/concept_registry.json`.
+Snapshot: 2026-04-20. 38 concepts from `exploration/concept_explorer/data/concept_registry.json`.
 
 **Columns:**
 - **Iter** — number of `iter-N/` directories under `exploration/concept_analysis/analyses/{id}-*/` that contain `analysis_output.md` or `verdict.json` (empty-shell dirs from aborted gap-check runs are excluded)
@@ -29,14 +29,14 @@ Snapshot: 2026-04-19 (refreshed). 38 concepts from `exploration/concept_explorer
 | 16  | Muon-Catalyzed Fusion (D-T) | Acceleron Fusion | 3 | yes | no | yes | no |
 | 17a | Laser ICF - Hybrid Direct Drive (D-T) | Xcimer Energy | 6 | yes | yes | yes | no |
 | 17b | Laser ICF - Fast Ignition (D-T) | Focused Energy | 3 | yes | yes | yes | no |
-| 18  | p-B11 FRC | TAE Technologies | 0 | no | - | no | no |
+| 18  | p-B11 FRC | TAE Technologies | 3 | yes | yes | yes | no |
 | 19  | Orbital Levitated Dipole (D-He3) | Zephyr Fusion | 0 | no | - | no | no |
-| 20a | QI Modular HTS Stellarator - Infinity Two | Type One Energy | 3 | yes | yes | no | no |
-| 20b | Compact Liquid-Wall HTS Stellarator | Renaissance Fusion | 3 | yes | yes | no | no |
+| 20a | QI Modular HTS Stellarator - Infinity Two | Type One Energy | 3 | yes | yes | yes | no |
+| 20b | Compact Liquid-Wall HTS Stellarator | Renaissance Fusion | 3 | yes | yes | yes | no |
 | 21  | Spherical Tokamak - HTS | Tokamak Energy | 1 | yes | yes | yes | yes |
 | 22  | Projectile ICF (D-T) | First Light Fusion, NearStar Fusion | 5 | yes | no | yes | no |
 | 23  | Laser ICF - Nanostructured Target (p-B11) | Marvel Fusion | 0 | no | - | no | no |
-| 24  | Dense Plasma Focus (p-B11) | LPPFusion | 0 | no | - | no | no |
+| 24  | Dense Plasma Focus (p-B11) | LPPFusion | 3 | yes | yes | yes | no |
 | 25  | Heavy Ion Beam ICF (D-T) | Intensity Energy | 0 | no | - | no | no |
 | 26  | Laser ICF - Indirect Drive (D-T) | Inertia Enterprises | 0 | no | - | no | no |
 | 27  | Polywell (D-T) | EMC2 | 0 | no | - | no | no |
@@ -45,30 +45,39 @@ Snapshot: 2026-04-19 (refreshed). 38 concepts from `exploration/concept_explorer
 | 30  | Laser ICF - NIF Commercialization (D-T) | Inertia Enterprises | 3 | yes | yes | no | no |
 | 31  | Laser ICF - OEC Architecture (D-T) | Blue Laser Fusion (BLF) | 0 | no | - | no | no |
 | 32  | Laser ICF - French National Direct Drive (D-T) | GenF Systems | 0 | no | - | no | no |
-| 33  | State-Backed Tokamak - BEST | Neo Fusion | 3 | yes | yes | no | no |
-| 34  | Compact Spherical Tokamak - India | Pranos Fusion | 3 | yes | yes | no | no |
-| 35  | PoloMac Magnetic Confinement | Deutelio | 2 | stale | no | yes | no |
+| 33  | State-Backed Tokamak - BEST | Neo Fusion | 3 | yes | yes | yes | no |
+| 34  | Compact Spherical Tokamak - India | Pranos Fusion | 3 | yes | yes | yes | no |
+| 35  | PoloMac Magnetic Confinement | Deutelio | 4 | yes | yes | yes | no |
 | 36  | Helical Coil Stellarator | Helical Fusion | 0 | no | - | no | no |
 
 ## Summary
 
 - Total concepts: **38**
-- Analysis started (`iter-N/` with content): **28**
-- `model_setup.py` present: **28** (27 fresh, 1 stale — `35`)
-- Using `1costingfe` framework: **21** (of 28); the other 7 use hand-built models
-- Extracted to explorer data: **22** (0 stale)
+- Analysis started (`iter-N/` with content): **30**
+- `model_setup.py` present: **30** (all fresh)
+- Using `1costingfe` framework: **24** (of 30); the other 6 use hand-built models
+- Extracted to explorer data: **28** (0 stale)
 - Approved: **1**
 
-## Changes Since Last Snapshot (2026-04-19 post-staleness-fix)
+## Changes Since Last Snapshot (2026-04-19)
 
-- **model_setup.py refreshed** (stale → yes): 02, 08 — only 35 remains stale
+- **New analyses started** (gap-checked → I3): 18 (p-B11 FRC), 24 (Dense Plasma Focus) — both now have model_setup (costingfe) and extraction
+- **Newly extracted**: 18, 20a, 20b, 24, 33, 34 (6 new → total 28)
+- **35 progressed** (I2 → I4): model_setup refreshed (stale → yes, now costingfe); extraction refreshed
+- **No stale model_setup remains** — 35 was the last holdout, now fresh
+- **Stale synthesis.md** still on 02, 08, 12 (unchanged)
+- **Pipeline state summary**: 1 approved, 8 synthesized (3 stale), 6 reviewed, 15 iterating, 8 gap-checked
+
+## Historical Changes
+
+### 2026-04-19 (refreshed)
+
+- **model_setup.py refreshed** (stale → yes): 02, 08 — only 35 remained stale
 - **02 extraction no longer stale** — `.stale` marker cleared
 - **Iteration progress**: 02 (5→6), 08 (3→4), 12 (3→4), 13 (3→5), 33 (1→3), 34 (0→3)
 - **34 new artifacts**: model_setup.py (costingfe) added; analysis progressed from 0 to 3 iterations
 - **Stale synthesis.md** on 02, 08, 12 (downstream of refreshed model_setup/analysis updates)
-- **Pipeline state summary** (from `run_analysis.py status`): 1 approved, 8 synthesized (3 with stale synthesis), 6 reviewed, 13 iterating, 10 gap-checked
-
-## Historical Changes
+- **Pipeline state summary**: 1 approved, 8 synthesized (3 stale), 6 reviewed, 13 iterating, 10 gap-checked
 
 ### 2026-04-19 (post-staleness-fix)
 

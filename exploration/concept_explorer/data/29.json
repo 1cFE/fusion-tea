@@ -1,0 +1,644 @@
+{
+  "concept_id": "29",
+  "name": "Negative Triangularity Tokamak",
+  "confinement_family": "MFE",
+  "company": "Firefly Fusion",
+  "status": "in_progress",
+  "illustration": null,
+  "has_cost_model": true,
+  "has_sensitivities": true,
+  "cost_model": {
+    "cas10": {
+      "name": "Preconstruction",
+      "cost_m_usd": 18.5,
+      "overridden": false
+    },
+    "cas21": {
+      "name": "Buildings & Structures",
+      "cost_m_usd": 635.9098510742188,
+      "overridden": false
+    },
+    "cas22": {
+      "name": "Reactor Plant Equipment",
+      "cost_m_usd": 3052.3876953125,
+      "overridden": false
+    },
+    "cas23": {
+      "name": "Turbine Plant Equipment",
+      "cost_m_usd": 227.08226013183594,
+      "overridden": false
+    },
+    "cas24": {
+      "name": "Electrical Plant Equipment",
+      "cost_m_usd": 96.72021484375,
+      "overridden": false
+    },
+    "cas25": {
+      "name": "Miscellaneous Plant Equipment",
+      "cost_m_usd": 58.8731803894043,
+      "overridden": false
+    },
+    "cas26": {
+      "name": "Heat Rejection Systems",
+      "cost_m_usd": 103.2862777709961,
+      "overridden": false
+    },
+    "cas27": {
+      "name": "Special Materials",
+      "cost_m_usd": 15.000001907348633,
+      "overridden": false
+    },
+    "cas28": {
+      "name": "Digital Twin & Simulation",
+      "cost_m_usd": 5.0,
+      "overridden": false
+    },
+    "cas29": {
+      "name": "Contingency",
+      "cost_m_usd": 0.0,
+      "overridden": false
+    },
+    "cas30": {
+      "name": "Indirect Costs",
+      "cost_m_usd": 978.66064453125,
+      "overridden": false
+    },
+    "cas40": {
+      "name": "Owner's Costs",
+      "cost_m_usd": 39.0,
+      "overridden": false
+    },
+    "cas50": {
+      "name": "Supplementary Costs",
+      "cost_m_usd": 364.629150390625,
+      "overridden": false
+    },
+    "cas60": {
+      "name": "Interest During Construction",
+      "cost_m_usd": 1322.0472412109375,
+      "overridden": false
+    },
+    "cas70": {
+      "name": "O&M Costs (annualised)",
+      "cost_m_usd": 118.27816009521484,
+      "overridden": false
+    },
+    "cas80": {
+      "name": "Fuel Costs (annualised)",
+      "cost_m_usd": 1.2634083032608032,
+      "overridden": false
+    },
+    "cas90": {
+      "name": "Financial Costs",
+      "cost_m_usd": 557.4240112304688,
+      "overridden": false
+    },
+    "cas22_detail": {
+      "C220101": {
+        "name": "First Wall & Blanket",
+        "cost_m_usd": 254.63499450683594,
+        "overridden": false
+      },
+      "C220102": {
+        "name": "Radiation Shield",
+        "cost_m_usd": 166.96060180664062,
+        "overridden": false
+      },
+      "C220103": {
+        "name": "Magnets / Coils",
+        "cost_m_usd": 1500.0,
+        "overridden": true
+      },
+      "C220104": {
+        "name": "Heating & Driver Systems",
+        "cost_m_usd": 150.0,
+        "overridden": true
+      },
+      "C220105": {
+        "name": "Primary Structure & Support",
+        "cost_m_usd": 16.054203033447266,
+        "overridden": false
+      },
+      "C220106": {
+        "name": "Vacuum System",
+        "cost_m_usd": 86.1584243774414,
+        "overridden": false
+      },
+      "C220107": {
+        "name": "Power Conditioning & Energy Storage",
+        "cost_m_usd": 88.16695404052734,
+        "overridden": false
+      },
+      "C220108": {
+        "name": "Divertor / Target Factory",
+        "cost_m_usd": 56.02793884277344,
+        "overridden": true
+      },
+      "C220109": {
+        "name": "Direct Energy Converter",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220110": {
+        "name": "Remote Handling & Maintenance Equipment",
+        "cost_m_usd": 70.03492736816406,
+        "overridden": true
+      },
+      "C220111": {
+        "name": "Installation Labor",
+        "cost_m_usd": 218.2835235595703,
+        "overridden": false
+      },
+      "C220112": {
+        "name": "Isotope Separation Plant",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220200": {
+        "name": "Main & Secondary Coolant",
+        "cost_m_usd": 203.46083068847656,
+        "overridden": false
+      },
+      "C220300": {
+        "name": "Auxiliary Cooling & Cryoplant",
+        "cost_m_usd": 27.89052391052246,
+        "overridden": false
+      },
+      "C220400": {
+        "name": "Radioactive Waste Management",
+        "cost_m_usd": 5.926261901855469,
+        "overridden": false
+      },
+      "C220500": {
+        "name": "Fuel Handling & Storage",
+        "cost_m_usd": 120.00001525878906,
+        "overridden": false
+      },
+      "C220600": {
+        "name": "Other Reactor Plant Equipment",
+        "cost_m_usd": 11.500000953674316,
+        "overridden": false
+      },
+      "C220700": {
+        "name": "Instrumentation & Control",
+        "cost_m_usd": 77.28866577148438,
+        "overridden": false
+      }
+    },
+    "headline": {
+      "lcoe_per_mwh": 96.59895324707031,
+      "overnight_cost_per_kw": 6917.0966796875,
+      "p_net_mw": 1000.0000610351562,
+      "q_eng": 7.712803363800049,
+      "capacity_factor": 0.8
+    },
+    "sensitivities": {
+      "engineering": {
+        "availability": {
+          "elasticity": -0.9322753413065283,
+          "baseline": 0.8
+        },
+        "construction_time_yr": {
+          "elasticity": 0.3610658638030299,
+          "baseline": 7.0
+        },
+        "mn": {
+          "elasticity": -0.0598454150143453,
+          "baseline": 1.11
+        },
+        "eta_th": {
+          "elasticity": -0.24312200311684884,
+          "baseline": 0.38
+        },
+        "eta_p": {
+          "elasticity": -0.000012293120691592636,
+          "baseline": 0.5
+        },
+        "f_sub": {
+          "elasticity": 0.012523629611297297,
+          "baseline": 0.03
+        },
+        "p_pump": {
+          "elasticity": 0.00035103631453460717,
+          "baseline": 1.0
+        },
+        "p_trit": {
+          "elasticity": 0.003633294465266962,
+          "baseline": 10.0
+        },
+        "p_house": {
+          "elasticity": 0.001453317786106785,
+          "baseline": 4.0
+        },
+        "p_cryo": {
+          "elasticity": 0.00433226587651108,
+          "baseline": 1.5
+        },
+        "blanket_t": {
+          "elasticity": 0.1353557459537529,
+          "baseline": 0.8
+        },
+        "ht_shield_t": {
+          "elasticity": 0.02399193330306842,
+          "baseline": 0.2
+        },
+        "structure_t": {
+          "elasticity": 0.006884281306944967,
+          "baseline": 0.2
+        },
+        "vessel_t": {
+          "elasticity": 0.023601098849324254,
+          "baseline": 0.2
+        },
+        "plasma_t": {
+          "elasticity": 0.10615582208437836,
+          "baseline": 1.2
+        },
+        "dd_f_T": {
+          "elasticity": 0.0,
+          "baseline": 0.969
+        },
+        "dd_f_He3": {
+          "elasticity": 0.0,
+          "baseline": 0.689
+        },
+        "dhe3_dd_frac": {
+          "elasticity": 0.0,
+          "baseline": 0.07
+        },
+        "dhe3_f_T": {
+          "elasticity": 0.0,
+          "baseline": 0.97
+        },
+        "p_input": {
+          "elasticity": 0.02808291058700684,
+          "baseline": 40.0
+        },
+        "eta_pin": {
+          "elasticity": -0.029066357891831002,
+          "baseline": 0.5
+        },
+        "eta_de": {
+          "elasticity": 0.0,
+          "baseline": 0.85
+        },
+        "p_coils": {
+          "elasticity": 0.0010899883395800887,
+          "baseline": 3.0
+        },
+        "p_cool": {
+          "elasticity": 0.005449941697900443,
+          "baseline": 15.0
+        },
+        "R0": {
+          "elasticity": 0.18658727312893245,
+          "baseline": 4.55
+        },
+        "elon": {
+          "elasticity": 0.18658727166575267,
+          "baseline": 1.1
+        },
+        "q95": {
+          "elasticity": 0.0,
+          "baseline": 3.5
+        },
+        "f_GW": {
+          "elasticity": 0.0,
+          "baseline": 0.85
+        },
+        "B": {
+          "elasticity": 0.0,
+          "baseline": 5.0
+        },
+        "T_e": {
+          "elasticity": 0.0,
+          "baseline": 15.0
+        },
+        "n_e": {
+          "elasticity": 0.0,
+          "baseline": 1e20
+        },
+        "Z_eff": {
+          "elasticity": 0.0,
+          "baseline": 1.5
+        },
+        "plasma_volume": {
+          "elasticity": 0.0,
+          "baseline": 500.0
+        },
+        "R_w": {
+          "elasticity": 0.0,
+          "baseline": 0.6
+        },
+        "T_edge": {
+          "elasticity": 0.0,
+          "baseline": 0.05
+        },
+        "tau_ratio": {
+          "elasticity": 0.0,
+          "baseline": 3.0
+        },
+        "b_max": {
+          "elasticity": 0.129586215151569,
+          "baseline": 12.0
+        },
+        "r_coil": {
+          "elasticity": 0.25917242149292646,
+          "baseline": 1.85
+        },
+        "p_icrf": {
+          "elasticity": 0.04167441898799764,
+          "baseline": 40.0
+        },
+        "M_ion": {
+          "elasticity": 0.0,
+          "baseline": 2.5
+        },
+        "lambda_q": {
+          "elasticity": 0.0,
+          "baseline": 0.002
+        },
+        "disruption_rate_base": {
+          "elasticity": 0.0,
+          "baseline": 0.1
+        },
+        "disruption_steepness": {
+          "elasticity": 0.0,
+          "baseline": 15.0
+        },
+        "disruption_damage": {
+          "elasticity": 0.0,
+          "baseline": 0.02
+        },
+        "disruption_downtime": {
+          "elasticity": 0.0,
+          "baseline": 72.0
+        }
+      },
+      "financial": {
+        "interest_rate": {
+          "elasticity": 0.6944147818609143,
+          "baseline": 0.07
+        },
+        "inflation_rate": {
+          "elasticity": 0.061289553273278966,
+          "baseline": 0.0245
+        }
+      }
+    },
+    "params": {
+      "p_input": 40.0,
+      "p_nbi": 0.0,
+      "p_ecrh": 0.0,
+      "p_icrf": 40.0,
+      "p_lhcd": 0.0,
+      "mn": 1.11,
+      "eta_p": 0.5,
+      "eta_pin": 0.5,
+      "eta_de": 0.85,
+      "f_sub": 0.03,
+      "f_dec": 0.0,
+      "p_coils": 3.0,
+      "p_cool": 15.0,
+      "p_pump": 1.0,
+      "p_trit": 10.0,
+      "p_house": 4.0,
+      "p_cryo": 1.5,
+      "b_max": 12.0,
+      "r_coil": 1.85,
+      "R0": 4.55,
+      "plasma_t": 1.2,
+      "elon": 1.1,
+      "blanket_t": 0.8,
+      "ht_shield_t": 0.2,
+      "structure_t": 0.2,
+      "vessel_t": 0.2,
+      "construction_time_yr": 7.0,
+      "n_e": 1e20,
+      "T_e": 15.0,
+      "Z_eff": 1.5,
+      "plasma_volume": 500.0,
+      "B": 5.0,
+      "T_edge": 0.05,
+      "tau_ratio": 3.0,
+      "R_w": 0.6,
+      "disruption_rate_base": 0.1,
+      "disruption_steepness": 15.0,
+      "disruption_damage": 0.02,
+      "disruption_downtime": 72.0,
+      "use_0d_model": 0.0,
+      "q95": 3.5,
+      "f_GW": 0.85,
+      "M_ion": 2.5,
+      "lambda_q": 0.002,
+      "dd_f_T": 0.969,
+      "dd_f_He3": 0.689,
+      "dhe3_dd_frac": 0.07,
+      "dhe3_f_T": 0.97,
+      "pb11_f_alpha_n": 0.0,
+      "pb11_f_p_n": 0.0,
+      "site_permits": 3.0,
+      "plant_studies_foak": 20.0,
+      "plant_studies_noak": 4.0,
+      "plant_permits": 2.0,
+      "plant_reports": 1.0,
+      "other_precon": 1.0,
+      "land_intensity": 0.25,
+      "land_cost": 10000.0,
+      "licensing_cost_dt": 5.0,
+      "licensing_cost_dd": 3.0,
+      "licensing_cost_dhe3": 1.0,
+      "licensing_cost_pb11": 0.1,
+      "licensing_time_dt": 2.0,
+      "licensing_time_dd": 1.5,
+      "licensing_time_dhe3": 0.75,
+      "licensing_time_pb11": 0.0,
+      "blanket_unit_cost_dt": 0.6,
+      "blanket_unit_cost_dd": 0.3,
+      "blanket_unit_cost_dhe3": 0.08,
+      "blanket_unit_cost_pb11": 0.05,
+      "shield_unit_cost": 0.74,
+      "heating_nbi_per_mw": 7.0642,
+      "heating_icrf_per_mw": 4.1494,
+      "heating_ecrh_per_mw": 5.0,
+      "heating_lhcd_per_mw": 4.0,
+      "driver_laser_per_mw": 8.0,
+      "driver_heavy_ion_per_mw": 12.0,
+      "driver_mag_target_per_mw": 3.0,
+      "driver_plasma_jet_per_mw": 4.0,
+      "driver_maglif_per_mw": 6.0,
+      "structure_unit_cost": 0.15,
+      "vessel_unit_cost": 0.72,
+      "power_supplies_base": 80.0,
+      "divertor_base": 60.0,
+      "target_factory_base": 244.0,
+      "dec_base": 100.0,
+      "dec_grid_cost": 12.0,
+      "dec_grid_lifetime_dt": 2.0,
+      "dec_grid_lifetime_dd": 3.0,
+      "dec_grid_lifetime_dhe3": 4.0,
+      "dec_grid_lifetime_pb11": 3.0,
+      "c_cap_allin_per_joule": 0.5,
+      "markup_switch_bidir": 0.06,
+      "markup_controls": 0.04,
+      "c_inv_per_kw_net": 150.0,
+      "cap_shot_lifetime": 100000000.0,
+      "f_rad_dt": 0.1,
+      "f_rad_dd": 0.08,
+      "f_rad_dhe3": 0.05,
+      "f_rad_pb11": 0.15,
+      "f_rad_fus_pb11": 0.87,
+      "f_rad_fus_dhe3": 0.35,
+      "f_pdv": 0.8,
+      "remote_handling_dt_base": 150.0,
+      "remote_handling_dd_base": 100.0,
+      "remote_handling_dhe3_base": 30.0,
+      "remote_handling_pb11_base": 20.0,
+      "installation_frac": 0.14,
+      "core_lifetime_dt": 5.0,
+      "core_lifetime_dd": 10.0,
+      "core_lifetime_dhe3": 30.0,
+      "core_lifetime_pb11": 50.0,
+      "fuel_handling_dt_base": 120.0,
+      "fuel_handling_dd_base": 60.0,
+      "fuel_handling_dhe3_base": 40.0,
+      "fuel_handling_pb11_base": 15.0,
+      "special_materials_dt": 15.0,
+      "special_materials_dd": 2.0,
+      "special_materials_dhe3": 1.0,
+      "special_materials_pb11": 0.0,
+      "turbine_per_mw": 0.19764,
+      "electric_per_mw": 0.08418,
+      "misc_per_mw": 0.05124,
+      "heat_rej_per_mw": 0.03416,
+      "digital_twin": 5.0,
+      "contingency_rate_foak": 0.1,
+      "contingency_rate_noak": 0.0,
+      "indirect_fraction": 0.2,
+      "reference_construction_time": 6.0,
+      "owner_cost_dt": 39.0,
+      "owner_cost_dd": 31.0,
+      "owner_cost_dhe3": 23.0,
+      "owner_cost_pb11": 20.0,
+      "shipping_frac": 0.015,
+      "spare_parts_frac_dt": 0.03,
+      "spare_parts_frac_dd": 0.025,
+      "spare_parts_frac_dhe3": 0.015,
+      "spare_parts_frac_pb11": 0.01,
+      "tax_frac": 0.01,
+      "construction_insurance_frac": 0.015,
+      "startup_fuel_dt": 40.0,
+      "startup_fuel_dd": 0.1,
+      "startup_fuel_dhe3": 10.0,
+      "startup_fuel_pb11": 0.1,
+      "decom_provision_dt": 127.0,
+      "decom_provision_dd": 93.0,
+      "decom_provision_dhe3": 65.0,
+      "decom_provision_pb11": 53.0,
+      "om_cost_dt": 52.0,
+      "om_cost_dd": 39.0,
+      "om_cost_dhe3": 26.0,
+      "om_cost_pb11": 24.0,
+      "u_deuterium": 2175.0,
+      "u_li6": 1000.0,
+      "u_he3": 2000000.0,
+      "u_protium": 5.0,
+      "u_b11": 10000.0,
+      "u_b11_noak": 75.0,
+      "burn_fraction": 0.05,
+      "fuel_recovery": 0.95,
+      "eta_th": 0.38,
+      "net_electric_mw": 1000.0,
+      "availability": 0.8,
+      "lifetime_yr": 30.0,
+      "n_mod": 1.0,
+      "interest_rate": 0.07,
+      "inflation_rate": 0.0245,
+      "noak": 1.0
+    }
+  },
+  "parameter_metadata": {},
+  "narrative": {
+    "key_bets": [
+      "NT L-mode confinement enhancement observed on TCV/DIII-D scales favorably to burning-plasma reactor conditions (H_98 = 1.44 sustained)",
+      "NT geometry's low P_SOL (5.2% of fusion power) enables a conventional tungsten monoblock divertor to handle exhaust passively, eliminating advanced divertor engineering",
+      "Ohmic heating with NT confinement enhancement (H_NA ≥ 2) can achieve burning-plasma conditions without auxiliary heating, per Ball et al. 0D power balance",
+      "FLiBe liquid immersion blanket achieves TBR = 1.15 with self-healing molybdenum barrier and V-4Cr-4Ti vacuum vessel compatibility at operating temperature",
+      "REBCO HTS TF coils at 11 T with 40% critical-current margin survive cumulative 14 MeV neutron fluence of 3×10²² n/m² over commercial plant lifetime",
+      "NT-specific vertical instability can be controlled by passive stabilizer plates (inboard plates uniquely enabled by outboard X-point migration)",
+      "MANTA-class pilot economics ($3.4B overnight, $396/MWh) scale down to commercial ~$64/MWh via magnet lifetime extension, higher thermal efficiency, and ~1 GW fusion power"
+    ],
+    "eliminated_costs": [
+      "Advanced divertor engineering (Super-X, snowflake, liquid metal geometries and active impurity seeding systems) — replaced by conventional tungsten monoblock at 2.8 MW/m²",
+      "Auxiliary heating system capital (~$150M for 40 MW ICRF) — eliminated entirely in the ohmic-only scenario if H_NA ≥ 2 is validated",
+      "ELM mitigation and H-mode pedestal control infrastructure — NT operates ELM-free in L-mode regime",
+      "High-radiated-power-fraction plasma control systems (90–95% f_rad with impurity seeding) required for PT designs to reach comparable divertor heat flux",
+      "Tungsten divertor replacement overhead — lower erosion rates at 2.8 MW/m² potentially extend replacement intervals from ~5 years toward ~10 years"
+    ],
+    "novel_costs": [
+      "NT-specific passive vertical stabilizer plate infrastructure (~$15–60M, central $30M) — absent from MANTA cost accounting and from conventional PT cost analogues",
+      "NT-geometry-constrained demountable TF coil design with connection joints tailored to the NT plasma shape (18 TF coils in MANTA)",
+      "FLiBe-to-NaNO₃/KNO₃ molten-salt heat exchanger at fusion-plant scale (low-TRL component called out explicitly by MANTA §6.3)",
+      "Molten-salt thermal energy storage buffer sized for 15-minute pulse / 2-minute dwell quasi-steady operation",
+      "V-4Cr-4Ti vacuum vessel at multi-hundred-tonne scale — no industrial supply chain exists for nuclear-grade vanadium alloy"
+    ],
+    "risks": [
+      {
+        "description": "NT confinement scaling to burning-plasma conditions is unvalidated; all physics data comes from non-burning L-mode experiments (TCV/DIII-D) and the H_NA, H_98, H_89 factors 'represent the biggest uncertainty' per Ball et al.",
+        "severity": "high"
+      },
+      {
+        "description": "No commercial-scale NT plant cost study exists — MANTA's 90 MWe pilot at $396/MWh is ~6× away from the ARIES-ACT $64/MWh commercial benchmark with no credible published path to close the gap",
+        "severity": "high"
+      },
+      {
+        "description": "Ohmic-only hypothesis (Q ≈ 500) depends on H_NA = 2 from a preliminary TCV analysis and 0D power balance; if H_NA ≈ 1, a full 40+ MW auxiliary heating system (~$100–500M) is required",
+        "severity": "high"
+      },
+      {
+        "description": "TF coil cost dominates plant economics (~44% of MANTA's $3.4B) — NT-specific advantages address only secondary cost categories and cannot overcome the magnet cost floor",
+        "severity": "high"
+      },
+      {
+        "description": "Firefly Fusion has disclosed no proprietary plasma parameters, blanket design, tritium cycle, or power conversion approach; all company-specific analysis relies on MANTA as proxy",
+        "severity": "high"
+      },
+      {
+        "description": "FLiBe-to-molten-salt heat exchanger is explicitly flagged by MANTA as 'low technological readiness level' and has no commercial precedent at fusion-plant scale",
+        "severity": "medium"
+      },
+      {
+        "description": "NT equilibria are intrinsically less vertically stable than PT at high poloidal beta — reactor-scale passive stabilizer plate engineering validation remains open beyond Guizzo et al.'s demonstrator-scale result",
+        "severity": "medium"
+      },
+      {
+        "description": "V-4Cr-4Ti vacuum vessel has never been produced at the multi-hundred-tonne scale required; nuclear-grade supply chain is non-existent",
+        "severity": "medium"
+      },
+      {
+        "description": "REBCO tape global production (~thousands km/year) vs. 5,000+ km needed per plant creates a supply-chain volume constraint for fleet-scale deployment",
+        "severity": "medium"
+      },
+      {
+        "description": "Pilot-plant capacity factor of 37% is far below the 75–90% commercial target; 15-min pulsed operation requires thermal energy storage sizing not yet characterized",
+        "severity": "medium"
+      },
+      {
+        "description": "Beryllium supply (~300 t/year globally, Materion-dominated) and Li-6 enrichment (Russia/China-controlled legacy amalgam processes) create FLiBe supply-chain chokepoints at fleet scale",
+        "severity": "medium"
+      },
+      {
+        "description": "PF2 coil lifetime of ~890 MW·yr (~2 full-power-years) sets an aggressive maintenance cycle driving remote-handling demands not yet demonstrated at MANTA geometry",
+        "severity": "medium"
+      },
+      {
+        "description": "Tritium global inventory (~25–30 kg, declining at 5.5%/year) constrains startup of any D-T fleet — shared with all D-T concepts but compounds Firefly's pre-disclosure stage",
+        "severity": "low"
+      }
+    ]
+  },
+  "sources": {
+    "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/29-negative-triangularity-tokamak/model_setup.py",
+    "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/29-negative-triangularity-tokamak/analysis.md"
+  }
+}

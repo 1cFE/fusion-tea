@@ -1,0 +1,603 @@
+{
+  "concept_id": "20b",
+  "name": "Compact Liquid-Wall HTS Stellarator",
+  "confinement_family": "MFE",
+  "company": "Renaissance Fusion",
+  "status": "in_progress",
+  "illustration": null,
+  "has_cost_model": true,
+  "has_sensitivities": true,
+  "cost_model": {
+    "cas10": {
+      "name": "Preconstruction",
+      "cost_m_usd": 18.5,
+      "overridden": false
+    },
+    "cas21": {
+      "name": "Buildings & Structures",
+      "cost_m_usd": 659.923828125,
+      "overridden": false
+    },
+    "cas22": {
+      "name": "Reactor Plant Equipment",
+      "cost_m_usd": 4342.36328125,
+      "overridden": false
+    },
+    "cas23": {
+      "name": "Turbine Plant Equipment",
+      "cost_m_usd": 232.18043518066406,
+      "overridden": false
+    },
+    "cas24": {
+      "name": "Electrical Plant Equipment",
+      "cost_m_usd": 126.096435546875,
+      "overridden": false
+    },
+    "cas25": {
+      "name": "Miscellaneous Plant Equipment",
+      "cost_m_usd": 76.75435638427734,
+      "overridden": false
+    },
+    "cas26": {
+      "name": "Heat Rejection Systems",
+      "cost_m_usd": 65.9092788696289,
+      "overridden": false
+    },
+    "cas27": {
+      "name": "Special Materials",
+      "cost_m_usd": 15.000001907348633,
+      "overridden": false
+    },
+    "cas28": {
+      "name": "Digital Twin & Simulation",
+      "cost_m_usd": 5.0,
+      "overridden": false
+    },
+    "cas29": {
+      "name": "Contingency",
+      "cost_m_usd": 0.0,
+      "overridden": false
+    },
+    "cas30": {
+      "name": "Indirect Costs",
+      "cost_m_usd": 1841.0760498046875,
+      "overridden": false
+    },
+    "cas40": {
+      "name": "Owner's Costs",
+      "cost_m_usd": 39.0,
+      "overridden": false
+    },
+    "cas50": {
+      "name": "Supplementary Costs",
+      "cost_m_usd": 431.1734619140625,
+      "overridden": false
+    },
+    "cas60": {
+      "name": "Interest During Construction",
+      "cost_m_usd": 2997.0478515625,
+      "overridden": false
+    },
+    "cas70": {
+      "name": "O&M Costs (annualised)",
+      "cost_m_usd": 162.2937774658203,
+      "overridden": false
+    },
+    "cas80": {
+      "name": "Fuel Costs (annualised)",
+      "cost_m_usd": 1.5140464305877686,
+      "overridden": false
+    },
+    "cas90": {
+      "name": "Financial Costs",
+      "cost_m_usd": 874.364501953125,
+      "overridden": false
+    },
+    "cas22_detail": {
+      "C220101": {
+        "name": "First Wall & Blanket",
+        "cost_m_usd": 400.0,
+        "overridden": true
+      },
+      "C220102": {
+        "name": "Radiation Shield",
+        "cost_m_usd": 184.41163635253906,
+        "overridden": false
+      },
+      "C220103": {
+        "name": "Magnets / Coils",
+        "cost_m_usd": 2261.9467105846506,
+        "overridden": false
+      },
+      "C220104": {
+        "name": "Heating & Driver Systems",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220105": {
+        "name": "Primary Structure & Support",
+        "cost_m_usd": 9.349737167358398,
+        "overridden": false
+      },
+      "C220106": {
+        "name": "Vacuum System",
+        "cost_m_usd": 33.93631362915039,
+        "overridden": false
+      },
+      "C220107": {
+        "name": "Power Conditioning & Energy Storage",
+        "cost_m_usd": 106.15383911132812,
+        "overridden": false
+      },
+      "C220108": {
+        "name": "Divertor / Target Factory",
+        "cost_m_usd": 103.85160827636719,
+        "overridden": false
+      },
+      "C220109": {
+        "name": "Direct Energy Converter",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220110": {
+        "name": "Remote Handling & Maintenance Equipment",
+        "cost_m_usd": 183.58543395996094,
+        "overridden": false
+      },
+      "C220111": {
+        "name": "Installation Labor",
+        "cost_m_usd": 415.5733947753906,
+        "overridden": false
+      },
+      "C220112": {
+        "name": "Isotope Separation Plant",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220200": {
+        "name": "Main & Secondary Coolant",
+        "cost_m_usd": 203.27149963378906,
+        "overridden": false
+      },
+      "C220300": {
+        "name": "Auxiliary Cooling & Cryoplant",
+        "cost_m_usd": 226.08395385742188,
+        "overridden": false
+      },
+      "C220400": {
+        "name": "Radioactive Waste Management",
+        "cost_m_usd": 5.871918201446533,
+        "overridden": false
+      },
+      "C220500": {
+        "name": "Fuel Handling & Storage",
+        "cost_m_usd": 120.00001525878906,
+        "overridden": false
+      },
+      "C220600": {
+        "name": "Other Reactor Plant Equipment",
+        "cost_m_usd": 11.500000953674316,
+        "overridden": false
+      },
+      "C220700": {
+        "name": "Instrumentation & Control",
+        "cost_m_usd": 76.82723999023438,
+        "overridden": false
+      }
+    },
+    "headline": {
+      "lcoe_per_mwh": 128.81826782226562,
+      "overnight_cost_per_kw": 10850.0244140625,
+      "p_net_mw": 1000.0000610351562,
+      "q_eng": 3.008281707763672,
+      "capacity_factor": 0.92
+    },
+    "sensitivities": {
+      "engineering": {
+        "availability": {
+          "elasticity": -0.9724633263119522,
+          "baseline": 0.92
+        },
+        "construction_time_yr": {
+          "elasticity": 0.5605769008553977,
+          "baseline": 10.0
+        },
+        "mn": {
+          "elasticity": -0.04264359886822803,
+          "baseline": 1.07
+        },
+        "eta_th": {
+          "elasticity": -0.1415720239763078,
+          "baseline": 0.5
+        },
+        "eta_p": {
+          "elasticity": -0.0035632482987262913,
+          "baseline": 0.5
+        },
+        "f_sub": {
+          "elasticity": 0.008458394391149772,
+          "baseline": 0.03
+        },
+        "p_pump": {
+          "elasticity": 0.06796155957496931,
+          "baseline": 380.0
+        },
+        "p_trit": {
+          "elasticity": 0.001882231370074452,
+          "baseline": 10.0
+        },
+        "p_house": {
+          "elasticity": 0.000941115685037226,
+          "baseline": 5.0
+        },
+        "p_cryo": {
+          "elasticity": 0.03199903208272875,
+          "baseline": 35.0
+        },
+        "blanket_t": {
+          "elasticity": 0.02663924165908411,
+          "baseline": 0.33
+        },
+        "ht_shield_t": {
+          "elasticity": 0.02984422424438829,
+          "baseline": 0.5
+        },
+        "structure_t": {
+          "elasticity": 0.002720207653723904,
+          "baseline": 0.15
+        },
+        "vessel_t": {
+          "elasticity": 0.006793858000301171,
+          "baseline": 0.1
+        },
+        "plasma_t": {
+          "elasticity": 0.04033558076401109,
+          "baseline": 1.0
+        },
+        "dd_f_T": {
+          "elasticity": 0.0,
+          "baseline": 0.969
+        },
+        "dd_f_He3": {
+          "elasticity": 0.0,
+          "baseline": 0.689
+        },
+        "dhe3_dd_frac": {
+          "elasticity": 0.0,
+          "baseline": 0.07
+        },
+        "dhe3_f_T": {
+          "elasticity": 0.0,
+          "baseline": 0.97
+        },
+        "eta_pin": {
+          "elasticity": 0.0,
+          "baseline": 0.6
+        },
+        "eta_de": {
+          "elasticity": 0.0,
+          "baseline": 0.85
+        },
+        "p_coils": {
+          "elasticity": 0.0005646694110223356,
+          "baseline": 3.0
+        },
+        "p_cool": {
+          "elasticity": 0.003764462740148904,
+          "baseline": 20.0
+        },
+        "R0": {
+          "elasticity": 0.07189766074579437,
+          "baseline": 4.0
+        },
+        "elon": {
+          "elasticity": 0.07189766074579437,
+          "baseline": 1.0
+        },
+        "B": {
+          "elasticity": 0.0,
+          "baseline": 10.0
+        },
+        "T_e": {
+          "elasticity": 0.0,
+          "baseline": 10.0
+        },
+        "n_e": {
+          "elasticity": 0.0,
+          "baseline": 1e20
+        },
+        "Z_eff": {
+          "elasticity": 0.0,
+          "baseline": 1.3
+        },
+        "plasma_volume": {
+          "elasticity": 0.0,
+          "baseline": 200.0
+        },
+        "R_w": {
+          "elasticity": 0.0,
+          "baseline": 0.6
+        },
+        "T_edge": {
+          "elasticity": 0.0,
+          "baseline": 0.05
+        },
+        "tau_ratio": {
+          "elasticity": 0.0,
+          "baseline": 3.0
+        },
+        "b_max": {
+          "elasticity": 0.4201670530856022,
+          "baseline": 15.0
+        },
+        "r_coil": {
+          "elasticity": 0.8403341265723223,
+          "baseline": 2.0
+        }
+      },
+      "financial": {
+        "interest_rate": {
+          "elasticity": 0.8935836570055116,
+          "baseline": 0.07
+        },
+        "inflation_rate": {
+          "elasticity": 0.047112423420825035,
+          "baseline": 0.0245
+        }
+      }
+    },
+    "params": {
+      "p_input": 0.0,
+      "p_nbi": 0.0,
+      "p_ecrh": 0.0,
+      "p_icrf": 0.0,
+      "p_lhcd": 0.0,
+      "mn": 1.07,
+      "eta_p": 0.5,
+      "eta_pin": 0.6,
+      "eta_de": 0.85,
+      "f_sub": 0.03,
+      "f_dec": 0.0,
+      "p_coils": 3.0,
+      "p_cool": 20.0,
+      "p_pump": 380.0,
+      "p_trit": 10.0,
+      "p_house": 5.0,
+      "p_cryo": 35.0,
+      "b_max": 15.0,
+      "r_coil": 2.0,
+      "R0": 4.0,
+      "plasma_t": 1.0,
+      "elon": 1.0,
+      "blanket_t": 0.33,
+      "ht_shield_t": 0.5,
+      "structure_t": 0.15,
+      "vessel_t": 0.1,
+      "construction_time_yr": 10.0,
+      "T_edge": 0.05,
+      "tau_ratio": 3.0,
+      "R_w": 0.6,
+      "n_e": 1e20,
+      "T_e": 10.0,
+      "Z_eff": 1.3,
+      "plasma_volume": 200.0,
+      "B": 10.0,
+      "dd_f_T": 0.969,
+      "dd_f_He3": 0.689,
+      "dhe3_dd_frac": 0.07,
+      "dhe3_f_T": 0.97,
+      "pb11_f_alpha_n": 0.0,
+      "pb11_f_p_n": 0.0,
+      "site_permits": 3.0,
+      "plant_studies_foak": 20.0,
+      "plant_studies_noak": 4.0,
+      "plant_permits": 2.0,
+      "plant_reports": 1.0,
+      "other_precon": 1.0,
+      "land_intensity": 0.25,
+      "land_cost": 10000.0,
+      "licensing_cost_dt": 5.0,
+      "licensing_cost_dd": 3.0,
+      "licensing_cost_dhe3": 1.0,
+      "licensing_cost_pb11": 0.1,
+      "licensing_time_dt": 2.0,
+      "licensing_time_dd": 1.5,
+      "licensing_time_dhe3": 0.75,
+      "licensing_time_pb11": 0.0,
+      "blanket_unit_cost_dt": 0.6,
+      "blanket_unit_cost_dd": 0.3,
+      "blanket_unit_cost_dhe3": 0.08,
+      "blanket_unit_cost_pb11": 0.05,
+      "shield_unit_cost": 0.74,
+      "heating_nbi_per_mw": 7.0642,
+      "heating_icrf_per_mw": 4.1494,
+      "heating_ecrh_per_mw": 5.0,
+      "heating_lhcd_per_mw": 4.0,
+      "driver_laser_per_mw": 8.0,
+      "driver_heavy_ion_per_mw": 12.0,
+      "driver_mag_target_per_mw": 3.0,
+      "driver_plasma_jet_per_mw": 4.0,
+      "driver_maglif_per_mw": 6.0,
+      "structure_unit_cost": 0.15,
+      "vessel_unit_cost": 0.72,
+      "power_supplies_base": 80.0,
+      "divertor_base": 60.0,
+      "target_factory_base": 244.0,
+      "dec_base": 100.0,
+      "dec_grid_cost": 12.0,
+      "dec_grid_lifetime_dt": 2.0,
+      "dec_grid_lifetime_dd": 3.0,
+      "dec_grid_lifetime_dhe3": 4.0,
+      "dec_grid_lifetime_pb11": 3.0,
+      "c_cap_allin_per_joule": 0.5,
+      "markup_switch_bidir": 0.06,
+      "markup_controls": 0.04,
+      "c_inv_per_kw_net": 150.0,
+      "cap_shot_lifetime": 100000000.0,
+      "f_rad_dt": 0.1,
+      "f_rad_dd": 0.08,
+      "f_rad_dhe3": 0.05,
+      "f_rad_pb11": 0.15,
+      "f_rad_fus_pb11": 0.87,
+      "f_rad_fus_dhe3": 0.35,
+      "f_pdv": 0.8,
+      "remote_handling_dt_base": 150.0,
+      "remote_handling_dd_base": 100.0,
+      "remote_handling_dhe3_base": 30.0,
+      "remote_handling_pb11_base": 20.0,
+      "installation_frac": 0.14,
+      "core_lifetime_dt": 5.0,
+      "core_lifetime_dd": 10.0,
+      "core_lifetime_dhe3": 30.0,
+      "core_lifetime_pb11": 50.0,
+      "fuel_handling_dt_base": 120.0,
+      "fuel_handling_dd_base": 60.0,
+      "fuel_handling_dhe3_base": 40.0,
+      "fuel_handling_pb11_base": 15.0,
+      "special_materials_dt": 15.0,
+      "special_materials_dd": 2.0,
+      "special_materials_dhe3": 1.0,
+      "special_materials_pb11": 0.0,
+      "turbine_per_mw": 0.155,
+      "electric_per_mw": 0.08418,
+      "misc_per_mw": 0.05124,
+      "heat_rej_per_mw": 0.022,
+      "digital_twin": 5.0,
+      "contingency_rate_foak": 0.1,
+      "contingency_rate_noak": 0.0,
+      "indirect_fraction": 0.2,
+      "reference_construction_time": 6.0,
+      "owner_cost_dt": 39.0,
+      "owner_cost_dd": 31.0,
+      "owner_cost_dhe3": 23.0,
+      "owner_cost_pb11": 20.0,
+      "shipping_frac": 0.015,
+      "spare_parts_frac_dt": 0.03,
+      "spare_parts_frac_dd": 0.025,
+      "spare_parts_frac_dhe3": 0.015,
+      "spare_parts_frac_pb11": 0.01,
+      "tax_frac": 0.01,
+      "construction_insurance_frac": 0.015,
+      "startup_fuel_dt": 40.0,
+      "startup_fuel_dd": 0.1,
+      "startup_fuel_dhe3": 10.0,
+      "startup_fuel_pb11": 0.1,
+      "decom_provision_dt": 127.0,
+      "decom_provision_dd": 93.0,
+      "decom_provision_dhe3": 65.0,
+      "decom_provision_pb11": 53.0,
+      "om_cost_dt": 52.0,
+      "om_cost_dd": 39.0,
+      "om_cost_dhe3": 26.0,
+      "om_cost_pb11": 24.0,
+      "u_deuterium": 2175.0,
+      "u_li6": 1000.0,
+      "u_he3": 2000000.0,
+      "u_protium": 5.0,
+      "u_b11": 10000.0,
+      "u_b11_noak": 75.0,
+      "burn_fraction": 0.05,
+      "fuel_recovery": 0.95,
+      "eta_th": 0.5,
+      "net_electric_mw": 1000.0,
+      "availability": 0.92,
+      "lifetime_yr": 30.0,
+      "n_mod": 1.0,
+      "interest_rate": 0.07,
+      "inflation_rate": 0.0245,
+      "noak": 1.0
+    }
+  },
+  "parameter_metadata": {},
+  "narrative": {
+    "key_bets": [
+      "Laser-patterned REBCO film on ~1 m cylindrical substrates can be manufactured at nuclear-grade quality and throughput, scaling from the demonstrated 6 T Helmholtz to 10 T nominal / 15-40 T peak coil fields",
+      "A compact quasi-isodynamic stellarator at R ≤ 4 m, A ≈ 4, B = 10 T can achieve ignition (Q = ∞) with a 10 keV D-T plasma — an extrapolation with no stellarator experimental precedent at Q >> 1",
+      "A flowing Li-LiH liquid metal wall can sustain 25 MW/m² continuous wall loading while serving as integrated first wall, breeder, shield, and coolant with stable MHD behavior in 3D stellarator geometry",
+      "The optimized blanket (10 cm Pb + 22 cm non-enriched Li-LiH) achieves TBR = 1.60, providing ~39% margin above the 1.15 design requirement without Li-6 enrichment",
+      "An sCO₂ Brayton-Rankine combined cycle can deliver 49-51% thermal cycle efficiency at GW scale from a liquid metal fusion heat source, yielding 34% net plant efficiency",
+      "Steady-state ignited operation with NNBI used only for startup eliminates continuous heating/current-drive capital and recirculating load",
+      "Tritium extraction from flowing Li-LiH at kg/day rates is achievable despite very high tritium solubility in liquid lithium"
+    ],
+    "eliminated_costs": [
+      "No central solenoid or current drive hardware — stellarator inherent, no CS fatigue cycling",
+      "No plasma disruption mitigation hardware — enables higher capacity factor assumption",
+      "No steady-state ECRH/gyrotron heating system — Q = ∞ target eliminates continuous heating capital and recirculating load",
+      "No discrete solid first-wall replacement cycle — flowing liquid wall consolidates C220101/C220102 into a single pumped-fluid system",
+      "No REBCO wound-tape supply chain bottleneck — laser-patterned film bypasses km-scale tape winding at $30-100/kA-m"
+    ],
+    "novel_costs": [
+      "Industrial REBCO thin-film deposition and laser patterning at 1 m diameter cylindrical substrate scale — no manufacturing cost analogue at any scale (dominant LCOE uncertainty; 0.3×-10× coil cost scenario swing of ~418 $/MWh)",
+      "Liquid Li-LiH circulation system — pumps, heat exchangers, tritium extraction, MHD conditioning piping at 25 MW/m² wall loading with no published cost analogue (Na-cooled fast reactor primary circuit used as structural lower bound)",
+      "Liquid metal circulation pump power (~380 MW estimated) driving large unexplained recirculating power fraction (~32% of gross)",
+      "Tritium-compatible heat exchangers between Li-LiH primary and sCO₂ secondary — permeation barriers with no demonstrated design",
+      "sCO₂ Brayton-Rankine turbomachinery at ~1.5-2 GWe gross output — emerging technology with wide cost projection uncertainty at GW scale"
+    ],
+    "risks": [
+      {
+        "description": "Entirely unanchored economics — no capital cost estimate, LCOE model, or CAS-level breakdown has been published by Renaissance Fusion or any independent third party",
+        "severity": "high"
+      },
+      {
+        "description": "Laser-patterned HTS film manufacturing cost has no industrial analogue; coil cost elasticity is +0.77 and the 10× scenario drives LCOE to 516 $/MWh",
+        "severity": "high"
+      },
+      {
+        "description": "ISS04 confinement scaling extrapolated to the compact A≈4 geometry yields n·τ_E roughly 11× below the Lawson ignition threshold at T=10 keV — Q=∞ closure is not supported by current scaling laws",
+        "severity": "high"
+      },
+      {
+        "description": "No stellarator has operated near burning plasma conditions; compact A ≈ 4 QI geometry has no experimental precedent and alpha confinement quality at ignition is untested",
+        "severity": "high"
+      },
+      {
+        "description": "Flowing Li-LiH wall at 25 MW/m² is unprecedented — MHD stability, plasma-facing free surface behavior, and tritium management in 3D stellarator geometry are uncharacterized",
+        "severity": "high"
+      },
+      {
+        "description": "REBCO Jc degrades sharply above ~20 T at 20 K; achieving the 20-40 T peak coil field envelope with realistic current density is not addressed in available sources (b_max elasticity +0.38)",
+        "severity": "high"
+      },
+      {
+        "description": "Plant availability is the largest LCOE lever (elasticity -0.94) but maintenance intervals and component replacement schedules are entirely uncharacterized",
+        "severity": "high"
+      },
+      {
+        "description": "Liquid metal circulation pump power is not disclosed and drives the unexplained 18-percentage-point gap between 50% cycle efficiency and 34% net efficiency, preventing independent Q_engineering closure",
+        "severity": "medium"
+      },
+      {
+        "description": "sCO₂ Brayton-Rankine cycle at 49-51% efficiency has been demonstrated only at MW scale; GW-scale turbomachinery and integration with tritium-compatible heat exchangers are undemonstrated",
+        "severity": "medium"
+      },
+      {
+        "description": "Divertor design and plasma exhaust solution is not addressed in any published source — critical gap for plasma-facing component cost and availability",
+        "severity": "medium"
+      },
+      {
+        "description": "RAFM structural steel qualification under combined Li-LiH chemical exposure and 14 MeV neutron irradiation at 25 MW/m² wall loading has not been demonstrated",
+        "severity": "medium"
+      },
+      {
+        "description": "Tritium permeation from flowing Li-LiH through heat exchanger walls to sCO₂ secondary is a documented concern with no published mitigation design",
+        "severity": "medium"
+      },
+      {
+        "description": "The sole hardware milestone (6 T Helmholtz, 1.2 m diameter, 20 K) is at 60% of nominal design field and does not characterize production economics or throughput",
+        "severity": "medium"
+      },
+      {
+        "description": "Fission-style regulatory cost multiplier (Stewart & Shirvan 2.2× building costs) applies as upper-bound scenario for this D-T concept",
+        "severity": "medium"
+      },
+      {
+        "description": "D-T tritium startup requirement (~1 kg at >$35,000/g) subject to global inventory decline (~25-30 kg, 5.5%/year decay) and fleet sequencing constraint",
+        "severity": "low"
+      }
+    ]
+  },
+  "sources": {
+    "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/20b-renaissance-stellarator/model_setup.py",
+    "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/20b-renaissance-stellarator/analysis.md"
+  }
+}

@@ -1,31 +1,31 @@
 {
-  "generated_at": "2026-04-20T03:31:58.927003+00:00",
+  "generated_at": "2026-04-20T14:28:39.851085+00:00",
   "concepts": [
     {
-      "concept_id": "12",
-      "name": "Levitated Dipole (D-T)",
+      "concept_id": "29",
+      "name": "Negative Triangularity Tokamak",
       "confinement_family": "MFE",
-      "company": "OpenStar Technologies",
+      "company": "Firefly Fusion",
       "status": "in_progress",
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 134.37506261265585,
+      "lcoe_per_mwh": 96.59895324707031,
       "confidence": null,
-      "data_file": "data/12.json"
+      "data_file": "data/29.json"
     },
     {
-      "concept_id": "13",
-      "name": "Electrostatic Hybrid (D-T)",
-      "confinement_family": "NONSTANDARD",
-      "company": "Avalanche Energy",
+      "concept_id": "30",
+      "name": "Laser ICF - NIF Commercialization (D-T)",
+      "confinement_family": "IFE",
+      "company": "Inertia Enterprises",
       "status": "in_progress",
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 6929.117947419781,
+      "lcoe_per_mwh": 136.97219848632812,
       "confidence": null,
-      "data_file": "data/13.json"
+      "data_file": "data/30.json"
     }
   ]
 }

@@ -1,50 +1,53 @@
 {
   "parameters": {
-    "p_fus": {
-      "param_name": "p_fus",
-      "display_name": "p_fus",
+    "availability": {
+      "param_name": "availability",
+      "display_name": "availability",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": -0.89985363233481
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": -0.9322753413065283
+        },
+        {
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "elasticity": -0.973743368085257
         }
       ]
     },
-    "Q_sci": {
-      "param_name": "Q_sci",
-      "display_name": "Q_sci",
+    "construction_time_yr": {
+      "param_name": "construction_time_yr",
+      "display_name": "construction_time_yr",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": -0.25670353517199374
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.3610658638030299
+        },
+        {
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "elasticity": 0.24980915863017253
         }
       ]
     },
-    "eta_aux": {
-      "param_name": "eta_aux",
-      "display_name": "eta_aux",
+    "mn": {
+      "param_name": "mn",
+      "display_name": "mn",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": -0.33067972492133924
-        }
-      ]
-    },
-    "M_blanket": {
-      "param_name": "M_blanket",
-      "display_name": "M_blanket",
-      "category": "unclassified",
-      "concepts": [
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": -0.0598454150143453
+        },
         {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": -0.9346420604456611
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "elasticity": -0.04381943339932028
         }
       ]
     },
@@ -54,420 +57,576 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": -1.2408839634075954
-        }
-      ]
-    },
-    "duty_cycle": {
-      "param_name": "duty_cycle",
-      "display_name": "duty_cycle",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": -0.8729978773992846
-        }
-      ]
-    },
-    "maintenance_availability": {
-      "param_name": "maintenance_availability",
-      "display_name": "maintenance_availability",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": -0.8729978773992959
-        }
-      ]
-    },
-    "p_cryo_MW": {
-      "param_name": "p_cryo_MW",
-      "display_name": "p_cryo_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.005856070469778423
-        }
-      ]
-    },
-    "p_trit_MW": {
-      "param_name": "p_trit_MW",
-      "display_name": "p_trit_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.03576226750497031
-        }
-      ]
-    },
-    "p_house_MW": {
-      "param_name": "p_house_MW",
-      "display_name": "p_house_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.02235141519701288
-        }
-      ]
-    },
-    "p_other_MW": {
-      "param_name": "p_other_MW",
-      "display_name": "p_other_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.04108190671826298
-        }
-      ]
-    },
-    "rebco_tape_core_km": {
-      "param_name": "rebco_tape_core_km",
-      "display_name": "rebco_tape_core_km",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.11897851159660082
-        }
-      ]
-    },
-    "rebco_tape_top_km": {
-      "param_name": "rebco_tape_top_km",
-      "display_name": "rebco_tape_top_km",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.0330495865546126
-        }
-      ]
-    },
-    "rebco_Ic_kA": {
-      "param_name": "rebco_Ic_kA",
-      "display_name": "rebco_Ic_kA",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.23345991070564082
-        }
-      ]
-    },
-    "rebco_price_kAm": {
-      "param_name": "rebco_price_kAm",
-      "display_name": "rebco_price_kAm",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.23345991070564082
-        }
-      ]
-    },
-    "magnet_engineering_multiplier": {
-      "param_name": "magnet_engineering_multiplier",
-      "display_name": "magnet_engineering_multiplier",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.15202809815119084
-        }
-      ]
-    },
-    "Li2O_mass_t": {
-      "param_name": "Li2O_mass_t",
-      "display_name": "Li2O_mass_t",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.25034283530256435
-        }
-      ]
-    },
-    "Li2O_unit_cost_per_kg": {
-      "param_name": "Li2O_unit_cost_per_kg",
-      "display_name": "Li2O_unit_cost_per_kg",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.25034283530256435
-        }
-      ]
-    },
-    "W_shield_mass_t": {
-      "param_name": "W_shield_mass_t",
-      "display_name": "W_shield_mass_t",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.09694545389350881
-        }
-      ]
-    },
-    "W_shield_unit_cost_per_kg": {
-      "param_name": "W_shield_unit_cost_per_kg",
-      "display_name": "W_shield_unit_cost_per_kg",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.09694545389350881
-        }
-      ]
-    },
-    "concrete_mass_t": {
-      "param_name": "concrete_mass_t",
-      "display_name": "concrete_mass_t",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.007105661109248097
-        }
-      ]
-    },
-    "concrete_cost_per_t": {
-      "param_name": "concrete_cost_per_t",
-      "display_name": "concrete_cost_per_t",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.007105661109248097
-        }
-      ]
-    },
-    "inner_vessel_cost_M_USD": {
-      "param_name": "inner_vessel_cost_M_USD",
-      "display_name": "inner_vessel_cost_M_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.011016528851537534
-        }
-      ]
-    },
-    "icrh_cost_per_MW_wallplug": {
-      "param_name": "icrh_cost_per_MW_wallplug",
-      "display_name": "icrh_cost_per_MW_wallplug",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.046654125358565245
-        }
-      ]
-    },
-    "cryo_system_cost_M_USD": {
-      "param_name": "cryo_system_cost_M_USD",
-      "display_name": "cryo_system_cost_M_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.04831810899795111
-        }
-      ]
-    },
-    "remote_handling_cost_M_USD": {
-      "param_name": "remote_handling_cost_M_USD",
-      "display_name": "remote_handling_cost_M_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.05508264425768767
-        }
-      ]
-    },
-    "sacrificial_tape_km_yr": {
-      "param_name": "sacrificial_tape_km_yr",
-      "display_name": "sacrificial_tape_km_yr",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.08143181255445564
-        }
-      ]
-    },
-    "replacement_tape_multiplier": {
-      "param_name": "replacement_tape_multiplier",
-      "display_name": "replacement_tape_multiplier",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.08143181255445565
-        }
-      ]
-    },
-    "sacrificial_handling_M_USD_yr": {
-      "param_name": "sacrificial_handling_M_USD_yr",
-      "display_name": "sacrificial_handling_M_USD_yr",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.05026655095953969
-        }
-      ]
-    },
-    "r_plasma_outer_m": {
-      "param_name": "r_plasma_outer_m",
-      "display_name": "r_plasma_outer_m",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.03879699157445761
-        }
-      ]
-    },
-    "blanket_thickness_m": {
-      "param_name": "blanket_thickness_m",
-      "display_name": "blanket_thickness_m",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.008621553683205893
-        }
-      ]
-    },
-    "shield_thickness_m": {
-      "param_name": "shield_thickness_m",
-      "display_name": "shield_thickness_m",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.002047618999746632
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": -0.24312200311684884
         },
         {
-          "concept_id": "13",
-          "name": "Electrostatic Hybrid (D-T)",
-          "elasticity": 0.020164277040838906
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "elasticity": -0.13853432554876455
         }
       ]
     },
-    "inner_vessel_thickness_m": {
-      "param_name": "inner_vessel_thickness_m",
-      "display_name": "inner_vessel_thickness_m",
+    "eta_p": {
+      "param_name": "eta_p",
+      "display_name": "eta_p",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.02505685800048131
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": -0.000012293120691592636
         }
       ]
     },
-    "blanket_coverage": {
-      "param_name": "blanket_coverage",
-      "display_name": "blanket_coverage",
+    "f_sub": {
+      "param_name": "f_sub",
+      "display_name": "f_sub",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.012523629611297297
+        },
+        {
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "elasticity": -0.006287227341193086
+        }
+      ]
+    },
+    "p_pump": {
+      "param_name": "p_pump",
+      "display_name": "p_pump",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.00035103631453460717
+        },
+        {
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "elasticity": -0.00013538770860599083
+        }
+      ]
+    },
+    "p_trit": {
+      "param_name": "p_trit",
+      "display_name": "p_trit",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.003633294465266962
+        },
+        {
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "elasticity": -0.0012114630234316024
+        }
+      ]
+    },
+    "p_house": {
+      "param_name": "p_house",
+      "display_name": "p_house",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.001453317786106785
+        },
+        {
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "elasticity": -0.00048458520937264097
+        }
+      ]
+    },
+    "p_cryo": {
+      "param_name": "p_cryo",
+      "display_name": "p_cryo",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.00433226587651108
+        }
+      ]
+    },
+    "blanket_t": {
+      "param_name": "blanket_t",
+      "display_name": "blanket_t",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.1353557459537529
+        },
+        {
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "elasticity": 0.06552861436902996
+        }
+      ]
+    },
+    "ht_shield_t": {
+      "param_name": "ht_shield_t",
+      "display_name": "ht_shield_t",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.02399193330306842
+        },
+        {
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "elasticity": 0.01409331820184517
+        }
+      ]
+    },
+    "structure_t": {
+      "param_name": "structure_t",
+      "display_name": "structure_t",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.006884281306944967
+        },
+        {
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "elasticity": 0.0023539594414025617
+        }
+      ]
+    },
+    "vessel_t": {
+      "param_name": "vessel_t",
+      "display_name": "vessel_t",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.023601098849324254
+        },
+        {
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "elasticity": 0.005984313705841937
+        }
+      ]
+    },
+    "plasma_t": {
+      "param_name": "plasma_t",
+      "display_name": "plasma_t",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.10615582208437836
+        },
+        {
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "elasticity": 0.1461758812866017
+        }
+      ]
+    },
+    "dd_f_T": {
+      "param_name": "dd_f_T",
+      "display_name": "dd_f_T",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.0
+        },
+        {
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
           "elasticity": 0.0
         }
       ]
     },
-    "construction_time_years": {
-      "param_name": "construction_time_years",
-      "display_name": "construction_time_years",
+    "dd_f_He3": {
+      "param_name": "dd_f_He3",
+      "display_name": "dd_f_He3",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.290424583207501
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.0
         },
         {
-          "concept_id": "13",
-          "name": "Electrostatic Hybrid (D-T)",
-          "elasticity": 0.16223457746097295
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "elasticity": 0.0
         }
       ]
     },
-    "plant_lifetime_years": {
-      "param_name": "plant_lifetime_years",
-      "display_name": "plant_lifetime_years",
+    "dhe3_dd_frac": {
+      "param_name": "dhe3_dd_frac",
+      "display_name": "dhe3_dd_frac",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": -0.1172957972796921
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.0
         },
         {
-          "concept_id": "13",
-          "name": "Electrostatic Hybrid (D-T)",
-          "elasticity": -0.09522224992254873
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "elasticity": 0.0
         }
       ]
     },
-    "om_fixed_M_per_MWe_yr": {
-      "param_name": "om_fixed_M_per_MWe_yr",
-      "display_name": "om_fixed_M_per_MWe_yr",
+    "dhe3_f_T": {
+      "param_name": "dhe3_f_T",
+      "display_name": "dhe3_f_T",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.0445393587337974
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.0
+        },
+        {
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "elasticity": 0.0
         }
       ]
     },
-    "core_lifetime_FPY": {
-      "param_name": "core_lifetime_FPY",
-      "display_name": "core_lifetime_FPY",
+    "p_input": {
+      "param_name": "p_input",
+      "display_name": "p_input",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": -0.12709141382435324
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.02808291058700684
+        }
+      ]
+    },
+    "eta_pin": {
+      "param_name": "eta_pin",
+      "display_name": "eta_pin",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": -0.029066357891831002
+        },
+        {
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "elasticity": 0.07531525501018478
+        }
+      ]
+    },
+    "eta_de": {
+      "param_name": "eta_de",
+      "display_name": "eta_de",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "p_coils": {
+      "param_name": "p_coils",
+      "display_name": "p_coils",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.0010899883395800887
+        }
+      ]
+    },
+    "p_cool": {
+      "param_name": "p_cool",
+      "display_name": "p_cool",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.005449941697900443
+        }
+      ]
+    },
+    "R0": {
+      "param_name": "R0",
+      "display_name": "R0",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.18658727312893245
+        }
+      ]
+    },
+    "elon": {
+      "param_name": "elon",
+      "display_name": "elon",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.18658727166575267
+        }
+      ]
+    },
+    "q95": {
+      "param_name": "q95",
+      "display_name": "q95",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "f_GW": {
+      "param_name": "f_GW",
+      "display_name": "f_GW",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "B": {
+      "param_name": "B",
+      "display_name": "B",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "T_e": {
+      "param_name": "T_e",
+      "display_name": "T_e",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "n_e": {
+      "param_name": "n_e",
+      "display_name": "n_e",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "Z_eff": {
+      "param_name": "Z_eff",
+      "display_name": "Z_eff",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "plasma_volume": {
+      "param_name": "plasma_volume",
+      "display_name": "plasma_volume",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "R_w": {
+      "param_name": "R_w",
+      "display_name": "R_w",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "T_edge": {
+      "param_name": "T_edge",
+      "display_name": "T_edge",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "tau_ratio": {
+      "param_name": "tau_ratio",
+      "display_name": "tau_ratio",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "b_max": {
+      "param_name": "b_max",
+      "display_name": "b_max",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.129586215151569
+        }
+      ]
+    },
+    "r_coil": {
+      "param_name": "r_coil",
+      "display_name": "r_coil",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.25917242149292646
+        }
+      ]
+    },
+    "p_icrf": {
+      "param_name": "p_icrf",
+      "display_name": "p_icrf",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.04167441898799764
+        }
+      ]
+    },
+    "M_ion": {
+      "param_name": "M_ion",
+      "display_name": "M_ion",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "lambda_q": {
+      "param_name": "lambda_q",
+      "display_name": "lambda_q",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "disruption_rate_base": {
+      "param_name": "disruption_rate_base",
+      "display_name": "disruption_rate_base",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "disruption_steepness": {
+      "param_name": "disruption_steepness",
+      "display_name": "disruption_steepness",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "disruption_damage": {
+      "param_name": "disruption_damage",
+      "display_name": "disruption_damage",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "disruption_downtime": {
+      "param_name": "disruption_downtime",
+      "display_name": "disruption_downtime",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.0
         }
       ]
     },
@@ -477,14 +636,14 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.7176011701083298
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.6944147818609143
         },
         {
-          "concept_id": "13",
-          "name": "Electrostatic Hybrid (D-T)",
-          "elasticity": 0.3828836525914304
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "elasticity": 0.3689554398738189
         }
       ]
     },
@@ -494,182 +653,74 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.01613424069061922
+          "concept_id": "29",
+          "name": "Negative Triangularity Tokamak",
+          "elasticity": 0.061289553273278966
         },
         {
-          "concept_id": "13",
-          "name": "Electrostatic Hybrid (D-T)",
-          "elasticity": 0.045453590393087495
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "elasticity": 0.20308199439543298
         }
       ]
     },
-    "Q_engineering": {
-      "param_name": "Q_engineering",
-      "display_name": "Q_engineering",
+    "q_eng": {
+      "param_name": "q_eng",
+      "display_name": "q_eng",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "13",
-          "name": "Electrostatic Hybrid (D-T)",
-          "elasticity": -15.142017636364976
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "elasticity": -0.35425233650287075
         }
       ]
     },
-    "thermal_efficiency": {
-      "param_name": "thermal_efficiency",
-      "display_name": "thermal_efficiency",
+    "f_rep": {
+      "param_name": "f_rep",
+      "display_name": "f_rep",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "13",
-          "name": "Electrostatic Hybrid (D-T)",
-          "elasticity": -15.338845805392587
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "elasticity": -0.004766008192325401
         }
       ]
     },
-    "p_input_module_kW": {
-      "param_name": "p_input_module_kW",
-      "display_name": "p_input_module_kW",
+    "f_rad": {
+      "param_name": "f_rad",
+      "display_name": "f_rad",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "13",
-          "name": "Electrostatic Hybrid (D-T)",
-          "elasticity": -2.3072795633372554
-        }
-      ]
-    },
-    "plant_availability": {
-      "param_name": "plant_availability",
-      "display_name": "plant_availability",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "13",
-          "name": "Electrostatic Hybrid (D-T)",
-          "elasticity": -0.609781057546626
-        }
-      ]
-    },
-    "device_radius_m": {
-      "param_name": "device_radius_m",
-      "display_name": "device_radius_m",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "13",
-          "name": "Electrostatic Hybrid (D-T)",
-          "elasticity": 0.003432151646582562
-        }
-      ]
-    },
-    "device_length_m": {
-      "param_name": "device_length_m",
-      "display_name": "device_length_m",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "13",
-          "name": "Electrostatic Hybrid (D-T)",
-          "elasticity": 0.0021450947791406376
-        }
-      ]
-    },
-    "hv_power_supply_cost_per_kW_USD": {
-      "param_name": "hv_power_supply_cost_per_kW_USD",
-      "display_name": "hv_power_supply_cost_per_kW_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "13",
-          "name": "Electrostatic Hybrid (D-T)",
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
           "elasticity": 0.0
         }
       ]
     },
-    "sc_magnet_cost_M_USD": {
-      "param_name": "sc_magnet_cost_M_USD",
-      "display_name": "sc_magnet_cost_M_USD",
+    "p_target": {
+      "param_name": "p_target",
+      "display_name": "p_target",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "13",
-          "name": "Electrostatic Hybrid (D-T)",
-          "elasticity": 0.07586720833297478
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "elasticity": -0.00024229260468632048
         }
       ]
     },
-    "cathode_cost_M_USD": {
-      "param_name": "cathode_cost_M_USD",
-      "display_name": "cathode_cost_M_USD",
+    "eta_dec": {
+      "param_name": "eta_dec",
+      "display_name": "eta_dec",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "13",
-          "name": "Electrostatic Hybrid (D-T)",
-          "elasticity": 0.40102105992677334
-        }
-      ]
-    },
-    "shielding_cost_per_m3_M_USD": {
-      "param_name": "shielding_cost_per_m3_M_USD",
-      "display_name": "shielding_cost_per_m3_M_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "13",
-          "name": "Electrostatic Hybrid (D-T)",
-          "elasticity": 0.008580379116504652
-        }
-      ]
-    },
-    "cathode_lifetime_FPY": {
-      "param_name": "cathode_lifetime_FPY",
-      "display_name": "cathode_lifetime_FPY",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "13",
-          "name": "Electrostatic Hybrid (D-T)",
-          "elasticity": -0.20155799217980544
-        }
-      ]
-    },
-    "tritium_price_per_g_USD": {
-      "param_name": "tritium_price_per_g_USD",
-      "display_name": "tritium_price_per_g_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "13",
-          "name": "Electrostatic Hybrid (D-T)",
-          "elasticity": 0.18120412243769646
-        }
-      ]
-    },
-    "tritium_consumed_g_per_MJ_fusion": {
-      "param_name": "tritium_consumed_g_per_MJ_fusion",
-      "display_name": "tritium_consumed_g_per_MJ_fusion",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "13",
-          "name": "Electrostatic Hybrid (D-T)",
-          "elasticity": 0.1887235957053345
-        }
-      ]
-    },
-    "om_frac_of_capex": {
-      "param_name": "om_frac_of_capex",
-      "display_name": "om_frac_of_capex",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "13",
-          "name": "Electrostatic Hybrid (D-T)",
-          "elasticity": 0.17462246540481507
+          "concept_id": "30",
+          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "elasticity": 0.0
         }
       ]
     }

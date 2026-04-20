@@ -186,9 +186,9 @@
       }
     },
     "headline": {
-      "lcoe_per_mwh": 352.08383181411665,
-      "overnight_cost_per_kw": 15689.315059040106,
-      "p_net_mw": 1000.0,
+      "lcoe_per_mwh": 945.6603407484066,
+      "overnight_cost_per_kw": 42139.858988679924,
+      "p_net_mw": 84.58186666666666,
       "q_eng": 3.9577836411609497,
       "capacity_factor": 0.7
     },
@@ -374,12 +374,79 @@
       "om_base_cost_M_per_yr": 50.0,
       "core_lifetime_FPY": 10.0,
       "deuterium_cost_per_kg": 2175.0,
+      "dt_tritium_blanket_capital_M": 0.0,
       "burn_fraction": 0.05,
       "fuel_recovery": 0.95
     }
   },
   "parameter_metadata": {},
-  "narrative": null,
+  "narrative": {
+    "key_bets": [
+      "Poloidal dipole confinement geometry with plasma physically penetrated by in-vessel coil supported via magnetic tunnels can achieve fusion-relevant plasma performance, despite only static magnetic FEA having been performed",
+      "Superconducting coil path replaces copper at commercial scale, reducing the 700 MW resistive power draw to ~15 MW cryogenic load — a critical viability gate with no published SC coil design",
+      "D-D ignition at confinement time of 20-40 s, plasma temperature 100-200 keV, and density ~10²¹ m⁻³ is achievable (4-10× beyond ITER's projected confinement time)",
+      "Plasma Q ≥ 10 is achievable in the dipole geometry, despite historical poloidal-dipole experiments only reaching few-eV temperatures and ~10¹⁶ m⁻³ densities",
+      "In-vessel dipole coil can survive fusion-relevant neutron fluences and be maintained/replaced through the magnetic tunnel geometry without catastrophic capacity factor penalties",
+      "Commercial-scale plasma heating can scale from the 5-10 kW prototype ECH (4 GHz) to the many-orders-of-magnitude higher power required for D-D at 100-200 keV",
+      "Claimed D-T field advantage of operating at 2-3 T (vs conventional 5.3 T) translates into either lower magnet cost or higher achievable Q"
+    ],
+    "eliminated_costs": [
+      "Tritium breeding blanket (~$200-400M saved): no lithium blanket, FLiBe, or Li-6 enrichment infrastructure required for D-D fuel cycle",
+      "Tritium fuel supply chain: deuterium at ~$5,000-10,000/kg replaces tritium at >$35,000/g, eliminating breeding-ratio management and tritium inventory costs",
+      "Specialty blanket supply chain risks: no beryllium (Materion sole-source), no Li-6 enrichment bottleneck, no molten salt processing infrastructure",
+      "Pulsed-operation fatigue costs: steady-state operation avoids pulsed thermal/mechanical fatigue penalties present in conventional pulsed tokamaks",
+      "Reduced neutron shielding mass per unit fusion power: 2.45 MeV D-D neutrons are less damaging than 14 MeV D-T neutrons"
+    ],
+    "novel_costs": [
+      "In-vessel superconducting dipole coil with radiation-hardened insulation — no vendor currently supplies radiation-hardened HTS coils qualified for sustained neutron environments",
+      "Magnetic-tunnel coil support structure passing through the plasma — a novel mechanical configuration with no established precedent",
+      "Remote handling and replacement of an activated in-vessel coil through the magnetic tunnel geometry — no analogue exists in any operating or planned fusion device",
+      "Oversized reactor core driven by large plasma volume (~6,000-8,000 m³ at 1000 MW D-D) — shield ($804M) is the largest single reactor equipment line item, larger than the SC coil itself ($500M) at 500 MW fusion power",
+      "Commercial-scale ECH heating system sized to reach D-D ignition temperatures (~100-200 keV) from a 5-10 kW prototype baseline — no design study exists"
+    ],
+    "risks": [
+      {
+        "description": "No plasma confinement physics validation: MHD stability, confinement scaling, and transport coefficients exist only as extrapolations from few-eV/10¹⁶ m⁻³ historical dipole experiments — the 2014 FED paper explicitly defers all plasma physics to future work",
+        "severity": "high"
+      },
+      {
+        "description": "700 MW copper coil recirculating power is commercially nonviable; no superconducting coil design has been published to resolve it, and if SC cryo load exceeds ~100 MW net power goes negative",
+        "severity": "high"
+      },
+      {
+        "description": "D-D ignition has never been demonstrated; Deutelio's claimed 20-40 s confinement time and 100-200 keV temperature exceed ITER projections by 4-10× with no experimental or physics-model support",
+        "severity": "high"
+      },
+      {
+        "description": "No reactor design point exists (Q, major radius, thermal power, net electric output) — all LCOE outputs are scenario bounds, not engineering estimates",
+        "severity": "high"
+      },
+      {
+        "description": "In-vessel coil neutron shielding, lifetime, and replacement scheme are unspecified — directly couples to capacity factor (CF=0.4 → 157 ¢/kWh vs CF=0.7 → 95 ¢/kWh baseline)",
+        "severity": "high"
+      },
+      {
+        "description": "Commercial-scale heating power unspecified — prototype ECH is 5-10 kW but D-D at 100-200 keV requires orders of magnitude more heating power, leaving auxiliary systems and recirculating fraction uncertain",
+        "severity": "medium"
+      },
+      {
+        "description": "Plasma volume scales to ~6,000-8,000 m³ at commercial scale (~5× ITER), driving shield, structure, and vacuum vessel costs that may offset D-D's blanket-elimination savings",
+        "severity": "medium"
+      },
+      {
+        "description": "Inconsistency in the primary source between the abstract's '3× weaker field' claim and Section V's '2-3 T vs 5.3 T' (~half) claim for D-T operation, unreconciled by the paper",
+        "severity": "low"
+      },
+      {
+        "description": "Deutelio is a pre-prototype startup (C− tier rating from independent assessment, 4th place Boldbrain 2024) with no third-party plasma physics analysis, cost study, or system code output in the public corpus",
+        "severity": "medium"
+      },
+      {
+        "description": "Radiation-hardened HTS insulation compatible with fabrication processes is unsolved across all fusion concepts, not just PoloMac",
+        "severity": "medium"
+      }
+    ]
+  },
   "sources": {
     "model_setup": null,
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/35-polomac-magnetic-confinement/analysis.md"

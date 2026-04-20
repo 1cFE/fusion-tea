@@ -1,0 +1,117 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-11",
+      "gap_description": "Enriched decaborane cost at commercial scale: lab anchor now exists ($600/gram, 2019), but commercial production pathway and domestic/diversified supply not analyzed",
+      "queries": [
+        "boron-11 isotope enrichment commercial scale production cost per kilogram domestic supply chain",
+        "boron-11 isotope enrichment cost kilogram IAEA DOE nuclear fusion fuel supply analysis",
+        "boron-11 enrichment semiconductor ion implantation commercial pricing kilogram supply 11BF3 production scale"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.researchgate.net/figure/Market-Price-of-Boron-Isotope-Product-Abundance-Price_tbl1_347386544",
+          "title": "Market Price of Boron Isotope Product Abundance Price",
+          "triage": "paywall/403",
+          "notes": "ResearchGate figure page returned 403 — inaccessible without login"
+        },
+        {
+          "url": "https://www.osti.gov/biblio/4364833",
+          "title": "Boron and Its Isotopes (1957 Hooker Electrochemical report)",
+          "triage": "irrelevant",
+          "notes": "1957 technical report — too old for commercial pricing data; OSTI landing page shows only bibliography, full report behind link"
+        },
+        {
+          "url": "https://inis.iaea.org/records/5w916-0b578",
+          "title": "Mathematical model of the enrichment of boron isotope — economic and technical index analysis",
+          "triage": "abstract-only",
+          "notes": "IAEA INIS record accessible but shows only abstract; full paper in China Atomic Energy Press proceedings; no quantitative data visible"
+        },
+        {
+          "url": "https://businesscraft.se/business/the-economics-of-fusion-fuels-can-helium-3-and-boron-11-compete/",
+          "title": "The Economics of Fusion Fuels: Can Helium-3 and Boron-11 Compete?",
+          "triage": "derivative/insufficient",
+          "notes": "Accessible but derivative — synthesizes published sources with no original cost data. No enrichment pricing, no supply chain analysis, no per-gram/kg figures"
+        },
+        {
+          "url": "https://pmarketresearch.com/chemi/boron-11-enriched-noron-trifluoride-11bf3-market/",
+          "title": "Boron 11 Enriched BF3 (11BF3) Market Report — PW Consulting",
+          "triage": "AI-generated/unreliable",
+          "notes": "AI-scaffolded market report with template language. Provides directional market size ($245.5M, 7.72% CAGR) but no pricing mechanics, enrichment costs, or supply chain specifics. No source attribution. Not suitable for citation."
+        },
+        {
+          "url": "https://www.3m.com/3M/en_US/p/d/b40066322/",
+          "title": "3M 11B Enriched Boron Trifluoride",
+          "triage": "timeout",
+          "notes": "Most credible commercial anchor — 3M is a major commercial 11BF3 supplier for semiconductor industry. Page consistently timed out (2 attempts). Would have confirmed commercial-scale pricing for >99.8% B-11 enriched BF3."
+        },
+        {
+          "url": "https://www.exirisotope.com/boron-11-isotope/BORON-11-TRIFLUORIDE",
+          "title": "Exir Isotope — Boron-11 Trifluoride",
+          "triage": "connection refused",
+          "notes": "Iranian isotope supplier page — connection refused (ECONNREFUSED)"
+        },
+        {
+          "url": "https://www.asiaisotopeintl.com/blog/11bf3-boron-11-trifluoride-the-strategic-isotope-gas-bridging-advanced-electronics-nuclear-tech-and-medical-imaging",
+          "title": "11BF3 Strategic Isotope Gas — China Isotope Development",
+          "triage": "AI-generated/unreliable",
+          "notes": "Promotional blog post with AI-generated content. No original data — no pricing, no production volumes, no supply chain specifics. Not suitable for citation."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "notes": "Search revealed useful market context: 11BF3 (boron-11 trifluoride) is commercially produced at semiconductor scale by 3M, URENCO (15 MT/year of 99.99% enrichment from Dutch facility), and Chinese producers. The semiconductor industry is the primary commercial driver for enriched B-11. Pricing of ~$15,000/kg for 11BF3 appeared in one search summary but could not be traced to an accessible credible primary source. Note: LPPFusion uses decaborane (B10H14), not BF3 — the compound synthesis step adds additional cost beyond isotopic enrichment. No accessible source with quantitative commercial pricing for enriched decaborane specifically was found.",
+      "status": "failed"
+    },
+    {
+      "gap_id": "G-15",
+      "gap_description": "Diamond-film switch lifetime and commercial availability",
+      "queries": [
+        "diamond photoconductive semiconductor switch PCSS repetition rate lifetime pulsed power commercial",
+        "Opcondys diamond PCSS switch commercial pulsed power lifetime shots specifications"
+      ],
+      "candidates": [
+        {
+          "url": "https://arpa-e.energy.gov/programs-and-initiatives/search-all-projects/diamond-pcss-diamond-photoconductive-semiconductor-switches",
+          "title": "Diamond PCSS: DIAMOND PhotoConductive Semiconductor Switches | ARPA-E",
+          "triage": "JS-empty",
+          "notes": "ARPA-E project page rendered with minimal content in non-JS environment — no technical data retrievable"
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1147822/",
+          "title": "PCSS Lifetime Testing for Pulsed Power Applications (OSTI PDF)",
+          "triage": "binary PDF",
+          "notes": "Direct PDF link — binary content unreadable via WebFetch. Most directly relevant to G-15 but inaccessible via web fetch."
+        },
+        {
+          "url": "https://compoundsemiconductor.net/article/119149/US_team_reinvents_the_photoconductive_switch",
+          "title": "US team reinvents the photoconductive switch — Compound Semiconductor",
+          "triage": "relevant",
+          "notes": "Accessible, original reporting on LLNL diamond PCSS breakthrough. Key parameters: on/off ratio >10^11, 2 ns rise/fall times, 44 A/cm2 current density at 60V DC bias, critical field 10 MV/cm. Mentions Opcondys Inc. as LLNL licensee and DOE ULTRAFAST program. Does NOT contain lifetime data (shots or hours) or commercial pricing — but documents current commercialization status."
+        },
+        {
+          "url": "https://apps.dtic.mil/sti/tr/pdf/ADA611489.pdf",
+          "title": "Photoconductive Switch Enhancements and Lifetime Studies (DTIC)",
+          "triage": "not-checked",
+          "notes": "DTIC PDF report on PCSS lifetime studies — not fetched due to triage budget. Would likely be binary PDF with same access issues as OSTI PDF."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://compoundsemiconductor.net/article/119149/US_team_reinvents_the_photoconductive_switch",
+          "source_name": "compoundsemiconductor-119149-us-team-reinvents-the"
+        }
+      ],
+      "failed": [],
+      "notes": "Search context from summaries (not primary sources): GaAs PCSS lifetimes range from ~10^4 shots (UWB-HPM applications at higher current) to ~10^8 shots (electro-optic drivers at 20A/5ns pulses). Diamond is expected to substantially exceed GaAs lifetime due to superior thermal conductivity (2100 W/m·K) and critical field (10 MV/cm). Commercial readiness: Opcondys Inc. (LLNL licensee) is developing commercial diamond PCSS under DOE ULTRAFAST funding — pre-commercial as of available information. The OSTI PCSS lifetime testing paper (biblio/1147822) is the most directly relevant source but was inaccessible as a binary PDF. Gap remains partially addressed — no direct diamond PCSS lifetime data found.",
+      "status": "partial"
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 2,
+    "sources_extracted": 1,
+    "sources_failed": 0,
+    "searches_used": 5,
+    "extractions_used": 1
+  }
+}
