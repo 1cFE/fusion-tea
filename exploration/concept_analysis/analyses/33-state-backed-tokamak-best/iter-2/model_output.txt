@@ -1,0 +1,164 @@
+State-Backed Tokamak - BEST → Commercial PFPP Analogue (Neo Fusion / ASIPP)
+ARIES-AT geometry | sCO2 Brayton 34.7% | Q~10 | LTS Nb3Sn | NOAK
+LCOE: 140.6 $/MWh | Overnight: 10113 $/kW
+Fusion: 3673 MW | Net: 1000 MW | Q_eng: 3.24
+
+Code     Account                                M$
+--------------------------------------------------
+CAS10    Preconstruction                      18.5
+CAS21    Buildings                           786.7
+CAS22    Reactor Plant Equipment            4514.4
+CAS23    Turbine Plant                       224.2
+CAS24    Electrical Plant                    121.7
+CAS25    Miscellaneous                        74.1
+CAS26    Heat Rejection                       91.7
+CAS27    Special Materials                    15.0
+CAS28    Digital Twin                          5.0
+CAS29    Contingency                           0.0
+CAS30    Indirect Costs                     1555.4
+CAS40    Owner's Costs                        39.0
+CAS50    Supplementary                       439.6
+CAS60    IDC                                2227.4
+CAS70    O&M (annualized)                    168.6
+CAS80    Fuel (annualized)                     1.7
+CAS90    Financial                           815.0
+--------------------------------------------------
+         Total Capital                     10112.8
+
+CAS22 Sub-account Detail:
+  C220101: 575.1 M$
+  C220102: 469.8 M$
+  C220103: 1470.3 M$
+  C220104: 353.2 M$
+  C220105: 34.2 M$
+  C220106: 186.5 M$
+  C220107: 103.6 M$
+  C220108: 122.5 M$
+  C220109: 0.0 M$
+  C220110: 180.4 M$
+  C220111: 489.4 M$
+  C220112: 0.0 M$
+  C220200: 210.7 M$
+  C220300: 83.9 M$
+  C220400: 8.2 M$
+  C220500: 120.0 M$
+  C220600: 11.5 M$
+  C220700: 95.2 M$
+  C220000: 4514.4 M$
+
+Key Assumptions (PFPP Commercial Analogue — Very Low Confidence):
+  Commercial PFPP native power:    1000 MWe (no published design point)
+  Geometry analogue:               ARIES-AT (R₀=5.2m, a=1.3m, κ=1.7)
+  Magnet technology:               LTS Nb3Sn/NbTi TF/PF + YBCO CS sub-coils
+  Thermal efficiency:              0.347 (sCO2 Brayton; CFETR study)
+  Availability:                    80% (Araiinejad & Shirvan 2025 analogue)
+  Q value implied (commercial):    ~10 (drives p_input = 200 MW)
+  H&CD wall-plug efficiency:       0.60 (4-method portfolio avg)
+  Cryogenic load (LTS 4.5K):      8.0 MW (ITER-scaled)
+  Blanket technology:              DEFAULT (PbLi; COOL/WCCB/WCLL undecided)
+  Chinese construction discount:   NOT APPLIED (unknown magnitude in fusion context)
+  Regulatory 2.2× factor:          NOT APPLIED (Chinese context uncertain)
+  NOAK:                            True
+  Construction time:               8 yr (UNCERTAIN)
+
+Scenario: Chinese construction cost discount (CAS21 buildings)
+  Source: analysis.md §S2 Challenge 1; 2–4× reduction vs. Western baseline
+  Base CAS21 (Western/NOAK): 787 M$
+  No discount (Western baseline): CAS21=787 M$ → LCOE=140.6 $/MWh
+  2× Chinese discount — central estimate: CAS21=393 M$ → LCOE=133.0 $/MWh
+  4× Chinese discount — optimistic estimate: CAS21=197 M$ → LCOE=129.2 $/MWh
+  Western 2.2× regulatory factor: CAS21=1731 M$ → LCOE=158.8 $/MWh
+
+Scenario: Capacity factor — quasi-steady-state vs. pulsed operation
+  Source F-1: CFETR Phase I duty cycle 0.3–0.5 (OSTI 1465662) vs. quasi-steady-state
+  CF=35%: Pulsed low  — CFETR Phase I duty cycle ~0.3: LCOE=302.2 $/MWh
+  CF=50%: Pulsed high — CFETR Phase I duty cycle ~0.5: LCOE=214.7 $/MWh
+  CF=80%: Central     — quasi-steady-state PFPP (current base case): LCOE=140.6 $/MWh
+  CF=90%: QSS upper   — Araiinejad & Shirvan analogue upper bound: LCOE=127.2 $/MWh
+
+Scenario: Blanket technology — COOL/PbLi+sCO2 vs. WCCB/ceramic breeder+Rankine
+  Source F-3 carried: analysis.md §S2 Challenge 5, §S6 Gap 3
+  (a) COOL/PbLi + sCO2 Brayton  (eta_th=34.7%): LCOE=140.6 $/MWh  [base case]
+  (b) WCCB/ceramic + Rankine     (eta_th=26.4%): LCOE=154.0 $/MWh
+  Delta: +13.4 $/MWh for WCCB vs. COOL
+
+Sensitivity (elasticity = %LCOE / %param)
+--------------------------------------------------
+
+Engineering levers:
+  availability                           -0.9236
+  r_coil                                 +0.4609
+  construction_time_yr                   +0.4259
+  elon                                   +0.2713
+  R0                                     +0.2713
+  eta_th                                 -0.2562
+  b_max                                  +0.2304
+  blanket_t                              +0.1868
+  plasma_t                               +0.1568
+  eta_pin                                -0.0914
+  p_input                                +0.0883
+  p_nbi                                  +0.0554
+  ht_shield_t                            +0.0512
+  mn                                     -0.0499
+  vessel_t                               +0.0318
+  f_sub                                  +0.0159
+  p_cryo                                 +0.0098
+  structure_t                            +0.0091
+  p_cool                                 +0.0069
+  p_trit                                 +0.0027
+  p_house                                +0.0014
+  p_coils                                +0.0014
+  p_pump                                 +0.0005
+  eta_p                                  -0.0000
+  dd_f_T                                 +0.0000
+  dd_f_He3                               +0.0000
+  dhe3_dd_frac                           +0.0000
+  dhe3_f_T                               +0.0000
+  eta_de                                 +0.0000
+  q95                                    +0.0000
+  f_GW                                   +0.0000
+  B                                      +0.0000
+  T_e                                    +0.0000
+  n_e                                    +0.0000
+  Z_eff                                  +0.0000
+  plasma_volume                          +0.0000
+  R_w                                    +0.0000
+  T_edge                                 +0.0000
+  tau_ratio                              +0.0000
+  M_ion                                  +0.0000
+  lambda_q                               +0.0000
+  disruption_rate_base                   +0.0000
+  disruption_steepness                   +0.0000
+  disruption_damage                      +0.0000
+  disruption_downtime                    +0.0000
+
+Financial:
+  interest_rate                          +0.7714
+  inflation_rate                         +0.0390
+
+Costing constants (top 15):
+  indirect_fraction                      +0.1656
+  blanket_unit_cost_dt                   +0.1630
+  om_cost_dt                             +0.0826
+  core_lifetime_dt                       -0.0747
+  shield_unit_cost                       +0.0736
+  installation_frac                      +0.0673
+  heating_nbi_per_mw                     +0.0554
+  divertor_base                          +0.0347
+  vessel_unit_cost                       +0.0292
+  remote_handling_dt_base                +0.0283
+  electric_per_mw                        +0.0171
+  fuel_handling_dt_base                  +0.0165
+  fuel_recovery                          -0.0163
+  power_supplies_base                    +0.0162
+  decom_provision_dt                     +0.0133
+
+Capacity factor sweep (CF = 0.35 → 0.90: pulsed CFETR to quasi-steady-state):
+  CF=0.35: LCOE=302.2 $/MWh
+  CF=0.40: LCOE=265.9 $/MWh
+  CF=0.50: LCOE=214.7 $/MWh
+  CF=0.60: LCOE=182.3 $/MWh
+  CF=0.70: LCOE=159.0 $/MWh
+  CF=0.75: LCOE=149.2 $/MWh
+  CF=0.80: LCOE=140.6 $/MWh ← base
+  CF=0.90: LCOE=127.2 $/MWh

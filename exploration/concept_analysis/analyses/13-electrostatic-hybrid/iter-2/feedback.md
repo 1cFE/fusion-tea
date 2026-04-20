@@ -1,0 +1,22 @@
+VERDICT: FINDINGS
+
+### F-1: Q break-even threshold is wrong in analysis text; baseline model scenario produces negative net power
+- **Target:** Section 2 (High-leverage parameters) and model_setup.py (OrbitronPlantParams defaults, scenario comparison table)
+- **Category:** model
+- **Finding:** Section 2 states "LCOE is undefined below Q_engineering ≈ 2–3 for any thermal cycle," but the correct net-power break-even is Q = 1/η. At the thermoelectric baseline (η=12%), break-even requires Q ≈ 8.3, not 2–3. At turbine-array efficiency (η=30%), break-even is Q ≈ 3.3. The "2–3" floor is only valid at η > 33–50%, which is an optimistic assumption. Consequently, the default baseline scenario (Q=5, η=12%) produces negative net power per module (p_et ≈ 0.6 kWe vs p_recirc ≈ 1.12 kWe) and the model prints "LCOE = UNDEFINED" — the opposite of a useful reference case. The "Q=5, thermoelectric" row in the scenario comparison table has the same problem. This error propagates directly into the analysis's stated primary conclusion: the minimum Q threshold that determines Orbitron viability is substantially higher than the analysis claims.
+- **Recommendation:** Correct the Q break-even in Section 2 to read Q ≈ 8–9 (thermoelectric, η=12%) and Q ≈ 3–4 (turbine array, η=30%). Set the default baseline in model_setup.py to a physically feasible case — either Q=10 at η=12%, or Q=5 at η=30%. Update the scenario comparison table so all rows represent achievable (positive net power) configurations. The key quantitative conclusion in Section 7 — the minimum Q required for commercial viability — should then be stated explicitly using the corrected values the model computes.
+- **Priority:** blocking
+
+### F-2: Back-solve LCOE surface has mislabeled capital-cost axis
+- **Target:** model_setup.py `back_solve_lcoe_surface()` function
+- **Category:** model
+- **Finding:** The back-solve table labels its columns as "LCOE $/MWh @$2k/kW" and "LCOE $/MWh @$5k/kW," implying these are specific capital $/kWe scenarios. The implementation varies `hv_power_supply_cost_per_kW_USD` (200 vs 800 $/kW_input) without computing or printing the actual resulting specific capital $/kWe. Because HV supply cost is only one of many capital accounts, the actual $/kWe at each sweep point is unknown and likely differs from the labeled targets. The primary model output — the (Q, $/kWe) viability map described in Section 7 — is uninterpretable without verified axis values.
+- **Recommendation:** Modify `back_solve_lcoe_surface()` to print the computed specific capital $/kWe for each scenario column, so readers can verify the axis labels. Alternatively, restructure the sweep to directly target $/kWe by scaling all per-module cost accounts together. The goal is a table where both axes (Q and $/kWe) are quantities actually computed by the model, not assumed from one input parameter.
+- **Priority:** important
+
+### F-3: Key hypotheses stated as methodology steps, not testable propositions
+- **Target:** Section 7 (TEA pipeline recommendation, modeling steps 1–5)
+- **Category:** analysis
+- **Finding:** Section 7 outlines five modeling steps for the back-solve but frames each as an action item rather than a falsifiable proposition. Goal 4 requires hypotheses the model can confirm or refute. The analysis identifies the right structure but stops short of committing to specific claims, leaving the back-solve output as an open question rather than a conditional conclusion. For example, the critical question — whether Coulomb collision physics makes the required Q unachievable and therefore renders LCOE ≤ $100/MWh structurally impossible — is framed as a comparison to "make" rather than a claim to test.
+- **Recommendation:** After correcting the Q break-even (F-1), rewrite the modeling recommendation in Section 7 as 2–3 explicit conditional propositions, e.g.: "H1: Under thermoelectric conversion (η=12%), LCOE ≤ $100/MWh requires Q_engineering > [X computed by model] — a value not achievable if Coulomb collisions limit Q below that threshold." "H2: Even under turbine-array conversion (η=30%), viability requires Q_engineering > [Y] and specific capital < [Z $/kWe] simultaneously — a combination that requires demonstrating space-charge-mitigated density and a plant architecture that does not yet exist." The model output then confirms or refutes each proposition with specific numbers.
+- **Priority:** important

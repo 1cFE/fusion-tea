@@ -1,0 +1,171 @@
+{
+  "entries": [
+    {
+      "gap_id": "G-11",
+      "gap_description": "Measured scaling from 100 kV (Physics of Plasmas paper) to 300 kV operating point",
+      "queries": [
+        "arxiv \"mode-enhanced ion loading\" \"100 kV orbitrap\" Physics of Plasmas Avalanche Energy",
+        "arxiv \"Orbitron\" \"crossed-field\" \"co-confinement\" \"AIP Advances\" Avalanche Energy electrostatic fusion",
+        "site:osti.gov \"mode-enhanced ion loading\" \"100 kV orbitrap\" OR \"orbitrap\" \"Merthe\" Avalanche Energy fusion",
+        "arxiv.org \"Merthe\" OR \"Hakimi\" \"orbitrap\" OR \"Orbitron\" \"Avalanche Energy\" fusion 100 kV ion loading preprint"
+      ],
+      "candidates": [
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/32/9/092105/3362035/Mode-enhanced-ion-loading-in-a-100-kV-orbitrap",
+          "title": "Mode-enhanced ion loading in a 100 kV orbitrap — Physics of Plasmas (2025)",
+          "triage": "paywall",
+          "notes": "Primary target paper (DOI 10.1063/5.0278177). AIP Publishing institutional paywall. Contains key data: m=1 mode coincides with confinement time increase by order of magnitude to 0.8 ms; steady-state density 10-20% of space charge limit at 100 kV. No OSTI record found (paper may lack DOE funding). No arXiv preprint found."
+        },
+        {
+          "url": "https://www.osti.gov/pages/biblio/2582151",
+          "title": "The Orbitron: A crossed-field device for co-confinement of high energy ions and electrons — OSTI (2024)",
+          "triage": "relevant",
+          "notes": "OSTI bibliography page for AIP Advances paper (DOE-funded via LBNL/USDOE contract AC02-05CH11231). Abstract-only on this page, but links to accepted manuscript PDF via PURL. AIP Advances paper partially ingested in iter-01 (images directory exists but no output.md)."
+        },
+        {
+          "url": "https://www.osti.gov/pages/servlets/purl/2582151",
+          "title": "The Orbitron: A crossed-field device for co-confinement — OSTI Accepted Manuscript PDF (2024)",
+          "triage": "relevant",
+          "notes": "OSTI PURL serving full accepted manuscript PDF (6MB). CC BY-NC-ND 4.0 license. Full paper content accessible — includes experimental apparatus, diagnostics, PIC simulations, initial results. Directly addresses physics challenges (Coulomb collisions, space charge limit, electron co-confinement). EXTRACTED."
+        },
+        {
+          "url": "https://ui.adsabs.harvard.edu/abs/2023APS..DPPTP1006M/abstract",
+          "title": "Characterization of Ion Loading and Energy Confinement Time in an Orbitron — APS DPP 2023",
+          "triage": "relevant",
+          "notes": "ADS abstract for 2023 APS Division of Plasma Physics conference presentation. Reports 'significant populations of deuterium ions confined with energies in excess of 100 keV' in initial testing. Uses image current measurements and neutron yield data to evaluate trapping characteristics and estimate energy confinement time. Abstract-only but directly addresses confinement time gap. EXTRACTED."
+        },
+        {
+          "url": "https://ui.adsabs.harvard.edu/abs/2023APS..DPPYO8010L/abstract",
+          "title": "Electrostatic Orbitron Fusion Reactor: Overview of Scientific Program — APS DPP 2023",
+          "triage": "relevant",
+          "notes": "ADS abstract for 2023 APS DPP conference overview presentation of the Orbitron scientific program. Program-level context for the Avalanche Energy R&D roadmap. EXTRACTED."
+        },
+        {
+          "url": "https://pubs.aip.org/aip/adv/article-pdf/doi/10.1063/5.0201470/20119682/085025_1_5.0201470.am.pdf",
+          "title": "AIP Advances accepted manuscript PDF (direct URL)",
+          "triage": "inaccessible",
+          "notes": "Returned 403 Forbidden. OSTI purl used instead for same paper content."
+        },
+        {
+          "url": "https://www.nsf.gov/awardsearch/showAward?AWD_ID=2303759",
+          "title": "NSF SBIR Phase I Award 2303759 — Avalanche Energy",
+          "triage": "not-fetched",
+          "notes": "URL redirected (301). Not fetched due to extraction budget exhausted. Would contain NSF SBIR technical abstract describing R&D program goals and device specifications. Lower priority than peer-reviewed content; candidate for future iteration."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/pages/servlets/purl/2582151",
+          "source_name": "osti-pages-servlets-purl-2582151"
+        },
+        {
+          "url": "https://ui.adsabs.harvard.edu/abs/2023APS..DPPTP1006M/abstract",
+          "source_name": "ui-2023aps-dpptp1006m-abstract"
+        },
+        {
+          "url": "https://ui.adsabs.harvard.edu/abs/2023APS..DPPYO8010L/abstract",
+          "source_name": "ui-2023aps-dppyo8010l-abstract"
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/32/9/092105/3362035/Mode-enhanced-ion-loading-in-a-100-kV-orbitrap",
+          "reason": "AIP Publishing institutional paywall — no open-access version found on OSTI (DOE funding not confirmed for this paper) or arXiv (no preprint deposited)"
+        }
+      ],
+      "notes": "The primary target (Physics of Plasmas 32(9), 092105 — 2025) is paywalled with no open-access route identified. The AIP Advances paper (AIP Advances 14(8), 085025 — 2024) was accessible via OSTI accepted manuscript and extracted successfully; it covers foundational experimental work on co-confinement, apparatus design, and initial ion density results. The iter-01 source directory for this paper already contained extracted images but no output.md — this extraction completed the ingestion via the OSTI purl. The two ADS conference abstracts provide 2023 experimental progress data (pre-publication) on confinement time and the broader scientific program.",
+      "status": "partial",
+      "timestamp": "2026-04-19T19:32:23.745500+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-11",
+      "gap_description": "Measured scaling from 100 kV (Physics of Plasmas paper) to 300 kV operating point",
+      "queries": [
+        "Avalanche Energy Orbitron APS DPP 2024 \"mode-enhanced\" OR \"300 kV\" OR \"scaling\" plasma physics",
+        "\"mode-enhanced ion loading\" \"orbitrap\" site:researchgate.net OR site:semanticscholar.org",
+        "Avalanche Energy Orbitron 2025 preprint OR \"conference paper\" OR \"technical report\" scaling 300 kV ion density neutron yield",
+        "site:meetings.aps.org DPP24 \"Avalanche Energy\" OR \"Orbitron\" OR \"Merthe\" OR \"Hakimi\" 2024",
+        "Avalanche Energy \"peer-reviewed\" OR \"journal\" 2024 2025 Orbitron fusion third paper Affolter OR Thompson OR Hayes"
+      ],
+      "candidates": [
+        {
+          "url": "https://meetings.aps.org/Meeting/DPP24/Session/NP12.69",
+          "title": "Collective Effects near the Ion Space-Charge Limit of the Orbitron (APS DPP 2024)",
+          "triage": "relevant",
+          "notes": "Publicly accessible APS abstract. Reports 'negative mass' instabilities limiting ion density to ~1 order of magnitude below theoretical space-charge limit. Relevant to space-charge mitigation physics that underpins the 100 kV→300 kV scaling story. Minimal quantitative data but confirms 2024 experimental progress and identifies the density-limiting mechanism."
+        },
+        {
+          "url": "https://meetings.aps.org/Meeting/DPP24/Session/NP12.68",
+          "title": "Ion Constants of Motion in the Orbitron Fusion Device (APS DPP 2024)",
+          "triage": "not_relevant",
+          "notes": "Theoretical/computational abstract by Johan Carlsson. Describes Hamilton-Jacobi separability and action variables for Orbitron confinement. No quantitative measurements or scaling data. Not extracted."
+        },
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/32/9/092105/3362035/Mode-enhanced-ion-loading-in-a-100-kV-orbitrap",
+          "title": "Mode-enhanced ion loading in a 100 kV orbitrap — Physics of Plasmas (2025)",
+          "triage": "paywall",
+          "notes": "Primary source for G-11. No preprint on arXiv or OSTI (DOE funding not confirmed for this specific paper). Authors: Daniel Merthe, Sahel Hakimi et al. Cannot be obtained from public sources."
+        },
+        {
+          "url": "https://www.prnewswire.com/news-releases/avalanche-energy-announces-new-fusionwerx-test-facility-to-accelerate-commercial-fusion-development-302425265.html",
+          "title": "Avalanche Energy Announces New FusionWERX Test Facility (April 2025)",
+          "triage": "relevant",
+          "notes": "New press release not in existing corpus. Distinct from $10M Washington State grant announcement already extracted. April 2025 facility announcement — may contain updated technical milestones or references to three peer-reviewed papers published by that date."
+        },
+        {
+          "url": "https://www.neimagazine.com/news/avalanche-energy-launches-fusionwerx/",
+          "title": "Avalanche Energy launches FusionWERX — NEI Magazine",
+          "triage": "relevant",
+          "notes": "Trade press coverage of FusionWERX launch. Independent framing may capture technical details not in company-issued materials. NEI Magazine is a quality-tier 1 trade publication for nuclear industry coverage."
+        },
+        {
+          "url": "https://www.techjournal.uk/p/avalanche-energy-builds-desk-sized",
+          "title": "Avalanche Energy Builds Desk-Sized Fusion Reactors — TechJournal UK",
+          "triage": "not_relevant",
+          "notes": "News summary with no primary technical data. Mentions 300 kV milestone and 17.6 MeV DT energy but no quantitative scaling parameters. Not extracted."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://meetings.aps.org/Meeting/DPP24/Session/NP12.69",
+          "source_name": "meetings-meeting-dpp24-session-np12-69"
+        },
+        {
+          "url": "https://www.prnewswire.com/news-releases/avalanche-energy-announces-new-fusionwerx-test-facility-to-accelerate-commercial-fusion-development-302425265.html",
+          "source_name": "prnewswire-news-releases-avalanche-energy-announces-new"
+        },
+        {
+          "url": "https://www.neimagazine.com/news/avalanche-energy-launches-fusionwerx/",
+          "source_name": "neimagazine-news-avalanche-energy-launches-fusionwerx"
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/32/9/092105/3362035/Mode-enhanced-ion-loading-in-a-100-kV-orbitrap",
+          "reason": "AIP Publishing institutional paywall — no open-access version on OSTI or arXiv. Authors: Merthe, Hakimi et al. Paper confirmed as DOE-unfunded (no OSTI record found). Cannot be obtained from public sources."
+        },
+        {
+          "url": "https://pubs.aip.org/search-results (Hammerhead paper)",
+          "reason": "Third paper 'Hammerhead: a compact 300 kV vacuum bushing' (Dec 2025) confirmed from $29M press release context. Searched OSTI and arXiv — no open-access preprint deposited. AIP Publishing search returned 403. Paper is about HV vacuum bushing design (instrumentation), not plasma scaling directly. Cannot be obtained from public sources."
+        }
+      ],
+      "status": "partial",
+      "notes": "The primary source for G-11 (Physics of Plasmas 32(9), 092105) remains inaccessible. A third Avalanche paper 'Hammerhead: a compact 300 kV vacuum bushing' (Dec 2025) was newly discovered — relevant to 300 kV HV system design but also paywalled without preprint. New contextual sources extracted: APS DPP 2024 abstract on collective effects limiting ion density (space-charge scaling physics), plus two new FusionWERX facility announcements from April 2025 not previously in corpus. Gap G-11 remains PARTIAL — scaling data exists only in paywalled papers.",
+      "timestamp": "2026-04-19T20:02:03.513686+00:00",
+      "iteration": 3
+    }
+  ],
+  "acquired_by_iteration": {
+    "2": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/osti-pages-servlets-purl-2582151.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/ui-2023aps-dpptp1006m-abstract.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/ui-2023aps-dppyo8010l-abstract.md"
+    ],
+    "3": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/meetings-meeting-dpp24-session-np12-69.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/neimagazine-news-avalanche-energy-launches-fusionwerx.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/prnewswire-news-releases-avalanche-energy-announces-new.md"
+    ]
+  }
+}

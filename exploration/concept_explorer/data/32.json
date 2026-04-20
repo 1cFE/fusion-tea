@@ -1,0 +1,527 @@
+{
+  "concept_id": "32",
+  "name": "Laser ICF - French National Direct Drive (D-T)",
+  "confinement_family": "NONSTANDARD",
+  "company": "GenF Systems",
+  "status": "in_progress",
+  "illustration": null,
+  "has_cost_model": true,
+  "has_sensitivities": true,
+  "cost_model": {
+    "cas10": {
+      "name": "Preconstruction",
+      "cost_m_usd": 19.010000228881836,
+      "overridden": false
+    },
+    "cas21": {
+      "name": "Buildings & Structures",
+      "cost_m_usd": 787.5298461914062,
+      "overridden": false
+    },
+    "cas22": {
+      "name": "Reactor Plant Equipment",
+      "cost_m_usd": 3812.75244140625,
+      "overridden": false
+    },
+    "cas23": {
+      "name": "Turbine Plant Equipment",
+      "cost_m_usd": 309.8493347167969,
+      "overridden": false
+    },
+    "cas24": {
+      "name": "Electrical Plant Equipment",
+      "cost_m_usd": 131.9728546142578,
+      "overridden": false
+    },
+    "cas25": {
+      "name": "Miscellaneous Plant Equipment",
+      "cost_m_usd": 80.33131408691406,
+      "overridden": false
+    },
+    "cas26": {
+      "name": "Heat Rejection Systems",
+      "cost_m_usd": 133.88551330566406,
+      "overridden": false
+    },
+    "cas27": {
+      "name": "Special Materials",
+      "cost_m_usd": 8.0,
+      "overridden": true
+    },
+    "cas28": {
+      "name": "Digital Twin & Simulation",
+      "cost_m_usd": 5.0,
+      "overridden": false
+    },
+    "cas29": {
+      "name": "Contingency",
+      "cost_m_usd": 0.0,
+      "overridden": false
+    },
+    "cas30": {
+      "name": "Indirect Costs",
+      "cost_m_usd": 878.22021484375,
+      "overridden": false
+    },
+    "cas40": {
+      "name": "Owner's Costs",
+      "cost_m_usd": 42.79350280761719,
+      "overridden": false
+    },
+    "cas50": {
+      "name": "Supplementary Costs",
+      "cost_m_usd": 445.0852966308594,
+      "overridden": false
+    },
+    "cas60": {
+      "name": "Interest During Construction",
+      "cost_m_usd": 999.1480102539062,
+      "overridden": false
+    },
+    "cas70": {
+      "name": "O&M Costs (annualised)",
+      "cost_m_usd": 174.30233764648438,
+      "overridden": false
+    },
+    "cas80": {
+      "name": "Fuel Costs (annualised)",
+      "cost_m_usd": 1.4818074703216553,
+      "overridden": false
+    },
+    "cas90": {
+      "name": "Financial Costs",
+      "cost_m_usd": 616.7743530273438,
+      "overridden": false
+    },
+    "cas22_detail": {
+      "C220101": {
+        "name": "First Wall & Blanket",
+        "cost_m_usd": 772.2716674804688,
+        "overridden": false
+      },
+      "C220102": {
+        "name": "Radiation Shield",
+        "cost_m_usd": 452.9393005371094,
+        "overridden": false
+      },
+      "C220103": {
+        "name": "Magnets / Coils",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220104": {
+        "name": "Heating & Driver Systems",
+        "cost_m_usd": 0.0,
+        "overridden": true
+      },
+      "C220105": {
+        "name": "Primary Structure & Support",
+        "cost_m_usd": 30.304101943969727,
+        "overridden": false
+      },
+      "C220106": {
+        "name": "Vacuum System",
+        "cost_m_usd": 105.29784393310547,
+        "overridden": false
+      },
+      "C220107": {
+        "name": "Power Conditioning & Energy Storage",
+        "cost_m_usd": 999.0,
+        "overridden": true
+      },
+      "C220108": {
+        "name": "Divertor / Target Factory",
+        "cost_m_usd": 334.2587585449219,
+        "overridden": false
+      },
+      "C220109": {
+        "name": "Direct Energy Converter",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220110": {
+        "name": "Remote Handling & Maintenance Equipment",
+        "cost_m_usd": 93.9072494506836,
+        "overridden": false
+      },
+      "C220111": {
+        "name": "Installation Labor",
+        "cost_m_usd": 286.1824951171875,
+        "overridden": false
+      },
+      "C220112": {
+        "name": "Isotope Separation Plant",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220200": {
+        "name": "Main & Secondary Coolant",
+        "cost_m_usd": 243.0712890625,
+        "overridden": false
+      },
+      "C220300": {
+        "name": "Auxiliary Cooling & Cryoplant",
+        "cost_m_usd": 15.696067810058594,
+        "overridden": false
+      },
+      "C220400": {
+        "name": "Radioactive Waste Management",
+        "cost_m_usd": 7.681955814361572,
+        "overridden": false
+      },
+      "C220500": {
+        "name": "Fuel Handling & Storage",
+        "cost_m_usd": 136.65318298339844,
+        "overridden": false
+      },
+      "C220600": {
+        "name": "Other Reactor Plant Equipment",
+        "cost_m_usd": 244.0,
+        "overridden": true
+      },
+      "C220700": {
+        "name": "Instrumentation & Control",
+        "cost_m_usd": 91.48816680908203,
+        "overridden": false
+      }
+    },
+    "headline": {
+      "lcoe_per_mwh": 100.19348907470703,
+      "overnight_cost_per_kw": 6356.79345703125,
+      "p_net_mw": 1203.9998779296875,
+      "q_eng": 4.309999942779541,
+      "capacity_factor": 0.75
+    },
+    "sensitivities": {
+      "engineering": {
+        "availability": {
+          "elasticity": -0.8796430106484043,
+          "baseline": 0.75
+        },
+        "construction_time_yr": {
+          "elasticity": 0.2463449148414201,
+          "baseline": 5.0
+        },
+        "mn": {
+          "elasticity": -0.058343549513008956,
+          "baseline": 1.1
+        },
+        "eta_th": {
+          "elasticity": -0.3340919943189334,
+          "baseline": 0.4
+        },
+        "f_sub": {
+          "elasticity": -0.007375248191381466,
+          "baseline": 0.03
+        },
+        "p_pump": {
+          "elasticity": -0.0001752317973122202,
+          "baseline": 1.0
+        },
+        "p_trit": {
+          "elasticity": -0.0015681206646491052,
+          "baseline": 10.0
+        },
+        "p_house": {
+          "elasticity": -0.0006272482658596421,
+          "baseline": 4.0
+        },
+        "p_cryo": {
+          "elasticity": 0.0012264112896559934,
+          "baseline": 0.5
+        },
+        "blanket_t": {
+          "elasticity": 0.2557855809655943,
+          "baseline": 0.8
+        },
+        "ht_shield_t": {
+          "elasticity": 0.05327003656738295,
+          "baseline": 0.25
+        },
+        "structure_t": {
+          "elasticity": 0.007399911134875428,
+          "baseline": 0.15
+        },
+        "vessel_t": {
+          "elasticity": 0.020554319070706834,
+          "baseline": 0.1
+        },
+        "plasma_t": {
+          "elasticity": 0.6960629338106122,
+          "baseline": 8.0
+        },
+        "dd_f_T": {
+          "elasticity": 0.0,
+          "baseline": 0.969
+        },
+        "dd_f_He3": {
+          "elasticity": 0.0,
+          "baseline": 0.689
+        },
+        "dhe3_dd_frac": {
+          "elasticity": 0.0,
+          "baseline": 0.07
+        },
+        "dhe3_f_T": {
+          "elasticity": 0.0,
+          "baseline": 0.97
+        },
+        "q_eng": {
+          "elasticity": -0.2273266497879981,
+          "baseline": 4.31
+        },
+        "f_rep": {
+          "elasticity": -0.00280176356619049,
+          "baseline": 10.0
+        },
+        "eta_pin": {
+          "elasticity": 0.044275391185738734,
+          "baseline": 0.1
+        },
+        "f_rad": {
+          "elasticity": 0.0,
+          "baseline": 0.1
+        },
+        "p_target": {
+          "elasticity": -0.00015681206646491052,
+          "baseline": 1.0
+        },
+        "eta_dec": {
+          "elasticity": 0.0,
+          "baseline": 0.85
+        }
+      },
+      "financial": {
+        "interest_rate": {
+          "elasticity": 0.5930249225680787,
+          "baseline": 0.07
+        },
+        "inflation_rate": {
+          "elasticity": 0.048256860026544494,
+          "baseline": 0.0245
+        }
+      }
+    },
+    "params": {
+      "q_eng": 4.31,
+      "f_rep": 10.0,
+      "f_rad": 0.1,
+      "eta_pin": 0.1,
+      "eta_dec": 0.85,
+      "f_pdv": 0.8,
+      "mn": 1.1,
+      "f_sub": 0.03,
+      "p_pump": 1.0,
+      "p_trit": 10.0,
+      "p_house": 4.0,
+      "p_cryo": 0.5,
+      "p_target": 1.0,
+      "R0": 0.0,
+      "plasma_t": 8.0,
+      "blanket_t": 0.8,
+      "ht_shield_t": 0.25,
+      "structure_t": 0.15,
+      "vessel_t": 0.1,
+      "construction_time_yr": 5.0,
+      "dd_f_T": 0.969,
+      "dd_f_He3": 0.689,
+      "dhe3_dd_frac": 0.07,
+      "dhe3_f_T": 0.97,
+      "pb11_f_alpha_n": 0.0,
+      "pb11_f_p_n": 0.0,
+      "site_permits": 3.0,
+      "plant_studies_foak": 20.0,
+      "plant_studies_noak": 4.0,
+      "plant_permits": 2.0,
+      "plant_reports": 1.0,
+      "other_precon": 1.0,
+      "land_intensity": 0.25,
+      "land_cost": 10000.0,
+      "licensing_cost_dt": 5.0,
+      "licensing_cost_dd": 3.0,
+      "licensing_cost_dhe3": 1.0,
+      "licensing_cost_pb11": 0.1,
+      "licensing_time_dt": 2.0,
+      "licensing_time_dd": 1.5,
+      "licensing_time_dhe3": 0.75,
+      "licensing_time_pb11": 0.0,
+      "blanket_unit_cost_dt": 0.6,
+      "blanket_unit_cost_dd": 0.3,
+      "blanket_unit_cost_dhe3": 0.08,
+      "blanket_unit_cost_pb11": 0.05,
+      "shield_unit_cost": 0.74,
+      "heating_nbi_per_mw": 7.0642,
+      "heating_icrf_per_mw": 4.1494,
+      "heating_ecrh_per_mw": 5.0,
+      "heating_lhcd_per_mw": 4.0,
+      "driver_laser_per_mw": 8.0,
+      "driver_heavy_ion_per_mw": 12.0,
+      "driver_mag_target_per_mw": 3.0,
+      "driver_plasma_jet_per_mw": 4.0,
+      "driver_maglif_per_mw": 6.0,
+      "structure_unit_cost": 0.15,
+      "vessel_unit_cost": 0.72,
+      "power_supplies_base": 80.0,
+      "divertor_base": 60.0,
+      "target_factory_base": 244.0,
+      "dec_base": 100.0,
+      "dec_grid_cost": 12.0,
+      "dec_grid_lifetime_dt": 2.0,
+      "dec_grid_lifetime_dd": 3.0,
+      "dec_grid_lifetime_dhe3": 4.0,
+      "dec_grid_lifetime_pb11": 3.0,
+      "c_cap_allin_per_joule": 0.5,
+      "markup_switch_bidir": 0.06,
+      "markup_controls": 0.04,
+      "c_inv_per_kw_net": 150.0,
+      "cap_shot_lifetime": 100000000.0,
+      "f_rad_dt": 0.1,
+      "f_rad_dd": 0.08,
+      "f_rad_dhe3": 0.05,
+      "f_rad_pb11": 0.15,
+      "f_rad_fus_pb11": 0.87,
+      "f_rad_fus_dhe3": 0.35,
+      "remote_handling_dt_base": 150.0,
+      "remote_handling_dd_base": 100.0,
+      "remote_handling_dhe3_base": 30.0,
+      "remote_handling_pb11_base": 20.0,
+      "installation_frac": 0.14,
+      "core_lifetime_dt": 5.0,
+      "core_lifetime_dd": 10.0,
+      "core_lifetime_dhe3": 30.0,
+      "core_lifetime_pb11": 50.0,
+      "fuel_handling_dt_base": 120.0,
+      "fuel_handling_dd_base": 60.0,
+      "fuel_handling_dhe3_base": 40.0,
+      "fuel_handling_pb11_base": 15.0,
+      "special_materials_dt": 15.0,
+      "special_materials_dd": 2.0,
+      "special_materials_dhe3": 1.0,
+      "special_materials_pb11": 0.0,
+      "turbine_per_mw": 0.19764,
+      "electric_per_mw": 0.08418,
+      "misc_per_mw": 0.05124,
+      "heat_rej_per_mw": 0.03416,
+      "digital_twin": 5.0,
+      "contingency_rate_foak": 0.1,
+      "contingency_rate_noak": 0.0,
+      "indirect_fraction": 0.2,
+      "reference_construction_time": 6.0,
+      "owner_cost_dt": 39.0,
+      "owner_cost_dd": 31.0,
+      "owner_cost_dhe3": 23.0,
+      "owner_cost_pb11": 20.0,
+      "shipping_frac": 0.015,
+      "spare_parts_frac_dt": 0.03,
+      "spare_parts_frac_dd": 0.025,
+      "spare_parts_frac_dhe3": 0.015,
+      "spare_parts_frac_pb11": 0.01,
+      "tax_frac": 0.01,
+      "construction_insurance_frac": 0.015,
+      "startup_fuel_dt": 40.0,
+      "startup_fuel_dd": 0.1,
+      "startup_fuel_dhe3": 10.0,
+      "startup_fuel_pb11": 0.1,
+      "decom_provision_dt": 127.0,
+      "decom_provision_dd": 93.0,
+      "decom_provision_dhe3": 65.0,
+      "decom_provision_pb11": 53.0,
+      "om_cost_dt": 52.0,
+      "om_cost_dd": 39.0,
+      "om_cost_dhe3": 26.0,
+      "om_cost_pb11": 24.0,
+      "u_deuterium": 2175.0,
+      "u_li6": 1000.0,
+      "u_he3": 2000000.0,
+      "u_protium": 5.0,
+      "u_b11": 10000.0,
+      "u_b11_noak": 75.0,
+      "burn_fraction": 0.05,
+      "fuel_recovery": 0.95,
+      "eta_th": 0.4,
+      "net_electric_mw": 1204.0,
+      "availability": 0.75,
+      "lifetime_yr": 30.0,
+      "n_mod": 1.0,
+      "interest_rate": 0.07,
+      "inflation_rate": 0.0245,
+      "noak": 1.0
+    }
+  },
+  "parameter_metadata": {},
+  "narrative": {
+    "key_bets": [
+      "Shock ignition achieves target gain G ≈ 120 at 3 MJ laser energy — nearly two orders of magnitude above demonstrated NIF Q ≈ 2.5",
+      "DPSSL laser driver scales ~50× from kJ-class demonstrators (LUCIA, Mercury, HALNA) to MJ-class operation at 10 Hz sustained repetition rate with ~10% wall-plug efficiency",
+      "Tritium breeding ratio can be raised from demonstrated 3.57×10⁻⁴ to >1.0 at commercial IFE neutron flux to close the fuel cycle",
+      "First wall material (tungsten or tantalum candidates) survives simultaneous 10 Hz pulsed neutron, X-ray, and ion loading at MW/m² over commercial lifetimes",
+      "Cryogenic DT targets with 2 mm diameter and nanometer-scale surface finish can be mass-produced at 86,400/day for <$2.78/target (Goodin criterion)",
+      "Direct-drive coupling efficiency (~4–5× better than indirect drive) is achievable at the illumination symmetry required for shock ignition",
+      "Final optics and beam delivery hardware survive gigashot MTTF (315M shots/year) against neutron fluence and pellet debris"
+    ],
+    "eliminated_costs": [
+      "No magnets, cryo-cooling infrastructure, or HTS supply chain — C220103 coils/magnets = $0",
+      "No separate plasma heating or current drive system — C220104 zeroed (laser driver is the sole plasma excitation source)",
+      "No direct energy conversion infrastructure (GenF uses thermal-only Rankine) — C220109 DEC = $0, avoiding BLF-style TRL 1–2 energy capture risk",
+      "No hohlraum manufacturing cost versus indirect-drive ICF variants (direct drive ablates target capsule directly)",
+      "No isotope separation infrastructure required on-site — C220112 = $0"
+    ],
+    "novel_costs": [
+      "Target factory CAPEX (C220600 = $244M placeholder) for industrial cryogenic DT target fabrication at 86,400/day — no MFE analogue and no validated IFE cost model",
+      "DPSSL laser driver (C220107 = $999M at $333/J baseline, sweep $300M–$3B) dominating CAS22 and representing 40–60% of plant capital structure",
+      "Target injection and chamber removal systems (C220108 = $334M) for 10 Hz injection into a 1,000–3,000 K chamber while maintaining cryogenic integrity",
+      "Final optics debris and neutron protection (grazing-incidence mirrors, debris shields, liquid films) for gigashot-scale survivability",
+      "Oversized 8 m chamber radius (vs. 4 m framework default) required to keep X-ray flux below 1 J/cm² — drives blanket/shield volume scaling as R³"
+    ],
+    "risks": [
+      {
+        "description": "Target gain unvalidated at commercial parameters: NIF achieves Q ≈ 2.5 at 1–2 MJ indirect drive; G ≈ 120 at 3 MJ direct drive shock ignition has never been demonstrated and LPI effects (SRS, SBS, TPD) are excluded from the Ribeyre simulations",
+        "severity": "high"
+      },
+      {
+        "description": "Tritium fuel cycle cannot close: demonstrated TBR = 3.57×10⁻⁴ vs. required >1.0 (~3,000× gap); consumption >1 kg/day vs. global CANDU supply <2 kg/yr (~180× shortfall) — feasibility constraint not reflected in LCOE",
+        "severity": "high"
+      },
+      {
+        "description": "First wall and final optics survivability at 10 Hz undemonstrated: pure tungsten shows significant lifetime reduction; gigashot MTTF (315M shots/yr) not achieved by any laser component; availability assumed at 0.75 with no empirical basis (−0.90 elasticity on LCOE)",
+        "severity": "high"
+      },
+      {
+        "description": "Laser driver CAPEX uncertainty spans $300M–$3B across $100–$1,000/J sweep; GenF/Thales have not published beamline count, architecture, or $/J cost; diodes must reach ~$0.007/W vs. current ~$0.02/W",
+        "severity": "high"
+      },
+      {
+        "description": "Li-6 enrichment supply chain gap: DEMO-scale demand >60 t/GW enriched lithium with no Western industrial capacity; Russia/China COLEX dominance; Hexium AVLIS at $12M seed only claims 3–5 yr to partial US independence",
+        "severity": "medium"
+      },
+      {
+        "description": "Target manufacturing economics unconstrained: Goodin criterion requires <$2.78/target at 86,400/day; no public cost model exists and cryogenic DT targets at industrial throughput have never been demonstrated (C220600 ranges $100M–$500M+)",
+        "severity": "high"
+      },
+      {
+        "description": "Shock ignition LPI risk at igniting-spike intensity: OMEGA experiments partially de-risk hot-electron preheat (1–2.5% conversion, 35–45 keV) but only at ~10 kJ and 450 µm scale-length; convective SRS control at MJ scale requires additional validation",
+        "severity": "medium"
+      },
+      {
+        "description": "Model energy balance inconsistency (F-1): costingfe reports P_fusion = 2904 MW vs. Ribeyre-derived 3600 MW (24% shortfall) and Q_sci = 139.1 vs. expected 120 — q_eng parameter mapping requires auditing, leaving only ~162 MWe margin after laser draw",
+        "severity": "medium"
+      },
+      {
+        "description": "O&M cost structure entirely absent: no IFE concept has published fixed+variable O&M breakdown; laser optics replacement rate, chamber replacement interval, and maintenance downtime all unquantified",
+        "severity": "medium"
+      },
+      {
+        "description": "Thermodynamic cycle and chamber clearing strategy unspecified: steam Rankine assumed by analogy; no gas-jet, liquid wall, or magnetic divertor ash mitigation scheme published for 10 Hz operation",
+        "severity": "low"
+      },
+      {
+        "description": "Company early-stage risk: GenF founded January 2025, TARANIS in Phase 1 (modeling through 2027); no proprietary design documents disclosed and no third-party TEA or plant study exists for this specific concept",
+        "severity": "medium"
+      }
+    ]
+  },
+  "sources": {
+    "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/32-laser-icf-french-national/model_setup.py",
+    "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/32-laser-icf-french-national/analysis.md"
+  }
+}

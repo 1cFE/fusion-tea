@@ -1,0 +1,74 @@
+{
+  "entries": [
+    {
+      "gap_id": "G-14",
+      "gap_description": "LCOE estimate (independent) — no independent analysis or company projection published for Focused Energy / fast ignition IFE",
+      "queries": [
+        "GEM LLNL laser IFE LCOE economic model inertial fusion energy cost estimate",
+        "PROCESS UKAEA inertial fusion energy laser ICF LCOE cost analysis",
+        "fast ignition laser IFE LCOE cost estimate techno-economic analysis direct drive site:osti.gov OR site:arxiv.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7658748/",
+          "title": "A simplified economic model for inertial fusion (Hawker, Philosophical Transactions A, 2020)",
+          "triage": "relevant",
+          "notes": "Open access on PMC. Technology-agnostic IFE economic model. Quantifies driver cost ($2–10/J), target cost ($1–100), LCOE range down to $25/MWh with optimistic inputs. Gain requirement thresholds analyzed. Full text accessible."
+        },
+        {
+          "url": "https://www.llnl.gov/article/53961/llnl-releases-generalized-economics-model-fusion-energy",
+          "title": "LLNL releases Generalized Economics Model for Fusion Energy (LLNL, January 2026)",
+          "triage": "relevant",
+          "notes": "Describes the publicly available GEM tool for IFE LCOE calculations. DPSSL + indirect-drive focus. No quantitative results in article itself but documents existence and availability of the LLNL IFE economic modeling tool. Accessible."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1438678",
+          "title": "Economic Systems Modeling for Laser IFE and the Potential Advantages of Fast Ignition (Meier, HAPL/LLNL)",
+          "triage": "relevant",
+          "notes": "OSTI full PDF accessible. Directly compares fast ignition vs. central hot spot ignition LCOE/COE. Reports ~37% capital cost reduction for fast ignition. Part of HAPL program systems code work. Most targeted source for G-14."
+        },
+        {
+          "url": "https://link.springer.com/article/10.1007/s10894-025-00515-1",
+          "title": "Developing Integrated Cost Models for Fusion Power Plants (Journal of Fusion Energy, 2025)",
+          "triage": "inaccessible",
+          "notes": "Returned HTTP 303 redirect — could not fetch content. Likely Springer paywall. Skipped."
+        },
+        {
+          "url": "https://www.ans.org/news/article-7735/llnl-offers-tools-to-model-the-economics-of-inertial-fusion-power-plants/",
+          "title": "LLNL offers tools to model the economics of inertial fusion power plants (ANS, 2026)",
+          "triage": "low-value",
+          "notes": "Accessible but no quantitative data. Announcement article only, no LCOE values or technical parameters. Not worth extracting."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7658748/",
+          "source_name": "pmc-articles-pmc7658748"
+        },
+        {
+          "url": "https://www.llnl.gov/article/53961/llnl-releases-generalized-economics-model-fusion-energy",
+          "source_name": "llnl-53961-llnl-releases-generalized-economics-model-fusion"
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1438678",
+          "source_name": "osti-servlets-purl-1438678"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "timestamp": "2026-04-19T21:36:51.925090+00:00",
+      "iteration": 2
+    }
+  ],
+  "acquired_by_iteration": {
+    "2": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/llnl-53961-llnl-releases-generalized-economics-model-fusion.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/osti-servlets-purl-1438678.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/pmc-articles-pmc7658748.md"
+    ],
+    "3": {
+      "paths": [],
+      "note": "agent output missing or malformed — paths detected by filesystem diff"
+    }
+  }
+}

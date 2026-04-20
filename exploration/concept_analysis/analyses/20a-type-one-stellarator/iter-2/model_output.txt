@@ -1,0 +1,158 @@
+QI Modular HTS Stellarator — Infinity Two (Type One Energy)
+  Config: 350 MWe net | 87% availability | 30 yr | NOAK
+  Geometry: R0=12.5 m, A=10, a=1.25 m, κ=1.0
+  Field: B_ax=9 T on-axis | Heating: ECRH-only (η_pin=0.52)
+  Thermal eff.: η_th=0.4 (UNCERTAIN — steam Rankine; implied 38–42%)
+  Blanket: HCPB + Be multiplier | TBR=1.30 (OpenMC, JPP E86)
+
+LCOE:       311.3 $/MWh  [LOWER BOUND — coil cost (elasticity +0.99) uses framework default, likely understated]
+Overnight:  25477 $/kW
+Fusion:     955 MW | Net: 350 MW | Q_eng: 5.07
+
+1 GW scaled (cross-concept): LCOE 153.9 $/MWh | Overnight 12179 $/kW
+
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    16.9
+CAS21    Buildings                         335.2
+CAS22    Reactor Plant Equipment          4012.7
+CAS23    Turbine Plant                      86.2
+CAS24    Electrical Plant                   36.7
+CAS25    Miscellaneous                      22.3
+CAS26    Heat Rejection                     37.2
+CAS27    Special Materials                  70.0
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                         0.0
+CAS30    Indirect Costs                   1535.1
+CAS40    Owner's Costs                      23.1
+CAS50    Supplementary                     273.4
+CAS60    IDC                              2463.1
+CAS70    O&M (annualized)                  111.1
+CAS80    Fuel (annualized)                   0.5
+CAS90    Financial                         718.6
+------------------------------------------------
+         Total Capital                    8917.0
+
+CAS22 sub-account detail:
+Code                 M$
+------------------------
+  C220000        4012.7
+  C220101         354.3
+  C220102         225.0
+  C220103        2322.5
+  C220104         150.0
+  C220105          18.7
+  C220106          59.1
+  C220107          44.7
+  C220108          62.6
+  C220109           0.0
+  C220110          99.1
+  C220111         467.0
+  C220112           0.0
+  C220200          79.5
+  C220300          25.8
+  C220400           2.1
+  C220500          57.5
+  C220600           5.0
+  C220700          39.8
+
+============================================================
+Key Assumptions and Data Quality
+============================================================
+  Net electric (published):                  350 MWe  [HIGH confidence]
+  Major radius R0:                           12.5 m  [HIGH confidence]
+  Aspect ratio A → minor radius:             10 → 1.25 m [HIGH confidence]
+  On-axis field B:                           9 T      [HIGH confidence]
+  Fusion power:                              800 MW   [HIGH confidence]
+  Q (fusion gain):                           > 40     [HIGH confidence]
+  TBR (HCPB+Be, OpenMC):                    1.30     [HIGH confidence]
+  Elongation κ (near-circular stellarator):  1.0    [DEFAULT — large-A stellarator]
+  Thermal efficiency η_th:                   0.4   [UNCERTAIN — implied 38–42%; > 30% only bound]
+  ECRH power p_input:                        20 MW  [MEDIUM — derived upper bound from Q>40]
+  Heating η_pin (gyrotron):                  0.52   [MEDIUM — W7-X gyrotron analogue]
+  Availability:                              87%   [UNCERTAIN — no published target; 2-yr cycle → 96% max]
+  Construction time:                         10 yr   [UNCERTAIN — 3D HTS coil complexity]
+  CAS27 special materials (HCPB+Be):         70 M$  [UNCERTAIN — scaled from $200M/GWe reference]
+  C220103 coils (3D HTS):                    FRAMEWORK DEFAULT — likely underestimates significantly
+    (W7-X LTS magnets ~€1B; Infinity Two 3D HTS has no cost precedent)
+  All other capital accounts:                FRAMEWORK DEFAULTS — no published cost data
+  NOAK assumption:                           Aspirational; 3D HTS winding not yet demonstrated (TRL 2–3)
+
+============================================================
+Coil Cost Scenario Sweep (C220103 — 3D HTS, elasticity ~+0.99)
+============================================================
+  Framework default C220103 = 2322.5 M$  (1× baseline, lower bound)
+  W7-X LTS reference: ~€1B for magnets on a smaller, simpler machine
+  3× / 5× bracket plausible non-planar REBCO winding premium
+
+  Multiplier         C220103 (M$)    LCOE 350MWe     LCOE 1GW
+  ----------------------------------------------------------
+  1×  ← lower bound         2322.5        311.3 $/MWh    153.9 $/MWh
+  3×                       6967.4        578.5 $/MWh    247.4 $/MWh
+  5×                      11612.3        845.7 $/MWh    340.9 $/MWh
+
+  LCOE range (350 MWe): 311–846 $/MWh depending on 3D HTS coil cost realization
+  The 1× base case (311 $/MWh) IS A LOWER BOUND and should not be cited as a central estimate.
+
+Sensitivity (elasticity = %LCOE / %param)
+------------------------------------------------
+
+Engineering levers:
+  r_coil                               +0.9909
+  availability                         -0.9342
+  construction_time_yr                 +0.5486
+  b_max                                +0.4955
+  elon                                 +0.2029
+  R0                                   +0.2029
+  eta_th                               -0.1630
+  blanket_t                            +0.1528
+  plasma_t                             +0.1202
+  p_ecrh                               +0.0320
+  ht_shield_t                          +0.0272
+  eta_pin                              -0.0205
+  p_input                              +0.0201
+  mn                                   -0.0178
+  vessel_t                             +0.0135
+  p_cool                               +0.0080
+  f_sub                                +0.0070
+  structure_t                          +0.0058
+  p_trit                               +0.0053
+  p_cryo                               +0.0040
+  p_house                              +0.0021
+  p_coils                              +0.0016
+  p_pump                               +0.0005
+  eta_p                                -0.0000
+  dd_f_T                               +0.0000
+  dd_f_He3                             +0.0000
+  dhe3_dd_frac                         +0.0000
+  dhe3_f_T                             +0.0000
+  eta_de                               +0.0000
+  B                                    +0.0000
+  T_e                                  +0.0000
+  n_e                                  +0.0000
+  Z_eff                                +0.0000
+  plasma_volume                        +0.0000
+  R_w                                  +0.0000
+  T_edge                               +0.0000
+  tau_ratio                            +0.0000
+
+Financial:
+  interest_rate                        +0.8755
+  inflation_rate                       +0.0318
+
+Costing constants (top 15):
+  indirect_fraction                    +0.2086
+  blanket_unit_cost_dt                 +0.1383
+  installation_frac                    +0.0874
+  core_lifetime_dt                     -0.0652
+  om_cost_dt                           +0.0617
+  shield_unit_cost                     +0.0480
+  heating_ecrh_per_mw                  +0.0320
+  divertor_base                        +0.0245
+  remote_handling_dt_base              +0.0211
+  vessel_unit_cost                     +0.0126
+  construction_insurance_frac          +0.0123
+  fuel_handling_dt_base                +0.0108
+  power_supplies_base                  +0.0095
+  shipping_frac                        +0.0092
+  electric_per_mw                      +0.0070

@@ -91,7 +91,7 @@ The Taleyarkhan misconduct case (2008) has severely damaged sonofusion's credibi
 
 The challenges above treat scientific viability as binary — either fusion is demonstrated or analysis cannot proceed. That framing is correct for the current moment. However, the TEA model reveals a structural insight about what would matter *if* the physics works.
 
-**Conditional LCOE sensitivity.** Conditional on achieving net-positive fusion gain, plant availability (|ε| = 0.95), WACC (|ε| = 0.94), and thermal efficiency (|ε| = 0.75) are more elastic to LCOE than Q itself (|ε| = 0.56) at the baseline operating point. Q sets the floor for net-positive operation — but once Q clears that floor, financing terms and heat-cycle efficiency dominate LCOE far more than further improvements in fusion gain. A reader finishing Section 2 might conclude "Q is everything," but the model shows that conditional on viability, plant financing and thermal conversion matter more than plasma performance. This shapes where modelling sensitivity effort should concentrate in any viable scenario.
+**Conditional LCOE sensitivity.** Conditional on achieving net-positive fusion gain, plant availability (|ε| = 0.95), WACC (|ε| = 0.94), and thermal efficiency (|ε| = 0.75) are more elastic to LCOE than Q itself (|ε| = 0.56) at the baseline operating point. Q sets the floor for net-positive operation — but once Q clears that floor, financing terms and heat-cycle efficiency dominate LCOE far more than further improvements in fusion gain. Vessel inner radius has |ε| = 0.493 (nearly as elastic as Q) — but unlike WACC or availability, vessel size represents a hard capital floor: a larger vessel improves fusion power density but raises $/kWe proportionally, and the D₂O fill alone ($300–$475/kg × ~113 m³/module) is a dominant capital line item that does not diminish with higher Q. This is the primary design-space trade-off the model reveals: at fixed Q, LCOE is minimized by the smallest vessel that can sustain the required power density, constrained by acoustic physics. A reader finishing Section 2 might conclude "Q is everything," but the model shows that conditional on viability, plant financing, thermal conversion, and vessel scale matter comparably to plasma performance. This shapes where modelling sensitivity effort should concentrate in any viable scenario.
 
 **Key uncertainties as testable propositions.** The unknowns are better framed as testable conditional propositions than as open questions:
 
@@ -99,7 +99,17 @@ The challenges above treat scientific viability as binary — either fusion is d
 
 2. **Vessel cost scaling.** D₂O vessel cost scales approximately as r³ with vessel radius. Vessels smaller than ~2 m radius substantially reduce capital cost but must confine the same fusion power density — a design optimisation target that is solvable in principle, independent of fusion physics.
 
-3. **Driver efficiency floor.** The acoustic driver's recirculating power fraction sets a hard efficiency floor on net electrical output. PZT transducer wall-plug efficiency above ~85% provides minimal further LCOE leverage; reducing the recirculating power fraction has substantially more impact. This creates an engineering design target for driver architecture.
+3. **Driver efficiency floor.** The acoustic driver's recirculating power fraction sets a hard efficiency floor on net electrical output. Commercial PZT transducers at 28–50 kHz document electromechanical coupling Kp ≥ 55% (APC International Model 90-4040 datasheet; `americanpiezo-products-services-ultrasonic-power-transducers.md §Product Specifications`). However, Kp is a planar coupling coefficient — a material-level property describing electromechanical energy conversion in the radial mode of a disk at resonance — not a wall-plug conversion efficiency. No source provides a wall-plug efficiency figure for piezoelectric ultrasonic systems. The model's η_driver = 85% baseline has no cited basis and must be treated as a speculative placeholder with the same epistemic status as Q itself.
+
+**η_driver and Q are co-equal blocking parameters in the TEA.** The model's elasticity analysis yields |ε(η_driver)| ≈ 0.521 and |ε(Q)| ≈ 0.531 — nearly identical LCOE sensitivity. The analysis should not frame Q as "THE" blocking scientific constraint: for LCOE purposes, an unknown η_driver contributes equally to the risk envelope. Quantifying this: if η_driver = 0.55 (the lower bound implied by Kp) rather than 0.85, the breakeven Q rises from ~3.5 to ~5.2 — a 50% increase in the required fusion gain. Conversely, a driver architecture achieving η_driver = 0.85 still requires Q ≥ 3.5 to reach LCOE parity with conventional generation. The two unknowns are independent failure modes: Q undemonstrated (physics risk) and η_driver unvalidated (engineering risk). Both must be flagged as co-equal blocking uncertainties. Reducing the recirculating power fraction — rather than marginal improvements in transducer coupling — has comparable LCOE leverage to improving fusion gain, which creates a specific engineering design target for driver architecture.
+
+4. **Acoustic driver power scale-up (unconstrained assumption).** The model uses 100 MW electrical input per module as a baseline. This figure is three orders of magnitude above the largest commercial ultrasonic unit (16 kW, Hielscher UIP16000; `hielscher-i16000-p.md §Key Facts`) and ~1,560× larger than the largest described cluster configuration (4 × 16 kW = 64 kW). No scaling argument, no physical constraint analysis, and no proposed architecture exist to bridge this gap. The physical mechanisms that would bound achievable reactor-scale acoustic power include: (a) acoustic cavity volume — the liquid volume over which coherent cavitation can be sustained determines the number of active bubbles; (b) transducer array packing density — the fraction of vessel surface area that can be covered by actively driven transducers, constrained by mechanical resonance coupling and thermal management; (c) cavitation threshold — each location in the liquid must be driven above the Blake threshold for bubble nucleation; and (d) acoustic interference — large arrays produce standing wave patterns that locally suppress or enhance cavitation intensity. These are definable engineering problems, but none has been solved at reactor scale. The 100 MW/module assumption has the same speculative character as Q — it is an unconstrained target, not an anchored design point. The sensitivity sweep for acoustic_power_MW (spanning 1 MW → 10 MW → 100 MW → 1,000 MW per module) is therefore essential context for interpreting any conditional LCOE result.
+
+**Critical caveat on the acoustic_power_MW sensitivity sweep**: the sweep holds Q fixed at 10 across all power levels (1 MW through 1,000 MW). This is physically incorrect — Q is coupled to acoustic power. Fusion gain depends on bubble collapse intensity, which depends on acoustic pressure amplitude and power density; a 1 MW driver operating close to the demonstrated 64 kW range would not sustain the same cavitation regime as a 100 MW driver, and would likely not achieve Q = 10 even if 100 MW could. The LCOE result of ~5,831 ¢/kWh at 1 MW does not mean that a small-scale demonstration fixes the economics — it means the economics are marginally better at small scale *assuming the same Q*, which is physically unjustified. A reader must not conclude that scaling acoustic power from 1 MW to 100 MW is the bottleneck; achieving Q = 10 at 100 MW is itself a second speculative leap beyond the power scaling, because the cavitation regime, bubble-bubble interactions, and acoustic interference all change with power density. The two coupled unknowns (Q and acoustic_power_MW) should be treated as a joint design space, not independent variables.
+
+### Modeling Approach
+
+The TEA model uses the 1costingfe CAS10-LCOE structured framework, with all physics-dependent accounts explicitly overridden and flagged as speculative placeholders. The alternative — free-form placeholder modeling without CAS structure — was rejected because the CAS skeleton preserves cross-concept comparability: even when individual accounts cannot be estimated, their structural position makes the analysis directly comparable to other concepts in the pipeline (e.g., 01-hts-compact-tokamak, 17b-laser-icf-fast-ignition) where those accounts carry real values. The CAS skeleton also makes the *location* of knowledge gaps explicit — a free-form model would obscure which cost accounts are missing versus estimated. The trade-off is that a CAS-structured model creates an illusion of analytical completeness; this is mitigated by the explicit blocking-uncertainty flags throughout Sections 2 and 5.
 
 ---
 
@@ -166,7 +176,7 @@ D-D fusion does not require external tritium supply or breeding. Tritium is prod
 ## Section 4: Key Materials and Supply Chain Considerations
 
 **Heavy Water (D₂O) or Deuterated Acetone**
-The working fluid is the most concept-specific material requirement. Heavy water is industrially produced (CANDU program has established supply chains) and is commercially available, though at substantial premium over ordinary water. Current global D₂O production capacity is primarily driven by Canadian CANDU reactor fleet; additional demand from fusion development would be modest relative to existing supply.[^9] Deuterated acetone is a laboratory reagent with no industrial-scale production. If the concept uses acetone as the working fluid (as Taleyarkhan's experiments did), industrial-scale production would need to be established — but this is a solvable supply chain problem, not a fundamental constraint.
+The working fluid is the most concept-specific material requirement. Heavy water is industrially produced (CANDU program has established supply chains) and is commercially available, though at substantial premium over ordinary water. 2023 UN Comtrade data (HS 284510) shows D₂O export prices of $300–$475/kg across major exporters: India ~$458/kg (100,331 kg), Canada ~$474/kg (80,701 kg), Romania ~$301/kg (20,297 kg).[^9] India and Canada together account for approximately 80% of global D₂O exports by value (2023), creating moderate geographic supply concentration risk for any commercial-scale deployment. Deuterated acetone is a laboratory reagent with no industrial-scale production. If the concept uses acetone as the working fluid (as Taleyarkhan's experiments did), industrial-scale production would need to be established — but this is a solvable supply chain problem, not a fundamental constraint.
 
 **Piezoelectric Transducer Materials (PZT)**
 Lead zirconate titanate (PZT) is the dominant commercial piezoelectric material for ultrasonic applications. Global PZT production is well-established for industrial and medical ultrasound markets. Neutron irradiation effects on PZT in a fusion environment are unstudied — this is a materials compatibility question, not a supply constraint.
@@ -184,7 +194,7 @@ No HTS tape supply chain is needed. The ultrasonic driver uses conventional piez
 Unlike laser ICF, there are no laser amplifiers, optics, or multi-kJ energy stores to supply. The acoustic driver is comparatively simple and uses established commercial technology. If the physics worked, the driver supply chain would not be a major barrier.
 
 ---
-[^9] Inference from nuclear industry knowledge — CANDU program established industrial D₂O supply chains. No specific production quantity from available sources.
+[^9] wits-trade-comtrade-en-country-all-year-2023-tradeflow.md §Heavy water (deuterium oxide) exports by country; 2023 UN Comtrade HS 284510 data. Five exporters captured; US ~$58/kg outlier likely represents misclassified product or re-export.
 [^10] bubble-fusion-scientific-history.md, §Other Companies (Historical)
 
 ---
@@ -208,7 +218,9 @@ The vast majority of LCOE-relevant parameters are unknown for this concept. No r
 | Flash duration | <50 picoseconds | ucla-putterman-group-sonoluminescence.md §Key Technical Facts | medium | Confirmed for sonoluminescence flashes |
 | Government research investment (UCLA) | >$10M | sonofusion-energy-website.md §Key Facts | medium | "Originally developed with over $10M in government funding" — historical, not current |
 | Historical research reactor cost (Impulse Devices) | ~$250K | bubble-fusion-scientific-history.md §Other Companies (Historical) | low | 1-foot stainless steel sphere; experimental scale, not a power plant analogue |
-| D₂O fuel cost | ~$700/kg | [analogue: commercial nuclear industry pricing; not from concept-specific sources] | medium | Rough order-of-magnitude; CANDU industry pricing |
+| D₂O fuel cost | $300–$475/kg | wits-trade-comtrade-en-country-all-year-2023-tradeflow.md §Heavy water (deuterium oxide) exports by country | medium | 2023 UN Comtrade HS 284510: India ~$458/kg, Canada ~$474/kg, Romania ~$301/kg. Prior ~$700/kg analogue overstated by 50–130%. |
+| Transducer electromechanical coupling (Kp) | ≥55% | americanpiezo-products-services-ultrasonic-power-transducers.md §Product Specifications | medium | APC International Model 90-4040 at 28 kHz; Qm = 800; 50 W rated power. Kp is a planar coupling coefficient (material/geometry property at resonance), NOT wall-plug conversion efficiency. Source provides no numerical wall-plug efficiency — only qualitative "high electro-acoustical efficiency." Model η_driver = 85% has no cited basis and should be treated as speculative. |
+| Max industrial ultrasonic unit power | 16 kW (per unit); 64 kW (4-unit cluster) | hielscher-i16000-p.md §Key Facts; hielscher-uip4000hdt-4kw-high-performance-ultrasonics.md §Product Specs | high | Hielscher UIP16000 is the world's largest commercial unit per source. 4 × UIP16000 cluster = 64 kW described as canonical large installation. No source describes acoustic systems above 64 kW. Model baseline of 100 MW/module is ~6,250× the largest commercial unit — entirely unconstrained. |
 | Fuel type | D-D (inferred) | dossier.md §Fuel | medium | No company specification; inferred from Putterman group experimental practice |
 
 **Missing Parameters:**
@@ -227,6 +239,8 @@ The vast majority of LCOE-relevant parameters are unknown for this concept. No r
 | Blanket / shielding cost | truly-unknown | blocking | No neutron management design exists |
 | Replacement schedule / component lifetimes | truly-unknown | blocking | No design, no materials qualification |
 | Operating cost (fuel consumption) | derivable | important | D₂O consumption rate is derivable once fusion power is known; fuel cost itself is manageable |
+| Acoustic driver wall-plug efficiency (η_driver) | not-yet-sourced | blocking | Only available datapoint is Kp ≥ 55% (planar coupling coefficient, ≠ wall-plug efficiency). No source provides a numerical wall-plug figure. Model η_driver = 85% is unsupported. At η_driver = 0.60–0.65, Q breakeven shifts substantially above 3.5. Must be flagged as speculative alongside Q. |
+| Acoustic driver power at reactor scale (per module) | truly-unknown | blocking | Largest commercial unit is 16 kW (Hielscher UIP16000); largest described cluster is 64 kW. Model baseline of 100 MW/module is ~6,250× larger than demonstrated systems. Physical scaling constraints (cavity volume, transducer packing, cavitation threshold, acoustic interference) are definable but unsolved. |
 | Driver power input per pulse | not-yet-sourced | important | Could be estimated from industrial ultrasonic transducer power specs at similar frequencies |
 | Neutron flux at commercial scale | derivable | important | Derivable once fusion power is known; D-D → ~50% of reactions yield 2.45 MeV neutrons |
 | Tritium byproduct management cost | derivable | important | Derivable once fusion rate is known; D-D → proton + T in ~50% of reactions |
@@ -252,7 +266,7 @@ The vast majority of LCOE-relevant parameters are unknown for this concept. No r
 | 11 | Neutron flux and shielding requirements at power-plant scale | S4, S5 | derivable | important | Derivable from fusion power once Q is known; D-D: ~50% of reactions → 2.45 MeV neutrons |
 | 12 | Tritium byproduct production rate and containment cost | S4, S5 | derivable | important | Derivable from D-D reaction rates once fusion power is established |
 | 13 | Effect of neutron irradiation on PZT transducer lifetime | S3, S4 | truly-unknown | important | No published data; would require irradiation testing |
-| 14 | Deuterium fuel cost and supply chain for commercial scale | S4, S5 | not-yet-sourced | nice-to-have | D₂O pricing from nuclear industry; deuterium gas market pricing |
+| 14 | Deuterium fuel cost and supply chain for commercial scale | S4, S5 | partially-resolved | nice-to-have | 2023 UN Comtrade yields empirical price range $300–$475/kg (India, Canada, Romania). Supply concentration: India + Canada ~80% of global exports by value. Remaining gap: commercial-scale fusion demand not modeled; US ~$58/kg anomaly unresolved. |
 | 15 | Regulatory pathway if fusion is demonstrated | S2 | truly-unknown | nice-to-have | NRC fusion regulatory framework; novel concept may require special review |
 
 ---
@@ -260,6 +274,18 @@ The vast majority of LCOE-relevant parameters are unknown for this concept. No r
 ## Section 7: Cross-Concept Notes
 
 **Approved prior analyses consulted**: 01-hts-compact-tokamak, 07-maglif, 08-frc-w-direct-conversion, 11-magnetic-mirror, 21-spherical-tokamak-hts.
+
+### Differentiators from Conventional Tokamak
+
+For cross-concept comparison: the following cost accounts are either eliminated or replaced relative to a conventional D-T tokamak (e.g., CFS SPARC or equivalent).
+
+1. **No plasma confinement coils (CAS 220103 → $0).** Acoustic cavitation replaces both the magnetic confinement and supplementary heating subsystems. No HTS magnets, no cryoplant, no cryogenic distribution.
+2. **No tritium breeding blanket (CAS 220106 → eliminated).** D-D fuel cycle eliminates the entire breeding blanket system — one of the most uncertain and expensive cost accounts in D-T plant designs.
+3. **No RF/NBI heating systems (CAS 220104 → $0).** Acoustic driver replaces both the confinement and the plasma heating; there is no auxiliary heating subsystem.
+4. **Acoustic driver array replaces coil + heating systems (new CAS 220107-equivalent).** The piezoelectric transducer array is the primary capital-intensive novel subsystem. Capital cost is unknown at reactor scale; at commercial ultrasonic industrial scale it is inexpensive, but the neutron-irradiation qualification requirement introduces unknown cost upward pressure.
+5. **No direct energy conversion (CAS 220109 → $0).** All fusion energy is expected to thermalize in the liquid medium; a conventional thermal cycle (Rankine or sCO2) is the default, identical in structure to any thermal fission or IFE plant.
+
+These eliminations would represent a significant capital cost reduction *if* the physics were viable — but all five advantages are conditional on achieving thermonuclear fusion, which has not been demonstrated.
 
 **Nearest-neighbor concepts.** By implosion physics — a pulsed driver compressing a target to fusion conditions — acoustic ICF belongs structurally to the Inertial Confinement Fusion family. The two nearest conceptual neighbors are:
 
@@ -320,3 +346,15 @@ None of the approved prior analyses are directly applicable to sonofusion. All f
 - Full citation: Taleyarkhan, R.P. et al. "Evidence for Nuclear Emissions During Acoustic Cavitation." *Science* 295, 1868–1873 (2002).
 - Accessed via: bubble-fusion-scientific-history.md §Taleyarkhan Claims (2002)
 - Contribution: Historical context only — the original discredited claim that motivated the sonofusion research program. Not a reliable technical source. Documented here for completeness and to contextualize the scientific credibility assessment.
+
+**7. UN Comtrade / WITS — Heavy Water (D₂O) Trade Data (2023)**
+- Path: `iter-01/sources/wits-trade-comtrade-en-country-all-year-2023-tradeflow.md`
+- URL: https://wits.worldbank.org/trade/comtrade/en/country/ALL/year/2023/tradeflow/Export/partner/WLD/product/284510
+- Accessed: 2026-03-08
+- Contribution: 2023 empirical D₂O export prices by country (HS 284510): India ~$458/kg, Canada ~$474/kg, Romania ~$301/kg, EU ~$416/kg. Total listed exports ~$107.7M across five exporters. Establishes empirical price range ($300–$475/kg) and documents supply concentration (India + Canada ~80% by value). Partially resolves data gap #14.
+
+**8. APC International — Ultrasonic Power Transducers**
+- Path: `iter-01/sources/americanpiezo-products-services-ultrasonic-power-transducers.md`
+- URL: https://www.americanpiezo.com/products-services/ultrasonic-power-transducers.html
+- Accessed: 2026-03-08
+- Contribution: Commercial datasheet anchor for acoustic driver subsystem. Model 90-4040 (28 kHz): electromechanical coupling Kp ≥ 55%, mechanical quality factor Qm = 800, impedance ≤ 50 Ω. APC-4SS-1550 (50 kHz): resonant resistance ≤ 60 Ω. Qualitative discussion of composite vs. single-piece ceramic efficiency trade-offs. No wall-plug efficiency figures given.

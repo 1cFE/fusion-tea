@@ -1,0 +1,88 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-11",
+      "gap_description": "Measured scaling from 100 kV (Physics of Plasmas paper) to 300 kV operating point",
+      "queries": [
+        "arxiv \"mode-enhanced ion loading\" \"100 kV orbitrap\" Physics of Plasmas Avalanche Energy",
+        "arxiv \"Orbitron\" \"crossed-field\" \"co-confinement\" \"AIP Advances\" Avalanche Energy electrostatic fusion",
+        "site:osti.gov \"mode-enhanced ion loading\" \"100 kV orbitrap\" OR \"orbitrap\" \"Merthe\" Avalanche Energy fusion",
+        "arxiv.org \"Merthe\" OR \"Hakimi\" \"orbitrap\" OR \"Orbitron\" \"Avalanche Energy\" fusion 100 kV ion loading preprint"
+      ],
+      "candidates": [
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/32/9/092105/3362035/Mode-enhanced-ion-loading-in-a-100-kV-orbitrap",
+          "title": "Mode-enhanced ion loading in a 100 kV orbitrap — Physics of Plasmas (2025)",
+          "triage": "paywall",
+          "notes": "Primary target paper (DOI 10.1063/5.0278177). AIP Publishing institutional paywall. Contains key data: m=1 mode coincides with confinement time increase by order of magnitude to 0.8 ms; steady-state density 10-20% of space charge limit at 100 kV. No OSTI record found (paper may lack DOE funding). No arXiv preprint found."
+        },
+        {
+          "url": "https://www.osti.gov/pages/biblio/2582151",
+          "title": "The Orbitron: A crossed-field device for co-confinement of high energy ions and electrons — OSTI (2024)",
+          "triage": "relevant",
+          "notes": "OSTI bibliography page for AIP Advances paper (DOE-funded via LBNL/USDOE contract AC02-05CH11231). Abstract-only on this page, but links to accepted manuscript PDF via PURL. AIP Advances paper partially ingested in iter-01 (images directory exists but no output.md)."
+        },
+        {
+          "url": "https://www.osti.gov/pages/servlets/purl/2582151",
+          "title": "The Orbitron: A crossed-field device for co-confinement — OSTI Accepted Manuscript PDF (2024)",
+          "triage": "relevant",
+          "notes": "OSTI PURL serving full accepted manuscript PDF (6MB). CC BY-NC-ND 4.0 license. Full paper content accessible — includes experimental apparatus, diagnostics, PIC simulations, initial results. Directly addresses physics challenges (Coulomb collisions, space charge limit, electron co-confinement). EXTRACTED."
+        },
+        {
+          "url": "https://ui.adsabs.harvard.edu/abs/2023APS..DPPTP1006M/abstract",
+          "title": "Characterization of Ion Loading and Energy Confinement Time in an Orbitron — APS DPP 2023",
+          "triage": "relevant",
+          "notes": "ADS abstract for 2023 APS Division of Plasma Physics conference presentation. Reports 'significant populations of deuterium ions confined with energies in excess of 100 keV' in initial testing. Uses image current measurements and neutron yield data to evaluate trapping characteristics and estimate energy confinement time. Abstract-only but directly addresses confinement time gap. EXTRACTED."
+        },
+        {
+          "url": "https://ui.adsabs.harvard.edu/abs/2023APS..DPPYO8010L/abstract",
+          "title": "Electrostatic Orbitron Fusion Reactor: Overview of Scientific Program — APS DPP 2023",
+          "triage": "relevant",
+          "notes": "ADS abstract for 2023 APS DPP conference overview presentation of the Orbitron scientific program. Program-level context for the Avalanche Energy R&D roadmap. EXTRACTED."
+        },
+        {
+          "url": "https://pubs.aip.org/aip/adv/article-pdf/doi/10.1063/5.0201470/20119682/085025_1_5.0201470.am.pdf",
+          "title": "AIP Advances accepted manuscript PDF (direct URL)",
+          "triage": "inaccessible",
+          "notes": "Returned 403 Forbidden. OSTI purl used instead for same paper content."
+        },
+        {
+          "url": "https://www.nsf.gov/awardsearch/showAward?AWD_ID=2303759",
+          "title": "NSF SBIR Phase I Award 2303759 — Avalanche Energy",
+          "triage": "not-fetched",
+          "notes": "URL redirected (301). Not fetched due to extraction budget exhausted. Would contain NSF SBIR technical abstract describing R&D program goals and device specifications. Lower priority than peer-reviewed content; candidate for future iteration."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/pages/servlets/purl/2582151",
+          "source_name": "osti-pages-servlets-purl-2582151"
+        },
+        {
+          "url": "https://ui.adsabs.harvard.edu/abs/2023APS..DPPTP1006M/abstract",
+          "source_name": "ui-2023aps-dpptp1006m-abstract"
+        },
+        {
+          "url": "https://ui.adsabs.harvard.edu/abs/2023APS..DPPYO8010L/abstract",
+          "source_name": "ui-2023aps-dppyo8010l-abstract"
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/32/9/092105/3362035/Mode-enhanced-ion-loading-in-a-100-kV-orbitrap",
+          "reason": "AIP Publishing institutional paywall — no open-access version found on OSTI (DOE funding not confirmed for this paper) or arXiv (no preprint deposited)"
+        }
+      ],
+      "notes": "The primary target (Physics of Plasmas 32(9), 092105 — 2025) is paywalled with no open-access route identified. The AIP Advances paper (AIP Advances 14(8), 085025 — 2024) was accessible via OSTI accepted manuscript and extracted successfully; it covers foundational experimental work on co-confinement, apparatus design, and initial ion density results. The iter-01 source directory for this paper already contained extracted images but no output.md — this extraction completed the ingestion via the OSTI purl. The two ADS conference abstracts provide 2023 experimental progress data (pre-publication) on confinement time and the broader scientific program.",
+      "status": "partial"
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 1,
+    "sources_extracted": 3,
+    "sources_failed": 1,
+    "searches_used": 5,
+    "extractions_used": 3,
+    "notes": "Only one gap in Section 6 is typed 'not-yet-sourced' (G-11). The Physics of Plasmas 2025 paper that is the primary target for G-11 is paywalled with no OSTI or arXiv route. The AIP Advances 2024 paper (which addresses the Section 5 gap 'Fusion yield per operating condition — proprietary/not-yet-sourced') was fully extracted via OSTI accepted manuscript. Two 2023 APS DPP conference abstracts were also extracted to provide pre-publication experimental context. Candidate for future iteration: NSF SBIR award 2303759 (not fetched due to budget)."
+  }
+}

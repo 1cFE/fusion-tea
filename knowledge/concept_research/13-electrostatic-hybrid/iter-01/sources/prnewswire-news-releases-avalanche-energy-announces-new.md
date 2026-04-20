@@ -1,0 +1,1 @@
+prnewswire-news-releases-avalanche-energy-announces-new/output.md

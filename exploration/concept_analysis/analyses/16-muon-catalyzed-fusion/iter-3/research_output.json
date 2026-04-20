@@ -1,0 +1,76 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-10",
+      "gap_description": "Alpha-sticking probability in Acceleron's high-density DT conditions — recent measurements at 0.3–0.5% are from conventional μCF facilities; high-density (DAC-compressed) conditions may differ; muon transfer dynamics are density-dependent",
+      "queries": [
+        "alpha muon reactivation density dependence compressed DT muon catalyzed fusion sticking probability high density target",
+        "muon catalyzed fusion condensed solid DT target sticking reactivation Auger stripping density site:arxiv.org OR site:osti.gov",
+        "effective sticking fraction density dependence muon catalyzed fusion \"dense DT\" OR \"high density DT\" Petitjean OR Markushin OR Struensee experimental site:arxiv.org OR site:osti.gov OR site:pmc.ncbi.nlm.nih.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9013384/",
+          "title": "Roles of resonant muonic molecule in new kinetics model and muon catalyzed fusion in compressed gas",
+          "triage": "relevant",
+          "notes": "Directly addresses μCF in compressed/high-density DT at T<10⁴ K and densities 10⁻³<φ<1. Discusses effective sticking W̃ₛ = ωₛ(1-R(T)) as a function of temperature and density. States sticking is 0.5% at LHD with density-dependent cycle rates up to 1.45×10⁸ s⁻¹. Full text open access via PMC."
+        },
+        {
+          "url": "https://arxiv.org/abs/nucl-ex/0101007",
+          "title": "Time-of-Flight Spectroscopy of Muonic Atoms (Petitjean, Markushin et al.)",
+          "triage": "relevant",
+          "notes": "Experimental paper using multilayer thin films of solid hydrogen — a high-density DT target geometry. Authors include Markushin and Petitjean, the principal experimentalists on μCF sticking. Full text accessible via arXiv PDF."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/6964059",
+          "title": "IFSR #421 — Institute for Fusion Studies (density-dependent sticking)",
+          "triage": "inaccessible",
+          "notes": "Returned binary JBIG2 scanned PDF with no extractable text layer. Cannot determine relevance or extract content."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/7097174",
+          "title": "Accurate alpha sticking fractions from improved calculations relevant for muon catalyzed fusion",
+          "triage": "skipped",
+          "notes": "OSTI biblio page — may be paywalled or abstract-only. Not fetched due to extraction budget limits; PMC9013384 was higher confidence for density-dependent content."
+        },
+        {
+          "url": "https://arxiv.org/abs/2401.17358",
+          "title": "Tractable T-matrix model for reaction processes in muon catalyzed fusion (Phys. Rev. C 2024)",
+          "triage": "partial",
+          "notes": "Recent 2024 paper (Editors' Suggestion, Phys. Rev. C 109:054625). Focuses on reaction dynamics of the dtμ molecule using T-matrix methods; reproduces Kamimura et al. 2023 results. Does not specifically address density-dependent sticking. Less relevant than PMC9013384 for G-10."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/0146641089900057",
+          "title": "Muon reactivation in muon-catalyzed D-T fusion (ScienceDirect)",
+          "triage": "paywall",
+          "notes": "ScienceDirect abstract page — full text requires institutional access. Not extracted."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9013384/",
+          "source_name": "pmc-articles-pmc9013384"
+        },
+        {
+          "url": "https://arxiv.org/abs/nucl-ex/0101007",
+          "source_name": "arxiv-nucl-ex-0101007"
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/6964059",
+          "reason": "Scanned PDF (JBIG2 image stream) — no extractable text layer"
+        }
+      ],
+      "status": "partial",
+      "notes": "Two sources extracted that address density-dependent sticking. PMC9013384 directly models effective sticking at compressed-gas densities (φ up to 1 = LHD) and shows density and temperature dependence of reactivation. nucl-ex/0101007 is an experimental paper using solid-hydrogen multilayer films (high-density geometry) by Markushin and Petitjean. Neither source specifically addresses DAC-compressed DT at densities above LHD (Acceleron's extreme high-density regime). The gap remains partially open: the literature covers density dependence up to LHD, but Acceleron's DAC conditions may exceed LHD significantly, where reactivation physics could differ. No publication specifically addresses sticking at super-LHD densities."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 1,
+    "sources_extracted": 2,
+    "sources_failed": 1,
+    "searches_used": 4,
+    "extractions_used": 2
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-13",
+      "gap_description": "Plant capacity factor target — steady-state concept avoids pulsed penalties but FRC CW operation undemonstrated",
+      "queries": [
+        "TAE Technologies FRC confinement time pulse duration steady-state Norman C-2W milliseconds record",
+        "fusion pilot plant capacity factor availability factor DOE ARPA-E milestone estimate site:osti.gov OR site:doe.gov",
+        "fusion power plant availability factor capacity factor 85% 90% first-of-a-kind estimate site:osti.gov OR site:iaea.org",
+        "Gota 2021 \"C-2W\" FRC \"Nature Communications\" OR \"Nuclear Fusion\" plasma confinement steady state milliseconds"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/pages/servlets/purl/2441289",
+          "title": "Enhanced plasma performance in C-2W advanced beam-driven field-reversed configuration experiments (Gota et al. 2024, Nuclear Fusion 64 112014)",
+          "triage": "relevant",
+          "notes": "Open-access peer-reviewed paper reporting most recent C-2W/Norman performance. PDF extracted successfully. Contains quantitative plasma parameters and confinement duration data (30 ms pulse limited by NBI pulse duration). Directly addresses FRC CW operation status."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1001677",
+          "title": "Methodology for Scaling Fusion Power Plant Availability (Waganer 2011, PPPL Report 4585)",
+          "triage": "relevant",
+          "notes": "PPPL technical report establishing methodology for estimating availability of first-of-a-kind vs. tenth-of-a-kind fusion plants. PDF extracted successfully. Directly addresses the capacity factor estimation problem for early fusion plants like Da Vinci."
+        },
+        {
+          "url": "https://www.nature.com/articles/s41467-025-58849-5",
+          "title": "Generation of field-reversed configurations via neutral beam injection (Roche et al. 2025, Nature Communications)",
+          "triage": "relevant",
+          "notes": "Open-access peer-reviewed paper reporting NBI-only FRC formation on TAE's Norm device. Already cited as external reference in analysis (source #9) but not previously extracted. Establishes formation within ~10 ms, relevant to understanding pulse structure and path to CW operation."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/1856193",
+          "title": "Fusion pilot plant performance and the role of a sustained high power density tokamak",
+          "triage": "low-relevance",
+          "notes": "Abstract only — tokamak-specific, no quantitative capacity factor figures visible. Skipped in favor of more directly relevant sources."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1430912",
+          "title": "LLNL-TR-747677 Essential Criteria for Fusion Power Plants",
+          "triage": "inaccessible",
+          "notes": "PDF binary not readable by WebFetch. Not attempted via add-source due to budget constraints and availability of more relevant sources."
+        },
+        {
+          "url": "https://sun.ps.uci.edu/zlin/bib/gota21.pdf",
+          "title": "Overview of C-2W: high temperature, steady-state beam-driven FRC plasmas (Gota et al. 2021, Nuclear Fusion)",
+          "triage": "superseded",
+          "notes": "Too large for WebFetch (content size exceeded). Superseded by Gota 2024 (OSTI 2441289) which covers more recent enhanced performance results from the same device."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/pages/servlets/purl/2441289",
+          "source_name": "osti-pages-servlets-purl-2441289"
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1001677",
+          "source_name": "osti-servlets-purl-1001677"
+        },
+        {
+          "url": "https://www.nature.com/articles/s41467-025-58849-5",
+          "source_name": "nature-articles-s41467-025-58849-5"
+        }
+      ],
+      "failed": [],
+      "status": "closed"
+    },
+    {
+      "gap_id": "G-15",
+      "gap_description": "B-11 isotopic enrichment cost if higher purity required than natural abundance",
+      "queries": [],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "Marked FAILED in iter-2 prior research. Per instructions, FAILED gaps are not re-attempted. Skipped to allocate search/extraction budget to G-13."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 1,
+    "gaps_skipped": 1,
+    "sources_extracted": 3,
+    "sources_failed": 0,
+    "searches_used": 4,
+    "extractions_used": 3
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-7",
+      "gap_description": "Plasma parameters at ignition — confinement time, density, bootstrap fraction not published. Source: apply ISS04 stellarator energy confinement time scaling to design point.",
+      "queries": [
+        "ISS04 stellarator energy confinement time scaling formula tau_E parameters W7-X nuclear fusion"
+      ],
+      "candidates": [
+        {
+          "url": "https://ukaea.github.io/PROCESS/fusion-devices/stellarator/",
+          "title": "Stellarator Model — PROCESS Documentation (UKAEA)",
+          "triage": "relevant",
+          "notes": "Confirmed full ISS04 formula: τ_E = 0.134 R^0.64 a^2.28 n̄^0.54 B^0.84 P^-0.61 ī^0.41. All parameters present with numerical coefficients and exponents. Open access HTML documentation — accessible and extractable."
+        },
+        {
+          "url": "https://www.mdpi.com/2076-3417/12/6/2862",
+          "title": "Considerations on Stellarator's Optimization from ISS04 Perspective (MDPI)",
+          "triage": "skipped",
+          "notes": "Relevant, but extraction previously failed in iteration 2 (JS-rendered page). PROCESS page fully covers the ISS04 formula; this candidate deprioritized."
+        },
+        {
+          "url": "https://inis.iaea.org/records/w5203-m9p23",
+          "title": "Energy confinement scaling from the international stellarator database (IAEA INIS)",
+          "triage": "skipped",
+          "notes": "Primary ISS04 database publication; IAEA PDFs have previously failed extraction (iteration 2). PROCESS page covers the formula adequately."
+        },
+        {
+          "url": "https://www.osti.gov/pages/servlets/purl/1470942",
+          "title": "Global energy confinement in the initial limiter campaign of W7-X (OSTI)",
+          "triage": "skipped",
+          "notes": "W7-X confinement data vs ISS04; potentially useful for ISS04 validation but extraction budget exhausted after PROCESS page. Would provide fren context."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://ukaea.github.io/PROCESS/fusion-devices/stellarator/",
+          "source_name": "ukaea-process-fusion-devices-stellarator"
+        }
+      ],
+      "failed": [],
+      "status": "closed"
+    },
+    {
+      "gap_id": "G-9",
+      "gap_description": "Peak Li-LiH outlet temperature — determines achievable sCO₂ turbine inlet temperature and confidence in 49–51% efficiency target. Expected to be in ECM paper (Fama et al. 2023).",
+      "queries": [
+        "Fama 2023 \"Energy Conversion and Management\" sCO2 Brayton fusion Li-LiH outlet temperature heat exchanger",
+        "Renaissance Fusion \"Energy Conversion and Management\" 2023 sCO2 power conversion outlet temperature site:sciencedirect.com OR site:doi.org",
+        "Famà Volpe 2022 2023 \"optimized power conversion\" stellarator liquid metal wall sCO2 arxiv OR columbia.edu OR researchgate preprint"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0196890422013504",
+          "title": "An optimized power conversion system for a stellarator-based nuclear fusion power plant (Famà et al., ECM 276, 2023)",
+          "triage": "paywall",
+          "notes": "Confirmed correct paper (Famà, Loreti, Calabrò, Ubertini, Volpe, Facci). Abstract confirms Li-LiH heat source in 700–900°C temperature range; cycle efficiency 51.4% (sCO₂ topping + steam bottoming); net plant efficiency 34%. Full text requires Elsevier subscription — extraction not possible."
+        }
+      ],
+      "extracted": [],
+      "failed": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0196890422013504",
+          "reason": "Elsevier paywall — full text requires institutional subscription. Abstract accessible but insufficient for citation; WebFetch output is lossy and cannot be used as source content."
+        }
+      ],
+      "triage_notes": "No arXiv preprint found for Famà et al. (arXiv author search returned unrelated physics papers from a different Francesca Famà). No ResearchGate full text found. DOI redirect (doi.org/10.1016/j.enconman.2022.116572 → linkinghub.elsevier.com) also paywalled. The key datum — Li-LiH outlet temperature 700–900°C — appears in the abstract only and cannot be formally extracted. The Fama paper remains the only identified source for this gap.",
+      "status": "failed"
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 2,
+    "sources_extracted": 1,
+    "sources_failed": 1,
+    "searches_used": 3,
+    "extractions_used": 1
+  }
+}

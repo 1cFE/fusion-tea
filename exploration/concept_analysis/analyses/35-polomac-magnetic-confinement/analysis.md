@@ -25,17 +25,17 @@ The foundational document is a 2014 Fusion Engineering and Design paper by F. El
 > "Further analyses on MHD, confinement, stability and an outline engineering design are required to assess the possibilities envisaged."
 > — elio-2014-fed-poloidal-confinement.md, §Conclusions
 
-The 2024 JTSP technical report — *"Technical Report: The Polomac approach to fusion energy"* — provides updated framing and performance claims. The extracted source contains only the abstract; the full paper body was not recovered from the journal URL. The abstract is nevertheless the most concise statement of the concept's claimed advantages and development strategy.
+The 2024 JTSP technical report — *"Technical Report: The Polomac approach to fusion energy"* — is now available in full via a separate extraction (`jtsp-jtsp-article-download-32-28.md`). This is the most substantive source in the corpus: it contains the complete prototype engineering design (Section III and Table 1), reactor condition analyses for both D-T and D-D scenarios (Sections V–VI), and the company's stated performance projections. The abstract-only extraction (`jtsp-2024-polomac-technical-report.md`) remains in the source set but is superseded by the full paper for all technical claims.
 
-The Deutelio company profile is startup directory content: a 3-stage roadmap, team description, and competition results. It contains no technical specifications beyond a prototype magnet field of 0.2–0.3 T.
+The Deutelio company profile is startup directory content: a 3-stage roadmap, team description, and competition results. The 0.2–0.3 T field value cited in the profile is the **design target for the planned prototype** (which had not yet been built as of October 2024) — it is not an achieved measurement.
 
 **Independent assessments:** None identified. An unnamed independent "fusion company tier list" cited in the company profile rates Deutelio C−. No third-party plasma physics analysis, cost study, or system code output exists in the source corpus.
 
 **Key data gaps limiting analysis:**
 - No plasma performance data (temperature, density, confinement time, triple product) at any field
-- No heating method specified
+- Prototype heating approach specified (ECH, 4 GHz); commercial-scale heating power unspecified
 - No reactor design parameters (Q, fusion power, net electric output, thermal efficiency)
-- No engineering design beyond the magnetic field shape
+- No engineering design at commercial scale beyond the magnetic field shape
 - No cost data of any kind
 
 The Phase 1a dossier coverage is consistent with source depth: dossier confidence is high only for confinement family, fuel, operation mode, and the magnetic tunnel driver description. All performance-relevant columns are low-confidence or unknown.
@@ -55,21 +55,23 @@ The 2014 FED paper reports copper coil power consumption of 700 MW for a plasma 
 
 This is the single most important quantitative datum in the available sources. A 700 MW recirculating power draw dwarfs the net electric output of any plausible fusion power plant — a 1 GWe gross plant would have a negative recirculating fraction well below any economic viability threshold. The paper acknowledges this as excessive and implies that the solution is superconducting coils, but no superconducting coil design has been published. Until a credible superconductor path is specified with achievable field levels and coil geometry, the recirculating power cannot be estimated for a commercial design. This gap is individually sufficient to prevent any LCOE estimate.
 
-**2. No plasma heating method specified — severity: blocking**
+**2. Plasma heating method partially specified — severity: important (reduced from blocking)**
 
-The dossier records primary heating as "Unknown (low confidence)." Neither paper discloses a heating scheme. This gap is especially severe because D-D fusion requires plasma ion temperatures of ~50–100 keV — substantially higher than the ~20 keV threshold for D-T — and heating power requirements scale steeply with energy confinement time. Without knowing the heating approach (NBI, ECRH, ICRH, ohmic), the auxiliary power system cannot be sized, and recirculating power fractions cannot be computed.
+The full JTSP 2024 paper specifies that the prototype will use 5–10 kW of microwave heating at 4 GHz electron cyclotron frequency (ECH), with Table 1 listing an ECRH frequency range of 2–8 GHz (jtsp-jtsp-article-download-32-28.md §The small prototype, Table 1). This establishes ECH as the chosen heating approach at prototype scale; 4 GHz microwave sources are commercially available and ECH is a mature technology in MFE devices. The remaining gap is commercial-scale heating power and system integration: D-D fusion requires ion temperatures of ~100–200 keV (per Deutelio's own projections), and the required heating power at commercial scale has not been specified. Without a commercial heating power estimate, the auxiliary power system cannot be sized and the recirculating power fraction remains uncertain — but the approach is no longer unknown.
 
 **3. No confinement physics validation — severity: blocking**
 
 Historical poloidal-dipole experiments achieved "few eVs" plasma temperature and ~10¹⁶ m⁻³ density — many orders of magnitude below fusion-relevant parameters [1]. The 2014 FED paper performs only static magnetic field analysis; it explicitly defers MHD stability, confinement, and plasma physics to future work. No confinement scaling law for the PoloMac geometry has been published. Without demonstrated confinement at any relevant parameter, the plasma Q and wall-plug gain remain unconstrained.
 
-**4. D-D fusion energy balance — severity: important**
+**4. D-D fusion energy balance and scale penalty — severity: important**
 
-D-D fuel is claimed as an advantage (no tritium breeding blanket needed), but it carries severe energy balance penalties. D-D reactions produce ~6x less energy per reaction than D-T, require higher plasma temperatures to ignite, and generate substantial 2.45 MeV neutrons (50% of the D-D → tritium + proton branch) plus energetic protons. Achieving breakeven on D-D in a dipole geometry is an extraordinary extrapolation from current experiments. No quantitative analysis of the D-D energy balance appears in any available source.
+D-D fuel is claimed as an advantage (no tritium breeding blanket needed), but it carries severe energy balance penalties. D-D reactions produce ~6× less energy per reaction than D-T, require higher plasma temperatures to ignite, and generate substantial 2.45 MeV neutrons (50% of the D-D → He³+n branch) plus energetic protons. Achieving breakeven on D-D in a dipole geometry is an extraordinary extrapolation from current experiments. No quantitative analysis of the D-D energy balance appears in any available source.
+
+The TEA implication of lower energy per reaction is a direct constraint on competitive plant scale. The model sensitivity shows that at 200 MW D-D fusion power, net electric output is only ~8 MWe — economically unworkable at any capital cost. At 500 MW fusion power, net output reaches ~85 MWe with a specific capital cost of ~$54,000/kWe. At 1000 MW, net output reaches ~212 MWe with specific capital approaching ~$19,000/kWe. A 1000 MW D-D fusion plant at the baseline geometry implies a plasma volume of roughly 6,000–8,000 m³ — already larger than any fusion device ever built (ITER plasma volume: ~840 m³). This means D-D's "no blanket" capital savings may be partially or fully offset by the proportionally larger first wall, shield, structure, and vacuum vessel costs required to produce a commercially viable net output. The core D-D economic tradeoff is therefore: blanket eliminated, but reactor core much larger and costlier. Plant scale (fusion power) is the primary mechanism by which D-D economics could reach competitive LCOE, making it the highest-leverage sensitivity parameter in the model.
 
 **5. In-vessel coil maintenance and lifetime — severity: important**
 
-The in-vessel dipole coil, while physically supported via magnetic tunnels, will be exposed to neutron flux and plasma heat loads. No shielding scheme, materials selection, or lifetime estimate for the in-vessel coil has been published. The 2014 paper notes that coils "will be compressed against the shell structure, needing a segmentation scheme suited for assembly and maintenance" but provides no details. For any power plant design, in-vessel coil replacement cost and schedule are major capacity factor and capital cost drivers.
+The in-vessel dipole coil, while physically supported via magnetic tunnels, will be exposed to neutron flux and plasma heat loads. No shielding scheme, materials selection, or lifetime estimate for the in-vessel coil has been published. The 2014 paper notes that coils "will be compressed against the shell structure, needing a segmentation scheme suited for assembly and maintenance" but provides no details. For any power plant design, in-vessel coil replacement cost and schedule are major capacity factor and capital cost drivers. The model's capacity factor sensitivity sweep directly quantifies this risk: CF=0.4 → 157 ¢/kWh vs CF=0.70 (baseline) → 95 ¢/kWh — a factor-of-1.7 LCOE penalty from unplanned outages alone. Until a maintenance design is specified, the baseline CF=0.70 assumption is optimistic; CF=0.5 is the more defensible lower bound.
 
 **6. No reactor design point — severity: important**
 
@@ -82,18 +84,18 @@ Without a published design point (major radius, plasma current, field strength, 
 
 **Key Differentiators vs. Conventional D-T Tokamak**
 
-| Subsystem / Feature | PoloMac | Conventional D-T Tokamak | Classification |
-|---------------------|---------|--------------------------|----------------|
-| Confinement geometry | Poloidal dipole field — plasma confined by in-vessel dipole coil | Toroidal field — plasma confined by external coil set | Novel |
-| Coil placement | In-vessel dipole coil, physically supported through plasma via magnetic tunnels | All superconducting coils external to the vessel | Novel |
-| Fuel cycle | D-D (primary target): no tritium breeding blanket required | D-T: requires Li blanket, FLiBe, Li-6 enrichment infrastructure | Novel (if achievable) |
-| Field strength | Claimed 3× weaker than tokamak for D-T equivalent; unvalidated | ~5–20 T on-axis (concept-dependent) | Claimed advantage (no design study supports this) |
-| Recirculating power model | Fixed infrastructure penalty (700 MW copper; SC path unspecified) | Q-dependent plasma fraction (plasma-physics-determined) | Novel structure; penalty unresolved |
-| Heating system | Unspecified; NBI or RF expected by analogy | NBI, ECRH, ICRH (well-established and sized) | Shared approach, unspecified implementation |
-| Operation mode | Steady-state (explicitly claimed) | Quasi-steady to pulsed (conventional); steady-state (advanced) | Shared (claimed) |
-| Power conversion | Not specified; conventional thermal cycle expected | Thermal (steam or sCO₂) | Borrowed |
-| Vacuum system | Required; large vessel (~1300 m³) | Required; similar scale | Shared |
-| Remote handling | Required for in-vessel coil (activated, neutron-irradiated) | Required for in-vessel components; well-developed | Shared — but more complex given tunneled in-vessel coil geometry |
+| Subsystem / Feature | PoloMac | Conventional D-T Tokamak | Classification | Cost Implication |
+|---------------------|---------|--------------------------|----------------|-----------------|
+| Confinement geometry | Poloidal dipole field — plasma confined by in-vessel dipole coil | Toroidal field — plasma confined by external coil set | Novel | **Penalty**: dipole confinement requires large plasma volume (~4,000 m³ at commercial scale) to achieve adequate fusion power, driving shield, structure, and vacuum vessel costs up. Model shows shield ($804M) is the single largest reactor equipment line item — larger than the SC coil ($500M). |
+| Coil placement | In-vessel dipole coil, physically supported through plasma via magnetic tunnels | All superconducting coils external to the vessel | Novel | **Penalty**: in-vessel coil requires complex remote maintenance inside an activated vessel, adds radiation-hardening cost for conductor and insulation, and drives forced outage rate. |
+| Fuel cycle | D-D (primary target): no tritium breeding blanket required | D-T: requires Li blanket, FLiBe, Li-6 enrichment infrastructure | Novel (if achievable) | **Advantage**: blanket elimination saves $200–400M capital and removes Li-6 enrichment supply chain risk. Contingent on D-D ignition, which is unvalidated. |
+| Field strength | Claimed "half magnetic field, i.e. 2–3 T rather than 5.3 T" for D-T (jtsp-jtsp-article-download-32-28.md §DT reactor conditions); also stated as "3× weaker" in abstract | ~5–20 T on-axis (concept-dependent) | Claimed advantage (no design study supports this) | **Neutral unless Q is higher**: model shows D-T at equivalent Q costs more than D-D due to blanket. Field reduction only yields cost benefit if it enables higher plasma performance (Q). |
+| Recirculating power model | Fixed infrastructure penalty (700 MW copper; SC path unspecified) | Q-dependent plasma fraction (plasma-physics-determined) | Novel structure; penalty unresolved | **Penalty**: SC cryo load ~15 MW assumed; if load exceeds ~100 MW, net power goes negative. Viability requires resolving SC coil design. |
+| Heating system | ECH (5–10 kW at 4 GHz) specified for prototype; commercial-scale unspecified | NBI, ECRH, ICRH (well-established and sized) | Partially specified at prototype scale | **Neutral** at prototype scale; commercial heating power and integration cost unknown. |
+| Operation mode | Steady-state (explicitly claimed) | Quasi-steady to pulsed (conventional); steady-state (advanced) | Shared (claimed) | **Neutral** vs advanced tokamak; potential advantage over pulsed designs (no pulsed fatigue costs). |
+| Power conversion | Not specified; conventional thermal cycle expected | Thermal (steam or sCO₂) | Borrowed | **Neutral**: no cost divergence from standard thermal cycle. |
+| Vacuum system | Required; large vessel (~4,000 m³ at commercial scale) | Required; similar scale | Shared | **Penalty**: scales with plasma volume — ~5× ITER volume implies higher vessel fabrication cost. |
+| Remote handling | Required for in-vessel coil (activated, neutron-irradiated) | Required for in-vessel components; well-developed | Shared — but more complex given tunneled in-vessel coil geometry | **Penalty**: coil removal through magnetic tunnel geometry is a novel maintenance challenge with no established precedent; drives capacity factor risk. |
 
 **Modeling Approach Rationale**
 
@@ -101,9 +103,9 @@ Free-form LCOE modeling is the appropriate method for PoloMac. Standard 1costing
 
 The consequence for result interpretation is significant: all model outputs are scenario bounds, not engineering estimates. The model tests the following three propositions:
 
-1. **Superconducting coil viability**: If the SC coil capital cost can be bounded (e.g., ≤ $300–500M for the in-vessel dipole system), and if Q ≥ 10–15 is achievable for D-D confinement, then gross LCOE could in principle reach competitive ranges at sufficient plant scale.
-2. **Blanket elimination value**: The absence of a tritium breeding blanket represents a genuine capital cost reduction (estimated at $200–500M for comparable D-T MFE concepts) — but this advantage is entirely contingent on D-D ignition being achievable, which is an unresolved physics question.
-3. **Recirculating power dominance**: The in-vessel coil system is the single highest-leverage parameter in any PoloMac cost model. Whether the coil is resistive (prohibitive) or superconducting (uncertain), and what maintenance interval the neutron environment imposes, will dominate LCOE more than any other design variable. The model captures this through direct sensitivity sweeps on SC coil cost and capacity factor.
+1. **Confinement physics and plant scale dominate LCOE**: Sensitivity sweeps confirm that plasma Q and fusion power are the highest-leverage parameters — far outweighing coil cost or lifetime. At Q = 3, net power goes negative; at Q = 20, LCOE drops to ~68 ¢/kWh. At 200 MW fusion power, net output is only ~8 MWe (unworkable); at 1000 MW, LCOE approaches ~50 ¢/kWh. Thermal efficiency is the third-ranked lever (30% → 193 ¢/kWh; 46% → 64 ¢/kWh). SC coil capital cost and lifetime produce much narrower swings (82–115 ¢/kWh across a 5× capital range; 90–109 ¢/kWh across a 7× lifetime range) and are secondary levers in the model. This ordering matters for experimental priorities: demonstrating D-D confinement at fusion-relevant Q is a far larger economic milestone than any coil cost reduction. The high-Q model scenario (Q ≥ 10) corresponds to Deutelio's own projections: the full JTSP paper (§DD reactor conditions) claims confinement times of 20–40 s, plasma temperatures of 100–200 keV, and densities of ~10²¹ m⁻³ — extraordinary values that exceed any validated MFE experiment by a large margin (ITER's predicted confinement time is ~4–5 s). These projections are the company's stated scenario basis and anchor the optimistic model branch, but they have no experimental or physics-model support.
+2. **SC coil viability as a framing constraint**: The 700 MW copper coil draw (Elio 2014, §Coil support and supply) establishes a hard baseline — copper coils are commercially nonviable. The model assumes a superconducting design reduces this to ~15 MW cryogenic load. If the SC cryo load exceeds ~100 MW (e.g., due to large-bore HTS in a high-radiation environment), the model shows net power goes negative. SC coil viability is therefore a necessary but not sufficient condition for economic competitiveness; it is not the primary LCOE driver once the superconducting transition is assumed.
+3. **D-T vs D-D scenario comparison**: Deutelio explicitly claims D-T operation at "3× weaker field than a tokamak" (refined in §DT reactor conditions as "half magnetic field, i.e. 2–3 T rather than 5.3 T") as its near-term target, with D-D (no blanket) as the long-term ambition (jtsp-jtsp-article-download-32-28.md §Abstract, §DT reactor conditions). The model includes a full D-T vs D-D comparison at equivalent scenario assumptions: **D-T costs more than D-D** at every viable scenario (moderate: $1,122 vs $946/MWh; optimistic: $277 vs $230/MWh). The blanket capital penalty (~$200–400M) exceeds the Q-threshold benefit when Q is held equal across fuel types — the field advantage claim must translate to higher achievable Q, not just lower field, to yield a cost benefit. This is a meaningful reversal of the usual intuition: Deutelio's near-term D-T path does not automatically reduce cost relative to the D-D long-term target unless the 2–3 T operation enables substantially better plasma performance.
 
 These are propositions to test, not validated conclusions. The model output should be read as "conditions under which PoloMac could be competitive," not as a point estimate.
 
@@ -117,17 +119,17 @@ Subsystems are listed in ascending order of maturity (least mature first).
 
 **Plasma Confinement and Heating — TRL 1**
 
-- **Demonstrated**: Static magnetic field topology achievable by calculation (2D and 3D FEA only). No plasma experiment at PoloMac field levels or geometry has been conducted.
-- **On paper only**: The PoloMac concept itself. MHD stability, confinement scaling, transport coefficients, and plasma performance all exist only as claims extrapolated from historical 0.1–0.3 T dipole experiments.
-- **Missing at scale**: Any plasma physics validation. A heating method must be chosen and integrated. Confinement time, density, and temperature must be demonstrated at even sub-fusion conditions before ignition physics extrapolation is meaningful.
+- **Demonstrated**: Static magnetic field topology achievable by calculation (2D and 3D FEA only). ECH at 4 GHz (5–10 kW) has been selected as the prototype heating approach — a commercially available and well-understood technology in MFE devices (jtsp-jtsp-article-download-32-28.md §The small prototype). No plasma experiment at PoloMac field levels or geometry has been conducted.
+- **On paper only**: The PoloMac concept itself. MHD stability, confinement scaling, transport coefficients, and plasma performance all exist only as claims extrapolated from historical 0.1–0.3 T dipole experiments. The prototype targets 100 eV hydrogen plasma at ≤10²⁰ m⁻³ — a first engineering demonstration, not a fusion-relevant test.
+- **Missing at scale**: Any plasma physics validation at fusion-relevant conditions. Commercial-scale heating power unspecified. Confinement time, density, and temperature must be demonstrated at sub-fusion conditions before ignition physics extrapolation is meaningful. The claimed 20–40 s D-D confinement time is 4–10× ITER's projected 4–5 s — an extraordinary prediction unsupported by any experiment.
 
 ---
 
-**In-Vessel Dipole Coil with Magnetic Tunnel Supports — TRL 2**
+**In-Vessel Dipole Coil with Magnetic Tunnel Supports — TRL 2–3**
 
-- **Demonstrated**: Magnetic field shaping to create plasma-free channels ("magnetic tunnels") has been demonstrated by finite element analysis. The 2014 paper proves the geometry is magnetically feasible.
-- **On paper only**: Physical fabrication of the coil support system, electrical/hydraulic feed-throughs, and the segmented coil assembly. No prototype exists at any scale.
-- **Missing at scale**: Structural design under combined magnetic, thermal, and neutron loads. Maintenance access scheme. Long-term neutron damage management for in-vessel coil. Radiation-hard insulation. No LDX-class experiment has approached PoloMac parameters.
+- **Demonstrated**: Magnetic field shaping to create plasma-free channels ("magnetic tunnels") demonstrated by finite element analysis (2014 FED paper). The full JTSP 2024 paper presents a complete engineering design for a prototype, ready for fabrication: 30 cm diameter central cylinder, ~1 m outer diameter, 90 cm height, 150 dm³ plasma volume, 960 m of water-cooled copper conductor, 2,500 A maximum coil current, 750 kW ohmic losses, 304L stainless steel vacuum vessel at 400 kg (jtsp-jtsp-article-download-32-28.md §The small prototype, Table 1). Construction is described as planned within approximately 1 year of the October 2024 report.
+- **On paper only**: The prototype design is complete; fabrication and operation have not yet occurred. Plasma heating integration (5–10 kW ECH) is specified but unbuilt. The prototype uses copper coils and targets hydrogen plasma at up to 10²⁰ m⁻³ density and 100 eV temperature — far from fusion conditions.
+- **Missing at scale**: Commercial-scale superconducting coil design. Structural integrity under combined magnetic, thermal, and neutron loads at fusion-relevant fluences. Maintenance access scheme for coil removal and replacement inside an activated vessel. Radiation-hard insulation. No LDX-class experiment has approached PoloMac parameters, and the prototype is explicitly a proof-of-concept for the magnetic geometry, not a plasma performance test at fusion conditions.
 
 ---
 
@@ -139,11 +141,11 @@ Subsystems are listed in ascending order of maturity (least mature first).
 
 ---
 
-**D-D Plasma Heating System — TRL 1**
+**Commercial-Scale Plasma Heating System — TRL 1**
 
-- **Demonstrated**: NBI and RF heating have been demonstrated in many MFE devices, but not in the PoloMac topology and not for D-D conditions. No heating system has been specified by Deutelio.
-- **On paper only**: Not even on paper — no heating design exists in any available source.
-- **Missing at scale**: The full heating system design, sizing, and integration with the in-vessel coil structure.
+- **Demonstrated**: ECH at 4 GHz (5–10 kW) is specified for the prototype and is a commercially available technology. This choice is consistent with established ECH use across MFE devices.
+- **On paper only**: Commercial-scale heating power. D-D fusion requires plasma temperatures of ~100–200 keV, which demands a heating system many orders of magnitude more powerful than the prototype's 5–10 kW. No commercial heating design has been specified.
+- **Missing at scale**: Power budget, beam geometry, and integration with the in-vessel coil structure at fusion-relevant parameters. The choice of ECH at a few GHz for a dipole geometry at commercial scale has not been analyzed.
 
 ---
 
@@ -165,7 +167,9 @@ Subsystems are listed in ascending order of maturity (least mature first).
 
 **O&M and Availability**
 
-No O&M data is available. Given the TRL-1 state of the plasma physics and the unsolved problem of in-vessel coil maintenance in a neutron environment, capacity factor estimates would be entirely speculative. No placeholder estimate is warranted. The in-vessel coil is structurally analogous to the levitated dipole coil challenge in 12-levitated-dipole: planned maintenance access requires precise remote handling inside an activated vessel, but in PoloMac the coil is fixed rather than levitated, which eases some operational complications while creating others (coil must be designed for removal/replacement under neutron activation).
+No O&M cost data is available. However, the in-vessel coil maintenance scheme is directly coupled to capacity factor — and therefore LCOE — through the forced outage rate. If coil replacement requires extended vessel access (weeks to months per replacement cycle, analogous to major overhaul intervals in levitated dipole designs), CF could plausibly fall to 0.4–0.5. The model's CF sensitivity sweep shows this is the primary LCOE downside scenario: CF=0.4 → 157 ¢/kWh vs the baseline CF=0.70 → 95 ¢/kWh vs CF=0.9 → 76 ¢/kWh — a factor-of-2 range driven entirely by this maintenance question. The model's baseline CF=0.70 should be read as optimistic given the unresolved coil replacement design; CF=0.5 is the more conservative lower bound until a maintenance scheme is demonstrated.
+
+The in-vessel coil is structurally analogous to the levitated dipole coil challenge in 12-levitated-dipole: planned maintenance access requires precise remote handling inside an activated vessel, but in PoloMac the coil is fixed rather than levitated, which eases some operational complications while creating others (coil must be designed for removal/replacement under neutron activation through the magnetic tunnel geometry — a novel mechanical challenge with no precedent).
 
 ---
 
@@ -207,12 +211,21 @@ The available sources contain no mention of beryllium, vanadium alloys, SiC comp
 | Magnetic field (coil current density) | ~2 T at 10–25 A/mm² | elio-2014-fed-poloidal-confinement.md §Magnet coils | medium | Compatible with water-cooled copper; commercial design unspecified |
 | Plasma volume | 1300 m³ | elio-2014-fed-poloidal-confinement.md §Coil support and supply | medium | From the 2014 design geometry; not a power plant design point |
 | Copper coil recirculating power | 700 MW | elio-2014-fed-poloidal-confinement.md §Coil support and supply | high | Acknowledged as prohibitive for steady operation |
-| Prototype magnet field | 0.2–0.3 T | deutelio-company-profile.md §Technical | medium | Hydrogen plasma only; copper coils |
-| Claimed D-T field advantage | 3× weaker field than tokamak | jtsp-2024-polomac-technical-report.md §Abstract | low | Unvalidated claim; no design study supports this |
+| Prototype magnet field | 0.2–0.3 T | jtsp-jtsp-article-download-32-28.md Table 1; deutelio-company-profile.md §Technical | medium | Design target for planned (unbuilt) prototype; hydrogen plasma, water-cooled copper coils |
+| Claimed D-T field advantage (abstract) | 3× weaker field than tokamak | jtsp-2024-polomac-technical-report.md §Abstract | low | Unvalidated claim; no design study supports this |
+| Claimed D-T field (Section V) | 2–3 T ("half magnetic field, i.e. 2–3 T rather than 5.3 T") | jtsp-jtsp-article-download-32-28.md §DT reactor conditions | low | More specific than abstract claim; the "half" vs "3×" formulations are inconsistent (the paper does not reconcile them) |
+| **Company predictions (unvalidated) — D-D reactor conditions** | | | | |
+| Claimed D-D confinement time | 20–40 s | jtsp-jtsp-article-download-32-28.md §DD reactor conditions | very low — company claim, no experimental or physics basis | ITER design confinement: ~4–5 s; this claim exceeds it by 4–10×. The paper states DD is a factor of 142 more demanding than DT by the Lawson criterion. |
+| Claimed D-D plasma temperature | 100–200 keV | jtsp-jtsp-article-download-32-28.md §DD reactor conditions | very low — company claim, no experimental or physics basis | Higher than D-T threshold (~10–20 keV); requires far more heating power |
+| Claimed D-D plasma density | ~10²¹ m⁻³ | jtsp-jtsp-article-download-32-28.md §DD reactor conditions | very low — company claim, no experimental or physics basis | Consistent with burning plasma density regime but unsupported by any experiment |
+| **Prototype design specifications** | | | | |
+| Prototype plasma volume | 150 dm³ (0.15 m³) | jtsp-jtsp-article-download-32-28.md §The small prototype, Table 1 | high — engineering design | Central cylinder 30 cm diameter; outer diameter ~1 m; height ~90 cm; unbuilt as of Oct 2024 |
+| Prototype ohmic losses | 750 kW | jtsp-jtsp-article-download-32-28.md Table 1 | high — engineering design | Water-cooled copper, 960 m conductor, 2,500 A; the 700 MW figure in Elio 2014 was for a much larger geometry |
 | Operation mode | Steady-state | jtsp-2024-polomac-technical-report.md §Abstract | high | Explicitly stated as opposed to pulsed tokamak |
 | Fuel | D-D (primary target), D-T (secondary claim) | jtsp-2024-polomac-technical-report.md §Abstract | high | D-D requires no tritium breeding |
 | Historical plasma temperature | Few eV | elio-2014-fed-poloidal-confinement.md §Past dipole experiments | high | Historical experiments only — irrelevant to fusion conditions |
 | Historical plasma density | ~10¹⁶ m⁻³ | elio-2014-fed-poloidal-confinement.md §Past dipole experiments | high | Historical experiments only — irrelevant to fusion conditions |
+| Plasma volume (power plant, inferred) | 6,000–8,000 m³ at ~800–1000 MW D-D | [inferred: scales from 1300 m³ at sub-reactor geometry] | low | Derived from model sensitivity: competitive LCOE requires ~800–1000 MW D-D fusion power; volume scales ~linearly with fusion power relative to 2014 geometry |
 | Net electrical output | Unknown | — | — | Not stated in any source |
 | Thermal efficiency | Unknown | — | — | No power conversion design exists |
 | Plasma Q | Unknown | — | — | No confinement physics analysis |
@@ -223,7 +236,7 @@ The available sources contain no mention of beryllium, vanadium alloys, SiC comp
 
 | Parameter | Gap Type | Criticality | Notes |
 |-----------|----------|-------------|-------|
-| Plasma heating method and power | truly-unknown | blocking | No disclosure in any source; critical for recirculating power fraction |
+| Commercial-scale plasma heating power | partially known (ECH approach specified for prototype) | important | Prototype: 5–10 kW ECH at 4 GHz (jtsp-jtsp-article-download-32-28.md §The small prototype). Commercial-scale power unspecified; required to size auxiliary systems and compute recirculating fraction. |
 | Plasma Q / energy gain | truly-unknown | blocking | No confinement physics analysis performed |
 | Net electric output / plant size | truly-unknown | blocking | No reactor design point |
 | Thermal efficiency | truly-unknown | blocking | No power conversion design |
@@ -240,7 +253,7 @@ The available sources contain no mention of beryllium, vanadium alloys, SiC comp
 
 | # | Gap Description | Section | Gap Type | Criticality | Source Recommendation |
 |---|-----------------|---------|----------|-------------|----------------------|
-| 1 | No plasma heating method specified | S2, S3, S5 | truly-unknown | blocking | Deutelio has not disclosed this; future publications or direct inquiry required |
+| 1 | Plasma heating method partially specified | S2, S3, S5 | partially known: ECH (5–10 kW, 4 GHz) for prototype; commercial-scale heating power unspecified | important | Prototype ECH approach established (jtsp-jtsp-article-download-32-28.md §The small prototype); commercial sizing requires confinement data that does not yet exist |
 | 2 | 700 MW copper coil draw — no SC coil design to resolve it | S2, S3, S5 | proprietary/truly-unknown | blocking | No commercial design published; superconducting path unspecified |
 | 3 | No plasma confinement physics analysis (MHD stability, scaling) | S1, S2, S3 | truly-unknown | blocking | Would require a new plasma physics study; no data exists in public domain |
 | 4 | No reactor design point (Q, major radius, thermal power) | S2, S5 | truly-unknown | blocking | Deutelio has not published a design point |
@@ -291,8 +304,9 @@ The closest conceptual neighbors in the portfolio are both in-progress:
 - **Path**: `knowledge/concept_research/35-polomac-magnetic-confinement/iter-01/sources/elio-2014-fed-poloidal-confinement.md` (abstract + snippets; full text paywalled)
 
 **2. Elio, F.; Elio, Fr.; Leone, M.; Fulceri, T.; Sborchia, C. (2024) "Technical Report: The Polomac approach to fusion energy." *Journal of Technical and Scientific Publications*. https://www.jtsp.eu/jtsp/article/view/32**
-- **Contribution**: Most recent public statement of concept claims. States the D-T field advantage (3× weaker than tokamak), D-D no-blanket claim, and steady-state operation. Development strategy through magnetic tunnel prototype.
-- **Path**: `knowledge/concept_research/35-polomac-magnetic-confinement/iter-01/sources/jtsp-2024-polomac-technical-report.md` (abstract only; full text not extracted)
+- **Contribution**: Primary source for prototype engineering design (Section III, Table 1), D-T and D-D reactor condition analyses (Sections V–VI), company performance projections (confinement time 20–40 s, temperature 100–200 keV, density 10²¹ m⁻³), ECH heating specification, and refined D-T field claim (2–3 T). Full text extracted as `jtsp-jtsp-article-download-32-28.md`. The abstract-only extraction (`jtsp-2024-polomac-technical-report.md`) is superseded.
+- **Path (full)**: `knowledge/concept_research/35-polomac-magnetic-confinement/iter-01/sources/jtsp-jtsp-article-download-32-28.md`
+- **Path (abstract only, superseded)**: `knowledge/concept_research/35-polomac-magnetic-confinement/iter-01/sources/jtsp-2024-polomac-technical-report.md`
 
 **3. Deutelio AG company profile (extracted 2026-04-04)**
 - **Contribution**: Establishes company stage (pre-prototype), 3-stage roadmap, prototype field strength (0.2–0.3 T), Boldbrain placement (4th, 2024), and independent C− tier rating.

@@ -1,0 +1,272 @@
+
+######################################################################
+# BASELINE: Thermoelectric scenario above break-even
+# Q_engineering=10, η=12%, 1000 modules × 1 kWe input
+# Break-even at Q≈8.3 for η=12%; Q=10 yields ~16% net fraction
+######################################################################
+======================================================================
+Electrostatic Hybrid D-T (Orbitron) — Baseline (Q=10, η=12%)
+======================================================================
+
+--- Key Input Parameters ---
+  Q_engineering:              10.0  (break-even = 9.3)
+  Thermal efficiency:         12.0%
+  Input power per module:     1.0 kWe
+  Number of modules:          1,000
+  Plant availability:         85.0%
+  FOAK/NOAK:                  FOAK
+  Plant lifetime:             30 years
+  Interest rate:              10.0%
+
+--- Power Balance (per module + plant) ---
+  Input power / module:       1.0 kWe
+  Fusion power / module:      10.000 kWe  (Q=10.0)
+  Gross electric / module:    1.200 kWe  (η=12%)
+  Recirc. power / module:     1.120 kWe
+  Net electric / module:      0.080 kWe
+  Recirculating fraction:     93.3%
+  ─────── Plant (1,000 modules) ───────
+  Fusion power (plant):       10000.0 kWe  (10.0000 MW)
+  Gross electric (plant):     1200.0 kWe
+  Net electric (plant):       80.00 kWe  (0.0800 MW)
+
+--- CAS22: Reactor Plant Equipment ---
+  Per-module accounts (× 1,000 modules):
+    C220101 Chamber Wall (no blanket)      $20.0k/mod  $20.00M fleet [override]
+    C220102 Neutron Shield                 $0.8k/mod  $0.75M fleet
+    C220103 HTS Magnet (0.5 T pair)        $50.0k/mod  $50.00M fleet [override]
+    C220104 Supplementary Heating          $0.0k/mod  $0.00M fleet [override]
+    C220105 Cathode/Vacuum Assembly        $100.0k/mod  $100.00M fleet [override]
+    C220106 Vacuum System                  $80.0k/mod  $80.00M fleet
+    C220107 HV Power Supply + Ion Gun      $50.0k/mod  $50.00M fleet [override]
+    C220108 Target Factory                 $0.0k/mod  $0.00M fleet [override]
+    C220110 Remote Handling                $5.0k/mod  $5.00M fleet [override]
+    C220111 Installation                   $42.8k/mod  $42.81M fleet
+  ─────────────────────────────────────────────
+    Per-module subtotal:       $348.6k   $348.56M fleet
+  Plant-wide accounts:
+    C220200 Coolant Systems                $1.63M
+    C220300 Aux Cooling + Cryoplant        $57.07M
+    C220400 Rad Waste Management           $0.02M
+    C220500 Tritium Handling (purchased)   $0.16M
+    C220700 Instrumentation & Control      $2.83M
+  ─────────────────────────────────────────────
+    Plant-wide subtotal:       $61.72M
+  CAS22 Total:                $410.28M
+
+--- Capital Costs (CAS10-60) ---
+  CAS10 Pre-construction             $    32.0M
+  CAS21 Buildings                    $     0.3M
+  CAS22 Reactor Plant Equipment      $   410.3M
+  CAS23 Turbine Plant                $     0.1M
+  CAS24 Electric Plant               $     0.1M
+  CAS25 Misc Plant                   $     0.1M
+  CAS26 Heat Rejection               $     0.0M
+  CAS27 Special Materials            $     0.0M
+  CAS28 Digital Twin                 $     5.0M
+  CAS29 Contingency                  $    62.4M
+  ──────────────────────────────────────────────────
+  CAS20 Direct Costs:                 $   478.3M
+  CAS30 Indirect Costs:               $    63.8M
+  CAS40 Owner's Costs:                $     0.3M
+  CAS50 Supplementary:                $    27.6M
+  ──────────────────────────────────────────────────
+  Overnight Capital:                  $   602.1M
+  CAS60 IDC (f=0.160):             $    96.5M
+  ══════════════════════════════════════════════════
+  Total Capital:                      $   698.6M
+  Specific Capital:                   $ 8732267 $/kWe
+
+--- Annual Costs (CAS70-90) ---
+  CAS90 Capital charge (CRF=0.1061): $   74.10M/yr
+  CAS71 O&M (levelized):              $   30.98M/yr
+  CAS72 Cathode replacement:          $   39.34M/yr  (12 replacements)
+  CAS70 Total O&M:                    $   70.31M/yr
+  CAS80 Tritium fuel (purchased):     $   33.91M/yr
+    Tritium: 930.2 g/yr  ×  $35,000/g  = $32.56M/yr
+
+--- LCOE ---
+  Annual net energy:          596 MWh
+  Annual revenue requirement: $178.33M
+  ╔══════════════════════════════════════╗
+  ║  LCOE =  29936.5 ¢/kWh             ║
+  ║       = 299364.5 $/MWh             ║
+  ╚══════════════════════════════════════╝
+  Capital (CAS90):            41.6%
+  O&M (CAS70):               39.4%
+  Fuel/Tritium (CAS80):       19.0%
+
+
+======================================================================
+SENSITIVITY SWEEPS (from baseline: Q=10, η=12%, 1000 modules)
+======================================================================
+
+Baseline LCOE: $299,365/MWh  |  Specific capital: $8,732,267/kWe
+
+  Q_engineering  [break-even @η=12%: Q≈8.3; @η=30%: Q≈3.3]:
+             1  →  NET POWER ≤ 0 (-1000.00 kWe)
+             2  →  NET POWER ≤ 0 (-880.00 kWe)
+             3  →  NET POWER ≤ 0 (-760.00 kWe)
+             5  →  NET POWER ≤ 0 (-520.00 kWe)
+             7  →  NET POWER ≤ 0 (-280.00 kWe)
+             8  →  NET POWER ≤ 0 (-160.00 kWe)
+             9  →  NET POWER ≤ 0 (-40.00 kWe)
+            10  →  $ 299,365/MWh  (80.0 kWe, $8,732,267/kWe)
+            12  →  $  77,814/MWh  (320.0 kWe, $2,189,361/kWe)
+            15  →  $  38,702/MWh  (680.0 kWe, $1,033,999/kWe)
+            20  →  $  22,398/MWh  (1280.0 kWe, $552,198/kWe)
+            30  →  $  13,449/MWh  (2480.0 kWe, $287,614/kWe)
+
+  Thermal efficiency:
+          0.05  →  NET POWER ≤ 0 (-620.00 kWe)
+          0.08  →  NET POWER ≤ 0 (-320.00 kWe)
+          0.12  →  $ 299,365/MWh  (80.0 kWe, $8,732,267/kWe)
+           0.2  →  $  27,288/MWh  (880.0 kWe, $797,459/kWe)
+           0.3  →  $  12,805/MWh  (1880.0 kWe, $374,860/kWe)
+           0.4  →  $   8,378/MWh  (2880.0 kWe, $245,625/kWe)
+
+  Module count:
+           100  →  $ 427,090/MWh  (8.0 kWe, $15,054,658/kWe)
+           500  →  $ 316,606/MWh  (40.0 kWe, $9,585,708/kWe)
+         1e+03  →  $ 299,365/MWh  (80.0 kWe, $8,732,267/kWe)
+         5e+03  →  $ 280,615/MWh  (400.0 kWe, $7,804,153/kWe)
+         1e+04  →  $ 276,582/MWh  (800.0 kWe, $7,604,549/kWe)
+         5e+04  →  $ 270,910/MWh  (4000.0 kWe, $7,323,792/kWe)
+
+  HV supply $/kW_input:
+           100  →  $ 299,365/MWh  (80.0 kWe, $8,732,267/kWe)
+           200  →  $ 299,365/MWh  (80.0 kWe, $8,732,267/kWe)
+           300  →  $ 299,365/MWh  (80.0 kWe, $8,732,267/kWe)
+           500  →  $ 299,365/MWh  (80.0 kWe, $8,732,267/kWe)
+         1e+03  →  $ 299,365/MWh  (80.0 kWe, $8,732,267/kWe)
+         2e+03  →  $ 299,365/MWh  (80.0 kWe, $8,732,267/kWe)
+
+  Tritium $/g:
+       1.5e+04  →  $ 268,135/MWh  (80.0 kWe, $8,732,267/kWe)
+       2.5e+04  →  $ 283,750/MWh  (80.0 kWe, $8,732,267/kWe)
+       3.5e+04  →  $ 299,365/MWh  (80.0 kWe, $8,732,267/kWe)
+         5e+04  →  $ 322,787/MWh  (80.0 kWe, $8,732,267/kWe)
+         1e+05  →  $ 400,862/MWh  (80.0 kWe, $8,732,267/kWe)
+
+  O&M frac of CAPEX:
+          0.02  →  $ 273,361/MWh  (80.0 kWe, $8,732,267/kWe)
+          0.03  →  $ 286,363/MWh  (80.0 kWe, $8,732,267/kWe)
+          0.04  →  $ 299,365/MWh  (80.0 kWe, $8,732,267/kWe)
+          0.06  →  $ 325,368/MWh  (80.0 kWe, $8,732,267/kWe)
+          0.08  →  $ 351,371/MWh  (80.0 kWe, $8,732,267/kWe)
+
+  Cathode lifetime (FPY):
+           0.5  →  $ 523,426/MWh  (80.0 kWe, $8,732,267/kWe)
+             1  →  $ 374,313/MWh  (80.0 kWe, $8,732,267/kWe)
+             2  →  $ 299,365/MWh  (80.0 kWe, $8,732,267/kWe)
+             5  →  $ 255,582/MWh  (80.0 kWe, $8,732,267/kWe)
+            10  →  $ 241,024/MWh  (80.0 kWe, $8,732,267/kWe)
+
+
+======================================================================
+BACK-SOLVE: LCOE Surface — Q_engineering × Module Capital Scenarios
+(Actual computed $/kWe shown per cell — not assumed from inputs)
+  Capital lever: cathode/vacuum assembly cost per module
+  [Optimistic = $30k/mod NOAK | Baseline = $100k/mod FOAK | Pessimistic = $250k/mod FOAK]
+======================================================================
+
+  [Thermoelectric (η=12%)]  — break-even Q ≈ 8.3
+  Q_eng    Net kWe     Opt $/kWe   LCOE$/MWh    Base $/kWe   LCOE$/MWh    Pess $/kWe   LCOE$/MWh
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+  Q= 3.0     NEG kWe     NEG POWER           —     NEG POWER           —     NEG POWER           —
+  Q= 5.0     NEG kWe     NEG POWER           —     NEG POWER           —     NEG POWER           —
+  Q= 7.0     NEG kWe     NEG POWER           —     NEG POWER           —     NEG POWER           —
+  Q= 9.0     NEG kWe     NEG POWER           —     NEG POWER           —     NEG POWER           —
+  Q=10.0    80.00 kWe    $6,829,400    $214,699    $8,732,267    $299,365   $12,809,841    $480,791
+  Q=12.0   320.00 kWe    $1,713,644     $56,648    $2,189,361     $77,814    $3,208,754    $123,171
+  Q=15.0   680.00 kWe      $810,132     $28,742    $1,033,999     $38,702    $1,513,713     $60,047
+  Q=20.0  1280.00 kWe      $433,269     $17,106      $552,198     $22,398      $807,047     $33,737
+  Q=30.0  2480.00 kWe      $226,231     $10,718      $287,614     $13,449      $419,148     $19,301
+
+  [Multi-module turbine (η=30%)]  — break-even Q ≈ 3.3
+  Q_eng    Net kWe     Opt $/kWe   LCOE$/MWh    Base $/kWe   LCOE$/MWh    Pess $/kWe   LCOE$/MWh
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+  Q= 3.0     NEG kWe     NEG POWER           —     NEG POWER           —     NEG POWER           —
+  Q= 5.0   380.00 kWe    $1,434,974     $39,152    $1,835,578     $56,976    $2,694,014     $95,171
+  Q= 7.0   980.00 kWe      $559,644     $16,176      $714,980     $23,087    $1,047,843     $37,898
+  Q= 9.0  1580.00 kWe      $348,869     $10,645      $445,216     $14,932      $651,676     $24,118
+  Q=10.0  1880.00 kWe      $293,887      $9,202      $374,860     $12,805      $548,374     $20,525
+  Q=12.0  2480.00 kWe      $223,781      $7,363      $285,164     $10,094      $416,698     $15,947
+  Q=15.0  3380.00 kWe      $165,225      $5,828      $210,263      $7,832      $306,774     $12,126
+  Q=20.0  4880.00 kWe      $115,547      $4,525      $146,741      $5,913      $213,587      $8,887
+  Q=30.0  7880.00 kWe       $72,814      $3,406       $92,133      $4,265      $133,529      $6,107
+
+  Notes:
+  - '$/kWe' = total capital / net electric power (computed from model, not assumed)
+  - Capital scenarios vary cathode/vacuum assembly cost (dominant per-module account)
+  - $/kWe varies strongly with Q because net power ∝ (Q×η − 1) × n_modules
+  - '◄ VIABLE' = LCOE ≤ $100/MWh in that (Q, capital scenario) cell
+  - Tritium purchased at $35,000/g — permanent OPEX, no breeding blanket
+  - Net power shown for 1000 modules at 1 kWe input per module
+
+
+======================================================================
+SCENARIO COMPARISON TABLE
+All scenarios represent physically feasible configurations (net power > 0).
+======================================================================
+
+Scenario                                  Q_eng      η   Mods   Net kWe     $/kWe   LCOE $/MWh
+───────────────────────────────────────────────────────────────────────────────────────────────
+  Q=10, thermoelectric (baseline)          10.0   12%  1,000    80.0  $8,732,267     $ 299,365
+  Q=12, thermoelectric                     12.0   12%  1,000   320.0  $2,189,361     $  77,814
+  Q=20, thermoelectric                     20.0   12%  1,000  1280.0   $552,198     $  22,398
+  Q=5, turbine array (η=30%)                5.0   30%  1,000   380.0  $1,835,578     $  56,976
+  Q=10, turbine array (η=30%)              10.0   30%  1,000  1880.0   $374,860     $  12,805
+  Q=10, turbine, NOAK, large plant         10.0   30%  5,000  9400.0   $277,526     $  10,054
+  Q=20, turbine, NOAK, large plant         20.0   30% 10,000 48800.0   $105,681     $   4,785
+
+
+======================================================================
+KEY BINDING CONSTRAINTS — Conditional Viability Propositions
+======================================================================
+
+  H1 — Thermoelectric scenario (η=12%):
+    PROPOSITION: LCOE ≤ $100/MWh under thermoelectric conversion requires
+    Q_engineering ≥ Q > 100 (not found in model range) (1000 modules, FOAK, $300/kW_input HV supply).
+    Net-power break-even alone requires Q_engineering ≥ 8.3 (= 1/0.12); commercial
+    viability requires substantially higher Q due to capital cost per kWe.
+    MODEL RESULT: At Q=20, the model computes LCOE = $22,398/MWh. The $100/MWh
+    threshold is not reached within the model Q range.
+    PHYSICS BARRIER: Coulomb collision physics is cited as making Q >> 1 structurally
+    difficult in this confinement class (Lampe-Mannheimer 1998: collision rate 25–37×
+    fusion rate at required densities). If this barrier limits achievable Q below the
+    model-computed threshold, the thermoelectric scenario is structurally non-viable
+    regardless of capital cost assumptions.
+
+  H2 — Turbine-array scenario (η=30%):
+    PROPOSITION: LCOE ≤ $100/MWh under turbine-array conversion requires
+    Q_engineering ≥ Q > 100 (not found in model range) (1000 modules, FOAK, $300/kW_input HV supply)
+    AND a plant scale sufficient to justify turbine-array conversion (>1 MWe aggregate,
+    implying >>1000 modules at 1 kWe/module input).
+    MODEL RESULT: At Q=10, the model computes LCOE = $12,805/MWh.
+    The $100/MWh threshold is not reached within the model Q range.
+    ARCHITECTURE BARRIER: η=30% requires megawatt-aggregate scale per thermal unit —
+    a plant architecture (module stacking, shared BOP) that does not yet exist or have
+    a published design. This scenario requires both the Q threshold AND a demonstrated
+    plant architecture to be simultaneously achieved.
+
+  H3 — Tritium cost axis (both scenarios):
+    PROPOSITION: Purchased tritium at >$35,000/g constitutes
+    19% of total annual revenue requirement at Q=10, η=12%
+    ($32.6M/yr for 1000 modules, contributing ~$56,920/MWh
+    of the total $299,365/MWh LCOE). Tritium cost per MWh scales inversely
+    with Q (∝ p_fus/p_net ∝ Q/(Q×η−1)): as Q approaches break-even, tritium cost
+    per unit electricity diverges regardless of capital cost. No breeding blanket
+    design has been published; an MoU with Fusion Fuel Cycles (FFC, April 2025)
+    covers breeding as a collaboration direction but no specification, timeline, or
+    technical design exists. At Q < 5, purchased tritium cost alone may preclude
+    commercial viability independent of capital cost — a third constraint axis beyond
+    Q and $/kWe that does not appear in mainstream D-T TEA.
+
+======================================================================
+NOTE: All LCOE values carry EXTREME UNCERTAINTY. This model is a conditional
+viability map — not a cost projection. The Orbitron has not demonstrated Q>1
+and the central density-enhancement physics is simulation-only (AIP Advances 2024).
+Cost accounts follow 1costingfe CAS structure with extensive concept-specific
+overrides. See parameter docstrings for sources and uncertainty levels.
+======================================================================

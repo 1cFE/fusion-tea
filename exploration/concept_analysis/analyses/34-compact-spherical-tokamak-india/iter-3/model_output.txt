@@ -1,0 +1,206 @@
+Compact Spherical Tokamak — India (Pranos Fusion)
+50 MWe native module | D-T | NOAK | All parameters: ST analogues only
+LCOE: 629.7 $/MWh | Overnight: 47754 $/kW
+Fusion: 369 MW | Net: 50 MW | Q_eng: 1.6
+
+WARNING: No Pranos design data exists. LCOE uncertainty is very high.
+Analogue literature: $10,000–$30,000/kWe at 50 MWe ST scale (analysis.md §5)
+
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    16.1
+CAS21    Buildings                         228.9
+CAS22    Reactor Plant Equipment          1102.3
+CAS23    Turbine Plant                      25.1
+CAS24    Electrical Plant                   10.7
+CAS25    Miscellaneous                       6.5
+CAS26    Heat Rejection                     14.5
+CAS27    Special Materials                   0.8
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                         0.0
+CAS30    Indirect Costs                    371.7
+CAS40    Owner's Costs                       8.7
+CAS50    Supplementary                      71.6
+CAS60    IDC                               525.9
+CAS70    O&M (annualized)                   28.1
+CAS80    Fuel (annualized)                   0.2
+CAS90    Financial                         192.4
+------------------------------------------------
+         Total Capital                    2387.7
+
+CAS22 Sub-account Detail:
+  C220101: 39.8 M$
+  C220102: 40.6 M$
+  C220103: 516.1 M$
+  C220104: 176.6 M$
+  C220105: 3.7 M$
+  C220106: 16.5 M$
+  C220107: 18.9 M$
+  C220108: 39.1 M$
+  C220109: 0.0 M$
+  C220110: 53.5 M$
+  C220111: 126.7 M$
+  C220112: 0.0 M$
+  C220200: 21.0 M$
+  C220300: 11.9 M$
+  C220400: 0.8 M$
+  C220500: 14.7 M$
+  C220600: 1.0 M$
+  C220700: 21.5 M$
+  C220000: 1102.3 M$
+
+── 1 GWe Reference (per-account scaling from 50 MWe) ──────────────────
+LCOE: 84.0 $/MWh | Overnight: 5872 $/kW
+Fusion: 3423 MW | Net: 1000 MW | Q_eng: 9.6
+
+============================================================
+H2: FACTORY LEARNING CURVE SWEEP
+============================================================
+Learning multipliers: FOAK≈2.0×, mid-fleet≈1.4×, NOAK≈1.0× (Wright's Law b≈0.15–0.20)
+2,500-unit fleet ≈ 8 doublings of cumulative production
+
+  FOAK  (unit 1,   noak=False): LCOE=703.9 $/MWh | OC=53981 $/kWe
+  Mid   (unit ~250, post-hoc):  OC≈37786 $/kWe         (LCOE not recomputed; 70% of FOAK OC)
+  NOAK  (unit 2500, noak=True): LCOE=629.7 $/MWh | OC=47754 $/kWe
+
+  Break-even (<150 $/MWh): NOAK LCOE (629.7) still exceeds threshold.
+  Factory learning alone cannot close the gap; scale, Q, or design simplification also required.
+
+============================================================
+F3: PHYSICS UNCERTAINTY — FUSION POWER ±50% SCENARIO
+============================================================
+Geometry scaled to proxy plasma physics uncertainty (Challenge 2, Critical).
+Varying R0/plasma_t also shifts geometry-based capital costs — see caveat in code.
+
+  Low  physics (R0=1.19m): P_fus=369 MW | LCOE=613.2 $/MWh | OC=46692 $/kWe
+  Base         (R0=1.50m): P_fus=369 MW | LCOE=629.7 $/MWh | OC=47754 $/kWe
+  High physics (R0=1.72m): P_fus=369 MW | LCOE=642.9 $/MWh | OC=48600 $/kWe
+
+NOTE: A true plasma-parameter-driven sweep (T_e, n_e, B, tau_ratio → LCOE)
+      is not supported by the framework; sensitivity shows 0.0 elasticity for
+      those parameters. The geometry proxy above approximates the LCOE range
+      implied by the machine-parameter uncertainty identified in analysis.md §2.
+
+============================================================
+KEY ASSUMPTIONS
+============================================================
+
+ALL parameters are analogues — no Pranos Fusion design data published as of 2026-04.
+analysis.md §1 rating: OPAQUE. All Section 5 parameters with blocking criticality.
+
+Native scale (50 MWe):
+  Company vision target; not derived from a closed design point.
+  Source: pranos-fusion-overview.md §Technology Description (medium confidence)
+  Scale penalty vs 500 MWe ST: ~2.5–3× in $/kWe (ARIES-ST scaling; Brown 2018)
+  Analogue CAPEX range: $10,000–$30,000/kWe (analysis.md §5)
+
+Machine geometry (R0=1.5m, A≈2.0, κ=3.0):
+  Compact ST analogue; no Pranos dimensions disclosed.
+  Nearest neighbor: Tokamak Energy ST-E1 (R=5.0m, A=2.3) for 450–750 MWe.
+  Confidence: very low (blocking gap; analysis.md §5, §6 Gap 1)
+
+Thermal efficiency (eta_th=0.30):
+  Conservative steam Rankine for ~50 MW industrial turbine scale.
+  Industrial 50 MW turbines achieve 28–33% vs utility-scale ~40%.
+  Source: analogue; analysis.md §2 Challenge 4; §6 Gap 6 (truly unknown)
+
+Heating system (p_input=25 MW NBI):
+  NBI analogue from small ST (MAST-U, NSTX-U) literature.
+  Pranos heating method not disclosed; NBI most common for ST.
+  Source: analysis.md §2 Challenge 4; §3 Heating TRL 1–2; §6 Gap 4
+  Confidence: very low (truly unknown)
+
+Magnet type: HTS — confirmed by Pranos Fusion company website (pranosfusion.md).
+  HTS is listed as one of three core platform technologies alongside PRAGYA and JENGA.
+  Field strength, coil count, and tape specifications (grade, geometry) remain undisclosed.
+  If resistive copper (downside sensitivity): recirculating power would be prohibitive at this scale.
+  Source: pranosfusion.md (medium confidence); analysis.md §2 Challenge 3; §6 Gap 3
+
+Availability (0.80):
+  Fleet vision implies ~87% but 0.80 applied as conservative analogue.
+  Ref: Araiinejad & Shirvan (2025) D-T MCF range 75–90%; analysis.md §5
+
+NOAK basis: 2,500 module fleet vision assumes factory learning.
+  Source: pranos-fusion-overview.md §Technology Description
+  CAUTION: NOAK learning requires demonstrated pilot performance first.
+
+Construction time (8 yr): 6yr baseline + 2yr India regulatory penalty.
+  AERB has no established pathway for private fusion; this may be optimistic.
+  Stewart & Shirvan (2022): fission-style regulation → 2.2× building cost.
+  Source: analysis.md §2 Challenge 6; §6 Gap 10
+
+India supply chain: no domestic REBCO, Li-6, or tritium production.
+  Import dependency for all critical materials; geopolitical and cost risk
+  not explicitly modeled in this LCOE estimate.
+  Source: analysis.md §4
+
+Sensitivity (elasticity = %LCOE / %param)
+------------------------------------------------
+
+Engineering levers:
+  availability                         -0.9615
+  r_coil                               +0.7224
+  construction_time_yr                 +0.4500
+  b_max                                +0.3612
+  eta_th                               -0.1267
+  p_nbi                                +0.1236
+  elon                                 +0.0929
+  R0                                   +0.0929
+  eta_pin                              -0.0808
+  p_input                              +0.0791
+  blanket_t                            +0.0588
+  plasma_t                             +0.0438
+  mn                                   -0.0224
+  ht_shield_t                          +0.0182
+  vessel_t                             +0.0130
+  p_trit                               +0.0129
+  p_cool                               +0.0129
+  f_sub                                +0.0082
+  p_cryo                               +0.0057
+  p_house                              +0.0048
+  structure_t                          +0.0047
+  p_coils                              +0.0032
+  p_pump                               +0.0008
+  eta_p                                -0.0000
+  dd_f_T                               +0.0000
+  dd_f_He3                             +0.0000
+  dhe3_dd_frac                         +0.0000
+  dhe3_f_T                             +0.0000
+  eta_de                               +0.0000
+  q95                                  +0.0000
+  f_GW                                 +0.0000
+  B                                    +0.0000
+  T_e                                  +0.0000
+  n_e                                  +0.0000
+  Z_eff                                +0.0000
+  plasma_volume                        +0.0000
+  R_w                                  +0.0000
+  T_edge                               +0.0000
+  tau_ratio                            +0.0000
+  M_ion                                +0.0000
+  lambda_q                             +0.0000
+  disruption_rate_base                 +0.0000
+  disruption_steepness                 +0.0000
+  disruption_damage                    +0.0000
+  disruption_downtime                  +0.0000
+
+Financial:
+  interest_rate                        +0.8194
+  inflation_rate                       +0.0385
+
+Costing constants (top 15):
+  indirect_fraction                    +0.1767
+  heating_nbi_per_mw                   +0.1236
+  om_cost_dt                           +0.0825
+  installation_frac                    +0.0778
+  blanket_unit_cost_dt                 +0.0504
+  divertor_base                        +0.0494
+  core_lifetime_dt                     -0.0377
+  remote_handling_dt_base              +0.0374
+  shield_unit_cost                     +0.0284
+  power_supplies_base                  +0.0132
+  construction_insurance_frac          +0.0124
+  vessel_unit_cost                     +0.0115
+  shipping_frac                        +0.0098
+  fuel_handling_dt_base                +0.0090
+  fuel_recovery                        -0.0073

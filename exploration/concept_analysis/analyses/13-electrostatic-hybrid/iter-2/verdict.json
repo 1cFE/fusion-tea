@@ -1,0 +1,22 @@
+{
+  "iteration": 2,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "research",
+  "model_ran": false,
+  "model_ok": false,
+  "research_ran": true,
+  "merged_assess": true,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/avalanche-29m-raise-2026.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/avalanche-300kv-press-release.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/avalanche-cwfest2023-blog.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/avalanche-fusionwerx-grant.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/avalanche-orbitron-page.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/osti-pages-servlets-purl-2582151.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/talk-polywell-orbitron-paper-discussion.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/ui-2023aps-dpptp1006m-abstract.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/ui-2023aps-dppyo8010l-abstract.md"
+  ],
+  "timestamp": "2026-04-19T19:58:19.124441+00:00"
+}

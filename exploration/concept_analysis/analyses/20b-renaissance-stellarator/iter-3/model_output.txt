@@ -1,0 +1,187 @@
+Compact Liquid-Wall HTS Stellarator (Renaissance Fusion)
+1 GWe net — NOAK — sCO₂ Brayton-Rankine — ignited (Q=∞)
+LCOE: 128.8 $/MWh | Overnight: 10850 $/kW
+Fusion: 2657 MW | Net: 1000 MW | Q_eng: 3.0
+
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    18.5
+CAS21    Buildings                         659.9
+CAS22    Reactor Plant Equipment          4342.4
+CAS23    Turbine Plant                     232.2
+CAS24    Electrical Plant                  126.1
+CAS25    Miscellaneous                      76.8
+CAS26    Heat Rejection                     65.9
+CAS27    Special Materials                  15.0
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                         0.0
+CAS30    Indirect Costs                   1841.1
+CAS40    Owner's Costs                      39.0
+CAS50    Supplementary                     431.2
+CAS60    IDC                              2997.0
+CAS70    O&M (annualized)                  162.3
+CAS80    Fuel (annualized)                   1.5
+CAS90    Financial                         874.4
+------------------------------------------------
+         Total Capital                   10850.0
+
+CAS22 Detail:
+  C220101           400.0  M$
+  C220102           184.4  M$
+  C220103          2261.9  M$
+  C220104             0.0  M$
+  C220105             9.3  M$
+  C220106            33.9  M$
+  C220107           106.2  M$
+  C220108           103.9  M$
+  C220109             0.0  M$
+  C220110           183.6  M$
+  C220111           415.6  M$
+  C220112             0.0  M$
+  C220200           203.3  M$
+  C220300           226.1  M$
+  C220400             5.9  M$
+  C220500           120.0  M$
+  C220600            11.5  M$
+  C220700            76.8  M$
+  C220000          4342.4  M$
+
+Key Assumptions:
+  [UNCERTAIN x3-10] C220103 coil cost: framework tape-winding model does NOT
+                    apply to laser-patterned REBCO film. No cost analogue exists.
+                    Treat computed value as rough placeholder only.
+  [UNCERTAIN x2-3]  C220101 = $400M (Na-cooled fast reactor primary circuit
+                    analogue for flowing Li-LiH wall system)
+  [UNCERTAIN ±50%]  p_pump = 380 MW (LM circulation dominant load;
+                    inferred from published net eff. 34% vs. cycle eff. 50%)
+  [UNCERTAIN]       Availability = 92% (maintenance intervals uncharacterized)
+  [INFERRED]        P_thermal ≈ 2941 MWth (1 GWe / 0.34 net efficiency)
+  [INFERRED]        Recirculating ≈ 471 MW (32% of ~1471 MWe gross)
+  [CONFIRMED]       TBR = 1.60 (JNM 599 2024; design req >=1.15; 35% margin)
+  [NOTE]            mn=1.07 = blanket energy mult. factor (JNM 599); distinct from
+                    Pb (n,2n) neutron number mult. = 1.24 (also in JNM 599)
+
+Sensitivity (elasticity = %LCOE / %param)
+------------------------------------------------
+
+Engineering levers:
+  availability                         -0.9358
+  r_coil                               +0.7624
+  construction_time_yr                 +0.5375
+  b_max                                +0.3812
+  eta_th                               -0.1134
+  p_pump                               +0.0577
+  R0                                   +0.0401
+  elon                                 +0.0401
+  mn                                   -0.0387
+  p_cryo                               +0.0287
+  ht_shield_t                          +0.0271
+  plasma_t                             +0.0185
+  f_sub                                +0.0072
+  blanket_t                            +0.0069
+  vessel_t                             +0.0062
+  eta_p                                -0.0032
+  p_cool                               +0.0032
+  structure_t                          +0.0025
+  p_trit                               +0.0016
+  p_house                              +0.0008
+  p_coils                              +0.0005
+  dd_f_T                               +0.0000
+  dd_f_He3                             +0.0000
+  dhe3_dd_frac                         +0.0000
+  dhe3_f_T                             +0.0000
+  eta_pin                              +0.0000
+  eta_de                               +0.0000
+  B                                    +0.0000
+  T_e                                  +0.0000
+  n_e                                  +0.0000
+  Z_eff                                +0.0000
+  plasma_volume                        +0.0000
+  R_w                                  +0.0000
+  T_edge                               +0.0000
+  tau_ratio                            +0.0000
+
+Financial:
+  interest_rate                        +0.8534
+  inflation_rate                       +0.0427
+
+Costing constants (top 15):
+  indirect_fraction                    +0.2004
+  om_cost_dt                           +0.0823
+  core_lifetime_dt                     -0.0627
+  installation_frac                    +0.0614
+  divertor_base                        +0.0328
+  shield_unit_cost                     +0.0311
+  remote_handling_dt_base              +0.0309
+  electric_per_mw                      +0.0190
+  power_supplies_base                  +0.0179
+  fuel_handling_dt_base                +0.0177
+  decom_provision_dt                   +0.0136
+  fuel_recovery                        -0.0135
+  construction_insurance_frac          +0.0118
+  misc_per_mw                          +0.0116
+  shipping_frac                        +0.0089
+
+Coil Cost Scenario Analysis (C220103):
+  Tape-winding model NOT applicable to laser-patterned film. 3-10x uncertain.
+  Baseline C220103 (tape-winding placeholder): 2261.9 M$
+
+  Scenario     Mult   C220103 M$   LCOE $/MWh  Note
+  -----------------------------------------------------------------
+  low          0.3x      678.6         98.7  (optimistic: novel film process cheaper than tape-winding)
+  mid          1.0x     2261.9        128.8  (nominal: tape-winding analogue (inapplicable, placeholder))
+  high        10.0x    22619.5        516.5  (pessimistic: first-of-kind manufacturing premium)
+
+  LCOE range from coil cost uncertainty alone: 98.7 – 516.5 $/MWh (swing: 417.8 $/MWh)
+
+b_max Scenario Sweep (Peak Coil Field, 15–40 T published envelope):
+  Sensitivity elasticity: +0.38 (4th-largest engineering lever)
+  Mechanism: peak field drives coil cross-section at fixed Jc → scales C220103
+  Independent from r_coil sweep: field requirement vs. manufacturing cost
+
+   b_max (T)   LCOE ($/MWh)  Note
+  ------------------------------------------------------------
+          15          128.8  (baseline (primary design target)) ← baseline
+          20          145.2  (REBCO Jc knee threshold at 20 K)
+          25          161.6  (high-field operating regime)
+          30          177.9  (upper-mid design envelope)
+          40          210.7  (maximum published design target)
+
+  LCOE range from peak field uncertainty alone: 128.8 – 210.7 $/MWh (swing: 81.8 $/MWh)
+  Note: 15→40 T represents the published design uncertainty band, not
+  a single well-characterised operating point. The 3–10× coil cost and
+  the peak field uncertainty are compounding risks in C220103.
+
+ISS04 Confinement Scaling — Q=∞ Feasibility Check
+  τ_E = 0.134 · R₀^0.64 · a^2.28 · n₂₀^0.54 · B₀^0.84 · P^-0.61 · ī^0.41
+  Source: UKAEA PROCESS stellarator documentation (ISS04; current recommended scaling)
+  Machine geometry: R₀=4.0 m, a=1.0 m, B₀=10.0 T, V=200.0 m³
+  Derived design density (P_fus=2 GW, T=10 keV): n_e = 3.59×10²⁰ m⁻³
+  Alpha heating at design point: P_α = 400 MW
+  Plasma beta at design point: β = 1.4%  (5% limit: NOT binding)
+  Beta density ceiling: 12.4×10²⁰ m⁻³  (design is 3.5× headroom)
+  Lawson ignition criterion (T=10 keV): n·τ_E ≥ 3.10e+20 m⁻³·s
+
+       ī   τ_ISS04 s   τ_ISS95 s     τ_LHD s     n·τ_ISS04  ign. margin   n_Sudo
+  --------------------------------------------------------------------------------
+    0.25       0.066       0.042       0.053      2.36e+19        0.076     7.91
+    0.30       0.071       0.045       0.053      2.55e+19        0.082     7.91
+    0.35       0.076       0.048       0.053      2.71e+19        0.088     7.91
+    0.40       0.080       0.051       0.053      2.86e+19        0.092     7.91
+    0.45       0.084       0.053       0.053      3.01e+19        0.097     7.91
+    0.50       0.087       0.056       0.053      3.14e+19        0.101     7.91
+
+  ISS04 ignition margin at ī=0.35: 0.088×  (~11× below Lawson threshold)
+  Sudo density limit: 7.91×10²⁰ m⁻³ — design density (3.59×10²⁰) is NOT binding
+
+  INTERPRETATION:
+  ISS04 extrapolated to this geometry predicts τ_E ≈ 76 ms at ī=0.35,
+  yielding n·τ_E ≈ 2.7e+19 m⁻³·s — ~11× below the Lawson
+  ignition threshold. This is Gap #7 quantified: Q=∞ closure is NOT supported
+  by ISS04 extrapolation at T=10 keV. The design likely relies on one or more of:
+    (a) Higher operating temperature (20–30 keV where <σv>/T² peaks for D-T)
+    (b) Confinement improvement beyond ISS04 from high-field QI optimization
+    (c) Plasma volume larger than 200 m³ (UNCERTAIN; no published geometry detail)
+  The beta limit (5%) and Sudo density limit are NOT binding at the 2 GW design
+  density — these constraints leave headroom; the ignition gap is confinement time.
+  ISS95 and LHD scalings bracket ISS04; none closes the ignition gap at T=10 keV.

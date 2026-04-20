@@ -1,0 +1,86 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-11",
+      "gap_description": "Measured scaling from 100 kV (Physics of Plasmas paper) to 300 kV operating point",
+      "queries": [
+        "Avalanche Energy Orbitron APS DPP 2024 \"mode-enhanced\" OR \"300 kV\" OR \"scaling\" plasma physics",
+        "\"mode-enhanced ion loading\" \"orbitrap\" site:researchgate.net OR site:semanticscholar.org",
+        "Avalanche Energy Orbitron 2025 preprint OR \"conference paper\" OR \"technical report\" scaling 300 kV ion density neutron yield",
+        "site:meetings.aps.org DPP24 \"Avalanche Energy\" OR \"Orbitron\" OR \"Merthe\" OR \"Hakimi\" 2024",
+        "Avalanche Energy \"peer-reviewed\" OR \"journal\" 2024 2025 Orbitron fusion third paper Affolter OR Thompson OR Hayes"
+      ],
+      "candidates": [
+        {
+          "url": "https://meetings.aps.org/Meeting/DPP24/Session/NP12.69",
+          "title": "Collective Effects near the Ion Space-Charge Limit of the Orbitron (APS DPP 2024)",
+          "triage": "relevant",
+          "notes": "Publicly accessible APS abstract. Reports 'negative mass' instabilities limiting ion density to ~1 order of magnitude below theoretical space-charge limit. Relevant to space-charge mitigation physics that underpins the 100 kV→300 kV scaling story. Minimal quantitative data but confirms 2024 experimental progress and identifies the density-limiting mechanism."
+        },
+        {
+          "url": "https://meetings.aps.org/Meeting/DPP24/Session/NP12.68",
+          "title": "Ion Constants of Motion in the Orbitron Fusion Device (APS DPP 2024)",
+          "triage": "not_relevant",
+          "notes": "Theoretical/computational abstract by Johan Carlsson. Describes Hamilton-Jacobi separability and action variables for Orbitron confinement. No quantitative measurements or scaling data. Not extracted."
+        },
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/32/9/092105/3362035/Mode-enhanced-ion-loading-in-a-100-kV-orbitrap",
+          "title": "Mode-enhanced ion loading in a 100 kV orbitrap — Physics of Plasmas (2025)",
+          "triage": "paywall",
+          "notes": "Primary source for G-11. No preprint on arXiv or OSTI (DOE funding not confirmed for this specific paper). Authors: Daniel Merthe, Sahel Hakimi et al. Cannot be obtained from public sources."
+        },
+        {
+          "url": "https://www.prnewswire.com/news-releases/avalanche-energy-announces-new-fusionwerx-test-facility-to-accelerate-commercial-fusion-development-302425265.html",
+          "title": "Avalanche Energy Announces New FusionWERX Test Facility (April 2025)",
+          "triage": "relevant",
+          "notes": "New press release not in existing corpus. Distinct from $10M Washington State grant announcement already extracted. April 2025 facility announcement — may contain updated technical milestones or references to three peer-reviewed papers published by that date."
+        },
+        {
+          "url": "https://www.neimagazine.com/news/avalanche-energy-launches-fusionwerx/",
+          "title": "Avalanche Energy launches FusionWERX — NEI Magazine",
+          "triage": "relevant",
+          "notes": "Trade press coverage of FusionWERX launch. Independent framing may capture technical details not in company-issued materials. NEI Magazine is a quality-tier 1 trade publication for nuclear industry coverage."
+        },
+        {
+          "url": "https://www.techjournal.uk/p/avalanche-energy-builds-desk-sized",
+          "title": "Avalanche Energy Builds Desk-Sized Fusion Reactors — TechJournal UK",
+          "triage": "not_relevant",
+          "notes": "News summary with no primary technical data. Mentions 300 kV milestone and 17.6 MeV DT energy but no quantitative scaling parameters. Not extracted."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://meetings.aps.org/Meeting/DPP24/Session/NP12.69",
+          "source_name": "meetings-meeting-dpp24-session-np12-69"
+        },
+        {
+          "url": "https://www.prnewswire.com/news-releases/avalanche-energy-announces-new-fusionwerx-test-facility-to-accelerate-commercial-fusion-development-302425265.html",
+          "source_name": "prnewswire-news-releases-avalanche-energy-announces-new"
+        },
+        {
+          "url": "https://www.neimagazine.com/news/avalanche-energy-launches-fusionwerx/",
+          "source_name": "neimagazine-news-avalanche-energy-launches-fusionwerx"
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/32/9/092105/3362035/Mode-enhanced-ion-loading-in-a-100-kV-orbitrap",
+          "reason": "AIP Publishing institutional paywall — no open-access version on OSTI or arXiv. Authors: Merthe, Hakimi et al. Paper confirmed as DOE-unfunded (no OSTI record found). Cannot be obtained from public sources."
+        },
+        {
+          "url": "https://pubs.aip.org/search-results (Hammerhead paper)",
+          "reason": "Third paper 'Hammerhead: a compact 300 kV vacuum bushing' (Dec 2025) confirmed from $29M press release context. Searched OSTI and arXiv — no open-access preprint deposited. AIP Publishing search returned 403. Paper is about HV vacuum bushing design (instrumentation), not plasma scaling directly. Cannot be obtained from public sources."
+        }
+      ],
+      "status": "partial",
+      "notes": "The primary source for G-11 (Physics of Plasmas 32(9), 092105) remains inaccessible. A third Avalanche paper 'Hammerhead: a compact 300 kV vacuum bushing' (Dec 2025) was newly discovered — relevant to 300 kV HV system design but also paywalled without preprint. New contextual sources extracted: APS DPP 2024 abstract on collective effects limiting ion density (space-charge scaling physics), plus two new FusionWERX facility announcements from April 2025 not previously in corpus. Gap G-11 remains PARTIAL — scaling data exists only in paywalled papers."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 1,
+    "sources_extracted": 3,
+    "sources_failed": 2,
+    "searches_used": 5,
+    "extractions_used": 3
+  }
+}

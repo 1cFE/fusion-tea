@@ -1,0 +1,253 @@
+{
+  "entries": [
+    {
+      "gap_id": "G-4",
+      "gap_description": "Tritium breeding ratio (TBR) — fm = 1.24 confirmed; TBR not directly confirmed in available documents. Source recommendation: Read JNM 599 (2024) 155239 directly.",
+      "queries": [
+        "Li-LiH blanket tritium breeding ratio compact fusion stellarator \"Journal of Nuclear Materials\" 2024"
+      ],
+      "candidates": [
+        {
+          "url": "https://infoscience.epfl.ch/bitstreams/7d2d7b2f-6f75-4ac2-93cb-6eef8a65df82/download",
+          "title": "Compact fusion blanket using plasma facing liquid Li-LiH walls and Pb pebbles (Prost, Ogier-Collin, Volpe — Renaissance Fusion / EPFL)",
+          "triage": "relevant",
+          "notes": "Full open-access PDF of JNM 599 (2024) 155239 via EPFL InfóScience repository. Search summary confirms TBR ∼ 1.60 is stated in the paper. Also confirms liquid metal operating temperature 700–900 °C (partial coverage of G-9). WebFetch returned 429 on first triage attempt (rate limit), but add-source succeeded via full extraction pipeline."
+        },
+        {
+          "url": "https://ui.adsabs.harvard.edu/abs/2024JNuM..59955239P/abstract",
+          "title": "ADS abstract for JNM 599 (2024) 155239",
+          "triage": "abstract-only",
+          "notes": "NASA ADS abstract page. Triage not performed; EPFL full-text was available and preferred."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0022311524003416",
+          "title": "ScienceDirect landing page for JNM 599 (2024) 155239",
+          "triage": "redundant",
+          "notes": "Elsevier publisher page; EPFL open-access version extracted instead."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://infoscience.epfl.ch/bitstreams/7d2d7b2f-6f75-4ac2-93cb-6eef8a65df82/download",
+          "source_name": "infoscience-bitstreams-7d2d7b2f-6f75-4ac2-93cb-6eef8a65df82",
+          "notes": "Full paper confirmed as open-access (CC BY). Authors: Victor Prost, Sabine Ogier-Collin, Francesco A. Volpe (Renaissance Fusion / EPFL). Contains TBR ∼ 1.60, fm ∼ 1.24, liquid metal operating temperature 700–900 °C, full neutronics analysis. Addresses G-4 (TBR) and partially G-9 (outlet temperature)."
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "timestamp": "2026-04-19T22:45:23.358666+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-11",
+      "gap_description": "REBCO film Jc at peak coil fields (20–40 T) at 20 K — needed to confirm feasibility of Renaissance Fusion's 20–40 T peak coil field range against REBCO critical current density at operating temperature.",
+      "queries": [
+        "REBCO critical current density Jc field dependence 20K high field 20 Tesla 30 Tesla superconductor",
+        "REBCO coated conductor Jc 20K 20T 30T high field measurement arxiv OR osti.gov superconductor"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/abs/1512.01930",
+          "title": "Field and temperature scaling of the critical current density in commercial REBCO coated conductors (Senatore et al. 2015)",
+          "triage": "relevant",
+          "notes": "Open-access arxiv paper. Covers Jc(T,B,θ) for six commercial REBCO manufacturers at T = 4.2–77 K and B up to 19 T with a 3-parameter scaling law. Scaling relation allows extrapolation to 20–40 T at 20 K to assess feasibility of Renaissance Fusion's peak coil field range. Does not go above 19 T experimentally but provides the validated extrapolation framework."
+        },
+        {
+          "url": "https://nationalmaglab.org/magnet-development/applied-superconductivity-center/research/science-highlights/measuring-transport-dependencie-rebco-tapes/",
+          "title": "MagLab research highlight on REBCO characterization up to 31 T",
+          "triage": "insufficient",
+          "notes": "Brief science highlight page only; no quantitative Jc values reported. The underlying journal article (Superconductor Science and Technology) is paywalled."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/1879565",
+          "title": "OSTI: Rapid assessment of REBCO CC angular Jc(B, T=4.2K, θ) using torque magnetometry up to 30 T",
+          "triage": "abstract-only",
+          "notes": "Only covers T = 4.2 K explicitly (not 20 K). Full text at IOP (paywalled). Torque magnetometry to 30 T, but 20 K data absent from abstract. Not extracted."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/abs/1512.01930",
+          "source_name": "arxiv-1512-01930",
+          "notes": "Peer-reviewed scaling law paper (arxiv preprint of Senatore et al. 2015, Superconductor Science and Technology). Provides validated 3-parameter Jc(T,B,θ) scaling relation for commercial REBCO. Full scaling law allows estimating Jc at 20 K across the 10–40 T range to assess the Renaissance Fusion design point. Directly addresses G-11."
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "timestamp": "2026-04-19T22:45:23.358666+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-7",
+      "gap_description": "Plasma parameters at ignition — confinement time, density, bootstrap fraction not published. Source recommendation: apply ISS04 stellarator energy confinement time scaling to design point.",
+      "queries": [
+        "ISS04 stellarator energy confinement scaling law compact quasi-isodynamic plasma parameters",
+        "Renaissance Fusion plasma confinement design parameters density bootstrap fraction quasi-isodynamic compact stellarator"
+      ],
+      "candidates": [
+        {
+          "url": "https://inis.iaea.org/collection/NCLCollectionStore/_Public/41/128/41128207.pdf",
+          "title": "Assessment of global stellarator confinement: Status of the international stellarator confinement scaling database (IAEA, ~2004)",
+          "triage": "relevant",
+          "notes": "Primary ISS04 source. IAEA open database document with the mathematical formulation τ_E^ISS04 = 0.134 a^2.28 R^0.64 P^-0.61 n_e^0.54 B^0.84 ι_{2/3}^0.41 and full coefficient derivation. Directly applicable to the Renaissance Fusion design point (R=3.8m, A=4.1, B=10.2T)."
+        },
+        {
+          "url": "https://www.mdpi.com/2076-3417/12/6/2862",
+          "title": "Considerations on Stellarator's Optimization from the Perspective of the Energy Confinement Time Scaling Laws (MDPI, 2022)",
+          "triage": "relevant",
+          "notes": "Open-access paper applying ISS04 and alternative scaling laws to stellarator optimization. Would provide context for applying ISS04 to compact geometry."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0920379625000705",
+          "title": "Stellaris: A high-field quasi-isodynamic stellarator for a prototypical fusion power plant (Lion et al., Fusion Engineering and Design, 2025)",
+          "triage": "relevant-partial",
+          "notes": "Open-access (CC BY-NC 4.0). Multi-institution QI power plant design study. Not Renaissance Fusion. Abstract doesn't provide numerical plasma parameters, but full paper likely contains design point values for a compact QI stellarator power plant. Not extracted due to budget limit."
+        },
+        {
+          "url": "https://arxiv.org/abs/2405.19860",
+          "title": "Quasi-Isodynamic Stellarators with Low Turbulence as Fusion Reactor Candidates (PRX Energy, 2024)",
+          "triage": "relevant-partial",
+          "notes": "Open-access arxiv. Novel QI optimization method for reactor-relevant designs. Abstract describes R=3–5m, B=7–10T range. Full paper likely contains confinement parameters for compact QI. Not extracted due to budget limit."
+        }
+      ],
+      "extracted": [],
+      "failed": [
+        {
+          "url": "https://inis.iaea.org/collection/NCLCollectionStore/_Public/41/128/41128207.pdf",
+          "reason": "Extraction failed (rc=1, no stderr). IAEA PDF likely has access or format restrictions that blocked the extraction pipeline."
+        },
+        {
+          "url": "https://www.mdpi.com/2076-3417/12/6/2862",
+          "reason": "Extraction failed (rc=1, no stderr). MDPI page may use JavaScript rendering that blocked extraction despite the article being open access."
+        }
+      ],
+      "status": "partial",
+      "timestamp": "2026-04-19T22:45:23.358666+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-9",
+      "gap_description": "Peak Li-LiH outlet temperature — determines achievable sCO₂ turbine inlet temperature and confidence in 49–51% efficiency target. Expected to be in ECM paper (Fama et al. 2023).",
+      "queries": [],
+      "candidates": [
+        {
+          "url": "https://infoscience.epfl.ch/bitstreams/7d2d7b2f-6f75-4ac2-93cb-6eef8a65df82/download",
+          "title": "JNM blanket paper — partially addresses G-9",
+          "triage": "partial",
+          "notes": "Extracted as part of G-4. The JNM paper mentions liquid metal operating temperature of 700–900 °C, which is the first wall / blanket outlet temperature range feeding the power conversion system. This partially constrains the sCO₂ turbine inlet temperature and thus the 49–51% efficiency claim. However, the ECM paper (Fama et al. 2023, doi:10.1016/j.enconman.2022.116572) likely provides the specific temperature more precisely as the heat source inlet to the sCO₂ cycle. That paper was not searched for open-access versions in this iteration."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "partial",
+      "timestamp": "2026-04-19T22:45:23.358666+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-12",
+      "gap_description": "HTS cylinder count, dimensions, and total REBCO film area for full plant — required to estimate magnet system scale and film deposition demand. Not published.",
+      "queries": [
+        "Renaissance Fusion plasma confinement design parameters density bootstrap fraction quasi-isodynamic compact stellarator"
+      ],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "failed",
+      "timestamp": "2026-04-19T22:45:23.358666+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-13",
+      "gap_description": "Cryogenic refrigeration power for full magnet system at 20 K — key contributor to recirculating power; not characterized in available sources.",
+      "queries": [
+        "ISS04 stellarator energy confinement scaling law compact quasi-isodynamic plasma parameters"
+      ],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "failed",
+      "timestamp": "2026-04-19T22:45:23.358666+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-7",
+      "gap_description": "Plasma parameters at ignition — confinement time, density, bootstrap fraction not published. Source: apply ISS04 stellarator energy confinement time scaling to design point.",
+      "queries": [
+        "ISS04 stellarator energy confinement time scaling formula tau_E parameters W7-X nuclear fusion"
+      ],
+      "candidates": [
+        {
+          "url": "https://ukaea.github.io/PROCESS/fusion-devices/stellarator/",
+          "title": "Stellarator Model — PROCESS Documentation (UKAEA)",
+          "triage": "relevant",
+          "notes": "Confirmed full ISS04 formula: τ_E = 0.134 R^0.64 a^2.28 n̄^0.54 B^0.84 P^-0.61 ī^0.41. All parameters present with numerical coefficients and exponents. Open access HTML documentation — accessible and extractable."
+        },
+        {
+          "url": "https://www.mdpi.com/2076-3417/12/6/2862",
+          "title": "Considerations on Stellarator's Optimization from ISS04 Perspective (MDPI)",
+          "triage": "skipped",
+          "notes": "Relevant, but extraction previously failed in iteration 2 (JS-rendered page). PROCESS page fully covers the ISS04 formula; this candidate deprioritized."
+        },
+        {
+          "url": "https://inis.iaea.org/records/w5203-m9p23",
+          "title": "Energy confinement scaling from the international stellarator database (IAEA INIS)",
+          "triage": "skipped",
+          "notes": "Primary ISS04 database publication; IAEA PDFs have previously failed extraction (iteration 2). PROCESS page covers the formula adequately."
+        },
+        {
+          "url": "https://www.osti.gov/pages/servlets/purl/1470942",
+          "title": "Global energy confinement in the initial limiter campaign of W7-X (OSTI)",
+          "triage": "skipped",
+          "notes": "W7-X confinement data vs ISS04; potentially useful for ISS04 validation but extraction budget exhausted after PROCESS page. Would provide fren context."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://ukaea.github.io/PROCESS/fusion-devices/stellarator/",
+          "source_name": "ukaea-process-fusion-devices-stellarator"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "timestamp": "2026-04-19T23:03:00.492815+00:00",
+      "iteration": 3
+    },
+    {
+      "gap_id": "G-9",
+      "gap_description": "Peak Li-LiH outlet temperature — determines achievable sCO₂ turbine inlet temperature and confidence in 49–51% efficiency target. Expected to be in ECM paper (Fama et al. 2023).",
+      "queries": [
+        "Fama 2023 \"Energy Conversion and Management\" sCO2 Brayton fusion Li-LiH outlet temperature heat exchanger",
+        "Renaissance Fusion \"Energy Conversion and Management\" 2023 sCO2 power conversion outlet temperature site:sciencedirect.com OR site:doi.org",
+        "Famà Volpe 2022 2023 \"optimized power conversion\" stellarator liquid metal wall sCO2 arxiv OR columbia.edu OR researchgate preprint"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0196890422013504",
+          "title": "An optimized power conversion system for a stellarator-based nuclear fusion power plant (Famà et al., ECM 276, 2023)",
+          "triage": "paywall",
+          "notes": "Confirmed correct paper (Famà, Loreti, Calabrò, Ubertini, Volpe, Facci). Abstract confirms Li-LiH heat source in 700–900°C temperature range; cycle efficiency 51.4% (sCO₂ topping + steam bottoming); net plant efficiency 34%. Full text requires Elsevier subscription — extraction not possible."
+        }
+      ],
+      "extracted": [],
+      "failed": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0196890422013504",
+          "reason": "Elsevier paywall — full text requires institutional subscription. Abstract accessible but insufficient for citation; WebFetch output is lossy and cannot be used as source content."
+        }
+      ],
+      "triage_notes": "No arXiv preprint found for Famà et al. (arXiv author search returned unrelated physics papers from a different Francesca Famà). No ResearchGate full text found. DOI redirect (doi.org/10.1016/j.enconman.2022.116572 → linkinghub.elsevier.com) also paywalled. The key datum — Li-LiH outlet temperature 700–900°C — appears in the abstract only and cannot be formally extracted. The Fama paper remains the only identified source for this gap.",
+      "status": "failed",
+      "timestamp": "2026-04-19T23:03:00.492815+00:00",
+      "iteration": 3
+    }
+  ],
+  "acquired_by_iteration": {
+    "2": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/20b-renaissance-stellarator/iter-01/sources/arxiv-1512-01930.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/20b-renaissance-stellarator/iter-01/sources/infoscience-bitstreams-7d2d7b2f-6f75-4ac2-93cb-6eef8a65df82.md"
+    ],
+    "3": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/20b-renaissance-stellarator/iter-01/sources/ukaea-process-fusion-devices-stellarator.md"
+    ]
+  }
+}

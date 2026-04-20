@@ -1,0 +1,112 @@
+Laser ICF — NIF Commercialization (D-T) | Inertia Enterprises
+Native design: 1500 MWe | 10 Hz | Indirect drive (Hybrid-E target)
+LCOE:          116.4 $/MWh | Overnight: 5163 $/kW
+Fusion:        4759 MW | Net: 1500 MW | Q_eng: 2.77
+Q_sci (target gain): 62.6  [model-derived; stated threshold >30]
+Driver E/shot: 7.60 MJ  [stated Inertia design: 10 MJ]
+
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    19.8
+CAS21    Buildings                        1014.1
+CAS22    Reactor Plant Equipment          2944.8
+CAS23    Turbine Plant                     464.0
+CAS24    Electrical Plant                  197.6
+CAS25    Miscellaneous                     120.3
+CAS26    Heat Rejection                    178.2
+CAS27    Special Materials                  22.5
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                         0.0
+CAS30    Indirect Costs                    989.3
+CAS40    Owner's Costs                      47.8
+CAS50    Supplementary                     492.8
+CAS60    IDC                              1248.6
+CAS70    O&M (annualized)                  597.6
+CAS80    Fuel (annualized)                   2.1
+CAS90    Financial                         624.1
+------------------------------------------------
+         Total Capital                    7744.8
+
+CAS22 sub-accounts:
+  C220101       264.4 M$
+  C220102       184.6 M$
+  C220103         0.0 M$
+  C220104      1000.0 M$
+  C220105        12.4 M$
+  C220106        46.3 M$
+  C220107        38.0 M$
+  C220108       443.4 M$
+  C220109         0.0 M$
+  C220110       114.9 M$
+  C220111       239.7 M$
+  C220112         0.0 M$
+  C220200       299.6 M$
+  C220300         5.7 M$
+  C220400        10.2 M$
+  C220500       159.4 M$
+  C220600        15.9 M$
+  C220700       110.2 M$
+  C220000 (Total)     2944.8 M$
+
+1 GWe scaled:  LCOE = 132.9 $/MWh | Overnight = 5495 $/kW
+
+Key Assumptions and Uncertainties:
+  q_eng = 2.77     UNCERTAIN: Q_target ~56 needed for 1,500 MWe net single-system
+                   closure; stated >30 threshold gives only ~350 MWe/system
+  eta_th = 0.45    UNCERTAIN: LLNL LIFE analogue; Inertia has not published value
+  avail = 0.80     UNCERTAIN: no 10 Hz IFE plant; high-turnover components expected
+  C220104 = $1.0B  UNCERTAIN: $100/J NOAK laser; FOAK estimate $7–10B at $700–1,000/J
+  om_cost_dt=309   UNCERTAIN: inflated from 52 to capture ~$315M/yr target materials
+                   ($1/target × 315M targets/yr at 10 Hz); goal unverified
+                   laser diode replacement O&M NOT included (no data basis)
+  Note: model-derived e_driver_mj may differ from stated 10 MJ/shot due to
+        energy balance inconsistency in Inertia's published parameters
+
+Sensitivity (elasticity = %LCOE / %param)
+------------------------------------------------
+
+Engineering levers:
+  availability                         -0.9745
+  q_eng                                -0.2914
+  construction_time_yr                 +0.2517
+  eta_th                               -0.1433
+  plasma_t                             +0.1407
+  eta_pin                              +0.0695
+  blanket_t                            +0.0631
+  mn                                   -0.0478
+  ht_shield_t                          +0.0136
+  f_sub                                -0.0068
+  vessel_t                             +0.0058
+  f_rep                                -0.0044
+  structure_t                          +0.0022
+  p_trit                               -0.0010
+  p_house                              -0.0004
+  p_target                             -0.0002
+  p_pump                               -0.0001
+  dd_f_T                               +0.0000
+  dd_f_He3                             +0.0000
+  dhe3_dd_frac                         +0.0000
+  dhe3_f_T                             +0.0000
+  f_rad                                +0.0000
+  eta_dec                              +0.0000
+
+Financial:
+  interest_rate                        +0.3783
+  inflation_rate                       +0.1996
+
+Costing constants (top 15):
+  om_cost_dt                           +0.4797
+  indirect_fraction                    +0.0755
+  driver_laser_per_mw                  +0.0703
+  blanket_unit_cost_dt                 +0.0586
+  target_factory_base                  +0.0513
+  turbine_per_mw                       +0.0482
+  installation_frac                    +0.0243
+  core_lifetime_dt                     -0.0237
+  shield_unit_cost                     +0.0214
+  electric_per_mw                      +0.0205
+  heat_rej_per_mw                      +0.0185
+  fuel_recovery                        -0.0168
+  fuel_handling_dt_base                +0.0162
+  decom_provision_dt                   +0.0155
+  remote_handling_dt_base              +0.0133

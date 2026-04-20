@@ -1,0 +1,29 @@
+[
+  {
+    "timestamp": "2026-04-19T19:07:32.519222+00:00",
+    "step": "cold-start",
+    "attempt": 1,
+    "validator": "validate_non_empty",
+    "passed": true,
+    "details": "Non-empty (38900 chars)",
+    "validated_text_preview": "# D1+ Analysis: Electrostatic Hybrid (D-T) \u2014 Avalanche Energy Orbitron\n\n**Concept**: Orbitron \u2014 crossed-field magneto-electrostatic fusion device\n**Company**: Avalanche Energy (Seattle, WA)\n**Confinement Family**: Electrostatic (Non-Standard)\n**Fuel**: D-T (primary); p-B11 (future aspiration)\n\n---\n\n## Section 1: Availability of Data\n\n**Rating: Limited**\n\nAvalanche Energy is a small, early-stage private company. Public technical disclosure is fragmentary and dominated by marketing materials. Afte"
+  },
+  {
+    "timestamp": "2026-04-19T19:22:32.660474+00:00",
+    "step": "model-setup",
+    "attempt": 1,
+    "validator": "validate_python_syntax",
+    "passed": false,
+    "details": "Output file not found: /home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/13-electrostatic-hybrid/iter-1/model_setup.py",
+    "validated_text_preview": "FILE NOT FOUND"
+  },
+  {
+    "timestamp": "2026-04-19T19:24:32.060074+00:00",
+    "step": "assess",
+    "attempt": 1,
+    "validator": "validate_feedback_verdict",
+    "passed": true,
+    "details": "Feedback format valid (verdict: FINDINGS)",
+    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: CAS-level cost structure not mapped\n- **Target:** Section 7 (Cross-Concept Notes, TEA divergences)\n- **Category:** analysis\n- **Finding:** The analysis correctly identifies that the Orbitron's capital cost structure \"would look nothing like any prior D-T TEA\" due to the absence of large magnets, breeding blanket, and plasma heating system (Goal 2). However, it stops there \u2014 it never maps these differences to CAS accounts (Goal 3). Which CAS accounts are near-zero or a"
+  }
+]

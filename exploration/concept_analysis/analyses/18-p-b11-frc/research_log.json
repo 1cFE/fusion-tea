@@ -1,0 +1,180 @@
+{
+  "entries": [
+    {
+      "gap_id": "G-13",
+      "gap_description": "Plant capacity factor target — steady-state concept avoids pulsed penalties but FRC CW operation undemonstrated",
+      "queries": [
+        "TAE Technologies Da Vinci capacity factor availability operational uptime fusion plant",
+        "beam-driven FRC steady-state fusion plant capacity factor availability factor site:arxiv.org OR site:osti.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/abs/2103.12451",
+          "title": "Plant efficiency: a sensitivity analysis of the capacity factor for fusion power plants with high recirculated power",
+          "triage": "relevant",
+          "notes": "Peer-reviewed (Nuclear Fusion Vol. 61, 2021). Directly addresses capacity factor and its interaction with recirculated power fraction — the central challenge for NBI-heavy beam-driven fusion like TAE's Da Vinci. Not FRC-specific but directly applicable by analogy. Analyzes Power Plant Conceptual Study models. Argues first-generation plants will combine high recirculating power with low capacity factor, resulting in poor plant efficiency."
+        },
+        {
+          "url": "https://www.osti.gov/pages/biblio/1957531",
+          "title": "The Princeton Field-Reversed Configuration for Compact Nuclear Fusion Power Plants",
+          "triage": "low-relevance",
+          "notes": "Princeton FRC paper covers D-He3 fuel at 1-10 MW scale (not p-B11, not Da Vinci scale). Steady-state FRC design but no capacity factor data in abstract. Deprioritized."
+        },
+        {
+          "url": "https://tae.com/tae-shortens-device-roadmap-prepares-for-commercial-era/",
+          "title": "TAE shortens device roadmap, prepares for commercial era",
+          "triage": "not-fetched",
+          "notes": "TAE's own press release — likely JS-heavy landing page with no quantitative capacity factor data. Deprioritized given no TAE availability claims appear anywhere in public record."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/abs/2103.12451",
+          "source_name": "arxiv-2103-12451"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "No TAE-specific capacity factor data found anywhere in public record. Extracted a peer-reviewed analogy source (Mulder et al. 2021) that directly models the capacity factor penalty for fusion plants with high recirculated power fraction — the core issue for Da Vinci's NBI-driven design. This provides an analytical framework for estimating capacity factor impact, but does not provide a TAE-stated target.",
+      "timestamp": "2026-04-20T04:19:09.757539+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-15",
+      "gap_description": "B-11 isotopic enrichment cost if higher purity required than natural abundance",
+      "queries": [
+        "boron-11 isotope enrichment cost price per kg commercial supplier",
+        "boron-11 enrichment cost fusion fuel p-B11 aneutronic site:arxiv.org OR site:osti.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.researchgate.net/figure/Market-Price-of-Boron-Isotope-Product-Abundance-Price_tbl1_347386544",
+          "title": "Market Price of Boron Isotope Product Abundance Price (ResearchGate table)",
+          "triage": "paywall",
+          "notes": "403 Forbidden — ResearchGate content not accessible without login."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/4364833",
+          "title": "BORON and its ISOTOPES (OSTI historical report)",
+          "triage": "unreadable",
+          "notes": "PDF binary not parseable by WebFetch summarizer. Historical document (~1950s era based on OSTI ID) — may contain historical B-11 pricing but could not verify or extract content."
+        },
+        {
+          "url": "https://www.americanelements.com/boron-11-isotope-14798-13-1",
+          "title": "Boron-11 Isotope — American Elements",
+          "triage": "not-fetched",
+          "notes": "Commercial catalog page. Supplier confirmed but no public pricing listed — request-for-quote model. Would not yield quantitative cost data suitable for citation."
+        },
+        {
+          "url": "https://arxiv.org/abs/2401.11338",
+          "title": "ENN's Roadmap for Proton-Boron Fusion Based on Spherical Torus",
+          "triage": "not-relevant",
+          "notes": "Triaged via abstract: does not discuss B-11 fuel enrichment costs or procurement economics. Focuses on reactor physics parameters."
+        }
+      ],
+      "extracted": [],
+      "failed": [
+        {
+          "url": "https://www.researchgate.net/figure/Market-Price-of-Boron-Isotope-Product-Abundance-Price_tbl1_347386544",
+          "reason": "403 Forbidden — institutional login required"
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/4364833",
+          "reason": "PDF binary not readable by WebFetch; content could not be assessed for relevance"
+        }
+      ],
+      "status": "failed",
+      "notes": "No extractable open-access source for B-11 enrichment cost found. Commercial suppliers (American Elements) do not publish pricing. The p-B11 fusion literature confirms B-11 abundance and low fuel cost conceptually but does not provide enrichment cost figures. The analysis's own 'negligible' estimate appears consistent with publicly available qualitative statements. Gap remains open but low-priority nature means this outcome is acceptable.",
+      "timestamp": "2026-04-20T04:19:09.757539+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-13",
+      "gap_description": "Plant capacity factor target — steady-state concept avoids pulsed penalties but FRC CW operation undemonstrated",
+      "queries": [
+        "TAE Technologies FRC confinement time pulse duration steady-state Norman C-2W milliseconds record",
+        "fusion pilot plant capacity factor availability factor DOE ARPA-E milestone estimate site:osti.gov OR site:doe.gov",
+        "fusion power plant availability factor capacity factor 85% 90% first-of-a-kind estimate site:osti.gov OR site:iaea.org",
+        "Gota 2021 \"C-2W\" FRC \"Nature Communications\" OR \"Nuclear Fusion\" plasma confinement steady state milliseconds"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/pages/servlets/purl/2441289",
+          "title": "Enhanced plasma performance in C-2W advanced beam-driven field-reversed configuration experiments (Gota et al. 2024, Nuclear Fusion 64 112014)",
+          "triage": "relevant",
+          "notes": "Open-access peer-reviewed paper reporting most recent C-2W/Norman performance. PDF extracted successfully. Contains quantitative plasma parameters and confinement duration data (30 ms pulse limited by NBI pulse duration). Directly addresses FRC CW operation status."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1001677",
+          "title": "Methodology for Scaling Fusion Power Plant Availability (Waganer 2011, PPPL Report 4585)",
+          "triage": "relevant",
+          "notes": "PPPL technical report establishing methodology for estimating availability of first-of-a-kind vs. tenth-of-a-kind fusion plants. PDF extracted successfully. Directly addresses the capacity factor estimation problem for early fusion plants like Da Vinci."
+        },
+        {
+          "url": "https://www.nature.com/articles/s41467-025-58849-5",
+          "title": "Generation of field-reversed configurations via neutral beam injection (Roche et al. 2025, Nature Communications)",
+          "triage": "relevant",
+          "notes": "Open-access peer-reviewed paper reporting NBI-only FRC formation on TAE's Norm device. Already cited as external reference in analysis (source #9) but not previously extracted. Establishes formation within ~10 ms, relevant to understanding pulse structure and path to CW operation."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/1856193",
+          "title": "Fusion pilot plant performance and the role of a sustained high power density tokamak",
+          "triage": "low-relevance",
+          "notes": "Abstract only — tokamak-specific, no quantitative capacity factor figures visible. Skipped in favor of more directly relevant sources."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1430912",
+          "title": "LLNL-TR-747677 Essential Criteria for Fusion Power Plants",
+          "triage": "inaccessible",
+          "notes": "PDF binary not readable by WebFetch. Not attempted via add-source due to budget constraints and availability of more relevant sources."
+        },
+        {
+          "url": "https://sun.ps.uci.edu/zlin/bib/gota21.pdf",
+          "title": "Overview of C-2W: high temperature, steady-state beam-driven FRC plasmas (Gota et al. 2021, Nuclear Fusion)",
+          "triage": "superseded",
+          "notes": "Too large for WebFetch (content size exceeded). Superseded by Gota 2024 (OSTI 2441289) which covers more recent enhanced performance results from the same device."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/pages/servlets/purl/2441289",
+          "source_name": "osti-pages-servlets-purl-2441289"
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1001677",
+          "source_name": "osti-servlets-purl-1001677"
+        },
+        {
+          "url": "https://www.nature.com/articles/s41467-025-58849-5",
+          "source_name": "nature-articles-s41467-025-58849-5"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "timestamp": "2026-04-20T04:50:40.075019+00:00",
+      "iteration": 3
+    },
+    {
+      "gap_id": "G-15",
+      "gap_description": "B-11 isotopic enrichment cost if higher purity required than natural abundance",
+      "queries": [],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "Marked FAILED in iter-2 prior research. Per instructions, FAILED gaps are not re-attempted. Skipped to allocate search/extraction budget to G-13.",
+      "timestamp": "2026-04-20T04:50:40.075019+00:00",
+      "iteration": 3
+    }
+  ],
+  "acquired_by_iteration": {
+    "2": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/18-p-b11-frc/iter-02/sources/arxiv-2103-12451.md"
+    ],
+    "3": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/18-p-b11-frc/iter-02/sources/nature-articles-s41467-025-58849-5.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/18-p-b11-frc/iter-02/sources/osti-pages-servlets-purl-2441289.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/18-p-b11-frc/iter-02/sources/osti-servlets-purl-1001677.md"
+    ]
+  }
+}

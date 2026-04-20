@@ -1,0 +1,18 @@
+{
+  "iteration": 4,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "assess",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": false,
+  "merged_assess": false,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/12-levitated-dipole/iter-01/sources/arxiv-2508-17691-junior-design-results.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/12-levitated-dipole/iter-01/sources/arxiv-2602-20564-dt-dipole-power-plants.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/12-levitated-dipole/iter-01/sources/openstar-prototype-roadmap.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/12-levitated-dipole/iter-02/sources/arxiv-2602-20564-plasma-state-clarification.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/12-levitated-dipole/iter-02/sources/openstar-2026-funding-tahi-timeline.md"
+  ],
+  "timestamp": "2026-04-20T03:03:23.604327+00:00"
+}

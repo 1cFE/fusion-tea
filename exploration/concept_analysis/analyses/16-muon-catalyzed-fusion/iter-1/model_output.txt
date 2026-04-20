@@ -1,0 +1,247 @@
+
+########################################################################
+# μCF BASELINE: Aspirational Breakthrough (E_mu=1.2 GeV, N_fus=240)
+# NOTE: Requires ~2× improvement beyond Acceleron's 2.5 GeV target.
+# Even at this aspirational level, LCOE >> Acceleron's $0.025/kWh target.
+########################################################################
+========================================================================
+Muon-Catalyzed Fusion (D-T) LCOE Model — Acceleron Fusion
+1cFE CAS-Structured Free-Form Model
+========================================================================
+
+--- Key Physics Parameters ---
+  Muon energy cost (E_mu):     1.2 GeV_electrical/muon
+  Fusions per muon (N_fus):    240
+  Alpha-sticking ceiling:      250 fusions/muon (at 0.40% sticking)
+  Scientific Q (Q_sci):        3.520  (≥1 required for thermal gain)
+  Gross/driver ratio:          1.936  (>1 required for any net power)
+  Blanket multiplication M:    1.10
+  Thermal efficiency η_th:     50.0%
+  Accelerator beam power:      100 MW
+  Plant availability:          85%
+  Modules:                     1
+
+--- Power Balance (per module) ---
+  Muon rate:                   5.20e+17 muons/s
+  Fusion rate:                 1.25e+20 fusions/s
+  Fusion power (P_fus):           352.0 MW
+    Neutron power (80%):          281.6 MW (14.1 MeV → blanket)
+    Alpha power (20%):             70.4 MW (3.5 MeV → local heat)
+  Thermal power (P_th):           387.2 MW  (× M=1.1)
+  Gross electric (P_et):          193.6 MWe (× η=50.0%)
+  Recirculating power:
+    Accelerator beam:             100.0 MW
+    Auxiliaries (cryo+trit+house+ctrl):  24.0 MW
+    Total recirculating:          124.0 MW
+  Net electric (P_net):            69.6 MWe ← positive
+  Plant net electric:              69.6 MWe
+  Engineering Q (Q_eng):          2.839
+  Recirculating fraction (ε):     64.0%  (Acceleron claims: 47%)
+
+--- CAS22: Reactor Plant Equipment ---
+    C220101 Blanket + First Wall             $     4.0M  
+    C220102 Shield (14 MeV neutrons)         $     6.4M  
+    C220103 Coils                            $     0.0M  [ZERO — no confinement magnets]
+    C220104 Supplementary Heating            $     0.0M  [ZERO — accelerator is driver]
+    C220105 Primary Structure                $     1.2M  
+    C220106 Chamber Containment              $     1.0M  
+    C220107 Accelerator System               $  2000.0M  [OVERRIDE — dominant cost]
+    C220108 Target Factory                   $     0.0M  [ZERO — continuous process]
+    C220110 Remote Handling                  $    30.3M  
+    C220111 Installation Labor               $   286.0M  
+    ──────────────────────────────────────────────────────────
+    Per-module subtotal:                    $  2328.8M × 1
+  Plant-wide accounts:
+    C220200 Coolant Systems (Brayton loops)      $    23.6M
+    C220300 Aux Cooling + Cryoplant (SC linac)   $    79.7M
+    C220400 Rad Waste Management                 $     0.8M
+    C220500 Tritium Fuel Handling & Storage      $    18.6M
+    C220600 Other Equipment                      $     1.4M
+    C220700 I&C                                  $    20.3M
+    ──────────────────────────────────────────────────────────
+    Plant-wide subtotal:                    $   144.4M
+  CAS22 Total:                              $  2473.2M
+
+--- Capital Costs (CAS10–60) ---
+  CAS10 Pre-construction:                   $    13.7M
+  CAS21 Buildings (×1.5× reg. mult.):      $   125.3M
+  CAS22 Reactor Plant Equipment:            $  2473.2M
+  CAS23 Turbine Plant (Brayton):            $    48.4M
+  CAS24 Electric Plant:                     $    16.3M
+  CAS25 Misc Plant:                         $     9.9M
+  CAS26 Heat Rejection:                     $     6.6M
+  CAS27 Special Materials (Li-6 + T):       $     4.0M
+  CAS28 Digital Twin:                       $     5.0M
+  CAS29 Contingency:                        $     0.0M
+  ────────────────────────────────────────────────────────────
+  CAS20 Direct Costs:                       $  2688.6M
+  CAS30 Indirect Costs:                     $   537.7M
+  CAS40 Owner's Costs:                      $    10.3M
+  CAS50 Supplementary (incl. T startup):    $   236.6M
+  ────────────────────────────────────────────────────────────
+  Overnight Capital:                        $  3486.9M
+  CAS60 IDC (f=0.223):                $   776.4M
+  ════════════════════════════════════════════════════════════
+  Total Capital:                            $  4263.3M
+  Specific Capital:                   $    61,254 $/kWe
+  (Fission NOAK reference:              ~$7,000–10,000 $/kWe)
+
+--- Annual Costs (CAS70–90) ---
+  CAS90 Capital charge (CRF=0.0839):    $   357.5M/yr
+  CAS71 O&M (levelized, 2.5%/yr):     $   123.3M/yr
+  CAS72 Blanket replacements (6 over life): $     0.5M/yr
+  CAS70 Total O&M:                          $   123.8M/yr
+  CAS80 Fuel (deuterium, T self-bred):      $  0.0242M/yr
+
+--- LCOE ---
+  Annual energy production:          518,242 MWh/yr
+  Annual revenue requirement:   $   481.4M/yr
+  ╔══════════════════════════════════════════════════╗
+  ║  LCOE =    92.9 ¢/kWh                          ║
+  ║       =   928.8 $/MWh                         ║
+  ║  Acceleron target: 2.5 ¢/kWh ($25/MWh)          ║
+  ║  Gap vs. target:     37.2×                          ║
+  ╚══════════════════════════════════════════════════╝
+  Capital (CAS90):             74.3%
+  O&M    (CAS70):              25.7%
+  Fuel   (CAS80):              0.01%
+
+--- Scaled to 1000 MWe Reference (α=0.6) ---
+  Scale factor:    (70/1000)^0.4 = 0.344
+  Scaled LCOE:     319.9 $/MWh  (31.99 ¢/kWh)
+
+========================================================================
+SENSITIVITY ANALYSIS — Single-Parameter Sweeps from Baseline
+========================================================================
+  Baseline LCOE: 92.9 ¢/kWh
+
+
+  Muon energy cost E_mu [GeV_electrical/muon] (↓ better):
+         Value    Q_sci     P_net       ε            LCOE
+  ────────────  ───────  ────────  ──────  ──────────────
+         0.5 GeV    8.448    340.6MW    27%     22.6 ¢/kWh
+         0.8 GeV    5.280    166.4MW    43%     41.7 ¢/kWh
+           1 GeV    4.224    108.3MW    53%     61.5 ¢/kWh
+         1.2 GeV    3.520     69.6MW    64%     92.9 ¢/kWh
+         1.5 GeV    2.816     30.9MW    80%    202.4 ¢/kWh
+           2 GeV    2.112     -7.8MW   >100%  SINK (neg)
+         2.5 GeV    1.690    -31.1MW   >100%  SINK (neg)
+           3 GeV    1.408    -46.6MW   >100%  SINK (neg)
+           6 GeV    0.704    -85.3MW   >100%  SINK (neg)
+
+  Fusions per muon N_fus (↑ better, ceiling ~250 at 0.4% sticking):
+         Value    Q_sci     P_net       ε            LCOE
+  ────────────  ───────  ────────  ──────  ──────────────
+         100    1.467    -43.3MW   >100%  SINK (neg)
+         150    2.200     -3.0MW   >100%  SINK (neg)
+         200    2.933     37.3MW    77%    168.4 ¢/kWh
+         240    3.520     69.6MW    64%     92.9 ¢/kWh
+         280    4.107    101.9MW    55%     65.1 ¢/kWh
+         320    4.693    134.1MW    48%     50.6 ¢/kWh
+         400    5.867    198.7MW    38%     35.6 ¢/kWh
+
+  Accelerator capital cost [$M] (↓ better):
+         Value    Q_sci     P_net       ε            LCOE
+  ────────────  ───────  ────────  ──────  ──────────────
+         200 M$    3.520     69.6MW    64%     23.4 ¢/kWh
+         500 M$    3.520     69.6MW    64%     35.0 ¢/kWh
+       1e+03 M$    3.520     69.6MW    64%     54.3 ¢/kWh
+       2e+03 M$    3.520     69.6MW    64%     92.9 ¢/kWh
+       4e+03 M$    3.520     69.6MW    64%    170.1 ¢/kWh
+       8e+03 M$    3.520     69.6MW    64%    324.5 ¢/kWh
+
+  Thermal efficiency η_th [fraction] (↑ better):
+         Value    Q_sci     P_net       ε            LCOE
+  ────────────  ───────  ────────  ──────  ──────────────
+        0.35    3.520     11.5MW    91%    533.3 ¢/kWh
+         0.4    3.520     30.9MW    80%    202.8 ¢/kWh
+        0.45    3.520     50.2MW    71%    126.7 ¢/kWh
+         0.5    3.520     69.6MW    64%     92.9 ¢/kWh
+        0.55    3.520     89.0MW    58%     73.7 ¢/kWh
+         0.6    3.520    108.3MW    53%     61.4 ¢/kWh
+
+  Accelerator beam power P_beam [MW] (sets plant scale):
+         Value    Q_sci     P_net       ε            LCOE
+  ────────────  ───────  ────────  ──────  ──────────────
+          50 MW    3.520     22.8MW    76%    265.4 ¢/kWh
+          75 MW    3.520     46.2MW    68%    135.6 ¢/kWh
+         100 MW    3.520     69.6MW    64%     92.9 ¢/kWh
+         150 MW    3.520    116.4MW    60%     58.8 ¢/kWh
+         200 MW    3.520    163.2MW    58%     44.1 ¢/kWh
+         300 MW    3.520    256.8MW    56%     30.7 ¢/kWh
+
+
+========================================================================
+SCENARIO COMPARISON
+========================================================================
+Scenario                        E_mu  N_fus   Q_sci    P_net      ε           LCOE
+------------------------------------------------------------------------------
+Current physics (LAMPF)        6.0G    150   0.440   -99.8MW  >100%       SINK
+Acceleron target               2.5G    200   1.408   -46.6MW  >100%       SINK
+Acceleron stretch target       2.5G    300   2.112    -7.8MW  >100%       SINK
+Baseline (breakthrough)        1.2G    240   3.520    69.6MW   64%     92.9 ¢/kWh
+Optimistic breakthrough        0.8G    240   5.280   178.0MW   41%     24.1 ¢/kWh
+
+
+========================================================================
+KEY BINDING CONSTRAINTS (in order of LCOE impact)
+========================================================================
+
+  1. ENERGY BALANCE — THE FUNDAMENTAL VIABILITY GATE
+
+     Commercial μCF requires: Q_sci × M_blanket × η_th > 1 + P_aux/P_beam
+
+     At Acceleron's stated targets (E_mu=2.5 GeV, N_fus=200):
+       Q_sci = 200 × 17.6 MeV / 2500 MeV = 1.41
+       Gross/driver = 1.41 × 1.10 × 0.50 = 0.78  → ENERGY SINK
+
+     The Kelly, Hart & Rose (2021) estimate (150 fusions/muon, 18% acc eff,
+     60% thermal conversion) found only 14% net-to-input ratio. Even at
+     Acceleron's targets the concept produces net negative electricity.
+
+     What Acceleron needs (for 47% recirc with η_th=0.50, M=1.10):
+       Q_sci ≥ 1/(0.47 × 1.10 × 0.50) = 3.87 → N_fus ≥ 550 at 2.5 GeV
+       OR: E_mu ≤ 0.8 GeV at N_fus = 240 (this model's baseline requires 1.2 GeV)
+
+     STATUS: Not demonstrated. No experimental result approaches this threshold.
+     Resolution: Brookhaven National Laboratory breakeven test (~2030 target).
+
+  2. ACCELERATOR CAPITAL COST — DOMINANT LCOE COMPONENT
+
+     At baseline (E_mu=1.2 GeV, N_fus=240, P_beam=100 MW, P_net≈70 MWe):
+       Accelerator: $2,000M of ~$3,100M overnight capital (65%)
+       Specific capital: ~$44,000+/kWe (vs. fission NOAK ~$7,000–10,000/kWe)
+
+     SNS (ORNL, 1 GeV, 1.4 MW beam): $1,400M → $1B/MW_beam
+     Commercial target would need $<50M/MW_beam — a 20× cost reduction.
+     This requires industrial-scale manufacturing never achieved for GeV linacs.
+
+     To hit $25/MWh at 70 MWe with current physics: acc_capital ≤ ~$50M
+     (current estimate: $2,000M → 40× gap in accelerator cost alone)
+
+     STATUS: No published cost model for the MCF-relevant accelerator regime.
+     Resolution: Acceleron's active-target design may reduce cost vs. science-
+     grade linacs, but magnitude of reduction is completely unknown.
+
+  3. ALPHA-STICKING PHYSICS CEILING — HARD LIMIT ON N_FUS
+
+     Fusions per muon is bounded by alpha-sticking probability:
+       Max N_fus = 100 / α_sticking
+       At α = 0.4% (recent measurements): max N_fus ≈ 250
+       At α = 0.3% (optimistic): max N_fus ≈ 333
+
+     Acceleron's 300 fusions/muon target requires α < 0.33%, at the edge
+     of experimental measurements. This is a quantum mechanical limit, not
+     an engineering design variable. Sticking probability cannot be improved
+     by reactor design — it is set by D-T fusion kinematics.
+
+     Combined constraints 1–3 define a narrow operating window that may
+     require simultaneous achievement of: E_mu ≤ 1.5 GeV (undemonstrated),
+     N_fus ≥ 250 (near physics ceiling), and accelerator cost <$200M/GW.
+
+NOTE: All estimates carry VERY HIGH UNCERTAINTY. This model is intended
+for first-pass corridor mapping only. The dominant uncertainty is the
+physics energy balance — the concept may not be commercially viable at
+any capital cost if the fundamental Q_sci constraint cannot be met.
+Cost accounts follow 1costingfe CAS structure with concept-specific overrides.
+Accelerator costs use particle-physics facility analogues — highly speculative.

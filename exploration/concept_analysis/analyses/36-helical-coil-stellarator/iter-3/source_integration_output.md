@@ -1,0 +1,22 @@
+VERDICT: FINDINGS
+
+### F-1: H Confinement Factor Risk Is Overstated Given W7-X Experimental Data
+- **Target:** Section 2 (Challenge 2) and Section 5 (parameter row: H confinement improvement factor)
+- **Category:** analysis
+- **Finding:** The analysis frames HESTIA's H = 1.3 assumption as an unverified optimistic claim at risk of H = 1.0 (no improvement), with low confidence. The Helios preconceptual stellarator design study (arxiv-2512-08027, 2024) reports that W7-X has achieved H_ISS04 = 1.4 experimentally, which the Helios authors use as their own design baseline. HESTIA's assumed H = 1.3 is *below* W7-X's experimentally demonstrated performance, making it conservative relative to the state of the stellarator confinement database rather than an unjustified optimistic assumption.
+- **Recommendation:** Update Section 2 Challenge 2 to note that W7-X experimental operation has validated H_ISS04 ≥ 1.4 (per Helios design study, arxiv-2512-08027), and that HESTIA's H = 1.3 assumption is therefore below recent stellarator experimental performance rather than above it. The residual risk is not that H = 1.3 is overoptimistic, but that HESTIA's heliotron geometry and plasma parameters differ from W7-X and may not transfer directly. Update the confidence rating in the Section 5 parameter table from "low" to "medium" with a note explaining the basis.
+- **Priority:** important
+
+### F-2: Contemporary Stellarator FPP Study Chose 40% Steam Rankine Over sCO₂
+- **Target:** Section 2 (Challenge 4) and Section 3 (sCO₂ TRL subsystem)
+- **Category:** analysis
+- **Finding:** The analysis frames HESTIA's >50% sCO₂ target as an instance of a "field-wide unsolved design problem" but lacks a direct stellarator comparator. The Helios preconceptual design (arxiv-2512-08027, 2024) — a contemporary, well-documented stellarator FPP study — explicitly chose 40% steam Rankine cycle over sCO₂, achieving 390 MWe net output at a 40% efficiency assumption. This is a material comparator because it shows that a peer stellarator design study, working at the same time and with the same state of knowledge, concluded that 40% Rankine is the appropriate conservative power cycle assumption, while sCO₂ at >50% remains aspirational.
+- **Recommendation:** Add a sentence to Section 2 Challenge 4 and Section 3 noting that the Helios stellarator design study (2024, arxiv-2512-08027) selected 40% steam Rankine as its baseline, explicitly not sCO₂. This strengthens the framing: HESTIA's >50% sCO₂ target is not merely behind the broader sCO₂ R&D field — it diverges from the contemporary stellarator design consensus on achievable power conversion efficiency. The analysis should acknowledge that a 40% Rankine fallback scenario (as used by Helios) would reduce Q_eng below 2.0 and must be modeled as a scenario branch.
+- **Priority:** important
+
+### F-3: GTI STEP Demo Provides Updated TRL Milestone for sCO₂ at MW Scale
+- **Target:** Section 3 (sCO₂ Brayton Power Conversion at Fusion Outlet Temperature — TRL 3–4) and Section 6 (Gap #6)
+- **Category:** analysis
+- **Finding:** The analysis states sCO₂ is "commercial at MW-to-GW scale in fossil power and CSP plants" but does not reference the most recent large-scale demonstration milestone. GTI Energy's STEP Demo (October 2024) achieved 10 MWe at 500°C in Phase 1 and is targeting 715°C in Phase 2 — described as "the largest scale demonstration of the technology to date" and confirming "commercial readiness" of the basic sCO₂ cycle. HESTIA requires 800–1200 K (527–927°C); the GTI Phase 2 target of 715°C (988 K) falls within HESTIA's lower temperature range. This is a material TRL update: the technology is within experimental reach of fusion-relevant temperatures at MW scale as of 2024, which changes the TRL characterization from "commercial in CSP/fossil" (implying steady-state mature deployment) to "MW-scale demonstration advancing toward fusion-relevant temperatures."
+- **Recommendation:** Update the Section 3 sCO₂ subsystem "Demonstrated" bullet to include the GTI STEP demo: 10 MWe achieved at 500°C (Phase 1 complete, October 2024), with Phase 2 targeting 715°C — the largest sCO₂ demonstration to date and approaching HESTIA's 800 K lower bound. Note that Phase 2 completion (715°C) would reduce the temperature gap from HESTIA's minimum requirement to ~85°C, making the near-term technology trajectory material to the TRL assessment. Also update Section 6 Gap #6 source recommendation to reference this milestone.
+- **Priority:** important

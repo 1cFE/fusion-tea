@@ -1,0 +1,19 @@
+{
+  "iteration": 4,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "research",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": true,
+  "merged_assess": true,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/02-acoustic-icf-sonofusion/iter-01/sources/americanpiezo-products-services-ultrasonic-power-transducers.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/02-acoustic-icf-sonofusion/iter-01/sources/bubble-fusion-scientific-history.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/02-acoustic-icf-sonofusion/iter-01/sources/osti-pages-biblio-1224334.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/02-acoustic-icf-sonofusion/iter-01/sources/sonofusion-energy-website.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/02-acoustic-icf-sonofusion/iter-01/sources/ucla-putterman-group-sonoluminescence.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/02-acoustic-icf-sonofusion/iter-01/sources/wits-trade-comtrade-en-country-all-year-2023-tradeflow.md"
+  ],
+  "timestamp": "2026-04-19T19:12:34.645379+00:00"
+}
