@@ -1,0 +1,29 @@
+[
+  {
+    "timestamp": "2026-04-20T02:52:20.830731+00:00",
+    "step": "feedback-pass",
+    "attempt": 1,
+    "validator": "validate_file_modified",
+    "passed": true,
+    "details": "File content changed",
+    "validated_text_preview": "---\nID: 08-frc-w-direct-conversion\nConcept: FRC w/ Direct Conversion\nCompany: Helion Energy\nStatus: draft\nCreated: 2026-03-29\nApproved-Date:\nReuses: []\n---\n\n# D1+ Analysis: FRC w/ Direct Conversion (Helion Energy)\n\n---\n\n## Section 1: Availability of Data\n\n**Rating: Limited**\n\nHelion Energy is the world's best-funded private fusion company (~$2.2B raised as of 2025) and has operated seven prototype generations over more than a decade. This history produces a recognizable public record but not a d"
+  },
+  {
+    "timestamp": "2026-04-20T02:54:05.687899+00:00",
+    "step": "model-setup",
+    "attempt": 1,
+    "validator": "validate_file_modified+validate_python_syntax",
+    "passed": true,
+    "details": "All validators passed",
+    "validated_text_preview": "# STALE: analysis-rewritten-by-force\n\"\"\"FRC w/ Direct Conversion (Helion Energy) \u2014 1costingfe LCOE Model.\n\nUsage:\n    uv run python model_setup.py              # print results to terminal\n    uv run python model_setup.py | tee model_output.txt  # also save for synthesis stage\n\nModels a pulsed colliding Field-Reversed Configuration power plant (Helion Energy)\noperating on D-He3 fuel with direct electromagnetic energy recovery.\n\nConcept: Helion Energy's commercial FRC concept, targeting Orion (50 "
+  },
+  {
+    "timestamp": "2026-04-20T02:57:07.998044+00:00",
+    "step": "assess",
+    "attempt": 1,
+    "validator": "validate_feedback_verdict",
+    "passed": true,
+    "details": "Feedback format valid (verdict: FINDINGS)",
+    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: f_rep elasticity near zero despite being stated as the #2 LCOE lever\n- **Target:** Sensitivity output and model_setup.py power balance\n- **Category:** model\n- **Finding:** The analysis (Section 2.3, Section 2 Modeling Approach) correctly argues that rep rate scales output power linearly \u2014 halving rep rate from 2 Hz to 1 Hz halves energy yield from identical capital, roughly doubling LCOE. This makes rep rate elasticity the dominant or near-dominant engineering lever ("
+  }
+]

@@ -16,16 +16,16 @@ uv run python scripts/run_analysis.py list
 uv run python scripts/run_analysis.py status
 
 # Run the autonomous quality loop for one or more concepts
-uv run python scripts/run_analysis.py stage1-all 02 03 04
+uv run python scripts/run_analysis.py analyze 02 03 04
 
 # Resume an existing analysis (add more iterations without restarting)
-uv run python scripts/run_analysis.py stage1-all 02 --resume
+uv run python scripts/run_analysis.py analyze 02 --resume
 
 # Resume with autonomous research enabled
-uv run python scripts/run_analysis.py stage1-all 02 --resume --research
+uv run python scripts/run_analysis.py analyze 02 --resume --research
 
 # Dry-run to preview prompts without calling Claude
-uv run python scripts/run_analysis.py stage1-all 02 --dry-run
+uv run python scripts/run_analysis.py analyze 02 --dry-run
 ```
 
 ## Pipeline Overview
@@ -49,7 +49,7 @@ Phase 2 — HUMAN (review gate)
 │                                                            │
 │   review → (human confirms verdict)                        │
 │     ├── PROCEED → [address-review] → synthesize → approve  │
-│     └── REVISE  → stage1-all --resume ─────────────────┐   │
+│     └── REVISE  → analyze --resume ────────────────────┐   │
 │                                                        │   │
 └────────────────────────────────────────────────────────┼───┘
                                                         │
@@ -58,7 +58,7 @@ Phase 2 — HUMAN (review gate)
               back to Phase 1 (review as feedback-producer)
 
 Side door:
-  add-source → stage1-all --resume  (auto-selects source-integration feedback)
+  add-source → analyze --resume  (auto-selects source-integration feedback)
 
 † Research step runs autonomous source acquisition when `--research` is
   enabled. See `lib/research.py` and the Autonomous Source Acquisition section.
@@ -79,10 +79,8 @@ Iteration body:
 ```
 
 The loop repeats until assess returns `VERDICT: PASS` or `--max-passes` is
-reached. `stage1-all` wraps this as: `[gap-check] → analyze loop → model-setup → review`,
-where the standalone `model-setup` and `review` stages run *after* the loop
-exits (the model-setup call is effectively a no-op since the loop already
-produced `model_setup.py`).
+reached. To run the full pipeline, chain commands explicitly:
+`analyze 02 && review 02`.
 
 #### Feedback-Producer Selection
 
@@ -122,13 +120,13 @@ Output is `review.md` with a structured verdict:
   minor fixes in `PA-N:` format for `address-review`.
 - `VERDICT: REVISE` — significant strategic issues require another stage1 pass.
   Includes corrective actions in `F-N:` format (same schema as
-  `config/feedback_format.md`), consumable by `stage1-all --resume`.
+  `config/feedback_format.md`), consumable by `analyze --resume`.
 
 **PROCEED path**: human reads review, optionally fills PA-N decisions,
 runs `address-review`, then proceeds to synthesize.
 
 **REVISE path** (kick-back): human confirms verdict, runs
-`stage1-all --resume`. The loop detects `Review-Status: revise` and
+`analyze --resume`. The loop detects `Review-Status: revise` and
 uses the review's corrective actions as feedback for the next iteration
 (`feedback_source: "review"` in verdict.json). One-shot — subsequent
 iterations fall through to normal assess feedback.
@@ -155,7 +153,7 @@ with cross-concept positioning, risk verdicts, and LCOE sensitivity.
 
 ## Commands
 
-11 subcommands. The dispatch table (`run_analysis.py:main()`):
+10 subcommands. The dispatch table (`run_analysis.py:main()`):
 
 ```python
 dispatch = {
@@ -168,7 +166,6 @@ dispatch = {
     "address-review": cmd_address_review,
     "synthesize":     cmd_synthesize,
     "approve":        cmd_approve,
-    "stage1-all":     cmd_stage1_all,
     "add-source":     cmd_add_source,
 }
 ```
@@ -186,7 +183,6 @@ dispatch = {
 | `address-review` | Apply user decisions from review | yes | Edits `analysis.md` / `model_setup.py` |
 | `synthesize` | Editorial synthesis | yes | `synthesis.md` |
 | `approve` | Mark as approved | no | Frontmatter update |
-| `stage1-all` | Chain: [gap-check] → analyze → model-setup → review | yes | All of the above |
 | `add-source` | Add PDF or URL source | no* | Extracted source in `iter-NN/sources/` |
 
 \* `add-source` calls `agentic-mbse extract`, not Claude directly.
@@ -220,14 +216,13 @@ name/company substring. Ambiguous matches produce an error listing all hits.
 
 | Flag | Commands | Default | Description |
 |------|----------|---------|-------------|
-| `--max-passes` | `analyze`, `stage1-all` | 3 | Max iterations (1 = skip assessment entirely → `SINGLE_PASS` verdict) |
-| `--add-passes N` | `analyze`, `stage1-all` | — | Run N additional passes from each concept's current iteration (implies `--resume`; per-concept `max_passes` = current iter + N) |
+| `--max-passes` | `analyze` | 3 | Max iterations (1 = skip assessment entirely → `SINGLE_PASS` verdict) |
+| `--add-passes N` | `analyze` | — | Run N additional passes from each concept's current iteration (implies `--resume`; per-concept `max_passes` = current iter + N) |
 | `--feedback PATH` | `analyze` | — | Apply external feedback file to existing analysis (separate code path, does not enter loop) |
-| `--resume` | `analyze`, `stage1-all` | off | Continue from last iteration |
-| `--research` | `analyze`, `stage1-all` | off | Enable autonomous source acquisition on iter > 1 |
-| `--max-research-searches` | `analyze`, `stage1-all` | 5 | Max WebSearch calls per research step |
-| `--max-research-extractions` | `analyze`, `stage1-all` | 3 | Max `add-source` extractions per research step |
-| `--include-gap-analysis` | `stage1-all` | off | Prepend gap-check to the pipeline |
+| `--resume` | `analyze` | off | Continue from last iteration |
+| `--research` | `analyze` | off | Enable autonomous source acquisition on iter > 1 |
+| `--max-research-searches` | `analyze` | 5 | Max WebSearch calls per research step |
+| `--max-research-extractions` | `analyze` | 3 | Max `add-source` extractions per research step |
 | `--name` | `add-source` | auto-slugified | Override source name |
 
 **Mutual exclusions:**
@@ -279,14 +274,14 @@ uv run python scripts/run_analysis.py analyze 02 05 11 --add-passes 2
 
 ```bash
 # Phase 1: autonomous quality loop
-uv run python scripts/run_analysis.py stage1-all 11
+uv run python scripts/run_analysis.py analyze 11
 
 # Phase 2: human review
 uv run python scripts/run_analysis.py review 11
 # Read review.md — if VERDICT: PROCEED, optionally fill PA-N Decision fields:
 uv run python scripts/run_analysis.py address-review 11
 # If VERDICT: REVISE, kick back to stage1:
-uv run python scripts/run_analysis.py stage1-all 11 --resume
+uv run python scripts/run_analysis.py analyze 11 --resume
 
 # Phase 3: synthesis and approval
 uv run python scripts/run_analysis.py synthesize 11

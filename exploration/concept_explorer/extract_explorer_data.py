@@ -198,10 +198,14 @@ def extract_costingfe(
             f"{concept_id}: model_setup.py must define module-level 'model' and 'result'"
         )
 
-    sensitivities = build_sensitivity_analysis(model, result)
+    # Use result_1gw (per-account scaled) when present, otherwise native result
+    result_1gw = getattr(module, "result_1gw", None)
+    effective_result = result_1gw if result_1gw is not None else result
+
+    sensitivities = build_sensitivity_analysis(model, effective_result)
 
     # dataclasses.asdict() flattens the nested ForwardResult into plain dicts
-    raw: dict[str, Any] = dataclasses.asdict(result)
+    raw: dict[str, Any] = dataclasses.asdict(effective_result)
 
     # availability lives in params, not power_table — inject it so from_forward_result
     # can compute capacity_factor via its "availability" fallback
@@ -424,9 +428,18 @@ def extract_standalone(
             params_obj = getattr(loaded_module, "params", None)
             results_obj = getattr(loaded_module, "results", None)
 
+            # Helper: override headline metrics from scaled_headline if present
+            def _apply_scaled_headline(rd: dict[str, Any]) -> None:
+                sh = getattr(loaded_module, "scaled_headline", None)
+                if sh and isinstance(sh, dict):
+                    rd.setdefault("costs", {})["lcoe"] = sh.get("lcoe_per_mwh", rd.get("costs", {}).get("lcoe", 0))
+                    rd.setdefault("costs", {})["overnight_cost"] = sh.get("overnight_per_kw", rd.get("costs", {}).get("overnight_cost", 0))
+                    rd.setdefault("power_table", {})["p_net"] = sh.get("p_net_mw", rd.get("power_table", {}).get("p_net", 0))
+
             # Path 1: script provides its own mapping (backward compat)
             if to_explorer_dict is not None:
                 raw_dict = to_explorer_dict()
+                _apply_scaled_headline(raw_dict)
                 cost_model = CostModelData.from_forward_result(raw_dict, sensitivities=None)
                 has_cost_model = True
             # Path 2: centralized adapter from module-level params + results
@@ -437,6 +450,7 @@ def extract_standalone(
                 and dataclasses.is_dataclass(params_obj)
             ):
                 raw_dict = _freeform_to_explorer_dict(results_obj, params_obj)
+                _apply_scaled_headline(raw_dict)
                 cost_model = CostModelData.from_forward_result(raw_dict, sensitivities=None)
                 has_cost_model = True
             else:
@@ -455,6 +469,7 @@ def extract_standalone(
                         )
                     if isinstance(results_obj, dict):
                         raw_dict = _freeform_to_explorer_dict(results_obj, params_obj)
+                        _apply_scaled_headline(raw_dict)
                         cost_model = CostModelData.from_forward_result(
                             raw_dict, sensitivities=None
                         )

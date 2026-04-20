@@ -1,0 +1,22 @@
+VERDICT: FINDINGS
+
+### F-1: eta_dec shows zero sensitivity despite DEC providing 30% of net electricity
+- **Target:** Model sensitivity sweep / power balance computation
+- **Category:** model
+- **Finding:** The sensitivity table reports `eta_dec = +0.0000` elasticity. Yet Section 2 explicitly states that the 30% DEC channel "represents ~840 MWe at the 10 Hz design point" and that if DEC fails "net electric output falls proportionally." A parameter that governs 30% of gross electricity output cannot have zero LCOE elasticity unless the model is not using `eta_dec` in its power-balance or net-output calculation — i.e., eta_dec is declared but not wired into the computation. This is a model integrity failure: the LCOE is being computed as if DEC efficiency is irrelevant, directly contradicting the analysis narrative (Goal 5).
+- **Recommendation:** Audit the power-balance code path. Net electric output should be computed as `P_net = P_fus × (f_neutron × η_th + f_charged × η_DEC) - P_recirc`, where varying `η_DEC` changes `P_net` and therefore LCOE. Confirm that `f_charged = 0.30` and `f_neutron = 0.70` are actually applied in the computation. After the fix, `eta_dec` should show negative elasticity comparable in magnitude to `eta_th` (currently −0.258), since both channels have equal efficiency (0.44) but different power fractions (70%/30%). The DEC Capital Cost Scenarios table can remain as-is.
+- **Priority:** blocking
+
+### F-2: (G, f_rep) scenario grid holds output fixed — viability cliff is invisible
+- **Target:** (G, f_rep) Scenario Grid in model output
+- **Category:** model
+- **Finding:** The grid title states "@ 2800 MWe" — capital is rescaled to maintain constant output across all (G, f_rep) cells. This explains why the LCOE variation is small (48.1 to 60.7 $/MWh across the full grid). But Section 7 explicitly identifies the key modeling insight as the *same-capital viability cliff*: "dropping from 10 Hz to 1 Hz while holding G = 160 cuts net output by 27× from the same capital base, effectively tripling or more the LCOE." That scenario — 5 MJ laser, G=160, f=1 Hz, ~102 MWe output, same overnight capital — does not appear anywhere in the model output. The note about "50 MJ/shot" for the 1 Hz row confirms the grid is interpreting 1 Hz as requiring a larger laser, not as running the same laser at lower rep rate. This misses the entire point of the joint (G, f) analysis (Goal 4).
+- **Recommendation:** Add a second scenario table — "Same-Capital Viability Scenarios" — that holds overnight capital constant at the 2800 MWe/10 Hz value and reports LCOE at reduced output: (G=160, f=1 Hz → ~102 MWe), (G=80, f=10 Hz → ~1400 MWe), (G=80, f=1 Hz → ~51 MWe). These four cells expose the viability cliff and make the joint G×f interaction visible. The existing constant-output grid can remain as a companion table.
+- **Priority:** important
+
+### F-3: Per-shot target OPEX near-zero despite Goodin criterion flagging it as a cost-floor constraint
+- **Target:** Sensitivity sweep (`p_target`) / OPEX computation
+- **Category:** model
+- **Finding:** The sensitivity table shows `p_target = −0.0001` elasticity — effectively zero. Section 2 (and the target maturity section) cites the Goodin criterion: targets must cost less than ~$0.035 each for economic viability, while current research targets cost $1M+. At 10 Hz, 75% availability, and 30-year plant life, the plant fires ≈7 billion shots. Even at $0.10/target (well above the Goodin floor), target OPEX would be ~$700M over plant life — comparable to several CAS accounts in the cost breakdown. The near-zero elasticity means `p_target` is either set to a negligible default value or is not correctly scaled by rep rate × availability × plant life in the OPEX calculation. This makes the model blind to one of the two consumption-cost analogues the analysis draws from the MagLIF pattern (Goal 4: "OPEX scales linearly with rep rate").
+- **Recommendation:** Verify that `p_target` OPEX is computed as `p_target_per_shot × f_rep × availability × seconds_per_year × plant_life_yr` and fed into the annualized O&M cost. Set the default `p_target` to a non-zero placeholder consistent with the current state (e.g., $1/target as a near-term proxy) and include a sensitivity sweep from $0.01 to $1.00 per target. The analysis already flags this in the missing parameters table as blocking; the model should reflect the same severity.
+- **Priority:** important

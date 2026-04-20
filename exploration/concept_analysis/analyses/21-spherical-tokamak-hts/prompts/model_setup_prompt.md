@@ -34,6 +34,50 @@ Follow its structure, commenting style, and output format.
 - **Fuel:** `DT`
 
 
+## Power Standardization: Dual-Result Pattern
+
+The primary `result = model.forward(...)` stays at the concept's **native** power
+level. This preserves physics consistency (Q_eng, power balance, CAS breakdown).
+
+**If the concept's native design point is NOT 1000 MWe**, add a second forward()
+call to produce a self-consistent 1 GW result using per-account cost scaling:
+
+1. Factor all shared kwargs into a `_SHARED_KWARGS` dict (avoid duplicating
+   parameters between the two forward() calls):
+
+   ```python
+   _SHARED_KWARGS = dict(
+       availability=...,
+       lifetime_yr=...,
+       # ... all engineering params, cost_overrides, noak, etc.
+   )
+   ```
+
+2. Compute both results:
+
+   ```python
+   result = model.forward(net_electric_mw=<native_power>, **_SHARED_KWARGS)
+
+   result_1gw = model.forward(
+       net_electric_mw=1000.0,
+       override_reference_mw=<native_power>,
+       **_SHARED_KWARGS,
+   )
+   ```
+
+   `override_reference_mw` tells the framework that `cost_overrides` values are
+   valid at `<native_power>` MWe, and it should scale them to 1000 MWe using
+   per-account scaling laws.
+
+3. Both `result` and `result_1gw` MUST be module-level variables (not inside a
+   function or if-block).
+
+4. Do NOT add `scaled_headline`. Do NOT compute sensitivities for `result_1gw`
+   — the extraction pipeline handles that.
+
+**If the concept's native design point IS 1000 MWe**, do NOT add `result_1gw`.
+A single `result` at 1000 MWe is sufficient.
+
 ## Script Requirements
 
 ### Structure

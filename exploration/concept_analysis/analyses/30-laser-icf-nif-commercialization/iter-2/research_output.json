@@ -1,0 +1,202 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-12",
+      "gap_description": "LLNL LIFE plant studies sourcing — Latkowski, Moir, Meier OSTI reports 2010-2013",
+      "queries": [
+        "LLNL LIFE \"laser inertial fusion energy\" power plant engineering cost study Latkowski Moir Meier site:osti.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1028880",
+          "title": "Chamber Design for the Laser Inertial Fusion Energy (LIFE) Engine",
+          "triage": "relevant",
+          "notes": "Direct PDF from OSTI. Journal article on chamber design for LIFE engine — covers first wall, liquid Li, chamber geometry. Directly analogous to Inertia architecture."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/985478",
+          "title": "Parameter Study of the LIFE Engine Nuclear Design",
+          "triage": "relevant",
+          "notes": "Direct PDF from OSTI. Nuclear design parameter study — covers blanket neutronics, TBR, breeding. Relevant to G-10 and G-15. Not extracted (budget limit); candidate for iter-3."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/1107297",
+          "title": "Fusion Technologies for Laser Inertial Fusion Energy (LIFE)",
+          "triage": "relevant",
+          "notes": "Conference paper. Broader fusion technology overview. Lower priority than chamber design paper."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1256449",
+          "title": "Fusion Technology Aspects of Laser Inertial Fusion Energy",
+          "triage": "relevant",
+          "notes": "Direct PDF. Fusion technology aspects — scope unclear without full triage. Not extracted (budget limit)."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1028880",
+          "source_name": "osti-servlets-purl-1028880"
+        }
+      ],
+      "failed": [],
+      "status": "partial"
+    },
+    {
+      "gap_id": "G-11",
+      "gap_description": "Semiconductor laser diode cost at scale ($0.007/W thesis) — TRUMPF/LLNL IFE workshop report",
+      "queries": [
+        "Haefner DPSSL \"diode-pumped solid-state laser\" cost scaling IFE fusion TRUMPF LLNL $0.007/W"
+      ],
+      "candidates": [
+        {
+          "url": "https://lasers.llnl.gov/sites/lasers/files/2023-11/haefner-ILT-IFE-workshop-2022-2.pdf",
+          "title": "Inertial Fusion Energy Drive Technology (Haefner, Fraunhofer ILT / LLNL, IFE Workshop 2022)",
+          "triage": "relevant",
+          "notes": "Direct PDF, accessible (226KB). Author: constantin.haefner@ilt.fraunhofer.de. Created 2022-01-28 in Microsoft Word. Real technical content confirmed. IFE driver technology with diode cost scaling context. Cost figure in search results: $0.05-0.07/W target for IFE (vs. $0.007/W mentioned in analysis — may be a different reference or analysis doc had a typo)."
+        },
+        {
+          "url": "https://lasers.llnl.gov/sites/lasers/files/2023-11/haefner-ILT-IFE-workshop-2022-1.pdf",
+          "title": "Haefner IFE Workshop 2022 Part 1",
+          "triage": "relevant",
+          "notes": "Second part of same workshop presentation. Not extracted (budget limit); candidate for iter-3."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/15013230",
+          "title": "Diode-Pumped Solid State Lasers for Inertial Fusion Energy",
+          "triage": "relevant",
+          "notes": "OSTI direct PDF. Older study but foundational for DPSSL IFE cost scaling. Not extracted (budget limit)."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/3008974",
+          "title": "Diode laser pumps for future inertial fusion energy systems",
+          "triage": "relevant",
+          "notes": "OSTI direct PDF. More recent (OSTI ID suggests post-2020). Diode pump cost for IFE. Not extracted (budget limit)."
+        },
+        {
+          "url": "https://arpa-e.energy.gov/sites/default/files/migrated/A05-Zuegel-FusionWorkshop_03-07-23.pdf",
+          "title": "Diode-pumped, solid-state laser (DPSSL) drivers for IFE (Zuegel, ARPA-E 2023)",
+          "triage": "relevant",
+          "notes": "ARPA-E workshop 2023 slides by Zuegel. Recent cost and performance projections. Not extracted (budget limit); strong candidate for iter-3."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://lasers.llnl.gov/sites/lasers/files/2023-11/haefner-ILT-IFE-workshop-2022-2.pdf",
+          "source_name": "lasers-sites-lasers-files-2023-11-haefner-ilt-ife-workshop"
+        }
+      ],
+      "failed": [],
+      "status": "partial"
+    },
+    {
+      "gap_id": "G-4",
+      "gap_description": "Target fabrication facility capital cost and unit target manufacturing cost roadmap",
+      "queries": [
+        "Goodin \"IFE target\" fabrication cost 2004 \"mass production\" hohlraum cryogenic site:osti.gov OR site:ans.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/828518",
+          "title": "Cost-Effective Target Fabrication for Inertial Fusion Energy (Goodin et al., 2004)",
+          "triage": "relevant",
+          "notes": "Scanned PDF (CCITT fax, 8 pages, 646KB). WebFetch confirmed accessible. Content per search result: current experiment targets cost ~$2500 each; IFE cost requirement ~$0.25-0.30 each; studies show costs within commercial feasibility range. Directly addresses G-4 target cost at mass production scale."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/828518",
+          "source_name": "osti-servlets-purl-828518"
+        }
+      ],
+      "failed": [],
+      "status": "closed"
+    },
+    {
+      "gap_id": "G-14",
+      "gap_description": "NIF ignition experiment papers (Kritcher et al., Nature 2022-2024) — confirm Q values and Hybrid-E target physics",
+      "queries": [
+        "Kritcher NIF ignition \"3.15 MJ\" OR \"Q>1\" hybrid-E 2022 site:nature.com OR site:journals.aps.org OR site:pubs.aip.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/31/7/070502/3304417/Design-of-first-experiment-to-achieve-fusion",
+          "title": "Design of first experiment to achieve fusion target gain > 1 (Kritcher et al., Physics of Plasmas 2024)",
+          "triage": "paywall",
+          "notes": "AIP Publishing — 403 Forbidden. Full text not accessible without institutional subscription. Confirms Q_target > 1 on Dec 5, 2022: 3.15 MJ from 2.05 MJ laser. Would be highest-quality source for G-14."
+        },
+        {
+          "url": "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.132.065104",
+          "title": "Hohlraum Reheating from Burning NIF Implosions (PRL 2024)",
+          "triage": "likely-paywall",
+          "notes": "PRL abstract page — likely paywalled. Related to hohlraum physics in ignition shots. Secondary to Kritcher paper for G-14."
+        }
+      ],
+      "extracted": [],
+      "failed": [
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/31/7/070502/3304417/Design-of-first-experiment-to-achieve-fusion",
+          "reason": "403 Forbidden — AIP Publishing institutional access required"
+        }
+      ],
+      "status": "failed"
+    },
+    {
+      "gap_id": "G-2",
+      "gap_description": "DPSSL laser capital cost per beamline — dominant capital cost driver, no published data",
+      "queries": [
+        "Haefner DPSSL \"diode-pumped solid-state laser\" cost scaling IFE fusion TRUMPF LLNL $0.007/W"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/biblio/6634713",
+          "title": "Diode-pumped solid-state-laser drivers and the competitiveness of inertial fusion energy",
+          "triage": "relevant",
+          "notes": "OSTI entry for DPSSL competitiveness for IFE. Older paper but foundational. Not extracted (budget limit; covered by Haefner 2022 workshop)."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "partial"
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 5,
+    "sources_extracted": 3,
+    "sources_failed": 1,
+    "searches_used": 5,
+    "extractions_used": 3,
+    "notes": "All 3 extraction budget slots used. G-4 (target fabrication) closed with Goodin 2004 paper. G-12 (LLNL LIFE studies) and G-11 (DPSSL costs) partially addressed — chamber design and Haefner workshop extracted; 4+ additional relevant OSTI documents identified for iter-3 (purl/985478, purl/1256449, purl/15013230, purl/3008974, Zuegel ARPA-E 2023, Haefner part 1). G-14 (NIF ignition papers) failed — Kritcher Physics of Plasmas paper is paywalled; recommend searching arXiv or LLNL preprint server in iter-3."
+  },
+  "iter_3_candidates": [
+    {
+      "url": "https://www.osti.gov/servlets/purl/985478",
+      "title": "Parameter Study of the LIFE Engine Nuclear Design",
+      "gaps": ["G-10", "G-15", "G-12"],
+      "priority": "important"
+    },
+    {
+      "url": "https://arpa-e.energy.gov/sites/default/files/migrated/A05-Zuegel-FusionWorkshop_03-07-23.pdf",
+      "title": "Diode-pumped DPSSL drivers for IFE (Zuegel, ARPA-E 2023)",
+      "gaps": ["G-2", "G-11"],
+      "priority": "important"
+    },
+    {
+      "url": "https://www.osti.gov/servlets/purl/3008974",
+      "title": "Diode laser pumps for future inertial fusion energy systems",
+      "gaps": ["G-2", "G-11"],
+      "priority": "important"
+    },
+    {
+      "url": "https://lasers.llnl.gov/sites/lasers/files/2023-11/haefner-ILT-IFE-workshop-2022-1.pdf",
+      "title": "Haefner IFE Workshop 2022 Part 1",
+      "gaps": ["G-2", "G-11"],
+      "priority": "important"
+    },
+    {
+      "url": "https://www.osti.gov/servlets/purl/1256449",
+      "title": "Fusion Technology Aspects of Laser Inertial Fusion Energy",
+      "gaps": ["G-12", "G-6", "G-8"],
+      "priority": "important"
+    }
+  ]
+}

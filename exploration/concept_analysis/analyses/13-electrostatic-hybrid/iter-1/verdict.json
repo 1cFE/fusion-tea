@@ -1,0 +1,19 @@
+{
+  "iteration": 1,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "cold_start",
+  "model_ran": false,
+  "model_ok": false,
+  "research_ran": false,
+  "merged_assess": false,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/avalanche-29m-raise-2026.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/avalanche-300kv-press-release.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/avalanche-cwfest2023-blog.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/avalanche-fusionwerx-grant.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/avalanche-orbitron-page.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/talk-polywell-orbitron-paper-discussion.md"
+  ],
+  "timestamp": "2026-04-19T19:24:32.060833+00:00"
+}

@@ -20,7 +20,7 @@
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 1740.0505084215079,
+      "cost_m_usd": 1597.5817948553336,
       "overridden": false
     },
     "cas23": {
@@ -60,7 +60,7 @@
     },
     "cas30": {
       "name": "Indirect Costs",
-      "cost_m_usd": 631.2148813323016,
+      "cost_m_usd": 602.7211386190668,
       "overridden": false
     },
     "cas40": {
@@ -70,12 +70,12 @@
     },
     "cas50": {
       "name": "Supplementary Costs",
-      "cost_m_usd": 196.68026245298253,
+      "cost_m_usd": 186.9923899304827,
       "overridden": false
     },
     "cas60": {
       "name": "Interest During Construction",
-      "cost_m_usd": 1152.5472041919636,
+      "cost_m_usd": 1100.8929524259895,
       "overridden": false
     },
     "cas70": {
@@ -85,18 +85,18 @@
     },
     "cas80": {
       "name": "Fuel Costs (annualised)",
-      "cost_m_usd": 6.998463122548909,
+      "cost_m_usd": 4.49901200735287,
       "overridden": false
     },
     "cas90": {
       "name": "Financial Costs",
-      "cost_m_usd": 530.0461950741422,
+      "cost_m_usd": 506.29086469949476,
       "overridden": false
     },
     "cas22_detail": {
       "C220101": {
         "name": "First Wall & Blanket",
-        "cost_m_usd": 102.48078903186136,
+        "cost_m_usd": 71.23765009191088,
         "overridden": false
       },
       "C220102": {
@@ -146,7 +146,7 @@
       },
       "C220111": {
         "name": "Installation Labor",
-        "cost_m_usd": 42.036152633019036,
+        "cost_m_usd": 37.662113181425966,
         "overridden": false
       },
       "C220112": {
@@ -186,8 +186,8 @@
       }
     },
     "headline": {
-      "lcoe_per_mwh": 106.56713419974977,
-      "overnight_cost_per_kw": 4381.820279526794,
+      "lcoe_per_mwh": 102.22297035640052,
+      "overnight_cost_per_kw": 4185.438172929598,
       "p_net_mw": 919.8919999999999,
       "q_eng": 8.5,
       "capacity_factor": 0.75
@@ -195,19 +195,19 @@
     "sensitivities": {
       "engineering": {
         "acoustic_power_MW": {
-          "elasticity": -0.21668966951483795,
+          "elasticity": -0.18297659722129206,
           "baseline": 100.0
         },
         "acoustic_driver_efficiency": {
-          "elasticity": -0.5586652386293293,
+          "elasticity": -0.520997541454263,
           "baseline": 0.85
         },
         "fusion_gain_Q": {
-          "elasticity": -0.5631447126521653,
+          "elasticity": -0.5311680564687521,
           "baseline": 10.0
         },
         "transducer_cost_per_kW": {
-          "elasticity": 0.059872263517071096,
+          "elasticity": 0.06241665174491771,
           "baseline": 500.0
         },
         "acoustic_freq_kHz": {
@@ -215,89 +215,89 @@
           "baseline": 30.0
         },
         "blanket_energy_multiplication": {
-          "elasticity": -0.19536618839503395,
+          "elasticity": -0.1842729550599334,
           "baseline": 1.05
         },
         "f_neutron_dd": {
-          "elasticity": -0.009302965668577672,
+          "elasticity": -0.008774727745466502,
           "baseline": 0.336
         },
         "thermal_efficiency": {
-          "elasticity": -0.7530961992832812,
+          "elasticity": -0.7236912237485247,
           "baseline": 0.35
         },
         "vessel_inner_radius_m": {
-          "elasticity": 0.493093043614703,
+          "elasticity": 0.38655290946496196,
           "baseline": 3.0
         },
         "shield_thickness_m": {
-          "elasticity": 0.1347347536872092,
+          "elasticity": 0.14046056896502646,
           "baseline": 1.5
         },
         "structure_thickness_m": {
-          "elasticity": 0.008989770195638824,
+          "elasticity": 0.009371807955902816,
           "baseline": 0.3
         },
         "vessel_wall_thickness_m": {
-          "elasticity": 0.007532960336432878,
+          "elasticity": 0.007853088129740008,
           "baseline": 0.15
         },
         "plant_availability": {
-          "elasticity": -0.9544126100109184,
+          "elasticity": -0.9524710351335549,
           "baseline": 0.75
         },
         "plant_lifetime_years": {
-          "elasticity": -0.03119135459686621,
+          "elasticity": -0.029203862161788084,
           "baseline": 40.0
         },
         "d2o_unit_cost_per_m3": {
-          "elasticity": 0.11414080760189131,
-          "baseline": 773500.0
+          "elasticity": 0.07649449914011032,
+          "baseline": 497250.0
         },
         "vessel_structural_cost_M_USD": {
-          "elasticity": 0.017708108536192542,
+          "elasticity": 0.01846064903239114,
           "baseline": 15.0
         },
         "p_tritium_handling_MW": {
-          "elasticity": 0.0017094133312225712,
+          "elasticity": 0.0016896626664936337,
           "baseline": 2.0
         },
         "p_house_MW": {
-          "elasticity": 0.003418826667265788,
+          "elasticity": 0.0033793253377903463,
           "baseline": 4.0
         },
         "p_cryo_MW": {
-          "elasticity": 0.0007542179842843139,
+          "elasticity": 0.0007816501683436575,
           "baseline": 0.1
         },
         "p_d2o_circulation_MW": {
-          "elasticity": 0.002564119998314055,
+          "elasticity": 0.0025344940012314208,
           "baseline": 3.0
         },
         "construction_time_years": {
-          "elasticity": 0.40702193552496,
+          "elasticity": 0.40612661899393676,
           "baseline": 6.0
         },
         "om_cost_per_MW_yr": {
-          "elasticity": 0.1564565289560278,
+          "elasticity": 0.16310545330029516,
           "baseline": 80.0
         },
         "core_lifetime_FPY": {
-          "elasticity": -0.046005068918248085,
+          "elasticity": -0.0479601437542527,
           "baseline": 10.0
         },
         "d2o_annual_replenishment_frac": {
-          "elasticity": 0.010866187134723378,
+          "elasticity": 0.007282264423185331,
           "baseline": 0.02
         }
       },
       "financial": {
         "interest_rate": {
-          "elasticity": 0.9348641597747788,
+          "elasticity": 0.9295957547880102,
           "baseline": 0.1
         },
         "inflation_rate": {
-          "elasticity": 0.05122727310303942,
+          "elasticity": 0.05340427565766796,
           "baseline": 0.02
         }
       }
@@ -319,7 +319,7 @@
       "plant_availability": 0.75,
       "plant_lifetime_years": 40.0,
       "noak": 1.0,
-      "d2o_unit_cost_per_m3": 773500.0,
+      "d2o_unit_cost_per_m3": 497250.0,
       "vessel_structural_cost_M_USD": 15.0,
       "p_tritium_handling_MW": 2.0,
       "p_house_MW": 4.0,
@@ -334,7 +334,73 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": null,
+  "narrative": {
+    "key_bets": [
+      "D-D thermonuclear fusion (~10⁸ K / ~10 keV) is achievable via acoustic cavitation, closing the ~4 orders-of-magnitude temperature gap above demonstrated sonoluminescence conditions (7,000–16,000 K)",
+      "Fusion gain Q ≥ ~3.5 at baseline parameters is reachable, with commercial viability targeting Q ≈ 10 or higher",
+      "Acoustic driver wall-plug efficiency (η_driver) near 85% is attainable, far beyond the only measured datapoint of Kp ≥ 55% (planar coupling coefficient)",
+      "Acoustic driver power can scale to ~100 MW per module — roughly 6,250× the largest demonstrated commercial ultrasonic unit (Hielscher UIP16000 at 16 kW)",
+      "Fusion energy thermalizes in the D₂O medium and is recoverable via a conventional Rankine/sCO₂ thermal cycle at ~35% efficiency",
+      "PZT piezoelectric transducers can survive neutron irradiation from D-D fusion (2.45 MeV neutrons at commercial flux) with acceptable lifetime",
+      "A deuterated liquid vessel (~3 m radius, ~113 m³ D₂O per module) can sustain coherent cavitation and confine the required fusion power density"
+    ],
+    "eliminated_costs": [
+      "Plasma confinement coils / HTS magnets and cryoplant (CAS 220103 → $0)",
+      "Tritium breeding blanket (CAS 220106 eliminated — D-D fuel cycle)",
+      "RF / NBI auxiliary heating systems (CAS 220104 → $0)",
+      "Direct energy conversion hardware (CAS 220109 → $0; thermal cycle used instead)",
+      "External tritium supply infrastructure (D-D produces tritium as byproduct rather than requiring breeding)"
+    ],
+    "novel_costs": [
+      "Acoustic transducer array (CAS 220107-equivalent) — piezoelectric driver replacing coils + heating subsystems",
+      "Large D₂O vessel fill (~113 m³/module at $300–$475/kg, ~$56M fill + ~$15M structure per module)",
+      "D₂O circulation and management systems (override accounts C220106, C220108)",
+      "Tritium byproduct containment/separation for D-D-produced tritium (~50% of reactions)",
+      "Neutron-irradiation-qualified PZT transducer replacement program (transducer replacement amortized at ~$6.2M/yr)"
+    ],
+    "risks": [
+      {
+        "description": "Foundational scientific viability: ~4 orders-of-magnitude temperature gap from demonstrated sonoluminescence (~16,000 K) to D-D fusion (~10⁸ K) with no published theoretical mechanism to bridge it; Taleyarkhan (2002) fusion claims discredited and found to be research misconduct (2008)",
+        "severity": "high"
+      },
+      {
+        "description": "No reactor design, shielding concept, or energy conversion pathway has been published; entire CAS10-LCOE capital structure rests on speculative placeholders",
+        "severity": "high"
+      },
+      {
+        "description": "Acoustic driver wall-plug efficiency assumed at 85% is unsupported — only Kp ≥ 55% (planar coupling coefficient, not wall-plug) is measured; at η_driver = 0.55, breakeven Q rises from ~3.5 to ~5.2",
+        "severity": "high"
+      },
+      {
+        "description": "Acoustic driver power scale-up from 64 kW (largest demonstrated cluster) to 100 MW/module is ~1,560× unconstrained, with unsolved engineering limits on cavity volume, transducer packing, cavitation threshold, and acoustic interference",
+        "severity": "high"
+      },
+      {
+        "description": "Q and acoustic power are physically coupled unknowns — sensitivity sweeps that hold Q=10 fixed across power levels misrepresent the joint design-space risk",
+        "severity": "high"
+      },
+      {
+        "description": "D₂O supply chain concentration — India and Canada account for ~80% of global D₂O exports by value (2023 UN Comtrade), creating geopolitical supply risk at commercial deployment scale",
+        "severity": "medium"
+      },
+      {
+        "description": "D-D neutron flux (2.45 MeV, ~50% of reactions) requires substantial shielding and activation management; PZT transducer lifetime under neutron irradiation is completely unstudied",
+        "severity": "medium"
+      },
+      {
+        "description": "Scientific reputational overhang from Taleyarkhan misconduct case has made sonofusion a research-funding pariah, suppressing theoretical and experimental follow-up that could narrow the temperature gap",
+        "severity": "medium"
+      },
+      {
+        "description": "Company disclosure is minimal — no reactor design, energy conversion specification, performance targets, funding details, or development timeline published by Sonofusion Energy",
+        "severity": "medium"
+      },
+      {
+        "description": "Regulatory pathway for a novel acoustic fusion concept is undefined; NRC fusion framework may require special review",
+        "severity": "low"
+      }
+    ]
+  },
   "sources": {
     "model_setup": null,
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/02-acoustic-icf-sonofusion/analysis.md"

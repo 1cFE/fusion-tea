@@ -25,6 +25,13 @@ FINDING_CATEGORY_RE = re.compile(
     r"^\-\s+\**Category:?\**:?\s*(analysis|model)", re.MULTILINE
 )
 
+
+def _split_finding_blocks(text: str) -> list[str]:
+    """Split feedback text into individual F-N finding blocks."""
+    blocks = re.split(r"(?=^### F-\d+:)", text, flags=re.MULTILINE)
+    return [b for b in blocks if FINDING_HEADER_RE.match(b)]
+
+
 # Review format
 REVIEW_VERDICT_RE = re.compile(r"^VERDICT:\s*(PROCEED|REVISE)\s*$", re.MULTILINE)
 CORRECTIVE_ACTIONS_RE = re.compile(r"^## Corrective Actions", re.MULTILINE)
@@ -87,8 +94,7 @@ def validate_feedback_verdict(text: str) -> ValidationResult:
             )
 
         # Check Category field on each finding
-        finding_blocks = re.split(r"(?=^### F-\d+:)", text, flags=re.MULTILINE)
-        finding_blocks = [b for b in finding_blocks if FINDING_HEADER_RE.match(b)]
+        finding_blocks = _split_finding_blocks(text)
         missing_cat = []
         for block in finding_blocks:
             cat = FINDING_CATEGORY_RE.search(block)
@@ -272,3 +278,40 @@ def make_file_modified_validator(path: Path) -> Validator:
 
     _check.__name__ = "validate_file_modified"
     return _check
+
+
+def chain_validators(*validators: Validator) -> Validator:
+    """Run validators in order; return first failure or final success."""
+
+    def _chain(text: str) -> ValidationResult:
+        for v in validators:
+            result = v(text)
+            if not result.valid:
+                return result
+        return ValidationResult(valid=True, details="All validators passed")
+
+    _chain.__name__ = "+".join(v.__name__ for v in validators)
+    return _chain
+
+
+def has_model_category_findings(feedback_text: str) -> bool:
+    """Check if any findings in the feedback are tagged Category: model.
+
+    Returns True if at least one model finding exists, or if any finding
+    lacks a Category field (conservative: assume model-targeted).
+    """
+    if not feedback_text:
+        return False
+
+    finding_blocks = _split_finding_blocks(feedback_text)
+    if not finding_blocks:
+        return False
+
+    for block in finding_blocks:
+        cat_match = FINDING_CATEGORY_RE.search(block)
+        if cat_match is None:
+            return True  # Missing category → conservative, treat as model
+        if cat_match.group(1) == "model":
+            return True
+
+    return False

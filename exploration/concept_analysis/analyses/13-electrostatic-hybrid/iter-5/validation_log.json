@@ -1,0 +1,39 @@
+[
+  {
+    "timestamp": "2026-04-20T03:04:26.099697+00:00",
+    "step": "feedback-pass",
+    "attempt": 1,
+    "validator": "validate_file_modified",
+    "passed": false,
+    "details": "File content unchanged (SHA-256 match)",
+    "validated_text_preview": "---\nID: 13-electrostatic-hybrid\nConcept: Electrostatic Hybrid (D-T)\nCompany: Avalanche Energy\nStatus: draft\nCreated: 2026-04-19\nApproved-Date:\nReuses: [21-spherical-tokamak-hts]\n---\n\n# D1+ Analysis: Electrostatic Hybrid (D-T) \u2014 Avalanche Energy Orbitron\n\n**Concept**: Orbitron \u2014 crossed-field magneto-electrostatic fusion device\n**Company**: Avalanche Energy (Seattle, WA)\n**Confinement Family**: Electrostatic (Non-Standard)\n**Fuel**: D-T (primary); p-B11 (future aspiration)\n\n---\n\n## Section 1: Ava",
+    "fix_message_sent": "Note: This is attempt 2 of 3.\n\nIMPORTANT: Write your output to the file: /home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/13-electrostatic-hybrid/analysis.md\n\nThe file was not modified. You MUST apply the requested changes using the Edit tool. Read the file, identify what needs to change, and use Edit to make the changes."
+  },
+  {
+    "timestamp": "2026-04-20T03:05:54.042804+00:00",
+    "step": "feedback-pass",
+    "attempt": 2,
+    "validator": "validate_file_modified",
+    "passed": true,
+    "details": "File content changed",
+    "validated_text_preview": "---\nID: 13-electrostatic-hybrid\nConcept: Electrostatic Hybrid (D-T)\nCompany: Avalanche Energy\nStatus: draft\nCreated: 2026-04-19\nApproved-Date:\nReuses: [21-spherical-tokamak-hts]\n---\n\n# D1+ Analysis: Electrostatic Hybrid (D-T) \u2014 Avalanche Energy Orbitron\n\n**Concept**: Orbitron \u2014 crossed-field magneto-electrostatic fusion device\n**Company**: Avalanche Energy (Seattle, WA)\n**Confinement Family**: Electrostatic (Non-Standard)\n**Fuel**: D-T (primary); p-B11 (future aspiration)\n\n---\n\n## Section 1: Ava"
+  },
+  {
+    "timestamp": "2026-04-20T03:09:32.274466+00:00",
+    "step": "model-setup",
+    "attempt": 1,
+    "validator": "validate_python_syntax",
+    "passed": true,
+    "details": "Valid Python syntax",
+    "validated_text_preview": "\"\"\"\nElectrostatic Hybrid (D-T) LCOE Model \u2014 Avalanche Energy Orbitron\n==================================================================\n1cFE First Pass Concept Analysis\nConcept: Orbitron \u2014 crossed-field magneto-electrostatic D-T fusion device\nCompany: Avalanche Energy (Seattle, WA)\n\nThis is a back-solve viability model, not a conventional LCOE model. The Orbitron\nhas not demonstrated Q>1 in any configuration, and no commercial plant architecture\nexists. The appropriate TEA treatment sweeps Q_en"
+  },
+  {
+    "timestamp": "2026-04-20T03:13:26.270715+00:00",
+    "step": "assess",
+    "attempt": 1,
+    "validator": "validate_feedback_verdict",
+    "passed": true,
+    "details": "Feedback format valid (verdict: FINDINGS)",
+    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: HV supply sensitivity sweep is self-flagged as broken\n- **Target:** model_setup.py sensitivity sweep (HV supply parameter)\n- **Category:** model\n- **Finding:** The model output labels the HV power supply + ion gun sensitivity sweep \"(direct; $/kW_input sweep broken at 1 kWe scale \u2014 F-1)\" \u2014 a self-acknowledged defect. Section 7 of the analysis identifies the HV power supply + ion system as the primary *novel* cost driver in the Orbitron's CAS structure (\"novel \u2014 domina"
+  }
+]

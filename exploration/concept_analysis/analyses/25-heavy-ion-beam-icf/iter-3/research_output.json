@@ -1,0 +1,86 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-10",
+      "gap_description": "sCO₂ or advanced power conversion cycle evaluation for HIF",
+      "queries": [
+        "supercritical CO2 Brayton cycle inertial fusion energy power plant evaluation site:arxiv.org OR site:osti.gov",
+        "Z-IFE power conversion cycle evaluation supercritical CO2 Rankine Brayton inertial fusion site:osti.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/901970/",
+          "title": "SAND2006-7148 — Z-IFE Power Plant Final Report FY 2006 (Sandia National Laboratories)",
+          "triage": "relevant",
+          "notes": "Z-pinch IFE roadmap report covering FLiBe characterization, plant system cost estimates, and power conversion cycles. Search result summary confirms four power conversion systems were evaluated for IFE: sCO₂, Rankine, Brayton, and combined cycle. Z-IFE uses FLiBe liquid walls (same as HYLIFE-II) — closest available analog since no HIF-specific sCO₂ study exists. Digital PDF (2006), not scanned."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1221819",
+          "title": "Supercritical CO2 Brayton Cycles (OSTI generic report)",
+          "triage": "not-relevant",
+          "notes": "General sCO₂ Brayton cycle study, no IFE-specific content identified. Skipped in favor of SAND2006-7148 which confirmed IFE evaluation context."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/901970/",
+          "source_name": "osti-servlets-purl-901970"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "No HIF-specific sCO₂ study found — the gap description accurately states none exists. Best available source is SAND2006-7148 evaluating Z-IFE power conversion cycles including sCO₂ with FLiBe blanket (matching HYLIFE-II architecture). Applicability requires a note that this is Z-IFE analog, not HIF directly."
+    },
+    {
+      "gap_id": "G-14",
+      "gap_description": "HIBALL or HYLIFE-II updated with modern Li-6 enrichment and beryllium supply chain constraints",
+      "queries": [
+        "lithium-6 enrichment supply chain fusion reactor constraints beryllium availability 2020 2025",
+        "beryllium supply chain fusion FLiBe blanket availability constraints site:arxiv.org OR site:osti.gov 2020 2025",
+        "\"lithium-6 supply\" DEMO fusion power plants viable route arxiv preprint 2019 2020 OR site:osti.gov critical materials"
+      ],
+      "candidates": [
+        {
+          "url": "https://transat-h2020.eu/wp-content/uploads/2019/11/Giegerich-Development-of-a-viable-route-for-lithium-6-supply-FED-149-2019-12.pdf",
+          "title": "Giegerich et al. (2019) — Development of a viable route for lithium-6 supply of DEMO and future fusion power plants (Fusion Engineering and Design, 149)",
+          "triage": "relevant",
+          "notes": "Peer-reviewed FED paper, open-access PDF from TRANSAT project. Directly addresses Li-6 enrichment supply constraints: COLEX process banned (Minamata convention), ICOMAX as proposed alternative, supply practically zero in the West, quantities required (tens of tonnes for pilot, hundreds for commercial). Does not cover beryllium or HIF-specific blankets, but provides the Li-6 side of G-14."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/2455087",
+          "title": "Materials Assessment for FLiBe Fusion Blankets (ORNL/TM-2024/3508, September 2024)",
+          "triage": "partially-relevant",
+          "notes": "2024 ORNL report on structural materials compatibility with FLiBe — addresses cladding materials, corrosion, irradiation. Does NOT directly address Li-6 enrichment supply chain or beryllium global availability. Relevant for FLiBe blanket design constraints but not the supply chain side of G-14. Not extracted — priority given to Giegerich Li-6 supply paper."
+        },
+        {
+          "url": "https://www.neimagazine.com/analysis/enriched-lithium-and-advanced-nuclear/",
+          "title": "Enriched lithium and advanced nuclear (NEI Magazine)",
+          "triage": "partially-relevant",
+          "notes": "Accessible HTML article on Li-6 supply chain for fusion. Has quantitative data (ITER needs ~200 kg, DEMO needs >60 t/GW, commercial needs hundreds of tonnes). Does not cover beryllium. Not extracted — Giegerich peer-reviewed paper is superior source for Li-6 supply data."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S2211467X25001555",
+          "title": "On the impact of nuclear fusion power plants deployment on selected critical materials consumption (ScienceDirect, 2025)",
+          "triage": "paywall",
+          "notes": "2025 paper on critical materials (including Li-6 and Be) for fusion deployment. Likely paywalled — not fetched."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://transat-h2020.eu/wp-content/uploads/2019/11/Giegerich-Development-of-a-viable-route-for-lithium-6-supply-FED-149-2019-12.pdf",
+          "source_name": "transat-h2020-wp-content-uploads-2019-11-giegerich"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "Li-6 supply chain covered by Giegerich 2019 FED paper. Beryllium supply chain not covered — no open-access paper found that addresses both beryllium availability AND HIF/FLiBe context. The gap description asks for HIBALL/HYLIFE-II updated with BOTH constraints; only Li-6 side is sourced. Beryllium supply constraint data is available from search summaries (DEMO needs ~490t vs ~300t/year global production) but no extractable document found that addresses this in context of HIF blankets."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 2,
+    "sources_extracted": 2,
+    "sources_failed": 0,
+    "searches_used": 5,
+    "extractions_used": 2
+  }
+}

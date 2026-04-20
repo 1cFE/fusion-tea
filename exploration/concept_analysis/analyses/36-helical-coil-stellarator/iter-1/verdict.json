@@ -1,0 +1,17 @@
+{
+  "iteration": 1,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "cold_start",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": false,
+  "merged_assess": false,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/36-helical-coil-stellarator/iter-01/sources/aip-2023-paper-abstract.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/36-helical-coil-stellarator/iter-01/sources/helical-fusion-technology-overview.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/36-helical-coil-stellarator/iter-02/sources/helical-fusion-2025-2026-updates.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/36-helical-coil-stellarator/iter-02/sources/nifs-ffhr-blanket-heritage.md"
+  ],
+  "timestamp": "2026-04-20T18:07:17.919740+00:00"
+}

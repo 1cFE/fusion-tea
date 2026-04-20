@@ -33,13 +33,43 @@ Use the scaling laws and unit costs from 1costingfe as reference values,
 even though you're not using the API. Document which scaling laws you adopt.
 
 {{#if model_feedback}}
-## Assessment Feedback (Model-Targeted)
+## Assessment Feedback
 
-The following findings from the most recent assessment specifically target
-the model code. Address each one when generating the script:
+The following findings were raised by the most recent assessment. Not all
+findings require model changes — address findings that affect what the model
+computes, sweeps, or parameterizes. Findings tagged `Category: analysis` may
+still have model implications (e.g., a new parameter identified in the analysis
+text that should also appear in a sensitivity sweep).
 
 {{model_feedback}}
 {{/if}}
+
+## Power Standardization (CRITICAL)
+
+All concept models MUST include a `scaled_headline` dict at module level for
+cross-concept LCOE comparison at a normalized 1000 MWe reference.
+
+Since freeform models derive power from physics (not as an input), use post-hoc
+cost scaling:
+
+- Keep the physics-derived power balance EXACTLY as-is. Do NOT change p_fus,
+  rep_rate, n_mod, Q_sci, or any plasma physics parameters.
+- The module-level `results` stays at native power.
+- After `results` computation, add:
+  ```python
+  _ALPHA = 0.6  # economy-of-scale exponent
+  _p_native = results["power"].get("p_net_plant", results["power"]["p_net"])
+  _factor = (_p_native / 1000.0) ** (1.0 - _ALPHA)
+  _overnight = results["costs"]["overnight_capital"] * 1e3 / _p_native
+
+  scaled_headline = {
+      "p_net_mw": 1000.0,
+      "lcoe_per_mwh": results["economics"]["lcoe_USD_per_MWh"] * _factor,
+      "overnight_per_kw": _overnight * _factor,
+  }
+  ```
+- If the concept's native power IS 1000 MWe, `scaled_headline` may be omitted.
+- Document the scaling exponent (α=0.6) in the script's docstring.
 
 ## Model Architecture
 

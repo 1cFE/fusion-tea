@@ -1,0 +1,327 @@
+{
+  "entries": [
+    {
+      "gap_id": "G-12",
+      "gap_description": "LLNL LIFE plant studies sourcing — Latkowski, Moir, Meier OSTI reports 2010-2013",
+      "queries": [
+        "LLNL LIFE \"laser inertial fusion energy\" power plant engineering cost study Latkowski Moir Meier site:osti.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1028880",
+          "title": "Chamber Design for the Laser Inertial Fusion Energy (LIFE) Engine",
+          "triage": "relevant",
+          "notes": "Direct PDF from OSTI. Journal article on chamber design for LIFE engine — covers first wall, liquid Li, chamber geometry. Directly analogous to Inertia architecture."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/985478",
+          "title": "Parameter Study of the LIFE Engine Nuclear Design",
+          "triage": "relevant",
+          "notes": "Direct PDF from OSTI. Nuclear design parameter study — covers blanket neutronics, TBR, breeding. Relevant to G-10 and G-15. Not extracted (budget limit); candidate for iter-3."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/1107297",
+          "title": "Fusion Technologies for Laser Inertial Fusion Energy (LIFE)",
+          "triage": "relevant",
+          "notes": "Conference paper. Broader fusion technology overview. Lower priority than chamber design paper."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1256449",
+          "title": "Fusion Technology Aspects of Laser Inertial Fusion Energy",
+          "triage": "relevant",
+          "notes": "Direct PDF. Fusion technology aspects — scope unclear without full triage. Not extracted (budget limit)."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1028880",
+          "source_name": "osti-servlets-purl-1028880"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "timestamp": "2026-04-19T23:45:42.916525+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-11",
+      "gap_description": "Semiconductor laser diode cost at scale ($0.007/W thesis) — TRUMPF/LLNL IFE workshop report",
+      "queries": [
+        "Haefner DPSSL \"diode-pumped solid-state laser\" cost scaling IFE fusion TRUMPF LLNL $0.007/W"
+      ],
+      "candidates": [
+        {
+          "url": "https://lasers.llnl.gov/sites/lasers/files/2023-11/haefner-ILT-IFE-workshop-2022-2.pdf",
+          "title": "Inertial Fusion Energy Drive Technology (Haefner, Fraunhofer ILT / LLNL, IFE Workshop 2022)",
+          "triage": "relevant",
+          "notes": "Direct PDF, accessible (226KB). Author: constantin.haefner@ilt.fraunhofer.de. Created 2022-01-28 in Microsoft Word. Real technical content confirmed. IFE driver technology with diode cost scaling context. Cost figure in search results: $0.05-0.07/W target for IFE (vs. $0.007/W mentioned in analysis — may be a different reference or analysis doc had a typo)."
+        },
+        {
+          "url": "https://lasers.llnl.gov/sites/lasers/files/2023-11/haefner-ILT-IFE-workshop-2022-1.pdf",
+          "title": "Haefner IFE Workshop 2022 Part 1",
+          "triage": "relevant",
+          "notes": "Second part of same workshop presentation. Not extracted (budget limit); candidate for iter-3."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/15013230",
+          "title": "Diode-Pumped Solid State Lasers for Inertial Fusion Energy",
+          "triage": "relevant",
+          "notes": "OSTI direct PDF. Older study but foundational for DPSSL IFE cost scaling. Not extracted (budget limit)."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/3008974",
+          "title": "Diode laser pumps for future inertial fusion energy systems",
+          "triage": "relevant",
+          "notes": "OSTI direct PDF. More recent (OSTI ID suggests post-2020). Diode pump cost for IFE. Not extracted (budget limit)."
+        },
+        {
+          "url": "https://arpa-e.energy.gov/sites/default/files/migrated/A05-Zuegel-FusionWorkshop_03-07-23.pdf",
+          "title": "Diode-pumped, solid-state laser (DPSSL) drivers for IFE (Zuegel, ARPA-E 2023)",
+          "triage": "relevant",
+          "notes": "ARPA-E workshop 2023 slides by Zuegel. Recent cost and performance projections. Not extracted (budget limit); strong candidate for iter-3."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://lasers.llnl.gov/sites/lasers/files/2023-11/haefner-ILT-IFE-workshop-2022-2.pdf",
+          "source_name": "lasers-sites-lasers-files-2023-11-haefner-ilt-ife-workshop"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "timestamp": "2026-04-19T23:45:42.916525+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-4",
+      "gap_description": "Target fabrication facility capital cost and unit target manufacturing cost roadmap",
+      "queries": [
+        "Goodin \"IFE target\" fabrication cost 2004 \"mass production\" hohlraum cryogenic site:osti.gov OR site:ans.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/828518",
+          "title": "Cost-Effective Target Fabrication for Inertial Fusion Energy (Goodin et al., 2004)",
+          "triage": "relevant",
+          "notes": "Scanned PDF (CCITT fax, 8 pages, 646KB). WebFetch confirmed accessible. Content per search result: current experiment targets cost ~$2500 each; IFE cost requirement ~$0.25-0.30 each; studies show costs within commercial feasibility range. Directly addresses G-4 target cost at mass production scale."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/828518",
+          "source_name": "osti-servlets-purl-828518"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "timestamp": "2026-04-19T23:45:42.916525+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-14",
+      "gap_description": "NIF ignition experiment papers (Kritcher et al., Nature 2022-2024) — confirm Q values and Hybrid-E target physics",
+      "queries": [
+        "Kritcher NIF ignition \"3.15 MJ\" OR \"Q>1\" hybrid-E 2022 site:nature.com OR site:journals.aps.org OR site:pubs.aip.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/31/7/070502/3304417/Design-of-first-experiment-to-achieve-fusion",
+          "title": "Design of first experiment to achieve fusion target gain > 1 (Kritcher et al., Physics of Plasmas 2024)",
+          "triage": "paywall",
+          "notes": "AIP Publishing — 403 Forbidden. Full text not accessible without institutional subscription. Confirms Q_target > 1 on Dec 5, 2022: 3.15 MJ from 2.05 MJ laser. Would be highest-quality source for G-14."
+        },
+        {
+          "url": "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.132.065104",
+          "title": "Hohlraum Reheating from Burning NIF Implosions (PRL 2024)",
+          "triage": "likely-paywall",
+          "notes": "PRL abstract page — likely paywalled. Related to hohlraum physics in ignition shots. Secondary to Kritcher paper for G-14."
+        }
+      ],
+      "extracted": [],
+      "failed": [
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/31/7/070502/3304417/Design-of-first-experiment-to-achieve-fusion",
+          "reason": "403 Forbidden — AIP Publishing institutional access required"
+        }
+      ],
+      "status": "failed",
+      "timestamp": "2026-04-19T23:45:42.916525+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-2",
+      "gap_description": "DPSSL laser capital cost per beamline — dominant capital cost driver, no published data",
+      "queries": [
+        "Haefner DPSSL \"diode-pumped solid-state laser\" cost scaling IFE fusion TRUMPF LLNL $0.007/W"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/biblio/6634713",
+          "title": "Diode-pumped solid-state-laser drivers and the competitiveness of inertial fusion energy",
+          "triage": "relevant",
+          "notes": "OSTI entry for DPSSL competitiveness for IFE. Older paper but foundational. Not extracted (budget limit; covered by Haefner 2022 workshop)."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "partial",
+      "timestamp": "2026-04-19T23:45:42.916525+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-6",
+      "gap_description": "O&M cost breakdown (target, laser diode replacement, chamber maintenance) — blocking gap; needs LIFE O&M model or UKAEA PROCESS IFE module",
+      "queries": [
+        "Meier LIFE power plant economic cost estimate site:osti.gov",
+        "LLNL LIFE \"laser inertial fusion energy\" operations maintenance O&M cost model site:osti.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1022881",
+          "title": "LLNL-TR-480444 LIFE Cost of Electricity, Capital and Operating Costs (Anklam et al.)",
+          "triage": "relevant",
+          "notes": "Pre-conceptual LIFE cost study covering both capital and operating costs by subsystem using bottom-up estimates, vendor quotes, and fission/fusion plant scaling. Directly addresses this gap. PDF downloaded (binary accessible)."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/966534",
+          "title": "Integrated Process Model Development and Systems Analyses for the LIFE Power Plant",
+          "triage": "relevant",
+          "notes": "IPM covering cost and performance algorithms for all LIFE subsystems including laser, target fab, chamber, heat transfer, power conversion. Not extracted — Anklam report is more comprehensive and was prioritized."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1022881",
+          "source_name": "osti-servlets-purl-1022881"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "timestamp": "2026-04-20T00:08:49.374848+00:00",
+      "iteration": 3
+    },
+    {
+      "gap_id": "G-12",
+      "gap_description": "LLNL LIFE plant engineering cost reports (capital cost by subsystem) — additional Latkowski/Meier 2010–2013 reports needed beyond OSTI-1028880 which covers chamber/tritium design only",
+      "queries": [
+        "Latkowski LIFE \"laser inertial fusion energy\" capital cost economic study site:osti.gov",
+        "Meier LIFE power plant economic cost estimate site:osti.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1022881",
+          "title": "LLNL-TR-480444 LIFE Cost of Electricity, Capital and Operating Costs (Anklam et al.)",
+          "triage": "relevant",
+          "notes": "Directly provides LIFE plant capital cost breakdown and COE estimate — this is the primary gap-filling source for G-12. Same extraction as G-6."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1256449",
+          "title": "Fusion Technology Aspects of Laser Inertial Fusion Energy (LIFE) (Conference)",
+          "triage": "not-evaluated",
+          "notes": "Appeared in search results but not evaluated — Anklam report sufficient for this gap."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/1107297",
+          "title": "Fusion Technologies for Laser Inertial Fusion Energy (LIFE) (Conference)",
+          "triage": "not-evaluated",
+          "notes": "Appeared in search results but not evaluated — conference paper, likely lower priority than Anklam cost report."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1022881",
+          "source_name": "osti-servlets-purl-1022881"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "timestamp": "2026-04-20T00:08:49.374848+00:00",
+      "iteration": 3
+    },
+    {
+      "gap_id": "G-15",
+      "gap_description": "Tritium inventory and TBR model for Inertia design — LIFE tritium breeding studies; company claims hundreds of grams (unverified)",
+      "queries": [
+        "LLNL LIFE tritium breeding blanket TBR liquid lithium neutronics site:osti.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1305833",
+          "title": "LLNL-TR-652984 Tritium Breeding Blanket for a Commercial Fusion Power Plant",
+          "triage": "relevant",
+          "notes": "LLNL technical report covering TBR requirements, liquid Li blanket design, and tritium inventory for a commercial fusion plant. PDF binary downloaded — extraction should yield quantitative TBR data."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1165762",
+          "title": "LLNL-TR-658973 Assessment of Tritium Breeding Blankets",
+          "triage": "relevant",
+          "notes": "Another LLNL assessment on tritium breeding blankets — not extracted due to extraction budget limit; prioritized OSTI-1305833."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1305833",
+          "source_name": "osti-servlets-purl-1305833"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "timestamp": "2026-04-20T00:08:49.374848+00:00",
+      "iteration": 3
+    },
+    {
+      "gap_id": "G-14",
+      "gap_description": "NIF ignition experiment papers (Kritcher et al., Nature 2022–2024) — confirm Q values and Hybrid-E target physics",
+      "queries": [
+        "Kritcher NIF ignition \"hybrid-E\" 2022 arxiv preprint fusion gain"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/html/2505.03834v5",
+          "title": "Continuing progress toward fusion energy breakeven and gain as measured against the Lawson criteria",
+          "triage": "relevant",
+          "notes": "Accessible arXiv HTML review paper. Confirmed to contain NIF ignition Q data: Qsci=1.5 for Dec 5, 2022 shot (N221204), and up to Qsci=4.13 by early 2025. Provides tabular and graphical data on all NIF ignition results. Not the original Kritcher et al. paper but provides comprehensive Q value confirmation and cross-facility context."
+        },
+        {
+          "url": "https://www.nature.com/articles/s41586-021-04281-w",
+          "title": "Burning plasma achieved in inertial fusion (Nature, 2021)",
+          "triage": "paywall",
+          "notes": "Nature paper — paywalled, institutional access required. Not extracted."
+        },
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/31/7/070502/3304417/Design-of-first-experiment-to-achieve-fusion",
+          "title": "Design of first experiment to achieve fusion — AIP Publishing",
+          "triage": "paywall",
+          "notes": "AIP paywalled — same as iteration 2 failure. Confirmed still inaccessible."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/html/2505.03834v5",
+          "source_name": "arxiv-2505-03834v5"
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://www.nature.com/articles/s41586-021-04281-w",
+          "reason": "Nature paywall — institutional access required"
+        }
+      ],
+      "status": "partial",
+      "timestamp": "2026-04-20T00:08:49.374848+00:00",
+      "iteration": 3
+    }
+  ],
+  "acquired_by_iteration": {
+    "2": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/30-laser-icf-nif-commercialization/iter-01/sources/lasers-sites-lasers-files-2023-11-haefner-ilt-ife-workshop.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/30-laser-icf-nif-commercialization/iter-01/sources/osti-servlets-purl-1028880.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/30-laser-icf-nif-commercialization/iter-01/sources/osti-servlets-purl-828518.md"
+    ],
+    "3": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/30-laser-icf-nif-commercialization/iter-01/sources/arxiv-2505-03834v5.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/30-laser-icf-nif-commercialization/iter-01/sources/osti-servlets-purl-1022881.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/30-laser-icf-nif-commercialization/iter-01/sources/osti-servlets-purl-1305833.md"
+    ]
+  }
+}

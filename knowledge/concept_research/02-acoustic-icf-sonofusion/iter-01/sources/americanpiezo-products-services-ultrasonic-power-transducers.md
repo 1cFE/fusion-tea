@@ -1,0 +1,1 @@
+americanpiezo-products-services-ultrasonic-power-transducers/output.md

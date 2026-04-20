@@ -1,0 +1,165 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-2",
+      "gap_description": "Total plant capital cost ($/kWe) — no plant study exists for GenF/TARANIS concept",
+      "queries": [
+        "LLNL GEM laser IFE capital cost model inertial fusion energy plant $/kWe"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.ans.org/news/2026-02-05/article-7735/llnl-offers-tools-to-model-the-economics-of-inertial-fusion-power-plants/",
+          "title": "LLNL offers tools to model the economics of inertial fusion power plants (ANS Nuclear Newswire)",
+          "triage": "accessible but no quantitative data",
+          "notes": "Free news article about LLNL GEM release. Confirms GEM covers DPSSL indirect-drive IFE with cost estimate capability, but no $/kWe figures in article. Actual cost data is inside the downloadable Excel spreadsheet and User Guide PDF which require visiting LLNL licensing portal."
+        },
+        {
+          "url": "https://lift.llnl.gov/resources/gem",
+          "title": "LLNL GEM resources page (LIFT)",
+          "triage": "accessible but no quantitative data",
+          "notes": "Download portal for GEM spreadsheet and User Guide PDF. Macros required. Actual cost parameters are embedded in the Excel tool, not on the web page. Cannot be extracted via add-source."
+        },
+        {
+          "url": "https://softwarelicensing.llnl.gov/product/gem-generalized-economic-model",
+          "title": "GEM software licensing page — LLNL",
+          "triage": "not-fetched",
+          "notes": "Software licensing portal; unlikely to contain quantitative cost data in extractable form."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "failed",
+      "notes": "LLNL GEM model covers DPSSL indirect-drive IFE (relevant analogue for G-2 cost estimates) but cost data lives in a downloadable Excel spreadsheet, not a web-extractable document. Gap remains open. Recommend requesting GEM User Guide PDF directly from LLNL LIFT or licensing portal."
+    },
+    {
+      "gap_id": "G-10",
+      "gap_description": "Specific laser-to-target coupling efficiency for shock ignition at 3 MJ — direct drive claims 4–5× advantage; SI-specific percentage not quantified",
+      "queries": [
+        "shock ignition direct drive laser coupling efficiency OMEGA experiments site:osti.gov OR site:arxiv.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1833260",
+          "title": "Shock Ignition Laser-Plasma Interactions in Ignition-Scale Plasmas (OSTI)",
+          "triage": "relevant",
+          "notes": "Peer-reviewed paper directly on shock ignition LPI at OMEGA. Search summary indicates it contains experimental coupling data: laser energy coupling to hot electrons 1–2.5%, electron temperatures 35–45 keV. Directly addresses G-10 on coupling efficiency and LPI risk at igniting spike intensity."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1227898",
+          "title": "Direct-Drive Inertial Confinement Fusion: A Review (OSTI)",
+          "triage": "relevant — not extracted",
+          "notes": "Comprehensive review of direct-drive ICF including coupling efficiency. Deprioritized in favor of SI-specific paper; could be extracted in a future iteration."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1255527",
+          "title": "Inertial Confinement Fusion with Lasers — Betti & Hurricane (OSTI)",
+          "triage": "relevant — not extracted",
+          "notes": "Nature Physics review by leading NIF researchers. Covers coupling efficiency across drive schemes. Could be extracted in future iteration."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1833260",
+          "source_name": "osti-servlets-purl-1833260"
+        }
+      ],
+      "failed": [],
+      "status": "closed"
+    },
+    {
+      "gap_id": "G-12",
+      "gap_description": "Thermodynamic cycle specification and integration design — 'traditional power plant methods' only; steam Rankine assumed",
+      "queries": [],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "Deprioritized due to budget limits. Standard steam Rankine and sCO2 cycle parameters are available from fission literature; this gap does not require a dedicated web search. Analogue sources from fission power plant design would satisfy this at low confidence."
+    },
+    {
+      "gap_id": "G-13",
+      "gap_description": "Li-6 enrichment supply chain capacity and cost — ORNL Li-6 production history; global enrichment constraints",
+      "queries": [
+        "lithium-6 enrichment supply chain capacity cost fusion tritium breeding ORNL"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.neimagazine.com/analysis/enriched-lithium-and-advanced-nuclear/",
+          "title": "Enriched lithium and advanced nuclear (NEI Magazine)",
+          "triage": "relevant",
+          "notes": "Accessible HTML article with quantitative supply projections: DEMO >60 tonnes/GW enriched Li, pilot plant requires tens of tonnes, commercial requires hundreds of tonnes. Notes current enrichment cost ~$4000/kg (COLEX process, banned). Hexium AVLIS technology with $12M funding. Addresses supply chain constraints directly. Good policy/market analysis source."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S092037961930835X",
+          "title": "Development of a viable route for lithium-6 supply of DEMO and future fusion power plants (ScienceDirect)",
+          "triage": "paywall",
+          "notes": "Fusion Engineering and Design journal article. Likely behind Elsevier paywall. Could be most quantitative source but inaccessible."
+        },
+        {
+          "url": "https://science.osti.gov/-/media/fes/pdf/fes-presentations/2022/Pearson_resource-availability-and-supply_presentation.pdf",
+          "title": "Fuels for Fusion — DOE FES presentation (Pearson 2022)",
+          "triage": "relevant — not extracted",
+          "notes": "DOE presentation on resource availability including Li-6. Not extracted due to budget constraints; could be valuable in future iteration."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/6574527",
+          "title": "Potential Lithium Requirements for Fusion Power Plants (OSTI)",
+          "triage": "relevant — not extracted",
+          "notes": "Classic OSTI report on lithium requirements. Older but may provide useful baseline. Not extracted due to budget constraints."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.neimagazine.com/analysis/enriched-lithium-and-advanced-nuclear/",
+          "source_name": "neimagazine-analysis-enriched-lithium-and-advanced-nuclear"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "NEI Magazine article extracted — provides market context and demand projections but lacks detailed cost-per-kg data. The ScienceDirect paper (Sorbom et al. or equivalent) is the most quantitative source but is paywalled. Future iteration should attempt OSTI report 6574527 and DOE FES Pearson 2022 PDF."
+    },
+    {
+      "gap_id": "G-15",
+      "gap_description": "DPSSL diode cost trajectory ($/W) and manufacturing scale — Thales DPSSL roadmap; TRUMPF/LLNL diode cost study",
+      "queries": [
+        "DPSSL diode laser cost per watt trajectory fusion IFE $0.007/W target roadmap"
+      ],
+      "candidates": [
+        {
+          "url": "https://arpa-e.energy.gov/sites/default/files/migrated/A05-Zuegel-FusionWorkshop_03-07-23.pdf",
+          "title": "Diode-pumped solid-state laser (DPSSL) drivers for IFE — ARPA-E Fusion Workshop 2023 (Zuegel)",
+          "triage": "relevant",
+          "notes": "ARPA-E workshop presentation by J. Zuegel (LLE/Rochester) on DPSSL drivers. Search summary indicates diode cost targets are discussed ($0.05–0.07/W long-term target, currently 10–30× higher). Manufacturing scale requirement noted: ~100M chips per power plant vs. 18M bars/year current capacity. Directly addresses G-15."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/15013230",
+          "title": "Diode-Pumped Solid State Lasers for Inertial Fusion Energy (OSTI)",
+          "triage": "relevant — not extracted",
+          "notes": "OSTI report on DPSSL for IFE. Not extracted due to budget limits; could provide foundational cost data in future iteration."
+        },
+        {
+          "url": "https://www.cambridge.org/core/journals/high-power-laser-science-and-engineering/article/laser-diode-stacks-pulsed-light-power-for-nuclear-fusion/7A54D7231C83F27625B6A50F6BF2514A",
+          "title": "Laser diode stacks: pulsed light power for nuclear fusion (Cambridge Core)",
+          "triage": "likely paywalled — not fetched",
+          "notes": "High Power Laser Science and Engineering journal article. Cambridge Core may require institutional access. Not fetched due to budget limits."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arpa-e.energy.gov/sites/default/files/migrated/A05-Zuegel-FusionWorkshop_03-07-23.pdf",
+          "source_name": "arpa-e-sites-default-files-migrated-a05-zuegel"
+        }
+      ],
+      "failed": [],
+      "status": "closed"
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 4,
+    "sources_extracted": 3,
+    "sources_failed": 0,
+    "searches_used": 5,
+    "extractions_used": 3,
+    "notes": "G-2 (total plant capital cost) remains open — LLNL GEM cost data is locked in a downloadable Excel tool not accessible via web extraction. G-12 (thermodynamic cycle) skipped as low-priority derivable from fission analogues. G-13 (Li-6 enrichment) partially addressed — best quantitative source (ScienceDirect) is paywalled. G-10 and G-15 closed with relevant peer-reviewed/government sources."
+  }
+}

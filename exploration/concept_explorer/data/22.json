@@ -186,9 +186,9 @@
       }
     },
     "headline": {
-      "lcoe_per_mwh": 135.47878148949525,
-      "overnight_cost_per_kw": 8840.602281509224,
-      "p_net_mw": 303.736,
+      "lcoe_per_mwh": 84.11429119474914,
+      "overnight_cost_per_kw": 5488.8373401962535,
+      "p_net_mw": 1000.0,
       "q_eng": 300.0,
       "capacity_factor": 0.85
     },

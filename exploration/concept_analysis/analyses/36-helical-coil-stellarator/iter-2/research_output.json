@@ -1,0 +1,152 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-6",
+      "gap_description": "sCO2 power cycle efficiency at fusion-coupled plant scale — only kW-scale at 20% demonstrated; target is >50%; intermediate-scale test results absent",
+      "queries": [
+        "sCO2 supercritical CO2 Brayton cycle 50% efficiency 1200K high temperature power conversion fusion",
+        "NIFS Oroshhi-2 sCO2 Brayton cycle fusion power conversion Ishiyama Tanaka stellarator",
+        "sCO2 supercritical CO2 Brayton cycle fusion reactor power conversion efficiency >50% stellarator arxiv site:arxiv.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0920379621006360",
+          "title": "Analysis of supercritical carbon dioxide Brayton cycles for a helium-cooled pebble bed blanket DEMO-like fusion power plant",
+          "triage": "relevant — open-access, confirms 38% (DEMO1) to 56% (DEMO2) cycle efficiency range for fusion sCO2 applications; directly relevant to efficiency target question",
+          "notes": "Open access confirmed via WebFetch. 56% cited for advanced (steady-state) scenario. Relevant to HESTIA's >50% target. Extraction failed due to JavaScript rendering (trafilatura could not fetch)."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1111079",
+          "title": "Megawatt Class Supercritical CO2 Brayton Cycle",
+          "triage": "inaccessible — binary PDF, not readable via WebFetch; unknown relevance to fusion-specific applications",
+          "notes": "OSTI binary PDF. agentic-mbse could not parse as text extraction."
+        },
+        {
+          "url": "https://www.semanticscholar.org/paper/Demonstration-Plan-of-Nuclear-Fusion-Power-by-CO2-Ishiyama-Tanaka/c65a8bee89527829427288e4fe2a278409abad6e",
+          "title": "Demonstration Plan of Nuclear Fusion Power Generation Principle by Supercritical CO2 Gas Turbine in Oroshhi-2",
+          "triage": "highly relevant — Ishiyama & Tanaka, the exact NIFS Oroshhi-2 paper referenced in the dossier; abstract confirms 20 kWe / 20% efficiency feasibility finding",
+          "notes": "Semantic Scholar landing page only; no extraction attempted as this would only yield abstract. Full paper is in Fusion Science and Technology journal (paywalled). Already partially referenced in existing dossier."
+        },
+        {
+          "url": "https://www.mdpi.com/1996-1073/16/21/7367",
+          "title": "Research Advances in the Application of the Supercritical CO2 Brayton Cycle to Reactor Systems: A Review",
+          "triage": "potentially relevant — broad sCO2 reactor review",
+          "notes": "Test extraction failed with HTTP 403 Forbidden from MDPI."
+        },
+        {
+          "url": "https://arxiv.org/pdf/1401.4232",
+          "title": "Converting energy from fusion into useful forms (Kovari et al., 2013)",
+          "triage": "relevant — covers CO2 Brayton cycle for fusion directly; reports 47% gross efficiency for CO2 recompression Brayton + Rankine bottoming cycle applied to a dual-cooled Li-Pb fusion reactor; discusses stellarator-specific power conversion (FLiBe + helium Brayton); covers efficiency limitations from irradiated material temperature limits",
+          "notes": "Successfully extracted. Accessible arxiv PDF (29,673 chars, 12 headings). Provides quantitative context: 47% achievable with CO2 recompression + bottoming cycle; explains why >50% requires higher primary coolant outlet temperatures. Published in European Physical Journal Plus."
+        },
+        {
+          "url": "https://arxiv.org/pdf/2111.04213",
+          "title": "Carbon Dioxide, Fusion, and Stellarators (Boozer, 2021)",
+          "triage": "not relevant — paper is about atmospheric CO2 and stellarators as climate solution, NOT about sCO2 Brayton power conversion cycles",
+          "notes": "Triage via content check confirmed off-topic. Not extracted."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/pdf/1401.4232",
+          "source_name": "arxiv-1401-4232",
+          "notes": "Kovari et al. 2013 — fusion energy conversion review covering Rankine and Brayton cycles, sCO2 efficiency (47% with recompression + bottoming cycle), material temperature limits, stellarator-specific considerations"
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0920379621006360",
+          "reason": "Extraction failed — JavaScript-rendered page, trafilatura returned no content (rc=1)"
+        },
+        {
+          "url": "https://www.mdpi.com/1996-1073/16/21/7367",
+          "reason": "HTTP 403 Forbidden — MDPI blocking automated access"
+        }
+      ],
+      "status": "partial",
+      "notes": "Kovari 2013 provides general fusion power conversion context and CO2 Brayton efficiency data (47% with recompression + bottoming). Most-relevant source (ScienceDirect DEMO sCO2 paper, open-access) could not be extracted due to JS rendering. Ishiyama-Tanaka Oroshhi-2 paper (the primary NIFS reference) remains paywalled."
+    },
+    {
+      "gap_id": "G-7",
+      "gap_description": "Liquid metal alloy composition (at.% fractions of Sn, In, Pb, Li) not publicly confirmed; affects indium supply risk, tritium chemistry, structural material corrosion",
+      "queries": [
+        "Miyazawa Goto HESTIA helical stellarator liquid metal alloy composition tin indium lithium blanket"
+      ],
+      "candidates": [
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/30/5/050601/2891604/Development-of-steady-state-fusion-reactor-by",
+          "title": "Development of steady-state fusion reactor by Helical Fusion (Miyazawa & Goto, 2023, Physics of Plasmas)",
+          "triage": "highly relevant — primary source likely contains alloy composition details; full paper behind AIP paywall",
+          "notes": "Paywall confirmed. Abstract-only access. The full paper (beyond the extended abstract already in iter-01) may contain the composition, but is not publicly accessible."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "failed",
+      "notes": "No public source found confirming Sn-In-Pb-Li at.% fractions. The full AIP paper is paywalled. No patent filings found in search results. Gap remains open — composition is either in the full paywalled paper or not yet published. Recommend checking Helical Fusion patent applications via J-PlatPat (Japanese patent database)."
+    },
+    {
+      "gap_id": "G-11",
+      "gap_description": "Component replacement intervals (LM blanket modules, HTS coils) not stated — affects availability and maintenance OPEX",
+      "queries": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "Deprioritized due to extraction budget exhaustion. Gap type is proprietary/not-yet-sourced. No public engineering study of heliotron blanket replacement intervals exists; would require neutron fluence calculations for the high-Mn steel at HESTIA power density, which is not yet published. Recommend deferring to future iteration when HESTIA neutron transport results are available."
+    },
+    {
+      "gap_id": "G-16",
+      "gap_description": "Independent stellarator FPP cost study for heliotron geometry — no heliotron-specific analogue exists; ARIES-CS provides modular stellarator baseline",
+      "queries": [
+        "ARIES-CS compact stellarator power plant study cost 2008 site:osti.gov OR site:arxiv.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://aries.pppl.gov/DOCS/ARIES-CS/final.shtml",
+          "title": "ARIES-CS Final Report (11 papers, Fusion Science and Technology 54(3), 2008)",
+          "triage": "highly relevant — comprehensive stellarator power plant study covering systems optimization, engineering analysis, coil design, maintenance, and cost structure",
+          "notes": "Landing page accessible; PDF links confirmed. Direct PDF downloads from aries.pppl.gov require authentication (HTTP 401 Unauthorized). Cannot extract."
+        },
+        {
+          "url": "https://aries.pppl.gov/LIB/REPORT/JOURNAL/FST/08-FST-Najmabadi.pdf",
+          "title": "The ARIES-CS Compact Stellarator Fusion Power Plant (Najmabadi et al., 2008)",
+          "triage": "relevant — overview paper covering full plant design including cost",
+          "notes": "HTTP 401 Unauthorized from aries.pppl.gov. Extraction failed."
+        },
+        {
+          "url": "https://qedfusion.org/LIB/MEETINGS/0702-USJ-PPS/1-2-Najmabadi.pdf",
+          "title": "Overview of the ARIES-CS Compact Stellarator Power Plant Study (Najmabadi, 2007 workshop presentation)",
+          "triage": "relevant — confirmed accessible and extractable; test extraction produced 105,526 chars, 38 headings, 9 table rows ($1.845 cost, 8 minutes); 10/25 pages enhanced by Claude (15 pages failed quality gate). Substantive content confirmed.",
+          "notes": "PDF pipeline succeeded in background test. Not formally added as source due to extraction budget exhaustion (3 add-source calls already used). PRIORITY for next iteration: run add-source on this URL."
+        },
+        {
+          "url": "https://www.researchgate.net/publication/230806842_The_ARIES-CS_compact_stellarator_fusion_power_plant",
+          "title": "The ARIES-CS compact stellarator fusion power plant (ResearchGate)",
+          "triage": "not attempted — ResearchGate typically requires login for full-text access",
+          "notes": "Not extracted due to budget exhaustion and anticipated access restrictions."
+        }
+      ],
+      "extracted": [],
+      "failed": [
+        {
+          "url": "https://aries.pppl.gov/LIB/REPORT/JOURNAL/FST/08-FST-Najmabadi.pdf",
+          "reason": "HTTP 401 Unauthorized — PPPL server requires institutional authentication"
+        }
+      ],
+      "status": "partial",
+      "notes": "ARIES-CS papers are the definitive stellarator FPP cost reference. PPPL direct links require institutional auth. However, qedfusion.org mirror of the Najmabadi overview presentation (1-2-Najmabadi.pdf) is confirmed extractable — background test produced 105,526 chars, 38 headings, 9 table rows. This URL should be the FIRST extraction in the next iteration for concept 36. The formal FST journal papers remain paywalled."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 4,
+    "sources_extracted": 1,
+    "sources_failed": 2,
+    "searches_used": 5,
+    "extractions_used": 3,
+    "next_iteration_priority": [
+      "https://qedfusion.org/LIB/MEETINGS/0702-USJ-PPS/1-2-Najmabadi.pdf — ARIES-CS overview (G-16); confirmed extractable in background test (105K chars); add-source budget was exhausted this iteration",
+      "https://www.sciencedirect.com/science/article/pii/S0920379621006360 — DEMO sCO2 Brayton (G-6); open-access confirmed; try download as PDF then ingest via local file path"
+    ],
+    "notes": "Gap G-6 (sCO2 efficiency, blocking) partially addressed with Kovari 2013 general fusion energy conversion reference. Primary sources for G-6 (ScienceDirect DEMO sCO2 paper, Ishiyama-Tanaka Oroshhi-2 paper) remain inaccessible due to JS rendering and paywall respectively. Gap G-7 (LM alloy composition) and G-16 (ARIES-CS cost study) remain open — primary sources are paywalled or auth-gated (G-16 qedfusion mirror confirmed extractable for next iteration). G-11 (component replacement intervals) skipped due to budget exhaustion."
+  }
+}

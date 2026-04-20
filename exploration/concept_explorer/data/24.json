@@ -1,0 +1,429 @@
+{
+  "concept_id": "24",
+  "name": "Dense Plasma Focus (p-B11)",
+  "confinement_family": "NONSTANDARD",
+  "company": "LPPFusion",
+  "status": "in_progress",
+  "illustration": null,
+  "has_cost_model": true,
+  "has_sensitivities": true,
+  "cost_model": {
+    "cas10": {
+      "name": "Preconstruction",
+      "cost_m_usd": 62.980567670275526,
+      "overridden": false
+    },
+    "cas21": {
+      "name": "Buildings & Structures",
+      "cost_m_usd": 560.6770834616667,
+      "overridden": false
+    },
+    "cas22": {
+      "name": "Reactor Plant Equipment",
+      "cost_m_usd": 979.8918692456166,
+      "overridden": false
+    },
+    "cas23": {
+      "name": "Turbine Plant Equipment",
+      "cost_m_usd": 0.0,
+      "overridden": false
+    },
+    "cas24": {
+      "name": "Electrical Plant Equipment",
+      "cost_m_usd": 673.86504,
+      "overridden": false
+    },
+    "cas25": {
+      "name": "Miscellaneous Plant Equipment",
+      "cost_m_usd": 51.42149208000002,
+      "overridden": false
+    },
+    "cas26": {
+      "name": "Heat Rejection Systems",
+      "cost_m_usd": 5.017710000000002,
+      "overridden": false
+    },
+    "cas27": {
+      "name": "Special Materials",
+      "cost_m_usd": 0.0,
+      "overridden": false
+    },
+    "cas28": {
+      "name": "Digital Twin & Simulation",
+      "cost_m_usd": 5.0,
+      "overridden": false
+    },
+    "cas29": {
+      "name": "Contingency",
+      "cost_m_usd": 227.58731947872835,
+      "overridden": false
+    },
+    "cas30": {
+      "name": "Indirect Costs",
+      "cost_m_usd": 250.34605142660118,
+      "overridden": false
+    },
+    "cas40": {
+      "name": "Owner's Costs",
+      "cost_m_usd": 20.03538869101371,
+      "overridden": false
+    },
+    "cas50": {
+      "name": "Supplementary Costs",
+      "cost_m_usd": 164.47834645260517,
+      "overridden": false
+    },
+    "cas60": {
+      "name": "Interest During Construction",
+      "cost_m_usd": 310.1344230790096,
+      "overridden": false
+    },
+    "cas70": {
+      "name": "O&M Costs (annualised)",
+      "cost_m_usd": 72.31948107064487,
+      "overridden": false
+    },
+    "cas80": {
+      "name": "Fuel Costs (annualised)",
+      "cost_m_usd": 0.201,
+      "overridden": false
+    },
+    "cas90": {
+      "name": "Financial Costs",
+      "cost_m_usd": 351.2745663686332,
+      "overridden": false
+    },
+    "cas22_detail": {
+      "C220101": {
+        "name": "First Wall & Blanket",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220102": {
+        "name": "Radiation Shield",
+        "cost_m_usd": 0.9817477042468112,
+        "overridden": false
+      },
+      "C220103": {
+        "name": "Magnets / Coils",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220104": {
+        "name": "Heating & Driver Systems",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220105": {
+        "name": "Primary Structure & Support",
+        "cost_m_usd": 74.53129531007066,
+        "overridden": false
+      },
+      "C220106": {
+        "name": "Vacuum System",
+        "cost_m_usd": 233.10601106618472,
+        "overridden": false
+      },
+      "C220107": {
+        "name": "Power Conditioning & Energy Storage",
+        "cost_m_usd": 179.99999999999997,
+        "overridden": false
+      },
+      "C220108": {
+        "name": "Divertor / Target Factory",
+        "cost_m_usd": 20.049561694251196,
+        "overridden": false
+      },
+      "C220109": {
+        "name": "Direct Energy Converter",
+        "cost_m_usd": 200.0,
+        "overridden": false
+      },
+      "C220110": {
+        "name": "Remote Handling & Maintenance Equipment",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220111": {
+        "name": "Installation Labor",
+        "cost_m_usd": 102.01955256004173,
+        "overridden": false
+      },
+      "C220112": {
+        "name": "Isotope Separation Plant",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220200": {
+        "name": "Main & Secondary Coolant",
+        "cost_m_usd": 5.008847172753428,
+        "overridden": false
+      },
+      "C220300": {
+        "name": "Auxiliary Cooling & Cryoplant",
+        "cost_m_usd": 1.0017694345506856,
+        "overridden": false
+      },
+      "C220400": {
+        "name": "Radioactive Waste Management",
+        "cost_m_usd": 1.0017694345506856,
+        "overridden": false
+      },
+      "C220500": {
+        "name": "Fuel Handling & Storage",
+        "cost_m_usd": 15.037171270688397,
+        "overridden": false
+      },
+      "C220600": {
+        "name": "Other Reactor Plant Equipment",
+        "cost_m_usd": 11.53257487421819,
+        "overridden": false
+      },
+      "C220700": {
+        "name": "Instrumentation & Control",
+        "cost_m_usd": 115.57909478422982,
+        "overridden": false
+      }
+    },
+    "headline": {
+      "lcoe_per_mwh": 64.36787556694377,
+      "overnight_cost_per_kw": 2994.94052232945,
+      "p_net_mw": 1000.0,
+      "q_eng": 1.462,
+      "capacity_factor": 0.75
+    },
+    "sensitivities": {
+      "engineering": {
+        "e_stored_kJ": {
+          "elasticity": -0.48788758247715186,
+          "baseline": 115.0
+        },
+        "driver_coupling_eff": {
+          "elasticity": -4.6399636639132185,
+          "baseline": 0.85
+        },
+        "Q_sci": {
+          "elasticity": -4.639963663913346,
+          "baseline": 1.72
+        },
+        "f_ion_beam": {
+          "elasticity": -0.1938980774490344,
+          "baseline": 0.7
+        },
+        "eta_dec": {
+          "elasticity": -3.3013559061963744,
+          "baseline": 0.85
+        },
+        "eta_xray": {
+          "elasticity": -1.329914365707702,
+          "baseline": 0.8
+        },
+        "rep_rate_Hz": {
+          "elasticity": -0.4878875824770635,
+          "baseline": 200.0
+        },
+        "plant_availability": {
+          "elasticity": -1.0001000100009976,
+          "baseline": 0.75
+        },
+        "plant_lifetime_years": {
+          "elasticity": -0.13777058574308224,
+          "baseline": 30.0
+        },
+        "p_control_kW": {
+          "elasticity": 0.0017991235452569432,
+          "baseline": 10.0
+        },
+        "p_cooling_kW": {
+          "elasticity": 0.008995617809955484,
+          "baseline": 50.0
+        },
+        "cap_bank_cost_M_NOAK": {
+          "elasticity": 0.11363193758705281,
+          "baseline": 0.18
+        },
+        "dec_cost_M_NOAK": {
+          "elasticity": 0.07906508520134926,
+          "baseline": 0.2
+        },
+        "device_structure_cost_M_NOAK": {
+          "elasticity": 0.0,
+          "baseline": 0.12
+        },
+        "foak_multiplier": {
+          "elasticity": 0.31431387198711447,
+          "baseline": 5.0
+        },
+        "converter_inner_radius_m": {
+          "elasticity": 0.07272869514159434,
+          "baseline": 0.45
+        },
+        "converter_length_m": {
+          "elasticity": 0.1220049590281425,
+          "baseline": 0.5
+        },
+        "shield_thickness_m": {
+          "elasticity": 0.008453551563068082,
+          "baseline": 0.05
+        },
+        "electrode_cost_per_set_USD": {
+          "elasticity": 0.05663114787445426,
+          "baseline": 10000.0
+        },
+        "electrode_replacement_months": {
+          "elasticity": -0.056636811555618165,
+          "baseline": 1.0
+        },
+        "cap_annual_replacement_frac": {
+          "elasticity": 0.04247336090584622,
+          "baseline": 0.1
+        },
+        "b11_cost_per_kg_USD": {
+          "elasticity": 0.0004719262322780911,
+          "baseline": 10000.0
+        },
+        "b11_kg_per_module_year": {
+          "elasticity": 0.0004719262322780911,
+          "baseline": 0.1
+        },
+        "construction_time_years": {
+          "elasticity": 0.19856662466940833,
+          "baseline": 3.0
+        },
+        "om_fixed_base_M": {
+          "elasticity": 0.07154279233286398,
+          "baseline": 24.0
+        }
+      },
+      "financial": {
+        "interest_rate": {
+          "elasticity": 0.764435689894819,
+          "baseline": 0.1
+        },
+        "inflation_rate": {
+          "elasticity": 0.017219522548664115,
+          "baseline": 0.02
+        }
+      }
+    },
+    "params": {
+      "e_stored_kJ": 115.0,
+      "driver_coupling_eff": 0.85,
+      "Q_sci": 1.72,
+      "f_ion_beam": 0.7,
+      "eta_dec": 0.85,
+      "eta_xray": 0.8,
+      "rep_rate_Hz": 200.0,
+      "n_mod": 200.0,
+      "plant_availability": 0.75,
+      "plant_lifetime_years": 30.0,
+      "noak": 0.0,
+      "p_control_kW": 10.0,
+      "p_cooling_kW": 50.0,
+      "cap_bank_cost_M_NOAK": 0.18,
+      "dec_cost_M_NOAK": 0.2,
+      "device_structure_cost_M_NOAK": 0.12,
+      "foak_multiplier": 5.0,
+      "converter_inner_radius_m": 0.45,
+      "converter_length_m": 0.5,
+      "shield_thickness_m": 0.05,
+      "electrode_cost_per_set_USD": 10000.0,
+      "electrode_replacement_months": 1.0,
+      "cap_annual_replacement_frac": 0.1,
+      "b11_cost_per_kg_USD": 10000.0,
+      "b11_kg_per_module_year": 0.1,
+      "interest_rate": 0.1,
+      "inflation_rate": 0.02,
+      "construction_time_years": 3.0,
+      "om_fixed_base_M": 24.0
+    }
+  },
+  "parameter_metadata": {},
+  "narrative": {
+    "key_bets": [
+      "Quantum Magnetic Field (QMF) effect suppresses bremsstrahlung sufficiently to enable p-B11 net energy despite Z=5 radiation losses",
+      "Fusion yield improves 120,000× from current 0.25 J/shot (D) to 30 kJ/shot (p-B11) via compression, I⁴ capacitor scaling, and fuel switch",
+      "Ion beam decelerator achieves ~85% efficiency on a divergent, multi-species, ~10 ns DPF ion beam (vs. mono-energetic accelerator context)",
+      "X-ray photoelectric converter ('never-before-built multilayered vacuum tube') achieves 80%+ efficiency at DPF plasma X-ray energies",
+      "200 Hz rep-rate sustained at 2.7 MA with monthly beryllium electrode replacement and 10 kW/cm² anode thermal limit",
+      "Filament disruption problem at high current is resolvable, enabling plasmoid stability to support predicted yield scaling",
+      "Q_sci reaches at least 2.5 so recirculating fraction drops to ~57% for commercially viable specific capital"
+    ],
+    "eliminated_costs": [
+      "CAS22.01 First Wall / Blanket — zero (aneutronic p-B11 produces no 14 MeV neutrons, no breeding blanket required)",
+      "CAS22.03 External Coils — zero (self-pinch confinement, no superconducting or copper magnets)",
+      "CAS22.04 Supplementary Heating — zero (no NBI, ECRH, or ICRH; driver energy couples directly via pinch)",
+      "CAS23 Turbine Plant — zero (direct energy conversion replaces thermal cycle entirely)",
+      "CAS27 Special Materials / tritium supply chain — zero (no tritium breeding, no FLiBe/LiPb, no Li-6 enrichment, no REBCO)"
+    ],
+    "novel_costs": [
+      "CAS22.09 Direct Energy Converter — dual-path ion beam decelerator + X-ray photoelectric vacuum tube ($200M FOAK, no library analogue)",
+      "CAS22.07 Capacitor bank pulsed-power driver with 10%/yr replacement cadence at 200 Hz commercial duty",
+      "Monthly beryllium electrode replacement (200 modules × 12/yr) with specialty handling for toxic Be machining",
+      "Isotopically enriched decaborane fuel handling (B-10 < 0.07%) with single-source Russian purification + Czech synthesis supply chain",
+      "C-11 radioactive exhaust management at 200 Hz rep-rate (20-min half-life side reaction, no precedent at commercial scale)"
+    ],
+    "risks": [
+      {
+        "description": "QMF bremsstrahlung suppression effect is TRL 1 — theoretical only, never experimentally confirmed; if absent, p-B11 net energy is impossible under classical physics",
+        "severity": "high"
+      },
+      {
+        "description": "22-year yield plateau at 0.25 J/shot with no progress past the 2001 Speed-2 record; 120,000× improvement required to reach 30 kJ/shot target",
+        "severity": "high"
+      },
+      {
+        "description": "Neither direct energy conversion device (ion beam decelerator, X-ray photoelectric converter) has a prototype, engineering design, or component test; no thermal fallback exists",
+        "severity": "high"
+      },
+      {
+        "description": "p-B11 fusion yield has never been measured in any DPF; 2024 Frontiers paper describes preparations, not results",
+        "severity": "high"
+      },
+      {
+        "description": "Extremely high recirculating fraction (82% at Q=1.72 FOAK) drives high specific $/kWe and leaves no margin for engineering losses near breakeven",
+        "severity": "high"
+      },
+      {
+        "description": "200 Hz rep-rate at 2.7 MA fusion-relevant conditions never demonstrated; best analogue is 16 Hz NX2 at far lower currents for non-fusion X-ray applications",
+        "severity": "high"
+      },
+      {
+        "description": "Electrode erosion rate at 2.7 MA × 200 Hz is completely uncharacterized; monthly beryllium replacement cadence is design intent only",
+        "severity": "medium"
+      },
+      {
+        "description": "Isotopic boron-11 enrichment supply chain is single-sourced in Russia (purification) and Czech Republic (decaborane synthesis) — geopolitical concentration risk",
+        "severity": "medium"
+      },
+      {
+        "description": "No independent verification by any national lab or university of LPPFusion's >200 keV ion temperature or record plasma purity claims",
+        "severity": "medium"
+      },
+      {
+        "description": "Filament disruption at high current causes 'low densities and lower-than-predicted yields' and is the identified current experimental blocker",
+        "severity": "medium"
+      },
+      {
+        "description": "No plant-level cost study, no fixed/variable O&M breakdown, no BOP design for DEC-based plant exists in any source",
+        "severity": "medium"
+      },
+      {
+        "description": "Commercial-scale enriched decaborane price ('many hundred-fold' reduction from $600/gram) has no production pathway analysis",
+        "severity": "low"
+      },
+      {
+        "description": "C-11 (20-min half-life) exhaust management at 200 Hz commercial scale is uncharacterized",
+        "severity": "low"
+      },
+      {
+        "description": "Diamond-film UV-laser switches proposed for decelerator backflow prevention are research-stage and not commercially available",
+        "severity": "low"
+      }
+    ]
+  },
+  "sources": {
+    "model_setup": null,
+    "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/24-dense-plasma-focus/analysis.md"
+  }
+}

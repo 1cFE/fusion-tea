@@ -1,0 +1,139 @@
+Laser ICF - Indirect Drive (D-T) — Inertia Enterprises (NOAK)
+Native: 1500 MWe | Availability: 75% | Lifetime: 30 yr
+LCOE: 97.0 $/MWh | Overnight: 6851 $/kW
+Fusion: 5251 MW | Net: 1500 MW | Q_eng: 4.0 | Q_sci: 124.0
+
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    19.8
+CAS21    Buildings                        1043.2
+CAS22    Reactor Plant Equipment          5186.9
+CAS23    Turbine Plant                     395.3
+CAS24    Electrical Plant                  168.4
+CAS25    Miscellaneous                     102.5
+CAS26    Heat Rejection                    195.2
+CAS27    Special Materials                   8.0
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                         0.0
+CAS30    Indirect Costs                   1184.1
+CAS40    Owner's Costs                      47.8
+CAS50    Supplementary                     578.7
+CAS60    IDC                              1341.5
+CAS70    O&M (annualized)                  125.7
+CAS80    Fuel (annualized)                   2.2
+CAS90    Financial                         828.1
+------------------------------------------------
+         Total Capital                   10276.1
+
+CAS22 Detail (Reactor Plant Equipment):
+Code       Account                                        M$
+------------------------------------------------------------
+C220101    First wall + blanket                        279.3
+C220102    Shield                                      195.0
+C220103    Coils / magnets                               0.0
+C220104    Heating / current drive                     338.8
+C220105    Primary structure                            11.4
+C220106    Vacuum system                                42.1
+C220107    Driver / power supplies  [OVERRIDE]        3000.0
+C220108    Divertor / ash removal                      396.4
+C220109    DEC                                           0.0
+C220110    C220110                                     106.1
+C220111    Installation                                194.6
+C220112    Isotope separation                            0.0
+C220200    Coolant handling                            302.2
+C220300    Auxiliary cooling                            17.7
+C220400    Rad waste                                    11.2
+C220500    Fuel handling                               159.4
+C220600    Other equipment (target factory)             15.9
+C220700    I&C                                         116.9
+C220000    Total CAS22                                5186.9
+
+1 GWe reference (scaled from 1500 MWe native design):
+LCOE: 102.9 $/MWh | Overnight: 7115 $/kW
+Fusion: 3501 MW | Net: 1000 MW | Q_eng: 4.0
+
+Key Assumptions (confidence / uncertainty level):
+  1. PRIMARY CONCEPT: Inertia Enterprises indirect drive (NIF Hybrid-E heritage),
+     not Xcimer HDD/KrF — Xcimer may warrant reclassification to concept 17a.
+     Source: analysis.md §7 cross-concept note.
+
+  2. Q_eng = 4.0 (low confidence): Inertia target; requires total scientific gain
+     ~45× at 10 MJ — not demonstrated experimentally (NIF best: 4.13×).
+     Source: handwritten/26-laser-icf-indirect-drive.md §Table 1.
+
+  3. eta_pin = 10% (medium confidence): Thunderwall design target; DPSSL in-class
+     demonstration does not yet exist at plant scale.
+     Source: inertia-enterprises-2026-update.md §Thunderwall Specs.
+
+  4. NOAK laser driver = $3,000M (UNCERTAIN, low confidence): dominant cost item
+     with no published NOAK breakdown. Requires diodes reaching $0.007/W viability
+     target (current floor ~$0.02/W). Range: $1,400M optimistic to $8,500M FOAK.
+     Source: analysis.md §2 (Uncertainty 1), §4 (Laser Diodes).
+
+  5. availability = 75% (UNCERTAIN): no published IFE capacity factor model;
+     Inertia projects 3-5 yr chamber replacement intervals.
+     Source: analysis.md §5 (Missing Parameters); handwritten §Table 1.
+
+  6. eta_th = 35% steam Rankine: Inertia references steam in public materials;
+     Xcimer's claimed 45% helium Brayton (IFE Workshop 2022) unresolved.
+     Source: analysis.md §3 Balance of Plant.
+
+  7. CAS27 = $8M: liquid Li blanket (Inertia) — cheap relative to FLiBe default.
+     No published Inertia TBR or tritium breeding analysis.
+     Source: analysis.md §4 (Liquid Lithium); dossier.md.
+
+  8. Capacity factor model gap is analysis-blocking: a rep-rate-coupled
+     availability model (UKAEA PROCESS IFE module or GEM tool) is needed to
+     properly capture chamber clearing, target injection synchronization, and
+     scheduled maintenance interactions.
+     Source: analysis.md §6, Gap #3.
+
+Sensitivity (elasticity = %LCOE / %param, evaluated at native 1.5 GWe)
+------------------------------------------------
+
+Engineering levers:
+  availability                         -0.9671
+  construction_time_yr                 +0.2833
+  q_eng                                -0.1789
+  eta_th                               -0.1789
+  plasma_t                             +0.1706
+  blanket_t                            +0.0769
+  mn                                   -0.0609
+  eta_pin                              +0.0447
+  ht_shield_t                          +0.0165
+  f_sub                                -0.0064
+  vessel_t                             +0.0061
+  structure_t                          +0.0024
+  p_trit                               -0.0011
+  p_cryo                               +0.0009
+  p_house                              -0.0004
+  f_rep                                -0.0003
+  p_pump                               -0.0001
+  p_target                             -0.0001
+  dd_f_T                               +0.0000
+  dd_f_He3                             +0.0000
+  dhe3_dd_frac                         +0.0000
+  dhe3_f_T                             +0.0000
+  f_rad                                +0.0000
+  eta_dec                              +0.0000
+
+Financial:
+  interest_rate                        +0.7145
+  inflation_rate                       +0.0388
+
+Costing constants (top 15):
+  indirect_fraction                    +0.1165
+  om_cost_dt                           +0.0970
+  blanket_unit_cost_dt                 +0.0718
+  target_factory_base                  +0.0530
+  driver_laser_per_mw                  +0.0453
+  core_lifetime_dt                     -0.0306
+  shield_unit_cost                     +0.0261
+  installation_frac                    +0.0228
+  fuel_recovery                        -0.0209
+  electric_per_mw                      +0.0202
+  fuel_handling_dt_base                +0.0187
+  decom_provision_dt                   +0.0185
+  remote_handling_dt_base              +0.0142
+  misc_per_mw                          +0.0123
+  construction_insurance_frac          +0.0121

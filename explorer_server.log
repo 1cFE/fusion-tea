@@ -1,0 +1,154 @@
+INFO:     Started server process [56352]
+INFO:     Waiting for application startup.
+C:\Users\mallo\1cfe\fusion-tea\.venv\Lib\site-packages\pydantic\main.py:766: UserWarning: ConceptData '01': sensitivity keys not covered by parameter_metadata: ['B', 'M_ion', 'R0', 'R_w', 'T_e', 'T_edge', 'Z_eff', 'availability', 'b_max', 'blanket_t', 'construction_time_yr', 'dd_f_He3', 'dd_f_T', 'dhe3_dd_frac', 'dhe3_f_T', 'disruption_damage', 'disruption_downtime', 'disruption_rate_base', 'disruption_steepness', 'elon', 'eta_de', 'eta_p', 'eta_pin', 'eta_th', 'f_GW', 'f_sub', 'ht_shield_t', 'inflation_rate', 'interest_rate', 'lambda_q', 'mn', 'n_e', 'p_coils', 'p_cool', 'p_cryo', 'p_house', 'p_icrf', 'p_input', 'p_lhcd', 'p_nbi', 'p_pump', 'p_trit', 'plasma_t', 'plasma_volume', 'q95', 'r_coil', 'structure_t', 'tau_ratio', 'vessel_t']
+  return cls.__pydantic_validator__.validate_json(
+C:\Users\mallo\1cfe\fusion-tea\.venv\Lib\site-packages\pydantic\main.py:766: UserWarning: ConceptData '02': sensitivity keys not covered by parameter_metadata: ['Q_sci', 'availability', 'construction_time_yr', 'd2o_density_kg_per_m3', 'd2o_unit_cost_per_kg', 'driver_unit_cost_per_kW_acoustic', 'energy_per_implosion_J', 'eta_driver', 'eta_th', 'f_driver', 'f_radiation_loss', 'fuel_handling_base_M', 'lifetime_yr', 'net_electric_mw', 'om_cost_base_M_per_yr', 'remote_handling_base_M', 'shield_thickness_m', 'shield_unit_cost_M_per_m3', 'structure_unit_cost_M_per_m3', 'vessel_inner_radius_m', 'vessel_unit_cost_M_per_m3', 'vessel_wall_thickness_m', 'wacc']
+  return cls.__pydantic_validator__.validate_json(
+C:\Users\mallo\1cfe\fusion-tea\.venv\Lib\site-packages\pydantic\main.py:766: UserWarning: ConceptData '03': sensitivity keys not covered by parameter_metadata: ['availability', 'blanket_t', 'burn_fraction', 'construction_time_yr', 'eta_p', 'eta_pin1', 'eta_pin2', 'eta_th', 'f_sub', 'fuel_recovery', 'ht_shield_t', 'inflation_rate', 'interest_rate', 'mn', 'p_house', 'p_implosion', 'p_pump', 'p_target', 'plasma_t', 'structure_t', 'vessel_t']
+  return cls.__pydantic_validator__.validate_json(
+C:\Users\mallo\1cfe\fusion-tea\.venv\Lib\site-packages\pydantic\main.py:766: UserWarning: ConceptData '04': sensitivity keys not covered by parameter_metadata: ['blanket_t', 'construction_time_yr', 'dd_f_He3', 'dd_f_T', 'dhe3_dd_frac', 'dhe3_f_T', 'e_driver_mj', 'eta_dec', 'eta_pin', 'eta_th', 'f_rad', 'f_rep', 'f_sub', 'ht_shield_t', 'inflation_rate', 'mn', 'p_house', 'p_pump', 'p_target', 'plasma_t', 'q_sci', 'structure_t', 'vessel_t']
+  return cls.__pydantic_validator__.validate_json(
+C:\Users\mallo\1cfe\fusion-tea\.venv\Lib\site-packages\pydantic\main.py:766: UserWarning: ConceptData '05': sensitivity keys not covered by parameter_metadata: ['B', 'R0', 'R_w', 'T_e', 'T_edge', 'Z_eff', 'availability', 'blanket_t', 'burn_fraction', 'construction_time_yr', 'elon', 'eta_de', 'eta_p', 'eta_pin', 'eta_th', 'f_sub', 'fuel_recovery', 'ht_shield_t', 'inflation_rate', 'interest_rate', 'mn', 'n_e', 'p_coils', 'p_cool', 'p_cryo', 'p_house', 'p_input', 'p_pump', 'p_trit', 'plasma_t', 'plasma_volume', 'structure_t', 'tau_ratio', 'vessel_t']
+  return cls.__pydantic_validator__.validate_json(
+C:\Users\mallo\1cfe\fusion-tea\.venv\Lib\site-packages\pydantic\main.py:766: UserWarning: ConceptData '06': sensitivity keys not covered by parameter_metadata: ['B', 'R_w', 'T_e', 'T_edge', 'Z_eff', 'availability', 'b_max', 'blanket_t', 'chamber_length', 'construction_time_yr', 'dd_f_He3', 'dd_f_T', 'dhe3_dd_frac', 'dhe3_f_T', 'elon', 'eta_de', 'eta_p', 'eta_pin', 'eta_th', 'f_dec', 'f_sub', 'ht_shield_t', 'inflation_rate', 'interest_rate', 'mn', 'n_e', 'p_coils', 'p_cool', 'p_cryo', 'p_house', 'p_icrf', 'p_input', 'p_pump', 'plasma_t', 'plasma_volume', 'r_coil', 'structure_t', 'tau_ratio', 'vessel_t']
+  return cls.__pydantic_validator__.validate_json(
+C:\Users\mallo\1cfe\fusion-tea\.venv\Lib\site-packages\pydantic\main.py:766: UserWarning: ConceptData '07': sensitivity keys not covered by parameter_metadata: ['availability', 'blanket_t', 'burn_fraction', 'construction_time_yr', 'eta_p', 'eta_pin', 'eta_th', 'f_sub', 'fuel_recovery', 'ht_shield_t', 'inflation_rate', 'interest_rate', 'mn', 'p_cryo', 'p_driver', 'p_house', 'p_pump', 'p_target', 'p_trit', 'plasma_t', 'structure_t', 'vessel_t']
+  return cls.__pydantic_validator__.validate_json(
+C:\Users\mallo\1cfe\fusion-tea\.venv\Lib\site-packages\pydantic\main.py:766: UserWarning: ConceptData '08': sensitivity keys not covered by parameter_metadata: ['availability', 'blanket_t', 'burn_fraction', 'construction_time_yr', 'eta_p', 'eta_pin', 'eta_th', 'f_sub', 'fuel_recovery', 'ht_shield_t', 'inflation_rate', 'interest_rate', 'mn', 'p_coils', 'p_driver', 'p_house', 'p_pump', 'p_trit', 'plasma_t', 'structure_t', 'vessel_t']
+  return cls.__pydantic_validator__.validate_json(
+C:\Users\mallo\1cfe\fusion-tea\.venv\Lib\site-packages\pydantic\main.py:766: UserWarning: ConceptData '09': sensitivity keys not covered by parameter_metadata: ['B', 'R0', 'R_w', 'T_e', 'T_edge', 'Z_eff', 'availability', 'blanket_t', 'burn_fraction', 'construction_time_yr', 'elon', 'eta_de', 'eta_p', 'eta_pin', 'eta_th', 'f_sub', 'fuel_recovery', 'ht_shield_t', 'inflation_rate', 'interest_rate', 'mn', 'n_e', 'p_coils', 'p_cool', 'p_cryo', 'p_house', 'p_input', 'p_pump', 'p_trit', 'plasma_t', 'plasma_volume', 'structure_t', 'tau_ratio', 'vessel_t']
+  return cls.__pydantic_validator__.validate_json(
+C:\Users\mallo\1cfe\fusion-tea\.venv\Lib\site-packages\pydantic\main.py:766: UserWarning: ConceptData '10': sensitivity keys not covered by parameter_metadata: ['B', 'R0', 'R_w', 'T_e', 'T_edge', 'Z_eff', 'availability', 'blanket_t', 'burn_fraction', 'construction_time_yr', 'elon', 'eta_p', 'eta_pin', 'eta_th', 'f_sub', 'fuel_recovery', 'ht_shield_t', 'inflation_rate', 'interest_rate', 'mn', 'n_e', 'p_coils', 'p_cool', 'p_cryo', 'p_house', 'p_input', 'p_pump', 'p_trit', 'plasma_t', 'plasma_volume', 'structure_t', 'tau_ratio', 'vessel_t']
+  return cls.__pydantic_validator__.validate_json(
+C:\Users\mallo\1cfe\fusion-tea\.venv\Lib\site-packages\pydantic\main.py:766: UserWarning: ConceptData '11': sensitivity keys not covered by parameter_metadata: ['B', 'R_w', 'T_e', 'T_edge', 'Z_eff', 'availability', 'b_max', 'blanket_t', 'chamber_length', 'construction_time_yr', 'dd_f_He3', 'dd_f_T', 'dhe3_dd_frac', 'dhe3_f_T', 'elon', 'eta_de', 'eta_p', 'eta_pin', 'eta_th', 'f_dec', 'f_sub', 'ht_shield_t', 'inflation_rate', 'interest_rate', 'mn', 'n_e', 'p_coils', 'p_cool', 'p_cryo', 'p_ecrh', 'p_house', 'p_input', 'p_nbi', 'p_pump', 'p_trit', 'plasma_t', 'plasma_volume', 'r_coil', 'structure_t', 'tau_ratio', 'vessel_t']
+  return cls.__pydantic_validator__.validate_json(
+C:\Users\mallo\1cfe\fusion-tea\.venv\Lib\site-packages\pydantic\main.py:766: UserWarning: ConceptData '12': sensitivity keys not covered by parameter_metadata: ['availability', 'blanket_mass_tonne', 'bop_thermal_island_cost_per_kwth', 'concrete_vessel_mass_tonne', 'concrete_vessel_unit_cost_per_kg', 'construction_time_yr', 'contingency_rate', 'core_magnet_mass_tonne', 'duty_cycle', 'eta_aux', 'eta_cryo', 'eta_th', 'first_wall_area_m2', 'fixed_charge_rate', 'fuel_cost_m_per_yr', 'indirect_fraction', 'interest_during_construction_rate', 'li2o_blanket_unit_cost_per_kg', 'lifetime_yr', 'magnet_structure_cost_m', 'om_cost_base_m_per_yr', 'owner_cost_fraction', 'p_aux_to_plasma_mw', 'p_cryo_deposited_kw', 'p_fus_mw', 'p_other_loads_mw', 'peak_field_tesla', 'q_sci', 'rebco_tape_cost_per_kam', 'rebco_tape_km', 'sacrificial_coil_fraction', 'sacrificial_coil_replacement_cost_frac', 'tungsten_shield_mass_tonne', 'tungsten_tile_unit_cost_per_kg']
+  return cls.__pydantic_validator__.validate_json(
+C:\Users\mallo\1cfe\fusion-tea\.venv\Lib\site-packages\pydantic\main.py:766: UserWarning: ConceptData '14': sensitivity keys not covered by parameter_metadata: ['availability', 'blanket_t', 'construction_time_yr', 'dd_f_He3', 'dd_f_T', 'dhe3_dd_frac', 'dhe3_f_T', 'e_driver_mj', 'eta_dec', 'eta_p', 'eta_pin', 'eta_th', 'f_rad', 'f_rep', 'f_sub', 'ht_shield_t', 'inflation_rate', 'interest_rate', 'mn', 'p_coils', 'p_house', 'p_pump', 'p_trit', 'plasma_t', 'q_sci', 'structure_t', 'vessel_t']
+  return cls.__pydantic_validator__.validate_json(
+C:\Users\mallo\1cfe\fusion-tea\.venv\Lib\site-packages\pydantic\main.py:766: UserWarning: ConceptData '15': sensitivity keys not covered by parameter_metadata: ['blanket_energy_multiplication', 'blanket_thickness_m', 'blanket_unit_cost_M_per_m3', 'chamber_inner_radius_m', 'construction_time_years', 'core_lifetime_FPY', 'driver_cost_per_MJ_stored_M_USD', 'driver_electrical_energy_per_shot_MJ', 'driver_rep_rate_Hz', 'driver_stored_energy_per_shot_MJ', 'driver_wall_to_plasma_efficiency', 'electrode_replacement_interval_yr', 'electrode_system_cost_M_USD', 'fuel_cost_per_shot_USD', 'fusion_Q', 'fusion_energy_per_shot_MJ', 'inflation_rate', 'interest_rate', 'om_cost_per_MW_yr', 'p_house_MW', 'p_libp_pumping_MW', 'p_tritium_MW', 'pinch_current_MA', 'plant_availability', 'plant_lifetime_years', 'plasma_temperature_keV', 'shield_thickness_m', 'structure_thickness_m', 'thermal_efficiency', 'vessel_thickness_m']
+  return cls.__pydantic_validator__.validate_json(
+C:\Users\mallo\1cfe\fusion-tea\.venv\Lib\site-packages\pydantic\main.py:766: UserWarning: ConceptData '17a': sensitivity keys not covered by parameter_metadata: ['availability', 'blanket_t', 'construction_time_yr', 'dd_f_He3', 'dd_f_T', 'dhe3_dd_frac', 'dhe3_f_T', 'e_driver_mj', 'eta_dec', 'eta_p', 'eta_pin', 'eta_th', 'f_rad', 'f_rep', 'f_sub', 'ht_shield_t', 'inflation_rate', 'interest_rate', 'mn', 'p_cryo', 'p_house', 'p_pump', 'p_target', 'p_trit', 'plasma_t', 'q_sci', 'structure_t', 'vessel_t']
+  return cls.__pydantic_validator__.validate_json(
+C:\Users\mallo\1cfe\fusion-tea\.venv\Lib\site-packages\pydantic\main.py:766: UserWarning: ConceptData '21': sensitivity keys not covered by parameter_metadata: ['B', 'M_ion', 'R0', 'R_w', 'T_e', 'T_edge', 'Z_eff', 'availability', 'b_max', 'blanket_t', 'construction_time_yr', 'dd_f_He3', 'dd_f_T', 'dhe3_dd_frac', 'dhe3_f_T', 'disruption_damage', 'disruption_downtime', 'disruption_rate_base', 'disruption_steepness', 'elon', 'eta_de', 'eta_p', 'eta_pin', 'eta_th', 'f_GW', 'f_sub', 'ht_shield_t', 'inflation_rate', 'interest_rate', 'lambda_q', 'mn', 'n_e', 'p_coils', 'p_cool', 'p_cryo', 'p_house', 'p_input', 'p_nbi', 'p_pump', 'p_trit', 'plasma_t', 'plasma_volume', 'q95', 'r_coil', 'structure_t', 'tau_ratio', 'vessel_t']
+  return cls.__pydantic_validator__.validate_json(
+C:\Users\mallo\1cfe\fusion-tea\.venv\Lib\site-packages\pydantic\main.py:766: UserWarning: ConceptData '22': sensitivity keys not covered by parameter_metadata: ['blanket_energy_multiplication', 'blanket_thickness_m', 'blanket_unit_cost', 'chamber_inner_radius_m', 'construction_time_years', 'core_lifetime_FPY', 'driver_cost_M_USD', 'driver_efficiency', 'driver_rep_rate_Hz', 'driver_stored_energy_MJ', 'fuel_cost_per_shot_USD', 'fusion_yield_MJ', 'inflation_rate', 'interest_rate', 'li_inventory_cost_M_USD', 'om_cost_per_MW_yr', 'p_cryo_MW', 'p_house_MW', 'p_li_pump_MW', 'p_target_factory_MW', 'p_trit_MW', 'plant_availability', 'plant_lifetime_years', 'projectile_cost_USD', 'shield_thickness_m', 'structure_thickness_m', 'target_cost_USD', 'thermal_efficiency', 'tritium_startup_kg', 'tritium_surplus_kg_per_year', 'vessel_thickness_m']
+  return cls.__pydantic_validator__.validate_json(
+C:\Users\mallo\1cfe\fusion-tea\.venv\Lib\site-packages\pydantic\main.py:766: UserWarning: ConceptData '28': sensitivity keys not covered by parameter_metadata: ['B', 'M_ion', 'R0', 'R_w', 'T_e', 'T_edge', 'Z_eff', 'availability', 'b_max', 'blanket_t', 'construction_time_yr', 'dd_f_He3', 'dd_f_T', 'dhe3_dd_frac', 'dhe3_f_T', 'disruption_damage', 'disruption_downtime', 'disruption_rate_base', 'disruption_steepness', 'elon', 'eta_de', 'eta_p', 'eta_pin', 'eta_th', 'f_GW', 'f_sub', 'ht_shield_t', 'inflation_rate', 'interest_rate', 'lambda_q', 'mn', 'n_e', 'p_coils', 'p_cool', 'p_cryo', 'p_house', 'p_input', 'p_nbi', 'p_pump', 'p_trit', 'plasma_t', 'plasma_volume', 'q95', 'r_coil', 'structure_t', 'tau_ratio', 'vessel_t']
+  return cls.__pydantic_validator__.validate_json(
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8421 (Press CTRL+C to quit)
+INFO:     127.0.0.1:54187 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54187 - "GET /static/css/explorer.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51609 - "GET /static/vendor/plotly-basic.min.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49793 - "GET /static/js/index_page.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51609 - "GET /api/manifest HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51609 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55991 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55991 - "GET /api/manifest HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65460 - "GET /taxonomy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65460 - "GET /static/vendor/cytoscape.min.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59587 - "GET /static/js/tree_view.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64605 - "GET /static/js/constellation.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64472 - "GET /static/js/neighborhood_graph.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49297 - "GET /static/js/taxonomy_card.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55847 - "GET /static/js/selection_tray.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49297 - "GET /static/js/taxonomy.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55847 - "GET /api/manifest HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49297 - "GET /api/taxonomy/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65460 - "GET /api/taxonomy/constellation HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64472 - "GET /api/taxonomy/registry HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64472 - "GET /compare HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65460 - "GET /static/js/tornado.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55847 - "GET /static/js/view_categorical.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59587 - "GET /static/js/view_capex.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64605 - "GET /static/js/view_summary.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64472 - "GET /static/js/cas_breakdown.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49297 - "GET /static/js/comparison.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65460 - "GET /static/js/view_sensitivity.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49297 - "GET /api/manifest HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49297 - "POST /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58029 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58029 - "GET /static/css/explorer.css HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:52857 - "GET /static/vendor/plotly-basic.min.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:53923 - "GET /static/js/index_page.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:53923 - "GET /api/manifest HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53923 - "GET /taxonomy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53923 - "GET /static/vendor/cytoscape.min.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65050 - "GET /static/js/tree_view.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62498 - "GET /static/js/taxonomy_card.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57458 - "GET /static/js/neighborhood_graph.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59179 - "GET /static/js/selection_tray.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61224 - "GET /static/js/constellation.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65050 - "GET /static/js/taxonomy.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53923 - "GET /api/taxonomy/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65050 - "GET /api/taxonomy/constellation HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61224 - "GET /api/taxonomy/registry HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59179 - "GET /api/manifest HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52835 - "GET /compare HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53059 - "GET /static/js/view_categorical.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51119 - "GET /static/js/view_summary.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60674 - "GET /static/js/tornado.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52835 - "GET /static/js/cas_breakdown.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63895 - "GET /static/js/view_capex.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55279 - "GET /static/js/comparison.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53059 - "GET /static/js/view_sensitivity.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53059 - "GET /api/manifest HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53059 - "POST /api/state HTTP/1.1" 200 OK
+C:\Users\mallo\1cfe\fusion-tea\.venv\Lib\site-packages\pydantic\type_adapter.py:441: UserWarning: ConceptData '01': sensitivity keys not covered by parameter_metadata: ['B', 'M_ion', 'R0', 'R_w', 'T_e', 'T_edge', 'Z_eff', 'availability', 'b_max', 'blanket_t', 'construction_time_yr', 'dd_f_He3', 'dd_f_T', 'dhe3_dd_frac', 'dhe3_f_T', 'disruption_damage', 'disruption_downtime', 'disruption_rate_base', 'disruption_steepness', 'elon', 'eta_de', 'eta_p', 'eta_pin', 'eta_th', 'f_GW', 'f_sub', 'ht_shield_t', 'inflation_rate', 'interest_rate', 'lambda_q', 'mn', 'n_e', 'p_coils', 'p_cool', 'p_cryo', 'p_house', 'p_icrf', 'p_input', 'p_lhcd', 'p_nbi', 'p_pump', 'p_trit', 'plasma_t', 'plasma_volume', 'q95', 'r_coil', 'structure_t', 'tau_ratio', 'vessel_t']
+  return self.validator.validate_python(
+INFO:     127.0.0.1:51170 - "GET /api/concepts/01 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51170 - "POST /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55502 - "GET /api/taxonomy/registry HTTP/1.1" 200 OK
+C:\Users\mallo\1cfe\fusion-tea\.venv\Lib\site-packages\pydantic\type_adapter.py:441: UserWarning: ConceptData '21': sensitivity keys not covered by parameter_metadata: ['B', 'M_ion', 'R0', 'R_w', 'T_e', 'T_edge', 'Z_eff', 'availability', 'b_max', 'blanket_t', 'construction_time_yr', 'dd_f_He3', 'dd_f_T', 'dhe3_dd_frac', 'dhe3_f_T', 'disruption_damage', 'disruption_downtime', 'disruption_rate_base', 'disruption_steepness', 'elon', 'eta_de', 'eta_p', 'eta_pin', 'eta_th', 'f_GW', 'f_sub', 'ht_shield_t', 'inflation_rate', 'interest_rate', 'lambda_q', 'mn', 'n_e', 'p_coils', 'p_cool', 'p_cryo', 'p_house', 'p_input', 'p_nbi', 'p_pump', 'p_trit', 'plasma_t', 'plasma_volume', 'q95', 'r_coil', 'structure_t', 'tau_ratio', 'vessel_t']
+  return self.validator.validate_python(
+INFO:     127.0.0.1:50994 - "GET /api/concepts/21 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50994 - "POST /api/state HTTP/1.1" 200 OK
+C:\Users\mallo\1cfe\fusion-tea\.venv\Lib\site-packages\pydantic\type_adapter.py:441: UserWarning: ConceptData '15': sensitivity keys not covered by parameter_metadata: ['blanket_energy_multiplication', 'blanket_thickness_m', 'blanket_unit_cost_M_per_m3', 'chamber_inner_radius_m', 'construction_time_years', 'core_lifetime_FPY', 'driver_cost_per_MJ_stored_M_USD', 'driver_electrical_energy_per_shot_MJ', 'driver_rep_rate_Hz', 'driver_stored_energy_per_shot_MJ', 'driver_wall_to_plasma_efficiency', 'electrode_replacement_interval_yr', 'electrode_system_cost_M_USD', 'fuel_cost_per_shot_USD', 'fusion_Q', 'fusion_energy_per_shot_MJ', 'inflation_rate', 'interest_rate', 'om_cost_per_MW_yr', 'p_house_MW', 'p_libp_pumping_MW', 'p_tritium_MW', 'pinch_current_MA', 'plant_availability', 'plant_lifetime_years', 'plasma_temperature_keV', 'shield_thickness_m', 'structure_thickness_m', 'thermal_efficiency', 'vessel_thickness_m']
+  return self.validator.validate_python(
+INFO:     127.0.0.1:55684 - "GET /api/concepts/15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55684 - "POST /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58712 - "POST /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53762 - "GET /api/taxonomy/similarity/16?top_n=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55102 - "GET /compare?mode=integrated&concepts=16,28 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55102 - "GET /static/css/explorer.css HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:52141 - "GET /static/vendor/plotly-basic.min.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:55102 - "GET /static/js/comparison.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:61797 - "GET /static/js/cas_breakdown.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:58149 - "GET /static/js/tornado.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:58710 - "GET /static/js/view_categorical.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:52347 - "GET /static/js/view_summary.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:52141 - "GET /static/js/view_capex.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:55102 - "GET /static/js/view_sensitivity.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:55102 - "GET /api/manifest HTTP/1.1" 200 OK
+C:\Users\mallo\1cfe\fusion-tea\.venv\Lib\site-packages\pydantic\type_adapter.py:441: UserWarning: ConceptData '28': sensitivity keys not covered by parameter_metadata: ['B', 'M_ion', 'R0', 'R_w', 'T_e', 'T_edge', 'Z_eff', 'availability', 'b_max', 'blanket_t', 'construction_time_yr', 'dd_f_He3', 'dd_f_T', 'dhe3_dd_frac', 'dhe3_f_T', 'disruption_damage', 'disruption_downtime', 'disruption_rate_base', 'disruption_steepness', 'elon', 'eta_de', 'eta_p', 'eta_pin', 'eta_th', 'f_GW', 'f_sub', 'ht_shield_t', 'inflation_rate', 'interest_rate', 'lambda_q', 'mn', 'n_e', 'p_coils', 'p_cool', 'p_cryo', 'p_house', 'p_input', 'p_nbi', 'p_pump', 'p_trit', 'plasma_t', 'plasma_volume', 'q95', 'r_coil', 'structure_t', 'tau_ratio', 'vessel_t']
+  return self.validator.validate_python(
+INFO:     127.0.0.1:55102 - "GET /api/concepts/28 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52141 - "GET /api/taxonomy/registry HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55102 - "POST /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59116 - "GET /taxonomy HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59116 - "GET /static/vendor/cytoscape.min.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:61275 - "GET /static/js/tree_view.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:60774 - "GET /static/js/selection_tray.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:56972 - "GET /static/js/taxonomy_card.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:61081 - "GET /static/js/neighborhood_graph.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:59116 - "GET /static/js/taxonomy.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:56525 - "GET /static/js/constellation.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:56525 - "GET /api/taxonomy/tree HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61081 - "GET /api/taxonomy/registry HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59116 - "GET /api/taxonomy/constellation HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56972 - "GET /api/manifest HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49867 - "GET /api/taxonomy/similarity/36?top_n=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50802 - "GET /api/concepts/21 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50802 - "POST /api/state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55157 - "GET /concept/21 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55157 - "GET /static/css/explorer.css HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:64821 - "GET /static/js/parameter_card.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49669 - "GET /static/js/concept_page.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64920 - "GET /static/vendor/plotly-basic.min.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:65029 - "GET /static/js/tornado.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:56410 - "GET /static/js/cas_breakdown.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:49669 - "GET /api/parameter_index HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64821 - "GET /api/concepts/21 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56410 - "GET /api/manifest HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56410 - "POST /api/state HTTP/1.1" 200 OK

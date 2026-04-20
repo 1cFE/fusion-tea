@@ -1,4 +1,3 @@
-# STALE: analysis-updated-iter-3
 """Large-Scale Stellarator (Gauss Fusion GIGA) — LCOE estimate.
 
 Modeling approach:

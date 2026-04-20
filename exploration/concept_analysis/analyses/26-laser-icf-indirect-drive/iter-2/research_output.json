@@ -1,0 +1,159 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-3",
+      "gap_description": "Capacity factor not modeled — no rep-rate-coupled availability analysis exists in available sources",
+      "queries": [
+        "UKAEA PROCESS code IFE inertial fusion energy capacity factor availability model"
+      ],
+      "candidates": [
+        {
+          "url": "https://ukaea.github.io/PROCESS/fusion-devices/inertial/",
+          "title": "Inertial Fusion Energy Model - PROCESS (UKAEA)",
+          "triage": "not-useful",
+          "notes": "Page focuses on driver physics parameters (efficiency, target gain, driver energy) and geometric inputs. No capacity factor or plant availability model documented. IFE module sets up physics constraints only — economic/operational metrics not included."
+        },
+        {
+          "url": "https://link.springer.com/article/10.1023/A:1021842402879",
+          "title": "Complexity And Availability for Fusion Power Plants: The Potential Advantages of Inertial Fusion Energy (Journal of Fusion Energy)",
+          "triage": "paywall",
+          "notes": "303 redirect — Springer institutional access required. Title is directly relevant to IFE availability modeling, but content not accessible."
+        },
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7658748/",
+          "title": "A simplified economic model for inertial fusion (Hawker 2020, Royal Society/PMC)",
+          "triage": "relevant",
+          "notes": "Full open-access paper. Treats availability as a free parameter (50–100%, default 70%). Explicitly notes no IFE-specific availability sub-model exists and proposes a parametric approach. Also contains O&M cost range ($10–100/kWe-yr from gas/nuclear analogues). Extracted — covers G-3 and G-9 partially."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7658748/",
+          "source_name": "pmc-articles-pmc7658748"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "No IFE-specific rep-rate-coupled availability model found in any accessible source. Hawker 2020 addresses availability parametrically (70% default, 50–100% range) with acknowledgment that a proper availability sub-model would require component failure rates. The Springer paper on IFE availability advantages is paywalled and is the strongest candidate if institutional access is available."
+    },
+    {
+      "gap_id": "G-5",
+      "gap_description": "Target factory capital cost — GEM bottom-up model exists but not available; Goodin et al. 2004 cited as key reference",
+      "queries": [
+        "LLNL GEM generalized economics model inertial fusion target factory cost",
+        "Goodin 2004 \"target fabrication\" \"inertial fusion\" factory cost site:osti.gov OR site:iaea.org OR site:arxiv.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://lift.llnl.gov/llnl-releases-generalized-economics-model-fusion-energy",
+          "title": "LLNL Releases Generalized Economics Model for Fusion Energy (LIFT)",
+          "triage": "not-useful",
+          "notes": "Press release only. Describes GEM capabilities but provides no quantitative data. Actual model requires download from LLNL software licensing portal."
+        },
+        {
+          "url": "https://www.ans.org/news/2026-02-05/article-7735/llnl-offers-tools-to-model-the-economics-of-inertial-fusion-power-plants/",
+          "title": "LLNL offers tools to model the economics of inertial fusion power plants (ANS Nuclear Newswire, Feb 2026)",
+          "triage": "not-useful",
+          "notes": "Article summary only. States GEM determines capital, O&M, and electricity costs but provides no numerical outputs. Not worth extracting."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/828518",
+          "title": "COST-EFFECTIVE TARGET FABRICATION FOR INERTIAL FUSION ENERGY (Goodin et al., 2004, OSTI)",
+          "triage": "relevant",
+          "notes": "OSTI conference record of the Goodin 2004 paper cited in analysis. Has abstract showing: NIF targets ~$2,500 each; IFE direct-drive target achievable at $0.16/target NOAK; factory supply ~500,000 targets/day. Full text may require OSTI portal access."
+        },
+        {
+          "url": "https://fire.pppl.gov/fpa07_goodin_icf_fuel.pdf",
+          "title": "IFE Target Fabrication, Delivery, and Cost Estimates (Goodin, Fusion Power Associates 2007)",
+          "triage": "relevant",
+          "notes": "Direct PDF, accessible. 2007 Fusion Power Associates presentation by same author as the 2004 reference. Contains updated target fabrication and cost methodology. Extracted."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://fire.pppl.gov/fpa07_goodin_icf_fuel.pdf",
+          "source_name": "fire-fpa07-goodin-icf-fuel"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "notes": "Goodin 2007 FPA presentation is the most accessible version of the Goodin target fabrication cost methodology. Contains cost structure, factory throughput requirements, and per-target cost analysis at IFE-relevant production rates. The 2004 OSTI conference record (biblio/828518) was not extracted as the 2007 version is more recent and accessible. GEM Excel model itself is not publicly available without LLNL license."
+    },
+    {
+      "gap_id": "G-9",
+      "gap_description": "O&M breakdown (fixed, variable, scheduled, unplanned) — no published IFE O&M model in available sources",
+      "queries": [
+        "IFE inertial fusion energy power plant O&M operations maintenance cost LCOE breakdown"
+      ],
+      "candidates": [
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7658748/",
+          "title": "A simplified economic model for inertial fusion (Hawker 2020, Royal Society/PMC)",
+          "triage": "relevant",
+          "notes": "Full open-access paper. O&M treated as C_O&M = ε × P_e, with ε in $/kWe-yr range $10–100 (from gas/nuclear analogues). No IFE-specific itemized breakdown. Covers G-9 partially. Already extracted for G-3."
+        },
+        {
+          "url": "https://arxiv.org/html/2602.19389",
+          "title": "Extension of the Fusion Power Plant Costing Standard (arXiv, 2026)",
+          "triage": "potentially-relevant",
+          "notes": "Not triaged with WebFetch due to budget constraints. ArXiv paper from 2026 on fusion costing standards may include IFE O&M structure. Candidate for future iteration."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "partial",
+      "notes": "G-9 is partially covered by the Hawker PMC paper (extracted under G-3). That paper provides the only published parametric O&M treatment for IFE, using $10–100/kWe-yr from nuclear analogues. The arXiv costing standard paper (2602.19389) was not triaged due to search budget exhaustion and is a promising candidate for iter-3."
+    },
+    {
+      "gap_id": "G-10",
+      "gap_description": "Tritium processing system design and cost — HYLIFE-III design study likely covers FLiBe tritium extraction",
+      "queries": [
+        "HYLIFE tritium extraction FLiBe molten salt tritium processing system cost inertial fusion"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/biblio/10179076",
+          "title": "HYLIFE-II tritium management system (OSTI Technical Report, 1993)",
+          "triage": "relevant",
+          "notes": "Abstract contains detailed cost breakdown: $92M total, 56% vacuum disengagers, 15% blast chamber vacuum, 9% cryogenic plant, 6% each emergency air cleanup and waste treatment, 3% protium removal, 2% each fuel storage and inert gas. Also gives FLiBe pumping power for tritium extraction: 6.6 MW. Extracted."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/7021072",
+          "title": "HYLIFE-II: A molten-salt inertial fusion energy power plant design — final report (OSTI, 1994)",
+          "triage": "relevant",
+          "notes": "Full HYLIFE-II plant design report with economics. Not extracted due to budget limits; candidate for iter-3 to capture full plant capital cost breakdown."
+        },
+        {
+          "url": "https://ifestar.org/funded-projects/tritium-extraction-from-flibe-blankets-using-the-corext-process",
+          "title": "Tritium extraction from FLiBe blankets using the CoRExt process (IFE-STAR project)",
+          "triage": "potentially-relevant",
+          "notes": "Current IFE-STAR funded project for FLiBe tritium extraction R&D. Not triaged with WebFetch due to budget constraints. May be institutional page or project summary without capital cost data."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/biblio/10179076",
+          "source_name": "osti-biblio-10179076"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "notes": "HYLIFE-II tritium management system report provides the only published cost breakdown for FLiBe-based tritium processing. The $92M figure and component allocation are directly usable for G-10. Note this is 1993 dollars and refers to HYLIFE-II architecture (heavy ion driven), not Xcimer's architecture — scaling and technology assumptions should be noted in analysis."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 4,
+    "sources_extracted": 3,
+    "sources_failed": 0,
+    "searches_used": 5,
+    "extractions_used": 3,
+    "gaps_closed": ["G-5", "G-10"],
+    "gaps_partial": ["G-3", "G-9"],
+    "candidates_for_iter_3": [
+      "https://link.springer.com/article/10.1023/A:1021842402879 (IFE availability — Springer, needs institutional access)",
+      "https://arxiv.org/html/2602.19389 (Fusion costing standard extension — arXiv 2026, covers O&M structure)",
+      "https://www.osti.gov/biblio/7021072 (HYLIFE-II full report — for plant capital cost breakdown)",
+      "https://ifestar.org/funded-projects/tritium-extraction-from-flibe-blankets-using-the-corext-process (CoRExt FLiBe tritium extraction — current IFE-STAR program)"
+    ]
+  }
+}

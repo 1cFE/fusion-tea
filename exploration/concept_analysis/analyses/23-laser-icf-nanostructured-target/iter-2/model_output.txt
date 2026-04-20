@@ -1,0 +1,153 @@
+========================================================================
+Laser ICF — Nanostructured Target (p-B11)
+** ALL LCOE VALUES CONTINGENT ON UNDEMONSTRATED IGNITION PHYSICS **
+========================================================================
+
+── Marvel Pilot (100 MWe, 10 Hz, eta_th=40%, eta_pin=10%) ──
+LCOE:      82.4 $/MWh   |  Overnight: 5346 $/kW
+Fusion:    310 MW     |  Net: 100 MW   |  Q_eng: 5.0
+Q_sci:     217.6         |  Recirc frac: 20.00%
+
+── Marvel Scaled to 1 GWe (from 100 MWe reference, per-account scaling) ──
+LCOE:      37.9 $/MWh  |  Overnight: 2650 $/kW
+Fusion:    3103 MW   |  Net: 1000 MW   |  Q_eng: 5.0
+
+── HB11 Energy (1 GWe, 1 Hz, steam cycle, eta_th=38%) ──
+LCOE:      40.7 $/MWh  |  Overnight: 3098 $/kW
+Fusion:    3479 MW   |  Net: 1000 MW   |  Q_eng: 4.0
+
+── Marvel Hybrid DEC Sweep (INDUCTIVE_DEC, 100 MWe, f_pdv=0.80) ──
+  eta_dec=0%: steam-only fallback; eta_dec=60%: near Marvel claim upper bound
+  Crossover to net-positive DEC at eta_dec≈20% (Q_eng=5, f_pdv=0.80)
+
+   eta_dec    LCOE ($/MWh)   p_net (MW)    recirc
+  ------------------------------------------------
+       0%            87.3        100.0    20.00%
+      10%            88.3        100.0    20.00%
+      20%            89.1        100.0    20.00%
+      30%            89.7        100.0    20.00%
+      40%            90.2        100.0    20.00%
+      50%            90.5        100.0    20.00%
+      60%            90.9        100.0    20.00%
+
+── CAS Breakdown: Marvel 100 MWe pilot ──
+
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    11.4
+CAS21    Buildings                         163.6
+CAS22    Reactor Plant Equipment           144.0
+CAS23    Turbine Plant                      24.7
+CAS24    Electrical Plant                   10.5
+CAS25    Miscellaneous                       6.4
+CAS26    Heat Rejection                     10.7
+CAS27    Special Materials                   0.0
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                         0.0
+CAS30    Indirect Costs                     60.8
+CAS40    Owner's Costs                       6.3
+CAS50    Supplementary                      21.4
+CAS60    IDC                                69.8
+CAS70    O&M (annualized)                   11.1
+CAS80    Fuel (annualized)                   0.0
+CAS90    Financial                          43.1
+------------------------------------------------
+         Total Capital                     534.6
+
+── CAS22 Sub-accounts (Marvel 100 MWe) ──
+  C220101: 1.2 M$
+  C220102: 1.4 M$
+  C220104: 11.4 M$
+  C220105: 1.7 M$
+  C220106: 4.9 M$
+  C220107: 0.7 M$
+  C220108: 56.9 M$
+  C220110: 3.5 M$
+  C220111: 11.4 M$
+  C220200: 27.4 M$
+  C220300: 0.3 M$
+  C220400: 0.6 M$
+  C220500: 3.0 M$
+  C220600: 1.8 M$
+  C220700: 17.7 M$
+  C220000: 144.0 M$
+
+── Key Assumptions / Data Quality ──────────────────────────────────────
+CRITICAL UNCERTAIN — physics not demonstrated:
+  q_eng = 5.0     ASSUMED. HB11 data: ~0.005% laser-to-alpha efficiency
+                  (~4 OOM from net energy gain). Marvel: no yield data.
+                  All LCOE results are contingent on ignition being achieved.
+
+  eta_pin = 10%   UNCERTAIN. HB11 stated target; Marvel unpublished.
+                  10 Hz continuous at PW-class energies is undemonstrated.
+
+  eta_th = 40%    CONSERVATIVE. Marvel claims hybrid "up to ~70%" with
+                  no engineering detail (TRL 2). HB11 uses ~38% steam.
+                  Primary result uses steam-only assumption.
+
+MEDIUM CONFIDENCE:
+  f_rep = 10 Hz   Marvel ATLAS facility design; not yet at commercial scale.
+  availability=75% No pulsed laser IFE plant analogue; placeholder.
+  p-B11 aneutronic No blanket/tritium/heavy shielding confirmed.
+
+FRAMEWORK DEFAULTS (no override data available):
+  Laser driver    8.0 M$/MW_driver (NOAK DPSSL; no Marvel/HB11 cost data)
+  Target factory  244 M$ at 1 GWe ref (Goodin et al. analogue)
+  O&M             24 M$/yr base (pb11, aneutronic, no tritium)
+  B-11 fuel cost  75 $/kg NOAK (industrial estimate; enrichment need unconfirmed)
+
+SUPPLY CHAIN ADVANTAGES vs D-T:
+  No tritium → no breeding blanket, no TBR constraint, no tritium startup cost
+  No HTS tape → no superconducting magnet supply chain risk
+  No beryllium/Li-6 → no exotic breeder materials
+  Standard steel construction viable (UNSW collaboration confirms)
+
+── Sensitivity (elasticity = %LCOE / %param) — Marvel 100 MWe ──
+--------------------------------------------------------
+  (NaN values replaced with central finite-difference estimates)
+  eta_dec elasticity (DEC model, base eta_dec=30%): +0.0181
+
+Engineering levers:
+  availability                         -0.9997
+  construction_time_yr                 +0.2725
+  q_eng                                -0.1390
+  eta_th                               -0.0987
+  plasma_t                             +0.0349
+  eta_pin                              +0.0268
+  vessel_t                             +0.0118
+  p_house                              -0.0080
+  f_sub                                -0.0075
+  structure_t                          +0.0051
+  p_target                             -0.0040
+  blanket_t                            +0.0031
+  p_pump                               -0.0021
+  ht_shield_t                          +0.0019
+  f_rep                                -0.0017
+  mn                                   +0.0000
+  dd_f_T                               +0.0000
+  dd_f_He3                             +0.0000
+  dhe3_dd_frac                         +0.0000
+  dhe3_f_T                             +0.0000
+  f_rad                                +0.0000
+  eta_dec                              +0.0000
+
+Financial:
+  interest_rate                        +0.6493
+  inflation_rate                       +0.0799
+
+Costing constants (top 15):
+  om_cost_pb11                         +0.2041
+  target_factory_base                  +0.1343
+  indirect_fraction                    +0.1057
+  driver_laser_per_mw                  +0.0269
+  installation_frac                    +0.0237
+  electric_per_mw                      +0.0220
+  misc_per_mw                          +0.0134
+  vessel_unit_cost                     +0.0115
+  construction_insurance_frac          +0.0109
+  owner_cost_pb11                      +0.0108
+  digital_twin                         +0.0104
+  shipping_frac                        +0.0094
+  decom_provision_pb11                 +0.0091
+  remote_handling_pb11_base            +0.0083
+  plant_studies_noak                   +0.0068

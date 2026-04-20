@@ -1,0 +1,97 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-13",
+      "gap_description": "Plant capacity factor target — steady-state concept avoids pulsed penalties but FRC CW operation undemonstrated",
+      "queries": [
+        "TAE Technologies Da Vinci capacity factor availability operational uptime fusion plant",
+        "beam-driven FRC steady-state fusion plant capacity factor availability factor site:arxiv.org OR site:osti.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/abs/2103.12451",
+          "title": "Plant efficiency: a sensitivity analysis of the capacity factor for fusion power plants with high recirculated power",
+          "triage": "relevant",
+          "notes": "Peer-reviewed (Nuclear Fusion Vol. 61, 2021). Directly addresses capacity factor and its interaction with recirculated power fraction — the central challenge for NBI-heavy beam-driven fusion like TAE's Da Vinci. Not FRC-specific but directly applicable by analogy. Analyzes Power Plant Conceptual Study models. Argues first-generation plants will combine high recirculating power with low capacity factor, resulting in poor plant efficiency."
+        },
+        {
+          "url": "https://www.osti.gov/pages/biblio/1957531",
+          "title": "The Princeton Field-Reversed Configuration for Compact Nuclear Fusion Power Plants",
+          "triage": "low-relevance",
+          "notes": "Princeton FRC paper covers D-He3 fuel at 1-10 MW scale (not p-B11, not Da Vinci scale). Steady-state FRC design but no capacity factor data in abstract. Deprioritized."
+        },
+        {
+          "url": "https://tae.com/tae-shortens-device-roadmap-prepares-for-commercial-era/",
+          "title": "TAE shortens device roadmap, prepares for commercial era",
+          "triage": "not-fetched",
+          "notes": "TAE's own press release — likely JS-heavy landing page with no quantitative capacity factor data. Deprioritized given no TAE availability claims appear anywhere in public record."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/abs/2103.12451",
+          "source_name": "arxiv-2103-12451"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "No TAE-specific capacity factor data found anywhere in public record. Extracted a peer-reviewed analogy source (Mulder et al. 2021) that directly models the capacity factor penalty for fusion plants with high recirculated power fraction — the core issue for Da Vinci's NBI-driven design. This provides an analytical framework for estimating capacity factor impact, but does not provide a TAE-stated target."
+    },
+    {
+      "gap_id": "G-15",
+      "gap_description": "B-11 isotopic enrichment cost if higher purity required than natural abundance",
+      "queries": [
+        "boron-11 isotope enrichment cost price per kg commercial supplier",
+        "boron-11 enrichment cost fusion fuel p-B11 aneutronic site:arxiv.org OR site:osti.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.researchgate.net/figure/Market-Price-of-Boron-Isotope-Product-Abundance-Price_tbl1_347386544",
+          "title": "Market Price of Boron Isotope Product Abundance Price (ResearchGate table)",
+          "triage": "paywall",
+          "notes": "403 Forbidden — ResearchGate content not accessible without login."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/4364833",
+          "title": "BORON and its ISOTOPES (OSTI historical report)",
+          "triage": "unreadable",
+          "notes": "PDF binary not parseable by WebFetch summarizer. Historical document (~1950s era based on OSTI ID) — may contain historical B-11 pricing but could not verify or extract content."
+        },
+        {
+          "url": "https://www.americanelements.com/boron-11-isotope-14798-13-1",
+          "title": "Boron-11 Isotope — American Elements",
+          "triage": "not-fetched",
+          "notes": "Commercial catalog page. Supplier confirmed but no public pricing listed — request-for-quote model. Would not yield quantitative cost data suitable for citation."
+        },
+        {
+          "url": "https://arxiv.org/abs/2401.11338",
+          "title": "ENN's Roadmap for Proton-Boron Fusion Based on Spherical Torus",
+          "triage": "not-relevant",
+          "notes": "Triaged via abstract: does not discuss B-11 fuel enrichment costs or procurement economics. Focuses on reactor physics parameters."
+        }
+      ],
+      "extracted": [],
+      "failed": [
+        {
+          "url": "https://www.researchgate.net/figure/Market-Price-of-Boron-Isotope-Product-Abundance-Price_tbl1_347386544",
+          "reason": "403 Forbidden — institutional login required"
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/4364833",
+          "reason": "PDF binary not readable by WebFetch; content could not be assessed for relevance"
+        }
+      ],
+      "status": "failed",
+      "notes": "No extractable open-access source for B-11 enrichment cost found. Commercial suppliers (American Elements) do not publish pricing. The p-B11 fusion literature confirms B-11 abundance and low fuel cost conceptually but does not provide enrichment cost figures. The analysis's own 'negligible' estimate appears consistent with publicly available qualitative statements. Gap remains open but low-priority nature means this outcome is acceptable."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 2,
+    "sources_extracted": 1,
+    "sources_failed": 0,
+    "sources_not_accessible": 2,
+    "searches_used": 4,
+    "extractions_used": 1,
+    "notes": "G-13 partially addressed by extracting a directly relevant peer-reviewed analogy source (Mulder et al. 2021, Nuclear Fusion) on capacity factor sensitivity for fusion plants with high recirculated power. No TAE-specific capacity factor target found in any public disclosure. G-15 (nice-to-have) found no accessible sources with quantitative B-11 enrichment cost data — commercial suppliers do not publish pricing, and accessible papers only confirm qualitative abundance/low-cost claims."
+  }
+}

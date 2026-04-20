@@ -1,0 +1,390 @@
+{
+  "concept_id": "13",
+  "name": "Electrostatic Hybrid (D-T)",
+  "confinement_family": "NONSTANDARD",
+  "company": "Avalanche Energy",
+  "status": "in_progress",
+  "illustration": null,
+  "has_cost_model": true,
+  "has_sensitivities": true,
+  "cost_model": {
+    "cas10": {
+      "name": "Preconstruction",
+      "cost_m_usd": 32.0002,
+      "overridden": false
+    },
+    "cas21": {
+      "name": "Buildings & Structures",
+      "cost_m_usd": 0.3378,
+      "overridden": false
+    },
+    "cas22": {
+      "name": "Reactor Plant Equipment",
+      "cost_m_usd": 415.86785086170624,
+      "overridden": false
+    },
+    "cas23": {
+      "name": "Turbine Plant Equipment",
+      "cost_m_usd": 0.12,
+      "overridden": false
+    },
+    "cas24": {
+      "name": "Electrical Plant Equipment",
+      "cost_m_usd": 0.10101600000000001,
+      "overridden": false
+    },
+    "cas25": {
+      "name": "Miscellaneous Plant Equipment",
+      "cost_m_usd": 0.061488,
+      "overridden": false
+    },
+    "cas26": {
+      "name": "Heat Rejection Systems",
+      "cost_m_usd": 0.040992,
+      "overridden": false
+    },
+    "cas27": {
+      "name": "Special Materials",
+      "cost_m_usd": 0.00015999999999999955,
+      "overridden": false
+    },
+    "cas28": {
+      "name": "Digital Twin & Simulation",
+      "cost_m_usd": 5.0,
+      "overridden": false
+    },
+    "cas29": {
+      "name": "Contingency",
+      "cost_m_usd": 63.22939602925593,
+      "overridden": false
+    },
+    "cas30": {
+      "name": "Indirect Costs",
+      "cost_m_usd": 64.63449371879496,
+      "overridden": false
+    },
+    "cas40": {
+      "name": "Owner's Costs",
+      "cost_m_usd": 0.34882660448996666,
+      "overridden": false
+    },
+    "cas50": {
+      "name": "Supplementary Costs",
+      "cost_m_usd": 28.008304498361976,
+      "overridden": false
+    },
+    "cas60": {
+      "name": "Interest During Construction",
+      "cost_m_usd": 97.71252206594616,
+      "overridden": false
+    },
+    "cas70": {
+      "name": "O&M Costs (annualised)",
+      "cost_m_usd": 70.70797270226686,
+      "overridden": false
+    },
+    "cas80": {
+      "name": "Fuel Costs (annualised)",
+      "cost_m_usd": 33.90636091188461,
+      "overridden": false
+    },
+    "cas90": {
+      "name": "Financial Costs",
+      "cost_m_usd": 75.04714848702486,
+      "overridden": false
+    },
+    "cas22_detail": {
+      "C220101": {
+        "name": "First Wall & Blanket",
+        "cost_m_usd": 0.020000000000000004,
+        "overridden": false
+      },
+      "C220102": {
+        "name": "Radiation Shield",
+        "cost_m_usd": 0.005654866776461629,
+        "overridden": false
+      },
+      "C220103": {
+        "name": "Magnets / Coils",
+        "cost_m_usd": 0.05,
+        "overridden": false
+      },
+      "C220104": {
+        "name": "Heating & Driver Systems",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220105": {
+        "name": "Primary Structure & Support",
+        "cost_m_usd": 0.1,
+        "overridden": false
+      },
+      "C220106": {
+        "name": "Vacuum System",
+        "cost_m_usd": 0.08,
+        "overridden": false
+      },
+      "C220107": {
+        "name": "Power Conditioning & Energy Storage",
+        "cost_m_usd": 0.05,
+        "overridden": false
+      },
+      "C220108": {
+        "name": "Divertor / Target Factory",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220109": {
+        "name": "Direct Energy Converter",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220110": {
+        "name": "Remote Handling & Maintenance Equipment",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220111": {
+        "name": "Installation Labor",
+        "cost_m_usd": 0.04349168134870463,
+        "overridden": false
+      },
+      "C220112": {
+        "name": "Isotope Separation Plant",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220200": {
+        "name": "Main & Secondary Coolant",
+        "cost_m_usd": 1.632435685581042,
+        "overridden": false
+      },
+      "C220300": {
+        "name": "Auxiliary Cooling & Cryoplant",
+        "cost_m_usd": 57.06999531365684,
+        "overridden": false
+      },
+      "C220400": {
+        "name": "Radioactive Waste Management",
+        "cost_m_usd": 0.0196,
+        "overridden": false
+      },
+      "C220500": {
+        "name": "Fuel Handling & Storage",
+        "cost_m_usd": 0.16268377331231165,
+        "overridden": false
+      },
+      "C220600": {
+        "name": "Other Reactor Plant Equipment",
+        "cost_m_usd": 0.006069736389555298,
+        "overridden": false
+      },
+      "C220700": {
+        "name": "Instrumentation & Control",
+        "cost_m_usd": 2.8305182276002574,
+        "overridden": false
+      }
+    },
+    "headline": {
+      "lcoe_per_mwh": 6929.117947419781,
+      "overnight_cost_per_kw": 175104.85703551228,
+      "p_net_mw": 1000.0,
+      "q_eng": 10.0,
+      "capacity_factor": 0.85
+    },
+    "sensitivities": {
+      "engineering": {
+        "Q_engineering": {
+          "elasticity": -15.142017636364976,
+          "baseline": 10.0
+        },
+        "thermal_efficiency": {
+          "elasticity": -15.338845805392587,
+          "baseline": 0.12
+        },
+        "p_input_module_kW": {
+          "elasticity": -2.3072795633372554,
+          "baseline": 1.0
+        },
+        "plant_availability": {
+          "elasticity": -0.609781057546626,
+          "baseline": 0.85
+        },
+        "plant_lifetime_years": {
+          "elasticity": -0.09522224992254873,
+          "baseline": 30.0
+        },
+        "device_radius_m": {
+          "elasticity": 0.003432151646582562,
+          "baseline": 0.1
+        },
+        "device_length_m": {
+          "elasticity": 0.0021450947791406376,
+          "baseline": 0.2
+        },
+        "shield_thickness_m": {
+          "elasticity": 0.020164277040838906,
+          "baseline": 0.3
+        },
+        "hv_power_supply_cost_per_kW_USD": {
+          "elasticity": 0.0,
+          "baseline": 300.0
+        },
+        "sc_magnet_cost_M_USD": {
+          "elasticity": 0.07586720833297478,
+          "baseline": 0.05
+        },
+        "cathode_cost_M_USD": {
+          "elasticity": 0.40102105992677334,
+          "baseline": 0.1
+        },
+        "shielding_cost_per_m3_M_USD": {
+          "elasticity": 0.008580379116504652,
+          "baseline": 0.015
+        },
+        "cathode_lifetime_FPY": {
+          "elasticity": -0.20155799217980544,
+          "baseline": 2.0
+        },
+        "tritium_price_per_g_USD": {
+          "elasticity": 0.18120412243769646,
+          "baseline": 35000.0
+        },
+        "tritium_consumed_g_per_MJ_fusion": {
+          "elasticity": 0.1887235957053345,
+          "baseline": 3.47e-6
+        },
+        "construction_time_years": {
+          "elasticity": 0.16223457746097295,
+          "baseline": 4.0
+        },
+        "om_frac_of_capex": {
+          "elasticity": 0.17462246540481507,
+          "baseline": 0.04
+        }
+      },
+      "financial": {
+        "interest_rate": {
+          "elasticity": 0.3828836525914304,
+          "baseline": 0.1
+        },
+        "inflation_rate": {
+          "elasticity": 0.045453590393087495,
+          "baseline": 0.02
+        }
+      }
+    },
+    "params": {
+      "Q_engineering": 10.0,
+      "thermal_efficiency": 0.12,
+      "p_input_module_kW": 1.0,
+      "n_modules": 1000.0,
+      "plant_availability": 0.85,
+      "plant_lifetime_years": 30.0,
+      "noak": 0.0,
+      "device_radius_m": 0.1,
+      "device_length_m": 0.2,
+      "shield_thickness_m": 0.3,
+      "hv_power_supply_cost_per_kW_USD": 300.0,
+      "hv_per_module_cost_M_USD": 0.0,
+      "sc_magnet_cost_M_USD": 0.05,
+      "cathode_cost_M_USD": 0.1,
+      "shielding_cost_per_m3_M_USD": 0.015,
+      "cathode_lifetime_FPY": 2.0,
+      "tritium_price_per_g_USD": 35000.0,
+      "tritium_consumed_g_per_MJ_fusion": 3.47e-6,
+      "interest_rate": 0.1,
+      "inflation_rate": 0.02,
+      "construction_time_years": 4.0,
+      "om_frac_of_capex": 0.04
+    }
+  },
+  "parameter_metadata": {},
+  "narrative": {
+    "key_bets": [
+      "Electron co-confinement in the crossed-field Orbitron geometry enables ion densities ~50× above the space-charge limit (currently supported by PIC simulations only)",
+      "Coulomb collision thermalization can be suppressed sufficiently to allow Q>1 operation, despite the 1998 Lampe-Mannheimer analysis claiming collision rates 25–37× faster than fusion",
+      "Sustained 300 kV operation with 4.7 MV/m field gradient can be maintained reliably under D-T plasma load and neutron bombardment over commercial timescales",
+      "Mass-manufactured small modules (1–100 kWe each) can be stacked into a commercial plant architecture at low per-kWe capital cost",
+      "A practical energy conversion pathway exists for kWe-scale modules, despite conventional thermal turbines being impractical below ~1 MWe",
+      "HTS superconducting magnet upgrade to 0.5 T can be achieved in compact geometry adjacent to a neutron-producing device",
+      "Ion orbit stability at 300 kV is achievable without ion-cathode impact at fusion-relevant kinetic energies"
+    ],
+    "eliminated_costs": [
+      "Large superconducting magnet systems — only a small 0.5 T HTS coil pair required vs. 5–20 T fields in MFE tokamaks, avoiding the REBCO tape supply bottleneck",
+      "Breeding blanket capital cost — no FLiBe or LiPb blanket required at current design maturity (replaced by purchased tritium OPEX)",
+      "Conventional plasma heating systems — no RF, NBI, or gyrotron systems; replaced by HV power supply plus ion gun array",
+      "Large beryllium inventories and FLiBe production requirements are avoided entirely",
+      "Large-volume first wall and divertor systems sized for a single large plasma are replaced by per-module chamber components"
+    ],
+    "novel_costs": [
+      "Sustained 300 kV HV power supply and proprietary HV feedthrough at per-module scale, scaling with module count across the plant",
+      "Purchased tritium as a permanent OPEX driver at >$35,000/g (no breeding blanket design exists; MoU with Fusion Fuel Cycles covers this only as a collaboration direction)",
+      "Per-module neutron shielding (the 'concrete castle' approach) for stacked multi-module arrays — economically unfavorable at small module scale",
+      "Cathode replacement cost under combined neutron and ion bombardment, with unknown lifetime driving variable O&M",
+      "Energy conversion at 1–100 kWe module scale where conventional turbines are impractical and thermoelectric efficiency is only ~5–15%"
+    ],
+    "risks": [
+      {
+        "description": "Q>1 has not been demonstrated in any electrostatic confinement device; the entire economic case is conditional on an unproven physics result",
+        "severity": "high"
+      },
+      {
+        "description": "Coulomb collision loss rate is unmeasured at fusion-relevant parameters; the 1998 Lampe-Mannheimer analysis claims rates 25–37× faster than fusion — an unresolved fundamental barrier",
+        "severity": "high"
+      },
+      {
+        "description": "The central 50× density-enhancement claim is supported only by PIC simulations; space-charge mitigation is explicitly stated as 'the focus of initial experiments' and not yet achieved",
+        "severity": "high"
+      },
+      {
+        "description": "No commercial plant architecture exists — module count, BOP layout, shielding integration, and tritium handling across hundreds of modules are entirely undefined",
+        "severity": "high"
+      },
+      {
+        "description": "Energy conversion pathway at 1–100 kWe module scale is undefined; stated turbines are impractical below ~1 MWe and no alternative is specified",
+        "severity": "high"
+      },
+      {
+        "description": "No breeding blanket design exists; tritium must be purchased indefinitely at >$35,000/g, potentially adding $0.01–0.10/kWh and dominating OPEX at near-breakeven Q",
+        "severity": "high"
+      },
+      {
+        "description": "Diocotron and electron cyclotron drift instabilities are identified in simulations but uncharacterized experimentally, creating risk at higher density operation",
+        "severity": "medium"
+      },
+      {
+        "description": "Cathode and HV feedthrough lifetime under sustained 14 MeV neutron bombardment is uncharacterized, driving unknown maintenance cycles and replacement costs",
+        "severity": "medium"
+      },
+      {
+        "description": "Overnight capital cost per kWe is entirely unbounded — the aspirational <$1B figure has no cost basis and no plant study exists",
+        "severity": "medium"
+      },
+      {
+        "description": "Ion orbit stability at 300 kV under D-T plasma conditions has not been demonstrated; ion-cathode impact at fusion-relevant energies is a structural concern raised in external critique",
+        "severity": "medium"
+      },
+      {
+        "description": "Per-kWe labor and O&M costs are highly unfavorable at 1–100 kWe module scale — a technician visit costs the same regardless of module output",
+        "severity": "medium"
+      },
+      {
+        "description": "Scaling law from demonstrated 100 kV operation to the 300 kV target operating point is not publicly validated (accessible only as abstract)",
+        "severity": "medium"
+      },
+      {
+        "description": "Avalanche Energy is a small early-stage company with modest funding ($29M Series A + $10M state grant) relative to the scale of physics and engineering challenges",
+        "severity": "low"
+      },
+      {
+        "description": "Regulatory cost exposure under a fission-style regime (Stewart & Shirvan 2.2× building cost factor) would apply if scaled to commercial power plant operation",
+        "severity": "low"
+      }
+    ]
+  },
+  "sources": {
+    "model_setup": null,
+    "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/13-electrostatic-hybrid/analysis.md"
+  }
+}

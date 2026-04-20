@@ -1,0 +1,22 @@
+VERDICT: FINDINGS
+
+### F-1: Laser driver CAPEX is hardcoded — cannot test the top cost uncertainty
+- **Target:** model_setup.py / model output (C220107 and sensitivity sweep)
+- **Category:** model
+- **Finding:** The model output shows `C220107 Laser driver (DPSSL) [OVERRIDE] 1000.0` — a flat $1B override rather than a parameter-driven calculation. The sensitivity table confirms this: `driver_laser_per_mw` has elasticity of only +0.03, far below availability (-0.90) and chamber radius (+0.60). Yet the analysis correctly identifies laser system CAPEX as challenge #1 — the dominant uncertainty, spanning $900M (NOAK floor) to $3B (FOAK mid) by the analysis's own estimate. The model as built cannot test this range. The most important economic uncertainty identified by the analysis is structurally inaccessible to the model's sensitivity sweep.
+- **Recommendation:** Replace the override with a parameter-driven calculation: `laser_cost = E_d_MJ * 1e6 * laser_cost_per_J`, where `laser_cost_per_J` is a sweep parameter spanning the analysis-documented range ($100–$1,000/J from NOAK floor to FOAK mid). This makes the laser driver respond to the sensitivity sweep and allows the model to show LCOE as a function of the one parameter the analysis identifies as most uncertain and most impactful. Remove the [OVERRIDE] flag once parameter-driven.
+- **Priority:** blocking
+
+### F-2: Concept 31 (direct drive laser IFE) missing from nearest-neighbor comparison
+- **Target:** Section 7 (Cross-Concept Notes)
+- **Category:** analysis
+- **Finding:** Section 7 names concept 26 (indirect drive) and concept 17a (hybrid drive / KrF excimer) as the laser IFE comparators, but omits concept 31 (Blue Laser Fusion, OEC Architecture, direct drive D-T), which is at iter-3 in the concept landscape. Concept 31 shares the same confinement family, drive scheme (direct drive), and fuel (D-T) as GenF/TARANIS — it is the closest structural neighbor within the IFE family. The checklist requires 2-3 nearest neighbors; omitting the most similar direct-drive concept leaves a gap in the comparative framing that matters for TEA (Goal 1, Goal 2): both direct-drive laser IFE concepts share laser uniformity constraints, coupling efficiency advantages over indirect drive, and first-wall challenges, but they differ in laser technology (CBC fiber + OEC vs. DPSSL) and energy capture mode (hybrid thermal/direct vs. thermal-only).
+- **Recommendation:** Add a comparison paragraph for concept 31 in Section 7 covering: (a) shared direct-drive coupling efficiency and LPI challenges, (b) laser technology difference (CBC fiber OEC vs. DPSSL — implications for $/J cost trajectory), and (c) energy capture difference (concept 31 uses hybrid thermal + direct; GenF is thermal-only — cost and Q_eng implications). Reorder the nearest-neighbor list so concept 31 appears first as the primary same-family comparator.
+- **Priority:** important
+
+### F-3: Section 2 challenges not mapped to top LCOE-sensitive parameters
+- **Target:** Section 2 (Challenges in Capturing System Function)
+- **Category:** analysis
+- **Finding:** Section 2 ranks 6 challenges by "impact" but does not translate them into the 2-3 parameters with highest LCOE sensitivity — which the checklist requires (Goal 4). The model's actual sensitivity results show the top engineering levers are availability (-0.90), chamber radius/plasma_t (+0.60), and thermal efficiency (-0.28). These are not the challenges Section 2 leads with (laser cost dominates #1, tritium #2, target gain #3). Availability is Section 2's challenge #5 (first wall survivability) — buried, not called out as the highest LCOE lever. Chamber radius appears only as a physics parameter in Section 5, with no discussion of its LCOE sensitivity. This misalignment means modelers reading Section 2 will prioritize laser cost and tritium — which are real risks but not the top model levers — while underweighting availability and chamber size, which drive LCOE most directly.
+- **Recommendation:** Add a closing paragraph to Section 2 (or a brief "Top Modeling Levers" subsection) that explicitly names the 2-3 parameters with highest expected LCOE sensitivity and explains why: availability (first wall lifetime gates capacity factor, the dominant LCOE lever), chamber radius (blanket/shield volume scales as R³, doubling the default), and laser $/J cost (largest CAPEX uncertainty). This frames Section 2's qualitative challenges in terms that directly guide what to sweep in the model.
+- **Priority:** important

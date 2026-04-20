@@ -1,0 +1,79 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-5",
+      "gap_description": "Laser wall-plug efficiency for Marvel Fusion's DPSSL system — target ~10% per HB11; Marvel not characterized",
+      "queries": [
+        "DiPOLE laser wall-plug efficiency DPSSL high repetition rate IFE driver site:arxiv.org OR site:osti.gov",
+        "HAPLS laser system wall-plug efficiency power consumption Livermore DPSSL 10 Hz",
+        "\"wall-plug efficiency\" DPSSL laser \"inertial fusion\" driver \"10 Hz\" efficiency percent site:osti.gov",
+        "Mercury laser LLNL DPSSL \"wall-plug efficiency\" performance results inertial fusion energy driver site:osti.gov",
+        "Mercury laser LLNL diode-pumped 10 Hz \"electrical efficiency\" OR \"wall-plug\" results achieved Bayramian Orth"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/15013216",
+          "title": "Activation of the Mercury Laser: A Diode-Pumped Solid-State Laser Driver for Inertial Fusion",
+          "triage": "relevant",
+          "notes": "Mercury laser activation paper (LLNL, 2001). States performance goals of 10% electrical efficiency at 10 Hz, 100 J per pulse for IFE DPSSL. Most direct published benchmark for DPSSL WPE targets at IFE-relevant rep rates. Accessible PDF via OSTI purl."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/3008974",
+          "title": "Diode laser pumps for future inertial fusion energy systems",
+          "triage": "relevant",
+          "notes": "Optics Express (October 2025). Covers diode pump requirements for 10-20 Hz DPSSL beamlines for IFE. Most recent (2025) authoritative review of pump technology requirements. Documents 70% efficiency for diode bars as enabling metric. Tangentially relevant to WPE (addresses pump component, not end-to-end system efficiency), but provides the IFE community's current view of required efficiencies."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/2280886",
+          "title": "High average power ultrafast laser technologies for driving future advanced accelerators",
+          "triage": "not-relevant",
+          "notes": "Focuses on laser plasma accelerators for particle physics colliders, not DPSSL IFE drivers. No IFE or wall-plug efficiency data."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/2561299",
+          "title": "Status and prospects for inertial fusion energy via lasers (Betti)",
+          "triage": "not-relevant",
+          "notes": "General IFE status review. Does not address DPSSL wall-plug efficiency specifically."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/792300",
+          "title": "Mercury and Beyond: Diode-Pumped Solid-State Lasers for Inertial Fusion Energy",
+          "triage": "relevant-but-redundant",
+          "notes": "Earlier (1999/2000) Mercury design overview. Same 10% WPE goal as 15013216 but pre-activation. Redundant with 15013216 which reports actual system activation."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/622702",
+          "title": "Prospects for Inertial Fusion Energy Based on a Diode-Pumped Solid-State Laser Driver",
+          "triage": "relevant-but-deprioritized",
+          "notes": "1997 paper discussing DPSSL IFE feasibility. Older than Mercury program papers; likely contains efficiency targets but not achieved results."
+        },
+        {
+          "url": "https://lasers.llnl.gov/high-repetition-rate-advanced-petawatt-laser-system-hapls",
+          "title": "HAPLS — LLNL project page",
+          "triage": "no-quantitative-data",
+          "notes": "HAPLS at ELI-Beamlines: 10 Hz, 1 PW, 30 J. No wall-plug efficiency data published on project page."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/15013216",
+          "source_name": "osti-servlets-purl-15013216"
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/3008974",
+          "source_name": "osti-servlets-purl-3008974"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "G-5 remains partial: no source documents achieved wall-plug efficiency for a DPSSL system at IFE-relevant operating conditions. Both extracted sources document the 10% WPE as a design goal or diode-level efficiency metric, not a demonstrated end-to-end result. Mercury laser (15013216) is the best available analogue — it explicitly targets 10% WPE at 10 Hz, 100 J for IFE use, consistent with HB11's claimed target. The 2025 diode pumps paper (3008974) provides the most current view of pump diode efficiency requirements. Marvel Fusion's specific DPSSL WPE remains uncharacterized in public sources — this appears to be a genuine information gap rather than a missed source."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 1,
+    "sources_extracted": 2,
+    "sources_failed": 0,
+    "searches_used": 5,
+    "extractions_used": 2
+  }
+}

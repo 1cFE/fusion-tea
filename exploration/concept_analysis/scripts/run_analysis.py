@@ -12,7 +12,7 @@ Usage:
   uv run python exploration/concept_analysis/scripts/run_analysis.py gap-check 01 --dry-run
   uv run python exploration/concept_analysis/scripts/run_analysis.py analyze 01
   uv run python exploration/concept_analysis/scripts/run_analysis.py approve 01
-  uv run python exploration/concept_analysis/scripts/run_analysis.py stage1-all 01 02 03
+  uv run python exploration/concept_analysis/scripts/run_analysis.py analyze 01 02 03 && review 01 02 03
 """
 
 import argparse
@@ -52,7 +52,7 @@ from lib.concepts import (
     resolve_one,
 )
 from lib.iteration import read_loop_state
-from lib.state import get_concept_state, get_extraction_state, get_iteration_summary, propagate_staleness
+from lib.state import clear_staleness, get_concept_state, get_extraction_state, get_iteration_summary, propagate_staleness
 from lib.sources import (
     check_duplicate_source,
     find_latest_sources_dir,
@@ -73,7 +73,7 @@ from lib.memory import (
     load_relevant_memories,
 )
 from lib.claude import invoke_claude_validated, run_model
-from lib.loop import build_model_vars, run_stage1_loop
+from lib.loop import build_model_vars, extract_findings, run_stage1_loop
 from lib.step_runner import prepare_step, StepContext
 from lib.validators import (
     REVIEW_VERDICT_RE,
@@ -453,7 +453,10 @@ def _apply_external_feedback(
 
         print(f" done ({elapsed:.0f}s)")
 
-        stale = propagate_staleness(cid, "feedback-applied-from-change-requests")
+        stale = propagate_staleness(
+            cid, "feedback-applied-from-change-requests",
+            regenerated={"analysis.md"},
+        )
         if stale:
             print(f"    stale: {', '.join(stale)}")
 
@@ -480,7 +483,13 @@ def cmd_model_setup(concepts: list[dict], args: argparse.Namespace) -> None:
         out_dir = ANALYSES_DIR / cid
         model_path = out_dir / "model_setup.py"
 
-        mv = build_model_vars(c, model_path, out_dir, standalone=True)
+        feedback_text = ""
+        if getattr(args, "feedback", None):
+            feedback_text = extract_findings(args.feedback)
+            if not feedback_text:
+                feedback_text = args.feedback.read_text(encoding="utf-8")
+        mv = build_model_vars(c, model_path, out_dir, standalone=True,
+                              model_feedback=feedback_text)
         if mv is None:
             print(f"  skip {cid} (no analysis.md — run analyze first)")
             continue
@@ -520,6 +529,10 @@ def cmd_model_setup(concepts: list[dict], args: argparse.Namespace) -> None:
         if not result.validation_passed:
             print(f" FAILED ({elapsed:.0f}s) — model_setup.py validation exhausted")
             continue
+
+        # Producer-clears-on-write contract: a fresh model_setup.py is
+        # by definition not stale relative to the current analysis.md.
+        clear_staleness(cid, "model_setup.py")
 
         size = model_path.stat().st_size
         print(f" done ({elapsed:.0f}s, {size} bytes)")
@@ -620,6 +633,9 @@ def cmd_review(concepts: list[dict], args: argparse.Namespace) -> None:
             print(f" FAILED ({elapsed:.0f}s) — review validation exhausted")
             continue
 
+        # Producer-clears-on-write contract.
+        clear_staleness(cid, "review.md")
+
         # Detect verdict from the validated review file (not stdout). The
         # validator already guaranteed a VERDICT line is present.
         review_text = review_path.read_text(encoding="utf-8")
@@ -677,7 +693,7 @@ def cmd_address_review(concepts: list[dict], args: argparse.Namespace) -> None:
         review_status = fm.get("Review-Status", "")
         if review_status == "revise":
             print(f"  skip {cid} (Review-Status is 'revise' — "
-                  f"run stage1-all --resume to address review findings, "
+                  f"run analyze --resume to address review findings, "
                   f"not address-review)")
             continue
 
@@ -925,6 +941,8 @@ def cmd_synthesize(concepts: list[dict], args: argparse.Namespace) -> None:
                 body = body[fm_end + 3:].lstrip("\n")
         synthesis_path.write_text(fm_raw + "\n" + body, encoding="utf-8")
         body_path.unlink()
+        # Producer-clears-on-write contract.
+        clear_staleness(cid, "synthesis.md")
         size = len(synthesis_path.read_text(encoding="utf-8"))
         print(f" done ({elapsed:.0f}s, {size} chars)")
 
@@ -979,54 +997,6 @@ def cmd_approve(concepts: list[dict], args: argparse.Namespace) -> None:
 
         print(f"  approved {cid}")
 
-
-# ---------------------------------------------------------------------------
-# Composite: stage1-all (gap-check → analyze → model-setup → review)
-# ---------------------------------------------------------------------------
-
-
-def cmd_stage1_all(concepts: list[dict], args: argparse.Namespace) -> None:
-    """Run analyze → model-setup → review for specified concepts.
-
-    Gap-check is skipped by default; pass --include-gap-analysis to include it.
-    Each stage's own skip logic handles prerequisites and existing outputs,
-    so re-running is safe (picks up where it left off).
-    """
-    # Resolve once for summary display
-    targets = resolve_concepts(
-        args.concepts, concepts,
-        family=args.family,
-        all_remaining=args.all_remaining,
-    )
-    if not targets:
-        print("No concepts to process.")
-        return
-
-    names = ", ".join(c["_num"] for c in targets)
-    print(f"=== stage1-all: {len(targets)} concepts ({names}) ===")
-    if getattr(args, "include_gap_analysis", False):
-        print("    Pipeline: gap-check → analyze → model-setup → review")
-    else:
-        print("    Pipeline: analyze → model-setup → review")
-
-    stages = []
-    if getattr(args, "include_gap_analysis", False):
-        stages.append(("Gap Check", cmd_gap_check))
-    stages.extend([
-        ("Analyze", cmd_analyze),
-        ("Model Setup", cmd_model_setup),
-        ("Review", cmd_review),
-    ])
-
-    for stage_name, handler in stages:
-        print(f"\n--- {stage_name} ---")
-        handler(concepts, args)
-
-    # Final status summary
-    print(f"\n=== stage1-all complete ===")
-    for c in targets:
-        state = get_concept_state(c["_id"])
-        print(f"  {c['_num']} ({c['Concept Name']}): {state}")
 
 
 # ---------------------------------------------------------------------------
@@ -1199,6 +1169,8 @@ def build_parser() -> argparse.ArgumentParser:
     p_ms.add_argument("--dry-run", action="store_true", help="Generate prompts without calling Claude")
     p_ms.add_argument("--timeout", type=int, default=900, help="Per-invocation timeout in seconds")
     p_ms.add_argument("--force", action="store_true", help="Re-run even if output exists")
+    p_ms.add_argument("--feedback", type=Path, default=None,
+                      help="Feedback file with model-targeted findings (### F-N: format)")
 
     # -- review --
     p_rev = sub.add_parser("review", help="Structured review with proposed actions")
@@ -1234,35 +1206,6 @@ def build_parser() -> argparse.ArgumentParser:
     p_approve.add_argument("concepts", nargs="+", help="Concept IDs to approve")
     p_approve.add_argument("--force", action="store_true", help="Approve even without synthesis")
 
-    # -- stage1-all --
-    p_s1 = sub.add_parser(
-        "stage1-all",
-        help="Run full pipeline through review: gap-check → analyze → model-setup → review",
-    )
-    p_s1.add_argument("concepts", nargs="*", default=[], help="Concept IDs")
-    p_s1.add_argument("--all", dest="all_remaining", action="store_true", help="All remaining concepts")
-    p_s1.add_argument("--family", help="Filter by confinement family")
-    p_s1.add_argument("--model", default="sonnet", help="Claude model (default: sonnet)")
-    p_s1.add_argument("--dry-run", action="store_true", help="Generate prompts without calling Claude")
-    p_s1.add_argument("--timeout", type=int, default=900, help="Per-invocation timeout in seconds")
-    p_s1.add_argument("--force", action="store_true", help="Re-run even if output exists")
-    p_s1.add_argument("--max-passes", type=int, default=3,
-                       help="Max analyze→assess iterations (default: 3; 1=no assessment)")
-    p_s1.add_argument("--add-passes", type=int, default=None, metavar="N",
-                       help="Run N additional passes from each concept's current iteration "
-                            "(implies --resume; works across concepts at different iterations)")
-    p_s1.add_argument("--include-gap-analysis", action="store_true",
-                       help="Include gap-check stage (skipped by default)")
-    p_s1.add_argument("--resume", action="store_true",
-                       help="Resume analysis from last iteration")
-    p_s1.add_argument("--research", action="store_true",
-                       help="Enable autonomous research step between iterations "
-                            "(searches web for data gaps, extracts via add-source)")
-    p_s1.add_argument("--max-research-searches", type=int, default=5,
-                       help="Max WebSearch calls per research step (default: 5)")
-    p_s1.add_argument("--max-research-extractions", type=int, default=3,
-                       help="Max source extractions per research step (default: 3)")
-
     # -- add-source --
     p_add = sub.add_parser("add-source", help="Add a PDF or URL source to a concept")
     p_add.add_argument("concept", help="Concept ID (single concept)")
@@ -1291,7 +1234,6 @@ def main() -> None:
         "address-review": cmd_address_review,
         "synthesize": cmd_synthesize,
         "approve": cmd_approve,
-        "stage1-all": cmd_stage1_all,
         "add-source": cmd_add_source,
     }
 

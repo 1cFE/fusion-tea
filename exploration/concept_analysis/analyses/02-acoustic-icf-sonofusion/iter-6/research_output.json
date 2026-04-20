@@ -1,0 +1,20 @@
+{
+  "gaps_attempted": [],
+  "skipped_gaps": [
+    {
+      "gap_id": "G-7",
+      "gap_description": "Acoustic driver power consumption at reactor scale — could be estimated from industrial ultrasonic transducer power specs at similar frequencies",
+      "gap_type": "not-yet-sourced",
+      "criticality": "blocking",
+      "reason": "CLOSED in prior iterations (iter-4 and iter-5). Sources extracted: americanpiezo-products-services-ultrasonic-power-transducers, osti-pages-biblio-1224334, hielscher-i16000-p, hielscher-uip4000hdt-4kw-high-performance-ultrasonics."
+    }
+  ],
+  "notes": "Iteration 6 found no remaining not-yet-sourced gaps to address. All 15 gaps in Section 6 are classified as: truly-unknown (G-1, G-2, G-3, G-4, G-5, G-6, G-8, G-9, G-10, G-13, G-15), derivable (G-11, G-12), partially-resolved (G-14), or not-yet-sourced but already closed (G-7). No web searches were performed because there are no actionable gaps matching the not-yet-sourced type.",
+  "summary": {
+    "gaps_attempted": 0,
+    "sources_extracted": 0,
+    "sources_failed": 0,
+    "searches_used": 0,
+    "extractions_used": 0
+  }
+}

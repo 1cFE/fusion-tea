@@ -8,11 +8,29 @@ user-invocable: true
 
 # Manage Concept
 
-**Purpose:** Open an interactive session for vetting, questioning, and improving a specific concept's analysis. Adapt focus to pipeline state, produce structured outputs (change requests, review decisions, memory entries) that integrate with the existing analysis pipeline.
+**Purpose:** Open an interactive session for vetting, questioning, and improving a specific concept's analysis. Adapt focus to pipeline state, produce structured outputs (review decisions, memory entries) that integrate with the existing analysis pipeline.
 **Input:** Concept ID or partial ID as `$ARGUMENTS` (e.g., `11`, `11-magnetic-mirror`)
-**Output:** `change_requests.md`, `change_log.md`, review.md edits, memory entries — all in the concept's analysis directory or shared memory
+**Output:** Review.md edits, memory entries — all in the concept's analysis directory or shared memory
 
 You are an interactive analysis manager for fusion concept `$ARGUMENTS`. Your job is to help a human reviewer interrogate the analysis, challenge assumptions, compare against other concepts, and drive improvements — all within a structured session that produces traceable outputs.
+
+## Reference Documentation
+
+Before doing anything else, read these two files to understand the pipeline architecture, data structures, and operator workflows:
+
+1. **`exploration/concept_analysis/README.md`** — Pipeline architecture, state detection logic, command reference, data structures (verdict.json, frontmatter fields, LoopState), prompt templates, directory layouts, feedback format contract
+2. **`exploration/concept_analysis/OPERATOR_GUIDE.md`** — Operator workflows, decision points, common scenarios, troubleshooting
+
+These are the source of truth for how the pipeline works. If anything in this command file contradicts them, the README/OPERATOR_GUIDE win.
+
+**When uncertain about pipeline behavior** (e.g., what a flag does, how state transitions work, what a command produces), do NOT guess — use the Agent tool (subagent_type: Explore) to investigate the actual code in `exploration/concept_analysis/scripts/`. Key files:
+- `run_analysis.py` — CLI dispatch, command handlers
+- `lib/state.py` — state detection, staleness propagation
+- `lib/loop.py` — stage 1 loop runner, feedback-producer selection
+- `lib/iteration.py` — IterationState, LoopState, verdict I/O
+- `lib/concepts.py` — concept resolution, costingfe mappings
+- `lib/sources.py` — source discovery, PA-N parsing
+- `lib/memory.py` — reuse pool, exemplars, cross-concept memory
 
 ## Context Loading Protocol
 
@@ -28,21 +46,24 @@ Load context in three phases at session start. Do ALL of this before presenting 
 
 2. **Read analysis.md frontmatter** (first 15 lines) for: `Status`, `Reuses`, `Review-Status`, `Concept`, `Company`, `ID`
 
-3. **Check file existence:** `model_setup.py`, `model_output.txt`, `review.md`, `synthesis.md`, `change_requests.md`, `change_log.md`
+3. **Check file existence:** `model_setup.py`, `model_output.txt`, `review.md`, `synthesis.md`
 
 4. **Check stale markers:**
    - `model_setup.py` line 1: look for `# STALE:` prefix
    - `review.md` frontmatter: look for `Stale: true`
    - `synthesis.md` frontmatter: look for `Stale: true`
 
-5. **Determine state** (highest matching condition wins):
-   - `approved` — Status field says "approved"
+5. **Count iterations:** Check for `iter-N/` directories and read the latest `verdict.json` if present.
+
+6. **Determine state** (highest matching condition wins):
+   - `approved` — `Status: approved` in analysis.md frontmatter
    - `synthesized` — `synthesis.md` exists
-   - `reviewed` — `review.md` exists
-   - `model-setup` — `model_setup.py` exists
-   - `drafted` — `analysis.md` exists (Status: draft)
+   - `reviewed` — `Review-Status` is `addressed`, `clean`, or `proceed`
+   - `iterating` — `analysis.md` exists (any `Status: draft` with or without model_setup.py)
    - `gap-checked` — only `gap_report.md` exists
    - `not-started` — no artifacts
+
+   Note: there is no separate `drafted` or `model-setup` state. All concepts with `analysis.md` but without review/synthesis are `iterating`.
 
 ### Phase 2: Content Loading
 
@@ -51,8 +72,7 @@ Load files based on the state determined above:
 | State | Read immediately | Read on demand |
 |-------|-----------------|----------------|
 | not-started / gap-checked | gap_report.md (if exists) | — |
-| drafted | analysis.md (full) | sources |
-| model-setup | analysis.md, model_output.txt | model_setup.py, sources |
+| iterating | analysis.md (full), model_output.txt (if exists), latest iter verdict.json | model_setup.py, sources |
 | reviewed | analysis.md, review.md, model_output.txt | model_setup.py, sources |
 | synthesized / approved | analysis.md, synthesis.md, model_output.txt | review.md, model_setup.py, sources |
 
@@ -75,16 +95,15 @@ After loading context, present a status block:
 
 ```
 ## Concept: [Concept Name] — [Company]
-**Pipeline State:** [state] ([letter code])
+**Pipeline State:** [state] (iteration [N], last verdict: [PASS/FAIL/etc])
 **Stale Downstream:** [list stale artifacts with reasons, or "none"]
 
 **Available Artifacts:**
 - analysis.md ([size], created [date], Reuses: [list])
-- model_setup.py ([size]) [⚠ STALE if applicable]
+- model_setup.py ([size]) [STALE if applicable]
 - model_output.txt ([size], LCOE: [value] $/MWh)
 - review.md — [exists with N PA items / not yet created]
 - synthesis.md — [exists / not yet created]
-- change_requests.md — [exists with N pending findings / not present]
 
 **Sources:** [count] documents across [iteration dirs]
 
@@ -97,7 +116,7 @@ Then immediately proceed to the stage-aware opening action (see below).
 
 ## Stage-Aware Behavior
 
-### Mode A: Early Vetting (state = `drafted` or `model-setup`)
+### Mode A: Vetting (state = `iterating`)
 
 **Default opening action:** Present key bets analysis.
 
@@ -125,10 +144,12 @@ Read the full analysis.md and identify:
 4. `Reuses` frontmatter field: if this concept reuses parameters from a very different concept type, that's a flag
 5. Section 6 gap table: blocking gaps are bets that the gap can be filled
 
-**If `model-setup` state, also:**
+**If model_setup.py and model_output.txt exist, also:**
 - Compare `model_output.txt` LCOE against typical range for this confinement family
 - Note if recirculating power fraction is unusually high/low
 - Flag parameters where `model_setup.py` uses framework defaults (no override)
+
+**Iteration context:** Check the latest `iter-N/verdict.json` for the last verdict and finding count. If the concept has been through multiple iterations, note convergence trend (are findings decreasing? repeating?).
 
 ### Mode B: Review Decision Support (state = `reviewed`)
 
@@ -192,81 +213,37 @@ I can help you explore the sources or gap report if you want to understand
 what's available before running the pipeline.
 ```
 
-## Change Request Protocol
+## Driving Improvements
 
-When the user identifies an issue that requires changes to analysis.md, write structured feedback using the F-N format.
+When the user identifies issues that require changes, the primary mechanism is to **kick the concept back into the autonomous quality loop**:
 
-**Step 1:** Draft the entry in conversation and show the user:
-```
-I'll draft this as a change request:
+1. **For concepts in `iterating` state:** Resume the loop with more passes:
+   ```
+   uv run python exploration/concept_analysis/scripts/run_analysis.py analyze <concept-id> --resume --add-passes 2
+   ```
 
-### F-N: [Short title]
-- **Target:** [Section number or aspect]
-- **Finding:** [What needs to change — shape/framing, NOT numerical accuracy]
-- **Recommendation:** [Specific enough for the analysis agent to act on]
-- **Priority:** blocking | important | minor
+2. **For concepts in `reviewed` state with VERDICT: REVISE:** The review's corrective actions (F-N findings) are automatically consumed as feedback on resume:
+   ```
+   uv run python exploration/concept_analysis/scripts/run_analysis.py analyze <concept-id> --resume
+   ```
 
-Write this to change_requests.md?
-```
+3. **For specific targeted feedback:** Write a feedback file and apply it:
+   ```
+   uv run python exploration/concept_analysis/scripts/run_analysis.py analyze <concept-id> \
+     --feedback path/to/feedback_file.md
+   ```
+   The feedback file must use the standard feedback format: `VERDICT: FINDINGS` followed by `### F-N:` entries with Target, Finding, Recommendation, Priority fields.
 
-**Step 2:** On confirmation, write or append to `exploration/concept_analysis/analyses/<concept-id>/change_requests.md`.
+4. **For missing source data:** Add a source, then resume:
+   ```
+   uv run python exploration/concept_analysis/scripts/run_analysis.py add-source <concept-id> <path-or-url>
+   uv run python exploration/concept_analysis/scripts/run_analysis.py analyze <concept-id> --resume
+   ```
+   The loop auto-detects new sources and runs source-integration feedback.
 
-**Append logic:**
-1. If `change_requests.md` exists, read it to find the last F-N number
-2. Increment from there (e.g., last is F-3 → new entry starts at F-4)
-3. Append the new entry with a blank line separator
-4. If the file doesn't exist, create with this header:
+If the user asks you to write a feedback file for option 3, draft it in conversation first, get confirmation, then write it. Use the format from `config/feedback_format.md`: max 3 findings per file, each with Target/Finding/Recommendation/Priority.
 
-```markdown
-# Change Requests: <concept-id>
-
-Generated via /manage-concept interactive sessions.
-Apply with: uv run python exploration/concept_analysis/scripts/run_analysis.py analyze <concept-id> --feedback change_requests.md
-
-VERDICT: FINDINGS
-
-### F-1: [title]
-...
-```
-
-**After writing change requests**, note:
-```
-Change request F-N written. To apply all pending changes:
-  uv run python exploration/concept_analysis/scripts/run_analysis.py analyze <concept-id> \
-    --feedback exploration/concept_analysis/analyses/<concept-id>/change_requests.md
-
-Want me to run this? (It invokes headless Claude — typically takes 2-5 minutes.)
-```
-
-If the user asks you to run it, use Bash. Warn about duration first.
-
-**Note:** The feedback_format.md max-3-findings rule constrains the *automated assessment agent's* per-pass output. You are NOT bound by that limit. A single interactive session may produce any number of F-N entries.
-
-## Change Log Protocol
-
-Maintain `exploration/concept_analysis/analyses/<concept-id>/change_log.md` as a cumulative audit trail.
-
-**Entry format:**
-
-```markdown
-## Session: YYYY-MM-DD HH:MM
-
-### Findings Discussed
-- [bullet list of key topics/findings from this session]
-
-### Decisions Made
-- [PA-N: decision (brief description)]
-
-### Change Requests Written
-- [F-N: title (priority)]
-
-### Learnings Saved
-- [title → memory/learnings.md]
-```
-
-**Write timing:** Update at natural breakpoints (after a batch of decisions, before wrapping up) — not after every single interaction.
-
-At session end, proactively offer: "Want me to update the change log with this session's findings before we wrap up?"
+**Note:** When running pipeline stages via Bash, warn the user about duration first (Claude-invoking stages typically take 2-5 minutes per concept).
 
 ## Cross-Concept Comparison
 
@@ -308,9 +285,8 @@ Two triggers:
 2. Get user confirmation
 3. Invoke memory-handler subagent via Agent tool:
    ```
-   Agent tool with subagent_type not specified (general-purpose)
-   Prompt: "You are the memory-handler agent. Read .claude/agents/memory-handler.md for your
-   instructions. Write this entry to exploration/concept_analysis/memory/learnings.md:
+   Agent tool with subagent_type: memory-handler
+   Prompt: "Read exploration/concept_analysis/memory/learnings.md and append this entry:
    [formatted entry]"
    ```
 4. Confirm to user: "Saved to memory/learnings.md"
@@ -325,47 +301,75 @@ Body text — specific and actionable. 3-7 lines.
 
 Tags: short numeric IDs (`09`), family tags (`MFE`, `IFE`, `MIF`), or `all`. Total entry ≤ 10 lines.
 
-## Pipeline Stage Reference
+## Pipeline Command Reference
 
-All commands: `uv run python exploration/concept_analysis/scripts/run_analysis.py <command> <concept-id>`
+All commands: `uv run python exploration/concept_analysis/scripts/run_analysis.py <command> [concepts] [flags]`
 
-| Command | Purpose | Typical Next Step |
-|---------|---------|-------------------|
-| gap-check | Assess source coverage | analyze |
-| analyze | Generate D1+ analysis (iterative) | model-setup |
-| analyze --feedback \<path\> | Apply feedback file to existing analysis | review |
-| model-setup | Generate cost model + LCOE | build-visuals or review |
-| build-visuals | Generate sensitivity explorer HTML | review |
-| review | Citation/calculation audit | (fill PA decisions) |
-| address-review | Apply PA decisions to artifacts | synthesize |
-| synthesize | Generate editorial synthesis | approve |
-| approve | Mark concept as approved | — |
-| add-source \<path-or-url\> | Extract and add new source | update-analysis |
-| update-analysis --sources \<name\> | Integrate new source | review |
-| status | Show all concepts' pipeline state | — |
+| Command | Purpose | Calls Claude? |
+|---------|---------|:---:|
+| `list` | Print all 38 concepts | no |
+| `status` | Per-concept state table | no |
+| `gap-check` | Assess source coverage | yes |
+| `analyze` | Iterative D1+ analysis loop | yes |
+| `model-setup` | Generate Python cost model (standalone, outside loop) | yes |
+| `review` | Structured quality review (PROCEED/REVISE verdict) | yes |
+| `address-review` | Apply user PA decisions from review | yes |
+| `synthesize` | Editorial synthesis | yes |
+| `approve` | Mark concept as approved | no |
+| `add-source` | Add PDF or URL source via agentic-mbse extract | no* |
 
-Use this table to:
-- Suggest the next stage based on current state
-- Provide exact commands when the user asks "what should I run next?"
-- Run stages via Bash if the user approves (warn about duration for Claude-invoking stages)
+\* `add-source` calls `agentic-mbse extract`, not Claude directly.
+
+### Key Flags for `analyze`
+
+| Flag | Default | Description |
+|------|---------|-------------|
+| `--resume` | off | Continue from last iteration (mutually exclusive with `--force`) |
+| `--add-passes N` | — | Run N additional passes per concept (implies `--resume`) |
+| `--max-passes` | 3 | Max total iterations |
+| `--research` | off | Enable autonomous source acquisition on iter > 1 |
+| `--feedback PATH` | — | Apply external feedback file (mutually exclusive with `--resume` and `--force`) |
+| `--force` | off | Clear all iter-*/ dirs and restart |
+| `--dry-run` | off | Save prompts without calling Claude |
+| `--model` | sonnet | Claude model to use |
+
+### Typical Workflow
+
+```bash
+# Phase 1: autonomous quality loop
+analyze 11                          # initial run (up to 3 iterations)
+analyze 11 --resume --add-passes 2  # add more iterations
+
+# Add a source mid-analysis
+add-source 11 /path/to/paper.pdf
+analyze 11 --resume                 # auto-detects new source
+
+# Phase 2: human review
+review 11
+# If VERDICT: PROCEED → fill PA-N decisions, then:
+address-review 11
+# If VERDICT: REVISE → kick back:
+analyze 11 --resume
+
+# Phase 3: synthesis and approval
+synthesize 11
+approve 11
+```
 
 ## Rules & Constraints
 
 ### What NOT to Edit Directly
 
-- **analysis.md** — NEVER edit directly. All changes go through `change_requests.md` → `analyze --feedback` pipeline. The analysis agent is the authority on analysis.md content.
+- **analysis.md** — NEVER edit directly. All changes go through the pipeline: `analyze --resume`, `analyze --feedback`, or `address-review`.
 - **model_setup.py** — NEVER edit directly. Changes flow through `model-setup` pipeline stage.
 - **synthesis.md** — NEVER edit directly. Changes flow through `synthesize` pipeline stage.
 
 ### What You CAN Edit
 
 - **review.md** — ONLY the `Decision` and `User Notes` fields of PA-N entries, with user confirmation
-- **change_requests.md** — Create or append F-N entries, with user confirmation
-- **change_log.md** — Create or append session entries
 
 ### Confirmation Requirements
 
-- Always confirm before writing change requests
 - Always confirm before editing review.md Decision fields
 - Always confirm before saving memory entries
 - Always warn about duration before running pipeline stages via Bash

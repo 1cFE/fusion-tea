@@ -137,11 +137,9 @@ INTEREST_RATE = 0.07        # DEFAULT: standard project finance assumption
 INFLATION_RATE = 0.0245     # DEFAULT: US long-run CPI target
 NOAK = True                 # NOAK reference case (no contingency, mature supply chain)
 
-# ── Model forward pass ────────────────────────────────────────────────
+# ── Shared kwargs (used for both native and 1 GW forward passes) ──────
 
-result = model.forward(
-    # Customer requirements
-    net_electric_mw=NET_ELECTRIC_MW,
+_SHARED_KWARGS = dict(
     availability=AVAILABILITY,
     lifetime_yr=LIFETIME_YR,
     n_mod=1,
@@ -160,7 +158,7 @@ result = model.forward(
     vessel_t=VESSEL_T,              # 0.20 m — DEFAULT
 
     # Power balance
-    p_input=P_INPUT_MW,             # 50 MW — DEFAULT (ECRH power unpublished)
+    p_input=P_INPUT_MW,             # 50 MW — DEFAULT (ECRH power undisclosed)
     mn=MN,                          # 1.1 — DEFAULT
     eta_th=ETA_TH,                  # 0.33 — UNCERTAIN (steam Rankine analogue)
     eta_p=ETA_P,                    # 0.5 — DEFAULT
@@ -186,6 +184,21 @@ result = model.forward(
     # total capital of unknown magnitude.
 )
 
+# ── Model forward passes ──────────────────────────────────────────────
+
+# Native design point: 600 MWe (central of published 450–750 MWe range)
+result = model.forward(net_electric_mw=NET_ELECTRIC_MW, **_SHARED_KWARGS)
+
+# Self-consistent 1 GW result for cross-concept comparison.
+# override_reference_mw tells the framework that all cost_override values
+# (none here — only geometry/physics inputs) are valid at 600 MWe and
+# should scale to 1000 MWe using per-account scaling laws.
+result_1gw = model.forward(
+    net_electric_mw=1000.0,
+    override_reference_mw=NET_ELECTRIC_MW,
+    **_SHARED_KWARGS,
+)
+
 # ── Results ───────────────────────────────────────────────────────────
 c = result.costs
 pt = result.power_table
@@ -199,6 +212,9 @@ print()
 print(f"LCOE:       {c.lcoe:.1f} $/MWh")
 print(f"Overnight:  {c.overnight_cost:.0f} $/kW")
 print(f"Fusion:     {pt.p_fus:.0f} MW | Net: {pt.p_net:.0f} MW | Q_eng: {pt.q_eng:.2f}")
+print()
+print(f"1 GW scaled (cross-concept): LCOE {result_1gw.costs.lcoe:.1f} $/MWh | "
+      f"Overnight {result_1gw.costs.overnight_cost:.0f} $/kW")
 print()
 
 cas = [
@@ -263,8 +279,13 @@ print("-" * 48)
 
 print("\nEngineering levers:")
 for k, v in sorted(sens["engineering"].items(), key=lambda x: abs(x[1]), reverse=True):
-    print(f"  {k:<28} {v:+.4f}")
+    print(f"  {k:<36} {v:+.4f}")
 
 print("\nFinancial:")
 for k, v in sorted(sens["financial"].items(), key=lambda x: abs(x[1]), reverse=True):
-    print(f"  {k:<28} {v:+.4f}")
+    print(f"  {k:<36} {v:+.4f}")
+
+print("\nCosting constants (top 15):")
+costing = sorted(sens["costing"].items(), key=lambda x: abs(x[1]), reverse=True)
+for k, v in costing[:15]:
+    print(f"  {k:<36} {v:+.4f}")

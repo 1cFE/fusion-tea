@@ -1,0 +1,454 @@
+{
+  "concept_id": "35",
+  "name": "PoloMac Magnetic Confinement",
+  "confinement_family": "NONSTANDARD",
+  "company": "Deutelio",
+  "status": "in_progress",
+  "illustration": null,
+  "has_cost_model": true,
+  "has_sensitivities": true,
+  "cost_model": {
+    "cas10": {
+      "name": "Preconstruction",
+      "cost_m_usd": 14.211454666666667,
+      "overridden": false
+    },
+    "cas21": {
+      "name": "Buildings & Structures",
+      "cost_m_usd": 131.822,
+      "overridden": false
+    },
+    "cas22": {
+      "name": "Reactor Plant Equipment",
+      "cost_m_usd": 2507.844946311147,
+      "overridden": false
+    },
+    "cas23": {
+      "name": "Turbine Plant Equipment",
+      "cost_m_usd": 41.685280128,
+      "overridden": false
+    },
+    "cas24": {
+      "name": "Electrical Plant Equipment",
+      "cost_m_usd": 17.754841536,
+      "overridden": false
+    },
+    "cas25": {
+      "name": "Miscellaneous Plant Equipment",
+      "cost_m_usd": 10.807294848,
+      "overridden": false
+    },
+    "cas26": {
+      "name": "Heat Rejection Systems",
+      "cost_m_usd": 7.204863232,
+      "overridden": false
+    },
+    "cas27": {
+      "name": "Special Materials",
+      "cost_m_usd": 0.16916373333333332,
+      "overridden": false
+    },
+    "cas28": {
+      "name": "Digital Twin & Simulation",
+      "cost_m_usd": 5.0,
+      "overridden": false
+    },
+    "cas29": {
+      "name": "Contingency",
+      "cost_m_usd": 0.0,
+      "overridden": false
+    },
+    "cas30": {
+      "name": "Indirect Costs",
+      "cost_m_usd": 635.2006242839789,
+      "overridden": false
+    },
+    "cas40": {
+      "name": "Owner's Costs",
+      "cost_m_usd": 9.015718155902315,
+      "overridden": false
+    },
+    "cas50": {
+      "name": "Supplementary Costs",
+      "cost_m_usd": 183.55174743763172,
+      "overridden": false
+    },
+    "cas60": {
+      "name": "Interest During Construction",
+      "cost_m_usd": 979.0551941660974,
+      "overridden": false
+    },
+    "cas70": {
+      "name": "O&M Costs (annualised)",
+      "cost_m_usd": 108.93310149951807,
+      "overridden": false
+    },
+    "cas80": {
+      "name": "Fuel Costs (annualised)",
+      "cost_m_usd": 0.5355029386631044,
+      "overridden": false
+    },
+    "cas90": {
+      "name": "Financial Costs",
+      "cost_m_usd": 381.00381130525045,
+      "overridden": false
+    },
+    "cas22_detail": {
+      "C220101": {
+        "name": "First Wall & Blanket",
+        "cost_m_usd": 247.14401283579298,
+        "overridden": false
+      },
+      "C220102": {
+        "name": "Radiation Shield",
+        "cost_m_usd": 804.2319658715512,
+        "overridden": false
+      },
+      "C220103": {
+        "name": "Magnets / Coils",
+        "cost_m_usd": 500.0,
+        "overridden": false
+      },
+      "C220104": {
+        "name": "Heating & Driver Systems",
+        "cost_m_usd": 150.0,
+        "overridden": false
+      },
+      "C220105": {
+        "name": "Primary Structure & Support",
+        "cost_m_usd": 97.5500247604573,
+        "overridden": false
+      },
+      "C220106": {
+        "name": "Vacuum System",
+        "cost_m_usd": 156.0394685209244,
+        "overridden": false
+      },
+      "C220107": {
+        "name": "Power Conditioning & Energy Storage",
+        "cost_m_usd": 26.91321013787272,
+        "overridden": false
+      },
+      "C220108": {
+        "name": "Divertor / Target Factory",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220109": {
+        "name": "Direct Energy Converter",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220110": {
+        "name": "Remote Handling & Maintenance Equipment",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220111": {
+        "name": "Installation Labor",
+        "cost_m_usd": 284.5277331589154,
+        "overridden": false
+      },
+      "C220112": {
+        "name": "Isotope Separation Plant",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220200": {
+        "name": "Main & Secondary Coolant",
+        "cost_m_usd": 28.78634319320912,
+        "overridden": false
+      },
+      "C220300": {
+        "name": "Auxiliary Cooling & Cryoplant",
+        "cost_m_usd": 123.72498533449163,
+        "overridden": false
+      },
+      "C220400": {
+        "name": "Radioactive Waste Management",
+        "cost_m_usd": 0.5439392,
+        "overridden": false
+      },
+      "C220500": {
+        "name": "Fuel Handling & Storage",
+        "cost_m_usd": 10.647443305031022,
+        "overridden": false
+      },
+      "C220600": {
+        "name": "Other Reactor Plant Equipment",
+        "cost_m_usd": 1.59411501622952,
+        "overridden": false
+      },
+      "C220700": {
+        "name": "Instrumentation & Control",
+        "cost_m_usd": 25.67943596816052,
+        "overridden": false
+      }
+    },
+    "headline": {
+      "lcoe_per_mwh": 945.6603407484066,
+      "overnight_cost_per_kw": 42139.858988679924,
+      "p_net_mw": 84.58186666666666,
+      "q_eng": 3.9577836411609497,
+      "capacity_factor": 0.7
+    },
+    "sensitivities": {
+      "engineering": {
+        "Q_sci": {
+          "elasticity": -0.7861233697518444,
+          "baseline": 10.0
+        },
+        "p_fus_MW": {
+          "elasticity": -1.1511553127773837,
+          "baseline": 500.0
+        },
+        "dd_neutron_fraction": {
+          "elasticity": -0.019338862443570276,
+          "baseline": 0.336
+        },
+        "blanket_energy_capture": {
+          "elasticity": -0.6640071550683461,
+          "baseline": 1.03
+        },
+        "thermal_efficiency": {
+          "elasticity": -2.3538495214088013,
+          "baseline": 0.38
+        },
+        "sc_coil_capital_M": {
+          "elasticity": 0.21802914421180983,
+          "baseline": 500.0
+        },
+        "sc_coil_cryo_MW": {
+          "elasticity": 0.20044436545751024,
+          "baseline": 15.0
+        },
+        "sc_coil_lifetime_FPY": {
+          "elasticity": -0.07322100224012675,
+          "baseline": 8.0
+        },
+        "R_major_m": {
+          "elasticity": 0.4408496908228575,
+          "baseline": 7.5
+        },
+        "R_minor_m": {
+          "elasticity": 0.3233202221927716,
+          "baseline": 3.5
+        },
+        "elongation": {
+          "elasticity": 0.4408496908228515,
+          "baseline": 2.2
+        },
+        "blanket_thickness_m": {
+          "elasticity": 0.1624780880415505,
+          "baseline": 0.8
+        },
+        "shield_thickness_m": {
+          "elasticity": 0.3087586135851219,
+          "baseline": 1.2
+        },
+        "structure_thickness_m": {
+          "elasticity": 0.03603826240845118,
+          "baseline": 0.4
+        },
+        "vessel_thickness_m": {
+          "elasticity": 0.051104195417795754,
+          "baseline": 0.15
+        },
+        "p_heat_overhead_MW": {
+          "elasticity": 0.23465740148133707,
+          "baseline": 20.0
+        },
+        "heating_system_cost_M": {
+          "elasticity": 0.04851721761088321,
+          "baseline": 150.0
+        },
+        "plant_availability": {
+          "elasticity": -0.899999327263254,
+          "baseline": 0.7
+        },
+        "plant_lifetime_years": {
+          "elasticity": -0.11061470319749044,
+          "baseline": 40.0
+        },
+        "blanket_unit_cost_dd": {
+          "elasticity": 0.09869933130821375,
+          "baseline": 0.3
+        },
+        "shield_unit_cost": {
+          "elasticity": 0.2601273153188396,
+          "baseline": 0.74
+        },
+        "structure_unit_cost": {
+          "elasticity": 0.031552371861671244,
+          "baseline": 0.15
+        },
+        "vessel_unit_cost": {
+          "elasticity": 0.05047067233412686,
+          "baseline": 0.72
+        },
+        "remote_handling_scale": {
+          "elasticity": 0.016321925910833285,
+          "baseline": 1.5
+        },
+        "p_house_MW": {
+          "elasticity": 0.05866404313679872,
+          "baseline": 5.0
+        },
+        "p_vacuum_MW": {
+          "elasticity": 0.023465610372717872,
+          "baseline": 2.0
+        },
+        "p_fuel_handling_MW": {
+          "elasticity": 0.011732804694820366,
+          "baseline": 1.0
+        },
+        "construction_time_years": {
+          "elasticity": 0.3888389857140374,
+          "baseline": 7.0
+        },
+        "om_base_cost_M_per_yr": {
+          "elasticity": 0.14703217285198095,
+          "baseline": 50.0
+        },
+        "core_lifetime_FPY": {
+          "elasticity": -0.02578134177545744,
+          "baseline": 10.0
+        },
+        "deuterium_cost_per_kg": {
+          "elasticity": 0.0010918105105902722,
+          "baseline": 2175.0
+        },
+        "burn_fraction": {
+          "elasticity": -0.0005599588218314417,
+          "baseline": 0.05
+        },
+        "fuel_recovery": {
+          "elasticity": -0.010106246008278766,
+          "baseline": 0.95
+        }
+      },
+      "financial": {
+        "interest_rate": {
+          "elasticity": 0.8040745688900502,
+          "baseline": 0.08
+        },
+        "inflation_rate": {
+          "elasticity": 0.05614494327818172,
+          "baseline": 0.02
+        }
+      }
+    },
+    "params": {
+      "Q_sci": 10.0,
+      "p_fus_MW": 500.0,
+      "dd_neutron_fraction": 0.336,
+      "blanket_energy_capture": 1.03,
+      "thermal_efficiency": 0.38,
+      "sc_coil_capital_M": 500.0,
+      "sc_coil_cryo_MW": 15.0,
+      "sc_coil_lifetime_FPY": 8.0,
+      "R_major_m": 7.5,
+      "R_minor_m": 3.5,
+      "elongation": 2.2,
+      "blanket_thickness_m": 0.8,
+      "shield_thickness_m": 1.2,
+      "structure_thickness_m": 0.4,
+      "vessel_thickness_m": 0.15,
+      "p_heat_overhead_MW": 20.0,
+      "heating_system_cost_M": 150.0,
+      "n_mod": 1.0,
+      "plant_availability": 0.7,
+      "plant_lifetime_years": 40.0,
+      "noak": 1.0,
+      "blanket_unit_cost_dd": 0.3,
+      "shield_unit_cost": 0.74,
+      "structure_unit_cost": 0.15,
+      "vessel_unit_cost": 0.72,
+      "remote_handling_scale": 1.5,
+      "p_house_MW": 5.0,
+      "p_vacuum_MW": 2.0,
+      "p_fuel_handling_MW": 1.0,
+      "interest_rate": 0.08,
+      "inflation_rate": 0.02,
+      "construction_time_years": 7.0,
+      "om_base_cost_M_per_yr": 50.0,
+      "core_lifetime_FPY": 10.0,
+      "deuterium_cost_per_kg": 2175.0,
+      "dt_tritium_blanket_capital_M": 0.0,
+      "burn_fraction": 0.05,
+      "fuel_recovery": 0.95
+    }
+  },
+  "parameter_metadata": {},
+  "narrative": {
+    "key_bets": [
+      "Poloidal dipole confinement geometry with plasma physically penetrated by in-vessel coil supported via magnetic tunnels can achieve fusion-relevant plasma performance, despite only static magnetic FEA having been performed",
+      "Superconducting coil path replaces copper at commercial scale, reducing the 700 MW resistive power draw to ~15 MW cryogenic load — a critical viability gate with no published SC coil design",
+      "D-D ignition at confinement time of 20-40 s, plasma temperature 100-200 keV, and density ~10²¹ m⁻³ is achievable (4-10× beyond ITER's projected confinement time)",
+      "Plasma Q ≥ 10 is achievable in the dipole geometry, despite historical poloidal-dipole experiments only reaching few-eV temperatures and ~10¹⁶ m⁻³ densities",
+      "In-vessel dipole coil can survive fusion-relevant neutron fluences and be maintained/replaced through the magnetic tunnel geometry without catastrophic capacity factor penalties",
+      "Commercial-scale plasma heating can scale from the 5-10 kW prototype ECH (4 GHz) to the many-orders-of-magnitude higher power required for D-D at 100-200 keV",
+      "Claimed D-T field advantage of operating at 2-3 T (vs conventional 5.3 T) translates into either lower magnet cost or higher achievable Q"
+    ],
+    "eliminated_costs": [
+      "Tritium breeding blanket (~$200-400M saved): no lithium blanket, FLiBe, or Li-6 enrichment infrastructure required for D-D fuel cycle",
+      "Tritium fuel supply chain: deuterium at ~$5,000-10,000/kg replaces tritium at >$35,000/g, eliminating breeding-ratio management and tritium inventory costs",
+      "Specialty blanket supply chain risks: no beryllium (Materion sole-source), no Li-6 enrichment bottleneck, no molten salt processing infrastructure",
+      "Pulsed-operation fatigue costs: steady-state operation avoids pulsed thermal/mechanical fatigue penalties present in conventional pulsed tokamaks",
+      "Reduced neutron shielding mass per unit fusion power: 2.45 MeV D-D neutrons are less damaging than 14 MeV D-T neutrons"
+    ],
+    "novel_costs": [
+      "In-vessel superconducting dipole coil with radiation-hardened insulation — no vendor currently supplies radiation-hardened HTS coils qualified for sustained neutron environments",
+      "Magnetic-tunnel coil support structure passing through the plasma — a novel mechanical configuration with no established precedent",
+      "Remote handling and replacement of an activated in-vessel coil through the magnetic tunnel geometry — no analogue exists in any operating or planned fusion device",
+      "Oversized reactor core driven by large plasma volume (~6,000-8,000 m³ at 1000 MW D-D) — shield ($804M) is the largest single reactor equipment line item, larger than the SC coil itself ($500M) at 500 MW fusion power",
+      "Commercial-scale ECH heating system sized to reach D-D ignition temperatures (~100-200 keV) from a 5-10 kW prototype baseline — no design study exists"
+    ],
+    "risks": [
+      {
+        "description": "No plasma confinement physics validation: MHD stability, confinement scaling, and transport coefficients exist only as extrapolations from few-eV/10¹⁶ m⁻³ historical dipole experiments — the 2014 FED paper explicitly defers all plasma physics to future work",
+        "severity": "high"
+      },
+      {
+        "description": "700 MW copper coil recirculating power is commercially nonviable; no superconducting coil design has been published to resolve it, and if SC cryo load exceeds ~100 MW net power goes negative",
+        "severity": "high"
+      },
+      {
+        "description": "D-D ignition has never been demonstrated; Deutelio's claimed 20-40 s confinement time and 100-200 keV temperature exceed ITER projections by 4-10× with no experimental or physics-model support",
+        "severity": "high"
+      },
+      {
+        "description": "No reactor design point exists (Q, major radius, thermal power, net electric output) — all LCOE outputs are scenario bounds, not engineering estimates",
+        "severity": "high"
+      },
+      {
+        "description": "In-vessel coil neutron shielding, lifetime, and replacement scheme are unspecified — directly couples to capacity factor (CF=0.4 → 157 ¢/kWh vs CF=0.7 → 95 ¢/kWh baseline)",
+        "severity": "high"
+      },
+      {
+        "description": "Commercial-scale heating power unspecified — prototype ECH is 5-10 kW but D-D at 100-200 keV requires orders of magnitude more heating power, leaving auxiliary systems and recirculating fraction uncertain",
+        "severity": "medium"
+      },
+      {
+        "description": "Plasma volume scales to ~6,000-8,000 m³ at commercial scale (~5× ITER), driving shield, structure, and vacuum vessel costs that may offset D-D's blanket-elimination savings",
+        "severity": "medium"
+      },
+      {
+        "description": "Inconsistency in the primary source between the abstract's '3× weaker field' claim and Section V's '2-3 T vs 5.3 T' (~half) claim for D-T operation, unreconciled by the paper",
+        "severity": "low"
+      },
+      {
+        "description": "Deutelio is a pre-prototype startup (C− tier rating from independent assessment, 4th place Boldbrain 2024) with no third-party plasma physics analysis, cost study, or system code output in the public corpus",
+        "severity": "medium"
+      },
+      {
+        "description": "Radiation-hardened HTS insulation compatible with fabrication processes is unsolved across all fusion concepts, not just PoloMac",
+        "severity": "medium"
+      }
+    ]
+  },
+  "sources": {
+    "model_setup": null,
+    "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/35-polomac-magnetic-confinement/analysis.md"
+  }
+}

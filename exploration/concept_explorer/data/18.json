@@ -1,0 +1,418 @@
+{
+  "concept_id": "18",
+  "name": "p-B11 FRC",
+  "confinement_family": "MFE",
+  "company": "TAE Technologies",
+  "status": "in_progress",
+  "illustration": null,
+  "has_cost_model": true,
+  "has_sensitivities": true,
+  "cost_model": {
+    "cas10": {
+      "name": "Preconstruction",
+      "cost_m_usd": 27.36165,
+      "overridden": false
+    },
+    "cas21": {
+      "name": "Buildings & Structures",
+      "cost_m_usd": 32.235279999999996,
+      "overridden": false
+    },
+    "cas22": {
+      "name": "Reactor Plant Equipment",
+      "cost_m_usd": 427.04019339221935,
+      "overridden": false
+    },
+    "cas23": {
+      "name": "Turbine Plant Equipment",
+      "cost_m_usd": 41.9313024,
+      "overridden": false
+    },
+    "cas24": {
+      "name": "Electrical Plant Equipment",
+      "cost_m_usd": 17.8596288,
+      "overridden": false
+    },
+    "cas25": {
+      "name": "Miscellaneous Plant Equipment",
+      "cost_m_usd": 10.8710784,
+      "overridden": false
+    },
+    "cas26": {
+      "name": "Heat Rejection Systems",
+      "cost_m_usd": 7.2473856,
+      "overridden": false
+    },
+    "cas27": {
+      "name": "Special Materials",
+      "cost_m_usd": 0.0,
+      "overridden": false
+    },
+    "cas28": {
+      "name": "Digital Twin & Simulation",
+      "cost_m_usd": 5.0,
+      "overridden": false
+    },
+    "cas29": {
+      "name": "Contingency",
+      "cost_m_usd": 54.21848685922194,
+      "overridden": false
+    },
+    "cas30": {
+      "name": "Indirect Costs",
+      "cost_m_usd": 119.28067109028825,
+      "overridden": false
+    },
+    "cas40": {
+      "name": "Owner's Costs",
+      "cost_m_usd": 6.470239562798275,
+      "overridden": false
+    },
+    "cas50": {
+      "name": "Supplementary Costs",
+      "cost_m_usd": 47.9014410117496,
+      "overridden": false
+    },
+    "cas60": {
+      "name": "Interest During Construction",
+      "cost_m_usd": 177.5488336366593,
+      "overridden": false
+    },
+    "cas70": {
+      "name": "O&M Costs (annualised)",
+      "cost_m_usd": 10.978888986927881,
+      "overridden": false
+    },
+    "cas80": {
+      "name": "Fuel Costs (annualised)",
+      "cost_m_usd": 0.023693931121951218,
+      "overridden": false
+    },
+    "cas90": {
+      "name": "Financial Costs",
+      "cost_m_usd": 81.76082221415177,
+      "overridden": false
+    },
+    "cas22_detail": {
+      "C220101": {
+        "name": "First Wall & Blanket",
+        "cost_m_usd": 0.7714217306795835,
+        "overridden": false
+      },
+      "C220102": {
+        "name": "Radiation Shield",
+        "cost_m_usd": 0.8764597602711062,
+        "overridden": false
+      },
+      "C220103": {
+        "name": "Magnets / Coils",
+        "cost_m_usd": 20.0,
+        "overridden": false
+      },
+      "C220104": {
+        "name": "Heating & Driver Systems",
+        "cost_m_usd": 260.0,
+        "overridden": false
+      },
+      "C220105": {
+        "name": "Primary Structure & Support",
+        "cost_m_usd": 1.4171263829283323,
+        "overridden": false
+      },
+      "C220106": {
+        "name": "Vacuum System",
+        "cost_m_usd": 2.016029155481525,
+        "overridden": false
+      },
+      "C220107": {
+        "name": "Power Conditioning & Energy Storage",
+        "cost_m_usd": 27.024299271356483,
+        "overridden": false
+      },
+      "C220108": {
+        "name": "Divertor / Target Factory",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220109": {
+        "name": "Direct Energy Converter",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220110": {
+        "name": "Remote Handling & Maintenance Equipment",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220111": {
+        "name": "Installation Labor",
+        "cost_m_usd": 44.05615401042972,
+        "overridden": false
+      },
+      "C220112": {
+        "name": "Isotope Separation Plant",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220200": {
+        "name": "Main & Secondary Coolant",
+        "cost_m_usd": 33.633579040107236,
+        "overridden": false
+      },
+      "C220300": {
+        "name": "Auxiliary Cooling & Cryoplant",
+        "cost_m_usd": 0.7293000000000001,
+        "overridden": false
+      },
+      "C220400": {
+        "name": "Radioactive Waste Management",
+        "cost_m_usd": 0.129948,
+        "overridden": false
+      },
+      "C220500": {
+        "name": "Fuel Handling & Storage",
+        "cost_m_usd": 3.0898526586116146,
+        "overridden": false
+      },
+      "C220600": {
+        "name": "Other Reactor Plant Equipment",
+        "cost_m_usd": 1.8902638319219065,
+        "overridden": false
+      },
+      "C220700": {
+        "name": "Instrumentation & Control",
+        "cost_m_usd": 28.82428149093656,
+        "overridden": false
+      }
+    },
+    "headline": {
+      "lcoe_per_mwh": 48.25976603351996,
+      "overnight_cost_per_kw": 3088.995291605114,
+      "p_net_mw": 1000.0,
+      "q_eng": 1.0466,
+      "capacity_factor": 0.85
+    },
+    "sensitivities": {
+      "engineering": {
+        "q_plasma": {
+          "elasticity": -1.5114705730945381,
+          "baseline": 30.0
+        },
+        "p_nbi_plasma_MW": {
+          "elasticity": -0.25323655941828094,
+          "baseline": 26.0
+        },
+        "eta_nbi_source": {
+          "elasticity": 0.0,
+          "baseline": 0.6
+        },
+        "eta_nbi_couple": {
+          "elasticity": 0.0,
+          "baseline": 0.43
+        },
+        "eta_nbi": {
+          "elasticity": -0.806744957805451,
+          "baseline": 0.26
+        },
+        "eta_th": {
+          "elasticity": -1.5567993984644541,
+          "baseline": 0.32
+        },
+        "eta_icc": {
+          "elasticity": 0.0,
+          "baseline": 0.9
+        },
+        "f_rad": {
+          "elasticity": 0.2666546708200297,
+          "baseline": 0.15
+        },
+        "plant_availability": {
+          "elasticity": -0.9999523731108638,
+          "baseline": 0.85
+        },
+        "plant_lifetime_years": {
+          "elasticity": -0.11791520253142597,
+          "baseline": 40.0
+        },
+        "construction_time_years": {
+          "elasticity": 0.36698695411536647,
+          "baseline": 6.0
+        },
+        "frc_separatrix_radius_m": {
+          "elasticity": 0.006608705822814487,
+          "baseline": 1.5
+        },
+        "frc_axial_length_m": {
+          "elasticity": 0.00881797051273416,
+          "baseline": 10.0
+        },
+        "blanket_thickness_m": {
+          "elasticity": 0.002538810907444595,
+          "baseline": 0.3
+        },
+        "shield_thickness_m": {
+          "elasticity": 0.002159895386229967,
+          "baseline": 0.2
+        },
+        "structure_thickness_m": {
+          "elasticity": 0.002789561930640275,
+          "baseline": 0.15
+        },
+        "vessel_thickness_m": {
+          "elasticity": 0.003538966978291243,
+          "baseline": 0.05
+        },
+        "nbi_cost_per_MW_M_USD": {
+          "elasticity": 0.45122133927820823,
+          "baseline": 10.0
+        },
+        "magnet_cost_M_USD": {
+          "elasticity": 0.03470933379062176,
+          "baseline": 20.0
+        },
+        "icc_cost_M_USD": {
+          "elasticity": 0.0,
+          "baseline": 100.0
+        },
+        "p_magnet_MW": {
+          "elasticity": 0.024193277462059865,
+          "baseline": 3.0
+        },
+        "p_house_MW": {
+          "elasticity": 0.03225770527358742,
+          "baseline": 4.0
+        },
+        "p_fuel_inject_MW": {
+          "elasticity": 0.004032212599269565,
+          "baseline": 0.5
+        },
+        "core_lifetime_FPY": {
+          "elasticity": 0.0,
+          "baseline": 50.0
+        },
+        "u_b11_per_kg": {
+          "elasticity": 0.0001476221264515333,
+          "baseline": 50.0
+        }
+      },
+      "financial": {
+        "interest_rate": {
+          "elasticity": 0.9165030325100754,
+          "baseline": 0.08
+        },
+        "inflation_rate": {
+          "elasticity": 0.042873237829185104,
+          "baseline": 0.02
+        }
+      }
+    },
+    "params": {
+      "q_plasma": 30.0,
+      "p_nbi_plasma_MW": 26.0,
+      "eta_nbi_source": 0.6,
+      "eta_nbi_couple": 0.43,
+      "eta_nbi": 0.26,
+      "eta_th": 0.32,
+      "eta_icc": 0.9,
+      "f_rad": 0.15,
+      "use_icc": 0.0,
+      "plant_availability": 0.85,
+      "plant_lifetime_years": 40.0,
+      "n_mod": 1.0,
+      "noak": 0.0,
+      "interest_rate": 0.08,
+      "construction_time_years": 6.0,
+      "inflation_rate": 0.02,
+      "frc_separatrix_radius_m": 1.5,
+      "frc_axial_length_m": 10.0,
+      "blanket_thickness_m": 0.3,
+      "shield_thickness_m": 0.2,
+      "structure_thickness_m": 0.15,
+      "vessel_thickness_m": 0.05,
+      "nbi_cost_per_MW_M_USD": 10.0,
+      "magnet_cost_M_USD": 20.0,
+      "icc_cost_M_USD": 100.0,
+      "p_magnet_MW": 3.0,
+      "p_house_MW": 4.0,
+      "p_fuel_inject_MW": 0.5,
+      "core_lifetime_FPY": 50.0,
+      "u_b11_per_kg": 50.0
+    }
+  },
+  "parameter_metadata": {},
+  "narrative": {
+    "key_bets": [
+      "Beam-driven non-equilibrium plasma can sustain T_i >> T_e at ~150–250 keV to suppress bremsstrahlung losses below fusion power output",
+      "FRC confinement scaling extrapolates successfully from C-2W's ~1 keV / 0.4 m separatrix to Da Vinci's ~250 keV / 1–2 m major radius (~150× temperature, 2.5–5× size)",
+      "Q_plasma ≥ 25–35 is achievable for p-B11 in a beam-driven FRC despite never having been demonstrated above unity in any confinement device",
+      "FRC tilt and kink instabilities remain controllable at multi-megaampere plasma currents via tangential NBI stabilization",
+      "NBI systems can be scaled to reactor-relevant proton beam energies (~250 keV) with acceptable wall-plug-to-plasma efficiency (η_NBI ≈ 0.20–0.35)",
+      "Inverse Cyclotron Converter (patent-stage) can achieve >90% direct conversion efficiency of MeV alpha particles at commercial scale",
+      "Continuous/steady-state FRC operation is achievable from the current ~30–40 ms pulse record to seconds-to-CW timescales"
+    ],
+    "eliminated_costs": [
+      "No tritium breeding blanket (no Li-6 enrichment, FLiBe, beryllium supply chain, or tritium extraction systems)",
+      "No heavy neutron shielding — thin water/boron shield instead of multi-meter composite structures, reducing building volume and structural steel",
+      "No REBCO/HTS superconducting magnet supply chain — near-unity FRC beta allows resistive copper coils at ~1 kG external field",
+      "No remote handling robotics — aneutronic fuel enables hands-on maintenance (ITER-class remote handling costs >$500M eliminated)",
+      "No tritium infrastructure — no radiological containment for primary circuit, tritium-compatible valves/pipes, or tritium accounting"
+    ],
+    "novel_costs": [
+      "NBI system as dominant capital driver (~$260M at $10M/MW × 26 MW, >50% of CAS22) with no commercial supply chain for reactor-scale high-energy NBI",
+      "Continuous NBI recirculating power burden (~100 MW wall-plug for 26 MW plasma at η_NBI=0.26) that cannot amortize over pulses and stays near-full-power at reduced capacity factor",
+      "Inverse Cyclotron Converter direct energy conversion system (~$127M per module in Branch C) — a patent-stage subsystem with no analog in other concepts",
+      "High-energy proton/deuterium beam sources, gas neutralization cells, and beam dump components at commercial scale — specialized NBI supply chain with no industrial manufacturing base",
+      "Continuous electrical power consumption for resistive copper coils (vs. one-time cryogenic setup for superconducting alternatives)"
+    ],
+    "risks": [
+      {
+        "description": "Bremsstrahlung power balance may prevent any positive energy gain for p-B11 — at fully thermalized conditions, f_rad could exceed 0.80–1.0, forcing Branch A (no viable LCOE) regardless of Q_plasma",
+        "severity": "high"
+      },
+      {
+        "description": "Temperature extrapolation from ~1 keV (C-2W/Norman record) to ~150–250 keV (Da Vinci target) represents a ~150× gap with no validated confinement scaling law for beam-driven FRCs",
+        "severity": "high"
+      },
+      {
+        "description": "Q_plasma > 1 has never been demonstrated for p-B11 in any confinement device — Copernicus intermediate validation machine is unbuilt with no published parameters",
+        "severity": "high"
+      },
+      {
+        "description": "FRC tilt/kink instabilities at reactor-scale major radii (1–2 m) and multi-megaampere plasma currents are unvalidated physics unknowns that directly determine whether Da Vinci can operate at all",
+        "severity": "high"
+      },
+      {
+        "description": "NBI wall-plug-to-plasma efficiency is η_NBI ≈ 0.20–0.35 per C-2W data (two-step chain: source 0.55–0.65 × coupling 0.35–0.50), substantially worse than prior ~0.55 assumption, raising Q_plasma breakeven to ~14 and commercial minimum to 25–35",
+        "severity": "high"
+      },
+      {
+        "description": "ICC direct energy conversion (>90% claimed) has zero experimental demonstration at MeV-range fusion product energies — without ICC, steam-baseline Da Vinci (~$119/MWh) cannot capture the economic value of aneutronic fuel choice",
+        "severity": "high"
+      },
+      {
+        "description": "Capacity factor and NBI recirculating power interact multiplicatively — at sub-unity CF, NBI remains at full power for FRC stability, raising effective recirculating fraction and tightening Q_plasma floor beyond rated-power estimates",
+        "severity": "medium"
+      },
+      {
+        "description": "Continuous/CW FRC operation is undemonstrated — current experimental record is ~30–40 ms (NBI pulse-limited), with no demonstration of seconds-scale sustainment at reactor-relevant conditions",
+        "severity": "medium"
+      },
+      {
+        "description": "Da Vinci commercial specifications (fusion power, Q value, NBI system specs, plasma geometry, capital cost) are entirely unpublished — six blocking data gaps make the LCOE model physics-viability bounding rather than cost-estimation",
+        "severity": "medium"
+      },
+      {
+        "description": "No commercial manufacturing pathway exists for reactor-scale high-energy NBI systems — industrial scale-up of ion sources, neutralization cells, and power supplies is uncharacterized",
+        "severity": "medium"
+      },
+      {
+        "description": "NBI system lifetime and replacement schedule in a fusion radiation environment is unknown, making O&M cost structure (expected dominant driver) unpredictable",
+        "severity": "medium"
+      }
+    ]
+  },
+  "sources": {
+    "model_setup": null,
+    "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/18-p-b11-frc/analysis.md"
+  }
+}

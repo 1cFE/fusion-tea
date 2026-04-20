@@ -1,0 +1,12 @@
+{
+  "entries": [],
+  "acquired_by_iteration": {
+    "3": {
+      "paths": [],
+      "note": "agent output missing or malformed — paths detected by filesystem diff"
+    },
+    "4": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/35-polomac-magnetic-confinement/iter-01/sources/jtsp-jtsp-article-download-32-28.md"
+    ]
+  }
+}

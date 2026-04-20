@@ -1,226 +1,255 @@
-"""Magnetic Mirror (D-T) — Realta Fusion CoSMo/Hammir LCOE model.
+"""Magnetic Mirror (D-T) — Realta Fusion (CoSMo / Hammir).
+
+Modeling approach:
+    Uses the MFE MIRROR / DT model for Realta's CoSMo (Compact, Scalable, Modular)
+    axisymmetric tandem mirror concept. The commercial design point is extrapolated
+    beyond the Hammir pilot plant (Pe > 50 MWe) to a 500 MWe commercial-scale plant,
+    consistent with Realta's linear scaling thesis (~7 MWt/m center cell).
+
+    Power balance reflects:
+      - Steady-state NBI + ECH heating with approximately constant end-plug input
+        power (Realta's core economic argument: input power fixed while output scales
+        with center cell length)
+      - Dual energy conversion: thermal blanket (80% neutron energy) + venetian-blind
+        DEC on alpha particles (20% of fusion energy at ~54% MARS efficiency)
+      - D-T fuel cycle with LiPb-analogue breeding blanket (MARS as closest cost model)
+
+Concept choice rationale:
+    ConfinementConcept.MIRROR captures the cylindrical solenoid geometry, DEC-capable
+    power balance, and solenoid coil cost model appropriate for an axisymmetric tandem
+    mirror. Fuel.DT activates the correct D-T cost scaling: full breeding blanket,
+    tritium processing, heavy neutron shielding, and full remote handling suite.
+
+Key deviations from steady_state_mirror.yaml defaults:
+    - plasma_t = 0.75 m (arXiv Table 3: 0.54–0.78 m range for 50 m pilot;
+      commercial scale slightly larger)
+      Source: arxiv-2411-06644-confinement-predictions.md §Hammir Design, Table 3
+    - chamber_length = 70 m (commercial extrapolation beyond 50 m Hammir pilot;
+      at ~7 MWt/m → ~490 MWt fusion power; Q > 10 projected for longer cells)
+      Source: fusion-report-interview-realta.md §Performance Scaling;
+              arxiv-2411-06644-confinement-predictions.md §Hammir Design
+    - p_input = 40 MW (arXiv-anchored: 30–40 MW for 50 m pilot; commercial extrapolation
+      assumes constant end-plug power per linear scaling thesis)
+      Source: arxiv-2411-06644-confinement-predictions.md Table 3 (derived);
+              analysis.md §Section 5 (NBI+ECH input power ≈30–40 MW, medium confidence)
+    - eta_th = 0.36 (MARS 1983 steam Rankine plant efficiency ~36%; sCO2 could reach
+      40–45% but blanket/cycle type undisclosed by Realta)
+      Source: analysis.md §Section 5 (MARS analogue, low confidence)
+    - eta_de = 0.54 (MARS 1983 gridless DEC; venetian-blind design uncharacterized)
+      Source: analysis.md §Section 5 (DEC efficiency, low confidence)
+    - f_dec = 0.20 (D-T nuclear physics hard limit: 20% alpha fraction)
+      Source: analysis.md §Section 2, Challenge 4; realta-fusion-hub-spotlight.md
+    - p_coils = 8 MW, p_cryo = 2 MW (elevated for 70 m commercial REBCO magnet set)
+      Source: wham-experiment-details.md §Magnet System (17 T HTS solenoids, CFS-built)
+    - No cost overrides: zero Realta-specific capital cost data is available for any account
+
+WARNING — DATA QUALITY:
+    Realta has published no plant-level engineering parameters, capital cost estimates,
+    or LCOE projections for Hammir or any commercial design. Nearly every parameter is
+    inferred from arXiv:2411.06644 (pilot physics), MARS 1983 (historical analogue), or
+    framework defaults. End-plug confinement at commercial Q has never been experimentally
+    validated. LCOE output is an order-of-magnitude structural estimate only.
+    Data availability rating: Limited (analysis.md §Section 1).
 
 Usage:
     uv run python model_setup.py              # print results to terminal
     uv run python model_setup.py | tee model_output.txt  # also save for synthesis stage
-
-Modeling Approach
------------------
-Commercial-scale axisymmetric tandem magnetic mirror (CoSMo) with D-T fuel,
-HTS REBCO solenoid magnets, and hybrid thermal blanket + venetian-blind direct
-energy conversion (DEC). Steady-state plasma in a linear open-ended center cell.
-
-Concept Choice Rationale
-------------------------
-Realta Fusion (UW-Madison spinout, 2022) is the most active private-sector magnetic
-mirror program. Their economic thesis is linear center-cell scaling: each additional
-meter adds ~7 MWt at roughly constant end-plug hardware cost, potentially enabling
-high-Q plants at smaller scale than tokamaks. The 1costingfe MIRROR/DT concept covers
-the key physics: cylindrical geometry, solenoid coils, DEC on end-loss ions, and lower
-thermal efficiency due to open-ended end losses.
-
-Key Deviations from mfe_mirror.yaml Defaults
----------------------------------------------
-- chamber_length: 70 m (commercial scale; 50 m pilot targets Q>5; 70 m → Q~8-10)
-  Source: arxiv-2411-06644-confinement-predictions.md §Hammir Design
-- p_input: 70 MW (midpoint of 40–100 MW uncertainty range from two prior model runs)
-  Source: analysis.md §Section 2, Challenge 3; §Section 5, Missing Parameters
-- eta_th: 0.38 (MARS 1983 steam Rankine achieved ~36%; 0.38 reflects modest improvement)
-  Source: analysis.md §Section 5 (MARS analogue); blanket/cycle type undisclosed
-- eta_de: 0.54 (MARS 1983 gridless DEC; venetian-blind design uncharacterized)
-  Source: analysis.md §Section 5, DEC efficiency; MARS Logan 1983
-- f_dec: 0.20 (D-T physics: 20% alpha fraction vs 80% neutron — hard physical limit)
-  Source: realta-fusion-hub-spotlight.md §Fuel & Reaction; analysis.md §S2 Challenge 4
-- p_coils: 10 MW, p_cryo: 2 MW (elevated for larger HTS magnet set at commercial scale)
-- No cost overrides: zero Realta-specific cost data available for any CAS account
-
-Data Quality Warning
---------------------
-HIGHLY UNCERTAIN: Realta has published no plant-level engineering parameters, capital
-cost estimates, or LCOE projections. Nearly every parameter is either analysis-inferred
-from historical analogues (MARS 1983) or framework default. LCOE output is an
-order-of-magnitude structural estimate only. Data availability rating: Limited.
-Source: analysis.md §Section 1
 """
 
 from costingfe import ConfinementConcept, CostModel, Fuel
 
-# ── Model instantiation ───────────────────────────────────────────────────────
+# ── Model instantiation ────────────────────────────────────────────────────
 model = CostModel(concept=ConfinementConcept.MIRROR, fuel=Fuel.DT)
 
-# ── Plant configuration constants ─────────────────────────────────────────────
+# ── Native design point ────────────────────────────────────────────────────
+# Hammir pilot target: Pe > 50 MWe for 3+ hours continuously.
+# Source: aps-dpp-2025-sutherland.md §Hammir Facility (Pilot Plant) [high confidence]
+# Commercial plant is expected to be substantially larger.
+# 500 MWe is used as a reference commercial scale; MARS/MINIMARS found mirror LCOE
+# saturates near ~600 MWe (1983 technology analogue).
+# Source: analysis.md §Section 5 "LCOE scaling saturation (historical): ~600 MWe" [low confidence]
+# UNCERTAIN: Realta has published no commercial plant size target.
+_NATIVE_MW = 500.0
 
-# --- Plant scale ---
-# Hammir pilot target: >50 MWe net electricity for 3+ hours continuously
-# Source: aps-dpp-2025-sutherland.md §Hammir Facility (Pilot Plant)
-# Commercial plant: UNCERTAIN — no Realta commercial size target published.
-# 500 MWe modeled for economic viability comparison with other fusion concepts.
-NET_ELECTRIC_MW = 500.0  # UNCERTAIN: commercial scale; pilot target >50 MWe only
+# ── Shared kwargs (common to both forward() calls) ─────────────────────────
+_SHARED_KWARGS = dict(
 
-# Availability: no Realta availability target published.
-# UNCERTAIN: 0.85 is consistent with framework baseline; DEC electrode lifetime
-# is an unresolved concern (thin uncooled electrodes in fusion exhaust stream).
-# Source: analysis.md §Section 3, DEC subsystem — no survivability data exists
-AVAILABILITY = 0.85  # UNCERTAIN: DEC electrode lifetime unknown; using framework default
-
-LIFETIME_YR = 30         # DEFAULT: standard fusion plant design life
-CONSTRUCTION_TIME_YR = 5.0  # DEFAULT: mfe_mirror.yaml (linear geometry simpler
-                             # than tokamak; modular center-cell assembly possible)
-INTEREST_RATE = 0.07     # DEFAULT: 7% real discount rate
-INFLATION_RATE = 0.02    # DEFAULT
-NOAK = True              # Nth-of-a-kind (commercial fleet cost floor)
-
-# --- Mirror geometry (cylindrical center cell) ---
-R0 = 0.0  # Not used for cylindrical mirror (no toroidal axis offset)
-
-# plasma_t: plasma radius [m]
-# arXiv Table 3 gives 0.54 m (Optimum) to 0.78 m (Alternate) for the 50 m pilot.
-# Using 0.75 m as a central estimate for a 70 m commercial design; commercial radius
-# may be modestly larger if power density is maintained.
-# Source: arxiv-2411-06644-confinement-predictions.md Table 3
-PLASMA_T = 0.75  # arXiv Table 3: 0.54 m (Optimum) / 0.78 m (Alternate) for 50 m pilot
-
-# chamber_length: commercial center cell length [m]
-# Hammir pilot: 50 m → Q_plasma > 5 (modeled, not demonstrated)
-# Source: arxiv-2411-06644-confinement-predictions.md §Hammir Design
-# "Q > 10 possible with longer center cell" — length unspecified
-# Source: fusion-report-interview-realta.md (secondary-source characterization of
-#         arXiv scaling behavior; arXiv itself demonstrates Q = 5.8 at 50 m only)
-# Using 70 m for a Q~8–10 commercial variant; at ~7 MWt/m → ~490 MWt fusion power
-# Source: fusion-report-interview-realta.md §Performance Scaling
-CHAMBER_LENGTH = 70.0  # UNCERTAIN: commercial length not published; extrapolated
-                        # from 50 m pilot and Q > 10 projection
-
-# Radial build thicknesses [m] — no Realta blanket/shield data available
-BLANKET_T = 0.60    # DEFAULT: thinner blanket for linear geometry (neutron path)
-                    # MARS used LiPb blanket (TBR 1.15) in similar cylindrical geometry
-                    # Source: dossier.md §Key Sources (MARS study, Logan 1983)
-HT_SHIELD_T = 0.20  # DEFAULT
-STRUCTURE_T = 0.15  # DEFAULT
-VESSEL_T = 0.10     # DEFAULT
-
-# ── Forward model ─────────────────────────────────────────────────────────────
-result = model.forward(
-    # No cost overrides: Realta has published zero plant-level cost data.
-    # The only published cost signal: "$50M in REBCO tape for WHAM++" (pre-commercial).
-    # Source: realta-fusion-hub-spotlight.md §Magnet Specifications
-    # This cannot be extrapolated to a commercial Hammir CAS22 without magnet specs.
-    cost_overrides={},
-
-    # --- Customer requirements ---
-    net_electric_mw=NET_ELECTRIC_MW,
-    availability=AVAILABILITY,
-    lifetime_yr=LIFETIME_YR,
+    # ── Financial / lifecycle ─────────────────────────────────────────────
+    availability=0.85,
+    # UNCERTAIN: No capacity factor published by Realta. Pilot targets "at least 3 hours
+    # continuously" (aps-dpp-2025-sutherland.md §Hammir Facility) — not a commercial
+    # availability target. DEC electrode replacement may reduce availability.
+    # Source: analysis.md §Section 3 "Direct Energy Conversion: no fusion-condition
+    #   survivability data"; §Section 5 "Capacity factor: proprietary / important"
+    lifetime_yr=30,              # DEFAULT: standard fusion reference; no concept data
     n_mod=1,
-    construction_time_yr=CONSTRUCTION_TIME_YR,
-    interest_rate=INTEREST_RATE,
-    inflation_rate=INFLATION_RATE,
-    noak=NOAK,
+    construction_time_yr=5.0,   # DEFAULT: steady_state_mirror.yaml; linear geometry
+                                 # simpler than toroid; modular center-cell assembly possible
+    interest_rate=0.07,          # DEFAULT: standard reference
+    inflation_rate=0.02,         # DEFAULT: standard reference
+    noak=True,
 
-    # --- Mirror geometry ---
-    R0=R0,
-    plasma_t=PLASMA_T,
-    chamber_length=CHAMBER_LENGTH,  # UNCERTAIN: see above
-    blanket_t=BLANKET_T,
-    ht_shield_t=HT_SHIELD_T,
-    structure_t=STRUCTURE_T,
-    vessel_t=VESSEL_T,
+    # ── Mirror geometry (cylindrical center cell) ─────────────────────────
+    R0=0.0,                  # No toroidal axis offset for cylinder; steady_state_mirror.yaml
 
-    # --- Power balance (tandem mirror with DEC) ---
+    plasma_t=0.75,           # Plasma radius [m].
+                             # arXiv Table 3: 0.54 m (Optimum) / 0.78 m (Alternate) for 50 m pilot.
+                             # 0.75 m is a central estimate for a 70 m commercial design.
+                             # Source: arxiv-2411-06644-confinement-predictions.md §Table 3 [medium]
 
-    # NBI + ECH total heating power [MW]
-    # UNCERTAIN: handwritten model used 40 MW; automated pipeline used 100 MW
-    # Source: analysis.md §Section 2, Challenge 3 (two prior model run comparison)
-    # Source: analysis.md §Section 5, Missing Parameters — "blocking" gap
-    # No Hammir input power published by Realta; proprietary.
+    chamber_length=70.0,     # Center cell length [m].
+                             # UNCERTAIN: Hammir pilot = 50 m (Q > 5 modeled, not validated).
+                             # Source: arxiv-2411-06644-confinement-predictions.md §Hammir Design
+                             # "Q > 10 possible with longer center cell" (length unspecified).
+                             # Source: fusion-report-interview-realta.md §Performance Scaling [secondary]
+                             # 70 m extrapolated for Q ~ 8–10 commercial variant; at 7 MWt/m:
+                             # P_fus ≈ 490 MWt. Source: analysis.md §Section 2, Challenge 2
+
+    blanket_t=0.80,          # Blanket thickness [m]; DEFAULT: steady_state_mirror.yaml
+                             # D-T breeding blanket required; MARS used LiPb (TBR 1.15).
+                             # Realta blanket type not disclosed (FLiBe/LiPb/liquid-Li/HCPB).
+                             # Source: analysis.md §Section 2, Challenge 5; §Section 5 "Blanket
+                             #   type: proprietary / blocking"
+
+    ht_shield_t=0.20,        # DEFAULT: steady_state_mirror.yaml
+    structure_t=0.15,        # DEFAULT: steady_state_mirror.yaml
+    vessel_t=0.10,           # DEFAULT: steady_state_mirror.yaml
+
+    # ── Power balance ─────────────────────────────────────────────────────
+
+    p_input=40.0,            # Total NBI + ECH heating power [MW].
+                             # arXiv Table 3 (50 m Optimum): P_fus=175 MW, Q=5.8
+                             # → P_input ≈ 30 MW. Analysis §5 cites 35 MW as midpoint.
+                             # Source: arxiv-2411-06644-confinement-predictions.md Table 3
+                             #   (NBI+ECH input power: ≈30–40 MW) [medium confidence]
+                             # Linear scaling thesis: "input power remains constant despite
+                             # increased output" (end-plug power dominates, center cell grows).
+                             # Source: fusion-report-interview-realta.md §Performance Scaling
+                             # 40 MW used as conservative arXiv-anchored commercial estimate.
+                             # UNCERTAIN: commercial Hammir heating power not published; prior
+                             # automated pipeline used 100 MW — 2.5× spread.
+                             # Source: analysis.md §Section 5 "NBI+ECH input power: blocking gap"
+
+    mn=1.1,                  # Neutron energy multiplier; DEFAULT: steady_state_mirror.yaml
+                             # Consistent with MARS LiPb blanket (TBR ~1.15).
+                             # Source: analysis.md §Section 8 "MARS Study (Logan 1983)" [low]
+
+    eta_th=0.36,             # Thermal conversion efficiency.
+                             # MARS 1983 steam Rankine achieved ~36% overall plant efficiency.
+                             # Source: analysis.md §Section 5 "Thermal efficiency (MARS analogue):
+                             #   ~36%" [low confidence — MARS technology, not Realta-specific]
+                             # sCO2 could reach 40–45% if Realta selects a modern power cycle.
+                             # UNCERTAIN: blanket type and thermal cycle undisclosed.
+                             # Source: analysis.md §Section 2, Challenge 5
+
+    eta_p=0.50,              # Pumping efficiency; DEFAULT: steady_state_mirror.yaml
+
+    eta_pin=0.50,            # Heating system wall-plug efficiency (NBI + ECH blended).
+                             # ECH gyrotrons at 110 GHz: ~45–55% wall-plug efficiency.
+                             # NBI systems: ~50–70% wall-plug (beam energy dependent).
+                             # WHAM uses both ECH and NBI for end-plug operation.
+                             # Source: wham-experiment-details.md §Heating Methods
+                             # Source: analysis.md §Section 3 "ECH and HHFW: TRL 6–7"; "NBI: TRL 6–7"
+                             # DEFAULT consistent with blended estimate.
+
+    eta_de=0.54,             # DEC efficiency on end-loss charged particles.
+                             # UNCERTAIN: Realta venetian-blind DEC is uncharacterized at
+                             # fusion conditions. Only analogue: MARS 1983 gridless DEC ~54%.
+                             # Source: analysis.md §Section 5 "DEC efficiency (MARS analogue): ~54%"
+                             #   [low confidence — MARS gridless ≠ Realta venetian-blind]
+                             # Source: analysis.md §Section 3 "DEC: TRL 4–5";
+                             #   Moir & Barr, Nuclear Fusion 1973 (50–65% range for DEC class)
+
+    f_sub=0.03,              # BOP subsystem power fraction; DEFAULT: steady_state_mirror.yaml
+
+    f_dec=0.20,              # Fraction of end-loss transport power directed to DEC.
+                             # D-T nuclear physics: 80% of fusion energy in 14.1 MeV neutrons
+                             # (captured in thermal blanket), 20% in 3.5 MeV alpha particles
+                             # (potentially capturable by venetian-blind DEC at open ends).
+                             # f_dec = 0.20 reflects the physics-fixed alpha energy fraction.
+                             # Source: analysis.md §Section 2, Challenge 4 "Charged particle
+                             #   fraction (D-T physics): ~20%" [high confidence — nuclear physics]
+                             # Source: realta-fusion-hub-spotlight.md §Fuel & Reaction
+                             # UNCERTAIN: fraction of alphas that actually reach the DEC electrodes
+                             # (vs. deposited on wall/divertor) is unknown.
+
+    p_coils=8.0,             # Solenoid coil power [MW].
+                             # Elevated from default (5 MW) for 70 m commercial REBCO magnet set:
+                             # two end-mirror HTS solenoids (≥ WHAM scale, 17 T in-bore) plus
+                             # a 70 m array of center-cell solenoid modules.
+                             # Source: wham-experiment-details.md §Magnet System
+                             #   (CFS-built REBCO, 17 T in-bore, >20 T on conductor)
+                             # UNCERTAIN: commercial Hammir magnet count and field strength unpublished.
+
+    p_cool=22.0,             # Cooling system power [MW]; modestly elevated from default (20 MW)
+                             # for 70 m center-cell first wall and blanket cooling load.
+
+    p_pump=1.5,              # Coolant pumping [MW]; DEFAULT: steady_state_mirror.yaml
+
+    p_trit=10.0,             # Tritium processing power [MW]; DEFAULT: steady_state_mirror.yaml
+                             # D-T fuel cycle with Li blanket confirmed; blanket type undisclosed.
+                             # Source: fusion-report-interview-realta.md §Energy Conversion
+
+    p_house=4.0,             # Housekeeping [MW]; DEFAULT: steady_state_mirror.yaml
+
+    p_cryo=2.0,              # Cryogenic power [MW]; elevated from default (1 MW).
+                             # REBCO operates at ~20 K — lower cryo load than 4 K LTS, but a
+                             # 70 m solenoid array requires more infrastructure than the example.
+                             # Source: wham-experiment-details.md §Magnet System
+
+    # ── Cost overrides ────────────────────────────────────────────────────
+    # No cost overrides. Realta has published zero plant-level cost estimates.
+    # Only published cost signal: "$50M in REBCO tape for WHAM++" (sub-commercial).
+    # Source: realta-fusion-hub-spotlight.md §Magnet Specifications
+    # This signal cannot be extrapolated to a commercial Hammir CAS22 without
+    # magnet geometry and current specifications.
+    # Source: analysis.md §Section 5 "Capital cost breakdown: truly-unknown / important"
+    #         §Section 6 gap #6 — no capital cost data for any Hammir subsystem.
     #
-    # arXiv-anchored estimate: arXiv Table 3 (P_fusion=175 MW, Q=5.8) → P_input ≈ 30 MW
-    # for the 50 m pilot. 30–40 MW is the arXiv-derived range (present in full output.md).
-    # Source: arxiv-2411-06644-confinement-predictions.md Table 3
-    #
-    # Conservative case: 70 MW (midpoint of 40–100 MW uncertainty range from prior runs).
-    # At 70 MW input and ~490 MWt fusion power: Q_plasma ≈ 7 — physically plausible.
-    # An optimistic bracket at p_input = 35 MW (arXiv midpoint extrapolation) would
-    # give Q_plasma ≈ 14 at 70 m, providing a lower-LCOE arXiv-anchored scenario.
-    p_input=70.0,  # UNCERTAIN: conservative 70 MW; arXiv-anchored estimate is 30–40 MW
-
-    mn=1.1,  # Blanket neutron energy multiplier; DEFAULT: MARS LiPb analogy
-             # Source: mfe_mirror.yaml default
-
-    # Thermal conversion efficiency
-    # UNCERTAIN: blanket type and thermal cycle undisclosed by Realta
-    # MARS 1983 steam Rankine achieved ~36% overall plant efficiency
-    # Source: analysis.md §Section 5, Thermal efficiency row (MARS analogue)
-    # Modern sCO2 could reach 40–45%; 0.38 is intermediate conservative estimate.
-    # Source: analysis.md §Section 2, Challenge 5 (thermal cycle undisclosed)
-    eta_th=0.38,  # UNCERTAIN: MARS baseline 36%; sCO2 potential 40–45%
-
-    eta_p=0.50,   # Pumping efficiency; DEFAULT
-
-    # Heating system wall-plug efficiency (NBI + ECH blended)
-    # ECH gyrotrons (110 GHz, WHAM): ~45–55% wall-plug efficiency
-    # NBI efficiency: ~50%; blended estimate for NBI+ECH mix
-    # Source: analysis.md §Section 3, ECH and NBI subsystems
-    eta_pin=0.50,  # DEFAULT; consistent with NBI/gyrotron mix estimate
-
-    # DEC efficiency on end-loss ions
-    # UNCERTAIN: Realta venetian-blind DEC design is uncharacterized at fusion conditions
-    # Source: analysis.md §Section 3, Direct Energy Conversion (TRL 4–5)
-    # Only historical analogue: MARS 1983 gridless direct converters ~54%
-    # Source: analysis.md §Section 5, DEC efficiency row
-    # "analysis.md §S2 Challenge 4: MARS achieved ~54% DEC efficiency"
-    # Note: venetian blind ≠ gridless; this is a structural analogue only
-    eta_de=0.54,  # UNCERTAIN: MARS analogue; Realta venetian-blind design not characterized
-
-    f_sub=0.03,  # BOP subsystem power fraction; DEFAULT
-
-    # Fraction of end-loss transport power captured by DEC
-    # D-T physics hard limit: 80% of fusion energy in 14.1 MeV neutrons (blanket),
-    # 20% in 3.5 MeV alpha particles (capturable by DEC at open ends)
-    # Source: realta-fusion-hub-spotlight.md §Fuel & Reaction
-    # Source: analysis.md §Section 2, Challenge 4 — "20% alpha, 80% neutron"
-    # f_dec = 0.20 reflects the alpha physics directly; 80% of alphas to DEC
-    # (remainder deposited on wall/divertor structures)
-    f_dec=0.20,   # UNCERTAIN: D-T alpha fraction ~20%; fraction actually reaching DEC unknown
-
-    # Solenoid + end-plug coil power [MW]
-    # UNCERTAIN: no coil power published for any Realta device.
-    # Elevated from default (5 MW) for larger commercial REBCO magnet set:
-    # two end-mirror coils (≥ WHAM scale, 17 T HTS) + 70 m of center-cell solenoids.
-    # Source: wham-experiment-details.md §Magnet System (REBCO, 17 T in-bore)
-    p_coils=10.0,  # UNCERTAIN: inferred from commercial magnet set scale
-
-    p_cool=25.0,   # Cooling system [MW]; elevated from default (20 MW) for 70 m center-cell
-    p_pump=2.0,    # Coolant pumping [MW]; DEFAULT
-    p_trit=12.0,   # Tritium processing [MW]; elevated for open-ended exhaust management
-                   # Li blanket confirmed; type undisclosed
-                   # Source: fusion-report-interview-realta.md §Energy Conversion
-    p_house=5.0,   # Housekeeping [MW]; elevated for 70 m linear plant
-    p_cryo=2.0,    # Cryogenic [MW]; elevated for larger REBCO magnet array at commercial scale
-                   # REBCO operates at ~20 K (not 4 K as for LTS) — modest cryo load
-                   # Source: wham-experiment-details.md §Magnet System
+    # Framework DT defaults applied (costing_constants.yaml):
+    #   blanket_unit_cost_dt    = 0.60 M$/m³  (LiPb breeding blanket)
+    #   fuel_handling_dt_base   = 120 M$ at 1 GWe  (tritium processing)
+    #   remote_handling_dt_base = 150 M$ at 1 GWe  (full RH suite)
+    #   licensing_cost_dt       = 5 M$  (Part 30 DT)
+    #   om_cost_dt              = 52 M$/yr at 1 GWe  (neutron + tritium overhead)
+    #   decom_provision_dt      = 127 M$ at 1 GWe
+    cost_overrides={},
 )
 
-# ── Results ───────────────────────────────────────────────────────────────────
+# ── Forward model — native design point (500 MWe) ─────────────────────────
+result = model.forward(net_electric_mw=_NATIVE_MW, **_SHARED_KWARGS)
+
+# ── Forward model — 1 GWe comparison point ────────────────────────────────
+# Scales from the 500 MWe native reference to 1000 MWe using per-account
+# scaling laws. override_reference_mw anchors the scaling to _NATIVE_MW.
+result_1gw = model.forward(
+    net_electric_mw=1000.0,
+    override_reference_mw=_NATIVE_MW,
+    **_SHARED_KWARGS,
+)
+
+# ── Results ────────────────────────────────────────────────────────────────
 c = result.costs
 pt = result.power_table
 
-print("=" * 60)
-print("Magnetic Mirror (D-T) — Realta Fusion / CoSMo Hammir")
-print(f"Net electric: {NET_ELECTRIC_MW:.0f} MWe | Availability: {AVAILABILITY:.0%} | Lifetime: {LIFETIME_YR} yr")
-print(f"Center cell: {CHAMBER_LENGTH:.0f} m | p_input: 70 MW | NOAK")
-print("=" * 60)
-
+print("Magnetic Mirror (D-T) — Realta Fusion (CoSMo / Hammir)")
+print(f"500 MWe commercial extrapolation | 85% availability | 30 yr | NOAK")
+print("UNCERTAIN: plasma params from arXiv:2411.06644 pilot + MARS 1983 analogue")
 lcoe_ckwh = float(c.lcoe) / 10
 print(
     f"LCOE: {c.lcoe:.1f} $/MWh ({lcoe_ckwh:.2f} ¢/kWh)"
     f" | Overnight: {c.overnight_cost:.0f} $/kW"
 )
+c1 = result_1gw.costs
+print(
+    f"1 GWe scaled: LCOE {c1.lcoe:.1f} $/MWh"
+    f" | Overnight {c1.overnight_cost:.0f} $/kW"
+)
 print(f"Fusion: {pt.p_fus:.0f} MW | Net: {pt.p_net:.0f} MW | Q_eng: {pt.q_eng:.1f}")
 print(f"Recirculating fraction: {pt.rec_frac:.1%}")
 print()
 
-# ── CAS cost breakdown ────────────────────────────────────────────────────────
+# ── CAS cost breakdown ─────────────────────────────────────────────────────
 cas = [
     ("CAS10", "Preconstruction",         c.cas10),
     ("CAS21", "Buildings",               c.cas21),
@@ -229,6 +258,7 @@ cas = [
     ("CAS24", "Electrical Plant",        c.cas24),
     ("CAS25", "Miscellaneous",           c.cas25),
     ("CAS26", "Heat Rejection",          c.cas26),
+    ("CAS27", "Special Materials",       c.cas27),
     ("CAS28", "Digital Twin",            c.cas28),
     ("CAS29", "Contingency",             c.cas29),
     ("CAS30", "Indirect Costs",          c.cas30),
@@ -247,63 +277,48 @@ for code, name, val in cas:
 print("-" * 48)
 print(f"{'':8} {'Total Capital':<28} {float(c.total_capital):>10.1f}")
 
-# ── CAS22 sub-account detail ──────────────────────────────────────────────────
+# ── CAS22 sub-account detail ───────────────────────────────────────────────
 print("\nCAS22 Reactor Plant Equipment Breakdown:")
 print("-" * 48)
 for k, v in sorted(result.cas22_detail.items()):
     if float(v) > 0:
         print(f"  {k:<28} {float(v):>10.1f} M$")
 
-# ── Key assumptions summary ───────────────────────────────────────────────────
+# ── Key assumptions summary ────────────────────────────────────────────────
+print("\nKey Assumptions (confidence: low — MARS 1983 analogues + arXiv pilot physics):")
+print("-" * 48)
+print("  eta_th = 0.36        MARS steam Rankine analogue; cycle type undisclosed")
+print("  eta_de = 0.54        MARS gridless DEC analogue; venetian-blind uncharacterized")
+print("  f_dec  = 0.20        D-T alpha fraction (nuclear physics, high confidence)")
+print("  p_input= 40 MW       arXiv pilot: 30–40 MW; constant end-plug thesis")
+print("  L_cell = 70 m        extrapolated from 50 m Hammir pilot (Q>5)")
+print("  Blanket: LiPb analogue (MARS TBR 1.15); Realta type undisclosed")
+print("  Net electric: 500 MWe  commercial extrapolation; pilot target >50 MWe only")
+print("  Availability: 85%  — no published target; DEC electrode lifetime unknown")
 print()
-print("=" * 60)
-print("KEY ASSUMPTIONS AND UNCERTAINTIES")
-print("=" * 60)
-print("""
-HIGHLY UNCERTAIN MODEL — no plant-level cost data published by Realta.
-Data quality: Limited (analysis.md §Section 1).
+print("Blocking gaps (analysis.md §Section 6):")
+print("  #1  End-plug confinement at Q>5 never experimentally validated (Anvil ~2028)")
+print("  #2  Commercial plant size not published (only >50 MWe pilot target)")
+print("  #3  NBI+ECH input power for Hammir: blocking / proprietary")
+print("  #4  Blanket type and TBR: blocking / proprietary")
+print("  #5  Capital cost breakdown for any Hammir subsystem: truly-unknown")
+print("  #6  DEC electrode lifetime in fusion conditions: truly-unknown")
 
-Physics basis:
-  Q_plasma > 5 at 50 m center cell (modeled, not experimentally validated)
-    Source: arxiv-2411-06644-confinement-predictions.md §Hammir Design
-  ~7 MWt/m center-cell thermal power scaling law
-    Source: fusion-report-interview-realta.md §Performance Scaling
-  70 m commercial center cell assumed → ~490 MWt, Q_plasma ~ 7 at 70 MW input
-  Hammir pilot electrical target: Qe > 1, Pe > 50 MWe for 3+ hours
-    Source: aps-dpp-2025-sutherland.md §Hammir Facility
-
-Key uncertainties ranked by LCOE impact:
-  1. BLOCKING — end-plug confinement physics: Anvil demonstrator (~2028) required
-     to validate stable high-Q end-plug at commercial conditions
-  2. BLOCKING — commercial plant size: only 50 MWe pilot target published
-  3. BLOCKING — p_input = 70 MW (UNCERTAIN: range 40–100 MW; truly unknown)
-     analysis.md §Section 2, Challenge 3
-  4. CRITICAL — thermal efficiency (eta_th=0.38): cycle type undisclosed
-     MARS 1983 baseline ~36%; sCO2 potential 40–45%
-  5. CRITICAL — recirculating power fraction: couples p_input uncertainty to Qe
-  6. HIGH — DEC efficiency (eta_de=0.54): MARS 1983 gridless analogue only
-     Venetian-blind design uncharacterized; TRL 4–5 for DEC class
-  7. HIGH — f_dec = 0.20: D-T alpha fraction is physics-determined (20%),
-     but fraction actually captured at electrodes is unknown
-
-Not captured by this model (framework limitation):
-  - REBCO supply chain premium: $50M tape cost for WHAM++ alone
-    (realta-fusion-hub-spotlight.md §Magnet Specifications)
-  - End-plug confinement failure risk (→ higher p_input, lower Qe)
-  - DEC electrode replacement cost / availability penalty
-  - Hot-cell remote handling complexity for linear 70 m machine
-""")
-
-# ── Sensitivity analysis ──────────────────────────────────────────────────────
+# ── Sensitivity analysis ───────────────────────────────────────────────────
 sens = model.sensitivity(result.params)
 
-print("SENSITIVITY ANALYSIS (elasticity = %LCOE / %param)")
-print("=" * 60)
+print("\nSensitivity (elasticity = %LCOE / %param)")
+print("-" * 48)
 
 print("\nEngineering levers:")
 for k, v in sorted(sens["engineering"].items(), key=lambda x: abs(x[1]), reverse=True):
-    print(f"  {k:<28} {v:+.4f}")
+    print(f"  {k:<36} {v:+.4f}")
 
 print("\nFinancial:")
 for k, v in sorted(sens["financial"].items(), key=lambda x: abs(x[1]), reverse=True):
-    print(f"  {k:<28} {v:+.4f}")
+    print(f"  {k:<36} {v:+.4f}")
+
+print("\nCosting constants (top 15):")
+costing = sorted(sens["costing"].items(), key=lambda x: abs(x[1]), reverse=True)
+for k, v in costing[:15]:
+    print(f"  {k:<36} {v:+.4f}")

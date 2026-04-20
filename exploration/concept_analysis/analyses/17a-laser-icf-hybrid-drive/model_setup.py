@@ -1,4 +1,3 @@
-# STALE: analysis-updated-iter-6
 """Laser ICF — Hybrid Direct Drive, D-T (Xcimer Energy / Athena pilot)
 =====================================================================
 
@@ -319,9 +318,9 @@ _ENG = dict(
     vessel_t=0.10,                # DEFAULT
 )
 
-# NOAK — He Brayton 45% (base / optimistic scenario) — reference case for explorer
-result_noak = model.forward(
-    net_electric_mw=NET_ELECTRIC_MW,
+# Shared kwargs for the reference scenario (NOAK / He Brayton / $70/J laser)
+# Factored here so result_1gw can inherit them without duplication.
+_SHARED_KWARGS = dict(
     availability=AVAILABILITY,
     lifetime_yr=LIFETIME_YR,
     noak=True,
@@ -329,7 +328,9 @@ result_noak = model.forward(
     cost_overrides=_overrides(LASER_NOAK_MID_MS),
     **_ENG,
 )
-result = result_noak  # Explorer reference case (NOAK He Brayton)
+
+# NOAK — He Brayton 45% (base / optimistic scenario) — reference case for explorer
+result = model.forward(net_electric_mw=NET_ELECTRIC_MW, **_SHARED_KWARGS)
 
 # NOAK — Steam Rankine 33% (H-3 alternative thermal scenario)
 result_steam = model.forward(
@@ -351,6 +352,15 @@ result_foak = model.forward(
     eta_th=ETA_TH_BRAYTON,
     cost_overrides=_overrides(LASER_FOAK_MS),
     **_ENG,
+)
+
+# 1 GWe scaled result for cross-concept comparison
+# Native design point is 400 MWe (Xcimer Athena pilot). Override reference tells
+# the framework that cost_overrides are valid at 400 MWe and scales them to 1000 MWe.
+result_1gw = model.forward(
+    net_electric_mw=1000.0,
+    override_reference_mw=NET_ELECTRIC_MW,
+    **_SHARED_KWARGS,
 )
 
 # NOAK laser cost range: $60–80/J (for H-1 sensitivity sweep)
@@ -376,8 +386,8 @@ result_noak_high = model.forward(
 # ════════════════════════════════════════════════════════════════════════════
 # Results — base scenario (NOAK / He Brayton / $70/J laser)
 # ════════════════════════════════════════════════════════════════════════════
-c  = result_noak.costs
-pt = result_noak.power_table
+c  = result.costs
+pt = result.power_table
 qwp = pt.q_sci * ETA_PIN1   # wall-plug gain = Qsci × η_wpe
 
 print("=" * 70)
@@ -392,6 +402,9 @@ print(f"Overnight:    {c.overnight_cost:.0f} $/kW")
 print(f"Fusion power: {pt.p_fus:.0f} MW | Net: {pt.p_net:.0f} MW | Q_eng: {pt.q_eng:.2f}")
 print(f"Qsci: {pt.q_sci:.0f} | Qwp: {qwp:.1f} | Recirc: {pt.rec_frac:.1%} "
       f"(laser: {100 * (P_IMPLOSION_MW / ETA_PIN1) / float(pt.p_et):.1f}% of gross)")
+print(f"[1000 MWe scaled] LCOE: {result_1gw.costs.lcoe:.1f} $/MWh | "
+      f"Overnight: {result_1gw.costs.overnight_cost:.0f} $/kW  "
+      f"(framework per-account scaling from {NET_ELECTRIC_MW:.0f} MWe native)")
 print()
 
 # ── Scenario comparison: H-1 (laser cost range) + H-3 (thermal cycle) ────────
@@ -402,7 +415,7 @@ print(f"  {'':48} {'$/MWh':>7}  {'$/kW':>7}")
 print(f"  {'':-<48}")
 rows_scenario = [
     ("NOAK / He Brayton 45% / laser $60/J",    result_noak_low.costs),
-    ("NOAK / He Brayton 45% / laser $70/J",    result_noak.costs),      # base
+    ("NOAK / He Brayton 45% / laser $70/J",    result.costs),           # base
     ("NOAK / He Brayton 45% / laser $80/J",    result_noak_high.costs),
     ("NOAK / Steam Rankine 33% / laser $70/J", result_steam.costs),     # H-3 alt
     ("FOAK / He Brayton 45% / laser $110/J",   result_foak.costs),      # FOAK ref
@@ -520,7 +533,7 @@ print()
 print("CAS22 detail (base scenario — NOAK He Brayton $70/J):")
 print(f"  {'Account':<14} {'M$':>10}  Notes")
 print(f"  {'':-<54}")
-sub = result_noak.cas22_detail
+sub = result.cas22_detail
 for k in sorted(k for k in sub if k != "C220000"):
     note = ""
     if k == "C220104":
@@ -653,7 +666,7 @@ print("  Source: [an] §Modeling Approach, Top LCOE Sensitivity Parameters item 
 print("-" * 55)
 
 sens = model.sensitivity(
-    result_noak.params,
+    result.params,
     cost_overrides=_overrides(LASER_NOAK_MID_MS),
 )
 

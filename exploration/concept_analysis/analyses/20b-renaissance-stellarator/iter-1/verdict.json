@@ -1,0 +1,12 @@
+{
+  "iteration": 1,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "cold_start",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": false,
+  "merged_assess": false,
+  "sources": [],
+  "timestamp": "2026-04-19T22:38:52.330601+00:00"
+}

@@ -12,6 +12,8 @@ from lib.validators import (
     PROPOSED_ACTION_RE,
     REVIEW_VERDICT_RE,
     ValidationResult,
+    chain_validators,
+    has_model_category_findings,
     validate_feedback_verdict,
     validate_review_verdict,
 )
@@ -504,3 +506,96 @@ class TestValidateReviewVerdictDetailsIncludeType:
         result = validate_review_verdict(text)
         assert result.valid is True
         assert "REVISE" in result.details
+
+
+# ---------------------------------------------------------------------------
+# chain_validators tests
+# ---------------------------------------------------------------------------
+
+
+class TestChainValidators:
+    def _make_validator(self, name: str, valid: bool, details: str = ""):
+        """Helper: create a named validator returning a fixed result."""
+        def v(text: str) -> ValidationResult:
+            return ValidationResult(
+                valid=valid,
+                fix_message=None if valid else f"Fix: {name}",
+                details=details or name,
+            )
+        v.__name__ = name
+        return v
+
+    def test_both_pass(self):
+        v1 = self._make_validator("a", valid=True)
+        v2 = self._make_validator("b", valid=True)
+        chain = chain_validators(v1, v2)
+        result = chain("anything")
+        assert result.valid is True
+
+    def test_first_fails(self):
+        v1 = self._make_validator("a", valid=False)
+        v2 = self._make_validator("b", valid=True)
+        chain = chain_validators(v1, v2)
+        result = chain("anything")
+        assert result.valid is False
+        assert "Fix: a" in result.fix_message
+
+    def test_second_fails(self):
+        v1 = self._make_validator("a", valid=True)
+        v2 = self._make_validator("b", valid=False)
+        chain = chain_validators(v1, v2)
+        result = chain("anything")
+        assert result.valid is False
+        assert "Fix: b" in result.fix_message
+
+    def test_name_concatenation(self):
+        v1 = self._make_validator("alpha", valid=True)
+        v2 = self._make_validator("beta", valid=True)
+        chain = chain_validators(v1, v2)
+        assert chain.__name__ == "alpha+beta"
+
+
+# ---------------------------------------------------------------------------
+# has_model_category_findings tests
+# ---------------------------------------------------------------------------
+
+
+class TestHasModelCategoryFindings:
+    def test_empty_string(self):
+        assert has_model_category_findings("") is False
+
+    def test_no_findings(self):
+        assert has_model_category_findings("Some text without F-N blocks") is False
+
+    def test_analysis_only(self):
+        text = (
+            "### F-1: First finding\n"
+            "- **Category:** analysis\n\n"
+            "### F-2: Second finding\n"
+            "- **Category:** analysis\n"
+        )
+        assert has_model_category_findings(text) is False
+
+    def test_model_finding(self):
+        text = (
+            "### F-1: Model issue\n"
+            "- **Category:** model\n"
+        )
+        assert has_model_category_findings(text) is True
+
+    def test_missing_category(self):
+        text = (
+            "### F-1: No category field\n"
+            "- **Target:** Section 2\n"
+            "- **Finding:** Something\n"
+        )
+        assert has_model_category_findings(text) is True
+
+    def test_mixed_categories(self):
+        text = (
+            "### F-1: Analysis finding\n"
+            "- **Category:** analysis\n\n"
+            "### F-2: Model finding\n"
+            "- **Category:** model\n"
+        )
+        assert has_model_category_findings(text) is True

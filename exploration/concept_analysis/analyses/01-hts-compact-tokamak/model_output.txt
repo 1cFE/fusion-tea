@@ -1,28 +1,28 @@
 HTS Compact Tokamak — CFS ARC (261 MWe, 75% avail, 30 yr, NOAK)
-LCOE: 639.9 $/MWh | Overnight: 48050 $/kW
+LCOE: 641.6 $/MWh | Overnight: 48194 $/kW
 Fusion: 730 MW | Net: 261 MW | Q_eng: 3.2
 
 Code     Account                              M$
 ------------------------------------------------
 CAS10    Preconstruction                    16.7
-CAS21    Buildings                         289.3
+CAS21    Buildings                         300.6
 CAS22    Reactor Plant Equipment          8364.0
 CAS23    Turbine Plant                      75.3
 CAS24    Electrical Plant                   32.1
 CAS25    Miscellaneous                      19.5
-CAS26    Heat Rejection                     13.0
+CAS26    Heat Rejection                     28.3
 CAS27    Special Materials                 146.0
 CAS28    Digital Twin                        5.0
 CAS29    Contingency                         0.0
-CAS30    Indirect Costs                   1490.7
+CAS30    Indirect Costs                   1495.1
 CAS40    Owner's Costs                      19.9
-CAS50    Supplementary                     432.4
-CAS60    IDC                              1637.2
+CAS50    Supplementary                     434.0
+CAS60    IDC                              1642.1
 CAS70    O&M (annualized)                   86.3
 CAS80    Fuel (annualized)                   0.3
-CAS90    Financial                        1010.6
+CAS90    Financial                        1013.7
 ------------------------------------------------
-         Total Capital                   12541.1
+         Total Capital                   12578.5
 
 CAS22 Sub-accounts (Reactor Plant Equipment):
 Code         Account                                M$  Note
@@ -48,7 +48,7 @@ C220700      I&C                                  33.3  [DEFAULT]
 C220000      TOTAL                              8364.0
 
 FOAK scenario (2× C220103 + contingency, same availability):
-  LCOE: 1203.0 $/MWh | Overnight: 93869 $/kW
+  LCOE: 1205.0 $/MWh | Overnight: 94034 $/kW
   (CATF IWG FOAK range: 150–200 $/MWh; NOAK range: 60–100 $/MWh)
   Source: arxiv-2602-19389 §2.1.5; analysis.md §2 Hypothesis 4
 
@@ -99,9 +99,9 @@ Key Assumptions
    Basis: 950 t FLiBe × $154/kg NOAK (20% learning rate).
    Source: arc-reactor-specifications.md §6 (quantity); Araiinejad & Shirvan 2025 (price).
    NOTE: FLiBe chemistry plant + tritium extraction system capital cost is NOT included.
-   iter-7 order-of-magnitude floor: Woodruff Scientific ARPA-E ALPHA re-costing
-   (OSTI:1820946) gives CAS22.5 Fuel Processing averaging $124M at ~500 MWe for compact
-   MIF/Z-pinch concepts (structural analogue only — different blanket chemistry, no FLiBe).
+   Order-of-magnitude floor: Woodruff Scientific ARPA-E ALPHA re-costing (OSTI:1820946)
+   gives CAS22.5 Fuel Processing averaging $124M at ~500 MWe for compact MIF/Z-pinch
+   concepts (structural analogue only — different blanket chemistry, no FLiBe).
    Treat $100–200M as a floor for ARC's additive FLiBe chemistry/tritium processing BOP
    line; ARC-specific scope (FLiBe redox control, MHD-driven flow purification) may push
    above this range. Source: analysis.md §6, gap #15; osti-servlets-purl-1820946.md
@@ -133,29 +133,34 @@ Sensitivity (elasticity = %LCOE / %param) — NOAK central estimate
 --------------------------------------------------
 
 Engineering levers:
-  availability                 -0.9612
+  availability                 -0.9614
   construction_time_yr         +0.2967
-  eta_th                       -0.0174
-  eta_pin                      -0.0149
-  p_input                      +0.0149
-  R0                           +0.0146
-  elon                         +0.0146
+  p_nbi                        +0.0410
+  eta_th                       -0.0304
+  r_coil                       +0.0147
+  R0                           +0.0145
+  elon                         +0.0145
+  eta_pin                      -0.0120
+  p_input                      +0.0115
+  mn                           -0.0074
+  b_max                        +0.0074
   plasma_t                     +0.0063
   ht_shield_t                  +0.0057
   blanket_t                    +0.0055
-  p_cool                       +0.0026
-  fuel_recovery                -0.0025
-  f_sub                        +0.0022
-  p_trit                       +0.0019
+  p_cool                       +0.0021
+  f_sub                        +0.0018
   structure_t                  +0.0017
+  p_trit                       +0.0015
   vessel_t                     +0.0011
   p_cryo                       +0.0009
-  p_house                      +0.0008
-  p_coils                      +0.0004
-  mn                           -0.0002
-  p_pump                       +0.0002
-  burn_fraction                -0.0001
+  p_house                      +0.0006
+  p_coils                      +0.0003
+  p_pump                       +0.0001
   eta_p                        -0.0000
+  dd_f_T                       +0.0000
+  dd_f_He3                     +0.0000
+  dhe3_dd_frac                 +0.0000
+  dhe3_f_T                     +0.0000
   eta_de                       +0.0000
   q95                          +0.0000
   f_GW                         +0.0000
@@ -167,7 +172,13 @@ Engineering levers:
   R_w                          +0.0000
   T_edge                       +0.0000
   tau_ratio                    +0.0000
+  M_ion                        +0.0000
+  lambda_q                     +0.0000
+  disruption_rate_base         +0.0000
+  disruption_steepness         +0.0000
+  disruption_damage            +0.0000
+  disruption_downtime          +0.0000
 
 Financial:
-  interest_rate                +0.7660
-  inflation_rate               +0.0139
+  interest_rate                +0.7662
+  inflation_rate               +0.0138

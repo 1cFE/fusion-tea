@@ -1,0 +1,244 @@
+{
+  "entries": [
+    {
+      "gap_id": "G-4",
+      "gap_description": "Laser capital cost per joule at 10 Hz repetition rate — DPSSL driver cost data for IFE",
+      "queries": [
+        "HAPLS laser driver cost per joule DPSSL capital cost IFE fusion site:osti.gov OR site:arxiv.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/15013230",
+          "title": "Diode-Pumped Solid State Lasers for Inertial Fusion Energy",
+          "triage": "relevant",
+          "notes": "OSTI full-document PDF. System study of DPSSL driver for IFE power plant including cost analysis. Mentions diode cost target $0.05–0.07/W and total diode peak power ~50 GW per plant. Accessible as binary PDF — confirmed downloadable."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/622702",
+          "title": "Prospects for Inertial Fusion Energy Based on a Diode-Pumped Solid-State Laser (DPSSL) Driver",
+          "triage": "relevant",
+          "notes": "OSTI full-document PDF. Overview and development path for DPSSL-based IFE. Not extracted due to budget (3-extraction cap reached); secondary to purl/15013230 which covers same topic."
+        },
+        {
+          "url": "https://arxiv.org/abs/2405.09912",
+          "title": "Driver at 10 MJ and 1 shot/30min for inertial confinement fusion at high gain",
+          "triage": "relevant",
+          "notes": "arXiv 2024 paper on IFE driver design. Not extracted due to budget; different operating regime (1 shot/30 min vs 10 Hz). Lower priority for Marvel Fusion design point."
+        },
+        {
+          "url": "https://science.osti.gov/-/media/fes/fesac/pdf/2004/Ife_panel_report_2004.pdf",
+          "title": "IFE Panel Report 2004 (FESAC)",
+          "triage": "relevant",
+          "notes": "Full IFE system design panel report with cost data. Not extracted due to budget limit. Useful analogue for future iterations."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/15013230",
+          "source_name": "osti-servlets-purl-15013230"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "timestamp": "2026-04-20T16:21:39.082312+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-5",
+      "gap_description": "Laser wall-plug efficiency for Marvel Fusion's DPSSL system — target ~10% per HB11; Marvel not characterized",
+      "queries": [
+        "DPSSL diode-pumped solid-state laser wall-plug efficiency 10 Hz repetition rate high power"
+      ],
+      "candidates": [
+        {
+          "url": "https://opg.optica.org/oe/fulltext.cfm?uri=oe-23-15-19542",
+          "title": "DiPOLE: a 10 J, 10 Hz cryogenic gas cooled multi-slab nanosecond Yb:YAG laser",
+          "triage": "inaccessible",
+          "notes": "Page returned only a loading spinner ('Please wait...'). JS-heavy rendering — WebFetch could not extract content. DiPOLE is the most relevant 10 J / 10 Hz DPSSL demonstration. Search snippet provided partial data: 22.5% optical-to-optical efficiency at 140 K (48 J diode pump → 10.8 J output), but full WPE (including diode drive electronics) not captured."
+        },
+        {
+          "url": "https://www.spiedigitallibrary.org/conference-proceedings-of-spie/12577/1257707/Extreme-photonics-applications-centre--high-energy-DPSSL-pump-for/10.1117/12.2665736.short",
+          "title": "Extreme photonics applications centre: high energy DPSSL pump for a 10 Hz PW-level laser",
+          "triage": "paywall",
+          "notes": "SPIE proceedings — likely paywalled. Not checked via WebFetch; deprioritized due to budget."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "partial",
+      "notes": "Search snippet data indicates DiPOLE achieves ~22.5% optical-to-optical conversion efficiency (diode pump to Yb:YAG output) at 10 J / 10 Hz. Full wall-plug efficiency (including pump diode drivers) not captured without source extraction. DiPOLE at optica.org is the priority target for a future iteration using a direct OSTI or ResearchGate URL.",
+      "timestamp": "2026-04-20T16:21:39.082312+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-8",
+      "gap_description": "B-11 enrichment requirement — whether natural boron (80.1% B-11) is usable or isotopic enrichment to ~99.9% is required",
+      "queries": [
+        "boron-11 isotope enrichment p-B11 fusion natural boron separation requirement",
+        "p-B11 proton boron fusion fuel enrichment \"boron-11\" isotope purity requirement arxiv plasma"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/pdf/2201.12818",
+          "title": "A study of the requirements of p-11B fusion reactor by tokamak system code",
+          "triage": "relevant",
+          "notes": "arXiv preprint analyzing p-11B fusion reactor requirements via system code. Likely discusses fuel purity and isotopic requirements. arXiv PDFs are always accessible."
+        },
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/32/5/052506/3347125/Preventing-ash-from-poisoning-proton-boron-11",
+          "title": "Preventing ash from poisoning proton–boron 11 fusion plasmas",
+          "triage": "paywall",
+          "notes": "AIP Physics of Plasmas — 403 Forbidden. Institutional access required."
+        },
+        {
+          "url": "https://www.mdpi.com/2571-6182/8/3/26",
+          "title": "A Quasi-Spherical Fusion Reactor Burning Boron-11 Fuel",
+          "triage": "paywall",
+          "notes": "MDPI returned 403. Unexpected for MDPI (usually open access); may be temporary or region-blocked."
+        },
+        {
+          "url": "https://www.lppfusion.com/proton-boron-p11b-fuel-arrives/",
+          "title": "Proton-Boron (p11B) Fuel Arrives — LPP Fusion",
+          "triage": "relevant",
+          "notes": "LPP Fusion announcement confirming 99.9% B-11 isotopic purity and 99.9999% chemical purity for decaborane (B10H14) fuel. Confirms enrichment IS required — natural 80% B-11 is not the operating specification. Not extracted (institutional competitor, not primary literature); useful as corroboration."
+        },
+        {
+          "url": "https://www.physics.uci.edu/sites/physics.uci.edu/files/P20-FRC-reactor-Rostoker-08-18-2015-final.pdf",
+          "title": "pB11-reactor: trends and physics issues (TAE/UCI presentation)",
+          "triage": "relevant",
+          "notes": "TAE/UCI technical presentation on p-B11 reactor physics. Not extracted due to budget; lower priority than arXiv paper."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/pdf/2201.12818",
+          "source_name": "arxiv-2201-12818"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "notes": "Search snippets confirm that p-B11 fusion experiments use 99.9% B-11 isotopic purity (e.g. LPP Fusion using decaborane at 99.9% B-11 / 99.9999% chemical purity). Natural boron (80.1% B-11) is insufficient — enrichment is required, which has supply-chain implications at commercial scale since the B-11 enrichment industry is currently sized for semiconductor ion implantation (kg/year), not fusion (tonnes/year). The arXiv system code paper should provide quantitative analysis of fuel requirements.",
+      "timestamp": "2026-04-20T16:21:39.082312+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-9",
+      "gap_description": "Laser optic damage and replacement rate at 10 Hz petawatt class — NIF analogues as imperfect reference",
+      "queries": [
+        "NIF laser optics damage replacement rate petawatt final optics lifetime cost"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1400089",
+          "title": "LLNL-TR-739796 FY17 NIF Performance Quad Campaign: Optics Damage Assessment",
+          "triage": "relevant",
+          "notes": "OSTI full technical report. Search snippet confirmed: 30–40 optics/week recycling rate at current NIF operations (improving to 10–20/week with new anti-reflective GDS coatings). Startup + yearly operation costs: $7.5–17M startup, $5.6M/year incremental above FY17 baseline for 2.6 MJ operations. Accessible as binary PDF — confirmed downloadable."
+        },
+        {
+          "url": "https://lasers.llnl.gov/news/next-generation-nif-optics-boost-energy-and-limit-damage",
+          "title": "Next-Generation NIF Optics Boost Energy and Limit Damage",
+          "triage": "relevant",
+          "notes": "LLNL press article. Not extracted; lower data density than the technical report."
+        },
+        {
+          "url": "https://opg.optica.org/abstract.cfm?URI=CLEO_AT-2014-JTh3J.2",
+          "title": "Optical Damage Performance Assessment of Petawatt Final Optics for the Advanced Radiographic Capability",
+          "triage": "unknown",
+          "notes": "CLEO 2014 conference paper on ARC (petawatt-class NIF beamlines) optics damage. Not checked via WebFetch; may be paywalled. Priority target for future iteration if purl/1400089 content is insufficient."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1400089",
+          "source_name": "osti-servlets-purl-1400089"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "notes": "NIF is an imperfect analogue for Marvel's 10 Hz petawatt DPSSL system — NIF operates at ~1 shot/day with nanosecond pulses, not femtosecond pulses at 10 Hz. Damage mechanisms differ (peak fluence vs accumulated damage). The report provides operational cost data and recycling rates useful for bounding the optics O&M cost line even if the scaling to 10 Hz continuous operation requires extrapolation.",
+      "timestamp": "2026-04-20T16:21:39.082312+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-5",
+      "gap_description": "Laser wall-plug efficiency for Marvel Fusion's DPSSL system — target ~10% per HB11; Marvel not characterized",
+      "queries": [
+        "DiPOLE laser wall-plug efficiency DPSSL high repetition rate IFE driver site:arxiv.org OR site:osti.gov",
+        "HAPLS laser system wall-plug efficiency power consumption Livermore DPSSL 10 Hz",
+        "\"wall-plug efficiency\" DPSSL laser \"inertial fusion\" driver \"10 Hz\" efficiency percent site:osti.gov",
+        "Mercury laser LLNL DPSSL \"wall-plug efficiency\" performance results inertial fusion energy driver site:osti.gov",
+        "Mercury laser LLNL diode-pumped 10 Hz \"electrical efficiency\" OR \"wall-plug\" results achieved Bayramian Orth"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/15013216",
+          "title": "Activation of the Mercury Laser: A Diode-Pumped Solid-State Laser Driver for Inertial Fusion",
+          "triage": "relevant",
+          "notes": "Mercury laser activation paper (LLNL, 2001). States performance goals of 10% electrical efficiency at 10 Hz, 100 J per pulse for IFE DPSSL. Most direct published benchmark for DPSSL WPE targets at IFE-relevant rep rates. Accessible PDF via OSTI purl."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/3008974",
+          "title": "Diode laser pumps for future inertial fusion energy systems",
+          "triage": "relevant",
+          "notes": "Optics Express (October 2025). Covers diode pump requirements for 10-20 Hz DPSSL beamlines for IFE. Most recent (2025) authoritative review of pump technology requirements. Documents 70% efficiency for diode bars as enabling metric. Tangentially relevant to WPE (addresses pump component, not end-to-end system efficiency), but provides the IFE community's current view of required efficiencies."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/2280886",
+          "title": "High average power ultrafast laser technologies for driving future advanced accelerators",
+          "triage": "not-relevant",
+          "notes": "Focuses on laser plasma accelerators for particle physics colliders, not DPSSL IFE drivers. No IFE or wall-plug efficiency data."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/2561299",
+          "title": "Status and prospects for inertial fusion energy via lasers (Betti)",
+          "triage": "not-relevant",
+          "notes": "General IFE status review. Does not address DPSSL wall-plug efficiency specifically."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/792300",
+          "title": "Mercury and Beyond: Diode-Pumped Solid-State Lasers for Inertial Fusion Energy",
+          "triage": "relevant-but-redundant",
+          "notes": "Earlier (1999/2000) Mercury design overview. Same 10% WPE goal as 15013216 but pre-activation. Redundant with 15013216 which reports actual system activation."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/622702",
+          "title": "Prospects for Inertial Fusion Energy Based on a Diode-Pumped Solid-State Laser Driver",
+          "triage": "relevant-but-deprioritized",
+          "notes": "1997 paper discussing DPSSL IFE feasibility. Older than Mercury program papers; likely contains efficiency targets but not achieved results."
+        },
+        {
+          "url": "https://lasers.llnl.gov/high-repetition-rate-advanced-petawatt-laser-system-hapls",
+          "title": "HAPLS — LLNL project page",
+          "triage": "no-quantitative-data",
+          "notes": "HAPLS at ELI-Beamlines: 10 Hz, 1 PW, 30 J. No wall-plug efficiency data published on project page."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/15013216",
+          "source_name": "osti-servlets-purl-15013216"
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/3008974",
+          "source_name": "osti-servlets-purl-3008974"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "G-5 remains partial: no source documents achieved wall-plug efficiency for a DPSSL system at IFE-relevant operating conditions. Both extracted sources document the 10% WPE as a design goal or diode-level efficiency metric, not a demonstrated end-to-end result. Mercury laser (15013216) is the best available analogue — it explicitly targets 10% WPE at 10 Hz, 100 J for IFE use, consistent with HB11's claimed target. The 2025 diode pumps paper (3008974) provides the most current view of pump diode efficiency requirements. Marvel Fusion's specific DPSSL WPE remains uncharacterized in public sources — this appears to be a genuine information gap rather than a missed source.",
+      "timestamp": "2026-04-20T16:40:45.393630+00:00",
+      "iteration": 3
+    }
+  ],
+  "acquired_by_iteration": {
+    "2": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/arxiv-2201-12818.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/osti-servlets-purl-1400089.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/osti-servlets-purl-15013230.md"
+    ],
+    "3": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/osti-servlets-purl-15013216.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/osti-servlets-purl-3008974.md"
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-3",
+      "gap_description": "Thermal efficiency (confirmed) — implied ~38–42% from power balance but 'Rankine with reheat > 30%' is the only published bound",
+      "queries": [
+        "Type One Energy Infinity Two stellarator Journal Plasma Physics 2025 power plant papers site:cambridge.org",
+        "stellarator fusion power plant thermal efficiency \"power conversion\" gross electric \"balance of plant\" helium Rankine 2024 2025"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.cambridge.org/core/journals/journal-of-plasma-physics/collections/physics-basis-of-the-infinity-two-fusion-power-plant",
+          "title": "Physics Basis of the Infinity Two Fusion Power Plant — JPP Collection",
+          "triage": "triaged",
+          "notes": "Identified 6 papers in series (E65, E76, E83, E86, E88, E94). E86 (breeder blanket) mentions 'thermal efficiencies >30%' but no explicit value. No paper in the collection covers balance-of-plant or power conversion efficiency specifically."
+        },
+        {
+          "url": "https://arxiv.org/abs/2512.08027",
+          "title": "Overview of the Helios Design: A Practical Planar Coil Stellarator Fusion Power Plant (Thea Energy)",
+          "triage": "relevant",
+          "notes": "Direct stellarator BOP analog. Confirms: 40% Rankine thermal efficiency, 1.1 GW thermal from 958 MW fusion (blanket multiplier ~1.15), 438 MWe gross, 390 MWe net, steam superheated to 635°C. Low recirculating power consistent with steady-state stellarator advantage. Freely accessible on arXiv."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0196890422013504",
+          "title": "An optimized power conversion system for a stellarator-based nuclear fusion power plant",
+          "triage": "paywall",
+          "notes": "ScienceDirect abstract only; full text requires institutional access. Likely paywalled. Skipped in favor of open-access Helios paper."
+        },
+        {
+          "url": "https://www-pub.iaea.org/MTCD/Meetings/FEC2006/ft_p5-26.pdf",
+          "title": "ARIES-CS Compact Stellarator Power Plant — IAEA FEC 2006",
+          "triage": "inaccessible",
+          "notes": "HTTP 402 (payment required). Not accessible via extraction backend."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/abs/2512.08027",
+          "source_name": "arxiv-2512-08027"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "No Infinity Two–specific thermal efficiency value published. Helios analog (Thea Energy, another planar-coil stellarator) confirms 40% Rankine cycle efficiency for a comparable stellarator with 1.1 GW thermal output, 635°C steam. Provides independent constraint on the 38–42% implied range in the analysis. Gap remains partial — Infinity Two thermal efficiency is still derivable, not directly published."
+    },
+    {
+      "gap_id": "G-6",
+      "gap_description": "ECRH auxiliary power confirmed value — upper bound derivable from Q>40; actual Q value not published so actual ECRH power unknown",
+      "queries": [
+        "Type One Energy Infinity Two stellarator Journal Plasma Physics 2025 power plant papers site:cambridge.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.cambridge.org/core/journals/journal-of-plasma-physics/article/power-and-particle-exhaust-for-the-infinity-two-fusion-pilot-plant/FCE20C6558D7D77C585973F42AB5AC15",
+          "title": "Power and particle exhaust for the Infinity Two fusion pilot plant — J. Plasma Phys. 2025",
+          "triage": "relevant",
+          "notes": "Full paper accessible (open access). Explicitly states: 'The baseline scenario of Infinity Two includes 20 MW of auxiliary power.' This is the ECRH auxiliary heating power for the published baseline design. Confirms the upper bound (20 MW from Q=40) is also the design-point value."
+        },
+        {
+          "url": "https://www.cambridge.org/core/journals/journal-of-plasma-physics/article/infinity-two-fusion-pilot-plant-baseline-plasma-physics-design/EFAA8FF6D37C95272E9F53AEFFE087A7",
+          "title": "The Infinity Two fusion pilot plant baseline plasma physics design (E76) — J. Plasma Phys. 2025",
+          "triage": "relevant-partial",
+          "notes": "Mentions '236 GHz gyrotrons with fundamental resonance at 8.42 T' (consistent with 9 T on-axis). Projects Q=40 at design density; notes Q=∞ (ignition) accessible at slightly higher density with 1.5 GW fusion. Does not explicitly state total ECRH power in MW in accessible excerpt. Full text would require extraction."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/FCE20C6558D7D77C585973F42AB5AC15/S0022377825000273a.pdf/power-and-particle-exhaust-for-the-infinity-two-fusion-pilot-plant.pdf",
+          "source_name": "cambridge-core-services-aop-cambridge-core-content-view"
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://www.cambridge.org/core/journals/journal-of-plasma-physics/article/power-and-particle-exhaust-for-the-infinity-two-fusion-pilot-plant/FCE20C6558D7D77C585973F42AB5AC15",
+          "reason": "Source name collision — 'cambridge-core-journals-journal-of-plasma-physics-article' already exists from iter-2 extraction of E65. Resolved by using direct PDF URL instead."
+        }
+      ],
+      "status": "closed",
+      "notes": "JPP paper directly states 20 MW auxiliary power for Infinity Two baseline, confirming Q=40 design point. Extraction used PDF URL to avoid source name collision with previously extracted E65 HTML page."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 2,
+    "sources_extracted": 2,
+    "sources_failed": 0,
+    "searches_used": 3,
+    "extractions_used": 2,
+    "gap_outcomes": {
+      "G-3": "partial — stellarator BOP analog (Helios/Thea Energy, 40% Rankine) extracted; Infinity Two-specific thermal efficiency not published in any JPP paper",
+      "G-6": "closed — 20 MW ECRH confirmed from JPP power-and-particle-exhaust paper",
+      "G-9": "skipped — FAILED in iter-2; not re-attempted per instructions",
+      "G-10": "skipped — CLOSED in iter-2",
+      "G-12": "skipped — FAILED in iter-2; not re-attempted per instructions"
+    }
+  }
+}

@@ -1,1117 +1,350 @@
 {
   "parameters": {
-    "availability": {
-      "param_name": "availability",
-      "display_name": "availability",
+    "p_fus_MW": {
+      "param_name": "p_fus_MW",
+      "display_name": "p_fus_MW",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": -0.9341450631151502
-        },
-        {
-          "concept_id": "03",
-          "name": "Laser ICF - Liquid Jet Target (D-D)",
-          "elasticity": -0.9778616365052982
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": -0.9139548612302321
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": -0.9997262508572378
-        },
-        {
-          "concept_id": "07",
-          "name": "MagLIF (D-T)",
-          "elasticity": -0.9113102219471666
-        },
-        {
-          "concept_id": "08",
-          "name": "FRC w/ Direct Conversion",
-          "elasticity": -0.9120886391588092
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": -0.8942911701947024
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": -0.8492768636911662
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": -0.9079421852346009
-        },
-        {
-          "concept_id": "14",
-          "name": "Magnetized Target Fusion - Pneumatic Compression (D-T)",
-          "elasticity": -0.9439414290487479
-        },
-        {
-          "concept_id": "17a",
-          "name": "Laser ICF - Hybrid Direct Drive (D-T)",
-          "elasticity": -0.9072075070283789
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": -0.87402615510595
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": -0.9549447070724808
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": -0.36800609665551864
         }
       ]
     },
-    "construction_time_yr": {
-      "param_name": "construction_time_yr",
-      "display_name": "construction_time_yr",
+    "Q_sci": {
+      "param_name": "Q_sci",
+      "display_name": "Q_sci",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.2667575174425012
-        },
-        {
-          "concept_id": "03",
-          "name": "Laser ICF - Liquid Jet Target (D-D)",
-          "elasticity": 0.28801376730722283
-        },
-        {
-          "concept_id": "04",
-          "name": "Laser ICF - p-B11 Fast Ignition",
-          "elasticity": 0.2953969575142285
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.4157365401659296
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": 0.2942521067068595
-        },
-        {
-          "concept_id": "07",
-          "name": "MagLIF (D-T)",
-          "elasticity": 0.25895023697322195
-        },
-        {
-          "concept_id": "08",
-          "name": "FRC w/ Direct Conversion",
-          "elasticity": 0.24031104679098583
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.40456012269617425
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.49430207630021844
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.25729904550380667
-        },
-        {
-          "concept_id": "14",
-          "name": "Magnetized Target Fusion - Pneumatic Compression (D-T)",
-          "elasticity": 0.26667572989455257
-        },
-        {
-          "concept_id": "17a",
-          "name": "Laser ICF - Hybrid Direct Drive (D-T)",
-          "elasticity": 0.255743534885923
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.3975407601083201
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.2673468367202025
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": -0.460665450825344
         }
       ]
     },
-    "mn": {
-      "param_name": "mn",
-      "display_name": "mn",
+    "f_charged_particle": {
+      "param_name": "f_charged_particle",
+      "display_name": "f_charged_particle",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": -0.0007933231176735832
-        },
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": -1.4650501514682182
+        }
+      ]
+    },
+    "f_neutron": {
+      "param_name": "f_neutron",
+      "display_name": "f_neutron",
+      "category": "unclassified",
+      "concepts": [
         {
-          "concept_id": "03",
-          "name": "Laser ICF - Liquid Jet Target (D-D)",
-          "elasticity": -0.0008626582107455758
-        },
-        {
-          "concept_id": "04",
-          "name": "Laser ICF - p-B11 Fast Ignition",
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
           "elasticity": 0.0
-        },
+        }
+      ]
+    },
+    "eta_dec": {
+      "param_name": "eta_dec",
+      "display_name": "eta_dec",
+      "category": "unclassified",
+      "concepts": [
         {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": -0.0010360597468493085
-        },
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": -1.4704510639564747
+        }
+      ]
+    },
+    "eta_transmitter": {
+      "param_name": "eta_transmitter",
+      "display_name": "eta_transmitter",
+      "category": "unclassified",
+      "concepts": [
         {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": -0.9935418699138023
+        }
+      ]
+    },
+    "eta_beam": {
+      "param_name": "eta_beam",
+      "display_name": "eta_beam",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": -0.9935418699137946
+        }
+      ]
+    },
+    "eta_rectenna": {
+      "param_name": "eta_rectenna",
+      "display_name": "eta_rectenna",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": -0.9935418699137946
+        }
+      ]
+    },
+    "eta_icrh": {
+      "param_name": "eta_icrh",
+      "display_name": "eta_icrh",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": -0.460665450825344
+        }
+      ]
+    },
+    "p_cryo_MW": {
+      "param_name": "p_cryo_MW",
+      "display_name": "p_cryo_MW",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.017183475468785684
+        }
+      ]
+    },
+    "p_misc_MW": {
+      "param_name": "p_misc_MW",
+      "display_name": "p_misc_MW",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.005373279176061668
+        }
+      ]
+    },
+    "m_hts_coil_kg": {
+      "param_name": "m_hts_coil_kg",
+      "display_name": "m_hts_coil_kg",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.010971302839657623
+        }
+      ]
+    },
+    "m_heating_kg": {
+      "param_name": "m_heating_kg",
+      "display_name": "m_heating_kg",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.008228477129723947
+        }
+      ]
+    },
+    "m_dec_kg": {
+      "param_name": "m_dec_kg",
+      "display_name": "m_dec_kg",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.0054856514198211035
+        }
+      ]
+    },
+    "m_transmitter_kg": {
+      "param_name": "m_transmitter_kg",
+      "display_name": "m_transmitter_kg",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.01371412854954505
+        }
+      ]
+    },
+    "m_bus_kg": {
+      "param_name": "m_bus_kg",
+      "display_name": "m_bus_kg",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.0054856514198211035
+        }
+      ]
+    },
+    "m_cryo_kg": {
+      "param_name": "m_cryo_kg",
+      "display_name": "m_cryo_kg",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.008228477129723947
+        }
+      ]
+    },
+    "m_fuel_system_kg": {
+      "param_name": "m_fuel_system_kg",
+      "display_name": "m_fuel_system_kg",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.0027428257099105517
+        }
+      ]
+    },
+    "launch_cost_per_kg": {
+      "param_name": "launch_cost_per_kg",
+      "display_name": "launch_cost_per_kg",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.054856514198203324
+        }
+      ]
+    },
+    "c_hts_coil_M": {
+      "param_name": "c_hts_coil_M",
+      "display_name": "c_hts_coil_M",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.042611625953917646
+        }
+      ]
+    },
+    "c_heating_M": {
+      "param_name": "c_heating_M",
+      "display_name": "c_heating_M",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.042611625953917646
+        }
+      ]
+    },
+    "c_dec_M": {
+      "param_name": "c_dec_M",
+      "display_name": "c_dec_M",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.028407750635950232
+        }
+      ]
+    },
+    "c_transmitter_M": {
+      "param_name": "c_transmitter_M",
+      "display_name": "c_transmitter_M",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.056815501271908174
+        }
+      ]
+    },
+    "c_bus_M": {
+      "param_name": "c_bus_M",
+      "display_name": "c_bus_M",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.014203875317982824
+        }
+      ]
+    },
+    "c_cryo_M": {
+      "param_name": "c_cryo_M",
+      "display_name": "c_cryo_M",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
           "elasticity": 0.0
-        },
-        {
-          "concept_id": "07",
-          "name": "MagLIF (D-T)",
-          "elasticity": -0.0012216665022403016
-        },
-        {
-          "concept_id": "08",
-          "name": "FRC w/ Direct Conversion",
-          "elasticity": -0.004065421154418434
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": -0.0014500806176894962
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": -0.001376490184179906
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.005472741877709569
-        },
-        {
-          "concept_id": "14",
-          "name": "Magnetized Target Fusion - Pneumatic Compression (D-T)",
-          "elasticity": -0.0011280233105582383
-        },
-        {
-          "concept_id": "17a",
-          "name": "Laser ICF - Hybrid Direct Drive (D-T)",
-          "elasticity": -0.0010999177825035073
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": -0.0010272020495696974
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": -0.001670707342127202
         }
       ]
     },
-    "eta_th": {
-      "param_name": "eta_th",
-      "display_name": "eta_th",
+    "c_electronics_M": {
+      "param_name": "c_electronics_M",
+      "display_name": "c_electronics_M",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": -0.12306053131452366
-        },
-        {
-          "concept_id": "03",
-          "name": "Laser ICF - Liquid Jet Target (D-D)",
-          "elasticity": -0.06257022179217618
-        },
-        {
-          "concept_id": "04",
-          "name": "Laser ICF - p-B11 Fast Ignition",
-          "elasticity": -0.028848091649812835
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": -0.14595638203651173
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": -0.0006544502717619381
-        },
-        {
-          "concept_id": "07",
-          "name": "MagLIF (D-T)",
-          "elasticity": -0.07631186509908915
-        },
-        {
-          "concept_id": "08",
-          "name": "FRC w/ Direct Conversion",
-          "elasticity": -0.10707525063831526
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": -0.20588947618218711
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": -0.25788339281030476
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": -0.1528757036572137
-        },
-        {
-          "concept_id": "14",
-          "name": "Magnetized Target Fusion - Pneumatic Compression (D-T)",
-          "elasticity": -0.046403940499920214
-        },
-        {
-          "concept_id": "17a",
-          "name": "Laser ICF - Hybrid Direct Drive (D-T)",
-          "elasticity": -0.07767505715613843
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": -0.2642029525721269
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": -0.09012963459954501
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.011363100254380093
         }
       ]
     },
-    "eta_p": {
-      "param_name": "eta_p",
-      "display_name": "eta_p",
+    "rectenna_cost_per_MW_M": {
+      "param_name": "rectenna_cost_per_MW_M",
+      "display_name": "rectenna_cost_per_MW_M",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": -6.173331870978062e-7
-        },
-        {
-          "concept_id": "03",
-          "name": "Laser ICF - Liquid Jet Target (D-D)",
-          "elasticity": -2.3527200645455405e-7
-        },
-        {
-          "concept_id": "04",
-          "name": "Laser ICF - p-B11 Fast Ignition",
-          "elasticity": -8.872010838490061e-8
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": -1.7054296298914224e-6
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": 0.00005910709421872037
-        },
-        {
-          "concept_id": "07",
-          "name": "MagLIF (D-T)",
-          "elasticity": -2.8961762577764976e-7
-        },
-        {
-          "concept_id": "08",
-          "name": "FRC w/ Direct Conversion",
-          "elasticity": -0.00034609654126207086
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": -2.729713046539561e-6
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": -2.2995620395928058e-7
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 3.7663217956725685e-6
-        },
-        {
-          "concept_id": "14",
-          "name": "Magnetized Target Fusion - Pneumatic Compression (D-T)",
-          "elasticity": -1.945368663736012e-6
-        },
-        {
-          "concept_id": "17a",
-          "name": "Laser ICF - Hybrid Direct Drive (D-T)",
-          "elasticity": -8.903993342492913e-6
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": -5.654750318190104e-7
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": -8.821094616476719e-7
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.005043481931408195
         }
       ]
     },
-    "f_sub": {
-      "param_name": "f_sub",
-      "display_name": "f_sub",
+    "c_ground_control_M": {
+      "param_name": "c_ground_control_M",
+      "display_name": "c_ground_control_M",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.010095864863057096
-        },
-        {
-          "concept_id": "03",
-          "name": "Laser ICF - Liquid Jet Target (D-D)",
-          "elasticity": 0.014910881980091757
-        },
-        {
-          "concept_id": "04",
-          "name": "Laser ICF - p-B11 Fast Ignition",
-          "elasticity": 0.01347788962563358
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.010710737263985798
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": 0.009908147044894759
-        },
-        {
-          "concept_id": "07",
-          "name": "MagLIF (D-T)",
-          "elasticity": 0.01456534770632144
-        },
-        {
-          "concept_id": "08",
-          "name": "FRC w/ Direct Conversion",
-          "elasticity": 0.005131784296016913
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.014792946647640116
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.014919564498214051
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.012751608501517691
-        },
-        {
-          "concept_id": "14",
-          "name": "Magnetized Target Fusion - Pneumatic Compression (D-T)",
-          "elasticity": 0.01028958525823652
-        },
-        {
-          "concept_id": "17a",
-          "name": "Laser ICF - Hybrid Direct Drive (D-T)",
-          "elasticity": 0.011598638408344382
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.014449048763476784
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.012206541816201616
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.012459539752617458
         }
       ]
     },
-    "p_pump": {
-      "param_name": "p_pump",
-      "display_name": "p_pump",
+    "he3_cost_per_kg": {
+      "param_name": "he3_cost_per_kg",
+      "display_name": "he3_cost_per_kg",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.0008830668587708441
-        },
-        {
-          "concept_id": "03",
-          "name": "Laser ICF - Liquid Jet Target (D-D)",
-          "elasticity": 0.00034242170451233365
-        },
-        {
-          "concept_id": "04",
-          "name": "Laser ICF - p-B11 Fast Ignition",
-          "elasticity": 0.00040944521525330816
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.002386664420320758
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": 0.0008200655215485543
-        },
-        {
-          "concept_id": "07",
-          "name": "MagLIF (D-T)",
-          "elasticity": 0.0004410019517412682
-        },
-        {
-          "concept_id": "08",
-          "name": "FRC w/ Direct Conversion",
-          "elasticity": 0.0009084293725459445
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.004026800063509171
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.00037871686644212104
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.0011885424256331554
-        },
-        {
-          "concept_id": "14",
-          "name": "Magnetized Target Fusion - Pneumatic Compression (D-T)",
-          "elasticity": 0.002624607416033752
-        },
-        {
-          "concept_id": "17a",
-          "name": "Laser ICF - Hybrid Direct Drive (D-T)",
-          "elasticity": 0.011198549669821364
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.0012791264292236022
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.0008553245589919033
-        }
-      ]
-    },
-    "p_trit": {
-      "param_name": "p_trit",
-      "display_name": "p_trit",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.008836841283306064
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.00796123316573097
-        },
-        {
-          "concept_id": "07",
-          "name": "MagLIF (D-T)",
-          "elasticity": 0.004412915787827494
-        },
-        {
-          "concept_id": "08",
-          "name": "FRC w/ Direct Conversion",
-          "elasticity": 0.0012545259138080154
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.004029529687632356
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.0037894679061120954
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.007108656391917823
-        },
-        {
-          "concept_id": "14",
-          "name": "Magnetized Target Fusion - Pneumatic Compression (D-T)",
-          "elasticity": 0.008755175948991627
-        },
-        {
-          "concept_id": "17a",
-          "name": "Laser ICF - Hybrid Direct Drive (D-T)",
-          "elasticity": 0.007471635938099325
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.006398459466855501
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.0042810335865846845
-        }
-      ]
-    },
-    "p_house": {
-      "param_name": "p_house",
-      "display_name": "p_house",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.0035347365133224255
-        },
-        {
-          "concept_id": "03",
-          "name": "Laser ICF - Liquid Jet Target (D-D)",
-          "elasticity": 0.0013706280033854647
-        },
-        {
-          "concept_id": "04",
-          "name": "Laser ICF - p-B11 Fast Ignition",
-          "elasticity": 0.001638135643656628
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.003980616582865485
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": 0.0025365281825266237
-        },
-        {
-          "concept_id": "07",
-          "name": "MagLIF (D-T)",
-          "elasticity": 0.0017651663151309976
-        },
-        {
-          "concept_id": "08",
-          "name": "FRC w/ Direct Conversion",
-          "elasticity": 0.005018103655232062
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.0016118118750529423
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.0015157871624448382
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.002961940163299093
-        },
-        {
-          "concept_id": "14",
-          "name": "Magnetized Target Fusion - Pneumatic Compression (D-T)",
-          "elasticity": 0.003502070379596651
-        },
-        {
-          "concept_id": "17a",
-          "name": "Laser ICF - Hybrid Direct Drive (D-T)",
-          "elasticity": 0.0029886543752397302
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.0025593837867422
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.0021405167932923423
-        }
-      ]
-    },
-    "p_cryo": {
-      "param_name": "p_cryo",
-      "display_name": "p_cryo",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.003335632640366568
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.037597101780437445
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": 0.01091992983223639
-        },
-        {
-          "concept_id": "07",
-          "name": "MagLIF (D-T)",
-          "elasticity": 0.0009680084004688493
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.004280171381427923
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.07144571928983212
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.006521628740128438
-        },
-        {
-          "concept_id": "17a",
-          "name": "Laser ICF - Hybrid Direct Drive (D-T)",
-          "elasticity": 0.002828598177929978
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.0029085588705242736
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.016923103408186962
-        }
-      ]
-    },
-    "blanket_t": {
-      "param_name": "blanket_t",
-      "display_name": "blanket_t",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.12572682220935502
-        },
-        {
-          "concept_id": "03",
-          "name": "Laser ICF - Liquid Jet Target (D-D)",
-          "elasticity": 0.04313012305750424
-        },
-        {
-          "concept_id": "04",
-          "name": "Laser ICF - p-B11 Fast Ignition",
-          "elasticity": 0.0004963520605440586
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.1137846901536182
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": 0.0028591236207053186
-        },
-        {
-          "concept_id": "07",
-          "name": "MagLIF (D-T)",
-          "elasticity": 0.07894242453172341
-        },
-        {
-          "concept_id": "08",
-          "name": "FRC w/ Direct Conversion",
-          "elasticity": 0.00003824786235462201
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.20105147225756506
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.2595716884626229
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.15578771138834924
-        },
-        {
-          "concept_id": "14",
-          "name": "Magnetized Target Fusion - Pneumatic Compression (D-T)",
-          "elasticity": 0.05209325461829721
-        },
-        {
-          "concept_id": "17a",
-          "name": "Laser ICF - Hybrid Direct Drive (D-T)",
-          "elasticity": 0.0843540538648207
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.2996200872610889
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.06095069890137036
-        }
-      ]
-    },
-    "ht_shield_t": {
-      "param_name": "ht_shield_t",
-      "display_name": "ht_shield_t",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.021763613105015043
-        },
-        {
-          "concept_id": "03",
-          "name": "Laser ICF - Liquid Jet Target (D-D)",
-          "elasticity": 0.01900726355306884
-        },
-        {
-          "concept_id": "04",
-          "name": "Laser ICF - p-B11 Fast Ignition",
-          "elasticity": 0.000618269669031159
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.030621739395152
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": 0.0010537475331426104
-        },
-        {
-          "concept_id": "07",
-          "name": "MagLIF (D-T)",
-          "elasticity": 0.014566543045981439
-        },
-        {
-          "concept_id": "08",
-          "name": "FRC w/ Direct Conversion",
-          "elasticity": 0.00004660264820301907
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.04523515961481997
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.058799707026216966
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.033316244656542246
-        },
-        {
-          "concept_id": "14",
-          "name": "Magnetized Target Fusion - Pneumatic Compression (D-T)",
-          "elasticity": 0.007496997155707328
-        },
-        {
-          "concept_id": "17a",
-          "name": "Laser ICF - Hybrid Direct Drive (D-T)",
-          "elasticity": 0.01665871327192289
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.05348642654482322
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.013970026810554922
-        }
-      ]
-    },
-    "structure_t": {
-      "param_name": "structure_t",
-      "display_name": "structure_t",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.007341544629103538
-        },
-        {
-          "concept_id": "03",
-          "name": "Laser ICF - Liquid Jet Target (D-D)",
-          "elasticity": 0.00375786033137675
-        },
-        {
-          "concept_id": "04",
-          "name": "Laser ICF - p-B11 Fast Ignition",
-          "elasticity": 0.002740072440917717
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.006398112429393093
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": 0.005034857003094637
-        },
-        {
-          "concept_id": "07",
-          "name": "MagLIF (D-T)",
-          "elasticity": 0.003046068021995894
-        },
-        {
-          "concept_id": "08",
-          "name": "FRC w/ Direct Conversion",
-          "elasticity": 0.00010399930110787762
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.00894956731768639
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.010711882965876425
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.007528369312872503
-        },
-        {
-          "concept_id": "14",
-          "name": "Magnetized Target Fusion - Pneumatic Compression (D-T)",
-          "elasticity": 0.0025086798210114487
-        },
-        {
-          "concept_id": "17a",
-          "name": "Laser ICF - Hybrid Direct Drive (D-T)",
-          "elasticity": 0.003017407166797408
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.01344354405232844
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.0033144553977423954
-        }
-      ]
-    },
-    "vessel_t": {
-      "param_name": "vessel_t",
-      "display_name": "vessel_t",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.02366806722337404
-        },
-        {
-          "concept_id": "03",
-          "name": "Laser ICF - Liquid Jet Target (D-D)",
-          "elasticity": 0.00971498151100751
-        },
-        {
-          "concept_id": "04",
-          "name": "Laser ICF - p-B11 Fast Ignition",
-          "elasticity": 0.007650097126825296
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.01514987692038378
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": 0.013852277499009098
-        },
-        {
-          "concept_id": "07",
-          "name": "MagLIF (D-T)",
-          "elasticity": 0.007449950629908872
-        },
-        {
-          "concept_id": "08",
-          "name": "FRC w/ Direct Conversion",
-          "elasticity": 0.00026777360873979226
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.02202038953688522
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.02706749061945031
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.01710101736665805
-        },
-        {
-          "concept_id": "14",
-          "name": "Magnetized Target Fusion - Pneumatic Compression (D-T)",
-          "elasticity": 0.005505746160217462
-        },
-        {
-          "concept_id": "17a",
-          "name": "Laser ICF - Hybrid Direct Drive (D-T)",
-          "elasticity": 0.007064635225001524
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.047567346970001256
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.010761102410070248
-        }
-      ]
-    },
-    "plasma_t": {
-      "param_name": "plasma_t",
-      "display_name": "plasma_t",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.09553418006423085
-        },
-        {
-          "concept_id": "03",
-          "name": "Laser ICF - Liquid Jet Target (D-D)",
-          "elasticity": 0.11591796164634724
-        },
-        {
-          "concept_id": "04",
-          "name": "Laser ICF - p-B11 Fast Ignition",
-          "elasticity": 0.022064957172694185
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.14587512762815016
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": 0.012302166567465399
-        },
-        {
-          "concept_id": "07",
-          "name": "MagLIF (D-T)",
-          "elasticity": 0.1755008370906962
-        },
-        {
-          "concept_id": "08",
-          "name": "FRC w/ Direct Conversion",
-          "elasticity": 0.00036155897941221365
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.19599084776309578
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.28619277240466645
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.1110367919298885
-        },
-        {
-          "concept_id": "14",
-          "name": "Magnetized Target Fusion - Pneumatic Compression (D-T)",
-          "elasticity": 0.0709968614612244
-        },
-        {
-          "concept_id": "17a",
-          "name": "Laser ICF - Hybrid Direct Drive (D-T)",
-          "elasticity": 0.18558865952742493
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.3135893583305942
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.03923071559116979
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.636169667669323
         }
       ]
     },
@@ -1121,74 +354,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": -0.0004994492003293083
-        },
-        {
-          "concept_id": "03",
-          "name": "Laser ICF - Liquid Jet Target (D-D)",
-          "elasticity": -0.0009902629892567184
-        },
-        {
-          "concept_id": "04",
-          "name": "Laser ICF - p-B11 Fast Ignition",
-          "elasticity": -0.0002846467738485132
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": -0.0006522100924459948
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": -0.00014036314836521815
-        },
-        {
-          "concept_id": "07",
-          "name": "MagLIF (D-T)",
-          "elasticity": -0.000769045331310847
-        },
-        {
-          "concept_id": "08",
-          "name": "FRC w/ Direct Conversion",
-          "elasticity": -0.03031427540524915
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": -0.0008988011746939939
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": -0.0008665451399735272
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": -0.0008330557056357079
-        },
-        {
-          "concept_id": "14",
-          "name": "Magnetized Target Fusion - Pneumatic Compression (D-T)",
-          "elasticity": -0.000710117810117605
-        },
-        {
-          "concept_id": "17a",
-          "name": "Laser ICF - Hybrid Direct Drive (D-T)",
-          "elasticity": -0.0006924544523998812
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": -0.0006466936006969641
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": -0.001051795392417884
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.0
         }
       ]
     },
@@ -1198,832 +366,68 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": -0.009015055899452359
-        },
-        {
-          "concept_id": "03",
-          "name": "Laser ICF - Liquid Jet Target (D-D)",
-          "elasticity": -0.01787424550401863
-        },
-        {
-          "concept_id": "04",
-          "name": "Laser ICF - p-B11 Fast Ignition",
-          "elasticity": -0.005137873383728461
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": -0.011772390534442827
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": -0.0025335542477351496
-        },
-        {
-          "concept_id": "07",
-          "name": "MagLIF (D-T)",
-          "elasticity": -0.01388126630344494
-        },
-        {
-          "concept_id": "08",
-          "name": "FRC w/ Direct Conversion",
-          "elasticity": -0.5183740570200001
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": -0.016223358788259253
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": -0.015641135569783998
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": -0.015036652878272123
-        },
-        {
-          "concept_id": "14",
-          "name": "Magnetized Target Fusion - Pneumatic Compression (D-T)",
-          "elasticity": -0.012817624094478602
-        },
-        {
-          "concept_id": "17a",
-          "name": "Laser ICF - Hybrid Direct Drive (D-T)",
-          "elasticity": -0.0124987999730873
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": -0.011672817693659906
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": -0.018984903694185384
-        }
-      ]
-    },
-    "p_input": {
-      "param_name": "p_input",
-      "display_name": "p_input",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.06817275241094653
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.0015911099010605567
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": 0.05071387745923367
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.004026800063509171
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.056807526238624104
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.08143209899911447
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.06149538112413235
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.032886915837875355
-        }
-      ]
-    },
-    "eta_pin": {
-      "param_name": "eta_pin",
-      "display_name": "eta_pin",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": -0.0682204145084309
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": -0.0015922466331461942
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": -0.050730563735441894
-        },
-        {
-          "concept_id": "07",
-          "name": "MagLIF (D-T)",
-          "elasticity": -0.02206457921330001
-        },
-        {
-          "concept_id": "08",
-          "name": "FRC w/ Direct Conversion",
-          "elasticity": -0.031693288078658934
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": -0.00402952982772084
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": -0.056842022866103945
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": -0.08293432155767852
-        },
-        {
-          "concept_id": "14",
-          "name": "Magnetized Target Fusion - Pneumatic Compression (D-T)",
-          "elasticity": -0.05471985102982557
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": -0.06152365199053221
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": -0.03293102809370553
-        }
-      ]
-    },
-    "eta_de": {
-      "param_name": "eta_de",
-      "display_name": "eta_de",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": -0.012584341927376752
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": -0.009719204156251937
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
           "elasticity": 0.0
         }
       ]
     },
-    "p_coils": {
-      "param_name": "p_coils",
-      "display_name": "p_coils",
+    "plant_availability": {
+      "param_name": "plant_availability",
+      "display_name": "plant_availability",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.0017673682566612127
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.0015922466331461942
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": 0.004058445092042598
-        },
-        {
-          "concept_id": "08",
-          "name": "FRC w/ Direct Conversion",
-          "elasticity": 0.0012545259138080154
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.04472777953271915
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.0011368403718336286
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.005923880326598186
-        },
-        {
-          "concept_id": "14",
-          "name": "Magnetized Target Fusion - Pneumatic Compression (D-T)",
-          "elasticity": 0.00043775879744958136
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.0012796918933711
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.0021405167932923423
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": -1.0001000100009987
         }
       ]
     },
-    "p_cool": {
-      "param_name": "p_cool",
-      "display_name": "p_cool",
+    "plant_lifetime_years": {
+      "param_name": "plant_lifetime_years",
+      "display_name": "plant_lifetime_years",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.012106472389579936
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.006368986532584777
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": 0.007609584547579871
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.016118118750529424
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.005684201859168144
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.014809700816495465
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.009597689200283251
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.006421550379877026
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": -0.2714126193863151
         }
       ]
     },
-    "R0": {
-      "param_name": "R0",
-      "display_name": "R0",
+    "orbital_om_frac_annual": {
+      "param_name": "orbital_om_frac_annual",
+      "display_name": "orbital_om_frac_annual",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.1727026855147542
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.20426383668361411
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.3104583683562016
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.41419170366511365
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.4447229744451707
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.0882562457244509
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.07602161012518702
         }
       ]
     },
-    "elon": {
-      "param_name": "elon",
-      "display_name": "elon",
+    "construction_time_years": {
+      "param_name": "construction_time_years",
+      "display_name": "construction_time_years",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.17270266846579022
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.20426383668361411
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": 0.00016989908725144635
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.3104583885289434
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.4141917227509072
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.000042706318256035614
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.4447229744451707
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.08825624094836197
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.08394535818775468
         }
       ]
     },
-    "q95": {
-      "param_name": "q95",
-      "display_name": "q95",
+    "plasma_radius_m": {
+      "param_name": "plasma_radius_m",
+      "display_name": "plasma_radius_m",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "f_GW": {
-      "param_name": "f_GW",
-      "display_name": "f_GW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "B": {
-      "param_name": "B",
-      "display_name": "B",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": 0.0005447089702141736
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.00013564721615717847
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "T_e": {
-      "param_name": "T_e",
-      "display_name": "T_e",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": 0.000627024862566784
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.00015834547929474368
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "n_e": {
-      "param_name": "n_e",
-      "display_name": "n_e",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": 0.00032754683738490394
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.00009895695648049437
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "Z_eff": {
-      "param_name": "Z_eff",
-      "display_name": "Z_eff",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": 0.00011353465378386583
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.00003621414183504946
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "plasma_volume": {
-      "param_name": "plasma_volume",
-      "display_name": "plasma_volume",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": 0.0001135346403582544
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.00003621414716731885
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "R_w": {
-      "param_name": "R_w",
-      "display_name": "R_w",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": -0.00007638960213518223
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": -0.00001835330676562637
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "T_edge": {
-      "param_name": "T_edge",
-      "display_name": "T_edge",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "tau_ratio": {
-      "param_name": "tau_ratio",
-      "display_name": "tau_ratio",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
           "elasticity": 0.0
         }
       ]
@@ -2034,1375 +438,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.6503519928671115
-        },
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": 0.9348641597747788
-        },
-        {
-          "concept_id": "03",
-          "name": "Laser ICF - Liquid Jet Target (D-D)",
-          "elasticity": 0.715940379011548
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.811958986131924
-        },
-        {
-          "concept_id": "07",
-          "name": "MagLIF (D-T)",
-          "elasticity": 0.7583474155045171
-        },
-        {
-          "concept_id": "08",
-          "name": "FRC w/ Direct Conversion",
-          "elasticity": 0.7258217952995654
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.7178070621313728
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.8461223149357124
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.6351951450272453
-        },
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.6908659836994231
-        },
-        {
-          "concept_id": "14",
-          "name": "Magnetized Target Fusion - Pneumatic Compression (D-T)",
-          "elasticity": 0.6544028028603642
-        },
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.531570054492417
-        },
-        {
-          "concept_id": "17a",
-          "name": "Laser ICF - Hybrid Direct Drive (D-T)",
-          "elasticity": 0.614330072382906
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.7097139790127078
-        },
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.9395134941676885
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.6531114701165706
-        }
-      ]
-    },
-    "inflation_rate": {
-      "param_name": "inflation_rate",
-      "display_name": "inflation_rate",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "01",
-          "name": "HTS Compact Tokamak",
-          "elasticity": 0.0493364549360167
-        },
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": 0.05122727310303942
-        },
-        {
-          "concept_id": "03",
-          "name": "Laser ICF - Liquid Jet Target (D-D)",
-          "elasticity": 0.04762984634614492
-        },
-        {
-          "concept_id": "04",
-          "name": "Laser ICF - p-B11 Fast Ignition",
-          "elasticity": 0.03917442319711327
-        },
-        {
-          "concept_id": "05",
-          "name": "Planar Coil Stellarator",
-          "elasticity": 0.06968540103801753
-        },
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": 0.03048788530471783
-        },
-        {
-          "concept_id": "07",
-          "name": "MagLIF (D-T)",
-          "elasticity": 0.03875663263609165
-        },
-        {
-          "concept_id": "08",
-          "name": "FRC w/ Direct Conversion",
-          "elasticity": 0.026807468553522888
-        },
-        {
-          "concept_id": "09",
-          "name": "QI Stellarator - HTS",
-          "elasticity": 0.04672023272311299
-        },
-        {
-          "concept_id": "10",
-          "name": "Large-Scale Stellarator",
-          "elasticity": 0.04563505542921807
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.036000884406559436
-        },
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.026791180717513425
-        },
-        {
-          "concept_id": "14",
-          "name": "Magnetized Target Fusion - Pneumatic Compression (D-T)",
-          "elasticity": 0.058615700833541534
-        },
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.016337241459856634
-        },
-        {
-          "concept_id": "17a",
-          "name": "Laser ICF - Hybrid Direct Drive (D-T)",
-          "elasticity": 0.05194399933056637
-        },
-        {
-          "concept_id": "21",
-          "name": "Spherical Tokamak - HTS",
-          "elasticity": 0.038307201621073095
-        },
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.030466200438387988
-        },
-        {
-          "concept_id": "28",
-          "name": "HTS Tokamak - Full HTS",
-          "elasticity": 0.05820723941307442
-        }
-      ]
-    },
-    "acoustic_power_MW": {
-      "param_name": "acoustic_power_MW",
-      "display_name": "acoustic_power_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": -0.21668966951483795
-        }
-      ]
-    },
-    "acoustic_driver_efficiency": {
-      "param_name": "acoustic_driver_efficiency",
-      "display_name": "acoustic_driver_efficiency",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": -0.5586652386293293
-        }
-      ]
-    },
-    "fusion_gain_Q": {
-      "param_name": "fusion_gain_Q",
-      "display_name": "fusion_gain_Q",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": -0.5631447126521653
-        }
-      ]
-    },
-    "transducer_cost_per_kW": {
-      "param_name": "transducer_cost_per_kW",
-      "display_name": "transducer_cost_per_kW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": 0.059872263517071096
-        }
-      ]
-    },
-    "acoustic_freq_kHz": {
-      "param_name": "acoustic_freq_kHz",
-      "display_name": "acoustic_freq_kHz",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "blanket_energy_multiplication": {
-      "param_name": "blanket_energy_multiplication",
-      "display_name": "blanket_energy_multiplication",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": -0.19536618839503395
-        },
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": -0.7245376803819064
-        },
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": -0.8935443975424582
-        },
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": -0.6246702337491455
-        }
-      ]
-    },
-    "f_neutron_dd": {
-      "param_name": "f_neutron_dd",
-      "display_name": "f_neutron_dd",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": -0.009302965668577672
-        }
-      ]
-    },
-    "thermal_efficiency": {
-      "param_name": "thermal_efficiency",
-      "display_name": "thermal_efficiency",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": -0.7530961992832812
-        },
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": -1.0141019759795817
-        },
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": -1.485232447149425
-        },
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": -0.8048274185879902
-        }
-      ]
-    },
-    "vessel_inner_radius_m": {
-      "param_name": "vessel_inner_radius_m",
-      "display_name": "vessel_inner_radius_m",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": 0.493093043614703
-        },
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.17221339229700494
-        }
-      ]
-    },
-    "shield_thickness_m": {
-      "param_name": "shield_thickness_m",
-      "display_name": "shield_thickness_m",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": 0.1347347536872092
-        },
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.04369031534623592
-        },
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.08194336139568212
-        },
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.01776364760701676
-        }
-      ]
-    },
-    "structure_thickness_m": {
-      "param_name": "structure_thickness_m",
-      "display_name": "structure_thickness_m",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": 0.008989770195638824
-        },
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.006274282509386596
-        },
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.018731196097920233
-        },
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.0033099135425231777
-        }
-      ]
-    },
-    "vessel_wall_thickness_m": {
-      "param_name": "vessel_wall_thickness_m",
-      "display_name": "vessel_wall_thickness_m",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": 0.007532960336432878
-        }
-      ]
-    },
-    "plant_availability": {
-      "param_name": "plant_availability",
-      "display_name": "plant_availability",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": -0.9544126100109184
-        },
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": -0.9731617180577297
-        },
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": -0.7093797612005212
-        },
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": -0.9827617571234646
-        }
-      ]
-    },
-    "plant_lifetime_years": {
-      "param_name": "plant_lifetime_years",
-      "display_name": "plant_lifetime_years",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": -0.03119135459686621
-        },
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": -0.08452422577721297
-        },
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": -0.22923857091169306
-        },
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": -0.12423807719744978
-        }
-      ]
-    },
-    "d2o_unit_cost_per_m3": {
-      "param_name": "d2o_unit_cost_per_m3",
-      "display_name": "d2o_unit_cost_per_m3",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": 0.11414080760189131
-        }
-      ]
-    },
-    "vessel_structural_cost_M_USD": {
-      "param_name": "vessel_structural_cost_M_USD",
-      "display_name": "vessel_structural_cost_M_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": 0.017708108536192542
-        }
-      ]
-    },
-    "p_tritium_handling_MW": {
-      "param_name": "p_tritium_handling_MW",
-      "display_name": "p_tritium_handling_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": 0.0017094133312225712
-        }
-      ]
-    },
-    "p_house_MW": {
-      "param_name": "p_house_MW",
-      "display_name": "p_house_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": 0.003418826667265788
-        },
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.045383082819223
-        },
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.011333655253397449
-        }
-      ]
-    },
-    "p_cryo_MW": {
-      "param_name": "p_cryo_MW",
-      "display_name": "p_cryo_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": 0.0007542179842843139
-        },
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.04201878112769245
-        },
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.0032242839254217506
-        }
-      ]
-    },
-    "p_d2o_circulation_MW": {
-      "param_name": "p_d2o_circulation_MW",
-      "display_name": "p_d2o_circulation_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": 0.002564119998314055
-        }
-      ]
-    },
-    "construction_time_years": {
-      "param_name": "construction_time_years",
-      "display_name": "construction_time_years",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": 0.40702193552496
-        },
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.2768605030654135
-        },
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.21195112133395577
-        },
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.3682568432458275
-        }
-      ]
-    },
-    "om_cost_per_MW_yr": {
-      "param_name": "om_cost_per_MW_yr",
-      "display_name": "om_cost_per_MW_yr",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": 0.1564565289560278
-        },
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.07395836170791902
-        },
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.054053645907300586
-        },
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.0841034329784199
-        }
-      ]
-    },
-    "core_lifetime_FPY": {
-      "param_name": "core_lifetime_FPY",
-      "display_name": "core_lifetime_FPY",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": -0.046005068918248085
-        },
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": -0.026936020183161984
-        },
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": -0.19388216583145368
-        },
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "d2o_annual_replenishment_frac": {
-      "param_name": "d2o_annual_replenishment_frac",
-      "display_name": "d2o_annual_replenishment_frac",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "02",
-          "name": "Acoustic ICF / Sonofusion (D-D)",
-          "elasticity": 0.010866187134723378
-        }
-      ]
-    },
-    "p_implosion": {
-      "param_name": "p_implosion",
-      "display_name": "p_implosion",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "03",
-          "name": "Laser ICF - Liquid Jet Target (D-D)",
-          "elasticity": 0.13704398052423633
-        },
-        {
-          "concept_id": "04",
-          "name": "Laser ICF - p-B11 Fast Ignition",
-          "elasticity": 0.023383373937223978
-        },
-        {
-          "concept_id": "17a",
-          "name": "Laser ICF - Hybrid Direct Drive (D-T)",
-          "elasticity": 0.053362890576861735
-        }
-      ]
-    },
-    "eta_pin1": {
-      "param_name": "eta_pin1",
-      "display_name": "eta_pin1",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "03",
-          "name": "Laser ICF - Liquid Jet Target (D-D)",
-          "elasticity": -0.1370627838530577
-        },
-        {
-          "concept_id": "04",
-          "name": "Laser ICF - p-B11 Fast Ignition",
-          "elasticity": -0.02338438491446894
-        },
-        {
-          "concept_id": "17a",
-          "name": "Laser ICF - Hybrid Direct Drive (D-T)",
-          "elasticity": -0.05336882136039796
-        }
-      ]
-    },
-    "eta_pin2": {
-      "param_name": "eta_pin2",
-      "display_name": "eta_pin2",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "03",
-          "name": "Laser ICF - Liquid Jet Target (D-D)",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "04",
-          "name": "Laser ICF - p-B11 Fast Ignition",
-          "elasticity": -0.0004095338648619434
-        },
-        {
-          "concept_id": "17a",
-          "name": "Laser ICF - Hybrid Direct Drive (D-T)",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "p_target": {
-      "param_name": "p_target",
-      "display_name": "p_target",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "03",
-          "name": "Laser ICF - Liquid Jet Target (D-D)",
-          "elasticity": 0.0006853140016927323
-        },
-        {
-          "concept_id": "04",
-          "name": "Laser ICF - p-B11 Fast Ignition",
-          "elasticity": 0.000409533910914157
-        },
-        {
-          "concept_id": "07",
-          "name": "MagLIF (D-T)",
-          "elasticity": 0.0008825831575654988
-        },
-        {
-          "concept_id": "17a",
-          "name": "Laser ICF - Hybrid Direct Drive (D-T)",
-          "elasticity": 0.0007471635938099326
-        }
-      ]
-    },
-    "p_ignition": {
-      "param_name": "p_ignition",
-      "display_name": "p_ignition",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "04",
-          "name": "Laser ICF - p-B11 Fast Ignition",
-          "elasticity": 0.0004095161844035968
-        }
-      ]
-    },
-    "f_dec": {
-      "param_name": "f_dec",
-      "display_name": "f_dec",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": -0.0822572838122513
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": -0.010018354583776042
-        }
-      ]
-    },
-    "chamber_length": {
-      "param_name": "chamber_length",
-      "display_name": "chamber_length",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "06",
-          "name": "Magnetic Mirror (p-B11)",
-          "elasticity": 0.019809940882209897
-        },
-        {
-          "concept_id": "11",
-          "name": "Magnetic Mirror (D-T)",
-          "elasticity": 0.22158271245198433
-        }
-      ]
-    },
-    "p_driver": {
-      "param_name": "p_driver",
-      "display_name": "p_driver",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "07",
-          "name": "MagLIF (D-T)",
-          "elasticity": 0.022047197550367173
-        },
-        {
-          "concept_id": "08",
-          "name": "FRC w/ Direct Conversion",
-          "elasticity": 0.015080652262991512
-        },
-        {
-          "concept_id": "14",
-          "name": "Magnetized Target Fusion - Pneumatic Compression (D-T)",
-          "elasticity": 0.05465499453695535
-        }
-      ]
-    },
-    "p_fus_MW": {
-      "param_name": "p_fus_MW",
-      "display_name": "p_fus_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": -0.6775156688023241
-        }
-      ]
-    },
-    "qsci": {
-      "param_name": "qsci",
-      "display_name": "qsci",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": -0.21169938499722815
-        }
-      ]
-    },
-    "icrh_wall_plug_efficiency": {
-      "param_name": "icrh_wall_plug_efficiency",
-      "display_name": "icrh_wall_plug_efficiency",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": -0.2665962145954925
-        }
-      ]
-    },
-    "p_tritium_MW": {
-      "param_name": "p_tritium_MW",
-      "display_name": "p_tritium_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.016784337014475438
-        },
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.06807464658968225
-        }
-      ]
-    },
-    "p_housekeeping_MW": {
-      "param_name": "p_housekeeping_MW",
-      "display_name": "p_housekeeping_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.020980421686162702
-        }
-      ]
-    },
-    "p_position_control_MW": {
-      "param_name": "p_position_control_MW",
-      "display_name": "p_position_control_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.00419608411424708
-        }
-      ]
-    },
-    "plasma_duty_cycle": {
-      "param_name": "plasma_duty_cycle",
-      "display_name": "plasma_duty_cycle",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": -0.9731617180577203
-        }
-      ]
-    },
-    "noak": {
-      "param_name": "noak",
-      "display_name": "noak",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "blanket_thickness_m": {
-      "param_name": "blanket_thickness_m",
-      "display_name": "blanket_thickness_m",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.08194641271709693
-        },
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.8649773830114589
-        },
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.03812211807331049
-        }
-      ]
-    },
-    "vessel_thickness_m": {
-      "param_name": "vessel_thickness_m",
-      "display_name": "vessel_thickness_m",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.014256867838003787
-        },
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.02263470614899286
-        },
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.00410666843299436
-        }
-      ]
-    },
-    "blanket_unit_cost": {
-      "param_name": "blanket_unit_cost",
-      "display_name": "blanket_unit_cost",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.05305818435334314
-        },
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.019979286227525657
-        }
-      ]
-    },
-    "hts_coil_system_cost_M_USD": {
-      "param_name": "hts_coil_system_cost_M_USD",
-      "display_name": "hts_coil_system_cost_M_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.15011769134815503
-        }
-      ]
-    },
-    "icrh_system_cost_M_USD": {
-      "param_name": "icrh_system_cost_M_USD",
-      "display_name": "icrh_system_cost_M_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.09007061480889302
-        }
-      ]
-    },
-    "rh_scale_factor": {
-      "param_name": "rh_scale_factor",
-      "display_name": "rh_scale_factor",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.053215989212063955
-        }
-      ]
-    },
-    "sacrificial_section_fraction": {
-      "param_name": "sacrificial_section_fraction",
-      "display_name": "sacrificial_section_fraction",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "sacrificial_section_material_cost_M_USD": {
-      "param_name": "sacrificial_section_material_cost_M_USD",
-      "display_name": "sacrificial_section_material_cost_M_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.18493961615485213
-        }
-      ]
-    },
-    "coil_replacement_labor_M_USD": {
-      "param_name": "coil_replacement_labor_M_USD",
-      "display_name": "coil_replacement_labor_M_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.04109769247885186
-        }
-      ]
-    },
-    "tritium_startup_cost_M_USD": {
-      "param_name": "tritium_startup_cost_M_USD",
-      "display_name": "tritium_startup_cost_M_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "12",
-          "name": "Levitated Dipole (D-T)",
-          "elasticity": 0.014748404764033054
-        }
-      ]
-    },
-    "driver_electrical_energy_per_shot_MJ": {
-      "param_name": "driver_electrical_energy_per_shot_MJ",
-      "display_name": "driver_electrical_energy_per_shot_MJ",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "driver_wall_to_plasma_efficiency": {
-      "param_name": "driver_wall_to_plasma_efficiency",
-      "display_name": "driver_wall_to_plasma_efficiency",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": -0.6368418060528123
-        }
-      ]
-    },
-    "driver_stored_energy_per_shot_MJ": {
-      "param_name": "driver_stored_energy_per_shot_MJ",
-      "display_name": "driver_stored_energy_per_shot_MJ",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "driver_cost_per_MJ_stored_M_USD": {
-      "param_name": "driver_cost_per_MJ_stored_M_USD",
-      "display_name": "driver_cost_per_MJ_stored_M_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.0207457069982125
-        }
-      ]
-    },
-    "driver_rep_rate_Hz": {
-      "param_name": "driver_rep_rate_Hz",
-      "display_name": "driver_rep_rate_Hz",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": -0.5616240433704804
-        },
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": -0.7399822875542912
-        }
-      ]
-    },
-    "fusion_energy_per_shot_MJ": {
-      "param_name": "fusion_energy_per_shot_MJ",
-      "display_name": "fusion_energy_per_shot_MJ",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": -0.561342320828875
-        }
-      ]
-    },
-    "fusion_Q": {
-      "param_name": "fusion_Q",
-      "display_name": "fusion_Q",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": -0.5352651949884472
-        }
-      ]
-    },
-    "pinch_current_MA": {
-      "param_name": "pinch_current_MA",
-      "display_name": "pinch_current_MA",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "plasma_temperature_keV": {
-      "param_name": "plasma_temperature_keV",
-      "display_name": "plasma_temperature_keV",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "chamber_inner_radius_m": {
-      "param_name": "chamber_inner_radius_m",
-      "display_name": "chamber_inner_radius_m",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.4350847868974969
-        },
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.06093707365160832
-        }
-      ]
-    },
-    "blanket_unit_cost_M_per_m3": {
-      "param_name": "blanket_unit_cost_M_per_m3",
-      "display_name": "blanket_unit_cost_M_per_m3",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.3695173150745906
-        }
-      ]
-    },
-    "electrode_system_cost_M_USD": {
-      "param_name": "electrode_system_cost_M_USD",
-      "display_name": "electrode_system_cost_M_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.12883860597296726
-        }
-      ]
-    },
-    "electrode_replacement_interval_yr": {
-      "param_name": "electrode_replacement_interval_yr",
-      "display_name": "electrode_replacement_interval_yr",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": -0.07634070337209535
-        }
-      ]
-    },
-    "fuel_cost_per_shot_USD": {
-      "param_name": "fuel_cost_per_shot_USD",
-      "display_name": "fuel_cost_per_shot_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.02046402542840534
-        },
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.000014435069982646163
-        }
-      ]
-    },
-    "p_libp_pumping_MW": {
-      "param_name": "p_libp_pumping_MW",
-      "display_name": "p_libp_pumping_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "15",
-          "name": "15-sheared-flow-stabilized-z-pinch",
-          "elasticity": 0.06807464658968225
-        }
-      ]
-    },
-    "driver_stored_energy_MJ": {
-      "param_name": "driver_stored_energy_MJ",
-      "display_name": "driver_stored_energy_MJ",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.009350265532557751
-        }
-      ]
-    },
-    "driver_efficiency": {
-      "param_name": "driver_efficiency",
-      "display_name": "driver_efficiency",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "driver_cost_M_USD": {
-      "param_name": "driver_cost_M_USD",
-      "display_name": "driver_cost_M_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.4856263434373825
-        }
-      ]
-    },
-    "fusion_yield_MJ": {
-      "param_name": "fusion_yield_MJ",
-      "display_name": "fusion_yield_MJ",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": -0.7666744965394288
-        }
-      ]
-    },
-    "target_cost_USD": {
-      "param_name": "target_cost_USD",
-      "display_name": "target_cost_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.014435069985226546
-        }
-      ]
-    },
-    "projectile_cost_USD": {
-      "param_name": "projectile_cost_USD",
-      "display_name": "projectile_cost_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.0028870139970432114
-        }
-      ]
-    },
-    "li_inventory_cost_M_USD": {
-      "param_name": "li_inventory_cost_M_USD",
-      "display_name": "li_inventory_cost_M_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.02981916143914708
-        }
-      ]
-    },
-    "tritium_startup_kg": {
-      "param_name": "tritium_startup_kg",
-      "display_name": "tritium_startup_kg",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.030116984957047115
-        }
-      ]
-    },
-    "tritium_surplus_kg_per_year": {
-      "param_name": "tritium_surplus_kg_per_year",
-      "display_name": "tritium_surplus_kg_per_year",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "p_li_pump_MW": {
-      "param_name": "p_li_pump_MW",
-      "display_name": "p_li_pump_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.08500249538668118
-        }
-      ]
-    },
-    "p_trit_MW": {
-      "param_name": "p_trit_MW",
-      "display_name": "p_trit_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.028334140698650444
-        }
-      ]
-    },
-    "p_target_factory_MW": {
-      "param_name": "p_target_factory_MW",
-      "display_name": "p_target_factory_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "22",
-          "name": "Projectile ICF (D-T)",
-          "elasticity": 0.004250120657034136
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.17928557984154728
         }
       ]
     }

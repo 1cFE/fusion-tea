@@ -1,0 +1,203 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-3",
+      "gap_description": "Thermal efficiency (confirmed) — implied ~38–42% from power balance but 'Rankine with reheat > 30%' is the only published bound",
+      "queries": [
+        "Type One Energy Infinity Two stellarator thermal efficiency power balance 2025"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.cambridge.org/core/journals/journal-of-plasma-physics/article/comprehensive-unified-baseline-physics-design-for-the-type-one-energy-stellarator-fusion-pilot-power-plant-infinity-two/CB8A21D770BFA375A9865A28EFBE800B",
+          "title": "A comprehensive, unified baseline physics design for the type one energy stellarator fusion pilot power plant, 'Infinity Two' | Journal of Plasma Physics | Cambridge Core",
+          "triage": "relevant",
+          "notes": "JPP special issue overview. Extracted via trafilatura. Contains introductory text confirming 800 MW fusion / 350 MWe to grid but does not explicitly state thermal efficiency or gross electric output. Confirms HCPB blanket, island divertors, ECRH-only heating. The detailed power balance table (Table 1) referenced in the text is in the companion E65 paper by Hegna et al., not accessible via this URL."
+        },
+        {
+          "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/CB8A21D770BFA375A9865A28EFBE800B/S0022377825000297a_hi.pdf/a-comprehensive-unified-baseline-physics-design-for-the-type-one-energy-stellarator-fusion-pilot-power-plant-infinity-two.pdf",
+          "title": "JPP E65 Direct PDF",
+          "triage": "restricted",
+          "notes": "Cambridge binary PDF fetched (131.9 KB) but WebFetch could not parse readable text. Cambridge license header states 'Not for further distribution.' Content inaccessible via WebFetch; skipped in favor of abstract page extraction."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.cambridge.org/core/journals/journal-of-plasma-physics/article/comprehensive-unified-baseline-physics-design-for-the-type-one-energy-stellarator-fusion-pilot-power-plant-infinity-two/CB8A21D770BFA375A9865A28EFBE800B",
+          "source_name": "cambridge-core-journals-journal-of-plasma-physics-article"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "Source extracted confirms the 800 MW / 350 MWe power balance and ECRH-only heating. Explicit thermal efficiency not stated in this overview text. Gap G-3 requires the detailed Table 1 in Hegna et al. (baseline plasma physics design paper) or the E65 engineering companion — neither is open access. Recommended next step: extract the Hegna et al. baseline plasma physics paper (Cambridge Core URL: /article/infinity-two-fusion-pilot-plant-baseline-plasma-physics-design/EFAA8FF6D37C95272E9F53AEFFE087A7)."
+    },
+    {
+      "gap_id": "G-6",
+      "gap_description": "ECRH auxiliary power confirmed value — upper bound derivable from Q>40; actual Q value not published so actual ECRH power unknown",
+      "queries": [
+        "Type One Energy Infinity Two ECRH heating power MW Journal Plasma Physics 2025"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.cambridge.org/core/journals/journal-of-plasma-physics/article/predictions-of-core-plasma-performance-for-the-infinity-two-fusion-pilot-plant/707D1908C7D42B614D5561987EA7E16D",
+          "title": "Predictions of core plasma performance for the Infinity Two fusion pilot plant | Journal of Plasma Physics",
+          "triage": "relevant",
+          "notes": "WebSearch result text explicitly states: 'The targeted operating scenario for 800 MW DT fusion with Q = 40 requires 20 MW of ECRH in steady state, however, start-up scenarios may require slightly elevated values of ECRH power.' Also states Infinity Two employs 236 GHz gyrotrons with fundamental resonance at 8.42 T. This confirms the ECRH power value. Abstract page likely accessible; PDF (S0022377825000339a.pdf) was fetched as binary but WebFetch parsed it as a stellarator transport review (DOI mismatch suspected)."
+        },
+        {
+          "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/707D1908C7D42B614D5561987EA7E16D/S0022377825000339a.pdf/predictions_of_core_plasma_performance_for_the_infinity_two_fusion_pilot_plant.pdf",
+          "title": "Predictions of core plasma performance for Infinity Two — Direct PDF",
+          "triage": "inaccessible",
+          "notes": "WebFetch parsed this as a 'stellarator transport physics review' — suggests this PDF URL resolves to a different paper than the title indicates (possible Cambridge URL mapping error or redirect). Skipped extraction."
+        },
+        {
+          "url": "https://www.commercial-fusion.com/p/behind-the-physics-of-the-infinity-two-pilot-plant",
+          "title": "Behind the Physics of the Infinity Two Pilot Plant — Commercial Fusion newsletter",
+          "triage": "not-checked",
+          "notes": "Not triaged due to budget limits. Newsletter/Substack format. ECRH value already confirmed from JPP abstract text in search results. Not extracted."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "partial",
+      "notes": "ECRH value of 20 MW at Q=40 confirmed from JPP search result text (Predictions of core plasma performance paper). Gyrotron frequency 236 GHz at 8.42 T resonance also confirmed. Gap G-6 is substantially addressed by this confirmed value even without a separate extraction — the existing extracted source (cambridge-core-journals-journal-of-plasma-physics-article) provides source context. Recommended next step: extract the 'Predictions of core plasma performance' Cambridge Core page directly as a citable source for the 20 MW ECRH value."
+    },
+    {
+      "gap_id": "G-9",
+      "gap_description": "HCPB blanket module replacement interval and cost for stellarator geometry — EU-DEMO studies suggest ~5 dpa limit for Li4SiO4",
+      "queries": [
+        "HCPB blanket Li4SiO4 pebble neutron irradiation damage replacement interval EU-DEMO dpa"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.preprints.org/manuscript/202304.1098",
+          "title": "The European DEMO HCPB Breeding Blanket: Design Status at the Conclusion of Pre-Concept Design Phase",
+          "triage": "inaccessible",
+          "notes": "403 Forbidden. Preprints.org blocked access."
+        },
+        {
+          "url": "https://www.mdpi.com/2673-4362/4/3/37",
+          "title": "Advancements in Designing the DEMO Driver Blanket System at the EU DEMO Pre-Conceptual Design Phase",
+          "triage": "relevant",
+          "notes": "MDPI open access paper — accessible in principle. Extraction attempted but failed (rc=1, no stderr). May be JavaScript-rendered content or MDPI-specific extraction issue."
+        },
+        {
+          "url": "https://scipub.euro-fusion.org/wp-content/uploads/2015/12/EFCP150632.pdf",
+          "title": "Neutronic Performance Issues of the Breeding Blanket Options for DEMO",
+          "triage": "not-checked",
+          "notes": "EUROfusion open access PDF. Not triaged due to budget limits after triage checks. Would be relevant for dpa limits and Li4SiO4 irradiation performance. Recommended for future iteration."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0920379612001123",
+          "title": "Study of ceramic pebble beds in Post Irradiation Examination of the Pebble Bed Assemblies irradiation experiment",
+          "triage": "likely-paywalled",
+          "notes": "ScienceDirect abstract — likely behind Elsevier paywall. Search summary mentioned irradiation to 2–3 dpa in Eurofer with 2–3% lithium burnup, but full replacement interval data not available from abstract."
+        }
+      ],
+      "extracted": [],
+      "failed": [
+        {
+          "url": "https://www.mdpi.com/2673-4362/4/3/37",
+          "reason": "Extraction failed (rc=1, no stderr) — likely JavaScript-rendered MDPI page incompatible with extraction backend"
+        }
+      ],
+      "status": "failed",
+      "notes": "No extraction achieved for G-9. Best remaining candidates: (1) EUROfusion open PDF at scipub.euro-fusion.org (not yet attempted), (2) ResearchGate full-text for HCPB consolidated design paper. Recommended for next iteration."
+    },
+    {
+      "gap_id": "G-10",
+      "gap_description": "Beryllium pebble supply chain and cost at fusion plant scale — Materion Corp and Heraeus produce Be pebbles for EU-DEMO TBM",
+      "queries": [
+        "beryllium pebbles neutron multiplier HCPB blanket supply cost fusion EU-DEMO Materion"
+      ],
+      "candidates": [
+        {
+          "url": "https://science.osti.gov/-/media/fes/pdf/fes-presentations/2022/Pearson_resource-availability-and-supply_presentation.pdf",
+          "title": "The Availability & Supply of Critical Natural Resources for the Realization of a Fusion Pilot Plant: Fuels for Fusion (Pearson 2022, Kyoto Fusioneering / US DoE FES Workshop)",
+          "triage": "relevant",
+          "notes": "Government workshop presentation (DOE FES, June 2022). Fully extracted via pdf_pipeline. Contains dedicated sections on beryllium supply chain including: resource base (100,000 tonnes USGS 2022), dominant supplier (Materion Corporation, Spor Mountain UT), current price ($610/kg beryllium alloy), toxicity/manufacturing challenges, one reactor requires approximately annual global supply of beryllium (Bradshaw et al. 2011), Materion S65 special grade with ultra-low uranium, export control issues, and fusion monopsony risk. Directly addresses G-10."
+        },
+        {
+          "url": "https://www.mdpi.com/2673-4362/4/3/37",
+          "title": "Advancements in Designing the DEMO Driver Blanket System (MDPI)",
+          "triage": "relevant-but-failed",
+          "notes": "Also relevant to G-9; extraction failed. Contains Be12Ti neutron multiplier design details."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://science.osti.gov/-/media/fes/pdf/fes-presentations/2022/Pearson_resource-availability-and-supply_presentation.pdf",
+          "source_name": "science-media-fes-pdf-fes-presentations-2022-pearson"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "notes": "Pearson 2022 DOE presentation provides comprehensive beryllium supply chain data including current pricing ($610/kg), resource constraints (one pilot plant ≈ annual global supply), Materion monopoly, toxicity/manufacturing challenges, and fusion fleet scaling risks. G-10 is addressed. Note: current EU-DEMO HCPB design uses Be12Ti (beryllium intermetallic) pebbles rather than pure Be pebbles — this distinction matters for the analysis."
+    },
+    {
+      "gap_id": "G-12",
+      "gap_description": "Remote maintenance system for non-axisymmetric stellarator geometry — W7-X remote handling provides partial basis",
+      "queries": [
+        "W7-X remote maintenance stellarator non-axisymmetric blanket handling robot 2024 2025"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0920379617305781",
+          "title": "From W7-X to a HELIAS fusion power plant: On engineering considerations for next-step stellarator devices",
+          "triage": "likely-paywalled",
+          "notes": "ScienceDirect article. Search summary noted: stellarators have limited space for remote maintenance due to non-planar coils; sector-based maintenance schemes are under development. Likely behind Elsevier paywall — not extracted."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0360544223033649",
+          "title": "Challenges towards an acceleration in stellarator reactors engineering: The dual coolant lithium-lead breeding blanket helical-axis advanced stellarator case",
+          "triage": "not-checked",
+          "notes": "ScienceDirect. Likely paywalled. Not checked — budget exhausted."
+        },
+        {
+          "url": "https://indico.euro-fusion.org/event/3130/contributions/12339/attachments/5855/10267/AWP2025_WPW7X_final.pdf",
+          "title": "W7-X 2024 Updates and 2025 Objectives — EUROfusion Indico",
+          "triage": "not-checked",
+          "notes": "EUROfusion Indico presentation. Not triaged — may contain W7-X maintenance plans. Budget exhausted. Recommended for future iteration."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "failed",
+      "notes": "No extraction for G-12. Best candidates are paywalled ScienceDirect papers or EUROfusion Indico presentations. The W7-X→HELIAS engineering paper (Drevlak et al. 2018, S0920379617305781) is the most relevant reference for stellarator remote maintenance engineering. Recommend trying EUROfusion Indico PDF (open access) in next iteration, or OSTI for related DOE stellarator maintenance studies."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 5,
+    "sources_extracted": 2,
+    "sources_failed": 1,
+    "searches_used": 5,
+    "extractions_used": 3,
+    "gaps_closed": 1,
+    "gaps_partial": 2,
+    "gaps_failed": 2,
+    "gap_status_by_id": {
+      "G-3": "partial",
+      "G-6": "partial",
+      "G-9": "failed",
+      "G-10": "closed",
+      "G-12": "failed"
+    },
+    "extracted_sources": [
+      {
+        "source_name": "cambridge-core-journals-journal-of-plasma-physics-article",
+        "gaps_addressed": ["G-3", "G-6"],
+        "location": "knowledge/concept_research/20a-type-one-stellarator/iter-01/sources/cambridge-core-journals-journal-of-plasma-physics-article.md"
+      },
+      {
+        "source_name": "science-media-fes-pdf-fes-presentations-2022-pearson",
+        "gaps_addressed": ["G-10"],
+        "location": "knowledge/concept_research/20a-type-one-stellarator/iter-01/sources/science-media-fes-pdf-fes-presentations-2022-pearson.md"
+      }
+    ],
+    "recommended_next_iteration": [
+      "Extract Cambridge Core 'Infinity Two Fusion Pilot Plant Baseline Plasma Physics Design' (Hegna et al.) for G-3 thermal efficiency — URL: https://www.cambridge.org/core/journals/journal-of-plasma-physics/article/infinity-two-fusion-pilot-plant-baseline-plasma-physics-design/EFAA8FF6D37C95272E9F53AEFFE087A7",
+      "Extract Cambridge Core 'Predictions of core plasma performance for Infinity Two' for G-6 ECRH 20 MW confirmation — URL: https://www.cambridge.org/core/journals/journal-of-plasma-physics/article/predictions-of-core-plasma-performance-for-the-infinity-two-fusion-pilot-plant/707D1908C7D42B614D5561987EA7E16D",
+      "Try EUROfusion open PDF for G-9 HCPB dpa limits — URL: https://scipub.euro-fusion.org/wp-content/uploads/2015/12/EFCP150632.pdf",
+      "Try EUROfusion Indico W7-X 2025 presentation for G-12 stellarator maintenance — URL: https://indico.euro-fusion.org/event/3130/contributions/12339/attachments/5855/10267/AWP2025_WPW7X_final.pdf"
+    ]
+  }
+}

@@ -71,3 +71,49 @@ Rate: High / Medium / Low
 #### 7. What Would Change My Mind
 2-3 specific future developments or data releases that would materially
 change the LCOE estimate (in either direction).
+
+#### 8. Long-Term LCOE Potential (Downselect Scoring)
+
+Score this concept on its long-term cost reduction potential using the seven
+criteria defined in the LCOE Downselect Potential Framework below. C1–C6
+measure how fast LCOE can improve with deployment experience. C7 measures
+how likely the concept is to reach a working plant at all. Both dimensions
+matter and are equally weighted.
+
+For each criterion, provide:
+- The **score** (1–5, where 5 = most favorable)
+- **Sub-scores** where the framework defines them (e.g., per-CAS modularization
+  mode, per-component learning rates, complexity sub-drivers, per-gate
+  feasibility penalties)
+- **2–3 sentences of justification** citing specific data from the analysis,
+  model output, CAS breakdown, or taxonomy. Do not score without evidence.
+
+**Important**: Do not double-count between criteria. C4 measures operational
+complexity of the built plant, not physics feasibility. C6 uses the physical
+availability budget, not TRL-adjusted penalties. C7 is the sole criterion
+where "this might not work at all" is scored.
+
+For C7, explicitly enumerate each feasibility gate with its severity
+(binary/degrading/schedule), evidence level, and penalty calculation.
+
+Present as a table:
+
+| Criterion | Score | Key justification |
+|-----------|-------|-------------------|
+| C1: Modularization | X.X | ... |
+| C2: Scalability | X.X | ... |
+| C3: Supply Chain Learning | X.X | ... |
+| C4: Plant Complexity | X.X | ... |
+| C5: Customization Needs | X.X | ... |
+| C6: Upper Capacity Factor | X.X | ... |
+| C7: Technical Feasibility | X.X | ... |
+| **Composite** | **X.X** | |
+
+After the table, write a **one-paragraph verdict** interpreting the composite
+score: what it means for this concept's long-term competitiveness, which
+criteria are the strongest levers for improvement, and what would need to
+change to materially raise the score.
+
+### LCOE Downselect Potential Framework (Full Rubric)
+
+{{@config/lcoe_downselect_framework.md}}

@@ -1,0 +1,118 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-13",
+      "gap_description": "Power beaming efficiency chain (conversion → transmitter → atmosphere → rectenna) — SPS literature (JAXA, DoE) provides MW-scale beaming efficiency data; atmospheric models available",
+      "queries": [
+        "space solar power wireless power transmission efficiency microwave beaming rectenna MW-scale site:osti.gov OR site:arxiv.org",
+        "space solar power SPS efficiency chain DC-RF conversion rectenna atmospheric attenuation end-to-end percent site:arxiv.org OR site:osti.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/abs/2401.15267",
+          "title": "Wireless Power Transfer in Space using Flexible, Lightweight, Coherent Arrays",
+          "triage": "relevant",
+          "notes": "2024 paper on space WPT; rectenna efficiency 40% for their demo setup, up to 70% under optimum conditions (X-band). CubeSat-scale demonstration, not MW-scale, but provides engineering-grounded rectenna efficiency figures and discusses atmospheric transmission. Accessible via arxiv HTML."
+        },
+        {
+          "url": "https://arxiv.org/abs/2206.08373",
+          "title": "A Lightweight Space-based Solar Power Generation and Transmission Satellite",
+          "triage": "partial",
+          "notes": "Contains 7-14% end-to-end efficiency figure (includes solar panel collection, not just beaming chain). Abstract only accessible; full paper behind arxiv PDF."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/934452",
+          "title": "Wireless Power Transmission (OSTI)",
+          "triage": "inaccessible",
+          "notes": "OSTI purl returns binary PDF; WebFetch cannot parse content."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1650318",
+          "title": "Space Based Solar Power (OSTI)",
+          "triage": "inaccessible",
+          "notes": "OSTI purl returns binary PDF; WebFetch cannot parse content."
+        },
+        {
+          "url": "https://arxiv.org/html/2504.05052v1",
+          "title": "Assess Space-Based Solar Power in European-Scale Power System Decarbonization (2025)",
+          "triage": "not-relevant",
+          "notes": "Focuses on economic capacity modeling; no quantitative efficiency chain data in paper body."
+        },
+        {
+          "url": "https://osti.gov/biblio/5406054",
+          "title": "Status of the microwave power transmission components for the SPS (1982)",
+          "triage": "not-attempted",
+          "notes": "OSTI biblio page only; full-text would be historical SPS component data (1982). Did not fetch due to budget; likely binary PDF if full-text link exists."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/abs/2401.15267",
+          "source_name": "arxiv-2401-15267"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "Best accessible source is a CubeSat-scale WPT demonstration paper (not MW-scale as recommended). OSTI SPS technical reports are binary PDFs not accessible via WebFetch. The gap calls specifically for MW-scale SPS data (JAXA, DoE); the extracted paper provides sub-gap rectenna efficiency figures (40-70%) but lacks atmospheric loss modeling and MW-scale demonstration data. A dedicated OSTI extraction via the add-source pipeline on a JAXA or DOE SPS report with a direct HTML landing page would better fill this gap."
+    },
+    {
+      "gap_id": "G-15",
+      "gap_description": "He3 global production capacity and price trajectory — DOE Office of Science He3 strategic supply reports; NAS He3 supply study (2010) provides baseline",
+      "queries": [
+        "helium-3 global production capacity supply DOE strategic reserve price site:osti.gov OR site:nap.edu",
+        "helium-3 production supply shortage fusion fuel kg per year price DOE NNSA 2020 2024"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.everycrsreport.com/reports/R41419.html",
+          "title": "The Helium-3 Shortage: Supply, Demand, and Options for Congress (CRS Report R41419)",
+          "triage": "relevant",
+          "notes": "Comprehensive CRS report covering: US production ~8,000 L/year from weapons program; Russian imports ~25,000 L/year 2004-2008 (now suspended); DOE reserve fell from 235,000 L (2001) to 50,000 L (2010); historical auction price $40-85/L; post-shortage commercial price up to $2,000/L; unsubsidized production cost $11,000-18,000/L. Highly accessible HTML version."
+        },
+        {
+          "url": "https://www.isotopes.gov/Supply-and-Demand-of-Helium-3",
+          "title": "Supply and Demand of Helium-3 (NIDC)",
+          "triage": "partial",
+          "notes": "NIDC policy page. Demand peaked at 70,000 L/year (2008); current federal demand under 6,000 L/year. Overview only — no production rates, prices, or supply breakdown. Not extracted (CRS report is more comprehensive)."
+        },
+        {
+          "url": "https://www.gao.gov/products/gao-11-472",
+          "title": "Managing Critical Isotopes: Weaknesses in DOE's Management of Helium-3 (GAO)",
+          "triage": "not-attempted",
+          "notes": "GAO report on He3 management. Did not triage due to budget; likely corroborates CRS data. CRS report already extracted."
+        },
+        {
+          "url": "https://www.govinfo.gov/content/pkg/CHRG-111hhrg57170/html/CHRG-111hhrg57170.htm",
+          "title": "Congressional Hearing: Causes and Consequences of the Helium-3 Supply Crisis",
+          "triage": "not-attempted",
+          "notes": "Congressional hearing HTML — would contain testimony from DOE officials with production data. Not attempted due to budget; CRS report covers same timeframe."
+        },
+        {
+          "url": "https://sgp.fas.org/crs/misc/R41419.pdf",
+          "title": "The Helium-3 Shortage: Supply, Demand, and Options for Congress (PDF)",
+          "triage": "skip",
+          "notes": "PDF version of same CRS report — extracted HTML version instead."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.everycrsreport.com/reports/R41419.html",
+          "source_name": "everycrsreport-reports-r41419"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "notes": "CRS R41419 comprehensively covers the He3 supply/demand/price gap. Key data: US production ~8,000 L/year; historical price $40-85/L rising to $2,000/L commercial; unsubsidized production cost $11,000-18,000/L (~$63-103M/kg, far above the $28-34M/kg estimate in the analysis — the analysis estimate may be based on allocated/subsidized prices). The report also quantifies the DOE reserve drawdown (235k→50k liters 2001-2010) and the Russian export suspension. This source substantially fills gap G-15."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 2,
+    "sources_extracted": 2,
+    "sources_failed": 0,
+    "searches_used": 5,
+    "extractions_used": 2,
+    "gaps_closed": 1,
+    "gaps_partial": 1,
+    "notes": "G-15 (He3 supply) closed with CRS R41419 — comprehensive authoritative source. G-13 (power beaming efficiency) partially addressed; extracted arxiv WPT paper has rectenna efficiency data (40-70%) but lacks MW-scale SPS system efficiency chain. OSTI SPS technical reports are binary PDFs not accessible via WebFetch. Future iteration should attempt OSTI SPS reports via the add-source pipeline directly (e.g., biblio/5406054, biblio/6022474) or search for JAXA SSPS efficiency documentation in HTML format."
+  }
+}

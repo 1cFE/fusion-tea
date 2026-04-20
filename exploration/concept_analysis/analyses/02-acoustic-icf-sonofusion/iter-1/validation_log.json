@@ -1,0 +1,11 @@
+[
+  {
+    "timestamp": "2026-04-19T18:44:44.077827+00:00",
+    "step": "cold-start",
+    "attempt": 1,
+    "validator": "validate_non_empty",
+    "passed": true,
+    "details": "Non-empty (36936 chars)",
+    "validated_text_preview": "# D1+ Analysis: Acoustic ICF / Sonofusion (D-D) \u2014 Sonofusion Energy\n\n**Concept**: Acoustic Inertial Confinement Fusion via ultrasonic cavitation \u2014 D-D fuel\n**Company**: Sonofusion Energy (UCLA spin-off)\n**Confinement Family**: IFE (acoustic driver) / Other\n**Founders**: Seth Putterman (UCLA, 30+ years sonoluminescence), Carlos Camara PhD\n\n---\n\n## Section 1: Availability of Data\n\n**Rating: Opaque**\n\nSonofusion Energy is among the least transparent companies in the fusion landscape. The company we"
+  }
+]

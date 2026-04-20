@@ -121,6 +121,8 @@ Projectile ICF (D-T) LCOE Model — 1cFE CAS-Structured
   ╚══════════════════════════════════════════╝
   FLF stated target: <$50/MWh
 
+  [Scaled to 1000 MWe, α=0.6]  LCOE = 84.1 $/MWh  |  Overnight = 5,489 $/kW
+
 
 ========================================================================
 SENSITIVITY SWEEPS (from baseline)

@@ -1,0 +1,140 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-2",
+      "gap_description": "Capital cost for BEST or any Chinese commercial fusion device not published",
+      "queries": [
+        "Chen 2015 \"preliminary cost assessment\" CFETR \"Journal of Fusion Energy\" China fusion engineering test reactor",
+        "\"integrated cost models\" fusion power plants 2025 tokamak LCOE capital cost"
+      ],
+      "candidates": [
+        {
+          "url": "https://link.springer.com/article/10.1007/s10894-014-9770-x",
+          "title": "Preliminary Cost Assessment and Compare of China Fusion Engineering Test Reactor",
+          "triage": "paywall",
+          "notes": "Chen et al. 2015 — the only published Chinese fusion cost decomposition. Springer Nature, institutional access required. Not extracted."
+        },
+        {
+          "url": "https://www.researchgate.net/publication/270455121_Preliminary_Cost_Assessment_and_Compare_of_China_Fusion_Engineering_Test_Reactor",
+          "title": "Preliminary Cost Assessment and Compare of China Fusion Engineering Test Reactor (ResearchGate)",
+          "triage": "rejected",
+          "notes": "ResearchGate — likely requires login for full PDF. Not triaged separately; type known from extraction failure."
+        },
+        {
+          "url": "https://www.researchgate.net/publication/395795447_Developing_Integrated_Cost_Models_for_Fusion_Power_Plants",
+          "title": "Developing Integrated Cost Models for Fusion Power Plants (2025)",
+          "triage": "attempted",
+          "notes": "2025 paper from Journal of Fusion Energy. ResearchGate extraction failed (rc=1) — login required."
+        },
+        {
+          "url": "https://scientific-publications.ukaea.uk/wp-content/uploads/Extrapolating_Costs_to_Commercial_Fusion_Power_Plants.pdf",
+          "title": "Extrapolating Costs to Commercial Fusion Power Plants (UKAEA/STEP, 2024)",
+          "triage": "relevant",
+          "notes": "UKAEA open PDF. Foster et al. (2024) covers LCOE extrapolation methodology for commercial fusion plants using PROCESS, discusses capital cost drivers, net electric output trade-offs. Not China-specific but provides robust analogue methodology."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://scientific-publications.ukaea.uk/wp-content/uploads/Extrapolating_Costs_to_Commercial_Fusion_Power_Plants.pdf",
+          "source_name": "scientific-publications-wp-content-uploads-extrapolating"
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://www.researchgate.net/publication/395795447_Developing_Integrated_Cost_Models_for_Fusion_Power_Plants",
+          "reason": "extraction failed (rc=1) — ResearchGate login required for full PDF download"
+        }
+      ],
+      "status": "partial",
+      "notes": "Chen 2015 (the primary Chinese fusion cost data) remains inaccessible behind Springer paywall. UKAEA paper extracted as a Western analogue cost methodology. Gap not fully closed — Chinese-specific cost data still absent."
+    },
+    {
+      "gap_id": "G-4",
+      "gap_description": "Formal power conversion cycle commitment for PFPP not made (sCO2 preferred but not committed)",
+      "queries": [
+        "CFETR sCO2 supercritical CO2 Brayton cycle power conversion fusion plant China 2024 2025"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.energychina.press/en/article/doi/10.16516/j.ceec.2025-190",
+          "title": "The Selection of Power Cycle Technology for the Power Generation Island of a Thermonuclear Fusion Power Plant",
+          "triage": "abstract-only",
+          "notes": "Wang et al. (2025), Journal of Southern Energy Construction Vol 12 No 4 pp 20-34. Recommends sCO2 Brayton cycle. Full text not accessible — subscription required. Could not extract."
+        },
+        {
+          "url": "https://link.springer.com/article/10.1007/s10894-025-00537-9",
+          "title": "Modeling and Thermal-hydraulics Characteristics Analysis of sCO2/LiPb Dual Function Blanket Auxiliary Cooling System",
+          "triage": "inaccessible",
+          "notes": "Springer Nature — returned HTTP 303 redirect, content not accessible."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "failed",
+      "notes": "Existing source cfetr-power-conversion-studies.md already covers sCO2 preference literature (2021, 2024, 2025 papers). The energychina.press 2025 paper (most directly relevant) is abstract-only behind paywall. Gap remains: no formal PFPP commitment to sCO2 exists in accessible literature — this may be a truly-unknown rather than not-yet-sourced gap. Recommend reclassifying."
+    },
+    {
+      "gap_id": "G-11",
+      "gap_description": "H&CD portfolio selection and recirculating power for commercial PFPP",
+      "queries": [
+        "CFETR heating current drive NBI ECRH LHCD commercial fusion recirculating power efficiency"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/pages/servlets/purl/1465662",
+          "title": "The time-dependent simulation of CFETR baseline steady-state scenarios",
+          "triage": "relevant",
+          "notes": "Liu et al., USTC/PPPL/ASIPP. Open PDF via OSTI purl (3.6MB). Contains quantitative H&CD scenario analysis: three scenarios (NB+EC, NB+LH, LH+EC), current drive efficiencies for EC and LH, NB deposition and shine-through, ramp-up H&CD requirements. CFETR Phase I at 200 MW fusion power, 10 MA, R=5.7m. Directly addresses G-11."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0920379623000285",
+          "title": "Conceptual design of the LHCD system on CFETR",
+          "triage": "paywall",
+          "notes": "ScienceDirect — abstract-only. Not triaged (budget constraint). Could provide LHCD system specs for CFETR."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0920379622002216",
+          "title": "Design status of the ECRH system for CFETR",
+          "triage": "paywall",
+          "notes": "ScienceDirect — abstract-only. Not triaged (budget constraint). Would provide ECRH design specs for CFETR."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/pages/servlets/purl/1465662",
+          "source_name": "osti-pages-servlets-purl-1465662"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "notes": "OSTI CFETR steady-state scenarios paper extracted successfully. Covers H&CD portfolio (NBI + EC + LH scenarios) with quantitative current drive efficiencies and power levels. Directly addresses G-11 — H&CD portfolio selection and operational scenario design for CFETR commercial mission (Phase I: 200 MW)."
+    },
+    {
+      "gap_id": "G-14",
+      "gap_description": "Tritium permeation through CO2-facing heat exchangers in COOL TBM / sCO2 circuit",
+      "queries": [
+        "tritium permeation supercritical CO2 sCO2 fusion blanket heat exchanger LiPb"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0920379621005767",
+          "title": "Conceptual design of the supercritical CO2 cooled lithium lead blanket for CFETR",
+          "triage": "paywall",
+          "notes": "ScienceDirect — abstract-only. Would directly cover CFETR COOL blanket / sCO2 circuit including tritium permeation considerations."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "Search identified relevant candidate (ScienceDirect CFETR sCO2/LiPb blanket paper) but budget exhausted before triage or extraction. The search summary noted that CO2 has advantages for tritium recovery (dissociation to CO is separable). Recommend as first target in iter-3."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 4,
+    "sources_extracted": 2,
+    "sources_failed": 1,
+    "searches_used": 5,
+    "extractions_used": 3,
+    "notes": "G-11 closed with CFETR H&CD scenarios paper. G-2 partially addressed with UKAEA cost extrapolation methodology (Western analogue). G-4 failed — energychina.press abstract-only, existing cfetr-power-conversion-studies.md may already cover available literature. G-14 skipped (budget exhausted). Recommend iter-3 target G-14 via ScienceDirect CFETR sCO2/LiPb blanket paper and retry G-2 via OSTI/DOE for Chen 2015 or equivalent Chinese cost study."
+  }
+}

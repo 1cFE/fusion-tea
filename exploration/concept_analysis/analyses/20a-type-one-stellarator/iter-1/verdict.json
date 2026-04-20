@@ -1,0 +1,16 @@
+{
+  "iteration": 1,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "cold_start",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": false,
+  "merged_assess": false,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/20a-type-one-stellarator/iter-01/sources/ans-news-2025-04-01-article-6903.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/20a-type-one-stellarator/iter-01/sources/modernsciences-type-one-energy-fusion-pilot-plant-design.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/20a-type-one-stellarator/iter-01/sources/typeoneenergy-type-one-energy-issues-first-realistic.md"
+  ],
+  "timestamp": "2026-04-19T21:41:43.823414+00:00"
+}

@@ -1,0 +1,417 @@
+{
+  "concept_id": "16",
+  "name": "Muon-Catalyzed Fusion (D-T)",
+  "confinement_family": "NONSTANDARD",
+  "company": "Acceleron Fusion",
+  "status": "in_progress",
+  "illustration": null,
+  "has_cost_model": true,
+  "has_sensitivities": true,
+  "cost_model": {
+    "cas10": {
+      "name": "Preconstruction",
+      "cost_m_usd": 13.674,
+      "overridden": false
+    },
+    "cas21": {
+      "name": "Buildings & Structures",
+      "cost_m_usd": 125.26800000000003,
+      "overridden": false
+    },
+    "cas22": {
+      "name": "Reactor Plant Equipment",
+      "cost_m_usd": 5893.187782947028,
+      "overridden": false
+    },
+    "cas23": {
+      "name": "Turbine Plant Equipment",
+      "cost_m_usd": 48.400000000000006,
+      "overridden": false
+    },
+    "cas24": {
+      "name": "Electrical Plant Equipment",
+      "cost_m_usd": 16.297248000000003,
+      "overridden": false
+    },
+    "cas25": {
+      "name": "Miscellaneous Plant Equipment",
+      "cost_m_usd": 9.920064000000002,
+      "overridden": false
+    },
+    "cas26": {
+      "name": "Heat Rejection Systems",
+      "cost_m_usd": 6.6133760000000015,
+      "overridden": false
+    },
+    "cas27": {
+      "name": "Special Materials",
+      "cost_m_usd": 3.9572717874818766,
+      "overridden": false
+    },
+    "cas28": {
+      "name": "Digital Twin & Simulation",
+      "cost_m_usd": 5.0,
+      "overridden": false
+    },
+    "cas29": {
+      "name": "Contingency",
+      "cost_m_usd": 0.0,
+      "overridden": false
+    },
+    "cas30": {
+      "name": "Indirect Costs",
+      "cost_m_usd": 1221.7287485469021,
+      "overridden": false
+    },
+    "cas40": {
+      "name": "Owner's Costs",
+      "cost_m_usd": 10.28890664745288,
+      "overridden": false
+    },
+    "cas50": {
+      "name": "Supplementary Costs",
+      "cost_m_usd": 486.2305791202508,
+      "overridden": false
+    },
+    "cas60": {
+      "name": "Interest During Construction",
+      "cost_m_usd": 1745.7399589476888,
+      "overridden": false
+    },
+    "cas70": {
+      "name": "O&M Costs (annualised)",
+      "cost_m_usd": 277.7111919352572,
+      "overridden": false
+    },
+    "cas80": {
+      "name": "Fuel Costs (annualised)",
+      "cost_m_usd": 0.02417304558250816,
+      "overridden": false
+    },
+    "cas90": {
+      "name": "Financial Costs",
+      "cost_m_usd": 803.909163986712,
+      "overridden": false
+    },
+    "cas22_detail": {
+      "C220101": {
+        "name": "First Wall & Blanket",
+        "cost_m_usd": 3.966103005487601,
+        "overridden": false
+      },
+      "C220102": {
+        "name": "Radiation Shield",
+        "cost_m_usd": 6.413043004768665,
+        "overridden": false
+      },
+      "C220103": {
+        "name": "Magnets / Coils",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220104": {
+        "name": "Heating & Driver Systems",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220105": {
+        "name": "Primary Structure & Support",
+        "cost_m_usd": 1.1636045903941208,
+        "overridden": false
+      },
+      "C220106": {
+        "name": "Vacuum System",
+        "cost_m_usd": 0.9512649579152516,
+        "overridden": false
+      },
+      "C220107": {
+        "name": "Power Conditioning & Energy Storage",
+        "cost_m_usd": 5000.0,
+        "overridden": false
+      },
+      "C220108": {
+        "name": "Divertor / Target Factory",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220109": {
+        "name": "Direct Energy Converter",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220110": {
+        "name": "Remote Handling & Maintenance Equipment",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220111": {
+        "name": "Installation Labor",
+        "cost_m_usd": 705.99325465591,
+        "overridden": false
+      },
+      "C220112": {
+        "name": "Isotope Separation Plant",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220200": {
+        "name": "Main & Secondary Coolant",
+        "cost_m_usd": 23.6499139742522,
+        "overridden": false
+      },
+      "C220300": {
+        "name": "Auxiliary Cooling & Cryoplant",
+        "cost_m_usd": 79.71403777892327,
+        "overridden": false
+      },
+      "C220400": {
+        "name": "Radioactive Waste Management",
+        "cost_m_usd": 0.758912,
+        "overridden": false
+      },
+      "C220500": {
+        "name": "Fuel Handling & Storage",
+        "cost_m_usd": 18.57837453007769,
+        "overridden": false
+      },
+      "C220600": {
+        "name": "Other Reactor Plant Equipment",
+        "cost_m_usd": 1.363908487719458,
+        "overridden": false
+      },
+      "C220700": {
+        "name": "Instrumentation & Control",
+        "cost_m_usd": 20.320419692216753,
+        "overridden": false
+      }
+    },
+    "headline": {
+      "lcoe_per_mwh": 718.7799965056204,
+      "overnight_cost_per_kw": 38795.54613448067,
+      "p_net_mw": 1000.0,
+      "q_eng": 2.838709677419355,
+      "capacity_factor": 0.85
+    },
+    "sensitivities": {
+      "engineering": {
+        "acc_beam_power_MW": {
+          "elasticity": -1.2916831362064767,
+          "baseline": 100.0
+        },
+        "E_mu_elec_GeV": {
+          "elasticity": 2.712804820092742,
+          "baseline": 1.2
+        },
+        "n_fus_per_muon": {
+          "elasticity": -2.714040472606361,
+          "baseline": 240.0
+        },
+        "alpha_sticking_pct": {
+          "elasticity": 0.0,
+          "baseline": 0.4
+        },
+        "M_blanket": {
+          "elasticity": -2.71406283833088,
+          "baseline": 1.1
+        },
+        "eta_th": {
+          "elasticity": -2.7189351365376364,
+          "baseline": 0.5
+        },
+        "plant_availability": {
+          "elasticity": -0.9995504563777043,
+          "baseline": 0.85
+        },
+        "plant_lifetime_years": {
+          "elasticity": -0.08227626885921195,
+          "baseline": 40.0
+        },
+        "acc_capital_M": {
+          "elasticity": 0.9249713237687571,
+          "baseline": 5000.0
+        },
+        "chamber_inner_radius_m": {
+          "elasticity": 0.0031828650010472534,
+          "baseline": 1.0
+        },
+        "blanket_thickness_m": {
+          "elasticity": 0.0031598327095178477,
+          "baseline": 0.8
+        },
+        "shield_thickness_m": {
+          "elasticity": 0.0016426442732441274,
+          "baseline": 0.5
+        },
+        "structure_thickness_m": {
+          "elasticity": 0.00027178334413948676,
+          "baseline": 0.25
+        },
+        "vessel_thickness_m": {
+          "elasticity": 0.0001814417466069405,
+          "baseline": 0.08
+        },
+        "blanket_unit_cost": {
+          "elasticity": 0.001235235608433995,
+          "baseline": 0.6
+        },
+        "p_cryo_MW": {
+          "elasticity": 0.12264650884777122,
+          "baseline": 8.0
+        },
+        "p_trit_MW": {
+          "elasticity": 0.14204995673465365,
+          "baseline": 10.0
+        },
+        "p_house_MW": {
+          "elasticity": 0.05681988445280335,
+          "baseline": 4.0
+        },
+        "p_controls_MW": {
+          "elasticity": 0.028409935209224635,
+          "baseline": 2.0
+        },
+        "construction_time_years": {
+          "elasticity": 0.3732817411952689,
+          "baseline": 6.0
+        },
+        "om_rate_fraction": {
+          "elasticity": 0.2562475083911629,
+          "baseline": 0.025
+        },
+        "core_lifetime_FPY": {
+          "elasticity": -0.0005271598065014674,
+          "baseline": 5.0
+        },
+        "u_deuterium_per_kg": {
+          "elasticity": 0.000022348419406461353,
+          "baseline": 2175.0
+        },
+        "tritium_startup_M_ref": {
+          "elasticity": 0.001345208555116929,
+          "baseline": 40.0
+        },
+        "regulatory_multiplier": {
+          "elasticity": 0.019848892597652483,
+          "baseline": 1.5
+        }
+      },
+      "financial": {
+        "interest_rate": {
+          "elasticity": 0.7506874299447561,
+          "baseline": 0.08
+        },
+        "inflation_rate": {
+          "elasticity": 0.0928248428870247,
+          "baseline": 0.02
+        }
+      }
+    },
+    "params": {
+      "acc_beam_power_MW": 100.0,
+      "E_mu_elec_GeV": 1.2,
+      "n_fus_per_muon": 240.0,
+      "alpha_sticking_pct": 0.4,
+      "M_blanket": 1.1,
+      "eta_th": 0.5,
+      "n_mod": 1.0,
+      "plant_availability": 0.85,
+      "plant_lifetime_years": 40.0,
+      "noak": 1.0,
+      "acc_capital_M": 5000.0,
+      "chamber_inner_radius_m": 1.0,
+      "blanket_thickness_m": 0.8,
+      "shield_thickness_m": 0.5,
+      "structure_thickness_m": 0.25,
+      "vessel_thickness_m": 0.08,
+      "blanket_unit_cost": 0.6,
+      "p_cryo_MW": 8.0,
+      "p_trit_MW": 10.0,
+      "p_house_MW": 4.0,
+      "p_controls_MW": 2.0,
+      "interest_rate": 0.08,
+      "inflation_rate": 0.02,
+      "construction_time_years": 6.0,
+      "om_rate_fraction": 0.025,
+      "core_lifetime_FPY": 5.0,
+      "u_deuterium_per_kg": 2175.0,
+      "tritium_startup_M_ref": 40.0,
+      "regulatory_multiplier": 1.5
+    }
+  },
+  "parameter_metadata": {},
+  "narrative": {
+    "key_bets": [
+      "Active-target muon source with ML-optimized geometry can reduce muon production energy cost from ~6 GeV to 2.5–3 GeV (and ultimately ~1.2 GeV for commercial viability)",
+      "Achieving 200–300 fusions per muon at high-temperature, high-density operating conditions (800–1300 K), near the physics ceiling set by 0.3–0.5% effective alpha-sticking probability",
+      "Diamond anvil cell laboratory apparatus can be replaced by a scalable continuous-operation fusion chamber (e.g., compressed gas target via adiabatic or shock-wave compression)",
+      "Superconducting CW proton accelerator at GeV class can be industrialized to achieve ~20× cost reduction vs. science-grade linacs (SNS, ESS) to reach <$50M/MW_beam",
+      "47% recirculating power fraction is achievable via the active-target design at target muon energy cost",
+      "High-temperature operation (500–1000°C) enables both high Brayton thermal efficiency and enhanced N_fus via temperature-dependent kinetics",
+      "Tritium breeding blanket can achieve TBR > 1 integrated with the non-plasma material-containment fusion chamber"
+    ],
+    "eliminated_costs": [
+      "No HTS confinement magnets — eliminates the largest capital cost category in MFE and avoids the REBCO tape supply chain bottleneck",
+      "No plasma heating systems (CAS220104) — the accelerator serves as the driver, eliminating ICRH/ECRH/NBI subsystems",
+      "No target factory (CAS220108) — continuous catalytic process avoids the per-shot target fabrication cost of IFE",
+      "No plasma physics uncertainties — eliminates confinement time, beta limits, disruptions, ELMs, and divertor heat load engineering",
+      "No beryllium requirement — avoids the FLiBe/Materion supply chain constraint if a lithium-based blanket is chosen"
+    ],
+    "novel_costs": [
+      "Superconducting GeV-class CW proton accelerator (~$5,000M baseline, ~82% of overnight capital) — dominant capital item with no fusion-industry analogue",
+      "Active-target muon source with ML-optimized geometry — novel subsystem with no published cost reference at power-plant scale",
+      "Large auxiliary cryoplant for the superconducting linac (CAS220300, ~$80M) — scaled to accelerator rather than confinement magnets",
+      "High recirculating power load (47%+ claimed, 64%+ in baseline) requires oversized gross electrical generation and BOP relative to net output",
+      "Commercial-scale DT target chamber to replace the diamond anvil cell — architecture undefined, no industrial production pathway exists"
+    ],
+    "risks": [
+      {
+        "description": "Energy balance is net-negative at Acceleron's stated operating point (E_mu=2.5 GeV, N_fus=200): Q_sci ≈ 1.41 and gross-to-driver ratio ≈ 0.78, making the plant an energy sink regardless of capital cost",
+        "severity": "high"
+      },
+      {
+        "description": "Alpha-sticking probability (0.3–0.5% effective) imposes a hard quantum-mechanical ceiling of ~200–350 fusions/muon that cannot be improved by engineering — Acceleron's 300 target sits at the edge of this ceiling",
+        "severity": "high"
+      },
+      {
+        "description": "Accelerator capital cost must achieve ~20× reduction from SNS/ESS science-grade analogues (~$1,000M/MW_beam → <$50M/MW_beam) — never demonstrated for GeV-class linacs",
+        "severity": "high"
+      },
+      {
+        "description": "Fusion chamber architecture for commercial scale is entirely unspecified — diamond anvil cell is a laboratory instrument with no scaling pathway, and no integrated commercial design exists",
+        "severity": "high"
+      },
+      {
+        "description": "47% recirculating power fraction is a model output, not a measured result; baseline modeling at aspirational parameters yields 64% recirculating fraction, leaving little margin for net output",
+        "severity": "high"
+      },
+      {
+        "description": "No published Q value or net energy balance demonstrated at any scale; Brookhaven breakeven test (~2030) is the planned resolution but unfunded",
+        "severity": "high"
+      },
+      {
+        "description": "Tritium breeding blanket type, TBR target, and extraction approach are undisclosed despite appearing in system diagrams — blocks tritium fuel cycle analysis",
+        "severity": "medium"
+      },
+      {
+        "description": "No O&M cost breakdown, maintenance schedule, or capacity factor data exists; particle physics availability metrics (85–95%) are scientific-mission, not power-generation, benchmarks",
+        "severity": "medium"
+      },
+      {
+        "description": "PSI September 2024 experimental results not yet published — the only Acceleron-specific data point on muon production efficiency and DT cycling rate is preliminary",
+        "severity": "medium"
+      },
+      {
+        "description": "Tritium supply chain constraint shared with all D-T concepts: declining global inventory (~25–30 kg), startup requirement ~1 kg at >$35,000/g, requires demonstrated TBR > 1 before fleet scaling",
+        "severity": "medium"
+      },
+      {
+        "description": "Li-6 enrichment capacity is globally constrained (Russian/Chinese mercury amalgam processes dominant); requirement depends on undefined blanket geometry",
+        "severity": "low"
+      }
+    ]
+  },
+  "sources": {
+    "model_setup": null,
+    "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/16-muon-catalyzed-fusion/analysis.md"
+  }
+}

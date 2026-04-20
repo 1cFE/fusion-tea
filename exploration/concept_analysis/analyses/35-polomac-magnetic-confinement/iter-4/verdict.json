@@ -1,0 +1,17 @@
+{
+  "iteration": 4,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "research",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": true,
+  "merged_assess": true,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/35-polomac-magnetic-confinement/iter-01/sources/deutelio-company-profile.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/35-polomac-magnetic-confinement/iter-01/sources/elio-2014-fed-poloidal-confinement.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/35-polomac-magnetic-confinement/iter-01/sources/jtsp-2024-polomac-technical-report.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/35-polomac-magnetic-confinement/iter-01/sources/jtsp-jtsp-article-download-32-28.md"
+  ],
+  "timestamp": "2026-04-20T04:17:42.503093+00:00"
+}

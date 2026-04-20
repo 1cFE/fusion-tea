@@ -1,0 +1,383 @@
+
+######################################################################
+# p-B11 FRC (TAE Da Vinci) — Free-Form LCOE Model
+# Physics-first: viability boundary × scenario branches
+######################################################################
+
+======================================================================
+PHYSICS VIABILITY ANALYSIS
+======================================================================
+
+The p-B11 fusion reaction requires ion temperatures ~150–300 keV —
+~80× above the C-2W/Norman record of ~3 keV total temperature.
+Q_plasma > 1 has never been demonstrated for p-B11 in ANY confinement device.
+
+Mathematical Q_plasma breakeven (rated power, ignoring auxiliaries):
+  Q_break = 1 / [(1 − f_rad) × η_conv × η_NBI]
+
+  Branch B (steam, f_rad=0.15, η_th=0.32, η_NBI=0.55):  Q_break ≈ 6.7
+  Branch B (steam, f_rad=0.15, η_th=0.32, η_NBI=0.40):  Q_break ≈ 9.2
+  Branch C (ICC,   f_rad=0.15, η_icc=0.90, η_NBI=0.55): Q_break ≈ 2.4
+
+Commercial minimum (with 50 MWe margin and auxiliaries):
+  Branch B, η_NBI=0.55:  Q_plasma ≥ 10–15
+  Branch B, η_NBI=0.40:  Q_plasma ≥ 20–25
+
+COMPOUNDING PENALTY (Mulder et al. arXiv:2103.12451):
+  At sub-unity capacity factor, NBI must remain at ~full power for FRC
+  stability. Effective recirculating fraction rises above rated-power
+  calculation. Capacity factor and Q_plasma interact multiplicatively.
+  Early Da Vinci (undemonstrated CW FRC) may operate at CF 60–75%,
+  raising the effective Q_plasma requirement above the values above.
+
+Three model branches:
+  A — Physics fails (Q_plasma < threshold): no LCOE output.
+  B — Da Vinci steam baseline (Q threshold met, ~32% η).
+  C — ICC upgrade (Q threshold met, ~90% η): long-term economic vision.
+
+
+######################################################################
+# BRANCH B BASELINE: Q=15, η_NBI=0.55, CF=85%, Steam 32%
+######################################################################
+======================================================================
+p-B11 FRC (TAE Da Vinci) LCOE Model — Branch B Baseline
+BRANCH B — Da Vinci Baseline (steam Rankine, ~32% η)
+======================================================================
+
+--- Key Input Parameters ---
+  Q_plasma:                   15.0  (breakeven: 6.7, commercial min: 10.0)
+  P_NBI plasma:               26.0 MW
+  NBI wall-plug efficiency:   55%
+  Energy conversion:          Steam 32%
+  Radiation loss fraction:    15%
+  Capacity factor:            85%
+  Plant lifetime:             40 yr
+  Interest rate:              8%
+  FOAK/NOAK:                  FOAK
+
+--- Power Balance (per module) ---
+  P_NBI wall-plug draw:       47.3 MW  (recirculating load)
+  P_fusion:                   390.0 MW
+    All in charged alphas:    390.0 MW  (aneutronic)
+    Radiation losses (15%):  58.5 MW
+  P_available (post-rad):     331.5 MW
+  Gross electric:             106.1 MWe  (η_conv = 32%)
+  Recirculating loads:
+    NBI wall-plug:            47.3 MW
+    Auxiliaries:              7.5 MW  (magnets + housekeeping + fuel inject)
+  Net electric (per module):  51.3 MWe
+  Net electric (plant):       51.3 MWe  (1 module(s))
+  Q_sci (plasma):             15.0
+  Q_eng (net/NBI_wall):       1.09
+  Recirculating fraction:     51.6%
+
+--- CAS22: Reactor Plant Equipment ---
+  Per-module accounts:
+    C220101 X-ray absorber / first wall      $     0.5M
+    C220102 Shield (thin, aneutronic)        $     0.6M
+    C220103 Copper coils (override)          $    20.0M [override]
+    C220104 NBI system (override)            $   260.0M [override — dominant]
+    C220105 Primary structure                $     1.0M
+    C220106 Vacuum system                    $     1.3M
+    C220107 Power supplies                   $    16.6M
+    C220110 Remote handling (minimal)        $     1.7M
+    C220111 Installation labor               $    42.2M
+    ────────────────────────────────────────────────────
+    Per-module subtotal:                  $   344.0M × 1
+  Plant-wide accounts:
+    C220200 Coolant systems                  $    19.6M
+    C220300 Aux cooling (no cryoplant)       $     0.4M
+    C220400 Rad waste management (minimal)   $     0.1M
+    C220500 Fuel handling (boron, not T)     $     1.9M
+    C220600 Other equipment                  $     1.1M
+    C220700 Instrumentation & control        $    18.4M
+    ────────────────────────────────────────────────────
+    Plant-wide subtotal:                  $    41.4M
+  CAS22 Total:                            $   385.3M
+
+--- Capital Costs (CAS10-60) ---
+  CAS10 Pre-construction                     $    27.2M
+  CAS21 Buildings                            $    15.8M
+  CAS22 Reactor Plant Equipment              $   385.3M
+  CAS23 Turbine/ICC Plant                    $    21.0M
+  CAS24 Electric Plant                       $     8.9M
+  CAS25 Misc Plant                           $     5.4M
+  CAS26 Heat Rejection                       $     3.6M
+  CAS28 Digital Twin                         $     5.0M
+  CAS29 Contingency (FOAK 10%)               $    44.5M
+  ──────────────────────────────────────────────────────────
+  CAS20 Direct Costs:                     $   489.6M
+  CAS30 Indirect Costs:                   $    97.9M
+  CAS40 Owner's Costs:                    $     4.5M
+  CAS50 Supplementary:                    $    37.4M
+  ──────────────────────────────────────────────────────────
+  Overnight Capital:                      $   656.7M
+  CAS60 IDC (f=0.223):               $   146.2M
+  ══════════════════════════════════════════════════════════
+  Total Capital:                          $   802.9M
+  Specific Capital:                       $   15648 $/kWe
+
+--- Annual Costs (CAS70-90) ---
+  CAS90 Capital charge (CRF=0.0839):   $    67.3M/yr
+  CAS71 O&M (levelized):                  $     7.7M/yr
+  CAS72 First-wall replacement:           $    0.00M/yr  (0 replacements)
+  CAS70 Total O&M:                        $     7.7M/yr
+  CAS80 Fuel (B-11):                      $   27.40M/yr  (2739 kg B-11/yr)
+
+--- LCOE ---
+  Annual energy:              382,034 MWh
+  Annual revenue requirement: $102.4M
+  ╔══════════════════════════════════════╗
+  ║  LCOE =   26.8 ¢/kWh              ║
+  ║       =  268.1 $/MWh               ║
+  ╚══════════════════════════════════════╝
+  Capital (CAS90):            65.7%
+  O&M (CAS70):               7.5%
+  Fuel (CAS80):               26.75%
+
+  Economy-of-scale projection to 1000 MWe (α=0.6):
+    Scaled LCOE:              81.7 $/MWh
+    Scaled overnight $/kWe:   $3901 /kWe
+
+######################################################################
+# BRANCH C: Q=15, η_NBI=0.55, CF=85%, ICC 90%
+######################################################################
+======================================================================
+p-B11 FRC (TAE Da Vinci) LCOE Model — Branch C — ICC Upgrade
+BRANCH C — ICC Upgrade (direct conversion, ~90% η)
+======================================================================
+
+--- Key Input Parameters ---
+  Q_plasma:                   15.0  (breakeven: 2.4, commercial min: 3.6)
+  P_NBI plasma:               26.0 MW
+  NBI wall-plug efficiency:   55%
+  Energy conversion:          ICC 90%
+  Radiation loss fraction:    15%
+  Capacity factor:            85%
+  Plant lifetime:             40 yr
+  Interest rate:              8%
+  FOAK/NOAK:                  FOAK
+
+--- Power Balance (per module) ---
+  P_NBI wall-plug draw:       47.3 MW  (recirculating load)
+  P_fusion:                   390.0 MW
+    All in charged alphas:    390.0 MW  (aneutronic)
+    Radiation losses (15%):  58.5 MW
+  P_available (post-rad):     331.5 MW
+  Gross electric:             298.4 MWe  (η_conv = 90%)
+  Recirculating loads:
+    NBI wall-plug:            47.3 MW
+    Auxiliaries:              7.5 MW  (magnets + housekeeping + fuel inject)
+  Net electric (per module):  243.6 MWe
+  Net electric (plant):       243.6 MWe  (1 module(s))
+  Q_sci (plasma):             15.0
+  Q_eng (net/NBI_wall):       5.15
+  Recirculating fraction:     18.4%
+
+--- CAS22: Reactor Plant Equipment ---
+  Per-module accounts:
+    C220101 X-ray absorber / first wall      $     0.5M
+    C220102 Shield (thin, aneutronic)        $     0.6M
+    C220103 Copper coils (override)          $    20.0M [override]
+    C220104 NBI system (override)            $   260.0M [override — dominant]
+    C220105 Primary structure                $     1.7M
+    C220106 Vacuum system                    $     2.5M
+    C220107 Power supplies                   $    34.3M
+    C220109 ICC direct converter             $    83.9M [Branch C only]
+    C220110 Remote handling (minimal)        $     4.3M
+    C220111 Installation labor               $    57.1M
+    ────────────────────────────────────────────────────
+    Per-module subtotal:                  $   464.8M × 1
+  Plant-wide accounts:
+    C220200 Coolant systems                  $     4.9M
+    C220300 Aux cooling (no cryoplant)       $     0.4M
+    C220400 Rad waste management (minimal)   $     0.1M
+    C220500 Fuel handling (boron, not T)     $     5.6M
+    C220600 Other equipment                  $     3.7M
+    C220700 Instrumentation & control        $    18.4M
+    ────────────────────────────────────────────────────
+    Plant-wide subtotal:                  $    33.0M
+  CAS22 Total:                            $   497.7M
+
+--- Capital Costs (CAS10-60) ---
+  CAS10 Pre-construction                     $    27.7M
+  CAS21 Buildings                            $    75.0M
+  CAS22 Reactor Plant Equipment              $   497.7M
+  CAS23 Turbine/ICC Plant                    $    36.5M
+  CAS24 Electric Plant                       $    25.1M
+  CAS25 Misc Plant                           $    15.3M
+  CAS26 Heat Rejection                       $     2.4M
+  CAS28 Digital Twin                         $     5.0M
+  CAS29 Contingency (FOAK 10%)               $    65.7M
+  ──────────────────────────────────────────────────────────
+  CAS20 Direct Costs:                     $   722.9M
+  CAS30 Indirect Costs:                   $   144.6M
+  CAS40 Owner's Costs:                    $     9.9M
+  CAS50 Supplementary:                    $    63.1M
+  ──────────────────────────────────────────────────────────
+  Overnight Capital:                      $   968.1M
+  CAS60 IDC (f=0.223):               $   215.6M
+  ══════════════════════════════════════════════════════════
+  Total Capital:                          $  1183.6M
+  Specific Capital:                       $    4859 $/kWe
+
+--- Annual Costs (CAS70-90) ---
+  CAS90 Capital charge (CRF=0.0839):   $    99.3M/yr
+  CAS71 O&M (levelized):                  $    16.7M/yr
+  CAS72 First-wall replacement:           $    0.00M/yr  (0 replacements)
+  CAS70 Total O&M:                        $    16.7M/yr
+  CAS80 Fuel (B-11):                      $   27.40M/yr  (2739 kg B-11/yr)
+
+--- LCOE ---
+  Annual energy:              1,813,676 MWh
+  Annual revenue requirement: $143.4M
+  ╔══════════════════════════════════════╗
+  ║  LCOE =    7.9 ¢/kWh              ║
+  ║       =   79.1 $/MWh               ║
+  ╚══════════════════════════════════════╝
+  Capital (CAS90):            69.2%
+  O&M (CAS70):               11.7%
+  Fuel (CAS80):               19.10%
+
+  Economy-of-scale projection to 1000 MWe (α=0.6):
+    Scaled LCOE:              44.9 $/MWh
+    Scaled overnight $/kWe:   $2259 /kWe
+
+======================================================================
+SENSITIVITY SWEEPS (from Branch B baseline)
+======================================================================
+
+--- 1. Q_plasma sweep (most critical parameter) ---
+  Q_break ≈ 6.7 (steam, η_NBI=0.55); commercial min ≈ 10
+    Q_plasma  Result
+         3.0    N/A (Branch A, P_net=-33.6 MWe)
+         5.0    N/A (Branch A, P_net=-19.4 MWe)
+         6.7    N/A (Branch A, P_net=-7.4 MWe) *** BREAKEVEN
+         8.0    544.0 ¢/kWh  (5440 $/MWh)  P_net=1.8 MWe
+        10.0     69.8 ¢/kWh  (698 $/MWh)  P_net=15.9 MWe *** COMMERCIAL MIN
+        12.0     40.6 ¢/kWh  (406 $/MWh)  P_net=30.1 MWe
+        15.0     26.8 ¢/kWh  (268 $/MWh)  P_net=51.3 MWe
+        20.0     18.7 ¢/kWh  (187 $/MWh)  P_net=86.7 MWe
+        30.0     13.2 ¢/kWh  (132 $/MWh)  P_net=157.4 MWe
+        50.0      9.9 ¢/kWh  (99 $/MWh)  P_net=298.8 MWe
+
+--- 2. NBI wall-plug efficiency sweep ---
+       η_NBI  Result
+        0.35     53.8 ¢/kWh  (538 $/MWh)  P_net=24.3 MWe
+        0.40     39.7 ¢/kWh  (397 $/MWh)  P_net=33.6 MWe
+        0.45     33.1 ¢/kWh  (331 $/MWh)  P_net=40.8 MWe
+        0.50     29.3 ¢/kWh  (293 $/MWh)  P_net=46.6 MWe
+        0.55     26.8 ¢/kWh  (268 $/MWh)  P_net=51.3 MWe
+        0.60     25.1 ¢/kWh  (251 $/MWh)  P_net=55.2 MWe
+        0.65     23.8 ¢/kWh  (238 $/MWh)  P_net=58.6 MWe
+
+--- 3. Capacity factor sweep (NBI recirculating interaction) ---
+  Note: NBI stays at full power even at reduced CF → effective
+  recirculating fraction is constant; only energy output falls.
+          CF  Result
+         50%     40.6 ¢/kWh  (406 $/MWh)  P_net=51.3 MWe
+         60%     35.0 ¢/kWh  (350 $/MWh)  P_net=51.3 MWe
+         70%     31.0 ¢/kWh  (310 $/MWh)  P_net=51.3 MWe
+         75%     29.4 ¢/kWh  (294 $/MWh)  P_net=51.3 MWe
+         85%     26.8 ¢/kWh  (268 $/MWh)  P_net=51.3 MWe
+         90%     25.7 ¢/kWh  (257 $/MWh)  P_net=51.3 MWe
+         95%     24.7 ¢/kWh  (247 $/MWh)  P_net=51.3 MWe
+
+--- 4. NBI capital cost [M$/MW_NBI] sweep ---
+    NBI $/MW  Result
+         3.0     19.1 ¢/kWh  (191 $/MWh)  P_net=51.3 MWe
+         5.0     21.3 ¢/kWh  (213 $/MWh)  P_net=51.3 MWe
+         7.5     24.1 ¢/kWh  (241 $/MWh)  P_net=51.3 MWe
+        10.0     26.8 ¢/kWh  (268 $/MWh)  P_net=51.3 MWe
+        15.0     32.3 ¢/kWh  (323 $/MWh)  P_net=51.3 MWe
+        20.0     37.8 ¢/kWh  (378 $/MWh)  P_net=51.3 MWe
+        30.0     48.7 ¢/kWh  (487 $/MWh)  P_net=51.3 MWe
+
+--- 5. Thermal efficiency sweep (Branch B only) ---
+        η_th  Result
+         25%     46.1 ¢/kWh  (461 $/MWh)  P_net=28.1 MWe
+         28%     35.0 ¢/kWh  (350 $/MWh)  P_net=38.0 MWe
+         30%     30.3 ¢/kWh  (303 $/MWh)  P_net=44.7 MWe
+         32%     26.8 ¢/kWh  (268 $/MWh)  P_net=51.3 MWe
+         35%     23.0 ¢/kWh  (230 $/MWh)  P_net=61.3 MWe
+         38%     20.2 ¢/kWh  (202 $/MWh)  P_net=71.2 MWe
+         40%     18.7 ¢/kWh  (187 $/MWh)  P_net=77.8 MWe
+
+--- 6. NBI plasma power [MW] sweep (plant sizing) ---
+    P_NBI MW  Result
+        15.0     32.5 ¢/kWh  (325 $/MWh)  P_net=26.4 MWe
+        20.0     29.1 ¢/kWh  (291 $/MWh)  P_net=37.7 MWe
+        26.0     26.8 ¢/kWh  (268 $/MWh)  P_net=51.3 MWe
+        35.0     24.9 ¢/kWh  (249 $/MWh)  P_net=71.7 MWe
+        50.0     23.3 ¢/kWh  (233 $/MWh)  P_net=105.6 MWe
+        75.0     22.0 ¢/kWh  (220 $/MWh)  P_net=162.1 MWe
+       100.0     21.4 ¢/kWh  (214 $/MWh)  P_net=218.7 MWe
+
+--- 7. Q_plasma × η_NBI viability boundary grid ---
+  (Branch A = no net electricity; B = viable steam; C = ICC)
+     Q\η_NBI  0.40  0.45  0.50  0.55  0.60  0.65
+         Q=5     A       A       A       A       A       A  
+         Q=8     A       A       A     544¢    175¢    112¢ 
+        Q=10     A     197¢     98¢     70¢     57¢     49¢ 
+        Q=15    40¢     33¢     29¢     27¢     25¢     24¢ 
+        Q=20    23¢     21¢     20¢     19¢     18¢     17¢ 
+        Q=30    15¢     14¢     14¢     13¢     13¢     13¢ 
+  (values in ¢/kWh; A = Branch A, no LCOE)
+
+
+======================================================================
+SCENARIO COMPARISON TABLE
+======================================================================
+Scenario                                   Q  η_NBI    CF   P_net           LCOE
+---------------------------------------------------------------------------
+  Branch A — Physics fails (Q=3)           3   0.55   85% -34 MWe N/A (no net power)
+  B Conservative (Q=10, η=0.50, CF=70%)    10   0.50   70%  11 MWe    114.0 ¢/kWh
+  B Baseline (Q=15, η=0.55, CF=85%)       15   0.55   85%  51 MWe     26.8 ¢/kWh
+  B Optimistic (Q=25, η=0.60, CF=90%)     25   0.60   90% 126 MWe     14.2 ¢/kWh
+  C Baseline — ICC (Q=15, η=0.55, CF=85%)    15   0.55   85% 244 MWe      7.9 ¢/kWh
+  C Optimistic — ICC (Q=25, η=0.60, CF=90%)    25   0.60   90% 446 MWe      5.7 ¢/kWh
+
+
+======================================================================
+KEY BINDING CONSTRAINTS (top 3 LCOE drivers)
+======================================================================
+
+  1. Q_PLASMA — The fundamental physics unknown (binding constraint)
+     Q_plasma > 1 has never been demonstrated for p-B11 in any device.
+     C-2W/Norman achieved ~3 keV total temperature; Da Vinci requires ~250 keV
+     — an ~80× extrapolation with no validated scaling law. Q_plasma is not
+     just the top sensitivity parameter: it determines whether the concept
+     produces ANY net electricity. Below Q ≈ 6.7 (steam, η_NBI=0.55), there
+     is no LCOE — Branch A has no meaningful cost model output.
+     Status: Copernicus (unbuilt) is the intended intermediate-scale validation.
+     Resolution timeline: unknown; no published Copernicus parameters.
+
+  2. NBI CAPITAL COST & RECIRCULATING POWER FRACTION (jointly binding)
+     NBI is the dominant capital account (C220104 ≈ $260M at $10M/MW × 26 MW).
+     It is also the dominant recirculating load (~49 MW wall-plug at baseline).
+     These two effects reinforce: high NBI cost → high capital LCOE component;
+     high NBI recirculating load → low net output → high LCOE denominator.
+     At $10M/MW_NBI, NBI accounts for >50% of CAS22. At $20M/MW, it exceeds
+     total remaining plant cost. No commercial supply chain exists for fusion-
+     scale high-energy NBI; cost is extrapolated from research-scale systems.
+     Compounding: at CF < 85%, NBI stays at full power but plant output drops,
+     raising the effective recirc fraction [arxiv-2103-12451.md].
+
+  3. ENERGY CONVERSION ARCHITECTURE — ICC vs. Steam (structural LCOE gap)
+     Da Vinci's steam baseline (~32%) vs. ICC target (~90%) represents a ~3×
+     difference in gross electricity from identical fusion power. This single
+     architectural choice changes Branch B LCOE from ~$200/MWh to Branch C
+     LCOE ~$40/MWh (at Q=15 baseline). ICC is patent-stage only — zero
+     experimental demonstration at MeV-range fusion product energies.
+     The near-term Da Vinci plant cannot realize the core economic advantage
+     of the aneutronic fuel choice (direct conversion) — it pays the capital
+     cost of an aneutronic system but achieves only steam cycle efficiency.
+     Insight: p-B11 FRC LCOE is only competitive if BOTH the physics (Q_plasma
+     threshold) AND the ICC technology succeed. Steam-only p-B11 FRC is
+     economically inferior to any D-T concept with equivalent Q_plasma.
+
+
+NOTE: All estimates carry HIGH UNCERTAINTY. This model is intended
+for physics-viability and scenario boundary mapping only.
+Six blocking data gaps exist (analysis.md §Section 6); this model
+uses assumed / analogized values for all key physics parameters.

@@ -1,0 +1,219 @@
+=== stage1-all: 38 concepts (01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17a, 17b, 18, 19, 20a, 20b, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36) ===
+    Pipeline: analyze → model-setup → review
+
+--- Analyze ---
+  01-hts-compact-tokamak: at iter 15, will run up to 3 more (max_passes=18)
+  research 01-hts-compact-tokamak (max 5 searches, 3 extractions) ... 0 sources acquired (292s)
+  analyze iter 16/18 (feedback pass) 01-hts-compact-tokamak ... done (127s)
+    model-setup 01-hts-compact-tokamak ... done (254s) → running model ... ok (LCOE=479.2 $/MWh)
+  assess 01-hts-compact-tokamak iter 16 ... 1 findings (91s)
+  research 01-hts-compact-tokamak (max 5 searches, 3 extractions) ... 0 sources acquired (186s)
+  analyze iter 17/18 (feedback pass) 01-hts-compact-tokamak ... done (366s)
+    model-setup 01-hts-compact-tokamak ... done (539s) → running model ... model FAILED: model timed out after 120s
+  assess 01-hts-compact-tokamak iter 17 ... PASS (110s)
+  02-acoustic-icf-sonofusion: at iter 7, will run up to 3 more (max_passes=10)
+  research 02-acoustic-icf-sonofusion (max 5 searches, 3 extractions) ...  warn: validation failed but no session_id — cannot retry
+ FAILED (1483s, rc=-1)
+    stderr: Timed out after 900s
+  analyze iter 8/10 (feedback pass) 02-acoustic-icf-sonofusion ... done (48s)
+    model-setup 02-acoustic-icf-sonofusion ... done (295s) → running model ... ok (LCOE=96.2 $/MWh)
+  assess 02-acoustic-icf-sonofusion iter 8 ... 3 findings (97s)
+  research 02-acoustic-icf-sonofusion (max 5 searches, 3 extractions) ...  warn: validation failed but no session_id — cannot retry
+ FAILED (900s, rc=-1)
+    stderr: Timed out after 900s
+  analyze iter 9/10 (feedback pass) 02-acoustic-icf-sonofusion ... done (57s)
+    model-setup 02-acoustic-icf-sonofusion ... done (323s) → running model ... ok (LCOE=96.2 $/MWh)
+  assess 02-acoustic-icf-sonofusion iter 9 ... 1 findings (68s)
+  research 02-acoustic-icf-sonofusion (max 5 searches, 3 extractions) ... 0 sources acquired (164s)
+  analyze iter 10/10 (feedback pass) 02-acoustic-icf-sonofusion ... done (157s)
+    model-setup 02-acoustic-icf-sonofusion ... done (354s) → running model ... ok (LCOE=123.0 $/MWh)
+  assess 02-acoustic-icf-sonofusion iter 10 ... 1 findings (72s)
+  warn: 02-acoustic-icf-sonofusion did not converge in 10 passes
+  03-laser-icf-liquid-jet-target: at iter 7, will run up to 3 more (max_passes=10)
+  research 03-laser-icf-liquid-jet-target (max 5 searches, 3 extractions) ... 0 sources acquired (87s)
+  analyze iter 8/10 (feedback pass) 03-laser-icf-liquid-jet-target ... done (62s)
+    model-setup 03-laser-icf-liquid-jet-target ... done (165s) → running model ... model FAILED: model failed (rc=1): Traceback (most recent call last):
+  File "C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\03-laser-icf-liquid-jet-target\iter-8\model_setup.py", line 231, in <module>
+    print(f"  Recirculating:     {pt.p_recirc:.0f} MW")
+                                  ^^^^^^^^^^^
+Attribute
+  assess 03-laser-icf-liquid-jet-target iter 8 ... PASS (104s)
+  04-laser-icf: at iter 5, will run up to 3 more (max_passes=8)
+  research 04-laser-icf (max 5 searches, 3 extractions) ... 0 sources acquired (175s)
+  analyze iter 6/8 (feedback pass) 04-laser-icf ... done (86s)
+    model-setup 04-laser-icf ... done (219s) → running model ... model FAILED: model failed (rc=1): Traceback (most recent call last):
+  File "C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\04-laser-icf\iter-6\model_setup.py", line 303, in <module>
+    print(f"Recirculating:    {pt.p_recirc:.0f} MW (laser driver: {pt.p_recirc * 0.85:.0f} MW)")
+                               ^
+  assess 04-laser-icf iter 6 ... 1 findings (108s)
+  research 04-laser-icf (max 5 searches, 3 extractions) ...  warn: validation failed but no session_id — cannot retry
+ FAILED (900s, rc=-1)
+    stderr: Timed out after 900s
+  analyze iter 7/8 (feedback pass) 04-laser-icf ... done (45s)
+    model-setup 04-laser-icf ... done (206s) → running model ... model FAILED: model failed (rc=1): Traceback (most recent call last):
+  File "C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\04-laser-icf\iter-7\model_setup.py", line 217, in <module>
+    print(f"Net Electric: {pt.p_net:.1f} MW | Recirculating: {pt.p_recirc:.1f} MW ({pt.p_recirc/pt.p_et*100:.1f}%)")
+            
+  assess 04-laser-icf iter 7 ... PASS (81s)
+  05-planar-coil-stellarator: at iter 5, will run up to 3 more (max_passes=8)
+  research 05-planar-coil-stellarator (max 5 searches, 3 extractions) ...  warn: validation failed but no session_id — cannot retry
+ FAILED (900s, rc=-1)
+    stderr: Timed out after 900s
+  analyze iter 6/8 (feedback pass) 05-planar-coil-stellarator ... done (113s)
+    model-setup 05-planar-coil-stellarator ... done (213s) → running model ... model FAILED: model failed (rc=1): Traceback (most recent call last):
+  File "C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\05-planar-coil-stellarator\iter-6\model_setup.py", line 340, in <module>
+    print(f"{'':8} {'Total Overnight Capital':<35} {float(c.overnight_capital):>12.1f}")
+                          
+  assess 05-planar-coil-stellarator iter 6 ... 1 findings (80s)
+  research 05-planar-coil-stellarator (max 5 searches, 3 extractions) ...  warn: validation failed but no session_id — cannot retry
+ FAILED (900s, rc=-1)
+    stderr: Timed out after 900s
+  analyze iter 7/8 (feedback pass) 05-planar-coil-stellarator ... done (136s)
+    model-setup 05-planar-coil-stellarator ... done (199s) → running model ... model FAILED: model failed (rc=1): Traceback (most recent call last):
+  File "C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\05-planar-coil-stellarator\iter-7\model_setup.py", line 323, in <module>
+    print(f"Gross electric:         {pt.p_gross:>8.0f} MW   (Steam Rankine, 635°C, η_th={ETA_TH:.1%})")
+           
+  assess 05-planar-coil-stellarator iter 7 ... PASS (73s)
+  06-magnetic-mirror: at iter 7, will run up to 3 more (max_passes=10)
+  research 06-magnetic-mirror (max 5 searches, 3 extractions) ... 0 sources acquired (34s)
+  analyze iter 8/10 (feedback pass) 06-magnetic-mirror ... done (118s)
+    model-setup 06-magnetic-mirror ... done (224s) → running model ... ok (LCOE=52.4 $/MWh)
+  assess 06-magnetic-mirror iter 8 ... 1 findings (67s)
+  research 06-magnetic-mirror (max 5 searches, 3 extractions) ... 0 sources acquired (193s)
+  analyze iter 9/10 (feedback pass) 06-magnetic-mirror ... done (46s)
+    model-setup 06-magnetic-mirror ... done (297s) → running model ... ok (LCOE=67.2 $/MWh)
+  assess 06-magnetic-mirror iter 9 ... 3 findings (64s)
+  research 06-magnetic-mirror (max 5 searches, 3 extractions) ... 0 sources acquired (34s)
+  analyze iter 10/10 (feedback pass) 06-magnetic-mirror ...  warn: claude returned rc=1, retrying in 30s (attempt 2/3)
+    stderr: 
+  warn: claude returned rc=1, retrying in 60s (attempt 3/3)
+    stderr: 
+  warn: claude returned rc=1 after 3 attempts, giving up
+    stderr: 
+    stderr: 
+ FAILED (277s, rc=1)
+  07-maglif: at iter 14, will run up to 3 more (max_passes=17)
+  research 07-maglif (max 5 searches, 3 extractions) ...  warn: claude returned rc=1, retrying in 30s (attempt 2/3)
+    stderr: 
+  warn: claude returned rc=1, retrying in 60s (attempt 3/3)
+    stderr: 
+  warn: claude returned rc=1 after 3 attempts, giving up
+    stderr: 
+ FAILED (98s, rc=1)
+  analyze iter 15/17 (feedback pass) 07-maglif ...  warn: claude returned rc=1, retrying in 30s (attempt 2/3)
+    stderr: 
+  warn: claude returned rc=1, retrying in 60s (attempt 3/3)
+    stderr: 
+  warn: claude returned rc=1 after 3 attempts, giving up
+    stderr: 
+  warn: claude returned rc=1, retrying in 30s (attempt 2/3)
+    stderr: 
+  warn: claude returned rc=1, retrying in 60s (attempt 3/3)
+    stderr: 
+  warn: claude returned rc=1 after 3 attempts, giving up
+    stderr: 
+  warn: claude returned rc=1, retrying in 30s (attempt 2/3)
+    stderr: 
+  warn: claude returned rc=1, retrying in 60s (attempt 3/3)
+    stderr: 
+  warn: claude returned rc=1 after 3 attempts, giving up
+    stderr: 
+    stderr: 
+ FAILED (295s, rc=1)
+  08-frc-w-direct-conversion: at iter 8, will run up to 3 more (max_passes=11)
+  research 08-frc-w-direct-conversion (max 5 searches, 3 extractions) ...  warn: claude returned rc=1, retrying in 30s (attempt 2/3)
+    stderr: 
+  warn: claude returned rc=1, retrying in 60s (attempt 3/3)
+    stderr: 
+  warn: claude returned rc=1 after 3 attempts, giving up
+    stderr: 
+ FAILED (98s, rc=1)
+  analyze iter 9/11 (feedback pass) 08-frc-w-direct-conversion ...  warn: claude returned rc=1, retrying in 30s (attempt 2/3)
+    stderr: 
+  warn: claude returned rc=1, retrying in 60s (attempt 3/3)
+    stderr: 
+  warn: claude returned rc=1 after 3 attempts, giving up
+    stderr: 
+  warn: claude returned rc=1, retrying in 30s (attempt 2/3)
+    stderr: 
+  warn: claude returned rc=1, retrying in 60s (attempt 3/3)
+    stderr: 
+  warn: claude returned rc=1 after 3 attempts, giving up
+    stderr: 
+  warn: claude returned rc=1, retrying in 30s (attempt 2/3)
+    stderr: 
+  warn: claude returned rc=1, retrying in 60s (attempt 3/3)
+    stderr: 
+  warn: claude returned rc=1 after 3 attempts, giving up
+    stderr: 
+    stderr: 
+ FAILED (294s, rc=1)
+  09-qi-stellarator-hts: at iter 13, will run up to 3 more (max_passes=16)
+  research 09-qi-stellarator-hts (max 5 searches, 3 extractions) ...  warn: claude returned rc=1, retrying in 30s (attempt 2/3)
+    stderr: 
+  warn: claude returned rc=1, retrying in 60s (attempt 3/3)
+    stderr: 
+  warn: claude returned rc=1 after 3 attempts, giving up
+    stderr: 
+ FAILED (98s, rc=1)
+  analyze iter 14/16 (feedback pass) 09-qi-stellarator-hts ...  warn: claude returned rc=1, retrying in 30s (attempt 2/3)
+    stderr: 
+  warn: claude returned rc=1, retrying in 60s (attempt 3/3)
+    stderr: 
+  warn: claude returned rc=1 after 3 attempts, giving up
+    stderr: 
+  warn: claude returned rc=1, retrying in 30s (attempt 2/3)
+    stderr: 
+  warn: claude returned rc=1, retrying in 60s (attempt 3/3)
+    stderr: 
+  warn: claude returned rc=1 after 3 attempts, giving up
+    stderr: 
+  warn: claude returned rc=1, retrying in 30s (attempt 2/3)
+    stderr: 
+  warn: claude returned rc=1, retrying in 60s (attempt 3/3)
+    stderr: 
+  warn: claude returned rc=1 after 3 attempts, giving up
+    stderr: 
+    stderr: 
+ FAILED (295s, rc=1)
+  10-large-scale-stellarator: at iter 7, will run up to 3 more (max_passes=10)
+  research 10-large-scale-stellarator (max 5 searches, 3 extractions) ...  warn: claude returned rc=1, retrying in 30s (attempt 2/3)
+    stderr: 
+  warn: claude returned rc=1, retrying in 60s (attempt 3/3)
+    stderr: 
+ 0 sources acquired (265s)
+  analyze iter 8/10 (feedback pass) 10-large-scale-stellarator ... done (53s)
+    model-setup 10-large-scale-stellarator ... done (223s) → running model ... ok (LCOE=219.4 $/MWh)
+  assess 10-large-scale-stellarator iter 8 ... PASS (90s)
+  11-magnetic-mirror: at iter 7, will run up to 3 more (max_passes=10)
+  research 11-magnetic-mirror (max 5 searches, 3 extractions) ...  warn: validation failed but no session_id — cannot retry
+ FAILED (900s, rc=-1)
+    stderr: Timed out after 900s
+  analyze iter 8/10 (feedback pass) 11-magnetic-mirror ... done (72s)
+    model-setup 11-magnetic-mirror ... done (189s) → running model ... model FAILED: model failed (rc=1): C:\Users\mallo\1cfe\fusion-tea\.venv\Lib\site-packages\pydantic\main.py:250: UserWarning: Recirculating fraction = 0.585 > 0.5 — excessive parasitic power load
+  validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+Traceback (most recent call last):
+  File "C:\Users
+  assess 11-magnetic-mirror iter 8 ... 3 findings (83s)
+  research 11-magnetic-mirror (max 5 searches, 3 extractions) ... 0 sources acquired (145s)
+  analyze iter 9/10 (feedback pass) 11-magnetic-mirror ... done (170s)
+    model-setup 11-magnetic-mirror ... done (250s) → running model ... ok (LCOE=620.7 $/MWh)
+  assess 11-magnetic-mirror iter 9 ... 3 findings (55s)
+  research 11-magnetic-mirror (max 5 searches, 3 extractions) ...  warn: validation failed but no session_id — cannot retry
+ FAILED (900s, rc=-1)
+    stderr: Timed out after 900s
+  analyze iter 10/10 (feedback pass) 11-magnetic-mirror ... done (78s)
+    model-setup 11-magnetic-mirror ... done (363s) → running model ... ok (LCOE=657.8 $/MWh)
+  assess 11-magnetic-mirror iter 10 ... 3 findings (112s)
+  warn: 11-magnetic-mirror did not converge in 10 passes
+  12-levitated-dipole: at iter 8, will run up to 3 more (max_passes=11)
+  research 12-levitated-dipole (max 5 searches, 3 extractions) ...  warn: validation failed but no session_id — cannot retry
+ FAILED (900s, rc=-1)
+    stderr: Timed out after 900s
+  analyze iter 9/11 (feedback pass) 12-levitated-dipole ... done (98s)
+    model-setup 12-levitated-dipole ... done (386s) → running model ... ok (LCOE=1059.4 $/MWh)
+  assess 12-levitated-dipole iter 9 ... 3 findings (95s)
+  research 12-levitated-dipole (max 5 searches, 3 extractions) ...  warn: validation failed but no session_id — cannot retry
+ FAILED (900s, rc=-1)
+    stderr: Timed out after 900s
+  analyze iter 10/11 (feedback pass) 12-levitated-dipole ...

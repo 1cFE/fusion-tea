@@ -1,0 +1,91 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-11",
+      "gap_description": "Enriched decaborane cost at commercial scale: isotopic enrichment premium not quantified",
+      "queries": [
+        "boron-11 isotope enrichment cost commercial pricing B-11 supply",
+        "enriched decaborane boron-11 isotopic separation cost per kilogram",
+        "boron-11 enrichment commercial scale cost semiconductor industry 11BF3 pricing 2024"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.lppfusion.com/proton-boron-p11b-fuel-arrives/",
+          "title": "Proton-Boron (p11B) Fuel Arrives — LPP Fusion",
+          "triage": "relevant",
+          "notes": "Accessible. Contains LPPFusion's actual procurement data: $56,000 for 93g of 99.9% B-11 enriched decaborane ($600/g = $600,000/kg at lab scale). Two-country production: isotopic boron from Russia, decaborane compound from Czech Republic. Notes mass production could reduce cost 'many hundred-fold'. Company blog post but the only source with a concrete transaction price."
+        },
+        {
+          "url": "https://www.researchgate.net/figure/Market-Price-of-Boron-Isotope-Product-Abundance-Price_tbl1_347386544",
+          "title": "Market Price of Boron Isotope Product Abundance Price — ResearchGate",
+          "triage": "inaccessible",
+          "notes": "403 Forbidden. Cannot access the pricing table."
+        },
+        {
+          "url": "https://www.osti.gov/etdeweb/servlets/purl/636772",
+          "title": "Separation of Boron Isotopes by Ion Exchange — OSTI",
+          "triage": "inaccessible",
+          "notes": "PDF is image-scanned (JBIG2 encoded), no extractable text. Cannot use as source."
+        },
+        {
+          "url": "https://pmarketresearch.com/chemi/boron-11-enriched-noron-trifluoride-11bf3-market/",
+          "title": "Boron 11 Enriched BF3 Market — PW Consulting",
+          "triage": "deprioritized",
+          "notes": "Market research/consulting firm (not a primary source). Search result summary mentions $9,500/kg peak price for semiconductor-grade 11BF3 and €12,000-15,000/ton European price premiums, but this is for 11BF3 (semiconductor dopant), not decaborane. Different compound; not directly applicable. Below quality threshold for extraction."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.lppfusion.com/proton-boron-p11b-fuel-arrives/",
+          "source_name": "lppfusion-proton-boron-p11b-fuel-arrives"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "Lab-scale cost confirmed ($600/g custom production). Commercial-scale cost not quantified — LPPFusion states 'many hundred-fold' reduction from mass production but gives no engineering basis. No peer-reviewed or government source found with enriched decaborane commercial pricing. The semiconductor 11BF3 pricing (~$9,500/kg peak) is for a different compound and different enrichment levels (99.8% for semiconductors vs 99.9% B-11 for fusion)."
+    },
+    {
+      "gap_id": "G-15",
+      "gap_description": "Diamond-film switch lifetime and commercial availability",
+      "queries": [
+        "diamond film switch pulsed power fast switch UV laser photoconductive semiconductor switching lifetime"
+      ],
+      "candidates": [
+        {
+          "url": "https://ipo.llnl.gov/ipo-technologies/instruments-sensors-and-electronics/diamond-photoconductive-semiconductor-switch",
+          "title": "Diamond Photoconductive Semiconductor Switch (PCSS) — LLNL Innovation and Partnerships Office",
+          "triage": "relevant",
+          "notes": "Accessible. LLNL government laboratory technology licensing page. Confirms diamond PCSS at TRL 3 (early research). Applications include pulsed power and high-frequency switching. Efficiency ~20%, output power ~50 kW. No commercial availability; technology available for licensing. Establishes that the technology LPPFusion proposes for its ion beam decelerator is at an early research stage."
+        },
+        {
+          "url": "https://arpa-e.energy.gov/programs-and-initiatives/search-all-projects/diamond-pcss-diamond-photoconductive-semiconductor-switches",
+          "title": "Diamond PCSS — ARPA-E",
+          "triage": "inaccessible",
+          "notes": "Page loaded only header/navigation; no technical content extractable via WebFetch."
+        },
+        {
+          "url": "https://www.academia.edu/36933518/Optically_triggered_diamond_switches",
+          "title": "Optically triggered diamond switches — Academia.edu",
+          "triage": "deprioritized",
+          "notes": "Not fetched due to extraction budget constraints and possible login requirement. LLNL page is a more authoritative primary source for the same topic."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://ipo.llnl.gov/ipo-technologies/instruments-sensors-and-electronics/diamond-photoconductive-semiconductor-switch",
+          "source_name": "ipo-ipo-technologies-instruments-sensors-and-electronics"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "LLNL page confirms diamond PCSS is TRL 3 — early research, not commercially available. This is useful for the analysis (substantiates the 'research-stage technology' characterization) but does not provide switch lifetime data or detailed performance specs at pulsed-power duty cycles. Gap remains open for quantitative lifetime data."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 2,
+    "sources_extracted": 2,
+    "sources_failed": 0,
+    "searches_used": 4,
+    "extractions_used": 2
+  }
+}

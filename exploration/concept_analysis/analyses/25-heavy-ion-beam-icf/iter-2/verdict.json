@@ -1,0 +1,17 @@
+{
+  "iteration": 2,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "assess",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": false,
+  "merged_assess": false,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/25-heavy-ion-beam-icf/iter-01/sources/hif-technology-overview.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/25-heavy-ion-beam-icf/iter-01/sources/intensity-energy-search-results.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/25-heavy-ion-beam-icf/iter-02/sources/arxiv-1511-06508.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/25-heavy-ion-beam-icf/iter-02/sources/hif-recent-research-compilation.md"
+  ],
+  "timestamp": "2026-04-20T16:58:10.368045+00:00"
+}

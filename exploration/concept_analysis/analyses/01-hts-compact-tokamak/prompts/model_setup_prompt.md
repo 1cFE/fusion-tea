@@ -27,10 +27,56 @@ Follow its structure, commenting style, and output format.
 ### 5. Costing Constants
 `/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml`
 
+
+
 ## Concept Mapping
 - **ConfinementConcept:** `TOKAMAK`
 - **Fuel:** `DT`
 
+
+## Power Standardization: Dual-Result Pattern
+
+The primary `result = model.forward(...)` stays at the concept's **native** power
+level. This preserves physics consistency (Q_eng, power balance, CAS breakdown).
+
+**If the concept's native design point is NOT 1000 MWe**, add a second forward()
+call to produce a self-consistent 1 GW result using per-account cost scaling:
+
+1. Factor all shared kwargs into a `_SHARED_KWARGS` dict (avoid duplicating
+   parameters between the two forward() calls):
+
+   ```python
+   _SHARED_KWARGS = dict(
+       availability=...,
+       lifetime_yr=...,
+       # ... all engineering params, cost_overrides, noak, etc.
+   )
+   ```
+
+2. Compute both results:
+
+   ```python
+   result = model.forward(net_electric_mw=<native_power>, **_SHARED_KWARGS)
+
+   result_1gw = model.forward(
+       net_electric_mw=1000.0,
+       override_reference_mw=<native_power>,
+       **_SHARED_KWARGS,
+   )
+   ```
+
+   `override_reference_mw` tells the framework that `cost_overrides` values are
+   valid at `<native_power>` MWe, and it should scale them to 1000 MWe using
+   per-account scaling laws.
+
+3. Both `result` and `result_1gw` MUST be module-level variables (not inside a
+   function or if-block).
+
+4. Do NOT add `scaled_headline`. Do NOT compute sensitivities for `result_1gw`
+   — the extraction pipeline handles that.
+
+**If the concept's native design point IS 1000 MWe**, do NOT add `result_1gw`.
+A single `result` at 1000 MWe is sufficient.
 
 ## Script Requirements
 
@@ -42,6 +88,16 @@ Follow its structure, commenting style, and output format.
 5. Results printing (LCOE, CAS breakdown, CAS22 detail)
 6. Key Assumptions summary
 7. Sensitivity analysis via `model.sensitivity()`
+
+### Output Interface (CRITICAL)
+The concept explorer consumes `model` and `result` at module level for
+cross-concept comparison. You MUST follow this convention:
+
+1. `model = CostModel(...)` at module level (NOT inside a function)
+2. `result = model.forward(...)` at module level — this variable MUST be named `result`
+3. For multi-scenario scripts (e.g., NOAK vs FOAK), choose the reference case
+   (prefer NOAK if available) and assign `result = model.forward(...)` for that case.
+   Other scenarios may use any variable name (e.g., `result_foak = model.forward(...)`).
 
 ### Traceability (CRITICAL)
 Every parameter and cost override MUST have an inline comment citing the source:
