@@ -6,9 +6,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
-          "elasticity": -0.9580992151462585
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
+          "elasticity": -0.9469127522272398
         }
       ]
     },
@@ -18,9 +18,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
-          "elasticity": 0.3695500478580177
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
+          "elasticity": 0.26059514714108356
         }
       ]
     },
@@ -30,9 +30,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
-          "elasticity": -0.06877082704111495
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
+          "elasticity": -0.08455495496855112
         }
       ]
     },
@@ -42,9 +42,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
-          "elasticity": -0.22345345811915635
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
+          "elasticity": -0.26546411542951204
         }
       ]
     },
@@ -54,9 +54,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
-          "elasticity": -0.04208278843455654
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
+          "elasticity": -0.009348939038207387
         }
       ]
     },
@@ -66,9 +66,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
-          "elasticity": -0.0012145078811875915
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
+          "elasticity": -0.0002611775550158942
         }
       ]
     },
@@ -78,9 +78,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
-          "elasticity": -0.011869504863925746
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
+          "elasticity": -0.0023372348757452555
         }
       ]
     },
@@ -90,9 +90,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
-          "elasticity": -0.0047478019455702986
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
+          "elasticity": -0.0009348939502981023
         }
       ]
     },
@@ -102,9 +102,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
-          "elasticity": 0.001359437524610083
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
+          "elasticity": 0.0018279269615400356
         }
       ]
     },
@@ -114,9 +114,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
-          "elasticity": 0.10862485789781132
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
+          "elasticity": 0.12561807628144903
         }
       ]
     },
@@ -126,9 +126,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
-          "elasticity": 0.02394771906823483
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
+          "elasticity": 0.026879193554988606
         }
       ]
     },
@@ -138,9 +138,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
-          "elasticity": 0.0038026751274435134
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
+          "elasticity": 0.004083649220211979
         }
       ]
     },
@@ -150,9 +150,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
-          "elasticity": 0.009277505134420766
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
+          "elasticity": 0.0099623369425893
         }
       ]
     },
@@ -162,9 +162,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
-          "elasticity": 0.242613498896428
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
+          "elasticity": 0.27861656002292046
         }
       ]
     },
@@ -174,8 +174,8 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
           "elasticity": 0.0
         }
       ]
@@ -186,8 +186,8 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
           "elasticity": 0.0
         }
       ]
@@ -198,8 +198,8 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
           "elasticity": 0.0
         }
       ]
@@ -210,8 +210,8 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
           "elasticity": 0.0
         }
       ]
@@ -222,9 +222,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
-          "elasticity": -0.3241281145820748
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
+          "elasticity": -0.2625820429212655
         }
       ]
     },
@@ -234,9 +234,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
-          "elasticity": -0.0030278706390520806
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
+          "elasticity": -0.0038507203569041024
         }
       ]
     },
@@ -246,9 +246,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
-          "elasticity": 0.15135120749958075
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
+          "elasticity": 0.060851757458871746
         }
       ]
     },
@@ -258,8 +258,8 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
           "elasticity": 0.0
         }
       ]
@@ -270,9 +270,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
-          "elasticity": -0.0009495604032636121
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
+          "elasticity": -0.00023372348757452557
         }
       ]
     },
@@ -282,8 +282,8 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
           "elasticity": 0.0
         }
       ]
@@ -294,9 +294,14 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
-          "elasticity": 0.7101758401680722
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
+          "elasticity": 0.6276655627906925
+        },
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": 0.7665927709170581
         }
       ]
     },
@@ -306,9 +311,302 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "25",
-          "name": "Heavy Ion Beam ICF (D-T)",
-          "elasticity": 0.06822799210208039
+          "concept_id": "26",
+          "name": "Laser ICF - Indirect Drive (D-T)",
+          "elasticity": 0.06562625441966734
+        },
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": 0.07057983627319504
+        }
+      ]
+    },
+    "p_fus_MW": {
+      "param_name": "p_fus_MW",
+      "display_name": "p_fus_MW",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": -0.8422773422577311
+        }
+      ]
+    },
+    "p_beam_MW": {
+      "param_name": "p_beam_MW",
+      "display_name": "p_beam_MW",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": 0.2441097055062272
+        }
+      ]
+    },
+    "beam_supply_efficiency": {
+      "param_name": "beam_supply_efficiency",
+      "display_name": "beam_supply_efficiency",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": -0.2441484441367731
+        }
+      ]
+    },
+    "blanket_energy_multiplication": {
+      "param_name": "blanket_energy_multiplication",
+      "display_name": "blanket_energy_multiplication",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": -0.6865080855280336
+        }
+      ]
+    },
+    "thermal_efficiency": {
+      "param_name": "thermal_efficiency",
+      "display_name": "thermal_efficiency",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": -0.8730081429678974
+        }
+      ]
+    },
+    "blanket_inner_radius_m": {
+      "param_name": "blanket_inner_radius_m",
+      "display_name": "blanket_inner_radius_m",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": 0.01136618183344347
+        }
+      ]
+    },
+    "blanket_thickness_m": {
+      "param_name": "blanket_thickness_m",
+      "display_name": "blanket_thickness_m",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": 0.009092945466747542
+        }
+      ]
+    },
+    "shield_thickness_m": {
+      "param_name": "shield_thickness_m",
+      "display_name": "shield_thickness_m",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": 0.012151556702349024
+        }
+      ]
+    },
+    "structure_thickness_m": {
+      "param_name": "structure_thickness_m",
+      "display_name": "structure_thickness_m",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": 0.0022888501077132396
+        }
+      ]
+    },
+    "vessel_thickness_m": {
+      "param_name": "vessel_thickness_m",
+      "display_name": "vessel_thickness_m",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": 0.00267471718199463
+        }
+      ]
+    },
+    "coil_system_cost_M_USD": {
+      "param_name": "coil_system_cost_M_USD",
+      "display_name": "coil_system_cost_M_USD",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": 0.10787205085243973
+        }
+      ]
+    },
+    "ebeam_system_cost_M_USD": {
+      "param_name": "ebeam_system_cost_M_USD",
+      "display_name": "ebeam_system_cost_M_USD",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": 0.0719147005683028
+        }
+      ]
+    },
+    "blanket_cost_override_M_USD": {
+      "param_name": "blanket_cost_override_M_USD",
+      "display_name": "blanket_cost_override_M_USD",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": 0.10040128996551932
+        }
+      ]
+    },
+    "plant_availability": {
+      "param_name": "plant_availability",
+      "display_name": "plant_availability",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": -0.9491791742147923
+        }
+      ]
+    },
+    "plant_lifetime_years": {
+      "param_name": "plant_lifetime_years",
+      "display_name": "plant_lifetime_years",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": -0.09812060481140393
+        }
+      ]
+    },
+    "p_cryo_MW": {
+      "param_name": "p_cryo_MW",
+      "display_name": "p_cryo_MW",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": 0.09426759240551014
+        }
+      ]
+    },
+    "p_house_MW": {
+      "param_name": "p_house_MW",
+      "display_name": "p_house_MW",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": 0.010640586255388294
+        }
+      ]
+    },
+    "p_trit_MW": {
+      "param_name": "p_trit_MW",
+      "display_name": "p_trit_MW",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": 0.026601467967410072
+        }
+      ]
+    },
+    "p_vac_MW": {
+      "param_name": "p_vac_MW",
+      "display_name": "p_vac_MW",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": 0.0053202930611249135
+        }
+      ]
+    },
+    "construction_time_years": {
+      "param_name": "construction_time_years",
+      "display_name": "construction_time_years",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": 0.32633641827108717
+        }
+      ]
+    },
+    "core_lifetime_FPY": {
+      "param_name": "core_lifetime_FPY",
+      "display_name": "core_lifetime_FPY",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": -0.05061061947573108
+        }
+      ]
+    },
+    "om_cost_scaling": {
+      "param_name": "om_cost_scaling",
+      "display_name": "om_cost_scaling",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": 0.19483908213747989
+        }
+      ]
+    },
+    "deuterium_cost_per_kg": {
+      "param_name": "deuterium_cost_per_kg",
+      "display_name": "deuterium_cost_per_kg",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": 0.00030647445392888693
+        }
+      ]
+    },
+    "fuel_burnup_fraction": {
+      "param_name": "fuel_burnup_fraction",
+      "display_name": "fuel_burnup_fraction",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "27",
+          "name": "Polywell (D-T)",
+          "elasticity": 0.0
         }
       ]
     }

@@ -1,0 +1,101 @@
+[
+  {
+    "page_num": 0,
+    "cost_usd": 0.0726286,
+    "input_tokens": 4,
+    "output_tokens": 260,
+    "model": "sonnet",
+    "elapsed_seconds": 15.246229648590088,
+    "table_index": null
+  },
+  {
+    "page_num": 1,
+    "cost_usd": 0.12308260000000001,
+    "input_tokens": 4,
+    "output_tokens": 261,
+    "model": "sonnet",
+    "elapsed_seconds": 14.72792911529541,
+    "table_index": null
+  },
+  {
+    "page_num": 2,
+    "cost_usd": 0.0750923,
+    "input_tokens": 4,
+    "output_tokens": 122,
+    "model": "sonnet",
+    "elapsed_seconds": 13.042259454727173,
+    "table_index": null
+  },
+  {
+    "page_num": 3,
+    "cost_usd": 0.0791635,
+    "input_tokens": 4,
+    "output_tokens": 683,
+    "model": "sonnet",
+    "elapsed_seconds": 27.905462503433228,
+    "table_index": null
+  },
+  {
+    "page_num": 4,
+    "cost_usd": 0.0851123,
+    "input_tokens": 4,
+    "output_tokens": 1079,
+    "model": "sonnet",
+    "elapsed_seconds": 36.68925642967224,
+    "table_index": null
+  },
+  {
+    "page_num": 5,
+    "cost_usd": 0.0772823,
+    "input_tokens": 4,
+    "output_tokens": 557,
+    "model": "sonnet",
+    "elapsed_seconds": 23.908651113510132,
+    "table_index": null
+  },
+  {
+    "page_num": 6,
+    "cost_usd": 0.07729924999999999,
+    "input_tokens": 4,
+    "output_tokens": 566,
+    "model": "sonnet",
+    "elapsed_seconds": 29.201876163482666,
+    "table_index": null
+  },
+  {
+    "page_num": 7,
+    "cost_usd": 0.1256021,
+    "input_tokens": 4,
+    "output_tokens": 441,
+    "model": "sonnet",
+    "elapsed_seconds": 19.682902097702026,
+    "table_index": null
+  },
+  {
+    "page_num": 8,
+    "cost_usd": 0.08261055,
+    "input_tokens": 4,
+    "output_tokens": 912,
+    "model": "sonnet",
+    "elapsed_seconds": 33.92076849937439,
+    "table_index": null
+  },
+  {
+    "page_num": 9,
+    "cost_usd": 0.07592415,
+    "input_tokens": 4,
+    "output_tokens": 489,
+    "model": "sonnet",
+    "elapsed_seconds": 21.643088340759277,
+    "table_index": null
+  },
+  {
+    "page_num": 10,
+    "cost_usd": 0.0778517,
+    "input_tokens": 4,
+    "output_tokens": 611,
+    "model": "sonnet",
+    "elapsed_seconds": 23.933168649673462,
+    "table_index": null
+  }
+]

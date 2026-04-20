@@ -1,0 +1,22 @@
+VERDICT: FINDINGS
+
+### F-1: Branch A scenario is described in the analysis but absent from the model's scenario table
+- **Target:** Model scenario comparison / coupled γ sweep
+- **Category:** model
+- **Finding:** Section 2 explicitly defines two distinct operational responses to γ=0.2 and calculates specific net outputs: Branch A (fixed 980 MW fusion, beam doubles to 156 MW → net ~220 MWe) and Branch B (fixed beam at 78 MW, fusion halves to 490 MW → net ~125 MWe). The section warns against conflating these. Yet the scenario comparison table labels "Conservative (γ=0.2, FOAK)" as NET NEG — which corresponds to neither branch as defined. The coupled γ sweep at γ=0.2 produces p_fus=490, p_beam=156 (essentially power-balance breakeven at ~1 MWe), which is physically correct for the Park 2025 scaling but is not Branch A or Branch B. The result is that a reader of the scenario table concludes γ=0.2 makes the concept entirely non-viable, while Branch A at γ=0.2 would give ~220 MWe and a high-but-finite LCOE of approximately 15–18 ¢/kWh — a materially different conclusion about whether the concept survives modest confinement degradation.
+- **Recommendation:** Add Branch A as an explicit scenario in the scenario comparison table: fix p_fus at 980 MW, set p_beam to 156 MW (2× baseline), and compute net output and LCOE. This represents the engineering response of ramping beam power to maintain plant output despite worse confinement. Relabel the current "Conservative" entry as "Coupled physics degradation (γ=0.2)" to distinguish it from the Branch A engineering scenario. The three scenarios should be: (1) Branch A engineering response at γ=0.2 (~220 MWe, viable but high LCOE), (2) Coupled physics at γ=0.2 (~breakeven), and (3) Baseline γ=0.1 (301 MWe, 9.82 ¢/kWh).
+- **Priority:** important
+
+### F-2: Only one nearest-neighbor concept named from the 37-concept landscape
+- **Target:** Section 7 (Cross-Concept Notes)
+- **Category:** analysis
+- **Finding:** The checklist criterion requires 2–3 nearest-neighbor concepts for comparison. Section 7 names 13-electrostatic-hybrid (one landscape concept) and "IEC/Fusor concepts" (historical ancestors not in the 37-concept landscape). The IEC/Fusor reference explains genealogy but does not serve the cross-concept comparison purpose since it has no analysis in the project. The Polywell is genuinely unusual, but at minimum a second landscape concept should be named and its structural distance explained, even if the distance is large.
+- **Recommendation:** Name a second landscape concept as a comparator. Reasonable candidates include: 16-muon-catalyzed-fusion (same Non-Standard family, non-burning plasma, LCOE dominated by a single unvalidated physics parameter with a similar analysis structure — sticking fraction for μCF, γ for Polywell) or 11-magnetic-mirror (D-T) (both are open/non-closed field-line configurations with unusual confinement boundaries, both carry large physics-scaling uncertainty relative to tokamaks). A one-sentence explanation of why the structural distance is large despite the neighbor selection is sufficient.
+- **Priority:** minor
+
+### F-3: "Modular assembly" differentiator has no stated cost implication
+- **Target:** Section 7 (Cross-Concept Notes), item 4
+- **Category:** analysis
+- **Finding:** Section 7 lists modular coil assembly as a key differentiator from MFE tokamaks ("non-interlocking coils that can be easily assembled and disassembled"), contrasting it favorably with tokamak TF coil interlocking. The analysis notes this is a "design claim, not a demonstrated maintenance strategy" (Section 3), but does not state a cost implication — whether it represents a cost advantage (lower remote handling or O&M cost), is cost-neutral (same remote handling budget but accessed differently), or is unquantifiable at this stage. The model assigns $25.9M to C220110 Remote Handling without annotation connecting it to this differentiator. The checklist requires each key differentiator to have an explicit cost implication.
+- **Recommendation:** Add one sentence in Section 7 item 4 stating the cost implication: for example, "If the modular claim holds, remote handling costs (C220110) may be 20–40% lower than tokamak analogues; however, the current model uses an MFE analogue placeholder and does not take credit for this advantage due to the absence of any maintenance design." This makes the assumption explicit and flags where a future engineering study could improve the estimate.
+- **Priority:** minor

@@ -1,0 +1,23 @@
+{
+  "iteration": 3,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "assess",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": false,
+  "merged_assess": false,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/32-laser-icf-french-national/iter-01/sources/aip-advances-ribeyre-2025.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/32-laser-icf-french-national/iter-01/sources/arpa-e-sites-default-files-migrated-a05-zuegel.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/32-laser-icf-french-national/iter-01/sources/genf-icf-article.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/32-laser-icf-french-national/iter-01/sources/genf-news-timeline.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/32-laser-icf-french-national/iter-01/sources/genf-website-technology.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/32-laser-icf-french-national/iter-01/sources/neimagazine-analysis-enriched-lithium-and-advanced-nuclear.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/32-laser-icf-french-national/iter-01/sources/osti-servlets-purl-1833260.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/32-laser-icf-french-national/iter-01/sources/osti-servlets-purl-833813.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/32-laser-icf-french-national/iter-01/sources/power-technology-features-enriched-lithium-and-the-race-for.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/32-laser-icf-french-national/iter-01/sources/taranis-project-details.md"
+  ],
+  "timestamp": "2026-04-20T19:51:59.441954+00:00"
+}

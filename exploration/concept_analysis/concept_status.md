@@ -38,33 +38,33 @@ Snapshot: 2026-04-20. 38 concepts from `exploration/concept_explorer/data/concep
 | 23  | Laser ICF - Nanostructured Target (p-B11) | Marvel Fusion | 3 | yes | yes | yes | no |
 | 24  | Dense Plasma Focus (p-B11) | LPPFusion | 3 | yes | yes | yes | no |
 | 25  | Heavy Ion Beam ICF (D-T) | Intensity Energy | 3 | yes | yes | yes | no |
-| 26  | Laser ICF - Indirect Drive (D-T) | Inertia Enterprises | 0 | no | - | no | no |
-| 27  | Polywell (D-T) | EMC2 | 0 | no | - | no | no |
+| 26  | Laser ICF - Indirect Drive (D-T) | Inertia Enterprises | 3 | yes | yes | yes | no |
+| 27  | Polywell (D-T) | EMC2 | 3 | yes | yes | yes | no |
 | 28  | HTS Tokamak - Full HTS | Energy Singularity | 3 | yes | yes | yes | no |
 | 29  | Negative Triangularity Tokamak | Firefly Fusion | 3 | yes | yes | yes | no |
 | 30  | Laser ICF - NIF Commercialization (D-T) | Inertia Enterprises | 3 | yes | yes | yes | no |
-| 31  | Laser ICF - OEC Architecture (D-T) | Blue Laser Fusion (BLF) | 0 | no | - | no | no |
-| 32  | Laser ICF - French National Direct Drive (D-T) | GenF Systems | 0 | no | - | no | no |
+| 31  | Laser ICF - OEC Architecture (D-T) | Blue Laser Fusion (BLF) | 3 | yes | yes | yes | no |
+| 32  | Laser ICF - French National Direct Drive (D-T) | GenF Systems | 3 | yes | yes | yes | no |
 | 33  | State-Backed Tokamak - BEST | Neo Fusion | 3 | yes | yes | yes | no |
 | 34  | Compact Spherical Tokamak - India | Pranos Fusion | 3 | yes | yes | yes | no |
 | 35  | PoloMac Magnetic Confinement | Deutelio | 4 | yes | yes | yes | no |
-| 36  | Helical Coil Stellarator | Helical Fusion | 0 | no | - | no | no |
+| 36  | Helical Coil Stellarator | Helical Fusion | 3 | yes | yes | yes | no |
 
 ## Summary
 
 - Total concepts: **38**
-- Analysis started (`iter-N/` with content): **33**
-- `model_setup.py` present: **32** (all fresh; 19 has analysis but no model_setup)
-- Using `1costingfe` framework: **26** (of 32); the other 6 use hand-built models
-- Extracted to explorer data: **33** (0 stale)
+- Analysis started (`iter-N/` with content): **38** (all concepts)
+- `model_setup.py` present: **37** (all fresh; 19 has analysis but no model_setup)
+- Using `1costingfe` framework: **31** (of 37); the other 6 use hand-built models
+- Extracted to explorer data: **38** (all concepts, 0 stale)
 - Approved: **1**
+- **Zero gap-checked or not-started concepts remain**
 
 ## Changes Since Last Snapshot (2026-04-20 morning)
 
-- **New analyses started** (gap-checked → I3): 19 (Orbital Levitated Dipole), 23 (Laser ICF - Nanostructured Target), 25 (Heavy Ion Beam ICF)
-- **19 note**: has analysis (3 iter) and extraction but no model_setup.py
-- **Newly extracted**: 19, 23, 25, 29, 30 (5 new → total 33)
-- **Pipeline state summary**: 1 approved, 8 synthesized (3 stale), 6 reviewed, 18 iterating, 5 gap-checked
+- **Final 5 concepts analyzed** (gap-checked → I3): 26 (Laser ICF - Indirect Drive), 27 (Polywell), 31 (Laser ICF - OEC Architecture), 32 (Laser ICF - French National), 36 (Helical Coil Stellarator) — all with costingfe model_setup
+- **All 38 concepts now have analysis, extraction, and model_setup** (except 19 which lacks model_setup)
+- **Pipeline state summary**: 1 approved, 8 synthesized (3 stale), 6 reviewed, 23 iterating, 0 gap-checked
 
 ## Historical Changes
 

@@ -1,18 +1,31 @@
 {
-  "generated_at": "2026-04-20T17:40:53.858842+00:00",
+  "generated_at": "2026-04-20T20:17:45.461279+00:00",
   "concepts": [
     {
-      "concept_id": "25",
-      "name": "Heavy Ion Beam ICF (D-T)",
-      "confinement_family": "IFE",
-      "company": "Intensity Energy",
+      "concept_id": "26",
+      "name": "Laser ICF - Indirect Drive (D-T)",
+      "confinement_family": "NONSTANDARD",
+      "company": "Inertia Enterprises",
       "status": "in_progress",
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 91.41015625,
+      "lcoe_per_mwh": 103.94847106933594,
       "confidence": null,
-      "data_file": "data/25.json"
+      "data_file": "data/26.json"
+    },
+    {
+      "concept_id": "27",
+      "name": "Polywell (D-T)",
+      "confinement_family": "NONSTANDARD",
+      "company": "EMC2",
+      "status": "in_progress",
+      "illustration": null,
+      "has_cost_model": true,
+      "has_sensitivities": true,
+      "lcoe_per_mwh": 60.72838679528907,
+      "confidence": null,
+      "data_file": "data/27.json"
     }
   ]
 }

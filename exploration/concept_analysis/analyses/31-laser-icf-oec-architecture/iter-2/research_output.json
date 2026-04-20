@@ -1,0 +1,115 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-14",
+      "gap_description": "He Brayton cycle integration cost and efficiency at BLF-specific conditions — HTGR literature provides analogs; HCLL blanket program at EU-DEMO is most relevant prior work",
+      "queries": [
+        "helium Brayton cycle IFE inertial fusion energy blanket integration cost efficiency HCLL EU-DEMO",
+        "helium Brayton cycle HiPER laser fusion power conversion efficiency site:osti.gov OR site:arxiv.org",
+        "HTGR helium gas turbine power conversion capital cost $/kWe efficiency site:osti.gov OR site:iaea.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0920379612005649",
+          "title": "Design and analysis of helium Brayton power cycles for HiPER reactor",
+          "triage": "paywall",
+          "notes": "Most directly relevant — HiPER is a laser IFE concept. Preview shows efficiency data (35.3–37% at max temperature 480°C). Full text paywalled via ScienceDirect."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/10104516",
+          "title": "Helium-cooling in fusion power plants",
+          "triage": "relevant",
+          "notes": "OSTI direct-PDF, accessible. Covers He cooling in MFE/fusion power plants — useful analog for He Brayton cycle integration parameters."
+        },
+        {
+          "url": "https://scipub.euro-fusion.org/wp-content/uploads/eurofusion/WPPMICPR17_17709_submitted-4.pdf",
+          "title": "Progress in EU Breeding Blanket design and integration",
+          "triage": "relevant",
+          "notes": "Euro-Fusion direct PDF. Covers HCLL (He-Cooled LiPb) blanket design integration, the most relevant EU-DEMO analog for BLF's He-cooled LiPb blanket."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/10161171-gas-turbine-modular-helium-reactor-gt-mhr-high-efficiency-cost-competitive-nuclear-energy-next-century",
+          "title": "The gas turbine-modular helium reactor (GT-MHR), high efficiency, cost competitive, nuclear energy for the next century",
+          "triage": "skipped",
+          "notes": "HTGR cost paper — relevant but skipped due to extraction budget exhaustion. Abstract only accessible via biblio page."
+        },
+        {
+          "url": "https://arxiv.org/abs/1401.4232",
+          "title": "Converting energy from fusion into useful forms",
+          "triage": "not-relevant",
+          "notes": "Too general — broad overview of fusion energy conversion, no IFE-specific or quantitative He Brayton data in abstract."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/10104516",
+          "source_name": "osti-servlets-purl-10104516"
+        },
+        {
+          "url": "https://scipub.euro-fusion.org/wp-content/uploads/eurofusion/WPPMICPR17_17709_submitted-4.pdf",
+          "source_name": "scipub-wp-content-uploads-eurofusion-wppmicpr17-17709"
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0920379612005649",
+          "reason": "Paywalled — ScienceDirect institutional access required for HiPER He Brayton paper (most directly relevant source)"
+        }
+      ],
+      "status": "partial"
+    },
+    {
+      "gap_id": "G-15",
+      "gap_description": "Tritium extraction from LiPb under pulsed-neutron IFE conditions — EU-DEMO Pb-17Li TBM program provides best analog; pulsed vs. steady neutron production may affect extraction system design",
+      "queries": [
+        "tritium extraction LiPb Pb-17Li EU-DEMO TBM inertial fusion pulsed neutron"
+      ],
+      "candidates": [
+        {
+          "url": "https://lasers.llnl.gov/sites/lasers/files/2023-11/fuerst-idaho-IFE-workshop-2022.pdf",
+          "title": "Efficient tritium extraction from PbLi: a potential IFE breeding blanket (LLNL IFE Workshop 2022)",
+          "triage": "relevant",
+          "notes": "Direct LLNL IFE workshop document — specifically about tritium extraction from PbLi for IFE applications. Directly addresses gap. PDF accessible via LLNL lasers site."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0920379608001245",
+          "title": "Tritium recovery system for Li-Pb loop of inertial fusion reactor",
+          "triage": "paywall",
+          "notes": "Most directly relevant (IFE-specific title). Preview shows: counter-current extraction tower design, 99.999% recovery target, 300-500°C operation with Li0.17Pb0.83. Paywalled."
+        },
+        {
+          "url": "https://www.mdpi.com/2673-4362/6/2/13",
+          "title": "Tritium Extraction from Liquid Blankets of Fusion Reactors via Membrane Gas-Liquid Contactors",
+          "triage": "inaccessible",
+          "notes": "403 Forbidden on WebFetch attempt."
+        },
+        {
+          "url": "https://www.tandfonline.com/doi/abs/10.13182/FST95-A30485",
+          "title": "Tritium Extraction from Pb-17Li by Bubble Columns",
+          "triage": "skipped",
+          "notes": "Relevant experimental technique paper — skipped due to extraction budget allocation. Taylor & Francis likely paywalled."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://lasers.llnl.gov/sites/lasers/files/2023-11/fuerst-idaho-IFE-workshop-2022.pdf",
+          "source_name": "lasers-sites-lasers-files-2023-11-fuerst-idaho-ife-workshop"
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0920379608001245",
+          "reason": "Paywalled — ScienceDirect institutional access required for IFE-specific tritium recovery paper"
+        }
+      ],
+      "status": "partial"
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 2,
+    "sources_extracted": 3,
+    "sources_failed": 2,
+    "searches_used": 4,
+    "extractions_used": 3
+  }
+}

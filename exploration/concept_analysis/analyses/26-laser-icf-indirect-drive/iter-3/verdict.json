@@ -1,0 +1,28 @@
+{
+  "iteration": 3,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "research",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": true,
+  "merged_assess": true,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/26-laser-icf-indirect-drive/iter-01/sources/inertia-enterprises-website-and-faq.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/26-laser-icf-indirect-drive/iter-01/sources/nif-ignition-achievements.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/26-laser-icf-indirect-drive/iter-01/sources/xcimer-energy-website-and-science.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/26-laser-icf-indirect-drive/iter-02/sources/inertia-enterprises-2026-update.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/26-laser-icf-indirect-drive/iter-02/sources/nif-ignition-updates-2025.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/26-laser-icf-indirect-drive/iter-02/sources/xcimer-hybrid-direct-drive-evolution.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/26-laser-icf-indirect-drive/iter-02/sources/xcimer-laser-milestones-2025.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/26-laser-icf-indirect-drive/iter-03/sources/arxiv-2604-07367.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/26-laser-icf-indirect-drive/iter-03/sources/fire-fpa07-goodin-icf-fuel.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/26-laser-icf-indirect-drive/iter-03/sources/optics-news-15-6-6.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/26-laser-icf-indirect-drive/iter-03/sources/osti-biblio-10179076.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/26-laser-icf-indirect-drive/iter-03/sources/osti-servlets-purl-833813.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/26-laser-icf-indirect-drive/iter-03/sources/pmc-articles-pmc7658748.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/26-laser-icf-indirect-drive/iter-03/sources/xcimer-approach.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/26-laser-icf-indirect-drive/iter-03/sources/xcimer-science.md"
+  ],
+  "timestamp": "2026-04-20T18:44:16.675371+00:00"
+}

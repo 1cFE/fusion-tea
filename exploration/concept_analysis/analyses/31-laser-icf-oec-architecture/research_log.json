@@ -1,0 +1,227 @@
+{
+  "entries": [
+    {
+      "gap_id": "G-14",
+      "gap_description": "He Brayton cycle integration cost and efficiency at BLF-specific conditions — HTGR literature provides analogs; HCLL blanket program at EU-DEMO is most relevant prior work",
+      "queries": [
+        "helium Brayton cycle IFE inertial fusion energy blanket integration cost efficiency HCLL EU-DEMO",
+        "helium Brayton cycle HiPER laser fusion power conversion efficiency site:osti.gov OR site:arxiv.org",
+        "HTGR helium gas turbine power conversion capital cost $/kWe efficiency site:osti.gov OR site:iaea.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0920379612005649",
+          "title": "Design and analysis of helium Brayton power cycles for HiPER reactor",
+          "triage": "paywall",
+          "notes": "Most directly relevant — HiPER is a laser IFE concept. Preview shows efficiency data (35.3–37% at max temperature 480°C). Full text paywalled via ScienceDirect."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/10104516",
+          "title": "Helium-cooling in fusion power plants",
+          "triage": "relevant",
+          "notes": "OSTI direct-PDF, accessible. Covers He cooling in MFE/fusion power plants — useful analog for He Brayton cycle integration parameters."
+        },
+        {
+          "url": "https://scipub.euro-fusion.org/wp-content/uploads/eurofusion/WPPMICPR17_17709_submitted-4.pdf",
+          "title": "Progress in EU Breeding Blanket design and integration",
+          "triage": "relevant",
+          "notes": "Euro-Fusion direct PDF. Covers HCLL (He-Cooled LiPb) blanket design integration, the most relevant EU-DEMO analog for BLF's He-cooled LiPb blanket."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/10161171-gas-turbine-modular-helium-reactor-gt-mhr-high-efficiency-cost-competitive-nuclear-energy-next-century",
+          "title": "The gas turbine-modular helium reactor (GT-MHR), high efficiency, cost competitive, nuclear energy for the next century",
+          "triage": "skipped",
+          "notes": "HTGR cost paper — relevant but skipped due to extraction budget exhaustion. Abstract only accessible via biblio page."
+        },
+        {
+          "url": "https://arxiv.org/abs/1401.4232",
+          "title": "Converting energy from fusion into useful forms",
+          "triage": "not-relevant",
+          "notes": "Too general — broad overview of fusion energy conversion, no IFE-specific or quantitative He Brayton data in abstract."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/10104516",
+          "source_name": "osti-servlets-purl-10104516"
+        },
+        {
+          "url": "https://scipub.euro-fusion.org/wp-content/uploads/eurofusion/WPPMICPR17_17709_submitted-4.pdf",
+          "source_name": "scipub-wp-content-uploads-eurofusion-wppmicpr17-17709"
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0920379612005649",
+          "reason": "Paywalled — ScienceDirect institutional access required for HiPER He Brayton paper (most directly relevant source)"
+        }
+      ],
+      "status": "partial",
+      "timestamp": "2026-04-20T18:10:22.965946+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-15",
+      "gap_description": "Tritium extraction from LiPb under pulsed-neutron IFE conditions — EU-DEMO Pb-17Li TBM program provides best analog; pulsed vs. steady neutron production may affect extraction system design",
+      "queries": [
+        "tritium extraction LiPb Pb-17Li EU-DEMO TBM inertial fusion pulsed neutron"
+      ],
+      "candidates": [
+        {
+          "url": "https://lasers.llnl.gov/sites/lasers/files/2023-11/fuerst-idaho-IFE-workshop-2022.pdf",
+          "title": "Efficient tritium extraction from PbLi: a potential IFE breeding blanket (LLNL IFE Workshop 2022)",
+          "triage": "relevant",
+          "notes": "Direct LLNL IFE workshop document — specifically about tritium extraction from PbLi for IFE applications. Directly addresses gap. PDF accessible via LLNL lasers site."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0920379608001245",
+          "title": "Tritium recovery system for Li-Pb loop of inertial fusion reactor",
+          "triage": "paywall",
+          "notes": "Most directly relevant (IFE-specific title). Preview shows: counter-current extraction tower design, 99.999% recovery target, 300-500°C operation with Li0.17Pb0.83. Paywalled."
+        },
+        {
+          "url": "https://www.mdpi.com/2673-4362/6/2/13",
+          "title": "Tritium Extraction from Liquid Blankets of Fusion Reactors via Membrane Gas-Liquid Contactors",
+          "triage": "inaccessible",
+          "notes": "403 Forbidden on WebFetch attempt."
+        },
+        {
+          "url": "https://www.tandfonline.com/doi/abs/10.13182/FST95-A30485",
+          "title": "Tritium Extraction from Pb-17Li by Bubble Columns",
+          "triage": "skipped",
+          "notes": "Relevant experimental technique paper — skipped due to extraction budget allocation. Taylor & Francis likely paywalled."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://lasers.llnl.gov/sites/lasers/files/2023-11/fuerst-idaho-IFE-workshop-2022.pdf",
+          "source_name": "lasers-sites-lasers-files-2023-11-fuerst-idaho-ife-workshop"
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0920379608001245",
+          "reason": "Paywalled — ScienceDirect institutional access required for IFE-specific tritium recovery paper"
+        }
+      ],
+      "status": "partial",
+      "timestamp": "2026-04-20T18:10:22.965946+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-14",
+      "gap_description": "He Brayton cycle integration cost and efficiency at BLF-specific conditions — HTGR literature provides analogs; HCLL blanket program at EU-DEMO is most relevant prior work",
+      "queries": [
+        "helium Brayton cycle power conversion capital cost efficiency nuclear fusion blanket site:osti.gov OR site:iaea.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1323907",
+          "title": "Concept Design for a High Temperature Helium Brayton Cycle with Interstage Heating and Cooling (Sandia, 2013)",
+          "triage": "relevant",
+          "notes": "Sandia National Lab report by Wright, Vernon, Pickard. Contains turbomachinery sizing, heat exchanger cost assessments, cycle efficiency data for He Brayton at 900-950°C for Gen IV reactors. Explicitly trades off efficiency gains vs. capital cost for interstage heating/cooling configurations. Purl accessible."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1177051",
+          "title": "Closed Brayton Cycle Power Conversion Systems for Nuclear Reactors (Sandia)",
+          "triage": "not-relevant",
+          "notes": "Dynamic modeling and test loop validation study. Confirmed via biblio triage: no capital cost ($/kWe) or efficiency percentage data. Skip."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/10104516",
+          "title": "Helium-cooling in fusion power plants",
+          "triage": "duplicate",
+          "notes": "Already extracted in iteration 2 as osti-servlets-purl-10104516. Skip."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/1323907",
+          "title": "Concept Design for a High Temperature Helium Brayton Cycle with Interstage Heating and Cooling (biblio)",
+          "triage": "redirect",
+          "notes": "Redirects to purl/1323907 — extracted via purl."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1323907",
+          "source_name": "osti-servlets-purl-1323907"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "timestamp": "2026-04-20T18:26:31.789298+00:00",
+      "iteration": 3
+    },
+    {
+      "gap_id": "G-15",
+      "gap_description": "Tritium extraction from LiPb under pulsed-neutron IFE conditions — EU-DEMO Pb-17Li TBM program provides best analog; pulsed vs. steady neutron production may affect extraction system design",
+      "queries": [
+        "Pb-17Li tritium extraction permeation efficiency EU-DEMO HCLL breeding blanket site:osti.gov OR site:arxiv.org",
+        "tritium breeding blanket IFE laser inertial fusion LiPb pulsed neutron recovery extraction site:osti.gov OR site:arxiv.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1305833",
+          "title": "Tritium Breeding Blanket for a Commercial Fusion Power Plant - A System Engineering Assessment (LLNL, 2016)",
+          "triage": "relevant",
+          "notes": "LLNL systems engineering assessment covering both MFE and IFE tritium breeding blankets. Abstract explicitly states IFE TBB concepts differ from MFE due to different operating conditions and constraints. Covers heat transfer, fuel processing, safety, and control. Purl accessible."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1165762",
+          "title": "Assessment of Tritium Breeding Blankets from a Systems Perspective - Status Report (W.R. Meier, LLNL, August 2014)",
+          "triage": "relevant",
+          "notes": "Meier (LLNL) systems-perspective assessment of tritium breeding blankets. Different document from 1305833. Meier is known for IFE work at LLNL — likely addresses IFE-specific tritium considerations. Purl accessible."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1179125",
+          "title": "Assessment of Tritium Breeding Blankets from a Systems Perspective - Status Report (LLNL, 2014, alternate OSTI ID)",
+          "triage": "possible-duplicate",
+          "notes": "Appears to be same Meier 2014 document under a second OSTI ID. Not extracted given 1165762 already extracted."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/5167343",
+          "title": "Tritium control and activation in the Pulse*Star reactor",
+          "triage": "skipped-budget",
+          "notes": "Pulse*Star is an IFE concept using LiPb — likely directly relevant to pulsed-neutron IFE tritium extraction. Not fetched or extracted due to extraction budget exhaustion. Recommend for iteration 4."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1028880",
+          "title": "Chamber Design for the Laser Inertial Fusion Energy (LIFE)",
+          "triage": "binary-pdf-unreadable",
+          "notes": "LIFE chamber design document. WebFetch returned binary PDF (1.5 MB). Could not confirm content relevance via triage — likely relevant but extraction budget exhausted."
+        },
+        {
+          "url": "https://arxiv.org/html/2412.02721v1",
+          "title": "Advancing Tritium Self-Sufficiency in Fusion Power Plants: Insights from the BABY Experiment",
+          "triage": "skipped-budget",
+          "notes": "Recent arxiv paper on tritium breeding; FLiBe-focused (not LiPb), so lower priority for BLF's LiPb blanket. Not triaged further."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1305833",
+          "source_name": "osti-servlets-purl-1305833"
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1165762",
+          "source_name": "osti-servlets-purl-1165762"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "timestamp": "2026-04-20T18:26:31.789298+00:00",
+      "iteration": 3
+    }
+  ],
+  "acquired_by_iteration": {
+    "2": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/31-laser-icf-oec-architecture/iter-02/sources/lasers-sites-lasers-files-2023-11-fuerst-idaho-ife-workshop.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/31-laser-icf-oec-architecture/iter-02/sources/osti-servlets-purl-10104516.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/31-laser-icf-oec-architecture/iter-02/sources/scipub-wp-content-uploads-eurofusion-wppmicpr17-17709.md"
+    ],
+    "3": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/31-laser-icf-oec-architecture/iter-02/sources/osti-servlets-purl-1165762.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/31-laser-icf-oec-architecture/iter-02/sources/osti-servlets-purl-1305833.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/31-laser-icf-oec-architecture/iter-02/sources/osti-servlets-purl-1323907.md"
+    ]
+  }
+}
