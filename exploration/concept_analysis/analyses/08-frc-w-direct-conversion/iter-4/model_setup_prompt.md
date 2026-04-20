@@ -1,0 +1,42 @@
+# 1costingfe Model Update: FRC w/ Direct Conversion
+
+## Mode: Feedback Pass (Edit Existing Model)
+
+An existing model from a prior iteration has been copied to `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/08-frc-w-direct-conversion/iter-4/model_setup.py`.
+
+**Your task**: Read the existing model at `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/08-frc-w-direct-conversion/iter-4/model_setup.py` and apply targeted edits based on the assessment findings below. Use the Edit tool to make changes — do NOT rewrite the file from scratch.
+
+**Rules**:
+- Preserve ALL existing sweeps, scenarios, parameters, and sensitivity analyses unless a finding specifically says to change them
+- Maintain the existing code structure and organization
+- Add new content incrementally — do not restructure working code
+- Every change must be traceable to a specific finding or a direct consequence of one
+
+
+## Assessment Findings
+
+The following findings were raised by the assessor. Focus on findings tagged `Category: model`. Findings tagged `Category: analysis` are informational — they describe prose changes the analysis agent is handling. You may still adjust model parameters if an analysis finding implies the model's assumptions are wrong.
+
+### F-1: Section 2.5 missing TEA failure consequence for magnetic field scaling
+- **Target:** Section 2.5 (Magnetic Field Scaling: 8T → 40T)
+- **Finding:** Section 2.5 identifies the 8T → 40T compression field gap as a significant technical challenge but provides no TEA failure consequence — unlike every other subsection in Section 2 (energy recovery, rep rate, D-He3 fuel, He3 breeding, O&M), which each state what happens to LCOE if that challenge is not met. The analysis describes the physics difficulty (25× magnetic pressure increase, pulsed aluminum coils outside demonstrated experience) but does not state whether undershoot is a proportional cost penalty (lower Q per pulse → lower fusion yield per shot → LCOE scales inversely with field²) or a binary cliff (insufficient compression to achieve D-He3 ignition temperature → concept infeasible). This omission leaves Goal 3 partially unaddressed for this differentiator and Goal 5 incomplete for this technical bet.
+- **Recommendation:** Add a "TEA failure consequence" block to Section 2.5 stating: (a) whether insufficient compression field is a proportional penalty (lower yield per shot → higher LCOE) or a threshold cliff (below some field, D-He3 ignition is not achievable at all), (b) which regime the 8T → 40T gap puts Helion in currently, and (c) whether field scaling failure would force fallback to a lower-Q operating point or to D-T fuel. The answer need not be quantitative — the structural characterization (proportional vs. binary, and at what field threshold) is what's needed for Goal 3.
+- **Priority:** important
+
+### F-2: H3 (D-T fallback) is a structural observation, not a testable hypothesis
+- **Target:** Section 2 Modeling Approach — Hypothesis H3
+- **Finding:** H1 and H2 are quantitative testable propositions with explicit numerical thresholds (η_recovery ≥ 0.90; capacitor bank cost must fall to ~$0.50/J). H3 states "the LCOE floor for D-T FRC operation is materially higher than for D-He3" but does not provide a testable condition or numerical bound. The analysis correctly explains that a D-T FRC would require a structurally separate model — but this means H3 as written cannot be tested with the D-He3 model. If the hypothesis cannot be tested within the proposed modeling approach, it should be reframed as a scenario branch precondition, not a hypothesis. The existing structural description of the D-T fallback (added capital items, architectural incompatibility) is correct and thorough; only the hypothesis labeling is mismatched.
+- **Recommendation:** Reframe H3 from a hypothesis to a scenario branch condition: "If D-He3 operation is not achieved, the D-T fallback scenario requires a separate LCOE model. The D-T branch is structurally incomparable to the base case (adds blanket/tritium, eliminates ~75% of direct conversion benefit). Build the D-T branch as a parallel model with its own parameter table rather than a sensitivity run on the D-He3 model." This reframing is accurate to what the analysis already says in the D-T fallback structure paragraph and removes the mislabeling as a testable hypothesis.
+- **Priority:** minor
+
+
+## Reference Files
+
+- **Concept Analysis:** `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/08-frc-w-direct-conversion/analysis.md`
+- **Example:** `/home/reid/1cfe/1costingfe/examples/dhe3_pulsed_frc.py`
+- **Defaults:** `/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/mif_mag_target.yaml`
+- **README:** `/home/reid/1cfe/1costingfe/README.md`
+- **Costing Constants:** `/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml`
+
+## Output
+Write changes to: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/08-frc-w-direct-conversion/iter-4/model_setup.py`

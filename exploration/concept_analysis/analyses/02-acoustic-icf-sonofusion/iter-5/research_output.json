@@ -1,0 +1,72 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-7",
+      "gap_description": "Acoustic driver power consumption at reactor scale — could be estimated from industrial ultrasonic transducer power specs at similar frequencies",
+      "queries": [
+        "high power ultrasonic processor system kW power consumption specifications industrial sonication Hielscher Branson",
+        "acoustic cavitation reactor power density watts per liter sonochemistry scale-up industrial specifications site:arxiv.org OR site:osti.gov",
+        "ultrasonic processor electro-acoustic efficiency wall-plug efficiency high power 20kHz piezoelectric transducer measurements percent",
+        "Hielscher ultrasonics power specifications frequency efficiency datasheet comparison UIP16000 UIP4000 kW"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.hielscher.com/i16000_p.htm",
+          "title": "UIP16000 - Most Powerful Ultrasonic Processor - Hielscher Ultrasonics",
+          "triage": "relevant",
+          "notes": "16 kW acoustic output at 18 kHz; efficiency >80% from power plug to liquid (extracted from search summary); designed for industrial continuous operation (24/7); cluster configurations to 60+ kW; accessible HTML product page with quantitative specs."
+        },
+        {
+          "url": "https://www.hielscher.com/uip4000hdt-4kw-high-performance-ultrasonics.htm",
+          "title": "UIP4000hdT - 4kW High Performance Ultrasonics - Hielscher Ultrasonics",
+          "triage": "relevant",
+          "notes": "4 kW at 20 kHz — frequency directly matches sonofusion operating range (20-40 kHz). Complementary lower-power datapoint for the same product family."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/20076085",
+          "title": "Energy analysis in acoustic cavitation (Journal Article)",
+          "triage": "abstract-only",
+          "notes": "Abstract only on OSTI. Full paper behind publisher paywall (I&EC, DOI: 10.1021/ie9906159). Could not access quantitative energy balance data."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/276711",
+          "title": "Harness cavitation to improve processing",
+          "triage": "abstract-only",
+          "notes": "Abstract only on OSTI. Full paper in Chemical Engineering Progress (July 1996). No quantitative power data accessible."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1425100",
+          "title": "DOE OSTI full-text PDF",
+          "triage": "unreadable",
+          "notes": "PDF could not be rendered as text by WebFetch — binary content only. Subject matter unclear."
+        },
+        {
+          "url": "https://arxiv.org/abs/2102.06885",
+          "title": "Effect of ultrasonic irradiation power on sonochemical synthesis",
+          "triage": "not-useful",
+          "notes": "Focuses on nanoparticle synthesis results, not power specifications. Abstract does not report wattage or efficiency values; full text not checked."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.hielscher.com/i16000_p.htm",
+          "source_name": "hielscher-i16000-p"
+        },
+        {
+          "url": "https://www.hielscher.com/uip4000hdt-4kw-high-performance-ultrasonics.htm",
+          "source_name": "hielscher-uip4000hdt-4kw-high-performance-ultrasonics"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "notes": "Key new finding: Hielscher search results surfaced wall-plug efficiency data (80-90% from plug to liquid) not found in prior iteration. This fills the gap left by the APC International source (which gave coupling coefficient Kp ≥ 55% but no wall-plug efficiency). The UIP16000 (16 kW, 18 kHz) and UIP4000hdT (4 kW, 20 kHz) together bracket the sonofusion operating frequency range and establish the per-unit power scale for commercial industrial ultrasonic systems. Reactor-scale estimation (GW-class) remains an analogy extrapolation: e.g., a 100 MWe acoustic driver load would require ~6,250 UIP16000 units at 16 kW each, illustrating the scale challenge."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 1,
+    "sources_extracted": 2,
+    "sources_failed": 0,
+    "searches_used": 4,
+    "extractions_used": 2
+  }
+}

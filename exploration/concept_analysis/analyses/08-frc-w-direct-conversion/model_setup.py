@@ -1,4 +1,3 @@
-# STALE: analysis-rewritten-by-force
 """FRC w/ Direct Conversion (Helion Energy) — 1costingfe LCOE Model.
 
 Usage:
@@ -93,6 +92,22 @@ cc = load_costing_constants().replace(
                          # 10% adopted from dhe3_pulsed_frc.py (same architecture).
                          # Source: analysis.md §S2 Challenge 1;
                          #         docslib-helion-arpa-e-presentation.md §Energy Efficiency
+                         #
+                         # TEA failure consequence — magnetic field scaling (F-1):
+                         # burn_fraction is the model proxy for compression field adequacy.
+                         # D-He3 ignition requires ~45-100 keV ion temperature, achievable
+                         # only above a minimum compression field (≳40 T target).
+                         # If compression falls short, ion temperature does not reach the
+                         # D-He3 ignition threshold → burn_fraction → 0 → BINARY CLIFF
+                         # (not a proportional penalty). Below the threshold, the concept
+                         # is infeasible for D-He3 and LCOE → ∞ in this model.
+                         # Helion is currently at 8 T (experimental), 40 T is the
+                         # reactor target — the gap places the concept below the cliff
+                         # today. Fallback options: (a) lower-Q D-He3 operating point
+                         # (still sub-ignition, but proportional LCOE penalty); or (b)
+                         # D-T fuel at lower required temperature — but that requires a
+                         # separate model (blanket, tritium systems, loss of ~75% of
+                         # direct-conversion benefit; see F-2 / H3 reframing).
     fuel_recovery=0.95,  # 95% of unburned D-He3 recovered from exhaust.
                          # Standard efficient gas recycling assumption for pulsed FRC.
                          # Source: dhe3_pulsed_frc.py (Helion concept baseline)
@@ -473,6 +488,17 @@ print("  - No independent TEA exists for Helion (analysis.md §S7 Cross-Concept 
 print("    All quantitative values derive from sparse public disclosures.")
 print("    Uncertainty bounds here are substantially wider than for tokamak concepts")
 print("    that have Araiinejad & Shirvan (2025) or equivalent peer-reviewed TEA.")
+print("  - Magnetic field scaling failure consequence (F-1 / analysis.md §S2.5):")
+print("    burn_fraction is the model proxy for compression field adequacy.")
+print("    D-He3 ignition requires ~45-100 keV ion temperature, achievable only")
+print("    above a minimum compression field (≳40 T). Below this threshold,")
+print("    burn_fraction → 0 and LCOE → ∞: this is a BINARY CLIFF, not a")
+print("    proportional penalty. Helion is currently at 8 T (experimental);")
+print("    the 40 T reactor target has not been demonstrated. Fallback options:")
+print("    (a) lower-Q D-He3 sub-ignition point (proportional LCOE penalty from")
+print("    reduced yield per shot); (b) D-T fallback — requires a separate model")
+print("    (adds blanket/tritium systems, eliminates ~75% of direct-conversion")
+print("    benefit; structurally incomparable to this D-He3 model).")
 
 # ── Sensitivity Analysis ─────────────────────────────────────────────
 sens = model.sensitivity(result.params)

@@ -1,0 +1,213 @@
+{
+  "entries": [
+    {
+      "gap_id": "G-10",
+      "gap_description": "Alpha-sticking probability in Acceleron's high-density DT conditions — recent measurements at 0.3–0.5% are from conventional μCF facilities; high-density (DAC-compressed) conditions may differ; muon transfer dynamics are density-dependent",
+      "queries": [
+        "alpha sticking probability muon catalyzed fusion high density DT conditions density dependence",
+        "muon alpha sticking probability density dependence μCF"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/abs/2112.08399",
+          "title": "Comprehensive study of muon-catalyzed nuclear reaction processes in the dtμ molecule",
+          "triage": "relevant",
+          "notes": "Freely accessible arxiv paper (2021). Calculates initial α-μ sticking probability at 0.857%, ~7% smaller than literature values (0.91–0.93%), and explicitly connects this to high D-T density observations. Contains quantitative sticking data and muon energy spectrum. Directly addresses the density-dependent sticking question."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/5272409",
+          "title": "Dependence of the sticking of muons to helium in the muon-catalysis reactions dt.mu on the density of the mixture D2+T2",
+          "triage": "abstract-only",
+          "notes": "OSTI biblio page only — full text is in JETP Letters Vol. 41:12 (1985), likely paywalled. Abstract confirms the density-decreasing trend but no quantitative data accessible."
+        },
+        {
+          "url": "https://arxiv.org/abs/physics/0605206",
+          "title": "Alpha-muon sticking and chaos in muon-catalysed 'in flight' d-t fusion",
+          "triage": "not-fetched",
+          "notes": "Arxiv accessible but not triage-fetched due to budget; 2006 paper on in-flight sticking mechanism — less relevant to Acceleron's quasi-static high-density DAC regime."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/1993076",
+          "title": "High Yield Muon Catalyzed Fusion (Conference)",
+          "triage": "abstract-only",
+          "notes": "OSTI biblio page only, no full text. Investigates cycling rate and sticking fraction at higher temperatures and pressures than previously explored — potentially very relevant to G-10, but full text not accessible via this route."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/abs/2112.08399",
+          "source_name": "arxiv-2112-08399"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "timestamp": "2026-04-19T20:47:54.175020+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-11",
+      "gap_description": "Accelerator availability and maintenance model for power generation mission — particle physics accelerators achieve 85–95% availability in scientific mode; power generation requires different scheduling and higher MTBF targets; no published study",
+      "queries": [
+        "superconducting linac accelerator availability reliability uptime power generation SNS ESS operational data",
+        "SNS spallation neutron source superconducting linac availability percentage operational performance site:osti.gov OR site:arxiv.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1345779",
+          "title": "Overview of ten-year operation of the superconducting linear accelerator at the Spallation Neutron Source",
+          "triage": "relevant",
+          "notes": "Direct PDF from OSTI (purl link). Covers ten years of operational data for the SNS SRF linac — the world's highest average power superconducting proton linac. Contains availability statistics, reliability data, and operational lessons. 1 GeV, 1 MW beam. Most comprehensive real-world analogue for an MCF plant accelerator."
+        },
+        {
+          "url": "https://link.aps.org/doi/10.1103/PhysRevAccelBeams.25.020101",
+          "title": "Oak Ridge SNS superconducting rf linac availability performance and demonstration of operation restoration with superconducting rf cavity off",
+          "triage": "paywall",
+          "notes": "Physical Review Accelerator Beams article (2022). Direct 403 error — institutional access required. Contains specific availability metrics and cavity-off restoration strategy."
+        },
+        {
+          "url": "https://www.osti.gov/pages/biblio/1845564",
+          "title": "Oak Ridge SNS superconducting rf linac availability performance (OSTI pages record)",
+          "triage": "not-fetched",
+          "notes": "OSTI pages record for same Physical Review paper — may have a purl link to full text; not fetched due to budget."
+        },
+        {
+          "url": "https://proceedings.jacow.org/IPAC10/papers/mozmh01.pdf",
+          "title": "Experience and Lessons with the SNS Superconducting Linac (IPAC10)",
+          "triage": "inaccessible",
+          "notes": "PDF binary not extractable by WebFetch — compressed PDF returned raw binary. Content may be relevant but was not retrievable."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/885853",
+          "title": "Computation of Normal Conducting and Superconducting Linear Accelerator (LINAC) Availabilities (Technical Report)",
+          "triage": "not-fetched",
+          "notes": "Technical report on LINAC availability computation methodology — potentially useful for power generation mission context but not fetched due to budget."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1345779",
+          "source_name": "osti-servlets-purl-1345779"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "timestamp": "2026-04-19T20:47:54.175020+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-15",
+      "gap_description": "Muon source muon yield per MW of beam power — fundamental throughput metric; sets the scale relationship between accelerator power and fusion chamber output; derivable from pion production cross-sections and active-target geometry once design is specified",
+      "queries": [
+        "muon yield per proton beam power pion production cross section muon catalyzed fusion accelerator throughput"
+      ],
+      "candidates": [
+        {
+          "url": "https://inis.iaea.org/records/zmph4-5p723",
+          "title": "The pion (muon) energy production cost in muon catalyzed fusion",
+          "triage": "relevant",
+          "notes": "IAEA INIS record with accessible PDF (423 kB). Abstract states 'details of the problem to produce pion (muon) yield with minimal energy expenses have been considered.' Directly addresses muon production energy cost, which sets the yield-per-MW relationship. Most directly on-point candidate for G-15."
+        },
+        {
+          "url": "https://arxiv.org/pdf/1504.00380",
+          "title": "Compact Muon Production and Collection Scheme for High-[power applications]",
+          "triage": "not-relevant",
+          "notes": "About beam phase-space manipulation and muon capture optics, not muon yield per beam power. No quantitative yield data in abstract."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/105359",
+          "title": "Muon-catalyzed fusion — an energy production perspective",
+          "triage": "abstract-only",
+          "notes": "OSTI biblio page only — no full text accessible. Abstract discusses X_μ parameter and 5000 MeV muon production cost; relevant framing but full data not accessible."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://inis.iaea.org/records/zmph4-5p723",
+          "source_name": "inis-records-zmph4-5p723"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "timestamp": "2026-04-19T20:47:54.175020+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-10",
+      "gap_description": "Alpha-sticking probability in Acceleron's high-density DT conditions — recent measurements at 0.3–0.5% are from conventional μCF facilities; high-density (DAC-compressed) conditions may differ; muon transfer dynamics are density-dependent",
+      "queries": [
+        "alpha muon reactivation density dependence compressed DT muon catalyzed fusion sticking probability high density target",
+        "muon catalyzed fusion condensed solid DT target sticking reactivation Auger stripping density site:arxiv.org OR site:osti.gov",
+        "effective sticking fraction density dependence muon catalyzed fusion \"dense DT\" OR \"high density DT\" Petitjean OR Markushin OR Struensee experimental site:arxiv.org OR site:osti.gov OR site:pmc.ncbi.nlm.nih.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9013384/",
+          "title": "Roles of resonant muonic molecule in new kinetics model and muon catalyzed fusion in compressed gas",
+          "triage": "relevant",
+          "notes": "Directly addresses μCF in compressed/high-density DT at T<10⁴ K and densities 10⁻³<φ<1. Discusses effective sticking W̃ₛ = ωₛ(1-R(T)) as a function of temperature and density. States sticking is 0.5% at LHD with density-dependent cycle rates up to 1.45×10⁸ s⁻¹. Full text open access via PMC."
+        },
+        {
+          "url": "https://arxiv.org/abs/nucl-ex/0101007",
+          "title": "Time-of-Flight Spectroscopy of Muonic Atoms (Petitjean, Markushin et al.)",
+          "triage": "relevant",
+          "notes": "Experimental paper using multilayer thin films of solid hydrogen — a high-density DT target geometry. Authors include Markushin and Petitjean, the principal experimentalists on μCF sticking. Full text accessible via arXiv PDF."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/6964059",
+          "title": "IFSR #421 — Institute for Fusion Studies (density-dependent sticking)",
+          "triage": "inaccessible",
+          "notes": "Returned binary JBIG2 scanned PDF with no extractable text layer. Cannot determine relevance or extract content."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/7097174",
+          "title": "Accurate alpha sticking fractions from improved calculations relevant for muon catalyzed fusion",
+          "triage": "skipped",
+          "notes": "OSTI biblio page — may be paywalled or abstract-only. Not fetched due to extraction budget limits; PMC9013384 was higher confidence for density-dependent content."
+        },
+        {
+          "url": "https://arxiv.org/abs/2401.17358",
+          "title": "Tractable T-matrix model for reaction processes in muon catalyzed fusion (Phys. Rev. C 2024)",
+          "triage": "partial",
+          "notes": "Recent 2024 paper (Editors' Suggestion, Phys. Rev. C 109:054625). Focuses on reaction dynamics of the dtμ molecule using T-matrix methods; reproduces Kamimura et al. 2023 results. Does not specifically address density-dependent sticking. Less relevant than PMC9013384 for G-10."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/0146641089900057",
+          "title": "Muon reactivation in muon-catalyzed D-T fusion (ScienceDirect)",
+          "triage": "paywall",
+          "notes": "ScienceDirect abstract page — full text requires institutional access. Not extracted."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9013384/",
+          "source_name": "pmc-articles-pmc9013384"
+        },
+        {
+          "url": "https://arxiv.org/abs/nucl-ex/0101007",
+          "source_name": "arxiv-nucl-ex-0101007"
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/6964059",
+          "reason": "Scanned PDF (JBIG2 image stream) — no extractable text layer"
+        }
+      ],
+      "status": "partial",
+      "notes": "Two sources extracted that address density-dependent sticking. PMC9013384 directly models effective sticking at compressed-gas densities (φ up to 1 = LHD) and shows density and temperature dependence of reactivation. nucl-ex/0101007 is an experimental paper using solid-hydrogen multilayer films (high-density geometry) by Markushin and Petitjean. Neither source specifically addresses DAC-compressed DT at densities above LHD (Acceleron's extreme high-density regime). The gap remains partially open: the literature covers density dependence up to LHD, but Acceleron's DAC conditions may exceed LHD significantly, where reactivation physics could differ. No publication specifically addresses sticking at super-LHD densities.",
+      "timestamp": "2026-04-19T21:04:17.788401+00:00",
+      "iteration": 3
+    }
+  ],
+  "acquired_by_iteration": {
+    "2": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/16-muon-catalyzed-fusion/iter-01/sources/arxiv-2112-08399.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/16-muon-catalyzed-fusion/iter-01/sources/inis-records-zmph4-5p723.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/16-muon-catalyzed-fusion/iter-01/sources/osti-servlets-purl-1345779.md"
+    ],
+    "3": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/16-muon-catalyzed-fusion/iter-01/sources/arxiv-nucl-ex-0101007.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/16-muon-catalyzed-fusion/iter-01/sources/pmc-articles-pmc9013384.md"
+    ]
+  }
+}

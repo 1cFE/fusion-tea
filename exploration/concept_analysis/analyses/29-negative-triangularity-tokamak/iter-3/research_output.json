@@ -1,0 +1,117 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-15",
+      "gap_description": "NT vertical stability engineering design — passive stabilizer plate geometry, cost, growth rate validation at reactor-relevant elongation and poloidal beta",
+      "queries": [
+        "negative triangularity tokamak vertical stability passive stabilizer plate cost engineering design site:arxiv.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/abs/2501.14682",
+          "title": "Electromagnetic System Conceptual Design for a Negative Triangularity Tokamak",
+          "triage": "relevant",
+          "notes": "Pre-conceptual electromagnetic system design for dedicated NT tokamak experiment (R0=1m, Bt=3T, 16 demountable Cu TF coils). Addresses passive stabilizing plate integration: HFS+LFS plates together reduce vertical instability growth rates by ~75%. Quantifies net forces on stabilizer plates (~28 kN/m inboard, ~16 kN/m outboard) and notes 'significantly increased structural support will likely be required.' Directly fills G-15 — provides the engineering-level treatment of passive stabilizer plate design and mechanical loading absent from MANTA."
+        },
+        {
+          "url": "https://arxiv.org/abs/2401.15217",
+          "title": "Assessment of vertical stability for negative triangularity pilot plants",
+          "triage": "already-extracted",
+          "notes": "Already in sources as arxiv-2401-15217 (extracted in iter-2 for G-14). Provides baseline vertical stability analysis; 2501.14682 is the follow-on engineering design."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/abs/2501.14682",
+          "source_name": "arxiv-2501-14682"
+        }
+      ],
+      "failed": [],
+      "status": "closed"
+    },
+    {
+      "gap_id": "G-8",
+      "gap_description": "Divertor cost differential NT vs. PT not separately quantified in MANTA study — NT simpler divertor quantified in MANTA design philosophy but not separately cost-estimated",
+      "queries": [
+        "tokamak divertor cost estimate ARIES negative triangularity comparison capital cost breakdown MW",
+        "\"divertor\" \"cost\" \"tokamak\" \"capital\" \"$\" million estimate fraction total plant site:arxiv.org OR site:osti.gov 2023 2024 2025"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1127358",
+          "title": "The ARIES Advanced and Conservative Tokamak (ACT)",
+          "triage": "relevant",
+          "notes": "Full ARIES-ACT technical paper (distinct from UCSD-CER-13-01 cost account doc already extracted). 2.8MB PDF — WebFetch could not read binary content, but add-source has proper extraction. Likely contains CAS-level cost breakdowns for ACT1/ACT2 including divertor as distinct line items. Useful as PT baseline for G-8 cost differential estimate."
+        },
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11423669/",
+          "title": "Optimizing the cost of the STEP programme",
+          "triage": "not-triaged",
+          "notes": "Not triaged due to WebFetch budget exhaustion. STEP is a UK government ST/tokamak program — may contain cost breakdown data but likely not NT-vs-PT specific."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1127358",
+          "source_name": "osti-servlets-purl-1127358"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "No source found that specifically quantifies NT vs. PT divertor cost differential. ARIES-ACT 1127358 provides PT tokamak divertor cost as a line item (PT baseline). NT advantage can only be derived by comparing MANTA's divertor conditions (2.8 MW/m^2 peak, 23.5 MW P_SOL) vs. ACT1/ACT2 divertor conditions and inferring cost savings from simpler design requirements."
+    },
+    {
+      "gap_id": "G-10",
+      "gap_description": "Capacity factor for a commercial NT plant — MANTA 37% is pilot-plant-specific; commercial NT tokamak availability target unknown",
+      "queries": [
+        "fusion power plant capacity factor commercial tokamak availability factor 80% 85% benchmark site:arxiv.org OR site:osti.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/abs/2405.01514",
+          "title": "Valuing maintenance strategies for fusion plants as part of a future electricity grid",
+          "triage": "relevant-untriaged",
+          "notes": "Title strongly suggests content on maintenance-driven availability and capacity factor for fusion plants in electricity market context. Not WebFetch-triaged due to budget (last WebFetch used on OSTI 1127358). Extracted directly given high relevance probability for G-10."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1430912",
+          "title": "LLNL-TR-747677 Essential Criteria for Fusion Power Plants",
+          "triage": "inaccessible",
+          "notes": "WebFetch returned unreadable binary PDF (75.7KB). Search snippet mentioned 'capacity operation greater than 85%' but content unverifiable. Not extracted due to WebFetch failure."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/abs/2405.01514",
+          "source_name": "arxiv-2405-01514"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "No NT-specific commercial capacity factor data exists — as expected, this is a not-yet-characterized parameter. Extracted maintenance strategies paper for G-10 to support analogue reasoning about commercial tokamak availability."
+    },
+    {
+      "gap_id": "G-13",
+      "gap_description": "REBCO tape total demand for MANTA-scale TF coil set — derivable from MANTA TF coil geometry if dimensions published",
+      "queries": [
+        "MANTA tokamak REBCO tape volume TF coil total length km superconductor quantity site:arxiv.org"
+      ],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "failed",
+      "notes": "Search found MANTA paper (2405.20243) but no source with explicit tape length/volume figures. G-13 is marked 'derivable' — the data should be extractable from MANTA paper geometry tables if published, but no standalone source found. MANTA paper is already the primary source for this concept; tape demand would need to be computed from TF coil dimensions. Tokamak Energy Demo4 analogue not found as a quantitative tape-demand source."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 4,
+    "sources_extracted": 3,
+    "sources_failed": 0,
+    "searches_used": 5,
+    "extractions_used": 3,
+    "gaps_closed": 1,
+    "gaps_partial": 2,
+    "gaps_failed": 1,
+    "notes": "G-15 (NT vertical stability engineering) addressed with arxiv-2501-14682 (electromagnetic system design, passive plate forces and geometry). G-8 (divertor cost differential) partially addressed with ARIES-ACT 1127358 as PT baseline; no NT-specific cost differential source found. G-10 (commercial capacity factor) partially addressed with maintenance strategies paper. G-13 (REBCO tape demand) not addressed — derivable from MANTA geometry, no standalone source found."
+  }
+}

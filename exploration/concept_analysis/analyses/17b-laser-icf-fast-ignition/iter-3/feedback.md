@@ -1,0 +1,22 @@
+VERDICT: FINDINGS
+
+### F-1: Missing explicit tokamak differentiator list
+- **Target:** Section 7 (Cross-Concept Notes) or Section 2 framing
+- **Category:** analysis
+- **Finding:** The checklist requires that key differentiators from a conventional tokamak be explicitly listed, not implied. The analysis has excellent IFE-vs-IFE comparison (Section 7: 17a, 04, 26) but never provides a bulleted list of how this concept differs from a conventional tokamak. For cross-concept comparisons spanning the full 37-concept landscape, the tokamak comparison is structural: no magnets (eliminates CAS22 magnet sub-accounts), pulsed vs. steady-state operation, laser driver replaces H&CD systems, target-based fuel injection replaces plasma fueling, no plasma confinement coils, chamber cleared between shots rather than continuous operation. None of this is stated explicitly.
+- **Recommendation:** Add a brief bulleted list in Section 7 (or a dedicated subsection) titled "Differentiators from Conventional Tokamak" that explicitly enumerates the cost-structure differences at the CAS level: which tokamak sub-accounts are eliminated (magnets, H&CD systems), which are added (driver laser, target factory, final optics), and which are shared (BOP, tritium breeding, steam cycle). This makes the concept's position legible for cross-concept LCOE comparisons without requiring the reader to reconstruct it from narrative.
+- **Priority:** important
+
+### F-2: O&M underestimation not swept despite being flagged as 2.5–4× off
+- **Target:** Model sensitivity sweeps (model_setup.py)
+- **Category:** model
+- **Finding:** Key Assumption 6 in the model output explicitly flags that O&M is likely 2.5–4× underestimated: "IFE analogues suggest 5–8% of direct CAPEX/yr vs. ~2% framework default." The `om_cost_dt` costing constant has the highest elasticity among all costing constants at +0.17 — yet no O&M sensitivity sweep is provided. At 3× the default O&M rate (mid-range of 5–8% vs. ~2%), LCOE increases by approximately +30–35%: from 67.6 $/MWh to roughly 87–90 $/MWh. This correction would put fast ignition in line with Xcimer (87.1 $/MWh at 1 GWe), which makes structural sense given FI is more complex. Without the sweep, the reported 67.6 $/MWh lower bound gives a false impression of economic advantage over simpler IFE concepts. The O&M correction is the largest unswept uncertainty in the model and directly affects the cross-concept ranking in Section 7.
+- **Recommendation:** Add an O&M rate sweep to the model output alongside the existing ignitor premium and η_coup sweeps. Sweep `om_cost_dt` at 1×, 2×, and 3.5× the framework default (corresponding to ~2%, ~4%, and ~7% of CAPEX/yr). Report LCOE at each level. Frame the 3.5× case as the IFE-analogue estimate and the 1× case as the current lower-bound assumption. This gives the reader a credible LCOE range rather than a single optimistic point.
+- **Priority:** blocking
+
+### F-3: Ignitor laser cost premium absent from Section 5 parameter table
+- **Target:** Section 5 (LCOE-Relevant Parameters)
+- **Category:** analysis
+- **Finding:** Section 2 identifies H2 — "the FI economic advantage over CI disappears when ignitor laser cost premium exceeds ~20% of compression driver cost" — as a primary testable hypothesis, and the model runs the ignitor premium sweep (0%–65%). However, `ignition_laser_cost_premium_frac` does not appear anywhere in the Section 5 parameter table. Section 5 is the complete LCOE-relevant parameter reference; the omission means a reader using Section 5 to parameterize or audit the model would have no record of this FI-specific parameter's baseline value (0% lower bound), range (0–65%), or source rationale (Meier 2006 zero-cost assumption; no commercial precedent for petawatt ignition laser $/J). The table has a row for DPSSL driver cost class but not for the dual-driver premium — the parameter that distinguishes fast ignition from all CHS IFE concepts.
+- **Recommendation:** Add a row to the Section 5 Available Parameters table for the ignitor laser cost premium: parameter name `ignition_laser_cost_premium_frac`, value/range 0.0–0.65, source "Meier (2006) zero-cost assumption as lower bound; upper bound estimated from petawatt laser engineering analogues", confidence low, with a note that the baseline is a lower bound and that any positive $/J cost for the ignition laser degrades the Meier FI/CI advantage. This makes the parameter traceable from Section 2 hypothesis through Section 5 reference to the model sweep.
+- **Priority:** important

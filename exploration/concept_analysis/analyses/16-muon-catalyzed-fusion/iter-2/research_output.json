@@ -1,0 +1,136 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-10",
+      "gap_description": "Alpha-sticking probability in Acceleron's high-density DT conditions — recent measurements at 0.3–0.5% are from conventional μCF facilities; high-density (DAC-compressed) conditions may differ; muon transfer dynamics are density-dependent",
+      "queries": [
+        "alpha sticking probability muon catalyzed fusion high density DT conditions density dependence",
+        "muon alpha sticking probability density dependence μCF"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/abs/2112.08399",
+          "title": "Comprehensive study of muon-catalyzed nuclear reaction processes in the dtμ molecule",
+          "triage": "relevant",
+          "notes": "Freely accessible arxiv paper (2021). Calculates initial α-μ sticking probability at 0.857%, ~7% smaller than literature values (0.91–0.93%), and explicitly connects this to high D-T density observations. Contains quantitative sticking data and muon energy spectrum. Directly addresses the density-dependent sticking question."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/5272409",
+          "title": "Dependence of the sticking of muons to helium in the muon-catalysis reactions dt.mu on the density of the mixture D2+T2",
+          "triage": "abstract-only",
+          "notes": "OSTI biblio page only — full text is in JETP Letters Vol. 41:12 (1985), likely paywalled. Abstract confirms the density-decreasing trend but no quantitative data accessible."
+        },
+        {
+          "url": "https://arxiv.org/abs/physics/0605206",
+          "title": "Alpha-muon sticking and chaos in muon-catalysed 'in flight' d-t fusion",
+          "triage": "not-fetched",
+          "notes": "Arxiv accessible but not triage-fetched due to budget; 2006 paper on in-flight sticking mechanism — less relevant to Acceleron's quasi-static high-density DAC regime."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/1993076",
+          "title": "High Yield Muon Catalyzed Fusion (Conference)",
+          "triage": "abstract-only",
+          "notes": "OSTI biblio page only, no full text. Investigates cycling rate and sticking fraction at higher temperatures and pressures than previously explored — potentially very relevant to G-10, but full text not accessible via this route."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/abs/2112.08399",
+          "source_name": "arxiv-2112-08399"
+        }
+      ],
+      "failed": [],
+      "status": "partial"
+    },
+    {
+      "gap_id": "G-11",
+      "gap_description": "Accelerator availability and maintenance model for power generation mission — particle physics accelerators achieve 85–95% availability in scientific mode; power generation requires different scheduling and higher MTBF targets; no published study",
+      "queries": [
+        "superconducting linac accelerator availability reliability uptime power generation SNS ESS operational data",
+        "SNS spallation neutron source superconducting linac availability percentage operational performance site:osti.gov OR site:arxiv.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1345779",
+          "title": "Overview of ten-year operation of the superconducting linear accelerator at the Spallation Neutron Source",
+          "triage": "relevant",
+          "notes": "Direct PDF from OSTI (purl link). Covers ten years of operational data for the SNS SRF linac — the world's highest average power superconducting proton linac. Contains availability statistics, reliability data, and operational lessons. 1 GeV, 1 MW beam. Most comprehensive real-world analogue for an MCF plant accelerator."
+        },
+        {
+          "url": "https://link.aps.org/doi/10.1103/PhysRevAccelBeams.25.020101",
+          "title": "Oak Ridge SNS superconducting rf linac availability performance and demonstration of operation restoration with superconducting rf cavity off",
+          "triage": "paywall",
+          "notes": "Physical Review Accelerator Beams article (2022). Direct 403 error — institutional access required. Contains specific availability metrics and cavity-off restoration strategy."
+        },
+        {
+          "url": "https://www.osti.gov/pages/biblio/1845564",
+          "title": "Oak Ridge SNS superconducting rf linac availability performance (OSTI pages record)",
+          "triage": "not-fetched",
+          "notes": "OSTI pages record for same Physical Review paper — may have a purl link to full text; not fetched due to budget."
+        },
+        {
+          "url": "https://proceedings.jacow.org/IPAC10/papers/mozmh01.pdf",
+          "title": "Experience and Lessons with the SNS Superconducting Linac (IPAC10)",
+          "triage": "inaccessible",
+          "notes": "PDF binary not extractable by WebFetch — compressed PDF returned raw binary. Content may be relevant but was not retrievable."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/885853",
+          "title": "Computation of Normal Conducting and Superconducting Linear Accelerator (LINAC) Availabilities (Technical Report)",
+          "triage": "not-fetched",
+          "notes": "Technical report on LINAC availability computation methodology — potentially useful for power generation mission context but not fetched due to budget."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1345779",
+          "source_name": "osti-servlets-purl-1345779"
+        }
+      ],
+      "failed": [],
+      "status": "closed"
+    },
+    {
+      "gap_id": "G-15",
+      "gap_description": "Muon source muon yield per MW of beam power — fundamental throughput metric; sets the scale relationship between accelerator power and fusion chamber output; derivable from pion production cross-sections and active-target geometry once design is specified",
+      "queries": [
+        "muon yield per proton beam power pion production cross section muon catalyzed fusion accelerator throughput"
+      ],
+      "candidates": [
+        {
+          "url": "https://inis.iaea.org/records/zmph4-5p723",
+          "title": "The pion (muon) energy production cost in muon catalyzed fusion",
+          "triage": "relevant",
+          "notes": "IAEA INIS record with accessible PDF (423 kB). Abstract states 'details of the problem to produce pion (muon) yield with minimal energy expenses have been considered.' Directly addresses muon production energy cost, which sets the yield-per-MW relationship. Most directly on-point candidate for G-15."
+        },
+        {
+          "url": "https://arxiv.org/pdf/1504.00380",
+          "title": "Compact Muon Production and Collection Scheme for High-[power applications]",
+          "triage": "not-relevant",
+          "notes": "About beam phase-space manipulation and muon capture optics, not muon yield per beam power. No quantitative yield data in abstract."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/105359",
+          "title": "Muon-catalyzed fusion — an energy production perspective",
+          "triage": "abstract-only",
+          "notes": "OSTI biblio page only — no full text accessible. Abstract discusses X_μ parameter and 5000 MeV muon production cost; relevant framing but full data not accessible."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://inis.iaea.org/records/zmph4-5p723",
+          "source_name": "inis-records-zmph4-5p723"
+        }
+      ],
+      "failed": [],
+      "status": "closed"
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 3,
+    "sources_extracted": 3,
+    "sources_failed": 0,
+    "searches_used": 4,
+    "extractions_used": 3
+  }
+}

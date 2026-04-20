@@ -1,0 +1,21 @@
+{
+  "iteration": 3,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "research",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": true,
+  "merged_assess": true,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/33-state-backed-tokamak-best/iter-01/sources/best-research-plan-v1.1-summary.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/33-state-backed-tokamak-best/iter-01/sources/neo-fusion-company-profile.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/33-state-backed-tokamak-best/iter-02/sources/arxiv-1907-11919.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/33-state-backed-tokamak-best/iter-02/sources/cfetr-power-conversion-studies.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/33-state-backed-tokamak-best/iter-02/sources/osti-pages-servlets-purl-1465662.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/33-state-backed-tokamak-best/iter-02/sources/osti-servlets-purl-1178069.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/33-state-backed-tokamak-best/iter-02/sources/osti-servlets-purl-1305833.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/33-state-backed-tokamak-best/iter-02/sources/scientific-publications-wp-content-uploads-extrapolating.md"
+  ],
+  "timestamp": "2026-04-20T01:32:56.737636+00:00"
+}

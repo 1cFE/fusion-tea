@@ -1,0 +1,123 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-1",
+      "gap_description": "Commercial PFPP design point (Phase II / DEMO-class) unspecified; CFETR Phase I is published (R0 = 5.7 m, B0 = 5 T, Ip = 10 MA, 200 MW fusion, duty cycle 0.3–0.5)",
+      "queries": [
+        "CFEDR China fusion demonstration reactor design parameters R0 fusion power commercial"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/pdf/1907.11919",
+          "title": "Development of CFETR scenarios with self-consistent core- (arxiv 1907.11919)",
+          "triage": "relevant",
+          "notes": "PDF accessible (4.1 MB). CFETR Phase I/II scenarios paper from 2019. Web summary confirms CFETR Phase II updated to R0=7.2m, a=2.2m, B0=6.5T, Ip=13.78 MA, fusion power >1 GW. CFEDR parameters (R0=7.2m, fusion power 1.5-3 GW, Q=15-30) derived from web search summary. This paper likely contains the Phase II engineering baseline."
+        },
+        {
+          "url": "https://nucleus.iaea.org/sites/fusionportal/Shared%20Documents/FEC%202018/fec2018-preprints/preprint0216.pdf",
+          "title": "Zhuang — Progress of the CFETR Design (IAEA FEC 2018 OV/3-2)",
+          "triage": "inaccessible",
+          "notes": "WebFetch returned empty 'Home' page — URL redirects to IAEA home rather than serving the PDF directly."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0920379621006888",
+          "title": "Simulation of plasma scenarios for CFETR phase II based on engineering design parameters",
+          "triage": "paywall",
+          "notes": "ScienceDirect abstract only — full paper requires institutional access."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/pdf/1907.11919",
+          "source_name": "arxiv-1907-11919"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "Web search summary confirmed CFEDR parameters (R0=7.2m, B0=6.5T, 1.5-3 GW fusion power, Q=15-30). Arxiv paper extracted and should contain CFETR Phase II engineering parameters. Commercial PFPP design point (beyond CFEDR) remains unspecified — this is a genuinely unanchored design decision, not a literature gap."
+    },
+    {
+      "gap_id": "G-2",
+      "gap_description": "Capital cost for BEST or any Chinese commercial fusion device not published",
+      "queries": [
+        "Chen CFETR preliminary cost assessment \"Journal of Fusion Energy\" 2015 open access doi arxiv",
+        "ARIES-AT overnight capital cost tokamak CAS breakdown LCOE per kWe fusion plant"
+      ],
+      "candidates": [
+        {
+          "url": "https://link.springer.com/article/10.1007/s10894-014-9770-x",
+          "title": "Chen et al. (2015) Preliminary Cost Assessment and Compare of China Fusion Engineering Test Reactor",
+          "triage": "paywall",
+          "notes": "Springer Nature subscription required. No open-access or OSTI mirror found. This is the only published Chinese fusion cost decomposition; inaccessible without institutional credentials."
+        },
+        {
+          "url": "https://link.springer.com/article/10.1007/s10894-025-00515-1",
+          "title": "Developing Integrated Cost Models for Fusion Power Plants (2025)",
+          "triage": "paywall",
+          "notes": "Previously attempted in iter-2 (ResearchGate login required). Springer paywall confirmed. Skipped."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1178069",
+          "title": "The ARIES Advanced and Conservative Tokamak Power Plant Study (ARIES-AT full report, OSTI 1178069)",
+          "triage": "relevant",
+          "notes": "OSTI open-access PDF. ARIES-AT is the best published CAS-level cost analogue for a conventional-AR D-T tokamak (R0=5.2m, B0=5.6T, 1000 MWe, COE 4.7 c/kWh). Parameters closely analogous to PFPP commercial target. Directly addresses cost structure needed for PFPP capital cost estimation."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1178069",
+          "source_name": "osti-servlets-purl-1178069"
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://link.springer.com/article/10.1007/s10894-014-9770-x",
+          "reason": "Springer paywall — no open-access version found"
+        }
+      ],
+      "status": "partial",
+      "notes": "Chinese fusion cost data (Chen 2015) remains inaccessible. ARIES-AT Western analogue now extracted — this provides the CAS-level cost breakdown framework that can be combined with a Chinese construction cost discount factor to estimate PFPP capital cost range. The gap is partially addressed through the analogue approach; Chinese-specific costs still missing."
+    },
+    {
+      "gap_id": "G-14",
+      "gap_description": "Tritium permeation through CO2-facing heat exchangers in COOL TBM / sCO2 circuit",
+      "queries": [
+        "tritium permeation supercritical CO2 sCO2 heat exchanger fusion reactor LiPb blanket"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0920379621005767",
+          "title": "Conceptual design of the supercritical CO2 cooled lithium lead blanket for CFETR",
+          "triage": "paywall",
+          "notes": "ScienceDirect abstract only. Abstract confirms this covers the COOL TBM design but WebFetch confirmed tritium permeation is NOT addressed — paper focuses on structural design, neutronics, and thermo-hydraulics. Not worth extracting even if accessible."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1305833",
+          "title": "LLNL-TR-652984 Tritium Breeding Blanket for a Commercial Fusion Power Plant",
+          "triage": "relevant",
+          "notes": "OSTI open-access PDF (832 KB). LLNL report on tritium breeding blanket design for commercial fusion — likely covers tritium permeation barriers and coolant circuit tritium inventory. Directly relevant to G-14."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1305833",
+          "source_name": "osti-servlets-purl-1305833"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "Search summary noted CO2 has advantages for tritium recovery vs water (separation of T-CO2 vs T-H2O easier), but no sCO2-specific permeation quantification found in accessible sources. LLNL blanket report extracted — pending content review to determine if sCO2 permeation is specifically addressed. Gap may remain open if LLNL report covers water or He cooling only."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 3,
+    "sources_extracted": 3,
+    "sources_failed": 0,
+    "searches_used": 5,
+    "extractions_used": 3,
+    "gaps_closed": 0,
+    "gaps_partial": 3,
+    "gaps_failed": 0,
+    "gaps_skipped": 0
+  }
+}

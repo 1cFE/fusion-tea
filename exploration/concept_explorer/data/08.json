@@ -452,7 +452,89 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": null,
+  "narrative": {
+    "key_bets": [
+      "D-He3 fuel operation at ~200M°C (~17 keV) is achievable via FRC collision and compression, despite no D-He3 plasma data existing in any Helion prototype",
+      "Magnetic energy recovery efficiency ≥90% at commercial rep rates and 40 T field strengths, scaling from the 2015 subscale demonstration of >95% round-trip recovery",
+      "Pulsed aluminum coil compression scales from demonstrated 8 T (Trenta) and targeted 15 T+ (Polaris) to 40 T reactor design point, a 25× increase in magnetic pressure",
+      "He3 self-breeding from D-D side reactions (direct He3 + tritium-to-He3 decay chain) supplies commercial fuel demand without external He3 market reliance",
+      "Pulse repetition rate scales ~1200× from Trenta (~0.002 Hz) to commercial 2 Hz design point via capacitor recharge, coil thermal management, and FRC formation at rate",
+      "Capacitor bank cost falls from ~$5/J pulsed power baseline to ~$0.50/J through in-house manufacturing and volume learning",
+      "Plasma gain Q~1.2 (implied by ARPA-E η·Q=0.24) combined with η_recovery>0.9 yields net electric output despite sub-ignition plasma performance"
+    ],
+    "eliminated_costs": [
+      "Tritium breeding blanket (FLiBe/WCCB, ~$200–500M) — not required for D-He3 commercial operation",
+      "Thermal conversion island — no steam generator, turbines, condensers, or heat exchangers for the ~95% charged-particle energy fraction",
+      "REBCO HTS superconducting magnets and associated cryogenic plant (LHe, quench protection)",
+      "Heavy neutron shielding and activation management — ~5% neutron fraction vs. ~80% for D-T enables lighter borated poly/concrete shielding",
+      "Commercial tritium supply at full plant scale — Polaris testing uses interim external tritium but D-He3 operation eliminates ongoing tritium fuel procurement"
+    ],
+    "novel_costs": [
+      "High-voltage pulsed capacitor bank (>50 MJ on Polaris, charged to tens of kV) with no published $/J cost curve at required lifetime and rep rate",
+      "Pulsed aluminum electromagnetic coils and ~720 miles of custom-alloy coaxial cables per plant, with unestablished fatigue lifetime at 40 T and 10^7–10^9 pulses",
+      "Direct Faraday inductive energy recovery system replacing the power conversion island — novel CAS22 item with no commercial analogue at 50 MWe continuous",
+      "He3 breeding and isotope separation plant, including multi-kg tritium storage inventory for the 12.3-year decay lag period (~$35–175M at $35,000/g)",
+      "In-house quartz tube manufacturing for FRC formation chambers, driven by specialized geometry/purity requirements not met by commercial supply"
+    ],
+    "risks": [
+      {
+        "description": "No published Q (plasma gain) value for any Helion prototype — fundamental LCOE input is unverified and all fusion-yield-based calculations are speculative",
+        "severity": "high"
+      },
+      {
+        "description": "η_recovery is a threshold parameter; falling below ~90% at the ARPA-E design point (η_coupling=0.2, Q=1.2) causes net output to go negative — go/no-go cliff, not gradual penalty",
+        "severity": "high"
+      },
+      {
+        "description": "Inconsistency between >95% subscale recovery claim and η=0.7 from ARPA-E presentation; 10 pp ambiguity spans the viability boundary",
+        "severity": "high"
+      },
+      {
+        "description": "40 T compressed field in pulsed aluminum coils is 5× beyond demonstrated 8 T on Trenta and is outside established pulsed magnet experience",
+        "severity": "high"
+      },
+      {
+        "description": "D-He3 operation has never been demonstrated in any Helion prototype; ~30% ion-temperature gap from Polaris' 13 keV to ~17 keV ignition threshold is a binary cliff below which commercial fuel strategy fails",
+        "severity": "high"
+      },
+      {
+        "description": "He3 self-breeding cycle has never operated at any scale; natural He3 supply cannot support commercial plants, so breeding is a binary prerequisite for the entire D-He3 concept",
+        "severity": "high"
+      },
+      {
+        "description": "Rep rate must scale ~1200× from Trenta (~0.002 Hz) to 2 Hz commercial design point; no public data on achieved Polaris rep rate and capacitor recharge, coil thermal management untested near 1 Hz",
+        "severity": "high"
+      },
+      {
+        "description": "Capacitor bank cost must fall ~10× from ~$5/J baseline to ~$0.50/J for LCOE viability; current baseline implies LCOE >500 c/kWh at the 50 MW / 2 Hz design point",
+        "severity": "high"
+      },
+      {
+        "description": "No published plant capital cost for Orion or any Helion plant; no independent TEA equivalent to ARIES/ARC/PROCESS exists, leaving uncertainty bounds substantially wider than peer-reviewed tokamak analyses",
+        "severity": "high"
+      },
+      {
+        "description": "Component lifetime at commercial duty cycle (capacitors, coils, quartz tubes at 10^7–10^9 pulses) is uncharacterized publicly; O&M cost has no analogue plant for benchmarking",
+        "severity": "medium"
+      },
+      {
+        "description": "Capacitor and custom-alloy cable supply chain concentration — Contrary Research identifies supply chain as Helion's main potential risk; specialty suppliers limited",
+        "severity": "medium"
+      },
+      {
+        "description": "Tritium storage and inventory management for the 12.3-year He3 decay lag creates fleet scale-up timing risk; tritium must be accumulated before He3 breeding supports fuel demand",
+        "severity": "medium"
+      },
+      {
+        "description": "First-wall material selection and replacement schedule for D-He3 2.45 MeV neutrons at commercial rep rate is uncharacterized; no FRC wall loading literature at commercial conditions",
+        "severity": "medium"
+      },
+      {
+        "description": "D-T fallback scenario (if D-He3 or He3 breeding fails) requires a structurally different LCOE model — architectural substitution, not a parameter perturbation — reinstating blanket, tritium supply, and eliminating direct conversion benefit for ~80% of yield",
+        "severity": "medium"
+      }
+    ]
+  },
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/08-frc-w-direct-conversion/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/08-frc-w-direct-conversion/analysis.md"

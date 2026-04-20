@@ -1,0 +1,147 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-6",
+      "gap_description": "O&M cost breakdown (target, laser diode replacement, chamber maintenance) — blocking gap; needs LIFE O&M model or UKAEA PROCESS IFE module",
+      "queries": [
+        "Meier LIFE power plant economic cost estimate site:osti.gov",
+        "LLNL LIFE \"laser inertial fusion energy\" operations maintenance O&M cost model site:osti.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1022881",
+          "title": "LLNL-TR-480444 LIFE Cost of Electricity, Capital and Operating Costs (Anklam et al.)",
+          "triage": "relevant",
+          "notes": "Pre-conceptual LIFE cost study covering both capital and operating costs by subsystem using bottom-up estimates, vendor quotes, and fission/fusion plant scaling. Directly addresses this gap. PDF downloaded (binary accessible)."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/966534",
+          "title": "Integrated Process Model Development and Systems Analyses for the LIFE Power Plant",
+          "triage": "relevant",
+          "notes": "IPM covering cost and performance algorithms for all LIFE subsystems including laser, target fab, chamber, heat transfer, power conversion. Not extracted — Anklam report is more comprehensive and was prioritized."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1022881",
+          "source_name": "osti-servlets-purl-1022881"
+        }
+      ],
+      "failed": [],
+      "status": "closed"
+    },
+    {
+      "gap_id": "G-12",
+      "gap_description": "LLNL LIFE plant engineering cost reports (capital cost by subsystem) — additional Latkowski/Meier 2010–2013 reports needed beyond OSTI-1028880 which covers chamber/tritium design only",
+      "queries": [
+        "Latkowski LIFE \"laser inertial fusion energy\" capital cost economic study site:osti.gov",
+        "Meier LIFE power plant economic cost estimate site:osti.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1022881",
+          "title": "LLNL-TR-480444 LIFE Cost of Electricity, Capital and Operating Costs (Anklam et al.)",
+          "triage": "relevant",
+          "notes": "Directly provides LIFE plant capital cost breakdown and COE estimate — this is the primary gap-filling source for G-12. Same extraction as G-6."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1256449",
+          "title": "Fusion Technology Aspects of Laser Inertial Fusion Energy (LIFE) (Conference)",
+          "triage": "not-evaluated",
+          "notes": "Appeared in search results but not evaluated — Anklam report sufficient for this gap."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/1107297",
+          "title": "Fusion Technologies for Laser Inertial Fusion Energy (LIFE) (Conference)",
+          "triage": "not-evaluated",
+          "notes": "Appeared in search results but not evaluated — conference paper, likely lower priority than Anklam cost report."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1022881",
+          "source_name": "osti-servlets-purl-1022881"
+        }
+      ],
+      "failed": [],
+      "status": "closed"
+    },
+    {
+      "gap_id": "G-15",
+      "gap_description": "Tritium inventory and TBR model for Inertia design — LIFE tritium breeding studies; company claims hundreds of grams (unverified)",
+      "queries": [
+        "LLNL LIFE tritium breeding blanket TBR liquid lithium neutronics site:osti.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1305833",
+          "title": "LLNL-TR-652984 Tritium Breeding Blanket for a Commercial Fusion Power Plant",
+          "triage": "relevant",
+          "notes": "LLNL technical report covering TBR requirements, liquid Li blanket design, and tritium inventory for a commercial fusion plant. PDF binary downloaded — extraction should yield quantitative TBR data."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1165762",
+          "title": "LLNL-TR-658973 Assessment of Tritium Breeding Blankets",
+          "triage": "relevant",
+          "notes": "Another LLNL assessment on tritium breeding blankets — not extracted due to extraction budget limit; prioritized OSTI-1305833."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1305833",
+          "source_name": "osti-servlets-purl-1305833"
+        }
+      ],
+      "failed": [],
+      "status": "closed"
+    },
+    {
+      "gap_id": "G-14",
+      "gap_description": "NIF ignition experiment papers (Kritcher et al., Nature 2022–2024) — confirm Q values and Hybrid-E target physics",
+      "queries": [
+        "Kritcher NIF ignition \"hybrid-E\" 2022 arxiv preprint fusion gain"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/html/2505.03834v5",
+          "title": "Continuing progress toward fusion energy breakeven and gain as measured against the Lawson criteria",
+          "triage": "relevant",
+          "notes": "Accessible arXiv HTML review paper. Confirmed to contain NIF ignition Q data: Qsci=1.5 for Dec 5, 2022 shot (N221204), and up to Qsci=4.13 by early 2025. Provides tabular and graphical data on all NIF ignition results. Not the original Kritcher et al. paper but provides comprehensive Q value confirmation and cross-facility context."
+        },
+        {
+          "url": "https://www.nature.com/articles/s41586-021-04281-w",
+          "title": "Burning plasma achieved in inertial fusion (Nature, 2021)",
+          "triage": "paywall",
+          "notes": "Nature paper — paywalled, institutional access required. Not extracted."
+        },
+        {
+          "url": "https://pubs.aip.org/aip/pop/article/31/7/070502/3304417/Design-of-first-experiment-to-achieve-fusion",
+          "title": "Design of first experiment to achieve fusion — AIP Publishing",
+          "triage": "paywall",
+          "notes": "AIP paywalled — same as iteration 2 failure. Confirmed still inaccessible."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/html/2505.03834v5",
+          "source_name": "arxiv-2505-03834v5"
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://www.nature.com/articles/s41586-021-04281-w",
+          "reason": "Nature paywall — institutional access required"
+        }
+      ],
+      "status": "partial"
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 4,
+    "sources_extracted": 3,
+    "sources_failed": 0,
+    "searches_used": 5,
+    "extractions_used": 3,
+    "notes": "G-6 and G-12 both closed by Anklam LIFE cost report (OSTI-1022881) which covers capital and O&M costs for all LIFE subsystems. G-15 closed by LLNL-TR-652984 tritium breeding blanket report. G-14 partially closed via arXiv Lawson criteria review (2505.03834) which confirms NIF ignition Q values including Dec 2022 shot; original Kritcher et al. Nature paper remains paywalled. Gaps G-8 (thermal efficiency) and G-13 (modular architecture) were not attempted due to budget limits — both are likely addressable from the Anklam report content."
+  }
+}

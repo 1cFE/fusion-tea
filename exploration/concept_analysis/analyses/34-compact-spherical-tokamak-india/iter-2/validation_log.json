@@ -1,0 +1,38 @@
+[
+  {
+    "timestamp": "2026-04-20T01:48:09.624677+00:00",
+    "step": "source-integration",
+    "attempt": 1,
+    "validator": "validate_feedback_verdict",
+    "passed": true,
+    "details": "Feedback format valid (verdict: FINDINGS)",
+    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: New arXiv preprint provides first published Pranos plasma device parameters\n- **Target:** Section 1 (Availability of Data) and Section 8 (Sources)\n- **Category:** analysis\n- **Finding:** The analysis states \"Peer-reviewed publications: None found for Pranos Fusion specifically\" and treats no machine parameters as published. The new source (arxiv-2603-11549, submitted March 2026) is a technical paper on PRAGYA \u2014 India's first privately developed low-aspect-ratio tokama"
+  },
+  {
+    "timestamp": "2026-04-20T01:51:35.755408+00:00",
+    "step": "feedback-pass",
+    "attempt": 1,
+    "validator": "validate_file_modified",
+    "passed": true,
+    "details": "File content changed",
+    "validated_text_preview": "---\nID: 34-compact-spherical-tokamak-india\nConcept: Compact Spherical Tokamak - India\nCompany: Pranos Fusion\nStatus: draft\nCreated: 2026-04-19\nApproved-Date:\nReuses: [21-spherical-tokamak-hts, 01-hts-compact-tokamak]\n---\n\n# D1+ Analysis: Compact Spherical Tokamak - India (Pranos Fusion)\n\n**Concept**: Compact Spherical Tokamak \u2014 D-T fuel, modular 50 MW target\n**Company**: Pranos Fusion (Bengaluru, India; founded May 2024)\n**Confinement Family**: MFE \u2014 Spherical Tokamak\n**Nearest neighbor**: 21-sp"
+  },
+  {
+    "timestamp": "2026-04-20T02:06:35.880535+00:00",
+    "step": "model-setup",
+    "attempt": 1,
+    "validator": "validate_file_modified+validate_python_syntax",
+    "passed": true,
+    "details": "All validators passed",
+    "validated_text_preview": "\"\"\"Compact Spherical Tokamak \u2014 India (Pranos Fusion): LCOE model setup.\n\nModeling approach:\n    Pranos Fusion is among the most data-sparse concepts in this portfolio.\n    The arXiv preprint arxiv-2603-11549 (March 2026) describes PRAGYA \u2014 the\n    company's first experimental low-aspect-ratio tokamak (R\u2080=0.4m, A\u22482.2,\n    B_T=0.1T, Ip\u226425kA, final engineering design phase). PRAGYA confirms the\n    ST family classification and provides the first published machine geometry,\n    but its parameters ar"
+  },
+  {
+    "timestamp": "2026-04-20T02:10:39.682039+00:00",
+    "step": "assess",
+    "attempt": 1,
+    "validator": "validate_feedback_verdict",
+    "passed": true,
+    "details": "Feedback format valid (verdict: FINDINGS)",
+    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: Factory learning hypothesis (H2) not implemented in model\n- **Target:** model_setup.py \u2014 sensitivity sweep for H2\n- **Category:** model\n- **Finding:** H2 is explicitly labeled \"the core economic thesis of the modular fleet concept\" and proposes sweeping the learning curve exponent from 0 (no learning) to 0.25 (aggressive learning). The model_setup.py applies `noak=True` as a binary flag but performs no such sweep. The only result shown assumes NOAK learning has alread"
+  }
+]

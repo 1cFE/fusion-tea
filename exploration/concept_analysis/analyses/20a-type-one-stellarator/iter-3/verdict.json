@@ -1,0 +1,20 @@
+{
+  "iteration": 3,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "research",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": true,
+  "merged_assess": true,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/20a-type-one-stellarator/iter-01/sources/ans-news-2025-04-01-article-6903.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/20a-type-one-stellarator/iter-01/sources/arxiv-2512-08027.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/20a-type-one-stellarator/iter-01/sources/cambridge-core-journals-journal-of-plasma-physics-article.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/20a-type-one-stellarator/iter-01/sources/cambridge-core-services-aop-cambridge-core-content-view.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/20a-type-one-stellarator/iter-01/sources/modernsciences-type-one-energy-fusion-pilot-plant-design.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/20a-type-one-stellarator/iter-01/sources/science-media-fes-pdf-fes-presentations-2022-pearson.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/20a-type-one-stellarator/iter-01/sources/typeoneenergy-type-one-energy-issues-first-realistic.md"
+  ],
+  "timestamp": "2026-04-19T22:19:20.192276+00:00"
+}

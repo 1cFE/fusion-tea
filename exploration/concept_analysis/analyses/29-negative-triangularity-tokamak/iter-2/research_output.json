@@ -1,0 +1,179 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-6",
+      "gap_description": "Thermal efficiency for commercial NT plant undisclosed — MANTA uses steam Rankine at low efficiency; commercial plant targets higher temperatures and cycles not specified",
+      "queries": [
+        "ARIES fusion power plant thermal efficiency steam Rankine sCO2 Brayton cycle study",
+        "STEP fusion plant thermal efficiency heat cycle power conversion site:osti.gov OR site:arxiv.org",
+        "ARC fusion reactor power conversion thermodynamic cycles sCO2 Brayton efficiency arxiv preprint"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0920379620301939",
+          "title": "Exploration of power conversion thermodynamic cycles for ARC fusion reactor",
+          "triage": "paywalled",
+          "notes": "Abstract confirms efficiency data: regenerative sCO2 Brayton 60%, Rankine 40%. Directly relevant but full text inaccessible."
+        },
+        {
+          "url": "https://www.osti.gov/pages/biblio/1178069",
+          "title": "The ARIES Advanced and Conservative Tokamak Power Plant Study",
+          "triage": "relevant",
+          "notes": "Abstract specifies thermal efficiency: 58% (advanced design), 45% (conservative design). Also gives peak divertor heat flux. Links to full DOE manuscript."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1178069",
+          "title": "ARIES ACT Journal Article (DOE full text)",
+          "triage": "relevant",
+          "notes": "Full report with efficiency and cost data. WebFetch showed binary PDF but add-source extraction pipeline handles PDFs."
+        },
+        {
+          "url": "https://arxiv.org/abs/1401.4232",
+          "title": "Converting energy from fusion into useful forms",
+          "triage": "too_generic",
+          "notes": "Accessible but gives only general efficiency constraints; no specific cycle efficiency numbers."
+        },
+        {
+          "url": "https://arxiv.org/html/2504.11072v1",
+          "title": "Fusion for high-value heat production",
+          "triage": "too_generic",
+          "notes": "Accessible HTML. Only gives broad ηgen range 0.2–0.6; not specific to NT or ARC-class designs."
+        },
+        {
+          "url": "https://www.mdpi.com/2071-1050/16/17/7480",
+          "title": "Analysis of Power Conversion System Options for ARC-like Tokamak Fusion Reactor Balance of Plant",
+          "triage": "inaccessible",
+          "notes": "403 Forbidden on WebFetch and direct fetch. Not extractable."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/1178069",
+          "source_name": "osti-servlets-purl-1178069"
+        }
+      ],
+      "failed": [],
+      "status": "partial"
+    },
+    {
+      "gap_id": "G-8",
+      "gap_description": "Divertor cost differential NT vs. PT not separately quantified in MANTA study — NT simpler divertor quantified in MANTA design philosophy but not separately cost-estimated",
+      "queries": [
+        "tokamak divertor cost estimate ARIES study capital cost breakdown"
+      ],
+      "candidates": [
+        {
+          "url": "https://qedfusion.org/LIB/REPORT/ARIES-ACT/UCSD-CER-13-01.pdf",
+          "title": "ARIES Cost Account Documentation (UCSD-CER-13-01)",
+          "triage": "relevant",
+          "notes": "Detailed ARIES-ACT cost accounting methodology including divertor cost breakdown. Binary PDF per WebFetch but add-source pipeline handles extraction."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1127358",
+          "title": "ARIES Advanced And Conservative Tokamak (ACT) — earlier version",
+          "triage": "inaccessible_webfetch",
+          "notes": "Binary-compressed PDF, WebFetch could not read. Superseded by 1178069."
+        },
+        {
+          "url": "https://www.mdpi.com/1996-1073/14/20/6817",
+          "title": "Cost Assessment of a Tokamak Fusion Reactor with Inventive Method for Optimum Build Determination",
+          "triage": "inaccessible",
+          "notes": "403 Forbidden on WebFetch."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://qedfusion.org/LIB/REPORT/ARIES-ACT/UCSD-CER-13-01.pdf",
+          "source_name": "qedfusion-lib-report-aries-act-ucsd-cer-13-01"
+        }
+      ],
+      "failed": [],
+      "status": "partial"
+    },
+    {
+      "gap_id": "G-10",
+      "gap_description": "Capacity factor for a commercial NT plant — MANTA 37% is pilot-plant-specific; commercial NT tokamak availability target unknown",
+      "queries": [],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "Gap source recommendation is Araiinejad & Shirvan (already referenced in analysis). Budget allocated to higher-value gaps G-6 and G-14. The 75–90% commercial range is already captured in the analysis from the existing source."
+    },
+    {
+      "gap_id": "G-14",
+      "gap_description": "NT disruption characteristics and wall impact at high plasma current — DIII-D NT disruption experiments; review TCV data",
+      "queries": [
+        "negative triangularity tokamak disruption DIII-D TCV plasma current wall impact site:arxiv.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/html/2401.15217v1",
+          "title": "Assessment of vertical stability for negative triangularity pilot plants",
+          "triage": "relevant",
+          "notes": "Directly addresses disruption risk (VDEs), vertical stability challenges, and wall impact in NT pilot plant designs. Accessible HTML on arxiv."
+        },
+        {
+          "url": "https://arxiv.org/html/2512.18052",
+          "title": "Divertor Detachment Characterization in Negative Triangularity Discharges in DIII-D via 2D Edge-Plasma Transport Modeling",
+          "triage": "relevant_secondary",
+          "notes": "DIII-D NT divertor detachment data — relevant to G-8 and G-14 but extraction budget exhausted."
+        },
+        {
+          "url": "https://arxiv.org/html/2603.01208v1",
+          "title": "Feasibility of Negative Triangularity Equilibria in the SPARC Tokamak",
+          "triage": "relevant_secondary",
+          "notes": "NT feasibility in SPARC — covers disruption and stability. Extraction budget exhausted."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/abs/2401.15217",
+          "source_name": "arxiv-2401-15217"
+        }
+      ],
+      "failed": [],
+      "status": "closed"
+    },
+    {
+      "gap_id": "G-13",
+      "gap_description": "REBCO tape total demand for MANTA-scale TF coil set — derivable from MANTA TF coil geometry if dimensions published",
+      "queries": [],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "Budget exhausted. Gap is marked 'nice-to-have' and is derivable from MANTA geometry already in analysis. Recommend derivation step rather than new source acquisition."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 4,
+    "sources_extracted": 3,
+    "sources_failed": 0,
+    "searches_used": 5,
+    "extractions_used": 3,
+    "sources": [
+      {
+        "name": "osti-servlets-purl-1178069",
+        "url": "https://www.osti.gov/servlets/purl/1178069",
+        "title": "The ARIES Advanced and Conservative Tokamak Power Plant Study",
+        "gaps_addressed": ["G-6", "G-8"],
+        "notes": "Contains thermal efficiency data (58% advanced, 45% conservative) and divertor heat flux. Covers BOP cost structure for advanced tokamak designs."
+      },
+      {
+        "name": "arxiv-2401-15217",
+        "url": "https://arxiv.org/abs/2401.15217",
+        "title": "Assessment of vertical stability for negative triangularity pilot plants",
+        "gaps_addressed": ["G-14"],
+        "notes": "Directly addresses NT disruption risk: VDE characterization, vertical stability challenges, wall impact analysis for NT pilot plant geometry."
+      },
+      {
+        "name": "qedfusion-lib-report-aries-act-ucsd-cer-13-01",
+        "url": "https://qedfusion.org/LIB/REPORT/ARIES-ACT/UCSD-CER-13-01.pdf",
+        "title": "ARIES Cost Account Documentation (UCSD-CER-13-01)",
+        "gaps_addressed": ["G-8"],
+        "notes": "Detailed ARIES-ACT cost accounting including divertor subsystem cost fraction. Best available analogue for tokamak divertor cost estimation."
+      }
+    ]
+  }
+}

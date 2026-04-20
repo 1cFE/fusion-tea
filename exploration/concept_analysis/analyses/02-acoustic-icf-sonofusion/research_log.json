@@ -1,0 +1,194 @@
+{
+  "entries": [
+    {
+      "gap_id": "G-7",
+      "gap_description": "Acoustic driver power consumption at reactor scale — could be estimated from industrial ultrasonic transducer power specs at similar frequencies",
+      "queries": [
+        "industrial ultrasonic transducer power consumption specifications 20kHz 40kHz piezoelectric generator efficiency",
+        "piezoelectric ultrasonic generator electro-acoustic efficiency percent power conversion site:arxiv.org OR site:osti.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S1350417723001505",
+          "title": "Review of the design of power ultrasonic generator for piezoelectric transducer (Ultrasonics Sonochemistry, 2023)",
+          "triage": "relevant — open access CC license, peer-reviewed review article on power ultrasonic generator design covering power semiconductor devices, impedance matching, and control methods",
+          "notes": "Best available peer-reviewed source. Open access but extraction failed due to JavaScript-heavy ScienceDirect rendering."
+        },
+        {
+          "url": "https://www.americanpiezo.com/products-services/ultrasonic-power-transducers/",
+          "title": "Ultrasonic Power Transducers | APC International",
+          "triage": "relevant — contains quantitative power specs for 28 kHz and 40 kHz transducers, coupling factor data, and technical discussion of electroacoustic efficiency",
+          "notes": "Manufacturer product page with rated power (50 W per transducer at 28 kHz), coupling factor Kp ≥55%, and equations for cavitation threshold. Accessible plain HTML."
+        },
+        {
+          "url": "https://www.thorlabs.com/thorproduct.cfm?partnumber=PKT40A",
+          "title": "PKT40A High-Power Ultrasonic Transducer, 20 kHz — Thorlabs",
+          "triage": "inaccessible — WebFetch returned only the company name 'Thorlabs'; page appears JavaScript-rendered",
+          "notes": "Could not retrieve quantitative specs."
+        },
+        {
+          "url": "https://www.osti.gov/pages/biblio/1224334",
+          "title": "Energy harvesting from low frequency applications using piezoelectric materials (OSTI)",
+          "triage": "tangentially relevant — covers piezoelectric energy conversion efficiency, but in the energy-harvesting (reverse) direction rather than ultrasonic driving direction. Accessible.",
+          "notes": "Extracted but less directly applicable than initially hoped. Review article reference list on low-frequency piezo harvesting."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.americanpiezo.com/products-services/ultrasonic-power-transducers/",
+          "source_name": "americanpiezo-products-services-ultrasonic-power-transducers"
+        },
+        {
+          "url": "https://www.osti.gov/pages/biblio/1224334",
+          "source_name": "osti-pages-biblio-1224334"
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S1350417723001505",
+          "reason": "Extraction failed (rc=1) — ScienceDirect requires JavaScript rendering. Open-access content is not accessible via static extraction. No DOI redirect found to alternative host."
+        }
+      ],
+      "status": "partial",
+      "notes": "Component-level power specs obtained: individual PZT transducers at 28–40 kHz rated at 50 W with coupling factor Kp ≥ 55%. For reactor scale, number of transducers would scale with desired acoustic intensity and vessel geometry — neither of which has a design basis for this concept. The key missing data point (electroacoustic wall-plug efficiency at system level) was not found in accessible sources; best available proxy is the manufacturer's coupling factor spec. The high-value ScienceDirect review paper is open-access but inaccessible to the extraction tool.",
+      "timestamp": "2026-04-19T19:01:38.378793+00:00",
+      "iteration": 4
+    },
+    {
+      "gap_id": "G-14",
+      "gap_description": "Deuterium fuel cost and supply chain for commercial scale — D₂O pricing from nuclear industry; deuterium gas market pricing",
+      "queries": [
+        "heavy water D2O price per kilogram nuclear industry deuterium fuel cost 2024 2025",
+        "heavy water deuterium oxide production cost CANDU reactor supply chain site:world-nuclear.org OR site:iaea.org OR site:osti.gov",
+        "heavy water D2O cost price per kg world nuclear association deuterium oxide nuclear fuel"
+      ],
+      "candidates": [
+        {
+          "url": "https://wits.worldbank.org/trade/comtrade/en/country/ALL/year/2023/tradeflow/Exports/partner/WLD/product/284510",
+          "title": "Heavy water (deuterium oxide) exports by country | 2023 — World Bank WITS/UN Comtrade",
+          "triage": "relevant — accessible without login, contains 2023 export quantities (kg) and values (USD) for all exporting countries enabling price/kg derivation",
+          "notes": "India: $46.0M / 100,331 kg ≈ $459/kg; Canada: $38.3M / 80,701 kg ≈ $475/kg. 2023 data from UN Comtrade via World Bank. Authoritative trade statistics."
+        },
+        {
+          "url": "https://www.indexbox.io/search/price-for-heavy-water-deuterium-oxide-the-united-states/",
+          "title": "Price for Heavy Water (Deuterium Oxide) in the United States - 2025 — IndexBox",
+          "triage": "partial — limited free access; shows 2022 US import prices of ~$326/kg and historical peak of ~$391/kg (2013), but full data paywalled",
+          "notes": "Free data insufficient; full time series requires subscription."
+        },
+        {
+          "url": "https://inis.iaea.org/collection/NCLCollectionStore/_Public/34/087/34087588.pdf",
+          "title": "Heavy Water Cycle in the CANDU Reactor — IAEA/INIS",
+          "triage": "inaccessible — binary PDF content not extractable via WebFetch",
+          "notes": "Document is publicly listed but cannot be read via standard HTTP fetch."
+        },
+        {
+          "url": "https://inis.iaea.org/records/gfp2q-ycd54",
+          "title": "Costs and Economics of Heavy-Water-Moderated Nuclear Plants — IAEA/INIS (1968)",
+          "triage": "metadata-only — no full document accessible; historical data from abstract: heavy water projected <$35/kg before 1980",
+          "notes": "1968-era data, too old to be useful; abstract-only via INIS interface."
+        },
+        {
+          "url": "https://cen.acs.org/articles/90/i22/Heavy-Problems-Heavy-Water.html",
+          "title": "Heavy Problems For Heavy Water — Chemical & Engineering News (ACS)",
+          "triage": "inaccessible — HTTP 406 error",
+          "notes": "ACS C&EN article blocked access."
+        },
+        {
+          "url": "https://oec.world/en/profile/hs/heavy-water-deuterium-oxide",
+          "title": "Heavy water (deuterium oxide) — Observatory of Economic Complexity",
+          "triage": "inaccessible — requires login for data",
+          "notes": "Page structure visible but trade data requires authentication."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://wits.worldbank.org/trade/comtrade/en/country/ALL/year/2023/tradeflow/Exports/partner/WLD/product/284510",
+          "source_name": "wits-trade-comtrade-en-country-all-year-2023-tradeflow"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "notes": "Gap addressed: 2023 UN Comtrade data (via World Bank WITS) gives implied export prices of ~$459/kg (India) and ~$475/kg (Canada) — the two dominant D2O producers. Market report data from search results (not extracted) shows $646–$680/kg ex-factory in 2024–2025. Both are consistent with and refine the analysis's existing $700/kg rough estimate. The WITS source provides an authoritative, citable World Bank data point.",
+      "timestamp": "2026-04-19T19:01:38.378793+00:00",
+      "iteration": 4
+    },
+    {
+      "gap_id": "G-7",
+      "gap_description": "Acoustic driver power consumption at reactor scale — could be estimated from industrial ultrasonic transducer power specs at similar frequencies",
+      "queries": [
+        "high power ultrasonic processor system kW power consumption specifications industrial sonication Hielscher Branson",
+        "acoustic cavitation reactor power density watts per liter sonochemistry scale-up industrial specifications site:arxiv.org OR site:osti.gov",
+        "ultrasonic processor electro-acoustic efficiency wall-plug efficiency high power 20kHz piezoelectric transducer measurements percent",
+        "Hielscher ultrasonics power specifications frequency efficiency datasheet comparison UIP16000 UIP4000 kW"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.hielscher.com/i16000_p.htm",
+          "title": "UIP16000 - Most Powerful Ultrasonic Processor - Hielscher Ultrasonics",
+          "triage": "relevant",
+          "notes": "16 kW acoustic output at 18 kHz; efficiency >80% from power plug to liquid (extracted from search summary); designed for industrial continuous operation (24/7); cluster configurations to 60+ kW; accessible HTML product page with quantitative specs."
+        },
+        {
+          "url": "https://www.hielscher.com/uip4000hdt-4kw-high-performance-ultrasonics.htm",
+          "title": "UIP4000hdT - 4kW High Performance Ultrasonics - Hielscher Ultrasonics",
+          "triage": "relevant",
+          "notes": "4 kW at 20 kHz — frequency directly matches sonofusion operating range (20-40 kHz). Complementary lower-power datapoint for the same product family."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/20076085",
+          "title": "Energy analysis in acoustic cavitation (Journal Article)",
+          "triage": "abstract-only",
+          "notes": "Abstract only on OSTI. Full paper behind publisher paywall (I&EC, DOI: 10.1021/ie9906159). Could not access quantitative energy balance data."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/276711",
+          "title": "Harness cavitation to improve processing",
+          "triage": "abstract-only",
+          "notes": "Abstract only on OSTI. Full paper in Chemical Engineering Progress (July 1996). No quantitative power data accessible."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1425100",
+          "title": "DOE OSTI full-text PDF",
+          "triage": "unreadable",
+          "notes": "PDF could not be rendered as text by WebFetch — binary content only. Subject matter unclear."
+        },
+        {
+          "url": "https://arxiv.org/abs/2102.06885",
+          "title": "Effect of ultrasonic irradiation power on sonochemical synthesis",
+          "triage": "not-useful",
+          "notes": "Focuses on nanoparticle synthesis results, not power specifications. Abstract does not report wattage or efficiency values; full text not checked."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.hielscher.com/i16000_p.htm",
+          "source_name": "hielscher-i16000-p"
+        },
+        {
+          "url": "https://www.hielscher.com/uip4000hdt-4kw-high-performance-ultrasonics.htm",
+          "source_name": "hielscher-uip4000hdt-4kw-high-performance-ultrasonics"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "notes": "Key new finding: Hielscher search results surfaced wall-plug efficiency data (80-90% from plug to liquid) not found in prior iteration. This fills the gap left by the APC International source (which gave coupling coefficient Kp ≥ 55% but no wall-plug efficiency). The UIP16000 (16 kW, 18 kHz) and UIP4000hdT (4 kW, 20 kHz) together bracket the sonofusion operating frequency range and establish the per-unit power scale for commercial industrial ultrasonic systems. Reactor-scale estimation (GW-class) remains an analogy extrapolation: e.g., a 100 MWe acoustic driver load would require ~6,250 UIP16000 units at 16 kW each, illustrating the scale challenge.",
+      "timestamp": "2026-04-19T19:16:24.688019+00:00",
+      "iteration": 5
+    }
+  ],
+  "acquired_by_iteration": {
+    "4": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/02-acoustic-icf-sonofusion/iter-01/sources/americanpiezo-products-services-ultrasonic-power-transducers.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/02-acoustic-icf-sonofusion/iter-01/sources/osti-pages-biblio-1224334.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/02-acoustic-icf-sonofusion/iter-01/sources/wits-trade-comtrade-en-country-all-year-2023-tradeflow.md"
+    ],
+    "5": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/02-acoustic-icf-sonofusion/iter-01/sources/hielscher-i16000-p.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/02-acoustic-icf-sonofusion/iter-01/sources/hielscher-uip4000hdt-4kw-high-performance-ultrasonics.md"
+    ],
+    "6": {
+      "paths": [],
+      "note": "agent output missing or malformed — paths detected by filesystem diff"
+    }
+  }
+}

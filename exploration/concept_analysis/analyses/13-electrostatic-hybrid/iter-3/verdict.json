@@ -1,0 +1,25 @@
+{
+  "iteration": 3,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "research",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": true,
+  "merged_assess": true,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/avalanche-29m-raise-2026.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/avalanche-300kv-press-release.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/avalanche-cwfest2023-blog.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/avalanche-fusionwerx-grant.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/avalanche-orbitron-page.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/meetings-meeting-dpp24-session-np12-69.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/neimagazine-news-avalanche-energy-launches-fusionwerx.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/osti-pages-servlets-purl-2582151.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/prnewswire-news-releases-avalanche-energy-announces-new.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/talk-polywell-orbitron-paper-discussion.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/ui-2023aps-dpptp1006m-abstract.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/ui-2023aps-dppyo8010l-abstract.md"
+  ],
+  "timestamp": "2026-04-19T20:21:58.760516+00:00"
+}
