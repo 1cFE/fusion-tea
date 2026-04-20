@@ -1,0 +1,214 @@
+{
+  "entries": [
+    {
+      "gap_id": "G-1",
+      "gap_description": "All cost data 30–40 years old; no modern CAPEX analysis in current dollars",
+      "queries": [
+        "heavy ion fusion HYLIFE-II HIBALL economic analysis cost updated 2010 2020 site:osti.gov OR site:arxiv.org",
+        "inertial fusion energy power plant cost analysis levelized cost electricity 2020 2025 heavy ion"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/biblio/10170594",
+          "title": "Multi-unit inertial fusion plants based on HYLIFE-II, with shared heavy-ion RIA driver and target factory, producing electricity and hydrogen fuel",
+          "triage": "relevant-but-old",
+          "notes": "1994 LLNL report extending HYLIFE-II economics to multi-unit plants with shared RIA driver and target factory. Economic analysis via IFEFUEL2 code, covering cost of electricity and hydrogen. NOT a modern update — from the same HYLIFE-II era as existing sources. Partially addresses G-1 by adding multi-unit economics not in current source set, but does not satisfy the need for modern (post-2000) dollar analysis."
+        },
+        {
+          "url": "https://arxiv.org/abs/2602.19389",
+          "title": "Extension of the Fusion Power Plant Costing Standard",
+          "triage": "not-relevant",
+          "notes": "2026 paper on IFE/MFE/MIFE costing framework (probabilistic layer, NPV/IRR/LCOE metrics). Full-text confirmed via WebFetch: covers laser IFE and tokamak/MFE only. No heavy ion beam ICF content. Framework paper, not HIF cost data."
+        },
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7658748/",
+          "title": "A simplified economic model for inertial fusion",
+          "triage": "not-relevant",
+          "notes": "2020 Phil Trans Royal Society A paper. Technology-agnostic IFE model in principle, but full text confirmed via WebFetch: only laser ICF and pulsed power receive specific analysis. No HIF driver cost data. Not useful for HIF CAPEX gap."
+        }
+      ],
+      "extracted": [],
+      "failed": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/10170594",
+          "reason": "Extraction timed out after 600 seconds — OSTI PDF is a scanned (image-based) document. The agentic-mbse extraction pipeline requires OCR/LLM processing which exceeded the 10-minute timeout. Content confirmed accessible via WebFetch but returned binary image data only."
+        }
+      ],
+      "status": "failed",
+      "notes": "G-1 is a structural gap: no modern (post-2000) HIF economic analysis exists in accessible literature. The gap description itself acknowledges this: 'no published modern study exists.' The closest candidate (OSTI 10170594, 1994) extends HYLIFE-II economics to multi-unit plants but adds no modern dollar values. Extraction failed due to scanned PDF timeout. Future iterations should attempt direct PDF ingestion with higher timeout budget or request access via OSTI contact.",
+      "timestamp": "2026-04-20T16:46:20.119295+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-5",
+      "gap_description": "FLiBe coolant inventory cost at HYLIFE-II scale",
+      "queries": [
+        "FLiBe fluoride lithium beryllium cost per kg material cost fusion blanket 2020 2025"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.tandfonline.com/doi/full/10.1080/00295450.2019.1691400",
+          "title": "Fusion Blankets and Fluoride-Salt-Cooled High-Temperature Reactors with Flibe Salt Coolant: Common Challenges, Tritium Control, and Opportunities for Synergistic Development Strategies",
+          "triage": "paywall",
+          "notes": "2019 Nuclear Technology paper. Likely discusses FLiBe challenges including cost and supply chain for fusion and FHR applications. Returned 403 Forbidden on WebFetch attempt — institutional access required."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/752080",
+          "title": "FLIBE USE IN FUSION REACTORS: AN INITIAL SAFETY ASSESSMENT (OSTI, 1999)",
+          "triage": "too-old",
+          "notes": "1999 INEEL safety assessment of FLiBe in fusion reactors. May contain inventory estimates but predates modern Be supply chain context. Deprioritized as too old to address the gap."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "failed",
+      "notes": "No accessible modern FLiBe cost-per-kg data found. The most promising candidate (Tandf 2019 article) is paywalled. The gap remains open. Kairos Power is developing industrial FLiBe supply chains for the FHR; contacting Kairos or searching for their procurement documentation may be a future avenue.",
+      "timestamp": "2026-04-20T16:46:20.119295+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-8",
+      "gap_description": "Modern target gain calculations with updated simulation codes",
+      "queries": [
+        "heavy ion beam ICF target gain modern simulation radiation-hydrodynamics 2015 2020 site:arxiv.org",
+        "heavy ion fusion direct drive target gain simulation 2015 2025 LASNEX HYDRA site:osti.gov OR site:arxiv.org"
+      ],
+      "candidates": [
+        {
+          "url": "https://arxiv.org/abs/1511.06508",
+          "title": "Review of Heavy-Ion Inertial Fusion Physics",
+          "triage": "relevant",
+          "notes": "2015 peer-reviewed review paper (Kawata, Karino, Ogoyski; published in Matter and Radiation at Extremes). 21 pages with 36 figures. Covers state-of-the-art HIF physics including target gain requirements (~50–70 for 1 GWe plant), robust target implosion analysis, and fuel target physics. Most recent comprehensive HIF physics review found. More current than 1985–1994 HIBALL/HYLIFE-II simulations."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/934709",
+          "title": "Direct Drive Heavy-Ion-Beam Inertial Fusion at High Coupling Efficiency",
+          "triage": "partial",
+          "notes": "2007 OSTI conference paper. Contains LASNEX simulations of direct-drive HIF targets at high coupling efficiency (16–18% shell kinetic energy/beam energy when ion range increases fourfold). Coupling efficiency data, not gain calculations per se. No free full-text PDF confirmed accessible. Deprioritized vs. arxiv 1511.06508."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://arxiv.org/abs/1511.06508",
+          "source_name": "arxiv-1511-06508"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "timestamp": "2026-04-20T16:46:20.119295+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-10",
+      "gap_description": "sCO₂ or advanced power conversion cycle evaluation for HIF",
+      "queries": [],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "WebSearch budget exhausted (5/5 searches used) before reaching this gap. The gap description notes that 'no published study exists' for sCO₂ evaluation in HIF context — this is likely a truly vacant gap in the literature. A targeted search for 'sCO₂ inertial fusion energy power conversion' or 'supercritical CO2 IFE heat exchanger' may find adjacent studies, but a specific HIF sCO₂ paper is unlikely to exist given the hiatus of the HIF program.",
+      "timestamp": "2026-04-20T16:46:20.119295+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-14",
+      "gap_description": "HIBALL or HYLIFE-II updated with modern Li-6 enrichment and beryllium supply chain constraints",
+      "queries": [],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "notes": "Nice-to-have priority. WebSearch budget exhausted before reaching this gap. Supply chain analysis for Li-6 enrichment and beryllium in modern context would likely be found in broader fusion materials supply chain literature, not in HIF-specific publications.",
+      "timestamp": "2026-04-20T16:46:20.119295+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-10",
+      "gap_description": "sCO₂ or advanced power conversion cycle evaluation for HIF",
+      "queries": [
+        "supercritical CO2 Brayton cycle inertial fusion energy power plant evaluation site:arxiv.org OR site:osti.gov",
+        "Z-IFE power conversion cycle evaluation supercritical CO2 Rankine Brayton inertial fusion site:osti.gov"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/901970/",
+          "title": "SAND2006-7148 — Z-IFE Power Plant Final Report FY 2006 (Sandia National Laboratories)",
+          "triage": "relevant",
+          "notes": "Z-pinch IFE roadmap report covering FLiBe characterization, plant system cost estimates, and power conversion cycles. Search result summary confirms four power conversion systems were evaluated for IFE: sCO₂, Rankine, Brayton, and combined cycle. Z-IFE uses FLiBe liquid walls (same as HYLIFE-II) — closest available analog since no HIF-specific sCO₂ study exists. Digital PDF (2006), not scanned."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1221819",
+          "title": "Supercritical CO2 Brayton Cycles (OSTI generic report)",
+          "triage": "not-relevant",
+          "notes": "General sCO₂ Brayton cycle study, no IFE-specific content identified. Skipped in favor of SAND2006-7148 which confirmed IFE evaluation context."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/901970/",
+          "source_name": "osti-servlets-purl-901970"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "No HIF-specific sCO₂ study found — the gap description accurately states none exists. Best available source is SAND2006-7148 evaluating Z-IFE power conversion cycles including sCO₂ with FLiBe blanket (matching HYLIFE-II architecture). Applicability requires a note that this is Z-IFE analog, not HIF directly.",
+      "timestamp": "2026-04-20T17:05:00.028519+00:00",
+      "iteration": 3
+    },
+    {
+      "gap_id": "G-14",
+      "gap_description": "HIBALL or HYLIFE-II updated with modern Li-6 enrichment and beryllium supply chain constraints",
+      "queries": [
+        "lithium-6 enrichment supply chain fusion reactor constraints beryllium availability 2020 2025",
+        "beryllium supply chain fusion FLiBe blanket availability constraints site:arxiv.org OR site:osti.gov 2020 2025",
+        "\"lithium-6 supply\" DEMO fusion power plants viable route arxiv preprint 2019 2020 OR site:osti.gov critical materials"
+      ],
+      "candidates": [
+        {
+          "url": "https://transat-h2020.eu/wp-content/uploads/2019/11/Giegerich-Development-of-a-viable-route-for-lithium-6-supply-FED-149-2019-12.pdf",
+          "title": "Giegerich et al. (2019) — Development of a viable route for lithium-6 supply of DEMO and future fusion power plants (Fusion Engineering and Design, 149)",
+          "triage": "relevant",
+          "notes": "Peer-reviewed FED paper, open-access PDF from TRANSAT project. Directly addresses Li-6 enrichment supply constraints: COLEX process banned (Minamata convention), ICOMAX as proposed alternative, supply practically zero in the West, quantities required (tens of tonnes for pilot, hundreds for commercial). Does not cover beryllium or HIF-specific blankets, but provides the Li-6 side of G-14."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/2455087",
+          "title": "Materials Assessment for FLiBe Fusion Blankets (ORNL/TM-2024/3508, September 2024)",
+          "triage": "partially-relevant",
+          "notes": "2024 ORNL report on structural materials compatibility with FLiBe — addresses cladding materials, corrosion, irradiation. Does NOT directly address Li-6 enrichment supply chain or beryllium global availability. Relevant for FLiBe blanket design constraints but not the supply chain side of G-14. Not extracted — priority given to Giegerich Li-6 supply paper."
+        },
+        {
+          "url": "https://www.neimagazine.com/analysis/enriched-lithium-and-advanced-nuclear/",
+          "title": "Enriched lithium and advanced nuclear (NEI Magazine)",
+          "triage": "partially-relevant",
+          "notes": "Accessible HTML article on Li-6 supply chain for fusion. Has quantitative data (ITER needs ~200 kg, DEMO needs >60 t/GW, commercial needs hundreds of tonnes). Does not cover beryllium. Not extracted — Giegerich peer-reviewed paper is superior source for Li-6 supply data."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S2211467X25001555",
+          "title": "On the impact of nuclear fusion power plants deployment on selected critical materials consumption (ScienceDirect, 2025)",
+          "triage": "paywall",
+          "notes": "2025 paper on critical materials (including Li-6 and Be) for fusion deployment. Likely paywalled — not fetched."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://transat-h2020.eu/wp-content/uploads/2019/11/Giegerich-Development-of-a-viable-route-for-lithium-6-supply-FED-149-2019-12.pdf",
+          "source_name": "transat-h2020-wp-content-uploads-2019-11-giegerich"
+        }
+      ],
+      "failed": [],
+      "status": "partial",
+      "notes": "Li-6 supply chain covered by Giegerich 2019 FED paper. Beryllium supply chain not covered — no open-access paper found that addresses both beryllium availability AND HIF/FLiBe context. The gap description asks for HIBALL/HYLIFE-II updated with BOTH constraints; only Li-6 side is sourced. Beryllium supply constraint data is available from search summaries (DEMO needs ~490t vs ~300t/year global production) but no extractable document found that addresses this in context of HIF blankets.",
+      "timestamp": "2026-04-20T17:05:00.028519+00:00",
+      "iteration": 3
+    }
+  ],
+  "acquired_by_iteration": {
+    "2": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/25-heavy-ion-beam-icf/iter-02/sources/arxiv-1511-06508.md"
+    ],
+    "3": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/25-heavy-ion-beam-icf/iter-02/sources/osti-servlets-purl-901970.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/25-heavy-ion-beam-icf/iter-02/sources/transat-h2020-wp-content-uploads-2019-11-giegerich.md"
+    ]
+  }
+}

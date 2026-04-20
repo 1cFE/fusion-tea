@@ -6,14 +6,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": -0.9322753413065283
-        },
-        {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
-          "elasticity": -0.973743368085257
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
+          "elasticity": -0.9580992151462585
         }
       ]
     },
@@ -23,14 +18,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.3610658638030299
-        },
-        {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
-          "elasticity": 0.24980915863017253
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
+          "elasticity": 0.3695500478580177
         }
       ]
     },
@@ -40,14 +30,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": -0.0598454150143453
-        },
-        {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
-          "elasticity": -0.04381943339932028
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
+          "elasticity": -0.06877082704111495
         }
       ]
     },
@@ -57,26 +42,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": -0.24312200311684884
-        },
-        {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
-          "elasticity": -0.13853432554876455
-        }
-      ]
-    },
-    "eta_p": {
-      "param_name": "eta_p",
-      "display_name": "eta_p",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": -0.000012293120691592636
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
+          "elasticity": -0.22345345811915635
         }
       ]
     },
@@ -86,14 +54,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.012523629611297297
-        },
-        {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
-          "elasticity": -0.006287227341193086
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
+          "elasticity": -0.04208278843455654
         }
       ]
     },
@@ -103,14 +66,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.00035103631453460717
-        },
-        {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
-          "elasticity": -0.00013538770860599083
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
+          "elasticity": -0.0012145078811875915
         }
       ]
     },
@@ -120,14 +78,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.003633294465266962
-        },
-        {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
-          "elasticity": -0.0012114630234316024
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
+          "elasticity": -0.011869504863925746
         }
       ]
     },
@@ -137,14 +90,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.001453317786106785
-        },
-        {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
-          "elasticity": -0.00048458520937264097
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
+          "elasticity": -0.0047478019455702986
         }
       ]
     },
@@ -154,9 +102,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.00433226587651108
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
+          "elasticity": 0.001359437524610083
         }
       ]
     },
@@ -166,14 +114,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.1353557459537529
-        },
-        {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
-          "elasticity": 0.06552861436902996
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
+          "elasticity": 0.10862485789781132
         }
       ]
     },
@@ -183,14 +126,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.02399193330306842
-        },
-        {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
-          "elasticity": 0.01409331820184517
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
+          "elasticity": 0.02394771906823483
         }
       ]
     },
@@ -200,14 +138,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.006884281306944967
-        },
-        {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
-          "elasticity": 0.0023539594414025617
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
+          "elasticity": 0.0038026751274435134
         }
       ]
     },
@@ -217,14 +150,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.023601098849324254
-        },
-        {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
-          "elasticity": 0.005984313705841937
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
+          "elasticity": 0.009277505134420766
         }
       ]
     },
@@ -234,14 +162,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.10615582208437836
-        },
-        {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
-          "elasticity": 0.1461758812866017
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
+          "elasticity": 0.242613498896428
         }
       ]
     },
@@ -251,13 +174,8 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
           "elasticity": 0.0
         }
       ]
@@ -268,13 +186,8 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
           "elasticity": 0.0
         }
       ]
@@ -285,13 +198,8 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.0
-        },
-        {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
           "elasticity": 0.0
         }
       ]
@@ -302,365 +210,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
           "elasticity": 0.0
-        },
-        {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "p_input": {
-      "param_name": "p_input",
-      "display_name": "p_input",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.02808291058700684
-        }
-      ]
-    },
-    "eta_pin": {
-      "param_name": "eta_pin",
-      "display_name": "eta_pin",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": -0.029066357891831002
-        },
-        {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
-          "elasticity": 0.07531525501018478
-        }
-      ]
-    },
-    "eta_de": {
-      "param_name": "eta_de",
-      "display_name": "eta_de",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "p_coils": {
-      "param_name": "p_coils",
-      "display_name": "p_coils",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.0010899883395800887
-        }
-      ]
-    },
-    "p_cool": {
-      "param_name": "p_cool",
-      "display_name": "p_cool",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.005449941697900443
-        }
-      ]
-    },
-    "R0": {
-      "param_name": "R0",
-      "display_name": "R0",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.18658727312893245
-        }
-      ]
-    },
-    "elon": {
-      "param_name": "elon",
-      "display_name": "elon",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.18658727166575267
-        }
-      ]
-    },
-    "q95": {
-      "param_name": "q95",
-      "display_name": "q95",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "f_GW": {
-      "param_name": "f_GW",
-      "display_name": "f_GW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "B": {
-      "param_name": "B",
-      "display_name": "B",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "T_e": {
-      "param_name": "T_e",
-      "display_name": "T_e",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "n_e": {
-      "param_name": "n_e",
-      "display_name": "n_e",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "Z_eff": {
-      "param_name": "Z_eff",
-      "display_name": "Z_eff",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "plasma_volume": {
-      "param_name": "plasma_volume",
-      "display_name": "plasma_volume",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "R_w": {
-      "param_name": "R_w",
-      "display_name": "R_w",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "T_edge": {
-      "param_name": "T_edge",
-      "display_name": "T_edge",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "tau_ratio": {
-      "param_name": "tau_ratio",
-      "display_name": "tau_ratio",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "b_max": {
-      "param_name": "b_max",
-      "display_name": "b_max",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.129586215151569
-        }
-      ]
-    },
-    "r_coil": {
-      "param_name": "r_coil",
-      "display_name": "r_coil",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.25917242149292646
-        }
-      ]
-    },
-    "p_icrf": {
-      "param_name": "p_icrf",
-      "display_name": "p_icrf",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.04167441898799764
-        }
-      ]
-    },
-    "M_ion": {
-      "param_name": "M_ion",
-      "display_name": "M_ion",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "lambda_q": {
-      "param_name": "lambda_q",
-      "display_name": "lambda_q",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "disruption_rate_base": {
-      "param_name": "disruption_rate_base",
-      "display_name": "disruption_rate_base",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "disruption_steepness": {
-      "param_name": "disruption_steepness",
-      "display_name": "disruption_steepness",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "disruption_damage": {
-      "param_name": "disruption_damage",
-      "display_name": "disruption_damage",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "disruption_downtime": {
-      "param_name": "disruption_downtime",
-      "display_name": "disruption_downtime",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "interest_rate": {
-      "param_name": "interest_rate",
-      "display_name": "interest_rate",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.6944147818609143
-        },
-        {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
-          "elasticity": 0.3689554398738189
-        }
-      ]
-    },
-    "inflation_rate": {
-      "param_name": "inflation_rate",
-      "display_name": "inflation_rate",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "29",
-          "name": "Negative Triangularity Tokamak",
-          "elasticity": 0.061289553273278966
-        },
-        {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
-          "elasticity": 0.20308199439543298
         }
       ]
     },
@@ -670,9 +222,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
-          "elasticity": -0.35425233650287075
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
+          "elasticity": -0.3241281145820748
         }
       ]
     },
@@ -682,9 +234,21 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
-          "elasticity": -0.004766008192325401
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
+          "elasticity": -0.0030278706390520806
+        }
+      ]
+    },
+    "eta_pin": {
+      "param_name": "eta_pin",
+      "display_name": "eta_pin",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
+          "elasticity": 0.15135120749958075
         }
       ]
     },
@@ -694,8 +258,8 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
           "elasticity": 0.0
         }
       ]
@@ -706,9 +270,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
-          "elasticity": -0.00024229260468632048
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
+          "elasticity": -0.0009495604032636121
         }
       ]
     },
@@ -718,9 +282,33 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "30",
-          "name": "Laser ICF - NIF Commercialization (D-T)",
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
           "elasticity": 0.0
+        }
+      ]
+    },
+    "interest_rate": {
+      "param_name": "interest_rate",
+      "display_name": "interest_rate",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
+          "elasticity": 0.7101758401680722
+        }
+      ]
+    },
+    "inflation_rate": {
+      "param_name": "inflation_rate",
+      "display_name": "inflation_rate",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "25",
+          "name": "Heavy Ion Beam ICF (D-T)",
+          "elasticity": 0.06822799210208039
         }
       ]
     }

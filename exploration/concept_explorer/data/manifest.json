@@ -1,31 +1,18 @@
 {
-  "generated_at": "2026-04-20T14:28:39.851085+00:00",
+  "generated_at": "2026-04-20T17:40:53.858842+00:00",
   "concepts": [
     {
-      "concept_id": "29",
-      "name": "Negative Triangularity Tokamak",
-      "confinement_family": "MFE",
-      "company": "Firefly Fusion",
-      "status": "in_progress",
-      "illustration": null,
-      "has_cost_model": true,
-      "has_sensitivities": true,
-      "lcoe_per_mwh": 96.59895324707031,
-      "confidence": null,
-      "data_file": "data/29.json"
-    },
-    {
-      "concept_id": "30",
-      "name": "Laser ICF - NIF Commercialization (D-T)",
+      "concept_id": "25",
+      "name": "Heavy Ion Beam ICF (D-T)",
       "confinement_family": "IFE",
-      "company": "Inertia Enterprises",
+      "company": "Intensity Energy",
       "status": "in_progress",
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 136.97219848632812,
+      "lcoe_per_mwh": 91.41015625,
       "confidence": null,
-      "data_file": "data/30.json"
+      "data_file": "data/25.json"
     }
   ]
 }

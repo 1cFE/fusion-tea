@@ -30,19 +30,19 @@ Snapshot: 2026-04-20. 38 concepts from `exploration/concept_explorer/data/concep
 | 17a | Laser ICF - Hybrid Direct Drive (D-T) | Xcimer Energy | 6 | yes | yes | yes | no |
 | 17b | Laser ICF - Fast Ignition (D-T) | Focused Energy | 3 | yes | yes | yes | no |
 | 18  | p-B11 FRC | TAE Technologies | 3 | yes | yes | yes | no |
-| 19  | Orbital Levitated Dipole (D-He3) | Zephyr Fusion | 0 | no | - | no | no |
+| 19  | Orbital Levitated Dipole (D-He3) | Zephyr Fusion | 3 | no | - | yes | no |
 | 20a | QI Modular HTS Stellarator - Infinity Two | Type One Energy | 3 | yes | yes | yes | no |
 | 20b | Compact Liquid-Wall HTS Stellarator | Renaissance Fusion | 3 | yes | yes | yes | no |
 | 21  | Spherical Tokamak - HTS | Tokamak Energy | 1 | yes | yes | yes | yes |
 | 22  | Projectile ICF (D-T) | First Light Fusion, NearStar Fusion | 5 | yes | no | yes | no |
-| 23  | Laser ICF - Nanostructured Target (p-B11) | Marvel Fusion | 0 | no | - | no | no |
+| 23  | Laser ICF - Nanostructured Target (p-B11) | Marvel Fusion | 3 | yes | yes | yes | no |
 | 24  | Dense Plasma Focus (p-B11) | LPPFusion | 3 | yes | yes | yes | no |
-| 25  | Heavy Ion Beam ICF (D-T) | Intensity Energy | 0 | no | - | no | no |
+| 25  | Heavy Ion Beam ICF (D-T) | Intensity Energy | 3 | yes | yes | yes | no |
 | 26  | Laser ICF - Indirect Drive (D-T) | Inertia Enterprises | 0 | no | - | no | no |
 | 27  | Polywell (D-T) | EMC2 | 0 | no | - | no | no |
 | 28  | HTS Tokamak - Full HTS | Energy Singularity | 3 | yes | yes | yes | no |
-| 29  | Negative Triangularity Tokamak | Firefly Fusion | 3 | yes | yes | no | no |
-| 30  | Laser ICF - NIF Commercialization (D-T) | Inertia Enterprises | 3 | yes | yes | no | no |
+| 29  | Negative Triangularity Tokamak | Firefly Fusion | 3 | yes | yes | yes | no |
+| 30  | Laser ICF - NIF Commercialization (D-T) | Inertia Enterprises | 3 | yes | yes | yes | no |
 | 31  | Laser ICF - OEC Architecture (D-T) | Blue Laser Fusion (BLF) | 0 | no | - | no | no |
 | 32  | Laser ICF - French National Direct Drive (D-T) | GenF Systems | 0 | no | - | no | no |
 | 33  | State-Backed Tokamak - BEST | Neo Fusion | 3 | yes | yes | yes | no |
@@ -53,20 +53,18 @@ Snapshot: 2026-04-20. 38 concepts from `exploration/concept_explorer/data/concep
 ## Summary
 
 - Total concepts: **38**
-- Analysis started (`iter-N/` with content): **30**
-- `model_setup.py` present: **30** (all fresh)
-- Using `1costingfe` framework: **24** (of 30); the other 6 use hand-built models
-- Extracted to explorer data: **28** (0 stale)
+- Analysis started (`iter-N/` with content): **33**
+- `model_setup.py` present: **32** (all fresh; 19 has analysis but no model_setup)
+- Using `1costingfe` framework: **26** (of 32); the other 6 use hand-built models
+- Extracted to explorer data: **33** (0 stale)
 - Approved: **1**
 
-## Changes Since Last Snapshot (2026-04-19)
+## Changes Since Last Snapshot (2026-04-20 morning)
 
-- **New analyses started** (gap-checked → I3): 18 (p-B11 FRC), 24 (Dense Plasma Focus) — both now have model_setup (costingfe) and extraction
-- **Newly extracted**: 18, 20a, 20b, 24, 33, 34 (6 new → total 28)
-- **35 progressed** (I2 → I4): model_setup refreshed (stale → yes, now costingfe); extraction refreshed
-- **No stale model_setup remains** — 35 was the last holdout, now fresh
-- **Stale synthesis.md** still on 02, 08, 12 (unchanged)
-- **Pipeline state summary**: 1 approved, 8 synthesized (3 stale), 6 reviewed, 15 iterating, 8 gap-checked
+- **New analyses started** (gap-checked → I3): 19 (Orbital Levitated Dipole), 23 (Laser ICF - Nanostructured Target), 25 (Heavy Ion Beam ICF)
+- **19 note**: has analysis (3 iter) and extraction but no model_setup.py
+- **Newly extracted**: 19, 23, 25, 29, 30 (5 new → total 33)
+- **Pipeline state summary**: 1 approved, 8 synthesized (3 stale), 6 reviewed, 18 iterating, 5 gap-checked
 
 ## Historical Changes
 

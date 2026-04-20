@@ -1,0 +1,81 @@
+{
+  "gaps_attempted": [
+    {
+      "gap_id": "G-13",
+      "gap_description": "Power beaming efficiency chain (conversion → transmitter → atmosphere → rectenna)",
+      "queries": [
+        "JAXA space solar power microwave power transmission efficiency end-to-end rectenna DC-RF report",
+        "DOE NRL space solar power 2023 2024 microwave beaming efficiency chain atmospheric attenuation report site:osti.gov OR site:nrl.navy.mil",
+        "space solar power SPS microwave system efficiency DC-RF conversion 70% rectenna 85% atmospheric losses end-to-end review arxiv OR osti 2020 2021 2022 2023"
+      ],
+      "candidates": [
+        {
+          "url": "https://nss.org/wp-content/uploads/2017/07/Space-solar-power-workshop-207.pdf",
+          "title": "Wireless Power Transmission for Solar Power Satellite (SPS) — NSS Workshop Paper",
+          "triage": "relevant",
+          "notes": "PDF accessible (890KB). NSS Space Solar Power Workshop paper directly on WPT efficiency for SPS. Search results indicate this type of document contains DC-to-RF, rectenna, and end-to-end efficiency chain data."
+        },
+        {
+          "url": "https://ntrs.nasa.gov/api/citations/20140003205/downloads/20140003205.pdf",
+          "title": "A Comparison of a Solar Power Satellite Concept — NASA Technical Report 2014",
+          "triage": "relevant",
+          "notes": "PDF accessible (1.7MB). NASA 2014 technical report comparing SPS concepts. Likely contains power transmission efficiency breakdowns and system-level efficiency data."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/952766",
+          "title": "Solar Power Beaming: From Space to Earth (LLNL-TR-412782)",
+          "triage": "relevant-laser-only",
+          "notes": "LLNL 2009 report (A.M. Rubenchik et al.) on laser power beaming from LEO. Accessible PDF but covers laser beaming (not microwave). Relevant to laser pathway discussed in analysis but does not cover the microwave efficiency chain which is the primary SPS reference."
+        },
+        {
+          "url": "https://aerospace.org/sites/default/files/2020-10/Vedda-Jones_SolarPower_20201006_0.pdf",
+          "title": "Space-Based Solar Power: A Near-Term Investment — Aerospace Corp 2020",
+          "triage": "blocked",
+          "notes": "403 Forbidden — institutional access required."
+        },
+        {
+          "url": "https://www.kenkai.jaxa.jp/eng/research/ssps/ssps-mssps.html",
+          "title": "JAXA Microwave WPT Research Page",
+          "triage": "accessible-but-no-data",
+          "notes": "Page is accessible HTML but contains only qualitative descriptions of research objectives — no specific efficiency figures (DC-to-RF, rectenna, atmospheric attenuation percentages) are stated on the page."
+        },
+        {
+          "url": "https://www.osti.gov/biblio/6022474",
+          "title": "Satellite power system (SPS) microwave subsystem impacts and benefits — OSTI",
+          "triage": "skipped",
+          "notes": "Older OSTI report (circa 1976 era based on search context). Not triaged individually given extraction budget was allocated to higher-priority candidates."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://nss.org/wp-content/uploads/2017/07/Space-solar-power-workshop-207.pdf",
+          "source_name": "nss-wp-content-uploads-2017-07-space-solar-power-workshop"
+        },
+        {
+          "url": "https://ntrs.nasa.gov/api/citations/20140003205/downloads/20140003205.pdf",
+          "source_name": "ntrs-api-citations-20140003205-downloads-20140003205"
+        }
+      ],
+      "failed": [],
+      "status": "partial"
+    },
+    {
+      "gap_id": "G-15",
+      "gap_description": "He3 global production capacity and price trajectory",
+      "queries": [],
+      "candidates": [],
+      "extracted": [],
+      "failed": [],
+      "status": "skipped",
+      "skip_reason": "Marked CLOSED in prior research attempts. CRS R41419 (everycrsreport-reports-r41419) was extracted in iter-2 and covers this gap."
+    }
+  ],
+  "summary": {
+    "gaps_attempted": 1,
+    "gaps_skipped": 1,
+    "sources_extracted": 2,
+    "sources_failed": 0,
+    "searches_used": 3,
+    "extractions_used": 2
+  }
+}

@@ -1,0 +1,199 @@
+Heavy Ion Beam ICF (D-T) | HYLIFE-II archetype — Intensity Energy
+Native design: 940 MWe | 6 Hz | Recirculating induction linac + FLiBe wall
+LCOE:          92.3 $/MWh | Overnight: 6686 $/kW
+Fusion:        2667 MW | Net: 940 MW | Q_eng: 6.50
+Q_sci (target gain): 62.8  [HYLIFE-II nominal: 70 at 5 MJ]
+Driver E/shot: 7.07 MJ  [HYLIFE-II stated: 5 MJ]
+
+Historical reference: HYLIFE-II LCOE = $65/MWh (early-1990s) → ~$162/MWh 2026 (CPI ×2.5)
+  Source: hif-technology-overview.md §HYLIFE-II; analysis §S5
+
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    18.4
+CAS21    Buildings                         622.3
+CAS22    Reactor Plant Equipment          2692.1
+CAS23    Turbine Plant                     219.6
+CAS24    Electrical Plant                   93.5
+CAS25    Miscellaneous                      56.9
+CAS26    Heat Rejection                     99.9
+CAS27    Special Materials                  14.1
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                         0.0
+CAS30    Indirect Costs                    887.4
+CAS40    Owner's Costs                      37.8
+CAS50    Supplementary                     337.1
+CAS60    IDC                              1201.3
+CAS70    O&M (annualized)                  100.4
+CAS80    Fuel (annualized)                   1.2
+CAS90    Financial                         506.5
+------------------------------------------------
+         Total Capital                    6285.3
+
+CAS22 sub-accounts:
+  C220101       186.8 M$
+  C220102       130.4 M$
+  C220103         0.0 M$
+  C220104      1400.0 M$
+  C220105         8.5 M$
+  C220106        29.6 M$
+  C220107        10.1 M$
+  C220108       262.6 M$
+  C220109         0.0 M$
+  C220110        79.0 M$
+  C220111       170.3 M$
+  C220112         0.0 M$
+  C220200       192.8 M$
+  C220300        14.6 M$
+  C220400         5.7 M$
+  C220500       114.9 M$
+  C220600        10.9 M$
+  C220700        75.6 M$
+  C220000 (Total)     2692.1 M$
+
+1 GWe scaled:  LCOE = 91.4 $/MWh | Overnight = 6646 $/kW
+
+Key Assumptions and Uncertainties:
+  C220104 = $1,400M  UNCERTAIN: $570M 1990s HYLIFE-II driver × 2.5 CPI
+                     Only published HIF driver bottom-up cost. Does not
+                     capture modular cell manufacturing learning potential.
+                     Source: hif-technology-overview.md §HYLIFE-II; analysis §S2.1
+  q_eng = 6.5        UNCERTAIN: from HIBALL 15% recirc fraction (Q_eng ≈ 6.7)
+                     HYLIFE-II recirculating arch may have different fraction.
+                     Source: hif-technology-overview.md §HIBALL; analysis §S5
+  eta_pin = 0.35     UNCERTAIN: mid-range 30-40%; structural HIF advantage
+                     over laser ICF (1-15%) confirmed; exact value unpublished
+                     Source: hif-technology-overview.md §Driver Technology
+  eta_th = 0.38      UNCERTAIN: conservative steam Rankine (1990s design era)
+                     sCO2 not evaluated for HIF; actual HYLIFE-II value unclear
+                     Source: analysis §S5 [analogue, low confidence]
+  availability = 0.80  UNCERTAIN: no published HYLIFE-II availability target
+                     High 6 Hz rep rate reduces per-shot energy but adds wear
+                     Source: analysis §S5 [analogue, low confidence]
+  CAS27 = DEFAULT    UNCERTAIN: FLiBe inventory (Be + Li-6) not separately costed
+                     Framework DT default ($15M) assumes PbLi blanket, not FLiBe
+                     FLiBe cost is sparse in all sources; HYLIFE-II has only 1994$
+                     Source: analysis §S4 FLiBe supply chain; memory note
+  Target factory O&M = DEFAULT  UNCERTAIN: no HIF target production cost exists
+                     Framework staffing-based default does not capture ~189M
+                     targets/yr consumable costs; true OPEX may be significantly
+                     higher. Source: analysis §S2 Challenge 2; analysis §S5
+  CAS21 = LIKELY UNDERCOSTED  Framework uses per-MW civil works scaling derived
+                     from tokamak geometry. An HIF facility requires km-scale
+                     accelerator tunnel infrastructure — qualitatively different
+                     civil works scope. This may partly explain the gap between
+                     model LCOE (~$92/MWh) and the inflation-adjusted HYLIFE-II
+                     reference (~$162/MWh, 6.5 c/kWh × 2.5 CPI). The model LCOE
+                     is probably a lower bound; the historical reference is probably
+                     an upper bound. The accelerator civil works uncertainty should
+                     be tracked separately from driver capital uncertainty.
+                     Source: hif-technology-overview.md §HYLIFE-II; analysis §S2.1
+
+Sensitivity (elasticity = %LCOE / %param)
+------------------------------------------------
+
+Engineering levers:
+  availability                         -0.9577
+  construction_time_yr                 +0.3687
+  q_eng                                -0.3203
+  plasma_t                             +0.2453
+  eta_th                               -0.2228
+  eta_pin                              +0.1481
+  blanket_t                            +0.1098
+  mn                                   -0.0678
+  f_sub                                -0.0415
+  ht_shield_t                          +0.0242
+  p_trit                               -0.0125
+  vessel_t                             +0.0094
+  p_house                              -0.0050
+  structure_t                          +0.0039
+  f_rep                                -0.0030
+  p_cryo                               +0.0014
+  p_pump                               -0.0013
+  p_target                             -0.0010
+  dd_f_T                               +0.0000
+  dd_f_He3                             +0.0000
+  dhe3_dd_frac                         +0.0000
+  dhe3_f_T                             +0.0000
+  f_rad                                +0.0000
+  eta_dec                              +0.0000
+
+Financial:
+  interest_rate                        +0.7070
+  inflation_rate                       +0.0694
+
+Costing constants (top 15):
+  om_cost_dt                           +0.1557
+  driver_heavy_ion_per_mw              +0.1493
+  indirect_fraction                    +0.1389
+  blanket_unit_cost_dt                 +0.1019
+  target_factory_base                  +0.0770
+  installation_frac                    +0.0438
+  core_lifetime_dt                     -0.0398
+  shield_unit_cost                     +0.0382
+  fuel_handling_dt_base                +0.0295
+  electric_per_mw                      +0.0246
+  decom_provision_dt                   +0.0240
+  remote_handling_dt_base              +0.0232
+  fuel_recovery                        -0.0230
+  misc_per_mw                          +0.0150
+  construction_insurance_frac          +0.0108
+
+  Framework artifact notes (do not interpret as HIF design levers):
+    eta_pin: when q_eng is an input constraint (as here), eta_pin does not control
+      recirculating fraction — see driver efficiency sweep below for correct treatment.
+    plasma_t: IFE analog is target gain (q_sci), not plasma temperature. Chamber
+      radius appears as a costing geometry parameter; its sensitivity has no HIF
+      design interpretation. Varying plasma_t does not represent an HIF design choice.
+
+Driver Efficiency Scenario Sweep — physically-derived q_eng mapping:
+  (q_eng derived from eta_pin via driver-dominated scaling: q_eng = 6.5 × eta/0.35)
+  Scenario                                     eta_pin   q_eng   LCOE $/MWh    OC $/kW  Notes
+  ------------------------------------------------------------------------------------------------
+  Laser ICF reference  (0.10 — 10%)               0.10    1.86        120.8       9016
+  Below HIF range      (0.25 — pessimistic)       0.25    4.64         95.2       6922
+  HIF low end          (0.30)                     0.30    5.57         93.5       6782
+  HIF mid-range        (0.35 — base case)         0.35    6.50         92.3       6686  <- base case
+  HIF high end         (0.40)                     0.40    7.43         91.5       6617
+  Above HIF range      (0.45 — optimistic)        0.45    8.36         90.8       6563
+
+  Note: at laser ICF efficiency (eta_pin~0.10), derived q_eng ≈ 1.86 means ~53%
+  recirculating power — the plant barely breaks even energetically. At HIF's 30-40%,
+  q_eng of 5.6–7.4 gives 13–18% recirc, demonstrating the structural economic
+  advantage that is HIF's central claim. Source: analysis §S7; §S5
+
+Driver Capital Cost Scenario Sweep (C220104, HYLIFE-II base: $1.4B 2026$):
+  Scenario                                     C220104 M$   LCOE $/MWh    OC $/kW  Notes
+  ----------------------------------------------------------------------------------------
+  Optimistic modular NOAK  ($0.7B)                    700         78.8       5511
+  Mid-range scenario       ($1.0B)                   1000         84.6       6015
+  HYLIFE-II inflated base  ($1.4B)                   1400         92.3       6686  <- base case
+  No-learning pessimistic  ($2.0B)                   2000        103.9       7694
+  Worst-case conservative  ($2.5B)                   2500        113.6       8534
+
+  Note: modular induction linac architecture (identical cells, factory
+  manufacturing) is frequently cited as a path to cost reduction from
+  scientific-instrument procurement levels. No learning-curve analysis
+  exists. Source: analysis §S2 Challenge 1; hif-technology-overview.md §Driver Technology
+
+Availability Scenario Sweep (dominant LCOE lever, elasticity ≈ −0.96):
+  Scenario                                      Avail   LCOE $/MWh    OC $/kW  Notes
+  ------------------------------------------------------------------------------------
+  Low availability   (70%)                       0.70        105.0       6686
+  Below-target       (75%)                       0.75         98.3       6686
+  Base case          (80%)                       0.80         92.3       6686  <- base case
+  Above-target       (85%)                       0.85         87.4       6686
+  High availability  (90%)                       0.90         82.7       6686
+
+  Note: availability is the single most controllable post-construction LCOE lever.
+  H2 hypothesis (analysis §S5): LCOE < $100/MWh requires availability > ~78%.
+  No HIF plant has ever operated; rep-rated chamber (6 Hz) wear and target
+  delivery reliability are the key determinants. Source: analysis §S2 Challenge 3
+
+Regulatory Cost Scenario (Stewart & Shirvan 2022 fission-analog framework):
+  Base LCOE (no regulatory multiplier): 92.3 $/MWh
+  Note: Stewart & Shirvan 2.2× construction cost multiplier applies as
+  conservative upper bound for D-T IFE regulatory pathway.
+  No HIF plant has entered regulatory process; no licensing pathway scoped.
+  Source: analysis §S2 Challenge 6; analysis §S7; 21-spherical-tokamak-hts §S2
+

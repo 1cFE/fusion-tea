@@ -1,0 +1,99 @@
+{
+  "concept_id": "19",
+  "name": "Orbital Levitated Dipole (D-He3)",
+  "confinement_family": "MFE",
+  "company": "Zephyr Fusion",
+  "status": "in_progress",
+  "illustration": null,
+  "has_cost_model": false,
+  "has_sensitivities": false,
+  "cost_model": null,
+  "parameter_metadata": {},
+  "narrative": {
+    "key_bets": [
+      "Energy confinement time scales as τₑ ~ R² in a D-He3 dipole at meter-scale radius, enabling Q > 1 at orbital device scale",
+      "D-D side reactions self-breed He3 via tritium decay at rates sufficient to sustain continuous commercial fuel supply without external procurement",
+      "End-to-end power beaming efficiency (fusion → proton deceleration → DC → microwave transmitter → atmosphere → rectenna → grid) exceeds ~30% at multi-MW scale",
+      "D-He3 ion temperatures of 50–100 keV are achievable in a levitated dipole geometry despite being 5–10× higher than D-T requirements",
+      "A complete fusion reactor spacecraft (HTS coil, heating, power conversion, thermal management) can be packaged within 5,000–15,000 kg for Falcon 9 launch",
+      "Space-qualified HTS coil with on-board cryocooler can maintain ~20–30 K operation in LEO radiation environment for multi-year orbital lifetime",
+      "Direct conversion of 14.7 MeV protons at the dipole separatrix is achievable at commercially viable efficiency"
+    ],
+    "eliminated_costs": [
+      "CAS 21–23 first wall, blanket, shield, and vacuum vessel — eliminated by orbital deployment with no structural containment",
+      "CAS 24–26 turbine plant, electrical plant, and heat rejection — replaced by direct conversion and power beaming (no thermal cycle)",
+      "Tritium breeding infrastructure — Li-6 enrichment, FLiBe/Li-metal handling, and tritium processing eliminated by aneutronic D-He3 fuel",
+      "14 MeV neutron shielding materials (tungsten, WC cermet, B₄C) — eliminated; D-D side-reaction neutrons radiate into space",
+      "Conventional site and building costs — no terrestrial reactor building, foundation, or containment structure"
+    ],
+    "novel_costs": [
+      "Launch cost to LEO as primary CAPEX driver (~$2,700/kg Falcon 9, ~$13–40M/unit at 5,000–15,000 kg spacecraft mass)",
+      "Power beaming ground infrastructure — rectenna fields at ~$2M/MW (GW-class GEO SPS analogue), 10×13 km receiving area per GW",
+      "Helium-3 fuel procurement at ~$28–34M/kg market price, or self-breeding infrastructure with 12.3-year tritium decay cycle",
+      "Direct conversion hardware for 14.7 MeV protons — no commercial supply chain, first-of-kind space-qualified manufacturing",
+      "Orbital O&M: debris mitigation, radiation hardening, cryocooler/radiator thermal management, replacement logistics with no EVA analogue"
+    ],
+    "risks": [
+      {
+        "description": "No energy conversion pathway specified — direct conversion and power beaming efficiency chain entirely undefined; delivered power formally undefined making LCOE uncalculable",
+        "severity": "high"
+      },
+      {
+        "description": "He3 supply fundamentally constrained — global production ~1.8–2.7 kg/year, market price ~$30M/kg, subject to DOE/DHS/DOD export controls and government rationing; self-breeding pathway undemonstrated in dipole geometry",
+        "severity": "high"
+      },
+      {
+        "description": "Energy confinement scaling law unknown for dipole geometry — OpenStar explicitly states 'no such model exists'; D-He3 requires ~10× higher triple product than D-T",
+        "severity": "high"
+      },
+      {
+        "description": "D-He3 confinement physics requires 50–100 keV ion temperatures — 2–3 orders of magnitude above LDX/RT-1 experimental heritage of a few hundred eV",
+        "severity": "high"
+      },
+      {
+        "description": "Power beaming end-to-end efficiency realistically ~14% with phased-array steering (<20% TX × 89% beam × 80% rectenna); below ~20% threshold makes terrestrial competition impossible regardless of Q",
+        "severity": "high"
+      },
+      {
+        "description": "No heating method disclosed — recirculating power fraction unanchored; high fraction could render concept non-viable independent of other parameters",
+        "severity": "high"
+      },
+      {
+        "description": "Zephyr is pre-prototype (~2 employees, YC F25 2025) with no technical papers, patents, grants, or plasma parameter disclosures — entire public technical content fits one launch page",
+        "severity": "high"
+      },
+      {
+        "description": "Orbital HTS coil lifetime under Van Allen belt proton/electron bombardment, thermal cycling, and magnetic stress is unvalidated at fusion-relevant field strengths",
+        "severity": "medium"
+      },
+      {
+        "description": "Space-qualified cryocooler and radiator sizing for ~20–30 K coil temperature in LEO thermal environment has no precedent at fusion coil scale",
+        "severity": "medium"
+      },
+      {
+        "description": "Regulatory dual-track risk — IAEA/UN COPUOS oversight for nuclear material in orbit plus DOE/DHS/DOD export controls on He3/tritium procurement; policy barrier unresolvable by technology alone",
+        "severity": "medium"
+      },
+      {
+        "description": "Capital cost structure has no published analogue — CAS 10-LCOE framework does not apply; free-form orbital spacecraft cost model required",
+        "severity": "medium"
+      },
+      {
+        "description": "Plant capacity factor undefined — no orbital fusion O&M precedent; debris/radiation events could drive significant unplanned downtime offsetting steady-state advantage",
+        "severity": "medium"
+      },
+      {
+        "description": "Direct conversion hardware has no commercial supply chain — only reference is 1970s Venetian blind DEC (never manufactured at scale, never space-qualified)",
+        "severity": "medium"
+      },
+      {
+        "description": "Competitive benchmark uncertainty — Zephyr cites ITER ($650M/MW) but relevant benchmarks are SPS parity ($200–500/MWh) and terrestrial fusion parity ($50–150/MWh), requiring different development paths",
+        "severity": "low"
+      }
+    ]
+  },
+  "sources": {
+    "model_setup": null,
+    "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/19-orbital-levitated-dipole/analysis.md"
+  }
+}
