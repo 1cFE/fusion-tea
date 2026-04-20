@@ -1,5 +1,9 @@
 """Planar Coil Stellarator (Thea Energy — Helios) LCOE Model Setup.
 
+Usage:
+    uv run python model_setup.py              # print results to terminal
+    uv run python model_setup.py | tee model_output.txt  # also save for synthesis stage
+
 Modeling approach:
     costingfe STELLARATOR/DT concept. Parameters are taken directly from the
     Helios preconceptual design (arXiv:2512.08027), DOE-certified January 2026.
@@ -20,13 +24,9 @@ Key deviations from stellarator defaults:
     - eta_th=0.40 (three-stage steam Rankine at 635°C; default=0.46 is optimistic)
     - p_input=1.0 MW (ignited plasma; only 1 MW operational ECRH for impurity control)
     - p_cryo=15.0 MW (UNCERTAIN: 336 REBCO coils at 20 K is the dominant auxiliary load)
-    - availability=0.88 (Helios states 88%; default may differ)
+    - availability=0.88 (Helios states 88%; biennial 84-day maintenance cycle)
     - noak=False (FOAK: first plant is the modeled scenario per $150/MWh target)
     - f_dec=0.0 (pure steam Rankine; no direct energy conversion)
-
-Usage:
-    uv run python model_setup.py              # print results to terminal
-    uv run python model_setup.py | tee model_output.txt  # also save for synthesis stage
 """
 
 from costingfe import ConfinementConcept, CostModel, Fuel
@@ -34,97 +34,96 @@ from costingfe import ConfinementConcept, CostModel, Fuel
 # ── Model Initialization ─────────────────────────────────────────────────────
 model = CostModel(concept=ConfinementConcept.STELLARATOR, fuel=Fuel.DT)
 
-# ── Plant Configuration Constants ────────────────────────────────────────────
+# ── Shared kwargs (native 390 MWe and scaled 1 GWe forward calls) ────────────
 # All values sourced from analysis.md §Section 5 unless noted.
 # Sources:
 #   [A] analysis.md §Section 5: LCOE-Relevant Parameters table
 #   [B] thea-energy-helios-arxiv-2512-08027.md (Helios preconceptual design)
 #   [C] analysis.md §Section 2 (challenges) and §Section 5 (missing params)
-#   [D] mfe_stellarator.yaml framework defaults (used where no Helios data exists)
+#   [D] steady_state_stellarator.yaml framework defaults (where no Helios data exists)
 
-NET_ELECTRIC_MW = 390.0    # [A] "Net electric to grid: 390 MWe"
-AVAILABILITY     = 0.88    # [A] "Capacity factor: 88%"; maintenance-limited,
-                           #      84-day biennial maintenance cycle [B §Operations]
-LIFETIME_YR      = 40      # [A] "Magnet design lifetime: 40+ years" [B §Magnets]
-CONSTRUCTION_YR  = 8.0     # DEFAULT [D]: no published Helios construction timeline;
-                           # UNCERTAIN: planar coil simplifies winding but FOAK complexity
-INTEREST_RATE    = 0.07    # DEFAULT: standard LCOE financial assumption
-INFLATION_RATE   = 0.0245  # DEFAULT: standard LCOE financial assumption
-
-# Geometry — Helios preconceptual design [B §Plasma & Configuration]
-R0          = 8.0    # [A] "Major radius: 8 m"
-PLASMA_T    = 1.8    # [A] "Minor radius: 1.8 m" (aspect ratio 4.5)
-ELON        = 1.0    # QA stellarator ≈ circular cross-section [B §Plasma & Configuration]
-BLANKET_T   = 0.50   # [B §Blanket & Tritium Breeding] Blanket thickness 50 cm — directly stated in Helios source.
-
-result = model.forward(
+_SHARED_KWARGS = dict(
     # ── Plant requirements ──────────────────────────────────────────────────
-    net_electric_mw=NET_ELECTRIC_MW,
-    availability=AVAILABILITY,
-    lifetime_yr=LIFETIME_YR,
-    n_mod=1,
-    construction_time_yr=CONSTRUCTION_YR,
-    interest_rate=INTEREST_RATE,
-    inflation_rate=INFLATION_RATE,
-    noak=False,         # FOAK: first-plant scenario; Thea LCOE target is $150/MWh
-                        #        for first plant [A: "LCOE target (first plant): $150/MWh"]
+    availability=0.88,       # [A] "Capacity factor: 88%" — maintenance-limited;
+                             #      84-day biennial maintenance cycle [B §Operations]
+    lifetime_yr=40,          # [A] "Magnet design lifetime: 40+ years" [B §Magnets]
+    n_mod=1,                 # Single-module plant
+    construction_time_yr=8.0,  # DEFAULT [D]: no Helios-specific timeline published;
+                               # UNCERTAIN: planar coil winding is simpler than 3D coils
+                               # but FOAK complexity keeps estimate at 8 yr
+    interest_rate=0.07,      # DEFAULT: standard LCOE financial assumption
+    inflation_rate=0.0245,   # DEFAULT: standard LCOE financial assumption
+    noak=False,              # FOAK: first-plant scenario; Thea LCOE target is $150/MWh
+                             # for first plant [A: "LCOE target (first plant): $150/MWh"]
 
     # ── Helios geometry ─────────────────────────────────────────────────────
-    R0=R0,
-    plasma_t=PLASMA_T,
-    elon=ELON,
-    blanket_t=BLANKET_T,
-    ht_shield_t=0.20,   # DEFAULT [D]; no Helios-specific shield thickness published
-    structure_t=0.15,   # DEFAULT [D]
-    vessel_t=0.10,      # DEFAULT [D]
+    # Source: thea-energy-helios-arxiv-2512-08027.md §Plasma & Configuration
+    R0=8.0,                  # [A] "Major radius: 8 m"
+    plasma_t=1.8,            # [A] "Minor radius: 1.8 m" (aspect ratio 4.5)
+    elon=1.0,                # QA stellarator ≈ circular cross-section [B §Plasma & Configuration]
+    blanket_t=0.50,          # [B §Blanket & Tritium Breeding] "50 cm blanket thickness"
+    ht_shield_t=0.20,        # DEFAULT [D]: no Helios-specific shield thickness published
+    structure_t=0.15,        # DEFAULT [D]
+    vessel_t=0.10,           # DEFAULT [D]
 
     # ── Power balance ────────────────────────────────────────────────────────
     # Helios is effectively ignited (Q_plasma ≈ 958) [A: "Plasma gain: ~958"]
     # Total thermal: 1,094 MW; gross electric: 438 MWe; net: 390 MWe [A]
     # Total facility/auxiliary load: ~48 MWe [A: "Auxiliary / facility power: ~48 MWe"]
-    p_input=1.0,        # [A] "Operational ECRH power: 1 MW" — impurity control only;
-                        #      plasma self-heats via alpha particles; 10 MW ECRH only at startup
-    mn=1.1,             # DEFAULT [D]: standard D-T neutron energy multiplier (1 + ~10% via n reactions)
-    eta_th=0.40,        # [A/B] "~40.2% (gross)" — three-stage steam Rankine, 635°C superheated steam
-                        #        [B §Energy Conversion]; slightly below default 0.46 (Helios-specific)
-    eta_p=0.5,          # DEFAULT [D]: pumping efficiency
-    eta_pin=0.5,        # DEFAULT [D]: ECRH gyrotron wall-plug efficiency (standard for 170 GHz gyrotrons)
-    eta_de=0.85,        # DEFAULT [D]: no direct energy conversion used; value unused (f_dec=0.0)
-    f_sub=0.03,         # DEFAULT [D]: miscellaneous subsystem fraction; bulk of 48 MWe facility load
-                        #               captured in explicit p_xxx terms below
-    f_dec=0.0,          # Pure steam Rankine; no DEC; [A: recirculating power is parasitic only]
+    p_input=1.0,             # [A] "Operational ECRH power: 1 MW" — impurity control only;
+                             #      plasma self-heats via alpha particles; 10 MW ECRH only
+                             #      at startup [B §Heating]; plasma is ignited (Q~958)
+    mn=1.1,                  # DEFAULT [D]: standard D-T neutron energy multiplier
+    eta_th=0.40,             # [A/B] "~40.2% (gross)" — three-stage steam Rankine, 635°C
+                             #        superheated steam [B §Energy Conversion];
+                             #        slightly below default 0.46 (Helios-specific value)
+    eta_p=0.5,               # DEFAULT [D]: pumping efficiency
+    eta_pin=0.5,             # DEFAULT [D]: ECRH gyrotron wall-plug efficiency
+                             #               (standard for 170 GHz ITER-spec gyrotrons)
+    eta_de=0.85,             # DEFAULT [D]: DEC efficiency; unused (f_dec=0.0)
+    f_sub=0.03,              # DEFAULT [D]: miscellaneous subsystem fraction; bulk of
+                             #               48 MWe facility load captured in p_xxx below
+    f_dec=0.0,               # Pure steam Rankine; no DEC [A: recirculating power is
+                             #               parasitic only]
 
     # Individual auxiliary loads — components of the 48 MWe facility total [A]
-    p_coils=2.0,        # UNCERTAIN: 324 individually addressable HTS power supply units;
-                        #             REBCO has negligible resistive loss but supply electronics
-                        #             have losses; no published figure [C §S5 gap: coil MTBF]
-    p_cool=8.0,         # UNCERTAIN: helium blanket loop blowers + heat exchangers (He→steam IHX);
-                        #             He-cooled primary loop is less well-characterized than H₂O;
-                        #             no published breakdown [C §S3: He coolant BOP]
-    p_pump=3.0,         # UNCERTAIN: LiPb circulation at 6.6 cm/s [B §Blanket & Tritium Breeding];
-                        #             estimated from MHD-limited flow against ~6T field; derivable
-                        #             but not published [C §S5 gap #14]
-    p_trit=10.0,        # DEFAULT [D]: tritium extraction and processing (~300 g/day at 958 MW fusion,
-                        #              5% burn fraction); consistent with DT baseline
-    p_house=5.0,        # UNCERTAIN: facility controls, 450+ variable real-time control system,
-                        #             HVAC, instrumentation; slightly above 4.0 MW default given
-                        #             software-intensive 324-coil control infrastructure [C §S2 Challenge 4]
-    p_cryo=15.0,        # UNCERTAIN: 336 REBCO coils at 20 K operating temperature [A/B §Magnets];
-                        #             Carnot COP at 20 K ≈ 0.07 → large refrigeration demand;
-                        #             analysis.md §S5 gap #14 estimates "5–15 MWe" for cryo plant;
-                        #             using 15 MW (upper bound) as most likely given coil count
+    p_coils=2.0,             # UNCERTAIN: 324 individually addressable HTS power supply
+                             #             units; REBCO has negligible resistive loss but
+                             #             supply electronics have losses; no published
+                             #             figure [C §S5 gap: coil MTBF]
+    p_cool=8.0,              # UNCERTAIN: helium blanket loop blowers + heat exchangers
+                             #             (He→steam IHX); He-cooled primary loop is less
+                             #             well-characterized than H₂O; no published
+                             #             breakdown [C §S3: He coolant BOP]
+    p_pump=3.0,              # UNCERTAIN: LiPb circulation at 6.6 cm/s [B §Blanket];
+                             #             estimated from MHD-limited flow against ~6T
+                             #             field; derivable but not published [C §S5 gap #14]
+    p_trit=10.0,             # DEFAULT [D]: tritium extraction and processing
+                             #               (~300 g/day at 958 MW fusion, 5% burn fraction)
+    p_house=5.0,             # UNCERTAIN: facility controls + 450+ variable real-time
+                             #             control system + HVAC + instrumentation;
+                             #             slightly above 4 MW default given software-
+                             #             intensive 324-coil infrastructure [C §S2 Ch. 4]
+    p_cryo=15.0,             # UNCERTAIN: 336 REBCO coils at 20 K [A/B §Magnets];
+                             #             Carnot COP at 20 K ≈ 0.07 → large refrigeration
+                             #             demand; analysis.md §S5 gap #14 estimates
+                             #             "5–15 MWe"; using 15 MW (upper bound)
 )
 
-# ── Post-hoc scaling to 1000 MWe (cross-concept comparison) ─────────────
-_ALPHA = 0.6
-_p_native = float(result.power_table.p_net)
-_factor = (_p_native / 1000.0) ** (1.0 - _ALPHA)
+# ── Native 390 MWe forward run (FOAK reference case) ─────────────────────────
+# Helios design point: 390 MWe net to grid.
+# Source: thea-energy-helios-arxiv-2512-08027.md §Power Balance
+result = model.forward(net_electric_mw=390.0, **_SHARED_KWARGS)
 
-scaled_headline = {
-    "p_net_mw": 1000.0,
-    "lcoe_per_mwh": float(result.costs.lcoe) * _factor,
-    "overnight_per_kw": float(result.costs.overnight_cost) * _factor,
-}
+# ── Self-consistent 1 GWe result (cross-concept comparison) ──────────────────
+# Helios native 390 MWe is below the 1 GWe reference standard.
+# override_reference_mw tells the framework that _SHARED_KWARGS are valid at 390 MWe
+# and to scale to 1000 MWe using per-account scaling laws.
+result_1gw = model.forward(
+    net_electric_mw=1000.0,
+    override_reference_mw=390.0,
+    **_SHARED_KWARGS,
+)
 
 # ── Cost Results ─────────────────────────────────────────────────────────────
 c  = result.costs
@@ -132,8 +131,6 @@ pt = result.power_table
 
 print("Planar Coil Stellarator (Thea Energy Helios) — FOAK, 390 MWe net, 88% availability")
 print(f"LCOE: {c.lcoe:.1f} $/MWh | Overnight: {c.overnight_cost:.0f} $/kW")
-print(f"\nScaled headline (1000 MWe, \u03b1={_ALPHA}): LCOE {scaled_headline['lcoe_per_mwh']:.1f} $/MWh | "
-      f"Overnight {scaled_headline['overnight_per_kw']:.0f} $/kW")
 print(f"Fusion: {pt.p_fus:.0f} MW | Net: {pt.p_net:.0f} MW | Q_eng: {pt.q_eng:.1f}")
 print(f"  (Helios targets: LCOE $150/MWh FOAK → $60/MWh at scale)")
 print()
@@ -165,26 +162,90 @@ for code, name, val in cas:
     print(f"{code:<8} {name:<28} {float(val):>10.1f}")
 print("-" * 48)
 print(f"{'':8} {'Total Capital':<28} {float(c.total_capital):>10.1f}")
-print()
+
+# ── CAS22 Sub-account Detail ──────────────────────────────────────────────────
+print("\nCAS22 Sub-accounts (Reactor Plant Equipment):")
+print(f"{'Code':<12} {'Account':<32} {'M$':>8}  {'Note'}")
+print("-" * 76)
+
+cas22_labels = {
+    "C220101": "First Wall + LiPb Blanket",
+    "C220102": "Shield",
+    "C220103": "Coils (336 planar REBCO)",
+    "C220104": "Heating System (ECRH)",
+    "C220105": "Primary Structure",
+    "C220106": "Vacuum Vessel",
+    "C220107": "Power Supplies",
+    "C220108": "Divertor (novel QA X-point)",
+    "C220109": "DEC",
+    "C220111": "Installation",
+    "C220112": "Isotope Separation",
+    "C220200": "Coolant (He primary loop)",
+    "C220300": "Aux Cooling",
+    "C220400": "Rad Waste",
+    "C220500": "Fuel Handling (tritium)",
+    "C220600": "Other Equipment",
+    "C220700": "I&C",
+}
+overridden = set(result.overridden) if hasattr(result, "overridden") else set()
+for code, label in cas22_labels.items():
+    val = result.cas22_detail.get(code, 0.0)
+    note = "[OVERRIDE]" if code in overridden else "[DEFAULT]"
+    print(f"{code:<12} {label:<32} {float(val):>8.1f}  {note}")
+print("-" * 76)
+total22 = result.cas22_detail.get("C220000", float(c.cas22))
+print(f"{'C220000':<12} {'TOTAL':<32} {float(total22):>8.1f}")
 
 # ── Key Assumptions Summary ────────────────────────────────────────────────────
-print("Key Assumptions")
-print("  Physics  : ISS04 H=1.4 sustained (analysis.md §S2 Challenge 1 — not yet")
-print("             experimentally demonstrated in any QA stellarator; Eos 2030)")
-print("  Geometry : R0=8m, a=1.8m, 2-field-period QA, 6T on-axis [Helios arXiv:2512.08027]")
-print("  Power    : Net 390 MWe, 88% availability, 40-yr life, FOAK (noak=False)")
-print("  Thermal  : eta_th=0.40 (three-stage Rankine, 635°C steam, 40.2% gross)")
-print("  Heating  : p_input=1 MW operational ECRH (plasma ignited, Q~958)")
-print("  Cryo     : p_cryo=15 MW UNCERTAIN (336 REBCO coils at 20K; upper-bound estimate)")
-print("  Divertor : Novel QA X-point divertor, TRL 1-2, no hardware precedent")
-print("             [analysis.md §S2 Challenge 2] — cost uses framework default (60 M$ base)")
-print("  Magnets  : 12 encircling + 324 shaping planar REBCO coils, 20T max on-coil")
-print("             [analysis.md §S5] — NO published cost account; framework default only")
-print("  Cost basis: Framework defaults throughout (ARIES-CS analogue structure)")
-print("              Thea Energy has NOT published a bottom-up capital cost breakdown")
-print("  LCOE gap : Thea target $150/MWh FOAK; model result above is the costingfe")
-print("             parametric estimate — gap reflects unmodeled magnet cost premium")
-print()
+print("""
+Key Assumptions
+===============
+1. Net electric output: 390 MWe native (Helios design point).
+   Source: thea-energy-helios-arxiv-2512-08027.md §Power Balance.
+   Cross-concept: result_1gw scales to 1000 MWe using per-account scaling laws.
+
+2. Availability: 88% — maintenance-limited; biennial 84-day sector-based cycle.
+   Source: thea-energy-helios-arxiv-2512-08027.md §Operations.
+   Uncertainty: 88% stated without supporting availability model; coil control
+   failure modes could reduce effective availability [analysis.md §S2 Challenge 4].
+
+3. Physics: ISS04 H_ISS04 = 1.4 sustained (central challenge — not demonstrated
+   in any QA stellarator; W7-X achieved ~1.3–1.4 only in QI configuration).
+   If H_ISS04 = 1.2 in practice, fusion power could drop 30–50%.
+   Eos (first plasma 2030) is the experimental validation path.
+   Source: analysis.md §S2 Challenge 1; thea-energy-helios-arxiv-2512-08027.md §Plasma.
+
+4. Thermal efficiency: eta_th = 0.40 (three-stage steam Rankine, 635°C superheated
+   steam, 40.2% gross efficiency). Helios-specific; default 0.46 is too optimistic.
+   Source: thea-energy-helios-arxiv-2512-08027.md §Energy Conversion.
+
+5. Heating: p_input = 1 MW operational ECRH only (impurity control). Plasma is
+   ignited (Q~958). 10 MW startup ECRH is transient — not counted in steady-state.
+   Source: thea-energy-helios-arxiv-2512-08027.md §Heating.
+
+6. Cryogenics: p_cryo = 15 MW UNCERTAIN (upper-bound estimate for 336 REBCO coils
+   at 20 K; Carnot COP ~0.07; analysis.md §S5 gap #14 estimates 5–15 MWe).
+   Source: analysis.md §S2 Challenge 4; §S5 gap #14.
+
+7. Magnet system: 12 encircling + 324 shaping planar REBCO coils, 20 T max on-coil.
+   All CAS22 accounts use framework defaults — Thea Energy has NOT published a
+   bottom-up capital cost breakdown. C220103 is almost certainly the largest single
+   capital item but is entirely unconstrained by published data.
+   Source: analysis.md §S5 Missing Parameters (capital cost rows).
+
+8. Divertor: Novel QA X-point divertor (TRL 1–2, no hardware precedent).
+   C220108 uses framework default ($60M base); actual cost is unknown.
+   Source: analysis.md §S2 Challenge 2; §S3.
+
+9. First wall lifetime: 15 full-power years (one replacement in 40-yr plant life).
+   V-4Cr-4Ti vanadium alloy — extremely limited supply chain at plant scale.
+   Source: thea-energy-helios-arxiv-2512-08027.md §First Wall; analysis.md §S4.
+
+10. FOAK scenario only: noak=False. Thea's $150/MWh target applies to the first
+    plant. No NOAK analogue modeled — published cost data does not exist to anchor
+    a NOAK scenario for this concept.
+    Source: thea-energy-website-and-press.md §Helios.
+""")
 
 # ── Sensitivity Analysis ──────────────────────────────────────────────────────
 sens = model.sensitivity(result.params)
@@ -198,4 +259,9 @@ for k, v in sorted(sens["engineering"].items(), key=lambda x: abs(x[1]), reverse
 
 print("\nFinancial:")
 for k, v in sorted(sens["financial"].items(), key=lambda x: abs(x[1]), reverse=True):
+    print(f"  {k:<28} {v:+.4f}")
+
+print("\nCosting constants (top 15):")
+costing = sorted(sens["costing"].items(), key=lambda x: abs(x[1]), reverse=True)
+for k, v in costing[:15]:
     print(f"  {k:<28} {v:+.4f}")

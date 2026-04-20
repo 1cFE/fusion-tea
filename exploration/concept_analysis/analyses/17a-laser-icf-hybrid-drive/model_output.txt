@@ -3,22 +3,22 @@ Laser ICF — Hybrid Direct Drive, D-T  (Xcimer Energy / Athena)
 Base scenario: NOAK | He Brayton 45% | η_laser 7% | laser $70/J
 Net electric: 400 MWe | Availability: 85% | Lifetime: 30 yr
 ======================================================================
-LCOE:         115.8 $/MWh
-Overnight:    8046 $/kW
-Fusion power: 1053 MW | Net: 400 MW | Q_eng: 4.41
-Qsci: 211 | Qwp: 14.7 | Recirc: 22.7% (laser: 13.8% of gross)
-[1000 MWe scaled] LCOE: 80.3 $/MWh | Overnight: 5577 $/kW  (α=0.6 from 400 MWe native)
+LCOE:         100.2 $/MWh
+Overnight:    7281 $/kW
+Fusion power: 1075 MW | Net: 400 MW | Q_eng: 4.00
+Qsci: 124 | Qwp: 8.7 | Recirc: 25.0% (laser: 13.4% of gross)
+[1000 MWe scaled] LCOE: 87.1 $/MWh | Overnight: 6759 $/kW  (framework per-account scaling from 400 MWe native)
 
 ──────────────────────────────────────────────────────────────────────
 H-1  Laser cost range (NOAK $60–80/J) + H-3 thermal cycle gap:
   Scenario                                            LCOE      OCC
                                                      $/MWh     $/kW
   ------------------------------------------------
-  NOAK / He Brayton 45% / laser $60/J                112.0     7698
-  NOAK / He Brayton 45% / laser $70/J                115.8     8046 ← base
-  NOAK / He Brayton 45% / laser $80/J                119.5     8394
-  NOAK / Steam Rankine 33% / laser $70/J             119.0     8244 ← H-3 alt
-  FOAK / He Brayton 45% / laser $110/J               144.3    10610 ← FOAK ref
+  NOAK / He Brayton 45% / laser $60/J                 96.5     6933
+  NOAK / He Brayton 45% / laser $70/J                100.2     7281 ← base
+  NOAK / He Brayton 45% / laser $80/J                104.0     7628
+  NOAK / Steam Rankine 33% / laser $70/J             106.0     7714 ← H-3 alt
+  FOAK / He Brayton 45% / laser $110/J               127.8     9753 ← FOAK ref
 
 ──────────────────────────────────────────────────────────────────────
 H-2  Capsule gain floor — wall-plug breakeven  (Goodin Q_wp ≥ 10 criterion)
@@ -29,24 +29,24 @@ H-2  Capsule gain floor — wall-plug breakeven  (Goodin Q_wp ≥ 10 criterion)
   η_laser = 7% (NOAK target)   Q_wp breakeven: Qsci ≥ 143
    P_net MWe    Qsci   Q_wp   Recirc   LCOE $/MWh   Viable?
   ----------------------------------------------------------
-         150     105    7.3    42.2%        215.2  NO (<10)
-         200     126    8.8    35.7%        176.7  NO (<10)
-         250     147   10.3    31.1%        152.9       YES
-         300     168   11.8    27.6%        136.7       YES
-         350     189   13.3    24.9%        124.8       YES
-         400     211   14.7    22.7%        115.8       YES ← base
-         500     253   17.7    19.4%        102.7       YES
+         150     294   20.6    25.0%        179.4       YES
+         200     189   13.2    25.0%        149.2       YES
+         250     156   10.9    25.0%        130.3       YES
+         300     140    9.8    25.0%        117.2  NO (<10)
+         350     130    9.1    25.0%        107.6  NO (<10)
+         400     124    8.7    25.0%        100.2  NO (<10) ← base
+         500     116    8.1    25.0%         89.5  NO (<10)
 
   η_laser = 5% (conservative)   Q_wp breakeven: Qsci ≥ 200
    P_net MWe    Qsci   Q_wp   Recirc   LCOE $/MWh   Viable?
   ----------------------------------------------------------
-         150     117    5.8    48.1%        223.1  NO (<10)
-         200     138    6.9    41.3%        182.4  NO (<10)
-         250     159    8.0    36.3%        157.3  NO (<10)
-         300     180    9.0    32.4%        140.3  NO (<10)
-         350     202   10.1    29.3%        127.9       YES
-         400     223   11.1    26.9%        118.4       YES
-         500     265   13.3    23.1%        104.7       YES
+         150     294   14.7    25.0%        179.4       YES
+         200     189    9.4    25.0%        149.2  NO (<10)
+         250     156    7.8    25.0%        130.3  NO (<10)
+         300     140    7.0    25.0%        117.2  NO (<10)
+         350     130    6.5    25.0%        107.6  NO (<10)
+         400     124    6.2    25.0%        100.2  NO (<10)
+         500     116    5.8    25.0%         89.5  NO (<10)
 
   Note: Qsci is inferred from the framework power balance; it is NOT a direct
   input. The Q_wp < 10 rows represent operating points where recirculating power
@@ -56,47 +56,47 @@ H-2  Capsule gain floor — wall-plug breakeven  (Goodin Q_wp ≥ 10 criterion)
 Code     Account                              M$
 ------------------------------------------------
 CAS10    Preconstruction                    17.0
-CAS21    Buildings                         393.1
-CAS22    Reactor Plant Equipment          1625.4
-CAS23    Turbine Plant                     102.3
-CAS24    Electrical Plant                   43.6
-CAS25    Miscellaneous                      26.5
-CAS26    Heat Rejection                     17.7
+CAS21    Buildings                         360.0
+CAS22    Reactor Plant Equipment          1409.6
+CAS23    Turbine Plant                     105.4
+CAS24    Electrical Plant                   44.9
+CAS25    Miscellaneous                      27.3
+CAS26    Heat Rejection                     40.5
 CAS27    Special Materials                   6.0
 CAS28    Digital Twin                        5.0
 CAS29    Contingency                         0.0
-CAS30    Indirect Costs                    369.9
+CAS30    Indirect Costs                    333.1
 CAS40    Owner's Costs                      24.7
-CAS50    Supplementary                     167.2
-CAS60    IDC                               420.2
-CAS70    O&M (annualized)                   85.0
+CAS50    Supplementary                     158.6
+CAS60    IDC                               380.2
+CAS70    O&M (annualized)                   63.4
 CAS80    Fuel (annualized)                   0.5
-CAS90    Financial                         259.4
+CAS90    Financial                         234.7
 ------------------------------------------------
-         Total Capital                    3218.5
+         Total Capital                    2912.3
 
 CAS22 detail (base scenario — NOAK He Brayton $70/J):
   Account                M$  Notes
   ------------------------------------------------------
-  C220101             106.7  
-  C220102              74.5  
+  C220101             108.7  
+  C220102              75.9  
   C220103               0.0  ← 0 override (no magnets, IFE)
   C220104             700.0  ← laser driver override ($70.0/J × 10 MJ)
-  C220105               5.8  
-  C220106              18.7  
-  C220107              50.4  
-  C220108             153.9  ← target factory (IFE default; FLiBe wall = no divertor)
+  C220105               5.9  
+  C220106              19.0  
+  C220107               4.3  
+  C220108             157.1  ← target factory (IFE default; FLiBe wall = no divertor)
   C220109               0.0  
-  C220110             107.9  
-  C220111             194.2  
+  C220110              54.8  
+  C220111              69.3  
   C220112               0.0  
-  C220200              88.4  
-  C220300              12.6  
+  C220200              88.8  
+  C220300              12.7  
   C220400               2.3  
   C220500              63.2  
   C220600               5.5  
-  C220700              41.2  
-  C220000 TOTAL      1625.4
+  C220700              42.0  
+  C220000 TOTAL      1409.6
 
 ======================================================================
 Key Assumptions
@@ -143,9 +143,9 @@ Key Assumptions
                     Thick-liquid-wall jet pump: no published estimate.
                     Source: [an] §S2 Challenge 4; [XEC] §Xcimer's Chamber Design
 
-  Qsci (implied):   211 (from inverse power balance at 400 MWe)
-                    XEC target ~250. At Qsci ~211 and η_wpe=7%:
-                    Qwp = 211 × 7% = 14.7 (XEC claims ~17.5 at Qsci=250, η_wpe=7%). [XEC] §Challenge 3
+  Qsci (implied):   124 (from inverse power balance at 400 MWe)
+                    XEC target ~250. At Qsci ~124 and η_wpe=7%:
+                    Qwp = 124 × 7% = 8.7 (XEC claims ~17.5 at Qsci=250, η_wpe=7%). [XEC] §Challenge 3
   iter-6 (F-2):     Betti [B24] — gains of ~100× are 'unclear at the moment';
                     Xcimer requires Qc > 200, above even Betti's unclear lower
                     bound. Independent risk characterization, not model change.
@@ -175,9 +175,9 @@ H-4  Target fabrication cost threshold (Goodin et al. criterion)
   blocking gap — no Xcimer estimate published. Source: [an] §S5 gap #4
 
   LCOE floor note (from analysis.md §Modeling Approach):
-  Base LCOE (115.8 $/MWh) EXCLUDES target fabrication entirely.
-  Realistic central estimate at $2.50/target: ~127.0 $/MWh
-  At $5.00/target: ~138.2 $/MWh
+  Base LCOE (100.2 $/MWh) EXCLUDES target fabrication entirely.
+  Realistic central estimate at $2.50/target: ~111.4 $/MWh
+  At $5.00/target: ~122.6 $/MWh
   The base figure is a LOWER BOUND. Always present alongside H-4 range.
 
 ──────────────────────────────────────────────────────────────────────
@@ -191,28 +191,32 @@ Note: laser $/J (dominant lever per narrative) has ZERO sensitivity gradient
 -------------------------------------------------------
 
 Engineering levers:
-  availability                 -0.9021
-  construction_time_yr         +0.2523
-  plasma_t                     +0.1958
-  blanket_t                    +0.0890
-  eta_th                       -0.0819
-  eta_pin1                     -0.0563
-  p_implosion                  +0.0563
-  ht_shield_t                  +0.0176
-  fuel_recovery                -0.0132
-  f_sub                        +0.0122
-  p_pump                       +0.0118
-  p_trit                       +0.0079
-  vessel_t                     +0.0075
-  structure_t                  +0.0032
-  p_house                      +0.0032
+  availability                 -0.9518
+  construction_time_yr         +0.2650
+  plasma_t                     +0.2303
+  eta_th                       -0.1652
+  q_eng                        -0.1163
+  blanket_t                    +0.1047
+  mn                           -0.0401
+  ht_shield_t                  +0.0207
+  vessel_t                     +0.0088
+  structure_t                  +0.0037
+  eta_pin                      +0.0033
   p_cryo                       +0.0030
-  mn                           -0.0012
-  p_target                     +0.0008
-  burn_fraction                -0.0007
-  eta_p                        -0.0000
-  eta_pin2                     +0.0000
+  f_rep                        -0.0019
+  p_pump                       -0.0015
+  f_sub                        -0.0009
+  p_trit                       -0.0006
+  p_house                      -0.0002
+  p_target                     -0.0001
+  eta_p                        +0.0000
+  dd_f_T                       +0.0000
+  dd_f_He3                     +0.0000
+  dhe3_dd_frac                 +0.0000
+  dhe3_f_T                     +0.0000
+  f_rad                        +0.0000
+  eta_dec                      +0.0000
 
 Financial:
-  interest_rate                +0.6018
-  inflation_rate               +0.0548
+  interest_rate                +0.6373
+  inflation_rate               +0.0633

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-12T20:38:40.718718+00:00",
+  "generated_at": "2026-04-19T18:03:02.821530+00:00",
   "concepts": [
     {
       "concept_id": "01",
@@ -10,7 +10,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 373.89138819938205,
+      "lcoe_per_mwh": 216.26051330566406,
       "confidence": null,
       "data_file": "data/01.json"
     },
@@ -36,7 +36,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 122.39056396484375,
+      "lcoe_per_mwh": 107.53662109375,
       "confidence": null,
       "data_file": "data/03.json"
     },
@@ -49,7 +49,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 41.64858627319336,
+      "lcoe_per_mwh": 42.0012321472168,
       "confidence": null,
       "data_file": "data/04.json"
     },
@@ -62,7 +62,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 106.6863992406647,
+      "lcoe_per_mwh": 125.97730255126953,
       "confidence": null,
       "data_file": "data/05.json"
     },
@@ -75,7 +75,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 48.24296970225547,
+      "lcoe_per_mwh": 40.066749572753906,
       "confidence": null,
       "data_file": "data/06.json"
     },
@@ -88,7 +88,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 61.007606506347656,
+      "lcoe_per_mwh": 68.8238754272461,
       "confidence": null,
       "data_file": "data/07.json"
     },
@@ -101,7 +101,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 50.26852035522461,
+      "lcoe_per_mwh": 50.033504486083984,
       "confidence": null,
       "data_file": "data/08.json"
     },
@@ -114,7 +114,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 106.36961364746094,
+      "lcoe_per_mwh": 134.76608276367188,
       "confidence": null,
       "data_file": "data/09.json"
     },
@@ -127,7 +127,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 212.85595703125,
+      "lcoe_per_mwh": 214.3936309814453,
       "confidence": null,
       "data_file": "data/10.json"
     },
@@ -140,7 +140,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 89.90330368908324,
+      "lcoe_per_mwh": 75.1778335571289,
       "confidence": null,
       "data_file": "data/11.json"
     },
@@ -166,7 +166,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 62.73367183103314,
+      "lcoe_per_mwh": 77.8990707397461,
       "confidence": null,
       "data_file": "data/14.json"
     },
@@ -192,7 +192,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 80.25030483797346,
+      "lcoe_per_mwh": 87.09392547607422,
       "confidence": null,
       "data_file": "data/17a.json"
     },
@@ -205,7 +205,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 149.85864861420336,
+      "lcoe_per_mwh": 140.75003051757812,
       "confidence": null,
       "data_file": "data/21.json"
     },
@@ -231,7 +231,7 @@
       "illustration": null,
       "has_cost_model": true,
       "has_sensitivities": true,
-      "lcoe_per_mwh": 80.81980703886495,
+      "lcoe_per_mwh": 70.59082794189453,
       "confidence": null,
       "data_file": "data/28.json"
     },
