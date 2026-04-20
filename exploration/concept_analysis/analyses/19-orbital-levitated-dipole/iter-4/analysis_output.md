@@ -1,13 +1,3 @@
----
-ID: 19-orbital-levitated-dipole
-Concept: Orbital Levitated Dipole (D-He3)
-Company: Zephyr Fusion
-Status: draft
-Created: 2026-04-20
-Approved-Date:
-Reuses: [21-spherical-tokamak-hts]
----
-
 # D1+ Analysis: Orbital Levitated Dipole (D-He3) — Zephyr Fusion
 
 **Concept**: Orbital Levitated Dipole — D-He3 aneutronic fuel, power beaming to ground/customers
@@ -355,11 +345,11 @@ The concept's stated competitive reference — "underselling ITER at $650M/MW" �
 
 **Modeling Approach Recommendation:**
 
-Free-form modeling is required — the orbital concept has no CAS analogue in the 1costingfe framework, and implementing it through CAS 10-LCOE would require so many non-standard overrides as to produce a misleading structure. The cost skeleton should use spacecraft-industry categories mapped to LCOE: (1) spacecraft unit cost, broken out into distinct hardware accounts — HTS coil and cryocooler/radiator, heating hardware (ECRH/ICRH/NBI), direct energy converter (DEC), **phased-array transmitter** (the most technically novel hardware item; at ~2,500 kg and ~$2,000/kg for space-grade phased-array electronics, fabrication cost is ~$20M — comparable to the DEC and constituting ~25–30% of spacecraft hardware cost; this must be a separately tracked line item rather than absorbed into generic power electronics), and spacecraft bus/I&C; (2) launch cost per unit; (3) power beaming ground infrastructure (rectenna, grid tie); (4) orbital O&M (replacement cadence × unit cost + operations); and (5) fuel cost. A spacecraft fabrication cost multiplier sweep (0.1× to 10× baseline) is needed to determine the FOAK cost corridor within which SPS parity remains achievable. Within this free-form model, three parameters dominate LCOE sensitivity:
+Free-form modeling is required — the orbital concept has no CAS analogue in the 1costingfe framework, and implementing it through CAS 10-LCOE would require so many non-standard overrides as to produce a misleading structure. The cost skeleton should use spacecraft-industry categories mapped to LCOE: (1) spacecraft unit cost (HTS coil + bus + heating hardware + power conversion hardware), (2) launch cost per unit, (3) power beaming ground infrastructure cost, (4) orbital O&M (replacement cadence × unit cost + operations), and (5) fuel cost. Within this free-form model, three parameters dominate LCOE sensitivity:
 
 1. **Power beaming end-to-end efficiency** (fusion power → delivered AC electricity): range 15–60%. Below ~20%, the concept cannot compete with terrestrial alternatives regardless of plasma performance. At 50–60% (SPS upper-bound), the economics become comparable to satellite solar power.
 2. **He3 supply cost**: market purchase (~$30M/kg) vs. self-bred (near-zero variable cost). This single parameter can shift the LCOE by 1–2 orders of magnitude. It is the most sensitive lever in the entire model.
-3. **Spacecraft fabrication cost per MW delivered**: as a first-of-kind orbital fusion reactor, manufacturing cost for the hardware stack (HTS coil, DEC, phased-array transmitter, cryocooler, bus) could be 10–100× higher than a nominal baseline and is the primary CAPEX uncertainty in the optimistic scenario. The key model output is the breakeven spacecraft fabrication multiplier — the maximum FOAK cost premium before the optimistic scenario (self-bred He3, Starship-era launch) crosses above SPS parity. Launch cost (Falcon 9 ~$2,700/kg vs. Starship ~$200/kg) is a scenario branch rather than a top-3 sensitivity at this power class: reducing launch cost from $2,700/kg to $100/kg changes LCOE by only ~5–6% in the pessimistic scenario because He3 fuel cost dominates. Launch cost matters primarily in the optimistic scenario (self-bred He3, near-zero fuel cost), where spacecraft hardware and transport together constitute total CAPEX.
+3. **Launch cost per installed MW**: folds spacecraft mass budget, power output, and launch pricing together. At Falcon 9 rideshare pricing ($2,700/kg) with a 1 MW orbital output, spacecraft mass must stay below ~1,000 kg to achieve $2.7M/MW launch cost. Starship pricing ($100–200/kg target) would reduce launch cost by ~15×.
 
 Recommended scenario structure:
 - **Pessimistic**: Market-purchase He3 (~$30M/kg), Falcon 9 pricing ($2,700/kg), power beaming at 20% end-to-end efficiency.

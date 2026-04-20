@@ -1,13 +1,3 @@
----
-ID: 19-orbital-levitated-dipole
-Concept: Orbital Levitated Dipole (D-He3)
-Company: Zephyr Fusion
-Status: draft
-Created: 2026-04-20
-Approved-Date:
-Reuses: [21-spherical-tokamak-hts]
----
-
 # D1+ Analysis: Orbital Levitated Dipole (D-He3) — Zephyr Fusion
 
 **Concept**: Orbital Levitated Dipole — D-He3 aneutronic fuel, power beaming to ground/customers

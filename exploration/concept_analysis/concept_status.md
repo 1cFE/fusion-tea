@@ -30,7 +30,7 @@ Snapshot: 2026-04-20. 38 concepts from `exploration/concept_explorer/data/concep
 | 17a | Laser ICF - Hybrid Direct Drive (D-T) | Xcimer Energy | 6 | yes | yes | yes | no |
 | 17b | Laser ICF - Fast Ignition (D-T) | Focused Energy | 3 | yes | yes | yes | no |
 | 18  | p-B11 FRC | TAE Technologies | 3 | yes | yes | yes | no |
-| 19  | Orbital Levitated Dipole (D-He3) | Zephyr Fusion | 3 | no | - | yes | no |
+| 19  | Orbital Levitated Dipole (D-He3) | Zephyr Fusion | 5 | yes | yes | yes | no |
 | 20a | QI Modular HTS Stellarator - Infinity Two | Type One Energy | 3 | yes | yes | yes | no |
 | 20b | Compact Liquid-Wall HTS Stellarator | Renaissance Fusion | 3 | yes | yes | yes | no |
 | 21  | Spherical Tokamak - HTS | Tokamak Energy | 1 | yes | yes | yes | yes |
@@ -54,8 +54,8 @@ Snapshot: 2026-04-20. 38 concepts from `exploration/concept_explorer/data/concep
 
 - Total concepts: **38**
 - Analysis started (`iter-N/` with content): **38** (all concepts)
-- `model_setup.py` present: **37** (all fresh; 19 has analysis but no model_setup)
-- Using `1costingfe` framework: **31** (of 37); the other 6 use hand-built models
+- `model_setup.py` present: **38** (all fresh)
+- Using `1costingfe` framework: **32** (of 38); the other 6 use hand-built models
 - Extracted to explorer data: **38** (all concepts, 0 stale)
 - Approved: **1**
 - **Zero gap-checked or not-started concepts remain**

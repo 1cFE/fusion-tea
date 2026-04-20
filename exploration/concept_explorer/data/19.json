@@ -5,89 +5,469 @@
   "company": "Zephyr Fusion",
   "status": "in_progress",
   "illustration": null,
-  "has_cost_model": false,
-  "has_sensitivities": false,
-  "cost_model": null,
+  "has_cost_model": true,
+  "has_sensitivities": true,
+  "cost_model": {
+    "cas10": {
+      "name": "Preconstruction",
+      "cost_m_usd": 18.0,
+      "overridden": false
+    },
+    "cas21": {
+      "name": "Buildings & Structures",
+      "cost_m_usd": 2.0,
+      "overridden": false
+    },
+    "cas22": {
+      "name": "Reactor Plant Equipment",
+      "cost_m_usd": 95.2841371796201,
+      "overridden": false
+    },
+    "cas23": {
+      "name": "Turbine Plant Equipment",
+      "cost_m_usd": 2.0,
+      "overridden": false
+    },
+    "cas24": {
+      "name": "Electrical Plant Equipment",
+      "cost_m_usd": 2.108949558685714,
+      "overridden": false
+    },
+    "cas25": {
+      "name": "Miscellaneous Plant Equipment",
+      "cost_m_usd": 0.5,
+      "overridden": false
+    },
+    "cas26": {
+      "name": "Heat Rejection Systems",
+      "cost_m_usd": 1.0,
+      "overridden": false
+    },
+    "cas27": {
+      "name": "Special Materials",
+      "cost_m_usd": 48.51,
+      "overridden": false
+    },
+    "cas28": {
+      "name": "Digital Twin & Simulation",
+      "cost_m_usd": 5.0,
+      "overridden": false
+    },
+    "cas29": {
+      "name": "Contingency",
+      "cost_m_usd": 15.640308673830582,
+      "overridden": false
+    },
+    "cas30": {
+      "name": "Indirect Costs",
+      "cost_m_usd": 17.20433954121364,
+      "overridden": false
+    },
+    "cas40": {
+      "name": "Owner's Costs",
+      "cost_m_usd": 0.7316646536006585,
+      "overridden": false
+    },
+    "cas50": {
+      "name": "Supplementary Costs",
+      "cost_m_usd": 30.580650931182046,
+      "overridden": false
+    },
+    "cas60": {
+      "name": "Interest During Construction",
+      "cost_m_usd": 19.593732150865474,
+      "overridden": false
+    },
+    "cas70": {
+      "name": "O&M Costs (annualised)",
+      "cost_m_usd": 7.156801516143982,
+      "overridden": false
+    },
+    "cas80": {
+      "name": "Fuel Costs (annualised)",
+      "cost_m_usd": 48.512344649999996,
+      "overridden": false
+    },
+    "cas90": {
+      "name": "Financial Costs",
+      "cost_m_usd": 38.4725262393573,
+      "overridden": false
+    },
+    "cas22_detail": {
+      "C220101": {
+        "name": "First Wall & Blanket",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220102": {
+        "name": "Radiation Shield",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220103": {
+        "name": "Magnets / Coils",
+        "cost_m_usd": 15.0,
+        "overridden": false
+      },
+      "C220104": {
+        "name": "Heating & Driver Systems",
+        "cost_m_usd": 15.0,
+        "overridden": false
+      },
+      "C220105": {
+        "name": "Primary Structure & Support",
+        "cost_m_usd": 5.0,
+        "overridden": false
+      },
+      "C220106": {
+        "name": "Vacuum System",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220107": {
+        "name": "Power Conditioning & Energy Storage",
+        "cost_m_usd": 4.0,
+        "overridden": false
+      },
+      "C220108": {
+        "name": "Divertor / Target Factory",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220109": {
+        "name": "Direct Energy Converter",
+        "cost_m_usd": 10.0,
+        "overridden": false
+      },
+      "C220110": {
+        "name": "Remote Handling & Maintenance Equipment",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220111": {
+        "name": "Installation Labor",
+        "cost_m_usd": 9.940000000000001,
+        "overridden": false
+      },
+      "C220112": {
+        "name": "Isotope Separation Plant",
+        "cost_m_usd": 2.0,
+        "overridden": false
+      },
+      "C220200": {
+        "name": "Main & Secondary Coolant",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220300": {
+        "name": "Auxiliary Cooling & Cryoplant",
+        "cost_m_usd": 3.6901593237512764,
+        "overridden": false
+      },
+      "C220400": {
+        "name": "Radioactive Waste Management",
+        "cost_m_usd": 0.0,
+        "overridden": false
+      },
+      "C220500": {
+        "name": "Fuel Handling & Storage",
+        "cost_m_usd": 0.3203892426602728,
+        "overridden": false
+      },
+      "C220600": {
+        "name": "Other Reactor Plant Equipment",
+        "cost_m_usd": 5.0,
+        "overridden": false
+      },
+      "C220700": {
+        "name": "Instrumentation & Control",
+        "cost_m_usd": 3.3335886132085624,
+        "overridden": false
+      }
+    },
+    "headline": {
+      "lcoe_per_mwh": 748.0561656435846,
+      "overnight_cost_per_kw": 14945.024501531116,
+      "p_net_mw": 1000.0,
+      "q_eng": 6.76328502415459,
+      "capacity_factor": 0.9
+    },
+    "sensitivities": {
+      "engineering": {
+        "p_fus_MW": {
+          "elasticity": -0.36800609665551864,
+          "baseline": 30.0
+        },
+        "Q_sci": {
+          "elasticity": -0.460665450825344,
+          "baseline": 10.0
+        },
+        "f_charged_particle": {
+          "elasticity": -1.4650501514682182,
+          "baseline": 0.8
+        },
+        "f_neutron": {
+          "elasticity": 0.0,
+          "baseline": 0.1
+        },
+        "eta_dec": {
+          "elasticity": -1.4704510639564747,
+          "baseline": 0.57
+        },
+        "eta_transmitter": {
+          "elasticity": -0.9935418699138023,
+          "baseline": 0.15
+        },
+        "eta_beam": {
+          "elasticity": -0.9935418699137946,
+          "baseline": 0.89
+        },
+        "eta_rectenna": {
+          "elasticity": -0.9935418699137946,
+          "baseline": 0.82
+        },
+        "eta_icrh": {
+          "elasticity": -0.460665450825344,
+          "baseline": 0.7
+        },
+        "p_cryo_MW": {
+          "elasticity": 0.017183475468785684,
+          "baseline": 0.1
+        },
+        "p_misc_MW": {
+          "elasticity": 0.005373279176061668,
+          "baseline": 0.05
+        },
+        "m_hts_coil_kg": {
+          "elasticity": 0.010971302839657623,
+          "baseline": 2000.0
+        },
+        "m_heating_kg": {
+          "elasticity": 0.008228477129723947,
+          "baseline": 1500.0
+        },
+        "m_dec_kg": {
+          "elasticity": 0.0054856514198211035,
+          "baseline": 1000.0
+        },
+        "m_transmitter_kg": {
+          "elasticity": 0.01371412854954505,
+          "baseline": 2500.0
+        },
+        "m_bus_kg": {
+          "elasticity": 0.0054856514198211035,
+          "baseline": 1000.0
+        },
+        "m_cryo_kg": {
+          "elasticity": 0.008228477129723947,
+          "baseline": 1500.0
+        },
+        "m_fuel_system_kg": {
+          "elasticity": 0.0027428257099105517,
+          "baseline": 500.0
+        },
+        "launch_cost_per_kg": {
+          "elasticity": 0.054856514198203324,
+          "baseline": 2700.0
+        },
+        "c_hts_coil_M": {
+          "elasticity": 0.042611625953917646,
+          "baseline": 15.0
+        },
+        "c_heating_M": {
+          "elasticity": 0.042611625953917646,
+          "baseline": 15.0
+        },
+        "c_dec_M": {
+          "elasticity": 0.028407750635950232,
+          "baseline": 10.0
+        },
+        "c_transmitter_M": {
+          "elasticity": 0.056815501271908174,
+          "baseline": 20.0
+        },
+        "c_bus_M": {
+          "elasticity": 0.014203875317982824,
+          "baseline": 5.0
+        },
+        "c_cryo_M": {
+          "elasticity": 0.0,
+          "baseline": 6.0
+        },
+        "c_electronics_M": {
+          "elasticity": 0.011363100254380093,
+          "baseline": 4.0
+        },
+        "rectenna_cost_per_MW_M": {
+          "elasticity": 0.005043481931408195,
+          "baseline": 2.0
+        },
+        "c_ground_control_M": {
+          "elasticity": 0.012459539752617458,
+          "baseline": 5.0
+        },
+        "he3_cost_per_kg": {
+          "elasticity": 0.636169667669323,
+          "baseline": 30000000.0
+        },
+        "burn_fraction": {
+          "elasticity": 0.0,
+          "baseline": 0.05
+        },
+        "fuel_recovery": {
+          "elasticity": 0.0,
+          "baseline": 0.9
+        },
+        "plant_availability": {
+          "elasticity": -1.0001000100009987,
+          "baseline": 0.9
+        },
+        "plant_lifetime_years": {
+          "elasticity": -0.2714126193863151,
+          "baseline": 10.0
+        },
+        "orbital_om_frac_annual": {
+          "elasticity": 0.07602161012518702,
+          "baseline": 0.03
+        },
+        "construction_time_years": {
+          "elasticity": 0.08394535818775468,
+          "baseline": 3.0
+        },
+        "plasma_radius_m": {
+          "elasticity": 0.0,
+          "baseline": 20.0
+        }
+      },
+      "financial": {
+        "interest_rate": {
+          "elasticity": 0.17928557984154728,
+          "baseline": 0.08
+        }
+      }
+    },
+    "params": {
+      "p_fus_MW": 30.0,
+      "Q_sci": 10.0,
+      "f_charged_particle": 0.8,
+      "f_neutron": 0.1,
+      "eta_dec": 0.57,
+      "eta_transmitter": 0.15,
+      "eta_beam": 0.89,
+      "eta_rectenna": 0.82,
+      "eta_icrh": 0.7,
+      "p_cryo_MW": 0.1,
+      "p_misc_MW": 0.05,
+      "m_hts_coil_kg": 2000.0,
+      "m_heating_kg": 1500.0,
+      "m_dec_kg": 1000.0,
+      "m_transmitter_kg": 2500.0,
+      "m_bus_kg": 1000.0,
+      "m_cryo_kg": 1500.0,
+      "m_fuel_system_kg": 500.0,
+      "launch_cost_per_kg": 2700.0,
+      "n_spacecraft": 1.0,
+      "c_hts_coil_M": 15.0,
+      "c_heating_M": 15.0,
+      "c_dec_M": 10.0,
+      "c_transmitter_M": 20.0,
+      "c_bus_M": 5.0,
+      "c_cryo_M": 6.0,
+      "c_electronics_M": 4.0,
+      "rectenna_cost_per_MW_M": 2.0,
+      "c_ground_control_M": 5.0,
+      "he3_cost_per_kg": 30000000.0,
+      "burn_fraction": 0.05,
+      "fuel_recovery": 0.9,
+      "plant_availability": 0.9,
+      "plant_lifetime_years": 10.0,
+      "noak": 0.0,
+      "orbital_om_frac_annual": 0.03,
+      "interest_rate": 0.08,
+      "construction_time_years": 3.0,
+      "plasma_radius_m": 20.0
+    }
+  },
   "parameter_metadata": {},
   "narrative": {
     "key_bets": [
-      "Energy confinement time scales as τₑ ~ R² in a D-He3 dipole at meter-scale radius, enabling Q > 1 at orbital device scale",
-      "D-D side reactions self-breed He3 via tritium decay at rates sufficient to sustain continuous commercial fuel supply without external procurement",
-      "End-to-end power beaming efficiency (fusion → proton deceleration → DC → microwave transmitter → atmosphere → rectenna → grid) exceeds ~30% at multi-MW scale",
-      "D-He3 ion temperatures of 50–100 keV are achievable in a levitated dipole geometry despite being 5–10× higher than D-T requirements",
-      "A complete fusion reactor spacecraft (HTS coil, heating, power conversion, thermal management) can be packaged within 5,000–15,000 kg for Falcon 9 launch",
-      "Space-qualified HTS coil with on-board cryocooler can maintain ~20–30 K operation in LEO radiation environment for multi-year orbital lifetime",
-      "Direct conversion of 14.7 MeV protons at the dipole separatrix is achievable at commercially viable efficiency"
+      "Energy confinement time scales as τₑ ~ R² in a D-He3 dipole at meter-scale radius, enabling Q > 1 at orbital device dimensions",
+      "He3 can be self-bred from D-D side reactions at rates sufficient to sustain commercial operation without external procurement",
+      "End-to-end power beaming efficiency (proton deceleration → DC → microwave transmitter → atmosphere → rectenna → AC grid) exceeds ~30% at multi-MW scale",
+      "Direct energy conversion of 14.7 MeV D-He3 protons achieves efficiency comparable to or better than 1970s Venetian blind DEC (50–65%) despite qualitatively different proton range physics",
+      "HTS REBCO coil can be space-qualified to survive Van Allen radiation, thermal cycling, and magnetic stress over a multi-year orbital lifetime with on-board cryocooler and radiator cooling",
+      "D-He3 plasma at 50–100 keV ion temperatures can be sustained in dipole geometry despite LDX/RT-1 having only demonstrated sub-fusion electron temperatures (few hundred eV)",
+      "Low-cost launch (Falcon 9 $2,700/kg trending to Starship $200/kg) keeps transport cost a small fraction of total CAPEX for a 5,000–15,000 kg spacecraft"
     ],
     "eliminated_costs": [
-      "CAS 21–23 first wall, blanket, shield, and vacuum vessel — eliminated by orbital deployment with no structural containment",
-      "CAS 24–26 turbine plant, electrical plant, and heat rejection — replaced by direct conversion and power beaming (no thermal cycle)",
-      "Tritium breeding infrastructure — Li-6 enrichment, FLiBe/Li-metal handling, and tritium processing eliminated by aneutronic D-He3 fuel",
-      "14 MeV neutron shielding materials (tungsten, WC cermet, B₄C) — eliminated; D-D side-reaction neutrons radiate into space",
-      "Conventional site and building costs — no terrestrial reactor building, foundation, or containment structure"
+      "Vacuum vessel (CAS 23) — space vacuum replaces the pumped chamber",
+      "Tritium breeding blanket (CAS 21) and associated Li-6 enrichment, FLiBe/Li-metal handling, and tritium processing infrastructure",
+      "Neutron shielding (CAS 22) — aneutronic D-He3 fuel eliminates W, WC cermet, and B₄C shielding supply chain",
+      "Thermal conversion cycle (CAS 24–26) — turbine plant, electrical plant, and heat rejection replaced by direct conversion + beaming",
+      "Reactor building and site civil construction — spacecraft replaces the terrestrial plant footprint"
     ],
     "novel_costs": [
-      "Launch cost to LEO as primary CAPEX driver (~$2,700/kg Falcon 9, ~$13–40M/unit at 5,000–15,000 kg spacecraft mass)",
-      "Power beaming ground infrastructure — rectenna fields at ~$2M/MW (GW-class GEO SPS analogue), 10×13 km receiving area per GW",
-      "Helium-3 fuel procurement at ~$28–34M/kg market price, or self-breeding infrastructure with 12.3-year tritium decay cycle",
-      "Direct conversion hardware for 14.7 MeV protons — no commercial supply chain, first-of-kind space-qualified manufacturing",
-      "Orbital O&M: debris mitigation, radiation hardening, cryocooler/radiator thermal management, replacement logistics with no EVA analogue"
+      "Launch cost to LEO as primary CAPEX driver (~$27M at Falcon 9 pricing for a 10,000 kg spacecraft)",
+      "Phased-array microwave transmitter fabrication (~$20M at ~2,500 kg and ~$2,000/kg for space-grade electronics) — the dominant novel hardware line item",
+      "Ground rectenna infrastructure for power beaming reception (~$2M/MW based on GW-class GEO SPS analogue)",
+      "He3 fuel procurement at ~$5,000–6,000/std L (~$28–34M/kg) market price, or self-breeding infrastructure as alternative",
+      "Space-qualified HTS coil system with on-board cryocooler, thermal radiators, and quench protection for a free-floating coil in LEO"
     ],
     "risks": [
       {
-        "description": "No energy conversion pathway specified — direct conversion and power beaming efficiency chain entirely undefined; delivered power formally undefined making LCOE uncalculable",
+        "description": "He3 fuel supply constraint — global production is ~1.8–2.7 kg/year; a MW-class plant would consume a rate comparable to total world production, and market-purchase at $30M/kg alone pushes LCOE to ~$1,446/MWh (>15× terrestrial fusion parity)",
         "severity": "high"
       },
       {
-        "description": "He3 supply fundamentally constrained — global production ~1.8–2.7 kg/year, market price ~$30M/kg, subject to DOE/DHS/DOD export controls and government rationing; self-breeding pathway undemonstrated in dipole geometry",
+        "description": "He3 self-breeding is categorically insufficient at equimolar D:He3 composition — D-D/D-He3 rate ratio is only ~7.5%, requiring a 13:1 D-rich fuel mix that restores neutron production and negates the aneutronic advantage",
         "severity": "high"
       },
       {
-        "description": "Energy confinement scaling law unknown for dipole geometry — OpenStar explicitly states 'no such model exists'; D-He3 requires ~10× higher triple product than D-T",
+        "description": "End-to-end power beaming efficiency is ~7–9% under realistic phased-array steering (transmitter DC-RF drops below 20% due to 4–6 dB phase shifter losses per element), well below the ~30% hypothesis and ~40% competitive threshold",
         "severity": "high"
       },
       {
-        "description": "D-He3 confinement physics requires 50–100 keV ion temperatures — 2–3 orders of magnitude above LDX/RT-1 experimental heritage of a few hundred eV",
+        "description": "Energy conversion pathway is completely unspecified by Zephyr — direct conversion of 14.7 MeV protons has no commercial supply chain, and the Venetian blind DEC efficiency figure is an optimistic upper bound from an inapplicable 1970s non-fusion-ion design basis",
         "severity": "high"
       },
       {
-        "description": "Power beaming end-to-end efficiency realistically ~14% with phased-array steering (<20% TX × 89% beam × 80% rectenna); below ~20% threshold makes terrestrial competition impossible regardless of Q",
+        "description": "Energy confinement scaling law for dipole geometry is explicitly absent from the literature (\"no such model exists for dipoles\" — OpenStar study); τₑ ~ R² claim is unverified at fusion-relevant conditions",
         "severity": "high"
       },
       {
-        "description": "No heating method disclosed — recirculating power fraction unanchored; high fraction could render concept non-viable independent of other parameters",
+        "description": "D-He3 confinement physics requires ion temperatures 2–3 orders of magnitude above LDX/RT-1 demonstrated conditions and a triple product ~10× higher than the D-T dipole reference",
         "severity": "high"
       },
       {
-        "description": "Zephyr is pre-prototype (~2 employees, YC F25 2025) with no technical papers, patents, grants, or plasma parameter disclosures — entire public technical content fits one launch page",
-        "severity": "high"
-      },
-      {
-        "description": "Orbital HTS coil lifetime under Van Allen belt proton/electron bombardment, thermal cycling, and magnetic stress is unvalidated at fusion-relevant field strengths",
+        "description": "He3 procurement faces regulatory barriers independent of physical scarcity — He3 and tritium are dual-use controlled materials under DOE/DHS/DOD/NSS oversight with government-rationed allocation prioritizing security uses over commercial users",
         "severity": "medium"
       },
       {
-        "description": "Space-qualified cryocooler and radiator sizing for ~20–30 K coil temperature in LEO thermal environment has no precedent at fusion coil scale",
+        "description": "No heating specification disclosed — recirculating power fraction is a critical LCOE input that cannot be estimated; a high recirculating fraction could render an otherwise attractive concept non-viable",
         "severity": "medium"
       },
       {
-        "description": "Regulatory dual-track risk — IAEA/UN COPUOS oversight for nuclear material in orbit plus DOE/DHS/DOD export controls on He3/tritium procurement; policy barrier unresolvable by technology alone",
+        "description": "Orbital HTS coil radiation hardening, cryocooler thermal management, and multi-year lifetime in LEO are unvalidated — no space-qualified HTS cryocooler at fusion coil scale exists",
         "severity": "medium"
       },
       {
-        "description": "Capital cost structure has no published analogue — CAS 10-LCOE framework does not apply; free-form orbital spacecraft cost model required",
+        "description": "Spacecraft fabrication cost for FOAK orbital fusion reactor could be 10–100× baseline, and the SPS parity window closes between 1.0× and 2.0× baseline hardware cost per sensitivity sweep",
         "severity": "medium"
       },
       {
-        "description": "Plant capacity factor undefined — no orbital fusion O&M precedent; debris/radiation events could drive significant unplanned downtime offsetting steady-state advantage",
+        "description": "Orbital operations cost structure (debris mitigation for 10–50 m plasma radius, radiation hardening, no crewed EVA servicing, orbital lifetime management) has no precedent in fusion LCOE literature",
         "severity": "medium"
       },
       {
-        "description": "Direct conversion hardware has no commercial supply chain — only reference is 1970s Venetian blind DEC (never manufactured at scale, never space-qualified)",
+        "description": "Nuclear operations in orbit require IAEA oversight and international agreements with no established commercial precedent",
         "severity": "medium"
       },
       {
-        "description": "Competitive benchmark uncertainty — Zephyr cites ITER ($650M/MW) but relevant benchmarks are SPS parity ($200–500/MWh) and terrestrial fusion parity ($50–150/MWh), requiring different development paths",
+        "description": "NASA/DOE concluded GEO SPS is \"not currently practical for power transmission to Earth\" independent of launch cost — ground infrastructure scale was identified as a separate barrier applicable to Zephyr's beaming approach",
+        "severity": "medium"
+      },
+      {
+        "description": "Company is pre-prototype with ~2 employees, no technical papers, patents, or grants — entire technical disclosure fits on a single YC launch page, leaving all plasma parameters, Q, heating, conversion, and cost estimates undefined",
         "severity": "low"
       }
     ]

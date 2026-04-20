@@ -1,278 +1,50 @@
 {
   "parameters": {
-    "availability": {
-      "param_name": "availability",
-      "display_name": "availability",
+    "p_fus_MW": {
+      "param_name": "p_fus_MW",
+      "display_name": "p_fus_MW",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
-          "elasticity": -0.9469127522272398
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": -0.36800609665551864
         }
       ]
     },
-    "construction_time_yr": {
-      "param_name": "construction_time_yr",
-      "display_name": "construction_time_yr",
+    "Q_sci": {
+      "param_name": "Q_sci",
+      "display_name": "Q_sci",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
-          "elasticity": 0.26059514714108356
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": -0.460665450825344
         }
       ]
     },
-    "mn": {
-      "param_name": "mn",
-      "display_name": "mn",
+    "f_charged_particle": {
+      "param_name": "f_charged_particle",
+      "display_name": "f_charged_particle",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
-          "elasticity": -0.08455495496855112
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": -1.4650501514682182
         }
       ]
     },
-    "eta_th": {
-      "param_name": "eta_th",
-      "display_name": "eta_th",
+    "f_neutron": {
+      "param_name": "f_neutron",
+      "display_name": "f_neutron",
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
-          "elasticity": -0.26546411542951204
-        }
-      ]
-    },
-    "f_sub": {
-      "param_name": "f_sub",
-      "display_name": "f_sub",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
-          "elasticity": -0.009348939038207387
-        }
-      ]
-    },
-    "p_pump": {
-      "param_name": "p_pump",
-      "display_name": "p_pump",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
-          "elasticity": -0.0002611775550158942
-        }
-      ]
-    },
-    "p_trit": {
-      "param_name": "p_trit",
-      "display_name": "p_trit",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
-          "elasticity": -0.0023372348757452555
-        }
-      ]
-    },
-    "p_house": {
-      "param_name": "p_house",
-      "display_name": "p_house",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
-          "elasticity": -0.0009348939502981023
-        }
-      ]
-    },
-    "p_cryo": {
-      "param_name": "p_cryo",
-      "display_name": "p_cryo",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
-          "elasticity": 0.0018279269615400356
-        }
-      ]
-    },
-    "blanket_t": {
-      "param_name": "blanket_t",
-      "display_name": "blanket_t",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
-          "elasticity": 0.12561807628144903
-        }
-      ]
-    },
-    "ht_shield_t": {
-      "param_name": "ht_shield_t",
-      "display_name": "ht_shield_t",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
-          "elasticity": 0.026879193554988606
-        }
-      ]
-    },
-    "structure_t": {
-      "param_name": "structure_t",
-      "display_name": "structure_t",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
-          "elasticity": 0.004083649220211979
-        }
-      ]
-    },
-    "vessel_t": {
-      "param_name": "vessel_t",
-      "display_name": "vessel_t",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
-          "elasticity": 0.0099623369425893
-        }
-      ]
-    },
-    "plasma_t": {
-      "param_name": "plasma_t",
-      "display_name": "plasma_t",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
-          "elasticity": 0.27861656002292046
-        }
-      ]
-    },
-    "dd_f_T": {
-      "param_name": "dd_f_T",
-      "display_name": "dd_f_T",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
           "elasticity": 0.0
-        }
-      ]
-    },
-    "dd_f_He3": {
-      "param_name": "dd_f_He3",
-      "display_name": "dd_f_He3",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "dhe3_dd_frac": {
-      "param_name": "dhe3_dd_frac",
-      "display_name": "dhe3_dd_frac",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "dhe3_f_T": {
-      "param_name": "dhe3_f_T",
-      "display_name": "dhe3_f_T",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "q_eng": {
-      "param_name": "q_eng",
-      "display_name": "q_eng",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
-          "elasticity": -0.2625820429212655
-        }
-      ]
-    },
-    "f_rep": {
-      "param_name": "f_rep",
-      "display_name": "f_rep",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
-          "elasticity": -0.0038507203569041024
-        }
-      ]
-    },
-    "eta_pin": {
-      "param_name": "eta_pin",
-      "display_name": "eta_pin",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
-          "elasticity": 0.060851757458871746
-        }
-      ]
-    },
-    "f_rad": {
-      "param_name": "f_rad",
-      "display_name": "f_rad",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
-          "elasticity": 0.0
-        }
-      ]
-    },
-    "p_target": {
-      "param_name": "p_target",
-      "display_name": "p_target",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
-          "elasticity": -0.00023372348757452557
         }
       ]
     },
@@ -282,8 +54,380 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": -1.4704510639564747
+        }
+      ]
+    },
+    "eta_transmitter": {
+      "param_name": "eta_transmitter",
+      "display_name": "eta_transmitter",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": -0.9935418699138023
+        }
+      ]
+    },
+    "eta_beam": {
+      "param_name": "eta_beam",
+      "display_name": "eta_beam",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": -0.9935418699137946
+        }
+      ]
+    },
+    "eta_rectenna": {
+      "param_name": "eta_rectenna",
+      "display_name": "eta_rectenna",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": -0.9935418699137946
+        }
+      ]
+    },
+    "eta_icrh": {
+      "param_name": "eta_icrh",
+      "display_name": "eta_icrh",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": -0.460665450825344
+        }
+      ]
+    },
+    "p_cryo_MW": {
+      "param_name": "p_cryo_MW",
+      "display_name": "p_cryo_MW",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.017183475468785684
+        }
+      ]
+    },
+    "p_misc_MW": {
+      "param_name": "p_misc_MW",
+      "display_name": "p_misc_MW",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.005373279176061668
+        }
+      ]
+    },
+    "m_hts_coil_kg": {
+      "param_name": "m_hts_coil_kg",
+      "display_name": "m_hts_coil_kg",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.010971302839657623
+        }
+      ]
+    },
+    "m_heating_kg": {
+      "param_name": "m_heating_kg",
+      "display_name": "m_heating_kg",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.008228477129723947
+        }
+      ]
+    },
+    "m_dec_kg": {
+      "param_name": "m_dec_kg",
+      "display_name": "m_dec_kg",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.0054856514198211035
+        }
+      ]
+    },
+    "m_transmitter_kg": {
+      "param_name": "m_transmitter_kg",
+      "display_name": "m_transmitter_kg",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.01371412854954505
+        }
+      ]
+    },
+    "m_bus_kg": {
+      "param_name": "m_bus_kg",
+      "display_name": "m_bus_kg",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.0054856514198211035
+        }
+      ]
+    },
+    "m_cryo_kg": {
+      "param_name": "m_cryo_kg",
+      "display_name": "m_cryo_kg",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.008228477129723947
+        }
+      ]
+    },
+    "m_fuel_system_kg": {
+      "param_name": "m_fuel_system_kg",
+      "display_name": "m_fuel_system_kg",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.0027428257099105517
+        }
+      ]
+    },
+    "launch_cost_per_kg": {
+      "param_name": "launch_cost_per_kg",
+      "display_name": "launch_cost_per_kg",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.054856514198203324
+        }
+      ]
+    },
+    "c_hts_coil_M": {
+      "param_name": "c_hts_coil_M",
+      "display_name": "c_hts_coil_M",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.042611625953917646
+        }
+      ]
+    },
+    "c_heating_M": {
+      "param_name": "c_heating_M",
+      "display_name": "c_heating_M",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.042611625953917646
+        }
+      ]
+    },
+    "c_dec_M": {
+      "param_name": "c_dec_M",
+      "display_name": "c_dec_M",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.028407750635950232
+        }
+      ]
+    },
+    "c_transmitter_M": {
+      "param_name": "c_transmitter_M",
+      "display_name": "c_transmitter_M",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.056815501271908174
+        }
+      ]
+    },
+    "c_bus_M": {
+      "param_name": "c_bus_M",
+      "display_name": "c_bus_M",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.014203875317982824
+        }
+      ]
+    },
+    "c_cryo_M": {
+      "param_name": "c_cryo_M",
+      "display_name": "c_cryo_M",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "c_electronics_M": {
+      "param_name": "c_electronics_M",
+      "display_name": "c_electronics_M",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.011363100254380093
+        }
+      ]
+    },
+    "rectenna_cost_per_MW_M": {
+      "param_name": "rectenna_cost_per_MW_M",
+      "display_name": "rectenna_cost_per_MW_M",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.005043481931408195
+        }
+      ]
+    },
+    "c_ground_control_M": {
+      "param_name": "c_ground_control_M",
+      "display_name": "c_ground_control_M",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.012459539752617458
+        }
+      ]
+    },
+    "he3_cost_per_kg": {
+      "param_name": "he3_cost_per_kg",
+      "display_name": "he3_cost_per_kg",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.636169667669323
+        }
+      ]
+    },
+    "burn_fraction": {
+      "param_name": "burn_fraction",
+      "display_name": "burn_fraction",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "fuel_recovery": {
+      "param_name": "fuel_recovery",
+      "display_name": "fuel_recovery",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.0
+        }
+      ]
+    },
+    "plant_availability": {
+      "param_name": "plant_availability",
+      "display_name": "plant_availability",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": -1.0001000100009987
+        }
+      ]
+    },
+    "plant_lifetime_years": {
+      "param_name": "plant_lifetime_years",
+      "display_name": "plant_lifetime_years",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": -0.2714126193863151
+        }
+      ]
+    },
+    "orbital_om_frac_annual": {
+      "param_name": "orbital_om_frac_annual",
+      "display_name": "orbital_om_frac_annual",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.07602161012518702
+        }
+      ]
+    },
+    "construction_time_years": {
+      "param_name": "construction_time_years",
+      "display_name": "construction_time_years",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.08394535818775468
+        }
+      ]
+    },
+    "plasma_radius_m": {
+      "param_name": "plasma_radius_m",
+      "display_name": "plasma_radius_m",
+      "category": "unclassified",
+      "concepts": [
+        {
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
           "elasticity": 0.0
         }
       ]
@@ -294,319 +438,9 @@
       "category": "unclassified",
       "concepts": [
         {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
-          "elasticity": 0.6276655627906925
-        },
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": 0.7665927709170581
-        }
-      ]
-    },
-    "inflation_rate": {
-      "param_name": "inflation_rate",
-      "display_name": "inflation_rate",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "26",
-          "name": "Laser ICF - Indirect Drive (D-T)",
-          "elasticity": 0.06562625441966734
-        },
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": 0.07057983627319504
-        }
-      ]
-    },
-    "p_fus_MW": {
-      "param_name": "p_fus_MW",
-      "display_name": "p_fus_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": -0.8422773422577311
-        }
-      ]
-    },
-    "p_beam_MW": {
-      "param_name": "p_beam_MW",
-      "display_name": "p_beam_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": 0.2441097055062272
-        }
-      ]
-    },
-    "beam_supply_efficiency": {
-      "param_name": "beam_supply_efficiency",
-      "display_name": "beam_supply_efficiency",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": -0.2441484441367731
-        }
-      ]
-    },
-    "blanket_energy_multiplication": {
-      "param_name": "blanket_energy_multiplication",
-      "display_name": "blanket_energy_multiplication",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": -0.6865080855280336
-        }
-      ]
-    },
-    "thermal_efficiency": {
-      "param_name": "thermal_efficiency",
-      "display_name": "thermal_efficiency",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": -0.8730081429678974
-        }
-      ]
-    },
-    "blanket_inner_radius_m": {
-      "param_name": "blanket_inner_radius_m",
-      "display_name": "blanket_inner_radius_m",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": 0.01136618183344347
-        }
-      ]
-    },
-    "blanket_thickness_m": {
-      "param_name": "blanket_thickness_m",
-      "display_name": "blanket_thickness_m",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": 0.009092945466747542
-        }
-      ]
-    },
-    "shield_thickness_m": {
-      "param_name": "shield_thickness_m",
-      "display_name": "shield_thickness_m",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": 0.012151556702349024
-        }
-      ]
-    },
-    "structure_thickness_m": {
-      "param_name": "structure_thickness_m",
-      "display_name": "structure_thickness_m",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": 0.0022888501077132396
-        }
-      ]
-    },
-    "vessel_thickness_m": {
-      "param_name": "vessel_thickness_m",
-      "display_name": "vessel_thickness_m",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": 0.00267471718199463
-        }
-      ]
-    },
-    "coil_system_cost_M_USD": {
-      "param_name": "coil_system_cost_M_USD",
-      "display_name": "coil_system_cost_M_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": 0.10787205085243973
-        }
-      ]
-    },
-    "ebeam_system_cost_M_USD": {
-      "param_name": "ebeam_system_cost_M_USD",
-      "display_name": "ebeam_system_cost_M_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": 0.0719147005683028
-        }
-      ]
-    },
-    "blanket_cost_override_M_USD": {
-      "param_name": "blanket_cost_override_M_USD",
-      "display_name": "blanket_cost_override_M_USD",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": 0.10040128996551932
-        }
-      ]
-    },
-    "plant_availability": {
-      "param_name": "plant_availability",
-      "display_name": "plant_availability",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": -0.9491791742147923
-        }
-      ]
-    },
-    "plant_lifetime_years": {
-      "param_name": "plant_lifetime_years",
-      "display_name": "plant_lifetime_years",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": -0.09812060481140393
-        }
-      ]
-    },
-    "p_cryo_MW": {
-      "param_name": "p_cryo_MW",
-      "display_name": "p_cryo_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": 0.09426759240551014
-        }
-      ]
-    },
-    "p_house_MW": {
-      "param_name": "p_house_MW",
-      "display_name": "p_house_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": 0.010640586255388294
-        }
-      ]
-    },
-    "p_trit_MW": {
-      "param_name": "p_trit_MW",
-      "display_name": "p_trit_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": 0.026601467967410072
-        }
-      ]
-    },
-    "p_vac_MW": {
-      "param_name": "p_vac_MW",
-      "display_name": "p_vac_MW",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": 0.0053202930611249135
-        }
-      ]
-    },
-    "construction_time_years": {
-      "param_name": "construction_time_years",
-      "display_name": "construction_time_years",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": 0.32633641827108717
-        }
-      ]
-    },
-    "core_lifetime_FPY": {
-      "param_name": "core_lifetime_FPY",
-      "display_name": "core_lifetime_FPY",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": -0.05061061947573108
-        }
-      ]
-    },
-    "om_cost_scaling": {
-      "param_name": "om_cost_scaling",
-      "display_name": "om_cost_scaling",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": 0.19483908213747989
-        }
-      ]
-    },
-    "deuterium_cost_per_kg": {
-      "param_name": "deuterium_cost_per_kg",
-      "display_name": "deuterium_cost_per_kg",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": 0.00030647445392888693
-        }
-      ]
-    },
-    "fuel_burnup_fraction": {
-      "param_name": "fuel_burnup_fraction",
-      "display_name": "fuel_burnup_fraction",
-      "category": "unclassified",
-      "concepts": [
-        {
-          "concept_id": "27",
-          "name": "Polywell (D-T)",
-          "elasticity": 0.0
+          "concept_id": "19",
+          "name": "Orbital Levitated Dipole (D-He3)",
+          "elasticity": 0.17928557984154728
         }
       ]
     }
