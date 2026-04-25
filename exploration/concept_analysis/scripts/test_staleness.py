@@ -347,7 +347,7 @@ class TestLoopStalenessRegression:
         iter_dir = fx.iter_dir(1)
         body_path = iter_dir / "analysis_body.md"
         iter_model_path = iter_dir / "model_setup.py"
-        feedback_path = iter_dir / "feedback.md"
+        feedback_path = iter_dir / "post_feedback.md"
         canonical_model = fx.concept_dir / "model_setup.py"
 
         # Pre-seed a stale canonical model — the fresh PASS must clear it.
@@ -399,7 +399,7 @@ class TestLoopStalenessRegression:
         iter_dir = fx.iter_dir(1)
         body_path = iter_dir / "analysis_body.md"
         iter_model_path = iter_dir / "model_setup.py"
-        feedback_path = iter_dir / "feedback.md"
+        feedback_path = iter_dir / "post_feedback.md"
         canonical_model = fx.concept_dir / "model_setup.py"
 
         # Pre-seed a clean canonical so we can verify it becomes stamped.
@@ -447,7 +447,7 @@ class TestLoopStalenessRegression:
         iter_dir = fx.iter_dir(1)
         body_path = iter_dir / "analysis_body.md"
         iter_model_path = iter_dir / "model_setup.py"
-        feedback_path = iter_dir / "feedback.md"
+        feedback_path = iter_dir / "post_feedback.md"
         review_path = fx.concept_dir / "review.md"
         synthesis_path = fx.concept_dir / "synthesis.md"
 

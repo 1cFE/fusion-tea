@@ -12,9 +12,9 @@ All file references are relative to `exploration/concept_analysis/`.
 
 1. `analyze` — write/edit `analysis.md`
 2. `model-setup` — write `model_setup.py`, run it, capture stdout to `model_output.txt`
-3. `assess` — write `feedback.md` and `verdict.json`
+3. `assess` — write `post_feedback.md` and `verdict.json`
 
-The loop runs at most `--max-passes` times (default 3). It exits early when `assess` writes `VERDICT: PASS` into `feedback.md`.
+The loop runs at most `--max-passes` times (default 3). It exits early when `assess` writes `VERDICT: PASS` into `post_feedback.md`.
 
 Each pass is one **iteration** and produces an `iter-N/` directory with all its prompts and outputs. Iteration 1 is a "cold start" — analyze writes from scratch. Iteration 2+ is a "feedback pass" — analyze reads a feedback file and edits the existing `analysis.md` in place.
 
@@ -38,7 +38,8 @@ analyses/11-magnetic-mirror/                 ← one directory per concept
 │   ├── model_setup.py                       ← per-iter model
 │   ├── model_output.txt                     ← per-iter model stdout
 │   ├── assess_prompt.md
-│   ├── feedback.md                          ← assess's output: VERDICT + ### F-N findings
+│   ├── pre_feedback.md                      ← input to analyze (iter > 1 only; absent for cold start)
+│   ├── post_feedback.md                     ← assess's output: VERDICT + ### F-N findings
 │   ├── verdict.json                         ← machine-readable summary of this iter
 │   └── validation_log.json                  ← retries/validation history
 ├── iter-2/                                  ← same shape; analyze ran in feedback-pass mode
@@ -113,7 +114,7 @@ If `model_ok=True`, `_update_canonical_files` (`lib/loop.py:900-926`) copies `it
 `_run_assess` (`lib/loop.py:703-774`).
 
 - Renders `prompt_templates/assessment.md` with paths to `analysis.md`, `model_output.txt`, and the to-be-written feedback file.
-- Invokes claude. Claude writes `iter-N/feedback.md` with this format:
+- Invokes claude. Claude writes `iter-N/post_feedback.md` with this format:
 
 ```
 VERDICT: PASS
@@ -185,10 +186,11 @@ elif not used_review_feedback and _has_revise_status(analysis_path):
     feedback_text = _get_review_feedback(concept_dir)
     if feedback_text is not None:
         feedback_source = "review"
-        feedback_path = iter_dir / "feedback.md"
+        feedback_path = iter_dir / "pre_feedback.md"
         feedback_path.write_text(feedback_text, encoding="utf-8")
     else:
         feedback_source = "assess"
+        # copies prior iter's post_feedback.md → iter-N/pre_feedback.md
         feedback_path = _get_prior_feedback(concept_dir, iter_num)
 ```
 
@@ -220,7 +222,7 @@ The function:
 3. Slices out everything between that heading and the next `## ` heading (or end of file).
 4. Prepends `VERDICT: FINDINGS\n\n` so the result parses as a normal feedback file.
 
-The result is written to `iter-N/feedback.md` (`lib/loop.py:130`). That's the `feedback.md` you see — it's freshly created by extraction, NOT the one assess writes at the end of an iteration.
+The result is written to `iter-N/pre_feedback.md` (`lib/loop.py:130`). This is the input to analyze — distinct from `post_feedback.md`, which assess writes at the end of the iteration.
 
 #### "One-shot" — what does that actually mean?
 
@@ -237,10 +239,14 @@ The `else` branch at `lib/loop.py:132-135` falls through to the assess case (Cas
 ```python
 elif new_sources and not used_source_integration:
     feedback_source = "source_integration"
-    feedback_path = _run_source_integration(...)
-    if feedback_path is None:
+    si_result = _run_source_integration(...)
+    if si_result is not None:
+        feedback_path = iter_dir / "pre_feedback.md"
+        shutil.copyfile(si_result, feedback_path)
+    else:
         feedback_source = "assess"
-        feedback_path = _get_prior_feedback(concept_dir, iter_num)
+        # copies prior iter's post_feedback.md → iter-N/pre_feedback.md
+        feedback_path = ...
     used_source_integration = True
 ```
 
@@ -265,9 +271,7 @@ So "new source files" = `.md` files in the sources directory that weren't record
 1. Renders `prompt_templates/source_integration.md` with the new source paths and `analysis.md`.
 2. Invokes claude. Claude reads `analysis.md` and the new sources, then writes `iter-N/source_integration_output.md` in the standard `VERDICT + F-N:` format.
 3. If claude returns `VERDICT: PASS` (no material new info), the function returns `None` — the dispatch then falls through to Case 5 (use prior assess feedback).
-4. Otherwise, the function returns the path `iter-N/source_integration_output.md`. Note: this is the path stored in `feedback_path`. Analyze in feedback-pass mode reads that file directly. **It's not copied to `iter-N/feedback.md`** — that file is reserved for the assess output at the end of this iteration.
-
-So the `feedback.md` analyze reads in Case 3 is `iter-N/source_integration_output.md`. That is what the diagram is calling "feedback.md" in Case 3 — it's a feedback file, but the actual filename on disk is `source_integration_output.md`.
+4. Otherwise, the function returns the path `iter-N/source_integration_output.md`. The dispatch then copies it to `iter-N/pre_feedback.md`, which is what analyze reads. The original `source_integration_output.md` is preserved as the raw producer artifact.
 
 #### Why "one-shot"?
 
@@ -287,13 +291,15 @@ elif getattr(args, "research", False) and iter_num > 1:
         if si_path is not None:
             assess_fb = _get_prior_feedback(concept_dir, iter_num)
             merged_assess = assess_fb is not None and assess_fb.exists()
-            feedback_path = _merge_feedback(assess_fb, si_path, iter_dir / "feedback.md")
+            feedback_path = _merge_feedback(assess_fb, si_path, iter_dir / "pre_feedback.md")
         else:
             feedback_source = "assess"
-            feedback_path = _get_prior_feedback(concept_dir, iter_num)
+            # copies prior iter's post_feedback.md → iter-N/pre_feedback.md
+            feedback_path = ...
     else:
         feedback_source = "assess"
-        feedback_path = _get_prior_feedback(concept_dir, iter_num)
+        # copies prior iter's post_feedback.md → iter-N/pre_feedback.md
+        feedback_path = ...
 ```
 
 #### What does the research agent do?
@@ -309,11 +315,11 @@ If research acquired sources AND source-integration produced findings (didn't re
 The reasoning (FR-8 in the design): the prior assess raised some findings. Then research happened and added new sources. The new feedback file pointed at by `feedback_path` would be JUST the source-integration findings — meaning the prior unfixed assess findings would be DROPPED on this iteration. To prevent that, the merger:
 
 1. Takes the source-integration output as primary content.
-2. Reads the prior iter's `feedback.md` (assess output).
+2. Reads the prior iter's `post_feedback.md` (assess output).
 3. If it had `VERDICT: FINDINGS` with at least one `### F-N:` block, appends those findings under a `## Carried-Forward Assessment Findings` header.
-4. Writes the merged result to `iter-N/feedback.md`.
+4. Writes the merged result to `iter-N/pre_feedback.md`.
 
-So in Case 4, the file analyze reads is `iter-N/feedback.md` — and it actually IS at that path (unlike Case 3, which reads `source_integration_output.md`). The "(merged with prior)" annotation in the diagram is literal — the file contains both source-integration findings AND prior assess findings.
+So in Case 4, the file analyze reads is `iter-N/pre_feedback.md` — it contains both source-integration findings AND prior assess findings.
 
 `merged_assess: true` is recorded in `verdict.json` so you can see this happened.
 
@@ -326,49 +332,50 @@ If `run_research_step` returns no acquired sources (the agent searched but found
 ```python
 else:
     feedback_source = "assess" if iter_num > 1 else "cold_start"
-    feedback_path = _get_prior_feedback(concept_dir, iter_num) if iter_num > 1 else None
+    prior = _get_prior_feedback(concept_dir, iter_num) if iter_num > 1 else None
+    if prior is not None:
+        feedback_path = iter_dir / "pre_feedback.md"
+        shutil.copyfile(prior, feedback_path)
 ```
 
-`_get_prior_feedback` (`lib/loop.py:847-852`):
+`_get_prior_feedback` (`lib/loop.py:875-879`):
 
 ```python
 def _get_prior_feedback(concept_dir: Path, iter_num: int) -> Path | None:
     if iter_num <= 1:
         return None
-    prior = concept_dir / f"iter-{iter_num - 1}" / "feedback.md"
+    prior = concept_dir / f"iter-{iter_num - 1}" / "post_feedback.md"
     return prior if prior.exists() else None
 ```
 
-So Case 5 just points analyze at `iter-{N-1}/feedback.md` — the file that was written by the *previous* iteration's assess step.
-
-This is the cross-iteration handoff. assess writes `iter-N/feedback.md` at the end of iter N. On iter N+1, if no other case fires, analyze reads `iter-N/feedback.md`. The same file is both the *output* of one iteration and the *input* of the next.
+Case 5 copies the prior iteration's `post_feedback.md` (assess output) into `iter-N/pre_feedback.md` (input to analyze). The copy means every `iter-N/` directory is self-contained — `ls iter-N/` shows both what fed analyze (`pre_feedback.md`) and what assess concluded (`post_feedback.md`).
 
 This is also the case that fires after Case 2 / Case 3 have used their one-shot. Once the human's REVISE findings or new sources have been integrated, subsequent iterations fall through to Case 5 and the loop just keeps polishing based on assess findings.
 
 ---
 
-## So which `feedback.md` is which?
+## Where input and output feedback live
 
-There are several files in an iteration that contain `VERDICT + F-N` content. Which one analyze reads depends on which case fired:
+**One rule:** analyze's input is always `iter-N/pre_feedback.md`; assess's output is always `iter-N/post_feedback.md`. They never collide. For iter > 1 in a completed run, both files exist in every `iter-N/` directory.
 
-| Case | What analyze reads | Filename on disk |
-|------|--------------------|------------------|
-| 1 (cold start) | (nothing) | — |
-| 2 (review) | findings extracted from `review.md` | `iter-N/feedback.md` (created fresh by `_get_review_feedback`) |
-| 3 (source-integration) | source-integration's claude output | `iter-N/source_integration_output.md` |
-| 4 (research, w/ sources acquired) | merged source-integration + prior assess findings | `iter-N/feedback.md` (created by `_merge_feedback`) |
-| 4 (research, nothing acquired) | prior iter's assess output | `iter-(N-1)/feedback.md` |
-| 5 (default) | prior iter's assess output | `iter-(N-1)/feedback.md` |
+| Case | What analyze reads (`pre_feedback.md` contains) | Where the content originates |
+|------|--------------------------------------------------|------------------------------|
+| 1 (cold start) | — (no `pre_feedback.md`) | — |
+| 2 (review) | findings extracted from `review.md` | `_get_review_feedback` → writes directly |
+| 3 (source-integration) | source-integration findings | copied from `source_integration_output.md` |
+| 4 (research, w/ sources acquired) | merged source-integration + prior assess | `_merge_feedback` → writes directly |
+| 4 (research, nothing acquired) | prior iter's assess output | copied from `iter-(N-1)/post_feedback.md` |
+| 5 (default) | prior iter's assess output | copied from `iter-(N-1)/post_feedback.md` |
 
-And separately, **regardless of which case fed analyze**, at the *end* of every iteration, assess writes its own output to `iter-N/feedback.md`. This may overwrite what Case 2 wrote at the start of the same iteration — that's intentional, the start-of-iter content has done its job (driving analyze) and is no longer needed.
+Assess writes `iter-N/post_feedback.md` at the end of every iteration. It is an immutable transcript — nothing else writes to that path.
 
-A note on Case 3 specifically: the source-integration output stays at `iter-N/source_integration_output.md` precisely so it doesn't conflict with the assess output at the end of the same iteration.
+> **Historical note:** Prior to this change, both input and output were called `feedback.md`, and Cases 2 and 4 would overwrite the input with the output within the same iteration. The rename was done in commit `TBD` on branch `pipeline-cleanup`.
 
 ---
 
 ## Verdict semantics
 
-`feedback.md` content drives the loop's exit decision. `parse_verdict_from_feedback` (`lib/iteration.py:134-145`) parses:
+`post_feedback.md` content drives the loop's exit decision. `parse_verdict_from_feedback` (`lib/iteration.py:134-145`) parses:
 
 - `^VERDICT:\s*(PASS|FINDINGS)\s*$` → if PASS, verdict is `"PASS"`. Otherwise `"FAIL"`.
 - `^### F-\d+:` → counts findings.
@@ -416,13 +423,14 @@ So `--resume` does not consult any journal — it just `glob`s for `iter-*/verdi
 
 | Term | What it actually is |
 |------|---------------------|
-| `feedback.md` | A file in `iter-N/` containing `VERDICT: ...` and zero or more `### F-N:` finding blocks. Format defined in `prompt_templates/config/feedback_format.md`. Written by assess at the end of every iteration; sometimes also written at the start of an iteration by Case 2 (extracted from review.md) or Case 4 (merged from research). |
+| `pre_feedback.md` | Input to analyze for iter > 1. Contains `VERDICT: ...` and `### F-N:` findings in the same format as `post_feedback.md`. Written by the dispatch chain at the start of each iteration. Content varies by case (review extract, source-integration copy, merge, or copy of prior `post_feedback.md`). Absent for cold-start (iter 1). |
+| `post_feedback.md` | Assess's output. Contains `VERDICT: ...` and zero or more `### F-N:` finding blocks. Format defined in `prompt_templates/config/feedback_format.md`. Written by assess at the end of every iteration. Immutable transcript — never overwritten. (Previously called `feedback.md`.) |
 | `verdict.json` | Per-iteration machine-readable summary written by `write_verdict` (`lib/iteration.py:103-131`). Records iteration number, verdict, finding count, which feedback source fed analyze, whether model ran/succeeded, source list, etc. Used by `--resume` to figure out where to pick up. |
 | `Review-Status: revise` | A frontmatter field on `analysis.md`. Set by `cmd_review` (`run_analysis.py:642-665`) when the human reviewer's `review.md` says `VERDICT: REVISE`. Read by `_has_revise_status` (`lib/loop.py:855`) to gate Case 2 of the dispatch. |
 | `### F-N:` | A "finding" header in feedback files. N is just a counter (F-1, F-2, F-3). Each finding has Target, Category (analysis|model), Finding, Recommendation, Priority. Counted by `FINDING_HEADER_RE` (`lib/validators.py:23`). Cap of 3 per pass. |
-| "extract F-N" | The action `_get_review_feedback` performs (`lib/loop.py:863-897`): finds `## Corrective Actions` in `review.md`, slices the section out, prepends `VERDICT: FINDINGS`, returns the text. The caller writes it to `iter-N/feedback.md`. |
+| "extract F-N" | The action `_get_review_feedback` performs (`lib/loop.py:863-897`): finds `## Corrective Actions` in `review.md`, slices the section out, prepends `VERDICT: FINDINGS`, returns the text. The caller writes it to `iter-N/pre_feedback.md`. |
 | "one-shot" (Case 2 / Case 3) | A boolean flag (`used_review_feedback` / `used_source_integration` at `lib/loop.py:102-103`) that gets set the first time the case fires and prevents it from firing again in the same `analyze` invocation. The flag does NOT persist across invocations. |
-| "merged with prior" (Case 4) | `_merge_feedback` (`lib/loop.py:293-333`) appends the prior iter's assess findings to the source-integration output under a `## Carried-Forward Assessment Findings` heading, so unfixed findings aren't dropped when research+source-integration takes over the feedback channel. |
+| "merged with prior" (Case 4) | `_merge_feedback` (`lib/loop.py:293-333`) appends the prior iter's assess findings (from `post_feedback.md`) to the source-integration output under a `## Carried-Forward Assessment Findings` heading, writes the result to `pre_feedback.md`, so unfixed findings aren't dropped when research+source-integration takes over the feedback channel. |
 | "new sources detected" | `detect_new_sources` (`lib/iteration.py:148-154`) returns the set difference: `find_sources()` minus the union of source paths recorded in all prior iterations' `verdict.json`. |
 | "cold start" | Iter 1 of a fresh (`not resume`) run. analyze writes `analysis.md` from scratch using the cold-start branch of `analysis_v2.md`. Pre-writes only the YAML frontmatter so claude has something to point at. |
 | "feedback pass" | Iter ≥ 2 (or any resume iter ≥ 2). analyze reads a feedback file via the `feedback_path` template variable and edits `analysis.md` in place. The validator (`make_file_modified_validator`) verifies `analysis.md` actually changed. |

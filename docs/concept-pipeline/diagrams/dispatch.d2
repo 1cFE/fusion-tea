@@ -28,8 +28,7 @@ classes: {
 
 # ═══════════════════════════════════════════════════════════════
 # Five cases checked in priority order, first match wins.
-# Some cases run Claude steps to produce feedback.md.
-# Others just point analyze at an existing file.
+# Each non-cold-start case produces iter-N/pre_feedback.md.
 # All paths funnel into "→ analyze" (the iteration body, Diagram 2a).
 # ═══════════════════════════════════════════════════════════════
 
@@ -52,7 +51,7 @@ cases: "Pick feedback for this iteration (first matching case wins)" {
     cond: "Review-Status:\nrevise" {class: cond}
     src: "review.md" {class: artifact}
     op: "extract F-N\n(no Claude call)" {class: step}
-    out: "feedback.md" {class: artifact}
+    out: "pre_feedback.md" {class: artifact}
     cond -> src -> op -> out
   }
 
@@ -60,7 +59,7 @@ cases: "Pick feedback for this iteration (first matching case wins)" {
     direction: right
     cond: "new source files\nsince last iter" {class: cond}
     op: "source-integration\n(Claude step)" {class: step}
-    out: "feedback.md" {class: artifact}
+    out: "pre_feedback.md" {class: artifact}
     cond -> op -> out
   }
 
@@ -69,14 +68,14 @@ cases: "Pick feedback for this iteration (first matching case wins)" {
     cond: "--research\nand iter > 1" {class: cond}
     op1: "research agent\n(web search +\nadd-source)" {class: step}
     op2: "source-integration\n(if sources\nacquired)" {class: step}
-    out: "feedback.md\n(merged with prior)" {class: artifact}
+    out: "pre_feedback.md\n(merged with prior)" {class: artifact}
     cond -> op1 -> op2 -> out
   }
 
   c5: "Case 5 — default (iter > 1, no other case matched)" {
     direction: right
     cond: "everything else" {class: cond}
-    out: "prior iter's feedback.md\n(produced by last iter's assess)" {class: artifact}
+    out: "pre_feedback.md\n(copied from prior\niter's post_feedback.md)" {class: artifact}
     cond -> out
   }
 }

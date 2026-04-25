@@ -97,7 +97,7 @@ Selection logic (feedback-source dispatch in `lib/loop.py:run_stage1_loop`):
 | 2 | Resume + `Review-Status: revise` | **review** (one-shot) | Extracts F-N from `review.md` → `analysis_v2.md` feedback mode |
 | 3 | Resume with new sources detected | **source_integration** (one-shot) | `source_integration.md` → then `analysis_v2.md` feedback mode |
 | 4 | `--research` flag, iter > 1 | **research** | `lib/research.py` → source-integration chain |
-| 5 | Iter > 1 (default) | **assess** | Prior iter's `feedback.md` → `analysis_v2.md` feedback mode |
+| 5 | Iter > 1 (default) | **assess** | Prior iter's `post_feedback.md` → `pre_feedback.md` → `analysis_v2.md` feedback mode |
 
 "New sources detected" means `find_sources()` returns paths not recorded in
 any prior iteration's `verdict.json` `sources` field. Detection is in
@@ -472,8 +472,8 @@ All templates live in `prompt_templates/`. The template engine
 |----------|-----------|-------------|------------|--------|---------|
 | `gap_check.md` | concept_name, company, dossier_path, source_file_list, brief_path, schema_path | — | — | `gap_report.md` (stdout) | Rating: Ready / Mostly Ready / Significant Gaps / Insufficient |
 | `analysis_v2.md` | concept_name, company, dossier_path, source_paths, brief_path, schema_path, exemplar_paths, approved_analyses, output_template_path, analysis_path, output_path, feedback_path, memory_context | cold_start, feedback_pass, self_advance, memory_context | @config/analysis_goals.md, @config/quality_standards.md, @agents/source_reader.md | `analysis_body.md` (cold) or edits to `analysis.md` (feedback) | — |
-| `assessment.md` | concept_name, analysis_path, feedback_path, model_output_path | model_output_path | @config/analysis_goals.md, @config/assessment_checklist.md, @config/feedback_format.md | `feedback.md` | `VERDICT: PASS` or `VERDICT: FINDINGS` + `### F-N:` |
-| `source_integration.md` | concept_name, analysis_path, new_source_paths, feedback_path | — | @config/analysis_goals.md, @config/feedback_format.md | `feedback.md` | `VERDICT: PASS` or `VERDICT: FINDINGS` + `### F-N:` |
+| `assessment.md` | concept_name, analysis_path, feedback_path, model_output_path | model_output_path | @config/analysis_goals.md, @config/assessment_checklist.md, @config/feedback_format.md | `post_feedback.md` | `VERDICT: PASS` or `VERDICT: FINDINGS` + `### F-N:` |
+| `source_integration.md` | concept_name, analysis_path, new_source_paths, feedback_path | — | @config/analysis_goals.md, @config/feedback_format.md | `source_integration_output.md` | `VERDICT: PASS` or `VERDICT: FINDINGS` + `### F-N:` |
 | `research.md` | concept_name, concept_id, concept_num, analysis_path, output_path, max_searches, max_extractions, prior_attempts | prior_attempts | — | `research_output.json` (Write tool) | — (orchestrator detects sources via filesystem diff) |
 | `model_setup_costingfe.md` | concept_name, company, analysis_path, example_path, defaults_path, readme_path, costing_constants_path, costingfe_concept, costingfe_fuel, mapping_notes, output_path | mapping_notes | — | `model_setup.py` | — |
 | `model_setup_costingfe_edit.md` | (same as costingfe) + prior_model_path, model_feedback | model_feedback | — | edits to `model_setup.py` | — |
@@ -678,7 +678,8 @@ analyses/{concept-id}/
 │   ├── model_setup.py
 │   ├── model_output.txt
 │   ├── assess_prompt.md
-│   ├── feedback.md          # Assess output (VERDICT + findings)
+│   ├── pre_feedback.md      # Input to analyze (iter > 1 only)
+│   ├── post_feedback.md     # Assess output (VERDICT + findings)
 │   └── verdict.json
 ├── iter-2/
 │   ├── analyze_prompt.md    # feedback-pass mode
