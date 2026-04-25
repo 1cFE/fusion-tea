@@ -1,0 +1,56 @@
+direction: right
+
+classes: {
+  step: {
+    style.fill: "#dbeafe"
+    style.stroke: "#1e3a8a"
+    style.stroke-width: 2
+    style.font-color: "#0f172a"
+  }
+  artifact: {
+    shape: page
+    style.fill: "#fef3c7"
+    style.stroke: "#92400e"
+    style.stroke-width: 1
+    style.font-color: "#451a03"
+  }
+  decision: {
+    shape: diamond
+    style.fill: "#fef3c7"
+    style.stroke: "#92400e"
+  }
+  exit: {
+    shape: oval
+    style.fill: "#dcfce7"
+    style.stroke: "#166534"
+  }
+  ext_in: {
+    shape: oval
+    style.fill: "#f3f4f6"
+    style.stroke: "#6b7280"
+    style.font-color: "#1f2937"
+  }
+}
+
+# Inputs into analyze come from the dispatch (see Diagram 2b below)
+input: "selected feedback\n(from dispatch)" {class: ext_in}
+
+analyze: "analyze\n(cold-start or feedback-pass)" {class: step}
+art_analysis: "analysis.md" {class: artifact}
+model: "model-setup\n+ run model" {class: step}
+art_model: "model_setup.py\nmodel_output.txt" {class: artifact}
+assess: "assess" {class: step}
+art_feedback: "feedback.md\nverdict.json" {class: artifact}
+
+verdict: "verdict?" {class: decision}
+exit_pass: "→ Stage 2\n(human review)" {class: exit}
+
+input -> analyze
+analyze -> art_analysis -> model -> art_model -> assess -> art_feedback -> verdict
+verdict -> exit_pass: "PASS"
+verdict -> input: "FAIL\n(N < max-passes;\nback to dispatch)" {
+  style.stroke: "#dc2626"
+  style.stroke-dash: 4
+  style.stroke-width: 2
+  style.font-color: "#dc2626"
+}

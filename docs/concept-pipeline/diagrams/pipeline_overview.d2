@@ -1,0 +1,51 @@
+direction: right
+
+classes: {
+  step: {
+    style.fill: "#dbeafe"
+    style.stroke: "#1e3a8a"
+    style.stroke-width: 2
+    style.font-color: "#0f172a"
+  }
+  artifact: {
+    shape: page
+    style.fill: "#fef3c7"
+    style.stroke: "#92400e"
+    style.stroke-width: 1
+    style.font-color: "#451a03"
+  }
+}
+
+stage0: "Stage 0\nBootstrap (manual)" {
+  step: "research +\nclassify" {class: step}
+  artifact: "taxonomy table\nconcept dossier" {class: artifact}
+  step -> artifact
+}
+
+stage1: "Stage 1\nAutomated analysis loop" {
+  step: "analyze →\nmodel-setup →\nassess" {class: step}
+  artifact: "analysis.md\nmodel_setup.py" {class: artifact}
+  step -> artifact
+}
+
+stage2: "Stage 2\nHuman review" {
+  step: "review" {class: step}
+  artifact: "review.md\nVERDICT: PROCEED | REVISE" {class: artifact}
+  step -> artifact
+}
+
+stage3: "Stage 3\nSynthesis & approval" {
+  step: "synthesize +\napprove" {class: step}
+  artifact: "synthesis.md\nStatus: approved" {class: artifact}
+  step -> artifact
+}
+
+stage0.artifact -> stage1.step
+stage1.artifact -> stage2.step
+stage2.artifact -> stage3.step: "PROCEED"
+stage2.artifact -> stage1.step: "REVISE" {
+  style.stroke: "#dc2626"
+  style.stroke-dash: 4
+  style.stroke-width: 2
+  style.font-color: "#dc2626"
+}
