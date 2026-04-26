@@ -25,6 +25,7 @@ from exploration.concept_explorer.extract_explorer_data import (  # noqa: E402
     extract_costingfe,
     extract_narrative,
     extract_standalone,
+    generate_parameter_metadata,
     load_parameter_metadata,
     parse_concept_id,
     parse_confinement_family,
@@ -37,9 +38,12 @@ from exploration.concept_explorer.models import (  # noqa: E402, I001
     ConceptData,
     ConceptManifest,
     ConceptStatus,
+    Confidence,
     ConfinementFamily,
     CostModelData,
+    ParameterCategory,
     ParameterIndex,
+    ParameterMetadata,
     SensitivityAnalysis,
     SensitivityEntry,
     SourcePaths,
@@ -338,6 +342,74 @@ class TestExtractCostingfe:
                     narrative=None,
                     param_metadata={},
                 )
+
+    def test_generates_parameter_metadata(self, tmp_path: Path) -> None:
+        """extract_costingfe() auto-fills parameter_metadata from sensitivities."""
+        result = _make_forward_result()
+        model = _make_mock_model()
+        concept_dir = _make_concept_dir(tmp_path)
+        mock_module = types.SimpleNamespace(model=model, result=result)
+
+        with patch(
+            "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
+            return_value=mock_module,
+        ):
+            concept = extract_costingfe(
+                concept_dir=concept_dir,
+                concept_id="04",
+                frontmatter={"Concept": "Test", "Status": "approved"},
+                analysis_path=concept_dir / "analysis.md",
+                narrative=None,
+                param_metadata={},
+            )
+
+        assert len(concept.parameter_metadata) > 0
+        assert "availability" in concept.parameter_metadata
+        assert "interest_rate" in concept.parameter_metadata
+        # Auto-generated entries carry default category / confidence
+        assert concept.parameter_metadata["availability"].category == ParameterCategory.UNCLASSIFIED
+        assert concept.parameter_metadata["availability"].confidence == Confidence.UNKNOWN
+
+    def test_yaml_overrides_win_over_generated(self, tmp_path: Path) -> None:
+        """When yaml param_metadata has an entry for the same key, it replaces
+        the auto-generated entry entirely."""
+        result = _make_forward_result()
+        model = _make_mock_model()
+        concept_dir = _make_concept_dir(tmp_path)
+        mock_module = types.SimpleNamespace(model=model, result=result)
+
+        yaml_override = {
+            "availability": ParameterMetadata(
+                display_name="Plant Availability (Curated)",
+                category=ParameterCategory.SHARED_BASELINE,
+                confidence=Confidence.HIGH,
+                baseline=0.85,
+                range=(0.6, 0.95),
+                source="curated source",
+            )
+        }
+
+        with patch(
+            "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
+            return_value=mock_module,
+        ):
+            concept = extract_costingfe(
+                concept_dir=concept_dir,
+                concept_id="04",
+                frontmatter={"Concept": "Test", "Status": "approved"},
+                analysis_path=concept_dir / "analysis.md",
+                narrative=None,
+                param_metadata=yaml_override,
+            )
+
+        avail = concept.parameter_metadata["availability"]
+        assert avail.display_name == "Plant Availability (Curated)"
+        assert avail.category == ParameterCategory.SHARED_BASELINE
+        assert avail.confidence == Confidence.HIGH
+        assert avail.range == (0.6, 0.95)
+        # Other sensitivity keys still get generated entries
+        assert "interest_rate" in concept.parameter_metadata
+        assert concept.parameter_metadata["interest_rate"].category == ParameterCategory.UNCLASSIFIED
 
     def test_concept_data_validates_as_pydantic(self, tmp_path: Path) -> None:
         """Extracted ConceptData round-trips JSON without data loss."""
@@ -788,8 +860,10 @@ class TestNarrativeExtractionFailure:
 
 
 class TestParameterMetadataWarning:
-    def test_missing_sensitivity_keys_warns(self, tmp_path: Path) -> None:
-        """AC-7: sensitivity keys not in parameter_metadata emit UserWarning."""
+    def test_no_warning_when_metadata_auto_generated(self, tmp_path: Path) -> None:
+        """Empty param_metadata is now safe — extract_costingfe auto-generates
+        an entry for every sensitivity key, so the validator's coverage warning
+        never fires."""
         result = _make_forward_result()
         model = _make_mock_model()
         concept_dir = _make_concept_dir(tmp_path)
@@ -799,15 +873,20 @@ class TestParameterMetadataWarning:
             "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
             return_value=mock_module,
         ):
-            with pytest.warns(UserWarning, match="sensitivity keys not covered"):
+            with warnings.catch_warnings(record=True) as caught:
+                warnings.simplefilter("always")
                 extract_costingfe(
                     concept_dir=concept_dir,
                     concept_id="04",
                     frontmatter={"Concept": "Test", "Status": "approved"},
                     analysis_path=concept_dir / "analysis.md",
                     narrative=None,
-                    param_metadata={},  # Empty → all sensitivity keys uncovered
+                    param_metadata={},
                 )
+
+        assert not any(
+            "sensitivity keys not covered" in str(w.message) for w in caught
+        ), "Auto-generation should cover every sensitivity key"
 
     def test_metadata_missing_file_returns_empty(self, tmp_path: Path) -> None:
         """Missing model_metadata.yaml returns empty dict (no exception)."""
@@ -821,6 +900,85 @@ class TestParameterMetadataWarning:
         assert "availability" in result
         assert result["availability"].display_name == "Plant Availability"
         assert result["availability"].baseline == pytest.approx(0.85)
+
+
+# ---------------------------------------------------------------------------
+# generate_parameter_metadata: derive ParameterMetadata from sensitivities
+# ---------------------------------------------------------------------------
+
+
+class TestGenerateParameterMetadata:
+    def test_basic(self) -> None:
+        sens = SensitivityAnalysis(
+            engineering={
+                "availability": SensitivityEntry(elasticity=0.75, baseline=0.85),
+                "R0": SensitivityEntry(elasticity=-0.3, baseline=5.0),
+            },
+            financial={
+                "interest_rate": SensitivityEntry(elasticity=0.85, baseline=0.07),
+            },
+        )
+        meta = generate_parameter_metadata(sens)
+        assert set(meta.keys()) == {"availability", "R0", "interest_rate"}
+        # Fractional param clamped to [0, 1]
+        assert meta["availability"].range[1] <= 1.0
+        assert meta["availability"].range[0] >= 0
+        # Non-fractional: baseline ± 30%
+        assert meta["R0"].range == pytest.approx((3.5, 6.5))
+        # All entries are valid ParameterMetadata (Pydantic didn't reject)
+        assert meta["R0"].display_name == "R0"
+        # Defaults
+        assert meta["R0"].category == ParameterCategory.UNCLASSIFIED
+        assert meta["R0"].confidence == Confidence.UNKNOWN
+
+    def test_fractional_clamping(self) -> None:
+        """Efficiency/availability/eta/fraction params clamp to [0, 1]."""
+        sens = SensitivityAnalysis(
+            engineering={
+                "availability": SensitivityEntry(elasticity=0.7, baseline=0.95),
+                "thermal_efficiency": SensitivityEntry(elasticity=-0.4, baseline=0.85),
+                "eta_th": SensitivityEntry(elasticity=-0.3, baseline=0.9),
+                "burn_fraction": SensitivityEntry(elasticity=0.2, baseline=0.8),
+                "f_cu": SensitivityEntry(elasticity=0.1, baseline=0.9),
+            },
+            financial={},
+        )
+        meta = generate_parameter_metadata(sens)
+        # All would have baseline*1.3 > 1 — verify clamp
+        for name in ("availability", "thermal_efficiency", "eta_th", "burn_fraction", "f_cu"):
+            assert meta[name].range[1] <= 1.0, f"{name} hi exceeds 1.0"
+            assert meta[name].range[0] >= 0
+            assert meta[name].range[0] < meta[name].range[1]
+
+    def test_zero_baseline_fallback(self) -> None:
+        """Zero baseline produces fallback (0, 1) range, not degenerate (0, 0)."""
+        sens = SensitivityAnalysis(
+            engineering={
+                "weird_zero": SensitivityEntry(elasticity=0.1, baseline=0.0),
+            },
+            financial={},
+        )
+        meta = generate_parameter_metadata(sens)
+        assert "weird_zero" in meta
+        lo, hi = meta["weird_zero"].range
+        assert lo < hi  # Non-degenerate
+        assert lo >= 0
+
+    def test_empty_sensitivities(self) -> None:
+        sens = SensitivityAnalysis(engineering={}, financial={})
+        assert generate_parameter_metadata(sens) == {}
+
+    def test_non_fractional_with_subunit_baseline(self) -> None:
+        """Param with baseline in (0,1] but no fractional name → no [0,1] clamp."""
+        sens = SensitivityAnalysis(
+            engineering={},
+            financial={
+                # interest_rate baseline 0.9 → range (0.63, 1.17), no clamp
+                "interest_rate": SensitivityEntry(elasticity=0.5, baseline=0.9),
+            },
+        )
+        meta = generate_parameter_metadata(sens)
+        assert meta["interest_rate"].range == pytest.approx((0.63, 1.17))
 
 
 # ---------------------------------------------------------------------------

@@ -153,6 +153,65 @@ def build_sensitivity_analysis(model: Any, result: Any) -> SensitivityAnalysis:
     )
 
 
+_FRACTIONAL_NAME_TOKENS = ("eta", "efficiency", "availability", "fraction")
+_FRACTIONAL_NAME_EXACT = {"burn_fraction", "fuel_recovery"}
+
+
+def generate_parameter_metadata(
+    sensitivities: SensitivityAnalysis,
+) -> dict[str, ParameterMetadata]:
+    """Derive ParameterMetadata for every sensitivity param from baselines alone.
+
+    Range strategy: baseline ± 30%, clamped to [0, ∞). Fractional params
+    (efficiencies, availability, etc.) additionally clamp to [0, 1]. If the
+    baseline is 0 — degenerate range — fall back to (0, 1) so the slider is
+    still draggable.
+
+    yaml-authored entries (loaded by `load_parameter_metadata`) override these
+    via dict-spread merge in `extract_costingfe()`.
+    """
+    out: dict[str, ParameterMetadata] = {}
+    all_entries = {**sensitivities.engineering, **sensitivities.financial}
+
+    for name, entry in all_entries.items():
+        baseline = entry.baseline
+        is_fractional = (
+            0 < baseline <= 1
+            and (
+                name in _FRACTIONAL_NAME_EXACT
+                or name.startswith("f_")
+                or any(tok in name.lower() for tok in _FRACTIONAL_NAME_TOKENS)
+            )
+        )
+
+        if baseline == 0:
+            lo, hi = 0.0, 1.0
+        else:
+            lo = max(0.0, baseline * 0.7)
+            hi = baseline * 1.3
+            if is_fractional:
+                hi = min(1.0, hi)
+            if hi <= lo:
+                lo, hi = 0.0, 1.0
+
+        try:
+            out[name] = ParameterMetadata(
+                display_name=name.replace("_", " ").title(),
+                category=ParameterCategory.UNCLASSIFIED,
+                confidence=Confidence.UNKNOWN,
+                baseline=baseline,
+                range=(lo, hi),
+            )
+        except ValidationError as exc:
+            warnings.warn(
+                f"generate_parameter_metadata: skipped {name!r}: {exc}",
+                UserWarning,
+                stacklevel=2,
+            )
+
+    return out
+
+
 def _build_sensitivity_from_dict(
     sens_raw: dict[str, dict[str, float]],
     params: dict[str, float],
@@ -203,6 +262,9 @@ def extract_costingfe(
     effective_result = result_1gw if result_1gw is not None else result
 
     sensitivities = build_sensitivity_analysis(model, effective_result)
+    # Auto-derive ParameterMetadata for every sensitivity param; yaml-authored
+    # entries (passed in via param_metadata) override generated entries.
+    merged_metadata = {**generate_parameter_metadata(sensitivities), **param_metadata}
 
     # dataclasses.asdict() flattens the nested ForwardResult into plain dicts
     raw: dict[str, Any] = dataclasses.asdict(effective_result)
@@ -236,7 +298,7 @@ def extract_costingfe(
             has_cost_model=True,
             has_sensitivities=True,
             cost_model=cost_model,
-            parameter_metadata=param_metadata,
+            parameter_metadata=merged_metadata,
             narrative=narrative,
             sources=SourcePaths(
                 model_setup=str(concept_dir / "model_setup.py"),
