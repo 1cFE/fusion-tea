@@ -2378,3 +2378,235 @@ main {
   color: var(--color-text-primary);
   border-color: var(--color-border);
 }
+
+/* ------------------------------------------------------------------ */
+/* CAS Cost Breakdown widget (concept page) — Table + Treemap          */
+/* ------------------------------------------------------------------ */
+
+.cas-widget {
+  --cas-widget-override: #fcd34d;
+}
+
+.cas-widget__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  margin-bottom: var(--space-3);
+}
+
+.cas-widget__tabs {
+  display: inline-flex;
+  background: var(--color-surface-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 2px;
+}
+.cas-widget__tab {
+  background: transparent;
+  border: 0;
+  color: var(--color-text-secondary);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--font-size-sm);
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+}
+.cas-widget__tab.is-active {
+  background: var(--color-surface-3);
+  color: var(--color-text-primary);
+}
+.cas-widget__tab:hover:not(.is-active) {
+  color: var(--color-text-primary);
+}
+
+.cas-widget__total-line {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  margin-bottom: var(--space-3);
+}
+.cas-widget__total {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xl);
+  font-variant-numeric: tabular-nums;
+}
+
+/* === Table view === */
+
+.cas-widget__stripe-wrap {
+  margin-bottom: var(--space-1);
+}
+.cas-widget__stripe {
+  width: 100%;
+  height: 18px;
+  display: flex;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--color-surface-2);
+}
+.cas-widget__stripe-seg {
+  height: 100%;
+  transition: opacity 0.1s;
+}
+.cas-widget__stripe-seg:hover {
+  opacity: 0.8;
+}
+.cas-widget__stripe-seg.is-overridden {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0 4px,
+    rgba(252, 211, 77, 0.5) 4px 6px
+  );
+}
+.cas-widget__stripe-caption {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  margin-top: var(--space-1);
+  margin-bottom: var(--space-4);
+  display: flex;
+  gap: var(--space-4);
+  justify-content: space-between;
+}
+.cas-widget__stripe-caption b {
+  color: var(--color-text-primary);
+}
+
+.cas-widget__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.cas-widget__table th {
+  text-align: left;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.cas-widget__table th.num {
+  text-align: right;
+}
+.cas-widget__table th.num:nth-child(2) { width: 130px; }
+.cas-widget__table th.num:nth-child(3) { width: 100px; }
+.cas-widget__table td {
+  padding: 6px 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+  vertical-align: middle;
+}
+.cas-widget__table td.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.cas-widget__table tr:hover td {
+  background: rgba(255, 255, 255, 0.025);
+}
+.cas-widget__table tr.is-expandable,
+.cas-widget__table tr.is-clickable {
+  cursor: pointer;
+}
+.cas-widget__table tr.is-expandable:hover td {
+  background: rgba(88, 166, 255, 0.06);
+}
+
+.cas-widget__chev {
+  color: var(--color-text-muted);
+  display: inline-block;
+  width: 14px;
+}
+.cas-widget__swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  margin-right: var(--space-2);
+  vertical-align: middle;
+}
+.cas-widget__swatch.is-overridden {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0 2px,
+    rgba(252, 211, 77, 0.6) 2px 3px
+  ) !important;
+}
+.cas-widget__star {
+  color: var(--cas-widget-override);
+  margin-left: var(--space-1);
+}
+.cas-widget__pct {
+  color: var(--color-text-secondary);
+}
+.cas-widget__pct b {
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.cas-widget__table tr.is-sub td {
+  background: rgba(255, 255, 255, 0.015);
+  font-size: var(--font-size-sm);
+}
+.cas-widget__table tr.is-sub td.num {
+  color: var(--color-text-primary);
+}
+.cas-widget__name--sub {
+  padding-left: 36px !important;
+  color: var(--color-text-secondary);
+  position: relative;
+}
+.cas-widget__name--sub::before {
+  content: "";
+  position: absolute;
+  left: 22px;
+  top: 0;
+  bottom: 0;
+  border-left: 1px solid var(--color-border);
+}
+
+/* === Treemap view === */
+
+.cas-widget__breadcrumb {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  margin: 0 0 var(--space-2);
+}
+.cas-widget__breadcrumb-link {
+  color: #58a6ff;
+  cursor: pointer;
+  text-decoration: none;
+}
+.cas-widget__breadcrumb-link:hover {
+  text-decoration: underline;
+}
+.cas-widget__treemap {
+  width: 100%;
+  display: block;
+  height: 600px;
+}
+.cas-widget__tile {
+  transition: opacity 0.1s;
+}
+.cas-widget__tile.is-drillable,
+.cas-widget__tile.is-clickable {
+  cursor: pointer;
+}
+.cas-widget__tile:hover {
+  opacity: 0.85;
+}
+.cas-widget__tile-bg {
+  stroke: var(--color-bg);
+  stroke-width: 2;
+}
+.cas-widget__tile-label {
+  pointer-events: none;
+  font: 600 var(--font-size-sm) var(--font-sans);
+  fill: #fff;
+}
+.cas-widget__tile-sub {
+  pointer-events: none;
+  font: 400 var(--font-size-xs) var(--font-sans);
+  fill: rgba(255, 255, 255, 0.85);
+}
