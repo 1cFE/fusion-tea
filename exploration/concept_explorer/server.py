@@ -49,6 +49,8 @@ from exploration.concept_explorer.models import (  # noqa: E402
     ExplorerState,
     ParameterIndex,
     ParameterIndexEntry,
+    build_manifest,
+    build_parameter_index,
 )
 from exploration.concept_explorer.similarity import (  # noqa: E402
     ConceptSimilarityReport,
@@ -202,25 +204,16 @@ def _load_data(
 
     Raises RuntimeError with a clear message when data/ is absent or empty.
     Called once during server startup — errors here abort the process.
+
+    The manifest and parameter index are computed in-memory from the loaded
+    per-concept JSONs. The names ``manifest.json`` / ``parameter_index.json``
+    remain in ``_NON_CONCEPT_FILES`` so any stale files left on disk from
+    earlier extractions don't get globbed as concept data.
     """
     if not data_dir.is_dir():
         raise RuntimeError(
             f"data/ directory not found at {data_dir}. "
             "Run extract_explorer_data.py to populate it before starting the server."
-        )
-
-    manifest_path = data_dir / "manifest.json"
-    if not manifest_path.exists():
-        raise RuntimeError(
-            f"manifest.json not found in {data_dir}. "
-            "Re-run extract_explorer_data.py to regenerate it."
-        )
-
-    index_path = data_dir / "parameter_index.json"
-    if not index_path.exists():
-        raise RuntimeError(
-            f"parameter_index.json not found in {data_dir}. "
-            "Re-run extract_explorer_data.py to regenerate it."
         )
 
     _NON_CONCEPT_FILES = {
@@ -238,13 +231,16 @@ def _load_data(
             "Re-run extract_explorer_data.py to populate it."
         )
 
-    manifest = ConceptManifest.model_validate_json(manifest_path.read_text())
-    parameter_index = ParameterIndex.model_validate_json(index_path.read_text())
-
     concepts: dict[str, ConceptData] = {}
     for path in concept_files:
         concept = ConceptData.model_validate_json(path.read_text())
         concepts[concept.concept_id] = concept
+
+    # generated_at on the returned manifest now records server start time,
+    # not extraction time. Functionally equivalent (used as a frontend cache key).
+    concept_list = list(concepts.values())
+    manifest = build_manifest(concept_list)
+    parameter_index = build_parameter_index(concept_list)
 
     return concepts, manifest, parameter_index
 

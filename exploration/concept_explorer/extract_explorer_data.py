@@ -19,7 +19,6 @@ import sys
 import types
 import warnings
 from contextlib import redirect_stdout
-from datetime import UTC, datetime
 from io import StringIO
 from pathlib import Path
 from typing import Any
@@ -40,16 +39,9 @@ if str(_PROJECT_ROOT) not in sys.path:
 from exploration.concept_explorer.models import (  # noqa: E402, I001
     CostModelData,
     ConceptData,
-    ConceptManifest,
-    ConceptManifestEntry,
     ConceptStatus,
     ConfinementFamily,
-    Confidence,
     NarrativeData,
-    ParameterCategory,
-    ParameterConceptEntry,
-    ParameterIndex,
-    ParameterIndexEntry,
     ParameterMetadata,
     SensitivityAnalysis,
     SensitivityEntry,
@@ -642,91 +634,6 @@ def extract_narrative(concept_dir: Path, concept_id: str) -> NarrativeData:
 
 
 # ---------------------------------------------------------------------------
-# Manifest and parameter index builders
-# ---------------------------------------------------------------------------
-
-
-def build_manifest(concepts: list[ConceptData]) -> ConceptManifest:
-    """Build a ConceptManifest from extracted concepts."""
-    entries: list[ConceptManifestEntry] = []
-    for concept in concepts:
-        lcoe: float | None = None
-        confidence: Confidence | None = None
-
-        if concept.cost_model is not None:
-            lcoe = concept.cost_model.headline.lcoe_per_mwh
-
-        if concept.parameter_metadata:
-            conf_values = [pm.confidence for pm in concept.parameter_metadata.values()]
-            # Pick the most common confidence level as the overall concept confidence
-            counts = {c: conf_values.count(c) for c in set(conf_values)}
-            confidence = max(counts, key=lambda c: counts[c])
-
-        entries.append(
-            ConceptManifestEntry(
-                concept_id=concept.concept_id,
-                name=concept.name,
-                confinement_family=concept.confinement_family,
-                company=concept.company,
-                status=concept.status,
-                illustration=concept.illustration,
-                has_cost_model=concept.has_cost_model,
-                has_sensitivities=concept.has_sensitivities,
-                lcoe_per_mwh=lcoe,
-                confidence=confidence,
-                data_file=f"data/{concept.concept_id}.json",
-            )
-        )
-
-    return ConceptManifest(
-        generated_at=datetime.now(UTC).isoformat(),
-        concepts=entries,
-    )
-
-
-def build_parameter_index(concepts: list[ConceptData]) -> ParameterIndex:
-    """Build a cross-concept ParameterIndex from all sensitivity data."""
-    # param_name → list of per-concept entries
-    param_concepts: dict[str, list[ParameterConceptEntry]] = {}
-    # param_name → (display_name, category) — first match wins
-    param_info: dict[str, tuple[str, ParameterCategory]] = {}
-
-    for concept in concepts:
-        if concept.cost_model is None or concept.cost_model.sensitivities is None:
-            continue
-
-        sens = concept.cost_model.sensitivities
-        all_entries = {**sens.engineering, **sens.financial}
-
-        for param_name, entry in all_entries.items():
-            param_concepts.setdefault(param_name, []).append(
-                ParameterConceptEntry(
-                    concept_id=concept.concept_id,
-                    name=concept.name,
-                    elasticity=entry.elasticity,
-                )
-            )
-            if param_name not in param_info:
-                pm = concept.parameter_metadata.get(param_name)
-                if pm is not None:
-                    param_info[param_name] = (pm.display_name, pm.category)
-                else:
-                    param_info[param_name] = (param_name, ParameterCategory.UNCLASSIFIED)
-
-    parameters: dict[str, ParameterIndexEntry] = {
-        param_name: ParameterIndexEntry(
-            param_name=param_name,
-            display_name=param_info[param_name][0],
-            category=param_info[param_name][1],
-            concepts=concept_entries,
-        )
-        for param_name, concept_entries in param_concepts.items()
-    }
-
-    return ParameterIndex(parameters=parameters)
-
-
-# ---------------------------------------------------------------------------
 # Core extraction runner (injectable paths for testing)
 # ---------------------------------------------------------------------------
 
@@ -820,16 +727,6 @@ def run_extraction(
     if not extracted:
         print("WARNING: no concepts extracted", file=sys.stderr)
         return
-
-    manifest = build_manifest(extracted)
-    manifest_path = data_dir / "manifest.json"
-    manifest_path.write_text(manifest.model_dump_json(indent=2), encoding="utf-8")
-    print(f"Wrote manifest ({len(extracted)} concepts) → {manifest_path}")
-
-    param_index = build_parameter_index(extracted)
-    index_path = data_dir / "parameter_index.json"
-    index_path.write_text(param_index.model_dump_json(indent=2), encoding="utf-8")
-    print(f"Wrote parameter index ({len(param_index.parameters)} params) → {index_path}")
 
 
 # ---------------------------------------------------------------------------

@@ -19,18 +19,22 @@ import pytest
 from fastapi.testclient import TestClient
 
 from exploration.concept_explorer.models import (
+    CASAccount,
     ConceptData,
     ConceptManifest,
-    ConceptManifestEntry,
     ConceptStatus,
     ConfinementFamily,
+    Confidence,
+    CostModelData,
     ParameterCategory,
-    ParameterConceptEntry,
     ParameterIndex,
     ParameterIndexEntry,
+    ParameterMetadata,
+    SensitivityAnalysis,
+    SensitivityEntry,
     SourcePaths,
 )
-from exploration.concept_explorer.server import create_app
+from exploration.concept_explorer.server import _load_data, create_app
 
 # ---------------------------------------------------------------------------
 # Helpers — minimal valid model instances
@@ -50,40 +54,53 @@ def _minimal_concept(concept_id: str = "01") -> ConceptData:
     )
 
 
-def _minimal_manifest(concepts: list[ConceptData]) -> ConceptManifest:
-    return ConceptManifest(
-        generated_at="2026-03-29T00:00:00Z",
-        concepts=[
-            ConceptManifestEntry(
-                concept_id=c.concept_id,
-                name=c.name,
-                confinement_family=c.confinement_family,
-                status=c.status,
-                has_cost_model=c.has_cost_model,
-                has_sensitivities=c.has_sensitivities,
-                data_file=f"data/{c.concept_id}.json",
-            )
-            for c in concepts
-        ],
+def _concept_with_sensitivities(concept_id: str = "01") -> ConceptData:
+    """ConceptData carrying the sensitivities the API tests expect.
+
+    The fixture intentionally produces a parameter_index that contains an
+    "availability" entry — that is what the parameter-endpoint tests query.
+    """
+    zero_cas = CASAccount(name="zero", cost_m_usd=0.0)
+    cas22_detail = {k: CASAccount(name=k, cost_m_usd=0.0) for k in CostModelData.CAS22_NAMES}
+    cost_model = CostModelData(
+        cas10=zero_cas, cas21=zero_cas, cas22=zero_cas, cas23=zero_cas,
+        cas24=zero_cas, cas25=zero_cas, cas26=zero_cas, cas27=zero_cas,
+        cas28=zero_cas, cas29=zero_cas, cas30=zero_cas, cas40=zero_cas,
+        cas50=zero_cas, cas60=zero_cas, cas70=zero_cas, cas80=zero_cas,
+        cas90=zero_cas,
+        cas22_detail=cas22_detail,
+        headline={  # type: ignore[arg-type]
+            "lcoe_per_mwh": 75.0,
+            "overnight_cost_per_kw": 5000.0,
+            "p_net_mw": 1000.0,
+            "q_eng": 8.0,
+            "capacity_factor": 0.85,
+        },
+        sensitivities=SensitivityAnalysis(
+            engineering={
+                "availability": SensitivityEntry(elasticity=0.85, baseline=0.85),
+            },
+            financial={},
+        ),
     )
-
-
-def _minimal_parameter_index() -> ParameterIndex:
-    return ParameterIndex(
-        parameters={
-            "availability": ParameterIndexEntry(
-                param_name="availability",
+    return ConceptData(
+        concept_id=concept_id,
+        name="Test Tokamak",
+        confinement_family=ConfinementFamily.MFE,
+        status=ConceptStatus.IN_PROGRESS,
+        has_cost_model=True,
+        has_sensitivities=True,
+        cost_model=cost_model,
+        parameter_metadata={
+            "availability": ParameterMetadata(
                 display_name="Plant Availability",
                 category=ParameterCategory.SHARED_BASELINE,
-                concepts=[
-                    ParameterConceptEntry(
-                        concept_id="01",
-                        name="Test Tokamak",
-                        elasticity=0.85,
-                    )
-                ],
-            )
-        }
+                confidence=Confidence.MEDIUM,
+                baseline=0.85,
+                range=(0.5, 0.95),
+            ),
+        },
+        sources=SourcePaths(),
     )
 
 
@@ -94,18 +111,16 @@ def _minimal_parameter_index() -> ParameterIndex:
 
 @pytest.fixture
 def base_dir(tmp_path: Path) -> Path:
-    """Minimal base_dir with data/ populated (no templates → no dist/ rendering)."""
+    """Minimal base_dir with data/ populated (no templates → no dist/ rendering).
+
+    The server computes the manifest and parameter index at startup from the
+    per-concept JSON files, so we only need to write those.
+    """
     data_dir = tmp_path / "data"
     data_dir.mkdir()
 
-    concept = _minimal_concept("01")
+    concept = _concept_with_sensitivities("01")
     (data_dir / "01.json").write_text(concept.model_dump_json())
-
-    manifest = _minimal_manifest([concept])
-    (data_dir / "manifest.json").write_text(manifest.model_dump_json())
-
-    index = _minimal_parameter_index()
-    (data_dir / "parameter_index.json").write_text(index.model_dump_json())
 
     return tmp_path
 
@@ -226,7 +241,8 @@ def test_parameter_index_returns_200(client: TestClient) -> None:
 def test_parameter_index_validates_as_parameter_index(client: TestClient) -> None:
     resp = client.get("/api/parameter_index")
     index = ParameterIndex.model_validate(resp.json())
-    # fixture has one entry ("availability") written by _minimal_parameter_index()
+    # Fixture concept has an "availability" sensitivity → server-computed
+    # parameter_index includes it.
     assert "availability" in index.parameters
 
 
@@ -317,13 +333,45 @@ def test_startup_fails_when_data_dir_empty(tmp_path: Path) -> None:
     """Server must abort if data/ exists but contains no concept files."""
     data_dir = tmp_path / "data"
     data_dir.mkdir()
-    # manifest and index but zero concept files
-    manifest = ConceptManifest(generated_at="2026-01-01T00:00:00Z", concepts=[])
-    (data_dir / "manifest.json").write_text(manifest.model_dump_json())
-    index = ParameterIndex(parameters={})
-    (data_dir / "parameter_index.json").write_text(index.model_dump_json())
 
     app = create_app(base_dir=tmp_path)
     with pytest.raises(RuntimeError, match="No concept data files found"):
         with TestClient(app):
             pass
+
+
+# ---------------------------------------------------------------------------
+# AC-1: server starts with only per-concept JSONs (no manifest.json files)
+# ---------------------------------------------------------------------------
+
+
+def test_load_data_without_manifest_files(tmp_path: Path) -> None:
+    """Server computes manifest/parameter_index from per-concept JSONs alone."""
+    data_dir = tmp_path / "data"
+    data_dir.mkdir()
+    concept = _minimal_concept("01")
+    (data_dir / "01.json").write_text(concept.model_dump_json())
+
+    concepts, manifest, param_index = _load_data(data_dir)
+
+    assert set(concepts.keys()) == {"01"}
+    assert len(manifest.concepts) == 1
+    assert manifest.concepts[0].concept_id == "01"
+    # No sensitivities in minimal concept → empty parameter index
+    assert param_index.parameters == {}
+
+
+def test_load_data_ignores_stale_manifest_files(tmp_path: Path) -> None:
+    """Stale manifest.json/parameter_index.json on disk must not break startup."""
+    data_dir = tmp_path / "data"
+    data_dir.mkdir()
+    concept = _minimal_concept("01")
+    (data_dir / "01.json").write_text(concept.model_dump_json())
+    # Pre-existing legacy files — should be ignored, not parsed as concepts
+    (data_dir / "manifest.json").write_text('{"this_is": "stale_garbage"}')
+    (data_dir / "parameter_index.json").write_text('{"this_is": "stale_garbage"}')
+
+    concepts, manifest, _ = _load_data(data_dir)
+
+    assert set(concepts.keys()) == {"01"}
+    assert len(manifest.concepts) == 1

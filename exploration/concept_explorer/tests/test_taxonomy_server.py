@@ -22,14 +22,8 @@ from fastapi.testclient import TestClient
 
 from exploration.concept_explorer.models import (
     ConceptData,
-    ConceptManifest,
-    ConceptManifestEntry,
     ConceptStatus,
     ConfinementFamily,
-    ParameterCategory,
-    ParameterConceptEntry,
-    ParameterIndex,
-    ParameterIndexEntry,
     SourcePaths,
 )
 from exploration.concept_explorer.server import create_app
@@ -55,41 +49,6 @@ def _minimal_concept(concept_id: str = "01") -> ConceptData:
     )
 
 
-def _minimal_manifest(concepts: list[ConceptData]) -> ConceptManifest:
-    return ConceptManifest(
-        generated_at="2026-03-29T00:00:00Z",
-        concepts=[
-            ConceptManifestEntry(
-                concept_id=c.concept_id,
-                name=c.name,
-                confinement_family=c.confinement_family,
-                status=c.status,
-                has_cost_model=c.has_cost_model,
-                has_sensitivities=c.has_sensitivities,
-                data_file=f"data/{c.concept_id}.json",
-            )
-            for c in concepts
-        ],
-    )
-
-
-def _minimal_parameter_index() -> ParameterIndex:
-    return ParameterIndex(
-        parameters={
-            "availability": ParameterIndexEntry(
-                param_name="availability",
-                display_name="Plant Availability",
-                category=ParameterCategory.SHARED_BASELINE,
-                concepts=[
-                    ParameterConceptEntry(
-                        concept_id="01", name="Test Tokamak", elasticity=0.85
-                    )
-                ],
-            )
-        }
-    )
-
-
 # ---------------------------------------------------------------------------
 # Fixtures
 # ---------------------------------------------------------------------------
@@ -97,17 +56,17 @@ def _minimal_parameter_index() -> ParameterIndex:
 
 @pytest.fixture
 def base_dir(tmp_path: Path) -> Path:
-    """Minimal base_dir with cost model data + taxonomy JSON files."""
+    """Minimal base_dir with cost model data + taxonomy JSON files.
+
+    The server computes the manifest and parameter index from the per-concept
+    JSON files at startup, so we only seed those (plus taxonomy seeds).
+    """
     data_dir = tmp_path / "data"
     data_dir.mkdir()
 
     # Existing cost model data
     concept = _minimal_concept("01")
     (data_dir / "01.json").write_text(concept.model_dump_json())
-    manifest = _minimal_manifest([concept])
-    (data_dir / "manifest.json").write_text(manifest.model_dump_json())
-    index = _minimal_parameter_index()
-    (data_dir / "parameter_index.json").write_text(index.model_dump_json())
 
     # Copy taxonomy JSON files from seeded data
     shutil.copy(_DATA_DIR / "concept_registry.json", data_dir / "concept_registry.json")
