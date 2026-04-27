@@ -451,8 +451,455 @@
       "noak": 0.0
     }
   },
-  "parameter_metadata": {},
-  "narrative": null,
+  "parameter_metadata": {
+    "availability": {
+      "display_name": "Availability",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.8,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.5599999999999999,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "construction_time_yr": {
+      "display_name": "Construction Time",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 5.0,
+      "display_multiplier": 1.0,
+      "display_unit": "yr",
+      "range": [
+        3.5,
+        6.5
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "mn": {
+      "display_name": "Energy Multiplication Mₙ",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.1,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.77,
+        1.4300000000000002
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_th": {
+      "display_name": "Thermal Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.35,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.24499999999999997,
+        0.45499999999999996
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_p": {
+      "display_name": "Eta P",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.5,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.35,
+        0.65
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_sub": {
+      "display_name": "Subsystem Power Fraction",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.03,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.020999999999999998,
+        0.039
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_pump": {
+      "display_name": "Pumping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 3.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        2.0999999999999996,
+        3.9000000000000004
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_trit": {
+      "display_name": "Tritium Plant Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 10.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        7.0,
+        13.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_house": {
+      "display_name": "Housekeeping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        2.8,
+        5.2
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "blanket_t": {
+      "display_name": "Blanket Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.7,
+        1.3
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "ht_shield_t": {
+      "display_name": "HT Shield Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.2,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.13999999999999999,
+        0.26
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "structure_t": {
+      "display_name": "Structure Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.2,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.13999999999999999,
+        0.26
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "vessel_t": {
+      "display_name": "Vessel Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.15,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.105,
+        0.195
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "plasma_t": {
+      "display_name": "Minor Radius",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 2.0,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        1.4,
+        2.6
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_T": {
+      "display_name": "Dd F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.969,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6782999999999999,
+        1.2597
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_He3": {
+      "display_name": "Dd F He3",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.689,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.48229999999999995,
+        0.8956999999999999
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_dd_frac": {
+      "display_name": "Dhe3 Dd Frac",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.07,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.049,
+        0.09100000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_f_T": {
+      "display_name": "Dhe3 F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.97,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6789999999999999,
+        1.261
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "q_eng": {
+      "display_name": "Engineering Q",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 3.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        2.0999999999999996,
+        3.9000000000000004
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_rep": {
+      "display_name": "Repetition Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "Hz",
+      "range": [
+        0.7,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_pin": {
+      "display_name": "Injector Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.8,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.5599999999999999,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_rad": {
+      "display_name": "F Rad",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_coils": {
+      "display_name": "Coil Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.5,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        0.35,
+        0.65
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_dec": {
+      "display_name": "Eta Dec",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.85,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.595,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "interest_rate": {
+      "display_name": "Interest Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.07,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.049,
+        0.09100000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "inflation_rate": {
+      "display_name": "Inflation Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.0245,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.01715,
+        0.03185
+      ],
+      "source": null,
+      "modeling_note": null
+    }
+  },
+  "narrative": {
+    "key_bets": [
+      "Synchronized pneumatic piston array can compress a flowing liquid metal vortex with <1% timing error at commercial scale (~4 m cavity)",
+      "12:1 cavity volume compression ratio is achievable in flowing liquid metal (only 8:1 demonstrated in water surrogate tests)",
+      "Mechanical compression scales from current ~1 shot/day demonstration to commercial 1 Hz repetition rate (~86,400× rep rate increase)",
+      "Liquid metal vortex can reform symmetrically within ~1 second between pulses to enable 1 Hz operation",
+      "Compact toroid plasma injector achieves consistent shot-to-shot quality at 1 Hz with adequate lifetime over 10⁸ pulse cycles",
+      "Liquid metal wall (Li or PbLi) achieves TBR ~1.5 with manageable tritium permeation into steam circuit",
+      "Fusion gain Q is sufficient (Q ≳ 5–10) to overcome recirculating power from piston recharge, plasma injector, and liquid metal pumping"
+    ],
+    "eliminated_costs": [
+      "HTS magnet system and cryoplant (CAS22 magnets ~$0 vs. ~$1–3B for ARC-class HTS tokamak; no superconducting coils in commercial design)",
+      "Per-shot consumables / target factory (liquid metal liner reforms each pulse; no destroyed targets or RTLs unlike MagLIF's ~28M targets/year)",
+      "Separate solid first-wall structure (self-renewing liquid metal wall eliminates erosion-driven scheduled PFC replacement)",
+      "Separate outboard blanket fabrication (4π liquid metal wall serves as combined breeder + heat carrier)",
+      "Beryllium / FLiBe supply chain (no Be required, unlike FLiBe-based MFE designs)"
+    ],
+    "novel_costs": [
+      "Pneumatic compression driver — synchronized piston array, steam recharge infrastructure, ~4 m pressure vessel (CAS27, dominant non-blanket capital account, ~$180M central estimate with $50M–$500M+ range)",
+      "Liquid metal circulation system — pumping, vortex formation hardware, large Li or PbLi inventory (~50–100 tonnes per plant)",
+      "Double-walled intermediate heat exchanger isolating reactive Li/PbLi from steam (tritium permeation barrier; analogous to sodium fast reactor IHX)",
+      "Piston seal/wear maintenance under combined steam pressure, shock loading, and activated liquid metal environment at ~3×10⁷ cycles/year",
+      "Compact toroid plasma injector cycling at 1 Hz — no equivalent injector duty cycle exists; lifetime and replacement schedule unknown"
+    ],
+    "risks": [
+      {
+        "description": "FM-2: Synchronized piston operation in flowing liquid metal proves mechanically infeasible at commercial scale (vortex instability, timing scatter, acoustic asymmetry) — no fallback compression mechanism in current design",
+        "severity": "high"
+      },
+      {
+        "description": "FM-1: 12:1 cavity compression ratio cannot be achieved in liquid metal (water tests stuck at 8:1, 33% shortfall) — binary physics viability failure preventing fusion conditions",
+        "severity": "high"
+      },
+      {
+        "description": "Rep rate gap of ~86,400× between current ~1 shot/day demonstration and 1 Hz commercial target — entirely new mechanical regime with no analogous pulsed system at this scale and energy density",
+        "severity": "high"
+      },
+      {
+        "description": "Fusion gain Q entirely undisclosed — energy balance is structurally underdetermined; net electrical output cannot be derived without Q and η_thermal",
+        "severity": "high"
+      },
+      {
+        "description": "Capacity factor for novel mechanical compression system is unknown; unplanned downtime could push CF to 50–60% vs. assumed 80%, doubling LCOE penalty",
+        "severity": "high"
+      },
+      {
+        "description": "Capital cost of pneumatic compression system has no industrial analogue; range spans $50M–$500M+ with no basis to narrow",
+        "severity": "high"
+      },
+      {
+        "description": "Li-6 enrichment supply chain — no large-scale Western capacity exists; historically Russia/China only (shared D-T fusion risk)",
+        "severity": "medium"
+      },
+      {
+        "description": "Liquid metal composition (Li vs. PbLi) not finalized — bifurcating cost implications for ISS capital, safety infrastructure (Li fire/explosion risk), and tritium permeation control",
+        "severity": "medium"
+      },
+      {
+        "description": "Tritium permeation through Li/PbLi into steam generator circuit — containment design and cost not disclosed; major safety/regulatory exposure",
+        "severity": "medium"
+      },
+      {
+        "description": "LM26 demonstrates electromagnetic theta-pinch on solid lithium liner — a deliberate surrogate that does not validate the commercial pneumatic mechanical system",
+        "severity": "medium"
+      },
+      {
+        "description": "Plasma injector (CT) reliability and cost at 1 Hz cycling unproven — no equivalent injector at this duty cycle exists",
+        "severity": "medium"
+      },
+      {
+        "description": "Tritium startup inventory (1–5 kg at ~$30k/g) competes with declining global CANDU supply (~22 kg total) — shared D-T constraint",
+        "severity": "medium"
+      },
+      {
+        "description": "PbLi neutron activation produces long-lived isotopes (²⁰⁴Tl, ²⁰³Hg pathways) creating radioactive waste management not present in pure Li designs",
+        "severity": "low"
+      },
+      {
+        "description": "Piston materials qualification under combined neutron activation + thermal shock + liquid metal splash + ~3×10⁷ cycles/year fatigue — no standard materials qualification",
+        "severity": "low"
+      }
+    ]
+  },
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/14-magnetized-target-fusion-pneumatic-compression/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/14-magnetized-target-fusion-pneumatic-compression/analysis.md"

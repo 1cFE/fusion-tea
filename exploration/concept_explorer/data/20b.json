@@ -508,90 +508,605 @@
       "noak": 1.0
     }
   },
-  "parameter_metadata": {},
+  "parameter_metadata": {
+    "availability": {
+      "display_name": "Availability",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.92,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.644,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "construction_time_yr": {
+      "display_name": "Construction Time",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 10.0,
+      "display_multiplier": 1.0,
+      "display_unit": "yr",
+      "range": [
+        7.0,
+        13.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "mn": {
+      "display_name": "Energy Multiplication Mₙ",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.07,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.749,
+        1.3910000000000002
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_th": {
+      "display_name": "Thermal Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.5,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.35,
+        0.65
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_p": {
+      "display_name": "Eta P",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.5,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.35,
+        0.65
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_sub": {
+      "display_name": "Subsystem Power Fraction",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.03,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.020999999999999998,
+        0.039
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_pump": {
+      "display_name": "Pumping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 380.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        266.0,
+        494.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_trit": {
+      "display_name": "Tritium Plant Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 10.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        7.0,
+        13.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_house": {
+      "display_name": "Housekeeping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 5.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        3.5,
+        6.5
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_cryo": {
+      "display_name": "Cryogenic Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 35.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        24.5,
+        45.5
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "blanket_t": {
+      "display_name": "Blanket Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.33,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.23099999999999998,
+        0.42900000000000005
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "ht_shield_t": {
+      "display_name": "HT Shield Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.5,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.35,
+        0.65
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "structure_t": {
+      "display_name": "Structure Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.15,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.105,
+        0.195
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "vessel_t": {
+      "display_name": "Vessel Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "plasma_t": {
+      "display_name": "Minor Radius",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.7,
+        1.3
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_T": {
+      "display_name": "Dd F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.969,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6782999999999999,
+        1.2597
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_He3": {
+      "display_name": "Dd F He3",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.689,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.48229999999999995,
+        0.8956999999999999
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_dd_frac": {
+      "display_name": "Dhe3 Dd Frac",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.07,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.049,
+        0.09100000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_f_T": {
+      "display_name": "Dhe3 F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.97,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6789999999999999,
+        1.261
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_pin": {
+      "display_name": "Injector Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.6,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.42,
+        0.78
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_de": {
+      "display_name": "Direct Conversion Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.85,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.595,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_coils": {
+      "display_name": "Coil Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 3.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        2.0999999999999996,
+        3.9000000000000004
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_cool": {
+      "display_name": "P Cool",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 20.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        14.0,
+        26.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "R0": {
+      "display_name": "Major Radius",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.0,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        2.8,
+        5.2
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "elon": {
+      "display_name": "Elongation κ",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.7,
+        1.3
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "B": {
+      "display_name": "B",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 10.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        7.0,
+        13.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "T_e": {
+      "display_name": "T E",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 10.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        7.0,
+        13.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "n_e": {
+      "display_name": "N E",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1e20,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        6.999999999999999e19,
+        1.3e20
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "Z_eff": {
+      "display_name": "Z Eff",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.3,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.9099999999999999,
+        1.6900000000000002
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "plasma_volume": {
+      "display_name": "Plasma Volume",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 200.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        140.0,
+        260.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "R_w": {
+      "display_name": "R W",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.6,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.42,
+        0.78
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "T_edge": {
+      "display_name": "T Edge",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.05,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.034999999999999996,
+        0.065
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "tau_ratio": {
+      "display_name": "Tau Ratio",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 3.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        2.0999999999999996,
+        3.9000000000000004
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "b_max": {
+      "display_name": "Peak Magnetic Field",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 15.0,
+      "display_multiplier": 1.0,
+      "display_unit": "T",
+      "range": [
+        10.5,
+        19.5
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "r_coil": {
+      "display_name": "Coil Radius",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 2.0,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        1.4,
+        2.6
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "interest_rate": {
+      "display_name": "Interest Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.07,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.049,
+        0.09100000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "inflation_rate": {
+      "display_name": "Inflation Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.0245,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.01715,
+        0.03185
+      ],
+      "source": null,
+      "modeling_note": null
+    }
+  },
   "narrative": {
     "key_bets": [
-      "Laser-patterned REBCO film on ~1 m cylindrical substrates can be manufactured at nuclear-grade quality and throughput, scaling from the demonstrated 6 T Helmholtz to 10 T nominal / 15-40 T peak coil fields",
-      "A compact quasi-isodynamic stellarator at R ≤ 4 m, A ≈ 4, B = 10 T can achieve ignition (Q = ∞) with a 10 keV D-T plasma — an extrapolation with no stellarator experimental precedent at Q >> 1",
-      "A flowing Li-LiH liquid metal wall can sustain 25 MW/m² continuous wall loading while serving as integrated first wall, breeder, shield, and coolant with stable MHD behavior in 3D stellarator geometry",
-      "The optimized blanket (10 cm Pb + 22 cm non-enriched Li-LiH) achieves TBR = 1.60, providing ~39% margin above the 1.15 design requirement without Li-6 enrichment",
-      "An sCO₂ Brayton-Rankine combined cycle can deliver 49-51% thermal cycle efficiency at GW scale from a liquid metal fusion heat source, yielding 34% net plant efficiency",
-      "Steady-state ignited operation with NNBI used only for startup eliminates continuous heating/current-drive capital and recirculating load",
-      "Tritium extraction from flowing Li-LiH at kg/day rates is achievable despite very high tritium solubility in liquid lithium"
+      "Laser-patterned REBCO film on cylindrical substrates can be manufactured at nuclear-grade quality and 1 m diameter scale, replacing wound-tape coils",
+      "Compact (A≈4) quasi-isodynamic stellarator at 10 T can achieve ignited (Q=∞) D-T plasma with no continuous external heating at steady state",
+      "Flowing Li-LiH liquid metal wall can sustain 25 MW/m² continuous heat loading while serving as integrated first wall, breeder, shield, and coolant",
+      "Integrated blanket achieves TBR = 1.60 with non-enriched natural Li-LiH (10 cm Pb + 22 cm Li-LiH), confirmed by JNM 599 (2024)",
+      "sCO₂ Brayton-Rankine combined cycle delivers 49–51% thermal efficiency at GW scale from a liquid metal heat source",
+      "HTS magnets at 20 K reach 10 T nominal on-axis with peak coil fields up to 15–40 T despite REBCO Jc degradation above ~20 T",
+      "Stellarator steady-state operation with near-100% duty cycle yields ~90–95% plant capacity factor"
     ],
     "eliminated_costs": [
-      "No central solenoid or current drive hardware — stellarator inherent, no CS fatigue cycling",
-      "No plasma disruption mitigation hardware — enables higher capacity factor assumption",
-      "No steady-state ECRH/gyrotron heating system — Q = ∞ target eliminates continuous heating capital and recirculating load",
-      "No discrete solid first-wall replacement cycle — flowing liquid wall consolidates C220101/C220102 into a single pumped-fluid system",
-      "No REBCO wound-tape supply chain bottleneck — laser-patterned film bypasses km-scale tape winding at $30-100/kA-m"
+      "No central solenoid or current-drive system required (inherent stellarator advantage)",
+      "No continuous heating system at steady state (Q=∞ eliminates ECRH/NBI capital and recirculating load)",
+      "No disruption-mitigation hardware (stellarators are disruption-free)",
+      "No discrete first-wall replacement cycle (flowing liquid wall replaces solid PFC modules)",
+      "No REBCO wound-tape supply chain dependency (laser patterning replaces tape winding)"
     ],
     "novel_costs": [
-      "Industrial REBCO thin-film deposition and laser patterning at 1 m diameter cylindrical substrate scale — no manufacturing cost analogue at any scale (dominant LCOE uncertainty; 0.3×-10× coil cost scenario swing of ~418 $/MWh)",
-      "Liquid Li-LiH circulation system — pumps, heat exchangers, tritium extraction, MHD conditioning piping at 25 MW/m² wall loading with no published cost analogue (Na-cooled fast reactor primary circuit used as structural lower bound)",
-      "Liquid metal circulation pump power (~380 MW estimated) driving large unexplained recirculating power fraction (~32% of gross)",
-      "Tritium-compatible heat exchangers between Li-LiH primary and sCO₂ secondary — permeation barriers with no demonstrated design",
-      "sCO₂ Brayton-Rankine turbomachinery at ~1.5-2 GWe gross output — emerging technology with wide cost projection uncertainty at GW scale"
+      "Laser-patterned REBCO thin-film deposition on 1 m diameter cylinders — no industrial cost analogue at any scale (3–10× uncertainty in C220103)",
+      "Flowing Li-LiH liquid metal circulation system with pumps, MHD piping, heat exchangers, and tritium extraction (consolidates C220101/C220102 into one pumped-fluid system)",
+      "sCO₂ Brayton-Rankine turbomachinery at GW scale with tritium-compatible heat exchangers (TRL 4–5, no demonstrated GW-scale BOP)",
+      "High-throughput liquid metal pumping power (~380 MW estimated) to support 25 MW/m² wall loading — 5× higher than solid-blanket designs",
+      "Quench detection and protection system for distributed thin-film HTS (fundamentally different from wound-tape protection)"
     ],
     "risks": [
       {
-        "description": "Entirely unanchored economics — no capital cost estimate, LCOE model, or CAS-level breakdown has been published by Renaissance Fusion or any independent third party",
+        "description": "ISS04 confinement scaling predicts n·τ_E ~11× below Lawson threshold at T=10 keV — Q=∞ ignition closure is not supported by current stellarator scaling laws",
         "severity": "high"
       },
       {
-        "description": "Laser-patterned HTS film manufacturing cost has no industrial analogue; coil cost elasticity is +0.77 and the 10× scenario drives LCOE to 516 $/MWh",
+        "description": "Laser-patterned HTS film manufacturing has no industrial cost analogue; 10× cost scenario drives LCOE to ~516 $/MWh (vs. 129 $/MWh nominal)",
         "severity": "high"
       },
       {
-        "description": "ISS04 confinement scaling extrapolated to the compact A≈4 geometry yields n·τ_E roughly 11× below the Lawson ignition threshold at T=10 keV — Q=∞ closure is not supported by current scaling laws",
+        "description": "Flowing Li-LiH wall at 25 MW/m² has never been demonstrated; MHD stability of free-surface liquid metal in 3D stellarator field is uncharacterized",
         "severity": "high"
       },
       {
-        "description": "No stellarator has operated near burning plasma conditions; compact A ≈ 4 QI geometry has no experimental precedent and alpha confinement quality at ignition is untested",
+        "description": "Compact A≈4 QI geometry has no stellarator experimental precedent (W7-X is A=10); confinement quality at this aspect ratio is untested",
         "severity": "high"
       },
       {
-        "description": "Flowing Li-LiH wall at 25 MW/m² is unprecedented — MHD stability, plasma-facing free surface behavior, and tritium management in 3D stellarator geometry are uncharacterized",
+        "description": "REBCO Jc degrades sharply above ~20 T at 20 K, threatening feasibility of 20–40 T peak coil field upper envelope",
         "severity": "high"
       },
       {
-        "description": "REBCO Jc degrades sharply above ~20 T at 20 K; achieving the 20-40 T peak coil field envelope with realistic current density is not addressed in available sources (b_max elasticity +0.38)",
+        "description": "Zero published capital cost or LCOE estimate from the company; every CAS account must be built from first principles with no anchor",
         "severity": "high"
       },
       {
-        "description": "Plant availability is the largest LCOE lever (elasticity -0.94) but maintenance intervals and component replacement schedules are entirely uncharacterized",
-        "severity": "high"
-      },
-      {
-        "description": "Liquid metal circulation pump power is not disclosed and drives the unexplained 18-percentage-point gap between 50% cycle efficiency and 34% net efficiency, preventing independent Q_engineering closure",
+        "description": "Liquid metal circulation pump power undisclosed (~380 MW estimated, ±50%); drives unexplained 32% recirculating fraction between cycle (50%) and net (34%) efficiency",
         "severity": "medium"
       },
       {
-        "description": "sCO₂ Brayton-Rankine cycle at 49-51% efficiency has been demonstrated only at MW scale; GW-scale turbomachinery and integration with tritium-compatible heat exchangers are undemonstrated",
+        "description": "Plant availability uncertainty — flowing-wall maintenance philosophy uncharacterized; elasticity of −0.94 makes availability the single largest LCOE lever",
         "severity": "medium"
       },
       {
-        "description": "Divertor design and plasma exhaust solution is not addressed in any published source — critical gap for plasma-facing component cost and availability",
+        "description": "No divertor design or plasma exhaust solution addressed in any published source",
         "severity": "medium"
       },
       {
-        "description": "RAFM structural steel qualification under combined Li-LiH chemical exposure and 14 MeV neutron irradiation at 25 MW/m² wall loading has not been demonstrated",
+        "description": "Tritium permeation from liquid Li-LiH primary circuit through sCO₂ heat exchangers is uncharacterized; safety-relevant and may require permeation barriers",
         "severity": "medium"
       },
       {
-        "description": "Tritium permeation from flowing Li-LiH through heat exchanger walls to sCO₂ secondary is a documented concern with no published mitigation design",
+        "description": "Simultaneous Li-LiH chemical exposure plus 14 MeV neutron irradiation at fusion-relevant fluences not demonstrated for any RAFM structural alloy",
         "severity": "medium"
       },
       {
-        "description": "The sole hardware milestone (6 T Helmholtz, 1.2 m diameter, 20 K) is at 60% of nominal design field and does not characterize production economics or throughput",
+        "description": "sCO₂ Brayton-Rankine combined cycle at 49–51% efficiency not demonstrated at GW scale or with liquid metal heat source",
         "severity": "medium"
       },
       {
-        "description": "Fission-style regulatory cost multiplier (Stewart & Shirvan 2.2× building costs) applies as upper-bound scenario for this D-T concept",
-        "severity": "medium"
+        "description": "NNBI startup-only duty cycle is unusual; long-term reliability of intermittent-use NNBI over plant lifetime not characterized",
+        "severity": "low"
       },
       {
-        "description": "D-T tritium startup requirement (~1 kg at >$35,000/g) subject to global inventory decline (~25-30 kg, 5.5%/year decay) and fleet sequencing constraint",
+        "description": "Only hardware milestone is a 6 T Helmholtz prototype at 60% of nominal design field, providing no production economics data",
         "severity": "low"
       }
     ]

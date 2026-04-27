@@ -20,7 +20,7 @@
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 1723.3365478515625,
+      "cost_m_usd": 1723.336669921875,
       "overridden": false
     },
     "cas23": {
@@ -451,8 +451,451 @@
       "noak": 0.0
     }
   },
-  "parameter_metadata": {},
-  "narrative": null,
+  "parameter_metadata": {
+    "availability": {
+      "display_name": "Availability",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.85,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.595,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "construction_time_yr": {
+      "display_name": "Construction Time",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.0,
+      "display_multiplier": 1.0,
+      "display_unit": "yr",
+      "range": [
+        2.8,
+        5.2
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "mn": {
+      "display_name": "Energy Multiplication Mₙ",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.1,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.77,
+        1.4300000000000002
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_th": {
+      "display_name": "Thermal Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.42,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.294,
+        0.546
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_sub": {
+      "display_name": "Subsystem Power Fraction",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.03,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.020999999999999998,
+        0.039
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_pump": {
+      "display_name": "Pumping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        0.7,
+        1.3
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_trit": {
+      "display_name": "Tritium Plant Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 10.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        7.0,
+        13.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_house": {
+      "display_name": "Housekeeping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        2.8,
+        5.2
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_cryo": {
+      "display_name": "Cryogenic Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.2,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        0.13999999999999999,
+        0.26
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "blanket_t": {
+      "display_name": "Blanket Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.8,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.5599999999999999,
+        1.04
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "ht_shield_t": {
+      "display_name": "HT Shield Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.2,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.13999999999999999,
+        0.26
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "structure_t": {
+      "display_name": "Structure Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.15,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.105,
+        0.195
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "vessel_t": {
+      "display_name": "Vessel Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "plasma_t": {
+      "display_name": "Minor Radius",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.0,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        2.8,
+        5.2
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_T": {
+      "display_name": "Dd F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.969,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6782999999999999,
+        1.2597
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_He3": {
+      "display_name": "Dd F He3",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.689,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.48229999999999995,
+        0.8956999999999999
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_dd_frac": {
+      "display_name": "Dhe3 Dd Frac",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.07,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.049,
+        0.09100000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_f_T": {
+      "display_name": "Dhe3 F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.97,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6789999999999999,
+        1.261
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "q_eng": {
+      "display_name": "Engineering Q",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 3.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        2.0999999999999996,
+        3.9000000000000004
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_rep": {
+      "display_name": "Repetition Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "Hz",
+      "range": [
+        0.7,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_pin": {
+      "display_name": "Injector Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.6,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.42,
+        0.78
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_rad": {
+      "display_name": "F Rad",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_target": {
+      "display_name": "Target Plant Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 2.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        1.4,
+        2.6
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_dec": {
+      "display_name": "Eta Dec",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.85,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.595,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "interest_rate": {
+      "display_name": "Interest Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.0966,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.06762,
+        0.12558000000000002
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "inflation_rate": {
+      "display_name": "Inflation Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.0245,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.01715,
+        0.03185
+      ],
+      "source": null,
+      "modeling_note": null
+    }
+  },
+  "narrative": {
+    "key_bets": [
+      "Rep rate can scale to ~1 Hz commercial target (from 0.1 Hz Z-IFE baseline) via 1000× capacitor/switch lifetime improvement",
+      "Pulsed power driver cost falls 5-10× from current ~$5/J to <$0.50/J via IMG architecture vs LTD reference",
+      "Yield scaling extrapolates from current χ ≈ 0.1 on Z (20 MA) to GJ-class yields at 60+ MA with cryogenic DT ice-layer targets (simulation-anchored, not experimentally demonstrated)",
+      "Thick-liquid-wall FLiBe chamber survives repetitive GJ-scale shots, eliminating scheduled solid first-wall replacement",
+      "Per-shot consumables (target liner + RTL) can be mass-produced at <$1-2/shot to keep variable O&M below the LCOE-binding floor",
+      "RTL insertion automation achieves <1 second cycle time with mm-scale alignment of multi-ton transmission line carrying 60+ MA post-blast",
+      "Self-magnetizing composite targets (demonstrated October 2025 on Z) eliminate per-shot Helmholtz coils and potentially laser preheat"
+    ],
+    "eliminated_costs": [
+      "Superconducting magnet system (no REBCO tape, Nb₃Sn, or HTS supply chain dependency)",
+      "Steady-state plasma heating and current drive systems (NBI, ECRH, LHCD) — pulsed power driver performs this function",
+      "Scheduled solid first-wall replacement and associated capacity-factor downtime (if thick liquid wall succeeds)",
+      "Divertor system (absent in MagLIF architecture)",
+      "Beryllium liner per-shot bill of materials (eliminated by Pacific Fusion's composite plastic + aluminum targets)"
+    ],
+    "novel_costs": [
+      "Pulsed power driver capital — capacitor banks, switches, transmission lines (96% of plant capital in Z-IFE LTD reference; $372M median, no analogue in MFE)",
+      "Per-shot consumable O&M — target liner + RTL destroyed each shot (~28M assemblies/yr at 1 Hz; cost floor with no MFE analogue)",
+      "RTL + Target Factory capital account — automated factory for cryo ice-layer target fabrication and frozen-FLiBe RTL production",
+      "Cryogenic DT ice-layer target mass production infrastructure — 1 target/second at production scale (NIF cryo targets currently take 15-20 hours each)",
+      "Chamber-clearing and rep-rated mechanical insertion systems — debris evacuation, vacuum re-establishment, liquid wall regeneration, RTL alignment within 1 second"
+    ],
+    "risks": [
+      {
+        "description": "Yield scaling unvalidated above χ ≈ 0.1 on Z; commercial GJ-class yields require 60+ MA cryogenic ice-layer targets never tested experimentally — if scaling formula is optimistic by 10×, driver CapEx triples (TW^0.6 scaling)",
+        "severity": "high"
+      },
+      {
+        "description": "Rep rate cap at 0.1 Hz locks LCOE at ~20 ¢/kWeh regardless of driver/target improvements; minimum-COE rep rates (1.0-1.8 Hz) are 'beyond reach of replaceable RTL concept' per Z-IFE",
+        "severity": "high"
+      },
+      {
+        "description": "Pulsed power cost cannot fall from ~$5/J to <$0.50/J commercial threshold; 60+ MA driver would cost multiple billions, dominating CapEx regardless of rep rate",
+        "severity": "high"
+      },
+      {
+        "description": "Cryo ice-layer target cost cannot reach <$2/shot at volume; current cost is thousands of dollars/shot with no demonstrated production path — at $10/shot, annual O&M exceeds $300M/yr, becoming binding LCOE constraint",
+        "severity": "high"
+      },
+      {
+        "description": "Capacitor/switch component lifetime must improve 100,000× (from ~10⁴ to ~10⁹ shots) to operate 30 years at 1 Hz; not demonstrated",
+        "severity": "high"
+      },
+      {
+        "description": "RTL insertion automation at <1 second cycle with multi-ton, 60+ MA alignment post-blast is undemonstrated; binding mechanical constraint on rep rate",
+        "severity": "high"
+      },
+      {
+        "description": "Pacific Fusion's 250 MWe commercial target is 4× smaller than the 1000 MWe Z-IFE reference; Z-IFE shows 500 MWe already >10 ¢/kWeh — economy-of-scale penalty makes 250 MWe LCOE materially worse than current estimates imply",
+        "severity": "high"
+      },
+      {
+        "description": "Chamber lifetime under combined GJ-shock + neutron + thermal + FLiBe corrosion environment untested; no test facility exists; short lifetime adds replacement capital and downtime not in Z-IFE COE",
+        "severity": "medium"
+      },
+      {
+        "description": "No published plant study for IMG architecture (only 20-year-old Z-IFE LTD reference); all COE estimates carry ±50%+ uncertainty for the actual Pacific Fusion/Fuse driver class",
+        "severity": "medium"
+      },
+      {
+        "description": "Thick liquid wall concept unvalidated at GJ-scale; if scheduled solid wall replacement is required, capacity factor drops 10-30% (from 85% to 60-75%)",
+        "severity": "medium"
+      },
+      {
+        "description": "Tritium breeding blanket design for commercial MagLIF undisclosed; FLiBe extraction at kg/day rates undemonstrated; no industrial-scale FLiBe production exists",
+        "severity": "medium"
+      },
+      {
+        "description": "Thermal efficiency capped at ~42% with steel chamber until high-T materials (>900 K, C-C composite or SiC/SiC) become commercially available",
+        "severity": "low"
+      },
+      {
+        "description": "Tritium permeation analysis (0.0467 g/yr piping estimate) excludes pumps, valves, and steam generators — could exceed ITER 1 g/yr criterion when fully accounted",
+        "severity": "low"
+      }
+    ]
+  },
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/07-maglif/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/07-maglif/analysis.md"

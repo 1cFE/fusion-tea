@@ -19,11 +19,13 @@ import pytest
 
 from exploration.concept_explorer.extract_explorer_data import (  # noqa: E402
     ExtractionError,
+    apply_display_patches,
     discover_concepts,
     extract_costingfe,
     extract_narrative,
     extract_standalone,
     generate_parameter_metadata,
+    load_parameter_display_registry,
     load_parameter_metadata,
     parse_concept_id,
     parse_confinement_family,
@@ -436,6 +438,147 @@ class TestExtractCostingfe:
         assert roundtrip.concept_id == concept.concept_id
         assert roundtrip.cost_model is not None
         assert roundtrip.cost_model.sensitivities is not None
+
+
+# ---------------------------------------------------------------------------
+# Display registry: shared display-name patches between generated and per-concept
+# ---------------------------------------------------------------------------
+
+
+class TestDisplayRegistry:
+    def test_apply_patches_updates_only_display_fields(self) -> None:
+        """Registry patches display_name/_unit/_multiplier; baseline/range/category preserved."""
+        generated = {
+            "eta_th": ParameterMetadata(
+                display_name="Eta Th",
+                category=ParameterCategory.UNCLASSIFIED,
+                confidence=Confidence.UNKNOWN,
+                baseline=0.46,
+                range=(0.32, 0.6),
+            )
+        }
+        patches = {
+            "eta_th": {
+                "display_name": "Thermal Efficiency",
+                "display_unit": "%",
+                "display_multiplier": 100.0,
+            }
+        }
+
+        out = apply_display_patches(generated, patches)
+
+        assert out["eta_th"].display_name == "Thermal Efficiency"
+        assert out["eta_th"].display_unit == "%"
+        assert out["eta_th"].display_multiplier == 100.0
+        # Generated fields preserved
+        assert out["eta_th"].baseline == 0.46
+        assert out["eta_th"].range == (0.32, 0.6)
+        assert out["eta_th"].category == ParameterCategory.UNCLASSIFIED
+        assert out["eta_th"].confidence == Confidence.UNKNOWN
+
+    def test_apply_patches_skips_unknown_keys(self) -> None:
+        """Patches for parameters not in this concept's sensitivities are ignored."""
+        generated = {
+            "availability": ParameterMetadata(
+                display_name="Availability",
+                category=ParameterCategory.UNCLASSIFIED,
+                confidence=Confidence.UNKNOWN,
+                baseline=0.75,
+                range=(0.5, 1.0),
+            )
+        }
+        patches = {
+            "availability": {"display_name": "Plant Availability"},
+            "not_in_this_concept": {"display_name": "Should Not Appear"},
+        }
+
+        out = apply_display_patches(generated, patches)
+
+        assert set(out.keys()) == {"availability"}
+        assert out["availability"].display_name == "Plant Availability"
+
+    def test_load_registry_drops_unknown_fields_and_warns(self, tmp_path: Path) -> None:
+        """Registry loader silently drops unknown fields with a warning."""
+        path = tmp_path / "registry.yaml"
+        path.write_text(
+            "eta_th:\n"
+            "  display_name: Thermal Efficiency\n"
+            "  display_unit: '%'\n"
+            "  display_multiplier: 100.0\n"
+            "  baseline: 0.5\n"  # not allowed in registry
+            "  category: shared-baseline\n"  # not allowed in registry
+            "bad_entry: not a dict\n",
+            encoding="utf-8",
+        )
+
+        with warnings.catch_warnings(record=True) as caught:
+            warnings.simplefilter("always")
+            out = load_parameter_display_registry(path)
+
+        # Unknown fields stripped; entry retained
+        assert "eta_th" in out
+        assert set(out["eta_th"].keys()) == {"display_name", "display_unit", "display_multiplier"}
+        # Non-dict entry skipped
+        assert "bad_entry" not in out
+        # Warnings fired for both issues
+        msgs = [str(w.message) for w in caught]
+        assert any("unknown fields" in m for m in msgs)
+        assert any("non-dict" in m for m in msgs)
+
+    def test_load_registry_returns_empty_when_missing(self, tmp_path: Path) -> None:
+        out = load_parameter_display_registry(tmp_path / "does-not-exist.yaml")
+        assert out == {}
+
+    def test_per_concept_yaml_still_wins_over_registry(self, tmp_path: Path) -> None:
+        """Three-layer merge order: per-concept yaml beats registry beats generated."""
+        result = _make_forward_result()
+        model = _make_mock_model()
+        concept_dir = _make_concept_dir(tmp_path)
+        mock_module = types.SimpleNamespace(model=model, result=result)
+
+        # Per-concept yaml provides a full ParameterMetadata for availability
+        per_concept = {
+            "availability": ParameterMetadata(
+                display_name="CONCEPT_OVERRIDE",
+                category=ParameterCategory.SHARED_BASELINE,
+                confidence=Confidence.HIGH,
+                baseline=0.85,
+                range=(0.6, 0.95),
+            )
+        }
+        # Registry patches just the display_name
+        registry_patches = {
+            "availability": {"display_name": "REGISTRY_NAME", "display_unit": "%"},
+            "interest_rate": {"display_name": "Interest Rate", "display_unit": "%"},
+        }
+
+        with patch(
+            "exploration.concept_explorer.extract_explorer_data._DISPLAY_REGISTRY",
+            registry_patches,
+        ), patch(
+            "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
+            return_value=mock_module,
+        ):
+            concept = extract_costingfe(
+                concept_dir=concept_dir,
+                concept_id="04",
+                frontmatter={"Concept": "Test", "Status": "approved"},
+                analysis_path=concept_dir / "analysis.md",
+                narrative=None,
+                param_metadata=per_concept,
+            )
+
+        # Per-concept beats registry on availability
+        avail = concept.parameter_metadata["availability"]
+        assert avail.display_name == "CONCEPT_OVERRIDE"
+        assert avail.category == ParameterCategory.SHARED_BASELINE
+        # Registry beats generated on interest_rate (no per-concept override)
+        ir = concept.parameter_metadata["interest_rate"]
+        assert ir.display_name == "Interest Rate"
+        assert ir.display_unit == "%"
+        # Generated baseline/range preserved on the registry-patched entry
+        assert ir.baseline > 0
+        assert ir.range[0] < ir.range[1]
 
 
 # ---------------------------------------------------------------------------

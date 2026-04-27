@@ -563,8 +563,8 @@
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 0.75,
-      "display_multiplier": 1.0,
-      "display_unit": "",
+      "display_multiplier": 100.0,
+      "display_unit": "%",
       "range": [
         0.5249999999999999,
         0.9750000000000001
@@ -573,12 +573,12 @@
       "modeling_note": null
     },
     "construction_time_yr": {
-      "display_name": "Construction Time Yr",
+      "display_name": "Construction Time",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 5.0,
       "display_multiplier": 1.0,
-      "display_unit": "",
+      "display_unit": "yr",
       "range": [
         3.5,
         6.5
@@ -587,7 +587,7 @@
       "modeling_note": null
     },
     "mn": {
-      "display_name": "Mn",
+      "display_name": "Energy Multiplication Mₙ",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 1.1,
@@ -601,12 +601,12 @@
       "modeling_note": null
     },
     "eta_th": {
-      "display_name": "Eta Th",
+      "display_name": "Thermal Efficiency",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 0.46,
-      "display_multiplier": 1.0,
-      "display_unit": "",
+      "display_multiplier": 100.0,
+      "display_unit": "%",
       "range": [
         0.322,
         0.5980000000000001
@@ -629,12 +629,12 @@
       "modeling_note": null
     },
     "f_sub": {
-      "display_name": "F Sub",
+      "display_name": "Subsystem Power Fraction",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 0.03,
-      "display_multiplier": 1.0,
-      "display_unit": "",
+      "display_multiplier": 100.0,
+      "display_unit": "%",
       "range": [
         0.020999999999999998,
         0.039
@@ -643,12 +643,12 @@
       "modeling_note": null
     },
     "p_pump": {
-      "display_name": "P Pump",
+      "display_name": "Pumping Power",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 1.0,
       "display_multiplier": 1.0,
-      "display_unit": "",
+      "display_unit": "MW",
       "range": [
         0.7,
         1.3
@@ -657,12 +657,12 @@
       "modeling_note": null
     },
     "p_trit": {
-      "display_name": "P Trit",
+      "display_name": "Tritium Plant Power",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 10.0,
       "display_multiplier": 1.0,
-      "display_unit": "",
+      "display_unit": "MW",
       "range": [
         7.0,
         13.0
@@ -671,12 +671,12 @@
       "modeling_note": null
     },
     "p_house": {
-      "display_name": "P House",
+      "display_name": "Housekeeping Power",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 4.0,
       "display_multiplier": 1.0,
-      "display_unit": "",
+      "display_unit": "MW",
       "range": [
         2.8,
         5.2
@@ -685,12 +685,12 @@
       "modeling_note": null
     },
     "p_cryo": {
-      "display_name": "P Cryo",
+      "display_name": "Cryogenic Power",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 0.5,
       "display_multiplier": 1.0,
-      "display_unit": "",
+      "display_unit": "MW",
       "range": [
         0.35,
         0.65
@@ -699,12 +699,12 @@
       "modeling_note": null
     },
     "blanket_t": {
-      "display_name": "Blanket T",
+      "display_name": "Blanket Thickness",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 0.8,
       "display_multiplier": 1.0,
-      "display_unit": "",
+      "display_unit": "m",
       "range": [
         0.5599999999999999,
         1.04
@@ -713,12 +713,12 @@
       "modeling_note": null
     },
     "ht_shield_t": {
-      "display_name": "Ht Shield T",
+      "display_name": "HT Shield Thickness",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 0.2,
       "display_multiplier": 1.0,
-      "display_unit": "",
+      "display_unit": "m",
       "range": [
         0.13999999999999999,
         0.26
@@ -727,12 +727,12 @@
       "modeling_note": null
     },
     "structure_t": {
-      "display_name": "Structure T",
+      "display_name": "Structure Thickness",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 0.2,
       "display_multiplier": 1.0,
-      "display_unit": "",
+      "display_unit": "m",
       "range": [
         0.13999999999999999,
         0.26
@@ -741,12 +741,12 @@
       "modeling_note": null
     },
     "vessel_t": {
-      "display_name": "Vessel T",
+      "display_name": "Vessel Thickness",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 0.2,
       "display_multiplier": 1.0,
-      "display_unit": "",
+      "display_unit": "m",
       "range": [
         0.13999999999999999,
         0.26
@@ -755,12 +755,12 @@
       "modeling_note": null
     },
     "plasma_t": {
-      "display_name": "Plasma T",
+      "display_name": "Minor Radius",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 1.13,
       "display_multiplier": 1.0,
-      "display_unit": "",
+      "display_unit": "m",
       "range": [
         0.7909999999999999,
         1.4689999999999999
@@ -825,12 +825,12 @@
       "modeling_note": null
     },
     "p_input": {
-      "display_name": "P Input",
+      "display_name": "Input Power",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 38.6,
       "display_multiplier": 1.0,
-      "display_unit": "",
+      "display_unit": "MW",
       "range": [
         27.02,
         50.18000000000001
@@ -839,12 +839,12 @@
       "modeling_note": null
     },
     "eta_pin": {
-      "display_name": "Eta Pin",
+      "display_name": "Injector Efficiency",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 0.5,
-      "display_multiplier": 1.0,
-      "display_unit": "",
+      "display_multiplier": 100.0,
+      "display_unit": "%",
       "range": [
         0.35,
         0.65
@@ -853,12 +853,12 @@
       "modeling_note": null
     },
     "eta_de": {
-      "display_name": "Eta De",
+      "display_name": "Direct Conversion Efficiency",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 0.85,
-      "display_multiplier": 1.0,
-      "display_unit": "",
+      "display_multiplier": 100.0,
+      "display_unit": "%",
       "range": [
         0.595,
         1.0
@@ -867,12 +867,12 @@
       "modeling_note": null
     },
     "p_coils": {
-      "display_name": "P Coils",
+      "display_name": "Coil Power",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 2.0,
       "display_multiplier": 1.0,
-      "display_unit": "",
+      "display_unit": "MW",
       "range": [
         1.4,
         2.6
@@ -895,12 +895,12 @@
       "modeling_note": null
     },
     "R0": {
-      "display_name": "R0",
+      "display_name": "Major Radius",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 3.3,
       "display_multiplier": 1.0,
-      "display_unit": "",
+      "display_unit": "m",
       "range": [
         2.3099999999999996,
         4.29
@@ -909,7 +909,7 @@
       "modeling_note": null
     },
     "elon": {
-      "display_name": "Elon",
+      "display_name": "Elongation κ",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 1.84,
@@ -1063,12 +1063,12 @@
       "modeling_note": null
     },
     "b_max": {
-      "display_name": "B Max",
+      "display_name": "Peak Magnetic Field",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 12.0,
       "display_multiplier": 1.0,
-      "display_unit": "",
+      "display_unit": "T",
       "range": [
         8.399999999999999,
         15.600000000000001
@@ -1077,12 +1077,12 @@
       "modeling_note": null
     },
     "r_coil": {
-      "display_name": "R Coil",
+      "display_name": "Coil Radius",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 1.85,
       "display_multiplier": 1.0,
-      "display_unit": "",
+      "display_unit": "m",
       "range": [
         1.295,
         2.4050000000000002
@@ -1091,12 +1091,12 @@
       "modeling_note": null
     },
     "p_nbi": {
-      "display_name": "P Nbi",
+      "display_name": "NBI Power",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 50.0,
       "display_multiplier": 1.0,
-      "display_unit": "",
+      "display_unit": "MW",
       "range": [
         35.0,
         65.0
@@ -1193,8 +1193,8 @@
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 0.07,
-      "display_multiplier": 1.0,
-      "display_unit": "",
+      "display_multiplier": 100.0,
+      "display_unit": "%",
       "range": [
         0.049,
         0.09100000000000001
@@ -1207,8 +1207,8 @@
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 0.0245,
-      "display_multiplier": 1.0,
-      "display_unit": "",
+      "display_multiplier": 100.0,
+      "display_unit": "%",
       "range": [
         0.01715,
         0.03185
@@ -1217,7 +1217,93 @@
       "modeling_note": null
     }
   },
-  "narrative": null,
+  "narrative": {
+    "key_bets": [
+      "REBCO HTS tape cost falls to ~$10/kA-m commercially (currently ~$100/kA-m, ~10× above target)",
+      "20–23 T REBCO magnets achieve 9 full-power years of operation under fusion neutron fluence",
+      "I-mode confinement regime is accessible at ARC's operating point (0.55 MW/m²/n₂₀, 9.2 T) — not yet validated",
+      "FLiBe blanket achieves TBR ≥1.1 with viable tritium extraction turn-around time at kg/day rates",
+      "Demountable TF coil joints enable maintenance access at power-plant tempo with multi-year radiation-hardened robotics",
+      "8 GHz 25 MW LHCD system can be developed (only 6 GHz klystrons currently proven)",
+      "Capacity factor exceeds ~70–80% sustained multi-year — a level not yet demonstrated by any fusion device"
+    ],
+    "eliminated_costs": [
+      "Large-volume reactor structure costs avoided via high-field compact geometry (R=3.3 m vs ITER-scale 6.2–8.1 m)",
+      "Solid ceramic breeder module fabrication and handling eliminated by liquid FLiBe immersion blanket",
+      "ELM-driven first-wall erosion and frequent divertor replacement eliminated by I-mode confinement (no ELMs)",
+      "Full reactor disassembly avoided for blanket/vessel maintenance via demountable TF coil joints",
+      "Separate breeder and coolant systems consolidated into single FLiBe loop (breeder + coolant + shield combined)"
+    ],
+    "novel_costs": [
+      "5,730 km of REBCO HTS tape per reactor — exceeds 1–2 years of current global production capacity",
+      "FLiBe chemistry plant and tritium extraction system (~$100–200M floor) — no ARIES analogue, additive BOP line",
+      "950 tonnes of FLiBe materials (~$146M) requiring beryllium supply >10× current global production for fleet",
+      "Demountable TF coil joint fabrication cost (novel mechanical interface at 23 T peak field)",
+      "8 GHz 25 MW LHCD system development (extends beyond proven 6 GHz klystron technology)"
+    ],
+    "risks": [
+      {
+        "description": "REBCO tape cost remains ~10× above $10/kA-m commercial target; magnet system is ~92% of fabricated cost so REBCO price is the dominant LCOE uncertainty",
+        "severity": "high"
+      },
+      {
+        "description": "Capacity factor never published by CFS — physically meaningful range is 50–90%, and a 2× swing produces near-2× LCOE swing for this CAPEX-heavy concept",
+        "severity": "high"
+      },
+      {
+        "description": "FOAK-to-NOAK gap of 2–3× (CATF IWG: 150–200 $/MWh FOAK vs 60–100 $/MWh NOAK) — step-function risk concentrated in plants 1–3, not a continuous sensitivity",
+        "severity": "high"
+      },
+      {
+        "description": "Full plant capital cost (BOP, indirect, financing) not published; ARC paper covers only VV + blanket + magnets ($5.56B nuclear island only)",
+        "severity": "high"
+      },
+      {
+        "description": "I-mode confinement not validated at ARC parameters — fallback to H-mode drops fusion power from 525 to ~200 MW, pushing $/kWe up 2.5–3×",
+        "severity": "high"
+      },
+      {
+        "description": "Tritium extraction turn-around time from FLiBe experimentally undemonstrated; slow extraction raises on-site inventory beyond regulatory limits",
+        "severity": "medium"
+      },
+      {
+        "description": "FLiBe MHD effects on heat transfer at 9.2 T field not characterized; could force higher pumping power or blanket redesign",
+        "severity": "medium"
+      },
+      {
+        "description": "Radiation-assisted Inconel-718 corrosion in FLiBe uncharacterized; material substitution would affect blanket fabrication cost",
+        "severity": "medium"
+      },
+      {
+        "description": "Beryllium supply at fleet scale (~3,000 t/yr for 10-plant fleet vs ~300 t/yr current global production) is a gating constraint",
+        "severity": "medium"
+      },
+      {
+        "description": "Li-6 enrichment supply: Western non-mercury enrichment capacity does not exist at fleet scale; new facilities required",
+        "severity": "medium"
+      },
+      {
+        "description": "Regulatory framework: NRC Part 30 favorable but rulemaking incomplete; Part 50-style regulation would apply 2.2× building cost markup",
+        "severity": "medium"
+      },
+      {
+        "description": "REBCO joint performance untested at simultaneous reactor-level field, stress, and neutron flux (only bench-top tested at 77 K)",
+        "severity": "medium"
+      },
+      {
+        "description": "Remote handling and blanket maintenance at TRL 5–6 — not yet demonstrated at power-plant availability",
+        "severity": "medium"
+      },
+      {
+        "description": "8 GHz 25 MW LHCD untested; without LHCD, 63% bootstrap current may be insufficient for non-inductive sustainment",
+        "severity": "medium"
+      },
+      {
+        "description": "Tritium start-up inventory (~1 kg) competes with declining global civilian inventory (25–30 kg, decaying 5.5%/yr) as CANDU reactors retire",
+        "severity": "low"
+      }
+    ]
+  },
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/01-hts-compact-tokamak/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/01-hts-compact-tokamak/analysis.md"

@@ -11,6 +11,11 @@
 {% endblock %}
 
 {% block body %}
+{# Sticky compact headline (concept identity + 4 stats + Reset). Pinned below
+   the topnav; populated by sticky_headline.js once concept data loads. Hidden
+   until the JS finishes its first render to avoid an empty bar flashing. #}
+<div id="sticky-headline" class="sticky-headline" style="display: none;"></div>
+
 <div class="page-content" id="app">
 
   {# Loading state: visible until both API fetches resolve #}
@@ -30,53 +35,83 @@
     {# Identity hero: name, company, family badge, illustration #}
     <section id="hero" class="hero" aria-label="Concept identity"></section>
 
-    {# Headline economics card + optional slider controls #}
-    <section id="headline-section" class="section">
-      <h2 class="section__heading">Economics</h2>
-      <div id="headline-card" class="headline-card" role="region" aria-label="Headline economics"></div>
-      <div id="headline-loading" class="loading-inline" style="display: none;" role="status" aria-live="polite">
-        <span class="loading-spinner loading-spinner--sm" aria-hidden="true"></span>
-        <span class="loading-text">Recomputing…</span>
-      </div>
-      <div id="compute-error" style="display: none;" role="alert" class="error-inline"></div>
-      {# Slider controls: JS populates and shows only for costingfe + sensitivities #}
-      <div id="sliders-section" style="display: none;">
-        <h3 class="section__subheading">Parameter What-If</h3>
-        <div id="sliders-container" class="sliders-container"></div>
-      </div>
-    </section>
+    {# In-flow Economics section removed in Phase 3 — its content lives in the
+       sticky headline above. Compute-loading and error inline elements are
+       retained inline (under the sensitivity section) so concept_page.js can
+       still surface compute progress / errors without the old headline-card. #}
+    <div id="headline-loading" class="loading-inline" style="display: none;" role="status" aria-live="polite">
+      <span class="loading-spinner loading-spinner--sm" aria-hidden="true"></span>
+      <span class="loading-text">Recomputing…</span>
+    </div>
+    <div id="compute-error" style="display: none;" role="alert" class="error-inline"></div>
+
+    {# Sections are collapsible. Headers are <button>s for keyboard accessibility;
+       the body is wrapped in `.section__body`. The default-open / default-closed
+       state is set in JS (concept_page.js) so it can adapt to per-concept content. #}
 
     {# Narrative sections: omitted entirely when narrative === null #}
-    <section id="narrative-section" style="display: none;" class="section">
-      <h2 class="section__heading">Narrative</h2>
-      <div id="narrative-content"></div>
+    <section id="narrative-section" style="display: none;" class="section is-collapsed" data-section="narrative">
+      <button class="section__header" type="button">
+        <svg class="section__chevron" viewBox="0 0 12 12" aria-hidden="true">
+          <path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="section__title">Narrative</span>
+        <span class="section__hint" data-hint-for="narrative"></span>
+      </button>
+      <div class="section__body">
+        <div id="narrative-content"></div>
+      </div>
     </section>
 
     {# Risks table: omitted entirely when narrative === null or risks empty #}
-    <section id="risks-section" style="display: none;" class="section">
-      <h2 class="section__heading">Risks</h2>
-      <table id="risks-table" class="risks-table" role="table">
-        <thead>
-          <tr>
-            <th scope="col">Severity</th>
-            <th scope="col">Description</th>
-            <th scope="col">Retirement Path</th>
-          </tr>
-        </thead>
-        <tbody id="risks-tbody"></tbody>
-      </table>
+    <section id="risks-section" style="display: none;" class="section is-collapsed" data-section="risks">
+      <button class="section__header" type="button">
+        <svg class="section__chevron" viewBox="0 0 12 12" aria-hidden="true">
+          <path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="section__title">Risks</span>
+        <span class="section__hint" data-hint-for="risks"></span>
+      </button>
+      <div class="section__body">
+        <table id="risks-table" class="risks-table" role="table">
+          <thead>
+            <tr>
+              <th scope="col">Severity</th>
+              <th scope="col">Description</th>
+              <th scope="col">Retirement Path</th>
+            </tr>
+          </thead>
+          <tbody id="risks-tbody"></tbody>
+        </table>
+      </div>
     </section>
 
     {# CAS cost breakdown: omitted when cost_model === null #}
-    <section id="cas-section" style="display: none;" class="section">
-      <h2 class="section__heading">CAS Cost Breakdown</h2>
-      <div id="cas-mount"></div>
+    <section id="cas-section" style="display: none;" class="section is-collapsed" data-section="cas">
+      <button class="section__header" type="button">
+        <svg class="section__chevron" viewBox="0 0 12 12" aria-hidden="true">
+          <path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="section__title">CAS Cost Breakdown</span>
+        <span class="section__hint" data-hint-for="cas"></span>
+      </button>
+      <div class="section__body">
+        <div id="cas-mount"></div>
+      </div>
     </section>
 
-    {# Sensitivity (tornado): omitted when cost_model === null #}
-    <section id="sensitivity-section" style="display: none;" class="section">
-      <h2 class="section__heading">Sensitivity Analysis</h2>
-      <div id="tornado-mount"></div>
+    {# Sensitivity (tornado): omitted when cost_model === null. Default expanded. #}
+    <section id="sensitivity-section" style="display: none;" class="section" data-section="sensitivity">
+      <button class="section__header" type="button">
+        <svg class="section__chevron" viewBox="0 0 12 12" aria-hidden="true">
+          <path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="section__title">Sensitivity &amp; What-If</span>
+        <span class="section__hint" data-hint-for="sensitivity">Drag any slider — top numbers will update</span>
+      </button>
+      <div class="section__body">
+        <div id="tornado-mount"></div>
+      </div>
     </section>
 
     {# Add to comparison action #}
@@ -101,5 +136,6 @@
 <script src="/static/js/parameter_card.js"></script>
 <script src="/static/js/tornado.js"></script>
 <script src="/static/js/cas_breakdown.js"></script>
+<script src="/static/js/sticky_headline.js"></script>
 <script src="/static/js/concept_page.js"></script>
 {% endblock %}

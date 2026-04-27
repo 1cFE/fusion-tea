@@ -20,7 +20,7 @@
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 885.4313354492188,
+      "cost_m_usd": 885.4312744140625,
       "overridden": false
     },
     "cas23": {
@@ -60,7 +60,7 @@
     },
     "cas30": {
       "name": "Indirect Costs",
-      "cost_m_usd": 317.9407653808594,
+      "cost_m_usd": 317.94073486328125,
       "overridden": false
     },
     "cas40": {
@@ -70,7 +70,7 @@
     },
     "cas50": {
       "name": "Supplementary Costs",
-      "cost_m_usd": 139.967041015625,
+      "cost_m_usd": 139.96701049804688,
       "overridden": false
     },
     "cas60": {
@@ -441,8 +441,405 @@
       "noak": 1.0
     }
   },
-  "parameter_metadata": {},
-  "narrative": null,
+  "parameter_metadata": {
+    "construction_time_yr": {
+      "display_name": "Construction Time",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 5.0,
+      "display_multiplier": 1.0,
+      "display_unit": "yr",
+      "range": [
+        3.5,
+        6.5
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "mn": {
+      "display_name": "Energy Multiplication Mₙ",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.7,
+        1.3
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_th": {
+      "display_name": "Thermal Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.35,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.24499999999999997,
+        0.45499999999999996
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_p": {
+      "display_name": "Eta P",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.5,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.35,
+        0.65
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_sub": {
+      "display_name": "Subsystem Power Fraction",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.03,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.020999999999999998,
+        0.039
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_pump": {
+      "display_name": "Pumping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        0.7,
+        1.3
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_house": {
+      "display_name": "Housekeeping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        2.8,
+        5.2
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "blanket_t": {
+      "display_name": "Blanket Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.05,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.034999999999999996,
+        0.065
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "ht_shield_t": {
+      "display_name": "HT Shield Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.05,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.034999999999999996,
+        0.065
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "structure_t": {
+      "display_name": "Structure Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.15,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.105,
+        0.195
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "vessel_t": {
+      "display_name": "Vessel Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "plasma_t": {
+      "display_name": "Minor Radius",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.0,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        2.8,
+        5.2
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_T": {
+      "display_name": "Dd F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.969,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6782999999999999,
+        1.2597
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_He3": {
+      "display_name": "Dd F He3",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.689,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.48229999999999995,
+        0.8956999999999999
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_dd_frac": {
+      "display_name": "Dhe3 Dd Frac",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.07,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.049,
+        0.09100000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_f_T": {
+      "display_name": "Dhe3 F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.97,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6789999999999999,
+        1.261
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "q_eng": {
+      "display_name": "Engineering Q",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        2.8,
+        5.2
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_rep": {
+      "display_name": "Repetition Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 10.0,
+      "display_multiplier": 1.0,
+      "display_unit": "Hz",
+      "range": [
+        7.0,
+        13.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_pin": {
+      "display_name": "Injector Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_rad": {
+      "display_name": "F Rad",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_target": {
+      "display_name": "Target Plant Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        0.7,
+        1.3
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_dec": {
+      "display_name": "Eta Dec",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.85,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.595,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "inflation_rate": {
+      "display_name": "Inflation Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.0245,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.01715,
+        0.03185
+      ],
+      "source": null,
+      "modeling_note": null
+    }
+  },
+  "narrative": {
+    "key_bets": [
+      "The 'avalanche' alpha-chain-reaction mechanism amplifies p-B11 yield by orders of magnitude beyond thermal cross-section predictions, enabling gain >500",
+      "Petawatt-class chirped-pulse-amplification lasers can reach >10% wall-plug efficiency (vs <1% today) at petawatt pulse energies",
+      "Petawatt-class CPA lasers can be operated at 1 Hz repetition rate continuously (vs <<1 Hz single-shot today)",
+      "Laser-driven capacitor-coil targets can sustain ≥1 kT magnetic fields repeatably at 1 Hz for radial fuel confinement",
+      "HB11 fuel pellets and capacitor-coil targets can be fabricated and injected at 1 Hz (~31.5M units/year) with sub-mm alignment tolerances",
+      "Either direct electrostatic alpha conversion at -1.4 MV or a pulsed-source steam Rankine cycle can convert fusion energy to electricity at commercial scale",
+      "Ignition is achievable via Proton Fast Ignition with a two-laser (ns capacitor-coil + ps petawatt) architecture on a solid-state HB11 target"
+    ],
+    "eliminated_costs": [
+      "No tritium inventory, breeding blanket, or Li-6 enrichment supply chain (aneutronic p-B11 fuel)",
+      "No REBCO/HTS or external superconducting magnets and associated cryogenic infrastructure (transient laser-driven kT field)",
+      "No thick neutron shield or activation-prone blanket structure (nearly aneutronic, <1% neutron fraction)",
+      "No FLiBe or exotic tritium-compatible coolant loop required",
+      "Fuel supply cost is negligible — boron-11 and protium are abundant and commercially available at microgram-per-shot scale"
+    ],
+    "novel_costs": [
+      "Arrays of thousands of 1 Hz petawatt-class CPA laser systems with no existing commercial supply chain",
+      "High-average-power USPL pump diodes at ~$0.007/W target (currently $0.05–0.10/W, a 7–14× gap)",
+      "Per-shot dual-component consumable: HB11 fuel pellet plus capacitor-coil target assembly at ~31.5M units/year",
+      "Specialty optical components (gratings, mirrors) capable of transmitting petawatt pulses at 1 Hz with characterized lifetime",
+      "Direct electrostatic alpha collection hardware (-1.4 MV Faraday cage / collection electrode) if direct conversion path is retained"
+    ],
+    "risks": [
+      {
+        "description": "The 'avalanche' gain mechanism underpinning all gain >500 projections has zero experimental confirmation and is contested in the literature; current alpha yield is ~10,000× below the gain=1 threshold",
+        "severity": "high"
+      },
+      {
+        "description": "Petawatt CPA laser wall-plug efficiency is currently <1% versus a >10% requirement, so recirculating power dominates the energy balance and Q_eng cannot be closed",
+        "severity": "high"
+      },
+      {
+        "description": "The 2018 patent design point is internally inconsistent (30 kJ × gain 500 = 15 MJ vs claimed 1 GJ output, a ~67× discrepancy); no self-consistent energy balance exists in the public record",
+        "severity": "high"
+      },
+      {
+        "description": "Energy conversion method is unresolved — 2018 patent and 2020 interviews specify direct electrostatic conversion at -1.4 MV, but 2025 website specifies a conventional steam cycle, with no published engineering rationale for the pivot; loss of direct conversion forfeits the primary aneutronic-fuel economic advantage",
+        "severity": "high"
+      },
+      {
+        "description": "No petawatt-class CPA laser has been operated at ≥1 Hz; LFEX fires at ~0.01 Hz, so rep-rated thermal management, optical damage mitigation, and pump sources are an unaddressed engineering leap",
+        "severity": "high"
+      },
+      {
+        "description": "No HB11 subsystem (kT field, ps petawatt fast ignition, fuel injection, chamber, energy conversion) has been operated together; the integration challenge is entirely on paper",
+        "severity": "high"
+      },
+      {
+        "description": "No commercial supply chain or cost estimate exists for 1 Hz petawatt-class lasers, making laser system capital cost a blocking unknown for any LCOE model",
+        "severity": "high"
+      },
+      {
+        "description": "Per-shot pellet plus capacitor-coil target fabrication at ~31.5M units/year has no precedent and no published cost study; O&M and consumable costs are uncharacterized",
+        "severity": "high"
+      },
+      {
+        "description": "Rep-rated kT-field generation via laser-driven capacitor-coil targets at 1 Hz, with field uniformity and duration sufficient for radial confinement, is unproven",
+        "severity": "medium"
+      },
+      {
+        "description": "Two key 2024–2025 publications (PhysRevResearch.7.013230; Mehlhorn 2024 Phys. Plasmas perspective) and the 2024 Frascati workshop proceedings could not be extracted, leaving the most recent experimental and theoretical evidence outside this analysis",
+        "severity": "medium"
+      },
+      {
+        "description": "HB11 is one of the least-documented concepts in the shortlist with no independent LCOE/TEA, no plant-level design study beyond a 2018 patent, and only a small early-stage company (~A$12.8M disclosed funding) behind it",
+        "severity": "medium"
+      },
+      {
+        "description": "Capacity factor is uncharacterized — depends on undemonstrated laser rep rate, chamber clearing within ~1 s, and optic replacement schedules",
+        "severity": "medium"
+      }
+    ]
+  },
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/04-laser-icf/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/04-laser-icf/analysis.md"

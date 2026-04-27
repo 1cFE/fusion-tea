@@ -20,7 +20,7 @@
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 671.4209594726562,
+      "cost_m_usd": 671.4208984375,
       "overridden": false
     },
     "cas23": {
@@ -451,87 +451,448 @@
       "noak": 1.0
     }
   },
-  "parameter_metadata": {},
+  "parameter_metadata": {
+    "availability": {
+      "display_name": "Availability",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.85,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.595,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "construction_time_yr": {
+      "display_name": "Construction Time",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.0,
+      "display_multiplier": 1.0,
+      "display_unit": "yr",
+      "range": [
+        2.8,
+        5.2
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "mn": {
+      "display_name": "Energy Multiplication Mₙ",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.7,
+        1.3
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_th": {
+      "display_name": "Thermal Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.9,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.63,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_p": {
+      "display_name": "Eta P",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.5,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.35,
+        0.65
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_sub": {
+      "display_name": "Subsystem Power Fraction",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.03,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.020999999999999998,
+        0.039
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_pump": {
+      "display_name": "Pumping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.5,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        0.35,
+        0.65
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_trit": {
+      "display_name": "Tritium Plant Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.5,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        0.35,
+        0.65
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_house": {
+      "display_name": "Housekeeping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 2.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        1.4,
+        2.6
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "blanket_t": {
+      "display_name": "Blanket Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.05,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.034999999999999996,
+        0.065
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "ht_shield_t": {
+      "display_name": "HT Shield Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.05,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.034999999999999996,
+        0.065
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "structure_t": {
+      "display_name": "Structure Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "vessel_t": {
+      "display_name": "Vessel Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "plasma_t": {
+      "display_name": "Minor Radius",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.5,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.35,
+        0.65
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_T": {
+      "display_name": "Dd F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.969,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6782999999999999,
+        1.2597
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_He3": {
+      "display_name": "Dd F He3",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.689,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.48229999999999995,
+        0.8956999999999999
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_dd_frac": {
+      "display_name": "Dhe3 Dd Frac",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.07,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.049,
+        0.09100000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_f_T": {
+      "display_name": "Dhe3 F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.97,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6789999999999999,
+        1.261
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "q_eng": {
+      "display_name": "Engineering Q",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 3.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        2.0999999999999996,
+        3.9000000000000004
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_rep": {
+      "display_name": "Repetition Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "Hz",
+      "range": [
+        0.7,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_pin": {
+      "display_name": "Injector Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.95,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.6649999999999999,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_rad": {
+      "display_name": "F Rad",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_coils": {
+      "display_name": "Coil Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.5,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        0.35,
+        0.65
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_dec": {
+      "display_name": "Eta Dec",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.85,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.595,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "interest_rate": {
+      "display_name": "Interest Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.07,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.049,
+        0.09100000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "inflation_rate": {
+      "display_name": "Inflation Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.02,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.013999999999999999,
+        0.026000000000000002
+      ],
+      "source": null,
+      "modeling_note": null
+    }
+  },
   "narrative": {
     "key_bets": [
-      "D-He3 fuel operation at ~200M°C (~17 keV) is achievable via FRC collision and compression, despite no D-He3 plasma data existing in any Helion prototype",
-      "Magnetic energy recovery efficiency ≥90% at commercial rep rates and 40 T field strengths, scaling from the 2015 subscale demonstration of >95% round-trip recovery",
-      "Pulsed aluminum coil compression scales from demonstrated 8 T (Trenta) and targeted 15 T+ (Polaris) to 40 T reactor design point, a 25× increase in magnetic pressure",
-      "He3 self-breeding from D-D side reactions (direct He3 + tritium-to-He3 decay chain) supplies commercial fuel demand without external He3 market reliance",
-      "Pulse repetition rate scales ~1200× from Trenta (~0.002 Hz) to commercial 2 Hz design point via capacitor recharge, coil thermal management, and FRC formation at rate",
-      "Capacitor bank cost falls from ~$5/J pulsed power baseline to ~$0.50/J through in-house manufacturing and volume learning",
-      "Plasma gain Q~1.2 (implied by ARPA-E η·Q=0.24) combined with η_recovery>0.9 yields net electric output despite sub-ignition plasma performance"
+      "Magnetic energy recovery efficiency reaches ≥90% at commercial fields and rep rates (subscale 2015 demo showed >95%, but only at low fields and over <1M pulses)",
+      "Achieving ~17 keV / 200M°C and 40 T compression field enables D-He3 ignition (currently 13 keV / 150M°C and ~15 T on Polaris)",
+      "He3 self-breeding from D-D side reactions plus tritium decay can supply commercial fuel demand without external He3 purchase",
+      "Pulsed capacitor bank cost falls from ~$5/J commercial baseline to ~$0.50/J via in-house manufacturing learning curve",
+      "Rep rate scales from Trenta's ~0.002 Hz to commercial 2 Hz (1200×) via capacitor recharge, coil thermal management, and FRC injection at 1+ Hz",
+      "Pulsed aluminum coils survive ~10^9 fatigue cycles at 40 T compressed field with adequate replacement intervals",
+      "Plasma gain (Q) reaches commercially viable levels (ARPA-E implies Q~1.2; no measured Q published for any prototype)"
     ],
     "eliminated_costs": [
-      "Tritium breeding blanket (FLiBe/WCCB, ~$200–500M) — not required for D-He3 commercial operation",
-      "Thermal conversion island — no steam generator, turbines, condensers, or heat exchangers for the ~95% charged-particle energy fraction",
-      "REBCO HTS superconducting magnets and associated cryogenic plant (LHe, quench protection)",
-      "Heavy neutron shielding and activation management — ~5% neutron fraction vs. ~80% for D-T enables lighter borated poly/concrete shielding",
-      "Commercial tritium supply at full plant scale — Polaris testing uses interim external tritium but D-He3 operation eliminates ongoing tritium fuel procurement"
+      "Tritium breeding blanket (FLiBe/WCCB, ~$200–500M) — D-He3 fuel eliminates need",
+      "Steam/thermal cycle (Rankine/Brayton turbines, condensers, heat exchangers) — direct inductive recovery captures ~95% charged-particle energy",
+      "REBCO HTS superconducting magnets and cryogenic plant — replaced by room-temperature pulsed aluminum coils",
+      "External tritium supply at commercial scale (~$35,000/g) — D-He3 needs no tritium for steady operation",
+      "Heavy neutron shielding and frequent first-wall replacement — ~5% neutron fraction vs. ~80% for D-T enables ~1m borated polyethylene/concrete barrier"
     ],
     "novel_costs": [
-      "High-voltage pulsed capacitor bank (>50 MJ on Polaris, charged to tens of kV) with no published $/J cost curve at required lifetime and rep rate",
-      "Pulsed aluminum electromagnetic coils and ~720 miles of custom-alloy coaxial cables per plant, with unestablished fatigue lifetime at 40 T and 10^7–10^9 pulses",
-      "Direct Faraday inductive energy recovery system replacing the power conversion island — novel CAS22 item with no commercial analogue at 50 MWe continuous",
-      "He3 breeding and isotope separation plant, including multi-kg tritium storage inventory for the 12.3-year decay lag period (~$35–175M at $35,000/g)",
-      "In-house quartz tube manufacturing for FRC formation chambers, driven by specialized geometry/purity requirements not met by commercial supply"
+      "High-voltage pulsed capacitor bank (>50 MJ on Polaris) — primary capital item with no published $/J cost curve at required rep rate and lifetime",
+      "Direct Faraday inductive energy recovery system at 40 T and commercial scale — TRL 4–5, replaces conventional power conversion island",
+      "He3 self-breeding cycle including D-D reaction capture, tritium storage during 12.3-yr decay, and isotopic separation plant — never demonstrated at any scale",
+      "Pulsed aluminum coils and ~720 miles of custom-alloy coaxial cables per plant with unknown fatigue lifetime at 40 T",
+      "Tritium storage inventory (~1–5 kg, ~$35–175M) accumulated during fleet ramp before He3 breeding self-sustains"
     ],
     "risks": [
       {
-        "description": "No published Q (plasma gain) value for any Helion prototype — fundamental LCOE input is unverified and all fusion-yield-based calculations are speculative",
+        "description": "Magnetic energy recovery efficiency falls below ~90% threshold, eliminating net electricity output (binary cliff at ARPA-E design point η_coupling=0.2, Q=1.2)",
         "severity": "high"
       },
       {
-        "description": "η_recovery is a threshold parameter; falling below ~90% at the ARPA-E design point (η_coupling=0.2, Q=1.2) causes net output to go negative — go/no-go cliff, not gradual penalty",
+        "description": "He3 self-breeding fails or is delayed, leaving commercial D-He3 operation with no viable fuel path (natural He3 supply cannot support a single 50 MWe plant)",
         "severity": "high"
       },
       {
-        "description": "Inconsistency between >95% subscale recovery claim and η=0.7 from ARPA-E presentation; 10 pp ambiguity spans the viability boundary",
+        "description": "Compression field cannot reach D-He3 ignition threshold (~17 keV / ~40 T), forcing structural fallback to D-T fuel and a fundamentally different LCOE model with breeding blanket and reduced direct conversion",
         "severity": "high"
       },
       {
-        "description": "40 T compressed field in pulsed aluminum coils is 5× beyond demonstrated 8 T on Trenta and is outside established pulsed magnet experience",
+        "description": "No published Q value for any prototype — fundamental fusion gain parameter is entirely unverified by independent sources",
         "severity": "high"
       },
       {
-        "description": "D-He3 operation has never been demonstrated in any Helion prototype; ~30% ion-temperature gap from Polaris' 13 keV to ~17 keV ignition threshold is a binary cliff below which commercial fuel strategy fails",
+        "description": "Capacitor bank cost remains near commercial baseline (~$5/J) instead of reaching ~$0.50/J target — would push LCOE above 500 c/kWh",
         "severity": "high"
       },
       {
-        "description": "He3 self-breeding cycle has never operated at any scale; natural He3 supply cannot support commercial plants, so breeding is a binary prerequisite for the entire D-He3 concept",
+        "description": "Rep rate gap from Trenta (0.002 Hz) to commercial 2 Hz (1200× scaling) is engineering-unproven; achieved Polaris rep rate not disclosed in Feb 2026 milestone",
         "severity": "high"
       },
       {
-        "description": "Rep rate must scale ~1200× from Trenta (~0.002 Hz) to 2 Hz commercial design point; no public data on achieved Polaris rep rate and capacitor recharge, coil thermal management untested near 1 Hz",
+        "description": "40 T pulsed aluminum coils are outside demonstrated experience (Trenta achieved >8 T) — 25× increase in magnetic pressure with unknown fatigue life at 10^9 cycles",
         "severity": "high"
       },
       {
-        "description": "Capacitor bank cost must fall ~10× from ~$5/J baseline to ~$0.50/J for LCOE viability; current baseline implies LCOE >500 c/kWh at the 50 MW / 2 Hz design point",
-        "severity": "high"
-      },
-      {
-        "description": "No published plant capital cost for Orion or any Helion plant; no independent TEA equivalent to ARIES/ARC/PROCESS exists, leaving uncertainty bounds substantially wider than peer-reviewed tokamak analyses",
-        "severity": "high"
-      },
-      {
-        "description": "Component lifetime at commercial duty cycle (capacitors, coils, quartz tubes at 10^7–10^9 pulses) is uncharacterized publicly; O&M cost has no analogue plant for benchmarking",
+        "description": "Component lifetime (capacitors, coils, quartz tubes) at 1+ Hz commercial duty cycle is uncharacterized — drives O&M cost and replacement schedule",
         "severity": "medium"
       },
       {
-        "description": "Capacitor and custom-alloy cable supply chain concentration — Contrary Research identifies supply chain as Helion's main potential risk; specialty suppliers limited",
+        "description": "Inconsistency between η=0.7 (ARPA-E) and >95% recovery efficiency (Contrary Research) claims is unresolved — definitional ambiguity creates 10+ percentage-point modeling uncertainty in the dominant LCOE parameter",
         "severity": "medium"
       },
       {
-        "description": "Tritium storage and inventory management for the 12.3-year He3 decay lag creates fleet scale-up timing risk; tritium must be accumulated before He3 breeding supports fuel demand",
+        "description": "Capacitor and quartz tube supply chain identified by Contrary Research as Helion's 'main potential risk' — limited specialty suppliers for high-voltage repetitive-pulse capacitors",
         "severity": "medium"
       },
       {
-        "description": "First-wall material selection and replacement schedule for D-He3 2.45 MeV neutrons at commercial rep rate is uncharacterized; no FRC wall loading literature at commercial conditions",
+        "description": "Tritium storage and regulatory framework for 1–5 kg commercial inventory during He3 breeding lag period has no precedent at this scale",
         "severity": "medium"
       },
       {
-        "description": "D-T fallback scenario (if D-He3 or He3 breeding fails) requires a structurally different LCOE model — architectural substitution, not a parameter perturbation — reinstating blanket, tritium supply, and eliminating direct conversion benefit for ~80% of yield",
+        "description": "Orion plant capital cost and subsystem breakdown is fully proprietary — no independent TEA exists to validate Helion's economics",
         "severity": "medium"
+      },
+      {
+        "description": "First-wall material selection and replacement schedule for D-He3 2.45 MeV neutrons at commercial rep rate is not published",
+        "severity": "low"
       }
     ]
   },

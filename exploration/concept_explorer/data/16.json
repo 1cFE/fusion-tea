@@ -341,71 +341,67 @@
   "parameter_metadata": {},
   "narrative": {
     "key_bets": [
-      "Active-target muon source with ML-optimized geometry can reduce muon production energy cost from ~6 GeV to 2.5–3 GeV (and ultimately ~1.2 GeV for commercial viability)",
-      "Achieving 200–300 fusions per muon at high-temperature, high-density operating conditions (800–1300 K), near the physics ceiling set by 0.3–0.5% effective alpha-sticking probability",
-      "Diamond anvil cell laboratory apparatus can be replaced by a scalable continuous-operation fusion chamber (e.g., compressed gas target via adiabatic or shock-wave compression)",
-      "Superconducting CW proton accelerator at GeV class can be industrialized to achieve ~20× cost reduction vs. science-grade linacs (SNS, ESS) to reach <$50M/MW_beam",
-      "47% recirculating power fraction is achievable via the active-target design at target muon energy cost",
-      "High-temperature operation (500–1000°C) enables both high Brayton thermal efficiency and enhanced N_fus via temperature-dependent kinetics",
-      "Tritium breeding blanket can achieve TBR > 1 integrated with the non-plasma material-containment fusion chamber"
+      "Active-target ML-optimized muon source reduces production energy from ~6 GeV to 2.5–3 GeV per muon",
+      "Achieving 200–300 fusions per muon at high-temperature, high-density operating conditions (800–1300 K)",
+      "Effective alpha-sticking probability remains at 0.3–0.5%, permitting fusions/muon ceiling of 200–350",
+      "CW superconducting GeV-class proton accelerator achievable at power-plant scale with 47% recirculating power fraction",
+      "Commercial-scale fusion chamber architecture replacing the diamond anvil cell (e.g., compressed gas / shock-wave compression target)",
+      "Tritium-breeding blanket with TBR > 1 integrated with non-plasma material-containment chamber",
+      "Brayton (likely sCO₂) BOP at 500–1000°C delivering ~50% thermal-to-electric conversion plus heat-sales revenue"
     ],
     "eliminated_costs": [
-      "No HTS confinement magnets — eliminates the largest capital cost category in MFE and avoids the REBCO tape supply chain bottleneck",
-      "No plasma heating systems (CAS220104) — the accelerator serves as the driver, eliminating ICRH/ECRH/NBI subsystems",
-      "No target factory (CAS220108) — continuous catalytic process avoids the per-shot target fabrication cost of IFE",
-      "No plasma physics uncertainties — eliminates confinement time, beta limits, disruptions, ELMs, and divertor heat load engineering",
-      "No beryllium requirement — avoids the FLiBe/Materion supply chain constraint if a lithium-based blanket is chosen"
+      "No HTS confinement magnets — REBCO supply chain bottleneck does not apply",
+      "No plasma heating systems (CAS23) — accelerator is the driver",
+      "No target factory / single-shot target fabrication (continuous catalytic process)",
+      "No high-vacuum plasma vessel or plasma-facing component cost category",
+      "No beryllium-based FLiBe blanket required if Li-only blanket is selected"
     ],
     "novel_costs": [
-      "Superconducting GeV-class CW proton accelerator (~$5,000M baseline, ~82% of overnight capital) — dominant capital item with no fusion-industry analogue",
-      "Active-target muon source with ML-optimized geometry — novel subsystem with no published cost reference at power-plant scale",
-      "Large auxiliary cryoplant for the superconducting linac (CAS220300, ~$80M) — scaled to accelerator rather than confinement magnets",
-      "High recirculating power load (47%+ claimed, 64%+ in baseline) requires oversized gross electrical generation and BOP relative to net output",
-      "Commercial-scale DT target chamber to replace the diamond anvil cell — architecture undefined, no industrial production pathway exists"
+      "GeV-class CW superconducting proton accelerator (~$5B baseline; ~82% of overnight capital)",
+      "Active-target muon source with ML-optimized geometry — no fusion-industry cost analogue",
+      "Cryoplant scaled for SC linac cavities rather than confinement magnets",
+      "Commercial-scale DT compression target system replacing laboratory diamond anvil cell",
+      "Muon beam optics, focusing, and injection hardware into the DT target"
     ],
     "risks": [
       {
-        "description": "Energy balance is net-negative at Acceleron's stated operating point (E_mu=2.5 GeV, N_fus=200): Q_sci ≈ 1.41 and gross-to-driver ratio ≈ 0.78, making the plant an energy sink regardless of capital cost",
+        "description": "Energy balance fails: at Acceleron's stated 2.5 GeV / 200 fusions-per-muon operating point, Q_sci ≈ 1.41 and gross/driver ratio ≈ 0.78, making the plant a net energy sink regardless of capital cost",
         "severity": "high"
       },
       {
-        "description": "Alpha-sticking probability (0.3–0.5% effective) imposes a hard quantum-mechanical ceiling of ~200–350 fusions/muon that cannot be improved by engineering — Acceleron's 300 target sits at the edge of this ceiling",
+        "description": "Alpha-sticking physics ceiling caps fusions/muon at ~200–350; Acceleron's 300 target sits near the top of this range and cannot be improved by engineering",
         "severity": "high"
       },
       {
-        "description": "Accelerator capital cost must achieve ~20× reduction from SNS/ESS science-grade analogues (~$1,000M/MW_beam → <$50M/MW_beam) — never demonstrated for GeV-class linacs",
+        "description": "Accelerator capital cost dominates LCOE (~82% of overnight capital at $5B); commercial target requires ~20× reduction from SNS-class science facilities with no demonstrated industrial manufacturing pathway",
         "severity": "high"
       },
       {
-        "description": "Fusion chamber architecture for commercial scale is entirely unspecified — diamond anvil cell is a laboratory instrument with no scaling pathway, and no integrated commercial design exists",
+        "description": "Fusion chamber architecture is undefined — diamond anvil cell is a laboratory instrument and cannot scale; compressed-gas alternatives exist only on paper",
         "severity": "high"
       },
       {
-        "description": "47% recirculating power fraction is a model output, not a measured result; baseline modeling at aspirational parameters yields 64% recirculating fraction, leaving little margin for net output",
+        "description": "47% recirculating power fraction is a model output, not a measured result; no Q value or net energy balance demonstrated at any scale",
         "severity": "high"
       },
       {
-        "description": "No published Q value or net energy balance demonstrated at any scale; Brookhaven breakeven test (~2030) is the planned resolution but unfunded",
-        "severity": "high"
-      },
-      {
-        "description": "Tritium breeding blanket type, TBR target, and extraction approach are undisclosed despite appearing in system diagrams — blocks tritium fuel cycle analysis",
+        "description": "Tritium breeding blanket type, TBR target, and extraction approach undisclosed; tritium self-sufficiency unproven for non-plasma chamber geometry",
         "severity": "medium"
       },
       {
-        "description": "No O&M cost breakdown, maintenance schedule, or capacity factor data exists; particle physics availability metrics (85–95%) are scientific-mission, not power-generation, benchmarks",
+        "description": "No published O&M cost structure, capacity factor, or maintenance model; particle-physics accelerator availability (85–95%) is for science missions, not power generation",
         "severity": "medium"
       },
       {
-        "description": "PSI September 2024 experimental results not yet published — the only Acceleron-specific data point on muon production efficiency and DT cycling rate is preliminary",
+        "description": "Tritium startup inventory (~1 kg at >$35,000/g) and declining global supply (~25–30 kg, decaying 5.5%/yr) shared with all D-T concepts",
         "severity": "medium"
       },
       {
-        "description": "Tritium supply chain constraint shared with all D-T concepts: declining global inventory (~25–30 kg), startup requirement ~1 kg at >$35,000/g, requires demonstrated TBR > 1 before fleet scaling",
+        "description": "DT cycling rate data from PSI 2024 campaign described as 'preliminary' and not yet published; key throughput parameter unvalidated",
         "severity": "medium"
       },
       {
-        "description": "Li-6 enrichment capacity is globally constrained (Russian/Chinese mercury amalgam processes dominant); requirement depends on undefined blanket geometry",
+        "description": "Regulatory framework for non-plasma D-T nuclear facility undefined; Stewart & Shirvan 2.2× building-cost multiplier may apply",
         "severity": "low"
       }
     ]

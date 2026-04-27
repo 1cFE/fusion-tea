@@ -20,7 +20,7 @@
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 3052.3876953125,
+      "cost_m_usd": 3052.387939453125,
       "overridden": false
     },
     "cas23": {
@@ -557,82 +557,749 @@
       "noak": 1.0
     }
   },
-  "parameter_metadata": {},
+  "parameter_metadata": {
+    "availability": {
+      "display_name": "Availability",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.8,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.5599999999999999,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "construction_time_yr": {
+      "display_name": "Construction Time",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 7.0,
+      "display_multiplier": 1.0,
+      "display_unit": "yr",
+      "range": [
+        4.8999999999999995,
+        9.1
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "mn": {
+      "display_name": "Energy Multiplication Mₙ",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.11,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.777,
+        1.4430000000000003
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_th": {
+      "display_name": "Thermal Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.38,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.26599999999999996,
+        0.49400000000000005
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_p": {
+      "display_name": "Eta P",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.5,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.35,
+        0.65
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_sub": {
+      "display_name": "Subsystem Power Fraction",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.03,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.020999999999999998,
+        0.039
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_pump": {
+      "display_name": "Pumping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        0.7,
+        1.3
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_trit": {
+      "display_name": "Tritium Plant Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 10.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        7.0,
+        13.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_house": {
+      "display_name": "Housekeeping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        2.8,
+        5.2
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_cryo": {
+      "display_name": "Cryogenic Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.5,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        1.0499999999999998,
+        1.9500000000000002
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "blanket_t": {
+      "display_name": "Blanket Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.8,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.5599999999999999,
+        1.04
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "ht_shield_t": {
+      "display_name": "HT Shield Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.2,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.13999999999999999,
+        0.26
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "structure_t": {
+      "display_name": "Structure Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.2,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.13999999999999999,
+        0.26
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "vessel_t": {
+      "display_name": "Vessel Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.2,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.13999999999999999,
+        0.26
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "plasma_t": {
+      "display_name": "Minor Radius",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.2,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.84,
+        1.56
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_T": {
+      "display_name": "Dd F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.969,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6782999999999999,
+        1.2597
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_He3": {
+      "display_name": "Dd F He3",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.689,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.48229999999999995,
+        0.8956999999999999
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_dd_frac": {
+      "display_name": "Dhe3 Dd Frac",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.07,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.049,
+        0.09100000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_f_T": {
+      "display_name": "Dhe3 F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.97,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6789999999999999,
+        1.261
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_input": {
+      "display_name": "Input Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 40.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        28.0,
+        52.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_pin": {
+      "display_name": "Injector Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.5,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.35,
+        0.65
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_de": {
+      "display_name": "Direct Conversion Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.85,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.595,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_coils": {
+      "display_name": "Coil Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 3.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        2.0999999999999996,
+        3.9000000000000004
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_cool": {
+      "display_name": "P Cool",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 15.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        10.5,
+        19.5
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "R0": {
+      "display_name": "Major Radius",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.55,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        3.1849999999999996,
+        5.915
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "elon": {
+      "display_name": "Elongation κ",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.1,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.77,
+        1.4300000000000002
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "q95": {
+      "display_name": "Q95",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 3.5,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        2.4499999999999997,
+        4.55
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_GW": {
+      "display_name": "F Gw",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.85,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.595,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "B": {
+      "display_name": "B",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 5.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        3.5,
+        6.5
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "T_e": {
+      "display_name": "T E",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 15.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        10.5,
+        19.5
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "n_e": {
+      "display_name": "N E",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1e20,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        6.999999999999999e19,
+        1.3e20
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "Z_eff": {
+      "display_name": "Z Eff",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.5,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        1.0499999999999998,
+        1.9500000000000002
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "plasma_volume": {
+      "display_name": "Plasma Volume",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 500.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        350.0,
+        650.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "R_w": {
+      "display_name": "R W",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.6,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.42,
+        0.78
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "T_edge": {
+      "display_name": "T Edge",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.05,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.034999999999999996,
+        0.065
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "tau_ratio": {
+      "display_name": "Tau Ratio",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 3.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        2.0999999999999996,
+        3.9000000000000004
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "b_max": {
+      "display_name": "Peak Magnetic Field",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 12.0,
+      "display_multiplier": 1.0,
+      "display_unit": "T",
+      "range": [
+        8.399999999999999,
+        15.600000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "r_coil": {
+      "display_name": "Coil Radius",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.85,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        1.295,
+        2.4050000000000002
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_icrf": {
+      "display_name": "ICRF Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 40.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        28.0,
+        52.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "M_ion": {
+      "display_name": "M Ion",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 2.5,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        1.75,
+        3.25
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "lambda_q": {
+      "display_name": "Lambda Q",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.002,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.0014,
+        0.0026000000000000003
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "disruption_rate_base": {
+      "display_name": "Disruption Rate Base",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "disruption_steepness": {
+      "display_name": "Disruption Steepness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 15.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        10.5,
+        19.5
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "disruption_damage": {
+      "display_name": "Disruption Damage",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.02,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.013999999999999999,
+        0.026000000000000002
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "disruption_downtime": {
+      "display_name": "Disruption Downtime",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 72.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        50.4,
+        93.60000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "interest_rate": {
+      "display_name": "Interest Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.07,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.049,
+        0.09100000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "inflation_rate": {
+      "display_name": "Inflation Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.0245,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.01715,
+        0.03185
+      ],
+      "source": null,
+      "modeling_note": null
+    }
+  },
   "narrative": {
     "key_bets": [
-      "NT L-mode confinement enhancement observed on TCV/DIII-D scales favorably to burning-plasma reactor conditions (H_98 = 1.44 sustained)",
-      "NT geometry's low P_SOL (5.2% of fusion power) enables a conventional tungsten monoblock divertor to handle exhaust passively, eliminating advanced divertor engineering",
-      "Ohmic heating with NT confinement enhancement (H_NA ≥ 2) can achieve burning-plasma conditions without auxiliary heating, per Ball et al. 0D power balance",
-      "FLiBe liquid immersion blanket achieves TBR = 1.15 with self-healing molybdenum barrier and V-4Cr-4Ti vacuum vessel compatibility at operating temperature",
-      "REBCO HTS TF coils at 11 T with 40% critical-current margin survive cumulative 14 MeV neutron fluence of 3×10²² n/m² over commercial plant lifetime",
-      "NT-specific vertical instability can be controlled by passive stabilizer plates (inboard plates uniquely enabled by outboard X-point migration)",
-      "MANTA-class pilot economics ($3.4B overnight, $396/MWh) scale down to commercial ~$64/MWh via magnet lifetime extension, higher thermal efficiency, and ~1 GW fusion power"
+      "NT L-mode confinement enhancement (H_98 = 1.44) scales favorably to burning-plasma conditions, validating extrapolation from TCV/DIII-D non-burning experiments",
+      "Ohmic-only operation is feasible at compact high-field NT conditions (H_NA ≥ 2), enabling Q ≈ 500 with zero auxiliary heating per Ball et al. 2024",
+      "NT geometry passively delivers low scrape-off-layer power (P_SOL = 23.5 MW, only 5.2% of fusion power) enabling conventional tungsten monoblock divertor",
+      "REBCO HTS TF coils at 11 T with demountable joints and 40% margin to critical current survive cumulative 14 MeV neutron + gamma irradiation at fusion fluence",
+      "FLiBe liquid immersion blanket simultaneously serves as breeder, coolant, and shield achieving TBR = 1.15 with self-healing molybdenum barrier",
+      "Passive stabilizer plates (inboard and outboard, uniquely enabled by NT X-point geometry) resolve NT's intrinsic vertical instability at reactor-relevant elongation and poloidal beta",
+      "Net electric output scales from MANTA's 90 MWe pilot to commercial 1 GW+ class while maintaining NT-specific cost advantages"
     ],
     "eliminated_costs": [
-      "Advanced divertor engineering (Super-X, snowflake, liquid metal geometries and active impurity seeding systems) — replaced by conventional tungsten monoblock at 2.8 MW/m²",
-      "Auxiliary heating system capital (~$150M for 40 MW ICRF) — eliminated entirely in the ohmic-only scenario if H_NA ≥ 2 is validated",
-      "ELM mitigation and H-mode pedestal control infrastructure — NT operates ELM-free in L-mode regime",
-      "High-radiated-power-fraction plasma control systems (90–95% f_rad with impurity seeding) required for PT designs to reach comparable divertor heat flux",
-      "Tungsten divertor replacement overhead — lower erosion rates at 2.8 MW/m² potentially extend replacement intervals from ~5 years toward ~10 years"
+      "Advanced divertor engineering — Super-X, snowflake, and liquid metal divertor concepts unnecessary because NT's low P_SOL keeps peak heat flux (2.8 MW/m²) within demonstrated tungsten monoblock limits",
+      "Auxiliary heating capital cost — ~$150M for 40 MW ICRF system entirely eliminated if ohmic-only scenario (H_NA ≥ 2) is validated (~4% of overnight cost)",
+      "Active impurity seeding and high-radiated-power-fraction (90–95%) control systems that PT designs require to reach comparable heat flux numbers",
+      "Specialized perpendicular-plate divertor geometry and complex plasma control hardware needed for fully detached PT operation",
+      "ELM mitigation systems (RMP coils, pellet pacing) — NT operates ELM-free in L-mode, removing a class of PT engineering line items"
     ],
     "novel_costs": [
-      "NT-specific passive vertical stabilizer plate infrastructure (~$15–60M, central $30M) — absent from MANTA cost accounting and from conventional PT cost analogues",
-      "NT-geometry-constrained demountable TF coil design with connection joints tailored to the NT plasma shape (18 TF coils in MANTA)",
-      "FLiBe-to-NaNO₃/KNO₃ molten-salt heat exchanger at fusion-plant scale (low-TRL component called out explicitly by MANTA §6.3)",
-      "Molten-salt thermal energy storage buffer sized for 15-minute pulse / 2-minute dwell quasi-steady operation",
-      "V-4Cr-4Ti vacuum vessel at multi-hundred-tonne scale — no industrial supply chain exists for nuclear-grade vanadium alloy"
+      "NT passive vertical stabilizer plates (~$15–60M, central estimate $30M) — NT-specific infrastructure absent from MANTA cost accounting and from PT tokamak cost analogues",
+      "FLiBe-to-molten-salt (NaNO₃/KNO₃) heat exchanger at fusion-plant scale — explicitly flagged 'low TRL' in MANTA, no commercial supply chain",
+      "Thermal energy storage buffer sized for the 15-min pulse / 2-min dwell quasi-steady operation cycle, absent from steady-state designs",
+      "V-4Cr-4Ti vacuum vessel (~1 cm thick) — nuclear-grade alloy with no industrial supply chain at multi-hundred-tonne scale",
+      "NT-specific TF coil geometry with demountable joints — coil shape constraints not faced by conventional tokamaks, increasing coil engineering complexity beyond standard REBCO TF designs"
     ],
     "risks": [
       {
-        "description": "NT confinement scaling to burning-plasma conditions is unvalidated; all physics data comes from non-burning L-mode experiments (TCV/DIII-D) and the H_NA, H_98, H_89 factors 'represent the biggest uncertainty' per Ball et al.",
+        "description": "NT confinement scaling to burning-plasma conditions is unvalidated — entire economic case rests on H_98 and H_NA factors extrapolated from non-burning L-mode TCV/DIII-D experiments; if confinement advantage does not persist at high alpha-particle pressure and impurity concentrations, cost-reduction claims collapse",
         "severity": "high"
       },
       {
-        "description": "No commercial-scale NT plant cost study exists — MANTA's 90 MWe pilot at $396/MWh is ~6× away from the ARIES-ACT $64/MWh commercial benchmark with no credible published path to close the gap",
+        "description": "Net electric output is far below commercial viability — MANTA produces only 90 MWe net from 450 MW fusion (Q_e = 2.4) with LCOE $396/MWh (~3× offshore wind, ~6× ARIES-ACT $64/MWh target); no credible path from Firefly's 50–100 MW design point to commercial LCOE without major upscaling",
         "severity": "high"
       },
       {
-        "description": "Ohmic-only hypothesis (Q ≈ 500) depends on H_NA = 2 from a preliminary TCV analysis and 0D power balance; if H_NA ≈ 1, a full 40+ MW auxiliary heating system (~$100–500M) is required",
+        "description": "Ohmic-only hypothesis (Q ≈ 500) depends on H_NA = 2 confinement enhancement based on preliminary 0D power balance and TCV data — if H_NA ≈ 1, ohmic heating insufficient and full $100–500M auxiliary heating system required",
         "severity": "high"
       },
       {
-        "description": "TF coil cost dominates plant economics (~44% of MANTA's $3.4B) — NT-specific advantages address only secondary cost categories and cannot overcome the magnet cost floor",
+        "description": "TF coil cost ($1.5B of $3.4B, ~44%) is dominant cost driver and unaffected by NT geometry — NT savings only address secondary cost categories, leaving a hard magnet-cost floor that NT cannot overcome",
         "severity": "high"
       },
       {
-        "description": "Firefly Fusion has disclosed no proprietary plasma parameters, blanket design, tritium cycle, or power conversion approach; all company-specific analysis relies on MANTA as proxy",
+        "description": "Commercial-scale NT plant cost study does not exist — MANTA is a sub-commercial pilot, no 1 GW+ NT tokamak design has been published, leaving extrapolation to commercial plant cost essentially unanchored",
         "severity": "high"
       },
       {
-        "description": "FLiBe-to-molten-salt heat exchanger is explicitly flagged by MANTA as 'low technological readiness level' and has no commercial precedent at fusion-plant scale",
+        "description": "Firefly Fusion has disclosed no proprietary plasma parameters, blanket design, tritium cycle approach, or power conversion cycle — all Firefly-specific values are aspirational press statements",
+        "severity": "high"
+      },
+      {
+        "description": "FLiBe-to-molten-salt heat exchanger explicitly flagged 'low TRL' in MANTA — fusion-scale technology does not exist; tritium permeation through HX surfaces is unresolved",
         "severity": "medium"
       },
       {
-        "description": "NT equilibria are intrinsically less vertically stable than PT at high poloidal beta — reactor-scale passive stabilizer plate engineering validation remains open beyond Guizzo et al.'s demonstrator-scale result",
+        "description": "V-4Cr-4Ti vacuum vessel has no commercial production at the multi-hundred-tonne scale required; no industrial supply chain for nuclear-grade material with controlled impurities",
         "severity": "medium"
       },
       {
-        "description": "V-4Cr-4Ti vacuum vessel has never been produced at the multi-hundred-tonne scale required; nuclear-grade supply chain is non-existent",
+        "description": "REBCO tape supply chain bottleneck — global production at thousands km/year vs. 5,000+ km needed per plant; commercial price target ~$10/kA-m vs. current $30–100/kA-m",
         "severity": "medium"
       },
       {
-        "description": "REBCO tape global production (~thousands km/year) vs. 5,000+ km needed per plant creates a supply-chain volume constraint for fleet-scale deployment",
+        "description": "FLiBe supply chain constrained by beryllium (~300 t/year global, Materion-dominated) and Li-6 enrichment (Russian/Chinese mercury amalgam capacity)",
         "severity": "medium"
       },
       {
-        "description": "Pilot-plant capacity factor of 37% is far below the 75–90% commercial target; 15-min pulsed operation requires thermal energy storage sizing not yet characterized",
+        "description": "NT vertical stability is intrinsically worse than PT and degrades at higher poloidal beta — passive stabilizer plate infrastructure absent from MANTA cost accounting; reactor-scale validation gap remains",
         "severity": "medium"
       },
       {
-        "description": "Beryllium supply (~300 t/year globally, Materion-dominated) and Li-6 enrichment (Russia/China-controlled legacy amalgam processes) create FLiBe supply-chain chokepoints at fleet scale",
+        "description": "Tritium fuel cycle TRL 3–4 — kg/day-scale closed-loop breeding from FLiBe never demonstrated; MANTA acknowledges 'a fully functioning tritium fuel cycle has yet to be developed or tested'",
         "severity": "medium"
       },
       {
-        "description": "PF2 coil lifetime of ~890 MW·yr (~2 full-power-years) sets an aggressive maintenance cycle driving remote-handling demands not yet demonstrated at MANTA geometry",
+        "description": "Capacity factor uncertainty — MANTA pilot at 37%, model assumes 80% commercial; LCOE elasticity to availability is -0.97 (largest engineering sensitivity)",
         "severity": "medium"
       },
       {
-        "description": "Tritium global inventory (~25–30 kg, declining at 5.5%/year) constrains startup of any D-T fleet — shared with all D-T concepts but compounds Firefly's pre-disclosure stage",
+        "description": "PF2 coil lifetime (~890 MW·yr ≈ 2 full-power-years) sets demanding maintenance cycle requiring radiation-hardened remote handling not yet demonstrated at scale",
+        "severity": "medium"
+      },
+      {
+        "description": "Tritium global inventory ~25–30 kg declining at 5.5%/year from CANDU byproduction — startup inventory ~440g per plant creates fleet-deployment sequencing constraint shared with all D-T concepts",
         "severity": "low"
       }
     ]

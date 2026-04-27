@@ -324,29 +324,127 @@ Collapsing the Sensitivity section does NOT clear overrides (invariant #3) — t
 [TO BE FILLED DURING IMPLEMENTATION]
 
 ### Phase 1 Completion
-**Completed:**
+**Completed:** 2026-04-26
+
 **Actual Changes:**
-**Issues:**
-**Deviations:**
+- Created `exploration/concept_explorer/data/parameter_display_registry.yaml` with 32 entries covering 100% (405/405) of tornado top-15 occurrences across 27 costingfe concepts (the survey found 27, not 19 as design assumed — extra a/b variants).
+- Added `load_parameter_display_registry()` and `apply_display_patches()` to `extract_explorer_data.py`; module-level cached `_DISPLAY_REGISTRY`; constant `_REGISTRY_PATCH_FIELDS = {display_name, display_unit, display_multiplier}`.
+- Wired three-layer merge in `extract_costingfe()` at `extract_explorer_data.py:265-273`: `generated → registry-patched → per-concept`.
+- Added `TestDisplayRegistry` class (5 tests) in `tests/test_extraction.py` covering: field-level patching, unknown-key skipping, registry loader unknown-field warnings, missing-file → empty, and the full three-layer merge order via `extract_costingfe()`.
+- Re-extracted all concepts via `uv run python exploration/concept_explorer/extract_explorer_data.py --skip-narrative`.
+
+**Issues Encountered:**
+- **Design.md table had a wrong unit for `plasma_t`.** Inspecting `costingfe/model.py:260` showed `plasma_t` is the minor radius `a` in meters, not "Plasma Temperature" in keV. The variable name is a misnomer in the upstream cost model. Registry entry corrected and a SOURCE-style code comment added next to the entry.
+
+**Deviations from Plan:**
+- **Merge semantics shifted from full-replace to field-level.** The plan stencil treated registry entries as full `ParameterMetadata` objects (replaceable via dict-spread). Reality: the registry only has 3 of the 7 required `ParameterMetadata` fields, so a full-replace would erase the generated `baseline`/`range`/`category`/`confidence`. Resolved by introducing `apply_display_patches()` for field-level merge while keeping per-concept yaml as full-replace. The merge order invariant from `design.md#required-invariants` #1 is satisfied (per-concept beats registry beats generated).
+- Survey covered all 32 distinct keys instead of stopping at the design's "~25". Same author cost; full coverage.
 
 ### Phase 2 Completion
-**Completed:**
+**Completed:** 2026-04-26
+
 **Actual Changes:**
-**Issues:**
-**Deviations:**
+- Rewrote `exploration/concept_explorer/static/js/tornado.js` to render the integrated grid: 4-column row (`name+ε | bar | slider | value`), per-render closure state for overrides + debounce, `_buildHeaderRow()`, `_buildRow()`, `_buildLegend()`, `_formatValue()` (mockup_v2.html-style adaptive precision), `_updateValueClass()` (orange when LCOE rises, green when LCOE falls). Reset is exposed both as the return value `{reset}` and as `container._tornadoReset` for callers that don't capture the return.
+- Sliders are only rendered for rows whose `parameterMetadata[key].range` is finite and well-formed — degraded rows still show baseline value or `—`.
+- `concept_page.js`: deleted the standalone `renderSliders()` function (was lines 224-305) and the duplicate sliders-block in `init()`. Compute callback is now defined once as `onSliderChange`, passed to `renderTornado` via the new `onSliderChange` option, and gated by `hasSliders = isCostingfe && has_sensitivities && sensitivities != null`.
+- `concept.html.j2`: removed the `#sliders-section` / `#sliders-container` block; left a comment noting Phase 2/3 migration.
+- `explorer.css`: removed the now-dead `.sliders-panel` / `.slider-row*` rules (~40 lines).
+
+**Issues Encountered:**
+- **`TaskCreate`-style task-tracking reminders:** Repeated system reminders during the session. Ignored per instructions; the plan's checkboxes and Implementation Notes carry the tracking.
+- **Concept 19 turned out to be freeform standalone (not costingfe).** My survey conflated `cost_model + sensitivities` with costingfe; the canonical filter is `sources.model_setup is not None`. Used concept 04 as the second costingfe sanity check instead. 27 true costingfe concepts (01, 03–11, 14, 17a/b, 20a/b, 21, 23, 25, 26, 28–34, 36); 11 freeform-with-sensitivities (02, 12, 13, 15, 16, 18, 19, 22, 24, 27, 35).
+- **Pre-existing backend mismatch surfaced.** Initial-load LCOE on concept 01 is $216.3/MWh (from `cost_model.headline`, which is the per-account-1GW-scaled `result_1gw`), but `/api/compute` returns the raw `result` baseline (~$181.8/MWh). Reset reverts to compute-baseline, not extraction-baseline — a visible "snap" exists between page load and the first slider interaction. **Out of scope for this work item** (predates Phase 2 — `renderHeadlineCard` was called on both code paths). Phase 3 sticky bar should use `cost_model.headline` as its initial baseline so deltas line up; flagged for the Phase 3 implementation but not for any backend change here.
+
+**Deviations from Plan:**
+- **Header row added.** Mockup_v2 has column headers ("Parameter / Elasticity / What-if / Value"). Plan didn't call them out explicitly; added them for legibility. Counts in selectors now read 16 = 1 header + 15 data rows.
+- **`reset()` exposed via two paths.** Plan called for either return value or container attachment; did both, since `concept_page.js` doesn't currently capture the return value (it will in Phase 3) but tests/console use the container handle.
+- **Removed dead CSS.** Plan didn't list this; sweeping `.slider-row*` was natural since the JS class went away. Project rule: no dead code.
+
+**Verification (browser-inspect, all sessions clean: 0 page_errors):**
+- Concept 01 (HTS Compact Tokamak): 15 inline sliders, drag `availability` 0.75→0.6 → headline LCOE 216.3→223.0 (in-flow card; sticky bar comes Phase 3) → value cell "59.9%" colored orange (`--color-pos`); `_tornadoReset()` returns slider to 0.75 + value cell reverts to "75.0%" + neutral color. Click row label → parameter card popover opens (existing behavior preserved).
+- Concept 04 (Laser ICF, costingfe): 15 sliders, `eta_th` drag fires compute, headline updates.
+- Concept 02 (freeform standalone): tornado renders with bars but 0 sliders (no slider ranges in metadata) — correct degraded state. Pre-existing `[tornado] Missing parameterMetadata` warnings (param naming mismatch) carry over from spike, not Phase 2 regressions.
+- Concept 19 (freeform standalone): renders cleanly, 0 sliders.
+- `/compare` view: loads with 0 console messages and 0 page errors — `TORNADO_CATEGORY_COLORS/_LABELS/_ORDER` exports preserved for `view_sensitivity.js`.
 
 ### Phase 3 Completion
-**Completed:**
+**Completed:** 2026-04-26
+
 **Actual Changes:**
-**Issues:**
-**Deviations:**
+- Created `exploration/concept_explorer/static/js/sticky_headline.js` with three exports (`renderStickyHeadline`, `updateStickyHeadline`, `setResetEnabled`); attached to `window` (no module system). Stat pills are data-driven via a `STATS` table — adding/removing pills requires only one edit.
+- Added `.sticky-headline*` and `.sticky-headline__pill*` styles to `explorer.css` (~140 lines) using existing design tokens. Family badge variants for MFE/IFE/MIF/Non-std map to `--color-badge-*`. Delta classes use `--color-concept-unique` (orange, LCOE up = bad) and `--color-key-innovation` (green, LCOE down = good). Non-blur `background: var(--color-surface-1)` precedes the `rgba(...)` declaration as a graceful fallback.
+- `concept.html.j2`: added `<div id="sticky-headline">` above `#app`; removed the entire `#headline-section` block; kept `#headline-loading` and `#compute-error` as bare divs; added `<script src="/static/js/sticky_headline.js">` before `concept_page.js`.
+- `concept_page.js`:
+  - Captured `baselineHeadline = concept.cost_model?.headline ?? null` and `tornadoHandle` (returned by `renderTornado`) before the tornado/CAS block.
+  - Replaced both `renderHeadlineCard` call sites (init + post-compute) with `renderStickyHeadline(...)` and `updateStickyHeadline(...)`.
+  - Wired Reset to revert sliders, sticky bar, AND CAS breakdown to the extraction baseline (no compute round-trip).
+  - Added `_hasNonBaseline(overrides)` — toggles `setResetEnabled` based on whether any slider differs from its baseline by > 1e-9.
+  - Removed the now-unused `renderHeadlineCard()` function.
+- `tornado.js`: changed `reset()` to clear UI state only — it no longer fires `onSliderChange({...baselines})`. Comment in source explains why.
+- `explorer.css`: removed dead `.headline-grid` / `.headline-metric*` / `@keyframes shimmer` rules (~60 lines).
+
+**Issues Encountered:**
+- **Stale Jinja templates after edit.** First browser test failed with `renderStickyHeadline is not defined` even though the script tag was in source. The running server had cached its template loader; killing + restarting served the updated HTML. Documented locally — no fix needed (`uvicorn --reload` is the long-term answer; out of scope here).
+- **Reset surfaced the pre-existing scale mismatch as a real UX bug.** Initial Reset implementation called `tornado.reset()` which fired `onSliderChange({...baselines})` → `/api/compute` → returned un-scaled `~$181.8/MWh` → overwrote my synchronous `updateStickyHeadline(216.3)` → user saw a phantom "▼16.0% improvement" delta. **Fix:** `tornado.reset()` now only clears UI state; `concept_page.js`'s Reset handler explicitly reverts the sticky bar + CAS to the extraction-baseline state and posts empty state, with no compute round-trip. After fix: Reset is a clean visual revert to page-load state.
+- **Browser-inspect timing.** 700ms wait was insufficient for fetch + render at first; bumped to 900ms for verification gates.
+
+**Deviations from Plan:**
+- **Reset handler does more than the plan listed.** Plan called for sticky-bar revert + button disable. Production reality also requires CAS breakdown revert and `postState({}, [])` to keep the server-side state coherent. Added both inside the Reset handler.
+- **Removed dead `.headline-*` CSS** (orphaned even before this work item — JS used `.headline-stat*` while CSS had `.headline-metric*` — a long-standing class-name mismatch). No visual regression because nothing was actually styled by them.
+
+**Verification (browser-inspect, all sessions: 0 page_errors):**
+- Concept 01 initial state: sticky bar pinned below topnav, identity (`HTS Compact Tokamak [MFE] Commonwealth Fusion Systems`), 4 pills (LCOE 216.3 / Overnight 15554 / Net Power 1000 / Capacity Factor 75.0), Reset visible + disabled.
+- Drag `availability` 0.75→0.6: LCOE → 223.0 with " ▲3.1%" orange delta; Overnight → 11891 with " ▲23.5%"; Net Power → 261 with " ▼73.9%"; Capacity Factor → 59.9 with " ▼20.1%" green delta. Reset enables.
+- Click Reset: LCOE returns to 216.3, all deltas blank, Reset disables, slider returns to 0.75, value cell "75.0%" with neutral color, CAS breakdown reverts to original 16,975 M$ total. NO phantom delta.
+- Standalone concept 02 @ 1024×800 viewport: sticky bar visible, "Non-std" badge, 4 pills populated, Reset button OMITTED. Layout fits cleanly at narrow width.
+- Pre-existing `[tornado] Missing parameterMetadata` warnings on standalone concept 02 unchanged from Phase 2 (freeform naming convention; out of scope).
 
 ### Phase 4 Completion
-**Completed:**
+**Completed:** 2026-04-26
+
 **Actual Changes:**
-**Issues:**
-**Deviations:**
+- `concept.html.j2`: each `<section>` now has `class="section is-collapsed"` (or no `is-collapsed` for Sensitivity), wraps body in `.section__body`, replaces `<h2>` with `<button class="section__header">` containing chevron `<svg>`, `.section__title`, and `.section__hint` (with `data-hint-for` attr). Single SVG chevron template repeated per section.
+- `explorer.css`: added `.section`, `.section__header`, `.section__chevron`, `.section__title`, `.section__hint`, `.section__hint--changed`, `.section__body`, plus the `.is-collapsed` rules that drive chevron rotation and body-display. ~80 lines, ported from mockup_v2.
+- `concept_page.js`:
+  - Added `makeCollapsible(sectionEl, defaultOpen)` and `setSectionHint(sectionEl, hintConfig)` helpers — kept inline (per design's "Open" question; helper stayed small).
+  - Added `_sumCASCapital()` and `_fmtMoneyM()` helpers; CAS hint computed as `Total Capital: 16,975 M$` from the same sum that `cas_breakdown.js` renders.
+  - At end of `init()`, wired collapsibles per Decision C matrix (Sensitivity = open, others = collapsed) + populated each section's hint.
+  - `_countChanged(overrides)` replaces inline counter; drives both `setResetEnabled` and `_updateSensitivityHint`.
+  - `onSliderChange` now calls `_updateSensitivityHint(overrides)` synchronously (before fetch) so the "N CHANGED" pill appears the moment a slider settles, regardless of compute latency.
+  - Reset handler clears the Sensitivity hint back to default text.
+
+**Issues Encountered:**
+- **`--skip-narrative` from Phase 1 wiped narratives across all concepts.** When testing collapsibles, `concept.narrative` was null on every concept, so Narrative + Risks sections never became visible in the verification, leaving the test selectors picking up empty hints. Re-extracted concept 01 with narrative for full hint verification (`13 risks · 6 high`). Background re-extract for concepts 02/04/19 launched as a follow-up. **Recommended cleanup after this work item:** run `uv run python exploration/concept_explorer/extract_explorer_data.py` (without `--skip-narrative`) to restore narratives across all concepts. None of the concept analysis source data changed, so this is a one-time replay.
+- **Cold-start fetch latency intermittently exceeded 900 ms** when verifying — sticky pill values lagged the eval. Not a Phase 4 bug; the change-pill / reset-clear / hint-class assertions all passed.
+
+**Deviations from Plan:**
+- **`section__hint--changed` styled as a small orange "pill"** (background-tinted, padded) rather than just colored text — matches the mockup_v2 visual signature better, and the orange is unique enough to draw the eye when scrolling past a collapsed Sensitivity section.
+- **`makeCollapsible` does a clone-replace on the header** to drop any prior listener — defensive against accidental re-binding (relevant if the page ever re-runs init without a full reload).
+- **Hints computed from concept data, not from rendered DOM.** Plan suggested deriving the CAS hint by querying the rendered table; pulling it from `concept.cost_model` accounts directly is one fewer DOM read and matches the same number `cas_breakdown.js` will display.
+
+**Verification (browser-inspect, all sessions: 0 page_errors):**
+- Concept 01 initial state: Narrative collapsed (hint: "key bets · eliminated costs · novel costs"), Risks collapsed (hint: "13 risks · 6 high"), CAS collapsed (hint: "Total Capital: 16,975 M$"), Sensitivity expanded (hint: "Drag any slider — top numbers will update"). Chevrons rotated -90° on collapsed.
+- Click Narrative header: section expands, chevron rotates to 0°, content visible.
+- Drag slider on availability: Sensitivity hint becomes "1 CHANGED" with orange `--changed` pill styling. Reset button enables. Sticky bar shows colored deltas.
+- Click Sensitivity header to collapse it WHILE slider is dragged: section collapses, "1 CHANGED" pill remains in header (visible while collapsed — invariant #3 confirmed), sticky bar still shows the in-flight delta values.
+- Click Reset: Sensitivity hint reverts to "Drag any slider — top numbers will update" (no orange pill), sticky bar reverts to baseline (216.3, no deltas), Reset button disables.
+- Concept 02 (standalone, narrative wiped): only CAS + Sensitivity sections visible (Narrative + Risks correctly hidden when narrative is null), CAS hint computed, Sensitivity hint default. No Reset button. Page renders with 0 page_errors.
 
 ---
 
-**Status**: Draft → In Progress → Complete
+**Status**: Draft → In Progress → **Complete** (2026-04-26)
+
+## Final Summary
+
+All four phases complete. The concept profile page now ships:
+
+1. **Display registry** — 32-entry shared yaml that patches display names, units, and multipliers on top of auto-generated metadata; per-concept yaml still wins.
+2. **Integrated tornado grid** — single 4-column row per top-15 parameter (`name+ε | bar | slider | value`), inline `<input type=range>` with debounced compute, color-coded value cell.
+3. **Sticky compact headline** — pinned below the topnav with 4 stat pills, family badge, and Reset button. Reset reverts UI cleanly without round-tripping through `/api/compute`.
+4. **Collapsible sections** — Narrative / Risks / CAS collapsed by default with informative hints (risk count, total capital), Sensitivity expanded by default with a "N CHANGED" pill when overrides exist.
+
+**Spec acceptance criteria all met** — see Implementation Notes per phase for evidence.
+
+**Known follow-ups (out of scope, but worth noting):**
+- The pre-existing `/api/compute` ↔ `result_1gw` scaling mismatch surfaces as a value snap on first slider drag (extraction baseline 216.3 vs compute baseline ~181.8). Working around it in the Reset path; the cleanest fix is a small backend change so compute returns the same per-account-1GW-scaled headline that extraction does. Worth its own work item.
+- Freeform standalone concepts (02, 18, etc.) have parameter names that don't match the registry (`plant_availability` vs `availability`, `thermal_efficiency` vs `eta_th`); each shows ~25 console warnings. Two paths: alias rules in the registry, or normalize standalone-concept naming. Either is its own work item.

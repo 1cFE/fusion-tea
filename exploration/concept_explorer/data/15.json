@@ -339,7 +339,85 @@
     }
   },
   "parameter_metadata": {},
-  "narrative": null,
+  "narrative": {
+    "key_bets": [
+      "Sheared-flow stabilization remains effective at commercial scale (1.2-1.5 MA pinch current, 200 us lifetime, 5-10x extrapolation from FuZE's demonstrated 20-40 us)",
+      "Fusion gain Q > 10 is achievable as calculated in the Engineering Paradigms paper, despite never having been experimentally demonstrated at any scale",
+      "Repetition rate scales 50x from Century's 0.2 Hz to commercial 10 Hz with electrodes, liquid metal dynamics, gas injection, and pulsed power all working reliably together",
+      "LiPb performs quadruple duty as first wall, outer electrode, tritium breeder, and neutron shield in a stable gravity-cascade flowing film between 10 Hz pulses",
+      "TBR ~1.1 in a 3 m natural-LiPb blanket holds up under realistic flowing geometry with penetrations, providing ~10% margin for tritium self-sufficiency",
+      "Pulsed-power driver wall-to-plasma efficiency of ~70% is sustained at commercial scale with ~1.9 MJ/pulse at 10 Hz",
+      "A new high-voltage switch technology class (50-200 kV, 100-200 kA) and capacitor lifetime improvement of 4-6 orders of magnitude (10^4-10^5 to 10^8-10^9 shots) are achieved on a 10-20 year roadmap"
+    ],
+    "eliminated_costs": [
+      "REBCO HTS magnet tape — entirely absent, eliminating the dominant capital cost and most supply-constrained material in compact tokamak designs",
+      "Cryogenic plant — no liquid helium, cold mass, or quench protection systems required since there are no superconducting magnets",
+      "Auxiliary heating systems — no NBI beam dumps, gyrotrons, or RF launchers needed",
+      "Beryllium first-wall material — LiPb itself serves as the first wall, removing Be supply and handling costs",
+      "Conventional separate divertor — Z-pinch geometry has no divertor in the tokamak sense"
+    ],
+    "novel_costs": [
+      "Pulsed power driver (capacitor banks, pulse-forming networks, high-voltage switches) replaces the magnet system as the dominant capital cost item, ~50-60% of overnight capital with no commercial cost benchmark",
+      "High-duty-cycle electrode system serving as both current conductor and plasma-facing component — 10 Hz, 1 MA discharges in a 14 MeV neutron environment with no erosion-rate analogue",
+      "Capacitor and switch supply chain at 10,000-216,000 capacitors per plant with 4-6 year lead times — a program-level constraint comparable to Q demonstration",
+      "LiPb flowing first-wall/blanket system performing quadruple duty (wall, electrode, breeder, shield) with no validated fusion analogue",
+      "Tritium extraction from circulating LiPb at commercial throughput, including LiPb activation product (Pb, Bi isotopes) management"
+    ],
+    "risks": [
+      {
+        "description": "Q > 10 is calculated but never experimentally demonstrated; entire commercial power balance and LCOE depend on this physics extrapolation. At Q=5, LCOE roughly triples to ~135 c/kWh and recirculating fraction exceeds 70%.",
+        "severity": "high"
+      },
+      {
+        "description": "Pinch lifetime must extend 5-10x from FuZE's demonstrated 20-40 us to the 200 us required for Q > 10; sheared-flow stabilization may not hold at higher fusion performance and longer durations.",
+        "severity": "high"
+      },
+      {
+        "description": "Repetition rate must scale 50x from Century's 0.2 Hz to commercial 10 Hz, simultaneously stressing electrode durability, liquid metal replenishment, gas injection timing, and pulsed power heat rejection with no public failure-mode characterization.",
+        "severity": "high"
+      },
+      {
+        "description": "Pulsed power supply chain is on a 10-20 year maturation timeline: capacitor lifetimes are 4-6 orders of magnitude short of commercial fusion requirements, no commercial switch meets the 50-200 kV / 100-200 kA specification, and Western fleet buildout would take 125-250 years at current capacity.",
+        "severity": "high"
+      },
+      {
+        "description": "Electrode erosion under 10 Hz, 1 MA, 14 MeV-neutron duty cycles is uncharacterized; replacement interval and material cost directly drive O&M and capacity factor, with sensitivity spanning $0.5M-$20M/module/year ($1-6 c/kWh impact).",
+        "severity": "high"
+      },
+      {
+        "description": "LiPb flowing first wall has no validated fusion analogue; flow stability under pulsed electromagnetic forcing, wettability between 10 Hz shots, and contamination from neutron bombardment are unknowns. Any blanket flow disruption directly halts plasma operation.",
+        "severity": "high"
+      },
+      {
+        "description": "TBR ~1.1 provides only ~10% margin over self-sufficiency; a 10% reduction from design flow conditions or realistic blanket penetrations could push TBR below 1.0 and make the plant tritium-negative.",
+        "severity": "medium"
+      },
+      {
+        "description": "Capital cost, thermal efficiency, and capacity factor are entirely unpublished; LCOE estimates are first-pass corridor mapping with no anchored cost data.",
+        "severity": "medium"
+      },
+      {
+        "description": "D-T tritium startup inventory (~1-3 kg per GWe) is constrained by global CANDU production of ~1-2 kg/year — a fleet-scale supply bottleneck shared with all D-T fusion concepts.",
+        "severity": "medium"
+      },
+      {
+        "description": "Tritium permeation through LiPb circuit walls into the steam Rankine secondary requires barrier or secondary-loop design with no Z-pinch precedent; LiPb solidification at ~235°C also caps blanket inlet temperature and steam-cycle efficiency.",
+        "severity": "medium"
+      },
+      {
+        "description": "Regulatory pathway is undefined: novel LiPb flowing-electrode first wall and pulsed-power driver have no licensed precedents and deviate substantially from the ITER reference framework.",
+        "severity": "medium"
+      },
+      {
+        "description": "Multi-module architecture (10x 50 MWe) introduces coordination complexity and common-mode failure risk across modules sharing pulsed power and LiPb infrastructure.",
+        "severity": "low"
+      },
+      {
+        "description": "Tungsten supply for neutron-hard electrodes is concentrated ~80% in China; modest mass requirements but geopolitical concentration is a moderate risk shared with tokamak divertor programs.",
+        "severity": "low"
+      }
+    ]
+  },
   "sources": {
     "model_setup": null,
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/15-sheared-flow-stabilized-z-pinch/analysis.md"

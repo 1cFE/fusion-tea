@@ -341,83 +341,83 @@
   "parameter_metadata": {},
   "narrative": {
     "key_bets": [
-      "Quantum Magnetic Field (QMF) effect suppresses bremsstrahlung sufficiently to enable p-B11 net energy despite Z=5 radiation losses",
-      "Fusion yield improves 120,000× from current 0.25 J/shot (D) to 30 kJ/shot (p-B11) via compression, I⁴ capacitor scaling, and fuel switch",
-      "Ion beam decelerator achieves ~85% efficiency on a divergent, multi-species, ~10 ns DPF ion beam (vs. mono-energetic accelerator context)",
-      "X-ray photoelectric converter ('never-before-built multilayered vacuum tube') achieves 80%+ efficiency at DPF plasma X-ray energies",
-      "200 Hz rep-rate sustained at 2.7 MA with monthly beryllium electrode replacement and 10 kW/cm² anode thermal limit",
-      "Filament disruption problem at high current is resolvable, enabling plasmoid stability to support predicted yield scaling",
-      "Q_sci reaches at least 2.5 so recirculating fraction drops to ~57% for commercially viable specific capital"
+      "Achieving a 120,000× improvement in fusion yield from current 0.25 J/shot (D) to 30 kJ/shot (p-B11) net energy target",
+      "Quantum magnetic field (QMF) effect must work as theorized to suppress bremsstrahlung losses sufficiently for p-B11 net energy",
+      "Ion beam decelerator achieving 85% efficiency on the divergent, multi-species, ~10 ns DPF ion beam",
+      "X-ray photoelectric converter achieving 80%+ efficiency in a 'never-before-built multilayered photoelectric vacuum tube'",
+      "200 Hz repetition rate operation at 2.7 MA with monthly electrode replacement cadence",
+      "Resolving the 22-year filament disruption yield plateau through better plasma compression and expanded capacitor bank (I⁴ scaling)",
+      "Q_sci substantially above breakeven (≥2.5) to keep recirculating fraction commercially viable (~57%)"
     ],
     "eliminated_costs": [
-      "CAS22.01 First Wall / Blanket — zero (aneutronic p-B11 produces no 14 MeV neutrons, no breeding blanket required)",
-      "CAS22.03 External Coils — zero (self-pinch confinement, no superconducting or copper magnets)",
-      "CAS22.04 Supplementary Heating — zero (no NBI, ECRH, or ICRH; driver energy couples directly via pinch)",
-      "CAS23 Turbine Plant — zero (direct energy conversion replaces thermal cycle entirely)",
-      "CAS27 Special Materials / tritium supply chain — zero (no tritium breeding, no FLiBe/LiPb, no Li-6 enrichment, no REBCO)"
+      "Tritium supply chain entirely eliminated — no tritium breeding blanket, no FLiBe/LiPb procurement, no lithium-6 enrichment (CAS27 Special Materials = $0)",
+      "First wall/blanket eliminated — aneutronic fuel means no neutron-handling blanket structure (CAS22.01 = $0)",
+      "External confinement magnets eliminated — self-pinch confinement requires no REBCO superconducting tape or external coils (CAS22.03 = $0)",
+      "Turbine plant eliminated — direct energy conversion replaces thermal cycle (CAS23 = $0)",
+      "Supplementary heating eliminated — no NBI or ECRH systems required (CAS22.04 = $0)"
     ],
     "novel_costs": [
-      "CAS22.09 Direct Energy Converter — dual-path ion beam decelerator + X-ray photoelectric vacuum tube ($200M FOAK, no library analogue)",
-      "CAS22.07 Capacitor bank pulsed-power driver with 10%/yr replacement cadence at 200 Hz commercial duty",
-      "Monthly beryllium electrode replacement (200 modules × 12/yr) with specialty handling for toxic Be machining",
-      "Isotopically enriched decaborane fuel handling (B-10 < 0.07%) with single-source Russian purification + Czech synthesis supply chain",
-      "C-11 radioactive exhaust management at 200 Hz rep-rate (20-min half-life side reaction, no precedent at commercial scale)"
+      "Direct Energy Converter (CAS22.09) — entirely novel dual-path device combining ion beam decelerator and x-ray photoelectric converter, with no library analogue",
+      "Beryllium electrode supply at ~4,000 t/year fleet scale (10× current global production) with monthly replacement cadence",
+      "Isotopically enriched B-11 decaborane fuel — currently $600/gram, hand-produced via single-source Russian isotopic purification + Czech synthesis",
+      "Capacitor bank as primary capital item (CAS22.07) handling full 23 MW recirculating power per module at 200 Hz duty cycle",
+      "C-11 radioactive exhaust management at 200 Hz commercial rep-rates (20-min half-life accumulation)"
     ],
     "risks": [
       {
-        "description": "QMF bremsstrahlung suppression effect is TRL 1 — theoretical only, never experimentally confirmed; if absent, p-B11 net energy is impossible under classical physics",
+        "description": "Yield plateau at 0.25 J/shot has been unresolved for over 20 years; reaching 30 kJ/shot net target requires 120,000× improvement combining four undemonstrated multiplicative factors",
         "severity": "high"
       },
       {
-        "description": "22-year yield plateau at 0.25 J/shot with no progress past the 2001 Speed-2 record; 120,000× improvement required to reach 30 kJ/shot target",
+        "description": "Quantum magnetic field (QMF) bremsstrahlung suppression has no experimental confirmation in any device; without it, p-B11 net energy is energetically impossible under classical physics",
         "severity": "high"
       },
       {
-        "description": "Neither direct energy conversion device (ion beam decelerator, X-ray photoelectric converter) has a prototype, engineering design, or component test; no thermal fallback exists",
+        "description": "Neither the ion beam decelerator nor the x-ray photoelectric converter has a prototype, component test, or engineering design — and there is no thermal cycle fallback if DEC underperforms",
         "severity": "high"
       },
       {
-        "description": "p-B11 fusion yield has never been measured in any DPF; 2024 Frontiers paper describes preparations, not results",
+        "description": "DEC efficiency sensitivity is severe: η_dec < 0.65 drives net power negative (plant eliminated); η_dec = 0.75 roughly doubles LCOE vs 0.85 baseline",
         "severity": "high"
       },
       {
-        "description": "Extremely high recirculating fraction (82% at Q=1.72 FOAK) drives high specific $/kWe and leaves no margin for engineering losses near breakeven",
+        "description": "200 Hz repetition rate at 2.7 MA never demonstrated; best analogue (NX2 in Singapore) is 16 Hz at far lower currents for non-fusion applications",
         "severity": "high"
       },
       {
-        "description": "200 Hz rep-rate at 2.7 MA fusion-relevant conditions never demonstrated; best analogue is 16 Hz NX2 at far lower currents for non-fusion X-ray applications",
+        "description": "High recirculating fraction (82% at FOAK Q=1.72, 57% at NOAK Q=2.5) requires plant to produce 5-6× net electric output as gross fusion power, driving high specific capital",
         "severity": "high"
       },
       {
-        "description": "Electrode erosion rate at 2.7 MA × 200 Hz is completely uncharacterized; monthly beryllium replacement cadence is design intent only",
+        "description": "Isotopic B-11 enrichment supply chain is single-sourced through Russia (purification) and Czech Republic (synthesis), creating geopolitical concentration risk",
         "severity": "medium"
       },
       {
-        "description": "Isotopic boron-11 enrichment supply chain is single-sourced in Russia (purification) and Czech Republic (decaborane synthesis) — geopolitical concentration risk",
+        "description": "No independent verification of LPPFusion's >200 keV ion temperature or record plasma purity claims by any national lab, university, or peer institution",
         "severity": "medium"
       },
       {
-        "description": "No independent verification by any national lab or university of LPPFusion's >200 keV ion temperature or record plasma purity claims",
+        "description": "Electrode erosion rate at 2.7 MA × 200 Hz is completely uncharacterized, making variable O&M cost (electrode replacement at monthly cadence) a significant unknown",
         "severity": "medium"
       },
       {
-        "description": "Filament disruption at high current causes 'low densities and lower-than-predicted yields' and is the identified current experimental blocker",
+        "description": "Filament disruption at high current limits yield growth — identified as current experimental blocker with no demonstrated solution",
         "severity": "medium"
       },
       {
-        "description": "No plant-level cost study, no fixed/variable O&M breakdown, no BOP design for DEC-based plant exists in any source",
+        "description": "Beryllium supply at fleet scale (~4,000 t/year, 10× current global production) requires processing lower-grade ores with toxicity handling requirements not quantified at scale",
         "severity": "medium"
       },
       {
-        "description": "Commercial-scale enriched decaborane price ('many hundred-fold' reduction from $600/gram) has no production pathway analysis",
-        "severity": "low"
+        "description": "p-B11 fusion yield in a DPF has never been measured; 2024 Frontiers paper describes preparations only, not results",
+        "severity": "high"
       },
       {
-        "description": "C-11 (20-min half-life) exhaust management at 200 Hz commercial scale is uncharacterized",
-        "severity": "low"
+        "description": "Simultaneous high density (10²¹ cm⁻³) and high ion energy (>200 keV) has been demonstrated separately but not concurrently",
+        "severity": "medium"
       },
       {
-        "description": "Diamond-film UV-laser switches proposed for decelerator backflow prevention are research-stage and not commercially available",
+        "description": "C-11 radioactive byproduct management at 200 Hz commercial rep-rates is uncharacterized; even small per-pulse production accumulates significantly given 20-min half-life",
         "severity": "low"
       }
     ]

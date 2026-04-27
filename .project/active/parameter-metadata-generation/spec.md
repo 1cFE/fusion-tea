@@ -1,9 +1,9 @@
 # Spec: Concept Page Sensitivity Restructure
 
-**Status:** In Progress
+**Status:** Implementation Complete (Phase 2 UI restructure)
 **Owner:** Reid W
 **Created:** 2026-04-26 14:34 PDT
-**Updated:** 2026-04-26 (scope shifted — see "History" below)
+**Updated:** 2026-04-26 (Phase 2 implemented — see plan.md)
 **Complexity:** MEDIUM
 **Branch:** sensitivity-sliders
 

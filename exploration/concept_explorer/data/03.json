@@ -20,7 +20,7 @@
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 1061.644775390625,
+      "cost_m_usd": 1061.6446533203125,
       "overridden": false
     },
     "cas23": {
@@ -449,8 +449,433 @@
       "noak": 0.0
     }
   },
-  "parameter_metadata": {},
-  "narrative": null,
+  "parameter_metadata": {
+    "availability": {
+      "display_name": "Availability",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.4,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.27999999999999997,
+        0.52
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "construction_time_yr": {
+      "display_name": "Construction Time",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 5.0,
+      "display_multiplier": 1.0,
+      "display_unit": "yr",
+      "range": [
+        3.5,
+        6.5
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "mn": {
+      "display_name": "Energy Multiplication Mₙ",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.05,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.735,
+        1.3650000000000002
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_th": {
+      "display_name": "Thermal Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.35,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.24499999999999997,
+        0.45499999999999996
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_p": {
+      "display_name": "Eta P",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.5,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.35,
+        0.65
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_sub": {
+      "display_name": "Subsystem Power Fraction",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.03,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.020999999999999998,
+        0.039
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_pump": {
+      "display_name": "Pumping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        0.7,
+        1.3
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_house": {
+      "display_name": "Housekeeping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        2.8,
+        5.2
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "blanket_t": {
+      "display_name": "Blanket Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.8,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.5599999999999999,
+        1.04
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "ht_shield_t": {
+      "display_name": "HT Shield Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.25,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.175,
+        0.325
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "structure_t": {
+      "display_name": "Structure Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.15,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.105,
+        0.195
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "vessel_t": {
+      "display_name": "Vessel Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "plasma_t": {
+      "display_name": "Minor Radius",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.0,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        2.8,
+        5.2
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_T": {
+      "display_name": "Dd F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.969,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6782999999999999,
+        1.2597
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_He3": {
+      "display_name": "Dd F He3",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.689,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.48229999999999995,
+        0.8956999999999999
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_dd_frac": {
+      "display_name": "Dhe3 Dd Frac",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.07,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.049,
+        0.09100000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_f_T": {
+      "display_name": "Dhe3 F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.97,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6789999999999999,
+        1.261
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "q_eng": {
+      "display_name": "Engineering Q",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        2.8,
+        5.2
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_rep": {
+      "display_name": "Repetition Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 10.0,
+      "display_multiplier": 1.0,
+      "display_unit": "Hz",
+      "range": [
+        7.0,
+        13.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_pin": {
+      "display_name": "Injector Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_rad": {
+      "display_name": "F Rad",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_target": {
+      "display_name": "Target Plant Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 2.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        1.4,
+        2.6
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_dec": {
+      "display_name": "Eta Dec",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.85,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.595,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "interest_rate": {
+      "display_name": "Interest Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.07,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.049,
+        0.09100000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "inflation_rate": {
+      "display_name": "Inflation Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.0245,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.01715,
+        0.03185
+      ],
+      "source": null,
+      "modeling_note": null
+    }
+  },
+  "narrative": {
+    "key_bets": [
+      "Plasmonic field enhancement in gold nanoshells amplifies external laser fields from ~10^9 to ~10^11 V/cm, accelerating deuterons to ~25 keV equivalent energy",
+      "Femtosecond laser at ~1 atomic unit peak intensity (modest by fusion standards) can drive D-D fusion via the plasmonic mechanism — bypassing MJ-class drivers",
+      "Continuous liquid D2O jet can deliver 1 million gold nanoshells per pulse at 1 MHz repetition rate with sufficient laser-target overlap precision",
+      "Q~100 is achievable at ~3 kW laser input with ~1 MW fusion output (paper projection, no experimental basis)",
+      "Gold nanoshells can be recovered/recycled from spent jet at near-100% efficiency to keep gold consumption economically viable",
+      "Some (undisclosed) energy capture architecture can convert D-D fusion output (charged particles + 2.45 MeV neutrons) to electricity at viable efficiency",
+      "Plasmonic enhancement physics, demonstrated in nanophotonics for other applications, transfers to nuclear fusion regime"
+    ],
+    "eliminated_costs": [
+      "No tritium breeding, supply, or handling infrastructure (D-D fuel cycle uses only commercially available D2O)",
+      "No cryogenic target fabrication or cryogenic plant systems",
+      "No external superconducting magnets or magnet cryogenics (CAS22 coils zeroed)",
+      "No hohlraum or high-energy MJ-class laser driver (uses commercial femtosecond laser at ~1 atomic unit intensity)",
+      "No 14 MeV neutron-driven structural material requirements (D-D produces 2.45 MeV neutrons with lower per-neutron damage)"
+    ],
+    "novel_costs": [
+      "Gold nanoshell target factory — synthesis at industrial scale (~10^12 nanoshells/second) with no existing cost analogues",
+      "Gold consumption/recycling system — ~60 mg/s gold throughput requiring near-complete recovery to avoid ~$18,000/hr raw material cost",
+      "Femtosecond laser (Ti:sapphire/Yb-fiber) with OAM beam generation at MW-class average power — no plant-scale cost benchmarks exist",
+      "MHz-rate liquid jet delivery system with sub-micron spatial precision for nanoshell-laden fluid",
+      "Specialized nonlinear optical components for orbital angular momentum (OAM) beam generation at high average power"
+    ],
+    "risks": [
+      {
+        "description": "Plasmonic field enhancement driving D-D fusion has zero experimental validation — entire concept rests on a single theoretical preprint (arXiv:2503.15531) not yet peer-reviewed",
+        "severity": "high"
+      },
+      {
+        "description": "Anomalous 3333 MeV/event energy figure in primary paper (vs. standard ~3.65 MeV) is unexplained; if calculation error, the Q~100 claim is unreliable",
+        "severity": "high"
+      },
+      {
+        "description": "No energy capture or conversion architecture has been disclosed by Cortex in any source — blocking gap for any LCOE estimate",
+        "severity": "high"
+      },
+      {
+        "description": "14-order-of-magnitude scaling gap between demonstrated baseline (Cambridge 10^5 n/s) and projected reactor (10^19 n/s)",
+        "severity": "high"
+      },
+      {
+        "description": "Gold nanoshell recycling is entirely undemonstrated; if recovery fails, ~$18,000/hr in gold consumption renders concept uneconomic",
+        "severity": "high"
+      },
+      {
+        "description": "No capital cost estimates, plant design, or independent techno-economic analysis exists for any subsystem",
+        "severity": "high"
+      },
+      {
+        "description": "Cortex has published zero experimental fusion results despite founding in 2021; only $2.6M in funding suggests very early stage",
+        "severity": "high"
+      },
+      {
+        "description": "Nanoshell delivery at MHz rates with sub-micron precision and integration of millions of simultaneous events per pulse is unprecedented",
+        "severity": "high"
+      },
+      {
+        "description": "Neutron management (shielding, blanket, activation) for projected 10^19 n/s D-D source is completely unaddressed",
+        "severity": "medium"
+      },
+      {
+        "description": "Femtosecond laser scaling to MW-class average power has no demonstrated wall-plug efficiency or cost data at fusion-relevant scale",
+        "severity": "medium"
+      },
+      {
+        "description": "No regulatory precedent for high-rep-rate D-D facility at projected neutron flux levels",
+        "severity": "medium"
+      },
+      {
+        "description": "Optics degradation under repeated plasma debris exposure at MHz rep rates is uncharacterized",
+        "severity": "medium"
+      }
+    ]
+  },
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/03-laser-icf-liquid-jet-target/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/03-laser-icf-liquid-jet-target/analysis.md"

@@ -336,76 +336,71 @@
   "parameter_metadata": {},
   "narrative": {
     "key_bets": [
-      "Wiffle-Ball confinement achieves loss reduction factor γ ≤ 0.1 at commercial plasma density (~10²¹ m⁻³), making Q_plasma ≈ 10.5 achievable",
-      "Virtual cathode (electrostatic potential well) can form and be sustained at reactor-relevant plasma densities without requiring the ~200,000 A electron supply rate calculated by Univ. Sydney (2019)",
-      "Bremsstrahlung radiation losses for a thermalized 20 keV D-T plasma at reactor density do not eliminate net energy gain",
-      "Park 2025 scaling laws (derived from WB-X/WB-8 PIC simulations) extrapolate validly across ~12× linear and ~10⁶× power scale-up to a 1.6 m cube, 4.5 T, 980 MW reactor",
-      "An MW-class electron beam injection system (60 keV, 1.3 kA, 78 MW total) can operate CW into a magnetic cusp with adequate beam-plasma coupling and component lifetime",
-      "A tritium breeding blanket achieving TBR > 1.1 can be engineered around the polyhedral coil geometry despite neutron shadowing from six coil faces",
-      "Superconducting coils for a 6-sided non-interlocking cusp geometry at 4.5 T steady-state are feasible and the modular assembly claim (easy assembly/disassembly) holds at reactor scale"
+      "Wiffle-Ball cusp confinement achieves loss reduction factor γ ≤ 0.1 at commercial plasma density (~10²¹ m⁻³), validating the Park 2025 Q≈10.5 projection",
+      "Virtual cathode formation is sustainable at reactor-relevant densities without the ~200,000 A electron supply rate calculated by University of Sydney (2019)",
+      "Bremsstrahlung losses in a thermalized 20 keV D-T plasma remain below ~5–10% of fusion power, preserving net energy gain despite Park 2025's thermalization assumption (which negates Bussard's non-thermal direct-conversion advantage)",
+      "Physics scaling laws derived from sub-microsecond WB-X pulses extrapolate validly across ~10⁶× in fusion power and ~12× in linear scale to a 1.6 m steady-state reactor",
+      "MW-class commercial electron beam injectors (78 MW total) can be integrated into a magnetic cusp geometry with high beam-plasma coupling efficiency and acceptable component lifetime under neutron/X-ray fluence",
+      "A tritium breeding blanket achieving TBR > 1.1 can be engineered for the polyhedral cusp geometry despite neutron shadowing by the six coil faces",
+      "Six-sided non-interlocking superconducting coils at 4.5 T can be built and mechanically supported under asymmetric high-beta plasma pressure loading"
     ],
     "eliminated_costs": [
-      "No divertor system: cusp geometry naturally provides plasma exhaust at cusp points, eliminating the tokamak divertor design, replacement, and remote handling cost",
-      "Smaller, cheaper magnet system: magnets only confine electrons (not 20 keV ions at billion-particle densities), so magnetic energy density requirement is far lower than MFE tokamaks/stellarators",
-      "No interlocked TF coil remote maintenance: six non-interlocking modular coils enable straightforward manufacturing and assembly/disassembly versus fully remote tokamak maintenance",
-      "No burning-plasma physics infrastructure: device is not designed around self-sustaining burn, avoiding burn-control systems and associated engineering",
-      "Commercially sourced electron beam injectors (Leybold, Sciaky, Ferrotec) replace bespoke neutral beam / RF heating systems used in MFE H&CD"
+      "Divertor system — cusp geometry naturally provides plasma exhaust at cusp points, eliminating the complex tokamak divertor design, replacement, and remote handling costs",
+      "Large high-field magnet system — magnets only confine electrons (much lower energy density) rather than 20 keV ions at billion-particle densities, allowing far smaller and cheaper coils than tokamak/stellarator concepts",
+      "Fully-remote interlocked-coil maintenance — six independent non-interlocking polyhedral coils enable modular assembly/disassembly rather than tokamak-style fully-remote TF coil maintenance",
+      "Burning-plasma auxiliary heating ramp-down infrastructure — the device runs on continuous external e-beam drive rather than ignition, eliminating burn-control and ignition-transient hardware (though at the cost of permanent recirculating power)"
     ],
     "novel_costs": [
-      "Polyhedral tritium breeding blanket engineered around six coil-face neutron shadows — ARIES-class analogue range $50–200M vs. ~$7M generic MFE formula, with concept-specific neutronics study required",
-      "MW-class electron beam injection system (78 MW total, 60 keV, 1.3 kA CW) with power supplies — override baseline ~$100M; structural recirculating load of ~29% at γ=0.1 (rising to 40–45%+ at γ=0.2)",
-      "Six independent superconducting cusp coils (4.5 T boundary field) with no shared load-bearing structure, each resisting magnetic pressure asymmetrically — custom coil forms required, override baseline ~$150M",
-      "Permanent structural recirculating power penalty from continuous CW e-beam drive (no ignition), compounding γ uncertainty by doubling beam demand if confinement degrades",
-      "Beam power supply electrical losses at 78 MW scale (~15% wall-plug loss at 85% efficiency = ~14 MW continuous) as a concept-specific recirculating load"
+      "78 MW continuous MW-class electron beam injection system (~$100M override) — not present in any MFE concept; replaces conventional H&CD systems",
+      "Tritium breeding blanket engineered for polyhedral cusp geometry with neutron-shadowed sectors aligned to the six coil faces (~$50–200M, vs. ~$7M standard MFE analogue)",
+      "Six independent superconducting coil assemblies with custom mechanical support for asymmetric magnetic-pressure loading (~$150M override) — non-interlocking polyhedral geometry has no existing engineering design",
+      "Structural recirculating-power penalty (~29% at γ=0.1, 40–45%+ at γ=0.2) from continuous e-beam drive — burning-plasma MFE concepts recirculate only 10–20%",
+      "Concept-specific neutronics analysis and likely Li-6 enrichment or thicker blanket sections to compensate for coil-face neutron shadowing"
     ],
     "risks": [
       {
-        "description": "Loss reduction factor γ is an unvalidated free parameter in the Park 2025 scaling; the entire Q=10.5 projection rests on γ=0.1, and the coupled sweep shows γ=0.2 drives LCOE to net-negative",
+        "description": "Loss reduction factor γ unvalidated — entire Q≈10.5 projection rests on a single free parameter (γ=0.1) that Park 2025 admits has no quantitative model; γ=0.2 drives LCOE to ~20 ¢/kWh or net-negative power",
         "severity": "high"
       },
       {
-        "description": "Virtual cathode formation at commercial plasma densities is disputed by Univ. of Sydney (2019) experiments finding 'little or no trace' of it; EMC2 has not published counter-experimental evidence, and invalidation collapses the entire physics basis",
+        "description": "Virtual cathode formation may fail at commercial plasma densities — University of Sydney (2019) found 'little or no trace' and calculated unfeasible 200,000 A electron supply rate; EMC2 disputes but has published no counter-experimental evidence",
         "severity": "high"
       },
       {
-        "description": "No energy conversion architecture specified — no blanket type, thermal cycle, coolant, or BOP — so net electric output is unknown within ±50% and no defensible LCOE can be constructed",
+        "description": "No energy conversion architecture specified — 80% of fusion energy (~784 MW neutrons) has no defined blanket type, thermal cycle, or coolant; net electric output unknown within ±50%",
         "severity": "high"
       },
       {
-        "description": "Tritium breeding blanket design is TRL 1 with no neutronics study for the polyhedral cusp geometry; coil-face neutron shadowing may force higher Li-6 enrichment or thicker blankets, and $50–200M cost range is not reflected by standard MFE formulas",
+        "description": "Tritium breeding blanket TRL 1 — polyhedral coil geometry creates six neutron-shadowed sectors with no proposed solution, no TBR calculation, and no off-the-shelf MFE blanket adaptable; cost may be 2× the $75M baseline",
         "severity": "high"
       },
       {
-        "description": "Physics scaling extrapolation spans ~12× linear and ~10⁶× power from WB-X sub-microsecond pulses to a 980 MW steady-state reactor; Park 2025 explicitly flags the gyroradius exponent as preliminary",
+        "description": "Physics scaling extrapolated ~10⁶× in fusion power and ~12× in linear scale from sub-microsecond WB-X pulses to steady-state reactor; gyroradius scaling exponent flagged as 'preliminary' by Park 2025",
         "severity": "high"
       },
       {
-        "description": "Bremsstrahlung radiation balance is unresolved — Park 2025's thermalization assumption addresses Rider 1995 but implies a Maxwellian ion distribution that eliminates any direct-conversion advantage, a tension not acknowledged in the scaling paper",
+        "description": "Bremsstrahlung-versus-thermalization theoretical tension unresolved — Park 2025's thermalization assumption answers Rider 1995 critique but eliminates Bussard's direct-conversion advantage, an implication unacknowledged in the source",
         "severity": "medium"
       },
       {
-        "description": "Superconducting coil design for 6-sided cusp geometry is TRL 3–4 with no published EMC2 work since reported 2012 start; mechanical loading under high-beta plasma pressure requires concept-specific engineering",
+        "description": "Superconducting coil design for 6-sided cusp geometry has no published specification — conductor type, operating temperature, and mechanical support for asymmetric high-beta plasma loading all unspecified; EMC2 SC work since 2012 unpublished",
         "severity": "medium"
       },
       {
-        "description": "EMC2 corporate transparency is low — no public results from WB-8 (2009–2012) or subsequent devices, and current activities have pivoted to the FPNS neutron source program with SHINE rather than a power reactor line",
+        "description": "Company transparency low — EMC2 has published two peer-reviewed papers since 2015, one arXiv preprint, and no current device status; WB-6 fusion result never independently peer-reviewed; no WB-8 results published",
         "severity": "medium"
       },
       {
-        "description": "Structural recirculating power fraction (~29% at γ=0.1, rising to 40–45%+ at γ=0.2) is permanent because the e-beam must run continuously; this compounds γ uncertainty since doubling γ doubles beam power and halves Q_eng",
+        "description": "No O&M structure, PFC lifetime data, or maintenance plan exists; modular-replacement claim is a design assertion, not a demonstrated strategy",
         "severity": "medium"
       },
       {
-        "description": "O&M strategy, PFC lifetime under 14 MeV neutron flux, and capacity factor are entirely unspecified; modular coil replacement is a design claim, not a demonstrated maintenance plan",
+        "description": "Structural ~29% recirculating-power fraction at baseline γ=0.1 (rising to 40–45%+ at γ=0.2) is permanent due to continuous e-beam drive — compounds γ uncertainty by directly halving Q_eng if γ doubles",
         "severity": "medium"
       },
       {
-        "description": "Tritium supply constraint: ~55 kg/yr required for a 980 MW fusion plant exceeds half of global tritium inventory (~25 kg), making on-site breeding mandatory — but no Polywell blanket design exists to provide it",
+        "description": "Tritium fuel supply — ~55 kg/year requirement vs. ~25 kg global inventory makes on-site breeding mandatory, which in turn depends on the unsolved polyhedral blanket design",
         "severity": "medium"
-      },
-      {
-        "description": "MW-class electron beam injection at 78 MW total into a magnetic cusp at reactor plasma densities has not been demonstrated as an integrated system; beam-plasma coupling efficiency and long-term component lifetime under neutron/X-ray fluence are unproven",
-        "severity": "low"
       }
     ]
   },

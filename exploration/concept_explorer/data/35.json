@@ -382,68 +382,67 @@
   "parameter_metadata": {},
   "narrative": {
     "key_bets": [
-      "Poloidal dipole confinement geometry with plasma physically penetrated by in-vessel coil supported via magnetic tunnels can achieve fusion-relevant plasma performance, despite only static magnetic FEA having been performed",
-      "Superconducting coil path replaces copper at commercial scale, reducing the 700 MW resistive power draw to ~15 MW cryogenic load — a critical viability gate with no published SC coil design",
-      "D-D ignition at confinement time of 20-40 s, plasma temperature 100-200 keV, and density ~10²¹ m⁻³ is achievable (4-10× beyond ITER's projected confinement time)",
-      "Plasma Q ≥ 10 is achievable in the dipole geometry, despite historical poloidal-dipole experiments only reaching few-eV temperatures and ~10¹⁶ m⁻³ densities",
-      "In-vessel dipole coil can survive fusion-relevant neutron fluences and be maintained/replaced through the magnetic tunnel geometry without catastrophic capacity factor penalties",
-      "Commercial-scale plasma heating can scale from the 5-10 kW prototype ECH (4 GHz) to the many-orders-of-magnitude higher power required for D-D at 100-200 keV",
-      "Claimed D-T field advantage of operating at 2-3 T (vs conventional 5.3 T) translates into either lower magnet cost or higher achievable Q"
+      "D-D fusion ignition achievable in dipole geometry at commercial scale (Q≥10, T_i ~100-200 keV, n ~10²¹ m⁻³, τ_E 20-40 s — extrapolations exceeding any validated MFE experiment)",
+      "Superconducting coil path can replace the 700 MW copper coil draw with a cryogenic load of ~15 MW while preserving the PoloMac magnetic geometry",
+      "Magnetic tunnel topology can physically support an in-vessel dipole coil through the plasma without compromising confinement",
+      "Steady-state operation is achievable in the dipole geometry, avoiding pulsed-mode fatigue penalties",
+      "Reduced field strength (2-3 T for D-T, vs 5.3 T tokamak baseline) is sufficient for fusion-relevant performance",
+      "An in-vessel superconducting coil can survive fusion-relevant neutron fluence with radiation-hardened insulation"
     ],
     "eliminated_costs": [
-      "Tritium breeding blanket (~$200-400M saved): no lithium blanket, FLiBe, or Li-6 enrichment infrastructure required for D-D fuel cycle",
-      "Tritium fuel supply chain: deuterium at ~$5,000-10,000/kg replaces tritium at >$35,000/g, eliminating breeding-ratio management and tritium inventory costs",
-      "Specialty blanket supply chain risks: no beryllium (Materion sole-source), no Li-6 enrichment bottleneck, no molten salt processing infrastructure",
-      "Pulsed-operation fatigue costs: steady-state operation avoids pulsed thermal/mechanical fatigue penalties present in conventional pulsed tokamaks",
-      "Reduced neutron shielding mass per unit fusion power: 2.45 MeV D-D neutrons are less damaging than 14 MeV D-T neutrons"
+      "Tritium breeding blanket (Li blanket, FLiBe loop, breeding ratio management) — eliminated for D-D fuel cycle, saving ~$200-400M capital",
+      "Lithium-6 enrichment infrastructure and supply chain (limited suppliers, environmentally sensitive)",
+      "Beryllium neutron multiplier supply chain (sole-sourced from Materion)",
+      "Tritium fuel procurement and on-site tritium plant — D-D uses deuterium at ~$5-10k/kg vs tritium at >$35,000/g",
+      "Pulsed-operation thermal/mechanical fatigue costs vs pulsed tokamak designs (steady-state operation claimed)"
     ],
     "novel_costs": [
-      "In-vessel superconducting dipole coil with radiation-hardened insulation — no vendor currently supplies radiation-hardened HTS coils qualified for sustained neutron environments",
-      "Magnetic-tunnel coil support structure passing through the plasma — a novel mechanical configuration with no established precedent",
-      "Remote handling and replacement of an activated in-vessel coil through the magnetic tunnel geometry — no analogue exists in any operating or planned fusion device",
-      "Oversized reactor core driven by large plasma volume (~6,000-8,000 m³ at 1000 MW D-D) — shield ($804M) is the largest single reactor equipment line item, larger than the SC coil itself ($500M) at 500 MW fusion power",
-      "Commercial-scale ECH heating system sized to reach D-D ignition temperatures (~100-200 keV) from a 5-10 kW prototype baseline — no design study exists"
+      "In-vessel superconducting dipole coil with radiation-hardened insulation — no vendor currently supplies qualified radiation-hardened HTS coils",
+      "Magnetic tunnel support structure passing through the plasma volume — novel mechanical concept with no precedent",
+      "Enhanced remote handling for activated in-vessel coil removal/replacement through magnetic tunnel geometry (1.5× standard cost, drives forced outage rate)",
+      "Oversized first wall, shield (~$804M), structure, and vacuum vessel driven by very large plasma volume (~4,000-8,000 m³, ~5× ITER) needed for adequate D-D fusion power",
+      "Dedicated cryoplant (~$124M) sized for in-vessel SC coil cryogenic load in a high-radiation environment"
     ],
     "risks": [
       {
-        "description": "No plasma confinement physics validation: MHD stability, confinement scaling, and transport coefficients exist only as extrapolations from few-eV/10¹⁶ m⁻³ historical dipole experiments — the 2014 FED paper explicitly defers all plasma physics to future work",
+        "description": "700 MW copper-coil recirculating power penalty with no published superconducting coil design to resolve it; if SC cryo load exceeds ~100 MW, net power goes negative",
         "severity": "high"
       },
       {
-        "description": "700 MW copper coil recirculating power is commercially nonviable; no superconducting coil design has been published to resolve it, and if SC cryo load exceeds ~100 MW net power goes negative",
+        "description": "No plasma confinement physics validation — MHD stability, confinement scaling, and transport coefficients are entirely unanalyzed; historical dipole experiments achieved only ~few eV / 10¹⁶ m⁻³, many orders of magnitude below fusion conditions",
         "severity": "high"
       },
       {
-        "description": "D-D ignition has never been demonstrated; Deutelio's claimed 20-40 s confinement time and 100-200 keV temperature exceed ITER projections by 4-10× with no experimental or physics-model support",
+        "description": "D-D ignition is unvalidated and ~142× more demanding than D-T by Lawson criterion; claimed Q≥10 at 100-200 keV is an extraordinary extrapolation with no experimental or physics-model support",
         "severity": "high"
       },
       {
-        "description": "No reactor design point exists (Q, major radius, thermal power, net electric output) — all LCOE outputs are scenario bounds, not engineering estimates",
+        "description": "No reactor design point published (Q, major radius, fusion power, thermal efficiency, net electric output all unknown), preventing any engineering-grade $/kWe estimate",
         "severity": "high"
       },
       {
-        "description": "In-vessel coil neutron shielding, lifetime, and replacement scheme are unspecified — directly couples to capacity factor (CF=0.4 → 157 ¢/kWh vs CF=0.7 → 95 ¢/kWh baseline)",
+        "description": "In-vessel coil neutron shielding scheme, materials selection, and lifetime are unspecified; coil replacement through magnetic-tunnel geometry could drive capacity factor to 0.4-0.5 (LCOE penalty up to ~1.7×)",
         "severity": "high"
       },
       {
-        "description": "Commercial-scale heating power unspecified — prototype ECH is 5-10 kW but D-D at 100-200 keV requires orders of magnitude more heating power, leaving auxiliary systems and recirculating fraction uncertain",
+        "description": "Plant scale penalty: competitive D-D LCOE requires ~800-1000 MW fusion power and ~6,000-8,000 m³ plasma volume (larger than any fusion device ever built), partially or fully offsetting the blanket-elimination capital savings",
+        "severity": "high"
+      },
+      {
+        "description": "Commercial-scale plasma heating power and integration unspecified (only 5-10 kW ECH at 4 GHz prototype-scale defined); D-D requires heating systems many orders of magnitude more powerful",
         "severity": "medium"
       },
       {
-        "description": "Plasma volume scales to ~6,000-8,000 m³ at commercial scale (~5× ITER), driving shield, structure, and vacuum vessel costs that may offset D-D's blanket-elimination savings",
+        "description": "Inconsistent field-strength claims in the primary source (\"3× weaker\" in abstract vs \"half magnetic field, i.e. 2-3 T rather than 5.3 T\" in §DT reactor conditions) are not reconciled by the paper",
         "severity": "medium"
       },
       {
-        "description": "Inconsistency in the primary source between the abstract's '3× weaker field' claim and Section V's '2-3 T vs 5.3 T' (~half) claim for D-T operation, unreconciled by the paper",
+        "description": "REBCO HTS supply chain scaling and radiation-hardened HTS insulation are unsolved problems shared with other in-vessel-coil concepts (cf. levitated-dipole, orbital-dipole)",
+        "severity": "medium"
+      },
+      {
+        "description": "Independent assessment is limited to a C− tier rating from an unnamed \"fusion company tier list\"; no third-party plasma physics, system-code, or cost analysis exists",
         "severity": "low"
-      },
-      {
-        "description": "Deutelio is a pre-prototype startup (C− tier rating from independent assessment, 4th place Boldbrain 2024) with no third-party plasma physics analysis, cost study, or system code output in the public corpus",
-        "severity": "medium"
-      },
-      {
-        "description": "Radiation-hardened HTS insulation compatible with fabrication processes is unsolved across all fusion concepts, not just PoloMac",
-        "severity": "medium"
       }
     ]
   },

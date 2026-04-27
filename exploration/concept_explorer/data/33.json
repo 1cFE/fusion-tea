@@ -557,78 +557,737 @@
       "noak": 1.0
     }
   },
-  "parameter_metadata": {},
+  "parameter_metadata": {
+    "availability": {
+      "display_name": "Availability",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.8,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.5599999999999999,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "construction_time_yr": {
+      "display_name": "Construction Time",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 8.0,
+      "display_multiplier": 1.0,
+      "display_unit": "yr",
+      "range": [
+        5.6,
+        10.4
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "mn": {
+      "display_name": "Energy Multiplication Mₙ",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.1,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.77,
+        1.4300000000000002
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_th": {
+      "display_name": "Thermal Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.347,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.24289999999999998,
+        0.4511
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_p": {
+      "display_name": "Eta P",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.5,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.35,
+        0.65
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_sub": {
+      "display_name": "Subsystem Power Fraction",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.04,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.027999999999999997,
+        0.052000000000000005
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_pump": {
+      "display_name": "Pumping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 2.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        1.4,
+        2.6
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_trit": {
+      "display_name": "Tritium Plant Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 10.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        7.0,
+        13.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_house": {
+      "display_name": "Housekeeping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 5.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        3.5,
+        6.5
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_cryo": {
+      "display_name": "Cryogenic Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 8.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        5.6,
+        10.4
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "blanket_t": {
+      "display_name": "Blanket Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.8,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.5599999999999999,
+        1.04
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "ht_shield_t": {
+      "display_name": "HT Shield Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.3,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.21,
+        0.39
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "structure_t": {
+      "display_name": "Structure Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.2,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.13999999999999999,
+        0.26
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "vessel_t": {
+      "display_name": "Vessel Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.2,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.13999999999999999,
+        0.26
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "plasma_t": {
+      "display_name": "Minor Radius",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.5625,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        1.09375,
+        2.03125
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_T": {
+      "display_name": "Dd F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.969,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6782999999999999,
+        1.2597
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_He3": {
+      "display_name": "Dd F He3",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.689,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.48229999999999995,
+        0.8956999999999999
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_dd_frac": {
+      "display_name": "Dhe3 Dd Frac",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.07,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.049,
+        0.09100000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_f_T": {
+      "display_name": "Dhe3 F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.97,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6789999999999999,
+        1.261
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_input": {
+      "display_name": "Input Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 200.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        140.0,
+        260.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_pin": {
+      "display_name": "Injector Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.6,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.42,
+        0.78
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_de": {
+      "display_name": "Direct Conversion Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.85,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.595,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_coils": {
+      "display_name": "Coil Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 5.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        3.5,
+        6.5
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_cool": {
+      "display_name": "P Cool",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 25.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        17.5,
+        32.5
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "R0": {
+      "display_name": "Major Radius",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 6.25,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        4.375,
+        8.125
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "elon": {
+      "display_name": "Elongation κ",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.7,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        1.19,
+        2.21
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "q95": {
+      "display_name": "Q95",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 3.5,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        2.4499999999999997,
+        4.55
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_GW": {
+      "display_name": "F Gw",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.85,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.595,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "B": {
+      "display_name": "B",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 6.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        4.199999999999999,
+        7.800000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "T_e": {
+      "display_name": "T E",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 20.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        14.0,
+        26.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "n_e": {
+      "display_name": "N E",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1e20,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        6.999999999999999e19,
+        1.3e20
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "Z_eff": {
+      "display_name": "Z Eff",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.5,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        1.0499999999999998,
+        1.9500000000000002
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "plasma_volume": {
+      "display_name": "Plasma Volume",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 513.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        359.09999999999997,
+        666.9
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "R_w": {
+      "display_name": "R W",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.6,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.42,
+        0.78
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "T_edge": {
+      "display_name": "T Edge",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.05,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.034999999999999996,
+        0.065
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "tau_ratio": {
+      "display_name": "Tau Ratio",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 3.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        2.0999999999999996,
+        3.9000000000000004
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "b_max": {
+      "display_name": "Peak Magnetic Field",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 13.0,
+      "display_multiplier": 1.0,
+      "display_unit": "T",
+      "range": [
+        9.1,
+        16.900000000000002
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "r_coil": {
+      "display_name": "Coil Radius",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 3.2,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        2.2399999999999998,
+        4.16
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_nbi": {
+      "display_name": "NBI Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 50.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        35.0,
+        65.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "M_ion": {
+      "display_name": "M Ion",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 2.5,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        1.75,
+        3.25
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "lambda_q": {
+      "display_name": "Lambda Q",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.002,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.0014,
+        0.0026000000000000003
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "disruption_rate_base": {
+      "display_name": "Disruption Rate Base",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "disruption_steepness": {
+      "display_name": "Disruption Steepness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 15.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        10.5,
+        19.5
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "disruption_damage": {
+      "display_name": "Disruption Damage",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.02,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.013999999999999999,
+        0.026000000000000002
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "disruption_downtime": {
+      "display_name": "Disruption Downtime",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 72.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        50.4,
+        93.60000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "interest_rate": {
+      "display_name": "Interest Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.07,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.049,
+        0.09100000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "inflation_rate": {
+      "display_name": "Inflation Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.0245,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.01715,
+        0.03185
+      ],
+      "source": null,
+      "modeling_note": null
+    }
+  },
   "narrative": {
     "key_bets": [
-      "China's construction cost economics (2-4× discount vs. Western) transfer to fusion capital accounts, applied broadly across CAS21-CAS26 not just buildings",
-      "ITER-heritage Nb3Sn/NbTi LTS magnets at 6.15 T achieve commercial viability despite larger machine volume, offsetting higher per-kWe cost with lower $/kA-m conductor pricing",
-      "CFETR Phase II DEMO-validation scenario (Pfus=1084 MW, Q=23.5 at R₀=6.6m, B₀=6.0T, Ip=11MA) is achievable in same hardware as Phase I via plasma current ramp-up",
-      "sCO2 Brayton power conversion at 34.7% thermal efficiency is adopted for commercial PFPP, coupled via COOL (CO2-cooled LiPb) TBM lineage",
-      "Four-method H&CD portfolio (ECRH+ICRH+LHCD+NBI) retains NBI for plasma rotation and direct ion heating — NBI removal drops Q by ~40% (2.0→1.2)",
-      "TBM program (COOL/WCCB/EU) yields a viable commercial blanket achieving TBR>1.1 and self-sufficient tritium breeding at commercial NWL >1 MW/m²",
-      "Quasi-steady-state long-pulse operation (>1000s, CF 75-90%) is achievable for commercial PFPP rather than inheriting CFETR's pulsed 30-50% duty cycle"
+      "LTS Nb3Sn/NbTi primary magnet technology with YBCO only in CS sub-coils is cost-competitive with full-HTS despite requiring a larger machine (R₀ ≈ 6.6 m at B₀ = 6.0 T vs 1.85–3.6 m for compact HTS)",
+      "Chinese construction economics achieve 2–4× lower capital cost than Western analogues, applied broadly across CAS21–CAS26 (especially CAS22 reactor plant equipment at ~44% of capital)",
+      "sCO2 Brayton power conversion at 34.7% thermal efficiency is the preferred PFPP cycle (vs. 26.4% Rankine, 23.7% He Brayton+ORC)",
+      "CFETR Phase II validates DEMO-class operation (Pfus = 1084 MW, Q = 23.5, fbs = 89%) in the same hardware as Phase I via plasma current ramp to 11 MA",
+      "Quasi-steady-state long-pulse operation (75–90% CF) is achievable for the commercial PFPP rather than CFETR's pulsed 0.3–0.5 duty cycle",
+      "BEST TBM program (COOL/WCCB/EU options) will demonstrate TBR > 1.1 enabling self-sufficient tritium breeding for PFPP",
+      "ASIPP's ITER procurement experience (>70% of China's packages, including Nb3Sn conductors) provides a validated domestic supply chain for the magnet system"
     ],
     "eliminated_costs": [
-      "REBCO HTS tape procurement bulk (5,000+ km for full-HTS architectures) — limited to CS sub-coils only, avoiding $0.75-1.6B full-HTS magnet system cost",
-      "Novel/unqualified superconductor supply chain risk — Nb3Sn/NbTi are ITER-qualified with ASIPP domestic manufacturing (>70% of China's ITER packages)",
-      "Tungsten material supply risk — China produces >80% of global tungsten, eliminating scarcity premium for first wall/divertor armor",
-      "Western regulatory cost burden — Stewart & Shirvan 2.2× fission-style building cost factor may not apply in Chinese regulatory context",
-      "High labor cost component of Western fusion construction — Chinese domestic labor rates and streamlined regulatory timelines cut infrastructure construction 2-4×"
+      "Nb3Sn conductor at $2–10/kA-m vs. REBCO at $30–100/kA-m — 5–10× lower cost per unit length than full-HTS designs",
+      "Domestic Chinese tungsten supply (>80% global production) eliminates first-wall/divertor armor material scarcity risk",
+      "ITER-heritage Nb3Sn cable-in-conduit and NbTi PF coil technology eliminates new-magnet qualification cost (vs. unproven HTS at scale)",
+      "Chinese construction labor and domestic equipment supply chains reduce CAS21 buildings and CAS22 reactor plant equipment costs relative to Western projects",
+      "Streamlined Chinese regulatory timelines for state research devices may avoid the Stewart & Shirvan 2.2× fission-style regulatory cost factor"
     ],
     "novel_costs": [
-      "Extrapolation premium across three additional development steps (BEST→CFEDR→PFPP) with commercial end-state unspecified, unlike private-sector concepts building toward defined products",
-      "Concurrent four-method H&CD capital cost (50 MW: 15 ECRH + 10 ICRH + 10 LHCD + 12 NBI) substantially higher than single-technology approach, with LHCD potentially stranded at burning plasma temperatures",
-      "Larger machine volume scaling for LTS route (R₀ = 6.6 m vs. ~1.85-3.6 m for compact HTS) drives ~5× magnet mass (~10,000 t) and vacuum vessel/structural steel scaling",
-      "Helium refrigeration infrastructure at ITER scale (~40 kW at 4.5K, ~$1B) required for Nb3Sn operation — not needed for HTS-at-20K concepts",
-      "TBM material qualification pipeline costs (RAFM steel, Li ceramics, SiCf/SiC, PbLi at nuclear-grade) — three competing concepts in parallel development until experimental down-selection"
+      "Larger machine volume at lower field — magnet mass scales as ~R₀^2.5, yielding ~10,000 t total magnet mass at PFPP scale (vs. ~2,000 t at BEST), partially offsetting per-km conductor savings",
+      "Four-method concurrent H&CD portfolio (ECRH 15 MW + ICRH 10 MW + LHCD 10 MW + NBI 12 MW = 50 MW) with substantially higher capital and recirculating power cost than single-technology systems",
+      "Hybrid LTS+HTS CS design with YBCO sub-coils at 18.8 T peak field — adds HTS qualification cost on top of LTS baseline",
+      "TBM program duplication — three competing blanket concepts (COOL/WCCB/EU) under simultaneous test, with PFPP technology selection deferred until 2030s experimental results",
+      "State-program extrapolation premium — TEA must span two unspecified design steps (BEST → CFEDR → PFPP) that private commercial-intent designs do not require"
     ],
     "risks": [
       {
-        "description": "Commercial PFPP design point (R, B, Q, Pfus, thermal efficiency, capital cost) entirely unspecified — all TEA outputs rest on ARIES-ACT1 and CFETR Phase I analogues rather than committed Chinese design",
+        "description": "Commercial PFPP design point (R, B, Q, Pfus, capital cost) is entirely unspecified; LCOE estimate must extrapolate across two roadmap steps with no published target",
         "severity": "high"
       },
       {
-        "description": "Chinese construction cost discount magnitude for fusion is unproven — H1 hypothesis (2× discount halves LCOE) is untestable without Chinese cost benchmarks; regulatory cost framework opaque",
+        "description": "CFETR Phase II readiness gaps: divertor heat load Pdiv/R₀ = 32.4 MW/m exceeds ITER guidelines; RWM stabilization at βN = 3.54 above no-wall limit not yet modeled; pellet injection fueling not implemented",
         "severity": "high"
       },
       {
-        "description": "Blanket technology undecided among three competing TBM concepts (COOL/WCCB/EU) — blanket cost, TBR, coolant, and power cycle all unanchored until 2030s experimental results",
+        "description": "If PFPP inherits CFETR's pulsed 0.3–0.5 duty cycle rather than quasi-steady-state, LCOE increases 1.5–3× (CF=35% → 336.6 $/MWh vs. CF=80% → 158.1 $/MWh)",
         "severity": "high"
       },
       {
-        "description": "Capacity factor regime unknown — if PFPP inherits CFETR Phase I pulsed duty cycle (0.3-0.5), LCOE increases 1.5-3× vs. quasi-steady-state 75-90% assumption",
+        "description": "Blanket technology for PFPP undecided among three TBM concepts; selection drives blanket cost, TBR margin, and power cycle (sCO2 vs. Rankine) — ~9% LCOE delta",
         "severity": "high"
       },
       {
-        "description": "CFETR Phase II readiness gaps: divertor heat load (Pdiv/R₀=32.4 MW/m) exceeds ITER guidelines, pellet injection fueling not implemented, RWM stabilization at βN=3.54 above no-wall limit unmodeled",
+        "description": "No published capital cost data for BEST or any Chinese commercial fusion reactor; Chinese construction discount magnitude in fusion context is unverified",
         "severity": "high"
       },
       {
-        "description": "Commercial TBR >1.1 demonstration dependency on BEST TBM program (2030s) — failure cascades to self-sufficient tritium breeding and commercial viability; China lacks CANDU tritium access",
-        "severity": "high"
-      },
-      {
-        "description": "LHCD applicability degraded in burning plasma — lower-hybrid accessibility is electron-temperature limited; NBI cannot be eliminated without ~40% Q penalty, constraining H&CD portfolio simplification",
+        "description": "LHCD alone is insufficient for burning plasma — CFETR simulations show Q drops from 2.0 (NB+EC) to 1.2 (EC+LH only) due to loss of NBI plasma rotation and direct ion heating",
         "severity": "medium"
       },
       {
-        "description": "Full-tungsten first wall + divertor integration at Q~5 D-T burning plasma is unprecedented — ELM mitigation and W impurity control in high-alpha-heating regime not demonstrated",
+        "description": "Chinese nuclear regulatory cost framework for commercial fusion is uncharacterized; Stewart & Shirvan 2.2× factor may not transfer",
         "severity": "medium"
       },
       {
-        "description": "YBCO CS sub-coil performance at 18.8T peak field under cyclic thermal/mechanical loads and D-T neutron flux (~0.04 dpa lifetime) not validated at BEST scale",
+        "description": "China has limited CANDU tritium access; commercial PFPP startup inventory (~1 kg) must rely on international procurement or unproven self-breeding from TBM program",
         "severity": "medium"
       },
       {
-        "description": "Gross-to-net electric ratio degradation at smaller plant sizes (17% at 100 MWe vs. 42% at 1.2 GWe) makes first-of-kind PFPP at 500 MWe sensitive to recirculating power assumptions from four-method H&CD",
+        "description": "Full-tungsten first wall + divertor under D-T burning plasma at Q~5 has no precedent; ELM mitigation strategies risk W armor melting and are not yet validated",
         "severity": "medium"
       },
       {
-        "description": "Tritium permeation through CO2-facing heat exchangers in COOL/sCO2 coupling requires unvalidated permeation barriers; sCO2 as oxidizing medium differs from inert He coolant strategy",
+        "description": "TBM materials (RAFM steel nuclear-grade, Li ceramic pebbles at scale, SiCf/SiC composites at TRL 3–4) lack qualified commercial supply chains",
+        "severity": "medium"
+      },
+      {
+        "description": "Helium supply for LTS 4.5 K refrigeration is partially import-dependent for China; shared vulnerability with all LTS fusion concepts",
         "severity": "low"
       },
       {
-        "description": "SiCf/SiC composite manufacturing scalability (TRL 3-4 globally) for COOL TBM flow channel inserts unproven at commercial scale",
+        "description": "Tritium permeation through CO2-facing heat exchangers in COOL TBM / sCO2 circuit lacks fusion-specific data; barriers needed but uncharacterized",
         "severity": "low"
       }
     ]

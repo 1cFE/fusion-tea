@@ -302,83 +302,87 @@
   "parameter_metadata": {},
   "narrative": {
     "key_bets": [
-      "Electron co-confinement in the crossed-field Orbitron geometry enables ion densities ~50× above the space-charge limit (currently supported by PIC simulations only)",
-      "Coulomb collision thermalization can be suppressed sufficiently to allow Q>1 operation, despite the 1998 Lampe-Mannheimer analysis claiming collision rates 25–37× faster than fusion",
-      "Sustained 300 kV operation with 4.7 MV/m field gradient can be maintained reliably under D-T plasma load and neutron bombardment over commercial timescales",
-      "Mass-manufactured small modules (1–100 kWe each) can be stacked into a commercial plant architecture at low per-kWe capital cost",
-      "A practical energy conversion pathway exists for kWe-scale modules, despite conventional thermal turbines being impractical below ~1 MWe",
-      "HTS superconducting magnet upgrade to 0.5 T can be achieved in compact geometry adjacent to a neutron-producing device",
-      "Ion orbit stability at 300 kV is achievable without ion-cathode impact at fusion-relevant kinetic energies"
+      "Q>1 achievable in an electrostatic confinement device — the entire economic case is conditional on a physics result not yet demonstrated",
+      "Coulomb collision losses can be mitigated through electron co-confinement geometry (Lampe-Mannheimer 1998 cited 25-37× faster than fusion for this device class)",
+      "Space-charge limit can be exceeded by ~50× via electron co-confinement (currently supported by PIC simulations only, not experimentally demonstrated)",
+      "Modular mass-manufacturing of small (1-100 kWe) Orbitron units stacks economically to commercial plant scale despite undefined plant architecture",
+      "Sustained 300 kV HV feedthrough operates reliably under cumulative 14 MeV neutron bombardment over commercial timescales",
+      "Thermal-cycle energy conversion is achievable at module scale despite turbines being impractical below ~1 MWe",
+      "Purchased tritium supply at >$35,000/g remains economically viable indefinitely without a breeding blanket"
     ],
     "eliminated_costs": [
-      "Large superconducting magnet systems — only a small 0.5 T HTS coil pair required vs. 5–20 T fields in MFE tokamaks, avoiding the REBCO tape supply bottleneck",
-      "Breeding blanket capital cost — no FLiBe or LiPb blanket required at current design maturity (replaced by purchased tritium OPEX)",
-      "Conventional plasma heating systems — no RF, NBI, or gyrotron systems; replaced by HV power supply plus ion gun array",
-      "Large beryllium inventories and FLiBe production requirements are avoided entirely",
-      "Large-volume first wall and divertor systems sized for a single large plasma are replaced by per-module chamber components"
+      "Large superconducting magnets — only a small 0.5 T HTS coil pair required, eliminating the dominant tokamak CAPEX driver (~30-40% of tokamak CAPEX)",
+      "Tritium breeding blanket — no FLiBe or LiPb blanket needed, eliminating ~15-25% of tokamak CAPEX (replaced by purchased tritium as OPEX)",
+      "Conventional plasma heating systems (RF, NBI) — replaced by HV power supply and ion gun array",
+      "Large REBCO tape supply chain dependency — coil dimensions are too small to be constrained by global REBCO production capacity",
+      "Beryllium and FLiBe material supply chains — not required at any scale"
     ],
     "novel_costs": [
-      "Sustained 300 kV HV power supply and proprietary HV feedthrough at per-module scale, scaling with module count across the plant",
-      "Purchased tritium as a permanent OPEX driver at >$35,000/g (no breeding blanket design exists; MoU with Fusion Fuel Cycles covers this only as a collaboration direction)",
-      "Per-module neutron shielding (the 'concrete castle' approach) for stacked multi-module arrays — economically unfavorable at small module scale",
-      "Cathode replacement cost under combined neutron and ion bombardment, with unknown lifetime driving variable O&M",
-      "Energy conversion at 1–100 kWe module scale where conventional turbines are impractical and thermoelectric efficiency is only ~5–15%"
+      "Sustained 300 kV high-voltage power supply and proprietary HV feedthroughs — a CAPEX category with no analogue in tokamak TEA",
+      "Permanent purchased tritium OPEX at >$35,000/g with no breeding offset — scales inversely with Q and could add $0.01-0.10/kWh",
+      "Per-module neutron shielding (\"concrete castle\" per device) for stacked-module arrays — economically self-defeating at small scale without redesign",
+      "Cathode replacement under combined 14 MeV neutron and ion bombardment — primary variable O&M driver with no lifetime data",
+      "Module-scale energy conversion (thermoelectric ~5-15% efficiency) — entirely novel cost category since turbines don't work at 1-100 kWe"
     ],
     "risks": [
       {
-        "description": "Q>1 has not been demonstrated in any electrostatic confinement device; the entire economic case is conditional on an unproven physics result",
+        "description": "Q>1 not demonstrated in any electrostatic confinement device — the entire economic case is conditional on an unproven physics result",
         "severity": "high"
       },
       {
-        "description": "Coulomb collision loss rate is unmeasured at fusion-relevant parameters; the 1998 Lampe-Mannheimer analysis claims rates 25–37× faster than fusion — an unresolved fundamental barrier",
+        "description": "Coulomb collision losses unretired — Lampe-Mannheimer 1998 analysis cites collision rate 25-37× faster than fusion; Avalanche's response is theoretical, not experimentally validated",
         "severity": "high"
       },
       {
-        "description": "The central 50× density-enhancement claim is supported only by PIC simulations; space-charge mitigation is explicitly stated as 'the focus of initial experiments' and not yet achieved",
+        "description": "Space-charge mitigation via electron co-confinement is supported by PIC simulations only; AIP Advances 2024 paper states demonstration is \"the focus of initial experiments\"",
         "severity": "high"
       },
       {
-        "description": "No commercial plant architecture exists — module count, BOP layout, shielding integration, and tritium handling across hundreds of modules are entirely undefined",
+        "description": "Energy conversion at 1-100 kWe module scale is undefined — turbines impractical below ~1 MWe and no alternative pathway has been engineered",
         "severity": "high"
       },
       {
-        "description": "Energy conversion pathway at 1–100 kWe module scale is undefined; stated turbines are impractical below ~1 MWe and no alternative is specified",
+        "description": "No commercial plant architecture exists — module count, BOP layout, multi-module shielding, and tritium handling at fleet scale all undefined",
         "severity": "high"
       },
       {
-        "description": "No breeding blanket design exists; tritium must be purchased indefinitely at >$35,000/g, potentially adding $0.01–0.10/kWh and dominating OPEX at near-breakeven Q",
+        "description": "No tritium breeding blanket design — FFC MoU is a collaboration direction with no specification or timeline; tritium cost could dominate LCOE at low Q",
         "severity": "high"
       },
       {
-        "description": "Diocotron and electron cyclotron drift instabilities are identified in simulations but uncharacterized experimentally, creating risk at higher density operation",
+        "description": "Overnight capital cost per kWe is unbounded — only public figure is aspirational <$1B total with no cost basis",
+        "severity": "high"
+      },
+      {
+        "description": "Cathode and HV feedthrough lifetime under sustained 14 MeV neutron bombardment is uncharacterized with no fission analogue",
         "severity": "medium"
       },
       {
-        "description": "Cathode and HV feedthrough lifetime under sustained 14 MeV neutron bombardment is uncharacterized, driving unknown maintenance cycles and replacement costs",
+        "description": "Diocotron and electron cyclotron drift instabilities flagged in PIC simulations but uncharacterized experimentally",
         "severity": "medium"
       },
       {
-        "description": "Overnight capital cost per kWe is entirely unbounded — the aspirational <$1B figure has no cost basis and no plant study exists",
+        "description": "Per-module neutron shielding requirements (concrete castle) may make modular architecture economically self-defeating without integrated redesign",
         "severity": "medium"
       },
       {
-        "description": "Ion orbit stability at 300 kV under D-T plasma conditions has not been demonstrated; ion-cathode impact at fusion-relevant energies is a structural concern raised in external critique",
+        "description": "O&M cost structure entirely uncharacterized — placeholder 3-5% CAPEX/yr fixed and $5-15/MWh variable have no Orbitron-specific anchor",
         "severity": "medium"
       },
       {
-        "description": "Per-kWe labor and O&M costs are highly unfavorable at 1–100 kWe module scale — a technician visit costs the same regardless of module output",
+        "description": "Ion-cathode impact risk at 300 kV requires precise orbit stability not yet demonstrated at fusion-relevant conditions (Talk-Polywell critique)",
         "severity": "medium"
       },
       {
-        "description": "Scaling law from demonstrated 100 kV operation to the 300 kV target operating point is not publicly validated (accessible only as abstract)",
+        "description": "Scaling from demonstrated 100 kV to 300 kV operating point not publicly characterized (Physics of Plasmas 2025 paper accessible only as abstract)",
         "severity": "medium"
       },
       {
-        "description": "Avalanche Energy is a small early-stage company with modest funding ($29M Series A + $10M state grant) relative to the scale of physics and engineering challenges",
+        "description": "HTS magnet upgrade from 0.05 T permanent magnets to 0.5 T superconducting design is a technology development step, not procurement",
         "severity": "low"
       },
       {
-        "description": "Regulatory cost exposure under a fission-style regime (Stewart & Shirvan 2.2× building cost factor) would apply if scaled to commercial power plant operation",
+        "description": "Limited public technical disclosure — peer-reviewed papers paywalled with only abstracts available, no independent TEA or plant study published",
         "severity": "low"
       }
     ]

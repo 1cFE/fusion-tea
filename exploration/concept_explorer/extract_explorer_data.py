@@ -30,6 +30,12 @@ _HERE = Path(__file__).parent
 _PROJECT_ROOT = _HERE.parent.parent  # .../exploration/concept_explorer/ → project root
 _ANALYSES_DIR = _HERE.parent / "concept_analysis" / "analyses"
 _DATA_DIR = _HERE / "data"
+_DISPLAY_REGISTRY_PATH = _DATA_DIR / "parameter_display_registry.yaml"
+
+# Fields the shared display registry is allowed to patch on a ParameterMetadata.
+# Other fields (baseline, range, category, confidence, etc.) come from
+# generation or per-concept yaml.
+_REGISTRY_PATCH_FIELDS = frozenset({"display_name", "display_unit", "display_multiplier"})
 
 # Ensure project root is on sys.path so fully-qualified package imports work
 # when the script is run directly (uv run python exploration/.../extract_explorer_data.py)
@@ -256,9 +262,13 @@ def extract_costingfe(
     effective_result = result_1gw if result_1gw is not None else result
 
     sensitivities = build_sensitivity_analysis(model, effective_result)
-    # Auto-derive ParameterMetadata for every sensitivity param; yaml-authored
-    # entries (passed in via param_metadata) override generated entries.
-    merged_metadata = {**generate_parameter_metadata(sensitivities), **param_metadata}
+    # Three-layer merge (later wins):
+    #   1. generate_parameter_metadata() — auto baseline + range + auto display_name
+    #   2. shared display registry       — patches display_name/_unit/_multiplier
+    #   3. per-concept model_metadata.yaml — full overrides (passed in via param_metadata)
+    generated = generate_parameter_metadata(sensitivities)
+    patched = apply_display_patches(generated, _DISPLAY_REGISTRY)
+    merged_metadata = {**patched, **param_metadata}
 
     # dataclasses.asdict() flattens the nested ForwardResult into plain dicts
     raw: dict[str, Any] = dataclasses.asdict(effective_result)
@@ -621,6 +631,67 @@ def load_parameter_metadata(concept_dir: Path, concept_id: str) -> dict[str, Par
                 stacklevel=2,
             )
     return result
+
+
+def load_parameter_display_registry(
+    path: Path = _DISPLAY_REGISTRY_PATH,
+) -> dict[str, dict[str, Any]]:
+    """Load the shared display-name registry as partial-field patches.
+
+    Each entry maps `param_key -> {display_name?, display_unit?, display_multiplier?}`.
+    Unknown fields are dropped with a warning. Returns {} if the file is absent.
+
+    Unlike `load_parameter_metadata`, the registry is intentionally partial — it
+    patches display fields on top of `generate_parameter_metadata()` output rather
+    than replacing the whole `ParameterMetadata`.
+    """
+    if not path.exists():
+        return {}
+    raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    out: dict[str, dict[str, Any]] = {}
+    for key, entry in raw.items():
+        if not isinstance(entry, dict):
+            warnings.warn(
+                f"parameter_display_registry: ignoring non-dict entry for {key!r}",
+                UserWarning,
+                stacklevel=2,
+            )
+            continue
+        unknown = set(entry) - _REGISTRY_PATCH_FIELDS
+        if unknown:
+            warnings.warn(
+                f"parameter_display_registry: unknown fields for {key!r}: {sorted(unknown)}",
+                UserWarning,
+                stacklevel=2,
+            )
+        out[key] = {k: v for k, v in entry.items() if k in _REGISTRY_PATCH_FIELDS}
+    return out
+
+
+def apply_display_patches(
+    generated: dict[str, ParameterMetadata],
+    patches: dict[str, dict[str, Any]],
+) -> dict[str, ParameterMetadata]:
+    """Apply field-level display patches to generated parameter metadata.
+
+    Only `display_name`, `display_unit`, and `display_multiplier` are patched.
+    Generated fields like `baseline`, `range`, `category`, `confidence` are
+    preserved. Patches for keys not present in `generated` are ignored
+    (registry-key not in this concept's sensitivity output).
+    """
+    out: dict[str, ParameterMetadata] = {}
+    for key, meta in generated.items():
+        patch = patches.get(key)
+        if not patch:
+            out[key] = meta
+            continue
+        out[key] = meta.model_copy(update=patch)
+    return out
+
+
+# Loaded once; cheap and stateless. Tests can monkeypatch
+# `_DISPLAY_REGISTRY` or call `load_parameter_display_registry(custom_path)` directly.
+_DISPLAY_REGISTRY: dict[str, dict[str, Any]] = load_parameter_display_registry()
 
 
 # ---------------------------------------------------------------------------
