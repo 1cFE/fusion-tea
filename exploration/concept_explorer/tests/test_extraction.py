@@ -19,8 +19,6 @@ import pytest
 
 from exploration.concept_explorer.extract_explorer_data import (  # noqa: E402
     ExtractionError,
-    build_manifest,
-    build_parameter_index,
     discover_concepts,
     extract_costingfe,
     extract_narrative,
@@ -47,6 +45,8 @@ from exploration.concept_explorer.models import (  # noqa: E402, I001
     SensitivityAnalysis,
     SensitivityEntry,
     SourcePaths,
+    build_manifest,
+    build_parameter_index,
 )
 
 # ---------------------------------------------------------------------------
@@ -1011,9 +1011,10 @@ class TestConceptFilter:
 
         assert (data_dir / "01.json").exists()
         assert not (data_dir / "04.json").exists()
-        manifest = ConceptManifest.model_validate_json((data_dir / "manifest.json").read_text())
-        assert len(manifest.concepts) == 1
-        assert manifest.concepts[0].concept_id == "01"
+        # Extraction no longer writes manifest.json — the contract is just
+        # "filtered run only writes matching per-concept JSONs".
+        assert not (data_dir / "manifest.json").exists()
+        assert not (data_dir / "parameter_index.json").exists()
 
     def test_multiple_concept_filter(self, tmp_path: Path) -> None:
         analyses_dir = tmp_path / "analyses"
@@ -1039,6 +1040,58 @@ class TestConceptFilter:
         assert (data_dir / "01.json").exists()
         assert not (data_dir / "04.json").exists()
         assert (data_dir / "07.json").exists()
+
+    def test_filtered_extraction_preserves_other_concepts(self, tmp_path: Path) -> None:
+        """AC-4 regression: filtered re-extraction must not hide existing concepts.
+
+        Pre-populate data/ with 01.json…05.json, then re-extract only "01".
+        After server-startup _load_data() runs, all 5 concepts must remain
+        visible. (Before this work, extraction overwrote manifest.json with
+        a single-entry manifest, hiding 02–05 from the UI.)
+        """
+        from exploration.concept_explorer.server import _load_data
+
+        analyses_dir = tmp_path / "analyses"
+        analyses_dir.mkdir()
+        data_dir = tmp_path / "data"
+        data_dir.mkdir()
+
+        # Pre-populate with five existing per-concept JSONs.
+        for cid in ["01", "02", "03", "04", "05"]:
+            placeholder = ConceptData(
+                concept_id=cid,
+                name=f"Pre-existing {cid}",
+                confinement_family=ConfinementFamily.MFE,
+                status=ConceptStatus.IN_PROGRESS,
+                has_cost_model=False,
+                has_sensitivities=False,
+                sources=SourcePaths(),
+            )
+            (data_dir / f"{cid}.json").write_text(placeholder.model_dump_json())
+
+        # Set up only the "01" analyses dir so the filter has something to extract.
+        _make_concept_dir(analyses_dir, concept_id="01", with_model_setup=False)
+        mock_module = types.SimpleNamespace()
+
+        with patch(
+            "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
+            return_value=mock_module,
+        ):
+            run_extraction(
+                analyses_dir=analyses_dir,
+                data_dir=data_dir,
+                concept_filter=["01"],
+                skip_narrative=True,
+            )
+
+        # All five per-concept JSONs are still on disk.
+        for cid in ["01", "02", "03", "04", "05"]:
+            assert (data_dir / f"{cid}.json").exists()
+
+        # And the server's startup-computed manifest sees all five.
+        concepts, manifest, _ = _load_data(data_dir)
+        assert set(concepts.keys()) == {"01", "02", "03", "04", "05"}
+        assert {e.concept_id for e in manifest.concepts} == {"01", "02", "03", "04", "05"}
 
 
 # ---------------------------------------------------------------------------

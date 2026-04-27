@@ -1426,16 +1426,8 @@ class TestIntegration_ExtractExplorerData:
         fake_concept.model_dump_json.return_value = '{"concept_id": "42"}'
         monkeypatch.setattr(eed, "extract_standalone", lambda *a, **kw: fake_concept)
         monkeypatch.setattr(eed, "load_parameter_metadata", lambda *a, **kw: {})
-        # Manifest + parameter_index builders consume the returned list;
-        # stub them out so we don't need a real ConceptData shape.
-        monkeypatch.setattr(
-            eed, "build_manifest",
-            lambda extracted: MagicMock(model_dump_json=lambda indent=2: "{}"),
-        )
-        monkeypatch.setattr(
-            eed, "build_parameter_index",
-            lambda extracted: MagicMock(model_dump_json=lambda indent=2: "{}"),
-        )
+        # Manifest + parameter_index are no longer built during extraction
+        # (server computes them at startup), so no stubbing is needed.
 
         eed.run_extraction(
             analyses_dir=analyses_dir,

@@ -1,0 +1,54 @@
+direction: down
+
+classes: {
+  step: {
+    shape: rectangle
+    style.fill: "#eff6ff"
+    style.stroke: "#1d4ed8"
+    style.stroke-width: 2
+    style.font-color: "#0f172a"
+    style.font-size: 16
+    style.border-radius: 6
+  }
+  decision: {
+    shape: diamond
+    style.fill: "#fef9c3"
+    style.stroke: "#a16207"
+    style.stroke-width: 2
+    style.font-color: "#451a03"
+    style.font-size: 14
+  }
+  exit: {
+    shape: oval
+    style.fill: "#dcfce7"
+    style.stroke: "#166534"
+    style.stroke-width: 2
+    style.font-color: "#0f172a"
+  }
+  feedback: {
+    shape: oval
+    style.fill: "#f3f4f6"
+    style.stroke: "#6b7280"
+    style.font-color: "#374151"
+    style.font-size: 14
+  }
+}
+
+feedback: "feedback\n(prior assessment, reviewer,\nnew sources, or research agent)" {class: feedback}
+analyze: "analyze" {class: step}
+model: "model-setup" {class: step}
+assess: "assess" {class: step}
+verdict: "PASS?" {class: decision}
+done: "→ Stage 2 (human review)" {class: exit}
+
+feedback -> analyze
+analyze -> model
+model -> assess
+assess -> verdict
+verdict -> done: "yes"
+verdict -> feedback: "no — loop again" {
+  style.stroke: "#dc2626"
+  style.stroke-dash: 4
+  style.stroke-width: 2
+  style.font-color: "#dc2626"
+}

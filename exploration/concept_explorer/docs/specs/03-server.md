@@ -4,7 +4,7 @@
 Serve rendered HTML pages and typed concept data to the browser via a FastAPI application.
 
 ## Requirements
-- On startup: load all `data/*.json` into memory, render Jinja2 templates to `dist/`
+- On startup: load all `data/*.json` into memory, compute `ConceptManifest` and `ParameterIndex` from loaded concepts, render Jinja2 templates to `dist/`
 - Serve `dist/` HTML and `static/` assets
 - Expose data API endpoints returning typed Pydantic models
 - `GET /api/health` — returns `{"status": "ok"}`
@@ -21,8 +21,8 @@ Serve rendered HTML pages and typed concept data to the browser via a FastAPI ap
 - Given the server starts with valid `data/*.json` present, when `GET /api/health` is called, then `{"status": "ok"}` is returned with status 200
 - Given concept `01-hts-compact-tokamak` exists in `data/`, when `GET /api/concepts/01-hts-compact-tokamak` is called, then the response validates as `ConceptData`
 - Given concept `nonexistent` does not exist, when `GET /api/concepts/nonexistent` is called, then status 404 with `{"detail": "Concept nonexistent not found"}`
-- Given `data/manifest.json` exists, when `GET /api/manifest` is called, then the response validates as `ConceptManifest`
-- Given parameter `availability` exists in `data/parameter_index.json`, when `GET /api/parameters/availability` is called, then the response validates as `ParameterIndexEntry`
+- Given `data/*.json` concept files are loaded at startup, when `GET /api/manifest` is called, then the response validates as `ConceptManifest` with one entry per loaded concept
+- Given parameter `availability` exists in any loaded concept's sensitivity data, when `GET /api/parameters/availability` is called, then the response validates as `ParameterIndexEntry`
 - Given `data/` is missing when server starts, then server startup fails with a clear error message
 - Given server starts on default port, when `http://localhost:8421/` is fetched, then `dist/index.html` is returned with status 200
 - Given `uv run python server.py --port 9000`, when server starts, then it listens on port 9000

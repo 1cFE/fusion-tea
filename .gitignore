@@ -15,9 +15,12 @@ wheels/
 .DS_Store
 
 # Tool-owned files (managed by agentic-mbse init --dev)
-.claude/commands/
+.claude/commands/*
+!.claude/commands/manage-concept.md
 .claude/agents/
-.claude/skills/
+.claude/skills/*
+!.claude/skills/browser-inspect/
+!.claude/skills/concept-research-navigation/
 .claude/hooks/
 modeling_project/MODELING_GUIDE.md
 modeling_project/MODELING_PROCESS.md
