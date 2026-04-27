@@ -37,11 +37,13 @@ if str(_PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(_PROJECT_ROOT))
 
 from exploration.concept_explorer.models import (  # noqa: E402, I001
+    Confidence,
     CostModelData,
     ConceptData,
     ConceptStatus,
     ConfinementFamily,
     NarrativeData,
+    ParameterCategory,
     ParameterMetadata,
     SensitivityAnalysis,
     SensitivityEntry,

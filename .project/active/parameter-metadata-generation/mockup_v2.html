@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mockup v2 — Sticky headline + collapsible sections</title>
+<style>
+:root {
+  --color-bg: #0d1117;
+  --color-surface-1: #161b22;
+  --color-surface-2: #21262d;
+  --color-surface-3: #30363d;
+  --color-text-primary: #e6edf3;
+  --color-text-secondary: #8b949e;
+  --color-text-muted: #6e7681;
+  --color-border: #30363d;
+  --color-border-subtle: #21262d;
+  --color-pos: #f59e0b;
+  --color-neg: #10b981;
+  --color-financial: #a855f7;
+  --color-engineering: #3b82f6;
+  --color-mfe: #3b82f6;
+  --color-axis: #30363d;
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* ---- top nav (faux) ---- */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  height: 44px;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border-subtle);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+.topnav .brand {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-text-primary);
+  margin-right: 28px;
+}
+.topnav .nav-link { margin-right: 18px; cursor: pointer; }
+.topnav .nav-link.active { color: var(--color-text-primary); border-bottom: 2px solid var(--color-engineering); padding-bottom: 4px; }
+
+/* ---- sticky compact headline (the new bit) ---- */
+.sticky-headline {
+  position: sticky;
+  top: 44px;   /* sits below topnav */
+  z-index: 20;
+  background: rgba(13, 17, 23, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.sticky-headline .crumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: auto;
+  min-width: 0;
+}
+.sticky-headline .crumb-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+.sticky-headline .crumb-co {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+.sticky-headline .badge {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--color-mfe);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+.stat-pill {
+  display: flex;
+  flex-direction: column;
+  min-width: 96px;
+  position: relative;
+  padding-left: 14px;
+  border-left: 1px solid var(--color-border-subtle);
+}
+.stat-pill__row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.stat-pill__value {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+.stat-pill__unit {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+.stat-pill__label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-muted);
+  margin-top: 1px;
+}
+.stat-pill__delta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  margin-left: 6px;
+}
+.delta-up   { color: var(--color-pos); }
+.delta-down { color: var(--color-neg); }
+.delta-neutral { color: var(--color-text-muted); }
+
+.sticky-headline .reset-link {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-size: 11px;
+  font-family: var(--font-sans);
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.sticky-headline .reset-link:hover {
+  background: var(--color-surface-2);
+  color: var(--color-text-primary);
+}
+.sticky-headline .reset-link[disabled] {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* ---- main page content ---- */
+.page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 24px 80px;
+}
+
+/* hero */
+.hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+.hero__name {
+  font-size: 26px;
+  letter-spacing: 0.01em;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.hero__co {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+.hero__big-stats {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+.hero__big-stat {
+  text-align: right;
+}
+.hero__big-stat .v {
+  font-family: var(--font-mono);
+  font-size: 30px;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+}
+.hero__big-stat .u {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin-left: 2px;
+}
+.hero__big-stat .l {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  letter-spacing: 0.07em;
+  margin-top: 2px;
+}
+
+/* sections (collapsible) */
+.section {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 6px;
+  background: var(--color-surface-1);
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+.section__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  cursor: pointer;
+  user-select: none;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+}
+.section__header:hover { background: rgba(255,255,255,0.025); }
+.section__chevron {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+  color: var(--color-text-muted);
+}
+.section.is-collapsed .section__chevron { transform: rotate(-90deg); }
+.section__title {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.section__hint {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-left: auto;
+}
+.section__body {
+  padding: 0 18px 18px;
+  border-top: 1px solid var(--color-border-subtle);
+  padding-top: 16px;
+}
+.section.is-collapsed .section__body { display: none; }
+
+/* sensitivity grid (re-used from v1) */
+.legend {
+  display: flex;
+  gap: 18px;
+  font-size: 11px;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+  align-items: center;
+}
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.dot.eng  { background: var(--color-engineering); }
+.dot.fin  { background: var(--color-financial); }
+.dot.up   { background: var(--color-pos); }
+.dot.down { background: var(--color-neg); }
+.legend .right { margin-left: auto; }
+
+.grid {
+  display: grid;
+  grid-template-columns:
+    [name] 180px
+    [elastic] minmax(220px, 1.1fr)
+    [slider]  minmax(280px, 1fr)
+    [value]   90px;
+  gap: 0 14px;
+  align-items: center;
+}
+.grid-header {
+  display: contents;
+}
+.grid-header > div {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  padding: 4px 0 8px;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+.grid-header .col-elastic { text-align: center; }
+.grid-header .col-value { text-align: right; }
+
+.cell { padding: 7px 0; border-bottom: 1px solid #1a1f26; }
+.cell.name {
+  font-size: 12.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-primary);
+}
+.cell.name .group-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.cell.name.eng .group-dot { background: var(--color-engineering); }
+.cell.name.fin .group-dot { background: var(--color-financial); }
+.cell.name .name-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cell.name .elast-num {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.cell.elastic { position: relative; height: 22px; display: flex; align-items: center; }
+.bar-track { position: absolute; inset: 0; }
+.bar-axis { position: absolute; top: 4px; bottom: 4px; left: 50%; width: 1px; background: var(--color-axis); }
+.bar { position: absolute; top: 4px; bottom: 4px; border-radius: 2px; }
+.bar.pos { background: var(--color-pos); left: 50%; }
+.bar.neg { background: var(--color-neg); right: 50%; }
+
+.cell.slider { display: flex; align-items: center; }
+input[type=range] {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 4px;
+  background: var(--color-surface-3);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--color-text-primary);
+  border: 2px solid var(--color-bg);
+  cursor: grab;
+}
+input[type=range]:active::-webkit-slider-thumb { cursor: grabbing; }
+input[type=range]::-moz-range-thumb {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--color-text-primary); border: 2px solid var(--color-bg);
+}
+
+.cell.value {
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-primary);
+}
+.cell.value.changed { color: var(--color-pos); }
+.cell.value.changed.lower { color: var(--color-neg); }
+
+/* placeholder content for narrative / risks / cas */
+.lorem {
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.lorem p + p { margin-top: 10px; }
+.bullet { list-style: none; margin: 8px 0 0 0; padding: 0; }
+.bullet li {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  padding: 4px 0 4px 16px;
+  position: relative;
+}
+.bullet li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--color-text-muted);
+}
+
+.risk-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.risk-table th, .risk-table td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--color-border-subtle); }
+.risk-table th { color: var(--color-text-muted); font-size: 10px; text-transform: uppercase; letter-spacing: 0.07em; }
+.severity { display: inline-block; padding: 2px 6px; border-radius: 3px; font-size: 10px; text-transform: uppercase; }
+.severity.high { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+.severity.medium { background: rgba(245, 158, 11, 0.15); color: var(--color-pos); }
+.severity.low { background: rgba(107, 114, 128, 0.15); color: var(--color-text-secondary); }
+
+.cas-row {
+  display: grid;
+  grid-template-columns: 4px 1fr auto auto;
+  gap: 12px;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+  font-size: 12.5px;
+}
+.cas-row .swatch { width: 4px; height: 14px; border-radius: 1px; }
+.cas-row .name { color: var(--color-text-primary); }
+.cas-row .v {
+  font-family: var(--font-mono);
+  color: var(--color-text-primary);
+  text-align: right;
+  min-width: 80px;
+}
+.cas-row .pct {
+  font-family: var(--font-mono);
+  color: var(--color-text-muted);
+  text-align: right;
+  min-width: 50px;
+  font-size: 11px;
+}
+
+/* footer / nav helpers */
+.section__hint .changed-pill {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--color-pos);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 600;
+}
+
+/* mini diff arrow next to sticky stat */
+.mini-arrow { font-family: var(--font-mono); font-size: 10px; }
+
+</style>
+</head>
+<body>
+
+<!-- faux topnav -->
+<div class="topnav">
+  <span class="brand">FUSION TEA</span>
+  <span class="nav-link">Taxonomy</span>
+  <span class="nav-link active">All Concepts</span>
+  <span class="nav-link">Compare</span>
+</div>
+
+<!-- sticky headline -->
+<div class="sticky-headline">
+  <div class="crumb">
+    <span class="crumb-name">HTS Compact Tokamak</span>
+    <span class="badge">MFE</span>
+    <span class="crumb-co">Commonwealth Fusion Systems</span>
+  </div>
+
+  <div class="stat-pill">
+    <div class="stat-pill__row">
+      <span class="stat-pill__value" id="lcoe">216.3</span>
+      <span class="stat-pill__unit">$/MWh</span>
+      <span class="stat-pill__delta delta-neutral" id="lcoe-delta"></span>
+    </div>
+    <div class="stat-pill__label">LCOE</div>
+  </div>
+
+  <div class="stat-pill">
+    <div class="stat-pill__row">
+      <span class="stat-pill__value" id="overnight">15554</span>
+      <span class="stat-pill__unit">$/kW</span>
+      <span class="stat-pill__delta delta-neutral" id="overnight-delta"></span>
+    </div>
+    <div class="stat-pill__label">Overnight Cost</div>
+  </div>
+
+  <div class="stat-pill">
+    <div class="stat-pill__row">
+      <span class="stat-pill__value">1000</span>
+      <span class="stat-pill__unit">MW</span>
+    </div>
+    <div class="stat-pill__label">Net Power</div>
+  </div>
+
+  <div class="stat-pill">
+    <div class="stat-pill__row">
+      <span class="stat-pill__value">75.0</span>
+      <span class="stat-pill__unit">%</span>
+    </div>
+    <div class="stat-pill__label">Capacity Factor</div>
+  </div>
+
+  <button class="reset-link" id="reset-btn" disabled>Reset</button>
+</div>
+
+<div class="page">
+
+  <!-- Hero (non-collapsible) -->
+  <div class="hero">
+    <div>
+      <div class="hero__name">HTS Compact Tokamak</div>
+      <div class="hero__co">Commonwealth Fusion Systems · MFE · D-T fuel cycle</div>
+    </div>
+  </div>
+
+  <!-- Section: Narrative (default collapsed) -->
+  <section class="section is-collapsed" data-section="narrative">
+    <button class="section__header" onclick="toggleSection(this)">
+      <svg class="section__chevron" viewBox="0 0 12 12" fill="currentColor"><path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="section__title">Narrative</span>
+      <span class="section__hint">Key bets · eliminated costs · novel costs</span>
+    </button>
+    <div class="section__body">
+      <div class="lorem">
+        <p><strong style="color:var(--color-text-primary)">Key bets.</strong></p>
+        <ul class="bullet">
+          <li>HTS magnets enable B = 12 T at compact aspect ratio, shrinking R₀ to 3.3 m</li>
+          <li>Same fusion power at ¼ the volume of conventional tokamaks → CAS22 magnets dominate</li>
+          <li>Disruption mitigation handled in software (tearing mode avoidance) rather than hardware</li>
+        </ul>
+        <p style="margin-top:14px"><strong style="color:var(--color-text-primary)">Eliminated costs.</strong></p>
+        <ul class="bullet">
+          <li>Massive low-field copper coil sets replaced with HTS REBCO tape stacks</li>
+          <li>No central solenoid (NSTX-style geometry) — 12% lower CAS22 vs ARC baseline</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Risks (default collapsed) -->
+  <section class="section is-collapsed" data-section="risks">
+    <button class="section__header" onclick="toggleSection(this)">
+      <svg class="section__chevron" viewBox="0 0 12 12" fill="currentColor"><path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="section__title">Risks</span>
+      <span class="section__hint">3 risks · 1 high</span>
+    </button>
+    <div class="section__body">
+      <table class="risk-table">
+        <thead><tr><th>Severity</th><th>Description</th><th>Retirement Path</th></tr></thead>
+        <tbody>
+          <tr><td><span class="severity high">High</span></td><td>HTS tape degradation under 14 MeV neutron flux</td><td>SPARC operating data, 2027</td></tr>
+          <tr><td><span class="severity medium">Med</span></td><td>Disruption damage at high field exceeds linear scaling</td><td>JT-60SA disruption campaign</td></tr>
+          <tr><td><span class="severity low">Low</span></td><td>REBCO supply chain bottleneck for production-scale fleet</td><td>Vendor diversification 2030+</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Section: CAS Cost Breakdown (default collapsed) -->
+  <section class="section is-collapsed" data-section="cas">
+    <button class="section__header" onclick="toggleSection(this)">
+      <svg class="section__chevron" viewBox="0 0 12 12" fill="currentColor"><path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="section__title">CAS Cost Breakdown</span>
+      <span class="section__hint">Total Capital: 16,975 M$</span>
+    </button>
+    <div class="section__body">
+      <div class="cas-row"><div class="swatch" style="background:#ef4444"></div><div class="name">Reactor Plant Equipment (CAS22)</div><div class="v">9,370 M$</div><div class="pct">55.2%</div></div>
+      <div class="cas-row"><div class="swatch" style="background:#f59e0b"></div><div class="name">Interest During Construction</div><div class="v">2,031 M$</div><div class="pct">12.0%</div></div>
+      <div class="cas-row"><div class="swatch" style="background:#3b82f6"></div><div class="name">Indirect Costs</div><div class="v">1,829 M$</div><div class="pct">10.8%</div></div>
+      <div class="cas-row"><div class="swatch" style="background:#10b981"></div><div class="name">Financial Costs</div><div class="v">1,234 M$</div><div class="pct">7.3%</div></div>
+      <div class="cas-row"><div class="swatch" style="background:#a855f7"></div><div class="name">Supplementary Costs</div><div class="v">664 M$</div><div class="pct">3.9%</div></div>
+      <div class="cas-row"><div class="swatch" style="background:#6b7280"></div><div class="name">Buildings &amp; Structures</div><div class="v">573 M$</div><div class="pct">3.4%</div></div>
+      <div class="cas-row"><div class="swatch" style="background:#6b7280"></div><div class="name">Special Materials</div><div class="v">559 M$</div><div class="pct">3.3%</div></div>
+      <div class="cas-row"><div class="swatch" style="background:#6b7280"></div><div class="name">+ 9 more CAS lines …</div><div class="v">714 M$</div><div class="pct">4.2%</div></div>
+    </div>
+  </section>
+
+  <!-- Section: Sensitivity & What-If (DEFAULT EXPANDED) -->
+  <section class="section" data-section="sensitivity">
+    <button class="section__header" onclick="toggleSection(this)">
+      <svg class="section__chevron" viewBox="0 0 12 12" fill="currentColor"><path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="section__title">Sensitivity &amp; What-If</span>
+      <span class="section__hint" id="changed-hint">Drag any slider — top numbers will update</span>
+    </button>
+    <div class="section__body">
+      <div class="legend">
+        <span><span class="dot eng"></span>Engineering</span>
+        <span><span class="dot fin"></span>Financial</span>
+        <span><span class="dot up"></span>Raises LCOE</span>
+        <span><span class="dot down"></span>Lowers LCOE</span>
+        <span class="right">Bars: baseline elasticity (ΔLCOE% / Δparam%) on [-1, +1]</span>
+      </div>
+      <div class="grid">
+        <div class="grid-header">
+          <div>Parameter</div>
+          <div class="col-elastic">Sensitivity</div>
+          <div>What-if</div>
+          <div class="col-value">Value</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Sources / Methodology (default collapsed) -->
+  <section class="section is-collapsed" data-section="sources">
+    <button class="section__header" onclick="toggleSection(this)">
+      <svg class="section__chevron" viewBox="0 0 12 12" fill="currentColor"><path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="section__title">Sources &amp; Methodology</span>
+      <span class="section__hint">model_setup.py · analysis.md</span>
+    </button>
+    <div class="section__body">
+      <div class="lorem">
+        <p>Cost model: <code style="font-family:var(--font-mono); background: var(--color-surface-2); padding: 1px 5px; border-radius: 3px;">exploration/concept_analysis/analyses/01-hts-compact-tokamak/model_setup.py</code></p>
+        <p>Methodology: <code style="font-family:var(--font-mono); background: var(--color-surface-2); padding: 1px 5px; border-radius: 3px;">analysis.md</code> · 1costingfe v0.4.2 · 1 GW net electric reference</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- spacer to allow scrolling -->
+  <div style="height: 200px;"></div>
+
+</div>
+
+<script>
+const PARAMS = [
+  {name:"availability", display:"Availability", group:"engineering", elasticity:-0.928, baseline:0.75, range:[0.525, 0.975], unit:"", multiplier:1},
+  {name:"interest_rate", display:"Interest Rate", group:"financial", elasticity:0.628, baseline:0.07, range:[0.049, 0.091], unit:"%", multiplier:100},
+  {name:"construction_time_yr", display:"Construction Time", group:"engineering", elasticity:0.259, baseline:5.0, range:[3.5, 6.5], unit:"yr", multiplier:1},
+  {name:"r_coil", display:"Coil Radius", group:"engineering", elasticity:0.247, baseline:1.85, range:[1.295, 2.405], unit:"m", multiplier:1},
+  {name:"eta_th", display:"Thermal Efficiency", group:"engineering", elasticity:-0.217, baseline:0.46, range:[0.322, 0.598], unit:"%", multiplier:100},
+  {name:"R0", display:"Major Radius", group:"engineering", elasticity:0.193, baseline:3.3, range:[2.31, 4.29], unit:"m", multiplier:1},
+  {name:"elon", display:"Elongation", group:"engineering", elasticity:0.193, baseline:1.84, range:[1.288, 2.392], unit:"", multiplier:1},
+  {name:"blanket_t", display:"Blanket Thickness", group:"engineering", elasticity:0.141, baseline:0.8, range:[0.56, 1.04], unit:"m", multiplier:1},
+  {name:"b_max", display:"Peak Magnetic Field", group:"engineering", elasticity:0.124, baseline:12.0, range:[8.4, 15.6], unit:"T", multiplier:1},
+  {name:"plasma_t", display:"Plasma Temperature", group:"engineering", elasticity:0.107, baseline:1.13, range:[0.791, 1.469], unit:"keV", multiplier:1},
+  {name:"p_nbi", display:"NBI Power", group:"engineering", elasticity:0.085, baseline:50.0, range:[35.0, 65.0], unit:"MW", multiplier:1},
+  {name:"inflation_rate", display:"Inflation Rate", group:"financial", elasticity:0.056, baseline:0.0245, range:[0.01715, 0.03185], unit:"%", multiplier:100},
+  {name:"mn", display:"Energy Multiplication", group:"engineering", elasticity:-0.047, baseline:1.1, range:[0.77, 1.43], unit:"", multiplier:1},
+  {name:"vessel_t", display:"Vessel Thickness", group:"engineering", elasticity:0.026, baseline:0.2, range:[0.14, 0.26], unit:"m", multiplier:1},
+  {name:"eta_pin", display:"Pinj Efficiency", group:"engineering", elasticity:-0.026, baseline:0.5, range:[0.35, 0.65], unit:"%", multiplier:100},
+];
+const LCOE_BASE = 216.3;
+const OVERNIGHT_BASE = 15554;
+const MAX_E = Math.max(...PARAMS.map(p => Math.abs(p.elasticity)));
+const overrides = {};
+
+const gridEl = document.querySelector(".grid");
+const lcoeEl = document.getElementById("lcoe");
+const lcoeDeltaEl = document.getElementById("lcoe-delta");
+const overnightEl = document.getElementById("overnight");
+const overnightDeltaEl = document.getElementById("overnight-delta");
+const changedHintEl = document.getElementById("changed-hint");
+const resetBtn = document.getElementById("reset-btn");
+
+function fmt(val, unit, multiplier) {
+  const v = val * multiplier;
+  if (unit === "%") return v.toFixed(1) + "%";
+  if (Math.abs(v) >= 100) return v.toFixed(0) + (unit ? " " + unit : "");
+  if (Math.abs(v) >= 10) return v.toFixed(1) + (unit ? " " + unit : "");
+  return v.toFixed(3) + (unit ? " " + unit : "");
+}
+
+function buildRow(p) {
+  // name
+  const nameCell = document.createElement("div");
+  nameCell.className = `cell name ${p.group === "financial" ? "fin" : "eng"}`;
+  const dot = document.createElement("span"); dot.className = "group-dot";
+  const txt = document.createElement("span"); txt.className = "name-text"; txt.textContent = p.display;
+  const num = document.createElement("span"); num.className = "elast-num";
+  const sign = p.elasticity > 0 ? "+" : "";
+  num.textContent = sign + p.elasticity.toFixed(2);
+  nameCell.append(dot, txt, num);
+
+  // bar
+  const elasticCell = document.createElement("div");
+  elasticCell.className = "cell elastic";
+  const track = document.createElement("div"); track.className = "bar-track";
+  const axis = document.createElement("div"); axis.className = "bar-axis";
+  track.appendChild(axis);
+  const bar = document.createElement("div");
+  const widthPct = (Math.abs(p.elasticity) / MAX_E) * 50;
+  bar.className = "bar " + (p.elasticity >= 0 ? "pos" : "neg");
+  bar.style.width = widthPct + "%";
+  track.appendChild(bar);
+  elasticCell.appendChild(track);
+
+  // slider
+  const sliderCell = document.createElement("div");
+  sliderCell.className = "cell slider";
+  const input = document.createElement("input");
+  input.type = "range";
+  input.min = p.range[0]; input.max = p.range[1];
+  input.step = (p.range[1] - p.range[0]) / 200;
+  input.value = p.baseline; input.dataset.name = p.name;
+  sliderCell.appendChild(input);
+
+  // value
+  const valueCell = document.createElement("div");
+  valueCell.className = "cell value";
+  valueCell.textContent = fmt(p.baseline, p.unit, p.multiplier);
+
+  input.addEventListener("input", (e) => {
+    const v = parseFloat(e.target.value);
+    overrides[p.name] = v;
+    valueCell.textContent = fmt(v, p.unit, p.multiplier);
+    valueCell.classList.remove("changed", "lower");
+    if (Math.abs(v - p.baseline) > 1e-9) {
+      const dPct = (v - p.baseline) / p.baseline;
+      const lcoeDir = p.elasticity * dPct;
+      valueCell.classList.add("changed");
+      if (lcoeDir < 0) valueCell.classList.add("lower");
+    }
+    recompute();
+  });
+
+  gridEl.appendChild(nameCell);
+  gridEl.appendChild(elasticCell);
+  gridEl.appendChild(sliderCell);
+  gridEl.appendChild(valueCell);
+}
+
+function setDelta(el, base, current) {
+  const delta = ((current - base) / base) * 100;
+  el.classList.remove("delta-up","delta-down","delta-neutral");
+  if (Math.abs(delta) < 0.05) {
+    el.textContent = "";
+    el.classList.add("delta-neutral");
+  } else if (delta > 0) {
+    el.textContent = ` ▲${delta.toFixed(1)}%`;
+    el.classList.add("delta-up");
+  } else {
+    el.textContent = ` ▼${Math.abs(delta).toFixed(1)}%`;
+    el.classList.add("delta-down");
+  }
+}
+
+function recompute() {
+  let factor = 1;
+  let nChanged = 0;
+  for (const p of PARAMS) {
+    const v = overrides[p.name];
+    if (v === undefined || Math.abs(v - p.baseline) < 1e-9) continue;
+    nChanged++;
+    const dPct = (v - p.baseline) / p.baseline;
+    factor *= (1 + p.elasticity * dPct);
+  }
+  const newLcoe = LCOE_BASE * factor;
+  const newOvernight = OVERNIGHT_BASE * factor;
+  lcoeEl.textContent = newLcoe.toFixed(1);
+  overnightEl.textContent = newOvernight.toFixed(0);
+  setDelta(lcoeDeltaEl, LCOE_BASE, newLcoe);
+  setDelta(overnightDeltaEl, OVERNIGHT_BASE, newOvernight);
+
+  if (nChanged === 0) {
+    changedHintEl.innerHTML = `<span style="color:var(--color-text-muted)">Drag any slider — top numbers will update</span>`;
+    resetBtn.disabled = true;
+  } else {
+    changedHintEl.innerHTML = `<span class="changed-pill">${nChanged} CHANGED</span>`;
+    resetBtn.disabled = false;
+  }
+}
+
+function toggleSection(headerBtn) {
+  const sec = headerBtn.closest(".section");
+  sec.classList.toggle("is-collapsed");
+}
+
+resetBtn.addEventListener("click", () => {
+  for (const input of document.querySelectorAll("input[type=range]")) {
+    const p = PARAMS.find(x => x.name === input.dataset.name);
+    input.value = p.baseline;
+    delete overrides[p.name];
+  }
+  for (const cell of document.querySelectorAll(".cell.value")) {
+    cell.classList.remove("changed", "lower");
+  }
+  // restore each value cell label
+  PARAMS.forEach((p, i) => {
+    const cells = document.querySelectorAll(".cell.value");
+    cells[i].textContent = fmt(p.baseline, p.unit, p.multiplier);
+  });
+  recompute();
+});
+
+PARAMS.forEach(buildRow);
+</script>
+
+</body>
+</html>

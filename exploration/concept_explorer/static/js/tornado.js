@@ -1,13 +1,14 @@
 /**
  * tornado.js — Tornado chart component for parameter sensitivity visualization.
  *
- * Renders a horizontal bar chart showing parameter elasticities with:
+ * DOM-based implementation (replaces Plotly) rendering an HTML/CSS grid with:
  * - Category color encoding (design system colors from explorer.css)
  * - Confidence opacity (1.0 / 0.8 / 0.6) + hatched fill for low-confidence bars
- * - Population whiskers: [min, max] elasticity range across concepts in the parameter index
+ * - Population whiskers: [min, max] elasticity range across concepts
  * - Click handler for parameter detail popover
+ * - Tooltip on hover with parameter name, elasticity, category, confidence
  *
- * Depends on: Plotly.js at /static/vendor/plotly-basic.min.js (loaded globally as window.Plotly)
+ * No external dependencies — pure DOM.
  */
 
 "use strict";
@@ -19,6 +20,7 @@ const TORNADO_CATEGORY_COLORS = {
   "key-innovation": "#10B981",
   "concept-unique": "#F59E0B",
   "high-risk": "#EF4444",
+  "unclassified": "#6B7280",
 };
 
 const TORNADO_CATEGORY_LABELS = {
@@ -27,6 +29,7 @@ const TORNADO_CATEGORY_LABELS = {
   "key-innovation": "Key Innovation",
   "concept-unique": "Concept Unique",
   "high-risk": "High Risk",
+  "unclassified": "Unclassified",
 };
 
 // Display order for categories in legend
@@ -36,12 +39,14 @@ const TORNADO_CATEGORY_ORDER = [
   "key-innovation",
   "concept-unique",
   "high-risk",
+  "unclassified",
 ];
 
 const TORNADO_CONFIDENCE_OPACITY = {
   high: 1.0,
   medium: 0.8,
   low: 0.6,
+  unknown: 0.8,
 };
 
 /**
@@ -50,19 +55,10 @@ const TORNADO_CONFIDENCE_OPACITY = {
  * @param {HTMLElement} container - Target DOM element (will be cleared and replaced)
  * @param {Object} options
  * @param {Object|null} options.sensitivities
- *   Sensitivity data: { engineering: Record<string, {elasticity, baseline}>,
- *                       financial:   Record<string, {elasticity, baseline}> }
- *   Pass null for standalone concepts — renders informative placeholder instead.
  * @param {Object} options.parameterMetadata
- *   Map of paramName → ParameterMetadata (display_name, category, confidence, range, ...)
  * @param {Object} [options.populationContext=null]
- *   ParameterIndex object ({ parameters: { [paramName]: { concepts: [{concept_id, name, elasticity}] } } })
- *   Used to compute [min, max] whisker ranges. Pass null to omit whiskers.
- *   NOTE: The spec interface types this as ConceptManifest, but ParameterIndex is the correct type
- *   because only ParameterIndex carries per-parameter cross-concept elasticities.
- * @param {number} [options.topN=15] - Maximum number of bars to display (sorted by |elasticity|)
+ * @param {number} [options.topN=15]
  * @param {Function} [options.onParameterClick=null]
- *   Callback fired when a bar is clicked: onParameterClick(paramName, metadata)
  */
 function renderTornado(container, options) {
   const {
@@ -73,7 +69,7 @@ function renderTornado(container, options) {
     onParameterClick = null,
   } = options;
 
-  // Standalone concept: show placeholder instead of empty chart
+  // Standalone concept: show placeholder
   if (sensitivities === null) {
     container.innerHTML =
       '<p class="text-muted" style="padding: 24px 0; font-style: italic; font-size: 13px;">' +
@@ -83,7 +79,6 @@ function renderTornado(container, options) {
   }
 
   // Merge engineering + financial into one flat map
-  // Warn per missing metadata key so callers notice incomplete metadata files
   const merged = {};
   for (const [key, entry] of Object.entries(sensitivities.engineering || {})) {
     merged[key] = { ...entry, group: "engineering" };
@@ -109,298 +104,270 @@ function renderTornado(container, options) {
     return;
   }
 
-  // Resolve display names (fallback to param key if metadata absent)
+  // Resolve display names
   const displayName = (paramName) =>
     parameterMetadata[paramName]?.display_name || paramName;
 
-  // Build global y-axis ordering: highest |elasticity| at top.
-  // Plotly renders category axis bottom→top, so the LAST entry in categoryarray is at the TOP.
-  // We want highest |elasticity| (first in `sorted`) at the top → reverse for categoryarray.
-  const yLabels = sorted.map(([paramName]) => displayName(paramName));
-  const categoryArray = [...yLabels].reverse();
+  // Compute x-axis extent for scaling
+  const allElasticities = sorted.map(([, e]) => e.elasticity);
+  let maxAbs = Math.max(...allElasticities.map(Math.abs));
 
-  // --- Whisker trace (population range, rendered behind bars) ---
-  // For each parameter present in populationContext with ≥2 concepts, show [min, max] as an
-  // error-bar scatter trace. Absent for concept-unique parameters (only 1 concept in index).
-  const whiskerTrace = _buildWhiskerTrace(sorted, parameterMetadata, populationContext, displayName);
-
-  // --- Primary bar traces (one per category, solid + hatched variants) ---
-  // Group sorted params by category
-  const byCategory = {};
-  for (const [paramName, entry] of sorted) {
-    const meta = parameterMetadata[paramName];
-    const category = meta ? meta.category : "shared-baseline";
-    if (!byCategory[category]) byCategory[category] = [];
-    byCategory[category].push({ paramName, entry, meta });
-  }
-
-  const barTraces = _buildBarTraces(byCategory, displayName);
-
-  const traces = [];
-  if (whiskerTrace) traces.push(whiskerTrace);
-  traces.push(...barTraces);
-
-  const layout = {
-    paper_bgcolor: "transparent",
-    plot_bgcolor: "transparent",
-    margin: { l: 10, r: 30, t: 10, b: 30 },
-    height: Math.max(300, sorted.length * 28 + 120),
-    xaxis: {
-      title: {
-        text: "Elasticity (\u0394LCOE% / \u0394param%)",
-        font: { color: "#8b949e", size: 11 },
-        standoff: 8,
-      },
-      zeroline: true,
-      zerolinecolor: "#30363d",
-      zerolinewidth: 2,
-      gridcolor: "#21262d",
-      tickfont: { color: "#6e7681", size: 11 },
-      tickformat: ".2f",
-    },
-    yaxis: {
-      tickfont: { color: "#8b949e", size: 11 },
-      automargin: true,
-      categoryorder: "array",
-      categoryarray: categoryArray,
-    },
-    barmode: "overlay",
-    legend: {
-      font: { color: "#8b949e", size: 11 },
-      bgcolor: "transparent",
-      bordercolor: "#30363d",
-      borderwidth: 1,
-      orientation: "h",
-      x: 0,
-      y: -0.12,
-      xanchor: "left",
-      yanchor: "top",
-      traceorder: "normal",
-    },
-    hoverlabel: {
-      bgcolor: "#21262d",
-      bordercolor: "#30363d",
-      font: { color: "#e6edf3", size: 12 },
-      align: "left",
-    },
-  };
-
-  const config = {
-    displayModeBar: false,
-    responsive: true,
-  };
-
-  Plotly.newPlot(container, traces, layout, config);
-
-  // Wire click handler — Plotly fires plotly_click on the container element
-  if (onParameterClick) {
-    container.on("plotly_click", (eventData) => {
-      if (!eventData || !eventData.points || eventData.points.length === 0) return;
-      const point = eventData.points[0];
-      // customdata is set per-point on bar traces
-      const cd = point.customdata;
-      if (cd && cd.paramName) {
-        onParameterClick(cd.paramName, cd.meta || null);
+  // Include population whisker extents
+  if (populationContext?.parameters) {
+    for (const [paramName] of sorted) {
+      const ie = populationContext.parameters[paramName];
+      if (ie?.concepts?.length >= 2) {
+        for (const c of ie.concepts) {
+          maxAbs = Math.max(maxAbs, Math.abs(c.elasticity));
+        }
       }
+    }
+  }
+  // Add 10% padding
+  maxAbs *= 1.1;
+  if (maxAbs === 0) maxAbs = 1;
+
+  // Build DOM
+  container.innerHTML = "";
+
+  const wrapper = document.createElement("div");
+  wrapper.className = "tornado-chart";
+  wrapper.style.cssText = "width: 100%; font-family: inherit;";
+
+  // --- Rows ---
+  for (const [paramName, entry] of sorted) {
+    const meta = parameterMetadata[paramName] || {};
+    const category = meta.category || "unclassified";
+    const confidence = meta.confidence || "unknown";
+    const color = TORNADO_CATEGORY_COLORS[category] || TORNADO_CATEGORY_COLORS["unclassified"];
+    const opacity = TORNADO_CONFIDENCE_OPACITY[confidence] ?? 0.8;
+    const isLowConfidence = confidence === "low";
+    const elasticity = entry.elasticity;
+
+    const row = document.createElement("div");
+    row.className = "tornado-row";
+    row.style.cssText = `
+      display: grid;
+      grid-template-columns: 180px 1fr 60px;
+      align-items: center;
+      height: 32px;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(48, 54, 61, 0.5);
+    `;
+    row.title =
+      `${displayName(paramName)}\n` +
+      `Elasticity: ${elasticity.toFixed(3)}\n` +
+      `Category: ${TORNADO_CATEGORY_LABELS[category] || category}\n` +
+      `Confidence: ${confidence}`;
+
+    // Click handler
+    if (onParameterClick) {
+      row.addEventListener("click", () => onParameterClick(paramName, meta));
+      row.style.cursor = "pointer";
+    }
+
+    // --- Label cell ---
+    const labelCell = document.createElement("div");
+    labelCell.style.cssText = `
+      font-size: 12px;
+      color: #8b949e;
+      text-align: right;
+      padding-right: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    `;
+    // Category dot
+    const dot = document.createElement("span");
+    dot.style.cssText = `
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: ${color};
+      margin-right: 6px;
+      vertical-align: middle;
+    `;
+    labelCell.appendChild(dot);
+    labelCell.appendChild(document.createTextNode(displayName(paramName)));
+
+    // --- Bar cell (contains the dual-direction bar + whisker) ---
+    const barCell = document.createElement("div");
+    barCell.style.cssText = `
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    `;
+
+    // Zero line
+    const zeroLine = document.createElement("div");
+    zeroLine.style.cssText = `
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: #30363d;
+      z-index: 1;
+    `;
+    barCell.appendChild(zeroLine);
+
+    // Population whisker (behind bar)
+    if (populationContext?.parameters) {
+      const ie = populationContext.parameters[paramName];
+      if (ie?.concepts?.length >= 2) {
+        const elasticities = ie.concepts.map((c) => c.elasticity);
+        const minE = Math.min(...elasticities);
+        const maxE = Math.max(...elasticities);
+
+        const whiskerLeft = 50 + (minE / maxAbs) * 50;
+        const whiskerRight = 50 + (maxE / maxAbs) * 50;
+
+        const whisker = document.createElement("div");
+        whisker.style.cssText = `
+          position: absolute;
+          left: ${whiskerLeft}%;
+          width: ${whiskerRight - whiskerLeft}%;
+          height: 2px;
+          background: rgba(139, 148, 158, 0.35);
+          z-index: 0;
+        `;
+        barCell.appendChild(whisker);
+
+        // Whisker end caps
+        for (const pos of [whiskerLeft, whiskerRight]) {
+          const cap = document.createElement("div");
+          cap.style.cssText = `
+            position: absolute;
+            left: ${pos}%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 1px;
+            height: 10px;
+            background: rgba(139, 148, 158, 0.35);
+            z-index: 0;
+          `;
+          barCell.appendChild(cap);
+        }
+      }
+    }
+
+    // Elasticity bar
+    const barWidthPct = Math.abs(elasticity) / maxAbs * 50;
+    const barLeftPct = elasticity >= 0 ? 50 : 50 - barWidthPct;
+
+    const bar = document.createElement("div");
+    const barBg = isLowConfidence
+      ? `repeating-linear-gradient(
+           45deg,
+           ${_hexToRgba(color, opacity)},
+           ${_hexToRgba(color, opacity)} 3px,
+           transparent 3px,
+           transparent 6px
+         )`
+      : _hexToRgba(color, opacity);
+    bar.style.cssText = `
+      position: absolute;
+      left: ${barLeftPct}%;
+      width: ${barWidthPct}%;
+      height: 20px;
+      background: ${barBg};
+      border: 1px solid ${_hexToRgba(color, 0.5)};
+      border-radius: 2px;
+      z-index: 2;
+      transition: filter 0.15s;
+    `;
+    bar.addEventListener("mouseenter", () => { bar.style.filter = "brightness(1.2)"; });
+    bar.addEventListener("mouseleave", () => { bar.style.filter = ""; });
+    barCell.appendChild(bar);
+
+    // --- Value cell ---
+    const valueCell = document.createElement("div");
+    valueCell.style.cssText = `
+      font-size: 11px;
+      color: #6e7681;
+      text-align: right;
+      padding-left: 8px;
+      font-variant-numeric: tabular-nums;
+    `;
+    valueCell.textContent = elasticity.toFixed(3);
+
+    row.appendChild(labelCell);
+    row.appendChild(barCell);
+    row.appendChild(valueCell);
+    wrapper.appendChild(row);
+  }
+
+  // --- X-axis label ---
+  const axisLabel = document.createElement("div");
+  axisLabel.style.cssText = `
+    text-align: center;
+    font-size: 11px;
+    color: #8b949e;
+    padding: 8px 0 4px;
+    margin-left: 180px;
+  `;
+  axisLabel.textContent = "Elasticity (\u0394LCOE% / \u0394param%)";
+  wrapper.appendChild(axisLabel);
+
+  // --- Legend ---
+  const categoriesPresent = new Set(
+    sorted.map(([pn]) => (parameterMetadata[pn]?.category || "unclassified"))
+  );
+
+  const legend = document.createElement("div");
+  legend.style.cssText = `
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px 0 4px 180px;
+    font-size: 11px;
+    color: #8b949e;
+    border-top: 1px solid #21262d;
+  `;
+
+  for (const cat of TORNADO_CATEGORY_ORDER) {
+    if (!categoriesPresent.has(cat)) continue;
+    const item = document.createElement("span");
+    item.style.cssText = "display: flex; align-items: center; gap: 4px;";
+    const swatch = document.createElement("span");
+    swatch.style.cssText = `
+      display: inline-block;
+      width: 10px; height: 10px;
+      border-radius: 2px;
+      background: ${TORNADO_CATEGORY_COLORS[cat]};
+    `;
+    item.appendChild(swatch);
+    item.appendChild(document.createTextNode(TORNADO_CATEGORY_LABELS[cat] || cat));
+    legend.appendChild(item);
+  }
+
+  // Population range legend item
+  if (populationContext?.parameters) {
+    const hasWhisker = sorted.some(([pn]) => {
+      const ie = populationContext.parameters[pn];
+      return ie?.concepts?.length >= 2;
     });
-  }
-}
-
-/**
- * Build the whisker scatter trace showing [min, max] elasticity range across concepts.
- * Returns null if populationContext is absent or no parameters have population data.
- *
- * Why: visually secondary (low opacity) error-bar scatter placed before bar traces so bars
- * render on top. Using error_x centered at midpoint of [min, max] range per parameter.
- *
- * @param {Array} sorted - [[paramName, entry], ...] sorted by |elasticity|
- * @param {Object} parameterMetadata
- * @param {Object|null} populationContext - ParameterIndex or null
- * @param {Function} displayName - paramName → string
- * @returns {Object|null} Plotly trace or null
- */
-function _buildWhiskerTrace(sorted, parameterMetadata, populationContext, displayName) {
-  if (!populationContext || !populationContext.parameters) return null;
-
-  const x = [];
-  const y = [];
-  const errorMinus = [];
-  const errorPlus = [];
-
-  for (const [paramName] of sorted) {
-    const indexEntry = populationContext.parameters[paramName];
-    // Absent (concept-unique) → no whisker
-    if (!indexEntry || !indexEntry.concepts || indexEntry.concepts.length < 2) continue;
-
-    const elasticities = indexEntry.concepts.map((c) => c.elasticity);
-    const minE = Math.min(...elasticities);
-    const maxE = Math.max(...elasticities);
-    const center = (minE + maxE) / 2;
-
-    x.push(center);
-    y.push(displayName(paramName));
-    // Asymmetric error bars from center to each edge
-    errorPlus.push(maxE - center);
-    errorMinus.push(center - minE);
-  }
-
-  if (x.length === 0) return null;
-
-  return {
-    type: "scatter",
-    x,
-    y,
-    mode: "markers",
-    name: "Population range",
-    marker: {
-      color: "rgba(139, 148, 158, 0.25)",
-      size: 4,
-      symbol: "line-ns-open",
-      line: { width: 2, color: "rgba(139, 148, 158, 0.35)" },
-    },
-    error_x: {
-      type: "data",
-      symmetric: false,
-      array: errorPlus,
-      arrayminus: errorMinus,
-      visible: true,
-      color: "rgba(139, 148, 158, 0.35)",
-      thickness: 1.5,
-      width: 5,
-    },
-    hoverinfo: "skip",
-    showlegend: true,
-    legendrank: 1000,
-  };
-}
-
-/**
- * Build bar traces grouped by category (solid confidence levels) and hatched (low confidence).
- * One trace per category for the legend; low-confidence bars get a separate hatched trace
- * so Plotly's fillpattern applies consistently within each trace.
- *
- * @param {Object} byCategory - { category: [{paramName, entry, meta}] }
- * @param {Function} displayName - paramName → string
- * @returns {Array} Array of Plotly bar trace objects
- */
-function _buildBarTraces(byCategory, displayName) {
-  const traces = [];
-
-  for (const category of TORNADO_CATEGORY_ORDER) {
-    const params = byCategory[category];
-    if (!params || params.length === 0) continue;
-
-    const color = TORNADO_CATEGORY_COLORS[category] || "#6B7280";
-    const label = TORNADO_CATEGORY_LABELS[category] || category;
-
-    // Separate solid (high/medium) from hatched (low confidence)
-    const solid = params.filter((p) => !p.meta || p.meta.confidence !== "low");
-    const hatched = params.filter((p) => p.meta && p.meta.confidence === "low");
-
-    if (solid.length > 0) {
-      traces.push(_buildSolidTrace(solid, color, label, category, displayName));
-    }
-
-    if (hatched.length > 0) {
-      // Show hatched trace in legend only if no solid trace exists for this category
-      // (avoids duplicate legend entries for the same category)
-      const showInLegend = solid.length === 0;
-      traces.push(_buildHatchedTrace(hatched, color, label, category, showInLegend, displayName));
+    if (hasWhisker) {
+      const item = document.createElement("span");
+      item.style.cssText = "display: flex; align-items: center; gap: 4px;";
+      const line = document.createElement("span");
+      line.style.cssText = `
+        display: inline-block;
+        width: 16px; height: 2px;
+        background: rgba(139, 148, 158, 0.35);
+      `;
+      item.appendChild(line);
+      item.appendChild(document.createTextNode("Population range"));
+      legend.appendChild(item);
     }
   }
 
-  return traces;
-}
-
-/**
- * Build a solid bar trace for one category.
- * Opacity encodes confidence: high=1.0, medium=0.8.
- */
-function _buildSolidTrace(params, color, label, category, displayName) {
-  const x = params.map((p) => p.entry.elasticity);
-  const y = params.map((p) => displayName(p.paramName));
-  const markerColors = params.map((p) => {
-    const opacity = TORNADO_CONFIDENCE_OPACITY[p.meta?.confidence] ?? 1.0;
-    return _hexToRgba(color, opacity);
-  });
-  const hovertext = params.map(
-    (p) =>
-      `<b>${displayName(p.paramName)}</b><br>` +
-      `Elasticity: ${p.entry.elasticity.toFixed(3)}<br>` +
-      `Category: ${label}<br>` +
-      `Confidence: ${p.meta?.confidence || "unknown"}`
-  );
-  const customdata = params.map((p) => ({ paramName: p.paramName, meta: p.meta }));
-
-  return {
-    type: "bar",
-    orientation: "h",
-    x,
-    y,
-    name: label,
-    marker: {
-      color: markerColors,
-      line: { color: _hexToRgba(color, 0.5), width: 1 },
-    },
-    hovertemplate: "%{hovertext}<extra></extra>",
-    hovertext,
-    customdata,
-    legendgroup: category,
-    showlegend: true,
-    legendrank: TORNADO_CATEGORY_ORDER.indexOf(category),
-  };
-}
-
-/**
- * Build a hatched bar trace for low-confidence bars in one category.
- * Uses Plotly fillpattern for hatch texture; opacity is 0.6 per design system.
- */
-function _buildHatchedTrace(params, color, label, category, showlegend, displayName) {
-  const x = params.map((p) => p.entry.elasticity);
-  const y = params.map((p) => displayName(p.paramName));
-  const hovertext = params.map(
-    (p) =>
-      `<b>${displayName(p.paramName)}</b> (?)<br>` +
-      `Elasticity: ${p.entry.elasticity.toFixed(3)}<br>` +
-      `Category: ${label}<br>` +
-      `Confidence: low`
-  );
-  const customdata = params.map((p) => ({ paramName: p.paramName, meta: p.meta }));
-
-  return {
-    type: "bar",
-    orientation: "h",
-    x,
-    y,
-    name: showlegend ? label : `${label} (low confidence)`,
-    marker: {
-      color: _hexToRgba(color, TORNADO_CONFIDENCE_OPACITY.low),
-      pattern: {
-        shape: "/",
-        bgcolor: "transparent",
-        fgcolor: _hexToRgba(color, 0.9),
-        size: 6,
-        solidity: 0.3,
-      },
-      line: { color: _hexToRgba(color, 0.5), width: 1 },
-    },
-    hovertemplate: "%{hovertext}<extra></extra>",
-    hovertext,
-    customdata,
-    legendgroup: category,
-    // Hide in legend when a solid trace already represents this category (avoid duplicate entries)
-    showlegend: showlegend,
-    legendrank: TORNADO_CATEGORY_ORDER.indexOf(category),
-  };
+  wrapper.appendChild(legend);
+  container.appendChild(wrapper);
 }
 
 /**
  * Convert a 6-digit hex color + alpha to "rgba(r, g, b, a)" string.
- * Why: Plotly marker.color accepts rgba() strings for per-point opacity control.
- *
- * @param {string} hex - e.g. "#3B82F6"
- * @param {number} alpha - 0–1
- * @returns {string}
  */
 function _hexToRgba(hex, alpha) {
   const r = parseInt(hex.slice(1, 3), 16);
