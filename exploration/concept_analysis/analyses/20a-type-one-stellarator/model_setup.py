@@ -101,7 +101,7 @@ VESSEL_T = 0.10             # DEFAULT: framework stellarator default
 
 # ── Power balance ─────────────────────────────────────────────────────
 
-ETA_TH = 0.45               # MEDIUM: thermal conversion efficiency.  Derived from published
+ETA_TH = 0.35                # standardized from 0.45 per scoring_framework.md (Energy Capture: Thermal (steam))
                             # operating point: 800 MW fusion × 1.15 blanket mult. = 920 MW
                             # thermal; 350 MWe net + ~65 MWe recirculating → ~415 MWe gross;
                             # η_th = 415/920 ≈ 0.45.  Central estimate 0.45 is consistent with

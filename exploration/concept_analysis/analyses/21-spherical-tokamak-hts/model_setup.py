@@ -85,7 +85,7 @@ VESSEL_T = 0.20             # DEFAULT: framework value
 
 # ── Power balance ─────────────────────────────────────────────────────
 
-ETA_TH = 0.33               # UNCERTAIN: thermal conversion efficiency.  No cycle committed
+ETA_TH = 0.35                # standardized from 0.33 per scoring_framework.md (Energy Capture: Thermal (unspecified))
                             # by Tokamak Energy.  STEP ST research evaluates steam Rankine,
                             # hybrid ORC, sCO2 Brayton; range 30–38%.  Central estimate 33%
                             # (steam Rankine).

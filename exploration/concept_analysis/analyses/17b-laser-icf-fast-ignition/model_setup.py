@@ -67,7 +67,8 @@ ETA_PIN = 0.10
 # Source: focused-energy-callahan-interview.md §Steam cycle —
 #   "We will use a conventional steam cycle to convert the heat into
 #   electricity." Explicitly confirmed. Rankine preset ≈ 40%.
-ETA_TH = 0.40
+ETA_TH = 0.35
+ # standardized from 0.4 per scoring_framework.md (Energy Capture: Thermal (steam))
 
 # Petawatt ignition laser cost premium over DPSSL compression laser.
 # Source: analysis.md §Challenge 2 — petawatt ignitor adds ~35–50% more

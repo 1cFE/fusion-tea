@@ -134,7 +134,7 @@ _SHARED_KWARGS = dict(
                              # Consistent with MARS LiPb blanket (TBR ~1.15).
                              # Source: analysis.md §Section 8 "MARS Study (Logan 1983)" [low]
 
-    eta_th=0.36,             # Thermal conversion efficiency.
+    eta_th=0.55,              # standardized from 0.36 per scoring_framework.md (Energy Capture: Hybrid (thermal + direct))
                              # MARS 1983 steam Rankine achieved ~36% overall plant efficiency.
                              # Source: analysis.md §Section 5 "Thermal efficiency (MARS analogue):
                              #   ~36%" [low confidence — MARS technology, not Realta-specific]

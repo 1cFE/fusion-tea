@@ -115,7 +115,7 @@ class OrbitalDipolePlantParams:
     # === STAGE 1: PROTON DECELERATION (DEC) ===
     # =========================================================================
 
-    eta_dec: float = 0.57
+    eta_dec: float = 0.70  # standardized from 0.57 per scoring_framework.md (Energy Capture: Direct (charged particle))
     """Efficiency of direct energy conversion (proton deceleration): fusion-charged-particle
     power → DC electricity [fraction].
     Source: Venetian blind DEC achieved 50–65% for non-fusion ions in 1970s experiments

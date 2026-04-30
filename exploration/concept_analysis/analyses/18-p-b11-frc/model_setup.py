@@ -156,7 +156,8 @@ class PB11FRCPlantParams:
     Ref: OSTI 2441289 [iter-02/sources/]; analysis.md §Section 2 Challenge 3.
     HIGH UNCERTAINTY."""
 
-    eta_th: float = 0.32
+    eta_th: float = 0.35
+ # standardized from 0.32 per scoring_framework.md (Energy Capture: Thermal (steam))
     """Thermal-to-electric conversion efficiency (steam Rankine, Branch B only).
     Source: Official TAE FAQ confirms Da Vinci uses steam turbine baseline
     [tae-energy-conversion-clarification.md §How do you produce electricity].

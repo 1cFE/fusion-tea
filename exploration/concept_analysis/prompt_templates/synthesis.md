@@ -72,48 +72,33 @@ Rate: High / Medium / Low
 2-3 specific future developments or data releases that would materially
 change the LCOE estimate (in either direction).
 
-#### 8. Long-Term LCOE Potential (Downselect Scoring)
+#### 8. LCOE Downselect Scoring
 
-Score this concept on its long-term cost reduction potential using the seven
-criteria defined in the LCOE Downselect Potential Framework below. C1–C6
-measure how fast LCOE can improve with deployment experience. C7 measures
-how likely the concept is to reach a working plant at all. Both dimensions
-matter and are equally weighted.
+Score this concept using the scoring framework below. You score C1, C3, C4, C5,
+and C8. You also fill the C7 risk matrix (7 functions x 2 subcategories = 14 cells).
 
-For each criterion, provide:
-- The **score** (1–5, where 5 = most favorable)
-- **Sub-scores** where the framework defines them (e.g., per-CAS modularization
-  mode, per-component learning rates, complexity sub-drivers, per-gate
-  feasibility penalties)
-- **2–3 sentences of justification** citing specific data from the analysis,
-  model output, CAS breakdown, or taxonomy. Do not score without evidence.
+**You do NOT score C2, C6, or C7.** These are computed deterministically by Python.
+Do not include them in your score table or YAML block.
 
-**Important**: Do not double-count between criteria. C4 measures operational
-complexity of the built plant, not physics feasibility. C6 uses the physical
-availability budget, not TRL-adjusted penalties. C7 is the sole criterion
-where "this might not work at all" is scored.
+For each scored criterion, provide:
+- The **score** (1-5, where 5 = most favorable)
+- **Sub-scores** where the framework defines them
+- **2-3 sentences of justification** citing specific data from the analysis,
+  model output, CAS breakdown, or gap report. Do not score without evidence.
 
-For C7, explicitly enumerate each feasibility gate with its severity
-(binary/degrading/schedule), evidence level, and penalty calculation.
+**Do not double-count between criteria.** C4 measures operational complexity of
+the built plant, not physics feasibility. C7 is the sole place where "this might
+not work at all" is scored.
 
-Present as a table:
+Present C1, C3, C4, C5, C8 as a table with sub-factor breakdowns, then fill the
+complete 7-function x 2-subcategory risk matrix with all required per-cell fields.
+Report function-level means (F1-F7). End with the YAML scores block.
 
-| Criterion | Score | Key justification |
-|-----------|-------|-------------------|
-| C1: Modularization | X.X | ... |
-| C2: Scalability | X.X | ... |
-| C3: Supply Chain Learning | X.X | ... |
-| C4: Plant Complexity | X.X | ... |
-| C5: Customization Needs | X.X | ... |
-| C6: Upper Capacity Factor | X.X | ... |
-| C7: Technical Feasibility | X.X | ... |
-| **Composite** | **X.X** | |
+### Gap Report
+{{#if gap_report_path}}
+`{{gap_report_path}}`
+{{/if}}
 
-After the table, write a **one-paragraph verdict** interpreting the composite
-score: what it means for this concept's long-term competitiveness, which
-criteria are the strongest levers for improvement, and what would need to
-change to materially raise the score.
+### Scoring Framework
 
-### LCOE Downselect Potential Framework (Full Rubric)
-
-{{@config/lcoe_downselect_framework.md}}
+{{@config/scoring_framework.md}}

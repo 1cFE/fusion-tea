@@ -101,7 +101,7 @@ class DPFPlantParams:
     Ref: lppfusion-technology-focus-fusion-energy-dpf-device.md (energy partitioning).
     HIGH UNCERTAINTY (QMF bremsstrahlung suppression unverified experimentally)."""
 
-    eta_dec: float = 0.85
+    eta_dec: float = 0.70  # standardized from 0.85 per scoring_framework.md (Energy Capture: Direct (charged particle))
     """Ion beam decelerator efficiency: fraction of ion beam energy converted to electricity.
     Source: LPPFusion cites energy recovery linac analogy (~85% in accelerator context).
     DPF beam is divergent, multi-species (α, p, B ions), ~10 ns duration — unlike
@@ -109,7 +109,7 @@ class DPFPlantParams:
     Ref: lerner-2023-jfe-paper.md §Energy Capture.
     HIGH UNCERTAINTY (no DPF-specific decelerator prototype exists)."""
 
-    eta_xray: float = 0.80
+    eta_xray: float = 0.70  # standardized from 0.80 per scoring_framework.md (Energy Capture: Direct (charged particle))
     """X-ray photoelectric converter efficiency: fraction of X-ray energy to electricity.
     Source: LPPFusion design estimate ('80%+') for multilayered photoelectric vacuum tube.
     Device is described as 'never-before-built'; efficiency from theoretical modeling only.

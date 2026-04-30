@@ -106,7 +106,7 @@ SHOTS_PER_YEAR = REP_RATE_HZ * SECONDS_PER_YEAR  # 15,778,800 shots/yr at 0.5 Hz
 P_DRIVER_MW = 35.0          # UNCERTAIN: derived from z-ife §3.1.1.5
                              # (42 MJ stored × 0.5 Hz / 0.60 LTD efficiency ≈ 35 MW)
 
-ETA_TH = 0.42               # Thermal conversion efficiency, combined Brayton-Rankine,
+ETA_TH = 0.35                # standardized from 0.42 per scoring_framework.md (Energy Capture: Thermal (unspecified))
                              # steel chamber baseline (near-term achievable);
                              # Source: z-ife-sand2006-7148-thermal-cycles.md §3.2
                              # NOTE: C-C composite chamber could reach 50%, but requires

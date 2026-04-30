@@ -131,7 +131,7 @@ _SHARED_KWARGS = dict(
 
     # ── Power balance — sCO₂ Brayton-Rankine ─────────────────────────────────
     # Source: Energy Conversion and Management 276 (2023) 116572 (Fama et al.)
-    eta_th=0.50,      # sCO₂ Brayton-Rankine combined cycle; mid-range of 49–51%;
+    eta_th=0.48,       # standardized from 0.5 per scoring_framework.md (Energy Capture: Thermal (sCO2))
                       # ECM 276 (2023) 116572; overrides PowerCycle.BRAYTON_SCO2 default (0.47)
 
     # Blanket energy multiplication factor (total thermal energy deposited per unit neutron power).

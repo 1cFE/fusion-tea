@@ -171,7 +171,8 @@ class MuCFPlantParams:
     Source: 1costingfe costing_constants.yaml (standard D-T value).
     Ref: Standard fusion engineering reference."""
 
-    eta_th: float = 0.50
+    eta_th: float = 0.35
+ # standardized from 0.5 per scoring_framework.md (Energy Capture: Thermal (unspecified))
     """Thermal-to-electric conversion efficiency [fraction].
     sCO₂ Brayton cycle at ~700°C (mid-range of stated 500–1000°C).
     High-efficiency sCO₂ Brayton: ~45–52% demonstrated at 600–800°C.
@@ -1120,7 +1121,8 @@ def main() -> None:
             alpha_sticking_pct=0.4,
             acc_beam_power_MW=100,
             acc_capital_M=1000.0,     # ~2× cheaper accelerator at this lower energy
-            eta_th=0.52,
+            eta_th=0.35,
+ # standardized from 0.52 per scoring_framework.md (Energy Capture: Thermal (unspecified))
         ),
     }
 

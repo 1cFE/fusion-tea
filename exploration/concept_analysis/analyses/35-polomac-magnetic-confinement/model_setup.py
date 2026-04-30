@@ -131,7 +131,8 @@ class PoloMacPlantParams:
     Ref: 1costingfe blanket_unit_cost_dd notes (DD: 'energy capture, no breeding').
     MODERATE UNCERTAINTY — no blanket design published for PoloMac."""
 
-    thermal_efficiency: float = 0.38
+    thermal_efficiency: float = 0.35
+ # standardized from 0.38 per scoring_framework.md (Energy Capture: Thermal (unspecified))
     """Gross thermal-to-electric conversion efficiency (dimensionless).
     Source: No power conversion design exists for PoloMac.
     Ref: analysis.md §Section 3 (BOP TRL 2).
@@ -1204,7 +1205,8 @@ def main():
             sc_coil_lifetime_FPY=15.0,
             sc_coil_cryo_MW=8.0,
             plant_availability=0.85,
-            thermal_efficiency=0.42,
+            thermal_efficiency=0.35,
+ # standardized from 0.42 per scoring_framework.md (Energy Capture: Thermal (unspecified))
             heating_system_cost_M=100.0,
             interest_rate=0.06,
             construction_time_years=6.0,
@@ -1269,7 +1271,8 @@ def main():
             sc_coil_lifetime_FPY=15.0,
             sc_coil_cryo_MW=8.0,
             plant_availability=0.85,
-            thermal_efficiency=0.42,
+            thermal_efficiency=0.35,
+ # standardized from 0.42 per scoring_framework.md (Energy Capture: Thermal (unspecified))
             heating_system_cost_M=100.0,
             interest_rate=0.06,
             construction_time_years=6.0,
