@@ -115,7 +115,8 @@ result = model.forward(
     # Rankine cycle (steam) or gas turbine at 40% thermal efficiency.
     # Ribeyre §III specifies this; consistent with framework RANKINE preset default.
     # Source: aip-advances-ribeyre-2025.md §III. REACTOR MODEL (medium confidence)
-    eta_th=0.40,
+    eta_th=0.35,
+ # standardized from 0.4 per scoring_framework.md (Energy Capture: Thermal (unspecified))
 
     # Standard DT neutron energy multiplier; pulsed_laser_ife.yaml default
     mn=1.1,
@@ -415,7 +416,8 @@ for cpj in [100, 333, 500, 700, 1000]:
         q_eng=4.31,
         eta_pin=0.10,
         f_rep=10.0,
-        eta_th=0.40,
+        eta_th=0.35,
+ # standardized from 0.4 per scoring_framework.md (Energy Capture: Thermal (unspecified))
         mn=1.1,
         f_rad=0.10,
         f_sub=0.03,
@@ -459,7 +461,8 @@ for tf_cost in [100, 244, 350, 500]:
         q_eng=4.31,
         eta_pin=0.10,
         f_rep=10.0,
-        eta_th=0.40,
+        eta_th=0.35,
+ # standardized from 0.4 per scoring_framework.md (Energy Capture: Thermal (unspecified))
         mn=1.1,
         f_rad=0.10,
         f_sub=0.03,

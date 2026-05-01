@@ -96,7 +96,7 @@ _SHARED_KWARGS = dict(
                             # Blanket neutron multiplication is negligible — set to 1.0.
                             # Source: analysis.md §S5 "Neutron energy fraction: <1%"
                             # arpa-e-fisch-2025-presentation.md §Why p-B11?
-    eta_th=0.20,            # Thermal conversion efficiency.
+    eta_th=0.70,             # standardized from 0.2 per scoring_framework.md (Energy Capture: Direct (charged particle))
                             # Very low — only synchrotron radiation and bremsstrahlung losses
                             # are captured thermally; the dominant energy channel is DEC.
                             # 0.20 is speculative; reflects that only ~15-25% of fusion power

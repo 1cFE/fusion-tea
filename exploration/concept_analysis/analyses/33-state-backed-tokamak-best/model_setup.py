@@ -138,7 +138,7 @@ _SHARED_KWARGS = dict(
     # Preferred cycle in published studies; not formally committed for PFPP
     # Literature range: 34.7% (preliminary) to 42.8–53.7% (advanced recompression)
     # UNCERTAIN: sCO2 not formally adopted; blanket coolant choice affects this
-    eta_th=0.347,        # Thermal efficiency; analysis.md §S2 Challenge 6, §S5
+    eta_th=0.35,         # standardized from 0.347 per scoring_framework.md (Energy Capture: Thermal (unspecified))
 
     # Heating system wall-plug efficiency: weighted average of BEST 4-method portfolio
     # NBI (60–70%) + ECRH (50–55%) + ICRH (70–80%) + LHCD (50–55%)

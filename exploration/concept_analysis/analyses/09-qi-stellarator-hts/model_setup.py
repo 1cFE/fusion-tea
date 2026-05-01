@@ -246,7 +246,8 @@ _SHARED = dict(
     # Net plant efficiency ~32% (1,000 MWe / 3,100 MWth; analysis.md §5).
     # Source: analysis.md §3 (Balance of Plant, Steam Rankine paragraph);
     #         helios-stellarator-comparison.md §2
-    eta_th=0.38,
+    eta_th=0.35,
+ # standardized from 0.38 per scoring_framework.md (Energy Capture: Thermal (unspecified))
 
     eta_p=0.5,                   # DEFAULT pumping efficiency
     eta_pin=0.5,                 # DEFAULT ECRH wall-plug efficiency

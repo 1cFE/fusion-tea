@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fusion-TEA • 1costingFE Pipeline Walkthrough</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    .mermaid { background: #18181b; padding: 20px; border-radius: 12px; }
+    .artifact { font-family: ui-monospace, monospace; font-size: 0.85rem; }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen">
+  <div class="max-w-7xl mx-auto p-8">
+    <header class="mb-12">
+      <h1 class="text-5xl font-bold mb-2">Fusion-TEA Pipeline</h1>
+      <p class="text-xl text-zinc-400">Interactive walkthrough of the automated technoeconomic analysis system</p>
+      <div class="flex items-center gap-4 mt-6 text-sm">
+        <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-full">38 Concepts</span>
+        <span class="px-3 py-1 bg-amber-500/20 text-amber-400 rounded-full">3-Phase Pipeline</span>
+        <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full">1costingFE Engine</span>
+      </div>
+    </header>
+
+    <!-- Pipeline Diagram -->
+    <div class="mb-12">
+      <h2 class="text-3xl font-semibold mb-6">The 3-Phase Pipeline</h2>
+      <div id="mermaid" class="mermaid"></div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex border-b border-zinc-800 mb-8">
+      <button onclick="switchTab(0)" class="tab-button active px-8 py-4 font-medium border-b-2 border-white">Overview</button>
+      <button onclick="switchTab(1)" class="tab-button px-8 py-4 font-medium text-zinc-400 hover:text-zinc-200">Concepts</button>
+      <button onclick="switchTab(2)" class="tab-button px-8 py-4 font-medium text-zinc-400 hover:text-zinc-200">Phase 1 • Loop</button>
+      <button onclick="switchTab(3)" class="tab-button px-8 py-4 font-medium text-zinc-400 hover:text-zinc-200">Phase 2+3</button>
+    </div>
+
+    <!-- Tab Content -->
+    <div id="tab-content">
+      <!-- Overview Tab -->
+      <div class="tab-pane">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-zinc-900 rounded-2xl p-8">
+            <h3 class="text-xl font-semibold mb-4">How it works</h3>
+            <ul class="space-y-4 text-zinc-300">
+              <li class="flex gap-3"><span class="text-emerald-400">→</span> Claude agent runs autonomous research + analysis loop</li>
+              <li class="flex gap-3"><span class="text-emerald-400">→</span> Generates SysML + 1costingFE model</li>
+              <li class="flex gap-3"><span class="text-emerald-400">→</span> Self-assesses quality until PASS</li>
+              <li class="flex gap-3"><span class="text-amber-400">→</span> Human review (PROCEED / REVISE)</li>
+              <li class="flex gap-3"><span class="text-sky-400">→</span> Final synthesis &amp; approval</li>
+            </ul>
+          </div>
+          <div class="bg-zinc-900 rounded-2xl p-8">
+            <h3 class="text-xl font-semibold mb-4">Current Stats</h3>
+            <div class="space-y-6">
+              <div>19 concepts in active pipeline</div>
+              <div>Highest iterations: <span class="font-mono text-emerald-400">9</span> (07-maglif &amp; 09-qi-stellarator)</div>
+              <div>Only 1 fully approved: <span class="text-sky-400">21-spherical-tokamak-hts</span></div>
+            </div>
+          </div>
+          <div class="bg-zinc-900 rounded-2xl p-8">
+            <h3 class="text-xl font-semibold mb-4">Key Technologies</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-4 py-2 bg-zinc-800 rounded-xl">Claude 3.7 Sonnet</span>
+              <span class="px-4 py-2 bg-zinc-800 rounded-xl">SysML v2</span>
+              <span class="px-4 py-2 bg-zinc-800 rounded-xl">1costingFE</span>
+              <span class="px-4 py-2 bg-zinc-800 rounded-xl">Python Agent Loop</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Concepts Tab -->
+      <div class="tab-pane hidden">
+        <div id="concept-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </div>
+
+      <!-- Phase 1 Tab -->
+      <div class="tab-pane hidden">
+        <h3 class="text-2xl font-semibold mb-6">Phase 1: Autonomous Quality Loop</h3>
+        <p class="text-zinc-400 mb-8">The agent repeats Research → Analyze → Model → Assess until it passes or hits max iterations.</p>
+        <div id="phase1-detail" class="prose prose-invert"></div>
+      </div>
+
+      <!-- Phase 2+3 Tab -->
+      <div class="tab-pane hidden">
+        <h3 class="text-2xl font-semibold mb-6">Phase 2 &amp; 3: Human + Synthesis</h3>
+        <div class="bg-zinc-900 rounded-2xl p-8 max-w-2xl">
+          <p class="mb-4">After the loop passes, a human reviews the artifacts and either requests revisions or approves the concept for the reuse pool.</p>
+          <p class="text-emerald-400 font-medium">Only <strong>21-spherical-tokamak-hts</strong> has reached full approval so far.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Artifact Viewer -->
+    <div id="artifact-viewer" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+      <div class="bg-zinc-900 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+        <div class="flex justify-between items-center border-b border-zinc-700 p-6">
+          <h3 id="artifact-title" class="font-mono text-lg"></h3>
+          <button onclick="closeArtifact()" class="text-3xl leading-none hover:text-white">×</button>
+        </div>
+        <pre id="artifact-content" class="artifact p-8 overflow-auto max-h-[70vh] text-sm text-emerald-300"></pre>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize Mermaid
+    mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+
+    const mermaidDiagram = `
+    flowchart TD
+      Start[Start New Concept] --> Research[Research Sources]
+      Research --> Analyze[Analyze & Write analysis.md]
+      Analyze --> Model[Generate model_setup.py + 1costingFE]
+      Model --> Assess[Assess Quality → Verdict]
+      Assess -->|FAIL| Research
+      Assess -->|PASS| Review[Human Review]
+      Review -->|REVISE| Research
+      Review -->|PROCEED| Synthesize[Synthesis + Approval]
+      Synthesize --> Approved[Add to Reuse Pool]
+    `;
+
+    document.getElementById('mermaid').innerHTML = mermaidDiagram;
+    mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+
+    // Sample concept data (real from repo)
+    const concepts = [
+      { id: "07-maglif", name: "MagLIF D-T", company: "Pacific Fusion", iters: 9, status: "active" },
+      { id: "09-qi-stellarator-hts", name: "QI Stellarator HTS", company: "Proxima Fusion", iters: 9, status: "active" },
+      { id: "21-spherical-tokamak-hts", name: "Spherical Tokamak HTS", company: "Tokamak Energy", iters: 3, status: "approved" },
+      { id: "01-hts-compact-tokamak", name: "HTS Compact Tokamak", company: "Commonwealth Fusion", iters: 7, status: "active" },
+      { id: "17a-laser-icf-hybrid-drive", name: "Laser ICF Hybrid", company: "Xcimer", iters: 7, status: "active" }
+    ];
+
+    function renderConcepts() {
+      const grid = document.getElementById('concept-grid');
+      grid.innerHTML = concepts.map(c => `
+        <div onclick="showConcept('${c.id}')" class="bg-zinc-900 hover:bg-zinc-800 transition-all rounded-2xl p-6 cursor-pointer border border-transparent hover:border-zinc-700">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="font-mono text-sm text-zinc-500">${c.id}</span>
+              <h4 class="text-xl font-semibold mt-1">${c.name}</h4>
+              <p class="text-zinc-400">${c.company}</p>
+            </div>
+            ${c.status === 'approved' ? 
+              `<span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs rounded-full">APPROVED</span>` : 
+              `<span class="px-3 py-1 bg-amber-500/20 text-amber-400 text-xs rounded-full">${c.iters} iters</span>`
+            }
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function showConcept(id) {
+      const url = `https://raw.githubusercontent.com/1cFE/fusion-tea/main/exploration/concept_analysis/analyses/${id}/analysis.md`;
+      try {
+        const res = await fetch(url);
+        const text = await res.text();
+        document.getElementById('artifact-title').textContent = `${id}/analysis.md`;
+        document.getElementById('artifact-content').textContent = text.substring(0, 3000) + (text.length > 3000 ? '\n\n... (truncated)' : '');
+        document.getElementById('artifact-viewer').classList.remove('hidden');
+      } catch(e) {
+        alert("Could not load file — make sure you're online and the concept exists.");
+      }
+    }
+
+    function closeArtifact() {
+      document.getElementById('artifact-viewer').classList.add('hidden');
+    }
+
+    function switchTab(n) {
+      document.querySelectorAll('.tab-button').forEach((btn, i) => {
+        btn.classList.toggle('active', i === n);
+        btn.classList.toggle('border-b-2', i === n);
+        btn.classList.toggle('border-white', i === n);
+        btn.classList.toggle('text-zinc-400', i !== n);
+      });
+      document.querySelectorAll('.tab-pane').forEach((pane, i) => {
+        pane.classList.toggle('hidden', i !== n);
+      });
+    }
+
+    // Initialize
+    renderConcepts();
+    switchTab(0);
+  </script>
+</body>
+</html>

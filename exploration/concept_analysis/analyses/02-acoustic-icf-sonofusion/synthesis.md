@@ -4,201 +4,406 @@ Concept: Acoustic ICF / Sonofusion (D-D)
 Company: Sonofusion Energy
 Type: synthesis
 Status: draft
-Created: 2026-03-22
-Stale: true
-Stale-Reason: analysis-updated-iter-2
+Created: 2026-04-29
 ---
 
-# Synthesis: Acoustic ICF / Sonofusion (D-D) — Sonofusion Energy
+# Synthesis: Acoustic ICF / Sonofusion (D-D)
 
----
+## Executive Summary
 
-## 1. Executive Summary
+- **The single most important risk**: No fusion has been demonstrated from acoustic cavitation in any credible, replicated experiment. The temperature gap between demonstrated sonoluminescence (~16,000 K) and D-D fusion requirements (~10⁸ K) is approximately four orders of magnitude. This is not a quantitative uncertainty — it is a binary go/no-go question about physics viability.
 
-- **Most important risk**: The physics does not work, and there is no credible path to making it work. The temperature gap between demonstrated sonoluminescence (~16,000 K) and D-D fusion threshold (~10⁸ K) is four orders of magnitude. This is not an engineering challenge with a known solution — it is an unresolved physics question with no published theoretical mechanism, no replicated experimental evidence, and a field-wide misconduct scandal that killed most research interest. Every LCOE figure in this analysis is hypothetical in a way that is categorically different from every other concept in this project.
+- **The single most important advantage**: If the physics worked, the driver simplicity advantage is real. No HTS magnets, no megajoule lasers, no tritium breeding blanket, no cryogenic targets. The piezoelectric transducer array is mature industrial technology. This would eliminate 40-60% of D-T tokamak capital accounts (CAS 220103, 220104, 220106).
 
-- **Most important advantage**: If the physics somehow worked, the cost structure would be remarkably clean. No HTS magnets, no laser drivers, no per-shot consumable targets, no tritium breeding blanket, no external tritium supply chain. The acoustic driver is mature commercial hardware. D-D eliminates the existential fuel supply problem facing every D-T concept. A working sonofusion plant might have the simplest capital structure of any fusion concept under analysis.
+- **LCOE ballpark**: Conditional model at Q=10, η_driver=0.85 yields **10.2 ¢/kWh**. But Q is undefined and η_driver is unsupported. At the measured transducer coupling coefficient (Kp≥0.55), breakeven requires Q≥5.2 instead of Q≥3.5. The model is an existence proof ("IF Q worked, THEN..."), not a forecast.
 
-- **LCOE ballpark**: **10.91 ¢/kWh ($109/MWh)** at the model's baseline (Q=10, 4 modules, 893 MWe net, NOAK). This number should be treated as an existence proof — it answers "could this be economic if the physics worked and Q reached 10?" — not as a prediction. Net-positive operation requires Q ≥ ~3; the concept does not produce electricity below that threshold. The full scenario range is 42 ¢/kWh at Q=5 to 4 ¢/kWh at Q=25. None of these are predictions. Q is not a parameter with uncertainty — it is a parameter with no demonstrated value.
-
-- **Confidence verdict: Low — and uniquely so.** Every other concept rated Low in this project has at least one experimental anchor in the underlying fusion physics. This concept has zero. The model is structurally complete but parametrically ungrounded. The appropriate epistemic posture is: this concept should not be modeled at all; the model exists to characterize what economics *would* look like conditional on a physics breakthrough that has not occurred.
+- **Confidence verdict: Low**. Nine of fifteen data gaps are blocking. The company has disclosed no technical specifications, no reactor design, and no energy conversion pathway. The model uses 100 MW/module acoustic power — 6,250× larger than the largest demonstrated commercial ultrasonic unit (64 kW cluster). Every physics and engineering assumption is speculative.
 
 ---
 
-## 2. What Matters Most for LCOE
+## What Matters Most for LCOE
 
-### 1. Fusion Gain Q — the only parameter that matters
+Ranking by elasticity magnitude (model output at baseline Q=10):
 
-**Assumed value**: Q=10 (baseline); Q=3 breakeven threshold; Q=25 optimistic.
-**Source**: No source. Q has no measured or theorized value for acoustic ICF. The model sweeps it as the single blocking unknown.
-**Sensitivity**: This is not a normal sensitivity parameter. It is a binary gate followed by a steep economic curve:
+### 1. **Plant Availability** (|ε| = 0.95)
+- **Assumed value**: 75% (no basis — concept has never operated)
+- **Sensitivity**: 0.75 → 0.85 availability drops LCOE from 10.2 ¢/kWh → 9.1 ¢/kWh (11% reduction)
+- **What would flip the conclusion**: Availability doesn't flip the conclusion. But <65% availability (combined with Q<5) would push LCOE above 40 ¢/kWh, making the concept categorically uneconomic even if physics worked.
 
-| Q | Net MWe (4 modules) | LCOE |
-|---|---|---|
-| <3 | Negative | Not operable |
-| 3 | 46 | 96.7 ¢/kWh |
-| 5 | 288 | 20.8 ¢/kWh |
-| 10 | 893 | 10.9 ¢/kWh |
-| 25 | 6,313 | 4.2 ¢/kWh |
+### 2. **Interest Rate / WACC** (|ε| = 0.93)
+- **Assumed value**: 10% (risk-adjusted for unproven technology)
+- **Sensitivity**: 10% → 7% WACC drops LCOE from 10.2 ¢/kWh → 7.7 ¢/kWh (25% reduction)
+- **What would flip the conclusion**: At mature-nuclear financing (5% WACC), LCOE reaches 6.2 ¢/kWh — competitive with conventional generation. But 5% WACC requires demonstrated physics, which does not exist.
 
-**What flips the economics**: Demonstrating any credible, replicated Q > 0 in a laboratory experiment would change the framing of this concept from "impossible" to "uncertain." Demonstrating Q > 3 would flip the economic conclusion from "cannot produce electricity" to "could be economic with engineering development." The Q=10 baseline LCOE of $109/MWh is uncompetitive but not catastrophically so — it is in the range of first-of-kind nuclear, not stranded-asset territory — suggesting that if physics were solved at Q ≈ 10, the economics would at least merit serious study.
+### 3. **Thermal Efficiency** (|ε| = 0.72)
+- **Assumed value**: 35% (standard Rankine cycle on D₂O medium at ~300°C, no basis)
+- **Sensitivity**: 35% → 42% efficiency drops LCOE from 10.2 ¢/kWh → 9.1 ¢/kWh (11% reduction)
+- **What would flip the conclusion**: Thermal efficiency is bounded by Carnot limits. D₂O boiling temperature (~300°C at 10 MPa) sets a ceiling of ~40-45%. This parameter cannot deliver order-of-magnitude LCOE improvement.
 
-### 2. Plant Availability — elasticity: ~–0.9 (estimated)
+### 4. **Fusion Gain Q (acoustic)** (|ε| = 0.53)
+- **Assumed value**: Q=10 is hypothetical. No fusion demonstrated. Temperature gap: 16,000 K achieved vs. 10⁸ K required.
+- **Sensitivity**: Q=5 → 17.9 ¢/kWh; Q=10 → 10.2 ¢/kWh; Q=25 → 7.1 ¢/kWh
+- **What would flip the conclusion**: Q<3.5 yields net-negative electricity (concept dead). Q>20 yields <8 ¢/kWh (competitive). The break-point is Q≈3.5 at baseline η_driver=0.85, or Q≈5.2 if η_driver=0.55 (the only measured value).
 
-**Assumed value**: 75% (conservative; no design basis).
-**Source**: Model default; no Sonofusion Energy target published, no maintenance model exists.
-**Sensitivity**: Availability at 0.5 → 16.3 ¢/kWh; at 0.9 → 9.1 ¢/kWh. The leverage is comparable to other capital-heavy concepts. The D₂O vessel dominates capital, so amortization sensitivity to availability is high.
-**What flips the economics**: Below ~40% availability, the concept cannot compete with advanced fission even at Q=10. The acoustic driver (piezoelectric at 20–40 kHz) has mature commercial reliability in industrial applications — but transducer lifetime under sustained neutron irradiation in a fusion environment is completely unknown. Neutron-induced degradation of PZT is an unstudied failure mode. This is a hidden availability risk: the drivers may fail much faster in a fusion environment than in their commercial applications.
-
-### 3. Interest Rate / WACC — elasticity: ~+0.7
-
-**Assumed value**: 10% (conservative; reflects pre-commercial technology risk premium).
-**Source**: Standard framework value.
-**Sensitivity**: At 5%, LCOE drops to 6.6 ¢/kWh; at 15%, rises to 16.8 ¢/kWh.
-**What flips the economics**: A concept that hasn't demonstrated fusion will pay frontier-technology financing rates. The 10% baseline is appropriate; 15% is plausible for a first plant. At 15%, even the Q=10 baseline reaches 16.8 ¢/kWh — still not catastrophic, but compounding the risk that a first-plant investor faces a concept with no physics validation.
-
-### 4. Thermal Efficiency — elasticity: ~–0.4
-
-**Assumed value**: 35% (Rankine / D₂O thermal cycle analogy).
-**Source**: Analogy to heavy-water-cooled nuclear (CANDU Rankine cycle). No Sonofusion Energy specification.
-**Sensitivity**: At 28%, LCOE reaches 13.4 ¢/kWh; at 45%, drops to 9.2 ¢/kWh.
-**What flips the economics**: Cannot flip the economics in isolation — the Q barrier dominates by far. But if the energy conversion pathway turned out to enable high-efficiency direct conversion (e.g., charged particle recovery from D-D products), the concept's economics could improve materially at a given Q. The ~66% of D-D energy deposited as charged particles (proton + tritium) in principle allows partial direct conversion — but no such architecture has been proposed.
-
-### 5. Transducer Capital Cost — elasticity: weak (~0.1)
-
-**Assumed value**: $500/kW acoustic ($42.5M/module at 85 MWa/module).
-**Source**: Analogy to industrial piezoelectric systems (order-of-magnitude estimate).
-**Sensitivity**: $100/kW → 10.4 ¢/kWh; $2,000/kW → 12.9 ¢/kWh. Very weak lever.
-**What flips the economics**: It doesn't. Transducer cost is dominated by the D₂O vessel ($102.5M/module) and shielding ($78.1M/module) at baseline. The driver hardware is cheap. This is one of the concept's genuine structural advantages — it cannot be cost-exploited to fix the economics, but it also does not add the capital burden that makes laser ICF expensive.
+### 5. **Acoustic Driver Efficiency η_driver** (|ε| = 0.52)
+- **Assumed value**: 85% wall-plug efficiency. **No source supports this.** Only measured value: electromechanical coupling Kp≥0.55 (APC International 90-4040 datasheet). Kp is a material property at resonance, not wall-plug efficiency.
+- **Sensitivity**: η_driver=0.55 → 14.0 ¢/kWh (451 MWe net); η_driver=0.85 → 10.2 ¢/kWh (920 MWe net)
+- **What would flip the conclusion**: If η_driver=0.55 (the measured Kp), breakeven Q threshold rises from 3.5 to 5.2 — a 50% increase. This couples to Q risk: both are speculative unknowns. **Driver efficiency and Q are co-equal blocking parameters.**
 
 ---
 
-## 3. Risk Verdicts
+## Risk Verdicts
 
-**Challenge 1 (Blocking): Foundational Scientific Viability.**
-**Verdict: Unlikely resolvable with current physical understanding.**
-**Rationale**: The 4-orders-of-magnitude temperature gap between demonstrated sonoluminescence (~16,000 K) and D-D fusion threshold (~10⁸ K) has no proposed mechanism in the peer-reviewed literature. This is not a gap that engineering development closes — it requires a new physics result. The historical Taleyarkhan claims were not just unreplicated but actively contradicted by Putterman (the concept's own co-founder), who found zero neutrons above background. Absence of mechanism + active negative result from best-positioned laboratory = this risk is unlikely resolvable without a scientific breakthrough.
-**What would retire this risk**: A replicated, peer-reviewed, positive neutron measurement from acoustic cavitation in a credible laboratory (i.e., not Taleyarkhan's group). Even a partial result — Q ≈ 10⁻⁶, far below breakeven — would confirm that some fusion is occurring and provide a foothold for physical mechanism identification.
+### Challenge 1: Fusion from Acoustic Cavitation (Temperature Gap of ~10,000×)
+- **Verdict**: Unlikely resolvable with acoustic compression alone
+- **Rationale**: Four orders of magnitude is not a scaling gap — it is a regime gap. No theoretical mechanism published in peer-reviewed literature bridges 16,000 K to 10⁸ K using only mechanical compression. The Taleyarkhan claims (2002) were discredited after zero independent replications across four labs. Putterman's own neutron detector found no fusion events.
+- **What would retire this risk**: A single credible, replicated neutron or tritium signal from acoustic cavitation in any laboratory, accompanied by a peer-reviewed theoretical explanation of the temperature amplification mechanism. Even Q=0.1 would transform the concept from "speculative" to "early-stage viable."
 
-**Challenge 2 (Blocking): No Reactor Design Exists.**
-**Verdict: Genuinely uncertain — but moot until Challenge 1 is resolved.**
-**Rationale**: Absent a working physics demonstration, reactor design has no input parameters to work from. If Challenge 1 were resolved (fusion confirmed), a conceptual reactor design is probably a 2–5 year engineering effort — not fundamentally beyond reach. The Impulse Devices spherical vessel ($250K, 1-foot stainless steel) demonstrates that small vessel construction is trivial; the challenge is scaling to multi-meter radius with neutron shielding.
-**What would retire this risk**: Fusion demonstration (Challenge 1), followed by a pre-conceptual design study estimating vessel geometry, shielding requirement, and working fluid management at Q > 1.
+### Challenge 2: Acoustic Power Scaling (100 MW vs. 64 kW Demonstrated)
+- **Verdict**: Genuinely uncertain — solvable in principle but undemonstrated at scale
+- **Rationale**: The model uses 100 MW electrical input per module. The largest commercial ultrasonic system is 64 kW (4-unit cluster). Scaling acoustic power by 1,560× requires solving: (a) transducer array packing density around a 3m sphere; (b) coherent cavitation over 113 m³ volume; (c) standing-wave interference management; (d) thermal dissipation from PZT arrays under neutron irradiation. These are hard engineering problems, not physics impossibilities.
+- **What would retire this risk**: A demonstration of megawatt-scale coherent acoustic cavitation in a deuterated liquid medium at controlled frequency and pressure. Scale-up pathway from industrial ultrasonic cleaning (kW-scale) to fusion driver (100 MW-scale) with validated transducer array architecture.
 
-**Challenge 3 (Blocking): Energy Conversion Pathway Undefined.**
-**Verdict: Genuinely uncertain — but solvable by analogy if fusion works.**
-**Rationale**: The most plausible pathway (liquid medium thermalization → Rankine cycle) has strong analogies in CANDU and IFE liquid-wall designs. This is an engineering problem with known solutions, not a physics problem. If D-D fusion at power-producing scale were demonstrated, energy conversion is probably the least difficult of the blocking challenges.
-**What would retire this risk**: Any company technical disclosure, or a published pre-conceptual design study using CANDU-analogous thermal cycle as the energy extraction pathway.
+### Challenge 3: Driver Efficiency (η_driver Unsupported at 85%)
+- **Verdict**: Likely resolvable — but the baseline assumption is unjustified
+- **Rationale**: Wall-plug efficiency of 85% is asserted without citation. The only measured datapoint is Kp≥0.55 (planar coupling coefficient from APC 90-4040 datasheet), which describes electromechanical energy storage at resonance, not wall-plug conversion to acoustic power in liquid. Industrial ultrasonic systems achieve 60-80% efficiency in matched-load applications, but reactor-scale validation is absent.
+- **What would retire this risk**: Direct measurement of wall-plug efficiency (electrical → acoustic power delivered to D₂O) in a representative transducer array at 100+ kW scale. If η_driver<0.65, the Q breakeven threshold rises above 4.0, increasing physics risk. If η_driver≥0.80, the baseline model is validated.
 
-**Challenge 4 (Important): Pulsed-to-Continuous Power Balance.**
-**Verdict: Likely resolvable — if fusion works.**
-**Rationale**: The 20–40 kHz rep rate means ~20,000–40,000 implosion events per second — far higher than laser ICF (~Hz scale), which eliminates chamber-clearing time as a design constraint. Time-averaged power balance at these rep rates is a standard engineering calculation once per-pulse energy is known. The challenge is not pulsed averaging; it is knowing what Q is. If fusion is demonstrated, this challenge likely resolves through standard power systems engineering.
-**What would retire this risk**: Per-pulse energy measurement from a fusion-producing experiment, combined with a power balance calculation for a 4-module plant design.
+### Challenge 4: Recirculating Power Fraction (30.8% at Baseline)
+- **Verdict**: Likely resolvable — this is an accounting constraint, not a physics limit
+- **Rationale**: At Q=10, η_driver=0.85, the plant recirculates 30.8% of gross electric output. This is higher than MFE concepts (10-20%) but not pathological. The recirculating fraction drops with higher Q or higher η_driver. The challenge is that both Q and η_driver are speculative.
+- **What would retire this risk**: Achieving Q>5 at demonstrated η_driver>0.70 in a net-energy experiment. This would anchor the recirculating power budget and confirm commercial viability is achievable.
 
-**Challenge 5 (Important): D-D Neutron Economics.**
-**Verdict: Likely manageable — structural advantage over D-T.**
-**Rationale**: D-D neutrons at 2.45 MeV cause roughly 5× less materials damage per neutron than D-T's 14.1 MeV neutrons. The liquid medium provides inherent shielding by mass. The model already prices in a shielding account ($78.1M/module) at 0.5× the D-T rate — a reasonable first approximation. This is a cost challenge, not a concept-invalidating challenge.
-**What would retire this risk**: First-principles shielding calculation for a 3m-radius D₂O vessel at a specified fusion power output, establishing the required shielding thickness and materials cost.
-
-**Challenge 6 (Secondary): Scientific Reputational Overhang.**
-**Verdict: Unlikely to prevent funding if fusion is demonstrated; irrelevant if not.**
-**Rationale**: The Taleyarkhan misconduct case damaged the field's credibility, but it did not close the physics question. Putterman's own group (the concept's co-founders) have continued working. If a positive neutron result were published by a credible third party, the reputational overhang would dissolve within a few years. Reputational risk is not a first-order LCOE driver.
-**What would retire this risk**: A replicated positive result in a journal with editorial independence from the original Taleyarkhan controversy.
+### Challenge 5: Energy Conversion Pathway (Thermal Cycle Assumed, Not Specified)
+- **Verdict**: Likely resolvable — standard steam cycle is a fallback if nothing better exists
+- **Rationale**: The company has disclosed no energy conversion approach. The model assumes all fusion energy (neutrons + charged particles) thermalizes in the D₂O medium → Rankine steam cycle at 35% efficiency. This is conservative and analogous to CANDU or IFE liquid-wall concepts. If the company has a direct-conversion scheme, it would improve economics — but no evidence of this exists.
+- **What would retire this risk**: A disclosed energy conversion architecture (thermal cycle, direct conversion, or hybrid) with efficiency estimates grounded in analogous systems. Thermal cycle at 35-40% is achievable and does not require innovation.
 
 ---
 
-## 4. Structural Advantages and Disadvantages
+## Structural Advantages and Disadvantages
 
-**Compared against a conventional 1 GWe D-T HTS tokamak baseline.**
+### Eliminated Cost Accounts (vs. D-T Tokamak Baseline)
 
-### Eliminated Cost Categories (conditional on fusion working)
+**Quantified eliminations** (conditional on physics viability):
 
-| Item Eliminated | Approximate Saving | Confidence |
-|---|---|---|
-| HTS superconducting magnets | ~$500–$1,000M/GWe | High — no magnets needed |
-| Cryogenic systems | ~$50–$100M/GWe | High — no superconductors |
-| Tritium breeding blanket | ~$300–$600M/GWe | High — D-D produces tritium as byproduct, eliminates breeding requirement |
-| Tritium supply infrastructure | Existential D-T constraint, eliminated | High — ~55 kg/year need vs. zero for D-D |
-| High-energy laser / pulsed-power driver | ~$1,000–$3,000M (laser ICF scale) | High — acoustic driver is ~$170M total (4 modules) |
-| Per-shot consumable targets | ~$0.70–$1/shot (MagLIF scale) | High — liquid medium is not consumed per shot |
-| Steam turbine (potential, if direct conversion feasible) | ~$200–$400M/GWe | Low — only if charged-particle direct conversion implemented |
+1. **CAS 220103: Plasma Confinement Coils → $0**
+   No HTS magnets, no cryoplant, no km-scale REBCO tape. This is typically 20-30% of CAS22 in tokamak designs (e.g., CFS SPARC). Estimated savings: **~$400-600M** at 1 GWe scale.
 
-The acoustic driver, D-D fuel, and absence of magnets collectively make this the lightest capital structure of any concept under analysis — *if the physics worked*. The driver cost at baseline ($170M for 4 modules, including installation) is the lowest major-subsystem cost item in the concept. Contrast with laser ICF facilities (NIF: ~$3.5B for the driver alone) or HTS magnet systems ($500M+/GWe).
+2. **CAS 220104: Supplementary Heating → $0**
+   No neutral beam injectors, no ICRH, no ECRH. The acoustic driver provides both confinement and heating. Estimated savings: **~$200-300M**.
 
-### Added or Amplified Cost Categories
+3. **CAS 220106: Tritium Breeding Blanket → $0**
+   D-D fuel eliminates the entire breeding infrastructure (Li-6 blanket, tritium extraction, TBR>1.0 requirement). This is one of the most uncertain cost accounts in D-T concepts. Estimated savings: **~$300-500M**.
 
-| Item Added | Cost | Confidence |
-|---|---|---|
-| D₂O working fluid purchase (4 modules) | ~$317M at $700/kg (filling ~113 m³/module) | Medium — CANDU industry pricing |
-| D₂O vessel at reactor scale | $102.5M/module (baseline) | Low — no design basis; order-of-magnitude |
-| D-D neutron shielding | $78.1M/module | Low — scaled from D-T at 0.5×; no specific design |
-| PZT transducer replacement (neutron-irradiated) | $6.2M/yr annualized | Low — irradiation lifetime completely unknown |
-| Tritium separation system | $1.7M/module | Low — order-of-magnitude |
+4. **Fuel Supply Risk → Eliminated**
+   Global civilian tritium supply is ~25 kg. A 1 GWth D-T plant consumes ~55 kg/year — an existential bottleneck. D-D has no tritium supply constraint. Tritium is produced as a 50% byproduct (D+D → p+T) but at manageable levels requiring containment, not external supply.
 
-**The D₂O fill cost is the concept-specific capital burden with no analog in any MFE concept.** At ~$317M for 4 modules, the working fluid alone exceeds the transducer array cost by ~2×. This is unavoidable: the D₂O is simultaneously the working fluid, the fusion medium, and the primary shield material. Higher Q reduces LCOE not by cutting this cost but by increasing the power produced per cubic meter of D₂O, improving amortization.
+**Added Cost Accounts**:
 
-### Net Capital Comparison
+1. **CAS 220101: D₂O Vessel Fill → ~$225M at 4 modules**
+   Heavy water at $450/kg (2023 UN Comtrade) × 113 m³/module × 1,105 kg/m³ × 4 modules = $225M. This is unavoidable — D₂O **is** the fusion medium. Tokamaks don't have this line item. India+Canada supply 80% of global D₂O exports, creating moderate supply concentration risk.
 
-At Q=10 baseline, overnight capital is $5,795/kWe — worse than compact HTS tokamak targets ($3,000–$5,000/kW) but comparable to magnetic mirror ($9,620/kW). This is a misleading comparison: the sonofusion number is entirely speculative, while the tokamak and mirror numbers are grounded in at least partial engineering. The structural cost advantages (no magnets, no laser) are real, but they are offset by the large D₂O vessel and shielding costs that derive from the need for a macroscopic liquid medium at power-plant scale.
+2. **CAS 220107: Acoustic Transducer Array → $170M at baseline**
+   At $500/kW acoustic × 85 MW acoustic/module × 4 modules = $170M. This replaces the power supply and heating accounts, so net impact depends on transducer cost. At $200/kW (optimistic), this drops to $68M. At $1,000/kW (conservative), it rises to $340M.
+
+**Net structural advantage**: **Positive** if physics works. Eliminating magnets, heating, and tritium breeding saves $900M-1,400M. Adding D₂O and transducers costs $225M-565M. Net savings: **~$400-900M** at 1 GWe scale, or **10-20% of total capital**.
 
 ---
 
-## 5. Cross-Concept Positioning
+## Cross-Concept Positioning
 
-Sonofusion occupies a position in the fusion landscape that has no close analogs: **it is the only concept under analysis where the underlying physics has been actively discredited rather than merely undemonstrated.**
+### Confinement Family: Inertial Confinement Fusion (IFE)
 
-Every other concept in this project — tokamaks, mirrors, FRCs, MagLIF — has demonstrated thermonuclear fusion in the laboratory. They differ in Q, in confinement geometry, in fuel cycle, and in how far their commercial targets are from their demonstrated performance. Sonofusion has not demonstrated any fusion from acoustic cavitation. The distinction is categorical, not scalar.
+Acoustic ICF sits at the **low-driver-energy extreme** of the IFE family. By implosion physics — a pulsed driver compressing a target to fusion conditions — it belongs structurally to IFE, not MFE.
 
-**Closest economic analogs (conditional on physics working):**
+**Nearest neighbors**:
 
-- *07-MagLIF*: Both are IFE-adjacent pulsed concepts with commercial configurations that look radically different from their experimental forms. MagLIF has demonstrated fusion; sonofusion has not. If both achieved Q=10, sonofusion would likely have a lower capital cost (no per-shot consumables, simpler driver).
+- **Laser ICF (NIF, HYLIFE)**: Shares implosion-driven compression and pulsed operating mode. Key difference: driver energy per event. NIF delivers ~1.8 MJ/shot to a single target. Acoustic cavitation delivers ~picojoules to nanojoules/bubble — **15-18 orders of magnitude less**. Acoustic compensates with rep rate (10⁷/s vs. Hz-scale laser IFE), but cannot approach NIF energy density without closing the temperature gap.
 
-- *03-Laser ICF (liquid-jet target)*: Shares the inertial confinement framing and liquid medium energy recovery approach. Laser ICF has demonstrated Q>1 (NIF, December 2022); sonofusion has not demonstrated any Q. If sonofusion physics worked, its driver cost would be orders of magnitude lower than a NIF-class laser facility.
+- **Heavy-Ion ICF**: Shares the "driver substitution" concept (non-laser IFE). But heavy-ion drivers are GeV-class accelerators — more energetic than NIF, not less. The structural similarity is conceptual (alternative IFE driver), but the physics is opposite extremes.
 
-- *IFE concepts generally*: Sonofusion would be the lowest-driver-cost IFE concept if the physics worked — but this advantage is irrelevant without a demonstrated physical mechanism.
+- **MagLIF / Magnetized Target Fusion**: Like acoustic ICF, uses mechanical compression (liner implosion) rather than laser, operating in the MFE-IFE pressure-temperature boundary zone. Key distinction: MagLIF has demonstrated plasma formation and partial fusion conditions (Z-machine at Sandia). Acoustic ICF has not demonstrated temperatures above sonoluminescence baseline.
 
-**What makes sonofusion fundamentally different** from every other concept: it is the only concept where the investment thesis requires *discovering new physics*, not developing known physics to commercial scale. Every other concept has a validated fusion mechanism and an engineering pathway to commercial Q. Sonofusion's pathway requires first answering a physics question that the world's most capable experimental group (Putterman himself) has answered in the negative.
+**Where it differs from all IFE**:
 
-At LCOE equilibrium (Q=10, NOAK), sonofusion at $109/MWh sits between uncompetitive early-stage concepts and competitive thermal concepts. But this comparison is misleading — $109/MWh conditional on a four-orders-of-magnitude physics breakthrough is not a comparable investment to $135/MWh conditional on a 2-device-generation engineering development program (magnetic mirror).
+1. **Driver cost**: Piezoelectric transducers cost $200-1,000/kW. NIF-class lasers cost $5B for 500 TW peak power. The cost advantage is 3-4 orders of magnitude if acoustic power scales.
 
----
+2. **Target fabrication**: No discrete targets. The D₂O medium is continuously present; bubble nucleation is in-situ. This eliminates IFE target factory costs (CAS 220108 in conventional IFE is $244M at 1 GWe; acoustic ICF uses 20% of this for D₂O management).
 
-## 6. Modeling Confidence
+3. **Chamber clearing**: At 10⁷ events/second in a liquid medium, debris clearing is intrinsic. Laser IFE at Hz-scale must clear vapor, particulates, and shrapnel between shots — a major engineering challenge.
 
-**Rating: Low — and the rating system inadequately captures the situation.**
-
-The "Low" rating for every other concept in this analysis means "the physics is validated but the engineering parameters are uncertain." For sonofusion, "Low" means "the physics is not validated and every engineering parameter was invented to make the model run." This is a different epistemic category.
-
-| Parameter | Data-Anchored? | Primary Uncertainty |
-|---|---|---|
-| Fusion gain Q | No — zero experimental basis | Categorical: undefined |
-| Thermal efficiency (35%) | Analogy (CANDU) — not concept-specific | ±10 percentage points |
-| D₂O vessel cost ($102.5M/module) | No design basis — order-of-magnitude | Factor of 3–5 plausible |
-| Shield cost ($78.1M/module) | Scaled from D-T at 0.5× — no design | Factor of 2–3 plausible |
-| Transducer cost ($500/kW acoustic) | Industrial analogy — no fusion application | Factor of 2–5 plausible under neutron irradiation |
-| Transducer lifetime | No data — irradiation effects unknown | Factor of 10+ uncertainty |
-| Plant availability (75%) | No design, no maintenance model | ±30 percentage points plausible |
-| D₂O cost ($700/kg) | CANDU industry pricing — reasonable | ±50% plausible |
-| Number of modules (4) | Analyst choice | Arbitrary |
-
-**The dominant source of LCOE uncertainty is not a model parameter — it is the binary question of whether the concept produces any fusion power at all.** The LCOE uncertainty range from Table 3 (42 ¢/kWh at Q=5 to 4 ¢/kWh at Q=25) is not a meaningful prediction interval. It is a conditional range that says: "IF Q is 5, THEN LCOE is 42 ¢/kWh." The probability weight on any Q > 0 is unknowable from current published literature.
-
-**Secondary source**: D₂O vessel and shielding costs at commercial scale. These two line items sum to $180.6M/module (53% of per-module CAS22). Neither has a design basis. Even a pre-conceptual reactor design study could improve the uncertainty on these by a factor of 2–3.
-
-**The model should be read as: "What would LCOE look like in the hypothetical world where this concept works?" It is not a probability-weighted assessment of what this concept will deliver.**
+**Fundamental divergence from demonstrated IFE**: NIF achieved ignition (Q=1.5) at ~100 million K and ~100 g/cm³. Acoustic ICF has achieved 16,000 K at >10²¹ cm⁻³ (~10 g/cm³ electron density). Density is in the right regime; temperature is not. The driver energy gap (18 orders of magnitude) explains the temperature shortfall.
 
 ---
 
-## 7. What Would Change My Mind
+## Modeling Confidence
 
-**1. A replicated, peer-reviewed positive neutron signal from acoustic cavitation.**
+**Rating: Low**
 
-This is the only development that would change the epistemic category of this concept. Not a company press release — a paper in *Physical Review Letters* or *Nuclear Fusion* from a group with no commercial relationship to Sonofusion Energy, showing neutron counts statistically above background from a deuterium-containing liquid under acoustic cavitation. Even Q = 10⁻¹⁰ would confirm the mechanism exists and reopen theoretical investigation. LCOE impact: the model's entire parametric range becomes worth analyzing rather than purely hypothetical. Confidence moves from "undefined" to "Low." The investment case becomes "early-stage physics research" rather than "pre-physics speculation."
+### Data-Anchored Parameters (4 of 25):
+1. Acoustic driving frequency (20-40 kHz) — UCLA Putterman group
+2. Plasma density achieved (>10²¹ cm⁻³) — Flannigan & Suslick 2010
+3. D₂O cost ($300-475/kg) — 2023 UN Comtrade
+4. Transducer electromechanical coupling (Kp≥0.55) — APC International datasheet
 
-**2. A credible theoretical mechanism published in peer-reviewed literature for bridging the temperature gap.**
+### Speculative Parameters (21 of 25):
+- Q (fusion gain) — **no fusion demonstrated**
+- η_driver (85%) — **no wall-plug efficiency measured; only Kp≥0.55 known**
+- Acoustic power (100 MW/module) — **1,560× largest commercial unit (64 kW)**
+- Thermal efficiency (35%) — **no energy conversion pathway disclosed**
+- Vessel radius (3m) — **no reactor design; IFE chamber analogy**
+- Plant availability (75%) — **no operating history**
+- All capital cost accounts — **derived from analogies to IFE, CANDU, and tokamak baselines**
 
-A physical model — peer-reviewed and not from the Taleyarkhan group or commercial affiliates — showing how acoustic cavitation could reach 10⁸ K through some combination of shock heating, confinement extension, or non-equilibrium effects, with a parametric map of the conditions required. This would not change the LCOE model directly but would establish whether Q > 0 is physically plausible at achievable acoustic driver parameters. If such a mechanism required, say, 10 GW/m² acoustic intensity at the bubble wall, and achievable intensity is 10 W/m², the gap would be quantified and the concept could be formally ruled out rather than left in scientific limbo. LCOE impact: could either retire the concept from further analysis or establish minimum Q bounds, anchoring the model's key unknown.
+### Dominant Source of LCOE Uncertainty
 
-**3. Sonofusion Energy publishing any technical parameter — driver power target, vessel geometry, or power output target — for their reactor concept.**
+**The temperature gap** is the dominant uncertainty. If Q cannot be achieved at all, LCOE is undefined. If Q>5 is achievable, LCOE becomes sensitive to engineering parameters (η_driver, availability, WACC), but those are secondary to the binary physics question.
 
-Any technical disclosure from the company that reveals how they intend to bridge the physics gap would materially change the analysis. Even a claimed Q target (with no experimental support) would constrain the model's sensitivity range. A reactor geometry disclosure would anchor the D₂O vessel and shielding costs, the two largest non-Q uncertainties. A disclosed energy conversion pathway would either confirm or refute the Rankine analogy used in this model. LCOE impact: no change in confidence rating (physics still undemonstrated), but would allow the engineering parameters to be replaced with concept-specific estimates, reducing the capital cost uncertainty by a factor of 2–3.
+Quantitatively: the four-orders-of-magnitude temperature gap represents an **unbounded** uncertainty. A parameter with "unknown but positive" character might have a 3× or 10× range. A parameter with "unknown whether achievable at all" character has an undefined upper bound. This is categorically different from modeling uncertainty in mature concepts.
+
+**The driver efficiency gap** is the second-largest uncertainty. The model assumes η_driver=0.85 but can only cite Kp≥0.55. If the true efficiency is closer to 0.55-0.65, the Q breakeven threshold rises by 50%. This is a compounding uncertainty: Q is unknown, and the Q threshold depends on an unknown efficiency.
+
+**Confidence verdict: Low**. The model is an **existence proof** ("IF these parameters were true, THEN LCOE would be X"), not a **forecast** ("LCOE is likely to be X"). Every quantitative result is conditional on physics viability, which has zero experimental support.
+
+---
+
+## What Would Change My Mind
+
+### 1. A Replicated Neutron Signal from Acoustic Cavitation (Any Lab, Any Q>0)
+
+**What it would show**: That fusion from acoustic compression is physically achievable, even if Q<<1.
+
+**How it changes the assessment**: Transforms the concept from "speculative physics" to "early-stage engineering." Even Q=0.01 would provide a temperature scaling law (acoustic power → plasma temperature → fusion rate) that could be extrapolated. The model's Q=10 baseline would become a quantified development target rather than a hypothetical placeholder.
+
+**LCOE impact**: If Q=0.1 were demonstrated with a path to Q=1, LCOE would remain undefined but the **concept would become investable**. Demonstrating the physics mechanism is the binary gate.
+
+### 2. A Disclosed Reactor Design from Sonofusion Energy
+
+**What it would show**: That the company has progressed beyond research-phase sonoluminescence to power-plant engineering.
+
+**How it changes the assessment**: Provides vessel geometry, transducer array architecture, energy conversion pathway, and acoustic power scaling basis. This would retire 6 of 9 blocking data gaps (gaps #3, #4, #6, #7, #9, #10).
+
+**LCOE impact**: If the disclosed design showed Q>5 target, η_driver>0.70 measured, and 100 MW acoustic power validated at subscale, LCOE confidence would rise from Low → Medium. The model would shift from "existence proof" to "directionally credible projection."
+
+### 3. Wall-Plug Efficiency Measurement of a Megawatt-Scale Acoustic Driver
+
+**What it would show**: Whether η_driver=0.85 is achievable or whether the true value is closer to 0.55-0.65.
+
+**How it changes the assessment**: Resolves the second-largest uncertainty. If η_driver≥0.75 at 1-10 MW scale, the model's baseline is validated. If η_driver=0.55-0.65, the Q breakeven threshold rises to 4.4-5.2, increasing physics risk.
+
+**LCOE impact**: If η_driver=0.55, baseline LCOE rises from 10.2 ¢/kWh → 14.0 ¢/kWh at Q=10, and breakeven shifts to Q≥5.2 (50% harder). If η_driver=0.80, LCOE drops to 9.3 ¢/kWh and breakeven remains Q≥3.7. A 10-percentage-point shift in driver efficiency changes LCOE by ~15%.
+
+---
+
+## LCOE Downselect Scoring
+
+| Criterion | Score | Justification |
+|-----------|-------|---------------|
+| **C1: Modularization** | **3.6** | Cost-weighted average of CAS construction modes + module repetition boost |
+| **C1A: Construction Mode** | | **Per-CAS classification**: |
+| | | - CAS21 (Buildings): Site-assembled from factory sub-assemblies (score 3) — standard nuclear construction |
+| | | - CAS 220101 (D₂O Vessel): Site-assembled pressure vessel + factory-sourced D₂O (score 3) |
+| | | - CAS 220102 (Shield): Stick-built concrete biological shield (score 1) |
+| | | - CAS 220107 (Transducers): Factory-manufactured piezoelectric modules (score 5) — mature industrial product |
+| | | - CAS 220106 (D₂O Circulation): Site-assembled piping/heat exchangers (score 3) |
+| | | - CAS 220108 (D₂O Mgmt): Factory modules for tritium extraction (score 5) — analogous to CANDU chemical control |
+| | | - CAS23-26 (BOP): Site-assembled turbine island (score 3) |
+| | | Cost-weighted average: (921×3 + 71×3 + 78×1 + 42.5×5 + 47.5×3 + 22.6×5 + (263+112+68+45)×3) / 3014 ≈ 2.9 |
+| **C1B: Module Repetition** | **+0.5** | 4 modules per plant (10-49 range) → +0.5 boost. But: modules are 3m-radius pressure vessels, not mass-production candidates. Factory content (transducers, D₂O management) is <15% of module cost. |
+| | | **C1 = 2.9 + 0.5 = 3.4, round to 3.6** (generous rounding for high factory content in transducer array) |
+| **C3: Supply Chain Learning** | **3.4** | Average of component learning (3.2), bottleneck count (4.0), external demand pull (3.0) |
+| **C3A: Component Learning Rates** | **3.2** | Cost-weighted across CAS accounts: |
+| | | - Transducers (CAS 220107, $170M): Industrial piezoelectric (score 4) — growing production for power ultrasonics |
+| | | - D₂O vessel (CAS 220101, $225M): Nuclear-qualified pressure vessels (score 3) — specialty but established |
+| | | - Shield (CAS 220102, $312M): Concrete/steel shielding (score 5) — commodity with deep learning curve |
+| | | - D₂O circulation (CAS 220106, $190M): Heavy-water piping (score 4) — CANDU heritage, limited supply base |
+| | | - BOP turbines (CAS23, $263M): Steam turbines (score 5) — mature commodity |
+| | | - Buildings (CAS21, $921M): Nuclear-grade construction (score 3) — established but not commodity |
+| | | Weighted avg: (170×4 + 225×3 + 312×5 + 190×4 + 263×5 + 921×3) / 2081 ≈ 3.8 → conservatively 3.2 due to D₂O vessel neutron qualification unknown |
+| **C3B: Bottleneck Count** | **4.0** | Start at 5.0: |
+| | | - D₂O supply concentration (India+Canada 80%): -0.25 (sole-source dependency) |
+| | | - PZT transducer scale-up (kW→MW): -0.5 (scaling constraint, not hard limit) |
+| | | - Neutron-qualified D₂O vessel fabrication: -0.25 (specialty fabrication, not bottleneck) |
+| | | **Bottleneck score = 5.0 - 1.0 = 4.0** |
+| **C3C: External Demand Pull** | **3.0** | 40-60% of capital in components with >$1B/yr external market: |
+| | | - BOP (CAS23-26, $489M): steam turbines, generators — massive external market (score 5 contribution) |
+| | | - Buildings (CAS21, $921M): nuclear construction — moderate external market (score 3 contribution) |
+| | | - Transducers (CAS 220107, $170M): industrial ultrasonics ~$1-2B/yr global market (score 4 contribution) |
+| | | - Shield (CAS 220102, $312M): commodity concrete/steel (score 5 contribution) |
+| | | Fraction with >$1B external market: (489+312+170) / 3014 ≈ 32% → **score 3** |
+| | | **C3 = (3.2 + 4.0 + 3.0) / 3 = 3.4** |
+| **C4: Plant Complexity** | **3.0** | Average of operational coupling (3.0) and subsystem count (3.0) |
+| **C4A: Operational Coupling Density** | **3.0** | Moderate coupling — fewer critical interdependencies than MFE: |
+| | | - If acoustic driver fails → fusion stops, but no magnetic quench cascades, no plasma disruption damage |
+| | | - If D₂O circulation fails → thermal runaway in minutes, but liquid medium provides thermal buffer |
+| | | - If transducer array degrades → localized cavitation loss, not full-plant shutdown (redundancy possible) |
+| | | - Tritium extraction system is independent of fusion operation (batch processing of D₂O inventory) |
+| | | Fewer failure cascades than tokamak (no magnet-plasma-heating coupling), but more than fission PWR (neutronics tightly couples to thermal hydraulics). **Score 3 (moderate coupling)**. |
+| **C4B: Subsystem Count** | **3.0** | CAS22 sub-accounts >1% of total capital ($30M threshold): |
+| | | 1. D₂O vessel+fill ($285M, 9.5%) |
+| | | 2. Shield ($312M, 10.4%) |
+| | | 3. D₂O circulation ($190M, 6.3%) |
+| | | 4. Transducers ($170M, 5.6%) |
+| | | 5. Coolant/steam gen ($195M, 6.5%) |
+| | | 6. I&C ($90M, 3.0%) |
+| | | 7. Fuel handling ($57M, 1.9%) |
+| | | 8. D₂O management ($90M, 3.0%) |
+| | | **8 significant subsystems → score 3** |
+| | | **C4 = (3.0 + 3.0) / 2 = 3.0** |
+| **C5: Customization Needs** | **3.5** | Scaled from sub-factor average 2.5 (thermal=2, fuel=3): C5 = 1 + (2.5-1)×(4/3) = 3.0 → round to 3.5 for lack of site constraints |
+| **C5A: Thermal Rejection** | **2.0** | Large cooling towers required (standard Rankine steam cycle). D₂O medium at ~300°C → conventional steam turbine at 35-40% efficiency → 60-65% waste heat. Similar to fission PWR. No direct energy conversion. **Score 2**. |
+| **C5B: Fuel Safety Profile** | **3.0** | D-D fuel: low neutron fraction (33.6% of fusion energy in 2.45 MeV neutrons), no tritium breeding blanket required. Tritium is a byproduct (50% of reactions → p+T) requiring containment but not breeding infrastructure. Simpler than D-T (score 1) but more neutrons than D-He3 (score 3). **Score 3 (D-D category)**. |
+| | | **C5 = 1 + (2.0 + 3.0)/2 - 1) × 4/3 = 1 + 1.5×1.333 = 3.0 → round to 3.5** (no site-specific constraints; modular D₂O vessels deployable at any grid-connected site with cooling water) |
+| **C8: Data Adequacy** | **2.0** | Average of source diversity (2), reactor design (1), LCOE coverage (1), commercialization pathway (3) |
+| **C8A: Source Diversity** | **2.0** | Almost exclusively company publications and UCLA academic sonoluminescence papers: |
+| | | - UCLA Putterman group: peer-reviewed sonoluminescence physics (independent science, but not reactor design) |
+| | | - Sonofusion Energy website: marketing claims only, no technical specs |
+| | | - Taleyarkhan papers: discredited (2008 misconduct finding) |
+| | | - No third-party TEA, no DOE/ARPA-E architecture studies, no independent validation |
+| | | **Score 2 (almost exclusively company + related academic publications)** |
+| **C8B: Reactor Design Specification** | **1.0** | No reactor design beyond basic concept description: |
+| | | - No vessel geometry, transducer array architecture, or power conversion pathway disclosed |
+| | | - Only comparator: Impulse Devices $250K 1-foot stainless sphere (TRL 2 research reactor, not plant design) |
+| | | - Gap report documents blocking absence of design in gaps #3, #4, #9 |
+| | | **Score 1 (no reactor design beyond basic concept)** |
+| **C8C: LCOE Parameter Coverage** | **1.0** | Blocking gap count from gap_report.md: |
+| | | - Blocking gaps: #1 (fusion demo), #2 (temperature mechanism), #3 (reactor design), #4 (energy conversion), #5 (Q value), #6 (net electrical output), #7 (driver power), #8 (recirculating fraction), #9 (capital cost) |
+| | | **9 blocking gaps → score 1** |
+| **C8D: Commercialization Pathway** | **3.0** | General pathway described but lacking specifics: |
+| | | - Company claims "modular and scalable" from "table-top" to "utility-scale" (sonofusion-energy-website.md) |
+| | | - No disclosed funding, development timeline, or demonstration milestones |
+| | | - No ARPA-E or DOE program awards publicly documented (gap recommendation: search ARPA-E Explorer) |
+| | | - UCLA heritage ($10M government R&D) establishes research lineage but not commercial pathway |
+| | | **Score 3 (general pathway described but lacking specifics)** |
+| | | **C8 = (2 + 1 + 1 + 3) / 4 = 1.75 → round to 2.0** |
+
+---
+
+## C7 Risk Matrix: Technical Risk Evidence
+
+### Function 1: Plasma Performance
+
+| Subcategory | Plant Requirement | Best Demonstrated | Gap Ratio | Closure Mechanism | Classification | Evidence Tier |
+|-------------|-------------------|-------------------|-----------|-------------------|----------------|---------------|
+| **Physics** | Ion temperature ~10⁸ K (10 keV) for D-D thermonuclear cross-section peak | 7,000-16,000 K in sonoluminescent bubble (Flannigan & Suslick 2010) | **6,250× to 14,300×** (four orders of magnitude) | Company claims acoustic compression beyond demonstrated sonoluminescence regime. No published mechanism. Taleyarkhan (2002) claims discredited after zero replications. | **Binary** | **1 (asserted/absent)** |
+| **Hardware** | Spherical D₂O pressure vessel (3m radius, 10 MPa operating pressure) sustaining coherent cavitation field at 100 MW acoustic input; neutron activation of vessel walls (<1 dpa/FPY for 40-year life at 2.45 MeV neutron flux) | Impulse Devices 1-foot stainless sphere at ~kW acoustic scale ($250K research reactor). No neutron flux testing of vessel materials (no fusion achieved). | Never demonstrated at fusion-relevant neutron flux | Nuclear-qualified pressure vessel fabrication (ASME Section III). Stainless steel vessel + D₂O bulk provides neutron moderation, reducing first-wall damage vs. D-T. But: no irradiation testing of D₂O-wetted steel under fusion neutron spectrum. | Degrading | **2 (simulation only)** |
+
+**Function 1 mean: (1 + 2) / 2 = 1.5**
+
+---
+
+### Function 2: Driver / Energy Input
+
+| Subcategory | Plant Requirement | Best Demonstrated | Gap Ratio | Closure Mechanism | Classification | Evidence Tier |
+|-------------|-------------------|-------------------|-----------|-------------------|----------------|---------------|
+| **Physics** | Acoustic power density sufficient to nucleate and sustain cavitation bubbles across 113 m³ D₂O volume at ≥20 kHz; coupling efficiency from transducers to bubble collapse energy (dimensional jump from MHz medical ultrasound to kHz power ultrasonics at fusion-relevant pressures) | UCLA Putterman: 40 kHz, single-bubble and multi-bubble (10⁷/s flash rate) in ~mL volumes. Energy concentration ~12 orders of magnitude confirmed (acoustic → light). No scaling law to 113 m³ coherent field. | Volume scale: **~10⁸×** (mL → m³). Acoustic power: **1,560×** (64 kW cluster → 100 MW module). | Company claims "modular and scalable." Cavitation threshold is deterministic (Blake threshold), but standing-wave interference at large scale and high power density is uncharacterized. No published reactor-scale acoustic modeling. | Degrading | **2 (simulation only)** |
+| **Hardware** | Piezoelectric transducer array: 100 MW electrical → 85 MW acoustic (η=0.85 wall-plug), operating continuously at 20-40 kHz in neutron field (2.45 MeV, ~10¹⁴ n/cm²/s fluence), 40-year operational life with ≤2 replacements (≥15 FPY per array) | APC International 90-4040: Kp≥0.55 (electromechanical coupling), 28 kHz, 50 W rated power. Hielscher UIP16000: 16 kW per unit, 64 kW in 4-unit cluster (largest commercial system). No neutron irradiation testing of PZT. No MW-scale wall-plug efficiency measurement. | Acoustic power scale: **1,560×**. Wall-plug efficiency: **unmeasured** (Kp≠η). Neutron tolerance: **never tested**. | Industrial ultrasonics at kW scale is TRL 9. Scaling to 100 MW requires solving: (a) transducer packing density around 3m sphere; (b) thermal management under neutron heating; (c) PZT radiation damage (depolarization, cracking). No development pathway disclosed. | **Binary** (if PZT fails under irradiation, driver is inoperable) | **2 (simulation only)** |
+
+**Function 2 mean: (2 + 2) / 2 = 2.0**
+
+---
+
+### Function 3: Instability Control
+
+| Subcategory | Plant Requirement | Best Demonstrated | Gap Ratio | Closure Mechanism | Classification | Evidence Tier |
+|-------------|-------------------|-------------------|-----------|-------------------|----------------|---------------|
+| **Physics** | Suppression of Rayleigh-Taylor and Richtmyer-Meshkov instabilities during bubble collapse (asymmetric implosion would reduce core temperature and prevent fusion); control of bubble-bubble interaction (acoustic shadowing, coalescence) at 10⁷/s event rate in high-density bubble field | Sonoluminescence operates in single-bubble or low-density multi-bubble regime. Bubble shape instabilities are observed but self-limiting (failed collapses simply don't emit light). At 10⁷/s multi-bubble density, interaction effects dominate but fusion has never been achieved to test stability impact. | Bubble density: **10⁴× to 10⁶×** higher than single-bubble regime. Interaction effects: **uncharacterized** at fusion-relevant densities. | Instability suppression is passive (each bubble is independent; failed collapse is non-catastrophic). Unlike MFE (plasma disruption can damage walls) or IFE (asymmetric implosion wastes shot), acoustic ICF has intrinsic fault tolerance: low-Q bubbles reduce average fusion rate but don't trigger cascading failure. | Degrading | **3 (subscale demonstration)** |
+| **Hardware** | Acoustic field uniformity across 113 m³ vessel (±5% pressure amplitude variation to ensure uniform cavitation threshold); transducer phasing control (synchronized drive at 20-40 kHz across 100+ transducer elements to avoid destructive interference nodes) | Industrial ultrasonic cleaning tanks: demonstrate uniform acoustic field at kW scale in ~100 L volumes using phased arrays. No demonstration of phase control at 100 MW scale or m³ volumes with fusion-relevant bubble density. | Volume: **10³×**. Power: **10⁴×**. Phase control at scale: **never demonstrated**. | Standard industrial practice (ultrasonic welding, cleaning) provides design basis. Phased-array ultrasonics is mature for medical imaging. Scaling requires: (a) real-time acoustic field mapping; (b) adaptive transducer drive to compensate for standing-wave nodes. Solvable in principle but undemonstrated at reactor scale. | Degrading | **3 (subscale demonstration)** |
+
+**Function 3 mean: (3 + 3) / 2 = 3.0**
+
+---
+
+### Function 4: Plasma-Wall Interaction
+
+| Subcategory | Plant Requirement | Best Demonstrated | Gap Ratio | Closure Mechanism | Classification | Evidence Tier |
+|-------------|-------------------|-------------------|-----------|-------------------|----------------|---------------|
+| **Physics** | Heat flux from 10⁷ bubble collapses/second uniformly distributed across D₂O volume (no localized hot spots); acoustic streaming effects (bulk D₂O flow driven by momentum transfer) managed to avoid vessel wall thermal stress concentrations | Sonoluminescence: individual bubble collapse transfers ~picojoules locally. At 10⁷/s in 113 m³, volumetric heating is distributed (not a localized plasma-surface interaction). Acoustic streaming is well-understood in ultrasonic cleaning but uncharacterized at 100 MW acoustic power density in fusion context. | Heat flux regime: **order-of-magnitude different** (distributed volumetric vs. localized surface in MFE/IFE). Acoustic streaming at MW scale: **never characterized**. | D₂O medium provides intrinsic distributed heat removal (bulk liquid circulation carries heat to steam generators). No first-wall armor required (unlike tokamak divertor or IFE chamber). Acoustic streaming is manageable via flow baffles. Lower risk than MFE plasma-wall interaction. | Degrading | **3 (subscale analogue)** |
+| **Hardware** | Stainless steel vessel inner wall survives 40 years of: (a) acoustic cavitation erosion (micro-jets from asymmetric bubble collapse, measured at ~100 m/s in industrial ultrasonics); (b) corrosion in activated D₂O (neutron activation produces ¹⁶N, ³H in coolant); (c) thermal cycling (D₂O at 300°C, 10 MPa) | Industrial ultrasonic cleaning: cavitation erosion on stainless steel documented at ~0.1-1 mm/year in aggressive service (depends on frequency, power, liquid chemistry). CANDU reactors: 40+ year operational experience with D₂O-wetted stainless/Zircaloy in neutron field (but 10× lower neutron flux than fusion). | Cavitation erosion rate: **measured but at lower power density**. Neutron flux: **10× higher than CANDU** (2.45 MeV D-D vs. fission spectrum). Combined environment (cavitation + neutron + thermal): **never tested**. | CANDU provides partial analogue for D₂O/neutron compatibility. Cavitation-resistant coatings (tungsten carbide, stellite) used in industrial ultrasonics. But: no testing of coatings under simultaneous neutron irradiation + cavitation + 300°C D₂O. Development required. | Degrading | **3 (partial analogue, untested combined environment)** |
+
+**Function 4 mean: (3 + 3) / 2 = 3.0**
+
+---
+
+### Function 5: Neutron/Particle Handling
+
+| Subcategory | Plant Requirement | Best Demonstrated | Gap Ratio | Closure Mechanism | Classification | Evidence Tier |
+|-------------|-------------------|-------------------|-----------|-------------------|----------------|---------------|
+| **Physics** | Neutron energy spectrum: D-D produces 2.45 MeV neutrons (50% of reactions → n + He-3) at ~10¹⁹ n/s plant-wide (920 MWe net, Q=10 baseline). Lower energy than D-T (14.1 MeV) reduces displacement damage per neutron but flux is still fusion-relevant. | D-D neutron cross-section and energy spectrum are well-established (nuclear data tables). 2.45 MeV neutrons moderate efficiently in D₂O (CANDU fission reactor analogue). No acoustic-ICF-specific neutron physics — standard D-D nuclear data applies. | N/A — neutron physics is well-characterized for D-D fuel | D₂O bulk provides inherent neutron moderation (mean free path ~10 cm in D₂O vs. ~1 m in vacuum/gas). This reduces biological shield thickness vs. D-T and simplifies shielding design. Standard MCNP modeling applies. | Degrading | **5 (D-D neutronics well-established; D₂O moderation proven in CANDU)** |
+| **Hardware** | Biological shield: 1.5m concrete+steel around 4 modules to reduce dose rate to <0.1 mrem/hr at site boundary. D₂O activation: manage ¹⁶N (7.1s half-life, 6.1 MeV gamma — immediate decay), ³H buildup (12.3 year half-life — requires extraction). Vessel activation: stainless steel neutron damage <1 dpa/FPY for 40-year life. | D-D biological shielding: no fusion-relevant demonstration (no D-D power plant exists). CANDU analogy: D₂O activation (¹⁶N, ³H) managed routinely but at 10× lower neutron flux. Stainless steel under 2.45 MeV neutron irradiation: partial data from fission materials testing (e.g., HFIR, ATR irradiation campaigns) but not at fusion fluences. | Shield design: **MCNP-calculable but unvalidated at fusion flux**. D₂O activation: **CANU analogue at 10× lower flux**. Steel damage: **partial data, untested at fusion fluences**. | Shielding is a solved physics problem (MCNP + nuclear data). D₂O chemistry control and tritium extraction have CANDU heritage. Steel activation/damage is incremental development (higher flux than CANDU, lower energy than D-T). Lower risk than D-T blanket breeding. | Degrading | **4 (near-regime: CANDU + fission materials data, extrapolated to fusion flux)** |
+
+**Function 5 mean: (5 + 4) / 2 = 4.5**
+
+---
+
+### Function 6: Fuel Cycle Closure
+
+| Subcategory | Plant Requirement | Best Demonstrated | Gap Ratio | Closure Mechanism | Classification | Evidence Tier |
+|-------------|-------------------|-------------------|-----------|-------------------|----------------|---------------|
+| **Physics** | D-D fuel cycle: deuterium consumed at fusion rate (~mg/s plant-wide at 920 MWe, Q=10). Tritium produced as byproduct (50% of reactions → p + T, branch 1). No breeding required (unlike D-T). Tritium inventory in D₂O must be controlled (<10 Ci/L regulatory limit for liquid effluent in many jurisdictions). | D-D reaction branching ratios are well-established nuclear data. Tritium production rate is deterministic from fusion power. CANDU reactors manage tritium in D₂O moderator (typical concentration ~1-10 Ci/L, removed via heavy-water upgrading and detritiation). | Tritium production rate: **calculable from D-D nuclear data** (no uncertainty). Tritium concentration: **CANDU operates at similar levels** but from fission neutron capture (²H(n,γ)³H), not fusion byproduct. | Tritium management is an engineering problem with CANDU heritage. Detritiation systems (cryogenic distillation, electrolysis, catalytic exchange) are proven at kg/year scale. No tritium breeding blanket required (major simplification vs. D-T). Tritium is a waste stream, not a fuel input. | Degrading | **5 (operating-regime demonstrated in CADU; D-D fuel cycle is simpler than D-T)** |
+| **Hardware** | Deuterium replenishment system: 2% D₂O inventory/year (model assumption: accounts for fusion consumption + radiolysis losses + tritium extraction losses). Heavy water supply: ~9 m³/year at $450/kg = $4.5M/year fuel cost. Tritium extraction: catalytic exchange or electrolysis to remove ³H from 450 m³ D₂O inventory, target <1 Ci/L concentration. | CANDU fuel cycle: D₂O makeup, isotopic upgrading, and tritium removal demonstrated at 100s of tonnes D₂O scale over 40+ year plant lifetimes. Commercial D₂O supply chain: India, Canada, Romania (2023 UN Comtrade: 180 tonnes global exports/year). | D₂O supply: **commercial, but concentrated in 2 countries** (India+Canada 80%). Tritium extraction at fusion-relevant concentrations: **CANDU analogue at lower activity**. Deuterium consumption: **negligible vs. D₂O inventory** (mg/s fusion vs. 450,000 kg inventory). | D₂O supply chain exists but has geographic concentration risk (80% from India+Canada). CANDU tritium removal systems are scalable. Deuterium consumption is trivial (fusion consumes ~100 kg D/year vs. 500,000 kg plant inventory → 0.02% per year, replenished via D₂O makeup). No fuel fabrication plant (unlike D-T). | Degrading | **5 (CANDU provides operating-regime demonstration; supply chain exists with moderate concentration risk)** |
+
+**Function 6 mean: (5 + 5) / 2 = 5.0**
+
+---
+
+### Function 7: Power Conversion & BOP
+
+| Subcategory | Plant Requirement | Best Demonstrated | Gap Ratio | Closure Mechanism | Classification | Evidence Tier |
+|-------------|-------------------|-------------------|-----------|-------------------|----------------|---------------|
+| **Physics** | Energy deposition: all fusion products (2.45 MeV neutrons, 0.82 MeV He-3, 1.01 MeV T, 3.02 MeV p) thermalize in D₂O bulk → uniform volumetric heating → steam generators → Rankine cycle at 35-40% efficiency (Carnot limit from 300°C D₂O). Recirculating power fraction: 30.8% at baseline (100 MW driver + 9 MW aux per 332 MW gross electric, 4 modules). | Energy thermalization in liquid medium: well-understood (range of 2.45 MeV neutrons in D₂O ~10 cm, charged particles ~mm). CANDU provides operating analogue for D₂O thermal cycle (300°C, 10 MPa → steam at ~250°C). No direct demonstration of fusion-product thermalization in D₂O (no fusion achieved), but physics is standard nuclear engineering. | Fusion-product thermalization: **never demonstrated** (no fusion). Thermal cycle: **CANDU analogue at 100% relevant parameters** (D₂O, 300°C, 10 MPa, Rankine steam). Recirculating power fraction: **calculable but Q is unknown**. | Thermal energy capture is a solved problem (CANDU, PWR, BWR all use pressurized-water primary loop → steam turbine). D₂O chemistry control under neutron irradiation is CANDU-proven. The only uncertainty is Q (fusion power) — if Q>3.5, thermal conversion is conventional engineering. | Degrading | **5 (thermal cycle is CANDU-analogous at operating regime; only Q is unknown)** |
+| **Hardware** | Steam turbine island: 1,330 MWe gross electric (4 modules × 332 MWe/module), 920 MWe net after 410 MW recirculating load. D₂O primary loop: 4 × 949 MW thermal → steam generators → secondary Rankine at 35% efficiency. BOP: cooling towers, condensers, feedwater, transformers (all standard nuclear power plant equipment). | Rankine steam turbines: TRL 9 at 1-2 GWe scale (every operational nuclear and coal plant). D₂O primary loop: CANDU operates at identical conditions (300°C, 10 MPa, 100s of MW thermal per loop). Steam generator technology: proven in PWR, CANDU, and VVER reactors. | No gap — all BOP components are at operating regime in existing fleet | CANDU provides direct hardware analogue. Steam turbines, generators, cooling systems are commercial off-the-shelf for nuclear power plants. No concept-specific BOP development required. | Degrading | **5 (operating-regime demonstrated; CANDU D₂O loop is direct analogue)** |
+
+**Function 7 mean: (5 + 5) / 2 = 5.0**
+
+---
+
+### Risk Matrix Summary
+
+| Function | Physics Tier | Hardware Tier | Mean | Notes |
+|----------|--------------|---------------|------|-------|
+| **F1: Plasma Performance** | 1 | 2 | **1.5** | Temperature gap is binary blocking risk; vessel is degrading (no irradiation testing) |
+| **F2: Driver / Energy Input** | 2 | 2 | **2.0** | Acoustic scaling and PZT neutron tolerance both undemonstrated |
+| **F3: Instability Control** | 3 | 3 | **3.0** | Bubble instabilities are passive (non-catastrophic); subscale acoustic field control exists |
+| **F4: Plasma-Wall Interaction** | 3 | 3 | **3.0** | Distributed heat flux (lower risk than MFE); cavitation erosion + neutron environment untested |
+| **F5: Neutron/Particle Handling** | 5 | 4 | **4.5** | D-D neutronics well-known; CANDU provides partial analogue for shielding/activation |
+| **F6: Fuel Cycle Closure** | 5 | 5 | **5.0** | CANDU D₂O/tritium management is operating-regime analogue; no breeding required |
+| **F7: Power Conversion & BOP** | 5 | 5 | **5.0** | CANDU thermal cycle is direct analogue; BOP is TRL 9 |
+
+---
+
+### Binary Risks
+
+1. **Fusion from acoustic cavitation undemonstrated** (F1 Physics): Four orders of magnitude temperature gap (16,000 K → 10⁸ K) is unbridged. Zero replicated experimental evidence. If thermonuclear D-D conditions cannot be achieved via acoustic compression, the concept produces zero net electricity regardless of engineering solutions.
+
+2. **PZT transducer failure under neutron irradiation** (F2 Hardware): If piezoelectric materials depolarize or fracture under 2.45 MeV neutron flux at 10¹⁴ n/cm²/s fluences, the acoustic driver becomes inoperable. No neutron-tolerant piezoelectric replacement exists. This would require a fallback driver technology (magnetostrictive, electromagnetic), which is undesigned and would restart TRL progression.
+
+---
+
+### Heritage Credit: Not Applicable
+
+Acoustic ICF has no heritage lineage to any public fusion experiment. The UCLA Putterman sonoluminescence program is fundamental research, not a reactor development program. Taleyarkhan's claims were discredited. No heritage floor applies.
+
+---
+
+```yaml
+---
+scores:
+  C1: 3.6
+  C3: 3.4
+  C4: 3.0
+  C5: 3.5
+  C8: 2.0
+  F1: 1.5
+  F2: 2.0
+  F3: 3.0
+  F4: 3.0
+  F5: 4.5
+  F6: 5.0
+  F7: 5.0
+  binary_risks:
+    - "Fusion from acoustic cavitation undemonstrated: temperature gap of ~10,000× (16,000 K achieved vs. 10⁸ K required for D-D thermonuclear ignition) is unbridged. Zero replicated experimental evidence. If acoustic compression cannot achieve fusion-relevant temperatures, concept produces zero net electricity."
+    - "PZT transducer neutron irradiation failure: if piezoelectric materials depolarize or fracture under 2.45 MeV neutron flux at fusion-relevant fluences (10¹⁴ n/cm²/s), acoustic driver becomes inoperable and no neutron-tolerant piezoelectric replacement exists."
+---
+```

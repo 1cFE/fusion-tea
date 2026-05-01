@@ -78,7 +78,8 @@ class OrbitronPlantParams:
     Ref: analysis.md §Section 2 (High-leverage parameters).
     HIGH UNCERTAINTY — this is the primary sweep axis for the back-solve."""
 
-    thermal_efficiency: float = 0.12
+    thermal_efficiency: float = 0.35
+ # standardized from 0.12 per scoring_framework.md (Energy Capture: Thermal (unspecified))
     """Thermal-to-electric conversion efficiency.
     Source: No conversion system designed. Company states "thermal cycle with turbines"
     [avalanche-orbitron-page.md] but conventional turbines are impractical below ~1 MWe.

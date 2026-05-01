@@ -55,6 +55,8 @@ def _parse_json_events(raw: str) -> tuple[str, str | None]:
             "non-string" cases raise distinct messages so operators can tell
             them apart.
     """
+    if raw is None:
+        raise ValueError("stdout is None (possible encoding failure)")
     events = json.loads(raw)
     if not isinstance(events, list):
         raise ValueError(f"Expected JSON list, got {type(events).__name__}")
@@ -120,6 +122,7 @@ def invoke_claude(
                 input=prompt,
                 capture_output=True,
                 text=True,
+                encoding="utf-8",
                 cwd=str(cwd),
                 timeout=timeout,
             )

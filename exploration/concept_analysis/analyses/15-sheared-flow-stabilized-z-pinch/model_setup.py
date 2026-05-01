@@ -103,7 +103,8 @@ class SFSZPinchParams:
     Ref: engineering-paradigms-paper-summary.md §Blanket Design; dossier.md §Tritium Breeding.
     Pb provides (n,2n) multiplication; Li-6(n,T)He-4 reaction is exothermic (+4.8 MeV)."""
 
-    thermal_efficiency: float = 0.38
+    thermal_efficiency: float = 0.35
+ # standardized from 0.38 per scoring_framework.md (Energy Capture: Thermal (steam))
     """Thermal-to-electric conversion efficiency (LiPb → steam Rankine cycle).
     Source: Engineering Paradigms paper implies steam Rankine; LiPb solidification point
     ~235°C sets a floor on blanket outlet temperature, limiting Rankine efficiency.
@@ -943,7 +944,8 @@ def main():
             Q_sci=7.0,
             driver_cost_per_module_M=150.0,
             plant_availability=0.65,
-            thermal_efficiency=0.33,
+            thermal_efficiency=0.35,
+ # standardized from 0.33 per scoring_framework.md (Energy Capture: Thermal (steam))
             n_mod=10,
             electrode_replacement_cost_per_module_M=8.0,
             core_lifetime_FPY=2.0,
@@ -953,7 +955,8 @@ def main():
             Q_sci=15.0,
             driver_cost_per_module_M=40.0,
             plant_availability=0.85,
-            thermal_efficiency=0.42,
+            thermal_efficiency=0.35,
+ # standardized from 0.42 per scoring_framework.md (Energy Capture: Thermal (steam))
             n_mod=10,
             electrode_replacement_cost_per_module_M=1.0,
             core_lifetime_FPY=5.0,
@@ -964,7 +967,8 @@ def main():
             Q_sci=5.0,
             driver_cost_per_module_M=150.0,
             plant_availability=0.60,
-            thermal_efficiency=0.33,
+            thermal_efficiency=0.35,
+ # standardized from 0.33 per scoring_framework.md (Energy Capture: Thermal (steam))
             n_mod=10,
         ),
         "Small plant (4 mod)": SFSZPinchParams(n_mod=4),

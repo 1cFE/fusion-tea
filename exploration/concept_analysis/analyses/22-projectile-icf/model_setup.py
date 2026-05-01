@@ -183,7 +183,8 @@ class ProjectileICFPlantParams:
     less multiplication than ⁶Li-enriched blanket.
     Ref: Standard fusion engineering; analysis.md §Section 2 (liquid Li blanket)."""
 
-    thermal_efficiency: float = 0.33
+    thermal_efficiency: float = 0.35
+ # standardized from 0.33 per scoring_framework.md (Energy Capture: Thermal (steam))
     """Thermal-to-electric conversion efficiency for steam Rankine cycle.
     Source: FLF explicitly chose a "conventional steam Rankine cycle — 150-year-old
     steam turbine technology at this scale is mature." Steam Rankine at this

@@ -89,7 +89,8 @@ class LevitatedDipolePlantParams:
     Ref: arxiv-2602-20564-dt-dipole-power-plants.md §4.3.
     MODERATE UNCERTAINTY."""
 
-    eta_th: float = 0.40
+    eta_th: float = 0.35
+ # standardized from 0.4 per scoring_framework.md (Energy Capture: Thermal (unspecified))
     """Thermal-to-electric conversion efficiency [fraction].
     Source: Simpson et al. §3.2.5. Actual thermodynamic cycle unspecified in any
     public source. 40% is consistent with sCO2 Brayton or advanced steam Rankine.
@@ -1046,7 +1047,8 @@ def main():
         W_shield_unit_cost_per_kg=200.0,
         sacrificial_handling_M_USD_yr=40.0,
         replacement_tape_multiplier=3.0,
-        eta_th=0.37,
+        eta_th=0.35,
+ # standardized from 0.37 per scoring_framework.md (Energy Capture: Thermal (unspecified))
         maintenance_availability=0.90,
         cryo_system_cost_M_USD=200.0,
     )
@@ -1058,7 +1060,8 @@ def main():
         W_shield_unit_cost_per_kg=100.0,
         sacrificial_handling_M_USD_yr=8.0,
         replacement_tape_multiplier=2.0,
-        eta_th=0.44,
+        eta_th=0.35,
+ # standardized from 0.44 per scoring_framework.md (Energy Capture: Thermal (unspecified))
         maintenance_availability=0.96,
         cryo_system_cost_M_USD=100.0,
     )

@@ -1,0 +1,412 @@
+=== stage1-all: 38 concepts (01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17a, 17b, 18, 19, 20a, 20b, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36) ===
+    Pipeline: analyze → model-setup → review
+
+--- Analyze ---
+  01-hts-compact-tokamak: at iter 14, will run up to 3 more (max_passes=17)
+  research 01-hts-compact-tokamak (max 5 searches, 3 extractions) ... FAILED (900s, rc=-1)
+    stderr: Timed out after 900s
+    warning: research_output.json not found (agent may have crashed)
+  analyze 01-hts-compact-tokamak iter 15/17 (feedback pass) ... done (161s)
+    model-setup 01-hts-compact-tokamak ... done (368s) → running model ... ok (LCOE=431.7 $/MWh)
+  assess 01-hts-compact-tokamak iter 15 ... PASS (76s)
+  02-acoustic-icf-sonofusion: at iter 6, will run up to 3 more (max_passes=9)
+  research 02-acoustic-icf-sonofusion (max 5 searches, 3 extractions) ... FAILED (900s, rc=-1)
+    stderr: Timed out after 900s
+  analyze 02-acoustic-icf-sonofusion iter 7/9 (feedback pass) ... done (126s)
+    model-setup 02-acoustic-icf-sonofusion ... done (292s) → running model ... ok (LCOE=160.1 $/MWh)
+  assess 02-acoustic-icf-sonofusion iter 7 ... PASS (67s)
+  03-laser-icf-liquid-jet-target: at iter 4, will run up to 3 more (max_passes=7)
+  research 03-laser-icf-liquid-jet-target (max 5 searches, 3 extractions) ... 0 sources acquired (185s)
+  analyze 03-laser-icf-liquid-jet-target iter 5/7 (feedback pass) ... done (64s)
+    model-setup 03-laser-icf-liquid-jet-target ... done (334s) → running model ... ok (LCOE=74.2 $/MWh)
+  assess 03-laser-icf-liquid-jet-target iter 5 ... 3 findings (80s)
+  research 03-laser-icf-liquid-jet-target (max 5 searches, 3 extractions) ... 0 sources acquired (267s)
+  analyze 03-laser-icf-liquid-jet-target iter 6/7 (feedback pass) ... done (112s)
+    model-setup 03-laser-icf-liquid-jet-target ... done (203s) → running model ... model FAILED: model failed (rc=1): Traceback (most recent call last):
+  File "C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\03-laser-icf-liquid-jet-target\iter-6\model_setup.py", line 215, in <module>
+    result = model.forward(
+             ^^^^^^^^^^^^^^
+  File "C:\Users\mallo\1cfe\1costingfe\src\costingfe\mo
+  assess 03-laser-icf-liquid-jet-target iter 6 ... 2 findings (93s)
+  research 03-laser-icf-liquid-jet-target (max 5 searches, 3 extractions) ... 0 sources acquired (171s)
+  analyze 03-laser-icf-liquid-jet-target iter 7/7 (feedback pass) ... done (120s)
+    model-setup 03-laser-icf-liquid-jet-target ... done (240s) → running model ... model FAILED: model failed (rc=1): Traceback (most recent call last):
+  File "C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\03-laser-icf-liquid-jet-target\iter-7\model_setup.py", line 237, in <module>
+    result = model.forward(
+             ^^^^^^^^^^^^^^
+  File "C:\Users\mallo\1cfe\1costingfe\src\costingfe\mo
+  assess 03-laser-icf-liquid-jet-target iter 7 ... PASS (88s)
+  04-laser-icf: at iter 4, will run up to 3 more (max_passes=7)
+  research 04-laser-icf (max 5 searches, 3 extractions) ... 0 sources acquired (212s)
+  analyze 04-laser-icf iter 5/7 (feedback pass) ... done (101s)
+    model-setup 04-laser-icf ... done (246s) → running model ... ok (LCOE=50.6 $/MWh)
+  assess 04-laser-icf iter 5 ... PASS (87s)
+  05-planar-coil-stellarator: at iter 4, will run up to 3 more (max_passes=7)
+  research 05-planar-coil-stellarator (max 5 searches, 3 extractions) ... 0 sources acquired (190s)
+  analyze 05-planar-coil-stellarator iter 5/7 (feedback pass) ... done (145s)
+    model-setup 05-planar-coil-stellarator ... done (305s) → running model ... model FAILED: model failed (rc=1): Traceback (most recent call last):
+  File "C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\05-planar-coil-stellarator\iter-5\model_setup.py", line 259, in <module>
+    print(f"Auxiliary/Facility:        {pt.p_recirc:.0f} MW")
+                                        ^^^^^^^^^^^
+A
+  assess 05-planar-coil-stellarator iter 5 ... PASS (79s)
+  06-magnetic-mirror: at iter 4, will run up to 3 more (max_passes=7)
+  research 06-magnetic-mirror (max 5 searches, 3 extractions) ... 0 sources acquired (260s)
+    warning: research_output.json is malformed JSON
+  analyze 06-magnetic-mirror iter 5/7 (feedback pass) ... done (109s)
+    model-setup 06-magnetic-mirror ... done (168s) → running model ... ok (LCOE=50.2 $/MWh)
+  assess 06-magnetic-mirror iter 5 ... 3 findings (68s)
+  research 06-magnetic-mirror (max 5 searches, 3 extractions) ... 0 sources acquired (168s)
+  analyze 06-magnetic-mirror iter 6/7 (feedback pass) ... done (216s)
+    model-setup 06-magnetic-mirror ... done (361s) → running model ... ok (LCOE=42.8 $/MWh)
+  assess 06-magnetic-mirror iter 6 ... 3 findings (89s)
+  research 06-magnetic-mirror (max 5 searches, 3 extractions) ... 0 sources acquired (153s)
+  analyze 06-magnetic-mirror iter 7/7 (feedback pass) ... done (50s)
+    model-setup 06-magnetic-mirror ... FAILED (5818s, rc=-1)
+  assess 06-magnetic-mirror iter 7 ... 3 findings (130s)
+  warn: 06-magnetic-mirror did not converge in 7 passes
+  07-maglif: at iter 12, will run up to 3 more (max_passes=15)
+  research 07-maglif (max 5 searches, 3 extractions) ... 0 sources acquired (296s)
+  analyze 07-maglif iter 13/15 (feedback pass) ... done (79s)
+    model-setup 07-maglif ... done (293s) → running model ... ok (LCOE=59.0 $/MWh)
+  assess 07-maglif iter 13 ... 2 findings (61s)
+  research 07-maglif (max 5 searches, 3 extractions) ... 0 sources acquired (131s)
+  analyze 07-maglif iter 14/15 (feedback pass) ... done (283s)
+    model-setup 07-maglif ... done (305s) → running model ... model FAILED: model failed (rc=1): Traceback (most recent call last):
+  File "C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\07-maglif\iter-14\model_setup.py", line 340, in <module>
+    print(f"Driver recirculating: {pt.p_pin:.0f} MW | Total recirculating: {pt.p_recirc:.0f} MW")
+                                 
+  assess 07-maglif iter 14 ... PASS (109s)
+  08-frc-w-direct-conversion: at iter 6, will run up to 3 more (max_passes=9)
+  research 08-frc-w-direct-conversion (max 5 searches, 3 extractions) ... FAILED (957s, rc=-1)
+    stderr: Timed out after 900s
+    warning: research_output.json not found (agent may have crashed)
+  analyze 08-frc-w-direct-conversion iter 7/9 (feedback pass) ... done (224s)
+    model-setup 08-frc-w-direct-conversion ... done (250s) → running model ... model FAILED: model failed (rc=1): File "C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\08-frc-w-direct-conversion\iter-7\model_setup.py", line 1
+    """1costingfe Model Setup: FRC w/ Direct Conversion (Helion Energy)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: (unicode e
+  assess 08-frc-w-direct-conversion iter 7 ... 3 findings (99s)
+  research 08-frc-w-direct-conversion (max 5 searches, 3 extractions) ... 0 sources acquired (158s)
+  analyze 08-frc-w-direct-conversion iter 8/9 (feedback pass) ... done (185s)
+    model-setup 08-frc-w-direct-conversion ... done (287s) → running model ... model FAILED: model failed (rc=1): File "C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\08-frc-w-direct-conversion\iter-8\model_setup.py", line 1
+    """1costingfe Model Setup: FRC w/ Direct Conversion (Helion Energy)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: (unicode e
+  assess 08-frc-w-direct-conversion iter 8 ... PASS (78s)
+  09-qi-stellarator-hts: at iter 12, will run up to 3 more (max_passes=15)
+  research 09-qi-stellarator-hts (max 5 searches, 3 extractions) ... 0 sources acquired (147s)
+  analyze 09-qi-stellarator-hts iter 13/15 (feedback pass) ... done (80s)
+    model-setup 09-qi-stellarator-hts ... done (191s) → running model ... model FAILED: model failed (rc=1): Traceback (most recent call last):
+  File "C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\09-qi-stellarator-hts\iter-13\model_setup.py", line 297, in <module>
+    print(f"Thermal: {pt.p_th:.0f} MW | Gross electric: {pt.p_electric:.0f} MW")
+                                      
+  assess 09-qi-stellarator-hts iter 13 ... PASS (83s)
+  10-large-scale-stellarator: at iter 6, will run up to 3 more (max_passes=9)
+  research 10-large-scale-stellarator (max 5 searches, 3 extractions) ... 0 sources acquired (203s)
+  analyze 10-large-scale-stellarator iter 7/9 (feedback pass) ... done (218s)
+    model-setup 10-large-scale-stellarator ... done (200s) → running model ... model FAILED: model failed (rc=1): Traceback (most recent call last):
+  File "C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\10-large-scale-stellarator\iter-7\model_setup.py", line 284, in <module>
+    print(f"  Recirculating:      {pt.p_recirc:.0f} MW ({pt.p_recirc/pt.p_et*100:.1f}% of gross)")
+                
+  assess 10-large-scale-stellarator iter 7 ... PASS (116s)
+  11-magnetic-mirror: at iter 4, will run up to 3 more (max_passes=7)
+  research 11-magnetic-mirror (max 5 searches, 3 extractions) ... 0 sources acquired (164s)
+  analyze 11-magnetic-mirror iter 5/7 (feedback pass) ... done (64s)
+    model-setup 11-magnetic-mirror ... done (194s) → running model ... ok (LCOE=492.1 $/MWh)
+  assess 11-magnetic-mirror iter 5 ... 3 findings (100s)
+  research 11-magnetic-mirror (max 5 searches, 3 extractions) ... 0 sources acquired (147s)
+  analyze 11-magnetic-mirror iter 6/7 (feedback pass) ... done (144s)
+    model-setup 11-magnetic-mirror ... done (207s) → running model ... ok (LCOE=620.7 $/MWh)
+  assess 11-magnetic-mirror iter 6 ... 3 findings (344s)
+  research 11-magnetic-mirror (max 5 searches, 3 extractions) ... 0 sources acquired (287s)
+  analyze 11-magnetic-mirror iter 7/7 (feedback pass) ... done (343s)
+    model-setup 11-magnetic-mirror ... done (512s) → running model ... ok (LCOE=620.7 $/MWh)
+  assess 11-magnetic-mirror iter 7 ... 1 findings (65s)
+  warn: 11-magnetic-mirror did not converge in 7 passes
+  12-levitated-dipole: at iter 6, will run up to 3 more (max_passes=9)
+  research 12-levitated-dipole (max 5 searches, 3 extractions) ... FAILED (38237s, rc=-1)
+    stderr: Timed out after 900s
+    warning: research_output.json not found (agent may have crashed)
+  analyze 12-levitated-dipole iter 7/9 (feedback pass) ... done (108s)
+    model-setup 12-levitated-dipole ... FAILED (993s, rc=-1)
+  assess 12-levitated-dipole iter 7 ... 2 findings (143s)
+  research 12-levitated-dipole (max 5 searches, 3 extractions) ... FAILED (1326s, rc=-1)
+    stderr: Timed out after 900s
+    warning: research_output.json not found (agent may have crashed)
+  analyze 12-levitated-dipole iter 8/9 (feedback pass) ... done (771s)
+    model-setup 12-levitated-dipole ... done (333s) → running model ... ok (LCOE=339.9 $/MWh)
+  assess 12-levitated-dipole iter 8 ... PASS (80s)
+  13-electrostatic-hybrid: at iter 3, will run up to 3 more (max_passes=6)
+  research 13-electrostatic-hybrid (max 5 searches, 3 extractions) ... 0 sources acquired (239s)
+  analyze 13-electrostatic-hybrid iter 4/6 (feedback pass) ... done (62s)
+  assess 13-electrostatic-hybrid iter 4 ... 1 findings (100s, 2 validation attempts)
+  research 13-electrostatic-hybrid (max 5 searches, 3 extractions) ... 0 sources acquired (124s)
+  analyze 13-electrostatic-hybrid iter 5/6 (feedback pass) ... done (721s)
+    model-setup 13-electrostatic-hybrid ... done (484s) → running model ... ok (LCOE=3.8 $/MWh)
+  assess 13-electrostatic-hybrid iter 5 ... 3 findings (69s)
+  research 13-electrostatic-hybrid (max 5 searches, 3 extractions) ... FAILED (900s, rc=-1)
+    stderr: Timed out after 900s
+    warning: research_output.json not found (agent may have crashed)
+  analyze 13-electrostatic-hybrid iter 6/6 (feedback pass) ... done (141s)
+    model-setup 13-electrostatic-hybrid ... done (502s) → running model ... ok (LCOE=5463.7 $/MWh)
+  assess 13-electrostatic-hybrid iter 6 ... PASS (57s)
+  14-magnetized-target-fusion-pneumatic-compression: at iter 6, will run up to 3 more (max_passes=9)
+  research 14-magnetized-target-fusion-pneumatic-compression (max 5 searches, 3 extractions) ... FAILED (900s, rc=-1)
+    stderr: Timed out after 900s
+    warning: research_output.json not found (agent may have crashed)
+  analyze 14-magnetized-target-fusion-pneumatic-compression iter 7/9 (feedback pass) ... done (61s)
+    model-setup 14-magnetized-target-fusion-pneumatic-compression ... done (236s) → running model ... model FAILED: model failed (rc=1): Traceback (most recent call last):
+  File "C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\14-magnetized-target-fusion-pneumatic-compression\iter-7\model_setup.py", line 292, in <module>
+    print(f"Recirc Frac:    {pt.recirc_frac:.2%}")
+                             ^^^^^^^^^^^^
+  assess 14-magnetized-target-fusion-pneumatic-compression iter 7 ... 3 findings (74s)
+  research 14-magnetized-target-fusion-pneumatic-compression (max 5 searches, 3 extractions) ... 0 sources acquired (218s)
+  analyze 14-magnetized-target-fusion-pneumatic-compression iter 8/9 (feedback pass) ... done (71s)
+    model-setup 14-magnetized-target-fusion-pneumatic-compression ... done (239s) → running model ... model FAILED: model failed (rc=1): Traceback (most recent call last):
+  File "C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\14-magnetized-target-fusion-pneumatic-compression\iter-8\model_setup.py", line 330, in <module>
+    print(f"Recirc Frac:    {pt.recirc_frac:.2%}")
+                             ^^^^^^^^^^^^
+  assess 14-magnetized-target-fusion-pneumatic-compression iter 8 ... PASS (100s)
+  15-sheared-flow-stabilized-z-pinch: at iter 6, will run up to 3 more (max_passes=9)
+  research 15-sheared-flow-stabilized-z-pinch (max 5 searches, 3 extractions) ... 0 sources acquired (189s)
+  analyze 15-sheared-flow-stabilized-z-pinch iter 7/9 (feedback pass) ... done (51s)
+    model-setup 15-sheared-flow-stabilized-z-pinch ... done (366s) → running model ... ok (LCOE=697.0 $/MWh)
+  assess 15-sheared-flow-stabilized-z-pinch iter 7 ... 3 findings (112s)
+  research 15-sheared-flow-stabilized-z-pinch (max 5 searches, 3 extractions) ... 0 sources acquired (37s)
+  analyze 15-sheared-flow-stabilized-z-pinch iter 8/9 (feedback pass) ...    stderr: 
+ FAILED (46s, rc=1)
+  16-muon-catalyzed-fusion: at iter 3, will run up to 3 more (max_passes=6)
+  research 16-muon-catalyzed-fusion (max 5 searches, 3 extractions) ... FAILED (3s, rc=1)
+    warning: research_output.json not found (agent may have crashed)
+  analyze 16-muon-catalyzed-fusion iter 4/6 (feedback pass) ...    stderr: 
+ FAILED (3s, rc=1)
+  17a-laser-icf-hybrid-drive: at iter 9, will run up to 3 more (max_passes=12)
+  research 17a-laser-icf-hybrid-drive (max 5 searches, 3 extractions) ... FAILED (4s, rc=1)
+    warning: research_output.json not found (agent may have crashed)
+  analyze 17a-laser-icf-hybrid-drive iter 10/12 (feedback pass) ...    stderr: 
+ FAILED (4s, rc=1)
+  17b-laser-icf-fast-ignition: at iter 3, will run up to 3 more (max_passes=6)
+  research 17b-laser-icf-fast-ignition (max 5 searches, 3 extractions) ... FAILED (3s, rc=1)
+    warning: research_output.json not found (agent may have crashed)
+  analyze 17b-laser-icf-fast-ignition iter 4/6 (feedback pass) ...    stderr: 
+ FAILED (4s, rc=1)
+  18-p-b11-frc: at iter 3, will run up to 3 more (max_passes=6)
+  research 18-p-b11-frc (max 5 searches, 3 extractions) ... FAILED (3s, rc=1)
+    warning: research_output.json not found (agent may have crashed)
+  analyze 18-p-b11-frc iter 4/6 (feedback pass) ...    stderr: 
+ FAILED (3s, rc=1)
+  19-orbital-levitated-dipole: at iter 3, will run up to 3 more (max_passes=6)
+  research 19-orbital-levitated-dipole (max 5 searches, 3 extractions) ... FAILED (3s, rc=1)
+    warning: research_output.json not found (agent may have crashed)
+  analyze 19-orbital-levitated-dipole iter 4/6 (feedback pass) ...    stderr: 
+ FAILED (3s, rc=1)
+  20a-type-one-stellarator: at iter 3, will run up to 3 more (max_passes=6)
+  research 20a-type-one-stellarator (max 5 searches, 3 extractions) ... FAILED (3s, rc=1)
+    warning: research_output.json not found (agent may have crashed)
+  analyze 20a-type-one-stellarator iter 4/6 (feedback pass) ...    stderr: 
+ FAILED (3s, rc=1)
+  20b-renaissance-stellarator: at iter 3, will run up to 3 more (max_passes=6)
+  research 20b-renaissance-stellarator (max 5 searches, 3 extractions) ... FAILED (3s, rc=1)
+    warning: research_output.json not found (agent may have crashed)
+  analyze 20b-renaissance-stellarator iter 4/6 (feedback pass) ...    stderr: 
+ FAILED (3s, rc=1)
+  22-projectile-icf: at iter 8, will run up to 3 more (max_passes=11)
+  research 22-projectile-icf (max 5 searches, 3 extractions) ... FAILED (3s, rc=1)
+    warning: research_output.json not found (agent may have crashed)
+  analyze 22-projectile-icf iter 9/11 (feedback pass) ...    stderr: 
+ FAILED (3s, rc=1)
+  23-laser-icf-nanostructured-target: at iter 3, will run up to 3 more (max_passes=6)
+  research 23-laser-icf-nanostructured-target (max 5 searches, 3 extractions) ... FAILED (4s, rc=1)
+    warning: research_output.json not found (agent may have crashed)
+  analyze 23-laser-icf-nanostructured-target iter 4/6 (feedback pass) ...    stderr: 
+ FAILED (3s, rc=1)
+  24-dense-plasma-focus: at iter 3, will run up to 3 more (max_passes=6)
+  research 24-dense-plasma-focus (max 5 searches, 3 extractions) ... FAILED (3s, rc=1)
+    warning: research_output.json not found (agent may have crashed)
+  analyze 24-dense-plasma-focus iter 4/6 (feedback pass) ...    stderr: 
+ FAILED (3s, rc=1)
+  25-heavy-ion-beam-icf: at iter 3, will run up to 3 more (max_passes=6)
+  research 25-heavy-ion-beam-icf (max 5 searches, 3 extractions) ... FAILED (3s, rc=1)
+    warning: research_output.json not found (agent may have crashed)
+  analyze 25-heavy-ion-beam-icf iter 4/6 (feedback pass) ...    stderr: 
+ FAILED (4s, rc=1)
+  26-laser-icf-indirect-drive: at iter 3, will run up to 3 more (max_passes=6)
+  research 26-laser-icf-indirect-drive (max 5 searches, 3 extractions) ... FAILED (4s, rc=1)
+    warning: research_output.json not found (agent may have crashed)
+  analyze 26-laser-icf-indirect-drive iter 4/6 (feedback pass) ...    stderr: 
+ FAILED (3s, rc=1)
+  27-polywell: at iter 3, will run up to 3 more (max_passes=6)
+  research 27-polywell (max 5 searches, 3 extractions) ... FAILED (3s, rc=1)
+    warning: research_output.json not found (agent may have crashed)
+  analyze 27-polywell iter 4/6 (feedback pass) ...    stderr: 
+ FAILED (3s, rc=1)
+  28-hts-tokamak-full-hts: at iter 6, will run up to 3 more (max_passes=9)
+  research 28-hts-tokamak-full-hts (max 5 searches, 3 extractions) ... FAILED (3s, rc=1)
+    warning: research_output.json not found (agent may have crashed)
+  analyze 28-hts-tokamak-full-hts iter 7/9 (feedback pass) ...    stderr: 
+ FAILED (3s, rc=1)
+  29-negative-triangularity-tokamak: at iter 3, will run up to 3 more (max_passes=6)
+  research 29-negative-triangularity-tokamak (max 5 searches, 3 extractions) ... FAILED (4s, rc=1)
+    warning: research_output.json not found (agent may have crashed)
+  analyze 29-negative-triangularity-tokamak iter 4/6 (feedback pass) ...    stderr: 
+ FAILED (3s, rc=1)
+  30-laser-icf-nif-commercialization: at iter 3, will run up to 3 more (max_passes=6)
+  research 30-laser-icf-nif-commercialization (max 5 searches, 3 extractions) ... FAILED (3s, rc=1)
+    warning: research_output.json not found (agent may have crashed)
+  analyze 30-laser-icf-nif-commercialization iter 4/6 (feedback pass) ...    stderr: 
+ FAILED (3s, rc=1)
+  31-laser-icf-oec-architecture: at iter 3, will run up to 3 more (max_passes=6)
+  research 31-laser-icf-oec-architecture (max 5 searches, 3 extractions) ... FAILED (3s, rc=1)
+    warning: research_output.json not found (agent may have crashed)
+  analyze 31-laser-icf-oec-architecture iter 4/6 (feedback pass) ...    stderr: 
+ FAILED (3s, rc=1)
+  32-laser-icf-french-national: at iter 3, will run up to 3 more (max_passes=6)
+  research 32-laser-icf-french-national (max 5 searches, 3 extractions) ... FAILED (3s, rc=1)
+    warning: research_output.json not found (agent may have crashed)
+  analyze 32-laser-icf-french-national iter 4/6 (feedback pass) ...    stderr: 
+ FAILED (3s, rc=1)
+  33-state-backed-tokamak-best: at iter 3, will run up to 3 more (max_passes=6)
+  research 33-state-backed-tokamak-best (max 5 searches, 3 extractions) ... FAILED (3s, rc=1)
+    warning: research_output.json not found (agent may have crashed)
+  analyze 33-state-backed-tokamak-best iter 4/6 (feedback pass) ...    stderr: 
+ FAILED (3s, rc=1)
+  34-compact-spherical-tokamak-india: at iter 3, will run up to 3 more (max_passes=6)
+  research 34-compact-spherical-tokamak-india (max 5 searches, 3 extractions) ... FAILED (3s, rc=1)
+    warning: research_output.json not found (agent may have crashed)
+  analyze 34-compact-spherical-tokamak-india iter 4/6 (feedback pass) ...    stderr: 
+ FAILED (3s, rc=1)
+  35-polomac-magnetic-confinement: at iter 3, will run up to 3 more (max_passes=6)
+  research 35-polomac-magnetic-confinement (max 5 searches, 3 extractions) ... FAILED (3s, rc=1)
+    warning: research_output.json not found (agent may have crashed)
+  analyze 35-polomac-magnetic-confinement iter 4/6 (feedback pass) ...    stderr: 
+ FAILED (3s, rc=1)
+  36-helical-coil-stellarator: at iter 3, will run up to 3 more (max_passes=6)
+  research 36-helical-coil-stellarator (max 5 searches, 3 extractions) ... FAILED (3s, rc=1)
+    warning: research_output.json not found (agent may have crashed)
+  analyze 36-helical-coil-stellarator iter 4/6 (feedback pass) ...    stderr: 
+ FAILED (3s, rc=1)
+
+--- Model Setup ---
+  skip 01-hts-compact-tokamak (model_setup.py exists, use --force)
+  skip 02-acoustic-icf-sonofusion (model_setup.py exists, use --force)
+  skip 03-laser-icf-liquid-jet-target (model_setup.py exists, use --force)
+  skip 04-laser-icf (model_setup.py exists, use --force)
+  skip 05-planar-coil-stellarator (model_setup.py exists, use --force)
+  skip 06-magnetic-mirror (model_setup.py exists, use --force)
+  skip 07-maglif (model_setup.py exists, use --force)
+  skip 08-frc-w-direct-conversion (model_setup.py exists, use --force)
+  skip 09-qi-stellarator-hts (model_setup.py exists, use --force)
+  skip 10-large-scale-stellarator (model_setup.py exists, use --force)
+  skip 11-magnetic-mirror (model_setup.py exists, use --force)
+  skip 12-levitated-dipole (model_setup.py exists, use --force)
+  skip 13-electrostatic-hybrid (model_setup.py exists, use --force)
+  skip 14-magnetized-target-fusion-pneumatic-compression (model_setup.py exists, use --force)
+  skip 15-sheared-flow-stabilized-z-pinch (model_setup.py exists, use --force)
+  skip 16-muon-catalyzed-fusion (no analysis.md — run analyze first)
+  skip 17a-laser-icf-hybrid-drive (model_setup.py exists, use --force)
+  skip 17b-laser-icf-fast-ignition (no analysis.md — run analyze first)
+  skip 18-p-b11-frc (no analysis.md — run analyze first)
+  skip 19-orbital-levitated-dipole (no analysis.md — run analyze first)
+  skip 20a-type-one-stellarator (no analysis.md — run analyze first)
+  skip 20b-renaissance-stellarator (no analysis.md — run analyze first)
+  skip 21-spherical-tokamak-hts (model_setup.py exists, use --force)
+  skip 22-projectile-icf (model_setup.py exists, use --force)
+  skip 23-laser-icf-nanostructured-target (no analysis.md — run analyze first)
+  skip 24-dense-plasma-focus (no analysis.md — run analyze first)
+  skip 25-heavy-ion-beam-icf (no analysis.md — run analyze first)
+  skip 26-laser-icf-indirect-drive (no analysis.md — run analyze first)
+  skip 27-polywell (no analysis.md — run analyze first)
+  skip 28-hts-tokamak-full-hts (model_setup.py exists, use --force)
+  skip 29-negative-triangularity-tokamak (no analysis.md — run analyze first)
+  skip 30-laser-icf-nif-commercialization (no analysis.md — run analyze first)
+  skip 31-laser-icf-oec-architecture (no analysis.md — run analyze first)
+  skip 32-laser-icf-french-national (no analysis.md — run analyze first)
+  skip 33-state-backed-tokamak-best (no analysis.md — run analyze first)
+  skip 34-compact-spherical-tokamak-india (no analysis.md — run analyze first)
+  skip 35-polomac-magnetic-confinement (no analysis.md — run analyze first)
+  skip 36-helical-coil-stellarator (no analysis.md — run analyze first)
+
+--- Review ---
+  skip 01-hts-compact-tokamak (review.md exists, use --force to re-run)
+  skip 02-acoustic-icf-sonofusion (review.md exists, use --force to re-run)
+  skip 03-laser-icf-liquid-jet-target (review.md exists, use --force to re-run)
+  skip 04-laser-icf (review.md exists, use --force to re-run)
+  skip 05-planar-coil-stellarator (review.md exists, use --force to re-run)
+  skip 06-magnetic-mirror (review.md exists, use --force to re-run)
+  skip 07-maglif (review.md exists, use --force to re-run)
+  skip 08-frc-w-direct-conversion (review.md exists, use --force to re-run)
+  skip 09-qi-stellarator-hts (review.md exists, use --force to re-run)
+  skip 10-large-scale-stellarator (review.md exists, use --force to re-run)
+  skip 11-magnetic-mirror (review.md exists, use --force to re-run)
+  skip 12-levitated-dipole (review.md exists, use --force to re-run)
+  review 13-electrostatic-hybrid ...    stderr: 
+    partial stdout: You've hit your limit · resets 2pm (America/Los_Angeles)
+ FAILED (3s, rc=1)
+  skip 14-magnetized-target-fusion-pneumatic-compression (review.md exists, use --force to re-run)
+  skip 15-sheared-flow-stabilized-z-pinch (review.md exists, use --force to re-run)
+  skip 16-muon-catalyzed-fusion (no analysis.md — run analyze first)
+  skip 17a-laser-icf-hybrid-drive (review.md exists, use --force to re-run)
+  skip 17b-laser-icf-fast-ignition (no analysis.md — run analyze first)
+  skip 18-p-b11-frc (no analysis.md — run analyze first)
+  skip 19-orbital-levitated-dipole (no analysis.md — run analyze first)
+  skip 20a-type-one-stellarator (no analysis.md — run analyze first)
+  skip 20b-renaissance-stellarator (no analysis.md — run analyze first)
+  review 21-spherical-tokamak-hts ...    stderr: 
+    partial stdout: You've hit your limit · resets 2pm (America/Los_Angeles)
+ FAILED (4s, rc=1)
+  skip 22-projectile-icf (review.md exists, use --force to re-run)
+  skip 23-laser-icf-nanostructured-target (no analysis.md — run analyze first)
+  skip 24-dense-plasma-focus (no analysis.md — run analyze first)
+  skip 25-heavy-ion-beam-icf (no analysis.md — run analyze first)
+  skip 26-laser-icf-indirect-drive (no analysis.md — run analyze first)
+  skip 27-polywell (no analysis.md — run analyze first)
+  skip 28-hts-tokamak-full-hts (review.md exists, use --force to re-run)
+  skip 29-negative-triangularity-tokamak (no analysis.md — run analyze first)
+  skip 30-laser-icf-nif-commercialization (no analysis.md — run analyze first)
+  skip 31-laser-icf-oec-architecture (no analysis.md — run analyze first)
+  skip 32-laser-icf-french-national (no analysis.md — run analyze first)
+  skip 33-state-backed-tokamak-best (no analysis.md — run analyze first)
+  skip 34-compact-spherical-tokamak-india (no analysis.md — run analyze first)
+  skip 35-polomac-magnetic-confinement (no analysis.md — run analyze first)
+  skip 36-helical-coil-stellarator (no analysis.md — run analyze first)
+
+=== stage1-all complete ===
+  01 (HTS Compact Tokamak): iterating*
+  02 (Acoustic ICF / Sonofusion (D-D)): synthesized*
+  03 (Laser ICF - Liquid Jet Target (D-D)): synthesized*
+  04 (Laser ICF - p-B11 Fast Ignition): synthesized*
+  05 (Planar Coil Stellarator): synthesized*
+  06 (Magnetic Mirror (p-B11)): synthesized*
+  07 (MagLIF (D-T)): reviewed*
+  08 (FRC w/ Direct Conversion): synthesized*
+  09 (QI Stellarator - HTS): reviewed*
+  10 (Large-Scale Stellarator): reviewed*
+  11 (Magnetic Mirror (D-T)): synthesized*
+  12 (Levitated Dipole (D-T)): synthesized*
+  13 (Electrostatic Hybrid (D-T)): iterating*
+  14 (Magnetized Target Fusion - Pneumatic Compression (D-T)): reviewed*
+  15 (Sheared-Flow Stabilized Z-Pinch): iterating*
+  16 (Muon-Catalyzed Fusion (D-T)): gap-checked
+  17a (Laser ICF - Hybrid Direct Drive (D-T)): iterating*
+  17b (Laser ICF - Fast Ignition (D-T)): gap-checked
+  18 (p-B11 FRC): gap-checked
+  19 (Orbital Levitated Dipole (D-He3)): gap-checked
+  20a (QI Modular HTS Stellarator - Infinity Two): gap-checked
+  20b (Compact Liquid-Wall HTS Stellarator): gap-checked
+  21 (Spherical Tokamak - HTS): approved
+  22 (Projectile ICF (D-T)): reviewed*
+  23 (Laser ICF - Nanostructured Target (p-B11)): gap-checked
+  24 (Dense Plasma Focus (p-B11)): gap-checked
+  25 (Heavy Ion Beam ICF (D-T)): gap-checked
+  26 (Laser ICF - Indirect Drive (D-T)): gap-checked
+  27 (Polywell (D-T)): gap-checked
+  28 (HTS Tokamak - Full HTS): reviewed*
+  29 (Negative Triangularity Tokamak): gap-checked
+  30 (Laser ICF - NIF Commercialization (D-T)): gap-checked
+  31 (Laser ICF - OEC Architecture (D-T)): gap-checked
+  32 (Laser ICF - French National Direct Drive (D-T)): gap-checked
+  33 (State-Backed Tokamak - BEST): gap-checked
+  34 (Compact Spherical Tokamak - India): gap-checked
+  35 (PoloMac Magnetic Confinement): gap-checked
+  36 (Helical Coil Stellarator): gap-checked
