@@ -1,0 +1,34 @@
+[
+  {
+    "page_num": 0,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 1,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: replacement char (\ufffd): 1"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 2,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 3,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 4,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  }
+]
