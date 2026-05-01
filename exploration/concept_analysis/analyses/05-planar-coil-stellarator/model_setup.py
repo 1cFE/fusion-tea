@@ -74,7 +74,7 @@ _SHARED_KWARGS = dict(
                              #      plasma self-heats via alpha particles; 10 MW ECRH only
                              #      at startup [B §Heating]; plasma is ignited (Q~958)
     mn=1.1,                  # DEFAULT [D]: standard D-T neutron energy multiplier
-    eta_th=0.40,             # [A/B] "~40.2% (gross)" — three-stage steam Rankine, 635°C
+    eta_th=0.35,              # standardized from 0.4 per scoring_framework.md (Energy Capture: Thermal (steam))
                              #        superheated steam [B §Energy Conversion];
                              #        slightly below default 0.46 (Helios-specific value)
     eta_p=0.5,               # DEFAULT [D]: pumping efficiency

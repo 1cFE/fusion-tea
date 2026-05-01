@@ -104,7 +104,8 @@ class PolywellPlantParams:
     Ref: 1costingfe standard D-T assumption.
     MODERATE UNCERTAINTY — depends on undesigned blanket geometry."""
 
-    thermal_efficiency: float = 0.40
+    thermal_efficiency: float = 0.35
+ # standardized from 0.4 per scoring_framework.md (Energy Capture: Thermal (unspecified))
     """Thermal-to-electric conversion efficiency [fraction].
     Source: ANALOGUE from MFE D-T concepts using steam Rankine cycle.
     Ref: analysis.md §Section 7 placeholder analogues: 40% Rankine baseline.
@@ -943,7 +944,7 @@ def main():
         p_fus_MW=490.0,             # γ=0.2, p_fus ∝ 1/γ (ref: 980 MW at γ=0.1)
         p_beam_MW=156.0,            # γ=0.2, p_beam ∝ γ (ref: 78 MW at γ=0.1)
         beam_supply_efficiency=0.82,
-        thermal_efficiency=0.38,    # no thermal cycle spec → conservative
+        thermal_efficiency=0.35,     # standardized from 0.38 per scoring_framework.md (Energy Capture: Thermal (unspecified))
         coil_system_cost_M_USD=200.0,
         ebeam_system_cost_M_USD=130.0,
         plant_availability=0.70,
@@ -959,7 +960,7 @@ def main():
         p_fus_MW=980.0,
         p_beam_MW=78.0,
         beam_supply_efficiency=0.90,
-        thermal_efficiency=0.45,    # sCO2 cycle
+        thermal_efficiency=0.35,     # standardized from 0.45 per scoring_framework.md (Energy Capture: Thermal (unspecified))
         coil_system_cost_M_USD=100.0,
         ebeam_system_cost_M_USD=70.0,
         plant_availability=0.85,

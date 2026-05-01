@@ -88,7 +88,7 @@ _ETA_PIN = 20.0 / 60.0  # ≈ 0.333
 # Overrides BRAYTON_SCO2 preset (0.47) with HESTIA-specific aspirational target
 # UNCERTAIN: 20 kWe demo at 20% only; no fusion-coupled sCO₂ demonstration exists
 # Source: aip-2023-paper-abstract.md §II-F; helical-fusion-2025-2026-updates.md §sCO₂
-_ETA_TH_CENTRAL = 0.50
+_ETA_TH_CENTRAL = 0.48  # standardized from 0.50 per scoring_framework.md (Energy Capture: Thermal (sCO2))
 
 # Availability: central estimate (FPP target range >80–85%)
 # 1-year burn + ~3-month maintenance → structural ceiling ~80%; derate for novel-subsystem risk

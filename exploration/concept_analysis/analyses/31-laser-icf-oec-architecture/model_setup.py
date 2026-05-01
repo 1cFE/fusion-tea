@@ -57,7 +57,7 @@ ETA_PIN = 0.10            # Wall-plug-to-UV: η_w(IR) × η_3ω = 0.16 × 0.60
 Q_ENG = 5.69
 
 # Power conversion — optics-express-2025-paper.md §Table 2
-ETA_TH = 0.44             # Combined η_e: both thermal and DEC channels are 0.44 (by paper)
+ETA_TH = 0.55              # standardized from 0.44 per scoring_framework.md (Energy Capture: Hybrid (thermal + direct))
                           # η_th* = 0.40 (He Brayton) + 0.04 (exothermic Li-breeding boost)
                           # η_DEC = 0.44 (DEC, "conservative"; Rax et al. 2025 theory, TRL 1–2)
                           # MEDIUM confidence on thermal; LOW confidence on DEC

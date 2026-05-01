@@ -263,7 +263,7 @@ result = model.forward(
                      # D-He3 fuel eliminates tritium breeding blanket entirely.
                      # Source: analysis.md §S4 Key Materials (No Tritium Breeding Blanket);
                      #         helion-website-technology.md §Fuel
-    eta_th=0.90,     # UNCERTAIN: Direct EM energy recovery efficiency proxy.
+    eta_th=0.85,      # standardized from 0.9 per scoring_framework.md (Energy Capture: Direct (inductive))
                      # Three conflicting public data points:
                      #   >95% round-trip: subscale demo, >1M pulses with IGBTs.
                      #     Source: dossier.md §Energy Capture (synthesizes 2015 Helion press

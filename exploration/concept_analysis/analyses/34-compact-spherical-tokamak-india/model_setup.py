@@ -86,7 +86,7 @@ _SHARED_KWARGS = dict(
     p_icrf=0.0,                     # DEFAULT
     p_lhcd=0.0,                     # DEFAULT
     mn=1.1,                         # DEFAULT: neutron energy multiplier
-    eta_th=0.30,                    # UNCERTAIN: conservative steam Rankine for small unit
+    eta_th=0.35,                     # standardized from 0.3 per scoring_framework.md (Energy Capture: Thermal (unspecified))
                                     # industrial 50 MW turbines achieve 28–33% vs
                                     # utility-scale ~40%; analysis.md §2 Challenge 4;
                                     # §6 Gap 6 (thermal efficiency truly unknown)

@@ -17,6 +17,7 @@ Usage:
 
 import argparse
 import csv
+import json
 import re
 import shutil
 import subprocess
@@ -82,6 +83,17 @@ from lib.validators import (
     validate_python_syntax,
     validate_review_verdict,
 )
+from lib.scoring import (
+    build_verified_scores,
+    has_section8,
+    parse_calibrated_table,
+    parse_adjustments,
+    validate_calibration_output,
+    validate_score_output,
+    write_verified_json,
+    write_verified_md,
+)
+from lib.heatmap import generate_heatmap_html
 
 
 def cmd_list(concepts: list[dict], _args: argparse.Namespace) -> None:
@@ -829,13 +841,15 @@ def cmd_synthesize(concepts: list[dict], args: argparse.Namespace) -> None:
             print(f"  skip {cid} (no analysis.md — run analyze first)")
             continue
 
-        # Enforce ordering: must be reviewed
-        fm = parse_frontmatter(analysis_path)
-        review_status = fm.get("Review-Status", "")
-        if review_status not in ("addressed", "clean", "proceed"):
-            print(f"  skip {cid} (Review-Status is '{review_status}'; "
-                  f"run review and address-review first)")
-            continue
+        # Enforce ordering: must be reviewed (unless --skip-review-gate)
+        skip_gate = getattr(args, "skip_review_gate", False)
+        if not skip_gate:
+            fm = parse_frontmatter(analysis_path)
+            review_status = fm.get("Review-Status", "")
+            if review_status not in ("addressed", "clean", "proceed"):
+                print(f"  skip {cid} (Review-Status is '{review_status}'; "
+                      f"run review and address-review first, or use --skip-review-gate)")
+                continue
 
         if synthesis_path.exists() and not args.force:
             print(f"  skip {cid} (synthesis.md exists, use --force to re-run)")
@@ -871,12 +885,14 @@ def cmd_synthesize(concepts: list[dict], args: argparse.Namespace) -> None:
             approved_syntheses = "(none yet — this is among the first syntheses)"
 
         body_path = out_dir / "synthesis_body.md"
+        gap_report_path = out_dir / "gap_report.md"
 
         template_text = (TEMPLATES_DIR / "synthesis.md").read_text(encoding="utf-8")
         prompt_text = fill_template(template_text, {
             "concept_name": c["Concept Name"],
             "company": c.get("Company", ""),
             "analysis_path": str(analysis_path),
+            "gap_report_path": str(gap_report_path) if gap_report_path.exists() else "",
             "model_setup_path": str(model_setup_path) if model_setup_path.exists() else "",
             "model_output_path": str(model_output_path) if model_output_path.exists() else "",
             "approved_syntheses": approved_syntheses,
@@ -914,7 +930,7 @@ def cmd_synthesize(concepts: list[dict], args: argparse.Namespace) -> None:
         result = invoke_claude_validated(
             ctx.prompt_text, cwd=CONCEPT_ANALYSIS_DIR,
             timeout=args.timeout, model=args.model,
-            validator=validate_non_empty,
+            validator=validate_score_output,
             output_path=body_path,
             step_label="synthesize",
         )
@@ -932,15 +948,7 @@ def cmd_synthesize(concepts: list[dict], args: argparse.Namespace) -> None:
             continue
 
         # Assemble: frontmatter + body
-        fm_raw = synthesis_path.read_text(encoding="utf-8").rstrip("\n") + "\n"
-        body = body_path.read_text(encoding="utf-8")
-        # Strip any frontmatter Claude may have added to the body
-        if body.startswith("---"):
-            fm_end = body.find("---", 3)
-            if fm_end != -1:
-                body = body[fm_end + 3:].lstrip("\n")
-        synthesis_path.write_text(fm_raw + "\n" + body, encoding="utf-8")
-        body_path.unlink()
+        _merge_synthesis_body(synthesis_path, body_path)
         # Producer-clears-on-write contract.
         clear_staleness(cid, "synthesis.md")
         size = len(synthesis_path.read_text(encoding="utf-8"))
@@ -1105,6 +1113,338 @@ def cmd_add_source(concepts: list[dict], args: argparse.Namespace) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Scoring pipeline: score, extract-scores, calibrate, heatmap
+# ---------------------------------------------------------------------------
+
+SCORES_DIR = CONCEPT_ANALYSIS_DIR / "scores"
+
+
+def _merge_synthesis_body(synthesis_path: Path, body_path: Path) -> None:
+    """Concatenate frontmatter stub + body, write to synthesis_path, delete body.
+
+    The synthesize stage pre-writes synthesis.md with frontmatter only, then has
+    Claude write content to synthesis_body.md, then merges. If the merge step
+    is interrupted (e.g. parent subprocess timeout in run_scoring_pipeline.py),
+    the body file is left orphaned. This helper performs the merge idempotently.
+    """
+    fm_raw = synthesis_path.read_text(encoding="utf-8").rstrip("\n") + "\n"
+    body = body_path.read_text(encoding="utf-8")
+    # Strip any frontmatter Claude may have added to the body.
+    if body.startswith("---"):
+        fm_end = body.find("---", 3)
+        if fm_end != -1:
+            body = body[fm_end + 3:].lstrip("\n")
+    synthesis_path.write_text(fm_raw + "\n" + body, encoding="utf-8")
+    body_path.unlink()
+
+
+def recover_orphan_synthesis_bodies(concepts: list[dict]) -> int:
+    """Merge any orphaned synthesis_body.md files into their synthesis.md.
+
+    Returns the count of recovered concepts.
+    """
+    recovered = 0
+    for c in concepts:
+        cid = c["_id"]
+        out_dir = ANALYSES_DIR / cid
+        synthesis_path = out_dir / "synthesis.md"
+        body_path = out_dir / "synthesis_body.md"
+        if not synthesis_path.exists() or not body_path.exists():
+            continue
+        # Only merge if synthesis.md still looks like a frontmatter stub (i.e.
+        # the merge from a prior synthesize run was interrupted).
+        text = synthesis_path.read_text(encoding="utf-8")
+        m = re.match(r"^---\s*\n.*?\n---\s*\n?$", text, re.DOTALL)
+        if not m:
+            # synthesis.md already has body content; leave both files alone.
+            continue
+        _merge_synthesis_body(synthesis_path, body_path)
+        recovered += 1
+        print(f"  recovered {cid} (merged orphan synthesis_body.md)")
+    return recovered
+
+
+def cmd_score(concepts: list[dict], args: argparse.Namespace) -> None:
+    """Append Section 8 (LCOE Downselect Scoring) to syntheses that lack it."""
+    targets = resolve_concepts(
+        args.concepts, concepts,
+        family=args.family,
+        all_remaining=args.all_remaining,
+    )
+    if not targets:
+        print("No concepts specified.")
+        return
+
+    # Gather approved prior syntheses for cross-concept context
+    prior_syntheses = find_approved_syntheses()
+
+    scored = 0
+    skipped = 0
+    failed = 0
+    failures = []
+    for c in targets:
+        cid = c["_id"]
+        out_dir = ANALYSES_DIR / cid
+        synthesis_path = out_dir / "synthesis.md"
+        analysis_path = out_dir / "analysis.md"
+        gap_report_path = out_dir / "gap_report.md"
+        model_setup_path = out_dir / "model_setup.py"
+        model_output_path = out_dir / "model_output.txt"
+
+        if not synthesis_path.exists():
+            print(f"  skip {cid} (no synthesis.md — run synthesize first)")
+            skipped += 1
+            continue
+
+        if has_section8(synthesis_path) and not args.force:
+            print(f"  skip {cid} (Section 8 exists, use --force to re-score)")
+            skipped += 1
+            continue
+
+        if not analysis_path.exists():
+            print(f"  skip {cid} (no analysis.md)")
+            skipped += 1
+            continue
+
+        # Format approved prior syntheses (exclude current concept)
+        synth_list = [s for s in prior_syntheses if s.parent.name != cid]
+        if synth_list:
+            approved_syntheses = format_path_list(synth_list)
+        else:
+            approved_syntheses = "(none yet — this is among the first syntheses)"
+
+        score_body_path = out_dir / "score_body.md"
+
+        template_text = (TEMPLATES_DIR / "score.md").read_text(encoding="utf-8")
+        prompt_text = fill_template(template_text, {
+            "concept_name": c["Concept Name"],
+            "company": c.get("Company", ""),
+            "concept_id": cid,
+            "synthesis_path": str(synthesis_path),
+            "analysis_path": str(analysis_path),
+            "gap_report_path": str(gap_report_path) if gap_report_path.exists() else "",
+            "model_setup_path": str(model_setup_path) if model_setup_path.exists() else "",
+            "model_output_path": str(model_output_path) if model_output_path.exists() else "",
+            "approved_syntheses": approved_syntheses,
+            "output_path": str(score_body_path),
+        })
+
+        ctx = prepare_step(
+            step_label="score",
+            concept_id=cid,
+            prompt_text=prompt_text,
+            prompt_path=out_dir / "prompts" / "score_prompt.md",
+            out_dir=out_dir,
+            dry_run=args.dry_run,
+            force=args.force,
+        )
+        if not ctx.proceed:
+            continue
+
+        result = invoke_claude_validated(
+            ctx.prompt_text, cwd=CONCEPT_ANALYSIS_DIR,
+            timeout=args.timeout, model=args.model,
+            validator=validate_score_output,
+            output_path=score_body_path,
+            step_label="score",
+        )
+        elapsed = time.time() - ctx.start_time
+
+        if result.invoke.returncode != 0:
+            print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
+            print(f"    stderr: {result.invoke.stderr[:500]}", file=sys.stderr)
+            failed += 1
+            failures.append(f"{cid}: rc={result.invoke.returncode}")
+            continue
+
+        if not result.validation_passed:
+            reason = ""
+            if result.log_entries:
+                reason = f" — {result.log_entries[-1].get('details', '')}"
+            print(f" FAILED ({elapsed:.0f}s) — score validation exhausted{reason}")
+            failed += 1
+            failures.append(f"{cid}: validation failed{reason}")
+            continue
+
+        # Append Section 8 to synthesis.md
+        existing = synthesis_path.read_text(encoding="utf-8").rstrip("\n")
+        section8 = score_body_path.read_text(encoding="utf-8")
+        # Strip any frontmatter Claude may have added
+        if section8.startswith("---"):
+            fm_end = section8.find("---", 3)
+            if fm_end != -1:
+                section8 = section8[fm_end + 3:].lstrip("\n")
+        synthesis_path.write_text(existing + "\n\n" + section8 + "\n", encoding="utf-8")
+        score_body_path.unlink()
+        scored += 1
+        size = len(synthesis_path.read_text(encoding="utf-8"))
+        print(f" done ({elapsed:.0f}s, {size} chars)")
+
+    print(f"\nScored: {scored}, Skipped: {skipped}, Failed: {failed}")
+    if failures:
+        print("Failures:")
+        for f in failures:
+            print(f"  - {f}")
+
+
+def cmd_extract_scores(concepts: list[dict], args: argparse.Namespace) -> None:
+    """Extract YAML scores from synthesis files and compute C2, C6, C7."""
+    # Recover any orphaned synthesis_body.md files (interrupted synthesize runs).
+    recovered = recover_orphan_synthesis_bodies(concepts)
+    if recovered:
+        print(f"Recovered {recovered} orphan synthesis bodies before extraction.\n")
+
+    scores, warnings = build_verified_scores(concepts, ANALYSES_DIR)
+
+    for w in warnings:
+        print(f"  warn: {w}")
+
+    if not scores:
+        print("No concepts with extractable scores found.")
+        return
+
+    SCORES_DIR.mkdir(parents=True, exist_ok=True)
+    json_path = SCORES_DIR / "verified_scores.json"
+    md_path = SCORES_DIR / "verified_scores.md"
+
+    write_verified_json(scores, json_path)
+    write_verified_md(scores, md_path)
+
+    print(f"\nExtracted scores for {len(scores)} concepts.")
+    print(f"  {json_path}")
+    print(f"  {md_path}")
+
+    # Print summary table
+    print(f"\n{'Concept':<45} C1   C2   C3   C4   C5   C6   C7   C8")
+    print("-" * 95)
+    for s in scores:
+        print(
+            f"{s['concept_id']:<45} "
+            f"{s['C1']:.1f}  {s['C2']:.1f}  {s['C3']:.1f}  {s['C4']:.1f}  "
+            f"{s['C5']:.1f}  {s['C6']:.1f}  {s['C7']:.1f}  {s['C8']:.1f}"
+        )
+
+
+def cmd_calibrate(concepts: list[dict], args: argparse.Namespace) -> None:
+    """Cross-concept calibration of scores via Claude."""
+    verified_md = SCORES_DIR / "verified_scores.md"
+    if not verified_md.exists():
+        print("Error: verified_scores.md not found. Run extract-scores first.")
+        sys.exit(1)
+
+    verified_table = verified_md.read_text(encoding="utf-8")
+
+    # Build concept file paths for the calibration prompt
+    concept_paths_lines = []
+    for c in concepts:
+        cid = c["_id"]
+        synth = ANALYSES_DIR / cid / "synthesis.md"
+        analysis = ANALYSES_DIR / cid / "analysis.md"
+        if synth.exists():
+            concept_paths_lines.append(f"- **{cid}**")
+            concept_paths_lines.append(f"  - Synthesis: `{synth}`")
+            if analysis.exists():
+                concept_paths_lines.append(f"  - Analysis: `{analysis}`")
+    concept_file_paths = "\n".join(concept_paths_lines)
+
+    calibration_body_path = SCORES_DIR / "calibration_body.md"
+
+    template_text = (TEMPLATES_DIR / "calibrate.md").read_text(encoding="utf-8")
+    prompt_text = fill_template(template_text, {
+        "verified_scores_table": verified_table,
+        "concept_file_paths": concept_file_paths,
+        "output_path": str(calibration_body_path),
+    })
+
+    SCORES_DIR.mkdir(parents=True, exist_ok=True)
+    prompt_path = SCORES_DIR / "calibration_prompt.md"
+
+    ctx = prepare_step(
+        step_label="calibrate",
+        concept_id="all",
+        prompt_text=prompt_text,
+        prompt_path=prompt_path,
+        out_dir=SCORES_DIR,
+        dry_run=args.dry_run,
+        force=True,  # always re-run calibration
+    )
+    if not ctx.proceed:
+        return
+
+    result = invoke_claude_validated(
+        ctx.prompt_text, cwd=CONCEPT_ANALYSIS_DIR,
+        timeout=args.timeout, model=args.model,
+        validator=validate_calibration_output,
+        output_path=calibration_body_path,
+        step_label="calibrate",
+    )
+    elapsed = time.time() - ctx.start_time
+
+    if result.invoke.returncode != 0:
+        print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
+        print(f"    stderr: {result.invoke.stderr[:500]}", file=sys.stderr)
+        return
+
+    if not result.validation_passed:
+        print(f" FAILED ({elapsed:.0f}s) — calibration validation exhausted")
+        return
+
+    # Parse calibrated scores and adjustments
+    body_text = calibration_body_path.read_text(encoding="utf-8")
+    calibrated = parse_calibrated_table(body_text)
+    adjustments = parse_adjustments(body_text)
+
+    if not calibrated:
+        print(f" FAILED ({elapsed:.0f}s) — could not parse calibrated score table")
+        return
+
+    # Write outputs
+    cal_json_path = SCORES_DIR / "calibrated_scores.json"
+    cal_json_path.write_text(
+        json.dumps({"scores": calibrated, "adjustments": adjustments}, indent=2),
+        encoding="utf-8",
+    )
+
+    # Write calibrated markdown (keep the raw body)
+    cal_md_path = SCORES_DIR / "calibrated_scores.md"
+    cal_md_path.write_text(body_text, encoding="utf-8")
+    calibration_body_path.unlink()
+
+    print(f" done ({elapsed:.0f}s, {len(calibrated)} concepts calibrated, "
+          f"{len(adjustments)} adjustments)")
+    print(f"  {cal_json_path}")
+    print(f"  {cal_md_path}")
+
+
+def cmd_heatmap(concepts: list[dict], args: argparse.Namespace) -> None:
+    """Generate HTML heatmap from calibrated scores."""
+    cal_json_path = SCORES_DIR / "calibrated_scores.json"
+    if not cal_json_path.exists():
+        print("Error: calibrated_scores.json not found. Run calibrate first.")
+        sys.exit(1)
+
+    data = json.loads(cal_json_path.read_text(encoding="utf-8"))
+    calibrated = data.get("scores", [])
+    adjustments = data.get("adjustments", [])
+
+    if not calibrated:
+        print("Error: no calibrated scores found in JSON.")
+        sys.exit(1)
+
+    output_path = CONCEPT_ANALYSIS_DIR / "heatmap.html"
+    generate_heatmap_html(
+        calibrated_scores=calibrated,
+        adjustments=adjustments,
+        output_path=output_path,
+        analyses_dir=ANALYSES_DIR,
+        concepts=concepts,
+    )
+
+    print(f"Heatmap generated: {output_path}")
+    print(f"  {len(calibrated)} concepts scored")
+
+
+# ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
@@ -1200,6 +1540,8 @@ def build_parser() -> argparse.ArgumentParser:
     p_syn.add_argument("--dry-run", action="store_true", help="Generate prompts without calling Claude")
     p_syn.add_argument("--timeout", type=int, default=900, help="Per-invocation timeout in seconds")
     p_syn.add_argument("--force", action="store_true", help="Re-run even if output exists")
+    p_syn.add_argument("--skip-review-gate", action="store_true",
+                       help="Synthesize even if analysis hasn't been reviewed")
 
     # -- approve --
     p_approve = sub.add_parser("approve", help="Approve a reviewed analysis")
@@ -1214,6 +1556,28 @@ def build_parser() -> argparse.ArgumentParser:
     p_add.add_argument("--force", action="store_true",
                        help="Re-extract even if source name already exists")
     p_add.add_argument("--dry-run", action="store_true", help="Show what would be created")
+
+    # -- score --
+    p_score = sub.add_parser("score", help="Add Section 8 (LCOE Downselect Scoring) to syntheses")
+    p_score.add_argument("concepts", nargs="*", default=[], help="Concept IDs")
+    p_score.add_argument("--all", dest="all_remaining", action="store_true", help="All concepts with syntheses")
+    p_score.add_argument("--family", help="Filter by confinement family")
+    p_score.add_argument("--model", default="sonnet", help="Claude model (default: sonnet)")
+    p_score.add_argument("--dry-run", action="store_true", help="Generate prompts without calling Claude")
+    p_score.add_argument("--timeout", type=int, default=1200, help="Per-invocation timeout in seconds (default: 1200)")
+    p_score.add_argument("--force", action="store_true", help="Re-score even if Section 8 exists")
+
+    # -- extract-scores --
+    p_extract = sub.add_parser("extract-scores", help="Extract YAML scores and compute C2, C6, C7")
+
+    # -- calibrate --
+    p_calibrate = sub.add_parser("calibrate", help="Cross-concept score calibration via Claude")
+    p_calibrate.add_argument("--model", default="sonnet", help="Claude model (default: sonnet)")
+    p_calibrate.add_argument("--dry-run", action="store_true", help="Generate prompt without calling Claude")
+    p_calibrate.add_argument("--timeout", type=int, default=3600, help="Timeout in seconds (default: 3600)")
+
+    # -- heatmap --
+    p_heatmap = sub.add_parser("heatmap", help="Generate HTML heatmap from calibrated scores")
 
     return parser
 
@@ -1235,6 +1599,10 @@ def main() -> None:
         "synthesize": cmd_synthesize,
         "approve": cmd_approve,
         "add-source": cmd_add_source,
+        "score": cmd_score,
+        "extract-scores": cmd_extract_scores,
+        "calibrate": cmd_calibrate,
+        "heatmap": cmd_heatmap,
     }
 
     handler = dispatch[args.command]
