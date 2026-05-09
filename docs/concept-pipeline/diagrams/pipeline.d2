@@ -1,0 +1,29 @@
+direction: right
+
+classes: {
+  stage: {
+    shape: rectangle
+    style.fill: "#eff6ff"
+    style.stroke: "#1d4ed8"
+    style.stroke-width: 2
+    style.font-color: "#0f172a"
+    style.font-size: 16
+    style.border-radius: 6
+  }
+}
+
+s0: "Stage 0 — Bootstrap\n(human, one-time)" {class: stage}
+s1: "Stage 1 — Analysis loop\n(automated, iterative)" {class: stage}
+s2: "Stage 2 — Review\n(human)" {class: stage}
+s3: "Stage 3 — Synthesis\n(automated)" {class: stage}
+
+s0 -> s1: "dossier +\nclassification"
+s1 -> s2: "analysis.md\nmodel_setup.py"
+s2 -> s3: "PROCEED"
+s2 -> s1: "REVISE" {
+  style.stroke: "#dc2626"
+  style.stroke-dash: 4
+  style.stroke-width: 2
+  style.font-color: "#dc2626"
+  style.font-size: 14
+}

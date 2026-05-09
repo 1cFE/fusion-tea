@@ -513,8 +513,619 @@
       "noak": 1.0
     }
   },
-  "parameter_metadata": {},
-  "narrative": null,
+  "parameter_metadata": {
+    "availability": {
+      "display_name": "Availability",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.8,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.5599999999999999,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "construction_time_yr": {
+      "display_name": "Construction Time",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 5.0,
+      "display_multiplier": 1.0,
+      "display_unit": "yr",
+      "range": [
+        3.5,
+        6.5
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "mn": {
+      "display_name": "Energy Multiplication Mₙ",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.7,
+        1.3
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_th": {
+      "display_name": "Thermal Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.2,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.13999999999999999,
+        0.26
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_p": {
+      "display_name": "Eta P",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.5,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.35,
+        0.65
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_sub": {
+      "display_name": "Subsystem Power Fraction",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.03,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.020999999999999998,
+        0.039
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_pump": {
+      "display_name": "Pumping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.5,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        1.0499999999999998,
+        1.9500000000000002
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_house": {
+      "display_name": "Housekeeping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 5.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        3.5,
+        6.5
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_cryo": {
+      "display_name": "Cryogenic Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 2.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        1.4,
+        2.6
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "blanket_t": {
+      "display_name": "Blanket Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.3,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.21,
+        0.39
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "ht_shield_t": {
+      "display_name": "HT Shield Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "structure_t": {
+      "display_name": "Structure Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.15,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.105,
+        0.195
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "vessel_t": {
+      "display_name": "Vessel Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "plasma_t": {
+      "display_name": "Minor Radius",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.5,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        1.0499999999999998,
+        1.9500000000000002
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_T": {
+      "display_name": "Dd F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.969,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6782999999999999,
+        1.2597
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_He3": {
+      "display_name": "Dd F He3",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.689,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.48229999999999995,
+        0.8956999999999999
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_dd_frac": {
+      "display_name": "Dhe3 Dd Frac",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.07,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.049,
+        0.09100000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_f_T": {
+      "display_name": "Dhe3 F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.97,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6789999999999999,
+        1.261
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_input": {
+      "display_name": "Input Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 60.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        42.0,
+        78.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_pin": {
+      "display_name": "Injector Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.6,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.42,
+        0.78
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_de": {
+      "display_name": "Direct Conversion Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.7,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.48999999999999994,
+        0.9099999999999999
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_dec": {
+      "display_name": "Direct Conversion Fraction",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.85,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.595,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_coils": {
+      "display_name": "Coil Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 8.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        5.6,
+        10.4
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_cool": {
+      "display_name": "P Cool",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 15.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        10.5,
+        19.5
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "elon": {
+      "display_name": "Elongation κ",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.7,
+        1.3
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "chamber_length": {
+      "display_name": "Chamber Length",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 30.0,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        21.0,
+        39.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "B": {
+      "display_name": "B",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 3.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        2.0999999999999996,
+        3.9000000000000004
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "T_e": {
+      "display_name": "T E",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 20.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        14.0,
+        26.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "n_e": {
+      "display_name": "N E",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 5e19,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        3.4999999999999996e19,
+        6.5e19
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "Z_eff": {
+      "display_name": "Z Eff",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.2,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.84,
+        1.56
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "plasma_volume": {
+      "display_name": "Plasma Volume",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 200.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        140.0,
+        260.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "R_w": {
+      "display_name": "R W",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.4,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.27999999999999997,
+        0.52
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "T_edge": {
+      "display_name": "T Edge",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.2,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.13999999999999999,
+        0.26
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "tau_ratio": {
+      "display_name": "Tau Ratio",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 3.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        2.0999999999999996,
+        3.9000000000000004
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "b_max": {
+      "display_name": "Peak Magnetic Field",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 12.0,
+      "display_multiplier": 1.0,
+      "display_unit": "T",
+      "range": [
+        8.399999999999999,
+        15.600000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "r_coil": {
+      "display_name": "Coil Radius",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.85,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        1.295,
+        2.4050000000000002
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_nbi": {
+      "display_name": "NBI Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 40.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        28.0,
+        52.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "inflation_rate": {
+      "display_name": "Inflation Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.02,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.013999999999999999,
+        0.026000000000000002
+      ],
+      "source": null,
+      "modeling_note": null
+    }
+  },
+  "narrative": {
+    "key_bets": [
+      "p-B11 fusion can be made viable through nonthermal proton distributions that suppress bremsstrahlung losses below fusion power production",
+      "Alpha channeling via RF waves can extract energy from fusion-born helium ions and redirect it to fuel protons, reducing required confinement time by up to 6.9×",
+      "Centrifugal species separation in a rotating plasma can differentially confine boron (11 amu) while allowing helium ash (4 amu) to migrate for extraction",
+      "Ponderomotive barriers (one-way RF walls) can control ion traffic between fusion and heat exchange chambers in the multi-chamber CHARM architecture",
+      "Direct energy conversion of plasma rotational kinetic energy can replace conventional thermal cycle for electricity generation",
+      "A biased central electrode can sustain plasma rotation with large voltage drops at minimal dissipation, keeping recirculating power economical",
+      "The integrated multi-chamber architecture (fusion chamber + heat exchange chamber + plug) can operate simultaneously with all five physics mechanisms working together"
+    ],
+    "eliminated_costs": [
+      "Tritium breeding blanket and tritium handling infrastructure (~$35M tritium startup eliminated; aneutronic p-B11 fuel cycle)",
+      "Lithium-6 enrichment supply chain and CANDU reactor dependence eliminated",
+      "Neutron shielding, first-wall neutron damage materials (tungsten, ODS steels), and remote handling infrastructure eliminated by near-aneutronic fuel",
+      "Conventional thermal power conversion island reduced/replaced by direct energy conversion of charged particle energy",
+      "Component activation and associated decommissioning radioactivity costs largely eliminated"
+    ],
+    "novel_costs": [
+      "Boron-11 enrichment to fusion-grade purity (>99% B-11 from natural 80% abundance) — specialty isotopic purification",
+      "Alpha channeling RF antenna system: high-power ICRF hardware tuned to rotating plasma geometry with no industrial precedent",
+      "Biased central electrode capable of ~100 kV sustained operation against plasma erosion and resistive losses",
+      "Rotation-energy direct energy conversion hardware (adiabatic DEC or SWDEC) — no prior production design exists",
+      "Continuous recirculating power to sustain E×B plasma rotation via the biased electrode system"
+    ],
+    "risks": [
+      {
+        "description": "Bremsstrahlung losses at p-B11 operating temperatures (~150–300 keV) may exceed fusion power production if nonthermal proton distribution thermalizes or alpha channeling efficiency is insufficient — existential physics constraint",
+        "severity": "high"
+      },
+      {
+        "description": "Alpha channeling efficiency η_α has only analytical/0D model estimates; a 2× shortfall vs. predicted value could make the concept non-igniting regardless of engineering optimization",
+        "severity": "high"
+      },
+      {
+        "description": "Helium ash accumulation could poison the plasma; the multi-chamber architecture solving this has never been built or tested at any scale",
+        "severity": "high"
+      },
+      {
+        "description": "Recirculating power fraction to sustain plasma rotation is uncharacterized; could consume an unacceptable share of fusion output",
+        "severity": "high"
+      },
+      {
+        "description": "DEC efficiency for rotation energy recovery has only physics-limit bounds (PRX Energy 2025); no engineering efficiency target, prototype, or capital cost estimate exists",
+        "severity": "high"
+      },
+      {
+        "description": "No published plant design, fusion power, Q, machine size, or magnet specifications — every system parameter must be assumed for any LCOE estimate",
+        "severity": "high"
+      },
+      {
+        "description": "CHARM multi-chamber integrated architecture is at TRL 1; no proof-of-concept experiment of even a single chamber in relevant plasma regime",
+        "severity": "high"
+      },
+      {
+        "description": "Ponderomotive barriers have high energy cost identified as 'situational' — energy budget for maintaining one-way RF walls at steady state unresolved",
+        "severity": "medium"
+      },
+      {
+        "description": "p-B11 nonthermal plasma has never been demonstrated at any scale (>100 keV proton temperature with cold electrons and measurable yield above bremsstrahlung)",
+        "severity": "high"
+      },
+      {
+        "description": "Pre-incorporation company status (as of July 2025) with only $1.5M ARPA-E funding disclosed; no FIA listing, device roadmap, or independent funding announcement",
+        "severity": "medium"
+      },
+      {
+        "description": "Magnet conductor technology, field strength, and mirror ratio unspecified — supply chain and capital cost cannot be quantified without a design point",
+        "severity": "medium"
+      },
+      {
+        "description": "Central electrode material lifetime under ~100 kV plasma erosion, sputtering, and contamination is uncharacterized",
+        "severity": "medium"
+      },
+      {
+        "description": "Centrifugal species separation at the p vs. B-11 mass ratio in a fusion-relevant plasma has not been experimentally demonstrated; CMFX validates geometry only with D-D fuel at low temperature",
+        "severity": "medium"
+      }
+    ]
+  },
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/06-magnetic-mirror/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/06-magnetic-mirror/analysis.md"

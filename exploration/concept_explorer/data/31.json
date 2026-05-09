@@ -448,71 +448,452 @@
       "noak": 1.0
     }
   },
-  "parameter_metadata": {},
+  "parameter_metadata": {
+    "availability": {
+      "display_name": "Availability",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.75,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.5249999999999999,
+        0.9750000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "construction_time_yr": {
+      "display_name": "Construction Time",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 5.0,
+      "display_multiplier": 1.0,
+      "display_unit": "yr",
+      "range": [
+        3.5,
+        6.5
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "mn": {
+      "display_name": "Energy Multiplication Mₙ",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.7,
+        1.3
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_th": {
+      "display_name": "Thermal Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.44,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.308,
+        0.5720000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_sub": {
+      "display_name": "Subsystem Power Fraction",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.03,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.020999999999999998,
+        0.039
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_pump": {
+      "display_name": "Pumping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        0.7,
+        1.3
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_trit": {
+      "display_name": "Tritium Plant Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 10.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        7.0,
+        13.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_house": {
+      "display_name": "Housekeeping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        2.8,
+        5.2
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_cryo": {
+      "display_name": "Cryogenic Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.5,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        0.35,
+        0.65
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "blanket_t": {
+      "display_name": "Blanket Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.8,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.5599999999999999,
+        1.04
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "ht_shield_t": {
+      "display_name": "HT Shield Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.25,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.175,
+        0.325
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "structure_t": {
+      "display_name": "Structure Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.15,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.105,
+        0.195
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "vessel_t": {
+      "display_name": "Vessel Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "plasma_t": {
+      "display_name": "Minor Radius",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.0,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        2.8,
+        5.2
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_T": {
+      "display_name": "Dd F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.969,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6782999999999999,
+        1.2597
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_He3": {
+      "display_name": "Dd F He3",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.689,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.48229999999999995,
+        0.8956999999999999
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_dd_frac": {
+      "display_name": "Dhe3 Dd Frac",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.07,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.049,
+        0.09100000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_f_T": {
+      "display_name": "Dhe3 F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.97,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6789999999999999,
+        1.261
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "q_eng": {
+      "display_name": "Engineering Q",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 5.69,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        3.983,
+        7.397000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_rep": {
+      "display_name": "Repetition Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 10.0,
+      "display_multiplier": 1.0,
+      "display_unit": "Hz",
+      "range": [
+        7.0,
+        13.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_pin": {
+      "display_name": "Injector Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_rad": {
+      "display_name": "F Rad",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_target": {
+      "display_name": "Target Plant Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        0.7,
+        1.3
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_dec": {
+      "display_name": "Eta Dec",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.85,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.595,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "interest_rate": {
+      "display_name": "Interest Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.07,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.049,
+        0.09100000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "inflation_rate": {
+      "display_name": "Inflation Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.0245,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.01715,
+        0.03185
+      ],
+      "source": null,
+      "modeling_note": null
+    }
+  },
   "narrative": {
     "key_bets": [
-      "Target gain G = 160 at 5 MJ laser input via shock ignition with 1.9% multicolor broadband, SRP, and 500-beam geometry suppressing LPI beyond the CBET-mitigated Froula baseline",
-      "Optical Enhancement Cavity (OEC) storing 10 kJ per module via coherent pulse accumulation at finesse >10^5 in a 150 m Fabry-Pérot cavity with mirrors at >99.9995% reflectivity",
-      "Coherent beam combining (CBC) of 500 fiber laser channels at 16% wall-plug efficiency, scaling from benchtop CW demonstrations to pulsed 1–10 Hz operation",
-      "Direct energy conversion at η_DEC = 0.44 capturing 30% of fusion power (pulsed charged-particle flux to axisymmetric magnetic electrodes)",
-      "Cryogenic D-T target fabrication and injection at 1–10 Hz with submicrometer surface roughness and mm-scale positional accuracy at chamber center",
-      "Magnetized dry-wall chamber (tungsten + RAFM + He cooling) with embedded field topology deflecting charged particles to DEC ports while surviving repetitive pulsed neutron, X-ray, and debris loading",
-      "44% He Brayton thermal conversion from a pulsed LiPb blanket heat source with natural-Li TBR ≥ 1.0"
+      "Target gain G = 160 at 5 MJ UV laser input via shock ignition with multicolor broadband + slowly rotating polarization + 500-beam CBET suppression — projected beyond the Froula CBET-mitigated direct-drive baseline and not experimentally validated at multi-MJ scale",
+      "Optical Enhancement Cavity architecture scales from 1.5 m benchtop (finesse 419,000, enhancement 59,000) to 150 m reactor cavities achieving >10^5 enhancement and storing 10 kJ per module across 500 modules",
+      "Coherent beam combining of 500 fiber-laser channels at 16% wall-plug-to-IR efficiency, achieving 10% wall-plug-to-UV after KDP/DKDP frequency tripling at 60% conversion efficiency under 1–10 Hz pulsed operation",
+      "Direct energy conversion captures 30% of fusion power (alpha particles + plasma exhaust) at η_DEC = 0.44 via axisymmetric magnetic guide fields to electrode arrays — TRL 1–2, no prototype at any scale",
+      "Cryogenic D-T target fabrication, injection, and tracking at 1–10 Hz with submicrometer surface roughness and mm-level positional accuracy at chamber center, at a per-target cost approaching the Goodin ~$0.035 economic viability floor",
+      "Magnetized tungsten dry-wall first wall with embedded fields deflecting charged particles to DEC ports survives repetitive pulsed X-ray, neutron, and debris loading at 10 Hz over multi-year operation",
+      "He-cooled LiPb blanket with natural lithium and Pb multiplication achieves TBR ≥ 1.0 across a chamber penetrated by 500 laser ports, DEC exhaust ducts, and target injection paths"
     ],
     "eliminated_costs": [
-      "No REBCO or superconducting magnets required (resistive/permanent magnets only for charged-particle deflection)",
-      "No hohlraum fabrication (direct drive eliminates indirect-drive target complexity of concept 30)",
-      "No glass amplifier slabs or large DPSSL diode pump arrays (replaced by fiber lasers + passive OEC cavities)",
-      "No beryllium supply chain constraint (LiPb blanket avoids FLiBe)",
-      "Minimal in-chamber tritium at-risk inventory (mg per target vs. kg-scale MFE blanket inventories)"
+      "No REBCO or superconducting magnets required — eliminates HTS tape supply chain constraint that dominates tokamak/stellarator concepts",
+      "No beryllium required — LiPb blanket eliminates the ~300 tonne/year global Be supply constraint that affects FLiBe-based concepts",
+      "No hohlraum fabrication — direct drive eliminates the indirect-drive target complexity of concept 30 (Inertia/NIF heritage)",
+      "No DPSSL glass amplifier slab manufacturing — CBC-OEC architecture replaces NIF-heritage glass amplifier chains (one of two dominant DPSSL cost items)",
+      "Minimal in-chamber tritium inventory — IFE per-target mg-scale DT vs. kg-scale MFE blanket inventories reduces tritium at-risk inventory and associated safety-case costs"
     ],
     "novel_costs": [
-      "1,000 OEC mirrors at >99.9995% reflectivity (LIGO-class coatings at ~100× LIGO program scale, no public cost data)",
-      "Direct energy conversion system handling GW-scale pulsed charged-particle flux at 1–10 Hz (TRL 1–2, no prototype)",
-      "Hz-rate cryogenic D-T target factory (NIF targets cost >$1M each over 15–20 hr; Goodin economic floor is ~$0.035/target)",
-      "Tungsten dry-wall first wall under repetitive impulsive 10 Hz pulsed loading (no irradiation database for this regime)",
-      "KDP/DKDP frequency-conversion crystals rep-rated at 10 Hz, 10 kJ/module UV fluence (beyond NIF low-rep-rate experience)"
+      "1,000 high-finesse OEC mirrors at >99.9995% reflectivity (LIGO-class coatings at ~100× LIGO program scale) — no commercial supply chain, cost spans $10K–$500K/mirror with no public data",
+      "Direct energy conversion subsystem handling ~2.4 GW_th pulsed charged-particle flux at 10 Hz — no prototype at any scale, capital cost estimated $50M–$500M with no precedent",
+      "Hz-rate cryogenic D-T target factory producing up to 10 targets/second at submicrometer quality — current NIF targets cost >$1M each over 15–20 hour fabrication cycles, requiring orders-of-magnitude cost reduction",
+      "Rep-rated KDP/DKDP frequency-tripling crystals operating at 10 kJ/module under 1–10 Hz pulsed UV loading — NIF-heritage supply chain but unvalidated lifetime at the new pulsed regime",
+      "Tungsten dry-wall first wall replacement under repetitive pulsed loading at 28 million cycles/year — no experimental basis for lifetime, potential annual replacement could dominate O&M"
     ],
     "risks": [
       {
-        "description": "Target gain G = 160 is projected beyond the CBET-mitigated direct-drive baseline and has no multi-MJ experimental validation; at G = 80 recirculating power jumps from 0.170 to >0.34 and LCOE rises 2–2.5×",
+        "description": "Target gain G = 160 not experimentally validated; entire power balance depends on this projection. At G = 80, recirculating power fraction at 10 Hz jumps from 0.170 to >0.34 and 1 Hz becomes non-viable (LCOE ~22.7× design point in same-capital scenarios)",
         "severity": "high"
       },
       {
-        "description": "OEC mirror cost at 1,000-unit scale with >99.9995% reflectivity is truly unknown; radiation-hardened coatings at this reflectivity do not exist commercially and degradation from X-ray/EUV/neutron exposure could force frequent replacement",
+        "description": "OEC mirror cost at 1,000-unit scale with >99.9995% reflectivity is truly unknown; LIGO-class coatings at $500K/mirror would add ~$0.8/MWh to LCOE and radiation damage from X-ray/EUV/neutron exposure could degrade reflectivity per shot",
         "severity": "high"
       },
       {
-        "description": "Direct energy conversion subsystem is TRL 1–2 with no physical prototype at any scale; electrode survival under pulsed GW-class charged-particle bombardment and 0.44 efficiency are theoretical",
+        "description": "Direct energy conversion is TRL 1–2 with no prototype at any scale; if DEC is deferred or efficiency drops, the 30% DEC channel (~840 MWe at 10 Hz) falls proportionally and η_eff drops to thermal-only",
         "severity": "high"
       },
       {
-        "description": "Hz-rate cryogenic D-T target fabrication is unsolved at 1 Hz anywhere globally; current NIF targets cost >$1M each and require 15–20 hr preparation, many orders of magnitude from the Goodin economic viability floor",
+        "description": "Cryogenic D-T target fabrication at 1–10 Hz is unsolved; current per-target costs are many orders of magnitude above the Goodin $0.035/target economic viability floor — at $10/target OPEX adds +$128.57/MWh to LCOE",
         "severity": "high"
       },
       {
-        "description": "Tungsten dry-wall first-wall lifetime under repetitive impulsive pulsed loading (10 Hz, ~28M cycles/year) combined with 14 MeV neutron embrittlement is uncharacterized; annual replacement could dominate O&M",
+        "description": "Tungsten dry-wall first wall lifetime under repetitive pulsed neutron + X-ray + debris loading at 10 Hz is uncharacterized; under adversarial annual replacement assumptions, first-wall replacement could dominate O&M costs",
         "severity": "high"
       },
       {
-        "description": "Viability cliff: dropping from 10 Hz to 1 Hz at G = 160 cuts net output 27× on the same capital base (LCOE rises ~8.8×); at G = 80, f = 1 Hz the plant is non-viable (~22.7× baseline LCOE)",
+        "description": "LPI suppression at multi-MJ scale (combined 1.9% broadband + SRP + 500-beam multicolor) has no experimental validation; the proposed FLUX experiments at OMEGA have not yet been conducted",
         "severity": "high"
       },
       {
-        "description": "LPI suppression via combined 1.9% broadband + SRP + multicolor + 500-beam geometry is unvalidated at multi-MJ scale; FLUX experiments at OMEGA are the proposed but not-yet-conducted validation path",
-        "severity": "high"
-      },
-      {
-        "description": "No published total plant capital cost, O&M breakdown, or capacity factor from company or independent study; $37.5M Series Seed funding is modest relative to demonstrated IFE plant study costs",
+        "description": "Total plant capital cost has no published estimate from company or independent study; first-pass model uses $3183/kWe overnight at 2800 MWe with DPSSL cost proxy that is acknowledged as inapplicable to OEC architecture",
         "severity": "medium"
       },
       {
-        "description": "Pulsed thermal input management for He Brayton turbine (5.6 GJ/shot at 10 Hz) and tritium permeation from LiPb to He coolant not characterized at BLF-specific conditions",
+        "description": "TBR for BLF-specific chamber geometry with 500 laser ports, DEC ducts, and injection ports is not stated in source paper; natural Li + Pb multiplier expected to reach TBR ~1.0 but geometry-specific calculation absent",
         "severity": "medium"
       },
       {
-        "description": "2030 commercial demonstration roadmap is highly ambitious given TRL 1–3 status of core subsystems (OEC at reactor scale, DEC, Hz-rate target fabrication)",
+        "description": "He Brayton cycle integration with pulsed fusion heat source (5.6 GJ thermal pulse per shot at 10 Hz) and tritium permeation from LiPb through heat exchanger surfaces are not characterized at BLF-specific conditions",
         "severity": "medium"
+      },
+      {
+        "description": "Capacity factor not stated by company; depends on simultaneous availability of target injection, chamber clearing, and 500-element CBC-OEC laser system — model assumes 75% availability with high uncertainty",
+        "severity": "medium"
+      },
+      {
+        "description": "Commercial demonstration target of 2030 is highly ambitious given TRL 1–3 status of OEC at reactor scale, DEC, and Hz-rate cryogenic targets; company funding ($37.5M Series Seed) is small relative to scale of remaining development",
+        "severity": "medium"
+      },
+      {
+        "description": "Phase locking stability across 500-element fiber laser array with 150 m OEC propagation paths and thermal cycling lifetime under 10 Hz burst-pulse operation are not demonstrated at industrial scale",
+        "severity": "medium"
+      },
+      {
+        "description": "Li-6 enrichment capacity is concentrated in Russia and China; achieving TBR ≥ 1.1 may require partial enrichment, creating a shared geopolitical supply constraint with other D-T concepts",
+        "severity": "low"
+      },
+      {
+        "description": "RAFM steel structural support not commercially produced at fusion scale; supply chain development is shared across the D-T fusion community rather than BLF-specific",
+        "severity": "low"
       }
     ]
   },

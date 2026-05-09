@@ -432,86 +432,383 @@
       "noak": 1.0
     }
   },
-  "parameter_metadata": {},
+  "parameter_metadata": {
+    "construction_time_yr": {
+      "display_name": "Construction Time",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 5.0,
+      "display_multiplier": 1.0,
+      "display_unit": "yr",
+      "range": [
+        3.5,
+        6.5
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "mn": {
+      "display_name": "Energy Multiplication Mₙ",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.7,
+        1.3
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_th": {
+      "display_name": "Thermal Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.4,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.27999999999999997,
+        0.52
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_sub": {
+      "display_name": "Subsystem Power Fraction",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.03,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.020999999999999998,
+        0.039
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_pump": {
+      "display_name": "Pumping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        0.7,
+        1.3
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_house": {
+      "display_name": "Housekeeping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        2.8,
+        5.2
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "blanket_t": {
+      "display_name": "Blanket Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.2,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.13999999999999999,
+        0.26
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "ht_shield_t": {
+      "display_name": "HT Shield Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "structure_t": {
+      "display_name": "Structure Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.15,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.105,
+        0.195
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "vessel_t": {
+      "display_name": "Vessel Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "plasma_t": {
+      "display_name": "Minor Radius",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 3.5,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        2.4499999999999997,
+        4.55
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_T": {
+      "display_name": "Dd F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.969,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6782999999999999,
+        1.2597
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_He3": {
+      "display_name": "Dd F He3",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.689,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.48229999999999995,
+        0.8956999999999999
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_dd_frac": {
+      "display_name": "Dhe3 Dd Frac",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.07,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.049,
+        0.09100000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_f_T": {
+      "display_name": "Dhe3 F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.97,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6789999999999999,
+        1.261
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "q_eng": {
+      "display_name": "Engineering Q",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 5.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        3.5,
+        6.5
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_rep": {
+      "display_name": "Repetition Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 10.0,
+      "display_multiplier": 1.0,
+      "display_unit": "Hz",
+      "range": [
+        7.0,
+        13.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_pin": {
+      "display_name": "Injector Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_rad": {
+      "display_name": "F Rad",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_target": {
+      "display_name": "Target Plant Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 2.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        1.4,
+        2.6
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_dec": {
+      "display_name": "Eta Dec",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.85,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.595,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "inflation_rate": {
+      "display_name": "Inflation Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.0245,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.01715,
+        0.03185
+      ],
+      "source": null,
+      "modeling_note": null
+    }
+  },
   "narrative": {
     "key_bets": [
-      "p-B11 ignition and net gain (Q≥1) achievable via non-thermal laser-target interaction, despite HB11 demonstrating only ~0.005% laser-to-alpha efficiency (~4 orders of magnitude gap)",
-      "Laser wall-plug efficiency of ~10% for DPSSL drivers at 10 Hz continuous petawatt-class operation, versus <1% in current high-power lasers",
-      "Laser diode cost reduction from $0.3–$1.3/W to $0.01/W target (30–130× decrease) contingent on ~1,000× production volume scale-up",
-      "Diode pump lifetime of 3–20 Gshots over plant life, versus ~1–2 Gshots currently demonstrated",
-      "~500 simultaneously operating DPSSL systems at 10 Hz with femtosecond pulses and petawatt peak powers (Marvel commercial plant)",
-      "Hybrid direct energy conversion capturing fast alpha particles at ~70% efficiency in pulsed burst mode (Marvel), with no built analogue",
-      "Target fabrication at <$0.03/target for 864,000 targets/day via semiconductor lithography at commercial-relevant yield and throughput"
+      "p-B11 fusion gain Q≥1 is achievable via non-thermal acceleration (block ignition for Marvel, avalanche fast ignition for HB11), bypassing the ~10–15× higher temperature requirement vs D-T",
+      "DPSSL laser systems can scale to ~10% wall-plug efficiency at petawatt-class peak power and 10 Hz continuous operation with kilojoule-per-pulse energies",
+      "Laser diode costs can fall ~30–130× from current $0.3–$1.3/W to the $0.01/W IFE viability target, which requires ~1000× production volume increase tied to IFE deployment",
+      "Diode pump reliability can reach 3–20 Gshots over plant lifetime, vs ~1–2 Gshots demonstrated today",
+      "Marvel's hybrid magnetic + electrostatic + steam direct energy conversion can reach ~70% efficiency for pulsed alpha-particle capture (no built or demonstrated analogue)",
+      "Nanostructured silicon targets can be manufactured at <$0.03/target with 864,000/day throughput at 10 Hz via standard semiconductor lithography",
+      "Plant availability of ~75% is achievable for a 10 Hz pulsed laser IFE plant with no operational analogue"
     ],
     "eliminated_costs": [
-      "No tritium breeding blanket — eliminates FLiBe/LiPb blanket CAPEX and TBR>1 constraint",
-      "No superconducting magnets — eliminates REBCO/HTS tape supply chain and cryogenic infrastructure",
-      "No beryllium or enriched Li-6 — eliminates exotic breeder chemistry and criticality risk",
-      "No heavy neutron shielding or remote-handling infrastructure — aneutronic environment enables standard steel construction and hands-on maintenance",
-      "Reduced first-wall replacement cost — no 14 MeV neutron activation; plant-lifetime first wall (vs ~3–5 year D-T replacement)"
+      "No tritium breeding blanket — eliminates Li-bearing FLiBe/LiPb blanket CAPEX, TBR engineering, and tritium handling/regulatory category",
+      "No HTS/REBCO superconducting magnets — no external confinement system, no cryogenics, no magnet supply chain bottleneck",
+      "No beryllium or enriched Li-6 breeder materials — no exotic breeder chemistry or criticality risk",
+      "No remote handling infrastructure — aneutronic environment (<1% neutron energy) enables hands-on maintenance and standard steel chamber construction",
+      "Reduced first wall replacement schedule — aneutronic flux allows plant-lifetime first wall vs ~3–5 year replacement for D-T concepts"
     ],
     "novel_costs": [
-      "~500-system DPSSL laser driver fleet at 10 Hz petawatt-class — dominant CAPEX with no cost-per-joule literature benchmark",
-      "Hybrid magnetic + electrostatic alpha-particle direct energy converter — unprecedented pulsed burst-mode system with no demonstrated hardware",
-      "Target factory producing 864,000 nanostructured silicon targets/day via semiconductor lithography at sub-cent unit cost",
-      "Laser diode pump replacement/lifetime cost at 3–20 Gshot requirement — no qualification standard, facet passivation at scale undemonstrated",
-      "Petawatt-class final-optic damage and replacement at 10 Hz continuous (distinct damage physics from NIF nanosecond analogue)"
+      "~500 petawatt-class femtosecond DPSSL laser systems operating in parallel at 10 Hz (Marvel commercial plant) — no precedent in any laser facility",
+      "Hybrid direct energy conversion hardware (magnetic + electrostatic alpha capture combined with steam cycle) — no built analogue at any scale",
+      "Mass-production of nanostructured silicon targets at 864,000/day (10 Hz) via semiconductor lithography, with micron-level in-chamber injection alignment",
+      "Laser diode pump replacement at IFE-scale lifetimes (~50 million bars per plant), with facet passivation for multi-junction ≥1 kW/bar designs",
+      "Ultrashort-pulse optic damage and replacement at 10 Hz petawatt class (~3×10⁸ shots/yr vs NIF's ~42 shots/yr) with distinct multi-photon ionization damage physics"
     ],
     "risks": [
       {
-        "description": "p-B11 ignition and gain physics unvalidated — 4 orders of magnitude gap between HB11 demonstrated 0.005% conversion and net energy gain; Marvel has no published yield data",
+        "description": "Fusion gain Q for p-B11 is undemonstrated — HB11 measured ~0.005% laser-to-alpha conversion (4 OOM from net gain); Marvel has published no yield data. All LCOE results contingent on ignition being achieved.",
         "severity": "high"
       },
       {
-        "description": "Laser diode market formation deadlock — $0.01/W target requires ~1,000× production scale-up that itself depends on IFE deployment, creating a chicken-and-egg programmatic risk not resolvable by lab results",
+        "description": "Market formation deadlock for laser diodes: $0.01/W target requires ~1000× volume increase that can only come from IFE deployment, but IFE deployment requires $0.01/W diodes first. Programmatic risk unresolvable by lab results.",
         "severity": "high"
       },
       {
-        "description": "Diode pump lifetime 1.5–10× below minimum IFE requirement with no qualification standards and undemonstrated facet passivation for multi-junction bars at commercial scale",
+        "description": "Diode pump lifetime gap: 3–20 Gshots required for plant operation; only ~1–2 Gshots demonstrated (1.5–10× below minimum). No IFE qualification standards exist.",
         "severity": "high"
       },
       {
-        "description": "Hybrid direct energy conversion at ~70% efficiency is unvalidated — HB11 already pivoted to conventional steam cycle (~35%) due to engineering intractability; 2× LCOE lever with neither endpoint validated",
+        "description": "Hybrid direct energy conversion at ~70% efficiency has no demonstrated analogue; HB11 has pivoted away from DEC to steam, indicating the company with operating hardware found it intractable at current TRL.",
         "severity": "high"
       },
       {
-        "description": "Plant availability has dominant LCOE elasticity (≈−1.0) with no operational analogue for 10 Hz pulsed laser IFE — current 75% assumption is an unbounded placeholder",
+        "description": "Plant availability (the dominant LCOE parameter, elasticity ≈ −1.0) uses a 75% placeholder with no operational analogue for 10 Hz pulsed laser IFE.",
         "severity": "high"
       },
       {
-        "description": "Laser capital cost per joule at 10 Hz continuous operation unbounded — no published cost-per-joule data for commercial-duty-cycle DPSSL; 500-laser plant CAPEX cannot be bounded",
+        "description": "Laser wall-plug efficiency for Marvel is unpublished; HB11's ~10% target is undemonstrated at commercial scale and far above the <1% typical of conventional high-power lasers.",
         "severity": "high"
       },
       {
-        "description": "10 Hz target injection with micron-level alignment precision for nanostructured targets has no current demonstration",
+        "description": "Target fabrication economics unbounded: Marvel's $0.03/target ceiling implies high-throughput fab with >99% yield, with no published unit cost or defect data; HB11 foam targets in-house but uncharacterized.",
         "severity": "medium"
       },
       {
-        "description": "Target fabrication economics at 864,000/day unverified — Marvel's <$0.03/target ceiling requires >99% yield at commercial-rate semiconductor fab throughput with no published cost data",
+        "description": "B-11 isotope enrichment requirement is unconfirmed; if natural boron (80% B-11) is insufficient, kg/year semiconductor-scale isotope separation industry must scale to tonne/year for a 1 GW plant.",
         "severity": "medium"
       },
       {
-        "description": "B-11 enrichment requirement unconfirmed — if required, current isotope separation industry at kg/year scale cannot serve tonne/year plant demand",
+        "description": "No published capital cost by subsystem from either company; LCOE modeling relies on framework defaults (e.g., 8.0 M$/MW_driver) with no Marvel/HB11 cost data to anchor.",
         "severity": "medium"
       },
       {
-        "description": "Laser optic damage at 10 Hz petawatt femtosecond operation has no direct analogue; NIF ns-pulse optics cost ($5.6M/yr replacement) is order-of-magnitude reference only due to distinct ultrashort-pulse damage physics",
+        "description": "10 Hz target injection with micron-level placement accuracy and chamber debris management has no current demonstration, even though the aneutronic environment relaxes the activation constraint.",
         "severity": "medium"
       },
       {
-        "description": "O&M cost structure (elasticity 0.204, highest engineering-lever elasticity) has no sourced basis — framework default placeholder dominates LCOE more than laser driver capital",
-        "severity": "medium"
-      },
-      {
-        "description": "Financial parameters (interest rate elasticity 0.65, construction time 0.27) dominate LCOE for capital-intensive FOAK plant with no near-term plant design to anchor construction schedule",
-        "severity": "medium"
-      },
-      {
-        "description": "HB11 underfunded at ~$22M vs Marvel's EUR 385M — limits experimental pace for the company with operational hardware",
-        "severity": "low"
-      },
-      {
-        "description": "UNSW first-wall/chamber materials collaboration is early-stage; no published lifetime data under alpha flux",
+        "description": "Marvel and HB11 funding asymmetry (EUR 385M vs ~$22M) constrains HB11's development pace despite its more advanced experimental status.",
         "severity": "low"
       }
     ]

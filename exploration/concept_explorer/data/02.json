@@ -336,67 +336,67 @@
   "parameter_metadata": {},
   "narrative": {
     "key_bets": [
-      "D-D thermonuclear fusion (~10⁸ K / ~10 keV) is achievable via acoustic cavitation, closing the ~4 orders-of-magnitude temperature gap above demonstrated sonoluminescence conditions (7,000–16,000 K)",
-      "Fusion gain Q ≥ ~3.5 at baseline parameters is reachable, with commercial viability targeting Q ≈ 10 or higher",
-      "Acoustic driver wall-plug efficiency (η_driver) near 85% is attainable, far beyond the only measured datapoint of Kp ≥ 55% (planar coupling coefficient)",
-      "Acoustic driver power can scale to ~100 MW per module — roughly 6,250× the largest demonstrated commercial ultrasonic unit (Hielscher UIP16000 at 16 kW)",
-      "Fusion energy thermalizes in the D₂O medium and is recoverable via a conventional Rankine/sCO₂ thermal cycle at ~35% efficiency",
-      "PZT piezoelectric transducers can survive neutron irradiation from D-D fusion (2.45 MeV neutrons at commercial flux) with acceptable lifetime",
-      "A deuterated liquid vessel (~3 m radius, ~113 m³ D₂O per module) can sustain coherent cavitation and confine the required fusion power density"
+      "Acoustic cavitation can bridge a ~4 orders-of-magnitude temperature gap from demonstrated sonoluminescence (~16,000 K) to D-D thermonuclear conditions (~10⁸ K)",
+      "D-D fusion gain Q ≥ ~3.5 is achievable in collapsing bubbles to enable net-positive electrical output",
+      "Acoustic driver wall-plug efficiency η_driver ≈ 85% is attainable in a reactor-scale piezoelectric system (vs. only Kp ≥ 55% material coupling demonstrated)",
+      "Acoustic driver power can scale ~6,250× from the largest commercial unit (16 kW Hielscher UIP16000) to ~100 MW per module while preserving the cavitation regime",
+      "Fusion energy thermalizes in the deuterated liquid medium, enabling a conventional Rankine/sCO2 thermal cycle at ~35% efficiency",
+      "PZT transducers retain performance and acceptable lifetime under D-D neutron irradiation in a commercial reactor",
+      "D₂O (or deuterated acetone) supply chains can sustain commercial-scale operation given India+Canada hold ~80% of global D₂O exports"
     ],
     "eliminated_costs": [
       "Plasma confinement coils / HTS magnets and cryoplant (CAS 220103 → $0)",
-      "Tritium breeding blanket (CAS 220106 eliminated — D-D fuel cycle)",
-      "RF / NBI auxiliary heating systems (CAS 220104 → $0)",
-      "Direct energy conversion hardware (CAS 220109 → $0; thermal cycle used instead)",
-      "External tritium supply infrastructure (D-D produces tritium as byproduct rather than requiring breeding)"
+      "Tritium breeding blanket and tritium supply infrastructure (CAS 220106 eliminated; D-D fuel cycle)",
+      "RF / NBI auxiliary plasma heating systems (CAS 220104 → $0)",
+      "Direct energy conversion subsystem (CAS 220109 → $0; thermalization in liquid medium)",
+      "High-energy laser drivers, optics, and multi-kJ pulsed energy stores (vs. laser ICF)"
     ],
     "novel_costs": [
-      "Acoustic transducer array (CAS 220107-equivalent) — piezoelectric driver replacing coils + heating subsystems",
-      "Large D₂O vessel fill (~113 m³/module at $300–$475/kg, ~$56M fill + ~$15M structure per module)",
-      "D₂O circulation and management systems (override accounts C220106, C220108)",
-      "Tritium byproduct containment/separation for D-D-produced tritium (~50% of reactions)",
-      "Neutron-irradiation-qualified PZT transducer replacement program (transducer replacement amortized at ~$6.2M/yr)"
+      "Piezoelectric ultrasonic transducer array at reactor scale (CAS 220107 ≈ $42.5M/module) with neutron-irradiation qualification",
+      "D₂O vessel and liquid fill — ~113 m³ per module at $300–$475/kg, ~$56M D₂O fill per module + ~$71M vessel",
+      "D₂O circulation, management, and tritium-byproduct separation systems (~$72M/module combined)",
+      "Periodic transducer replacement under neutron flux (~$6.2M/yr levelized, ~2 replacements over 40 yr plant life)",
+      "Heavy-water coolant loop to steam generator (~$195M plant-wide CAS 220200)"
     ],
     "risks": [
       {
-        "description": "Foundational scientific viability: ~4 orders-of-magnitude temperature gap from demonstrated sonoluminescence (~16,000 K) to D-D fusion (~10⁸ K) with no published theoretical mechanism to bridge it; Taleyarkhan (2002) fusion claims discredited and found to be research misconduct (2008)",
+        "description": "Foundational physics undemonstrated: ~4 orders-of-magnitude temperature gap between sonoluminescence (~16,000 K) and D-D fusion (~10⁸ K) with no published theoretical mechanism to bridge it",
         "severity": "high"
       },
       {
-        "description": "No reactor design, shielding concept, or energy conversion pathway has been published; entire CAS10-LCOE capital structure rests on speculative placeholders",
+        "description": "No reactor design, vessel geometry, shielding concept, or energy conversion pathway has been published — entire CAS22 cost basis is speculative",
         "severity": "high"
       },
       {
-        "description": "Acoustic driver wall-plug efficiency assumed at 85% is unsupported — only Kp ≥ 55% (planar coupling coefficient, not wall-plug) is measured; at η_driver = 0.55, breakeven Q rises from ~3.5 to ~5.2",
+        "description": "Acoustic driver wall-plug efficiency η_driver = 85% is unsupported; only Kp ≥ 55% planar coupling is measured. At η_driver = 0.55, breakeven Q rises from ~3.5 to ~5.2 (50% increase)",
         "severity": "high"
       },
       {
-        "description": "Acoustic driver power scale-up from 64 kW (largest demonstrated cluster) to 100 MW/module is ~1,560× unconstrained, with unsolved engineering limits on cavity volume, transducer packing, cavitation threshold, and acoustic interference",
+        "description": "100 MW/module acoustic driver is ~6,250× larger than the largest commercial unit (16 kW); Q and acoustic power are coupled unknowns, so the sensitivity sweep at fixed Q=10 is physically unjustified",
         "severity": "high"
       },
       {
-        "description": "Q and acoustic power are physically coupled unknowns — sensitivity sweeps that hold Q=10 fixed across power levels misrepresent the joint design-space risk",
-        "severity": "high"
-      },
-      {
-        "description": "D₂O supply chain concentration — India and Canada account for ~80% of global D₂O exports by value (2023 UN Comtrade), creating geopolitical supply risk at commercial deployment scale",
+        "description": "Scientific reputational overhang from the 2008 Taleyarkhan misconduct finding has eliminated community consensus and research funding, blocking independent replication and theoretical work",
         "severity": "medium"
       },
       {
-        "description": "D-D neutron flux (2.45 MeV, ~50% of reactions) requires substantial shielding and activation management; PZT transducer lifetime under neutron irradiation is completely unstudied",
+        "description": "D-D neutron flux (~50% of reactions yield 2.45 MeV neutrons) drives substantial shielding/activation requirements with no published engineering analysis",
         "severity": "medium"
       },
       {
-        "description": "Scientific reputational overhang from Taleyarkhan misconduct case has made sonofusion a research-funding pariah, suppressing theoretical and experimental follow-up that could narrow the temperature gap",
+        "description": "Neutron-irradiation lifetime of PZT piezoelectric transducers is unstudied; transducer replacement cadence and cost are unknown at reactor scale",
         "severity": "medium"
       },
       {
-        "description": "Company disclosure is minimal — no reactor design, energy conversion specification, performance targets, funding details, or development timeline published by Sonofusion Energy",
+        "description": "D₂O supply concentration: India + Canada account for ~80% of global D₂O exports by value, creating geographic supply risk for commercial deployment",
+        "severity": "low"
+      },
+      {
+        "description": "Conditional LCOE shows plant availability (|ε|=0.95), WACC (|ε|=0.93), and thermal efficiency (|ε|=0.72) dominate over Q (|ε|=0.53) — financing and heat-cycle risks rival physics risk if viability is achieved",
         "severity": "medium"
       },
       {
-        "description": "Regulatory pathway for a novel acoustic fusion concept is undefined; NRC fusion framework may require special review",
+        "description": "Regulatory classification (nuclear vs. non-nuclear) for a novel acoustic fusion concept is undefined and could materially extend licensing timeline",
         "severity": "low"
       }
     ]

@@ -126,23 +126,27 @@ def run_stage1_loop(
             feedback_text = _get_review_feedback(concept_dir)
             if feedback_text is not None:
                 feedback_source = "review"
-                feedback_path = iter_dir / "feedback.md"
+                feedback_path = iter_dir / "pre_feedback.md"
                 feedback_path.write_text(feedback_text, encoding="utf-8")
                 print(f"  {cid} iter {iter_num}: using review corrective actions as feedback")
             else:
                 # review.md exists but no extractable F-N findings — fall through
                 feedback_source = "assess"
-                feedback_path = _get_prior_feedback(concept_dir, iter_num)
+                feedback_path = _copy_to_pre_feedback(
+                    _get_prior_feedback(concept_dir, iter_num), iter_dir)
         elif new_sources and not used_source_integration:
             # Source-integration producer (FR-17)
             feedback_source = "source_integration"
-            feedback_path = _run_source_integration(
+            si_result = _run_source_integration(
                 concept, iter_dir, new_sources, analysis_path, args)
-            if feedback_path is None:
+            if si_result is not None:
+                feedback_path = _copy_to_pre_feedback(si_result, iter_dir)
+            else:
                 # Source integration found PASS (no material additions)
                 # Fall through to normal assess feedback
                 feedback_source = "assess"
-                feedback_path = _get_prior_feedback(concept_dir, iter_num)
+                feedback_path = _copy_to_pre_feedback(
+                    _get_prior_feedback(concept_dir, iter_num), iter_dir)
             used_source_integration = True
         elif getattr(args, "research", False) and iter_num > 1:
             feedback_source = "research"
@@ -163,19 +167,33 @@ def run_stage1_loop(
                     assess_fb = _get_prior_feedback(concept_dir, iter_num)
                     merged_assess = assess_fb is not None and assess_fb.exists()
                     feedback_path = _merge_feedback(
-                        assess_fb, si_path, iter_dir / "feedback.md")
+                        assess_fb, si_path, iter_dir / "pre_feedback.md")
                 else:
                     # Source integration found PASS — use assess feedback as-is
                     feedback_source = "assess"
-                    feedback_path = _get_prior_feedback(concept_dir, iter_num)
+                    feedback_path = _copy_to_pre_feedback(
+                        _get_prior_feedback(concept_dir, iter_num), iter_dir)
             else:
                 # Nothing acquired — fall through to assess
                 feedback_source = "assess"
-                feedback_path = _get_prior_feedback(concept_dir, iter_num)
+                feedback_path = _copy_to_pre_feedback(
+                    _get_prior_feedback(concept_dir, iter_num), iter_dir)
         else:
             # Normal: prior iteration's assess output
             feedback_source = "assess" if iter_num > 1 else "cold_start"
-            feedback_path = _get_prior_feedback(concept_dir, iter_num) if iter_num > 1 else None
+            prior = _get_prior_feedback(concept_dir, iter_num) if iter_num > 1 else None
+            feedback_path = _copy_to_pre_feedback(prior, iter_dir)
+
+        # If a non-cold-start case fell through with no prior post_feedback.md
+        # (e.g., previous iter ran SINGLE_PASS), demote to cold-start with a
+        # warning. Without this, _run_feedback_pass would render "None" as the
+        # feedback path string into the analyze prompt template.
+        if feedback_source != "cold_start" and feedback_path is None:
+            print(
+                f"  {cid} iter {iter_num}: prior post_feedback.md missing; "
+                f"falling back to cold-start"
+            )
+            feedback_source = "cold_start"
 
         # --- Analyze step ---
         if feedback_source == "cold_start":
@@ -261,6 +279,22 @@ def run_stage1_loop(
 # ---------------------------------------------------------------------------
 # Internal helpers
 # ---------------------------------------------------------------------------
+
+
+def _copy_to_pre_feedback(source: Path | None, iter_dir: Path) -> Path | None:
+    """Copy ``source`` to ``iter_dir/pre_feedback.md``. Returns the new path, or
+    None if ``source`` is None.
+
+    Used by the dispatch chain to materialize the input-feedback artifact for
+    each non-cold-start case. Centralizes the rename invariant: every input
+    feedback file lives at ``iter-N/pre_feedback.md`` regardless of which case
+    fired.
+    """
+    if source is None:
+        return None
+    pre = iter_dir / "pre_feedback.md"
+    shutil.copyfile(source, pre)
+    return pre
 
 
 def _split_findings(text: str) -> list[str]:
@@ -714,7 +748,8 @@ def _run_assess(
     """
     cid = concept["_id"]
     iter_num = int(iter_dir.name.split("-")[1])
-    feedback_path = iter_dir / "feedback.md"
+    # Assess output. Immutable transcript; never overwritten.
+    feedback_path = iter_dir / "post_feedback.md"
 
     model_output = iter_dir / "model_output.txt"
     assess_vars = {
@@ -848,7 +883,7 @@ def _get_prior_feedback(concept_dir: Path, iter_num: int) -> Path | None:
     """Return the feedback file from the prior iteration, if it exists."""
     if iter_num <= 1:
         return None
-    prior = concept_dir / f"iter-{iter_num - 1}" / "feedback.md"
+    prior = concept_dir / f"iter-{iter_num - 1}" / "post_feedback.md"
     return prior if prior.exists() else None
 
 
@@ -863,7 +898,7 @@ def _has_revise_status(analysis_path: Path) -> bool:
 def _get_review_feedback(concept_dir: Path) -> str | None:
     """Extract F-N findings from review.md as feedback text for stage1.
 
-    Returns feedback text content (caller writes to iter-N/feedback.md),
+    Returns feedback text content (caller writes to iter-N/pre_feedback.md),
     or None if review.md has no extractable corrective actions.
     """
     from lib.validators import REVIEW_VERDICT_RE, CORRECTIVE_ACTIONS_RE

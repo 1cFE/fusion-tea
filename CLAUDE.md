@@ -241,6 +241,12 @@ Source selection is iterative — sources are ingested as the investigation iden
 
 **agentic-mbse**: MBSE workflow commands, 6-level model validation, and PDF extraction (v4 pipeline with quality gates and ensemble table detection). Installed as editable dependency. Source code at `~/1cfe/agentic-mbse`.
 
+## Browser / UI Inspection
+
+For any task that involves seeing what a page renders, verifying a UI change took effect, or reproducing a click-driven bug (concept explorer, HTML explainers, anything served on localhost), use the **`browser-inspect` skill** at `.claude/skills/browser-inspect/SKILL.md`. The skill wraps `scripts/browser_inspect.py`, a Playwright driver that takes chained step flags (`--goto`, `--shot`, `--click`, `--read`, `--eval`, `--wait-for`, etc.) in command-line order, and writes both PNGs and JSON sidecars (URL, title, console messages, page errors) under `/tmp/browser_inspect/<session>/`. Read the JSON sidecar even when the screenshot looks fine — console errors are invisible in pixels and frequently explain "why is this chart blank."
+
+`scripts/screenshot_explorer.py` is the older, single-shot version of the same idea (kept for backward compatibility); prefer `browser_inspect.py` for new work.
+
 ## Python Environment
 
 **IMPORTANT: Always use `uv` for Python commands.**

@@ -19,7 +19,6 @@ import sys
 import types
 import warnings
 from contextlib import redirect_stdout
-from datetime import UTC, datetime
 from io import StringIO
 from pathlib import Path
 from typing import Any
@@ -31,6 +30,12 @@ _HERE = Path(__file__).parent
 _PROJECT_ROOT = _HERE.parent.parent  # .../exploration/concept_explorer/ → project root
 _ANALYSES_DIR = _HERE.parent / "concept_analysis" / "analyses"
 _DATA_DIR = _HERE / "data"
+_DISPLAY_REGISTRY_PATH = _DATA_DIR / "parameter_display_registry.yaml"
+
+# Fields the shared display registry is allowed to patch on a ParameterMetadata.
+# Other fields (baseline, range, category, confidence, etc.) come from
+# generation or per-concept yaml.
+_REGISTRY_PATCH_FIELDS = frozenset({"display_name", "display_unit", "display_multiplier"})
 
 # Ensure project root is on sys.path so fully-qualified package imports work
 # when the script is run directly (uv run python exploration/.../extract_explorer_data.py)
@@ -38,18 +43,13 @@ if str(_PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(_PROJECT_ROOT))
 
 from exploration.concept_explorer.models import (  # noqa: E402, I001
+    Confidence,
     CostModelData,
     ConceptData,
-    ConceptManifest,
-    ConceptManifestEntry,
     ConceptStatus,
     ConfinementFamily,
-    Confidence,
     NarrativeData,
     ParameterCategory,
-    ParameterConceptEntry,
-    ParameterIndex,
-    ParameterIndexEntry,
     ParameterMetadata,
     SensitivityAnalysis,
     SensitivityEntry,
@@ -153,6 +153,65 @@ def build_sensitivity_analysis(model: Any, result: Any) -> SensitivityAnalysis:
     )
 
 
+_FRACTIONAL_NAME_TOKENS = ("eta", "efficiency", "availability", "fraction")
+_FRACTIONAL_NAME_EXACT = {"burn_fraction", "fuel_recovery"}
+
+
+def generate_parameter_metadata(
+    sensitivities: SensitivityAnalysis,
+) -> dict[str, ParameterMetadata]:
+    """Derive ParameterMetadata for every sensitivity param from baselines alone.
+
+    Range strategy: baseline ± 30%, clamped to [0, ∞). Fractional params
+    (efficiencies, availability, etc.) additionally clamp to [0, 1]. If the
+    baseline is 0 — degenerate range — fall back to (0, 1) so the slider is
+    still draggable.
+
+    yaml-authored entries (loaded by `load_parameter_metadata`) override these
+    via dict-spread merge in `extract_costingfe()`.
+    """
+    out: dict[str, ParameterMetadata] = {}
+    all_entries = {**sensitivities.engineering, **sensitivities.financial}
+
+    for name, entry in all_entries.items():
+        baseline = entry.baseline
+        is_fractional = (
+            0 < baseline <= 1
+            and (
+                name in _FRACTIONAL_NAME_EXACT
+                or name.startswith("f_")
+                or any(tok in name.lower() for tok in _FRACTIONAL_NAME_TOKENS)
+            )
+        )
+
+        if baseline == 0:
+            lo, hi = 0.0, 1.0
+        else:
+            lo = max(0.0, baseline * 0.7)
+            hi = baseline * 1.3
+            if is_fractional:
+                hi = min(1.0, hi)
+            if hi <= lo:
+                lo, hi = 0.0, 1.0
+
+        try:
+            out[name] = ParameterMetadata(
+                display_name=name.replace("_", " ").title(),
+                category=ParameterCategory.UNCLASSIFIED,
+                confidence=Confidence.UNKNOWN,
+                baseline=baseline,
+                range=(lo, hi),
+            )
+        except ValidationError as exc:
+            warnings.warn(
+                f"generate_parameter_metadata: skipped {name!r}: {exc}",
+                UserWarning,
+                stacklevel=2,
+            )
+
+    return out
+
+
 def _build_sensitivity_from_dict(
     sens_raw: dict[str, dict[str, float]],
     params: dict[str, float],
@@ -203,6 +262,13 @@ def extract_costingfe(
     effective_result = result_1gw if result_1gw is not None else result
 
     sensitivities = build_sensitivity_analysis(model, effective_result)
+    # Three-layer merge (later wins):
+    #   1. generate_parameter_metadata() — auto baseline + range + auto display_name
+    #   2. shared display registry       — patches display_name/_unit/_multiplier
+    #   3. per-concept model_metadata.yaml — full overrides (passed in via param_metadata)
+    generated = generate_parameter_metadata(sensitivities)
+    patched = apply_display_patches(generated, _DISPLAY_REGISTRY)
+    merged_metadata = {**patched, **param_metadata}
 
     # dataclasses.asdict() flattens the nested ForwardResult into plain dicts
     raw: dict[str, Any] = dataclasses.asdict(effective_result)
@@ -236,7 +302,7 @@ def extract_costingfe(
             has_cost_model=True,
             has_sensitivities=True,
             cost_model=cost_model,
-            parameter_metadata=param_metadata,
+            parameter_metadata=merged_metadata,
             narrative=narrative,
             sources=SourcePaths(
                 model_setup=str(concept_dir / "model_setup.py"),
@@ -567,6 +633,67 @@ def load_parameter_metadata(concept_dir: Path, concept_id: str) -> dict[str, Par
     return result
 
 
+def load_parameter_display_registry(
+    path: Path = _DISPLAY_REGISTRY_PATH,
+) -> dict[str, dict[str, Any]]:
+    """Load the shared display-name registry as partial-field patches.
+
+    Each entry maps `param_key -> {display_name?, display_unit?, display_multiplier?}`.
+    Unknown fields are dropped with a warning. Returns {} if the file is absent.
+
+    Unlike `load_parameter_metadata`, the registry is intentionally partial — it
+    patches display fields on top of `generate_parameter_metadata()` output rather
+    than replacing the whole `ParameterMetadata`.
+    """
+    if not path.exists():
+        return {}
+    raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    out: dict[str, dict[str, Any]] = {}
+    for key, entry in raw.items():
+        if not isinstance(entry, dict):
+            warnings.warn(
+                f"parameter_display_registry: ignoring non-dict entry for {key!r}",
+                UserWarning,
+                stacklevel=2,
+            )
+            continue
+        unknown = set(entry) - _REGISTRY_PATCH_FIELDS
+        if unknown:
+            warnings.warn(
+                f"parameter_display_registry: unknown fields for {key!r}: {sorted(unknown)}",
+                UserWarning,
+                stacklevel=2,
+            )
+        out[key] = {k: v for k, v in entry.items() if k in _REGISTRY_PATCH_FIELDS}
+    return out
+
+
+def apply_display_patches(
+    generated: dict[str, ParameterMetadata],
+    patches: dict[str, dict[str, Any]],
+) -> dict[str, ParameterMetadata]:
+    """Apply field-level display patches to generated parameter metadata.
+
+    Only `display_name`, `display_unit`, and `display_multiplier` are patched.
+    Generated fields like `baseline`, `range`, `category`, `confidence` are
+    preserved. Patches for keys not present in `generated` are ignored
+    (registry-key not in this concept's sensitivity output).
+    """
+    out: dict[str, ParameterMetadata] = {}
+    for key, meta in generated.items():
+        patch = patches.get(key)
+        if not patch:
+            out[key] = meta
+            continue
+        out[key] = meta.model_copy(update=patch)
+    return out
+
+
+# Loaded once; cheap and stateless. Tests can monkeypatch
+# `_DISPLAY_REGISTRY` or call `load_parameter_display_registry(custom_path)` directly.
+_DISPLAY_REGISTRY: dict[str, dict[str, Any]] = load_parameter_display_registry()
+
+
 # ---------------------------------------------------------------------------
 # Narrative extraction
 # ---------------------------------------------------------------------------
@@ -639,91 +766,6 @@ def extract_narrative(concept_dir: Path, concept_id: str) -> NarrativeData:
         raise ExtractionError(
             f"{concept_id}: NarrativeData validation failed:\n{exc}\n\nRaw output:\n{output}"
         ) from exc
-
-
-# ---------------------------------------------------------------------------
-# Manifest and parameter index builders
-# ---------------------------------------------------------------------------
-
-
-def build_manifest(concepts: list[ConceptData]) -> ConceptManifest:
-    """Build a ConceptManifest from extracted concepts."""
-    entries: list[ConceptManifestEntry] = []
-    for concept in concepts:
-        lcoe: float | None = None
-        confidence: Confidence | None = None
-
-        if concept.cost_model is not None:
-            lcoe = concept.cost_model.headline.lcoe_per_mwh
-
-        if concept.parameter_metadata:
-            conf_values = [pm.confidence for pm in concept.parameter_metadata.values()]
-            # Pick the most common confidence level as the overall concept confidence
-            counts = {c: conf_values.count(c) for c in set(conf_values)}
-            confidence = max(counts, key=lambda c: counts[c])
-
-        entries.append(
-            ConceptManifestEntry(
-                concept_id=concept.concept_id,
-                name=concept.name,
-                confinement_family=concept.confinement_family,
-                company=concept.company,
-                status=concept.status,
-                illustration=concept.illustration,
-                has_cost_model=concept.has_cost_model,
-                has_sensitivities=concept.has_sensitivities,
-                lcoe_per_mwh=lcoe,
-                confidence=confidence,
-                data_file=f"data/{concept.concept_id}.json",
-            )
-        )
-
-    return ConceptManifest(
-        generated_at=datetime.now(UTC).isoformat(),
-        concepts=entries,
-    )
-
-
-def build_parameter_index(concepts: list[ConceptData]) -> ParameterIndex:
-    """Build a cross-concept ParameterIndex from all sensitivity data."""
-    # param_name → list of per-concept entries
-    param_concepts: dict[str, list[ParameterConceptEntry]] = {}
-    # param_name → (display_name, category) — first match wins
-    param_info: dict[str, tuple[str, ParameterCategory]] = {}
-
-    for concept in concepts:
-        if concept.cost_model is None or concept.cost_model.sensitivities is None:
-            continue
-
-        sens = concept.cost_model.sensitivities
-        all_entries = {**sens.engineering, **sens.financial}
-
-        for param_name, entry in all_entries.items():
-            param_concepts.setdefault(param_name, []).append(
-                ParameterConceptEntry(
-                    concept_id=concept.concept_id,
-                    name=concept.name,
-                    elasticity=entry.elasticity,
-                )
-            )
-            if param_name not in param_info:
-                pm = concept.parameter_metadata.get(param_name)
-                if pm is not None:
-                    param_info[param_name] = (pm.display_name, pm.category)
-                else:
-                    param_info[param_name] = (param_name, ParameterCategory.UNCLASSIFIED)
-
-    parameters: dict[str, ParameterIndexEntry] = {
-        param_name: ParameterIndexEntry(
-            param_name=param_name,
-            display_name=param_info[param_name][0],
-            category=param_info[param_name][1],
-            concepts=concept_entries,
-        )
-        for param_name, concept_entries in param_concepts.items()
-    }
-
-    return ParameterIndex(parameters=parameters)
 
 
 # ---------------------------------------------------------------------------
@@ -820,16 +862,6 @@ def run_extraction(
     if not extracted:
         print("WARNING: no concepts extracted", file=sys.stderr)
         return
-
-    manifest = build_manifest(extracted)
-    manifest_path = data_dir / "manifest.json"
-    manifest_path.write_text(manifest.model_dump_json(indent=2), encoding="utf-8")
-    print(f"Wrote manifest ({len(extracted)} concepts) → {manifest_path}")
-
-    param_index = build_parameter_index(extracted)
-    index_path = data_dir / "parameter_index.json"
-    index_path.write_text(param_index.model_dump_json(indent=2), encoding="utf-8")
-    print(f"Wrote parameter index ({len(param_index.parameters)} params) → {index_path}")
 
 
 # ---------------------------------------------------------------------------

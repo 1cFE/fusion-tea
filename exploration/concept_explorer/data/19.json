@@ -391,83 +391,84 @@
   "parameter_metadata": {},
   "narrative": {
     "key_bets": [
-      "Energy confinement time scales as τₑ ~ R² in a D-He3 dipole at meter-scale radius, enabling Q > 1 at orbital device dimensions",
-      "He3 can be self-bred from D-D side reactions at rates sufficient to sustain commercial operation without external procurement",
-      "End-to-end power beaming efficiency (proton deceleration → DC → microwave transmitter → atmosphere → rectenna → AC grid) exceeds ~30% at multi-MW scale",
-      "Direct energy conversion of 14.7 MeV D-He3 protons achieves efficiency comparable to or better than 1970s Venetian blind DEC (50–65%) despite qualitatively different proton range physics",
-      "HTS REBCO coil can be space-qualified to survive Van Allen radiation, thermal cycling, and magnetic stress over a multi-year orbital lifetime with on-board cryocooler and radiator cooling",
-      "D-He3 plasma at 50–100 keV ion temperatures can be sustained in dipole geometry despite LDX/RT-1 having only demonstrated sub-fusion electron temperatures (few hundred eV)",
-      "Low-cost launch (Falcon 9 $2,700/kg trending to Starship $200/kg) keeps transport cost a small fraction of total CAPEX for a 5,000–15,000 kg spacecraft"
+      "Energy confinement time scales as τₑ ~ R² in a D-He3 dipole at meter-scale radius, yielding Q > 1 at orbital-accessible plasma conditions",
+      "D-D side reactions self-breed He3 via tritium decay at a rate sufficient to sustain commercial fuel supply without external procurement",
+      "End-to-end power beaming efficiency (proton deceleration → DC → microwave transmitter → atmosphere → rectenna → AC) exceeds ~30% at multi-MW scale",
+      "Direct conversion of 14.7 MeV D-He3 protons can achieve fusion-relevant efficiency despite ~1.4 mm proton range exceeding original Venetian blind DEC electrode gaps",
+      "A complete fusion reactor spacecraft (HTS coil, heating, conversion, beaming hardware) can be packaged within Falcon 9 mass and volume constraints",
+      "Space-qualified HTS coil with on-board cryocooler can sustain ~20–30 K operation in LEO under Van Allen radiation for multi-year orbital lifetime",
+      "Removing the vacuum vessel, blanket, and thermal cycle relocates rather than eliminates fusion plant cost, and the relocated costs (launch + spacecraft + beaming) are lower"
     ],
     "eliminated_costs": [
-      "Vacuum vessel (CAS 23) — space vacuum replaces the pumped chamber",
-      "Tritium breeding blanket (CAS 21) and associated Li-6 enrichment, FLiBe/Li-metal handling, and tritium processing infrastructure",
-      "Neutron shielding (CAS 22) — aneutronic D-He3 fuel eliminates W, WC cermet, and B₄C shielding supply chain",
-      "Thermal conversion cycle (CAS 24–26) — turbine plant, electrical plant, and heat rejection replaced by direct conversion + beaming",
-      "Reactor building and site civil construction — spacecraft replaces the terrestrial plant footprint"
+      "First wall, blanket, shielding, and vacuum vessel (CAS 21–23) — orbital deployment uses space vacuum and aneutronic fuel eliminates 14 MeV neutron flux",
+      "Thermal conversion cycle: turbine plant, steam systems, heat rejection, electric plant (CAS 24–26) — replaced by direct conversion + power beaming",
+      "Tritium breeding infrastructure: Li-6 enrichment, FLiBe/Li-metal handling, tritium processing — D-He3 fuel cycle requires no breeding blanket",
+      "Neutron shielding materials supply chain: tungsten, WC cermet, boron carbide — DD neutrons radiate into space",
+      "Site, building, and conventional plant construction — no terrestrial reactor building required"
     ],
     "novel_costs": [
-      "Launch cost to LEO as primary CAPEX driver (~$27M at Falcon 9 pricing for a 10,000 kg spacecraft)",
-      "Phased-array microwave transmitter fabrication (~$20M at ~2,500 kg and ~$2,000/kg for space-grade electronics) — the dominant novel hardware line item",
-      "Ground rectenna infrastructure for power beaming reception (~$2M/MW based on GW-class GEO SPS analogue)",
-      "He3 fuel procurement at ~$5,000–6,000/std L (~$28–34M/kg) market price, or self-breeding infrastructure as alternative",
-      "Space-qualified HTS coil system with on-board cryocooler, thermal radiators, and quench protection for a free-floating coil in LEO"
+      "Launch cost to LEO (~$2,700/kg Falcon 9) per spacecraft, replacing terrestrial construction CAPEX",
+      "Power beaming ground infrastructure: phased-array rectenna fields, grid tie (~$2M/MW at GW-scale SPS analogue)",
+      "Phased-array microwave transmitter fabrication (~$20M, ~25–30% of spacecraft hardware cost) — most novel hardware item, no precedent at MW-fusion scale",
+      "Direct energy converter for 14.7 MeV protons — no commercial supply chain, first-of-kind manufacturing",
+      "Orbital O&M: debris mitigation, radiation hardening, replacement logistics with no crewed-EVA precedent",
+      "He3 fuel procurement at $28–34M/kg market price, or self-breeding infrastructure if internal supply is pursued"
     ],
     "risks": [
       {
-        "description": "He3 fuel supply constraint — global production is ~1.8–2.7 kg/year; a MW-class plant would consume a rate comparable to total world production, and market-purchase at $30M/kg alone pushes LCOE to ~$1,446/MWh (>15× terrestrial fusion parity)",
+        "description": "He3 fuel supply: market purchase at ~$30M/kg drives fuel cost to ~$1,446/MWh alone; self-breeding is categorically insufficient (~7.5% of consumption) at equimolar D:He3 and requires 13:1 D-rich ratio that destroys the aneutronic advantage",
         "severity": "high"
       },
       {
-        "description": "He3 self-breeding is categorically insufficient at equimolar D:He3 composition — D-D/D-He3 rate ratio is only ~7.5%, requiring a 13:1 D-rich fuel mix that restores neutron production and negates the aneutronic advantage",
+        "description": "Energy conversion pathway completely undefined — Zephyr has disclosed no direct converter design, beaming technology, or ground receiving infrastructure, leaving the revenue side of LCOE formally undefined",
         "severity": "high"
       },
       {
-        "description": "End-to-end power beaming efficiency is ~7–9% under realistic phased-array steering (transmitter DC-RF drops below 20% due to 4–6 dB phase shifter losses per element), well below the ~30% hypothesis and ~40% competitive threshold",
+        "description": "End-to-end beaming efficiency under realistic phased-array steering is ~7–9%, far below the ~30–40% threshold required for SPS or terrestrial parity; phased-array transmitter is the dominant bottleneck (4–6 dB phase shifter loss per element)",
         "severity": "high"
       },
       {
-        "description": "Energy conversion pathway is completely unspecified by Zephyr — direct conversion of 14.7 MeV protons has no commercial supply chain, and the Venetian blind DEC efficiency figure is an optimistic upper bound from an inapplicable 1970s non-fusion-ion design basis",
+        "description": "Energy confinement scaling law for dipole geometry does not exist in published literature; D-He3 requires ~10× higher triple product than D-T, which has itself never been demonstrated in a dipole",
         "severity": "high"
       },
       {
-        "description": "Energy confinement scaling law for dipole geometry is explicitly absent from the literature (\"no such model exists for dipoles\" — OpenStar study); τₑ ~ R² claim is unverified at fusion-relevant conditions",
+        "description": "D-He3 fusion conditions (50–100 keV ion temperature) are 2–3 orders of magnitude beyond LDX/RT-1 demonstrated parameters — TRL 1 for the foundational physics",
         "severity": "high"
       },
       {
-        "description": "D-He3 confinement physics requires ion temperatures 2–3 orders of magnitude above LDX/RT-1 demonstrated conditions and a triple product ~10× higher than the D-T dipole reference",
+        "description": "Direct conversion of 14.7 MeV protons in any practical DEC configuration is a truly-unknown quantity; 1970s Venetian blind DEC at 50–65% used non-fusion ions and electrode gaps incompatible with the 14.7 MeV proton range",
         "severity": "high"
       },
       {
-        "description": "He3 procurement faces regulatory barriers independent of physical scarcity — He3 and tritium are dual-use controlled materials under DOE/DHS/DOD/NSS oversight with government-rationed allocation prioritizing security uses over commercial users",
+        "description": "He3 procurement faces regulatory barriers independent of physical scarcity — dual-use export controls, government allocation system rationing since 2009, prioritization of national security uses over commercial users",
         "severity": "medium"
       },
       {
-        "description": "No heating specification disclosed — recirculating power fraction is a critical LCOE input that cannot be estimated; a high recirculating fraction could render an otherwise attractive concept non-viable",
+        "description": "Heating method, heating power, and recirculating power fraction undisclosed — high recirculating fraction could render the concept non-viable independent of plasma performance",
         "severity": "medium"
       },
       {
-        "description": "Orbital HTS coil radiation hardening, cryocooler thermal management, and multi-year lifetime in LEO are unvalidated — no space-qualified HTS cryocooler at fusion coil scale exists",
+        "description": "Spacecraft FOAK fabrication cost (~$50–70M baseline) could be 10–100× higher; sweep shows SPS parity is lost between 1.0× and 2.0× baseline hardware cost in the optimistic scenario",
         "severity": "medium"
       },
       {
-        "description": "Spacecraft fabrication cost for FOAK orbital fusion reactor could be 10–100× baseline, and the SPS parity window closes between 1.0× and 2.0× baseline hardware cost per sensitivity sweep",
+        "description": "Orbital HTS coil radiation hardening, cryocooler design, and lifetime in Van Allen belt environment are unvalidated at fusion-relevant field strengths",
         "severity": "medium"
       },
       {
-        "description": "Orbital operations cost structure (debris mitigation for 10–50 m plasma radius, radiation hardening, no crewed EVA servicing, orbital lifetime management) has no precedent in fusion LCOE literature",
+        "description": "Cost framework for orbital fusion plant has no published analogue; CAS 20–60 categories largely do not apply, and the appropriate replacement structure has not been defined",
         "severity": "medium"
       },
       {
-        "description": "Nuclear operations in orbit require IAEA oversight and international agreements with no established commercial precedent",
+        "description": "Zephyr is pre-prototype, ~2 employees, with no technical papers, patents, or DOE/ARPA-E grants — entire technical disclosure fits within a single YC launch page",
         "severity": "medium"
       },
       {
-        "description": "NASA/DOE concluded GEO SPS is \"not currently practical for power transmission to Earth\" independent of launch cost — ground infrastructure scale was identified as a separate barrier applicable to Zephyr's beaming approach",
+        "description": "Orbital operations cost categories (debris mitigation, replacement logistics, orbital lifetime management) have no precedent in fusion LCOE literature",
         "severity": "medium"
       },
       {
-        "description": "Company is pre-prototype with ~2 employees, no technical papers, patents, or grants — entire technical disclosure fits on a single YC launch page, leaving all plasma parameters, Q, heating, conversion, and cost estimates undefined",
+        "description": "Regulatory framework for nuclear material in orbit (IAEA Outer Space Nuclear Safety Guidelines, UN COPUOS) introduces approval risk independent of technology development",
         "severity": "low"
       }
     ]

@@ -35,13 +35,13 @@ The extraction script reads pipeline artifacts and produces validated JSON:
   ┌──────────────────┐         │  Has model_setup.py?   │        ┌──────────────────────┐
   │ model_setup.py   │────────▶│  YES → costingfe path  │───────▶│ {id}.json            │
   │   .forward()     │         │    import module        │        │   (ConceptData)      │
-  │   .sensitivity() │         │    call forward()       │        │                      │
-  │                  │         │    call sensitivity()   │        │ manifest.json        │
-  │ analysis.md      │────────▶│    wrap in Pydantic     │───────▶│   (ConceptManifest)  │
-  │   frontmatter    │         │                        │        │                      │
-  │   confinement    │         │  NO model_setup.py?    │        │ parameter_index.json │
-  │                  │         │  YES → standalone path  │───────▶│   (ParameterIndex)   │
-  │ model_metadata   │────────▶│    look for .py with    │        └──────────────────────┘
+  │   .sensitivity() │         │    call forward()       │        └──────────────────────┘
+  │                  │         │    call sensitivity()   │
+  │ analysis.md      │────────▶│    wrap in Pydantic     │
+  │   frontmatter    │         │                        │
+  │   confinement    │         │  NO model_setup.py?    │
+  │                  │         │  YES → standalone path  │
+  │ model_metadata   │────────▶│    look for .py with    │
   │   .yaml          │         │    to_explorer_dict()   │
   │                  │         │                        │
   │ model_output.txt │────────▶│  --skip-narrative OFF?  │
@@ -57,9 +57,9 @@ For each concept, the script:
 4. Dispatches to the costingfe or standalone pathway based on whether `model_setup.py` exists
 5. Writes a validated `ConceptData` JSON file
 
-After all concepts are processed, it builds:
-- `manifest.json` — lightweight index with one entry per concept (for the grid view)
-- `parameter_index.json` — cross-concept sensitivity lookup (for population whiskers and "Also Sensitive")
+The `ConceptManifest` (entry-view grid index) and `ParameterIndex` (cross-concept
+sensitivity lookup) are NOT written to disk by extraction. The server computes
+both in-memory at startup from the loaded per-concept JSONs (see Stage 3).
 
 **Stage 3: Server + Browser** (`server.py`, runs continuously)
 
@@ -286,12 +286,15 @@ ExplorerState [models.py:434]            ComputeRequest [models.py:444]
 
 ### Output Generation
 
-`run_extraction()` (`extract_explorer_data.py:520`) orchestrates the full pipeline:
+`run_extraction()` orchestrates the full pipeline:
 
 1. For each concept directory: parse frontmatter, load metadata, optionally extract narrative, dispatch to costingfe or standalone pathway
-2. Write `data/{id}.json` — one validated `ConceptData` per concept (`extract_explorer_data.py:564-565`)
-3. `build_manifest()` (`extract_explorer_data.py:415`) → `data/manifest.json` — lightweight entries with LCOE and modal confidence
-4. `build_parameter_index()` (`extract_explorer_data.py:453`) → `data/parameter_index.json` — cross-concept sensitivity index
+2. Write `data/{id}.json` — one validated `ConceptData` per concept
+
+`build_manifest()` and `build_parameter_index()` live in `models.py` and are
+called by the server at startup (see Stage 3). Extraction does not write
+`manifest.json` or `parameter_index.json`; this avoids the destructive
+overwrite that previously happened on filtered (`--concept ID`) runs.
 
 ---
 
@@ -307,7 +310,7 @@ ExplorerState [models.py:434]            ComputeRequest [models.py:444]
 
 The `lifespan` context manager (`server.py:250`):
 
-1. `_load_data()` (`server.py:138`) reads `manifest.json`, `parameter_index.json`, and all `{id}.json` from `data/`. Raises `RuntimeError` with actionable messages if data is missing or empty.
+1. `_load_data()` reads all `{id}.json` from `data/` and computes the `ConceptManifest` and `ParameterIndex` in memory by calling `build_manifest()` / `build_parameter_index()` on the loaded concepts. Raises `RuntimeError` with actionable messages if `data/` is missing or empty. Stale `manifest.json`/`parameter_index.json` left from older extractions are ignored (filtered out via `_NON_CONCEPT_FILES`).
 2. `_render_templates()` (`server.py:193`) renders Jinja2 templates to `dist/`. Silently skips missing templates so the server can start before all templates are written.
 3. Populates `_State` dataclass (`server.py:122`) with in-memory concepts, manifest, parameter index, and a `lru_cache`-wrapped concept lookup.
 

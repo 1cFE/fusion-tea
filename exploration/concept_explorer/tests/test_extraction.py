@@ -19,12 +19,13 @@ import pytest
 
 from exploration.concept_explorer.extract_explorer_data import (  # noqa: E402
     ExtractionError,
-    build_manifest,
-    build_parameter_index,
+    apply_display_patches,
     discover_concepts,
     extract_costingfe,
     extract_narrative,
     extract_standalone,
+    generate_parameter_metadata,
+    load_parameter_display_registry,
     load_parameter_metadata,
     parse_concept_id,
     parse_confinement_family,
@@ -37,12 +38,17 @@ from exploration.concept_explorer.models import (  # noqa: E402, I001
     ConceptData,
     ConceptManifest,
     ConceptStatus,
+    Confidence,
     ConfinementFamily,
     CostModelData,
+    ParameterCategory,
     ParameterIndex,
+    ParameterMetadata,
     SensitivityAnalysis,
     SensitivityEntry,
     SourcePaths,
+    build_manifest,
+    build_parameter_index,
 )
 
 # ---------------------------------------------------------------------------
@@ -339,6 +345,74 @@ class TestExtractCostingfe:
                     param_metadata={},
                 )
 
+    def test_generates_parameter_metadata(self, tmp_path: Path) -> None:
+        """extract_costingfe() auto-fills parameter_metadata from sensitivities."""
+        result = _make_forward_result()
+        model = _make_mock_model()
+        concept_dir = _make_concept_dir(tmp_path)
+        mock_module = types.SimpleNamespace(model=model, result=result)
+
+        with patch(
+            "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
+            return_value=mock_module,
+        ):
+            concept = extract_costingfe(
+                concept_dir=concept_dir,
+                concept_id="04",
+                frontmatter={"Concept": "Test", "Status": "approved"},
+                analysis_path=concept_dir / "analysis.md",
+                narrative=None,
+                param_metadata={},
+            )
+
+        assert len(concept.parameter_metadata) > 0
+        assert "availability" in concept.parameter_metadata
+        assert "interest_rate" in concept.parameter_metadata
+        # Auto-generated entries carry default category / confidence
+        assert concept.parameter_metadata["availability"].category == ParameterCategory.UNCLASSIFIED
+        assert concept.parameter_metadata["availability"].confidence == Confidence.UNKNOWN
+
+    def test_yaml_overrides_win_over_generated(self, tmp_path: Path) -> None:
+        """When yaml param_metadata has an entry for the same key, it replaces
+        the auto-generated entry entirely."""
+        result = _make_forward_result()
+        model = _make_mock_model()
+        concept_dir = _make_concept_dir(tmp_path)
+        mock_module = types.SimpleNamespace(model=model, result=result)
+
+        yaml_override = {
+            "availability": ParameterMetadata(
+                display_name="Plant Availability (Curated)",
+                category=ParameterCategory.SHARED_BASELINE,
+                confidence=Confidence.HIGH,
+                baseline=0.85,
+                range=(0.6, 0.95),
+                source="curated source",
+            )
+        }
+
+        with patch(
+            "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
+            return_value=mock_module,
+        ):
+            concept = extract_costingfe(
+                concept_dir=concept_dir,
+                concept_id="04",
+                frontmatter={"Concept": "Test", "Status": "approved"},
+                analysis_path=concept_dir / "analysis.md",
+                narrative=None,
+                param_metadata=yaml_override,
+            )
+
+        avail = concept.parameter_metadata["availability"]
+        assert avail.display_name == "Plant Availability (Curated)"
+        assert avail.category == ParameterCategory.SHARED_BASELINE
+        assert avail.confidence == Confidence.HIGH
+        assert avail.range == (0.6, 0.95)
+        # Other sensitivity keys still get generated entries
+        assert "interest_rate" in concept.parameter_metadata
+        assert concept.parameter_metadata["interest_rate"].category == ParameterCategory.UNCLASSIFIED
+
     def test_concept_data_validates_as_pydantic(self, tmp_path: Path) -> None:
         """Extracted ConceptData round-trips JSON without data loss."""
         result = _make_forward_result()
@@ -364,6 +438,147 @@ class TestExtractCostingfe:
         assert roundtrip.concept_id == concept.concept_id
         assert roundtrip.cost_model is not None
         assert roundtrip.cost_model.sensitivities is not None
+
+
+# ---------------------------------------------------------------------------
+# Display registry: shared display-name patches between generated and per-concept
+# ---------------------------------------------------------------------------
+
+
+class TestDisplayRegistry:
+    def test_apply_patches_updates_only_display_fields(self) -> None:
+        """Registry patches display_name/_unit/_multiplier; baseline/range/category preserved."""
+        generated = {
+            "eta_th": ParameterMetadata(
+                display_name="Eta Th",
+                category=ParameterCategory.UNCLASSIFIED,
+                confidence=Confidence.UNKNOWN,
+                baseline=0.46,
+                range=(0.32, 0.6),
+            )
+        }
+        patches = {
+            "eta_th": {
+                "display_name": "Thermal Efficiency",
+                "display_unit": "%",
+                "display_multiplier": 100.0,
+            }
+        }
+
+        out = apply_display_patches(generated, patches)
+
+        assert out["eta_th"].display_name == "Thermal Efficiency"
+        assert out["eta_th"].display_unit == "%"
+        assert out["eta_th"].display_multiplier == 100.0
+        # Generated fields preserved
+        assert out["eta_th"].baseline == 0.46
+        assert out["eta_th"].range == (0.32, 0.6)
+        assert out["eta_th"].category == ParameterCategory.UNCLASSIFIED
+        assert out["eta_th"].confidence == Confidence.UNKNOWN
+
+    def test_apply_patches_skips_unknown_keys(self) -> None:
+        """Patches for parameters not in this concept's sensitivities are ignored."""
+        generated = {
+            "availability": ParameterMetadata(
+                display_name="Availability",
+                category=ParameterCategory.UNCLASSIFIED,
+                confidence=Confidence.UNKNOWN,
+                baseline=0.75,
+                range=(0.5, 1.0),
+            )
+        }
+        patches = {
+            "availability": {"display_name": "Plant Availability"},
+            "not_in_this_concept": {"display_name": "Should Not Appear"},
+        }
+
+        out = apply_display_patches(generated, patches)
+
+        assert set(out.keys()) == {"availability"}
+        assert out["availability"].display_name == "Plant Availability"
+
+    def test_load_registry_drops_unknown_fields_and_warns(self, tmp_path: Path) -> None:
+        """Registry loader silently drops unknown fields with a warning."""
+        path = tmp_path / "registry.yaml"
+        path.write_text(
+            "eta_th:\n"
+            "  display_name: Thermal Efficiency\n"
+            "  display_unit: '%'\n"
+            "  display_multiplier: 100.0\n"
+            "  baseline: 0.5\n"  # not allowed in registry
+            "  category: shared-baseline\n"  # not allowed in registry
+            "bad_entry: not a dict\n",
+            encoding="utf-8",
+        )
+
+        with warnings.catch_warnings(record=True) as caught:
+            warnings.simplefilter("always")
+            out = load_parameter_display_registry(path)
+
+        # Unknown fields stripped; entry retained
+        assert "eta_th" in out
+        assert set(out["eta_th"].keys()) == {"display_name", "display_unit", "display_multiplier"}
+        # Non-dict entry skipped
+        assert "bad_entry" not in out
+        # Warnings fired for both issues
+        msgs = [str(w.message) for w in caught]
+        assert any("unknown fields" in m for m in msgs)
+        assert any("non-dict" in m for m in msgs)
+
+    def test_load_registry_returns_empty_when_missing(self, tmp_path: Path) -> None:
+        out = load_parameter_display_registry(tmp_path / "does-not-exist.yaml")
+        assert out == {}
+
+    def test_per_concept_yaml_still_wins_over_registry(self, tmp_path: Path) -> None:
+        """Three-layer merge order: per-concept yaml beats registry beats generated."""
+        result = _make_forward_result()
+        model = _make_mock_model()
+        concept_dir = _make_concept_dir(tmp_path)
+        mock_module = types.SimpleNamespace(model=model, result=result)
+
+        # Per-concept yaml provides a full ParameterMetadata for availability
+        per_concept = {
+            "availability": ParameterMetadata(
+                display_name="CONCEPT_OVERRIDE",
+                category=ParameterCategory.SHARED_BASELINE,
+                confidence=Confidence.HIGH,
+                baseline=0.85,
+                range=(0.6, 0.95),
+            )
+        }
+        # Registry patches just the display_name
+        registry_patches = {
+            "availability": {"display_name": "REGISTRY_NAME", "display_unit": "%"},
+            "interest_rate": {"display_name": "Interest Rate", "display_unit": "%"},
+        }
+
+        with patch(
+            "exploration.concept_explorer.extract_explorer_data._DISPLAY_REGISTRY",
+            registry_patches,
+        ), patch(
+            "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
+            return_value=mock_module,
+        ):
+            concept = extract_costingfe(
+                concept_dir=concept_dir,
+                concept_id="04",
+                frontmatter={"Concept": "Test", "Status": "approved"},
+                analysis_path=concept_dir / "analysis.md",
+                narrative=None,
+                param_metadata=per_concept,
+            )
+
+        # Per-concept beats registry on availability
+        avail = concept.parameter_metadata["availability"]
+        assert avail.display_name == "CONCEPT_OVERRIDE"
+        assert avail.category == ParameterCategory.SHARED_BASELINE
+        # Registry beats generated on interest_rate (no per-concept override)
+        ir = concept.parameter_metadata["interest_rate"]
+        assert ir.display_name == "Interest Rate"
+        assert ir.display_unit == "%"
+        # Generated baseline/range preserved on the registry-patched entry
+        assert ir.baseline > 0
+        assert ir.range[0] < ir.range[1]
 
 
 # ---------------------------------------------------------------------------
@@ -788,8 +1003,10 @@ class TestNarrativeExtractionFailure:
 
 
 class TestParameterMetadataWarning:
-    def test_missing_sensitivity_keys_warns(self, tmp_path: Path) -> None:
-        """AC-7: sensitivity keys not in parameter_metadata emit UserWarning."""
+    def test_no_warning_when_metadata_auto_generated(self, tmp_path: Path) -> None:
+        """Empty param_metadata is now safe — extract_costingfe auto-generates
+        an entry for every sensitivity key, so the validator's coverage warning
+        never fires."""
         result = _make_forward_result()
         model = _make_mock_model()
         concept_dir = _make_concept_dir(tmp_path)
@@ -799,15 +1016,20 @@ class TestParameterMetadataWarning:
             "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
             return_value=mock_module,
         ):
-            with pytest.warns(UserWarning, match="sensitivity keys not covered"):
+            with warnings.catch_warnings(record=True) as caught:
+                warnings.simplefilter("always")
                 extract_costingfe(
                     concept_dir=concept_dir,
                     concept_id="04",
                     frontmatter={"Concept": "Test", "Status": "approved"},
                     analysis_path=concept_dir / "analysis.md",
                     narrative=None,
-                    param_metadata={},  # Empty → all sensitivity keys uncovered
+                    param_metadata={},
                 )
+
+        assert not any(
+            "sensitivity keys not covered" in str(w.message) for w in caught
+        ), "Auto-generation should cover every sensitivity key"
 
     def test_metadata_missing_file_returns_empty(self, tmp_path: Path) -> None:
         """Missing model_metadata.yaml returns empty dict (no exception)."""
@@ -821,6 +1043,85 @@ class TestParameterMetadataWarning:
         assert "availability" in result
         assert result["availability"].display_name == "Plant Availability"
         assert result["availability"].baseline == pytest.approx(0.85)
+
+
+# ---------------------------------------------------------------------------
+# generate_parameter_metadata: derive ParameterMetadata from sensitivities
+# ---------------------------------------------------------------------------
+
+
+class TestGenerateParameterMetadata:
+    def test_basic(self) -> None:
+        sens = SensitivityAnalysis(
+            engineering={
+                "availability": SensitivityEntry(elasticity=0.75, baseline=0.85),
+                "R0": SensitivityEntry(elasticity=-0.3, baseline=5.0),
+            },
+            financial={
+                "interest_rate": SensitivityEntry(elasticity=0.85, baseline=0.07),
+            },
+        )
+        meta = generate_parameter_metadata(sens)
+        assert set(meta.keys()) == {"availability", "R0", "interest_rate"}
+        # Fractional param clamped to [0, 1]
+        assert meta["availability"].range[1] <= 1.0
+        assert meta["availability"].range[0] >= 0
+        # Non-fractional: baseline ± 30%
+        assert meta["R0"].range == pytest.approx((3.5, 6.5))
+        # All entries are valid ParameterMetadata (Pydantic didn't reject)
+        assert meta["R0"].display_name == "R0"
+        # Defaults
+        assert meta["R0"].category == ParameterCategory.UNCLASSIFIED
+        assert meta["R0"].confidence == Confidence.UNKNOWN
+
+    def test_fractional_clamping(self) -> None:
+        """Efficiency/availability/eta/fraction params clamp to [0, 1]."""
+        sens = SensitivityAnalysis(
+            engineering={
+                "availability": SensitivityEntry(elasticity=0.7, baseline=0.95),
+                "thermal_efficiency": SensitivityEntry(elasticity=-0.4, baseline=0.85),
+                "eta_th": SensitivityEntry(elasticity=-0.3, baseline=0.9),
+                "burn_fraction": SensitivityEntry(elasticity=0.2, baseline=0.8),
+                "f_cu": SensitivityEntry(elasticity=0.1, baseline=0.9),
+            },
+            financial={},
+        )
+        meta = generate_parameter_metadata(sens)
+        # All would have baseline*1.3 > 1 — verify clamp
+        for name in ("availability", "thermal_efficiency", "eta_th", "burn_fraction", "f_cu"):
+            assert meta[name].range[1] <= 1.0, f"{name} hi exceeds 1.0"
+            assert meta[name].range[0] >= 0
+            assert meta[name].range[0] < meta[name].range[1]
+
+    def test_zero_baseline_fallback(self) -> None:
+        """Zero baseline produces fallback (0, 1) range, not degenerate (0, 0)."""
+        sens = SensitivityAnalysis(
+            engineering={
+                "weird_zero": SensitivityEntry(elasticity=0.1, baseline=0.0),
+            },
+            financial={},
+        )
+        meta = generate_parameter_metadata(sens)
+        assert "weird_zero" in meta
+        lo, hi = meta["weird_zero"].range
+        assert lo < hi  # Non-degenerate
+        assert lo >= 0
+
+    def test_empty_sensitivities(self) -> None:
+        sens = SensitivityAnalysis(engineering={}, financial={})
+        assert generate_parameter_metadata(sens) == {}
+
+    def test_non_fractional_with_subunit_baseline(self) -> None:
+        """Param with baseline in (0,1] but no fractional name → no [0,1] clamp."""
+        sens = SensitivityAnalysis(
+            engineering={},
+            financial={
+                # interest_rate baseline 0.9 → range (0.63, 1.17), no clamp
+                "interest_rate": SensitivityEntry(elasticity=0.5, baseline=0.9),
+            },
+        )
+        meta = generate_parameter_metadata(sens)
+        assert meta["interest_rate"].range == pytest.approx((0.63, 1.17))
 
 
 # ---------------------------------------------------------------------------
@@ -853,9 +1154,10 @@ class TestConceptFilter:
 
         assert (data_dir / "01.json").exists()
         assert not (data_dir / "04.json").exists()
-        manifest = ConceptManifest.model_validate_json((data_dir / "manifest.json").read_text())
-        assert len(manifest.concepts) == 1
-        assert manifest.concepts[0].concept_id == "01"
+        # Extraction no longer writes manifest.json — the contract is just
+        # "filtered run only writes matching per-concept JSONs".
+        assert not (data_dir / "manifest.json").exists()
+        assert not (data_dir / "parameter_index.json").exists()
 
     def test_multiple_concept_filter(self, tmp_path: Path) -> None:
         analyses_dir = tmp_path / "analyses"
@@ -881,6 +1183,58 @@ class TestConceptFilter:
         assert (data_dir / "01.json").exists()
         assert not (data_dir / "04.json").exists()
         assert (data_dir / "07.json").exists()
+
+    def test_filtered_extraction_preserves_other_concepts(self, tmp_path: Path) -> None:
+        """AC-4 regression: filtered re-extraction must not hide existing concepts.
+
+        Pre-populate data/ with 01.json…05.json, then re-extract only "01".
+        After server-startup _load_data() runs, all 5 concepts must remain
+        visible. (Before this work, extraction overwrote manifest.json with
+        a single-entry manifest, hiding 02–05 from the UI.)
+        """
+        from exploration.concept_explorer.server import _load_data
+
+        analyses_dir = tmp_path / "analyses"
+        analyses_dir.mkdir()
+        data_dir = tmp_path / "data"
+        data_dir.mkdir()
+
+        # Pre-populate with five existing per-concept JSONs.
+        for cid in ["01", "02", "03", "04", "05"]:
+            placeholder = ConceptData(
+                concept_id=cid,
+                name=f"Pre-existing {cid}",
+                confinement_family=ConfinementFamily.MFE,
+                status=ConceptStatus.IN_PROGRESS,
+                has_cost_model=False,
+                has_sensitivities=False,
+                sources=SourcePaths(),
+            )
+            (data_dir / f"{cid}.json").write_text(placeholder.model_dump_json())
+
+        # Set up only the "01" analyses dir so the filter has something to extract.
+        _make_concept_dir(analyses_dir, concept_id="01", with_model_setup=False)
+        mock_module = types.SimpleNamespace()
+
+        with patch(
+            "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
+            return_value=mock_module,
+        ):
+            run_extraction(
+                analyses_dir=analyses_dir,
+                data_dir=data_dir,
+                concept_filter=["01"],
+                skip_narrative=True,
+            )
+
+        # All five per-concept JSONs are still on disk.
+        for cid in ["01", "02", "03", "04", "05"]:
+            assert (data_dir / f"{cid}.json").exists()
+
+        # And the server's startup-computed manifest sees all five.
+        concepts, manifest, _ = _load_data(data_dir)
+        assert set(concepts.keys()) == {"01", "02", "03", "04", "05"}
+        assert {e.concept_id for e in manifest.concepts} == {"01", "02", "03", "04", "05"}
 
 
 # ---------------------------------------------------------------------------

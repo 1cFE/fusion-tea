@@ -60,6 +60,49 @@
   }
 
   // ---------------------------------------------------------------------------
+  // Collapsible section helper
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Wire one section header to toggle its body open/closed and set initial state.
+   * The section's `.is-collapsed` class drives both chevron rotation and body
+   * display (see `.section.is-collapsed` rules in explorer.css).
+   *
+   * Idempotent — calling twice on the same section just re-applies the open state
+   * and re-binds the click handler (cleared via cloneNode on the header).
+   *
+   * @param {HTMLElement} sectionEl  the <section class="section"> wrapper
+   * @param {boolean} defaultOpen
+   */
+  function makeCollapsible(sectionEl, defaultOpen) {
+    if (!sectionEl) return;
+    sectionEl.classList.toggle("is-collapsed", !defaultOpen);
+    const header = sectionEl.querySelector(".section__header");
+    if (!header) return;
+    // Clone-replace to drop any prior listener on this header
+    const fresh = header.cloneNode(true);
+    header.parentNode.replaceChild(fresh, header);
+    fresh.addEventListener("click", () => {
+      sectionEl.classList.toggle("is-collapsed");
+    });
+  }
+
+  /**
+   * Set the right-aligned hint text on a section header.
+   * Pass an object `{ text, changed }` to render a "X CHANGED" pill when
+   * `changed` is true (used by the Sensitivity header on slider drag).
+   */
+  function setSectionHint(sectionEl, hintConfig) {
+    if (!sectionEl) return;
+    const hintEl = sectionEl.querySelector(".section__hint");
+    if (!hintEl) return;
+    const text = typeof hintConfig === "string" ? hintConfig : (hintConfig?.text ?? "");
+    const changed = typeof hintConfig === "object" && hintConfig?.changed === true;
+    hintEl.textContent = text;
+    hintEl.classList.toggle("section__hint--changed", changed);
+  }
+
+  // ---------------------------------------------------------------------------
   // Hero section
   // ---------------------------------------------------------------------------
 
@@ -104,40 +147,6 @@
     left.appendChild(meta);
 
     heroEl.appendChild(left);
-  }
-
-  // ---------------------------------------------------------------------------
-  // Headline economics card
-  // ---------------------------------------------------------------------------
-
-  /**
-   * Render headline economics into the headline card container.
-   * Called on initial load and again after each compute response.
-   *
-   * @param {HTMLElement} cardEl
-   * @param {Object} headline  HeadlineEconomics
-   * @param {Object|null} parameterMetadata  Map of paramName → ParameterMetadata (for confidence)
-   */
-  function renderHeadlineCard(cardEl, headline, parameterMetadata) {
-    cardEl.innerHTML = "";
-
-    const grid = el("div", "headline-grid");
-
-    function stat(label, value, unit) {
-      const cell = el("div", "headline-stat");
-      cell.appendChild(el("span", "headline-stat__value", value));
-      cell.appendChild(el("span", "headline-stat__unit", unit));
-      cell.appendChild(el("span", "headline-stat__label", label));
-      return cell;
-    }
-
-    grid.appendChild(stat("LCOE", headline.lcoe_per_mwh.toFixed(1), "$/MWh"));
-    grid.appendChild(stat("Overnight Cost", headline.overnight_cost_per_kw.toFixed(0), "$/kW"));
-    grid.appendChild(stat("Net Power", headline.p_net_mw.toFixed(0), "MW"));
-    grid.appendChild(stat("Q_eng", headline.q_eng.toFixed(2), ""));
-    grid.appendChild(stat("Capacity Factor", (headline.capacity_factor * 100).toFixed(1), "%"));
-
-    cardEl.appendChild(grid);
   }
 
   // ---------------------------------------------------------------------------
@@ -215,93 +224,6 @@
     }
 
     sectionEl.style.display = "";
-  }
-
-  // ---------------------------------------------------------------------------
-  // Slider controls
-  // ---------------------------------------------------------------------------
-
-  /**
-   * Render parameter sliders for costingfe-backed concepts with sensitivity data.
-   * Only called when concept has model_setup (costingfe) and has_sensitivities.
-   *
-   * @param {HTMLElement} slidersSectionEl  The wrapping section (shown/hidden)
-   * @param {HTMLElement} containerEl       Where slider rows go
-   * @param {Object} parameterMetadata      Map of paramName → ParameterMetadata
-   * @param {Object} sensitivities          SensitivityAnalysis (engineering + financial)
-   * @param {Function} onSliderChange       Called with updated overrides dict on debounced change
-   */
-  function renderSliders(slidersSectionEl, containerEl, parameterMetadata, sensitivities, onSliderChange) {
-    containerEl.innerHTML = "";
-
-    // Only render sliders for params that have metadata + range
-    const allKeys = [
-      ...Object.keys(sensitivities.engineering || {}),
-      ...Object.keys(sensitivities.financial || {}),
-    ];
-    const sliderKeys = allKeys.filter((k) => parameterMetadata[k]?.range);
-
-    if (sliderKeys.length === 0) return;
-
-    // Current override values (keyed by paramName); starts at baseline
-    const currentOverrides = {};
-    for (const key of sliderKeys) {
-      currentOverrides[key] = parameterMetadata[key].baseline;
-    }
-
-    let debounceTimer = null;
-
-    for (const key of sliderKeys) {
-      const meta = parameterMetadata[key];
-      const [lo, hi] = meta.range;
-      const baseline = meta.baseline;
-
-      const row = el("div", "slider-row");
-
-      // Label: display name + current value in display units
-      const labelEl = el("label", "slider-row__label");
-      labelEl.htmlFor = `slider-${key}`;
-      const nameSpan = el("span", "slider-row__name", meta.display_name);
-      const valueSpan = el("span", "slider-row__value");
-
-      function updateValueLabel(val) {
-        const display = val * (meta.display_multiplier || 1);
-        valueSpan.textContent = `${display.toFixed(3)} ${meta.display_unit || ""}`.trim();
-      }
-      updateValueLabel(baseline);
-
-      append(labelEl, nameSpan, valueSpan);
-
-      // Range input
-      const input = document.createElement("input");
-      input.type = "range";
-      input.id = `slider-${key}`;
-      input.className = "slider-row__input";
-      input.min = String(lo);
-      input.max = String(hi);
-      input.step = String((hi - lo) / 200);  // 200 steps across range
-      input.value = String(baseline);
-      input.setAttribute("aria-label", meta.display_name);
-
-      // Capture key for closure
-      const paramKey = key;
-      input.addEventListener("input", (e) => {
-        const newVal = parseFloat(e.target.value);
-        currentOverrides[paramKey] = newVal;
-        updateValueLabel(newVal);
-
-        // Debounce: wait 200ms after last drag event
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(() => {
-          onSliderChange({ ...currentOverrides });
-        }, 200);
-      });
-
-      append(row, labelEl, input);
-      containerEl.appendChild(row);
-    }
-
-    slidersSectionEl.style.display = "";
   }
 
   // ---------------------------------------------------------------------------
@@ -383,11 +305,50 @@
     // ---- Hero ----
     renderHero(document.getElementById("hero"), concept);
 
-    // ---- Headline card ----
-    const headlineCardEl = document.getElementById("headline-card");
-    if (concept.cost_model) {
-      renderHeadlineCard(headlineCardEl, concept.cost_model.headline, concept.parameter_metadata);
-    }
+    // ---- Sticky headline ----
+    // Capture the extraction-time headline as the baseline for delta calculations.
+    // Subsequent updates come from /api/compute responses on slider drag.
+    const stickyEl = document.getElementById("sticky-headline");
+    const baselineHeadline = concept.cost_model?.headline ?? null;
+    let tornadoHandle = null; // captured below when renderTornado runs (used by Reset)
+    const isCostingfeForSticky =
+      concept.sources && concept.sources.model_setup != null;
+    const hasSlidersForSticky =
+      isCostingfeForSticky
+      && concept.has_sensitivities
+      && concept.cost_model?.sensitivities != null;
+    renderStickyHeadline(stickyEl, {
+      concept,
+      headline: baselineHeadline,
+      hasSliders: hasSlidersForSticky,
+      // Reset puts the UI back into the page-load state (sliders at baseline,
+      // sticky bar showing the extraction-time headline with no delta, CAS
+      // breakdown showing the original cost model). It does NOT call /api/compute
+      // — going through compute would surface the unscaled-result mismatch and
+      // briefly flash a phantom delta.
+      onReset: () => {
+        if (tornadoHandle && typeof tornadoHandle.reset === "function") {
+          tornadoHandle.reset();
+        }
+        updateStickyHeadline(stickyEl, baselineHeadline, baselineHeadline);
+        setResetEnabled(stickyEl, false);
+        // Revert the CAS breakdown to the extraction-time cost model.
+        const casMountForReset = document.getElementById("cas-mount");
+        if (casMountForReset && concept.cost_model) {
+          renderCASBreakdown(casMountForReset, {
+            cas: _casToPlain(concept.cost_model),
+            cas22_detail: concept.cost_model.cas22_detail || {},
+          });
+        }
+        // Clear the "N CHANGED" pill on the Sensitivity header.
+        setSectionHint(
+          document.getElementById("sensitivity-section"),
+          { text: "Drag any slider — top numbers will update", changed: false },
+        );
+        postState(conceptId, {}, []);
+      },
+    });
+    stickyEl.style.display = "";
 
     // ---- Narrative ----
     if (concept.narrative != null) {
@@ -417,11 +378,79 @@
       // Sensitivity section: always shown when cost model present;
       // renderTornado handles the null-sensitivities standalone placeholder.
       sensitivitySectionEl.style.display = "";
-      renderTornado(tornadoMount, {
+
+      const headlineLoadingEl = document.getElementById("headline-loading");
+      const computeErrorEl    = document.getElementById("compute-error");
+
+      // Track baseline-vs-current state so the Reset button enables only when
+      // at least one slider has been moved. Compares overrides to baselines
+      // by parameter name.
+      function _countChanged(overrides) {
+        if (!overrides) return 0;
+        let n = 0;
+        for (const [k, v] of Object.entries(overrides)) {
+          const base = concept.parameter_metadata?.[k]?.baseline;
+          if (Number.isFinite(base) && Math.abs(v - base) > 1e-9) n++;
+        }
+        return n;
+      }
+      const _hasNonBaseline = (o) => _countChanged(o) > 0;
+
+      // Refresh the Sensitivity section header hint based on override count.
+      const sensitivitySectionElForHint = document.getElementById("sensitivity-section");
+      function _updateSensitivityHint(overrides) {
+        const n = _countChanged(overrides);
+        if (n === 0) {
+          setSectionHint(sensitivitySectionElForHint,
+            { text: "Drag any slider — top numbers will update", changed: false });
+        } else {
+          setSectionHint(sensitivitySectionElForHint,
+            { text: `${n} CHANGED`, changed: true });
+        }
+      }
+
+      // Compute callback: tornado.js fires this debounced with the current
+      // overrides map after a slider drag (and once per Reset, with all values
+      // back at baseline). Updates the sticky headline + CAS breakdown.
+      async function onSliderChange(overrides) {
+        if (computeErrorEl) computeErrorEl.style.display = "none";
+        if (headlineLoadingEl) headlineLoadingEl.style.display = "";
+        // Reset button reflects "any slider moved" state.
+        setResetEnabled(stickyEl, _hasNonBaseline(overrides));
+        // Sensitivity header gets a "N CHANGED" pill when overrides exist.
+        _updateSensitivityHint(overrides);
+        try {
+          const resp = await fetch("/api/compute", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ concept_id: conceptId, overrides }),
+          });
+          if (!resp.ok) {
+            const detail = await resp.json().catch(() => ({ detail: `HTTP ${resp.status}` }));
+            throw new Error(detail.detail || `HTTP ${resp.status}`);
+          }
+          const newCostModel = await resp.json();
+          updateStickyHeadline(stickyEl, newCostModel.headline, baselineHeadline);
+          renderCASBreakdown(casMount, {
+            cas: _casToPlain(newCostModel),
+            cas22_detail: newCostModel.cas22_detail || {},
+          });
+          postState(conceptId, overrides, []);
+        } catch (err) {
+          console.error("[concept_page] compute failed:", err);
+          if (computeErrorEl) {
+            computeErrorEl.textContent = `Compute error: ${err.message}`;
+            computeErrorEl.style.display = "";
+          }
+        } finally {
+          if (headlineLoadingEl) headlineLoadingEl.style.display = "none";
+        }
+      }
+
+      tornadoHandle = renderTornado(tornadoMount, {
         sensitivities: concept.cost_model.sensitivities,
         parameterMetadata: concept.parameter_metadata || {},
         // ParameterIndex provides per-parameter cross-concept elasticities for whiskers.
-        // tornado.js checks populationContext.parameters — ParameterIndex matches this shape.
         populationContext: parameterIndex,
         topN: 15,
         onParameterClick: async (paramName, meta) => {
@@ -433,7 +462,6 @@
             console.warn("[concept_page] parameter fetch failed:", e);
           }
           // showParameterCard is defined in parameter_card.js
-          // Use the tornado bar element as anchor — fall back to tornadoMount
           showParameterCard(tornadoMount, {
             paramName,
             sensitivity: concept.cost_model.sensitivities
@@ -445,6 +473,7 @@
             crossConceptData,
           });
         },
+        onSliderChange: hasSlidersForSticky ? onSliderChange : null,
       });
 
       // CAS breakdown
@@ -455,58 +484,40 @@
       });
     }
 
-    // ---- Slider controls (costingfe + has_sensitivities only) ----
-    const isCostingfe = concept.sources && concept.sources.model_setup != null;
-    if (isCostingfe && concept.has_sensitivities && concept.cost_model?.sensitivities) {
-      const slidersSectionEl = document.getElementById("sliders-section");
-      const slidersContainerEl = document.getElementById("sliders-container");
-      const headlineLoadingEl  = document.getElementById("headline-loading");
-      const computeErrorEl     = document.getElementById("compute-error");
+    // ---- Wire collapsibles + initial hint text ----
+    const sections = {
+      narrative:   document.getElementById("narrative-section"),
+      risks:       document.getElementById("risks-section"),
+      cas:         document.getElementById("cas-section"),
+      sensitivity: document.getElementById("sensitivity-section"),
+    };
 
-      renderSliders(
-        slidersSectionEl,
-        slidersContainerEl,
-        concept.parameter_metadata || {},
-        concept.cost_model.sensitivities,
-        async (overrides) => {
-          // Hide old error; show loading on headline card
-          computeErrorEl.style.display = "none";
-          headlineLoadingEl.style.display = "";
+    if (concept.narrative) {
+      makeCollapsible(sections.narrative, false);
+      const bits = [];
+      if (concept.narrative.key_bets?.length)         bits.push("key bets");
+      if (concept.narrative.eliminated_costs?.length) bits.push("eliminated costs");
+      if (concept.narrative.novel_costs?.length)      bits.push("novel costs");
+      setSectionHint(sections.narrative, bits.length ? bits.join(" · ") : "");
+    }
 
-          try {
-            const resp = await fetch("/api/compute", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ concept_id: conceptId, overrides }),
-            });
+    const risks = concept.narrative?.risks || [];
+    if (risks.length > 0) {
+      makeCollapsible(sections.risks, false);
+      const nHigh = risks.filter((r) => (r.severity || "").toLowerCase() === "high").length;
+      const hint = `${risks.length} risk${risks.length === 1 ? "" : "s"}` +
+                   (nHigh > 0 ? ` · ${nHigh} high` : "");
+      setSectionHint(sections.risks, hint);
+    }
 
-            if (!resp.ok) {
-              const detail = await resp.json().catch(() => ({ detail: `HTTP ${resp.status}` }));
-              throw new Error(detail.detail || `HTTP ${resp.status}`);
-            }
+    if (concept.cost_model) {
+      makeCollapsible(sections.cas, false);
+      const total = _sumCASCapital(concept.cost_model);
+      setSectionHint(sections.cas, `Total Capital: ${_fmtMoneyM(total)}`);
 
-            const newCostModel = await resp.json();
-
-            // Update headline card only (tornado bars stay at baseline)
-            renderHeadlineCard(headlineCardEl, newCostModel.headline, concept.parameter_metadata);
-
-            // Re-render CAS breakdown with updated values
-            renderCASBreakdown(casMount, {
-              cas: _casToPlain(newCostModel),
-              cas22_detail: newCostModel.cas22_detail || {},
-            });
-
-            // Report updated slider state
-            postState(conceptId, overrides, []);
-          } catch (err) {
-            console.error("[concept_page] compute failed:", err);
-            computeErrorEl.textContent = `Compute error: ${err.message}`;
-            computeErrorEl.style.display = "";
-          } finally {
-            headlineLoadingEl.style.display = "none";
-          }
-        }
-      );
+      makeCollapsible(sections.sensitivity, true);
+      // Sensitivity hint stays at the template default ("Drag any slider…")
+      // until onSliderChange flips it to "N CHANGED".
     }
 
     // ---- Report initial state ----
@@ -541,6 +552,20 @@
       if (costModel[k] != null) out[k] = costModel[k];
     }
     return out;
+  }
+
+  /** Sum across all CAS top-level accounts; matches the "Total capital + annualized"
+   *  number rendered by cas_breakdown.js (sum of every present cas* account). */
+  function _sumCASCapital(costModel) {
+    return Object.values(_casToPlain(costModel)).reduce(
+      (s, a) => s + (Number.isFinite(a?.cost_m_usd) ? a.cost_m_usd : 0), 0,
+    );
+  }
+
+  /** Format a M$ value as "16,975 M$" or "999 M$" — matches CAS widget convention. */
+  function _fmtMoneyM(v) {
+    if (!Number.isFinite(v)) return "—";
+    return `${v.toLocaleString("en-US", { maximumFractionDigits: 0 })} M$`;
   }
 
   // ---------------------------------------------------------------------------

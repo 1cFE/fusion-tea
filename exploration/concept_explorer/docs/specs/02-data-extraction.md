@@ -9,9 +9,7 @@ Convert concept analysis pipeline artifacts (model_setup.py, analysis.md, model_
 - Standalone: call a per-script `to_explorer_dict()` function that returns a dict validating against `CostModelData` with `sensitivities=None`
 - Must extract `NarrativeData` from `analysis.md` via `claude -p` with structured output; validate result against `NarrativeData` schema before accepting it
 - Must load `model_metadata.yaml` and validate each entry against `ParameterMetadata`
-- Must write one `data/{concept_id}.json` per concept
-- Must write `data/manifest.json` (index of all concepts)
-- Must write `data/parameter_index.json` (cross-concept sensitivity index)
+- Must write one `data/{concept_id}.json` per concept (manifest and parameter index are computed by the server at startup — extraction does not write them)
 - `--skip-narrative` flag must bypass LLM extraction (for fast dev iteration)
 - `--concept 01 04` flag must restrict extraction to specific concept IDs
 
@@ -19,11 +17,11 @@ Convert concept analysis pipeline artifacts (model_setup.py, analysis.md, model_
 - Given a costingfe concept directory with valid `model_setup.py`, when extraction runs, then `data/{id}.json` validates as `ConceptData` with non-null `cost_model.sensitivities`
 - Given a standalone concept directory, when extraction runs, then `data/{id}.json` validates as `ConceptData` with `cost_model.sensitivities == null`
 - Given `--skip-narrative`, when extraction runs, then no `claude -p` call is made and `narrative` field is `null`
-- Given extraction runs for all concepts, when `data/manifest.json` is read, then it validates as `ConceptManifest` with one entry per extracted concept
-- Given extraction runs for all concepts, when `data/parameter_index.json` is read, then it validates as `ParameterIndex` with every parameter that appears in any concept's sensitivity data
+- Given extraction runs for all concepts, when the server starts, then the computed `ConceptManifest` contains one entry per concept JSON in `data/`
+- Given extraction runs for all concepts, when the server starts, then the computed `ParameterIndex` contains every parameter that appears in any concept's sensitivity data
 - Given `NarrativeData` LLM output fails Pydantic validation, when extraction runs, then the script exits with a non-zero status and prints the validation error
 - Given `model_metadata.yaml` is missing entries for sensitivity keys, when extraction runs, then a warning is printed listing missing keys (not a fatal error)
-- Given `--concept 01`, when extraction runs, then only `data/01-*.json` is written; manifest and parameter index reflect only extracted concepts
+- Given `--concept 01`, when extraction runs, then only `data/01.json` is written; other concept JSONs on disk are untouched, and the server's computed manifest reflects all concepts present
 
 ## Interfaces
 - **Reads from** (pipeline artifacts):
@@ -33,8 +31,6 @@ Convert concept analysis pipeline artifacts (model_setup.py, analysis.md, model_
   - `exploration/concept_analysis/analyses/{concept_id}/model_output.json` (if present)
 - **Writes to**:
   - `exploration/concept_explorer/data/{concept_id}.json` — validated `ConceptData`
-  - `exploration/concept_explorer/data/manifest.json` — validated `ConceptManifest`
-  - `exploration/concept_explorer/data/parameter_index.json` — validated `ParameterIndex`
 - **Depends on**: `specs/01-data-models.md` for all output types
 - **External call**: `claude -p` subprocess for narrative extraction
 

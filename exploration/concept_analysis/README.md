@@ -89,7 +89,7 @@ feedback from a context-dependent producer. All producers output in the
 shared `config/feedback_format.md` schema (`VERDICT: PASS` or
 `VERDICT: FINDINGS` + `### F-N:` findings).
 
-Selection logic (`lib/loop.py:104-136`):
+Selection logic (feedback-source dispatch in `lib/loop.py:run_stage1_loop`):
 
 | Priority | Condition | Producer | Template |
 |----------|-----------|----------|----------|
@@ -97,11 +97,11 @@ Selection logic (`lib/loop.py:104-136`):
 | 2 | Resume + `Review-Status: revise` | **review** (one-shot) | Extracts F-N from `review.md` → `analysis_v2.md` feedback mode |
 | 3 | Resume with new sources detected | **source_integration** (one-shot) | `source_integration.md` → then `analysis_v2.md` feedback mode |
 | 4 | `--research` flag, iter > 1 | **research** | `lib/research.py` → source-integration chain |
-| 5 | Iter > 1 (default) | **assess** | Prior iter's `feedback.md` → `analysis_v2.md` feedback mode |
+| 5 | Iter > 1 (default) | **assess** | Prior iter's `post_feedback.md` → `pre_feedback.md` → `analysis_v2.md` feedback mode |
 
 "New sources detected" means `find_sources()` returns paths not recorded in
 any prior iteration's `verdict.json` `sources` field. Detection is in
-`lib/iteration.py:detect_new_sources()`.
+`detect_new_sources()` in `lib/iteration.py`.
 
 Source-integration runs at most once per resume session (flag
 `used_source_integration` prevents re-triggering on later iterations).
@@ -137,13 +137,13 @@ The review determines `Review-Status` in `analysis.md` frontmatter:
 - After `address-review` → `Review-Status: addressed`
 - Legacy: `**Overall:** CLEAN` → `clean`, otherwise → `has-actions`
 
-(Code: `run_analysis.py:476-487` sets the value; `lib/state.py:33`
-reads it.)
+(Code: `cmd_review` in `run_analysis.py` sets the value; `get_concept_state`
+in `lib/state.py` reads it.)
 
 ### Phase 3: Synthesis & Approval
 
 `synthesize` requires `Review-Status` to be `addressed`, `clean`, or
-`proceed` (code: `run_analysis.py:655`). It generates an editorial synthesis
+`proceed` (code: `cmd_synthesize` in `run_analysis.py`). It generates an editorial synthesis
 with cross-concept positioning, risk verdicts, and LCOE sensitivity.
 
 `approve` requires both a PROCEED review (`Review-Status` in `proceed`,
@@ -225,8 +225,8 @@ name/company substring. Ambiguous matches produce an error listing all hits.
 | `--max-research-extractions` | `analyze` | 3 | Max `add-source` extractions per research step |
 | `--name` | `add-source` | auto-slugified | Override source name |
 
-**Mutual exclusions:**
-- `--resume` and `--force` cannot be used together (exit with error, `run_analysis.py:212-216`)
+**Mutual exclusions** (enforced in `cmd_analyze`):
+- `--resume` and `--force` cannot be used together
 - `--feedback` and `--force` are mutually exclusive
 - `--feedback` and `--resume` are mutually exclusive
 
@@ -247,7 +247,7 @@ uv run python scripts/run_analysis.py add-source 02 /path/to/paper.pdf
 uv run python scripts/run_analysis.py analyze 02 --resume
 ```
 
-How it works (`lib/loop.py:78-92`, `lib/iteration.py:42-46`):
+How it works (`run_stage1_loop` in `lib/loop.py`, `LoopState` in `lib/iteration.py`):
 
 1. `read_loop_state()` scans `iter-*/` directories, reads each `verdict.json`.
 2. `LoopState.next_iteration` returns:
@@ -290,36 +290,42 @@ uv run python scripts/run_analysis.py approve 11
 
 ## State Detection
 
-State is derived from filesystem (`lib/state.py:get_concept_state()`).
-Detection order (highest to lowest):
+State is derived from filesystem (`get_concept_state()` in `lib/state.py`).
+Detection order (highest to lowest, gated on `analysis.md` existing):
 
 | State | Condition | Code reference |
 |-------|-----------|----------------|
-| `approved` | `analysis.md` has `Status: approved` | `state.py:28` |
-| `synthesized` | `synthesis.md` exists | `state.py:30` |
-| `reviewed` | `Review-Status` is `addressed`, `clean`, or `proceed` | `state.py:33` |
-| `model-setup` | `model_setup.py` exists | `state.py:35` |
-| `drafted` | `analysis.md` exists | `state.py:37` |
-| `gap-checked` | `gap_report.md` exists | `state.py:42` |
-| `not-started` | None of the above | `state.py:43` |
+| `approved` | `analysis.md` has `Status: approved` | `state.py:35` |
+| `synthesized` | `synthesis.md` exists | `state.py:37` |
+| `reviewed` | `Review-Status` is `addressed`, `clean`, or `proceed` | `state.py:39` |
+| `iterating` | `analysis.md` exists (default fallback) | `state.py:42` |
+| `gap-checked` | no `analysis.md`, but `gap_report.md` exists | `state.py:60` |
+| `not-started` | none of the above | `state.py:61` |
 
-**Staleness** (`state.py:48-82`): A `*` suffix indicates downstream
-artifacts are stale. Checked via:
+**Staleness** (`get_concept_state()` lines 44-57; `propagate_staleness()` at
+`state.py:64`): a `*` suffix indicates downstream artifacts are stale. Checked via:
 - `Stale: true` in `review.md` or `synthesis.md` frontmatter
 - `# STALE:` as first line of `model_setup.py`
 
 `propagate_staleness()` is called when `analysis.md` is mutated (feedback
 pass, force rewrite, source integration). It marks `model_setup.py`,
-`review.md`, and `synthesis.md` with a reason string.
+`review.md`, and `synthesis.md` with a reason string. The producer-clears-on-write
+contract (`clear_staleness()` at `state.py:230`) drops the marker when an artifact
+is re-generated.
 
-**Status display** (`run_analysis.py:cmd_status()`):
+**Extraction state** (`get_extraction_state()` at `state.py:165`): independent
+side-channel that tracks whether the explorer JSON sidecar has been built for the
+concept and whether it is stale relative to `analysis.md`.
+
+**Status display** (`cmd_status` in `run_analysis.py`):
 ```
-ID                                            Concept Name                             State
------------------------------------------------------------------------------------------------
-01-hts-compact-tokamak                        HTS Compact Tokamak (CFS ARC/SPARC)       D
-02-acoustic-icf-sonofusion                    Acoustic ICF (Sonofusion)                  R
+ID                                            Concept Name                             State Extr Iterations
+-------------------------------------------------------------------------------------------------------------
+01-hts-compact-tokamak                        HTS Compact Tokamak (CFS ARC/SPARC)        A    E   3 iter, last PASS
+02-acoustic-icf-sonofusion                    Acoustic ICF (Sonofusion)                  R    E   2 iter, last FAIL
 ...
-Legend: A=approved  S=synthesized  R=reviewed  M=model-setup  D=drafted  G=gap-checked  -=not-started  *=stale
+Legend: A=approved  S=synthesized  R=reviewed  I{N}=iterating(N iterations)
+        G=gap-checked  -=not-started  *=stale downstream  E=extracted  E*=extraction stale
 ```
 
 ## Data Structures
@@ -466,11 +472,13 @@ All templates live in `prompt_templates/`. The template engine
 |----------|-----------|-------------|------------|--------|---------|
 | `gap_check.md` | concept_name, company, dossier_path, source_file_list, brief_path, schema_path | — | — | `gap_report.md` (stdout) | Rating: Ready / Mostly Ready / Significant Gaps / Insufficient |
 | `analysis_v2.md` | concept_name, company, dossier_path, source_paths, brief_path, schema_path, exemplar_paths, approved_analyses, output_template_path, analysis_path, output_path, feedback_path, memory_context | cold_start, feedback_pass, self_advance, memory_context | @config/analysis_goals.md, @config/quality_standards.md, @agents/source_reader.md | `analysis_body.md` (cold) or edits to `analysis.md` (feedback) | — |
-| `assessment.md` | concept_name, analysis_path, feedback_path, model_output_path | model_output_path | @config/analysis_goals.md, @config/assessment_checklist.md, @config/feedback_format.md | `feedback.md` | `VERDICT: PASS` or `VERDICT: FINDINGS` + `### F-N:` |
-| `source_integration.md` | concept_name, analysis_path, new_source_paths, feedback_path | — | @config/analysis_goals.md, @config/feedback_format.md | `feedback.md` | `VERDICT: PASS` or `VERDICT: FINDINGS` + `### F-N:` |
+| `assessment.md` | concept_name, analysis_path, feedback_path, model_output_path | model_output_path | @config/analysis_goals.md, @config/assessment_checklist.md, @config/feedback_format.md | `post_feedback.md` | `VERDICT: PASS` or `VERDICT: FINDINGS` + `### F-N:` |
+| `source_integration.md` | concept_name, analysis_path, new_source_paths, feedback_path | — | @config/analysis_goals.md, @config/feedback_format.md | `source_integration_output.md` | `VERDICT: PASS` or `VERDICT: FINDINGS` + `### F-N:` |
 | `research.md` | concept_name, concept_id, concept_num, analysis_path, output_path, max_searches, max_extractions, prior_attempts | prior_attempts | — | `research_output.json` (Write tool) | — (orchestrator detects sources via filesystem diff) |
 | `model_setup_costingfe.md` | concept_name, company, analysis_path, example_path, defaults_path, readme_path, costing_constants_path, costingfe_concept, costingfe_fuel, mapping_notes, output_path | mapping_notes | — | `model_setup.py` | — |
+| `model_setup_costingfe_edit.md` | (same as costingfe) + prior_model_path, model_feedback | model_feedback | — | edits to `model_setup.py` | — |
 | `model_setup_freeform.md` | concept_name, company, analysis_path, costing_constants_path, output_path | — | — | `model_setup.py` | — |
+| `model_setup_freeform_edit.md` | (same as freeform) + prior_model_path, model_feedback | model_feedback | — | edits to `model_setup.py` | — |
 | `review.md` | concept_name, company, analysis_path, model_setup_path, model_output_path, approved_syntheses, source_paths, source_count, output_path, iteration, date | model_setup_path, model_output_path | — | `review.md` with VERDICT + PA-N/F-N | `VERDICT: PROCEED` or `VERDICT: REVISE` |
 | `address_review.md` | concept_name, analysis_path, model_setup_path, decisions_block, log_path, iteration, date | model_setup_path | — | Edits to `analysis.md`/`model_setup.py` + `address_log.md` | — |
 | `synthesis.md` | concept_name, company, analysis_path, model_setup_path, model_output_path, approved_syntheses, output_path | model_setup_path, model_output_path | — | `synthesis_body.md` | — |
@@ -490,6 +498,24 @@ All templates live in `prompt_templates/`. The template engine
 | File | Used by | Purpose |
 |------|---------|---------|
 | `source_reader.md` | analysis_v2.md | Per-source reading subagent — spawned once per source document for context-efficient parallel reading |
+
+### Edit-Mode Model Templates (model setup feedback)
+
+When `cmd_model_setup` runs in edit mode (`prior_model_path` set), the loop swaps
+the cold-start template for the `_edit` variant — Claude reads the prior
+`model_setup.py` and applies targeted edits scoped to assessment findings tagged
+`Category: model`. See `build_model_vars()` in `lib/loop.py:642`.
+
+### Out-of-band Templates
+
+These templates live alongside the in-loop ones but are invoked by separate
+scripts, not the main pipeline:
+
+| File | Invoked by | Purpose |
+|------|-----------|---------|
+| `resurface.md` | `scripts/resurface_orig.py` | Re-source a legacy Haiku-paraphrased aggregate file by extracting its embedded URLs and running `add-source` on each |
+| `feedback/power_standardization_costingfe.md` | manual feedback workflow | Drop-in feedback file directing model-setup to standardize fusion power and reactor sizing assumptions (1costingfe path) |
+| `feedback/power_standardization_freeform.md` | manual feedback workflow | Same, free-form path |
 
 ### Feedback Format Contract
 
@@ -581,45 +607,54 @@ prompt (gated by `{{#if memory_context}}`).
 
 ```
 scripts/
-├── run_analysis.py          # CLI entry point: argparse, dispatch, handlers (1084 lines)
+├── run_analysis.py          # CLI entry point: argparse, dispatch, handlers (1253 lines)
 └── lib/                     # Pipeline modules
     ├── __init__.py           # (empty)
     ├── paths.py              # Path constants (35 lines)
-    ├── concepts.py           # CSV loader, resolver, costingfe mappings (235 lines)
-    ├── frontmatter.py        # YAML frontmatter parse/update/generate (102 lines)
-    ├── state.py              # State detection, staleness propagation (122 lines)
-    ├── sources.py            # Source discovery, add-source helpers, PA-N parsing (214 lines)
+    ├── concepts.py           # CSV loader, resolver, costingfe mappings (233 lines)
+    ├── frontmatter.py        # YAML frontmatter parse/update/generate (130 lines)
+    ├── state.py              # State detection, staleness propagation, extraction state (253 lines)
+    ├── sources.py            # Source discovery, add-source helpers, PA-N parsing (211 lines)
     ├── memory.py             # Reuse pool, exemplars, cross-concept memory (109 lines)
+    ├── landscape.py          # Concept landscape rendering for {{concept_landscape}} (118 lines)
     ├── templating.py         # Template engine: {{var}}, {{#if}}, {{@path}} (47 lines)
-    ├── claude.py             # invoke_claude(), run_model() (73 lines)
-    ├── research.py           # Autonomous source acquisition: run_research_step(), research log I/O (175 lines)
-    ├── step_runner.py        # Shared handler boilerplate: run_claude_step() (153 lines)
-    ├── iteration.py          # IterationState, LoopState, verdict I/O (165 lines)
-    └── loop.py               # Stage 1 loop runner: run_stage1_loop() (604 lines)
+    ├── claude.py             # invoke_claude_validated(), retry/validation layer, run_model() (463 lines)
+    ├── validators.py         # Output validators: file-modified, python-syntax, review-verdict, etc. (317 lines)
+    ├── research.py           # Autonomous source acquisition: run_research_step(), research log I/O (234 lines)
+    ├── step_runner.py        # Shared handler boilerplate: prepare_step(), StepContext (85 lines)
+    ├── iteration.py          # IterationState, LoopState, verdict I/O (175 lines)
+    └── loop.py               # Stage 1 loop runner: run_stage1_loop(), build_model_vars() (925 lines)
 ```
 
 ### Prompt Templates
 
 ```
 prompt_templates/
-├── gap_check.md              # Gap assessment
-├── analysis_v2.md            # D1+ analysis (cold-start / feedback / self-advance modes)
-├── assessment.md             # Quality evaluation (in-loop)
-├── source_integration.md     # Source-integration feedback producer
-├── research.md               # Autonomous source acquisition agent
-├── output_template.md        # 8-section output structure reference
-├── model_setup_costingfe.md  # Model generation (1costingfe path)
-├── model_setup_freeform.md   # Model generation (free-form path)
-├── review.md                 # Strategic quality review (PROCEED/REVISE verdict)
-├── address_review.md         # Apply review decisions
-├── synthesis.md              # Editorial synthesis
+├── gap_check.md                  # Gap assessment
+├── analysis_v2.md                # D1+ analysis (cold-start / feedback / self-advance modes)
+├── assessment.md                 # Quality evaluation (in-loop)
+├── source_integration.md         # Source-integration feedback producer
+├── research.md                   # Autonomous source acquisition agent
+├── output_template.md            # 8-section output structure reference
+├── model_setup_costingfe.md      # Model generation (1costingfe path, cold start)
+├── model_setup_costingfe_edit.md # Model edit (1costingfe path, feedback mode)
+├── model_setup_freeform.md       # Model generation (free-form path, cold start)
+├── model_setup_freeform_edit.md  # Model edit (free-form path, feedback mode)
+├── review.md                     # Strategic quality review (PROCEED/REVISE verdict)
+├── address_review.md             # Apply review decisions
+├── synthesis.md                  # Editorial synthesis
+├── resurface.md                  # Out-of-band: re-source a legacy aggregate file (used by scripts/resurface_orig.py)
+├── analysis.md.old               # Archived first-generation analysis prompt (not referenced by any code)
 ├── config/
-│   ├── analysis_goals.md     # 5 analysis objectives
-│   ├── assessment_checklist.md # Quality criteria for assessor
-│   ├── quality_standards.md  # Citation, anti-hallucination, depth
-│   └── feedback_format.md    # Shared feedback schema (VERDICT + F-N findings)
+│   ├── analysis_goals.md         # 5 analysis objectives
+│   ├── assessment_checklist.md   # Quality criteria for assessor
+│   ├── quality_standards.md      # Citation, anti-hallucination, depth
+│   └── feedback_format.md        # Shared feedback schema (VERDICT + F-N findings)
+├── feedback/
+│   ├── power_standardization_costingfe.md  # Drop-in feedback file: standardize power/sizing (1costingfe)
+│   └── power_standardization_freeform.md   # Drop-in feedback file: standardize power/sizing (free-form)
 └── agents/
-    └── source_reader.md      # Per-source reading subagent
+    └── source_reader.md          # Per-source reading subagent
 ```
 
 ### Per-Concept Directory (iter-N layout)
@@ -643,7 +678,8 @@ analyses/{concept-id}/
 │   ├── model_setup.py
 │   ├── model_output.txt
 │   ├── assess_prompt.md
-│   ├── feedback.md          # Assess output (VERDICT + findings)
+│   ├── pre_feedback.md      # Input to analyze (iter > 1 only)
+│   ├── post_feedback.md     # Assess output (VERDICT + findings)
 │   └── verdict.json
 ├── iter-2/
 │   ├── analyze_prompt.md    # feedback-pass mode
@@ -667,39 +703,10 @@ analyses/{concept-id}/
     └── address_review_prompt.md
 ```
 
-**Current migration status**: 16/38 concepts have `iter-N/` directories.
-22/38 remain in the pre-refactor flat layout (iteration files like
-`feedback_iter_1.md` at concept root). All 38 have `prompts/` subdirectories.
-
-### Per-Concept Directory (legacy flat layout)
-
-Concepts that predate the loop refactor have:
-
-```
-analyses/{concept-id}/
-├── analysis.md
-├── gap_report.md
-├── model_setup.py
-├── model_output.txt
-├── review.md
-├── address_log.md
-├── synthesis.md
-├── feedback_iter_1.md       # Assessment feedback (flat)
-├── feedback_iter_2.md
-└── prompts/
-    ├── gap_check_prompt.md
-    ├── analysis_prompt.md
-    ├── analysis_prompt_iter_1.md
-    ├── assessment_prompt_iter_1.md
-    ├── model_setup_prompt.md
-    ├── review_prompt.md
-    ├── synthesis_prompt.md
-    └── address_review_prompt.md
-```
-
-Both layouts are fully functional — the commands read `analysis.md` and
-`model_setup.py` from the concept root regardless of layout. Only
-`--resume` requires the `iter-N/` layout (it reads `verdict.json`).
+**Migration status**: all 38 concepts have `iter-N/` directories. The
+pre-refactor flat layout (iteration files like `feedback_iter_1.md` at concept
+root) has been fully migrated; some concepts still carry those legacy files
+alongside the modern layout, but the pipeline reads from `iter-N/` only.
 
 ## Data Sources
 

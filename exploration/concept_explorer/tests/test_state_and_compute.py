@@ -21,13 +21,10 @@ from fastapi.testclient import TestClient
 import exploration.concept_explorer.server as server_module
 from exploration.concept_explorer.models import (
     ConceptData,
-    ConceptManifest,
-    ConceptManifestEntry,
     ConceptStatus,
     ConfinementFamily,
     CostModelData,
     ExplorerState,
-    ParameterIndex,
     SourcePaths,
 )
 from exploration.concept_explorer.server import create_app
@@ -129,23 +126,6 @@ result = model.forward(net_electric_mw=500.0, availability=0.85)
 """
 
 # ---------------------------------------------------------------------------
-# Helpers
-# ---------------------------------------------------------------------------
-
-
-def _manifest_entry(c: ConceptData) -> ConceptManifestEntry:
-    return ConceptManifestEntry(
-        concept_id=c.concept_id,
-        name=c.name,
-        confinement_family=c.confinement_family,
-        status=c.status,
-        has_cost_model=c.has_cost_model,
-        has_sensitivities=c.has_sensitivities,
-        data_file=f"data/{c.concept_id}.json",
-    )
-
-
-# ---------------------------------------------------------------------------
 # Fixtures
 # ---------------------------------------------------------------------------
 
@@ -188,12 +168,7 @@ def costingfe_base_dir(tmp_path: Path) -> Path:
     (data_dir / "04.json").write_text(costingfe_concept.model_dump_json())
     (data_dir / "01.json").write_text(standalone_concept.model_dump_json())
 
-    manifest = ConceptManifest(
-        generated_at="2026-03-29T00:00:00Z",
-        concepts=[_manifest_entry(costingfe_concept), _manifest_entry(standalone_concept)],
-    )
-    (data_dir / "manifest.json").write_text(manifest.model_dump_json())
-    (data_dir / "parameter_index.json").write_text(ParameterIndex(parameters={}).model_dump_json())
+    # Server computes manifest and parameter_index from per-concept JSONs at startup.
 
     return tmp_path
 

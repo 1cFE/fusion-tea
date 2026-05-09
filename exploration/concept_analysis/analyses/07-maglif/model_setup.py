@@ -1,3 +1,4 @@
+# STALE: analysis-updated-iter-10
 """MagLIF (D-T) — 1costingfe cost model setup (iter-9).
 
 Concept: Magnetized Liner Inertial Fusion (MagLIF), D-T fuel.

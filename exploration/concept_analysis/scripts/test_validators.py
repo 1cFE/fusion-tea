@@ -207,7 +207,7 @@ class TestValidateFeedbackVerdictRealFiles:
 
     def _find_feedback_files(self):
         analyses = Path(__file__).parent.parent / "analyses"
-        return list(analyses.glob("*/iter-*/feedback.md"))
+        return list(analyses.glob("*/iter-*/post_feedback.md"))
 
     def test_real_feedback_files_with_categories_pass(self):
         files = self._find_feedback_files()

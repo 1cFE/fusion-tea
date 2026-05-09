@@ -1,0 +1,89 @@
+direction: right
+
+classes: {
+  step: {
+    style.fill: "#dbeafe"
+    style.stroke: "#1e3a8a"
+    style.stroke-width: 2
+    style.font-color: "#0f172a"
+  }
+  artifact: {
+    shape: page
+    style.fill: "#fef3c7"
+    style.stroke: "#92400e"
+    style.stroke-width: 1
+    style.font-color: "#451a03"
+  }
+  cond: {
+    style.fill: "#f3f4f6"
+    style.stroke: "#6b7280"
+    style.font-color: "#1f2937"
+  }
+  out: {
+    shape: oval
+    style.fill: "#dcfce7"
+    style.stroke: "#166534"
+  }
+}
+
+# ═══════════════════════════════════════════════════════════════
+# Five cases checked in priority order, first match wins.
+# Each non-cold-start case produces iter-N/pre_feedback.md.
+# All paths funnel into "→ analyze" (the iteration body, Diagram 2a).
+# ═══════════════════════════════════════════════════════════════
+
+cases: "Pick feedback for this iteration (first matching case wins)" {
+  grid-columns: 1
+  grid-gap: 24
+  style.fill: "#ffffff"
+  style.stroke: "#6b7280"
+  style.stroke-dash: 3
+
+  c1: "Case 1 — iter 1 (cold-start)" {
+    direction: right
+    cond: "iter == 1" {class: cond}
+    out: "(no feedback file;\nanalyze runs in cold-start mode)" {class: cond}
+    cond -> out
+  }
+
+  c2: "Case 2 — review kick-back (one-shot)" {
+    direction: right
+    cond: "Review-Status:\nrevise" {class: cond}
+    src: "review.md" {class: artifact}
+    op: "extract F-N\n(no Claude call)" {class: step}
+    out: "pre_feedback.md" {class: artifact}
+    cond -> src -> op -> out
+  }
+
+  c3: "Case 3 — new sources detected (one-shot)" {
+    direction: right
+    cond: "new source files\nsince last iter" {class: cond}
+    op: "source-integration\n(Claude step)" {class: step}
+    out: "pre_feedback.md" {class: artifact}
+    cond -> op -> out
+  }
+
+  c4: "Case 4 — --research flag" {
+    direction: right
+    cond: "--research\nand iter > 1" {class: cond}
+    op1: "research agent\n(web search +\nadd-source)" {class: step}
+    op2: "source-integration\n(if sources\nacquired)" {class: step}
+    out: "pre_feedback.md\n(merged with prior)" {class: artifact}
+    cond -> op1 -> op2 -> out
+  }
+
+  c5: "Case 5 — default (iter > 1, no other case matched)" {
+    direction: right
+    cond: "everything else" {class: cond}
+    out: "pre_feedback.md\n(copied from prior\niter's post_feedback.md)" {class: artifact}
+    cond -> out
+  }
+}
+
+target: "→ analyze\n(see iteration body)" {class: out}
+
+cases.c1.out -> target
+cases.c2.out -> target
+cases.c3.out -> target
+cases.c4.out -> target
+cases.c5.out -> target

@@ -448,74 +448,440 @@
       "noak": 1.0
     }
   },
-  "parameter_metadata": {},
+  "parameter_metadata": {
+    "availability": {
+      "display_name": "Availability",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.75,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.5249999999999999,
+        0.9750000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "construction_time_yr": {
+      "display_name": "Construction Time",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 5.0,
+      "display_multiplier": 1.0,
+      "display_unit": "yr",
+      "range": [
+        3.5,
+        6.5
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "mn": {
+      "display_name": "Energy Multiplication Mₙ",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.1,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.77,
+        1.4300000000000002
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_th": {
+      "display_name": "Thermal Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.35,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.24499999999999997,
+        0.45499999999999996
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_sub": {
+      "display_name": "Subsystem Power Fraction",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.03,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.020999999999999998,
+        0.039
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_pump": {
+      "display_name": "Pumping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        0.7,
+        1.3
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_trit": {
+      "display_name": "Tritium Plant Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 10.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        7.0,
+        13.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_house": {
+      "display_name": "Housekeeping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        2.8,
+        5.2
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_cryo": {
+      "display_name": "Cryogenic Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.5,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        0.35,
+        0.65
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "blanket_t": {
+      "display_name": "Blanket Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.8,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.5599999999999999,
+        1.04
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "ht_shield_t": {
+      "display_name": "HT Shield Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.25,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.175,
+        0.325
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "structure_t": {
+      "display_name": "Structure Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.15,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.105,
+        0.195
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "vessel_t": {
+      "display_name": "Vessel Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "plasma_t": {
+      "display_name": "Minor Radius",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.0,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        2.8,
+        5.2
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_T": {
+      "display_name": "Dd F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.969,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6782999999999999,
+        1.2597
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_He3": {
+      "display_name": "Dd F He3",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.689,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.48229999999999995,
+        0.8956999999999999
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_dd_frac": {
+      "display_name": "Dhe3 Dd Frac",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.07,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.049,
+        0.09100000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_f_T": {
+      "display_name": "Dhe3 F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.97,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6789999999999999,
+        1.261
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "q_eng": {
+      "display_name": "Engineering Q",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        2.8,
+        5.2
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_rep": {
+      "display_name": "Repetition Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 10.0,
+      "display_multiplier": 1.0,
+      "display_unit": "Hz",
+      "range": [
+        7.0,
+        13.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_pin": {
+      "display_name": "Injector Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_rad": {
+      "display_name": "F Rad",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_target": {
+      "display_name": "Target Plant Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        0.7,
+        1.3
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_dec": {
+      "display_name": "Eta Dec",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.85,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.595,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "interest_rate": {
+      "display_name": "Interest Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.07,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.049,
+        0.09100000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "inflation_rate": {
+      "display_name": "Inflation Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.0245,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.01715,
+        0.03185
+      ],
+      "source": null,
+      "modeling_note": null
+    }
+  },
   "narrative": {
     "key_bets": [
-      "Target gain scales from NIF's demonstrated ~4× to the ~45× total scientific gain (capsule gain ~375×) required at 10 MJ laser energy — unvalidated extrapolation from NIF Hybrid-E physics",
-      "DPSSL laser driver achieves 10% wall-plug efficiency at 10 MJ / 10 Hz continuous operation, versus NIF's ~0.1% single-shot baseline",
-      "Laser diode cost reduction from current ~$0.02/W floor to the ~$0.007/W TRUMPF/LLNL viability threshold — roughly 3× below current price floor",
-      "Target factory mass-produces 864,000 cryogenic DT targets per day at <$1/target (marginally above the $0.75 Goodin economic limit at 450 MJ/shot)",
-      "Final optics survive commercial repetition rates and 14 MeV neutron fluence — no validated solution exists beyond NIF's $40M/yr single-shot refurbishment baseline",
-      "Liquid lithium first-wall pipes provide TBR > 1 and withstand 3–5 year chamber replacement intervals with no published nuclear analysis or engineering study",
-      "Plant availability reaches 75% placeholder despite 3–5 year chamber replacement outages, versus OSIRIS/SOMBRERO 1992 historical anchor of ~68–69%"
+      "Target gain G > 50–100 must be achieved at 10 MJ scale — Inertia projects ~45× total scientific gain (capsule gain ~375×) based on NIF Hybrid-E scaling, despite NIF's best demonstrated gain being only 4.13",
+      "DPSSL laser diodes must reach $0.007/W (TRUMPF/LLNL viability target) — roughly 3× below the current ~$0.02/W price floor — to make a 10 MJ Thunderwall driver economically viable",
+      "Laser wall-plug efficiency of ~10% must be sustained continuously at 10 Hz repetition rate, versus NIF's ~0.1% single-shot demonstrated efficiency",
+      "Target factory must mass-produce 864,000 cryogenic DT targets per day at <$1/target (marginally over the $0.75 Goodin economic limit) — no manufacturing process at this throughput has been demonstrated",
+      "Final optics must survive >10⁷ shots at commercial fluence levels of X-rays, debris, and 14 MeV neutrons — no validated commercial solution exists (NIF spends $40M/yr on refurbishment at single-shot scale)",
+      "Driver operational durability of ~30 million shots (≈35 days at 10 Hz) must be achieved — Hawker analysis identifies driver lifetime as a stronger LCOE driver than driver unit cost",
+      "Liquid lithium chamber walls must survive 3–5 year replacement intervals while managing tritium breeding (TBR > 1) — Inertia has published no nuclear or blanket analysis"
     ],
     "eliminated_costs": [
-      "No superconducting magnet system — DPSSL laser driver replaces REBCO/HTS magnets as dominant capital item, eliminating cryoplant and large-scale cryogenics",
-      "No plasma-facing components requiring remote handling for routine steady-state maintenance (pulsed operation shifts the maintenance model)",
-      "Lower regulatory burden than fission — 2023 NRC decision to regulate fusion under 10 CFR Part 30 avoids the 2.2× fission-style building cost markup",
-      "Liquid lithium blanket is inexpensive vs. FLiBe alternatives — CAS27 special materials only $8M given abundant Li supply chain (vs. Xcimer's 940 t FLiBe inventory with beryllium/Li-6 constraints)"
+      "No superconducting magnet system — no REBCO/HTS coils, no large-scale cryogenic plant at tokamak scale (C220103 = $0)",
+      "No plasma-facing components requiring routine remote-handling maintenance characteristic of steady-state MFE",
+      "No steady-state plasma current drive or heating systems beyond the laser driver itself",
+      "Reduced final optics area (Xcimer claim: <1 m² vs. NIF's 30 m²) avoids a portion of NIF's $40M/yr optics refurbishment cost",
+      "Lower activation inventory than D-T tokamaks, supporting favorable 10 CFR Part 30 regulatory treatment versus fission-style 2.2× building-cost markup"
     ],
     "novel_costs": [
-      "Laser driver capital ($3,000M central at $300/J × 10 MJ, range $1,400M–$8,500M) — no analogue in the rest of the fusion landscape and the dominant CAS22 line item",
-      "Target factory producing 864,000 cryogenic DT targets/day with tritium handling and cryogenic layering at throughput (NOAK ~$97M baseline; FOAK premium 3–10× unquantified)",
-      "Final optics refurbishment/replacement at commercial fluence — NIF baseline $40M/yr; no validated commercial-rep-rate solution exists",
-      "Chamber replacement capex every 3–5 years driven by pulsed neutron damage and ablation — implies extended planned outages absent in steady-state plants",
-      "Ash clearing and target injection synchronization at 10 Hz — no published engineering study or cost model for Inertia's liquid-Li-adjacent architecture"
+      "Laser driver dominates capital — $3,000M central ($1,400M–$8,500M scenario range) for a 10 MJ DPSSL system, replacing magnets as the dominant single cost item",
+      "Cryogenic DT target factory producing 864,000 targets/day with automated layering and just-in-time delivery (~$97M NOAK baseline; FOAK premium 3–10× unquantified)",
+      "Chamber clearing and high-rate target injection systems synchronized with laser pulses — no analogue in steady-state fusion concepts",
+      "Periodic chamber structural replacement every 3–5 years (Inertia liquid-Li design) — major scheduled-outage cost absent in conventional power plants",
+      "High-voltage capacitor banks / Marx generators for laser pulse power, with in-house capacitor production targeting $0.40/J"
     ],
     "risks": [
       {
-        "description": "Capsule gain G > 50–100 required for viability has not been experimentally demonstrated; NIF peak is 4.13 and Xcimer's G=65/200 projections are simulation-only",
+        "description": "Plant availability is the single largest LCOE driver (elasticity −0.97); 75% placeholder is unvalidated and OSIRIS/SOMBRERO 1992 historical IFE plant studies anchor at ~68–69%, while Inertia's 3–5 yr chamber replacement implies effective availability of ~55–60%",
         "severity": "high"
       },
       {
-        "description": "Plant availability is the single largest LCOE driver (elasticity −0.97); 75% placeholder is unvalidated and historical IFE anchors (OSIRIS/SOMBRERO) sit at ~68–69%, while Inertia's 3–5 yr chamber replacement implies ~55–60%",
+        "description": "Capsule gain G > 50–100 required for IFE economic viability has never been demonstrated experimentally — NIF's best is 4.13×, and Xcimer's G=65/G=200 projections are simulation-only",
         "severity": "high"
       },
       {
-        "description": "Laser driver cost is dominant and poorly bounded — true elasticity ~+0.4 via LASER_COST_PER_J override (not the +0.045 shown in the sensitivity table); scenario sweep produces LCOE range $79.7–$160.5",
+        "description": "Laser driver cost is dominant and highly uncertain — true elasticity ~+0.4 via the LASER_COST_PER_J override (sensitivity table understates this at +0.045); LCOE swings $79.7–$160.5/MWh across $140–$850/J scenarios",
         "severity": "high"
       },
       {
-        "description": "Final optics survivability at commercial repetition rates is TRL ~2 with no validated >10⁷-shot solution for any IFE concept",
+        "description": "Final optics survivability at commercial repetition rates is a fundamental R&D gap — no geometry or material has been validated to survive >10⁷ shots at commercial fluence",
         "severity": "high"
       },
       {
-        "description": "Laser diode price must fall from ~$0.02/W to ~$0.007/W for economic viability; at 10 MJ / 10% WPE / 10 Hz the diode bill alone is ~$2B at current floor",
+        "description": "Inertia Enterprises has published no power-plant design document, no TBR analysis for its liquid-Li blanket, no ash-clearing strategy, and no manufacturing basis for its <$1/target goal — most cost inputs are marketing-level claims",
         "severity": "high"
       },
       {
-        "description": "Inertia has no published plant-level capital cost breakdown, no TBR analysis for the liquid Li blanket, and no ash-clearing strategy — multiple blocking proprietary gaps",
+        "description": "Target fabrication throughput of 864,000 DT targets/day has never been demonstrated; tritium handling within the target factory at this rate is unscoped",
         "severity": "high"
       },
       {
-        "description": "Target cost goal of <$1/target is marginally over the $0.75 Goodin economic limit at 450 MJ/shot and 13.6 ¢/kWh; neither company has published a manufacturing process at 864,000 targets/day throughput",
+        "description": "Tritium supply for fleet-scale deployment is constrained by declining global inventory (~25–30 kg, primarily from retiring CANDU reactors); Inertia's liquid-Li TBR is unpublished",
         "severity": "medium"
       },
       {
-        "description": "Driver lifetime/reliability (Hawker Pearson −0.134) dominates over unit cost (+0.075); 30M-shot commercial threshold = only ~35 days at 10 Hz continuous operation",
+        "description": "Laser diode cost reduction from ~$0.02/W to the $0.007/W viability threshold has no demonstrated path; at $0.02/W, diodes alone would cost ~$2B for the Thunderwall",
         "severity": "medium"
       },
       {
-        "description": "Tritium supply chain: global inventory ~25–30 kg from declining CANDU fleet constrains fleet-scale D-T deployment even if startup tritium is available from U.S. stockpiles",
+        "description": "Driver operational durability — Hawker analysis shows lifetime correlates with LCOE more strongly (Pearson −0.134) than unit cost (+0.075); 30 million shots represents only ~35 days at 10 Hz",
         "severity": "medium"
       },
       {
-        "description": "Thermal cycle ambiguity — Inertia cites steam (Rankine ~35%) while Xcimer's IFE Workshop 2022 materials cite helium Brayton 45%; website/paper conflict unresolved",
+        "description": "FLiBe beryllium supply chain is constrained globally to ~300 t/yr (single U.S. producer Materion); applies if Inertia revises blanket choice toward FLiBe",
         "severity": "low"
       },
       {
-        "description": "Xcimer Vulcan (12 MJ KrF) is the key technical validation milestone and not targeted until 2030 — amplifiers would be 'the largest laser amplifiers ever built'",
-        "severity": "medium"
+        "description": "Thermal cycle ambiguity (steam Rankine vs. helium Brayton) for IFE plants is unresolved between marketing materials and conference presentations, propagating uncertainty in eta_th (elasticity −0.18)",
+        "severity": "low"
       }
     ]
   },

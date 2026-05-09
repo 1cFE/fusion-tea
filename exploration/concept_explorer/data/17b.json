@@ -448,76 +448,446 @@
       "noak": 1.0
     }
   },
-  "parameter_metadata": {},
+  "parameter_metadata": {
+    "availability": {
+      "display_name": "Availability",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.75,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.5249999999999999,
+        0.9750000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "construction_time_yr": {
+      "display_name": "Construction Time",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 5.0,
+      "display_multiplier": 1.0,
+      "display_unit": "yr",
+      "range": [
+        3.5,
+        6.5
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "mn": {
+      "display_name": "Energy Multiplication Mₙ",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.1,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.77,
+        1.4300000000000002
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_th": {
+      "display_name": "Thermal Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.4,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.27999999999999997,
+        0.52
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_sub": {
+      "display_name": "Subsystem Power Fraction",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.03,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.020999999999999998,
+        0.039
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_pump": {
+      "display_name": "Pumping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        0.7,
+        1.3
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_trit": {
+      "display_name": "Tritium Plant Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 10.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        7.0,
+        13.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_house": {
+      "display_name": "Housekeeping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        2.8,
+        5.2
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_cryo": {
+      "display_name": "Cryogenic Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.5,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        0.35,
+        0.65
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "blanket_t": {
+      "display_name": "Blanket Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.8,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.5599999999999999,
+        1.04
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "ht_shield_t": {
+      "display_name": "HT Shield Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.25,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.175,
+        0.325
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "structure_t": {
+      "display_name": "Structure Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.15,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.105,
+        0.195
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "vessel_t": {
+      "display_name": "Vessel Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "plasma_t": {
+      "display_name": "Minor Radius",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.0,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        2.8,
+        5.2
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_T": {
+      "display_name": "Dd F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.969,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6782999999999999,
+        1.2597
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_He3": {
+      "display_name": "Dd F He3",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.689,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.48229999999999995,
+        0.8956999999999999
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_dd_frac": {
+      "display_name": "Dhe3 Dd Frac",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.07,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.049,
+        0.09100000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_f_T": {
+      "display_name": "Dhe3 F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.97,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6789999999999999,
+        1.261
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "q_eng": {
+      "display_name": "Engineering Q",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.0,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        2.8,
+        5.2
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_rep": {
+      "display_name": "Repetition Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 10.0,
+      "display_multiplier": 1.0,
+      "display_unit": "Hz",
+      "range": [
+        7.0,
+        13.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_pin": {
+      "display_name": "Injector Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_rad": {
+      "display_name": "F Rad",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_target": {
+      "display_name": "Target Plant Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        0.7,
+        1.3
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_dec": {
+      "display_name": "Eta Dec",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.85,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.595,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "interest_rate": {
+      "display_name": "Interest Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.07,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.049,
+        0.09100000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "inflation_rate": {
+      "display_name": "Inflation Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.0245,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.01715,
+        0.03185
+      ],
+      "source": null,
+      "modeling_note": null
+    }
+  },
   "narrative": {
     "key_bets": [
-      "Proton coupling efficiency (petawatt laser → proton beam → compressed hot spot) reaches ~15% or higher at ignition-relevant areal densities",
-      "Fast ignition achieves gain G = 50–100 at commercial scale, despite no FI experiment ever exceeding G > 1",
-      "DPSSL compression laser operates continuously at 10 Hz with ~10% wall-plug efficiency and diode cost floor near $0.01/W",
-      "Petawatt ignition laser scales to 10 Hz at ~150 kJ picosecond pulses — never demonstrated (T-STAR starts at 1 shot/60 s)",
-      "Cone-in-shell Pearl™ targets can be mass-produced at 900,000/day (~800,000× NIF's current rate) with adequate cone alignment surviving implosion",
-      "Chamber clears debris within ~100 ms between shots despite asymmetric cone-in-shell explosion debris",
-      "Meier 2006 FI economic advantage over CHS (~15% lower COE) holds even when ignitor laser carries real capital cost"
+      "Proton fast ignition coupling efficiency (petawatt laser → proton beam → compressed core hot spot) reaches at least ~15% at plant-relevant areal densities, despite never being measured at this scale",
+      "Cone-in-shell capsules with embedded metal cones can be mass-produced at 900,000 targets/day at <10% of electricity value per target, an ~800,000× scale-up from NIF's ~400/year",
+      "Petawatt ignition laser (Ti:sapphire or OPCPA) can be operated at ~150 kJ picosecond pulses at 10 Hz continuously, a regime with no commercial precedent",
+      "DPSSL compression laser achieves ~10% wall-plug efficiency at 10 Hz / 400 kJ with diode cost reaching the ~$0.01/W floor (10–100× reduction from current commercial diodes)",
+      "Target gain G = 50–100 with proton fast ignition is sufficient for the Focused Energy commercial case, despite Hawker (2020) finding G > ~400 needed for economic competitiveness under mid-range parameters",
+      "Chamber can clear debris from cone-in-shell targets within ~100 ms between shots at 10 Hz, with no chamber concept yet disclosed",
+      "Final optics survive 14 MeV neutron and X-ray flash at 10 Hz over plant lifetime with no disclosed protection scheme"
     ],
     "eliminated_costs": [
-      "Symmetry-control overhead associated with indirect-drive hohlraums (direct/fast ignition relaxes symmetry requirements per Optica OPN)",
-      "Single-driver gain requirement — FI offloads ignition from the compression driver, reducing compression laser energy vs. pure CHS direct drive",
-      "Exotic power conversion R&D — conventional Rankine steam cycle reuses mature fossil/fission BOP infrastructure"
+      "Large superconducting magnet systems and associated cryoplant (no magnetic confinement hardware required)",
+      "Plasma-facing first-wall components engineered for steady-state heat flux (pulsed operation with chamber clearing instead)",
+      "Exotic energy conversion cycle development (conventional steam Rankine cycle adopted explicitly, leveraging mature BOP supply chain)",
+      "Symmetry-driven beam count and beam smoothing required for CHS direct drive (fast ignition relaxes implosion symmetry requirements)"
     ],
     "novel_costs": [
-      "Petawatt ignition laser as a second, independent capital line item (Ti:sapphire or OPCPA at 10 Hz, 150 kJ) with no commercial precedent",
-      "Cone-in-shell Pearl™ target fabrication — asymmetric geometry with embedded high-Z (likely gold) cone at 900,000 targets/day",
-      "Gold (or alternative high-Z) cone material supply chain — ~30 tonnes/year at 1 mg/cone if gold is required",
-      "Dual-laser supply chain, maintenance rhythms, and final optics protection for two fundamentally different laser systems",
-      "Specialized targetry QC infrastructure to verify cone alignment tolerances surviving implosion pre-ignition"
+      "Petawatt ignition laser as a second capital line item (~150 kJ picosecond, 10 Hz) on top of the DPSSL compression driver, with no commercial precedent and unbounded $/J cost",
+      "Cone-in-shell Pearl™ target fabrication including precision metal cone (potentially gold) inserted in cryogenic DT shell — annual gold demand on order of ~30 tonnes/yr if gold cones required",
+      "Dual-laser system integration costs: separate supply chains, maintenance rhythms, and beam delivery for DPSSL compression and Ti:sapphire/OPCPA petawatt ignition",
+      "High-rate target mass production line for 900,000 cone-bearing cryogenic capsules per day, including alignment QC for the asymmetric cone geometry",
+      "Final optics replacement infrastructure scaled to 10 Hz shot-cycle fatigue under neutron and X-ray flash with no Xcimer-style nonlinear gas optics fallback"
     ],
     "risks": [
       {
-        "description": "Proton coupling efficiency (η_coup) never measured at ignition-relevant conditions; spans ~5–30%; below ~7% ignition fails (q_eng < 1)",
+        "description": "Proton coupling efficiency (η_coup) has never been measured at ignition-relevant areal densities; defensible range spans roughly an order of magnitude (~5–30%), and below ~7% the concept is non-viable (q_eng < 1)",
         "severity": "high"
       },
       {
-        "description": "Fast ignition gain > 1 not demonstrated at any scale; Focused Energy G = 50–100 target falls below both energetics (G > 100) and economic competitiveness (G > ~400, Hawker 2020) thresholds",
+        "description": "Fast ignition has never demonstrated gain > 1 at any scale; Focused Energy's G = 50–100 target falls below both the energetics viability threshold (G > 100) and the Hawker economic competitiveness threshold (G > ~400)",
         "severity": "high"
       },
       {
-        "description": "Petawatt ignition laser cost ($/J) at 10 Hz is unquantified; FI economic advantage over CHS may be eliminated once ignitor carries a positive $/J premium",
+        "description": "Petawatt ignition laser cost ($/J) at 10 Hz, 150 kJ is unquantified; the Meier 2006 FI-vs-CI 15% COE advantage assumes zero added $/J for the ignitor, and the sign of the FI economic advantage is unresolved if the ignitor carries a real capital premium",
         "severity": "high"
       },
       {
-        "description": "No chamber design disclosed; 10 Hz clearing with asymmetric cone-in-shell debris is more demanding than Xcimer's sub-Hz FLiBe concept",
+        "description": "DPSSL compression laser requires ~10–100× diode cost reduction (to ~$0.01/W) to be economically competitive; this floor is unachieved at scale and is the dominant capital uncertainty",
         "severity": "high"
       },
       {
-        "description": "Blanket type and TBR undisclosed; tritium self-sufficiency cannot be verified",
+        "description": "Cone-in-shell target mass production at 900,000/day represents an ~800,000× scale-up over NIF; no mass-fabrication process for cryogenic DT cone-in-shell capsules exists, and the geometry is inherently harder to QC than symmetric spheres",
         "severity": "high"
       },
       {
-        "description": "Cone-in-shell target mass production at 900,000/day represents ~800,000× scale-up from NIF; no demonstrated process exists",
+        "description": "No chamber design has been disclosed (geometry, material, clearing scheme); chamber must clear asymmetric cone-target debris within ~100 ms at 10 Hz, far more demanding than Xcimer's sub-Hz clearing",
         "severity": "high"
       },
       {
-        "description": "Final optics protection scheme at 10 Hz undisclosed; DPSSL architecture lacks Xcimer's nonlinear-gas-optics option; damage accumulates rapidly",
+        "description": "Final optics protection at 10 Hz under neutron/X-ray flash has no disclosed scheme; Xcimer's nonlinear gas optics workaround is not available to the DPSSL-based Focused Energy architecture",
         "severity": "high"
       },
       {
-        "description": "DPSSL diode cost floor requires 10–100× reduction from current $0.1–1/W to meet ~$0.01/W target",
+        "description": "Blanket type and TBR are undisclosed (only 'lithium' confirmed); tritium self-sufficiency (TBR > 1.05) cannot be verified, and blanket choice (FLiBe vs. liquid Li vs. LiPb) has major supply chain and safety implications",
         "severity": "medium"
       },
       {
-        "description": "T-STAR petawatt runs at 1 shot/60 s; scaling to 10 Hz requires thermal management of Ti:sapphire/OPCPA at unprecedented average power",
+        "description": "Availability/capacity factor is the highest-elasticity LCOE lever (−0.95) but is undisclosed; pulsed 10 Hz operation accumulates shot-cycle fatigue on optics, beam delivery, and target injection",
         "severity": "medium"
       },
       {
-        "description": "O&M structure unpublished; 10 Hz shot-cycle fatigue on optics/beam delivery likely drives O&M to 5–8% of CAPEX/yr vs. ~2% framework default",
+        "description": "Cone-in-shell geometry breaks spherical symmetry and likely increases hydrodynamic instability sensitivity relative to symmetric CHS targets, potentially degrading achievable gain",
         "severity": "medium"
       },
       {
-        "description": "Capacity factor undisclosed; pulsed-system availability is the highest-elasticity LCOE lever (−0.95)",
+        "description": "O&M cost structure unpublished; IFE analogues suggest 5–8% of direct CAPEX/yr vs. ~2% framework default, indicating O&M may be materially underestimated in current model",
         "severity": "medium"
       },
       {
-        "description": "Gold cone material supply (~30 tonnes/year) creates non-negligible global demand if reduced-gold designs fail to validate",
+        "description": "T-STAR experimental facility currently operates at 1 shot/60 s; gap to 10 Hz commercial plant operation is substantial and timeline-critical",
+        "severity": "medium"
+      },
+      {
+        "description": "Gold cone material at ~1 mg/cone × 900,000 targets/day implies ~30 tonnes/yr gold demand; reduced-gold or non-gold designs are unvalidated and may reduce coupling efficiency",
         "severity": "low"
       }
     ]

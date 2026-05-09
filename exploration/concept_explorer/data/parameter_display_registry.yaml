@@ -1,0 +1,156 @@
+# parameter_display_registry.yaml
+#
+# Shared display metadata for sensitivity parameters. Patches the auto-generated
+# names (`key.replace("_", " ").title()`) with human-readable names, units, and
+# display multipliers (e.g., 0.46 → "Thermal Efficiency 46.0%").
+#
+# Merge order (later wins):
+#   1. generate_parameter_metadata()           — auto: baseline + range + auto name
+#   2. parameter_display_registry.yaml         — THIS FILE: shared display fields
+#   3. {concept}/model_metadata.yaml           — per-concept full overrides
+#
+# Only the three display fields are patched here. All other ParameterMetadata
+# fields (baseline, range, category, confidence) come from generation or
+# per-concept yaml. Keys not in a concept's sensitivity output are silently
+# ignored.
+#
+# Coverage: every key that appears in the tornado top-15 across the 27 costingfe
+# concepts in data/ as of 2026-04-26.
+
+# ---- Geometry / structure (m) ----
+R0:
+  display_name: "Major Radius"
+  display_unit: "m"
+  display_multiplier: 1.0
+plasma_t:                       # NOTE: variable name is a misnomer; this is the minor radius `a`.
+  display_name: "Minor Radius"  # See costingfe/model.py:260: `a = params["plasma_t"]`.
+  display_unit: "m"
+  display_multiplier: 1.0
+elon:
+  display_name: "Elongation κ"
+  display_unit: ""
+  display_multiplier: 1.0
+r_coil:
+  display_name: "Coil Radius"
+  display_unit: "m"
+  display_multiplier: 1.0
+b_max:
+  display_name: "Peak Magnetic Field"
+  display_unit: "T"
+  display_multiplier: 1.0
+blanket_t:
+  display_name: "Blanket Thickness"
+  display_unit: "m"
+  display_multiplier: 1.0
+ht_shield_t:
+  display_name: "HT Shield Thickness"
+  display_unit: "m"
+  display_multiplier: 1.0
+vessel_t:
+  display_name: "Vessel Thickness"
+  display_unit: "m"
+  display_multiplier: 1.0
+structure_t:
+  display_name: "Structure Thickness"
+  display_unit: "m"
+  display_multiplier: 1.0
+chamber_length:
+  display_name: "Chamber Length"
+  display_unit: "m"
+  display_multiplier: 1.0
+
+# ---- Plant power flows (MW) ----
+p_input:
+  display_name: "Input Power"
+  display_unit: "MW"
+  display_multiplier: 1.0
+p_nbi:
+  display_name: "NBI Power"
+  display_unit: "MW"
+  display_multiplier: 1.0
+p_ecrh:
+  display_name: "ECRH Power"
+  display_unit: "MW"
+  display_multiplier: 1.0
+p_icrf:
+  display_name: "ICRF Power"
+  display_unit: "MW"
+  display_multiplier: 1.0
+p_pump:
+  display_name: "Pumping Power"
+  display_unit: "MW"
+  display_multiplier: 1.0
+p_trit:
+  display_name: "Tritium Plant Power"
+  display_unit: "MW"
+  display_multiplier: 1.0
+p_house:
+  display_name: "Housekeeping Power"
+  display_unit: "MW"
+  display_multiplier: 1.0
+p_cryo:
+  display_name: "Cryogenic Power"
+  display_unit: "MW"
+  display_multiplier: 1.0
+p_coils:
+  display_name: "Coil Power"
+  display_unit: "MW"
+  display_multiplier: 1.0
+p_target:
+  display_name: "Target Plant Power"
+  display_unit: "MW"
+  display_multiplier: 1.0
+
+# ---- Efficiencies & fractions (display as %) ----
+eta_th:
+  display_name: "Thermal Efficiency"
+  display_unit: "%"
+  display_multiplier: 100.0
+eta_pin:
+  display_name: "Injector Efficiency"
+  display_unit: "%"
+  display_multiplier: 100.0
+eta_de:
+  display_name: "Direct Conversion Efficiency"
+  display_unit: "%"
+  display_multiplier: 100.0
+f_sub:
+  display_name: "Subsystem Power Fraction"
+  display_unit: "%"
+  display_multiplier: 100.0
+f_dec:
+  display_name: "Direct Conversion Fraction"
+  display_unit: "%"
+  display_multiplier: 100.0
+availability:
+  display_name: "Availability"
+  display_unit: "%"
+  display_multiplier: 100.0
+
+# ---- Financial rates (display as %) ----
+interest_rate:
+  display_name: "Interest Rate"
+  display_unit: "%"
+  display_multiplier: 100.0
+inflation_rate:
+  display_name: "Inflation Rate"
+  display_unit: "%"
+  display_multiplier: 100.0
+
+# ---- Other ----
+mn:
+  display_name: "Energy Multiplication Mₙ"
+  display_unit: ""
+  display_multiplier: 1.0
+q_eng:
+  display_name: "Engineering Q"
+  display_unit: ""
+  display_multiplier: 1.0
+f_rep:
+  display_name: "Repetition Rate"
+  display_unit: "Hz"
+  display_multiplier: 1.0
+construction_time_yr:
+  display_name: "Construction Time"
+  display_unit: "yr"
+  display_multiplier: 1.0

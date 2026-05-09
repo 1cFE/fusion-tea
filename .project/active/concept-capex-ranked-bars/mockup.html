@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CAS Cost Breakdown — combined mockup</title>
+  <style>
+    :root {
+      --bg: #0d1117; --bg-card: #161b22; --border: #30363d;
+      --text: #e6edf3; --text-dim: #8b949e; --text-faint: #6e7681; --grid: #21262d;
+      --override: #FCD34D;
+    }
+    body {
+      background: var(--bg); color: var(--text); margin: 0;
+      font: 14px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    .page-content { max-width: 1440px; margin: 0 auto; padding: 24px; }
+    .surrounding {
+      opacity: 0.25; pointer-events: none; border: 1px dashed var(--border); border-radius: 6px;
+      padding: 16px 20px; margin: 8px 0; color: var(--text-dim); font-size: 12px;
+    }
+    .section { padding: 16px 0; border-top: 1px solid var(--border); margin-top: 16px; }
+    .section-header {
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin-bottom: 12px; gap: 16px;
+    }
+    .section__heading { font-size: 18px; font-weight: 600; margin: 0; }
+
+    /* Tabs */
+    .tabs {
+      display: inline-flex; background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 6px; padding: 2px;
+    }
+    .tabs button {
+      background: transparent; border: 0; color: var(--text-dim);
+      padding: 4px 12px; font-size: 12px; cursor: pointer; border-radius: 4px;
+    }
+    .tabs button.active { background: var(--border); color: var(--text); }
+    .tabs button:hover:not(.active) { color: var(--text); }
+
+    .total-line {
+      display: flex; align-items: baseline; gap: 12px;
+      color: var(--text-dim); font-size: 13px; margin-bottom: 12px;
+    }
+    .total-line b { color: var(--text); font-size: 22px; font-variant-numeric: tabular-nums; }
+
+    .view { display: none; }
+    .view.active { display: block; }
+
+    /* === Table view === */
+    .stripe-wrap { margin-bottom: 4px; }
+    .stripe { width: 100%; height: 18px; display: flex; border-radius: 3px; overflow: hidden; background: var(--grid); }
+    .stripe-seg { height: 100%; transition: opacity 0.1s; }
+    .stripe-seg:hover { opacity: 0.8; }
+    .stripe-seg.overridden { background-image: repeating-linear-gradient(45deg, transparent 0 4px, rgba(252,211,77,0.5) 4px 6px); }
+    .stripe-caption {
+      color: var(--text-faint); font-size: 11px; margin-top: 4px; margin-bottom: 16px;
+      display: flex; gap: 16px; justify-content: space-between;
+    }
+    table.cas-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .cas-table th {
+      text-align: left; color: var(--text-dim); font-weight: 500; font-size: 11px;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      padding: 8px 0; border-bottom: 1px solid var(--border);
+    }
+    .cas-table th.num { text-align: right; }
+    .cas-table td { padding: 6px 0; border-bottom: 1px solid var(--grid); vertical-align: middle; }
+    .cas-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+    .cas-table tr:hover td { background: rgba(255,255,255,0.025); }
+    .cas-table tr.expandable { cursor: pointer; }
+    .cas-table tr.expandable:hover td { background: rgba(88,166,255,0.06); }
+    .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 8px; vertical-align: middle; }
+    .swatch.overridden { background-image: repeating-linear-gradient(45deg, transparent 0 2px, rgba(252,211,77,0.6) 2px 3px); }
+    .chev { color: var(--text-faint); display: inline-block; width: 14px; }
+    .star { color: var(--override); margin-left: 4px; }
+    .pct-of-total { color: var(--text-dim); }
+    .pct-of-total b { color: var(--text); font-variant-numeric: tabular-nums; }
+    tr.sub td { background: rgba(255,255,255,0.015); }
+    tr.sub td.name { padding-left: 36px; color: var(--text-dim); font-size: 12px; position: relative; }
+    tr.sub td.name::before { content: ""; position: absolute; left: 22px; top: 0; bottom: 0; border-left: 1px solid var(--border); }
+    tr.sub td { font-size: 12px; }
+    tr.sub td.num { color: var(--text); }
+
+    /* === Treemap view === */
+    .breadcrumb { color: var(--text-faint); font-size: 12px; margin: 0 0 8px; }
+    .breadcrumb a { color: #58a6ff; cursor: pointer; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    #treemap-svg { width: 100%; display: block; }
+    .tile-label { pointer-events: none; font: 600 12px -apple-system, BlinkMacSystemFont, sans-serif; fill: #fff; }
+    .tile-sub { pointer-events: none; font: 400 11px -apple-system, BlinkMacSystemFont, sans-serif; fill: rgba(255,255,255,0.85); }
+    .tile { transition: opacity 0.1s; }
+    .tile.drillable { cursor: pointer; }
+    .tile:hover { opacity: 0.85; }
+    .tile-bg { stroke: var(--bg); stroke-width: 2; }
+  </style>
+</head>
+<body>
+
+<div class="page-content">
+  <div class="surrounding">
+    <b>(faded for context)</b> Hero · Economics · Parameter What-If · Narrative · Risks ↓
+  </div>
+
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section__heading">CAS Cost Breakdown</h2>
+      <div class="tabs" role="tablist">
+        <button id="tab-table" class="active" onclick="setView('table')">Table</button>
+        <button id="tab-treemap" onclick="setView('treemap')">Treemap</button>
+      </div>
+    </div>
+    <div class="total-line">
+      <span>Total capital + annualized:</span>
+      <b id="total-display">—</b>
+    </div>
+
+    <!-- TABLE VIEW -->
+    <div id="view-table" class="view active">
+      <div class="stripe-wrap">
+        <div class="stripe" id="stripe"></div>
+        <div class="stripe-caption">
+          <span>Composition (hover for detail) →</span>
+          <span>Largest segment: <b id="largest-name" style="color: var(--text);">—</b></span>
+        </div>
+      </div>
+      <table class="cas-table">
+        <thead>
+          <tr>
+            <th>CAS Account</th>
+            <th class="num" style="width: 130px;">Cost</th>
+            <th class="num" style="width: 100px;">% of total</th>
+          </tr>
+        </thead>
+        <tbody id="cas-tbody"></tbody>
+      </table>
+    </div>
+
+    <!-- TREEMAP VIEW -->
+    <div id="view-treemap" class="view">
+      <div class="breadcrumb" id="breadcrumb"></div>
+      <svg id="treemap-svg" viewBox="0 0 1392 600" preserveAspectRatio="none"></svg>
+    </div>
+  </section>
+
+  <div class="surrounding" style="margin-top: 16px;">
+    <b>(faded for context)</b> ↓ Sensitivity Analysis (tornado) · Add to Comparison
+  </div>
+</div>
+
+<script>
+const CAS_COLORS = {
+  cas10:"#6B7280", cas21:"#3B82F6", cas22:"#10B981", cas23:"#F59E0B",
+  cas24:"#8B5CF6", cas25:"#EC4899", cas26:"#06B6D4", cas27:"#F97316",
+  cas28:"#84CC16", cas29:"#EF4444", cas30:"#64748B", cas40:"#78716C",
+  cas50:"#A78BFA", cas60:"#FB7185", cas70:"#34D399", cas80:"#FCD34D", cas90:"#94A3B8",
+};
+const CAS22_COLORS = ["#059669","#047857","#065F46","#064E3B","#10B981","#34D399","#6EE7B7","#A7F3D0","#52A8A8","#3D8B8B","#2E7070","#1F5555","#0F3D3D","#062A2A"];
+
+const CONCEPT = {"name":"HTS Compact Tokamak","cas":{"cas10":{"name":"Preconstruction","cost_m_usd":18.5,"overridden":false},"cas21":{"name":"Buildings & Structures","cost_m_usd":573.36,"overridden":false},"cas22":{"name":"Reactor Plant Equipment","cost_m_usd":9369.79,"overridden":false},"cas23":{"name":"Turbine Plant Equipment","cost_m_usd":225.84,"overridden":false},"cas24":{"name":"Electrical Plant Equipment","cost_m_usd":96.19,"overridden":false},"cas25":{"name":"Miscellaneous Plant Equipment","cost_m_usd":58.55,"overridden":false},"cas26":{"name":"Heat Rejection Systems","cost_m_usd":84.86,"overridden":false},"cas27":{"name":"Special Materials","cost_m_usd":559.39,"overridden":true},"cas28":{"name":"Digital Twin & Simulation","cost_m_usd":5.0,"overridden":false},"cas29":{"name":"Contingency","cost_m_usd":0.0,"overridden":false},"cas30":{"name":"Indirect Costs","cost_m_usd":1828.83,"overridden":false},"cas40":{"name":"Owner's Costs","cost_m_usd":39.0,"overridden":false},"cas50":{"name":"Supplementary Costs","cost_m_usd":664.25,"overridden":false},"cas60":{"name":"Interest During Construction","cost_m_usd":2030.53,"overridden":false},"cas70":{"name":"O&M Costs (annualised)","cost_m_usd":166.45,"overridden":false},"cas80":{"name":"Fuel Costs (annualised)","cost_m_usd":0.93,"overridden":false},"cas90":{"name":"Financial Costs","cost_m_usd":1253.45,"overridden":false}},"cas22_detail":{"C220101":{"name":"First Wall & Blanket","cost_m_usd":673.59,"overridden":true},"C220102":{"name":"Radiation Shield","cost_m_usd":175.69,"overridden":false},"C220103":{"name":"Magnets / Coils","cost_m_usd":6901.0,"overridden":true},"C220104":{"name":"Heating & Driver Systems","cost_m_usd":353.21,"overridden":false},"C220105":{"name":"Primary Structure & Support","cost_m_usd":18.91,"overridden":false},"C220106":{"name":"Vacuum System","cost_m_usd":238.39,"overridden":true},"C220107":{"name":"Power Conditioning & Energy Storage","cost_m_usd":87.83,"overridden":false},"C220108":{"name":"Divertor / Target Factory","cost_m_usd":94.57,"overridden":false},"C220109":{"name":"Direct Energy Converter","cost_m_usd":0.0,"overridden":false},"C220110":{"name":"Remote Handling & Maintenance Equipment","cost_m_usd":160.34,"overridden":false},"C220111":{"name":"Installation Labor","cost_m_usd":248.13,"overridden":false},"C220112":{"name":"Isotope Separation Plant","cost_m_usd":0.0,"overridden":false},"C220200":{"name":"Main & Secondary Coolant","cost_m_usd":199.62,"overridden":false},"C220300":{"name":"Auxiliary Cooling & Cryoplant","cost_m_usd":14.12,"overridden":false},"C220400":{"name":"Radioactive Waste Management","cost_m_usd":4.87,"overridden":false},"C220500":{"name":"Fuel Handling & Storage","cost_m_usd":120.0,"overridden":false},"C220600":{"name":"Other Reactor Plant Equipment","cost_m_usd":11.5,"overridden":false},"C220700":{"name":"Instrumentation & Control","cost_m_usd":68.02,"overridden":false}}};
+
+// ---- persistent state across re-renders (slider drags etc.) ----
+let activeView = "table";    // "table" | "treemap"
+let cas22Expanded = false;   // table view
+let drilledInto = null;      // treemap view: null or "cas22"
+
+function fmtMoney(v) {
+  if (v >= 1000) return v.toLocaleString(undefined, {maximumFractionDigits: 0}) + " M$";
+  if (v >= 10) return v.toFixed(0) + " M$";
+  return v.toFixed(1) + " M$";
+}
+function pct(part, total) { return total ? ((part/total)*100).toFixed(1) + "%" : "0.0%"; }
+
+function setView(name) {
+  activeView = name;
+  document.getElementById("tab-table").classList.toggle("active", name === "table");
+  document.getElementById("tab-treemap").classList.toggle("active", name === "treemap");
+  document.getElementById("view-table").classList.toggle("active", name === "table");
+  document.getElementById("view-treemap").classList.toggle("active", name === "treemap");
+  if (name === "treemap") renderTreemap();
+}
+
+// =============== TABLE VIEW ===============
+function renderTable() {
+  const rows = Object.entries(CONCEPT.cas)
+    .filter(([_, a]) => a.cost_m_usd > 0)
+    .sort((a, b) => b[1].cost_m_usd - a[1].cost_m_usd);
+  const total = rows.reduce((s, [_, a]) => s + a.cost_m_usd, 0);
+  const hasCAS22Detail = Object.values(CONCEPT.cas22_detail).some(s => s.cost_m_usd > 0);
+
+  document.getElementById("total-display").textContent = fmtMoney(total);
+  document.getElementById("largest-name").textContent =
+    rows[0] ? `${rows[0][1].name} (${pct(rows[0][1].cost_m_usd, total)})` : "—";
+
+  const stripe = document.getElementById("stripe");
+  stripe.innerHTML = "";
+  for (const [casKey, a] of rows) {
+    const seg = document.createElement("div");
+    seg.className = "stripe-seg" + (a.overridden ? " overridden" : "");
+    seg.style.flex = `${a.cost_m_usd} 0 0`;
+    seg.style.background = CAS_COLORS[casKey] || "#6B7280";
+    seg.title = `${a.name}${a.overridden ? " ★" : ""}\n${fmtMoney(a.cost_m_usd)} · ${pct(a.cost_m_usd, total)}`;
+    stripe.appendChild(seg);
+  }
+
+  const tbody = document.getElementById("cas-tbody");
+  tbody.innerHTML = "";
+  for (const [casKey, a] of rows) {
+    const isCAS22 = casKey === "cas22" && hasCAS22Detail;
+    const tr = document.createElement("tr");
+    if (isCAS22) {
+      tr.className = "expandable";
+      tr.onclick = () => { cas22Expanded = !cas22Expanded; renderTable(); };
+    }
+    tr.innerHTML = `
+      <td class="name">
+        <span class="chev">${isCAS22 ? (cas22Expanded ? "▾" : "▸") : ""}</span>
+        <span class="swatch ${a.overridden ? "overridden" : ""}" style="background-color: ${CAS_COLORS[casKey] || "#6B7280"};"></span>
+        ${a.name}${a.overridden ? '<span class="star" title="Overridden">★</span>' : ""}
+      </td>
+      <td class="num">${fmtMoney(a.cost_m_usd)}</td>
+      <td class="num pct-of-total"><b>${pct(a.cost_m_usd, total)}</b></td>
+    `;
+    tbody.appendChild(tr);
+
+    if (isCAS22 && cas22Expanded) {
+      const subRows = Object.entries(CONCEPT.cas22_detail)
+        .filter(([_, s]) => s.cost_m_usd > 0)
+        .sort((a, b) => b[1].cost_m_usd - a[1].cost_m_usd);
+      subRows.forEach(([_, s], idx) => {
+        const subColor = CAS22_COLORS[idx % CAS22_COLORS.length];
+        const subTr = document.createElement("tr");
+        subTr.className = "sub";
+        subTr.innerHTML = `
+          <td class="name">
+            <span class="swatch ${s.overridden ? "overridden" : ""}" style="background-color: ${subColor};"></span>
+            ${s.name}${s.overridden ? '<span class="star" title="Overridden">★</span>' : ""}
+          </td>
+          <td class="num">${fmtMoney(s.cost_m_usd)}</td>
+          <td class="num pct-of-total"><b>${pct(s.cost_m_usd, total)}</b></td>
+        `;
+        tbody.appendChild(subTr);
+      });
+    }
+  }
+}
+
+// =============== TREEMAP VIEW ===============
+function squarify(values, x, y, w, h) {
+  const total = values.reduce((s, v) => s + v.value, 0);
+  const tiles = [];
+  if (total <= 0 || values.length === 0) return tiles;
+  const scale = (w * h) / total;
+  let remaining = values.map(v => ({ ...v, area: v.value * scale }));
+  let curX = x, curY = y, curW = w, curH = h;
+
+  while (remaining.length > 0) {
+    const shorter = Math.min(curW, curH);
+    const row = []; let rowSum = 0; let bestRatio = Infinity;
+
+    for (let i = 0; i < remaining.length; i++) {
+      const candSum = rowSum + remaining[i].area;
+      const candRow = row.concat(remaining[i]);
+      const candRatio = worstRatio(candRow, candSum, shorter);
+      if (candRatio < bestRatio) {
+        row.push(remaining[i]); rowSum = candSum; bestRatio = candRatio;
+      } else { break; }
+    }
+
+    const stripThickness = rowSum / shorter;
+    let pos = 0;
+    for (const tile of row) {
+      const tileLen = (tile.area / rowSum) * shorter;
+      if (curW >= curH) tiles.push({ ...tile, x: curX, y: curY + pos, w: stripThickness, h: tileLen });
+      else              tiles.push({ ...tile, x: curX + pos, y: curY, w: tileLen, h: stripThickness });
+      pos += tileLen;
+    }
+    if (curW >= curH) { curX += stripThickness; curW -= stripThickness; }
+    else              { curY += stripThickness; curH -= stripThickness; }
+    remaining = remaining.slice(row.length);
+  }
+  return tiles;
+}
+function worstRatio(row, rowSum, shorter) {
+  if (rowSum <= 0) return Infinity;
+  const stripThickness = rowSum / shorter;
+  let worst = 0;
+  for (const t of row) {
+    const tileLen = (t.area / rowSum) * shorter;
+    const r = Math.max(stripThickness / tileLen, tileLen / stripThickness);
+    if (r > worst) worst = r;
+  }
+  return worst;
+}
+
+function renderTreemap() {
+  const svg = document.getElementById("treemap-svg");
+  svg.innerHTML = "";
+  const W = 1392, H = 600;
+  const totalAll = Object.values(CONCEPT.cas).reduce((s, a) => s + a.cost_m_usd, 0);
+
+  let values, headerLabel;
+  if (drilledInto === "cas22") {
+    values = Object.entries(CONCEPT.cas22_detail)
+      .filter(([_, s]) => s.cost_m_usd > 0)
+      .map(([key, s], i) => ({ id: key, name: s.name, value: s.cost_m_usd, color: CAS22_COLORS[i % CAS22_COLORS.length], overridden: s.overridden, drillable: false }))
+      .sort((a, b) => b.value - a.value);
+    headerLabel = `CAS22 — Reactor Plant Equipment (${fmtMoney(CONCEPT.cas.cas22.cost_m_usd)} · ${pct(CONCEPT.cas.cas22.cost_m_usd, totalAll)} of total)`;
+  } else {
+    values = Object.entries(CONCEPT.cas)
+      .filter(([_, a]) => a.cost_m_usd > 0)
+      .map(([key, a]) => ({
+        id: key, name: a.name, value: a.cost_m_usd, color: CAS_COLORS[key] || "#6B7280", overridden: a.overridden,
+        drillable: key === "cas22" && Object.values(CONCEPT.cas22_detail).some(s => s.cost_m_usd > 0),
+      }))
+      .sort((a, b) => b.value - a.value);
+  }
+
+  const bc = document.getElementById("breadcrumb");
+  bc.innerHTML = drilledInto
+    ? `<a onclick="treemapUp()">← All CAS</a> &nbsp;/&nbsp; ${headerLabel}`
+    : `Click a tile to inspect; CAS22 (Reactor Plant Equipment) drills into sub-accounts.`;
+
+  const tiles = squarify(values, 0, 0, W, H);
+  const ns = "http://www.w3.org/2000/svg";
+  const defs = document.createElementNS(ns, "defs");
+  defs.innerHTML = `<pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="rgba(252,211,77,0.5)" stroke-width="2"/></pattern>`;
+  svg.appendChild(defs);
+
+  for (const t of tiles) {
+    const g = document.createElementNS(ns, "g");
+    g.setAttribute("class", "tile" + (t.drillable ? " drillable" : ""));
+    if (t.drillable) g.addEventListener("click", () => { drilledInto = t.id; renderTreemap(); });
+
+    const rect = document.createElementNS(ns, "rect");
+    rect.setAttribute("class", "tile-bg");
+    rect.setAttribute("x", t.x); rect.setAttribute("y", t.y);
+    rect.setAttribute("width", t.w); rect.setAttribute("height", t.h);
+    rect.setAttribute("fill", t.color);
+    g.appendChild(rect);
+
+    if (t.overridden) {
+      const ov = document.createElementNS(ns, "rect");
+      ov.setAttribute("x", t.x); ov.setAttribute("y", t.y);
+      ov.setAttribute("width", t.w); ov.setAttribute("height", t.h);
+      ov.setAttribute("fill", "url(#hatch)"); ov.setAttribute("pointer-events", "none");
+      g.appendChild(ov);
+    }
+
+    if (t.w > 70 && t.h > 28) {
+      const lbl = document.createElementNS(ns, "text");
+      lbl.setAttribute("class", "tile-label"); lbl.setAttribute("x", t.x + 8); lbl.setAttribute("y", t.y + 18);
+      lbl.textContent = (t.overridden ? "★ " : "") + t.name + (t.drillable ? "  ▸" : "");
+      g.appendChild(lbl);
+      const sub = document.createElementNS(ns, "text");
+      sub.setAttribute("class", "tile-sub"); sub.setAttribute("x", t.x + 8); sub.setAttribute("y", t.y + 34);
+      sub.textContent = `${fmtMoney(t.value)} · ${pct(t.value, totalAll)}`;
+      g.appendChild(sub);
+    } else if (t.w > 30 && t.h > 16) {
+      const lbl = document.createElementNS(ns, "text");
+      lbl.setAttribute("class", "tile-sub"); lbl.setAttribute("x", t.x + 4); lbl.setAttribute("y", t.y + 12);
+      lbl.textContent = fmtMoney(t.value);
+      g.appendChild(lbl);
+    }
+
+    const title = document.createElementNS(ns, "title");
+    title.textContent = `${t.name}${t.overridden ? " (overridden)" : ""}\n${fmtMoney(t.value)} · ${pct(t.value, totalAll)} of total`;
+    g.appendChild(title);
+    svg.appendChild(g);
+  }
+}
+function treemapUp() { drilledInto = null; renderTreemap(); }
+
+renderTable();
+</script>
+</body>
+</html>

@@ -704,65 +704,6 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   Headline Economics Section
-   -------------------------------------------------------------------------- */
-
-.headline-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: var(--space-3);
-}
-
-.headline-metric {
-  background-color: var(--color-surface-2);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-3);
-}
-
-.headline-metric__label {
-  font-size: var(--font-size-xs);
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  margin-bottom: var(--space-1);
-}
-
-.headline-metric__value {
-  font-family: var(--font-mono);
-  font-size: var(--font-size-xl);
-  font-weight: 700;
-  color: var(--color-text-primary);
-  line-height: 1.1;
-}
-
-.headline-metric__unit {
-  font-size: var(--font-size-sm);
-  font-weight: 400;
-  color: var(--color-text-secondary);
-  margin-left: var(--space-1);
-}
-
-.headline-metric--loading {
-  opacity: 0.5;
-  position: relative;
-}
-
-.headline-metric--loading::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius-md);
-  background: linear-gradient(90deg, transparent 0%, rgba(230, 237, 243, 0.04) 50%, transparent 100%);
-  animation: shimmer 1.5s infinite;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-/* --------------------------------------------------------------------------
    Concept Hero / Identity
    -------------------------------------------------------------------------- */
 
@@ -900,48 +841,230 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   Sliders (concept profile — costingfe-backed only)
+   Collapsible sections (concept profile)
    -------------------------------------------------------------------------- */
 
-.sliders-panel {
-  background-color: var(--color-surface-1);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-4);
+.section {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 6px;
+  background: var(--color-surface-1);
+  margin-bottom: 16px;
+  overflow: hidden;
 }
 
-.slider-row {
+.section__header {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-2) 0;
-  border-bottom: 1px solid var(--color-border-subtle);
+  gap: 12px;
+  padding: 14px 18px;
+  cursor: pointer;
+  user-select: none;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
 }
 
-.slider-row:last-child {
-  border-bottom: none;
+.section__header:hover {
+  background: rgba(255, 255, 255, 0.025);
 }
 
-.slider-row__label {
-  flex: 0 0 160px;
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
+.section__chevron {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+  color: var(--color-text-muted);
+}
+
+.section.is-collapsed .section__chevron {
+  transform: rotate(-90deg);
+}
+
+.section__title {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.section__hint {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-left: auto;
+  text-align: right;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.slider-row__input {
-  flex: 1;
-  accent-color: var(--color-well-established);
+.section__hint--changed {
+  color: var(--color-concept-unique);
+  font-weight: 600;
+  background: rgba(245, 158, 11, 0.12);
+  padding: 2px 8px;
+  border-radius: 3px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 10px;
 }
 
-.slider-row__value {
-  flex: 0 0 80px;
-  text-align: right;
-  font-family: var(--font-mono);
-  font-size: var(--font-size-sm);
+.section__body {
+  padding: 0 18px 18px;
+  border-top: 1px solid var(--color-border-subtle);
+  padding-top: 16px;
+}
+
+.section.is-collapsed .section__body {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   Sticky headline (concept profile — sits below topnav, drives slider feedback)
+   -------------------------------------------------------------------------- */
+
+.sticky-headline {
+  position: sticky;
+  top: var(--nav-height);
+  z-index: 20;
+  /* `background` is the no-blur fallback; `backdrop-filter` is progressive enhancement */
+  background: var(--color-surface-1);
+  background: rgba(13, 17, 23, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.sticky-headline__crumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: auto;
+  min-width: 0;
+}
+
+.sticky-headline__crumb-name {
+  font-size: 13px;
+  font-weight: 600;
   color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sticky-headline__crumb-co {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sticky-headline__badge {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.sticky-headline__badge--mfe {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--color-badge-mfe);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.sticky-headline__badge--ife {
+  background: rgba(168, 85, 247, 0.15);
+  color: var(--color-badge-ife);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.sticky-headline__badge--mif {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--color-badge-mif);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.sticky-headline__badge--nonstandard {
+  background: rgba(107, 114, 128, 0.15);
+  color: var(--color-badge-nonstandard);
+  border: 1px solid rgba(107, 114, 128, 0.3);
+}
+
+.sticky-headline__pill {
+  display: flex;
+  flex-direction: column;
+  min-width: 96px;
+  padding-left: 14px;
+  border-left: 1px solid var(--color-border-subtle);
+}
+
+.sticky-headline__pill-row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.sticky-headline__pill-value {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.sticky-headline__pill-unit {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+
+.sticky-headline__pill-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-muted);
+  margin-top: 1px;
+}
+
+.sticky-headline__pill-delta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  margin-left: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.sticky-headline__pill-delta--up   { color: var(--color-concept-unique); }  /* orange — LCOE worse */
+.sticky-headline__pill-delta--down { color: var(--color-key-innovation); }  /* green — LCOE better */
+.sticky-headline__pill-delta--neutral { color: var(--color-text-muted); }
+
+.sticky-headline__reset {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-size: 11px;
+  font-family: var(--font-sans);
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.sticky-headline__reset:hover:not(:disabled) {
+  background: var(--color-surface-2);
+  color: var(--color-text-primary);
+}
+
+.sticky-headline__reset:disabled {
+  opacity: 0.35;
+  cursor: default;
 }
 
 /* --------------------------------------------------------------------------
@@ -2377,4 +2500,236 @@ main {
 .capex-toggle:hover {
   color: var(--color-text-primary);
   border-color: var(--color-border);
+}
+
+/* ------------------------------------------------------------------ */
+/* CAS Cost Breakdown widget (concept page) — Table + Treemap          */
+/* ------------------------------------------------------------------ */
+
+.cas-widget {
+  --cas-widget-override: #fcd34d;
+}
+
+.cas-widget__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  margin-bottom: var(--space-3);
+}
+
+.cas-widget__tabs {
+  display: inline-flex;
+  background: var(--color-surface-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 2px;
+}
+.cas-widget__tab {
+  background: transparent;
+  border: 0;
+  color: var(--color-text-secondary);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--font-size-sm);
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+}
+.cas-widget__tab.is-active {
+  background: var(--color-surface-3);
+  color: var(--color-text-primary);
+}
+.cas-widget__tab:hover:not(.is-active) {
+  color: var(--color-text-primary);
+}
+
+.cas-widget__total-line {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  margin-bottom: var(--space-3);
+}
+.cas-widget__total {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xl);
+  font-variant-numeric: tabular-nums;
+}
+
+/* === Table view === */
+
+.cas-widget__stripe-wrap {
+  margin-bottom: var(--space-1);
+}
+.cas-widget__stripe {
+  width: 100%;
+  height: 18px;
+  display: flex;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--color-surface-2);
+}
+.cas-widget__stripe-seg {
+  height: 100%;
+  transition: opacity 0.1s;
+}
+.cas-widget__stripe-seg:hover {
+  opacity: 0.8;
+}
+.cas-widget__stripe-seg.is-overridden {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0 4px,
+    rgba(252, 211, 77, 0.5) 4px 6px
+  );
+}
+.cas-widget__stripe-caption {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  margin-top: var(--space-1);
+  margin-bottom: var(--space-4);
+  display: flex;
+  gap: var(--space-4);
+  justify-content: space-between;
+}
+.cas-widget__stripe-caption b {
+  color: var(--color-text-primary);
+}
+
+.cas-widget__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.cas-widget__table th {
+  text-align: left;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.cas-widget__table th.num {
+  text-align: right;
+}
+.cas-widget__table th.num:nth-child(2) { width: 130px; }
+.cas-widget__table th.num:nth-child(3) { width: 100px; }
+.cas-widget__table td {
+  padding: 6px 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+  vertical-align: middle;
+}
+.cas-widget__table td.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.cas-widget__table tr:hover td {
+  background: rgba(255, 255, 255, 0.025);
+}
+.cas-widget__table tr.is-expandable,
+.cas-widget__table tr.is-clickable {
+  cursor: pointer;
+}
+.cas-widget__table tr.is-expandable:hover td {
+  background: rgba(88, 166, 255, 0.06);
+}
+
+.cas-widget__chev {
+  color: var(--color-text-muted);
+  display: inline-block;
+  width: 14px;
+}
+.cas-widget__swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  margin-right: var(--space-2);
+  vertical-align: middle;
+}
+.cas-widget__swatch.is-overridden {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0 2px,
+    rgba(252, 211, 77, 0.6) 2px 3px
+  ) !important;
+}
+.cas-widget__star {
+  color: var(--cas-widget-override);
+  margin-left: var(--space-1);
+}
+.cas-widget__pct {
+  color: var(--color-text-secondary);
+}
+.cas-widget__pct b {
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.cas-widget__table tr.is-sub td {
+  background: rgba(255, 255, 255, 0.015);
+  font-size: var(--font-size-sm);
+}
+.cas-widget__table tr.is-sub td.num {
+  color: var(--color-text-primary);
+}
+.cas-widget__name--sub {
+  padding-left: 36px !important;
+  color: var(--color-text-secondary);
+  position: relative;
+}
+.cas-widget__name--sub::before {
+  content: "";
+  position: absolute;
+  left: 22px;
+  top: 0;
+  bottom: 0;
+  border-left: 1px solid var(--color-border);
+}
+
+/* === Treemap view === */
+
+.cas-widget__breadcrumb {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  margin: 0 0 var(--space-2);
+}
+.cas-widget__breadcrumb-link {
+  color: #58a6ff;
+  cursor: pointer;
+  text-decoration: none;
+}
+.cas-widget__breadcrumb-link:hover {
+  text-decoration: underline;
+}
+.cas-widget__treemap {
+  width: 100%;
+  display: block;
+  height: 600px;
+}
+.cas-widget__tile {
+  transition: opacity 0.1s;
+}
+.cas-widget__tile.is-drillable,
+.cas-widget__tile.is-clickable {
+  cursor: pointer;
+}
+.cas-widget__tile:hover {
+  opacity: 0.85;
+}
+.cas-widget__tile-bg {
+  stroke: var(--color-bg);
+  stroke-width: 2;
+}
+.cas-widget__tile-label {
+  pointer-events: none;
+  font: 600 var(--font-size-sm) var(--font-sans);
+  fill: #fff;
+}
+.cas-widget__tile-sub {
+  pointer-events: none;
+  font: 400 var(--font-size-xs) var(--font-sans);
+  fill: rgba(255, 255, 255, 0.85);
 }

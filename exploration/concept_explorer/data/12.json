@@ -407,83 +407,75 @@
   "parameter_metadata": {},
   "narrative": {
     "key_bets": [
-      "Confinement scaling from LDX's 14.5 ms energy confinement time to the required τ_e = 3.5 s (~240× extrapolation) holds at Bohm-like or better in a high-β levitated dipole",
-      "Q_sci = 15 is achievable at the Reactor A design point, contingent on the Tahi prototype (~2028) validating the required n·τ_e scaling",
-      "ICRH at 70% wall-plug efficiency couples effectively in a dipole magnetic field topology (undemonstrated outside tokamaks)",
-      "Annual sacrificial coil replacement (~20% of core magnet, ~864 km/yr REBCO tape) can be executed under neutron activation within the stated ~5-minute docking operation",
-      "A 23 T peak-field levitated REBCO coil with onboard superconducting flux pump can be built at ~29.4 kA operating current and 30 K using neon slush cooling",
-      "Natural (unenriched) Li₂O solid ceramic blanket achieves TBR = 1.1 with ~75% neutron coverage via tungsten shield multiplication",
-      "Particle/heat exhaust onto an outer-midplane limiter at 0.198 MW/m² (vs. 1–2.5 MW/m² tokamak divertors) is sustainable without a dedicated divertor"
+      "Confinement scaling extrapolates 240× from LDX (14.5 ms) to required τ_e = 3.5 s under Bohm-like or better scaling, validated by Tahi prototype (~2028)",
+      "Q_sci = 15 operating point achievable in a high-β levitated dipole geometry",
+      "ICRH coupling at 70% wall-plug efficiency works in a dipole field topology (undemonstrated; ECRH/NBI as fallbacks)",
+      "Annual sacrificial coil replacement cycle (outer ~20% of REBCO coil) is operationally and economically viable under neutron activation",
+      "Levitated HTS coil sustains 23 T peak field with on-board flux pump scaled from ~600 A demonstrated to 29.4 kA operating current",
+      "Li₂O solid ceramic blanket achieves TBR = 1.1 with natural (unenriched) lithium via tungsten neutron multiplication",
+      "Layered W-B₄C-W shield protects REBCO tape with 4-decade fast neutron flux attenuation while operating tungsten tiles at 1950 K above recrystallization"
     ],
     "eliminated_costs": [
-      "Central solenoid, toroidal field coils, and poloidal field coil set (single levitated internal coil replaces the entire external coil array)",
-      "Disruption mitigation systems and disruption-driven first-wall fatigue replacement (no plasma current → mechanistically no disruptions)",
-      "Dedicated high-heat-flux divertor and associated scheduled replacement cycle (exhaust falls on outer wall at ~5–12× lower heat flux)",
-      "Thermal energy storage for grid decoupling during pulse cycling (plasma is inherently steady-state)",
-      "Lithium-6 isotope enrichment infrastructure (natural Li₂O achieves TBR = 1.1 via W neutron multiplication)"
+      "No disruption mitigation system, thermal dump resistors, or disruption-driven first-wall fatigue (no plasma current → mechanically cannot disrupt)",
+      "No thermal energy storage required for grid decoupling during disruptions",
+      "No dedicated divertor or high-frequency divertor module replacement cycle (first wall heat flux 0.198 MW/m² vs. 1–2.5 MW/m² at tokamak divertors)",
+      "No Li-6 isotope enrichment cost (natural Li₂O suffices)",
+      "No central solenoid, toroidal field coils, or external PF coil set (single levitated coil replaces 16–18 tokamak coils)"
     ],
     "novel_costs": [
-      "Annual sacrificial coil replacement: ~864 km/yr REBCO tape plus remote handling, qualification testing, and spare-pool logistics (no analogue in any other fusion or fission concept)",
-      "Remote handling system for neutron-activated, levitated HTS coil assembly passing through the blanket region during docking",
-      "Neon slush cryogenic system with onboard reservoir (45-minute float time) and supply chain exposure to limited global neon production (~200,000 m³/yr)",
-      "Reinforced concrete outer vacuum vessel (38,700 tonnes — dominates plant mass, though a cost advantage vs. precision-steel tokamak VVs)",
-      "Tritium accounting and inventory management during annual coil docking cycles that traverse the breeding blanket"
+      "Annual sacrificial coil replacement: ~864 km/yr REBCO tape plus remote handling, qualification testing, and spare pool logistics (~$52M/yr at $75/kA-m baseline)",
+      "Remote handling system for activated, neutron-irradiated levitated HTS coil with hot-cell refurbishment capability",
+      "Onboard neon slush cryogenic reservoir system with rapid drain-and-refill docking cycle (45-minute float time)",
+      "HTS flux pump scaled to deliver 20+ GJ stored energy without current leads during levitated operation",
+      "Tritium accounting and inventory management during periodic core magnet docking through the blanket region"
     ],
     "risks": [
       {
-        "description": "Confinement scaling extrapolation of ~240× from LDX to Reactor A τ_e = 3.5 s with no empirical dipole scaling law; sub-Bohm transport makes Reactor A nonviable as designed (binary threshold, not continuous cost penalty)",
+        "description": "Confinement scaling extrapolation of 240× from LDX to required τ_e = 3.5 s is unvalidated; if Tahi fails to demonstrate Bohm-like scaling, Reactor A is nonviable as designed (binary viability threshold)",
         "severity": "high"
       },
       {
-        "description": "OpenStar's absolute LCOE and overnight capital figures are deliberately withheld as 'preliminary'; no independent TEA or system-code study exists, leaving no company anchor point",
+        "description": "Annual sacrificial coil replacement cost is unquantified; at $75/kA-m tape, raw cost ~$47M/yr (~30% of annual capital charge), spanning ~2× LCOE uncertainty",
         "severity": "high"
       },
       {
-        "description": "Sacrificial coil annual replacement cost (REBCO tape + remote handling + qualification) unquantified; raw tape cost alone is ~$47M/yr at $75/kA-m (~30% of annual capital charge), spanning ~2× LCOE uncertainty",
+        "description": "ICRH coupling in dipole field geometry is undemonstrated; fallback to ECRH at 30–40% efficiency cuts net output 23–41% (208 MWe → 123–160 MWe)",
         "severity": "high"
       },
       {
-        "description": "ICRH coupling in dipole field geometry is undemonstrated; ECRH fallback at 30–40% wall-plug efficiency reduces net output from 208 MWe to ~123–160 MWe (23–41% reduction)",
+        "description": "Plasma edge physics uncharacterized — edge temperature/pressure bounds borrowed from I-mode tokamak data, not dipole experiments; tighter edge limits propagate directly to Q_sci and recirculating power",
         "severity": "high"
       },
       {
-        "description": "Plasma edge physics uncharacterized; edge temperature (800 eV) and pressure (10³ Pa) bounds borrowed from I-mode tokamak data, not dipole experiments",
+        "description": "Absolute overnight capital cost and LCOE figures withheld by OpenStar; no independent TEA, system-code, or cost-model anchor exists for the concept",
         "severity": "high"
       },
       {
-        "description": "REBCO tape performance at 23 T peak field and 30 K under combined mechanical stress and 14 MeV neutron irradiation not characterized; irradiation database exists only to ~10–12 T",
-        "severity": "high"
-      },
-      {
-        "description": "Thermal conversion cycle (Rankine vs. sCO₂) unspecified despite stated 40% efficiency; BOP capital cost cannot be accurately estimated and efficiency range 33–47% spans >12 c/kWh LCOE",
+        "description": "REBCO tape supply chain insufficient at fleet scale — global production ~1,000–2,000 km/yr against ~5,520 km initial + ~864 km/yr recurring per Reactor A",
         "severity": "medium"
       },
       {
-        "description": "Remote handling of annually replaced, neutron-activated levitated HTS coil has no design study published; 5-minute docking refers to cryogenic coupling only, not full replacement cycle",
+        "description": "Thermal cycle (Rankine vs. sCO₂) unspecified despite 40% η_th assumption; 5 pp efficiency reduction lowers net output ~12% and raises LCOE proportionally",
         "severity": "medium"
       },
       {
-        "description": "Tungsten shield tiles operating at 1950 K (above recrystallization temperature) under 14 MeV neutron irradiation have unvalidated long-term creep and mechanical performance",
+        "description": "Tungsten tiles operating at 1950 K above recrystallization temperature have unproven long-term creep behavior under 14 MeV neutron irradiation",
         "severity": "medium"
       },
       {
-        "description": "Global REBCO tape production (~1,000–2,000 km/yr) is insufficient for even a single Reactor A (5,520 km initial + ~864 km/yr recurring) and is shared with HTS tokamak programs",
+        "description": "REBCO critical current at 23 T, 30 K under combined mechanical stress and neutron irradiation not characterized (existing data only to ~10–12 T)",
         "severity": "medium"
       },
       {
-        "description": "Global neon supply (~200,000 m³/yr as air-liquefaction byproduct) may create fleet-scale cryogen tension; hydrogen fallback requires 5× larger reservoir",
+        "description": "Neon supply chain unassessed at fleet scale; global production ~200,000 m³/yr from limited air-separation operators (hydrogen fallback requires 5× larger reservoir)",
         "severity": "medium"
       },
       {
-        "description": "First wall (Inconel 718 + W coating) lifetime under neutron irradiation and thermal cycling not quantified; paper treats first wall as semi-permanent without substantiation",
+        "description": "First wall lifetime under combined neutron irradiation and thermal cycling not addressed; paper treats first wall as semi-permanent infrastructure without quantification",
         "severity": "medium"
       },
       {
-        "description": "Tritium accounting during docking cycles (core magnet passes through blanket region) not addressed in any published material",
-        "severity": "low"
-      },
-      {
-        "description": "Top magnet (levitation coil) design explicitly out of scope in Simpson et al.; paper assumes negligible cost",
+        "description": "Tritium accounting during annual docking cycles (core magnet passing through blanket region) not addressed in published materials",
         "severity": "low"
       }
     ]

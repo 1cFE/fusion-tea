@@ -20,7 +20,7 @@
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 3812.75244140625,
+      "cost_m_usd": 3812.751953125,
       "overridden": false
     },
     "cas23": {
@@ -60,7 +60,7 @@
     },
     "cas30": {
       "name": "Indirect Costs",
-      "cost_m_usd": 878.22021484375,
+      "cost_m_usd": 878.2200927734375,
       "overridden": false
     },
     "cas40": {
@@ -75,7 +75,7 @@
     },
     "cas60": {
       "name": "Interest During Construction",
-      "cost_m_usd": 999.1480102539062,
+      "cost_m_usd": 999.14794921875,
       "overridden": false
     },
     "cas70": {
@@ -90,7 +90,7 @@
     },
     "cas90": {
       "name": "Financial Costs",
-      "cost_m_usd": 616.7743530273438,
+      "cost_m_usd": 616.7742919921875,
       "overridden": false
     },
     "cas22_detail": {
@@ -187,7 +187,7 @@
     },
     "headline": {
       "lcoe_per_mwh": 100.19348907470703,
-      "overnight_cost_per_kw": 6356.79345703125,
+      "overnight_cost_per_kw": 6356.79296875,
       "p_net_mw": 1203.9998779296875,
       "q_eng": 4.309999942779541,
       "capacity_factor": 0.75
@@ -448,74 +448,435 @@
       "noak": 1.0
     }
   },
-  "parameter_metadata": {},
+  "parameter_metadata": {
+    "availability": {
+      "display_name": "Availability",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.75,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.5249999999999999,
+        0.9750000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "construction_time_yr": {
+      "display_name": "Construction Time",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 5.0,
+      "display_multiplier": 1.0,
+      "display_unit": "yr",
+      "range": [
+        3.5,
+        6.5
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "mn": {
+      "display_name": "Energy Multiplication Mₙ",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.1,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.77,
+        1.4300000000000002
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_th": {
+      "display_name": "Thermal Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.4,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.27999999999999997,
+        0.52
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_sub": {
+      "display_name": "Subsystem Power Fraction",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.03,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.020999999999999998,
+        0.039
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_pump": {
+      "display_name": "Pumping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        0.7,
+        1.3
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_trit": {
+      "display_name": "Tritium Plant Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 10.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        7.0,
+        13.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_house": {
+      "display_name": "Housekeeping Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        2.8,
+        5.2
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_cryo": {
+      "display_name": "Cryogenic Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.5,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        0.35,
+        0.65
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "blanket_t": {
+      "display_name": "Blanket Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.8,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.5599999999999999,
+        1.04
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "ht_shield_t": {
+      "display_name": "HT Shield Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.25,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.175,
+        0.325
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "structure_t": {
+      "display_name": "Structure Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.15,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.105,
+        0.195
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "vessel_t": {
+      "display_name": "Vessel Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "plasma_t": {
+      "display_name": "Minor Radius",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 8.0,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        5.6,
+        10.4
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_T": {
+      "display_name": "Dd F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.969,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6782999999999999,
+        1.2597
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dd_f_He3": {
+      "display_name": "Dd F He3",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.689,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.48229999999999995,
+        0.8956999999999999
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_dd_frac": {
+      "display_name": "Dhe3 Dd Frac",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.07,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.049,
+        0.09100000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "dhe3_f_T": {
+      "display_name": "Dhe3 F T",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.97,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.6789999999999999,
+        1.261
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "q_eng": {
+      "display_name": "Engineering Q",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 4.31,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        3.0169999999999995,
+        5.603
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_rep": {
+      "display_name": "Repetition Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 10.0,
+      "display_multiplier": 1.0,
+      "display_unit": "Hz",
+      "range": [
+        7.0,
+        13.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_pin": {
+      "display_name": "Injector Efficiency",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "f_rad": {
+      "display_name": "F Rad",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.1,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.06999999999999999,
+        0.13
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_target": {
+      "display_name": "Target Plant Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 1.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        0.7,
+        1.3
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "eta_dec": {
+      "display_name": "Eta Dec",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.85,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.595,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "interest_rate": {
+      "display_name": "Interest Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.07,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.049,
+        0.09100000000000001
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "inflation_rate": {
+      "display_name": "Inflation Rate",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.0245,
+      "display_multiplier": 100.0,
+      "display_unit": "%",
+      "range": [
+        0.01715,
+        0.03185
+      ],
+      "source": null,
+      "modeling_note": null
+    }
+  },
   "narrative": {
     "key_bets": [
-      "Shock ignition achieves target gain G ≈ 120 at 3 MJ laser energy — nearly two orders of magnitude above demonstrated NIF Q ≈ 2.5",
-      "DPSSL laser driver scales ~50× from kJ-class demonstrators (LUCIA, Mercury, HALNA) to MJ-class operation at 10 Hz sustained repetition rate with ~10% wall-plug efficiency",
-      "Tritium breeding ratio can be raised from demonstrated 3.57×10⁻⁴ to >1.0 at commercial IFE neutron flux to close the fuel cycle",
-      "First wall material (tungsten or tantalum candidates) survives simultaneous 10 Hz pulsed neutron, X-ray, and ion loading at MW/m² over commercial lifetimes",
-      "Cryogenic DT targets with 2 mm diameter and nanometer-scale surface finish can be mass-produced at 86,400/day for <$2.78/target (Goodin criterion)",
-      "Direct-drive coupling efficiency (~4–5× better than indirect drive) is achievable at the illumination symmetry required for shock ignition",
-      "Final optics and beam delivery hardware survive gigashot MTTF (315M shots/year) against neutron fluence and pellet debris"
+      "Direct-drive shock ignition achieves target gain G ≈ 120 at 3 MJ laser energy — a ~50× extrapolation beyond NIF's demonstrated Q ≈ 2.5 (indirect drive)",
+      "DPSSL laser system delivers 3 MJ per shot at 10 Hz with ~10% wall-plug efficiency, scaling ~50× from current kJ-class systems (LUCIA, Mercury, HALNA)",
+      "Liquid lithium blanket achieves TBR > 1.0 at IFE-relevant neutron flux — a ~3,000× improvement over the demonstrated 3.57×10⁻⁴",
+      "Laser-plasma instabilities (SRS, SBS, TPD) at the shock-ignition spike intensity remain controllable enough to preserve simulated gain at MJ-scale",
+      "First wall and final optics survive years of 10 Hz pulsed neutron, X-ray, ion, and debris loading without unacceptable downtime (75% availability assumed)",
+      "Target factory produces 86,400 cryogenic DT capsules per day at <$2.78/target with sub-percent surface finish (Goodin criterion)",
+      "Direct drive delivers 4–5× better laser-to-target coupling than indirect drive, justifying lower laser energy per unit gain"
     ],
     "eliminated_costs": [
-      "No magnets, cryo-cooling infrastructure, or HTS supply chain — C220103 coils/magnets = $0",
-      "No separate plasma heating or current drive system — C220104 zeroed (laser driver is the sole plasma excitation source)",
-      "No direct energy conversion infrastructure (GenF uses thermal-only Rankine) — C220109 DEC = $0, avoiding BLF-style TRL 1–2 energy capture risk",
-      "No hohlraum manufacturing cost versus indirect-drive ICF variants (direct drive ablates target capsule directly)",
-      "No isotope separation infrastructure required on-site — C220112 = $0"
+      "Magnet system entirely eliminated (C220103 = $0) — no superconducting coils, no HTS supply chain, no magnet structural support",
+      "Cryogenic plant for magnet cooling eliminated — no large-scale liquid helium infrastructure",
+      "Hohlraum manufacturing avoided vs. indirect-drive ICF — direct illumination of the capsule removes the gold/depleted-uranium hohlraum cost line",
+      "Direct energy conversion hardware not used (C220109 = $0) — simpler thermal-only Rankine path avoids DEC TRL risk and capital",
+      "Plasma heating/current drive systems eliminated (C220104 = $0) — laser is sole excitation source, no NBI/ECRH/ICRH"
     ],
     "novel_costs": [
-      "Target factory CAPEX (C220600 = $244M placeholder) for industrial cryogenic DT target fabrication at 86,400/day — no MFE analogue and no validated IFE cost model",
-      "DPSSL laser driver (C220107 = $999M at $333/J baseline, sweep $300M–$3B) dominating CAS22 and representing 40–60% of plant capital structure",
-      "Target injection and chamber removal systems (C220108 = $334M) for 10 Hz injection into a 1,000–3,000 K chamber while maintaining cryogenic integrity",
-      "Final optics debris and neutron protection (grazing-incidence mirrors, debris shields, liquid films) for gigashot-scale survivability",
-      "Oversized 8 m chamber radius (vs. 4 m framework default) required to keep X-ray flux below 1 J/cm² — drives blanket/shield volume scaling as R³"
+      "On-site cryogenic DT target factory at 86,400 targets/day (C220600 = $244M placeholder, $100–500M sweep) — no MFE analogue and no demonstrated commercial throughput",
+      "MJ-class DPSSL laser driver with pump diodes (C220107 = $999M baseline, sweep $300M–$3B at $100–1,000/J) dominating CAPEX at ~$333/J",
+      "8 m chamber radius driven by X-ray flux limit (~1 J/cm²), inflating blanket/shield volume vs. typical 4 m default — second-largest LCOE elasticity (+0.60)",
+      "Final optics replacement and protection scheme against neutrons, X-rays, and debris at 10 Hz (gigashot MTTF requirement = 315M shots/year)",
+      "Target injection system delivering cryogenic capsules at 40–160 m/s into a 1,000–3,000 K chamber (C220108 = $334M)"
     ],
     "risks": [
       {
-        "description": "Target gain unvalidated at commercial parameters: NIF achieves Q ≈ 2.5 at 1–2 MJ indirect drive; G ≈ 120 at 3 MJ direct drive shock ignition has never been demonstrated and LPI effects (SRS, SBS, TPD) are excluded from the Ribeyre simulations",
+        "description": "Tritium fuel cycle cannot close — demonstrated TBR (3.57×10⁻⁴) is ~3,000× below the >1.0 required for self-sufficiency; global CANDU supply (<2 kg/yr) is ~180× short of >1 kg/day consumption",
         "severity": "high"
       },
       {
-        "description": "Tritium fuel cycle cannot close: demonstrated TBR = 3.57×10⁻⁴ vs. required >1.0 (~3,000× gap); consumption >1 kg/day vs. global CANDU supply <2 kg/yr (~180× shortfall) — feasibility constraint not reflected in LCOE",
+        "description": "Target gain G ≈ 120 at 3 MJ direct-drive shock ignition has never been demonstrated; NIF best is Q ≈ 2.5 (indirect drive); LPI effects excluded from Ribeyre simulations",
         "severity": "high"
       },
       {
-        "description": "First wall and final optics survivability at 10 Hz undemonstrated: pure tungsten shows significant lifetime reduction; gigashot MTTF (315M shots/yr) not achieved by any laser component; availability assumed at 0.75 with no empirical basis (−0.90 elasticity on LCOE)",
+        "description": "First wall material selection unresolved — pure tungsten shows significant lifetime reduction under combined thermal/neutron/X-ray loading; capacity factor of 0.75 is unsubstantiated",
         "severity": "high"
       },
       {
-        "description": "Laser driver CAPEX uncertainty spans $300M–$3B across $100–$1,000/J sweep; GenF/Thales have not published beamline count, architecture, or $/J cost; diodes must reach ~$0.007/W vs. current ~$0.02/W",
+        "description": "Laser CAPEX uncertainty spans 10× range ($100–$1,000/J), driving LCOE from $90/MWh to $129/MWh; GenF has not published beamline count, architecture, or cost basis",
         "severity": "high"
       },
       {
-        "description": "Li-6 enrichment supply chain gap: DEMO-scale demand >60 t/GW enriched lithium with no Western industrial capacity; Russia/China COLEX dominance; Hexium AVLIS at $12M seed only claims 3–5 yr to partial US independence",
+        "description": "Gigashot MTTF (315M shots/year at 10 Hz) for laser components has never been demonstrated; LRU swap-out maintenance architecture is unvalidated",
+        "severity": "high"
+      },
+      {
+        "description": "Target factory CAPEX is unconstrained (model uses $244M placeholder vs. $11.5M default formula — 21× discrepancy); per-target cost <$2.78 has no demonstrated pathway",
+        "severity": "high"
+      },
+      {
+        "description": "Li-6 enrichment supply chain is dominated by Russia/China COLEX; DEMO-scale demand >60 t/GW with no Western industrial capacity; Hexium AVLIS pathway is early-stage ($12M, 3–5 year horizon)",
         "severity": "medium"
       },
       {
-        "description": "Target manufacturing economics unconstrained: Goodin criterion requires <$2.78/target at 86,400/day; no public cost model exists and cryogenic DT targets at industrial throughput have never been demonstrated (C220600 ranges $100M–$500M+)",
-        "severity": "high"
-      },
-      {
-        "description": "Shock ignition LPI risk at igniting-spike intensity: OMEGA experiments partially de-risk hot-electron preheat (1–2.5% conversion, 35–45 keV) but only at ~10 kJ and 450 µm scale-length; convective SRS control at MJ scale requires additional validation",
+        "description": "Energy balance inconsistency in costingfe model (P_fusion = 2904 MW vs. Ribeyre-derived 3600 MW; Q_sci = 139.1 vs. expected 120) indicates parameter mapping error requiring audit",
         "severity": "medium"
       },
       {
-        "description": "Model energy balance inconsistency (F-1): costingfe reports P_fusion = 2904 MW vs. Ribeyre-derived 3600 MW (24% shortfall) and Q_sci = 139.1 vs. expected 120 — q_eng parameter mapping requires auditing, leaving only ~162 MWe margin after laser draw",
+        "description": "Frequency conversion crystals (KDP/DKDP) must be grown to optical perfection at MJ scale with UV damage management — manufacturing scale-up not demonstrated",
         "severity": "medium"
       },
       {
-        "description": "O&M cost structure entirely absent: no IFE concept has published fixed+variable O&M breakdown; laser optics replacement rate, chamber replacement interval, and maintenance downtime all unquantified",
-        "severity": "medium"
-      },
-      {
-        "description": "Thermodynamic cycle and chamber clearing strategy unspecified: steam Rankine assumed by analogy; no gas-jet, liquid wall, or magnetic divertor ash mitigation scheme published for 10 Hz operation",
-        "severity": "low"
-      },
-      {
-        "description": "Company early-stage risk: GenF founded January 2025, TARANIS in Phase 1 (modeling through 2027); no proprietary design documents disclosed and no third-party TEA or plant study exists for this specific concept",
+        "description": "GenF is very early-stage (founded January 2025, Phase 1 modeling through 2027); no proprietary engineering specifications, cost estimates, or independent TEA exist",
         "severity": "medium"
       }
     ]

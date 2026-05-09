@@ -29,7 +29,7 @@ ITER_FILE_MAP = {
     # old_pattern -> new_name (within iter-N/)
     "analysis_prompt_iter_{n}.md": "analyze_prompt.md",
     "assessment_prompt_iter_{n}.md": "assess_prompt.md",
-    "feedback_iter_{n}.md": "feedback.md",
+    "feedback_iter_{n}.md": "post_feedback.md",
 }
 
 # Non-iteration prompts to move to prompts/
@@ -190,7 +190,7 @@ def migrate_concept(concept_dir: Path, dry_run: bool = False) -> dict:
 
         # Generate verdict.json
         if not verdict_path.exists():
-            feedback_path = iter_dir / "feedback.md"
+            feedback_path = iter_dir / "post_feedback.md"
             if not feedback_path.exists():
                 # Pre-move location
                 feedback_path = concept_dir / f"feedback_iter_{n}.md"

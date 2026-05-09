@@ -215,7 +215,7 @@ class TestH03_FeedbackPassNoEditCheck:
 
         iter_dir = analysis_dir / "iter-2"
         iter_dir.mkdir()
-        feedback_path = analysis_dir / "iter-1" / "feedback.md"
+        feedback_path = analysis_dir / "iter-1" / "post_feedback.md"
         feedback_path.parent.mkdir(parents=True, exist_ok=True)
         feedback_path.write_text("VERDICT: FINDINGS\n\n### F-1: Fix something\n- **Category:** analysis\n")
 
@@ -384,7 +384,7 @@ class TestH09H10_ValidationPassedIgnored:
             nonlocal call_count
             call_count += 1
             # Write the bad file on every attempt
-            (iter_dir / "feedback.md").write_text(bad_feedback)
+            (iter_dir / "post_feedback.md").write_text(bad_feedback)
             return _make_subprocess_result("Done.", session_id="sid-1")
 
         mock_run.side_effect = side_effect
@@ -869,7 +869,7 @@ class TestIntegration_FeedbackPass:
         original = "---\nID: test\n---\n\nOriginal body.\n"
         fx.with_analysis(original)
         iter_dir = fx.iter_dir(2)
-        feedback_path = fx.iter_dir(1) / "feedback.md"
+        feedback_path = fx.iter_dir(1) / "post_feedback.md"
         feedback_path.write_text(
             "VERDICT: FINDINGS\n\n### F-1: Fix\n- **Category:** analysis\n"
         )
@@ -899,7 +899,7 @@ class TestIntegration_FeedbackPass:
         original = "---\nID: test\n---\n\nOriginal body.\n"
         fx.with_analysis(original)
         iter_dir = fx.iter_dir(2)
-        feedback_path = fx.iter_dir(1) / "feedback.md"
+        feedback_path = fx.iter_dir(1) / "post_feedback.md"
         feedback_path.write_text(
             "VERDICT: FINDINGS\n\n### F-1: Fix\n- **Category:** analysis\n"
         )
@@ -928,7 +928,7 @@ class TestIntegration_FeedbackPass:
         content = "---\nID: test\n---\n\nUnchanged body.\n"
         fx.with_analysis(content)
         iter_dir = fx.iter_dir(2)
-        feedback_path = fx.iter_dir(1) / "feedback.md"
+        feedback_path = fx.iter_dir(1) / "post_feedback.md"
         feedback_path.write_text(
             "VERDICT: FINDINGS\n\n### F-1: F\n- **Category:** analysis\n"
         )
@@ -1038,6 +1038,128 @@ class TestIntegration_ModelSetup:
 
 
 # ---------------------------------------------------------------------------
+# TestDispatchSymmetry — pre_feedback.md / post_feedback.md invariants
+# ---------------------------------------------------------------------------
+#
+# After the feedback-dispatch-symmetry rename, every iter > 1 dir contains:
+#   - pre_feedback.md   — input to analyze (one of: review extract, SI output
+#                          copy, merge result, or copy of prior post_feedback)
+#   - post_feedback.md  — output from assess (immutable transcript)
+#
+# These tests pin the three plan-stencil invariants from the original rename
+# work plan (`.project/active/feedback-dispatch-symmetry/plan.md`):
+#   1. Case 5 (default) writes pre_feedback.md as a byte-equal copy of the
+#      prior iter's post_feedback.md.
+#   2. Case 3 (source-integration) writes pre_feedback.md as a byte-equal copy
+#      of source_integration_output.md WITHOUT deleting/clobbering the SI file.
+#   3. _run_assess writes only post_feedback.md and never touches a sibling
+#      pre_feedback.md.
+# ---------------------------------------------------------------------------
+
+
+class TestDispatchSymmetry:
+    def test_copy_to_pre_feedback_byte_equal(self, tmp_path):
+        """Plan stencil 1 (Case 5): _copy_to_pre_feedback produces a byte-equal
+        copy of the source. This is the contract every dispatch fallthrough
+        relies on for the "ls iter-N/ tells you what fed me" property.
+        """
+        from lib.loop import _copy_to_pre_feedback
+
+        prior = tmp_path / "iter-1" / "post_feedback.md"
+        prior.parent.mkdir()
+        prior.write_text("VERDICT: FINDINGS\n\n### F-1: ...\n", encoding="utf-8")
+
+        iter_dir = tmp_path / "iter-2"
+        iter_dir.mkdir()
+
+        result = _copy_to_pre_feedback(prior, iter_dir)
+
+        assert result == iter_dir / "pre_feedback.md"
+        assert result.read_bytes() == prior.read_bytes()
+        # Source unchanged (copy, not move).
+        assert prior.exists()
+
+    def test_copy_to_pre_feedback_preserves_source(self, tmp_path):
+        """Plan stencil 2 (Case 3): copying source_integration_output.md to
+        pre_feedback.md must NOT delete or modify the SI artifact. The producer
+        artifact stays as the untouched record of what source-integration wrote.
+        """
+        from lib.loop import _copy_to_pre_feedback
+
+        iter_dir = tmp_path / "iter-2"
+        iter_dir.mkdir()
+        si_output = iter_dir / "source_integration_output.md"
+        si_content = "VERDICT: FINDINGS\n\n### F-1: New finding from source\n"
+        si_output.write_text(si_content, encoding="utf-8")
+
+        result = _copy_to_pre_feedback(si_output, iter_dir)
+
+        assert result == iter_dir / "pre_feedback.md"
+        assert result.read_bytes() == si_output.read_bytes()
+        # SI artifact preserved at its original path with original content.
+        assert si_output.exists()
+        assert si_output.read_text(encoding="utf-8") == si_content
+
+    def test_copy_to_pre_feedback_none_source(self, tmp_path):
+        """When source is None (no prior post_feedback.md), the helper returns
+        None without creating an empty file. The dispatch's downstream guard
+        then demotes feedback_source to 'cold_start'.
+        """
+        from lib.loop import _copy_to_pre_feedback
+
+        iter_dir = tmp_path / "iter-2"
+        iter_dir.mkdir()
+
+        result = _copy_to_pre_feedback(None, iter_dir)
+
+        assert result is None
+        assert not (iter_dir / "pre_feedback.md").exists()
+
+    def test_assess_does_not_clobber_pre_feedback(self, tmp_path):
+        """Plan stencil 3: after _run_assess writes post_feedback.md, a
+        sibling pre_feedback.md (written earlier in the same iteration by the
+        dispatch chain) is unmodified. Verifies invariant #1 from
+        design.md#required-invariants.
+        """
+        from lib.loop import _run_assess
+
+        fx = _make_fixture(tmp_path)
+        fx.with_analysis("---\nID: test\n---\n\nBody.\n")
+        iter_dir = fx.iter_dir(2)
+
+        pre_path = iter_dir / "pre_feedback.md"
+        pre_content = "## Carried-forward findings\n\n### F-1: input from prior\n"
+        pre_path.write_text(pre_content, encoding="utf-8")
+        pre_bytes_before = pre_path.read_bytes()
+
+        post_path = iter_dir / "post_feedback.md"
+        assess_output = (
+            "VERDICT: FINDINGS\n\n### F-1: New finding\n- **Category:** analysis\n"
+        )
+
+        fake = FakeClaude([
+            FakeInvocation(returncode=0, file_writes=[(post_path, assess_output)]),
+        ])
+        with patch("lib.loop.CONCEPT_ANALYSIS_DIR", new=tmp_path), fake:
+            verdict, count = _run_assess(
+                fx.concept, iter_dir, fx.analysis_path,
+                fx.assessment_template, fx.make_args(),
+                common_vars=fx.common_vars,
+            )
+
+        # post_feedback.md was written by assess.
+        assert post_path.exists()
+        assert post_path.read_text(encoding="utf-8") == assess_output
+
+        # pre_feedback.md is untouched — same bytes as before.
+        assert pre_path.exists()
+        assert pre_path.read_bytes() == pre_bytes_before
+
+        # The two files coexist with different content (the symmetry property).
+        assert post_path.read_bytes() != pre_path.read_bytes()
+
+
+# ---------------------------------------------------------------------------
 # TestIntegration_Assess — H-10: _run_assess must honor validation_passed
 # ---------------------------------------------------------------------------
 
@@ -1053,7 +1175,7 @@ class TestIntegration_Assess:
         fx = _make_fixture(tmp_path)
         fx.with_analysis("---\nID: test\n---\n\nBody.\n")
         iter_dir = fx.iter_dir(1)
-        feedback_path = iter_dir / "feedback.md"
+        feedback_path = iter_dir / "post_feedback.md"
 
         bad_feedback = "Here are my thoughts:\n- Point 1\n- Point 2\n"  # no VERDICT
 
@@ -1304,16 +1426,8 @@ class TestIntegration_ExtractExplorerData:
         fake_concept.model_dump_json.return_value = '{"concept_id": "42"}'
         monkeypatch.setattr(eed, "extract_standalone", lambda *a, **kw: fake_concept)
         monkeypatch.setattr(eed, "load_parameter_metadata", lambda *a, **kw: {})
-        # Manifest + parameter_index builders consume the returned list;
-        # stub them out so we don't need a real ConceptData shape.
-        monkeypatch.setattr(
-            eed, "build_manifest",
-            lambda extracted: MagicMock(model_dump_json=lambda indent=2: "{}"),
-        )
-        monkeypatch.setattr(
-            eed, "build_parameter_index",
-            lambda extracted: MagicMock(model_dump_json=lambda indent=2: "{}"),
-        )
+        # Manifest + parameter_index are no longer built during extraction
+        # (server computes them at startup), so no stubbing is needed.
 
         eed.run_extraction(
             analyses_dir=analyses_dir,
