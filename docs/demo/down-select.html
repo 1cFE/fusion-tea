@@ -392,6 +392,309 @@ code { font-family: var(--font-mono); font-size: 0.86em; background: #eef2f7; co
   background: #1e293b; color: #e2e8f0; font-size: 0.78rem;
 }
 
+/* ============================================================
+   Concept colors (§3 map + §4)
+   ============================================================ */
+:root {
+  --c-arc: #2563eb;
+  --c-tae: #ea580c;
+  --c-gf: #16a34a;
+  --c-helion: #9333ea;
+}
+
+/* Trace stage strip */
+.trace-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.5rem;
+  margin: 0.75rem 0 1rem;
+}
+.ts-stage {
+  background: var(--color-surface);
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  border-left: 3px solid var(--stage1);
+}
+.ts-stage.s2 { border-left-color: var(--stage2); background: var(--stage2-bg); }
+.ts-stage.s3 { border-left-color: var(--stage3); background: var(--stage3-bg); }
+.ts-stage.s4 { border-left-color: var(--stage4); background: var(--stage4-bg); }
+.ts-stage .ts-label { display: block; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; margin-bottom: 0.25rem; }
+.ts-stage.s2 .ts-label { color: var(--stage2); }
+.ts-stage.s3 .ts-label { color: var(--stage3); }
+.ts-stage.s4 .ts-label { color: var(--stage4); }
+.ts-stage .ts-factors { font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-text-muted); }
+
+/* ============================================================
+   Map matrix
+   ============================================================ */
+.map-wrap { margin: 1rem 0 0.5rem; overflow-x: auto; }
+.map-matrix {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.7fr) repeat(4, minmax(78px, 1fr));
+  gap: 1px;
+  background: #d4d4d8;
+  border: 1px solid #d4d4d8;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  min-width: 640px;
+}
+.mm-matrix-2col {
+  grid-template-columns: minmax(220px, 1.7fr) repeat(2, minmax(110px, 1fr));
+}
+.mm-corner { background: var(--color-bg); }
+.mm-header {
+  background: var(--color-bg);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 0.55rem 0.4rem;
+  border-bottom: 2px solid var(--color-text);
+}
+.mm-header.arc { color: var(--c-arc); }
+.mm-header.tae { color: var(--c-tae); }
+.mm-header.gf { color: var(--c-gf); }
+.mm-header.helion { color: var(--c-helion); }
+.mm-header small { display: block; font-size: 0.62rem; font-weight: 500; color: var(--color-text-light); margin-top: 0.15rem; }
+
+.mm-section {
+  grid-column: 1 / -1;
+  background: var(--color-fail);
+  color: #fff;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 700;
+  padding: 0.4rem 0.75rem;
+}
+.mm-section.lev { background: var(--color-lev); }
+.mm-row-label {
+  background: var(--color-surface);
+  padding: 0.5rem 0.7rem;
+  display: flex; flex-direction: column; justify-content: center;
+  line-height: 1.3;
+}
+.mm-row-label .mm-code { font-family: var(--font-mono); font-size: 0.7rem; color: var(--color-text-light); margin-bottom: 0.1rem; }
+.mm-row-label .mm-desc { color: var(--color-text); font-weight: 500; font-size: 0.8rem; }
+
+.mm-cell {
+  background: var(--color-surface);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: 44px;
+  padding: 0.3rem;
+  text-align: center;
+}
+.mm-cell.absent-by-design { background: #f8fafc; }
+.mm-dot {
+  display: inline-block;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.mm-dot.arc { background: var(--c-arc); }
+.mm-dot.tae { background: var(--c-tae); }
+.mm-dot.gf { background: var(--c-gf); }
+.mm-dot.helion { background: var(--c-helion); }
+.mm-dot.s2 { background: var(--stage2); }
+.mm-dot.s3 { background: var(--stage3); }
+.mm-dot.s4 { background: var(--stage4); }
+.mm-dot.cross { background: #475569; }
+.mm-dot.outlined { background: transparent; border: 2.5px solid; }
+.mm-dot.outlined.arc { border-color: var(--c-arc); }
+.mm-dot.outlined.tae { border-color: var(--c-tae); }
+.mm-dot.outlined.gf { border-color: var(--c-gf); }
+.mm-dot.outlined.helion { border-color: var(--c-helion); }
+.mm-dot.outlined.s2 { background: transparent; border-color: var(--stage2); }
+.mm-dot.outlined.s3 { background: transparent; border-color: var(--stage3); }
+.mm-dot.outlined.s4 { background: transparent; border-color: var(--stage4); }
+.mm-dot.outlined.cross { background: transparent; border-color: #475569; }
+.mm-dots { display: inline-flex; gap: 4px; align-items: center; justify-content: center; flex-wrap: wrap; }
+.mm-absent { color: #cbd5e1; font-size: 1.2rem; font-weight: 500; line-height: 1; }
+.mm-band {
+  font-size: 0.62rem; color: var(--color-text-muted);
+  line-height: 1.15; margin-top: 3px;
+  font-family: var(--font-mono);
+}
+
+.mm-legend {
+  display: flex; flex-wrap: wrap; gap: 1rem 1.25rem;
+  font-size: 0.78rem; margin: 0.5rem 0 1.5rem;
+  align-items: center; color: var(--color-text-muted);
+}
+.mm-legend-item { display: inline-flex; align-items: center; gap: 0.35rem; }
+.mm-legend-item .mm-dot { width: 12px; height: 12px; border-width: 2px; }
+
+/* What the map surfaces */
+.surfaces { margin: 1rem 0 1.5rem; }
+.surface-block {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 4px;
+  padding: 0.7rem 1rem;
+  margin-bottom: 0.55rem;
+  font-size: 0.9rem;
+}
+.surface-block strong { display: block; font-size: 1rem; margin-bottom: 0.1rem; }
+.surface-block .surface-cue {
+  display: inline-block; font-size: 0.7rem;
+  color: var(--color-accent); margin-top: 0.35rem;
+  padding: 0.15rem 0.5rem; background: var(--color-accent-light); border-radius: 10px;
+}
+
+/* ============================================================
+   §4 mini-matrix + stage strip
+   ============================================================ */
+.concept-stage-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+  margin: 0.5rem 0 0.75rem;
+}
+.css-stage {
+  border-radius: 4px;
+  padding: 0.45rem 0.55rem;
+  font-size: 0.72rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--stage1);
+}
+.css-stage.s2 { border-left-color: var(--stage2); }
+.css-stage.s3 { border-left-color: var(--stage3); }
+.css-stage.s4 { border-left-color: var(--stage4); }
+.css-stage .css-label {
+  display: block; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.06em;
+  font-weight: 700; color: var(--color-text-muted); margin-bottom: 0.25rem;
+}
+.css-stage.s2 .css-label { color: var(--stage2); }
+.css-stage.s3 .css-label { color: var(--stage3); }
+.css-stage.s4 .css-label { color: var(--stage4); }
+.css-row { display: flex; align-items: center; gap: 0.35rem; padding: 0.1rem 0; }
+.css-row .css-key {
+  font-size: 0.62rem; min-width: 1.1rem;
+  font-weight: 700; text-transform: uppercase;
+}
+.css-row.failures .css-key { color: var(--color-fail); }
+.css-row.leverages .css-key { color: var(--color-lev); }
+.css-bars { display: flex; gap: 2px; flex-wrap: wrap; }
+.css-bar { width: 9px; height: 9px; border-radius: 2px; }
+.css-bar.failure { background: var(--color-fail); }
+.css-bar.leverage { background: var(--color-lev); }
+.css-bar.outlined { background: transparent; border: 1.5px solid; }
+.css-bar.failure.outlined { border-color: var(--color-fail); }
+.css-bar.leverage.outlined { border-color: var(--color-lev); }
+
+/* Annotation badges */
+.annot-badges {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+  margin: 0.6rem 0 0.5rem;
+}
+.annot-badge {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  font-size: 0.72rem; padding: 0.2rem 0.55rem;
+  border-radius: 12px;
+  background: var(--color-bg); border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+.annot-badge.warn { background: #fef3c7; border-color: #fcd34d; color: #92400e; }
+.annot-badge.absence { background: var(--stage1-bg); border-color: var(--stage1-border); color: var(--stage1); }
+.annot-badge.fallback { background: var(--stage3-bg); border-color: var(--stage3-border); color: var(--stage3); }
+.annot-badge.carrier { background: var(--color-fail-bg); border-color: var(--color-fail-border); color: var(--color-fail); }
+
+/* Full record details */
+details.full-record {
+  margin-top: 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+details.full-record summary {
+  font-size: 0.78rem; font-weight: 600;
+  padding: 0.45rem 0.7rem;
+  cursor: pointer;
+  color: var(--color-accent);
+  list-style: none;
+  display: flex; align-items: center; gap: 0.4rem;
+}
+details.full-record summary::before {
+  content: '\25B6'; font-size: 0.55rem; transition: transform 0.15s;
+}
+details.full-record[open] summary::before { transform: rotate(90deg); }
+details.full-record .full-body { padding: 0.5rem 0.85rem 0.75rem; border-top: 1px solid var(--color-border); }
+
+/* Annotated comparison overlay */
+.map-callouts {
+  margin: 0.75rem 0 1.25rem;
+  display: grid; gap: 0.5rem;
+}
+.callout-pin {
+  background: #fefce8;
+  border-left: 3px solid #ca8a04;
+  border-radius: 0 4px 4px 0;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+}
+.callout-pin strong { color: #854d0e; }
+
+/* Mini-matrix headings */
+.concept-panel h4.subhead {
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--color-text-muted); margin-top: 1rem; margin-bottom: 0.35rem;
+}
+
+/* ============================================================
+   §5 Outcome cards
+   ============================================================ */
+.outcomes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.25rem 0 1rem;
+}
+@media (max-width: 800px) { .outcomes-grid { grid-template-columns: 1fr; } }
+
+.outcome-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 4px solid var(--stage1);
+  border-radius: 8px;
+  padding: 1.1rem 1.25rem;
+  display: flex; flex-direction: column;
+}
+.outcome-card.s2 { border-top-color: var(--stage2); }
+.outcome-card.s3 { border-top-color: var(--stage3); }
+.outcome-card.s4 { border-top-color: var(--stage4); }
+
+.outcome-card .oc-header {
+  display: flex; align-items: baseline; gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+.outcome-card .oc-num {
+  font-size: 0.72rem; font-weight: 700;
+  color: var(--color-text-light);
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+.outcome-card.s2 .oc-num { color: var(--stage2); }
+.outcome-card.s3 .oc-num { color: var(--stage3); }
+.outcome-card.s4 .oc-num { color: var(--stage4); }
+.outcome-card strong { font-size: 1.0rem; font-weight: 700; }
+.outcome-card p {
+  font-size: 0.9rem; margin-bottom: 0.75rem;
+  color: var(--color-text-muted);
+  flex: 1;
+}
+.outcome-card .oc-cue {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: var(--color-accent);
+  background: var(--color-accent-light);
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  text-decoration: none;
+  margin-top: auto;
+}
+.outcome-card .oc-cue:hover { text-decoration: underline; }
+
 </style>
 </head>
 <body>
@@ -406,6 +709,7 @@ code { font-family: var(--font-mono); font-size: 0.86em; background: #eef2f7; co
       <a href="#evidence"><span class="nav-num">2</span>Evidence by stage</a>
       <a href="#method"><span class="nav-num">3</span>The method</a>
       <a href="#examples"><span class="nav-num">4</span>Worked examples</a>
+      <a href="#outcomes"><span class="nav-num">5</span>Outcome goals</a>
     </nav>
     <div class="sidebar-footer">Fusion TEA · methodology explainer</div>
   </aside>
@@ -565,105 +869,127 @@ code { font-family: var(--font-mono); font-size: 0.86em; background: #eef2f7; co
      ============================================================ -->
 <section id="method">
   <h2><span class="section-num">3.</span>How we think about portfolio choice</h2>
-  <p class="lead">The method has three steps: trace, record, map. Selection itself is a fourth step the analyst does after reading the map; the methodology supplies frames for thinking about portfolio composition without prescribing a procedure.</p>
+  <p class="lead">The method has three steps: <strong>trace</strong>, <strong>record</strong>, <strong>map</strong>.</p>
 
   <div class="method-step">
     <h3><span class="step-num">1</span> Trace</h3>
-    <p>For each candidate, walk through Stages 2, 3, and 4. At each stage, assess every factor Section 2 introduced — the intrinsic features, the ecosystem-relational features (with pole and slack/bottleneck/capability-gap qualifier where applicable), and the ecosystem-distinct leverage mechanisms.</p>
-    <p>Where a stage's ecosystem-relational factor covers more than one critical component — REBCO at the leverage pole, FLiBe and tritium at the failure pole — each component is recorded as its own subline. A concept that uses REBCO, FLiBe, beryllium, and tritium has four sublines at Stage 2's component-supply factor, each with its own pole tag. The sublining matters because it preserves the actual structure of the concept's exposure: a single tag would collapse the REBCO leverage and the tritium failure into a hedged narrative the map can't read.</p>
-    <p>Stage 1 enters only as a one-paragraph timeline note — current maturity, distance to a Stage-2-ready commercial regime, paradigm co-development depth. The note rides alongside the assessment as descriptive context. It does not produce a tag, a score, or a selection input. We do not adjudicate physics or engineering claims.</p>
+    <p>For each candidate, walk Stages 2, 3, and 4. At each stage, assess every factor with its pole (failure or leverage) and qualifier (slack / bottleneck / capability-gap). Subline factors like F2.d wherever a concept uses more than one critical component. Stage 1 enters as a timeline note — we don't adjudicate physics.</p>
+    <div class="trace-strip">
+      <div class="ts-stage s2"><span class="ts-label">Stage 2 · FOAK</span><span class="ts-factors">F2.a · F2.b · F2.c · F2.d · E2.a · E2.b</span></div>
+      <div class="ts-stage s3"><span class="ts-label">Stage 3 · Chasm</span><span class="ts-factors">F3.a · F3.b · F3.c · F3.d · E3.a · E3.b</span></div>
+      <div class="ts-stage s4"><span class="ts-label">Stage 4 · Curve</span><span class="ts-factors">F4.a · F4.b · F4.c · F4.d · E4.a</span></div>
+    </div>
   </div>
 
   <div class="method-step">
     <h3><span class="step-num">2</span> Record</h3>
-    <p>At each stage, the trace produces two lists: <strong>consequential failure modes</strong> and <strong>consequential leverages</strong>. A factor or subline is consequential when it represents a real, decision-relevant risk or leverage for this concept — failures that could plausibly contribute to ending the concept's commercial path, leverages that substantively shift the cost curve. The judgment is binary. Inconsistencies across analysts surface at the cross-concept step and are corrected there.</p>
-
-    <p>Each entry carries a structured cell tag of the form:</p>
+    <p>Each consequential entry carries a structured tag and a one-line rationale. Each leverage is marked <strong>unconditional</strong> or <strong>gate-conditional</strong>. Two optional annotation slots — <em>architecture fallback</em> and <em>structural absences</em> — capture decision-relevant features the tags can't.</p>
     <div class="tag-format">
       <span class="label">Form</span><code>&lt;factor-code&gt;[-&lt;subline&gt;]/&lt;descriptor&gt;</code>
-      <br><span class="label">Example</span><code>F2.d-REBCO/external-market-pull-slack</code>
+      <br><span class="label">Example</span><code>F2.d-REBCO/external-market-pull-slack</code> <span class="qualifier uncond">unconditional</span>
     </div>
-    <p>The factor code names the rubric slot (F2.a, F3.d, E2.a, etc.). The subline names the component class where applicable (REBCO, FLiBe, driver-supply). The descriptor names the categorical state — <code>above-$5B-financing</code>, <code>capability-gap</code>, <code>no-external-market</code>, <code>Part-30-fit</code>, <code>external-market-pull-slack</code>. Two concepts with the same tag occupy the same cell on the map; one tag per row (failure) or column (leverage). The tag is the structured contract; the trailing rationale prose is for the human reader.</p>
-
-    <p>The descriptor lists are open, built bottom-up across concepts rather than specified top-down. Each new concept traced surfaces new descriptors (a middle-band financing magnitude, a new component class, a new ecosystem-overlap shape). Some early descriptors will split when a later concept reveals heterogeneity inside the cell; others will collapse when two descriptors turn out to describe the same structural situation. Sublining follows the same logic: name by component-technology class (<code>pneumatic-driver</code>, <code>REBCO</code>) where the class predicts cohort membership and supply-chain shape; name by function (<code>driver-supply</code>) where the technology class is concept-unique and cohort membership is empty by construction.</p>
-
-    <p>Each consequential leverage also carries an <em>unconditional</em> or <em>gate-conditional</em> qualifier. Unconditional leverages operate whether the concept ships or not — an HTS gigafactory underwritten by MRI and grid demand keeps running regardless of fusion's outcome. Gate-conditional leverages pay off only if a downstream gate closes — a factory-modular architecture only delivers a learning curve if the underlying physics and engineering close.</p>
-
-    <p>The trace's output is the per-stage record itself: Stage 1 timeline note, then for each of Stages 2 / 3 / 4 the two tagged lists. Nothing is flattened, nothing reduced to a single coordinate. Cross-stage carriers (tritium, first-wall lifetime, HTS conductor cost trajectory) are noted at the stages where each bites hardest and flagged as carriers so the map can recognize that a single underlying mechanism is driving multiple per-stage entries.</p>
-
-    <p>Two optional annotation slots ride alongside the per-stage record for concepts whose architecture demands them. An <strong>architecture fallback</strong> slot is used when a concept has a structural Plan B — a different operating mode the architecture can adopt if its primary gate fails (Helion's D-He3 architecture reverts to pulsed D-T at $150–200/MWh; ARC, TAE, and most concepts have no fallback and leave the slot empty). A <strong>structural absences</strong> slot lists the F2.d / F3.a / F4.c sublines that don't apply to this concept because the underlying subsystem or fuel cycle isn't part of the architecture (TAE: all D-T fuel-cycle sublines absent; Helion: D-T sublines absent in primary D-He3 mode). Both slots are descriptive — they don't carry tags and don't enter the map's row/column structure, but they're decision-relevant features the per-stage tags can't carry alone.</p>
   </div>
 
   <div class="method-step">
     <h3><span class="step-num">3</span> Map</h3>
-    <p>The map is a cross-concept artifact. Once every traced concept's record is in hand, lay the records side by side and inspect the landscape they form together.</p>
-    <p>The questions the map answers:</p>
-    <ul>
-      <li><strong>Which failure modes recur across many concepts?</strong> F2.a (FOAK financing above the $5B threshold) and the D-T fuel-cycle sublines are widespread — they describe the structural reality of most large-scale fusion concepts.</li>
-      <li><strong>Which failure modes are concentrated in a small subset?</strong> Capability-class supply gaps (Zap-style pulsed-power, TAE-style 250&nbsp;keV NBI), state-priority financing risk in state-backed concepts.</li>
-      <li><strong>Which failure modes are concept-unique?</strong> A mode appearing in exactly one record — the strongest "unique problem" signal.</li>
-      <li><strong>Which concepts don't carry a given common risk?</strong> Aneutronic concepts don't carry tritium/Li-6/Be sublines. Concepts with FOAK below $5B sit outside the FOAK-financing cohort. Absences are themselves structural features.</li>
-      <li><strong>Which concepts share critical-component dependencies, and which are isolated?</strong> Reading the F3.a sublines, E2.b, E3.a, and E3.b entries across concepts shows which concepts ride shared supply chains and which depend on nothing else in the set. Cohort relationships emerge here, from the records.</li>
-      <li><strong>How many cross-stage carriers does each concept carry?</strong> A concept with two failure-side carriers (D-T fuel cycle and a capability-gap driver, both biting at multiple stages) is structurally more exposed than a concept with one — independent of how many consequential entries either has at any single stage.</li>
-    </ul>
-    <p>The map's structure is rows of failure-mode types (with sublines), columns of leverage types, cells populated by concept membership. A concept appears in every cell its consequential modes place it in — concepts are not single-tagged. Coverage, concentration, and uniqueness are readable directly from the populated cells. The map's specific row and column lists are built bottom-up from the actual traced concepts' records.</p>
+    <p>Lay all the records side by side. Failure-mode types form the top rows, leverage types the bottom rows; concepts are the columns. Cells show which concept carries which factor.</p>
   </div>
 
-  <h3>Three frames for portfolio thinking</h3>
-  <p>The methodology does not prescribe a selection procedure. The map is the analytical artifact; the analyst reads it and picks. What the methodology offers is three frames for thinking about portfolio composition. The analyst chooses a frame (or a mix), defends each pick in one sentence, and lives with the trade-off named.</p>
+  <h3>The map · four concepts traced</h3>
+  <p style="font-size: 0.92rem; margin-bottom: 0.5rem;">Each column is a concept. Rows are grouped by underlying mechanism: failure-mode mechanisms on top, leverage mechanisms below. Dot color encodes which stage carries the entry (<span style="color: var(--stage2); font-weight: 700;">Stage 2</span> · <span style="color: var(--stage3); font-weight: 700;">Stage 3</span> · <span style="color: var(--stage4); font-weight: 700;">Stage 4</span>). A mechanism that bites at multiple stages shows multiple dots in the same cell — that's a cross-stage carrier read at a glance.</p>
 
-  <div class="frames">
-    <div class="frame-card">
-      <h4>Coverage spanning</h4>
-      <p>Pick concepts that together populate as many distinct failure-mode and leverage-type cells as possible.</p>
-      <div class="fc-row"><span class="fc-label">Optimizes for</span>breadth — every named failure mode and every named leverage type has at least one concept whose deep-dive will illuminate it.</div>
-      <div class="fc-row"><span class="fc-label">Trades off</span>marginal concepts pulled in solely for rare-axis contribution; may exclude dense-cell concepts whose deep-dives would teach more about the shared-by-most failure modes.</div>
-    </div>
-    <div class="frame-card">
-      <h4>Uniqueness concentration</h4>
-      <p>Pick concepts whose records contain the most concept-unique failure modes or leverages.</p>
-      <div class="fc-row"><span class="fc-label">Optimizes for</span>learning about the rare structural features that don't surface in any other deep-dive.</div>
-      <div class="fc-row"><span class="fc-label">Trades off</span>over-indexing on the long tail; the shared-by-most failure modes (which dominate the actual fusion landscape) may go uninvestigated.</div>
-    </div>
-    <div class="frame-card">
-      <h4>Irreducibility</h4>
-      <p>For each candidate slot, ask: "Is this concept's deep-dive output reducible to a sensitivity branch on another concept already in the set?" Keep only the irreducible.</p>
-      <div class="fc-row"><span class="fc-label">Optimizes for</span>defensibility at the slot level — every pick comes with a one-sentence answer to "what does this teach that the others can't."</div>
-      <div class="fc-row"><span class="fc-label">Trades off</span>per-pair judgment, with less mechanical reproducibility.</div>
-    </div>
+  <div class="map-wrap">
+  <div class="map-matrix" role="table" aria-label="Cross-concept map">
+    <div class="mm-corner"></div>
+    <div class="mm-header arc">ARC<small>HTS tokamak</small></div>
+    <div class="mm-header tae">TAE<small>p-B11 FRC</small></div>
+    <div class="mm-header gf">GF<small>MTF pneumatic</small></div>
+    <div class="mm-header helion">Helion<small>D-He3 FRC</small></div>
+
+    <div class="mm-section">Failure-mode mechanisms</div>
+
+    <div class="mm-row-label"><span class="mm-code">F2.a</span><span class="mm-desc">FOAK financing magnitude</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span></span><span class="mm-band">$5–15B</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span></span><span class="mm-band">$1–5B</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span></span><span class="mm-band">$5–10B hi case</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span></span><span class="mm-band">$1–5B</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F2.b</span><span class="mm-desc">Build-time risk (reg-ratchet zone)</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span></span><span class="mm-band">7+ yr</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span></span><span class="mm-band">5–7 yr</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F2.d → F3.a → F4.c</span><span class="mm-desc">Fuel-cycle inputs (no external market) — carrier across stages</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span><span class="mm-dot s3"></span><span class="mm-dot s4"></span></span><span class="mm-band">D-T (T·Li-6·Be·FLiBe)</span></div>
+    <div class="mm-cell absent-by-design"><span class="mm-absent">⊘</span><span class="mm-band">aneutronic</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span><span class="mm-dot s3"></span><span class="mm-dot s4"></span></span><span class="mm-band">D-T (T·Li-6)</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span><span class="mm-dot s3"></span><span class="mm-dot s4"></span></span><span class="mm-band">He-3 cycle</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F2.d → F3.a (→ F4.c)</span><span class="mm-desc">Driver capability-gap (no commercial supply class) — carrier across stages</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span><span class="mm-dot s3"></span></span><span class="mm-band">250 keV NBI</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span><span class="mm-dot s3"></span><span class="mm-dot s4"></span></span><span class="mm-band">1 Hz pneumatic</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span><span class="mm-dot s3"></span><span class="mm-dot s4"></span></span><span class="mm-band">$0.50/J cap</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F3.a</span><span class="mm-desc">REBCO trajectory (failure-pole-at-chasm)</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s3"></span></span><span class="mm-band">fleet bottleneck</span></div>
+    <div class="mm-cell absent-by-design"><span class="mm-absent">⊘</span><span class="mm-band">no HTS</span></div>
+    <div class="mm-cell absent-by-design"><span class="mm-absent">⊘</span><span class="mm-band">no HTS</span></div>
+    <div class="mm-cell absent-by-design"><span class="mm-absent">⊘</span><span class="mm-band">no HTS</span></div>
+
+    <div class="mm-section lev">Leverage mechanisms</div>
+
+    <div class="mm-row-label"><span class="mm-code">F2.d + F4.c</span><span class="mm-desc">REBCO external-market pull</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span><span class="mm-dot s4"></span></span><span class="mm-band">slack → dominant</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+    <div class="mm-cell absent-by-design"><span class="mm-absent">⊘</span></div>
+    <div class="mm-cell absent-by-design"><span class="mm-absent">⊘</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F2.d (→ F3.a → F4.c)</span><span class="mm-desc">Commodity magnets / BOP supply</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span></span><span class="mm-band">Cu coils</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span><span class="mm-dot s3"></span><span class="mm-dot s4"></span></span><span class="mm-band">Cu + ~50% steam BOP</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span></span><span class="mm-band">Al coils</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">E2.a + E4.a</span><span class="mm-desc">Crossover platform (non-fusion + architecture-proof)</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span></span><span class="mm-band">HTS grid/MRI</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span><span class="mm-dot outlined s4"></span></span><span class="mm-band">defense pulsed-power · direct conversion</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">E2.b + E3.a / E3.b</span><span class="mm-desc">Intra-fusion cohort (early-mover + shared supply / sub-problems)</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot outlined s2"></span><span class="mm-dot s3"></span></span><span class="mm-band">SPARC pre-build → ~8 REBCO</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot outlined s3"></span></span><span class="mm-band">~3 pulsed-power</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F2.c + F3.d</span><span class="mm-desc">Regulatory pathway (Part-30 fit + standardized amortization)</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot outlined s3"></span></span><span class="mm-band">F3.d gate-cond only</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span><span class="mm-dot s3"></span></span><span class="mm-band">aneutronic+ → cleanest</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot outlined s3"></span></span><span class="mm-band">F3.d gate-cond only</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span><span class="mm-dot s3"></span></span><span class="mm-band">low-tritium → modular</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F4.c</span><span class="mm-desc">External-market-dominant cost floor (leverage pole)</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s4"></span></span><span class="mm-band">REBCO</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s4"></span></span><span class="mm-band">B-11</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s4"></span></span><span class="mm-band">steam BOP</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
   </div>
-  <p>The frames are not mutually exclusive. A typical use is coverage first to keep major axes from going empty, uniqueness second to rescue obvious unique-problem candidates, irreducibility third to write the slot defenses.</p>
-
-  <h3>What the map illuminates</h3>
-  <p>The three frames are mechanical — how to read the map for portfolio composition. What the map <em>says</em>, read across its populated cells, is several recurring questions about fusion's structural future. These aren't separate analyses; they're cross-sections of the same map, each cutting along a different axis.</p>
-
-  <div class="themes">
-    <div class="theme-item">
-      <strong>Fuel-cycle infrastructure bets.</strong>
-      The F2.d / F3.a / F4.c rows sublined by fuel-cycle component (tritium, Li-6, FLiBe, Be, He3, B-11) reveal which concepts depend on a commercial D-T ecosystem materializing, which route around it (aneutronic), and which hedge sideways (D-He3 with D-T fallback).
-    </div>
-    <div class="theme-item">
-      <strong>Component industrial-base bets.</strong>
-      The same rows, sublined by driver/magnet class (REBCO, DPSSL, pulsed-power capacitors, NBI, pneumatic compression), plus the E2.a / E3.a / E3.b columns, reveal which industrial bases have non-fusion crossover pull (HTS via MRI/grid/transport), which have credible defense-adjacent cohorts (pulsed-power), and which depend on fusion-internal scale alone (NBI, pneumatic).
-    </div>
-    <div class="theme-item">
-      <strong>Regulatory pathway bets.</strong>
-      F2.c and F3.d cells show which concepts fit the lighter NRC Part 30 framework cleanly (aneutronic), partially (low-tritium D-He3), or with full D-T accounting (compact tokamaks) — and how cleanly each amortizes a license across the fleet.
-    </div>
-    <div class="theme-item">
-      <strong>First-of-a-kind affordability bets.</strong>
-      The F2.a row sorts concepts by who can write the FOAK check — sovereign-only ($15B+), sovereign / hyperscaler-consortium ($5–15B), strategic-investor / hyperscaler-accessible ($1–5B), or multi-unit corporate-anchor (under $1B).
-    </div>
-    <div class="theme-item">
-      <strong>Cohort isolation vs. cohort-rich bets.</strong>
-      The count of E-code entries per concept (E2.a, E2.b, E3.a, E3.b) reveals which concepts ride shared infrastructure with other fusion programs and which bet that one-concept demand can build everything alone. Concepts with zero E-code entries are structurally isolated.
-    </div>
-    <div class="theme-item">
-      <strong>Architecture-proof bets.</strong>
-      The E4.a column flags concepts whose architecture is portfolio-valuable independent of company outcome — direct conversion, novel-confinement-mode-proof, novel-fuel-cycle-proof. A populated E4.a cell is the cleanest "deep-dive worth doing even if the company fails" signal.
-    </div>
   </div>
-  <p>Each theme is a column-sort or row-sort of the same underlying map. A portfolio composed against fuel-cycle diversity may look different from one composed against cohort-isolation diversity, even though both read the same cells. Naming the themes makes the map's analytical surface legible without prescribing a single portfolio answer.</p>
+
+  <div class="mm-legend">
+    <span class="mm-legend-item"><span class="mm-dot s2"></span>Stage 2 entry</span>
+    <span class="mm-legend-item"><span class="mm-dot s3"></span>Stage 3 entry</span>
+    <span class="mm-legend-item"><span class="mm-dot s4"></span>Stage 4 entry</span>
+    <span class="mm-legend-item"><span class="mm-dot outlined s3"></span>gate-conditional</span>
+    <span class="mm-legend-item"><span class="mm-absent" style="color:#94a3b8;">⊘</span> structural absence</span>
+    <span class="mm-legend-item"><span class="mm-absent" style="color:#cbd5e1;">·</span> not consequential</span>
+  </div>
+
+  <p style="font-size: 0.88rem; color: var(--color-text-muted);">A concept appears in every row whose mechanism its record carries. Multi-dot cells are cross-stage carriers — one mechanism biting at multiple stages. Empty rows identify concepts free of that failure; empty columns identify leverages no concept in the set yet holds. Coverage, uniqueness, and absence read off the page.</p>
+
+  <p style="font-size: 0.92rem; margin-top: 1.25rem;">What the methodology is built to illuminate — the classes of insight that emerge once a population of records sits on the same map — is laid out in §5.</p>
 </section>
 
 <hr class="section-divider">
@@ -673,7 +999,7 @@ code { font-family: var(--font-mono); font-size: 0.86em; background: #eef2f7; co
      ============================================================ -->
 <section id="examples">
   <h2><span class="section-num">4.</span>Two concepts traced</h2>
-  <p class="lead">The pair below is chosen to contrast across cohort, supply-shape, and which stages carry the concept's consequential modes. Each concept is presented as a Stage-1 timeline note plus per-stage records of consequential failure modes and consequential leverages — the outputs of the trace step. (Four concepts have been traced to date — ARC, TAE, General Fusion, Helion — and supply the calibration vocabulary used here.)</p>
+  <p class="lead">ARC and TAE in the trace format. Each panel renders the concept's entry counts per stage, its annotation badges, and the full tagged record behind a "View full record" toggle. Four concepts have been traced overall (ARC, TAE, General Fusion, Helion); the map in §3 shows all four.</p>
 
   <div class="examples">
 
@@ -683,8 +1009,39 @@ code { font-family: var(--font-mono); font-size: 0.86em; background: #eef2f7; co
 
       <div class="timeline-note">
         <strong>Stage 1 · Timeline note</strong>
-        Compact-tokamak physics draws on ITER, JET, JT-60, and multiple private programs. SPARC is expected to demonstrate Q&nbsp;&gt;&nbsp;1 in 2027–28. ARC's commercial plasma regime is a modest extrapolation from SPARC. Paradigm-rich, multi-program, near-term — a short timeline to Stage-2-ready.
+        Compact-tokamak physics draws on ITER, JET, JT-60, and multiple private programs. SPARC is expected to demonstrate Q&nbsp;&gt;&nbsp;1 in 2027–28. ARC's commercial plasma regime is a modest extrapolation from SPARC. Short timeline to Stage-2-ready.
       </div>
+
+      <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0.4rem;">Dense failure record dominated by D-T fuel cycle; leverage record rides REBCO supply and intra-fusion cohort.</p>
+
+      <h4 class="subhead">Entry counts per stage</h4>
+      <div class="concept-stage-strip">
+        <div class="css-stage s2">
+          <span class="css-label">Stage 2</span>
+          <div class="css-row failures"><span class="css-key">F·5</span><div class="css-bars"><span class="css-bar failure"></span><span class="css-bar failure"></span><span class="css-bar failure"></span><span class="css-bar failure"></span><span class="css-bar failure"></span></div></div>
+          <div class="css-row leverages"><span class="css-key">L·3</span><div class="css-bars"><span class="css-bar leverage"></span><span class="css-bar leverage"></span><span class="css-bar leverage outlined"></span></div></div>
+        </div>
+        <div class="css-stage s3">
+          <span class="css-label">Stage 3</span>
+          <div class="css-row failures"><span class="css-key">F·4</span><div class="css-bars"><span class="css-bar failure"></span><span class="css-bar failure"></span><span class="css-bar failure"></span><span class="css-bar failure"></span></div></div>
+          <div class="css-row leverages"><span class="css-key">L·2</span><div class="css-bars"><span class="css-bar leverage outlined"></span><span class="css-bar leverage"></span></div></div>
+        </div>
+        <div class="css-stage s4">
+          <span class="css-label">Stage 4</span>
+          <div class="css-row failures"><span class="css-key">F·3</span><div class="css-bars"><span class="css-bar failure"></span><span class="css-bar failure"></span><span class="css-bar failure"></span></div></div>
+          <div class="css-row leverages"><span class="css-key">L·1</span><div class="css-bars"><span class="css-bar leverage"></span></div></div>
+        </div>
+      </div>
+
+      <div class="annot-badges">
+        <span class="annot-badge carrier">⤬ Failure carrier · D-T fuel cycle (S2→S3→S4)</span>
+        <span class="annot-badge carrier">⤬ Leverage carrier · HTS conductor</span>
+        <span class="annot-badge warn">⚠ No architecture fallback</span>
+      </div>
+
+      <details class="full-record">
+        <summary>View full record · 12 failure-mode tags, 6 leverage tags</summary>
+        <div class="full-body">
 
       <div class="stage-section s2">
         <span class="ss-header">Stage 2 · FOAK affordability</span>
@@ -701,7 +1058,6 @@ code { font-family: var(--font-mono); font-size: 0.86em; background: #eef2f7; co
         <div class="entry-group leverages">
           <div class="eg-label">Consequential leverages</div>
           <ul class="entry-list leverages">
-            <li><code>F2.c/Part-30-fit</code><span class="qualifier uncond">unconditional</span> — NRC Part 30 (finalized February 2026) is a fit-for-purpose lighter framework.</li>
             <li><code>F2.d-REBCO/external-market-pull-slack</code><span class="qualifier uncond">unconditional</span> — REBCO at ~$20/m delivered in 2025, down from $36–198/m in 2014, driven by MRI/grid/accelerator demand. ARC's FOAK gets this benefit without paying for it.</li>
             <li><code>E2.a/crossover-grid-MRI-transport</code><span class="qualifier uncond">unconditional</span> — HTS magnet R&amp;D has defense, grid, MRI, and transport applications that underwrite the REBCO gigafactory CFS is building. The gigafactory has a non-fusion revenue floor even if ARC stalls.</li>
             <li><code>E2.b/intra-fusion-early-mover-REBCO</code><span class="qualifier gate">gate-conditional</span> — SPARC pre-builds REBCO winding capability that ARC inherits. Conditional on SPARC shipping.</li>
@@ -747,18 +1103,8 @@ code { font-family: var(--font-mono); font-size: 0.86em; background: #eef2f7; co
         </div>
       </div>
 
-      <div class="annot-row">
-        <span class="annot-label">Cross-stage carriers</span>
-        D-T fuel cycle (tritium, Li-6, Be, FLiBe) is a failure-side carrier across Stages 2, 3, and 4 — the same underlying mechanism (no external commercial market for fusion-grade D-T fuel cycle inputs) drives entries at every stage. HTS conductor cost trajectory is the dual carrier on the leverage side, also operating across all three stages.
-      </div>
-      <div class="annot-row">
-        <span class="annot-label">Structural absences</span>
-        None of consequence — ARC's architecture uses essentially every component class the candidate set's failure-mode rows reference.
-      </div>
-      <div class="annot-row">
-        <span class="annot-label">Architecture fallback</span>
-        None. ARC is D-T-only; if the FOAK financing fails or the supply chain falters, there is no alternative operating mode.
-      </div>
+        </div>
+      </details>
     </div>
 
     <!-- TAE -->
@@ -767,8 +1113,39 @@ code { font-family: var(--font-mono); font-size: 0.86em; background: #eef2f7; co
 
       <div class="timeline-note">
         <strong>Stage 1 · Timeline note</strong>
-        Beam-driven FRC at TAE has reached confinement TRL 5–6 at subscale on D-D (C-2W). p-B11 in magnetic confinement has never reached net energy in any device; commercial operation requires sustained T_i ≫ T_e at ion temperatures that have not been measured at relevant scale. Da Vinci's commissioning campaign <em>is</em> the physics demonstration, with no validating program elsewhere. Beam-driven FRC is essentially a TAE-only program — no parallel national-lab effort, no co-development cohort. A long, uncertain timeline to a Stage-2-ready commercial regime.
+        TAE has reached confinement TRL 5–6 on D-D (C-2W). p-B11 in magnetic confinement has never reached net energy at any scale. Da Vinci's commissioning campaign <em>is</em> the physics demonstration; no parallel national-lab or private program exists. Long, uncertain timeline to Stage-2-ready.
       </div>
+
+      <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0.4rem;">Sparse record. Aneutronic operation eliminates all D-T sublines; the headline structural feature is the NBI driver capability-gap carrying across Stages 2–3.</p>
+
+      <h4 class="subhead">Entry counts per stage</h4>
+      <div class="concept-stage-strip">
+        <div class="css-stage s2">
+          <span class="css-label">Stage 2</span>
+          <div class="css-row failures"><span class="css-key">F·2</span><div class="css-bars"><span class="css-bar failure"></span><span class="css-bar failure"></span></div></div>
+          <div class="css-row leverages"><span class="css-key">L·2</span><div class="css-bars"><span class="css-bar leverage"></span><span class="css-bar leverage"></span></div></div>
+        </div>
+        <div class="css-stage s3">
+          <span class="css-label">Stage 3</span>
+          <div class="css-row failures"><span class="css-key">F·1</span><div class="css-bars"><span class="css-bar failure"></span></div></div>
+          <div class="css-row leverages"><span class="css-key">L·1</span><div class="css-bars"><span class="css-bar leverage"></span></div></div>
+        </div>
+        <div class="css-stage s4">
+          <span class="css-label">Stage 4</span>
+          <div class="css-row failures"><span class="css-key">F·0</span><div class="css-bars"></div></div>
+          <div class="css-row leverages"><span class="css-key">L·1</span><div class="css-bars"><span class="css-bar leverage"></span></div></div>
+        </div>
+      </div>
+
+      <div class="annot-badges">
+        <span class="annot-badge carrier">⤬ Failure carrier · NBI driver capability-gap (S2→S3)</span>
+        <span class="annot-badge absence">Ø D-T fuel cycle absent (9 sublines)</span>
+        <span class="annot-badge warn">⚠ No architecture fallback</span>
+      </div>
+
+      <details class="full-record">
+        <summary>View full record · 3 failure-mode tags, 4 leverage tags</summary>
+        <div class="full-body">
 
       <div class="stage-section s2">
         <span class="ss-header">Stage 2 · FOAK affordability</span>
@@ -820,63 +1197,135 @@ code { font-family: var(--font-mono); font-size: 0.86em; background: #eef2f7; co
         </div>
       </div>
 
-      <div class="annot-row">
-        <span class="annot-label">Cross-stage carriers</span>
-        High-energy NBI driver-supply is a failure-side carrier across Stages 2 and 3.
-      </div>
-      <div class="annot-row">
-        <span class="annot-label">Structural absences</span>
-        TAE carries no D-T fuel-cycle sublines: <code>F2.d-tritium-Li6</code>, <code>F2.d-FLiBe</code>, <code>F2.d-Be</code>, <code>F3.a-tritium</code>, <code>F3.a-Li6</code>, <code>F3.a-FLiBe</code>, <code>F4.c-Li6</code>, <code>F4.c-FLiBe</code>, <code>F4.c-Be</code> are all absent. The absence is structural — aneutronic operation eliminates an entire class of failure modes that most candidate concepts carry.
-      </div>
-      <div class="annot-row">
-        <span class="annot-label">Architecture fallback</span>
-        None. If the p-B11 ignition regime is not reached, the concept has no alternative operating mode.
-      </div>
+        </div>
+      </details>
     </div>
 
   </div>
 
-  <!-- Cross-concept observations -->
-  <div class="observations">
-    <h3>Cross-concept observations</h3>
-    <p>With both records in canonical tagged form, the comparison becomes mechanical. Listing what the two records share, what each carries alone, and what each lacks:</p>
+  <!-- Cross-concept observations as annotated 2-column map -->
+  <h3>ARC vs. TAE · annotated comparison</h3>
+  <p style="font-size: 0.9rem; color: var(--color-text-muted);">The same map structure, projected onto two concepts. Cells where both populate are shared cells; cells filled by only one are unique-to-that-concept.</p>
 
-    <h4>Shared cells (both records carry tags in the same row or column)</h4>
-    <ul>
-      <li><code>F2.a</code> — both have a Stage-2 financing failure mode, though at different cells on the row: ARC at <code>above-$5B-financing</code>, TAE at <code>$1-5B-financing</code>. Same row, neighboring cells. F2.a is the most widespread failure-mode row across the broader candidate set; both worked examples populate it.</li>
-      <li><code>F2.c</code> — both have NRC Part-30 fit as a leverage, though TAE's is the stronger variant (<code>Part-30-fit-aneutronic-accelerated</code>) versus ARC's <code>Part-30-fit</code>. Same column, neighboring cells.</li>
-      <li><code>F3.d</code> — both have regulatory-amortization leverage, with TAE's <code>standardized-amortization-cleanest</code> cleaner than ARC's <code>standardized-amortization</code> because TAE's amortization is unconditional while ARC's is gate-conditional on SPARC.</li>
-    </ul>
+  <div class="map-wrap">
+  <div class="map-matrix mm-matrix-2col" role="table" aria-label="ARC vs TAE">
+    <div class="mm-corner"></div>
+    <div class="mm-header arc">ARC</div>
+    <div class="mm-header tae">TAE</div>
 
-    <h4>Tags unique to ARC (cells TAE does not occupy)</h4>
-    <ul>
-      <li>All D-T fuel-cycle sublines: <code>F2.d-FLiBe/no-external-market</code>, <code>F2.d-Be/constrained-single-source</code>, <code>F2.d-tritium-Li6/no-external-market</code>, <code>F3.a-FLiBe/fleet-supply-absent</code>, <code>F3.a-Li6/fleet-enrichment-absent</code>, <code>F3.a-tritium/fleet-breeding-required</code>, <code>F4.c-FLiBe/no-external-market</code>, <code>F4.c-Li6/no-external-market</code>, <code>F4.c-Be/external-market-spec-mismatch</code> — nine entries.</li>
-      <li><code>F2.b/build-time-7-plus</code> — ARC's build window puts it in the regulatory-ratcheting zone; TAE's 6-year baseline does not.</li>
-      <li><code>F2.d-REBCO/external-market-pull-slack</code>, <code>F3.a-REBCO/fleet-bottleneck-risk</code>, <code>F4.c-REBCO/external-market-dominant</code> — the REBCO trajectory carrier, leverage-side at Stages 2 and 4, failure-side at Stage 3.</li>
-      <li>All E-codes: <code>E2.a/crossover-grid-MRI-transport</code>, <code>E2.b/intra-fusion-early-mover-REBCO</code>, <code>E3.a/cohort-large-REBCO</code> — three entries.</li>
-    </ul>
+    <div class="mm-section">Failure modes</div>
 
-    <h4>Tags unique to TAE (cells ARC does not occupy)</h4>
-    <ul>
-      <li><code>F2.d-driver-supply/capability-gap</code> and <code>F3.a-driver-supply/capability-gap-at-chasm</code> — the capability-class gap on the NBI driver side, carrying across Stages 2 and 3. Distinct failure shape from any quantity-scaling tag in ARC's record.</li>
-      <li><code>F2.d-magnets/mature-commodity</code> — resistive copper, no supply problem.</li>
-      <li><code>F4.c-B11/external-market-dominant</code> — the semiconductor-doping baseline market.</li>
-    </ul>
+    <div class="mm-row-label"><span class="mm-code">F2.a</span><span class="mm-desc">FOAK financing magnitude</span></div>
+    <div class="mm-cell" style="background: #fffbeb;"><span class="mm-dot arc"></span><span class="mm-band">$5–15B</span></div>
+    <div class="mm-cell" style="background: #fffbeb;"><span class="mm-dot tae"></span><span class="mm-band">$1–5B</span></div>
 
-    <h4>Structural absences worth flagging</h4>
-    <ul>
-      <li>TAE has zero entries at E-codes (<code>E2.a</code>, <code>E2.b</code>, <code>E3.a</code>, <code>E3.b</code>). The absence of any crossover-platform or intra-fusion-cohort leverage, read across the two records, is what shows TAE's structural isolation. Cohort position surfaces at the comparison step as a count of empty E-code cells across records, never as a tag inside any single trace.</li>
-      <li>ARC has zero entries in the capability-gap row. All of ARC's component-supply failures are quantity-scaling gaps inside an existing supply class; none is a capability-class gap.</li>
-    </ul>
+    <div class="mm-row-label"><span class="mm-code">F2.b</span><span class="mm-desc">Build-time risk (7+ yr)</span></div>
+    <div class="mm-cell"><span class="mm-dot arc"></span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
 
-    <h4>Readable contrasts</h4>
-    <ul>
-      <li>ARC has 10 entries on the failure side (9 inside the D-T fuel cycle); TAE has 3 entries on the failure side (2 on the driver-supply carrier). The deep-dive emphasis falls out: ARC's deep-dive would be dominated by D-T fuel-cycle modeling at every stage; TAE's would be dominated by driver-supply modeling.</li>
-      <li>ARC's leverage side has 8 entries spread across F-codes (regulatory, REBCO supply) and E-codes (crossover, cohort, early-mover). TAE's leverage side has 4 entries entirely on F-codes (regulatory + magnets + B-11). Both unconditional in the cells where each lands, but ARC's leverage rides external industrial currents and intra-fusion cohort effects, while TAE's is locked in by chemistry and regulatory choices.</li>
-    </ul>
+    <div class="mm-row-label"><span class="mm-code">F2.d</span><span class="mm-desc">D-T fuel-cycle inputs (9 sublines in ARC)</span></div>
+    <div class="mm-cell"><span class="mm-dot arc"></span></div>
+    <div class="mm-cell absent-by-design"><span class="mm-absent">⊘</span></div>
 
-    <p style="margin-top: 1.25rem; font-size: 0.88rem; color: var(--color-text-muted);">These observations are a preview of what the cross-concept analysis step would surface across many traced concepts. With only two concepts traced here, the cell vocabulary is partial; tags like <code>capability-gap-at-chasm</code> may collapse with other variants once more records exist, and new tags will appear as new concepts surface failure modes neither ARC nor TAE carry.</p>
+    <div class="mm-row-label"><span class="mm-code">F2.d</span><span class="mm-desc">Driver capability-gap</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+    <div class="mm-cell"><span class="mm-dot tae"></span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F3.a</span><span class="mm-desc">REBCO fleet bottleneck</span></div>
+    <div class="mm-cell"><span class="mm-dot arc"></span></div>
+    <div class="mm-cell absent-by-design"><span class="mm-absent">⊘</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F3.a</span><span class="mm-desc">D-T fuel cycle at fleet scale</span></div>
+    <div class="mm-cell"><span class="mm-dot arc"></span></div>
+    <div class="mm-cell absent-by-design"><span class="mm-absent">⊘</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F3.a</span><span class="mm-desc">Driver capability-gap at chasm</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+    <div class="mm-cell"><span class="mm-dot tae"></span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F4.c</span><span class="mm-desc">Specialty input cost floor</span></div>
+    <div class="mm-cell"><span class="mm-dot arc"></span><span class="mm-band">D-T inputs</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+
+    <div class="mm-section lev">Leverages</div>
+
+    <div class="mm-row-label"><span class="mm-code">F2.c</span><span class="mm-desc">NRC Part-30 fit (full D-T not consequential)</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+    <div class="mm-cell"><span class="mm-dot tae"></span><span class="mm-band">aneutronic+</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F2.d</span><span class="mm-desc">REBCO external-market pull</span></div>
+    <div class="mm-cell"><span class="mm-dot arc"></span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F2.d</span><span class="mm-desc">Commodity magnets / BOP</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+    <div class="mm-cell"><span class="mm-dot tae"></span><span class="mm-band">Cu</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">E2.a</span><span class="mm-desc">Crossover platform (HTS · MRI · grid)</span></div>
+    <div class="mm-cell"><span class="mm-dot arc"></span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">E3.a</span><span class="mm-desc">Intra-fusion cohort (~8 REBCO)</span></div>
+    <div class="mm-cell"><span class="mm-dot arc"></span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F3.d</span><span class="mm-desc">Standardized amortization</span></div>
+    <div class="mm-cell" style="background: #fffbeb;"><span class="mm-dot outlined arc"></span><span class="mm-band">gate-cond</span></div>
+    <div class="mm-cell" style="background: #fffbeb;"><span class="mm-dot tae"></span><span class="mm-band">cleanest</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F4.c</span><span class="mm-desc">External-market-dominant floor</span></div>
+    <div class="mm-cell"><span class="mm-dot arc"></span><span class="mm-band">REBCO</span></div>
+    <div class="mm-cell"><span class="mm-dot tae"></span><span class="mm-band">B-11</span></div>
   </div>
+  </div>
+
+  <div class="map-callouts">
+    <div class="callout-pin"><strong>Shared rows · F2.a financing magnitude / F3.d standardized amortization / F4.c external-market-dominant floor (highlighted).</strong> Both populate the same rows in different cells — ARC at $5–15B vs. TAE at $1–5B for F2.a; ARC gate-conditional vs. TAE unconditional for F3.d; ARC REBCO vs. TAE B-11 for F4.c. F2.c is no longer shared: ARC's full-D-T burden disqualifies the Part-30 leverage that TAE's aneutronic operation locks in.</div>
+    <div class="callout-pin"><strong>ARC-dense rows · D-T fuel cycle (9 sublines) + REBCO trajectory + all E-codes.</strong> ARC's deep-dive would be dominated by D-T fuel-cycle modeling.</div>
+    <div class="callout-pin"><strong>TAE structural absence · ⊘ across every D-T fuel-cycle row.</strong> Aneutronic operation eliminates an entire failure-mode class most candidates carry.</div>
+    <div class="callout-pin"><strong>TAE-unique cells · F2.c Part-30 fit (aneutronic-accelerated).</strong> ARC drops F2.c; only TAE (and Helion in low-tritium D-He3) carry the regulatory leverage as consequential.</div>
+    <div class="callout-pin"><strong>TAE empty E-codes.</strong> Zero crossover, zero intra-fusion cohort — TAE's leverages are locked in by chemistry and regulation rather than by adjacent industry pull.</div>
+  </div>
+
+  <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-top: 1rem;">Two concepts produce only a partial vocabulary; tags like <code>capability-gap-at-chasm</code> may collapse or split as more records appear. The point of the comparison is to read the cells — not the prose — and notice what the rows and columns reveal about coverage, isolation, and architectural choice.</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- ============================================================
+     SECTION 5 — OUTCOME GOALS
+     ============================================================ -->
+<section id="outcomes">
+  <h2><span class="section-num">5.</span>Outcome goals</h2>
+  <p class="lead">The methodology's value isn't the trace, the record, or the map by themselves. It's the high-level synthesis they enable: classes of question about fusion's structural future that no single concept's analysis can answer. These are example outcome goals — the kinds of insights this style of analysis is built to produce.</p>
+
+  <div class="outcomes-grid">
+    <div class="outcome-card s2">
+      <div class="oc-header"><span class="oc-num">01</span><strong>Fuel-cycle infrastructure bets</strong></div>
+      <p>Which concepts depend on a commercial D-T ecosystem materializing, which route around it (TAE p-B11), and which hedge sideways (Helion D-He3 with D-T fallback).</p>
+      <a class="oc-cue" href="#method">Read the fuel-cycle-inputs row in §3 · ARC + GF carry it at every stage; TAE marks ⊘; Helion carries He-3 instead</a>
+    </div>
+
+    <div class="outcome-card s3">
+      <div class="oc-header"><span class="oc-num">02</span><strong>Component industrial-base bets</strong></div>
+      <p>Which industrial bases have non-fusion crossover pull (HTS, defense pulsed-power) versus depend on fusion-internal scale alone (NBI, pneumatic).</p>
+      <a class="oc-cue" href="#method">Read the crossover-platform and driver-capability-gap rows in §3 · ARC + Helion ride external pull; TAE + GF stand alone</a>
+    </div>
+
+    <div class="outcome-card s3">
+      <div class="oc-header"><span class="oc-num">03</span><strong>Cohort isolation vs. cohort-rich bets</strong></div>
+      <p>How many leverage rows a concept populates. Many populated rows means the concept rides shared infrastructure; a sparse leverage column means it stands alone.</p>
+      <a class="oc-cue" href="#method">Compare leverage-section column density in §3 · ARC and Helion dense; TAE and GF sparse</a>
+    </div>
+
+    <div class="outcome-card s4">
+      <div class="oc-header"><span class="oc-num">04</span><strong>Architecture-proof bets</strong></div>
+      <p>Concepts whose architecture is portfolio-valuable independent of company outcome — direct conversion, novel-confinement-mode-proof, novel-fuel-cycle-proof.</p>
+      <a class="oc-cue" href="#method">Read row E4.a in §3 · only Helion populates it (gate-conditional on direct-conversion proof)</a>
+    </div>
+  </div>
+
+  <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-top: 1rem;">A portfolio composed against fuel-cycle diversity may look different from one composed against cohort-isolation diversity, even though both read the same map. Naming the outcome classes makes the map's analytical surface legible without prescribing a single portfolio answer.</p>
 </section>
 
   </main>
