@@ -1,7 +1,8 @@
 # Concept Part 2: Stage-Gate Reframing for Down-Selection
 
 **Created:** 2026-05-01
-**Status:** Draft — successor to `concept.md`, incorporates `research_q1_q3.md` findings
+**Updated:** 2026-05-15 — multi-mode trace revision (retired single-primary-failure tag), per-component sublining for F2.d/F3.a/F4.c, Stage 1 reframed as timeline note only, spanning algorithm replaced with descriptive portfolio frames.
+**Status:** Locked methodology — successor to `concept.md`, incorporates `research_q1_q3.md` findings and the 01/18 calibration pass.
 **Reads after:** `concept.md`, `research_q1_q3.md`
 
 ---
@@ -10,9 +11,9 @@
 
 `concept.md` framed down-selection as composite scoring + spanning over outcome attributes (with criteria informed by literature). Reading the historical-comparator research surfaced a problem: a uniform attribute rubric obscures *which* attributes matter for a given concept, because different concepts die for different reasons at different points in commercialization. A composite collapses that information into a number.
 
-This doc reframes the problem as a **stage-gate trace**. Each concept must pass through four sequential filters; each has its own dominant failure modes; each has its own buyer of premium. A concept's value as a deep-dive candidate is determined by the *narrative* of how it would (or wouldn't) pass each gate — not by a composite score.
+This doc reframes the problem as a **stage-gate trace producing a per-stage failure-and-leverage record per concept**. Each concept is walked through four sequential stages; each stage has its own factor catalog; each factor or subline is assessed and tagged consequential or not. The output of a per-concept trace is the per-stage record itself, not a single primary tag. The map and the portfolio frames operate on the records collectively, at the cross-concept analysis step.
 
-The 8-criteria reference methodology and the 7-axis spanning approach (Q2 of the research) remain useful, but as *vocabulary* for failure-mode analysis, not as the analytical frame.
+The 8-criteria reference methodology and the 7-axis spanning approach (Q2 of the research) remain useful as *vocabulary* for failure-mode analysis, not as the analytical frame.
 
 ---
 
@@ -23,9 +24,9 @@ Each stage is anchored to a plants-deployed range and to who pays the premium. T
 ### Stage 1 — Physics Q > 1
 
 **Question:** Does the underlying physics produce net energy?
-**Status for this project:** Not directly evaluated — we lack the expertise to adjudicate "will the physics work" claims, and most concepts in our set claim a credible path. Treated as a *time-and-cost-to-Stage-2* discount factor, not a gate.
+**Status for this project:** Recorded as a **timeline note**, never evaluated as a failure mode. We lack the expertise to adjudicate competing physics claims, and the methodology does not gate, rank, or discount on Stage 1. What we record per concept is: current physics/engineering maturity (Q-achieved or equivalent demonstration), distance to a Stage-2-ready commercial regime, and qualitative confidence in the timeline. That note rides alongside the Stage 2/3/4 assessment but does not feed any failure-mode tag.
 **Buyer of premium:** Government R&D (DOE, ARPA-E), private R&D capital.
-**Why we still attend to it:** A concept needing $5B and 10 years to reach Q>1 is fundamentally less attractive than one already there, even with identical Stage 2–4 profiles. Fold in as a discount on downstream value, not as a separate scoring axis.
+**Why we attend to it at all:** The timeline implication matters for deep-dive prioritization — a concept whose Stage-2-ready milestone is 10 years out has a different decision-relevance than one whose milestone is 3 years out — but the timeline is descriptive, not evaluative. No concept fails or succeeds on Stage 1 in this methodology.
 
 ### Stage 2 — FOAK Engineering Q > 1
 
@@ -60,13 +61,17 @@ For each stage, factors fall into three categories:
 
 Earlier drafts of this doc split everything into separate F and E sections and produced redundant double-counting at the regulatory / supply-chain / specialty-input axes. The consolidation below merges those pure pairs into single sign-neutral F-factors and keeps only the genuinely distinct E-factors.
 
-### Stage 1 — Physics path (discount-calibration inputs only)
+### Stage 1 — Timeline note inputs (descriptive only)
 
-Stage 1 isn't directly evaluated as a gate. The following attributes calibrate the time-and-cost-to-Stage-2 *discount* applied to downstream value. They are not F-factors or E-factors and do not feed dominant-failure / dominant-leverage tagging.
+Stage 1 is not evaluated as a gate, a discount, or a failure mode. The following attributes are recorded as descriptive inputs to a one-paragraph **timeline note** per concept. They do not feed any failure-mode or leverage tag.
 
-- **Physics-paradigm co-development depth.** Other concepts and programs sharing the same physics path broaden validation and accelerate timeline. Compact-tokamak physics draws on ITER, JET, JT-60, and multiple private programs. Levitated dipole shares paradigm with one defunct program (LDX). Deeper co-development → smaller discount.
-- **Open scientific heritage.** Academic, national-lab, and international-program lineage feeding the concept's physics base. More open and broadly published → smaller discount; closed / proprietary → larger discount.
-- **Workforce depth in concept's discipline.** Plasma physics, ICF target science, RF engineering at fusion scale. Deeper talent pool → smaller discount.
+- **Current maturity.** Q achieved, plasma-regime demonstrations, integrated-system demonstrations, TRL by subsystem. The factual state today.
+- **Distance to Stage-2-ready commercial regime.** How far the concept's commercial-target parameters are from current demonstrations — temperature gap, confinement gap, integrated-operation gap. Qualitative; the methodology does not adjudicate magnitude.
+- **Physics-paradigm co-development depth.** Other concepts and programs sharing the same physics path. Compact-tokamak physics draws on ITER, JET, JT-60, multiple private programs. Levitated dipole shares paradigm with one defunct program. Recorded as context for the timeline note, not as a discount input.
+- **Open scientific heritage.** Academic, national-lab, and international-program lineage.
+- **Workforce depth in concept's discipline.** Plasma physics, ICF target science, RF engineering at fusion scale.
+
+Output: a one-paragraph timeline note. *No score, no tag, no fold-in to downstream value.*
 
 ### Stage 2 — FOAK affordability
 
@@ -78,7 +83,9 @@ Stage 1 isn't directly evaluated as a gate. The following attributes calibrate t
 **Ecosystem-relational F-factors (sign-neutral, paired pole-to-pole):**
 
 - **F2.c — Regulatory framework state.** Spans (a) whether a fit-for-purpose regulatory framework exists at all and (b) whether the concept's hazard profile fits it. *Failure pole:* concept requires unestablished or heavier-burden regulatory treatment (Part 50/52-equivalent), an integer multiplier on FOAK regulatory cost. *Leverage pole:* concept fits the established lighter framework (NRC Part 30 fusion framework, Feb 2026), or fits an in-progress framework (ASME nuclear codes adapted for fusion, IAEA SARS).
-- **F2.d — Critical component supply maturity.** Spans (a) whether critical components (REBCO, Be, Li-6, tritium, high-power lasers, pulsed-power capacitors) have any external supply at all and (b) the degree to which the existing external supply has reduced FOAK component cost. *Failure pole:* singleton supply must be internalized — CFS vertically integrating REBCO tape is the canonical case. *Leverage pole:* external markets have already driven prices down (REBCO at ~$20/m in 2025 vs. $36–198/m in 2014, a benefit ARC's FOAK gets without paying for it). Tagged **slack** if external supply has headroom for FOAK demand, **bottleneck** if combined demand is approaching the supply ceiling.
+- **F2.d — Critical component supply maturity.** Spans (a) whether critical components have any external supply at all and (b) the degree to which existing external supply has reduced FOAK component cost. *Failure pole:* singleton supply must be internalized — CFS vertically integrating REBCO tape is the canonical case. *Leverage pole:* external markets have already driven prices down (REBCO at ~$20/m in 2025 vs. $36–198/m in 2014, a benefit ARC's FOAK gets without paying for it). Tagged **slack** if external supply has headroom for FOAK demand, **bottleneck** if combined demand is approaching the supply ceiling. **Capability-gap** is a third tag, distinct from quantity-gap, used when the relevant supply class does not exist at all (Zap-style pulsed-power at fleet scale; TAE-style 250 keV proton NBI at fusion scale).
+
+  **Per-component sublining.** F2.d is assessed once per critical component the concept uses, not once per concept. Each subline carries its own pole tag and slack/bottleneck/capability-gap qualifier. For ARC: `F2.d-REBCO` (leverage pole, slack), `F2.d-FLiBe` (failure pole), `F2.d-Be` (failure pole), `F2.d-tritium-Li6` (failure pole). For TAE: `F2.d-driver-supply` (failure pole, capability-gap), `F2.d-magnets` (leverage pole, slack). Each subline is a candidate row in the concept's Stage-2 consequential-failure-modes record. Sublines are mandatory wherever a concept uses more than one critical component class with different poles.
 
 **Distinct E-factors (independent ecosystem mechanisms):**
 
@@ -94,7 +101,9 @@ Stage 1 isn't directly evaluated as a gate. The following attributes calibrate t
 
 **Ecosystem-relational F-factors (sign-neutral):**
 
-- **F3.a — Supply-chain maturity at chasm scale.** Spans (a) the static fraction of CAPEX riding on supply chains that already exist for non-fusion reasons and (b) whether those external markets continue scaling alongside fusion's growing demand at chasm-era volumes. *Failure pole:* internalized / nuclear-grade-style specialty supply chains that don't earn external-market learning-curve discounts. *Leverage pole:* high CAPEX fraction on commodity supply chains (the silicon/glass/aluminum pattern for solar) where ongoing external demand keeps supply expanding faster than fusion alone could drive. Tagged **slack** or **bottleneck** for the chasm-era trajectory: solar's silicon stayed slack, fusion REBCO at fleet scale could go either way depending on how MRI/grid/transport demand co-scales with combined fusion deployment.
+- **F3.a — Supply-chain maturity at chasm scale.** Spans (a) the static fraction of CAPEX riding on supply chains that already exist for non-fusion reasons and (b) whether those external markets continue scaling alongside fusion's growing demand at chasm-era volumes. *Failure pole:* internalized / nuclear-grade-style specialty supply chains that don't earn external-market learning-curve discounts. *Leverage pole:* high CAPEX fraction on commodity supply chains (the silicon/glass/aluminum pattern for solar) where ongoing external demand keeps supply expanding faster than fusion alone could drive. Tagged **slack**, **bottleneck**, or **capability-gap** for the chasm-era trajectory: solar's silicon stayed slack, fusion REBCO at fleet scale could go either way, TAE-style high-energy NBI at chasm scale has no non-fusion industrial pull at all.
+
+  **Per-component sublining.** F3.a is assessed per critical component, identical structure to F2.d. A concept's F3.a typically inherits the component list from F2.d but the pole and slack/bottleneck/capability-gap qualifier can change with the deployment era (REBCO might be slack at Stage 2 and bottleneck at Stage 3 as combined fusion demand grows).
 - **F3.d — Regulatory amortization path.** Spans (a) whether the concept's regulatory pathway is sharable across the fleet (standardized design, repeatable licensing) and (b) whether predecessor plants have already paid the precedent-setting cost. *Failure pole:* each new plant re-pays full regulatory cost (no amortization, chasm holds). *Leverage pole:* standardized concept rides amortized rules established by an earlier plant in the fusion cohort.
 
 **Distinct E-factors:**
@@ -112,7 +121,9 @@ Stage 1 isn't directly evaluated as a gate. The following attributes calibrate t
 **Ecosystem-relational F-factors (sign-neutral):**
 
 - **F4.a — Cost-reduction knobs and their non-fusion ride-along.** Spans (a) the count of independent cost-reduction mechanisms the concept has access to (per Kavlak 2018: solar had ≥6 each ≥10% of decline) and (b) the subset of those knobs whose innovation is funded by non-fusion industries. *Failure pole:* one or two knobs total, all fusion-funded — the curve runs out fast. *Leverage pole:* many knobs, with most cost-reduction innovation funded by adjacent industries (the semiconductors-for-PV pattern, where fusion gets free-rides on non-fusion R&D).
-- **F4.c — Specialty-input external-market position.** Spans (a) whether critical specialty inputs (REBCO, FLiBe, etc.) have any external market and (b) whether external demand dominates fusion demand at fleet scale. *Failure pole:* bespoke specialty input with no non-fusion demand → cost floor bounded by what fusion deployment alone can drive. *Leverage pole:* external demand dominates fusion demand at maturity → Wright's Law runs regardless of fusion deployment volume (REBCO at fleet scale: MRI + grid + transport demand likely dominates fusion demand even at 50 GW fusion deployment).
+- **F4.c — Specialty-input external-market position.** Spans (a) whether critical specialty inputs have any external market and (b) whether external demand dominates fusion demand at fleet scale. *Failure pole:* bespoke specialty input with no non-fusion demand → cost floor bounded by what fusion deployment alone can drive. *Leverage pole:* external demand dominates fusion demand at maturity → Wright's Law runs regardless of fusion deployment volume (REBCO at fleet scale: MRI + grid + transport demand likely dominates fusion demand even at 50 GW fusion deployment).
+
+  **Per-component sublining.** F4.c is assessed per specialty input the concept's cost floor depends on. ARC: `F4.c-REBCO` (leverage pole), `F4.c-FLiBe` (failure pole), `F4.c-Li6` (failure pole), `F4.c-Be` (failure pole). TAE: `F4.c-B11` (leverage pole, semiconductor-doping external market), no T/Li-6/Be sublines (aneutronic, fuel cycle absent). The absence of a subline is itself decision-relevant — concepts that don't carry a fuel-cycle specialty-input failure mode are structurally different from concepts that do.
 
 **Distinct E-factors:**
 
@@ -138,83 +149,111 @@ Some factors recur across multiple stages with different mechanisms. Tagged as *
 
 ## Evaluation procedure (per concept)
 
-For each candidate, produce a short stage-by-stage **narrative trace** — not a composite score. Each stage's factors are assessed; ecosystem-relational F-factors carry a slack/bottleneck qualifier where applicable; each ecosystem-relational F-factor's assessment also notes which pole (failure or leverage) the concept lands on. Suggested format:
+For each candidate, produce a stage-by-stage **narrative trace**. The trace records, per stage, every factor's assessment with its pole and slack/bottleneck/capability-gap qualifier where applicable. F2.d, F3.a, and F4.c are sublined per critical component.
+
+The trace's output is the per-stage record itself, organized as failure modes and leverages at each stage. Each factor (or subline) is recorded with a binary judgment: *consequential* (a real, decision-relevant risk or leverage for this concept) or *not consequential*. The methodology does not pick a primary failure mode or a single tag at the per-concept level. That judgment — if made at all — happens at the cross-concept analysis step, after every traced concept's record is in hand, so that "uniqueness," "concentration," and "shared-across-the-cohort" can be assessed against the actual landscape rather than guessed from a single concept's vantage.
+
+Suggested format:
 
 ```
 ## Concept: <name>
 
-### Stage 1 (time-to-Stage-2 discount)
-- Current TRL / Q achieved
-- Estimated capital and time to Stage-2 entry
-- Discount-calibration inputs (paradigm co-development, scientific heritage, workforce depth)
-- Discount applied: low / moderate / heavy
+### Stage 1 — Timeline note (descriptive)
+One paragraph: current maturity, distance to Stage-2-ready commercial regime,
+paradigm co-development depth, scientific heritage, workforce depth.
+No tag, no score.
 
-### Stage 2 (FOAK affordability)
-- Intrinsic F-factors: F2.a (min-viable capital), F2.b (build time)
-- Ecosystem-relational F-factors: F2.c (regulatory framework state), F2.d (component supply maturity) — for each, note pole (failure / leverage) and slack/bottleneck where applicable
-- Distinct E-factors: E2.a (crossover platform financing), E2.b (intra-fusion early-mover)
-- Plausible FOAK buyer (per market-wedge taxonomy)
-- Dominant failure factor at this stage: <code>
-- Dominant leverage factor at this stage: <code> (may be the leverage pole of an ecosystem-relational F-factor, or a distinct E-factor)
+### Stage 2 — FOAK affordability
+For each factor (F2.a, F2.b, F2.c, F2.d sublines, E2.a, E2.b):
+- Assessment (one or two sentences)
+- Pole + qualifier where applicable (failure / leverage; slack / bottleneck / capability-gap)
+- Consequential? yes / no
+Plausible FOAK buyer (per market-wedge taxonomy).
 
-### Stage 3 (chasm crossing)
-- Intrinsic F-factors: F3.b (site-specialization), F3.c (replication unit size)
-- Ecosystem-relational F-factors: F3.a (supply-chain maturity at chasm scale), F3.d (regulatory amortization) — note pole and slack/bottleneck
-- Distinct E-factors: E3.a (intra-fusion fleet co-development), E3.b (shared sub-problem solutions)
-- Most plausible chasm-crossing path
-- Dominant failure factor: <code>
-- Dominant leverage factor: <code>
+Consequential failure modes at Stage 2: <list of factor codes with one-sentence rationale each>
+Consequential leverages at Stage 2: <list of factor codes with one-sentence rationale each
+and unconditional / gate-conditional qualifier>
 
-### Stage 4 (learning-curve descent)
-- Intrinsic F-factors: F4.b (mechanism), F4.d (modularization-vs-scale crossover)
-- Ecosystem-relational F-factors: F4.a (knobs and ride-along), F4.c (specialty-input external position) — note pole and slack/bottleneck
-- Distinct E-factors: E4.a (crossover platform revenue), E4.b (talent inflow)
-- Plausible learning-curve mechanism (volume / R&D / mixed)
-- Dominant failure factor: <code>
-- Dominant leverage factor: <code>
+### Stage 3 — Chasm crossing
+For each factor (F3.b, F3.c, F3.a sublines, F3.d, E3.a, E3.b):
+- Same structure.
+Most plausible chasm-crossing path.
+
+Consequential failure modes at Stage 3: <list>
+Consequential leverages at Stage 3: <list>
+
+### Stage 4 — Learning-curve descent
+For each factor (F4.b, F4.d, F4.a, F4.c sublines, E4.a, E4.b):
+- Same structure.
+Plausible learning-curve mechanism (volume / R&D / mixed).
+
+Consequential failure modes at Stage 4: <list>
+Consequential leverages at Stage 4: <list>
 
 ### Cross-stage carriers
-- F-carriers: tritium / lifetime / HTS-cost trajectory — note where each bites hardest
-- E-carriers: fuel-ecosystem R&D position / workforce-depth — note where each helps most
-
-### Concept's dominant failure mode (single biggest gate across all stages)
-- Identified stage and F-factor at its failure pole
-- One-sentence rationale
-
-### Concept's dominant leverage (single biggest tailwind across all stages)
-- Identified stage and either an ecosystem-relational F-factor at its leverage pole OR a distinct E-factor
-- One-sentence rationale
-- Slack vs. bottleneck status if applicable
+F-carriers (tritium / lifetime / HTS-cost trajectory) and E-carriers
+(fuel-ecosystem R&D position / workforce depth) — note where each bites hardest
+and whether they are consequential.
 ```
 
-The **dominant failure mode** and **dominant leverage** identifications are the key analytical outputs — together they form a 2D coordinate that feeds the spanning algorithm. Most of the existing per-concept material (analysis.md §1–§7, synthesis.md, the explorer JSONs) supplies the inputs; the ecosystem-relational F-factor poles and distinct E-factors require light additional research on adjacent-industry markets per critical component, which is one-time work shared across concepts.
+The per-stage organization is the canonical artifact. The methodology does not flatten the record into a concept-level list; the per-stage structure carries the information the map step needs. The trace does not include a cohort-position tag — cohort relationships (which concepts share critical-component dependencies, which are isolated) are an output of the cross-concept analysis step, not a per-concept input.
+
+The trace inputs come largely from existing per-concept content (analysis.md §1–§7, synthesis.md, explorer JSONs). The ecosystem-relational poles and distinct E-factors require light additional research on adjacent-industry markets per critical component, shared across concepts.
 
 ---
 
-## Spanning algorithm
+## Cross-concept analysis
 
-Pick ~5 concepts that span both **dominant failure mode** and **dominant leverage** — the two coordinates produced by the trace. Sketched algorithm:
+Per-concept traces produce lists. The map is built across them.
 
-1. **Filter by data sufficiency.** Concepts whose public data cannot support a meaningful trace (not yet at synthesis stage, §1 "Insufficient" rating, etc.) are ineligible. Threshold treatment is tuned in calibration — strict gate vs. sliding factor is still TBD (Q4 of the original research questions).
-2. **Trace each remaining candidate.** Produce the stage-by-stage narrative including F-factors and E-factors with slack/bottleneck tagging.
-3. **Tag each concept with two coordinates**: dominant failure mode (Stage N, F-factor at failure pole) AND dominant leverage (Stage N, ecosystem-relational F-factor at leverage pole OR distinct E-factor).
-4. **Group concepts by 2D (failure-mode × leverage) cell.** Some cells will have multiple candidates; many will have none.
-5. **Rank within each cell by Stage 4 cost ceiling.** Among concepts sharing both coordinates, prefer the one with the lower defensible long-run LCOE floor — the candidate whose deep-dive is most worth doing.
-6. **Pick across cells to span both axes.** A portfolio that includes concepts with the same failure mode but different leverage profiles teaches different lessons than one that varies only failure modes. The aim: 5 concepts surfacing different combinations of "where this could die" and "what could save it."
+Once every eligible concept has been traced, the analyst lays the per-stage records side by side and inspects the landscape:
 
-The resulting portfolio surfaces both *why* fusion concepts die in different places AND *what kinds of ecosystem positions might rescue them* — rather than producing "the top 5 by composite score," which tends to over-represent whatever the composite happens to weight. Spanning both axes also implicitly diversifies supply-chain risk: picking 5 REBCO-dependent concepts (all sharing F2.d/F3.a/F4.c at the same poles) means the entire portfolio rises or falls on a single supply-chain bet.
+- **Which failure modes recur across many concepts?** F2.a (FOAK financing above the $5B threshold) and the D-T fuel-cycle sublines (`F2.d-tritium-Li6`, `F4.c-FLiBe`, `F4.c-Li6`) are the obvious candidates for "shared by most" — they're decision-relevant precisely because they're widespread.
+- **Which failure modes are concentrated in a small subset?** Capability-class gaps (Zap-style pulsed-power, TAE-style 250 keV NBI) appear in a handful of concepts each; state-priority financing risk is concentrated in state-backed concepts.
+- **Which failure modes are concept-unique?** A failure mode appearing in exactly one concept's list is the strongest "unique problem" signal — but unique is only judgeable after every list is in.
+- **Which leverages are unconditional vs. gate-conditional, and which carry across the cohort?** Crossover-platform leverage (HTS via MRI/grid/transport, B-11 via semiconductor doping) operates regardless of any individual concept's success; intra-fusion cohort leverage (E2.b, E3.a, E3.b) operates only if the cohort coheres.
+- **Which leverages are concept-unique?** Same logic as failure modes.
+- **Which concepts *don't* have a given common risk?** Aneutronic concepts don't carry tritium/Li-6/Be sublines. Concepts with no F2.a above $5B sit outside the FOAK-financing failure cohort. The absence is itself a structural feature.
+
+The output of cross-concept analysis is a **map**: rows are failure-mode types (with sublines), columns are leverage types, cells are populated by concept membership. A concept appears in every cell its consequential modes place it in — concepts are not single-tagged. Coverage, concentration, and uniqueness are readable directly from the populated cells.
+
+The map's specific axis enumeration is built bottom-up from the actual traced concepts' records, not prescribed top-down by the methodology. Different candidate sets will produce different axis lists.
+
+**Cohort relationships also emerge at this step**, not at the trace level. Reading the F3.a sublines, E2.b, E3.a, and E3.b entries across concepts shows which concepts share critical-component dependencies (cohort-rich) and which depend on no other concept in the set (isolated). A concept whose only intra-fusion leverages are at the failure pole — no shared cohort to ride — is structurally isolated. This is a derived observation from the lists laid side by side, not a tag carried by any single trace.
+
+---
+
+## Portfolio thinking — three frames
+
+Once the map is built, the analyst selects ~5 concepts for deep-dive. The methodology does **not** prescribe a selection procedure. Selection is reserved for the analyst because the right frame depends on the project's current information needs and risk posture, both of which the methodology cannot fix in advance.
+
+What the methodology offers instead is three **frames** for thinking about portfolio composition. Each frame is a way of reading the map; each optimizes for something different; each comes with a structural trade-off. The analyst is expected to choose a frame (or a mix) explicitly, defend the choice in one sentence per pick, and live with the trade-off named.
+
+**Frame 1 — Coverage spanning.**
+Pick concepts that, together, populate as many distinct failure-mode and leverage-type cells as possible. Greedy variant: at each step add the concept that contributes the most new axis values to the running set. Global variant: enumerate all candidate sets, score each by total unique cells covered, pick the highest. *Optimizes for:* breadth — every named failure mode and every named leverage type has at least one concept in the portfolio whose deep-dive will illuminate it. *Trades off:* may include marginal concepts solely for their rare-axis contribution; may exclude structurally important "dense cell" concepts whose deep-dive would teach more about the shared-by-most failure modes.
+
+**Frame 2 — Uniqueness concentration.**
+Pick concepts whose per-stage records contain the most concept-unique failure modes or leverages. *Optimizes for:* learning about the rare structural features that don't surface in any other deep-dive. *Trades off:* portfolio over-indexes on the long tail; the shared-by-most failure modes (which dominate the actual fusion landscape) may go uninvestigated.
+
+**Frame 3 — Irreducibility.**
+For each candidate slot, ask: "Is this concept's deep-dive output reducible to a sensitivity branch on another concept already in the set?" Keep only the irreducible. Each pick comes with a one-sentence answer to "what does this teach that the others can't?" *Optimizes for:* defensibility at the slot level — every pick has an explicit rationale tied to a structural feature no other pick covers. *Trades off:* requires per-pair judgment, not mechanical; two analysts may disagree on whether X reduces to Y.
+
+These frames are not mutually exclusive. A typical workflow uses Frame 1 to ensure no major axis is empty, Frame 2 to rescue obvious unique-problem candidates that pure coverage would miss, and Frame 3 to defend each slot in writing.
+
+The output of this step is a 5-concept set with one-sentence defenses per pick and one-paragraph defense of the set as a whole.
 
 ---
 
 ## What this means for the deep-dive itself
 
-Identifying each selected concept's dominant failure mode also shapes what its deep-dive should investigate, and which output format (SysML model vs. 1costingfe extension) is most useful:
+The shape of each selected concept's deep-dive — and the choice between SysML model vs. 1costingfe extension — is informed by *which consequential failure modes and leverages* concentrate at which stages in that concept's record, not by a single tag:
 
-- **Stage 1/2-dominated concepts (physics or FOAK):** Deep-dive emphasizes the physics-to-engineering bridge — sensitivity to physics assumptions, plant cost under "physics works as advertised" vs. "physics underperforms by X" scenarios. SysML modeling is valuable here for capturing the assumption chain. Concepts with strong E2.a (crossover platform financing) benefit from explicit modeling of non-fusion revenue legs as part of FOAK financing.
-- **Stage 3-dominated concepts (chasm):** Deep-dive emphasizes supply chain, regulatory, site-specialization, and component-market modeling. Often more usefully done as a 1costingfe extension with concept-specific overrides than in SysML. Concepts at the leverage pole of F3.a (supply-chain maturity at chasm scale) particularly benefit from explicit external-market trajectory modeling within 1costingfe — modeling the supply curve, not just the demand curve.
-- **Stage 4-dominated concepts (learning curve):** Deep-dive emphasizes long-run cost-floor analysis — sensitivity to learning-rate assumptions, Kavlak-style decomposition into independent cost-reduction knobs, identification of ceiling-imposing specialty inputs. SysML modeling is most valuable here for tracing dependency structure between subsystems. Concepts riding strong intra-fusion co-development (E3.a) and shared sub-problem solutions (E3.b) particularly benefit from SysML capture of shared supply-chain and shared-sub-problem dependencies — the SysML model becomes a way to make the "we're not alone in this" leverage explicit.
+- **Concepts whose consequential failure modes concentrate at Stage 2 (FOAK affordability):** Deep-dive emphasizes the physics-to-engineering bridge — plant cost under stated physics assumptions, sensitivity to component-supply pole positions, FOAK financing structure. SysML modeling is valuable for capturing the assumption chain. Concepts with strong E2.a (crossover platform financing) benefit from explicit modeling of non-fusion revenue legs as part of FOAK financing.
+- **Concepts whose consequential failure modes concentrate at Stage 3 (chasm crossing):** Deep-dive emphasizes supply chain, regulatory, site-specialization, and component-market modeling. Often more usefully done as a 1costingfe extension with concept-specific overrides than in SysML. Concepts at the leverage pole of F3.a sublines particularly benefit from explicit external-market trajectory modeling — modeling the supply curve, not just the demand curve.
+- **Concepts whose consequential failure modes concentrate at Stage 4 (learning curve):** Deep-dive emphasizes long-run cost-floor analysis — sensitivity to learning-rate assumptions, Kavlak-style decomposition into independent cost-reduction knobs, identification of ceiling-imposing specialty inputs. SysML modeling is most valuable for tracing dependency structure between subsystems. Concepts riding strong intra-fusion co-development (E3.a) and shared sub-problem solutions (E3.b) particularly benefit from SysML capture of shared supply-chain and shared-sub-problem dependencies.
+- **Concepts with consequential failure modes spread across multiple stages:** Deep-dive emphasis is read off the concept's actual record, not a single-stage assignment. A concept with consequential modes at Stages 2 and 4 needs both FOAK-financing modeling and long-run cost-floor analysis; the deep-dive output type is mixed.
 
-Output type per concept is therefore *informed by* both the dominant failure mode AND the dominant leverage, rather than chosen up front.
+Output type per concept is therefore *informed by* the concept's full per-stage record, not by a single dominant-failure tag.
 
 ---
 
@@ -222,13 +261,11 @@ Output type per concept is therefore *informed by* both the dominant failure mod
 
 These remain to be resolved before the methodology is fully detailed:
 
-1. **Stage 1 discount calibration.** How much does an extra 5 years to Stage-2 entry actually discount a concept's deep-dive value? Anchor candidate: per-year discount proportional to a ~10% annual rate, but this needs sharpening against historical comps.
-2. **Data-sufficiency threshold.** Strict gate (must be at synthesis stage with §1 ≥ "Mostly Ready") or sliding (factored into trace quality)? Q4 of the original research questions; needs the second pass.
-3. **Stage 3-to-4 crossover for modularity.** At what production volume does modularity stop being a tax? Concept-specific (depends on lost economy of scale per unit), but a literature anchor for typical crossover N would help calibrate F4.d assessments.
-4. **How to surface "carries-through" failure modes in the dominant-failure-mode tagging.** A concept whose biggest risk is tritium supply has that risk biting at three stages. Does it get tagged as Stage 2 (where it first appears) or Stage 4 (where it's hardest to retire)? Current proposal: tag at the stage where it most plausibly *kills* the concept; flag the carrier explicitly elsewhere in the trace.
-5. **Calibration concept.** Methodology should be applied to one well-characterized concept end-to-end before applying at scale. Suggested: 01-hts-compact-tokamak, given its synthesis depth and external commentary (the reference methodology HTML scores ARC explicitly, providing a comparison point).
-6. **Slack-vs-bottleneck scoring formalism for ecosystem-relational F-factors.** F2.d, F3.a, and F4.c each carry a slack/bottleneck qualifier indicating whether the underlying ecosystem operates with supply slack (leverage pole realized) or bottleneck (competition partially cancels the leverage). Currently tagged qualitatively. Need to decide whether this becomes a structured numeric multiplier or stays as a qualitative qualifier in the pole identification.
-7. **Adjacent-industry market data.** Scoring the leverage pole of ecosystem-relational F-factors and the distinct E-factors requires per-component external-market data (REBCO global production, MRI/wind/grid HTS demand, high-power-laser industrial market size, pulsed-power capacitor market, defense pulsed-power program scale, etc.). This is one-time research shared across concepts but is not yet in the project knowledge base. Could be a discrete research task before traces begin.
+1. **Data-sufficiency threshold.** Strict gate (must be at synthesis stage with §1 ≥ "Mostly Ready") or sliding (factored into trace quality)? Q4 of the original research questions; needs the second pass.
+2. **Stage 3-to-4 crossover for modularity.** At what production volume does modularity stop being a tax? Concept-specific (depends on lost economy of scale per unit), but a literature anchor for typical crossover N would help calibrate F4.d assessments.
+3. **Carrier-vs-stage assignment in the per-stage record.** A concept whose biggest risk is tritium supply has that risk biting at three stages. Does the trace list it once (as a cross-stage carrier) or once per stage (as F2.d-tritium-Li6, F3.a-tritium-Li6, F4.c-Li6 sublines)? Current proposal: list both — the per-stage sublines feed the map's per-stage failure-mode cells, and the cross-stage carrier flag in the trace explicitly marks that they share an underlying mechanism.
+4. **Adjacent-industry market data.** Scoring the leverage pole of ecosystem-relational F-factors and the distinct E-factors requires per-component external-market data (REBCO global production, MRI/wind/grid HTS demand, high-power-laser industrial market size, pulsed-power capacitor market, defense pulsed-power program scale, etc.). This is one-time research shared across concepts but is not yet in the project knowledge base. Could be a discrete research task before traces begin.
+5. **Consequential vs. not-consequential threshold.** Each subline gets a binary consequential/not-consequential judgment. What counts as consequential? Current convention: a factor is consequential if its failure pole could plausibly contribute to ending the concept's commercial path, or if its leverage pole substantively shifts the cost curve. This is qualitative; the cross-concept analysis step will catch inconsistencies (an analyst flagging F2.d-Be as consequential for one concept and not-consequential for an identically-positioned concept).
 
 ---
 
@@ -239,6 +276,6 @@ Supersedes the workflow at the end of `concept.md`:
 1. ~~Concept doc capturing philosophy~~ — done (`concept.md`).
 2. ~~Research pass on Q1–Q3~~ — done (`research_q1_q3.md`).
 3. ~~Stage-gate reframing of the methodology~~ — this doc.
-4. **Calibration pass.** Apply the per-concept trace to 01-hts-compact-tokamak end-to-end. Refine the trace template, the failure-mode catalog, and the dominant-failure-mode tagging based on what calibration surfaces.
+4. ~~Calibration pass on 01-hts-compact-tokamak and 18-p-b11-frc~~ — done. Surfaced the multi-mode revision (retire single-primary-failure tag), the per-component sublining requirement for F2.d/F3.a/F4.c, and the Stage 1 reframe (timeline note, never a failure tag). Methodology updated in this revision.
 5. **Q4 + Q5 research pass.** Data-sufficiency thresholds and quantitative learning-rate predictors (deferred from the first research pass).
-6. **Apply at scale.** Trace all eligible concepts. Group by dominant failure mode. Select 5 spanning the modes. Document selection rationale per concept and for the set as a whole.
+6. **Apply at scale.** Trace all eligible concepts to per-stage records. Build the cross-concept map. Present the three portfolio frames to the analyst. Analyst selects ~5 concepts. Document selection rationale per concept and for the set as a whole.
