@@ -155,6 +155,19 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: e5b23ab23f6d175920c54388e696ea4acd1f6eddf284dea1701cf7bc85c5849b
 - **Date Added**: 2026-03-02
 
+### Progress toward fusion energy breakeven and gain as measured against the Lawson criterion
+- **Type**: documentation
+- **Location**: knowledge/meta_analysis/progress_toward_fusion_breakeven_lawson_criterion/
+- **Use for**: Wurzel & Hsu (ARPA-E, 2021, arXiv:2105.10954) — comprehensive peer-reviewed compilation of achieved Lawson parameter (nτ, nτE) and triple product (nTτE) values across MCF, ICF, and MIF experiments since 1955. Documents per-approach methodologies for inferring n, τ, T from experimental data. Serves RQ-4 (technology readiness — physics progress benchmark by concept), and provides cross-concept physics-state-of-the-art reference for the taxonomy (Stage 1).
+- **Validation**: Compare claimed physics performance of modeled concepts against this peer-reviewed compilation
+
+#### Extended Metadata
+- **Source URL**: https://arxiv.org/pdf/2105.10954
+- **Raw SHA256**: b7b3cdf0087ca3de0bdaff4127ef6cfae9718b4b367cc232264aac928fa4789c
+- **Extracted Path**: knowledge/meta_analysis/progress_toward_fusion_breakeven_lawson_criterion/
+- **Extract SHA256**: 44fdc3d0be2074443046df35cb0b285aa010d469b9057d3af3465d9b7d923dd8
+- **Date Added**: 2026-05-15
+
 ### Concept Research Dossiers
 - **Type**: research collection
 - **Location**: knowledge/concept_research/
