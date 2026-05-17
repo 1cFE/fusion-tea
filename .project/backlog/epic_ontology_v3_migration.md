@@ -1,7 +1,7 @@
 # Epic: Ontology v3 Migration
 
 **Epic ID**: ONTOLOGY-V3
-**Status**: Draft
+**Status**: In Progress (Item 1 complete 2026-05-17)
 **Priority**: P0
 **Created**: 2026-05-17
 **Estimated Effort**: 5–8 days across three branches
@@ -55,11 +55,12 @@ Migrate the project from the v0.2.x concept ontology to v0.3.0: drop `Plasma Sta
 
 ## Backlog Items
 
-### Item 1: Land `consistency-checks` on `main`
+### Item 1: Land `consistency-checks` on `main` ✅ Complete (2026-05-17)
 
 **Type**: Code/Integration
 **Effort**: 0.5 day (review 1h, fixups 1h, PR 1h, merge 1h)
 **Dependencies**: None
+**Merged**: PR #15 → `main` as `a8a779e`
 
 **Objective**: Get the current in-flight availability/η_th standardization work merged to `main` so the v3 migration starts from a stable baseline.
 
@@ -75,9 +76,9 @@ Migrate the project from the v0.2.x concept ontology to v0.3.0: drop `Plasma Sta
 - Touching `table.csv`.
 
 **Success Criteria**:
-- [ ] `consistency-checks` branch merged to `main`
-- [ ] CI / smoke commands green on `main`
-- [ ] No uncommitted edits remain in the working tree
+- [x] `consistency-checks` branch merged to `main` (PR #15, `a8a779e`)
+- [x] CI / smoke commands green on `main`
+- [ ] No uncommitted edits remain in the working tree — `uv.lock` diff still pending review
 
 **Deliverables**:
 - Merged PR
@@ -350,4 +351,4 @@ Items 1–4 are strictly sequential because each writes to the same files the ne
 ---
 
 **Last Updated**: 2026-05-17
-**Next Action**: Item 1 — review `consistency-checks` diff, push, open PR
+**Next Action**: Item 2 — branch `ontology-v3-migration` off updated `main`, merge/cherry-pick `1b960a9` from `origin/fix/concept-renumbering-robustness`, resolve conflicts
