@@ -110,14 +110,16 @@ NET_ELECTRIC_MW = 1000.0        # Net electrical output [MWe]
                                 # Source: gauss-fusion-technical-summary.md §GIGA Power Plant
                                 # "1 GWe design target"
 
-AVAILABILITY = 0.88             # Capacity factor [fraction]
-                                # Analog: Helios/Thea Energy QA stellarator (88%)
-                                # based on biennial 84-day outage.
-                                # Source: arxiv-2512-08027v1.md §2 Summary of the design
-                                # UNCERTAIN for GIGA: GIGA's 3D blanket may push lower.
-                                # Model range 0.85–0.90.
+AVAILABILITY = 0.88             # DEVIATION: from canonical 0.85 (MCF steady-state, D-T)
+                                #   per scoring_framework.md §"Plant availability".
+                                # Source: arxiv-2512-08027v1.md §2 Summary of the design,
+                                #   Helios/Thea Energy QA stellarator preconceptual design.
+                                # Basis: biennial 84-day maintenance outage cycle.
+                                # UNCERTAIN for GIGA: GIGA's 3D blanket may push lower
+                                # (model range 0.85–0.90).
 
-LIFETIME_YR = 40.0              # Plant lifetime [yr]
+LIFETIME_YR = 40.0              # DEVIATION: per scoring_framework.md §"Plant lifetime"
+                                #   (canonical 30 yr). Sourced design life:
                                 # Source: gauss-fusion-technical-summary.md §GIGA Power Plant
                                 # "Magnet and vacuum vessel design life: 40 years"
 

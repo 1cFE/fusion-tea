@@ -93,6 +93,7 @@ Selection logic (feedback-source dispatch in `lib/loop.py:run_stage1_loop`):
 
 | Priority | Condition | Producer | Template |
 |----------|-----------|----------|----------|
+| 0 | `--feedback PATH` set | **external** (one-shot) | User-supplied file → `iter-N/pre_feedback.md` → `analysis_v2.md` feedback mode |
 | 1 | Iter 1, no resume | **cold_start** | `analysis_v2.md` `{{cold_start}}` mode |
 | 2 | Resume + `Review-Status: revise` | **review** (one-shot) | Extracts F-N from `review.md` → `analysis_v2.md` feedback mode |
 | 3 | Resume with new sources detected | **source_integration** (one-shot) | `source_integration.md` → then `analysis_v2.md` feedback mode |
@@ -218,7 +219,7 @@ name/company substring. Ambiguous matches produce an error listing all hits.
 |------|----------|---------|-------------|
 | `--max-passes` | `analyze` | 3 | Max iterations (1 = skip assessment entirely → `SINGLE_PASS` verdict) |
 | `--add-passes N` | `analyze` | — | Run N additional passes from each concept's current iteration (implies `--resume`; per-concept `max_passes` = current iter + N) |
-| `--feedback PATH` | `analyze` | — | Apply external feedback file to existing analysis (separate code path, does not enter loop) |
+| `--feedback PATH` | `analyze` | — | Use file as `iter-N/pre_feedback.md` for next iter (requires existing `analysis.md`; implies `--resume`; runs full analyze→model_setup→assess) |
 | `--resume` | `analyze` | off | Continue from last iteration |
 | `--research` | `analyze` | off | Enable autonomous source acquisition on iter > 1 |
 | `--max-research-searches` | `analyze` | 5 | Max WebSearch calls per research step |
@@ -227,8 +228,7 @@ name/company substring. Ambiguous matches produce an error listing all hits.
 
 **Mutual exclusions** (enforced in `cmd_analyze`):
 - `--resume` and `--force` cannot be used together
-- `--feedback` and `--force` are mutually exclusive
-- `--feedback` and `--resume` are mutually exclusive
+- `--feedback` and `--force` are mutually exclusive (`--force` re-cold-starts, which contradicts `--feedback`'s "edit existing analysis" mode). `--feedback` composes cleanly with `--resume` and `--add-passes`.
 
 ### Resume Semantics
 

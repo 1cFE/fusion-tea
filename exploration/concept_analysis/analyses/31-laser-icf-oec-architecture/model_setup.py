@@ -62,8 +62,9 @@ ETA_TH = 0.55              # standardized from 0.44 per scoring_framework.md (En
                           # η_DEC = 0.44 (DEC, "conservative"; Rax et al. 2025 theory, TRL 1–2)
                           # MEDIUM confidence on thermal; LOW confidence on DEC
 
-MN = 1.0                  # Neutron multiplier: Li-breeding boost embedded in η_th* = 0.44;
-                          # setting mn = 1.1 (framework default) would double-count the boost
+MN = 1.0                  # DEVIATION: from canonical 1.1 (D-T) — physics coupling. Li-breeding
+                          # boost already embedded in η_th* = 0.44; setting mn = 1.1 (framework
+                          # default) would double-count the boost
 
 # DEC channel decomposition — needed to independently track sensitivity of each conversion path.
 # The framework's THERMAL pulsed_conversion mode uses a single eta_th; both channels must be

@@ -1444,91 +1444,13 @@ class TestIntegration_ExtractExplorerData:
 
 
 # ---------------------------------------------------------------------------
-# TestIntegration_ExternalFeedback — H-08
+# Note: H-08 tests for the legacy `_apply_external_feedback` were removed
+# along with that function. The new external-feedback producer (Phase 2 of
+# cleanup-feedback-flag) reaches the analyze stage through the regular
+# `_run_feedback_pass` path, which is already covered by
+# TestIntegration_FeedbackPass + the producer-level tests below
+# (TestExternalFeedbackProducer).
 # ---------------------------------------------------------------------------
-
-
-class TestIntegration_ExternalFeedback:
-    def test_external_feedback_not_archived_on_unchanged(self, tmp_path):
-        """H-08: when Claude returns rc=0 but analysis.md is byte-identical,
-        the feedback file MUST NOT be archived."""
-        from run_analysis import _apply_external_feedback
-
-        fx = _make_fixture(tmp_path)
-        original_analysis = "---\nID: test\n---\n\nOriginal.\n"
-        fx.with_analysis(original_analysis)
-        feedback_file = fx.concept_dir / "change_requests.md"
-        feedback_file.write_text("Please change things.")
-
-        templates_dir = tmp_path / "templates"
-        templates_dir.mkdir()
-        (templates_dir / "analysis_v2.md").write_text(
-            "Apply {{feedback_path}} to {{concept_name}}"
-        )
-
-        fake = FakeClaude([
-            FakeInvocation(returncode=0),
-            FakeInvocation(returncode=0),
-            FakeInvocation(returncode=0),
-        ])
-        with (
-            patch("run_analysis.TEMPLATES_DIR", new=templates_dir),
-            patch("run_analysis.CONCEPT_ANALYSIS_DIR", new=tmp_path),
-            patch("run_analysis.ANALYSES_DIR", new=tmp_path / "analyses"),
-            patch(
-                "run_analysis._build_common_vars",
-                return_value={"concept_name": "Test Concept", "company": "Test Co"},
-            ),
-            fake,
-        ):
-            _apply_external_feedback(
-                [fx.concept], fx.make_args(), feedback_file,
-            )
-
-        # Feedback still in place (not archived)
-        assert feedback_file.exists()
-        assert fx.analysis_path.read_text() == original_analysis
-
-    def test_external_feedback_archived_on_change(self, tmp_path):
-        """Happy path: when analysis.md IS modified, the feedback file is
-        archived with a timestamp."""
-        from run_analysis import _apply_external_feedback
-
-        fx = _make_fixture(tmp_path)
-        fx.with_analysis("---\nID: test\n---\n\nOriginal.\n")
-        feedback_file = fx.concept_dir / "change_requests.md"
-        feedback_file.write_text("Please change things.")
-
-        templates_dir = tmp_path / "templates"
-        templates_dir.mkdir()
-        (templates_dir / "analysis_v2.md").write_text(
-            "Apply {{feedback_path}} to {{concept_name}}"
-        )
-
-        modified = "---\nID: test\n---\n\nRevised.\n"
-        fake = FakeClaude([
-            FakeInvocation(
-                returncode=0,
-                file_edits=[(fx.analysis_path, modified)],
-            ),
-        ])
-        with (
-            patch("run_analysis.TEMPLATES_DIR", new=templates_dir),
-            patch("run_analysis.CONCEPT_ANALYSIS_DIR", new=tmp_path),
-            patch("run_analysis.ANALYSES_DIR", new=tmp_path / "analyses"),
-            patch(
-                "run_analysis._build_common_vars",
-                return_value={"concept_name": "Test Concept", "company": "Test Co"},
-            ),
-            fake,
-        ):
-            _apply_external_feedback(
-                [fx.concept], fx.make_args(), feedback_file,
-            )
-
-        assert not feedback_file.exists()
-        archived = list(fx.concept_dir.glob("change_requests_*.md"))
-        assert len(archived) == 1
 
 
 # ---------------------------------------------------------------------------
@@ -1759,3 +1681,334 @@ class TestRetryPromptContent:
 
         entries = json.loads(log_path.read_text())
         assert entries[0]["validated_text_preview"] == "hello world"
+
+
+# ===========================================================================
+# cleanup-feedback-flag Phase 1: cmd_analyze guard block (FR-5, FR-6 a-e)
+# ===========================================================================
+
+
+class TestExternalFeedbackGuards:
+    """`--feedback` fail-fast guards in cmd_analyze.
+
+    Each guard must exit non-zero BEFORE invoking Claude or creating any
+    iter directory. See .project/active/cleanup-feedback-flag/spec.md FR-6.
+    """
+
+    def _concept(self, cid: str = "test-concept") -> dict:
+        return {
+            "_id": cid,
+            "_num": "99",
+            "_research_id": cid,
+            "Concept Name": "Test Concept",
+            "Company": "Test Co",
+            "Fuel": "D-T",
+            "Confinement Family": "MFE",
+        }
+
+    def _args(self, feedback: Path, *, force: bool = False) -> MagicMock:
+        ns = MagicMock(spec=[
+            "concepts", "all_remaining", "family", "model", "dry_run",
+            "timeout", "force", "max_passes", "add_passes", "feedback",
+            "resume", "research",
+        ])
+        ns.concepts = ["test-concept"]
+        ns.all_remaining = False
+        ns.family = None
+        ns.model = "sonnet"
+        ns.dry_run = False
+        ns.timeout = 900
+        ns.force = force
+        ns.max_passes = 3
+        ns.add_passes = None
+        ns.feedback = feedback
+        ns.resume = False
+        ns.research = False
+        return ns
+
+    def _run(self, tmp_path, feedback: Path, *, force: bool = False,
+             create_analysis: bool = True):
+        """Invoke cmd_analyze with mocks; return (rc, run_stage1_loop mock).
+
+        run_stage1_loop is patched so that, even if all guards pass (the
+        happy-path test), the loop never actually runs. Guards must `sys.exit`
+        before the dispatch — we assert the loop was NOT called for failure
+        cases."""
+        import run_analysis
+        analyses = tmp_path / "analyses"
+        concept_dir = analyses / "test-concept"
+        concept_dir.mkdir(parents=True)
+        if create_analysis:
+            (concept_dir / "analysis.md").write_text(
+                "---\nID: test\n---\n\nExisting analysis.\n")
+
+        concept = self._concept()
+        args = self._args(feedback, force=force)
+        with (
+            patch.object(run_analysis, "ANALYSES_DIR", new=analyses),
+            patch.object(run_analysis, "resolve_concepts",
+                         return_value=[concept]),
+            patch.object(run_analysis, "run_stage1_loop") as mock_loop,
+        ):
+            with pytest.raises(SystemExit) as excinfo:
+                run_analysis.cmd_analyze([concept], args)
+            return excinfo.value.code, mock_loop
+
+    def test_missing_file_exits_one(self, tmp_path, capsys):
+        rc, loop = self._run(tmp_path, tmp_path / "nope.md")
+        assert rc == 1
+        out = capsys.readouterr().out
+        assert "not found" in out.lower()
+        loop.assert_not_called()
+
+    def test_empty_file_exits_one(self, tmp_path, capsys):
+        f = tmp_path / "empty.md"
+        f.write_text("")
+        rc, loop = self._run(tmp_path, f)
+        assert rc == 1
+        assert "empty" in capsys.readouterr().out.lower()
+        loop.assert_not_called()
+
+    def test_no_verdict_exits_one(self, tmp_path, capsys):
+        f = tmp_path / "no_verdict.md"
+        f.write_text("Some content but no verdict line.\n")
+        rc, loop = self._run(tmp_path, f)
+        assert rc == 1
+        out = capsys.readouterr().out.lower()
+        assert "verdict" in out
+        loop.assert_not_called()
+
+    def test_no_category_exits_one(self, tmp_path, capsys):
+        f = tmp_path / "no_category.md"
+        f.write_text(
+            "VERDICT: FINDINGS\n\n"
+            "### F-1: Something\n"
+            "- some other field: value\n"
+        )
+        rc, loop = self._run(tmp_path, f)
+        assert rc == 1
+        out = capsys.readouterr().out.lower()
+        assert "category" in out
+        loop.assert_not_called()
+
+    def test_force_combo_exits_one(self, tmp_path, capsys):
+        f = tmp_path / "fb.md"
+        f.write_text("VERDICT: PASS\n")
+        rc, loop = self._run(tmp_path, f, force=True)
+        assert rc == 1
+        out = capsys.readouterr().out.lower()
+        assert "--feedback" in out and "--force" in out
+        loop.assert_not_called()
+
+    def test_missing_analysis_md_exits_one(self, tmp_path, capsys):
+        f = tmp_path / "fb.md"
+        f.write_text("VERDICT: PASS\n")
+        rc, loop = self._run(tmp_path, f, create_analysis=False)
+        assert rc == 1
+        out = capsys.readouterr().out.lower()
+        assert "analysis.md" in out or "cold-start" in out
+        loop.assert_not_called()
+
+    def test_valid_input_dispatches_to_loop_with_resume(self, tmp_path):
+        """Valid `--feedback` input passes guards and dispatches to
+        run_stage1_loop with resume=True (implicit --resume promotion)."""
+        f = tmp_path / "fb.md"
+        f.write_text("VERDICT: PASS\n")
+        import run_analysis
+        analyses = tmp_path / "analyses"
+        concept_dir = analyses / "test-concept"
+        concept_dir.mkdir(parents=True)
+        (concept_dir / "analysis.md").write_text(
+            "---\nID: test\n---\n\nExisting.\n")
+        concept = self._concept()
+        args = self._args(f)
+        with (
+            patch.object(run_analysis, "ANALYSES_DIR", new=analyses),
+            patch.object(run_analysis, "resolve_concepts",
+                         return_value=[concept]),
+            patch.object(run_analysis, "_build_common_vars",
+                         return_value={"concept_name": "Test"}),
+            patch.object(run_analysis, "run_stage1_loop") as mock_loop,
+            patch.object(run_analysis, "read_loop_state") as mock_state,
+        ):
+            mock_state.return_value.next_iteration = 1
+            run_analysis.cmd_analyze([concept], args)
+        mock_loop.assert_called_once()
+        # resume=True was promoted implicitly.
+        _, kwargs = mock_loop.call_args
+        assert kwargs["resume"] is True
+
+
+# ===========================================================================
+# cleanup-feedback-flag Phase 2: external-feedback producer in run_stage1_loop
+# ===========================================================================
+
+
+def _feedback_findings_cr() -> str:
+    """A CR with a Category: model finding so model_setup runs in edit mode."""
+    return (
+        "VERDICT: FINDINGS\n\n"
+        "### F-1: Update structure thickness\n"
+        "- **Category:** model\n"
+        "- **Severity:** moderate\n"
+        "- **Evidence:** updated estimate from supplier\n"
+        "- **Proposed Action:** set STRUCTURE_T = 0.5\n"
+    )
+
+
+class TestExternalFeedbackProducer:
+    """The external-feedback producer in run_stage1_loop (Phase 2)."""
+
+    def _patches(self, tmp_path):
+        return (
+            patch("lib.loop.CONCEPT_ANALYSIS_DIR", new=tmp_path),
+            patch("lib.loop.ANALYSES_DIR", new=tmp_path / "analyses"),
+            patch("lib.state.ANALYSES_DIR", new=tmp_path / "analyses"),
+            patch("lib.state._default_explorer_data_dir",
+                  return_value=tmp_path / "explorer-data"),
+            patch("lib.step_runner.CONCEPT_ANALYSIS_DIR", new=tmp_path),
+            patch("lib.loop.run_model", return_value=(True, "LCOE: 42.0 $/MWh")),
+        )
+
+    def test_pre_feedback_byte_equal_to_source(self, tmp_path):
+        """FR-1, FR-4: user file becomes iter-N/pre_feedback.md byte-for-byte,
+        and the source file on disk is left untouched."""
+        from lib.loop import run_stage1_loop
+
+        fx = _make_fixture(tmp_path)
+        # --feedback requires existing analysis.md (FR-6 (a)).
+        fx.with_analysis("---\nID: test\n---\n\nOriginal body.\n")
+
+        cr_path = tmp_path / "my_cr.md"
+        cr_bytes = _feedback_findings_cr().encode("utf-8")
+        cr_path.write_bytes(cr_bytes)
+
+        iter_dir = fx.concept_dir / "iter-1"
+        modified_analysis = "---\nID: test\n---\n\nRevised after CR.\n"
+        iter_model = iter_dir / "model_setup.py"
+
+        fake = FakeClaude([
+            # analyze (feedback-pass) — must edit analysis.md
+            FakeInvocation(returncode=0,
+                           file_edits=[(fx.analysis_path, modified_analysis)]),
+            # model-setup (no prior model → cold-start path, validates syntax)
+            FakeInvocation(returncode=0,
+                           file_writes=[(iter_model,
+                                         "LCOE = 42.0\nprint('LCOE: 42.0 $/MWh')\n")]),
+        ])
+
+        p1, p2, p3, p4, p5, p6 = self._patches(tmp_path)
+        args = fx.make_args(max_passes=1, feedback=cr_path)
+        with p1, p2, p3, p4, p5, p6, fake:
+            verdict = run_stage1_loop(
+                fx.concept,
+                args,
+                resume=True,
+                common_vars=fx.common_vars,
+                analysis_template=fx.analysis_template,
+                assessment_template=fx.assessment_template,
+            )
+
+        assert verdict == "SINGLE_PASS"
+        pre_feedback = iter_dir / "pre_feedback.md"
+        assert pre_feedback.exists()
+        # FR-1: byte-equal to source.
+        assert pre_feedback.read_bytes() == cr_bytes
+        # FR-4: source file untouched.
+        assert cr_path.exists()
+        assert cr_path.read_bytes() == cr_bytes
+
+    def test_producer_fires_once_then_falls_through(self, tmp_path):
+        """FR-3: --feedback is a one-shot producer. Iter 2 falls through to
+        the normal assess chain, consuming iter-1's post_feedback.md (not the
+        source CR)."""
+        from lib.loop import run_stage1_loop
+
+        fx = _make_fixture(tmp_path)
+        fx.with_analysis("---\nID: test\n---\n\nOriginal.\n")
+
+        cr_path = tmp_path / "cr.md"
+        cr_path.write_text(_feedback_findings_cr())
+
+        iter1 = fx.concept_dir / "iter-1"
+        iter2 = fx.concept_dir / "iter-2"
+        iter1_model = iter1 / "model_setup.py"
+        iter1_post = iter1 / "post_feedback.md"
+        iter2_model = iter2 / "model_setup.py"
+
+        post_findings = (
+            "VERDICT: FINDINGS\n\n"
+            "### F-1: Note something\n"
+            "- **Category:** analysis\n"
+            "- **Severity:** minor\n"
+            "- **Evidence:** further review\n"
+            "- **Proposed Action:** clarify wording\n"
+        )
+
+        valid_py = "LCOE = 42.0\nprint('LCOE: 42.0 $/MWh')\n"
+        fake = FakeClaude([
+            # iter-1: analyze (feedback-pass from CR)
+            FakeInvocation(returncode=0,
+                           file_edits=[(fx.analysis_path,
+                                        "---\nID: test\n---\n\nAfter CR.\n")]),
+            # iter-1: model-setup (no prior model — fresh write)
+            FakeInvocation(returncode=0,
+                           file_writes=[(iter1_model, valid_py)]),
+            # iter-1: assess → writes post_feedback.md with FINDINGS
+            FakeInvocation(returncode=0,
+                           file_writes=[(iter1_post, post_findings)]),
+            # iter-2: analyze (feedback-pass from iter-1 post_feedback.md, NOT cr)
+            FakeInvocation(returncode=0,
+                           file_edits=[(fx.analysis_path,
+                                        "---\nID: test\n---\n\nAfter iter-2.\n")]),
+            # iter-2: model-setup (analysis-only finding → syntax-only validator)
+            FakeInvocation(returncode=0,
+                           file_writes=[(iter2_model, valid_py)]),
+            # iter-2: assess
+            FakeInvocation(returncode=0,
+                           file_writes=[(iter2 / "post_feedback.md",
+                                         _pass_assessment_findings())]),
+        ])
+
+        p1, p2, p3, p4, p5, p6 = self._patches(tmp_path)
+        args = fx.make_args(max_passes=2, feedback=cr_path)
+        with p1, p2, p3, p4, p5, p6, fake:
+            run_stage1_loop(
+                fx.concept, args, resume=True,
+                common_vars=fx.common_vars,
+                analysis_template=fx.analysis_template,
+                assessment_template=fx.assessment_template,
+            )
+
+        # iter-1/pre_feedback.md is the user CR.
+        assert (iter1 / "pre_feedback.md").read_text() == _feedback_findings_cr()
+        # iter-2/pre_feedback.md is iter-1's post_feedback.md (assess chain),
+        # NOT the user CR (one-shot producer).
+        iter2_pre = (iter2 / "pre_feedback.md").read_text()
+        assert iter2_pre == post_findings
+        assert iter2_pre != _feedback_findings_cr()
+
+
+def _pass_assessment_findings() -> str:
+    """Minimal PASS verdict feedback file (no findings)."""
+    return "VERDICT: PASS\n"
+
+
+# ===========================================================================
+# cleanup-feedback-flag Phase 3: docs regression guard
+# ===========================================================================
+
+
+def test_readme_documents_single_step_external_feedback():
+    """Guards against doc-drift back to the two-step Step-A/Step-B workflow."""
+    readme = (
+        Path(__file__).resolve().parent.parent / "README.md"
+    )
+    text = readme.read_text(encoding="utf-8")
+    # Old two-step pattern must be gone.
+    assert "Step A" not in text
+    assert "Step B" not in text
+    # New producer-table row exists.
+    assert "external" in text and "--feedback PATH" in text
+    # Mutual-exclusion list no longer claims --feedback + --resume conflict.
+    assert "`--feedback` and `--resume`" not in text

@@ -39,10 +39,10 @@ model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
 
 _SHARED_KWARGS = dict(
     # ── Operations ──────────────────────────────────────────────────────────
-    availability=0.80,          # UNCERTAIN: MANTA pilot ~37% (maintenance-heavy);
-                                # commercial target 75–90% per Araiinejad & Shirvan 2025
-                                # [01-hts-compact-tokamak analysis §4]. Using 80% for
-                                # commercial plant comparison.
+    availability=0.85,          # Canonical per scoring_framework.md §Plant availability
+                                # (MCF quasi-steady, D-T); previously 0.80.
+                                # No Tier-A override (externally-published basis) exists
+                                # for this concept; policy value applies.
     lifetime_yr=30,             # Standard fusion plant economic lifetime assumption
     n_mod=1,                    # Single-module plant
     construction_time_yr=7.0,   # UNCERTAIN: no Firefly/MANTA estimate; 7 yr typical
@@ -74,9 +74,9 @@ _SHARED_KWARGS = dict(
     p_input=40.0,     # Total auxiliary heating [MW]; manta-reference-design.md §2.1
     p_nbi=0.0,        # No NBI — MANTA uses ICRF exclusively
     p_icrf=40.0,      # 40 MW He-3 minority ICRF at 110 MHz; manta-reference-design.md §2.1
-    mn=1.11,          # Blanket power multiplication (FLiBe TBR=1.15 design);
-                      # manta-reference-design.md §5.1
-    eta_th=0.35,       # standardized from 0.38 per scoring_framework.md (Energy Capture: Thermal (unspecified))
+    mn=1.11,          # DEVIATION: from canonical 1.1 (D-T) — FLiBe blanket, TBR=1.15
+                      # design; manta-reference-design.md §5.1
+    eta_th=0.38,      # Thermal-to-electric efficiency; back-calculated from MANTA
                       # power balance (see derivation in docstring)
     eta_pin=0.50,     # ICRF wall-plug efficiency; framework default for RF heating
     eta_p=0.50,       # Pumping efficiency — framework default
@@ -376,14 +376,15 @@ Critical uncertainties (in order of LCOE impact):
   1. NT confinement scaling to burning plasma — H_NA=2 unvalidated (TRL 2-3)
   2. Commercial-scale NT cost study nonexistent — MANTA is sub-commercial
   3. FLiBe-to-molten-salt HX — "low TRL" (MANTA §6.3); affects eta_th
-  4. Availability 80% assumed for commercial plant vs. MANTA pilot 37%
+  4. Availability 85% (canonical per scoring_framework.md §Plant availability) vs. MANTA pilot 37%
   5. TF coil replacement lifetime: ~3100 ± 400 MW·yr (MANTA §5.2)
      PF2 limiting: ~890 MW·yr (~2 FPY maintenance cycle driver)
 
 Capacity factor note:
   MANTA pilot capacity factor ~37% (planned maintenance + pilot operations).
   Commercial plant target 75-90% per Araiinejad & Shirvan 2025.
-  This model uses 80% — results are sensitive to this assumption.
+  This model uses 85% (canonical per scoring_framework.md §Plant availability,
+  MCF quasi-steady D-T) — results are sensitive to this assumption.
 """)
 
 # ── Sensitivity Analysis ─────────────────────────────────────────────────────

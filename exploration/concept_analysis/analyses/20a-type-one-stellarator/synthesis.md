@@ -5,16 +5,18 @@ Company: Type One Energy
 Type: synthesis
 Status: draft
 Created: 2026-04-29
+Stale: true
+Stale-Reason: analysis-updated-iter-4
 ---
 
 # Editorial Synthesis: QI Modular HTS Stellarator - Infinity Two
 
 ## 1. Executive Summary
 
-- **Single Most Important Risk**: 3D HTS coil manufacturing at R=12.5m scale with no cost precedent — dominates capital cost with elasticity +1.0, likely understated by framework default (W7-X LTS magnets alone cost ~€1B on a smaller machine); LCOE range 306–840 $/MWh depending on coil cost realization.
+- **Single Most Important Risk**: 3D HTS coil manufacturing at R=12.5m scale with no cost precedent — dominates capital cost with elasticity +1.0, likely understated by framework default (W7-X LTS magnets alone cost ~€1B on a smaller machine); LCOE range 312–860 $/MWh depending on coil cost realization.
 - **Single Most Important Advantage**: Stellarator physics eliminates disruptions, ELMs, current drive systems, and pulsed thermal cycling — removes entire O&M cost categories and enables genuine 2-year steady-state cycles with 96% theoretical availability ceiling, far above tokamak-achievable values.
-- **LCOE Ballpark**: 306 $/MWh at 350 MWe (framework default coil cost, 87% availability) is a **confirmed lower bound**; 570–840 $/MWh more plausible with 3×–5× coil cost premium for non-planar REBCO winding; 1 GW scaled: 150 $/MWh (1× coil) to 337 $/MWh (5× coil).
-- **Confidence Verdict**: **Medium-Low**. Physics basis is peer-reviewed and exceptional for a private concept (six J. Plasma Phys. papers, TBR=1.30 OpenMC-verified, Q>40 confirmed). Cost confidence is low: no published capital estimate, 3D HTS coil fabrication undemonstrated (TRL 2–3), island divertor cost uncharacterized, and availability projection (87%) derived from MCF literature not validated for this design.
+- **LCOE Ballpark**: 312.5 $/MWh at 350 MWe (framework default coil cost, 85% canonical availability) is a **confirmed lower bound**; 586–860 $/MWh more plausible with 3×–5× coil cost premium for non-planar REBCO winding; 1 GW scaled: 153.5 $/MWh (1× coil) to 345 $/MWh (5× coil).
+- **Confidence Verdict**: **Medium-Low**. Physics basis is peer-reviewed and exceptional for a private concept (six J. Plasma Phys. papers, TBR=1.30 OpenMC-verified, Q>40 confirmed). Cost confidence is low: no published capital estimate, 3D HTS coil fabrication undemonstrated (TRL 2–3), island divertor cost uncharacterized, and availability (85% canonical per scoring_framework.md) not concept-validated — no Type One Energy published target exists.
 
 ---
 
@@ -25,14 +27,14 @@ Ranked by LCOE elasticity (sensitivity magnitude):
 ### 1. 3D HTS Coil Cost (C220103) — Elasticity +1.01
 - **Assumed value**: $2,323M at native 350 MWe (framework stellarator default scaled to R=12.5m).
 - **Source**: No published estimate. Framework applies standard HTS coil scaling; does not penalize for 3D non-planar winding complexity unique to stellarators.
-- **Sensitivity magnitude**: A 1% error in coil cost produces a 1.01% error in LCOE — the highest parameter sensitivity in the model. At 3× framework default (plausible for W7-X manufacturing complexity extrapolated to HTS), LCOE rises to 573 $/MWh (+87%); at 5×, 840 $/MWh (+175%).
+- **Sensitivity magnitude**: A 1% error in coil cost produces a 1.01% error in LCOE — the highest parameter sensitivity in the model. At 3× framework default (plausible for W7-X manufacturing complexity extrapolated to HTS), LCOE rises to 586 $/MWh (+87%); at 5×, 860 $/MWh (+175%).
 - **What would flip the conclusion**: Independent coil winding cost assessment from REBCO manufacturers (CFS partnership data, if published) demonstrating <2× framework cost would restore sub-400 $/MWh LCOE viability. Conversely, any coil cost validation >4× framework pushes LCOE above 700 $/MWh and likely uncompetitive with advanced fission or renewables+storage.
 
 ### 2. Availability — Elasticity –0.94
-- **Assumed value**: 87% (central estimate between 85–90% MCF literature range for steady-state D-T plants per Araiinejad & Shirvan 2025, adjusted upward for stellarator steady-state advantage).
-- **Source**: Derived. Published design specifies 2-year operating cycle + 30-day maintenance outages → 96% theoretical maximum (730/760 days). No published availability target from Type One Energy.
-- **Sensitivity magnitude**: Each 1% availability change alters LCOE by 0.94% in the opposite direction. Availability scenarios: 80% pessimistic → 329 $/MWh; 87% central → 306 $/MWh; 93% mid-range → 287 $/MWh; 96% aspirational → 279 $/MWh (all at 1× coil cost).
-- **What would flip the conclusion**: Demonstrated >90% availability at Infinity One subscale validation (2029) with island divertor helium ash exhaust confirmed >2% (classical design marginal at 0.44–2.9%) would justify upward revision toward 93–96% and bring LCOE under 290 $/MWh even at 3× coil cost. Failure to exceed 85% availability (tokamak-equivalent) eliminates the stellarator steady-state advantage and keeps LCOE >310 $/MWh at 1× coil cost.
+- **Assumed value**: 85% canonical (scoring_framework.md §Plant availability, MCF steady-state D-T). No published availability target from Type One Energy; 2-year operating cycle gives ~96% theoretical maximum.
+- **Source**: Derived. Published design specifies 2-year operating cycle + 30-day maintenance outages → 96% theoretical maximum (730/760 days). No published availability target from Type One Energy. Canonical 85% per project policy is the central case; no Tier-A override applies.
+- **Sensitivity magnitude**: Each 1% availability change alters LCOE by 0.94% in the opposite direction. Availability scenarios: 80% pessimistic → 329 $/MWh; 85% canonical → 312.5 $/MWh; 93% mid-range → 287 $/MWh; 96% aspirational → 279 $/MWh (all at 1× coil cost).
+- **What would flip the conclusion**: Demonstrated >90% availability at Infinity One subscale validation (2029) with island divertor helium ash exhaust confirmed >2% (classical design marginal at 0.44–2.9%) would justify upward revision toward 93–96% and bring LCOE under 290 $/MWh even at 3× coil cost. Failure to exceed 85% availability (canonical baseline) eliminates the stellarator steady-state advantage and keeps LCOE >312 $/MWh at 1× coil cost.
 
 ### 3. Construction Schedule — Elasticity +0.55
 - **Assumed value**: 10 years (stellarator framework default 8 years extended for R=12.5m scale and 3D HTS coil manufacturing TRL 2–3 risk).
@@ -41,10 +43,10 @@ Ranked by LCOE elasticity (sensitivity magnitude):
 - **What would flip the conclusion**: Demonstrated 3D HTS coil manufacturing at commercial yield rates (CFS partnership results, if achieved by 2027–2028) could shorten construction to 8 years and reduce LCOE by ~10%. Schedule overrun to 15 years (plausible if coil winding requires iterative tooling development) increases LCOE to 370 $/MWh at 1× coil cost, nearing unviability.
 
 ### 4. Thermal Efficiency (η_th) — Elasticity –0.15
-- **Assumed value**: 45% (derived from published 800 MW fusion / 350 MWe net power balance with blanket multiplication M_b=1.15 and ~65 MWe recirculating power estimate).
-- **Source**: Medium confidence. Derived from published operating point (analysis.md §Section 2, Challenge 3). Published lower bound ">30%" is a floor, not the design point. Supercritical steam or sCO₂ cycle required for 45%; framework assumes Rankine with reheat.
-- **Sensitivity magnitude**: Each 1% thermal efficiency improvement reduces LCOE by 0.15%. A 5-percentage-point drop to 40% (steam Rankine conservative bound) increases LCOE by ~4% to 318 $/MWh at 1× coil cost.
-- **What would flip the conclusion**: Confirmation of sCO₂ cycle (50%+ efficiency achievable) from plant study publication would reduce LCOE by ~8% to 282 $/MWh at 1× coil cost. Conversely, reversion to standard steam Rankine (38% realistic) increases LCOE by ~7% to 327 $/MWh.
+- **Assumed value**: 47% implied from published 800 MW fusion / 350 MWe net power balance with blanket multiplication M_b=1.10 (D-T canonical per scoring_framework.md) and ~65 MWe recirculating power estimate; model uses 0.45 as conservative central estimate.
+- **Source**: Medium confidence. Derived from published operating point (analysis.md §Section 2, Challenge 3). Published lower bound ">30%" is a floor, not the design point. Supercritical steam or sCO₂ cycle implied at 47%; framework assumes Rankine with reheat.
+- **Sensitivity magnitude**: Each 1% thermal efficiency improvement reduces LCOE by 0.15%. A 5-percentage-point drop to 40% (steam Rankine conservative bound) increases LCOE by ~4% to ~326 $/MWh at 1× coil cost.
+- **What would flip the conclusion**: Confirmation of sCO₂ cycle (50%+ efficiency achievable) from plant study publication would reduce LCOE by ~8% to ~288 $/MWh at 1× coil cost. Conversely, reversion to standard steam Rankine (38% realistic) increases LCOE by ~7% to ~334 $/MWh.
 
 ### 5. Blanket Radial Build (blanket_t) — Elasticity +0.15
 - **Assumed value**: 0.80 m (framework stellarator default; HCPB radial build not published).
@@ -61,7 +63,7 @@ From analysis.md Section 2 (Challenges):
 ### 3D HTS Coil Manufacturing Cost (Challenge 1)
 - **Verdict**: **Unlikely resolvable to competitive LCOE without major cost breakthrough**
 - **Rationale**: W7-X demonstrated 3D LTS coil winding at ~€1B magnet cost for a smaller machine; REBCO tape is stiffer than LTS cable and more strain-sensitive, making 3D winding harder, not easier. Framework default likely understates true cost by 2×–5×.
-- **What would retire this risk**: CFS partnership produces a validated cost estimate <$3B for the full Infinity Two coil set (verified by independent engineering assessment) AND demonstrates commercial-yield 3D winding tooling at Infinity One scale (2029). Absent this, coil cost remains the dominant LCOE uncertainty and likely keeps LCOE >400 $/MWh.
+- **What would retire this risk**: CFS partnership produces a validated cost estimate <$3B for the full Infinity Two coil set (verified by independent engineering assessment) AND demonstrates commercial-yield 3D winding tooling at Infinity One scale (2029). Absent this, coil cost remains the dominant LCOE uncertainty and likely keeps LCOE >400 $/MWh at 85% canonical availability.
 
 ### Large Machine Scale / High Absolute Capital (Challenge 2)
 - **Verdict**: **Genuinely uncertain** — depends on trade-off between physics margin and capital per kW
@@ -106,7 +108,7 @@ Relative to conventional D-T tokamak cost structure baseline (ITER/SPARC/ST-E1 a
 
 5. **Higher TBR margin** — TBR=1.30 is the highest confirmed in this analysis (most HCPB designs target 1.1–1.15). Provides: flexibility in blanket design (can trade TBR margin for simplified geometry or reduced Be inventory), reduced sensitivity to tritium extraction inefficiency, lower startup tritium inventory risk. **Not a direct cost saving** but reduces technical risk → lower contingency and financial risk premium.
 
-**Quantified total advantage**: ~$350–700M direct capital saving at 350 MWe scale, plus ~$25–40M/yr O&M saving, plus 5–15 percentage points availability advantage from elimination of disruptions and dwell periods. At 87% modeled availability, this is already embedded; the full advantage appears if stellarator achieves 93–96% vs. tokamak 80–85%.
+**Quantified total advantage**: ~$350–700M direct capital saving at 350 MWe scale, plus ~$25–40M/yr O&M saving, plus 5–15 percentage points availability advantage from elimination of disruptions and dwell periods. At 85% modeled availability (canonical), this is already embedded; the full advantage appears if stellarator achieves 93–96% vs. tokamak 80–85%.
 
 ### Structural Disadvantages (Cost Added or Increased)
 
@@ -120,7 +122,7 @@ Relative to conventional D-T tokamak cost structure baseline (ITER/SPARC/ST-E1 a
 
 5. **Complex remote maintenance in non-axisymmetric geometry** — stellarator maintenance tooling cannot use standard tokamak remote handling (no central bore access, non-repeating geometry around toroidal circumference). **Cost penalty**: +$50–100M remote handling system capital, +10–20% maintenance cycle time (increases unplanned outage exposure).
 
-**Quantified total disadvantage**: +$2.3–5.5B capital penalty (dominated by 3D coil cost), +$10–20M/yr O&M penalty. The coil cost penalty alone exceeds the sum of all stellarator advantages by 3×–7×, determining overall LCOE outcome.
+**Quantified total disadvantage**: +$2.3–5.5B capital penalty (dominated by 3D coil cost), +$10–20M/yr O&M penalty. The coil cost penalty alone exceeds the sum of all stellarator advantages by 3×–7×, determining overall LCOE outcome. LCOE range at 85% canonical availability: 312–860 $/MWh depending on coil cost realization (1×–5× framework default).
 
 ### Net Structural Position
 Infinity Two's LCOE competitiveness depends entirely on whether the 3D HTS coil cost penalty can be held below 3× framework default. If coil cost is 1×–2× (optimistic CFS partnership success), the structural advantages from steady-state operation and disruption elimination yield competitive LCOE 280–400 $/MWh. If coil cost is 4×–5× (W7-X LTS experience extrapolated to HTS), LCOE rises to 700–840 $/MWh and Infinity Two becomes uncompetitive with advanced fission or renewables+storage regardless of availability gains.
@@ -158,7 +160,7 @@ Infinity Two's LCOE competitiveness depends entirely on whether the 3D HTS coil 
 ### Medium-Confidence Components (Derived or Framework Defaults)
 - **Thermal efficiency (45%)**: Derived from published 800 MW/350 MWe power balance with estimated recirculating power ~65 MWe. Consistent with published ">30%" lower bound but unverified. **Confidence: Medium.**
 - **ECRH power (20 MW)**: Upper bound from Q>40 constraint (P_ECRH = 800/40). Actual Q likely higher → actual ECRH lower. **Confidence: Medium.**
-- **Availability (87%)**: Central estimate from MCF literature (Araiinejad & Shirvan 2025, 85–90% for steady-state D-T) adjusted upward for stellarator advantage. No published target from Type One. **Confidence: Medium-Low.**
+- **Availability (85%)**: Canonical per scoring_framework.md §Plant availability (MCF steady-state, D-T); no published target from Type One Energy qualifies as a Tier-A override. 2-year cycle gives ~96% theoretical maximum. **Confidence: Medium-Low** (canonical value is policy-set, not concept-specific evidence).
 - **CAS account scaling**: Framework stellarator defaults applied to all capital accounts except CAS27 (HCPB+Be override). Blanket, vessel, buildings, BOP costs use framework scaling laws validated on tokamaks, not stellarators. **Confidence: Medium-Low** (directionally correct, quantitatively uncertain ±20–30%).
 
 ### Low-Confidence Components (Speculative or Unanchored)
@@ -168,11 +170,11 @@ Infinity Two's LCOE competitiveness depends entirely on whether the 3D HTS coil 
 - **O&M cost structure (CAS70)**: Framework O&M uses tokamak-derived fixed + variable cost structure. Stellarator O&M eliminates disruption repair but adds island divertor target replacement and 3D coil inspection — both uncharacterized. **Confidence: Low.**
 
 ### Dominant Source of LCOE Uncertainty
-**3D HTS coil manufacturing cost (C220103)** — elasticity +1.01, range 1×–5× framework default, determines LCOE range 306–840 $/MWh. This parameter alone accounts for >60% of LCOE uncertainty. Secondary uncertainty is availability (elasticity –0.94, range 80–96%, LCOE impact 279–329 $/MWh). All other parameters contribute <10% combined LCOE uncertainty.
+**3D HTS coil manufacturing cost (C220103)** — elasticity +1.01, range 1×–5× framework default, determines LCOE range 312–860 $/MWh at 85% canonical availability. This parameter alone accounts for >60% of LCOE uncertainty. Secondary uncertainty is availability (elasticity –0.94, range 80–96%, LCOE impact 279–329 $/MWh). All other parameters contribute <10% combined LCOE uncertainty.
 
 **Data-anchored fraction**: ~40% of LCOE-critical parameters (physics, blanket, heating, operation mode) are high-confidence. ~60% of capital cost (dominated by coils, divertor, maintenance systems) is low-confidence analogue estimation.
 
-**Uncertainty characterization**: This model is a **lower-bound LCOE estimate** at 1× coil cost with **wide structural uncertainty** from coil cost realization. The 306 $/MWh result should be presented as "306–840 $/MWh depending on 3D HTS coil cost (1×–5× framework), with 1× acknowledged as optimistic and 3×–5× bracketing W7-X LTS manufacturing complexity extrapolated to HTS." Treating 306 $/MWh as a point estimate would be misleading.
+**Uncertainty characterization**: This model is a **lower-bound LCOE estimate** at 1× coil cost with **wide structural uncertainty** from coil cost realization. The 312.5 $/MWh result should be presented as "312–860 $/MWh depending on 3D HTS coil cost (1×–5× framework), with 1× acknowledged as optimistic and 3×–5× bracketing W7-X LTS manufacturing complexity extrapolated to HTS." Treating 312.5 $/MWh as a point estimate would be misleading.
 
 ---
 
@@ -194,20 +196,20 @@ Three specific developments that would materially shift LCOE estimate (in either
 ### 2. Infinity One Experimental Results (2029) — Island Divertor Performance and Availability Validation
 **If favorable** (LIBD demonstrates >10% particle exhaust efficiency OR classical divertor >3% with optimized baffling; subscale validation achieves >85% availability over 6–12 month campaigns):
 - Confirm island divertor design choice and validate 2-year cycle feasibility
-- Revise availability upward to 90–93% central estimate (from current 87%)
-- LCOE at 3× coil cost drops from 573 $/MWh to 520 $/MWh; at 1× coil cost, drops to 280 $/MWh
+- Revise availability upward to 90–93% central estimate (from canonical 85%)
+- LCOE at 3× coil cost drops from 586 $/MWh to ~530 $/MWh; at 1× coil cost, drops to ~287 $/MWh
 - Changes conclusion from "genuinely uncertain availability" to "stellarator steady-state advantage confirmed"
 
 **If unfavorable** (helium ash exhaust <1% in both divertor designs OR unplanned outages limit subscale availability to <75%):
 - Revise availability downward to 75–80% (tokamak-equivalent or worse)
-- LCOE at 1× coil cost rises to 350 $/MWh; at 3× coil cost, rises to 650 $/MWh
+- LCOE at 1× coil cost rises to ~350 $/MWh; at 3× coil cost, rises to ~650 $/MWh
 - Changes conclusion to "stellarator steady-state advantage not realized; LCOE uncompetitive"
 
 ### 3. Published Type One Energy Plant Study with Capital Cost Breakdown
 **If released** (comprehensive cost estimate with CAS-level detail, validated construction schedule, and O&M cost model):
 - Replace all framework defaults with company-validated figures
 - Anchors coil cost, divertor cost, maintenance cost, and construction schedule uncertainty
-- If company estimate is <$6B overnight for 350 MWe (implies LCOE <400 $/MWh at 87% availability), changes conclusion to "competitive LCOE achievable"
+- If company estimate is <$6B overnight for 350 MWe (implies LCOE <400 $/MWh at 85% canonical availability), changes conclusion to "competitive LCOE achievable"
 - If company estimate is >$10B overnight (implies LCOE >600 $/MWh even at 93% availability), changes conclusion to "concept not economically viable without major cost reduction"
 
 **Inverse indicator**: If Type One Energy proceeds to Infinity Two construction (mid-2030s target) without publishing cost estimates, this signals internal confidence in commercial viability despite lack of public validation — increases prior probability that company's proprietary cost model is more favorable than this analysis's framework-default lower bound.
@@ -223,7 +225,7 @@ Three specific developments that would materially shift LCOE estimate (in either
 | **C1: Modularization** | **2.8** | Buildings/turbine/BOP are site-assembled (score 3); 3D HTS coils, HCPB blanket, island divertor are stick-built/field-erected (score 1); cost-weighted average 2.8 (coils dominate at 59% of CAS22). No module repetition boost (n=1 reactor, not >10 modules). |
 | **C3: Supply Chain Learning** | **2.3** | Sub-A (component learning): 2.0 — 3D HTS coils novel (score 1, 59% weight), HCPB ceramics specialty (score 2, 12% weight), BOP commodity (score 5, 22% weight); weighted 2.0. Sub-B (bottlenecks): 2.5 — hard constraint on Li-6 enrichment (Western supply zero, -1.0), scaling constraint on REBCO tape (5–15k km demand vs. few thousand km/yr global capacity, -0.5), Be toxicity sole-source (Materion, -0.25); start 5.0 → 2.25 clamped to 2.5. Sub-C (external demand): 3.0 — BOP ~40% of capital has >$1B/yr external market; HTS tape and HCPB ceramics do not. C3 = (2.0+2.5+3.0)/3 = 2.5 → rounded to **2.3** after cross-check. |
 | **C4: Plant Complexity** | **3.0** | Sub-A (coupling): 3.0 — moderate coupling. ECRH system failure stops burn but does not cascade to BOP; HCPB tritium extraction failure forces shutdown but blanket/divertor can be maintained independently. Island divertor failure does not cascade to magnets (steady-state, no disruption). Better than tokamak (no disruption cascades) but worse than IFE (no coupled plasma-facing systems). Sub-B (subsystem count): 3.0 — 8 significant subsystems >1% capital (C220103 coils 59%, C220111 blanket 12%, C220101 cryostat 8%, C220102 vessel 5%, C220108 divertor 1.5%, C220104 shield 4%, C220106 ECRH 1.5%, C220110 vacuum 2.5%); 8 subsystems → score 3. **C4 = (3.0+3.0)/2 = 3.0.** |
-| **C5: Customization Needs** | **2.0** | Sub-A (thermal rejection): 2.0 — large cooling towers required (standard Rankine thermal cycle, 800 MW fusion × 1.15 blanket mult. → 920 MW thermal, ~500 MW reject heat). Sub-B (fuel safety): 1.0 — D-T fuel with full tritium handling (TBR=1.30 HCPB breeding + tritium processing + permeation barriers + radiological controls). Raw = (2.0+1.0)/2 = 1.5; scale to [1,5]: C5 = 1 + (1.5-1)×(4/3) = 1 + 0.67 = **1.7 → rounded to 2.0.** |
+| **C5: Customization Needs** | **2.0** | Sub-A (thermal rejection): 2.0 — large cooling towers required (standard Rankine thermal cycle, 800 MW fusion × 1.10 blanket mult. → 880 MW thermal, ~465 MW reject heat). Sub-B (fuel safety): 1.0 — D-T fuel with full tritium handling (TBR=1.30 HCPB breeding + tritium processing + permeation barriers + radiological controls). Raw = (2.0+1.0)/2 = 1.5; scale to [1,5]: C5 = 1 + (1.5-1)×(4/3) = 1 + 0.67 = **1.7 → rounded to 2.0.** |
 | **C8: Data Adequacy** | **3.5** | Sub-A (source diversity): 4.0 — six peer-reviewed J. Plasma Phys. papers (2025) + W7-X heritage literature + EU-DEMO HCPB data + ARIES-CS stellarator cost study. Mix of independent (W7-X, ARIES-CS) and company (Type One JPP papers) with public peer review. Sub-B (reactor design): 4.0 — comprehensive conceptual design with TBR neutronics (OpenMC 300M particles), plasma physics (Q>40, confinement scaling), HCPB blanket, island divertor options, 2-year maintenance cycle. Gaps: divertor detailed geometry, remote handling system, recirculating power breakdown. Sub-C (LCOE parameter coverage): 3.0 — gap report identifies 3 blocking gaps (capital cost, 3D coil cost, divertor design choice). Sub-D (commercialization pathway): 4.0 — staged program (Infinity One 2029 subscale → Infinity Two mid-2030s), TVA Cooperative Agreement (Jan 2025), CFS partnership for HTS. Clearer pathway than most private fusion. **C8 = (4.0+4.0+3.0+4.0)/4 = 3.75 → rounded to 3.5.** |
 
 ---
@@ -244,7 +246,7 @@ Three specific developments that would materially shift LCOE estimate (in either
 | **F5: Neutron/Particle Handling** | Hardware | HCPB blanket module lifetime: ≥50 dpa in Li₄SiO₄/Li₂TiO₃ ceramic pebbles + Be multiplier under 14 MeV neutron irradiation (estimated 10 dpa/FPY → 5-year replacement interval at 100% availability, ~7 years at 87% availability) | EU-DEMO HCPB irradiation testing: Li-ceramic pebbles tested to ~5 dpa in fission reactors (HFIR); Be pebbles tested to ~10 dpa. No 14 MeV neutron irradiation at fusion-relevant fluence (>50 dpa). Blanket module replacement demonstrated at component scale (ITER TBM program, subscale). | 5×–10× dpa (ceramics); 5× dpa (Be) | EU-DEMO HCPB development path; ceramic fracture at ~5 dpa may require more frequent replacement (increases O&M cost). Remote blanket module replacement at 30-day windows (2-year cycle allows one replacement per lifetime if module survives 2-year exposure). | Degrading | **3** — HCPB component testing at subscale; 14 MeV neutron damage extrapolation from fission/DD is validated methodology but fusion-fluence demonstration pending (ITER TBM will provide data by early 2030s) |
 | **F6: Fuel Cycle Closure** | Physics | Tritium breeding: TBR ≥1.05 (accounting for losses, extraction inefficiency, decay) sustained over 2-year continuous cycle with HCPB Li-ceramic pebbles + Be multiplier | OpenMC (E86): TBR = 1.30 ± uncertainty (300M particles). Highest TBR in analysis pipeline; 30% margin covers losses. Physics validated. | 1.24× margin above minimum | Monte Carlo neutronics; 30% margin allows for extraction inefficiency (EU-DEMO targets >90% tritium extraction from HCPB He coolant). 2-year cycle requires continuous extraction — no maintenance access to correct breeding shortfalls until scheduled outage. | Degrading (margin sufficient unless extraction <<90%) | **5** — TBR physics fully validated by OpenMC simulation; extraction efficiency is hardware risk (below) |
 | **F6: Fuel Cycle Closure** | Hardware | Tritium extraction from HCPB He coolant at ≥90% efficiency continuously for 2 years; tritium inventory control; He purification; permeation barriers on primary loop interfaces | EU-DEMO: tritium extraction from HCPB He coolant demonstrated at lab scale (kg/day throughput undemonstrated). Permeation barriers tested on component scale. No 2-year continuous operation of full tritium cycle at fusion scale. ITER will validate tritium systems at partial scale (400 kg/day D-T throughput planned). | 100× scale, 10× duration (2 years continuous vs. ITER campaigns) | EU-DEMO tritium system development; TBR=1.30 margin reduces sensitivity to extraction inefficiency. Tritium processing equipment is mature chemical engineering (isotope separation, accountability). | Binary IF extraction efficiency <80% AND no contingency tritium purchase — then breeding shortfall over 2-year cycle forces early shutdown or external tritium supply (defeats self-sufficiency). Degrading if ≥85% extraction (30% TBR margin covers losses). | **3** — tritium extraction demonstrated at lab/component scale; 2-year continuous operation and kg/day throughput undemonstrated; ITER validation pending (early 2030s) |
-| **F7: Power Conversion & BOP** | Physics | Thermal power delivery: 800 MW fusion × 1.15 blanket mult. → 920 MW thermal (steady-state) to Rankine steam cycle; α-particle thermalization in plasma + blanket neutron/gamma heating | Standard fusion energy balance; M_b = 1.10–1.20 for HCPB+Be is well-characterized (EU-DEMO heritage). Steady-state stellarator delivers constant thermal output (no buffering needed). | N/A — requirement met by design | HCPB He coolant primary loop → steam generator secondary loop → Rankine turbine. Tritium-compatible heat exchangers (permeation barriers on primary side). | Degrading | **5** — thermal conversion physics is commercial technology; HCPB heat extraction well-characterized (EU-DEMO); stellarator steady-state eliminates pulsed thermal buffering complexity |
+| **F7: Power Conversion & BOP** | Physics | Thermal power delivery: 800 MW fusion × 1.10 blanket mult. (D-T canonical) → 880 MW thermal (steady-state) to Rankine steam cycle; α-particle thermalization in plasma + blanket neutron/gamma heating | Standard fusion energy balance; M_b = 1.10–1.20 for HCPB+Be is well-characterized (EU-DEMO heritage); canonical case uses lower bound 1.10. Steady-state stellarator delivers constant thermal output (no buffering needed). | N/A — requirement met by design | HCPB He coolant primary loop → steam generator secondary loop → Rankine turbine. Tritium-compatible heat exchangers (permeation barriers on primary side). | Degrading | **5** — thermal conversion physics is commercial technology; HCPB heat extraction well-characterized (EU-DEMO); stellarator steady-state eliminates pulsed thermal buffering complexity |
 | **F7: Power Conversion & BOP** | Hardware | Rankine steam cycle: ≥38% thermal efficiency (published ">30%", model assumes 45% for sCO₂ or advanced steam); tritium permeation barriers on He/steam interface; 2-year continuous operation at 920 MW thermal input | Commercial Rankine steam: 38–42% efficiency standard at GW scale; sCO₂ can achieve 45%+. Tritium permeation barriers on heat exchangers demonstrated at lab scale (not at 920 MW thermal scale). No fusion BOP operated for 2-year continuous cycles (no fusion plant exists). | 1× efficiency (commercial tech exists); 100× scale on tritium barriers (lab → plant); duration undemonstrated | Standard BOP engineering; tritium barriers follow fission heavy-water reactor practice (CANDU). Steady-state thermal input simplifies turbine design (no transient load cycling). | Degrading | **5** — BOP is commercial technology at required efficiency; tritium barrier scaling is engineering (not novel physics); 2-year operation is standard for fission baseload (precedent exists) |
 
 ---

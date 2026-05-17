@@ -330,24 +330,119 @@ specific cycle parameter from peer-reviewed sources. In both cases, the model
 file must include a comment identifying the deviation, the source, and the
 deviation magnitude vs. the canonical value.
 
+### Plant availability
+
+Look up the canonical availability for the concept's operating-mode category
+(combine the `Confinement Family` and `Operation Mode` columns from `table.csv`):
+
+| Operating-mode category (D-T fuel) | Canonical availability | Reasoning |
+|------------------------------------|------------------------|-----------|
+| MCF — steady-state or quasi-steady (tokamak, stellarator, mirror, ST, FRC steady) | **0.85** | Midpoint of Araiinejad & Shirvan (2025) 75–90% commercial-target band for D-T MCF |
+| Pulsed MCF — short pulses, no quasi-steady claim | 0.75 | Pulse + dwell + recharge floor |
+| Pulsed IFE — rep-rated laser / heavy-ion / direct or indirect drive | 0.75 | Shot-rate × target-factory × optics-maintenance composite |
+| Pulsed MIF — mechanical compression, MagLIF-class | 0.75 | Mechanical-system MTBF dominates duty cycle |
+| Single-shot demo (NIF-class) | use sourced value, flag non-commensurable | These are not commercial plants; their reported availability is not directly comparable to commercial targets |
+| D-D / D-³He / p-¹¹B | 0.85 | Same MCF basis; no fuel-specific operations data in literature yet |
+
+**Justified deviations**: A concept may use a non-canonical availability **only**
+when its own design literature (peer-reviewed paper, company technical
+disclosure, or comparable external publication) commits to a specific
+availability number with an articulated basis (e.g., maintenance schedule,
+duty-cycle calculation). Author-reasoned values within a published range, or
+midpoint picks within a band, are **not** sufficient — they must move to the
+canonical value. In the deviation case, the `model_setup.py` comment must:
+
+1. Quote or paraphrase the externally-published number
+2. Name the source (paper, slide deck, company technical report)
+3. State the basis the source gives (e.g., "biennial 84-day maintenance cycle")
+
+Examples of *accepted* deviations:
+- `05-planar-coil-stellarator` / `10-large-scale-stellarator` — Helios/Thea
+  Energy published **88%** with biennial 84-day maintenance cycle.
+- `20b-renaissance` — Renaissance Fusion disclosed **92%** target (flagged uncertain).
+
+Examples of *not-accepted* deviations (must move to canonical):
+- "Mid-range of published 80–85% band" without a specific cited target.
+- "Conservative central estimate" without external publication of that estimate.
+- Citing only the Araiinejad & Shirvan range without a concept-specific commitment.
+
+### Blanket energy multiplication (mn)
+
+Look up the canonical blanket energy multiplication factor for the concept's fuel:
+
+| Fuel | Canonical `mn` | Reasoning |
+|------|----------------|-----------|
+| D-T  | **1.1** | costingfe framework default for a generic Li-bearing blanket without a dedicated neutron multiplier |
+| D-D / D-³He / p-¹¹B | not standardized | concept-specific; cite per design |
+
+Unlike η_th and availability, `mn` is not a free policy lever — it is a function of the blanket technology chosen. The canonical here is the framework default. Concepts that specify a particular blanket design (HCPB+Be, FLiBe with a stated TBR, etc.) will legitimately differ.
+
+**Justified deviations**: A concept may use a non-canonical `mn` **only** when one of the following holds:
+
+1. The model specifies a named blanket technology with a published multiplication factor (e.g., HCPB+Be reported in the EU-DEMO HCPB design literature; FLiBe with a stated TBR from a peer-reviewed neutronics study).
+2. The model has a physics-coupling argument that requires a non-default value (e.g., the Li exothermic boost is already embedded in `eta_th`, so `mn` must drop to 1.0 to avoid double-counting).
+
+Author-guessed values without a blanket-technology cite must move to canonical. The `model_setup.py` comment must:
+
+1. Name the blanket technology or physics argument
+2. Cite the source (paper, design report, in-repo derivation)
+3. State the value the source gives (or, for coupling arguments, the equation being avoided)
+
+Examples of *accepted* deviations:
+- `20b-renaissance` — `mn=1.07`, JNM 599 (2024) blanket-design source.
+- `29-negative-triangularity-tokamak` — `mn=1.11`, MANTA FLiBe TBR=1.15 design (`manta-reference-design.md` §5.1).
+- `31-laser-icf-oec` — `mn=1.0`, physics-coupling: Li boost already embedded in `eta_th` upstream of the framework call.
+
+### Plant lifetime (`lifetime_yr`)
+
+Look up the canonical plant lifetime:
+
+| Concept scope | Canonical `lifetime_yr` | Reasoning |
+|---------------|-------------------------|-----------|
+| All D-T concepts | **30 yr** | Standard commercial-plant finance / depreciation horizon; consistent with the WACC-based LCOE convention used across the framework |
+
+Plant lifetime drives the annualization of overnight capital cost (Fixed Charge Rate ∝ 1/lifetime in the limit of zero discount). A 30→40 yr extension reduces capital-driven LCOE by ~10–15%, so the choice is LCOE-material and must be defensible.
+
+**Justified deviations**: A concept may use a non-canonical `lifetime_yr` **only** when its own published design literature commits to a specific plant or major-component (magnet, vacuum vessel, blanket structure) design life with a stated basis. Author-judged values, conservative round numbers, or "standard fusion plant assumption" without a citation are **not** sufficient.
+
+The `model_setup.py` comment must:
+
+1. Quote or paraphrase the externally-published design-life number
+2. Name the source (paper, slide deck, company technical report)
+3. State the component scope (magnet, VV, plant) the source commits to
+
+Examples of *accepted* deviations:
+- `05-planar-coil-stellarator` — `lifetime_yr=40`, Helios/Thea Energy QA stellarator preconceptual design: "Magnet design lifetime: 40+ years".
+- `10-large-scale-stellarator` — `lifetime_yr=40`, Gauss Fusion GIGA technical summary: "Magnet and vacuum vessel design life: 40 years".
+
 ### Why standardize
 
 Cross-concept LCOE comparisons are only meaningful when all concepts in the
-same conversion category use the same η_th. A 0.32 vs. 0.46 spread within
-"steam Rankine" produces a 30–40% LCOE difference for identical fusion power —
-swamping legitimate architectural advantages between concepts. Use the canonical
-value to isolate the architectural signal.
+same conversion category use the same η_th and the same availability. A 0.32
+vs. 0.46 spread within "steam Rankine" produces a 30–40% LCOE difference for
+identical fusion power. A 0.75 vs. 0.88 availability spread is similarly
+LCOE-driving (LCOE scales as 1/availability for capital-dominated concepts).
+Use the canonical values to isolate the architectural signal; sensitivity-sweep
+when an availability question is the focus of the analysis.
 
-### Helper
+### Helpers
 
-The Python helper `lib.scoring.canonical_eta_th(energy_capture)` returns the
-canonical value for a given energy-capture string (matching the `table.csv`
-column). Import it in `model_setup.py`:
+The Python helpers in `lib.canonical_params` return canonical values for the
+strings that appear in `table.csv`. Import them in `model_setup.py`:
 
 ```python
-from lib.scoring import canonical_eta_th
-ETA_TH = canonical_eta_th("Thermal (steam)")  # → 0.35
+from lib.canonical_params import (
+    canonical_eta_th, canonical_availability, canonical_mn, canonical_lifetime_yr,
+)
+ETA_TH       = canonical_eta_th("Thermal (steam)")                  # → 0.35
+AVAILABILITY = canonical_availability("MCF", "Steady-state", "D-T") # → 0.85
+MN           = canonical_mn("D-T")                                  # → 1.1
+LIFETIME_YR  = canonical_lifetime_yr("D-T")                         # → 30.0
 ```
+
+`canonical_availability(confinement_family, operation_mode, fuel)` accepts the
+`Confinement Family`, `Operation Mode`, and `Fuel` columns directly from
+`table.csv` (case- and whitespace-insensitive).
 
 ---
 

@@ -17,57 +17,6 @@ import yaml
 from lib.validators import ValidationResult
 
 # ---------------------------------------------------------------------------
-# Canonical η_th by energy capture type — see scoring_framework.md
-# ---------------------------------------------------------------------------
-
-_CANONICAL_ETA_TH: dict[str, float] = {
-    # Thermal cycles
-    "thermal (steam) saturated": 0.32,
-    "thermal (steam) superheated": 0.35,
-    "thermal (steam) supercritical": 0.42,
-    "thermal (steam)": 0.35,            # default to superheated
-    "thermal (sco2)": 0.48,
-    "thermal (helium brayton)": 0.45,
-    "thermal (combined cycle)": 0.50,
-    "thermal (unspecified)": 0.35,
-    # Direct / hybrid
-    "hybrid (thermal + direct)": 0.55,
-    "direct (inductive)": 0.85,
-    "direct (charged particle)": 0.70,
-    # Pulsed / unusual
-    "pulsed power implosion": 0.30,
-    "projectile impact": 0.30,
-    "tbd": 0.35,
-    "unknown": 0.35,
-}
-
-
-def canonical_eta_th(energy_capture: str) -> float:
-    """Return the canonical thermal-to-electric efficiency for an energy capture type.
-
-    The argument should match the ``Energy Capture`` column from ``table.csv``
-    (case- and whitespace-insensitive). Returns the canonical η_th defined in
-    ``prompt_templates/config/scoring_framework.md``.
-
-    A model file may use a non-canonical value, but it must document the
-    deviation explicitly (see scoring_framework.md "Justified deviations").
-
-    Raises ``ValueError`` if the energy capture type is not recognized.
-    """
-    key = energy_capture.strip().lower()
-    if key in _CANONICAL_ETA_TH:
-        return _CANONICAL_ETA_TH[key]
-    # Tolerate minor variations: strip parenthetical content for fallback
-    base = re.sub(r"\s*\([^)]*\)\s*", "", key).strip()
-    if base in _CANONICAL_ETA_TH:
-        return _CANONICAL_ETA_TH[base]
-    raise ValueError(
-        f"Unknown energy capture type: {energy_capture!r}. "
-        f"Valid keys: {sorted(_CANONICAL_ETA_TH.keys())}"
-    )
-
-
-# ---------------------------------------------------------------------------
 # C2: Scalability — deterministic lookup by confinement category
 # ---------------------------------------------------------------------------
 

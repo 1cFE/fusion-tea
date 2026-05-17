@@ -5,6 +5,8 @@ Company: Xcimer Energy
 Type: synthesis
 Status: draft
 Created: 2026-04-29
+Stale: true
+Stale-Reason: analysis-updated-iter-7
 ---
 
 # Synthesis: Laser ICF - Hybrid Direct Drive (D-T)

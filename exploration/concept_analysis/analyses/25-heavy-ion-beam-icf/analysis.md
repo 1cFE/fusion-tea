@@ -90,7 +90,7 @@ With no private company pursuing HIF commercially, there is no regulatory engage
 
 **7. Plant availability is the primary LCOE lever — uncharacterized for rep-rated HIF (Impact: Critical)**
 
-Sensitivity analysis identifies availability as the dominant LCOE parameter for this HIF archetype: elasticity ≈ −0.96, meaning each 1-percentage-point drop in availability raises LCOE by approximately 1%. A swing from 90% to 70% availability changes LCOE by approximately +21% (~$75/MWh to ~$111/MWh at the HYLIFE-II base case). This magnitude — roughly 3× the next-largest engineering lever (Q_eng at −0.32) — makes availability the central commercial viability question.
+Sensitivity analysis identifies availability as the dominant LCOE parameter for this HIF archetype: elasticity ≈ −0.96, meaning each 1-percentage-point drop in availability raises LCOE by approximately 1%. The central-case availability is set to **0.75** per the project's scoring framework canonical value for Pulsed IFE D-T concepts (scoring_framework.md §"Plant availability") — this is a policy-driven choice rather than a concept-specific citation, enabling apples-to-apples cross-concept comparisons within the pulsed IFE family. A swing from 90% to 70% availability changes LCOE by approximately +27% (~$83.9/MWh to ~$106.5/MWh at the base case). This magnitude — roughly 3× the next-largest engineering lever (Q_eng at −0.32) — makes availability the central commercial viability question.
 
 For a rep-rated plant at 6 Hz (~1.9 × 10⁸ shots/year), availability is determined by three independent subsystem chains:
 
@@ -98,7 +98,7 @@ For a rep-rated plant at 6 Hz (~1.9 × 10⁸ shots/year), availability is determ
 - **Liquid wall cycling reliability**: FLiBe jet nozzles and manifolds cycle thermally and mechanically at 6 Hz over 30 years. Nozzle erosion, jet formation degradation, and molten salt corrosion of piping are uncharacterized failure modes at this duty cycle. A nozzle bank failure disrupts chamber clearing and forces shutdown.
 - **Target injection system**: Automated cryogenic DT target delivery at 6 Hz requires sub-mm accuracy for beam-on-target focusing. Any systematic drift in injection accuracy or cryogenic supply interruption propagates directly to lost pulses and, at sustained rates, to unplanned outage.
 
-No published HYLIFE-II or HIBALL availability analysis exists. The plausible range for a first-of-kind HIF plant spans 70–90%, with 80% as the base case assumption. The LCOE consequence of a 5-percentage-point availability shortfall is approximately +$4.5/MWh; a 10-point shortfall adds ~$9/MWh. Bounding this range is the most important model parameter to resolve for HIF commercial assessment.
+No published HYLIFE-II or HIBALL availability analysis exists. The plausible range for a first-of-kind HIF plant spans 70–90%, with 0.75 as the canonical base case per project policy. At 0.75, the model LCOE is $99.7/MWh. The LCOE consequence of a 5-percentage-point availability shortfall from base is approximately +$6/MWh (70% → $106.5/MWh); a 10-point shortfall adds ~$13/MWh. Bounding this range is the most important model parameter to resolve for HIF commercial assessment.
 
 ---
 
@@ -117,7 +117,7 @@ No published HYLIFE-II or HIBALL availability analysis exists. The plausible ran
 
 - **H1 — Driver CAPEX reduction is the path to competitive LCOE**: If modular induction linac manufacturing reduces driver capital from $1.4B (scientific-instrument procurement) to $0.7B (NOAK factory production), LCOE falls from $92/MWh to $79/MWh. Tested in the driver capital scenario sweep.
 
-- **H2 — Availability floor determines whether HIF crosses $100/MWh**: If plant availability stays above ~78%, LCOE remains below $100/MWh (sensitivity elasticity −0.96; base case $92/MWh at 80%). A 10-point availability shortfall adds ~$9/MWh. This is the most critical operational uncertainty to bound. Tested via availability scenario sweep (70%/75%/80%/85%/90%) in the model output.
+- **H2 — Availability floor determines whether HIF crosses $100/MWh**: At the canonical availability (0.75, per scoring_framework.md §"Plant availability" for Pulsed IFE D-T), LCOE is $99.7/MWh — essentially at the $100/MWh threshold (elasticity −0.96). Above 75%, LCOE falls below this threshold (80% → $93.7/MWh; 90% → $83.9/MWh); below 75%, it rises above it (70% → $106.5/MWh). A 5-point shortfall from base adds ~$6/MWh; a 10-point shortfall adds ~$13/MWh. This is the most critical operational uncertainty to bound. Tested via availability scenario sweep (70%/75%/80%/85%/90%) in the model output.
 
 - **H3 — HIF driver efficiency reduces recirculating power requirement vs. laser ICF**: At 15% recirculating power (HIBALL), gross generation must be 940/0.85 = 1,106 MWe. At 25% recirculation (laser ICF analogue), gross must be 940/0.75 = 1,253 MWe — a 13% penalty in gross generation with direct LCOE impact. This comparison must be made manually because the current model's eta_pin wiring is inverted (see Challenge 1 modeling limitation note).
 
@@ -256,7 +256,7 @@ HIF has no plasma-confining magnets. The accelerator quadrupoles use conventiona
 | Fusion power per chamber — HIBALL | 2,000 MW | hif-technology-overview.md §Power Plant Designs | medium | From 1985 HIBALL design |
 | Thermal conversion efficiency | [analogue] ~33–38% | [analogue — HYLIFE-II baselined on steam Rankine; comparable to historical nuclear steam plants] | low | No modern HIF design has committed to sCO₂; steam Rankine assumed |
 | Total plant CAPEX | [estimated] $2–5B per GWe | [estimated from HYLIFE-II economics inflated to 2026 + analogy to comparable IFE plant studies] | low | Wide range; dominated by driver cost uncertainty; no modern cost study exists |
-| Plant availability / capacity factor | [analogue] 70–90%; base case 80% | [analogue — HEP accelerator availability ~85–95%; IFE chamber systems more conservative ~70–80%; no HYLIFE-II target published] | medium | Top LCOE sensitivity lever (elasticity −0.96); 5-pt swing ≈ $4.5/MWh; 10-pt swing ≈ $9/MWh; see Section 2 Challenge 7 and H2 |
+| Plant availability / capacity factor | 0.75 canonical (sweep: 70–90%) | scoring_framework.md §Plant availability (Pulsed IFE, D-T); analogue basis: HEP accelerator ~85–95%; IFE chamber systems more conservative ~70–80%; no HYLIFE-II published target | medium | Canonical per project policy (previously 0.80); top LCOE lever (elasticity −0.96); at 0.75, LCOE = $99.7/MWh; 5-pt swing ≈ $6/MWh; 10-pt swing ≈ $13/MWh; see Section 2 Challenge 7 and H2 |
 
 ### Missing Parameters
 

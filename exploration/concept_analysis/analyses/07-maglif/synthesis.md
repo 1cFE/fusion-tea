@@ -5,6 +5,8 @@ Company: Pacific Fusion, Fuse Energy Technologies
 Type: synthesis
 Status: draft
 Created: 2026-04-29
+Stale: true
+Stale-Reason: analysis-updated-iter-10
 ---
 
 ## 1. Executive Summary

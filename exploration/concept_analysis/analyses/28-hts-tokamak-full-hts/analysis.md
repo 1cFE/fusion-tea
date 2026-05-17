@@ -73,6 +73,10 @@ The Jingtian test magnet achieved 21.7 T (some sources: 22.4 T), establishing a 
 
 A further uncertainty: extending HTS to all coil types (PF and CS) is novel. Most competing designs (CFS, Tokamak Energy) use HTS for TF coils and LTS or conventional conductors for PF/CS. Full HTS CS coils must generate and sustain plasma initiation current, a demanding duty cycle that introduces additional quench and fatigue risks. No published fatigue or reliability data exists for full-HTS CS coils in tokamak operation.
 
+**Primary structure and vacuum vessel sizing — undisclosed, and counterintuitively demanding (Impact: Moderate on CAS22)**
+
+No primary structure thickness or vacuum vessel wall thickness has been disclosed for HH70, HH170, or HH380. The intuition that a compact machine requires thinner structure is incorrect for high-field HTS tokamaks: TF coil out-of-plane loads scale approximately as B² × volume, and at 25 T peak field the Lorentz forces on the TF structure are substantially higher than on a conventional 5–6 T LTS machine of similar size. SPARC and ARC (the closest published analogues) adopt primary structure thicknesses of ~0.20 m — the framework default for tokamaks — despite their compact geometry, specifically to handle the higher EM loads. Until Energy Singularity publishes structural engineering data for HH170 or HH380, the tokamak default (0.20 m / 0.20 m for structure / vessel) is the defensible anchor; any downward deviation requires a published load-path argument. The CAS22 capital cost sensitivity to this parameter is bounded: sweeping structure_t and vessel_t over [0.10, 0.20] m changes CAS22 by approximately 5–8% in absolute terms, translating to roughly 1–2% on total plant LCOE given the distribution across all cost accounts — non-negligible but not dominant.
+
 **4. AI-based plasma control — potentially significant for capacity factor but unquantified (Impact: Moderate)**
 
 Energy Singularity's AI-based plasma control system enabled the 1,337-second steady-state plasma [dossier.md §Operation Mode; energy-singularity-overview.md §HH70 Performance]. This is genuinely novel and may confer capacity factor advantages if it reduces disruption frequency and enables tighter operating margins. However, no published reliability or availability data exists for this system. The LCOE leverage of capacity factor is high: moving from 75% to 85% availability improves LCOE ~12% for capital-dominated plants. Without disruption frequency data, the capacity factor cannot be modeled.
@@ -85,8 +89,8 @@ ICRH is confirmed on HH70, but at very low power levels appropriate for an exper
 
 The two critical technical bets for this concept should be modeled as explicit scenario branches, not absorbed into a single base-case availability:
 
-- **CS coil reliability failure scenario**: Full HTS CS coils at 25 T under cyclic EM loading fail to achieve target availability. Model as availability = 65% plus an additional coil-replacement cost factor. LCOE impact vs. base case (80% availability) is approximately +14% on LCOE from the availability drop alone (elasticity ≈ −0.94), before coil replacement costs.
-- **AI plasma control underperforms scenario**: AI control system does not reduce disruption frequency at burning-plasma conditions to levels assumed in base case. Model as availability = 70%, representing disruption-limited operation rather than steady-state. LCOE impact vs. base case approximately +9%.
+- **CS coil reliability failure scenario**: Full HTS CS coils at 25 T under cyclic EM loading fail to achieve target availability. Model as availability = 65% plus an additional coil-replacement cost factor. LCOE impact vs. base case (85% canonical): +28.5% from the availability drop alone (model output), before coil replacement costs.
+- **AI plasma control underperforms scenario**: AI control system does not reduce disruption frequency at burning-plasma conditions to levels assumed in base case. Model as availability = 70%, representing disruption-limited operation rather than steady-state. LCOE impact vs. base case: +20.1% (model output).
 
 Bracketing these two failure modes against the base case establishes the LCOE range attributable to the concept's novel elements, distinguishing the "novel technology premium" from the "general fusion capital cost" uncertainty.
 
@@ -94,7 +98,7 @@ Bracketing these two failure modes against the base case establishes the LCOE ra
 
 Three parameters dominate the LCOE sensitivity for a capital-intensive concept with no commercial design anchor:
 
-1. **Availability / capacity factor** (highest elasticity, ~−0.94): Determined by AI control reliability and full HTS CS coil duty-cycle endurance. Challenge #3 and #4 above are both proximate causes of availability risk. Moving from 80% to 65% availability increases LCOE by ~14%. This is the primary operability bet.
+1. **Availability / capacity factor** (highest elasticity, ~−0.95): Determined by AI control reliability and full HTS CS coil duty-cycle endurance. Challenge #3 and #4 above are both proximate causes of availability risk. The central-case availability of 0.85 is canonical per scoring_framework.md §Plant availability (MCF steady-state, D-T); cross-concept LCOE comparisons within the MCF family are apples-to-apples on this dimension. Moving from the 85% canonical base to 65% (Scenario A) increases LCOE by +28.5%; to 70% (Scenario B) by +20.1%. This is the primary operability bet.
 2. **Cost of capital / interest rate** (second lever): Capital-dominated concepts are highly sensitive to financing terms. Without a commercial design anchor or published cost study, financing terms carry additional uncertainty risk premium. This is the primary financial lever and should be the axis for scenario sweeps.
 3. **Major radius / plant scale** (structural uncertainty): With HH380 design point undisclosed, major radius (and by extension fusion power and net electric output) is the dominant structural unknown. It determines capital cost scaling, magnet material demand, and recirculating power. Any LCOE model must bracket this parameter with discrete scenario runs — not marginal sensitivity perturbations around a fixed output — because the uncertainty is about the unknown design point itself (is HH380 a ~250 MWe machine at R ≈ 1.5 m or an ~800 MWe machine at R ≈ 2.5 m?). Recommended scenario structure: **Scenario C** (small machine: R ≈ 1.5 m, net electric ~250 MWe, capital scaled accordingly) and **Scenario D** (large machine: R ≈ 2.5 m, net electric ~800 MWe) reported alongside the technical-bet failure scenarios (Scenarios A and B) in a unified LCOE table so the design-point uncertainty band is visible.
 
@@ -223,6 +227,7 @@ Tungsten for plasma-facing components is available in adequate global supply wit
 | Operation mode | Steady-state | dossier.md §Operation Mode | high | Long-pulse confirmed on HH70 |
 | Fuel | D-T (target) | dossier.md §Fuel | high | HH70 is pre-D-T |
 | Primary heating (HH70) | ICRH (ICRF) | dossier.md §Primary Heating | high | Electron gun for pre-ionization |
+| Availability (base case) | 0.85 | scoring_framework.md §Plant availability | canonical | MCF steady-state, D-T; previously 0.8; policy-driven for cross-concept comparability |
 
 ### Missing Parameters
 
@@ -244,6 +249,8 @@ Tungsten for plasma-facing components is available in adequate global supply wit
 | Major radius (HH380) | truly-unknown | important | No commercial design point |
 | Wall-loading / neutron flux | truly-unknown | important | Depends on undisclosed fusion power |
 | First wall / divertor lifetime | truly-unknown | important | Depends on undisclosed wall loading |
+| Primary structure thickness (structure_t) | truly-unknown | important | No ES disclosure; SPARC/ARC analogue → ~0.20 m (framework tokamak default); compact-geometry downward deviation requires load-path argument not yet available |
+| Vacuum vessel wall thickness (vessel_t) | truly-unknown | important | No ES disclosure; SPARC/ARC analogue → ~0.20 m (framework tokamak default); impacts CAS22 via per-m³ vessel cost coefficient (~$0.72M/m³) |
 | O&M cost breakdown | truly-unknown | nice-to-have | No plant study available; placeholder needed |
 
 ---

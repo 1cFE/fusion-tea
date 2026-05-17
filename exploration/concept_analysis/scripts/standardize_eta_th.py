@@ -1,7 +1,7 @@
 """Apply canonical η_th values to all concept model_setup.py files.
 
 Reads the Energy Capture category from table.csv, looks up the canonical η_th
-from lib.scoring.canonical_eta_th(), and updates the corresponding eta_th /
+from lib.canonical_params.canonical_eta_th(), and updates the corresponding eta_th /
 ETA_TH / thermal_efficiency value in each concept's model_setup.py.
 
 Usage:
@@ -33,7 +33,7 @@ from pathlib import Path
 SCRIPT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPT_DIR))
 
-from lib.scoring import canonical_eta_th  # noqa: E402
+from lib.canonical_params import canonical_eta_th  # noqa: E402
 
 ROOT = SCRIPT_DIR.parent
 TABLE_PATH = ROOT / "table.csv"

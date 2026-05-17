@@ -1,0 +1,19 @@
+{
+  "iteration": 4,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "external",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": false,
+  "merged_assess": false,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/25-heavy-ion-beam-icf/iter-01/sources/hif-technology-overview.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/25-heavy-ion-beam-icf/iter-01/sources/intensity-energy-search-results.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/25-heavy-ion-beam-icf/iter-02/sources/arxiv-1511-06508.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/25-heavy-ion-beam-icf/iter-02/sources/hif-recent-research-compilation.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/25-heavy-ion-beam-icf/iter-02/sources/osti-servlets-purl-901970.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/25-heavy-ion-beam-icf/iter-02/sources/transat-h2020-wp-content-uploads-2019-11-giegerich.md"
+  ],
+  "timestamp": "2026-05-17T19:06:09.111233+00:00"
+}

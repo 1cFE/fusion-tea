@@ -91,7 +91,7 @@ The TEA implication: NT eliminates advanced divertor engineering costs (speciali
 
 **6. Quasi-steady pulsed operation — thermal buffering cost (Impact: Moderate)**
 
-Like ARC-class conventional tokamaks, MANTA operates with ~15-minute inductive pulses and 2-minute inter-pulse dwell periods. The pulsed thermal output requires molten-salt thermal energy storage to produce a steady grid output. This thermal buffer system is a capital cost item absent from steady-state designs; its sizing and cost for the specific NT design point have not been published separately from MANTA's overall plant cost. The 15-min pulse / 2-min dwell cycle yields ~88% duty cycle thermally, but the ~37% capacity factor in MANTA reflects additional planned maintenance downtime.
+Like ARC-class conventional tokamaks, MANTA operates with ~15-minute inductive pulses and 2-minute inter-pulse dwell periods. The pulsed thermal output requires molten-salt thermal energy storage to produce a steady grid output. This thermal buffer system is a capital cost item absent from steady-state designs; its sizing and cost for the specific NT design point have not been published separately from MANTA's overall plant cost. The 15-min pulse / 2-min dwell cycle yields ~88% duty cycle thermally, but the ~37% capacity factor in MANTA reflects additional planned maintenance downtime. The cost model adopts the project-canonical availability of **0.85** for the commercial-scale central case (MCF quasi-steady D-T per scoring_framework.md §Plant availability), rather than a concept-specific estimate; this ensures cross-concept LCOE comparisons within the MCF / pulsed-IFE family are on a common footing. NT's simpler divertor and reduced P_SOL may support an upside excursion toward 0.90–0.92, but no published NT availability target exists to justify a Tier-A override.
 
 **7. NT vertical stability — intrinsically more challenging than PT, requires dedicated engineering hardware (Impact: Moderate)**
 
@@ -222,6 +222,7 @@ MANTA's secondary thermal loop uses NaNO₃/KNO₃ binary salt with a two-stage 
 | Pulse length | 15 min | manta-reference-design.md §Operation | high | Inductive burn; CS re-magnetization during inter-pulse |
 | Inter-pulse dwell | 2 min | manta-reference-design.md §Operation | high | Thermal duty cycle ~88% |
 | Capacity factor (pilot) | ~37% | manta-reference-design.md §7.2 | medium | Pilot plant estimate incl. planned maintenance downtime |
+| Plant availability (commercial model) | 0.85 | scoring_framework.md §Plant availability | high | Canonical per project policy for MCF quasi-steady D-T; previously 0.8 (unprincipled band midpoint). No Tier-A override citation exists. Cross-concept LCOE comparisons within MCF / pulsed-IFE family are apples-to-apples on this dimension. |
 | Blanket type | FLiBe liquid immersion | manta-reference-design.md §5.1 | high | Toroidally continuous; dual breeder/coolant/shield |
 | Tritium breeding ratio (TBR) | 1.15 | manta-reference-design.md §5.1 | high | Adequate margin for self-sufficiency |
 | Blanket power multiplication | 1.11 | manta-reference-design.md §5.1 | high | |
@@ -272,7 +273,7 @@ MANTA's secondary thermal loop uses NaNO₃/KNO₃ binary salt with a two-stage 
 | Ohmic NT confinement enhancement (H_NA) validation | truly-unknown | important | Ball et al. use H_NA = 2 from preliminary TCV data; not validated beyond 0D estimate |
 | Auxiliary heating capital cost (NT reduction vs. PT) | resolved | ~~important~~ | Moved to Available Parameters: ~$150M for 40 MW ICRF system; eliminated if ohmic-only (H_NA ≥ 2) validated |
 | Divertor cost differential (NT vs. PT) | resolved | ~~important~~ | Moved to Available Parameters: ~$24M for NT divertor (60% reduction vs. PT, from MANTA §7.1 and P_SOL = 23.5 MW characterization) |
-| Capacity factor for Firefly commercial plant | proprietary / not-yet-sourced | important | MANTA 37% is pilot-specific; commercial NT tokamak availability target unknown |
+| Capacity factor for Firefly commercial plant | resolved | ~~important~~ | Model central case uses canonical 0.85 per scoring_framework.md §Plant availability (MCF quasi-steady, D-T). Sensitivity sweeps cover downside (0.65–0.70) and upside (0.90–0.92) excursions. NT's simpler divertor is a potential upside lever but lacks a Tier-A citation to justify a concept-specific override. |
 | V-4Cr-4Ti vacuum vessel industrial supply | truly-unknown | nice-to-have | No commercial production of nuclear-grade V-4Cr-4Ti; cost unknown |
 
 ---
@@ -310,7 +311,7 @@ The approved analysis for the Spherical Tokamak - HTS (`21-spherical-tokamak-hts
 - **REBCO tape supply chain**: Global production bottleneck (~thousands km/year capacity), current pricing ($30–100/kA-m), commercial viability target (~$10/kA-m). These figures apply equally to NT tokamak REBCO requirements [21-spherical-tokamak-hts analysis §4]. Both MANTA and Tokamak Energy's ST-E1 use REBCO at similar field strengths (~11 T).
 - **D-T tritium fuel cycle constraints**: Global inventory (~25–30 kg), startup inventory (~440–1,000g), CANDU-decline sequencing, self-sufficiency requirement (TBR > 1.0). Identical constraint for all D-T concepts.
 - **Regulatory cost scenario**: Stewart & Shirvan 2.2× building cost factor applies to NT tokamak as a D-T fusion device, exactly as for ST-E1.
-- **Capacity factor sensitivity**: Araiinejad & Shirvan (2025) 75–90% range applies as a commercial plant target. NT's simpler divertor may provide upside to this range, but this is not yet quantified.
+- **Capacity factor / availability**: The commercial-case cost model uses **0.85** (canonical per scoring_framework.md §Plant availability, MCF quasi-steady D-T), not a concept-specific figure from Araiinejad & Shirvan's 75–90% range. The 75–90% band informs sensitivity sweep bounds; NT's simpler divertor is a potential upside lever toward 0.90–0.92 but has no Tier-A citation to justify a central-case override.
 - **FLiBe supply chain**: Both MANTA (NT tokamak) and CFS ARC (conventional tokamak) use FLiBe blankets. The beryllium and Li-6 supply constraints are shared; Araiinejad & Shirvan's $154/kg NOAK FLiBe estimate applies equally.
 
 **Key divergences from 21-spherical-tokamak-hts:**
