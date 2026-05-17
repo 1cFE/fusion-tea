@@ -1,16 +1,3 @@
----
-ID: 06-magnetic-mirror
-Concept: Magnetic Mirror (p-B11)
-Company: Pale Blue Fusion
-Status: draft
-Created: 2026-03-22
-Approved-Date:
-Reuses: [11-magnetic-mirror, 08-frc-w-direct-conversion, 01-hts-compact-tokamak]
-Review-Iterations: 1
-Last-Review: 2026-03-22
-Review-Status: addressed
----
-
 # D1+ Analysis: Magnetic Mirror (p-B11) — Pale Blue Fusion
 
 **Concept**: Multi-chamber centrifugal magnetic mirror (CHARM) — p-B11 fuel, alpha channeling, direct energy conversion

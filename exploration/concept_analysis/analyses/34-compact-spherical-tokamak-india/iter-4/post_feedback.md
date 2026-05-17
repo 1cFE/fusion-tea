@@ -1,0 +1,22 @@
+VERDICT: FINDINGS
+
+### F-1: F3 physics uncertainty sweep holds P_fus constant — doesn't test the stated risk
+- **Target:** Model output (F3 scenario) and Section 2 Challenge 2
+- **Category:** model
+- **Finding:** The F3 scenario is labeled "FUSION POWER ±50% SCENARIO" and is the model's only attempt to address Challenge 2 (unknown machine parameters, rated Critical). However, all three cases in the sweep report P_fus=369 MW — fusion power does not change across the low/base/high variants. Only geometry-driven capital costs shift (R0 from 1.19→1.72 m), producing a narrow 30 $/MWh range (613→643). The sweep does not test the actual risk: can this compact 50 MW ST close its fusion power balance at all? The critical uncertainty is whether Q is 3 or 10, not whether the machine is 1.2 m or 1.7 m in radius while producing the same fusion power. The F3 scenario as implemented is misleading and should not be labeled a "physics uncertainty" sweep.
+- **Recommendation:** Replace F3 with a sweep over auxiliary heating power (or equivalently Q_engineering) that actually varies gross electric output. For example, sweep p_input over 10–50 MW (representing Q_eng from ~8 down to ~2) and show how LCOE changes as the recirculating fraction shifts from ~35% to ~65% of gross electric. This directly tests the claim in Section 2 that "every percentage point increase in recirculating fraction translates directly and severely to LCOE" and addresses the Challenge 2 uncertainty in a physically meaningful way.
+- **Priority:** blocking
+
+### F-2: H3 India regulatory scenario not computed; H1 HTS downside absent
+- **Target:** Model output and Section 2 (Testable Modeling Hypotheses H1, H3)
+- **Category:** model
+- **Finding:** The analysis defines three testable hypotheses (H1, H2, H3) with explicit instructions for how to compute each. H2 (factory learning) is implemented and shown. H1 (HTS vs. resistive copper downside) and H3 (India regulatory 2.2× building cost) are not present in the model output. H3 is especially consequential: CAS21 Buildings ($228.9M) is the second-largest direct cost account, and applying the Stewart & Shirvan 2.2× multiplier would add ~$275M to a concept already at $629/MWh. The analysis commits to showing this shift ("applying the 2.2× building cost multiplier and showing LCOE shift vs. the base case") and the India regulatory risk is one of the primary concept-specific factors distinguishing Pranos from its nearest neighbors.
+- **Recommendation:** Add the H3 scenario to the model output: apply the 2.2× multiplier to CAS21 and report LCOE delta vs. base case. For H1, either run the resistive copper parameter set (high recirculating power, low magnet capital) as called for in the analysis, or explicitly document that HTS confirmation makes H1 a monitoring item rather than a required sweep — but do not leave both hypotheses silently unimplemented.
+- **Priority:** important
+
+### F-3: Recirculating fraction narrative not reconciled with sensitivity table results
+- **Target:** Section 2 (Challenge 1 and Challenge 4) and model sensitivity output
+- **Category:** analysis
+- **Finding:** Section 2 states that recirculating power fraction is the "primary LCOE sensitivity driver at 50 MWe scale" and that "every percentage point increase in recirculating fraction translates directly and severely to LCOE." The model sensitivity table contradicts this emphasis: availability dominates at -0.96, followed by interest_rate (+0.82) and r_coil (+0.72), while the recirculating-power-relevant parameters (p_nbi +0.12, eta_pin -0.08, p_input +0.08) are mid-table. The model baseline already embeds a high recirculating fraction (P_fus=369 MW for 50 MW net) but does not sweep this relationship — so neither the analysis claim nor its refutation is supported by model output. The narrative creates an expectation the model doesn't fulfill or test.
+- **Recommendation:** Either (a) add an auxiliary-power sweep to the model (see F-1 recommendation, which addresses this simultaneously) and update the Section 2 narrative to reflect what the sweep shows — noting whether availability or recirculating fraction dominates in practice — or (b) if the analysis maintains that recirculating fraction is the primary driver, explain why the sensitivity table shows it as secondary (e.g., because the availability parameter absorbs the "all systems must work" risk that recirculating loads amplify). The current framing leaves a visible inconsistency between the narrative and the quantitative output.
+- **Priority:** important

@@ -5,6 +5,8 @@ Company: Pale Blue Fusion
 Type: synthesis
 Status: draft
 Created: 2026-04-29
+Stale: true
+Stale-Reason: analysis-updated-iter-2
 ---
 
 # Editorial Synthesis: Magnetic Mirror (p-B11) — Pale Blue Fusion

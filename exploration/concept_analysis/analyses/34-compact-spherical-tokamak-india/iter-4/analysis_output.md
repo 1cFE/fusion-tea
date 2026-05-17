@@ -1,13 +1,3 @@
----
-ID: 34-compact-spherical-tokamak-india
-Concept: Compact Spherical Tokamak - India
-Company: Pranos Fusion
-Status: draft
-Created: 2026-04-19
-Approved-Date:
-Reuses: [21-spherical-tokamak-hts, 01-hts-compact-tokamak]
----
-
 # D1+ Analysis: Compact Spherical Tokamak - India (Pranos Fusion)
 
 **Concept**: Compact Spherical Tokamak — D-T fuel, modular 50 MW target
