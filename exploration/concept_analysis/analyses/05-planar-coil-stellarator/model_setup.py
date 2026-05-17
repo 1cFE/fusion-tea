@@ -50,7 +50,10 @@ _SHARED_KWARGS = dict(
                              #   citing [B] thea-energy-helios-arxiv-2512-08027.md §Operations.
                              # Basis: published 84-day biennial maintenance cycle for the
                              #   Helios/Thea Energy QA stellarator preconceptual design.
-    lifetime_yr=40,          # [A] "Magnet design lifetime: 40+ years" [B §Magnets]
+    lifetime_yr=40,          # DEVIATION: per scoring_framework.md §"Plant lifetime"
+                             #   (canonical 30 yr). Sourced design life: [A] "Magnet
+                             #   design lifetime: 40+ years" [B §Magnets], Helios/Thea
+                             #   Energy QA stellarator preconceptual design.
     n_mod=1,                 # Single-module plant
     construction_time_yr=8.0,  # DEFAULT [D]: no Helios-specific timeline published;
                                # UNCERTAIN: planar coil winding is simpler than 3D coils

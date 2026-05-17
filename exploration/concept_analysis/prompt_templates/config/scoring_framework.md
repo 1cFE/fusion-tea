@@ -393,6 +393,28 @@ Examples of *accepted* deviations:
 - `29-negative-triangularity-tokamak` — `mn=1.11`, MANTA FLiBe TBR=1.15 design (`manta-reference-design.md` §5.1).
 - `31-laser-icf-oec` — `mn=1.0`, physics-coupling: Li boost already embedded in `eta_th` upstream of the framework call.
 
+### Plant lifetime (`lifetime_yr`)
+
+Look up the canonical plant lifetime:
+
+| Concept scope | Canonical `lifetime_yr` | Reasoning |
+|---------------|-------------------------|-----------|
+| All D-T concepts | **30 yr** | Standard commercial-plant finance / depreciation horizon; consistent with the WACC-based LCOE convention used across the framework |
+
+Plant lifetime drives the annualization of overnight capital cost (Fixed Charge Rate ∝ 1/lifetime in the limit of zero discount). A 30→40 yr extension reduces capital-driven LCOE by ~10–15%, so the choice is LCOE-material and must be defensible.
+
+**Justified deviations**: A concept may use a non-canonical `lifetime_yr` **only** when its own published design literature commits to a specific plant or major-component (magnet, vacuum vessel, blanket structure) design life with a stated basis. Author-judged values, conservative round numbers, or "standard fusion plant assumption" without a citation are **not** sufficient.
+
+The `model_setup.py` comment must:
+
+1. Quote or paraphrase the externally-published design-life number
+2. Name the source (paper, slide deck, company technical report)
+3. State the component scope (magnet, VV, plant) the source commits to
+
+Examples of *accepted* deviations:
+- `05-planar-coil-stellarator` — `lifetime_yr=40`, Helios/Thea Energy QA stellarator preconceptual design: "Magnet design lifetime: 40+ years".
+- `10-large-scale-stellarator` — `lifetime_yr=40`, Gauss Fusion GIGA technical summary: "Magnet and vacuum vessel design life: 40 years".
+
 ### Why standardize
 
 Cross-concept LCOE comparisons are only meaningful when all concepts in the
@@ -409,10 +431,13 @@ The Python helpers in `lib.canonical_params` return canonical values for the
 strings that appear in `table.csv`. Import them in `model_setup.py`:
 
 ```python
-from lib.canonical_params import canonical_eta_th, canonical_availability, canonical_mn
+from lib.canonical_params import (
+    canonical_eta_th, canonical_availability, canonical_mn, canonical_lifetime_yr,
+)
 ETA_TH       = canonical_eta_th("Thermal (steam)")                  # → 0.35
 AVAILABILITY = canonical_availability("MCF", "Steady-state", "D-T") # → 0.85
 MN           = canonical_mn("D-T")                                  # → 1.1
+LIFETIME_YR  = canonical_lifetime_yr("D-T")                         # → 30.0
 ```
 
 `canonical_availability(confinement_family, operation_mode, fuel)` accepts the

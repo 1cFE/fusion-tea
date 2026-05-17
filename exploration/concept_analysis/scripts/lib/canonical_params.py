@@ -159,3 +159,31 @@ def canonical_mn(fuel: str = "D-T") -> float:
     raise ValueError(
         f"No canonical mn defined for fuel={fuel!r}. Only D-T is standardized."
     )
+
+
+# ---------------------------------------------------------------------------
+# Canonical plant lifetime (lifetime_yr)
+# ---------------------------------------------------------------------------
+
+_CANONICAL_LIFETIME_YR = 30.0
+
+
+def canonical_lifetime_yr(fuel: str = "D-T") -> float:
+    """Return the canonical plant lifetime in years.
+
+    Lookup rules (see ``prompt_templates/config/scoring_framework.md``
+    §"Plant lifetime"):
+
+    - All concepts: **30 yr** (standard commercial-plant finance horizon,
+      consistent with the WACC-based LCOE convention).
+
+    The ``fuel`` argument is accepted for signature symmetry with the other
+    canonical_* helpers; it is currently unused.
+
+    A model may use a non-canonical ``lifetime_yr``, but **only** when the
+    concept's own published design literature commits to a specific plant
+    or major-component (magnet, vacuum vessel) design life with a stated
+    basis. Author-judged values are not sufficient.
+    """
+    del fuel  # accepted for symmetry; not yet used
+    return _CANONICAL_LIFETIME_YR
