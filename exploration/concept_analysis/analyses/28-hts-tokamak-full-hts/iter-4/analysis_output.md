@@ -1,16 +1,3 @@
----
-ID: 28-hts-tokamak-full-hts
-Concept: HTS Tokamak - Full HTS
-Company: Energy Singularity
-Status: draft
-Created: 2026-04-06
-Approved-Date:
-Reuses: [21-spherical-tokamak-hts]
-Review-Iterations: 1
-Last-Review: 2026-04-06
-Review-Status: proceed
----
-
 # D1+ Analysis: HTS Tokamak - Full HTS (Energy Singularity)
 
 **Concept**: Compact D-shaped tokamak with full HTS magnet system (all TF + PF + CS coils in REBCO)
