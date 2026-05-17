@@ -2,7 +2,7 @@
 
 Prioritized list of epics and features.
 
-**Last Updated**: 2026-04-11
+**Last Updated**: 2026-05-17
 
 ---
 
@@ -22,6 +22,7 @@ Prioritized list of epics and features.
 | Knowledge Database Integration | P1 | In Progress | 2026-02-06 | Items 1-3 complete, pipeline proven. Items 4-5 archived (blocked on user action, infrastructure works). |
 | Source Extraction Fix & Re-extraction | P0 | Draft | 2026-03-29 | HTML extraction broken (tables, images, quality). Fix upstream → re-extract → clean .orig.md. |
 | Pipeline Hardening (ad-hoc) | P0 | **Complete 2026-04-11** | 2026-04-05 | 6 items archived (pipeline-hardening, output-validation-retry, concept-landscape-context, orig-md-research, feedback-routing-fix, explorer-merge). Analysis pipeline now safe for batch runs. |
+| Ontology v3 Migration | P0 | Draft | 2026-05-17 | 6 items, ~5.5–8d. Land `consistency-checks` → merge `fix/concept-renumbering-robustness` → close code gaps + tests → resolve design Qs → refresh synthesis → BACKLOG cleanup. File: `epic_ontology_v3_migration.md`. |
 
 ---
 

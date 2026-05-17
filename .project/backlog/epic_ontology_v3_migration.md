@@ -1,0 +1,353 @@
+# Epic: Ontology v3 Migration
+
+**Epic ID**: ONTOLOGY-V3
+**Status**: Draft
+**Priority**: P0
+**Created**: 2026-05-17
+**Estimated Effort**: 5–8 days across three branches
+
+---
+
+## Executive Summary
+
+Migrate the project from the v0.2.x concept ontology to v0.3.0: drop `Plasma State` / `Tritium Breeding` / `Neutron Management`, add consolidated `Blanket Config`, renumber the concept slate (4 new concepts, 1 dropped, several IDs shifted/deduplicated), and adopt the architecture-driven (not ID-keyed) classification pattern. Most of the implementation already exists on `origin/fix/concept-renumbering-robustness`; this epic merges it in, closes the known gaps, and reruns dependent artifacts.
+
+**Critical Success Factor**: All downstream consumers (concept explorer, phase_2a validator, scoring pipeline, synthesis prose) operate against the v3 schema with no stale references to the dropped columns or pre-renumbering IDs, and the test suite passes.
+
+---
+
+## Why This Epic?
+
+**Current State**:
+- `consistency-checks` branch contains in-flight availability/η_th standardization edits across ~20 concept files (uncommitted), pinning the codebase to the v0.2.x schema.
+- `origin/fix/concept-renumbering-robustness` (single commit `1b960a9`, Mallory) implements the v3 schema migration + renumbering + pipeline rerun for all 38→39 concepts, but is divergent from `main` and has known gaps (column_map, decision-tree hierarchy, Jinja templates, tests, stale scores, CSV-vs-doc inconsistency on HB11).
+- `phase_2a/column_map.py` still references the dropped columns — Phase 2a will break the moment v3 lands.
+- `_C2_CONCEPT_MAP` and `FREEFORM_CONCEPTS` were keyed by numeric ID prefix; the renumbering silently miscategorized 8 concepts. Already fixed on the branch but the refactor pattern needs preserving going forward.
+- `scores/verified_scores.{json,md}` and `scores/calibrated_scores.{json,md}` were generated before the classification refactor and encode the old buggy C2 values.
+- Several `synthesis.md` files (P2 BACKLOG item) cite pre-standardization availability/LCOE numbers and will fall further out of date once the v3 reclassifications propagate.
+
+**Future State**:
+- Single v3 schema in `table.csv` with `Blanket Config` and the new concept slate.
+- `ConfinementFamily` enum and `_HIERARCHY`/`_SUBTYPES` in `seed_registry.py` reflect the v3 tree (Estatic, Other, Cmpt-Tor as siblings; Dipole/Supported; MIF/Pulsed power).
+- All classification lookups derive from architecture columns, not ID prefixes — codified as a project convention.
+- Phase 2a validator, explorer UI, parameter display registry, and tests all pass.
+- Scores regenerated against the new classification; synthesis prose refreshed for affected concepts.
+- Detailed delta report and codebase trace preserved at `.project/research/20260517_ontology_v3_delta.md`.
+
+---
+
+## Success Criteria
+
+- [ ] `consistency-checks` branch merged to `main` (Item 1)
+- [ ] `fix/concept-renumbering-robustness` merged via a new branch with all code-side gaps fixed (Items 2–4)
+- [ ] `uv run python exploration/concept_explorer/seed_registry.py` generates a v3-shaped `decision_tree.json` reflecting the new top-level groups
+- [ ] `uv run python exploration/concept_explorer/extract_explorer_data.py` runs clean against the renumbered slate
+- [ ] `uv run python -m pytest exploration/concept_explorer/tests/` passes
+- [ ] `phase_2a/column_map.py::DESIGN_COLUMNS` aligns with the v3 CSV header; constraint validation runs without `UNMAPPABLE` errors from removed columns
+- [ ] Scores regenerated; `verified_scores.json` and `calibrated_scores.json` reflect architecture-derived C2 values
+- [ ] HB11 classification inconsistency (CSV `Fast ignition` vs ontology MD `Ultrashort`) resolved one way or the other, with a written rationale
+- [ ] Decision recorded on CSV-vs-MD source-of-truth for the new `Heating Type` / `Driver Type` columns (Item 4)
+- [ ] Stale `synthesis.md` files refreshed for the 13 availability-affected concepts and any concept whose v3 classification changed (Item 5)
+- [ ] BACKLOG.md cleanup items (Items 5–6 below) closed or explicitly carried forward
+- [ ] Feedback memory added: "ID-prefix lookups are a known footgun — derive classification from architecture columns + slug overrides"
+
+---
+
+## Backlog Items
+
+### Item 1: Land `consistency-checks` on `main`
+
+**Type**: Code/Integration
+**Effort**: 0.5 day (review 1h, fixups 1h, PR 1h, merge 1h)
+**Dependencies**: None
+
+**Objective**: Get the current in-flight availability/η_th standardization work merged to `main` so the v3 migration starts from a stable baseline.
+
+**Scope**:
+1. Review the ~20 modified files on `consistency-checks` (mostly `model_setup.py` / `analysis.md` / `synthesis.md` / `model_output.txt` updates from the standardization scripts).
+2. Stage, commit, and push.
+3. Open PR; resolve any review comments.
+4. Squash-merge to `main`.
+5. Verify `main` builds and that `uv run python exploration/concept_explorer/extract_explorer_data.py` still works against the v0.2.x schema (one last time).
+
+**Out of Scope**:
+- Any v3 schema changes.
+- Touching `table.csv`.
+
+**Success Criteria**:
+- [ ] `consistency-checks` branch merged to `main`
+- [ ] CI / smoke commands green on `main`
+- [ ] No uncommitted edits remain in the working tree
+
+**Deliverables**:
+- Merged PR
+- Clean `git status` on `main`
+
+---
+
+### Item 2: Merge ontology v3 branch (mechanical merge + immediate breakage fix)
+
+**Type**: Code/Integration
+**Effort**: 1.5 days (spec 1h, design 2h, plan 1h, execute 8h)
+**Dependencies**: Item 1
+
+**Objective**: Bring `origin/fix/concept-renumbering-robustness` onto a fresh branch off the updated `main`, resolve merge conflicts (most of which will be in availability/η_th files Item 1 touched), and get the codebase building.
+
+**Scope**:
+1. Branch `ontology-v3-migration` off the updated `main`.
+2. Merge or cherry-pick `1b960a9` from `origin/fix/concept-renumbering-robustness`.
+3. Resolve conflicts in:
+   - `exploration/concept_analysis/analyses/*/model_setup.py`, `analysis.md`, `synthesis.md`, `model_output.txt` (overlap with Item 1's standardization changes — re-apply the standardization on top of the renumbered/reclassified files)
+   - `exploration/concept_analysis/scripts/standardize_eta_th.py`, `lib/scoring.py` (both files touched by both branches)
+4. Verify the merged tree builds:
+   - `uv run python exploration/concept_explorer/seed_registry.py` succeeds
+   - `uv run python exploration/concept_explorer/extract_explorer_data.py` succeeds
+   - `uv run python exploration/concept_analysis/scripts/run_analysis.py status` runs
+5. Re-run `seed_registry.py` to refresh `concept_registry.json` and `decision_tree.json` against the merged tree.
+6. Commit the merge.
+
+**Out of Scope**:
+- Fixing the known gaps from §4 addendum of `20260517_ontology_v3_delta.md` (Item 3).
+- Decision on CSV-vs-MD source of truth (Item 4).
+- Refreshing synthesis prose (Item 5).
+
+**Success Criteria**:
+- [ ] Merge commit lands cleanly on `ontology-v3-migration`
+- [ ] `table.csv` has 39 rows, v3 columns, populated `Research ID`
+- [ ] `seed_registry.py` and `extract_explorer_data.py` both run to completion
+- [ ] All availability/η_th changes from Item 1 are preserved on the renumbered/reclassified analyses
+- [ ] No references to old IDs in tracked files (audit via `grep -rE "17[ab]-|20[ab]-|22-projectile.*NearStar"`)
+
+**Deliverables**:
+- Branch `ontology-v3-migration` with merged history
+- Regenerated `concept_explorer/data/{concept_registry,decision_tree}.json`
+
+---
+
+### Item 3: Close v3 code gaps and pass tests
+
+**Type**: Implementation
+**Effort**: 1.5 days (spec 1h, design 2h, plan 1h, execute 8h)
+**Dependencies**: Item 2
+
+**Objective**: Close the 9 gaps identified in `.project/research/20260517_ontology_v3_delta.md` §Addendum that the branch did not address, then get the test suite green.
+
+**Scope**:
+1. **`exploration/phase_2a/column_map.py`** — update `DESIGN_COLUMNS`, `KEY_TO_COLUMN`, `VOCABULARY`, `VALUE_ALIASES`: drop entries for `Plasma State` / `Tritium Breeding` / `Neutron Management`; add `Blanket Config` mappings.
+2. **`exploration/concept_explorer/seed_registry.py`** — extend `_HIERARCHY` and `_SUBTYPES` to encode the v3 tree (Estatic, Other, Cmpt-Tor as top-level siblings; Dipole/Supported, MIF/Pulsed power as new leaves). Decide whether to extend `ConfinementFamily` enum or stay with the 4-bucket enum + a separate `tree_group` field — record the choice in a short ADR comment.
+3. **`exploration/concept_explorer/templates/{taxonomy,index,concept,compare}.html.j2`** — rename `tritium_breeding`/`neutron_management`/`plasma_state` references to `blanket_config`; hide dropped fields gracefully.
+4. **`exploration/concept_explorer/static/js/neighborhood_graph.js`** — same field-name rename as `taxonomy_card.js` / `view_categorical.js` already received.
+5. **`exploration/concept_explorer/data/parameter_display_registry.yaml`** — add `blanket_config` entry; remove the three dropped entries.
+6. **`exploration/concept_explorer/tests/test_taxonomy_models.py`** — update fixtures and assertions for the new enums; add tests for `BlanketConfig`.
+7. **`exploration/concept_analysis/scripts/oneoff_3d_clustering.py`** — refactor `CADENCE_BY_PREFIX` and `FUNDING_M_USD` to key off `Confinement Family / MFE Topology / Magnet Type` (mirroring the `scoring.py` / `concepts.py` pattern); add ENN, NST, SHI, Xcimer-27 entries to whatever residual ID-keyed maps remain.
+8. **`exploration/phase_1a/generate_ontology_chart.py`** — refactor `TREE_PATH` to derive from the CSV instead of hardcoded ID prefixes (called out by Mallory as known follow-up).
+9. **Rerun scoring** — execute the scoring pipeline so `scores/verified_scores.{json,md}` and `scores/calibrated_scores.{json,md}` reflect architecture-derived C2 (the branch's committed scores are known-stale).
+10. **Smoke-test the explorer** via the `browser-inspect` skill: taxonomy view renders v3 tree, compare view works, no console errors when a concept's old field is absent.
+
+**Out of Scope**:
+- Source-of-truth decision for new `Heating Type` / `Driver Type` columns (Item 4).
+- HB11 classification fix (Item 4).
+- Refreshing synthesis prose (Item 5).
+
+**Success Criteria**:
+- [ ] `uv run python -m pytest exploration/concept_explorer/tests/` passes
+- [ ] `uv run python exploration/phase_2a/expand.py` (or its current entry point) runs without `UNMAPPABLE` from dropped columns on a smoke-test concept
+- [ ] Explorer renders v3 tree groupings (Estatic / Other / Cmpt-Tor visible)
+- [ ] `decision_tree.json` reflects the new sibling structure
+- [ ] `oneoff_3d_clustering.py` and `generate_ontology_chart.py` produce identical output for unchanged concepts after the architecture-driven refactor
+- [ ] `browser-inspect` smoke test: zero console errors, all view tabs render
+
+**Deliverables**:
+- All 9 code changes committed
+- Updated test suite passing
+- Regenerated scores artifacts
+- `browser-inspect` session JSON saved to `/tmp/browser_inspect/<session>/` for the smoke test
+
+---
+
+### Item 4: Resolve v3 design open questions and merge to `main`
+
+**Type**: Research → Decision → Implementation
+**Effort**: 0.5–1 day (depending on how much CSV reshaping the decisions force)
+**Dependencies**: Item 3
+
+**Objective**: Decide and apply the two outstanding design calls before merging the migration to `main`, so we don't ship internal inconsistencies.
+
+**Scope**:
+1. **HB11 Fast-ignition vs Ultrashort**: confirm with the source dossier and Mallory whether HB11's `Laser Approach` is `Fast ignition` (per `table.csv` row 04 on the branch) or `Ultrashort` (per `CONCEPT_ONTOLOGY.md` table on the branch). Apply whichever is correct in both places.
+2. **CSV vs MD source of truth for `Heating Type` / `Driver Type`**: the v3 ontology markdown introduces these typed vocabularies but `table.csv` still carries the old `Primary Heating` and free-text `Driver Technology`. Decide:
+   - (a) extend `table.csv` with explicit `Heating Type` and `Driver Type` columns derived from the new vocab, and update `taxonomy_models.py` accordingly; OR
+   - (b) make `CONCEPT_ONTOLOGY.md` the source and have `table.csv` derived from it via a generator.
+   Recommend (a) — it keeps a single CSV source and avoids markdown round-tripping — but (b) is viable if we want the markdown to be the human-editable surface. Capture the decision in a short ADR-style note in `exploration/phase_1a/`.
+3. Apply the decision: either extend the CSV (and `seed_registry.py`, `taxonomy_models.py`) or implement the MD→CSV generator.
+4. Open the PR from `ontology-v3-migration` → `main`.
+5. Merge.
+
+**Out of Scope**:
+- Rerunning synthesis (Item 5).
+- Backlog cleanup (Item 6).
+
+**Success Criteria**:
+- [ ] HB11 row in `table.csv` and `CONCEPT_ONTOLOGY.md` agree
+- [ ] Decision recorded for `Heating Type` / `Driver Type` source of truth
+- [ ] PR merged to `main`
+- [ ] Auto-memory entry added: "ID-prefix lookups are a known footgun — derive classification from architecture columns + slug overrides"
+
+**Deliverables**:
+- ADR note in `exploration/phase_1a/`
+- Updated `table.csv` / generator
+- Merged PR
+
+---
+
+### Item 5: Refresh synthesis prose for affected concepts
+
+**Type**: Execution
+**Effort**: 1–2 days (depending on how many concepts trigger and concept complexity)
+**Dependencies**: Item 4
+
+**Objective**: Bundle the existing P2 BACKLOG item "Refresh synthesis.md for 13 standardized concepts" with the v3-reclassification concepts so synthesis prose is refreshed once, not twice.
+
+**Scope**:
+1. Identify the union of:
+   - The 13 concepts flagged by the availability standardization (from `.project/research/20260517-availability-policy-affected-concepts.md`)
+   - Concepts whose v3 classification or ID changed (per `RECLASSIFIED_CONCEPTS.md` on the merged branch)
+   - The 4 new concepts (27 Xcimer, 37 NearStar, 38 SHINE, 39 ENN) where synthesis may need a first pass or refresh
+2. Run synthesis refresh: `uv run python exploration/concept_analysis/scripts/run_analysis.py synthesize <ID>` (or equivalent) for each.
+3. Spot-check 3 randomly chosen refreshed `synthesis.md` files for: correct availability/η_th figures, correct taxonomic claims, no references to old IDs.
+4. Re-extract for the explorer: `uv run python exploration/concept_explorer/extract_explorer_data.py --concept <ID>` for each.
+
+**Out of Scope**:
+- Full re-analysis (analyze stage) — synthesis-only.
+- Adding any new sources.
+
+**Success Criteria**:
+- [ ] Every affected concept's `synthesis.md` has updated frontmatter (`Stale: false`) and matches the model_output numbers
+- [ ] Spot-checks find no pre-renumbering references in the refreshed prose
+- [ ] `extract_explorer_data.py` runs clean for every refreshed concept
+
+**Deliverables**:
+- Refreshed `synthesis.md` for all affected concepts
+- Refreshed `concept_explorer/data/{ID}.json` for the same set
+- Brief summary table at `.project/research/<date>_ontology-v3-synthesis-refresh.md` listing what changed per concept
+
+---
+
+### Item 6: BACKLOG.md cleanup pass
+
+**Type**: Code/Integration
+**Effort**: 0.5 day
+**Dependencies**: Item 5
+
+**Objective**: Close out the BACKLOG entries that this epic resolved or superseded, and explicitly reroll the ones it didn't.
+
+**Scope**:
+1. Mark closed in BACKLOG.md:
+   - "Refresh synthesis.md for 13 standardized concepts" (absorbed into Item 5)
+2. Carry forward (still P2/P3, unchanged):
+   - "Investigate 20a capital-side availability coupling"
+   - "Non-D-T availability policy + standardize"
+   - "Concept 09 dual-site availability refactor"
+   - "Audit script for DEFAULT labels vs actual values"
+3. Add new BACKLOG entries for any v3 follow-ups discovered during Items 2–4 that didn't fit in the epic scope (e.g. if the CSV-vs-MD decision triggers an MD→CSV generator, log it as a future P3 maintenance item).
+4. Update `Last Updated` date and add a "v3 migration completed" row to the Completed table.
+
+**Out of Scope**:
+- Anything not in BACKLOG.md.
+- Spec/design/plan files for the carry-forward items.
+
+**Success Criteria**:
+- [ ] BACKLOG.md `Last Updated` date is current
+- [ ] No stale references to dropped/renumbered concepts in BACKLOG.md
+- [ ] Epic moved to Completed table with duration filled in
+- [ ] Auto-memory updated with the v3 schema reference
+
+**Deliverables**:
+- Updated `.project/backlog/BACKLOG.md`
+- Updated `.project/CURRENT_WORK.md`
+- This epic file moved to `.project/completed/` (per project convention if applicable)
+
+---
+
+## Dependencies
+
+**External**:
+- `origin/fix/concept-renumbering-robustness` (single commit `1b960a9`, Mallory) — must remain accessible for cherry-pick / merge
+- `uv` Python environment with current dependencies
+- Concept research artifacts on R2 (already pulled or pullable via `scripts/sync_research.sh`)
+
+**Internal**:
+- Existing `.project/active/` items unaffected
+- Availability standardization work on `consistency-checks` (Item 1 ships it)
+
+**Item Dependency Graph**:
+```
+Item 1: Land consistency-checks  (0.5d)
+  └─> Item 2: Merge v3 branch    (1.5d)
+        └─> Item 3: Close gaps + tests  (1.5d)
+              └─> Item 4: Design Qs + PR  (0.5–1d)
+                    └─> Item 5: Synthesis refresh  (1–2d)
+                          └─> Item 6: BACKLOG cleanup  (0.5d)
+```
+
+Items 1–4 are strictly sequential because each writes to the same files the next reads. Item 5 *could* start in parallel with Item 4 for the availability-only concepts (their refresh isn't ontology-dependent), but the simpler scheduling is strictly serial.
+
+---
+
+## Risks
+
+| Risk | Impact | Mitigation |
+|------|--------|------------|
+| Merge conflicts between Item 1's standardization edits and the branch's reclassified analyses are extensive (every analyzed concept overlaps) | High | Treat Item 2 as a careful merge, not a fast cherry-pick. Plan to re-apply Item 1's standardization on top of the renumbered IDs file-by-file. Budget half a day for this alone. |
+| `ConfinementFamily` enum change cascades through `taxonomy_models.py` validators and breaks per-concept data files | Medium | Item 3 names this as an explicit decision. Recommend keeping the 4-bucket enum and adding a `tree_group` display-only field — minimizes blast radius. |
+| Phase 2a `column_map.py` is wider than expected; LLM-derived constraint vocabularies need re-validation against new columns | Medium | Run Phase 2a end-to-end on a single representative concept (Item 3 success criteria) before declaring done. |
+| Synthesis refresh (Item 5) is more expensive than budgeted because re-synthesis requires re-running parts of the pipeline | Medium | Synthesis-only refresh (not full re-analyze) is cheap (~$0.20/concept). Cap at $50 budget; if budget hits, halt and reassess. |
+| HB11 classification (Fast ignition vs Ultrashort) isn't resolvable from sources and needs a Mallory call | Low | Item 4 explicitly calls this out. If unresolvable, ship the CSV value and add a `# DEVIATION:` note in the ontology MD. |
+| Renumbering breaks external references (Linear tickets, R2 paths, other tools) | Low–Medium | Audit done in Item 2 success criteria. R2 path migration is part of the branch's pipeline rerun; verify R2 directory names match the new slugs before considering Item 2 done. |
+| `scores/verified_scores.json` rerun (Item 3) blocked because the scoring pipeline assumes interactive Claude calls | Medium | Identify the scoring driver script during Item 3 design step; if interactive, batch via `claude -p` with a non-TTY fallback. The existing `lib/claude.py` harness should already handle this. |
+
+---
+
+## Timeline
+
+**Total Effort**: 5.5–8 days (one engineer, sequential)
+
+| Item | Effort | Dependencies | Branch |
+|------|--------|--------------|--------|
+| Item 1: Land `consistency-checks` | 0.5d | None | `consistency-checks` → `main` |
+| Item 2: Merge ontology v3 branch | 1.5d | Item 1 | `ontology-v3-migration` |
+| Item 3: Close v3 code gaps + tests | 1.5d | Item 2 | `ontology-v3-migration` |
+| Item 4: Design Qs + merge PR | 0.5–1d | Item 3 | `ontology-v3-migration` → `main` |
+| Item 5: Refresh synthesis | 1–2d | Item 4 | `synthesis-refresh-v3` → `main` |
+| Item 6: BACKLOG cleanup | 0.5d | Item 5 | `synthesis-refresh-v3` (same PR) or trivial commit on `main` |
+
+---
+
+## Lessons Learned (Post-Completion)
+
+*Fill in after epic is complete*
+
+**What Went Well**:
+- TBD
+
+**What Could Improve**:
+- TBD
+
+**Surprises**:
+- TBD
+
+---
+
+## References
+
+- `.project/research/20260517_ontology_v3_delta.md` — full delta analysis + branch addendum
+- `origin/fix/concept-renumbering-robustness` — commit `1b960a9` (Mallory, 2026-05-17)
+- `.project/research/20260517-availability-policy-affected-concepts.md` — input to Item 5
+- `exploration/phase_1a/CONCEPT_ONTOLOGY.md` (on the branch) — v3 canonical table
+- `exploration/phase_1a/SCHEMA_REVISION_PROPOSALS.md` (on the branch) — P1–P10 schema rationale
+- `exploration/phase_1a/RECLASSIFIED_CONCEPTS.md` (on the branch) — per-concept move log
+
+---
+
+**Last Updated**: 2026-05-17
+**Next Action**: Item 1 — review `consistency-checks` diff, push, open PR
