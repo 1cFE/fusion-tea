@@ -1,7 +1,7 @@
 """Apply canonical plant availability values to all concept model_setup.py files.
 
 Reads Confinement Family, Operation Mode, and Fuel from table.csv, looks up the
-canonical availability from lib.scoring.canonical_availability(), and updates
+canonical availability from lib.canonical_params.canonical_availability(), and updates
 the corresponding availability / AVAILABILITY value in each concept's
 model_setup.py.
 
@@ -34,7 +34,7 @@ from pathlib import Path
 SCRIPT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPT_DIR))
 
-from lib.scoring import canonical_availability  # noqa: E402
+from lib.canonical_params import canonical_availability  # noqa: E402
 
 ROOT = SCRIPT_DIR.parent
 TABLE_PATH = ROOT / "table.csv"

@@ -145,7 +145,7 @@ _SHARED_KWARGS = dict(
     # (secondary neutrons per primary via Pb (n,2n)) — a distinct metric, not the energy mult.
     # TBR = 1.60 confirmed in same paper (design req TBR ≥ 1.15; 35% margin).
     # Source: JNM 599 (2024) 155239
-    mn=1.07,
+    mn=1.07,  # DEVIATION: from canonical 1.1 (D-T) — Renaissance Pb-Li blanket per JNM 599 (2024) 155239
 
     # ── Ignited plasma — NNBI startup only ───────────────────────────────────
     # Q=∞ target: zero steady-state heating power at operating point

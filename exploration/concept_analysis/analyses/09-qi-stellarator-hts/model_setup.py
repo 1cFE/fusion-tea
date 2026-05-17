@@ -243,7 +243,7 @@ _SHARED = dict(
     # Neutron energy multiplier: inferred from peak thermal / peak fusion power ratio
     # 3,300 MW thermal / 2,700 MW fusion ≈ 1.22 → WCLL PbLi Pb(n,2n) reactions
     # Source: stellaris-design-details.md Table 3; analysis.md §5
-    mn=1.2,
+    mn=1.2,  # DEVIATION: from canonical 1.1 (D-T) — WCLL PbLi blanket (named tech + source above)
 
     # Gross thermal efficiency: ~38% for steam Rankine at EUROFER97 temperature limit
     # Helios (vanadium alloy FW, 635°C steam): 40% — helios-stellarator-comparison.md §2

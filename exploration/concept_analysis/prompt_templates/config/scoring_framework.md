@@ -366,6 +366,33 @@ Examples of *not-accepted* deviations (must move to canonical):
 - "Conservative central estimate" without external publication of that estimate.
 - Citing only the Araiinejad & Shirvan range without a concept-specific commitment.
 
+### Blanket energy multiplication (mn)
+
+Look up the canonical blanket energy multiplication factor for the concept's fuel:
+
+| Fuel | Canonical `mn` | Reasoning |
+|------|----------------|-----------|
+| D-T  | **1.1** | costingfe framework default for a generic Li-bearing blanket without a dedicated neutron multiplier |
+| D-D / D-³He / p-¹¹B | not standardized | concept-specific; cite per design |
+
+Unlike η_th and availability, `mn` is not a free policy lever — it is a function of the blanket technology chosen. The canonical here is the framework default. Concepts that specify a particular blanket design (HCPB+Be, FLiBe with a stated TBR, etc.) will legitimately differ.
+
+**Justified deviations**: A concept may use a non-canonical `mn` **only** when one of the following holds:
+
+1. The model specifies a named blanket technology with a published multiplication factor (e.g., HCPB+Be reported in the EU-DEMO HCPB design literature; FLiBe with a stated TBR from a peer-reviewed neutronics study).
+2. The model has a physics-coupling argument that requires a non-default value (e.g., the Li exothermic boost is already embedded in `eta_th`, so `mn` must drop to 1.0 to avoid double-counting).
+
+Author-guessed values without a blanket-technology cite must move to canonical. The `model_setup.py` comment must:
+
+1. Name the blanket technology or physics argument
+2. Cite the source (paper, design report, in-repo derivation)
+3. State the value the source gives (or, for coupling arguments, the equation being avoided)
+
+Examples of *accepted* deviations:
+- `20b-renaissance` — `mn=1.07`, JNM 599 (2024) blanket-design source.
+- `29-negative-triangularity-tokamak` — `mn=1.11`, MANTA FLiBe TBR=1.15 design (`manta-reference-design.md` §5.1).
+- `31-laser-icf-oec` — `mn=1.0`, physics-coupling: Li boost already embedded in `eta_th` upstream of the framework call.
+
 ### Why standardize
 
 Cross-concept LCOE comparisons are only meaningful when all concepts in the
@@ -378,13 +405,14 @@ when an availability question is the focus of the analysis.
 
 ### Helpers
 
-The Python helpers in `lib.scoring` return canonical values for the strings
-that appear in `table.csv`. Import them in `model_setup.py`:
+The Python helpers in `lib.canonical_params` return canonical values for the
+strings that appear in `table.csv`. Import them in `model_setup.py`:
 
 ```python
-from lib.scoring import canonical_eta_th, canonical_availability
-ETA_TH = canonical_eta_th("Thermal (steam)")  # → 0.35
-AVAILABILITY = canonical_availability("MCF", "Steady-state", "D-T")  # → 0.85
+from lib.canonical_params import canonical_eta_th, canonical_availability, canonical_mn
+ETA_TH       = canonical_eta_th("Thermal (steam)")                  # → 0.35
+AVAILABILITY = canonical_availability("MCF", "Steady-state", "D-T") # → 0.85
+MN           = canonical_mn("D-T")                                  # → 1.1
 ```
 
 `canonical_availability(confinement_family, operation_mode, fuel)` accepts the

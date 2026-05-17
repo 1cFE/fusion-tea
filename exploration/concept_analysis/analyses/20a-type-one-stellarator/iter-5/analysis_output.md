@@ -1,13 +1,3 @@
----
-ID: 20a-type-one-stellarator
-Concept: QI Modular HTS Stellarator - Infinity Two
-Company: Type One Energy
-Status: draft
-Created: 2026-04-19
-Approved-Date:
-Reuses: [21-spherical-tokamak-hts]
----
-
 # D1+ Analysis: QI Modular HTS Stellarator – Infinity Two (Type One Energy)
 
 **Concept**: Quasi-isodynamic Modular HTS Stellarator — D-T fuel

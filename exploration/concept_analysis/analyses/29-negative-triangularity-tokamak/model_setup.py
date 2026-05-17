@@ -74,8 +74,8 @@ _SHARED_KWARGS = dict(
     p_input=40.0,     # Total auxiliary heating [MW]; manta-reference-design.md §2.1
     p_nbi=0.0,        # No NBI — MANTA uses ICRF exclusively
     p_icrf=40.0,      # 40 MW He-3 minority ICRF at 110 MHz; manta-reference-design.md §2.1
-    mn=1.11,          # Blanket power multiplication (FLiBe TBR=1.15 design);
-                      # manta-reference-design.md §5.1
+    mn=1.11,          # DEVIATION: from canonical 1.1 (D-T) — FLiBe blanket, TBR=1.15
+                      # design; manta-reference-design.md §5.1
     eta_th=0.38,      # Thermal-to-electric efficiency; back-calculated from MANTA
                       # power balance (see derivation in docstring)
     eta_pin=0.50,     # ICRF wall-plug efficiency; framework default for RF heating
