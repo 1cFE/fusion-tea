@@ -1,1 +1,0 @@
-ipgroupplc-news-and-events-portfolio-news-2025-2025-09-19/output.md

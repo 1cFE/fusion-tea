@@ -48,19 +48,6 @@ COSTINGFE_MAPPING = {
     },
 }
 
-# Concepts that get the free-form path (no good 1costingfe mapping)
-FREEFORM_CONCEPTS = {
-    "12",   # Levitated Dipole (OpenStar) — dipole geometry
-    "13",   # Electrostatic Hybrid — electrostatic confinement
-    "15",   # Sheared-Flow Z-Pinch (Zap Energy) — continuous MFE, not IFE z-pinch
-    "16",   # Muon-Catalyzed Fusion — no plasma confinement
-    "18",   # p-B11 FRC (TAE) — FRC + aneutronic
-    "19",   # Orbital Levitated Dipole (Zephyr) — dipole
-    "24",   # Dense Plasma Focus (LPPFusion) — DPF
-    "27",   # Polywell (EMC2) — electrostatic cusp
-    "35",   # PoloMac (Deutelio) — custom dipole
-}
-
 FUEL_MAPPING = {
     "D-T": "DT", "D-D": "DD", "D-He3": "DHE3", "p-B11": "PB11",
 }
@@ -76,27 +63,49 @@ FAMILY_KEY_MAP = {
 }
 
 
+def _is_freeform_architecture(concept: dict) -> bool:
+    """Architectural overrides that force the freeform model path.
+
+    Concepts whose architecture columns would otherwise route them to a
+    costingfe template but whose physics doesn't fit that template.
+    Derived from table.csv columns + slug so the override survives
+    concept ID renumbering.
+    """
+    family = concept.get("Confinement Family", "").strip()
+    topology = concept.get("MFE Topology", "").strip()
+    cid = concept.get("_id", "").lower()
+
+    # Z-pinch shares the Open/Linear topology label with mirrors, but the
+    # mirror costingfe template doesn't capture its physics — freeform.
+    if family == "MFE" and topology == "Open/Linear" and "pinch" in cid:
+        return True
+
+    return False
+
+
 def get_model_path(concept: dict) -> str:
     """Determine model-setup path for a concept.
 
     Returns: 'costingfe' | 'freeform'
     """
-    if concept["_num"] in FREEFORM_CONCEPTS:
-        return "freeform"
-
-    # Check concept-specific override first
+    # Concept-specific override wins (e.g. 08-frc-w-direct-conversion).
     cid = concept["_id"]
     if cid in COSTINGFE_MAPPING:
         return "costingfe"
 
-    # Family-level lookup
+    # Architectural override (e.g. Z-pinch under Open/Linear).
+    if _is_freeform_architecture(concept):
+        return "freeform"
+
+    # Family-level lookup.
     family = concept.get("Confinement Family", "")
     sub = _get_subcategory(concept)
     family_key = FAMILY_KEY_MAP.get((family, sub))
     if family_key and family_key in COSTINGFE_MAPPING:
         return "costingfe"
 
-    # Default: freeform for anything not explicitly mapped
+    # Default: freeform for anything not explicitly mapped (Non-Standard
+    # family, MFE/Dipole, MFE/Compact Toroid, IFE non-laser drivers, etc.).
     return "freeform"
 
 

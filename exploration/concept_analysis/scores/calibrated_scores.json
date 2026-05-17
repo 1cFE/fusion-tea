@@ -2,87 +2,98 @@
   "scores": [
     {
       "concept_id": "01-hts-compact-tokamak",
-      "C1": 3.2,
+      "C1": 2.8,
       "C2": 2.5,
-      "C3": 2.3,
-      "C4": 2.5,
-      "C5": 2.0,
+      "C3": 2.7,
+      "C4": 4.0,
+      "C5": 1.7,
       "C6": 2.5,
       "C7": 4.0,
-      "C8": 2.5
+      "C8": 4.0
     },
     {
       "concept_id": "02-acoustic-icf-sonofusion",
-      "C1": 3.6,
+      "C1": 4.2,
       "C2": 4.0,
-      "C3": 3.4,
-      "C4": 3.0,
-      "C5": 3.5,
-      "C6": 3.0,
-      "C7": 1.5,
-      "C8": 2.0
-    },
-    {
-      "concept_id": "03-laser-icf-liquid-jet-target",
-      "C1": 2.8,
-      "C2": 3.5,
-      "C3": 3.0,
+      "C3": 4.7,
       "C4": 3.5,
       "C5": 2.3,
       "C6": 3.0,
-      "C7": 1.0,
+      "C7": 1.5,
+      "C8": 1.3
+    },
+    {
+      "concept_id": "03-laser-icf-liquid-jet-target",
+      "C1": 3.0,
+      "C2": 3.5,
+      "C3": 3.0,
+      "C4": 3.5,
+      "C5": 3.7,
+      "C6": 3.0,
+      "C7": 1.5,
       "C8": 1.8
     },
     {
-      "concept_id": "05-planar-coil-stellarator",
-      "C1": 3.5,
-      "C2": 2.5,
-      "C3": 2.5,
+      "concept_id": "04-laser-icf",
+      "C1": 3.0,
+      "C2": 3.5,
+      "C3": 3.7,
       "C4": 3.0,
-      "C5": 2.0,
+      "C5": 3.7,
+      "C6": 4.0,
+      "C7": 1.5,
+      "C8": 2.1
+    },
+    {
+      "concept_id": "05-planar-coil-stellarator",
+      "C1": 3.2,
+      "C2": 2.5,
+      "C3": 3.3,
+      "C4": 3.8,
+      "C5": 2.5,
       "C6": 2.5,
       "C7": 4.0,
       "C8": 3.5
     },
     {
       "concept_id": "06-magnetic-mirror",
-      "C1": 1.3,
+      "C1": 2.8,
       "C2": 3.5,
-      "C3": 3.8,
-      "C4": 3.0,
+      "C3": 3.7,
+      "C4": 2.5,
       "C5": 4.3,
       "C6": 4.5,
       "C7": 3.0,
-      "C8": 1.3
+      "C8": 2.0
     },
     {
       "concept_id": "07-maglif",
-      "C1": 3.7,
+      "C1": 3.0,
       "C2": 3.0,
-      "C3": 2.8,
-      "C4": 3.0,
-      "C5": 2.1,
+      "C3": 3.3,
+      "C4": 3.5,
+      "C5": 1.8,
       "C6": 2.0,
       "C7": 3.5,
-      "C8": 2.5
+      "C8": 3.5
     },
     {
       "concept_id": "08-frc-w-direct-conversion",
-      "C1": 5.0,
+      "C1": 4.2,
       "C2": 3.5,
-      "C3": 3.4,
-      "C4": 3.5,
+      "C3": 3.9,
+      "C4": 3.3,
       "C5": 3.7,
       "C6": 3.5,
-      "C7": 1.5,
-      "C8": 2.5
+      "C7": 3.0,
+      "C8": 2.8
     },
     {
       "concept_id": "09-qi-stellarator-hts",
-      "C1": 2.5,
+      "C1": 5.0,
       "C2": 2.5,
-      "C3": 3.3,
-      "C4": 3.0,
+      "C3": 3.4,
+      "C4": 4.0,
       "C5": 1.7,
       "C6": 2.5,
       "C7": 4.0,
@@ -90,174 +101,174 @@
     },
     {
       "concept_id": "10-large-scale-stellarator",
-      "C1": 3.3,
+      "C1": 2.3,
       "C2": 2.5,
       "C3": 2.7,
       "C4": 3.0,
-      "C5": 1.7,
-      "C6": 2.5,
-      "C7": 4.0,
-      "C8": 3.3
-    },
-    {
-      "concept_id": "12-levitated-dipole",
-      "C1": 3.0,
-      "C2": 3.0,
-      "C3": 3.1,
-      "C4": 3.5,
-      "C5": 2.1,
-      "C6": 2.5,
-      "C7": 3.5,
-      "C8": 3.5
-    },
-    {
-      "concept_id": "13-electrostatic-hybrid",
-      "C1": 5.0,
-      "C2": 4.0,
-      "C3": 3.6,
-      "C4": 3.8,
-      "C5": 3.0,
-      "C6": 2.5,
-      "C7": 3.0,
-      "C8": 2.3
-    },
-    {
-      "concept_id": "14-magnetized-target-fusion-pneumatic-compression",
-      "C1": 2.8,
-      "C2": 3.0,
-      "C3": 3.4,
-      "C4": 2.5,
       "C5": 1.8,
-      "C6": 2.0,
-      "C7": 2.0,
-      "C8": 2.5
-    },
-    {
-      "concept_id": "15-sheared-flow-stabilized-z-pinch",
-      "C1": 4.1,
-      "C2": 3.5,
-      "C3": 2.5,
-      "C4": 3.4,
-      "C5": 1.7,
-      "C6": 2.0,
-      "C7": 3.0,
-      "C8": 2.5
-    },
-    {
-      "concept_id": "16-muon-catalyzed-fusion",
-      "C1": 2.8,
-      "C2": 4.0,
-      "C3": 3.3,
-      "C4": 3.5,
-      "C5": 2.4,
       "C6": 2.5,
       "C7": 4.0,
-      "C8": 1.8
-    },
-    {
-      "concept_id": "17a-laser-icf-hybrid-drive",
-      "C1": 4.1,
-      "C2": 3.5,
-      "C3": 3.2,
-      "C4": 3.5,
-      "C5": 1.7,
-      "C6": 2.0,
-      "C7": 3.5,
       "C8": 2.8
     },
     {
-      "concept_id": "17b-laser-icf-fast-ignition",
-      "C1": 3.7,
+      "concept_id": "11-magnetic-mirror",
+      "C1": 2.8,
       "C2": 3.5,
-      "C3": 2.8,
+      "C3": 3.2,
+      "C4": 2.5,
+      "C5": 2.0,
+      "C6": 2.5,
+      "C7": 3.0,
+      "C8": 3.0
+    },
+    {
+      "concept_id": "12-levitated-dipole",
+      "C1": 3.8,
+      "C2": 2.0,
+      "C3": 2.7,
       "C4": 3.5,
-      "C5": 1.8,
+      "C5": 1.7,
+      "C6": 2.5,
+      "C7": 1.5,
+      "C8": 3.8
+    },
+    {
+      "concept_id": "13-electrostatic-hybrid",
+      "C1": 4.3,
+      "C2": 4.0,
+      "C3": 4.2,
+      "C4": 3.5,
+      "C5": 1.7,
+      "C6": 2.5,
+      "C7": 1.0,
+      "C8": 1.8
+    },
+    {
+      "concept_id": "14-magnetized-target-fusion-pneumatic-compression",
+      "C1": 3.4,
+      "C2": 3.0,
+      "C3": 4.0,
+      "C4": 2.5,
+      "C5": 1.5,
+      "C6": 2.0,
+      "C7": 1.0,
+      "C8": 3.0
+    },
+    {
+      "concept_id": "15-sheared-flow-stabilized-z-pinch",
+      "C1": 3.0,
+      "C2": 3.5,
+      "C3": 2.5,
+      "C4": 3.5,
+      "C5": 1.7,
+      "C6": 2.0,
+      "C7": 2.5,
+      "C8": 3.0
+    },
+    {
+      "concept_id": "16-muon-catalyzed-fusion",
+      "C1": 1.8,
+      "C2": 4.0,
+      "C3": 2.4,
+      "C4": 3.5,
+      "C5": 1.7,
+      "C6": 2.5,
+      "C7": 1.0,
+      "C8": 1.5
+    },
+    {
+      "concept_id": "17-laser-icf-direct-drive-fast-ignition",
+      "C1": 2.5,
+      "C2": 3.5,
+      "C3": 3.3,
+      "C4": 2.8,
+      "C5": 1.7,
       "C6": 2.0,
       "C7": 3.5,
-      "C8": 2.3
+      "C8": 3.0
     },
     {
       "concept_id": "18-p-b11-frc",
-      "C1": 3.0,
+      "C1": 2.8,
       "C2": 3.5,
-      "C3": 3.6,
-      "C4": 4.0,
-      "C5": 3.7,
+      "C3": 3.3,
+      "C4": 3.0,
+      "C5": 3.3,
       "C6": 4.5,
-      "C7": 1.0,
-      "C8": 2.0
+      "C7": 3.5,
+      "C8": 2.5
     },
     {
       "concept_id": "19-orbital-levitated-dipole",
       "C1": 3.0,
       "C2": 2.0,
-      "C3": 2.9,
-      "C4": 4.0,
-      "C5": 4.3,
+      "C3": 1.7,
+      "C4": 2.5,
+      "C5": 4.5,
       "C6": 4.0,
-      "C7": 1.0,
-      "C8": 1.3
+      "C7": 1.5,
+      "C8": 1.5
     },
     {
-      "concept_id": "20a-type-one-stellarator",
-      "C1": 2.8,
+      "concept_id": "20-type-one-stellarator",
+      "C1": 1.3,
       "C2": 2.5,
-      "C3": 2.3,
-      "C4": 3.0,
-      "C5": 2.0,
-      "C6": 2.5,
-      "C7": 4.0,
-      "C8": 3.5
-    },
-    {
-      "concept_id": "20b-renaissance-stellarator",
-      "C1": 3.8,
-      "C2": 2.5,
-      "C3": 3.2,
-      "C4": 3.5,
+      "C3": 4.2,
+      "C4": 4.0,
       "C5": 1.7,
       "C6": 2.5,
       "C7": 4.0,
-      "C8": 2.5
+      "C8": 3.8
     },
     {
-      "concept_id": "21-spherical-tokamak-hts",
-      "C1": 2.0,
+      "concept_id": "21-renaissance-stellarator",
+      "C1": 4.0,
       "C2": 2.5,
-      "C3": 3.1,
-      "C4": 2.5,
-      "C5": 2.0,
+      "C3": 2.8,
+      "C4": 3.8,
+      "C5": 1.7,
       "C6": 2.5,
       "C7": 4.0,
-      "C8": 2.5
+      "C8": 2.8
     },
     {
-      "concept_id": "22-projectile-icf",
-      "C1": 2.4,
+      "concept_id": "22-spherical-tokamak-hts",
+      "C1": 3.3,
       "C2": 3.0,
-      "C3": 2.9,
-      "C4": 3.5,
+      "C3": 3.7,
+      "C4": 2.5,
+      "C5": 1.8,
+      "C6": 2.5,
+      "C7": 3.5,
+      "C8": 2.8
+    },
+    {
+      "concept_id": "23-projectile-icf",
+      "C1": 3.0,
+      "C2": 4.0,
+      "C3": 2.8,
+      "C4": 4.0,
       "C5": 1.7,
       "C6": 2.0,
-      "C7": 3.5,
+      "C7": 1.5,
       "C8": 2.3
     },
     {
-      "concept_id": "23-laser-icf-nanostructured-target",
-      "C1": 5.0,
-      "C2": 3.5,
-      "C3": 3.5,
+      "concept_id": "24-laser-icf-nanostructured-target",
+      "C1": 3.0,
+      "C2": 4.0,
+      "C3": 3.2,
       "C4": 3.5,
-      "C5": 4.5,
+      "C5": 4.3,
       "C6": 4.0,
-      "C7": 3.5,
+      "C7": 2.5,
       "C8": 2.0
     },
     {
-      "concept_id": "24-dense-plasma-focus",
-      "C1": 5.0,
+      "concept_id": "25-dense-plasma-focus",
+      "C1": 4.6,
       "C2": 4.0,
-      "C3": 3.5,
+      "C3": 3.2,
       "C4": 3.5,
       "C5": 5.0,
       "C6": 4.0,
@@ -265,258 +276,228 @@
       "C8": 1.8
     },
     {
-      "concept_id": "25-heavy-ion-beam-icf",
+      "concept_id": "26-heavy-ion-beam-icf",
       "C1": 3.0,
-      "C2": 3.0,
-      "C3": 3.3,
+      "C2": 3.5,
+      "C3": 2.8,
+      "C4": 3.5,
+      "C5": 1.7,
+      "C6": 2.0,
+      "C7": 1.0,
+      "C8": 3.2
+    },
+    {
+      "concept_id": "27-laser-icf-hybrid-direct-drive",
+      "C1": 2.8,
+      "C2": 4.0,
+      "C3": 2.8,
       "C4": 3.0,
       "C5": 1.7,
       "C6": 2.0,
-      "C7": 2.0,
+      "C7": 3.5,
       "C8": 3.0
     },
     {
-      "concept_id": "26-laser-icf-indirect-drive",
-      "C1": 3.2,
-      "C2": 3.5,
-      "C3": 3.4,
-      "C4": 3.5,
-      "C5": 2.4,
-      "C6": 2.0,
-      "C7": 4.0,
-      "C8": 2.5
-    },
-    {
-      "concept_id": "27-polywell",
-      "C1": 3.7,
-      "C2": 4.0,
-      "C3": 3.3,
+      "concept_id": "28-polywell",
+      "C1": 4.1,
+      "C2": 2.5,
+      "C3": 3.2,
       "C4": 3.0,
       "C5": 1.7,
       "C6": 2.5,
-      "C7": 1.5,
-      "C8": 2.3
+      "C7": 2.5,
+      "C8": 2.5
     },
     {
-      "concept_id": "28-hts-tokamak-full-hts",
-      "C1": 2.8,
+      "concept_id": "29-hts-tokamak-full-hts",
+      "C1": 4.1,
       "C2": 2.5,
-      "C3": 3.3,
-      "C4": 3.0,
+      "C3": 3.2,
+      "C4": 2.5,
       "C5": 1.7,
       "C6": 2.5,
       "C7": 4.0,
       "C8": 2.0
     },
     {
-      "concept_id": "29-negative-triangularity-tokamak",
-      "C1": 3.0,
-      "C2": 2.5,
-      "C3": 2.7,
-      "C4": 3.0,
+      "concept_id": "30-negative-triangularity-tokamak",
+      "C1": 5.0,
+      "C2": 3.5,
+      "C3": 3.0,
+      "C4": 3.5,
       "C5": 1.7,
       "C6": 2.5,
       "C7": 4.0,
-      "C8": 3.3
+      "C8": 3.5
     },
     {
-      "concept_id": "30-laser-icf-nif-commercialization",
-      "C1": 4.6,
+      "concept_id": "31-laser-icf-indirect-drive",
+      "C1": 3.0,
       "C2": 3.5,
-      "C3": 3.2,
-      "C4": 3.5,
-      "C5": 1.7,
+      "C3": 3.3,
+      "C4": 3.0,
+      "C5": 2.5,
       "C6": 2.0,
       "C7": 3.5,
-      "C8": 2.2
+      "C8": 2.5
     },
     {
-      "concept_id": "31-laser-icf-oec-architecture",
-      "C1": 4.5,
+      "concept_id": "32-laser-icf-oec-architecture",
+      "C1": 3.0,
       "C2": 3.5,
-      "C3": 3.2,
+      "C3": 3.1,
       "C4": 3.0,
       "C5": 2.3,
       "C6": 2.0,
       "C7": 3.5,
-      "C8": 2.8
+      "C8": 3.3
     },
     {
-      "concept_id": "32-laser-icf-french-national",
-      "C1": 3.8,
-      "C2": 3.5,
-      "C3": 3.2,
-      "C4": 3.5,
-      "C5": 1.7,
-      "C6": 2.0,
-      "C7": 3.5,
-      "C8": 2.3
-    },
-    {
-      "concept_id": "33-state-backed-tokamak-best",
-      "C1": 2.1,
+      "concept_id": "34-state-backed-tokamak-best",
+      "C1": 2.7,
       "C2": 2.5,
-      "C3": 3.7,
-      "C4": 2.5,
+      "C3": 3.5,
+      "C4": 3.0,
       "C5": 1.8,
       "C6": 2.5,
       "C7": 4.0,
       "C8": 2.5
     },
     {
-      "concept_id": "34-compact-spherical-tokamak-india",
-      "C1": 3.3,
-      "C2": 2.5,
-      "C3": 2.5,
-      "C4": 3.5,
-      "C5": 1.7,
-      "C6": 2.5,
-      "C7": 4.0,
-      "C8": 2.3
-    },
-    {
       "concept_id": "35-polomac-magnetic-confinement",
-      "C1": 2.0,
+      "C1": 2.5,
       "C2": 4.0,
-      "C3": 2.9,
+      "C3": 3.6,
       "C4": 3.5,
-      "C5": 2.8,
+      "C5": 2.5,
       "C6": 3.5,
-      "C7": 1.0,
-      "C8": 2.0
+      "C7": 1.5,
+      "C8": 1.5
     },
     {
       "concept_id": "36-helical-coil-stellarator",
-      "C1": 2.4,
+      "C1": 2.5,
       "C2": 2.5,
-      "C3": 2.5,
-      "C4": 3.5,
-      "C5": 2.8,
+      "C3": 2.8,
+      "C4": 4.0,
+      "C5": 1.7,
       "C6": 2.5,
       "C7": 4.0,
-      "C8": 2.8
+      "C8": 2.5
     }
   ],
   "adjustments": [
     {
-      "concept": "25-heavy-ion-beam-icf",
+      "concept": "03-laser-icf-liquid-jet-target",
+      "question": "Q1",
+      "criterion": "C1",
+      "original": "3.8",
+      "adjusted": "3.0",
+      "justification": "Monolithic laser driver >30% capital - capped at 3.0 per Q1 driver reality check"
+    },
+    {
+      "concept": "04-laser-icf",
+      "question": "Q1",
+      "criterion": "C1",
+      "original": "4.3",
+      "adjusted": "3.0",
+      "justification": "Monolithic laser driver >30% capital - capped at 3.0 per Q1 driver reality check"
+    },
+    {
+      "concept": "07-maglif",
+      "question": "Q1",
+      "criterion": "C1",
+      "original": "3.8",
+      "adjusted": "3.0",
+      "justification": "Monolithic Z-machine pulsed power driver >30% capital - capped at 3.0 per Q1 driver reality check"
+    },
+    {
+      "concept": "13-electrostatic-hybrid",
+      "question": "Q2",
+      "criterion": "C7",
+      "original": "1.5",
+      "adjusted": "1.0",
+      "justification": "Binary risk count = 5, heritage_floor = 1.0 \u2192 C7 = min(1.5, max(1.0, 1.0)) = 1.0"
+    },
+    {
+      "concept": "14-magnetized-target-fusion-pneumatic-compression",
+      "question": "Q2",
+      "criterion": "C7",
+      "original": "3.0",
+      "adjusted": "1.0",
+      "justification": "Binary risk count = 5, heritage_floor = 1.0 \u2192 C7 = min(3.0, max(1.0, 1.0)) = 1.0"
+    },
+    {
+      "concept": "15-sheared-flow-stabilized-z-pinch",
+      "question": "Q1",
+      "criterion": "C1",
+      "original": "4.8",
+      "adjusted": "3.0",
+      "justification": "Monolithic pulsed power capacitor banks >30% capital - capped at 3.0 per Q1 driver reality check"
+    },
+    {
+      "concept": "16-muon-catalyzed-fusion",
+      "question": "Q2",
+      "criterion": "C7",
+      "original": "2.5",
+      "adjusted": "1.0",
+      "justification": "Binary risk count = 5, heritage_floor = 1.0 \u2192 C7 = min(2.5, max(1.0, 1.0)) = 1.0"
+    },
+    {
+      "concept": "23-projectile-icf",
+      "question": "Q1",
+      "criterion": "C1",
+      "original": "3.2",
+      "adjusted": "3.0",
+      "justification": "Electromagnetic launcher is monolithic driver, C1 already \u22643.0, rounded to 3.0 for consistency"
+    },
+    {
+      "concept": "24-laser-icf-nanostructured-target",
+      "question": "Q1",
+      "criterion": "C1",
+      "original": "4.3",
+      "adjusted": "3.0",
+      "justification": "Monolithic laser driver >30% capital - capped at 3.0 per Q1 driver reality check"
+    },
+    {
+      "concept": "25-dense-plasma-focus",
+      "question": "Q2",
+      "criterion": "C7",
+      "original": "1.5",
+      "adjusted": "1.0",
+      "justification": "Binary risk count = 5, heritage_floor = 1.0 \u2192 C7 = min(1.5, max(1.0, 1.0)) = 1.0"
+    },
+    {
+      "concept": "26-heavy-ion-beam-icf",
       "question": "Q1",
       "criterion": "C1",
       "original": "5.0",
       "adjusted": "3.0",
-      "justification": "Capped at 3.0: km-scale accelerator >30% capital, non-modularizable"
+      "justification": "Monolithic heavy-ion accelerator >30% capital - capped at 3.0 per Q1 driver reality check"
     },
     {
-      "concept": "14-magnetized-target-fusion-pneumatic-compression",
-      "question": "Q2",
-      "criterion": "C7",
-      "original": "1.5",
-      "adjusted": "1.0",
-      "justification": "Binary count 6>=5: floor=1.0, C7=1.5->1.0"
-    },
-    {
-      "concept": "18-p-b11-frc",
-      "question": "Q2",
-      "criterion": "C7",
-      "original": "1.5",
-      "adjusted": "1.0",
-      "justification": "Binary count 5>=5: floor=1.0, C7=1.5->1.0"
-    },
-    {
-      "concept": "25-heavy-ion-beam-icf",
+      "concept": "26-heavy-ion-beam-icf",
       "question": "Q2",
       "criterion": "C7",
       "original": "2.5",
       "adjusted": "1.0",
-      "justification": "Binary count 6>=5: floor=1.0, C7=2.5->1.0"
+      "justification": "Binary risk count = 6, heritage_floor = 1.0 \u2192 C7 = min(2.5, max(1.0, 1.0)) = 1.0"
     },
     {
-      "concept": "01-hts-compact-tokamak",
-      "question": "Q6",
-      "criterion": "C8",
-      "original": "3.5",
-      "adjusted": "2.5",
-      "justification": "D-T Tokamaks outlier: median=2.5, gap=1.0->adjusted toward median"
-    },
-    {
-      "concept": "34-compact-spherical-tokamak-india",
-      "question": "Q6",
-      "criterion": "C8",
-      "original": "1.3",
-      "adjusted": "2.3",
-      "justification": "D-T Tokamaks outlier: median=2.5, gap=1.2->adjusted toward median"
-    },
-    {
-      "concept": "05-planar-coil-stellarator",
-      "question": "Q6",
+      "concept": "31-laser-icf-indirect-drive",
+      "question": "Q1",
       "criterion": "C1",
-      "original": "4.5",
-      "adjusted": "3.5",
-      "justification": "D-T Stellarators outlier: median=3.0, gap=1.5->adjusted toward median"
+      "original": "5.0",
+      "adjusted": "3.0",
+      "justification": "Monolithic laser driver >30% capital - capped at 3.0 per Q1 driver reality check"
     },
     {
-      "concept": "20b-renaissance-stellarator",
-      "question": "Q6",
+      "concept": "32-laser-icf-oec-architecture",
+      "question": "Q1",
       "criterion": "C1",
-      "original": "4.8",
-      "adjusted": "3.8",
-      "justification": "D-T Stellarators outlier: median=3.0, gap=1.8->adjusted toward median"
-    },
-    {
-      "concept": "30-laser-icf-nif-commercialization",
-      "question": "Q6",
-      "criterion": "C3",
-      "original": "4.2",
-      "adjusted": "3.2",
-      "justification": "D-T Laser IFE outlier: median=3.2, gap=1.0->adjusted toward median"
-    },
-    {
-      "concept": "30-laser-icf-nif-commercialization",
-      "question": "Q6",
-      "criterion": "C4",
-      "original": "2.5",
-      "adjusted": "3.5",
-      "justification": "D-T Laser IFE outlier: median=3.5, gap=1.0->adjusted toward median"
-    },
-    {
-      "concept": "14-magnetized-target-fusion-pneumatic-compression",
-      "question": "Q6",
-      "criterion": "C7",
-      "original": "1.0",
-      "adjusted": "2.0",
-      "justification": "D-T Pulsed outlier: median=3.0, gap=2.0->adjusted toward median"
-    },
-    {
-      "concept": "12-levitated-dipole",
-      "question": "Q6",
-      "criterion": "C1",
-      "original": "4.0",
+      "original": "5.0",
       "adjusted": "3.0",
-      "justification": "D-T Other outlier: median=3.0, gap=1.0->adjusted toward median"
-    },
-    {
-      "concept": "25-heavy-ion-beam-icf",
-      "question": "Q6",
-      "criterion": "C2",
-      "original": "4.0",
-      "adjusted": "3.0",
-      "justification": "D-T Other outlier: median=3.0, gap=1.0->adjusted toward median"
-    },
-    {
-      "concept": "12-levitated-dipole",
-      "question": "Q6",
-      "criterion": "C2",
-      "original": "2.0",
-      "adjusted": "3.0",
-      "justification": "D-T Other outlier: median=3.0, gap=1.0->adjusted toward median"
-    },
-    {
-      "concept": "25-heavy-ion-beam-icf",
-      "question": "Q6",
-      "criterion": "C7",
-      "original": "1.0",
-      "adjusted": "2.0",
-      "justification": "D-T Other outlier: median=3.5, gap=2.5->adjusted toward median"
+      "justification": "Monolithic optical enhancement cavity laser >30% capital - capped at 3.0 per Q1 driver reality check"
     }
   ]
 }

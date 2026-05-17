@@ -1,14 +1,14 @@
 Helical Coil Stellarator (Helical Fusion HESTIA) — 70.4 MWe FPP, NOAK
-Power cycle: sCO₂ Brayton (η_th=50% target central case)
+Power cycle: sCO₂ Brayton (η_th=48% target central case)
 Availability: 83% | Lifetime: 30 yr | Construction: 10 yr
 
 *** BACK-SOLVED REFERENCE — framework inverse-balances to P_net=70.4 MWe by raising
     P_fus above 260 MW (Q_sci > 13 at 20 MW absorbed ECRH). See sCO₂ EFFICIENCY SWEEP
     below for the design-consistent physics-forward result (Q=13 fixed, P_net≈52 MWe).
 
-LCOE (framework):  1164.2 $/MWh (116.42 c/kWh)  [LOWER BOUND — BACK-SOLVED, Q>13]
-Overnight cost:    97006 $/kW
-Fusion power:      295 MW
+LCOE (framework):  1168.3 $/MWh (116.83 c/kWh)  [LOWER BOUND — BACK-SOLVED, Q>13]
+Overnight cost:    97276 $/kW
+Fusion power:      308 MW
 Net electric:      70.4 MWe
 Q_eng (model):     1.71  [target Q_eng=2.0; sensitive to η_th and LM pump power]
 Recirculating:     58.4%
@@ -23,44 +23,44 @@ CAVEATS:
 Code     Account                              M$
 ------------------------------------------------
 CAS10    Preconstruction                    16.2
-CAS21    Buildings                         223.4
-CAS22    Reactor Plant Equipment          3270.9
+CAS21    Buildings                         225.0
+CAS22    Reactor Plant Equipment          3278.9
 CAS23    Turbine Plant                      26.2
 CAS24    Electrical Plant                   14.2
 CAS25    Miscellaneous                       8.7
-CAS26    Heat Rejection                      7.4
+CAS26    Heat Rejection                      7.8
 CAS27    Special Materials                   1.1
 CAS28    Digital Twin                        5.0
 CAS29    Contingency                         0.0
-CAS30    Indirect Costs                   1185.7
+CAS30    Indirect Costs                   1189.0
 CAS40    Owner's Costs                      10.3
-CAS50    Supplementary                     173.7
-CAS60    IDC                              1886.4
-CAS70    O&M (annualized)                   45.4
+CAS50    Supplementary                     174.2
+CAS60    IDC                              1891.6
+CAS70    O&M (annualized)                   46.0
 CAS80    Fuel (annualized)                   0.2
-CAS90    Financial                         550.3
+CAS90    Financial                         551.9
 ------------------------------------------------
-         Total Capital                    6829.2
+         Total Capital                    6848.2
 
 CAS22 Reactor Plant Equipment Breakdown:
 ------------------------------------------------------------
-  C220101      First Wall + LM Blanket (Sn-In-Pb-Li)     141.7  [DEFAULT]
-  C220102      Shield                                     82.8  [DEFAULT]
+  C220101      First Wall + LM Blanket (Sn-In-Pb-Li)     145.3  [DEFAULT]
+  C220102      Shield                                     84.9  [DEFAULT]
   C220103      Coils (cont. helical WISE REBCO)         2322.5  [DEFAULT — LOWER BOUND; cont. helical premium not captured]
   C220104      Heating (ECRH 20 MW abs.)                 100.0  [DEFAULT]
   C220105      Primary Structure                           8.8  [DEFAULT]
   C220106      Vacuum Vessel                              24.9  [DEFAULT]
   C220107      Power Supplies                             23.1  [DEFAULT]
-  C220108      Divertor (LM integrated FW)                34.9  [DEFAULT]
-  C220111      Installation                              392.1  [DEFAULT]
-  C220200      Coolant (LM circuit)                       22.9  [DEFAULT]
+  C220108      Divertor (LM integrated FW)                35.6  [DEFAULT]
+  C220111      Installation                              392.9  [DEFAULT]
+  C220200      Coolant (LM circuit)                       23.2  [DEFAULT]
   C220300      Aux Cooling                                16.2  [DEFAULT]
   C220400      Rad Waste                                   0.7  [DEFAULT]
   C220500      Fuel Handling (tritium)                    18.7  [DEFAULT]
   C220600      Other Equipment                             1.4  [DEFAULT]
-  C220700      I&C                                        18.6  [DEFAULT]
+  C220700      I&C                                        19.1  [DEFAULT]
 ------------------------------------------------------------
-  C220000      TOTAL                                    3270.9
+  C220000      TOTAL                                    3278.9
 
   NOTE: C220101 (LM blanket): exotic Sn-In-Pb-Li alloy + non-magnetic structural steel
         adds cost vs. standard PbLi blanket; DEFAULT used (no published breakdown).
@@ -74,9 +74,9 @@ Cross-Concept Normalization: Scaled to 1 GWe
 ================================================================
 Per-account scaling from 70.4 MWe native point; framework scaling laws applied.
 NOTE: HESTIA's economic thesis = mass manufacturing of 70 MWe units, not one 1 GWe plant.
-LCOE:           139.3 $/MWh (13.93 c/kWh)  [LOWER BOUND]
-Overnight cost: 10644 $/kW
-Fusion power:   2069 MW | Net: 1000 MWe | Q_eng: 8.84
+LCOE:           140.3 $/MWh (14.03 c/kWh)  [LOWER BOUND]
+Overnight cost: 10716 $/kW
+Fusion power:   2156 MW | Net: 1000 MWe | Q_eng: 8.84
 
 ================================================================
 sCO₂ EFFICIENCY SCENARIO SWEEP  [PRIMARY STRUCTURAL UNCERTAINTY]
@@ -126,7 +126,7 @@ Use this result for cross-concept LCOE comparison — not the back-solved 70.4 M
   LCOE:                     1532.7 $/MWh (153.27 c/kWh)  [LOWER BOUND]
   Overnight cost:           128572 $/kW
 
-  Back-solved ref (P_net=70.4 MWe, Q_sci>13): LCOE=1164.2 $/MWh | Q_eng=1.71
+  Back-solved ref (P_net=70.4 MWe, Q_sci>13): LCOE=1168.3 $/MWh | Q_eng=1.71
   Physics-forward (Q=13):                     LCOE=1532.7 $/MWh | Q_eng=1.53
 
   NOTE: Published Q_eng=2.0 target requires η_th > 50% OR lower recirculating loads
@@ -140,11 +140,11 @@ Source: aip-2023-paper-abstract.md §Table I; analysis.md §5 (availability row)
 
     Avail   LCOE $/MWh    Δ base   Overnight $/kW  Note
   ------------------------------------------------------------------
-     70%       1373.1   +208.8           97006  derated — novel-system outages
-     80%       1206.5    +42.3           97006  structural ceiling (1yr burn / 3mo maint)
-     83%       1164.2     +0.0           97006  central FPP estimate ← BASE
-     85%       1141.4    -22.8           97006  top of FPP published target range
-     90%       1080.3    -83.9           97006  FOAK published target
+     70%       1377.7   +209.4           97276  derated — novel-system outages
+     80%       1210.7    +42.4           97276  structural ceiling (1yr burn / 3mo maint)
+     83%       1168.3     +0.0           97276  central FPP estimate ← BASE
+     85%       1145.5    -22.8           97276  top of FPP published target range
+     90%       1084.2    -84.0           97276  FOAK published target
 
 ================================================================
 H-FACTOR SCENARIO SWEEP  [BLOCKING UNCERTAINTY — Key Assumption #13]
@@ -158,10 +158,10 @@ Source: aip-2023-paper-abstract.md §II-A; analysis.md §2, Challenge 2; §6, Ga
 
   H scenario                                 LCOE $/MWh   OC $/kW   P_fus MW   Q_eng
   --------------------------------------------------------------------------------
-  H=1.3 (design assumption) ← BASE — unvalidated      1164.2    97006       295    1.71
-  H=1.0 (ISS04 baseline)    — no confinement bonus      1176.8    97799       295    1.71
+  H=1.3 (design assumption) ← BASE — unvalidated      1168.3    97276       308    1.71
+  H=1.0 (ISS04 baseline)    — no confinement bonus      1181.1    98086       308    1.71
 
-  LCOE spread H=1.3 → H=1.0:  Δ=+12.6 $/MWh  (+1.1% relative to base)
+  LCOE spread H=1.3 → H=1.0:  Δ=+12.9 $/MWh  (+1.1% relative to base)
   NOTE: Penalty is volume-driven (C220103 coils, C220101 blanket, CAS21 buildings).
   True penalty may be larger if higher-field or different current-drive strategy
   is needed at larger radius. H=1.0 LCOE is a conservative lower bound on the risk.
@@ -270,24 +270,24 @@ Sensitivity (elasticity = %LCOE / %param) — native 70.4 MWe design point
 ----------------------------------------------------
 
 Engineering levers:
-  r_coil                               +1.3637
-  availability                         -0.9684
-  b_max                                +0.6818
-  construction_time_yr                 +0.5815
-  R0                                   +0.1064
-  elon                                 +0.1064
-  eta_th                               -0.0845
-  blanket_t                            +0.0749
-  plasma_t                             +0.0716
-  eta_pin                              -0.0443
-  p_input                              +0.0437
-  p_ecrh                               +0.0294
-  ht_shield_t                          +0.0139
-  p_cool                               +0.0111
+  r_coil                               +1.3589
+  availability                         -0.9678
+  b_max                                +0.6795
+  construction_time_yr                 +0.5811
+  elon                                 +0.1085
+  R0                                   +0.1085
+  eta_th                               -0.0864
+  blanket_t                            +0.0765
+  plasma_t                             +0.0730
+  eta_pin                              -0.0449
+  p_input                              +0.0444
+  p_ecrh                               +0.0293
+  ht_shield_t                          +0.0142
+  p_cool                               +0.0112
+  mn                                   -0.0078
   vessel_t                             +0.0077
-  mn                                   -0.0075
-  p_trit                               +0.0074
-  f_sub                                +0.0037
+  p_trit                               +0.0075
+  f_sub                                +0.0038
   p_cryo                               +0.0034
   structure_t                          +0.0034
   p_house                              +0.0030
@@ -309,19 +309,19 @@ Engineering levers:
   tau_ratio                            +0.0000
 
 Financial:
-  interest_rate                        +0.9473
+  interest_rate                        +0.9466
   inflation_rate                       +0.0195
 
 Costing constants (top 15):
-  indirect_fraction                    +0.2248
-  installation_frac                    +0.1010
-  blanket_unit_cost_dt                 +0.0722
-  om_cost_dt                           +0.0381
-  core_lifetime_dt                     -0.0313
-  heating_ecrh_per_mw                  +0.0294
-  shield_unit_cost                     +0.0243
+  indirect_fraction                    +0.2247
+  installation_frac                    +0.1008
+  blanket_unit_cost_dt                 +0.0738
+  om_cost_dt                           +0.0379
+  core_lifetime_dt                     -0.0320
+  heating_ecrh_per_mw                  +0.0293
+  shield_unit_cost                     +0.0248
+  divertor_base                        +0.0181
   remote_handling_dt_base              +0.0181
-  divertor_base                        +0.0178
   construction_insurance_frac          +0.0133
   shipping_frac                        +0.0100
   vessel_unit_cost                     +0.0073
@@ -341,11 +341,11 @@ Approximation: LCOE ≈ LCOE_base × mult^r_coil_elasticity (power-law / log-lin
 
     Mult   C220103 M$   LCOE $/MWh   Δ LCOE $/MWh  Note
   ----------------------------------------------------------------------------
-    1.0×        2322       1164.2          +0.0  ← base (DEFAULT lower bound; cont. helical premium absent)
-    1.5×        3484       2020.8        +856.6  low end of 1.5–5× QI modular premium range
-    2.0×        4645       2988.4       +1824.2  moderate heliotron vs. QI modular premium
-    3.0×        6967       5187.0       +4022.8  upper-moderate (reflects WISE fabrication challenge)
-    5.0×       11612      10390.4       +9226.2  upper end of 5× QI modular premium range
+    1.0×        2322       1168.3          +0.0  ← base (DEFAULT lower bound; cont. helical premium absent)
+    1.5×        3484       2027.8        +859.6  low end of 1.5–5× QI modular premium range
+    2.0×        4645       2998.8       +1830.5  moderate heliotron vs. QI modular premium
+    3.0×        6967       5205.2       +4036.9  upper-moderate (reflects WISE fabrication challenge)
+    5.0×       11612      10426.7       +9258.4  upper end of 5× QI modular premium range
 
   Power-law model error: ±15–25% at mult=3×; ±30–40% at mult=5× vs. full model re-run.
   Bottom line: coil cost uncertainty alone spans a factor of 2–4× in LCOE.
@@ -357,14 +357,14 @@ $10B PUBLISHED COST ANCHOR: LCOE UPPER BOUND  [CF-F3]
 Framework does not reproduce HESTIA's $10B (2023$) published cost anchor.
 Upper-bound LCOE: substitute $10B overnight cost at 70.4 MWe; hold all other parameters.
 
-  Framework overnight cost:     97,006 $/kW  (6,829 M$)
+  Framework overnight cost:     97,276 $/kW  (6,848 M$)
   $10B anchor:                 142,045 $/kW  (10,000 M$)
   IDC fraction (CAS60/OC):  0.2762
   CRF (r=7%, n=30 yr):      0.08059
 
-  LCOE — framework lower bound:   1164.2 $/MWh  (116.42 c/kWh)
-  LCOE — $10B anchor upper:       1801.3 $/MWh  (180.13 c/kWh)
+  LCOE — framework lower bound:   1168.3 $/MWh  (116.83 c/kWh)
+  LCOE — $10B anchor upper:       1801.6 $/MWh  (180.16 c/kWh)
 
-  LCOE range: 1164 – 1801 $/MWh
+  LCOE range: 1168 – 1802 $/MWh
   ($10B is an inflation estimate; true FOAK cost could be higher, widening the range.)
   Cross-concept comparison requires citing both bounds, not the framework floor alone.

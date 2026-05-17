@@ -90,6 +90,31 @@ For each scored criterion, provide:
 the built plant, not physics feasibility. C7 is the sole place where "this might
 not work at all" is scored.
 
+**Apply the framework rules strictly. Common synthesizer errors to avoid:**
+
+1. **Do not score Evidence Tier 2 when the framework says Tier 1.** "Subscale
+   demonstration" (Tier 2) requires actual experimental hardware running at
+   reduced scale. Theoretical models, simulations, design papers, and "company
+   claims" without operating hardware are explicitly Tier 1. If a concept has
+   been working on a problem for more than 5 years without demonstrated closure,
+   the cell is Tier 1 — not Tier 2 — regardless of qualitative progress.
+
+2. **Do not classify a risk as "Degrading" when failure means zero net
+   electricity.** If your own cell description says "this would mean Q < 1" or
+   "the concept is eliminated" or "no fallback exists," the classification MUST
+   be **Binary**. The framework's Binary classification is mandatory whenever
+   the failure outcome is no-net-electricity — even if the closure pathway
+   feels plausible.
+
+3. **Write out C3 sub-factor B arithmetic explicitly.** List each bottleneck
+   with its penalty (–1.0 hard, –0.5 scaling, –0.25 sole-source, –1.5 for He-3
+   fuel dependency). Sum the penalties. Compute `B = 5.0 - sum(penalties)`.
+   Do not just state "B = X."
+
+4. **Show sub-factor weights summing to 100%.** If you cost-weight components
+   for C1 or C3-A, your shares must sum to ~100% of the basis (CAS22 only, or
+   total capital — pick one). If they don't, your weighted average is wrong.
+
 Present C1, C3, C4, C5, C8 as a table with sub-factor breakdowns, then fill the
 complete 7-function x 2-subcategory risk matrix with all required per-cell fields.
 Report function-level means (F1-F7). End with the YAML scores block.

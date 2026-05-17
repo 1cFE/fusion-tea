@@ -1,0 +1,225 @@
+=================================================================
+Negative Triangularity Tokamak (Firefly/MANTA proxy)
+Native design point: 90 MWe pilot plant (MANTA reference)
+=================================================================
+LCOE:          580.3 $/MWh
+Overnight:     45065 $/kW
+Fusion power:  516 MW  (MANTA ref: 450 MW)
+Net electric:  90 MWe (MANTA ref: 90 MWe)
+Q_eng:         1.74    (MANTA ref: Q=11.5, Q_e=2.4)
+
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    16.2
+CAS21    Buildings                         256.3
+CAS22    Reactor Plant Equipment          2180.0
+CAS23    Turbine Plant                      41.7
+CAS24    Electrical Plant                   17.7
+CAS25    Miscellaneous                      10.8
+CAS26    Heat Rejection                     20.6
+CAS27    Special Materials                   1.4
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                         0.0
+CAS30    Indirect Costs                    591.1
+CAS40    Owner's Costs                      11.7
+CAS50    Supplementary                     128.2
+CAS60    IDC                               775.2
+CAS70    O&M (annualized)                   38.9
+CAS80    Fuel (annualized)                   0.2
+CAS90    Financial                         326.8
+------------------------------------------------
+         Total Capital                    4055.9
+  [MANTA reference overnight cost: $3,400M at 90 MWe]
+
+CAS22 Sub-Accounts:
+------------------------------------------------
+  C220101  First Wall + Blanket (FLiBe)              96.7 M$
+  C220102  Shield                                    63.4 M$
+  C220103  TF/PF/CS Coils [MANTA $1,500M]          1500.0 M$
+  C220104  Heating (40 MW ICRF) [est]               150.0 M$
+  C220105  Structure                                  6.9 M$
+  C220106  Vacuum System                             31.2 M$
+  C220107  Power Supplies                            26.9 M$
+  C220108  Divertor [NT-simplified]                  24.0 M$
+  C220109  DEC                                        0.0 M$
+  C220110  NT Passive Stabilizer Plates [est $15–60M]      30.0 M$
+  C220111  Installation                             143.2 M$
+  C220112  Isotope Separation                         0.0 M$
+  C220200  Coolant (FLiBe+NaNO3/KNO3)                30.4 M$
+  C220300  Auxiliary Cooling                         25.2 M$
+  C220400  Rad Waste                                  1.2 M$
+  C220500  Fuel Handling (tritium)                   22.2 M$
+  C220600  Other Equipment                            1.7 M$
+  C220700  I&C                                       27.1 M$
+  C220000  CAS22 Total                             2180.0 M$
+
+=================================================================
+1 GWe Scaled Result (per-account scaling from 90 MWe reference)
+=================================================================
+LCOE:          98.1 $/MWh
+Overnight:     7030 $/kW
+Fusion power:  2980 MW
+Net electric:  1000 MWe
+Q_eng:         7.71
+
+=================================================================
+Ohmic-Only vs ICRF Baseline (Ball et al. 2024 — Q≈500 vs Q≈30)
+Gate: H_NA confinement scaling without auxiliary heating drive
+=================================================================
+Scenario                         LCOE ($/MWh) Overnight ($/kW)   Q_eng
+----------------------------------------------------------------------
+ICRF baseline (90 MWe)                  580.3            45065    1.74
+Ohmic-only (90 MWe)                     510.0            39389    3.35
+ICRF baseline (1 GWe)                    98.1             7030    7.71
+Ohmic-only (1 GWe)                       93.6             6633   16.04
+  Note: Q_eng delta reflects reduced recirculating power (no ICRF wall-plug).
+  Q≈500 physics benefit not captured — plasma physics not wired to P_fus.
+
+=================================================================
+H_NA Sweep: Confinement Factor 1.0→2.0 at 1 GWe (Carried-Forward F-1)
+  Parameterization: P_aux = 40×(2−H_NA) MW; C220104 = $150×(2−H_NA)M
+  H_NA=1.0 → full ICRF baseline; H_NA=2.0 → ohmic-only (Ball et al.)
+  WARNING: P_fus/Q_p not wired — sweep captures capital-cost channel only.
+=================================================================
+    H_NA  P_aux (MW)   C220104 (M$)   LCOE ($/MWh)  Overnight ($/kW)
+  ------------------------------------------------------------------
+     1.0          40            150           98.1              7030 ← baseline
+     1.2          32            120           97.2              6948
+     1.4          24             90           96.3              6867
+     1.6          16             60           95.3              6788
+     1.8           8             30           94.5              6709
+     2.0           0              0           93.6              6633 ← ohmic
+  Q_eng note: model Q_eng ≈ 1.74 vs MANTA Q_e = 2.4 — not validated against
+  MANTA; gap reflects differing recirculating-power accounting conventions.
+
+=================================================================
+Thermal Efficiency Scenarios at 1 GWe (ARIES-ACT analogue)
+Source: Najmabadi et al. 2015 (osti-1178069, ARIES-ACT)
+=================================================================
+Scenario                                     eta_th LCOE ($/MWh) Overnight ($/kW)
+---------------------------------------------------------------------------------
+MANTA pilot-plant Rankine (baseline)           0.38         98.1             7030
+ACT2 analogue — RAFM/dual-cooled Pb-Li         0.45         93.7             6708
+ACT1 analogue — SiC/self-cooled Pb-Li (high-T)   0.58         90.1             6443
+  NT commercial plausible range: 45–55% (FLiBe outlet-T below ACT1 SiC design).
+
+=================================================================
+Key Assumptions
+=================================================================
+
+Physics anchor:
+  MANTA (Rutherford et al. 2024) — 90 MWe NT tokamak pilot plant.
+  All Firefly Fusion parameters are aspirational; MANTA is the only
+  published engineering reference for NT tokamak economics.
+
+NT-specific cost adjustments vs. positive-triangularity baseline:
+  C220103 (coils):   $1,500M @ 90 MWe — MANTA §7.1 (dominant driver)
+  C220104 (heating): $150M — 40 MW ICRF; eliminates if ohmic-only validated
+  C220108 (divertor): $24M — 60% reduction vs PT; conventional W monoblock
+                       enabled by P_SOL = 23.5 MW (5.2% of P_fus)
+  C220110 (stabilizer plates): $30M central ($15–60M range) — NT passive
+                       vertical stabilizer plate infrastructure; absent from
+                       MANTA accounting; arxiv-2501-14682 + tokamak analogues
+
+Ohmic-only scenario (see comparison table above):
+  Ball et al. (2024) show ohmic-only NT could reach Q~500, eliminating
+  $150M ICRF system (~4% of overnight cost). Gate: H_NA validated at
+  burning-plasma scale. If validated, C220104 → $0.
+
+Critical uncertainties (in order of LCOE impact):
+  1. NT confinement scaling to burning plasma — H_NA=2 unvalidated (TRL 2-3)
+  2. Commercial-scale NT cost study nonexistent — MANTA is sub-commercial
+  3. FLiBe-to-molten-salt HX — "low TRL" (MANTA §6.3); affects eta_th
+  4. Availability 80% assumed for commercial plant vs. MANTA pilot 37%
+  5. TF coil replacement lifetime: ~3100 ± 400 MW·yr (MANTA §5.2)
+     PF2 limiting: ~890 MW·yr (~2 FPY maintenance cycle driver)
+
+Capacity factor note:
+  MANTA pilot capacity factor ~37% (planned maintenance + pilot operations).
+  Commercial plant target 75-90% per Araiinejad & Shirvan 2025.
+  This model uses 80% — results are sensitive to this assumption.
+
+=================================================================
+Sensitivity Analysis (elasticity = %ΔLCOE / %Δparam)
+=================================================================
+
+Engineering levers:
+  availability                         -0.9646
+  construction_time_yr                 +0.4026
+  R0                                   +0.1115
+  elon                                 +0.1115
+  eta_th                               -0.1016
+  blanket_t                            +0.0811
+  plasma_t                             +0.0635
+  eta_pin                              -0.0593
+  p_input                              +0.0578
+  r_coil                               +0.0502
+  b_max                                +0.0251
+  mn                                   -0.0178
+  ht_shield_t                          +0.0144
+  vessel_t                             +0.0135
+  p_cool                               +0.0111
+  p_icrf                               +0.0081
+  p_trit                               +0.0074
+  p_cryo                               +0.0071
+  f_sub                                +0.0047
+  structure_t                          +0.0044
+  p_house                              +0.0030
+  p_coils                              +0.0022
+  p_pump                               +0.0007
+  eta_p                                -0.0000
+  dd_f_T                               +0.0000
+  dd_f_He3                             +0.0000
+  dhe3_dd_frac                         +0.0000
+  dhe3_f_T                             +0.0000
+  eta_de                               +0.0000
+  q95                                  +0.0000
+  f_GW                                 +0.0000
+  B                                    +0.0000
+  T_e                                  +0.0000
+  n_e                                  +0.0000
+  Z_eff                                +0.0000
+  plasma_volume                        +0.0000
+  R_w                                  +0.0000
+  T_edge                               +0.0000
+  tau_ratio                            +0.0000
+  M_ion                                +0.0000
+  lambda_q                             +0.0000
+  disruption_rate_base                 +0.0000
+  disruption_steepness                 +0.0000
+  disruption_damage                    +0.0000
+  disruption_downtime                  +0.0000
+
+Financial:
+  interest_rate                        +0.8075
+  inflation_rate                       +0.0288
+
+Costing constants (top 15):
+  indirect_fraction                    +0.1633
+  blanket_unit_cost_dt                 +0.0713
+  om_cost_dt                           +0.0651
+  installation_frac                    +0.0498
+  core_lifetime_dt                     -0.0348
+  shield_unit_cost                     +0.0251
+  construction_insurance_frac          +0.0128
+  vessel_unit_cost                     +0.0123
+  power_supplies_base                  +0.0107
+  shipping_frac                        +0.0103
+  heating_icrf_per_mw                  +0.0081
+  fuel_handling_dt_base                +0.0077
+  tax_frac                             +0.0069
+  electric_per_mw                      +0.0063
+  fuel_recovery                        -0.0060
+
+=================================================================
+C220103 (TF Coil) Cost Sweep ±50% at 1 GWe (Carried-Forward F-2)
+  Baseline: $1,500M @ 90 MWe reference (MANTA §7.1)
+  Physics → coil cost linkage not yet implemented; sweep proxies uncertainty.
+=================================================================
+    Scale  C220103 ref (M$)   LCOE ($/MWh)  Overnight ($/kW)
+  ----------------------------------------------------------
+  0.50×                          750           84.5              5846
+  0.75×                         1125           91.3              6438
+  1.00× ← baseline              1500           98.1              7030
+  1.25×                         1875          104.9              7622
+  1.50×                         2250          111.8              8214

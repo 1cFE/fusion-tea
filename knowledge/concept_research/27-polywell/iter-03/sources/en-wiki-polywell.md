@@ -1,1 +1,0 @@
-en-wiki-polywell/output.md

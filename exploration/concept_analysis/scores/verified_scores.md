@@ -2,294 +2,310 @@
 
 | Concept | C1 | C2 | C3 | C4 | C5 | C6 | C7 | C8 | Binary Risks |
 |---------|----|----|----|----|----|----|----|----|-------------|
-| 01-hts-compact-tokamak | 3.2 | 2.5 | 2.3 | 2.5 | 2.0 | 2.5 | 4.0 | 3.5 | 2 |
-| 02-acoustic-icf-sonofusion | 3.6 | 4.0 | 3.4 | 3.0 | 3.5 | 3.0 | 1.5 | 2.0 | 2 |
-| 03-laser-icf-liquid-jet-target | 2.8 | 3.5 | 3.0 | 3.5 | 2.3 | 3.0 | 1.0 | 1.8 | 2 |
-| 05-planar-coil-stellarator | 4.5 | 2.5 | 2.5 | 3.0 | 2.0 | 2.5 | 4.0 | 3.5 | 2 |
-| 06-magnetic-mirror | 1.3 | 3.5 | 3.8 | 3.0 | 4.3 | 4.5 | 3.0 | 1.3 | 4 |
-| 07-maglif | 3.7 | 3.0 | 2.8 | 3.0 | 2.1 | 2.0 | 3.5 | 2.5 | 4 |
-| 08-frc-w-direct-conversion | 5.0 | 3.5 | 3.4 | 3.5 | 3.7 | 3.5 | 1.5 | 2.5 | 4 |
-| 09-qi-stellarator-hts | 2.5 | 2.5 | 3.3 | 3.0 | 1.7 | 2.5 | 4.0 | 3.8 | 6 |
-| 10-large-scale-stellarator | 3.3 | 2.5 | 2.7 | 3.0 | 1.7 | 2.5 | 4.0 | 3.3 | 3 |
-| 12-levitated-dipole | 4.0 | 2.0 | 3.1 | 3.5 | 2.1 | 2.5 | 3.5 | 3.5 | 2 |
-| 13-electrostatic-hybrid | 5.0 | 4.0 | 3.6 | 3.8 | 3.0 | 2.5 | 3.0 | 2.3 | 3 |
-| 14-magnetized-target-fusion-pneumatic-compression | 2.8 | 3.0 | 3.4 | 2.5 | 1.8 | 2.0 | 1.5 | 2.5 | 6 |
-| 15-sheared-flow-stabilized-z-pinch | 4.1 | 3.5 | 2.5 | 3.4 | 1.7 | 2.0 | 3.0 | 2.5 | 3 |
-| 16-muon-catalyzed-fusion | 2.8 | 4.0 | 3.3 | 3.5 | 2.4 | 2.5 | 4.0 | 1.8 | 2 |
-| 17a-laser-icf-hybrid-drive | 4.1 | 3.5 | 3.2 | 3.5 | 1.7 | 2.0 | 3.5 | 2.8 | 7 |
-| 17b-laser-icf-fast-ignition | 3.7 | 3.5 | 2.8 | 3.5 | 1.8 | 2.0 | 3.5 | 2.3 | 9 |
-| 18-p-b11-frc | 3.0 | 3.5 | 3.6 | 4.0 | 3.7 | 4.5 | 1.5 | 2.0 | 5 |
-| 19-orbital-levitated-dipole | 3.0 | 2.0 | 2.9 | 4.0 | 4.3 | 4.0 | 1.0 | 1.3 | 4 |
-| 20a-type-one-stellarator | 2.8 | 2.5 | 2.3 | 3.0 | 2.0 | 2.5 | 4.0 | 3.5 | 2 |
-| 20b-renaissance-stellarator | 4.8 | 2.5 | 3.2 | 3.5 | 1.7 | 2.5 | 4.0 | 2.5 | 7 |
-| 21-spherical-tokamak-hts | 2.0 | 2.5 | 3.1 | 2.5 | 2.0 | 2.5 | 4.0 | 2.5 | 2 |
-| 22-projectile-icf | 2.4 | 3.0 | 2.9 | 3.5 | 1.7 | 2.0 | 3.5 | 2.3 | 3 |
-| 23-laser-icf-nanostructured-target | 5.0 | 3.5 | 3.5 | 3.5 | 4.5 | 4.0 | 3.5 | 2.0 | 3 |
-| 24-dense-plasma-focus | 5.0 | 4.0 | 3.5 | 3.5 | 5.0 | 4.0 | 1.0 | 1.8 | 5 |
-| 25-heavy-ion-beam-icf | 5.0 | 4.0 | 3.3 | 3.0 | 1.7 | 2.0 | 2.5 | 3.0 | 6 |
-| 26-laser-icf-indirect-drive | 3.2 | 3.5 | 3.4 | 3.5 | 2.4 | 2.0 | 4.0 | 2.5 | 4 |
-| 27-polywell | 3.7 | 4.0 | 3.3 | 3.0 | 1.7 | 2.5 | 1.5 | 2.3 | 4 |
-| 28-hts-tokamak-full-hts | 2.8 | 2.5 | 3.3 | 3.0 | 1.7 | 2.5 | 4.0 | 2.0 | 2 |
-| 29-negative-triangularity-tokamak | 3.0 | 2.5 | 2.7 | 3.0 | 1.7 | 2.5 | 4.0 | 3.3 | 1 |
-| 30-laser-icf-nif-commercialization | 4.6 | 3.5 | 4.2 | 2.5 | 1.7 | 2.0 | 3.5 | 2.2 | 5 |
-| 31-laser-icf-oec-architecture | 4.5 | 3.5 | 3.2 | 3.0 | 2.3 | 2.0 | 3.5 | 2.8 | 5 |
-| 32-laser-icf-french-national | 3.8 | 3.5 | 3.2 | 3.5 | 1.7 | 2.0 | 3.5 | 2.3 | 4 |
-| 33-state-backed-tokamak-best | 2.1 | 2.5 | 3.7 | 2.5 | 1.8 | 2.5 | 4.0 | 2.5 | 3 |
-| 34-compact-spherical-tokamak-india | 3.3 | 2.5 | 2.5 | 3.5 | 1.7 | 2.5 | 4.0 | 1.3 | 3 |
-| 35-polomac-magnetic-confinement | 2.0 | 4.0 | 2.9 | 3.5 | 2.8 | 3.5 | 1.0 | 2.0 | 5 |
-| 36-helical-coil-stellarator | 2.4 | 2.5 | 2.5 | 3.5 | 2.8 | 2.5 | 4.0 | 2.8 | 5 |
+| 01-hts-compact-tokamak | 2.8 | 2.5 | 2.7 | 4.0 | 1.7 | 2.5 | 4.0 | 4.0 | 4 |
+| 02-acoustic-icf-sonofusion | 4.2 | 4.0 | 4.7 | 3.5 | 2.3 | 3.0 | 1.5 | 1.3 | 1 |
+| 03-laser-icf-liquid-jet-target | 3.8 | 3.5 | 3.0 | 3.5 | 3.7 | 3.0 | 1.5 | 1.8 | 2 |
+| 04-laser-icf | 4.3 | 3.5 | 3.7 | 3.0 | 3.7 | 4.0 | 1.5 | 2.1 | 1 |
+| 05-planar-coil-stellarator | 3.2 | 2.5 | 3.3 | 3.8 | 2.5 | 2.5 | 4.0 | 3.5 | 2 |
+| 06-magnetic-mirror | 2.8 | 3.5 | 3.7 | 2.5 | 4.3 | 4.5 | 3.0 | 2.0 | 1 |
+| 07-maglif | 3.8 | 3.0 | 3.3 | 3.5 | 1.8 | 2.0 | 3.5 | 3.5 | 2 |
+| 08-frc-w-direct-conversion | 4.2 | 3.5 | 3.9 | 3.3 | 3.7 | 3.5 | 3.0 | 2.8 | 4 |
+| 09-qi-stellarator-hts | 5.0 | 2.5 | 3.4 | 4.0 | 1.7 | 2.5 | 4.0 | 3.8 | 2 |
+| 10-large-scale-stellarator | 2.3 | 2.5 | 2.7 | 3.0 | 1.8 | 2.5 | 4.0 | 2.8 | 2 |
+| 11-magnetic-mirror | 2.8 | 3.5 | 3.2 | 2.5 | 2.0 | 2.5 | 3.0 | 3.0 | 3 |
+| 12-levitated-dipole | 3.8 | 2.0 | 2.7 | 3.5 | 1.7 | 2.5 | 1.5 | 3.8 | 3 |
+| 13-electrostatic-hybrid | 4.3 | 4.0 | 4.2 | 3.5 | 1.7 | 2.5 | 1.5 | 1.8 | 5 |
+| 14-magnetized-target-fusion-pneumatic-compression | 3.4 | 3.0 | 4.0 | 2.5 | 1.5 | 2.0 | 3.0 | 3.0 | 5 |
+| 15-sheared-flow-stabilized-z-pinch | 4.8 | 3.5 | 2.5 | 3.5 | 1.7 | 2.0 | 2.5 | 3.0 | 6 |
+| 16-muon-catalyzed-fusion | 1.8 | 4.0 | 2.4 | 3.5 | 1.7 | 2.5 | 2.5 | 1.5 | 5 |
+| 17-laser-icf-direct-drive-fast-ignition | 2.5 | 3.5 | 3.3 | 2.8 | 1.7 | 2.0 | 3.5 | 3.0 | 3 |
+| 18-p-b11-frc | 2.8 | 3.5 | 3.3 | 3.0 | 3.3 | 4.5 | 3.5 | 2.5 | 2 |
+| 19-orbital-levitated-dipole | 3.0 | 2.0 | 1.7 | 2.5 | 4.5 | 4.0 | 1.5 | 1.5 | 4 |
+| 20-type-one-stellarator | 1.3 | 2.5 | 4.2 | 4.0 | 1.7 | 2.5 | 4.0 | 3.8 | 4 |
+| 21-renaissance-stellarator | 4.0 | 2.5 | 2.8 | 3.8 | 1.7 | 2.5 | 4.0 | 2.8 | 4 |
+| 22-spherical-tokamak-hts | 3.3 | 3.0 | 3.7 | 2.5 | 1.8 | 2.5 | 3.5 | 2.8 | 2 |
+| 23-projectile-icf | 3.2 | 4.0 | 2.8 | 4.0 | 1.7 | 2.0 | 1.5 | 2.3 | 4 |
+| 24-laser-icf-nanostructured-target | 4.3 | 4.0 | 3.2 | 3.5 | 4.3 | 4.0 | 2.5 | 2.0 | 3 |
+| 25-dense-plasma-focus | 4.6 | 4.0 | 3.2 | 3.5 | 5.0 | 4.0 | 1.5 | 1.8 | 5 |
+| 26-heavy-ion-beam-icf | 5.0 | 3.5 | 2.8 | 3.5 | 1.7 | 2.0 | 2.5 | 3.2 | 6 |
+| 27-laser-icf-hybrid-direct-drive | 2.8 | 4.0 | 2.8 | 3.0 | 1.7 | 2.0 | 3.5 | 3.0 | 6 |
+| 28-polywell | 4.1 | 2.5 | 3.2 | 3.0 | 1.7 | 2.5 | 2.5 | 2.5 | 2 |
+| 29-hts-tokamak-full-hts | 4.1 | 2.5 | 3.2 | 2.5 | 1.7 | 2.5 | 4.0 | 2.0 | 3 |
+| 30-negative-triangularity-tokamak | 5.0 | 3.5 | 3.0 | 3.5 | 1.7 | 2.5 | 4.0 | 3.5 | 3 |
+| 31-laser-icf-indirect-drive | 5.0 | 3.5 | 3.3 | 3.0 | 2.5 | 2.0 | 3.5 | 2.5 | 4 |
+| 32-laser-icf-oec-architecture | 5.0 | 3.5 | 3.1 | 3.0 | 2.3 | 2.0 | 3.5 | 3.3 | 6 |
+| 34-state-backed-tokamak-best | 2.7 | 2.5 | 3.5 | 3.0 | 1.8 | 2.5 | 4.0 | 2.5 | 3 |
+| 35-polomac-magnetic-confinement | 2.5 | 4.0 | 3.6 | 3.5 | 2.5 | 3.5 | 1.5 | 1.5 | 3 |
+| 36-helical-coil-stellarator | 2.5 | 2.5 | 2.8 | 4.0 | 1.7 | 2.5 | 4.0 | 2.5 | 2 |
 
 ## Function-Level Means (after heritage credit)
 
 | Concept | F1 | F2 | F3 | F4 | F5 | F6 | F7 |
 |---------|----|----|----|----|----|----|-----|
 | 01-hts-compact-tokamak | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 |
-| 02-acoustic-icf-sonofusion | 1.5 | 2.0 | 3.0 | 3.0 | 4.5 | 5.0 | 5.0 |
-| 03-laser-icf-liquid-jet-target | 1.0 | 3.0 | 2.0 | 2.0 | 3.5 | 3.0 | 4.5 |
-| 05-planar-coil-stellarator | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 |
-| 06-magnetic-mirror | 2.5 | 3.0 | 2.5 | 3.5 | 5.0 | 3.0 | 2.5 |
-| 07-maglif | 3.0 | 3.5 | 4.5 | 3.0 | 3.3 | 3.0 | 3.5 |
-| 08-frc-w-direct-conversion | 2.5 | 2.5 | 4.0 | 2.5 | 4.0 | 1.5 | 3.0 |
-| 09-qi-stellarator-hts | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 |
-| 10-large-scale-stellarator | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.5 |
-| 12-levitated-dipole | 3.0 | 3.5 | 3.0 | 3.5 | 3.0 | 3.0 | 4.5 |
-| 13-electrostatic-hybrid | 3.0 | 3.5 | 2.5 | 3.0 | 3.0 | 2.0 | 4.0 |
-| 14-magnetized-target-fusion-pneumatic-compression | 3.0 | 1.5 | 2.5 | 3.5 | 4.5 | 3.0 | 3.0 |
-| 15-sheared-flow-stabilized-z-pinch | 2.5 | 2.5 | 3.0 | 2.5 | 3.5 | 3.0 | 4.5 |
-| 16-muon-catalyzed-fusion | 2.5 | 2.5 | 5.0 | 4.0 | 4.5 | 3.5 | 4.5 |
-| 17a-laser-icf-hybrid-drive | 3.5 | 3.5 | 3.5 | 4.0 | 3.5 | 3.5 | 4.5 |
-| 17b-laser-icf-fast-ignition | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4.0 |
-| 18-p-b11-frc | 1.5 | 2.5 | 3.0 | 2.5 | 5.0 | 5.0 | 4.5 |
-| 19-orbital-levitated-dipole | 2.0 | 2.5 | 4.5 | 2.5 | 4.0 | 1.0 | 2.0 |
-| 20a-type-one-stellarator | 4.0 | 4.5 | 4.0 | 4.0 | 4.0 | 4.0 | 5.0 |
-| 20b-renaissance-stellarator | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 |
-| 21-spherical-tokamak-hts | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 |
-| 22-projectile-icf | 3.5 | 3.5 | 3.5 | 2.5 | 3.5 | 3.5 | 5.0 |
-| 23-laser-icf-nanostructured-target | 2.5 | 3.0 | 3.5 | 3.5 | 4.5 | 4.0 | 3.5 |
-| 24-dense-plasma-focus | 1.5 | 3.5 | 2.5 | 1.5 | 3.0 | 2.5 | 1.0 |
-| 25-heavy-ion-beam-icf | 2.0 | 2.5 | 2.0 | 3.0 | 3.0 | 2.5 | 4.0 |
-| 26-laser-icf-indirect-drive | 3.5 | 3.5 | 4.5 | 3.5 | 3.5 | 3.5 | 4.5 |
-| 27-polywell | 2.0 | 3.0 | 3.0 | 2.5 | 2.5 | 1.5 | 3.5 |
-| 28-hts-tokamak-full-hts | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.5 |
-| 29-negative-triangularity-tokamak | 4.0 | 4.0 | 4.0 | 4.5 | 4.0 | 4.0 | 4.0 |
-| 30-laser-icf-nif-commercialization | 3.5 | 3.5 | 4.0 | 3.5 | 3.5 | 3.5 | 4.5 |
-| 31-laser-icf-oec-architecture | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 |
-| 32-laser-icf-french-national | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4.5 |
-| 33-state-backed-tokamak-best | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 |
-| 34-compact-spherical-tokamak-india | 4.0 | 4.5 | 4.0 | 4.0 | 4.5 | 4.0 | 4.5 |
-| 35-polomac-magnetic-confinement | 1.0 | 3.0 | 1.0 | 1.5 | 3.0 | 5.0 | 5.0 |
-| 36-helical-coil-stellarator | 4.0 | 4.0 | 4.5 | 4.0 | 4.0 | 4.0 | 4.0 |
+| 02-acoustic-icf-sonofusion | 1.5 | 2.5 | 2.5 | 2.0 | 3.5 | 4.0 | 5.0 |
+| 03-laser-icf-liquid-jet-target | 1.5 | 2.0 | 1.5 | 2.0 | 3.0 | 3.5 | 3.0 |
+| 04-laser-icf | 1.5 | 3.0 | 2.5 | 2.5 | 5.0 | 4.5 | 4.0 |
+| 05-planar-coil-stellarator | 4.0 | 5.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.5 |
+| 06-magnetic-mirror | 2.0 | 2.5 | 3.0 | 3.5 | 5.0 | 3.0 | 2.5 |
+| 07-maglif | 3.5 | 3.5 | 3.5 | 3.0 | 3.0 | 3.0 | 4.0 |
+| 08-frc-w-direct-conversion | 2.5 | 3.0 | 3.0 | 3.0 | 4.0 | 2.0 | 3.5 |
+| 09-qi-stellarator-hts | 4.0 | 4.0 | 4.5 | 4.0 | 4.0 | 4.0 | 4.0 |
+| 10-large-scale-stellarator | 4.0 | 5.0 | 4.5 | 4.0 | 4.0 | 4.0 | 4.0 |
+| 11-magnetic-mirror | 2.5 | 4.0 | 2.5 | 2.5 | 3.0 | 2.5 | 3.5 |
+| 12-levitated-dipole | 2.0 | 1.5 | 3.0 | 2.5 | 2.5 | 2.0 | 2.0 |
+| 13-electrostatic-hybrid | 1.5 | 2.5 | 2.0 | 1.5 | 4.5 | 1.5 | 3.5 |
+| 14-magnetized-target-fusion-pneumatic-compression | 3.5 | 2.0 | 2.5 | 2.5 | 2.5 | 2.0 | 4.5 |
+| 15-sheared-flow-stabilized-z-pinch | 2.5 | 2.5 | 3.0 | 2.5 | 2.5 | 2.5 | 3.5 |
+| 16-muon-catalyzed-fusion | 2.0 | 2.0 | 3.0 | 3.0 | 2.5 | 2.0 | 3.5 |
+| 17-laser-icf-direct-drive-fast-ignition | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4.5 |
+| 18-p-b11-frc | 2.0 | 3.0 | 3.0 | 3.0 | 5.0 | 4.5 | 4.5 |
+| 19-orbital-levitated-dipole | 2.0 | 3.0 | 4.0 | 4.0 | 5.0 | 1.5 | 2.0 |
+| 20-type-one-stellarator | 4.0 | 4.5 | 4.5 | 4.0 | 4.0 | 4.0 | 4.0 |
+| 21-renaissance-stellarator | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 |
+| 22-spherical-tokamak-hts | 3.5 | 3.5 | 4.0 | 3.5 | 3.0 | 3.0 | 4.0 |
+| 23-projectile-icf | 1.5 | 2.5 | 2.5 | 3.0 | 3.5 | 3.5 | 5.0 |
+| 24-laser-icf-nanostructured-target | 2.0 | 2.5 | 2.5 | 2.5 | 3.0 | 4.0 | 2.5 |
+| 25-dense-plasma-focus | 1.5 | 3.5 | 1.5 | 2.5 | 2.5 | 2.0 | 1.5 |
+| 26-heavy-ion-beam-icf | 2.0 | 2.0 | 2.0 | 2.0 | 2.5 | 3.0 | 3.5 |
+| 27-laser-icf-hybrid-direct-drive | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 |
+| 28-polywell | 2.0 | 2.5 | 2.0 | 2.0 | 2.5 | 2.0 | 5.0 |
+| 29-hts-tokamak-full-hts | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 |
+| 30-negative-triangularity-tokamak | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 |
+| 31-laser-icf-indirect-drive | 3.5 | 3.5 | 4.5 | 3.5 | 3.5 | 3.5 | 3.5 |
+| 32-laser-icf-oec-architecture | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 |
+| 34-state-backed-tokamak-best | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 |
+| 35-polomac-magnetic-confinement | 2.5 | 5.0 | 1.5 | 3.5 | 3.5 | 3.5 | 5.0 |
+| 36-helical-coil-stellarator | 4.0 | 4.0 | 5.0 | 4.0 | 4.0 | 4.0 | 4.0 |
+
+## Energy Capture, Heritage, and Peer Group (audit trail)
+
+Heritage lineage and floor are derived from architecture (table.csv), not from concept IDs, so they survive renumbering. Heritage credit applies to D-T fuel only — non-D-T concepts show floor 1.0.
+
+| Concept | Energy Capture | η_th | Heritage Lineage | Floor | Peer Group |
+|---------|----------------|------|------------------|-------|------------|
+| 01-hts-compact-tokamak | Thermal (steam) | 0.35 | Tokamak | 4.0 | D-T Tokamaks |
+| 02-acoustic-icf-sonofusion | TBD | 0.35 | — | 1.0 | Exotic |
+| 03-laser-icf-liquid-jet-target | TBD | 0.35 | — | 1.0 | Exotic |
+| 04-laser-icf | Thermal (steam) | 0.35 | — | 1.0 | p-B11 |
+| 05-planar-coil-stellarator | Thermal (steam) | 0.35 | Stellarator | 4.0 | D-T Stellarators |
+| 06-magnetic-mirror | Direct (charged particle) | 0.70 | — | 1.0 | p-B11 |
+| 07-maglif | Thermal (unspecified) | 0.35 | magLIF | 3.0 | D-T Pulsed (MIF/Z-pinch) |
+| 08-frc-w-direct-conversion | Direct (inductive) | 0.85 | — | 1.0 | Aneutronic |
+| 09-qi-stellarator-hts | Thermal (unspecified) | 0.35 | Stellarator | 4.0 | D-T Stellarators |
+| 10-large-scale-stellarator | Thermal (unspecified) | 0.35 | Stellarator | 4.0 | D-T Stellarators |
+| 11-magnetic-mirror | Hybrid (thermal + direct) | 0.55 | Mirror | 2.5 | D-T Mirrors |
+| 12-levitated-dipole | Thermal (unspecified) | 0.35 | — | 1.0 | Exotic |
+| 13-electrostatic-hybrid | Thermal (unspecified) | 0.35 | — | 1.0 | Exotic |
+| 14-magnetized-target-fusion-pneumatic-compression | Thermal (steam) | 0.35 | — | 1.0 | Exotic |
+| 15-sheared-flow-stabilized-z-pinch | Thermal (steam) | 0.35 | Z-pinch | 2.5 | D-T Pulsed (MIF/Z-pinch) |
+| 16-muon-catalyzed-fusion | Thermal (unspecified) | 0.35 | — | 1.0 | Exotic |
+| 17-laser-icf-direct-drive-fast-ignition | Thermal (steam) | 0.35 | Laser IFE | 3.5 | D-T Laser IFE |
+| 18-p-b11-frc | Thermal (steam) | 0.35 | — | 1.0 | Aneutronic FRC |
+| 19-orbital-levitated-dipole | Direct (charged particle) | 0.70 | — | 1.0 | Aneutronic |
+| 20-type-one-stellarator | Thermal (steam) | 0.35 | Stellarator | 4.0 | D-T Stellarators |
+| 21-renaissance-stellarator | Thermal (sCO2) | 0.48 | Stellarator | 4.0 | D-T Stellarators |
+| 22-spherical-tokamak-hts | Thermal (unspecified) | 0.35 | Spherical Tokamak | 3.0 | D-T Tokamaks |
+| 23-projectile-icf | Thermal (steam) | 0.35 | — | 1.0 | Exotic |
+| 24-laser-icf-nanostructured-target | Hybrid (thermal + direct) | 0.55 | — | 1.0 | p-B11 |
+| 25-dense-plasma-focus | Direct (charged particle) | 0.70 | — | 1.0 | p-B11 |
+| 26-heavy-ion-beam-icf | Thermal (steam) | 0.35 | — | 1.0 | Exotic |
+| 27-laser-icf-hybrid-direct-drive | Thermal (unspecified) | 0.35 | Laser IFE | 3.5 | D-T Laser IFE |
+| 28-polywell | Thermal (unspecified) | 0.35 | — | 1.0 | Exotic |
+| 29-hts-tokamak-full-hts | Thermal (unspecified) | 0.35 | Tokamak | 4.0 | D-T Tokamaks |
+| 30-negative-triangularity-tokamak | Thermal (unspecified) | 0.35 | Tokamak | 4.0 | D-T Tokamaks |
+| 31-laser-icf-indirect-drive | Thermal (steam) | 0.35 | Laser IFE | 3.5 | D-T Laser IFE |
+| 32-laser-icf-oec-architecture | Hybrid (thermal + direct) | 0.55 | Laser IFE | 3.5 | D-T Laser IFE |
+| 34-state-backed-tokamak-best | Thermal (unspecified) | 0.35 | Tokamak | 4.0 | D-T Tokamaks |
+| 35-polomac-magnetic-confinement | Thermal (unspecified) | 0.35 | — | 1.0 | Exotic |
+| 36-helical-coil-stellarator | Thermal (sCO2) | 0.48 | Stellarator | 4.0 | D-T Stellarators |
 
 ## Binary Risks per Concept
 
 ### 01-hts-compact-tokamak
-- TBR <1.0 in FLiBe blanket (commercial fleet cannot scale without tritium breeding self-sufficiency)
-- Tritium processing plant failure or tritium extraction from FLiBe at <95% efficiency (cannot sustain D-T fuel cycle)
+- TBR < 1.0: FLiBe blanket fails to achieve sustained tritium breeding self-sufficiency (TBR <1.05 accounting for decay and processing losses)
+- Tritium extraction system failure >24 hours: on-site tritium inventory exceeds regulatory limits (~2 kg threshold), forcing plant shutdown
+- Li-6 enrichment supply chain failure: cannot secure 40-90% enriched Li at required quantity (380-850 tonnes per reactor), causing TBR to drop below 1.0
+- FLiBe blanket catastrophic failure: leak, MHD flow blockage, or chemical instability ceases tritium breeding, forcing plant shutdown
 
 ### 02-acoustic-icf-sonofusion
-- Fusion from acoustic cavitation undemonstrated: temperature gap of ~10,000× (16,000 K achieved vs. 10⁸ K required for D-D thermonuclear ignition) is unbridged. Zero replicated experimental evidence. If acoustic compression cannot achieve fusion-relevant temperatures, concept produces zero net electricity.
-- PZT transducer neutron irradiation failure: if piezoelectric materials depolarize or fracture under 2.45 MeV neutron flux at fusion-relevant fluences (10¹⁴ n/cm²/s), acoustic driver becomes inoperable and no neutron-tolerant piezoelectric replacement exists.
+- Ion temperature <10 keV in bubble plasma—acoustic cavitation cannot reach D-D fusion cross-section peak (~10⁸ K), resulting in Q=0 and zero net electricity output
 
 ### 03-laser-icf-liquid-jet-target
-- Plasma performance: if Q < 1 (plasmonic enhancement fails to accelerate deuterons to fusion-relevant energies), no net electricity is produced
-- Instability control: if plasma instabilities inside nanoshells quench plasmonic field enhancement, fusion rate drops to zero
+- Plasmonic nanoshell fusion mechanism undemonstrated — if field enhancement fails to accelerate deuterons to fusion threshold, no fusion occurs (F1 physics)
+- Anomalous 3333 MeV/event energy figure — if calculation error and true D-D energy is ~3.65 MeV, Q~100 collapses by 1000× and Q_eng becomes negative (F1 physics)
+
+### 04-laser-icf
+- F1 Physics: Avalanche gain mechanism—if non-thermal alpha-induced chain reaction does not achieve gain >100, thermal p-B11 ignition is impossible due to bremsstrahlung exceeding fusion power, and the concept produces zero net electricity
 
 ### 05-planar-coil-stellarator
-- TBR <1.1 → tritium inventory depletes → plant shutdown (F6 physics)
-- Tritium extraction efficiency <99% → regulatory inventory limit exceeded → plant shutdown (F6 hardware)
+- TBR < 1.0 due to port fractions or penetration geometry errors—external tritium supply unsustainable at commercial scale
+- Tritium extraction failure from LiPb—vacuum permeator or heat exchanger permeation barrier failure depletes inventory in days to weeks
 
 ### 06-magnetic-mirror
-- Nonthermal p-B11 plasma operation — bremsstrahlung dominance prevents net gain
-- Alpha channeling efficiency — if <40% of theoretical, nonthermal distribution unsustainable
-- Ponderomotive barrier failure — helium ash accumulation poisons plasma
-- Helium extraction failure — ash buildup stops fusion within ~10 confinement times
+- p-B11 nonthermal plasma fails to achieve Q>1 due to insufficient alpha channeling efficiency (<4× rather than required 6.9×) or unmanageable bremsstrahlung losses (electron temperature cannot be maintained <50 keV), preventing net energy production at any scale
 
 ### 07-maglif
-- F1 Physics: Ignition failure — if Lawson parameter χ cannot reach ≥1.0 at practical drive currents (60+ MA), no net energy is produced and commercial operation is impossible.
-- F4 Physics: Chamber pressure spike / FLiBe liquid wall reconstitution failure — if thick liquid wall cannot be reconstituted within 1 second or chamber pressure exceeds structural limits at GJ-scale yields, plant cannot operate at 1 Hz. Reducing to 0.1 Hz makes LCOE uncompetitive (305 $/MWh).
-- F4 Hardware: Chamber lifetime <1000 shots due to combined environment failure — if shock + neutron + FLiBe corrosion + thermal cycling causes chamber/electrode cracking in <1000 shots, plant must shut down every ~10 days for replacement, dropping capacity factor to <30% and making LCOE >150 $/MWh.
-- F6 Physics: Tritium breeding ratio (TBR) < 1.0 — if FLiBe blanket cannot breed sufficient tritium due to neutron streaming losses through RTL ports, plant cannot sustain operation without external tritium purchases, exhausting global supply in ~25 years across all D-T fusion plants.
+- TBR <1.0 in FLiBe blanket due to port fractions and axial RTL penetrations reducing effective solid-angle coverage below breeding threshold
+- Tritium extraction failure from FLiBe blanket—bred tritium cannot be continuously removed at kg/day rates, causing blanket saturation and uncontrolled permeation exceeding regulatory limits
 
 ### 08-frc-w-direct-conversion
-- D-He3 fusion below ignition threshold (ion temperature <45 keV) — burn fraction → 0, LCOE → ∞
-- He-3 self-breeding cycle does not close at commercial scale — no fuel supply for D-He3 operation
-- He-3 extraction/separation infeasible at commercial kg/year throughput — fuel cycle fails
-- Direct energy recovery efficiency falls below 90% threshold — round-trip energy balance negative, plant becomes net consumer
+- F1 Physics: D-He3 ignition failure — below ~17 keV ion temperature threshold, D-He3 fusion is kinematically inaccessible; forces D-T fallback which structurally eliminates ~75% of direct conversion advantage
+- F3 Physics: Gross FRC instability at 40 T compression — loss of confinement eliminates fusion yield; no mitigation if magnetic pressure exceeds stability limits
+- F6 Physics: He3 self-breeding failure — eliminates fuel supply for commercial D-He3 operation; natural He3 supply cannot support even a single 50 MWe plant at commercial scale
+- F6 Hardware: He3 extraction/purification failure — isotopic separation of He3 from D-He3/D-D exhaust at commercial throughput is undemonstrated; no operating analogue exists
 
 ### 09-qi-stellarator-hts
-- F1 Physics: H₉₈ confinement enhancement < 1.30 → fusion power < 2,700 MW → net electric output < 1,000 MW → plant economics fail
-- F3 Physics: MHD instabilities or bootstrap current exceed design limits → plasma equilibrium uncontrollable → disruption-free operation lost
-- F3 Hardware: 50 modular HTS coils cannot maintain ≤1 mm positioning tolerance → QI magnetic field optimization fails → confinement degrades → plasma performance fails
-- F5 Physics: Coil neutron fluence > 3×10²² m⁻² before 10 full-power years → REBCO critical current degradation >10% → coil quench risk → early magnet replacement → extended plant shutdown
-- F6 Physics: TBR < 1.0 (after all engineering losses) → tritium self-sufficiency fails → external tritium purchase required (per framework: mandatory binary classification)
-- F6 Hardware: Tritium extraction from PbLi fails or efficiency < 50% → tritium inventory accumulates in blanket → radiological hazard → plant shutdown (per framework: mandatory binary classification)
+- TBR < 1.05 after all engineering losses (island divertor penetrations, coil support structures) causes tritium self-sufficiency failure requiring external tritium supply and limiting fleet deployment
+- Island divertor failure to maintain detachment at 4.05 MW/m² causes tungsten sputtering accumulation leading to radiative collapse and operations halt
 
 ### 10-large-scale-stellarator
-- F1 Hardware: Superconducting coil quench or irreversible HTS degradation under 40-year fusion neutron fluence (10²³ n/m²) prevents plant operation
-- F6 Physics: TBR < 1.0 due to unaccounted losses in 3D geometry prevents tritium self-sufficiency and commercial viability
-- F6 Hardware: Tritium processing failure at kg/day scale or permeation barrier failure creates safety shutdown or prevents fuel cycle closure
+- TBR < 1.0 for D-T stellarator due to neutronics modeling error or geometric losses (gaps, ports, tight-clearance TBR/shielding trade-off), causing tritium self-sufficiency failure and inability to sustain burning plasma beyond startup inventory depletion
+- Tritium extraction system failure (efficiency <90% or throughput <150 g/day) from Li₄SiO₄ pebbles or PbLi liquid, causing tritium inventory holdup exceeding regulatory limits or unacceptable environmental release, preventing full-duty-cycle operation
+
+### 11-magnetic-mirror
+- TBR < 1.0 after realistic port penetrations in cylindrical 2π blanket geometry
+- Tritium extraction failure from Li circuit at kg/day fusion plant scale
+- End-plug confinement failure below Q = 3 due to DCLC instability
 
 ### 12-levitated-dipole
-- Confinement scaling below Bohm-like (n·τ_e < 50% of target) causes Q_sci < 7 and net power near zero
-- Tritium breeding ratio (TBR) < 1.0 prevents tritium self-sufficiency and limits fleet scalability
+- TBR < 1.0: 10% margin above breakeven leaves little tolerance for blanket module failures or extraction inefficiency
+- Tritium extraction failure from Li₂O solid ceramic at kg/day scale: no operating analogue at fusion plant throughput
+- F2 Physics: ICRH coupling in dipole geometry — never demonstrated; no published RF coupling study; if ICRH cannot deliver 44.5 MW absorbed power in dipole field topology, ECRH fallback at 30-40% efficiency breaks the recirculating power balance and plant cannot reach net electricity
 
 ### 13-electrostatic-hybrid
-- Coulomb collision thermalization prevents Q>1: If experimental measurement confirms Lampe-Mannheimer (1998) critique that collision rates exceed fusion rates by 25-37× at required densities, net energy gain is unachievable regardless of engineering optimizations
-- Electron cyclotron drift instability (ECDI) disrupts ion confinement at commercial density >10¹⁰ cm⁻³: If ECDI cannot be suppressed at fusion-relevant density, required triple product for Q>1 is unattainable
-- Tritium breeding ratio <1.0: Without a breeding blanket achieving TBR≥1.05, purchased tritium cost at $35k/g scales inversely with Q and becomes LCOE-prohibitive at low Q (contributes $57k/MWh at Q=10, diverging to infinity as Q approaches break-even)
+- F1-Physics: Q>1 not demonstrated — without ion density ≥5×10¹⁰ cm⁻³ and confinement time ≥0.1 ms, net electricity is impossible
+- F2-Physics: Ion loading efficiency <50% — if true, recirculating power exceeds gross electric even at Q_plasma>1
+- F3-Physics: Diocotron or ECDI instability at n>10¹⁰ cm⁻³ — if space-charge mitigation fails, Q>1 is impossible
+- F4-Hardware: Neutron-induced HV breakdown in cathode or feedthrough — if 14 MeV neutrons cause electrical arc-through, module cannot sustain 300 kV required for fusion
+- F6-Physics: Tritium self-breeding TBR<1.0 — mandatory for fleet-scale power generation; external tritium purchase is not valid fallback per framework mandatory binary classification
 
 ### 14-magnetized-target-fusion-pneumatic-compression
-- Pneumatic compression system synchronization failure — if piston timing scatter exceeds 1% or mechanical infeasibility prevents operation, no fallback driver exists
-- Compression ratio shortfall — if 12:1 cavity compression cannot be achieved in liquid metal (8:1 in water tests vs 12:1 target), plasma cannot reach fusion conditions
-- Lawson criterion failure at commercial scale — if nTτ < 10²¹ with pneumatic compression (LM26 electromagnetic surrogate does not validate commercial driver), net energy gain impossible
-- Tritium breeding ratio below self-sufficiency — if TBR < 1.05 (1.5 predicted, unvalidated), external tritium required (unavailable at fleet scale)
-- Li-6 enrichment supply bottleneck — Western capacity must scale 2–10× for D-T fleet (shared showstopper with all D-T concepts)
-- Liquid metal vortex reformation failure — if vortex cannot reform within 1 second at 1 Hz, repetition rate falls below viability threshold (~0.1 Hz minimum for LCOE <$150/MWh)
+- Driver physics: 12:1 compression ratio in liquid metal (8:1 achieved in water vs. 12:1 target) — if unachieved, plasma cannot reach fusion conditions
+- Driver hardware: Piston synchronization and <1 second reset time at 1 Hz — if failed, plant cannot achieve commercial rep rate
+- Instability control hardware: Liquid metal vortex stable formation and <1 second reformation at 1 Hz — if failed, concept is not viable
+- Fuel cycle physics: TBR < 1.0 — if unachieved, tritium self-sufficiency impossible
+- Fuel cycle hardware: Tritium extraction efficiency >95% from liquid metal — if failed, radiological safety failure
 
 ### 15-sheared-flow-stabilized-z-pinch
-- Q < ~7: recirculating fraction > 70%, net electric output marginal or negative (F1 physics)
-- TBR < 1.0: tritium-negative plant, cannot self-sustain (F6 physics)
-- Tritium extraction failure: inventory buildup exceeds safety limits (F6 hardware)
+- Plasma Q < 5 or pinch lifetime < 100 µs: recirculating fraction exceeds 85%, net output collapses to marginal levels
+- Pulsed power capacitors/switches not manufacturable at 10⁸–10⁹ shot lifetime and 50–200 kV ratings: no viable driver technology
+- MHD instabilities beyond 100 µs defeat sheared-flow stabilization: Q cannot reach commercial target
+- LiPb flow failure at 10 Hz: simultaneous loss of first wall, breeding, shielding, and heat extraction
+- TBR < 1.0 due to blanket coverage gaps or neutron leakage: tritium self-sufficiency lost, external supply infeasible
+- Tritium extraction from LiPb < 1 kg/day plant-wide: inventory accumulation to unsafe levels or burn rate shortfall
 
 ### 16-muon-catalyzed-fusion
-- Driver physics: muon production energy cost >2.0 GeV yields net energy sink regardless of hardware (Q_sci too low for positive net electricity)
-- Fuel cycle: tritium breeding ratio <1.0 requires indefinite external tritium supply (economically infeasible, supply-limited)
+- Tritium breeding ratio (TBR < 1.0 for MCF chamber geometry with beam injection ports) — all D-T concepts require TBR > 1 for fuel self-sufficiency
+- Fuel cycle closure (tritium extraction failure at kg/day or permeation loss >1% at 800–1300 K) — forces external tritium dependence, non-viable for commercial deployment
+- Energy balance viability (Q_sci × M × η_th ≤ 1 at achievable E_mu and N_fus) — plant produces less gross electric than accelerator consumes; net electricity is impossible
+- F1 Physics: D-T catalysis fusions/muon ceiling — if N_fus cannot exceed ~350 at E_mu ≤ 2.5 GeV (LAMPF demonstrated 150 at low-T; Yamashita 2022 high-T kinetics unvalidated by experiment), the energy balance Q_sci × M × η_th ≤ 1 and net electricity is impossible
+- F2 Physics: Muon production energy cost — if E_mu cannot be reduced from current ~6 GeV/muon (PSI/TRIUMF/LAMPF) to <2.5 GeV/muon target via active-target geometry, recirculating power exceeds gross output and plant is a net energy consumer
 
-### 17a-laser-icf-hybrid-drive
-- Capsule gain Qc < 143 (at η_laser 7%) — wall-plug gain Q_wp falls below commercial viability threshold of 10
-- Laser wall-plug efficiency < 5% — required Qsci for viability rises to ≥200, exceeding near-term achievable gains
-- SBS NLO phase preservation failure at >100 kJ — cascades to implosion asymmetry and Qc collapse
-- Two-beam HDD implosion asymmetry — hot-spot non-uniformity quenches fusion yield below commercial threshold
-- SBS wavefront degradation at MJ scale — cascades to two-beam implosion failure
-- TBR < 1.0 (FLiNaK ~1.05 marginal) — tritium breeding insufficient for self-sufficiency
-- Tritium extraction failure — inventory accumulation triggers regulatory shutdown
-
-### 17b-laser-icf-fast-ignition
-- DT core compression to ignition-relevant ρR and T_ion — if physics fails, no net electricity
-- Laser wall-plug efficiency <7% — recirculating power exceeds economically viable threshold
-- 10 Hz repetition rate failure — if laser cannot sustain 10 Hz, plant output falls below 1 GWe design
-- Diode pump module cost >$0.05/W — driver capital becomes prohibitively expensive
-- Final optics neutron damage failure within <10^5 shots — if no replacement scheme maintains >65% availability, plant is economically non-viable
-- Rayleigh-Taylor instability growth factor >50 — implosion symmetry breaks down, compression fails
-- Proton beam divergence >20° half-angle — coupling efficiency collapses below ignition threshold
-- TBR <1.0 long-term — tritium self-sufficiency impossible, concept requires perpetual external supply
-- DT capsule fabrication failure at 900,000/day <$0.50/target — if cost >$1.00/target or production rate cannot scale, economics fail
+### 17-laser-icf-direct-drive-fast-ignition
+- TBR < 1.0: Tritium breeding ratio below 1.0 (accounting for extraction losses) prevents fuel self-sufficiency; plant shuts down after startup inventory depletion (5-10 years); global tritium supply insufficient for long-term D-T operation
+- Proton coupling efficiency η_coup < 7%: Fast ignition threshold failure — hot spot never reaches thermonuclear conditions, fusion yield is zero, plant produces no net electricity
+- Petawatt ignition laser failure at 10 Hz: If ignition laser cannot deliver 150 kJ at 10 Hz with ±10 ps timing, ignition fails and fusion yield is zero; compression laser alone produces Q < 1 (no ignition, no net electricity)
 
 ### 18-p-b11-frc
-- Q_plasma > 1 never demonstrated for p-B11 — required Q ≥ 25–30 at steam baseline, demonstrated <0.001, no theoretical or experimental basis for crossing this gap. Branch A (no LCOE) cannot be ruled out.
-- T_i >> T_e regime at 150+ keV unsustainable — non-equilibrium beam-driven plasma validated only at ~1 keV; if equilibration dominates at fusion temperatures, bremsstrahlung losses force net negative energy.
-- FRC stability at multi-MA plasma current and 1–2 m major radius unvalidated — C-2W demonstrates only at 0.4 m / 350 kA; ~10× current scale-up with no validated stability scaling.
-- NBI wall-plug-to-plasma efficiency below 0.20 at Da Vinci beam energies — would push Q_plasma viability threshold above achievable values and force Branch A.
-- Continuous (CW) FRC operation undemonstrated — current pulse record ~40 ms vs. continuous requirement; if duty-cycle-limited, capacity factor approaches zero.
+- Q_plasma < viability threshold—p-B11 FRC cannot achieve Q≥14 (steam) or Q≥5 (ICC) due to bremsstrahlung power balance failure or insufficient confinement quality at 150 keV ion temperature
+- FRC tilt instability at reactor scale—NBI-driven stabilization fails at 1–2 m major radius and multi-megaampere plasma current, causing FRC collapse and loss of plasma confinement
 
 ### 19-orbital-levitated-dipole
-- D-He3 triple product <10^20 keV·s·m^-3 prevents ignition (F1 physics)
-- HTS coil radiation damage or cryocooler failure causes irreversible plant loss (F1 hardware)
-- He3 self-breeding <100% requires external procurement at $30M/kg (F6 physics)
-- He3 extraction/purification system failure requires external procurement (F6 hardware)
+- F1.1: Confinement scaling weaker than R² → net fusion power unachievable at viable spacecraft mass
+- F1.2: HTS coil quench or radiation degradation in LEO → loss of confinement, no on-orbit repair
+- F6.1: He3 self-breeding at equimolar D:He3 is 13× insufficient per cross-section arithmetic; market purchase at $30M/kg drives LCOE to $8,863/MWh (59× terrestrial parity)
+- F6.2: He3 delivery failure (via self-breeding or launch resupply) → concept cannot operate, no substitute fuel exists
 
-### 20a-type-one-stellarator
-- Island divertor particle exhaust <0.5% (classical design + pessimistic transport + no baffling improvements) forces helium ash accumulation, limiting 2-year burn cycles to <1 year effective operation or requiring unplanned auxiliary pumping capital — only binary if no fallback to LIBD and transport assumptions pessimistic
-- Tritium extraction efficiency from HCPB <80% over 2-year continuous cycle with no external tritium purchase fallback — breeding shortfall forces early shutdown; only binary if TBR margin insufficient to cover extraction losses (current 30% margin likely adequate unless extraction <<80%)
+### 20-type-one-stellarator
+- F1 Physics: Plasma confinement time insufficient for Q > 5 (no net electricity if τ_E does not scale to ignited burn)
+- F5 Hardware: HTS coil radiation damage > 5% critical current degradation over 30-year lifetime (coil replacement impractical in stellarator non-axisymmetric geometry)
+- F6 Physics: Tritium breeding ratio < 1.0 after extraction losses (tritium inventory depletes, no external supply at 50 kg/year scale)
+- F6 Hardware: Tritium extraction efficiency < 85% from HCPB over 2-year continuous cycle (inventory depletion, cannot backfill mid-cycle)
 
-### 20b-renaissance-stellarator
-- Ignition (Q=∞) at compact stellarator geometry: ISS04 scaling predicts n·τ_E ~11× below Lawson threshold at published design point
-- Liquid Li-LiH wall stability at 25 MW/m² plasma-facing heat flux and 10 T magnetic field without MHD-driven confinement degradation
-- Alpha-particle-driven instabilities at ignition conditions in compact QI stellarator (no experimental precedent in any stellarator)
-- 3D stellarator magnetic field precision <1 mm RMS maintained under neutron irradiation and thermal cycling of laser-patterned HTS cylinders
-- Plasma exhaust solution at 25 MW/m² steady-state heat flux with Z_eff <2.0 (no divertor design published)
-- TBR = 1.60 validation at fusion-relevant 14 MeV neutron flux in 3D stellarator geometry with port penetrations
-- Tritium extraction from flowing Li-LiH circuit at kg/day rates with <1% inventory holdup and heat exchanger permeation <1 Ci/day
+### 21-renaissance-stellarator
+- TBR < 1.0 (F5 physics; mandatory binary per framework)
+- Tritium extraction failure from Li-LiH circuit (F6 physics; mandatory binary per framework)
+- Tritium permeation through sCO2 heat exchangers exceeds regulatory limits (F6 hardware; mandatory binary per framework)
+- Plasma confinement shortfall prevents ignition (Q=∞ target); if n·τ_E ~11× below Lawson threshold cannot be closed via higher T or confinement improvement, concept fails to achieve net electricity at competitive cost (F1 physics; binary due to ignition dependency)
 
-### 21-spherical-tokamak-hts
-- TBR < 1.0 with realistic port fractions in outboard-only blanket geometry
-- Tritium extraction failure from liquid Li at kg/day plant scale
+### 22-spherical-tokamak-hts
+- TBR <1.0 in operating blanket due to port fractions and assembly gaps reducing effective solid-angle coverage below breeding threshold
+- Tritium extraction failure from liquid Li blanket—bred tritium cannot be continuously removed at kg/day rates, causing blanket saturation and uncontrolled permeation
 
-### 22-projectile-icf
-- Target gain below 200× at 60 km/s projectile velocity prevents net electricity production at baseline rep rate (0.033 Hz)
-- EM launcher failure to reach 60 km/s causes gain to fall below commercial threshold, making net electricity impossible
-- Tritium breeding ratio below 1.0 prevents self-sufficiency and blocks fleet deployment (note: FLF's TBR 1.8 validation retires this risk, but listed per D-T framework rule)
+### 23-projectile-icf
+- Target gain <200× at 60 km/s prevents plant from achieving 333 MWe net output at stated rep rates (F1 Physics)
+- Electromagnetic launcher bore lifetime <10^5 shots requires barrel replacement every ~35 days; if replacement cost >$10M and downtime >1 week, plant availability drops below 50% (F2 Hardware)
+- Liquid lithium curtain blast disruption creating neutron streaming paths to vessel, causing dpa >0.5/FPY and forcing vessel replacement every 10–20 years instead of never (F4/F5 Hardware combined)
+- Tritium breeding ratio <1.0 requires continuous external tritium supply at ~$1–2B/year for 333 MWe plant, collapsing economics (F6 Physics)
 
-### 23-laser-icf-nanostructured-target
-- F1 Physics: p-B11 ignition failure — Q < 1 never demonstrated, four orders of magnitude gap from HB11 experimental results to commercial Q ≥ 5
-- F1 Hardware: Laser driver wall-plug efficiency failure — WPE remains <5% instead of reaching ≥10%, recirculating power exceeds net output
-- F2 Hardware: Laser diode pump cost failure — diode cost remains at $0.3–$1.3/W instead of reaching $0.01/W target, driver capital uncompetitive
+### 24-laser-icf-nanostructured-target
+- F1 Physics: p-B11 ignition failure — HB11 experimental data at Q ~ 0.00005 (0.005% efficiency), four orders of magnitude below Q ≥ 1 required for net energy. Non-thermal ignition mechanisms (block ignition, avalanche fast ignition) theoretically plausible but experimentally unvalidated.
+- F2 Physics: Laser wall-plug efficiency <5% — If WPE drops below ~5%, recirculating power fraction exceeds ~50% at Q_eng = 5, making plant a net energy consumer. 10% WPE target (HB11 stated; Marvel unpublished) is necessary for breakeven.
+- F7 Physics: Marvel hybrid DEC failure — If Marvel's claimed 70% hybrid efficiency (magnetic + electrostatic + steam) fails to achieve >20% and no steam-cycle fallback is implemented, net electrical output falls by ~60%, pushing Q_eng requirement from 5 to >10. HB11's explicit steam-cycle fallback (38%) mitigates this risk for the p-B11 IFE concept family.
 
-### 24-dense-plasma-focus
-- Q_sci < 1.41 (net electric breakeven) — if scientific gain remains below 1.41, gross electric output cannot sustain driver recharge and auxiliary loads, resulting in zero or negative net power
-- QMF bremsstrahlung suppression failure — if Quantum Magnetic Field effect does not suppress bremsstrahlung as theorized, p-B11 fusion power will be exceeded by radiation losses under classical plasma physics, making net energy impossible
-- Ion beam decelerator efficiency < 0.65 — if ion beam energy recovery falls below ~65%, combined direct energy conversion efficiency drops below breakeven threshold and net electric power becomes negative (no thermal cycle fallback exists)
-- Filament instability unresolved — if current-sheath filament disruption during rundown cannot be suppressed, fusion yield remains at ~0.25 J level (Q_sci ~10⁻⁶), preventing any approach to net energy
-- Repetition rate < 100 Hz — if electrode erosion or thermal limits prevent sustained operation above ~100 Hz, plant net power falls below ~500 MWe and LCOE exceeds 15 ¢/kWh, rendering the concept economically unviable
+### 25-dense-plasma-focus
+- QMF bremsstrahlung suppression factor < 1.5 (if QMF does not provide ≥1.5× suppression, classical bremsstrahlung losses make p-B11 net energy impossible in DPF geometry)
+- Combined direct energy conversion efficiency < 60% (if ion beam decelerator + X-ray photoelectric converter combined efficiency < 60%, net electric power is negative at achievable Q < 2.5, eliminating the concept)
+- F1-physics: nτ confinement product never reaches 2×10¹³ s/cm³ (22-year yield plateau at 0.25 J in FF-2B; current nτ is 8.3× below ignition threshold; the synthesis itself notes Q < 1.41 → zero net electricity, which is the binary criterion). Reclassified from Degrading to Binary.
+- F3-physics: Filament disruption in current sheath remains unmitigated (firm observational evidence in FF-2B that filaments are disrupted during pulse run-down, causing 'low densities and lower-than-predicted yields' for 22 years; no demonstrated mitigation pathway; same Q < 1.41 binary threshold applies).
+- F7-physics: Ion beam quality (divergence, energy spread, multi-species composition) incompatible with decelerator capture geometry. Beam characterization is incomplete and the only energy-conversion pathway has no thermal fallback; failure here eliminates LCOE entirely.
 
-### 25-heavy-ion-beam-icf
-- Target gain <50 → recirculating power exceeds generation, no net electricity
-- Final focus system failure → no target implosion, no fusion
-- Rayleigh-Taylor instability breakup → no hot-spot formation, no ignition
-- Beam asymmetry >5% RMS → seeds RT instability, no ignition
-- TBR <1.0 → fuel cycle cannot close, external tritium not viable at commercial scale
-- Tritium extraction failure from FLiBe/LiPb → fuel recycling fails, plant cannot sustain operation
+### 26-heavy-ion-beam-icf
+- F1 Physics: Target gain < 30 prevents net electricity (Q_eng < 3)
+- F2 Physics: Beam delivery failure (cannot achieve 5-8 MJ at <5 mm spot size) collapses target gain
+- F3 Physics: Compression asymmetry >5% prevents ignition
+- F4 Physics: FLiBe jet reformation failure or vapor pressure exceeds beam transport threshold stops shots
+- F6 Physics: TBR < 1.0 prevents tritium self-sufficiency; no external supply at scale
+- F1 Hardware: Target fabrication throughput failure (cannot sustain 6 Hz with quality control) stops plant operation
 
-### 26-laser-icf-indirect-drive
-- Capsule gain G < 100 → Q_eng falls below unity; plant produces no net electricity (F1 physics)
-- Laser wall-plug efficiency < 5% → recirculating power fraction exceeds 50%; net output collapses (F2 physics)
-- TBR < 1.0 (Inertia liquid Li, unanalyzed) → tritium self-sufficiency fails; external tritium purchase required indefinitely (F6 physics)
-- Tritium extraction efficiency < 90% → tritium inventory accumulates in blanket; target factory runs out of fuel within weeks (F6 hardware)
+### 27-laser-icf-hybrid-direct-drive
+- Two-beam HDD implosion achieving Qc > 200 at 8–12 MJ scale — if implosion symmetry fails or gain plateaus below Qsci ~150, wall-plug gain Q_wp < 10 and concept is non-viable
+- Two-beam illumination geometry delivering <5% drive asymmetry — if asymmetry exceeds tolerance, implosion fails
+- Rayleigh-Taylor instability growth limited to <5% for Qc > 200 in two-beam HDD geometry — if RT cannot be controlled, implosion fails
+- SBS/NLO pulse compression preserving wavefront quality at >100 kJ per pulse — if phase conjugation fails, beam delivery is compromised and implosion fails
+- Tritium breeding ratio TBR ≥ 1.05 (FLiNaK commercial blanket) — if TBR < 1.0, external tritium supply required (economically disqualifying)
+- Tritium extraction from FLiBe at kg/day scale — if extraction fails, tritium inventory exceeds regulatory limits and forces shutdown
 
-### 27-polywell
-- Electron confinement scaling fails at commercial density (γ >> 0.1): virtual cathode cannot form at 10²¹ m⁻³, Q < 1
-- E-beam driver cannot sustain virtual cathode: recirculating power exceeds gross electric, negative net output
-- Virtual cathode oscillations unstable: time-averaged Q < 1 due to intermittent confinement collapse
-- Tritium breeding ratio TBR < 1.0: polyhedral geometry with coil neutron shadowing cannot achieve self-sustaining fuel cycle
+### 28-polywell
+- F1 Physics: Virtual cathode formation and electron confinement (γ ≤ 0.18) required for net power — if virtual cathode does not form at reactor density ~10²¹ m⁻³ or if loss reduction factor γ > 0.18, net electric output is negative
+- F6 Physics: Tritium breeding ratio TBR ≥ 1.0 in polyhedral coil geometry — neutron shadowing by six coil faces may prevent TBR ≥ 1.0; no neutronics study exists; external tritium purchase is cost-prohibitive
 
-### 28-hts-tokamak-full-hts
-- TBR < 1.0 (tritium breeding ratio insufficient to sustain fuel cycle)
-- Tritium extraction failure from blanket at commercial scale
+### 29-hts-tokamak-full-hts
+- TBR < 1.0 for D-T fuel cycle (F6 Physics) — fuel self-sufficiency failure if tritium breeding ratio falls below 1.0; external tritium purchase not valid fallback per framework
+- Tritium extraction failure (F6 Hardware) — if extraction efficiency from blanket <90%, fuel cycle inventory balance fails; external tritium supply not valid fallback
+- Steady-state D-T burn at Q_eng ≥ 4.5 not achieved (F1 Physics) — if AI plasma control fails to suppress disruptions and achieve steady-state burn with engineering gain ≥4.5, recirculating power exceeds gross electric output
 
-### 29-negative-triangularity-tokamak
-- Tritium breeding ratio below self-sufficiency (TBR < 1.02 after accounting for decay and processing losses)
+### 30-negative-triangularity-tokamak
+- TBR < 1.0 in NT geometry with realistic blanket penetrations — tritium self-sufficiency failure
+- Tritium extraction from FLiBe at kg/day scale — failed chemistry or permeation control causing inventory loss
+- Ohmic-only scenario failure if H_NA < 1.5 at burning plasma — insufficient heating requiring auxiliary systems restoration
 
-### 30-laser-icf-nif-commercialization
-- F2-Hardware: Final optics failure with no replacement scheme → plant cannot operate (laser beams cannot reach target)
-- F3-Hardware: Target injection positioning failure (>±10 μm error) → laser beams miss target → no fusion → catastrophic optics damage + chamber contamination
-- F4-Hardware: First wall structural failure (pulsed fatigue or neutron embrittlement) → vacuum/coolant breach → plant shutdown; or beam port contamination → shot failure
-- F6-Physics: TBR < 1.0 → insufficient tritium breeding → external purchase required → economically infeasible
-- F6-Hardware: Tritium extraction failure (<90% recovery) → TBR_effective < 1.0 → external tritium purchase → economically infeasible
+### 31-laser-icf-indirect-drive
+- Target gain Q_sci < 30×: no net electricity; plant operates at severe loss
+- Laser driver system failure: no fusion pulse, zero generation output
+- Rayleigh-Taylor instability runaway: capsule implosion fails, no ignition
+- Tritium breeding ratio TBR < 1.0: cannot sustain fuel inventory, external tritium purchase required (limited global supply, plant shutdown when CANDU depletes)
 
-### 31-laser-icf-oec-architecture
-- Target gain G < 100 due to LPI (Function 1 physics)
-- OEC mirror radiation degradation forcing annual replacement (Function 2 hardware)
-- LPI backscatter >15% collapsing gain to G < 100 (Function 3 physics)
-- Chamber clearing limiting repetition rate to ≤5 Hz (Function 4 hardware)
-- Tritium breeding ratio TBR < 1.0 requiring external tritium purchase (Function 6 physics)
+### 32-laser-icf-oec-architecture
+- Plasma performance: Target gain G<60 at 10 Hz → recirculating power fraction exceeds unity → no net electricity
+- Driver (OEC enhancement): Cavity enhancement factor <10^4 → insufficient laser energy delivery (<0.5 MJ/shot UV) → no ignition possible
+- Driver (mirror degradation): OEC mirror reflectivity degradation >0.01% per 10^6 shots → enhancement factor collapse → driver energy <0.5 MJ/shot → no ignition
+- Instability control: Laser-plasma instability backscatter >20% → absorbed energy below ignition threshold → gain <50 → no net electricity at 10 Hz operation
+- Fuel cycle (TBR): Tritium breeding ratio <1.0 → cannot sustain D-T fuel cycle without external tritium purchase (mandatory binary per framework)
+- Fuel cycle (extraction failure): Tritium extraction system complete failure (0% efficiency) → fuel starvation → forced shutdown
 
-### 32-laser-icf-french-national
-- Target gain G <60 results in recirculating power >70% making net output unviable
-- Tritium breeding ratio TBR <1.0 prevents fuel cycle closure with >1 kg/day consumption vs <2 kg/year global supply making plant inoperable
-- First wall lifetime <6 months causes availability <60% driving LCOE >140 $/MWh making concept uneconomic
-- Tritium extraction efficiency <90% requires TBR >1.1 to compensate making fuel cycle closure harder to achieve
-
-### 33-state-backed-tokamak-best
-- TBR < 1.0 for commercial PFPP — if BEST TBM program fails to demonstrate TBR > 1.1, PFPP cannot close tritium fuel cycle and requires perpetual external tritium supply unavailable at commercial scale
-- W impurity radiation collapse in burning plasma — if core W concentration exceeds ~10⁻⁵, radiative cooling terminates fusion; undemonstrated at Q > 1
-- RWM instability at βN > 2.5 — if resistive wall mode feedback fails at commercial βN (CFETR Phase II requires βN = 3.54 for Q = 23.5), plasma terminates and net electricity is impossible
-
-### 34-compact-spherical-tokamak-india
-- TBR < 1.0 for D-T fuel cycle (Function 6, Physics)
-- Tritium extraction failure preventing fuel cycle closure (Function 6, Hardware)
-- Uncontrolled plasma disruptions causing vacuum vessel breach or first-wall failure requiring extended shutdown (Function 3, Hardware)
+### 34-state-backed-tokamak-best
+- Disruption frequency >36/yr causes cumulative first-wall damage requiring replacement every 1–2 years, rendering plant economically non-viable
+- RWM stabilization failure at βN>3.5 prevents access to CFETR Phase II performance, limiting Q to ~3 (insufficient for commercial viability)
+- TBR<1.0 forces external tritium purchase at $13M/yr, unsustainable at commercial scale
 
 ### 35-polomac-magnetic-confinement
-- F1 Physics: D-D plasma Q < 5 → net power negative, no commercial viability
-- F1 Hardware: In-vessel SC coil neutron damage or frequent quench → CF ≤ 0.40, economically nonviable
-- F3 Physics: High-beta plasma instability + frequent disruptions → CF < 0.30, plant nonviable
-- F3 Hardware: Disruptions damage/destroy in-vessel SC coil → multiple per year → CF < 0.40, economically nonviable
-- F5 Hardware: In-vessel coil inadequate neutron shielding → coil lifetime < 3 FPY → unsustainable replacement frequency, economically nonviable
+- F1 Plasma Performance (physics): D-D confinement at Q ≥ 10 unvalidated—if Q < 7, net power is minimal or negative, rendering the concept economically nonviable. Historical dipole experiments achieved few-eV plasma at 10¹⁶ m⁻³ (seven orders of magnitude below fusion-relevant 100–200 keV, 10²¹ m⁻³). Company claims 20–40 s confinement with no experimental basis, no physics model, and no independent validation (Tier 1).
+- F3 Instability Control (physics): High-beta dipole confinement at β = 70–80% (JTSP 2024 claim, vs. 20–30% Elio 2014—3× discrepancy unexplained) must be MHD-stable at fusion conditions. If ballooning or interchange instabilities are triggered at β > 30–40%, plasma is lost and cannot be confined. No MHD stability analysis exists; magnetic tunnel structural supports are validated only by FEA (Tier 2, simulation); no experimental demonstration at any scale.
+- F6 Fuel Cycle Closure (physics-contingent): D-D fuel eliminates tritium breeding but requires D-D confinement at Q ≥ 10 for economic viability. If D-D confinement physics limits Q ≤ 7 (plausible given lower fusion cross-section and higher bremsstrahlung radiation at 100–200 keV), the fuel cycle advantage (no blanket) is negated by inability to achieve net power. D₂ fuel handling is mature (Tier 5), but D-D ignition scaling is unvalidated (Tier 1)—fuel cycle closure is contingent on F1 plasma performance.
 
 ### 36-helical-coil-stellarator
-- TBR < 1.0: No tritium self-sufficiency (3D neutron transport calculation incomplete as of 2023; 80 at.% Li-6 required; if TBR fails, external tritium supply unavailable at reactor scale)
-- 250 GHz CW gyrotrons at 1 MW do not exist (TRL 1-2; no fallback heating system; 170 GHz would require different plasma operating point, unvalidated)
-- Liquid metal blanket circulation failure (GALOP pump power unknown; if MHD pressure drop exceeds pump capacity or corrosion breaches module, blanket overheats and tritium extraction fails)
-- sCO₂ thermal efficiency <32% at Q=13 (break-even threshold; only 20 kWe demo at 20% exists; if sCO₂ fails to achieve >40%, fallback to Rankine at 40% reduces P_net by 55% and inflates LCOE 2.2×)
-- Confinement failure if H-factor <1.0 or stellarator MHD instability at reactor density (if Q drops below ~5, net electricity impossible; LHD heritage provides strong floor but heliotron at HESTIA scale undemonstrated)
+- TBR < 1.0 at 80 at.% Li-6 enrichment (if 3D neutron transport calculation yields TBR below unity, tritium self-sufficiency is impossible and design cannot proceed)
+- Tritium breeding failure in Sn-In-Pb-Li blanket system (heliotron coil geometry intrusion into blanket space reduces coverage; if TBR cannot reach ≥1.05 even with 80 at.% Li-6—highest enrichment feasible due to global supply constraints—concept is not viable for D-T operation)
 

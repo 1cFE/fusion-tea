@@ -15,7 +15,7 @@ PoloMac Magnetic Confinement (Deutelio) — Free-Form LCOE Model
   SC coil capital:            $500M  [override, HIGH UNCERTAINTY]
   SC coil lifetime:           8 FPY  [HIGH UNCERTAINTY]
   SC cryo load:               15 MW  (vs 700 MW copper reference)
-  Thermal efficiency:         38.0%  [MODERATE UNCERTAINTY]
+  Thermal efficiency:         35.0%  [MODERATE UNCERTAINTY]
   Plant capacity factor:      70.0%  [HIGH UNCERTAINTY]
   Modules:                    1
   NOAK:                       Yes
@@ -36,16 +36,16 @@ PoloMac Magnetic Confinement (Deutelio) — Free-Form LCOE Model
     Neutron power:            168 MW (33.6%)
     Charged particle power:   332 MW (66.4%)
   Thermal power:              555 MW
-  Gross electric:             211 MWe
+  Gross electric:             194 MWe
   Recirculating power:
     Heating wall-plug:        83 MW  (=50 MW plasma / 60% heater eff)
     SC coil cryo:             15 MW  [vs 700 MW copper]
     Housekeeping:             8 MW
     Heat overhead:            20 MW
     TOTAL recirculating:      126 MW
-  Net electric:               85 MWe
+  Net electric:               68 MWe
   Engineering Q:              3.96
-  Recirculating fraction:     59.9%
+  Recirculating fraction:     65.0%
 
 --- CAS22: Reactor Plant Equipment ---
   Per-module accounts:
@@ -53,49 +53,49 @@ PoloMac Magnetic Confinement (Deutelio) — Free-Form LCOE Model
     C220102  Shield (D-D, 0.7× D-T scale)           $   804.2M
     C220103  In-vessel SC Dipole Coil               $   500.0M [override]
     C220104  Heating System (NBI/RF analogue)       $   150.0M [override]
-    C220105  Primary Structure                      $    97.6M
-    C220106  Vacuum System (vessel)                 $   156.0M
-    C220107  Power Supplies                         $    26.9M
-    C220110  Remote Handling (1.5× enhanced)        $    50.5M [override]
-    C220111  Installation Labor                     $   284.5M
+    C220105  Primary Structure                      $    93.6M
+    C220106  Vacuum System (vessel)                 $   148.5M
+    C220107  Power Supplies                         $    25.4M
+    C220110  Remote Handling (1.5× enhanced)        $    47.6M [override]
+    C220111  Installation Labor                     $   282.3M
     ──────────────────────────────────────────────────────────
-    Per-module subtotal:                              $  2316.9M × 1
+    Per-module subtotal:                              $  2298.9M × 1
   Plant-wide accounts:
-    C220200  Coolant Systems                        $    28.8M
+    C220200  Coolant Systems                        $    26.0M
     C220300  Aux Cooling + Cryoplant (SC coil)      $   123.7M
     C220400  Radioactive Waste Management           $     0.5M
-    C220500  Fuel Handling (D-D, no T breeding)     $    10.6M
-    C220600  Other Equipment                        $     1.6M
+    C220500  Fuel Handling (D-D, no T breeding)     $     9.1M
+    C220600  Other Equipment                        $     1.3M
     C220700  Instrumentation & Control              $    25.7M
     ──────────────────────────────────────────────────────────
-    Plant-wide subtotal:                              $   191.0M
-  CAS22 Total:                                        $  2507.8M
+    Plant-wide subtotal:                              $   186.4M
+  CAS22 Total:                                        $  2485.3M
 
 --- Capital Costs (CAS10-60) ---
   CAS10  Pre-construction                       $    14.2M
-  CAS21  Buildings                              $   131.8M
-  CAS22  Reactor Plant Equipment                $  2507.8M
-  CAS23  Turbine Plant                          $    41.7M
-  CAS24  Electric Plant                         $    17.8M
-  CAS25  Misc Plant                             $    10.8M
-  CAS26  Heat Rejection                         $     7.2M
-  CAS27  Special Materials                      $     0.2M
+  CAS21  Buildings                              $   121.4M
+  CAS22  Reactor Plant Equipment                $  2485.3M
+  CAS23  Turbine Plant                          $    38.4M
+  CAS24  Electric Plant                         $    16.4M
+  CAS25  Misc Plant                             $    10.0M
+  CAS26  Heat Rejection                         $     6.6M
+  CAS27  Special Materials                      $     0.1M
   CAS28  Digital Twin                           $     5.0M
   CAS29  Contingency                            $     0.0M
   ──────────────────────────────────────────────────────────
-  CAS20  Direct Costs                           $  2722.3M
-  CAS30  Indirect Costs                         $   635.2M
-  CAS40  Owner Costs                            $     9.0M
-  CAS50  Supplementary Costs                    $   183.6M
+  CAS20  Direct Costs                           $  2683.2M
+  CAS30  Indirect Costs                         $   626.1M
+  CAS40  Owner Costs                            $     8.1M
+  CAS50  Supplementary Costs                    $   181.1M
   ──────────────────────────────────────────────────────────
-  Overnight Capital                          $  3564.3M
-  CAS60  IDC (f=0.275)                          $   979.1M
+  Overnight Capital                          $  3512.6M
+  CAS60  IDC (f=0.275)                          $   964.9M
   ══════════════════════════════════════════════════════════
-  Total Capital                              $  4543.3M
-  Specific Capital                           $   53715 $/kWe
+  Total Capital                              $  4477.5M
+  Specific Capital                           $   65913 $/kWe
 
 --- Annual Costs (CAS70-90) ---
-  CAS90  Capital charge (CRF=0.0839):        $   381.0M/yr
+  CAS90  Capital charge (CRF=0.0839):        $   375.5M/yr
   CAS71  O&M (levelized):                     $    72.1M/yr
   CAS72a FW/blanket replacement (2 times):    $     9.2M/yr
   CAS72b SC coil replacement    (3 times):    $    27.6M/yr  [HIGH UNCERTAINTY]
@@ -104,57 +104,57 @@ PoloMac Magnetic Confinement (Deutelio) — Free-Form LCOE Model
   CAS80  Fuel (D-D deuterium):                $  0.5355M/yr  (126.26 kg D burned/yr, D-D cost ≈ negligible)
 
 --- LCOE ---
-  Annual net energy:          518,656 MWh
-  Annual revenue requirement: $490.5M
+  Annual net energy:          416,551 MWh
+  Annual revenue requirement: $485.0M
   ╔══════════════════════════════════════════╗
-  ║  LCOE =   94.57 ¢/kWh                   ║
-  ║       =   945.7 $/MWh                   ║
+  ║  LCOE =  116.42 ¢/kWh                   ║
+  ║       =  1164.2 $/MWh                   ║
   ╚══════════════════════════════════════════╝
-  Capital fraction (CAS90):   77.7%
-  O&M fraction (CAS70):       22.2%
+  Capital fraction (CAS90):   77.4%
+  O&M fraction (CAS70):       22.5%
   Fuel fraction (CAS80):      0.1%
 
 ========================================================================
 SENSITIVITY ANALYSIS — Single-Parameter Sweeps from Baseline
-Baseline LCOE: 94.57 ¢/kWh
+Baseline LCOE: 116.42 ¢/kWh
 ========================================================================
 
   SC coil capital cost [M$]:
-         200  →    82.20 ¢/kWh  (85 MWe)
-         300  →    86.32 ¢/kWh  (85 MWe)
-         400  →    90.44 ¢/kWh  (85 MWe)
-         500  →    94.57 ¢/kWh  (85 MWe)
-         700  →   102.81 ¢/kWh  (85 MWe)
-       1e+03  →   115.18 ¢/kWh  (85 MWe)
+         200  →   101.02 ¢/kWh  (68 MWe)
+         300  →   106.15 ¢/kWh  (68 MWe)
+         400  →   111.29 ¢/kWh  (68 MWe)
+         500  →   116.42 ¢/kWh  (68 MWe)
+         700  →   126.69 ¢/kWh  (68 MWe)
+       1e+03  →   142.09 ¢/kWh  (68 MWe)
 
   Scientific Q (plasma gain):
-           3  →  NET POWER NEGATIVE (-66 MWe)
-           5  →   404.60 ¢/kWh  (20 MWe)
-           7  →   141.80 ¢/kWh  (57 MWe)
-          10  →    94.57 ¢/kWh  (85 MWe)
-          15  →    74.80 ¢/kWh  (106 MWe)
-          20  →    67.63 ¢/kWh  (117 MWe)
+           3  →  NET POWER NEGATIVE (-86 MWe)
+           5  →  3856.67 ¢/kWh  (2 MWe)
+           7  →   201.18 ¢/kWh  (40 MWe)
+          10  →   116.42 ¢/kWh  (68 MWe)
+          15  →    87.27 ¢/kWh  (90 MWe)
+          20  →    77.44 ¢/kWh  (101 MWe)
 
   Fusion power [MW]:
-         200  →   751.33 ¢/kWh  (8 MWe)
-         300  →   201.53 ¢/kWh  (34 MWe)
-         500  →    94.57 ¢/kWh  (85 MWe)
-         750  →    62.90 ¢/kWh  (148 MWe)
-       1e+03  →    49.64 ¢/kWh  (212 MWe)
+         200  →  4363.34 ¢/kWh  (1 MWe)
+         300  →   284.41 ¢/kWh  (24 MWe)
+         500  →   116.42 ¢/kWh  (68 MWe)
+         750  →    74.62 ¢/kWh  (123 MWe)
+       1e+03  →    58.00 ¢/kWh  (179 MWe)
 
   Plant capacity factor:
-         0.4  →   157.05 ¢/kWh  (85 MWe)
-        0.55  →   117.31 ¢/kWh  (85 MWe)
-         0.7  →    94.57 ¢/kWh  (85 MWe)
-         0.8  →    84.09 ¢/kWh  (85 MWe)
-         0.9  →    76.16 ¢/kWh  (85 MWe)
+         0.4  →   193.22 ¢/kWh  (68 MWe)
+        0.55  →   144.38 ¢/kWh  (68 MWe)
+         0.7  →   116.42 ¢/kWh  (68 MWe)
+         0.8  →   103.54 ¢/kWh  (68 MWe)
+         0.9  →    93.80 ¢/kWh  (68 MWe)
 
   SC coil lifetime [FPY]:
-           3  →   108.87 ¢/kWh  (85 MWe)
-           5  →    99.57 ¢/kWh  (85 MWe)
-           8  →    94.57 ¢/kWh  (85 MWe)
-          12  →    91.98 ¢/kWh  (85 MWe)
-          20  →    90.14 ¢/kWh  (85 MWe)
+           3  →   134.23 ¢/kWh  (68 MWe)
+           5  →   122.65 ¢/kWh  (68 MWe)
+           8  →   116.42 ¢/kWh  (68 MWe)
+          12  →   113.20 ¢/kWh  (68 MWe)
+          20  →   110.91 ¢/kWh  (68 MWe)
 
   Thermal efficiency:
          0.3  →   192.99 ¢/kWh  (40 MWe)
@@ -164,12 +164,12 @@ Baseline LCOE: 94.57 ¢/kWh
         0.46  →    63.82 ¢/kWh  (129 MWe)
 
   SC cryogenic load [MW]:
-           5  →    83.06 ¢/kWh  (95 MWe)
-          10  →    88.56 ¢/kWh  (90 MWe)
-          15  →    94.57 ¢/kWh  (85 MWe)
-          25  →   108.76 ¢/kWh  (75 MWe)
-          50  →   168.25 ¢/kWh  (50 MWe)
-         100  →  NET POWER NEGATIVE (-0 MWe)
+           5  →    99.65 ¢/kWh  (78 MWe)
+          10  →   107.54 ¢/kWh  (73 MWe)
+          15  →   116.42 ¢/kWh  (68 MWe)
+          25  →   138.46 ¢/kWh  (58 MWe)
+          50  →   250.54 ¢/kWh  (33 MWe)
+         100  →  NET POWER NEGATIVE (-17 MWe)
 
 ========================================================================
 SCENARIO COMPARISON: Conservative | Moderate | Optimistic
@@ -177,8 +177,8 @@ SCENARIO COMPARISON: Conservative | Moderate | Optimistic
   Scenario           P_fus  Q_sci   P_net     CapEx       LCOE
   ────────────────────────────────────────────────────────────
   Conservative        300MW     5     -26MW       N/A   NEGATIVE
-  Moderate            500MW    10      85MW $53715/kWe 945.7 $/MWh
-  Optimistic          800MW    15     237MW $19275/kWe 230.1 $/MWh
+  Moderate            500MW    10      68MW $65913/kWe 1164.2 $/MWh
+  Optimistic          800MW    15     177MW $24773/kWe 299.1 $/MWh
 
 ========================================================================
 D-T SCENARIO COMPARISON — Conservative | Moderate | Optimistic
@@ -191,12 +191,12 @@ Tests whether blanket cost penalty exceeds the Q threshold benefit
   Scenario               Fuel    P_fus    Q   P_net  Blanket$      CapEx       LCOE
   ───────────────────────────────────────────────────────────────────────────────
   Conservative           D-D      300MW   5     -26MW      none        N/A   NEGATIVE
-  Moderate               D-D      500MW  10      85MW      none $53715/kWe 945.7 $/MWh
-  Optimistic             D-D      800MW  15     237MW      none $19275/kWe 230.1 $/MWh
+  Moderate               D-D      500MW  10      68MW      none $65913/kWe 1164.2 $/MWh
+  Optimistic             D-D      800MW  15     177MW      none $24773/kWe 299.1 $/MWh
   ───────────────────────────────────────────────────────────────────────────────
   Conservative           D-T      300MW   7      -2MW     $400M        N/A   NEGATIVE
-  Moderate               D-T      500MW  10      87MW     $300M $64285/kWe 1122.1 $/MWh
-  Optimistic             D-T      800MW  15     242MW     $200M $22685/kWe 276.7 $/MWh
+  Moderate               D-T      500MW  10      70MW     $300M $78743/kWe 1378.1 $/MWh
+  Optimistic             D-T      800MW  15     181MW     $200M $29290/kWe 360.7 $/MWh
 
 ========================================================================
 KEY BINDING CONSTRAINTS — Ranked by Model Sensitivity

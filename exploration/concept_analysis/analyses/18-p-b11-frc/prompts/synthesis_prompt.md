@@ -1,6 +1,6 @@
-# Synthesis: p-B11 FRC
+# Synthesis: p-B11 FRC (p-B11)
 
-You are producing an editorial synthesis for the fusion concept **p-B11 FRC**
+You are producing an editorial synthesis for the fusion concept **p-B11 FRC (p-B11)**
 (TAE Technologies). Your role is to INTERPRET, JUDGE, and PRIORITIZE — not to document.
 
 The underlying analysis has been reviewed and verified. You may trust its factual
@@ -20,7 +20,7 @@ Model output (user-generated): `C:\Users\mallo\1cfe\fusion-tea\exploration\conce
 
 
 ### 3. Approved Prior Syntheses
-- `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\21-spherical-tokamak-hts\synthesis.md`
+- `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\22-spherical-tokamak-hts\synthesis.md`
 
 ## Writing Instructions
 
@@ -395,6 +395,62 @@ in the cell itself (with explicit evidence), not by weighting the mean.
 3. C7 = mean of F1-F7 (after heritage), rounded to nearest 0.5
 4. Function-level cap: if any function mean <= 1.5 (after heritage), C7 is capped
    at that function's actual value
+
+---
+
+## Standard LCOE Modeling Parameters
+
+These canonical values **must** be used in `model_setup.py` for every concept,
+unless concept-specific evidence justifies a deviation. **Document any deviation
+explicitly** in the model file and in synthesis Section 2 (Modeling Approach),
+including the source of the alternative value.
+
+### Thermal-to-electric conversion efficiency (η_th)
+
+Look up the canonical η_th for the concept's energy-capture category:
+
+| Energy Capture (per `table.csv`) | Canonical η_th | Reasoning |
+|----------------------------------|----------------|-----------|
+| Thermal (steam) — saturated cycle | 0.32 | Coal-plant baseline; modest temperature |
+| Thermal (steam) — superheated, ≤500°C | 0.35 | Standard fusion baseline (most concepts) |
+| Thermal (steam) — supercritical, ~600°C | 0.42 | ARC-class advanced steam |
+| Thermal (sCO₂ Brayton) | 0.48 | High-T closed-loop, demonstrated 10 MWe pilots |
+| Thermal (helium Brayton) | 0.45 | GT-MHR-class design point |
+| Thermal (combined cycle, Brayton-Rankine) | 0.50 | Best thermal achievable |
+| Thermal (unspecified) | 0.35 | Default to superheated steam unless concept specifies |
+| Hybrid (thermal + direct) | 0.55 | Partial DEC; partial thermal |
+| Direct (inductive / EM compression) | 0.85 | Helion-style compressed-FRC EM recovery |
+| Direct (charged particle, ICC, alpha collection) | 0.70 | TAE ICC, mirror DEC; patent-stage but consistent target |
+| Pulsed power implosion | 0.30 | Inertial pulse loss; conservative |
+| Projectile impact | 0.30 | Same |
+| TBD / Unknown | 0.35 | Default to superheated steam |
+
+**Justified deviations**: A concept may use a non-canonical η_th if (a) the
+underlying physics forces derating (e.g. a p-B11 plasma whose bremsstrahlung
+heat is partially absorbed by walls and contributes thermally — 06-magnetic-mirror's
+η_th=0.20 reflects this), or (b) the concept's published design specifies a
+specific cycle parameter from peer-reviewed sources. In both cases, the model
+file must include a comment identifying the deviation, the source, and the
+deviation magnitude vs. the canonical value.
+
+### Why standardize
+
+Cross-concept LCOE comparisons are only meaningful when all concepts in the
+same conversion category use the same η_th. A 0.32 vs. 0.46 spread within
+"steam Rankine" produces a 30–40% LCOE difference for identical fusion power —
+swamping legitimate architectural advantages between concepts. Use the canonical
+value to isolate the architectural signal.
+
+### Helper
+
+The Python helper `lib.scoring.canonical_eta_th(energy_capture)` returns the
+canonical value for a given energy-capture string (matching the `table.csv`
+column). Import it in `model_setup.py`:
+
+```python
+from lib.scoring import canonical_eta_th
+ETA_TH = canonical_eta_th("Thermal (steam)")  # → 0.35
+```
 
 ---
 

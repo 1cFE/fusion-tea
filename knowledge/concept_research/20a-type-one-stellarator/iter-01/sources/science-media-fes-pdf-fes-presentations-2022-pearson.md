@@ -1,1 +1,0 @@
-science-media-fes-pdf-fes-presentations-2022-pearson/output.md

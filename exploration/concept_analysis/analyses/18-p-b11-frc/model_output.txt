@@ -56,10 +56,10 @@ BRANCH B — Da Vinci Baseline (steam Rankine, ~32% η)
 ======================================================================
 
 --- Key Input Parameters ---
-  Q_plasma:                   30.0  (breakeven: 14.1, commercial min: 21.2)
+  Q_plasma:                   30.0  (breakeven: 12.9, commercial min: 19.4)
   P_NBI plasma:               26.0 MW
   NBI wall-plug efficiency:   26%
-  Energy conversion:          Steam 32%
+  Energy conversion:          Steam 35%
   Radiation loss fraction:    15%
   Capacity factor:            85%
   Plant lifetime:             40 yr
@@ -72,15 +72,15 @@ BRANCH B — Da Vinci Baseline (steam Rankine, ~32% η)
     All in charged alphas:    780.0 MW  (aneutronic)
     Radiation losses (15%):  117.0 MW
   P_available (post-rad):     663.0 MW
-  Gross electric:             212.2 MWe  (η_conv = 32%)
+  Gross electric:             232.0 MWe  (η_conv = 35%)
   Recirculating loads:
     NBI wall-plug:            100.0 MW
     Auxiliaries:              7.5 MW  (magnets + housekeeping + fuel inject)
-  Net electric (per module):  104.7 MWe
-  Net electric (plant):       104.7 MWe  (1 module(s))
+  Net electric (per module):  124.5 MWe
+  Net electric (plant):       124.5 MWe  (1 module(s))
   Q_sci (plasma):             30.0
-  Q_eng (net/NBI_wall):       1.05
-  Recirculating fraction:     50.7%
+  Q_eng (net/NBI_wall):       1.25
+  Recirculating fraction:     46.3%
 
 --- CAS22: Reactor Plant Equipment ---
   Per-module accounts:
@@ -88,67 +88,67 @@ BRANCH B — Da Vinci Baseline (steam Rankine, ~32% η)
     C220102 Shield (thin, aneutronic)        $     0.9M
     C220103 Copper coils (override)          $    20.0M [override]
     C220104 NBI system (override)            $   260.0M [override — dominant]
-    C220105 Primary structure                $     1.4M
-    C220106 Vacuum system                    $     2.0M
-    C220107 Power supplies                   $    27.0M
-    C220110 Remote handling (minimal)        $     2.6M
-    C220111 Installation labor               $    44.1M
+    C220105 Primary structure                $     1.5M
+    C220106 Vacuum system                    $     2.1M
+    C220107 Power supplies                   $    28.8M
+    C220110 Remote handling (minimal)        $     2.9M
+    C220111 Installation labor               $    44.4M
     ────────────────────────────────────────────────────
-    Per-module subtotal:                  $   358.7M × 1
+    Per-module subtotal:                  $   361.3M × 1
   Plant-wide accounts:
-    C220200 Coolant systems                  $    33.6M
+    C220200 Coolant systems                  $    36.9M
     C220300 Aux cooling (no cryoplant)       $     0.7M
     C220400 Rad waste management (minimal)   $     0.1M
-    C220500 Fuel handling (boron, not T)     $     3.1M
-    C220600 Other equipment                  $     1.9M
+    C220500 Fuel handling (boron, not T)     $     3.5M
+    C220600 Other equipment                  $     2.2M
     C220700 Instrumentation & control        $    28.8M
     ────────────────────────────────────────────────────
-    Plant-wide subtotal:                  $    68.3M
-  CAS22 Total:                            $   427.0M
+    Plant-wide subtotal:                  $    72.3M
+  CAS22 Total:                            $   433.5M
 
 --- Capital Costs (CAS10-60) ---
   CAS10 Pre-construction                     $    27.4M
-  CAS21 Buildings                            $    32.2M
-  CAS22 Reactor Plant Equipment              $   427.0M
-  CAS23 Turbine/ICC Plant                    $    41.9M
-  CAS24 Electric Plant                       $    17.9M
-  CAS25 Misc Plant                           $    10.9M
-  CAS26 Heat Rejection                       $     7.2M
+  CAS21 Buildings                            $    38.4M
+  CAS22 Reactor Plant Equipment              $   433.5M
+  CAS23 Turbine/ICC Plant                    $    45.9M
+  CAS24 Electric Plant                       $    19.5M
+  CAS25 Misc Plant                           $    11.9M
+  CAS26 Heat Rejection                       $     7.9M
   CAS28 Digital Twin                         $     5.0M
-  CAS29 Contingency (FOAK 10%)               $    54.2M
+  CAS29 Contingency (FOAK 10%)               $    56.2M
   ──────────────────────────────────────────────────────────
-  CAS20 Direct Costs:                     $   596.4M
-  CAS30 Indirect Costs:                   $   119.3M
-  CAS40 Owner's Costs:                    $     6.5M
-  CAS50 Supplementary:                    $    47.9M
+  CAS20 Direct Costs:                     $   618.3M
+  CAS30 Indirect Costs:                   $   123.7M
+  CAS40 Owner's Costs:                    $     7.1M
+  CAS50 Supplementary:                    $    50.5M
   ──────────────────────────────────────────────────────────
-  Overnight Capital:                      $   797.4M
-  CAS60 IDC (f=0.223):               $   177.5M
+  Overnight Capital:                      $   827.0M
+  CAS60 IDC (f=0.223):               $   184.1M
   ══════════════════════════════════════════════════════════
-  Total Capital:                          $   975.0M
-  Specific Capital:                       $    9316 $/kWe
+  Total Capital:                          $  1011.1M
+  Specific Capital:                       $    8118 $/kWe
 
 --- Annual Costs (CAS70-90) ---
-  CAS90 Capital charge (CRF=0.0839):   $    81.8M/yr
-  CAS71 O&M (levelized):                  $    11.0M/yr
+  CAS90 Capital charge (CRF=0.0839):   $    84.8M/yr
+  CAS71 O&M (levelized):                  $    12.0M/yr
   CAS72 First-wall replacement:           $    0.00M/yr  (0 replacements)
-  CAS70 Total O&M:                        $    11.0M/yr
+  CAS70 Total O&M:                        $    12.0M/yr
   CAS80 Fuel (B-11):                      $    0.02M/yr  (274 kg B-11/yr)
 
 --- LCOE ---
-  Annual energy:              779,298 MWh
-  Annual revenue requirement: $92.8M
+  Annual energy:              927,399 MWh
+  Annual revenue requirement: $96.8M
   ╔══════════════════════════════════════╗
-  ║  LCOE =   11.9 ¢/kWh              ║
-  ║       =  119.0 $/MWh               ║
+  ║  LCOE =   10.4 ¢/kWh              ║
+  ║       =  104.4 $/MWh               ║
   ╚══════════════════════════════════════╝
-  Capital (CAS90):            88.1%
-  O&M (CAS70):               11.8%
-  Fuel (CAS80):               0.03%
+  Capital (CAS90):            87.6%
+  O&M (CAS70):               12.4%
+  Fuel (CAS80):               0.02%
 
   Economy-of-scale projection to 1000 MWe (α=0.6):
-    Scaled LCOE:              48.3 $/MWh
-    Scaled overnight $/kWe:   $3089 /kWe
+    Scaled LCOE:              45.4 $/MWh
+    Scaled overnight $/kWe:   $2886 /kWe
 
 ######################################################################
 # BRANCH C: Q=30, η_NBI=0.26, CF=85%, ICC 90%
@@ -261,16 +261,16 @@ SENSITIVITY SWEEPS (from Branch B baseline)
 --- 1. Q_plasma sweep (most critical parameter) ---
   Q_break ≈ 14.1 (steam, η_NBI=0.26 corrected); commercial min ≈ 25–35
     Q_plasma  Result
-         3.0    N/A (Branch A, P_net=-86.3 MWe)
-         5.0    N/A (Branch A, P_net=-72.1 MWe)
-        10.0    N/A (Branch A, P_net=-36.8 MWe)
-        14.0    N/A (Branch A, P_net=-8.5 MWe) *** BREAKEVEN
-        15.0    N/A (Branch A, P_net=-1.4 MWe)
-        20.0     29.8 ¢/kWh  (298 $/MWh)  P_net=33.9 MWe
-        25.0     16.4 ¢/kWh  (164 $/MWh)  P_net=69.3 MWe *** COMMERCIAL MIN
-        30.0     11.9 ¢/kWh  (119 $/MWh)  P_net=104.7 MWe
-        40.0      8.3 ¢/kWh  (83 $/MWh)  P_net=175.4 MWe
-        50.0      6.7 ¢/kWh  (67 $/MWh)  P_net=246.1 MWe
+         3.0    N/A (Branch A, P_net=-84.3 MWe)
+         5.0    N/A (Branch A, P_net=-68.8 MWe)
+        10.0    N/A (Branch A, P_net=-30.2 MWe)
+        14.0    845.2 ¢/kWh  (8452 $/MWh)  P_net=0.8 MWe *** BREAKEVEN
+        15.0    105.3 ¢/kWh  (1053 $/MWh)  P_net=8.5 MWe
+        20.0     22.4 ¢/kWh  (224 $/MWh)  P_net=47.2 MWe
+        25.0     13.8 ¢/kWh  (138 $/MWh)  P_net=85.9 MWe *** COMMERCIAL MIN
+        30.0     10.4 ¢/kWh  (104 $/MWh)  P_net=124.5 MWe
+        40.0      7.5 ¢/kWh  (75 $/MWh)  P_net=201.9 MWe
+        50.0      6.2 ¢/kWh  (62 $/MWh)  P_net=279.2 MWe
 
 --- 2. NBI total wall-plug efficiency sweep ---
   Range 0.20–0.45 reflects corrected two-step chain: source 0.55–0.65
@@ -278,35 +278,35 @@ SENSITIVITY SWEEPS (from Branch B baseline)
   Prior sweep [0.35–0.65] overstated plasma-coupled efficiency by ~2×.
   Cite: OSTI 2441289 (Nuclear Fusion 2024).
        η_NBI  Result
-        0.20     15.9 ¢/kWh  (159 $/MWh)  P_net=74.7 MWe
-        0.25     12.3 ¢/kWh  (123 $/MWh)  P_net=100.7 MWe
-        0.26     11.9 ¢/kWh  (119 $/MWh)  P_net=104.7 MWe *** baseline
-        0.30     10.8 ¢/kWh  (108 $/MWh)  P_net=118.0 MWe
-        0.35      9.9 ¢/kWh  (99 $/MWh)  P_net=130.4 MWe
-        0.40      9.4 ¢/kWh  (94 $/MWh)  P_net=139.7 MWe
-        0.45      9.0 ¢/kWh  (90 $/MWh)  P_net=146.9 MWe
+        0.20     13.2 ¢/kWh  (132 $/MWh)  P_net=94.5 MWe
+        0.25     10.7 ¢/kWh  (107 $/MWh)  P_net=120.5 MWe
+        0.26     10.4 ¢/kWh  (104 $/MWh)  P_net=124.5 MWe *** baseline
+        0.30      9.6 ¢/kWh  (96 $/MWh)  P_net=137.9 MWe
+        0.35      8.9 ¢/kWh  (89 $/MWh)  P_net=150.3 MWe
+        0.40      8.5 ¢/kWh  (85 $/MWh)  P_net=159.5 MWe
+        0.45      8.2 ¢/kWh  (82 $/MWh)  P_net=166.8 MWe
 
 --- 3. Capacity factor sweep (NBI recirculating interaction) ---
   Note: NBI stays at full power even at reduced CF → effective
   recirculating fraction is constant; only energy output falls.
           CF  Result
-         50%     20.2 ¢/kWh  (202 $/MWh)  P_net=104.7 MWe
-         60%     16.9 ¢/kWh  (169 $/MWh)  P_net=104.7 MWe
-         70%     14.5 ¢/kWh  (145 $/MWh)  P_net=104.7 MWe
-         75%     13.5 ¢/kWh  (135 $/MWh)  P_net=104.7 MWe
-         85%     11.9 ¢/kWh  (119 $/MWh)  P_net=104.7 MWe
-         90%     11.2 ¢/kWh  (112 $/MWh)  P_net=104.7 MWe
-         95%     10.7 ¢/kWh  (107 $/MWh)  P_net=104.7 MWe
+         50%     17.7 ¢/kWh  (177 $/MWh)  P_net=124.5 MWe
+         60%     14.8 ¢/kWh  (148 $/MWh)  P_net=124.5 MWe
+         70%     12.7 ¢/kWh  (127 $/MWh)  P_net=124.5 MWe
+         75%     11.8 ¢/kWh  (118 $/MWh)  P_net=124.5 MWe
+         85%     10.4 ¢/kWh  (104 $/MWh)  P_net=124.5 MWe
+         90%      9.9 ¢/kWh  (99 $/MWh)  P_net=124.5 MWe
+         95%      9.3 ¢/kWh  (93 $/MWh)  P_net=124.5 MWe
 
 --- 4. NBI capital cost [M$/MW_NBI] sweep ---
     NBI $/MW  Result
-         3.0      8.1 ¢/kWh  (81 $/MWh)  P_net=104.7 MWe
-         5.0      9.2 ¢/kWh  (92 $/MWh)  P_net=104.7 MWe
-         7.5     10.6 ¢/kWh  (106 $/MWh)  P_net=104.7 MWe
-        10.0     11.9 ¢/kWh  (119 $/MWh)  P_net=104.7 MWe
-        15.0     14.6 ¢/kWh  (146 $/MWh)  P_net=104.7 MWe
-        20.0     17.3 ¢/kWh  (173 $/MWh)  P_net=104.7 MWe
-        30.0     22.6 ¢/kWh  (226 $/MWh)  P_net=104.7 MWe
+         3.0      7.3 ¢/kWh  (73 $/MWh)  P_net=124.5 MWe
+         5.0      8.2 ¢/kWh  (82 $/MWh)  P_net=124.5 MWe
+         7.5      9.3 ¢/kWh  (93 $/MWh)  P_net=124.5 MWe
+        10.0     10.4 ¢/kWh  (104 $/MWh)  P_net=124.5 MWe
+        15.0     12.7 ¢/kWh  (127 $/MWh)  P_net=124.5 MWe
+        20.0     15.0 ¢/kWh  (150 $/MWh)  P_net=124.5 MWe
+        30.0     19.5 ¢/kWh  (195 $/MWh)  P_net=124.5 MWe
 
 --- 5. Thermal efficiency sweep (Branch B only) ---
         η_th  Result
@@ -320,13 +320,13 @@ SENSITIVITY SWEEPS (from Branch B baseline)
 
 --- 6. NBI plasma power [MW] sweep (plant sizing) ---
     P_NBI MW  Result
-        15.0     14.1 ¢/kWh  (141 $/MWh)  P_net=57.2 MWe
-        20.0     12.8 ¢/kWh  (128 $/MWh)  P_net=78.8 MWe
-        26.0     11.9 ¢/kWh  (119 $/MWh)  P_net=104.7 MWe
-        35.0     11.1 ¢/kWh  (111 $/MWh)  P_net=143.5 MWe
-        50.0     10.4 ¢/kWh  (104 $/MWh)  P_net=208.2 MWe
-        75.0      9.7 ¢/kWh  (97 $/MWh)  P_net=316.0 MWe
-       100.0      9.4 ¢/kWh  (94 $/MWh)  P_net=423.9 MWe
+        15.0     12.2 ¢/kWh  (122 $/MWh)  P_net=68.7 MWe
+        20.0     11.2 ¢/kWh  (112 $/MWh)  P_net=94.1 MWe
+        26.0     10.4 ¢/kWh  (104 $/MWh)  P_net=124.5 MWe
+        35.0      9.8 ¢/kWh  (98 $/MWh)  P_net=170.3 MWe
+        50.0      9.1 ¢/kWh  (91 $/MWh)  P_net=246.4 MWe
+        75.0      8.6 ¢/kWh  (86 $/MWh)  P_net=373.4 MWe
+       100.0      8.3 ¢/kWh  (83 $/MWh)  P_net=500.4 MWe
 
 --- 7. Radiation loss fraction f_rad sweep ---
   f_rad is the single most uncertain physics parameter: in a fully
@@ -335,24 +335,24 @@ SENSITIVITY SWEEPS (from Branch B baseline)
   this — but the degree of suppression at 150 keV is undemonstrated.
   Threshold above which P_net ≤ 0 is identified for each Q.
        f_rad  Result
-        0.05     10.2 ¢/kWh  (102 $/MWh)  P_net=129.6 MWe
-        0.10     11.0 ¢/kWh  (110 $/MWh)  P_net=117.1 MWe
-        0.15     11.9 ¢/kWh  (119 $/MWh)  P_net=104.7 MWe *** baseline
-        0.30     16.8 ¢/kWh  (168 $/MWh)  P_net=67.2 MWe
-        0.50     54.5 ¢/kWh  (545 $/MWh)  P_net=17.3 MWe
-        0.70    N/A (Branch A, P_net=-32.6 MWe)
-        0.90    N/A (Branch A, P_net=-82.5 MWe)
+        0.05      9.1 ¢/kWh  (91 $/MWh)  P_net=151.8 MWe
+        0.10      9.7 ¢/kWh  (97 $/MWh)  P_net=138.2 MWe
+        0.15     10.4 ¢/kWh  (104 $/MWh)  P_net=124.5 MWe *** baseline
+        0.30     14.1 ¢/kWh  (141 $/MWh)  P_net=83.6 MWe
+        0.50     34.1 ¢/kWh  (341 $/MWh)  P_net=29.0 MWe
+        0.70    N/A (Branch A, P_net=-25.6 MWe)
+        0.90    N/A (Branch A, P_net=-80.2 MWe)
 
 --- 8. Q_plasma × η_NBI viability boundary grid ---
   η_NBI range updated to 0.20–0.45 (corrected two-step efficiency chain).
   (Branch A = no net electricity; B = viable steam; C = ICC)
      Q\η_NBI  0.20  0.25  0.30  0.35  0.40  0.45
-        Q=10     A       A       A       A       A     152¢ 
-        Q=15     A       A      76¢     39¢     29¢     24¢ 
-        Q=20   231¢     33¢     22¢     18¢     16¢     15¢ 
-        Q=25    27¢     17¢     14¢     12¢     12¢     11¢ 
-        Q=30    16¢     12¢     11¢     10¢      9¢      9¢ 
-        Q=50     7¢      7¢      6¢      6¢      6¢      6¢ 
+        Q=10     A       A       A       A     171¢     71¢ 
+        Q=15     A     194¢     43¢     29¢     23¢     20¢ 
+        Q=20    57¢     24¢     18¢     15¢     14¢     13¢ 
+        Q=25    20¢     14¢     12¢     11¢     10¢     10¢ 
+        Q=30    13¢     11¢     10¢      9¢      9¢      8¢ 
+        Q=50     7¢      6¢      6¢      6¢      6¢      6¢ 
   (values in ¢/kWh; A = Branch A, no LCOE)
 
 --- 9. Q_plasma × f_rad viability boundary grid ---
@@ -362,11 +362,11 @@ SENSITIVITY SWEEPS (from Branch B baseline)
   (Branch A = no net electricity; B = viable steam)
      Q\f_rad  0.05  0.15  0.30  0.50  0.70  0.90
         Q=10     A       A       A       A       A       A  
-        Q=15    83¢      A       A       A       A       A  
-        Q=20    21¢     30¢    101¢      A       A       A  
-        Q=25    13¢     16¢     27¢      A       A       A  
-        Q=30    10¢     12¢     17¢     55¢      A       A  
-        Q=50     6¢      7¢      8¢     12¢     55¢      A  
+        Q=15    43¢    105¢      A       A       A       A  
+        Q=20    17¢     22¢     48¢      A       A       A  
+        Q=25    12¢     14¢     21¢    142¢      A       A  
+        Q=30     9¢     10¢     14¢     34¢      A       A  
+        Q=50     6¢      6¢      7¢     11¢     34¢      A  
   (values in ¢/kWh; A = Branch A, no LCOE)
 
 
@@ -375,10 +375,10 @@ SCENARIO COMPARISON TABLE
 ======================================================================
 Scenario                                   Q  η_NBI    CF   P_net           LCOE
 ---------------------------------------------------------------------------
-  Branch A — Physics fails (Q=3)           3   0.26   85% -86 MWe N/A (no net power)
-  B Conservative (Q=20, η=0.22, CF=70%)    20   0.22   70%  16 MWe     73.9 ¢/kWh
-  B Baseline (Q=30, η=0.26, CF=85%)       30   0.26   85% 105 MWe     11.9 ¢/kWh
-  B Optimistic (Q=50, η=0.40, CF=90%)     50   0.40   90% 281 MWe      5.7 ¢/kWh
+  Branch A — Physics fails (Q=3)           3   0.26   85% -84 MWe N/A (no net power)
+  B Conservative (Q=20, η=0.22, CF=70%)    20   0.22   70%  29 MWe     42.3 ¢/kWh
+  B Baseline (Q=30, η=0.26, CF=85%)       30   0.26   85% 125 MWe     10.4 ¢/kWh
+  B Optimistic (Q=50, η=0.40, CF=90%)     50   0.40   90% 314 MWe      5.3 ¢/kWh
   C Baseline — ICC (Q=30, η=0.26, CF=85%)    30   0.26   85% 489 MWe      4.4 ¢/kWh
   C Optimistic — ICC (Q=50, η=0.40, CF=90%)    50   0.40   90% 922 MWe      3.1 ¢/kWh
 

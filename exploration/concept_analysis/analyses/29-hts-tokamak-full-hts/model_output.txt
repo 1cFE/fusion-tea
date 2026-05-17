@@ -1,0 +1,181 @@
+==============================================================================
+HTS Tokamak - Full HTS (Energy Singularity)
+Proxy model: CFS ARC/SPARC analogue | All parameters UNCERTAIN
+Base: R=2.0m, 500 MWe, 80% avail | Lifetime: 30 yr | NOAK
+C220103 hts_full_coil_premium: ×1.20 (framework base: $516M → with premium: $619M)
+==============================================================================
+
+LCOE:          107.7 $/MWh
+Overnight:      7591 $/kW
+Fusion:         1649 MW | Net:   500 MW | Q_eng: 4.54
+
+1 GW scaled (cross-concept): LCOE 72.4 $/MWh | Overnight 5043 $/kW
+
+── Unified Scenario LCOE Table ──
+  Scenario                                        R0   MWe  Avail        LCOE   vs. Base
+  ----------------------------------------------------------------------------------
+  Base Case                                      2.0   500    80%       107.7       0.0%
+  Scenario A — CS Coil Reliability Fail          2.0   500    65%       131.0     +21.6%
+  Scenario B — AI Control Underperforms          2.0   500    70%       122.5     +13.7%
+  Scenario C — Small Machine                     1.5   250    80%       169.5     +57.3%
+  Scenario D — Large Machine                     2.5   800    80%        83.7     -22.3%
+
+  Note — Scenarios A/B bracket technical-bet failure modes at fixed design point.
+  Scenarios C/D bracket design-point uncertainty (HH380 scale unknown).
+
+── CAS Cost Breakdown — Base Case ──
+  Code     Account                              M$
+  ------------------------------------------------
+  CAS10    Preconstruction                    17.2
+  CAS21    Buildings                         444.8
+  CAS22    Reactor Plant Equipment          1882.4
+  CAS23    Turbine Plant                     126.7
+  CAS24    Electrical Plant                   54.0
+  CAS25    Miscellaneous                      32.9
+  CAS26    Heat Rejection                     62.6
+  CAS27    Special Materials                   7.5
+  CAS28    Digital Twin                        5.0
+  CAS29    Contingency                         0.0
+  CAS30    Indirect Costs                    436.0
+  CAS40    Owner's Costs                      27.6
+  CAS50    Supplementary                     203.3
+  CAS60    IDC                               495.5
+  CAS70    O&M (annualized)                   71.0
+  CAS80    Fuel (annualized)                   0.7
+  CAS90    Financial                         305.9
+  ------------------------------------------------
+           Total Capital                    3795.5
+
+── CAS22 Sub-Account Detail — Base Case ──
+  Sub-account  Description                                M$
+  -----------------------------------------------------------
+  C220101      First Wall + Blanket                     58.2
+  C220102      Shield                                   56.8
+  C220103      Coils — HTS full (TF+PF+CS) *           619.3
+  C220104      Heating (ICRH)                          353.2
+  C220105      Structure                                 4.0
+  C220106      Vacuum System                            20.7
+  C220107      Power Supplies                           58.6
+  C220108      Divertor                                 81.2
+  C220109      DEC Equipment                             0.0
+  C220111      Installation Labor                      177.6
+  C220112      Isotope Separation                        0.0
+  C220200      Coolant System                          111.4
+  C220300      Auxiliary Cooling                        81.3
+  C220400      Radwaste                                  3.6
+  C220500      Fuel Handling                            73.9
+  C220600      Other Equipment                           6.6
+  C220700      I&C                                      55.8
+  C220000      CAS22 Total                            1882.4
+
+  * C220103 overridden: framework $516M × ×1.20 = $619M
+    Premium: incremental REBCO tape for PF+CS coils beyond TF-only HTS.
+    UNCERTAIN: ×1.1–×1.3 placeholder range; no published CS+PF tape volume estimate.
+
+── hts_full_coil_premium Sensitivity Sweep (F-1) ──
+  Framework C220103 (TF-only baseline): $516M
+
+  Premium      C220103 (M$)   LCOE ($/MWh)  Delta vs ×1.0
+  -------------------------------------------------------
+  ×1.0                 516          104.4          0.00%
+  ×1.1                 568          106.1         +1.58%
+  ×1.2                 619          107.7         +3.16% ← base case
+  ×1.3                 671          109.4         +4.74%
+
+── Key Assumptions ──
+  Net electric (base):   500 MWe  [UNCERTAIN — no HH380 design]
+  Major radius (base):   2.0 m    [UNCERTAIN — CFS ARC/SPARC analogue]
+  Minor radius a (base): 0.5 m   [UNCERTAIN — A = 4.0]
+  Elongation κ:          1.7       [UNCERTAIN — standard D-shaped]
+  Blanket thickness:     0.6 m  [UNCERTAIN — no blanket design disclosed]
+  Thermal efficiency:    35%    [UNCERTAIN — cycle type unknown; steam Rankine]
+  ICRH wall-plug η:      65%   [UNCERTAIN — 60–70% range; analysis.md §Ch.5]
+  Cryo power:            8.0 MW  [UNCERTAIN — full HTS 20 K cryoplant estimate]
+  Construction time:     5.0 yr  [UNCERTAIN — optimistic; <2 yr for HH70]
+  Interest rate:         7%     [DEFAULT — no ES financing data]
+  hts_full_coil_premium: ×1.20    [UNCERTAIN — placeholder ×1.1–×1.3]
+
+  Data rating: LIMITED — Energy Singularity discloses NO commercial design
+  parameters for HH380. All engineering values are analogued from CFS ARC/
+  SPARC (Sorbom 2015) or mfe_tokamak.yaml defaults. LCOE carries ±50% or
+  greater uncertainty from parameter uncertainty alone.
+
+  Blocking gaps (analysis.md §Section 5):
+    - Net electrical output / fusion power / Q for commercial machine (HH380)
+    - Blanket design, TBR, and tritium fuel cycle (entirely undisclosed)
+    - Power conversion cycle type and thermal efficiency
+    - Capital cost estimate or plant cost study
+    - Major radius / design point of HH380 (→ Scenarios C/D bracket this)
+
+── Sensitivity Analysis — Base Case (elasticity = %ΔLCOE / %Δparam) ──
+  C220103 overridden → zero gradient; sensitivity is over remaining params.
+
+  Engineering levers:
+    availability                 -0.9591
+    construction_time_yr         +0.2708
+    eta_th                       -0.1651
+    p_nbi                        +0.1195
+    elon                         +0.0665
+    R0                           +0.0665
+    mn                           -0.0485
+    blanket_t                    +0.0474
+    r_coil                       +0.0429
+    eta_pin                      -0.0356
+    p_input                      +0.0339
+    plasma_t                     +0.0261
+    b_max                        +0.0214
+    p_cryo                       +0.0202
+    ht_shield_t                  +0.0109
+    f_sub                        +0.0089
+    vessel_t                     +0.0079
+    p_cool                       +0.0069
+    p_trit                       +0.0046
+    structure_t                  +0.0026
+    p_house                      +0.0023
+    p_coils                      +0.0023
+    p_pump                       +0.0009
+    eta_p                        -0.0000
+    dd_f_T                       +0.0000
+    dd_f_He3                     +0.0000
+    dhe3_dd_frac                 +0.0000
+    dhe3_f_T                     +0.0000
+    eta_de                       +0.0000
+    q95                          +0.0000
+    f_GW                         +0.0000
+    B                            +0.0000
+    T_e                          +0.0000
+    n_e                          +0.0000
+    Z_eff                        +0.0000
+    plasma_volume                +0.0000
+    R_w                          +0.0000
+    T_edge                       +0.0000
+    tau_ratio                    +0.0000
+    M_ion                        +0.0000
+    lambda_q                     +0.0000
+    disruption_rate_base         +0.0000
+    disruption_steepness         +0.0000
+    disruption_damage            +0.0000
+    disruption_downtime          +0.0000
+
+  Financial:
+    interest_rate                +0.6627
+    inflation_rate               +0.0561
+
+  Costing constants (top 15):
+    om_cost_dt                   +0.1418
+    heating_nbi_per_mw           +0.1195
+    indirect_fraction            +0.1086
+    divertor_base                +0.0543
+    installation_frac            +0.0527
+    remote_handling_dt_base      +0.0406
+    blanket_unit_cost_dt         +0.0390
+    core_lifetime_dt             -0.0389
+    fuel_handling_dt_base        +0.0219
+    power_supplies_base          +0.0198
+    shield_unit_cost             +0.0192
+    fuel_recovery                -0.0177
+    electric_per_mw              +0.0164
+    decom_provision_dt           +0.0156
+    construction_insurance_frac  +0.0112
+
+── End of model output ──

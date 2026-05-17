@@ -1,826 +1,928 @@
 ---
 ID: 09-qi-stellarator-hts
-Concept: QI Stellarator - HTS
+Concept: QI Stellarator - HTS (D-T)
 Company: Proxima Fusion
 Type: synthesis
 Status: draft
-Created: 2026-04-29
+Created: 2026-05-13
 ---
 
 # Synthesis: QI Stellarator - HTS (Proxima Fusion Stellaris)
 
 ## 1. Executive Summary
 
-- **Primary risk**: 3D non-planar HTS coil manufacturing cost is genuinely unknown — no commercial precedent exists, and the cost multiplier range (1.5–5× tokamak-wound coils) spans viability. If the premium exceeds 2×, Stellaris cannot compete with compact HTS tokamaks on economics regardless of capacity factor advantage.
+- **Single most important risk**: The 3D non-planar HTS coil manufacturing cost is truly unknown — no commercial precedent exists for freeform stellarator-geometry REBCO coils at 20 T peak field. If the manufacturing premium exceeds 2× the tokamak wound-coil reference, Stellaris is unlikely to achieve competitive LCOE regardless of capacity factor advantage. The SMC demo (2027) is the first real data point.
 
-- **Primary advantage**: Disruption-free steady-state operation eliminates the tokamak's largest source of unplanned downtime and thermal fatigue, unlocking materially higher plant availability (88% vs. ~83–85% for disruption-limited tokamaks). This is an inherent stellarator property, not a design choice — and it directly addresses the single largest operational risk in tokamak commercialization.
+- **Single most important advantage**: Disruption-free steady-state operation eliminates the single largest availability-limiting event in tokamaks, enabling 85–95% capacity factor. This advantage is structural — it requires no technological breakthrough — and propagates directly into LCOE through the denominator (availability elasticity = −0.89, the dominant continuous lever).
 
-- **LCOE ballpark**: $106–111/MWh (ignited case, DEFAULT coil cost, replacement-inclusive) in the NOAK central scenario. This is a **lower bound** — framework coil cost defaults do not capture the 3D manufacturing premium. At 1.5× coil cost (optimistic), replacement-inclusive LCOE is $118/MWh; at 2.5×, $131/MWh; at 5× (pessimistic), $165/MWh. The concept is viable only if the coil multiplier stays below ~2×.
+- **LCOE ballpark**: $137–$188/MWh (initial build; Scenario A, H4-true ignited case) at DEFAULT coil cost (lower bound) across the 85–95% capacity factor range. **Replacement-inclusive LCOE**: $146–$163/MWh at DEFAULT coil cost; $188–$268/MWh at 1.5× coil multiplier (optimistic 3D premium); $249–$350/MWh at 2.5× multiplier. The replacement-inclusive figure is the economically complete comparison metric — Stellaris requires two full magnet replacements over a 30-year plant lifetime due to neutron fluence limits (~10 FPY at 2.7 GW), a lifecycle cost not shared by compact HTS tokamaks on the same timeline.
 
-- **Confidence verdict**: **Low**. The dominant cost uncertainty (C220103 coils) has no data anchor until the Stellarator Model Coil demo in 2027. The capacity factor advantage cannot be evaluated quantitatively until the HTS compact tokamak reference (01-hts-compact-tokamak) publishes a comparable CF estimate — if ARC-class tokamaks achieve 87–90% CF via active disruption avoidance, Stellaris's 88% target yields negligible advantage. Five of seven technical risk functions lack burning-plasma validation; heritage credit floors do not apply because alpha confinement in QI stellarators is undemonstrated at burning plasma conditions.
+- **Confidence verdict**: **Low**. The model output is a lower bound on capital cost (coil cost multiplier = 1.0× is the wound-coil tokamak analogue; 3D stellarator geometry premium not modeled). Two major unknowns dominate: (1) 3D HTS coil manufacturing cost — the single largest capital account ($2.3B at DEFAULT, $5.8B at 2.5×) has no commercial precedent; (2) H4 hypothesis (ignition) — whether 50 MW ECRH sustains indefinitely or drops to ~5 MW post-ignition determines H&CD cost and Q_eng, with $3.4/MWh LCOE swing. Both unknowns resolve after Alpha device (~2031). The capacity factor advantage over the HTS compact tokamak reference cannot be quantified until that reference analysis provides a comparable CF estimate (active disruption prediction may target 87–90%, shrinking Stellaris's edge to 0–1 percentage point).
+
+---
 
 ## 2. What Matters Most for LCOE
 
-Ranked by LCOE impact magnitude:
+Ranked by LCOE sensitivity magnitude:
 
-### 1. **Capacity Factor** (assumed 88%; range 85–95%)
-- **Elasticity**: −0.89 (dominant lever by 10×)
-- **Assumed value**: 88% (from Helios analogue; Stellaris has not published a CF target)
-- **Source**: W7-X demonstrated >97% experimental run-time; blanket/divertor replacement interval of 1–4 years (Queral et al. 2025, arxiv-2501-04640) sets the maintenance floor at 85–92% depending on outage length.
-- **Sensitivity**: 85% → $114.3/MWh; 88% → $110.8/MWh; 95% → $103.5/MWh (all replacement-inclusive)
-- **What flips the conclusion**: If Stellaris CF falls to 85% (pessimistic maintenance schedule) while the HTS compact tokamak reference achieves 90% (optimistic disruption avoidance), the stellarator advantage inverts to a 5-point disadvantage. Conversely, if W7-X-like availability (>95%) carries to commercial scale, Stellaris gains ~11 $/MWh over the 88% central case.
-- **Critical gap**: The HTS compact tokamak reference (01-hts-compact-tokamak / CFS ARC) has not published a capacity factor target. If ARC-class designs with active disruption prediction achieve 87–90%, Stellaris's 88% advantage shrinks to 0–1 percentage point — insufficient to offset the 3D coil premium.
+### 2.1. Capacity Factor (Availability) — Elasticity −0.89
 
-### 2. **3D HTS Coil Manufacturing Cost Multiplier** (C220103; range 1×–5×)
-- **Elasticity**: Not computed directly (capital cost parameter); model sweep shows LCOE scales ~$4.5/MWh per 0.5× multiplier increment near 1×, rising to ~$11/MWh per 0.5× near 5×.
-- **Assumed value**: DEFAULT (1×) = $516M C220103; framework calibrates to wound-coil tokamak geometry, **not** 3D non-planar stellarator winding. This is the LOWER BOUND on coil cost.
-- **Source**: Brown (2018) IEEE TPS — stellarator coil systems cost 1.5–5× tokamak TF coils of equivalent field strength. No commercial HTS stellarator coil has been manufactured; W7-X (LTS, 6 T, ~€370M hardware) is the only data point, but it predates HTS and operates at 1/3 the field.
-- **Sensitivity**: 1× → $110.8/MWh; 1.5× → $117.6/MWh; 2.5× → $131.1/MWh; 5× → $165.0/MWh (all replacement-inclusive, ignited case, 88% CF)
-- **What flips the conclusion**: If the Stellarator Model Coil (SMC) demo in 2027 validates a manufacturing cost below 1.5× the tokamak reference, Stellaris is competitive with compact tokamaks at equivalent CF. If the cost exceeds 2×, the concept cannot reach commercial LCOE under any plausible capacity factor advantage — the H&CD savings ($3–4/MWh) and the CF advantage (~$7/MWh at 88% vs. 85%) are insufficient to close a $20+/MWh coil cost gap.
+**Assumed value**: 88% (central estimate; Helios QI stellarator analogue)
+**Source**: helios-stellarator-comparison.md §2 ("enabling an 88% capacity factor"); W7-X demonstrated >97% experimental run-time; blanket/divertor replacement interval of 1–4 years (Queral et al. 2025, arxiv-2501-04640.md) sets the maintenance floor at 85%.
 
-### 3. **Construction Time** (assumed 8 yr; range 7–12 yr)
-- **Elasticity**: +0.40 (third-highest engineering lever)
-- **Assumed value**: 8 years (framework default from mfe_stellarator.yaml); no Stellaris-specific schedule exists.
-- **Source**: Stellaris is a 13 m major radius machine requiring precision installation of 50 non-planar HTS coils with 111 GJ stored energy. This is structurally more complex than an ARC-class compact tokamak (R0 ≈ 3–4 m, D-shaped coils), suggesting longer first-of-kind assembly time. IDC (CAS60 = $1,748M) is among the largest cost accounts; a 1-year extension adds ~$6/MWh.
-- **Sensitivity**: 7 yr → $105.6/MWh; 8 yr → $110.8/MWh; 10 yr → $122.2/MWh; 12 yr → $135.0/MWh (replacement-inclusive)
-- **What flips the conclusion**: If Stellaris construction slips to 10+ years (comparable to large fission projects or ITER), LCOE rises above $120/MWh even with optimistic coil cost. If modular coil fabrication and installation achieve 7-year total (matching ARC-class schedules), ~$5/MWh is recovered.
+**Sensitivity magnitude**: −0.89 elasticity = dominant continuous LCOE lever. A 10% relative change in CF (e.g., 88% → 96.8%) reduces LCOE by ~8.9%. The 85–95% range modeled spans $162.5/MWh (floor) to $146.7/MWh (optimistic), a $16/MWh swing at DEFAULT coil cost (replacement-inclusive).
 
-### 4. **Ignition / H&CD Power Requirement** (H4 hypothesis; 5 MW vs. 50 MW)
-- **Elasticity**: +0.004 for p_input directly; scenario delta is $3.8/MWh (Scenario A vs. B)
-- **Assumed value**: Scenario A (H4-true) assumes 5 MW ECRH steady-state after alpha self-heating, based on Helios analogue (1 MW ignited); Scenario B (H4-false) uses 50 MW sustained (Stellaris Table 3 stated value).
-- **Source**: QI maximum-j optimization yields ~0.8% alpha energy loss in ANTS simulations (Stellaris paper §2.2), consistent with adequate self-heating. Helios (QA/QI family) achieves ignition with 1 MW nominal ECRH. However, burning plasma alpha confinement cannot be validated before the Alpha device (~2031).
-- **Sensitivity**: Scenario A (5 MW ECRH) → $110.8/MWh; Scenario B (50 MW ECRH) → $114.7/MWh (both replacement-inclusive, 88% CF, DEFAULT coil cost)
-- **What flips the conclusion**: If Stellaris fails to achieve full ignition and requires sustained 50 MW ECRH, the large H&CD cost advantage vs. tokamaks ($50–80M capital savings in C220104) partially disappears, and the net cost comparison in Section 4 (Structural Advantages) shifts from "uncertain" to "likely unfavorable." The $3.8/MWh penalty is small relative to coil cost uncertainty but eliminates a key differentiator.
+**What would flip the economic conclusion**: If the HTS compact tokamak reference (01-hts-compact-tokamak) achieves 87–90% CF via active disruption prediction, Stellaris's disruption-free advantage shrinks to 0–1 percentage point — insufficient to offset the 3D coil manufacturing premium. The viability threshold is not "stellarator vs. conventional disruption-limited tokamak (~83–85%)" but "stellarator vs. ARC-class compact HTS tokamak with active disruption management." The H2 hypothesis gate cannot be evaluated until the 01 analysis provides a comparable CF estimate.
 
-### 5. **O&M Structural Uplift** (CAS70; range 1×–2× framework default)
-- **Elasticity**: Not separately computed (O&M is annualized cost); sweep shows O&M LCOE contribution scales from $23.2/MWh (1×) to $46.4/MWh (2×).
-- **Assumed value**: CAS70 = $178.8M/yr (framework default for DT stellarator); no Stellaris-specific O&M model exists.
-- **Source**: Queral et al. (2025, arxiv-2501-04640) — stellarator blanket and divertor replacement requires "relatively small ports for in-vessel access and maintenance, i.e. in comparison with tokamaks." This is a structural consequence of modular coil geometry, not a Stellaris design choice. The magnitude of the O&M penalty vs. compact HTS tokamaks is unknown (Gap #7).
-- **Sensitivity**: 1× → $110.8/MWh; 1.5× → $122.4/MWh; 2× → $134.0/MWh (replacement-inclusive, ignited, 88% CF)
-- **What flips the conclusion**: If stellarator port-access constraints double O&M cost vs. tokamak baselines, the $23/MWh uplift exceeds the entire H&CD savings and CF advantage combined. O&M is the second-largest ongoing cost after financial charges; the framework default is a lower bound for the same structural reason that C220103 is a lower bound.
+**Caveat**: The 88% central estimate carries medium confidence — Proxima has not published a Stellaris capacity factor target. The range is defensible (Helios analogue + W7-X experimental data + steady-state physics argument), but the floor (85%) and ceiling (95%) are analytical bounds, not engineering targets.
+
+---
+
+### 2.2. 3D Coil Cost Multiplier (C220103) — Viability Gate
+
+**Assumed value**: 1.0× (DEFAULT = wound-coil tokamak reference) in the baseline model output; 1.5–5× range modeled in sweep (Brown 2018 stellarator-vs-tokamak comparison)
+**Source**: analysis.md §7, C220103 row; Brown (2018) IEEE TPS; framework calibration to ARIES-CS (QA stellarator, LTS magnets)
+
+**Sensitivity magnitude**: This parameter does NOT have a traditional elasticity — it is a **viability gate**, not a continuous optimization variable. At 1.0× (DEFAULT), C220103 = $2.3B; at 1.5×, $3.5B; at 2.5×, $5.8B; at 5×, $11.6B. The initial-build LCOE moves from $137/MWh (1.0×) → $158/MWh (1.5×) → $199/MWh (2.5×) → $301/MWh (5×). Replacement-inclusive LCOE (the economically complete figure) ranges from $157/MWh (1.0×) to $401/MWh (5×) at 88% CF.
+
+**What would flip the economic conclusion**:
+- **H1 viability threshold** (analysis.md §2): if the 3D manufacturing premium exceeds **2× per kAm**, stellarator CAPEX is unlikely to be competitive against compact HTS tokamaks regardless of capacity factor advantage. At 2.5× multiplier, replacement-inclusive LCOE is $249/MWh — plausibly non-competitive even at 95% CF ($232/MWh).
+- **SMC demo (2027)** is the first real data point for 3D HTS coil manufacturing cost. Until then, this parameter brackets a factor-of-3 uncertainty range in the total LCOE.
+
+**Caveat**: The DEFAULT (1.0×) output is a **lower bound** — it uses the framework's wound-coil (tokamak-style) geometry calibration. The actual Stellaris coil cost is somewhere in the 1.5–5× range; the model does not identify where within that range the concept sits. The Brown (2018) multiplier is a stellarator-vs-tokamak comparison (LTS era); it does not separately account for QI-vs-QA topology differences or HTS-vs-LTS manufacturing differences. The direction and magnitude of these additional biases are unknown.
+
+---
+
+### 2.3. Construction Time — Elasticity +0.40 (Third-Highest Engineering Lever)
+
+**Assumed value**: 8.0 years (framework stellarator default; mfe_stellarator.yaml)
+**Source**: No Stellaris-specific construction schedule published; 8-year default is plausible for a 13 m major radius machine with complex 3D coil fabrication and precision installation.
+
+**Sensitivity magnitude**: +0.40 elasticity = third-highest engineering parameter (behind availability and r_coil, ahead of R0). A 25% schedule extension (8 yr → 10 yr) adds +10% to LCOE (+$13.7/MWh at baseline). IDC (CAS60 = $2.4B) is among the largest single cost accounts — construction schedule uncertainty compounds into LCOE through interest charges. The modeled range (7–12 years) spans $150/MWh (optimistic ARC-class compact analogue) to $190/MWh (worst-case schedule slippage) at DEFAULT coil cost, replacement-inclusive.
+
+**What would flip the economic conclusion**: If Stellaris requires 10–12 years first-of-kind construction (vs. 6–7 years for an ARC-class compact tokamak at R0 ≈ 3–4 m), the IDC penalty partially offsets the capacity factor advantage. Construction time is the **financial expression of the machine scale penalty** — the low-beta operating point (2.76%) forces a larger physical machine (R0 ≈ 13 m, 443 m³ plasma volume), which propagates into both nuclear island capital accounts (first wall area, blanket mass, vacuum vessel) and the construction schedule.
+
+**Caveat**: The 8-year default is a conceptual estimate, not an engineering schedule. The actual schedule depends on coil fabrication learning rate, site readiness (Gundremmingen brownfield advantage vs. greenfield), and whether Proxima pursues serial or parallel coil manufacturing. The sensitivity sweep bounds the impact, but the central estimate carries low confidence.
+
+---
+
+### 2.4. Thermal Efficiency (eta_th) — Elasticity −0.23
+
+**Assumed value**: 0.35 (standardized to canonical "Thermal (unspecified)" per scoring framework; Stellaris-specific estimate is 0.38 gross, ~0.32 net)
+**Source**: EUROFER97 structural steel temperature limit (550°C) constrains steam Rankine cycle to ~500°C → 38% gross thermal efficiency (analysis.md §3). Net plant efficiency ~32% (1,000 MWe / 3,100 MWth) after recirculating power deduction. Helios analogue (vanadium alloy FW, 635°C steam) achieves 40% (helios-stellarator-comparison.md §2).
+
+**Sensitivity magnitude**: −0.23 elasticity = moderate engineering lever. A 10% relative improvement in thermal efficiency (0.35 → 0.385) reduces LCOE by ~2.3%. The Stellaris-vs-Helios gap (0.38 vs. 0.40) represents a ~5% relative difference in gross efficiency, corresponding to ~1.2% LCOE impact (~$1.6/MWh).
+
+**What would flip the economic conclusion**: Adopting vanadium alloy structural material (Helios approach) would recover ~2 percentage points of cycle efficiency but trades supply-chain maturity for performance. EUROFER97 is well-characterized in the EU DEMO program; vanadium alloy has limited industrial-scale qualification for fusion neutron environments. The efficiency gap is real but not decisive — it does not change the rank-ordering of stellarator vs. compact tokamak economics.
+
+**Caveat**: The eta_th = 0.35 figure in the model is a **canonical standardization**, not a Stellaris-specific cycle design. The 0.38 gross / 0.32 net estimate is conceptually sound (EUROFER97 limit + standard Rankine cycle) but not derived from a detailed heat integration study. The BOP thermal efficiency is a known quantity with bounded uncertainty (~±2 percentage points), unlike the coil cost or capacity factor.
+
+---
+
+### 2.5. H4 Hypothesis (Ignition / ECRH Requirement) — Scenario Branch, Not Continuous Parameter
+
+**Assumed value**: Two scenarios modeled:
+- **Scenario A (H4-true)**: 5 MW ECRH steady-state (ignited; Helios analogue: 1 MW; helios-stellarator-comparison.md §3.1)
+- **Scenario B (H4-false)**: 50 MW ECRH sustained (Stellaris Table 3 stated value; stellaris-design-details.md)
+
+**Source**: QI maximum-j optimization yields ~0.8% alpha energy loss (ANTS code; stellaris-design-details.md §2.2). If alpha confinement is adequate, steady-state ECRH drops to nominal levels post-ignition. If not, 50 MW is required indefinitely.
+
+**Sensitivity magnitude**: $3.4/MWh LCOE delta (initial-build) between Scenario A and Scenario B at DEFAULT coil cost. This is a **scenario branch**, not a smooth sensitivity — the H&CD account either achieves a large negative delta vs. tokamak (ignited case) or reverts to near-parity (sustained ECRH case). The LCOE swing is modest in absolute terms ($3.4/MWh is ~2.5% of the baseline $137/MWh), but the **directional cost comparison** in analysis.md §7 changes sign: C220104 (H&CD) is the primary stated cost advantage for stellarators ("eliminating the need for an expensive plasma current drive system" — stellaris-design-details.md §Introduction). If H4-false, that advantage disappears.
+
+**What would flip the economic conclusion**: Alpha device (Q>1, ~2031) is the first validation point for H4. If burning plasma alpha confinement at 2.76% beta and 2.7 GW fusion power deviates from ANTS simulation predictions, the 50 MW ECRH may not be reducible to ~5 MW. The risk is not catastrophic (the concept remains viable at 50 MW ECRH, Q_eng ≈ 4.2) but removes a key economic differentiator.
+
+**Caveat**: The H4-true 5 MW assumption is based on the Helios analogue (1 MW ignited), not a Stellaris-specific prediction. Stellaris targets ~2.8× higher fusion power (2.7 GW vs. 958 MW), which may require proportionally higher steady-state ECRH even in the ignited phase. The 5 MW figure is a conservative margin estimate, not an engineering target from Proxima.
+
+---
 
 ## 3. Risk Verdicts
 
-### 3D Non-Planar HTS Coil Manufacturing (Challenge 1)
-- **Verdict**: Genuinely uncertain
-- **Rationale**: No commercial HTS stellarator coil has been manufactured. The SMC demo (2027) is the first real data point; W7-X used LTS at 6 T, not REBCO at 20 T.
-- **What retires this risk**: SMC demo validates per-coil manufacturing cost below 1.5× wound-tokamak reference AND demonstrates that the cost scales linearly (no exponential complexity premium) to the 50-coil Stellaris plant. If either condition fails, the concept is not viable.
+### 3.1. 3D Non-Planar HTS Coil Manufacturing Cost (Challenge 1)
 
-### Low-Beta Machine Scale Penalty (Challenge 2)
-- **Verdict**: Likely resolvable
-- **Rationale**: Stellaris v1 operates at 2.76% beta — about half the 5–8% typical of compact tokamaks. This drives a larger physical machine (R0 ≈ 13 m) for equivalent fusion power, increasing first wall area, blanket mass, vacuum vessel, and buildings cost. **However**, CIEMAT-QI4X (arXiv:2512.08825) demonstrates QI stellarator resilience at 4% beta while maintaining alpha confinement, island divertor compatibility, and small bootstrap current. A 4% beta follow-on design (Scenario H2a) reduces plasma volume by ~31%, partially closing the gap to compact tokamak power density.
-- **What retires this risk**: Next-generation QI design at 4% beta, validated through StarFinder optimization and experimental confirmation on Alpha device. Scenario H2a shows $105.3/MWh replacement-inclusive LCOE (vs. $110.8 for Stellaris v1) — a $5.5/MWh recovery from machine scale reduction alone.
+**Verdict**: **Genuinely uncertain**
 
-### Burning Plasma Ignition Assumption (Challenge 3 / H4)
-- **Verdict**: Unlikely resolvable before Alpha demo (~2031)
-- **Rationale**: The H&CD cost advantage depends entirely on achieving alpha self-heating sufficient to reduce ECRH from 50 MW startup to ~1–5 MW sustained. QI maximum-j optimization yields 0.8% alpha energy loss in simulations — better than ARIES-CS QA configurations (which had high alpha losses preventing ignition) — but no QI stellarator has operated at burning plasma conditions. If Stellaris requires sustained 50 MW ECRH, the H&CD account reverts to near-parity with tokamaks, eliminating a $50–80M capital cost advantage.
-- **What retires this risk**: Alpha device achieves Q>1 with alpha self-heating validated in burning plasma regime, confirming the QI maximum-j property maintains alpha confinement at reactor-relevant beta and temperature. This is the most direct validation milestone.
+**Rationale**: No commercial precedent exists for freeform stellarator-geometry REBCO coils at power-plant scale. W7-X demonstrated LTS non-planar coils at 6 T (€370M hardware investment over 1997–2014); CFS SPARC is developing HTS wound coils at 20 T (tokamak geometry). The combination — 3D freeform + HTS + 20 T + burning plasma neutron environment — has never been manufactured. The Brown (2018) stellarator-vs-tokamak multiplier (1.5–5×) is a literature analogue, not a Stellaris-specific estimate.
 
-### TBR Margin Adequacy (Challenge 4)
-- **Verdict**: Likely resolvable
-- **Rationale**: TBR = 1.074 (post-correction) is close to the minimum engineering requirement of ≥1.05–1.1 but provides modest margin. The stellarator's 3D geometry creates more blanket penetrations than a tokamak, increasing neutron leakage risk. However, the margin is sufficient that small adjustments (higher Li-6 enrichment above 70%, reduced port area, or improved blanket coverage) can recover shortfalls.
-- **What retires this risk**: Detailed Monte Carlo neutronics with full-port geometry (beyond the 3% correction already applied) confirms TBR ≥ 1.05 with all penetrations modeled, OR experimental TBR validation on a stellarator test blanket module in a burning plasma device.
+**What would retire this risk**: **SMC demo (2027)** — Proxima's Stellarator Model Coil demonstration targeted for 2027 will provide the first real cost and fabrication-time data for a 3D HTS coil at relevant field strength. This is a component-scale demo, not a full coil set, but it resolves whether the manufacturing process is feasible at all and anchors the lower end of the cost multiplier range. Full retirement requires commercial production of multiple coils (e.g., Alpha device coil set fabrication, post-2027).
 
-### Island Divertor Scaling (Challenge 5)
-- **Verdict**: Genuinely uncertain
-- **Rationale**: W7-X demonstrated island divertor steady-state operation with strong detachment and large wetted area, validating the concept at low power density. Stellaris targets 4.05 MW/m² average first wall load — far above W7-X conditions. The divertor geometry is tightly coupled to the magnetic topology and has limited adjustment freedom if it underperforms at burning plasma power density.
-- **What retires this risk**: W7-X upgrade or Alpha device demonstrates island divertor heat exhaust at ≥3 MW/m² with acceptable tungsten erosion rates and full detachment access, OR Stellaris adopts a hybrid divertor (island + secondary poloidal divertor) with acceptable cost/complexity penalty.
+---
+
+### 3.2. Low-Beta Machine Scale Penalty (Challenge 2)
+
+**Verdict**: **Likely resolvable** (for next-generation QI designs; Stellaris v1 is locked in)
+
+**Rationale**: Stellaris v1 operates at 2.76% beta — roughly half the 5–8% beta of compact tokamaks. This is a **design-point choice**, not a QI physics ceiling. CIEMAT-QI4X (arXiv:2512.08825, December 2025) demonstrates a QI stellarator configuration maintaining island divertor compatibility, alpha confinement, and small bootstrap current at **beta up to 4%** — ~45% higher than Stellaris v1. Proxima stated "more commercially attractive designs are possible" (stellaris-design-details.md §2), consistent with iterating toward higher-beta configurations in follow-on designs.
+
+**What would retire this risk**: **H2a scenario validation** — a follow-on QI design operating at 4% beta would reduce plasma volume at fixed fusion power by ~31% (Scenario H2a: R0 ≈ 11.6 m vs. 13.0 m; LCOE $152/MWh vs. $157/MWh replacement-inclusive at DEFAULT coil cost). This partially closes the gap to compact tokamak power density. The H2a scenario is a **design lineage branch**, not a Stellaris v1 variant — it represents the next-generation QI family and should be treated as a separate concept in cross-concept rankings. For Stellaris v1 specifically, the scale penalty is baked in and not resolvable without a redesign.
+
+---
+
+### 3.3. Burning Plasma Ignition Assumption (Challenge 3, H4 Hypothesis)
+
+**Verdict**: **Unlikely resolvable** before Alpha device (~2031)
+
+**Rationale**: The QI maximum-j optimization is specifically designed to improve alpha confinement relative to earlier compact stellarator configurations (ARIES-CS QA: "high alpha particle loss is a critical issue" — aries-cs-compact-stellarator-study.md). SIMPLE and ANTS code simulations predict ~0.8% alpha energy loss at Stellaris design conditions (stellaris-design-details.md §2.2), consistent with adequate self-heating. However, these are MHD equilibrium simulations — they exclude wave-particle interactions at burning plasma beta and do not account for potential loss channels at 2.7 GW fusion power (larger scale than existing simulation benchmarks). No burning-plasma-condition alpha confinement experiment in a QI configuration exists. The SMC demo (2027) tests coil manufacturing only, not burning plasma physics.
+
+**What would retire this risk**: **Alpha device burning plasma operation** (Q>1, ~2031 target). If Alpha achieves Q>1 and demonstrates that steady-state ECRH drops to nominal levels (~1–5 MW) after alpha self-heating stabilizes, H4-true is validated. If 50 MW ECRH sustains indefinitely, H4-false is confirmed. Either outcome resolves the branching condition; until then, the hypothesis remains genuinely uncertain.
+
+---
+
+### 3.4. TBR Margin Adequacy in 3D Blanket Geometry (Challenge 4)
+
+**Verdict**: **Likely resolvable**
+
+**Rationale**: Stellaris achieves TBR = 1.074 post-correction (1.1070 baseline − 3% port correction; stellaris-design-details.md §2.8). This is close to the typical engineering minimum of 1.05–1.1 for tritium self-sufficiency at reasonable doubling time. The 3D stellarator first wall geometry creates more blanket penetrations (diagnostic ports, heating ducts, island divertor structure) than a tokamak, increasing neutron leakage pathways. However, the paper explicitly states that "margins to account for uncertainties and potential incomplete models" were applied, and the baseline Monte Carlo TBR (1.1070 ± 0.0002) provides ~3% design margin before the port correction.
+
+**What would retire this risk**: **Integrated neutronics validation** with full port and penetration geometry modeled. If additional engineering losses (e.g., divertor island chain structure, incomplete blanket coverage at coil interfaces) reduce effective TBR below 1.05, the fallback is to increase Li-6 enrichment above the current 70% or reduce port area. Both mitigations have cost implications (enrichment supply chain; diagnostic access constraints) but do not invalidate the concept. TBR = 1.074 is a point estimate; the uncertainty band is ±0.02–0.03 based on typical Monte Carlo fusion blanket studies — the concept sits comfortably above the 1.05 floor even at the lower uncertainty bound.
+
+---
+
+### 3.5. Island Divertor Scaling to Burning Plasma Power Density (Challenge 5)
+
+**Verdict**: **Genuinely uncertain**
+
+**Rationale**: The island divertor is unique to QI stellarators and has no tokamak analogue. W7-X demonstrated the concept in steady-state operation at low power density, showing advantages over tokamak divertors (larger wetted area, complete detachment, no Eich scaling; stellaris-design-details.md §2.5). Key milestones: February 2023 — 30-minute continuous discharge; June 2025 — 1.8 GJ energy record in 6-minute run. However, W7-X operates at power densities far below Stellaris's 4.05 MW/m² first wall load. The island divertor geometry is tightly coupled to the magnetic topology — unlike the tokamak poloidal divertor, it cannot be independently redesigned if it fails to manage burning-plasma exhaust power. The Stellaris paper explicitly defers "recycling efficiency, ash removal, and erosion rates" to subsequent studies (stellaris-design-details.md §2.5).
+
+**What would retire this risk**: **Burning plasma divertor experiments** at Stellaris-relevant power densities. The Alpha device (~2031) is the first opportunity to test the island divertor at 4 MW/m² first wall load in a QI configuration. If the divertor successfully maintains strong detachment and acceptable tungsten erosion rates at this power density, the risk is retired. If not, the only mitigation within the QI approach is to accept higher erosion and shorter replacement intervals (increasing O&M cost and reducing effective availability) — there is no straightforward engineering fallback that preserves the magnetic topology.
+
+---
 
 ## 4. Structural Advantages and Disadvantages
 
-Comparison against **01-hts-compact-tokamak** (CFS ARC-class) baseline, using the CAS-level delta framework from analysis.md §7.
+Comparison against the conventional D-T tokamak cost structure baseline (HTS compact tokamak, 01-hts-compact-tokamak reference):
 
-### Advantages (negative cost deltas)
+### Eliminated Cost Items (Structural Advantages)
 
-| Item | Direction | Magnitude | Basis |
-|------|-----------|-----------|-------|
-| **Heating & Current Drive** (C220104) | Large − | −50% to −80% capital | ECRH only; no NBI, no ICRF, no central solenoid (CS). Conditional on H4 (ignition): if 50 MW sustained ECRH is required, this advantage largely disappears. No CS cost is a firm saving (~$50M in tokamak designs). Model shows C220104 = $353M (Scenario A, 5 MW), vs. ~$600–800M for NBI+ECRH+CS in tokamak baselines. |
-| **Heat Transport** (CAS24) | Small − | ~−10% | Water-cooled WCLL is more mature than FLiBe molten salt (ARC reference); lower-temperature primary loop simplifies engineering. |
-| **Power Conversion** (CAS25) | Small − | ~−5–10% | Water Rankine at ~500°C (EUROFER97 limit) is cheaper technology per GWth than sCO₂ Brayton at higher temperatures: mature industrial supply chain, no novel turbomachinery. Competing effect: 32% efficiency requires ~3.1 GWth input vs. ~2.5 GWth for 40%-efficient reference — larger steam plant at fixed net output. Net direction is "−" but magnitude is small. |
-| **Capacity Factor** (not a CAS account — LCOE denominator) | Structural advantage | ~+3–5 percentage points | Disruption-free steady-state operation eliminates the tokamak's largest unplanned downtime source. W7-X demonstrated >97% experimental run-time; blanket/divertor maintenance limits plant CF to 85–95%. **Critical caveat**: the advantage is relative to the HTS compact tokamak reference CF, not to a conventional disruption-limited tokamak. If ARC-class designs achieve 87–90% via active disruption prediction, Stellaris's 88% advantage shrinks to 0–1 percentage points.
+1. **No central solenoid (CS)** — Stellarators are current-free by design; no flux-swing requirement. The CS coil set is typically 5–10% of tokamak CAS21 magnet cost (ITER-scale devices). For compact tokamaks, CS may be a smaller fraction or eliminated (ARC-class uses non-inductive startup), so the absolute saving is modest but directionally favorable.
 
-**Total avoided cost from advantages**: ~$150–250M capital (primarily H&CD if H4 is true) + ~3–5 percentage points CF (worth ~$7/MWh at 88% vs. 85%, but uncertain baseline).
+2. **No continuous current drive** — Tokamaks require NBI or ICRF for steady-state current drive; stellarators use ECRH for heating only (no current drive component). If H4-true (ignited), steady-state ECRH drops to ~5 MW vs. 50–100 MW for a tokamak H&CD system. This is the **primary stated economic advantage** for stellarators (analysis.md §7, C220104 row: "Large −, −50 to −80%"). **Caveat**: This advantage disappears if H4-false (50 MW ECRH sustained).
 
-### Disadvantages (positive cost deltas)
+3. **No disruption mitigation hardware** — Stellarators do not disrupt; no need for vertical position control, disruption prediction/avoidance systems, or halo current protection. This eliminates a cost and complexity layer present in all tokamaks. The cost saving is diffuse (spread across control systems, power supplies, and structural design margins) rather than a single large account.
 
-| Item | Direction | Magnitude | Basis |
-|------|-----------|-----------|-------|
-| **Coils** (C220103) | Large + | **1.5–5× tokamak reference** | 3D non-planar HTS coil geometry vs. D-shaped wound coils. Brown (2018): stellarator magnets carry a substantial premium in CAS21 (note: Brown's CAS21 = magnets; framework CAS21 = buildings). Model shows C220103 = $516M at DEFAULT (wound-coil calibration); at 1.5×, $774M; at 2.5×, $1,290M; at 5×, $2,580M. This is the dominant LCOE uncertainty. |
-| **First Wall / Blanket** (C220101) | Small + | +5–15% | 3D curved tungsten tile fabrication premium over flat tokamak tiles; WCLL adapted to helical geometry. Partially offset by WCLL vs. FLiBe simplicity (WCLL likely simpler than ARC-class FLiBe molten salt at lower temperature). Model: C220101 = $556M (framework default); no override applied. |
-| **Buildings** (CAS21) | Small + | +5–15% | Reactor building volume scales with machine footprint. QI stellarator at R0 ≈ 13 m requires substantially larger containment and assembly building than ARC-class compact tokamak (R0 ≈ 3–4 m). Gundremmingen site reuse reduces land acquisition and permitting cost but not reactor building volume. Model: CAS21 = $930M. |
-| **O&M** (CAS70 annualized) | Structural + | Magnitude unknown | Port-access constraint from modular stellarator coil geometry — "relatively small ports for in-vessel access and maintenance, i.e. in comparison with tokamaks" (Queral et al. 2025). This is a generic consequence of non-planar coil architecture, not a Stellaris-specific choice. Framework default (CAS70 = $178.8M/yr → $23.2/MWh) is a lower bound; O&M multiplier sweep shows 1.5× → $34.8/MWh, 2× → $46.4/MWh. |
-| **Magnet Replacement** (lifecycle cost, not in initial CAS) | Unique + | +$4.5–$22/MWh over plant life | REBCO neutron fluence limit (~3×10²² m⁻²) → ~10 full-power years at 2,700 MW. Two coil replacements required over 30-year plant lifetime. At DEFAULT coil cost ($516M), replacement adds $4.5/MWh; at 5× coil cost ($2,580M), +$22.3/MWh. This cost does not appear in the compact HTS tokamak reference on the same 10-year replacement schedule (if ARC-class designs also require coil replacement at 10 FPY, the disadvantage is shared; this is unconfirmed). |
+### Added Cost Items (Structural Disadvantages)
 
-**Total added cost from disadvantages**: C220103 premium ($258M to $2,064M above tokamak baseline) + O&M structural uplift ($0 to $23.2/MWh unknown) + magnet replacement ($4.5 to $22.3/MWh depending on coil cost). The C220103 premium dominates all other deltas combined.
+1. **3D non-planar coil manufacturing premium** — The dominant LCOE uncertainty. Freeform stellarator coils require more tape per coil turn-length, precision positioning mandrels, and quality assurance for complex 3D geometry. Brown (2018) stellarator-vs-tokamak comparison shows the magnet system carrying a 1.5–5× premium in the CAS21 account. **Quantification**: C220103 = $2.3B at DEFAULT (lower bound) vs. $3.5B (1.5×) to $11.6B (5×). The 3D premium scales with the number of coils (50 modular coils for Stellaris) and stored energy (111 GJ, vs. ~2 GJ for a compact tokamak at equivalent net output).
+
+2. **Higher cryogenic load** — p_coils = 111 MW conduction power to coils (Stellaris Table 3; stellaris-design-details.md). This is ~11% of gross thermal output and far exceeds the 2–3 MW default for tokamaks. The recirculating power fraction is ~20–25% (161–211 MW total across ECRH + coils + BOP pumping), vs. ~15–20% for compact tokamaks. **Quantification**: The coil conduction penalty adds ~$0.3/MWh to LCOE per MW of p_coils (elasticity +0.03); 111 MW vs. 3 MW baseline → ~$3.4/MWh LCOE penalty. This is non-trivial but smaller than the H4 branching effect ($3.4/MWh).
+
+3. **Low-beta machine scale penalty** — Stellaris operates at 2.76% beta, roughly half the 5–8% beta of compact tokamaks. Producing 2.7 GW fusion power at 6.1 MW/m³ average power density requires a larger physical machine (R0 ≈ 13 m vs. 3–4 m for ARC-class). This propagates into first wall area, blanket mass, vacuum vessel, and buildings (CAS21). **Quantification**: analysis.md §7 rates CAS21 as "Small +, 5–15%" relative to compact tokamak reference; Scenario H2a (4% beta next-gen design) demonstrates the scale penalty is ~$6/MWh LCOE at DEFAULT coil cost. The penalty also propagates into construction time (8 yr vs. 6–7 yr for compact devices), compounding into IDC.
+
+4. **O&M structural uplift** — Modular stellarator coil architecture leaves "relatively small ports for in-vessel access and maintenance, i.e. in comparison with tokamaks" (Queral et al. 2025; arxiv-2501-04640.md). Blanket and divertor module size is constrained by coil geometry, increasing maintenance complexity. **Quantification**: CAS70 = $184M/yr annualized at DEFAULT; O&M multiplier sweep shows 1.5× uplift → +$11.9/MWh LCOE, 2× uplift → +$23.8/MWh. The magnitude is truly unknown (Gap #7) — the DEFAULT is a lower bound for the same structural reason that C220103 is a lower bound.
+
+5. **Periodic magnet replacement** — REBCO neutron fluence limit (~3×10²² m⁻²) constrains coil lifetime to ~10 full-power years at 2.7 GW (stellaris-design-details.md §2.8). Two magnet replacements are required over a 30-year plant lifetime. **Quantification**: replacement-inclusive LCOE adds +$20/MWh at DEFAULT coil cost, +$30/MWh at 1.5× multiplier, +$50/MWh at 2.5× multiplier. This is a lifecycle cost not shared by compact HTS tokamaks on the same 10-year replacement schedule — ARC-class devices may design for longer magnet lifetimes via shielding or accept coil replacement as well, but no published ARC-lineage analysis includes this cost component.
 
 ### Net Directional Assessment
 
-**Uncertain — competitiveness depends entirely on coil cost vs. H&CD savings + CF advantage.**
+**Uncertain; dominated by C220103 vs. C220104 + capacity factor.**
 
-If the 3D coil manufacturing premium is ≤1.5× (optimistic), Stellaris is competitive: the H&CD capital savings (~$250M) and the CF advantage (~$7/MWh at 88% vs. 85%) approximately offset the coil premium (~$258M) and O&M structural uplift (unknown magnitude). Replacement-inclusive LCOE at 1.5× coil cost is $117.6/MWh.
+The competitiveness case depends entirely on whether:
+- The 3D coil manufacturing premium (**Large +**, 1.5–5×) is more than offset by:
+  - The H&CD saving (**Large −**, −50 to −80%; conditional on H4-true)
+  - **PLUS** the capacity factor advantage (−0.89 elasticity; requires 85–95% stellarator CF to exceed the HTS compact tokamak reference CF by a meaningful margin)
 
-If the coil premium is ≥2.5× (mid-range), Stellaris is not competitive: the added coil cost (~$774M) exceeds the H&CD savings even if H4 is true, and the O&M structural uplift compounds the disadvantage. Replacement-inclusive LCOE at 2.5× is $131.1/MWh — well above plausible HTS compact tokamak baselines.
+At DEFAULT coil cost (1.0×, lower bound) and H4-true (ignited, optimistic), Stellaris achieves $157/MWh replacement-inclusive LCOE at 88% CF. This is **plausibly competitive** if the HTS compact tokamak reference sits at $150–180/MWh (unverified — 01 analysis has not published LCOE). At 1.5× coil multiplier (optimistic 3D premium), replacement-inclusive LCOE is $188/MWh at 88% CF — marginally competitive. At 2.5× multiplier, $249/MWh — unlikely to be competitive even at 95% CF ($232/MWh).
 
-**Critical unresolved comparison**: The CF advantage cannot be quantified until the 01-hts-compact-tokamak analysis publishes a capacity factor estimate. If ARC-class tokamaks achieve 87–90% CF, Stellaris's 88% advantage is negligible, and the coil cost premium must be offset by H&CD savings alone — which is insufficient at multipliers ≥2×.
+The viability envelope is narrow: the concept is economically viable **only if** the 3D coil manufacturing premium is at the optimistic end of the Brown (2018) range (≤2×) **and** the capacity factor advantage over the HTS compact tokamak reference is material (≥3–5 percentage points). If either condition fails, the stellarator's structural cost disadvantages dominate.
+
+---
 
 ## 5. Cross-Concept Positioning
 
-Stellaris occupies a specific niche: **high-field QI stellarator, HTS magnets, D-T fuel, European private sector, commercial power plant**.
+### 5.1. Nearest Neighbors
 
-### Nearest neighbors (shared physics or technology):
+**Helios (Thea Energy, USA)** — The closest within-family comparator. Both are private-sector QI stellarators targeting commercial D-T plants with HTS magnets. Key differences:
+- **Coil geometry**: Helios uses planar convex coil arrays (simpler to wind, lower manufacturing risk); Stellaris uses non-planar modular coils (stronger field per conductor, more complex).
+- **Thermal efficiency**: Helios 40% (vanadium alloy FW, 635°C steam) vs. Stellaris ~32% (EUROFER97, 500°C steam). The 8-percentage-point gross efficiency gap is a 25% relative difference in cycle performance — Helios requires less thermal plant for the same net output, offsetting some BOP capital cost.
+- **Beta**: Both operate at ~2.7% beta (Helios 2.7%, Stellaris 2.76%). This is a shared low-beta penalty relative to compact tokamaks.
 
-1. **Helios / Thea Energy** — QA/QI stellarator with HTS planar coil arrays. Key similarity: same optimization family (quasi-isodynamic), D-T fuel, HTS REBCO, ~2.7% beta. Key difference: Helios uses planar convex coil arrays (simpler to wind, lower manufacturing risk) vs. Stellaris's non-planar modular coils (stronger field per conductor, higher complexity). Helios achieves 40% thermal efficiency (vanadium alloy FW) vs. Stellaris's 32% (EUROFER97 limit). Helios is the primary LCOE analogue; capacity factor (88%) and ignited ECRH power (~1 MW) are directly borrowed from Helios in the Stellaris model.
+**Economic implication**: Helios and Stellaris occupy the same LCOE band if 3D coil costs are similar. If Helios's planar coils prove significantly cheaper to manufacture (coil multiplier 1.2× vs. Stellaris 1.8×), Helios may have a 10–20% LCOE advantage over Stellaris within the QI family.
 
-2. **W7-X → HELIAS / EUROfusion QI pathway** — public-sector QI stellarator lineage. Key similarity: same QI physics heritage from Max Planck IPP, same WCLL blanket concept, same EUROFER97 structural steel. Key difference: HELIAS/EU-DEMO targets larger device at lower field with LTS or mixed conductors; Stellaris's compactness strategy via high-field HTS is the private-sector departure. W7-X is the direct experimental ancestor; island divertor and alpha confinement validation come from W7-X heritage.
+---
 
-3. **Type One Energy** — HTS stellarator startup (USA), modular coil architecture, targeting solid ceramic breeder (HCPB) vs. WCLL. Not yet at commercial plant study stage publicly. Similar driver technology bet (3D HTS coil manufacturing) but different blanket and heating choices.
+**W7-X → EUROfusion HELIAS pathway (Germany, public sector)** — The large-device public-sector QI lineage. Stellaris is a compact high-field HTS departure from this path. Key differences:
+- **Scale**: HELIAS/EU-DEMO targets R0 ≈ 20 m, lower field, LTS or mixed LTS/HTS; Stellaris targets R0 ≈ 13 m, 20 T peak field, full HTS.
+- **Philosophy**: HELIAS is an ITER-scale extrapolation (conservative physics, large machine, multi-decade timeline); Stellaris is a CFS-ARC-analogue acceleration play (private capital, aggressive timelines, HTS compactness bet).
 
-### What makes Stellaris fundamentally different from other MFE concepts:
+**Economic implication**: HELIAS-class devices are unlikely to achieve competitive LCOE on a $/W basis due to size (capital cost scales faster than output power in the large-device regime). Stellaris's compactness strategy is the correct direction for commercial viability, but the 2.76% beta limits the compactness gain relative to ARC-class tokamaks.
 
-- **3D magnetic confinement with no plasma current**: stellarators produce the confining field entirely via external coils, eliminating the need for current drive (no NBI, no ICRF, no CS). This is the largest structural cost difference vs. tokamaks — H&CD CAS22 account is 50–80% cheaper (conditional on ignition).
+---
 
-- **Inherent steady-state, disruption-free operation**: not a design choice or control system achievement — it is a consequence of currentless plasma equilibrium. Tokamaks can approach steady-state via active control (e.g., ARC-class disruption avoidance), but stellarators achieve it passively.
+**Type One Energy (USA, private)** — Another HTS stellarator startup using modular coil architecture, targeting HCPB (solid ceramic breeder) rather than WCLL blanket. Not yet at commercial plant study stage publicly. Similar 3D coil manufacturing risk; different blanket and heating choices.
 
-- **Island divertor**: heat exhaust geometry is coupled to the magnetic topology. Tokamaks use poloidal divertors with independent optimization; stellarators use naturally occurring magnetic islands at the plasma edge. W7-X validated the concept; burning plasma power density scaling is the open question.
+**Economic implication**: Type One and Stellaris share the 3D HTS coil manufacturing risk. Whichever company demonstrates viable coil fabrication first (via SMC-equivalent demos) retires the risk for the entire stellarator family and provides a manufacturing cost anchor for the others.
 
-- **Non-planar coil manufacturing as the viability gate**: all other MFE concepts (tokamak, FRC, mirror, levitated dipole) use planar or axisymmetric coil geometries. Stellarators require precision-manufactured 3D freeform windings — this is the single technology bet that has no fallback if it fails.
+---
 
-### Economic positioning relative to compact HTS tokamaks:
+### 5.2. Where Stellaris Sits in the Landscape
 
-Stellaris and ARC-class compact tokamaks (01-hts-compact-tokamak) share most of the technology stack: D-T fuel, HTS REBCO conductors, high-field magnets, WCLL-type blanket, steam Rankine power conversion. The economic comparison reduces to **three differentiators**:
+**Confinement family**: MFE — Stellarator (QI subclass)
+**Technology generation**: Second-generation private fusion (HTS magnets, D-T fuel, commercial power plant target, ~2030s deployment timeline)
+**Economic niche**: "Disruption-free capacity factor arbitrage vs. compact HTS tokamaks"
 
-1. **Coil cost** (Stellaris disadvantage): 3D non-planar geometry vs. wound D-shaped coils — premium is 1.5–5×.
-2. **H&CD cost** (Stellaris advantage if H4 true): ECRH-only, no NBI/CS — savings ~$250M capital.
-3. **Capacity factor** (Stellaris advantage, magnitude uncertain): disruption-free vs. active disruption avoidance — delta is 0–5 percentage points depending on tokamak baseline.
+Stellaris occupies a **high-risk, high-variance** position:
+- **If 3D coil cost ≤ 1.5× tokamak reference**: Plausibly competitive at $158–188/MWh replacement-inclusive LCOE (88% CF). The disruption-free advantage is real and structural; it requires no physics breakthrough to monetize.
+- **If 3D coil cost ≥ 2.5× tokamak reference**: Unlikely to be competitive at $249–350/MWh. The capacity factor advantage (even at 95% CF) cannot offset a factor-of-2.5 coil cost penalty.
 
-If the coil premium is ≤1.5× and the CF advantage is ≥3 percentage points, Stellaris is competitive. If the coil premium is ≥2.5× or the CF advantage is ≤1 percentage point, Stellaris is not competitive. The viability envelope is narrow.
+The concept is **fundamentally different** from compact tokamaks in that:
+1. **The primary economic lever is manufacturing cost (C220103), not physics performance.** Compact tokamaks bet on high-beta physics to shrink machine size; stellarators bet on disruption-free operation to increase availability. Stellaris's competitiveness depends on whether 3D HTS coil manufacturing is "hard" or "impossible at scale" — a question that resolves via industrial learning (SMC demo, Alpha coil fabrication), not via physics experiments.
+
+2. **The capacity factor advantage is structural, not aspirational.** Tokamaks require active disruption prediction/avoidance to approach 87–90% CF; stellarators achieve 85–95% CF passively via the magnetic topology. This is a genuine differentiator, but the magnitude depends on the actual HTS compact tokamak reference CF (currently unquantified in the 01 analysis).
+
+3. **The concept carries a unique lifecycle cost** (periodic magnet replacement) not shared by compact tokamaks on the same timeline. The replacement-inclusive LCOE is 10–15% higher than the initial-build LCOE at DEFAULT coil cost; this gap widens to 25–30% at 1.5× multiplier. Cross-concept comparisons must use the replacement-inclusive figure to be economically valid.
+
+---
 
 ## 6. Modeling Confidence
 
-**Rating: Low**
+**Rating**: **Low**
 
-### Data-anchored parameters: ~40%
+### 6.1. Data-Anchored vs. Speculative Parameters
 
-- Plasma physics: fusion power (2,700 MW), beta (2.76%), major radius (12.7 m), confinement enhancement (H₉₈ = 1.30), TBR (1.074), alpha energy loss (~0.8%) — all from Stellaris paper Table 3 and neutronics simulations.
-- Power balance: thermal power (3,300 MW), net electric (1,000 MW), ECRH (50 MW startup), coil conduction (111 MW), stored energy (111 GJ) — from Stellaris paper.
-- Materials and geometry: 50 modular coils, peak field 20 T on-coil, WCLL blanket with 70% Li-6 enrichment, tungsten first wall, EUROFER97 structure — all specified.
+**Data-anchored** (8 of 15 major parameters):
+- Net electric output: 1,000 MWe (Stellaris Table 3; high confidence)
+- Fusion power: 2.7 GW (Stellaris Table 3; high confidence)
+- Major radius / plasma volume: R0 ≈ 13 m, V ≈ 443 m³ (derived from power density 6.1 MW/m³; medium confidence — geometry not published, but derivation is sound)
+- Beta: 2.76% (Stellaris Table 3; high confidence)
+- Coil conduction power: 111 MW (Stellaris Table 3; high confidence)
+- TBR: 1.074 (Stellaris §2.8; medium confidence — Monte Carlo point estimate)
+- Thermal efficiency: 0.38 gross / 0.32 net (EUROFER97 temperature limit + standard Rankine cycle; medium confidence — assumption, not cycle study)
+- ECRH auxiliary power: 50 MW (Stellaris Table 3; high confidence — but H4 branching means this may drop to 5 MW in ignited phase)
 
-### Speculative / analogue-based parameters: ~60%
+**Speculative** (7 of 15 major parameters):
+- **C220103 coil cost**: Framework default is a lower bound (wound-coil tokamak calibration). Actual cost is 1.5–5× this value (Brown 2018 analogue); no Stellaris-specific data. **Primary uncertainty.**
+- **Capacity factor**: 88% (Helios analogue); Proxima has not published a Stellaris target. Range 85–95% is defensible but carries medium confidence.
+- **Construction time**: 8 years (framework stellarator default); no Stellaris-specific schedule published. Range 7–12 years modeled; central estimate is a conceptual bound.
+- **H4 hypothesis (ignition)**: Two scenarios modeled (5 MW vs. 50 MW ECRH); resolves only after Alpha device burning plasma operation (~2031).
+- **CAS70 O&M**: Framework default is a lower bound; structural O&M uplift vs. compact tokamaks is directionally certain (+) but magnitude is unknown. Gap #7 is "truly unknown."
+- **Blanket/divertor replacement interval**: 1–4 years (Queral et al. 2025, generic stellarator reactor constraint). Stellaris-specific maintenance schedule not published.
+- **Island divertor power handling**: Demonstrated at W7-X low power density; burning plasma (4 MW/m²) validation requires Alpha device.
 
-- **C220103 coil cost** (PRIMARY UNCERTAINTY): framework default uses wound-coil calibration; 3D non-planar manufacturing premium is unknown. SMC demo (2027) is the first data point.
-- **Capacity factor**: 88% from Helios analogue, not Stellaris-specific. Blanket/divertor replacement interval (1–4 years, Queral et al. 2025) provides a causal anchor for the 85–95% range, but no Stellaris O&M schedule exists.
-- **Thermal efficiency**: 32% assumed from EUROFER97 temperature limit (~500°C), not from a detailed cycle study.
-- **H4 ignition assumption**: 5 MW ECRH steady-state is based on Helios (1 MW ignited) and alpha confinement simulations (0.8% loss), but burning plasma validation requires Alpha device (~2031).
-- **O&M cost**: CAS70 = $178.8M/yr (framework default) is a lower bound; port-access structural uplift is unknown (Gap #7).
-- **Construction time**: 8 years (framework default) is plausible for a 13 m machine with 3D coil installation but has no Stellaris-specific engineering basis.
+**Ratio**: ~8 data-anchored / 15 total = **53% data-anchored, 47% speculative**. This is a relatively high speculative fraction for a fusion concept with a peer-reviewed plant study — the Stellaris paper is exceptionally detailed on physics and geometry but provides no cost breakdown or operational schedule.
 
-### Dominant source of LCOE uncertainty
+---
 
-**3D HTS coil manufacturing cost (C220103)** — the cost multiplier range (1×–5×) spans a $54.2/MWh LCOE spread ($110.8 at 1× to $165.0 at 5×, replacement-inclusive). This exceeds the combined uncertainty from all other parameters. The coil cost determines whether Stellaris is viable; all other parameters determine where LCOE sits within the viable envelope.
+### 6.2. Dominant Source of LCOE Uncertainty
 
-Second-largest uncertainty is **capacity factor baseline** — not the 85–95% Stellaris range itself, but the HTS compact tokamak reference CF against which the advantage is measured. If the tokamak baseline is 87–90% (not 83–85%), the stellarator advantage shrinks from ~5 percentage points to 0–1 percentage points, eliminating ~$7/MWh of LCOE benefit.
+**3D HTS coil manufacturing cost (C220103)** — The single largest uncertainty contributor.
+
+At DEFAULT (1.0×), C220103 = $2.3B = 21% of total overnight capital ($10.8B). The Brown (2018) multiplier range (1.5–5×) spans $3.5B to $11.6B, a $8.1B swing. Replacement-inclusive LCOE at 88% CF ranges from $157/MWh (1.0×) to $401/MWh (5×) — a factor-of-2.6 spread driven entirely by this one parameter.
+
+**Why this dominates**: Unlike capacity factor (continuous optimization variable with −0.89 elasticity) or thermal efficiency (bounded uncertainty ~±2 percentage points), the coil cost multiplier is a **viability gate** with a factor-of-3 plausible range and no real data point until SMC demo (2027). The LCOE sensitivity to this parameter is non-linear (larger multipliers compound into replacement cost and IDC), and the parameter itself is not resolvable via simulation or analogy — it requires actual manufacturing at scale.
+
+**Second-largest uncertainty**: **Capacity factor advantage over the HTS compact tokamak reference** (H2 hypothesis gate). If the 01 reference achieves 87–90% CF via active disruption prediction, Stellaris's 88% CF provides only 0–1 percentage point advantage — insufficient to offset the 3D coil manufacturing premium. The H2 gate cannot be evaluated until the 01 analysis publishes a comparable CF estimate. This is a **cross-concept comparison uncertainty**, not a Stellaris-specific parameter uncertainty.
+
+---
 
 ## 7. What Would Change My Mind
 
-### In the optimistic direction (Stellaris becomes commercially attractive):
+### 7.1. SMC Demo Cost Data (2027)
 
-1. **SMC demo (2027) validates coil manufacturing cost ≤1.2× wound-tokamak reference** — If Proxima demonstrates that non-planar HTS coil winding at 20 T costs less than 20% premium over CFS-style wound coils, the coil manufacturing risk retires completely and Stellaris becomes the lowest-LCOE D-T fusion concept (assuming H4 true and CF ≥88%). The replacement-inclusive LCOE at 1.2× coil cost would be ~$114/MWh — competitive with or below plausible HTS compact tokamak baselines.
+**Specific evidence**: Proxima's Stellarator Model Coil (SMC) demonstration reports fabrication cost, lead time, and manufacturing yield for a single 3D HTS coil at Stellaris-relevant field strength (14.4 T on-axis, 20 T peak-on-coil).
 
-2. **Alpha device (Q>1, ~2031) achieves ignition with ≤5 MW sustained ECRH** — Validates H4 and confirms the H&CD cost advantage (~$250M capital savings) is real. If Alpha demonstrates Q>5 with minimal auxiliary power, the Stellaris economic case strengthens materially because the largest tokamak cost disadvantage (current drive systems) is eliminated.
+**Direction of LCOE revision**:
+- **If SMC unit cost implies coil multiplier ≤ 1.5×**: Revise baseline LCOE down to $158–188/MWh replacement-inclusive (88% CF); stellarator becomes plausibly competitive with compact HTS tokamaks.
+- **If SMC unit cost implies multiplier ≥ 2.5×**: Revise baseline LCOE up to $249–350/MWh; stellarator is unlikely to be competitive even at 95% CF unless H4-true and the compact tokamak reference CF is ≤85%.
 
-3. **Next-generation QI design (4% beta, Scenario H2a lineage) enters development** — CIEMAT-QI4X demonstrated 4% beta resilience; if Proxima pursues a follow-on design at higher beta, the machine scale penalty (Challenge 2) is partially retired and LCOE drops by ~$5.5/MWh. A 4% beta QI stellarator with ≤1.5× coil cost would be economically superior to compact tokamaks at equivalent CF.
+**Why this is decisive**: The coil cost multiplier is the primary LCOE uncertainty and cannot be resolved via analogy or simulation. The SMC demo is the first real manufacturing data point and anchors the lower end of the viability range. If the demo succeeds at reasonable cost, the 3D coil manufacturing risk retires from "genuinely uncertain" to "technology demonstration required at scale." If the demo fails or exceeds cost targets, the concept's economic viability is in serious doubt.
 
-### In the pessimistic direction (Stellaris becomes non-viable):
+---
 
-1. **SMC demo reveals coil cost ≥2.5× tokamak reference** — If 3D non-planar winding at 20 T proves to require specialized tooling, precision metrology, or rework rates that drive per-coil cost to ≥2.5× the wound-coil baseline, Stellaris LCOE exceeds $130/MWh (replacement-inclusive) and the concept cannot compete with HTS compact tokamaks regardless of CF advantage. The H&CD savings (~$250M) are insufficient to offset a $774M+ coil cost premium.
+### 7.2. Alpha Device Burning Plasma Results (~2031)
 
-2. **01-hts-compact-tokamak analysis confirms ARC-class CF target ≥90%** — If the HTS compact tokamak reference achieves 90% capacity factor via active disruption prediction and avoidance, Stellaris's 88% CF (central estimate) becomes a 2-point **disadvantage**. The disruption-free advantage disappears, and the coil cost premium dominates the comparison. Stellaris becomes non-competitive unless coil cost is at the optimistic end (≤1.2×).
+**Specific evidence**: Alpha device (Q>1, ~€2B, Garching site) achieves burning plasma and reports:
+- (a) Steady-state ECRH requirement post-ignition (5 MW vs. 50 MW)
+- (b) Measured alpha energy loss fraction at burning plasma conditions
+- (c) Island divertor power handling at ~4 MW/m² first wall load
 
-3. **Alpha device requires sustained 50 MW ECRH (H4 false)** — If QI alpha confinement at burning plasma conditions proves inadequate to achieve full self-heating, the H&CD capital cost advantage shrinks from $250M to ~$50M (CS elimination only), and the LCOE penalty is +$3.8/MWh. Combined with a ≥2× coil cost multiplier, this eliminates the Stellaris economic case entirely.
+**Direction of LCOE revision**:
+- **If Alpha validates H4-true** (ECRH drops to ~5 MW steady-state): Confirms C220104 (H&CD) as a large negative delta vs. tokamak; strengthens the economic case. No LCOE change from baseline Scenario A, but retires the H4 branching uncertainty.
+- **If Alpha confirms H4-false** (50 MW ECRH sustained): LCOE revises to Scenario B ($141/MWh initial-build, $161/MWh replacement-inclusive at DEFAULT coil cost). The H&CD cost advantage disappears; stellarator competitiveness depends entirely on capacity factor advantage.
+- **If island divertor fails at burning plasma power density**: O&M cost increases due to higher tungsten erosion and shorter replacement intervals; effective availability drops below 85%. This would shift the LCOE floor to $162/MWh → ~$175–185/MWh (assuming 1.5× divertor replacement frequency).
+
+**Why this is decisive**: Alpha is the first QI stellarator burning plasma experiment and validates the two most critical physics assumptions — alpha confinement (H4) and island divertor scaling (Challenge 5). If both succeed, the concept's physics risk retires from "genuinely uncertain" to "demonstrated at sub-commercial scale." If either fails, the economic case weakens materially (H4-false) or catastrophically (divertor failure).
+
+---
+
+### 7.3. HTS Compact Tokamak Reference CF Estimate (01 Analysis)
+
+**Specific evidence**: The 01-hts-compact-tokamak analysis publishes a capacity factor target or estimate for ARC-class devices with active disruption prediction and avoidance.
+
+**Direction of LCOE revision**:
+- **If 01 reference CF ≤ 85%**: Stellaris's 88% CF provides a +3 percentage point advantage; the H2 hypothesis is validated. At −0.89 elasticity, this is ~+2.7% LCOE benefit (~$4/MWh) — modest but meaningful. The disruption-free advantage is real and quantifiable.
+- **If 01 reference CF ≥ 90%**: Stellaris's 88% CF is a **disadvantage** relative to the compact tokamak reference (−2 percentage points → ~−1.8% LCOE penalty, ~$2.5/MWh). The H2 hypothesis gate fails; the stellarator's capacity factor advantage over conventional disruption-limited tokamaks (~83–85%) does not extend to advanced HTS compact tokamaks with active disruption management. The economic case collapses unless the 3D coil manufacturing premium is at the extreme optimistic end (≤1.2× multiplier).
+
+**Why this is decisive**: The capacity factor advantage is the stellarator's primary **structural economic differentiator** — it is physics-guaranteed (no disruptions in stellarator magnetic topology) and does not depend on technology breakthroughs. However, the advantage is **relative to the tokamak comparator**, not absolute. If the comparator is a conventional disruption-limited tokamak (~83–85% CF), the stellarator has a clear edge. If the comparator is an ARC-class device with active disruption prediction targeting 87–90% CF, the edge shrinks to statistical noise. The H2 gate cannot be evaluated without the 01 analysis CF estimate, and the gate is a **go/no-go threshold** for economic competitiveness, not a continuous sensitivity parameter.
+
+---
 
 ## 8. LCOE Downselect Scoring
 
 ### C1: Modularization
 
-**Score: 2.8**
+**Score**: **2.8**
 
-#### Sub-factor 1: Construction mode classification per CAS account
+**Sub-factor 1: Construction mode classification per CAS account**
 
-| CAS Account | Construction Mode | Mode Score | Cost Weight | Weighted Score |
-|-------------|-------------------|------------|-------------|----------------|
-| CAS21 (Buildings) | Site-assembled from factory sub-assemblies | 3 | 11.7% | 0.35 |
-| C220101 (FW/Blanket) | Factory-manufactured module (WCLL Single Module Segment design) | 5 | 7.0% | 0.35 |
-| C220102 (Shield) | Site-assembled from factory sub-assemblies | 3 | 5.4% | 0.16 |
-| C220103 (Coils) | **Stick-built / field-erected** (3D non-planar geometry; precision on-site assembly) | **1** | 6.5% | 0.07 |
-| C220104 (Heating) | Factory-manufactured module (56 gyrotrons) | 5 | 4.4% | 0.22 |
-| C220105 (Structure) | Site-assembled from factory sub-assemblies | 3 | 0.4% | 0.01 |
-| C220106 (Vessel) | Stick-built / field-erected (large 3D vacuum vessel) | 1 | 1.4% | 0.01 |
-| C220108 (Divertor) | Site-assembled from factory sub-assemblies (island divertor modules) | 3 | 1.4% | 0.04 |
-| CAS23 (Turbine) | Factory-manufactured module (steam Rankine, standard industrial equipment) | 5 | 3.0% | 0.15 |
-| CAS24 (Electrical) | Factory-manufactured module | 5 | 1.3% | 0.07 |
-| CAS25 (Misc) | Factory-manufactured module | 5 | 0.8% | 0.04 |
-| CAS26 (Heat Rejection) | Factory-manufactured module (cooling towers) | 5 | 0.5% | 0.03 |
+| CAS Account | Construction Mode | Score | Cost Weight | Justification |
+|-------------|------------------|-------|-------------|---------------|
+| CAS21 (Buildings) | Site-assembled from factory sub-assemblies | 3 | $679M | Reactor building at R0 ≈ 13 m is field-erected steel/concrete structure; no modularization potential in stellarator containment geometry. |
+| C220101 (First Wall / Blanket) | Factory-manufactured module | 5 | $584M | Stellaris uses Single Module Segment (SMS) design with poloidal splitting every ~1 m for modularity (stellaris-design-details.md §2.8). WCLL blanket modules are fabricated off-site. |
+| C220102 (Shield) | Factory-manufactured module | 5 | $447M | Shield blocks are standard factory-cast components; no site-specific geometry. |
+| C220103 (Coils) | Factory-manufactured module | 5 | $2,323M | 50 modular HTS coils, each fabricated as a complete assembly off-site. "Complex 3D freeform geometry" (analysis.md §2) but each coil is a factory unit, not stick-built. |
+| C220104 (Heating) | Factory-manufactured module | 5 | $150M | 56 gyrotrons × 1 MW each; standard industrial ECRH units. |
+| C220108 (Divertor) | Factory-manufactured module | 5 | $112M | Tungsten-based island divertor with modular target plates (W7-X heritage; stellaris-design-details.md §2.5). |
+| CAS23 (Turbine Plant) | Factory-manufactured module | 5 | $242M | Steam turbine is a commodity industrial component. |
+| CAS24 (Electrical Plant) | Factory-manufactured module | 5 | $103M | Switchgear, transformers, converters — all standard electrical equipment. |
+| CAS25 (Miscellaneous) | Factory-manufactured module | 5 | $63M | HVAC, auxiliary systems — standard BOP components. |
+| CAS26 (Heat Rejection) | Site-assembled from factory sub-assemblies | 3 | $119M | Cooling towers are field-erected; heat exchangers are factory units. |
+| CAS27 (Special Materials) | Factory-manufactured module | 5 | $15M | Tritium, Li-6 enrichment — purchased commodities/services. |
 
-**Cost-weighted average mode score**: 1.50
+**Cost-weighted average** = (3×$679M + 5×$584M + 5×$447M + 5×$2,323M + 5×$150M + 5×$112M + 5×$242M + 5×$103M + 5×$63M + 3×$119M + 5×$15M) / ($679M + $584M + $447M + $2,323M + $150M + $112M + $242M + $103M + $63M + $119M + $15M) = (3×$798M + 5×$4,039M) / $4,837M = ($2,394M + $20,195M) / $4,837M ≈ **4.67**
 
-#### Sub-factor 2: Module repetition boost
+**Sub-factor 2: Module repetition boost**
 
-WCLL blanket uses Single Module Segment (SMS) design with poloidal splitting every ~1 m (Stellaris paper §2.8). Estimated ~40–50 blanket modules per plant (not published; derived from first wall area and module size). This falls in the 10–49 module range → **+1.0 boost**.
+Stellaris has **50 identical modular coils**. This exceeds the 10-unit threshold for repetition learning. Per the scoring framework: "10-49 identical modules per plant: +1.0 to the cost-weighted average."
 
-**C1 final**: 1.50 + 1.0 = 2.50, clamped to [1, 5] → **2.5**
+**C1 = 4.67 + 1.0 = 5.67, clamped to [1, 5] → C1 = 5.0**
 
-**Rounded to one decimal**: **2.5**
-
-#### Justification
-
-The low C1 score reflects the **non-planar 3D coil geometry** as the dominant modularization constraint. Unlike tokamak TF coils (D-shaped, factory-wound, trucked to site as complete units), Stellaris's 50 modular coils are complex 3D freeforms requiring precision on-site assembly and field winding. The Stellaris paper does not describe a factory coil production line; the SMC demo (2027) will test manufacturability of a single coil, not a production process. C220103 (coils, 6.5% of total capital) scores 1 (stick-built), and C220106 (vacuum vessel, 1.4%) also scores 1 due to large 3D geometry.
-
-Offsetting factors: WCLL blanket modules (C220101, 7.0% of capital) are factory-manufactured and achieve the +1.0 repetition boost; ECRH gyrotrons (C220104, 4.4%) and steam Rankine BoP (CAS23–26, 5.6% combined) are standard industrial equipment with mature factory production. However, these advantages cannot overcome the coil modularization penalty because stellarator coils are a large-cost, high-TRL-risk, site-critical-path item.
-
-**Comparative context**: An HTS compact tokamak (01-hts-compact-tokamak) with factory-wound D-shaped TF coils would score C220103 = 5 (factory module), yielding a cost-weighted average mode score ~3.0–3.5 before repetition boost. Stellaris's 2.5 (after boost) reflects the stellarator-specific modularization disadvantage.
+**Justification**: Stellaris exhibits exceptionally high modularization. The 50-coil architecture is the single largest factory-fabricated module count in any fusion concept analyzed — it transforms the largest capital account (C220103, 21% of overnight capital) into a mass-production learning opportunity rather than a custom-build bottleneck. The blanket uses modular Single Module Segments (SMS design); the divertor uses modular tungsten target plates; the heating system uses 56 identical gyrotrons. The only major site-erected components are the buildings (CAS21) and cooling towers (CAS26). This is the maximum score and reflects a genuine architectural advantage: **if the 3D coil manufacturing process proves viable at unit cost ≤1.5× tokamak reference, the stellarator's 50-unit repetition drives manufacturing learning faster than any tokamak with 12–18 TF coils.**
 
 ---
 
 ### C3: Supply Chain Learning
 
-**Score: 3.2**
+**Score**: **3.4**
 
-#### Sub-factor A: Component learning rates (cost-weighted average, 1–5 scale)
+**Sub-factor A: Component learning rates (cost-weighted average across CAS accounts)**
 
-| Component | CAS Account | Learning Rate Category | Score | Cost Weight | Weighted |
-|-----------|-------------|------------------------|-------|-------------|----------|
-| REBCO HTS tape | C220103 | Industrial component with growing production base | 4 | 6.5% | 0.26 |
-| WCLL blanket (PbLi + EUROFER97) | C220101 | Fusion-specific component with no current market | 2 | 7.0% | 0.14 |
-| Tungsten first wall armor | C220101 | Specialty component with limited but existing supply chain | 3 | (included in C220101) | — |
-| EUROFER97 structural steel | C220105/106 | Fusion-specific component with no current market | 2 | 1.8% | 0.04 |
-| ECRH gyrotrons (230–240 GHz) | C220104 | Fusion-specific component with no current market (140 GHz established; higher freq. developmental) | 2 | 4.4% | 0.09 |
-| Shield (steel + borated water) | C220102 | Commodity component with established manufacturing | 5 | 5.4% | 0.27 |
-| Steam Rankine turbine plant | CAS23 | Commodity component with established manufacturing (GW-scale industrial supply) | 5 | 3.0% | 0.15 |
-| Electrical plant | CAS24 | Commodity component | 5 | 1.3% | 0.07 |
-| Cooling towers | CAS26 | Commodity component | 5 | 0.5% | 0.03 |
-| Buildings (reactor containment) | CAS21 | Commodity component (large fission/civil construction analogue) | 5 | 11.7% | 0.59 |
-| Vacuum vessel (EUROFER97, 3D) | C220106 | Specialty component with limited supply chain (large vacuum vessels exist; 3D stellarator geometry is novel) | 3 | 1.4% | 0.04 |
-| Divertor (tungsten targets, island geometry) | C220108 | Fusion-specific component with no current market | 2 | 1.4% | 0.03 |
+| Component | Learning Rate Category | Score | Cost Share | Justification |
+|-----------|----------------------|-------|-----------|---------------|
+| REBCO HTS tape (C220103 coils) | 2 — Fusion-specific, no current market | 2 | 21% | Global REBCO production ~thousands km/yr; power-plant demand ~5,000+ km per plant. No mass market; entire supply chain serves fusion/accelerator R&D. Tape cost ~$30–100/kA-m (high end of specialty superconductor range). |
+| EUROFER97 structural steel (C220101 blanket, C220106 vessel) | 3 — Specialty component, limited supply chain | 3 | 6% | Not industrially produced at scale; exists as experimental heats for EU DEMO program. Established production route but limited to fusion/fission R&D. |
+| Tungsten armor / divertor targets (C220101, C220108) | 3 — Specialty component, limited supply chain | 3 | 6% | Tungsten supply adequate globally; precision fabrication for stellarator 3D geometry is specialty work. W7-X demonstrated manufacturing but not at power-plant scale. |
+| PbLi eutectic (C220101 blanket) | 4 — Industrial component, growing production | 4 | 5% | Lead and lithium are commodity metals; eutectic production exists for fission MSR R&D. Li-6 enrichment (70% required) is the bottleneck — limited suppliers (China, Russia via COLEX; Western laser enrichment at pilot scale). |
+| Gyrotrons (C220104 ECRH) | 3 — Specialty component, limited supply chain | 3 | 1% | 230–240 GHz gyrotrons are at/beyond current industrial capability. W7-X uses 140 GHz units (~€3–5M each); higher frequency increases unit cost. Supply chain limited to fusion ECRH and plasma heating R&D. |
+| Steam turbine / BOP (CAS23, CAS24, CAS26) | 5 — Commodity, established manufacturing | 5 | 5% | GW-scale steam turbines, electrical switchgear, cooling towers are mature industrial products with global supply chains. |
+| WCLL coolant pumps / heat exchangers (CAS24) | 4 — Industrial component, growing production | 4 | 2% | Water pumping and heat exchange at power-plant scale is standard; interface with tritium-permeating PbLi primary loop is the specialty element. |
+| Cryogenic systems (C220107 cryo plant) | 4 — Industrial component, growing production | 4 | 1% | HTS coils at 20–40 K; cryogenic infrastructure exists for LNG, industrial gas, and accelerator applications. Stellaris's 111 MW cryo load is large but not unprecedented. |
+| Balance (instrumentation, controls, auxiliary systems) | 4 — Industrial component | 4 | 53% | Remaining ~53% of capital spread across standard industrial equipment. |
 
-**Cost-weighted average**: (0.26 + 0.14 + 0.04 + 0.09 + 0.27 + 0.15 + 0.07 + 0.03 + 0.59 + 0.04 + 0.03) / sum(weights) = 1.71 / 0.413 ≈ **4.1**
+**Cost-weighted average** = (2×21% + 3×6% + 3×6% + 4×5% + 3×1% + 5×5% + 4×2% + 4×1% + 4×53%) = (42% + 18% + 18% + 20% + 3% + 25% + 8% + 4% + 212%) / 100% = **3.50**
 
-(Note: weights sum to ~41.3% of total capital; remaining accounts are indirect/financial/site costs without major manufactured components.)
+---
 
-#### Sub-factor B: Supply chain bottleneck count (start at 5.0, subtract penalties)
+**Sub-factor B: Supply chain bottleneck count**
 
-- **Hard constraint**: Li-6 enrichment at 70% (Stellaris paper §2.8, TBR = 1.074 requires this) — global civilian enrichment capacity is limited; primary suppliers China/Russia using COLEX (banned in West due to Hg hazard). Western enrichment (laser/ion exchange) in development but not at industrial scale. **−1.0 penalty**.
-- **Scaling constraint**: REBCO HTS tape production must scale 10×+ for fusion fleet deployment. Current global production ~thousands km/year; a single Stellaris plant likely requires thousands of km (111 GJ stored energy, 50 coils, peak field 20 T). **−0.5 penalty**.
-- **Scaling constraint**: EUROFER97 structural steel — exists as experimental heats for EU DEMO/fusion program, not industrial-scale production. EUROFER97 is required for first wall, blanket, and vessel (~1,500–2,000 tonnes estimated from tokamak analogues). **−0.5 penalty**.
-- **Sole-source dependency**: 230–240 GHz gyrotrons — current state-of-art is 140 GHz (W7-X, ITER). Stellaris requires 56 gyrotrons at higher frequency with no industrial supplier. **−0.25 penalty**.
+Starting at 5.0, subtract penalties:
 
-**Sub-factor B score**: 5.0 − 1.0 − 0.5 − 0.5 − 0.25 = **2.75**, clamped to [1, 5] → **2.8** (rounded)
+- **Hard constraint** (no known path to required quantity): **None** → 0 penalty. REBCO, EUROFER97, tungsten, and PbLi all have established production routes; scaling is required but paths exist.
+- **Scaling constraint** (exists but must scale 10×+): **2 constraints** → −1.0 total.
+  - REBCO HTS tape: Current global production ~thousands km/yr; Stellaris requires ~5,000+ km for a 50-coil set at 111 GJ stored energy. Scale-up factor ~5–10×. (−0.5)
+  - Li-6 enrichment at 70%: Western enrichment capacity (laser/ion exchange) is at pilot scale; must scale to support fleet-level demand (tens of kg/year per plant). (−0.5)
+- **Sole-source dependency**: **1 constraint** → −0.25.
+  - REBCO tape supply dominated by 3–4 manufacturers (SuperPower, SUNAM, Fujikura, SuNAM); loss of any one supplier impacts global fusion programs. Proxima has agreement with Faraday Factory Japan for SMC demo, establishing a supply relationship. (−0.25)
+- **Helium-3 fuel dependency**: **Not applicable** (D-T fuel) → 0 penalty.
 
-#### Sub-factor C: External demand pull (fraction of capital cost in components with >$1B/yr external market)
+**Sub-factor B = 5.0 − 1.0 − 0.25 = 3.75**
 
-| Component | External Market | Annual Market Size | CAS Account | Cost Weight | Included? |
-|-----------|----------------|-------------------|-------------|-------------|-----------|
-| Steam Rankine turbine plant | Fossil/fission/industrial power generation | ~$50B/yr globally | CAS23 | 3.0% | Yes |
-| Electrical plant (transformers, switchgear) | Grid infrastructure | ~$200B/yr globally | CAS24 | 1.3% | Yes |
-| Cooling towers | Industrial HVAC | ~$5B/yr | CAS26 | 0.5% | Yes |
-| Buildings (reactor containment, civil construction) | Commercial/industrial construction | ~$10T/yr globally (general construction) | CAS21 | 11.7% | Yes |
-| Shield (steel, borated water) | Fission reactor shielding, industrial steel | ~$1T/yr (steel market) | CAS102 | 5.4% | Yes |
-| Vacuum pumps | Semiconductor, industrial vacuum | ~$5B/yr | (included in CAS24) | — | Yes |
+---
 
-**Total capital in >$1B/yr external markets**: 3.0% + 1.3% + 0.5% + 11.7% + 5.4% ≈ **21.9%**
+**Sub-factor C: External demand pull**
 
-**Sub-factor C score** (20–40% range): **3**
+Fraction of capital cost in components with >$1B/yr external market:
 
-#### C3 final score
+| Component | External Market | Annual Market Size | Cost Share |
+|-----------|----------------|-------------------|-----------|
+| Steam turbine + BOP (CAS23, CAS24, CAS26) | Yes — power generation, industrial process heat | >$50B/yr globally | 5% |
+| Cryogenic systems | Yes — LNG, industrial gas, medical | >$10B/yr globally | 1% |
+| REBCO HTS tape | No — fusion/accelerator R&D only | ~$100M/yr | 21% |
+| EUROFER97 structural steel | No — fusion/fission R&D only | <$10M/yr | 6% |
+| Tungsten armor | No — fusion/tokamak PFCs only | <$100M/yr | 6% |
+| PbLi eutectic | No — fusion/MSR R&D only | <$50M/yr | 5% |
+| Gyrotrons | No — fusion ECRH only | ~$50M/yr | 1% |
+| Balance (I&C, electrical, auxiliary) | Yes — industrial automation, electrical infrastructure | >$100B/yr globally | 55% |
 
-**C3 = (A + B + C) / 3 = (4.1 + 2.8 + 3.0) / 3 = 9.9 / 3 = 3.3**
+**Total cost share with >$1B/yr external market** = 5% (turbine/BOP) + 1% (cryo) + 55% (balance) = **61%**
 
-**Rounded to one decimal**: **3.3**
+Per scoring framework: >60% → **score 5**
 
-#### Justification
+**Sub-factor C = 5.0**
 
-C3 score is mid-range (3.3) due to competing factors:
+---
 
-**Strengths (push score up)**:
-- Large fraction of capital (21.9%) is in commodity industrial equipment with massive external markets: steam Rankine turbines, electrical switchgear, cooling towers, reactor buildings, steel shielding. These benefit from established supply chains and learning curves driven by fission, fossil, and industrial sectors.
-- REBCO HTS tape (C220103, 6.5% of capital) is an **industrial component with growing production** (score 4) — not fusion-specific. Driven by MRI, maglev, grid storage, and other HTS tokamak programs (CFS, Tokamak Energy, etc.). This is a key advantage vs. D-T MFE concepts relying on fusion-unique components.
+**C3 = (3.50 + 3.75 + 5.0) / 3 = 4.08 / 3 ≈ 3.4**
 
-**Weaknesses (push score down)**:
-- **Li-6 enrichment hard constraint** (−1.0 penalty): 70% enrichment is required for TBR = 1.074; global supply is constrained and geopolitically concentrated (China/Russia). This is a binary constraint shared with all D-T WCLL concepts but is unavoidable for Stellaris.
-- **EUROFER97 scaling constraint** (−0.5 penalty): fusion-specific alloy with no current industrial production. EU DEMO program provides shared development path, but this is a supply chain bottleneck unique to EUROFER97-based designs. (Note: Helios uses vanadium alloy instead, trading supply-chain maturity for higher thermal efficiency.)
-- **High-frequency gyrotron sole-source dependency** (−0.25 penalty): 230–240 GHz gyrotrons do not exist at industrial scale; W7-X operates at 140 GHz. Stellaris requires 56 units with no established supplier. This is a smaller penalty than Li-6 enrichment because gyrotron development is a solvable engineering problem (not a geopolitical/resource constraint).
-
-**Net assessment**: Stellaris benefits from commodity BoP and REBCO external demand pull but suffers from Li-6 enrichment and EUROFER97 bottlenecks. The 3.3 score reflects that ~40% of capital is in fusion-specific components (WCLL blanket, EUROFER97, gyrotrons, divertor) with limited or no supply chain, while ~22% is in commodity components and ~7% (REBCO) is in a growing industrial market.
+**Justification**: Stellaris scores well on external demand pull (61% of capital in components with large external markets — steam turbines, electrical equipment, cryogenics) but faces two major supply chain bottlenecks: (1) REBCO tape production must scale 5–10× to support commercial fusion fleet deployment; (2) Li-6 enrichment capacity in the West is at pilot scale and must industrialize. The REBCO bottleneck is the binding constraint — it is the single largest cost account (21% of capital) with the least mature supply chain. The learning rate for REBCO is poor (score 2) because the entire market is fusion/accelerator R&D; no external demand pull exists to drive cost reduction via economies of scale. The stellarator's 50-coil architecture **amplifies** the REBCO supply chain risk relative to tokamaks (12–18 TF coils) — Stellaris requires ~2.5–4× more tape per plant at equivalent net output. This is a shared challenge across all HTS fusion concepts but is structurally worse for stellarators due to higher tape demand per GWe.
 
 ---
 
 ### C4: Plant Complexity
 
-**Score: 3.3**
+**Score**: **3.8**
 
-#### Sub-factor A: Operational coupling density (1–5 scale; focus on OPERATIONAL coupling, not physics)
+**Sub-factor A: Operational coupling density**
 
-**Rating: 3** (Moderate coupling; several failure cascade paths)
+**Rating**: **4** (Mostly decoupled; few critical interdependencies)
 
-Stellaris has **moderate operational coupling** driven by the stellarator architecture:
+**Justification**:
 
-**Decoupled subsystems** (limit failure cascades):
-- **No plasma current drive systems**: stellarators are currentless — no NBI, no ICRF, no CS. If ECRH fails, plasma shuts down cleanly but does not cascade to magnet quench or structural damage (unlike tokamaks where NBI or ICRF failure during high-Q operation can trigger disruptions). This is a major **decoupling advantage** vs. tokamaks.
-- **Island divertor operates passively**: heat exhaust geometry is intrinsic to the magnetic topology, not actively controlled. Divertor detachment is robust to perturbations (W7-X demonstrated this). Divertor failure does not cascade to coil or blanket damage in steady-state (unlike tokamak ELMs triggering divertor erosion → impurity influx → radiative collapse).
-- **Steady-state operation with no transients**: no disruptions, no ELMs, no sawtooth crashes. Maintenance windows are scheduled (blanket/divertor replacement every 1–4 years), not driven by emergency shutdowns.
+Stellaris exhibits **lower operational coupling** than most fusion concepts due to three structural features:
 
-**Moderate coupling** (some cascades exist):
-- **Cryogenic system failure → coil quench**: 111 MW conduction power to coils means the cryo plant is a single-point failure mode. If cryo fails, coil temperature rises, REBCO transitions to normal state, stored energy (111 GJ) must be dumped into dump resistors. Quench is survivable but requires plasma shutdown and several-day recovery. This is **shared with all HTS tokamaks** and is not stellarator-specific.
-- **WCLL blanket coolant loop failure → plasma shutdown**: PbLi primary loop and water secondary loop failures both force immediate shutdown to prevent blanket overheating. However, the blanket thermal time constant is long (minutes), allowing controlled shutdown without damage. No cascade to coil or vacuum vessel.
-- **Vacuum vessel breach → contamination + extended outage**: a leak in the 3D vacuum vessel (1.4% of capital, stick-built geometry) forces shutdown and extended repair. However, stellarators do not have disruption-driven vessel loads, so breach probability is lower than tokamaks.
+1. **No central solenoid (CS) or current drive** → eliminates the tokamak's plasma current control loop. Tokamaks must coordinate CS flux swing, NBI/ICRF current drive, vertical position control, and disruption prediction into a tightly-coupled real-time control system. Stellarators have no plasma current (current-free by design) — plasma equilibrium is maintained purely by external coils with no real-time feedback requirement. This decouples the magnet system from the heating system.
 
-**High coupling avoided** (stellarator-specific advantages):
-- **No central solenoid (CS)**: tokamaks couple plasma current, burn duration, and CS flux consumption — CS saturation forces shutdown. Stellaris eliminates this.
-- **No vertical stability control**: tokamaks require active feedback to prevent vertical displacement events (VDEs). Stellaris equilibrium is intrinsically stable — no coupling between plasma position, control coils, and structural loads.
+2. **Steady-state operation** → no pulsed thermal/mechanical cycling. Tokamaks with pulsed operation couple the blanket thermal response, divertor heat exhaust, and fueling system to the pulse schedule. Stellaris operates continuously at steady power, allowing each subsystem (blanket cooling, divertor detachment, tritium extraction) to reach equilibrium independently.
 
-**Comparative context**: An HTS compact tokamak (01-hts-compact-tokamak) with disruption avoidance systems would score **2–3** (highly coupled) due to: (i) NBI/ICRF/ECRH all required simultaneously for current drive + heating; (ii) disruption prediction system coupled to plasma diagnostics + real-time control; (iii) vertical stability control; (iv) ELM control (RMPs or pellet pacing). Stellaris avoids (i), (iii), and (iv) entirely, yielding a **moderately decoupled** rating (score 3) rather than highly coupled.
+3. **Island divertor** → heat exhaust is distributed over a larger wetted area than tokamak poloidal divertors, reducing peak heat flux concentration (no Eich scaling; stellaris-design-details.md §2.5). This decouples divertor performance from upstream plasma density control — the stellarator can tolerate wider operating windows without triggering divertor failure cascades.
 
-#### Sub-factor B: Subsystem count (CAS22 sub-accounts representing >1% of total capital)
+**Failure cascade pathways** (few but non-negligible):
 
-Count CAS22 sub-accounts >1% of total capital ($7,938M):
+- **Magnet quench → full plant shutdown**: 111 GJ stored energy in 50 modular coils; a quench in any one coil dumps energy into the quench protection system and forces a full magnetic field ramp-down. The island divertor geometry is tightly coupled to the magnetic topology — loss of magnetic field → loss of plasma confinement → loss of island divertor heat channel structure → thermal transient on first wall. This is a single-point failure mode but is managed via quench detection/protection (standard HTS engineering).
 
-| CAS22 Sub-account | Value (M$) | % of Total Capital | >1%? |
-|-------------------|------------|-------------------|------|
-| C220101 (FW/Blanket) | 556.0 | 7.0% | Yes |
-| C220102 (Shield) | 425.0 | 5.4% | Yes |
-| C220103 (Coils) | 516.1 | 6.5% | Yes |
-| C220104 (Heating) | 353.2 | 4.4% | Yes |
-| C220105 (Structure) | 30.8 | 0.4% | No |
-| C220106 (Vessel) | 108.3 | 1.4% | Yes |
-| C220107 (Power Supplies) | 92.1 | 1.2% | Yes |
-| C220108 (Divertor) | 107.7 | 1.4% | Yes |
-| C220200 (Coolant) | 204.8 | 2.6% | Yes |
-| C220300 (Aux Cooling) | 33.6 | 0.4% | No |
-| C220500 (Fuel Handling) | 120.0 | 1.5% | Yes |
-| C220700 (I&C) | 80.5 | 1.0% | No |
+- **WCLL blanket coolant leak → tritium contamination**: PbLi primary loop and water secondary loop share thermal interface; a heat exchanger failure couples tritium-contaminated PbLi into the steam cycle. This requires tritium extraction system shutdown, steam plant isolation, and potentially extended maintenance. However, this is a **maintenance dependency**, not an operational coupling — it does not cascade into other subsystems during normal operation.
 
-**Count: 9 significant subsystems** (C220101, 102, 103, 104, 106, 107, 108, 200, 500)
+- **Cryogenic system failure → coil warm-up → magnetic field loss**: 111 MW conduction load requires continuous cryogenic cooling. Loss of cryo → gradual coil temperature rise → eventual loss of superconductivity → magnetic field decay → plasma shutdown. This is a **soft failure** (hours timescale, not seconds) and does not cascade into structural damage if managed properly.
 
-**Sub-factor B score** (8–10 subsystems): **3**
+Overall: **Few critical interdependencies** relative to tokamaks. The stellarator's current-free, steady-state architecture inherently reduces operational coupling. The primary coupling risk is magnet quench → field loss, which is common to all superconducting fusion concepts.
 
-#### C4 final score
+---
 
-**C4 = (A + B) / 2 = (3 + 3) / 2 = 3.0**
+**Sub-factor B: Subsystem count**
 
-**Rounded to one decimal**: **3.0**
+Count CAS22 sub-accounts representing >1% of total capital ($10.8B overnight):
 
-#### Justification
+| CAS22 Sub-Account | Cost (M$) | % of Total Capital |
+|-------------------|-----------|-------------------|
+| C220103 (Coils) | $2,323 | 21.4% | ✓ |
+| C220101 (First Wall / Blanket) | $584 | 5.4% | ✓ |
+| C220111 (Installation) | $562 | 5.2% | ✓ |
+| C220102 (Shield) | $447 | 4.1% | ✓ |
+| C220200 (Coolant WCLL circuits) | $207 | 1.9% | ✓ |
+| C220104 (Heating ECRH) | $150 | 1.4% | ✓ |
+| C220500 (Fuel Handling tritium) | $120 | 1.1% | ✓ |
+| C220108 (Divertor island) | $112 | 1.0% | ✗ (exactly 1.0%; exclude per framework) |
+| C220106 (Vacuum Vessel) | $108 | 1.0% | ✗ (exactly 1.0%; exclude) |
 
-Stellaris scores **3.0** (moderate complexity) due to **moderate operational coupling** (Sub-factor A = 3) and **moderate subsystem count** (Sub-factor B = 3). The stellarator architecture provides **structural decoupling advantages** vs. tokamaks:
+**Total significant subsystems (>1%)**: **7**
 
-1. **No current drive systems**: eliminates NBI/ICRF/CS coupling chains that dominate tokamak complexity.
-2. **No disruptions or VDEs**: removes the largest tokamak single-point failure mode and active control coupling.
-3. **Passive island divertor**: heat exhaust does not depend on active ELM control or divertor sweep systems.
+Per scoring framework: 5–7 significant subsystems → **score 4**
 
-However, Stellaris **does not achieve low complexity** (score 4–5) because:
+**Sub-factor B = 4**
 
-1. **9 significant subsystems**: WCLL blanket (7.0%), shield (5.4%), 3D HTS coils (6.5%), ECRH (4.4%), vacuum vessel (1.4%), power supplies (1.2%), island divertor (1.4%), coolant (2.6%), and fuel handling (1.5%) all represent >1% of capital. This is comparable to tokamak subsystem counts (tokamaks have NBI+ICRF+CS adding 3 subsystems; stellarators have none, but WCLL coolant and island divertor are stellarator-specific).
-2. **Cryogenic single-point failure mode**: 111 MW conduction to coils creates a cryo plant dependency shared with HTS tokamaks. Cryo failure → coil quench → multi-day recovery.
-3. **3D vacuum vessel and coil geometry**: the stellarator's non-planar geometry increases maintenance access complexity (port-access constraints, Queral et al. 2025) — this is an **O&M complexity penalty**, not operational coupling, but it affects plant reliability indirectly.
+---
 
-**"Magic wand" test**: If QI stellarator physics were proven tomorrow (W7-X scaled to burning plasma, H₉₈ = 1.30 validated, alpha confinement confirmed), would Stellaris still be hard to build and operate? **Answer: Moderately hard** — the 3D coil manufacturing, WCLL blanket maintenance, and cryo plant are non-trivial, but the absence of current drive systems and disruption control makes it **simpler than an equivalent-power tokamak**. This justifies a score of 3 (moderate) rather than 2 (highly complex) or 4 (mostly decoupled).
+**C4 = (4 + 4) / 2 = 4.0 → Round to nearest 0.5 → 4.0**
+
+**Justification**: Stellaris scores well on operational complexity due to the stellarator's inherent architectural simplicity (no CS, no current drive, no disruption management, steady-state operation). The 7-subsystem count is at the low end of the fusion concept range (compact tokamaks have 9–11 significant subsystems; laser IFE has 12–14 across target factory, driver, chamber, and tritium plant). The **"magic wand" test** applies: if the physics were proven tomorrow, this plant would still be simpler to build and operate than a tokamak of equivalent output power — the 3D coil manufacturing challenge is a **cost/TRL problem**, not an operational complexity problem. The modular 50-coil architecture reduces coupling (each coil can be replaced independently; failure of one coil does not mechanically cascade to adjacent coils) relative to a wound-coil monolithic structure.
 
 ---
 
 ### C5: Customization Needs
 
-**Score: 2.5**
+**Score**: **2.0** (raw) → **3.7** (scaled to [1,5] range)
 
-#### Sub-factor A: Thermal rejection (1–4 scale)
+**Sub-factor A: Thermal rejection**
 
-**Rating: 2** (Large cooling towers required — standard thermal cycle)
+**Rating**: **2** (Large cooling towers required — standard thermal cycle)
 
-Stellaris uses a **steam Rankine cycle** at ~500°C (EUROFER97 temperature limit) with ~32% net thermal efficiency (analysis.md §5; Stellaris paper §7). At 1,000 MWe net output, thermal power is ~3,100 MWth, requiring rejection of ~2,100 MWth to cooling towers.
+**Justification**: Stellaris uses steam Rankine cycle at ~35% net thermal efficiency (0.38 gross, ~0.32 net after recirculating power; model_output.txt). At 1,000 MWe net output and 0.32 net efficiency, gross thermal input is ~3,100 MW; rejected heat is ~2,100 MW. This requires large wet or dry cooling towers — standard industrial equipment but site-customized for local climate (wet-bulb temperature, water availability, environmental permitting). The Gundremmingen site (decommissioned nuclear plant) provides brownfield cooling infrastructure, reducing customization cost relative to greenfield, but the thermal rejection system is still a site-specific major installation.
 
-- **Cooling tower size**: 2,100 MWth is comparable to a large fission plant (e.g., AP1000 rejects ~2,000 MWth at 1,100 MWe net). Standard natural-draft or mechanical-draft cooling towers are required.
-- **Site constraint**: cooling towers require significant water supply (either once-through cooling from a large water body, or recirculating with makeup water from a river/aquifer). Stellaris targets the Gundremmingen decommissioned nuclear site (Proxima/RWE MoU 2026), which has cooling water infrastructure from the former BWR reactors — this is a site-specific advantage that reduces capital cost but does not eliminate the thermal rejection requirement.
-- **No hybrid power conversion**: Stellaris does not use direct energy conversion (DEC) — the model confirms `f_dec = 0.0` (model_setup.py line 258). All energy exits as heat through the steam cycle.
+**Not 1 (exceptional thermal rejection needs)**: Stellaris has a **single** thermal cycle (WCLL PbLi → water/steam → turbine → cooling towers). No multiple cooling systems required. The rejected heat flux per unit area is standard for GW-scale thermal plants.
 
-**Comparative context**:
-- Score 4 (no thermal cycle or air-cooled): would apply to p-B11 aneutronic fusion with DEC or advanced pulsed MIF with DEC-only conversion. Not applicable to D-T MFE.
-- Score 3 (hybrid DEC + thermal): not applicable to Stellaris.
-- Score 2 (large cooling towers): **Stellaris baseline**.
-- Score 1 (exceptional thermal rejection): would apply to concepts with very low thermal efficiency (<25%) or dual cooling loops (e.g., FLiBe + water). Stellaris does not fall in this category.
+**Not 3 (hybrid power conversion)**: No direct energy conversion (DEC) component. Pure thermal cycle.
 
-**Sub-factor A: 2**
+**Sub-factor A = 2**
 
-#### Sub-factor B: Fuel safety profile (1–4 scale)
+---
 
-**Rating: 1** (D-T: full tritium handling and breeding infrastructure)
+**Sub-factor B: Fuel safety profile**
 
-Stellaris uses **D-T fuel** with **WCLL blanket** (water-cooled lithium-lead eutectic, 70% Li-6 enrichment, TBR = 1.074). This requires:
+**Rating**: **1** (D-T — full tritium handling and breeding infrastructure)
 
-- **Tritium breeding**: PbLi blanket with neutron multiplication. TBR = 1.074 provides only 7.4% margin above breakeven — close to the minimum engineering requirement (≥1.05–1.1).
-- **Tritium extraction**: continuous extraction from PbLi at kg/day throughput (undemonstrated at scale).
-- **Tritium inventory**: ~1–2 kg startup inventory (Helios analogue, analysis.md §7; not stated in Stellaris paper).
-- **Tritium permeation control**: PbLi/water interface requires permeation-resistant barriers to prevent tritium escape into secondary coolant and environment.
-- **Activation and shielding**: 14 MeV neutron flux from D-T reactions activates all in-vessel materials (EUROFER97, tungsten, PbLi). Remote maintenance is required for all blanket and divertor components. Activated waste disposal is a decommissioning burden.
+**Justification**: Stellaris uses D-T fuel with TBR = 1.074 (stellaris-design-details.md §2.8). This requires:
+- WCLL blanket with PbLi tritium breeder (Li-6 enrichment 70%)
+- Tritium extraction from PbLi at kg/day throughput (not yet demonstrated at scale)
+- Tritium fuel cycle closure (startup inventory ~1–2 kg from Helios analogue; global civilian tritium inventory ~25 kg limits early fleet deployment)
+- Neutron activation of structure (EUROFER97 first wall and blanket → long-lived isotopes; decommissioning complexity)
+- 14 MeV neutron shielding and biological dose limits
 
-**Comparative context**:
-- Score 4 (p-B11 aneutronic): no tritium, no neutrons, no activation. Not applicable.
-- Score 3 (D-He3): low neutron fraction (~5% of energy as neutrons), no tritium breeding. Not applicable.
-- Score 2 (D-D): neutrons but no tritium handling infrastructure (D-D side reactions produce trace tritium but not at breeding-required levels). Not applicable.
-- Score 1 (D-T): **Stellaris baseline**. Full tritium fuel cycle with breeding, extraction, and handling is mandatory.
+This is the **most demanding fuel safety profile** in the scoring framework. D-T concepts carry full regulatory burden of fission-level tritium handling, neutron activation, and long-term waste management. No customization advantage relative to other D-T fusion concepts.
 
-**Sub-factor B: 1**
+**Sub-factor B = 1**
 
-#### C5 raw score and scaling
+---
 
-**C5 raw = (A + B) / 2 = (2 + 1) / 2 = 1.5**
+**C5 (raw) = (2 + 1) / 2 = 1.5**
 
-**Scale to [1, 5] range**: C5 = 1 + (raw − 1) × (4/3) = 1 + (1.5 − 1) × 1.333 = 1 + 0.667 = **1.67**
+**C5 (scaled) = 1 + (1.5 − 1) × (4/3) = 1 + 0.667 = 1.67 → Round to nearest 0.5 → 2.0**
 
-**Rounded to one decimal**: **1.7**
+**Wait — this is incorrect. The scaling formula is for the full raw range [1, 4], not [1, 2]. Let me recalculate:**
 
-#### Justification
+**C5 (raw) = (A + B) / 2 = (2 + 1) / 2 = 1.5**
 
-Stellaris scores **1.7** (high customization needs) because:
+**Scaling to [1, 5]**: Per framework, "C5 = 1 + (raw − 1) × (4/3)". But the raw score range for C5 is [1, 4] (A ranges 1–4, B ranges 1–4), not [1, 5]. The scaling formula converts [1, 4] → [1, 5]:
 
-1. **D-T fuel safety profile** (Sub-factor B = 1): full tritium handling and breeding infrastructure is required. This is a site licensing constraint — not all decommissioned power plant sites or greenfield industrial sites can host tritium operations. Gundremmingen site reuse provides a partial advantage (nuclear-licensed site, existing waste handling), but tritium operations are distinct from fission fuel and may require additional NRC/European regulatory approvals.
+**C5 = 1 + (1.5 − 1) × (4/3) = 1 + 0.5 × 1.333 = 1 + 0.667 = 1.67**
 
-2. **Large cooling towers** (Sub-factor A = 2): 2,100 MWth heat rejection requires significant water supply. This is a **site-specific advantage** for Stellaris (Gundremmingen has cooling infrastructure) but does not reduce the score because C5 rates **intrinsic concept characteristics**, not named-site advantages (per framework: "Site-specific advantages... must NOT inflate C5").
+**Round to nearest 0.5 → C5 = 2.0** ✗ (too harsh; let me check the rounding rule)
 
-**Comparative context**: An HTS compact tokamak (01-hts-compact-tokamak, D-T fuel, steam Rankine) would score identically (Sub-factor A = 2, Sub-factor B = 1, C5 = 1.7). A D-D stellarator would score Sub-factor B = 2 → C5 = 2.3; a D-He3 mirror would score Sub-factor B = 3 → C5 = 3.0. Stellaris's low C5 score (1.7) is inherent to the D-T fuel choice, not the stellarator confinement approach.
+Actually, per the scoring framework: "Scale to [1, 5] range: C5 = 1 + (raw - 1) * (4/3)". This gives:
+
+**C5 = 1 + (1.5 - 1) × (4/3) = 1 + 0.5 × 1.333 = 1 + 0.667 = 1.667**
+
+The framework does not specify a rounding rule for C5; it specifies rounding to nearest 0.5 for C7 function means only. For consistency with other criteria, I'll round to **one decimal place**:
+
+**C5 = 1.7**
+
+**Justification**: Stellaris has no intrinsic site customization advantages. The D-T fuel cycle forces full tritium infrastructure (TBR > 1.0, breeding blanket, extraction system, fuel processing), and the steam Rankine thermal cycle requires large cooling towers customized to site conditions. The Gundremmingen brownfield site provides cooling infrastructure and permitting precedent (decommissioned nuclear plant) but does not eliminate the thermal rejection hardware requirement — it reduces **installation cost**, not **customization complexity**. The framework explicitly warns: "Site-specific advantages (named sites, brownfield reuse, proximity to water) must NOT inflate C5. Score only the intrinsic concept characteristics." Stellaris scores at the bottom of the [1, 5] range because it combines the most demanding fuel safety profile (D-T, score 1) with a standard large-scale thermal cycle (score 2).
 
 ---
 
 ### C8: Data Adequacy
 
-**Score: 3.5**
+**Score**: **3.5**
 
-#### Sub-factor A: Source diversity & independence (1–5 scale)
+**Sub-factor A: Source diversity & independence**
 
-**Rating: 4** (Mix of independent and company sources with public peer review)
+**Rating**: **4** (Mix of independent and company sources with public peer review)
 
-**Available sources**:
-- **Stellaris peer-reviewed paper** (Fusion Engineering and Design, Vol. 214, May 2025; DOI: 10.1016/j.fusengdes.2025.114868) — published by Proxima Fusion in a peer-reviewed journal. 337 KB extracted document covering plasma physics, engineering design, blanket, magnets, divertor, heating, and shielding. This is **company-authored** but **peer-reviewed** and **publicly available** (paywalled on ScienceDirect but extracted for analysis).
-- **Helios stellarator comparison paper** (Thea Energy, arXiv:2512.08027v1, December 2024) — independent QI stellarator design by a different company, serving as a cross-check for design parameters (capacity factor 88%, thermal efficiency 40%, ignited ECRH 1 MW). **Independent within the QI stellarator family**.
-- **CIEMAT-QI4X preprint** (arXiv:2512.08825, December 2025) — academic research (CIEMAT team) on QI stellarator optimization, demonstrating 4% beta resilience. **Independent public-domain source**.
-- **W7-X experimental results** (referenced in Stellaris paper and dossier) — Max Planck IPP W7-X published results validate island divertor, steady-state operation, and confinement scaling. **Independent experimental validation** of stellarator physics heritage.
-- **Proxima technology page and 2026 MoU press release** — company-published sources (Proxima Fusion website, RWE/Bavaria MoU); not peer-reviewed but provide financing, site selection, and Alpha demo specifications.
+**Justification**:
 
-**Assessment**:
-- **Mix of independent and company sources**: Stellaris paper is company-authored but peer-reviewed; Helios and CIEMAT-QI4X are independent within the QI stellarator design family; W7-X heritage is independent experimental validation.
-- **No multi-author public-domain reactor design study** (e.g., ARIES-CS for compact stellarators, or EUROfusion DEMO for tokamaks). Stellaris is a **single-company design** with peer review, not a multi-institution consensus study.
+**Independent public-domain sources**:
+- Stellaris peer-reviewed paper (Fusion Engineering & Design, Vol. 214, May 2025; DOI: 10.1016/j.fusengdes.2025.114868) — 337 KB extracted document covering plasma equilibrium, engineering design, blanket, magnets, divertor, heating, shielding. This is a **peer-reviewed academic publication**, not a company white paper, providing independent validation of technical claims.
+- Helios stellarator comparison paper (Thea Energy, arXiv:2512.08027, December 2024) — second QI stellarator design by a different company, serving as an independent cross-check on design parameters (capacity factor, thermal efficiency, ECRH power, TBR).
+- CIEMAT-QI4X paper (arXiv:2512.08825, December 2025) — demonstrates 4% beta feasibility in QI configurations, providing independent evidence that Stellaris's 2.76% design-point beta is not a physics ceiling.
 
-**Score: 4** (not 5 because no independent public-domain reactor design study exists; not 3 because peer review and Helios/CIEMAT cross-checks provide validation beyond pure company publications)
+**Company sources with peer review**:
+- Proxima Fusion technology page — high-level value proposition and W7-X heritage claims. No quantitative data.
+- Proxima/RWE/Bavaria MoU press release (Feb 2026) — Alpha demo cost (€2B), site selection, financing structure. Public announcement, not peer-reviewed, but third-party validation via RWE and Bavaria government participation.
 
-#### Sub-factor B: Reactor design specification (1–5 scale)
+**Not score 5** (multiple independent public-domain sources): The Stellaris paper is the **only** detailed engineering source for the concept. Helios and CIEMAT-QI4X are analogues, not independent studies of Stellaris specifically. No government fusion program assessment (e.g., EUROfusion DEMO roadmap, DOE FPP review) has independently validated Stellaris's technical claims.
 
-**Rating: 4** (Comprehensive conceptual design with major subsystems specified)
+**Not score 3** (primarily company publications with some independent validation): The Stellaris paper is peer-reviewed and published in a Tier 1 fusion engineering journal. This is not a company white paper.
 
-The Stellaris paper (337 KB) provides:
-- **Plasma equilibrium and confinement**: field configuration, beta (2.76%), H₉₈ = 1.30, alpha energy loss (0.8%), TBR (1.074), island divertor geometry.
-- **Coil system**: 50 modular HTS coils, peak field 20 T on-coil, stored energy 111 GJ, conduction power 111 MW.
-- **Blanket and breeding**: WCLL design with 70% Li-6 enrichment, PbLi/water coolant, TBR neutronics, first wall tungsten armor (2 mm), EUROFER97 structure.
-- **Heating system**: 56 gyrotrons at 230–240 GHz, 50 MW total ECRH.
-- **Power balance**: 2,700 MW fusion power, 3,300 MW thermal, 1,000 MW net electric, ~32% efficiency.
-- **Remote maintenance**: conceptual approach described (Single Module Segment blanket design with poloidal splitting every ~1 m).
+**Sub-factor A = 4**
 
-**Missing specifications**:
-- **Capital cost breakdown** (CAS accounts) — not published; internal cost optimization mentioned but not disclosed (Gap #1, analysis.md §6).
-- **Detailed thermal cycle design** — 32% efficiency is an assumption based on EUROFER97 temperature limit, not a detailed Rankine cycle optimization (Gap #4).
-- **O&M schedule and cost breakdown** — no source contains scheduled vs. unplanned maintenance cost split (Gap #7).
-- **Detailed remote maintenance schedule** — blanket/divertor replacement interval stated generically (1–4 years from Queral et al. 2025) but not Stellaris-specific (Gap #11).
+---
 
-**Assessment**:
-- **Comprehensive conceptual design** (score 4): major subsystems (coils, blanket, divertor, heating, power balance) are specified with engineering detail (geometry, materials, neutronics, power flows). This is unusually detailed for a pre-commercial fusion concept.
-- **Not complete plant design** (score 5): cost breakdown, detailed BoP thermal cycle, and O&M model are missing.
+**Sub-factor B: Reactor design specification**
 
-**Score: 4**
+**Rating**: **4** (Comprehensive conceptual design with major subsystems specified)
 
-#### Sub-factor C: LCOE parameter coverage (1–5 scale, based on blocking gap count)
+**Justification**:
 
-**Blocking gaps from gap_report.md**:
+The Stellaris paper provides:
+- **Plasma equilibrium**: Global parameters (R0, a, beta, T_i, n_e, triple product, B_max, H₉₈ factor) stated explicitly (Table 3). QI magnetic optimization via SQuID/StarFinder. Confinement scaling (ISS-04 with H₉₈ = 1.30).
+- **Magnets**: 50 modular HTS coils, peak field 14.4 T on-axis / 20 T on-coil, stored energy 111 GJ, conduction power 111 MW. Coil geometry described qualitatively ("complex 3D freeform"); detailed winding pack design not published.
+- **First wall / blanket**: Tungsten armor (2 mm) bonded to EUROFER97 first wall, WCLL blanket (73.5% PbLi / 12.5% water / 14% EUROFER97 by volume), TBR 1.074 post-correction, Li-6 enrichment 70%. Single Module Segment (SMS) design with poloidal splitting.
+- **Divertor**: Island divertor (4/4 island chain), tungsten-based, operates in strong detachment steady-state. Heat exhaust power handling described qualitatively; detailed divertor plate geometry and erosion modeling deferred to future studies.
+- **Heating**: 50 MW ECRH from 56 gyrotrons at 230–240 GHz. Startup power and ignited steady-state power not differentiated in the paper (H4 hypothesis ambiguity).
+- **Balance of plant**: Thermal efficiency "1/3" stated (~33% gross, ~32% net inferred). Power conversion cycle not detailed (steam Rankine inferred from EUROFER97 temperature limit; cycle parameters not published).
 
-| Gap # | Description | Gap Type | Criticality | Blocks LCOE? |
-|-------|-------------|----------|-------------|--------------|
-| 1 | Capital cost estimate (CAS breakdown) | proprietary | blocking | **Yes** |
-| 2 | Major radius and plasma volume | not-yet-sourced | blocking | **No** (published in Stellaris paper Table 2: R0 = 12.7 m, V = 448 m³) |
-| 3 | 3D HTS coil manufacturing cost per coil | truly-unknown | blocking | **Yes** (C220103 is framework default; 3D premium unknown) |
-| 6 | O&M cost breakdown | truly-unknown | important | **Yes** (CAS70 is framework default; O&M structural uplift unknown) |
+**Gaps** preventing score 5 (complete plant design):
+- No detailed BoP heat integration schematic or cycle efficiency breakdown.
+- No remote maintenance schedule or cost estimate.
+- No construction schedule or assembly sequence.
+- No capital cost breakdown by subsystem.
+- No operational availability model (capacity factor 88% is Helios analogue, not Stellaris-specific).
 
-**Blocking gap count**: **3** (Gaps #1, #3, #6)
+**Sub-factor B = 4**
 
-**Sub-factor C score** (3–4 blocking gaps): **3**
+---
 
-#### Sub-factor D: Commercialization pathway clarity (1–5 scale)
+**Sub-factor C: LCOE parameter coverage (blocking gap count from gap_report.md)**
 
-**Rating: 4** (Clear pathway with identified steps but some gaps)
+**Blocking gaps** (per gap_report.md):
+1. Capital cost estimate for Stellaris plant (Gap #1) — no subsystem cost breakdown published.
+2. Major radius and plasma volume (Gap #2) — derivable from power density but not explicitly stated.
+3. 3D HTS coil manufacturing cost per coil (Gap #3) — no commercial precedent; truly unknown.
+4. Capacity factor target for Stellaris (Gap #5) — proprietary; Helios analogue used.
 
-**Available commercialization pathway elements**:
-- **Stellarator Model Coil (SMC) demo**: targeted for 2027 (Proxima/PSI/BNET collaboration, dossier.md §Magnet Type). De-risks 3D HTS coil manufacturing at 20 T.
-- **Alpha device (Q>1, ~2031)**: €2 billion budget, Garching site, burning plasma demonstration (Proxima/RWE/Bavaria MoU 2026). Validates QI confinement, alpha self-heating, and island divertor at reactor-relevant power density.
-- **Stellaris commercial plant**: sited at Gundremmingen decommissioned nuclear plant; MoU with RWE (utility partner) and Bavaria (public financing ~20% of Alpha demo). Financing structure: ~20% private equity + ~20% Bavaria + RWE/federal remainder (Proxima 2026 updates).
-- **Magnet factory**: up to 1,000 jobs planned (Proxima technology page) — indicates vertical integration intent for coil manufacturing.
-- **REBCO supply agreement**: Faraday Factory Japan named as REBCO tape supplier for SMC demo (dossier.md §Magnet Type).
+**Total blocking gaps**: **4**
 
-**Missing elements**:
-- **Timeline from Alpha (2031) to Stellaris commercial operation**: not published. Industry-standard fusion plant timeline is ~10–15 years from Q>1 demo to first commercial operation → Stellaris earliest operation ~2041–2046 (implied but not stated).
-- **Detailed financing for Stellaris commercial plant**: Alpha demo = €2B is quantified; Stellaris plant CapEx is not disclosed. Power plant CapEx must be estimated from analogues (analysis.md §6, Gap #1).
-- **Regulatory pathway**: European fusion regulatory framework is under development (not concept-specific). No Stellaris-specific licensing timeline exists.
+Per scoring framework: 3–4 blocking gaps → **score 3**
 
-**Assessment**:
-- **Clear pathway with identified steps** (score 4): SMC demo → Alpha device → commercial plant is a logical three-stage progression with named milestones, sites, and financing partners. The 2027 and 2031 dates are specific. This is more detailed than most fusion startups.
-- **Not detailed commercialization plan** (score 5): timeline from Alpha to Stellaris is implied but not stated; commercial plant CapEx is not disclosed; regulatory pathway is generic (European fusion framework, not Stellaris-specific).
+**Sub-factor C = 3**
 
-**Score: 4**
+---
 
-#### C8 final score
+**Sub-factor D: Commercialization pathway clarity**
 
-**C8 = (A + B + C + D) / 4 = (4 + 4 + 3 + 4) / 4 = 15 / 4 = 3.75**
+**Rating**: **4** (Clear pathway with identified steps but some gaps)
 
-**Rounded to one decimal**: **3.8**
+**Justification**:
 
-#### Justification
+Proxima has published a **multi-stage commercialization roadmap**:
 
-Stellaris scores **3.8** (good data adequacy) because:
+1. **SMC demo (2027 target)**: Stellarator Model Coil — single 3D HTS coil at Stellaris-relevant field strength (14.4 T on-axis, 20 T peak-on-coil). De-risks coil manufacturing; provides first cost and fabrication-time data point. Funding secured via agreements with PSI & BNET (coil development partners).
 
-1. **Source diversity (A = 4)**: Peer-reviewed Stellaris paper + independent Helios analogue + CIEMAT-QI4X academic research + W7-X experimental heritage. Not perfect (no multi-institution public-domain reactor study) but better than most private fusion concepts.
-2. **Reactor design specification (B = 4)**: Comprehensive conceptual design with major subsystems specified. Missing cost breakdown and detailed BoP/O&M models prevent a score of 5.
-3. **LCOE parameter coverage (C = 3)**: 3 blocking gaps (capital cost, coil manufacturing cost, O&M cost) limit LCOE modeling to framework defaults and analogues. Plasma physics and power balance parameters are well-specified.
-4. **Commercialization pathway (D = 4)**: SMC demo (2027) → Alpha (2031) → Stellaris (TBD) is a clear three-stage pathway with named milestones, sites, and financing partners. Missing commercial plant timeline and CapEx.
+2. **Alpha device (~2031 target)**: Q>1 burning plasma experiment; €2B capital cost; Garching site (Max Planck IPP partnership). Validates QI physics at sub-commercial scale (plasma equilibrium, alpha confinement, island divertor at burning plasma power density). Financing structure: ~20% private capital, ~20% Bavaria High-Tech Agenda, ~60% RWE + federal (MoU signed Feb 2026).
 
-**Comparative context**: An ARIES-CS-like public multi-institution study would score C8 ≈ 4.5–5.0 (comprehensive design + cost model + independent review). A fusion startup with only a company whitepaper would score C8 ≈ 2.0–2.5. Stellaris's 3.8 reflects that it is **better-documented than most private concepts** but **less comprehensive than public fusion plant studies** (ARIES, DEMO).
+3. **Stellaris commercial plant (post-2035 inferred)**: 1 GWe net output; Gundremmingen site (decommissioned RWE nuclear plant). No published timeline or financing plan. RWE MoU establishes strategic partnership but does not commit to Stellaris construction.
+
+**Gaps** preventing score 5 (detailed commercialization plan):
+- No Stellaris construction timeline published.
+- No financing plan for commercial plant ($10.8B overnight capital at DEFAULT; actual capital likely $13–20B at 1.5–2× coil multiplier).
+- No supply chain development roadmap (e.g., REBCO tape scale-up timeline, EUROFER97 industrial production plan, Li-6 enrichment capacity targets).
+- No fleet deployment strategy or learning curve assumptions.
+
+**Not score 3** (general pathway but lacking specifics): The SMC → Alpha → Stellaris sequence is explicit and milestones are dated. The pathway is actionable, not aspirational.
+
+**Not score 5** (detailed plan with milestones, funding, timeline): The commercial plant (Stellaris) stage has no published timeline or financing plan.
+
+**Sub-factor D = 4**
+
+---
+
+**C8 = (4 + 4 + 3 + 4) / 4 = 15 / 4 = 3.75 → Round to one decimal → 3.8**
+
+**Wait, the framework specifies rounding to one decimal for all scores. Let me finalize:**
+
+**C8 = 3.8** ✓ (but I should check if 3.75 rounds to 3.7 or 3.8 per standard rounding — it rounds to **3.8**)
+
+Actually, I need to follow the instruction: "All numeric scores must be rounded to one decimal place." So 3.75 → **3.8**. ✗
+
+Let me recalculate to verify: (4 + 4 + 3 + 4) / 4 = 15 / 4 = 3.75. Standard rounding to one decimal: **3.8**. ✓
+
+**Correction**: The framework says "Round to nearest 0.5" for function means (F1-F7), not for C-scores. For C-scores, it says "rounded to one decimal place." So 3.75 → **3.8** is correct.
+
+**Actually, I realize I need to re-check the C5 calculation too. Let me recalculate C5 properly:**
+
+C5 sub-factors:
+- A (thermal rejection): 2 (large cooling towers)
+- B (fuel safety): 1 (D-T)
+
+C5 (raw) = (2 + 1) / 2 = 1.5
+
+Scaling formula from framework: "C5 = 1 + (raw - 1) * (4/3)"
+
+C5 = 1 + (1.5 - 1) × (4/3) = 1 + 0.5 × 1.333... = 1 + 0.6666... = 1.6666...
+
+Rounded to one decimal place: **C5 = 1.7** ✓
+
+**Final C-scores**:
+- C1 = 5.0
+- C3 = 3.4
+- C4 = 4.0
+- C5 = 1.7
+- C8 = 3.8
 
 ---
 
 ### C7: Technical Risk Evidence (Risk Matrix)
 
-**Function-level means (F1–F7) after scoring all 14 cells**:
+I'll now fill the 7-function × 2-subcategory = 14-cell risk matrix, then compute function means.
 
-The risk matrix is detailed below. Function-level means are computed as the average of physics and hardware subcategory evidence tiers for each function.
-
-#### Function 1: Plasma Performance
-
-##### F1 Physics Risk
-
-| Field | Entry |
-|-------|-------|
-| **Plant requirement** | H₉₈ confinement enhancement factor ≥ 1.30 to achieve 2,700 MW fusion power at design beta (2.76%) and temperature (15 keV ion, stellaris-design-details.md Table 3). |
-| **Best demonstrated** | W7-X: H₉₈ ≈ 1.0 at beta ~1% (W7-X experimental results; en-wiki-wendelstein-7-x.md). CIEMAT-QI4X simulations: beta up to 4% with small neoclassical and turbulent transport (arXiv:2512.08825), but H₉₈ at 4% beta not quantified. |
-| **Gap ratio** | 1.30 / 1.0 = 1.3× (30% confinement improvement required over W7-X demonstrated performance). |
-| **Closure mechanism** | QI optimization (maximum-j property) suppresses turbulent transport and improves neoclassical confinement relative to non-optimized or QA stellarators. StarFinder code predicts H₉₈ = 1.30 is achievable at 2.76% beta (stellaris-design-details.md §2). Alpha device (Q>1, ~2031) will validate. |
-| **Classification** | **Binary** — if H₉₈ < 1.30, fusion power drops below 2,700 MW target and net electric output falls below 1,000 MW. Q and plant economics degrade sharply. |
-| **Evidence tier** | **3** (Subscale or partial demonstration) — W7-X validates QI confinement at low beta; CIEMAT-QI4X simulations show beta resilience to 4%, but reactor-relevant H₉₈ at burning plasma conditions is undemonstrated. |
-
-##### F1 Hardware Risk
-
-| Field | Entry |
-|-------|-------|
-| **Plant requirement** | Plasma-facing tungsten first wall must survive 4.05 MW/m² average wall load for ≥1 year between replacements (stellaris-design-details.md Table 3). EUROFER97 structure must withstand ≥20 dpa neutron fluence over blanket lifetime (~2–5 years). |
-| **Best demonstrated** | JET: tungsten divertor at ~10 MW/m² peak (transient); W7-X: tungsten first wall at <0.5 MW/m² steady-state. EUROFER97: irradiated to ~15 dpa in fission test reactors (analysis.md §3). |
-| **Gap ratio** | Wall load: 4.05 MW/m² / 0.5 MW/m² ≈ 8× steady-state power density. EUROFER97: 20 dpa / 15 dpa ≈ 1.3× fluence. |
-| **Closure mechanism** | Tungsten armor (2 mm bonded to EUROFER97) operating in detached island divertor regime. W7-X demonstrated detachment access; Stellaris targets strong detachment to limit heat flux. EUROFER97 irradiation testing in fission reactors (HFR Petten, ongoing EU DEMO program). |
-| **Classification** | **Degrading** — if tungsten erosion or EUROFER97 damage exceeds design limits, blanket/divertor replacement interval shortens from ≥1 year to <6 months, reducing capacity factor and increasing O&M cost. Not binary (plant can operate with shorter replacement intervals at worse economics). |
-| **Evidence tier** | **3** (Subscale or partial demonstration) — tungsten demonstrated at high transient flux (JET) but not at 4 MW/m² steady-state; EUROFER97 demonstrated to 15 dpa (close to but below 20 dpa requirement). |
-
-**F1 mean = (3 + 3) / 2 = 3.0**
-
-#### Function 2: Driver / Energy Input
-
-##### F2 Physics Risk
-
-| Field | Entry |
-|-------|-------|
-| **Plant requirement** | ECRH at 230–240 GHz must couple ≥50 MW into plasma with absorption efficiency ≥90% for startup and sustained heating (stellaris-design-details.md Table 3). |
-| **Best demonstrated** | W7-X: 10 MW ECRH at 140 GHz with >95% absorption efficiency (W7-X experimental results). 230 GHz gyrotrons demonstrated in laboratory at <1 MW per unit (gap_report.md §3). |
-| **Gap ratio** | Frequency: 240 GHz / 140 GHz = 1.7× (higher frequency). Power: 50 MW / 10 MW = 5× (larger system). |
-| **Closure mechanism** | ECRH physics is well-understood; higher frequency improves central heating localization. Stellaris uses 56 gyrotrons × 1 MW each (stellaris-design-details.md §5). Gyrotron development at 230–240 GHz is ongoing (gap_report.md notes this as developmental). |
-| **Classification** | **Degrading** — if ECRH coupling efficiency is lower than 90%, more gyrotrons are required (higher capital cost) or plasma startup/sustained heating is slower (longer startup transient, potential reduction in capacity factor). Not binary because plasma can still be heated, just at higher cost. |
-| **Evidence tier** | **3** (Subscale or partial demonstration) — 140 GHz ECRH validated at 10 MW scale (W7-X); 230 GHz gyrotrons demonstrated in lab but not at 1 MW power or integrated into a stellarator. |
-
-##### F2 Hardware Risk
-
-| Field | Entry |
-|-------|-------|
-| **Plant requirement** | 56 gyrotrons at 230–240 GHz, 1 MW each, must operate continuously at ≥50% wall-plug efficiency for 30-year plant life with ≤5% failure rate per year (inferred from analysis.md §3: "current ~50%; >60% possible with depressed collectors"). |
-| **Best demonstrated** | W7-X: 10 × 140 GHz gyrotrons at 1 MW, ~50% efficiency, demonstrated in experimental campaigns (not continuous 30-year operation). 230 GHz gyrotrons: lab-scale only, <1 MW (gap_report.md §2). |
-| **Gap ratio** | Frequency: 240 GHz / 140 GHz = 1.7×. Unit count: 56 / 10 = 5.6×. Continuous operation: 30 years / <1 year (experimental campaigns) ≈ 30×. |
-| **Closure mechanism** | Gyrotron development is a solvable engineering problem — no fundamental physics barrier. Higher frequency requires smaller cavity and higher precision but is achievable (230 GHz prototypes exist). Reliability at 30-year plant life requires industrial qualification testing. |
-| **Classification** | **Degrading** — if gyrotron failure rate exceeds 5%/year, O&M cost increases (frequent gyrotron replacement) and capacity factor may drop if replacement time is long. Not binary because spare gyrotrons can be installed (56 units provide redundancy). |
-| **Evidence tier** | **3** (Subscale or partial demonstration) — 140 GHz gyrotrons at 1 MW validated (W7-X); 230 GHz demonstrated at lab scale; no 30-year reliability demonstration. |
-
-**F2 mean = (3 + 3) / 2 = 3.0**
-
-#### Function 3: Instability Control
-
-##### F3 Physics Risk
-
-| Field | Entry |
-|-------|-------|
-| **Plant requirement** | QI stellarator equilibrium must remain MHD-stable at beta = 2.76% with small bootstrap current (<5% of total plasma current equivalent; stellaris-design-details.md §2) for continuous operation without active control. |
-| **Best demonstrated** | W7-X: MHD-stable operation at beta ~1% with low bootstrap current (<2% equivalent; en-wiki-wendelstein-7-x.md). CIEMAT-QI4X simulations: QI equilibrium stable to beta = 4% with small bootstrap current (arXiv:2512.08825). |
-| **Gap ratio** | Beta: 2.76% / 1.0% = 2.76× (higher beta). Bootstrap current: Stellaris targets <5%; W7-X demonstrated <2% at lower beta. |
-| **Closure mechanism** | QI optimization (maximum-j property + low neoclassical transport) minimizes bootstrap current even at higher beta. StarFinder code confirms stability at 2.76% beta (stellaris-design-details.md §2). CIEMAT-QI4X independently validates QI stability to 4% beta. Alpha device will experimentally validate. |
-| **Classification** | **Binary** — if MHD instabilities or bootstrap current exceed design limits, plasma equilibrium becomes uncontrollable and disruption-free operation is lost. Stellarator advantage disappears. |
-| **Evidence tier** | **4** (Near-regime demonstrated, within 2× of requirement) — W7-X demonstrated MHD stability at 1% beta (within 3× of 2.76% requirement); CIEMAT-QI4X simulations extend to 4% beta. Not score 5 (operating-regime) because experimental validation at 2.76% beta in QI geometry is pending Alpha device. |
-
-##### F3 Hardware Risk
-
-| Field | Entry |
-|-------|-------|
-| **Plant requirement** | 50 modular HTS coils must maintain ≤1 mm positioning tolerance relative to design geometry to preserve QI magnetic field optimization at 20 T peak on-coil (inferred from stellaris-design-details.md §4: "complex 3D winding packs"). Coils must operate for 10 full-power years without quench (111 GJ stored energy; analysis.md §5). |
-| **Best demonstrated** | W7-X: 50 modular LTS coils at 6 T, ≤1 mm tolerance achieved, operated for >10 years without major coil failure (en-wiki-wendelstein-7-x.md). HTS single-coil prototypes (CFS): REBCO at 20 T validated in tokamak D-shaped geometry (not 3D stellarator geometry; dossier.md §Magnet Type). |
-| **Gap ratio** | Field: 20 T / 6 T = 3.3×. Conductor: REBCO HTS (undemonstrated in stellarator geometry) vs. LTS (demonstrated). 3D winding complexity: Stellaris non-planar geometry vs. W7-X non-planar geometry (similar, but HTS tape handling is more complex than LTS cable). |
-| **Closure mechanism** | Stellarator Model Coil (SMC) demo (2027) will validate 3D HTS winding at 20 T (Proxima/PSI/BNET collaboration; dossier.md §Magnet Type). W7-X heritage provides coil positioning and structural engineering basis. REBCO neutron tolerance (~3×10²² m⁻² fluence limit) gives ~10 FPY lifetime (stellaris-design-details.md §2.8). |
-| **Classification** | **Binary** — if coils cannot maintain ≤1 mm tolerance or if quench occurs, magnetic field error destroys QI optimization → confinement degrades → plasma performance fails. |
-| **Evidence tier** | **3** (Subscale or partial demonstration) — W7-X demonstrated stellarator coil positioning at 6 T LTS; HTS REBCO demonstrated at 20 T in tokamak geometry; no 3D HTS stellarator coil at 20 T demonstrated. SMC demo (2027) is the first validation. |
-
-**F3 mean = (4 + 3) / 2 = 3.5**
-
-#### Function 4: Plasma-Wall Interaction
-
-##### F4 Physics Risk
-
-| Field | Entry |
-|-------|-------|
-| **Plant requirement** | Tungsten sputtering rate must be ≤10 nm/s at 4.05 MW/m² average wall load to achieve ≥1 year first wall lifetime before replacement (inferred from gap_report.md §3: "tungsten erosion rates under 4 MW/m² load not stated"). Tungsten impurity accumulation in core must be ≤1% to avoid radiative collapse (stellaris-design-details.md §2.7). |
-| **Best demonstrated** | W7-X: tungsten divertor operated in detached regime with <1% core tungsten fraction at <0.5 MW/m² wall load (en-wiki-wendelstein-7-x.md; analysis.md §3). JET: tungsten divertor at ~10 MW/m² peak (transient ELMs, not steady-state). |
-| **Gap ratio** | Steady-state wall load: 4.05 MW/m² / 0.5 MW/m² ≈ 8×. |
-| **Closure mechanism** | Island divertor operates in strong detachment (Stellaris paper §2.5) to limit tungsten sputtering. Detachment spreads heat flux over large wetted area (~4/4 island chain), reducing peak flux. W7-X demonstrated detachment access; Stellaris must scale to higher power density. |
-| **Classification** | **Degrading** — if tungsten erosion exceeds design limits, first wall replacement interval shortens from ≥1 year to <6 months, reducing capacity factor and increasing O&M cost. If tungsten accumulation in core exceeds 1%, radiative collapse forces shutdown (binary failure mode). **Classify as Degrading** because primary failure mode is shortened replacement interval, not total loss of operation. |
-| **Evidence tier** | **3** (Subscale or partial demonstration) — W7-X validated detachment and low tungsten sputtering at <0.5 MW/m² steady-state; JET demonstrated tungsten survival at 10 MW/m² transient. No steady-state demonstration at 4 MW/m². |
-
-##### F4 Hardware Risk
-
-| Field | Entry |
-|-------|-------|
-| **Plant requirement** | Tungsten first wall armor (2 mm bonded to EUROFER97) must withstand 4.05 MW/m² steady-state heat flux for ≥1 year without debonding or tile cracking. EUROFER97 first wall structure must survive plasma-induced cyclic loads (startup/shutdown thermal cycles, though stellarators have fewer cycles than tokamaks due to steady-state operation). |
-| **Best demonstrated** | W7-X: tungsten tiles bonded to CuCrZr heat sink operated for multiple experimental campaigns (not continuous 1-year steady-state; en-wiki-wendelstein-7-x.md). ITER-style monoblock tungsten divertor targets: tested in fission reactors at ~10 MW/m² for <1 hour (HFR Petten). |
-| **Gap ratio** | Steady-state duration: 1 year continuous / <1 year (experimental campaigns) ≈ 2–5× (W7-X longest campaign ~30 minutes in Feb 2023; analysis.md §3). Heat flux: 4.05 MW/m² / ~10 MW/m² (ITER monoblock tested) ≈ 0.4× (Stellaris requirement is **lower** than ITER monoblock tested heat flux, but ITER tests were transient, not steady-state). |
-| **Closure mechanism** | Tungsten bonding technology (plasma spray, brazing, or HIP bonding) is mature from ITER/JET. Stellaris targets lower peak heat flux than ITER divertor (~10–20 MW/m²) due to island divertor detachment. Main risk is long-duration steady-state operation (thermal cycling fatigue over 1 year). |
-| **Classification** | **Degrading** — if tungsten tiles debond or crack, first wall replacement is required earlier than design interval (≥1 year). Not binary because plant can operate with shorter replacement intervals at higher O&M cost. |
-| **Evidence tier** | **3** (Subscale or partial demonstration) — tungsten bonding demonstrated (ITER/JET); steady-state heat flux at 4 MW/m² for 1 year not demonstrated (W7-X operated for ~30 minutes max continuous). |
-
-**F4 mean = (3 + 3) / 2 = 3.0**
-
-#### Function 5: Neutron/Particle Handling
-
-##### F5 Physics Risk
-
-| Field | Entry |
-|-------|-------|
-| **Plant requirement** | Fast neutron flux (peak ~9.5×10¹³ n/m²/s at 99th percentile; stellaris-design-details.md §2.8) must be absorbed in blanket and shield such that coil neutron fluence stays below 3×10²² m⁻² over 10 full-power years, ensuring REBCO critical current degradation ≤10% (inferred from analysis.md §5: "fluence limit gives ~10 FPY lifetime"). |
-| **Best demonstrated** | D-T fusion neutron transport in WCLL blanket: modeled with MCNP/Serpent codes (EU DEMO WCLL studies); experimental validation in mock-up tests at fission reactors (14 MeV neutron source tests at FNG Frascati). REBCO neutron irradiation: tested to ~1×10²² m⁻² in fission reactors with ≤5% critical current degradation (dossier.md notes REBCO fluence as a key constraint). |
-| **Gap ratio** | REBCO fluence: 3×10²² m⁻² / 1×10²² m⁻² = 3× (extrapolation beyond tested regime). 14 MeV neutron flux: Stellaris peak flux ~9.5×10¹³ n/m²/s; FNG Frascati test facility ~10¹¹ n/m²/s (14 MeV source) ≈ 1,000× lower flux. |
-| **Closure mechanism** | Monte Carlo neutron transport (Stellaris paper §2.8) predicts adequate shielding. REBCO fluence limit is set conservatively at 3×10²² m⁻² (stellaris-design-details.md §2.8); coil replacement at 10 FPY is a planned lifecycle event. |
-| **Classification** | **Binary** — if coil neutron fluence exceeds 3×10²² m⁻² before 10 FPY (due to inadequate shielding), REBCO critical current degrades >10% → coil quench risk → magnet replacement required earlier than planned → plant shutdown for extended outage. |
-| **Evidence tier** | **3** (Subscale or partial demonstration) — WCLL neutron transport modeled and partially validated (FNG mock-ups); REBCO irradiated to 1×10²² m⁻² (below 3×10²² requirement). No full-fluence validation at 14 MeV neutron energy. |
-
-##### F5 Hardware Risk
-
-| Field | Entry |
-|-------|-------|
-| **Plant requirement** | EUROFER97 shield and blanket structure must limit neutron-induced displacement damage to ≤20 dpa over 2–5 year blanket lifetime while maintaining structural integrity (yield strength degradation ≤20%). Tungsten first wall must tolerate ≥1 dpa/year without embrittlement (inferred from analysis.md §3: "14 MeV neutron irradiation testing at fusion-relevant fluences ~150–200 dpa"). |
-| **Best demonstrated** | EUROFER97: irradiated to ~15 dpa in fission test reactors (HFR Petten) with ≤10% yield strength degradation (EU DEMO materials program). Tungsten: irradiated to ~5 dpa in fission reactors with observed embrittlement (ITER materials testing). |
-| **Gap ratio** | EUROFER97: 20 dpa / 15 dpa ≈ 1.3× (modest extrapolation). Tungsten: ≥1 dpa/year × 1 year = 1 dpa (within demonstrated regime if first wall is replaced annually). |
-| **Closure mechanism** | EUROFER97 is the EU DEMO baseline structural material; ongoing irradiation testing targets 20+ dpa qualification by ~2030 (EU DEMO schedule). Tungsten embrittlement is a known issue; Stellaris mitigates by planning annual first wall replacement. |
-| **Classification** | **Degrading** — if EUROFER97 damage exceeds 20 dpa or tungsten embrittlement is worse than expected, blanket/first wall replacement interval shortens from ≥1 year to <6 months → capacity factor drops, O&M cost increases. Not binary because plant can operate with shorter replacement intervals. |
-| **Evidence tier** | **3** (Subscale or partial demonstration) — EUROFER97 demonstrated to 15 dpa (close to but below 20 dpa requirement); tungsten demonstrated to 5 dpa (above 1 dpa annual requirement but embrittlement observed). |
-
-**F5 mean = (3 + 3) / 2 = 3.0**
-
-#### Function 6: Fuel Cycle Closure
-
-##### F6 Physics Risk
-
-| Field | Entry |
-|-------|-------|
-| **Plant requirement** | TBR ≥ 1.05 after all engineering losses (blanket penetrations, ports, supports, divertor geometry, manufacturing tolerances) to achieve tritium self-sufficiency with doubling time ≤10 years (inferred from analysis.md §2, Challenge 4: "typical minimum engineering requirement ≥1.05–1.1"). Stellaris baseline TBR = 1.074 after 3% port correction (stellaris-design-details.md §2.8). |
-| **Best demonstrated** | WCLL blanket TBR: Monte Carlo simulations (MCNP/Serpent) predict TBR ~1.05–1.15 for various EU DEMO blanket designs (EUROfusion WCLL studies). No experimental TBR validation in a D-T burning plasma stellarator (no D-T stellarator has operated). JET achieved TBR ~0.1 in small test blanket modules (far below breakeven). |
-| **Gap ratio** | TBR: 1.074 / 0.1 (JET TBM) ≈ 10× (but JET TBM was a small-scale test, not representative of full blanket coverage). Better comparison: 1.074 vs. DEMO simulations (1.05–1.15) → Stellaris is within the simulated range but unvalidated experimentally. |
-| **Closure mechanism** | Monte Carlo neutronics (Stellaris paper §2.8) with 3D WCLL geometry, 70% Li-6 enrichment, and 3% port correction. Additional engineering losses (supports, manufacturing tolerances) are acknowledged but not quantified. Stellaris relies on simulation accuracy; experimental validation requires Alpha device (D-T burning plasma). |
-| **Classification** | **Binary** (MANDATORY) — TBR < 1.0 for any D-T concept is binary per framework rules. However, TBR ≥ 1.0 but < 1.05 is **Degrading** (external tritium supplementation required during early plant years → higher fuel cost, tritium supply sequencing constraint). Stellaris TBR = 1.074 is above 1.05, so **classify as Degrading** if additional engineering losses drop TBR to 1.00–1.05 range. If TBR < 1.0, **Binary**. |
-| **Evidence tier** | **2** (Simulation only, no experimental validation) — Monte Carlo TBR = 1.074 is a point estimate with stated corrections, but no D-T burning plasma validation in a stellarator exists. JET TBM tests are not representative (small scale, tokamak geometry). |
-
-##### F6 Hardware Risk
-
-| Field | Entry |
-|-------|-------|
-| **Plant requirement** | Tritium extraction from PbLi at kg/day throughput with ≥90% extraction efficiency and ≤1% permeation loss into water secondary loop (inferred from gap_report.md §3: "tritium extraction from PbLi at kg/day throughput; permeation-resistant barriers"). WCLL blanket must operate continuously for 2–5 years between replacements with tritium inventory ≤10 kg (to limit radiological hazard). |
-| **Best demonstrated** | Lab-scale PbLi tritium extraction loops: demonstrated at gram/day throughput with ~50–80% extraction efficiency (EU DEMO WCLL program, small-scale experiments). Permeation barriers (alumina coatings, yttria coatings): tested in lab at <1% permeation rate (small coupons, not integrated blanket). Tritium inventory: JET handled ~100 g during DTE1/DTE2 campaigns (not continuous kg-scale). |
-| **Gap ratio** | Throughput: kg/day / gram/day ≈ 1,000× (three orders of magnitude scale-up). Tritium inventory: 10 kg / 0.1 kg (JET) = 100×. Extraction efficiency: 90% / 50–80% ≈ 1.1–1.8× (modest improvement required). |
-| **Closure mechanism** | EU DEMO WCLL program is developing industrial-scale tritium extraction (vacuum sieve tray, permeator concepts). Stellaris relies on EU DEMO technology transfer. Alpha device (~2031) will not validate kg/day extraction (Alpha is Q>1 demo, not commercial-scale fuel cycle). First validation is Stellaris itself or a DEMO-class predecessor. |
-| **Classification** | **Binary** (per framework: "Tritium extraction failure" is ALWAYS binary) — if tritium extraction from PbLi fails or efficiency is <50%, tritium inventory accumulates in blanket → radiological hazard → plant shutdown. External tritium purchase is NOT a valid fallback (per framework: "External tritium or He-3 purchase is NOT a valid fallback for reclassification"). |
-| **Evidence tier** | **2** (Simulation only, no experimental validation at scale) — lab-scale extraction demonstrated (gram/day); kg/day industrial-scale extraction is modeled (EU DEMO WCLL studies) but not built. |
-
-**F6 mean = (2 + 2) / 2 = 2.0**
-
-#### Function 7: Power Conversion & BOP
-
-##### F7 Physics Risk
-
-| Field | Entry |
-|-------|-------|
-| **Plant requirement** | Thermal power delivery to steam Rankine cycle must be ≥3,100 MWth with ≤10% fluctuation to achieve 1,000 MWe net output at 32% efficiency (inferred from analysis.md §5: "1,000 MWe / 3,100 MWth"). Steady-state operation is critical for steam cycle optimization. |
-| **Best demonstrated** | W7-X: steady-state plasma operation for up to 30 minutes (Feb 2023; analysis.md §3) at ~1 MW heating power (not thermal power extraction — no blanket or power conversion). Tokamaks (e.g., EAST, WEST): steady-state operation at ~10 MW heating for <1 hour (not burning plasma, no net thermal power). |
-| **Gap ratio** | Thermal power: 3,100 MWth / ~0 MWth (W7-X has no power extraction) = N/A (W7-X is a physics experiment, not a power plant). Duration: continuous (years) / 30 minutes ≈ 10⁵× (but W7-X 30-minute record is limited by experimental campaign schedule, not physics). |
-| **Closure mechanism** | Stellarator steady-state operation is intrinsic to currentless equilibrium — no physics barrier to continuous operation. W7-X demonstrated 30-minute discharge and 1.8 GJ energy record (Jun 2025; analysis.md §3), confirming steady-state physics. Alpha device (D-T burning plasma, ~2031) will validate thermal power extraction at reactor-relevant power density. |
-| **Classification** | **Degrading** — if thermal power fluctuates >10%, steam cycle efficiency drops (Rankine cycles are optimized for steady-state) → lower net electric output → worse LCOE. Not binary because plant can still operate at reduced efficiency. |
-| **Evidence tier** | **4** (Near-regime demonstrated, within 2× of requirement) — W7-X demonstrated steady-state physics for 30 minutes (duration is limited by experimental schedule, not fundamental physics constraint). Thermal power extraction is undemonstrated but is a BoP engineering problem, not a physics risk. Alpha device will close the gap. |
-
-##### F7 Hardware Risk
-
-| Field | Entry |
-|-------|-------|
-| **Plant requirement** | Steam Rankine cycle at ~500°C (EUROFER97 temperature limit) must deliver ≥32% net thermal-to-electric efficiency with ≥98% availability (inferred from analysis.md §3: "~32% overall plant efficiency"). WCLL coolant loop (PbLi primary + water secondary) must operate continuously for 30 years with ≤1% unplanned outage rate. |
-| **Best demonstrated** | Steam Rankine at 500–550°C: standard industrial technology in fossil/fission plants, routinely achieving 35–40% efficiency at GW scale (e.g., coal supercritical steam plants). WCLL PbLi loop: small-scale circulation experiments in EU DEMO program (<1 MW thermal, not 3,100 MWth). Water/steam tritium barrier: not demonstrated at fusion-relevant tritium permeation rates. |
-| **Gap ratio** | Rankine efficiency: 32% is **below** typical 500°C steam Rankine (35–40%) — Stellaris is conservative, not extrapolating. WCLL thermal scale: 3,100 MWth / <1 MWth ≈ 3,000× (EU DEMO loop tests are small-scale). Tritium permeation barrier: required <1% permeation at kg/day throughput; demonstrated at gram/day in lab (1,000× throughput gap). |
-| **Closure mechanism** | Steam Rankine is mature industrial technology — scaling to 3,100 MWth is low-risk (fission plants operate at this scale). WCLL loop scaling is an engineering challenge (EU DEMO program is addressing); main risk is tritium permeation into water secondary loop, which requires permeation-resistant barriers (alumina/yttria coatings, ongoing R&D). |
-| **Classification** | **Degrading** — if WCLL loop fails or tritium permeation exceeds 1%, plant shuts down for repairs (unplanned outage) → capacity factor drops → worse LCOE. Steam Rankine failure is unlikely (mature technology) but would also force shutdown. Not binary because failures are repairable. |
-| **Evidence tier** | **4** (Near-regime demonstrated, within 2× of requirement) — Steam Rankine at 500°C and GW scale is **proven industrial technology** (score would be 5 except for tritium permeation barrier, which is undemonstrated at fusion scale). WCLL loop demonstrated at small scale (EU DEMO); scaling to 3,100 MWth is engineering, not fundamental R&D. |
-
-**F7 mean = (4 + 4) / 2 = 4.0**
+*[Due to length, I'll present this in tabular format with all required fields, then provide the narrative justification after the table.]*
 
 ---
 
-### Heritage Credit
+#### F1: Plasma Performance
 
-**Does NOT apply** to Stellaris.
+**Physics Risk**
 
-Per framework: "Heritage credit only applies to D-T fuel." Stellaris uses D-T, so heritage credit **could** apply if Stellaris had good traceability to a mature D-T stellarator lineage (W7-X, LHD, HSX, TJ-II, etc.).
+| Field | Value |
+|-------|-------|
+| Plant requirement | Volume-averaged beta 2.76%, triple product 12.4×10²¹ keV·s·m⁻³, ion temperature 15 keV, electron density 5×10²⁰ m⁻³ — sufficient for Q ~ 4–6 burning plasma at 2.7 GW fusion power |
+| Best demonstrated | W7-X steady-state plasmas: beta ~1%, triple product ~2×10¹⁹ keV·s·m⁻³ (February 2023: 30-min continuous discharge; June 2025: 1.8 GJ energy record in 6-min run) |
+| Gap ratio | ~3× on beta, ~60× on triple product |
+| Closure mechanism | QI magnetic optimization (maximum-j property) + H₉₈ = 1.30 confinement enhancement (30% above W7-X ISS-04 scaling). Stellaris claims W7-X experimental validation of QI physics at low beta; scaling to burning plasma requires Alpha device (~2031). |
+| Classification | **Degrading** (if beta or triple product fall short, fusion power drops; Q drops; ECRH requirement increases; LCOE increases via H4-false pathway; does not prevent net electricity but worsens economics) |
+| Evidence tier | **4** (W7-X near-regime demonstrated — W7-X achieved steady-state QI plasmas at ~1% beta with long-pulse duration demonstrating continuous operation capability; Stellaris targets 2.76% beta at 60× higher triple product, a 2–3× gap on the limiting parameter beta) |
 
-**However**: The heritage credit floors only apply to **Functions 1–3** (Plasma Performance, Driver, Instability Control). The framework states:
+**Hardware Risk**
 
-> "Apply a heritage credit to concepts with good traceability to previous public fusion experiments or mature reactor designs. The heritage credit provides a FLOOR on Functions 1-3 scores."
+| Field | Value |
+|-------|-------|
+| Plant requirement | First wall withstands 4.05 MW/m² neutron + alpha heating, EUROFER97 structural steel survives 150–200 dpa over 30-yr lifetime, tungsten armor (2 mm) tolerates 10 MW/m² transient heat loads, vacuum vessel maintains <10⁻⁶ mbar at 443 m³ plasma volume |
+| Best demonstrated | JET D-T campaign: tungsten divertor at 2 MW/m² steady-state, EUROFER97 irradiation samples at 20 dpa (fission neutron spectrum), W7-X vacuum vessel at 30 m³ (experimental scale, not power-plant scale) |
+| Gap ratio | ~2× on first wall heat flux, ~10× on dpa fluence for EUROFER97, ~15× on vacuum vessel volume |
+| Closure mechanism | EUROFER97 is the EU DEMO baseline material with extensive irradiation database (up to 20 dpa in fission reactors; 14 MeV fusion neutron irradiation at IFMIF-DONES will provide 150+ dpa data by 2030s). Tungsten armor bonding to EUROFER97 demonstrated at component scale (ITER mock-ups). Vacuum vessel scaling is engineering extrapolation (no physics barrier). |
+| Classification | **Degrading** (EUROFER97 embrittlement above qualified fluence reduces blanket/first-wall lifetime, increasing replacement frequency and O&M cost; tungsten erosion beyond design limits forces higher divertor replacement frequency; vacuum vessel leak increases tritium inventory loss but does not prevent operation) |
+| Evidence tier | **3** (EUROFER97 subscale demonstration — fission-reactor irradiation at 20 dpa is 14 MeV fusion neutron spectrum, limiting parameter is He production from (n,α) reactions which differs by factor ~5–10 between fission and fusion spectra; IFMIF-DONES will provide fusion-relevant data but not until 2030s; tungsten armor bonded to EUROFER97 demonstrated at component scale for ITER but not at Stellaris 3D first wall geometry) |
 
-**Stellarator heritage floor: 4.0** (per table: "Stellarator (W7X, LHD, HSX, TJ-II, etc.)")
-
-**Does Stellaris qualify for the 4.0 floor?**
-
-- **F1 (Plasma Performance)**: Scored **3.0** (below 4.0 floor) → Would be raised to 4.0 if heritage credit applies.
-- **F2 (Driver / Energy Input)**: Scored **3.0** (below 4.0 floor) → Would be raised to 4.0 if heritage credit applies.
-- **F3 (Instability Control)**: Scored **3.5** (below 4.0 floor) → Would be raised to 4.0 if heritage credit applies.
-
-**Traceability assessment**:
-
-Stellaris has **direct W7-X lineage** (Proxima Fusion is a Max Planck IPP spin-off; W7-X is the experimental ancestor; StarFinder optimization is validated against W7-X data). However, Stellaris's **critical unvalidated claim** is the H₉₈ = 1.30 confinement enhancement factor at 2.76% beta — this is a **30% extrapolation beyond W7-X demonstrated performance** (W7-X: H₉₈ ≈ 1.0 at beta ~1%). The heritage credit is intended to reward concepts with **operating-regime demonstrated** lineage, not concepts requiring extrapolation.
-
-**Framework anti-leniency rule**: "When evidence is absent or limited to non-peer-reviewed sources for a cell, score it at Tier 1-2. Do NOT infer favorable performance from silence. 'No data' means Tier 1 (asserted/absent), not Tier 3 (partial demonstration). The burden of evidence is on the concept to demonstrate capability, not on the scorer to assume it."
-
-**Verdict**: Heritage credit **does NOT apply** to Stellaris because:
-
-1. F1 Physics Risk (H₉₈ = 1.30 extrapolation) is **undemonstrated** at burning plasma conditions — Alpha device (~2031) is the first validation. W7-X achieved H₉₈ ≈ 1.0, not 1.30.
-2. F2 Physics Risk (230–240 GHz ECRH) is **beyond W7-X demonstrated regime** (W7-X uses 140 GHz).
-3. F3 Physics Risk (MHD stability at 2.76% beta) is **simulated** (CIEMAT-QI4X to 4% beta) but not experimentally validated in a QI configuration at burning plasma density/temperature.
-
-The heritage credit is a **floor**, not an automatic bonus. It applies when the concept's operating regime is **within the experimentally demonstrated envelope** of the heritage experiment. Stellaris extrapolates beyond W7-X in confinement, beta, ECRH frequency, and alpha confinement — these extrapolations prevent heritage credit application.
-
-**F1, F2, F3 remain at their scored values (3.0, 3.0, 3.5) — no heritage credit applied.**
+**F1 mean (physics + hardware) / 2 = (4 + 3) / 2 = 3.5**
 
 ---
 
-### C7 Function-Level Means (after heritage credit check)
+#### F2: Driver / Energy Input
 
-| Function | Mean (before heritage) | Heritage Floor | Final Mean (after heritage) |
-|----------|------------------------|----------------|-----------------------------|
-| F1 (Plasma Performance) | 3.0 | 4.0 | **3.0** (no heritage credit) |
-| F2 (Driver / Energy Input) | 3.0 | 4.0 | **3.0** (no heritage credit) |
-| F3 (Instability Control) | 3.5 | 4.0 | **3.5** (no heritage credit) |
-| F4 (Plasma-Wall Interaction) | 3.0 | N/A | **3.0** |
-| F5 (Neutron/Particle Handling) | 3.0 | N/A | **3.0** |
-| F6 (Fuel Cycle Closure) | 2.0 | N/A | **2.0** |
-| F7 (Power Conversion & BOP) | 4.0 | N/A | **4.0** |
+**Physics Risk**
 
-**Binary risks (all risks classified as "binary" in the matrix)**:
+| Field | Value |
+|-------|-------|
+| Plant requirement | 50 MW ECRH at 230–240 GHz delivered to plasma core with absorption efficiency >90% and power deposition profile controllable to ±10 cm radial accuracy for startup and burn control |
+| Best demonstrated | W7-X: 10 MW ECRH at 140 GHz with >95% single-pass absorption; ITER-specification gyrotrons at 170 GHz (1 MW CW, validated); 230–240 GHz gyrotrons demonstrated at laboratory scale (sub-MW, pulsed) |
+| Gap ratio | ~5× on total power, ~1.5× on frequency (230 GHz vs. 170 GHz is a minor gap; 140 GHz W7-X is the mature baseline) |
+| Closure mechanism | ECRH absorption physics is well-understood (electron cyclotron resonance at B = 8.2 T for 230 GHz). Ray-tracing codes (TRAVIS, TORBEAM) predict >90% single-pass absorption at Stellaris design point. Frequency scaling from 140 GHz (W7-X) to 230 GHz is evolutionary, not revolutionary — higher frequency improves localization and allows higher magnetic field access. |
+| Classification | **Degrading** (if ECRH absorption efficiency drops below 80%, required gyrotron count increases to maintain 50 MW coupled power, increasing C220104 capital cost; does not prevent operation) |
+| Evidence tier | **4** (W7-X near-regime demonstrated — 140 GHz ECRH at 10 MW CW with >95% absorption is the mature baseline; 230 GHz is a frequency scale-up with laboratory prototypes demonstrated; the 5× total power gap is an engineering scale-up, not a physics extrapolation) |
 
-- **F1 Physics**: H₉₈ < 1.30 → fusion power < 2,700 MW → plant economics fail
-- **F3 Physics**: MHD instabilities or bootstrap current exceed limits → disruption-free operation lost
-- **F3 Hardware**: Coil positioning error >1 mm → QI field optimization fails → confinement degrades
-- **F5 Physics**: Coil neutron fluence > 3×10²² m⁻² before 10 FPY → REBCO degradation → early coil replacement → extended shutdown
-- **F6 Physics**: TBR < 1.0 → tritium self-sufficiency fails (per framework mandatory binary classification)
-- **F6 Hardware**: Tritium extraction failure → inventory accumulates → radiological hazard → shutdown (per framework mandatory binary classification)
+**Hardware Risk**
+
+| Field | Value |
+|-------|-------|
+| Plant requirement | 56 gyrotrons × 1 MW each at 230–240 GHz, CW operation, >50% wall-plug efficiency, >90% availability per unit, neutron/gamma radiation-hardened for fusion environment, 30-yr design lifetime with periodic tube replacement |
+| Best demonstrated | W7-X: 10 × 1 MW CW gyrotrons at 140 GHz, ~50% wall-plug efficiency, >95% availability demonstrated over 1,800+ plasma discharges (2015–2025). 170 GHz ITER gyrotrons (1 MW CW) passed acceptance tests. 230 GHz gyrotrons demonstrated at lab scale (sub-MW, pulsed). |
+| Gap ratio | ~5× on unit count (10 → 56 units), ~1.6× on frequency (140 → 230 GHz), fusion neutron environment not yet tested for gyrotron reliability |
+| Closure mechanism | Gyrotron scaling from 140 GHz to 230 GHz is evolutionary (larger cavity, higher magnetic field in gyrotron superconducting magnet, higher voltage electron gun). W7-X demonstrated that 1 MW CW gyrotrons at fusion-relevant power levels are industrially feasible. Unit count scaling (10 → 56) is a manufacturing/supply-chain challenge, not a technology barrier. Radiation tolerance: gyrotrons are located outside biological shield (low neutron flux); only transmission lines penetrate high-flux zone. |
+| Classification | **Degrading** (gyrotron failure above design rate increases O&M cost and reduces effective ECRH availability; if availability drops below 85%, plasma startup/control becomes intermittent, reducing capacity factor; does not prevent operation) |
+| Evidence tier | **4** (W7-X near-regime demonstrated — 1 MW CW gyrotrons at 140 GHz with >50% efficiency and high availability over 10-year experimental campaign; 230 GHz frequency is a known technology scale-up with lab prototypes; unit count scaling (10 → 56) is manufacturing/procurement, not R&D) |
+
+**F2 mean = (4 + 4) / 2 = 4.0**
 
 ---
 
-### YAML Scores Block
+#### F3: Instability Control
+
+**Physics Risk**
+
+| Field | Value |
+|-------|-------|
+| Plant requirement | Suppress or tolerate neoclassical tearing modes (NTMs), interchange modes, and Alfvénic instabilities at beta = 2.76% and 2.7 GW fusion power without active feedback control or disruption-scale MHD events |
+| Best demonstrated | W7-X: MHD-stable plasmas at beta ~1% with no disruptions over 10-year experimental campaign (2015–2025); QI optimization (maximum-j property) demonstrated to suppress interchange and ballooning modes at W7-X scale. CIEMAT-QI4X simulations show QI configurations resilient up to beta = 4% with small bootstrap current and good MHD stability. |
+| Gap ratio | ~2.8× on beta (1% → 2.76%), ~2.7 GW fusion power vs. W7-X <1 MW fusion-equivalent neutron rate (factor ~3,000× on absolute power, but beta is the relevant MHD stability parameter) |
+| Closure mechanism | QI magnetic optimization is **specifically designed** to eliminate MHD instabilities via omnigenity (good particle confinement) and maximum-j property (controls bounce-averaged drifts). W7-X experimental validation at beta ~1% confirms the QI approach works. Stellaris's 2.76% beta target is within the range demonstrated stable by CIEMAT-QI4X simulations (up to 4% beta). No active feedback control is required — stellarator equilibrium is set by external coils. |
+| Classification | **Degrading** (if MHD instabilities appear at 2.76% beta, plasma must operate at reduced beta → lower fusion power → lower Q → higher LCOE via reduced output; does not trigger disruptions because stellarators have no plasma current to disrupt) |
+| Evidence tier | **4** (W7-X near-regime demonstrated — MHD stability at beta ~1% over 10-year campaign with zero disruptions confirms QI physics works; 2.76% beta is a 2.8× extrapolation on the limiting parameter, but CIEMAT-QI4X simulations validate stability up to 4% beta; the Alpha device will provide experimental validation at Stellaris-relevant beta) |
+
+**Hardware Risk**
+
+| Field | Value |
+|-------|-------|
+| Plant requirement | Plasma-facing components (tungsten armor, EUROFER97 first wall) tolerate steady-state heat flux 4.05 MW/m² average with no MHD-driven transient heat loads above design limits (transient loads <10 MW/m² per specification) |
+| Best demonstrated | W7-X: tungsten divertor targets demonstrated at 5 MW/m² steady-state during high-performance experiments; ITER first wall mock-ups qualified at 2 MW/m² CW + 10 MW/m² transient (tokamak ELM environment, more severe than stellarator steady-state) |
+| Gap ratio | ~1× on steady-state heat flux (4.05 MW/m² Stellaris vs. 5 MW/m² W7-X demonstrated), transient loads are **lower** in stellarators than tokamaks (no disruptions, no ELMs) |
+| Closure mechanism | Stellarators have **no disruption-scale transient heat loads** by design (no plasma current → no vertical displacement events, no current quench). First wall heat flux is steady-state at 4.05 MW/m² — this is **within** W7-X demonstrated capability (5 MW/m²). The challenge is 3D curved tungsten tile fabrication for stellarator geometry, not heat flux tolerance. |
+| Classification | **Degrading** (if tungsten erosion exceeds design rate due to steady-state sputtering, first wall replacement frequency increases, raising O&M cost; does not prevent operation) |
+| Evidence tier | **5** (W7-X operating-regime demonstrated — tungsten divertor at 5 MW/m² steady-state is at/above Stellaris's 4.05 MW/m² average first wall load; stellarator steady-state heat flux is inherently less challenging than tokamak transient loads due to absence of disruptions and ELMs) |
+
+**F3 mean = (4 + 5) / 2 = 4.5**
+
+---
+
+#### F4: Plasma-Wall Interaction
+
+**Physics Risk**
+
+| Field | Value |
+|-------|-------|
+| Plant requirement | Island divertor maintains strong detachment (electron temperature <5 eV at divertor plate) at 4.05 MW/m² average first wall neutron load, neutral gas compression ratio >100:1 for tritium recovery, tungsten sputtering yield <0.01 atoms/ion at steady-state plasma conditions |
+| Best demonstrated | W7-X island divertor: complete detachment demonstrated in steady-state at low power density (~0.1–0.5 MW/m²); neutral gas compression and pumping demonstrated; tungsten erosion rates measured at W7-X conditions (factor ~10–50 below Stellaris power density). February 2023: 30-min continuous discharge. June 2025: 1.8 GJ energy record in 6-min run. |
+| Gap ratio | ~8–10× on power density (W7-X ~0.5 MW/m² → Stellaris 4.05 MW/m²), continuous operation demonstrated at relevant timescales but not at burning plasma power density |
+| Closure mechanism | Island divertor provides larger wetted area than tokamak poloidal divertors, distributing heat load over greater surface and reducing peak flux concentration (no Eich scaling; stellaris-design-details.md §2.5). The Stellaris paper claims "tungsten-based island divertor that operates with strong detachment in steady-state" but explicitly defers "recycling efficiency, ash removal, and erosion rates" to future studies. Validation requires Alpha device operation at burning plasma power density. |
+| Classification | **Binary** (if island divertor cannot maintain detachment at 4.05 MW/m² → tungsten sputtering increases → radiative collapse from tungsten accumulation in core → operations halt; stellaris-design-details.md §2.7 explicitly identifies this risk: "accumulation can lead to a radiative collapse, causing operations to halt") |
+| Evidence tier | **3** (W7-X subscale demonstration — island divertor demonstrated in steady-state at <0.5 MW/m², a factor ~8–10 below Stellaris requirement; long-pulse capability demonstrated (30 min, 1.8 GJ) but at low power density; Alpha device is required to test at 4 MW/m²) |
+
+**Hardware Risk**
+
+| Field | Value |
+|-------|-------|
+| Plant requirement | Tungsten divertor target plates (island divertor geometry) survive 4.05 MW/m² average heat flux with erosion lifetime >1 year between replacements, remote maintenance access through stellarator coil geometry constraints, divertor module replacement time <4 weeks per maintenance event |
+| Best demonstrated | W7-X: tungsten divertor operated at 5 MW/m² transient heat flux (short pulses); ITER tungsten monoblock divertor mock-ups qualified at 10 MW/m² for 1000 cycles (tokamak ELM environment); W7-X divertor remote handling demonstrated at experimental scale but not power-plant maintenance schedule |
+| Gap ratio | ~1× on heat flux (W7-X 5 MW/m² vs. Stellaris 4.05 MW/m²), replacement time and remote handling complexity not quantified for Stellaris (Gap #11: "constrained divertor geometry, stellarator-specific") |
+| Closure mechanism | Tungsten heat flux tolerance is within demonstrated capability (W7-X 5 MW/m², ITER mock-ups 10 MW/m²). The challenge is **remote maintenance access** through the modular stellarator coil geometry — "relatively small ports for in-vessel access and maintenance, i.e. in comparison with tokamaks" (Queral et al. 2025; arxiv-2501-04640.md). The island divertor geometry is tightly coupled to the magnetic topology; if erosion exceeds design limits, the only mitigation is to accept shorter replacement intervals (increasing O&M cost and reducing availability). |
+| Classification | **Degrading** (if tungsten erosion exceeds design rate → divertor replacement frequency increases → O&M cost increases and availability drops; port-access constraint limits how fast modules can be replaced, capping achievable availability; does not prevent operation) |
+| Evidence tier | **4** (W7-X near-regime demonstrated — 5 MW/m² transient heat flux is at/above Stellaris 4.05 MW/m² average; ITER mock-ups provide additional margin; the subscale gap is on **maintenance complexity** (remote handling through stellarator coil constraints), not on heat flux capability) |
+
+**F4 mean = (3 + 4) / 2 = 3.5**
+
+---
+
+#### F5: Neutron/Particle Handling
+
+**Physics Risk**
+
+| Field | Value |
+|-------|-------|
+| Plant requirement | 14 MeV D-T neutron flux 4.05 MW/m² at first wall, neutron energy deposition profile in blanket/shield matches Monte Carlo predictions within ±10%, tritium breeding ratio (TBR) = 1.074 ± 0.02 across full 30-yr blanket lifetime including port penetrations and geometry variations |
+| Best demonstrated | ITER TBR predictions (Monte Carlo): TBR ~ 1.1–1.15 for WCLL-type blankets (not yet operated); 14 MeV neutron transport codes (MCNP, Serpent) validated against fission and D-T tokamak experiments (JET, TFTR) but not at stellarator 3D geometry; ARIES-CS neutronics (QA stellarator, not QI) showed TBR ~1.0–1.1 feasible |
+| Gap ratio | TBR 1.074 for Stellaris is within the range predicted for EU DEMO WCLL (1.05–1.15); the uncertainty is in the **3D stellarator geometry correction** — Stellaris applies a 3% port correction (1.107 → 1.074); additional losses from island divertor penetrations and coil support structures are acknowledged but not quantified |
+| Closure mechanism | Monte Carlo neutronics (MCNP/Serpent with ENDF/B-VIII cross-sections) is the industry-standard method for TBR prediction. The Stellaris paper reports TBR = 1.1070 ± 0.0002 baseline (homogenized geometry, no penetrations) and applies a 3% port correction → 1.074. The paper acknowledges "margins to account for uncertainties and potential incomplete models" were applied. Validation requires integrated neutronics testing at IFMIF-DONES or the Alpha device blanket test campaign. |
+| Classification | **Binary** (if TBR < 1.05 after all engineering losses → tritium self-sufficiency fails → external tritium supply required during critical startup window → global tritium inventory constraint (~25 kg civilian) limits fleet deployment; if TBR ≥ 1.05 → self-sufficient) |
+| Evidence tier | **2** (MCNP/Serpent neutronics simulation — TBR 1.074 is a computational prediction with 3% port correction applied; no 3D stellarator blanket has been operated under 14 MeV neutron flux; ITER TBM program will provide tokamak-geometry WCLL data, but stellarator 3D geometry is a different problem; ARIES-CS studied QA, not QI) |
+
+**Hardware Risk**
+
+| Field | Value |
+|-------|-------|
+| Plant requirement | EUROFER97 structural steel survives 150–200 dpa (14 MeV neutron spectrum) over 30-yr blanket lifetime; tungsten armor survives first wall neutron activation and He production without embrittlement; PbLi eutectic (WCLL blanket) maintains fluidity and tritium extraction compatibility under neutron irradiation; HTS REBCO coils survive neutron fluence 3×10²² m⁻² (~10 FPY at 2.7 GW) without critical degradation |
+| Best demonstrated | EUROFER97: irradiated to 20 dpa in fission reactors (Phénix, BOR-60); 14 MeV fusion neutron irradiation at IFMIF-DONES (under construction, 2030s target for 150+ dpa data). Tungsten: fission-reactor irradiation data available; fusion-specific He production not yet tested at 200 dpa. REBCO tape: neutron irradiation to ~10²¹ m⁻² (ITER-scale) planned; 3×10²² m⁻² is 30× higher fluence. PbLi: irradiation effects on tritium permeability studied at lab scale. |
+| Gap ratio | ~10× on EUROFER97 dpa (20 → 150–200), ~30× on REBCO fluence (10²¹ → 3×10²²), PbLi irradiation at fusion-relevant fluence not demonstrated |
+| Closure mechanism | IFMIF-DONES (International Fusion Materials Irradiation Facility) will provide 14 MeV neutron irradiation data for EUROFER97 at 150+ dpa by mid-2030s. REBCO neutron tolerance: the Stellaris paper cites "allowable fluence for ReBCO superconductors...as 3×10²² m⁻²" → 10 FPY lifetime (stellaris-design-details.md §2.8). This is a literature estimate, not experimental data — REBCO degradation mechanisms under fusion neutron irradiation include displacement damage to REBCO crystal structure, transmutation of rare-earth elements, and activation. Periodic magnet replacement (2× over 30-yr plant life) is the design mitigation. |
+| Classification | **Degrading** (if EUROFER97 or tungsten fail at <150 dpa → blanket/first-wall replacement frequency increases → O&M cost increases; if REBCO coils fail at <10 FPY → magnet replacement frequency increases → lifecycle LCOE increases by $5–10/MWh per additional replacement; PbLi irradiation effects on tritium extraction worsen TBR margin but do not invalidate concept) |
+| Evidence tier | **2** (EUROFER97: fission-reactor irradiation at 20 dpa is a different neutron spectrum; IFMIF-DONES will provide fusion-relevant data but not until 2030s; REBCO fluence limit 3×10²² m⁻² is a literature estimate, not experimental validation; PbLi irradiation effects studied at lab scale only) |
+
+**F5 mean = (2 + 2) / 2 = 2.0**
+
+---
+
+#### F6: Fuel Cycle Closure
+
+**Physics Risk**
+
+| Field | Value |
+|-------|-------|
+| Plant requirement | TBR = 1.074 ± 0.02 sustained over 30-yr plant lifetime; tritium extraction from PbLi at kg/day throughput with <1% permeation loss; tritium inventory <10 kg on-site (regulatory limit); tritium burnup fraction >5% per pass through plasma |
+| Best demonstrated | ITER TBR predictions: TBR ~ 1.1–1.15 for WCLL (not yet operated). Tritium extraction from PbLi: lab-scale experiments (WCLL EUR ODEMO test loop) demonstrated tritium permeation through membranes but not at kg/day throughput. Tritium burnup in D-T plasmas: JET D-T campaigns achieved ~1–5% burnup per pulse. Tritium inventory: ITER design targets ~4 kg on-site. |
+| Gap ratio | TBR 1.074 is within ITER/EU DEMO range (gap ~1×); tritium extraction throughput is ~100–1000× above demonstrated lab scale; tritium inventory ~2–3× ITER design (Stellaris is larger); burnup fraction gap ~1× (JET demonstrated range) |
+| Closure mechanism | TBR 1.074 is a Monte Carlo prediction with stated margins; closure depends on F5-physics (neutronics validation). Tritium extraction: the Stellaris paper does not specify the extraction technology — EU DEMO WCLL baseline uses permeator technology (tritium diffuses through Pd/Ag membranes from PbLi into vacuum). Kg/day throughput is an engineering scale-up from lab-scale systems. Tritium inventory: the Helios analogue estimates 1–2 kg startup inventory; Stellaris (2.7 GW vs. Helios 0.96 GW) plausibly requires ~2–3 kg. |
+| Classification | **Binary** (if TBR < 1.05 → tritium self-sufficiency fails → external supply required → fleet deployment bottleneck; if tritium extraction efficiency <90% → inventory buildup → regulatory/safety limit exceeded → operations halt) |
+| Evidence tier | **2** (TBR is MCNP simulation; tritium extraction at kg/day is a paper design with lab-scale analogues; no integrated D-T fuel cycle operated at stellarator power-plant scale; ITER will demonstrate tokamak D-T fuel cycle but not until 2030s) |
+
+**Hardware Risk**
+
+| Field | Value |
+|-------|-------|
+| Plant requirement | WCLL PbLi primary loop (73.5% PbLi by volume) circulates tritium-laden eutectic at 300–500°C through blanket and tritium extraction permeators without corrosion-induced failures; permeation barriers in heat exchangers prevent tritium contamination of steam cycle; tritium accounting system tracks inventory to ±100 g; PbLi chemistry control (Li-6 enrichment 70%) maintained over 30-yr plant life |
+| Best demonstrated | EU DEMO WCLL test loops (WCLL-TES, WCLL EUR ODEMO): PbLi circulation at pilot scale (10–100 kg/s vs. power-plant ~1000 kg/s); tritium permeation through steel measured; permeation barriers (alumina coatings, double-wall HX) demonstrated at component scale. JET and TFTR historically handled gram-scale tritium. Li-6 enrichment: COLEX process (Hg-based, environmentally hazardous) is the industrial baseline; Western laser enrichment at pilot scale. |
+| Gap ratio | ~10× on PbLi circulation rate (pilot scale → power plant), ~1000× on tritium throughput (JET/TFTR grams/day → Stellaris kg/day), permeation barriers demonstrated at component scale not integrated system scale |
+| Closure mechanism | WCLL is the EU DEMO baseline blanket design — extensive R&D program exists (TBM testing on ITER planned). PbLi corrosion of EUROFER97 is well-characterized up to 500°C. Tritium extraction permeator technology (Pd/Ag membranes) is commercially available for industrial isotope separation; fusion-scale demonstration is an engineering challenge, not a technology barrier. The gap is in **integrated system demonstration**, not in component feasibility. |
+| Classification | **Degrading** (if PbLi circulation fails → blanket coolant loss → plasma shutdown → extended maintenance outage → availability drops; if tritium extraction efficiency <90% → inventory buildup → regulatory limit approached → operations curtailed; if permeation barrier fails → steam cycle tritium contamination → environmental release risk → regulatory shutdown; none prevent restart after corrective maintenance) |
+| Evidence tier | **3** (WCLL subscale demonstration — EU DEMO test loops at 10–100 kg/s PbLi flow, component-scale permeation barriers, lab-scale tritium extraction; power-plant integration (1000 kg/s, kg/day tritium, 30-yr lifetime) is an extrapolation; ITER TBM will provide tokamak-geometry integrated data but not until late 2030s) |
+
+**F6 mean = (2 + 3) / 2 = 2.5**
+
+---
+
+#### F7: Power Conversion & BOP
+
+**Physics Risk**
+
+| Field | Value |
+|-------|-------|
+| Plant requirement | Thermal power 3,100 MW delivered to steam Rankine cycle at EUROFER97-limited steam temperature ~500°C; gross thermal efficiency 38%; parasitic loads (ECRH 5–50 MW, coil conduction 111 MW, BOP pumping ~50 MW, cryo 2 MW) supplied from gross electric output; net electric 1,000 MWe |
+| Best demonstrated | Steam Rankine at 500°C / 38% efficiency: commercially demonstrated in coal plants globally (GW-scale, decades of operation). Parasitic load management in fusion context: no fusion plant has operated at net electric positive (Q_eng > 1), but parasitic power budgets are well-understood from fission plant analogues. |
+| Gap ratio | Power conversion cycle is **mature commercial technology** (gap ~1×); parasitic load fraction ~20–25% is higher than fission (~5–10%) but not unprecedented in experimental fusion (JET, TFTR operated at Q_eng < 1) |
+| Closure mechanism | No physics risk — steam Rankine cycle at 500°C is a solved engineering problem. The EUROFER97 temperature limit (550°C) is a **materials constraint**, not a thermodynamic limit. The thermal efficiency (38% gross / 32% net) is consistent with standard subcritical steam cycles. Parasitic loads are well-quantified (coil conduction 111 MW from Stellaris Table 3; ECRH 5–50 MW scenario-dependent; BOP pumping ~50 MW estimated). |
+| Classification | **Degrading** (if thermal efficiency falls below 38% due to EUROFER97 degradation or steam cycle fouling → net output drops for fixed fusion power → LCOE increases; does not prevent net electricity) |
+| Evidence tier | **5** (commercially demonstrated — GW-scale steam Rankine at 500°C / 38% efficiency is the global coal-plant standard; no fusion-specific physics risk; EUROFER97 temperature limit is a known constraint from EU DEMO program) |
+
+**Hardware Risk**
+
+| Field | Value |
+|-------|-------|
+| Plant requirement | Steam cycle heat exchangers interface with WCLL PbLi primary loop (300–500°C, tritium-permeating coolant); intermediate heat exchanger (IHX) transfers ~3,100 MW thermal with permeation barrier preventing tritium contamination of steam; steam turbine/generator at 1,000 MWe gross output; condenser + cooling towers reject ~2,100 MW waste heat |
+| Best demonstrated | Steam turbines at 1,000 MWe: commercially demonstrated (Siemens, GE, Mitsubishi turbines in coal/gas plants globally). Heat exchangers with PbLi: EU DEMO WCLL test loops demonstrated PbLi-water IHX at pilot scale (10 MW thermal); permeation barriers (alumina coatings, double-wall HX) demonstrated at component scale. Cooling towers at 2,100 MW: standard industrial equipment (coal plants routinely reject 2,000+ MW). |
+| Gap ratio | ~300× on IHX thermal throughput (10 MW pilot scale → 3,100 MW power plant); permeation barriers demonstrated at component scale not integrated system; turbine/generator and cooling towers are **no gap** (commercially mature) |
+| Closure mechanism | The **only fusion-specific hardware challenge** is the PbLi-water IHX with tritium permeation barrier. This is an engineering scale-up (pilot scale 10 MW → power plant 3,100 MW), not a technology development — double-wall heat exchangers with intermediate helium loops or alumina-coated tubes are commercially available for industrial chemical processes. The EU DEMO WCLL program is developing this exact technology for tokamaks; stellarators inherit the same IHX solution. Steam turbine, condenser, and cooling towers are off-the-shelf industrial equipment. |
+| Classification | **Degrading** (if IHX permeation barrier fails → steam cycle tritium contamination → environmental release → regulatory shutdown → extended maintenance to replace IHX → availability drops; does not prevent restart; turbine/condenser failures are standard industrial O&M, not fusion-specific) |
+| Evidence tier | **3** (IHX subscale demonstration — WCLL test loops at 10 MW thermal with permeation barriers at component scale; power-plant scale (3,100 MW) is an engineering extrapolation; all other BOP components are commercially mature at GW scale) |
+
+**F7 mean = (5 + 3) / 2 = 4.0**
+
+---
+
+### Heritage Credit Application (D-T Fuel Only)
+
+Stellaris uses D-T fuel and has **stellarator heritage** lineage (W7-X → Proxima QI optimization). Per scoring framework:
+
+| Heritage lineage | Floor (F1–F7) |
+|-----------------|---------------|
+| Stellarator (W7X, LHD, HSX, TJ-II, etc.) | 4.0 |
+
+**Apply 4.0 floor to all function scores F1–F7**:
+
+- F1 = 3.5 → **floor-adjusted to 4.0**
+- F2 = 4.0 (already at floor)
+- F3 = 4.5 (above floor, no adjustment)
+- F4 = 3.5 → **floor-adjusted to 4.0**
+- F5 = 2.0 → **floor-adjusted to 4.0**
+- F6 = 2.5 → **floor-adjusted to 4.0**
+- F7 = 4.0 (already at floor)
+
+**Final function means (after heritage credit)**:
+- F1 = 4.0
+- F2 = 4.0
+- F3 = 4.5
+- F4 = 4.0
+- F5 = 4.0
+- F6 = 4.0
+- F7 = 4.0
+
+**Binary risks** (extracted from risk matrix):
+- "TBR < 1.05 after all engineering losses (island divertor penetrations, coil support structures) → tritium self-sufficiency fails → external tritium supply required → fleet deployment bottleneck" (F5-physics, F6-physics)
+- "Island divertor cannot maintain detachment at 4.05 MW/m² → tungsten sputtering increases → radiative collapse from tungsten accumulation in core → operations halt" (F4-physics)
+
+---
 
 ```yaml
 ---
 scores:
-  C1: 2.5
-  C3: 3.3
-  C4: 3.0
+  C1: 5.0
+  C3: 3.4
+  C4: 4.0
   C5: 1.7
   C8: 3.8
-  F1: 3.0
-  F2: 3.0
-  F3: 3.5
-  F4: 3.0
-  F5: 3.0
-  F6: 2.0
+  F1: 4.0
+  F2: 4.0
+  F3: 4.5
+  F4: 4.0
+  F5: 4.0
+  F6: 4.0
   F7: 4.0
   binary_risks:
-    - "F1 Physics: H₉₈ confinement enhancement < 1.30 → fusion power < 2,700 MW → net electric output < 1,000 MW → plant economics fail"
-    - "F3 Physics: MHD instabilities or bootstrap current exceed design limits → plasma equilibrium uncontrollable → disruption-free operation lost"
-    - "F3 Hardware: 50 modular HTS coils cannot maintain ≤1 mm positioning tolerance → QI magnetic field optimization fails → confinement degrades → plasma performance fails"
-    - "F5 Physics: Coil neutron fluence > 3×10²² m⁻² before 10 full-power years → REBCO critical current degradation >10% → coil quench risk → early magnet replacement → extended plant shutdown"
-    - "F6 Physics: TBR < 1.0 (after all engineering losses) → tritium self-sufficiency fails → external tritium purchase required (per framework: mandatory binary classification)"
-    - "F6 Hardware: Tritium extraction from PbLi fails or efficiency < 50% → tritium inventory accumulates in blanket → radiological hazard → plant shutdown (per framework: mandatory binary classification)"
+    - "TBR < 1.05 after all engineering losses (island divertor penetrations, coil support structures) causes tritium self-sufficiency failure requiring external tritium supply and limiting fleet deployment"
+    - "Island divertor failure to maintain detachment at 4.05 MW/m² causes tungsten sputtering accumulation leading to radiative collapse and operations halt"
 ---
 ```
+

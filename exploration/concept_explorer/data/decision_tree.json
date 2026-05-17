@@ -50,8 +50,8 @@
                 "value": "Modular",
                 "label": "Modular",
                 "concepts": [
-                  "20a",
-                  "20b"
+                  "20",
+                  "21"
                 ]
               },
               {
@@ -81,29 +81,29 @@
                 "label": "Compact",
                 "concepts": [
                   "01",
-                  "28"
+                  "29"
                 ]
               },
               {
                 "value": "Negative triangularity",
                 "label": "Negative triangularity",
                 "concepts": [
-                  "29"
+                  "30"
                 ]
               },
               {
                 "value": "Spherical",
                 "label": "Spherical",
                 "concepts": [
-                  "21",
-                  "34"
+                  "22",
+                  "39"
                 ]
               },
               {
                 "value": "Standard",
                 "label": "Standard",
                 "concepts": [
-                  "33"
+                  "34"
                 ]
               }
             ]
@@ -126,7 +126,7 @@
             "value": "Heavy ion beam",
             "label": "Heavy ion beam",
             "concepts": [
-              "25"
+              "26"
             ]
           },
           {
@@ -138,8 +138,8 @@
                 "value": "Direct drive",
                 "label": "Direct drive",
                 "concepts": [
-                  "31",
-                  "32"
+                  "32",
+                  "33"
                 ]
               },
               {
@@ -147,22 +147,21 @@
                 "label": "Fast ignition",
                 "concepts": [
                   "04",
-                  "17b"
+                  "17"
                 ]
               },
               {
                 "value": "Hybrid drive",
                 "label": "Hybrid drive",
                 "concepts": [
-                  "17a"
+                  "27"
                 ]
               },
               {
                 "value": "Indirect drive",
                 "label": "Indirect drive",
                 "concepts": [
-                  "26",
-                  "30"
+                  "31"
                 ]
               },
               {
@@ -176,7 +175,7 @@
                 "value": "Ultrashort pulse",
                 "label": "Ultrashort pulse",
                 "concepts": [
-                  "23"
+                  "24"
                 ]
               }
             ]
@@ -185,7 +184,7 @@
             "value": "Projectile",
             "label": "Projectile",
             "concepts": [
-              "22"
+              "23"
             ]
           }
         ]
@@ -207,7 +206,8 @@
             "label": "Magnetized target",
             "concepts": [
               "07",
-              "14"
+              "14",
+              "37"
             ]
           }
         ]
@@ -222,7 +222,8 @@
             "label": "Electrostatic",
             "concepts": [
               "13",
-              "27"
+              "28",
+              "38"
             ]
           },
           {
@@ -236,7 +237,7 @@
             "value": "Plasma focus",
             "label": "Plasma focus",
             "concepts": [
-              "24"
+              "25"
             ]
           }
         ]

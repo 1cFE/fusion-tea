@@ -1,520 +1,265 @@
 ---
 ID: 18-p-b11-frc
-Concept: p-B11 FRC
+Concept: p-B11 FRC (p-B11)
 Company: TAE Technologies
 Type: synthesis
 Status: draft
-Created: 2026-04-29
+Created: 2026-05-13
 ---
+
+# Synthesis: p-B11 FRC (TAE Technologies)
 
 ## 1. Executive Summary
 
-- **Most important risk**: Q_plasma > 1 has never been demonstrated for p-B11 in any confinement device. C-2W/Norman has reached ~3 keV total plasma temperature (~1 keV electron, fast-ion-dominated); Da Vinci requires ~150–250 keV ion temperature — a ~50–80× extrapolation in T_i with no validated confinement scaling law. Sustaining T_i >> T_e at commercial conditions (the entire physical premise) is unvalidated above 1 keV. This is qualitatively different from any D-T concept — it is the foundational physics question, not an engineering scaling question.
+- **The single most important risk**: p-B11 has never achieved Q>1 in any confinement device. TAE's C-2W/Norman reached ~1 keV electron temperature—the Da Vinci target of ~150 keV ion temperature is a ~150× extrapolation with no validated physics scaling. This is not an engineering unknown; it is a binding physics question that determines whether the concept produces net electricity at all.
 
-- **Most important advantage**: True aneutronic operation removes ~30–40% of the D-T capital stack — no breeding blanket, no Li-6 enrichment chain, no FLiBe, no remote-handling robots, no REBCO HTS magnets. Hands-on maintenance becomes possible. The materials and supply-chain footprint is radically simpler than any D-T MFE concept in this pipeline.
+- **The single most important advantage**: Aneutronic fuel eliminates tritium breeding, heavy neutron shielding, and remote handling infrastructure. This removes ~$300–500M in capital cost (blanket, shield, tritium systems) and simplifies O&M dramatically relative to D-T concepts—but only if the physics succeeds.
 
-- **LCOE ballpark**: **$119/MWh at Q_plasma=30, η_NBI=0.26, capacity factor=85%, steam Rankine η_th≈32%, 105 MWe net** (model Branch B Baseline). Branch B sweep range $50–740/MWh depending on Q (15→50) and capacity factor. Branch A (physics fails) returns no LCOE for Q ≲ 14 at η_NBI=0.26. ICC upgrade (Branch C) drops to $44/MWh at the same physics — but ICC remains patent-stage with zero experimental validation at MeV fusion-product energies.
+- **LCOE ballpark**: Model baseline (Q=30, η_NBI=0.26, steam conversion) yields **$104/MWh** at 124 MWe native scale, scaling to **$45/MWh** at 1000 MWe. ICC upgrade (Branch C, same physics) drops to **$44/MWh** at 489 MWe native, **$33/MWh** at 1000 MWe. However: the Q=30 assumption has zero experimental support. At the breakeven threshold Q≈14, LCOE is **$845/MWh**. Below Q≈14, there is no LCOE—the concept does not produce net electricity (Branch A).
 
-- **Confidence verdict**: **Low**. The LCOE estimate rests on three undemonstrated assumptions: (a) Q_plasma=30 vs. demonstrated <0.01, (b) η_NBI=0.26 at 250 keV vs. C-2W-derived range 0.20–0.35 at <40 keV, (c) continuous FRC operation vs. current 40 ms pulse record. Branch A non-viability is a real possibility; the source materials provide no closure.
+- **Confidence verdict**: **Low**. The analysis uses six blocking assumptions (Q value, NBI efficiency at reactor scale, bremsstrahlung suppression, FRC stability at 1–2m radius, alpha confinement, capital cost) none of which are anchored to Da Vinci-specific data. The model maps physics viability boundaries rather than estimating a central LCOE. TAE's Copernicus machine (unbuilt as of 2026) is intended to validate the 1 keV → 150 keV scale-up; until those results are published, this synthesis scores the concept against current experimental evidence.
 
 ---
 
 ## 2. What Matters Most for LCOE
 
-Ranked by sensitivity from the model output's Q × η_NBI grid:
+Ranked by LCOE sensitivity (model output: Sensitivity Sweeps §1–7, Branch B baseline):
 
-### 1. Q_plasma — binding viability constraint and top elasticity
-- **Assumed value**: Q=30 (baseline)
-- **Source**: Modeling assumption; no published Da Vinci Q value
-- **Sensitivity**: At η_NBI=0.26, Branch B has no LCOE for Q ≲ 14 (Branch A region). Above the viability threshold, ∂lnLCOE/∂lnQ ≈ −1.5. Dropping from Q=30 to Q=20 raises LCOE from $119/MWh to $231/MWh. Below Q=15 the model returns no LCOE.
-- **Flips conclusion**: Q < 14 → no positive net electricity at η_NBI=0.26. This is a binary cliff, not a degradation.
+### 1. **Q_plasma** — Binding physics constraint
+   **Assumed value**: 30 (baseline); breakeven ≈14 (model).
+   **Source**: Zero experimental data. C-2W operates far below Q=1. Analysis §2 derives Q_break=14 from corrected NBI efficiency (η_NBI=0.26) × thermal efficiency (η_th=0.35) × radiation loss (f_rad=0.15).
+   **Sensitivity**: At Q=15, LCOE = $1053/MWh (8.5 MWe net). At Q=25, LCOE = $138/MWh (86 MWe net). At Q=50, LCOE = $62/MWh (279 MWe net). Below Q≈14, P_net ≤ 0 → no LCOE.
+   **What would flip the conclusion**: If Q_plasma cannot exceed ~20–25 with realistic NBI efficiency, the steam-only concept is economically nonviable (LCOE >$200/MWh). At Q≥40 with ICC upgrade (Branch C), LCOE drops below $40/MWh and becomes competitive with D-T compact tokamaks. The crossover is sharp: a 2× change in Q produces a 5× change in LCOE near breakeven.
 
-### 2. NBI wall-plug-to-plasma efficiency
-- **Assumed value**: η_NBI = 0.26 (central from C-2W attenuation chain)
-- **Source**: Derived from osti-pages-servlets-purl-2441289.md §2 — "attenuated power estimated to be less than half of the electrical power" + 15% shine-through, multiplied through a 0.55–0.65 wall-plug-to-source coefficient
-- **Sensitivity**: Drop η_NBI from 0.26 to 0.20 doubles the Q_plasma viability threshold and ~doubles LCOE. Rise to 0.40 cuts LCOE roughly in half (Branch B Optimistic at $57/MWh).
-- **Flips conclusion**: η_NBI < 0.20 with Q < 35 forces Branch A; η_NBI ≥ 0.40 brings Branch B competitive with mid-range D-T.
+### 2. **NBI total wall-plug efficiency (η_NBI)** — Recirculating power driver
+   **Assumed value**: 0.26 (baseline); range 0.20–0.45.
+   **Source**: C-2W experimental data (OSTI 2441289, *Nuclear Fusion* 2024): duct/geometric losses reduce beam power reaching plasma to <50% of NBI electrical input; additional 15±5% shine-through measured. Two-step chain: source efficiency (~0.60) × plasma coupling (~0.43) = 0.26 total. Prior analyses using η_NBI~0.55 cited source-only efficiency and overstated plasma-coupled efficiency by ~2×.
+   **Sensitivity**: At η_NBI=0.20, LCOE = $132/MWh (95 MWe net). At η_NBI=0.35, LCOE = $89/MWh (150 MWe net). At η_NBI=0.45 (optimistic), LCOE = $82/MWh (167 MWe net). Elasticity ≈ –1.5 (10% improvement in η_NBI → ~15% reduction in LCOE).
+   **What would flip the conclusion**: If Da Vinci's high-energy NBI (>120 keV, requiring negative-ion sources) cannot achieve η_NBI ≥0.25 at plasma-coupled level, the Q_plasma floor rises from ~14 to ~18 (conservative η_NBI=0.20) and the commercial minimum rises from Q~25 to Q~35. Conversely, η_NBI ≥0.40 (optimistic, well-demonstrated negative-ion NBI) drops the Q floor to ~9 and makes Q=20 marginally viable.
 
-### 3. Capacity factor (interacts multiplicatively with NBI recirc)
-- **Assumed value**: 85% (steady-state design assumption)
-- **Source**: Modeling assumption; FRC CW operation undemonstrated (current pulse ~40 ms)
-- **Sensitivity**: Below 85%, NBI wall-plug power stays near full while net output drops, so the effective recirculating fraction rises. CF=70% at Q=20, η=0.22 → LCOE $739/MWh.
-- **Flips conclusion**: First-of-kind capacity factors of 50–60% are plausible. At CF=60%, LCOE roughly doubles vs. baseline.
+### 3. **Radiation loss fraction (f_rad)** — Bremsstrahlung suppression
+   **Assumed value**: 0.15 (1costingfe default for p-B11).
+   **Source**: Assumption. TAE's T_i >> T_e non-equilibrium strategy aims to suppress bremsstrahlung by maintaining ion temperature far above electron temperature, limiting electron-ion energy transfer. C-2W SEQUOIIA reconstructions show fast-ion pressure exceeds thermal plasma pressure by ~1.5× at 1 keV (OSTI 2441289 §3.1), validating the strategy at experimental conditions. However, at 150 keV ion temperature, electron-ion equilibration timescales and bremsstrahlung loss rates are categorically different. No data exists at reactor-relevant temperatures.
+   **Sensitivity**: At f_rad=0.05 (optimistic suppression), LCOE = $91/MWh (152 MWe net). At f_rad=0.30, LCOE = $141/MWh (84 MWe net). At f_rad=0.50, LCOE = $341/MWh (29 MWe net). At f_rad ≥0.70, P_net ≤ 0 → Branch A (no LCOE). Q_plasma × f_rad viability grid (model output §9): at Q=30, f_rad threshold for Branch A is ~0.7; at Q=20, threshold drops to ~0.5.
+   **What would flip the conclusion**: In a fully thermalized Maxwellian plasma, f_rad for p-B11 at 150 keV can exceed 0.80–1.0 (bremsstrahlung dominates fusion output). If TAE's beam-driven non-Maxwellian regime cannot be sustained at commercial conditions, no Q value enables net electricity. This is the fundamental physics bet underlying the entire concept. Copernicus experimental results on bremsstrahlung suppression at 10–20 keV (intermediate regime) would partially retire this risk.
 
-### 4. NBI capital cost ($/MW)
-- **Assumed value**: $10M/MW × ~26 MW = $260M (~50% of CAS22)
-- **Source**: Modeling assumption; no commercial reference at fusion scale
-- **Sensitivity**: ±50% NBI cost moves LCOE ±15–20%. Below threshold of importance vs. Q and η.
-- **Flips conclusion**: Doesn't flip viability, only optimizes around the steam-Q baseline.
+### 4. **NBI capital cost** — Dominant capital account
+   **Assumed value**: $10M/MW of plasma-coupled NBI power; $260M total at baseline (26 MW plasma-coupled).
+   **Source**: ITER NBI (2×33 MW at 1 MeV D, negative-ion) capital ~$500M total → ~$7.6M/MW. TAE claims 50% cost reduction from NBI-only Norm breakthrough vs. prior design (tae-nbi-breakthrough-2025.md). Using $10M/MW as conservative FOAK estimate for custom fusion-scale NBI.
+   **Sensitivity**: At $5M/MW, LCOE = $82/MWh (–21% vs. baseline). At $15M/MW, LCOE = $127/MWh (+22%). At $20M/MW, LCOE = $150/MWh (+44%). Elasticity ≈ +0.4 (NBI cost doubling → LCOE +80%).
+   **What would flip the conclusion**: NBI accounts for >50% of CAS22 (Reactor Plant Equipment) at baseline. If commercial-scale negative-ion NBI systems at 250+ keV cost $20M/MW (no commercial supply chain exists; custom procurement penalty), LCOE rises from $104/MWh to $150/MWh and the concept loses competitiveness against D-T tokamaks with comparable Q. Conversely, if NBI cost scales favorably via module replication (NBI is one of the few fusion systems amenable to factory manufacturing), LCOE drops proportionally.
 
-### 5. Energy conversion architecture (steam vs. ICC)
-- **Assumed value**: Steam Rankine, η_th=32%
-- **Source**: tae-energy-conversion-clarification.md (TAE FAQ explicitly confirms steam for Da Vinci)
-- **Sensitivity**: ICC at 90% η would drop LCOE from $119 to $44/MWh at the same physics. ~3× gap.
-- **Flips conclusion**: Doesn't flip viability for Da Vinci-as-designed; only relevant for Branch C upside narrative.
+### 5. **Capacity factor** — Interacts multiplicatively with NBI recirculating power
+   **Assumed value**: 0.85 (baseline); steady-state concept, but CW FRC operation undemonstrated.
+   **Source**: C-2W pulse record ~30–40 ms (NBI pulse-duration limited). Da Vinci targets seconds-to-continuous operation (analysis §3, FRC plasma formation). Early first-generation plants likely operate below 90% due to NBI maintenance cycles and undemonstrated steady-state FRC stability. 85% is a moderate FOAK estimate; 70–75% is plausible for pre-commercial Da Vinci.
+   **Sensitivity**: At CF=0.70, LCOE = $127/MWh (+22% vs. baseline). At CF=0.90, LCOE = $99/MWh (–5%). At CF=0.50 (pessimistic early operations), LCOE = $177/MWh (+70%). Elasticity ≈ –0.4 (10% CF improvement → 4% LCOE reduction).
+   **What would flip the conclusion**: **Compounding penalty** (Mulder et al. arXiv:2103.12451): NBI must remain at near-full power to maintain FRC stability even when the plant operates at reduced output. At CF<85%, the effective recirculating fraction rises above the rated-power calculation because NBI wall-plug draw stays constant while average energy output falls. This tightens the Q_plasma floor beyond the model's rated-power Q_break≈14 estimate. If early Da Vinci operates at CF=60–70% (plausible for undemonstrated CW FRC), the *effective* Q_plasma requirement is ~30–40, not ~20–25. Capacity factor and Q_plasma interact multiplicatively, not independently. Demonstrating CW FRC operation at experimental scale (Copernicus → Da Vinci timeline) retires this compounding risk.
 
 ---
 
 ## 3. Risk Verdicts
 
-For each major challenge from the analysis Section 2:
+### **Bremsstrahlung power balance at Da Vinci conditions** (f_rad suppression)
+**Verdict**: **Genuinely uncertain**.
+**Rationale**: TAE's fast-ion-dominated plasma regime is validated at ~1 keV (SEQUOIIA reconstructions show Ti pressure exceeds thermal by ~1.5×). At 150 keV, electron-ion equilibration timescales and bremsstrahlung scaling are fundamentally different—this is not an incremental extrapolation. The physics of sustained T_i >> T_e at 150 keV is an open research question, not an engineering scale-up.
+**What would retire this risk**: Copernicus experimental results demonstrating f_rad <0.30 at intermediate temperatures (10–20 keV) with sustained beam-driven non-equilibrium. Alternatively, peer-reviewed plasma physics modeling from TAE showing validated confinement scaling + bremsstrahlung suppression mechanisms at reactor-relevant densities and temperatures. Absent these, f_rad remains a free parameter in the model with no experimental anchor.
 
-### Bremsstrahlung power balance for p-B11 (the binding physics constraint)
-- **Verdict**: Genuinely uncertain
-- **Rationale**: T_i >> T_e suppression of bremsstrahlung is validated at 1 keV total plasma temperature (C-2W SEQUOIIA equilibrium reconstruction); equilibration timescales and bremsstrahlung loss rates are categorically different at 150+ keV. There is no theoretical or experimental basis for assuming the regime persists.
-- **What would retire this risk**: Sustained T_i ≥ 50 keV with T_i/T_e ≥ 3 in a beam-driven FRC for ≥1 second. Copernicus is the intended demonstrator but unbuilt.
+### **Temperature extrapolation from C-2W (~1 keV) to Da Vinci (~150 keV)**
+**Verdict**: **Unlikely resolvable without Copernicus/intermediate-scale experiments**.
+**Rationale**: A ~150× temperature jump with no validated confinement scaling is not a risk—it is the central physics unknown. No fusion concept in this pipeline (D-T, D-D, D-He3, or p-B11) has demonstrated confinement physics over this range. TAE positions Copernicus as the intermediate-scale validation machine to bridge this gap, but Copernicus parameters and timeline are not publicly disclosed as of 2026.
+**What would retire this risk**: Copernicus achieving sustained FRC operation at 10–30 keV ion temperatures with measured energy confinement time τ_E sufficient to extrapolate to Da Vinci conditions. Specific milestone: Copernicus demonstrating Q_plasma ≥1 at any temperature, establishing that the beam-driven FRC regime can cross the net energy threshold before Da Vinci construction begins (2026–2029 timeline).
 
-### Temperature extrapolation 1 keV → 250 keV
-- **Verdict**: Genuinely uncertain
-- **Rationale**: ~50–80× T_i extrapolation in the same machine architecture has not been validated for any confinement concept. FRC transport scaling at high temperature is essentially unknown.
-- **What would retire this risk**: Intermediate-scale demonstration at 30–80 keV ion temperature with measured energy confinement time.
+### **NBI recirculating power fraction at commercial scale**
+**Verdict**: **Likely resolvable** (engineering scale-up, not physics unknown).
+**Rationale**: C-2W data provides experimental anchor for NBI efficiency chain (source ~0.60 × coupling ~0.43 = 0.26 total). Da Vinci's high-energy NBI (>120 keV, negative-ion sources required for efficient neutralization) is a scale-up challenge but not a novel physics regime—ITER's 1 MeV negative-ion NBI (D beams) is the relevant analogue. The uncertainty is quantitative (η_NBI: 0.20–0.40 plausible range) rather than binary (will it work at all?).
+**What would retire this risk**: Published Da Vinci NBI system specification (beam energy, total power, wall-plug budget) from TAE. Alternatively, demonstration of negative-ion proton NBI at 200–500 keV on an intermediate-scale machine (Copernicus candidate) with measured wall-plug-to-plasma efficiency. If Da Vinci NBI achieves η_NBI ≥0.35 at reactor scale, the Q_plasma commercial floor drops from ~25 to ~15 and LCOE sensitivity to Q improves substantially.
 
-### NBI recirculating power fraction at commercial scale
-- **Verdict**: Likely resolvable
-- **Rationale**: NBI is mature heating technology; ITER's 1 MeV NNBI is an industrial-scale precedent (under construction). 250 keV proton NBI at 30 MW is engineering, not physics. The risk is that the efficiency floor (η_NBI ~0.20 worst case) becomes binding for net energy.
-- **What would retire this risk**: Operational data from a 250 keV NBI test stand at ≥10 MW absorbed power with documented wall-plug efficiency.
+### **FRC stability at reactor scale (1–2 m major radius, multi-MA plasma current)**
+**Verdict**: **Genuinely uncertain** (open physics question, not yet demonstrated).
+**Rationale**: C-2W operates at 0.4 m separatrix radius and 300–350 kA plasma current. Da Vinci's 1–2 m radius target is a factor of 2.5–5× scale-up (analysis §2 Challenge 4). FRC tilt and rotational instabilities are known to amplify with size; TAE's NBI-driven stabilization is demonstrated at C-2W scale but scaling to reactor dimensions is unvalidated. Unlike stellarators (where 3D coil geometry is theoretically optimizable) or tokamaks (where intrinsic kink stability is well-understood), FRC stability at reactor scale relies on anomalous suppression by external beam injection—a regime-dependent mechanism, not an intrinsic property of the magnetic topology.
+**What would retire this risk**: Intermediate-scale FRC (Copernicus) at 0.7–1.0 m radius with demonstrated tilt mode suppression via NBI at multi-megaampere plasma currents. Alternatively, peer-reviewed FRC MHD modeling from TAE showing that the observed C-2W stabilization mechanism (tangential NBI suppressing tilt) extrapolates robustly to Da Vinci scale. This is resolvable via experiment, not via modeling alone—FRC instabilities are notoriously sensitive to plasma profiles and boundary conditions.
 
-### FRC stability at reactor scale
-- **Verdict**: Genuinely uncertain
-- **Rationale**: Tilt/kink stabilization by tangential NBI is demonstrated at C-2W (0.4 m separatrix radius, 350 kA). Da Vinci needs ~1–2 m and multi-MA. No validated stability scaling exists.
-- **What would retire this risk**: Copernicus or equivalent at reactor-scale plasma current with measured stability margins.
+### **ICC direct conversion: zero experimental demonstration**
+**Verdict**: **Unlikely resolvable before Da Vinci operates** (Branch C is speculative).
+**Rationale**: TAE holds foundational patents (US7459654, US6628740, US6888907) describing the ICC concept in detail—ion rotation frequencies 5–10 MHz, tapered magnetic field deceleration, segmented electrodes for coherent alpha beams. However, no experimental ICC has been demonstrated at MeV-range fusion product energies. ICC is explicitly NOT the Da Vinci baseline—TAE FAQ confirms thermal/steam conversion for near-term deployment. Branch C (ICC upgrade) represents the long-term economic vision, not the first-generation plant.
+**What would retire this risk**: Prototype ICC demonstration at laboratory scale (MeV-range alpha particles from a fusion source, measured conversion efficiency >70%). TAE's 2,500+ patent portfolio suggests active R&D; no public prototype announcement as of 2026. ICC is resolvable in parallel with Da Vinci construction—it does not block the steam-baseline plant, but its absence means the near-term concept cannot realize the core economic advantage of the aneutronic fuel choice (direct conversion at >90% efficiency vs. thermal cycle at ~35%).
 
-### Energy conversion architecture (steam baseline vs. ICC future)
-- **Verdict**: Steam — likely resolvable. ICC — genuinely uncertain.
-- **Rationale**: Da Vinci's steam Rankine is TRL 9 BOP technology integrated with a novel heat source. The steam side is engineering integration; the ICC side is a 30+ year R&D program with zero experimental validation at MeV alpha particle energies.
-- **What would retire this risk**: For steam — Da Vinci first plasma + power generation demonstration. For ICC — laboratory ICC prototype converting MeV ions at >50% efficiency.
-
-### O&M cost structure
-- **Verdict**: Likely resolvable; aneutronic structural advantages real
-- **Rationale**: Hands-on maintenance and absence of tritium/remote-handling cost categories are genuine. NBI maintenance is a known cost (analogue: ITER NBI O&M at >$100M/yr at higher complexity). No fusion-specific O&M cost surprises expected.
-- **What would retire this risk**: Operational data from Da Vinci's first ~5 years.
+### **Capital cost: no published Da Vinci plant study**
+**Verdict**: **Likely resolvable** (proprietary, not truly-unknown).
+**Rationale**: TAE has raised >$1.2B in private funding, announced a >$6B DJT merger valuation, and set a 2026 construction start date. Internal cost estimates exist; they are not publicly disclosed. The LCOE model uses analogue-based CAS account estimates (NBI from ITER, BOP from 1costingfe, blanket eliminated for aneutronic concept). This introduces ~±50% uncertainty in total capital but does not invalidate the LCOE structure—aneutronic concepts generically have lower capital than D-T (no blanket, no shielding, no tritium handling), and NBI cost scales are known from tokamak programmes.
+**What would retire this risk**: TAE investor disclosures or ARPA-E Milestone-based Fusion Development Program progress reports containing Da Vinci capital cost breakdown. Alternatively, post-merger DJT financial disclosures may include Da Vinci capex estimates if the plant is positioned as a near-term commercial deployment. Unlike the physics risks (which require experimental validation), this gap is fundamentally solvable via transparency—the information exists internally.
 
 ---
 
 ## 4. Structural Advantages and Disadvantages
 
-**Comparing against the conventional D-T tokamak baseline (e.g., 01-CFS ARC):**
+Baseline: conventional D-T tokamak cost structure (ARIES-ACT / ARC-class concepts).
 
-### Advantages (cost categories ELIMINATED)
-- **Breeding blanket**: ~$300–500M CAS account fully removed. No FLiBe, no Li-6 enrichment, no tritium extraction loops, no breeding R&D.
-- **Tritium plant**: ~$200–400M and ongoing radiological compliance burden eliminated. No isotope separation, no inventory accounting, no kg/day tritium throughput.
-- **Remote handling robotics**: ~$500M+ (ITER analogue) eliminated. Hands-on maintenance possible.
-- **REBCO HTS magnets**: ~$200–400M eliminated. Copper resistive coils at ~1 kG external field are commodity. No global tape supply bottleneck.
-- **Heavy neutron shielding**: ~$100–200M reduced (~10× thinner shield with secondary-only neutron flux from 1% side reactions). Smaller building footprint.
-- **Pulsed thermal cycling penalty**: Steady-state operation avoids the cyclic fatigue and capacity-factor penalty that pulsed D-T concepts (tokamaks at quasi-steady) incur on first-wall components.
+### **Eliminated cost items** (aneutronic fuel advantage):
 
-### Disadvantages (cost categories ADDED or UPGRADED)
-- **NBI as the dominant capital line item**: ~$260M (~50% of CAS22) at $10M/MW × 26 MW. No commercial supply chain at fusion scale.
-- **Recirculating power burden**: ~100 MW wall-plug NBI for 105 MWe net (Q=30, η_NBI=0.26 baseline). Fully half the gross output is consumed by the driver.
-- **Foundational physics risk**: Q_plasma > 1 unproven for p-B11. No D-T concept has comparable physics-level uncertainty — D-T plasma heating to fusion conditions is an engineering problem, not a science question.
-- **Steam-vs-ICC structural mismatch**: Da Vinci's near-term plant pays the capital cost of an aneutronic-fuel system but achieves only steam-cycle (~32%) efficiency. The ICC payoff is deferred indefinitely.
-- **High-energy NBI scale-up risk**: 250 keV proton NBI at 30 MW is novel. Negative-ion approaches at higher energy add complexity; positive-ion at this energy has poor neutralization efficiency.
+| Cost Category | D-T Tokamak Baseline | p-B11 FRC | Savings Estimate |
+|---------------|---------------------|-----------|------------------|
+| CAS220101 — Breeding blanket | $200–400M (Li/PbLi, beryllium multiplier, tritium extraction) | $0.8M (X-ray absorber / first wall only) | **~$300M eliminated** |
+| CAS220102 — Neutron shield | $150–250M (multi-meter composite shield, B₄C/steel/concrete) | $0.9M (thin water/boron shield for <1% neutrons) | **~$200M eliminated** |
+| CAS220112 — Li-6 enrichment | $50–100M (isotope separation, inventory) | $0 (no Li required) | **~$75M eliminated** |
+| CAS220500 — Fuel handling | $150–250M (tritium handling, remote maintenance, radiological containment) | $3.5M (boron injection system) | **~$200M eliminated** |
+| CAS220110 — Remote handling | $100–200M (robotic manipulators, hot cells, long-reach tools) | $2.9M (minimal, hands-on maintenance capable) | **~$150M eliminated** |
+| **Total eliminated** | | | **~$925M** (at 1 GWe reference) |
 
-### Net structural assessment
-Aneutronic eliminates ~$1.5–2B of D-T-specific capital and substantial O&M. NBI replaces ~$260M of that. The rest is genuine structural saving — IF the physics works. Steam-only Da Vinci LCOE ($119/MWh) sits comfortably above mid-range D-T (CFS at $80–100/MWh for SPARC-class) because the recirculating power penalty and undemonstrated physics overwhelm the structural advantages. ICC would flip the comparison decisively, but is a separate technology bet.
+At the model's 124 MWe native scale, these eliminations scale to ~$150–200M savings relative to an equivalent D-T plant. This is the aneutronic structural advantage: TAE pays zero tritium penalty in capital or O&M.
+
+However, the **added cost items** partially offset this:
+
+| Cost Category | p-B11 FRC | D-T Tokamak Baseline | Added Cost |
+|---------------|-----------|---------------------|------------|
+| CAS220104 — NBI system | $260M (26 MW plasma-coupled at $10M/MW) | $50–80M (auxiliary heating, <10 MW for D-T tokamak) | **+$180–210M** |
+| Recirculating power impact | 46.3% of gross electric (model output) | ~15–20% for D-T tokamak with Q~10–15 | **Denominator penalty**: gross electric must be ~1.5× higher for equivalent net output |
+
+The net effect: p-B11 FRC eliminates ~$150–200M in aneutronic-specific savings but adds ~$180–210M in NBI cost at 124 MWe scale. The structural advantage only materializes if the recirculating power fraction is comparable to D-T—i.e., if Q_plasma ≥30 with η_NBI ≥0.26. At lower Q or lower NBI efficiency, the added NBI cost dominates and the concept becomes more expensive than D-T despite the aneutronic savings.
+
+### **Structural disadvantages**:
+
+1. **Q_plasma floor is ~2× higher than D-T**: The corrected breakeven threshold Q≈14 (steam, η_NBI=0.26) vs. Q≈7–8 for D-T tokamaks with similar thermal efficiency and lower recirculating power. This is a direct consequence of the NBI recirculating load and lower fusion reactivity of p-B11 relative to D-T. D-T tokamaks with Q=10 are marginally viable; p-B11 FRC with Q=10 is far below breakeven.
+
+2. **Energy conversion architecture locked to thermal cycle in near term**: Da Vinci uses steam Rankine at ~35% efficiency. D-T tokamaks also use thermal cycles but can access advanced Brayton cycles (sCO₂ at ~48%, helium at ~45%) via high-temperature blankets. TAE's p-B11 alphas deposit energy in the first wall as heat; until ICC is demonstrated, the concept cannot access the >90% efficiency direct conversion that justifies the fuel choice. This is a strategic LCOE penalty: the concept pays the physics cost of p-B11 (high temperature, high Q requirement) but delivers only thermal-cycle efficiency.
+
+3. **No heritage from D-T tokamak programmes**: Unlike compact HTS tokamaks (which inherit ITER divertor R&D, tritium handling experience, and decades of MHD stability research), the beam-driven FRC is a fundamentally different confinement paradigm. TAE's experimental lineage is internal (C-2, C-2U, C-2W, Norm). This increases first-of-a-kind engineering risk and eliminates the ability to leverage the ~$50B of global investment in tokamak engineering.
 
 ---
 
 ## 5. Cross-Concept Positioning
 
-### Closest neighbor on confinement geometry
-**08-Helion** — also FRC, also no tritium, also private at $1B+ funding scale. Differs fundamentally on operating mode (Helion pulsed compression D-He3 vs. TAE steady-state beam-driven p-B11). Helion's pulsed approach sidesteps the sustained T_i >> T_e requirement entirely; TAE's steady-state approach requires it. Capital structures are partly analogous (copper coils, no tritium, direct conversion ambition) but the driver category and reactivity regime differ.
+**Nearest neighbors** (confinement topology): Helion FRC (D-He3 pulsed compression, 08-frc-w-direct-conversion). Both use near-unity beta FRC geometry with direct energy conversion aspirations and non-tritium fuel. Helion's D-He3 pulsed approach achieves ~4 ¢/kWh in the handwritten exemplar (copper coils, no tritium, optimistic direct conversion). TAE's p-B11 steady-state approach at Q=30 + steam yields ~10.4 ¢/kWh (Branch B baseline), ~2.5× worse than Helion's D-He3 despite shared FRC topology. The gap is driven by: (a) p-B11 has worse fusion reactivity than D-He3 at equivalent temperature (higher Q_plasma requirement), and (b) Da Vinci's thermal cycle cannot access the direct conversion efficiency advantage. With ICC upgrade (Branch C), TAE drops to ~4.4 ¢/kWh—comparable to Helion's target—but ICC is undemonstrated.
 
-### Closest neighbors on fuel chemistry
-- **04-HB11** (laser p-B11): pulsed laser-driven inertial confinement bypasses sustained T_i >> T_e through brief high-intensity implosions. Different driver (DPSSL laser vs. NBI), different geometry, but shares the bremsstrahlung framing.
-- **23-Marvel** (laser p-B11 nanostructured target): similar inertial approach with target nanofabrication.
-- **24-LPPFusion** (dense plasma focus p-B11): pulsed electromagnetic compression. Highest TRL gap among p-B11 concepts (essentially proof-of-concept stage).
-- **06-Pale Blue Mirror p-B11**: also steady-state magnetic, but mirror geometry with end losses.
+**Fuel-dimension neighbors** (p-B11 aneutronic): Four other concepts in this pipeline use p-B11 fuel:
+- **06-magnetic-mirror** (Pale Blue Fusion): Similar steady-state MFE, faces identical bremsstrahlung challenge, proposes alpha channeling + direct conversion. Preliminary analysis (iter-1/INTERRUPTED) suggests LCOE in the $50–150/MWh range if physics succeeds—comparable to TAE's Branch B.
+- **24-dense-plasma-focus** (LPPFusion): Pulsed approach (~μs pulses) sidesteps sustained T_i >> T_e requirement; electron equilibration time exceeds pulse duration, suppressing bremsstrahlung by construction. Capital cost structure radically simpler (no NBI, no external magnets), but electrode erosion and high-rep-rate challenges are the analogous engineering unknowns.
+- **04-laser-icf** (HB11 Energy), **23-laser-icf-nanostructured-target** (Marvel Fusion): Laser IFE approaches use petawatt-class lasers to reach p-B11 ignition transiently. Like DPF, the pulsed approach avoids sustained temperature maintenance but introduces laser driver efficiency (~10–20% wall-plug) as the recirculating power analogue.
 
-TAE is the **best-funded** p-B11 concept by ~10× ($1.2–1.3B vs. $5–50M for peers). It is the only steady-state magnetic-confinement p-B11 effort with institutional credibility in the public-private funding ecosystem.
+All p-B11 concepts share the bremsstrahlung power balance challenge. The FRC NBI-driven approach's distinctive bet is *steady-state, beam-driven non-Maxwellian confinement*: if the T_i >> T_e regime can be sustained at commercial scale with Q_plasma ≥30, the FRC produces continuous power with no rep-rate or pellet engineering. The downside is that the NBI recirculating power burden is continuous—it cannot be amortized over short pulses the way DPF or laser IFE approaches do. TAE is betting on sustained confinement quality at 150 keV; LPPFusion/HB11/Marvel are betting on transient compression to ignition conditions without sustained confinement.
 
-### Fundamental differentiation
-Three things make TAE p-B11 FRC categorically distinct from D-T concepts in this pipeline:
-1. **Foundational physics is unsolved.** D-T plasma physics is validated through JET; the question is engineering scaling. TAE's physics question (sustained T_i >> T_e at fusion conditions) has no validated answer.
-2. **No tritium economy.** Eliminates an entire industrial layer that every D-T concept must navigate.
-3. **Driver replaces magnets/blanket as dominant capital.** NBI is the cost story; magnets and structures are afterthoughts.
-
-### LCOE positioning
-At the central Q=30 baseline, **steam-only Da Vinci LCOE ≈ $119/MWh** sits 30–50% above competitive D-T concepts (CFS, Tokamak Energy). The aneutronic advantages don't overcome the recirculating-power and physics-risk penalties at steam efficiency. Branch C ICC at $44/MWh would be the LCOE leader of the pipeline — but ICC is patent-stage and not part of Da Vinci.
+**D-T tokamak comparison**: At Q=30 + steam (Branch B baseline), p-B11 FRC achieves $104/MWh at 124 MWe native scale, scaling to $45/MWh at 1 GWe. A D-T compact HTS tokamak with Q=10 (SPARC-class) achieves ~$70–90/MWh at comparable scale. The p-B11 concept is *not* economically superior to D-T tokamaks unless: (a) Q_plasma ≥40–50 (eliminating the NBI recirculating penalty), OR (b) ICC direct conversion is demonstrated (Branch C: $44/MWh at 489 MWe, $33/MWh at 1 GWe—competitive with D-T). The strategic positioning is clear: TAE is targeting a *long-term* LCOE advantage via aneutronic fuel + direct conversion, not a near-term advantage via Da Vinci steam-baseline alone. If ICC fails to demonstrate or Q_plasma ceiling is <30, the concept is economically dominated by D-T tokamaks.
 
 ---
 
 ## 6. Modeling Confidence
 
-**Rate**: **Low**
+**Rating**: **Low**.
 
-### Data-anchored vs. speculative
-- **5 of 23 LCOE-critical parameters are data-anchored**: C-2W operating parameters (T, n, B, plasma current), FRC plasma beta (~90–100%), NBI demonstrated efficiency at 1 keV operating conditions, B-11 fuel cost, Da Vinci timeline (per merger announcement).
-- **18 of 23 are speculative or proprietary**: Da Vinci capital cost (proprietary), Q_plasma at commercial conditions (truly unknown), η_NBI at 250 keV (not yet sourced), Da Vinci plasma geometry (proprietary), capacity factor (proprietary), O&M structure (truly unknown), first-wall heat flux/material (proprietary), ICC validation data (truly unknown), NBI commercial cost (truly unknown), bremsstrahlung loss fraction at Da Vinci conditions (truly unknown), FRC reactor-scale stability (truly unknown), …
+The model uses **six blocking assumptions** with no Da Vinci-specific data:
 
-### Dominant source of LCOE uncertainty
-**Q_plasma**, by a wide margin. The model is fundamentally a Q × η_NBI × CF viability map, not a central-case LCOE estimator. Below Q≈14 at η_NBI=0.26, Branch A returns no LCOE — the concept produces no net electricity. Above the threshold, LCOE swings 5× across the plausible parameter space. No other parameter has comparable elasticity.
+1. **Q_plasma = 30**: Assumed. C-2W operates far below Q=1. Copernicus (unbuilt) is intended to demonstrate viability; no published parameters exist.
+2. **η_NBI = 0.26**: Derived from C-2W experimental efficiency chain (source ~0.60 × coupling ~0.43) but at 15–40 keV beam energy. Da Vinci's >120 keV negative-ion NBI may achieve different coupling efficiency. Range 0.20–0.45 plausible.
+3. **f_rad = 0.15**: 1costingfe default for p-B11. No experimental anchor at 150 keV. Validated non-Maxwellian regime at C-2W (1 keV) does not extrapolate to reactor conditions. Range 0.05–0.70 physically plausible depending on equilibration.
+4. **NBI capital cost = $10M/MW**: Analogue from ITER NBI (–35% for TAE's claimed cost reduction). No commercial NBI supply chain exists at Da Vinci scale. Range $5–20M/MW plausible.
+5. **Capacity factor = 0.85**: Moderate FOAK estimate. CW FRC operation undemonstrated (C-2W record ~40 ms). Range 0.60–0.90 plausible for early plants.
+6. **Capital cost structure**: CAS account breakdown uses 1costingfe analogues with aneutronic fuel overrides. No published Da Vinci cost study. Total overnight capital $827M (124 MWe) is within ±50% of true value, estimated.
 
-The bremsstrahlung loss fraction f_rad is a parallel binding constraint: at f_rad=0.5 with Q=20, the concept hits Branch A at η_NBI=0.26. The Q × f_rad grid in the model output identifies a viability boundary that is essentially the concept's risk profile.
+**Dominant source of LCOE uncertainty**: The Q_plasma × η_NBI product determines whether the concept produces net electricity. Near the viability boundary (Q≈14–20), a 10% error in either parameter flips the concept from marginally viable to unviable. The model output is structurally correct (power balance, CAS accounting, viability thresholds) but quantitatively uncertain at the ±100% level for Branch B baseline LCOE. Branch C (ICC) adds an additional speculative layer (ICC demonstration) with no experimental validation.
+
+**Data adequacy** (for cross-concept comparison): TAE is unusually transparent for a private company—Nature Communications 2025 paper, IAEA FEC proceedings, detailed FAQ, and DJT merger announcement provide solid architecture coverage. However, the physics gap (1 keV → 150 keV) and proprietary plant design mean the model is closer to a feasibility study than a cost estimate. The analysis is appropriate for downselect scoring (assessing relative physics/engineering risks) but not for absolute LCOE comparison against concepts with published plant studies (e.g., SPARC, STEP, W7-X).
 
 ---
 
 ## 7. What Would Change My Mind
 
-### Upward LCOE / probability of success
-1. **Copernicus operational data showing T_i ≥ 50 keV with T_i/T_e ≥ 3 in a beam-driven FRC for ≥1 second**. Would retire the foundational physics risk. Without it, no LCOE estimate has physical grounding.
-2. **NBI test-stand demonstration of η_NBI ≥ 0.40 wall-plug-to-plasma at 250 keV and ≥10 MW**. Would relax the recirculating power floor and bring Branch B Optimistic ($57/MWh) into the realistic envelope.
-3. **Demonstrated ICC conversion of MeV alpha particles at ≥50% experimental efficiency**. Unlocks Branch C economics at $44/MWh — would make TAE the pipeline LCOE leader. Currently zero experimental basis at fusion-product energies.
+### **Copernicus achieving Q>1 at intermediate temperatures (10–30 keV)**
+If TAE's next machine demonstrates net plasma energy gain at any temperature—even transiently—it retires the binding "can p-B11 ever work?" question and converts the analysis from physics feasibility to engineering scale-up. Specific milestone: Q_plasma ≥5 sustained for >1 second at 20 keV ion temperature with measured bremsstrahlung losses f_rad <0.30. This would validate: (a) the beam-driven non-Maxwellian regime persists at elevated temperatures, (b) confinement quality τ_E scales favorably from C-2W, and (c) the bremsstrahlung suppression mechanism extrapolates beyond 1 keV. LCOE confidence would rise from Low → Medium, and the Q=30 assumption would become a constrained extrapolation rather than a free parameter.
 
-### Downward (would force Branch A acknowledgment)
-1. Sustained operation at C-2W or Norm successor showing T_i/T_e collapses to equilibrium above ~10 keV total temperature. Would close the physical case for the concept.
-2. Independent neutronics analysis showing p-B11 secondary reactions produce >5% neutron fraction at Da Vinci conditions. Would erode the structural-simplicity advantages.
+**Direction of impact**: If Copernicus achieves Q≥5 at 20 keV, my central LCOE estimate would drop from $104/MWh (current Branch B baseline, high uncertainty) to $80–90/MWh (validated physics, remaining scale-up risk). If Copernicus achieves Q<2 or operates <10 keV, the concept moves toward Branch A (no viable LCOE) and I would rate it as unlikely to achieve commercial deployment without a fundamental physics breakthrough.
+
+### **Published NBI efficiency data for Da Vinci system at >120 keV**
+The corrected η_NBI=0.26 baseline (from C-2W data) assumes Da Vinci's high-energy negative-ion NBI achieves similar plasma coupling efficiency to C-2W's 15–40 keV positive-ion system. ITER's 1 MeV negative-ion NBI (D beams) is the closest analogue, but proton NBI at 200–500 keV has different neutralization physics. If TAE publishes wall-plug-to-plasma efficiency measurements for a Da Vinci-class NBI (even at subscale), the model's η_NBI range narrows from 0.20–0.45 to a ±20% bounded estimate.
+
+**Direction of impact**: If Da Vinci NBI achieves η_NBI ≥0.35 (optimistic bound), Q_break drops from ~14 to ~9 and the commercial Q_plasma floor drops from ~25 to ~15. Branch B baseline LCOE drops from $104/MWh to ~$85/MWh. Conversely, if η_NBI ≤0.22 (conservative bound, high shine-through or coupling losses), Q_break rises to ~17 and commercial Q_floor rises to ~35. Branch B baseline LCOE rises to ~$130/MWh and the concept becomes noncompetitive with D-T tokamaks unless ICC is demonstrated (Branch C).
+
+### **ICC prototype demonstration at laboratory scale**
+If TAE demonstrates a prototype ICC operating at MeV-range alpha particle energies with measured conversion efficiency >70%, Branch C (ICC upgrade) transitions from speculative to engineering scale-up risk. The long-term LCOE vision ($33/MWh at 1 GWe, Branch C) becomes a credible target rather than a patent-stage aspiration, and the economic justification for the p-B11 fuel choice (direct conversion at >90% efficiency vs. thermal cycle at ~35%) is validated.
+
+**Direction of impact**: ICC demonstration does NOT change the near-term Da Vinci LCOE (steam baseline, Branch B). However, it establishes a credible upgrade path and repositions the concept from "expensive aneutronic experiment" to "staged deployment with competitive long-term economics." My assessment of the concept's commercial viability would shift from "unlikely without major physics breakthroughs" to "viable if Q_plasma ≥30 and ICC scales as designed."
 
 ---
 
 ## 8. LCOE Downselect Scoring
 
-### C1: Modularization — Score: 3.0
-
-**CAS account mode classification (estimated allocation; capital cost is proprietary):**
-
-| CAS | Account | Estimated share | Mode | Score |
-|-----|---------|-----------------|------|-------|
-| CAS21 | Buildings | ~10% | Site-erected | 3 |
-| CAS22 | Reactor Equipment (NBI ~50%, vessel ~10%, copper coils ~5%, diagnostics/control ~5%) | ~65% | Mixed: NBI factory components site-assembled (3); vacuum vessel and resistive copper coils site-wound (2); diagnostics and power supplies factory (4) → weighted ~2.5 | 2.5 |
-| CAS23 | Turbine Plant (steam, 50 MWe scale) | ~10% | Factory module | 5 |
-| CAS24–26 | Electric / Heat Rejection / Misc BOP | ~15% | Factory module | 4.5 |
-| CAS27 | Special Materials (no FLiBe, no tritium, no Li-6) | ~0% | N/A | — |
-
-**Cost-weighted mode**: 0.10×3 + 0.65×2.5 + 0.10×5 + 0.15×4.5 = 0.30 + 1.625 + 0.50 + 0.675 = **3.10**
-
-**Module repetition**: Da Vinci is a single-unit plant. NBI consists of multiple injector modules (~6–10 expected) but per the framework these don't trigger the +1.0 boost (the boost requires 10–49 identical modules per plant).
-
-**Justification**: NBI dominates CAS22 and is itself a moderate-modularization category (factory injectors site-assembled into an array). Copper resistive coils are wound on-site at low modularization. Steam BOP is fully factory-modular but only ~10% of capital. The aneutronic architecture eliminates CAS27 entirely (no breeding materials). C1 = 3.0.
-
-### C3: Supply Chain Learning — Score: 3.4
-
-**Sub-factor A: Component learning rates (cost-weighted, 1–5)**
-- NBI ion sources, neutralizers, beam dumps (~50% of CAS22): specialty fusion-specific, no commercial market at scale → 2
-- Copper coils, structural steel, vacuum components (~15%): commodity → 5
-- Steam BOP / turbines / generators (~10%): commodity → 5
-- Electrical, control, diagnostics (~15%): industrial → 4
-- Buildings (~10%): commodity → 5
-- Cost-weighted: 0.50×2 + 0.15×5 + 0.10×5 + 0.15×4 + 0.10×5 = 1.0 + 0.75 + 0.50 + 0.60 + 0.50 = **3.35**
-
-**Sub-factor B: Bottleneck count (start at 5)**
-- High-energy NBI components (no commercial supply at fusion scale): scaling constraint, must scale 10×+ → −0.5
-- ICC components (sole-source TAE patents) — Branch C only, not Da Vinci: −0
-- B-11 enrichment: commercial, no constraint → −0
-- Hydrogen, copper, steel: no constraints → −0
-- B = 5.0 − 0.5 = **4.5**
-
-**Sub-factor C: External demand pull (>$1B/yr markets)**
-- Steam BOP (turbine, generator, condenser): yes, ~10% of capital
-- Buildings, structural: yes, ~10%
-- Electrical / BOP commodities: yes, ~15%
-- NBI components: no commercial fusion-scale market, ~50% of capital
-- Copper, vessel: yes, ~5%
-- **Total in >$1B/yr markets: ~40%** → C = 4 (40–60% range, marginal)
-
-**C3 = (3.35 + 4.5 + 4) / 3 = 3.95 → 3.9**
-
-**Wait, recheck C** — re-reading sub-factor C: "20–40%: score 3; 40–60%: score 4". The 40% estimate is at the boundary. Being conservative (NBI dominates capital, those components have no market): C = 3.
-
-**Recomputed C3 = (3.35 + 4.5 + 3) / 3 = 3.62 → 3.6**
-
-Hmm, that's close to my initial estimate. Let me settle: the NBI cost share is ~50%, so the share-with-external-market is ~40-45%. Either way, C3 lands between 3.4 and 3.9. Choosing **C3 = 3.6** as the honest central estimate.
-
-### C4: Plant Complexity — Score: 4.0
-
-**Sub-factor A: Operational coupling density (1–5)**
-- NBI failure modes are local (one injector failing leaves others operational) — multi-injector array provides redundancy
-- No tritium plant means no radiological cascade if BOP fails
-- Steam loop is decoupled from the plasma chamber via heat exchanger
-- No remote-handling cell means no single-point access constraint
-- Few critical failure cascades; the dominant coupling is NBI ↔ plasma stability
-- **Score: 4** (mostly decoupled, few critical interdependencies)
-
-**Sub-factor B: Subsystem count (CAS22 sub-accounts >1% capital)**
-Estimated significant subsystems: NBI array, FRC vacuum vessel, copper coil set (equilibrium + mirror + saddle), plasma diagnostics suite, vacuum pumping, plasma control system, secondary neutron shielding. ~7 significant subsystems.
-- **Score: 4** (5–7 subsystems)
-
-**"Magic wand" test**: If the physics worked tomorrow, would Da Vinci still be hard to build and operate? It would be considerably easier than ITER (no tritium, no superconducting magnets, no remote handling). The plant complexity is genuinely lower. C4 captures this correctly without double-counting C7's physics risk.
-
-**C4 = (4 + 4) / 2 = 4.0**
-
-### C5: Customization Needs — Score: 3.7
-
-**Sub-factor A: Thermal rejection (1–4)**
-- Steam Rankine at η_th=32% with 105 MWe net + ~100 MW NBI recirculating wall-plug → ~150 MWth heat rejection from condenser + ~70 MW from NBI ancillaries → standard cooling tower or once-through cooling.
-- **Score: 2** (large cooling towers required, standard thermal cycle)
-
-**Sub-factor B: Fuel safety profile (1–4)**
-- p-B11 aneutronic
-- **Score: 4**
-
-Raw average: (2 + 4) / 2 = 3.0
-Scaled to [1, 5]: 1 + (3.0 − 1) × (4/3) = 1 + 2.67 = **3.7**
-
-**C5 = 3.7**
-
-(No site-specific adjustments applied; framework rule respected.)
-
-### C8: Data Adequacy — Score: 2.3
-
-**Sub-factor A: Source diversity & independence (1–5)**
-Mix: peer-reviewed Nature Communications 2025 paper, OSTI 2024 Nuclear Fusion paper on C-2W, TAE company FAQ and patents, Grokipedia third-party narrative, DJT merger filings, dossier files. Some independent (academic publications), some company (FAQ, patents), some non-peer-reviewed (Grokipedia, press releases). No independent TEA.
-- **Score: 3** (mix of independent and company; partial peer review)
-
-**Sub-factor B: Reactor design specification (1–5)**
-Da Vinci's only published specs: 50 MWe initial / 350–500 MWe scale, 2026 construction start, 2029 first plasma, steam conversion. No fusion power, no Q value, no NBI specs, no plasma geometry, no cost estimate, no engineering drawings.
-- **Score: 1** (no reactor design beyond basic concept description)
-
-**Sub-factor C: LCOE parameter coverage (1–5)**
-gap_report.md identifies **6 blocking gaps** (Q_plasma at >1, T_i >> T_e at high temp, temperature scaling, NBI specs, Da Vinci fusion power, capital cost). Per framework: 5–7 blocking → 2.
-- **Score: 2**
-
-**Sub-factor D: Commercialization pathway clarity (1–5)**
-DJT merger gives a public timeline (2026 construction, 2029 first plasma, target net electricity by ~2032). $1.2–1.3B funding raised. But specifics on milestone gating, regulatory pathway, or cost-recovery model are absent. Pathway is "vague-with-timeline" rather than "detailed with funding/milestones."
-- **Score: 2** (vague or aspirational with timeline)
-
-**C8 = (3 + 1 + 2 + 2) / 4 = 2.0 → 2.0**
-
-(Re-reading: I'd argued 2.3 in scratch. Settling at the arithmetic value: **C8 = 2.0**.)
-
-### C7: Technical Risk Evidence (Risk Matrix)
-
-#### Function 1: Plasma Performance
-
-**Physics Risk**
-
-| Field | Content |
-|-------|---------|
-| Plant requirement | Q_plasma ≥ 25–30 (steam baseline) at sustained T_i ~150 keV, n_e ~10²⁰ m⁻³, τ_E ~1 s, with T_i/T_e ≥ 3 to suppress bremsstrahlung. Lawson parameter nT_iτ ≥ 10²² m⁻³·keV·s for p-B11 (~30–100× harder than D-T). |
-| Best demonstrated | C-2W/Norman: ~3 keV total plasma temperature, T_e up to 1 keV peak, fast-ion pressure ~1.5× thermal pressure, plasma duration ~30–40 ms (NBI pulse-limited). p-B11 fusion products observed (TAE+NIFS 2023) at conditions far below breakeven. Q_plasma in any p-B11 device: <0.001. |
-| Gap ratio | Ion temperature: required 150 keV / demonstrated ~1–3 keV ≈ **50–150×**. Q: required 25 / demonstrated <0.001 ≈ **>25,000×**. nTτ: never measured at p-B11-relevant scale. |
-| Closure mechanism | Copernicus (intended intermediate-scale FRC, not yet built) → Da Vinci. TAE relies on the non-equilibrium beam-driven plasma maintaining T_i >> T_e at temperatures categorically higher than where the regime is currently validated. No theoretical or experimental basis for the regime persisting above ~10 keV. |
-| Classification | **Binary** — Q_plasma < 1 means zero net electricity. The bremsstrahlung balance is binary in the same sense: at f_rad ≥ 0.5 with realistic NBI, the model returns no LCOE (Branch A). |
-| Evidence tier | **1** — Asserted at commercial conditions, not demonstrated at any scale. Per the framework's anti-leniency rule: when commercial-condition evidence is absent, score Tier 1. |
-
-**Hardware Risk**
-
-| Field | Content |
-|-------|---------|
-| Plant requirement | FRC vessel, plasma diagnostics, and beam injection ports compatible with sustained operation at ~150 keV ion temperature, ~10²⁰ m⁻³ density, multi-MA plasma current, 1–2 m major radius. |
-| Best demonstrated | C-2W vacuum vessel (0.4 m separatrix, 2 m axial length), copper resistive magnets at ~1 kG external field, 8-injector NBI array at 21 MW total. Norm machine demonstrates simplified NBI-only formation. |
-| Gap ratio | Vessel scale: 2.5–5× linear. Plasma current: ~10× (350 kA → multi-MA). Diagnostic systems for high-temperature operation: undemonstrated. |
-| Closure mechanism | Engineering scale-up. Vessel and coil design are not novel manufacturing problems. The risk is integration with the unvalidated plasma regime. |
-| Classification | **Degrading** — hardware integration issues degrade availability/cost; do not zero out the plant. The binary risk lives in physics. |
-| Evidence tier | **2** — Subscale hardware exists; commercial-scale FRC vessel + diagnostics not demonstrated. ITER design-stage analogue does not transfer (different topology). |
-
-**F1 mean** = (1 + 2) / 2 = **1.5**
-
-#### Function 2: Driver / Energy Input
-
-**Physics Risk**
-
-| Field | Content |
-|-------|---------|
-| Plant requirement | 250 keV NBI delivering ~30 MW absorbed power into FRC plasma; coupling efficiency ≥ 0.40 plasma-side; multi-purpose use for formation, heating, current drive, and tilt/kink stabilization simultaneously. |
-| Best demonstrated | Beam-plasma coupling at 15–40 keV in FRC (C-2W). NBI physics at 1 MeV in negative-ion D beams (ITER NNBI under construction, not operational). Positive-ion proton NBI at 250 keV: limited operational data. |
-| Gap ratio | Beam energy: ~6× from C-2W tunable max. Total power: ~1.5× from C-2W's 21 MW. Multi-functional NBI (formation + heating + current drive + stability) at scale: novel integration. |
-| Closure mechanism | NNBI development for ITER provides high-energy beam analogue. Negative-ion proton beams at 250 keV are within the ITER NBI design envelope, though for D not H. Norm machine's NBI-only formation (2025 Nature Communications) demonstrates the multi-functional concept at low energy. |
-| Classification | **Degrading** — NBI efficiency below threshold raises recirculating power but is recoverable through engineering. **Binary** if η_NBI < 0.20 at Da Vinci operating point — would force Branch A. |
-| Evidence tier | **3** — NBI physics is mature at adjacent operating regimes (lower energy, different ion species); the 250 keV proton + 30 MW + multi-function combination has no operating analogue. |
-
-**Hardware Risk**
-
-| Field | Content |
-|-------|---------|
-| Plant requirement | Reliable 250 keV proton NBI system at ≥30 MW total injected power, with η_NBI (wall-plug to absorbed) ≥ 0.30 for 30+ year operational life. Multiple injector array with hot-swap capability. |
-| Best demonstrated | C-2W: 8 injectors at up to 21 MW total, 15–40 keV. ITER NNBI: under construction, 1 MeV negative-D, 16.5 MW per beam (not yet operational). High-energy positive-ion proton sources at MW scale exist in particle accelerator R&D. |
-| Gap ratio | Beam energy: 6× from C-2W. η_NBI at high energy: undemonstrated. Long-life operation at fusion scale: no commercial supply chain. |
-| Closure mechanism | ITER NNBI commissioning will close part of the gap (high-energy negative-ion beams). Positive-ion proton NBI at 250 keV would require a different industrial development path. |
-| Classification | **Degrading** — efficiency, lifetime, and scale-up are recoverable through engineering investment. |
-| Evidence tier | **2** — Subscale demonstration at C-2W. No operating analogue at Da Vinci specifications. ITER NNBI is design-stage / commissioning, capped at Tier 2 per framework. |
-
-**F2 mean** = (3 + 2) / 2 = **2.5**
-
-#### Function 3: Instability Control
-
-**Physics Risk**
-
-| Field | Content |
-|-------|---------|
-| Plant requirement | Tilt and rotational mode stabilization in FRC at 1–2 m major radius, multi-MA plasma current, sustained for seconds-to-continuous operation. Active feedback via tangential NBI maintained without intermittent loss of confinement. |
-| Best demonstrated | C-2W demonstrates beam-driven FRC stability at 0.4 m radius, 350 kA, 30–40 ms duration. Tilt mode stabilization observed with NBI at experimental conditions. Norm machine extends to NBI-only formation while preserving stability. |
-| Gap ratio | Spatial scale: 2.5–5×. Plasma current: ~10×. Duration: ~25–250× (40 ms → 1–10 s). |
-| Closure mechanism | Confinement scaling tested at Copernicus (intended intermediate device). FRC stability theory at multi-MA is partially understood; the validation gap is operational. |
-| Classification | **Binary** — if reactor-scale FRC is intrinsically unstable, no plasma operation is possible. **Degrading** if stability margin is reduced (more NBI power required for control, raising recirc fraction). |
-| Evidence tier | **3** — Subscale demonstrated; reactor-scale unvalidated. C-2W is in an adjacent regime to Da Vinci. |
-
-**Hardware Risk**
-
-| Field | Content |
-|-------|---------|
-| Plant requirement | NBI with sufficient injection geometry and angle agility to provide active stabilization; plasma diagnostics with sub-millisecond response for feedback control; magnetic shaping capability (saddle/trim coils) at reactor scale. |
-| Best demonstrated | C-2W has all elements at subscale (8 injectors, multiple coil sets, ML-driven control via Google partnership). Norm reduces machine complexity by ~50% but retains stability functions. |
-| Gap ratio | Hardware scale-up is engineering, not novel physics. Diagnostic and control system scale-up is also engineering. |
-| Closure mechanism | Direct engineering extension from C-2W/Norm. Less risky than F1 or F2 hardware. |
-| Classification | **Degrading** |
-| Evidence tier | **3** — C-2W operating-regime extension is plausible. |
-
-**F3 mean** = (3 + 3) / 2 = **3.0**
-
-#### Function 4: Plasma-Wall Interaction
-
-**Physics Risk**
-
-| Field | Content |
-|-------|---------|
-| Plant requirement | Alpha particle (3.7 MeV per particle, three per fusion event) deposition on first wall in FRC linear geometry without excessive local heat flux peaking. Erosion rate compatible with 5+ year first-wall life. Helium ash exhaust at fusion-scale rates. |
-| Best demonstrated | Alpha particle physics in plasmas understood from D-T tokamak experiments. FRC alpha confinement and exhaust geometry: simulations only at reactor scale; some experimental data at C-2W's low fusion rate. Helion's pulsed FRC is not directly comparable (no sustained alpha population). |
-| Gap ratio | Alpha confinement at fusion-relevant power densities: undemonstrated in FRC geometry. |
-| Closure mechanism | Numerical modeling (gyrokinetic / orbit codes) extended to Da Vinci geometry. Validation through Copernicus alpha physics measurements. |
-| Classification | **Degrading** — heat flux issues raise replacement frequency and capital cost; do not zero out the plant. |
-| Evidence tier | **3** — Alpha physics is mature in adjacent regime (D-T tokamaks); FRC linear geometry is novel for sustained alpha population. |
-
-**Hardware Risk**
-
-| Field | Content |
-|-------|---------|
-| Plant requirement | First-wall material surviving ~5–10 MW/m² alpha heat flux in FRC linear geometry for 5+ years. Compatible with vacuum vessel construction. Material not disclosed for Da Vinci. |
-| Best demonstrated | Tungsten and refractory materials demonstrated at high heat flux in tokamak divertors (ITER divertor mock-ups at 20 MW/m² cyclic). Liquid metal first walls explored at FTU and NSTX (low power, transient). FRC linear-geometry first wall at fusion power: undemonstrated. |
-| Gap ratio | Heat flux levels are within tokamak divertor regime (~1–2× range). Geometry is novel: linear FRC vs. toroidal divertor. |
-| Closure mechanism | Tokamak divertor materials (tungsten monoblocks) provide design basis; FRC-specific geometry adaptation needed. |
-| Classification | **Degrading** |
-| Evidence tier | **2** — Adjacent-environment analogue exists (tokamak divertor) but FRC geometry adaptation not demonstrated. Per framework: cited tokamak divertor without geometry adaptation defaults to Tier 2. |
-
-**F4 mean** = (3 + 2) / 2 = **2.5**
-
-#### Function 5: Neutron / Particle Handling
-
-**Physics Risk**
-
-| Field | Content |
-|-------|---------|
-| Plant requirement | Manage <1% neutron fraction from p-B11 secondary reactions (¹¹B(p,n)¹¹C threshold at 3 MeV; ¹¹C decays to ¹¹B with 20-min half-life). Activation of structural components to clearance levels. Shield dose rate <1 mSv/hr at site boundary. |
-| Best demonstrated | Secondary reaction cross-sections from accelerator physics (ENDF/B-VIII). Activation modeling validated in fission and D-T fusion contexts. Light-water/borated-concrete shielding at low neutron flux: TRL 9 commercial. |
-| Gap ratio | ~1.0× — secondary neutron flux is small, the engineering challenge is far below tokamak D-T at 14 MeV. |
-| Closure mechanism | Standard shielding practice from low-activity nuclear contexts; no new physics. |
-| Classification | **Degrading** — degradation paths exist (activation higher than expected) but the consequences are minor compared to D-T concepts. |
-| Evidence tier | **5** — Operating-regime well-characterized; secondary p-B11 neutron physics is mature nuclear physics. |
-
-**Hardware Risk**
-
-| Field | Content |
-|-------|---------|
-| Plant requirement | Light secondary shield (~30–50 cm borated concrete + steel) reducing dose to <1 mSv/hr at building boundary. Hands-on maintenance access to plasma chamber components. Standard low-radiation health physics protocols. |
-| Best demonstrated | Borated concrete + steel shielding at low neutron flux: commercial nuclear standard. Hands-on maintenance: standard industrial practice. Aneutronic fusion reactor shielding: no precedent, but the engineering inputs (~1% of D-T flux) are within standard nuclear handling. |
-| Gap ratio | Small shielding scale-up; mainly engineering layout. |
-| Closure mechanism | Standard nuclear engineering practice. |
-| Classification | **Degrading** |
-| Evidence tier | **5** — Operating-regime demonstrated at commercial scale (low-activity nuclear facilities, accelerator radiation environments). |
-
-**F5 mean** = (5 + 5) / 2 = **5.0**
-
-#### Function 6: Fuel Cycle Closure
-
-**Physics Risk**
-
-| Field | Content |
-|-------|---------|
-| Plant requirement | Continuous supply of protons (hydrogen) and B-11 to plasma; ash (helium) removal at fusion-scale rates. No breeding required — fuel is consumed openly. |
-| Best demonstrated | Hydrogen supply: commercial. Boron-11 supply: 80% of natural boron, abundant globally. Boron-11 enrichment to higher purity if required: commercial chemistry (mercury amalgam, etc.). Fuel injection at plasma scale: pellet/gas systems mature in tokamak contexts. |
-| Gap ratio | ~1.0× — fuel supply is commercially available. |
-| Closure mechanism | Standard fuel-handling engineering. No closure problem. |
-| Classification | **N/A — no fuel cycle to close.** |
-| Evidence tier | **5** — Fuel supply infrastructure is fully demonstrated at commercial scales (hydrogen industrial supply, boron mining at megatonnes/yr). |
-
-**Hardware Risk**
-
-| Field | Content |
-|-------|---------|
-| Plant requirement | Pellet injectors or gas puffing for fuel; helium ash exhaust pumps; no isotope separation, no breeding blanket, no tritium accountancy. |
-| Best demonstrated | Pellet injection: commercial in tokamaks (JET, DIII-D, ITER design). Helium pumping: commercial vacuum technology. Boron storage: standard chemical handling. |
-| Gap ratio | ~1.0× — all components are commercial. |
-| Closure mechanism | Direct procurement. |
-| Classification | **Degrading** — fuel-handling reliability degrades availability, not viability. |
-| Evidence tier | **5** — Operating-regime commercial. |
-
-**F6 mean** = (5 + 5) / 2 = **5.0**
-
-#### Function 7: Power Conversion & BOP
-
-**Physics Risk**
-
-| Field | Content |
-|-------|---------|
-| Plant requirement | Steam Rankine cycle at η_th ~32%, 50 MWe gross from ~155 MWth fusion power. Heat capture from plasma chamber via primary coolant (medium not disclosed; presumably water or helium given small scale). |
-| Best demonstrated | Steam Rankine thermodynamics fully characterized; 50 MWe steam plants are commercial (industrial cogen, biomass, geothermal). |
-| Gap ratio | ~1.0× — commercial thermodynamics. |
-| Closure mechanism | Standard steam plant engineering. Per the updated framework: F7 captures novel DEC risk; conventional thermal cycles are mature analogues. |
-| Classification | **Degrading** — efficiency variation around 30–35% is normal commercial range. |
-| Evidence tier | **5** — Commercial steam Rankine fully demonstrated. |
-
-**Hardware Risk**
-
-| Field | Content |
-|-------|---------|
-| Plant requirement | Steam turbine, condenser, cooling system at 50 MWe scale. Primary heat exchanger between FRC chamber and steam loop — material and geometry not disclosed (alpha-particle deposition geometry differs from neutron-blanket, but heat transfer to a primary loop is conventional). |
-| Best demonstrated | 50 MWe steam BOP: commercial (multiple vendors, GE/Siemens at lower bound of their range, smaller-scale specialists like Mitsubishi). FRC chamber to steam HX integration: novel in detail, conventional in principle. |
-| Gap ratio | ~1.5–2× on small-scale BOP optimization (50 MWe is below typical commercial sweet spot of 100–500 MWe but well within the operating range). |
-| Closure mechanism | Direct procurement of BOP from commercial vendors. Heat exchanger design is engineering. |
-| Classification | **Degrading** |
-| Evidence tier | **4** — Near-regime demonstrated at commercial scale; FRC-to-steam integration is engineering integration novelty within mature components. |
-
-**F7 mean** = (5 + 4) / 2 = **4.5**
+### Scored Criteria
+
+| Criterion | Score | Sub-Scores | Justification |
+|-----------|-------|------------|---------------|
+| **C1: Modularization** | **2.8** | Per-CAS mode: Factory-manufactured ICC (5.0) if Branch C; NBI (3.0, site-assembled from factory sub-assemblies for beam sources/power supplies); steam turbine-generator (5.0, standard industrial equipment); copper coils (3.0, site-wound but standard); buildings/balance-of-plant (1.0–3.0, site-constructed). Cost-weighted average: NBI dominates at ~$260M of $827M overnight capital → weighted score ≈(260×3 + 46×5 + 72×2 + 350×1.5)/827 ≈ 2.5. No module repetition boost (n_mod=1, single FRC core per plant). | Analysis §3 NBI System, model output CAS22 breakdown. NBI accounts for ~31% of overnight capital (model: $260M NBI / $827M total). Steam BOP and auxiliaries are standard industrial; NBI injectors are fusion-specific custom assemblies requiring site integration into FRC vessel. |
+| **C3: Supply Chain Learning** | **3.3** | **A. Component learning** (3.5): Cost-weighted by CAS account. NBI ion sources / electrodes (2.0, fusion-specific, no market); steam turbine-generator (5.0, commodity GW-scale market); copper coil wire (5.0, commodity); power supplies (4.0, industrial power electronics with growing base); X-ray absorber (3.0, specialty but analogous to fission reactor internals); buildings (5.0, standard construction). Weighted by capital: (260×2 + 46×5 + 20×5 + 38×5 + 1×3)/365 ≈ 3.5. **B. Supply chain bottlenecks** (3.5): Start at 5.0. –1.0 (hard constraint): no commercial supply chain for fusion-scale high-energy NBI systems; custom procurement for Da Vinci, no existing manufacturers at >50 MW total NBI power. –0.5 (scaling constraint): boron-11 enrichment from natural boron (80% B-11) to reactor-grade purity may require isotope separation at 100s kg/yr scale; enrichment capacity uncharacterized but physically straightforward (lighter than uranium). No REBCO, no FLiBe, no He-3 dependencies. Score: 5.0 – 1.0 – 0.5 = 3.5. **C. External demand pull** (3.0): NBI dominates capital (~31%). NBI ion sources have zero external market (fusion-only). Steam turbine-generator (~6% of capital) has >$1B/yr external market (power generation). Balance-of-plant electrical/instrumentation (~15% of capital) has large external markets. Weighted: ~70% of capital has <10% external market fraction → score 2.0; ~25% has >60% external market → score 5.0; blended ≈ 3.0. **C3 = (3.5 + 3.5 + 3.0)/3 = 3.3**. | Analysis §4 Key Materials, model CAS22 breakdown. NBI is the dominant supply chain risk: no commercial manufacturers exist at Da Vinci scale, requiring custom procurement analogous to ITER's NBI systems (~$500M for 66 MW total, one-of-a-kind). Aneutronic fuel eliminates REBCO (global bottleneck for HTS tokamaks), FLiBe (Materion/beryllium constraint), and Li-6 enrichment (declining capacity). B-11 is naturally abundant (80% of boron); enrichment to >90% B-11 may be desirable but is not a hard constraint. |
+| **C4: Plant Complexity** | **3.0** | **A. Operational coupling density** (3.0): NBI serves quadruple duty (formation, heating, current drive, MHD stabilization)—single-point failure of NBI system shuts down plasma entirely. However, NBI is modular (8 injectors on C-2W; Da Vinci likely 10–15 injectors)—loss of one injector degrades performance but does not force immediate shutdown. Steam BOP is decoupled from FRC (standard thermal cycle with heat exchangers). First wall cooling loop failure cascades to plasma shutdown but not to turbine damage (unlike FLiBe/Li loop failures in D-T blankets, which risk exothermic Li-water reactions). No cryoplant (copper magnets eliminate HTS quench failure modes). Rating: moderate coupling—NBI is critical path but subsystems are otherwise decoupled. Score: 3.0. **B. Subsystem count** (3.0): CAS22 sub-accounts >1% of capital: C220101 (first wall/X-ray absorber), C220102 (shield), C220103 (copper coils), C220104 (NBI, dominant), C220105 (structure), C220106 (vacuum system), C220107 (power supplies), C220200 (coolant/steam circuit), C220500 (fuel handling), C220700 (instrumentation). Count: 10 significant subsystems. Framework: 8–10 subsystems → score 3.0. **C4 = (3.0 + 3.0)/2 = 3.0**. | Analysis §2 Challenges §4 (NBI quadruple duty), model CAS22 output (10 subsystems >1%). Operational coupling is moderate: NBI is a single critical system but is internally modular. Steam BOP is standard and operationally decoupled from FRC. Unlike D-T tokamaks with breeding blankets (tight thermal/neutron/tritium coupling between first wall, coolant, and fuel cycle), aneutronic p-B11 FRC has simpler operational dependencies. The FRC's near-unity beta means magnet power is minimal (~3 MW resistive coil draw vs. ~100 MW NBI recirculating load); coil failure does not cascade to immediate shutdown if FRC self-field is sufficient. |
+| **C5: Customization Needs** | **3.3** | **A. Thermal rejection** (3.0): Hybrid power conversion—Da Vinci baseline uses steam Rankine (~35% thermal efficiency) with standard cooling towers, but the aneutronic alpha energy deposition creates a fundamentally different heat rejection architecture than D-T (no 14 MeV neutron volumetric heating in blanket; alphas deposit energy on first wall surface, creating high surface heat flux but lower total thermal rejection per MWe than D-T due to no neutron thermalization losses). ICC upgrade (Branch C) shifts to partial direct conversion (alphas → ICC at ~90%, residual heat to steam cycle or rejection). Baseline steam cycle requires cooling towers (score 2.0 per framework); ICC hybrid reduces thermal rejection (score 3.0). Baseline Da Vinci: score 2.0. Long-term ICC: score 3.0. Average: 2.5 → scale to [1,5]: 1 + (2.5–1)×(4/3) = **3.0**. **B. Fuel safety profile** (4.0): p-B11 aneutronic, no tritium handling, no tritium breeding infrastructure. Framework: p-B11 → score 4.0. **C5 = (3.0 + 4.0)/2 = 3.5**, scaled to [1,5]: 1 + (3.5–1)×(4/3) = **3.3**. | Analysis §2 Challenge 5 (energy conversion), model power balance (Branch B: steam 35%, Branch C: ICC 90%). Da Vinci baseline is thermal/steam (TAE FAQ confirms), requiring standard cooling infrastructure. However, the aneutronic first wall (X-ray and alpha bombardment, no neutron bulk heating) has lower total heat rejection per MWe than D-T blankets due to: (a) no neutron thermalization losses (14 MeV → thermal in blanket captures ~80% of D-T fusion energy, all as heat), (b) potential for ICC direct conversion in long-term upgrade eliminates most thermal rejection. The intrinsic fuel safety advantage (no tritium, no D-T startup inventory, no breeding) is substantial and site-agnostic—any site with grid connection and cooling water can host p-B11 FRC, unlike D-T plants requiring tritium handling licenses. |
+| **C8: Data Adequacy** | **2.5** | **A. Source diversity** (3.0): Mix of independent and company sources. Independent peer-reviewed: Nature Communications 2025 (NBI-only formation), *Nuclear Fusion* 2024 (C-2W performance, OSTI 2441289), IAEA FEC proceedings (Gota et al., cited in dossier). Company publications: TAE website FAQ, press releases, DJT merger announcement. Grokipedia third-party synthesis (not peer-reviewed but comprehensive). No government-funded independent techno-economic study (unlike SPARC/ARC via DOE, STEP via UKAEA). Score: 3.0 (mix of sources, some independent validation). **B. Reactor design specification** (2.0): Preliminary design with significant gaps. Da Vinci power output (50 MWe) and timeline published (DJT merger); energy conversion type confirmed (steam baseline, ICC future). However: no plasma parameters published (Q value, fusion power, temperature targets), no NBI system specification (beam energy, total power), no magnet design (copper vs. HTS unconfirmed), no first wall materials disclosed, no cost estimate. Key subsystems defined but integration gaps remain. Score: 2.0. **C3. LCOE parameter coverage** (2.0): Gap report identifies 15 total gaps, 6 marked as blocking. Framework: 5–7 blocking gaps → score 2.0. **D. Commercialization pathway clarity** (3.0): General pathway described but lacking specifics. Roadmap: C-2W (complete) → Norm (complete, 2025 NBI breakthrough) → Copernicus (announced but parameters unpublished, intended to demonstrate net energy by end of decade) → Da Vinci (50 MWe, construction 2026, first plasma 2029, power ops 2031). Funding secured (>$1.2B raised, >$6B DJT merger valuation). However: Copernicus timeline and parameters not disclosed; no published scaling from Copernicus → Da Vinci; no announced Da Vinci site or regulatory pathway. Score: 3.0 (clear steps, identified gaps, no detailed milestones). **C8 = (3.0 + 2.0 + 2.0 + 3.0)/4 = 2.5**. | Analysis §1 Availability of Data (rating: Moderate); gap report: 6 blocking gaps (Q_plasma, bremsstrahlung at Da Vinci conditions, temperature extrapolation, NBI specs, Da Vinci fusion power/Q, Da Vinci capital cost). TAE is unusually transparent for a private company—Nature Comm 2025 and *Nuclear Fusion* 2024 papers provide experimental validation at C-2W scale, DJT merger announcement provides commercial timeline—but the physics gap (1 keV → 150 keV) and proprietary Da Vinci engineering design leave large quantitative uncertainties. No independent plant study exists (contrast with SPARC/ARC CFS publications, STEP UK Atomic Energy Authority reports). |
+
+---
+
+### C7 Risk Matrix (7 Functions × 2 Subcategories)
+
+| Function | Subcategory | Plant Requirement | Best Demonstrated | Gap Ratio | Closure Mechanism | Classification | Tier |
+|----------|-------------|-------------------|-------------------|-----------|-------------------|----------------|------|
+| **F1: Plasma Performance** | Physics | n×τ×T sufficient for Q≥25–35 at ~150 keV ion temp (p-B11 reactivity peak); energy confinement time τ_E ≈0.5–1.0 s at reactor density (~10²⁰ m⁻³) and temperature | C-2W: τ_E ~30 ms at n~2×10¹⁹ m⁻³, T_i ~3 keV total (~1 keV electrons, OSTI 2441289 first 1 keV milestone). nτT ≈ 6×10¹⁷ keV·s/m³ (estimated, order-of-magnitude). No Q>1 demonstration in any p-B11 device. | Temperature: 150 keV / 3 keV ≈ **50×**; confinement time: 0.5 s / 0.03 s ≈ **17×**; nτT product (Lawson): ~100× gap estimated (p-B11 Lawson criterion ~100× more demanding than D-T at optimal temperatures per fusion physics literature). | TAE claims Copernicus will demonstrate net energy by end of decade (no published parameters). Scaling strategy: beam-driven non-Maxwellian regime (fast-ion pressure exceeds thermal by ~1.5× at C-2W, SEQUOIIA reconstruction) must persist to 150 keV. Confinement scaling from C-2W (0.4 m radius) → Da Vinci (1–2 m radius) unvalidated. | Binary (Q<1 → no net electricity; Degrading (Q=15–25 → economically marginal, LCOE >$100/MWh; only Q≥30 enables competitive LCOE). | **2** (simulation/design study: Copernicus parameters unpublished; no experimental path to 150 keV demonstrated; p-B11 Q>1 never achieved in any device) |
+| **F1: Plasma Performance** | Hardware | FRC vessel / first wall must tolerate: (a) alpha particle bombardment (8.7 MeV, surface heat flux ~MW/m² scale), (b) soft X-ray flux from bremsstrahlung at 150 keV (dominant radiation channel), (c) steady-state heat extraction for CW operation (seconds to continuous vs. C-2W 30–40 ms pulses). Material: tungsten or carbon-based first wall (unspecified in sources). | C-2W first wall: copper-backed graphite tiles, operated at ~1 keV plasma for 30–40 ms pulses (no steady-state thermal management at reactor heat flux). X-ray flux at 1 keV is ~100× lower than 150 keV bremsstrahlung (scales as T_e^0.5 Z_eff²). | Heat flux: ~10× (MW/m² reactor scale vs. 0.1 MW/m² C-2W estimated); pulse duration: ~100× (CW vs. 0.03 s); material qualification: no demonstration of first wall survival under combined alpha + bremsstrahlung + CW heat load at p-B11 reactor conditions. | TAE must develop steady-state FRC first wall with active cooling for CW heat rejection. Material selection (tungsten, SiC, graphite, or novel ceramics) not disclosed. Analogue: tokamak divertor materials (ITER tungsten divertor qualified for 10–20 MW/m² transient, but steady-state FRC alpha bombardment is different plasma-surface interaction regime). | Degrading (first wall erosion → capacity factor loss and O&M cost increase; not binary because replaceable, but frequent replacement drives LCOE up). | **2** (simulation: no reactor-scale p-B11 FRC first wall demonstrated; ITER divertor analogue is partial—different particle energy distribution, different magnetic topology; no experimental data on alpha + X-ray co-bombardment at 150 keV p-B11 conditions) |
+| **F2: Driver / Energy Input** | Physics | NBI coupling efficiency to plasma: beam power absorbed / beam power injected ≥0.40–0.50 at 200–500 keV proton beam energy (negative-ion NBI required for efficient neutralization >120 keV). Fast-ion slowing-down time must exceed FRC confinement time to maintain beam-driven non-Maxwellian regime. | C-2W: 8 injectors (4×15 keV fixed, 4×15–40 keV tunable), plasma coupling measured at <50% of beam power (duct/geometric losses) with additional 15±5% shine-through → net coupling ~0.43 (OSTI 2441289). Fast-ion slowing-down validated at 1 keV (SEQUOIIA: fast-ion pressure exceeds thermal by 1.5×). | Beam energy: 200–500 keV / 20–40 keV ≈ **10×** (negative-ion regime vs. positive-ion); coupling efficiency: Da Vinci target ≥0.40 / C-2W demonstrated 0.43 ≈ **0.9×** (similar, but different neutralization physics); fast-ion regime at 150 keV unvalidated (slowing-down time vs. confinement time ratio unknown at reactor conditions). | TAE must scale NBI to 200+ keV (negative-ion sources, photodetachment or gas-cell neutralizers) and demonstrate coupling ≥0.40 in Copernicus or Da Vinci. ITER 1 MeV negative-ion D-NBI is the closest analogue (currently under commissioning; coupling efficiency TBD). Fast-ion confinement at 150 keV is an open physics question (no FRC or tokamak has operated beam-driven plasmas at this energy). | Degrading (low coupling → high recirculating power → LCOE increases; not binary because some coupling always occurs, but η_NBI <0.25 makes Q_break >15 and commercial viability difficult). | **3** (subscale/adjacent: ITER 1 MeV negative-ion NBI under commissioning; positive-ion NBI at <120 keV is mature (JT-60U, LHD); C-2W coupling at 15–40 keV is demonstrated but Da Vinci's negative-ion 200–500 keV proton NBI is a regime shift—neutralization efficiency and plasma penetration differ substantially) |
+| **F2: Driver / Energy Input** | Hardware | NBI injectors: 10–15 injectors (estimated, scaling from C-2W 8 injectors) delivering ~100–150 MW total wall-plug power at >120 keV proton beam energy. Components: negative-ion sources, accelerators, neutralizers (gas cell or photodetachment), beam dumps, high-voltage power supplies. Lifetime: operate continuously (CW) or long-pulse (seconds) for years without replacement. | C-2W: 8 injectors, 21 MW total injected power (13 MW coupled to plasma), 15–40 keV, pulsed operation (30–40 ms). Positive-ion sources (mature technology for fusion NBI at <120 keV). ITER NBI: 2×33 MW at 1 MeV (D beams, negative-ion), under commissioning—no operational data yet. JT-60U: 27 MW at 85–130 keV (positive-ion, D beams), operated for years. | Power scale: 100 MW / 21 MW ≈ **5×**; beam energy: 200 keV / 20 keV ≈ **10×**; ion species: proton NBI at >120 keV (less mature than D-NBI; different neutralization cross-sections); CW operation: undemonstrated at fusion NBI scale (tokamak NBIs operate in 10–100 s pulses, not steady-state). | Scale-up from C-2W NBI is straightforward engineering (more injectors, higher voltage). Negative-ion proton sources are less mature than D-sources (ITER uses D; SNS at ORNL operates 1 MeV H⁻ but for accelerator, not fusion NBI). TAE's 2025 NBI-only breakthrough (Norm) claimed 50% cost reduction; suggests active R&D on modular NBI design. | Degrading (NBI injector failure → reduced plasma heating → lower Q_plasma and capacity factor; replaceable but frequent replacement drives O&M cost up). | **3** (subscale: ITER 1 MeV D-NBI is under commissioning at required power scale; JT-60U 130 keV D-NBI operated for years; C-2W 40 keV positive-ion operated successfully—but Da Vinci's 200–500 keV proton NBI is at the boundary: higher energy than demonstrated positive-ion, lower energy than ITER's 1 MeV D-NBI, and different ion species (proton neutralization physics differs from deuterium)) |
+| **F3: Instability Control** | Physics | FRC tilt and rotational instability suppression at 1–2 m major radius, multi-megaampere (MA) plasma current, via tangential NBI. Growth rates for tilt mode scale as γ ∝ R² (radius squared); Da Vinci is 2.5–5× larger radius than C-2W → instability growth rates ~6–25× faster. NBI power for stabilization must exceed critical threshold (unquantified in public sources). | C-2W: separatrix radius 0.4 m, plasma current 300–350 kA. Tilt and rotational instabilities suppressed by tangential NBI (8 injectors, ~13 MW coupled to plasma). Nature Comm 2025 confirms NBI-only formation and sustainment. FRC pulses stable for 30–40 ms (limited by NBI pulse duration, not instability onset). | Radius scale: 1.5 m / 0.4 m ≈ **4×**; instability growth rate (γ ∝ R²): 4² ≈ **16× faster**; plasma current: 2–3 MA / 0.35 MA ≈ **6–9×**. NBI power for stabilization at reactor scale unknown (TAE has not published scaling law or critical NBI power threshold for Da Vinci-scale FRC). | TAE claims FRC stability scales with NBI power density (MW/m³ plasma volume). Copernicus (unbuilt) is intended intermediate-scale validation at 0.7–1.0 m radius (estimated). MHD modeling (kinetic effects, fast-ion stabilization) is active research area; TAE has not published peer-reviewed FRC stability scaling beyond C-2W parameters. | Binary (FRC collapses if tilt mode growth rate exceeds NBI stabilization → no plasma confinement → no fusion). However, partial degradation possible: unstable FRC pulses → pulsed operation instead of steady-state → capacity factor penalty but not zero output. | **2** (simulation/design study: Copernicus parameters unpublished; FRC MHD stability at 1–2 m radius undemonstrated; TAE's claim of NBI-stabilization scaling is supported by C-2W data but not validated at reactor scale; no independent peer-reviewed stability analysis for Da Vinci geometry) |
+| **F3: Instability Control** | Hardware | NBI injectors must maintain precise tangential geometry and sufficient power density to suppress tilt mode continuously (CW operation). Tangential injection requires beam alignment <1° over ~10 m distance (vessel length). Power supply ripple must be <1% to avoid modulation-induced instabilities. Sensors / feedback control: real-time MHD mode detection and NBI power modulation (10–100 ms response time). | C-2W: NBI alignment and power supply control demonstrated for 30–40 ms pulses. No feedback control demonstrated (open-loop NBI operation). Tangential injection geometry validated at 0.4 m radius, 2 m axial length. | CW operation: undemonstrated (C-2W 30–40 ms vs. seconds-to-continuous for Da Vinci); beam alignment at 10 m scale: ~5× longer than C-2W; real-time MHD feedback: tokamak programs (DIII-D, EAST) have demonstrated MHD feedback at 10 ms timescales for disruption mitigation—analogous technology but not FRC-specific. | Scale-up of C-2W NBI geometry to Da Vinci is engineering (longer beam lines, more injectors, CW-rated power supplies). Real-time MHD control is mature in tokamaks; adaptation to FRC is straightforward (magnetic diagnostics + NBI power modulation feedback loop). TAE has not disclosed whether Da Vinci will use open-loop or closed-loop stability control. | Degrading (NBI misalignment or power supply failure → MHD instability → FRC disruption → capacity factor loss; replaceable/correctable but drives O&M up). | **4** (near-regime: tokamak MHD feedback control demonstrated (DIII-D, EAST); NBI alignment at 10 m scale is conventional accelerator engineering (SNS, ITER beamlines are longer); CW power supply technology is mature (substation-class power electronics)—Da Vinci combines demonstrated subsystems in a new configuration but no fundamental technology gap) |
+| **F4: Plasma-Wall Interaction** | Physics | First wall erosion rate <1 mm/yr under: (a) alpha particle bombardment (8.7 MeV, impact angle determined by FRC field line geometry), (b) soft X-ray flux from bremsstrahlung (dominant at 150 keV p-B11, energy flux scales as n² T_e^0.5), (c) charge-exchange neutrals from NBI (energetic neutrals lost from plasma edge). p-B11 produces <1% neutron fraction → neutron sputtering negligible. | Tokamak divertor physics: tungsten erosion under D-T plasma (14 MeV neutrons + 3.5 MeV alphas + charge-exchange D neutrals) measured at ~10–100 nm/shot in ITER divertor mock-ups (transient 10–20 MW/m², 10 s pulses). FRC first wall: no experimental data at p-B11 reactor conditions. X-ray sputtering of tungsten: laboratory data exists for keV-scale X-rays (synchrotron sources) but not for integrated MeV-alpha + keV-X-ray co-bombardment at fusion plasma densities. | Neutron flux: ~100× lower (1% vs. 100% neutron fraction) → neutron sputtering eliminated (favorable). X-ray flux: ~10× higher than D-T tokamak (bremsstrahlung scales as T_e^0.5; 150 keV vs. 20 keV). Alpha bombardment: 8.7 MeV vs. 3.5 MeV → 2.5× higher particle energy. Steady-state vs. pulsed: CW FRC has no thermal recovery time between pulses (unlike tokamak 10 min between shots). | TAE must measure erosion rates in dedicated test stand (alpha + X-ray + CW heat flux) or rely on ITER divertor data as upper bound (conservative, since ITER has 14 MeV neutrons). First wall material selection (tungsten, SiC, carbon-based) drives erosion rate; TAE has not disclosed material choice. X-ray-dominated erosion is less characterized than neutron/ion sputtering. | Degrading (high erosion → frequent first wall replacement → capacity factor loss and O&M cost increase; not binary because replaceable, but lifetime <5 FPY drives LCOE up significantly). | **2** (simulation: ITER divertor provides partial analogue (CW heat flux, ion bombardment) but different particle energy distribution and no X-ray-dominated environment at p-B11 conditions; no experimental first wall data for 150 keV p-B11 FRC; X-ray sputtering at MeV-alpha + keV-X-ray combined flux is uncharacterized regime) |
+| **F4: Plasma-Wall Interaction** | Hardware | First wall material: tungsten (leading candidate, ITER baseline), SiC (advanced ceramic, tokamak R&D), or graphite (legacy tokamak material, high-Z impurity risk). Must survive: (a) 2–5 MW/m² surface heat flux (steady-state), (b) <1 mm/yr erosion under alpha + X-ray bombardment, (c) thermal cycling (startup/shutdown), (d) neutron-induced embrittlement (minimal, <1% neutron fraction). Cooling: active water or gas cooling integrated into first wall structure. Lifetime target: ≥10 FPY (full-power years) before replacement. | ITER first wall and divertor: tungsten armor on copper-alloy cooling structure, qualified for 10–20 MW/m² transient (10 s pulses, 10 MW/m² steady-state). ITER blanket: beryllium first wall, water-cooled, designed for 0.78 MW/m² average neutron wall loading (~2–3 MW/m² total including charged particles). WEST tokamak: tungsten divertor, 1000+ pulses at 5 MW/m², CW-equivalent heat removal demonstrated. | Heat flux regime: 2–5 MW/m² (Da Vinci) vs. 10 MW/m² (ITER divertor, transient) ≈ **2× lower** → favorable. Neutron damage: <1% vs. 100% → **100× lower** dpa (displacements per atom) → much longer lifetime. X-ray sputtering: uncharacterized at p-B11 bremsstrahlung spectrum (keV-range X-rays, continuous). ITER first wall operates at 0.78 MW/m² neutron + 2 MW/m² charged particle = 2.8 MW/m² total—comparable to Da Vinci. | ITER first wall technology is directly applicable to p-B11 FRC with two modifications: (a) X-ray absorption layer (beryllium or borated steel thin coating to thermalize keV X-rays before reaching tungsten), (b) reduced neutron shielding (thinner back-wall, cost savings). TAE's first wall design is proprietary but likely tungsten-based (standard fusion choice). | Degrading (first wall failure → plasma contamination or cooling loss → capacity factor drop; replaceable but replacement cycle drives O&M). | **4** (near-regime: ITER first wall at comparable heat flux (2.8 MW/m²) and WEST CW divertor heat removal are demonstrated at reactor-relevant conditions; Da Vinci's lower neutron flux (100× reduction) is favorable—longer lifetime expected; X-ray absorption layer is straightforward engineering (thin beryllium or B₄C coating, analogous to neutron multipliers in D-T blankets)) |
+| **F5: Neutron/Particle Handling** | Physics | Secondary neutron production: <1% of fusion energy in neutrons (p-B11 side reactions: p+¹¹B → ¹¹C+n, cross-section ~0.1% of primary p-B11 fusion at 150 keV). Neutron spectrum: broad (MeV-range, similar to D-D or fission neutrons). Shielding requirement: thin biological shield (0.2 m water/boron vs. 1–2 m composite shield for D-T). Activation: minimal (copper coils, steel structure → no long-lived isotopes from 1% neutron flux; hands-on maintenance possible after ~1 week decay). | D-D fusion: ~50% of energy in neutrons (D+D → ³He+n or T+p with ~50:50 branching). Fission reactors: 100% neutron-driven, decades of shielding experience. p-B11 neutron fraction measured in accelerator experiments (~0.1–1% depending on energy). No reactor-scale p-B11 plasma neutron flux data. | Neutron flux: ~100× lower than D-T (1% vs. 100%) → shielding thickness ~10× thinner. Activation: ~100× lower neutron-induced activation → short-lived isotopes only (days to weeks vs. decades for D-T steel). Hands-on maintenance: enabled by low activation (favorable vs. D-T remote handling). | Thin water/boron shield (0.2 m) is sufficient for 1% neutron fraction (MCNP neutronics modeling, standard practice for fission/fusion hybrid systems). TAE's aneutronic claim (hands-on maintenance) is validated by neutron fraction <1%. No D-T startup inventory → eliminates tritium handling infrastructure entirely (major cost saving, ~$150–200M for D-T tritium plant). | Degrading (higher-than-expected neutron production → thicker shielding required → capital cost increase and activation penalty; not binary because shielding is scalable, but >5% neutron fraction would erode aneutronic advantage). | **5** (operating-regime: fission reactor shielding for MeV neutrons at comparable flux (research reactors, D-D tokamaks like JET in D-D mode) is decades-old commercial technology; p-B11 neutron fraction <1% is measured in accelerator experiments; water/boron shielding at 0.2 m thickness is standard industrial practice (no extrapolation required)) |
+| **F5: Neutron/Particle Handling** | Hardware | Neutron shield: 0.2 m annular layer of water + borated polyethylene or borated steel (boron-10 captures thermal neutrons). Biological dose limit: <2.5 μSv/hr at facility boundary (10 CFR 20). Activation: copper coils, stainless steel structure, tungsten first wall. Decay time to hands-on maintenance (<100 μSv/hr contact dose): ~1 week for 1% neutron fraction. Remote handling: minimal (simple manipulators for first wall tile replacement; no hot cell required). | ITER shield: 1.2 m steel + water + boron carbide (B₄C) composite for 14 MeV D-T neutrons. Research fission reactors (HFIR, ATR): 0.5–1.0 m concrete + water biological shield for MeV fission neutron spectrum. D-D tokamak shielding (JET in D-D mode, LHD): 0.3–0.5 m steel/concrete, sufficient for 2.45 MeV D-D neutrons at <1 MW/m² neutron wall loading. | Shielding thickness: 0.2 m (p-B11) vs. 1.2 m (D-T ITER) → **6× thinner** → major capital cost reduction. Neutron energy: p-B11 side reaction neutrons (MeV-range) vs. 14 MeV D-T → same shielding materials (water/boron) but thinner due to 100× lower flux. Hands-on maintenance: 1 week decay (p-B11) vs. never (D-T, remote-only) → O&M simplification. | Water + borated polyethylene shield at 0.2 m is commercial off-the-shelf (COTS) technology (used in research reactors, medical accelerators). Copper coil activation under 1% neutron flux: MCNP/Serpent modeling + fission reactor copper activation data confirm short-lived isotopes only (⁶⁴Cu, 12.7 hr half-life; ⁶⁶Cu, 5.1 min). Tungsten first wall: ¹⁸⁷W (23.7 hr half-life) from neutron capture—decays in days. | Degrading (shield under-design → radiation exposure above limits → retrofit required; not binary because shielding is addable, but drives cost/schedule). | **5** (operating-regime: fission reactor shielding at MeV neutron energies is mature; D-D tokamak shielding (JET, LHD) demonstrates thin shields for low neutron flux; copper/tungsten activation under low-flux neutrons is well-characterized (research reactor data); water/boron shield materials are COTS; hands-on maintenance after 1 week decay is validated in D-D experiments) |
+| **F6: Fuel Cycle Closure** | Physics | Boron-11 + proton fuel supply: hydrogen (unlimited, electrolysis from water); boron-11 (80% of natural boron, mined from borax minerals). No breeding required. Fuel burn fraction: ~5% (estimated, similar to D-T tokamak burn fraction—most fuel is exhausted unburned and recycled). Tritium breeding: N/A (aneutronic). Helium-3: N/A (not used). | Natural boron: 80% ¹¹B, 20% ¹⁰B, commercially available at $2–5/kg (commodity chemical). Boron-11 enrichment: laboratory-scale (electromagnetic isotope separation, similar to uranium enrichment) but not at industrial scale. No commercial B-11 enrichment market exists. Hydrogen: unlimited from electrolysis. Fuel injection: boron powder or gas puffing (demonstrated in tokamak experiments, e.g., boronization for wall conditioning). | Boron-11 enrichment scale: 100s kg/yr (Da Vinci requirement, estimated from model output: 274 kg/yr at 124 MWe) vs. laboratory-scale only (grams to kg/yr demonstrated). Enrichment cost: unknown (no commercial suppliers; estimated $20–75/kg for lightly enriched B-11 vs. $2–5/kg natural boron). Fuel injection: boron powder/gas puffing at kg/day rates undemonstrated (tokamak boronization is mg-scale for wall coating, not fuel). | Boron-11 enrichment is physically straightforward (mass separation, lighter than uranium; electromagnetic or gas-centrifuge separation). TAE likely uses natural boron (80% B-11) initially; enrichment to 90–95% B-11 may be pursued for reactivity optimization. Fuel injection at kg/day: engineering scale-up from tokamak pellet injectors (mm-scale pellets at Hz-kHz rates vs. continuous powder feed). No fundamental barrier. | Degrading (fuel supply constraint → higher fuel cost or reduced reactivity if natural boron <80% B-11; not binary because natural boron is sufficient, just suboptimal). | **5** (operating-regime: natural boron is commodity chemical (global production 6–8 Mton/yr); boron-11 enrichment is demonstrated at laboratory scale and physically analogous to uranium enrichment (no novel science); hydrogen is unlimited; fuel injection (powder puffing, gas puffing) is standard tokamak technology—Da Vinci simply scales to kg/day rates, which is engineering, not physics) |
+| **F6: Fuel Cycle Closure** | Hardware | Boron-11 fuel storage: solid boron powder or boron-containing gas (diborane B₂H₆, toxic but manageable with standard chemical safety). Fuel injection system: powder injector or gas puffing valve, continuous feed at ~kg/day rates (estimated from model: 274 kg/yr ÷ 365 days ÷ 85% CF ≈ 0.9 kg/day). Hydrogen injection: gas puffing (trivial). Exhaust handling: helium ash (alphas thermalized) pumped by vacuum system and exhausted; unburned boron recaptured by filtering or condensation for recycling. No tritium extraction, no lithium loop. | Tokamak fuel injection: pellet injectors (solid D-T ice pellets, mm-scale at Hz rates, ITER design: 10–15 pellets/s). Gas puffing: standard for fueling and density control (DIII-D, EAST, JET). Powder injection: demonstrated for wall conditioning (boronization, lithium powder, ~mg-scale) but not for primary fueling at kg/day. Helium exhaust: demonstrated in D-T tokamaks (JET D-T campaigns, ~100 mg/s He exhaust). | Powder injection scale: 0.9 kg/day (Da Vinci) vs. mg/day (tokamak boronization) → **900× scale-up**. Powder injection for primary fueling (not wall coating) is undemonstrated. Helium exhaust: 274 kg/yr B-11 → ~250 kg/yr He (3 alphas per B-11) → ~0.7 kg/day He exhaust ÷ 85% CF ≈ 0.8 kg/day → comparable to D-T tokamak He exhaust rates (scaling from JET: ~100 mg/s ≈ 8.6 kg/day at full power → Da Vinci is ~10× smaller, He exhaust is 10× lower → validated regime). | Powder injection at kg/day: engineering scale-up (larger hopper, higher feed rate, vibration/fluidization for continuous flow). Diborane gas puffing is alternative (B₂H₆ → 2B + 3H₂ in plasma; standard industrial gas, toxic but manageable like ammonia). Helium exhaust via cryopumps or turbomolecular pumps is mature (tokamak standard; ITER vacuum system design). | Degrading (fuel injection system failure → reduced fueling rate → lower density → lower fusion power → capacity factor drop; not binary because backup injection exists). | **4** (near-regime: tokamak pellet injection and gas puffing are mature at Hz-kHz rates; powder injection for fueling is demonstrated at laboratory scale (boronization) but not at kg/day continuous feed—this is an engineering scale-up, not a physics unknown; helium exhaust at 0.8 kg/day is within demonstrated tokamak vacuum system capacity (JET, ITER design)) |
+| **F7: Power Conversion & BOP** | Physics | p-B11 alpha energy (8.7 MeV, 3 alphas per reaction) deposited on first wall as surface heat flux (~2–5 MW/m²). Bremsstrahlung X-rays (keV-range, ~15% of fusion energy per model assumption) absorbed in first wall or radiated through thin plasma edge → heat load on walls. Thermal power extraction: heat exchangers in first wall cooling loop → steam generator (Rankine cycle). Branch C (ICC): alpha particles exit plasma through "expander" magnetic nozzle → direct energy conversion in tapered magnetic field (patent-stage, no demonstration). | Thermal cycle (Branch B baseline): tokamak steam cycles (water-cooled blankets, Rankine cycle at 30–35% efficiency) demonstrated at GW-scale in fission reactors (PWR, BWR). FLiBe/helium Brayton cycles (advanced, 45–48% efficiency) under R&D (AHTR, GT-MHR designs). Direct energy conversion (Branch C): no reactor-scale demonstration. Lab-scale DEC prototypes exist (Venice magnetic nozzle experiment at PPPL for plasma propulsion, <1 kW; no fusion-product DEC at MeV scale). | Steam cycle heat flux: 2–5 MW/m² (Da Vinci) vs. 0.5–1.5 MW/m² (PWR fission) → **3× higher** but within ITER first wall design range (10–20 MW/m² transient, 2–3 MW/m² steady-state). Thermal efficiency: 35% (Da Vinci steam) vs. 32–35% (PWR steam) → comparable. ICC direct conversion: 90% target efficiency (patent claim) vs. **never demonstrated** at MeV-range fusion alphas → N/A gap ratio (no experimental basis). | Steam Rankine cycle: COTS technology (GE, Siemens turbine-generators at 50–500 MWe scale). Heat exchanger design for FRC first wall cooling: straightforward adaptation of ITER first wall cooling (water-cooled tungsten, CuCrZr alloy cooling tubes). ICC (Branch C): TAE patents describe segmented electrode geometry and 5–10 MHz magnetic field modulation; prototype must be built to validate >70% efficiency claim before commercial deployment. ICC is NOT the Da Vinci baseline → steam cycle is the near-term path. | Branch B (steam): Degrading (heat exchanger failure → thermal cycle trip → capacity factor loss; not binary because redundant cooling loops exist). Branch C (ICC): Binary if ICC is the ONLY conversion path (no thermal fallback) → zero electricity if ICC fails; Degrading if hybrid (partial ICC + thermal backup) → reduced efficiency but not zero output. | **4** (near-regime: steam Rankine cycle at 2–5 MW/m² heat flux is demonstrated in ITER first wall design (operates at comparable surface heat flux for charged particle + neutron heating, CW-equivalent thermal management); fission PWR steam cycles at GW-scale provide BOP analogue; Da Vinci combines these at smaller scale (50–500 MWe) with standard turbine-generator equipment → no extrapolation required for Branch B baseline) |
+| **F7: Power Conversion & BOP** | Hardware | Branch B (steam baseline): Heat exchangers in first wall (water-cooled, 2–5 MW/m² surface flux), steam generator (shell-and-tube or helical coil, 663 MW thermal → ~230 MW electric at 35% efficiency), steam turbine-generator (50–500 MWe, standard industrial equipment from GE, Siemens, or Mitsubishi), condenser, cooling towers, feedwater pumps. Branch C (ICC): Magnetic expander coils (0.6 T → 0.01 T taper over ~10 m length), segmented electrodes (5–10 MHz RF collection), high-voltage power conditioning (100 kV–1 MV DC output, MHz-frequency rectification), grid-tie inverter. Hybrid: small steam cycle for residual heat rejection (~10% of thermal power if ICC is 90% efficient). | Steam cycle hardware: demonstrated at GW-scale in fossil and nuclear power plants (>1000 units worldwide). ITER first wall cooling: water-cooled tungsten/CuCrZr, 20 MW/m² transient, 10 MW/m² CW-equivalent (design, not yet operated but fabrication complete). Small modular turbines (50–200 MWe): commercial offerings from Siemens (SST-300), GE (FlexEfficiency), others. ICC hardware: patent-stage only—no prototype demonstrated. Lab DEC experiments (Venice, PPPL): <1 kW, no MeV-range particles. | Steam cycle: 50–500 MWe turbine-generators are commercial off-the-shelf (COTS) from Siemens/GE/Mitsubishi → Da Vinci is standard small modular power plant scale. First wall heat exchanger: ITER design at 10–20 MW/m² (transient) bounds Da Vinci 2–5 MW/m² (CW) → ITER first wall technology directly applicable. ICC: **never demonstrated** at reactor scale → TRL 2 (concept/patent only). | Steam BOP: procurement from standard power generation suppliers (Siemens, GE, etc.). ITER first wall cooling technology transfer: tungsten armor, CuCrZr cooling channels, water coolant at 5–10 MPa—TAE can license ITER first wall design or hire ITER suppliers (ITER Organization, Fusion for Energy procurement contracts). ICC: TAE must build prototype → demonstrate >70% efficiency at kW–MW scale → scale to 100s MW. ICC is explicitly NOT the Da Vinci baseline per TAE FAQ—steam cycle de-risks near-term deployment. | Branch B: Degrading (steam BOP failure is standard power plant maintenance; turbine/generator are replaceable industrial components). Branch C: Binary if ICC-only (no demonstrated hardware → unknown failure modes); Degrading if hybrid (ICC failure → fallback to steam at lower efficiency). | Branch B (steam): **5** (operating-regime: commercial steam turbine-generators at 50–500 MWe scale are COTS; ITER first wall cooling at 10–20 MW/m² CW-equivalent provides design basis for Da Vinci 2–5 MW/m² first wall heat exchanger; no extrapolation required—Da Vinci combines demonstrated technologies at standard power plant scale). Branch C (ICC): **1** (asserted/absent: no experimental prototype, no demonstrated efficiency >10% at kW scale, no MeV-range particle conversion data; TAE patents provide detailed design but zero validation). **Score F7 Hardware: 5.0** (Branch B baseline; Branch C ICC risk does not apply to near-term Da Vinci deployment). |
 
 ---
 
 ### Function-Level Means (F1–F7)
 
-| Function | Mean (raw) |
-|----------|-----------|
-| F1: Plasma Performance | **1.5** |
-| F2: Driver / Energy Input | **2.5** |
-| F3: Instability Control | **3.0** |
-| F4: Plasma-Wall Interaction | **2.5** |
-| F5: Neutron/Particle Handling | **5.0** |
-| F6: Fuel Cycle Closure | **5.0** |
-| F7: Power Conversion & BOP | **4.5** |
+Computed as symmetric arithmetic mean of physics and hardware tiers for each function, rounded to nearest 0.5:
 
-**Heritage credit**: Not applicable (p-B11, not D-T). All F-scores are raw evidence-based.
+- **F1** (Plasma Performance): (2 + 2) / 2 = 2.0 → **2.0**
+- **F2** (Driver / Energy Input): (3 + 3) / 2 = 3.0 → **3.0**
+- **F3** (Instability Control): (2 + 4) / 2 = 3.0 → **3.0**
+- **F4** (Plasma-Wall Interaction): (2 + 4) / 2 = 3.0 → **3.0**
+- **F5** (Neutron/Particle Handling): (5 + 5) / 2 = 5.0 → **5.0**
+- **F6** (Fuel Cycle Closure): (5 + 4) / 2 = 4.5 → **4.5**
+- **F7** (Power Conversion & BOP): (4 + 5) / 2 = 4.5 → **4.5**
 
-**Function-level cap**: F1 = 1.5 ≤ 1.5 → **C7 capped at 1.5** (the actual F1 value).
+**Heritage credit**: Does NOT apply. Heritage credit is restricted to D-T fuel concepts (scoring framework: "Heritage credit (D-T fuel only)"). p-B11 FRC uses aneutronic p-B11 fuel → no heritage floor. The concept inherits zero engineering debt from ITER/tokamak programmes (no D-T blanket, no tritium handling, no 14 MeV neutron materials qualification). F1–F7 scores remain as computed above (no floor adjustment).
 
-**Final C7 (Python-computed)**: 1.5 raw. Calibration Pass 2 will likely apply Q2(c) — binary count is 5, no heritage floor — bringing C7 to 1.0.
+---
 
 ### Binary Risks
 
-1. **Q_plasma > 1 never demonstrated for p-B11** in any confinement device. C-2W operates at Q_plasma < 0.001. Da Vinci requires Q ≥ 25–30 at η_NBI=0.26. No theoretical or experimental basis for crossing this gap. Branch A (no LCOE) cannot be ruled out.
+From the risk matrix, the following risks are classified as **binary** (zero net electricity if unmitigated):
 
-2. **T_i >> T_e at 150+ keV unsustainable**. The non-equilibrium beam-driven regime is validated at ~1 keV; bremsstrahlung suppression at fusion temperatures requires the regime to persist. Equilibration timescales and bremsstrahlung loss rates are categorically different at 150+ keV than at 1 keV. If equilibration wins, p-B11 plasma cannot reach net energy gain at any achievable confinement quality.
+1. **Q_plasma < viability threshold (~14 for steam, ~5 for ICC)**: If p-B11 FRC cannot achieve Q_plasma ≥14 (Branch B steam baseline) or Q_plasma ≥5 (Branch C ICC), the power balance cannot close and P_net ≤ 0. The model identifies this threshold explicitly: at Q=10 (below breakeven), P_net = –30.2 MWe (Branch A, model output §1). No external energy purchase fallback exists for fusion plasma performance—if the plasma physics fails, there is no LCOE.
 
-3. **FRC stability at multi-MA plasma current and 1–2 m major radius unvalidated**. C-2W demonstrates stability at 0.4 m / 350 kA. ~10× plasma current scale-up with no validated stability scaling. If FRC is intrinsically unstable at reactor scale, no plasma operation is possible.
-
-4. **NBI wall-plug-to-plasma efficiency below 0.20 at Da Vinci beam energies**. C-2W attenuation data and shine-through measurements suggest 0.20–0.35 range. If actual η_NBI < 0.20, the Q_plasma viability threshold rises above achievable values and Branch A is forced.
-
-5. **Continuous (CW) FRC operation undemonstrated**. Current pulse record ~40 ms; commercial operation requires 10⁵–10⁶× longer durations. NBI heating, current drive, and ash exhaust must operate continuously without intermittent loss of confinement. If CW operation is fundamentally limited by NBI duty cycle or particle transport, capacity factor approaches zero and the concept is non-viable.
+2. **FRC tilt instability at reactor scale (1–2 m radius, multi-MA current)**: If NBI-driven stabilization cannot suppress tilt mode growth at Da Vinci scale, the FRC collapses and plasma confinement is lost. Unlike tokamaks (where intrinsic kink stability exists via q-profile shaping) or stellarators (3D coil stabilization), FRC relies on *external* beam-driven stabilization—a regime-dependent mechanism. If the NBI power threshold for stability at 1–2 m radius exceeds achievable NBI wall-plug power (~100–150 MW), the concept cannot operate. No passive stabilization fallback exists (FRC is intrinsically unstable without external drive).
 
 ---
+
+### YAML Scores Block
 
 ```yaml
 ---
 scores:
-  C1: 3.0
-  C3: 3.6
-  C4: 4.0
-  C5: 3.7
-  C8: 2.0
-  F1: 1.5
-  F2: 2.5
+  C1: 2.8
+  C3: 3.3
+  C4: 3.0
+  C5: 3.3
+  C8: 2.5
+  F1: 2.0
+  F2: 3.0
   F3: 3.0
-  F4: 2.5
+  F4: 3.0
   F5: 5.0
-  F6: 5.0
+  F6: 4.5
   F7: 4.5
   binary_risks:
-    - "Q_plasma > 1 never demonstrated for p-B11 — required Q ≥ 25–30 at steam baseline, demonstrated <0.001, no theoretical or experimental basis for crossing this gap. Branch A (no LCOE) cannot be ruled out."
-    - "T_i >> T_e regime at 150+ keV unsustainable — non-equilibrium beam-driven plasma validated only at ~1 keV; if equilibration dominates at fusion temperatures, bremsstrahlung losses force net negative energy."
-    - "FRC stability at multi-MA plasma current and 1–2 m major radius unvalidated — C-2W demonstrates only at 0.4 m / 350 kA; ~10× current scale-up with no validated stability scaling."
-    - "NBI wall-plug-to-plasma efficiency below 0.20 at Da Vinci beam energies — would push Q_plasma viability threshold above achievable values and force Branch A."
-    - "Continuous (CW) FRC operation undemonstrated — current pulse record ~40 ms vs. continuous requirement; if duty-cycle-limited, capacity factor approaches zero."
+    - "Q_plasma < viability threshold—p-B11 FRC cannot achieve Q≥14 (steam) or Q≥5 (ICC) due to bremsstrahlung power balance failure or insufficient confinement quality at 150 keV ion temperature"
+    - "FRC tilt instability at reactor scale—NBI-driven stabilization fails at 1–2 m major radius and multi-megaampere plasma current, causing FRC collapse and loss of plasma confinement"
 ---
 ```

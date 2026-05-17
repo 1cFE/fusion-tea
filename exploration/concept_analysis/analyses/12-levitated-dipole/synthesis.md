@@ -4,655 +4,572 @@ Concept: Levitated Dipole (D-T)
 Company: OpenStar Technologies
 Type: synthesis
 Status: draft
-Created: 2026-04-29
+Created: 2026-05-13
 ---
 
-# Synthesis: Levitated Dipole (D-T) — OpenStar Technologies
+# Synthesis: Levitated Dipole (D-T)
 
 ## 1. Executive Summary
 
-- **Most important risk**: Confinement scaling extrapolation from 14.5 ms (LDX experimental data) to 3.5 s (Reactor A requirement) is a 240× leap with no empirical validation path before the Tahi prototype (~2028). This is a binary viability threshold — if Tahi fails to confirm Bohm-like or better scaling, the reactor design collapses (Q_sci < 7 pushes LCOE above 40 ¢/kWh and net power toward zero).
+- **Most important risk**: Confinement scaling is completely unvalidated above laboratory parameters. Reactor A requires τ_e = 3.5 s — a 240× extrapolation from the 14.5 ms demonstrated on LDX. This is not a cost uncertainty; it's a binary viability threshold. If Tahi (~2028) fails to reach Bohm-like scaling, the concept is nonviable at the design point.
 
-- **Most important advantage**: Inherent disruption immunity (no toroidal plasma current) eliminates first wall thermal fatigue, divertor replacement cycles, and thermal energy storage requirements. First wall heat flux is 5–12× lower than tokamak divertor loading (0.198 MW/m² vs. 1–2.5 MW/m²), materially reducing plasma-facing component replacement costs. This is a genuine structural advantage over all inductive tokamaks.
+- **Most important advantage**: Annual internal magnet replacement eliminates the tokamak central stack challenge and tokamak disruption physics entirely. First wall heat flux is 5–12× lower than comparable tokamak divertors (0.198 vs. 1–2.5 MW/m²), eliminating high-heat-flux component replacement cycles. This is a genuine structural cost advantage — but only if the annual coil replacement cost stays below ~$50M/yr.
 
-- **LCOE ballpark**: Baseline model yields **25.1 ¢/kWh** (251 $/MWh) at 208 MWe native scale; scales to **134 $/MWh** at 1000 MWe reference (α=0.6). Optimistic scenario (tape cost learning + higher thermal efficiency) reaches **14.7 ¢/kWh** (83 $/MWh scaled). Conservative scenario with high REBCO prices and ECRH fallback rises to **41.4 ¢/kWh** (211 $/MWh scaled).
+- **LCOE ballpark**: Baseline model yields 30 cents/kWh at 172 MWe net (148 $/MWh scaled to 1000 MWe). Conservative scenario (high tape cost, high replacement handling) reaches 45 cents/kWh. Optimistic scenario (tape learning curve, low handling) reaches 19 cents/kWh. Range is driven almost entirely by REBCO tape price trajectory and annual coil replacement cost — both of which are unquantified in published sources.
 
-- **Confidence verdict**: **Low** — the model rests on two unvalidated assumptions with no near-term resolution path: (1) Q_sci = 15 requires confinement scaling that will not be tested until Tahi, and (2) annual sacrificial coil replacement cost is a $52M/yr line item (~30% of capital charge) with no published engineering basis. A factor-of-two LCOE uncertainty band is irreducible until these are characterized.
+- **Confidence verdict**: Low. The cost model can be built from component mass data, but two critical parameters — confinement scaling validation and annual coil replacement cost — are genuinely unknown. The first determines viability; the second determines whether the concept is competitive or merely viable. OpenStar has explicitly withheld its preliminary cost model.
 
 ---
 
 ## 2. What Matters Most for LCOE
 
-Ranked by sensitivity magnitude from the model:
+### 1. Q_sci (confinement scaling) — binary viability threshold
 
-### 1. Q_sci (Confinement Scaling) — **Binary Viability Threshold**
+**Assumed value**: 15.0 (requires τ_e = 3.5 s for Reactor A)
+**Source**: Simpson et al. 2026, arXiv:2602.20564, §Table 6 — target value contingent on Tahi validation
 
-- **Assumed value**: Q_sci = 15 (requires τ_e = 3.5 s at 1.95×10²⁰ m⁻³, 10.9 keV)
-- **Source**: Design target from Simpson et al. 2026, Table 6; explicitly flagged as contingent on Tahi validation
-- **Sensitivity**: At Q = 10, LCOE rises 14% to 28.8 ¢/kWh (net output falls to 186 MWe). At Q = 7.5, LCOE jumps 33% to 33.4 ¢/kWh. Below Q ≈ 5, net power becomes negative (recirculating fraction exceeds 100%).
-- **What would flip the economic conclusion**: If Tahi demonstrates n·τ_e < 2.4×10¹⁹ s·m⁻³ at 1 keV (half the Bohm-like target), Reactor A as designed is nonviable. Unlike most cost parameters, confinement scaling is not continuous — it determines whether the machine produces net power at all. The paper is explicit: "The assumption that these reactors will be Q_sci = 15 is only valid if a smaller demonstration device...displays adequate plasma performance" (§Discussion). No cost model fixes this; only experimental data can retire the risk.
+**Sensitivity magnitude**: At Q = 10, LCOE rises to 35 cents/kWh (+18%). At Q = 7.5, LCOE is 43 cents/kWh (+44%). Below Q ≈ 5–7, net power approaches zero — the plant is not electrically self-sustaining. This is not a continuous cost penalty; it is a threshold structure. Either Tahi demonstrates Bohm-like scaling (n·τ_e ≥ 3.23×10¹⁹ s·m⁻³ at 1 keV) and the concept is viable at the modeled cost, or it does not and the plant must be redesigned at higher capital cost (larger magnet, thicker shield) or abandoned.
 
-### 2. Annual Sacrificial Coil Replacement Cost — **Unquantified Recurring OPEX**
+**What would flip the conclusion**: If Tahi achieves better-than-Bohm scaling (as Reactor B requires), Q_sci could reach 20–30, dropping LCOE by 10–15%. If Tahi demonstrates sub-Bohm or no clear scaling law, Reactor A is nonviable as designed.
 
-- **Assumed value**: $52.4M/yr (tape $32.4M + remote handling $20M), 30% of annual capital charge
-- **Source**: Analyst estimate from 864 km/yr tape consumption (20% of 4,320 km core magnet) × $75/kA-m + parametric handling cost. OpenStar states replacement "does not make a significant impact" but provides no dollar figure.
-- **Sensitivity**: Reducing handling cost from $20M to $5M/yr cuts LCOE by 3.8% to 24.2 ¢/kWh. Doubling to $40M raises LCOE 5.0% to 26.4 ¢/kWh. Combined with tape price variation ($25–150/kA-m range), this parameter alone spans a ±20% LCOE band.
-- **What would flip the economic conclusion**: If actual replacement cycle cost exceeds $60M/yr (~12% of overnight capital per year), the levitated dipole's operating cost structure becomes worse than a conventional tokamak with divertor replacement. The modular coil replacement advantage turns into a liability. This is the single most important gap between published claims and verifiable cost data.
+**Cross-check**: LDX demonstrated τ_e ~ 14.5 ms at ne ~ 10¹⁷ m⁻³, Te ~ 200 eV (Boxer et al. 2010). The reactor extrapolates to ne = 1.95×10²⁰ m⁻³, Ti = 10.9 keV — roughly six orders of magnitude higher in triple product. No intermediate-scale dipole data exists.
 
-### 3. REBCO Tape Price — **Dual Impact on Capital and OPEX**
+---
 
-- **Assumed value**: $75/kA-m (mid-range of current $50–100/kA-m market)
-- **Source**: Market survey, analysis.md §4
-- **Sensitivity**: At target price of $25/kA-m (fusion industry learning curve assumption), LCOE falls 15.5% to 21.2 ¢/kWh. At pessimistic $150/kA-m, LCOE rises 23.3% to 31.0 ¢/kWh. This drives both C220103 (magnet capital, $414M baseline) and CAS72_coil (annual replacement, $52.4M/yr baseline).
-- **What would flip the economic conclusion**: If tape prices stall above $100/kA-m due to manufacturing bottlenecks (global production is currently 1,000–2,000 km/yr; Reactor A alone requires 4,320 km initial + 864 km/yr recurring), LCOE exceeds 27 ¢/kWh and the concept loses competitiveness against advanced fission or natural gas with CCS. The levitated dipole bet is implicitly a bet on REBCO tape commoditization.
+### 2. Annual sacrificial coil replacement cost — unique recurring OPEX
 
-### 4. Thermal Efficiency (η_th) — **Direct Net Power Multiplier**
+**Assumed value**: $52.4M/yr ($32.4M tape + $20M remote handling)
+**Source**: Model estimate. Tape cost = 864 km/yr × 200 A/tape × $75/kA-m × 2.5 engineering multiplier. Remote handling cost is purely assumed — no published figure exists.
 
-- **Assumed value**: 40% (unspecified cycle; consistent with sCO₂ Brayton or advanced Rankine)
-- **Source**: Simpson et al. §3.2.5
-- **Sensitivity**: Reducing to 37% (conservative Rankine) raises LCOE 10.4% to 27.8 ¢/kWh (net output drops to 187 MWe). Raising to 44% (optimistic sCO₂) cuts LCOE 10.9% to 22.4 ¢/kWh (net output rises to 238 MWe).
-- **What would flip the economic conclusion**: A 5-point efficiency gain (40% → 45%) is equivalent to a 14% reduction in overnight capital. If OpenStar can specify a high-efficiency sCO₂ cycle (feasible at 740 MW thermal, no technical barrier), LCOE approaches commercial territory without any physics risk reduction.
+**Sensitivity magnitude**: At $20M/yr handling (baseline), LCOE = 30 cents/kWh. At $40M/yr, LCOE = 31 cents/kWh (+5%). At $100M/yr, LCOE = 36 cents/kWh (+20%). The annual coil replacement accounts for ~52M of the 115M annual O&M cost — 45% of total O&M. This is the single largest O&M line item and has no analogue in any other fusion concept.
 
-### 5. ICRH Wall-Plug Efficiency (η_aux) — **Heating Method Fallback Bet**
+**What would flip the conclusion**: If REBCO tape prices decline to $10–25/kA-m (the stated industry target for fusion competitiveness), the annual tape cost drops from $32M to $6–16M, reducing total replacement cost to $26–36M/yr and LCOE by 1–2 cents/kWh. Conversely, if remote handling under neutron activation proves more costly than assumed (qualification testing, spare pool logistics, hot-cell operations), the cost could exceed $60M/yr, elevating LCOE by 3+ cents/kWh.
 
-- **Assumed value**: 70% (ICRH baseline; undemonstrated in dipole geometry)
-- **Source**: Simpson et al. §2.2.7; ICRH chosen over ECRH for superior efficiency
-- **Sensitivity**: If ICRH coupling fails in dipole field topology and design falls back to ECRH at 50–55% efficiency, LCOE rises 12.8–15.1% to 28.4–28.9 ¢/kWh (net output falls to 183–192 MWe). This is a continuous penalty, not a binary failure — the plant remains viable but less competitive.
-- **What would flip the economic conclusion**: ECRH fallback alone does not kill the concept, but combined with conservative tape prices ($100/kA-m) and high coil replacement cost ($40M/yr), LCOE exceeds 35 ¢/kWh and the plant becomes uneconomic. ICRH validation is thus a key de-risking milestone for Tahi.
+**Cross-check**: OpenStar claims this "does not make a significant impact" (Simpson et al., §2.3.1) but provides no supporting cost figure. At baseline, the annual replacement cost is ~19% of the annual capital charge ($273M/yr) — not negligible.
+
+---
+
+### 3. REBCO tape price ($/kA-m) — drives both capex and opex
+
+**Assumed value**: $75/kA-m
+**Source**: Model assumption. Current market range $50–100/kA-m (SuperPower, American Superconductor); mid-range used.
+
+**Sensitivity magnitude**: At $25/kA-m (optimistic learning curve), LCOE = 25 cents/kWh (−16%). At $150/kA-m (pessimistic, slow learning), LCOE = 37 cents/kWh (+24%). Tape price affects both the initial magnet capital (C220103 = $414M at baseline) and the annual sacrificial section replacement. The magnet is the largest single capital item (~22% of overnight capital); the annual tape cost is the largest recurring O&M item.
+
+**What would flip the conclusion**: If the fusion HTS industry (CFS, Tokamak Energy, OpenStar combined) drives tape production to >10,000 km/yr globally, economies of scale could push prices toward $10–20/kA-m, making the annual coil replacement genuinely low-cost and confirming OpenStar's modularity advantage. If production bottlenecks persist (current global capacity ~1,000–2,000 km/yr), prices remain high and the annual replacement becomes a structural cost burden.
+
+**Cross-check**: Reactor A requires 5,520 km total tape (core + top magnet). Over 30 years with annual replacement, cumulative tape consumption is ~31,000 km — equivalent to 15–30 years of current global REBCO production. The supply chain constraint is real.
+
+---
+
+### 4. Thermal efficiency (η_th) — unspecified cycle type
+
+**Assumed value**: 35% (standardized from paper's 40% per scoring framework; thermal cycle unspecified)
+**Source**: Simpson et al., §3.2.5 states 40% but does not identify Rankine vs. sCO₂ vs. other cycle.
+
+**Sensitivity magnitude**: At η_th = 0.33 (conservative Rankine), LCOE = 32 cents/kWh (+8%). At η_th = 0.44 (sCO₂ Brayton), LCOE = 22 cents/kWh (−25%). Thermal efficiency directly scales net power at fixed fusion power: every 5 percentage points of η_th changes net output by ~12%, changing LCOE proportionally.
+
+**What would flip the conclusion**: If the design adopts sCO₂ Brayton (consistent with 40% efficiency claim) and achieves 44–47%, net power rises from 172 MWe to 238–261 MWe, dropping specific capital from $18,938/kWe to ~$13,000–15,000/kWe and LCOE to 20–22 cents/kWh. This would place the concept in the competitive range with advanced fission. If the design is limited to standard steam Rankine (33–37%), LCOE remains above 27 cents/kWh.
+
+**Cross-check**: The paper's 40% figure is higher than standard fusion steam cycles (~35–37%) but below sCO₂ pilot demonstrations (~48%). Without cycle specification, this remains a bracketing parameter.
+
+---
+
+### 5. ICRH wall-plug efficiency (η_aux) — dipole geometry coupling unknown
+
+**Assumed value**: 70% (ICRH baseline)
+**Source**: Simpson et al., §2.2.7 — selected for higher efficiency vs. ECRH (30–40%)
+
+**Sensitivity magnitude**: At η_aux = 0.52 (ECRH fallback if ICRH coupling fails), net power drops from 172 MWe to 150 MWe (−13%) and LCOE rises to 35 cents/kWh (+16%). This is a continuous penalty, not a binary threshold: any sub-70% heating efficiency reduces Q_eng and elevates recirculating fraction.
+
+**What would flip the conclusion**: If ICRH coupling in a dipole field geometry proves unachievable (no experimental validation exists), the design must fall back to ECRH. ECRH was demonstrated on LDX and RT-1, making it the lower-risk option, but its 30–40% wall-plug efficiency adds 47–85 MW of recirculating load. The ECRH fallback scenario yields 34.6 cents/kWh — viable but ~16% higher LCOE than the ICRH baseline. NBI is an alternative but carries its own efficiency and supply-chain penalties.
+
+**Cross-check**: Standard tokamak ICRH systems achieve 70% at ~40–55 MHz. Dipole field topology differs fundamentally from tokamaks — wave coupling and single-pass absorption are uncharacterized. The paper acknowledges this implicitly by listing ECRH as a fallback (§2.2.7).
 
 ---
 
 ## 3. Risk Verdicts
 
-### Confinement Scaling to τ_e = 3.5 s (240× Extrapolation from LDX)
+### Challenge: Confinement scaling extrapolation (240× from LDX)
 
-**Verdict**: **Genuinely uncertain**
+**Verdict**: Genuinely uncertain
 
-**Rationale**: No dipole confinement scaling law exists; LDX data (14.5 ms at 10¹⁷ m⁻³, 200 eV) is the only experimental anchor. The paper assumes Bohm-like or better; Reactor B explicitly requires better-than-Bohm. This is not resolvable by analysis — it is a physics unknown pending Tahi experimental results.
+**Rationale**: No empirical dipole scaling law exists. LDX data provides one low-temperature data point; RT-1 provides high-β plasma but no confinement time measurement at fusion-relevant conditions. The reactor assumes Bohm-like scaling — a hypothesis, not a validated law.
 
-**What would retire this risk**: Tahi demonstrating n·τ_e ≥ 3.2×10¹⁹ s·m⁻³ at ~1 keV (Bohm-like threshold). Even partial validation (e.g., n·τ_e = 1×10¹⁹ at 1 keV) would narrow the uncertainty band and allow design iteration toward a viable Q_sci.
-
----
-
-### Annual Sacrificial Coil Replacement at $52M/yr
-
-**Verdict**: **Unlikely resolvable** at claimed low cost without major tape price decline
-
-**Rationale**: At current tape prices ($75/kA-m), 864 km/yr replacement alone costs $32M/yr before handling, testing, or logistics. OpenStar's claim that this "does not make a significant impact" implies total cost < $10–15M/yr, requiring tape prices below $15/kA-m — a 5× reduction from today. Achievable only if fusion industry REBCO demand drives mass production.
-
-**What would retire this risk**: (1) Published engineering study of the replacement cycle with costed Bill of Materials, or (2) tape price learning curve data showing credible path to <$20/kA-m at multi-GW deployment scale. Neither exists in the public domain.
+**What would retire this risk**: Tahi prototype (~2028) operating at 20 T with >1 MW heating, achieving n·τ_e ≥ 3.23×10¹⁹ s·m⁻³ at 1 keV, would validate the Bohm-like assumption and retire the viability risk. If Tahi demonstrates better-than-Bohm (gyro-Bohm-like), Reactor B becomes viable and LCOE drops. If Tahi shows sub-Bohm, the concept requires larger magnets or is nonviable at commercial scale.
 
 ---
 
-### ICRH Coupling in Dipole Magnetic Geometry
+### Challenge: Annual sacrificial coil replacement cost unquantified
 
-**Verdict**: **Likely resolvable** but not yet demonstrated
+**Verdict**: Likely resolvable (but critical for competitiveness)
 
-**Rationale**: ICRH is mature in tokamaks; the open field-line dipole geometry differs but is not fundamentally hostile to RF coupling. ECRH has been demonstrated on LDX and RT-1, providing a proven fallback. The efficiency penalty (70% → 50–55%) is painful but not fatal.
+**Rationale**: The mechanical concept is sound — Junior's DN1240 port and modular coil design demonstrate feasibility. The cost uncertainty is not whether replacement is possible, but whether it can be done economically at scale under neutron activation conditions. OpenStar claims low impact but provides no figure. At current tape prices, the raw cost is ~$50M/yr — 45% of total O&M. This is not "does not make a significant impact."
 
-**What would retire this risk**: ICRH heating experiments on Junior or Tahi. Even modest coupling efficiency (>60%) would validate the approach and eliminate the ECRH fallback scenario.
-
----
-
-### Li₂O Solid Blanket Tritium Extraction at kg/day Scale
-
-**Verdict**: **Likely resolvable** via ITER TBM program heritage
-
-**Rationale**: Li₂O ceramic breeding is the ITER/DEMO baseline (HCPB TBM). Small-scale tritium extraction has been demonstrated. Scaling to plant throughput is an engineering challenge, not a physics unknown. TBR = 1.1 provides margin for losses.
-
-**What would retire this risk**: ITER TBM results demonstrating tritium extraction efficiency >90% from solid breeder at fusion-relevant temperatures. Expected mid-2030s.
+**What would retire this risk**: (a) Publication of OpenStar's internal cost model with a costed replacement cycle, including remote handling, qualification testing, spare pool logistics, and activation waste handling; or (b) Demonstration of the full dock-undock-replace cycle on Tahi with measured labor hours, tooling costs, and post-replacement testing time. Until then, the gap between OpenStar's optimism and verifiable TEA spans a factor of ~2 in LCOE.
 
 ---
 
-### Neon Slush Cryogenic System at 45-Minute Float Time
+### Challenge: ICRH coupling in dipole geometry undemonstrated
 
-**Verdict**: **Likely resolvable**; hydrogen fallback available
+**Verdict**: Likely resolvable (ECRH is a validated fallback)
 
-**Rationale**: Neon slush at 24.6 K is not exotic (used in industrial latent heat storage). The paper acknowledges procurement risk and proposes hydrogen as alternative (requires 5× larger reservoir volume but technically viable). The 5-minute docking time is aggressive but not implausible for a rehearsed operation.
+**Rationale**: ICRH in tokamaks is mature; dipole field topology is fundamentally different. No RF coupling study for dipole geometry exists in the literature. However, ECRH was successfully demonstrated on LDX and RT-1, providing a lower-risk (albeit lower-efficiency) fallback. The worst-case scenario is not "heating fails" but "heating requires ECRH, reducing Q_eng by ~16%."
 
-**What would retire this risk**: Engineering demonstration of the dock-undock-refill cycle on Tahi. Neon supply chain analysis for fleet-scale deployment (neon is byproduct of air separation; limited but scalable production).
+**What would retire this risk**: ICRH demonstration on Tahi at >1 MW coupled power, with measured coupling efficiency and single-pass absorption fraction. If ICRH coupling proves incompatible with the dipole field, ECRH fallback is acceptable — it raises LCOE by ~5 cents/kWh but does not make the concept nonviable.
 
 ---
 
-### Plasma Edge Conditions Extrapolation from Tokamak I-Mode Data
+### Challenge: Plasma edge physics uncharacterized
 
-**Verdict**: **Genuinely uncertain** but bounded
+**Verdict**: Unlikely resolvable before Tahi (but bounded)
 
-**Rationale**: The paper uses tokamak I-mode upper bounds (800 eV edge temperature, 10³ Pa edge pressure) for a configuration with no experimental precedent. If actual dipole edge conditions are more constraining, core pressure and confinement degrade. However, the design has margin — edge assumptions are conservative relative to the core plasma state.
+**Rationale**: The paper explicitly states "the physics defining an upper bound on the value of p_lcfs is not well understood" (§2.1.4). The design uses tokamak I-mode edge data (800 eV, 10³ Pa) as an upper bound, not a dipole-validated value. If actual edge conditions are more constraining, plasma triple product falls and Q_sci drops. This is a continuous degrading risk, not a binary threshold.
 
-**What would retire this risk**: High-power dipole experiments characterizing the edge pedestal. Junior is underpowered (<50 kW ECRH); Tahi with MW-class heating will provide first data. Expected ~2029–2030.
+**What would retire this risk**: High-power dipole experiment (Tahi or later) with >1 MW heating, measuring edge temperature and pressure profiles under steady-state conditions. Until then, the I-mode analogy is speculative. However, the paper's bounding approach (using conservative upper limits) provides some protection against over-optimistic edge assumptions.
+
+---
+
+### Challenge: Neon supply chain at fleet scale
+
+**Verdict**: Likely resolvable (hydrogen is a validated alternative)
+
+**Rationale**: Neon is a byproduct of air liquefaction with limited global production (~200,000 m³/yr). A fleet of 10+ plants would stress supply. However, the paper explicitly identifies hydrogen as an alternative cryogen, requiring 5× larger reservoir volume but eliminating supply-chain risk (§2.2.3). This is a design trade, not a blocking constraint.
+
+**What would retire this risk**: Fleet-scale neon demand modeling (search industrial gas suppliers: Air Liquide, Linde, Praxair). If neon supply is insufficient, hydrogen fallback is already designed in. This is a nuisance parameter, not a viability risk.
+
+---
+
+### Challenge: First wall lifetime under low-flux but steady-state neutron irradiation
+
+**Verdict**: Genuinely uncertain (but low-flux is favorable)
+
+**Rationale**: Maximum first wall loading is 0.198 MW/m² (outboard midplane limiter, Inconel 718 + W coating). This is 5–12× lower than tokamak divertor heat flux (1–2.5 MW/m²). Lower flux implies longer component lifetime — but steady-state irradiation (90% duty cycle) accumulates damage continuously, unlike pulsed tokamaks. The paper does not quantify first wall lifetime or replacement schedule.
+
+**What would retire this risk**: Neutron irradiation testing of Inconel 718 + W coating under 0.198 MW/m² equivalent flux at steady-state. If first wall lifetime exceeds 3–5 years, the "no divertor" advantage is real and first wall replacement is not a significant O&M item. If lifetime is <2 years, the avoided divertor cost is offset by first wall replacement and the advantage shrinks.
 
 ---
 
 ## 4. Structural Advantages and Disadvantages
 
-Compared to D-T tokamak baseline (e.g., SPARC, ST-HTS, STEP):
+### Advantages vs. conventional D-T tokamak baseline
 
-### Eliminated Cost Items (Advantages)
+**1. No disruptions → eliminates thermal dump, first-wall fatigue, thermal energy storage (value: ~$50–100M capital avoided, ~$5–10M/yr O&M avoided)**
 
-1. **No divertor and divertor replacement** — Tokamaks require scheduled divertor module replacement every 2–5 FPY at $10–40M per cycle due to 1–2.5 MW/m² heat flux. The levitated dipole's first wall loading is 0.198 MW/m² (5–12× lower), extending component life and eliminating the high-heat-flux PFC supply chain. **Quantified advantage**: ~$5–10M/yr avoided O&M (estimated from ITER divertor replacement assumptions).
+Levitated dipoles carry no toroidal plasma current; MHD disruptions are mechanistically impossible. Conventional tokamaks require disruption mitigation systems (shattered pellet injection, massive gas injection), thermal dump resistors, and first-wall designed to survive 10²–10³ disruption cycles. ITER's disruption mitigation system alone is >$100M. The levitated dipole eliminates this entire cost category. Additionally, tokamaks require thermal energy storage (flywheels or capacitor banks) to decouple grid transients from disruptions; levitated dipoles do not. Estimated capital cost avoidance: $50–100M. O&M avoidance: tokamak first walls require periodic replacement driven by disruption-induced cracking and erosion; levitated dipole first walls see thermal fatigue but no disruption-driven damage. Estimated O&M savings: $5–10M/yr over 30-year lifetime.
 
-2. **No central solenoid or PF coil set** — Tokamaks require 16–18 external magnet coils (TF + PF + CS). The levitated dipole has one internal coil + one top support coil, reducing magnet count by ~8×. However, this advantage is offset by the recurring replacement cost (see disadvantages below).
+**2. Low first-wall heat flux → eliminates high-heat-flux divertor modules (value: ~$20–40M/yr avoided replacement)**
 
-3. **No disruption mitigation system** — Inductive tokamaks require disruption detection, massive gas injection, runaway electron suppression, and thermal energy storage for grid decoupling during disruptions. The levitated dipole carries no toroidal plasma current and cannot disrupt. **Quantified advantage**: Disruption mitigation hardware ~$20–50M capital avoided; thermal dump resistors + energy storage ~$30–80M avoided (ITER-class systems).
+Maximum first wall loading 0.198 MW/m² vs. 1–2.5 MW/m² for tokamak divertors. The levitated dipole uses an outer midplane limiter (Inconel 718 + W coating) instead of a dedicated divertor. Tokamak divertors require tungsten monoblock tiles replaced every 1–3 years at ~$20–40M per replacement cycle (ITER divertor cassette replacement cost). The levitated dipole's first wall is not subjected to divertor-grade heat flux and likely has 2–5× longer lifetime. This is a genuine recurring O&M advantage — but only if the first wall lifetime exceeds 3 years. The model assumes zero annual first wall replacement cost (testable hypothesis). If first wall requires annual replacement, the advantage disappears.
 
-4. **No current drive system** — Tokamaks require steady-state current drive (ECRH, LHCD, or NBI). The dipole's magnetic field is entirely coil-generated. Heating requirement (44.5 MW plasma, 63.5 MW wall-plug for Reactor A) is ~30% lower than equivalent-Q tokamak auxiliary power. **Quantified advantage**: ~$50–100M capital avoided (NBI or gyrotron systems).
+**3. No central stack shielding challenge → uses simple spherical blanket geometry (qualitative advantage, hard to quantify)**
 
-### Added Cost Items (Disadvantages)
+Tokamaks (especially spherical tokamaks) face severe center stack shielding constraints. ST-E1's center stack is <32 cm thick; neutron attenuation requires WC cermet with limited TRL. The levitated dipole's core magnet is shielded by a 475 mm W-B₄C-W layered shield achieving 4-decade fast neutron attenuation — geometrically straightforward. The shield is located in the outboard region of the magnet, not in a high-flux region like a tokamak center stack. This is an engineering simplification, not a direct cost saving, but it reduces TRL risk for the neutron shield subsystem.
 
-1. **Annual sacrificial coil replacement** — **$52M/yr recurring OPEX** (model baseline). No tokamak, stellarator, or any other fusion concept has an analogous internal component replacement cycle. Over 40-year plant life, this is **$2.1B** in present-value terms — roughly 60% of overnight capital. This is the concept's Achilles heel. Only valid if (a) tape prices fall to <$20/kA-m and (b) remote handling under activation is cheaper than assumed.
+**4. Natural lithium breeding → eliminates Li-6 enrichment cost (value: ~$10–30M/plant avoided)**
 
-2. **Remote handling system for activated HTS coil** — Novel geometry: extracting a 2,560-tonne levitated magnet through the blanket/shield annulus after neutron activation. Model assumes **$150M capital** (3× standard D-T remote handling). No engineering design exists; this is speculative.
+TBR = 1.1 achieved with natural (unenriched) Li₂O, exploiting tungsten neutron multiplication. Conventional tokamaks using FLiBe or liquid lithium blankets typically require Li-6 enrichment to 30–60% to achieve TBR > 1. Li-6 enrichment capacity is limited globally (~10 kg/yr civilian, primarily Russia and China) and expensive ($100–500/g depending on enrichment level). A tokamak requiring 500 kg of Li-6 at 50% enrichment faces $50–250M in isotope separation costs. The levitated dipole avoids this entirely. This is a structural advantage unique to the tungsten-shielded geometry.
 
-3. **Neon slush cryogenic infrastructure** — Neon is not a commodity cryogen (unlike helium or nitrogen). Global production is limited (~200,000 m³/yr). Fleet-scale deployment may strain supply. The paper proposes hydrogen as fallback, requiring 5× larger reservoir volume. **Quantified disadvantage**: Neon cryo plant $150M vs. $100M for helium-based HTS tokamak cryo.
+---
 
-4. **Lower net power at fixed fusion power** — Reactor A achieves 208 MWe net from 667 MW fusion (31% net-to-fusion ratio). Comparable HTS tokamaks (e.g., SPARC at 140 MWe from 560 MW fusion = 25%) are in the same range, but the levitated dipole's 30% recirculating fraction is high due to ICRH inefficiency and deep cryogenics (24.6 K vs. 20 K for REBCO). Lower net power raises specific capital ($/kWe) and LCOE.
+### Disadvantages vs. conventional D-T tokamak baseline
 
-### Structural Differences (Neutral or Context-Dependent)
+**1. Annual internal magnet replacement → recurring $50M/yr OPEX with no analogue in any fusion concept**
 
-1. **Concrete outer vacuum vessel** — Eliminates precision stainless steel VV fabrication (tokamak cost driver). The 38,700-tonne reinforced concrete outer vessel is **$19M** (model, at $500/t) vs. ~$80–150M for an equivalent-scale tokamak steel VV. **Net advantage**: ~$60–130M capital savings. However, concrete is not a neutron-tight boundary — an inner stainless vessel is still required ($30M assumed).
+Tokamak external coils are a one-time capital cost. The levitated dipole's internal coil is both capital and running cost. The sacrificial outer section (~20% of core magnet tape) accumulates neutron fluence to 1 MW-year/m² over ~1 year and must be replaced. At current tape prices, this is ~$50M/yr (tape + remote handling). Even if tape prices decline to $25/kA-m, the annual cost is ~$25–30M/yr. Over 30 years, cumulative replacement cost is $750M–1,500M — comparable to the initial overnight capital ($2.66B). No tokamak has an analogous recurring magnet cost. This is the single largest LCOE uncertainty.
 
-2. **Natural lithium breeding (no Li-6 enrichment)** — Achieves TBR = 1.1 using tungsten neutron multiplication with natural Li₂O. Tokamaks using FLiBe or Li-enriched blankets require Li-6 enrichment (limited global capacity, $1,000–5,000/kg). **Quantified advantage**: ~$50–200M avoided Li-6 enrichment cost (depends on blanket Li-6 fraction). The Li₂O blanket mass is large (3,490 tonnes) but the material is commodity-grade.
+**2. Low net power density → high specific capital ($/kWe) even after economy-of-scale adjustment**
 
-3. **90% duty cycle (cryogenic-limited, not plasma-limited)** — The 45-minute float time between docking cycles yields 90.1% duty cycle. This is better than inductive tokamaks (typically 30–50% due to flux-swing recharge) but worse than steady-state tokamaks (95–98% claimed by STEP, ST-E1). The plasma itself is steady-state capable; only the cryogenic system pulses. **Compared to inductive tokamaks**: advantage. **Compared to steady-state tokamaks**: neutral to slight disadvantage.
+Reactor A: 667 MW fusion → 172 MWe net. Recirculating fraction ~34%. Specific capital $18,938/kWe (native), $7,658/kWe (scaled to 1000 MWe, α=0.6). Compare: ARC (CFS) ~$5,000–6,000/kWe; STEP ~$7,000–9,000/kWe (both scaled estimates). The levitated dipole's net power is squeezed by modest thermal efficiency (35% vs. 40–47% for sCO₂) and significant recirculating loads (ICRH 63.5 MW, cryo 1.3 MW, tritium 8 MW, other 14 MW). The capital cost is dominated by physics-sized components (magnet, blanket, shield) that do not scale down with net power. Result: higher $/kWe than compact tokamaks.
+
+**3. Partial blanket coverage (75%) → reduced TBR margin and higher tritium inventory risk**
+
+The core magnet assembly intercepts ~25% of fusion neutrons. TBR = 1.1 is achieved with natural Li₂O + tungsten multiplication, but the 10% margin is not generous. Tokamaks with full-coverage inboard/outboard blankets can achieve TBR = 1.2–1.4, providing greater margin for operational losses (coolant inventory, permeation, decay). A 10% TBR margin allows for ~5.5%/yr tritium decay but little tolerance for extraction inefficiencies or blanket module failures. If any blanket module is offline, TBR drops below 1.0 and the plant becomes tritium-deficient.
+
+**4. Modest net electrical output (172–208 MWe) → economy-of-scale penalty for BOP**
+
+Reactor A delivers 208 MWe (paper's stated value) or 172 MWe (model output, due to η_th standardization to 35%). Reactor B delivers 74.5 MWe. These are well below the 500–1,000 MWe typical of cost-competitive fusion concepts. Balance-of-plant (turbine, generator, cooling towers, electrical plant) has fixed cost components that scale poorly below 300–500 MWe. The model accounts for this via standard power-law scaling (CAS23–26), but the specific BOP cost per kWe is ~2–3× higher than a 1 GWe tokamak. The paper's optimization chose 208 MWe as the cost-minimized point given physics constraints — larger plants require larger magnets and higher capital, smaller plants face worse BOP scaling. This is a structural disadvantage of the 667 MW fusion power operating point.
 
 ---
 
 ## 5. Cross-Concept Positioning
 
 **Nearest neighbors**:
+- **Technology comparator**: Spherical tokamak HTS (21-spherical-tokamak-hts). Shared REBCO supply chain, common HTS magnet challenges, parallel commercial timeline (~2030s for demonstration). Both concepts claim compact geometry and disruption-free/disruption-tolerant operation. Both face unquantified coil costs.
+- **Physics comparator**: Field-reversed configuration (08-frc-w-direct-conversion, Helion). High-β compact MFE with no wall-connected field lines. Both depend on physics uncertainty as the dominant cost lever — if confinement doesn't scale, LCOE is undefined.
 
-- **Spherical Tokamak HTS (21-spherical-tokamak-hts, Tokamak Energy)**: Shares REBCO tape supply chain, D-T fuel cycle, comparable net power (ST-E1 at 172 MWe vs. Reactor A at 208 MWe), and similar LCOE uncertainty (no published cost data from either company). Both are NOAK designs targeting 2030s deployment. **Key divergence**: ST has external coils with divertor replacement; levitated dipole has internal coil with annual replacement. Which operating cost structure wins is unresolved.
+**Position in the landscape**:
 
-- **Field-Reversed Configuration (08-frc-w-direct-conversion, Helion)**: Physics comparator — both are high-β compact MFE with no wall-connected field lines and binary physics risk (if confinement doesn't scale, the plant is nonviable). **Key divergence**: FRC is pulsed (2 Hz) with direct energy conversion (no thermal cycle); levitated dipole is quasi-steady with conventional thermal conversion. FRC's LCOE hinges on magnetic energy recovery efficiency (η_recovery > 85–90%); levitated dipole's hinges on confinement scaling and coil replacement cost.
+The levitated dipole occupies a unique structural position: **highest engineering modularity, highest physics uncertainty**. It is the only fusion concept where the primary confinement magnet is both internal to the plasma and periodically replaceable. This is simultaneously its greatest advantage (if replacement is cheap, it eliminates tokamak center stack challenges and disruption physics) and its greatest risk (if replacement is expensive, it introduces a recurring cost burden with no precedent).
 
-**Where it sits in the landscape**:
+The concept shares the HTS tokamak's REBCO tape dependency but inverts the cost structure: tokamaks concentrate REBCO in external coils (one-time capex); levitated dipoles concentrate it in a replaceable internal coil (capex + recurring opex). This makes the levitated dipole more sensitive to REBCO tape price trajectory than any other concept.
 
-The levitated dipole occupies a unique position: **MFE simplicity** (single internal coil, no current drive, no disruptions) meets **stellarator-like physics uncertainty** (no empirical confinement database) with **IFE-like recurring consumable costs** (annual coil replacement analogous to IFE target factory throughput). It is **not** a tokamak variant — the physics basis, cost structure, and risk profile are fundamentally different.
+Confinement physics is less mature than FRC (which has at least demonstrated high-β plasmas in multiple experiments at fusion-relevant temperatures) and far less mature than tokamaks (which have H-98 scaling validated across 50+ devices). The levitated dipole's physics basis rests on two experiments (LDX, RT-1) at low temperature and power. The concept cannot credibly claim "conservative physics assumptions" — it is explicitly high-risk, high-reward.
 
-If confinement scaling validates and tape prices decline, this is a **lower-capital-cost, higher-operating-cost** concept relative to tokamaks. If confinement fails or tape prices stall, it is uneconomic. There is no middle ground.
+**Concepts with similar LCOE structure**:
+- **Spherical tokamak HTS** (if ST disruption rate is high): ST-E1 faces disruption-driven first-wall replacement; levitated dipole avoids this but pays annual coil replacement instead. If ST disruption O&M exceeds $50M/yr, the levitated dipole's O&M structure is competitive. If ST achieves disruption-free operation (as claimed), the levitated dipole's recurring coil cost becomes a pure disadvantage.
+- **Laser IFE** (pulsed replacement model): Laser ICF replaces targets at 10–20 Hz; levitated dipole replaces the core magnet at ~1/year. Both concepts normalize recurring component replacement as an operational mode rather than a failure mode. The levitated dipole's annual cycle is far slower but far more capital-intensive per replacement event.
+
+**Fundamental differentiator**: The levitated dipole is the only MFE concept designed around **scheduled internal component replacement as a core operating principle** rather than a maintenance failure. Whether this is brilliant (modularity advantage) or fatal (uncontrollable opex) depends entirely on the unquantified replacement cost.
 
 ---
 
 ## 6. Modeling Confidence
 
-**Rating: Low**
+**Rating**: Low
 
-**Rationale**:
+**Data-anchored parameters** (high confidence, directly from Simpson et al. 2026):
+- Fusion power (667 MW)
+- Net electrical output (172–208 MWe, depending on η_th standardization)
+- REBCO tape quantity (5,520 km total)
+- Component masses (Li₂O 3,490 t; W shield 1,760 t; concrete 38,700 t)
+- Duty cycle (90.1%)
+- Auxiliary heating power (44.5 MW plasma, 63.5 MW wall-plug)
+- TBR (1.1)
+- First wall heat flux (0.198 MW/m² max)
 
-- **Data-anchored parameters**: 12 of 27 critical LCOE inputs are directly sourced from Simpson et al. 2026 (fusion power, net power, thermal efficiency, duty cycle, magnet tape quantity, material masses, TBR). These are high-confidence.
+These 8 parameters are quantitatively specified in the published design. They carry low uncertainty.
 
-- **Analogue-estimated parameters**: 10 of 27 are analyst estimates (REBCO tape price, magnet engineering multiplier, blanket unit cost, shield unit cost, concrete cost, remote handling cost, cryo system cost, O&M rate, sacrificial handling cost, thermal cycle). These span ±50% uncertainty bands.
+**Speculative or analogue-derived parameters** (medium-to-high uncertainty):
+- REBCO tape price (assumed $75/kA-m; actual range $50–150/kA-m depending on learning curve)
+- Magnet engineering multiplier (tape cost → total magnet cost; assumed 5×, range 3–10×)
+- Li₂O blanket unit cost (assumed $100/kg; range $50–300/kg depending on ceramic manufacturing scale-up)
+- W shield unit cost (assumed $150/kg; range $100–200/kg depending on high-temperature tungsten fabrication)
+- Thermal efficiency (standardized to 35%; paper claims 40% but cycle unspecified; range 33–47%)
+- Annual sacrificial coil handling cost (assumed $20M/yr; range $5–100M/yr — completely unanchored)
+- O&M fixed rate (assumed $60/MWe-yr by analogy; no published estimate)
+- Remote handling system capital (assumed $150M by 3× multiplier on 1costingfe tokamak RH; range $50–300M)
 
-- **Speculative parameters**: 5 of 27 are genuinely unknown (Q_sci, ICRH efficiency in dipole geometry, sacrificial coil replacement cycle cost, first wall lifetime, plasma edge conditions). These are not reducible by better analogues — only experimental data can constrain them.
+These 8 parameters dominate the LCOE uncertainty. Five of them (tape price, magnet multiplier, blanket cost, handling cost, thermal efficiency) appear in the top-5 sensitivity list.
 
-**Dominant source of LCOE uncertainty**: The **annual sacrificial coil replacement cost** ($52M/yr baseline, range $20–100M/yr) interacts multiplicatively with **REBCO tape price** ($25–150/kA-m range) and **Q_sci** (5–30 range). Combined, these three parameters span a factor-of-3.5 LCOE range (14.7 to 51.4 ¢/kWh in sensitivity runs). Until OpenStar publishes coil replacement engineering and Tahi validates confinement, the model is a scenario explorer, not a predictive tool.
+**Binary threshold parameters**:
+- Q_sci = 15 (confinement scaling): Either validated by Tahi or nonviable. No intermediate outcome at current design margins.
+- ICRH coupling: Either achieves 70% or falls back to ECRH at 50–55%. Continuous penalty, not binary, but only two discrete scenarios are credible.
 
-The model is **structurally sound** (all major cost accounts populated, power balance closed, CAS breakdown complete) but **parametrically weak** on the two most LCOE-sensitive items. This is a data availability problem, not a modeling methodology problem.
+**Dominant source of LCOE uncertainty**: The unquantified annual sacrificial coil replacement cost. This parameter alone spans a factor of ~2 in LCOE (19–45 cents/kWh across scenarios). It has no analogue in any other fusion concept, no published company estimate, and no experimental basis. Until OpenStar publishes its cost model or demonstrates the replacement cycle on Tahi with measured costs, the LCOE range is fundamentally unconstrained.
+
+**Secondary source of LCOE uncertainty**: Confinement scaling validation. This is not a cost uncertainty — it is a viability threshold. If Tahi validates Bohm-like scaling, the baseline LCOE (30 cents/kWh) is credible. If Tahi demonstrates sub-Bohm, the concept requires redesign at higher capital cost or is nonviable. If Tahi demonstrates better-than-Bohm (gyro-Bohm-like), LCOE drops to 25–27 cents/kWh.
+
+**Modeling approach limitations**: The model is entirely analogue-based for capital costs. No reference fusion concept shares the levitated dipole's architecture, so 1costingfe-style rescaling from a baseline tokamak is inappropriate. The model builds from component masses × unit costs + engineering multipliers. This works for transparent cost items (concrete, tungsten, Li₂O) but accumulates uncertainty for manufactured assemblies (magnet, remote handling, blanket modules). The model has no anchor point to OpenStar's internal cost estimate because that estimate is withheld as "preliminary."
 
 ---
 
 ## 7. What Would Change My Mind
 
-1. **Tahi experimental results demonstrating n·τ_e > 2×10¹⁹ s·m⁻³ at 1 keV** (even half the Bohm-like target) would validate the confinement scaling pathway and shift my confidence from Low to Medium. If Tahi achieves this, LCOE uncertainty collapses from factor-of-3 to factor-of-1.5, and the concept moves into the "probably viable but expensive" tier.
+**1. Publication of OpenStar's sacrificial coil replacement cost breakdown**
 
-2. **Published engineering study of the sacrificial coil replacement cycle with Bill of Materials and labor hours** showing total annual cost < $25M/yr would retire the largest OPEX uncertainty. If OpenStar can demonstrate this (e.g., via automated remote handling with <1-week turnaround), the concept's operating cost advantage over tokamaks becomes credible and LCOE drops below 20 ¢/kWh in optimistic scenarios.
+If OpenStar publishes a detailed cost model showing annual coil replacement (tape + handling + qualification + spares) at <$30M/yr, the concept becomes genuinely competitive with HTS tokamaks. The recurring opex would be <10% of annual capital charge, validating the claim that replacement "does not make a significant impact." This would shift my LCOE estimate down by 3–5 cents/kWh and elevate confidence from Low to Medium.
 
-3. **REBCO tape commodity pricing below $30/kA-m** driven by multi-vendor production scale-up (e.g., Faraday Factory "Mirai" tape reaching mass production) would cut both capital (C220103) and OPEX (CAS72_coil) by ~30–40%. This is exogenous to OpenStar but critical to the business case. If tape prices stall above $75/kA-m due to manufacturing bottlenecks, I would downgrade the concept to "unlikely to reach commercial LCOE."
+Conversely, if OpenStar's model shows >$60M/yr, the concept's O&M burden becomes structural and LCOE rises above 35 cents/kWh. The modular replacement strategy would be confirmed as economically inferior to tokamak external coils.
+
+**2. Tahi experimental results demonstrating confinement scaling**
+
+If Tahi (20 T, >1 MW heating, ~2028–2030) achieves n·τ_e ≥ 3.23×10¹⁹ s·m⁻³ at Ti ≥ 1 keV, the Bohm-like scaling assumption is validated and the Q = 15 target becomes credible. This retires the binary viability risk and confirms that the LCOE model's physics basis is sound.
+
+If Tahi achieves gyro-Bohm or better scaling, Q = 20–30 becomes plausible, dropping LCOE by 2–4 cents/kWh and making the concept competitive with advanced fission.
+
+If Tahi demonstrates sub-Bohm scaling or no clear scaling law, the concept is nonviable at the 208 MWe design point and requires either (a) larger magnets at higher capital cost or (b) acceptance that commercial-scale levitated dipole fusion is not achievable with D-T fuel.
+
+**3. REBCO tape price trajectory clarification (industry learning curve data)**
+
+If SuperPower, American Superconductor, or Faraday Factory publish production roadmaps showing tape prices declining to $10–25/kA-m by 2030–2035, the levitated dipole's capital cost (C220103) drops from $414M to $150–250M and annual replacement cost drops from $52M to $20–30M. Combined effect: LCOE drops to 20–25 cents/kWh, making the concept competitive.
+
+If tape prices remain at $75–150/kA-m due to supply chain bottlenecks (global production <5,000 km/yr), the levitated dipole's LCOE remains above 30 cents/kWh and the concept is uncompetitive with HTS tokamaks that use similar tape quantities but do not require annual replacement.
 
 ---
 
 ## 8. LCOE Downselect Scoring
 
-### C1: Modularization — **2.8 / 5.0**
+### C1: Modularization (5 sub-scores)
 
 **Sub-factor A: Construction mode per CAS account**
 
-| CAS Account | Construction Mode | Score | Cost Weight | Notes |
-|-------------|-------------------|-------|-------------|-------|
-| CAS21 (Buildings) | Site-assembled | 3.0 | 3.4% | Turbine hall, hot cell — standard industrial construction |
-| C220101 (Blanket) | Factory modules | 5.0 | 16.2% | Li₂O ceramic panels; modular design stated in paper |
-| C220102 (Shield) | Factory modules | 5.0 | 12.3% | W-B₄C-W tiles; factory-sintered components |
-| C220103 (Magnet) | Factory sub-assy | 3.0 | 19.2% | REBCO tape factory-wound into CICC; coil assembled on-site |
-| C220104 (Heating) | Factory modules | 5.0 | 5.9% | ICRH transmitters are modular units (tokamak heritage) |
-| C220105 (Structure) | Stick-built | 1.0 | 1.5% | Reinforced concrete outer vessel — poured on-site |
-| C220106 (Vessel) | Site-assembled | 3.0 | 3.9% | Inner SS vacuum vessel — welded sections |
-| CAS23 (Turbine) | Factory modules | 5.0 | 2.7% | Steam or sCO₂ turbine — modular OEM supply |
-| CAS24 (Electric) | Factory modules | 5.0 | 1.2% | Transformers, switchgear — standard commercial |
-| CAS26 (Cooling) | Site-assembled | 3.0 | 0.5% | Cooling towers — field-erected |
+| CAS Account | Description | Mode | Score | Share | Notes |
+|-------------|-------------|------|-------|-------|-------|
+| C220101 | Li₂O Blanket | Site-assembled from factory sub-assemblies | 3 | 13.1% | Modular ceramic panels, field-installed |
+| C220102 | W-B₄C-W Shield | Site-assembled from factory sub-assemblies | 3 | 9.9% | Tungsten tiles shipped as modules |
+| C220103 | HTS Magnet | Factory-manufactured module | 5 | 15.6% | Core coil + top coil assembled off-site |
+| C220104 | ICRH Heating | Factory-manufactured module | 5 | 4.8% | RF transmitters are standard industrial modules |
+| C220105 | Structure + Outer Vessel | Stick-built / field-erected | 1 | 1.2% | Reinforced concrete poured on-site |
+| C220106 | Inner Vacuum Vessel | Site-assembled from factory sub-assemblies | 3 | 3.0% | Stainless steel panels welded on-site |
+| C220110 | Remote Handling | Factory-manufactured module | 5 | 5.6% | Robotic manipulators are factory-made |
+| CAS23 | Turbine Plant | Factory-manufactured module | 5 | 1.9% | Standard industrial turbine |
+| CAS24 | Electric Plant | Factory-manufactured module | 5 | 0.8% | Generators, transformers, switchgear |
+| CAS25 | Misc Plant | Site-assembled from factory sub-assemblies | 3 | 0.5% | HVAC, controls |
+| CAS26 | Heat Rejection | Site-assembled from factory sub-assemblies | 3 | 0.3% | Cooling towers assembled on-site |
 
-**Cost-weighted average**: (3.0×0.034 + 5.0×0.162 + 5.0×0.123 + 3.0×0.192 + 5.0×0.059 + 1.0×0.015 + 3.0×0.039 + 5.0×0.027 + 5.0×0.012 + 3.0×0.005) / (0.034+0.162+0.123+0.192+0.059+0.015+0.039+0.027+0.012+0.005) = **3.96**
+Cost-weighted average = (0.131×3 + 0.099×3 + 0.156×5 + 0.048×5 + 0.012×1 + 0.030×3 + 0.056×5 + 0.019×5 + 0.008×5 + 0.005×3 + 0.003×3) / 0.567 = **3.81**
+
+Shares sum to 56.7% of overnight capital ($1,511M of $2,662M). Remaining 43.3% is buildings, land, pre-construction, owner's costs — not modularizable.
 
 **Sub-factor B: Module repetition boost**
 
-No repetition boost. The core magnet is a single unit per plant; blanket panels are ~50–100 units (estimating from 3,490 t mass / ~30–70 t per panel), but this is below the 49-unit threshold and spread across multiple panel types (geometry-specific). Top magnet is 1 unit. **Boost = 0.0**
+The core magnet is a single-unit assembly. No subsystem has 10+ identical modules per plant. **Boost = 0.0**
 
-**C1 final score**: 3.96 + 0.0 = **3.96**, rounds to **4.0**
+**C1 = 3.81 + 0.0 = 3.8** (clamped to [1, 5])
 
-**Justification**: High factory content in blanket, shield, and heating systems (69% of weighted CAS accounts scored 5.0). The concrete outer vessel drags the average down but represents only 1.5% of cost-weighted capital. The magnet is site-assembled from factory sub-assemblies (CICC sections) but not a fully modular drop-in unit, hence scored 3.0. Strong modularization relative to stick-built tokamaks but not best-in-class (laser IFE target factories or highly modular FRC/mirror concepts score higher).
+**Justification**: The HTS magnet (largest single item) is factory-manufactured, but the concrete outer vessel (largest mass item) is stick-built. The blanket and shield are modular but require site assembly. The levitated dipole benefits from factory manufacturing of high-value components (magnet, heating, turbine) but cannot avoid on-site construction for the massive concrete structure. The concept's modularity advantage is genuine but not extreme — it scores above stick-built tokamaks (C1 ~ 2.5–3.0) but below fully modular IFE target factories (C1 ~ 4.5).
 
 ---
 
-### C3: Supply Chain Learning — **3.2 / 5.0**
+### C3: Supply Chain Learning
 
 **Sub-factor A: Component learning rates (cost-weighted)**
 
-| Component | CAS Account | Learning Category | Score | Cost Weight |
-|-----------|-------------|-------------------|-------|-------------|
-| REBCO tape | C220103 | Fusion-specific, no market | 2.0 | 19.2% |
-| Li₂O ceramic | C220101 | Specialty, limited supply | 3.0 | 16.2% |
-| Tungsten tiles | C220102 | Specialty, limited supply | 3.0 | 12.3% |
-| Reinforced concrete | C220105 | Commodity | 5.0 | 1.5% |
-| Stainless steel | C220106 | Commodity | 5.0 | 3.9% |
-| ICRH systems | C220104 | Fusion-specific, small market | 2.0 | 5.9% |
-| Turbine/BOP | CAS23/24 | Industrial, growing market | 4.0 | 3.9% |
+| Component | CAS | Share | Learning Category | Score |
+|-----------|-----|-------|-------------------|-------|
+| REBCO tape | C220103 | 15.6% | Specialty component, growing production | 4 |
+| Li₂O blanket | C220101 | 13.1% | Fusion-specific, no current market | 2 |
+| W shield | C220102 | 9.9% | Specialty component, limited supply chain | 3 |
+| Concrete | C220105 | 1.2% | Commodity, established manufacturing | 5 |
+| SS vessel | C220106 | 3.0% | Commodity component | 5 |
+| Remote handling | C220110 | 5.6% | Industrial component, growing robotics market | 4 |
+| ICRH system | C220104 | 4.8% | Industrial component (RF transmitters mature) | 4 |
+| Turbine | CAS23 | 1.9% | Commodity, established manufacturing | 5 |
+| Electrical | CAS24 | 0.8% | Commodity | 5 |
 
-**Cost-weighted average**: (2.0×0.192 + 3.0×0.162 + 3.0×0.123 + 5.0×0.015 + 5.0×0.039 + 2.0×0.059 + 4.0×0.039) / (0.192+0.162+0.123+0.015+0.039+0.059+0.039) = **2.82**
+Weighted average = (0.156×4 + 0.131×2 + 0.099×3 + 0.012×5 + 0.030×5 + 0.056×4 + 0.048×4 + 0.019×5 + 0.008×5) / 0.567 = **3.37**
 
 **Sub-factor B: Supply chain bottleneck count**
 
-Start at 5.0, apply penalties:
+- **Hard constraint**: REBCO tape production capacity currently ~1,000–2,000 km/yr globally; Reactor A requires 5,520 km initial + 864 km/yr replacement. A single plant consumes 2–5 years of global production. Fleet scaling blocked until production reaches >10,000 km/yr. **−1.0**
+- **Scaling constraint**: Li₂O ceramic blanket module fabrication at nuclear qualification standards does not exist at multi-tonne scale. Must scale from ITER TBM (kg-scale) to 3,490 t. **−0.5**
+- **Scaling constraint**: Tungsten tile fabrication above recrystallization temperature (1,950 K) for 1,760 t is not industrialized. **−0.5**
+- **Sole-source dependency**: Neon supply (cryogen) is concentrated among ~3–5 industrial gas suppliers globally. Fleet scaling creates procurement risk (paper acknowledges hydrogen as fallback). **−0.25**
 
-- **REBCO tape production scaling**: Current global capacity ~1,000–2,000 km/yr; Reactor A requires 4,320 km initial + 864 km/yr ongoing. Scaling constraint (must scale 10×+): **-0.5**
-- **Tungsten supply**: 1,760 t per plant; global production ~85,000 t/yr. Sufficient for <50 plants without market distortion, but high-temp tile fabrication (>1950 K recrystallization) is not industrialized. Scaling constraint: **-0.5**
-- **Neon supply**: Acknowledged in paper as procurement risk; byproduct of air separation with limited production. Scaling constraint: **-0.5**
-- **Li-6 enrichment**: Paper uses natural lithium (TBR = 1.1 with W multiplication), so no Li-6 bottleneck. **No penalty**.
-- **Tritium startup**: Standard D-T constraint (~1 kg initial inventory). Not unique to this concept. **No additional penalty** (covered in fuel_fraction scoring).
-
-**Sub-factor B score**: 5.0 - 0.5 - 0.5 - 0.5 = **3.5**
+**B = 5.0 − 1.0 − 0.5 − 0.5 − 0.25 = 2.75**
 
 **Sub-factor C: External demand pull**
 
-| Component | External Market Size | Cost Fraction |
-|-----------|---------------------|---------------|
-| Reinforced concrete | >$100B/yr (construction) | 1.5% |
-| Stainless steel | >$100B/yr (industrial) | 3.9% |
-| REBCO tape | ~$50M/yr (MRI, fusion R&D) | 19.2% |
-| Li₂O | ~$500M/yr (ceramics, batteries) | 16.2% |
-| Tungsten | ~$5B/yr (carbide tools, defense) | 12.3% |
-| ICRH/RF | <$100M/yr (fusion-specific) | 5.9% |
-| Turbines | >$50B/yr (power generation) | 3.9% |
+| Component | External market | Annual market size | Included in C? |
+|-----------|----------------|-------------------|----------------|
+| REBCO tape | MRI, NMR, particle accelerators, HTS cables | ~$500M–1B/yr (growing) | Yes |
+| Concrete | Construction | >$100B/yr | Yes |
+| Stainless steel | Industrial | >$100B/yr | Yes |
+| Tungsten | Electronics, aerospace, tooling | ~$5B/yr | Yes |
+| Turbines | Power generation | >$20B/yr | Yes |
+| Electrical equipment | Grid infrastructure | >$50B/yr | Yes |
+| ICRH transmitters | Industrial RF heating | >$1B/yr | Yes |
 
-**Components with >$1B/yr external market**: Concrete (1.5%) + steel (3.9%) + tungsten (12.3%) + turbines (3.9%) = **21.6%**
+Fraction of capital in components with >$1B/yr external market:
+- REBCO tape: 15.6% (market ~$500M–1B, borderline)
+- Concrete: 1.2%
+- SS vessel: 3.0%
+- Turbine: 1.9%
+- Electrical: 0.8%
+- ICRH: 4.8%
+- Sum ≈ 27.3% (if REBCO included); ~12% (if REBCO excluded due to market <$1B)
 
-**Sub-factor C score**: 21.6% → **3.0** (20–40% bracket)
+Conservative: **C = 2** (10–20% range)
+Optimistic: **C = 3** (20–40% range if REBCO market growth to $1B+ is credited)
 
-**C3 final score**: (2.82 + 3.5 + 3.0) / 3 = **3.11**, rounds to **3.1**
+Using conservative: **C = 2**
 
-**Justification**: REBCO tape dominates capital cost (19%) but has minimal external demand (current market <$100M/yr, mostly R&D); this is the critical supply chain dependency. Tungsten and Li₂O have existing markets but require specialty processing (high-temp sintering, nuclear-grade ceramic). The concept benefits from large external markets for concrete, steel, and turbines, but these are low-cost-fraction items. Overall learning curve is unfavorable until fusion deployment creates REBCO commodity demand.
+**C3 = (3.37 + 2.75 + 2.0) / 3 = 2.7**
+
+**Justification**: The REBCO tape supply chain is the dominant bottleneck. Current global production is insufficient for even a single Reactor A deployment without multi-year lead time. Li₂O and tungsten tile fabrication must scale by 100–1,000× from current fusion-specific production. The concept benefits from external demand for REBCO (MRI, accelerators) and tungsten (electronics), but the fusion-specific supply chain (blanket, high-temp W tiles) has no external pull. Score reflects high supply chain risk, partially offset by commodity components (concrete, steel, turbine).
 
 ---
 
-### C4: Plant Complexity — **3.5 / 5.0**
+### C4: Plant Complexity
 
 **Sub-factor A: Operational coupling density**
 
-**Score: 3.0 / 5.0** (Moderate coupling; several failure cascade paths)
+The levitated dipole has **moderate operational coupling**:
 
-**Rationale**: The levitated dipole has fewer subsystems than a tokamak (no PF coils, no CS, no current drive, no disruption mitigation) but tighter coupling between the few critical systems:
+**Decoupled subsystems**:
+- Core magnet can be docked/undocked without plasma shutdown (by design). Cryogenic failure does not cascade to other systems — the magnet simply warms up and undocks.
+- ICRH heating system is independent of blanket, shield, and vacuum vessel. RF transmitter failure does not require plant shutdown (plasma can be maintained on reduced heating or fallback ECRH).
+- Turbine island is thermally decoupled from plasma by intermediate heat exchanger. Turbine trip does not damage the plasma-facing components.
+- Tritium processing is a separate loop. Tritium extraction failure does not immediately shut down fusion reactions (tritium inventory buffer provides days-to-weeks grace period).
 
-- **Cryogenic system failure** → core magnet quench → plasma loss → immediate plant shutdown. No backup; 45-minute float time provides minimal buffer. Single-point failure.
-- **Flux pump failure** → gradual coil current decay (time constant ~hours to days depending on resistive losses) → plasma performance degradation → eventual shutdown. Some warning time; not immediate cascade.
-- **ICRH failure** → plasma cannot sustain itself (Q_sci = 15 requires continuous heating) → shutdown within confinement time (~3.5 s). Fast cascade.
-- **Blanket cooling failure** → tritium breeding disruption + first wall overheating → controlled shutdown required within ~minutes. Fast cascade.
-- **Tritium processing failure** → gradual inventory buildup in coolant loops → regulatory shutdown trigger (hours to days). Slow cascade.
+**Moderately coupled subsystems**:
+- Blanket cooling system failure cascades to plasma shutdown (thermal runaway risk in Li₂O ceramic if cooling lost).
+- Vacuum vessel breach cascades to immediate plasma loss and tritium release risk.
+- Cryoplant failure requires core magnet docking within 45 minutes (float time limit). If docking system fails during cryoplant failure, the magnet quenches.
 
-**Compared to tokamaks**: Levitated dipole has **fewer** failure modes (no disruption cascades, no vertical displacement events, no runaway electrons) but the modes that exist are **more tightly coupled** to immediate plant shutdown due to inherent plasma sensitivity (no wall stabilization, no feedback control of plasma current). Middle-ground score appropriate.
+**Highly coupled subsystems**:
+- Remote handling system is single-point failure for annual coil replacement. If RH system is unavailable, the plant cannot replace the sacrificial coil and must shut down after ~12 months.
 
-**Sub-factor B: Subsystem count (>1% of total capital)**
+**Comparison to tokamaks**: Tokamaks have higher coupling density. PF coil failure cascades to plasma disruption → first wall damage → forced outage. Divertor failure (cracked tiles) cascades to impurity influx → plasma contamination → shutdown. The levitated dipole's external blanket + internal replaceable coil reduces maintenance coupling.
 
-Count from CAS breakdown:
+**A = 4** (Mostly decoupled; few critical interdependencies)
 
-1. C220101 Blanket (16.2%)
-2. C220102 Shield (12.3%)
-3. C220103 Magnet (19.2%)
-4. C220104 Heating (5.9%)
-5. C220105 Structure (1.5%)
-6. C220106 Vessel (3.9%)
-7. C220110 Remote Handling (7.0%)
-8. C220111 Installation (9.5%)
-9. C220200 Coolant (2.4%)
-10. C220300 Aux Cooling + Cryo (7.0%)
-11. C220500 Fuel Handling (1.9%)
-12. C220700 I&C (1.4%)
-13. CAS23 Turbine (2.7%)
-14. CAS27 Tritium Startup (1.4%)
+**Sub-factor B: Subsystem count (CAS22 sub-accounts >1% of total capital)**
 
-**Count: 14 subsystems >1%**
+| CAS22 sub-account | Capital share |
+|-------------------|---------------|
+| C220101 Blanket | 13.1% |
+| C220102 Shield | 9.9% |
+| C220103 Magnet | 15.6% |
+| C220104 Heating | 4.8% |
+| C220105 Structure | 1.2% |
+| C220106 Vacuum vessel | 3.0% |
+| C220110 Remote handling | 5.6% |
+| C220200 Coolant systems | 1.7% |
+| C220300 Cryoplant | 5.6% |
+| C220500 Fuel handling | 1.3% |
 
-**Sub-factor B score**: **2.0 / 5.0** (11–14 range)
+**Count: 10 significant subsystems** → **B = 3** (8–10 subsystems per scoring scale)
 
-**C4 final score**: (3.0 + 2.0) / 2 = **2.5**
+**C4 = (4 + 3) / 2 = 3.5**
 
-**Magic wand test**: If physics were proven (Q_sci = 15 validated), the plant would still be moderately complex due to: (1) annual coil replacement operations under activation, (2) cryogenic system cycling every 45 minutes, (3) tritium breeding/extraction closed loop, (4) remote handling choreography. However, it would be **simpler than a tokamak** (no divertor replacement, no disruption recovery, no complex PF coil control). Not a "hard to build and operate" plant; more like a conventional nuclear plant with one novel subsystem (levitated magnet). Score reflects moderate complexity, not extreme.
-
-**Revised C4**: Given the favorable magic-wand test result (plant is not intrinsically complex if physics works), I adjust the operational coupling score upward from 3.0 to **4.0** (mostly decoupled; few critical interdependencies — the tight couplings are to the *plasma*, not to *other subsystems*). Final C4 = (4.0 + 2.0) / 2 = **3.0**.
-
-**Final C4 score after re-evaluation**: **3.5 / 5.0** (splitting the difference between subsystem count penalty and operational simplicity benefit; the annual coil replacement is a complexity driver that offsets the "no divertor" simplification)
-
-**Justification**: Fewer subsystems than a tokamak but higher operational tempo (annual major component replacement vs. tokamak's 2–5 year divertor cycle). Operational coupling is moderate — cryogenic and heating failures cascade quickly, but the absence of plasma current removes the most catastrophic tokamak failure modes (disruptions, VDEs). Overall complexity is mid-tier for fusion concepts.
+**Justification**: The levitated dipole is simpler than a tokamak (no PF coils, no central solenoid, no current drive, no disruption mitigation) but more complex than a mirror (which has even fewer subsystems). The annual coil replacement system adds a unique operational mode (dock/undock/replace) that increases maintenance choreography but does not tightly couple subsystems. Blanket and shield are passive neutron handlers, not active feedback-controlled systems. ICRH is thermally decoupled from plasma equilibrium (unlike NBI, which affects particle balance). The concept is moderately complex.
 
 ---
 
-### C5: Customization Needs — **2.1 / 5.0**
+### C5: Customization Needs
 
 **Sub-factor A: Thermal rejection**
 
-**Score: 2.0 / 4.0** (Large cooling towers required — standard thermal cycle)
+The levitated dipole uses a **conventional thermal cycle** (steam Rankine or sCO₂ Brayton, unspecified). 740 MW thermal power → 259 MWe gross electric → ~520 MW waste heat rejection. Requires **large cooling towers** (standard for 200+ MWe thermal plants).
 
-**Rationale**: Reactor A outputs 740 MW thermal; net electric is 208 MWe, implying ~532 MW waste heat rejection (740 - 208 = 532 MW). This requires large wet or dry cooling towers (or coastal siting for seawater cooling). No direct energy conversion; fully thermal cycle. Same as fission or fossil plants. Standard thermal rejection infrastructure.
+**A = 2** (Large cooling towers required)
 
 **Sub-factor B: Fuel safety profile**
 
-**Score: 1.0 / 4.0** (D-T — full tritium handling and breeding infrastructure)
+D-T fuel with full tritium breeding and handling infrastructure. TBR = 1.1; tritium inventory ~1 kg startup. Requires permeation barriers, tritium extraction from Li₂O, fuel reprocessing, and activation waste handling.
 
-**Rationale**: D-T fuel with TBR = 1.1 requires complete tritium cycle: breeding blanket, tritium extraction from Li₂O solid breeder, tritium processing at kg/day scale, tritium accountability system, permeation barriers, ~1 kg startup inventory from external supply (CANDU or ITER), and regulatory framework for tritium release limits. This is the most demanding fuel safety profile in fusion. No customization advantage.
+**B = 1** (D-T: full tritium handling and breeding infrastructure)
 
-**C5 raw score**: (2.0 + 1.0) / 2 = **1.5**
+**C5 = (2 + 1) / 2 = 1.5**, scaled to [1, 5]: **C5 = 1 + (1.5 − 1) × (4/3) = 1.67 → 1.7**
 
-**Scaled to [1, 5]**: C5 = 1 + (1.5 - 1) × (4/3) = 1 + 0.5 × 1.333 = **1.67**, rounds to **1.7**
-
-**Justification**: D-T fuel eliminates any site flexibility advantage. Tritium handling requires heavy-industrial licensing, exclusion zones, and environmental monitoring. The concrete outer vessel slightly eases civil construction (vs. precision steel VV) but does not change the fundamental site requirements (water access for cooling, seismic stability, remote location due to tritium inventory). No material site advantages over D-T tokamaks; scores at the bottom of the range alongside all other D-T thermal-cycle concepts.
-
-**Corrected final score** (re-reading scale: 1-4 raw, then scaled): **2.1 / 5.0**
+**Justification**: The concept has no site-specific advantages. It requires water access for cooling towers (same as any large thermal plant) and full tritium licensing (same as any D-T fusion plant). The concrete outer vessel simplifies construction vs. precision stainless steel tokamak vessels, but this is a capital cost advantage (already counted in C1), not a customization advantage. The levitated dipole is as site-constrained as a conventional D-T tokamak.
 
 ---
 
-### C8: Data Adequacy — **3.5 / 5.0**
+### C8: Data Adequacy
 
 **Sub-factor A: Source diversity & independence**
 
-**Score: 4.0 / 5.0**
+- **Independent public-domain sources**: arXiv 2602.20564 (Simpson et al., peer-reviewed, 2026) provides full reactor design with neutronics, power balance, and mass inventories. arXiv 2508.17691 (Chisholm et al., peer-reviewed, 2026) provides Junior prototype engineering. LDX heritage literature (MIT/Columbia, 2004–2014) published in Nature Physics, Physics of Plasmas, Nuclear Fusion.
+- **Company sources with peer review**: Both OpenStar papers are peer-reviewed and published on arXiv. Company website and news coverage (IEEE Spectrum, Bloomberg) provide roadmap and funding milestones.
+- **No independent validation**: No ARIES-style system study, no PROCESS model run, no third-party TEA.
 
-**Rationale**: Multiple independent sources available:
-- Simpson et al. 2026 (arXiv 2602.20564) — peer-reviewed reactor design paper, 49 pages, comprehensive
-- Chisholm et al. 2025 (arXiv 2508.17691) — peer-reviewed Junior prototype engineering paper
-- LDX experimental heritage (Boxer et al. 2010, *Nature Physics*; Davis et al. 2014) — independent academic validation of dipole confinement physics
-- RT-1 experimental program (University of Tokyo, Yoshida et al.) — independent dipole program, different design
-- OpenStar public communications (IEEE Spectrum, Bloomberg, RNZ, Wikipedia) — company narrative cross-checked against independent journalism
-
-**Mix of company and independent sources with public peer review**. Drops one point from perfect score (5.0) because no independent techno-economic analysis exists (no ARIES, PROCESS, or university TEA study of levitated dipole power plants). All reactor design analysis comes from OpenStar authors.
+**A = 4** (Mix of independent and company sources with public peer review)
 
 **Sub-factor B: Reactor design specification**
 
-**Score: 4.0 / 5.0**
+Simpson et al. provides:
+- Full 0D power balance with recirculating loads quantified
+- Neutronics (OpenMC) for blanket and shield, achieving TBR = 1.1
+- Coil FEA with stress analysis and stored energy
+- Component mass breakdown (9 major items)
+- Duty cycle model with cryogenic float time
+- Two optimized design points (208 MWe and 74.5 MWe)
 
-**Rationale**: Simpson et al. provides:
-- Complete 0D power balance (equations 1–23)
-- Two optimized design points (Reactor A and B) with full parameter tables
-- Neutron transport (OpenMC) for blanket and shield
-- Coil stress analysis (FEA)
-- Material mass inventory (Table 5)
-- Duty cycle and maintenance assumptions
-- Alpha particle confinement (ASCOT5 preliminary)
+**Missing**:
+- Balance-of-plant design (thermal cycle unspecified, cooling system conceptual only)
+- Blanket cooling scheme
+- Tritium extraction system design
+- Remote handling system design
 
-**Comprehensive conceptual design with major subsystems specified**. Missing: detailed blanket engineering (module geometry, cooling scheme, tritium extraction system design), balance-of-plant specifications (thermal cycle type, heat exchangers, coolant chemistry), remote handling system design, top magnet engineering (explicitly deferred in the paper). Enough for D1+ LCOE model but gaps prevent detailed engineering. Scores 4.0 (one point deducted for BoP and blanket engineering gaps).
+**B = 4** (Comprehensive conceptual design with major subsystems specified but gaps in integration)
 
-**Sub-factor C: LCOE parameter coverage (blocking gaps)**
+**Sub-factor C: LCOE parameter coverage (blocking gaps from gap_report.md)**
 
-From gap_report.md, count blocking gaps:
-
+Blocking gaps:
 1. Absolute overnight capital cost (proprietary)
 2. Sacrificial coil annual replacement cost (truly-unknown)
-3. Thermal conversion cycle specification (truly-unknown)
+3. Thermal cycle specification (truly-unknown)
 4. Confinement scaling law (truly-unknown)
 
-**4 blocking gaps** → **Score: 3.0 / 5.0** (3–4 range)
+**Count: 4 blocking gaps** → **C = 3** (3–4 blocking gaps per scoring scale)
 
 **Sub-factor D: Commercialization pathway clarity**
 
-**Score: 3.0 / 5.0**
+OpenStar has published a clear four-stage roadmap:
+1. **Junior** (2026): Demonstrated levitation, 2.35 T, <$10M cost
+2. **Tahi** (~2028): 20 T target, >1 MW heating, confinement scaling validation
+3. **Maui** (early 2030s): Demonstration reactor, TBD scale
+4. **Tama Nui** (mid-2030s): Commercial plant, 50–200 MWe
 
-**Rationale**: OpenStar has published a clear 4-stage roadmap:
-1. Junior (2026) — proof of concept, levitation achieved
-2. Tahi (~2028) — 20 T, confinement scaling validation, ICRH testing
-3. Maui (early 2030s) — pilot plant, D-T operation, TBR validation
-4. Tama Nui (mid-2030s) — commercial 50–200 MWe plant
+Funding disclosed: NZD 35M + USD 21M. Headcount ~80. Partnerships with UKAEA, University of Wisconsin, EPFL.
 
-Funding disclosed (~NZD 35M + USD 21M Series A). Headcount ~80 (2026). Tahi design timeline confirmed.
+**Missing**:
+- Tahi design specifications (paper states this will be published separately)
+- Maui scale and timeline
+- Cost targets for Tama Nui
 
-**General pathway described but lacking specifics**. Missing: Tahi detailed design publication, Maui Q_target and scale, Tama Nui business model (utility partnership vs. merchant plant vs. offtake agreements), regulatory pathway for D-T operation in New Zealand (no fusion precedent), manufacturing partnerships for REBCO tape and blanket fabrication. Enough for "pathway exists" but not "detailed commercialization plan." Scores 3.0.
+**D = 4** (Clear pathway with identified steps but some gaps)
 
-**C8 final score**: (4.0 + 4.0 + 3.0 + 3.0) / 4 = **3.5**
+**C8 = (4 + 4 + 3 + 4) / 4 = 3.75 → 3.8**
 
-**Justification**: Data quality is high where it exists (Simpson et al. is the most detailed public reactor paper from any MFE startup), but critical cost parameters are missing (overnight capital, LCOE, sacrificial coil replacement cost) and commercialization details thin out after Tahi. Better than most startups (which publish only press releases and concept sketches) but not as complete as ITER/DEMO-class documentation. Mid-tier score appropriate.
-
----
-
-### Risk Matrix: 7 Functions × 2 Subcategories (14 cells)
-
-#### Function 1: Plasma Performance
-
-**1a. Physics Risk: Confinement Scaling to Reactor-Relevant Triple Product**
-
-| Field | Value |
-|-------|-------|
-| **Plant requirement** | n·τ_e = 3.2×10¹⁹ s·m⁻³ at 1 keV (Bohm-like scaling target); Reactor A requires τ_e = 3.5 s at n_e = 1.95×10²⁰ m⁻³, T_i = 10.9 keV to achieve Q_sci = 15 |
-| **Best demonstrated** | n·τ_e ≈ 1.45×10¹⁵ s·m⁻³ at ~200 eV (LDX, Boxer et al. 2010); τ_e ~ 14.5 ms at n_e ~ 10¹⁷ m⁻³ |
-| **Gap ratio** | 22,000× in triple product; 240× in confinement time (at matched density); temperature extrapolation 200 eV → 10 keV = 50× |
-| **Closure mechanism** | Assume Bohm-like or gyro-Bohm transport scaling (both favorable for dipoles per theory); validate incrementally through Tahi (20 T, ~2028) |
-| **Classification** | **Binary** — if confinement scaling is sub-Bohm, Q_sci < 7 and net power becomes negative; reactor as designed is nonviable |
-| **Evidence tier** | **2.0 / 5.0** — Simulation only (transport simulations in Simpson et al.), no experimental validation at fusion-relevant parameters; LDX data provides one anchor point at low n-T-τ but extrapolation is untested |
-
-**1b. Hardware Risk: Plasma-Facing Components Under Neutron + Particle Flux**
-
-| Field | Value |
-|-------|-------|
-| **Plant requirement** | First wall must survive 0.198 MW/m² peak surface heat flux + 0.78 MW/m³ volumetric neutron heating at outboard midplane for 1.3 FPY (Reactor A, §4.3) |
-| **Best demonstrated** | Inconel 718 + tungsten coating validated in tokamak first walls at <0.5 MW/m² non-neutron heat flux; tungsten monoblock divertors at 10–20 MW/m² tested (ITER, WEST) but not in limiter geometry; 14 MeV neutron irradiation of Inconel to ~10 dpa exists (fission analogue testing) |
-| **Gap ratio** | Surface heat flux: demonstrated in limiter-like conditions (RT-1 used molybdenum limiters, no damage data published). Neutron fluence: ~0.5 dpa/FPY at first wall (Inconel) vs. ~10 dpa demonstrated in fission → **N/A** (demonstrated heat flux regime; neutron fluence is lower than divertor armor) |
-| **Closure mechanism** | Inconel 718 is radiation-resistant austenitic alloy (fission reactor internals heritage); tungsten coating prevents plasma-facing erosion; design heat flux (0.198 MW/m²) is 5–12× lower than tokamak divertor → existing materials adequate; first wall replacement every 1.3 FPY (W tiles) is manageable |
-| **Classification** | **Degrading** — if first wall lifetime is shorter than 1 FPY, replacement frequency rises and O&M costs increase; does not prevent net electricity |
-| **Evidence tier** | **4.0 / 5.0** — Near-regime demonstrated (Inconel + W coating demonstrated at comparable heat flux in tokamak limiters; neutron environment is less severe than divertor, so materials are in "easier" regime than ITER divertor) |
-
-**Function 1 mean**: (2.0 + 4.0) / 2 = **3.0**
+**Justification**: OpenStar's transparency is unusually high for an early-stage private company. The arXiv publications are peer-reviewed and provide reactor-scale engineering data comparable to ARIES studies. The primary data gap is dollar-denominated costs (explicitly withheld as "preliminary"). The commercialization pathway is well-articulated with clear go/no-go milestones (Tahi confinement validation). Score reflects strong physics/engineering documentation but weak cost documentation.
 
 ---
 
-#### Function 2: Driver / Energy Input
+### C7: Technical Risk Evidence Matrix
 
-**2a. Physics Risk: ICRH Coupling Efficiency in Dipole Magnetic Field**
+| Function | Subcategory | Plant Requirement | Best Demonstrated | Gap Ratio | Closure Mechanism | Classification | Tier | Justification |
+|----------|-------------|------------------|------------------|-----------|-------------------|----------------|------|---------------|
+| **F1: Plasma Performance** | Physics | n·τ_e ≥ 3.23×10¹⁹ s·m⁻³ at Ti ≥ 1 keV, achieving Q_sci = 15 | LDX: τ_e ~ 14.5 ms at ne ~ 10¹⁷ m⁻³, Te ~ 200 eV (Boxer 2010) | ~240× in τ_e; ~10⁶× in triple product | Tahi prototype (20 T, >1 MW heating) will validate Bohm-like scaling; if achieved, extrapolation to Reactor A is ~5× | Binary | **2** | LDX is a subscale proof-of-principle, not near-regime. Tahi is the first fusion-relevant dipole experiment. Until Tahi operates, confinement scaling is a simulation-based hypothesis (GENE gyrokinetic modeling cited in paper). |
+| **F1: Plasma Performance** | Hardware | REBCO coil at 23 T peak field, 30 K, under 1 MW-year/m² neutron fluence, maintaining Jc > 150 MA/cm² | Junior: 2.35 T levitated REBCO coil; CFS: 20 T REBCO insert (not levitated, not irradiated) | ~10× field; neutron irradiation regime uncharacterized | CICC cable design + neon slush cooling + sacrificial outer section absorbs fluence; inner section lasts 10+ years per paper | Degrading | **3** | Junior demonstrated levitation + flux pump at 2.35 T. Tahi targets 20 T. 23 T REBCO in neutron environment is subscale — no fusion magnet has operated under combined 20+ T + neutron irradiation. REBCO neutron damage data exists up to ~10¹⁸ n/cm² (fission spectrum), not 14 MeV fusion spectrum. |
+| **F2: Driver / Energy Input** | Physics | 44.5 MW ICRH coupled to dipole plasma at 70% wall-plug efficiency | ICRH in tokamaks: routinely 70% (JET, ITER design). ECRH in dipoles: LDX/RT-1 demonstrated <1 MW | ICRH in dipole: never demonstrated | Paper assumes ICRH couples similarly to tokamaks; if not, fallback to ECRH (30–40% efficiency) is validated on LDX | Degrading | **2** | ICRH physics in dipole field topology is uncharacterized. No RF coupling study exists. ECRH fallback is demonstrated but low efficiency. This is a design assumption, not experimental validation. |
+| **F2: Driver / Energy Input** | Hardware | 44.5 MW ICRH antenna array operating in dipole geometry with neutron shielding | ITER ICRH: 20 MW per antenna, tokamak geometry | Dipole antenna geometry incompatible with tokamak designs | Antenna placement around levitated coil assembly; paper provides no design | Degrading | **2** | ICRH antennas are mature in tokamaks but geometry-specific. Dipole requires new antenna design compatible with annual coil docking. No engineering design exists. |
+| **F3: Instability Control** | Physics | Plasma stable at β_global ~ 4.4% without active feedback | LDX: stable at β ~ 0.1–0.5%; RT-1: stable at β ~ 0.5–1% | ~5–10× beta extrapolation | Levitated dipole is inherently stable (good curvature); MHD stability proven in theory + low-beta experiments | Degrading | **3** | Dipole MHD stability is well-understood theoretically (Kulsrud 1957, Hasegawa 1990). LDX and RT-1 demonstrated stability at low beta. Reactor beta is higher but within stable regime per ideal MHD. No active feedback required (unlike tokamaks). This is a favorable extrapolation but still subscale. |
+| **F3: Instability Control** | Hardware | No active control coils; passive magnetic configuration | LDX: passive levitation with superconducting flux pump | Flux pump scaling from 170 kJ (Junior) to ~21 GJ (Reactor A) | On-board flux pump maintains levitation current; demonstrated at Junior scale | Degrading | **3** | Junior demonstrated flux pump at 170 kJ (world record). Scaling to 21 GJ is ~100,000× in stored energy. Flux pump must operate continuously for 45 min between docking cycles. This is subscale but credible (flux pump physics scales). |
+| **F4: Plasma-Wall Interaction** | Physics | First wall heat flux ≤ 0.198 MW/m² (outboard midplane limiter); no detachment required | LDX/RT-1: low-power (~kW), no fusion-relevant heat flux data | Heat flux regime uncharacterized | Paper uses SOLPS modeling + I-mode tokamak edge data as upper bound | Degrading | **2** | Edge pedestal physics in dipoles is uncharacterized (paper explicitly acknowledges this, §2.1.4). Heat flux estimate is SOLPS + tokamak analogue, not dipole-validated data. Until Tahi operates at >1 MW, this is simulation-based. |
+| **F4: Plasma-Wall Interaction** | Hardware | Inconel 718 + W coating first wall surviving 0.198 MW/m² steady-state for >1 yr under 14 MeV neutron irradiation | ITER tungsten divertor mock-ups: qualified at 5–20 MW/m² transient, fission neutron spectrum | Steady-state at low flux; 14 MeV fusion neutrons | Inconel 718 is aerospace-grade; W coating protects from erosion; low flux reduces thermal cycling damage | Degrading | **3** | First wall heat flux is 5–12× lower than tokamak divertors, reducing thermal fatigue. Inconel 718 is radiation-resistant (used in fission reactors). However, steady-state irradiation at 0.2 MW/m² for 1+ year under 14 MeV neutrons is subscale vs. ITER (which is pulsed). Fusion-neutron damage to Inconel is less characterized than fission-neutron damage. |
+| **F5: Neutron/Particle Handling** | Physics | W-B₄C-W shield achieves 4-decade fast neutron attenuation; TBR = 1.1 with natural Li₂O | OpenMC neutronics simulation; no experimental validation at this geometry | N/A (simulation) | Neutron transport calculated with OpenMC + ENDF/B-VIII.0 libraries | Degrading | **2** | Neutronics is computational. OpenMC is a validated tool (used for ITER), but no experimental validation of this specific shield geometry exists. TBR = 1.1 is narrow margin (10% above breakeven). Neutron streaming through the core magnet region reduces coverage to 75%. This is simulation + design study, not demonstrated analogue. |
+| **F5: Neutron/Particle Handling** | Hardware | 475 mm W-B₄C-W shield operating at 1,950 K (above W recrystallization temperature) for plant lifetime under 14 MeV neutron irradiation | ITER tungsten divertor: 1,000–1,500 K, fission neutron irradiation testing | Temperature regime above recrystallization; fusion neutron spectrum | Tungsten tile fabrication + grain size control to delay creep onset; paper acknowledges creep risk (§4.3) | Degrading | **3** | Tungsten above recrystallization temperature (1,950 K) undergoes grain growth and creep. ITER tungsten operates below recrystallization. The paper acknowledges this challenge and proposes grain size management but provides no experimental validation. Tungsten damage under 14 MeV neutrons at 1,950 K is subscale vs. demonstrated fission analogues (~1,200–1,500 K). |
+| **F6: Fuel Cycle Closure** | Physics | TBR = 1.1 sufficient for tritium self-sufficiency including losses | ITER TBR target: 1.15 (design, not yet operated); fission Li-6 cross-sections well-known | ITER design (not operated) | Natural Li₂O + W neutron multiplication; 10% margin above breakeven | Binary | **2** | TBR calculation is OpenMC simulation, not experimental validation. 10% margin allows for decay (5.5%/yr) but little tolerance for extraction inefficiency or blanket failures. If any blanket module is offline, TBR < 1.0. This is a binary risk: either TBR ≥ 1.0 and the plant is self-sufficient, or TBR < 1.0 and the plant is tritium-deficient. ITER design is the closest analogue; no D-T power plant has operated. |
+| **F6: Fuel Cycle Closure** | Hardware | Li₂O tritium extraction at kg/day scale; tritium inventory management during annual coil docking | ITER tritium plant design (not yet operated); small-scale Li₂O extraction experiments | ITER tritium plant: design only; Li₂O extraction: lab-scale | Li₂O extraction via helium purge; tritium permeation barriers on cooling loops; paper provides no detailed design | Binary | **2** | ITER tritium plant is the closest analogue (same fuel cycle, same ~kg/day throughput). ITER has not yet operated its tritium plant at full scale. Li₂O extraction is less mature than liquid metal (FLiBe, PbLi) extraction. Tritium accounting during annual coil docking is unaddressed (coil passes through blanket region during replacement). This is design + ITER analogue, not demonstrated operation. |
+| **F7: Power Conversion & BOP** | Physics | N/A (thermal cycle) | N/A | N/A | N/A | N/A | N/A | No novel physics in power conversion. |
+| **F7: Power Conversion & BOP** | Hardware | Thermal cycle at η_th = 35–40% (cycle type unspecified); tritium permeation control in heat exchangers | Steam Rankine: commercial at GW scale, 33–37% efficiency. sCO₂ Brayton: pilot scale (10 MWe), 44–48% efficiency. Tritium HX barriers: ITER design (not operated) | sCO₂ at 200+ MWe: not yet commercial; tritium HX: ITER design | If sCO₂: pilot-scale demonstrations at Sandia (10 MWe) extrapolate to 200 MWe. If steam: fully commercial. Tritium barriers: ITER FLiBe-steam HX design | Degrading | **3** (if steam) or **2** (if sCO₂) | If the design uses steam Rankine (35% efficiency), this is commercial technology operating at scale (tier 5 at the thermal cycle level, tier 3 for tritium-bearing primary loop integration → average 4, rounded to 4). If the design uses sCO₂ Brayton (40–44% efficiency), this is subscale (10 MWe pilots, not 200+ MWe commercial → tier 3). Tritium permeation control in heat exchangers is ITER-design level (tier 2). Conservative scoring uses sCO₂ assumption given the 40% efficiency claim. **Tier 2** for sCO₂; **Tier 3** for steam. Scoring **2** (sCO₂assumption to match paper's 40%). |
 
-| Field | Value |
-|-------|-------|
-| **Plant requirement** | ICRH must deliver 44.5 MW to plasma at 70% wall-plug efficiency (63.5 MW electrical) in dipole field geometry; wave coupling and single-pass absorption must be sufficient for bulk ion heating |
-| **Best demonstrated** | ICRH demonstrated in tokamaks at 70% wall-plug efficiency routinely (JET, ITER design); never demonstrated in dipole geometry; ECRH demonstrated on LDX and RT-1 at 30–40% efficiency (gyrotrons) |
-| **Gap ratio** | ICRH in dipole: **never demonstrated**; ECRH in dipole: **demonstrated but at 30–40% efficiency** (half the ICRH target) |
-| **Closure mechanism** | Paper selects ICRH for superior efficiency; if coupling fails, fall back to ECRH (validated on LDX/RT-1) at efficiency penalty of 20–30 percentage points → net power drops from 208 MWe to ~160–185 MWe (still viable but less competitive) |
-| **Classification** | **Degrading** — ECRH fallback keeps plant viable; efficiency loss raises LCOE ~10–15% but does not zero net power |
-| **Evidence tier** | **3.0 / 5.0** — Subscale demonstration (ICRH physics understood in tokamaks; no fundamental barrier to dipole application, but geometry is untested; ECRH proven fallback exists) |
+**Function-level means** (before heritage credit):
+- F1 = (2 + 3) / 2 = **2.5**
+- F2 = (2 + 2) / 2 = **2.0**
+- F3 = (3 + 3) / 2 = **3.0**
+- F4 = (2 + 3) / 2 = **2.5**
+- F5 = (2 + 3) / 2 = **2.5**
+- F6 = (2 + 2) / 2 = **2.0**
+- F7 = N/A for physics; hardware = **2.0** (sCO₂) → **F7 = 2.0**
 
-**2b. Hardware Risk: ICRH Antenna and Transmission System Integration**
+**Heritage credit**: Levitated dipole D-T does not qualify for heritage credit. Heritage credit applies only to concepts with good traceability to **previous public fusion experiments or mature reactor designs** (per scoring framework). LDX and RT-1 are proof-of-principle experiments at TRL 2–3, not mature reactor designs. The concept does not inherit decades of engineering from tokamak/stellarator/mirror/laser IFE lineages. **No heritage floor applies.**
 
-| Field | Value |
-|-------|-------|
-| **Plant requirement** | ICRH antenna must fit around levitated coil geometry without obstructing docking access; transmission lines must deliver 63.5 MW wall-plug at ~40–55 MHz (hydrogen minority heating); antenna must survive neutron activation and allow remote maintenance |
-| **Best demonstrated** | Tokamak ICRH antennas at 1–5 MW per strap (JET: 6 MW total, ITER design: 20 MW total per antenna); antennas are external to plasma, behind first wall; levitated dipole requires antennas around the outer wall (simpler geometry than tokamak) |
-| **Gap ratio** | Power scaling: 44.5 MW ICRH vs. 20 MW ITER antenna → 2.2× scale-up; geometry is actually **simpler** than tokamak (no field-line tangency constraints, no divertor clearance) |
-| **Closure mechanism** | Standard ICRH hardware scaled 2–3× in power; multiple antenna modules (e.g., 4× 16 MW units); antenna placement behind first wall with neutron shielding; remote replacement if activation requires (antenna is not plasma-limiting component) |
-| **Classification** | **Degrading** — antenna failure reduces heating → falls back to partial power or ECRH; does not prevent plant operation |
-| **Evidence tier** | **4.0 / 5.0** — Industrial component with growing production base (ITER ICRH is in manufacturing); dipole geometry is less constrained than tokamak, so integration is **easier**; scale-up from 20 MW to 45 MW is incremental, not revolutionary |
+**Binary risks**:
+1. TBR < 1.0 (F6 physics)
+2. Tritium extraction failure from Li₂O (F6 hardware)
 
-**Function 2 mean**: (3.0 + 4.0) / 2 = **3.5**
-
----
-
-#### Function 3: Instability Control
-
-**3a. Physics Risk: MHD Stability and Turbulent Transport in High-β Dipole**
-
-| Field | Value |
-|-------|-------|
-| **Plant requirement** | Plasma must remain MHD-stable at β_global = 4.4% (Reactor A) without active feedback control; turbulent transport must follow Bohm-like or better scaling to achieve τ_e = 3.5 s |
-| **Best demonstrated** | LDX demonstrated high-β plasma (β ~ 10–20% local) without instabilities in low-power regime (<50 kW ECRH); RT-1 demonstrated similar; no high-power (MW-class), high-temperature (>1 keV) dipole stability data exists |
-| **Gap ratio** | Temperature: 200 eV (LDX) → 10.9 keV (Reactor A) = 50× extrapolation; heating power: <50 kW (LDX) → 44.5 MW (Reactor A) = 900× extrapolation; **no instabilities observed at low power, but high-power regime is unexplored** |
-| **Closure mechanism** | Dipole field has **favorable curvature** in confinement region (natural MHD stability); interchange modes are stabilized by plasma compressibility; ballooning modes suppressed by low edge pressure; no current-driven instabilities (no toroidal current); theoretical basis is sound (Hasegawa 1990, Boxer 2010) |
-| **Classification** | **Binary** — if high-power regime triggers unexpected instabilities (e.g., kinetic ballooning, trapped-particle modes) that degrade confinement below Bohm-like, Q_sci < 7 and plant is nonviable; no active control exists to suppress dipole-specific modes |
-| **Evidence tier** | **3.0 / 5.0** — Subscale demonstration (MHD stability at low power demonstrated; high-β operation confirmed; favorable-curvature theory well-established, but fusion-relevant regime is untested) |
-
-**3b. Hardware Risk: Coil Stability and Quench Protection**
-
-| Field | Value |
-|-------|-------|
-| **Plant requirement** | Core magnet at 23 T peak field, 30 K operating temperature, must remain stable against quench for 45-minute float time; quench protection system must safely dump 20.8 GJ stored energy without damaging coil or plasma-facing components |
-| **Best demonstrated** | Junior demonstrated levitated HTS coil at 2.35 T (42% of 5.63 T design field) with flux pump charging and stable operation; CFS demonstrated 20 T REBCO insert magnet (non-levitated) in 2024; Tokamak Energy Demo4 operated full HTS coil set at 11.8 T; **no 23 T levitated coil demonstrated** |
-| **Gap ratio** | Field: 2.35 T (Junior achieved) → 23 T (Reactor A) = 9.8× scale-up; stored energy: ~170 kJ (Junior flux pump) → 20.8 GJ (Reactor A) = 122,000× scale-up |
-| **Closure mechanism** | REBCO critical current extrapolates well to 23 T at 30 K (Jc > 150 MA/cm² measured in lab samples at 20–25 T by SuperOx, Faraday Factory); CICC design with neon slush cooling at 24.6 K provides stability margin; quench detection via voltage taps + resistive heaters for controlled dump (tokamak magnet heritage); flux pump provides persistent-mode operation (no external current leads during levitation → reduced heat leak) |
-| **Classification** | **Degrading** — quench forces plasma shutdown and interrupts duty cycle (down for cryogen refill + magnet recharge, ~hours to days); does not damage plant permanently if quench protection works; repeated quenches reduce availability |
-| **Evidence tier** | **3.0 / 5.0** — Subscale demonstration (Junior validated levitated HTS + flux pump concept; 20 T REBCO achieved non-levitated; no combined 23 T + levitated + 20 GJ demonstration exists; CICC architecture is proven in tokamaks but not in this geometry) |
-
-**Function 3 mean**: (3.0 + 3.0) / 2 = **3.0**
+**Final function scores** (after heritage, which is N/A):
+- F1 = 2.5
+- F2 = 2.0
+- F3 = 3.0
+- F4 = 2.5
+- F5 = 2.5
+- F6 = 2.0
+- F7 = 2.0
 
 ---
-
-#### Function 4: Plasma-Wall Interaction
-
-**4a. Physics Risk: Particle and Heat Exhaust via Outer Midplane Limiter**
-
-| Field | Value |
-|-------|-------|
-| **Plant requirement** | Plasma edge at outer midplane limiter must handle 0.198 MW/m² peak heat flux (neutron + radiative + particle) without exceeding material limits; particle exhaust must maintain edge density below 10²⁰ m⁻³ and temperature below 800 eV (I-mode upper bounds) to avoid confinement degradation |
-| **Best demonstrated** | Tokamak limiters demonstrated at <1 MW/m² heat flux (pre-divertor era machines); dipole experiments (LDX, RT-1) used molybdenum or tungsten limiters at <0.01 MW/m² (low-power regime); **no dipole edge characterization at fusion-relevant heat flux** |
-| **Gap ratio** | Heat flux: <0.01 MW/m² (RT-1) → 0.198 MW/m² (Reactor A) = 20× extrapolation; edge density/temperature: **never measured in dipole at high power** (LDX edge was ~10¹⁷ m⁻³, <1 keV) |
-| **Closure mechanism** | Design heat flux (0.198 MW/m²) is 5–12× lower than tokamak divertor (1–2.5 MW/m²), so material demands are **less severe**; Inconel 718 first wall + tungsten coating is adequate; radiative cooling in edge (assumed in power balance) spreads heat flux; if edge conditions are worse than I-mode bounds, core pressure must be reduced → Q_sci degrades but plant does not fail catastrophically |
-| **Classification** | **Degrading** — if edge heat flux exceeds 0.2 MW/m² or edge density/temperature limits are tighter than assumed, first wall lifetime shortens and core confinement degrades; LCOE rises via increased O&M (more frequent first wall replacement) and reduced net power (lower Q_sci); does not zero net electricity unless edge is **10× worse than assumed** |
-| **Evidence tier** | **2.0 / 5.0** — Simulation only (power balance assumes edge radiative cooling; no experimental validation in dipole at MW-class heating; edge physics explicitly flagged as "not well understood" in Simpson et al. §2.1.4) |
-
-**4b. Hardware Risk: First Wall Erosion and Neutron Damage**
-
-| Field | Value |
-|-------|-------|
-| **Plant requirement** | Inconel 718 first wall + tungsten coating must survive 1.3 FPY at 0.198 MW/m² surface heat + 0.78 MW/m³ volumetric neutron heating (14 MeV neutrons, ~0.5 dpa/FPY at first wall, ~1.0 dpa/FPY at tungsten tiles) before replacement |
-| **Best demonstrated** | Tungsten PFCs demonstrated at 10–20 MW/m² in tokamak divertors (ITER monoblock design, WEST); tungsten limiter tiles at ~1 MW/m² in Alcator C-Mod; Inconel 718 validated to ~10 dpa in fission reactors (pressurized water reactor internals); 14 MeV neutron irradiation of tungsten to ~10 dpa in IFMIF prototypes |
-| **Gap ratio** | Heat flux: **demonstrated** (0.198 MW/m² is well below tungsten limits; no gap). Neutron damage: 0.5 dpa/FPY (Inconel) → demonstrated to 10 dpa (5× margin); 1.0 dpa/FPY (W tiles) → demonstrated to 10 dpa (10× margin); **no gap** (materials are over-specified for this heat flux) |
-| **Closure mechanism** | First wall replacement every 1.3 FPY (W tiles) is a scheduled maintenance operation; Inconel 718 structure lasts longer (~5–10 FPY at 0.5 dpa/FPY, well within demonstrated damage limits); tungsten recrystallization at 1950 K (shield temperature) is the key materials challenge (see Function 5) |
-| **Classification** | **Degrading** — shortened first wall lifetime (if actual damage is worse than predicted) increases O&M costs; does not prevent net electricity |
-| **Evidence tier** | **5.0 / 5.0** — Operating-regime demonstrated (tungsten PFCs at higher heat flux + higher dpa demonstrated in tokamaks and fission reactors; levitated dipole first wall is in a **less demanding** thermal environment than ITER divertor; neutron fluence is lower than blanket and comparable to tokamak first wall) |
-
-**Function 4 mean**: (2.0 + 5.0) / 2 = **3.5**
-
----
-
-#### Function 5: Neutron/Particle Handling
-
-**5a. Physics Risk: Neutron Shielding Adequacy for REBCO Coil Protection**
-
-| Field | Value |
-|-------|-------|
-| **Plant requirement** | W-B₄C-W shield (475 mm thick) must attenuate fast neutron flux (14.1 MeV) by 4 decades to protect REBCO tape from fluence >1 MW-yr/m² over coil lifetime; neutron transport must achieve <10⁻⁴ relative flux at coil location |
-| **Best demonstrated** | Tungsten and B₄C neutron shielding well-characterized in fission and fusion (ITER blanket modules, DEMO studies); OpenMC neutron transport simulation performed in Simpson et al. §4.3 with detailed geometry and material compositions; **neutronics simulation only, no experimental validation at 14 MeV + dipole geometry** |
-| **Gap ratio** | Shielding performance: **simulation predicts 4-decade attenuation** (OpenMC); no experimental measurement in this geometry; extrapolation from ITER TBM simulations (validated) is <2× (thicker shield, similar materials) |
-| **Closure mechanism** | Neutron transport codes (OpenMC, MCNP) are validated tools for fusion shielding (ITER, NIF); tungsten and B₄C cross-sections are well-known; shield is **conservative** (475 mm is thicker than minimum required per simulation); if actual flux is 2× higher than predicted, sacrificial coil lifetime drops from 1 year to 6 months (doubles replacement cost) but does not invalidate concept |
-| **Classification** | **Degrading** — inadequate shielding shortens sacrificial coil lifetime → higher annual replacement cost (CAS72_coil); if shielding is **10× worse than predicted**, semi-permanent coil lifetime drops to ~1 year and entire coil must be replaced annually (~$400M capital lost per year) → plant becomes uneconomic |
-| **Evidence tier** | **4.0 / 5.0** — Near-regime demonstrated (neutron transport simulations validated in ITER context; materials well-characterized; dipole geometry is novel but not fundamentally different for shielding physics; experimental validation in D-T would confirm, but simulation is high-confidence) |
-
-**5b. Hardware Risk: Tungsten Shield Performance at 1950 K (Above Recrystallization)**
-
-| Field | Value |
-|-------|-------|
-| **Plant requirement** | Tungsten tiles must maintain structural integrity at 1950 K steady-state temperature (radiative cooling, no active cooling) under 14 MeV neutron irradiation (~3 dpa/FPY at shield inner surface) for 1.3 FPY between replacements |
-| **Best demonstrated** | Tungsten recrystallization temperature is ~1600 K (onset); operation >1900 K causes grain growth and creep; ITER divertor tungsten operates at <1500 K (actively cooled); high-temp tungsten applications exist in aerospace (rocket nozzles at >2000 K, but not under neutron irradiation + long duration); **no tungsten demonstrated at 1950 K + neutron irradiation + steady-state for >1 year** |
-| **Gap ratio** | Temperature: 1500 K (ITER divertor) → 1950 K (Reactor A shield) = 450 K above demonstrated fusion regime; neutron + high-temp combination: **never demonstrated** (rocket nozzles are high-temp but no neutrons; ITER is neutron + moderate-temp) |
-| **Closure mechanism** | Paper acknowledges recrystallization risk (§4.3): "it is possible that the onset of degraded mechanical properties can be delayed until other forms of damage dominate" (i.e., neutron damage may suppress grain growth, or creep may be acceptable if tiles are not load-bearing); tiles are **not structurally loaded** (they are radiation shields, not primary structure); if tiles crack or creep, neutron attenuation is unaffected (bulk tungsten density is maintained); replacement every 1.3 FPY is frequent enough to retire damaged sections |
-| **Classification** | **Degrading** — tile degradation (cracking, spallation) requires more frequent replacement → higher O&M; if tiles fail catastrophically (e.g., melt through at hotspot), localized neutron flux rise could damage coil section → forces earlier sacrificial coil replacement (cost increase) but does not prevent plant operation (can replace damaged coil section on next docking cycle) |
-| **Evidence tier** | **2.0 / 5.0** — Simulation only (thermal-mechanical FEA exists in literature for tungsten at high temp, but 1950 K + neutron + 1 FPY steady-state is undemonstrated; materials community consensus is that recrystallization degrades properties, but Simpson et al. argues it may be acceptable for this non-structural application; speculative) |
-
-**Function 5 mean**: (4.0 + 2.0) / 2 = **3.0**
-
----
-
-#### Function 6: Fuel Cycle Closure
-
-**6a. Physics Risk: Tritium Breeding Ratio (TBR) ≥ 1.0 with 75% Blanket Coverage**
-
-| Field | Value |
-|-------|-------|
-| **Plant requirement** | TBR = 1.1 (10% margin above breakeven) using natural Li₂O blanket with ~75% neutron coverage (25% intercepted by core magnet region); requires tungsten neutron multiplication to compensate for coverage loss |
-| **Best demonstrated** | ITER TBM mock-ups achieve TBR ~1.05–1.15 in full-coverage blanket simulations; partial-coverage TBR validated in DEMO studies at 70–85% coverage with neutron multipliers (Be, Pb); **no experimental measurement of TBR in dipole geometry with 75% coverage** |
-| **Gap ratio** | Coverage: 100% (ITER TBM baseline) → 75% (Reactor A) = 25% coverage loss; **simulation predicts tungsten multiplication compensates** (OpenMC result in Simpson et al. §4.3, Table 9: TBR = 1.1); no experimental validation |
-| **Closure mechanism** | Tungsten has high (n,2n) cross-section for 14 MeV neutrons → each neutron generates ~1.2–1.3 secondary neutrons in W shield; Li₂O captures thermalized neutrons via Li-6(n,α)T (natural Li is 7.5% Li-6, adequate); if actual TBR is lower than 1.1 (e.g., due to neutron leakage through coil region), design can: (1) enrich Li-6 to 20–30% (raises TBR by ~0.1–0.2), or (2) accept external tritium supply (feasible for small fleet but not scalable); TBR > 1.05 is likely achievable |
-| **Classification** | **Binary** — TBR < 1.0 requires external tritium purchase (global supply ~25 kg, cannot support fleet); plant becomes dependent on CANDU tritium or other fusion plants, violating self-sufficiency; if TBR = 0.9–1.0, plant is viable in small numbers but cannot scale to multi-GW deployment |
-| **Evidence tier** | **3.0 / 5.0** — Subscale demonstration (TBR simulations are mature tools, validated in ITER context; tungsten multiplication is well-characterized; 75% coverage is lower than typical but not unprecedented; experimental measurement in dipole geometry at 14 MeV would raise tier to 4.0) |
-
-**6b. Hardware Risk: Tritium Extraction from Li₂O Ceramic at kg/day Throughput**
-
-| Field | Value |
-|-------|-------|
-| **Plant requirement** | Extract ~1.2 kg/day tritium from 3,490 tonnes Li₂O blanket (Reactor A burns ~1.1 kg/day at 667 MW fusion); extraction efficiency >95% to maintain inventory; tritium permeation barriers must limit losses to <0.01 kg/day (regulatory) |
-| **Best demonstrated** | ITER HCPB TBM (Helium-Cooled Pebble Bed) uses Li₂O ceramic breeder; tritium extraction demonstrated in lab at gram-scale (Japan's JAEA, EU's DEMO breeding blanket program); **no kg/day industrial-scale tritium extraction from solid breeder** demonstrated |
-| **Gap ratio** | Throughput: grams/day (ITER TBM prototypes) → 1.2 kg/day (Reactor A) = 1000× scale-up; solid breeder extraction is **slower** than liquid breeders (molten salt, liquid metal) due to diffusion through ceramic grains → requires large surface area or elevated temperature for desorption |
-| **Closure mechanism** | Li₂O tritium release at >600°C is well-characterized (tritium diffuses to grain boundaries, desorbs to helium purge gas); large blanket surface area (modular panels) provides sufficient extraction rate; tritium processing system (Pd-Ag membrane, cryogenic distillation) is ITER baseline technology at smaller scale; if extraction efficiency is 90% instead of 95%, excess tritium inventory accumulates in blanket → higher permeation risk and lower TBR margin, but plant remains viable with tighter purge gas flow |
-| **Classification** | **Degrading** — low extraction efficiency (<90%) increases tritium inventory in blanket and permeation to coolant → higher tritium processing load and potential regulatory limit breach; does not prevent net electricity but raises O&M cost and environmental risk |
-| **Evidence tier** | **3.0 / 5.0** — Subscale demonstration (ITER TBM program has validated Li₂O tritium release kinetics at lab scale; industrial-scale system is engineering scale-up, not physics unknown; solid breeder extraction is slower than liquid but feasible) |
-
-**Function 6 mean**: (3.0 + 3.0) / 2 = **3.0**
-
----
-
-#### Function 7: Power Conversion & BOP
-
-**7a. Physics Risk: Thermal Cycle Efficiency at 740 MW Thermal Output**
-
-| Field | Value |
-|-------|-------|
-| **Plant requirement** | Achieve 40% thermal-to-electric conversion efficiency (η_th = 0.40) at 740 MW thermal input (Reactor A) to deliver 296 MW gross electric; thermal cycle must interface with tritium-bearing primary coolant (helium or water, unspecified in paper) |
-| **Best demonstrated** | Modern combined-cycle gas turbines achieve 60–62% efficiency (not applicable to fusion due to gas temp limits); sCO₂ Brayton cycles demonstrated at 44–48% efficiency in lab scale (Sandia, MIT); advanced steam Rankine achieves 37–40% in large power plants (coal, nuclear); **40% is achievable but cycle type is unspecified** |
-| **Gap ratio** | **No gap** — 40% is within demonstrated range for Rankine (upper end) or sCO₂ (conservative); thermal power (740 MW) is standard utility scale (well above minimum sCO₂ demo scale of ~10 MW) |
-| **Closure mechanism** | If sCO₂ cycle is selected (44–47% efficiency), net power rises to 238–261 MWe (LCOE improves 10–15%); if Rankine is used (35–37% efficiency), net power drops to 157–187 MWe (LCOE worsens 10–15%); both are commercially available technologies; no physics risk |
-| **Classification** | **Degrading** — lower-than-expected efficiency reduces net power → higher LCOE; does not prevent plant operation |
-| **Evidence tier** | **5.0 / 5.0** — Operating-regime demonstrated (both Rankine and sCO₂ cycles demonstrated at this power scale; tritium-bearing coolant requires permeation barriers but fusion community has 40+ years of tritium handling experience from TFTR, JET, and ITER design) |
-
-**7b. Hardware Risk: Balance of Plant Integration with D-T Tritium Cycle**
-
-| Field | Value |
-|-------|-------|
-| **Plant requirement** | Heat exchangers, steam generators (or sCO₂ recuperators), turbines, condensers, and coolant pumps must operate with tritium-bearing primary coolant (helium or water + tritium at ppm-level); permeation barriers (coatings, double-wall exchangers) must limit tritium release to environment to <1 Ci/day (regulatory limit, varies by jurisdiction) |
-| **Best demonstrated** | ITER blanket cooling system designed for tritium-bearing helium coolant (water-cooled blanket option also exists); double-wall heat exchangers with leak detection demonstrated in CANDU reactors (tritium-contaminated heavy water); tritium permeation barriers (aluminized or oxidized steel, ceramics) validated in fusion test facilities |
-| **Gap ratio** | Scale: ITER blanket ~500 MW thermal → Reactor A 740 MW thermal = 1.5× scale-up; **ITER BOP is not built yet**, but engineering is mature; no fundamental gap (BoP is commodity technology with tritium-specific modifications) |
-| **Closure mechanism** | Use ITER/DEMO BOP designs as baseline; double-wall heat exchangers add ~10–20% capital cost to CAS23 (turbine plant); tritium monitoring and detritiation systems are standard (ITER procurement items); if tritium permeation is higher than predicted, add more detritiation capacity (cost increase <5% of total plant) |
-| **Classification** | **Degrading** — higher tritium permeation → higher O&M cost (more detritiation) and potential regulatory delays; does not prevent net electricity |
-| **Evidence tier** | **4.0 / 5.0** — Industrial component with growing production base (Rankine BOP is commodity; sCO₂ is emerging but multiple vendors developing; tritium-specific modifications are ITER baseline; scale-up from ITER demo to commercial plant is incremental) |
-
-**Function 7 mean**: (5.0 + 4.0) / 2 = **4.5**
-
----
-
-### Function-Level Means (F1–F7)
-
-| Function | Mean Score |
-|----------|------------|
-| F1: Plasma Performance | 3.0 |
-| F2: Driver / Energy Input | 3.5 |
-| F3: Instability Control | 3.0 |
-| F4: Plasma-Wall Interaction | 3.5 |
-| F5: Neutron/Particle Handling | 3.0 |
-| F6: Fuel Cycle Closure | 3.0 |
-| F7: Power Conversion & BOP | 4.5 |
-
-### Binary Risks
-
-1. **Confinement scaling below Bohm-like** (F1a) — if Tahi demonstrates n·τ_e < 50% of Bohm-like target, Reactor A Q_sci < 7 and net power approaches zero
-2. **TBR < 1.0** (F6a) — if actual tritium breeding ratio is below breakeven due to neutron leakage or lower W multiplication than predicted, plant cannot achieve tritium self-sufficiency and is dependent on external supply (scalability limited)
-
-### YAML Scores Block
 
 ```yaml
 ---
 scores:
-  C1: 4.0
-  C3: 3.1
+  C1: 3.8
+  C3: 2.7
   C4: 3.5
-  C5: 2.1
-  C8: 3.5
-  F1: 3.0
-  F2: 3.5
+  C5: 1.7
+  C8: 3.8
+  # Corrected 2026-05-15 per audit: F1 2.5 → 2.0 (LDX at ~1e-6x required nτ;
+  # Tahi unbuilt; per anti-leniency rule, "subscale proof of principle" without
+  # operating near-regime hardware is Tier 1 → F1-physics tier corrected). F2 2.0
+  # → 1.5 (ICRH coupling in dipole field topology never demonstrated; no published
+  # RF coupling study; F2-physics is asserted/absent = Tier 1). F2-physics also
+  # reclassified Degrading → Binary (ICRH is the only sustained heating path; ECRH
+  # fallback at 30-40% efficiency breaks power balance → Q<1 cliff per framework).
+  # Function-level cap fires on F2=1.5 → C7=1.5.
+  F1: 2.0
+  F2: 1.5
   F3: 3.0
-  F4: 3.5
-  F5: 3.0
-  F6: 3.0
-  F7: 4.5
+  F4: 2.5
+  F5: 2.5
+  F6: 2.0
+  F7: 2.0
   binary_risks:
-    - "Confinement scaling below Bohm-like (n·τ_e < 50% of target) causes Q_sci < 7 and net power near zero"
-    - "Tritium breeding ratio (TBR) < 1.0 prevents tritium self-sufficiency and limits fleet scalability"
+    - "TBR < 1.0: 10% margin above breakeven leaves little tolerance for blanket module failures or extraction inefficiency"
+    - "Tritium extraction failure from Li₂O solid ceramic at kg/day scale: no operating analogue at fusion plant throughput"
+    - "F2 Physics: ICRH coupling in dipole geometry — never demonstrated; no published RF coupling study; if ICRH cannot deliver 44.5 MW absorbed power in dipole field topology, ECRH fallback at 30-40% efficiency breaks the recirculating power balance and plant cannot reach net electricity"
 ---
 ```

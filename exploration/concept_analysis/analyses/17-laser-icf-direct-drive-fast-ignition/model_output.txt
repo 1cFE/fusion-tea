@@ -1,0 +1,149 @@
+Laser ICF — Fast Ignition D-T (Focused Energy)
+NOAK | 1 GWe | 75% availability | 30 yr | Rankine steam
+LCOE: 69.9 $/MWh | Overnight: 4420 $/kW
+Fusion: 3501 MW | Net: 1000 MW | Q_eng: 4.0
+
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    18.5
+CAS21    Buildings                         751.6
+CAS22    Reactor Plant Equipment          1632.3
+CAS23    Turbine Plant                     263.5
+CAS24    Electrical Plant                  112.2
+CAS25    Miscellaneous                      68.3
+CAS26    Heat Rejection                    130.1
+CAS27    Special Materials                  15.0
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                         0.0
+CAS30    Indirect Costs                    496.4
+CAS40    Owner's Costs                      39.0
+CAS50    Supplementary                     311.4
+CAS60    IDC                               577.1
+CAS70    O&M (annualized)                  101.6
+CAS80    Fuel (annualized)                   1.4
+CAS90    Financial                         356.2
+------------------------------------------------
+         Total Capital                    4420.4
+
+CAS22 sub-account detail:
+  Account                  M$
+  ----------------------------
+  C220101               219.0
+  C220102               152.9
+  C220103                 0.0
+  C220104               221.5
+  C220105                 9.3
+  C220106                33.0
+  C220107                13.8
+  C220108               298.4
+  C220109                 0.0
+  C220110                86.6
+  C220111               144.8
+  C220112                 0.0
+  C220200               208.5
+  C220300                15.6
+  C220400                 7.5
+  C220500               120.0
+  C220600                11.5
+  C220700                89.8
+  ----------------------------
+  C220000 Total        1632.3
+
+Key Assumptions:
+  1. q_eng = 4.0: HIGHLY UNCERTAIN. Fast ignition has not demonstrated
+     gain > 1. Commercial threshold requires G > 100 at 10% WPE.
+     If G = 50 (Focused Energy minimum target), q_eng < 1.
+  2. Dual-laser cost not modeled: petawatt ignition laser (~150 kJ/shot)
+     adds ~35–50% more driver capital vs. a single DPSSL system.
+     CAS22 driver is a LOWER BOUND on the true dual-driver cost.
+  3. NOAK diode cost learning assumed: framework default (8.0 M$/MW)
+     requires ~10× diode cost reduction from current FOAK ($700–1,000/J).
+  4. eta_th = 0.40 (Rankine): confirmed by Focused Energy; no exotic cycle.
+  5. availability = 0.75: HYLIFE-II IFE conservative analogue.
+     Final optics replacement at 10 Hz is an unresolved engineering problem.
+  6. O&M likely underestimated: laser optics replacement cycle not modeled.
+     IFE analogues suggest 5–8% of direct CAPEX/yr vs. ~2% framework default.
+  7. Pearl™ cone-in-shell target fabrication at 900,000/day undemonstrated.
+     Target cost uncertainty: $0.10–$1.00/target; not included as variable cost.
+
+Sensitivity (elasticity = %LCOE / %param)
+------------------------------------------------
+
+Engineering levers:
+  availability                         -0.9469
+  plasma_t                             +0.2786
+  eta_th                               -0.2655
+  q_eng                                -0.2626
+  construction_time_yr                 +0.2606
+  blanket_t                            +0.1256
+  mn                                   -0.0846
+  eta_pin                              +0.0609
+  ht_shield_t                          +0.0269
+  vessel_t                             +0.0100
+  f_sub                                -0.0093
+  structure_t                          +0.0041
+  f_rep                                -0.0039
+  p_trit                               -0.0023
+  p_cryo                               +0.0018
+  p_house                              -0.0009
+  p_pump                               -0.0003
+  p_target                             -0.0002
+  dd_f_T                               +0.0000
+  dd_f_He3                             +0.0000
+  dhe3_dd_frac                         +0.0000
+  dhe3_f_T                             +0.0000
+  f_rad                                +0.0000
+  eta_dec                              +0.0000
+
+Financial:
+  interest_rate                        +0.6277
+  inflation_rate                       +0.0656
+
+Costing constants (top 15):
+  om_cost_dt                           +0.1649
+  blanket_unit_cost_dt                 +0.1172
+  indirect_fraction                    +0.1017
+  target_factory_base                  +0.0830
+  driver_laser_per_mw                  +0.0616
+  core_lifetime_dt                     -0.0499
+  shield_unit_cost                     +0.0425
+  installation_frac                    +0.0353
+  fuel_handling_dt_base                +0.0293
+  fuel_recovery                        -0.0290
+  electric_per_mw                      +0.0281
+  decom_provision_dt                   +0.0256
+  remote_handling_dt_base              +0.0241
+  misc_per_mw                          +0.0171
+  construction_insurance_frac          +0.0105
+
+Ignition Laser Cost Premium Sweep
+(C220104 = baseline DPSSL driver cost; ignitor premium applied on top)
+Baseline C220104: 221.5 M$ (no ignitor premium)
+   Premium   C220104 M$   LCOE $/MWh
+------------------------------------
+  +0% ← lower bound            221.5       69.9
+  +25%                          276.8       70.8
+  +40% ← midpoint est.          310.1       71.4
+  +65%                          365.4       72.4
+
+η_coup Fast Ignition Viability Sweep
+(proportional mapping: q_eng = 4.0 × η_coup / 0.15; threshold failure below η_coup ≈ 0.07)
+  η_coup    q_eng   LCOE $/MWh   Status
+----------------------------------------------------
+    0.05     0.80            —   NON-VIABLE (ignition failure, q_eng < 1)
+    0.10     2.67         80.8   viable
+    0.15     4.00         69.9   viable ← baseline
+    0.20     5.33         65.7   viable
+    0.30     8.00         62.0   viable
+
+Repetition Rate Sweep
+NOTE: 1costingfe does not capture rep-rate-dependent capital amortization.
+      Results will be nearly flat (<1%); Meier 2006 +4%/+16% penalties
+      cannot be reproduced here — they require a per-shot cost model.
+  f_rep Hz   LCOE $/MWh Note
+----------------------------------------------------------------
+       5 Hz         70.2   (Meier: ~+12-16% vs. 20 Hz; not reproduced here)
+      10 Hz         69.9   ← Focused Energy target (Meier: ~+4% vs. 20 Hz; not reproduced here)
+      15 Hz         69.8   
+      20 Hz         69.8   ← Meier 2006 COE-minimum (not reproduced here)
+      25 Hz         69.7   

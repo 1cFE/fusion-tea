@@ -11,6 +11,11 @@ The following table was extracted and computed by Python. It includes:
 - C2, C6: deterministic category-based assignments (Python)
 - C7: computed from F1-F7 function means with heritage credit and caps (Python)
 - Binary risk count per concept
+- Per-concept `heritage_lineage`, `heritage_floor`, and `peer_group` derived from
+  architecture (Confinement Family, topology, fuel, etc.) — use these for Q2
+  binary-floor protection and Q6 peer comparisons. Do not infer lineage or peer
+  group from concept IDs; the IDs have been renumbered and the per-concept
+  fields above are authoritative.
 
 **Do NOT re-extract scores from synthesis files.** Use this table as your starting point.
 
@@ -67,30 +72,32 @@ In words: drop C7 to the floor (heritage floor for heritage concepts, 1.0 for
 non-heritage concepts), but only if doing so lowers C7 — never raise C7 with this
 rule.
 
-Heritage floors (lookup by concept ID prefix; D-T fuel only):
+**Use the `heritage_floor` column in the verified scores table for each concept.**
+Do not infer it from the concept ID. The lineage values that can appear are:
 
-| Heritage lineage | Floor | Concept ID prefixes |
-|-----------------|-------|---------------------|
-| Tokamak | 4.0 | 01, 21, 28, 29, 33, 34 |
-| Stellarator | 4.0 | 05, 09, 10, 20a, 20b, 36 |
-| Spherical Tokamak | 3.0 | (assign if applicable) |
-| Laser IFE | 3.5 | 03, 04, 17a, 17b, 26, 30, 31, 32 |
-| Mirror | 2.5 | 06, 11 |
-| FRC | 2.5 | 08, 18 |
-| Z-pinch | 2.5 | 15 |
-| magLIF | 3.0 | 07 |
-| Non-heritage / alternate fuel | 1.0 | all others |
+| Heritage lineage | Floor |
+|-----------------|-------|
+| Tokamak | 4.0 |
+| Spherical Tokamak | 3.0 |
+| Stellarator | 4.0 |
+| Laser IFE | 3.5 |
+| Mirror | 2.5 |
+| FRC | 2.5 |
+| Z-pinch | 2.5 |
+| magLIF | 3.0 |
+| (none) — non-D-T or no recognized lineage | 1.0 |
 
-For non-D-T concepts (p-B11, D-He3, aneutronic, exotic), the floor is 1.0 — the
-override fully crushes C7 as before.
+For non-D-T concepts (p-B11, D-He3, aneutronic, exotic), the heritage_floor is
+1.0 — the override fully crushes C7 as before.
 
-**Worked examples:**
-- 09-Proxima (Stellarator, 6 binaries): heritage floor = 4.0. C7_current = 4.0
-  (after F-level heritage). Override → min(4.0, max(1.0, 4.0)) = 4.0. No change.
-- 17a-Xcimer (Laser IFE, 7 binaries): heritage floor = 3.5. C7_current = 3.5.
-  Override → min(3.5, max(1.0, 3.5)) = 3.5. No change.
-- 27-Polywell (no heritage, 6 binaries hypothetical): floor = 1.0. C7_current = 3.0.
-  Override → min(3.0, max(1.0, 1.0)) = 1.0. Full crush as before.
+**Worked examples** (lineage is shown in the verified scores table for each):
+- A D-T stellarator concept with 6 binaries: heritage_floor = 4.0,
+  C7_current = 4.0. Override → min(4.0, max(1.0, 4.0)) = 4.0. No change.
+- A D-T laser IFE concept with 7 binaries: heritage_floor = 3.5,
+  C7_current = 3.5. Override → min(3.5, max(1.0, 3.5)) = 3.5. No change.
+- A non-heritage D-T concept (e.g. polywell, muon-catalyzed) with 6 binaries:
+  heritage_floor = 1.0, C7_current = 3.0. Override → min(3.0, max(1.0, 1.0))
+  = 1.0. Full crush as before.
 
 ### Q3: Site-specific C5 check
 
@@ -98,44 +105,83 @@ For each concept, check if C5 includes site-specific adjustments (named sites,
 brownfield advantages, proximity to water sources). If found, strip the adjustment
 and recompute C5 from the rubric sub-factors only (thermal rejection + fuel safety).
 
-### Q4: Sub-factor arithmetic check
+### Q4: Sub-factor arithmetic check (MANDATORY for EVERY concept)
 
-For each concept:
-- Recompute each criterion from its sub-factors using the framework formulas
-- Flag any criterion where the reported score deviates >0.3 from the computed
-  sub-factor average
-- Check for double-counting between sub-factors within a criterion
-- Remove any single-concept ad-hoc adjustments (bonuses or penalties not in the framework)
-- Correct scores to match sub-factor arithmetic
+For **every** concept (no spot-checking — do all 35), open the synthesis and
+recompute each criterion from its enumerated sub-factors. Apply corrections
+**by adjusting the score in the calibrated table**, not just by flagging.
 
-### Q5: C7 verification
+Specific checks that must be performed on every concept:
 
-Verify that the Python-computed C7 correctly applied:
-- Heritage credit floors on **F1-F7** (D-T concepts only) — the heritage floor is
-  applied to every function score, not just F1-F3
-- Function-level cap (any function mean <= 1.5 after heritage -> C7 capped at that value)
-- Mean computation (mean of F1-F7, rounded to nearest 0.5)
+1. **C3 Sub-factor B**: Find the synthesis's bottleneck enumeration. Verify:
+   - He-3 dependency uses **-1.5** (not -1.0 hard constraint)
+   - Each hard constraint correctly applies -1.0
+   - Each scaling constraint correctly applies -0.5
+   - Each sole-source dependency correctly applies -0.25
+   - Sum: `B_new = 5.0 - sum(corrected penalties)`, clamped to [1, 5]
+   - Recompute `C3 = (A + B_new + C) / 3`
 
-If any computation appears incorrect, flag it as an informational output with the
-expected value. Do NOT override Python's C7 — flag only.
+2. **C5 site-specific stripping**: per Q3.
+
+3. **Sub-factor denominator sanity**: if sub-factor weights (capital shares,
+   etc.) don't sum to ~100%, recompute on a normalized basis.
+
+4. **Internal contradictions**: if the synthesis text states one C3/C4/C5 value
+   in prose but the YAML reports a different value, use the YAML and flag the
+   inconsistency. If both prose and YAML disagree with the sub-factor
+   arithmetic, use the arithmetic.
+
+5. **Single-concept ad-hoc adjustments**: remove any bonuses or penalties not
+   in the framework.
+
+For each correction, record an entry in the adjustments report with original
+score, adjusted score, and the explicit arithmetic chain.
+
+### Q5: C7 verification and correction
+
+For each concept, verify the Python-computed C7. **Override C7 in the
+calibrated table** (not just flag) if:
+
+- **Evidence Tier mis-assignment**: Any cell in the C7 risk matrix has Tier
+  ≥ 3 when the synthesis's own evidence summary indicates Tier 1-2 per the
+  anti-leniency, time-stuck, or operating-hardware rules in
+  `scoring_framework.md`. Recompute the affected F as the mean of corrected
+  cell tiers, then C7 = mean(F1..F7) with heritage floor and function-level
+  cap re-applied.
+
+- **Binary mis-classification**: Any "Degrading" cell whose synthesis text
+  describes a Q < 1 failure mode (i.e., zero net electricity outcome). Recount
+  binaries with corrections; if count crosses ≥ 5, apply the Q2 floor crush:
+  `C7_new = min(C7_recomputed, max(1.0, heritage_floor))`.
+
+- **Function-level cap missed**: if any function score F_n ≤ 1.5 after
+  corrections, C7 must equal min(mean_C7, min F).
+
+Document each C7 override in the adjustments report with the cell-level
+corrections that drove it.
+
+Heritage credit and mean computation: if these were applied incorrectly by
+Python, flag (do not override — Python owns the heritage and mean math).
 
 ### Q6: Peer consistency check
 
-Compare C1-C8 scores within each peer group:
+Group concepts by the `peer_group` column in the verified scores table. The
+groups assigned by the extractor are:
 
-| Peer Group | Concepts |
-|-----------|----------|
-| D-T Tokamaks | 01-CFS, 21-TE, 28-ES, 29-Firefly, 33-BEST, 34-India |
-| D-T Stellarators | 05-Thea, 09-Proxima, 10-Gauss, 20a-Type One, 20b-Renaissance, 36-Helical |
-| D-T Mirrors | 11-Realta |
-| D-T Laser IFE | 17a-Xcimer, 17b-Focused, 26-Indirect, 30-NIF, 31-Blue Laser, 32-French |
-| D-T Pulsed (MIF/Z-pinch) | 07-MagLIF, 14-GF, 15-Zap |
-| D-T Other | 22-FLF, 25-HIF, 12-OpenStar |
-| D-He3/aneutronic FRC | 08-Helion, 18-TAE |
-| p-B11 | 04-HB11, 06-CHARM, 24-DPF |
-| Exotic | 02-Sonofusion, 03-Cortex, 13-Orbitron, 16-Acceleron, 19-Zephyr, 27-Polywell, 35-Polomac |
+| Peer Group | Description |
+|-----------|-------------|
+| D-T Tokamaks | D-T fuel + Tokamak or Spherical Tokamak lineage |
+| D-T Stellarators | D-T fuel + Stellarator lineage |
+| D-T Mirrors | D-T fuel + Mirror lineage |
+| D-T Laser IFE | D-T fuel + Laser IFE lineage |
+| D-T Pulsed (MIF/Z-pinch) | D-T fuel + Z-pinch or magLIF lineage |
+| Aneutronic FRC | D-He3 or p-B11 fuel + Compact Toroid (FRC) topology |
+| p-B11 | p-B11 fuel, non-FRC |
+| Aneutronic | D-He3 fuel, non-FRC |
+| Exotic | D-T concepts with no recognized heritage lineage, D-D concepts, and exotic/non-power |
 
-For each peer group (except Exotic, which is exempt from Q6 adjustments):
+For each peer group (except Exotic and any singleton group, which are exempt
+from Q6 adjustments):
 - Compute the peer median for each criterion
 - Identify outliers: concepts with any criterion >= 1.0 away from the peer median
 - For each outlier, read the synthesis justification

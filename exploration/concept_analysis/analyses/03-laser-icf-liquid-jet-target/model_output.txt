@@ -2,59 +2,59 @@
 Laser ICF — Liquid Jet Target, D-D (Cortex Fusion Systems)
 SPECULATIVE CORRIDOR MODEL — TRL 1 physics, framework defaults
 =================================================================
-LCOE:          122.4 $/MWh
-Overnight:     4557 $/kW
-Fusion power:  4017 MW
-Gross elec:    1451 MW
+LCOE:          107.5 $/MWh
+Overnight:     3913 $/kW
+Fusion power:  3699 MW
+Gross elec:    1333 MW
 Net elec:      1000 MW
-Thermal power: 4144 MW
-Recirc frac:   0.311
-Q_eng:         3.22
-Q_sci:         100.41
+Thermal power: 3810 MW
+Recirc frac:   0.250
+Q_eng:         4.00
+Q_sci:         129.20
 
 Code     Account                              M$
 ------------------------------------------------
 CAS10    Preconstruction                    35.8
-CAS21    Buildings                         816.1
-CAS22    Reactor Plant Equipment          1474.7
-CAS23    Turbine Plant                     286.7
-CAS24    Electrical Plant                  122.1
-CAS25    Miscellaneous                      74.3
-CAS26    Heat Rejection                     49.5
+CAS21    Buildings                         767.4
+CAS22    Reactor Plant Equipment          1061.6
+CAS23    Turbine Plant                     263.5
+CAS24    Electrical Plant                  112.2
+CAS25    Miscellaneous                      68.3
+CAS26    Heat Rejection                    130.1
 CAS27    Special Materials                   2.0
 CAS28    Digital Twin                        5.0
-CAS29    Contingency                       283.0
-CAS30    Indirect Costs                    518.9
+CAS29    Contingency                       241.0
+CAS30    Indirect Costs                    441.9
 CAS40    Owner's Costs                      31.0
-CAS50    Supplementary                     262.8
-CAS60    IDC                               594.9
-CAS70    O&M (annualized)                   60.6
+CAS50    Supplementary                     242.3
+CAS60    IDC                               510.8
+CAS70    O&M (annualized)                   60.5
 CAS80    Fuel (annualized)                   1.0
-CAS90    Financial                         367.2
+CAS90    Financial                         315.3
 ------------------------------------------------
-         Total Capital                    4556.8
+         Total Capital                    3913.0
 
 CAS22 Sub-Account Detail:
 ------------------------------------------------
-  C220101           115.2  M$
-  C220102           112.6  M$
+  C220101           109.5  M$
+  C220102           107.0  M$
   C220103             0.0  M$
-  C220104           353.2  M$
-  C220105             9.7  M$
-  C220106            34.7  M$
-  C220107           103.8  M$
+  C220104           229.1  M$
+  C220105             9.3  M$
+  C220106            33.0  M$
+  C220107            14.3  M$
   C220108             0.0  M$
   C220109             0.0  M$
-  C220110           120.4  M$
-  C220111           235.5  M$
+  C220110            57.7  M$
+  C220111           120.2  M$
   C220112             0.0  M$
-  C220200           210.6  M$
-  C220300             4.6  M$
-  C220400             8.1  M$
+  C220200           208.5  M$
+  C220300             4.2  M$
+  C220400             7.5  M$
   C220500            60.0  M$
   C220600            11.5  M$
-  C220700            94.9  M$
-  C220000          1474.7  M$
+  C220700            89.8  M$
+  C220000          1061.6  M$
 
 Overridden accounts (zeroed): C220103, C220108, C220112
 
@@ -82,26 +82,30 @@ Note: overridden accounts (C220103, C220108, C220112) have zero gradient.
 =================================================================
 
 Engineering levers:
-  availability                 -0.9908
-  construction_time_yr         +0.2839
-  eta_pin1                     -0.1511
-  p_implosion                  +0.1511
-  plasma_t                     +0.1450
-  eta_th                       -0.0783
-  blanket_t                    +0.0540
-  ht_shield_t                  +0.0238
-  fuel_recovery                -0.0224
-  f_sub                        +0.0164
-  vessel_t                     +0.0122
-  structure_t                  +0.0047
-  p_house                      +0.0015
-  burn_fraction                -0.0012
-  mn                           -0.0011
-  p_target                     +0.0008
-  p_pump                       +0.0004
-  eta_p                        -0.0000
-  eta_pin2                     +0.0000
+  availability                 -0.9902
+  q_eng                        -0.3027
+  construction_time_yr         +0.2792
+  eta_th                       -0.2770
+  plasma_t                     +0.1570
+  eta_pin                      +0.0847
+  mn                           -0.0608
+  blanket_t                    +0.0584
+  ht_shield_t                  +0.0257
+  vessel_t                     +0.0132
+  f_sub                        -0.0126
+  f_rep                        -0.0054
+  structure_t                  +0.0051
+  p_house                      -0.0013
+  dd_f_T                       -0.0011
+  dd_f_He3                     +0.0010
+  p_target                     -0.0006
+  p_pump                       -0.0004
+  eta_p                        +0.0000
+  dhe3_dd_frac                 +0.0000
+  dhe3_f_T                     +0.0000
+  f_rad                        +0.0000
+  eta_dec                      +0.0000
 
 Financial:
-  interest_rate                +0.7035
-  inflation_rate               +0.0596
+  interest_rate                +0.6849
+  inflation_rate               +0.0677

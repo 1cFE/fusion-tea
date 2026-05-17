@@ -1,1 +1,0 @@
-optics-news-15-6-6/output.md

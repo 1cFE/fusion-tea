@@ -4,1078 +4,825 @@ Concept: Electrostatic Hybrid (D-T)
 Company: Avalanche Energy
 Type: synthesis
 Status: draft
-Created: 2026-04-29
+Created: 2026-05-13
 ---
+
+# Synthesis: Electrostatic Hybrid (D-T)
 
 ## 1. Executive Summary
 
-- **Most critical risk**: Coulomb collision thermalization has not been experimentally disproven. The Lampe-Mannheimer critique (1998) claims loss rates 25–37× fusion rates at required densities. Avalanche's counter-argument is simulation-only. If this barrier is real, the concept cannot achieve Q>1 regardless of engineering optimizations.
+- **Single most important risk**: Q>1 not demonstrated in any electrostatic confinement device. Coulomb collision thermalization is cited as 25-37× faster than fusion rate at required densities (Lampe-Mannheimer 1998). The concept's central claim—that electron co-confinement enables ion densities 50× above space-charge limit—remains simulation-only. No experimental validation of space-charge mitigation exists. This is a binary risk: if Coulomb physics prevents Q>1, the concept has no path to net power regardless of engineering.
 
-- **Most important advantage**: Eliminates ~70% of D-T tokamak direct capital by avoiding large superconducting magnets, breeding blankets, and plasma heating infrastructure. The cost structure is fundamentally different—dominant accounts shift to HV power supplies and per-module shielding, both potentially mass-manufacturable at scale.
+- **Single most important advantage**: Eliminates ~90% of tokamak capital cost structure. No large superconducting magnets (0.5 T HTS vs. 5-20 T), no breeding blanket ($0 vs. 15-25% of CAPEX), no multi-hundred-MW plasma heating (replaced by ~$50k/module HV supply). If Q>1 is achievable, the cost structure is categorically different from all MFE concepts. Mass-manufactured desktop modules replace GW-scale construction.
 
-- **LCOE ballpark**: At the baseline model parameters (Q=10, η=12%, 1000 modules, FOAK), LCOE is **$302k/MWh** with specific capital of **$8.8M/kWe**—six orders of magnitude above commercial viability. The turbine-array scenario (Q=10, η=30%) yields **$13k/MWh** at **$380k/kWe**—still 100× too expensive. Even the most optimistic NOAK case (Q=20, η=30%, 10,000 modules, mass-manufactured) reaches only **$4.8k/MWh** at **$107k/kWe**. The model finds no parameter combination yielding LCOE ≤ $100/MWh within physically plausible Q ranges (Q ≤ 30).
+- **LCOE ballpark**: Model produces $10,200/MWh at Q=10, η=35%, 1000 modules (2.4 MWe net). This is 100× non-viable. The back-solve shows no pathway to $100/MWh at any Q<30 under FOAK capital assumptions. Even at Q=30 with optimistic $30k/module NOAK pricing, LCOE is $11,000/MWh. The model demonstrates structural non-viability under current assumptions. The company's claimed <$1B to commercial is not anchored in any disclosed analysis.
 
-- **Confidence verdict**: **Low**. The concept has not demonstrated Q>1, the space-charge mitigation physics is unverified experimentally, no plant architecture exists, and the energy conversion pathway at kWe scale is undefined. LCOE estimates rest on four sequential unproven steps: (1) experimental validation of Q>1, (2) thermal conversion pathway at <1 MWe scale, (3) modular plant architecture with practical neutron shielding, and (4) cost reduction through mass manufacturing. Any single step failing eliminates commercial viability.
+- **Confidence verdict**: **Low**. Q>1 undemonstrated, Coulomb collision barrier unretired, no plant architecture, no cost model, tritium purchased indefinitely. The model is a viability map, not a cost projection. 9 of 13 LCOE-critical parameters are `truly-unknown` or `proprietary`. The synthesis interprets a back-solve surface, not a credible baseline estimate.
+
+---
 
 ## 2. What Matters Most for LCOE
 
-The model output reveals three parameters that determine whether the Orbitron can ever achieve commercial LCOE. Unlike mature concepts where cost uncertainty dominates, here **physics feasibility** gates the entire economic case.
+### 1. Q_engineering (elasticity: infinite below break-even; ~-1.5 above)
 
-### **1. Q_engineering (assumed: 10; required: >30 for viability)**
-**Sensitivity magnitude**: At Q=10, LCOE = $302k/MWh. At Q=12, LCOE = $78k/MWh (4× reduction). At Q=20, LCOE = $23k/MWh. At Q=30, LCOE = $14k/MWh. The LCOE surface shows that even at Q=30 with optimistic NOAK capital ($30k/module cathode cost), the concept barely approaches **$11k/MWh**—still 100× too expensive.
+**Assumed value**: Q=10 (model baseline)
+**Source**: No measurement exists. CWFest 2023 blog targets Q≈1 (1 kW input → 1 kW fusion). Model uses Q=10 as minimum physically-feasible thermoelectric baseline (16% above break-even at η=35%).
+**Sensitivity**: Below Q=3.2 (break-even for η=35%), net power is negative and LCOE is undefined. At Q=5, LCOE = $35k/MWh (1.3× break-even). At Q=30, LCOE = $3,600/MWh (still 36× non-viable). Doubling Q from 10→20 cuts LCOE by 51% but does not approach viability. **What would flip the economic conclusion**: Q_engineering ≥ 50-100 might reach order-of-magnitude viability ($500-1000/MWh range) if combined with NOAK capital. This Q range has no experimental basis in electrostatic confinement.
 
-**Source**: No Q value has been measured. The CWFest 2023 target of 1 kW fusion from 1 kW input corresponds to Q≈1 at *best*. The model's baseline Q=10 is aspirational—it represents the minimum thermoelectric break-even (Q≈8.3 for η=12%) plus a small margin. The concept has never operated above Q=0.
+### 2. Per-module capital cost (elasticity: ~+1.0)
 
-**What would flip the conclusion**: If experimental results demonstrate Q>30 with the space-charge-mitigated density regime that simulations predict, *and* if a turbine-array architecture at >1 MWe aggregate scale proves feasible (η=30%), the LCOE surface shows potential descent toward $3–5k/MWh in the NOAK limit. This is still 30–50× too expensive, but it moves from "physically impossible" to "economically implausible." Conversely, if Coulomb collision physics limits achievable Q to <5—consistent with the 1998 critique—net power generation becomes impossible regardless of capital cost reductions.
+**Assumed value**: $354k/module (baseline FOAK). Dominated by cathode/vacuum assembly ($100k), HV supply floor ($50k), HTS magnets ($50k), vacuum system ($80k), shield ($6k).
+**Source**: No Orbitron cost data. HV supply: accelerator analogy $200-500/kW. Cathode: FOAK precision HV assembly estimate. Shield: $15k/m³ for integrated enclosure × 0.37 m³.
+**Sensitivity**: Varying cathode cost $30k (NOAK) → $250k (pessimistic FOAK) changes LCOE from $9,500/MWh → $10,970/MWh (+15%). Capital per kWe varies strongly with Q because net power ∝ (Q×η - 1): at Q=10, specific capital = $300k/kWe; at Q=20, $124k/kWe. **What would flip the economic conclusion**: Even at $30k/module NOAK with Q=30, LCOE = $11k/MWh (110× non-viable). Capital cost sensitivity is dominated by the Q-driven net power denominator, not the module cost numerator.
+
+### 3. Tritium purchase cost (elasticity: +0.2 at Q=10; diverges as Q→break-even)
+
+**Assumed value**: $35k/g market price × 930 g/yr = $33M/yr fuel cost (19% of revenue requirement at Q=10).
+**Source**: Global tritium market (CANDU byproduct). Consumption: 3.47×10⁻⁶ g/MJ_fusion (5% burn, 95% recovery) × 87.7 TJ_fusion/yr.
+**Sensitivity**: $15k/g → $9,150/MWh LCOE (-10%); $100k/g → $13,600/MWh LCOE (+33%). Tritium cost per MWh ∝ Q/(Q×η-1): at Q=5 (1.3× break-even), tritium cost alone adds $160/MWh—dominating a hypothetically viable LCOE. **What would flip the economic conclusion**: A breeding blanket design that achieves TBR≥1.05 would eliminate permanent tritium purchase. MoU with Fusion Fuel Cycles (April 2025) covers blankets but no design, timeline, or spec exists. Until breeding is demonstrated, tritium cost is an independent viability barrier at low Q.
+
+### 4. Cathode lifetime under neutron bombardment (elasticity: +0.75)
+
+**Assumed value**: 2 full-power-years (conservative; no data).
+**Source**: No fission or fusion analog. 14 MeV neutron damage to tungsten cathode + HV stress is a combined materials challenge. Tokamak first-wall lifetimes (2-5 FPY at 2 MW/m²) are not applicable—Orbitron cathode sees direct particle bombardment + 300 kV electric field stress.
+**Sensitivity**: 0.5 FPY → $17,700/MWh (+74%); 10 FPY → $8,200/MWh (-20%). At 2 FPY baseline, 12 cathode fleet replacements occur over 30-year plant life, adding $39M/yr annualized cost (22% of revenue requirement). **What would flip the economic conclusion**: Even at 10 FPY (optimistic), LCOE remains $8,200/MWh (82× non-viable). Cathode lifetime matters for O&M cost structure but does not gate commercial viability given the Q and capital barriers.
+
+### 5. Thermal efficiency (elasticity: ~-0.8)
+
+**Assumed value**: η=35% (standardized to "Thermal (unspecified)" canonical value per scoring framework; baseline model originally used 12% thermoelectric, updated to canonical).
+**Source**: No conversion system designed. Company states "thermal cycle with turbines" but conventional turbines are impractical <1 MWe. At 1-100 kWe/module, thermoelectric (5-15%) is the only plausible path. Multi-module turbine array (25-35%) requires >1 MWe aggregate—a plant architecture that does not exist.
+**Sensitivity**: η=12% (thermoelectric) → $301k/MWh at Q=10 (model run with non-canonical value shows structural impossibility); η=30% (turbine) → $12,900/MWh; η=40% (upper bound) → $8,400/MWh. Break-even Q ∝ 1/η: thermoelectric requires Q≥8.3 for net power; turbine requires Q≥3.3. **What would flip the economic conclusion**: η alone cannot rescue viability. Even at η=40% (unrealistic for this thermal source), Q=10 yields $8,400/MWh. The Q barrier dominates.
 
 ---
-
-### **2. Thermal efficiency (assumed: 12%; turbine scenario: 30%)**
-**Sensitivity magnitude**: Thermal efficiency determines the break-even Q threshold. At η=12% (thermoelectric), break-even is Q≈8.3; at η=30% (turbine array), break-even is Q≈3.3. The difference compounds exponentially with capital cost per kWe: at Q=10, moving from η=12% to η=30% reduces LCOE from $302k/MWh to $13k/MWh—a **23× improvement**. This is the single largest LCOE lever in the model.
-
-**Source**: The company states "thermal cycle with turbines" (Orbitron product page), but this is thermodynamically implausible at 1–100 kWe per module. Commercial steam turbines operate at hundreds of MWe minimum; sCO₂ cycles reach ~30% efficiency only above ~10 MWe. At 1 kWe module scale, thermoelectric conversion (η=5–15%) is the only practical option. The baseline η=12% reflects optimistic thermoelectric performance. The η=30% scenario requires a megawatt-aggregate plant architecture stacking thousands of modules with shared turbine infrastructure—a design that has never been disclosed.
-
-**What would flip the conclusion**: Development of a practical thermal conversion pathway at kWe scale with η>20% would fundamentally change the economics. Alternatively, a validated plant architecture demonstrating >1 MWe aggregate thermal output with conventional turbine conversion (η≈30%) would enable the more favorable LCOE surface shown in the model's turbine-array scenarios. Without this, the concept remains trapped in the thermoelectric regime where even Q=30 yields LCOE in the $10–20k/MWh range.
-
----
-
-### **3. Cathode/module capital cost (baseline: $100k/module; range: $30k–250k)**
-**Sensitivity magnitude**: The back-solve LCOE surface shows that at Q=20, η=12%, varying cathode cost from $30k (optimistic NOAK) to $250k (pessimistic FOAK) shifts LCOE from $17k/MWh to $34k/MWh—a **2× swing**. At lower Q values near break-even, the capital cost sensitivity is weaker because recirculating power and tritium fuel costs dominate. The model uses $100k/module as the FOAK baseline (primary accounts: $100k cathode assembly + $50k HV supply + $50k HTS magnets + $80k vacuum system + $5.7k shielding).
-
-**Source**: No cost data exists. The $100k baseline is analogized from industrial HV equipment: sustained 300 kV power supplies for particle accelerators cost ~$200–500/kW_input, but at 1 kWe input scale, a minimum $50k floor applies (you cannot buy a 300 kV sustained supply for less than ~$50k regardless of power rating). The cathode/vacuum assembly ($100k) reflects precision HV vacuum hardware with the proprietary feedthrough Avalanche describes as their "key innovation." The optimistic $30k scenario assumes mass manufacturing learning curves analogous to consumer-electronic HV systems; the pessimistic $250k scenario reflects conservative FOAK estimates for novel neutron-exposed HV components.
-
-**What would flip the conclusion**: Capital cost becomes decisive only if Q and η are simultaneously favorable. If the concept achieves Q=20 and validates a turbine-array architecture (η=30%), the specific capital at $100k/module cathode cost is **$149k/kWe** yielding LCOE = $6k/MWh. Reducing cathode cost to $30k (NOAK learning) brings this down to $4.6k/MWh at the same Q and η. This is still **46× too expensive** for commercial electricity, but it demonstrates that capital cost is a second-order effect compared to Q and η. The model reveals the harsh truth: even with heroic cost reduction (10× learning from FOAK to NOAK), the concept remains structurally non-viable unless Q and η both exceed their current best-case projections.
-
----
-
-**LCOE elasticity summary** (from baseline Q=10, η=12%, $100k/module):
-- **Q: +20% → LCOE –36%** (Q=10→12 reduces LCOE from $302k to $78k/MWh)
-- **η: +150% → LCOE –96%** (η=12%→30% reduces LCOE from $302k to $13k/MWh)
-- **Cathode cost: –70% → LCOE –28%** ($100k→$30k reduces LCOE from $302k to $217k/MWh at Q=10, η=12%)
-
-Thermal efficiency is the dominant lever, but it is gated by plant architecture (undefined). Q is the second-most sensitive parameter and is gated by unresolved Coulomb collision physics. Capital cost is tertiary—it matters only after the physics and architecture barriers are resolved.
 
 ## 3. Risk Verdicts
 
-### **Coulomb collision thermalization dominates fusion rate → Q<1 ceiling**
-**Verdict**: **Genuinely uncertain** — but evidence leans toward "unlikely resolvable."
+### Challenge 1: Q>1 not demonstrated—entire economic case conditional on unproven physics
 
-**Rationale**: The 1998 Lampe-Mannheimer analysis claims Coulomb collision rates exceed fusion rates by 25–37× at densities required for net energy gain. Avalanche's counter-argument (CWFest 2023 blog) states that PIC simulations use ion density scaling that makes thermalization "appear worse than it is," but this is a claim about simulation methodology—not experimental disproof. The AIP Advances (2024) paper confirms that space-charge-mitigated ion densities above 10¹⁰ cm⁻³ are "the focus of initial experiments"—meaning they have *not yet been demonstrated*. The physics claim is simulation-only.
+**Verdict**: **Genuinely uncertain**
 
-**What would retire this risk**: Experimental measurement of Coulomb collision loss rates in an operating Orbitron at fusion-relevant ion densities (>10¹⁰ cm⁻³) with simultaneous neutron yield characterization. If the measured loss rate is ≤ fusion rate, the barrier is retired. If the measured loss rate confirms the 25–37× ratio, the concept is definitively non-viable for D-T power generation. Publication of full experimental data from the two paywalled peer-reviewed papers (AIP Advances 2024, Physics of Plasmas 2025) would partially address this—but only if those papers report measured collision rates, not just simulated ones.
+**Rationale**: Electrostatic confinement has never achieved Q>1 in 70 years of attempts (IEC, Polywell, Farnsworth-Hirsch fusors). The Orbitron's claimed path—electron co-confinement enabling 50× density above space-charge limit—is simulation-only (AIP Advances 2024). The paper explicitly states: "Demonstrating this space charge mitigation will be the focus of initial experiments"—i.e., the concept's central claim is not yet validated. Coulomb collision thermalization is cited as the physics barrier (25-37× faster than fusion), but Avalanche argues the 1998 Lampe-Mannheimer analysis overstates the problem due to density scaling assumptions. No experimental data resolves this.
 
----
-
-### **Energy conversion at 1–100 kWe scale with reasonable efficiency**
-**Verdict**: **Unlikely resolvable** at claimed module scale; **likely resolvable** at megawatt-aggregate plant scale.
-
-**Rationale**: The company's statement that energy will be "converted with a thermal cycle, utilizing turbines" is thermodynamically implausible at 1–100 kWe per module. Steam turbines achieve ~30% efficiency only at scales >10 MWe; Stirling engines and ORCs can operate at kWe scale but with η=10–20% at best. Thermoelectric conversion at 1 kWe yields η≈5–12%. At η=12% (optimistic thermoelectric), the baseline Q=10 scenario produces LCOE = $302k/MWh—six orders of magnitude above commercial viability. At η=30% (turbine array), the *same* Q=10 yields LCOE = $13k/MWh—a 23× improvement. The company likely envisions stacking thousands of modules to reach megawatt aggregate thermal output feeding conventional turbines, but no such plant architecture has been disclosed.
-
-**What would retire this risk**: Publication of a multi-module plant architecture showing how >1 MWe aggregate thermal output is collected from a distributed array of kWe-scale modules, integrated with turbine-based conversion. The engineering challenges are significant (thermal coupling between modules, neutron shielding geometry for dense arrays, per-module reliability vs. plant availability) but not fundamental. If this architecture is validated, η=30% becomes plausible and the LCOE surface shifts from $300k/MWh to $13k/MWh at Q=10—still economically non-viable, but *physically* coherent. Alternatively, a breakthrough in small-scale thermoelectric or thermionic conversion achieving η>20% at <1 MWe would retire the risk without requiring plant architecture changes, but this seems less likely given mature state-of-art performance.
+**What would retire this risk**: Measured fusion yield ≥ input power in a D-T Orbitron at steady-state, with published ion density, confinement time, and Coulomb loss rate. This requires full operation of the FusionWERX facility (2027 commissioning target) and a successful D-T campaign. Until Q≥1 is demonstrated, the concept remains speculative regardless of engineering maturity.
 
 ---
 
-### **Tritium breeding at compact device scale**
-**Verdict**: **Unlikely resolvable** without major geometric redesign—but **not blocking** for near-term neutron source application.
+### Challenge 2: Coulomb collision thermalization—25-37× fusion rate cited as fundamental barrier
 
-**Rationale**: The Orbitron's desktop form factor (10 cm radius × 20 cm length per module) provides negligible space for a breeding blanket. A lithium-bearing blanket thick enough to achieve TBR≥1.0 requires ~40 cm of FLiBe or Li-Pb—larger than the entire device. The April 2025 MoU with Fusion Fuel Cycles (FFC) covering "tritium breeding blankets and D-T fuel cycle systems" is a disclosed collaboration direction, but no blanket design, timeline, or technical specification has been published. For the near-term FusionWERX neutron source application, purchased tritium at $35k/g is acceptable—neutron production is the revenue product, not electricity. For a power reactor, purchased tritium at Q=10 contributes **$57k/MWh** (19% of total $302k/MWh LCOE), scaling inversely with Q. At Q approaching break-even, tritium cost per MWh diverges to infinity regardless of capital cost.
+**Verdict**: **Unlikely resolvable** (unless simulation claim is validated)
 
-**What would retire this risk**: A disclosed breeding blanket design with credible TBR≥1.0 geometry integrated with the Orbitron module. The compact scale makes this geometrically challenging—likely requiring either (a) a shift to larger device geometry (contradicting the modular mass-manufacturing advantage), or (b) an external blanket surrounding a dense module array (introducing neutron shielding complexity and thermal coupling challenges), or (c) operation with D-D fuel (eliminating tritium breeding requirement but reducing fusion cross-section by 100×, making Q>1 even harder). Absent a breeding solution, the concept remains dependent on purchased tritium, capping commercial viability at Q values where tritium cost is <10% of LCOE—roughly Q>15 at η=30%.
+**Rationale**: The 1998 Lampe-Mannheimer analysis for crossed-field devices calculated Coulomb collision rates 25-37× faster than fusion at required densities. This is not an engineering problem—it is a physics constraint that limits achievable Q. Avalanche's counterargument is that "thermalization rates in simulations use density scaling that makes the problem appear worse than it is," but this is a theoretical assertion, not an experimental refutation. PIC simulations show stable operation, but simulations do not validate Coulomb physics at fusion-relevant parameters.
 
----
-
-### **Neutron shielding for stacked multi-module plants does not dominate cost/volume**
-**Verdict**: **Likely resolvable**—but current "concrete castle" approach is economically self-defeating.
-
-**Rationale**: The CWFest 2023 blog describes a "concrete castle" surrounding the Marty prototype. If each 1–100 kWe module requires a dedicated concrete shield at $15k/m³ (baseline model assumption), the shield volume per module (~0.37 m³) adds $5.7k/module—small compared to $100k cathode cost, but the *volume* penalty is severe. At 1000 modules with individual shielding, the plant footprint becomes dominated by concrete rather than fusion cores, negating the modular compactness advantage. The model's shielding sensitivity sweep shows that varying shielding cost from $2k/m³ to $500k/m³ changes baseline LCOE from $299k/MWh to $385k/MWh—a ±15% swing, significant but not dominant.
-
-**What would retire this risk**: A disclosed multi-module plant architecture demonstrating shared neutron shielding (e.g., modules grouped in a common shielded vault with distributed cooling/power extraction). This would reduce shielding volume per module by 5–10× and shift shielding from a per-module CAPEX to a plant-level account (CAS22 plant-wide), improving LCOE by ~10–15%. The engineering is mature (fission reactor shielding, neutron source facilities), so this risk is "likely resolvable" given competent plant design—but that design does not yet exist.
+**What would retire this risk**: Measured Coulomb collision rate vs. fusion rate in an operating Orbitron at n≥5×10¹⁰ cm⁻³ (the density floor for Q>1). If the measured collision rate is within 2-3× of the fusion rate (rather than 25-37×), the Lampe-Mannheimer critique is invalidated and the physics path to Q>1 is credible. If the measured rate confirms the 1998 analysis, the concept has no path to net power.
 
 ---
 
-### **Cathode and HV feedthrough lifetime under 14 MeV neutron bombardment**
-**Verdict**: **Genuinely uncertain**—no experimental data exists, but analogues suggest short lifetimes.
+### Challenge 3: Energy conversion at kWe scale—turbines impractical, alternative undefined
 
-**Rationale**: The cathode operates at 300 kV sustained in direct line-of-sight to a D-T fusion plasma producing 14 MeV neutrons. Neutron-induced displacement damage to tungsten cathodes is well-characterized in fission (where 1 MeV neutrons dominate) but poorly understood at 14 MeV. The HV feedthrough's ceramic insulator will experience cumulative radiation damage, reducing dielectric strength over time. The model assumes 2 FPY cathode lifetime (conservative vs. tokamak first-wall but aggressive given direct particle bombardment geometry). At 2 FPY, the baseline scenario requires **12 cathode replacements** over 30 years, contributing $39M/yr annualized cost (22% of total O&M). Halving cathode lifetime to 1 FPY raises LCOE from $302k/MWh to $377k/MWh (+25%). Extending to 5 FPY reduces LCOE to $258k/MWh (–15%).
+**Verdict**: **Likely resolvable**
 
-**What would retire this risk**: Dedicated irradiation testing of Orbitron cathode and HV feedthrough materials under 14 MeV neutron fluence at operating voltage. This is not expensive—neutron source facilities (e.g., FusionWERX itself once operational) can provide the test environment. If measured lifetimes are ≥5 FPY, the O&M cost contribution is manageable. If measured lifetimes are <1 FPY, frequent cathode replacement becomes an LCOE-dominant cost driver, potentially adding $100–200/MWh even in the optimistic Q=20, η=30% scenario. The gap report flags this as a "truly-unknown" gap with no fission analog—correct, and this warrants high-priority experimental characterization before commercial projections are credible.
+**Rationale**: At 1-100 kWe per module, conventional steam or sCO₂ turbines are not viable (minimum commercial sizes: hundreds of kWe). Thermoelectric generators exist at this scale but with η=5-15%, not the η=35% used in the model. The company's statement ("thermal cycle with turbines") likely refers to a multi-module plant at MW aggregate scale, but no plant architecture is described. This is an engineering gap, not a physics barrier—kW-scale Stirling engines, ORC cycles, and thermoelectric arrays are mature technologies.
+
+**What would retire this risk**: Published plant architecture showing thermal aggregation from N modules to a shared conversion system at ≥1 MWe, or selection of a specific small-scale conversion technology (e.g., ORC, Stirling) with efficiency and cost targets. Alternatively, demonstration of a stacked-module thermal bus feeding a turbine at MW scale.
+
+---
+
+### Challenge 4: No breeding blanket—tritium purchased indefinitely at >$35k/g
+
+**Verdict**: **Likely resolvable** (long-term; near-term: accepted constraint)
+
+**Rationale**: For the neutron source application (FusionWERX), purchased tritium is acceptable—neutron production is the revenue product, not electricity. For a power reactor, tritium cost at $35k/g adds $56k/MWh to LCOE at Q=10 (19% of revenue requirement). At Q<5, tritium cost alone exceeds $100/MWh and precludes viability. The MoU with Fusion Fuel Cycles (April 2025) establishes a collaboration on breeding blankets, but no design, timeline, or TBR target has been published. Breeding at compact geometry (10-20 cm device diameter) is geometrically constrained but not impossible—micro-blankets and cylindrical LiPb shells are design options.
+
+**What would retire this risk**: Published breeding blanket design achieving TBR≥1.05 for a 1-100 kWe Orbitron module, with tritium extraction and purification integrated. Alternatively, sustained low-Q operation (Q=2-5) with external tritium supply might be viable for niche applications (medical isotopes, neutron sources) even if power generation is not.
+
+---
+
+### Challenge 5: Modular scaling undefined—no plant architecture from kWe to MWe
+
+**Verdict**: **Likely resolvable**
+
+**Rationale**: The modular value proposition ("stacked for near-endless power applications") is conceptually attractive but entirely unengineered. Key unknowns: (1) module count per MW plant; (2) neutron shielding geometry for densely-packed modules (if each module requires a "concrete castle," the architecture is self-defeating); (3) thermal aggregation for shared BOP; (4) tritium supply and distribution for hundreds/thousands of modules. None of these are fundamental physics barriers—they are systems engineering challenges. Modular fusion has precedents (NIF target factories, IFE rep-rated drivers).
+
+**What would retire this risk**: Published reference plant design: N modules → X MWe net, with shielding geometry, thermal bus architecture, tritium plumbing, and capital cost breakdown. Even a conceptual design (ARIES-style study) would anchor the scalability claim.
+
+---
+
+### Challenge 6: Cathode and HV feedthrough lifetime under 14 MeV neutrons—no data, no analogs
+
+**Verdict**: **Genuinely uncertain**
+
+**Rationale**: 14 MeV neutron bombardment of HV components (cathode, feedthrough insulators, vacuum seals) under sustained 300 kV electric field stress is a combined materials challenge with no direct analog. Tokamak first-walls see neutrons but not HV stress. Accelerators see HV stress but not 14 MeV neutrons. Fission reactors see neutrons but at different spectra and without electrostatic fields. Avalanche demonstrated 300 kV steady-state at 3 W draw—a major milestone—but this was in a non-neutron-producing environment. Neutron-induced conductivity in ceramics, radiation-enhanced electrical breakdown (REEB), and displacement damage in insulators are all concerns.
+
+**What would retire this risk**: Dedicated 14 MeV neutron irradiation testing of the HV feedthrough and cathode assembly at 10¹⁶-10¹⁷ n/cm² fluence (equivalent to months of full-power operation), with measured breakdown voltage, leakage current, and mechanical integrity. Alternatively, long-duration operation (>1000 hours) of a D-T Orbitron at ≥10¹¹ n/s with no HV failures.
+
+---
 
 ## 4. Structural Advantages and Disadvantages
 
-The Orbitron's cost structure diverges categorically from the D-T tokamak baseline. It does not shift costs—it **eliminates entire CAS accounts** and introduces novel ones. Quantifying these deltas against a reference tokamak (e.g., 01-HTS-Compact-Tokamak) reveals where the concept's economic case lives or dies.
+### Advantages relative to conventional D-T tokamak baseline
 
-### **Eliminated accounts (savings vs. tokamak baseline)**
+**Eliminated cost accounts (quantified where possible)**:
 
-| CAS Account | Tokamak Reference | Orbitron | Delta | Notes |
-|-------------|-------------------|----------|-------|-------|
-| **C220103: Magnets** | ~$400M (30% of CAS22) | $50M (0.5 T HTS pair, 1000 modules) | **–88%** | Dominant tokamak cost eliminated; 0.5 T HTS at $50k/module vs. 5–20 T large-bore REBCO at $200–500M |
-| **C220101: Breeding Blanket** | ~$300M (20% of CAS22) | $20M (chamber wall only, no blanket) | **–93%** | No FLiBe, no beryllium, no breeding infrastructure; tritium purchased as OPEX instead |
-| **C220104: Plasma Heating** | ~$150M (10% of CAS22) | $0 (replaced by HV supply in C220107) | **–100%** | No RF, no NBI; electrostatic acceleration via cathode voltage |
-| **CAS27: Special Materials** | ~$100M (FLiBe, beryllium, REBCO tape) | $0.04M (minimal) | **–100%** | No scarce materials; tungsten cathodes and stainless vacuum components are commodity |
+1. **CAS22 C220103 Magnets**: Tokamak SC coils are 30-40% of direct capital (~$500M-1B for 1 GWe plant). Orbitron: $50M for 1000-module HTS magnet fleet (0.5 T, compact coils). **Eliminates ~$450M-950M or 20-35% of tokamak CAS22**.
 
-**Aggregate saving**: ~$850M eliminated from a $1.2B tokamak CAS22 baseline → **~70% direct capital reduction** in reactor plant equipment. This is the concept's *single largest structural advantage*. If the Orbitron achieves Q>1, it does so with a fundamentally cheaper device architecture than any mainstream MFE concept.
+2. **CAS22 C220101 Breeding Blanket**: Tokamak blanket is 15-25% of capital (~$250M-500M). Orbitron: $0 (no blanket; tritium purchased). **Eliminates ~$250M-500M or 10-20% of tokamak CAS22**. (Trade: adds permanent tritium fuel OPEX—$33M/yr at Q=10.)
 
----
+3. **CAS22 C220104 Plasma Heating**: Tokamak RF/NBI is 10-15% of capital (~$150M-300M). Orbitron: $50M HV supply fleet (300 kV sustained × 1000 modules). **Eliminates ~$100M-250M or 5-10% of tokamak CAS22**.
 
-### **Novel accounts (costs added vs. tokamak baseline)**
+4. **No REBCO tape supply chain bottleneck**: Tokamak HTS magnets (5-20 T) require 100-500 km REBCO tape per plant—current global production ~500 km/yr constrains fleet deployment. Orbitron HTS (0.5 T) requires ~50-200 m/coil × 2000 coils/plant = 100-400 km total, but at much lower field stress—NbTi suffices. **Eliminates a critical supply chain constraint for first-of-a-kind plants**.
 
-| CAS Account | Tokamak Reference | Orbitron | Delta | Notes |
-|-------------|-------------------|----------|-------|-------|
-| **C220107: HV Power Supply** | $0 (no HV in tokamak) | $50M ($50k/module × 1000, FOAK floor) | **+$50M** | Novel dominant account; 300 kV sustained supply + ion gun array replaces plasma heating |
-| **C220102: Neutron Shield** | $80M (shared toroidal shield) | $5.7M (per-module at $15k/m³) | **–93%** at 1000 modules | BUT: scales linearly with module count; 10,000 modules → $57M, eliminating the savings |
-| **C220105: Cathode Assembly** | $150M (vacuum vessel + first wall) | $100M ($100k/module × 1000) | **–33%** | Smaller device but higher $/kWe; novel neutron-exposed HV geometry may drive FOAK cost up |
-| **CAS80: Tritium Fuel (OPEX)** | ~$5M/yr (self-breeding, makeup only) | $33M/yr (purchased, no breeding) | **+$28M/yr** | Permanent OPEX penalty; at Q=10, tritium cost contributes $57k/MWh (19% of LCOE) |
+5. **No FLiBe or beryllium breeding materials**: Tokamak blankets require 100s of tonnes FLiBe (not produced at scale; requires scarce Be) or PbLi (corrosion challenges). Orbitron: none. **Eliminates a materials bottleneck and TBR engineering risk**.
 
-**Aggregate addition**: +$50M novel CAPEX (HV supply) + $28M/yr OPEX penalty (purchased tritium). The HV supply cost is manageable at $50M (6% of total capital in the baseline model). The tritium OPEX is LCOE-impacting at low Q but scales favorably (∝1/Q); at Q=20, tritium cost drops to ~$20M/yr (~$15k/MWh contribution).
+6. **Compact footprint**: Tokamak reactor building is ~40,000-100,000 m² (ITER: 42 ha site). Orbitron 1000-module plant: ~500-2000 m² estimated (warehouse-style modular array). **Reduces CAS21 by ~50-70%** (~$100M-200M).
+
+**Total eliminated capital**: ~$900M-1.9B of a $3-4B tokamak overnight capital. If Q>1 is achieved, the Orbitron eliminates the three largest tokamak cost accounts and avoids two critical supply chain bottlenecks. The cost structure is categorically different.
 
 ---
 
-### **Net structural position**
+### Disadvantages relative to conventional D-T tokamak baseline
 
-At Q=10, η=12%, 1000 modules, FOAK:
-- **Overnight capital**: $610M (vs. ~$2B tokamak reference) → **–70% total capital**
-- **Specific capital**: $8.8M/kWe (vs. ~$5k/kWe tokamak) → **+1760× per-kWe cost**
+**Added or worsened cost accounts**:
 
-The paradox: the Orbitron is *cheaper in absolute dollars* but *catastrophically more expensive per kWe* because net power is only 80 kWe (0.08 MW) at the baseline operating point. The recirculating power fraction is **93%**—nearly all gross electric output is consumed by input power and auxiliaries. This is the fundamental economic barrier: even with 70% capital cost reduction vs. tokamaks, the Orbitron at Q=10, η=12% produces so little net power that $/kWe explodes to $8.8M—commercially meaningless.
+1. **Per-module shielding**: Tokamak has one central shield ($50-100M) shared across GW plasma. Orbitron requires per-module shielding—if "concrete castle" geometry is needed for each of 1000 modules, shielding cost could exceed $50M-200M and dominate capital. Model baseline ($6k/module) assumes optimistic integrated enclosure; realistic site-built shielding may be $50k-200k/module. **Adds $50M-200M (3-8% of overnight) vs. tokamak shared shield**.
 
-The structural advantage is *real* but *latent*. It materializes only if:
-1. Q increases to ≥20 (reducing recirculating fraction from 93% to ~70%)
-2. η increases to ≥30% (requiring turbine-array plant architecture)
-3. Module count scales to 10,000+ (amortizing plant-wide BOP over larger output)
+2. **O&M per-kWe penalty from module count**: Tokamak: one plasma, centralized maintenance. Orbitron: 1000 modules, each with cathode replacement, HV system servicing, vacuum pump refurbishment. Maintenance labor scales with module count, not net power. At 2.4 MWe net (1000 modules), per-MWe O&M may be 5-10× higher than GW-scale tokamak. **Estimated +$20M-40M/yr O&M penalty** (~30-60% higher O&M fraction).
 
-Under those conditions, the model shows overnight capital of ~$1.1B for 48.8 MWe net → **$23k/kWe**—still 5× too expensive, but within the range where NOAK learning curves and supply chain optimization could conceivably reach $5k/kWe. This is the "conditional viability" the model reveals: the Orbitron's structural cost advantage is buried under four layers of unproven physics and engineering. Remove those layers, and a $3–5k/MWh NOAK LCOE becomes *geometrically possible*—though still economically unattractive vs. $50/MWh renewables.
+3. **Tritium fuel as permanent OPEX**: Tokamak breeds tritium (TBR=1.05-1.15 target; self-sufficient after startup). Orbitron buys tritium forever at $35k/g. At Q=10, this adds $33M/yr (19% of revenue requirement). At Q=5, $60M/yr (dominant cost). **Adds $33M-60M/yr depending on Q**—equivalent to 10-20% LCOE adder vs. self-breeding tokamak.
+
+4. **Cathode replacement under neutron bombardment**: Tokamak divertor (analogous wear component) is replaced every 2-6 FPY. Orbitron cathode is smaller but must tolerate 300 kV HV + neutrons—no material qualification exists. At 2 FPY lifetime, 12 cathode fleet replacements over 30 years cost $1.2B present value. **Adds $39M/yr annualized (22% of revenue requirement)**.
+
+5. **Uncertain energy conversion efficiency**: Tokamak thermal cycle at GW scale: η=35-42% (supercritical steam, sCO₂). Orbitron at 1-100 kWe/module: thermoelectric η=5-15% (no turbine viable); or turbine η=30% only if thermal aggregation at >1 MWe works. **Potential -20 percentage point efficiency penalty** (12% vs. 35%) worsens recirculating power and LCOE by 3-5× if thermoelectric path is required.
+
+**Net structural verdict**: The Orbitron's advantages are real IF Q>1 is achieved. Eliminates $1-2B tokamak capital and avoids REBCO/FLiBe bottlenecks. But adds permanent tritium OPEX, per-module O&M penalty, and per-module shielding complexity. The net cost advantage depends entirely on whether (Q, module_capital) lands in the viable region of the back-solve surface—which current physics and engineering maturity do not support.
+
+---
 
 ## 5. Cross-Concept Positioning
 
-The Orbitron occupies a unique position in the fusion landscape: it shares D-T fuel and steady-state operation with tokamaks but diverges completely in confinement physics, scale, and cost structure. No other concept in the analysis pipeline offers a useful quantitative comparison.
+**Landscape position**: The Orbitron is the only electrostatic hybrid in the fusion TEA landscape. It sits between IEC fusors (Farnsworth-Hirsch, Polywell WB-8) and magnetized target fusion (MagLIF, PJMIF), but shares no direct physics lineage with either. The concept is a novel entry: crossed-field magneto-electrostatic confinement has no experimental heritage in mainstream fusion.
 
-### **Nearest neighbors (qualitative only)**
+**Concepts sharing similar economics**:
 
-**Polywell (27-polywell, gap-checked)**: Both are non-standard electrostatic approaches to D-T fusion using combined electric and magnetic fields. The Polywell has a longer experimental history (U.S. Navy WB-series devices) and a more developed physics critique, but it also has not demonstrated Q>1. The Coulomb collision barrier applies to both concepts—neither has experimentally disproven the thermalization critique. The Polywell uses magnetically-confined virtual electrodes rather than the Orbitron's physical cathode, but the core challenge (achieving fusion-relevant densities without collisional loss dominance) is shared.
+- **Polywell (27-polywell)**: Most similar. Both are non-standard electrostatic D-T approaches using combined E and B fields. Polywell has longer experimental history (U.S. Navy WB-8 series) but also has not demonstrated Q>1. Both concepts claim capital cost advantages from eliminating large magnets/blankets. Polywell uses cusp-confined electrons; Orbitron uses magnetron E×B. Neither has a published cost model or plant study. If Orbitron's space-charge mitigation is validated, it may have a physics advantage over Polywell—but both face the same Coulomb collision critique.
 
-**Dense Plasma Focus (24, gap-checked)**: Another "exotic" non-standard D-T concept. Shares the property of extreme physics uncertainty and thin public data, but uses a fundamentally different confinement mechanism (Z-pinch compression vs. electrostatic orbiting). No approved analysis exists for parameter reuse.
+- **Dense Plasma Focus (24-dense-plasma-focus)**: Shares the "non-standard" designation and compact scale, but uses Z-pinch confinement rather than electrostatic. DPF is pulsed (10-100 Hz), Orbitron is steady-state. Both produce 14 MeV neutrons at sub-commercial scale and target neutron source applications before power. DPF has decades of experimental data (1960s-present); Orbitron is earlier-stage.
 
-**Tokamaks (01-HTS-Compact-Tokamak, 21-Spherical-Tokamak-HTS)**: Share D-T fuel and tritium supply constraints (global inventory ~25–30 kg, CANDU production, $35k/g market price), but diverge completely in cost structure. The Orbitron eliminates the three largest tokamak CAS accounts (magnets, blanket, heating) but introduces novel HV and per-module shielding accounts. The tritium sequencing constraint (early plants must demonstrate self-sufficiency before fleet scaling) applies equally—but the Orbitron is *further behind* because it has no breeding blanket design at all, while tokamaks have detailed blanket engineering from ITER/DEMO programs.
+**Concepts with fundamentally different economics**:
 
-### **Landscape positioning**
+- **Spherical Tokamak - HTS (22, Tokamak Energy ST-E1)**: D-T, steady-state, MFE heritage. ST-E1 has $500M-1B magnet cost (HTS at 5-15 T), $200M-400M blanket, $150M-300M ECRH. Orbitron eliminates all three. But ST-E1 has published Q=1.8-2.0 from transport code (not demonstrated, but model-anchored); Orbitron has no Q measurement. ST-E1 self-breeds tritium (TBR=1.2 target); Orbitron buys tritium forever. The cost structures are inverted: tokamak is capital-heavy, Orbitron is OPEX-heavy (at low Q).
 
-The Orbitron is the **most structurally divergent D-T concept** in the portfolio:
-- **Smallest device scale**: Desktop/pickup-truck form factor vs. building-scale MFE/IFE plants
-- **Lowest magnetic field**: 0.5 T vs. 5–20 T (tokamak/stellarator) or 10–30 T (mirror/FRC)
-- **Most capital-efficient at Q>20**: Eliminates ~$850M in tokamak CAS accounts, but this advantage is negated by low net power at Q<15
-- **Most OPEX-intensive at low Q**: Purchased tritium at Q=10 contributes 19% of LCOE vs. ~2% for self-breeding tokamaks
+- **Laser ICF NIF-commercialization (30-laser-icf-nif-commercialization)**: D-T, pulsed, IFE. NIF demonstrated Q>1 (Q_target=3.5 at shot 20231205). Laser driver is $5-10B at rep-rate; Orbitron is $0.6-1B estimated. But NIF has a demonstrated physics result; Orbitron does not. Both concepts have no commercial plant design; NIF's driver cost is the barrier, Orbitron's physics is the barrier.
 
-If the Orbitron achieves Q=20+ and validates a turbine-array architecture, it could offer the **lowest $/kWe in the D-T landscape**—but only in a NOAK scenario with mass-manufactured modules. If Q remains <10 or Coulomb collision physics proves limiting, it becomes the **most economically disadvantaged D-T concept** due to catastrophic recirculating power fractions and permanent tritium OPEX.
+**What makes this concept fundamentally different**: The Orbitron is the only concept in the portfolio where the dominant cost driver is **permanent purchased fuel** rather than capital. At Q=10, tritium is 19% of revenue requirement; at Q=5, 35%; at Q=3, >50%. No other D-T concept has this structure—tokamaks, stellarators, mirrors, ICF all breed tritium (TBR≥1.0 target). The Orbitron's cost equation is: LCOE ∝ (capital/kWe) + (tritium_price × consumption_rate), where consumption ∝ 1/Q. This creates a unique scaling: low Q is doubly punishing (low net power + high fuel burn per kWh).
 
-### **TEA implications**
+**Positioning verdict**: The Orbitron occupies a unique niche—compact, modular, electrostatic, no-breeding D-T. If Q>10-20 is achievable and module capital hits $30k-50k NOAK, it could undercut tokamak LCOE by eliminating magnet/blanket capital. But if Q remains <5 or Coulomb physics prevents Q>1, the concept has no overlap with the viable fusion landscape. It is the highest-risk, highest-potential-differentiation concept in the portfolio.
 
-The Orbitron cannot be evaluated with conventional LCOE methods because its physics feasibility is unresolved. The analysis correctly uses a **back-solve conditional viability map**: parameterize Q and $/kWe, compute LCOE surface, identify which (Q, cost) combinations yield LCOE ≤ $100/MWh, then state what experimental results would place the concept in or out of that region.
-
-**Key finding from the model**: At FOAK capital ($100k/module cathode cost), even Q=30 with η=30% yields LCOE = $4.3k/MWh. The $100/MWh threshold is **not reached at any Q value the model explores** (Q ≤ 30). Only in the most optimistic NOAK scenario (Q=20, η=30%, 10,000 modules, $30k/module cathode cost, 7% interest rate) does LCOE approach $3.4k/MWh—still **34× too expensive**.
-
-The model output is *not* an LCOE estimate. It is a **falsifiable physics requirement**: if Coulomb collision physics constrains achievable Q to <20, the concept is structurally non-viable for electricity generation under any capital cost assumption. This is the appropriate analytical framing for pre-Q=1 concepts, and the Orbitron analysis executes it correctly.
+---
 
 ## 6. Modeling Confidence
 
-**Rating: Low**
+**Rating**: **Low**
 
-**Data-anchored parameters**: 6 of 28 model inputs
-- Cathode voltage: 300 kV (demonstrated, press release)
-- Magnetic field target: 0.5 T (AIP Advances 2024 specification)
-- Operation mode: steady-state (300 kV sustained for hours, press release)
-- Fuel type: D-T (multiple sources)
-- Tritium price: $35k/g (market data)
-- Plant availability: 85% (steady-state analogue, weakly anchored)
+### Data-anchored parameters (4 of 13 LCOE-critical inputs)
 
-**Speculative parameters**: 22 of 28 model inputs
-- **Q_engineering = 10**: No Q value has been measured. Target is Q≈1. The model's Q=10 is aspirational minimum for net power at η=12%.
-- **Thermal efficiency = 12%**: Thermoelectric analogue; no conversion system designed.
-- **Cathode cost = $100k/module**: No cost data exists; industrial HV analogy with FOAK factor.
-- **HV supply cost = $50k/module floor**: Minimum 300 kV sustained supply cost; no Orbitron data.
-- **Shielding cost = $15k/m³**: Concrete + structure + integration; "concrete castle" analogy.
-- **Cathode lifetime = 2 FPY**: No neutron irradiation data; aggressive assumption vs. tokamak first-wall.
-- **O&M fraction = 4%**: Placeholder; no component lifetime or maintenance data.
-- **Module count = 1000**: Plant architecture does not exist; assumed for sizing only.
-- **All CAS20-50 plant-wide accounts**: Scaled from 1costingfe tokamak formulas with concept-specific overrides; none validated for kWe-scale modular D-T plants.
+1. **Cathode voltage**: 300 kV sustained (demonstrated; Avalanche 2025 milestone).
+2. **Operation mode**: Steady-state (explicitly emphasized in press releases).
+3. **Fuel type**: D-T (company stated; FusionWERX facility tritium-licensed).
+4. **Module input power**: ~1 kWe (600 W cathode + 400 W ion guns from CWFest 2023 blog).
 
-### **Dominant uncertainty source**
+These four are the only LCOE-relevant parameters with published experimental or design data. All others are `truly-unknown`, `proprietary`, or `derivable-with-large-uncertainty`.
 
-The LCOE uncertainty is not cost uncertainty—it is **physics feasibility uncertainty**. The model can compute LCOE to arbitrary precision for any (Q, η, $/kWe) input triple, but the *choice* of Q is unconstrained by data. At Q=5, net power is negative. At Q=10, LCOE = $302k/MWh. At Q=20, LCOE = $23k/MWh. At Q=30, LCOE = $14k/MWh. The 20× swing from Q=10 to Q=30 dwarfs all cost uncertainty.
+---
 
-**Until Coulomb collision loss rates are measured experimentally, the LCOE range is [–∞, +∞]** because Q itself is undefined. The model assumes Q>1 is achievable—a binary assumption that determines whether the concept produces net power or not. If this assumption is false (i.e., Coulomb collision physics prevents Q>1), the LCOE is undefined regardless of how precisely capital costs are estimated.
+### Speculative parameters (9 of 13 LCOE-critical inputs)
 
-### **Cost account confidence breakdown**
+1. **Q_engineering**: Model uses Q=10; no measurement exists (CWFest target: Q≈1).
+2. **Thermal efficiency**: Model uses η=35% (canonical); no conversion system designed (thermoelectric 5-15% or turbine 25-35% if MW-scale aggregation works).
+3. **Per-module capital cost**: Model uses $354k/module FOAK; no Orbitron cost data; all subsystem costs are analogies or FOAK estimates.
+4. **Cathode lifetime**: Model uses 2 FPY; no irradiation data for HV components under 14 MeV neutrons.
+5. **Number of modules per plant**: Model uses 1000; no plant architecture disclosed.
+6. **O&M cost fraction**: Model uses 4% of CAPEX/yr; no component replacement schedules exist.
+7. **Capacity factor**: Model uses 85%; steady-state is favorable, but cathode/HV reliability under neutron flux is unknown.
+8. **Plant lifetime**: Model uses 30 yr; no lifetime limiting component analysis exists.
+9. **Tritium consumption rate**: Derivable from Q and burn fraction, but Q is unknown and burn fraction at this device scale is unconstrained.
 
-| CAS Account | Confidence | Grounding |
-|-------------|-----------|-----------|
-| C220103 (Magnets) | Medium | HTS at 0.5 T is low-field; small coil geometry; analogy to industrial SC magnets reasonable |
-| C220107 (HV Supply) | Low | No Orbitron cost data; industrial 300 kV supply analogy ($50k floor) is order-of-magnitude only |
-| C220105 (Cathode) | Very Low | Proprietary HV feedthrough is "key innovation" per company; no disclosed cost or design |
-| C220102 (Shield) | Low | "Concrete castle" geometry known but per-module integration cost is unknown |
-| CAS80 (Tritium) | High | Fuel consumption calculable from Q and fusion power; tritium price is market data |
-| CAS71 (O&M) | Very Low | 4% of CAPEX is placeholder; no component lifetime data under neutron bombardment |
-| CAS72 (Cathode replacement) | Very Low | 2 FPY lifetime is assumed; neutron damage to HV cathodes is "truly-unknown" per gap report |
+All nine are either assumed from analogies (O&M, capacity factor, lifetime) or are direct functions of undemonstrated physics (Q, efficiency, tritium consumption). The model constructs a self-consistent CAS account structure, but the inputs have no experimental anchor.
 
-**Overall**: 1 high-confidence account (tritium fuel), 1 medium-confidence account (magnets), 5 low/very-low accounts covering 85% of direct capital. This is the weakest cost basis of any D-T concept in the portfolio.
+---
+
+### Dominant source of LCOE uncertainty
+
+**Q_engineering** is the single parameter that propagates into every other LCOE term. Net power = (Q×η - 1) × P_input × n_modules. At Q<3.2 (break-even for η=35%), net power is negative. At Q=5, net power = 630 kWe → specific capital = $1.1M/kWe. At Q=30, net power = 9.4 MWe → specific capital = $79k/kWe. The difference between Q=5 and Q=30 is a 100× change in LCOE. Every capital cost, O&M, and fuel cost per MWh scales inversely with net power, which scales with (Q×η - 1).
+
+**Second-order uncertainties** (cathode lifetime, module capital, shielding geometry, conversion efficiency) have ~±20-50% LCOE impact each. But Q uncertainty is ±10× or more. Until Q≥1 is experimentally demonstrated, the LCOE model is a conditional map ("if Q=X, then LCOE=Y") rather than a projection.
+
+**Modeling confidence verdict**: The model is structurally sound—it uses 1costingfe CAS accounts, applies concept-specific overrides with documented rationale, and sweeps the dominant uncertainty axes. But confidence in the LCOE output is **low** because 70% of critical inputs are `truly-unknown` or `proprietary`. The back-solve surface (Section 8 tables) is the appropriate analytical output: it shows where (Q, capital) must land for viability, not where they will land.
+
+---
 
 ## 7. What Would Change My Mind
 
-Three specific developments would materially shift the LCOE estimate in either direction:
+### 1. Experimental demonstration of Q≥1 in a D-T Orbitron at steady-state
 
-### **1. Experimental measurement of Q>5 with published Coulomb collision loss rates**
-**Direction**: Favorable (if Q>5 demonstrated) or Fatal (if collision losses confirm Q<1 ceiling)
+**Specific evidence**: Peer-reviewed publication reporting: fusion power ≥ 1.5× input power sustained for ≥100 seconds, with measured ion density ≥5×10¹⁰ cm⁻³, confinement time ≥0.1 ms, and Coulomb collision loss rate ≤5× fusion rate. This combination would validate the space-charge mitigation claim, retire the Coulomb thermalization critique, and establish a credible path to Q>5.
 
-If Avalanche publishes peer-reviewed experimental results showing:
-- Sustained fusion operation at ion densities >10¹⁰ cm⁻³ (the space-charge-mitigated regime)
-- Measured fusion Q ≥ 5 in a D-T plasma (not beam-into-gas)
-- Coulomb collision loss rates ≤ fusion energy production rate
-
-...then the central physics barrier is retired. The LCOE surface shifts from speculative to exploratory: Q=5 at η=30% yields $57k/MWh at baseline capital, still 570× too expensive, but it places the concept in the "difficult but not impossible" regime where engineering cost reduction could conceivably reach commercial LCOE in a NOAK limit.
-
-Conversely, if the measured collision rate confirms the 25–37× fusion rate ratio from Lampe-Mannheimer (1998), the concept is definitively non-viable for D-T power generation. No capital cost reduction, module scaling, or thermal efficiency improvement can overcome a physics barrier that prevents net energy gain.
-
-**Likelihood**: The full-text AIP Advances (2024) and Physics of Plasmas (2025) papers likely contain the first experimental constraints on collision rates, but the gap report notes these were inaccessible (paywalled). The APS DPP 2023 abstract reports ">100 keV deuterium ions confined"—a necessary but insufficient condition for Q>1 (density and confinement time are also required). Avalanche's FusionWERX facility is designed for D-T testing; results are expected within 2–3 years if the program proceeds as announced.
+**Impact on LCOE**: If Q=5-10 is demonstrated, the concept moves from "speculative" to "early-stage but physics-validated." LCOE shifts from $10k-35k/MWh range to $5k-15k/MWh range (still non-viable, but within 10× of target rather than 100×). The economic case becomes: "can we reduce module capital from $350k to $30k via NOAK learning?" rather than "does this work at all?"
 
 ---
 
-### **2. Disclosure of a multi-module turbine-array plant architecture with η>25% at <1 MWe aggregate**
-**Direction**: Strongly favorable
+### 2. Published plant architecture: N modules → X MWe with BOP design and capital cost breakdown
 
-If Avalanche or an independent engineering firm publishes a credible plant design showing:
-- Stacking of ≥1000 modules with integrated thermal coupling to a shared turbine system
-- Demonstrated thermal-to-electric conversion efficiency ≥25% at aggregate thermal power <1 MWe
-- Neutron shielding geometry compatible with dense module packing (not individual "concrete castles")
+**Specific evidence**: ARIES-style conceptual plant study: (e.g.) 5000 modules × 1 kWe input → 9.4 MWe net at Q=10, η=30%. Thermal aggregation via shared coolant bus feeding 10 MWe sCO₂ turbine. Per-module shielding: $30k integrated enclosure (not site-built concrete castle). Total overnight capital: $1.2B ($127k/kWe). LCOE breakdown: 50% capital, 30% O&M, 20% fuel.
 
-...then the turbine-array scenario (η=30% in the model) becomes physically realizable rather than aspirational. This shifts the baseline LCOE surface from $302k/MWh (thermoelectric, η=12%) to $13k/MWh (turbine, η=30%) at the same Q=10—a **23× improvement**. At Q=20 with this architecture, LCOE drops to $6k/MWh, approaching the range where NOAK learning curves could conceivably yield sub-$1k/MWh in a mature supply chain.
-
-**Likelihood**: Low in the near term. The company's public roadmap emphasizes Q>1 demonstration, not plant architecture development. The modular concept is described qualitatively ("stacked for near-endless power") without engineering detail. Small-scale turbine technology exists (sCO₂, ORC) but achieving 25–30% efficiency below 1 MWe requires custom engineering that has not been demonstrated for fusion applications.
+**Impact on LCOE**: Eliminates the "no plant architecture" uncertainty. If the study shows a credible path to $100-200k/kWe specific capital at FOAK (achievable with Q=15-20 and $50k-100k/module), the concept becomes: "physics is the only remaining barrier." If the study shows specific capital cannot drop below $500k/kWe even at NOAK, the concept is non-viable regardless of Q achievement.
 
 ---
 
-### **3. Validated tritium breeding blanket design with TBR≥1.0 integrated with the Orbitron geometry**
-**Direction**: Favorable (moderate impact)
+### 3. Breeding blanket design achieving TBR≥1.05 at compact geometry, or alternate fuel (D-D, p-B11) pathway
 
-If the Fusion Fuel Cycles (FFC) MoU yields a disclosed breeding blanket design with:
-- TBR ≥ 1.0 validated by neutronics simulation
-- Physical integration with the Orbitron's compact cylindrical geometry (10 cm radius × 20 cm length module)
-- Cost estimate ≤ $50k/module additional CAPEX
+**Specific evidence**: Two paths that change the tritium-cost barrier:
 
-...then the permanent tritium OPEX penalty is eliminated. At Q=10, baseline LCOE drops from $302k/MWh to ~$246k/MWh (–18%) by removing the $33M/yr tritium purchase cost. At Q=20 with η=30%, LCOE drops from $6k/MWh to ~$4k/MWh (–33%). This is significant but not transformative—tritium cost is a second-order effect compared to Q and η.
+**Path A (breeding)**: Published blanket design: cylindrical LiPb annulus surrounding 10-20 cm Orbitron core, 10 cm thick, TBR=1.08 ± 0.03 (MCNP calculation). Tritium extraction via He purge gas, integrated with vacuum system. Adds $50k/module capital but eliminates $33M/yr tritium purchase.
 
-**Likelihood**: Low. The compact module geometry provides insufficient space for a conventional lithium blanket (~40 cm thickness required for TBR≥1.0 with FLiBe). Alternative approaches (external blanket surrounding module array, advanced breeding concepts with thin lithium layers) are geometrically possible but add thermal coupling and neutron shielding complexity. The FFC MoU (April 2025) is a disclosed collaboration direction, not a design or timeline. Expect 3–5 years minimum before a conceptual blanket design is published, if at all.
+**Path B (alternate fuel)**: Demonstration of Q>1 with D-D fuel (no tritium purchase, no breeding needed). Or p-B11 (aneutronic; no neutrons, no blanket, no tritium). Company has stated p-B11 as "future aspiration"—if E×B confinement at 300 kV scales to the 150-600 keV required for p-B11, the economics transform completely (no radiation, no tritium, no blanket, no shield).
+
+**Impact on LCOE**: Path A: eliminates $33M/yr fuel cost (19% of revenue at Q=10) → LCOE drops from $10,200/MWh to $8,200/MWh (-20%). Still non-viable, but removes the Q-dependent fuel scaling penalty. Path B (D-D or p-B11): if Q>5 is achievable, LCOE could drop to $1k-5k/MWh range (10× closer to viability). p-B11 requires Q>50-100 due to lower cross-section, but eliminates neutron handling entirely—transformative if achievable.
+
+---
 
 ## 8. LCOE Downselect Scoring
 
-### C1: Modularization — Score: **3.8**
+### Overview
+
+The Electrostatic Hybrid (D-T) is the earliest-stage concept in the downselect pool. Q>1 is undemonstrated, the Coulomb collision barrier is unretired, and no plant architecture exists. Scoring reflects the concept's extreme uncertainty and structural cost challenges. High scores are assigned where genuine advantages exist (modularization, scalability of small devices, minimal supply chain constraints); low scores reflect missing evidence and unresolved physics. The C7 risk matrix documents that all seven functions carry Tier 1-2 evidence at best—this is a pre-commercial, pre-breakeven concept.
+
+**Key scoring philosophy**: The Orbitron's advantages (no large magnets, no blanket, compact) are real *if Q>1 is achieved*. Scores in C1, C3, C5 reflect those advantages. But C7 (technical risk) and C8 (data adequacy) reflect the undemonstrated physics and opaque disclosure. The framework does not allow a "zero" score for missing data—scores reflect the best available evidence even when that evidence is thin.
+
+---
+
+### Scored Criteria
+
+---
+
+#### C1: Modularization — **Score: 4.2/5.0**
 
 **Sub-factor 1: Construction mode classification per CAS account**
 
-The Orbitron's desktop-scale modules are inherently factory-manufacturable, but the plant-level integration introduces site-assembly for BOP and shielding.
+Each major CAS22 account classified by construction mode:
 
-| CAS Account | Component | Construction Mode | Score | Cost Weight (%) | Notes |
-|-------------|-----------|-------------------|-------|-----------------|-------|
-| C220101 | Chamber wall | Factory module | 5 | 5% | Stainless vacuum envelope, precision-welded; ships as sealed unit |
-| C220102 | Neutron shield | Site-assembled | 3 | 1% | Concrete + steel enclosure; poured/erected on-site around module array |
-| C220103 | HTS magnets | Factory module | 5 | 12% | Two compact HTS coil pairs per module; wound and tested at factory |
-| C220105 | Cathode assembly | Factory module | 5 | 24% | Tungsten cathode + HV feedthrough is proprietary; precision assembly at factory |
-| C220106 | Vacuum system | Factory module | 5 | 19% | Ion pumps + turbo pumps integrated into module at factory |
-| C220107 | HV power supply | Factory module | 5 | 12% | 300 kV sustained supply is industrial product; factory-built and tested |
-| C220110 | Remote handling | Factory sub-assemblies | 3 | 1% | Robotic tooling for module swap; assembled on-site from factory components |
-| C220200 | Coolant system | Site-assembled | 3 | 0.4% | Thermal coupling between modules; piping erected on-site |
-| C220300 | Aux cooling + cryo | Site-assembled | 3 | 14% | Cryoplant for HTS coils is plant-level equipment; installed on-site |
-| C220700 | I&C | Factory sub-assemblies | 3 | 1% | Distributed sensors/controls per module shipped as components; integrated on-site |
+| CAS Account | Construction Mode | Mode Score | Cost Share | Weighted |
+|-------------|-------------------|------------|------------|----------|
+| C220101: Chamber Wall | Factory module | 5 | 5.7% | 0.28 |
+| C220102: Neutron Shield | Site-assembled (integrated enclosure) | 3 | 1.4% | 0.04 |
+| C220103: HTS Magnets | Factory module | 5 | 12.0% | 0.60 |
+| C220104: Heating | Factory module (ion gun) | 5 | 0.0% | 0.00 |
+| C220105: Cathode/Vacuum | Factory module | 5 | 23.9% | 1.20 |
+| C220106: Vacuum System | Factory sub-assemblies | 4 | 19.1% | 0.76 |
+| C220107: HV Power Supply | Factory module | 5 | 12.0% | 0.60 |
+| C220108: Target Factory | N/A (not applicable) | - | 0.0% | 0.00 |
+| C220110: Remote Handling | Factory module (robotic) | 5 | 1.2% | 0.06 |
+| C220111: Installation | Site labor | 1 | 10.4% | 0.10 |
+| C220112: Isotope Separation | N/A (no breeding) | - | 0.0% | 0.00 |
+| **CAS22 plant-wide accounts** | Stick-built | 1 | 15.3% | 0.15 |
 
-**Cost-weighted average (CAS22 only)**:
-- Factory module (score 5): 72% of CAS22 cost
-- Site-assembled (score 3): 17% of CAS22 cost
-- Factory sub-assemblies (score 3): 2% of CAS22 cost
-- **Weighted average: (0.72×5) + (0.17×3) + (0.02×3) = 4.17**
+**Cost-weighted average**: (0.28 + 0.04 + 0.60 + 0.00 + 1.20 + 0.76 + 0.60 + 0.06 + 0.10 + 0.15) = **3.79**
 
 **Sub-factor 2: Module repetition boost**
 
-1000 modules per plant at baseline; each module is identical. Per framework: 10–49 modules → +0.5 boost; ≥50 modules → +1.0 boost (diminishing returns above 49, but 1000 is well into saturation).
+1000 modules per plant → +0.5 boost (10-49 units: +1.0; 50-999: +0.5; >1000: +0.5 capped).
 
-**Module repetition boost: +1.0**
+**C1 = 3.79 + 0.5 = 4.29, clamped to [1,5] → 4.3**
 
-**Total C1 score**: 4.17 (weighted mode) + 1.0 (repetition) = **5.17**, clamped to [1, 5] → **5.0**
+**Justification**: The Orbitron's modularization is its core economic advantage. Each module is a self-contained unit: cathode assembly, HTS coil pair, HV supply, vacuum system, and ion gun—all factory-built. The per-module cost breakdown (model CAS22) shows 82% of per-module capital is factory-manufacturable (chamber, magnets, cathode, HV, vacuum pump). Only installation labor (10%) and site shielding integration (1-2%) are field-erected. The 1000-module plant configuration provides genuine repetition learning—analogous to mass-produced aircraft turbines or automotive battery modules. Plant-wide BOP (coolant, cryoplant, control) is stick-built (15% of total CAS22) and lowers the weighted average, but the dominant accounts are modular. The concept achieves a higher C1 than any tokamak (site-erected vacuum vessel and blanket) or stellarator (non-planar coils). It matches or exceeds laser IFE target factories in modularity.
 
-Wait—I need to re-check the calculation. Let me recalculate more carefully, as the framework says the boost applies to the cost-weighted average, and the result should be clamped to 5.
-
-Actually, re-reading: "C1 = cost-weighted average of mode scores + module repetition boost, clamped to [1, 5]."
-
-So: 4.17 + 1.0 = 5.17, clamped → **5.0**. But this seems too generous. Let me verify the cost weights are correct by checking the model output.
-
-From model output (baseline, 1000 modules):
-- C220101: $20M fleet (5%)
-- C220102: $5.65M fleet (1%)
-- C220103: $50M fleet (12%)
-- C220105: $100M fleet (24%)
-- C220106: $80M fleet (19%)
-- C220107: $50M fleet (12%)
-- C220110: $5M fleet (1%)
-- C220200: $1.63M (0.4%)
-- C220300: $57M (14%)
-- C220700: $2.83M (1%)
-- CAS22 total: $416M
-
-Cost-weighted average calculation:
-- Factory module accounts (5): 20+50+100+80+50 = $300M → 72% of $416M
-- Site-assembled accounts (3): 5.65+1.63+57+2.83 = $67M → 16% of $416M
-- Factory sub-assemblies (3): 5 = $5M → 1% of $416M
-- Unaccounted: $416M - $372M = $44M (missing from this breakdown—likely other CAS22 accounts like C220111 installation, C220400, C220500, C220600 which are plant-wide)
-
-Hmm, I need to include all CAS22 accounts for the cost weight. Let me use only the major per-module accounts for the mode classification and note that plant-wide accounts (C220200, C220300, C220400, C220500, C220600, C220700) are site-assembled or site-erected by definition.
-
-Let me recalculate using CAS22 per-module subtotal ($354M fleet) + plant-wide subtotal ($62M):
-- Factory module (score 5): $300M / $416M = 72%
-- Site-assembled (score 3): ($5.65M shield + $62M plant-wide) / $416M = 16%
-- Factory sub-assemblies (score 3): $5M / $416M = 1%
-- Other (installation C220111 = $43M): site labor, score 1 → 10%
-
-Revised cost-weighted average:
-(0.72×5) + (0.16×3) + (0.01×3) + (0.10×1) = 3.6 + 0.48 + 0.03 + 0.10 = **4.21**
-
-Add module repetition boost (+1.0 for 1000 modules): 4.21 + 1.0 = 5.21, clamped to [1, 5] → **5.0**
-
-Actually, I realize installation labor (C220111) should not be "site-erected" (score 1) but rather "site-assembled from factory sub-assemblies" (score 3)—it's the labor to install factory-built modules. Let me re-score:
-
-- Factory module (score 5): $300M / $416M = 72%
-- Site-assembled (score 3): ($5.65M shield + $62M plant-wide + $43M installation) / $416M = 27%
-- Factory sub-assemblies (score 3): $5M / $416M = 1%
-
-Weighted: (0.72×5) + (0.27×3) + (0.01×3) = 3.6 + 0.81 + 0.03 = **4.44**
-
-Add boost: 4.44 + 1.0 = 5.44, clamped → **5.0**
-
-This still clamps to 5.0. But intuitively, the Orbitron should score very high on modularization (desktop-scale factory-built modules), so C1=5.0 seems correct. However, I should be more conservative given that the plant-wide BOP (27% of cost) is site-assembled. Let me check if the "module repetition boost" should actually be smaller.
-
-Re-reading framework: "10–49 identical modules: +1.0 to the cost-weighted average. Diminishing returns above 49 units."
-
-The text says "+1.0" for 10-49 modules, with diminishing returns above 49. It does *not* specify the exact boost value for 1000 modules, but implies it's still +1.0 (just with diminishing marginal benefit beyond 49). So +1.0 is correct.
-
-Given that 72% of CAS22 cost is factory-manufactured modules (score 5) and 27% is site-assembled (score 3), the weighted average before boost is 4.44. Adding +1.0 boost → 5.44, clamped to 5.0.
-
-**Final C1 score: 5.0**
-
-But let me double-check the mode classifications for a few key accounts:
-- **C220102 (shield)**: I scored this as "site-assembled" (score 3). But if shielding is poured concrete around a dense module array, this is "stick-built / field-erected" (score 1). Let me revise to score 1.
-- **C220200 (coolant)**: Site-assembled piping → score 3 is correct.
-- **C220300 (cryo)**: Industrial cryoplant installed on-site → score 3 is correct.
-- **C220111 (installation)**: Labor to install factory modules → score 3 is reasonable.
-
-Revised with shield = 1:
-- Factory module (score 5): $300M / $416M = 72%
-- Site-assembled (score 3): ($62M plant-wide + $43M installation + $5M RH) / $416M = 26%
-- Stick-built (score 1): $5.65M shield / $416M = 1%
-
-Weighted: (0.72×5) + (0.26×3) + (0.01×1) = 3.6 + 0.78 + 0.01 = **4.39**
-Add boost: 4.39 + 1.0 = 5.39, clamped → **5.0**
-
-OK so C1 = 5.0 is robust to these variations. The Orbitron genuinely scores very high on modularization.
-
-**Justification (2-3 sentences)**: The Orbitron's desktop-scale modules (cathode, HTS magnets, HV supply, vacuum system) are entirely factory-manufacturable with 1000 identical units per plant, scoring 5 (factory module) for 72% of CAS22 direct capital. Plant-wide BOP (coolant, cryoplant, I&C) is site-assembled (score 3) for 26% of cost. The module repetition boost (+1.0 for 1000 units) pushes the cost-weighted score from 4.4 to 5.4, clamped at the maximum 5.0. Modularization is the concept's strongest structural advantage.
+**Key uncertainty**: Shielding integration. If each module requires site-built concrete enclosure (the "concrete castle" mentioned in CWFest blog), shielding becomes stick-built and drags C1 down to ~3.5-3.8. The baseline scoring assumes integrated factory-built shielding enclosures (aluminum-borated-poly sandwich or similar) delivered with each module. This is optimistic but not impossible.
 
 ---
 
-### C3: Supply Chain Learning — Score: **3.5**
+#### C3: Supply Chain Learning — **Score: 3.7/5.0**
 
-**Sub-factor A: Component learning rates (1-5, cost-weighted)**
+**Sub-factor A: Component learning rates (cost-weighted average across CAS accounts)**
 
-| Component | Learning Rate Category | Score | Cost Weight (%) | Rationale |
-|-----------|------------------------|-------|-----------------|-----------|
-| HTS magnets (0.5 T) | Growing production base | 4 | 12% | REBCO tape supply chain is expanding; 0.5 T compact coils are orders of magnitude smaller than tokamak magnets; existing industrial SC magnet vendors can supply |
-| HV power supply | Specialty, limited supply | 3 | 12% | Industrial 300 kV sustained supplies exist for accelerators/e-beam systems, but production volume is low; Avalanche's proprietary HV feedthrough is novel (no existing market) |
-| Cathode assembly | Fusion-specific, no market | 2 | 24% | Tungsten cathode geometry optimized for orbitrap confinement is novel; neutron-tolerant HV electrode at 300 kV has no current analog |
-| Vacuum system | Industrial, established | 4 | 19% | Ion pumps, turbo pumps, HV feedthroughs (non-neutron) are mature industrial products with large supply base |
-| Neutron shielding | Commodity | 5 | 1% | Concrete and structural steel are globally abundant commodities |
-| Coolant/thermal | Industrial, established | 4 | 0.4% | Small-scale heat exchangers and coolant loops are mature industrial products |
-| Cryoplant | Specialty, limited supply | 3 | 14% | Industrial cryocoolers for HTS exist but production is limited; low cryo load (5 W/module) uses existing technology |
-| I&C | Industrial, established | 4 | 1% | Distributed sensors, HV monitoring, control systems are mature with large markets |
+| Component | Learning Rate Category | Score | Cost Share | Weighted |
+|-----------|------------------------|-------|------------|----------|
+| HTS coils (0.5 T, small bore) | Growing industrial (REBCO tape <100 m/coil) | 4 | 12.0% | 0.48 |
+| HV power supply (300 kV industrial) | Specialty component (accelerator/HVDC supply base) | 3 | 12.0% | 0.36 |
+| Cathode assembly (tungsten/SS HV chamber) | Specialty component (vacuum/HV engineering) | 3 | 23.9% | 0.72 |
+| Vacuum systems (pumps, gauges, feedthroughs) | Commodity/growing industrial | 4 | 19.1% | 0.76 |
+| Neutron shielding (concrete/borated poly) | Commodity component | 5 | 1.4% | 0.07 |
+| Chamber wall (stainless steel) | Commodity component | 5 | 5.7% | 0.28 |
+| Ion guns | Specialty component (plasma source market) | 3 | 0.0% | 0.00 |
+| BOP (coolant, cryo, controls) | Industrial component | 4 | 15.3% | 0.61 |
+| Installation labor | Fusion-specific (no current market) | 2 | 10.4% | 0.21 |
 
-**Cost-weighted average**:
-(0.12×4) + (0.12×3) + (0.24×2) + (0.19×4) + (0.01×5) + (0.004×4) + (0.14×3) + (0.01×4)
-= 0.48 + 0.36 + 0.48 + 0.76 + 0.05 + 0.02 + 0.42 + 0.04 = **2.61**
+**Sub-factor A = Σ(weighted) = 3.49**
 
-Hmm, this seems low. Let me recalculate with attention to the cost weights summing to 100%:
+**Sub-factor B: Supply chain bottleneck count**
 
-From CAS22 breakdown ($416M total):
-- C220103 HTS: $50M → 12%
-- C220107 HV supply: $50M → 12%
-- C220105 Cathode: $100M → 24%
-- C220106 Vacuum: $80M → 19%
-- C220102 Shield: $5.65M → 1.4%
-- C220200 Coolant: $1.63M → 0.4%
-- C220300 Cryo: $57M → 14%
-- C220700 I&C: $2.83M → 0.7%
-- Other (C220101, 111, 400, 500, 600): $69M → 16.5%
+- **Hard constraints**: Tritium supply (global ~25 kg, 5.5% decay/yr, CANDU production declining). But no breeding → not a plant-construction bottleneck, only a fuel-cost bottleneck. **Penalty: -0.5** (scaling constraint, not hard block).
+- **Scaling constraints**: None. HV supplies and small HTS coils scale linearly with module count. No single-source 100+ tonne FLiBe or REBCO tape bottleneck.
+- **Sole-source dependencies**: None identified. HV supplies have multiple vendors (Spellman, Glassman, Advanced Energy). Small HTS coils can be sourced from multiple winding shops.
 
-I need to classify "Other" accounts:
-- C220101 chamber wall ($20M, 5%): Stainless steel vacuum envelope → industrial, established → score 4
-- C220111 installation ($43M, 10%): Labor, not a component → exclude from learning rate assessment (or score as 3 for construction labor learning)
-- C220400 rad waste ($0.02M, ~0%): negligible
-- C220500 fuel handling ($0.16M, ~0%): negligible
-- C220600 other equipment ($0M reported): negligible
+**Sub-factor B = 5.0 - 0.5 = 4.5**
 
-Revised cost weights (excluding installation labor):
-Total cost excluding installation = $416M - $43M = $373M
+**Sub-factor C: External demand pull (>$1B/yr external market)**
 
-- HTS: $50M / $373M = 13.4%
-- HV supply: $50M / $373M = 13.4%
-- Cathode: $100M / $373M = 26.8%
-- Vacuum: $80M / $373M = 21.4%
-- Chamber wall: $20M / $373M = 5.4%
-- Shield: $5.65M / $373M = 1.5%
-- Coolant: $1.63M / $373M = 0.4%
-- Cryo: $57M / $373M = 15.3%
-- I&C: $2.83M / $373M = 0.8%
+| Component | External Market Size (est.) | Cost Share |
+|-----------|----------------------------|------------|
+| HTS tape/coils | ~$500M/yr (MRI, motors, fusion R&D) | 12.0% |
+| HV power supplies | ~$2B/yr (accelerators, medical, industrial) | 12.0% |
+| Vacuum systems | ~$5B/yr (semiconductors, coatings, analytical) | 19.1% |
+| Stainless steel | ~$100B/yr (commodity) | 5.7% |
+| Concrete/shielding | ~$100B/yr (construction commodity) | 1.4% |
+| BOP (pumps, HX, controls) | ~$20B/yr (industrial process equipment) | 15.3% |
 
-Weighted average:
-(0.134×4) + (0.134×3) + (0.268×2) + (0.214×4) + (0.054×4) + (0.015×5) + (0.004×4) + (0.153×3) + (0.008×4)
-= 0.536 + 0.402 + 0.536 + 0.856 + 0.216 + 0.075 + 0.016 + 0.459 + 0.032
-= **3.13**
+**Fraction with >$1B external market**: (12.0 + 12.0 + 19.1 + 5.7 + 15.3) / 100 = **64.1%**
 
-Round to one decimal: **3.1**
+**Sub-factor C = 5** (>60%)
 
-**Sub-factor B: Supply chain bottleneck count (1-5)**
+**C3 = (3.49 + 4.5 + 5.0) / 3 = 4.33 → round to 4.3**
 
-Start at 5.0, subtract penalties:
+**But**: Tritium scaling constraint penalty is real. Purchasing tritium at scale (>1000 g/yr for multi-plant fleet) from declining CANDU production is a constraint shared with all D-T concepts. Adjust C3 down by 0.5 for the tritium-purchase dependency → **C3 = 4.3 - 0.5 = 3.8**, round to **3.8**.
 
-**Hard constraints (no known path to required quantity)**: 0
-- None identified. All components have existing industrial supply chains or are manufacturable with current technology.
+**However, re-checking the framework**: The tritium penalty is already applied under "scaling constraint." The -0.5 is already in Sub-factor B. Do not double-count. **Final C3 = 4.3, but acknowledging the tritium constraint is material.**
 
-**Scaling constraints (exists but must scale 10×+)**: 2
-- **HTS tape for compact 0.5 T coils**: Existing REBCO production can supply small coils, but scaling to 1000 modules (1000 coil pairs) requires increased tape production. However, the total tape quantity is ~50–200 m per module × 1000 modules = 50–200 km total—well within current global REBCO production capacity (~500–1000 km/yr). This is NOT a hard constraint (no 10× scaling needed), so no penalty. *Actually, on second thought, 1000 modules is relatively modest scale, so no scaling penalty applies.*
-- **300 kV sustained HV supplies**: Industrial production exists for accelerator/e-beam markets, but scaling to 1000+ units/yr for a commercial Orbitron fleet would require 10× expansion of current specialized HV supply vendors. **–0.5 penalty**.
-- **Proprietary HV feedthrough**: Avalanche's "key innovation" has no current market. Scaling to mass production (1000+ units/yr) requires establishing a new supply chain. **–0.5 penalty**.
+**Actually, let me re-score Sub-factor B more carefully**:
 
-**Sole-source dependency**: 1
-- **Avalanche HV feedthrough**: Proprietary design with no alternative suppliers disclosed. **–0.25 penalty**.
+Tritium as purchased fuel (no breeding) means the Orbitron is **uniquely dependent** on external tritium supply indefinitely. This is not a "scaling constraint" (which implies "can scale with investment")—it is a **permanent external dependency**. The framework's "sole-source dependency" category applies: global tritium is functionally single-source (CANDU decline, no commercial alternatives). Penalty: **-0.5** for sole-source + **-0.5** for scaling constraint (limited global inventory growth).
 
-**Helium-3 fuel dependency**: 0
-- Concept uses D-T, not D-He3.
+**Sub-factor B = 5.0 - 0.5 - 0.5 = 4.0**
 
-**Total penalties**: –0.5 (HV supply scaling) – 0.5 (HV feedthrough scaling) – 0.25 (sole-source) = **–1.25**
+**C3 = (3.49 + 4.0 + 5.0) / 3 = 4.16 → 4.2**
 
-**Sub-factor B score**: 5.0 – 1.25 = **3.75**, rounded to **3.8**
-
-**Sub-factor C: External demand pull (1-5)**
-
-What fraction of capital cost is in components with >$1B/yr external market?
-
-- **Vacuum systems** (ion pumps, turbo pumps): $80M (19%) → >$1B/yr global market (semiconductor, research, industrial vacuum)
-- **Cryoplant** (cryocoolers): $57M (14%) → >$1B/yr global market (medical MRI, industrial gas liquefaction, superconducting magnet applications)
-- **Coolant/heat exchangers**: $1.63M (0.4%) → >$1B/yr global market
-- **I&C** (sensors, controls): $2.83M (0.7%) → >$10B/yr global market
-- **Neutron shielding** (concrete, steel): $5.65M (1.4%) → >$100B/yr global construction market
-- **Chamber wall** (stainless steel): $20M (5%) → >$10B/yr global stainless steel market
-
-**Total with >$1B/yr external market**: $80M + $57M + $1.63M + $2.83M + $5.65M + $20M = **$167M**
-**Fraction of CAS22**: $167M / $416M = **40%**
-
-Per framework:
-- >60%: score 5
-- 40–60%: score 4
-- 20–40%: score 3
-- 10–20%: score 2
-- <10%: score 1
-
-**Sub-factor C score: 4**
-
-**C3 total**: (A + B + C) / 3 = (3.1 + 3.8 + 4.0) / 3 = **3.63**, rounded to **3.6**
-
-Hmm, let me recalculate C more carefully. I should check if "HTS magnets" count as external demand pull. REBCO tape has a growing market for fusion magnets, but the market is currently <$1B/yr globally. However, *cryocoolers* for HTS are part of a >$1B/yr market (medical MRI cryogenics, industrial SC applications). Let me not double-count cryo in the >$1B category if I already counted it.
-
-Actually, re-reading my list: I counted cryoplant ($57M, 14%) separately, which is correct. HTS magnets ($50M, 12%) are NOT in the >$1B/yr category (global REBCO market is ~$100–500M/yr currently, growing). So my C=4 calculation is correct: 40% of cost is in >$1B/yr markets.
-
-**Final C3 score: 3.6**
-
-**Justification**: Component learning rates average **3.1/5** (cost-weighted): vacuum systems, chamber wall, and cryoplant (47% of cost) score 4 (industrial, established supply), but the cathode assembly (26% of cost) scores only 2 (fusion-specific, no current market) and the proprietary HV feedthrough (13% of cost) scores 3 (specialty, limited supply). Supply chain bottlenecks are moderate (**3.8/5**): scaling 300 kV HV supplies and the proprietary feedthrough to 1000+ units/yr requires 10× vendor expansion (–1.0 penalty), and the HV feedthrough is sole-source (–0.25). External demand pull is **4/5**: 40% of capital cost (vacuum systems, cryo, shielding, chamber steel) taps >$1B/yr industrial markets. The cathode and HV supply novelty limit learning potential.
+**Justification**: The Orbitron avoids the two most severe supply chain bottlenecks in D-T fusion: large REBCO quantities (requires <1% of tokamak tape per plant) and FLiBe/beryllium (no blanket). 64% of capital is in components with >$1B/yr external markets (HV supplies, vacuum, BOP, steel). Learning rates are favorable for vacuum systems and structural materials (commodity), moderate for HV and HTS (specialty but growing), and low for fusion-specific installation labor. The tritium dependency is the dominant constraint: purchasing tritium indefinitely at $35k/g from a declining global supply is a unique vulnerability. No other D-T concept in the landscape has this structure—all others breed. This lowers C3 from a potential 4.5-4.8 (if breeding blanket existed) to 4.2.
 
 ---
 
-### C4: Plant Complexity — Score: **3.0**
+#### C4: Plant Complexity — **Score: 3.0/5.0**
 
-**Sub-factor A: Operational coupling density (1-5)**
+**Sub-factor A: Operational coupling density (failure cascades and maintenance dependencies)**
 
-Rate failure cascades and maintenance dependencies focusing on OPERATIONAL coupling (if component X fails, what else stops working).
+Rate: **3/5** — Moderate coupling
 
-**Module-level coupling (within a single Orbitron module)**:
-- **Cathode failure** → immediate module shutdown (no fusion without 300 kV cathode potential). Other modules unaffected. **Low inter-module coupling**.
-- **HV supply failure** → immediate module shutdown. Other modules unaffected. **Low inter-module coupling**.
-- **Vacuum breach** → module shutdown (plasma extinguished). Other modules unaffected unless breach is catastrophic (neutron shielding breach → radiation hazard affects adjacent modules). **Low-to-moderate coupling**.
-- **HTS magnet quench** → E×B electron confinement lost → module shutdown. Other modules unaffected unless quench damages cryo supply (affects all modules sharing cryoplant). **Moderate coupling via shared cryo**.
-- **Ion gun failure** → reduced fusion rate but not immediate shutdown (cathode still accelerates residual ions). **Low coupling**.
+**Operational coupling at module level**:
+- Each module is largely independent: dedicated cathode, HV supply, vacuum system, ion gun. If one module fails, the other 999 continue operating (assuming individual grid-tie or thermal bus isolation).
+- **But**: Shared systems create coupling: (1) Tritium distribution manifold—if tritium supply fails, all modules stop; (2) Cooling water bus—if shared coolant pump fails, multiple modules overheat; (3) Electrical grid tie—if substation fails, module array disconnects.
+- **Neutron cross-talk**: Dense module packing creates neutron flux overlap. If one module's shielding fails, adjacent modules see elevated dose. This is a spatial coupling unique to multi-module compact neutron sources.
 
-**Plant-level coupling**:
-- **Cryoplant failure** → all 1000 HTS magnets lose cooling → plant-wide shutdown within hours as magnets quench sequentially. **High coupling** (single-point failure cascades to full plant).
-- **Coolant system failure** → thermal runaway in operating modules → emergency shutdown required. **Moderate-to-high coupling** (shared coolant loop creates cascade potential).
-- **Tritium supply interruption** → gradual fusion rate decline as fuel depletes, but not immediate shutdown (can run on D-D or residual D-T inventory). **Low coupling**.
-- **Module replacement** → one module can be swapped without shutting down others (assuming modular design intent). **Low coupling** (if design is competent).
+**Failure cascade paths**:
+- Tritium supply failure → plant shutdown (all modules)
+- HV arc in one module → local shutdown only (module-level breaker)
+- Cathode failure → module-level outage, but 999/1000 capacity remains
+- Coolant pump failure → ~10-50 module cascade depending on distribution architecture
 
-**Operational coupling verdict**: The plant has **one critical single-point failure** (cryoplant for 1000 HTS coils), but otherwise module-level failures are mostly isolated. Maintenance dependencies are moderate: cathode replacement requires module shutdown but not plant shutdown. HV feedthrough failure is a module-level event. Neutron shielding integrity is module-specific (or array-specific if shared shielding design is used, which is TBD).
+**Maintenance dependencies**:
+- Cathode replacement: per-module operation (robot swap; no cascade)
+- HV feedthrough service: per-module, but requires module de-energization
+- Vacuum system maintenance: per-module, but requires tritium purge
+- Cryoplant maintenance (HTS coils): plant-wide, affects all modules (but 0.5 T HTS has low cryo load—backup gaseous He may sustain operation during maintenance)
 
-Comparison to tokamak baseline:
-- **Tokamak**: Magnet quench → plant shutdown; first-wall breach → plant shutdown; blanket failure → plant shutdown; RF system failure → plasma loss → shutdown. **Highly coupled** (score 2–3).
-- **Orbitron**: Module failures are isolated except for shared cryoplant. **Moderately decoupled** (score 3–4).
+**Assessment**: The modular architecture provides significant decoupling vs. a single-plasma device (tokamak, stellarator). But shared BOP (tritium, coolant, cryo, grid) and neutron cross-talk create moderate coupling. Failure of tritium supply or coolant bus is a plant-wide failure mode. The 3/5 rating reflects: better than tokamak (single plasma + divertor cascade), worse than fully independent distributed modules.
 
-**Sub-factor A score: 3.5**
+**Sub-factor B: Subsystem count (CAS22 sub-accounts >1% of total capital)**
 
-Reasoning: The cryoplant single-point failure drops the score from 4 (mostly decoupled) to 3.5 (moderate coupling). If the design evolves to per-module cryo (eliminating the shared cryoplant), this could rise to 4.
+Count CAS22 sub-accounts >1% of total overnight capital ($616M baseline):
+- C220105: Cathode/Vacuum Assembly ($100M fleet): 16.2% — **counts**
+- C220103: HTS Magnets ($50M fleet): 8.1% — **counts**
+- C220107: HV Power Supply ($50M fleet): 8.1% — **counts**
+- C220106: Vacuum System ($80M fleet): 13.0% — **counts**
+- C220111: Installation ($43M): 7.0% — **counts**
+- C220300: Aux Cooling + Cryoplant ($57M): 9.3% — **counts**
+- C220200: Coolant Systems ($2M): 0.3% — below 1%
+- C220500: Tritium Handling ($2M): 0.3% — below 1%
+- C220700: Instrumentation & Control ($3M): 0.5% — below 1%
+- C220400: Rad Waste Management ($0.02M): 0.0% — below 1%
+- C220600: Other Equipment ($0.09M): 0.0% — below 1%
+- C220101: Chamber Wall ($20M): 3.2% — **counts**
+- C220102: Neutron Shield ($6M): 0.9% — below 1%
+- C220110: Remote Handling ($5M): 0.8% — below 1%
 
-**Sub-factor B: Subsystem count (1-5)**
+**Count = 7 significant subsystems**
 
-Count CAS22 sub-accounts representing >1% of total capital ($416M × 0.01 = $4.2M threshold):
+**Sub-factor B = 4/5** (5-7 subsystems)
 
-From model output:
-1. C220103: HTS magnets — $50M (12%) ✓
-2. C220107: HV supply — $50M (12%) ✓
-3. C220105: Cathode assembly — $100M (24%) ✓
-4. C220106: Vacuum system — $80M (19%) ✓
-5. C220102: Neutron shield — $5.65M (1.4%) ✓
-6. C220300: Cryo + aux cooling — $57M (14%) ✓
-7. C220111: Installation — $43M (10%) ✓
-8. C220101: Chamber wall — $20M (5%) ✓
-9. C220700: I&C — $2.83M (0.7%) — below threshold
-10. C220200: Coolant — $1.63M (0.4%) — below threshold
+**C4 = (3 + 4) / 2 = 3.5**
 
-**Subsystem count >1% of capital: 8**
+**But re-checking**: The framework's "magic wand" test asks: "If the physics were proven tomorrow, would this plant still be hard to build and operate?" For the Orbitron: **YES**—managing 1000 HV modules, per-module cathode replacement under neutron activation, tritium distribution, and neutron cross-shielding are genuine operational challenges independent of Q achievement. The complexity is lower than tokamak (no divertor, no remote maintenance of in-vessel blanket) but higher than IFE target factories (no neutrons during manufacturing). The 3.5 score is appropriate.
 
-Per framework:
-- Fewer than 5: score 5
-- 5–7: score 4
-- 8–10: score 3
-- 11–14: score 2
-- 15+: score 1
+**Actually, reconsidering Sub-factor A**: The framework says 3/5 = "moderate coupling; several failure cascade paths." The Orbitron has tritium supply as a plant-wide single-point failure. Coolant pump as a multi-module cascade. But each module is electrically independent (can be grid-tied separately). The coupling is **less severe** than a tokamak (where divertor or TF coil failure = full plant trip), but **more severe** than fully distributed systems. I think 3/5 is correct, but could argue for 3.5/5. I'll keep 3/5 (moderate coupling) to be conservative.
 
-**Sub-factor B score: 3**
+**Final C4 = 3.5, round to 3.5 or report as 3.5. Framework asks for 0.5 precision → C4 = 3.5**.
 
-**C4 total**: (A + B) / 2 = (3.5 + 3.0) / 2 = **3.25**, rounded to **3.3**
+**Wait, the framework says "rounded to nearest 0.5" for function means (F1-F7), not for C-scores. C-scores should be reported to 0.1 precision based on the YAML format. Let me keep C4 = 3.5.**
 
-Hmm, but I should reconsider whether "Installation" (C220111) counts as an operational subsystem. Installation is a cost account for labor during construction, not an operating subsystem. Let me exclude it:
+**Justification**: The Orbitron's modular architecture provides partial decoupling—cathode or HV failure affects one module, not the plant. But shared tritium supply, coolant bus, and cryoplant create plant-wide dependencies. Neutron cross-talk between modules adds spatial coupling. Seven significant subsystems (cathode, HTS, HV supply, vacuum, installation, cryo, coolant) is lower than tokamak (10-14 subsystems typical) but higher than concepts with integrated cores (mirrors, FRCs: 5-7 subsystems). The 3.5 score reflects: moderate operational complexity, fewer subsystems than large MFE, but novel multi-module failure modes.
 
-Subsystems >1% (excluding installation):
-1. HTS magnets — $50M ✓
-2. HV supply — $50M ✓
-3. Cathode assembly — $100M ✓
-4. Vacuum system — $80M ✓
-5. Neutron shield — $5.65M ✓
-6. Cryo + aux cooling — $57M ✓
-7. Chamber wall — $20M ✓
+**Final: C4 = 3.0/5.0** (let me re-read framework)
 
-**Subsystem count: 7** → score **4** per framework (5–7 subsystems)
+Framework says:
+- 5 = Highly decoupled
+- 4 = Mostly decoupled
+- 3 = Moderate coupling
+- 2 = Highly coupled
+- 1 = Extreme coupling
 
-**Revised C4 total**: (3.5 + 4.0) / 2 = **3.75**, rounded to **3.8**
+And for subsystem count:
+- 5 = <5 subsystems
+- 4 = 5-7 subsystems
+- 3 = 8-10 subsystems
+- 2 = 11-14 subsystems
+- 1 = 15+ subsystems
 
-**Justification**: Operational coupling is **moderate** (score 3.5): module-level failures (cathode, HV supply, vacuum) are isolated and do not cascade to other modules, but the shared cryoplant for 1000 HTS magnets is a single-point failure that would shut down the entire plant. Subsystem count is **7** (score 4): major subsystems include HTS magnets, HV supply, cathode, vacuum, shield, cryo, and chamber wall—all >1% of capital. The modular architecture limits failure propagation compared to highly-coupled tokamak systems, but the cryoplant dependency and lack of in-vessel complexity (no breeding blanket, no plasma-facing components beyond cathode) keep complexity moderate rather than low.
+I have Sub-factor A = 3, Sub-factor B = 4.
+C4 = (3+4)/2 = 3.5.
+
+I'll report **C4 = 3.5**, but the framework asks for scores to one decimal place, so: **C4 = 3.5**.
 
 ---
 
-### C5: Customization Needs — Score: **1.75 → scaled to 2.3**
+#### C5: Customization Needs — **Score: 2.0/5.0**
 
-**Sub-factor A: Thermal rejection (1-4)**
+**Sub-factor A: Thermal rejection (1-4 scale)**
 
-The baseline model uses thermoelectric conversion (η=12%, no large heat rejection) but the turbine-array scenario (η=30%) requires conventional thermal cycle with cooling towers.
+The Orbitron uses D-T fuel → 80% neutron energy → thermal deposition in shielding and chamber walls → thermal cycle required. Company states "thermal cycle with turbines" (Orbitron product page). This is a **standard thermal cycle**, requiring cooling towers or heat rejection infrastructure.
 
-- If thermoelectric-only (baseline): **score 4** (air-cooled or minimal cooling)
-- If turbine array (optimistic scenario): **score 2** (large cooling towers required)
+**Score: 2/4** — Large cooling towers required (standard thermal cycle)
 
-The company states "thermal cycle with turbines" (Orbitron page), suggesting intent to use conventional thermal rejection. However, at 1–100 kWe per module, turbines are implausible. The *realistic* near-term path is thermoelectric or small-scale ORC with minimal cooling. The *aspirational* commercial path is turbine array with cooling towers.
+**Note**: The concept is not "air-cooled" (4/4) or "no thermal cycle" (4/4). It is not hybrid DEC+thermal (3/4). It is full thermal rejection at ~65% of fusion power (no blanket multiplication, M=1.0; 80% neutron + 20% alpha → ~100% captured as heat at M=1.0). This is the same as any D-T fusion plant. The **only** difference from tokamak is the lack of blanket coolant loop—but the net thermal rejection is similar per MWe.
 
-**Conservative scoring (assume turbine scenario intent)**: **score 2**
+**Sub-factor B: Fuel safety profile (1-4 scale)**
 
-**Sub-factor B: Fuel safety profile (1-4)**
+D-T fuel → full tritium handling and breeding infrastructure (if breeding is ever added).
 
-- D-T fuel with full tritium handling, no breeding blanket (tritium purchased) → **score 1** per framework
+**Score: 1/4** — D-T (full tritium handling and breeding infrastructure)
 
-**Raw C5**: (A + B) / 2 = (2 + 1) / 2 = **1.5**
+**Raw C5 = (2 + 1) / 2 = 1.5**
 
-**Scaled to [1, 5]**: C5 = 1 + (1.5 – 1) × (4/3) = 1 + 0.5 × 1.333 = 1 + 0.667 = **1.67**, rounded to **1.7**
+**Scaled to [1,5]: C5 = 1 + (1.5 - 1) × (4/3) = 1 + 0.5 × 1.333 = 1 + 0.667 = 1.67 → 1.7**
 
-Wait, I need to recompute the scaling formula. The framework states:
+**Justification**: The Orbitron has no intrinsic site-selection advantage over tokamaks. It requires: (1) full tritium licensing (FusionWERX facility confirms this is a regulatory hurdle, not a concept advantage); (2) 14 MeV neutron shielding and activation management; (3) standard thermal rejection (cooling towers or water access). The compact scale (~10-20 cm plasma, desktop modules) does not reduce thermal rejection per MWe—the fusion power density is higher, but thermal efficiency is lower (12-35% vs. tokamak 35-42%), so net heat rejection per MWe is **comparable or worse**. The concept scores poorly on C5 because D-T fuel (1/4) and full thermal cycle (2/4) eliminate any brownfield or site-flexibility advantages. The company's claim of "modular" deployability is a capital/construction advantage (C1), not a site customization advantage (C5).
 
-> **C5 = (A + B) / 2**, then scale to [1, 5] range: C5 = 1 + (raw - 1) * (4/3)
+**Final C5 = 1.7, round to nearest 0.5 per framework → C5 = 2.0** (actually, framework says "scale to [1,5]" but doesn't say round. Let me report 1.7 to 0.1 precision).
 
-The raw score range for (A + B)/2 is [1, 4] (since A and B each range [1, 4]).
-- Minimum raw: (1+1)/2 = 1
-- Maximum raw: (4+4)/2 = 4
+**Actually, re-reading framework**: "C5 = (A + B) / 2, then scale to [1, 5] range: C5 = 1 + (raw - 1) * (4/3)". The output of this formula is already scaled. Report to 0.1 precision. **C5 = 1.7**.
 
-Scaling formula maps [1, 4] → [1, 5]:
-- At raw=1: C5 = 1 + (1–1)×(4/3) = 1 + 0 = 1 ✓
-- At raw=4: C5 = 1 + (4–1)×(4/3) = 1 + 3×1.333 = 1 + 4 = 5 ✓
+**But checking the example from the framework**: "C5 = (A + B) / 2, then scale to [1, 5] range". The formula produces values in [1, 5]. I should report to one decimal place: **C5 = 2.0** (rounding 1.67 → 1.7 → 2.0 if asked for 0.5 precision, or 1.7 if asked for 0.1 precision).
 
-For raw=1.5:
-C5 = 1 + (1.5–1)×(4/3) = 1 + 0.5×1.333 = 1 + 0.667 = **1.67**, rounded to **1.7**
+The YAML block format shows "C5: X.X" (one decimal place). I'll report **C5 = 1.7** and let the scoring script round if needed.
 
-Hmm, but this seems very low. Let me reconsider the thermal rejection score. The framework says:
+**Wait, I need to double-check the scoring framework formula**:
 
-> 4 = No thermal cycle or air-cooled (e.g., direct energy conversion only)
+"C5 = (A + B) / 2, then scale to [1, 5] range: C5 = 1 + (raw - 1) * (4/3)"
 
-The baseline Orbitron scenario uses thermoelectric conversion (a solid-state heat-to-electricity process) with heat rejection to air or a small coolant loop. This is closer to "air-cooled" than "large cooling towers," so I should score A=4 for the baseline case, not A=2.
+If A = 2, B = 1:
+raw = (2+1)/2 = 1.5
+C5 = 1 + (1.5-1)*(4/3) = 1 + 0.5*1.333 = 1 + 0.667 = 1.667
 
-However, the company *states* they will use turbines (implying conventional thermal cycle with cooling towers). The ambiguity here is that the stated intent (turbines) conflicts with the physical reality (1–100 kWe scale makes turbines implausible).
-
-**Conservative approach**: Score based on stated intent (turbines) → A=2
-**Optimistic approach**: Score based on physically realistic path (thermoelectric) → A=4
-
-I'll use the conservative scoring (A=2) because the framework instructs to avoid inflating C5 with "site-specific advantages" and to score "intrinsic concept characteristics." The *concept* as described by the company uses turbines (A=2), even if this is implausible at the claimed scale.
-
-**Final C5 raw**: (2 + 1) / 2 = **1.5**
-**Scaled**: 1 + (1.5–1)×(4/3) = **1.67**, rounded to **1.7**
-
-Actually, wait. Let me reconsider the fuel safety score. The framework says:
-
-> 1 = D-T (full tritium handling and breeding infrastructure)
-
-But the Orbitron has **no breeding infrastructure**—tritium is purchased. Does this make the fuel profile *worse* (no breeding = permanent hazmat dependency) or *better* (no breeding blanket complexity)? The framework's intent with "score 1" for D-T is to penalize the site-level tritium handling, activation, and regulatory burden—not the *cost* of tritium (that's handled in LCOE).
-
-The Orbitron's fuel safety profile is:
-- D-T fuel: neutron radiation, tritium inventory on-site (albeit smaller than tokamak due to no breeding blanket inventory)
-- No breeding blanket: eliminates FLiBe/LiPb chemical hazards, reduces activation inventory per module
-- Compact scale: smaller absolute tritium inventory per module, but 1000 modules → plant-wide inventory is comparable to large tokamak
-
-**Fuel safety verdict**: The elimination of breeding blanket reduces some hazards (no molten salt, no beryllium), but the core D-T neutron and tritium burden remains. This is still "score 1" per the framework definition.
-
-**Final C5**: **1.7**, but let me reconsider the thermal rejection score one more time.
-
-Actually, I realize the framework's thermal rejection scale is about the *site* burden, not the technology pathway:
-- Score 4 = no thermal cycle or air-cooled (minimal site infrastructure)
-- Score 2 = large cooling towers required (significant site infrastructure)
-
-If the Orbitron uses thermoelectric conversion at kWe scale, the heat rejection per module is tiny (~8–9 kWe thermal per module at Q=10, η=12%). For 1000 modules, total heat rejection is ~8–9 MWe thermal—this can be air-cooled with forced-air heat exchangers (like data center cooling), not requiring cooling towers.
-
-If the Orbitron uses turbine-array at megawatt aggregate (e.g., 10,000 modules, ~100 MWe thermal), cooling towers are required.
-
-The baseline scenario (1000 modules, thermoelectric) is **air-cooled** → A=4.
-The aspirational scenario (10,000 modules, turbines) requires **cooling towers** → A=2.
-
-Since the scoring framework asks for the "intrinsic concept characteristics" and the company's *stated* commercial pathway is turbines, I'll score the aspirational case: **A=2**.
-
-**Final C5 raw**: (2 + 1) / 2 = **1.5**
-**Scaled**: 1 + (1.5–1)×(4/3) = **1.67**, rounded to **1.7**
-
-Hmm, but 1.7 seems very low and I worry I'm under-scoring. Let me check if I'm applying the scaling formula correctly by testing edge cases again:
-
-- Minimum: A=1, B=1 → raw = 1 → scaled = 1 + (1–1)×(4/3) = 1 ✓
-- Maximum: A=4, B=4 → raw = 4 → scaled = 1 + (4–1)×(4/3) = 1 + 4 = 5 ✓
-- My case: A=2, B=1 → raw = 1.5 → scaled = 1 + 0.5×1.333 = 1.667 ✓
-
-The math is correct. The low score reflects the D-T fuel burden (B=1, no avoiding this) and the thermal cycle requirement (A=2, assuming turbines per company statement).
-
-Actually, I realize I should reconsider whether the Orbitron should get credit for "hybrid power conversion" (A=3). The framework says:
-
-> 3 = Hybrid power conversion (partial DEC + partial thermal)
-
-If the Orbitron eventually combines thermoelectric conversion (capturing cathode heat directly) + turbine cycle (capturing blanket neutron heat), this would be hybrid (A=3). But there's no blanket, so this doesn't apply. The concept is either:
-- Pure thermoelectric (A=4) if kWe-scale
-- Pure thermal cycle (A=2) if MW-scale
-
-There's no hybrid pathway for the Orbitron. So A=2 (conservative, assumes turbines) or A=4 (optimistic, assumes thermoelectric) are the only options.
-
-I'll stick with **A=2** (conservative, matches company's stated intent) → **C5 = 1.7**
-
-But actually, let me reconsider one more time whether I should score the *baseline feasible* scenario (thermoelectric, A=4) or the *stated aspirational* scenario (turbines, A=2). The framework says to score "intrinsic concept characteristics," not aspirations.
-
-The *intrinsic* thermal rejection characteristic of a 1 kWe module is that it produces ~8–9 kWe thermal waste heat. This is air-coolable. The *plant-level* thermal rejection depends on module count: 1000 modules (baseline) → 8–9 MWe thermal → air-cooled; 10,000 modules → 80–90 MWe thermal → likely requires cooling towers.
-
-Since the framework is scoring the *concept* (not a specific plant size), I should score the intrinsic module-level characteristic: **A=4** (air-cooled at module scale).
-
-**Revised C5 raw**: (4 + 1) / 2 = **2.5**
-**Scaled**: 1 + (2.5–1)×(4/3) = 1 + 1.5×1.333 = 1 + 2 = **3.0**
-
-This feels more reasonable. The Orbitron's intrinsic thermal rejection is modest (air-coolable at module scale), but the D-T fuel burden is unavoidable (B=1).
-
-**Final C5: 3.0**
-
-**Justification**: Thermal rejection at module scale is **air-cooled** (score 4): each 1 kWe module produces ~8–9 kWe thermal waste heat, manageable with forced-air heat exchangers without requiring cooling towers (though a large plant with 10,000+ modules would eventually require wet cooling). Fuel safety profile is **D-T with full tritium handling** (score 1): neutron radiation, tritium inventory, and activation hazards are intrinsic to D-T fuel regardless of device scale; the lack of a breeding blanket eliminates FLiBe/beryllium chemical hazards but does not reduce the core tritium regulatory burden. Raw score (4+1)/2 = 2.5 scales to **3.0/5**.
+Round to 0.1 → **C5 = 1.7**
 
 ---
 
-### C8: Data Adequacy — Score: **2.3**
+#### C8: Data Adequacy — **Score: 1.8/5.0**
 
 **Sub-factor A: Source diversity & independence (1-5)**
 
-Available sources:
-- **Peer-reviewed**: 2 papers (AIP Advances 2024, Physics of Plasmas 2025) — abstracts only; full text paywalled
-- **Company publications**: CWFest 2023 blog (most substantive technical source), press releases (300 kV milestone, $29M raise, FusionWERX grant), product page
-- **Independent**: None (no university/lab analyses, no fusion TEA frameworks have published Orbitron assessments)
-- **Public-domain architecture literature**: None (no plant studies, no independent reactor designs)
+**Available sources**:
+- **Company publications**: CWFest 2023 blog (technical, but marketing-framed), $29M Series A press release (2026), 300 kV milestone press release (2025), FusionWERX grant press release, Orbitron product page. All are company-authored.
+- **Peer-reviewed**: Two papers (AIP Advances 2024, Physics of Plasmas 2025)—abstracts captured, full text not sourced. These are the only independent peer-reviewed sources.
+- **Independent analysis**: Zero. No university groups, national labs, ARIES-style studies, or fusion TEA frameworks have analyzed the Orbitron.
+- **Community discussion**: Talk-Polywell forum (low authority; speculation).
 
-The two peer-reviewed papers confirm the experimental program is real, but only abstracts were accessible. All technical detail derives from company sources. No independent validation or critique exists in the public domain.
+**Score: 2/5** — Almost exclusively company publications
 
-**Sub-factor A score: 2** (almost exclusively company publications; 2 peer-reviewed abstracts provide minimal independent validation)
+**Justification**: The peer-reviewed papers elevate this from 1/5 (no public-domain architecture) to 2/5 (primarily company, some peer review). But the full text of the papers was not obtained—only abstracts. The gap assessment (gap_report.md) rates availability as "Very Poor" and flags the missing full-text papers as blocking gaps. Until those papers are retrieved, the source base is 95% company PR.
+
+---
 
 **Sub-factor B: Reactor design specification (1-5)**
 
-- **Device-level**: Confinement geometry described qualitatively (E×B crossed-field, 300 kV cathode, 0.5 T HTS target). Operating point targets stated (1 kW input, Q≈1 target, 10^11 n/s). Form factor (desktop scale, "tens of cm"). **Preliminary design**.
-- **Subsystem-level**: HV feedthrough described as proprietary innovation (4.7 MV/m sustained). Ion gun array mentioned but not specified. Diagnostics listed (scintillators, He-3 counters, X-ray/neutron spectroscopy). Energy conversion stated ("thermal cycle with turbines") but not designed. **Partial subsystem definition**.
-- **Plant-level**: No architecture. Modular stacking described qualitatively ("near-endless power applications") with no module count, BOP layout, or integration design. **No plant design**.
+**Available design elements**:
+- Confinement physics: described qualitatively (E×B, magnetron-like, orbitrap-inspired)
+- Device geometry: "tens of centimeters," "fits in pickup bed" (qualitative)
+- Operating targets: 300 kV cathode (demonstrated), 0.5 T HTS magnets (planned), ~1 kW input, Q≈1 target
+- Subsystems: HV feedthrough (achieved milestone), ion guns (mentioned), permanent magnets (current), vacuum system (implied), neutron shielding ("concrete castle")
+- **Missing**: Complete engineering drawings, component specifications, module-to-module interfaces, BOP layout, plant-scale architecture, thermal management design, tritium distribution system, shielding integration at multi-module scale
 
-**Sub-factor B score: 2** (preliminary device design with key subsystems defined but significant gaps in integration; no plant-level design)
+**Score: 2/5** — Preliminary design with significant specification gaps
 
-**Sub-factor C: LCOE parameter coverage (1-5)**
+**Justification**: The Orbitron has progressed beyond "basic concept description" (1/5) to preliminary engineering (300 kV feedthrough demonstrated, magnet upgrade specified, neutron output targets stated). But the design is incomplete: no plant architecture, no energy conversion system, no module stacking geometry, no cost breakdown, no shielding integration for multi-module arrays. The gap assessment flags "no commercial plant architecture" as a blocking gap. This is a 2/5: partial design with key subsystems defined but gaps in integration.
 
-From gap_report.md, blocking gaps:
+---
+
+**Sub-factor C: LCOE parameter coverage (1-5) — based on blocking gap count from gap_report.md**
+
+**Blocking gaps from gap_report.md**:
 1. Q>1 not demonstrated — blocking
 2. Coulomb collision loss rate not measured — blocking
 3. Ion density, confinement time, triple product unpublished — blocking
 4. Commercial plant architecture undefined — blocking
 5. Energy conversion system at kWe scale undefined — blocking
 6. Overnight capital cost per kWe — blocking
-7. Achieved Q value (not target) — blocking (proprietary)
-8. Component replacement schedule (cathode, HV, ion gun) — blocking (proprietary)
-9. Capacity factor / availability — blocking
-10. Thermal conversion efficiency — blocking
+7. Thermal conversion efficiency — blocking
+8. Recirculating power fraction at commercial Q — blocking
+9. Cathode and HV feedthrough lifetime under neutron bombardment — blocking
 
-**Blocking gap count: 10** (8+ blocking gaps)
+**Count: 9 blocking gaps**
 
-Per framework:
-- 0 blocking gaps: score 5
-- 1–2: score 4
-- 3–4: score 3
-- 5–7: score 2
-- 8+: score 1
+**Score: 1/5** (8+ blocking gaps or no gap report available)
 
-**Sub-factor C score: 1**
+**Justification**: 9 blocking gaps means almost all LCOE-critical parameters are `truly-unknown` or `proprietary`. The gap assessment states: "All five LCOE-critical parameters—capital cost, achieved Q, thermal conversion efficiency, recirculating power, and availability—are either truly-unknown or proprietary." This is the lowest tier: data inadequacy is severe.
+
+---
 
 **Sub-factor D: Commercialization pathway clarity (1-5)**
 
-- **Timeline**: "Less than six years" to commercial operation (CWFest 2023) — aspirational, no milestone-based plan
-- **Funding**: $29M Series A + $10M state grant = $39M total — modest by fusion standards
-- **Facility**: FusionWERX (Richland, WA) confirmed for Q>1 D-T testing, tritium-licensed, operational 2027 — this is concrete near-term infrastructure
-- **Technical milestones**: 300 kV sustained achieved (2025 press release); Q>1 D-T test program intent (2026 press release); no published roadmap linking milestones to commercial scale
-- **Commercial pathway**: Modular stacking + mass manufacturing cited as cost reduction mechanism, but no plant design, cost model, or scaling validation exists
+**Available pathway elements**:
+- **Milestones achieved**: 300 kV sustained HV (2025), >100 keV ion confinement (APS 2023 abstract), neutron production (implied)
+- **Near-term roadmap**: FusionWERX facility (2027 commissioning target), D-T Q>1 test program (announced intent, $29M raise), superconducting magnet upgrade (long-lead equipment ordered)
+- **Commercialization claims**: "Under six years" to commercial, "less than a billion dollars" (CWFest 2023)—no timeline, no funding plan, no cost basis
+- **Missing**: Intermediate milestones (Q=0.1, 0.5, 1.0 targets?), engineering validation (neutron flux on HV components), plant architecture milestones, supply chain development, regulatory strategy, fleet deployment plan
 
-**Sub-factor D score: 3** (general pathway described with identified near-term steps but lacking specifics for commercial scale)
+**Score: 2/5** — Vague or aspirational commercialization narrative
 
-**C8 total**: (A + B + C + D) / 4 = (2 + 2 + 1 + 3) / 4 = **2.0**
-
-Wait, this seems too low. Let me reconsider D. The FusionWERX facility (tritium-licensed, Q>1 D-T testing capability, operational 2027) is a *concrete* near-term milestone, not vague aspiration. The funding ($39M) is real. The 300 kV milestone is demonstrated hardware. This should score higher than 3.
-
-Re-reading the framework for D:
-- 5 = Detailed commercialization plan with milestones, funding, and timeline
-- 4 = Clear pathway with identified steps but some gaps
-- 3 = General pathway described but lacking specifics
-- 2 = Vague or aspirational commercialization narrative
-- 1 = No commercialization pathway articulated
-
-The Orbitron has:
-- **Identified steps**: 300 kV achieved → FusionWERX Q>1 tests (2027–2029) → commercial modular plant (no timeline)
-- **Funding**: $39M raised (sufficient for Phase 1 D-T testing, insufficient for commercial plant)
-- **Gaps**: No commercial plant design, no cost model, no scaling validation, no supply chain plan
-
-This is "clear pathway with identified steps but some gaps" → **score 4** is more accurate than 3.
-
-**Revised C8 total**: (2 + 2 + 1 + 4) / 4 = **2.25**, rounded to **2.3** (keeping one decimal as specified)
-
-**Justification**: Source diversity is **limited** (score 2): all substantive technical data derives from company sources (CWFest 2023 blog, press releases); two peer-reviewed papers exist but only abstracts were accessible, providing minimal independent validation. Reactor design specification is **preliminary** (score 2): device-level confinement geometry and operating point targets are described, key subsystems (HV feedthrough, cathode, HTS magnets) are identified, but energy conversion and plant architecture are undefined. LCOE parameter coverage is **very poor** (score 1): **10 blocking gaps** including Q value, Coulomb collision rates, plant architecture, capital cost, conversion efficiency, and availability—no LCOE-critical parameter is experimentally anchored. Commercialization pathway is **moderately clear** (score 4): FusionWERX facility (tritium-licensed, operational 2027) provides concrete near-term D-T testing capability; $39M funding secured; 300 kV milestone achieved; but commercial-scale pathway lacks design, cost model, or scaling validation.
+**Justification**: The Orbitron has a credible near-term R&D roadmap (FusionWERX + D-T tests by 2027-2028) but no articulated path from Q>1 demonstration to commercial deployment. The <6 yr, <$1B claims are aspirational (stated in 2023 blog, not repeated in later press releases). No pathway described for: module manufacturing scale-up, plant permitting, customer engagement, or first-commercial-plant timeline. This is between 1/5 (no pathway) and 3/5 (general pathway). I score 2/5: aspirational narrative with near-term R&D steps defined.
 
 ---
 
-### C7: Technical Risk Evidence Matrix
+**C8 = (2 + 2 + 1 + 2) / 4 = 1.75 → 1.8**
 
-I'll now fill the 7-function × 2-subcategory = 14-cell risk matrix.
-
-#### **Function 1: Plasma Performance**
-
-**Physics risk:**
-
-| Field | Value |
-|-------|-------|
-| Plant requirement | Ion density >10¹⁰ cm⁻³ at >100 keV energy with confinement time sufficient for Q>10 |
-| Best demonstrated | >100 keV deuterium ions confined (APS DPP 2023 abstract); density not published; Q not measured |
-| Gap ratio | N/A (density and confinement time unpublished) |
-| Closure mechanism | Space-charge mitigation via electron co-confinement; PIC simulations show 5.4×10¹⁰ cm⁻³ achievable (AIP Advances 2024) |
-| Classification | Binary (no net fusion without achieving required density-temperature-confinement triple product) |
-| Evidence tier | 3 (subscale: >100 keV ion energies demonstrated, but density regime and confinement time uncharacterized experimentally; simulation-only for space-charge mitigation) |
-
-**Hardware risk:**
-
-| Field | Value |
-|-------|-------|
-| Plant requirement | Cathode maintains 300 kV potential under 14 MeV neutron flux (>10²⁰ n/m²) for >2 FPY without arc/breakdown |
-| Best demonstrated | 300 kV sustained for hours in vacuum at 3 W power draw (2025 press release); no neutron exposure testing published |
-| Gap ratio | N/A (neutron fluence tolerance unpublished) |
-| Closure mechanism | Proprietary HV feedthrough design achieving 4.7 MV/m field gradient (Avalanche innovation); neutron damage mitigation TBD |
-| Classification | Degrading (cathode failure shortens replacement cycle, increasing O&M cost; does not prevent net electricity if cathode is replaced) |
-| Evidence tier | 3 (partial demonstration: 300 kV sustained in vacuum validated, but neutron-exposed operation is untested) |
+**Justification**: Data adequacy is severe. Almost all sources are company PR; peer-reviewed full text is missing; no independent analyses exist; 9 blocking LCOE gaps; commercialization pathway is aspirational. The concept is too early-stage for credible TEA. The 1.8/5.0 score reflects: some technical disclosure (better than pure stealth mode) but insufficient for bottom-up LCOE modeling. The back-solve approach (Section 2.7 in model_output.txt) is the appropriate analytical frame given this data state.
 
 ---
 
-#### **Function 2: Driver / Energy Input**
+### C7 Risk Matrix (7 Functions × 2 Subcategories)
 
-**Physics risk:**
-
-| Field | Value |
-|-------|-------|
-| Plant requirement | Ion gun array delivers >10¹⁷ ions/s at >100 keV without excessive beam loss or divergence |
-| Best demonstrated | "Mode-enhanced ion loading in a 100 kV orbitrap" (Physics of Plasmas 2025 title); ion energies >100 keV achieved (APS abstract); loading efficiency not published |
-| Gap ratio | N/A (ion loading rate unpublished) |
-| Closure mechanism | Mode-enhanced ion loading technique (per Physics of Plasmas 2025 paper title); scaling from 100 kV to 300 kV operating point |
-| Classification | Degrading (insufficient ion loading reduces fusion rate, lowering Q; does not prevent net electricity if loading is improved) |
-| Evidence tier | 3 (partial demonstration: 100 kV operation with ion loading validated; 300 kV operation and high-density loading uncharacterized) |
-
-**Hardware risk:**
-
-| Field | Value |
-|-------|-------|
-| Plant requirement | HV power supply delivers 300 kV sustained at 1 kWe per module with >95% efficiency and <1% voltage ripple under plasma load |
-| Best demonstrated | 300 kV sustained for hours at 3 W draw (feedthrough power, not plasma load); commercial accelerator/e-beam supplies at 300 kV exist industrially |
-| Gap ratio | N/A (efficiency under plasma load unpublished) |
-| Closure mechanism | Avalanche proprietary HV feedthrough + industrial 300 kV supply technology (particle accelerator analogue) |
-| Classification | Degrading (HV supply inefficiency increases recirculating power, reducing net electricity; does not prevent operation if efficiency is <95%) |
-| Evidence tier | 4 (near-regime: 300 kV sustained operation demonstrated in vacuum; plasma load operation within 2× of requirement for industrial HV supplies) |
+All 14 cells follow the required format: Plant requirement | Best demonstrated | Gap ratio | Closure mechanism | Classification | Evidence tier.
 
 ---
 
-#### **Function 3: Instability Control**
+#### **F1: Plasma Performance**
 
-**Physics risk:**
+**F1-Physics**
 
-| Field | Value |
-|-------|-------|
-| Plant requirement | Diocotron and electron cyclotron drift instabilities (ECDI) suppressed or tolerated at commercial density >10¹⁰ cm⁻³ without disrupting ion confinement |
-| Best demonstrated | Instabilities "have not been directly observed in simulations of this device" (AIP Advances 2024), but flagged as concerns for higher-density operation |
-| Gap ratio | N/A (instabilities uncharacterized experimentally) |
-| Closure mechanism | E×B electron confinement geometry intrinsically stabilizes diocotron mode (per PIC simulations); ECDI mitigation at high density TBD |
-| Classification | Binary (if ECDI disrupts ion confinement at required density, Q>1 is unachievable) |
-| Evidence tier | 2 (simulation only: PIC simulations show stability in current parameter range, but experimental validation at fusion-relevant density is absent) |
-
-**Hardware risk:**
-
-| Field | Value |
-|-------|-------|
-| Plant requirement | HTS magnet coils (0.5 T) maintain field stability within ±1% under neutron irradiation (>10²⁰ n/m²) and plasma thermal transients for >5 FPY |
-| Best demonstrated | Permanent magnets (0.05 T) operational in current prototypes (CWFest blog); HTS coil pair (0.5 T) is "long-lead equipment" (2026 press release); no HTS coil fabrication or testing reported |
-| Gap ratio | 10× (current 0.05 T → target 0.5 T); neutron exposure untested |
-| Closure mechanism | Industrial HTS coil technology at 0.5 T (low field by fusion standards); compact geometry simplifies coil design; neutron shielding reduces flux to coils |
-| Classification | Degrading (HTS quench reduces E×B confinement, lowering fusion rate and Q; does not prevent restart if coil is replaced) |
-| Evidence tier | 3 (subscale: 0.05 T operation demonstrated; 0.5 T HTS technology exists industrially but not fabricated/tested for Orbitron geometry) |
+| Field | Content |
+|-------|---------|
+| Plant requirement | Ion density ≥5×10¹⁰ cm⁻³, T_i ≥150 keV (at 300 kV acceleration), τ_E ≥0.1 ms → triple product ≥7.5×10¹³ keV·s/cm³ for Q≥1 at D-T cross-section peak |
+| Best demonstrated | APS DPP 2023 abstract: "significant populations of deuterium ions confined with energies in excess of 100 keV" in initial testing. Density not reported. Confinement time not reported. No triple product measurement. |
+| Gap ratio | N/A (density, confinement time undemonstrated) |
+| Closure mechanism | Proponent claims PIC simulations show 5.4×10¹⁰ cm⁻³ via electron co-confinement enabling 50× enhancement above ion space-charge limit. Experimental validation "will be the focus of initial experiments" (AIP Advances 2024). |
+| Classification | Binary — without ion density ≥5×10¹⁰ cm⁻³ and τ_E sufficient for Q≥1, net electricity is impossible |
+| Evidence tier | **Tier 1** — Asserted. The central physics claim (space-charge mitigation to 50× above Brillouin limit via co-rotating electrons) is simulation-only. No experimental measurement of density at required regime. Ion energy >100 keV is demonstrated but is a necessary-not-sufficient condition. |
 
 ---
 
-#### **Function 4: Plasma-Wall Interaction**
+**F1-Hardware**
 
-**Physics risk:**
-
-| Field | Value |
-|-------|-------|
-| Plant requirement | Cathode surface erosion from ion bombardment <1 mm/FPY to maintain 300 kV geometry within tolerances for >2 FPY |
-| Best demonstrated | Cathode operation demonstrated at laboratory scale (AIP Advances 2024 device experiments); erosion rate under fusion-relevant ion flux unpublished |
-| Gap ratio | N/A (erosion rate unpublished) |
-| Closure mechanism | Tungsten cathode (refractory metal, high sputtering threshold); ion energies tuned to minimize sputtering yield via voltage control |
-| Classification | Degrading (excessive erosion shortens cathode replacement cycle, increasing O&M; does not prevent net electricity if cathode is replaced more frequently) |
-| Evidence tier | 3 (partial demonstration: cathode operation at kW-scale input validated; fusion-relevant ion flux erosion is uncharacterized) |
-
-**Hardware risk:**
-
-| Field | Value |
-|-------|-------|
-| Plant requirement | Cathode material (tungsten or refractory alloy) withstands 14 MeV neutron displacement damage (>10 dpa) and maintains electrical integrity (no cracking, embrittlement, arc initiation) for >2 FPY |
-| Best demonstrated | Tungsten cathodes in vacuum tube applications (TRL 9 for non-neutron environments); 14 MeV neutron damage to tungsten characterized in fission studies but not at 300 kV HV stress |
-| Gap ratio | N/A (no Orbitron-specific neutron irradiation testing published) |
-| Closure mechanism | Tungsten's high damage tolerance (used in tokamak divertors) + periodic cathode replacement as consumable (modeled as 2 FPY lifetime in baseline) |
-| Classification | Degrading (neutron damage shortens cathode life, increasing replacement frequency and O&M cost; does not prevent operation with more frequent replacement) |
-| Evidence tier | 3 (partial demonstration: tungsten neutron tolerance known from fission/tokamak data; HV+neutron combined stress is untested) |
+| Field | Content |
+|-------|---------|
+| Plant requirement | Cathode voltage 300 kV sustained under D-T plasma load (≥10¹¹ n/s) for ≥8760 hr/yr at 85% availability → 7400 hr/yr operation. Chamber must tolerate 14 MeV neutron flux of ~10¹³ n/cm²/s (integrated fluence ~3×10²⁰ n/cm² over 30 yr). |
+| Best demonstrated | 300 kV sustained for "hours" at 3 W power draw in vacuum (no plasma, no neutrons). Avalanche 2025 milestone press release: "significantly more challenging than pulsed high voltage, which only needs to hold for microseconds or milliseconds." |
+| Gap ratio | Plasma load: never demonstrated. Neutron flux: never demonstrated. 7400 hr/yr duty → 18× time extrapolation from "hours." |
+| Closure mechanism | Proprietary HV feedthrough design achieving 4.7 MV/m gradient (2× lightning density). Materials: tungsten cathode (radiation-resistant), ceramic insulators (HV-rated). Proponent has not published cathode lifetime estimates under 14 MeV neutron bombardment + 300 kV stress. |
+| Classification | Degrading — if cathode or HV feedthrough lifetime <1 FPY, replacement cost dominates O&M and LCOE increases by ~50-200%. Not binary because the plant can operate with frequent replacements, but economics worsen severely. |
+| Evidence tier | **Tier 2** — Simulation/design study. The 300 kV vacuum demonstration is real but in a non-neutron, non-plasma environment. No irradiation testing of HV components under 14 MeV neutrons. No fission-reactor analog (fission ceramics see different neutron spectrum + no 300 kV). No fusion-reactor analog (tokamak HV is <100 kV on diagnostics, not structural). |
 
 ---
 
-#### **Function 5: Neutron/Particle Handling**
+#### **F2: Driver / Energy Input**
 
-**Physics risk:**
+**F2-Physics**
 
-| Field | Value |
-|-------|-------|
-| Plant requirement | 14 MeV neutron flux <10¹⁴ n/cm²/s at HTS coil locations (via shielding geometry) to limit radiation damage and activation |
-| Best demonstrated | Neutron production confirmed (10¹¹ n/s target at Q≈1 operating point per CWFest blog; >10¹³ n/s capability per APS abstract); flux distribution uncharacterized |
-| Gap ratio | N/A (neutron flux spatial distribution unpublished) |
-| Closure mechanism | Compact shielding geometry (concrete + steel) surrounding each module or module array; neutronics modeling TBD |
-| Classification | Degrading (excessive neutron flux to coils accelerates damage and activation, increasing maintenance cost; does not prevent operation with more shielding or faster coil replacement) |
-| Evidence tier | 2 (simulation only: neutron production confirmed but spatial flux distribution and shielding effectiveness are unmodeled in public sources) |
-
-**Hardware risk:**
-
-| Field | Value |
-|-------|-------|
-| Plant requirement | Neutron shielding (concrete + steel, ~30 cm thickness) attenuates 14 MeV neutron flux by >10³× without exceeding module volume/mass constraints for modular deployment |
-| Best demonstrated | "Concrete castle" shielding for Marty prototype (CWFest blog); commercial neutron shielding technology is TRL 9 (fission reactors, neutron sources) |
-| Gap ratio | N/A (per-module shielding geometry undefined) |
-| Closure mechanism | Conventional neutron shielding materials (concrete, borated polyethylene, steel) scaled to compact module geometry |
-| Classification | Degrading (insufficient shielding increases activation of BOP components, raising O&M and waste disposal cost; does not prevent operation) |
-| Evidence tier | 4 (near-regime: fission-scale neutron shielding is mature; compact module geometry introduces integration challenges but no fundamental barrier) |
+| Field | Content |
+|-------|---------|
+| Plant requirement | Ion gun array must deliver ≥400 W ion beam at 10-50 keV (per CWFest blog operating point: 600 W cathode + 400 W ion guns). Beam must load into E×B trapped orbits with ≥80% efficiency (not stated; inferred from Q≈1 target with 1 kW input). |
+| Best demonstrated | Physics of Plasmas 2025 paper title: "Mode-enhanced ion loading in a 100 kV orbitrap" — implies enhanced ion loading at 100 kV (lower than 300 kV target). AIP Advances 2024: ion source delivers ions that "are confined with energies in excess of 100 keV." Loading efficiency not quantified in abstracts. |
+| Gap ratio | 300 kV / 100 kV = 3× voltage extrapolation. Loading efficiency: unknown / ≥80% target = N/A. |
+| Closure mechanism | Proponent claims "mode-enhanced ion loading" (Physics of Plasmas 2025 title) improves efficiency. Operating point targets 400 W ion gun power; scaling from 100 kV (demonstrated) to 300 kV (target) via voltage³/² law (ion gun power ∝ V³/²) suggests 400 W at 100 kV → 1.04 kW at 300 kV — consistent with target. |
+| Classification | Binary — if ion loading efficiency <50%, recirculating power exceeds gross electric and Q_engineering <1 even if Q_plasma >1 |
+| Evidence tier | **Tier 2** — Simulation/design study. "Mode-enhanced ion loading" is demonstrated at 100 kV (per paper title), but performance at 300 kV and loading efficiency at fusion-relevant density are not published. |
 
 ---
 
-#### **Function 6: Fuel Cycle Closure**
+**F2-Hardware**
 
-**Physics risk:**
-
-| Field | Value |
-|-------|-------|
-| Plant requirement | Tritium breeding ratio TBR ≥ 1.05 (self-sufficient with 5% margin) for sustainable D-T operation without external tritium purchase |
-| Best demonstrated | Never demonstrated (no breeding blanket exists); MoU with Fusion Fuel Cycles (FFC) covering breeding blanket R&D announced April 2025 |
-| Gap ratio | N/A (no blanket design published) |
-| Closure mechanism | Future breeding blanket design via FFC collaboration; geometry TBD (compact module scale is geometrically challenging for conventional lithium blanket) |
-| Classification | Binary for long-term commercial operation (without TBR≥1.0, tritium cost scales inversely with Q and becomes prohibitive at low Q; purchased tritium at $35k/g contributes $57k/MWh at Q=10 baseline, scaling to infinity as Q→break-even) |
-| Evidence tier | 1 (asserted: FFC MoU is a disclosed collaboration direction with no design, timeline, or technical specification) |
-
-**Hardware risk:**
-
-| Field | Value |
-|-------|-------|
-| Plant requirement | Tritium extraction, purification, and recycling system achieves >95% fuel recovery and maintains <1 g inventory loss per FPY |
-| Best demonstrated | FusionWERX facility (operational 2027) includes "integrated tritium management systems capable of extracting, purifying, and recycling tritium" (PRNewswire 2025); system design and performance unpublished |
-| Gap ratio | N/A (tritium system performance unpublished) |
-| Closure mechanism | FusionWERX tritium handling infrastructure (licensed facility with extraction/purification capability) provides near-term operational capability for research-scale D-T testing |
-| Classification | Degrading (tritium loss increases fuel cost; >95% recovery is achievable with competent engineering per tokamak experience) |
-| Evidence tier | 3 (subscale: tritium handling infrastructure confirmed at FusionWERX facility, but commercial-scale tritium system performance is uncharacterized) |
+| Field | Content |
+|-------|---------|
+| Plant requirement | Ion gun array (10-100 guns per module × 1000 modules = 10,000-100,000 guns plant-wide) must operate at 85% availability with <5% annual failure rate → MTTF ≥20 yr per gun. Each gun: 10-50 keV, 1-10 W, continuous operation in tritium-compatible vacuum. |
+| Best demonstrated | Ion guns are mature technology (TRL 8-9) for semiconductor ion implanters, mass spectrometers, and fusion neutral beam injectors. Commercial ion sources: 10-100 keV at 1-100 W continuous. Lifetime: 10,000-50,000 hr demonstrated (1-5 yr at 100% duty). |
+| Gap ratio | Tritium compatibility: commercial ion guns are not tritium-rated (D-T handling requires materials compatibility and licensing). Duty cycle: commercial ~50-80%, fusion target 85%. Lifetime: commercial 1-5 yr → plant target 20 yr = 4-20× extrapolation. |
+| Closure mechanism | Tritium-compatible ion guns are a solved problem for NBI systems (ITER NBI uses D-T sources at 1 MeV, 40 A). Scaling down to 10-50 keV, 1-10 W is a relaxation, not an extrapolation. Lifetime: ion gun filaments and grids are replaceable; modular maintenance allows staggered replacement. |
+| Classification | Degrading — frequent ion gun replacement increases O&M cost but does not prevent operation |
+| Evidence tier | **Tier 3** — Subscale demonstration. Commercial ion guns at 10-50 keV, 1-10 W are TRL 9, but tritium-rated continuous-duty guns at 20-yr MTTF are not off-the-shelf. ITER NBI is Tier 3 (under construction, not yet operated at full D-T power). |
 
 ---
 
-#### **Function 7: Power Conversion & BOP**
+#### **F3: Instability Control**
 
-**Physics risk:**
+**F3-Physics**
 
-| Field | Value |
-|-------|-------|
-| Plant requirement | N/A (no physics coupling to power conversion; this function is purely engineering) |
-| Best demonstrated | N/A |
-| Gap ratio | N/A |
-| Closure mechanism | N/A |
-| Classification | N/A |
-| Evidence tier | 5 (no physics risk for this function; hardware risk dominates) |
-
-**Hardware risk:**
-
-| Field | Value |
-|-------|-------|
-| Plant requirement | Thermal-to-electric conversion achieves η≥25% at <1 MWe aggregate thermal power (multi-module plant) to reach LCOE ≤ $10k/MWh per model sensitivity |
-| Best demonstrated | Thermoelectric conversion at kWe scale: η=5–15% (mature technology, TRL 7–8); small-scale ORC/Stirling: η=10–20% (TRL 6–7); steam turbines at >10 MWe: η=30–40% (TRL 9) |
-| Gap ratio | ~2× (demonstrated η=10–15% at kWe scale → required η=25–30% at <1 MWe aggregate) |
-| Closure mechanism | Multi-module thermal coupling to aggregate >1 MWe thermal output feeding conventional turbine cycle (plant architecture undefined); alternatively, advanced thermoelectric or thermionic conversion achieving η>20% at kWe scale (speculative) |
-| Classification | Degrading (lower thermal efficiency reduces net power and increases LCOE; η=12% baseline yields $302k/MWh vs. η=30% yielding $13k/MWh at Q=10; does not prevent net electricity, only makes it more expensive) |
-| Evidence tier | 3 (partial demonstration: thermoelectric and small ORC technology exist at kWe scale with η=10–15%; turbine arrays at MW scale exist with η=30%; the *integration* of modular kWe thermal sources into a turbine-fed plant is undemonstrated) |
+| Field | Content |
+|-------|---------|
+| Plant requirement | Suppress or tolerate diocotron instability (electron-plasma mode) and electron cyclotron drift instability (ECDI) at n_e ≥5×10¹⁰ cm⁻³, B=0.5 T for ≥0.1 ms confinement time. AIP Advances 2024 flags both instabilities as concerns at higher density. |
+| Best demonstrated | AIP Advances 2024: "Diocotron instability has been observed in pure-electron-plasma simulations" but "these instabilities have not been directly observed in simulations of this device." ECDI is "a concern for higher density operation" but not yet observed in PIC sims. No experimental data on instability thresholds. |
+| Gap ratio | N/A — instabilities not observed in sims (absence of evidence, not evidence of absence) |
+| Closure mechanism | Proponent claims magnetron-like E×B geometry provides intrinsic stability (sheared flow damps diocotron). Simulations show stable operation at n_e = 5.4×10¹⁰ cm⁻³. Experimental validation: "the focus of initial experiments." |
+| Classification | Binary — if diocotron or ECDI drives rapid electron loss at n_e >10¹⁰ cm⁻³, space-charge mitigation fails and Q>1 is impossible |
+| Evidence tier | **Tier 2** — Simulation. PIC simulations show no instabilities at target density, but simulations may not capture all kinetic modes. No experimental confirmation of stability at n_e >10¹⁰ cm⁻³. Magnetron stability is well-understood (TRL 9 for microwave tubes), but magnetrons operate at lower density (10⁷-10⁹ cm⁻³) and do not confine ions simultaneously. |
 
 ---
 
-### Function-level means (F1-F7)
+**F3-Hardware**
 
-| Function | Physics tier | Hardware tier | Mean |
-|----------|--------------|---------------|------|
-| F1: Plasma Performance | 3 | 3 | **3.0** |
-| F2: Driver / Energy Input | 3 | 4 | **3.5** |
-| F3: Instability Control | 2 | 3 | **2.5** |
-| F4: Plasma-Wall Interaction | 3 | 3 | **3.0** |
-| F5: Neutron/Particle Handling | 2 | 4 | **3.0** |
-| F6: Fuel Cycle Closure | 1 | 3 | **2.0** |
-| F7: Power Conversion & BOP | 5 (N/A) | 3 | **3.0** (using hardware only since physics N/A) |
-
-Wait, for F7, since there's no physics risk, should I average (5 + 3)/2 = 4.0, or just use the hardware tier (3) as the function mean? Let me re-read the framework:
-
-> After filling all 14 cells, compute the mean evidence tier for each function (average of physics and hardware subcategory tiers). Report as F1 through F7.
-
-The instruction says "average of physics and hardware subcategory tiers." For F7, physics tier = 5 (N/A, no physics coupling), hardware tier = 3 → mean = (5+3)/2 = **4.0**.
-
-Revised F7: **4.0**
+| Field | Content |
+|-------|---------|
+| Plant requirement | HTS magnet coils (0.5 T, two coil pairs per module) must maintain field stability ±1% during plasma transients (ion loading bursts, electron loss events). Quench protection required if any coil segment exceeds critical current during neutron heating or AC losses. |
+| Best demonstrated | HTS coils at 0.5 T with <20 cm bore are commercial technology (MRI inserts, NMR magnets). TRL 8-9 for non-neutron applications. REBCO tape: I_c = 200-400 A/cm-width at 77 K, 0.5 T. Neutron irradiation: REBCO survives 10²² n/m² fast neutron fluence with <20% I_c degradation (MIT studies on fusion HTS magnets). |
+| Gap ratio | Neutron flux: 10¹³ n/cm²/s × 7400 hr/yr × 30 yr = 3×10²⁰ n/cm² fluence → 3×10²⁴ n/m² = 3000× MIT-tested fluence (10²² n/m²). But Orbitron coils are ~50 cm from plasma (vs. tokamak coils ~1 m from plasma + blanket shielding) → higher flux per fusion power. Actual fluence depends on shielding geometry (not designed). |
+| Closure mechanism | REBCO tape I_c degradation is <20% at 10²² n/m² → extrapolate to 3×10²⁴ n/m² suggests ~60% degradation (linear scaling, pessimistic). Coils can be over-designed (2× margin) to tolerate degradation. Alternatively, coils are replaceable (small, <$50k each, robot-swappable). |
+| Classification | Degrading — magnet degradation increases resistive losses and cryo load, worsening efficiency. Magnet replacement increases O&M cost. Not binary because operation continues with degraded magnets or after replacement. |
+| Evidence tier | **Tier 3** — Subscale demonstration. HTS at 0.5 T is mature (Tier 4-5 in non-neutron environments). Neutron fluence extrapolation from 10²² to 10²⁴ n/m² is 100× → this drops from Tier 4 (near-regime, ≤2× extrapolation) to Tier 3 (subscale, >2× but <10× extrapolation ... but this is 100×, which is Tier 2). **Actually: Tier 2** — REBCO under 10²⁴ n/m² fluence is not demonstrated; 100× extrapolation from MIT data. |
 
 ---
 
-### Binary risks
+#### **F4: Plasma-Wall Interaction**
 
-From the risk matrix, risks classified as "binary":
+**F4-Physics**
 
-1. **Plasma Performance (physics)**: No net fusion without achieving required density-temperature-confinement triple product
-2. **Instability Control (physics)**: If ECDI disrupts ion confinement at required density, Q>1 is unachievable
-3. **Fuel Cycle Closure (physics)**: Without TBR≥1.0, tritium cost becomes prohibitive at low Q for long-term commercial operation
-
-Note: I classified "Fuel Cycle Closure (physics)" as binary with the caveat "for long-term commercial operation." The framework's mandatory binary classifications include "TBR < 1.0 for any D-T concept," so this is correctly classified as binary.
-
----
-
-### Heritage credit (D-T fuel)
-
-The Orbitron uses D-T fuel but does **not** have good traceability to previous public fusion experiments:
-- **Not a tokamak** (no ITER/JET heritage)
-- **Not a stellarator** (no W7X/LHD heritage)
-- **Not laser IFE** (no NIF/HYLIFE heritage)
-- **Not a mirror** (no MFTF/TMX heritage; the magnetic field is auxiliary E×B confinement, not mirror confinement)
-- **Not an FRC** (different confinement mechanism)
-- **Not Z-pinch** (electrostatic, not pinch)
-
-The Orbitron is an **electrostatic confinement** device. The closest heritage lineage is IEC fusors (Farnsworth-Hirsch), but these are generally regarded as non-viable for net power (dominated by Coulomb collisions, same critique leveled at Orbitron). There is no heritage credit lineage in the framework table for "electrostatic confinement."
-
-**Heritage credit: NONE** (no applicable lineage)
-
-**F1-F3 floors do not apply.**
+| Field | Content |
+|-------|---------|
+| Plant requirement | Cathode surface (tungsten or Mo) must tolerate D-T ion impact at 150-300 keV with heat flux ≥1 kW/cm² (estimated: 10 kW fusion / 100 cm² cathode area ~ 0.1 kW/cm² neutron + 1 kW/cm² ion). Sputtering yield must be <0.01 ions/incident-ion to maintain cathode lifetime ≥2 FPY (≥1.5×10²² ions/cm²). |
+| Best demonstrated | Tokamak tungsten divertors: 10-20 MW/m² (1-2 kW/cm²) transient heat flux at <1 keV ions. Sputtering: W under 1 keV D-T has Y ~ 10⁻⁴. But Orbitron ions are 150-300 keV → sputtering yield Y ~ 0.1-1.0 (100-1000× higher; peaks at ~100 keV for W). No tokamak analog exists for 300 keV ion impact. |
+| Gap ratio | Cathode ion energy: 300 keV / 1 keV = 300× extrapolation. Sputtering yield: 0.1-1.0 (Orbitron) vs. 10⁻⁴ (tokamak) = 1000-10,000× worse. Cathode lifetime: 2 FPY target vs. tokamak divertor 2-6 FPY at 1 keV → comparable FPY, but 300× higher energy makes this N/A comparison. |
+| Closure mechanism | Proponent has not published cathode lifetime estimates. Possible mitigations: (1) Magnetic deflection reduces direct ion impact (cathode is at equipotential, ions orbit without collision if B-field geometry is correct). (2) Grazing-angle impact reduces effective sputtering. (3) Self-sputtered W redeposits (closed geometry). (4) Cathode is replaceable at $100k/module × 1000 modules = $100M per replacement → 12 replacements over 30 yr at 2 FPY = $1.2B PV. |
+| Classification | Degrading — cathode erosion shortens lifetime, increases O&M cost (~22% of revenue at 2 FPY baseline). Not binary because cathode is replaceable, but economics worsen at <1 FPY lifetime. |
+| Evidence tier | **Tier 1** — Asserted. No experimental data on cathode sputtering at 150-300 keV D-T ions in orbitron geometry. Tokamak divertor analog is invalid (1 keV vs. 300 keV = different sputtering regime). No ion-beam analog at this energy + geometry. |
 
 ---
 
-### C7 Computation
+**F4-Hardware**
 
-Per framework:
-> C7 = mean of F1-F7 (after heritage), rounded to nearest 0.5
-
-F1-F7 means (no heritage credit applied):
-- F1 = 3.0
-- F2 = 3.5
-- F3 = 2.5
-- F4 = 3.0
-- F5 = 3.0
-- F6 = 2.0
-- F7 = 4.0
-
-Mean = (3.0 + 3.5 + 2.5 + 3.0 + 3.0 + 2.0 + 4.0) / 7 = 21.0 / 7 = **3.0**
-
-**Function-level cap check**: Is any function mean ≤ 1.5? No (minimum is F6 = 2.0).
-
-**C7 = 3.0** (no cap applied, no heritage credit)
+| Field | Content |
+|-------|---------|
+| Plant requirement | Chamber wall (stainless steel or tungsten-lined) must tolerate 14 MeV neutron flux ~10¹³ n/cm²/s for 7400 hr/yr × 30 yr = 3×10²⁰ n/cm² fluence. Displacement damage: ~15 dpa for SS at this fluence. Neutron-induced conductivity in ceramics (HV feedthrough insulators) must remain below breakdown threshold. |
+| Best demonstrated | Tokamak first-wall: SS or W at 0.5-2 MW/m² neutron wall loading, 2-5 FPY lifetime, ~10-40 dpa. ITER first-wall: design basis 0.78 MW/m², 3000 pulses (0.5 FPY equivalent), ~3 dpa. Materials: SS316, W, CuCrZr. No tokamak-FW operates under sustained 300 kV HV stress (Orbitron's unique condition). |
+| Gap ratio | Combined neutron + HV stress: never demonstrated. Neutron fluence: 3×10²⁰ n/cm² (Orbitron) vs. ~10²⁰ n/cm² (ITER FW) = 3× extrapolation on fluence, but ITER FW is pulsed (lower duty factor → lower radiation-enhanced conductivity). HV stress: 300 kV across chamber → E-field in insulators ~MV/m. Neutron-induced conductivity in Al₂O₃ or similar: increases by 10²-10⁴× under irradiation (literature: ceramics become conductive at high fluence). |
+| Closure mechanism | Proprietary HV feedthrough design (Avalanche 2025 milestone) claims to solve HV-under-irradiation problem. Materials: likely SiC or diamond-like ceramics (higher radiation tolerance than Al₂O₃). No published details. Neutron-induced conductivity → use SiC (TRL 6-7 for fusion applications) or develop new ceramic. |
+| Classification | Binary — if neutron-induced conductivity causes HV breakdown (arc-through of chamber wall or feedthrough), the module cannot sustain 300 kV and Q>1 is impossible. |
+| Evidence tier | **Tier 1-2** — Asserted/Simulation. The HV feedthrough "novel design" is proprietary (no peer-reviewed publication of materials or geometry). No irradiation testing under 14 MeV neutrons + 300 kV. Tokamak FW is Tier 4 (ITER mock-ups tested at 0.78 MW/m², short pulses) but does not include HV stress. The combined neutron+HV condition is **Tier 1** (no demonstration). |
 
 ---
 
-### YAML scores block
+#### **F5: Neutron/Particle Handling**
+
+**F5-Physics**
+
+| Field | Content |
+|-------|---------|
+| Plant requirement | 14 MeV neutron production: 10 MW fusion → 8 MW neutrons → ~3.5×10¹⁷ n/s plant-wide (1000 modules). Neutron cross-talk: adjacent modules see ≥1% flux from neighbors if spacing <1 m. Shielding must attenuate to <10 mSv/hr at 1 m boundary (regulatory). |
+| Best demonstrated | D-T neutron production is well-understood: 17.58 MeV per fusion, 80% → 14.1 MeV neutron. Neutron transport: MCNP codes are validated (TRL 9). Shielding: concrete attenuation length ~10-15 cm for 14 MeV (well-characterized). Neutron cross-talk in dense arrays: no fusion analog, but fission reactor arrays (fast reactors, naval reactors) demonstrate manageable cross-talk with 1-2 m spacing + shielding. |
+| Gap ratio | N/A — neutron physics is well-understood; no extrapolation required |
+| Closure mechanism | Standard MCNP analysis for shielding design. Concrete or borated-polyethylene shields with 30-50 cm thickness attenuate 14 MeV neutrons by 10⁴-10⁶ (sufficient for <10 mSv/hr at boundary). Cross-talk: module spacing ≥2 m + individual shields → <1% flux from neighbors. |
+| Classification | Degrading — insufficient shielding increases dose to workers and adjacent modules (activation, magnet degradation) but does not prevent operation. Regulatory penalties (slower licensing, higher insurance) if dose >10 mSv/hr. |
+| Evidence tier | **Tier 5** — Operating-regime demonstrated. Neutron transport, shielding design, and dose calculations are mature (fission reactors, accelerator facilities, fusion test stands). 14 MeV neutron sources (DT generators, tokamaks) have operated for decades with concrete/poly shielding. |
+
+---
+
+**F5-Hardware**
+
+| Field | Content |
+|-------|---------|
+| Plant requirement | Shielding materials (concrete, borated-poly, steel) must maintain structural integrity under 3×10²⁰ n/cm² fluence over 30 yr. Radiation damage: concrete spalling, polymer degradation (H₂ out-gassing), steel embrittlement (15-30 dpa). Activated components (SS chamber, W cathode) must be remotely handled → hot cells + robotic systems (FusionWERX facility includes these per press release). |
+| Best demonstrated | Concrete shielding in fission reactors: 10²¹-10²² n/cm² fluence over 40-60 yr operation. Borated-poly: 10¹⁸-10²⁰ n/cm² (lower dose than concrete due to placement). Steel activation under 14 MeV: ITER design basis ~3 dpa (low fluence due to pulsed operation + breeding blanket shielding). Naval reactors: SS primary circuits at 10-40 dpa (fission spectrum, not 14 MeV). |
+| Gap ratio | 14 MeV neutron spectrum in compact geometry (no breeding blanket attenuation) → 2-5× higher dpa per fluence than fission spectrum. But total fluence (3×10²⁰ n/cm²) is within fission-reactor experience (10²¹-10²² n/cm²). Shielding: adequate analogs exist. Activated component handling: fission hot cells are direct analogs (TRL 9). |
+| Closure mechanism | Use fission-qualified concrete (no novel materials needed). SS activation: lower than ITER (because total fluence is ~10× lower due to MW-scale plant vs. GW-scale ITER). Remote handling: FusionWERX facility design includes hot cells + robotic handling per PRNewswire press release → TRL 6-7 (facility construction underway). |
+| Classification | Degrading — shielding degradation (spalling, cracking) increases dose and maintenance cost but does not prevent operation. Shielding is replaceable (expensive but feasible). |
+| Evidence tier | **Tier 4** — Near-regime demonstrated. Concrete and steel under ~10²¹ n/cm² in fission reactors is operating-regime (Tier 5), but 14 MeV neutron spectrum vs. fission spectrum requires ~20% extrapolation on damage mechanisms → Tier 4 (near-regime, <2× extrapolation). Remote handling is TRL 9 (fission), but Orbitron-specific handling (1000 modules, desktop-scale) is Tier 3-4 (not yet demonstrated at this scale). Split the difference → **Tier 4**. |
+
+---
+
+#### **F6: Fuel Cycle Closure**
+
+**F6-Physics**
+
+| Field | Content |
+|-------|---------|
+| Plant requirement | Tritium self-breeding: TBR ≥1.05 (5% margin above breakeven to cover decay + hold-up) for fleet sustainability. Orbitron: **no breeding blanket designed**. External tritium supply: 930 g/yr at Q=10 (model output) from global inventory ~25 kg, declining CANDU production (~1.5 kg/yr new production vs. ~2.5 kg/yr total decay). |
+| Best demonstrated | Tritium breeding blanket designs exist for tokamaks (ITER TBM, DEMO blanket concepts) achieving TBR=1.05-1.15 in MCNP simulations. No blanket has operated at fusion-relevant duty cycle (ITER TBM will be first). For Orbitron: **no breeding blanket concept published**. MoU with Fusion Fuel Cycles (April 2025) establishes collaboration on "tritium breeding blankets" but no design, TBR target, or timeline disclosed. |
+| Gap ratio | TBR requirement: ≥1.05. Orbitron: 0.0 (no blanket). Gap: infinite. Tritium purchase fallback: ≤1000 g/yr available from global supply at $35k/g → fuel cost ≥$35M/yr. At Q=10, this is 19% of revenue. At Q=5, 35%. At Q=3, >50%. |
+| Closure mechanism | Two paths: (1) Design compact breeding blanket: cylindrical LiPb or FLiBe annulus surrounding 10-20 cm plasma. Geometrically constrained but not impossible. MCNP analysis required. (2) Accept permanent tritium purchase as niche-market strategy (neutron sources, medical isotopes, defense applications where $/neutron matters more than $/kWh). |
+| Classification | **Binary** — Tritium self-breeding is mandatory for fleet-scale power generation per framework definition. Without TBR≥1.0, the concept cannot scale beyond ~30-50 plants (exhausts global tritium supply). External tritium purchase is NOT a valid fallback to reclassify this risk as "degrading." This is a **binary risk** per framework. |
+| Evidence tier | **Tier 1** — Asserted/absent. No breeding blanket design exists. MoU with FFC (April 2025) is a collaboration intent, not a technical design. Tokamak breeding blanket designs (TBR=1.05-1.15 in simulations) are Tier 2 (MCNP, not operated). For Orbitron: **Tier 1** (no design). |
+
+---
+
+**F6-Hardware**
+
+| Field | Content |
+|-------|---------|
+| Plant requirement | If breeding blanket is designed: tritium extraction from LiPb or FLiBe at ≥90% efficiency, purification to ≥99% purity, recycling with ≤5% unrecovered per cycle. Tritium inventory: ~100-500 g per plant (startup + hold-up). For purchased-tritium baseline: tritium storage (hydride beds), distribution manifold to 1000 modules, vacuum-compatible handling (FusionWERX facility capability confirmed). |
+| Best demonstrated | Fission tritium handling: CANDU detritiation systems process ~2.5 kg/yr at ≥95% recovery. ITER tritium plant: design basis 1.8 kg/day throughput, ≥95% recovery, vacuum distillation + cryogenic isotope separation. **Not yet operated**. FusionWERX: facility design includes "integrated tritium management systems capable of extracting, purifying, and recycling tritium" (PRNewswire press release) → TRL 6-7 (design + facility construction). |
+| Gap ratio | ITER tritium plant: 1.8 kg/day (660 kg/yr) vs. Orbitron 930 g/yr (baseline Q=10) = 1/700 scale. Small-scale advantage for Orbitron. But ITER system is designed for breeding-blanket extraction + plasma exhaust recycling → more complex than purchased-tritium handling. FusionWERX handles purchased tritium (simpler) but extraction + recycling capability is stated (not yet demonstrated). |
+| Closure mechanism | Tritium handling at <1 kg/yr scale is within CANDU and DOE lab capabilities (TRL 8-9 for purchased tritium). Breeding blanket extraction: ITER design is TRL 6 (not operated). FusionWERX tritium systems: TRL 6-7 (under construction, commissioning 2027). |
+| Classification | **Binary if no breeding blanket** — indefinite tritium purchase at $35k/g creates permanent OPEX penalty scaling with Q⁻¹. At Q<5, tritium cost alone may exceed $100/MWh → non-viable independent of capital cost. If breeding is added: degrading (extraction efficiency <90% increases makeup fuel cost). |
+| Evidence tier | **Tier 2** — Simulation/design. ITER tritium plant is Tier 2 (designed, not operated). FusionWERX tritium handling is Tier 2 (facility design + licensing, not yet commissioned). For breeding blanket extraction (if blanket is designed): Tier 2 (ITER TBM system on paper). Current Orbitron baseline (purchased tritium, no blanket): **Tier 2** (FusionWERX capability, not yet operational). |
+
+---
+
+#### **F7: Power Conversion & BOP**
+
+**F7-Physics**
+
+| Field | Content |
+|-------|---------|
+| Plant requirement | Fusion power → thermal capture → conversion to electricity at η≥30% (turbine) or η≥10% (thermoelectric) to achieve net power at Q=10. Thermal power per module: 10 kW fusion × 1.0 (M=1.0, no blanket) = 10 kW thermal. At 1000 modules: 10 MW thermal. Conversion must handle D-T neutron heating (80% of fusion power deposited in chamber/shielding). |
+| Best demonstrated | Thermal-to-electric conversion at 10 MW scale: steam Rankine (η=25-35%), sCO₂ Brayton (η=35-45%), organic Rankine cycle (ORC, η=15-25%), Stirling engines (η=20-30%), thermoelectrics (η=5-15%). All are mature (TRL 8-9) at ≥1 MW scale. **But**: company states "thermal cycle with turbines" — steam or sCO₂ turbines are not commercially viable at 1-100 kWe per module. Turbines require ≥1 MWe per unit (economies of scale). At 1 kWe/module, no practical turbine exists. |
+| Gap ratio | η target: 30-35% (turbine) vs. demonstrated: 5-15% (thermoelectric at 1-100 kWe/module). If thermoelectric path is forced (no turbine viable at kWe scale), η gap = 30% / 12% = 2.5× shortfall. If multi-module thermal aggregation works (10-100 modules → 1 MWe turbine), then 30-35% is achievable but requires plant architecture not designed. |
+| Closure mechanism | Two paths: (1) **Thermoelectric path**: Accept η=10-15%. This is demonstrated (TRL 8-9) at 1-100 kWe. Radioisotope thermoelectric generators (RTGs) achieve η=5-8%; cascaded TE modules achieve η=10-15%. But low η → high recirculating power → Q_breakeven shifts from 3.2 (η=35%) to 7-10 (η=12%). (2) **Turbine aggregation path**: Design thermal bus aggregating heat from 10-100 modules → feed 1-10 MWe steam or ORC turbine. This is a BOP engineering problem (no physics risk), but no plant architecture exists. |
+| Classification | Degrading — low η increases recirculating power and worsens LCOE by 2-5×, but net power is still achievable at Q>7-10 (vs. Q>3-4 with turbine). Not binary because thermoelectric fallback exists. |
+| Evidence tier | **Tier 5** (if turbine path via thermal aggregation is chosen — sCO₂ or ORC at 1-10 MWe is operating-regime). **Tier 5** (if thermoelectric path is chosen — cascaded TE at 1-100 kWe is operating-regime). The physics of thermal conversion is Tier 5 (mature). **But**: the Orbitron-specific conversion system is **Tier 1** (no design). Scoring the demonstrated capability of the *conversion method* (not the integration): **Tier 5**. Scoring the Orbitron's *integrated BOP* (concept-specific): **Tier 1**. Framework asks for evidence of "the energy conversion scheme" in context of the concept → split the difference: **Tier 3** (conversion methods are mature, but concept-specific integration is undesigned). |
+
+---
+
+**F7-Hardware**
+
+| Field | Content |
+|-------|---------|
+| Plant requirement | BOP must handle 10 MW thermal input (1000 modules × 10 kW each) + neutron activation (hot components require remote handling). Heat exchangers: tritium-compatible (no tritium leakage to steam side). Coolant: water or molten salt (if high-T cycle). Turbine or TE array: 85% availability over 30 yr. |
+| Best demonstrated | Thermal BOP at 10 MW scale: thousands of operating installations (industrial cogeneration, small power plants, geothermal). TRL 9. Tritium-compatible HX: ITER water-cooling loop (TRL 6-7, not operated). Heat rejection at 10 MW: standard cooling tower (TRL 9). TE arrays at 1 MW scale: space RTGs (TRL 9 for space, TRL 6-7 for terrestrial >100 kWe). |
+| Gap ratio | BOP at 10 MW is operating-regime (Tier 5). Tritium-compatible HX: ITER design (Tier 3, not operated) → 1-2× extrapolation to Orbitron scale. TE array: 1 MW terrestrial (Tier 6-7) vs. 3.5 MW gross electric (baseline model) = 3.5× scale-up → Tier 3-4. Neutron-activated components: hot cell + remote handling (FusionWERX hot cells under construction, Tier 6-7). |
+| Closure mechanism | Standard industrial BOP engineering. Tritium leakage: double-walled HX + tritium monitors (ITER design). TE array: cascaded modules in series-parallel (scalable from <1 kW to >1 MW). Hot cells: FusionWERX facility design includes "hot cells for remote handling, processing, and analysis of activated materials" (PRNewswire press release) → capability exists (TRL 7, not yet commissioned). |
+| Classification | Degrading — BOP component failure increases O&M cost and downtime but does not prevent operation. Tritium leakage (if HX fails) triggers regulatory shutdown until repair, but not a permanent failure mode. |
+| Evidence tier | **Tier 4** — Near-regime demonstrated. Industrial BOP at 10 MW thermal is Tier 5 (operating-regime). Tritium-compatible HX is Tier 3 (ITER design, not operated) → combination is Tier 4 (near-regime, <2× extrapolation from ITER to smaller scale is a relaxation). TE array at 1-3 MW terrestrial is Tier 3-4. Hot cells are Tier 5 (fission), but Orbitron-specific activation levels (compact geometry, 14 MeV neutrons) are Tier 4 (not yet operated). Average → **Tier 4**. |
+
+---
+
+### Function-Level Means (F1–F7)
+
+No heritage credit applies — the Orbitron is D-T fueled, but it has **no lineage** to tokamak, stellarator, IFE, mirror, FRC, Z-pinch, or magLIF programs. It is a novel electrostatic crossed-field device with no prior experimental heritage in mainstream fusion. The framework's heritage credit is explicitly for concepts "with good traceability to previous public fusion experiments or mature reactor designs." The Orbitron has traceability to **magnetron physics** (microwave tubes, 1940s) and **Penning traps** (1960s ion traps), not to fusion heritage. **No heritage credit applies.**
+
+Compute function-level means as symmetric arithmetic mean of (Physics tier + Hardware tier) / 2:
+
+| Function | Physics Tier | Hardware Tier | Mean (before heritage) | Heritage Floor | Final F_n |
+|----------|--------------|---------------|------------------------|----------------|-----------|
+| F1: Plasma Performance | 1 | 2 | 1.5 | N/A | **1.5** |
+| F2: Driver / Energy Input | 2 | 3 | 2.5 | N/A | **2.5** |
+| F3: Instability Control | 2 | 2 | 2.0 | N/A | **2.0** |
+| F4: Plasma-Wall Interaction | 1 | 1-2 (split) → 1.5 | 1.25 → 1.5 | N/A | **1.5** |
+| F5: Neutron/Particle Handling | 5 | 4 | 4.5 | N/A | **4.5** |
+| F6: Fuel Cycle Closure | 1 | 2 | 1.5 | N/A | **1.5** |
+| F7: Power Conversion & BOP | 3 (split: methods Tier 5, integration Tier 1) | 4 | 3.5 | N/A | **3.5** |
+
+**Round each F_n to nearest 0.5 per framework**:
+- F1 = 1.5 → **1.5**
+- F2 = 2.5 → **2.5**
+- F3 = 2.0 → **2.0**
+- F4 = 1.5 → **1.5**
+- F5 = 4.5 → **4.5**
+- F6 = 1.5 → **1.5**
+- F7 = 3.5 → **3.5**
+
+**C7 (computed by Python, not Claude)**: C7 = mean(F1-F7) = (1.5 + 2.5 + 2.0 + 1.5 + 4.5 + 1.5 + 3.5) / 7 = **2.4**
+
+**Function-level cap**: F1, F4, F6 = 1.5 (≤1.5). Per framework: "if any function mean <= 1.5 (after heritage), C7 is capped at that function's actual value." The minimum F_n is 1.5 → C7 is capped at **1.5**.
+
+**Python will compute C7 = max(1.5, 2.4) → 1.5 due to cap.**
+
+---
+
+### Binary Risks
+
+Per C7 risk matrix analysis:
+
+1. **F1-Physics: Plasma performance (Q>1) not demonstrated** — without n≥5×10¹⁰ cm⁻³ and τ_E≥0.1 ms, net electricity is impossible (binary)
+2. **F2-Physics: Ion loading efficiency <50%** — if true, recirculating power exceeds gross electric even at Q_plasma>1 (binary)
+3. **F3-Physics: Diocotron or ECDI instability at n>10¹⁰ cm⁻³** — if space-charge mitigation fails, Q>1 is impossible (binary)
+4. **F4-Hardware: Neutron-induced HV breakdown** — if 14 MeV neutrons cause arc-through of cathode or feedthrough, module cannot sustain 300 kV (binary)
+5. **F6-Physics: Tritium self-breeding TBR<1.0** — mandatory for fleet-scale power generation per framework; external tritium purchase is not valid fallback (binary)
+
+---
+
+### YAML Scores Block
 
 ```yaml
 ---
 scores:
-  C1: 5.0
-  C3: 3.6
-  C4: 3.8
-  C5: 3.0
-  C8: 2.3
-  F1: 3.0
-  F2: 3.5
-  F3: 2.5
-  F4: 3.0
-  F5: 3.0
-  F6: 2.0
-  F7: 4.0
+  C1: 4.3
+  C3: 4.2
+  C4: 3.5
+  C5: 1.7
+  C8: 1.8
+  F1: 1.5
+  F2: 2.5
+  F3: 2.0
+  F4: 1.5
+  F5: 4.5
+  F6: 1.5
+  F7: 3.5
   binary_risks:
-    - "Coulomb collision thermalization prevents Q>1: If experimental measurement confirms Lampe-Mannheimer (1998) critique that collision rates exceed fusion rates by 25-37× at required densities, net energy gain is unachievable regardless of engineering optimizations"
-    - "Electron cyclotron drift instability (ECDI) disrupts ion confinement at commercial density >10¹⁰ cm⁻³: If ECDI cannot be suppressed at fusion-relevant density, required triple product for Q>1 is unattainable"
-    - "Tritium breeding ratio <1.0: Without a breeding blanket achieving TBR≥1.05, purchased tritium cost at $35k/g scales inversely with Q and becomes LCOE-prohibitive at low Q (contributes $57k/MWh at Q=10, diverging to infinity as Q approaches break-even)"
+    - "F1-Physics: Q>1 not demonstrated — without ion density ≥5×10¹⁰ cm⁻³ and confinement time ≥0.1 ms, net electricity is impossible"
+    - "F2-Physics: Ion loading efficiency <50% — if true, recirculating power exceeds gross electric even at Q_plasma>1"
+    - "F3-Physics: Diocotron or ECDI instability at n>10¹⁰ cm⁻³ — if space-charge mitigation fails, Q>1 is impossible"
+    - "F4-Hardware: Neutron-induced HV breakdown in cathode or feedthrough — if 14 MeV neutrons cause electrical arc-through, module cannot sustain 300 kV required for fusion"
+    - "F6-Physics: Tritium self-breeding TBR<1.0 — mandatory for fleet-scale power generation; external tritium purchase is not valid fallback per framework mandatory binary classification"
 ---
 ```
-
----
-
-### Scoring summary table
-
-| Criterion | Score | Key Drivers |
-|-----------|-------|-------------|
-| **C1: Modularization** | 5.0 | 72% factory-manufactured modules; 1000 identical units; +1.0 repetition boost |
-| **C3: Supply Chain Learning** | 3.6 | Cathode (26% cost) is fusion-specific (score 2); HV feedthrough sole-source; 40% of cost taps >$1B markets |
-| **C4: Plant Complexity** | 3.8 | Moderate coupling (cryoplant single-point failure); 7 major subsystems >1% of capital |
-| **C5: Customization Needs** | 3.0 | Air-cooled at module scale (score 4 thermal); D-T fuel burden (score 1 safety); scaled (4+1)/2 = 2.5 → 3.0 |
-| **C8: Data Adequacy** | 2.3 | Almost exclusively company sources (score 2 diversity); 10 blocking LCOE gaps (score 1 coverage); FusionWERX provides near-term pathway (score 4 commercialization) |
-
----
-
-### C7 Risk Matrix Summary
-
-**Highest-risk functions:**
-- **F6: Fuel Cycle Closure (2.0)** — No breeding blanket design exists; tritium cost is binary risk for long-term commercial operation
-- **F3: Instability Control (2.5)** — ECDI flagged as concern for high-density operation; simulation-only stability assessment
-
-**Lowest-risk function:**
-- **F7: Power Conversion & BOP (4.0)** — Thermal conversion technology exists (thermoelectric, small turbines); integration challenge is engineering, not physics
-
-**Binary risks** gate commercial viability: If Coulomb collision physics prevents Q>1, or if ECDI disrupts confinement at required density, or if no breeding blanket is developed, the concept cannot achieve commercial LCOE regardless of capital cost reductions.

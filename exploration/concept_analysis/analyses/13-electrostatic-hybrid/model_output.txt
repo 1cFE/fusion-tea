@@ -9,8 +9,8 @@ Electrostatic Hybrid D-T (Orbitron) — Baseline (Q=10, η=12%)
 ======================================================================
 
 --- Key Input Parameters ---
-  Q_engineering:              10.0  (break-even = 9.3)
-  Thermal efficiency:         12.0%
+  Q_engineering:              10.0  (break-even = 3.2)
+  Thermal efficiency:         35.0%
   Input power per module:     1.0 kWe
   Number of modules:          1,000
   Plant availability:         85.0%
@@ -21,14 +21,14 @@ Electrostatic Hybrid D-T (Orbitron) — Baseline (Q=10, η=12%)
 --- Power Balance (per module + plant) ---
   Input power / module:       1.0 kWe
   Fusion power / module:      10.000 kWe  (Q=10.0)
-  Gross electric / module:    1.200 kWe  (η=12%)
+  Gross electric / module:    3.500 kWe  (η=35%)
   Recirc. power / module:     1.120 kWe
-  Net electric / module:      0.080 kWe
-  Recirculating fraction:     93.3%
+  Net electric / module:      2.380 kWe
+  Recirculating fraction:     32.0%
   ─────── Plant (1,000 modules) ───────
   Fusion power (plant):       10000.0 kWe  (10.0000 MW)
-  Gross electric (plant):     1200.0 kWe
-  Net electric (plant):       80.00 kWe  (0.0800 MW)
+  Gross electric (plant):     3500.0 kWe
+  Net electric (plant):       2380.00 kWe  (2.3800 MW)
 
 --- CAS22: Reactor Plant Equipment ---
   Per-module accounts (× 1,000 modules):
@@ -45,77 +45,78 @@ Electrostatic Hybrid D-T (Orbitron) — Baseline (Q=10, η=12%)
   ─────────────────────────────────────────────
     Per-module subtotal:       $354.1k   $354.15M fleet
   Plant-wide accounts:
-    C220200 Coolant Systems                $1.63M
+    C220200 Coolant Systems                $2.01M
     C220300 Aux Cooling + Cryoplant        $57.07M
     C220400 Rad Waste Management           $0.02M
-    C220500 Tritium Handling (purchased)   $0.16M
+    C220500 Tritium Handling (purchased)   $1.75M
+    C220600 Other Equipment                $0.09M
     C220700 Instrumentation & Control      $2.83M
   ─────────────────────────────────────────────
-    Plant-wide subtotal:       $61.72M
-  CAS22 Total:                $415.87M
+    Plant-wide subtotal:       $63.77M
+  CAS22 Total:                $417.92M
 
 --- Capital Costs (CAS10-60) ---
   CAS10 Pre-construction             $    32.0M
-  CAS21 Buildings                    $     0.3M
-  CAS22 Reactor Plant Equipment      $   415.9M
-  CAS23 Turbine Plant                $     0.1M
-  CAS24 Electric Plant               $     0.1M
-  CAS25 Misc Plant                   $     0.1M
-  CAS26 Heat Rejection               $     0.0M
+  CAS21 Buildings                    $     1.0M
+  CAS22 Reactor Plant Equipment      $   417.9M
+  CAS23 Turbine Plant                $     0.3M
+  CAS24 Electric Plant               $     0.3M
+  CAS25 Misc Plant                   $     0.2M
+  CAS26 Heat Rejection               $     0.1M
   CAS27 Special Materials            $     0.0M
   CAS28 Digital Twin                 $     5.0M
-  CAS29 Contingency                  $    63.2M
+  CAS29 Contingency                  $    63.7M
   ──────────────────────────────────────────────────
-  CAS20 Direct Costs:                 $   484.8M
-  CAS30 Indirect Costs:               $    64.6M
-  CAS40 Owner's Costs:                $     0.3M
-  CAS50 Supplementary:                $    28.0M
+  CAS20 Direct Costs:                 $   488.6M
+  CAS30 Indirect Costs:               $    65.1M
+  CAS40 Owner's Costs:                $     1.9M
+  CAS50 Supplementary:                $    28.6M
   ──────────────────────────────────────────────────
-  Overnight Capital:                  $   609.8M
-  CAS60 IDC (f=0.160):             $    97.7M
+  Overnight Capital:                  $   616.2M
+  CAS60 IDC (f=0.160):             $    98.8M
   ══════════════════════════════════════════════════
-  Total Capital:                      $   707.5M
-  Specific Capital:                   $ 8843288 $/kWe
+  Total Capital:                      $   715.0M
+  Specific Capital:                   $  300410 $/kWe
 
 --- Annual Costs (CAS70-90) ---
-  CAS90 Capital charge (CRF=0.1061): $   75.05M/yr
-  CAS71 O&M (levelized):              $   31.37M/yr
+  CAS90 Capital charge (CRF=0.1061): $   75.84M/yr
+  CAS71 O&M (levelized):              $   31.71M/yr
   CAS72 Cathode replacement:          $   39.34M/yr  (12 replacements)
-  CAS70 Total O&M:                    $   70.71M/yr
+  CAS70 Total O&M:                    $   71.04M/yr
   CAS80 Tritium fuel (purchased):     $   33.91M/yr
     Tritium: 930.2 g/yr  ×  $35,000/g  = $32.56M/yr
 
 --- LCOE ---
-  Annual net energy:          596 MWh
-  Annual revenue requirement: $179.66M
+  Annual net energy:          17,721 MWh
+  Annual revenue requirement: $180.79M
   ╔══════════════════════════════════════╗
-  ║  LCOE =  30160.7 ¢/kWh             ║
-  ║       = 301607.4 $/MWh             ║
+  ║  LCOE =   1020.2 ¢/kWh             ║
+  ║       =  10201.8 $/MWh             ║
   ╚══════════════════════════════════════╝
-  Capital (CAS90):            41.8%
-  O&M (CAS70):               39.4%
-  Fuel/Tritium (CAS80):       18.9%
+  Capital (CAS90):            42.0%
+  O&M (CAS70):               39.3%
+  Fuel/Tritium (CAS80):       18.8%
 
 
 ======================================================================
 SENSITIVITY SWEEPS (from baseline: Q=10, η=12%, 1000 modules)
 ======================================================================
 
-Baseline LCOE: $301,607/MWh  |  Specific capital: $8,843,288/kWe
+Baseline LCOE: $10,202/MWh  |  Specific capital: $300,410/kWe
 
   Q_engineering  [break-even @η=12%: Q≈8.3; @η=30%: Q≈3.3]:
-             1  →  NET POWER ≤ 0 (-1000.00 kWe)
-             2  →  NET POWER ≤ 0 (-880.00 kWe)
-             3  →  NET POWER ≤ 0 (-760.00 kWe)
-             5  →  NET POWER ≤ 0 (-520.00 kWe)
-             7  →  NET POWER ≤ 0 (-280.00 kWe)
-             8  →  NET POWER ≤ 0 (-160.00 kWe)
-             9  →  NET POWER ≤ 0 (-40.00 kWe)
-            10  →  $ 301,607/MWh  (80.0 kWe, $8,843,288/kWe)
-            12  →  $  78,375/MWh  (320.0 kWe, $2,217,116/kWe)
-            15  →  $  38,966/MWh  (680.0 kWe, $1,047,060/kWe)
-            20  →  $  22,538/MWh  (1280.0 kWe, $559,137/kWe)
-            30  →  $  13,521/MWh  (2480.0 kWe, $291,195/kWe)
+             1  →  NET POWER ≤ 0 (-770.00 kWe)
+             2  →  NET POWER ≤ 0 (-420.00 kWe)
+             3  →  NET POWER ≤ 0 (-70.00 kWe)
+             5  →  $  34,681/MWh  (630.0 kWe, $1,122,746/kWe)
+             7  →  $  17,163/MWh  (1330.0 kWe, $534,313/kWe)
+             8  →  $  13,876/MWh  (1680.0 kWe, $423,894/kWe)
+             9  →  $  11,723/MWh  (2030.0 kWe, $351,519/kWe)
+            10  →  $  10,202/MWh  (2380.0 kWe, $300,410/kWe)
+            12  →  $   8,196/MWh  (3080.0 kWe, $233,000/kWe)
+            15  →  $   6,462/MWh  (4130.0 kWe, $174,676/kWe)
+            20  →  $   4,946/MWh  (5880.0 kWe, $123,690/kWe)
+            30  →  $   3,609/MWh  (9380.0 kWe, $78,692/kWe)
 
   Thermal efficiency:
           0.05  →  NET POWER ≤ 0 (-620.00 kWe)
@@ -126,49 +127,49 @@ Baseline LCOE: $301,607/MWh  |  Specific capital: $8,843,288/kWe
            0.4  →  $   8,440/MWh  (2880.0 kWe, $248,709/kWe)
 
   Module count:
-           100  →  $ 429,333/MWh  (8.0 kWe, $15,165,679/kWe)
-           500  →  $ 318,849/MWh  (40.0 kWe, $9,696,728/kWe)
-         1e+03  →  $ 301,607/MWh  (80.0 kWe, $8,843,288/kWe)
-         5e+03  →  $ 282,857/MWh  (400.0 kWe, $7,915,173/kWe)
-         1e+04  →  $ 278,825/MWh  (800.0 kWe, $7,715,569/kWe)
-         5e+04  →  $ 273,153/MWh  (4000.0 kWe, $7,434,813/kWe)
+           100  →  $  14,550/MWh  (238.0 kWe, $515,653/kWe)
+           500  →  $  10,793/MWh  (1190.0 kWe, $329,664/kWe)
+         1e+03  →  $  10,202/MWh  (2380.0 kWe, $300,410/kWe)
+         5e+03  →  $   9,555/MWh  (11900.0 kWe, $268,373/kWe)
+         1e+04  →  $   9,414/MWh  (23800.0 kWe, $261,436/kWe)
+         5e+04  →  $   9,217/MWh  (119000.0 kWe, $251,653/kWe)
 
   HV supply $/module (direct; $/kW_input sweep broken at 1 kWe scale — F-1):
-         0.005  →  $ 281,013/MWh  (80.0 kWe, $7,823,895/kWe)
-          0.01  →  $ 283,302/MWh  (80.0 kWe, $7,937,161/kWe)
-          0.02  →  $ 287,878/MWh  (80.0 kWe, $8,163,693/kWe)
-          0.05  →  $ 301,607/MWh  (80.0 kWe, $8,843,288/kWe)
-           0.1  →  $ 324,489/MWh  (80.0 kWe, $9,975,947/kWe)
-           0.2  →  $ 370,254/MWh  (80.0 kWe, $12,241,266/kWe)
+         0.005  →  $   9,510/MWh  (2380.0 kWe, $266,145/kWe)
+          0.01  →  $   9,587/MWh  (2380.0 kWe, $269,952/kWe)
+          0.02  →  $   9,740/MWh  (2380.0 kWe, $277,566/kWe)
+          0.05  →  $  10,202/MWh  (2380.0 kWe, $300,410/kWe)
+           0.1  →  $  10,971/MWh  (2380.0 kWe, $338,482/kWe)
+           0.2  →  $  12,509/MWh  (2380.0 kWe, $414,628/kWe)
 
   Shielding M$/m³ [$740–$185k/module at baseline geometry — F-2]:
-         0.002  →  $ 299,365/MWh  (80.0 kWe, $8,732,267/kWe)
-         0.005  →  $ 299,882/MWh  (80.0 kWe, $8,757,888/kWe)
-         0.015  →  $ 301,607/MWh  (80.0 kWe, $8,843,288/kWe)
-          0.05  →  $ 307,646/MWh  (80.0 kWe, $9,142,190/kWe)
-          0.15  →  $ 324,899/MWh  (80.0 kWe, $9,996,195/kWe)
-           0.5  →  $ 385,283/MWh  (80.0 kWe, $12,985,212/kWe)
+         0.002  →  $  10,126/MWh  (2380.0 kWe, $296,678/kWe)
+         0.005  →  $  10,144/MWh  (2380.0 kWe, $297,539/kWe)
+         0.015  →  $  10,202/MWh  (2380.0 kWe, $300,410/kWe)
+          0.05  →  $  10,405/MWh  (2380.0 kWe, $310,457/kWe)
+          0.15  →  $  10,985/MWh  (2380.0 kWe, $339,163/kWe)
+           0.5  →  $  13,014/MWh  (2380.0 kWe, $439,634/kWe)
 
   Tritium $/g:
-       1.5e+04  →  $ 270,377/MWh  (80.0 kWe, $8,843,288/kWe)
-       2.5e+04  →  $ 285,992/MWh  (80.0 kWe, $8,843,288/kWe)
-       3.5e+04  →  $ 301,607/MWh  (80.0 kWe, $8,843,288/kWe)
-         5e+04  →  $ 325,030/MWh  (80.0 kWe, $8,843,288/kWe)
-         1e+05  →  $ 403,105/MWh  (80.0 kWe, $8,843,288/kWe)
+       1.5e+04  →  $   9,152/MWh  (2380.0 kWe, $300,410/kWe)
+       2.5e+04  →  $   9,677/MWh  (2380.0 kWe, $300,410/kWe)
+       3.5e+04  →  $  10,202/MWh  (2380.0 kWe, $300,410/kWe)
+         5e+04  →  $  10,989/MWh  (2380.0 kWe, $300,410/kWe)
+         1e+05  →  $  13,614/MWh  (2380.0 kWe, $300,410/kWe)
 
   O&M frac of CAPEX:
-          0.02  →  $ 275,274/MWh  (80.0 kWe, $8,843,288/kWe)
-          0.03  →  $ 288,441/MWh  (80.0 kWe, $8,843,288/kWe)
-          0.04  →  $ 301,607/MWh  (80.0 kWe, $8,843,288/kWe)
-          0.06  →  $ 327,941/MWh  (80.0 kWe, $8,843,288/kWe)
-          0.08  →  $ 354,275/MWh  (80.0 kWe, $8,843,288/kWe)
+          0.02  →  $   9,307/MWh  (2380.0 kWe, $300,410/kWe)
+          0.03  →  $   9,755/MWh  (2380.0 kWe, $300,410/kWe)
+          0.04  →  $  10,202/MWh  (2380.0 kWe, $300,410/kWe)
+          0.06  →  $  11,096/MWh  (2380.0 kWe, $300,410/kWe)
+          0.08  →  $  11,991/MWh  (2380.0 kWe, $300,410/kWe)
 
   Cathode lifetime (FPY):
-           0.5  →  $ 525,669/MWh  (80.0 kWe, $8,843,288/kWe)
-             1  →  $ 376,556/MWh  (80.0 kWe, $8,843,288/kWe)
-             2  →  $ 301,607/MWh  (80.0 kWe, $8,843,288/kWe)
-             5  →  $ 257,825/MWh  (80.0 kWe, $8,843,288/kWe)
-            10  →  $ 243,267/MWh  (80.0 kWe, $8,843,288/kWe)
+           0.5  →  $  17,733/MWh  (2380.0 kWe, $300,410/kWe)
+             1  →  $  12,721/MWh  (2380.0 kWe, $300,410/kWe)
+             2  →  $  10,202/MWh  (2380.0 kWe, $300,410/kWe)
+             5  →  $   8,730/MWh  (2380.0 kWe, $300,410/kWe)
+            10  →  $   8,241/MWh  (2380.0 kWe, $300,410/kWe)
 
 
 ======================================================================

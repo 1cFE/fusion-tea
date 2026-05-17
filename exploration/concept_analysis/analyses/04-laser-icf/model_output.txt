@@ -2,50 +2,50 @@ Laser ICF — p-B11 Fast Ignition (HB11 Energy)
   BEST-CASE ASPIRATIONAL: gain=500, eta_pin=10%, steam cycle at 35%
   1000 MWe net | 70% availability | 30 yr lifetime
 
-LCOE: 41.6 $/MWh (4.16 ¢/kWh) | Overnight: 2733 $/kW
-Fusion: 3128 MW | Net: 1000 MW | Q_eng: 11.3
-Recirculating fraction: 8.8%
-Scientific Q (P_fus / P_laser): 538.4
+LCOE: 42.0 $/MWh (4.20 ¢/kWh) | Overnight: 2759 $/kW
+Fusion: 3780 MW | Net: 1000 MW | Q_eng: 4.0
+Recirculating fraction: 25.0%
+Scientific Q (P_fus / P_laser): 131.5
 
 Code     Account                              M$
 ------------------------------------------------
 CAS10    Preconstruction                    13.6
 CAS21    Buildings                         443.0
-CAS22    Reactor Plant Equipment          1039.3
-CAS23    Turbine Plant                     216.8
-CAS24    Electrical Plant                   92.3
-CAS25    Miscellaneous                      56.2
-CAS26    Heat Rejection                     37.5
+CAS22    Reactor Plant Equipment           885.4
+CAS23    Turbine Plant                     263.5
+CAS24    Electrical Plant                  112.2
+CAS25    Miscellaneous                      68.3
+CAS26    Heat Rejection                    130.1
 CAS27    Special Materials                   0.0
 CAS28    Digital Twin                        5.0
 CAS29    Contingency                         0.0
-CAS30    Indirect Costs                    315.0
+CAS30    Indirect Costs                    317.9
 CAS40    Owner's Costs                      20.0
-CAS50    Supplementary                     137.5
-CAS60    IDC                               356.8
+CAS50    Supplementary                     140.0
+CAS60    IDC                               360.2
 CAS70    O&M (annualized)                   34.9
 CAS80    Fuel (annualized)                   0.2
-CAS90    Financial                         220.2
+CAS90    Financial                         222.4
 ------------------------------------------------
-         Total Capital                    2733.0
+         Total Capital                    2759.4
 
 CAS22 Reactor Plant Equipment Breakdown:
 ------------------------------------------------
-  C220000                          1039.3 M$
-  C220101                             3.9 M$
-  C220102                             5.5 M$
-  C220105                             5.8 M$
-  C220106                            20.4 M$
-  C220107                            85.4 M$
+  C220000                           885.4 M$
+  C220101                             4.4 M$
+  C220102                             6.2 M$
+  C220105                             6.4 M$
+  C220106                            22.9 M$
+  C220107                            14.4 M$
   C220108                           400.0 M$
-  C220110                            20.9 M$
-  C220111                           178.0 M$
-  C220200                           204.2 M$
-  C220300                             3.4 M$
-  C220400                             6.1 M$
+  C220110                            11.5 M$
+  C220111                            83.2 M$
+  C220200                           208.5 M$
+  C220300                             4.2 M$
+  C220400                             7.5 M$
   C220500                            15.0 M$
   C220600                            11.5 M$
-  C220700                            79.1 M$
+  C220700                            89.8 M$
 
 Overridden accounts: CAS21, C220103, C220104, C220108
 
@@ -90,26 +90,29 @@ Sensitivity (elasticity = %LCOE / %param)
 
 Engineering levers:
   availability                 +nan
-  construction_time_yr         +0.2954
-  eta_th                       -0.0288
-  eta_pin1                     -0.0234
-  p_implosion                  +0.0234
-  plasma_t                     +0.0221
-  f_sub                        +0.0135
-  vessel_t                     +0.0077
-  fuel_recovery                -0.0051
-  structure_t                  +0.0027
-  p_house                      +0.0016
-  ht_shield_t                  +0.0006
-  blanket_t                    +0.0005
-  p_target                     +0.0004
-  eta_pin2                     -0.0004
-  p_ignition                   +0.0004
-  p_pump                       +0.0004
-  burn_fraction                -0.0003
-  eta_p                        -0.0000
+  q_eng                        -0.3435
+  construction_time_yr         +0.2887
+  eta_th                       -0.1793
+  eta_pin                      +0.1073
+  plasma_t                     +0.0318
+  f_sub                        -0.0159
+  vessel_t                     +0.0111
+  f_rep                        -0.0067
+  structure_t                  +0.0039
+  p_house                      -0.0016
+  ht_shield_t                  +0.0009
+  blanket_t                    +0.0007
+  p_pump                       -0.0004
+  p_target                     -0.0004
   mn                           +0.0000
+  eta_p                        +0.0000
+  dd_f_T                       +0.0000
+  dd_f_He3                     +0.0000
+  dhe3_dd_frac                 +0.0000
+  dhe3_f_T                     +0.0000
+  f_rad                        +0.0000
+  eta_dec                      +0.0000
 
 Financial:
   interest_rate                +nan
-  inflation_rate               +0.0392
+  inflation_rate               +0.0504

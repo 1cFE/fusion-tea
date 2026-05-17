@@ -1,1 +1,0 @@
-prnewswire-news-releases-focused-energy-and-amplitude-enter/output.md

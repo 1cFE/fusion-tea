@@ -1,53 +1,53 @@
 Magnetic Mirror (p-B11) — Pale Blue Fusion (CHARM)
 500 MWe target | 80% availability | 30 yr lifetime | NOAK
 WARNING: All plasma parameters are truly-unknown estimates (see analysis.md §5-6)
-LCOE: 58.1 $/MWh (5.81 ¢/kWh) | Overnight: 4430 $/kW
-1 GWe scaled: LCOE 40.1 $/MWh | Overnight 3044 $/kW
-Fusion: 2403 MW | Net: 500 MW | Q_eng: 4.3
+LCOE: 53.0 $/MWh (5.30 ¢/kWh) | Overnight: 4011 $/kW
+1 GWe scaled: LCOE 35.8 $/MWh | Overnight 2691 $/kW
+Fusion: 869 MW | Net: 500 MW | Q_eng: 4.3
 Recirculating fraction: 23.2%
 
 Code     Account                              M$
 ------------------------------------------------
 CAS10    Preconstruction                    12.4
 CAS21    Buildings                         200.0
-CAS22    Reactor Plant Equipment          1095.3
-CAS23    Turbine Plant                      84.9
+CAS22    Reactor Plant Equipment           968.1
+CAS23    Turbine Plant                     108.3
 CAS24    Electrical Plant                   54.8
 CAS25    Miscellaneous                      33.4
-CAS26    Heat Rejection                     73.4
+CAS26    Heat Rejection                     26.7
 CAS27    Special Materials                   0.0
 CAS28    Digital Twin                        5.0
 CAS29    Contingency                         0.0
-CAS30    Indirect Costs                    257.8
+CAS30    Indirect Costs                    232.7
 CAS40    Owner's Costs                      14.1
-CAS50    Supplementary                      94.8
-CAS60    IDC                               289.2
-CAS70    O&M (annualized)                   24.9
-CAS80    Fuel (annualized)                   0.2
-CAS90    Financial                         178.5
+CAS50    Supplementary                      88.2
+CAS60    IDC                               261.8
+CAS70    O&M (annualized)                   24.1
+CAS80    Fuel (annualized)                   0.1
+CAS90    Financial                         161.6
 ------------------------------------------------
-         Total Capital                    2214.9
+         Total Capital                    2005.5
 
 CAS22 Reactor Plant Equipment Breakdown:
 ------------------------------------------------
-  C220000                          1095.3 M$
-  C220101                             8.9 M$
-  C220102                             8.7 M$
+  C220000                           968.1 M$
+  C220101                             4.8 M$
+  C220102                             4.7 M$
   C220103                           205.4 M$
   C220104                           282.6 M$
   C220105                             7.6 M$
   C220106                            25.3 M$
   C220107                            59.2 M$
-  C220108                            87.9 M$
-  C220109                            66.1 M$
+  C220108                            53.1 M$
+  C220109                            38.7 M$
   C220110                             8.9 M$
-  C220111                           106.5 M$
-  C220200                           114.0 M$
-  C220300                            32.4 M$
-  C220400                             4.2 M$
+  C220111                            96.6 M$
+  C220200                           100.8 M$
+  C220300                            30.9 M$
+  C220400                             1.5 M$
   C220500                             9.2 M$
   C220600                             6.6 M$
-  C220700                            61.9 M$
+  C220700                            32.1 M$
 
 Key Assumptions (all UNCERTAIN — no published design point):
 ------------------------------------------------
@@ -71,28 +71,28 @@ Sensitivity (elasticity = %LCOE / %param)
 ------------------------------------------------
 
 Engineering levers:
-  availability                         -0.9927
-  construction_time_yr                 +0.2889
-  r_coil                               +0.2438
-  p_nbi                                +0.1678
-  b_max                                +0.1219
-  eta_th                               -0.1213
-  eta_de                               -0.0579
-  eta_pin                              -0.0577
-  f_dec                                -0.0571
-  p_input                              +0.0483
-  chamber_length                       +0.0299
-  plasma_t                             +0.0188
-  vessel_t                             +0.0154
-  p_cryo                               +0.0121
-  f_sub                                +0.0113
-  p_cool                               +0.0087
-  blanket_t                            +0.0062
-  structure_t                          +0.0057
-  p_coils                              +0.0046
-  p_house                              +0.0029
-  ht_shield_t                          +0.0026
-  p_pump                               +0.0009
+  availability                         -0.9953
+  construction_time_yr                 +0.2862
+  r_coil                               +0.2773
+  p_nbi                                +0.1908
+  b_max                                +0.1387
+  eta_th                               -0.0795
+  eta_pin                              -0.0475
+  p_input                              +0.0445
+  chamber_length                       +0.0286
+  plasma_t                             +0.0177
+  vessel_t                             +0.0175
+  p_cryo                               +0.0134
+  f_sub                                +0.0093
+  eta_de                               -0.0079
+  p_cool                               +0.0071
+  structure_t                          +0.0064
+  blanket_t                            +0.0051
+  f_dec                                -0.0046
+  p_coils                              +0.0038
+  p_house                              +0.0024
+  ht_shield_t                          +0.0020
+  p_pump                               +0.0007
   eta_p                                -0.0000
   mn                                   +0.0000
   dd_f_T                               +0.0000
@@ -111,21 +111,21 @@ Engineering levers:
 
 Financial:
   interest_rate                        +nan
-  inflation_rate                       +0.0338
+  inflation_rate                       +0.0383
 
 Costing constants (top 15):
-  heating_nbi_per_mw                   +0.1678
-  indirect_fraction                    +0.1203
-  om_cost_pb11                         +0.1069
-  installation_frac                    +0.0554
-  divertor_base                        +0.0522
-  dec_base                             +0.0393
-  power_supplies_base                  +0.0352
-  electric_per_mw                      +0.0288
-  misc_per_mw                          +0.0175
-  vessel_unit_cost                     +0.0150
-  construction_insurance_frac          +0.0124
-  decom_provision_pb11                 +0.0114
-  shipping_frac                        +0.0107
-  dec_grid_cost                        +0.0085
-  tax_frac                             +0.0071
+  heating_nbi_per_mw                   +0.1908
+  om_cost_pb11                         +0.1216
+  indirect_fraction                    +0.1183
+  installation_frac                    +0.0572
+  power_supplies_base                  +0.0400
+  divertor_base                        +0.0358
+  electric_per_mw                      +0.0327
+  dec_base                             +0.0261
+  misc_per_mw                          +0.0199
+  vessel_unit_cost                     +0.0171
+  decom_provision_pb11                 +0.0130
+  construction_insurance_frac          +0.0122
+  shipping_frac                        +0.0105
+  tax_frac                             +0.0070
+  owner_cost_pb11                      +0.0069

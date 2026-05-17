@@ -1,1 +1,0 @@
-ipo-ipo-technologies-instruments-sensors-and-electronics/output.md

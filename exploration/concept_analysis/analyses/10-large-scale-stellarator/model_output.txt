@@ -1,28 +1,28 @@
 Large-Scale Stellarator (Gauss Fusion GIGA) — 1 GWe, 88% CF, 40 yr
-LCOE: 212.9 $/MWh | Overnight: 18374 $/kW
+LCOE: 214.4 $/MWh | Overnight: 18041 $/kW
 Fusion: 3402 MW | Net: 1000 MW | Q_eng: 4.20
 
 Code     Account                                M$
 --------------------------------------------------
 CAS10    Preconstruction                      18.5
-CAS21    Buildings                           997.0
+CAS21    Buildings                           737.3
 CAS22    Reactor Plant Equipment            7786.4
 CAS23    Turbine Plant                       259.4
 CAS24    Electrical Plant                    110.5
 CAS25    Miscellaneous                        67.2
-CAS26    Heat Rejection                       44.8
+CAS26    Heat Rejection                      128.1
 CAS27    Special Materials                   200.0
 CAS28    Digital Twin                          5.0
 CAS29    Contingency                           0.0
-CAS30    Indirect Costs                     3156.8
+CAS30    Indirect Costs                     3097.9
 CAS40    Owner's Costs                        39.0
-CAS50    Supplementary                       613.8
-CAS60    IDC                                5075.2
-CAS70    O&M (annualized)                    260.7
+CAS50    Supplementary                       608.3
+CAS60    IDC                                4983.4
+CAS70    O&M (annualized)                    297.5
 CAS80    Fuel (annualized)                     2.0
-CAS90    Financial                          1378.2
+CAS90    Financial                          1353.2
 --------------------------------------------------
-         Total Capital                     18373.6
+         Total Capital                     18041.0
 
 CAS22 Sub-allocation (assumed; no published CAS breakdown for GIGA):
   Coil system (C220103)                   2595.5 M$  (40% of base CAS22)
@@ -53,29 +53,34 @@ Sensitivity 1: Engineering and Financial Elasticities
 ============================================================
 
 Engineering levers:
-  availability                 -0.8939
-  construction_time_yr         +0.5319
-  R0                           +0.0935
-  elon                         +0.0935
-  blanket_t                    +0.0786
-  plasma_t                     +0.0714
-  eta_th                       -0.0626
-  eta_pin                      -0.0227
-  p_input                      +0.0226
-  p_cryo                       +0.0136
-  fuel_recovery                -0.0110
-  f_sub                        +0.0059
-  p_cool                       +0.0023
-  p_trit                       +0.0015
-  mn                           -0.0010
-  burn_fraction                -0.0006
-  p_house                      +0.0006
-  p_coils                      +0.0005
-  p_pump                       +0.0002
+  availability                 -0.8722
+  construction_time_yr         +0.5186
+  r_coil                       -0.1038
+  eta_th                       -0.0985
+  blanket_t                    +0.0714
+  R0                           +0.0682
+  elon                         +0.0682
+  plasma_t                     +0.0569
+  b_max                        -0.0519
+  mn                           -0.0292
+  eta_pin                      -0.0167
+  p_input                      +0.0160
+  ht_shield_t                  -0.0093
+  f_sub                        +0.0044
+  vessel_t                     -0.0043
+  p_cryo                       +0.0041
+  p_ecrh                       -0.0034
+  structure_t                  -0.0017
+  p_cool                       +0.0017
+  p_trit                       +0.0011
+  p_house                      +0.0004
+  p_coils                      +0.0003
+  p_pump                       +0.0001
   eta_p                        -0.0000
-  ht_shield_t                  +0.0000
-  structure_t                  +0.0000
-  vessel_t                     +0.0000
+  dd_f_T                       +0.0000
+  dd_f_He3                     +0.0000
+  dhe3_dd_frac                 +0.0000
+  dhe3_f_T                     +0.0000
   B                            +0.0000
   T_e                          +0.0000
   n_e                          +0.0000
@@ -86,8 +91,8 @@ Engineering levers:
   tau_ratio                    +0.0000
 
 Financial:
-  interest_rate                +0.9340
-  inflation_rate               +0.0321
+  interest_rate                +0.9065
+  inflation_rate               +0.0319
 
 ============================================================
 Sensitivity 2: NOAK Fraction Sweep (H1 — primary LCOE lever)
@@ -95,13 +100,13 @@ Sensitivity 2: NOAK Fraction Sweep (H1 — primary LCOE lever)
 ============================================================
   noak_fraction      NOAK $/kWe     CAS22 M$   LCOE $/MWh
   ------------------------------------------------------
-  0.40                     7260         5663        173.5
-  0.45                     8168         6371        186.6
-  0.50                     9075         7079        199.7
-  0.55                     9983         7786        212.9 ← central
-  0.60                    10890         8494        226.0
-  0.65                    11798         9202        239.1
-  0.70                    12705         9910        252.2
+  0.40                     7260         5663        167.7
+  0.45                     8168         6371        183.3
+  0.50                     9075         7079        198.8
+  0.55                     9983         7786        214.4 ← central
+  0.60                    10890         8494        230.0
+  0.65                    11798         9202        245.5
+  0.70                    12705         9910        261.1
 
 ============================================================
 Sensitivity 3: Blanket Complexity Multiplier Sweep (F-2 finding)
@@ -111,13 +116,13 @@ Sensitivity 3: Blanket Complexity Multiplier Sweep (F-2 finding)
 ============================================================
   multiplier         CAS22 M$   blanket M$   LCOE $/MWh
   ----------------------------------------------------
-  1.00                   6489         2595        188.8
-  1.25                   7137         3244        200.8
-  1.50                   7786         3893        212.9 ← central
-  1.75                   8435         4542        224.9
-  2.00                   9084         5191        236.9
-  2.25                   9733         5840        248.9
-  2.50                  10382         6489        260.9
+  1.00                   6489         2595        185.9
+  1.25                   7137         3244        200.1
+  1.50                   7786         3893        214.4 ← central
+  1.75                   8435         4542        228.7
+  2.00                   9084         5191        242.9
+  2.25                   9733         5840        257.2
+  2.50                  10382         6489        271.5
 
 ============================================================
 Sensitivity 4: Capacity Factor Sweep (H3 — steady-state advantage)
@@ -126,8 +131,8 @@ Sensitivity 4: Capacity Factor Sweep (H3 — steady-state advantage)
 ============================================================
   availability     LCOE $/MWh  note
   --------------------------------------------------
-  0.75                  244.2  pulsed tokamak lower bound
-  0.80                  231.2  pulsed tokamak upper bound
-  0.85                  218.9  GIGA conservative
-  0.88                  212.9  Helios analog (central)
-  0.90                  208.6  GIGA optimistic
+  0.75                  244.9  pulsed tokamak lower bound
+  0.80                  232.3  pulsed tokamak upper bound
+  0.85                  220.1  GIGA conservative
+  0.88                  214.4  Helios analog (central)
+  0.90                  210.2  GIGA optimistic

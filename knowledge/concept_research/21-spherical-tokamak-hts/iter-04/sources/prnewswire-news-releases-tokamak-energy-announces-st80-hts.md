@@ -1,1 +1,0 @@
-prnewswire-news-releases-tokamak-energy-announces-st80-hts/output.md

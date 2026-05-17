@@ -1,0 +1,195 @@
+Laser ICF - OEC Architecture (D-T) — Blue Laser Fusion (BLF)
+Native: 2800 MWe @ 10 Hz | NOAK | avail=75% | 30 yr
+
+LCOE:      46.4 $/MWh
+Overnight: 3049 $/kW
+Fusion:    6522 MW | Net: 2800 MW
+Q_eng:     5.69 | Q_sci: 136.3  (paper: G=160)
+E_laser:   4.79 MJ/shot (UV) | E_wallplug: 47.9 MJ/shot
+Rec. frac: 17.6%  (paper: 17.0%)
+
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    23.0
+CAS21    Buildings                        1339.1
+CAS22    Reactor Plant Equipment          2901.6
+CAS23    Turbine Plant                     671.4
+CAS24    Electrical Plant                  286.0
+CAS25    Miscellaneous                     174.1
+CAS26    Heat Rejection                    224.5
+CAS27    Special Materials                  42.0
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                         0.0
+CAS30    Indirect Costs                    940.6
+CAS40    Owner's Costs                      65.3
+CAS50    Supplementary                     749.5
+CAS60    IDC                              1114.4
+CAS70    O&M (annualized)                  162.6
+CAS80    Fuel (annualized)                   2.7
+CAS90    Financial                         687.9
+------------------------------------------------
+         Total Capital                    8536.2
+
+CAS22 Reactor Plant Equipment detail:
+--------------------------------------------------------
+  C220101  First Wall / LiPb Blanket               303.7
+  C220102  Shield                                  212.1
+  C220104  CBC-OEC Laser Driver                    382.9
+  C220105  Primary Structure                        14.9
+  C220106  Vacuum System                            57.8
+  C220107  Power Supplies (pulsed cap bank)         23.9
+  C220108  Target Factory (cryo D-T Hz-rate)       574.3
+  C220110  Remote Handling                         138.2
+  C220111  Installation                            239.1
+  C220200  Coolant Systems                         522.2
+  C220300  Aux Cooling                              18.6
+  C220400  Rad Waste                                12.9
+  C220500  Fuel Handling (tritium)                 246.7
+  C220600  Other Equipment                          26.2
+  C220700  I&C                                     128.0
+  C220000  CAS22 Total                            2901.6
+
+1 GW Comparison (scaled from 2800 MWe):
+  Net: 1000 MWe | LCOE: 59.5 $/MWh | Overnight: 3663 $/kW
+
+Key Assumptions:
+  G (target gain)   = 160       LOW CONFIDENCE — projected beyond CBET-mitigated baseline;
+                                no multi-MJ experimental validation; blocking uncertainty
+  η_pin (laser)     = 10%       UNCERTAIN — CW fiber laser claim; pulsed 10 Hz undemonstrated
+  η_th (conversion) = 55%       MEDIUM — He Brayton plausible; DEC η=44% is TRL 1–2 theory
+  f_rep             = 10 Hz     design point; Hz-rate cryo target injection is unsolved
+  availability      = 75%       UNCERTAIN — not stated in paper; conservative for IFE
+  C220104 laser cost: DEFAULT ($8M/MW DPSSL) — TRULY UNKNOWN for OEC architecture
+  C220108 target fac: DEFAULT ($244M base)  — UNCERTAIN; NIF targets cost >$1M each
+  C220109 DEC cost:   NOT MODELED           — TRULY UNKNOWN; TRL 1–2; no prototype
+  OEC mirror cost:    NOT MODELED separately — embedded in C220104; should be much higher
+  First-wall repl:    DEFAULT blanket lifetime — TRULY UNKNOWN for pulsed dry-wall IFE
+
+Sensitivity (elasticity = %LCOE / %param):
+------------------------------------------------
+
+Engineering levers:
+  availability                         -0.9596
+  construction_time_yr                 +0.2661
+  eta_th                               -0.2333
+  plasma_t                             +0.2110
+  q_eng                                -0.1963
+  blanket_t                            +0.0944
+  mn                                   -0.0832
+  eta_pin                              +0.0566
+  ht_shield_t                          +0.0203
+  f_sub                                -0.0128
+  vessel_t                             +0.0093
+  f_rep                                -0.0036
+  structure_t                          +0.0034
+  p_trit                               -0.0013
+  p_cryo                               +0.0010
+  p_house                              -0.0005
+  p_pump                               -0.0001
+  p_target                             -0.0001
+  dd_f_T                               +0.0000
+  dd_f_He3                             +0.0000
+  dhe3_dd_frac                         +0.0000
+  dhe3_f_T                             +0.0000
+  f_rad                                +0.0000
+  eta_dec                              +0.0000
+
+Financial:
+  interest_rate                        +0.6574
+  inflation_rate                       +0.0592
+
+Costing constants (top 15):
+  om_cost_dt                           +0.1485
+  indirect_fraction                    +0.1037
+  blanket_unit_cost_dt                 +0.0875
+  target_factory_base                  +0.0860
+  driver_laser_per_mw                  +0.0573
+  decom_provision_dt                   +0.0386
+  electric_per_mw                      +0.0385
+  core_lifetime_dt                     -0.0373
+  fuel_handling_dt_base                +0.0324
+  shield_unit_cost                     +0.0318
+  installation_frac                    +0.0314
+  fuel_recovery                        -0.0291
+  misc_per_mw                          +0.0234
+  remote_handling_dt_base              +0.0207
+  startup_fuel_dt                      +0.0122
+  NOTE: driver_laser_per_mw elasticity above is INAPPLICABLE for OEC architecture.
+  The DPSSL $/MW proxy uses glass-slab manufacturing costs (NIF heritage); OEC cost
+  is dominated by 1,000 high-finesse mirrors — see OEC Mirror Cost Scenarios below.
+
+DEC Efficiency Sensitivity (manual — THERMAL mode auto-diff folds both channels into η_th):
+  η_th (He Brayton + Li-breeding) fixed at 0.44; DEC efficiency swept independently.
+   η_DEC    η_eff  LCOE $/MWh   Δ LCOE $/MWh
+  --------------------------------------------
+    0.20    0.445        48.1           +1.7
+    0.30    0.475        47.3           +1.0
+    0.35    0.490        47.0           +0.6
+    0.40    0.505        46.6           +0.3
+    0.44    0.517        46.4           +0.0 ←
+    0.50    0.535        46.0           -0.4
+    0.55    0.550        45.7           -0.7
+  Implied DEC elasticity ≈ −0.077 (= F_CHARGED × combined η_th elasticity).
+  Thermal channel (70%) and DEC channel (30%) sum to the auto-diff η_th result.
+
+
+(G, f_rep) Scenario Grid — LCOE $/MWh @ 2800 MWe:
+                G= 80    G=120    G=160  
+  f=1 Hz (~50 MJ/shot @G=160)      53.7      48.2      45.9  
+  f=10 Hz (~5 MJ/shot @G=160)      51.0      46.7      44.8  
+  LCOE in $/MWh. Design point: G=160, f=10 Hz (rightmost bottom cell).
+  * 1 Hz column: model computes cap-bank cost ×10 from 10 Hz but cannot capture
+    laser-construction infeasibility. At G=160, f=1 Hz → ~50 MJ/shot UV pulse;
+    at G=80, f=1 Hz → ~100 MJ/shot. No demonstrated laser system approaches this.
+  * G=80 q_eng≈3.89 vs G=160 q_eng≈6.96 — lower gain raises recirculating power fraction.
+
+
+Same-Capital Viability Scenarios — fixed overnight capital, actual net output:
+  Same 5 MJ/shot CBC-OEC laser; capital frozen at $8536 M$ (2800 MWe/10 Hz baseline).
+  Scenario                        P_net MWe  LCOE $/MWh  vs design pt
+  -------------------------------------------------------------------
+  G=160, f=10 Hz (design point)        3495        38.3          0.8×
+  G=160, f=1 Hz                         335       335.2          7.2×
+  G=80,  f=10 Hz                       1489        81.4          1.8×
+  G=80,  f=1 Hz                         134       815.2         17.6×
+  Capital (CAS10–CAS40, CAS60) locked to design-point values; CAS70 O&M
+  recomputed at actual P_net. This table exposes the viability cliff that the
+  constant-output grid above conceals: same investment, a fraction of the output.
+
+OEC Mirror Cost Scenarios — C220104 parametric (replaces DPSSL $8M/MW proxy):
+  Scenario                                      C220104 M$  LCOE $/MWh
+  --------------------------------------------------------------------
+  DPSSL proxy (default, inapplicable for OEC)        382.9        46.4
+  $10K/mirror (volume production floor)               10.0        44.1
+  $100K/mirror (near-term optimistic)                100.0        44.7
+  $250K/mirror (mid-range estimate)                  250.0        45.6
+  $500K/mirror (LIGO-class coating cost)             500.0        47.1
+  DOE INFUSE award (CSU/Menoni) is the only active program addressing OEC mirror
+  manufacturing at scale. No cost data is publicly available.
+
+DEC Capital Cost Scenarios — C220109 (base model: NOT MODELED = $0):
+  Scenario                                         C220109 M$  LCOE $/MWh
+  -----------------------------------------------------------------------
+  Base case (DEC omitted)                                   0        46.4
+  $50M  (optimistic — minimal hardware)                    50        46.7
+  $150M (medium estimate)                                 150        47.3
+  $300M (conservative)                                    300        48.2
+  $500M (pessimistic — novel GW-class system)             500        49.4
+  At 2800 MWe design point, DEC handles ~2400 MW_th charged-particle power
+  (30% of 8000 MW P_fus). A GW-class system with no commercial precedent.
+
+
+Target Cost OPEX Analysis — per-shot consumable cost not captured in base model:
+  At 10 Hz, 75% availability: 2.365e+08 shots/yr
+  Annual energy at design point: 1.840e+07 MWh/yr (2800 MWe)
+  Cost per target                                   M$/yr  LCOE +$/MWh
+  --------------------------------------------------------------------
+  $0.035/target  (Goodin economic viability floor)     8.28        +0.45
+  $0.10/target   (development milestone proxy)      23.65        +1.29
+  $1.00/target   (optimistic near-term target)     236.52       +12.86
+  $10.00/target  (mid-range near-term)            2365.20      +128.57
+  $1e6/target    (current NIF research target cost) 236520000.00 +12857142.86
+  30-year total shots ≈ 7.10e+09
+  Note: p_target=1.0 MW in the base model is the factory electrical load,
+  not a per-shot cost. The Goodin floor ($0.035/target) must be added as
+  annualized OPEX; the base LCOE does not include this consumable cost.

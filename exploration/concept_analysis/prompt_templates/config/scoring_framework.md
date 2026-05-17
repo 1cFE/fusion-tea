@@ -67,7 +67,17 @@ Start at 5.0 and subtract penalties:
 - Hard constraint (no known path to required quantity): -1.0 each
 - Scaling constraint (exists but must scale 10x+): -0.5 each
 - Sole-source dependency: -0.25 each
-- Helium-3 fuel dependency: -1.5
+- Helium-3 fuel dependency: **-1.5** (use this penalty for any He-3-fueled
+  concept — it REPLACES the -1.0 hard-constraint penalty for He-3 supply, do
+  NOT apply both. He-3 dependency captures the global ~600 kg inventory limit
+  that no other fuel faces.)
+- Lithium-6 enrichment dependency (D-T): -0.5 (current global Li-6 enrichment
+  capacity is near-zero post-Cold-War; first-of-a-kind D-T plants need ~tonnes
+  of >90% Li-6)
+
+**Sub-factor B arithmetic check** (mandatory): write the deduction list
+explicitly, sum the penalties, and show: `B = 5.0 - sum(penalties) = X`. Do
+NOT just state "B = X" without showing the arithmetic.
 
 Clamp to [1, 5].
 
@@ -234,12 +244,42 @@ These risks are ALWAYS classified as **binary**, regardless of claimed mitigatio
 - He-3 extraction/purification
 - External tritium or He-3 purchase is NOT a valid fallback for reclassification
 
+**Q < 1 rule**: If the cell's failure mode means **Q_engineering < 1** (no net
+electricity output ever), the classification MUST be **Binary**, regardless of
+how the closure pathway is described. Wording like "crosses into binary territory
+at Q < X" or "if X happens, plant produces zero net electricity" → the cell is
+Binary. A cell can be Degrading only if failure means worse economics on an
+otherwise net-positive plant.
+
 ### Anti-leniency rule
 
 When evidence is absent or limited to non-peer-reviewed sources for a cell, score
 it at Tier 1-2. Do NOT infer favorable performance from silence. "No data" means
 Tier 1 (asserted/absent), not Tier 3 (partial demonstration). The burden of evidence
 is on the concept to demonstrate capability, not on the scorer to assume it.
+
+**Time-stuck rule**: A concept that has worked on a specific physics or
+engineering problem for more than 5 years without demonstrated closure has Tier 1
+evidence for that cell, not Tier 2 — regardless of qualitative progress or
+incremental improvements. Examples that qualify as time-stuck:
+- DPF 22-year nτ plateau at 16× below ignition → F1-physics is Tier 1
+- DPF 22-year filament disruption unresolved → F3-physics is Tier 1
+- Helium-3 lunar mining proposed for 30+ years without commercial demonstration
+  → He-3 supply cells are Tier 1
+- Polywell "potential well depth" demonstration unresolved since 1990s → Tier 1
+
+**Operating-hardware rule**: "Operating hardware in the relevant regime" means a
+working physical system that has produced the specific measurement / function /
+performance the cell scores, with peer-reviewed publication of the result.
+Design papers (MANTA, ARIES, STEP, HYLIFE, etc.) and computational predictions
+are explicitly Tier 2 even when peer-reviewed.
+
+**No-fallback rule for binary cells**: A cell whose failure has no thermal /
+mechanical / chemical fallback within the same plant design is Binary. Examples:
+- A concept with only direct energy conversion (no thermal cycle) whose DEC fails
+  → F7 is Binary (no fallback path to net electricity)
+- An aneutronic concept whose only viable fuel cycle depends on an unproven
+  breeding pathway → F6 is Binary
 
 ### Heritage credit (D-T fuel only)
 

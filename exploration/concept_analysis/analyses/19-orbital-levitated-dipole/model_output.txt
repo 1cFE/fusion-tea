@@ -12,7 +12,7 @@ Zephyr Fusion | orbital spacecraft + ground rectenna
 --- Key Input Parameters ---
   Fusion power (per spacecraft):      30.0 MW
   Scientific Q:                       10.0
-  Stage 1 DEC efficiency (eta_dec):   57% [HIGH UNCERTAINTY]
+  Stage 1 DEC efficiency (eta_dec):   70% [HIGH UNCERTAINTY]
   Stage 2 Transmitter (phased-array): 15% [HIGH UNCERTAINTY]
   Stage 3 Beam collection:            89%
   Stage 4 Rectenna:                   82%
@@ -29,28 +29,28 @@ Zephyr Fusion | orbital spacecraft + ground rectenna
   Fusion power:                       30.0 MW
     Charged particle (14.7 MeV p):    24.0 MW (80%)
     DD neutrons (to space):            3.0 MW (10%)
-  [Stage 1] DEC output (DC):          13.68 MW (eta=57%)
+  [Stage 1] DEC output (DC):          16.80 MW (eta=70%)
   Recirculating loads:
     Heating (ICRH wall-plug):         4.29 MW
     Cryocooler:                       0.10 MW
     Housekeeping:                     0.05 MW
-    Total recirc:                     4.44 MW (32% of DEC output)
-  Power available for beaming:        9.24 MW
-  [Stage 2] After transmitter:        1.39 MW (eta=15%)
-  [Stage 3] After beam:               1.23 MW (eta=89%)
-  [Stage 4] Net delivered (AC grid):  1.012 MW (eta=82%)
+    Total recirc:                     4.44 MW (26% of DEC output)
+  Power available for beaming:        12.36 MW
+  [Stage 2] After transmitter:        1.85 MW (eta=15%)
+  [Stage 3] After beam:               1.65 MW (eta=89%)
+  [Stage 4] Net delivered (AC grid):  1.354 MW (eta=82%)
   ─────────────────────────────────────────────────────────────
-  Net plant output (1 spacecraft):   1.012 MWe
+  Net plant output (1 spacecraft):   1.354 MWe
   Engineering Q (p_fus/p_recirc):     6.8
-  Full 4-stage efficiency:            3.4% (p_net/p_fus)
+  Full 4-stage efficiency:            4.5% (p_net/p_fus)
   3-stage beaming efficiency:         10.9%
-  Specific power:                     101.2 W/kg spacecraft
+  Specific power:                     135.4 W/kg spacecraft
 
 --- He3 Fuel Balance ---
   He3 consumption rate:               1.617 kg/yr per spacecraft
   Annual He3 purchase:                1.617 kg/yr (fleet)
   Annual He3 cost:                    $48.51M/yr
-  He3 cost share of LCOE:             51.5%
+  He3 cost share of LCOE:             51.3%
 
 --- Spacecraft Mass Budget ---
     HTS dipole coil + cryostat              2,000 kg
@@ -73,117 +73,117 @@ Zephyr Fusion | orbital spacecraft + ground rectenna
     C220106 Vacuum system [N/A — space vacuum]         $   0.0M
     C220107 Power electronics + onboard I&C [override] $   4.0M
     C220108 Target factory [N/A — steady-state]        $   0.0M
-    C220109 Direct Energy Converter [1costingfe scaled] $  10.0M
+    C220109 Direct Energy Converter [1costingfe scaled] $  10.9M
     C220110 Remote handling / integration [override]   $   2.0M
-    C220111 Integration labor (14%)                    $   9.9M
+    C220111 Integration labor (14%)                    $  10.1M
     C220112 He3 fuel system [override]                 $   2.0M
     C220113 Phased-array transmitter fabrication [override] $  20.0M
     ────────────────────────────────────────────────────────────
-    Per-module subtotal:                         $  82.9M × 1
+    Per-module subtotal:                         $  83.9M × 1
   Plant-wide (ground infrastructure):
     C220200 Coolant systems [N/A]                      $   0.0M
     C220300 Cryocooler + thermal radiators             $   3.7M
     C220400 Rad waste management [N/A]                 $   0.0M
-    C220500 He3 ground handling                        $   0.3M
+    C220500 He3 ground handling                        $   0.4M
     C220600 Ground control systems                     $   5.0M
     C220700 Instrumentation & control                  $   3.3M
     ────────────────────────────────────────────────────────────
-    Plant-wide subtotal:                         $  12.3M
-  CAS22 Total:                                   $  95.3M
+    Plant-wide subtotal:                         $  12.4M
+  CAS22 Total:                                   $  96.3M
 
 --- Capital Costs (CAS10–60) ---
   CAS10 Pre-construction (licensing):  $    18.0M
   CAS21 Ground station facility:       $     2.0M
-  CAS22 Spacecraft plant equipment:    $    95.3M
+  CAS22 Spacecraft plant equipment:    $    96.3M
   CAS23 Ground beaming management:     $     2.0M
-  CAS24 Rectenna + grid connection:    $     2.1M
+  CAS24 Rectenna + grid connection:    $     2.8M
   CAS25 Misc ground equipment:         $     0.5M
   CAS26 Spacecraft thermal ground:     $     1.0M
   CAS27 He3 startup inventory:         $    48.5M
   CAS28 Digital twin:                  $     5.0M
-  CAS29 Contingency (FOAK 10%):        $    15.6M
+  CAS29 Contingency (FOAK 10%):        $    15.8M
   ───────────────────────────────────────────────────────
-  CAS20 Direct Costs:                  $   172.0M
-  CAS30 Integration / Indirect:        $    17.2M
-  CAS40 Owner's Costs:                 $     0.7M
+  CAS20 Direct Costs:                  $   174.0M
+  CAS30 Integration / Indirect:        $    17.4M
+  CAS40 Owner's Costs:                 $     0.8M
   CAS50 Launch + Supplementary:        $    30.6M
     of which: Launch cost:             $    27.0M
     of which: Decommissioning:         $     1.0M
   ───────────────────────────────────────────────────────
-  Overnight Capital:                   $   238.6M
-  CAS60 IDC (f=0.082):           $    19.6M
+  Overnight Capital:                   $   240.9M
+  CAS60 IDC (f=0.082):           $    19.8M
   ═══════════════════════════════════════════════════════
-  Total Capital:                       $   258.2M
-  Specific Capital:                    $ 255,100 $/kWe
+  Total Capital:                       $   260.6M
+  Specific Capital:                    $ 192,562 $/kWe
 
 --- Annual Costs (CAS70–90) ---
-  CAS90 Capital charge (CRF=0.1490): $   38.47M/yr
-  CAS71 O&M (3% of overnight cap): $    7.16M/yr
+  CAS90 Capital charge (CRF=0.1490): $   38.84M/yr
+  CAS71 O&M (3% of overnight cap): $    7.23M/yr
   CAS72 Scheduled replacement:         $    0.00M/yr (0 coil replacements)
-  CAS70 Total O&M:                     $    7.16M/yr
+  CAS70 Total O&M:                     $    7.23M/yr
   CAS80 He3 fuel cost:                 $   48.51M/yr
     He3: 1.617 kg/yr × $30M/kg = $48.51M/yr
 
 --- LCOE ---
-  Annual energy production:   7,978.4 MWh
-  Annual revenue requirement: $94.14M
+  Annual energy production:   10,671.1 MWh
+  Annual revenue requirement: $94.58M
   ╔══════════════════════════════════════════╗
-  ║  LCOE =     1180.0 ¢/kWh               ║
-  ║       =    11799.6 $/MWh               ║
+  ║  LCOE =      886.3 ¢/kWh               ║
+  ║       =     8863.2 $/MWh               ║
   ╚══════════════════════════════════════════╝
-  Capital (CAS90):    40.9%
+  Capital (CAS90):    41.1%
   O&M (CAS70):        7.6%
-  Fuel (CAS80):       51.5%
+  Fuel (CAS80):       51.3%
 
 --- Scaled to 1000 MWe Reference (alpha=0.6) ---
-  Native p_net_plant:             1.012 MWe
-  Scale factor:                   0.0634
-  Scaled LCOE:                    $748.1 /MWh
-  Scaled overnight capital:       $14,945 /kWe
+  Native p_net_plant:             1.354 MWe
+  Scale factor:                   0.0712
+  Scaled LCOE:                    $631.2 /MWh
+  Scaled overnight capital:       $12,673 /kWe
 
 --- Competitive Benchmarks ---
-  Terrestrial fusion parity:      $50–150/MWh   → this concept: 118× over-parity
-  SPS parity (orbital ref):       $200–500/MWh  → this concept: 34× over-SPS-parity
+  Terrestrial fusion parity:      $50–150/MWh   → this concept: 89× over-parity
+  SPS parity (orbital ref):       $200–500/MWh  → this concept: 25× over-SPS-parity
 
 ========================================================================
 SENSITIVITY SWEEPS (from baseline)
 ========================================================================
-  Baseline LCOE: $11,800/MWh
+  Baseline LCOE: $8,863/MWh
 
   He3 cost ($/kg)   [Dominant lever — self-breed vs. market]:
-        $0.0M/kg → $     4,293/MWh  (p_net=1.01 MWe, He3=1.62 kg/yr)
-        $0.1M/kg → $     4,318/MWh  (p_net=1.01 MWe, He3=1.62 kg/yr)
-        $1.0M/kg → $     4,543/MWh  (p_net=1.01 MWe, He3=1.62 kg/yr)
-        $5.0M/kg → $     5,544/MWh  (p_net=1.01 MWe, He3=1.62 kg/yr)
-       $10.0M/kg → $     6,795/MWh  (p_net=1.01 MWe, He3=1.62 kg/yr)
-       $20.0M/kg → $     9,297/MWh  (p_net=1.01 MWe, He3=1.62 kg/yr)
-       $30.0M/kg → $    11,800/MWh  (p_net=1.01 MWe, He3=1.62 kg/yr)
+        $0.0M/kg → $     3,251/MWh  (p_net=1.35 MWe, He3=1.62 kg/yr)
+        $0.1M/kg → $     3,270/MWh  (p_net=1.35 MWe, He3=1.62 kg/yr)
+        $1.0M/kg → $     3,438/MWh  (p_net=1.35 MWe, He3=1.62 kg/yr)
+        $5.0M/kg → $     4,186/MWh  (p_net=1.35 MWe, He3=1.62 kg/yr)
+       $10.0M/kg → $     5,122/MWh  (p_net=1.35 MWe, He3=1.62 kg/yr)
+       $20.0M/kg → $     6,992/MWh  (p_net=1.35 MWe, He3=1.62 kg/yr)
+       $30.0M/kg → $     8,863/MWh  (p_net=1.35 MWe, He3=1.62 kg/yr)
 
   Transmitter efficiency (DC-RF)  [phased-array <20%; no-steering ~75%]:
-              5% → $    35,237/MWh  (p_net=0.34 MWe, He3=1.62 kg/yr)
-             10% → $    17,660/MWh  (p_net=0.67 MWe, He3=1.62 kg/yr)
-             15% → $    11,800/MWh  (p_net=1.01 MWe, He3=1.62 kg/yr)
-             20% → $     8,869/MWh  (p_net=1.35 MWe, He3=1.62 kg/yr)
-             50% → $     3,591/MWh  (p_net=3.37 MWe, He3=1.62 kg/yr)
-             75% → $     2,418/MWh  (p_net=5.06 MWe, He3=1.62 kg/yr)
-             80% → $     2,271/MWh  (p_net=5.40 MWe, He3=1.62 kg/yr)
+              5% → $    26,432/MWh  (p_net=0.45 MWe, He3=1.62 kg/yr)
+             10% → $    13,256/MWh  (p_net=0.90 MWe, He3=1.62 kg/yr)
+             15% → $     8,863/MWh  (p_net=1.35 MWe, He3=1.62 kg/yr)
+             20% → $     6,666/MWh  (p_net=1.80 MWe, He3=1.62 kg/yr)
+             50% → $     2,710/MWh  (p_net=4.51 MWe, He3=1.62 kg/yr)
+             75% → $     1,830/MWh  (p_net=6.77 MWe, He3=1.62 kg/yr)
+             80% → $     1,720/MWh  (p_net=7.22 MWe, He3=1.62 kg/yr)
 
   Launch cost ($/kg)  [Starship ~$200; Falcon 9 ~$2,700]:
-         $100/kg → $    11,176/MWh  (p_net=1.01 MWe, He3=1.62 kg/yr)
-         $200/kg → $    11,200/MWh  (p_net=1.01 MWe, He3=1.62 kg/yr)
-         $500/kg → $    11,272/MWh  (p_net=1.01 MWe, He3=1.62 kg/yr)
-       $1,000/kg → $    11,392/MWh  (p_net=1.01 MWe, He3=1.62 kg/yr)
-       $2,000/kg → $    11,632/MWh  (p_net=1.01 MWe, He3=1.62 kg/yr)
-       $2,700/kg → $    11,800/MWh  (p_net=1.01 MWe, He3=1.62 kg/yr)
-       $5,000/kg → $    12,351/MWh  (p_net=1.01 MWe, He3=1.62 kg/yr)
+         $100/kg → $     8,397/MWh  (p_net=1.35 MWe, He3=1.62 kg/yr)
+         $200/kg → $     8,415/MWh  (p_net=1.35 MWe, He3=1.62 kg/yr)
+         $500/kg → $     8,469/MWh  (p_net=1.35 MWe, He3=1.62 kg/yr)
+       $1,000/kg → $     8,558/MWh  (p_net=1.35 MWe, He3=1.62 kg/yr)
+       $2,000/kg → $     8,738/MWh  (p_net=1.35 MWe, He3=1.62 kg/yr)
+       $2,700/kg → $     8,863/MWh  (p_net=1.35 MWe, He3=1.62 kg/yr)
+       $5,000/kg → $     9,275/MWh  (p_net=1.35 MWe, He3=1.62 kg/yr)
 
   Scientific Q  [D-He3 requires ~10× triple product vs D-T; Q=10 optimistic]:
              2.0 → $       inf/MWh  (p_net=0.00 MWe, He3=1.62 kg/yr)
-             5.0 → $    21,929/MWh  (p_net=0.54 MWe, He3=1.62 kg/yr)
-            10.0 → $    11,800/MWh  (p_net=1.01 MWe, He3=1.62 kg/yr)
-            15.0 → $    10,230/MWh  (p_net=1.17 MWe, He3=1.62 kg/yr)
-            20.0 → $     9,594/MWh  (p_net=1.25 MWe, He3=1.62 kg/yr)
-            30.0 → $     9,032/MWh  (p_net=1.32 MWe, He3=1.62 kg/yr)
+             5.0 → $    13,524/MWh  (p_net=0.88 MWe, He3=1.62 kg/yr)
+            10.0 → $     8,863/MWh  (p_net=1.35 MWe, He3=1.62 kg/yr)
+            15.0 → $     7,953/MWh  (p_net=1.51 MWe, He3=1.62 kg/yr)
+            20.0 → $     7,565/MWh  (p_net=1.59 MWe, He3=1.62 kg/yr)
+            30.0 → $     7,214/MWh  (p_net=1.67 MWe, He3=1.62 kg/yr)
 
   DEC efficiency (proton deceleration)  [50–65% Venetian blind upper bound]:
              20% → $   297,349/MWh  (p_net=0.04 MWe, He3=1.62 kg/yr)
@@ -195,12 +195,12 @@ SENSITIVITY SWEEPS (from baseline)
              80% → $     7,457/MWh  (p_net=1.62 MWe, He3=1.62 kg/yr)
 
   Fusion power per spacecraft (MW)  [He3 cost scales linearly with p_fus]:
-             5.0 → $    35,302/MWh  (p_net=0.15 MWe, He3=0.27 kg/yr)
-            10.0 → $    20,744/MWh  (p_net=0.33 MWe, He3=0.54 kg/yr)
-            20.0 → $    13,985/MWh  (p_net=0.67 MWe, He3=1.08 kg/yr)
-            30.0 → $    11,800/MWh  (p_net=1.01 MWe, He3=1.62 kg/yr)
-            50.0 → $    10,140/MWh  (p_net=1.70 MWe, He3=2.70 kg/yr)
-           100.0 → $     8,900/MWh  (p_net=3.41 MWe, He3=5.39 kg/yr)
+             5.0 → $    25,844/MWh  (p_net=0.21 MWe, He3=0.27 kg/yr)
+            10.0 → $    15,401/MWh  (p_net=0.44 MWe, He3=0.54 kg/yr)
+            20.0 → $    10,455/MWh  (p_net=0.90 MWe, He3=1.08 kg/yr)
+            30.0 → $     8,863/MWh  (p_net=1.35 MWe, He3=1.62 kg/yr)
+            50.0 → $     7,643/MWh  (p_net=2.27 MWe, He3=2.70 kg/yr)
+           100.0 → $     6,716/MWh  (p_net=4.55 MWe, He3=5.39 kg/yr)
 
 ========================================================================
 SCENARIO COMPARISON

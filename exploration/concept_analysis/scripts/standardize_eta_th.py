@@ -39,14 +39,21 @@ ROOT = SCRIPT_DIR.parent
 TABLE_PATH = ROOT / "table.csv"
 ANALYSES_DIR = ROOT / "analyses"
 
-# Match assignment patterns in model_setup.py:
+# Match assignment patterns in model_setup.py. We allow:
 #   eta_th = 0.35
 #   ETA_TH = 0.35
 #   eta_th=0.35,
 #   thermal_efficiency=0.35
 #   eta_th: float = 0.35
+#   _ETA_TH_CENTRAL = 0.48        (underscore prefix + suffix)
+#   ETA_TH_BRAYTON = 0.35          (suffix variant)
+#   eta_dec = 0.70                 (Direct Energy Conversion concepts)
+# The optional `_[A-Za-z0-9_]*` suffix and leading `_?` lets the regex catch
+# variants used by concepts 19, 25, 27, 36. For Direct concepts the canonical
+# value comes from the same canonical_eta_th() map keyed on Energy Capture.
 ETA_TH_PATTERN = re.compile(
-    r"(?P<prefix>\s*(?:eta_th|ETA_TH|thermal_efficiency)"
+    r"(?P<prefix>\s*_?(?:eta_th|ETA_TH|thermal_efficiency|eta_dec|ETA_DEC)"
+    r"(?:_[A-Za-z0-9]+)*"
     r"(?:\s*:\s*[A-Za-z][\w\[\], ]*)?\s*=\s*)"
     r"(?P<value>\d+\.?\d*)"
     r"(?P<suffix>[,\s]*)"

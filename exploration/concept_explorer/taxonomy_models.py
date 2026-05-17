@@ -108,15 +108,9 @@ class EnergyCapture(StrEnum):
     TBD = "TBD"
 
 
-class PlasmaState(StrEnum):
-    BURNING = "Burning"
-    TRANSIENT = "Transient"
-    SUSTAINED = "Sustained"
-    PINCH = "Pinch"
-    COMPRESSED = "Compressed"
-    NON_BURNING = "Non-burning"
-    CONFINED = "Confined"
-    TBD = "TBD"
+# PlasmaState and NeutronManagement enums removed per schema 0.3.0
+# (Plasma State derivable from Confinement Concept + Operation Mode;
+#  Neutron Management implied by Fuel.)
 
 
 class MagnetType(StrEnum):
@@ -124,32 +118,23 @@ class MagnetType(StrEnum):
     HTS_PLANAR_ARRAY = "HTS (planar array)"
     HTS_3D_STELLARATOR = "HTS (3D stellarator)"
     HTS_LEVITATED_DIPOLE = "HTS (levitated dipole)"
+    LTS = "LTS"
     LTS_HTS = "LTS+HTS"
-    PULSED_EM = "Pulsed EM"
     RESISTIVE = "Resistive"
-    SELF_CONFINED = "Self-confined"
+    NONE = "None"
     ELECTROSTATIC = "Electrostatic"
+    NA = "N/A"
     TBD = "TBD"
     UNKNOWN = "Unknown"
 
 
-class TritiumBreeding(StrEnum):
-    FLIBE_BLANKET = "FLiBe blanket"
-    LIQUID_LI_BLANKET = "Liquid Li blanket"
-    LIPB_BLANKET = "LiPb blanket"
-    SOLID_CERAMIC_BREEDER = "Solid ceramic breeder (HCPB)"
-    LIQUID_METAL_WALL = "Liquid metal wall"
-    LI_BLANKET_UNSPECIFIED = "Li blanket (unspecified)"
-    SELF_BRED = "Self-bred (DD side)"
-    TBD = "TBD"
-
-
-class NeutronManagement(StrEnum):
-    INTEGRATED_BLANKET_SHIELD = "Integrated blanket/shield"
-    HEAVY_SHIELDING_14MEV = "Heavy shielding (14 MeV)"
-    HEAVY_SHIELDING_DD = "Heavy shielding (D-D)"
-    MINIMAL_ANEUTRONIC = "Minimal (aneutronic)"
-    REDUCED_DHE3 = "Reduced (D-He3)"
+class BlanketConfig(StrEnum):
+    LIQUID_METAL = "Liquid metal"
+    MOLTEN_SALT = "Molten salt"
+    SOLID_BREEDER = "Solid breeder"
+    OTHER_HYBRID = "Other/hybrid"
+    NA_NO_TRITIUM = "N/A (no tritium)"
+    NA_NON_POWER = "N/A (non-power)"
     TBD = "TBD"
 
 
@@ -205,10 +190,8 @@ class ConceptTaxonomy(BaseModel):
     fuel: FuelType
     primary_heating: PrimaryHeating | None = None
     energy_capture: EnergyCapture | None = None
-    plasma_state: PlasmaState | None = None
     magnet_type: MagnetType | None = None
-    tritium_breeding: TritiumBreeding | None = None
-    neutron_management: NeutronManagement | None = None
+    blanket_config: BlanketConfig | None = None
     operation_mode: OperationMode
     repetition_rate: RepetitionRate | None = None
     driver_technology: str | None = None
