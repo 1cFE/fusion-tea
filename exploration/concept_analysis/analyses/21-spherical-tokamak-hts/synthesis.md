@@ -5,6 +5,8 @@ Company: Tokamak Energy
 Type: synthesis
 Status: draft
 Created: 2026-04-29
+Stale: true
+Stale-Reason: analysis-updated-iter-2
 ---
 
 # Synthesis: Spherical Tokamak - HTS (Tokamak Energy)

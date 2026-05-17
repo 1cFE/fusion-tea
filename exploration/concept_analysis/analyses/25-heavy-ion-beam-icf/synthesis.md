@@ -5,6 +5,8 @@ Company: Intensity Energy
 Type: synthesis
 Status: draft
 Created: 2026-04-29
+Stale: true
+Stale-Reason: analysis-updated-iter-4
 ---
 
 ## 1. Executive Summary

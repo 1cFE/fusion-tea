@@ -5,6 +5,8 @@ Company: Helical Fusion
 Type: synthesis
 Status: draft
 Created: 2026-04-29
+Stale: true
+Stale-Reason: analysis-updated-iter-4
 ---
 
 # Editorial Synthesis: Helical Coil Stellarator (Helical Fusion HESTIA)

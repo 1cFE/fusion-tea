@@ -1,0 +1,29 @@
+[
+  {
+    "timestamp": "2026-05-17T19:18:53.707925+00:00",
+    "step": "feedback-pass",
+    "attempt": 1,
+    "validator": "validate_file_modified",
+    "passed": true,
+    "details": "File content changed",
+    "validated_text_preview": "---\nID: 29-negative-triangularity-tokamak\nConcept: Negative Triangularity Tokamak\nCompany: Firefly Fusion\nStatus: draft\nCreated: 2026-04-19\nApproved-Date:\nReuses: [21-spherical-tokamak-hts]\n---\n\n# D1+ Analysis: Negative Triangularity Tokamak (Firefly Fusion)\n\n**Concept**: Negative Triangularity (NT) HTS Tokamak \u2014 D-T fuel\n**Company**: Firefly Fusion (Lausanne/Cadarache; founded 2024)\n**Prototype**: LUCIOLE (copper magnets, pre-commercial)\n**Confinement Family**: MFE \u2014 Tokamak (Negative Triangula"
+  },
+  {
+    "timestamp": "2026-05-17T19:20:08.291323+00:00",
+    "step": "model-setup",
+    "attempt": 1,
+    "validator": "validate_file_modified+validate_python_syntax",
+    "passed": true,
+    "details": "All validators passed",
+    "validated_text_preview": "\"\"\"Negative Triangularity (NT) Tokamak \u2014 LCOE model setup (Firefly Fusion / MANTA proxy).\n\nModeling approach:\n  The only published NT tokamak engineering reference is MANTA (Rutherford et al. 2024),\n  a community-authored 90 MWe pilot plant study. Firefly Fusion (the target company)\n  has disclosed only aspirational parameters (R=2\u20132.5 m, B=10\u201312 T, P_fus=50\u2013100 MW)\n  and no plant-level cost data. This script uses MANTA as the physics and cost anchor.\n\n  The native result is at MANTA's 90 MWe de"
+  },
+  {
+    "timestamp": "2026-05-17T19:23:15.926250+00:00",
+    "step": "assess",
+    "attempt": 1,
+    "validator": "validate_feedback_verdict",
+    "passed": true,
+    "details": "Feedback format valid (verdict: FINDINGS)",
+    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: H_NA sweep captures only heating-capital channel, understating ohmic-only benefit\n- **Target:** Model \u2014 H_NA sensitivity sweep (Carried-Forward F-1 table)\n- **Category:** model\n- **Finding:** The H_NA sweep parameterizes only C220104 (ICRF capital cost) linearly from $150M \u2192 $0 as H_NA goes 1.0 \u2192 2.0, producing a narrow 87.4\u201391.6 $/MWh range at 1 GWe (~4.6% improvement). But the two-scenario comparison table directly above it shows Q_eng = 7.71 (ICRF) vs. 16.04 (ohmic"
+  }
+]

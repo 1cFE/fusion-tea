@@ -330,24 +330,66 @@ specific cycle parameter from peer-reviewed sources. In both cases, the model
 file must include a comment identifying the deviation, the source, and the
 deviation magnitude vs. the canonical value.
 
+### Plant availability
+
+Look up the canonical availability for the concept's operating-mode category
+(combine the `Confinement Family` and `Operation Mode` columns from `table.csv`):
+
+| Operating-mode category (D-T fuel) | Canonical availability | Reasoning |
+|------------------------------------|------------------------|-----------|
+| MCF — steady-state or quasi-steady (tokamak, stellarator, mirror, ST, FRC steady) | **0.85** | Midpoint of Araiinejad & Shirvan (2025) 75–90% commercial-target band for D-T MCF |
+| Pulsed MCF — short pulses, no quasi-steady claim | 0.75 | Pulse + dwell + recharge floor |
+| Pulsed IFE — rep-rated laser / heavy-ion / direct or indirect drive | 0.75 | Shot-rate × target-factory × optics-maintenance composite |
+| Pulsed MIF — mechanical compression, MagLIF-class | 0.75 | Mechanical-system MTBF dominates duty cycle |
+| Single-shot demo (NIF-class) | use sourced value, flag non-commensurable | These are not commercial plants; their reported availability is not directly comparable to commercial targets |
+| D-D / D-³He / p-¹¹B | 0.85 | Same MCF basis; no fuel-specific operations data in literature yet |
+
+**Justified deviations**: A concept may use a non-canonical availability **only**
+when its own design literature (peer-reviewed paper, company technical
+disclosure, or comparable external publication) commits to a specific
+availability number with an articulated basis (e.g., maintenance schedule,
+duty-cycle calculation). Author-reasoned values within a published range, or
+midpoint picks within a band, are **not** sufficient — they must move to the
+canonical value. In the deviation case, the `model_setup.py` comment must:
+
+1. Quote or paraphrase the externally-published number
+2. Name the source (paper, slide deck, company technical report)
+3. State the basis the source gives (e.g., "biennial 84-day maintenance cycle")
+
+Examples of *accepted* deviations:
+- `05-planar-coil-stellarator` / `10-large-scale-stellarator` — Helios/Thea
+  Energy published **88%** with biennial 84-day maintenance cycle.
+- `20b-renaissance` — Renaissance Fusion disclosed **92%** target (flagged uncertain).
+
+Examples of *not-accepted* deviations (must move to canonical):
+- "Mid-range of published 80–85% band" without a specific cited target.
+- "Conservative central estimate" without external publication of that estimate.
+- Citing only the Araiinejad & Shirvan range without a concept-specific commitment.
+
 ### Why standardize
 
 Cross-concept LCOE comparisons are only meaningful when all concepts in the
-same conversion category use the same η_th. A 0.32 vs. 0.46 spread within
-"steam Rankine" produces a 30–40% LCOE difference for identical fusion power —
-swamping legitimate architectural advantages between concepts. Use the canonical
-value to isolate the architectural signal.
+same conversion category use the same η_th and the same availability. A 0.32
+vs. 0.46 spread within "steam Rankine" produces a 30–40% LCOE difference for
+identical fusion power. A 0.75 vs. 0.88 availability spread is similarly
+LCOE-driving (LCOE scales as 1/availability for capital-dominated concepts).
+Use the canonical values to isolate the architectural signal; sensitivity-sweep
+when an availability question is the focus of the analysis.
 
-### Helper
+### Helpers
 
-The Python helper `lib.scoring.canonical_eta_th(energy_capture)` returns the
-canonical value for a given energy-capture string (matching the `table.csv`
-column). Import it in `model_setup.py`:
+The Python helpers in `lib.scoring` return canonical values for the strings
+that appear in `table.csv`. Import them in `model_setup.py`:
 
 ```python
-from lib.scoring import canonical_eta_th
+from lib.scoring import canonical_eta_th, canonical_availability
 ETA_TH = canonical_eta_th("Thermal (steam)")  # → 0.35
+AVAILABILITY = canonical_availability("MCF", "Steady-state", "D-T")  # → 0.85
 ```
+
+`canonical_availability(confinement_family, operation_mode, fuel)` accepts the
+`Confinement Family`, `Operation Mode`, and `Fuel` columns directly from
+`table.csv` (case- and whitespace-insensitive).
 
 ---
 

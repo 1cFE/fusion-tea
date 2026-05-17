@@ -68,6 +68,65 @@ def canonical_eta_th(energy_capture: str) -> float:
 
 
 # ---------------------------------------------------------------------------
+# Canonical availability by operating-mode category — see scoring_framework.md
+# ---------------------------------------------------------------------------
+
+_CANONICAL_AVAILABILITY_MCF_STEADY = 0.85
+_CANONICAL_AVAILABILITY_PULSED = 0.75
+
+
+def canonical_availability(
+    confinement_family: str,
+    operation_mode: str,
+    fuel: str = "D-T",
+) -> float:
+    """Return the canonical plant availability for a concept's operating mode.
+
+    Arguments are taken from ``table.csv`` columns:
+    - ``confinement_family``: ``MFE``, ``IFE``, ``MIF``, or ``Non-Standard``
+    - ``operation_mode``: ``Steady-state``, ``Quasi-steady``, ``Pulsed``, etc.
+    - ``fuel``: ``D-T``, ``D-D``, ``D-He3``, ``p-B11``
+
+    Lookup rules (see ``prompt_templates/config/scoring_framework.md`` for the
+    full canonical table and the justified-deviation policy):
+
+    - MCF + (steady-state or quasi-steady): **0.85**
+    - Anything pulsed (MCF, IFE, MIF): **0.75**
+    - Non-D-T fuels currently get the steady-state default 0.85 (no fuel-specific
+      operations data in literature)
+
+    A model file may use a non-canonical value, but **only** if it cites an
+    externally-published availability target with a stated basis. See the
+    "Justified deviations" rule in scoring_framework.md.
+
+    Raises ``ValueError`` if the operating mode cannot be classified.
+    """
+    family = confinement_family.strip().upper()
+    mode = operation_mode.strip().lower()
+
+    is_pulsed = "pulsed" in mode
+    is_steady = "steady" in mode or "quasi" in mode or "continuous" in mode
+
+    if is_pulsed and not is_steady:
+        return _CANONICAL_AVAILABILITY_PULSED
+
+    if is_steady:
+        return _CANONICAL_AVAILABILITY_MCF_STEADY
+
+    # Family-based fallback when mode string is ambiguous (e.g., CSV parsing
+    # artifacts like "Integrated blanket/shield" for 07-maglif and 22-projectile)
+    if family in ("IFE", "MIF"):
+        return _CANONICAL_AVAILABILITY_PULSED
+    if family == "MFE":
+        return _CANONICAL_AVAILABILITY_MCF_STEADY
+
+    raise ValueError(
+        f"Cannot classify operating mode for canonical availability: "
+        f"family={confinement_family!r}, mode={operation_mode!r}, fuel={fuel!r}"
+    )
+
+
+# ---------------------------------------------------------------------------
 # C2: Scalability — deterministic lookup by confinement category
 # ---------------------------------------------------------------------------
 

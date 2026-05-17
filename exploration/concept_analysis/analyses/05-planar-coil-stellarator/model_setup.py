@@ -44,8 +44,12 @@ model = CostModel(concept=ConfinementConcept.STELLARATOR, fuel=Fuel.DT)
 
 _SHARED_KWARGS = dict(
     # ── Plant requirements ──────────────────────────────────────────────────
-    availability=0.88,       # [A] "Capacity factor: 88%" — maintenance-limited;
-                             #      84-day biennial maintenance cycle [B §Operations]
+    availability=0.88,       # DEVIATION: from canonical 0.85 (MCF steady-state, D-T) per
+                             #   scoring_framework.md §"Plant availability".
+                             # Source: [A] analysis.md §Section 5 ("Capacity factor: 88%"),
+                             #   citing [B] thea-energy-helios-arxiv-2512-08027.md §Operations.
+                             # Basis: published 84-day biennial maintenance cycle for the
+                             #   Helios/Thea Energy QA stellarator preconceptual design.
     lifetime_yr=40,          # [A] "Magnet design lifetime: 40+ years" [B §Magnets]
     n_mod=1,                 # Single-module plant
     construction_time_yr=8.0,  # DEFAULT [D]: no Helios-specific timeline published;

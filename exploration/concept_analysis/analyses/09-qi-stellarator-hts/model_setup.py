@@ -202,7 +202,12 @@ _SHARED = dict(
     # UNCERTAIN: Proxima has not published a Stellaris capacity factor target.
     # Source: analysis.md §5 (capacity factor row); analysis.md §2, H2;
     #         helios-stellarator-comparison.md §2; arxiv-2501-04640.md (replacement interval)
-    availability=0.88,
+    availability=0.88,           # DEVIATION: out of scope for the current scoring_framework.md
+                                 #   §"Plant availability" standardization pass — concept 09 has
+                                 #   a custom replacement-cost calculation tied to
+                                 #   _AVAILABILITY_BASE (line 173) and standardizing only the
+                                 #   framework call would create internal drift. Address as a
+                                 #   follow-up that updates both sites in lockstep.
 
     lifetime_yr=30,              # Standard 30-yr plant lifetime; DEFAULT
                                  # NOTE: REBCO magnet lifetime ~10 FPY at 2.7 GW (neutron

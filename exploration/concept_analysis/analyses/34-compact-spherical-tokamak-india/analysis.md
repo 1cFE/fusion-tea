@@ -106,6 +106,8 @@ IF cumulative production learning across 2,500 units delivers ≥20% cost reduct
 **H3 — India regulatory scenario (scenario branch)**
 IF the AERB applies a fission-style regulatory framework (no fusion-specific pathway), THEN building and civil cost accounts increase by ~2.2× per the Stewart & Shirvan (2022) scenario, pushing LCOE above $1,000/MWh at the 50 MWe scale. Testable by: applying the 2.2× building cost multiplier and showing LCOE shift vs. the base case.
 
+**Note on central-case availability**: The model's central-case plant availability is set at 0.85, the canonical value for MCF steady-state D-T concepts per scoring_framework.md §Plant availability; this is a policy-driven assignment rather than a concept-specific estimate (no Pranos-published target exists), which means LCOE comparisons within the MCF D-T family are apples-to-apples on this dimension.
+
 ---
 
 ## Section 3: Maturity of Key Subsystems and Components
@@ -209,6 +211,7 @@ Unlike the US (where CFS, Tokamak Energy, and others have created a growing HTS 
 | **PRAGYA experimental device — plasma current (Ip)** | ≤ 25 kA | arxiv-2603-11549.md §Abstract | medium | Upper design limit for experimental device |
 | **PRAGYA vacuum vessel structural validation** | 3D FEM complete; safety margins satisfied under self-weight + atmospheric pressure + thermal baking loads | arxiv-2603-11549.md §Abstract | medium | Device "ready for subsequent plasma operations" per paper |
 | Implied capacity factor from vision statement | [inferred] ~87% | [derived: 3,000 GWh/day ÷ (2,500 × 50 MW × 24 h) = 1.0; ~87% for realistic availability] | low | Back-calculation from fleet energy vision; no stated capacity factor target |
+| Plant availability (model central case) | 0.85 | [canonical] scoring_framework.md §Plant availability (MCF steady-state, D-T) | medium | Canonical per project-wide policy; previously 0.80. No Pranos-published availability target exists to justify Tier-A deviation. Fleet vision implies ~87% but this remains a back-calculated aspiration. Cross-concept LCOE comparisons within the MCF D-T family are apples-to-apples on this dimension. |
 | Gross electric output per module (estimated) | [estimated] 100–125 MWe | [estimated: 50 MWe net + ~50–75 MWe recirculating loads (heating, tritium processing, cryo, cooling, housekeeping)] | low | Recirculating loads estimated by analogy with small ST design points; both net output and auxiliary loads are unconfirmed |
 | Recirculating power fraction (estimated) | [estimated] 50–60% of gross electric | [estimated: recirculating ÷ gross = (gross − 50) ÷ gross ≈ 50–60% given gross ≈ 100–125 MWe] | low | Far above the ≤25% target for large fusion plants; primary LCOE sensitivity driver at 50 MWe scale; model estimates ~59% |
 | Thermal efficiency (η_th) | [model] 0.30 — DEVIATION from canonical 0.35 | [deviation justified: scoring_framework.md §"Justified deviations" — small-plant derating. Industrial steam turbines in 30–80 MWe class lose 3–7 pp from off-design effects vs. utility-scale 250+ MWe plants (single-extraction reheat, reduced HRSG complexity, exhaust loss scaling). Sensitivity sweep recommended: η_th ∈ {0.28, 0.30, 0.32, 0.35}.] | low | Canonical 0.35 is a category-fit error for 50 MWe machines; 0.30 is the engineering-grounded baseline. See Section 2 small-plant penalty note. |
@@ -228,7 +231,7 @@ Unlike the US (where CFS, Tokamak Energy, and others have created a growing HTS 
 | Heating method and auxiliary power | proprietary / not-yet-published | blocking | Determines recirculating power fraction and Q_engineering |
 | Blanket type and TBR target | proprietary / not-yet-published | blocking | Required for tritium self-sufficiency assessment |
 | Power conversion cycle and thermal efficiency | truly-unknown (pre-design) | blocking | All LCOE estimates require thermal efficiency assumption |
-| Plant capacity factor | truly-unknown (pre-design) | blocking | Second-largest LCOE driver after CAPEX |
+| Plant capacity factor (Pranos-specific) | truly-unknown (pre-design) | blocking | No Pranos-published target; model applies canonical 0.85 per scoring_framework.md §Plant availability (MCF steady-state, D-T) |
 | Overnight capital cost | truly-unknown (pre-design) | blocking | No plant study, cost estimate, or analogue applicable without machine parameters |
 | Center stack shielding design | truly-unknown (pre-design) | important | ST-specific requirement; dimensions depend on machine R and B which are unknown |
 | Remote maintenance scheme | truly-unknown (pre-design) | important | Required for availability estimate; not addressed in any source |
@@ -247,7 +250,7 @@ Unlike the US (where CFS, Tokamak Energy, and others have created a growing HTS 
 | 4 | Heating method not disclosed — recirculating power unknown | S2, S3, S5 | proprietary / not-yet-published | blocking | Apply NBI or RF analogue from comparable small ST (MAST-U, NSTX-U) as placeholder |
 | 5 | Blanket approach not disclosed — tritium self-sufficiency uncharacterized | S2, S3, S5 | proprietary / not-yet-published | blocking | Apply outboard-only liquid Li analogue from 21-spherical-tokamak-hts; flag as completely unconfirmed |
 | 6 | Power conversion cycle and thermal efficiency unknown | S2, S5 | truly-unknown | blocking | Apply steam Rankine 30–33% as conservative analogue baseline |
-| 7 | Plant capacity factor not published | S2, S5 | truly-unknown | blocking | Apply Araiinejad & Shirvan (2025) D-T MCF range (75–90%); no Pranos-specific basis |
+| 7 | Plant capacity factor not published | S2, S5 | truly-unknown | blocking | Model applies canonical 0.85 per scoring_framework.md §Plant availability (MCF steady-state, D-T); Araiinejad & Shirvan (2025) range 75–90% is informative for sensitivity excursions but is not the central-case basis |
 | 8 | Overnight capital cost — no plant study or analogue applicable | S1, S5 | truly-unknown | blocking | Cannot estimate without machine parameters; ARIES-ST at comparable scale is the most distant usable reference |
 | 9 | Modular 50 MW scale penalty — no fusion TEA framework covers this scale | S2, S5 | truly-unknown | blocking | Develop scaling analysis from ARIES-ST cost model adjusted for power output; document uncertainty explicitly |
 | 10 | India regulatory framework for private fusion — no established pathway | S2 | truly-unknown | important | Monitor AERB regulatory developments; apply Stewart & Shirvan 2.2× building cost scenario as upper bound |

@@ -5,6 +5,8 @@ Company: Type One Energy
 Type: synthesis
 Status: draft
 Created: 2026-04-29
+Stale: true
+Stale-Reason: analysis-updated-iter-4
 ---
 
 # Editorial Synthesis: QI Modular HTS Stellarator - Infinity Two

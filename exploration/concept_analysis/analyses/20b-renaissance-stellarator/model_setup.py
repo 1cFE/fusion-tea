@@ -60,10 +60,15 @@ model = CostModel(
 # Source: Nuclear Fusion 64 (2024) 026007 (Samulski et al.)
 NET_ELECTRIC_MW = 1000.0
 
-# Availability: estimated 90–95% (steady-state, no disruptions, no pulse cycling)
-# Source: analysis.md §5; company website confirms "near-100% duty cycle"
-# UNCERTAIN: actual maintenance intervals for LM wall + pump systems uncharacterized
-AVAILABILITY = 0.92
+# Source: Renaissance Fusion company disclosure ("near-100% duty cycle"); central
+#   estimate 90–95% documented in analysis.md §5 (Nuclear Fusion 64 (2024) 026007
+#   technical description).
+# Basis: steady-state operation with no disruptions and no pulse cycling, justified
+#   by the liquid-metal wall and stellarator topology.
+# UNCERTAIN: actual maintenance intervals for LM wall + pump systems uncharacterized.
+AVAILABILITY = 0.92  # DEVIATION: from canonical 0.85 (MCF steady-state, D-T) per
+                     #   scoring_framework.md §"Plant availability". See preceding
+                     #   comment block for source and basis.
 
 LIFETIME_YR = 30
 # Longer construction than default 8yr: first-of-kind laser-patterning manufacturing

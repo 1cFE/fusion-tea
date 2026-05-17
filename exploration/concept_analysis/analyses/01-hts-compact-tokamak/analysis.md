@@ -264,12 +264,12 @@ Global tungsten supply is adequate for a fleet of reactors. The challenge is fab
 | FLiBe unit cost (NOAK) | ~$154/kg | arc-reactor-specifications.md §6; Araiinejad 2025 [cited in handwritten exemplar] | medium | 20% learning rate assumed |
 | Tritium market price | >$35,000/kg | dossier §Tritium Breeding [citing handwritten exemplar] | high | Current CANDU byproduct price |
 | TiH₂ neutron shielding | 380 t at $26.4/kg | arc-reactor-specifications.md §6 | high | ~$10M; small fraction of total |
-| VO&M cost (Schwartz et al. 2024) | $2.07/MWh_net ($1.74/MWh_gross) | arxiv-2405-01514.md §2.1 | medium | Grid-capacity-expansion study of fusion economics; net figure accounts for 15% total parasitic load. Cross-checks against FECONS $60/kWe-yr: at 261 MWe × 0.9 CF = $14.1M/yr → $6.2/MWh; at 75% CF = $7.5/MWh — Schwartz VO&M is plausibly in-range for variable O&M component only |
+| VO&M cost (Schwartz et al. 2024) | $2.07/MWh_net ($1.74/MWh_gross) | arxiv-2405-01514.md §2.1 | medium | Grid-capacity-expansion study of fusion economics; net figure accounts for 15% total parasitic load. Cross-checks against FECONS $60/kWe-yr: at 261 MWe × 0.9 CF = $14.1M/yr → $6.2/MWh; at canonical 85% CF = $6.6/MWh — Schwartz VO&M is plausibly in-range for variable O&M component only |
 | Parasitic power breakdown (Schwartz et al.) | 5% active + 10% passive = 15% total | arxiv-2405-01514.md §2.1 | medium | Active: plasma heating, magnets, coolant pumps; Passive: cryogenics, vacuum pumps, tritium-handling — persists during maintenance outages. Implies gross-to-net derating of 0.85× |
 | Annual O&M cost (FECONS anchor) | ~$16M/yr at 261 MWe; ~$24M/yr at 400 MWe | arxiv-2601-21724.md §6.5 | low | $60/kWe-yr fusion-specific rate: "O&M is computed using a lookup-based factor of 60 USD/(kW_e-yr)"; framework reference, not ARC-specific; 2–4× below fission BoP analogue at ARC scale |
 | Annual O&M cost (fission BoP analogue) | $50–100M/yr | [estimated from fission BoP analogue] | low | Upper bound; FECONS anchor suggests this overestimates O&M at ARC's output level |
 | **Availability** | | | | |
-| Capacity factor | Not published | proprietary/not-yet-sourced | — | See gap inventory |
+| Capacity factor | Not published | proprietary/not-yet-sourced | — | See gap inventory. Model uses **0.85** (canonical per scoring_framework.md §"Plant availability", MCF steady-state/quasi-steady D-T); no Tier-A concept-specific override exists. |
 | Quasi-steady pulse duration | Tens of minutes | dossier §Operation Mode | high | Long burns with brief interruptions |
 | SPARC flat-top duration | 10 seconds | dossier §Operation Mode | high | Experiment, not power plant |
 | **ARIES-AT Analogue Benchmark** | | | | |
@@ -326,7 +326,7 @@ Do not apply ARIES-AT CAS fractions as a uniform BOP multiplier; apply selective
 
 **(b) Primary scaling axes — three parameters dominate model output:**
 1. **REBCO tape cost [$/kA-m]** — drives 80–90% of the nuclear island cost uncertainty. Span at least 10× the $10/kA-m commercial target in sensitivity analysis.
-2. **Capacity factor [%]** — ARC is CAPEX-heavy; a 2× swing in capacity factor (50% → 90%) produces a near-2× LCOE swing. Treat as the primary output sensitivity lever. Note: simple inverse scaling is an upper-bound LCOE penalty; Schwartz et al. (2024, arXiv:2405.01514) show the grid-value-weighted penalty is up to 15% smaller when maintenance is scheduled in low-price windows. Use the naive inverse as a conservative bound and the Schwartz et al. grid-value curve as the central estimate.
+2. **Capacity factor [%]** — ARC is CAPEX-heavy; a 2× swing in capacity factor (50% → 90%) produces a near-2× LCOE swing. Treat as the primary output sensitivity lever. Note: simple inverse scaling is an upper-bound LCOE penalty; Schwartz et al. (2024, arXiv:2405.01514) show the grid-value-weighted penalty is up to 15% smaller when maintenance is scheduled in low-price windows. Use the naive inverse as a conservative bound and the Schwartz et al. grid-value curve as the central estimate. The central-case availability is **policy-driven** (0.85 per scoring_framework.md §"Plant availability", MCF steady-state/quasi-steady D-T) rather than concept-specific — no published ARC/CFS availability target exists — which makes cross-concept LCOE comparisons within the MCF and quasi-steady family apples-to-apples on this dimension.
 3. **Regulatory cost multiplier [1.0×–2.2×]** — scenario-level uncertainty, not a parameter range; model as two discrete cases.
 
 **(c) Do not compute from first principles:**

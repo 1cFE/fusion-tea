@@ -9,18 +9,18 @@ claims. Your job is to synthesize them into decision-support guidance.
 ## Required Reading
 
 ### 1. Reviewed Analysis
-`C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\01-hts-compact-tokamak\analysis.md`
+`/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/01-hts-compact-tokamak/analysis.md`
 
 ### 2. Model Setup and Output
 
-`C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\01-hts-compact-tokamak\model_setup.py`
+`/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/01-hts-compact-tokamak/model_setup.py`
 
 
-Model output (user-generated): `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\01-hts-compact-tokamak\model_output.txt`
+Model output (user-generated): `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/01-hts-compact-tokamak/model_output.txt`
 
 
 ### 3. Approved Prior Syntheses
-(none yet — this is among the first syntheses)
+- `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/21-spherical-tokamak-hts/synthesis.md`
 
 ## Writing Instructions
 
@@ -35,7 +35,7 @@ Model output (user-generated): `C:\Users\mallo\1cfe\fusion-tea\exploration\conce
 
 ### Mandatory Sections
 
-Write to: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\01-hts-compact-tokamak\synthesis_body.md`
+Write to: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/01-hts-compact-tokamak/synthesis_body.md`
 
 #### 1. Executive Summary (3-5 bullets)
 - The single most important risk
@@ -96,7 +96,7 @@ Report function-level means (F1-F7). End with the YAML scores block.
 
 ### Gap Report
 
-`C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\01-hts-compact-tokamak\gap_report.md`
+`/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/01-hts-compact-tokamak/gap_report.md`
 
 
 ### Scoring Framework
@@ -269,7 +269,14 @@ computes C7 from the function-level means.
 4. **Plasma-Wall Interaction** — Erosion, heat flux management, surface damage
 5. **Neutron/Particle Handling** — Activation, shielding, displacement damage
 6. **Fuel Cycle Closure** — Breeding, extraction, purification, recycling
-7. **Power Conversion & BOP** — Energy conversion, heat rejection, auxiliaries
+7. **Power Conversion & BOP** — Technical risk of the energy conversion scheme.
+   This category primarily captures risk from **novel direct energy conversion (DEC)**
+   methods (magnetic expansion, charged-particle collection, MHD, inductive coupling,
+   photovoltaic conversion of bremsstrahlung, etc.). Conventional thermal cycles
+   (Rankine, Brayton, sCO₂) are mature analogues — score them at the operating-regime
+   tier their cycle has demonstrated commercially, regardless of the fusion concept
+   coupling to them. Score concepts that rely on novel DEC against the demonstrated
+   regime of that specific DEC method, not against thermal-cycle baselines.
 
 ### 2 Subcategories per function
 
@@ -294,13 +301,32 @@ For each of the 14 cells, provide:
 
 ### Evidence tier scale
 
-| Tier | Meaning |
-|------|---------|
-| 5 | Operating-regime demonstrated at relevant scale |
-| 4 | Near-regime demonstrated (within 2x of requirement) |
-| 3 | Subscale or partial demonstration |
-| 2 | Simulation only, no experimental validation |
-| 1 | Asserted or absent — no supporting evidence |
+Tiers are anchored to **actual operation**, not design status. Paper designs,
+preliminary design reviews (PDRs), and conceptual studies do **not** themselves
+move evidence above tier 2 — only operating hardware does. Apply this rule
+uniformly across concepts: ITER, GT-MHR, sCO₂ pilot scale-up plans, and
+sub-2 GeV muon-cost projections all count as tier 2 until the corresponding
+system actually operates in the relevant regime.
+
+| Tier | Definition | Examples |
+|------|------------|----------|
+| 5 | **Operating-regime demonstrated at commercial scale** in the same fuel / temperature / pressure / neutron flux / duty cycle as the plant requirement. The cited demonstration must be operating hardware (current or historical), not a design. | Commercial steam Rankine cycle for thermal-cycle BOP at 100+ MWe; PWR pressure-vessel steel for ~40 dpa over decades; HV electrical switchyard equipment. |
+| 4 | **Near-regime demonstrated** — operated at ≥50% of the plant requirement OR transiently at full scale. Extrapolation from demonstrated operation must be ≤2× on the limiting parameter. | JET D-T plasma performance (transient, near-scale) cited for steady-state D-T tokamaks; ITER tungsten divertor mock-ups qualified at full heat flux for short cycles; W7-X long-pulse stellarator plasmas cited for steady-state stellarators. |
+| 3 | **Subscale or partial demonstration** — operated at <50% of the plant requirement, or operated at full scale in an *adjacent* environment (different fuel/coolant but same physics regime). | TFTR/JET D-T at <1 MW/m² wall loading cited for 2 MW/m² compact STs (4× gap); MSRE FLiBe operation at 650°C cited for 900–1200°C fusion HX (~2× temperature gap, fission neutron spectrum); sCO₂ Brayton at 10 MWe pilots cited for 200 MWe commercial. |
+| 2 | **Simulation, design study, or non-adjacent analogue** — paper designs, MCNP/Serpent neutronics, scaling laws, or analogues in a meaningfully different environment (different fuel, very different flux/temperature, fission vs. fusion). | ITER tritium plant cited before ITER operates; GT-MHR design cited as evidence; ARIES/STEP studies; computational TBR predictions; fission-reactor sodium-loop steam generators cited for fusion Li/PbLi; ENDF/B cross-section libraries for unbuilt geometries. |
+| 1 | **Asserted, absent, or novel** — no demonstrated analogue, no experimental basis, or company claim without supporting publication. | "γ = 0.1 in polywell" with no measurement; muon-cost projection below current TRIUMF/RIKEN demonstrated values; novel DEC scheme with no operating prototype; "we will use advanced materials" without naming specific tested candidates. |
+
+**Required citation format**: every tier ≥3 score must name the specific
+experiment/facility/operating regime cited (e.g., "JET 1997 D-T at 11 MW peak,"
+"WEST 1000+ tungsten-divertor pulses at 5 MW/m²"). Generic phrases like "tokamak
+analogues" or "ITER design" without the operating-regime qualifier default to
+tier 2.
+
+**Adjacent-environment rule** (for tier 3): an analogue is "adjacent" only if it
+shares the limiting physics or materials regime. Fission steel under fast-spectrum
+neutrons is adjacent to fusion steel under 14 MeV neutrons (similar dpa, different
+He production); commercial Rankine cycle is adjacent to fusion FLiBe-Rankine HX
+(same thermodynamics, different chemistry). When uncertain, default to tier 2.
 
 ### Mandatory binary classifications (cannot be overridden)
 
@@ -322,11 +348,19 @@ is on the concept to demonstrate capability, not on the scorer to assume it.
 
 Apply a heritage credit to concepts with good traceability to previous public fusion
 experiments or mature reactor designs. The heritage credit provides a FLOOR on
-Functions 1-3 (Plasma Performance, Driver, Instability Control) scores — it overrides
-F1-F3 scores only if they fall below the floor.
+**all seven function scores (F1–F7)** — it overrides any F_n score only if the
+computed value falls below the floor.
 
-| Heritage lineage | Floor |
-|-----------------|-------|
+The rationale: heritage doesn't only help with plasma physics. A tokamak-lineage
+concept inherits decades of engineering work on divertors (F4), neutron-handling
+materials (F5), tritium fuel cycles (F6), and steam-cycle BOP integration (F7).
+A muon-catalyzed concept gets no such inheritance for its compact-cell engineering.
+Applying the floor only to F1–F3 systematically rewards less-mature concepts that
+cite generic analogues for their back-half (F4–F7) without the corresponding
+heritage debt.
+
+| Heritage lineage | Floor (F1–F7) |
+|-----------------|---------------|
 | Tokamak (ITER, JET, EAST, etc.) | 4.0 |
 | Stellarator (W7X, LHD, HSX, TJ-II, etc.) | 4.0 |
 | Laser IFE (HYLIFE, NIF, etc.) | 3.5 |
@@ -340,16 +374,125 @@ F1-F3 scores only if they fall below the floor.
 
 ### Function-level means
 
-After filling all 14 cells, compute the mean evidence tier for each function
-(average of physics and hardware subcategory tiers). Report as F1 through F7.
+After filling all 14 cells, compute the function-level mean as the **symmetric
+arithmetic mean** of the two subcategory tiers:
+
+```
+F_n = (Physics_tier + Hardware_tier) / 2
+```
+
+Do NOT use cost-weighted averages, "weighted toward" the higher-uncertainty
+subcategory, capital-share weighting, or any other aggregation method within a
+function. Round each F_n to the nearest 0.5 and report as F1 through F7.
+
+If you believe one subcategory should dominate, raise that subcategory's *tier*
+in the cell itself (with explicit evidence), not by weighting the mean.
 
 ### C7 computation (done by Python, not Claude)
 
 1. Read F1-F7 function-level means from the YAML block
-2. Apply heritage credit floors to F1-F3 (D-T concepts only)
+2. Apply heritage credit floor to **all of F1-F7** (D-T concepts only)
 3. C7 = mean of F1-F7 (after heritage), rounded to nearest 0.5
 4. Function-level cap: if any function mean <= 1.5 (after heritage), C7 is capped
    at that function's actual value
+
+---
+
+## Standard LCOE Modeling Parameters
+
+These canonical values **must** be used in `model_setup.py` for every concept,
+unless concept-specific evidence justifies a deviation. **Document any deviation
+explicitly** in the model file and in synthesis Section 2 (Modeling Approach),
+including the source of the alternative value.
+
+### Thermal-to-electric conversion efficiency (η_th)
+
+Look up the canonical η_th for the concept's energy-capture category:
+
+| Energy Capture (per `table.csv`) | Canonical η_th | Reasoning |
+|----------------------------------|----------------|-----------|
+| Thermal (steam) — saturated cycle | 0.32 | Coal-plant baseline; modest temperature |
+| Thermal (steam) — superheated, ≤500°C | 0.35 | Standard fusion baseline (most concepts) |
+| Thermal (steam) — supercritical, ~600°C | 0.42 | ARC-class advanced steam |
+| Thermal (sCO₂ Brayton) | 0.48 | High-T closed-loop, demonstrated 10 MWe pilots |
+| Thermal (helium Brayton) | 0.45 | GT-MHR-class design point |
+| Thermal (combined cycle, Brayton-Rankine) | 0.50 | Best thermal achievable |
+| Thermal (unspecified) | 0.35 | Default to superheated steam unless concept specifies |
+| Hybrid (thermal + direct) | 0.55 | Partial DEC; partial thermal |
+| Direct (inductive / EM compression) | 0.85 | Helion-style compressed-FRC EM recovery |
+| Direct (charged particle, ICC, alpha collection) | 0.70 | TAE ICC, mirror DEC; patent-stage but consistent target |
+| Pulsed power implosion | 0.30 | Inertial pulse loss; conservative |
+| Projectile impact | 0.30 | Same |
+| TBD / Unknown | 0.35 | Default to superheated steam |
+
+**Justified deviations**: A concept may use a non-canonical η_th if (a) the
+underlying physics forces derating (e.g. a p-B11 plasma whose bremsstrahlung
+heat is partially absorbed by walls and contributes thermally — 06-magnetic-mirror's
+η_th=0.20 reflects this), or (b) the concept's published design specifies a
+specific cycle parameter from peer-reviewed sources. In both cases, the model
+file must include a comment identifying the deviation, the source, and the
+deviation magnitude vs. the canonical value.
+
+### Plant availability
+
+Look up the canonical availability for the concept's operating-mode category
+(combine the `Confinement Family` and `Operation Mode` columns from `table.csv`):
+
+| Operating-mode category (D-T fuel) | Canonical availability | Reasoning |
+|------------------------------------|------------------------|-----------|
+| MCF — steady-state or quasi-steady (tokamak, stellarator, mirror, ST, FRC steady) | **0.85** | Midpoint of Araiinejad & Shirvan (2025) 75–90% commercial-target band for D-T MCF |
+| Pulsed MCF — short pulses, no quasi-steady claim | 0.75 | Pulse + dwell + recharge floor |
+| Pulsed IFE — rep-rated laser / heavy-ion / direct or indirect drive | 0.75 | Shot-rate × target-factory × optics-maintenance composite |
+| Pulsed MIF — mechanical compression, MagLIF-class | 0.75 | Mechanical-system MTBF dominates duty cycle |
+| Single-shot demo (NIF-class) | use sourced value, flag non-commensurable | These are not commercial plants; their reported availability is not directly comparable to commercial targets |
+| D-D / D-³He / p-¹¹B | 0.85 | Same MCF basis; no fuel-specific operations data in literature yet |
+
+**Justified deviations**: A concept may use a non-canonical availability **only**
+when its own design literature (peer-reviewed paper, company technical
+disclosure, or comparable external publication) commits to a specific
+availability number with an articulated basis (e.g., maintenance schedule,
+duty-cycle calculation). Author-reasoned values within a published range, or
+midpoint picks within a band, are **not** sufficient — they must move to the
+canonical value. In the deviation case, the `model_setup.py` comment must:
+
+1. Quote or paraphrase the externally-published number
+2. Name the source (paper, slide deck, company technical report)
+3. State the basis the source gives (e.g., "biennial 84-day maintenance cycle")
+
+Examples of *accepted* deviations:
+- `05-planar-coil-stellarator` / `10-large-scale-stellarator` — Helios/Thea
+  Energy published **88%** with biennial 84-day maintenance cycle.
+- `20b-renaissance` — Renaissance Fusion disclosed **92%** target (flagged uncertain).
+
+Examples of *not-accepted* deviations (must move to canonical):
+- "Mid-range of published 80–85% band" without a specific cited target.
+- "Conservative central estimate" without external publication of that estimate.
+- Citing only the Araiinejad & Shirvan range without a concept-specific commitment.
+
+### Why standardize
+
+Cross-concept LCOE comparisons are only meaningful when all concepts in the
+same conversion category use the same η_th and the same availability. A 0.32
+vs. 0.46 spread within "steam Rankine" produces a 30–40% LCOE difference for
+identical fusion power. A 0.75 vs. 0.88 availability spread is similarly
+LCOE-driving (LCOE scales as 1/availability for capital-dominated concepts).
+Use the canonical values to isolate the architectural signal; sensitivity-sweep
+when an availability question is the focus of the analysis.
+
+### Helpers
+
+The Python helpers in `lib.scoring` return canonical values for the strings
+that appear in `table.csv`. Import them in `model_setup.py`:
+
+```python
+from lib.scoring import canonical_eta_th, canonical_availability
+ETA_TH = canonical_eta_th("Thermal (steam)")  # → 0.35
+AVAILABILITY = canonical_availability("MCF", "Steady-state", "D-T")  # → 0.85
+```
+
+`canonical_availability(confinement_family, operation_mode, fuel)` accepts the
+`Confinement Family`, `Operation Mode`, and `Fuel` columns directly from
+`table.csv` (case- and whitespace-insensitive).
 
 ---
 

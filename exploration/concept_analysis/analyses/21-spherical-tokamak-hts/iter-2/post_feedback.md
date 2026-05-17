@@ -1,0 +1,22 @@
+VERDICT: FINDINGS
+
+### F-1: Nearest-neighbor concepts not formally identified
+- **Target:** Section 7 (Cross-Concept Notes)
+- **Category:** analysis
+- **Finding:** The analysis provides deep comparison against 01-hts-compact-tokamak (CFS/ARC) but does not formally name 2-3 nearest neighbors as the checklist requires (Goal 1). The concept landscape contains 34-compact-spherical-tokamak-india — another spherical tokamak — which is the structural nearest neighbor for ST geometry comparisons and should anchor the same-family positioning. 28-hts-tokamak-full-hts (Energy Singularity) is a second HTS compact tokamak variant worth explicit positioning against. Neither appears by name in Section 7. The CFS comparison is appropriate but incomplete as a framing: it establishes the HTS magnet axis while leaving the spherical-geometry axis unanchored.
+- **Recommendation:** Open Section 7 with an explicit nearest-neighbor statement naming 34-compact-spherical-tokamak-india (same topology, different data availability and field approach) and 28-hts-tokamak-full-hts (same HTS compact tokamak family, standard aspect ratio) as the 2-3 nearest neighbors, then state the key differentiator from each in one sentence before the existing CFS deep-dive. This gives the cross-concept framing the required structure.
+- **Priority:** important
+
+### F-2: ECRH heating capital cost modeled under NBI cost proxy
+- **Target:** model_setup.py sensitivity and cost computation
+- **Category:** model
+- **Finding:** The model sensitivity output shows `p_nbi` (+0.0706 elasticity) and `heating_nbi_per_mw` (+0.0706 elasticity) as the active heating cost parameters. The analysis identifies ECRH-only flat-top as a key differentiator and discusses its recirculating power implications at length (Section 2, Challenge 3; Section 7). But the model prices the heating hardware using an NBI cost-per-MW reference, not a gyrotron/ECRH reference. Gyrotron system capital costs per MW differ from NBI injector costs per MW (different technology basis). The wall-plug efficiency is correctly set (η_pin = 0.52 for gyrotrons), but the capital cost of the heating system is being drawn from the wrong cost category. The model therefore does not test the analysis's key claim that ECRH creates a structurally different recirculating-power cost profile than NBI-based designs (Goal 3, Goal 4).
+- **Recommendation:** Replace the NBI heating cost constant with an ECRH/gyrotron-specific capital cost parameter ($/MW installed for gyrotron systems, drawing from ITER 170 GHz gyrotron procurement costs or equivalent). Rename the parameter from `p_nbi`/`heating_nbi_per_mw` to reflect ECRH. Verify that the resulting heating capital cost is consistent with the ECRH-only design stance. This ensures the sensitivity on auxiliary heating reflects the actual technology.
+- **Priority:** blocking
+
+### F-3: Pulsed TES cost omitted without a bounding scenario
+- **Target:** model_setup.py and Section 2 / Section 5 (Parameters)
+- **Category:** model
+- **Finding:** The analysis ranks thermal energy storage for pulsed operation as "Moderate" LCOE impact (Section 2, Challenge 4) and explicitly calls it "a capital cost without equivalent in steady-state designs." Section 5 lists TES sizing and cost as a "truly-unknown / important" gap. The model output explicitly flags this: "Thermal buffer (pulsed TES): NOT MODELLED — cost unknown, downward bias." However, the analysis cites CSP molten salt TES costs (~$15–30/kWh_th) and the pulse energy is estimable from the published net power (600 MWe) and stated pulse duration (~15 min flat-top). An order-of-magnitude TES capital cost range is therefore computable. Leaving it entirely out of the model without even a scenario or sensitivity bound means the LCOE reported is known to be biased low by an unquantified amount, and no model output communicates how large that bias could be (Goals 3, 4, 5).
+- **Recommendation:** Add a TES cost scenario parameter to the model — use CSP molten salt cost ($15–30/kWh_th) applied to the pulse energy at design power (derivable from net output and pulse window) to produce a low/mid/high TES capital cost estimate. Include this as an explicit scenario in the model output (e.g., "central LCOE without TES: 172.9 $/MWh; with TES mid-estimate: X $/MWh") so the magnitude of the downward bias is bounded rather than simply noted. Add the TES bounding estimate to the Section 5 parameter table with "low" confidence and an analogue basis.
+- **Priority:** important

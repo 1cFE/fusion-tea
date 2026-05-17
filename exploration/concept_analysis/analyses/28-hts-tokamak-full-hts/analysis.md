@@ -89,8 +89,8 @@ ICRH is confirmed on HH70, but at very low power levels appropriate for an exper
 
 The two critical technical bets for this concept should be modeled as explicit scenario branches, not absorbed into a single base-case availability:
 
-- **CS coil reliability failure scenario**: Full HTS CS coils at 25 T under cyclic EM loading fail to achieve target availability. Model as availability = 65% plus an additional coil-replacement cost factor. LCOE impact vs. base case (80% availability) is approximately +14% on LCOE from the availability drop alone (elasticity ≈ −0.94), before coil replacement costs.
-- **AI plasma control underperforms scenario**: AI control system does not reduce disruption frequency at burning-plasma conditions to levels assumed in base case. Model as availability = 70%, representing disruption-limited operation rather than steady-state. LCOE impact vs. base case approximately +9%.
+- **CS coil reliability failure scenario**: Full HTS CS coils at 25 T under cyclic EM loading fail to achieve target availability. Model as availability = 65% plus an additional coil-replacement cost factor. LCOE impact vs. base case (85% canonical): +28.5% from the availability drop alone (model output), before coil replacement costs.
+- **AI plasma control underperforms scenario**: AI control system does not reduce disruption frequency at burning-plasma conditions to levels assumed in base case. Model as availability = 70%, representing disruption-limited operation rather than steady-state. LCOE impact vs. base case: +20.1% (model output).
 
 Bracketing these two failure modes against the base case establishes the LCOE range attributable to the concept's novel elements, distinguishing the "novel technology premium" from the "general fusion capital cost" uncertainty.
 
@@ -98,7 +98,7 @@ Bracketing these two failure modes against the base case establishes the LCOE ra
 
 Three parameters dominate the LCOE sensitivity for a capital-intensive concept with no commercial design anchor:
 
-1. **Availability / capacity factor** (highest elasticity, ~−0.94): Determined by AI control reliability and full HTS CS coil duty-cycle endurance. Challenge #3 and #4 above are both proximate causes of availability risk. Moving from 80% to 65% availability increases LCOE by ~14%. This is the primary operability bet.
+1. **Availability / capacity factor** (highest elasticity, ~−0.95): Determined by AI control reliability and full HTS CS coil duty-cycle endurance. Challenge #3 and #4 above are both proximate causes of availability risk. The central-case availability of 0.85 is canonical per scoring_framework.md §Plant availability (MCF steady-state, D-T); cross-concept LCOE comparisons within the MCF family are apples-to-apples on this dimension. Moving from the 85% canonical base to 65% (Scenario A) increases LCOE by +28.5%; to 70% (Scenario B) by +20.1%. This is the primary operability bet.
 2. **Cost of capital / interest rate** (second lever): Capital-dominated concepts are highly sensitive to financing terms. Without a commercial design anchor or published cost study, financing terms carry additional uncertainty risk premium. This is the primary financial lever and should be the axis for scenario sweeps.
 3. **Major radius / plant scale** (structural uncertainty): With HH380 design point undisclosed, major radius (and by extension fusion power and net electric output) is the dominant structural unknown. It determines capital cost scaling, magnet material demand, and recirculating power. Any LCOE model must bracket this parameter with discrete scenario runs — not marginal sensitivity perturbations around a fixed output — because the uncertainty is about the unknown design point itself (is HH380 a ~250 MWe machine at R ≈ 1.5 m or an ~800 MWe machine at R ≈ 2.5 m?). Recommended scenario structure: **Scenario C** (small machine: R ≈ 1.5 m, net electric ~250 MWe, capital scaled accordingly) and **Scenario D** (large machine: R ≈ 2.5 m, net electric ~800 MWe) reported alongside the technical-bet failure scenarios (Scenarios A and B) in a unified LCOE table so the design-point uncertainty band is visible.
 
@@ -227,6 +227,7 @@ Tungsten for plasma-facing components is available in adequate global supply wit
 | Operation mode | Steady-state | dossier.md §Operation Mode | high | Long-pulse confirmed on HH70 |
 | Fuel | D-T (target) | dossier.md §Fuel | high | HH70 is pre-D-T |
 | Primary heating (HH70) | ICRH (ICRF) | dossier.md §Primary Heating | high | Electron gun for pre-ionization |
+| Availability (base case) | 0.85 | scoring_framework.md §Plant availability | canonical | MCF steady-state, D-T; previously 0.8; policy-driven for cross-concept comparability |
 
 ### Missing Parameters
 
