@@ -362,7 +362,7 @@ r_c, *_ = run_scenario(
     availability=0.85,  # canonical per scoring_framework.md §Plant availability (MCF steady-state, D-T)
     cost_overrides={"C220103": c220103_250},
     extra_note=(
-        "R=1.5m, ~250 MWe, 80% avail — lower bound on HH380 design point. "
+        "R=1.5m, ~250 MWe, 85% avail (canonical) — lower bound on HH380 design point. "
         "A=4.0 maintained. Capital scaled from R=2.0m base via geometry inputs. "
         "UNCERTAIN: all parameters scaled from base; HH380 design unknown."
     ),
@@ -375,7 +375,7 @@ r_d, *_ = run_scenario(
     availability=0.85,  # canonical per scoring_framework.md §Plant availability (MCF steady-state, D-T)
     cost_overrides={"C220103": c220103_800},
     extra_note=(
-        "R=2.5m, ~800 MWe, 80% avail — upper bound on HH380 design point. "
+        "R=2.5m, ~800 MWe, 85% avail (canonical) — upper bound on HH380 design point. "
         "A=4.0 maintained. Capital scaled from R=2.0m base via geometry inputs. "
         "UNCERTAIN: all parameters scaled from base; HH380 design unknown."
     ),

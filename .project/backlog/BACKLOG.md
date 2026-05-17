@@ -54,6 +54,18 @@ Zotero → pyzotero → agentic-mbse extract → SOURCE_INDEX.md pipeline. Batch
 | Loop Dry-Run Symmetry | P2 | Spec only (2026-04-10); LOW complexity follow-up | `.project/active/loop-dry-run-symmetry/` |
 | Traceability System | P1 | Spec + plan complete, awaiting prioritization | `.project/active/traceability-system/` |
 
+### Availability-standardization follow-ups (2026-05-17)
+
+From the availability standardization (commit `45c9db5`); details in `.project/research/20260517-availability-policy-affected-concepts.md`.
+
+| Item | Priority | Description |
+|------|----------|-------------|
+| Refresh synthesis.md for 13 standardized concepts | P2 | `synthesis.md` prose still cites pre-standardization availability + LCOE numbers; iteration loop flagged most with `Stale: true` in frontmatter. Refresh via `uv run agentic-mbse … synthesize <concept>` (or equivalent in run_analysis.py) once other concept-analysis fixes are batched. Spending tokens on this alone is wasteful — bundle with the next batch synthesis pass. |
+| Investigate 20a capital-side availability coupling | P3 | After the availability standardization, concept 20a's overnight cost moved ~+3.5% from a 2.3% availability drop. Pure 1/availability should leave overnight cost unchanged. Either a costingfe IDC/escalation behavior or a 20a-specific override. Add a perturbation test that sweeps availability ±5% and prints overnight cost — if a real coupling, document; if a bug in 20a's overrides, fix. Other concepts may have the same silent issue. |
+| Non-D-T availability policy + standardize | P2 | The availability standardization script filtered to D-T. Four non-D-T concepts (`04` p-B11 pulsed, `06` p-B11 steady mirror, `08` D-He³ pulsed FRC, `23` p-B11 pulsed) were skipped. The current `scoring_framework.md` table says "D-D / D-³He / p-¹¹B → 0.85" with reasoning "Same MCF basis", which implies non-D-T should be 0.85 regardless of pulsed/steady. The `canonical_availability` helper currently returns 0.75 for any pulsed family regardless of fuel — contradicts the policy text. Decide actual policy, update helper, run the standardize pass for these 4 concepts. |
+| Concept 09 dual-site availability refactor | P3 | `09-qi-stellarator-hts/model_setup.py` has availability in two coupled sites: `_SHARED[availability]=0.88` (costingfe forward call, line 205) and `_AVAILABILITY_BASE=0.88` (custom replacement-cost calc, line 173 — comment says "matches _SHARED below"). Pre-marked as `# DEVIATION:` so the standardize script skipped 09. Either (a) refactor to a single `AVAILABILITY` constant used in both sites and move to canonical 0.85, or (b) promote to Tier-A retain at 0.88 if `helios-stellarator-comparison.md` 88% citation qualifies as a sourced commitment. |
+| Audit script for "DEFAULT" labels vs actual values | P3 | Walk every concept's `model_setup.py`, parse all kwargs, flag any value with a `# DEFAULT` comment whose actual value doesn't match the costingfe library default (or the canonical_eta_th/canonical_availability lookup). Report-only, no auto-fix. ~30-line script parallel in shape to `standardize_eta_th.py`. Surfaces silent drift before it becomes a policy dispute. Motivated by inflation_rate=0.0245 case in `.project/research/20260517-081444_model-setup-inconsistencies.md` §2. |
+
 ---
 
 ## Completed
