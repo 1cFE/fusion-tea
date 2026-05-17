@@ -23,7 +23,7 @@ import shutil
 import subprocess
 import sys
 import time
-from datetime import date, datetime
+from datetime import date
 from pathlib import Path
 
 from lib.paths import (
@@ -53,7 +53,7 @@ from lib.concepts import (
     resolve_one,
 )
 from lib.iteration import read_loop_state
-from lib.state import clear_staleness, get_concept_state, get_extraction_state, get_iteration_summary, propagate_staleness
+from lib.state import clear_staleness, get_concept_state, get_extraction_state, get_iteration_summary
 from lib.sources import (
     check_duplicate_source,
     find_latest_sources_dir,
@@ -79,6 +79,7 @@ from lib.step_runner import prepare_step, StepContext
 from lib.validators import (
     REVIEW_VERDICT_RE,
     make_file_modified_validator,
+    validate_feedback_verdict,
     validate_non_empty,
     validate_python_syntax,
     validate_review_verdict,
@@ -300,25 +301,38 @@ def cmd_analyze(concepts: list[dict], args: argparse.Namespace) -> None:
 
     feedback = getattr(args, "feedback", None)
     if feedback:
-        if resume:
-            print("Error: --feedback and --resume are mutually exclusive.")
-            sys.exit(1)
         if args.force:
             print("Error: --feedback and --force are mutually exclusive.")
-            print("  --feedback applies changes to existing analysis.md")
-            print("  --force re-creates analysis.md from scratch")
-            sys.exit(1)
-        if not feedback.is_file():
-            print(f"Error: feedback file not found: {feedback}")
+            print("  --feedback edits an existing analysis.md")
+            print("  --force re-creates analysis.md from scratch (cold-start)")
             sys.exit(1)
         if len(targets) > 1:
             print("Error: --feedback can only be used with a single concept")
             sys.exit(1)
-
-    # Feedback-apply mode: separate path (not part of the loop)
-    if feedback:
-        _apply_external_feedback(targets, args, feedback, concepts)
-        return
+        if not feedback.is_file():
+            print(f"Error: feedback file not found: {feedback}")
+            sys.exit(1)
+        if feedback.stat().st_size == 0:
+            print(f"Error: feedback file is empty: {feedback}")
+            sys.exit(1)
+        fb_result = validate_feedback_verdict(feedback.read_text(encoding="utf-8"))
+        if not fb_result.valid:
+            print(f"Error: feedback file format invalid: {feedback}")
+            print(f"  {fb_result.fix_message}")
+            sys.exit(1)
+        # FR-6 (a): cold-start incompatibility. --feedback edits an existing
+        # analysis.md; if none exists, the user wants a cold-start instead.
+        target_analysis = ANALYSES_DIR / targets[0]["_id"] / "analysis.md"
+        if not target_analysis.exists():
+            print(f"Error: --feedback requires an existing analysis.md for "
+                  f"{targets[0]['_id']}.")
+            print(f"  Run a cold-start first: "
+                  f"analyze {targets[0]['_id']} (no --feedback).")
+            sys.exit(1)
+        # --feedback is a mid-iteration tool; implies --resume so the loop
+        # appends a new iter rather than cold-starting. The user's file is
+        # consumed once by the external-feedback producer in run_stage1_loop.
+        resume = True
 
     # Load templates once
     analysis_template = (TEMPLATES_DIR / "analysis_v2.md").read_text(encoding="utf-8")
@@ -396,87 +410,6 @@ def _build_common_vars(concept: dict, concepts: list[dict] | None = None) -> dic
         "memory_context": memory_context,
         "concept_landscape": landscape,
     }
-
-
-def _apply_external_feedback(
-    targets: list[dict], args: argparse.Namespace, feedback: Path,
-    concepts: list[dict] | None = None,
-) -> None:
-    """Apply an external feedback file to existing analysis. Preserves old behavior."""
-    analysis_template = (TEMPLATES_DIR / "analysis_v2.md").read_text(encoding="utf-8")
-
-    for c in targets:
-        cid = c["_id"]
-        out_dir = ANALYSES_DIR / cid
-        analysis_path = out_dir / "analysis.md"
-
-        if not analysis_path.exists():
-            print(f"  skip {cid} (no analysis.md — --feedback requires existing analysis)")
-            continue
-
-        common_vars = _build_common_vars(c, concepts)
-        if common_vars is None:
-            continue
-
-        ts = datetime.now().strftime("%Y%m%d_%H%M%S")
-        prompt = fill_template(analysis_template, {
-            **common_vars,
-            "output_path": "",
-            "cold_start": "",
-            "feedback_pass": "true",
-            "feedback_path": str(feedback),
-            "self_advance": "",
-        })
-
-        prompt_path = out_dir / f"feedback_apply_prompt_{ts}.md"
-        prompt_path.write_text(prompt, encoding="utf-8")
-
-        if args.dry_run:
-            print(f"  dry-run {cid}: feedback prompt saved to {prompt_path}")
-            continue
-
-        print(f"  apply feedback {cid} ...", end="", flush=True)
-        t0 = time.time()
-
-        # Snapshot analysis.md bytes BEFORE invocation so the validator can
-        # detect that Claude actually applied the requested edits (FR-16/H-08).
-        file_modified = make_file_modified_validator(analysis_path)
-
-        result = invoke_claude_validated(
-            prompt, cwd=CONCEPT_ANALYSIS_DIR,
-            timeout=args.timeout, model=args.model,
-            validator=file_modified,
-            output_path=analysis_path,
-            step_label="external-feedback",
-        )
-        elapsed = time.time() - t0
-
-        if result.invoke.returncode != 0:
-            print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
-            print(f"    stderr: {result.invoke.stderr[:500]}", file=sys.stderr)
-            # Do NOT archive — feedback file remains in place for retry.
-            continue
-
-        if not result.validation_passed:
-            print(f" FAILED ({elapsed:.0f}s) — analysis.md was not modified")
-            print(f"    feedback file preserved (not archived)")
-            # Do NOT archive — feedback file remains in place for retry.
-            continue
-
-        print(f" done ({elapsed:.0f}s)")
-
-        stale = propagate_staleness(
-            cid, "feedback-applied-from-change-requests",
-            regenerated={"analysis.md"},
-        )
-        if stale:
-            print(f"    stale: {', '.join(stale)}")
-
-        # Only archive after confirmed modification (FR-16/H-08).
-        archive_name = f"change_requests_{ts}.md"
-        archived = feedback.parent / archive_name
-        feedback.rename(archived)
-        print(f"    archived: {feedback.name} → {archive_name}")
 
 
 def cmd_model_setup(concepts: list[dict], args: argparse.Namespace) -> None:
@@ -1489,7 +1422,9 @@ def build_parser() -> argparse.ArgumentParser:
                             help="Run N additional passes from each concept's current iteration "
                                  "(implies --resume; works across concepts at different iterations)")
     p_analyze.add_argument("--feedback", type=Path, metavar="PATH",
-                            help="Apply feedback file to existing analysis (skips cold-start)")
+                            help="Use file as pre_feedback.md for next iter "
+                                 "(requires existing analysis.md; implies --resume; "
+                                 "runs full analyze→model_setup→assess)")
     p_analyze.add_argument("--resume", action="store_true",
                             help="Continue from last iteration (add more passes)")
     p_analyze.add_argument("--research", action="store_true",

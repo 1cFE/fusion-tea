@@ -101,6 +101,7 @@ def run_stage1_loop(
     new_sources = detect_new_sources(loop_state, current_sources) if resume else []
     used_source_integration = False
     used_review_feedback = False
+    used_external_feedback = False
 
     verdict = "NONE"
 
@@ -117,7 +118,16 @@ def run_stage1_loop(
         feedback_path = None
         merged_assess = False
 
-        if iter_num == 1 and not resume:
+        if not used_external_feedback and getattr(args, "feedback", None):
+            # External-feedback producer (one-shot): user-supplied file becomes
+            # iter-N/pre_feedback.md. Validated up front in cmd_analyze; here we
+            # only copy. Source file is read-only from the pipeline's view.
+            used_external_feedback = True
+            feedback_source = "external"
+            feedback_path = _copy_to_pre_feedback(Path(args.feedback), iter_dir)
+            print(f"  {cid} iter {iter_num}: using external feedback "
+                  f"{Path(args.feedback).name}")
+        elif iter_num == 1 and not resume:
             # Cold start — no feedback producer
             feedback_source = "cold_start"
         elif not used_review_feedback and _has_revise_status(analysis_path):
