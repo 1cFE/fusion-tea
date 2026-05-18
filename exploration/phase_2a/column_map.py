@@ -35,10 +35,8 @@ DESIGN_COLUMNS = [
     "Fuel",
     "Primary Heating",
     "Energy Capture",
-    "Plasma State",
     "Magnet Type",
-    "Tritium Breeding",
-    "Neutron Management",
+    "Blanket Config",
     "Operation Mode",
     "Repetition Rate",
 ]
@@ -149,22 +147,28 @@ VOCABULARY: dict[str, MappedTerm] = {
     "hts magnets": MappedTerm("Magnet Type", "contains", "HTS"),
     "superconducting magnets": MappedTerm("Magnet Type", "not", "Resistive"),
 
-    # Neutron Management
-    "heavy shielding": MappedTerm("Neutron Management", "contains", "Heavy"),
-    "heavy neutron shielding": MappedTerm("Neutron Management", "contains", "Heavy"),
-    "integrated blanket/shield": MappedTerm("Neutron Management", "exact", "Integrated blanket/shield"),
-    "minimal shielding": MappedTerm("Neutron Management", "contains", "Minimal"),
-    "reduced shielding": MappedTerm("Neutron Management", "contains", "Reduced"),
-
-    # Tritium Breeding
-    "tritium breeding": MappedTerm("Tritium Breeding", "not_na"),
-    "must breed tritium": MappedTerm("Tritium Breeding", "not_na"),
-    "tritium breeding required": MappedTerm("Tritium Breeding", "not_na"),
-    "no tritium breeding": MappedTerm("Tritium Breeding", "exact", "N/A"),
-    "flibe blanket": MappedTerm("Tritium Breeding", "contains", "FLiBe"),
-    "lipb blanket": MappedTerm("Tritium Breeding", "contains", "LiPb"),
-    "liquid lithium blanket": MappedTerm("Tritium Breeding", "contains", "Liquid Li"),
-    "liquid metal wall": MappedTerm("Tritium Breeding", "exact", "Liquid metal wall"),
+    # Blanket Config (v3 — replaces Tritium Breeding and Neutron Management)
+    "liquid metal blanket": MappedTerm("Blanket Config", "exact", "Liquid metal"),
+    "liquid metal": MappedTerm("Blanket Config", "exact", "Liquid metal"),
+    "liquid lithium blanket": MappedTerm("Blanket Config", "exact", "Liquid metal"),
+    "molten salt blanket": MappedTerm("Blanket Config", "exact", "Molten salt"),
+    "molten salt": MappedTerm("Blanket Config", "exact", "Molten salt"),
+    "flibe blanket": MappedTerm("Blanket Config", "exact", "Molten salt"),
+    "solid breeder": MappedTerm("Blanket Config", "exact", "Solid breeder"),
+    "solid breeder blanket": MappedTerm("Blanket Config", "exact", "Solid breeder"),
+    "hybrid blanket": MappedTerm("Blanket Config", "exact", "Other/hybrid"),
+    "other blanket": MappedTerm("Blanket Config", "exact", "Other/hybrid"),
+    "no tritium breeding": MappedTerm("Blanket Config", "exact", "N/A (no tritium)"),
+    "no blanket": MappedTerm("Blanket Config", "exact", "N/A (no tritium)"),
+    "non-power blanket": MappedTerm("Blanket Config", "exact", "N/A (non-power)"),
+    "tritium breeding": MappedTerm(
+        "Blanket Config", "in_set",
+        ["Liquid metal", "Molten salt", "Solid breeder", "Other/hybrid"],
+    ),
+    "must breed tritium": MappedTerm(
+        "Blanket Config", "in_set",
+        ["Liquid metal", "Molten salt", "Solid breeder", "Other/hybrid"],
+    ),
 
     # Energy Capture
     "thermal conversion": MappedTerm("Energy Capture", "contains", "Thermal"),
@@ -172,11 +176,6 @@ VOCABULARY: dict[str, MappedTerm] = {
     "direct conversion": MappedTerm("Energy Capture", "contains", "Direct"),
     "direct energy conversion": MappedTerm("Energy Capture", "contains", "Direct"),
     "hybrid conversion": MappedTerm("Energy Capture", "contains", "Hybrid"),
-
-    # Plasma State
-    "burning plasma": MappedTerm("Plasma State", "exact", "Burning"),
-    "compressed plasma": MappedTerm("Plasma State", "exact", "Compressed"),
-    "sustained plasma": MappedTerm("Plasma State", "exact", "Sustained"),
 
     # Primary Heating
     "rf heating": MappedTerm("Primary Heating", "contains", "RF"),
@@ -327,8 +326,8 @@ def _map_consequence(consequence: dict) -> MappedTerm | None:
 
     consequence may look like:
       {"variable": "magnet_type", "value": "not N/A"}
-      {"variable": "neutron_shielding", "value": "heavy"}
-      {"type": "activate", "variable": "tritium_breeding"}
+      {"variable": "blanket_config", "value": "liquid metal"}
+      {"type": "activate", "variable": "blanket_config"}
     """
     # Try the value
     value = consequence.get("value", "")
@@ -374,11 +373,9 @@ KEY_TO_COLUMN = {
     "energy_capture": "Energy Capture",
     "magnet_type": "Magnet Type",
     "magnets": "Magnet Type",
-    "tritium_breeding": "Tritium Breeding",
-    "neutron_management": "Neutron Management",
-    "neutron_shielding": "Neutron Management",
+    "blanket_config": "Blanket Config",
+    "blanket": "Blanket Config",
     "operation_mode": "Operation Mode",
-    "plasma_state": "Plasma State",
     "ife_driver": "IFE Driver",
     "driver": "IFE Driver",
     "repetition_rate": "Repetition Rate",
@@ -409,6 +406,17 @@ VALUE_ALIASES: dict[str, dict[str, str]] = {
         "d-he3": "D-He3",
         "p-b11": "p-B11",
         "d-d": "D-D",
+    },
+    "Blanket Config": {
+        "liquid metal": "Liquid metal",
+        "liquid lithium": "Liquid metal",
+        "flibe": "Molten salt",
+        "molten salt": "Molten salt",
+        "solid breeder": "Solid breeder",
+        "hybrid": "Other/hybrid",
+        "other": "Other/hybrid",
+        "none": "N/A (no tritium)",
+        "n/a": "N/A (no tritium)",
     },
 }
 
