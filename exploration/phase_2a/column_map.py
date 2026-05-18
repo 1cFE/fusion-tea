@@ -34,11 +34,13 @@ DESIGN_COLUMNS = [
     "Laser Approach",
     "Fuel",
     "Primary Heating",
+    "Heating Type",
     "Energy Capture",
     "Magnet Type",
     "Blanket Config",
     "Operation Mode",
     "Repetition Rate",
+    "Driver Type",
 ]
 
 
@@ -184,6 +186,24 @@ VOCABULARY: dict[str, MappedTerm] = {
     "ohmic heating": MappedTerm("Primary Heating", "contains", "Ohmic"),
     "laser heating": MappedTerm("Primary Heating", "contains", "Laser"),
     "compression heating": MappedTerm("Primary Heating", "contains", "compression"),
+
+    # Heating Type (P8 — typed)
+    "icrh": MappedTerm("Heating Type", "contains", "ICRH"),
+    "ecrh": MappedTerm("Heating Type", "contains", "ECRH"),
+    "ohmic": MappedTerm("Heating Type", "contains", "Ohmic"),
+    "compression-driven heating": MappedTerm("Heating Type", "exact", "N/A (compression-driven)"),
+    "non-thermal heating": MappedTerm("Heating Type", "exact", "N/A (non-thermal)"),
+
+    # Driver Type (P9 — typed)
+    "magnetic driver": MappedTerm("Driver Type", "exact", "Magnetic"),
+    "magnetic pinch driver": MappedTerm("Driver Type", "exact", "Magnetic pinch"),
+    "dpssl laser": MappedTerm("Driver Type", "exact", "DPSSL Laser"),
+    "gas laser": MappedTerm("Driver Type", "exact", "Gas Laser"),
+    "ion beam driver": MappedTerm("Driver Type", "exact", "Ion/particle beam"),
+    "ion/particle beam": MappedTerm("Driver Type", "exact", "Ion/particle beam"),
+    "mechanical driver": MappedTerm("Driver Type", "exact", "Mechanical/kinetic"),
+    "mechanical/kinetic": MappedTerm("Driver Type", "exact", "Mechanical/kinetic"),
+    "electrostatic driver": MappedTerm("Driver Type", "exact", "Electrostatic"),
 }
 
 
@@ -367,8 +387,10 @@ KEY_TO_COLUMN = {
     "topology": "MFE Topology",
     "fuel": "Fuel",
     "fuel_type": "Fuel",
-    "heating": "Primary Heating",
+    "heating": "Heating Type",
     "primary_heating": "Primary Heating",
+    "heating_type": "Heating Type",
+    "driver_type": "Driver Type",
     "energy_conversion": "Energy Capture",
     "energy_capture": "Energy Capture",
     "magnet_type": "Magnet Type",
@@ -417,6 +439,27 @@ VALUE_ALIASES: dict[str, dict[str, str]] = {
         "other": "Other/hybrid",
         "none": "N/A (no tritium)",
         "n/a": "N/A (no tritium)",
+    },
+    "Heating Type": {
+        "icrh": "ICRH",
+        "ecrh": "ECRH",
+        "nbi": "NBI",
+        "ohmic": "Ohmic",
+        "compression-driven": "N/A (compression-driven)",
+        "non-thermal": "N/A (non-thermal)",
+    },
+    "Driver Type": {
+        "magnetic": "Magnetic",
+        "magnetic pinch": "Magnetic pinch",
+        "dpssl laser": "DPSSL Laser",
+        "gas laser": "Gas Laser",
+        "ion beam": "Ion/particle beam",
+        "ion/particle beam": "Ion/particle beam",
+        "particle beam": "Ion/particle beam",
+        "mechanical": "Mechanical/kinetic",
+        "mechanical/kinetic": "Mechanical/kinetic",
+        "electrostatic": "Electrostatic",
+        "other": "Other",
     },
 }
 
