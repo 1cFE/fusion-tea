@@ -414,3 +414,34 @@ def test_csv_has_typed_heating_and_driver_columns():
     assert "Driver Type" in rows[0], "missing Driver Type column"
     assert all(r["Heating Type"].strip() for r in rows), "empty Heating Type cell"
     assert all(r["Driver Type"].strip() for r in rows), "empty Driver Type cell"
+
+
+def _load_registry_from_csv():
+    """Build a registry directly from CSV (no exposed builder; parse rows)."""
+    import csv
+    from exploration.concept_explorer.seed_registry import CSV_PATH, _parse_row
+    from exploration.concept_explorer.taxonomy_models import ConceptRegistry
+
+    concepts = []
+    with open(CSV_PATH, newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            concepts.append(_parse_row(row))
+    return ConceptRegistry(version="test", concepts=concepts)
+
+
+def test_heating_and_driver_types_parse_for_all_concepts():
+    """Phase 3: every concept gets a populated heating_type and driver_type."""
+    reg = _load_registry_from_csv()
+    for c in reg.concepts:
+        assert c.heating_type is not None, f"{c.concept_id} missing heating_type"
+        assert c.driver_type is not None, f"{c.concept_id} missing driver_type"
+
+
+def test_heating_combination_parses():
+    """Phase 3: combination heating values split into HeatingType atoms."""
+    reg = _load_registry_from_csv()
+    best = next(c for c in reg.concepts if "BEST" in c.name or "BEST" in (c.company or ""))
+    atoms = [h.value for h in best.heating_type_parsed]
+    assert "ICRH" in atoms
+    assert "NBI" in atoms
+    assert "ECRH" in atoms

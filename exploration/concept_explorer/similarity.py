@@ -21,8 +21,8 @@ from exploration.concept_explorer.taxonomy_models import ConceptRegistry, Concep
 # ---------------------------------------------------------------------------
 
 SIMILARITY_DIMENSIONS: dict[str, list[str]] = {
-    "plasma_physics": ["fuel", "primary_heating", "confinement_concept"],
-    "engineering": ["magnet_type", "energy_capture"],
+    "plasma_physics": ["fuel", "primary_heating", "heating_type", "confinement_concept"],
+    "engineering": ["magnet_type", "driver_type", "energy_capture"],
     "fuel_cycle": ["blanket_config"],
     "operations": ["operation_mode", "repetition_rate"],
 }

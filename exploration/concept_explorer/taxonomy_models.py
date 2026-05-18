@@ -11,8 +11,9 @@ See design.md for design decisions DD-1 through DD-5.
 from __future__ import annotations
 
 from enum import StrEnum
+from functools import cached_property
 
-from pydantic import BaseModel, model_validator
+from pydantic import BaseModel, computed_field, model_validator
 
 from exploration.concept_explorer.models import ConfinementFamily, FuelType
 
@@ -96,6 +97,37 @@ class PrimaryHeating(StrEnum):
     ELECTROMAGNETIC_PINCH_DPF = "Electromagnetic pinch (DPF)"
     TBD = "TBD"
     UNKNOWN = "Unknown"
+
+
+class HeatingType(StrEnum):
+    """v3 P8 typed heating-type vocabulary.
+
+    Atoms only — combinations (e.g. ``ICRH + NBI``) are kept as raw strings
+    on ``ConceptTaxonomy.heating_type`` and split into atoms on
+    ``heating_type_parsed``.
+    """
+
+    ICRH = "ICRH"
+    ECRH = "ECRH"
+    NBI = "NBI"
+    OHMIC = "Ohmic"
+    NA_COMPRESSION_DRIVEN = "N/A (compression-driven)"
+    NA_NON_THERMAL = "N/A (non-thermal)"
+    TBD = "TBD"
+
+
+class DriverType(StrEnum):
+    """v3 P9 typed driver-type vocabulary."""
+
+    MAGNETIC = "Magnetic"
+    MAGNETIC_PINCH = "Magnetic pinch"
+    DPSSL_LASER = "DPSSL Laser"
+    GAS_LASER = "Gas Laser"
+    ION_PARTICLE_BEAM = "Ion/particle beam"
+    MECHANICAL_KINETIC = "Mechanical/kinetic"
+    ELECTROSTATIC = "Electrostatic"
+    OTHER = "Other"
+    TBD = "TBD"
 
 
 class EnergyCapture(StrEnum):
@@ -189,12 +221,25 @@ class ConceptTaxonomy(BaseModel):
     # Cross-cutting design choices
     fuel: FuelType
     primary_heating: PrimaryHeating | None = None
+    heating_type: str | None = None  # raw CSV value; may be a "+"-joined combo
+    driver_type: DriverType | None = None
     energy_capture: EnergyCapture | None = None
     magnet_type: MagnetType | None = None
     blanket_config: BlanketConfig | None = None
     operation_mode: OperationMode
     repetition_rate: RepetitionRate | None = None
     driver_technology: str | None = None
+
+    @computed_field  # type: ignore[prop-decorator]
+    @cached_property
+    def heating_type_parsed(self) -> list[HeatingType]:
+        """Split combination heating values (e.g. ``ICRH + NBI``) into atoms."""
+        if not self.heating_type:
+            return []
+        atoms: list[HeatingType] = []
+        for part in self.heating_type.split(" + "):
+            atoms.append(HeatingType(part.strip()))
+        return atoms
 
     # Metadata
     confidence: TaxonomyConfidence
