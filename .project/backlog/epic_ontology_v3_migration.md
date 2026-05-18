@@ -1,7 +1,7 @@
 # Epic: Ontology v3 Migration
 
 **Epic ID**: ONTOLOGY-V3
-**Status**: In Progress (Items 1–2 complete 2026-05-17)
+**Status**: In Progress (Items 1–3 complete 2026-05-17; Item 3 has two carry-forwards — see Item 3 notes)
 **Priority**: P0
 **Created**: 2026-05-17
 **Estimated Effort**: 5–8 days across three branches
@@ -104,50 +104,20 @@ Migrate the project from the v0.2.x concept ontology to v0.3.0: drop `Plasma Sta
 - `run_analysis.py` had a dead `FREEFORM_CONCEPTS` import — fixed in this commit (1 line). Mentioned because Item 3 should audit for similar orphaned references.
 - `scoring.py` initially shipped without the `canonical_eta_th` import after stripping the inline definition. Caught in review; amended into `8db3ed2`. Lesson logged: Phase gates need behavioral smoke that reaches the function, not just module-load.
 
-### Item 2 (original — superseded)
-
-**Type**: Code/Integration
-**Effort**: 1.5 days (spec 1h, design 2h, plan 1h, execute 8h)
-**Dependencies**: Item 1
-
-**Objective**: Bring `origin/fix/concept-renumbering-robustness` onto a fresh branch off the updated `main`, resolve merge conflicts (most of which will be in availability/η_th files Item 1 touched), and get the codebase building.
-
-**Scope**:
-1. Branch `ontology-v3-migration` off the updated `main`.
-2. Merge or cherry-pick `1b960a9` from `origin/fix/concept-renumbering-robustness`.
-3. Resolve conflicts in:
-   - `exploration/concept_analysis/analyses/*/model_setup.py`, `analysis.md`, `synthesis.md`, `model_output.txt` (overlap with Item 1's standardization changes — re-apply the standardization on top of the renumbered/reclassified files)
-   - `exploration/concept_analysis/scripts/standardize_eta_th.py`, `lib/scoring.py` (both files touched by both branches)
-4. Verify the merged tree builds:
-   - `uv run python exploration/concept_explorer/seed_registry.py` succeeds
-   - `uv run python exploration/concept_explorer/extract_explorer_data.py` succeeds
-   - `uv run python exploration/concept_analysis/scripts/run_analysis.py status` runs
-5. Re-run `seed_registry.py` to refresh `concept_registry.json` and `decision_tree.json` against the merged tree.
-6. Commit the merge.
-
-**Out of Scope**:
-- Fixing the known gaps from §4 addendum of `20260517_ontology_v3_delta.md` (Item 3).
-- Decision on CSV-vs-MD source of truth (Item 4).
-- Refreshing synthesis prose (Item 5).
-
-**Success Criteria**:
-- [ ] Merge commit lands cleanly on `ontology-v3-migration`
-- [ ] `table.csv` has 39 rows, v3 columns, populated `Research ID`
-- [ ] `seed_registry.py` and `extract_explorer_data.py` both run to completion
-- [ ] All availability/η_th changes from Item 1 are preserved on the renumbered/reclassified analyses
-- [ ] No references to old IDs in tracked files (audit via `grep -rE "17[ab]-|20[ab]-|22-projectile.*NearStar"`)
-
-**Deliverables**:
-- Branch `ontology-v3-migration` with merged history
-- Regenerated `concept_explorer/data/{concept_registry,decision_tree}.json`
-
 ---
 
 ### Item 3: Close v3 code gaps and pass tests
 
+**Status**: ✅ Complete 2026-05-17 (with 2 carry-forwards to Item 5 — see below)
 **Type**: Implementation
 **Effort**: 1.5 days (spec 1h, design 2h, plan 1h, execute 8h)
 **Dependencies**: Item 2
+**Artifacts**: `.project/active/ontology-v3-close-gaps/{spec,design,plan}.md`
+**Commits on `ontology-update`**:
+- `ac320a4` Phase 1: `column_map.py` v3 schema (FR-1)
+- `f3f40c9` Phase 2: `tree_group` display layer + v3 test sweep (FR-2/3/5/7/11)
+- `42d04b2` Phase 3: architecture-driven `cadence_by_architecture` + `derive_tree_path` (FR-8/9/14)
+- `029b3ab` Phase 4: `verified_scores` regen against v3 classifier (FR-10 partial)
 
 **Objective**: Close the 9 gaps identified in `.project/research/20260517_ontology_v3_delta.md` §Addendum that the branch did not address, then get the test suite green.
 
@@ -169,18 +139,23 @@ Migrate the project from the v0.2.x concept ontology to v0.3.0: drop `Plasma Sta
 - Refreshing synthesis prose (Item 5).
 
 **Success Criteria**:
-- [ ] `uv run python -m pytest exploration/concept_explorer/tests/` passes
-- [ ] `uv run python exploration/phase_2a/expand.py` (or its current entry point) runs without `UNMAPPABLE` from dropped columns on a smoke-test concept
-- [ ] Explorer renders v3 tree groupings (Estatic / Other / Cmpt-Tor visible)
-- [ ] `decision_tree.json` reflects the new sibling structure
-- [ ] `oneoff_3d_clustering.py` and `generate_ontology_chart.py` produce identical output for unchanged concepts after the architecture-driven refactor
-- [ ] `browser-inspect` smoke test: zero console errors, all view tabs render
+- [x] `uv run python -m pytest exploration/concept_explorer/tests/` passes (176 passed, 2 skipped)
+- [x] `phase_2a/validate.py --summary` runs without `UNMAPPABLE` from dropped column names
+- [x] Explorer renders v3 tree groupings (`decision_tree.json` root field `tree_group`; six top-level keys MFE/IFE/MIF/Cmpt-Tor/Estatic/Other)
+- [x] `decision_tree.json` reflects the new sibling structure
+- [x] `oneoff_3d_clustering.py`: feature values byte-identical to baseline for retained concepts; KMeans cluster labels shift only because new concepts (37/38/39) join the dataset
+- [x] `generate_ontology_chart.py`: renders 40 concepts; pre-existing crash on missing family color also fixed
+- [ ] `browser-inspect` smoke test (deferred — see carry-forwards)
 
 **Deliverables**:
-- All 9 code changes committed
-- Updated test suite passing
-- Regenerated scores artifacts
-- `browser-inspect` session JSON saved to `/tmp/browser_inspect/<session>/` for the smoke test
+- 8 of 9 code changes committed (FR-4 and FR-6 verified no-op per spec revision); see commits above
+- Updated test suite passing (176 tests)
+- Regenerated `verified_scores.{json,md}` (`calibrated_scores.*` deferred)
+- `browser-inspect` smoke session — **deferred**
+
+**Carry-forwards into Item 5**:
+1. **`calibrated_scores.{json,md}` not regenerated** — `extract-scores` ran (deterministic), but the single cross-concept `calibrate` Claude call hit the session time cap and was killed. Five concepts (`04-laser-icf`, `11-magnetic-mirror`, `37-magnetized-target-inertial-fusion-mtif`, `38-particle-accelerator-driven-fusion`, `39-spherical-tokamak-cs-free-p-b11`) also lack Section-8 synthesis YAML and so are missing from `verified_scores.json`. Item 5's synthesis refresh should resynthesize those five and then run `calibrate` once afterward.
+2. **`browser-inspect` smoke not run** — taxonomy/compare/neighborhood views were not click-tested. The underlying contract (decision_tree.json shape, JS field labels) is exercised by the test suite (`test_taxonomy_server.py` confirms the new `tree_group` root field; `test_taxonomy_models.py` confirms the six top-level groups) but the visual gate is unverified. Run before Item 4's PR-to-`main`.
 
 ---
 
