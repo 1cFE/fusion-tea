@@ -1,0 +1,63 @@
+_meta:
+  concept_id: 25-heavy-ion-beam-icf
+  name: Heavy Ion Beam ICF (D-T)
+confinement_family:
+  value: IFE
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+driver_technology:
+  value: Linear induction accelerator
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+fuel:
+  value: D-T
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+ife_driver:
+  value: Heavy ion beam
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+magnet_type:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+mfe_topology:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+mif_method:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+neutron_management:
+  value: Integrated blanket/shield
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+operation_mode:
+  value: Pulsed
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+stellarator_type:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+tokamak_shape:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+tritium_breeding:
+  value: Li blanket (unspecified)
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'

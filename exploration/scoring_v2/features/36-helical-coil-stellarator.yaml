@@ -1,0 +1,63 @@
+_meta:
+  concept_id: 36-helical-coil-stellarator
+  name: Helical Coil Stellarator
+confinement_family:
+  value: MFE
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+driver_technology:
+  value: Continuous helical HTS coils (REBCO WISE conductor, 8 T) + 250 GHz CW gyrotrons
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+fuel:
+  value: D-T
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+ife_driver:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+magnet_type:
+  value: HTS (3D stellarator)
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+mfe_topology:
+  value: Stellarator
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+mif_method:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+neutron_management:
+  value: Integrated blanket/shield
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+operation_mode:
+  value: Steady-state
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+stellarator_type:
+  value: Helical coil
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+tokamak_shape:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+tritium_breeding:
+  value: Liquid metal wall
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'

@@ -1,0 +1,15 @@
+# Default weight matrix for scoring_v2.
+# Three dimensions; weight 0 (or omission) means "no contribution."
+# Plain-text edits to this file propagate via re-running score.py — no LLM call.
+
+economic_potential: {}
+
+technical_feasibility: {}
+
+manufacturability_scale_out:
+  # plant-level modularity group:
+  min_viable_device_scale:      0.30
+  hardware_topology_complexity: 0.30
+  unit_multiplicity:            0.20
+  subsystem_stack_burden:       0.20
+  # component-level modularity group: (added in slice 2)

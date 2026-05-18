@@ -1,0 +1,63 @@
+_meta:
+  concept_id: 21-spherical-tokamak-hts
+  name: Spherical Tokamak - HTS
+confinement_family:
+  value: MFE
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+driver_technology:
+  value: HTS magnets (REBCO, 5.25 T on-axis)
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+fuel:
+  value: D-T
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+ife_driver:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+magnet_type:
+  value: HTS (wound)
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+mfe_topology:
+  value: Tokamak
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+mif_method:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+neutron_management:
+  value: Integrated blanket/shield
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+operation_mode:
+  value: Quasi-steady
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+stellarator_type:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+tokamak_shape:
+  value: Spherical
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+tritium_breeding:
+  value: Liquid Li blanket
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
