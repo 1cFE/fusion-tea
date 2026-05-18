@@ -9,6 +9,7 @@ from typing import Any, Callable, Tuple
 
 from . import taxonomy as _taxonomy
 from . import manual as _manual
+from . import cost_model as _cost_model
 
 Result = Tuple[Any, str, str]
 ExtractorFn = Callable[[str, str, dict], Result]
@@ -16,13 +17,14 @@ ExtractorFn = Callable[[str, str, dict], Result]
 _IMPLEMENTED: dict[str, ExtractorFn] = {
     "taxonomy": _taxonomy.extract,
     "manual": _manual.extract,
+    "cost_model": _cost_model.extract,
 }
 
 
 def dispatch(name: str) -> ExtractorFn:
     if name in _IMPLEMENTED:
         return _IMPLEMENTED[name]
-    if name in ("cost_model", "llm"):
+    if name == "llm":
         raise NotImplementedError(
             f"extractor {name!r} will be implemented in a later slice"
         )

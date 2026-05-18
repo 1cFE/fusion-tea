@@ -11,6 +11,11 @@ driver_technology:
   provenance: taxonomy
   confidence: high
   extracted_at: '2026-05-17'
+energy_capture:
+  value: Thermal (unspecified)
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
 fuel:
   value: D-D
   provenance: taxonomy

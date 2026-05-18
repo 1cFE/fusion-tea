@@ -7,9 +7,12 @@ economic_potential: {}
 technical_feasibility: {}
 
 manufacturability_scale_out:
-  # plant-level modularity group:
-  min_viable_device_scale:      0.30
-  hardware_topology_complexity: 0.30
-  unit_multiplicity:            0.20
-  subsystem_stack_burden:       0.20
-  # component-level modularity group: (added in slice 2)
+  # Plant-level modularity group (slice 1) — halved for the 50/50 blend with
+  # the component-modularity group landed in slice 2.
+  min_viable_device_scale:        0.15
+  hardware_topology_complexity:   0.15
+  unit_multiplicity:              0.10
+  subsystem_stack_burden:         0.10
+  # Component-level modularity group (slice 2) — single aggregate of seven
+  # subsystem ratings blended by per-concept capex shares.
+  component_modularity_aggregate: 0.50

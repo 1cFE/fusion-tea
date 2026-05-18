@@ -37,22 +37,50 @@ DEFAULT_WEIGHTS = Path(__file__).resolve().parent / "weights" / "default.yaml"
 def _evaluate_concept(doc: dict) -> tuple[dict[str, float | None], dict[str, str]]:
     """Run every embedding against one concept's feature doc.
 
+    Embeddings may declare other embeddings as inputs (a one-level dependency
+    DAG). We resolve in dependency order: each pass evaluates any embedding
+    whose inputs are now all available (either features in ``doc`` or
+    previously-resolved embeddings). Cycles or unresolvable embeddings get
+    ``None`` and confidence "low".
+
     Returns:
-        emb_values: {embedding_name: 1-5 score or None}
-        emb_confidence: {embedding_name: min-confidence over its inputs}
+        emb_values: {embedding_name: scalar or None}
+        emb_confidence: {embedding_name: min-confidence over inputs}
     """
     emb_values: dict[str, float | None] = {}
     emb_confidence: dict[str, str] = {}
-    for name, emb in rulebook.REGISTRY.items():
-        try:
-            kwargs = {inp: doc[inp]["value"] for inp in emb.inputs}
-        except KeyError:
-            emb_values[name] = None
-            emb_confidence[name] = "low"
-            continue
-        emb_values[name] = emb.fn(**kwargs)
-        rank = min(CONFIDENCE_RANK[doc[inp]["confidence"]] for inp in emb.inputs)
-        emb_confidence[name] = CONFIDENCE_NAME[rank]
+    remaining = dict(rulebook.REGISTRY)
+
+    def _input_state(inp: str) -> tuple[bool, Any, str]:
+        """Return (available, value, confidence) for one input name."""
+        if inp in doc:
+            block = doc[inp]
+            return True, block["value"], block["confidence"]
+        if inp in emb_values:
+            return True, emb_values[inp], emb_confidence.get(inp, "low")
+        return False, None, "low"
+
+    while remaining:
+        progress = False
+        for name in list(remaining):
+            emb = remaining[name]
+            states = [_input_state(inp) for inp in emb.inputs]
+            if not all(avail for avail, _, _ in states):
+                continue
+            kwargs = {inp: v for inp, (_, v, _) in zip(emb.inputs, states)}
+            try:
+                emb_values[name] = emb.fn(**kwargs)
+            except Exception:
+                emb_values[name] = None
+            rank = min(CONFIDENCE_RANK[c] for _, _, c in states) if states else CONFIDENCE_RANK["high"]
+            emb_confidence[name] = CONFIDENCE_NAME[rank]
+            del remaining[name]
+            progress = True
+        if not progress:
+            for name in remaining:
+                emb_values[name] = None
+                emb_confidence[name] = "low"
+            break
     return emb_values, emb_confidence
 
 

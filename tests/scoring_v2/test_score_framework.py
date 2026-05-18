@@ -73,10 +73,16 @@ def test_score_alphabetical_concept_order(run_cli, tmp_scores_dir: Path):
     assert ids == sorted(ids)
 
 
-def test_evidence_columns_high_for_taxonomy_only(run_cli, tmp_scores_dir: Path):
-    # Every feature ships at confidence=high (all taxonomy this slice).
-    # Wired dimension (mso) → high. Unwired dimensions → also high (default with no inputs).
+def test_evidence_columns_discriminate_under_default_weights(run_cli, tmp_scores_dir: Path):
+    # Slice 2 introduces non-`high` confidence into M&SO:
+    #   - concepts with a cost model contribute cm_aggregate at confidence=medium
+    #   - concepts without a cost model leave w_* absent → cm_aggregate confidence=low
+    # Either way, mso_evidence must no longer be uniformly "high" — this is the
+    # mixed-confidence-aggregation discrimination the slice was meant to surface.
     run_cli("score.py")
     rows = _read_csv(tmp_scores_dir / "table.csv")
-    for r in rows:
-        assert r["mso_evidence"] == "high"
+    mso_evidence_values = {r["mso_evidence"] for r in rows}
+    assert mso_evidence_values != {"high"}, (
+        f"mso_evidence is uniformly high — mixed-confidence aggregation not "
+        f"discriminating. Saw: {mso_evidence_values}"
+    )

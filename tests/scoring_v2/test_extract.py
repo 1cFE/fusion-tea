@@ -67,6 +67,6 @@ def test_validator_catches_unknown_feature(tmp_features_dir: Path):
 
 def test_dispatcher_raises_for_unimplemented_extractors():
     from exploration.scoring_v2.lib.extractors import dispatch
-    for name in ("cost_model", "llm"):
-        with pytest.raises(NotImplementedError, match="later slice"):
-            dispatch(name)
+    # cost_model lands in slice 2; only llm remains unimplemented.
+    with pytest.raises(NotImplementedError, match="later slice"):
+        dispatch("llm")

@@ -1,10 +1,18 @@
-"""Phase 3 acceptance tests: plant_level_modularity ordering + iteration affordances."""
+"""Phase 3 acceptance tests: plant_level_modularity ordering + iteration affordances.
+
+Slice 2 introduced the component_modularity group, so the slice-1 acceptance
+numbers only land under the slice-1 reference weights (weights/slice1.yaml,
+which zeroes the component aggregate). These tests pin them under that config.
+"""
 from __future__ import annotations
 
 import csv
 from pathlib import Path
 
 import yaml
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
+SLICE1_WEIGHTS = REPO_ROOT / "exploration" / "scoring_v2" / "weights" / "slice1.yaml"
 
 
 def _read_csv(p: Path) -> list[dict[str, str]]:
@@ -18,7 +26,7 @@ def _mso_by_id(scores_dir: Path) -> dict[str, float]:
 
 
 def test_plant_level_modularity_ordering(run_cli, tmp_scores_dir: Path):
-    run_cli("score.py")
+    run_cli("score.py", weights=SLICE1_WEIGHTS)
     mso = _mso_by_id(tmp_scores_dir)
     helion = mso["08-frc-w-direct-conversion"]
     cfs = mso["01-hts-compact-tokamak"]
@@ -30,26 +38,29 @@ def test_plant_level_modularity_ordering(run_cli, tmp_scores_dir: Path):
 
 
 def test_weight_edit_propagates_without_extraction(
-    run_cli, tmp_scores_dir: Path, tmp_weights_file: Path
+    run_cli, tmp_scores_dir: Path, tmp_path: Path
 ):
-    run_cli("score.py")
+    # Run under slice-1 weights to make the per-embedding contribution
+    # arithmetic exact (no cm_aggregate noise).
+    import shutil
+    weights_path = tmp_path / "slice1.yaml"
+    shutil.copy(SLICE1_WEIGHTS, weights_path)
+    run_cli("score.py", weights=weights_path)
     before = _mso_by_id(tmp_scores_dir)["08-frc-w-direct-conversion"]
     # Double unit_multiplicity weight; Helion's multiplicity score is 4, so MSO should
-    # gain 0.20 * 4 = 0.80 (and a smaller bump from inherent renormalization, since we're
-    # just adding weight, not renormalizing).
-    weights = yaml.safe_load(tmp_weights_file.read_text())
+    # gain 0.20 * 4 = 0.80.
+    weights = yaml.safe_load(weights_path.read_text())
     weights["manufacturability_scale_out"]["unit_multiplicity"] = 0.40
-    tmp_weights_file.write_text(yaml.safe_dump(weights, sort_keys=False))
-    run_cli("score.py")
+    weights_path.write_text(yaml.safe_dump(weights, sort_keys=False))
+    run_cli("score.py", weights=weights_path)
     after = _mso_by_id(tmp_scores_dir)["08-frc-w-direct-conversion"]
-    # Helion multiplicity=4, weight +0.20 → +0.80.
     assert abs((after - before) - 0.80) < 1e-6
 
 
 def test_feature_edit_changes_score_deterministically(
     run_cli, tmp_features_dir: Path, tmp_scores_dir: Path
 ):
-    run_cli("score.py")
+    run_cli("score.py", weights=SLICE1_WEIGHTS)
     cfs_before = _mso_by_id(tmp_scores_dir)["01-hts-compact-tokamak"]
 
     target = tmp_features_dir / "01-hts-compact-tokamak.yaml"
@@ -57,6 +68,6 @@ def test_feature_edit_changes_score_deterministically(
     # HTS (wound) → Resistive flips hardware_topology_complexity out of the HTS-compact branch.
     doc["magnet_type"]["value"] = "Resistive"
     target.write_text(yaml.safe_dump(doc, sort_keys=False))
-    run_cli("score.py")
+    run_cli("score.py", weights=SLICE1_WEIGHTS)
     cfs_after = _mso_by_id(tmp_scores_dir)["01-hts-compact-tokamak"]
     assert cfs_after < cfs_before

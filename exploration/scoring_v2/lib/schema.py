@@ -64,6 +64,11 @@ def validate_features_file(path: Path | str, schema: dict[str, dict[str, Any]] |
                 raise SchemaError(
                     f"{path.name}: {feat_name}.value: expected string, got {type(value).__name__}"
                 )
+        elif entry["type"] == "float":
+            if not isinstance(value, (int, float)) or isinstance(value, bool):
+                raise SchemaError(
+                    f"{path.name}: {feat_name}.value: expected float, got {type(value).__name__}"
+                )
         else:
             raise SchemaError(f"{path.name}: {feat_name}: unknown type {entry['type']!r}")
 

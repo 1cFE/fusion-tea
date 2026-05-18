@@ -91,3 +91,51 @@ neutron_management:
   required: true
   extractor: taxonomy
   taxonomy_column: "Neutron Management"
+
+# Added by slice 2 (component_modularity group).
+
+energy_capture:
+  type: string
+  required: true
+  extractor: taxonomy
+  taxonomy_column: "Energy Capture"
+
+# Per-concept capex weight shares, summing to 1.0 across the seven subsystems.
+# Populated by the cost_model extractor from
+# exploration/concept_analysis/analyses/{cid}/model_output.txt.
+# Absent when no model_output.txt exists for the concept (no fallback).
+
+w_vessel:
+  type: float
+  required: false
+  extractor: cost_model
+
+w_coils:
+  type: float
+  required: false
+  extractor: cost_model
+
+w_blanket:
+  type: float
+  required: false
+  extractor: cost_model
+
+w_bop:
+  type: float
+  required: false
+  extractor: cost_model
+
+w_fuel_cycle:
+  type: float
+  required: false
+  extractor: cost_model
+
+w_aux:
+  type: float
+  required: false
+  extractor: cost_model
+
+w_civil:
+  type: float
+  required: false
+  extractor: cost_model

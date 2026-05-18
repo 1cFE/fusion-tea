@@ -24,6 +24,7 @@ if str(REPO_ROOT) not in sys.path:
 from exploration.scoring_v2.lib import feature_io, schema as schema_mod
 from exploration.scoring_v2.lib.extractors import dispatch
 from exploration.scoring_v2.lib.extractors import taxonomy as taxonomy_ext
+from exploration.scoring_v2.lib.extractors import cost_model as cost_model_ext
 
 
 def _today() -> str:
@@ -51,6 +52,52 @@ def extract_one(concept_id: str, feature_name: str, *, features_dir: Path) -> No
     }
     feature_io.update_feature(concept_id, feature_name, block,
                               features_dir=features_dir, meta=meta)
+
+
+def bulk_cost_model(*, features_dir: Path) -> tuple[int, int]:
+    """Populate the seven w_* features for every concept that has a model_output.txt.
+
+    Returns (concepts_with_weights, concepts_skipped).
+    Concepts without a cost model get no w_* features written (no fallback).
+    """
+    schema = schema_mod.load_schema()
+    cost_features = [n for n, e in schema.items() if e["extractor"] == "cost_model"]
+    if not cost_features:
+        return (0, 0)
+    ids = taxonomy_ext.all_concept_ids()
+    written = 0
+    skipped = 0
+    for cid in ids:
+        weights = cost_model_ext.compute_weights(cid)
+        if weights is None:
+            skipped += 1
+            # Remove stale w_* entries if a previous extraction left them behind.
+            doc = feature_io.read_features(cid, features_dir=features_dir)
+            removed = False
+            for fname in cost_features:
+                if fname in doc:
+                    del doc[fname]
+                    removed = True
+            if removed:
+                feature_io.write_features(cid, doc, features_dir=features_dir)
+            continue
+        doc = feature_io.read_features(cid, features_dir=features_dir)
+        doc["_meta"] = {"concept_id": cid, "name": taxonomy_ext.concept_name(cid)}
+        prov = f"analyses/{cid}/model_output.txt"
+        for fname in cost_features:
+            subsystem = fname[2:]
+            doc[fname] = {
+                "value": float(weights[subsystem]),
+                "provenance": prov,
+                "confidence": "medium",
+                "extracted_at": _today(),
+            }
+        feature_io.write_features(cid, doc, features_dir=features_dir)
+        unrec = cost_model_ext.unrecognized_codes(cid)
+        if unrec:
+            print(f"  {cid}: unrecognized CAS codes ignored: {unrec}", file=sys.stderr)
+        written += 1
+    return (written, skipped)
 
 
 def bulk_taxonomy(*, features_dir: Path) -> int:
@@ -81,6 +128,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("feature_name", nargs="?")
     parser.add_argument("--bulk-taxonomy", action="store_true",
                         help="populate every taxonomy-derived feature for every concept")
+    parser.add_argument("--bulk-cost-model", action="store_true",
+                        help="populate w_* features for every concept that has a model_output.txt")
     parser.add_argument("--features-dir", type=Path, default=schema_mod.FEATURES_DIR)
     args = parser.parse_args(argv)
 
@@ -89,6 +138,11 @@ def main(argv: list[str] | None = None) -> int:
     if args.bulk_taxonomy:
         n = bulk_taxonomy(features_dir=args.features_dir)
         print(f"wrote taxonomy features for {n} concepts to {args.features_dir}")
+        return 0
+    if args.bulk_cost_model:
+        written, skipped = bulk_cost_model(features_dir=args.features_dir)
+        print(f"wrote cost-model features for {written} concepts "
+              f"({skipped} skipped — no model_output.txt) to {args.features_dir}")
         return 0
     if not args.concept_id or not args.feature_name:
         parser.error("provide <concept_id> <feature_name> or --bulk-taxonomy")

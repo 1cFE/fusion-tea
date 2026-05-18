@@ -11,6 +11,11 @@ driver_technology:
   provenance: taxonomy
   confidence: high
   extracted_at: '2026-05-17'
+energy_capture:
+  value: Direct (charged particle)
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
 fuel:
   value: p-B11
   provenance: taxonomy
