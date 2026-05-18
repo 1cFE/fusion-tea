@@ -404,3 +404,13 @@ class TestTreeGroup:
                 f"{c.concept_id} {c.name}: tree_group returned "
                 f"{tree_group(c)!r}, not in {valid}"
             )
+
+
+def test_csv_has_typed_heating_and_driver_columns():
+    """Phase 2: typed Heating Type / Driver Type columns exist and are populated."""
+    import csv
+    rows = list(csv.DictReader(open("exploration/concept_analysis/table.csv")))
+    assert "Heating Type" in rows[0], "missing Heating Type column"
+    assert "Driver Type" in rows[0], "missing Driver Type column"
+    assert all(r["Heating Type"].strip() for r in rows), "empty Heating Type cell"
+    assert all(r["Driver Type"].strip() for r in rows), "empty Driver Type cell"
