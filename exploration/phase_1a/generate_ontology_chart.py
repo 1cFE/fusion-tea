@@ -195,53 +195,107 @@ REPRATE_MAP = {
 FUEL_MAP = {'D-T': 'D-T', 'D-D': 'D-D', 'D-He3': 'D-He3', 'p-B11': 'p-B11'}
 
 # ---------------------------------------------------------------------------
-# Tree path (Family > Topology > Sub-type) by concept ID
+# Tree path (Family > Topology > Sub-type) derived from architecture columns
 # ---------------------------------------------------------------------------
+#
+# Mirrors exploration/concept_analysis/scripts/lib/scoring.py:detect_c2_category
+# and exploration/concept_explorer/seed_registry.py:tree_group — keep column
+# reads and slug overrides in sync. Replaces the previous ID-prefix-keyed
+# TREE_PATH dict so the chart survives concept-ID renumbering.
 
-TREE_PATH = {
-    '01': ('MFE', 'Tokamak', 'Compact'),
-    '07': ('MIF', 'Pulsed power', 'MagLIF'),
-    '08': ('MIF', 'FRC', 'Pulsed compr.'),
-    '14': ('MIF', 'Mag. target', 'Pneumatic'),
-    '22': ('MFE', 'Tokamak', 'Spherical'),
-    '29': ('MFE', 'Tokamak', 'Compact'),
-    '30': ('MFE', 'Tokamak', 'Neg-tri'),
-    '34': ('MFE', 'Tokamak', 'Standard'),
-    '09': ('MFE', 'Stellarator', 'QI'),
-    '10': ('MFE', 'Stellarator', 'QI'),
-    '20': ('MFE', 'Stellarator', 'Modular'),
-    '21': ('MFE', 'Stellarator', 'Modular'),
-    '05': ('MFE', 'Stellarator', 'Planar'),
-    '36': ('MFE', 'Stellarator', 'Helical'),
-    '11': ('MFE', 'Open/Linear', 'Mirror'),
-    '06': ('MFE', 'Open/Linear', 'Mirror'),
-    '15': ('MFE', 'Open/Linear', 'Z-pinch'),
-    '18': ('MFE', 'Cmpt-Tor', 'FRC sust.'),
-    '12': ('MFE', 'Dipole', 'Levitated'),
-    '19': ('MFE', 'Dipole', 'Orbital'),
-    '35': ('MFE', 'Dipole', 'Supported'),
-    '39': ('MFE', 'Tokamak', 'Spherical'),
-    # IFE
-    '32': ('IFE', 'Laser', 'Direct'),
-    '33': ('IFE', 'Laser', 'Direct'),
-    '31': ('IFE', 'Laser', 'Indirect'),
-    '27': ('IFE', 'Laser', 'Hybrid'),
-    '17': ('IFE', 'Laser', 'Fast-ig.'),
-    '04': ('IFE', 'Laser', 'Ultrashort'),
-    '24': ('IFE', 'Laser', 'Ultrashort'),
-    '03': ('IFE', 'Laser', 'Ultrashort'),
-    '02': ('IFE', 'Other', 'Acoustic'),
-    '23': ('IFE', 'Projectile', '—'),
-    '26': ('IFE', 'Heavy ion', '—'),
-    # NearStar - new concept 37
-    '37': ('MIF', 'Mag. target', 'Mechanical'),
-    # Non-Standard (Other family)
-    '25': ('Other', 'DPF', '—'),
-    '16': ('Other', 'Muon', '—'),
-    '38': ('Other', 'Accelerator', '—'),
-    '28': ('Estatic', 'Polywell', '—'),
-    '13': ('Estatic', 'IEC', '—'),
+_LASER_SUBTYPE = {
+    'Direct drive': 'Direct',
+    'Indirect drive': 'Indirect',
+    'Hybrid drive': 'Hybrid',
+    'Hybrid direct drive': 'Hybrid',
+    'Fast ignition': 'Fast-ig.',
+    'Direct drive fast ignition': 'Fast-ig.',
+    'Ultrashort pulse': 'Ultrashort',
+    'Liquid jet': 'Ultrashort',
 }
+
+# Slug overrides for non-architecture distinctions (e.g. dipole sub-style,
+# MIF compression method, electrostatic device family).
+_TREE_SLUG_OVERRIDES: dict[str, tuple[str, str, str]] = {
+    '15-sheared-flow-stabilized-z-pinch': ('MFE', 'Open/Linear', 'Z-pinch'),
+    '12-levitated-dipole': ('MFE', 'Dipole', 'Levitated'),
+    '19-orbital-levitated-dipole': ('MFE', 'Dipole', 'Orbital'),
+    '35-polomac-magnetic-confinement': ('MFE', 'Dipole', 'Supported'),
+    '07-maglif': ('MIF', 'Pulsed power', 'MagLIF'),
+    '14-magnetized-target-fusion-pneumatic-compression': ('MIF', 'Mag. target', 'Pneumatic'),
+    '37-magnetized-target-inertial-fusion-mtif': ('MIF', 'Mag. target', 'Mechanical'),
+    '08-frc-w-direct-conversion': ('MIF', 'FRC', 'Pulsed compr.'),
+    '13-electrostatic-hybrid': ('Estatic', 'IEC', '—'),
+    '27-polywell': ('Estatic', 'Polywell', '—'),
+    '38-particle-accelerator-driven-fusion': ('Estatic', 'Accelerator', '—'),
+    '24-dense-plasma-focus': ('Other', 'DPF', '—'),
+    '16-muon-catalyzed-fusion': ('Other', 'Muon', '—'),
+}
+
+
+def derive_tree_path(r: dict) -> tuple[str, str, str]:
+    """Return (family/group, topology, subtype) for a CSV row.
+
+    Mirrors lib/scoring.py:detect_c2_category pattern. Reads architecture
+    columns from table.csv and falls back to _TREE_SLUG_OVERRIDES for
+    distinctions that columns alone don't capture.
+    """
+    full_id = r.get('ID', '').strip()
+    if full_id in _TREE_SLUG_OVERRIDES:
+        return _TREE_SLUG_OVERRIDES[full_id]
+
+    family = r.get('Confinement Family', '').strip()
+    topology = r.get('MFE Topology', '').strip()
+    tokamak_shape = r.get('Tokamak Shape', '').strip()
+    stellarator_type = r.get('Stellarator Type', '').strip()
+    driver = r.get('IFE Driver', '').strip()
+    laser_approach = r.get('Laser Approach', '').strip()
+    mif_method = r.get('MIF Method', '').strip()
+    mechanism = r.get('Non-Standard Mechanism', '').strip()
+
+    if family == 'MFE':
+        if topology == 'Tokamak':
+            shape_map = {
+                'Compact': 'Compact', 'Spherical': 'Spherical',
+                'Standard': 'Standard', 'Negative triangularity': 'Neg-tri',
+            }
+            return ('MFE', 'Tokamak', shape_map.get(tokamak_shape, '—'))
+        if topology == 'Stellarator':
+            st_map = {
+                'QI': 'QI', 'Modular': 'Modular',
+                'Planar coil': 'Planar', 'Helical coil': 'Helical',
+            }
+            return ('MFE', 'Stellarator', st_map.get(stellarator_type, '—'))
+        if topology == 'Open/Linear':
+            return ('MFE', 'Open/Linear', 'Mirror')
+        if topology == 'Compact Toroid':
+            return ('Cmpt-Tor', 'FRC sust.', '—')
+        if topology == 'Dipole':
+            return ('MFE', 'Dipole', '—')
+        return ('MFE', topology or '—', '—')
+
+    if family == 'IFE':
+        if driver == 'Laser':
+            return ('IFE', 'Laser', _LASER_SUBTYPE.get(laser_approach, '—'))
+        if driver == 'Acoustic':
+            return ('IFE', 'Other', 'Acoustic')
+        if driver == 'Projectile':
+            return ('IFE', 'Projectile', '—')
+        if driver == 'Heavy ion beam':
+            return ('IFE', 'Heavy ion', '—')
+        return ('IFE', driver or '—', '—')
+
+    if family == 'MIF':
+        if mif_method == 'Magnetized target':
+            return ('MIF', 'Mag. target', '—')
+        if mif_method == 'FRC compression':
+            return ('MIF', 'FRC', 'Pulsed compr.')
+        return ('MIF', mif_method or '—', '—')
+
+    # Non-Standard family
+    if mechanism == 'Electrostatic':
+        return ('Estatic', '—', '—')
+    return ('Other', mechanism or '—', '—')
 
 # ---------------------------------------------------------------------------
 # Short code per concept (for the concept name column)
@@ -359,9 +413,9 @@ def derive_row(r: dict) -> dict:
         'co': co,
         'code': CODE_BY_CO.get(co, co[:3].upper()),
         'name': SHORT_NAME.get(co, co),
-        'family': TREE_PATH.get(cid, ('—', '—', '—'))[0],
-        'topology': TREE_PATH.get(cid, ('—', '—', '—'))[1],
-        'subtype': TREE_PATH.get(cid, ('—', '—', '—'))[2],
+        'family': derive_tree_path(r)[0],
+        'topology': derive_tree_path(r)[1],
+        'subtype': derive_tree_path(r)[2],
         'Fuel': FUEL_MAP.get(r.get('Fuel', '').strip(), r.get('Fuel', '').strip() or '—'),
         'Heat': heat,
         'Driver': driver,
@@ -459,9 +513,10 @@ PALETTES = {
     },
 }
 
-# Family tree band colors
+# Family tree band colors (display groups mirror seed_registry.tree_group)
 FAMILY_COLORS = {
     'MFE': '#3b50a0', 'IFE': '#a8453a', 'MIF': '#8e6cc5',
+    'Cmpt-Tor': '#3a8fa8',
     'Estatic': '#dba23a', 'Other': '#5fb86c',
 }
 TOPOLOGY_COLORS = {f: '#aab8dc' for f in TOPOLOGY_ORDER}  # uniform light blue tint
@@ -470,7 +525,13 @@ SUBTYPE_COLORS = {s: '#d6dcec' for s in SUBTYPE_ORDER}
 # Text color: dark on light bands, white on dark
 def text_color(bg: str) -> str:
     if bg.startswith('#'):
-        r, g, b = int(bg[1:3], 16), int(bg[3:5], 16), int(bg[5:7], 16)
+        hex_part = bg[1:]
+        # Expand shorthand #abc -> #aabbcc
+        if len(hex_part) == 3:
+            hex_part = ''.join(ch * 2 for ch in hex_part)
+        if len(hex_part) < 6:
+            return '#222'
+        r, g, b = int(hex_part[0:2], 16), int(hex_part[2:4], 16), int(hex_part[4:6], 16)
         lum = 0.299 * r + 0.587 * g + 0.114 * b
         return 'white' if lum < 140 else '#222'
     return '#222'

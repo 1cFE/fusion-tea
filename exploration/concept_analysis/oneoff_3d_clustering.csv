@@ -1,37 +1,37 @@
 concept_id,company,fuel,family,C1,C2,C3,C4,C5,C6,C7,C8,tech_maturity,low_cost_potential,time_to_market,ttm_years_internal,funding_M_usd,cadence_factor,fuel_factor,funding_factor,cluster
-15-sheared-flow-stabilized-z-pinch,Zap Energy,D-T,MFE,4.1,3.5,2.5,3.4,1.7,2.0,3.0,2.5,2.739,2.599,4.42,18.8,240,0.7,1.0,0.945,2
-01-hts-compact-tokamak,Commonwealth Fusion Systems,D-T,MFE,3.2,2.5,2.3,2.5,2.0,2.5,4.0,2.5,3.162,2.47,4.362,20.2,2000,1.1,1.0,1.175,2
-22-projectile-icf,"First Light Fusion, NearStar Fusion",D-T,IFE,2.4,3.0,2.9,3.5,1.7,2.0,3.5,2.3,2.837,2.419,4.351,20.4,90,0.7,1.0,0.839,2
-07-maglif,"Pacific Fusion, Fuse Energy Technologies",D-T,MIF,3.7,3.0,2.8,3.0,2.1,2.0,3.5,2.5,2.958,2.649,4.321,21.1,50,0.7,1.0,0.775,2
-14-magnetized-target-fusion-pneumatic-compression,General Fusion,D-T,MIF,2.8,3.0,3.4,2.5,1.8,2.0,2.0,2.5,2.236,2.435,4.318,21.2,350,0.7,1.0,0.986,2
-17a-laser-icf-hybrid-drive,Xcimer Energy,D-T,IFE,4.1,3.5,3.2,3.5,1.7,2.0,3.5,2.8,3.13,2.746,4.292,21.8,100,0.85,1.0,0.85,2
-26-laser-icf-indirect-drive,Inertia Enterprises,D-T,IFE,3.2,3.5,3.4,3.5,2.4,2.0,4.0,2.5,3.162,2.834,4.216,23.6,50,0.85,1.0,0.775,2
-29-negative-triangularity-tokamak,Firefly Fusion,D-T,MFE,3.0,2.5,2.7,3.0,1.7,2.5,4.0,3.3,3.633,2.528,4.176,24.6,50,1.1,1.0,0.775,0
-21-spherical-tokamak-hts,Tokamak Energy,D-T,MFE,2.0,2.5,3.1,2.5,2.0,2.5,4.0,2.5,3.162,2.387,4.16,25.0,250,1.1,1.0,0.949,2
-20a-type-one-stellarator,Type One Energy,D-T,MFE,2.8,2.5,2.3,3.0,2.0,2.5,4.0,3.5,3.742,2.495,4.128,25.7,80,1.3,1.0,0.826,0
-31-laser-icf-oec-architecture,Blue Laser Fusion (BLF),D-T,IFE,4.5,3.5,3.2,3.0,2.3,2.0,3.5,2.8,3.13,2.882,4.094,26.5,25,0.85,1.0,0.699,2
-09-qi-stellarator-hts,Proxima Fusion,D-T,MFE,2.5,2.5,3.3,3.0,1.7,2.5,4.0,3.8,3.899,2.537,4.076,27.0,30,1.3,1.0,0.719,0
-30-laser-icf-nif-commercialization,Inertia Enterprises,D-T,IFE,4.6,3.5,3.2,3.5,1.7,2.0,3.5,2.2,2.775,2.81,4.054,27.5,50,0.85,1.0,0.775,2
-05-planar-coil-stellarator,Thea Energy,D-T,MFE,3.5,2.5,2.5,3.0,2.0,2.5,4.0,3.5,3.742,2.652,3.968,29.5,30,1.3,1.0,0.719,0
-12-levitated-dipole,OpenStar Technologies,D-T,MFE,3.0,3.0,3.1,3.5,2.1,2.5,3.5,3.5,3.5,2.796,3.954,29.8,12,1.0,1.0,0.62,0
-33-state-backed-tokamak-best,Neo Fusion,D-T,MFE,2.1,2.5,3.7,2.5,1.8,2.5,4.0,2.5,3.162,2.445,3.93,30.4,100,1.2,1.0,0.85,2
-17b-laser-icf-fast-ignition,Focused Energy,D-T,IFE,3.7,3.5,2.8,3.5,1.8,2.0,3.5,2.3,2.837,2.649,3.851,32.3,15,0.85,1.0,0.644,2
-08-frc-w-direct-conversion,Helion Energy,D-He3,MIF,5.0,3.5,3.4,3.5,3.7,3.5,1.5,2.5,1.936,3.779,3.808,33.3,1000,0.75,1.5,1.1,3
-10-large-scale-stellarator,Gauss Fusion,D-T,MFE,3.3,2.5,2.7,3.0,1.7,2.5,4.0,3.3,3.633,2.577,3.808,33.3,20,1.3,1.0,0.675,0
-32-laser-icf-french-national,GenF Systems,D-T,IFE,3.8,3.5,3.2,3.5,1.7,2.0,3.5,2.3,2.837,2.705,3.751,34.7,10,0.85,1.0,0.6,2
-34-compact-spherical-tokamak-india,Pranos Fusion,D-T,MFE,3.3,2.5,2.5,3.5,1.7,2.5,4.0,2.3,3.033,2.617,3.653,37.0,20,1.1,1.0,0.675,2
-28-hts-tokamak-full-hts,Energy Singularity,D-T,MFE,2.8,2.5,3.3,3.0,1.7,2.5,4.0,2.0,2.828,2.596,3.63,37.5,30,1.1,1.0,0.719,2
-25-heavy-ion-beam-icf,Intensity Energy,D-T,IFE,3.0,3.0,3.3,3.0,1.7,2.0,2.0,3.0,2.449,2.517,3.445,41.9,10,0.9,1.0,0.6,2
-20b-renaissance-stellarator,Renaissance Fusion,D-T,MFE,3.8,2.5,3.2,3.5,1.7,2.5,4.0,2.5,3.162,2.828,3.434,42.2,18,1.3,1.0,0.664,0
-36-helical-coil-stellarator,Helical Fusion,D-T,MFE,2.4,2.5,2.5,3.5,2.8,2.5,4.0,2.8,3.347,2.713,3.397,43.1,10,1.3,1.0,0.6,0
-18-p-b11-frc,TAE Technologies,p-B11,MFE,3.0,3.5,3.6,4.0,3.7,4.5,1.0,2.0,1.414,3.727,3.213,47.4,1200,0.75,1.9,1.12,3
-13-electrostatic-hybrid,Avalanche Energy,D-T,Non-Standard,5.0,4.0,3.6,3.8,3.0,2.5,3.0,2.3,2.627,3.484,3.14,49.2,40,1.4,1.0,0.751,3
-23-laser-icf-nanostructured-target,Marvel Fusion,p-B11,IFE,5.0,3.5,3.5,3.5,4.5,4.0,3.5,2.0,2.646,4.06,2.735,58.8,30,0.85,1.9,0.719,3
-03-laser-icf-liquid-jet-target,Cortex Fusion Systems,D-D,IFE,2.8,3.5,3.0,3.5,2.3,3.0,1.0,1.8,1.342,2.894,1.977,76.8,5,0.85,1.25,0.525,1
-16-muon-catalyzed-fusion,Acceleron Fusion,D-T,Non-Standard,2.8,4.0,3.3,3.5,2.4,2.5,4.0,1.8,2.683,2.868,1.922,78.1,24,1.5,1.4,0.695,1
-27-polywell,EMC2,D-T,Non-Standard,3.7,4.0,3.3,3.0,1.7,2.5,1.5,2.3,1.857,2.744,1.287,93.2,3,1.4,1.0,0.5,1
-02-acoustic-icf-sonofusion,Sonofusion Energy,D-D,IFE,3.6,4.0,3.4,3.0,3.5,3.0,1.5,2.0,1.732,3.29,1.0,123.0,5,1.5,1.25,0.525,1
-06-magnetic-mirror,Pale Blue Fusion,p-B11,MFE,1.3,3.5,3.8,3.0,4.3,4.5,3.0,1.3,1.975,3.101,1.0,122.5,3,1.0,1.9,0.5,1
-19-orbital-levitated-dipole,Zephyr Fusion,D-He3,MFE,3.0,2.0,2.9,4.0,4.3,4.0,1.0,1.3,1.14,3.593,1.0,147.7,5,1.3,1.5,0.525,1
-24-dense-plasma-focus,LPPFusion,p-B11,Non-Standard,5.0,4.0,3.5,3.5,5.0,4.0,1.0,1.8,1.342,4.146,1.0,100.9,3,0.7,1.9,0.5,1
-35-polomac-magnetic-confinement,Deutelio,D-D,MFE,2.0,4.0,2.9,3.5,2.8,3.5,1.0,2.0,1.414,2.882,1.0,139.8,1,1.5,1.25,0.5,1
+15-sheared-flow-stabilized-z-pinch,Zap Energy,D-T,MFE,4.1,3.5,2.5,3.4,1.7,2.0,3.0,2.5,2.739,2.599,4.42,18.8,240,0.7,1.0,0.945,1
+01-hts-compact-tokamak,Commonwealth Fusion Systems,D-T,MFE,3.2,2.5,2.3,2.5,2.0,2.5,4.0,2.5,3.162,2.47,4.362,20.2,2000,1.1,1.0,1.175,1
+22-projectile-icf,First Light Fusion,D-T,IFE,2.4,3.0,2.9,3.5,1.7,2.0,3.5,2.3,2.837,2.419,4.351,20.4,90,0.7,1.0,0.839,1
+07-maglif,Pacific Fusion,D-T,MIF,3.7,3.0,2.8,3.0,2.1,2.0,3.5,2.5,2.958,2.649,4.321,21.1,50,0.7,1.0,0.775,1
+14-magnetized-target-fusion-pneumatic-compression,General Fusion,D-T,MIF,2.8,3.0,3.4,2.5,1.8,2.0,2.0,2.5,2.236,2.435,4.318,21.2,350,0.7,1.0,0.986,1
+17a-laser-icf-hybrid-drive,Xcimer Energy,D-T,IFE,4.1,3.5,3.2,3.5,1.7,2.0,3.5,2.8,3.13,2.746,4.292,21.8,100,0.85,1.0,0.85,1
+26-laser-icf-indirect-drive,Inertia Enterprises,D-T,IFE,3.2,3.5,3.4,3.5,2.4,2.0,4.0,2.5,3.162,2.834,4.216,23.6,50,0.85,1.0,0.775,1
+29-negative-triangularity-tokamak,Firefly Fusion,D-T,MFE,3.0,2.5,2.7,3.0,1.7,2.5,4.0,3.3,3.633,2.528,4.176,24.6,50,1.1,1.0,0.775,1
+21-spherical-tokamak-hts,Tokamak Energy,D-T,MFE,2.0,2.5,3.1,2.5,2.0,2.5,4.0,2.5,3.162,2.387,4.16,25.0,250,1.1,1.0,0.949,1
+20a-type-one-stellarator,Type One Energy,D-T,MFE,2.8,2.5,2.3,3.0,2.0,2.5,4.0,3.5,3.742,2.495,4.128,25.7,80,1.3,1.0,0.826,1
+31-laser-icf-oec-architecture,Blue Laser Fusion,D-T,IFE,4.5,3.5,3.2,3.0,2.3,2.0,3.5,2.8,3.13,2.882,4.094,26.5,25,0.85,1.0,0.699,1
+09-qi-stellarator-hts,Proxima Fusion,D-T,MFE,2.5,2.5,3.3,3.0,1.7,2.5,4.0,3.8,3.899,2.537,4.076,27.0,30,1.3,1.0,0.719,1
+30-laser-icf-nif-commercialization,Inertia Enterprises,D-T,IFE,4.6,3.5,3.2,3.5,1.7,2.0,3.5,2.2,2.775,2.81,4.054,27.5,50,0.85,1.0,0.775,1
+05-planar-coil-stellarator,Thea Energy,D-T,MFE,3.5,2.5,2.5,3.0,2.0,2.5,4.0,3.5,3.742,2.652,3.968,29.5,30,1.3,1.0,0.719,1
+12-levitated-dipole,OpenStar Technologies,D-T,MFE,3.0,3.0,3.1,3.5,2.1,2.5,3.5,3.5,3.5,2.796,3.954,29.8,12,1.0,1.0,0.62,1
+33-state-backed-tokamak-best,Neo Fusion,D-T,MFE,2.1,2.5,3.7,2.5,1.8,2.5,4.0,2.5,3.162,2.445,3.93,30.4,100,1.2,1.0,0.85,1
+17b-laser-icf-fast-ignition,Focused Energy,D-T,IFE,3.7,3.5,2.8,3.5,1.8,2.0,3.5,2.3,2.837,2.649,3.851,32.3,15,0.85,1.0,0.644,1
+08-frc-w-direct-conversion,Helion Energy,D-He3,MIF,5.0,3.5,3.4,3.5,3.7,3.5,1.5,2.5,1.936,3.779,3.808,33.3,1000,0.75,1.5,1.1,2
+10-large-scale-stellarator,Gauss Fusion,D-T,MFE,3.3,2.5,2.7,3.0,1.7,2.5,4.0,3.3,3.633,2.577,3.808,33.3,20,1.3,1.0,0.675,1
+32-laser-icf-french-national,GenF Systems,D-T,IFE,3.8,3.5,3.2,3.5,1.7,2.0,3.5,2.3,2.837,2.705,3.751,34.7,10,0.85,1.0,0.6,1
+28-hts-tokamak-full-hts,Energy Singularity,D-T,MFE,2.8,2.5,3.3,3.0,1.7,2.5,4.0,2.0,2.828,2.596,3.63,37.5,30,1.1,1.0,0.719,1
+25-heavy-ion-beam-icf,Intensity Energy,D-T,IFE,3.0,3.0,3.3,3.0,1.7,2.0,2.0,3.0,2.449,2.517,3.445,41.9,10,0.9,1.0,0.6,1
+20b-renaissance-stellarator,Renaissance Fusion,D-T,MFE,3.8,2.5,3.2,3.5,1.7,2.5,4.0,2.5,3.162,2.828,3.434,42.2,18,1.3,1.0,0.664,1
+36-helical-coil-stellarator,Helical Fusion,D-T,MFE,2.4,2.5,2.5,3.5,2.8,2.5,4.0,2.8,3.347,2.713,3.397,43.1,10,1.3,1.0,0.6,1
+18-p-b11-frc,TAE Technologies,p-B11,MFE,3.0,3.5,3.6,4.0,3.7,4.5,1.0,2.0,1.414,3.727,3.213,47.4,1200,0.75,1.9,1.12,2
+13-electrostatic-hybrid,Avalanche Energy,D-T,Non-Standard,5.0,4.0,3.6,3.8,3.0,2.5,3.0,2.3,2.627,3.484,3.14,49.2,40,1.4,1.0,0.751,2
+23-laser-icf-nanostructured-target,Marvel Fusion,p-B11,IFE,5.0,3.5,3.5,3.5,4.5,4.0,3.5,2.0,2.646,4.06,2.735,58.8,30,0.85,1.9,0.719,2
+34-compact-spherical-tokamak-india,,,,3.3,2.5,2.5,3.5,1.7,2.5,4.0,2.3,3.033,2.617,2.026,75.6,20,1.5,1.5,0.675,3
+03-laser-icf-liquid-jet-target,Cortex Fusion,D-D,IFE,2.8,3.5,3.0,3.5,2.3,3.0,1.0,1.8,1.342,2.894,1.977,76.8,5,0.85,1.25,0.525,0
+16-muon-catalyzed-fusion,Acceleron Fusion,D-T,Non-Standard,2.8,4.0,3.3,3.5,2.4,2.5,4.0,1.8,2.683,2.868,1.922,78.1,24,1.5,1.4,0.695,3
+27-polywell,EMC2,D-T,Non-Standard,3.7,4.0,3.3,3.0,1.7,2.5,1.5,2.3,1.857,2.744,1.287,93.2,3,1.4,1.0,0.5,0
+35-polomac-magnetic-confinement,Deutelio,D-D,MFE,2.0,4.0,2.9,3.5,2.8,3.5,1.0,2.0,1.414,2.882,1.287,93.2,1,1.0,1.25,0.5,0
+02-acoustic-icf-sonofusion,Sonofusion Energy,D-D,IFE,3.6,4.0,3.4,3.0,3.5,3.0,1.5,2.0,1.732,3.29,1.0,123.0,5,1.5,1.25,0.525,0
+06-magnetic-mirror,Pale Blue,p-B11,MFE,1.3,3.5,3.8,3.0,4.3,4.5,3.0,1.3,1.975,3.101,1.0,122.5,3,1.0,1.9,0.5,0
+19-orbital-levitated-dipole,Zephyr Fusion,D-He3,MFE,3.0,2.0,2.9,4.0,4.3,4.0,1.0,1.3,1.14,3.593,1.0,147.7,5,1.3,1.5,0.525,0
+24-dense-plasma-focus,LPPFusion,p-B11,Non-Standard,5.0,4.0,3.5,3.5,5.0,4.0,1.0,1.8,1.342,4.146,1.0,100.9,3,0.7,1.9,0.5,0

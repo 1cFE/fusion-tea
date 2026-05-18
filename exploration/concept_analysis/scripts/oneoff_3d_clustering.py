@@ -76,47 +76,87 @@ FUNDING_M_USD: dict[str, float] = {
     "31-laser-icf-oec-architecture": 25,   # Blue Laser Fusion
     "32-laser-icf-french-national": 10,    # GenF
     "33-state-backed-tokamak-best": 100,   # BEST (China state-backed)
-    "34-compact-spherical-tokamak-india": 20,  # Pranos / India
+    "34-compact-spherical-tokamak-india": 20,  # Pranos / India (no longer in v3 table)
     "35-polomac-magnetic-confinement": 1,  # Polomac — tiny/research
     "36-helical-coil-stellarator": 10,     # Helical Fusion (Japan)
+    "37-magnetized-target-inertial-fusion-mtif": 5,  # NearStar — early stage
+    "38-particle-accelerator-driven-fusion": 5,  # SHINE Technologies-adjacent
+    "39-spherical-tokamak-cs-free-p-b11": 5,  # ENN p-B11 program (small public estimate)
 }
 
 
 # ---------------------------------------------------------------------------
-# Cadence factor by confinement family / topology
+# Cadence factor by architecture columns
 # ---------------------------------------------------------------------------
-CADENCE_BY_PREFIX: dict[str, float] = {
-    # Compact pulsed — fast iteration
-    "07": 0.70,   # MagLIF
-    "14": 0.70,   # MTF pneumatic
-    "15": 0.70,   # FuZE Z-pinch
-    "22": 0.70,   # Projectile ICF
-    "08": 0.75,   # Helion FRC (pulsed)
-    "18": 0.75,   # TAE FRC
-    "24": 0.70,   # Dense plasma focus
-    # Laser IFE
-    "03": 0.85, "04": 0.85, "17a": 0.85, "17b": 0.85,
-    "23": 0.85, "26": 0.85, "30": 0.85, "31": 0.85, "32": 0.85,
-    "25": 0.90,   # Heavy-ion beam IFE — slower
-    # Mirror / levitated dipole / orbital
-    "06": 1.00, "11": 1.00, "12": 1.00, "19": 1.30,  # orbital is much slower
-    # Spherical / compact tokamaks
-    "01": 1.10,   # CFS / SPARC
-    "21": 1.10,   # Tokamak Energy
-    "28": 1.10,   # Energy Singularity
-    "29": 1.10,   # Firefly
-    "34": 1.10,   # Pranos
-    # Conventional tokamaks
-    "33": 1.20,   # BEST
-    # Stellarators
-    "05": 1.30, "09": 1.30, "10": 1.30, "20a": 1.30, "20b": 1.30, "36": 1.30,
-    # Exotic / novel
-    "02": 1.50,   # Sonofusion
-    "13": 1.40,   # Avalanche electrostatic
-    "16": 1.50,   # Muon-catalyzed
-    "27": 1.40,   # Polywell
-    "35": 1.50,   # Polomac
+#
+# Mirrors lib/scoring.py:detect_c2_category — keep column reads and slug
+# overrides in sync. Derives the cadence multiplier from Confinement Family /
+# MFE Topology / IFE Driver / MIF Method / Non-Standard Mechanism so the
+# lookup survives concept-ID renumbering.
+
+# Slug overrides for cases where architecture columns alone are insufficient:
+_CADENCE_SLUG_OVERRIDES: dict[str, float] = {
+    # Orbital levitated dipole — much slower iteration than a ground LD
+    "19-orbital-levitated-dipole": 1.30,
+    # Z-pinch shares Open/Linear topology but iterates like compact pulsed MFE
+    "15-sheared-flow-stabilized-z-pinch": 0.70,
 }
+
+
+def cadence_by_architecture(concept_id: str, info: dict[str, str]) -> float:
+    """Return the cadence multiplier for a concept from its architecture row.
+
+    Mirrors lib/scoring.py:detect_c2_category pattern; see module-level note.
+    """
+    if concept_id in _CADENCE_SLUG_OVERRIDES:
+        return _CADENCE_SLUG_OVERRIDES[concept_id]
+
+    family = info.get("Confinement Family", "").strip()
+    topology = info.get("MFE Topology", "").strip()
+    mif_method = info.get("MIF Method", "").strip()
+    driver = info.get("IFE Driver", "").strip()
+    mechanism = info.get("Non-Standard Mechanism", "").strip()
+    tokamak_shape = info.get("Tokamak Shape", "").strip()
+
+    if family == "MFE":
+        if topology == "Tokamak":
+            # Compact / spherical / negative-triangularity iterate faster than
+            # standard conventional tokamaks.
+            if tokamak_shape in ("Compact", "Spherical", "Negative triangularity"):
+                return 1.10
+            return 1.20
+        if topology == "Stellarator":
+            return 1.30
+        if topology == "Compact Toroid":
+            return 0.75
+        if topology == "Open/Linear":
+            return 1.00  # mirrors; Z-pinch handled via slug override above
+        if topology == "Dipole":
+            return 1.00  # ground levitated dipole
+        return 1.50  # exotic MFE — slow
+
+    if family == "IFE":
+        if driver == "Laser":
+            return 0.85
+        if driver in ("Heavy ion beam", "Projectile"):
+            return 0.90 if driver == "Heavy ion beam" else 0.70
+        if driver == "Acoustic":
+            return 1.50  # sonofusion — exotic
+        return 1.40
+
+    if family == "MIF":
+        if mif_method == "FRC compression":
+            return 0.75
+        return 0.70  # magnetized-target / pulsed-power MIF
+
+    # Non-Standard family
+    if mechanism == "Electrostatic":
+        return 1.40
+    if mechanism == "Muon-catalyzed":
+        return 1.50
+    if mechanism == "Plasma focus":
+        return 0.70
+    return 1.50  # default exotic
 
 
 # ---------------------------------------------------------------------------
@@ -210,9 +250,8 @@ def build_dataset() -> list[dict]:
         # Low-cost potential = geo mean of C1, C3, C4, C5, C6
         lcp = geo_mean([s["C1"], s["C3"], s["C4"], s["C5"], s["C6"]])
 
-        # TTM components
-        prefix = cid.split("-")[0]
-        cadence = CADENCE_BY_PREFIX.get(prefix, 1.20)  # default for missing
+        # TTM components — cadence derived from architecture columns
+        cadence = cadence_by_architecture(cid, info)
         ff = fuel_factor_for(cid, fuel)
         funding = FUNDING_M_USD.get(cid, 1.0)
         funding_boost = funding_factor(funding)
