@@ -38,8 +38,8 @@ The following table was extracted and computed by Python. It includes:
 | 19-orbital-levitated-dipole | 3.0 | 2.0 | 2.9 | 4.0 | 4.3 | 4.0 | 1.0 | 1.3 | 4 |
 | 20a-type-one-stellarator | 2.8 | 2.5 | 2.3 | 3.0 | 2.0 | 2.5 | 4.0 | 3.5 | 2 |
 | 20b-renaissance-stellarator | 4.8 | 2.5 | 3.2 | 3.5 | 1.7 | 2.5 | 4.0 | 2.5 | 7 |
-| 21-spherical-tokamak-hts | 2.0 | 2.5 | 3.1 | 2.5 | 2.0 | 2.5 | 4.0 | 2.5 | 2 |
-| 22-projectile-icf | 2.4 | 3.0 | 2.9 | 3.5 | 1.7 | 2.0 | 3.5 | 2.3 | 3 |
+| 21-spherical-tokamak-hts | 2.0 | 2.5 | 3.1 | 2.5 | 2.0 | 2.5 | 3.5 | 2.5 | 2 |
+| 22-projectile-icf | 2.4 | 4.0 | 2.9 | 3.5 | 1.7 | 2.0 | 3.5 | 2.3 | 3 |
 | 23-laser-icf-nanostructured-target | 5.0 | 3.5 | 3.5 | 3.5 | 4.5 | 4.0 | 3.5 | 2.0 | 3 |
 | 24-dense-plasma-focus | 5.0 | 4.0 | 3.5 | 3.5 | 5.0 | 4.0 | 1.0 | 1.8 | 5 |
 | 25-heavy-ion-beam-icf | 5.0 | 4.0 | 3.3 | 3.0 | 1.7 | 2.0 | 2.5 | 3.0 | 6 |
@@ -51,7 +51,6 @@ The following table was extracted and computed by Python. It includes:
 | 31-laser-icf-oec-architecture | 4.5 | 3.5 | 3.2 | 3.0 | 2.3 | 2.0 | 3.5 | 2.8 | 5 |
 | 32-laser-icf-french-national | 3.8 | 3.5 | 3.2 | 3.5 | 1.7 | 2.0 | 3.5 | 2.3 | 4 |
 | 33-state-backed-tokamak-best | 2.1 | 2.5 | 3.7 | 2.5 | 1.8 | 2.5 | 4.0 | 2.5 | 3 |
-| 34-compact-spherical-tokamak-india | 3.3 | 2.5 | 2.5 | 3.5 | 1.7 | 2.5 | 4.0 | 1.3 | 3 |
 | 35-polomac-magnetic-confinement | 2.0 | 4.0 | 2.9 | 3.5 | 2.8 | 3.5 | 1.0 | 2.0 | 5 |
 | 36-helical-coil-stellarator | 2.4 | 2.5 | 2.5 | 3.5 | 2.8 | 2.5 | 4.0 | 2.8 | 5 |
 
@@ -79,7 +78,7 @@ The following table was extracted and computed by Python. It includes:
 | 19-orbital-levitated-dipole | 2.0 | 2.5 | 4.5 | 2.5 | 4.0 | 1.0 | 2.0 |
 | 20a-type-one-stellarator | 4.0 | 4.5 | 4.0 | 4.0 | 4.0 | 4.0 | 5.0 |
 | 20b-renaissance-stellarator | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 |
-| 21-spherical-tokamak-hts | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 |
+| 21-spherical-tokamak-hts | 3.5 | 4.0 | 3.5 | 3.5 | 3.0 | 3.0 | 4.0 |
 | 22-projectile-icf | 3.5 | 3.5 | 3.5 | 2.5 | 3.5 | 3.5 | 5.0 |
 | 23-laser-icf-nanostructured-target | 2.5 | 3.0 | 3.5 | 3.5 | 4.5 | 4.0 | 3.5 |
 | 24-dense-plasma-focus | 1.5 | 3.5 | 2.5 | 1.5 | 3.0 | 2.5 | 1.0 |
@@ -92,9 +91,50 @@ The following table was extracted and computed by Python. It includes:
 | 31-laser-icf-oec-architecture | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 |
 | 32-laser-icf-french-national | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4.5 |
 | 33-state-backed-tokamak-best | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 |
-| 34-compact-spherical-tokamak-india | 4.0 | 4.5 | 4.0 | 4.0 | 4.5 | 4.0 | 4.5 |
 | 35-polomac-magnetic-confinement | 1.0 | 3.0 | 1.0 | 1.5 | 3.0 | 5.0 | 5.0 |
 | 36-helical-coil-stellarator | 4.0 | 4.0 | 4.5 | 4.0 | 4.0 | 4.0 | 4.0 |
+
+## Energy Capture, Heritage, and Peer Group (audit trail)
+
+Heritage lineage and floor are derived from architecture (table.csv), not from concept IDs, so they survive renumbering. Heritage credit applies to D-T fuel only — non-D-T concepts show floor 1.0.
+
+| Concept | Energy Capture | η_th | Heritage Lineage | Floor | Peer Group |
+|---------|----------------|------|------------------|-------|------------|
+| 01-hts-compact-tokamak | Thermal (steam) | 0.35 | Tokamak | 4.0 | D-T Tokamaks |
+| 02-acoustic-icf-sonofusion | TBD | 0.35 | — | 1.0 | Exotic |
+| 03-laser-icf-liquid-jet-target | TBD | 0.35 | — | 1.0 | Exotic |
+| 05-planar-coil-stellarator | Thermal (steam) | 0.35 | Stellarator | 4.0 | D-T Stellarators |
+| 06-magnetic-mirror | Direct (charged particle) | 0.70 | — | 1.0 | p-B11 |
+| 07-maglif | Thermal (unspecified) | 0.35 | magLIF | 3.0 | D-T Pulsed (MIF/Z-pinch) |
+| 08-frc-w-direct-conversion | Direct (inductive) | 0.85 | — | 1.0 | Aneutronic |
+| 09-qi-stellarator-hts | Thermal (unspecified) | 0.35 | Stellarator | 4.0 | D-T Stellarators |
+| 10-large-scale-stellarator | Thermal (unspecified) | 0.35 | Stellarator | 4.0 | D-T Stellarators |
+| 12-levitated-dipole | Thermal (unspecified) | 0.35 | — | 1.0 | Exotic |
+| 13-electrostatic-hybrid | Thermal (unspecified) | 0.35 | — | 1.0 | Exotic |
+| 14-magnetized-target-fusion-pneumatic-compression | Thermal (steam) | 0.35 | — | 1.0 | Exotic |
+| 15-sheared-flow-stabilized-z-pinch | Thermal (steam) | 0.35 | Z-pinch | 2.5 | D-T Pulsed (MIF/Z-pinch) |
+| 16-muon-catalyzed-fusion | Thermal (unspecified) | 0.35 | — | 1.0 | Exotic |
+| 17a-laser-icf-hybrid-drive | Thermal (unspecified) | 0.35 | Laser IFE | 3.5 | D-T Laser IFE |
+| 17b-laser-icf-fast-ignition | Thermal (steam) | 0.35 | Laser IFE | 3.5 | D-T Laser IFE |
+| 18-p-b11-frc | Thermal (steam) | 0.35 | — | 1.0 | Aneutronic FRC |
+| 19-orbital-levitated-dipole | Direct (charged particle) | 0.70 | — | 1.0 | Aneutronic |
+| 20a-type-one-stellarator | Thermal (steam) | 0.35 | Stellarator | 4.0 | D-T Stellarators |
+| 20b-renaissance-stellarator | Thermal (sCO2) | 0.48 | Stellarator | 4.0 | D-T Stellarators |
+| 21-spherical-tokamak-hts | Thermal (unspecified) | 0.35 | Spherical Tokamak | 3.0 | D-T Tokamaks |
+| 22-projectile-icf | Thermal (steam) | 0.35 | — | 1.0 | Exotic |
+| 23-laser-icf-nanostructured-target | Hybrid (thermal + direct) | 0.55 | — | 1.0 | p-B11 |
+| 24-dense-plasma-focus | Direct (charged particle) | 0.70 | — | 1.0 | p-B11 |
+| 25-heavy-ion-beam-icf | Thermal (steam) | 0.35 | — | 1.0 | Exotic |
+| 26-laser-icf-indirect-drive | Thermal (steam) | 0.35 | Laser IFE | 3.5 | D-T Laser IFE |
+| 27-polywell | Thermal (unspecified) | 0.35 | — | 1.0 | Exotic |
+| 28-hts-tokamak-full-hts | Thermal (unspecified) | 0.35 | Tokamak | 4.0 | D-T Tokamaks |
+| 29-negative-triangularity-tokamak | Thermal (unspecified) | 0.35 | Tokamak | 4.0 | D-T Tokamaks |
+| 30-laser-icf-nif-commercialization | Thermal (steam) | 0.35 | Laser IFE | 3.5 | D-T Laser IFE |
+| 31-laser-icf-oec-architecture | Hybrid (thermal + direct) | 0.55 | Laser IFE | 3.5 | D-T Laser IFE |
+| 32-laser-icf-french-national | Thermal (unspecified) | 0.35 | Laser IFE | 3.5 | D-T Laser IFE |
+| 33-state-backed-tokamak-best | Thermal (unspecified) | 0.35 | Tokamak | 4.0 | D-T Tokamaks |
+| 35-polomac-magnetic-confinement | Thermal (unspecified) | 0.35 | — | 1.0 | Exotic |
+| 36-helical-coil-stellarator | Thermal (sCO2) | 0.48 | Stellarator | 4.0 | D-T Stellarators |
 
 ## Binary Risks per Concept
 
@@ -290,11 +330,6 @@ The following table was extracted and computed by Python. It includes:
 - W impurity radiation collapse in burning plasma — if core W concentration exceeds ~10⁻⁵, radiative cooling terminates fusion; undemonstrated at Q > 1
 - RWM instability at βN > 2.5 — if resistive wall mode feedback fails at commercial βN (CFETR Phase II requires βN = 3.54 for Q = 23.5), plasma terminates and net electricity is impossible
 
-### 34-compact-spherical-tokamak-india
-- TBR < 1.0 for D-T fuel cycle (Function 6, Physics)
-- Tritium extraction failure preventing fuel cycle closure (Function 6, Hardware)
-- Uncontrolled plasma disruptions causing vacuum vessel breach or first-wall failure requiring extended shutdown (Function 3, Hardware)
-
 ### 35-polomac-magnetic-confinement
 - F1 Physics: D-D plasma Q < 5 → net power negative, no commercial viability
 - F1 Hardware: In-vessel SC coil neutron damage or frequent quench → CF ≤ 0.40, economically nonviable
@@ -317,113 +352,110 @@ When you need justification detail for a calibration question, read the synthesi
 and/or analysis file at the paths below. Read on demand — do not read all files upfront.
 
 - **01-hts-compact-tokamak**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\01-hts-compact-tokamak\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\01-hts-compact-tokamak\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/01-hts-compact-tokamak/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/01-hts-compact-tokamak/analysis.md`
 - **02-acoustic-icf-sonofusion**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\02-acoustic-icf-sonofusion\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\02-acoustic-icf-sonofusion\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/02-acoustic-icf-sonofusion/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/02-acoustic-icf-sonofusion/analysis.md`
 - **03-laser-icf-liquid-jet-target**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\03-laser-icf-liquid-jet-target\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\03-laser-icf-liquid-jet-target\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/03-laser-icf-liquid-jet-target/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/03-laser-icf-liquid-jet-target/analysis.md`
 - **05-planar-coil-stellarator**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\05-planar-coil-stellarator\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\05-planar-coil-stellarator\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/05-planar-coil-stellarator/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/05-planar-coil-stellarator/analysis.md`
 - **06-magnetic-mirror**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\06-magnetic-mirror\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\06-magnetic-mirror\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/06-magnetic-mirror/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/06-magnetic-mirror/analysis.md`
 - **07-maglif**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\07-maglif\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\07-maglif\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/07-maglif/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/07-maglif/analysis.md`
 - **08-frc-w-direct-conversion**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\08-frc-w-direct-conversion\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\08-frc-w-direct-conversion\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/08-frc-w-direct-conversion/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/08-frc-w-direct-conversion/analysis.md`
 - **09-qi-stellarator-hts**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\09-qi-stellarator-hts\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\09-qi-stellarator-hts\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/09-qi-stellarator-hts/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/09-qi-stellarator-hts/analysis.md`
 - **10-large-scale-stellarator**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\10-large-scale-stellarator\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\10-large-scale-stellarator\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/10-large-scale-stellarator/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/10-large-scale-stellarator/analysis.md`
 - **12-levitated-dipole**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\12-levitated-dipole\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\12-levitated-dipole\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/12-levitated-dipole/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/12-levitated-dipole/analysis.md`
 - **13-electrostatic-hybrid**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\13-electrostatic-hybrid\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\13-electrostatic-hybrid\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/13-electrostatic-hybrid/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/13-electrostatic-hybrid/analysis.md`
 - **14-magnetized-target-fusion-pneumatic-compression**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\14-magnetized-target-fusion-pneumatic-compression\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\14-magnetized-target-fusion-pneumatic-compression\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/14-magnetized-target-fusion-pneumatic-compression/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/14-magnetized-target-fusion-pneumatic-compression/analysis.md`
 - **15-sheared-flow-stabilized-z-pinch**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\15-sheared-flow-stabilized-z-pinch\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\15-sheared-flow-stabilized-z-pinch\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/15-sheared-flow-stabilized-z-pinch/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/15-sheared-flow-stabilized-z-pinch/analysis.md`
 - **16-muon-catalyzed-fusion**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\16-muon-catalyzed-fusion\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\16-muon-catalyzed-fusion\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/16-muon-catalyzed-fusion/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/16-muon-catalyzed-fusion/analysis.md`
 - **17a-laser-icf-hybrid-drive**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\17a-laser-icf-hybrid-drive\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\17a-laser-icf-hybrid-drive\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/17a-laser-icf-hybrid-drive/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/17a-laser-icf-hybrid-drive/analysis.md`
 - **17b-laser-icf-fast-ignition**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\17b-laser-icf-fast-ignition\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\17b-laser-icf-fast-ignition\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/17b-laser-icf-fast-ignition/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/17b-laser-icf-fast-ignition/analysis.md`
 - **18-p-b11-frc**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\18-p-b11-frc\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\18-p-b11-frc\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/18-p-b11-frc/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/18-p-b11-frc/analysis.md`
 - **19-orbital-levitated-dipole**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\19-orbital-levitated-dipole\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\19-orbital-levitated-dipole\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/19-orbital-levitated-dipole/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/19-orbital-levitated-dipole/analysis.md`
 - **20a-type-one-stellarator**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\20a-type-one-stellarator\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\20a-type-one-stellarator\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/20a-type-one-stellarator/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/20a-type-one-stellarator/analysis.md`
 - **20b-renaissance-stellarator**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\20b-renaissance-stellarator\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\20b-renaissance-stellarator\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/20b-renaissance-stellarator/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/20b-renaissance-stellarator/analysis.md`
 - **21-spherical-tokamak-hts**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\21-spherical-tokamak-hts\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\21-spherical-tokamak-hts\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/21-spherical-tokamak-hts/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/21-spherical-tokamak-hts/analysis.md`
 - **22-projectile-icf**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\22-projectile-icf\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\22-projectile-icf\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/22-projectile-icf/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/22-projectile-icf/analysis.md`
 - **23-laser-icf-nanostructured-target**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\23-laser-icf-nanostructured-target\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\23-laser-icf-nanostructured-target\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/23-laser-icf-nanostructured-target/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/23-laser-icf-nanostructured-target/analysis.md`
 - **24-dense-plasma-focus**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\24-dense-plasma-focus\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\24-dense-plasma-focus\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/24-dense-plasma-focus/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/24-dense-plasma-focus/analysis.md`
 - **25-heavy-ion-beam-icf**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\25-heavy-ion-beam-icf\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\25-heavy-ion-beam-icf\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/25-heavy-ion-beam-icf/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/25-heavy-ion-beam-icf/analysis.md`
 - **26-laser-icf-indirect-drive**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\26-laser-icf-indirect-drive\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\26-laser-icf-indirect-drive\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/26-laser-icf-indirect-drive/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/26-laser-icf-indirect-drive/analysis.md`
 - **27-polywell**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\27-polywell\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\27-polywell\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/27-polywell/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/27-polywell/analysis.md`
 - **28-hts-tokamak-full-hts**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\28-hts-tokamak-full-hts\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\28-hts-tokamak-full-hts\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/28-hts-tokamak-full-hts/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/28-hts-tokamak-full-hts/analysis.md`
 - **29-negative-triangularity-tokamak**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\29-negative-triangularity-tokamak\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\29-negative-triangularity-tokamak\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/29-negative-triangularity-tokamak/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/29-negative-triangularity-tokamak/analysis.md`
 - **30-laser-icf-nif-commercialization**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\30-laser-icf-nif-commercialization\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\30-laser-icf-nif-commercialization\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/30-laser-icf-nif-commercialization/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/30-laser-icf-nif-commercialization/analysis.md`
 - **31-laser-icf-oec-architecture**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\31-laser-icf-oec-architecture\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\31-laser-icf-oec-architecture\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/31-laser-icf-oec-architecture/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/31-laser-icf-oec-architecture/analysis.md`
 - **32-laser-icf-french-national**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\32-laser-icf-french-national\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\32-laser-icf-french-national\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/32-laser-icf-french-national/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/32-laser-icf-french-national/analysis.md`
 - **33-state-backed-tokamak-best**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\33-state-backed-tokamak-best\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\33-state-backed-tokamak-best\analysis.md`
-- **34-compact-spherical-tokamak-india**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\34-compact-spherical-tokamak-india\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\34-compact-spherical-tokamak-india\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/33-state-backed-tokamak-best/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/33-state-backed-tokamak-best/analysis.md`
 - **35-polomac-magnetic-confinement**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\35-polomac-magnetic-confinement\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\35-polomac-magnetic-confinement\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/35-polomac-magnetic-confinement/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/35-polomac-magnetic-confinement/analysis.md`
 - **36-helical-coil-stellarator**
-  - Synthesis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\36-helical-coil-stellarator\synthesis.md`
-  - Analysis: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\analyses\36-helical-coil-stellarator\analysis.md`
+  - Synthesis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/36-helical-coil-stellarator/synthesis.md`
+  - Analysis: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/36-helical-coil-stellarator/analysis.md`
 
 ## Calibration Questions
 
@@ -577,4 +609,4 @@ After the score table, report ALL adjustments made during calibration in this fo
 
 Include Q7 revert/keep decisions as separate rows.
 
-Write the calibrated score table and adjustments report to: `C:\Users\mallo\1cfe\fusion-tea\exploration\concept_analysis\scores\calibration_body.md`
+Write the calibrated score table and adjustments report to: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/scores/calibration_body.md`
