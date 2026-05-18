@@ -1,0 +1,201 @@
+{
+  "entries": [
+    {
+      "gap_id": "G-3",
+      "gap_description": "Railgun driver electrical efficiency and energy storage requirement — NearStar-specific values not public; defense hypervelocity literature provides range estimates",
+      "queries": [
+        "plasma armature railgun electrical efficiency wall-plug kinetic energy conversion percent"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/6388482",
+          "title": "RAILGUNS AND PLASMA ACCELERATORS (UCID-18830-Rev.1)",
+          "triage": "inaccessible",
+          "notes": "PDF returned binary JBIG2-compressed content; WebFetch could not extract text. Likely relevant (LLNL technical report on plasma accelerators) but unreadable via extraction pipeline."
+        },
+        {
+          "url": "https://www.researchgate.net/publication/224160746_Analysis_of_Energy_Conversion_Efficiency_of_a_Capacitor-Based_Pulsed-Power_System_for_Railgun_Experiments",
+          "title": "Analysis of Energy Conversion Efficiency of a Capacitor-Based Pulsed-Power System for Railgun Experiments",
+          "triage": "paywall",
+          "notes": "ResearchGate abstract page; full text requires authentication or journal access."
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Railgun",
+          "title": "Railgun — Wikipedia",
+          "triage": "relevant",
+          "notes": "HTML; accessible. Contains synthesis of electrical efficiency figures (10–50% range), rail erosion mechanisms, and defense program results. Lower source tier but comprehensive overview with citations to primary sources."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Railgun",
+          "source_name": "en-wiki-railgun"
+        }
+      ],
+      "failed": [
+        {
+          "url": "https://www.osti.gov/servlets/purl/6388482",
+          "reason": "PDF binary-encoded (JBIG2 compression); WebFetch cannot extract text. add-source not attempted — triage failed."
+        }
+      ],
+      "status": "partial",
+      "notes": "Analogue data establishes efficiency range (20–47% demonstrated; 50% theoretical maximum for constant-current mode). NearStar-specific values remain undisclosed. Wikipedia article extracted as lower-tier synthesis source covering both efficiency (G-3) and rail erosion (G-4).",
+      "timestamp": "2026-05-18T05:54:57.314629+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-4",
+      "gap_description": "Rail lifetime at 1 Hz, 10 km/s, 50 g plasma-armature duty cycle — gap of ~6 orders of magnitude between demonstrated rail life and plant requirement",
+      "queries": [
+        "hypervelocity railgun rail erosion lifetime shots plasma armature wear Navy General Atomics"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.globalsecurity.org/military/systems/ship/systems/emrg.htm",
+          "title": "Electromagnetic Rail Gun (EMRG) — GlobalSecurity.org",
+          "triage": "relevant",
+          "notes": "HTML page; relevant (tens → hundreds → thousands of shots progression; erosion mechanisms described). Extraction attempted but failed with rc=1 (likely site-level blocking of CLI extraction)."
+        },
+        {
+          "url": "https://www.congress.gov/crs_external_products/R/PDF/R44175/R44175.50.pdf",
+          "title": "Navy Lasers, Railgun, and Gun-Launched Guided Projectiles (CRS R44175)",
+          "triage": "inaccessible",
+          "notes": "URL resolved to a digital certificate/signature document rather than the CRS report text. Not the target document."
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Railgun",
+          "title": "Railgun — Wikipedia",
+          "triage": "relevant",
+          "notes": "Covers rail erosion and lifetime alongside efficiency. Extracted under G-3."
+        }
+      ],
+      "extracted": [],
+      "failed": [
+        {
+          "url": "https://www.globalsecurity.org/military/systems/ship/systems/emrg.htm",
+          "reason": "add-source extraction failed (rc=1); likely site-level blocking. HTML content confirmed accessible via WebFetch (showed tens→hundreds of shots before replacement; General Atomics targeting thousands of shots)."
+        }
+      ],
+      "status": "partial",
+      "notes": "Key analogue data confirmed via WebFetch triage: Navy railgun barrels required replacement after 100–400 shots at operational power settings; General Atomics 'bore life in the neighborhood of thousands of shots' with newer rail designs; goal was 1,000+ rounds. This bounds the rail life gap (vs. 28M shots/year for fusion). Wikipedia railgun extraction (en-wiki-railgun) partially covers this gap.",
+      "timestamp": "2026-05-18T05:54:57.314629+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-5",
+      "gap_description": "D-D magnetized target ignition conditions for railgun-driven geometry — no published simulation; General Fusion / Sandia MTF literature for D-T provides physical framework for scaling estimate",
+      "queries": [
+        "magnetized target fusion D-T gain ignition conditions Sandia MagLIF compressed plasma requirements"
+      ],
+      "candidates": [
+        {
+          "url": "https://iopscience.iop.org/article/10.1088/1741-4326/ac2dbe",
+          "title": "An overview of magneto-inertial fusion on the Z machine at Sandia National Laboratories (Nuclear Fusion 2022)",
+          "triage": "relevant",
+          "notes": "Open-access peer-reviewed article. Contains quantitative plasma parameters at stagnation: ion temps 3.1 keV, peak DD neutron yield 1.1×10¹³, axial field 10–20 T pre-compressed to >1000 T, drive current up to 20 MA, laser preheat 0.5–1.2 kJ. Scaling projections to 60+ MA for high-gain D-T. Directly relevant as D-T framework for D-D scaling."
+        },
+        {
+          "url": "https://www.osti.gov/servlets/purl/1248660",
+          "title": "Magnetized Liner Inertial Fusion (MagLIF) research at Sandia",
+          "triage": "inaccessible",
+          "notes": "PDF returned binary content; WebFetch could not extract text."
+        },
+        {
+          "url": "https://www.sandia.gov/pulsed-power/inertial-confinement/",
+          "title": "Inertial Confinement Fusion — Sandia National Laboratories",
+          "triage": "relevant",
+          "notes": "Institutional page; not attempted for extraction given that the IOPscience article is higher quality and already covers the gap."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://iopscience.iop.org/article/10.1088/1741-4326/ac2dbe",
+          "source_name": "iopscience-10-1088-1741-4326-ac2dbe"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "notes": "MagLIF D-T experimental data provides the best available analogue for scaling to NearStar's D-D geometry. Key data: 20 MA → DT-equivalent 2 kJ; 60+ MA → high-gain simulations (yield/input > 1000). D-D scaling requires substantially higher drive energy (~100× cross-section disadvantage), placing NearStar's required gain in context. This does not fully resolve the gap (no D-D specific experiment exists) but provides a physics framework.",
+      "timestamp": "2026-05-18T05:54:57.314629+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-7",
+      "gap_description": "Per-shot capsule fabrication cost at 28M shots/year — IFE target fabrication literature provides lower bound; NearStar-specific capsule design not public",
+      "queries": [
+        "inertial fusion energy IFE target capsule fabrication cost per shot NIF mass production"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.nationalacademies.org/read/18289/chapter/5",
+          "title": "An Assessment of the Prospects for Inertial Fusion Energy — Chapter 5 (National Academies, 2013)",
+          "triage": "relevant",
+          "notes": "HTML; openly accessible. Contains quantitative cost projections: $0.17–0.35 per target in mass production (factory models); current research targets cost thousands of dollars each; 1M targets/day for a fusion power plant. Explicit caveat that committee does not endorse these numbers."
+        },
+        {
+          "url": "https://lasers.llnl.gov/sites/lasers/files/2023-11/alexander-GA-IFE-workshop-2022-2.pdf",
+          "title": "Target mass production for inertial fusion energy (LLNL/GA IFE Workshop 2022)",
+          "triage": "inaccessible",
+          "notes": "PDF returned binary content; WebFetch could not extract text. Likely high-quality but unreadable via triage."
+        },
+        {
+          "url": "https://fusion.gat.com/pubs-ext/MISCONF00/A23379.pdf",
+          "title": "IFE Target Fabrication and Injection — Achieving Believability (GA–A23379)",
+          "triage": "not_checked",
+          "notes": "Not checked — National Academies chapter covers the gap sufficiently within extraction budget."
+        }
+      ],
+      "extracted": [
+        {
+          "url": "https://www.nationalacademies.org/read/18289/chapter/5",
+          "source_name": "nationalacademies-read-18289-chapter-5"
+        }
+      ],
+      "failed": [],
+      "status": "closed",
+      "notes": "IFE target cost data extracted. Key figures: mass-production cost target $0.17–0.35/target (factory models); NIF-class research targets ~$2,500 each; requirement ~500K–1M targets/day at ≤$0.50. NearStar's 28M shots/year (1 Hz) is ~3× lower than typical IFE plant assumptions. These are D-T ICF targets; NearStar's 50 g D-D magnetized capsule is structurally different and likely more complex, making IFE costs a lower bound rather than a direct estimate.",
+      "timestamp": "2026-05-18T05:54:57.314629+00:00",
+      "iteration": 2
+    },
+    {
+      "gap_id": "G-8",
+      "gap_description": "Molten Pb primary loop operating temperature and pressure — LFR fission literature (MYRRHA, BREST) provides Pb thermal-hydraulic engineering context; NearStar conditions undisclosed",
+      "queries": [
+        "ALFRED BREST lead cooled fast reactor steam generator intermediate heat exchanger design"
+      ],
+      "candidates": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0306261914001408",
+          "title": "Innovative steam generation system for the secondary loop of ALFRED lead-cooled fast reactor demonstrator (Applied Energy, 2014)",
+          "triage": "paywall",
+          "notes": "ScienceDirect abstract page; full text paywalled. The WebFetch summary confirms ALFRED operates at lowest temperatures compatible with pure lead coolant; bayonet steam generator with 510 tubes. Quantitative Pb loop temperatures not accessible without full text."
+        },
+        {
+          "url": "https://publications.anl.gov/anlpubs/2000/09/37242.pdf",
+          "title": "Preliminary Assessment of the BREST Reactor Design (ANL, 2000)",
+          "triage": "not_checked",
+          "notes": "Not triage-checked; PDF likely readable by add-source pipeline but not attempted due to extraction budget exhaustion."
+        },
+        {
+          "url": "https://www.gen-4.org/gif/upload/docs/application/pdf/2014-11/rswg_lfr_white_paper_final_8.0.pdf",
+          "title": "Lead-cooled Fast Reactor (LFR) Risk and Safety White Paper (Gen-IV International Forum, 2014)",
+          "triage": "not_checked",
+          "notes": "Not triage-checked; extraction budget exhausted."
+        }
+      ],
+      "extracted": [],
+      "failed": [],
+      "status": "failed",
+      "notes": "Extraction budget exhausted before LFR sources could be attempted. Search confirmed relevant sources exist (ALFRED, BREST papers on ScienceDirect and ANL). Recommend attempting ANL BREST assessment (https://publications.anl.gov/anlpubs/2000/09/37242.pdf) and GenIV LFR white paper in next iteration — both are likely accessible PDFs from government/international sources.",
+      "timestamp": "2026-05-18T05:54:57.314629+00:00",
+      "iteration": 2
+    }
+  ],
+  "acquired_by_iteration": {
+    "2": [
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/37-magnetized-target-inertial-fusion-mtif/iter-02/sources/en-wiki-railgun.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/37-magnetized-target-inertial-fusion-mtif/iter-02/sources/iopscience-10-1088-1741-4326-ac2dbe.md",
+      "/home/reid/1cfe/fusion-tea/knowledge/concept_research/37-magnetized-target-inertial-fusion-mtif/iter-02/sources/nationalacademies-read-18289-chapter-5.md"
+    ]
+  }
+}

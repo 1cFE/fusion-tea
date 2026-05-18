@@ -1,0 +1,162 @@
+Spherical Tokamak - CS-free p-B11 (ENN Energy) [SPECULATIVE PLACEHOLDER]
+  Config: 500 MWe net | 80% availability | 30 yr | NOAK
+  Geometry: R0=3.5 m, A=1.8, a=1.94 m, κ=2.5
+  Power: ECRH p_input=200 MW (CS-free) | η_pin=0.5 | η_de=0.8 | f_dec=0.85
+  Coils: copper resistive p_coils=50 MW (OPTIMISTIC — likely 5-10x higher)
+  WARNING: p-B11 ignition unresolved; DEC TRL 1-2; all parameters speculative
+
+LCOE:       96.1 $/MWh
+Overnight:  7646 $/kW
+Fusion:     2031 MW | Net: 500 MW | Q_eng: 2.02
+
+1 GW scaled (cross-concept): LCOE 60.5 $/MWh | Overnight 4760 $/kW
+
+DEC_failure scenario (eta_de=0.0 → no DEC; only 15% radiation fraction at η_th=0.35):
+  LCOE:    99.9 $/MWh | Overnight: 8044 $/kW
+  Fusion:  3270 MW | Net: 500 MW | Q_eng: 2.02
+  vs. base case: LCOE 96.1 → 99.9 $/MWh (+4% change)
+
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    12.4
+CAS21    Buildings                         305.2
+CAS22    Reactor Plant Equipment          1750.9
+CAS23    Turbine Plant                     122.3
+CAS24    Electrical Plant                   83.3
+CAS25    Miscellaneous                      50.7
+CAS26    Heat Rejection                     60.4
+CAS27    Special Materials                   0.0
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                         0.0
+CAS30    Indirect Costs                    554.8
+CAS40    Owner's Costs                      14.1
+CAS50    Supplementary                     133.2
+CAS60    IDC                               730.7
+CAS70    O&M (annualized)                   28.6
+CAS80    Fuel (annualized)                   0.1
+CAS90    Financial                         308.1
+------------------------------------------------
+         Total Capital                    3823.1
+
+CAS22 sub-account detail:
+Code                 M$
+------------------------
+  C220000        1750.9
+  C220101           9.2
+  C220102          26.8
+  C220103         516.1
+  C220104         353.2
+  C220105          27.0
+  C220106         142.1
+  C220107          79.4
+  C220108          79.8
+  C220109         118.5
+  C220110          19.9
+  C220111         192.1
+  C220112           0.0
+  C220200         110.9
+  C220300           1.9
+  C220400           3.5
+  C220500           9.2
+  C220600           6.6
+  C220700          54.5
+
+============================================================
+Key Assumptions and Data Quality
+============================================================
+  Net electric (analyst assumption):             500 MWe   [UNCERTAIN — no plant study]
+  Major radius R0:                               3.5 m    [UNCERTAIN — scaled from EHL-2 1.05 m]
+  Aspect ratio A → minor radius:                 1.8 → 1.94 m [UNCERTAIN — analogue]
+  Elongation κ:                                  2.5     [UNCERTAIN — ST analogue]
+  Direct conversion efficiency η_de:             0.8    [UNCERTAIN — theoretical 70-90%, TRL 1-2]
+  DEC power fraction f_dec:                      0.85    [UNCERTAIN — 1-f_rad_pb11=0.85]
+  Fallback thermal efficiency η_th:              0.35   [DEFAULT — steam Rankine for radiation fraction]
+  ECRH wall-plug η_pin:                          0.5   [MEDIUM — gyrotron analogue; cross-ref 21-ST-HTS]
+  Auxiliary input power (ECRH):                  200 MW  [UNCERTAIN — CS-free current drive]
+  Copper coil ohmic loss:                        50 MW  [UNCERTAIN — optimistic; HTS transition needed]
+  Tritium processing power:                      0 MW    [CONFIRMED — aneutronic, no tritium]
+  Availability:                                  80%   [UNCERTAIN — steady-state intent; novel tech]
+  Blanket: minimal thin shield only, no breeding          [CONFIRMED — p-B11 aneutronic]
+  p-B11 ignition physics:                        UNRESOLVED — Lawson criterion not demonstrated
+  Direct energy converter:                       TRL 1-2 — no engineering design published
+  All capital costs:                             FRAMEWORK DEFAULTS (no published cost data)
+
+Sensitivity (elasticity = %LCOE / %param)
+------------------------------------------------
+
+Engineering levers:
+  availability                         -0.9937
+  r_coil                               +0.4445
+  construction_time_yr                 +0.4134
+  b_max                                +0.2222
+  p_nbi                                +0.1521
+  eta_pin                              -0.1501
+  p_input                              +0.1340
+  R0                                   +0.0884
+  elon                                 +0.0884
+  eta_th                               -0.0831
+  vessel_t                             +0.0635
+  plasma_t                             +0.0587
+  eta_de                               -0.0436
+  f_dec                                -0.0421
+  p_coils                              +0.0188
+  structure_t                          +0.0163
+  ht_shield_t                          +0.0148
+  f_sub                                +0.0111
+  blanket_t                            +0.0021
+  p_cool                               +0.0019
+  p_house                              +0.0015
+  p_pump                               +0.0004
+  eta_p                                -0.0000
+  mn                                   +0.0000
+  dd_f_T                               +0.0000
+  dd_f_He3                             +0.0000
+  dhe3_dd_frac                         +0.0000
+  dhe3_f_T                             +0.0000
+  dhe3_f_He3                           +0.0000
+  q95                                  +0.0000
+  f_GW                                 +0.0000
+  B                                    +0.0000
+  T_e                                  +0.0000
+  n_e                                  +0.0000
+  Z_eff                                +0.0000
+  plasma_volume                        +0.0000
+  R_w                                  +0.0000
+  T_edge                               +0.0000
+  tau_ratio                            +0.0000
+  M_ion                                +0.0000
+  lambda_q                             +0.0000
+  disruption_rate_base                 +0.0000
+  disruption_steepness                 +0.0000
+  disruption_damage                    +0.0000
+  disruption_downtime                  +0.0000
+
+Financial:
+  interest_rate                        +nan
+  inflation_rate                       +0.0339
+
+Costing constants (top 15):
+  indirect_fraction                    +0.1666
+  heating_nbi_per_mw                   +0.1521
+  om_cost_pb11                         +0.0770
+  installation_frac                    +0.0726
+  vessel_unit_cost                     +0.0612
+  dec_base                             +0.0510
+  divertor_base                        +0.0344
+  power_supplies_base                  +0.0342
+  electric_per_mw                      +0.0317
+  misc_per_mw                          +0.0193
+  construction_insurance_frac          +0.0130
+  structure_unit_cost                  +0.0116
+  shield_unit_cost                     +0.0115
+  shipping_frac                        +0.0106
+  remote_handling_pb11_base            +0.0086
+
+ECRH p_input sweep (CS-free concern range: 13%→47% of gross output):
+  p_input (MW)     % of ~1488 MWe gross       LCOE ($/MWh)
+----------------------------------------------------------
+  200              13.4                    %         96.1
+  400              26.9                    %        108.6
+  600              40.3                    %        120.4
+  700              47.0                    %        126.1
+  (200 MW = optimistic base; 600–700 MW = analysis §S2 concern bound)

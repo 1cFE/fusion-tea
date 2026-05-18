@@ -194,34 +194,49 @@ Migrate the project from the v0.2.x concept ontology to v0.3.0: drop `Plasma Sta
 
 ---
 
-### Item 5: Refresh synthesis prose for affected concepts
+### Item 5: Bring every concept to ≥3 analysis iterations
 
 **Type**: Execution
-**Effort**: 1–2 days (depending on how many concepts trigger and concept complexity)
+**Effort**: 2–4 days (3 new concepts from scratch + 6 under-iterated concepts)
 **Dependencies**: Item 4
 
-**Objective**: Bundle the existing P2 BACKLOG item "Refresh synthesis.md for 13 standardized concepts" with the v3-reclassification concepts so synthesis prose is refreshed once, not twice.
+**Objective**: Every concept in the slate has at least 3 iterations of analysis + model_setup so the cross-concept comparison floor is consistent. New v3 concepts that have CSV rows but no upstream artifacts get bootstrapped to the same bar.
 
 **Scope**:
-1. Identify the union of:
-   - The 13 concepts flagged by the availability standardization (from `.project/research/20260517-availability-policy-affected-concepts.md`)
-   - Concepts whose v3 classification or ID changed (per `RECLASSIFIED_CONCEPTS.md` on the merged branch)
-   - The 4 new concepts (27 Xcimer, 37 NearStar, 38 SHINE, 39 ENN) where synthesis may need a first pass or refresh
-2. Run synthesis refresh: `uv run python exploration/concept_analysis/scripts/run_analysis.py synthesize <ID>` (or equivalent) for each.
-3. Spot-check 3 randomly chosen refreshed `synthesis.md` files for: correct availability/η_th figures, correct taxonomic claims, no references to old IDs.
-4. Re-extract for the explorer: `uv run python exploration/concept_explorer/extract_explorer_data.py --concept <ID>` for each.
+
+Audited 2026-05-17 — 9 concepts below the bar:
+
+| Concept | Iters today | Action |
+|---|---|---|
+| `03-laser-icf-liquid-jet-target` | 1 | Run 2 more iters |
+| `04-laser-icf` (HB11) | 1 | Run 2 more iters |
+| `05-planar-coil-stellarator` | 1 | Run 2 more iters |
+| `11-magnetic-mirror` | 1 | Run 2 more iters |
+| `06-magnetic-mirror` | 2 | Run 1 more iter |
+| `21-spherical-tokamak-hts` | 2 | Run 1 more iter |
+| `37-magnetized-target-inertial-fusion-mtif` (NearStar) | 0 (no analyses dir) | Bootstrap research dossier + 3 iters |
+| `38-particle-accelerator-driven-fusion` (SHINE) | 0 (no analyses dir) | Bootstrap research dossier + 3 iters |
+| `39-spherical-tokamak-cs-free-p-b11` (ENN) | 0 (no analyses dir) | Bootstrap research dossier + 3 iters |
+
+Execution:
+1. For the 6 existing under-iterated concepts: `uv run python exploration/concept_analysis/scripts/run_analysis.py analyze <ID>` for the deficit iterations.
+2. For the 3 new concepts (37/38/39): create `knowledge/concept_research/{ID}/` dossiers first (pull primary sources for NearStar, SHINE, ENN), then run analysis pipeline to ≥3 iters.
+3. Re-extract for the explorer: `uv run python exploration/concept_explorer/extract_explorer_data.py --concept <ID>` for each touched concept.
 
 **Out of Scope**:
-- Full re-analysis (analyze stage) — synthesis-only.
-- Adding any new sources.
+- Synthesis refresh — not in scope here.
+- Raising the bar above 3 iters for concepts already at ≥3.
+- Adding new concepts beyond 37/38/39.
 
 **Success Criteria**:
-- [ ] Every affected concept's `synthesis.md` has updated frontmatter (`Stale: false`) and matches the model_output numbers
-- [ ] Spot-checks find no pre-renumbering references in the refreshed prose
-- [ ] `extract_explorer_data.py` runs clean for every refreshed concept
+- [ ] `for d in exploration/concept_analysis/analyses/*/; do ls -d "$d"iter-* | wc -l; done` shows every count ≥ 3
+- [ ] `37/`, `38/`, `39/` directories exist under both `knowledge/concept_research/` and `exploration/concept_analysis/analyses/`
+- [ ] `extract_explorer_data.py` runs clean for every touched concept
 
 **Deliverables**:
-- Refreshed `synthesis.md` for all affected concepts
+- Iterations added per the table above
+- Research dossiers for NearStar, SHINE, ENN under `knowledge/concept_research/`
+- Refreshed `concept_explorer/data/{ID}.json` for touched concepts
 - Refreshed `concept_explorer/data/{ID}.json` for the same set
 - Brief summary table at `.project/research/<date>_ontology-v3-synthesis-refresh.md` listing what changed per concept
 
