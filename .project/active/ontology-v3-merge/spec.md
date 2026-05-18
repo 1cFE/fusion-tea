@@ -1,31 +1,35 @@
-# Spec: Ontology v3 Mechanical Merge
+# Spec: Ontology v3 Adoption (No Renumbering)
 
-**Status:** Draft
+**Status:** Complete (implemented 2026-05-17, commit `8db3ed2` on `ontology-update`)
 **Owner:** Reid W
 **Created:** 2026-05-17
-**Complexity:** MEDIUM-HIGH
-**Branch:** `ontology-v3-migration` (to be created off `main` @ `a8a779e`)
+**Revised:** 2026-05-17 (strategy: adopt schema + code + new concepts only; keep existing IDs)
+**Complexity:** MEDIUM-LOW
+**Branch:** `ontology-update` (already exists off `main` @ `a8a779e`; planning commit `244ca24` already on branch)
 **Epic:** ONTOLOGY-V3, Item 2
 
 ---
 
 ## Work Item Summary
 
-Bring `origin/fix/concept-renumbering-robustness` (single commit `1b960a9` by Mallory, 2026-05-17 — 1,657 files, +36k/-58k LOC) onto a new branch off the freshly-updated `main`. The branch implements the v0.3.0 schema swap (drops `Plasma State` / `Tritium Breeding` / `Neutron Management`; adds `Blanket Config`), renumbers the concept slate (4 new concepts, Pranos dropped, IDs shifted/deduplicated), reruns the analysis pipeline for all 38→39 concepts, and refactors `lib/scoring.py` + `lib/concepts.py` to derive C2/freeform classification from architecture columns instead of hardcoded ID prefixes. This work item is the **mechanical merge only** — resolve conflicts (concentrated in the analyses/ artifacts that Item 1's availability/η_th standardization also touched), verify the codebase still builds end-to-end, and regenerate the explorer registry. Fixing the 9 known code gaps (column_map, decision-tree hierarchy, Jinja templates, tests, stale scores, etc.) is Item 3. Design questions (HB11 inconsistency, CSV-vs-MD source of truth) are Item 4.
+Adopt the v0.3.0 ontology *content* (column schema + new concepts + code refactor + docs) from `origin/fix/concept-renumbering-robustness` (single commit `1b960a9` by Mallory, 2026-05-17), but **keep our existing concept IDs unchanged**. Mallory's branch renumbers 16 concepts; her renumbering was aesthetic (de-suffix `17a/b` / `20a/b`, compact after Pranos drop and Inertia dedup), not load-bearing. Her code refactor derives classification from CSV columns, not IDs — so IDs are free labels. Net effect: schema swap on `table.csv`, drop Pranos row, split combined-22 (First Light + NearStar) into our existing `22` (First Light) plus new `37` (NearStar), add `38` (SHINE) and `39` (ENN), pull her 12 authored code/doc files, no directory renames.
 
 ## Why This Matters Now
 
-`main` is now at `a8a779e` (the PR #15 merge of `consistency-checks`) and carries availability/η_th standardization across ~20 analyses. The ontology branch, written before that standardization landed, will conflict with every analyzed concept's `model_setup.py` / `analysis.md` / `synthesis.md` / `model_output.txt`. Every additional commit on `main` between now and the merge widens that conflict surface — getting the mechanical merge done first, on a dedicated branch, freezes the conflict resolution work and unblocks Items 3–5. Without it, the v3 schema can't propagate to `phase_2a/column_map.py`, the explorer, the test suite, or the synthesis refresh.
+Mallory's branch has the v0.3.0 schema and the architecture-driven code refactor we want. Adopting her ID scheme would force ~30 directory renames in `analyses/` and `knowledge/concept_research/`, risk breaking external references (R2 paths, prior research, explorer JSON paths), and create unnecessary conflict with Item 1's standardization. By keeping our IDs and only pulling the *content* changes, we get the same v0.3.0 schema with a fraction of the mechanical work and a cleaner diff.
 
 ## Key Bets / Constraints
 
-- **Bet:** Re-applying Item 1's standardization on top of the renumbered/reclassified `analyses/` files is mostly mechanical — the standardization edits are localized to availability/η_th kwargs and YAML frontmatter, and the renumbering doesn't touch those values. Conflicts will be path/filename-level (renamed directories, new IDs) more than line-level.
-- **Bet:** A merge (preserving Mallory's authored commit) is preferable to a cherry-pick. The 1,657-file diff is too large to manually re-author cleanly, and keeping the commit intact preserves attribution and the detailed commit message.
-- **Constraint:** The merged tree MUST still build and run end-to-end against the v3 schema before this item is considered done — `seed_registry.py`, `extract_explorer_data.py`, and `run_analysis.py status` all run to completion. Test suite fixes are explicitly Item 3's job; broken tests do NOT block this item, but broken entry-point scripts DO.
-- **Constraint:** No new code authored in this item. Conflict resolution and re-applied standardization edits only. Anything that requires designing a fix (e.g. `column_map.py` references the dropped columns) is deferred to Item 3.
-- **Non-goal:** Fixing the 9 known gaps from `.project/research/20260517_ontology_v3_delta.md` §Addendum.
-- **Non-goal:** Resolving the HB11 Fast-ignition-vs-Ultrashort inconsistency on the branch — that's Item 4.
-- **Non-goal:** Refreshing synthesis prose — that's Item 5.
+- **Bet:** Mallory's `lib/scoring.py` and `lib/concepts.py` refactors derive from CSV columns (`Confinement Family / MFE Topology / IFE Driver / MIF Method / Magnet Type`) plus slug overrides for z-pinch and levitated dipole — not from numeric ID prefix. Therefore our IDs work with her code as long as the CSV's classification columns are correct.
+- **Bet:** Mallory's new ontology docs (`CONCEPT_ONTOLOGY.md`, `RECLASSIFIED_CONCEPTS.md`, etc.) reference her IDs. We accept that divergence in this item and add a one-page ID-mapping table; full doc-ID translation is deferred (probably Item 4 design work).
+- **Bet:** The schema swap (`Plasma State` / `Tritium Breeding` / `Neutron Management` → `Blanket Config`) is value-mappable from Mallory's CSV row-by-row, even after relabeling IDs.
+- **Constraint:** Our existing concept directories in `analyses/` and `knowledge/concept_research/` are not renamed. Item 1's standardization survives unchanged.
+- **Constraint:** We keep concepts `26-laser-icf-indirect-drive` and `30-laser-icf-nif-commercialization` as **two separate rows** (Mallory deduplicated them into her `31`; we don't follow her here).
+- **Non-goal:** Adopting Mallory's renumbering scheme.
+- **Non-goal:** Pulling Mallory's regenerated `analyses/{ID}/synthesis.md` / `analysis.md` / `model_output.txt` / `iter-N/` artifacts. Item 5 refreshes synthesis for affected concepts.
+- **Non-goal:** Pulling Mallory's `concept_explorer/data/{ID}.json` files. `extract_explorer_data.py` rebuilds them.
+- **Non-goal:** Pulling Mallory's `scores/*.{json,md}` files (she flagged stale). Item 3 reruns scoring.
+- **Non-goal:** Fixing the 9 code gaps from `.project/research/20260517_ontology_v3_delta.md` §Addendum. Item 3.
 
 ---
 
@@ -33,21 +37,24 @@ Bring `origin/fix/concept-renumbering-robustness` (single commit `1b960a9` by Ma
 
 ### Why This Matters
 
-The v0.3.0 ontology is the canonical taxonomy going forward. Until the schema and renumbering land on `main`, every downstream effort (Phase 2a constraint validation, scoring, explorer UI, synthesis prose, comparative analysis) operates against a stale schema. The mechanical merge is the gate that unblocks everything in the rest of the ONTOLOGY-V3 epic. Doing it as a discrete, low-judgment item — separated from the higher-risk code-gap work — lets us land the merge fast and review the conflicts in isolation.
+Item 2 gates Items 3–5. The fastest path is to adopt only the content changes from Mallory's branch. Keeping our IDs avoids the bulk of the mechanical work, keeps Item 1's standardization in place naturally, and produces a small reviewable PR.
 
 ### Success Criteria
 
-- [ ] `ontology-v3-migration` branch exists, rooted at `main` @ `a8a779e`, with `1b960a9` merged in.
-- [ ] All Item 1 availability/η_th changes are preserved on the renumbered/reclassified analyses.
-- [ ] `uv run python exploration/concept_explorer/seed_registry.py` runs to completion against the merged tree.
-- [ ] `uv run python exploration/concept_explorer/extract_explorer_data.py` runs to completion (warnings allowed; hard failures not).
-- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py status` runs and prints a sensible table.
-- [ ] No working-tree references to pre-renumbering IDs in tracked source/data files (audited via grep).
-- [ ] Regenerated `concept_registry.json` and `decision_tree.json` reflect the 39-concept slate.
+- [ ] `exploration/concept_analysis/table.csv` is at v3 schema (drops `Plasma State` / `Tritium Breeding` / `Neutron Management`, adds `Blanket Config`), uses **our existing IDs**, has 40 rows: 37 existing-minus-Pranos rows + 3 new rows (37 NearStar, 38 SHINE, 39 ENN).
+- [ ] All 12 authored code files from Mallory's branch (lib refactor, explorer code, standardize_eta_th, rerun_all_models, taxonomy_models, seed_registry, similarity, JS) are on `ontology-update` at her content.
+- [ ] All 9 new doc + generator files from `exploration/phase_1a/` are on `ontology-update`, with an added `ID_MAPPING.md` documenting where Mallory's IDs differ from ours.
+- [ ] Combined-22 row (First Light + NearStar) is split: `22-projectile-icf` keeps First Light only; new row `37-magnetized-target-inertial-fusion-mtif` for NearStar.
+- [ ] Pranos row dropped from CSV; Pranos directories left in place (flagged for Item 6 cleanup).
+- [ ] `concept_research/20-modular-hts-stellarator/` orphan disposition decided and documented.
+- [ ] No concept directories renamed in `analyses/` or `knowledge/concept_research/`.
+- [ ] `uv run python exploration/concept_explorer/seed_registry.py` runs to completion, producing a 40-concept `concept_registry.json`.
+- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py status` runs.
+- [ ] One single commit on `ontology-update` (after planning commit `244ca24`), with attribution trailer.
 
 ### Priority
 
-P0. Gates Items 3–5 of the ONTOLOGY-V3 epic. Conflict surface widens with every additional `main` commit.
+P0. Gates Items 3–5 of ONTOLOGY-V3.
 
 ---
 
@@ -55,22 +62,45 @@ P0. Gates Items 3–5 of the ONTOLOGY-V3 epic. Conflict surface widens with ever
 
 ### Current State
 
-- `main` is at `a8a779e`. Working tree has three modifications: `.project/backlog/BACKLOG.md`, `.project/backlog/epic_ontology_v3_migration.md`, `uv.lock`. (BACKLOG and epic are part of this epic's planning; `uv.lock` was the unresolved tail from Item 1.)
-- `origin/fix/concept-renumbering-robustness` (`1b960a9`) is a divergent single commit authored 2026-05-17 14:14. It branched from a point in `main`'s history before Item 1's availability standardization landed.
-- The branch's diff intersects `main` at:
-  - **Every analyzed concept** (`analyses/{ID}/{analysis,synthesis,model_output,model_setup}.{md,py,txt}`): the branch's pipeline rerun produced new content for these; Item 1 modified availability/η_th values in many of them.
-  - **`scripts/standardize_eta_th.py`**: both branches edit it.
-  - **`scripts/lib/scoring.py`**: branch refactors C2 derivation; Item 1 likely didn't touch this file but verify.
-  - **`scripts/lib/concepts.py`**: branch refactors freeform classification; Item 1 likely didn't touch.
-- `knowledge/concept_research/` directories are renamed on the branch (e.g. `17a-laser-icf-hybrid-drive` → `27-laser-icf-hybrid-direct-drive`); Item 1 didn't touch this tree, so conflicts there should be additions/renames only.
-- `concept_explorer/data/{ID}.json` files are renumbered on the branch.
+- `ontology-update` is at planning commit `244ca24` (off `main` @ `a8a779e`). Working tree is clean.
+- `main` has 38 concept rows in `table.csv` (01–36 with subitems 17a, 17b, 20a, 20b; row 22 is combined "First Light Fusion, NearStar Fusion"; Pranos is at 34).
+- `origin/fix/concept-renumbering-robustness` (commit `1b960a9`) has 39 rows under a different ID scheme.
+- Mallory's renumbering (informational; we're not adopting):
+
+| Mallory's ID | Our ID | Concept |
+|---|---|---|
+| 17 | 17b | Focused Energy |
+| 20 | 20a | Type One |
+| 21 | 20b | Renaissance |
+| 22 | 21 | Tokamak Energy ST |
+| 23 | 22 | First Light (NearStar split out) |
+| 24 | 23 | Marvel |
+| 25 | 24 | LPPFusion |
+| 26 | 25 | Intensity Energy |
+| 27 | 17a | Xcimer |
+| 28 | 27 | EMC2 Polywell |
+| 29 | 28 | Energy Singularity |
+| 30 | 29 | Firefly NT |
+| 31 | 26 + 30 | Inertia (Mallory deduped; we keep both) |
+| 32 | 31 | Blue Laser OEC |
+| 33 | 32 | GenF |
+| 34 | 33 | Neo Fusion BEST |
+| 37 | 37 | NearStar (new) |
+| 38 | 38 | SHINE (new) |
+| 39 | 39 | ENN (new) |
+
+- Rows that don't change ID: 01–16, 18, 19, 35, 36.
+- Pranos (Mallory: dropped; ours: 34): drop from CSV.
 
 ### Desired Outcome
 
-- A single merge commit on `ontology-v3-migration` integrates `1b960a9` with `main`.
-- All availability/η_th standardization values from Item 1 are present in the corresponding (renumbered) analysis files on the merged branch.
-- `concept_registry.json` and `decision_tree.json` are regenerated and committed.
-- The branch is ready to receive Item 3 (code gap fixes) without re-doing any conflict work.
+A single commit on `ontology-update` containing:
+1. v3-schema `table.csv` with our 40 rows.
+2. 12 authored code files at Mallory's content.
+3. 9 ontology docs + generators at Mallory's content, plus a new `ID_MAPPING.md`.
+4. Regenerated `concept_registry.json` and `decision_tree.json`.
+
+No directory renames. Pranos directories left in place. Mallory's regenerated artifacts not pulled.
 
 ---
 
@@ -78,58 +108,86 @@ P0. Gates Items 3–5 of the ONTOLOGY-V3 epic. Conflict surface widens with ever
 
 ### In Scope
 
-- Branch creation: `git checkout -b ontology-v3-migration` from `main` @ `a8a779e`.
-- Pre-merge inventory: enumerate every conflicting file by category (analyses artifacts vs scripts vs data vs research) before starting resolution. Save inventory to `.project/active/ontology-v3-merge/conflict-inventory.md` for reference during execution.
-- Merge execution: `git merge origin/fix/concept-renumbering-robustness` (preserve the commit; do not squash).
-- Conflict resolution, in this order:
-  1. **`scripts/lib/scoring.py`** and **`scripts/lib/concepts.py`** — take the branch version verbatim (architecture-driven refactor); confirm Item 1 didn't touch these (sanity check via `git log main -- <file>`).
-  2. **`scripts/standardize_eta_th.py`** — both-edits conflict; combine: keep the branch's thermal-cycle update structure, keep Item 1's any-canonical-value additions if any.
-  3. **`analyses/{ID}/`** — for each renumbered concept, re-apply Item 1's availability/η_th values onto the branch's reclassified file. Mechanical: identify the old-ID directory the file came from, copy the relevant kwargs/frontmatter values across, verify the rest matches the branch.
-  4. **`knowledge/concept_research/`** — accept the branch's renames; no Item 1 conflicts expected here.
-  5. **`concept_explorer/data/{ID}.json`** — accept the branch's renumbered files.
-- Post-merge verification (in order):
-  1. `git status` clean.
-  2. `uv run python exploration/concept_explorer/seed_registry.py` — must succeed; regenerates `concept_registry.json` and `decision_tree.json`.
-  3. `uv run python exploration/concept_explorer/extract_explorer_data.py` — must succeed for all 39 concepts (warnings OK; hard exit non-zero is a fail).
-  4. `uv run python exploration/concept_analysis/scripts/run_analysis.py status` — must run; output sanity-checked against the 39-concept slate.
-  5. Old-ID grep audit: `grep -rE '(17a-|17b-|20a-|20b-|34-compact-spherical-tokamak)' exploration knowledge --include='*.py' --include='*.md' --include='*.csv' --include='*.json'` — expected matches limited to migration notes in `RECLASSIFIED_CONCEPTS.md` and `add_ids.py` (legacy migration script). Anything else is a fail.
-  6. Spot-check 3 reclassified concepts (e.g. 04 HB11, 22 → 23+37 split, 27 Xcimer-moved-from-17a): confirm availability/η_th values from Item 1 are present in the merged file.
-- Commit the merge with the default merge message preserved.
-- Push `ontology-v3-migration` to `origin`.
+**Bucket A — Code, generators, and ontology docs (pull wholesale, no translation needed):**
+
+Code (12 files):
+- `exploration/concept_analysis/scripts/lib/scoring.py`
+- `exploration/concept_analysis/scripts/lib/concepts.py`
+- `exploration/concept_analysis/scripts/lib/claude.py`
+- `exploration/concept_analysis/scripts/standardize_eta_th.py`
+- `exploration/concept_analysis/scripts/rerun_all_models.py` (new)
+- `exploration/concept_analysis/C2_SCORING.md` (new)
+- `exploration/concept_explorer/taxonomy_models.py`
+- `exploration/concept_explorer/seed_registry.py`
+- `exploration/concept_explorer/similarity.py`
+- `exploration/concept_explorer/static/js/taxonomy_card.js`
+- `exploration/concept_explorer/static/js/view_categorical.js`
+- `exploration/phase_1a/schema.md`
+
+Docs + generators (8 files):
+- `exploration/phase_1a/CONCEPT_ONTOLOGY.md`
+- `exploration/phase_1a/CONCEPT_CATEGORIES_PROPOSAL.md`
+- `exploration/phase_1a/RECLASSIFIED_CONCEPTS.md`
+- `exploration/phase_1a/SCHEMA_REVISION_PROPOSALS.md`
+- `exploration/phase_1a/concept_ontology_v3.png`
+- `exploration/phase_1a/generate_ontology_chart.py`
+- `exploration/phase_1a/generate_ontology_md.py`
+
+These reference Mallory's IDs. We pull them verbatim and accept the divergence (see Bucket C ID-mapping doc).
+
+**Bucket B — CSV translation:**
+
+Produce `exploration/concept_analysis/table.csv` (and its `exploration/phase_1a/table.csv` mirror) with:
+- v3 column structure (Mallory's header): `ID, Research ID, Concept Name, Company, Confinement Family, MFE Topology, IFE Driver, MIF Method, Non-Standard Mechanism, Tokamak Shape, Stellarator Type, Laser Approach, Fuel, Primary Heating, Energy Capture, Magnet Type, Blanket Config, Operation Mode, Repetition Rate, Driver Technology, Overall Confidence`
+- For each of the 37 existing-minus-Pranos concepts:
+  - ID = our existing ID (per the table above)
+  - Column values = Mallory's row for the equivalent concept (which has the v3 `Blanket Config` value plus revised vocabulary, e.g. Focused Energy moving to Direct Drive Fast Ignition; HB11 stays whatever Mallory has, etc.)
+  - For our 26 (Inertia Indirect) and our 30 (Inertia NIF Commercialization): take Mallory's row 31 (deduplicated) for our 26; manually populate our 30 with the same Blanket Config and other v3 column values that Mallory's 31 carries (they're the same company concept), but keep the `Concept Name` and `Driver Technology` distinct as they are on `main`.
+- For the 3 new concepts:
+  - 37 NearStar, 38 SHINE, 39 ENN — copy Mallory's rows verbatim (her IDs already match what we want).
+- For Pranos: drop entirely.
+
+**Bucket C — Split row 22 and add ID-mapping doc:**
+
+- Edit our row `22-projectile-icf`: change `Concept Name` from "Projectile ICF (D-T)" with company "First Light Fusion, NearStar Fusion" to just First Light Fusion (matching Mallory's row 23 content modulo the ID).
+- Add a new row 37 for NearStar with Mallory's row 37 content.
+- Add `exploration/phase_1a/ID_MAPPING.md` documenting the Mallory-to-ours ID translation (the table above), so future readers can reconcile.
+
+**Bucket D — Regeneration:**
+
+- After CSV is in place, run `uv run python exploration/concept_explorer/seed_registry.py` to regenerate `concept_registry.json` and `decision_tree.json`. Commit both.
 
 ### Out of Scope
 
-- Fixing `phase_2a/column_map.py` (references dropped columns) — Item 3.
-- Fixing `_HIERARCHY`/`_SUBTYPES` in `seed_registry.py` to encode the v3 tree groups — Item 3.
-- Fixing `ConfinementFamily` enum — Item 3.
-- Fixing Jinja templates and `neighborhood_graph.js` — Item 3.
-- Fixing `parameter_display_registry.yaml` — Item 3.
-- Updating `tests/test_taxonomy_models.py` — Item 3.
-- Rerunning scoring (`scores/verified_scores.json` is known-stale) — Item 3.
-- Refactoring `oneoff_3d_clustering.py` `CADENCE_BY_PREFIX` and `generate_ontology_chart.py` `TREE_PATH` — Item 3.
-- Resolving the HB11 Fast-ignition-vs-Ultrashort inconsistency — Item 4.
-- Deciding CSV-vs-MD source of truth for `Heating Type` / `Driver Type` columns — Item 4.
-- Refreshing synthesis prose for affected concepts — Item 5.
-- Opening the PR to `main` — Items 3 and 4 must complete first.
+- Pulling Mallory's regenerated `analyses/{ID}/synthesis.md`, `analysis.md`, `model_output.txt`, `iter-N/` content for the 35 renumbered concepts. None of these are pulled.
+- Pulling Mallory's regenerated `concept_explorer/data/{ID}.json`. Not pulled.
+- Pulling Mallory's `scores/*.{json,md}`. Not pulled.
+- Renaming concept directories in `analyses/` or `knowledge/concept_research/`.
+- Pranos directory cleanup. Left in place; Item 6 task.
+- `concept_research/20-modular-hts-stellarator/` orphan cleanup. Verify and document; physical deletion deferred to Item 6 if uncertain.
+- Populating `analyses/37/`, `analyses/38/`, `analyses/39/` for the new concepts. Item 5 runs the pipeline.
+- Translating Mallory's ontology docs to our IDs (CONCEPT_ONTOLOGY.md, RECLASSIFIED_CONCEPTS.md). Deferred; ID-mapping doc suffices for now.
+- Fixing `phase_2a/column_map.py`, `_HIERARCHY` in `seed_registry.py`, `ConfinementFamily` enum, Jinja templates, `neighborhood_graph.js`, `parameter_display_registry.yaml`, tests. Item 3.
+- HB11 Fast-ignition vs Ultrashort decision. Item 4.
+- `Heating Type` / `Driver Type` CSV-vs-MD decision. Item 4.
 
 ### Edge Cases & Considerations
 
-- **Item 1's `uv.lock` modification** is currently uncommitted on `main`'s working tree. Decide before merging: either commit it on `main` first (clean baseline) or stash and reapply post-merge. Recommend the former — a clean working tree before the merge avoids confusion.
-- **Old-ID references in `add_ids.py`**: the file is a legacy migration script (`exploration/concept_analysis/add_ids.py`); its hardcoded `CONCEPT_ID_MAP` references old IDs. The branch did not touch it. Decision: leave it as-is for this item (it's not in the live pipeline) and flag for Item 3 / Item 6 cleanup. Do NOT fail the old-ID grep audit on this file alone.
-- **Pranos dropping**: concept `34-compact-spherical-tokamak-india` is removed from the slate. Its `analyses/34-compact-spherical-tokamak-india/` directory and `knowledge/concept_research/34-compact-spherical-tokamak-india/` should be deleted by the merge. Verify they are absent post-merge. (If Item 1 modified Pranos files, those edits are discarded — confirm with the user before discarding; if it was in Item 1's batch, escalate.)
-- **22 → 23 + 37 split**: the old combined "First Light, NearStar" concept becomes 23 (First Light) and 37 (NearStar). Item 1's edits to old-22 should go to new-23 (First Light is the primary concept; NearStar's MTIF analysis is a separate new artifact on the branch). Verify by reading old-22's availability value and confirming it lands in new-23, not new-37.
-- **26+30 merge**: both Inertia Enterprises rows consolidated into new-31. Item 1's edits to old-26 and old-30 should both go to new-31. If they disagree, take the most recent (likely old-30, the NIF commercialization variant) and flag in the merge commit body.
-- **Conflicts in `analyses/{ID}/synthesis.md` Stale frontmatter**: the branch's pipeline rerun reset `Stale: false` on every synthesis file. Item 1's standardization marked some as `Stale: true`. Resolution: take the branch's `Stale: false` (Item 5 will do a deliberate synthesis refresh; carrying forward `Stale: true` from Item 1 is misleading because the underlying values are now the branch's regenerated values).
-- **Conflicts in `model_output.txt`**: these are generated artifacts. If both branches changed them, take the branch's version (it was regenerated after the reclassification). Item 1's `model_output.txt` updates were downstream effects of the standardization, which will be re-derived once Item 5 reruns the pipeline.
-- **`.stale` sidecars in `concept_explorer/data/`**: the branch dropped these (regenerated extraction). Accept the branch's state.
-- **Test files (`exploration/concept_explorer/tests/`)**: the branch did not update them, so no conflicts expected. They will be broken against the new enums — that's Item 3.
-- **Working-tree edits from this epic** (`BACKLOG.md`, `epic_ontology_v3_migration.md`, `uv.lock`): commit these on `main` BEFORE the merge, so the merge starts from a clean state. Use a single "epic planning" commit.
+- **Mallory's row 31 (Inertia, deduped) maps to two of our rows (26 + 30)**: take her column values (especially `Blanket Config`, `Primary Heating`, etc.) and apply to both. Keep our existing `Concept Name` / `Company` / `Driver Technology` text on each. If her row 31's `Concept Name` is e.g. "Laser ICF - Indirect Drive (D-T)" matching our 26 better than 30, just take that one and leave our 30's name as it is.
+- **Mallory's row 23 (First Light only) maps to our row 22**: take her content but use our `22-projectile-icf` ID. Remove NearStar from the `Company` field.
+- **Our row 22's `Driver Technology` says "Electromagnetic gun"**: Mallory's row 23 also says this. Keep.
+- **Mallory's row 37 (NearStar) is wholly new**: take verbatim (her ID = 37 = our ID).
+- **`concept_research/20-modular-hts-stellarator/` orphan**: Verify it has no unique content vs `20a/` and `20b/`. If empty/stale, delete in this item; otherwise leave and flag for Item 6.
+- **The `Research ID` column**: Mallory populated it with the concept slug. Apply the same convention to our rows. For renumbered concepts, the Research ID Mallory used may correspond to a directory name that doesn't exist on our tree (e.g. her `27-laser-icf-hybrid-direct-drive` Research ID doesn't match our `17a-laser-icf-hybrid-drive` directory). Set our Research ID to match our actual directory slug.
+- **`exploration/phase_1a/table.csv` is a mirror of the main `table.csv`**: keep them in sync (same content).
+- **Mallory's regenerated files for renumbered concepts are simply not pulled**: this is the cleanest approach; do not attempt to merge anything.
+- **Pranos in CSV vs directory**: dropping the row from CSV is mandatory; deleting the directory is optional (and deferred to Item 6). The seed_registry will still work because it iterates CSV rows, not directories.
 
 ---
 
 ## Requirement Selection Notes
 
-Requirements below cover the contract of "what 'merged correctly' means" for this item — specifically the invariants that must hold post-merge for Item 3 to start cleanly. The exact mechanics of conflict resolution (3-way merge tooling, ours-vs-theirs choices for individual files, whether to use `git rerere`) are intentionally left to design. The shape of the post-merge audit script (one-liner vs Python helper) is also design's call.
+Requirements below cover the post-execution invariants. The mechanics of CSV row-by-row translation (manual edit vs scripted vs hand-CSV-in-vim) and the exact format of the ID-mapping doc are intentionally left to design. Whether to run `extract_explorer_data.py` and whether to commit its rebuilt JSON files in this item is also design's call.
 
 ---
 
@@ -137,92 +195,117 @@ Requirements below cover the contract of "what 'merged correctly' means" for thi
 
 ### Functional Requirements
 
-> Requirements derive from the ONTOLOGY-V3 epic Item 2 definition and the user's spec invocation.
+> Requirements derive from the ONTOLOGY-V3 epic Item 2 (revised twice), and the strategy approved by the user on 2026-05-17.
 
-1. **FR-1**: A new branch `ontology-v3-migration` MUST be created off `main` at exactly commit `a8a779e` (PR #15 merge) and MUST contain a single merge commit integrating `origin/fix/concept-renumbering-robustness` (`1b960a9`) as a second parent. The merge MUST preserve `1b960a9` as a reachable commit (no squash, no cherry-pick).
-2. **FR-2**: Working-tree changes from epic planning (`.project/backlog/BACKLOG.md`, `.project/backlog/epic_ontology_v3_migration.md`, `uv.lock`) MUST be committed to `main` before the merge starts, so the merge proceeds from a clean working tree.
-3. **FR-3**: After the merge, every analyzed concept whose availability or η_th values were edited by Item 1 MUST contain those edited values in its post-merge file location (which may be under a new ID after renumbering). For concepts split (22 → 23+37), the values go to the primary successor (23). For concepts merged (26+30 → 31), the most-recent variant's values are taken and the choice is documented in the merge commit body.
-4. **FR-4**: After the merge, the following commands MUST run to completion (exit code 0; warnings tolerable):
-   - `uv run python exploration/concept_explorer/seed_registry.py`
-   - `uv run python exploration/concept_explorer/extract_explorer_data.py`
-   - `uv run python exploration/concept_analysis/scripts/run_analysis.py status`
-5. **FR-5**: After the merge, `concept_explorer/data/concept_registry.json` MUST contain exactly 39 concepts whose IDs match the v3 slate (no pre-renumbering IDs).
-6. **FR-6**: After the merge, an old-ID grep audit (`grep -rE '(17a-|17b-|20a-|20b-|34-compact-spherical-tokamak)'` across `exploration/` and `knowledge/`, restricted to `*.py *.md *.csv *.json *.txt`) MUST produce no matches except in the explicit allow-list: `exploration/phase_1a/RECLASSIFIED_CONCEPTS.md` (the migration log) and `exploration/concept_analysis/add_ids.py` (legacy migration script — flagged for Item 3/6 cleanup).
-7. **FR-7**: The branch MUST be pushed to `origin/ontology-v3-migration` after the merge is verified locally. No PR is opened in this item — that gate belongs to Item 4.
-8. **FR-8**: [INFERRED] The merge commit body MUST list any decisions made during conflict resolution that are not mechanical (e.g. 26+30 variant selection, any Pranos files discarded), so Item 3 has a record to consult.
-9. **FR-9**: A pre-merge conflict inventory MUST be produced at `.project/active/ontology-v3-merge/conflict-inventory.md` listing every conflicting path grouped by category (lib/scripts, analyses, research, data, other), to scope the resolution work and serve as a checklist during execution.
+1. **FR-1**: `ontology-update` MUST receive **exactly one commit** containing buckets A + B + C + D. The commit message MUST include a `Co-developed-with: Mallory Snowden <mallory.snowden@astera.org>` trailer or equivalent attribution prose.
+2. **FR-2**: All 12 authored code files in Bucket A MUST be present at exactly the content of `origin/fix/concept-renumbering-robustness:1b960a9` for each path. Verifiable by `git diff origin/fix/concept-renumbering-robustness -- <path>` returning empty for each.
+3. **FR-3**: All 7 doc/generator files in Bucket A (`CONCEPT_ONTOLOGY.md`, `RECLASSIFIED_CONCEPTS.md`, `CONCEPT_CATEGORIES_PROPOSAL.md`, `SCHEMA_REVISION_PROPOSALS.md`, `concept_ontology_v3.png`, `generate_ontology_chart.py`, `generate_ontology_md.py`) MUST be present at Mallory's content.
+4. **FR-4**: `exploration/concept_analysis/table.csv` MUST:
+   - Use the v3 column header from Mallory's CSV.
+   - Have 40 data rows.
+   - Have IDs from our existing scheme (01–36 incl. 17a, 17b, 20a, 20b) for the 37 existing-minus-Pranos rows, plus 37, 38, 39 for the new concepts.
+   - Have no row for Pranos (`34-compact-spherical-tokamak-india`).
+   - Have two distinct Inertia rows (our `26-laser-icf-indirect-drive` and our `30-laser-icf-nif-commercialization`).
+5. **FR-5**: `exploration/phase_1a/table.csv` MUST be byte-identical to `exploration/concept_analysis/table.csv`.
+6. **FR-6**: Our row 22 (`22-projectile-icf`) MUST have `Company` = First Light Fusion only (NearStar removed).
+7. **FR-7**: A new row with ID `37-magnetized-target-inertial-fusion-mtif` MUST exist with NearStar's content per Mallory's row 37.
+8. **FR-8**: New rows 38 (SHINE) and 39 (ENN) MUST exist with Mallory's content for those rows.
+9. **FR-9**: `exploration/phase_1a/ID_MAPPING.md` MUST be created, documenting the Mallory-to-ours ID translation for the 16 concepts where IDs differ.
+10. **FR-10**: `exploration/concept_explorer/data/concept_registry.json` MUST be regenerated and committed, MUST contain exactly 40 entries (matching the CSV).
+11. **FR-11**: `exploration/concept_explorer/data/decision_tree.json` MUST be regenerated and committed.
+12. **FR-12**: `uv run python exploration/concept_analysis/scripts/run_analysis.py status` MUST exit 0.
+13. **FR-13**: No directory under `exploration/concept_analysis/analyses/` or `knowledge/concept_research/` is renamed in this commit. Verifiable by `git diff --name-only --diff-filter=R main` returning empty for those trees.
+14. **FR-14**: No regenerated `analyses/{ID}/synthesis.md`, `analysis.md`, `model_output.txt`, or `iter-N/` files are committed. Verifiable by `git diff --stat` showing zero file changes under `analyses/{any}/synthesis.md` etc.
+15. **FR-15**: [INFERRED] No `scores/*.{json,md}` or `concept_explorer/data/{ID}.json` files are touched in this commit. Verifiable by `git diff --name-only` showing none of those paths.
 
 ### Non-Functional Requirements
 
-- **NFR-1**: The merge MUST complete in a single working session (≤1.5 days elapsed). Conflict resolution is mechanical; if it stretches past a day, something is structurally wrong and we should escalate rather than push through.
-- **NFR-2**: No new code is authored in this item. Every change in the merge commit is either (a) from `main`, (b) from `1b960a9`, or (c) a hand-resolved combination of those two for a specific file. Resist the temptation to "just fix" anything from Item 3's list.
+- **NFR-1**: The execution MUST complete in a single working session (≤2 hours).
+- **NFR-2**: The commit diff MUST be reviewable in a small PR. Expected size: ~25 files (12 code + 8 docs + 1 mapping + 2 CSV + 2 generated JSON).
 
 ---
 
 ## Acceptance Criteria
 
-### Core Functionality
+### Code, docs, generators (Bucket A)
 
-- [ ] `git rev-parse ontology-v3-migration` resolves; `git merge-base ontology-v3-migration main` returns `a8a779e`.
-- [ ] `git log --merges -1 ontology-v3-migration` shows a merge commit with `1b960a9` as one of two parents.
-- [ ] `.project/active/ontology-v3-merge/conflict-inventory.md` exists and lists conflicts by category.
+- [ ] `git diff origin/fix/concept-renumbering-robustness -- exploration/concept_analysis/scripts/lib/scoring.py` returns empty.
+- [ ] Same for `lib/concepts.py`, `lib/claude.py`, `standardize_eta_th.py`, `rerun_all_models.py`, `C2_SCORING.md`.
+- [ ] `git diff origin/fix/concept-renumbering-robustness -- exploration/concept_explorer/taxonomy_models.py` returns empty.
+- [ ] Same for `seed_registry.py`, `similarity.py`, `static/js/taxonomy_card.js`, `static/js/view_categorical.js`.
+- [ ] Same for the 7 doc/generator files in `exploration/phase_1a/`.
+
+### CSV (Bucket B + C)
+
+- [ ] `head -1 exploration/concept_analysis/table.csv` matches Mallory's v3 header (contains `Blanket Config`, no `Plasma State` / `Tritium Breeding` / `Neutron Management`).
+- [ ] `wc -l exploration/concept_analysis/table.csv` prints 41 (header + 40 rows).
+- [ ] `awk -F, 'NR>1 {print $1}' exploration/concept_analysis/table.csv | sort` contains all our IDs (01 through 36 incl. 17a/b, 20a/b, except 34) plus 37, 38, 39.
+- [ ] No row with ID `34-compact-spherical-tokamak-india`.
+- [ ] Two distinct Inertia rows (`26-laser-icf-indirect-drive` and `30-laser-icf-nif-commercialization`).
+- [ ] Row `22-projectile-icf` has `Company` containing First Light only (no "NearStar").
+- [ ] Row `37-magnetized-target-inertial-fusion-mtif` exists.
+- [ ] `cmp exploration/concept_analysis/table.csv exploration/phase_1a/table.csv` returns success (byte-identical).
+- [ ] `exploration/phase_1a/ID_MAPPING.md` exists and documents all 16 ID differences.
+
+### Regeneration (Bucket D)
+
 - [ ] `uv run python exploration/concept_explorer/seed_registry.py` exits 0.
-- [ ] `uv run python exploration/concept_explorer/extract_explorer_data.py` exits 0.
-- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py status` exits 0 and prints a row for each of the 39 concepts.
-- [ ] `python -c "import json; d=json.load(open('exploration/concept_explorer/data/concept_registry.json')); print(len(d['concepts']))"` prints `39`.
-- [ ] Spot-check verification commands for 3 reclassified concepts produce expected availability/η_th values (commands listed in design).
+- [ ] `python -c "import json; d=json.load(open('exploration/concept_explorer/data/concept_registry.json')); print(len(d['concepts']))"` prints `40`.
+- [ ] `concept_registry.json` and `decision_tree.json` are staged and committed.
 
-### Quality & Integration
+### Out-of-scope verifications
 
-- [ ] Old-ID grep audit (FR-6) returns only the allow-listed files.
-- [ ] The merge commit body documents any non-mechanical resolution decisions (26+30 variant pick, Pranos disposition).
-- [ ] `git push origin ontology-v3-migration` succeeds.
-- [ ] No edits to files listed in "Out of Scope" — verified by `git diff main...ontology-v3-migration -- <those-paths>` showing only what's attributable to `1b960a9` or to standardization-value carry-overs.
-- [ ] Tests are NOT run in this item (they will fail against new enums; Item 3 fixes them).
+- [ ] `git diff --name-only --diff-filter=R main -- exploration/concept_analysis/analyses/ knowledge/concept_research/` returns empty (no renames).
+- [ ] `git diff --name-only main -- 'exploration/concept_analysis/analyses/**/synthesis.md' 'exploration/concept_analysis/analyses/**/analysis.md' 'exploration/concept_analysis/analyses/**/model_output.txt'` returns empty.
+- [ ] `git diff --name-only main -- 'exploration/concept_analysis/scores/' 'exploration/concept_explorer/data/*.json'` shows only `concept_registry.json` and `decision_tree.json`, not per-concept `{ID}.json`.
+- [ ] `uv run python exploration/concept_analysis/scripts/run_analysis.py status` exits 0.
+
+### Commit hygiene
+
+- [ ] One single commit on `ontology-update` after `244ca24`.
+- [ ] Commit message includes `Co-developed-with: Mallory Snowden` trailer.
 
 ---
 
 ## Next-Stage Handoff
 
 **Settled in this spec:**
-- The branch shape (single merge commit, no squash, no cherry-pick).
-- Conflict resolution order (libs → scripts → analyses → research → data).
-- Out-of-scope list (everything from Items 3, 4, 5).
-- The post-merge verification chain (3 entry-point scripts + grep audit + spot-checks).
-- The pre-merge planning commit on `main` (BACKLOG, epic, uv.lock).
-- Handling for renumbered/split/merged concepts (22 → 23+37, 26+30 → 31, Pranos dropped).
-- The branch is NOT PR'd in this item.
+- Adopt schema, code, docs, new concepts; keep our existing IDs.
+- Pranos row dropped; Pranos directories left in place.
+- 26 + 30 stay as two distinct Inertia rows.
+- Split 22 into First Light (our 22) + NearStar (new 37).
+- New IDs for SHINE = 38, ENN = 39.
+- Mallory's renumbered ontology docs pulled verbatim; ID-mapping doc compensates.
+- No directory renames. Mallory's regenerated artifacts not pulled.
+- Single commit with attribution trailer.
 
 **Design must figure out:**
-- The exact 3-way merge approach for `analyses/{ID}/` files where Item 1 and the branch both edited — whether to favor `git mergetool` interactively, scripted patch-rebase, or per-file `git checkout --ours/--theirs` followed by re-applying Item 1's deltas via a generated patch.
-- Whether to commit the epic-planning changes (BACKLOG, epic, uv.lock) as one commit on `main` or split them. Recommend one commit; design can confirm.
-- Whether the pre-merge conflict inventory is produced by a hand-script (`git merge --no-commit --no-ff` then `git diff --name-only --diff-filter=U`) or by reading the branch's file list against `main`'s. Either works.
-- The exact form of the spot-check verification commands for the 3 reclassified concepts.
-- The exact grep audit invocation — directory scope, file globs, allow-list mechanism (in-script grep -v vs documented exception list).
-- How to handle a Pranos file Item 1 modified, if any — discard with note vs. preserve as orphan file vs. escalate.
-- Whether to use `git rerere` for repeated identical conflict patterns across the ~30+ analyses files.
+- Mechanics of CSV translation: hand-edit, generate via a one-off script that reads Mallory's CSV and rewrites IDs, or use a tabular tool. Recommend a small Python script that's checked in under `exploration/phase_1a/` next to the other generators — it's the kind of thing we'll want to rerun if Mallory's branch evolves.
+- The exact column-by-column mapping for the 26/30 split case (Mallory's 31 → our 26 + 30): which columns get copied to both vs which stay distinct.
+- Disposition of `concept_research/20-modular-hts-stellarator/`: verify content overlap with 20a/20b, decide delete-now vs defer-to-Item-6.
+- Whether the new `ID_MAPPING.md` lives at `exploration/phase_1a/ID_MAPPING.md` or alongside Mallory's `RECLASSIFIED_CONCEPTS.md` or as a section appended to that file. Recommend standalone file for clarity.
+- Whether to also append a note at the top of Mallory's `CONCEPT_ONTOLOGY.md` pointing readers to the ID mapping. Recommend yes — a single 2-line note.
+- Exact commit message form (subject + body + trailer).
 
 **Watch-outs for design:**
-- The number-of-files conflict surface is large (potentially every analyzed concept), but the per-file conflict is small (availability + η_th kwargs only). A scripted approach that re-applies Item 1's standardization values to the branch's reclassified files may be faster than interactive resolution. Design should evaluate.
-- `git merge` may report rename-with-modification conflicts (e.g. `17a-laser-icf-hybrid-drive/` → `27-laser-icf-hybrid-direct-drive/`). These need explicit attention — Git's default rename detection may or may not catch the rename depending on similarity threshold.
-- The Pranos concept (`34-compact-spherical-tokamak-india`) was dropped on the branch. If Item 1 modified its files, those edits will appear as "deleted by them, modified by us" conflicts. Resolve by deleting (accept branch's removal) and noting in the merge commit body.
-- Generated artifacts (`model_output.txt`, `decision_tree.json`, `concept_registry.json`) should be taken from the branch and then regenerated post-merge as the final step — do not hand-resolve generated files.
-- `concept_explorer/data/{ID}.json` are renumbered on the branch. If Item 1 didn't touch these (it shouldn't have — it edited model setups, not extracted data), there should be no conflicts here; accept the branch's renames.
-- `uv.lock` is currently modified on `main`'s working tree from Item 1's tail. Commit it before starting the merge — otherwise Git will demand stash/commit when the merge produces additional lock churn.
+- Mallory's CSV rows for the renumbered existing concepts may have updated value vocabulary (e.g. revised `Primary Heating` strings) that we want to adopt verbatim — translation is ONLY the ID column, not the other columns. Don't accidentally rewrite values.
+- Some of Mallory's classification revisions for existing concepts (e.g. HB11 might land as Ultrashort in her CSV vs. Fast ignition on `main`) are intentional and part of the v3 adoption. Item 4 will resolve any inconsistencies between her CSV and her docs; this item just propagates her CSV values as authored.
+- The `Research ID` column needs special care: Mallory populated it with her slug naming. We need to set it to our slug naming. For renumbered concepts whose slugs differ, this means the Research ID won't match Mallory's value — use our existing directory slug.
+- The CSV translation script (if used) needs to handle that Mallory's row 23 (First Light) maps to our 22, AND that NearStar from her 37 needs to be its own row in ours (also at 37). Inertia 31 maps to our 26 *and* our 30. So the script isn't a pure one-to-one row rewrite — it has branching logic for those two cases.
+- After regeneration, `concept_registry.json` may surface validation errors against enum updates (e.g. `Blanket Config` values, dropped Plasma State). That's expected; if it blocks `seed_registry.py` from completing, log the errors and escalate. If it just warns, proceed.
 
 ---
 
 ## Related Artifacts
 
 - **Epic:** `.project/backlog/epic_ontology_v3_migration.md` (Item 2)
-- **Research:** `.project/research/20260517_ontology_v3_delta.md` (full delta + branch addendum)
-- **Branch to merge:** `origin/fix/concept-renumbering-robustness` @ `1b960a9` (Mallory, 2026-05-17)
-- **Baseline:** `main` @ `a8a779e` (PR #15 merge)
-- **Item 1 history:** PR #15, merged `consistency-checks` → `main`
-- **Conflict inventory (to be created):** `.project/active/ontology-v3-merge/conflict-inventory.md`
+- **Research:** `.project/research/20260517_ontology_v3_delta.md`
+- **Source branch:** `origin/fix/concept-renumbering-robustness` @ `1b960a9` (Mallory, 2026-05-17) — cherry-picked file-by-file, not merged
+- **Baseline:** `main` @ `a8a779e`
+- **Planning commit:** `244ca24` (already on `ontology-update`)
 - **Design (to be created):** `.project/active/ontology-v3-merge/design.md`
 - **Plan (to be created):** `.project/active/ontology-v3-merge/plan.md`
 
 ---
 
-**Next Steps:** After approval, proceed to `/_my_design`. Design must specifically resolve the per-file conflict-resolution approach (scripted vs interactive) and produce the exact spot-check commands for the 3 reclassified-concept verifications.
+**Next Steps:** After approval, proceed to `/_my_design`. Design must resolve the CSV translation mechanics, the 26/30 column-mapping detail, the orphan-directory disposition, and the exact commit message.

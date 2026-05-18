@@ -1,7 +1,7 @@
 # Epic: Ontology v3 Migration
 
 **Epic ID**: ONTOLOGY-V3
-**Status**: In Progress (Item 1 complete 2026-05-17)
+**Status**: In Progress (Items 1–2 complete 2026-05-17)
 **Priority**: P0
 **Created**: 2026-05-17
 **Estimated Effort**: 5–8 days across three branches
@@ -39,7 +39,7 @@ Migrate the project from the v0.2.x concept ontology to v0.3.0: drop `Plasma Sta
 ## Success Criteria
 
 - [ ] `consistency-checks` branch merged to `main` (Item 1)
-- [ ] `fix/concept-renumbering-robustness` merged via a new branch with all code-side gaps fixed (Items 2–4)
+- [x] `fix/concept-renumbering-robustness` content adopted via cherry-pick-by-file onto `ontology-update` (Item 2 ✅ 2026-05-17; code-side gaps from Item 3 still pending)
 - [ ] `uv run python exploration/concept_explorer/seed_registry.py` generates a v3-shaped `decision_tree.json` reflecting the new top-level groups
 - [ ] `uv run python exploration/concept_explorer/extract_explorer_data.py` runs clean against the renumbered slate
 - [ ] `uv run python -m pytest exploration/concept_explorer/tests/` passes
@@ -86,7 +86,25 @@ Migrate the project from the v0.2.x concept ontology to v0.3.0: drop `Plasma Sta
 
 ---
 
-### Item 2: Merge ontology v3 branch (mechanical merge + immediate breakage fix)
+### Item 2: Merge ontology v3 branch (mechanical merge + immediate breakage fix) ✅ Complete (2026-05-17)
+
+**Outcome**: Adopted v3 schema, new concepts (37/38/39), and architecture-driven classification from `origin/fix/concept-renumbering-robustness` (1b960a9) by cherry-pick-by-file onto `ontology-update`. Kept our existing concept IDs — no directory renames. Single commit `8db3ed2` after planning commit `244ca24`. See `.project/active/ontology-v3-merge/{spec,design,plan}.md` and `exploration/phase_1a/ID_MAPPING.md` for the renumber map and 26/30 fan-out rationale.
+
+**Strategy revision vs. original spec**: We did NOT merge or adopt Mallory's renumbering. Instead we adopted only her schema + code + new concepts, translating her CSV onto our IDs via `exploration/phase_1a/translate_csv_to_ours.py`. Pranos dropped from CSV (directory left in place — Item 6). `20-modular-hts-stellarator/` orphan documented in ID_MAPPING.md, deferred to Item 6.
+
+**Success criteria verification**:
+- [x] Single commit landed on `ontology-update` (`8db3ed2` after `244ca24`). Note: not `ontology-v3-migration` per original plan — branch was renamed during planning.
+- [x] `table.csv` has 40 rows (37 retained + 3 new), v3 columns, `Research ID` = our slug for every row.
+- [x] `seed_registry.py` succeeds; `concept_registry.json` has 40 entries.
+- [x] η_th values from Item 1 preserved (no `analyses/` files touched in this commit — FR-14).
+- [x] No references to old IDs in tracked files (we kept our IDs; Mallory's IDs only appear in pulled-verbatim v3 docs, intentionally — ID_MAPPING.md compensates).
+- [ ] `extract_explorer_data.py` clean run: **deferred to Item 5** (per-concept `{ID}.json` regeneration was explicitly out of scope).
+
+**Carry-forward items uncovered during execution** (folded into the right downstream items):
+- `run_analysis.py` had a dead `FREEFORM_CONCEPTS` import — fixed in this commit (1 line). Mentioned because Item 3 should audit for similar orphaned references.
+- `scoring.py` initially shipped without the `canonical_eta_th` import after stripping the inline definition. Caught in review; amended into `8db3ed2`. Lesson logged: Phase gates need behavioral smoke that reaches the function, not just module-load.
+
+### Item 2 (original — superseded)
 
 **Type**: Code/Integration
 **Effort**: 1.5 days (spec 1h, design 2h, plan 1h, execute 8h)

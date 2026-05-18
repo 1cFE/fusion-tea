@@ -23,10 +23,8 @@ var TaxonomyCards = (function () {
     { field: "fuel", label: "Fuel" },
     { field: "primary_heating", label: "Heating" },
     { field: "energy_capture", label: "Energy Capture" },
-    { field: "plasma_state", label: "Plasma State" },
     { field: "magnet_type", label: "Magnets" },
-    { field: "tritium_breeding", label: "Tritium" },
-    { field: "neutron_management", label: "Neutrons" },
+    { field: "blanket_config", label: "Blanket" },
     { field: "operation_mode", label: "Operation" },
     { field: "repetition_rate", label: "Rep Rate" }
   ];
@@ -143,11 +141,9 @@ var TaxonomyCards = (function () {
   var FIELD_LABELS = {
     fuel: "Fuel Type",
     primary_heating: "Primary Heating",
-    plasma_state: "Plasma State",
     magnet_type: "Magnet Type",
     energy_capture: "Energy Capture",
-    tritium_breeding: "Tritium Breeding",
-    neutron_management: "Neutron Management",
+    blanket_config: "Blanket Config",
     operation_mode: "Operation Mode",
     repetition_rate: "Repetition Rate"
   };

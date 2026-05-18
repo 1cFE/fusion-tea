@@ -96,7 +96,7 @@
                 "label": "Spherical",
                 "concepts": [
                   "21",
-                  "34"
+                  "39"
                 ]
               },
               {
@@ -207,7 +207,8 @@
             "label": "Magnetized target",
             "concepts": [
               "07",
-              "14"
+              "14",
+              "37"
             ]
           }
         ]
@@ -222,7 +223,8 @@
             "label": "Electrostatic",
             "concepts": [
               "13",
-              "27"
+              "27",
+              "38"
             ]
           },
           {

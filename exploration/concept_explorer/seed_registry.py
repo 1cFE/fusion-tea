@@ -27,6 +27,7 @@ if str(_PROJECT_ROOT) not in sys.path:
 
 from exploration.concept_explorer.models import ConfinementFamily, FuelType  # noqa: E402
 from exploration.concept_explorer.taxonomy_models import (  # noqa: E402
+    BlanketConfig,
     ConceptRegistry,
     ConceptTaxonomy,
     EnergyCapture,
@@ -35,16 +36,13 @@ from exploration.concept_explorer.taxonomy_models import (  # noqa: E402
     MagnetType,
     MFETopology,
     MIFMethod,
-    NeutronManagement,
     NonStandardMechanism,
     OperationMode,
-    PlasmaState,
     PrimaryHeating,
     RepetitionRate,
     StellaratorType,
     TaxonomyConfidence,
     TokamakShape,
-    TritiumBreeding,
 )
 
 CSV_PATH = Path(__file__).parent.parent / "concept_analysis" / "table.csv"
@@ -73,9 +71,9 @@ E = TypeVar("E", bound=Enum)
 
 
 def _na_or_enum(value: str, enum_cls: type[E]) -> E | None:
-    """Map CSV value to enum, treating 'N/A' as None."""
+    """Map CSV value to enum, treating 'N/A' or empty as None."""
     value = value.strip()
-    if value == "N/A":
+    if value == "N/A" or value == "":
         return None
     # Direct lookup by value
     for member in enum_cls:
@@ -122,12 +120,8 @@ def _parse_row(row: dict[str, str]) -> ConceptTaxonomy:
         fuel=FUEL_MAP[row["Fuel"].strip()],
         primary_heating=_na_or_enum(row["Primary Heating"], PrimaryHeating),
         energy_capture=_na_or_enum(row["Energy Capture"], EnergyCapture),
-        plasma_state=_na_or_enum(row["Plasma State"], PlasmaState),
         magnet_type=_na_or_enum(row["Magnet Type"], MagnetType),
-        tritium_breeding=_na_or_enum(row["Tritium Breeding"], TritiumBreeding),
-        neutron_management=_na_or_enum(
-            row["Neutron Management"], NeutronManagement
-        ),
+        blanket_config=_na_or_enum(row["Blanket Config"], BlanketConfig),
         operation_mode=OperationMode(row["Operation Mode"].strip()),
         repetition_rate=_na_or_enum(row["Repetition Rate"], RepetitionRate),
         driver_technology=row["Driver Technology"].strip() or None,
