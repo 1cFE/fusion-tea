@@ -18,6 +18,7 @@ from pydantic import ValidationError
 
 from exploration.concept_explorer.models import ConfinementFamily, FuelType
 from exploration.concept_explorer.taxonomy_models import (
+    BlanketConfig,
     ConceptRegistry,
     ConceptTaxonomy,
     EnergyCapture,
@@ -25,13 +26,13 @@ from exploration.concept_explorer.taxonomy_models import (
     LaserApproach,
     MagnetType,
     MFETopology,
+    NonStandardMechanism,
     OperationMode,
-    PlasmaState,
     PrimaryHeating,
     TaxonomyConfidence,
     TokamakShape,
-    TritiumBreeding,
 )
+from exploration.concept_explorer.seed_registry import tree_group
 
 # Paths to seeded JSON files (Phase 1 output)
 _DATA_DIR = Path(__file__).parent.parent / "data"
@@ -58,17 +59,43 @@ class TestConceptTaxonomyModel:
             fuel=FuelType.DT,
             primary_heating=PrimaryHeating.RF_ICRH,
             energy_capture=EnergyCapture.THERMAL_STEAM,
-            plasma_state=PlasmaState.BURNING,
             magnet_type=MagnetType.HTS_WOUND,
-            tritium_breeding=TritiumBreeding.FLIBE_BLANKET,
+            blanket_config=BlanketConfig.MOLTEN_SALT,
             operation_mode=OperationMode.QUASI_STEADY,
             confidence=TaxonomyConfidence.HIGH,
         )
         data = concept.model_dump(mode="json")
         assert data["tokamak_shape"] == "Compact"
+        assert data["blanket_config"] == "Molten salt"
         assert data["ife_driver"] is None  # N/A fields serialize as null
         rebuilt = ConceptTaxonomy.model_validate(data)
         assert rebuilt == concept
+
+    def test_blanket_config_round_trip(self):
+        """Every BlanketConfig enum member round-trips through JSON."""
+        for member in BlanketConfig:
+            concept = ConceptTaxonomy(
+                concept_id="bt",
+                slug="bt",
+                name="BT",
+                confinement_family=ConfinementFamily.MFE,
+                mfe_topology=MFETopology.TOKAMAK,
+                fuel=FuelType.DT,
+                blanket_config=member,
+                operation_mode=OperationMode.STEADY_STATE,
+                confidence=TaxonomyConfidence.MEDIUM,
+            )
+            data = concept.model_dump(mode="json")
+            assert data["blanket_config"] == member.value
+            rebuilt = ConceptTaxonomy.model_validate(data)
+            assert rebuilt.blanket_config == member
+
+    def test_blanket_config_enum_covers_v3_values(self):
+        """BlanketConfig must cover the v3 controlled vocabulary."""
+        assert {m.value for m in BlanketConfig} >= {
+            "Liquid metal", "Molten salt", "Solid breeder", "Other/hybrid",
+            "N/A (no tritium)", "N/A (non-power)", "TBD",
+        }
 
     def test_hierarchy_validator_rejects_mfe_with_ife_driver(self):
         """MFE concept with ife_driver set should fail validation."""
@@ -216,17 +243,17 @@ def tree() -> dict:
 
 
 class TestConceptRegistry:
-    def test_loads_all_38_concepts(self, registry: ConceptRegistry):
-        """The seeded registry JSON loads and validates all 38 concepts."""
-        assert len(registry.concepts) == 38
+    def test_loads_all_40_concepts(self, registry: ConceptRegistry):
+        """The seeded registry JSON loads and validates all 40 v3 concepts."""
+        assert len(registry.concepts) == 40
         ids = [c.concept_id for c in registry.concepts]
-        assert len(set(ids)) == 38  # All unique
+        assert len(set(ids)) == 40  # All unique
 
     def test_by_id(self, registry: ConceptRegistry):
         """by_id returns correct concept or None."""
         concept = registry.by_id("01")
         assert concept is not None
-        assert concept.name == "HTS Compact Tokamak"
+        assert concept.name.startswith("HTS Compact Tokamak")
         assert registry.by_id("nonexistent") is None
 
     def test_by_family(self, registry: ConceptRegistry):
@@ -245,16 +272,15 @@ class TestConceptRegistry:
             ConfinementFamily.NONSTANDARD,
         }
 
-    def test_known_concept_helion(self, registry: ConceptRegistry):
-        """Spot-check Helion FRC: MIF family, D-He3 fuel, pulsed operation."""
-        helion = registry.by_id("08")
-        assert helion is not None
-        assert helion.confinement_family == ConfinementFamily.MIF
-        assert helion.fuel == FuelType.DHE3
-        assert helion.operation_mode == OperationMode.PULSED
+    def test_known_concept_frc(self, registry: ConceptRegistry):
+        """Spot-check FRC w/ Direct Conversion (08): MIF family, D-He3 fuel."""
+        c = registry.by_id("08")
+        assert c is not None
+        assert c.confinement_family == ConfinementFamily.MIF
+        assert c.fuel == FuelType.DHE3
 
     def test_known_concept_tae(self, registry: ConceptRegistry):
-        """Spot-check TAE p-B11 FRC: MFE/Compact Toroid, p-B11 fuel."""
+        """Spot-check p-B11 FRC (18): MFE/Compact Toroid, p-B11 fuel."""
         tae = registry.by_id("18")
         assert tae is not None
         assert tae.confinement_family == ConfinementFamily.MFE
@@ -262,43 +288,27 @@ class TestConceptRegistry:
         assert tae.fuel == FuelType.PB11
 
     def test_concept_id_is_analysis_id(self, registry: ConceptRegistry):
-        """Spot-check that concept_id is the analysis directory ID."""
-        cfs = registry.by_id("01")
-        assert cfs is not None
-        assert cfs.slug == "hts-compact-tokamak"
-
-        hb11 = registry.by_id("04")
-        assert hb11 is not None
-        assert hb11.slug == "laser-icf-p-b11-fast-ignition"
-
-        mm_pb11 = registry.by_id("06")
-        assert mm_pb11 is not None
-        assert mm_pb11.slug == "magnetic-mirror-p-b11"
-
-        mm_dt = registry.by_id("11")
-        assert mm_dt is not None
-        assert mm_dt.slug == "magnetic-mirror-d-t"
-
-        fi_dt = registry.by_id("17b")
-        assert fi_dt is not None
-        assert fi_dt.slug == "laser-icf-fast-ignition-d-t"
+        """concept_id is the leading token of the directory ID (e.g. 17a, 20b)."""
+        for cid in ("01", "17a", "17b", "20a", "20b", "39"):
+            c = registry.by_id(cid)
+            assert c is not None, f"missing concept_id {cid}"
 
     def test_by_slug(self, registry: ConceptRegistry):
-        """by_slug returns correct concept."""
-        concept = registry.by_slug("hts-compact-tokamak")
-        assert concept is not None
-        assert concept.concept_id == "01"
+        """by_slug returns correct concept for v3 slug shapes."""
+        c = registry.by_slug("hts-compact-tokamak-d-t")
+        assert c is not None
+        assert c.concept_id == "01"
         assert registry.by_slug("nonexistent") is None
 
 
 class TestDecisionTree:
     def test_structure(self, tree: dict):
-        """Decision tree has correct root structure."""
+        """Decision tree root uses v3 tree_group with six top-level groups."""
         assert tree["version"] == "1.0"
         root = tree["root"]
-        assert root["field"] == "confinement_family"
-        families = [c["value"] for c in root["children"]]
-        assert set(families) == {"MFE", "IFE", "MIF", "Non-Standard"}
+        assert root["field"] == "tree_group"
+        groups = [c["value"] for c in root["children"]]
+        assert set(groups) == {"MFE", "IFE", "MIF", "Cmpt-Tor", "Estatic", "Other"}
 
     def test_all_concepts_in_tree(self, tree: dict, registry: ConceptRegistry):
         """Every concept in the registry appears exactly once in the tree."""
@@ -318,14 +328,79 @@ class TestDecisionTree:
             f"Mismatch: in tree but not registry: {tree_ids - registry_ids}, "
             f"in registry but not tree: {registry_ids - tree_ids}"
         )
-        # No duplicates
         assert len(concept_ids_in_tree) == len(tree_ids)
 
     def test_mfe_has_topology_children(self, tree: dict):
-        """MFE branch should have mfe_topology as the branching field."""
+        """MFE group branches on mfe_topology (Compact Toroid now under Cmpt-Tor)."""
         root = tree["root"]
         mfe = next(c for c in root["children"] if c["value"] == "MFE")
         assert mfe["field"] == "mfe_topology"
         topologies = [c["value"] for c in mfe["children"]]
         assert "Tokamak" in topologies
         assert "Stellarator" in topologies
+        # Compact Toroid is its own group under Cmpt-Tor, not under MFE
+        assert "Compact Toroid" not in topologies
+
+
+class TestTreeGroup:
+    """v3 display-only sibling grouping (FR-2)."""
+
+    def _make(self, **kwargs) -> ConceptTaxonomy:
+        defaults = dict(
+            concept_id="tg",
+            slug="tg",
+            name="TG",
+            fuel=FuelType.DT,
+            operation_mode=OperationMode.STEADY_STATE,
+            confidence=TaxonomyConfidence.MEDIUM,
+        )
+        defaults.update(kwargs)
+        return ConceptTaxonomy(**defaults)
+
+    def test_mfe_tokamak_returns_mfe(self):
+        c = self._make(
+            confinement_family=ConfinementFamily.MFE,
+            mfe_topology=MFETopology.TOKAMAK,
+        )
+        assert tree_group(c) == "MFE"
+
+    def test_compact_toroid_returns_cmpt_tor(self):
+        c = self._make(
+            confinement_family=ConfinementFamily.MFE,
+            mfe_topology=MFETopology.COMPACT_TOROID,
+            fuel=FuelType.PB11,
+        )
+        assert tree_group(c) == "Cmpt-Tor"
+
+    def test_electrostatic_returns_estatic(self):
+        c = self._make(
+            confinement_family=ConfinementFamily.NONSTANDARD,
+            non_standard_mechanism=NonStandardMechanism.ELECTROSTATIC,
+        )
+        assert tree_group(c) == "Estatic"
+
+    def test_nonstandard_non_electrostatic_returns_other(self):
+        c = self._make(
+            confinement_family=ConfinementFamily.NONSTANDARD,
+            non_standard_mechanism=NonStandardMechanism.MUON_CATALYZED,
+        )
+        assert tree_group(c) == "Other"
+
+    def test_ife_returns_ife(self):
+        c = self._make(
+            confinement_family=ConfinementFamily.IFE,
+            ife_driver=IFEDriver.LASER,
+            operation_mode=OperationMode.PULSED,
+        )
+        assert tree_group(c) == "IFE"
+
+    def test_every_registry_concept_lands_in_one_group(
+        self, registry: ConceptRegistry
+    ):
+        """Partition check: every concept maps to exactly one of the six groups."""
+        valid = {"MFE", "IFE", "MIF", "Cmpt-Tor", "Estatic", "Other"}
+        for c in registry.concepts:
+            assert tree_group(c) in valid, (
+                f"{c.concept_id} {c.name}: tree_group returned "
+                f"{tree_group(c)!r}, not in {valid}"
+            )

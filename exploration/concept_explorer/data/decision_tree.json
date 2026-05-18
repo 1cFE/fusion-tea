@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "root": {
-    "field": "confinement_family",
+    "field": "tree_group",
     "label": "Confinement Approach",
     "children": [
       {
@@ -9,13 +9,6 @@
         "label": "Magnetic Fusion Energy",
         "field": "mfe_topology",
         "children": [
-          {
-            "value": "Compact Toroid",
-            "label": "Compact Toroid",
-            "concepts": [
-              "18"
-            ]
-          },
           {
             "value": "Dipole",
             "label": "Dipole",
@@ -214,19 +207,26 @@
         ]
       },
       {
-        "value": "Non-Standard",
-        "label": "Non-Standard",
+        "value": "Cmpt-Tor",
+        "label": "Compact Toroid",
+        "concepts": [
+          "18"
+        ]
+      },
+      {
+        "value": "Estatic",
+        "label": "Electrostatic Confinement",
+        "concepts": [
+          "13",
+          "27",
+          "38"
+        ]
+      },
+      {
+        "value": "Other",
+        "label": "Other Non-Standard",
         "field": "non_standard_mechanism",
         "children": [
-          {
-            "value": "Electrostatic",
-            "label": "Electrostatic",
-            "concepts": [
-              "13",
-              "27",
-              "38"
-            ]
-          },
           {
             "value": "Muon-catalyzed",
             "label": "Muon-catalyzed",

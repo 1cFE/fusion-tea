@@ -43,11 +43,9 @@ var NeighborhoodGraph = (function () {
   var FIELD_LABELS = {
     fuel: "Fuel Type",
     primary_heating: "Primary Heating",
-    plasma_state: "Plasma State",
     magnet_type: "Magnet Type",
     energy_capture: "Energy Capture",
-    tritium_breeding: "Tritium Breeding",
-    neutron_management: "Neutron Management",
+    blanket_config: "Blanket Config",
     operation_mode: "Operation Mode",
     repetition_rate: "Repetition Rate"
   };
