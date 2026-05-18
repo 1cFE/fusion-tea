@@ -108,12 +108,12 @@ def test_csv_has_typed_heating_and_driver_columns():
 
 See [`design.md#implementation-notes`](design.md#implementation-notes) — "ID translation gotcha" + "40th row case".
 
-- [ ] Build a translation table from `ID_MAPPING.md` (Mallory ID → our ID) for the 7 renumbered rows (27/28/29/30/37/38/39 region).
-- [ ] Append `Heating Type` and `Driver Type` columns to `exploration/concept_analysis/table.csv` header (after `Primary Heating` and `Driver Technology` respectively).
-- [ ] Populate 39 rows from `CONCEPT_ONTOLOGY.md:30-69` with ID translation applied.
-- [ ] Populate 40th row (`20-modular-hts-stellarator`) from lineage or `TBD`; note in Implementation Notes.
-- [ ] Mirror the changes into `exploration/phase_1a/table.csv`.
-- [ ] Add the test stencil above to `exploration/concept_explorer/tests/test_taxonomy_models.py`.
+- [x] ~~Build a translation table from `ID_MAPPING.md`~~ — not needed; regenerated MD already uses our slug IDs.
+- [x] Append `Heating Type` and `Driver Type` columns to `exploration/concept_analysis/table.csv` header (after `Primary Heating` and `Driver Technology` respectively).
+- [x] Populate all 40 rows from `CONCEPT_ONTOLOGY.md` (our IDs throughout).
+- [x] ~~Populate 40th row (`20-modular-hts-stellarator`)~~ — no such orphan row exists in CSV (ID_MAPPING confirms it's referenced only by directory, not by CSV).
+- [x] Mirror the changes into `exploration/phase_1a/table.csv`.
+- [x] Add the test stencil above to `exploration/concept_explorer/tests/test_taxonomy_models.py`.
 
 ### Validation
 
@@ -163,11 +163,11 @@ def test_heating_combination_parses():
 
 See [`design.md#component-overview`](design.md#component-overview) and [`design.md#interfaces-10-lines-each`](design.md#interfaces-10-lines-each).
 
-- [ ] Add `HeatingType` and `DriverType` StrEnums to `exploration/concept_explorer/taxonomy_models.py` per P8/P9 vocabularies.
-- [ ] Add `heating_type: str | None` (raw) and `heating_type_parsed: list[HeatingType]` (derived property) plus `driver_type: DriverType | None` fields to `ConceptTaxonomy`.
-- [ ] Add the two new column reads in `exploration/concept_explorer/seed_registry.py::_parse_row` (alongside lines 119/121/127).
-- [ ] Update `exploration/concept_explorer/similarity.py::SIMILARITY_DIMENSIONS` — add `heating_type` to `plasma_physics`, `driver_type` to `engineering` (per P8/P9 affected-files lists).
-- [ ] Confirm test stencil above passes.
+- [x] Add `HeatingType` and `DriverType` StrEnums to `exploration/concept_explorer/taxonomy_models.py` per P8/P9 vocabularies.
+- [x] Add `heating_type: str | None` (raw) and `heating_type_parsed: list[HeatingType]` (derived property) plus `driver_type: DriverType | None` fields to `ConceptTaxonomy`.
+- [x] Add the two new column reads in `exploration/concept_explorer/seed_registry.py::_parse_row` (alongside lines 119/121/127).
+- [x] Update `exploration/concept_explorer/similarity.py::SIMILARITY_DIMENSIONS` — add `heating_type` to `plasma_physics`, `driver_type` to `engineering` (per P8/P9 affected-files lists).
+- [x] Confirm test stencil above passes.
 
 ### Validation
 
@@ -207,11 +207,11 @@ def test_heating_and_driver_in_design_columns():
 
 ### Changes Required
 
-- [ ] Add `"Heating Type"` and `"Driver Type"` to `exploration/phase_2a/column_map.py::DESIGN_COLUMNS`.
-- [ ] Add corresponding `VOCABULARY` entries (set of valid enum values per column).
-- [ ] Add `KEY_TO_COLUMN` mappings for natural-language aliases LLM might emit (e.g. `"heating"` → `"Heating Type"`, `"driver"` → `"Driver Type"`).
-- [ ] Confirm test passes.
-- [ ] **Coordination check**: if Item 3 has not merged, rebase. If it has, just verify no merge conflict.
+- [x] Add `"Heating Type"` and `"Driver Type"` to `exploration/phase_2a/column_map.py::DESIGN_COLUMNS`.
+- [x] Add corresponding `VOCABULARY` entries (MappedTerm aliases per column — actual structure is `dict[str, MappedTerm]`, not `dict[str, set]` as the stencil presumed).
+- [x] Add `KEY_TO_COLUMN` mappings + `VALUE_ALIASES` for natural-language aliases LLM might emit.
+- [x] Confirm test passes (4/4 in `exploration/phase_2a/tests/test_column_map.py`).
+- [x] **Coordination check**: Item 3 already landed (commit `ac320a4`); column_map.py edits sit cleanly on top. `TABLE_PATH` still points at `phase_1b_v2/table_v2.csv` — that reconciliation is explicitly Item 3 scope per spec out-of-scope, and the validator continues to work against whichever path is current.
 
 ### Validation
 
@@ -255,12 +255,12 @@ print("round-trip OK")
 
 ### Changes Required
 
-- [ ] Create `exploration/phase_1a/ADR-001_csv-source-of-truth.md` per [`design.md#component-overview`](design.md#component-overview) ("ADR template" note). Three sections: Q1 rule + rationale, Q2 decision + rationale, consequences/open.
-- [ ] Re-run `generate_ontology_md.py` and `generate_ontology_chart.py`; commit any updates.
-- [ ] Run round-trip check above; reconcile any remaining divergences before merge.
-- [ ] (Optional) Notify Mallory of Q1 resolution. If she responds, append to ADR.
-- [ ] Open PR `ontology-update` → `main` with epic Item 3 + Item 4 outputs. PR description: link epic, spec, design, ADR.
-- [ ] Merge.
+- [x] Create `exploration/phase_1a/ADR-001_csv-source-of-truth.md` per [`design.md#component-overview`](design.md#component-overview) ("ADR template" note). Three sections: Q1 rule + rationale, Q2 decision + rationale, consequences/open.
+- [x] Re-run `generate_ontology_md.py` and `generate_ontology_chart.py`; no diff vs. Phase 1's regen (chart maps drive these values, not CSV).
+- [x] Run round-trip check; 40/40 concepts have matching Heating Type and Driver Type values in CSV vs. MD.
+- [ ] (Optional) Notify Mallory of Q1 resolution. If she responds, append to ADR. — deferred, non-blocking.
+- [ ] Open PR `ontology-update` → `main` with epic Item 3 + Item 4 outputs. PR description: link epic, spec, design, ADR. — pending user confirmation.
+- [ ] Merge. — pending PR.
 
 ### Validation
 
@@ -321,29 +321,41 @@ Conclusion: no CSV bugs surfaced. All divergences are "stale committed MD" vs "f
 
 ### Phase 2 Completion
 
-**Completed:** _pending_
-**Actual Changes:** _pending_
-**Issues:** _pending_
-**40th-row resolution:** _pending_
+**Completed:** 2026-05-17
+**Actual Changes:** Added `Heating Type` (col 15) and `Driver Type` (col 22) to both `exploration/concept_analysis/table.csv` and `exploration/phase_1a/table.csv`. All 40 rows populated from the just-regenerated MD. Test stencil added to `test_taxonomy_models.py` — passes.
+**Issues:** None.
+**40th-row resolution:** Moot. ID_MAPPING.md confirms `20-modular-hts-stellarator` is referenced only by `knowledge/concept_research/` directory, not by any CSV row. Our v3 CSV has 40 rows by virtue of the INE fan-out (`26-` + `30-`) plus the 20a/20b modular stellarator split — all 40 IDs are present in the MD; no orphan to fill.
 
 ### Phase 3 Completion
 
-**Completed:** _pending_
-**Actual Changes:** _pending_
-**Heating-combination field shape adopted:** _pending_
+**Completed:** 2026-05-17
+**Actual Changes:**
+- `taxonomy_models.py`: added `HeatingType` and `DriverType` StrEnums (7 + 9 members). Added `heating_type: str | None` and `driver_type: DriverType | None` fields on `ConceptTaxonomy`. Added `heating_type_parsed` as a `@computed_field` cached property that splits the raw string on `" + "` and returns `list[HeatingType]`.
+- `seed_registry.py`: imported `DriverType`; added two reads in `_parse_row` (`heating_type=row["Heating Type"].strip() or None`, `driver_type=_na_or_enum(row["Driver Type"], DriverType)`).
+- `similarity.py::SIMILARITY_DIMENSIONS`: `heating_type` added to `plasma_physics`; `driver_type` added to `engineering`.
+- Tests: 2 new tests in `test_taxonomy_models.py` (one for full-registry population, one for the BEST combination case). Full suite: 179 passed, 2 skipped.
+- Regenerated `concept_registry.json` and `decision_tree.json` carry `heating_type`, `driver_type`, and `heating_type_parsed` for every concept.
+
+**Heating-combination field shape adopted:** Raw `str | None` + computed `heating_type_parsed: list[HeatingType]`. Used `@computed_field` so the parsed list serializes into the registry JSON without needing a separate hand-rolled serializer.
 
 ### Phase 4 Completion
 
-**Completed:** _pending_
-**Actual Changes:** _pending_
-**Item 3 coordination outcome:** _pending_
+**Completed:** 2026-05-17
+**Actual Changes:**
+- `DESIGN_COLUMNS`: appended `"Heating Type"` and `"Driver Type"`.
+- `VOCABULARY`: 5 typed Heating-Type aliases (`icrh`, `ecrh`, `ohmic`, `compression-driven heating`, `non-thermal heating`) + 9 Driver-Type aliases.
+- `KEY_TO_COLUMN`: added `heating_type`, `driver_type`; remapped `heating` → `Heating Type` (was `Primary Heating`) to favor the typed column for natural-language `heating` from LLM output.
+- `VALUE_ALIASES`: added full alias tables for both new columns.
+- Created `exploration/phase_2a/tests/test_column_map.py` (4 tests, all pass). Adapted stencil to the actual `VOCABULARY: dict[str, MappedTerm]` shape (the plan's `VOCABULARY.get("Driver Type", set())` premise didn't match the existing data structure).
+
+**Item 3 coordination outcome:** Item 3 already on this branch (`ac320a4`). No rebase needed; edits sit cleanly. `TABLE_PATH` still points at `phase_1b_v2/table_v2.csv` per Item 3 scope — out of scope here.
 
 ### Phase 5 Completion
 
-**Completed:** _pending_
-**Actual Changes:** _pending_
-**PR URL:** _pending_
-**Mallory response:** _pending_
+**Completed:** 2026-05-17 (code + ADR); PR/merge pending user.
+**Actual Changes:** Created `exploration/phase_1a/ADR-001_csv-source-of-truth.md` (Q1 rule + rationale, Q2 decision + rationale, consequences, open). Re-ran MD generator — bit-identical to Phase 1's output (chart maps drive the typed-column values in MD, not CSV columns; CSV columns we added in Phase 2 were back-copied from MD). Round-trip check passes 40/40 (every CSV Heating Type and Driver Type appears verbatim in the MD).
+**PR URL:** _pending — user-authorized step. `git status` shows two unrelated modifications (`exploration/phase_2a/constraints.json`, `tree.json`) carried in from prior session; should be reviewed before PR scope is finalized._
+**Mallory response:** Not solicited (optional per spec FR-3 / risk table)._
 
 ---
 
