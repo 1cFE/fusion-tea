@@ -13,9 +13,6 @@ from pathlib import Path
 import sys
 sys.path.insert(0, str(Path('exploration/phase_1a')))
 from generate_ontology_chart import (  # type: ignore
-    HEAT_MAP, HEAT_OVERRIDE, DRIVER_BY_CO, LASARCH_BY_CO,
-    BLANKET_MAP, MAGNET_MAP, CAPTURE_MAP, OPMODE_MAP, REPRATE_MAP, FUEL_MAP,
-    TREE_PATH, CODE_BY_CO, SHORT_NAME,
     FAMILY_ORDER, TOPOLOGY_ORDER, SUBTYPE_ORDER,
     derive_row,
 )
