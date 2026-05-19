@@ -294,6 +294,16 @@ Concept research binary artifacts (PDFs, HTML snapshots, extracted images) are s
 ./scripts/sync_research.sh pull 01-hts-compact-tokamak   # single concept
 ```
 
+**⚠ Mirror semantics, not additive**: `sync_research.sh` uses `rclone sync`,
+not `rclone copy`. `push` deletes any R2 prefix that doesn't exist locally;
+`pull` deletes any local file that isn't on R2. After retiring or renaming a
+concept directory, the next `push` will purge the old prefix from R2 (this
+is by design — keeps R2 in lockstep with the canonical concept set, but is
+destructive). Before any retire/rename push: (1) snapshot the affected R2
+prefix(es) elsewhere with `rclone copy <remote-path> <local-backup-path>`,
+and (2) run the push with `--dry-run` first to confirm the deletion set is
+what you intend.
+
 **rclone setup** (one-time): R2 credentials go in `.env` as `R2_ACCESS_KEY` and `R2_SECRET_ACCESS_KEY` (from Cloudflare dashboard → R2 → Manage R2 API Tokens → the Access Key ID and Secret Access Key shown on the token success page). Then configure rclone:
 ```bash
 source .env

@@ -1,10 +1,25 @@
 #!/usr/bin/env bash
 # Sync binary research artifacts between local and Cloudflare R2.
 #
+# IMPORTANT: This uses `rclone sync` (mirror), NOT `rclone copy` (additive).
+# `push` makes R2 mirror LOCAL — any concept directory present on R2 but
+# NOT present locally will be DELETED FROM R2. Likewise `pull` deletes
+# local files that aren't on R2.
+#
+# Practical consequence: after retiring or renaming a concept directory
+# locally, the next `push` will purge the old prefix from R2. This is by
+# design (keeps R2 in lockstep with the canonical concept set) but is
+# destructive. Always:
+#   1. Snapshot the prefix(es) you're about to retire (rclone copy to a
+#      safe local location), and
+#   2. Run with --dry-run first to confirm the deletion set is what you
+#      expect.
+#
 # Usage:
-#   ./scripts/sync_research.sh pull                          # pull all
-#   ./scripts/sync_research.sh push                          # push all
+#   ./scripts/sync_research.sh pull                          # pull all (mirrors R2->local)
+#   ./scripts/sync_research.sh push                          # push all (mirrors local->R2; deletes R2-only dirs)
 #   ./scripts/sync_research.sh pull --dry-run                # preview
+#   ./scripts/sync_research.sh push --dry-run                # preview (recommended before any push)
 #   ./scripts/sync_research.sh pull 01-hts-compact-tokamak   # single concept
 set -euo pipefail
 
