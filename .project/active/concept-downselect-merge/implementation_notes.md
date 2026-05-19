@@ -95,7 +95,20 @@ See `_downselect_filelist.txt` for the raw `git diff --name-status -M main..conc
     - `exploration/concept_analysis/analyses/38-accelerator-driven-fusion/{analysis.md, iter-1, model_output.txt, model_setup.py}`
     - `exploration/concept_analysis/analyses/39-cs-free-spherical-tokamak-pb11/{analysis.md, iter-1, iter-2, model_output.txt, model_setup.py}`
   - Justification: main's analyses use v3 ontology (post-PR-#16); downselect's predate v3. Replacing would lose v3-consistency. Source-side overlay preserves unique research data while keeping main's iterated analyses as the canonical record.
-- **Split-17 subset** (Focused Energy + Xcimer separate analyses) — [pending Phase 5]
+- **Split-17 subset** — [PARTIALLY PORTED — Phase 5 Option C precedent, 2026-05-19]
+  - Main has full deep analyses: 17a-laser-icf-hybrid-drive (Xcimer, 7 iters) and 17b-laser-icf-fast-ignition (Focused, 8 iters). Downselect's split-17 (17 Focused, 27 Xcimer) has 1-2 iters each.
+  - **Ported** (5 narrative-unique artifacts):
+    - `dossier_17a_xcimer_concept_downselect.md` (from ds `27/dossier.md`) → `knowledge/concept_research/17-laser-icf-direct-drive/`
+    - `dossier_17b_focused_concept_downselect.md` (from ds `17/dossier.md`) → same
+    - `17a-laser-icf-hybrid-drive/synthesis_concept_downselect.md` (from ds `27/synthesis.md`)
+    - `17a-laser-icf-hybrid-drive/review_concept_downselect.md` (from ds `27/review.md`)
+    - `17b-laser-icf-fast-ignition/synthesis_concept_downselect.md` (from ds `17/synthesis.md`)
+  - **Ported** (WI-1B work item, FR-6 explicit requirement): archived as `work/completed/20260518_WI-1B_concept-reanalysis-and-net-new/{spec.md, plan.md, README.md}` (README explains legacy status + ID crosswalk).
+  - **Skipped: superseded by main's post-v3 reanalysis**:
+    - downselect `analyses/17-laser-icf-direct-drive-fast-ignition/{analysis.md, iter-1, model_output.txt, model_setup.py, prompts/, gap_report.md}`
+    - downselect `analyses/27-laser-icf-hybrid-direct-drive/{analysis.md, iter-1, iter-2, model_output.txt, model_setup.py, prompts/, gap_report.md, research_log.json}`
+    - downselect `knowledge/concept_research/17-laser-icf-direct-drive-fast-ignition/{iter-01,iter-02,changelog.md}` and `27-laser-icf-hybrid-direct-drive/{iter-01,iter-02,changelog.md}` — the per-iter sources duplicate main's shared `17-laser-icf-direct-drive/iter-01..03/sources/` content (same filenames; spot-check confirmed `focused-energy-technology.md`, `xcimer-energy-approach.md`, `xcimer-science-page.md`, `xec-…-shared-24-feb.md` all already present on main).
+  - Justification: main's deeper iterated analyses are the canonical record; downselect's narrative-unique artifacts (dossiers + synthesis + review) preserved as legacy references.
 - **`scripts/renumber/{manifest.json,manifest.diff.txt,inventory.md,r2_ops.log}`** — [skipped: renumber tooling artifacts]
 **Status:** pending Phase 4 + Phase 5 work
 

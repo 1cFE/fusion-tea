@@ -247,13 +247,15 @@ grep -E '^27,'  /home/reid/1cfe/fusion-tea-concept-downselect/exploration/concep
 
 ### Steps
 
-- [ ] Run pre-flight; lock in mapping table in ledger before copying anything
-- [ ] Copy Xcimer reanalysis: downselect `analyses/27-…/iter-01..NN/` → main `analyses/17a-laser-icf-hybrid-drive/iter-*/` (append after main's existing iter dirs; do NOT overwrite main's older iters)
-- [ ] Copy Focused Energy reanalysis: downselect `analyses/17-…/iter-01..NN/` → main `analyses/17b-laser-icf-fast-ignition/iter-*/`
-- [ ] If `analysis.md` differs between branches, prefer downselect's (newer reanalysis) but preserve main's iter-history in commit message
-- [ ] Port WI-1B work item: copy `work/active/WI-1B_concept-reanalysis-and-net-new/{spec.md,plan.md}` from downselect verbatim
-- [ ] Commit as `port: split-17 reanalysis (Focused Energy → 17b, Xcimer → 17a) + WI-1B`
-- [ ] Append to ledger: the 17/27 subset of `a2004fa` marked `[ported-with-transform: split-17 mapped onto main 17a/17b]`
+- [x] Run pre-flight; companies aligned: main 17a = Xcimer (matches ds 27); main 17b = Focused (matches ds 17). Main has 7-8 iters per side vs downselect's 1-2.
+- [x] **REPLAN — Option C precedent applied** (consistent with Phase 4): main has full deep v3-consistent analyses; verbatim port would overwrite newer work.
+  - [x] Overlay downselect's dossiers as legacy references in main's shared 17 research dir.
+  - [x] Overlay downselect's `synthesis.md` + `review.md` per side as `*_concept_downselect.md` siblings to main's `analysis.md`.
+  - [x] Archive WI-1B work item under `work/completed/20260518_WI-1B_*` with README explaining legacy status + ID crosswalk.
+  - [x] Skip downselect's analyses/{17,27}/iter-*, model_output, model_setup, prompts (all `[skipped: superseded by main's post-v3 reanalysis]`).
+  - [x] Skip downselect's split research dirs `17-…-fast-ignition` and `27-…-hybrid-direct-drive` (per-iter sources already present in main's shared 17 dossier, verified by filename comparison).
+- [x] Commit as `phase 5: overlay split-17 unique artifacts + archive WI-1B (Option C precedent)`
+- [x] Ledger updated.
 
 ### Validation
 
@@ -428,7 +430,18 @@ Open the PR against `main` with the acceptance-criteria checklist as the PR body
 - Spec FR-5 literal text ("downselect's 37/38/39 analyses MUST exist on main") not satisfied verbatim — main's analyses retained as the v3-consistent baseline. FR-5 intent (no source-data loss) honored via the overlay. Documented in ledger with full skip list and justification.
 
 ### Phase 5 Completion
-[same structure]
+**Completed:** 2026-05-19 13:50
+**Actual Changes:**
+- 5 narrative-unique artifacts overlaid (2 dossiers + synthesis-x2 + review).
+- WI-1B work item archived to `work/completed/20260518_WI-1B_*` with README.
+- No changes to main's iter analyses (preserved untouched per Option C precedent).
+
+**Issues:**
+- Same as Phase 4: main was not stub-only; main has deep iter-7/8 v3 analyses. Option C precedent applied.
+
+**Deviations:**
+- Spec FR-6 literal text ("split-17 reanalysis content MUST exist on main") not satisfied verbatim — main's deeper analyses retained as canonical. FR-6 intent (no narrative data lost from split work) honored via dossier + synthesis + review overlay. WI-1B requirement satisfied via archival.
+- Downselect's split-17 research dirs (`17-…-fast-ignition`, `27-…-hybrid-direct-drive`) skipped after filename-level verification that their iter sources are duplicates of files already present in main's shared `17-laser-icf-direct-drive/iter-01..03/sources/`.
 
 ### Phase 6 Completion
 [same structure]
