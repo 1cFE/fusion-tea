@@ -84,7 +84,7 @@ inherited (with substantial revisions) from the LLNL HYLIFE-II program.
 - **Value**: Sub-Hz
 - **Confidence**: high
 - **Citation**: Xcimer Approach page — "less than 1 Hz"; Science page — "every couple seconds".
-- **Notes**: Distinguishing feature relative to other IFE concepts (e.g., Focused Energy at ~10 Hz). High yield-per-shot from ~10+ MJ laser allows sub-Hz operation while still meeting time-averaged-power targets. HYLIFE-II heritage was 6 Hz with a heavy-ion driver at 350 MJ yield; HYLIFE-III reduces frequency by dramatically increasing yield per shot.
+- **Notes**: High yield-per-shot from the ~10+ MJ laser allows sub-Hz operation while still meeting time-averaged-power targets. HYLIFE-II heritage was 6 Hz with a heavy-ion driver at 350 MJ yield; HYLIFE-III reduces frequency by dramatically increasing yield per shot.
 
 ### Driver Technology
 - **Value**: Excimer laser (KrF, 248 nm, 10+ MJ on target)

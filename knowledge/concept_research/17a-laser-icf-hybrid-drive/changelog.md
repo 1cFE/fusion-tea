@@ -53,3 +53,10 @@
 - Energy Capture cycle (steam vs. He Brayton) still ambiguous for Xcimer. Resolution requires direct contact with Xcimer or next-gen power conversion study.
 - Quantitative plant parameters (MWe, MWth, net efficiency) not publicly disclosed.
 - HDD experimental validation pending; current claims are simulation-based.
+
+## Iteration 4b — 2026-05-19 (post-split verification corrections)
+
+### Changes
+Independent audit of the iter-04 dossier flagged one cross-contamination instance: the `Repetition Rate` row's Notes contained "(e.g., Focused Energy at ~10 Hz)" — a cross-company comparison that violates the split. Removed; the surrounding HYLIFE-II/III sub-Hz heritage commentary retained.
+
+No other audit findings — all citations resolved to sources in this dir; confidence levels assessed as defensible; no material Xcimer content was lost relative to the pre-split shared dossier.

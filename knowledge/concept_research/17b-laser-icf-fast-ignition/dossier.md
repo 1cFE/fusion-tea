@@ -15,11 +15,12 @@
 
 ## Summary
 
-Laser-driven inertial confinement fusion using **proton/ion fast ignition**:
+Laser-driven inertial confinement fusion using **proton fast ignition**:
 diode-pumped solid-state lasers (DPSSL, Nd:glass frequency-doubled to ~527 nm)
-compress a cryogenic D-T capsule, and a separate petawatt-class CPA short-pulse
-laser drives a proton/ion beam (cone-in-shell target geometry) that ignites the
-compressed fuel. Operating at ~10 Hz with lower yield per shot than HDD-style
+compress a cryogenic D-T capsule, and a separate short-pulse laser
+(~150 kJ; chirped-pulse amplification petawatt-class beamlines per
+LaserFocusWorld) hits a nearby target to produce a proton beam that ignites
+the compressed fuel. Operating at ~10 Hz with lower yield per shot than HDD-style
 concepts, Focused Energy's approach decouples compression and ignition, which in
 principle reduces the energy and uniformity demands on the compression driver.
 Lithium-blanket tritium breeding with Savannah River National Lab (SRNL)
@@ -36,7 +37,7 @@ publicly. Plant-side: conventional steam cycle.
 ### Confinement Concept
 - **Value**: Laser ICF (fast ignition)
 - **Confidence**: medium-high
-- **Citation**: Focused Energy technology page ("direct-drive, proton fast ignition"); Callahan Physics World interview (`iter-02/sources/focused-energy-callahan-interview`); Meier 2006 "Economic Systems Modeling for Laser IFE and the Potential Advantages of Fast Ignition" (`iter-03/sources/osti-servlets-purl-1438678`).
+- **Citation**: LaserFocusWorld 2021 (`iter-03/sources/laserfocusworld-…can-high`) — explicitly: "Focused Energy's approach is direct-drive proton-fast ignition"; PRNewswire 2024 (`iter-03/sources/prnewswire-…focused-energy-and-amplitude-enter`) — DOE milestone work on igniting fuel "using laser-accelerated protons"; Meier 2006 fast-ignition economics paper (`iter-03/sources/osti-servlets-purl-1438678`) — academic framing of the fast-ignition approach.
 - **Notes**: Focused Energy self-describes as "direct drive" but the physics pathway — separate compression beams + separate petawatt ignitor beam producing proton beam ignition — fits the schema definition of fast ignition ("Separate compression and ignition laser pulses"). Classified here as `Laser ICF (fast ignition)`; the company's "direct drive" branding refers to the compression-stage geometry.
 
 ### Fuel
@@ -46,9 +47,9 @@ publicly. Plant-side: conventional steam cycle.
 
 ### Primary Heating
 - **Value**: Laser (fast ignition)
-- **Confidence**: high
-- **Citation**: Technology page + Callahan interview describe long-pulse DPSSL compression + petawatt CPA short-pulse ignitor.
-- **Notes**: Two-pulse architecture. Compression pulse is direct-drive in geometry but the ignition mechanism is proton/ion fast ignition from a separate beam.
+- **Confidence**: medium-high
+- **Citation**: LaserFocusWorld 2021 (`iter-03/sources/laserfocusworld-…can-high`) — "focusing long-pulse lasers onto the pellet to compress it, blasting it with a 150 kJ short-pulse laser, and then hitting a nearby target to produce a burst of protons that ignites the pellet"; PRNewswire 2024 (`iter-03/sources/prnewswire-…focused-energy-and-amplitude-enter`) — "ignite the fusion fuel using laser-accelerated protons"; Focused Energy technology page (`iter-01/sources/focused-energy-technology`) — "direct-drive, proton fast ignition" branding; Callahan Physics World interview (`iter-02/sources/focused-energy-callahan-interview`) — laser fusion architecture context.
+- **Notes**: Two-pulse architecture. Compression pulse is direct-drive in geometry; the ignition mechanism is laser-driven proton fast ignition from a separate short-pulse beam. The terms "petawatt" and "chirped-pulse amplification" appear in LaserFocusWorld (referencing Ditmire's Texas Petawatt + ELI Beamlines heritage) but the Focused Energy technology page and Callahan interview themselves do not use those terms — confidence is medium-high rather than high because the petawatt parameter and 150 kJ short-pulse number rest on the LaserFocusWorld interview rather than Focused Energy's own materials.
 
 ### Energy Capture
 - **Value**: Thermal (steam)
@@ -87,10 +88,10 @@ publicly. Plant-side: conventional steam cycle.
 - **Notes**: Distinctly higher than HDD-style concepts (sub-Hz); lower yield per shot. The fast-ignition approach (separate compression + ignition pulses) reduces required compression energy relative to single-shot single-pulse direct drive, enabling smaller per-shot yield + higher rep-rate operation.
 
 ### Driver Technology
-- **Value**: DPSSL (Nd:glass, 527 nm) for compression + petawatt CPA short-pulse ignitor laser
-- **Confidence**: high
-- **Citation**: Focused Energy technology page; `iter-03/sources/prnewswire-news-releases-focused-energy-and-amplitude-enter` — $40M Amplitude DPSSL partnership; Callahan interview; T-STAR facility plans (8 beamlines: 4 long-pulse compression + 4 short-pulse ignition) from 2028.
-- **Notes**: DPSSL ~10% wall-plug efficiency typical for Nd:glass. Frequency-doubled to 527 nm (green) for capsule compression. Separate petawatt CPA short-pulse laser generates proton/ion beam via cone-in-shell target geometry.
+- **Value**: DPSSL (Nd:glass) for compression + CPA short-pulse (~150 kJ, petawatt-class per LaserFocusWorld) ignitor laser
+- **Confidence**: medium-high
+- **Citation**: PRNewswire 2024 (`iter-03/sources/prnewswire-…focused-energy-and-amplitude-enter`) — $40M Amplitude DPSSL partnership; ~$65M "Laser Development Facility" in the San Francisco Bay Area announced. LaserFocusWorld 2021 (`iter-03/sources/laserfocusworld-…can-high`) — 150 kJ short-pulse number; Texas Petawatt heritage; Ditmire's National Energetics ELI Beamlines history; long-term facility-scale estimate "around 80 beamlines" (Ditmire's projected ultimate scale, not a committed plant spec). Focused Energy technology page (`iter-01/sources/focused-energy-technology`); Callahan interview (`iter-02/sources/focused-energy-callahan-interview`).
+- **Notes**: DPSSL ~10% wall-plug efficiency typical for Nd:glass. Frequency doubling to ~527 nm is a standard Nd:glass IFE design choice; not explicitly stated in this source corpus and should be confirmed. The "T-STAR facility, 8 beamlines (4 long-pulse + 4 short-pulse) from 2028" parameters that appeared in the pre-split shared dossier are not corroborated by the source corpus archived here — those details came from Focused Energy materials not in the local source set and have been dropped pending re-sourcing. The ignition target geometry (often described as "cone-in-shell" in academic fast-ignition literature) is described in LaserFocusWorld as a "nearby target" — actual Focused Energy target geometry is not detailed in the current corpus.
 
 ## Remaining Gaps
 
@@ -101,17 +102,24 @@ publicly. Plant-side: conventional steam cycle.
 
 ## Key Sources (Focused-relevant)
 
-1. Focused Energy — Technology page (https://www.focused-energy.co/technology) — DPSSL + proton fast ignition. `iter-01/sources/focused-energy-technology`.
-2. Callahan Physics World interview — `iter-02/sources/focused-energy-callahan-interview` — steam cycle, ~10 Hz, gain >50, lithium blankets, SRNL partnership.
-3. Focused Energy + Amplitude $40M DPSSL agreement — `iter-03/sources/prnewswire-news-releases-focused-energy-and-amplitude-enter`.
-4. Meier 2006 — "Economic Systems Modeling for Laser IFE and the Potential Advantages of Fast Ignition" — `iter-03/sources/osti-servlets-purl-1438678`.
-5. ARPA-E IFE workshop (Zuegel) — `iter-03/sources/arpa-e-sites-default-files-migrated-a05-zuegel`.
-6. LLNL generalized economics model — `iter-03/sources/llnl-53961-llnl-releases-generalized-economics-model-fusion`.
-7. Status and prospects for IFE via lasers — `iter-03/sources/osti-servlets-purl-2561299`.
-8. Hawker — "A simplified economic model for inertial fusion" — `iter-03/sources/pmc-articles-pmc7658748`.
-9. Focused Energy J. Fusion Energy 2023 (paywalled; not yet ingested) — concept paper; gap-fill target.
-10. Focused Energy World Nuclear News DOE milestones — high-gain target design report.
-11. Focused Energy roadmap (ALP conference) — company roadmap.
+In source tree:
+
+1. Focused Energy — Technology page — `iter-01/sources/focused-energy-technology` ("direct-drive, proton fast ignition" branding; D-T fuel).
+2. Callahan Physics World interview — `iter-02/sources/focused-energy-callahan-interview` (steam cycle, ~10 Hz, lithium blankets, SRNL partnership).
+3. LaserFocusWorld 2021 — `iter-03/sources/laserfocusworld-…can-high` (direct-drive proton-fast ignition physics; 150 kJ short-pulse; Ditmire/Texas Petawatt heritage; 80-beamline ultimate facility scale).
+4. PRNewswire 2024 — `iter-03/sources/prnewswire-…focused-energy-and-amplitude-enter` ($40M Amplitude DPSSL partnership; $65M Laser Development Facility in SF Bay Area; DOE milestone-program target design + CSU proton-acceleration experiments).
+5. Meier 2006 — "Economic Systems Modeling for Laser IFE and the Potential Advantages of Fast Ignition" — `iter-03/sources/osti-servlets-purl-1438678`.
+6. Status and prospects for IFE via lasers — `iter-03/sources/osti-servlets-purl-2561299`.
+7. Hawker — "A simplified economic model for inertial fusion" — `iter-03/sources/pmc-articles-pmc7658748`.
+8. ARPA-E IFE workshop (Zuegel) — `iter-03/sources/arpa-e-sites-default-files-migrated-a05-zuegel`.
+9. LLNL generalized economics model release — `iter-03/sources/llnl-53961-llnl-releases-generalized-economics-model-fusion`.
+10. Optica OPN — Fusion's Direct Drive (June 2023) — `iter-03/sources/optica-opn-home-articles-volume-34-june-2023-features`.
+
+Known but not yet ingested (gap-fill targets):
+
+- Focused Energy J. Fusion Energy 2023 (Springer; paywalled) — concept paper, likely the best public single-source for blanket chemistry, chamber, and plant parameters.
+- Focused Energy World Nuclear News article on DOE Milestone-program progress (referenced in PRNewswire but not separately ingested).
+- Focused Energy roadmap presentation (ALP conference, 2023) — referenced externally; not in corpus.
 
 ## Classification Note
 

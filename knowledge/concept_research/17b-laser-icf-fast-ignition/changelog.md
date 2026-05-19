@@ -54,3 +54,16 @@
 - **Chamber / neutron-management specifics**: First-wall material, blanket geometry, neutron damage analysis not publicly detailed.
 - **Quantitative plant parameters**: Electrical output, thermal power, net efficiency not publicly disclosed.
 - **Proton fast ignition experimental validation**: Concept relies on petawatt-driven proton beam coupling to compressed core; not yet experimentally demonstrated at ignition-relevant scale.
+
+## Iteration 4b — 2026-05-19 (post-split verification corrections)
+
+### Changes
+Independent audit of the iter-04 dossier flagged several citation accuracy issues. Fixes:
+- **Primary Heating** citation expanded: now cites LaserFocusWorld 2021 + PRNewswire 2024 (the actual sources for "proton fast ignition", "150 kJ short-pulse", and "laser-accelerated protons"). Confidence downgraded from high → medium-high; the Focused Energy technology page and Callahan interview do not themselves use the terms "petawatt" / "proton" — those parameters rest on the LaserFocusWorld interview (Ditmire) and the PRNewswire DOE-milestone announcement.
+- **Confinement Concept** citations corrected from "Technology page + Callahan interview" to LaserFocusWorld + PRNewswire (which explicitly support the fast-ignition classification).
+- **Driver Technology**: T-STAR / "8 beamlines (4 long + 4 short) from 2028" parameters dropped — these were inherited from the pre-split shared dossier but are not supported by any source in the local corpus. Replaced with the source-supported "$65M Laser Development Facility in SF Bay Area" (PRNewswire) and "~80-beamline ultimate facility scale" (LaserFocusWorld). Confidence downgraded from high → medium-high. The "cone-in-shell" target-geometry terminology removed from Summary and Driver Technology rows — LaserFocusWorld describes a "nearby target", and the cone-in-shell term comes from academic fast-ignition literature, not from Focused Energy materials in this corpus.
+- **Summary** updated: petawatt qualifier attributed to LaserFocusWorld; 150 kJ short-pulse number added with source.
+- **Key Sources** restructured: in-corpus vs. not-yet-ingested clearly separated. LaserFocusWorld and PRNewswire promoted to top-tier sources (they carry most of the substantive technical content). Items previously listed without ingested files (World Nuclear News, ALP roadmap) moved to "not yet ingested".
+
+### Gap Assessment (revised)
+- All claims in the post-correction dossier are now traceable to extracted sources in this dir, with the exception of the DPSSL 527 nm wavelength (called out as a typical-IFE-design assumption that should be confirmed against Focused Energy materials).
