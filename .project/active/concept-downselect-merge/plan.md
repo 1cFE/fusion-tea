@@ -109,9 +109,9 @@ Land the single Wurzel/Hsu source ingestion commit. Pure path addition; should b
 
 ### Steps
 
-- [ ] `git cherry-pick 8585ddd`
-- [ ] Append to ledger: list files, mark `[ported]`
-- [ ] `uv run agentic-mbse status` exits 0
+- [x] `git cherry-pick 8585ddd`
+- [x] Append to ledger: list files, mark `[ported]`
+- [x] `uv run agentic-mbse status` exits 0
 
 ### Validation
 
@@ -392,7 +392,10 @@ Open the PR against `main` with the acceptance-criteria checklist as the PR body
 - Spec said meta-analysis dossiers go under `knowledge/concept_research/`; actual downselect path was `knowledge/meta_analysis/`. No file content changed; only the path-expectation note in the spec is mildly stale. Updating ledger accordingly.
 
 ### Phase 2 Completion
-[same structure]
+**Completed:** 2026-05-19 12:38
+**Actual Changes:** Single cherry-pick `e3777f3` (8585ddd). Wurzel & Hsu paper landed at `knowledge/meta_analysis/progress_toward_fusion_breakeven_lawson_criterion/` (arXiv 2105.10954) — 143 files: source.pdf, output.md (1176 lines), cost.json, decisions.json, metrics.json, ~140 page images.
+**Issues:** None.
+**Deviations:** Spec phrased the dossier slug as `<wurzel-hsu>`; actual slug is `progress_toward_fusion_breakeven_lawson_criterion`. No content change.
 
 ### Phase 3 Completion
 [same structure]

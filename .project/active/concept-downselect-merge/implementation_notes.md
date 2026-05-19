@@ -53,10 +53,9 @@ See `_downselect_filelist.txt` for the raw `git diff --name-status -M main..conc
 **Status:** [ported] verbatim
 
 ### 8585ddd — Added the Wurzel and Hsu paper
-**Phase:** 2
-**Files added:** 143 (Wurzel/Hsu PDF + extraction outputs under `knowledge/concept_research/`)
-**Status:** pending
-**Notes:**
+**Phase:** 2 (cherry-pick `e3777f3`)
+**Files added:** 143 — Wurzel & Hsu (arXiv 2105.10954) at `knowledge/meta_analysis/progress_toward_fusion_breakeven_lawson_criterion/` (slug is the paper title, not "wurzel_hsu"). Contains source.pdf, output.md (1176 lines), cost.json, decisions.json, metrics.json, page images.
+**Status:** [ported] verbatim
 
 ### f55e35a — Scoring V2 framework stencil + plant-level modularity slice
 **Phase:** 3
