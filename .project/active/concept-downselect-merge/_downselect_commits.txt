@@ -1,0 +1,13 @@
+a2004fa corpus: 39-concept renumber + WS-1B reanalysis & 3 net-new concepts
+e23fceb tooling: concept renumber migration + WS-1B planning artifacts
+30ecdd8 Scoring V2 slice 2: component_modularity embedding group
+f55e35a Scoring V2 framework stencil + plant-level modularity slice
+e7964c8 Downselect pass 3
+8585ddd Added the Wurzel and Hsu paper
+f7f5da8 pass 2
+ab19c2a pass 1.1
+1d9937a Pass 1 on the explainer
+57ece9e working on the downselect
+e9d5de2 Merge branch 'main' into concept-downselect
+539a1b5 New research for concept downselect. Q1-Q3 research done.
+6eb2291 First pass research for down-select methodology
