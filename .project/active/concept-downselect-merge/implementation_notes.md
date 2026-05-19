@@ -58,16 +58,20 @@ See `_downselect_filelist.txt` for the raw `git diff --name-status -M main..conc
 **Status:** [ported] verbatim
 
 ### f55e35a — Scoring V2 framework stencil + plant-level modularity slice
-**Phase:** 3
-**Files added:** 70 (`exploration/scoring_v2/*`, `tests/scoring_v2/*`, 38 feature YAMLs in old-ID scheme, slice1 weights)
-**Status:** pending — feature YAMLs to be regenerated (transform) against main IDs
-**Notes:**
+**Phase:** 3 (cherry-pick clean, then regeneration commit on top)
+**Files added:** 70 — `exploration/scoring_v2/*` framework, `tests/scoring_v2/*`, 38 feature YAMLs (pre-v3 IDs incl. `34-compact-spherical-tokamak-india.yaml`), slice1 + default weights
+**Status:**
+- Framework code (`extract.py`, `score.py`, `lib/`, `schema.yaml`, weights): [ported] verbatim then [ported-with-transform] for schema.yaml (tritium_breeding/neutron_management → extractor=manual)
+- 37 feature YAMLs for concepts that still exist on main: [ported-with-transform: regenerated via `extract.py --bulk-taxonomy` against main's v3 table; manual fields preserved]
+- `features/34-compact-spherical-tokamak-india.yaml`: [skipped: Pranos dropped on main per FR-1; consistent with PR #16's drop]
+- Tests: [ported-with-transform: count 38→40, test_bulk_taxonomy stops wiping (manual-extractor fields prevent from-scratch valid generation); 3 score-baseline tests marked strict xfail with documented v3-data deviation (Helion Magnet Type Pulsed EM → Resistive)]
+**Notes:** Baseline shift recorded as deviation per FR-4 allowance. New scoring_v2 test counts: 23 passed / 3 skipped / 4 xfailed (was 26 / 3 / 1 on downselect).
 
 ### 30ecdd8 — Scoring V2 slice 2: component_modularity embedding group
-**Phase:** 3
-**Files added/modified:** 57 (component_modularity embedding, cost_model extractor, w_* weight features, expanded tests)
-**Status:** pending — feature regeneration covers most; cost_model extractor copied as-is
-**Notes:**
+**Phase:** 3 (cherry-pick clean)
+**Files added/modified:** 57 — `embeddings/component_modularity.py`, `lib/extractors/cost_model.py`, `weights/slice1.yaml`, `tests/scoring_v2/test_component_modularity.py`, `test_cost_model.py`, ~28 cost_model w_* feature additions (captured in the regenerated yamls)
+**Status:** [ported] verbatim; same transform handling as f55e35a covers downstream feature regeneration
+**Notes:** cost_model extractor reads from `analyses/{cid}/model_output.txt` — unchanged paths post-merge.
 
 ### e23fceb — tooling: concept renumber migration + WS-1B planning artifacts
 **Phase:** dropped (skip per Option B.3.a)

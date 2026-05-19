@@ -147,15 +147,17 @@ ls exploration/scoring_v2/features/*.yaml | wc -l  # expect main-corpus row coun
 
 ### Steps
 
-- [ ] `git cherry-pick f55e35a 30ecdd8`
-- [ ] **Conflict expected** on `uv.lock` — resolve by deleting both versions and running `uv sync` (per spec edge-case note)
-- [ ] Inspect feature YAMLs landed: are they keyed to 39-ID names (e.g., `22-spherical-tokamak-hts.yaml`)? If so, mark them stale.
-- [ ] Run `uv run python exploration/scoring_v2/extract.py --bulk-taxonomy` to regenerate against main's table.csv
-- [ ] If `extract.py` errors on schema mismatch: fix in-place (this is a port-and-adapt situation — note all edits in ledger; do NOT silently restore dropped columns)
-- [ ] Delete any orphan YAML keyed to a downselect-only ID (e.g., `27-laser-icf-hybrid-direct-drive.yaml` if main keeps `17a-laser-icf-hybrid-drive` instead)
-- [ ] Commit regeneration as a separate commit: `scoring_v2: regenerate features against main IDs`
-- [ ] Run `uv run pytest tests/scoring_v2/ -v`
-- [ ] Append to ledger: for `f55e35a` and `30ecdd8` mark `[ported-with-transform: feature YAMLs regenerated against v3 schema]`; for `extract.py` adaptations note specific edits
+- [x] `git cherry-pick f55e35a 30ecdd8`
+- [x] ~~Conflict expected on uv.lock~~ — landed clean (no uv.lock changes in either commit).
+- [x] Inspect feature YAMLs landed: they were keyed to **old-ID** scheme (pre-renumber), not 39-ID scheme — the renumber commits come AFTER slice 1/2 on downselect's history. Includes `34-compact-spherical-tokamak-india.yaml` (Pranos, dropped on main).
+- [x] Schema edit: switched `tritium_breeding` and `neutron_management` from `extractor: taxonomy` to `extractor: manual` (their source columns were dropped from `table.csv` by ontology v3). Pre-v3 values in 37 yamls remain authoritative.
+- [x] Filled 17 empty enum cells on `table.csv` rows 37/38/39 with "N/A" (Mallory's CSV translate left them empty; scoring_v2 enum schema requires N/A on non-applicable).
+- [x] Run `uv run python exploration/scoring_v2/extract.py --bulk-taxonomy` to regenerate against main's table.csv — 40 yamls written.
+- [x] Hand-filled `tritium_breeding` and `neutron_management` for the 3 new yamls (37/38/39) per concept fuel and design.
+- [x] Deleted `features/34-compact-spherical-tokamak-india.yaml` (Pranos).
+- [x] Committed regeneration as `phase 3: regenerate scoring_v2 features against main IDs; reconcile v3 schema`
+- [x] Run `uv run pytest tests/scoring_v2/ -v` — 23 passed / 3 skipped / 4 xfailed (deviation from downselect's 26/3/1 documented).
+- [x] Append to ledger.
 
 ### Validation
 
@@ -398,7 +400,20 @@ Open the PR against `main` with the acceptance-criteria checklist as the PR body
 **Deviations:** Spec phrased the dossier slug as `<wurzel-hsu>`; actual slug is `progress_toward_fusion_breakeven_lawson_criterion`. No content change.
 
 ### Phase 3 Completion
-[same structure]
+**Completed:** 2026-05-19 13:00
+**Actual Changes:**
+- 2 commits ported (f55e35a → ?, 30ecdd8 → ?) — both clean cherry-picks, no uv.lock conflict.
+- 1 reconciliation commit on top: schema.yaml switch to manual extractor, table.csv N/A fill on 37/38/39, full feature YAML regeneration, Pranos yaml deletion, 3 new yamls hand-filled, 4 test files updated (count assertions + 3 xfail markers).
+- Test counts: 23 passed / 3 skipped / 4 xfailed (downselect baseline 26/3/1).
+
+**Issues:**
+- Schema mismatch on dropped v3 columns (`Tritium Breeding`, `Neutron Management`) was deeper than plan anticipated — paused for direction; user approved Path 1 (mark as manual extractor, preserve existing values).
+- Score-baseline tests fail because v3 reclassified Helion's Magnet Type Pulsed EM → Resistive, which lowers `coils_rating` and breaks the slice-1 baselines (Helion 4.80, CFS 2.90, Stellarator 1.50). Solution: strict xfail with documented reason — re-baseline is a future slice-3 task.
+
+**Deviations:**
+- Tests: 3 tests moved from passing to xfailed (test_plant_level_modularity_ordering, test_slice1_preservation_under_slice1_weights, test_xlsx_collapse[08-frc-w-direct-conversion]). All strict xfails so they'll alert if they unexpectedly pass. Documented per FR-4 deviation allowance.
+- `test_bulk_taxonomy` no longer wipes the dir before regeneration (manual-extractor fields require an existing tree to be valid). Aligns with real workflow.
+- Schema-level change: tritium_breeding/neutron_management extractor change from taxonomy → manual is a functional change to the framework, not a content port. Justified because the source columns were dropped from main's v3 schema.
 
 ### Phase 4 Completion
 [same structure]
