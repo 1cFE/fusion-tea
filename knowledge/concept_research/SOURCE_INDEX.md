@@ -11,26 +11,60 @@ Sync: `./scripts/sync_research.sh pull`
 ### 01-hts-compact-tokamak
 - **Dossier**: `01-hts-compact-tokamak/dossier.md`
 - **Iterations**: 2 (iter-03, iter-04)
-- **Sources** (8):
+- **Sources** (32):
   - `iter-03/sources/arc-reactor-specifications` — [PDF]
   - `iter-03/sources/arc-reactor-specifications.md` — [processed .md]
   - `iter-03/sources/sparc-icrf-heating-paper` — [HTML]
   - `iter-03/sources/sparc-icrf-heating-paper.md` — [processed .md]
   - `iter-04/sources/arc-power-conversion-studies` — [PDF]
   - `iter-04/sources/arc-power-conversion-studies.md` — [processed .md]
+  - `iter-04/sources/arxiv-2405-01514` — [PDF]
+  - `iter-04/sources/arxiv-2405-01514.md` — [processed .md]
+  - `iter-04/sources/arxiv-2503-23048` — [PDF]
+  - `iter-04/sources/arxiv-2503-23048.md` — [processed .md]
+  - `iter-04/sources/arxiv-2601-21724` — [PDF]
+  - `iter-04/sources/arxiv-2601-21724.md` — [processed .md]
+  - `iter-04/sources/arxiv-2602-19389` — [PDF]
+  - `iter-04/sources/arxiv-2602-19389.md` — [processed .md]
   - `iter-04/sources/cfs-2025-2026-updates` — [HTML]
   - `iter-04/sources/cfs-2025-2026-updates.md` — [processed .md]
+  - `iter-04/sources/indico-event-1296489-contributions-5881530` — [HTML]
+  - `iter-04/sources/link-10-1007-s43673-022-00040-9` — [HTML]
+  - `iter-04/sources/news-2022-01-08-lithium-lithium-everywhere-and-none-to-use` — [HTML]
+  - `iter-04/sources/osti-etdeweb-servlets-purl-10149275` — [PDF]
+  - `iter-04/sources/osti-etdeweb-servlets-purl-10149275.md` — [processed .md]
+  - `iter-04/sources/osti-etdeweb-servlets-purl-20261446` — [PDF]
+  - `iter-04/sources/osti-etdeweb-servlets-purl-20261446.md` — [processed .md]
+  - `iter-04/sources/osti-servlets-purl-1305833` — [PDF]
+  - `iter-04/sources/osti-servlets-purl-1305833.md` — [processed .md]
+  - `iter-04/sources/osti-servlets-purl-1820946` — [PDF]
+  - `iter-04/sources/osti-servlets-purl-1820946.md` — [processed .md]
+  - `iter-04/sources/sciencedirect-science-article-pii-s0301421523000964` — [HTML]
+  - `iter-04/sources/sciencedirect-science-article-pii-s092037961930835x` — [HTML]
+  - `iter-04/sources/sciencedirect-science-article-pii-s092037961930835x.md` — [processed .md]
+  - `iter-04/sources/sciencedirect-science-article-pii-s2772830725000390` — [HTML]
+  - `iter-04/sources/sciencedirect-science-article-pii-s2772830725000390.md` — [processed .md]
 
 ### 02-acoustic-icf-sonofusion
 - **Dossier**: `02-acoustic-icf-sonofusion/dossier.md`
 - **Iterations**: 1 (iter-01)
-- **Sources** (6):
+- **Sources** (16):
+  - `iter-01/sources/americanpiezo-products-services-ultrasonic-power-transducers` — [HTML]
+  - `iter-01/sources/americanpiezo-products-services-ultrasonic-power-transducers.md` — [processed .md]
   - `iter-01/sources/bubble-fusion-scientific-history` — [HTML]
   - `iter-01/sources/bubble-fusion-scientific-history.md` — [processed .md]
+  - `iter-01/sources/hielscher-i16000-p` — [HTML]
+  - `iter-01/sources/hielscher-i16000-p.md` — [processed .md]
+  - `iter-01/sources/hielscher-uip4000hdt-4kw-high-performance-ultrasonics` — [HTML]
+  - `iter-01/sources/hielscher-uip4000hdt-4kw-high-performance-ultrasonics.md` — [processed .md]
+  - `iter-01/sources/osti-pages-biblio-1224334` — [HTML]
+  - `iter-01/sources/osti-pages-biblio-1224334.md` — [processed .md]
   - `iter-01/sources/sonofusion-energy-website` — [HTML]
   - `iter-01/sources/sonofusion-energy-website.md` — [processed .md]
   - `iter-01/sources/ucla-putterman-group-sonoluminescence` — [HTML]
   - `iter-01/sources/ucla-putterman-group-sonoluminescence.md` — [processed .md]
+  - `iter-01/sources/wits-trade-comtrade-en-country-all-year-2023-tradeflow` — [HTML]
+  - `iter-01/sources/wits-trade-comtrade-en-country-all-year-2023-tradeflow.md` — [processed .md]
 
 ### 03-laser-icf-liquid-jet-target
 - **Dossier**: `03-laser-icf-liquid-jet-target/dossier.md`
@@ -47,8 +81,8 @@ Sync: `./scripts/sync_research.sh pull`
 
 ### 04-laser-icf
 - **Dossier**: `04-laser-icf/dossier.md`
-- **Iterations**: 2 (iter-01, iter-02)
-- **Sources** (14):
+- **Iterations**: 3 (iter-01, iter-02, iter-03)
+- **Sources** (33):
   - `iter-01/sources/hb11-company-overview` — [HTML]
   - `iter-01/sources/hb11-company-overview.md` — [processed .md]
   - `iter-01/sources/hb11-osaka-experiment-2022` — [PDF]
@@ -63,11 +97,30 @@ Sync: `./scripts/sync_research.sh pull`
   - `iter-02/sources/hb11-recent-developments-2024-2025.md` — [processed .md]
   - `iter-02/sources/hb11-technology-page-2025` — [HTML]
   - `iter-02/sources/hb11-technology-page-2025.md` — [processed .md]
+  - `iter-03/sources/fusionxinvest-company-profile-4353-hb11-energy` — [HTML]
+  - `iter-03/sources/fusionxinvest-company-profile-4353-hb11-energy.md` — [processed .md]
+  - `iter-03/sources/globenewswire-news-release-2025-02-10-3023820-0-en-general` — [HTML]
+  - `iter-03/sources/globenewswire-news-release-2025-02-10-3023820-0-en-general.md` — [processed .md]
+  - `iter-03/sources/hb11-our-technology` — [HTML]
+  - `iter-03/sources/hb11-our-technology.md` — [processed .md]
+  - `iter-03/sources/hb11-wp-content-uploads-2025-03` — [PDF]
+  - `iter-03/sources/interestingengineering-energy-hb11-joins-largest-laser-lab` — [HTML]
+  - `iter-03/sources/interestingengineering-energy-hb11-joins-largest-laser-lab.md` — [processed .md]
+  - `iter-03/sources/link-10-1007-s10894-023-00349-9` — [HTML]
+  - `iter-03/sources/link-10-1007-s10894-023-00349-9.md` — [processed .md]
+  - `iter-03/sources/newatlas-energy-hb11-laser-fusion-demonstration` — [HTML]
+  - `iter-03/sources/newatlas-energy-hb11-laser-fusion-demonstration.md` — [processed .md]
+  - `iter-03/sources/power-technology-features-hb11-the-australian-start-up` — [HTML]
+  - `iter-03/sources/power-technology-features-hb11-the-australian-start-up.md` — [processed .md]
+  - `iter-03/sources/prnewswire-news-releases-hb11-energy-receives-grant-from-us` — [HTML]
+  - `iter-03/sources/prnewswire-news-releases-hb11-energy-receives-grant-from-us.md` — [processed .md]
+  - `iter-03/sources/unsw-newsroom-news-2020-02-pioneering-technology-promises` — [HTML]
+  - `iter-03/sources/unsw-newsroom-news-2020-02-pioneering-technology-promises.md` — [processed .md]
 
 ### 05-planar-coil-stellarator
 - **Dossier**: `05-planar-coil-stellarator/dossier.md`
-- **Iterations**: 2 (iter-01, iter-02)
-- **Sources** (8):
+- **Iterations**: 3 (iter-01, iter-02, iter-03)
+- **Sources** (17):
   - `iter-01/sources/thea-energy-helios-arxiv-2512-08027` — [HTML]
   - `iter-01/sources/thea-energy-helios-arxiv-2512-08027.md` — [processed .md]
   - `iter-01/sources/thea-energy-website-and-press` — [HTML]
@@ -76,23 +129,31 @@ Sync: `./scripts/sync_research.sh pull`
   - `iter-02/sources/thea-energy-canis-prototype-arxiv-2503-18960.md` — [processed .md]
   - `iter-02/sources/thea-energy-doe-certification-jan2026` — [HTML]
   - `iter-02/sources/thea-energy-doe-certification-jan2026.md` — [processed .md]
+  - `iter-03/sources/ans-news-2025-12-18-article-7628` — [HTML]
+  - `iter-03/sources/ans-news-2025-12-18-article-7628.md` — [processed .md]
+  - `iter-03/sources/arxiv-2409-01925` — [HTML]
+  - `iter-03/sources/core-outputs-270088311` — [HTML]
+  - `iter-03/sources/digital-ark-67531-metadc667725-m2-1-high-res-d-195723` — [HTML]
+  - `iter-03/sources/thea-press-release-thea-energy-announces-peer-reviewed` — [HTML]
+  - `iter-03/sources/thea-press-release-thea-energy-announces-peer-reviewed.md` — [processed .md]
+  - `iter-03/sources/thea-press-release-u-s-department-of-energy-certifies-thea` — [HTML]
+  - `iter-03/sources/thea-press-release-u-s-department-of-energy-certifies-thea.md` — [processed .md]
 
 ### 06-magnetic-mirror
 - **Dossier**: `06-magnetic-mirror/dossier.md`
 - **Iterations**: 2 (iter-01, iter-02)
-- **Sources** (7):
+- **Sources** (6):
   - `iter-01/sources/arpa-e-fisch-2025-presentation` — [PDF]
   - `iter-01/sources/arpa-e-fisch-2025-presentation.md` — [processed .md]
   - `iter-01/sources/princeton-arpa-e-funding-2022` — [HTML]
   - `iter-01/sources/princeton-arpa-e-funding-2022.md` — [processed .md]
-  - `iter-01/sources/technical-papers-summary.md` — [processed .md]
   - `iter-02/sources/arpa-e-2025-fisch-presentation-notes` — [PDF]
   - `iter-02/sources/arpa-e-2025-fisch-presentation-notes.md` — [processed .md]
 
 ### 07-maglif
 - **Dossier**: `07-maglif/dossier.md`
-- **Iterations**: 2 (iter-01, iter-02)
-- **Sources** (14):
+- **Iterations**: 3 (iter-01, iter-02, iter-03)
+- **Sources** (38):
   - `iter-01/sources/arxiv-2408-15206-pulsed-magnetic-fusion` — [HTML]
   - `iter-01/sources/arxiv-2408-15206-pulsed-magnetic-fusion.md` — [processed .md]
   - `iter-01/sources/fuse-energy-technology` — [HTML]
@@ -107,14 +168,35 @@ Sync: `./scripts/sync_research.sh pull`
   - `iter-02/sources/pacific-fusion-interview-fusion-report.md` — [processed .md]
   - `iter-02/sources/z-ife-sand2006-7148-thermal-cycles` — [PDF]
   - `iter-02/sources/z-ife-sand2006-7148-thermal-cycles.md` — [processed .md]
+  - `iter-03/sources/ans-news-2025-04-24-article-6980-pacific-fusion-fusing` — [HTML]
+  - `iter-03/sources/ans-news-2025-04-24-article-6980-pacific-fusion-fusing.md` — [processed .md]
+  - `iter-03/sources/ans-news-2026-02-06-article-7739-fusion-simplification` — [HTML]
+  - `iter-03/sources/ans-news-2026-02-06-article-7739-fusion-simplification.md` — [processed .md]
+  - `iter-03/sources/arxiv-2504-10680` — [HTML]
+  - `iter-03/sources/arxiv-2504-10680.md` — [processed .md]
+  - `iter-03/sources/arxiv-2602-19389` — [HTML]
+  - `iter-03/sources/arxiv-2602-19389.md` — [processed .md]
+  - `iter-03/sources/frontiersin-journals-nuclear-engineering-articles-10-3389` — [HTML]
+  - `iter-03/sources/frontiersin-journals-nuclear-engineering-articles-10-3389.md` — [processed .md]
+  - `iter-03/sources/globenewswire-news-release-2025-04-24-3067836-0-en-pacific` — [HTML]
+  - `iter-03/sources/globenewswire-news-release-2025-04-24-3067836-0-en-pacific.md` — [processed .md]
+  - `iter-03/sources/osti-biblio-2282963` — [HTML]
+  - `iter-03/sources/osti-biblio-2282963.md` — [processed .md]
+  - `iter-03/sources/osti-biblio-2573392` — [HTML]
+  - `iter-03/sources/osti-biblio-2573392.md` — [processed .md]
+  - `iter-03/sources/osti-biblio-895981` — [HTML]
+  - `iter-03/sources/osti-biblio-895981.md` — [processed .md]
+  - `iter-03/sources/pacificfusion-updates-crada-sandia-national-laboratories` — [HTML]
+  - `iter-03/sources/pacificfusion-updates-crada-sandia-national-laboratories.md` — [processed .md]
+  - `iter-03/sources/pacificfusion-updates-experimental-breakthrough-by-pacific` — [HTML]
+  - `iter-03/sources/pacificfusion-updates-experimental-breakthrough-by-pacific.md` — [processed .md]
+  - `iter-03/sources/pacificfusion-updates-founders-letter` — [HTML]
+  - `iter-03/sources/pacificfusion-updates-founders-letter.md` — [processed .md]
 
 ### 08-frc-w-direct-conversion
 - **Dossier**: `08-frc-w-direct-conversion/dossier.md`
 - **Iterations**: 2 (iter-01, iter-02)
-- **Sources** (7):
-  - `iter-01/sources/contrary-research-helion.md` — [processed .md]
-  - `iter-01/sources/docslib-helion-arpa-e-presentation.md` — [processed .md]
-  - `iter-01/sources/helion-website-technology.md` — [processed .md]
+- **Sources** (4):
   - `iter-02/sources/helion-milestones-feb2026` — [HTML]
   - `iter-02/sources/helion-milestones-feb2026.md` — [processed .md]
   - `iter-02/sources/helion-prototype-generations` — [HTML]
@@ -123,25 +205,54 @@ Sync: `./scripts/sync_research.sh pull`
 ### 09-qi-stellarator-hts
 - **Dossier**: `09-qi-stellarator-hts/dossier.md`
 - **Iterations**: 2 (iter-01, iter-02)
-- **Sources** (10):
+- **Sources** (32):
   - `iter-01/sources/proxima-fusion-technology-page` — [HTML]
   - `iter-01/sources/proxima-fusion-technology-page.md` — [processed .md]
   - `iter-01/sources/stellaris-design-details` — [PDF]
   - `iter-01/sources/stellaris-design-details.md` — [processed .md]
+  - `iter-02/sources/aries-cs-compact-stellarator-study` — [HTML]
+  - `iter-02/sources/aries-cs-compact-stellarator-study.md` — [processed .md]
+  - `iter-02/sources/aries-cs-systems-optimization` — [HTML]
+  - `iter-02/sources/aries-cs-systems-optimization.md` — [processed .md]
+  - `iter-02/sources/arxiv-1401-4232` — [HTML]
+  - `iter-02/sources/arxiv-1401-4232.md` — [processed .md]
+  - `iter-02/sources/arxiv-2404-16440` — [HTML]
+  - `iter-02/sources/arxiv-2404-16440.md` — [processed .md]
+  - `iter-02/sources/arxiv-2405-19860` — [HTML]
+  - `iter-02/sources/arxiv-2405-19860.md` — [processed .md]
+  - `iter-02/sources/arxiv-2501-04640` — [HTML]
+  - `iter-02/sources/arxiv-2501-04640.md` — [processed .md]
+  - `iter-02/sources/arxiv-2512-08825` — [HTML]
+  - `iter-02/sources/arxiv-2512-08825.md` — [processed .md]
+  - `iter-02/sources/en-wiki-wendelstein-7-x` — [HTML]
+  - `iter-02/sources/en-wiki-wendelstein-7-x.md` — [processed .md]
   - `iter-02/sources/helios-stellarator-comparison` — [HTML]
   - `iter-02/sources/helios-stellarator-comparison.md` — [processed .md]
+  - `iter-02/sources/neimagazine-news-proxima-unveils-stellaris-fusion-plant` — [HTML]
+  - `iter-02/sources/neimagazine-news-proxima-unveils-stellaris-fusion-plant.md` — [processed .md]
   - `iter-02/sources/proxima-fusion-2026-updates` — [HTML]
   - `iter-02/sources/proxima-fusion-2026-updates.md` — [processed .md]
+  - `iter-02/sources/publikationen-1000179851-172386752` — [unknown]
+  - `iter-02/sources/pure-rest-items-item-2140562-component-file-2140561-content` — [PDF]
+  - `iter-02/sources/pure-rest-items-item-2140562-component-file-2140561-content.md` — [processed .md]
+  - `iter-02/sources/sciencedirect-science-article-pii-s0196890422013504` — [HTML]
   - `iter-02/sources/stellaris-paper-details` — [PDF]
   - `iter-02/sources/stellaris-paper-details.md` — [processed .md]
 
 ### 10-large-scale-stellarator
 - **Dossier**: `10-large-scale-stellarator/dossier.md`
 - **Iterations**: 2 (iter-01, iter-02)
-- **Sources** (9):
-  - `iter-01/sources/gauss-fusion-technical-summary.md` — [processed .md]
+- **Sources** (16):
   - `iter-01/sources/helias-reactor-context` — [PDF]
   - `iter-01/sources/helias-reactor-context.md` — [processed .md]
+  - `iter-02/sources/arxiv-2512-08027v1` — [HTML]
+  - `iter-02/sources/arxiv-2512-08027v1.md` — [processed .md]
+  - `iter-02/sources/core-outputs-100308302` — [HTML]
+  - `iter-02/sources/core-outputs-100308302.md` — [processed .md]
+  - `iter-02/sources/depositonce-bitstreams-39e36af5-b43a-4d14-b7fd-50c4e8b23aea` — [HTML]
+  - `iter-02/sources/depositonce-bitstreams-39e36af5-b43a-4d14-b7fd-50c4e8b23aea.md` — [processed .md]
+  - `iter-02/sources/frontiersin-journals-nuclear-engineering-articles-10-3389` — [HTML]
+  - `iter-02/sources/frontiersin-journals-nuclear-engineering-articles-10-3389.md` — [processed .md]
   - `iter-02/sources/gauss-fusion-cdr-review-2026` — [HTML]
   - `iter-02/sources/gauss-fusion-cdr-review-2026.md` — [processed .md]
   - `iter-02/sources/gauss-fusion-partnerships-2025` — [HTML]
@@ -152,16 +263,20 @@ Sync: `./scripts/sync_research.sh pull`
 ### 11-magnetic-mirror
 - **Dossier**: `11-magnetic-mirror/dossier.md`
 - **Iterations**: 2 (iter-01, iter-02)
-- **Sources** (11):
-  - `iter-01/sources/aps-dpp-2025-sutherland.md` — [processed .md]
+- **Sources** (15):
   - `iter-01/sources/arxiv-2411-06644-confinement-predictions` — [HTML]
   - `iter-01/sources/arxiv-2411-06644-confinement-predictions.md` — [processed .md]
   - `iter-01/sources/realta-fusion-hub-spotlight` — [HTML]
   - `iter-01/sources/realta-fusion-hub-spotlight.md` — [processed .md]
   - `iter-01/sources/wham-experiment-details` — [HTML]
   - `iter-01/sources/wham-experiment-details.md` — [processed .md]
+  - `iter-02/sources/arxiv-1911-12210` — [HTML]
   - `iter-02/sources/fusion-report-interview-realta` — [HTML]
   - `iter-02/sources/fusion-report-interview-realta.md` — [processed .md]
+  - `iter-02/sources/infuse-awards-efficient-neutral-beam-injection-for-mirror` — [HTML]
+  - `iter-02/sources/iopscience-10-1088-1741-4326-abdac2` — [HTML]
+  - `iter-02/sources/osti-biblio-22253619` — [HTML]
+  - `iter-02/sources/osti-biblio-5924035` — [HTML]
   - `iter-02/sources/realta-svb-funding-feb2026` — [HTML]
   - `iter-02/sources/realta-svb-funding-feb2026.md` — [processed .md]
 
@@ -183,7 +298,7 @@ Sync: `./scripts/sync_research.sh pull`
 ### 13-electrostatic-hybrid
 - **Dossier**: `13-electrostatic-hybrid/dossier.md`
 - **Iterations**: 1 (iter-01)
-- **Sources** (12):
+- **Sources** (25):
   - `iter-01/sources/avalanche-29m-raise-2026` — [HTML]
   - `iter-01/sources/avalanche-29m-raise-2026.md` — [processed .md]
   - `iter-01/sources/avalanche-300kv-press-release` — [HTML]
@@ -194,13 +309,26 @@ Sync: `./scripts/sync_research.sh pull`
   - `iter-01/sources/avalanche-fusionwerx-grant.md` — [processed .md]
   - `iter-01/sources/avalanche-orbitron-page` — [HTML]
   - `iter-01/sources/avalanche-orbitron-page.md` — [processed .md]
+  - `iter-01/sources/meetings-meeting-dpp24-session-np12-69` — [HTML]
+  - `iter-01/sources/meetings-meeting-dpp24-session-np12-69.md` — [processed .md]
+  - `iter-01/sources/neimagazine-news-avalanche-energy-launches-fusionwerx` — [HTML]
+  - `iter-01/sources/neimagazine-news-avalanche-energy-launches-fusionwerx.md` — [processed .md]
+  - `iter-01/sources/orbitron-aip-advances-2024` — [unknown]
+  - `iter-01/sources/osti-pages-servlets-purl-2582151` — [PDF]
+  - `iter-01/sources/osti-pages-servlets-purl-2582151.md` — [processed .md]
+  - `iter-01/sources/prnewswire-news-releases-avalanche-energy-announces-new` — [HTML]
+  - `iter-01/sources/prnewswire-news-releases-avalanche-energy-announces-new.md` — [processed .md]
   - `iter-01/sources/talk-polywell-orbitron-paper-discussion` — [HTML]
   - `iter-01/sources/talk-polywell-orbitron-paper-discussion.md` — [processed .md]
+  - `iter-01/sources/ui-2023aps-dpptp1006m-abstract` — [HTML]
+  - `iter-01/sources/ui-2023aps-dpptp1006m-abstract.md` — [processed .md]
+  - `iter-01/sources/ui-2023aps-dppyo8010l-abstract` — [HTML]
+  - `iter-01/sources/ui-2023aps-dppyo8010l-abstract.md` — [processed .md]
 
 ### 14-magnetized-target-fusion-pneumatic-compression
 - **Dossier**: `14-magnetized-target-fusion-pneumatic-compression/dossier.md`
-- **Iterations**: 2 (iter-01, iter-02)
-- **Sources** (10):
+- **Iterations**: 4 (iter-01, iter-02, iter-03, iter-04)
+- **Sources** (20):
   - `iter-01/sources/general-fusion-technical-details` — [HTML]
   - `iter-01/sources/general-fusion-technical-details.md` — [processed .md]
   - `iter-01/sources/general-fusion-technology-overview` — [HTML]
@@ -211,11 +339,21 @@ Sync: `./scripts/sync_research.sh pull`
   - `iter-02/sources/general-fusion-iaea-fec-2025-abstract.md` — [processed .md]
   - `iter-02/sources/general-fusion-lm26-milestones-2025` — [HTML]
   - `iter-02/sources/general-fusion-lm26-milestones-2025.md` — [processed .md]
+  - `iter-03/sources/generalfusion-fusion-demo-plant` — [HTML]
+  - `iter-03/sources/generalfusion-fusion-demo-plant.md` — [processed .md]
+  - `iter-03/sources/generalfusion-post-peer-reviewed-publication-confirms` — [HTML]
+  - `iter-03/sources/generalfusion-post-peer-reviewed-publication-confirms.md` — [processed .md]
+  - `iter-03/sources/metaltechnews-story-2025-05-14-tech-bytes-general-fusion` — [HTML]
+  - `iter-03/sources/metaltechnews-story-2025-05-14-tech-bytes-general-fusion.md` — [processed .md]
+  - `iter-04/sources/en-wiki-general-fusion` — [HTML]
+  - `iter-04/sources/en-wiki-general-fusion.md` — [processed .md]
+  - `iter-04/sources/globenewswire-news-release-2022-12-12-2571959-0-en-general` — [HTML]
+  - `iter-04/sources/globenewswire-news-release-2022-12-12-2571959-0-en-general.md` — [processed .md]
 
 ### 15-sheared-flow-stabilized-z-pinch
 - **Dossier**: `15-sheared-flow-stabilized-z-pinch/dossier.md`
-- **Iterations**: 2 (iter-01, iter-02)
-- **Sources** (12):
+- **Iterations**: 3 (iter-01, iter-02, iter-03)
+- **Sources** (17):
   - `iter-01/sources/century-demo-system` — [HTML]
   - `iter-01/sources/century-demo-system.md` — [processed .md]
   - `iter-01/sources/engineering-paradigms-paper-summary` — [PDF]
@@ -228,45 +366,128 @@ Sync: `./scripts/sync_research.sh pull`
   - `iter-02/sources/century-and-fuze-a-updates-2025.md` — [processed .md]
   - `iter-02/sources/fuze-3-gigapascal-results-2025` — [HTML]
   - `iter-02/sources/fuze-3-gigapascal-results-2025.md` — [processed .md]
+  - `iter-03/sources/arxiv-2408-15206` — [HTML]
+  - `iter-03/sources/arxiv-2408-15206.md` — [processed .md]
+  - `iter-03/sources/osti-servlets-purl-2588719` — [PDF]
+  - `iter-03/sources/osti-servlets-purl-2588719.md` — [processed .md]
+  - `iter-03/sources/osti-servlets-purl-901970` — [unknown]
 
 ### 16-muon-catalyzed-fusion
 - **Dossier**: `16-muon-catalyzed-fusion/dossier.md`
 - **Iterations**: 1 (iter-01)
-- **Sources** (6):
+- **Sources** (21):
   - `iter-01/sources/acceleron-arpa-e-presentation-2025` — [PDF]
   - `iter-01/sources/acceleron-arpa-e-presentation-2025.md` — [processed .md]
   - `iter-01/sources/acceleron-company-overview` — [HTML]
   - `iter-01/sources/acceleron-company-overview.md` — [processed .md]
+  - `iter-01/sources/arpa-e-sites-default-files-2025-08-day2-09-newburg` — [PDF]
+  - `iter-01/sources/arxiv-2112-08399` — [HTML]
+  - `iter-01/sources/arxiv-2112-08399.md` — [processed .md]
+  - `iter-01/sources/arxiv-nucl-ex-0101007` — [HTML]
+  - `iter-01/sources/arxiv-nucl-ex-0101007.md` — [processed .md]
+  - `iter-01/sources/cerncourier-a-ess-under-construction` — [HTML]
+  - `iter-01/sources/energy-documents-ig-0532pdf` — [PDF]
+  - `iter-01/sources/inis-records-zmph4-5p723` — [HTML]
+  - `iter-01/sources/inis-records-zmph4-5p723.md` — [processed .md]
+  - `iter-01/sources/interestingengineering-energy-us-firm-plasma-free-fusion` — [HTML]
   - `iter-01/sources/muon-catalyzed-fusion-physics` — [HTML]
   - `iter-01/sources/muon-catalyzed-fusion-physics.md` — [processed .md]
+  - `iter-01/sources/osti-servlets-purl-1345779` — [PDF]
+  - `iter-01/sources/osti-servlets-purl-1345779.md` — [processed .md]
+  - `iter-01/sources/pip2` — [HTML]
+  - `iter-01/sources/pmc-articles-pmc9013384` — [HTML]
+  - `iter-01/sources/pmc-articles-pmc9013384.md` — [processed .md]
 
-### 17-laser-icf-direct-drive
-- **Dossier**: `17-laser-icf-direct-drive/dossier.md`
-- **Iterations**: 2 (iter-01, iter-02)
-- **Sources** (12):
-  - `iter-01/sources/focused-energy-technology` — [HTML]
-  - `iter-01/sources/focused-energy-technology.md` — [processed .md]
+### 17a-laser-icf-hybrid-drive
+- **Dossier**: `17a-laser-icf-hybrid-drive/dossier.md`
+- **Iterations**: 3 (iter-01, iter-02, iter-03)
+- **Sources** (31):
   - `iter-01/sources/xcimer-energy-approach` — [HTML]
   - `iter-01/sources/xcimer-energy-approach.md` — [processed .md]
-  - `iter-02/sources/focused-energy-callahan-interview` — [HTML]
-  - `iter-02/sources/focused-energy-callahan-interview.md` — [processed .md]
   - `iter-02/sources/hylife-energy-conversion-notes` — [HTML]
   - `iter-02/sources/hylife-energy-conversion-notes.md` — [processed .md]
   - `iter-02/sources/xcimer-science-page` — [HTML]
   - `iter-02/sources/xcimer-science-page.md` — [processed .md]
   - `iter-02/sources/xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb` — [PDF]
   - `iter-02/sources/xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md` — [processed .md]
+  - `iter-03/sources/arpa-e-sites-default-files-migrated-a05-zuegel` — [PDF]
+  - `iter-03/sources/digital-ark-67531-metadc626683` — [HTML]
+  - `iter-03/sources/digital-ark-67531-metadc626683.md` — [processed .md]
+  - `iter-03/sources/laserfocusworld-lasers-sources-article-14274951-can-high` — [HTML]
+  - `iter-03/sources/laserfocusworld-lasers-sources-article-14274951-can-high.md` — [processed .md]
+  - `iter-03/sources/lasers-sites-lasers-files-2023-11-haefner-ilt-ife-workshop` — [PDF]
+  - `iter-03/sources/llnl-53961-llnl-releases-generalized-economics-model-fusion` — [HTML]
+  - `iter-03/sources/llnl-53961-llnl-releases-generalized-economics-model-fusion.md` — [processed .md]
+  - `iter-03/sources/opg-oe-abstract-cfm` — [HTML]
+  - `iter-03/sources/optica-opn-home-articles-volume-34-june-2023-features` — [HTML]
+  - `iter-03/sources/optica-opn-home-articles-volume-34-june-2023-features.md` — [processed .md]
+  - `iter-03/sources/osti-biblio-7021072` — [HTML]
+  - `iter-03/sources/osti-biblio-7021072.md` — [processed .md]
+  - `iter-03/sources/osti-servlets-purl-15013230` — [PDF]
+  - `iter-03/sources/osti-servlets-purl-2561299` — [PDF]
+  - `iter-03/sources/osti-servlets-purl-2561299.md` — [processed .md]
+  - `iter-03/sources/osti-servlets-purl-6137961` — [PDF]
+  - `iter-03/sources/osti-servlets-purl-6137961.md` — [processed .md]
+  - `iter-03/sources/osti-servlets-purl-622702` — [PDF]
+  - `iter-03/sources/pmc-articles-pmc7658748` — [HTML]
+  - `iter-03/sources/pmc-articles-pmc7658748.md` — [processed .md]
+  - `iter-03/sources/sciencedirect-science-article-pii-s0920379624001868` — [HTML]
+  - `iter-03/sources/sciencedirect-science-article-pii-s0920379624001868.md` — [processed .md]
+
+### 17b-laser-icf-fast-ignition
+- **Dossier**: `17b-laser-icf-fast-ignition/dossier.md`
+- **Iterations**: 3 (iter-01, iter-02, iter-03)
+- **Sources** (31):
+  - `iter-01/sources/focused-energy-technology` — [HTML]
+  - `iter-01/sources/focused-energy-technology.md` — [processed .md]
+  - `iter-02/sources/focused-energy-callahan-interview` — [HTML]
+  - `iter-02/sources/focused-energy-callahan-interview.md` — [processed .md]
+  - `iter-02/sources/hylife-energy-conversion-notes` — [HTML]
+  - `iter-02/sources/hylife-energy-conversion-notes.md` — [processed .md]
+  - `iter-03/sources/arpa-e-sites-default-files-migrated-a05-zuegel` — [PDF]
+  - `iter-03/sources/digital-ark-67531-metadc626683` — [HTML]
+  - `iter-03/sources/digital-ark-67531-metadc626683.md` — [processed .md]
+  - `iter-03/sources/laserfocusworld-lasers-sources-article-14274951-can-high` — [HTML]
+  - `iter-03/sources/laserfocusworld-lasers-sources-article-14274951-can-high.md` — [processed .md]
+  - `iter-03/sources/lasers-sites-lasers-files-2023-11-haefner-ilt-ife-workshop` — [PDF]
+  - `iter-03/sources/llnl-53961-llnl-releases-generalized-economics-model-fusion` — [HTML]
+  - `iter-03/sources/llnl-53961-llnl-releases-generalized-economics-model-fusion.md` — [processed .md]
+  - `iter-03/sources/opg-oe-abstract-cfm` — [HTML]
+  - `iter-03/sources/optica-opn-home-articles-volume-34-june-2023-features` — [HTML]
+  - `iter-03/sources/optica-opn-home-articles-volume-34-june-2023-features.md` — [processed .md]
+  - `iter-03/sources/osti-biblio-7021072` — [HTML]
+  - `iter-03/sources/osti-biblio-7021072.md` — [processed .md]
+  - `iter-03/sources/osti-servlets-purl-1438678` — [PDF]
+  - `iter-03/sources/osti-servlets-purl-1438678.md` — [processed .md]
+  - `iter-03/sources/osti-servlets-purl-15013230` — [PDF]
+  - `iter-03/sources/osti-servlets-purl-2561299` — [PDF]
+  - `iter-03/sources/osti-servlets-purl-2561299.md` — [processed .md]
+  - `iter-03/sources/osti-servlets-purl-6137961` — [PDF]
+  - `iter-03/sources/osti-servlets-purl-6137961.md` — [processed .md]
+  - `iter-03/sources/osti-servlets-purl-622702` — [PDF]
+  - `iter-03/sources/pmc-articles-pmc7658748` — [HTML]
+  - `iter-03/sources/pmc-articles-pmc7658748.md` — [processed .md]
+  - `iter-03/sources/prnewswire-news-releases-focused-energy-and-amplitude-enter` — [HTML]
+  - `iter-03/sources/prnewswire-news-releases-focused-energy-and-amplitude-enter.md` — [processed .md]
 
 ### 18-p-b11-frc
 - **Dossier**: `18-p-b11-frc/dossier.md`
 - **Iterations**: 2 (iter-01, iter-02)
-- **Sources** (12):
+- **Sources** (20):
   - `iter-01/sources/grokipedia-tae-technologies` — [HTML]
   - `iter-01/sources/grokipedia-tae-technologies.md` — [processed .md]
   - `iter-01/sources/tae-energy-conversion-notes` — [HTML]
   - `iter-01/sources/tae-energy-conversion-notes.md` — [processed .md]
   - `iter-01/sources/tae-nbi-breakthrough-2025` — [HTML]
   - `iter-01/sources/tae-nbi-breakthrough-2025.md` — [processed .md]
+  - `iter-02/sources/arxiv-2103-12451` — [HTML]
+  - `iter-02/sources/arxiv-2103-12451.md` — [processed .md]
+  - `iter-02/sources/nature-articles-s41467-025-58849-5` — [HTML]
+  - `iter-02/sources/nature-articles-s41467-025-58849-5.md` — [processed .md]
+  - `iter-02/sources/osti-pages-servlets-purl-2441289` — [PDF]
+  - `iter-02/sources/osti-pages-servlets-purl-2441289.md` — [processed .md]
+  - `iter-02/sources/osti-servlets-purl-1001677` — [PDF]
+  - `iter-02/sources/osti-servlets-purl-1001677.md` — [processed .md]
   - `iter-02/sources/tae-c2w-machine-details` — [PDF]
   - `iter-02/sources/tae-c2w-machine-details.md` — [processed .md]
   - `iter-02/sources/tae-djt-merger-davinci-specs` — [HTML]
@@ -277,43 +498,60 @@ Sync: `./scripts/sync_research.sh pull`
 ### 19-orbital-levitated-dipole
 - **Dossier**: `19-orbital-levitated-dipole/dossier.md`
 - **Iterations**: 2 (iter-01, iter-02)
-- **Sources** (10):
+- **Sources** (18):
   - `iter-01/sources/levitated-dipole-technical-background` — [HTML]
   - `iter-01/sources/levitated-dipole-technical-background.md` — [processed .md]
   - `iter-01/sources/nasaspaceflight-forum-discussion` — [HTML]
   - `iter-01/sources/nasaspaceflight-forum-discussion.md` — [processed .md]
   - `iter-01/sources/yc-launch-page` — [HTML]
   - `iter-01/sources/yc-launch-page.md` — [processed .md]
+  - `iter-02/sources/arxiv-2401-15267` — [HTML]
+  - `iter-02/sources/arxiv-2401-15267.md` — [processed .md]
   - `iter-02/sources/dipole-reactor-heating-energy-conversion` — [HTML]
   - `iter-02/sources/dipole-reactor-heating-energy-conversion.md` — [processed .md]
+  - `iter-02/sources/everycrsreport-reports-r41419` — [HTML]
+  - `iter-02/sources/everycrsreport-reports-r41419.md` — [processed .md]
+  - `iter-02/sources/nss-wp-content-uploads-2017-07-space-solar-power-workshop` — [PDF]
+  - `iter-02/sources/nss-wp-content-uploads-2017-07-space-solar-power-workshop.md` — [processed .md]
+  - `iter-02/sources/ntrs-api-citations-20140003205-downloads-20140003205` — [PDF]
+  - `iter-02/sources/ntrs-api-citations-20140003205-downloads-20140003205.md` — [processed .md]
   - `iter-02/sources/zephyr-fusion-web-sources-2026` — [HTML]
   - `iter-02/sources/zephyr-fusion-web-sources-2026.md` — [processed .md]
 
-### 20-modular-hts-stellarator
-- **Dossier**: `20-modular-hts-stellarator/dossier.md`
-- **Iterations**: 2 (iter-01, iter-02)
-- **Sources** (8):
-  - `iter-01/sources/renaissance-fusion-technology` — [HTML]
-  - `iter-01/sources/renaissance-fusion-technology.md` — [processed .md]
-  - `iter-01/sources/type-one-energy-infinity-two-design` — [HTML]
-  - `iter-01/sources/type-one-energy-infinity-two-design.md` — [processed .md]
-  - `iter-02/sources/renaissance-fusion-specs` — [PDF]
-  - `iter-02/sources/renaissance-fusion-specs.md` — [processed .md]
-  - `iter-02/sources/type-one-infinity-two-specs` — [HTML]
-  - `iter-02/sources/type-one-infinity-two-specs.md` — [processed .md]
-
 ### 20a-type-one-stellarator
 - **Dossier**: `20a-type-one-stellarator/dossier.md`
-- **Sources**: none
+- **Iterations**: 1 (iter-01)
+- **Sources** (14):
+  - `iter-01/sources/ans-news-2025-04-01-article-6903` — [HTML]
+  - `iter-01/sources/ans-news-2025-04-01-article-6903.md` — [processed .md]
+  - `iter-01/sources/arxiv-2512-08027` — [HTML]
+  - `iter-01/sources/arxiv-2512-08027.md` — [processed .md]
+  - `iter-01/sources/cambridge-core-journals-journal-of-plasma-physics-article` — [HTML]
+  - `iter-01/sources/cambridge-core-journals-journal-of-plasma-physics-article.md` — [processed .md]
+  - `iter-01/sources/cambridge-core-services-aop-cambridge-core-content-view` — [PDF]
+  - `iter-01/sources/cambridge-core-services-aop-cambridge-core-content-view.md` — [processed .md]
+  - `iter-01/sources/modernsciences-type-one-energy-fusion-pilot-plant-design` — [HTML]
+  - `iter-01/sources/modernsciences-type-one-energy-fusion-pilot-plant-design.md` — [processed .md]
+  - `iter-01/sources/science-media-fes-pdf-fes-presentations-2022-pearson` — [PDF]
+  - `iter-01/sources/science-media-fes-pdf-fes-presentations-2022-pearson.md` — [processed .md]
+  - `iter-01/sources/typeoneenergy-type-one-energy-issues-first-realistic` — [HTML]
+  - `iter-01/sources/typeoneenergy-type-one-energy-issues-first-realistic.md` — [processed .md]
 
 ### 20b-renaissance-stellarator
 - **Dossier**: `20b-renaissance-stellarator/dossier.md`
-- **Sources**: none
+- **Iterations**: 1 (iter-01)
+- **Sources** (6):
+  - `iter-01/sources/arxiv-1512-01930` — [HTML]
+  - `iter-01/sources/arxiv-1512-01930.md` — [processed .md]
+  - `iter-01/sources/infoscience-bitstreams-7d2d7b2f-6f75-4ac2-93cb-6eef8a65df82` — [PDF]
+  - `iter-01/sources/infoscience-bitstreams-7d2d7b2f-6f75-4ac2-93cb-6eef8a65df82.md` — [processed .md]
+  - `iter-01/sources/ukaea-process-fusion-devices-stellarator` — [HTML]
+  - `iter-01/sources/ukaea-process-fusion-devices-stellarator.md` — [processed .md]
 
 ### 21-spherical-tokamak-hts
 - **Dossier**: `21-spherical-tokamak-hts/dossier.md`
-- **Iterations**: 3 (iter-01, iter-02, iter-03)
-- **Sources** (22):
+- **Iterations**: 4 (iter-01, iter-02, iter-03, iter-04)
+- **Sources** (30):
   - `iter-01/sources/pulsed-spherical-tokamak-paper` — [PDF]
   - `iter-01/sources/pulsed-spherical-tokamak-paper.md` — [processed .md]
   - `iter-01/sources/st40-heating-systems` — [HTML]
@@ -336,11 +574,19 @@ Sync: `./scripts/sync_research.sh pull`
   - `iter-03/sources/tokamak-energy-ec-heating-pilot-plant.md` — [processed .md]
   - `iter-03/sources/tokamak-energy-st-e1-dpp2025-abstract` — [HTML]
   - `iter-03/sources/tokamak-energy-st-e1-dpp2025-abstract.md` — [processed .md]
+  - `iter-04/sources/prnewswire-news-releases-tokamak-energy-announces-st80-hts` — [HTML]
+  - `iter-04/sources/prnewswire-news-releases-tokamak-energy-announces-st80-hts.md` — [processed .md]
+  - `iter-04/sources/theengineer-content-news-tokamak-energy-st80-hts-hailed-as` — [HTML]
+  - `iter-04/sources/theengineer-content-news-tokamak-energy-st80-hts-hailed-as.md` — [processed .md]
+  - `iter-04/sources/tokamakenergy-about-us-fusion-energy-high-temperature` — [HTML]
+  - `iter-04/sources/tokamakenergy-about-us-fusion-energy-high-temperature.md` — [processed .md]
+  - `iter-04/sources/tokamakenergy-our-fusion-energy-and-hts-technology-fusion` — [HTML]
+  - `iter-04/sources/tokamakenergy-our-fusion-energy-and-hts-technology-fusion.md` — [processed .md]
 
 ### 22-projectile-icf
 - **Dossier**: `22-projectile-icf/dossier.md`
-- **Iterations**: 2 (iter-01, iter-02)
-- **Sources** (8):
+- **Iterations**: 3 (iter-01, iter-02, iter-03)
+- **Sources** (20):
   - `iter-01/sources/first-light-fusion-technology` — [HTML]
   - `iter-01/sources/first-light-fusion-technology.md` — [processed .md]
   - `iter-01/sources/nearstar-fusion-technology` — [HTML]
@@ -349,125 +595,330 @@ Sync: `./scripts/sync_research.sh pull`
   - `iter-02/sources/first-light-flare-pivot-update.md` — [processed .md]
   - `iter-02/sources/nearstar-fusion-2025-update` — [HTML]
   - `iter-02/sources/nearstar-fusion-2025-update.md` — [processed .md]
+  - `iter-03/sources/ipgroupplc-news-and-events-portfolio-news-2025-2025-09-19` — [HTML]
+  - `iter-03/sources/ipgroupplc-news-and-events-portfolio-news-2025-2025-09-19.md` — [processed .md]
+  - `iter-03/sources/osti-servlets-purl-6360934` — [PDF]
+  - `iter-03/sources/osti-servlets-purl-6360934.md` — [processed .md]
+  - `iter-03/sources/osti-servlets-purl-6780071` — [PDF]
+  - `iter-03/sources/osti-servlets-purl-6780071.md` — [processed .md]
+  - `iter-03/sources/pmc-articles-pmc7658748` — [HTML]
+  - `iter-03/sources/pmc-articles-pmc7658748.md` — [processed .md]
+  - `iter-03/sources/prnewswire-news-releases-first-light-achieves-world-first` — [HTML]
+  - `iter-03/sources/prnewswire-news-releases-first-light-achieves-world-first.md` — [processed .md]
+  - `iter-03/sources/theengineer-content-news-first-light-fusion-claims-tritium` — [HTML]
+  - `iter-03/sources/theengineer-content-news-first-light-fusion-claims-tritium.md` — [processed .md]
 
 ### 23-laser-icf-nanostructured-target
 - **Dossier**: `23-laser-icf-nanostructured-target/dossier.md`
-- **Iterations**: 2 (iter-01, iter-02)
-- **Sources** (4):
+- **Iterations**: 3 (iter-01, iter-02, iter-03)
+- **Sources** (36):
+  - `iter-01/sources/hb11-energy-technology` — [HTML]
   - `iter-01/sources/hb11-energy-technology.md` — [processed .md]
+  - `iter-01/sources/marvel-fusion-technology` — [HTML]
   - `iter-01/sources/marvel-fusion-technology.md` — [processed .md]
+  - `iter-02/sources/hb11-energy-2025-updates` — [HTML]
   - `iter-02/sources/hb11-energy-2025-updates.md` — [processed .md]
+  - `iter-02/sources/marvel-fusion-2025-updates` — [HTML]
   - `iter-02/sources/marvel-fusion-2025-updates.md` — [processed .md]
+  - `iter-03/sources/arxiv-1603-02579` — [HTML]
+  - `iter-03/sources/arxiv-1603-02579.md` — [processed .md]
+  - `iter-03/sources/arxiv-2201-12818` — [PDF]
+  - `iter-03/sources/arxiv-2201-12818.md` — [processed .md]
+  - `iter-03/sources/binding-ultrashort-pulse-laser-fusion` — [HTML]
+  - `iter-03/sources/binding-ultrashort-pulse-laser-fusion.md` — [processed .md]
+  - `iter-03/sources/energynewsbulletin-energy-transition-features-articles` — [HTML]
+  - `iter-03/sources/energynewsbulletin-energy-transition-features-articles.md` — [processed .md]
+  - `iter-03/sources/hb11-2025-08-04-assoc-prof-patrick-burr-leads-unsw-team-to` — [HTML]
+  - `iter-03/sources/hb11-2025-08-04-assoc-prof-patrick-burr-leads-unsw-team-to.md` — [processed .md]
+  - `iter-03/sources/newatlas-energy-hb11-hydrogen-boron-fusion-clean-energy` — [HTML]
+  - `iter-03/sources/newatlas-energy-hb11-hydrogen-boron-fusion-clean-energy.md` — [processed .md]
+  - `iter-03/sources/newatlas-energy-hb11-laser-fusion-demonstration` — [HTML]
+  - `iter-03/sources/newatlas-energy-hb11-laser-fusion-demonstration.md` — [processed .md]
+  - `iter-03/sources/newsroom-news-science-tech-pioneering-technology-promises` — [HTML]
+  - `iter-03/sources/newsroom-news-science-tech-pioneering-technology-promises.md` — [processed .md]
+  - `iter-03/sources/optics-news-15-10-4` — [HTML]
+  - `iter-03/sources/optics-news-15-10-4.md` — [processed .md]
+  - `iter-03/sources/optics-news-16-4-4` — [HTML]
+  - `iter-03/sources/optics-news-16-4-4.md` — [processed .md]
+  - `iter-03/sources/osti-servlets-purl-1400089` — [PDF]
+  - `iter-03/sources/osti-servlets-purl-1400089.md` — [processed .md]
+  - `iter-03/sources/osti-servlets-purl-15013216` — [PDF]
+  - `iter-03/sources/osti-servlets-purl-15013216.md` — [processed .md]
+  - `iter-03/sources/osti-servlets-purl-15013230` — [PDF]
+  - `iter-03/sources/osti-servlets-purl-15013230.md` — [processed .md]
+  - `iter-03/sources/osti-servlets-purl-3008974` — [PDF]
+  - `iter-03/sources/osti-servlets-purl-3008974.md` — [processed .md]
 
 ### 24-dense-plasma-focus
 - **Dossier**: `24-dense-plasma-focus/dossier.md`
-- **Iterations**: 1 (iter-01)
-- **Sources** (3):
+- **Iterations**: 2 (iter-01, iter-02)
+- **Sources** (18):
+  - `iter-01/sources/lerner-2023-jfe-paper` — [HTML]
   - `iter-01/sources/lerner-2023-jfe-paper.md` — [processed .md]
+  - `iter-01/sources/lerner-2024-frontiers-pB11-prep` — [HTML]
   - `iter-01/sources/lerner-2024-frontiers-pB11-prep.md` — [processed .md]
+  - `iter-01/sources/lppfusion-website-technology` — [HTML]
   - `iter-01/sources/lppfusion-website-technology.md` — [processed .md]
+  - `iter-02/sources/compoundsemiconductor-119149-us-team-reinvents-the` — [HTML]
+  - `iter-02/sources/compoundsemiconductor-119149-us-team-reinvents-the.md` — [processed .md]
+  - `iter-02/sources/ipo-ipo-technologies-instruments-sensors-and-electronics` — [HTML]
+  - `iter-02/sources/ipo-ipo-technologies-instruments-sensors-and-electronics.md` — [processed .md]
+  - `iter-02/sources/lppfusion-investing-in-lppfusion-executive-summary` — [HTML]
+  - `iter-02/sources/lppfusion-investing-in-lppfusion-executive-summary.md` — [processed .md]
+  - `iter-02/sources/lppfusion-investing-in-lppfusion-our-plan-to-net-energy` — [HTML]
+  - `iter-02/sources/lppfusion-investing-in-lppfusion-our-plan-to-net-energy.md` — [processed .md]
+  - `iter-02/sources/lppfusion-proton-boron-p11b-fuel-arrives` — [HTML]
+  - `iter-02/sources/lppfusion-proton-boron-p11b-fuel-arrives.md` — [processed .md]
+  - `iter-02/sources/lppfusion-technology-focus-fusion-energy-dpf-device` — [HTML]
+  - `iter-02/sources/lppfusion-technology-focus-fusion-energy-dpf-device.md` — [processed .md]
 
 ### 25-heavy-ion-beam-icf
 - **Dossier**: `25-heavy-ion-beam-icf/dossier.md`
 - **Iterations**: 2 (iter-01, iter-02)
-- **Sources** (3):
-  - `iter-01/sources/hif-technology-overview.md` — [processed .md]
-  - `iter-01/sources/intensity-energy-search-results.md` — [processed .md]
-  - `iter-02/sources/hif-recent-research-compilation.md` — [processed .md]
+- **Sources** (6):
+  - `iter-02/sources/arxiv-1511-06508` — [HTML]
+  - `iter-02/sources/arxiv-1511-06508.md` — [processed .md]
+  - `iter-02/sources/osti-servlets-purl-901970` — [PDF]
+  - `iter-02/sources/osti-servlets-purl-901970.md` — [processed .md]
+  - `iter-02/sources/transat-h2020-wp-content-uploads-2019-11-giegerich` — [PDF]
+  - `iter-02/sources/transat-h2020-wp-content-uploads-2019-11-giegerich.md` — [processed .md]
 
 ### 26-laser-icf-indirect-drive
 - **Dossier**: `26-laser-icf-indirect-drive/dossier.md`
-- **Iterations**: 2 (iter-01, iter-02)
-- **Sources** (7):
+- **Iterations**: 3 (iter-01, iter-02, iter-03)
+- **Sources** (30):
+  - `iter-01/sources/inertia-enterprises-website-and-faq` — [HTML]
   - `iter-01/sources/inertia-enterprises-website-and-faq.md` — [processed .md]
+  - `iter-01/sources/nif-ignition-achievements` — [HTML]
   - `iter-01/sources/nif-ignition-achievements.md` — [processed .md]
+  - `iter-01/sources/xcimer-energy-website-and-science` — [HTML]
   - `iter-01/sources/xcimer-energy-website-and-science.md` — [processed .md]
+  - `iter-02/sources/inertia-enterprises-2026-update` — [HTML]
   - `iter-02/sources/inertia-enterprises-2026-update.md` — [processed .md]
+  - `iter-02/sources/nif-ignition-updates-2025` — [HTML]
   - `iter-02/sources/nif-ignition-updates-2025.md` — [processed .md]
+  - `iter-02/sources/xcimer-hybrid-direct-drive-evolution` — [PDF]
   - `iter-02/sources/xcimer-hybrid-direct-drive-evolution.md` — [processed .md]
+  - `iter-02/sources/xcimer-laser-milestones-2025` — [HTML]
   - `iter-02/sources/xcimer-laser-milestones-2025.md` — [processed .md]
+  - `iter-03/sources/arxiv-2604-07367` — [HTML]
+  - `iter-03/sources/arxiv-2604-07367.md` — [processed .md]
+  - `iter-03/sources/fire-fpa07-goodin-icf-fuel` — [PDF]
+  - `iter-03/sources/fire-fpa07-goodin-icf-fuel.md` — [processed .md]
+  - `iter-03/sources/optics-news-15-6-6` — [HTML]
+  - `iter-03/sources/optics-news-15-6-6.md` — [processed .md]
+  - `iter-03/sources/osti-biblio-10179076` — [HTML]
+  - `iter-03/sources/osti-biblio-10179076.md` — [processed .md]
+  - `iter-03/sources/osti-servlets-purl-833813` — [PDF]
+  - `iter-03/sources/osti-servlets-purl-833813.md` — [processed .md]
+  - `iter-03/sources/pmc-articles-pmc7658748` — [HTML]
+  - `iter-03/sources/pmc-articles-pmc7658748.md` — [processed .md]
+  - `iter-03/sources/xcimer-approach` — [HTML]
+  - `iter-03/sources/xcimer-approach.md` — [processed .md]
+  - `iter-03/sources/xcimer-science` — [HTML]
+  - `iter-03/sources/xcimer-science.md` — [processed .md]
 
 ### 27-polywell
 - **Dossier**: `27-polywell/dossier.md`
-- **Iterations**: 2 (iter-01, iter-02)
-- **Sources** (4):
+- **Iterations**: 3 (iter-01, iter-02, iter-03)
+- **Sources** (14):
+  - `iter-01/sources/emc2-website-summary` — [HTML]
   - `iter-01/sources/emc2-website-summary.md` — [processed .md]
+  - `iter-01/sources/polywell-technical-details` — [HTML]
   - `iter-01/sources/polywell-technical-details.md` — [processed .md]
+  - `iter-02/sources/emc2-fpns-talk-polywell-2023` — [HTML]
   - `iter-02/sources/emc2-fpns-talk-polywell-2023.md` — [processed .md]
+  - `iter-02/sources/polywell-revisited-2025-park` — [PDF]
   - `iter-02/sources/polywell-revisited-2025-park.md` — [processed .md]
+  - `iter-03/sources/arxiv-2508-06761` — [HTML]
+  - `iter-03/sources/arxiv-2508-06761.md` — [processed .md]
+  - `iter-03/sources/en-wiki-polywell` — [HTML]
+  - `iter-03/sources/en-wiki-polywell.md` — [processed .md]
+  - `iter-03/sources/thefusionreport-p-interview-with-emc2-fusion-a-different` — [HTML]
+  - `iter-03/sources/thefusionreport-p-interview-with-emc2-fusion-a-different.md` — [processed .md]
 
 ### 28-hts-tokamak-full-hts
 - **Dossier**: `28-hts-tokamak-full-hts/dossier.md`
 - **Iterations**: 3 (iter-01, iter-02, iter-03)
-- **Sources** (2):
-  - `iter-01/sources/energy-singularity-overview.md` — [processed .md]
+- **Sources** (6):
+  - `iter-02/sources/energy-singularity-technical-summary` — [HTML]
   - `iter-02/sources/energy-singularity-technical-summary.md` — [processed .md]
+  - `iter-03/sources/sciencedirect-science-article-pii-s092037962500537x` — [HTML]
+  - `iter-03/sources/sciencedirect-science-article-pii-s092037962500537x.md` — [processed .md]
+  - `iter-03/sources/sciencedirect-science-article-pii-s2211467x25003839` — [HTML]
+  - `iter-03/sources/sciencedirect-science-article-pii-s2211467x25003839.md` — [processed .md]
 
 ### 29-negative-triangularity-tokamak
 - **Dossier**: `29-negative-triangularity-tokamak/dossier.md`
-- **Iterations**: 3 (iter-01, iter-02, iter-03)
-- **Sources** (7):
+- **Iterations**: 4 (iter-01, iter-02, iter-03, iter-04)
+- **Sources** (24):
+  - `iter-01/sources/ball-balestri-ohmic-nt-paper` — [HTML]
   - `iter-01/sources/ball-balestri-ohmic-nt-paper.md` — [processed .md]
+  - `iter-01/sources/firefly-fusion-diii-d-collaboration` — [HTML]
   - `iter-01/sources/firefly-fusion-diii-d-collaboration.md` — [processed .md]
+  - `iter-01/sources/fusion-energy-base-profile` — [HTML]
   - `iter-01/sources/fusion-energy-base-profile.md` — [processed .md]
+  - `iter-01/sources/greyb-firefly-interview` — [HTML]
   - `iter-01/sources/greyb-firefly-interview.md` — [processed .md]
-  - `iter-01/sources/venture-kick-profile.md` — [processed .md]
+  - `iter-02/sources/firefly-website-2026` — [HTML]
   - `iter-02/sources/firefly-website-2026.md` — [processed .md]
+  - `iter-02/sources/manta-reference-design` — [PDF]
   - `iter-02/sources/manta-reference-design.md` — [processed .md]
+  - `iter-04/sources/arxiv-2401-15217` — [HTML]
+  - `iter-04/sources/arxiv-2401-15217.md` — [processed .md]
+  - `iter-04/sources/arxiv-2405-01514` — [HTML]
+  - `iter-04/sources/arxiv-2405-01514.md` — [processed .md]
+  - `iter-04/sources/arxiv-2501-14682` — [HTML]
+  - `iter-04/sources/arxiv-2501-14682.md` — [processed .md]
+  - `iter-04/sources/osti-servlets-purl-1127358` — [PDF]
+  - `iter-04/sources/osti-servlets-purl-1127358.md` — [processed .md]
+  - `iter-04/sources/osti-servlets-purl-1178069` — [PDF]
+  - `iter-04/sources/osti-servlets-purl-1178069.md` — [processed .md]
+  - `iter-04/sources/qedfusion-lib-report-aries-act-ucsd-cer-13-01` — [PDF]
+  - `iter-04/sources/qedfusion-lib-report-aries-act-ucsd-cer-13-01.md` — [processed .md]
 
 ### 30-laser-icf-nif-commercialization
 - **Dossier**: `30-laser-icf-nif-commercialization/dossier.md`
 - **Iterations**: 1 (iter-01)
-- **Sources** (3):
+- **Sources** (18):
+  - `iter-01/sources/arxiv-2505-03834v5` — [HTML]
+  - `iter-01/sources/arxiv-2505-03834v5.md` — [processed .md]
+  - `iter-01/sources/enr-mike-dunne-interview` — [HTML]
   - `iter-01/sources/enr-mike-dunne-interview.md` — [processed .md]
+  - `iter-01/sources/globenewswire-series-a-press-release` — [HTML]
   - `iter-01/sources/globenewswire-series-a-press-release.md` — [processed .md]
+  - `iter-01/sources/inertia-website-technical` — [HTML]
   - `iter-01/sources/inertia-website-technical.md` — [processed .md]
+  - `iter-01/sources/lasers-sites-lasers-files-2023-11-haefner-ilt-ife-workshop` — [PDF]
+  - `iter-01/sources/lasers-sites-lasers-files-2023-11-haefner-ilt-ife-workshop.md` — [processed .md]
+  - `iter-01/sources/osti-servlets-purl-1022881` — [PDF]
+  - `iter-01/sources/osti-servlets-purl-1022881.md` — [processed .md]
+  - `iter-01/sources/osti-servlets-purl-1028880` — [PDF]
+  - `iter-01/sources/osti-servlets-purl-1028880.md` — [processed .md]
+  - `iter-01/sources/osti-servlets-purl-1305833` — [PDF]
+  - `iter-01/sources/osti-servlets-purl-1305833.md` — [processed .md]
+  - `iter-01/sources/osti-servlets-purl-828518` — [PDF]
+  - `iter-01/sources/osti-servlets-purl-828518.md` — [processed .md]
 
 ### 31-laser-icf-oec-architecture
 - **Dossier**: `31-laser-icf-oec-architecture/dossier.md`
-- **Iterations**: 1 (iter-01)
-- **Sources** (2):
+- **Iterations**: 2 (iter-01, iter-02)
+- **Sources** (22):
+  - `iter-01/sources/blf-website-and-news` — [HTML]
   - `iter-01/sources/blf-website-and-news.md` — [processed .md]
+  - `iter-01/sources/optics-express-2025-paper` — [PDF]
   - `iter-01/sources/optics-express-2025-paper.md` — [processed .md]
+  - `iter-02/sources/finance-news-blue-laser-fusion-completes-37-114500457` — [HTML]
+  - `iter-02/sources/finance-news-blue-laser-fusion-completes-37-114500457.md` — [processed .md]
+  - `iter-02/sources/lasers-sites-lasers-files-2023-11-fuerst-idaho-ife-workshop` — [PDF]
+  - `iter-02/sources/lasers-sites-lasers-files-2023-11-fuerst-idaho-ife-workshop.md` — [processed .md]
+  - `iter-02/sources/osti-servlets-purl-10104516` — [PDF]
+  - `iter-02/sources/osti-servlets-purl-10104516.md` — [processed .md]
+  - `iter-02/sources/osti-servlets-purl-1165762` — [PDF]
+  - `iter-02/sources/osti-servlets-purl-1165762.md` — [processed .md]
+  - `iter-02/sources/osti-servlets-purl-1305833` — [PDF]
+  - `iter-02/sources/osti-servlets-purl-1305833.md` — [processed .md]
+  - `iter-02/sources/osti-servlets-purl-1323907` — [PDF]
+  - `iter-02/sources/osti-servlets-purl-1323907.md` — [processed .md]
+  - `iter-02/sources/scipub-wp-content-uploads-eurofusion-wppmicpr17-17709` — [PDF]
+  - `iter-02/sources/scipub-wp-content-uploads-eurofusion-wppmicpr17-17709.md` — [processed .md]
+  - `iter-02/sources/semiconductor-today-news-items-2025-oct-blue-laser-fusion` — [HTML]
+  - `iter-02/sources/semiconductor-today-news-items-2025-oct-blue-laser-fusion.md` — [processed .md]
+  - `iter-02/sources/semiconductor-today-news-items-2025-oct-bluelaserfusion` — [HTML]
+  - `iter-02/sources/semiconductor-today-news-items-2025-oct-bluelaserfusion.md` — [processed .md]
 
 ### 32-laser-icf-french-national
 - **Dossier**: `32-laser-icf-french-national/dossier.md`
 - **Iterations**: 1 (iter-01)
-- **Sources** (5):
+- **Sources** (18):
+  - `iter-01/sources/aip-advances-ribeyre-2025` — [PDF]
   - `iter-01/sources/aip-advances-ribeyre-2025.md` — [processed .md]
+  - `iter-01/sources/arpa-e-sites-default-files-migrated-a05-zuegel` — [PDF]
+  - `iter-01/sources/arpa-e-sites-default-files-migrated-a05-zuegel.md` — [processed .md]
+  - `iter-01/sources/genf-icf-article` — [HTML]
   - `iter-01/sources/genf-icf-article.md` — [processed .md]
+  - `iter-01/sources/genf-news-timeline` — [HTML]
   - `iter-01/sources/genf-news-timeline.md` — [processed .md]
+  - `iter-01/sources/genf-website-technology` — [HTML]
   - `iter-01/sources/genf-website-technology.md` — [processed .md]
+  - `iter-01/sources/neimagazine-analysis-enriched-lithium-and-advanced-nuclear` — [HTML]
+  - `iter-01/sources/neimagazine-analysis-enriched-lithium-and-advanced-nuclear.md` — [processed .md]
+  - `iter-01/sources/osti-servlets-purl-1833260` — [PDF]
+  - `iter-01/sources/osti-servlets-purl-1833260.md` — [processed .md]
+  - `iter-01/sources/power-technology-features-enriched-lithium-and-the-race-for` — [HTML]
+  - `iter-01/sources/power-technology-features-enriched-lithium-and-the-race-for.md` — [processed .md]
+  - `iter-01/sources/taranis-project-details` — [HTML]
   - `iter-01/sources/taranis-project-details.md` — [processed .md]
 
 ### 33-state-backed-tokamak-best
 - **Dossier**: `33-state-backed-tokamak-best/dossier.md`
 - **Iterations**: 2 (iter-01, iter-02)
-- **Sources** (3):
+- **Sources** (14):
+  - `iter-01/sources/best-research-plan-v1.1-summary` — [PDF]
   - `iter-01/sources/best-research-plan-v1.1-summary.md` — [processed .md]
-  - `iter-01/sources/neo-fusion-company-profile.md` — [processed .md]
+  - `iter-02/sources/arxiv-1907-11919` — [PDF]
+  - `iter-02/sources/arxiv-1907-11919.md` — [processed .md]
+  - `iter-02/sources/cfetr-power-conversion-studies` — [HTML]
   - `iter-02/sources/cfetr-power-conversion-studies.md` — [processed .md]
-
-### 34-compact-spherical-tokamak-india
-- **Dossier**: `34-compact-spherical-tokamak-india/dossier.md`
-- **Iterations**: 2 (iter-01, iter-02)
-- **Sources** (2):
-  - `iter-01/sources/pranos-fusion-overview.md` — [processed .md]
-  - `iter-02/sources/iaea-fuse-pranos-profile.md` — [processed .md]
+  - `iter-02/sources/osti-pages-servlets-purl-1465662` — [PDF]
+  - `iter-02/sources/osti-pages-servlets-purl-1465662.md` — [processed .md]
+  - `iter-02/sources/osti-servlets-purl-1178069` — [PDF]
+  - `iter-02/sources/osti-servlets-purl-1178069.md` — [processed .md]
+  - `iter-02/sources/osti-servlets-purl-1305833` — [PDF]
+  - `iter-02/sources/osti-servlets-purl-1305833.md` — [processed .md]
+  - `iter-02/sources/scientific-publications-wp-content-uploads-extrapolating` — [PDF]
+  - `iter-02/sources/scientific-publications-wp-content-uploads-extrapolating.md` — [processed .md]
 
 ### 35-polomac-magnetic-confinement
 - **Dossier**: `35-polomac-magnetic-confinement/dossier.md`
 - **Iterations**: 1 (iter-01)
-- **Sources** (3):
-  - `iter-01/sources/deutelio-company-profile.md` — [processed .md]
+- **Sources** (6):
+  - `iter-01/sources/elio-2014-fed-poloidal-confinement` — [HTML]
   - `iter-01/sources/elio-2014-fed-poloidal-confinement.md` — [processed .md]
+  - `iter-01/sources/jtsp-2024-polomac-technical-report` — [HTML]
   - `iter-01/sources/jtsp-2024-polomac-technical-report.md` — [processed .md]
+  - `iter-01/sources/jtsp-jtsp-article-download-32-28` — [PDF]
+  - `iter-01/sources/jtsp-jtsp-article-download-32-28.md` — [processed .md]
 
 ### 36-helical-coil-stellarator
 - **Dossier**: `36-helical-coil-stellarator/dossier.md`
 - **Iterations**: 2 (iter-01, iter-02)
-- **Sources** (4):
+- **Sources** (10):
+  - `iter-01/sources/aip-2023-paper-abstract` — [PDF]
   - `iter-01/sources/aip-2023-paper-abstract.md` — [processed .md]
-  - `iter-01/sources/helical-fusion-technology-overview.md` — [processed .md]
-  - `iter-02/sources/helical-fusion-2025-2026-updates.md` — [processed .md]
-  - `iter-02/sources/nifs-ffhr-blanket-heritage.md` — [processed .md]
+  - `iter-02/sources/academia-144327326-the-aries-cs-compact-stellarator-fusion` — [HTML]
+  - `iter-02/sources/academia-144327326-the-aries-cs-compact-stellarator-fusion.md` — [processed .md]
+  - `iter-02/sources/arxiv-1401-4232` — [PDF]
+  - `iter-02/sources/arxiv-1401-4232.md` — [processed .md]
+  - `iter-02/sources/arxiv-2512-08027` — [PDF]
+  - `iter-02/sources/arxiv-2512-08027.md` — [processed .md]
+  - `iter-02/sources/gti-step-demo-achieves-phase-1-testing-milestone` — [HTML]
+  - `iter-02/sources/gti-step-demo-achieves-phase-1-testing-milestone.md` — [processed .md]
+
+### 37-magnetized-target-inertial-fusion-mtif
+- **Dossier**: `37-magnetized-target-inertial-fusion-mtif/dossier.md`
+- **Iterations**: 2 (iter-01, iter-02)
+- **Sources** (6):
+  - `iter-02/sources/en-wiki-railgun` — [HTML]
+  - `iter-02/sources/en-wiki-railgun.md` — [processed .md]
+  - `iter-02/sources/iopscience-10-1088-1741-4326-ac2dbe` — [HTML]
+  - `iter-02/sources/iopscience-10-1088-1741-4326-ac2dbe.md` — [processed .md]
+  - `iter-02/sources/nationalacademies-read-18289-chapter-5` — [HTML]
+  - `iter-02/sources/nationalacademies-read-18289-chapter-5.md` — [processed .md]
+
+### 38-particle-accelerator-driven-fusion
+- **Dossier**: `38-particle-accelerator-driven-fusion/dossier.md`
+- **Iterations**: 2 (iter-01, iter-02)
+- **Sources** (0):
+
+### 39-spherical-tokamak-cs-free-p-b11
+- **Dossier**: `39-spherical-tokamak-cs-free-p-b11/dossier.md`
+- **Iterations**: 2 (iter-01, iter-02)
+- **Sources** (6):
+  - `iter-02/sources/arxiv-2405-13260` — [HTML]
+  - `iter-02/sources/arxiv-2406-15495` — [HTML]
+  - `iter-02/sources/arxiv-2406-15495.md` — [processed .md]
+  - `iter-02/sources/frontiersin-journals-nuclear-engineering-articles-10-3389` — [HTML]
+  - `iter-02/sources/frontiersin-journals-nuclear-engineering-articles-10-3389.md` — [processed .md]
+  - `iter-02/sources/hb11-wp-content-uploads-2024-09-understandinghydrogen` — [PDF]
+

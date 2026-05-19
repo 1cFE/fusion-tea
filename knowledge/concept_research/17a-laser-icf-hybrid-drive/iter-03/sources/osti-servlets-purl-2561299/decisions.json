@@ -1,0 +1,60 @@
+[
+  {
+    "page_num": 0,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 1,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 2,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 3,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 4,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 5,
+    "action": "strip_false",
+    "reasons": [
+      "TABLE: ColN auto-headers in 1/4 rows (likely diagram/figure falsely detected as table)",
+      "ColN auto-headers detected, no GMFT \u2014 stripping false tables"
+    ],
+    "details": {
+      "table_filter": [
+        "PASS table 1 (0r\u00d70c, detector=gmft): extraction_failed (needs Claude)"
+      ]
+    }
+  },
+  {
+    "page_num": 6,
+    "action": "strip_false",
+    "reasons": [
+      "TABLE: ColN auto-headers in 1/7 rows (likely diagram/figure falsely detected as table)",
+      "ColN auto-headers detected, no GMFT \u2014 stripping false tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 7,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  }
+]
