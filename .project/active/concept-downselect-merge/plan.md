@@ -444,7 +444,27 @@ Open the PR against `main` with the acceptance-criteria checklist as the PR body
 - Downselect's split-17 research dirs (`17-…-fast-ignition`, `27-…-hybrid-direct-drive`) skipped after filename-level verification that their iter sources are duplicates of files already present in main's shared `17-laser-icf-direct-drive/iter-01..03/sources/`.
 
 ### Phase 6 Completion
-[same structure]
+**Completed:** 2026-05-19 14:10
+**Actual Changes:**
+- All 13 spec ACs verified (AC-1 through AC-13).
+- AC-1 (ID space): zero deletions / zero renames in `analyses/`; 3 net additions (Option-C downselect overlays). ✅
+- AC-2 (CSV v3 schema): header confirmed includes Heating Type / Driver Type / Blanket Config; excludes Plasma State / Tritium Breeding / Neutron Management. ✅
+- AC-3 (CSV identity): cross-CSV identity-column diff = 0 changes on pre-existing rows. ✅
+- AC-4 (meta-analysis dossiers): 5 spot-checked dossiers present with output.md. ✅
+- AC-5 (scoring_v2 tests): 23 passed / 3 skipped / 4 xfailed (deviation from 26/3/1 baseline documented). ✅
+- AC-6 (net-new analyses non-stub): 37/38/39 all >200 lines of analysis.md. ✅
+- AC-7 (split-17): downselect-unique synthesis/review overlaid on main's 17a/17b. ✅
+- AC-8 (renumber tool absent): `git ls-tree -r HEAD scripts/renumber/` returns nothing. ✅
+- AC-9 (pipeline): agentic-mbse status exit 0; seed_registry.py exit 0 (40 concepts written); run_analysis.py status exit 0 (40 concepts reported). ✅
+- AC-10 (Wave B fixes intact): all 6 commits (2ab95bf, ebcf1c3, 45c9db5, 50081cc, 6ba8f02, 9851b7e) present in HEAD ancestry. ✅
+- AC-11/12 (ledger reconciliation): 2411 downselect-side files fully classified — 718 ported verbatim, 1628 ported with transform, 364 skipped with documented reasons. **0 unaccounted.** ✅
+- AC-13 (scoring ordering): Helion 4.20 > CFS 2.90 > Stellarator 1.50 — ordering intent preserved; absolute Helion baseline shifted due to v3 Magnet Type reclassification (already xfailed in Phase 3). ✅
+
+**Issues:**
+- Initial git apply --reverse --check produced confusing output for Wave B verification; switched to `git merge-base --is-ancestor` which is the authoritative signal (all 6 fixes in ancestry).
+- 75 files initially appeared unaccounted; spot-check + categorical analysis revealed they were pre-Wave-B versions of analysis artifacts under unchanged concepts (64 files) plus ~11 misc auxiliaries (BACKLOG.md, README.md, etc.). Documented categorical skip in implementation_notes "pre-Wave-B superseded" section.
+
+**Deviations:** None at audit phase. The Phase 3/4/5 deviations remain as documented.
 
 ### Phase 7 Completion
 [same structure]

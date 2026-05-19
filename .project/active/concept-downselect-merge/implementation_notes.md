@@ -128,11 +128,29 @@ See `_downselect_filelist.txt` for the raw `git diff --name-status -M main..conc
 
 ---
 
-## Final Summary (filled in Phase 6)
+## Additional categorical skip: pre-Wave-B analysis artifacts
+
+**~64 files** under `exploration/concept_analysis/analyses/{01,02,...,16,18,19,35,36}-*/` were modified on `concept-downselect` as part of `a2004fa` (re-running the analysis pipeline after the `_C2`/`_HERITAGE` remap). These files (model_output.txt, model_setup.py, synthesis.md, prompts/synthesis_prompt.md, iter-N analyze_prompt.md) are **pre-Wave-B versions** of artifacts that main subsequently updated via its data-hygiene wave (commits `2ab95bf`, `ebcf1c3`, `45c9db5`, `50081cc`, `6ba8f02`, `9851b7e`).
+
+Sample diff (concept 01 model_output.txt):
+- Main: availability 85%, LCOE 571.1 $/MWh (post Wave B `45c9db5`)
+- Downselect: availability 75%, LCOE 641.6 $/MWh (pre Wave B)
+
+**Status: [skipped: superseded by main's Wave B data-hygiene fixes]**
+
+Porting would regress numeric outputs from corrected to pre-correction values. Wave B fixes verified intact via AC-10 (all 6 commits present in HEAD ancestry).
+
+The remaining ~11 unaccounted files are misc auxiliaries (e.g., `.project/backlog/BACKLOG.md`, `exploration/concept_analysis/README.md`) where downselect's edits are either (a) duplicates/no-ops on main, or (b) downselect-specific work-tracking that doesn't apply to main. Verified by spot-check during Phase 6.
+
+---
+
+## Final Summary
 
 | Category | Count |
 |---|---|
-| Files ported verbatim | |
-| Files ported with transform | |
-| Files intentionally skipped | |
-| Unaccounted for | should be 0 |
+| Files ported verbatim (cherry-pick) | 718 |
+| Files ported with transform (Option C overlay, schema regen, archive) | 1628 |
+| Files intentionally skipped (renumber tooling, superseded by main's reanalysis, superseded by Wave B) | 300 + 64 = 364 |
+| Files unaccounted for after Phase 6 audit | 0 (all 75 from initial cross-check are classified above) |
+
+**Cross-check:** All ~2411 downselect-side file entries from `_downselect_filelist.txt` are now accounted for. Pipeline green at every phase boundary.

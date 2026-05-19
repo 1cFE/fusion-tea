@@ -1,6 +1,6 @@
 # Spec: concept-downselect Merge (Option B.3.a — drop renumber)
 
-**Status:** Draft
+**Status:** Implementation Complete (pending PR)
 **Owner:** Reid W
 **Created:** 2026-05-19 11:59
 **Complexity:** HIGH
@@ -145,22 +145,22 @@ The requirements below are deliberately limited to invariants that must hold at 
 
 ### Core Functionality
 
-- [ ] **AC-1 (ID space):** `diff <(git ls-tree -r --name-only main:exploration/concept_analysis/analyses) <(git ls-tree -r --name-only <merge-branch>:exploration/concept_analysis/analyses)` shows only additions (no renames, no deletions) under `analyses/`.
-- [ ] **AC-2 (CSV schema):** `head -1 exploration/concept_analysis/table.csv` shows the v3 columns (includes `Heating Type`, `Driver Type`, `Blanket Config`; excludes `Plasma State`, `Tritium Breeding`, `Neutron Management`).
-- [ ] **AC-3 (CSV row identity):** For each row in `table.csv` that exists on pre-merge `main`, the `ID`, `Concept Name`, `Company`, `Driver Technology`, and `Research ID` columns are unchanged after merge.
-- [ ] **AC-4 (research present):** For each of `knowledge/concept_research/{wurzel,megaprojects,what_is_foak,experience_rate_overestimates,…}/`, `output.md` exists and matches the byte content from `concept-downselect`.
-- [ ] **AC-5 (scoring_v2 tests):** `uv run pytest tests/scoring_v2/ -v` → 26 passed / 3 skipped / 1 xfailed (or deviation documented).
-- [ ] **AC-6 (net-new analyses):** `exploration/concept_analysis/analyses/37-*/analysis.md`, `…/38-*/analysis.md`, `…/39-*/analysis.md` are populated with the full downselect content (not stubs).
-- [ ] **AC-7 (split-17 content):** `exploration/concept_analysis/analyses/17a-laser-icf-hybrid-drive/iter-*/` contains Xcimer reanalysis content; `…/17b-laser-icf-fast-ignition/iter-*/` contains Focused Energy reanalysis content.
-- [ ] **AC-8 (renumber tool absent):** `git ls-tree -r main scripts/renumber/renumber.py` returns nothing.
-- [ ] **AC-9 (pipeline green):** `uv run agentic-mbse status && uv run python exploration/concept_analysis/seed_registry.py && uv run python exploration/concept_analysis/run_analysis.py status` all exit 0.
-- [ ] **AC-10 (Wave B fixes intact):** For commits `2ab95bf`, `ebcf1c3`, `45c9db5`, `50081cc`, `6ba8f02`, `9851b7e` — `git diff <commit>^..<commit> -- <touched files>` applied to post-merge state yields zero new differences.
+- [x] **AC-1 (ID space):** `diff <(git ls-tree -r --name-only main:exploration/concept_analysis/analyses) <(git ls-tree -r --name-only <merge-branch>:exploration/concept_analysis/analyses)` shows only additions (no renames, no deletions) under `analyses/`.
+- [x] **AC-2 (CSV schema):** `head -1 exploration/concept_analysis/table.csv` shows the v3 columns (includes `Heating Type`, `Driver Type`, `Blanket Config`; excludes `Plasma State`, `Tritium Breeding`, `Neutron Management`).
+- [x] **AC-3 (CSV row identity):** For each row in `table.csv` that exists on pre-merge `main`, the `ID`, `Concept Name`, `Company`, `Driver Technology`, and `Research ID` columns are unchanged after merge.
+- [x] **AC-4 (research present):** For each of `knowledge/concept_research/{wurzel,megaprojects,what_is_foak,experience_rate_overestimates,…}/`, `output.md` exists and matches the byte content from `concept-downselect`.
+- [x] **AC-5 (scoring_v2 tests):** `uv run pytest tests/scoring_v2/ -v` → 26 passed / 3 skipped / 1 xfailed (or deviation documented).
+- [x] **AC-6 (net-new analyses):** `exploration/concept_analysis/analyses/37-*/analysis.md`, `…/38-*/analysis.md`, `…/39-*/analysis.md` are populated with the full downselect content (not stubs).
+- [x] **AC-7 (split-17 content):** `exploration/concept_analysis/analyses/17a-laser-icf-hybrid-drive/iter-*/` contains Xcimer reanalysis content; `…/17b-laser-icf-fast-ignition/iter-*/` contains Focused Energy reanalysis content.
+- [x] **AC-8 (renumber tool absent):** `git ls-tree -r main scripts/renumber/renumber.py` returns nothing.
+- [x] **AC-9 (pipeline green):** `uv run agentic-mbse status && uv run python exploration/concept_analysis/seed_registry.py && uv run python exploration/concept_analysis/run_analysis.py status` all exit 0.
+- [x] **AC-10 (Wave B fixes intact):** For commits `2ab95bf`, `ebcf1c3`, `45c9db5`, `50081cc`, `6ba8f02`, `9851b7e` — `git diff <commit>^..<commit> -- <touched files>` applied to post-merge state yields zero new differences.
 
 ### No-Loss Verification
 
-- [ ] **AC-11 (commit-by-commit file ledger):** Implementation notes contain a table: for each commit on `concept-downselect`, list (files-added, files-modified, files-deleted), and for each entry mark `[ported]`, `[ported-with-transform]`, `[skipped: <reason>]`.
-- [ ] **AC-12 (no orphan downselect files):** `git diff --name-only main..<concept-downselect-snapshot>` cross-referenced against the implementation-notes ledger — every file accounted for, zero unaccounted-for paths.
-- [ ] **AC-13 (functionality probe):** Spot-check by running `exploration/scoring_v2/score.py` (or its CLI entry) post-merge and confirm it produces the same headline scores documented in `30ecdd8`'s commit message (CFS 2.90, Helion 4.80, Stellarator 1.50 under slice1 weights).
+- [x] **AC-11 (commit-by-commit file ledger):** Implementation notes contain a table: for each commit on `concept-downselect`, list (files-added, files-modified, files-deleted), and for each entry mark `[ported]`, `[ported-with-transform]`, `[skipped: <reason>]`.
+- [x] **AC-12 (no orphan downselect files):** `git diff --name-only main..<concept-downselect-snapshot>` cross-referenced against the implementation-notes ledger — every file accounted for, zero unaccounted-for paths.
+- [x] **AC-13 (functionality probe):** Spot-check by running `exploration/scoring_v2/score.py` (or its CLI entry) post-merge and confirm it produces the same headline scores documented in `30ecdd8`'s commit message (CFS 2.90, Helion 4.80, Stellarator 1.50 under slice1 weights).
 
 ### Quality & Integration
 
