@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import subprocess
 import sys
@@ -399,12 +400,17 @@ def run_model(model_path: Path, output_path: Path, timeout: int = 120) -> tuple[
         return False, f"model script not found: {model_path}"
 
     try:
+        env = os.environ.copy()
+        env["PYTHONIOENCODING"] = "utf-8"
         result = subprocess.run(
             ["uv", "run", "python", str(model_path)],
             capture_output=True,
             text=True,
+            encoding="utf-8",
+            errors="replace",
             timeout=timeout,
             cwd=str(model_path.parent),
+            env=env,
         )
     except subprocess.TimeoutExpired:
         return False, f"model timed out after {timeout}s"

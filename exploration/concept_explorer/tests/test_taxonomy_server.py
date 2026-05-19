@@ -109,7 +109,7 @@ def test_taxonomy_tree_endpoint(client: TestClient):
     data = resp.json()
     assert data["version"] == "1.0"
     assert "root" in data
-    assert data["root"]["field"] == "confinement_family"
+    assert data["root"]["field"] == "tree_group"
 
 
 # ---------------------------------------------------------------------------
@@ -121,7 +121,7 @@ def test_taxonomy_registry_endpoint(client: TestClient):
     resp = client.get("/api/taxonomy/registry")
     assert resp.status_code == 200
     data = resp.json()
-    assert len(data["concepts"]) == 38
+    assert len(data["concepts"]) == 40
 
 
 # ---------------------------------------------------------------------------
@@ -133,7 +133,7 @@ def test_taxonomy_concept_endpoint(client: TestClient):
     resp = client.get("/api/taxonomy/concepts/01")
     assert resp.status_code == 200
     data = resp.json()
-    assert data["name"] == "HTS Compact Tokamak"
+    assert data["name"].startswith("HTS Compact Tokamak")
     assert data["confinement_family"] == "MFE"
 
 
@@ -187,7 +187,7 @@ def test_taxonomy_constellation_endpoint(client: TestClient):
     resp = client.get("/api/taxonomy/constellation")
     assert resp.status_code == 200
     data = resp.json()
-    assert len(data["points"]) == 38
+    assert len(data["points"]) == 40
     assert "variance_explained" in data
 
 

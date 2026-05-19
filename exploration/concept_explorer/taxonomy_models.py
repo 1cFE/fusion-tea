@@ -11,8 +11,9 @@ See design.md for design decisions DD-1 through DD-5.
 from __future__ import annotations
 
 from enum import StrEnum
+from functools import cached_property
 
-from pydantic import BaseModel, model_validator
+from pydantic import BaseModel, computed_field, model_validator
 
 from exploration.concept_explorer.models import ConfinementFamily, FuelType
 
@@ -98,6 +99,37 @@ class PrimaryHeating(StrEnum):
     UNKNOWN = "Unknown"
 
 
+class HeatingType(StrEnum):
+    """v3 P8 typed heating-type vocabulary.
+
+    Atoms only — combinations (e.g. ``ICRH + NBI``) are kept as raw strings
+    on ``ConceptTaxonomy.heating_type`` and split into atoms on
+    ``heating_type_parsed``.
+    """
+
+    ICRH = "ICRH"
+    ECRH = "ECRH"
+    NBI = "NBI"
+    OHMIC = "Ohmic"
+    NA_COMPRESSION_DRIVEN = "N/A (compression-driven)"
+    NA_NON_THERMAL = "N/A (non-thermal)"
+    TBD = "TBD"
+
+
+class DriverType(StrEnum):
+    """v3 P9 typed driver-type vocabulary."""
+
+    MAGNETIC = "Magnetic"
+    MAGNETIC_PINCH = "Magnetic pinch"
+    DPSSL_LASER = "DPSSL Laser"
+    GAS_LASER = "Gas Laser"
+    ION_PARTICLE_BEAM = "Ion/particle beam"
+    MECHANICAL_KINETIC = "Mechanical/kinetic"
+    ELECTROSTATIC = "Electrostatic"
+    OTHER = "Other"
+    TBD = "TBD"
+
+
 class EnergyCapture(StrEnum):
     THERMAL_STEAM = "Thermal (steam)"
     THERMAL_UNSPECIFIED = "Thermal (unspecified)"
@@ -108,15 +140,9 @@ class EnergyCapture(StrEnum):
     TBD = "TBD"
 
 
-class PlasmaState(StrEnum):
-    BURNING = "Burning"
-    TRANSIENT = "Transient"
-    SUSTAINED = "Sustained"
-    PINCH = "Pinch"
-    COMPRESSED = "Compressed"
-    NON_BURNING = "Non-burning"
-    CONFINED = "Confined"
-    TBD = "TBD"
+# PlasmaState and NeutronManagement enums removed per schema 0.3.0
+# (Plasma State derivable from Confinement Concept + Operation Mode;
+#  Neutron Management implied by Fuel.)
 
 
 class MagnetType(StrEnum):
@@ -124,32 +150,23 @@ class MagnetType(StrEnum):
     HTS_PLANAR_ARRAY = "HTS (planar array)"
     HTS_3D_STELLARATOR = "HTS (3D stellarator)"
     HTS_LEVITATED_DIPOLE = "HTS (levitated dipole)"
+    LTS = "LTS"
     LTS_HTS = "LTS+HTS"
-    PULSED_EM = "Pulsed EM"
     RESISTIVE = "Resistive"
-    SELF_CONFINED = "Self-confined"
+    NONE = "None"
     ELECTROSTATIC = "Electrostatic"
+    NA = "N/A"
     TBD = "TBD"
     UNKNOWN = "Unknown"
 
 
-class TritiumBreeding(StrEnum):
-    FLIBE_BLANKET = "FLiBe blanket"
-    LIQUID_LI_BLANKET = "Liquid Li blanket"
-    LIPB_BLANKET = "LiPb blanket"
-    SOLID_CERAMIC_BREEDER = "Solid ceramic breeder (HCPB)"
-    LIQUID_METAL_WALL = "Liquid metal wall"
-    LI_BLANKET_UNSPECIFIED = "Li blanket (unspecified)"
-    SELF_BRED = "Self-bred (DD side)"
-    TBD = "TBD"
-
-
-class NeutronManagement(StrEnum):
-    INTEGRATED_BLANKET_SHIELD = "Integrated blanket/shield"
-    HEAVY_SHIELDING_14MEV = "Heavy shielding (14 MeV)"
-    HEAVY_SHIELDING_DD = "Heavy shielding (D-D)"
-    MINIMAL_ANEUTRONIC = "Minimal (aneutronic)"
-    REDUCED_DHE3 = "Reduced (D-He3)"
+class BlanketConfig(StrEnum):
+    LIQUID_METAL = "Liquid metal"
+    MOLTEN_SALT = "Molten salt"
+    SOLID_BREEDER = "Solid breeder"
+    OTHER_HYBRID = "Other/hybrid"
+    NA_NO_TRITIUM = "N/A (no tritium)"
+    NA_NON_POWER = "N/A (non-power)"
     TBD = "TBD"
 
 
@@ -204,14 +221,25 @@ class ConceptTaxonomy(BaseModel):
     # Cross-cutting design choices
     fuel: FuelType
     primary_heating: PrimaryHeating | None = None
+    heating_type: str | None = None  # raw CSV value; may be a "+"-joined combo
+    driver_type: DriverType | None = None
     energy_capture: EnergyCapture | None = None
-    plasma_state: PlasmaState | None = None
     magnet_type: MagnetType | None = None
-    tritium_breeding: TritiumBreeding | None = None
-    neutron_management: NeutronManagement | None = None
+    blanket_config: BlanketConfig | None = None
     operation_mode: OperationMode
     repetition_rate: RepetitionRate | None = None
     driver_technology: str | None = None
+
+    @computed_field  # type: ignore[prop-decorator]
+    @cached_property
+    def heating_type_parsed(self) -> list[HeatingType]:
+        """Split combination heating values (e.g. ``ICRH + NBI``) into atoms."""
+        if not self.heating_type:
+            return []
+        atoms: list[HeatingType] = []
+        for part in self.heating_type.split(" + "):
+            atoms.append(HeatingType(part.strip()))
+        return atoms
 
     # Metadata
     confidence: TaxonomyConfidence

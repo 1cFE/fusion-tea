@@ -1,0 +1,14 @@
+{
+  "iteration": 1,
+  "verdict": "SINGLE_PASS",
+  "finding_count": 0,
+  "feedback_source": "cold_start",
+  "model_ran": false,
+  "model_ok": false,
+  "research_ran": false,
+  "merged_assess": false,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/38-particle-accelerator-driven-fusion/iter-01/sources/shine-technology-overview.md"
+  ],
+  "timestamp": "2026-05-18T06:00:49.136952+00:00"
+}

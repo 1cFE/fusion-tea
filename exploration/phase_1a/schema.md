@@ -1,7 +1,7 @@
 # Phase 1a: Differentiation Table Schema
 
-**Version**: 0.2 (post-Checkpoint 1)
-**Last updated**: 2026-03-07
+**Version**: 0.3.0 (post-SCHEMA_REVISION_PROPOSALS)
+**Last updated**: 2026-05-12
 
 This document defines the columns, controlled vocabulary, and rules for the fusion concept differentiation table. The schema evolves at checkpoint reviews between batches.
 
@@ -164,28 +164,7 @@ These columns are carried for identification but are not part of the differentia
 
 ---
 
-### Column 6: Plasma State
-
-**Definition**: The characteristic plasma regime during the fusion-producing phase of operation. This captures how the plasma behaves, not how it's created.
-
-| Value | Description |
-|-------|-------------|
-| `Burning` | Self-sustaining plasma where alpha heating dominates external heating. Characteristic of steady-state MFE at Q >> 5. |
-| `Sustained` | Externally maintained plasma in quasi-steady-state. Characteristic of beam-driven or RF-sustained MFE below ignition. |
-| `Transient` | Short-lived plasma state (~ms) during a pulsed compression/collision event. Characteristic of pulsed FRC. |
-| `Compressed` | Plasma driven to fusion conditions by implosion (laser, projectile, pulsed power, mechanical). Characteristic of IFE and MIF. |
-| `Pinch` | Self-compressed plasma column maintained by its own current. Characteristic of Z-pinch. |
-| `Confined` | Plasma in magnetic confinement but not necessarily approaching ignition. Characteristic of mirrors and other sub-ignition MFE. |
-| `Non-burning` | Plasma used for neutron production or other applications, not approaching fusion energy gain. |
-| `Solid-state` | Fusion occurs in solid medium (lattice confinement). Not a plasma state. |
-
-**Notes**:
-- The boundary between `Burning` and `Sustained` is fuzzy — it depends on target Q. Use `Burning` for concepts explicitly targeting ignition or high Q (>10). Use `Sustained` for concepts targeting moderate Q with significant recirculating power.
-- Muon-catalyzed fusion doesn't fit cleanly — the "plasma" is room-temperature gas/liquid. Use `N/A — non-thermal fusion` or the closest approximation.
-
----
-
-### Column 7: Magnet Type
+### Column 6: Magnet Type
 
 **Definition**: The primary magnet technology used for plasma confinement. For concepts without magnetic confinement, record the driver's magnet subsystem only if it's a distinguishing feature.
 
@@ -197,65 +176,44 @@ These columns are carried for identification but are not part of the differentia
 | `HTS (levitated dipole)` | Single levitated HTS coil creating dipolar field. |
 | `LTS` | Low-temperature superconducting (NbTi or Nb3Sn). ITER heritage. 4 K operation. |
 | `LTS+HTS` | Dual development strategy with both conductor families. |
-| `Resistive` | Conventional copper/aluminum electromagnets. Continuous power input, no cryogenics. |
-| `Pulsed EM` | Pulsed resistive electromagnets driven by capacitor banks. Field exists only during pulse (~μs to ms). |
-| `Self-confined` | Plasma generates its own confining magnetic field (Z-pinch, DPF) or is mechanically compressed (MTF). No external confinement magnets. |
-| `None (IFE)` | Inertial confinement — no magnetic confinement of plasma. (Driver subsystem may contain magnets, but these confine the beam, not the plasma.) |
+| `Resistive` | Resistive electromagnets (copper, aluminum, or custom alloy). Includes steady-state (continuous power) and pulsed (capacitor-bank-driven) duty cycles — duty cycle is captured by Operation Mode. |
+| `None` | No external confinement magnets. Covers IFE drivers (plasma confined by inertia), self-confined plasmas (Z-pinch, DPF — plasma generates own field), mechanically-compressed concepts (MTF), and self-magnetizing concepts (Pacific Fusion). |
 | `Electrostatic` | Confinement by electric fields, not magnetic fields. |
 | `N/A` | Magnet technology is not a meaningful differentiator for this concept. |
 
 **Notes**:
 - Renaissance Fusion's laser-patterned HTS film on cylinders is classified as `HTS (3D stellarator)` — the manufacturing method is novel but the functional result is a 3D stellarator field. Note the manufacturing distinction in the dossier.
-- Helion uses `Pulsed EM` — their aluminum coils are pulsed with capacitor banks, not steady-state superconducting.
-- General Fusion and Zap Energy are both `Self-confined` but for very different reasons (mechanical compression vs. self-pinch). The distinction is captured in Confinement Concept.
+- Helion's coils are `Resistive` (copper, aluminum, custom alloys); the capacitor-bank pulsed duty cycle is captured by `Operation Mode = Pulsed`, not by the magnet type.
+- Concepts previously classified as `Self-confined` (Zap Energy Z-pinch, LPPFusion DPF, General Fusion MTF) now use `None` — no external confinement coils. The plasma physics distinction (self-pinch vs mechanical compression vs IFE) is captured in `Confinement Concept`.
+- Pacific Fusion's self-magnetizing targets (axial field from drive current itself) → `None`. The Z-machine-class premagnetization coil heritage is captured under `Driver Technology`, not `Magnet Type`.
 
 ---
 
-### Column 8: Tritium Breeding
+### Column 7: Blanket Config
 
-**Definition**: How the concept supplies tritium fuel (for D-T and D-He3 concepts) or why breeding is unnecessary.
+**Definition**: The chemistry/architecture of the blanket system. For D-T concepts: how tritium is bred and how the first wall handles heat and neutrons. For non-D-T concepts: whether a blanket is needed at all.
 
 | Value | Description |
 |-------|-------------|
-| `FLiBe blanket` | Lithium fluoride-beryllium fluoride molten salt blanket. Combined breeder/coolant/shield. (CFS/ARC baseline.) |
-| `LiPb blanket` | Lead-lithium eutectic blanket. Lead provides neutron multiplication. Various cooling schemes (water, helium, self-cooled). |
-| `Liquid Li blanket` | Pure liquid lithium blanket. Highest TBR potential (~1.8). |
-| `Li blanket (unspecified)` | Lithium-bearing blanket confirmed but specific type (solid/liquid/salt) not disclosed. |
-| `Solid ceramic breeder (HCPB)` | Helium-cooled pebble bed with solid ceramic breeding material (Li₄SiO₄ or Li₂TiO₃) and Be/Be₁₂Ti neutron multiplier. ITER TBM baseline. |
-| `Liquid metal wall` | Flowing liquid metal serves dual purpose as structural wall/liner AND tritium breeder. Distinct from a contained blanket. |
-| `Self-bred (DD side)` | Tritium produced as byproduct of DD side reactions in D-He3 plasma. Tritium decays to He3, completing fuel cycle. No external blanket. |
-| `N/A (no tritium in fuel cycle)` | Fuel cycle does not involve tritium. Covers p-B11 (truly aneutronic), D-D (neutronic but no tritium), and D-He3 concepts that don't actively breed tritium. |
-| `N/A (non-power)` | Concept is not a power-producing reactor (neutron source, isotope production). |
-| `TBD` | D-T concept where blanket approach has not been disclosed. |
+| `Liquid metal` | Liquid-metal blanket or wall — LiPb eutectic, pure liquid Li, Li-LiH, or flowing liquid metal first walls without solid multipliers. Includes both contained and flowing-wall architectures. |
+| `Molten salt` | Molten-salt blanket — FLiBe, FLiNaBe, or related lithium-fluoride-bearing salts. Combined breeder/coolant/shield. |
+| `Solid breeder` | Helium-cooled pebble bed with solid ceramic breeder (Li₄SiO₄ or Li₂TiO₃) and Be/Be₁₂Ti neutron multiplier. ITER TBM baseline; EU-DEMO HCPB heritage. |
+| `Other/hybrid` | Architecturally hybrid blankets that don't fit a single chemistry (Renaissance: flowing Li-LiH wall + Pb pebble neutron multiplier). Also covers Helion's self-bred DD-bootstrap fuel cycle (D-He3 plasma producing tritium as DD side reaction, decaying to He3 — no contained breeder). **Flags concept for required per-concept cost-model override** — default unit costs do not apply. |
+| `N/A (no tritium)` | Fuel cycle does not include tritium. Applies to p-B11 (aneutronic), D-D (neutronic but no tritium), and D-He3 concepts that don't bootstrap. |
+| `N/A (non-power)` | Concept is not a power-producing reactor (neutron source, isotope production, materials testing). Applies regardless of fuel — distinct from `N/A (no tritium)`. |
+| `TBD` | D-T concept where blanket configuration has not been disclosed. |
 
 **Notes**:
-- The tritium supply crisis is existential for D-T fusion — global civilian tritium is ~25 kg, and a single 1 GWth D-T plant needs >55 kg/year. TBR > 1 is not optional.
-- For D-He3 concepts (Helion), `Self-bred (DD side)` captures the unique fuel cycle where DD byproduct tritium decays to He3.
-- Solid ceramic breeders (Li₂TiO₃, Li₄SiO₄) are the ITER TBM / DEMO baseline. Type One Energy plans HCPB for their stellarator.
+- The tritium supply crisis is existential for D-T fusion — global civilian tritium is ~25 kg, and a single 1 GWth D-T plant needs >55 kg/year. TBR > 1 is not optional. For D-T concepts, this column should never be `N/A (no tritium)`.
+- For D-He3 concepts (Helion), `Other/hybrid` captures the unique DD-bootstrap fuel cycle.
+- The two `N/A` flavors are distinct:
+  - `N/A (no tritium)` = fuel cycle physics doesn't include tritium
+  - `N/A (non-power)` = concept doesn't produce power, so blanket question doesn't apply (e.g., SHINE's accelerator-driven neutron source uses D-T but doesn't breed tritium because it's medical-isotope / materials-testing focused)
+- The `Other/hybrid` bucket carries semantic weight downstream: per [SCHEMA_REVISION_PROPOSALS §W4](SCHEMA_REVISION_PROPOSALS.md), cost-modeling tools should treat this value as a flag that **default blanket unit costs are invalid; per-concept override required**.
 
 ---
 
-### Column 9: Neutron Management
-
-**Definition**: How the concept handles fusion neutrons. Renamed from "Neutron Shielding" to "Neutron Management" because the approaches range from heavy shielding to eliminating neutrons entirely — "shielding" doesn't cover the full spectrum.
-
-| Value | Description |
-|-------|-------------|
-| `Heavy shielding (14 MeV)` | Full multi-layer shielding for 14.1 MeV D-T neutrons. Remote handling required for all internal maintenance. Dominant engineering challenge. |
-| `Heavy shielding (D-D)` | Shielding for 2.45 MeV D-D neutrons. 50% of D-D reactions produce neutrons — high flux but lower per-neutron energy and damage than D-T. Less activation, simpler materials, but still requires substantial shielding at power-relevant rates. |
-| `Integrated blanket/shield` | Blanket material (FLiBe, liquid metal) provides both tritium breeding and neutron shielding in one system. Still 14 MeV neutrons, but simplified architecture. |
-| `Reduced (D-He3)` | ~10% neutron energy fraction from DD side reactions. 2.45 MeV neutrons (less damaging than 14 MeV). Lighter shielding. Limited remote handling. |
-| `Minimal (aneutronic)` | <1% neutron energy from side reactions. Thin shielding (~1m water + boron) for secondary neutrons and X-rays. Hands-on maintenance possible. |
-| `N/A (non-power)` | Concept is not a power reactor; neutron management handled differently or not applicable. |
-
-**Notes**:
-- `Heavy shielding` and `Integrated blanket/shield` are not mutually exclusive — the integrated approach IS the shielding for many concepts. Use `Integrated blanket/shield` when the blanket explicitly serves dual purpose (CFS FLiBe, General Fusion liquid metal wall, First Light liquid Li).
-- The distinction matters for cost modeling: integrated approaches consolidate CAS accounts, while separate blanket + shield approaches have distinct cost streams.
-- D-D concepts produce 2.45 MeV neutrons in 50% of reactions — they need `Heavy shielding (14 MeV)` equivalent if the neutron flux is high enough, or may be slightly less than D-T. Assess case-by-case.
-
----
-
-### Column 10: Operation Mode
+### Column 8: Operation Mode
 
 **Definition**: Temporal profile of the fusion burn.
 
@@ -267,7 +225,7 @@ These columns are carried for identification but are not part of the differentia
 
 ---
 
-### Column 11: Repetition Rate
+### Column 9: Repetition Rate
 
 **Definition**: For pulsed concepts, the frequency of fusion burn events. Determines time-averaged power output and driver duty cycle.
 
@@ -283,7 +241,7 @@ These columns are carried for identification but are not part of the differentia
 
 ---
 
-### Column 12: Driver Technology
+### Column 10: Driver Technology
 
 **Definition**: The primary technology that creates and/or sustains the fusion conditions. This is the most concept-specific column — it captures the distinguishing engineering subsystem.
 
@@ -295,15 +253,17 @@ These columns are carried for identification but are not part of the differentia
 | `Planar HTS coil array` | Thea Energy |
 | `3D HTS stellarator coils` | Proxima Fusion |
 | `Neutral beam injection` | TAE Technologies |
-| `Pulsed EM coils (capacitor bank)` | Helion Energy |
-| `Excimer laser (KrF)` | Xcimer Energy |
-| `Diode-pumped solid-state laser` | Focused Energy |
+| `Capacitor-bank resistive coils` | Helion Energy |
+| `Excimer laser (KrF, hybrid drive)` | Xcimer Energy |
+| `Diode-pumped solid-state laser` | Focused Energy, Inertia Enterprises |
 | `Electromagnetic gun` | First Light Fusion |
+| `Plasma armature railgun` | NearStar Fusion |
 | `Linear induction accelerator` | Intensity Energy |
 | `Pneumatic pistons + liquid metal` | General Fusion |
 | `Pulsed power (Z-machine class)` | Pacific Fusion |
 | `Pulsed power (sheared-flow Z-pinch)` | Zap Energy |
-| `Electrostatic grid (IEC)` | SHINE Technologies |
+| `CS-free spherical tokamak (ECRH non-inductive drive)` | ENN Energy |
+| `Particle accelerator (beam-target)` | SHINE Technologies |
 | `Muon source (accelerator)` | Acceleron Fusion |
 
 **Notes**: This column is intentionally the least constrained. It captures "what's the hard technology bet?" for each concept. The controlled vocabulary for other columns handles the physics; this column captures the engineering.
@@ -319,13 +279,11 @@ These columns are carried for identification but are not part of the differentia
 | 3 | Fuel | Controlled | 6 | No |
 | 4 | Primary Heating | Controlled | 19 | No |
 | 5 | Energy Capture | Controlled | 8 | No |
-| 6 | Plasma State | Controlled | 8 | Rare (muon catalysis) |
-| 7 | Magnet Type | Controlled | 12 | Rare |
-| 8 | Tritium Breeding | Controlled | 10 | Yes (aneutronic, non-power) |
-| 9 | Neutron Management | Controlled | 5 | Yes (non-power) |
-| 10 | Operation Mode | Controlled | 3 | No |
-| 11 | Repetition Rate | Controlled | 7 | Yes (steady-state) |
-| 12 | Driver Technology | Free text | — | No |
+| 6 | Magnet Type | Controlled | 10 | Yes (non-magnetic concepts) |
+| 7 | Blanket Config | Controlled | 7 | Yes (aneutronic, non-power) |
+| 8 | Operation Mode | Controlled | 3 | No |
+| 9 | Repetition Rate | Controlled | 7 | Yes (steady-state) |
+| 10 | Driver Technology | Free text | — | No |
 
 ---
 
@@ -338,3 +296,4 @@ These columns are carried for identification but are not part of the differentia
 | 2026-03-07 | 0.2.1 | Overall Confidence expanded to five-level scale (`high` / `medium-high` / `medium` / `medium-low` / `low`); per-cell confidence remains three-level | Checkpoint 3-4 review (Realta, MagLIF used `medium-high`) |
 | 2026-03-08 | 0.2.2 | +`Laser ICF (hybrid drive)` (Col 2) for Xcimer HDD approach. Row restructuring: concept 17 split (Xcimer → hybrid drive, Focused Energy → fast ignition); concept 23 split (Marvel-only, HB11 stays in concept 04); concept 26 now Inertia-only (Xcimer → hybrid drive row) | Checkpoint 5 restructuring decisions |
 | 2026-03-08 | 0.2.3 | Renamed `N/A (aneutronic)` → `N/A (no tritium in fuel cycle)` (Col 8) — old label was misleading for D-D concepts which ARE neutronic. Added `Heavy shielding (D-D)` (Col 9) for D-D concepts with 2.45 MeV neutrons; corrected 3 D-D cells from `Heavy shielding (14 MeV)` | Phase 1c measurement integrity |
+| 2026-05-12 | 0.3.0 | **Eliminated** `Plasma State` column (Col 6) — derivable from Confinement Concept + Operation Mode. **Eliminated** `Neutron Management` column (Col 9) — implied by Fuel. **Renamed** `Tritium Breeding` → `Blanket Config` (Col 7) with 4 chemistry buckets (`Liquid metal`, `Molten salt`, `Solid breeder`, `Other/hybrid`) + `N/A (no tritium)` + `N/A (non-power)` + `TBD`. **Collapsed** Magnet Type vocabulary: folded `Pulsed EM` into `Resistive`; folded `Self-confined` and `None (IFE)` into single `None` value. Per-concept corrections: Pacific Fusion magnet → `None`; Renaissance blanket → `Other/hybrid`; Helion magnet → `Resistive` (via P4 fold). Net: 12 columns → 10 columns. | SCHEMA_REVISION_PROPOSALS.md + RECLASSIFIED_CONCEPTS.md audit (P3 N/A addendum) |

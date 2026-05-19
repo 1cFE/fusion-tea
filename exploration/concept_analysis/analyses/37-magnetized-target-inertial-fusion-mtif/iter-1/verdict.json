@@ -1,0 +1,15 @@
+{
+  "iteration": 1,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "cold_start",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": false,
+  "merged_assess": false,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/37-magnetized-target-inertial-fusion-mtif/iter-01/sources/nearstar-website-summary.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/37-magnetized-target-inertial-fusion-mtif/iter-02/sources/nearstar-energy-capture-research.md"
+  ],
+  "timestamp": "2026-05-18T05:49:27.706301+00:00"
+}

@@ -1,0 +1,343 @@
+# D1+ Analysis: Spherical Tokamak - CS-free p-B11 (ENN Energy)
+
+**Concept**: Central-solenoid-free spherical tokamak targeting p-B11 aneutronic fusion with direct energy conversion
+**Company**: ENN Energy (ENN Group subsidiary, China)
+**Current Devices**: EXL-50U (operating), EHL-2 (in design)
+**Confinement Family**: MFE — Spherical Tokamak
+
+---
+
+## Section 1: Availability of Data
+
+**Rating: Opaque**
+
+ENN Energy has published an arXiv roadmap paper and an EHL-2 physics design overview, but no commercial plant study, no power plant design point, and no cost estimates exist in the public domain. The current devices (EXL-50U, EHL-2) are early-stage experimental machines separated from a commercial plant by multiple device generations. Fundamental physics questions about p-B11 ignition in a thermal tokamak remain unresolved in the scientific literature. The "Opaque" rating reflects both the pre-commercial stage of the concept and the absence of any published LCOE-relevant parameters.
+
+**Published device documentation:**
+The primary public reference is ENN's arXiv roadmap paper (arXiv:2401.11338, published in *Physics of Plasmas* 31, 062507, 2024) [enn-roadmap-pb11-arxiv-2401.11338.md]. This paper describes ENN's vision for p-B11 fusion using a spherical tokamak, documents EXL-50U parameters, and frames EHL-2 as the next physics verification step. A separate EHL-2 physics design overview paper was published in *Plasma Science and Technology* (doi:10.1088/2058-6272/ad981a), providing device parameters and mission objectives. Neither paper constitutes a commercial plant study.
+
+**Company transparency:**
+ENN's English-language website provides a brief overview of the compact fusion program and states that p-B11 fuel "offers direct energy conversion capability for higher efficiency, produces minimal neutron radiation, and enables distributed power generation" [dossier.md §Energy Capture]. This is the only public statement of the commercial energy capture strategy. No engineering details of any direct converter design have been published. ENN is a large Chinese energy conglomerate; the fusion program appears to be exploratory research rather than a near-term commercial venture.
+
+**Independent analyses:**
+A comment on ENN's roadmap was published by Li (2024) in *Physics of Plasmas* (arXiv:2406.15495), providing the most direct independent critique of ENN's physics approach. Li calculates that the hot ion mode Ti/Te = 4 required by ENN's roadmap is "far from accessible" under self-heating conditions, and that achieving it via external heating would require ~20× the fusion power output — a finding that quantifies the physics go/no-go gate for the entire concept (see Section 2.1). No independent TEA or plant study of the ENN concept has been identified.
+
+**Phase 1a dossier completeness:**
+After two research iterations, the dossier achieves high confidence on confinement family, concept topology, fuel, operation mode, and driver technology. Magnet type remains low confidence (resistive copper inferred from EXL-50U datapoints). Energy capture is medium confidence (direct conversion stated as intent, no design published). No commercial plant parameters (Q, fusion power, net electric output, capital cost) exist in the public domain.
+
+**Key data gaps limiting this analysis:**
+1. No commercial plant design point — Q value, fusion power, net output, and all LCOE inputs are entirely absent
+2. The fundamental p-B11 ignition physics question is unresolved — it is not established that a thermal spherical tokamak can achieve net p-B11 fusion power
+3. Direct energy conversion technology is undefined — efficiency benefit is speculative
+4. Magnet conductor type for EHL-2 not confirmed
+5. No independent TEA or plant study exists for the ENN concept or for any p-B11 spherical tokamak design
+
+---
+
+## Section 2: Challenges in Capturing System Function
+
+The ENN CS-free p-B11 spherical tokamak presents a qualitatively different LCOE modeling challenge from any other concept in this analysis pipeline. Multiple challenges are not matters of data uncertainty but of unresolved physics — the concept cannot be modeled with conventional analogue assumptions until the underlying plasma physics is demonstrated. Challenges are ranked by LCOE impact.
+
+**1. p-B11 ignition physics: thermal plasma faces a quantified physics go/no-go gate (Impact: Fundamental)**
+
+The proton-boron fusion reaction (p + ¹¹B → 3α, releasing ~8.7 MeV) requires ion temperatures well above 100 keV for a thermal plasma to produce useful fusion power — roughly 10–20 times higher than D-T [1]. Net energy production at Te = Ti is **impossible across the entire 75–500 keV temperature range** due to bremsstrahlung radiation losses (scaling as Z²n²T^0.5 with Z=5 for boron) that systematically exceed fusion power [frontiersin-journals-nuclear-engineering-articles-10-3389.md §Results]. A net-energy window exists only when Te < Ti: using updated Tentori-Belloni (2023) cross-sections (based on Sikora-Weller 2016), net energy production is possible in the range Ti ≈ 125–500 keV at Te = 0.25Ti, with a minimum Lawson triple product of ~1.5 × 10²² m⁻³s at Ti ≈ 270 keV. These conditions exclude cyclotron radiation losses, which are significant at these temperatures and would further tighten the operating window. EHL-2 targets Ti ≈ 30 keV [enn-roadmap-pb11-arxiv-2401.11338.md §device goals] — roughly 4× below even the lower bound of this window — and is explicitly a "physics verification" machine, not a power-producing device.
+
+ENN's roadmap requires a "hot ion mode" with Ti/Te = 4 to suppress bremsstrahlung relative to fusion power. A comment by Li (2024) directly addresses this requirement and finds it is **"far from accessible"**: under the most optimal self-heating conditions (all fusion power heating ions, electrons gaining energy only through ion-electron coupling), the achievable Ti/Te is less than 1.5 at Ti = 150 keV — well below the required ratio of 4. If Ti/Te = 4 were instead achieved via an ideal external heating method that heats only ions, maintaining it would require external heating power of approximately **20 times the fusion power output** at Ti = 150 keV [arxiv-2406-15495.md §Abstract]. This means Q_engineering is deeply negative under the hot ion mode maintenance requirement — not as a matter of engineering optimization, but as a fundamental thermodynamic constraint that precedes all other challenges. This is not a data gap; it is a quantified physics go/no-go gate.
+
+> "The hot ion mode Ti/Te=4 has been calculated to be far from accessible (Ti/Te<1.5 for Ti=150keV) under the most optimal conditions if fusion provides the heating... achieving Ti/Te=4 could [require] an ideal heating method which is much more efficient than fusion itself (near 20 times fusion power for Ti=150keV)"
+> — Li (2024), arXiv:2406.15495 §Abstract [arxiv-2406-15495.md]
+
+> "EHL-2 will verify p-11B thermal reaction rates and establish spherical tokamak scaling laws at tens of keV ion temperatures."
+> — enn-roadmap-pb11-arxiv-2401.11338.md (summarized in dossier.md §Summary)
+
+[1] dossier.md §Fuel: EHL-2 "targets p-11B thermal reaction rate verification" — confirming that even the 30 keV operating point is the next scientific milestone, and p-B11 ignition conditions are multiple device generations away.
+
+**2. Direct energy conversion: undefined technology, central to the economic case (Impact: Critical)**
+
+The p-B11 economic case rests on direct conversion of the three alpha particle products (~2.9 MeV each, all charged) to electricity — bypassing the Carnot-limited steam cycle and achieving theoretical efficiencies of 70–90% instead of ~35%. Without this advantage, a p-B11 plant needs ~10–30× higher plasma performance than D-T (because the Lawson condition is far harder) while capturing energy at lower efficiency than a D-T thermal plant — making it economically untenable. ENN publicly frames direct energy conversion as the commercial strategy but has published no engineering design for a direct converter system (no electrostatic decelerator design, no inertial current collector, no ion-beam recovery scheme) [dossier.md §Energy Capture]. The TRL for direct energy conversion in a tokamak geometry is effectively 1 — the concept has been theorized, and small-scale Venetian-blind collectors were tested with mirror machines in the 1970s, but no equivalent for a spherical tokamak with p-B11 alphas has been developed. The efficiency assumption — the largest single driver of p-B11 economic competitiveness — is entirely unsupported by hardware.
+
+The DEC failure scenario is the primary test the model must evaluate. In the baseline model (η_de = 0.80, f_dec = 0.85), the net output is held fixed at 500 MWe, which causes the η_de sensitivity to appear small (−0.044) — a model artifact. The economically meaningful question is: if DEC fails and the alpha energy fraction (85% of fusion power) must instead pass through a fallback thermal cycle (η_th = 0.35), what is the LCOE? In this scenario the plant's gross electric output collapses by roughly half at constant fusion power, meaning the device must be scaled up substantially or net output falls dramatically — in either case the LCOE impact is catastrophic, consistent with the analysis narrative above. A DEC_failure scenario branch (η_de = 0.0, full alpha fraction routed through η_th = 0.35) is the single most informative output this model can produce.
+
+**3. CS-free operation: demonstrated at small scale, unproven at reactor scale (Impact: High)**
+
+ENN's distinctive engineering bet is the elimination of the central solenoid, driven by the geometric challenge of fitting a solenoid inside the compact center stack of a low-aspect-ratio spherical tokamak. ECRH non-inductive current drive was demonstrated on EXL-50 with approximately 1 A/W efficiency [dossier.md §Driver Technology]. However, a commercial p-B11 reactor would require sustained plasma currents far beyond the 3 MA target of EHL-2 — and at the extreme plasma temperatures needed for p-B11, the ECRH accessibility and efficiency in a spherical tokamak geometry become highly uncertain. The recirculating power fraction from a purely ECRH-driven reactor would be very large: at ~50% gyrotron wall-plug efficiency and the ECRH power required to drive full plasma current non-inductively, the recirculating power could represent 30–50% or more of any gross electrical output (~450–750 MW on a plant with ~1500 MWe gross). This directly reduces Q_engineering and makes the economic case harder. This challenge is partly shared with the Tokamak Energy ST-E1 concept (21-spherical-tokamak-hts), which also relies on ECRH for current drive, but the CS-free constraint on ENN is more severe because there is no fallback inductive drive at all.
+
+The baseline model uses p_input = 200 MW (≈ 13% of gross electric output), representing a successful ECRH efficiency scaling scenario — optimistic but internally consistent as a best-case assumption. The concern range identified above (450–750 MW) is 2–4× higher. At a p_input elasticity of +0.134, scaling ECRH from 200 MW to 700 MW raises LCOE by approximately 30–35%, from the base case of ~96 $/MWh to ~125–130 $/MWh. This range should be reported as the ECRH upper-bound scenario alongside the base case, rather than embedded silently in the [UNCERTAIN] flag on the parameter.
+
+**4. Divertor at p-B11 plasma conditions (Impact: High)**
+
+The EHL-2 physics design notes identify divertor heat flux > 20 MW/m² at low plasma density as a "significant engineering challenge" [enn-roadmap-pb11-arxiv-2401.11338.md]. For a reactor-scale device at the temperatures required for p-B11, divertor heat fluxes would be even more extreme because (a) the plasma must operate at very high temperatures where heat exhaust is harder to radiate, and (b) the alpha particle power load is unmitigated (no blanket to absorb a neutron fraction of the energy). Unlike D-T tokamaks where ~80% of fusion energy goes to neutrons (reducing charged-particle heat to the divertor), p-B11 deposits all energy into charged particles — every MW of fusion power eventually reaches the plasma-facing components as heat. This makes the divertor challenge for a p-B11 commercial plant qualitatively more severe than for a D-T tokamak.
+
+**5. No cost analogues exist for this configuration (Impact: High)**
+
+An LCOE model for the ENN concept would need to build from scratch: no blanket cost (advantage, but eliminates the largest fraction of available cost analogues), an undefined direct energy converter (no cost data), a CS-free ECRH drive system at commercial scale (no cost data), and a plasma physics regime that has not been demonstrated. The nearest analogue, the ARIES-ST study (a D-T spherical tokamak plant study), addresses the geometry but uses a fundamentally different fuel cycle, energy capture, and confinement physics regime. The p-B11 FRC analysis (18-p-b11-frc, TAE Technologies) provides some fuel-cycle analogy but uses a different topology. No published plant study for a p-B11 tokamak exists.
+
+**6. O&M cost structure: greatly simplified or undefined (Impact: Moderate)**
+
+The absence of a tritium breeding blanket eliminates the most maintenance-intensive first-wall system in a D-T plant. No scheduled blanket module exchanges, no tritium extraction circuit, no activated liquid metal circuit — O&M costs for the neutron-facing systems are substantially reduced. However, this benefit is partially offset by the need for the direct energy converter (a novel device with unknown maintenance requirements) and the ECRH system at commercial scale (gyrotron lifetimes limit availability). Without a published plant design, the O&M cost structure cannot be estimated with any confidence. A placeholder O&M assumption of ~1.5–2.5% of overnight capital cost per year (typical for MFE concepts) would be the minimum acceptable starting point, pending any plant study.
+
+---
+
+### Modeling Hypotheses
+
+**Model context**: The LCOE figures below (base case ~96 $/MWh at 500 MWe, ~61 $/MWh at 1 GWe) are generated from a speculative placeholder model built on analyst-assumed plant parameters — no published ENN plant study exists. All capital costs use framework defaults. Results represent a best-case scenario in which both p-B11 ignition and direct energy conversion are achieved; they are order-of-magnitude bounds, not forecasts.
+
+**Highest-leverage LCOE parameters**:
+1. **Availability** (elasticity −0.99): This is a capital-intensive concept with no demonstrated design point, so energy output per year drives LCOE almost one-for-one. The steady-state CS-free topology is favorable in principle, but novel technology (DEC, ECRH gyrotrons at commercial scale) limits achievable availability. A 10-point drop from 80% to 70% raises LCOE by ~14%.
+2. **Capital cost structure** (via construction time and geometry): Construction time elasticity is +0.41; coil radius and plant geometry parameters are +0.08–0.44. Because all capital costs are framework defaults, sensitivity to the costing constants (especially indirect fraction +0.17, NBI heating cost +0.15) dominates the uncertainty band for any given plant geometry assumption.
+3. **DEC failure scenario** (not captured by η_de sensitivity): The η_de elasticity appears small (−0.044) only because the baseline model holds net output fixed at 500 MWe — it does not reflect the economic impact of DEC failure. ECRH recirculating power (p_input elasticity +0.134) is the most sensitive engineering parameter in the baseline model but underrepresents the ECRH concern range.
+
+**Testable hypotheses**:
+
+- **H1 (DEC failure)**: The DEC-enabled base case yields LCOE ~96 $/MWh at 500 MWe (NOAK). Two variants demonstrate why DEC is a go/no-go condition rather than a sensitivity parameter. The **scale-up variant** (DEC_failure_fixed_net) holds net output at 500 MWe by scaling fusion power upward — it shows only a small LCOE change (~+4%) because capital cost barely moves, but this result is operationally misleading: it silently requires 60% more fusion power from the same machine, which assumes an undemonstrated Lawson criterion can be met at higher power. The **constant-fusion-power variant** (DEC_failure_fixed_fusion) holds fusion power fixed at the base-case value and routes all alpha power (f_dec = 0.85) through a fallback thermal cycle at η_th = 0.35 with no DEC contribution — gross electric output collapses to ~700 MWe, and after ~500 MW in parasitic loads (ECRH, coils, auxiliaries), net output falls to ~200 MWe with LCOE rising to ~230+ $/MWh. This latter scenario is the economically informative one and is the primary demonstration of the DEC go/no-go condition.
+
+- **H2 (ECRH recirculating power)**: The base case uses p_input = 200 MW (13% of gross electric, optimistic successful-scaling assumption). At the upper concern bound of 600–700 MW (40–47% of gross, consistent with the 30–50% range identified in item 3), LCOE rises by approximately 30–35% above the base case to ~125–130 $/MWh. This is the range the model should report alongside the base case, and it represents the penalty if CS-free current drive does not achieve the efficiency scaling implied by the base assumption.
+
+- **H3 (DEC-enabled competitiveness threshold)**: If DEC is achieved at η_de ≥ 0.70 and availability ≥ 0.80, the 1 GWe scaled LCOE (~61 $/MWh base case) is in range of near-term MFE concepts — comparable to the 21-spherical-tokamak-hts approved analysis. Below η_de = 0.70 or below availability = 0.70, the concept becomes non-competitive against D-T HTS tokamaks even in the best-case physics scenario.
+
+- **H4 (Hot ion mode heating burden)**: H1–H3 all assume p-B11 ignition is achievable and that Q > 1 is feasible if engineering challenges are met. Li (2024) introduces a pre-engineering physics gate: if maintaining the required hot ion mode (Ti/Te = 4) demands external heating of ~20× the fusion power output at Ti = 150 keV, then Q_engineering is deeply negative regardless of DEC efficiency or ECRH current drive performance. This is structurally different from H2 (which models ECRH current drive power, not plasma state maintenance power) — it is an additional, independent power sink that collapses the net energy balance before any LCOE calculation is meaningful. The model should evaluate this via a scenario flag `hot_ion_mode_heating_multiplier` (range 1–20, base case = 1 representing "physics solved") that scales a plasma-state-maintenance power term. At multiplier ≥ 2, net electrical output from DEC becomes negative regardless of η_de or p_input — the boundary value defines the conceptual go/no-go gate.
+
+---
+
+## Section 3: Maturity of Key Subsystems and Components
+
+Ordered from least mature (highest risk) to most mature.
+
+---
+
+**p-B11 Plasma at Reactor-Relevant Conditions — TRL 1–2**
+
+- **Demonstrated**: EXL-50U has achieved H-B plasma (hydrogen-boron) at 1 MA and 1.2 T [dossier.md §Confinement Concept], confirming that boron can be introduced into the plasma. EXL-50 demonstrated ECRH non-inductive startup with ~1 A/W current drive efficiency (arXiv:2104.14844). EHL-2 is targeting Ti ≈ 30 keV — a significant advance, but still one order of magnitude below the >100 keV range needed for meaningful p-B11 fusion rates.
+- **On paper only**: Any tokamak plasma at Ti > 100 keV with a significant boron fraction, let alone net p-B11 fusion power. Confinement of alpha particles from the p-B11 reaction inside the ST magnetic geometry. Suppression of bremsstrahlung and cyclotron radiation to levels below fusion power output.
+- **Missing at scale**: Demonstration that the thermal p-B11 Lawson condition is achievable in any confinement device. Experimental validation of Ti/Te >> 1 regimes needed for the p-B11 reaction at low bremsstrahlung cost. A net-fusion-energy device with p-B11 fuel at any scale, in any configuration.
+
+---
+
+**Direct Energy Conversion System — TRL 1–2**
+
+- **Demonstrated**: Small-scale Venetian-blind electrostatic converters were tested with mirror machines in the 1970s (Barr and Moir, Lawrence Livermore), demonstrating the physical principle of direct ion-to-electricity conversion. These experiments used different ion energies and were in open magnetic geometries — not tokamaks, not p-B11 alphas.
+- **On paper only**: Any direct energy converter design for a spherical tokamak geometry. Alpha particle exhaust routing from the plasma edge to the converter structure. Converter efficiency targets and engineering specifications for p-B11 product energies (~2.9 MeV per alpha, three per reaction).
+- **Missing at scale**: Any direct converter hardware for tokamak geometry at any scale. Demonstrated efficiency of direct conversion from p-B11 alpha products. Integration with the ST magnetic geometry for alpha exhaust management. Converter lifetime under the alpha particle and gamma flux from a p-B11 plasma.
+
+---
+
+**CS-Free Non-Inductive Current Drive at Reactor Plasma Conditions — TRL 3–4**
+
+- **Demonstrated**: EXL-50 demonstrated ECRH-only startup and current drive with ~1 A/W efficiency [dossier.md §Driver Technology, citing arXiv:2104.14844]. EHL-2 (under design) will test sustained CS-free operation at 3 MA, 3 T. ECRH current drive is well-characterized in conventional-aspect-ratio tokamaks at moderate temperatures.
+- **On paper only**: ECRH current drive at the plasma currents required for a commercial reactor, at the plasma temperatures (>100 keV) and densities needed for p-B11 fusion. ECCD efficiency as a function of plasma conditions in the required operating regime — accessibility windows for EC waves change dramatically at the temperatures and densities of a p-B11 reactor.
+- **Missing at scale**: Non-inductive current drive sustaining a >10 MA plasma current without central solenoid. Wall-plug-to-plasma-current efficiency at commercial scale. ECRH system reliability over years of continuous operation at the MW-per-channel level.
+
+---
+
+**ST Plasma Confinement at High Ion Temperature (Ti/Te >> 1) — TRL 2–3**
+
+- **Demonstrated**: Spherical tokamak plasmas have been sustained at Ti/Te ≈ 1–2 in NSTX-U and MAST-U. EHL-2 targets Ti/Te ≥ 2 at Ti ≈ 30 keV [enn-roadmap-pb11-arxiv-2401.11338.md]. High-Ti/Te regimes are important for p-B11 because elevated ion temperature relative to electrons reduces bremsstrahlung losses (which depend on Te) while maintaining fusion rate (which depends on Ti).
+- **On paper only**: Ti ≈ 100–300 keV with Ti/Te >> 1 in a spherical tokamak. Confinement scaling at these ion temperatures in the ST geometry. Impact of fast alpha particles on plasma stability in a low-aspect-ratio tokamak at p-B11 conditions.
+- **Missing at scale**: Any experimental data on ST confinement at Ti > 30 keV. Alpha particle physics in a burning p-B11 plasma. MHD stability at the high-beta conditions that would accompany the extreme temperatures needed.
+
+---
+
+**Divertor (p-B11 Conditions) — TRL 3–4**
+
+- **Demonstrated**: Tungsten monoblock divertors tested at 10–20 MW/m² in WEST, GLADIS, and DTT for D-T-relevant scenarios. ST-specific Super-X divertor concepts demonstrated in MAST-U (UKAEA), significantly reducing heat loads via extended divertor leg. The EXL-50U has operated with a conventional divertor.
+- **On paper only**: Divertor concepts for a device where 100% of fusion energy is deposited as charged-particle heat (no neutron fraction to the blanket). Heat load mitigation at the extreme fluxes expected from a p-B11 plasma. Divertor design compatible with a direct energy converter that needs to receive exhaust alpha particles.
+- **Missing at scale**: Plasma-facing components surviving the combined heat flux from a fully-charged-particle-heated p-B11 plasma. Detachment regime in the required high-temperature, high-density boundary plasma conditions. Integration of the divertor with alpha particle exhaust routing for direct energy conversion.
+
+---
+
+**ECRH and NBI Heating and Current Drive Systems — TRL 5–7**
+
+- **Demonstrated**: EHL-2 will use 17 MW NBI + 6 MW ECRH [dossier.md §Primary Heating]. At this scale, both technologies are well-developed. MW-class gyrotrons (ITER 170 GHz, 1 MW CW) are commercially available. High-energy NBI is mature from JET, JT-60SA, and ITER programs.
+- **On paper only**: NBI and ECRH systems optimized for the extreme plasma conditions needed for p-B11 (Ti > 100 keV), where beam absorption and wave coupling physics differ from D-T regimes. Heating systems sustaining the required plasma state against radiation losses that may dominate at p-B11 temperatures.
+- **Missing at scale**: Gyrotron array providing tens to hundreds of MW for non-inductive current drive at commercial scale. NBI at the ion energies potentially needed to sustain a >100 keV plasma. Heating efficiency that can deliver positive net energy gain despite enormous radiated power at p-B11 temperatures.
+
+---
+
+**Spherical Tokamak Vacuum Vessel and Magnet System — TRL 5–6 (EHL-2 level)**
+
+- **Demonstrated**: EXL-50U operated at 1 MA, 1.2 T with 150 kA TF coil current — consistent with a well-engineered copper resistive magnet system [dossier.md §Magnet Type]. EHL-2 is designed for 3 T at R₀ = 1.05 m, within the engineering capability of copper Bitter-plate or similar resistive coil technology. ST vacuum vessel and magnet design is well-established at NSTX-U, MAST-U, and Globus-M2 scale.
+- **On paper only**: Commercial-scale ST with resistive copper coils — ohmic heating of the coils would represent an enormous recirculating power penalty at reactor scale (100× worse than HTS for the same field-volume product). EHL-2 magnet engineering design is not described in detail in available sources.
+- **Missing at scale**: Resistive coil power consumption at commercial reactor scale (critical LCOE input). A commercial power-positive p-B11 ST almost certainly requires HTS coils to achieve acceptable recirculating power fraction, but no HTS technology has been announced by ENN.
+
+---
+
+**Balance of Plant / Power Conversion — TRL Undefined**
+
+- **Demonstrated**: Conventional steam Rankine and sCO₂ Brayton cycles are commercially mature (TRL 9). However, the ENN concept does not plan to use these — the direct energy conversion pathway bypasses the thermal cycle entirely [dossier.md §Energy Capture].
+- **On paper only**: Any direct-conversion-based plant balance of plant. Integration of a direct energy converter output (high-voltage DC from decelerating alphas) with the grid. If direct conversion fails, fallback to a thermal cycle is possible but abandons the primary economic advantage.
+- **Missing at scale**: Demonstrated direct energy converter plant integration. Alpha particle exhaust power routing at commercial scale. Hybrid system that captures both direct (alpha) and thermal (secondary radiation, neutrons, plasma heating) energy streams.
+
+---
+
+## Section 4: Key Materials and Supply Chain Considerations
+
+**Boron-11 — Abundant, Enrichment May Be Required**
+
+Natural boron is approximately 80% ¹¹B and 20% ¹⁰B. The ¹⁰B isotope has a very high thermal neutron capture cross-section (used in nuclear control rods), which could absorb residual secondary neutrons from side reactions in a p-B11 plasma and cause minor activation — however, the primary p-B11 reaction produces no neutrons, so this is a minor consideration. For a commercial plant, enriching boron to >95% ¹¹B would be prudent to maximize the fuel-effective boron fraction and minimize ¹⁰B-related effects. Boron isotope enrichment is a mature process (used for ¹⁰B in fission reactor control), but ¹¹B-enriched boron at commercial quantities has not been specified or sourced for any fusion application. Global boron production is ~10 million tonnes/year (boron minerals), making raw material supply a non-issue; isotopic enrichment at commercial fusion scale is an unquantified but solvable industrial problem.
+
+**No Tritium Supply Chain — Major Cost and Complexity Elimination**
+
+The aneutronic p-B11 fuel cycle requires no tritium. This eliminates: tritium startup inventory (~1 kg at >$35,000/g for D-T concepts), lithium-6 enrichment, tritium breeding blanket, tritium extraction circuit, tritium processing plant, and the tritium supply sequencing constraint that affects all D-T concepts. This is the single largest supply chain advantage of p-B11 over D-T — eliminating what would otherwise be a ~20–30% capital cost category (blanket system) and a complex O&M-intensive system [cross-reference: 21-spherical-tokamak-hts §Section 4].
+
+**No Breeding Blanket Materials (FLiBe, Lithium-6, Beryllium) — Further Supply Elimination**
+
+A p-B11 plant requires no beryllium (used in FLiBe), no enriched lithium, and no liquid metal breeding circuit. The supply chain constraints that affect all D-T MFE concepts — FLiBe production capacity, beryllium supply, liquid lithium reactivity — do not apply here. This is a genuine structural advantage, though it is only realized if p-B11 ignition is achieved.
+
+**Resistive Copper Coils — Power Penalty, No Supply Constraint**
+
+EXL-50U appears to use copper resistive magnets (Bitter-plate or similar) based on the 150 kA TF current at 1.2 T [dossier.md §Magnet Type]. Copper is abundantly available with no supply chain risk. However, resistive coils consume large amounts of recirculating power: ohmic losses in the coil system scale as I²R, and for a commercial-scale device the ohmic power would represent a significant fraction of gross electrical output. For comparison, an ITER-scale device (~15 MA plasma current, similar field) with copper coils rather than superconductors would consume ~300 MW just in coil ohmic heating — a severe LCOE penalty. A commercial p-B11 ST almost certainly requires a transition to HTS magnets (not yet announced by ENN), which would then introduce the same REBCO supply chain challenges as the D-T HTS tokamak concepts [cross-reference: 21-spherical-tokamak-hts §Section 4].
+
+**ECRH Gyrotron Systems — Commercially Available at EHL-2 Scale, Scaling Challenge**
+
+23 MW of combined ECRH + NBI for EHL-2 is commercially achievable with existing technology. At commercial reactor scale, the ECRH system needed for non-inductive current drive would grow to potentially hundreds of MW — requiring very large gyrotron arrays with long-term reliability. Gyrotron technology is mature at the 1 MW/unit level (ITER class) but maintaining 50%+ wall-plug efficiency across hundreds of units in continuous operation is an industrialization challenge, not a supply chain constraint.
+
+**Plasma-Facing Components (Tungsten) — Adequate Supply, Manufacturing Challenges Shared with D-T**
+
+Tungsten for the first wall and divertor is available in adequate global supply. However, the heat flux challenge for a p-B11 device (where all fusion energy is deposited as charged-particle heat) is more severe than for D-T tokamaks. Manufacturing challenges for large-area tungsten components are shared with the D-T tokamak program and are not supply-constrained.
+
+---
+
+## Section 5: LCOE-Relevant Parameters
+
+### Available Parameters
+
+| Parameter | Value/Range | Source | Confidence | Notes |
+|-----------|-------------|--------|------------|-------|
+| Device major radius (EXL-50U) | ~0.58 m (estimated from 150 kA / 1.2 T specs) | dossier.md §Magnet Type | low | EXL-50U geometry not directly stated; inferred from published TF parameters |
+| EHL-2 major radius | R₀ ≈ 1.05 m | dossier.md §Summary; enn-roadmap-pb11-arxiv-2401.11338.md | high | Physics verification device |
+| EHL-2 aspect ratio | A ≈ 1.85 | dossier.md §Confinement Concept | high | Low aspect ratio — genuine spherical tokamak |
+| EHL-2 toroidal field | B₀ ≈ 3 T | dossier.md §Summary | high | Experimental device |
+| EHL-2 plasma current | Ip ≈ 3 MA | enn-roadmap-pb11-arxiv-2401.11338.md §device goals | high | Target plasma current |
+| EHL-2 heating power | 17 MW NBI + 6 MW ECRH | dossier.md §Primary Heating | high | For physics verification — not scaled to power plant |
+| EHL-2 target ion temperature | Ti ≈ 30 keV | enn-roadmap-pb11-arxiv-2401.11338.md §device goals | high | ~10× below p-B11 ignition requirement |
+| EHL-2 Ti/Te target | ≥ 2 | enn-roadmap-pb11-arxiv-2401.11338.md §device goals | high | Elevated Ti/Te reduces bremsstrahlung |
+| EXL-50U TF coil current | 150 kA | dossier.md §Magnet Type | high | Consistent with copper resistive coils |
+| EXL-50U toroidal field | 1.2 T | dossier.md §Magnet Type | high | First device in ENN's sequence |
+| EXL-50U plasma current | 1 MA | dossier.md §Summary | high | Demonstrated in January 2024 |
+| ECRH current drive efficiency (EXL-50) | ~1 A/W | dossier.md §Driver Technology | medium | Demonstrated on EXL-50, scaled from arXiv:2104.14844 |
+| Divertor heat flux concern (EHL-2) | > 20 MW/m² at low density | enn-roadmap-pb11-arxiv-2401.11338.md §challenges | high | Identified as significant challenge |
+| Energy capture strategy | Direct (charged particle) | dossier.md §Energy Capture | medium | Stated intent, no design |
+| Operation mode | Steady-state | dossier.md §Operation Mode | high | Non-inductive ECRH current drive enables CS-free continuous operation |
+| p-B11 reaction energy | ~8.7 MeV total (3α, ~2.9 MeV each) | Well-established nuclear physics | high | No neutrons in primary reaction |
+| p-B11 peak cross-section energy | ~650 keV CM energy | Well-established nuclear physics | high | ~10× higher than D-T (68 keV) |
+| Theoretical direct conversion efficiency | 70–90% | [estimated — electrostatic DEC theoretical limit] | low | Upper bound; no demonstrated system; assumes perfect alpha capture geometry |
+| Gyrotron wall-plug efficiency | ~50–55% | [analogue: ITER-class gyrotron; shared with 21-spherical-tokamak-hts analysis §S5] | medium | Sets recirculating power floor for ECRH current drive |
+| p-B11 net-energy operating window (Te = 0.25Ti) | Ti ≈ 125–500 keV (Tentori-Belloni 2023); Ti ≈ 140–500 keV (Nevins-Swain 2000) | frontiersin-journals-nuclear-engineering-articles-10-3389.md §Results §3.2.3 | high | Net energy impossible at Te = Ti across entire 75–500 keV range; window only exists with strong hot ion mode |
+| Minimum Lawson triple product for net p-B11 energy (Te = 0.25Ti) | ~1.5 × 10²² m⁻³s at Ti ≈ 270 keV (Tentori-Belloni); ~2.6 × 10²² m⁻³s at Ti ≈ 250 keV (Nevins-Swain) | frontiersin-journals-nuclear-engineering-articles-10-3389.md §Results §3.3 | high | Excludes cyclotron/synchrotron losses — actual threshold is higher; compare to D-T Lawson ~10²¹ m⁻³s |
+| Hot ion mode achievable Ti/Te under fusion self-heating | < 1.5 at Ti = 150 keV (ENN requires Ti/Te = 4) | arxiv-2406-15495.md §Abstract; Xie (2023) as cited therein | high | External heating required to maintain Ti/Te = 4 is ~20× fusion power at Ti = 150 keV — Q_engineering << 0 |
+| p-B11 Lawson criterion temperature | >100–300 keV (Ti) | [analogue: established plasma physics; see Rider 1997, Nevins 1998] | high | Superseded by Frontiers (2026) for the Te = Ti case; hot ion mode window above narrows the operating regime |
+
+### Missing Parameters
+
+| Parameter | Gap Type | Criticality | Notes |
+|-----------|----------|-------------|-------|
+| Commercial plant Q value | truly-unknown | blocking | No plant design exists; p-B11 Q > 1 not yet demonstrated in any device |
+| Fusion power (gross), net electric output | truly-unknown | blocking | No commercial plant design; EHL-2 is non-power |
+| Capital cost estimate (total or $/kWe) | truly-unknown | blocking | No plant study; no analogue plant study exists for p-B11 ST |
+| Direct energy conversion system efficiency | truly-unknown | blocking | No engineering design published; TRL 1–2 |
+| Direct energy conversion system capital cost | truly-unknown | blocking | No design to cost; novel device category |
+| Plasma current for commercial plant | truly-unknown | blocking | EHL-2 is 3 MA experimental; commercial plant not defined |
+| ECRH recirculating power fraction (commercial) | truly-unknown | blocking | Depends on unknown commercial plasma current and unknown coil system |
+| Capacity factor | truly-unknown | important | Steady-state intent is favorable; no plant design to assess maintenance requirements |
+| Power conversion cycle thermal efficiency | not-yet-sourced | important | If direct conversion fails, fallback thermal cycle efficiency unknown |
+| Blanket and tritium system capital cost | N/A | — | Not applicable — no blanket required for p-B11 |
+| Magnet type for commercial plant | truly-unknown | important | EHL-2 conductor type unconfirmed; commercial plant almost certainly requires HTS, but not stated |
+| p-B11 ignition feasibility in thermal ST plasma | truly-unknown | fundamental | May require demonstration that bremsstrahlung losses can be managed below fusion power |
+| Plant-scale boron consumption rate | derivable | nice-to-have | Boron is abundant; consumption rate derivable from fusion power once known |
+
+---
+
+## Section 6: Data Gap Inventory
+
+| # | Gap Description | Section | Gap Type | Criticality | Source Recommendation |
+|---|-----------------|---------|----------|-------------|----------------------|
+| 1 | p-B11 net fusion gain not demonstrated in any device — fundamental physics unresolved | S1, S2, S3 | truly-unknown | blocking | EHL-2 results (expected ~2026–2027) are the next data point; Lawson criterion papers (Rider 1997, Nevins 1998) should be reviewed for theoretical constraints |
+| 2 | No commercial plant design point — all LCOE inputs absent | S1, S2, S5 | truly-unknown | blocking | No action available until ENN publishes a plant study or a third-party performs a system-code run |
+| 3 | Direct energy conversion system design and efficiency undefined | S2, S3, S5 | truly-unknown | blocking | No public roadmap for DEC hardware; watch ENN publications post-EHL-2 |
+| 4 | Direct energy conversion system capital cost | S3, S5 | truly-unknown | blocking | No cost analogues exist; Venetian-blind DEC literature (Barr & Moir, LLNL) provides concept-level reference only |
+| 5 | Commercial plant magnet type unconfirmed | S3, S4, S5 | proprietary | important | EHL-2 coil-engineering paper would resolve EHL-2 question; commercial plant requires HTS transition (unannounced) |
+| 6 | Recirculating power fraction from ECRH non-inductive current drive at reactor scale | S2, S3, S5 | truly-unknown | blocking | Cannot estimate without knowing commercial plasma current and coil system; ECRH scaling from EXL-50 would require extrapolation of 3–4 orders of magnitude |
+| 7 | Divertor heat load and materials solution for all-charged-particle heating | S2, S3 | truly-unknown | important | No published design; p-B11 divertor heat load exceeds D-T by design; engineering path is undefined |
+| 8 | Comment paper critique of ENN roadmap (physics challenges identified) | S1, S2 | resolved | — | Li (2024), arXiv:2406.15495, now extracted at `iter-02/sources/arxiv-2406-15495.md`. Key finding: hot ion mode Ti/Te = 4 is "far from accessible" under self-heating (achievable Ti/Te < 1.5 at Ti = 150 keV); maintaining Ti/Te = 4 via external heating requires ~20× fusion power. Incorporated in Section 2.1 and Section 5. |
+| 9 | EHL-2 magnet conductor type and engineering design | S3, S4 | not-yet-sourced | important | EHL-2 PST paper (doi:10.1088/2058-6272/ad981a) full text not extracted; may contain magnet engineering details not in abstract |
+| 10 | Plant capacity factor and availability | S2, S5 | truly-unknown | important | Steady-state operation is favorable in principle; no maintenance model for a direct-converter equipped p-B11 plant |
+| 11 | Boron-11 enrichment requirement and supply chain | S4 | not-yet-sourced | nice-to-have | Natural ~80% ¹¹B may be adequate; enrichment process is mature from ¹⁰B production; quantify demand when plant design exists |
+| 12 | Independent critique of p-B11 Lawson criterion achievability | S2, S3 | not-yet-sourced | important | Rider (1997) and Nevins (1998) are the key published analyses; should be formally ingested as sources |
+
+---
+
+## Section 7: Cross-Concept Notes
+
+**Approved prior analysis referenced: 21-spherical-tokamak-hts (Tokamak Energy, D-T)**
+
+The Tokamak Energy ST-E1 analysis is the most directly applicable approved prior analysis, sharing the spherical tokamak geometry. The following elements are noted for comparison.
+
+**Shared ST geometry characteristics:**
+Both ENN's concept and Tokamak Energy's ST-E1 use a low-aspect-ratio spherical tokamak (A ≈ 1.85 for EHL-2 vs. A = 2.3 for ST-E1). Both face the center-stack constraint that limits inboard blanket space. Both rely on ECRH for current drive and both plan steady-state or quasi-steady-state operation. The ECRH wall-plug efficiency assumption (~50–55%, from 21-spherical-tokamak-hts §Section 5) is adopted here as the best available analogue. The general ST divertor physics database (MAST-U Super-X, NSTX-U) applies to both concepts.
+
+**Key divergences from 21-spherical-tokamak-hts:**
+
+- **Fuel: p-B11 vs. D-T** — This is the fundamental differentiator. p-B11 requires ~10–20× higher plasma temperatures, imposes a potentially insurmountable bremsstrahlung constraint, and requires an entirely different energy capture strategy. No D-T analogue parameters can be transposed to a p-B11 concept without demonstrating that the Lawson condition is achievable. The ST-E1 analysis has an unpublished-but-probable physics design point; the ENN concept has no plausible commercial design point at all.
+
+- **Blanket: none vs. outboard liquid Li** — The ENN p-B11 concept needs no breeding blanket. This eliminates what the ST-E1 analysis describes as a TRL 2–3 subsystem with significant supply chain complexity. The blanket capital cost category (~20–30% of plant CAPEX in D-T designs) is simply absent, which is a structural cost advantage — but only if p-B11 ignition is achieved.
+
+- **Energy conversion: direct vs. thermal** — ST-E1 plans a thermal power cycle (steam Rankine or sCO₂, ~32–38% efficiency). ENN plans direct energy conversion (~70–90% theoretical efficiency). If ENN achieves both p-B11 ignition and direct conversion, the efficiency advantage is substantial. If direct conversion is not realized, a fallback thermal cycle at D-T-equivalent efficiency would face an even harder economic case than ST-E1 because the p-B11 Lawson criterion is far more demanding.
+
+- **Magnets: resistive copper (ENN) vs. HTS (Tokamak Energy)** — ST-E1's Demo4 HTS coil set represents the most advanced public milestone in fusion magnet technology. ENN's copper coil system (inferred from EXL-50U) is mature technology but carries enormous recirculating power costs at commercial scale. ENN would need to transition to HTS to make a commercial plant viable, introducing the same REBCO supply chain challenges documented in the ST-E1 analysis — but this transition has not been announced.
+
+- **Tritium and blanket supply chain** — The ST-E1 analysis dedicates significant discussion to the tritium supply constraint, liquid lithium handling, Li-6 enrichment, and WC cermet shielding. None of these apply to the ENN p-B11 concept, which is genuinely free of the tritium supply chain bottleneck.
+
+**Other in-progress p-B11 concepts (not approved; for context only, not cross-referenced):**
+
+Three other in-progress concepts also target p-B11 fuel: 18-p-b11-frc (TAE Technologies, FRC confinement), 23-laser-icf-nanostructured-target (Marvel Fusion, IFE), and 24-dense-plasma-focus (LPPFusion). All three face the same fundamental p-B11 physics challenge. The ENN concept is unique in approaching it via a spherical tokamak with CS-free ECRH drive and direct energy conversion, rather than an FRC, laser driver, or dense plasma focus. The aneutronic fuel cycle advantage (no breeding blanket, no tritium) is shared across all p-B11 concepts.
+
+---
+
+## Section 8: Sources
+
+**1. ENN Roadmap Paper (arXiv:2401.11338 / Physics of Plasmas 31, 062507, 2024)**
+- Full citation: ENN Energy Research Institute. "Proton-Boron Fusion Based on Spherical Torus." *Physics of Plasmas*, 31, 062507 (2024). arXiv:2401.11338.
+- Contribution: Primary authoritative source for ENN's concept definition, EXL-50U/EHL-2 device parameters, p-B11 fuel strategy, CS-free ECRH current drive approach, and commercial roadmap vision. Summary extracted in Phase 1a research.
+- Location: `knowledge/concept_research/39-spherical-tokamak-cs-free-p-b11/iter-01/sources/enn-roadmap-pb11-arxiv-2401.11338.md`
+
+**2. EHL-2 Physics Design Paper (doi:10.1088/2058-6272/ad981a)**
+- Full citation: ENN Energy Research Institute. "Overview of the physics design of the EHL-2 spherical torus." *Plasma Science and Technology*, 2024. doi:10.1088/2058-6272/ad981a.
+- Contribution: EHL-2 device parameters (R₀ ≈ 1.05 m, A ≈ 1.85, B₀ ≈ 3 T, Ip ≈ 3 MA), heating design (17 MW NBI + 6 MW ECRH), target conditions (Ti ≈ 30 keV, Ti/Te ≥ 2), mission (p-¹¹B reaction rate verification), and identified challenges (CS-free startup, divertor heat flux >20 MW/m²).
+- Location: Referenced in dossier.md §Summary; full text not extracted in Phase 1a
+
+**3. EXL-50 ECRH Current Drive Paper (arXiv:2104.14844)**
+- Full citation: ENN Energy Research Institute. "Solenoid-free current drive via ECRH in EXL-50." arXiv:2104.14844 (2021).
+- Contribution: Demonstrates ECRH non-inductive startup and current drive with ~1 A/W efficiency — the primary evidence for the CS-free engineering approach.
+- Location: Referenced in dossier.md §Driver Technology
+
+**4. ENN Company Website — Compact Fusion Program**
+- Contribution: States that p-¹¹B fuel "offers direct energy conversion capability for higher efficiency, produces minimal neutron radiation, and enables distributed power generation." Primary source for energy capture strategy classification.
+- Location: https://en.ennresearch.com/researchfield/Compactfusion/ (summarized in dossier.md §Energy Capture)
+
+**5. ENN Iter-2 Search Notes**
+- Contribution: Research notes confirming magnet type inference (copper, low confidence based on 150 kA / 1.2 T EXL-50U TF data), direct energy conversion classification (medium confidence), and absence of HTS announcements in ENN publications.
+- Location: `knowledge/concept_research/39-spherical-tokamak-cs-free-p-b11/iter-02/sources/enn-iter2-search-notes.md`
+
+**6. Li (2024) Comment on ENN's Roadmap (arXiv:2406.15495)**
+- Full citation: Li, Zhi. "Comment on 'ENN's roadmap for proton-boron fusion based on spherical torus' [Phys. Plasmas 31, 062507 (2024)]." arXiv:2406.15495 (2024). Published in *Physics of Plasmas* 32(6), 064701 (2024).
+- Contribution: Quantifies the hot ion mode feasibility problem specific to ENN's roadmap. Calculates achievable Ti/Te < 1.5 at Ti = 150 keV under optimal self-heating conditions (ENN requires Ti/Te = 4); shows that maintaining Ti/Te = 4 by external heating would require ~20× fusion power output, making Q_engineering deeply negative. Resolves Gap #8.
+- Location: `knowledge/concept_research/39-spherical-tokamak-cs-free-p-b11/iter-02/sources/arxiv-2406-15495.md`
+
+**9. Frontiers in Nuclear Engineering (2026) — p-B11 Lawson Criterion with Updated Cross-Sections**
+- Full citation: Frontiers in Nuclear Engineering paper on p-B11 Lawson criterion using Tentori-Belloni (2023) and Nevins-Swain (2000) cross-sections. DOI: 10.3389/fnuen (exact title and authors not confirmed from available extracted text).
+- Contribution: Establishes that net p-B11 energy production is impossible at Te = Ti across the full 75–500 keV range. Provides updated Lawson triple product minima using Tentori-Belloni (2023) cross-sections: ~1.5 × 10²² m⁻³s at Te = 0.25Ti (Ti ≈ 270 keV). Net-energy operating window with Tentori-Belloni: Ti ≈ 125–500 keV at Te = 0.25Ti. Analysis focuses on bremsstrahlung losses; cyclotron/synchrotron losses not modeled, meaning stated thresholds are lower bounds.
+- Location: `knowledge/concept_research/39-spherical-tokamak-cs-free-p-b11/iter-02/sources/frontiersin-journals-nuclear-engineering-articles-10-3389.md`
+
+**7. Phase 1a Dossier**
+- Contribution: Consolidated research findings from two iterations: device parameters, confidence ratings, remaining ambiguities, and structured citation tracking.
+- Location: `knowledge/concept_research/39-spherical-tokamak-cs-free-p-b11/dossier.md`
+
+**10. D1+ Analysis: Spherical Tokamak - HTS (21-spherical-tokamak-hts)**
+- Contribution: Cross-concept reference for spherical tokamak geometry considerations (center stack, outboard blanket coverage, ST divertor physics), ECRH wall-plug efficiency analogue (~50–55%), and D-T supply chain contrast (tritium, REBCO, liquid Li). Also provides the Brown (2018) cost comparison framework and Hidalgo-Salaverri (2025) ST TEA references that apply by family analogy.
+- Location: `analyses/21-spherical-tokamak-hts/analysis.md`
+
+---
+
+*Footnotes:*
+
+[1] enn-roadmap-pb11-arxiv-2401.11338.md §device goals, summarized in dossier.md §Summary: "EHL-2 will verify p-11B thermal reaction rates and establish ST scaling laws at tens of keV ion temperatures" — confirming that even the 30 keV operating point is the next scientific milestone, and p-B11 ignition conditions (~100–300 keV) are multiple device generations away.

@@ -33,7 +33,7 @@ Cortex Fusion Systems is one of the least transparent and least validated concep
 
 The core technical reference is arXiv:2503.15531 (Kharzeev, Levitt, Trallero-Herrero, submitted February 2025, revised April 2025), a theoretical preprint titled "Fusion in a Nanoshell: Harnessing Plasmonic Fields for Nuclear Reactions." It presents the physics mechanism and projects reactor-scale parameters but acknowledges "many practical challenges exist" without detailing them. The paper has not yet appeared in a peer-reviewed journal as of this writing.[1]
 
-The 2023 Levitt arXiv preprint (arXiv:2308.07417) establishes the quantum-control framing for the company's laser architecture but provides no specific reactor engineering.[2]
+The 2023 Levitt arXiv preprint (arXiv:2308.07417) describes a completely different fusion concept — two-proton radiative capture by oxygen-16 in ordinary water (¹⁶O(2p,γ)¹⁸Ne) via the quantum anti-Zeno effect — and is unrelated to D-D plasmonic nanoshells. The paper proposes using a bichromatic ultrafast laser to quantum-engineer nuclear tunneling in water molecules; there are no nanoshells, no deuterium, and no plasma. That the company's founder was actively publishing this orthogonal mechanism as recently as August 2023 — 18 months before the nanoshell preprint appeared — is a material indicator of conceptual instability.[2]
 
 The Cortex Fusion Systems website (accessed March 2026) provides a technology overview, describes the liquid jet delivery mechanism, kHz rep rate, and OAM laser approach, but discloses no quantitative parameters beyond a $2.6M funding figure and a claim to be "building the first electricity-producing fusion reactor."[3]
 
@@ -45,12 +45,12 @@ The Cambridge kHz paper (High Power Laser Science and Engineering, 2024) demonst
 - No neutron management, blanket, or chamber design disclosed
 - No capital cost estimates or plant engineering
 - No peer review of primary technical claims (preprint only)
-- Anomalous energy-per-fusion calculation (3333 MeV vs. standard ~3.65 MeV/event) unresolved
+- Key physics limitations unresolved by authors (fusion mean free path >> nanoshell radius; ionization damping of plasmon unquantified)
 - No third-party assessment or independent techno-economic analysis exists
 
 ---
 [1] arxiv-2503-nanoshell-paper.md, §What's NOT Addressed: "Many practical challenges exist" — acknowledged but not detailed
-[2] arxiv-2308-levitt-quantum-control.md, §Summary — framework paper, no reactor engineering
+[2] arxiv-2308-levitt-quantum-control.md, §Abstract — proposes ¹⁶O(2p,γ)¹⁸Ne reaction in water via quantum anti-Zeno laser control; no D-D, no nanoshells, no plasma; mechanism entirely distinct from the D-D nanoshell concept
 [3] cortex-fusion-website.md, §Status — "currently building the first electricity-producing fusion reactor"
 [4] kHz-liquid-sheet-fusion-paper.md, §Key Technical Details — 1 kHz, ~10^5 n/s demonstrated on liquid D2O sheet
 
@@ -68,7 +68,7 @@ This is not a modeling uncertainty — it is a structural absence. No Cortex sou
 
 The projected reactor parameters — Q~100, 10^19 n/s neutron flux — are derived entirely from the theoretical model in arXiv:2503.15531. The closest independent experimental analogue achieves 10^5 n/s (Cambridge, 2024), which is 14 orders of magnitude below the projected flux (note: the paper itself claims "nine orders" compared to high-flux fission devices at ~10^10 n/s; the Cambridge kHz result at 10^5 n/s is used here as the closest experimental analogue). The claimed plasmonic field amplification from ~10^9 to ~10^11 V/cm inside nanoshells, and the resulting deuteron acceleration to ~25 keV equivalent energy, have not been demonstrated experimentally. Until these physics claims are validated at even laboratory scale, all downstream LCOE estimates rest on a theoretical foundation with no empirical support.[2]
 
-An additional anomaly compounds this concern: the paper reports 3333 MeV of energy per D-D fusion event — approximately 1000× the standard value of ~3.65 MeV. Standard D-D produces either He-3 + n (3.27 MeV) or T + p (4.03 MeV), and secondary reactions (D + T → He-4 + n, 17.6 MeV; D + He-3 → He-4 + p, 18.3 MeV) can boost total energy per initial D-D event, but not by three orders of magnitude. The paper does not explain this figure. If it reflects a calculation error, the claimed Q~100 is unreliable. If it reflects a different physics claim (e.g., a chain of secondary reactions in the dense nanoshell environment), it is extraordinary and unverified.[3]
+Two additional physics limitations are acknowledged by the paper itself but left unresolved. First, the deuteron mean free path with respect to D-D fusion at the relevant density exceeds the nanoshell size by orders of magnitude — the paper states explicitly: "the deuteron mean free path w.r.t. fusion at the relevant low density exceeds the size of the nanoshell, λ_D^f = (ρ_D σ_DD^f)⁻¹ ~ cm." The paper offers qualitative mitigations (multiple Coulomb scatterings inside the nanoshell; deuterons fusing in the surrounding D2O), but does not provide a rigorous resolution. Second, the paper acknowledges that the plasma created by the strong laser field will damp the plasmonic enhancement: "The ionization of the nanoshells by the strong plasmonic field, a process observed to remove thousands of electrons, has not yet been incorporated into our analysis. This ionization leads to a dampening of the plasmon oscillation. Further investigation is needed to fully understand this effect." Because the claimed Q~100 and the 10^19 n/s flux depend entirely on the plasmonic enhancement factor surviving the ionization event, an unincorporated damping mechanism of unquantified magnitude puts the entire projected parameter set in question.[3]
 
 ### 3. Nanoshell Delivery Rate at Scale (Impact: High)
 
@@ -99,10 +99,16 @@ For comparison, NIF achieved ignition after decades of development starting from
 
 Even if the physics were validated, cost modeling would face unusual challenges. The dominant driver technology — commercially available femtosecond lasers at ~1 μm with OAM at kHz rates — has no established cost-per-watt analogues at power-plant scale. Femtosecond laser costs are typically $100k-$1M per system for scientific instruments; scaling to the power levels needed for fusion is entirely uncharacterized. The nanoshell target factory, liquid-jet nozzle system, and beam-focusing optics also have no cost precedents.
 
+### 7. Conceptual Instability — Multiple Incompatible Fusion Mechanisms (Impact: High)
+
+Cortex Fusion Systems has publicly proposed at least four fundamentally different fusion mechanisms across its published papers and 11+ patents: (1) D-D plasmonic nanoshell fusion (the concept under analysis); (2) two-proton radiative capture by oxygen-16 in ordinary water (¹⁶O(2p,γ)¹⁸Ne via the quantum anti-Zeno effect — the Levitt 2023 preprint, see §Section 8 Source 3); (3) chiral catalysis of nuclear fusion in molecules (US 63/596,122); and (4) a hybrid D2O-moderated fusion-fission reactor using unenriched uranium with a Direct Brayton Cycle (US 63/802,958). These are not variations on a single theme — each proposes a distinct nuclear reaction, distinct fuel, and distinct physics mechanism. The pivot from an O+2p mechanism (August 2023) to D-D plasmonic nanoshells (February 2025) occurred over 18 months and was never publicly explained; the company's patent applications from the same period cover additional mechanisms in parallel.
+
+For TEA purposes, this introduces a concept-convergence risk on top of the standard physics-validation risk. Even if the D-D nanoshell analysis is internally sound, the resources spent modeling it may be misplaced if the company has already moved to a different mechanism. There is no public indication that Cortex has experimentally tested any of its proposed mechanisms or settled on one for development.
+
 ---
 [1] dossier.md, §Energy Capture: "No disclosed energy conversion method"
 [2] kHz-liquid-sheet-fusion-paper.md, §Key Technical Details — 10^5 n/s baseline; arxiv-2503-nanoshell-paper.md §Projected Reactor Parameters — 10^19 n/s projected
-[3] arxiv-2503-nanoshell-paper.md, §Fusion Parameters — "Energy per D-D fusion: 3333 MeV (note: standard D-D is 3.27 MeV...)"
+[3] arxiv-2503-nanoshell-paper.md, §Fusion probability — "deuteron mean free path w.r.t. fusion...λ_D^f ~ cm" vs. nanoshell radius ~100 nm; §Plasmonic confinement — "ionization of the nanoshells...leads to a dampening of the plasmon oscillation. Further investigation is needed"
 [4] arxiv-2503-nanoshell-paper.md, §Projected Reactor Parameters — "1 MHz rep rate, 1 million nanoshells ignited per pulse"; kHz-liquid-sheet-fusion-paper.md, §Key Technical Details — "Sub-micrometer scale target is extremely stable and can operate at kHz or above"
 [5] dossier.md, §Neutron Management — "Not addressed by any Cortex source... 10^19 n/s neutron flux...would require substantial shielding infrastructure"
 
@@ -122,9 +128,9 @@ Ordered from least to most mature.
 ---
 
 **Energy Capture and Conversion — TRL 0**
-- **Demonstrated**: Nothing. No energy capture architecture has been described by Cortex in any source.
-- **On paper only**: Nothing. This subsystem does not exist even as a design concept in the available literature.
-- **Missing at scale**: Everything — the architecture, efficiency target, materials, and cost. This is the most critical gap in the entire system. It is not possible to assign a TRL above 0 for a subsystem that has not been conceived in any disclosed form.
+- **Demonstrated**: Nothing. No energy capture architecture has been described by Cortex for the D-D nanoshell concept in any source.
+- **On paper only**: No conversion architecture is disclosed for the primary D-D nanoshell concept. A related but distinct patent (US 63/802,958) names a "Direct Brayton Cycle" as the power conversion method — but this applies to a hybrid fusion-fission variant with a D2O-moderated uranium fission blanket, not to the pure D-D nanoshell concept under analysis. The architectures are not interchangeable.
+- **Missing at scale**: Everything — the architecture, efficiency target, materials, and cost for the D-D nanoshell concept. TRL 0 for the primary concept remains the correct assessment.
 
 ---
 
@@ -223,7 +229,7 @@ Without a chamber design, material requirements cannot be quantified. At the pro
 | Laser wavelength | ~1 μm | arxiv-2503-nanoshell-paper.md §Laser Specifications | medium | Standard near-IR femtosecond laser |
 | Laser pulse duration | ~3 fs | arxiv-2503-nanoshell-paper.md §Laser Specifications | medium | Specified in paper |
 | Fusion rate per nanoshell | ~10^7 s⁻¹ | arxiv-2503-nanoshell-paper.md §Fusion Parameters | low | Theoretical calculation |
-| Power per nanoshell | ~1 μW | arxiv-2503-nanoshell-paper.md §Fusion Parameters | low | Derived from fusion rate × energy per event. Note: internally inconsistent with the same paper's 10^7 s⁻¹ fusion rate × 3333 MeV/event (which would give ~0.5 mW); compounds the 3333 MeV anomaly (see §Section 2, Challenge 2). |
+| Power per nanoshell | ~1 μW | arxiv-2503-nanoshell-paper.md §Released energy | low | "P_sph ~ 1 μW produced by a single nanoshell" — derived from 10^7 fusions/s × 2×10⁻¹³ J/event (3 MeV per D-D fusion); consistent with paper's reported fusion rate |
 | D2O fuel cost | ~$300–600/kg | [analogue: commercial CANDU D2O market price] | medium | Well-characterized commodity; consumption rate unknown |
 | Net electrical output | Unknown | No Cortex source | — | Requires energy capture architecture |
 | Thermal efficiency | Unknown | No Cortex source | — | No energy conversion method disclosed |
@@ -253,21 +259,20 @@ Without a chamber design, material requirements cannot be quantified. At the pro
 
 | # | Gap Description | Section | Gap Type | Criticality | Source Recommendation |
 |---|-----------------|---------|----------|-------------|----------------------|
-| 1 | Energy capture architecture (method, efficiency, BOP) | S2, S3, S5 | truly-unknown | blocking | Cortex patent applications may contain engineering detail; contact company |
+| 1 | Energy capture architecture (method, efficiency, BOP) | S2, S3, S5 | truly-unknown | blocking | Hybrid fission patent (US 63/802,958) names Direct Brayton Cycle but applies to a different reactor variant; no conversion architecture exists for the D-D nanoshell concept |
 | 2 | Experimental validation of plasmonic field enhancement driving D-D fusion in nanoshells | S1, S2, S3 | truly-unknown | blocking | Await Cortex experimental publications; independent group replication |
-| 3 | Resolution of anomalous 3333 MeV/event energy figure | S1, S2, S5 | truly-unknown | blocking | Author clarification or peer review of arXiv:2503.15531 |
-| 4 | Net electrical output and Q-value experimental basis | S2, S5 | truly-unknown | blocking | No basis exists; blocking until physics validated |
-| 5 | Capital cost estimate (any component, any level) | S5 | truly-unknown | blocking | No published estimate; would require plant design |
-| 6 | Nanoshell delivery at MHz rate with gold recovery | S3, S4 | truly-unknown | blocking | Engineering demonstration required |
-| 7 | Capacity factor (maintenance model, component lifetimes) | S5 | truly-unknown | blocking | No operational experience |
-| 8 | Gold consumption rate and recycling scheme | S4, S5 | truly-unknown | important | Calculable from geometry; recycling requires demonstration |
-| 9 | Neutron shielding design for 10^19 n/s D-D source | S3, S4, S5 | truly-unknown | important | Standard neutronics tools applicable once flux and geometry are defined |
-| 10 | Laser wall-plug efficiency at plant-relevant average power | S5 | not-yet-sourced | important | Commercial femtosecond laser efficiency data exists but not at MW-class scale |
-| 11 | Laser cost at plant-scale average power | S4, S5 | not-yet-sourced | important | Indirect analogue from DPSSL studies in laser IFE; not applicable directly |
-| 12 | Regulatory classification for high-rep-rate D-D facility | S2 | truly-unknown | important | No NRC rulemaking for this operation profile; 10 CFR Part 30 applies in principle |
-| 13 | Blanket design and activation inventory management | S3, S4 | truly-unknown | important | Depends on energy capture architecture and chamber design |
-| 14 | Recirculating power fraction at demonstrated efficiency | S5 | derivable | nice-to-have | Q~100 claim implies ~1% recirculating; laser wall-plug efficiency is the missing factor |
-| 15 | D2O consumption rate | S4, S5 | derivable | nice-to-have | Calculable from target mass × rep rate once target geometry confirmed |
+| 3 | Net electrical output and Q-value experimental basis | S2, S5 | truly-unknown | blocking | No basis exists; blocking until physics validated |
+| 4 | Capital cost estimate (any component, any level) | S5 | truly-unknown | blocking | No published estimate; would require plant design |
+| 5 | Nanoshell delivery at MHz rate with gold recovery | S3, S4 | truly-unknown | blocking | Engineering demonstration required |
+| 6 | Capacity factor (maintenance model, component lifetimes) | S5 | truly-unknown | blocking | No operational experience |
+| 7 | Gold consumption rate and recycling scheme | S4, S5 | truly-unknown | important | Calculable from geometry; recycling requires demonstration |
+| 8 | Neutron shielding design for 10^19 n/s D-D source | S3, S4, S5 | truly-unknown | important | Standard neutronics tools applicable once flux and geometry are defined |
+| 9 | Laser wall-plug efficiency at plant-relevant average power | S5 | not-yet-sourced | important | Commercial femtosecond laser efficiency data exists but not at MW-class scale |
+| 10 | Laser cost at plant-scale average power | S4, S5 | not-yet-sourced | important | Indirect analogue from DPSSL studies in laser IFE; not applicable directly |
+| 11 | Regulatory classification for high-rep-rate D-D facility | S2 | truly-unknown | important | No NRC rulemaking for this operation profile; 10 CFR Part 30 applies in principle |
+| 12 | Blanket design and activation inventory management | S3, S4 | truly-unknown | important | Depends on energy capture architecture and chamber design |
+| 13 | Recirculating power fraction at demonstrated efficiency | S5 | derivable | nice-to-have | Q~100 claim implies ~1% recirculating; laser wall-plug efficiency is the missing factor |
+| 14 | D2O consumption rate | S4, S5 | derivable | nice-to-have | Calculable from target mass × rep rate once target geometry confirmed |
 
 ---
 
@@ -302,7 +307,7 @@ The rep rate leverage principle identified in the MagLIF analysis applies here: 
 - Phase 1a path: `iter-01/sources/cortex-fusion-website.md`
 
 **3. Levitt, J. (2023). "Ultrafast Laser Architectures for Quantum Control of Nuclear Fusion." arXiv:2308.07417 (2023-08-14).**
-- Earlier single-author paper establishing the quantum-control framing for the company's laser approach. No reactor engineering. References U.S. Patent Application No. 17/855,476.
+- A distinct fusion concept, unrelated to D-D plasmonic nanoshells. Proposes two-proton radiative capture by oxygen-16 in ordinary water (¹⁶O(2p,γ)¹⁸Ne) via the quantum anti-Zeno effect, using a bichromatic phase-locked ultrafast laser to engineer nuclear tunneling through the Coulomb barrier. Fuel is H₂O; no deuterium, no plasma, no nanostructures. The laser mechanism is quantum coherent control, not field amplification. Aligns with patent US 17/855,476 (filed PCT/US2022/035845 and counterparts in EP, JP). Published August 2023 — 18 months before the nanoshell paper appeared; the pivot between these mechanisms has not been publicly disclosed by the company.
 - Phase 1a path: `iter-01/sources/arxiv-2308-levitt-quantum-control.md`
 
 **4. [Authors unspecified]. "Detailed Characterization of kHz-rate Laser-Driven Fusion at a Thin Liquid Sheet." High Power Laser Science and Engineering, Cambridge University Press, 2024.**

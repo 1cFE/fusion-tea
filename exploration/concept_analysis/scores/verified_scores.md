@@ -22,8 +22,8 @@
 | 19-orbital-levitated-dipole | 3.0 | 2.0 | 2.9 | 4.0 | 4.3 | 4.0 | 1.0 | 1.3 | 4 |
 | 20a-type-one-stellarator | 2.8 | 2.5 | 2.3 | 3.0 | 2.0 | 2.5 | 4.0 | 3.5 | 2 |
 | 20b-renaissance-stellarator | 4.8 | 2.5 | 3.2 | 3.5 | 1.7 | 2.5 | 4.0 | 2.5 | 7 |
-| 21-spherical-tokamak-hts | 2.0 | 2.5 | 3.1 | 2.5 | 2.0 | 2.5 | 4.0 | 2.5 | 2 |
-| 22-projectile-icf | 2.4 | 3.0 | 2.9 | 3.5 | 1.7 | 2.0 | 3.5 | 2.3 | 3 |
+| 21-spherical-tokamak-hts | 2.0 | 2.5 | 3.1 | 2.5 | 2.0 | 2.5 | 3.5 | 2.5 | 2 |
+| 22-projectile-icf | 2.4 | 4.0 | 2.9 | 3.5 | 1.7 | 2.0 | 3.5 | 2.3 | 3 |
 | 23-laser-icf-nanostructured-target | 5.0 | 3.5 | 3.5 | 3.5 | 4.5 | 4.0 | 3.5 | 2.0 | 3 |
 | 24-dense-plasma-focus | 5.0 | 4.0 | 3.5 | 3.5 | 5.0 | 4.0 | 1.0 | 1.8 | 5 |
 | 25-heavy-ion-beam-icf | 5.0 | 4.0 | 3.3 | 3.0 | 1.7 | 2.0 | 2.5 | 3.0 | 6 |
@@ -35,7 +35,6 @@
 | 31-laser-icf-oec-architecture | 4.5 | 3.5 | 3.2 | 3.0 | 2.3 | 2.0 | 3.5 | 2.8 | 5 |
 | 32-laser-icf-french-national | 3.8 | 3.5 | 3.2 | 3.5 | 1.7 | 2.0 | 3.5 | 2.3 | 4 |
 | 33-state-backed-tokamak-best | 2.1 | 2.5 | 3.7 | 2.5 | 1.8 | 2.5 | 4.0 | 2.5 | 3 |
-| 34-compact-spherical-tokamak-india | 3.3 | 2.5 | 2.5 | 3.5 | 1.7 | 2.5 | 4.0 | 1.3 | 3 |
 | 35-polomac-magnetic-confinement | 2.0 | 4.0 | 2.9 | 3.5 | 2.8 | 3.5 | 1.0 | 2.0 | 5 |
 | 36-helical-coil-stellarator | 2.4 | 2.5 | 2.5 | 3.5 | 2.8 | 2.5 | 4.0 | 2.8 | 5 |
 
@@ -63,7 +62,7 @@
 | 19-orbital-levitated-dipole | 2.0 | 2.5 | 4.5 | 2.5 | 4.0 | 1.0 | 2.0 |
 | 20a-type-one-stellarator | 4.0 | 4.5 | 4.0 | 4.0 | 4.0 | 4.0 | 5.0 |
 | 20b-renaissance-stellarator | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 |
-| 21-spherical-tokamak-hts | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 |
+| 21-spherical-tokamak-hts | 3.5 | 4.0 | 3.5 | 3.5 | 3.0 | 3.0 | 4.0 |
 | 22-projectile-icf | 3.5 | 3.5 | 3.5 | 2.5 | 3.5 | 3.5 | 5.0 |
 | 23-laser-icf-nanostructured-target | 2.5 | 3.0 | 3.5 | 3.5 | 4.5 | 4.0 | 3.5 |
 | 24-dense-plasma-focus | 1.5 | 3.5 | 2.5 | 1.5 | 3.0 | 2.5 | 1.0 |
@@ -76,9 +75,50 @@
 | 31-laser-icf-oec-architecture | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 |
 | 32-laser-icf-french-national | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 3.5 | 4.5 |
 | 33-state-backed-tokamak-best | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 | 4.0 |
-| 34-compact-spherical-tokamak-india | 4.0 | 4.5 | 4.0 | 4.0 | 4.5 | 4.0 | 4.5 |
 | 35-polomac-magnetic-confinement | 1.0 | 3.0 | 1.0 | 1.5 | 3.0 | 5.0 | 5.0 |
 | 36-helical-coil-stellarator | 4.0 | 4.0 | 4.5 | 4.0 | 4.0 | 4.0 | 4.0 |
+
+## Energy Capture, Heritage, and Peer Group (audit trail)
+
+Heritage lineage and floor are derived from architecture (table.csv), not from concept IDs, so they survive renumbering. Heritage credit applies to D-T fuel only — non-D-T concepts show floor 1.0.
+
+| Concept | Energy Capture | η_th | Heritage Lineage | Floor | Peer Group |
+|---------|----------------|------|------------------|-------|------------|
+| 01-hts-compact-tokamak | Thermal (steam) | 0.35 | Tokamak | 4.0 | D-T Tokamaks |
+| 02-acoustic-icf-sonofusion | TBD | 0.35 | — | 1.0 | Exotic |
+| 03-laser-icf-liquid-jet-target | TBD | 0.35 | — | 1.0 | Exotic |
+| 05-planar-coil-stellarator | Thermal (steam) | 0.35 | Stellarator | 4.0 | D-T Stellarators |
+| 06-magnetic-mirror | Direct (charged particle) | 0.70 | — | 1.0 | p-B11 |
+| 07-maglif | Thermal (unspecified) | 0.35 | magLIF | 3.0 | D-T Pulsed (MIF/Z-pinch) |
+| 08-frc-w-direct-conversion | Direct (inductive) | 0.85 | — | 1.0 | Aneutronic |
+| 09-qi-stellarator-hts | Thermal (unspecified) | 0.35 | Stellarator | 4.0 | D-T Stellarators |
+| 10-large-scale-stellarator | Thermal (unspecified) | 0.35 | Stellarator | 4.0 | D-T Stellarators |
+| 12-levitated-dipole | Thermal (unspecified) | 0.35 | — | 1.0 | Exotic |
+| 13-electrostatic-hybrid | Thermal (unspecified) | 0.35 | — | 1.0 | Exotic |
+| 14-magnetized-target-fusion-pneumatic-compression | Thermal (steam) | 0.35 | — | 1.0 | Exotic |
+| 15-sheared-flow-stabilized-z-pinch | Thermal (steam) | 0.35 | Z-pinch | 2.5 | D-T Pulsed (MIF/Z-pinch) |
+| 16-muon-catalyzed-fusion | Thermal (unspecified) | 0.35 | — | 1.0 | Exotic |
+| 17a-laser-icf-hybrid-drive | Thermal (unspecified) | 0.35 | Laser IFE | 3.5 | D-T Laser IFE |
+| 17b-laser-icf-fast-ignition | Thermal (steam) | 0.35 | Laser IFE | 3.5 | D-T Laser IFE |
+| 18-p-b11-frc | Thermal (steam) | 0.35 | — | 1.0 | Aneutronic FRC |
+| 19-orbital-levitated-dipole | Direct (charged particle) | 0.70 | — | 1.0 | Aneutronic |
+| 20a-type-one-stellarator | Thermal (steam) | 0.35 | Stellarator | 4.0 | D-T Stellarators |
+| 20b-renaissance-stellarator | Thermal (sCO2) | 0.48 | Stellarator | 4.0 | D-T Stellarators |
+| 21-spherical-tokamak-hts | Thermal (unspecified) | 0.35 | Spherical Tokamak | 3.0 | D-T Tokamaks |
+| 22-projectile-icf | Thermal (steam) | 0.35 | — | 1.0 | Exotic |
+| 23-laser-icf-nanostructured-target | Hybrid (thermal + direct) | 0.55 | — | 1.0 | p-B11 |
+| 24-dense-plasma-focus | Direct (charged particle) | 0.70 | — | 1.0 | p-B11 |
+| 25-heavy-ion-beam-icf | Thermal (steam) | 0.35 | — | 1.0 | Exotic |
+| 26-laser-icf-indirect-drive | Thermal (steam) | 0.35 | Laser IFE | 3.5 | D-T Laser IFE |
+| 27-polywell | Thermal (unspecified) | 0.35 | — | 1.0 | Exotic |
+| 28-hts-tokamak-full-hts | Thermal (unspecified) | 0.35 | Tokamak | 4.0 | D-T Tokamaks |
+| 29-negative-triangularity-tokamak | Thermal (unspecified) | 0.35 | Tokamak | 4.0 | D-T Tokamaks |
+| 30-laser-icf-nif-commercialization | Thermal (steam) | 0.35 | Laser IFE | 3.5 | D-T Laser IFE |
+| 31-laser-icf-oec-architecture | Hybrid (thermal + direct) | 0.55 | Laser IFE | 3.5 | D-T Laser IFE |
+| 32-laser-icf-french-national | Thermal (unspecified) | 0.35 | Laser IFE | 3.5 | D-T Laser IFE |
+| 33-state-backed-tokamak-best | Thermal (unspecified) | 0.35 | Tokamak | 4.0 | D-T Tokamaks |
+| 35-polomac-magnetic-confinement | Thermal (unspecified) | 0.35 | — | 1.0 | Exotic |
+| 36-helical-coil-stellarator | Thermal (sCO2) | 0.48 | Stellarator | 4.0 | D-T Stellarators |
 
 ## Binary Risks per Concept
 
@@ -273,11 +313,6 @@
 - TBR < 1.0 for commercial PFPP — if BEST TBM program fails to demonstrate TBR > 1.1, PFPP cannot close tritium fuel cycle and requires perpetual external tritium supply unavailable at commercial scale
 - W impurity radiation collapse in burning plasma — if core W concentration exceeds ~10⁻⁵, radiative cooling terminates fusion; undemonstrated at Q > 1
 - RWM instability at βN > 2.5 — if resistive wall mode feedback fails at commercial βN (CFETR Phase II requires βN = 3.54 for Q = 23.5), plasma terminates and net electricity is impossible
-
-### 34-compact-spherical-tokamak-india
-- TBR < 1.0 for D-T fuel cycle (Function 6, Physics)
-- Tritium extraction failure preventing fuel cycle closure (Function 6, Hardware)
-- Uncontrolled plasma disruptions causing vacuum vessel breach or first-wall failure requiring extended shutdown (Function 3, Hardware)
 
 ### 35-polomac-magnetic-confinement
 - F1 Physics: D-D plasma Q < 5 → net power negative, no commercial viability

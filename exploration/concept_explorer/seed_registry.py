@@ -27,24 +27,23 @@ if str(_PROJECT_ROOT) not in sys.path:
 
 from exploration.concept_explorer.models import ConfinementFamily, FuelType  # noqa: E402
 from exploration.concept_explorer.taxonomy_models import (  # noqa: E402
+    BlanketConfig,
     ConceptRegistry,
     ConceptTaxonomy,
+    DriverType,
     EnergyCapture,
     IFEDriver,
     LaserApproach,
     MagnetType,
     MFETopology,
     MIFMethod,
-    NeutronManagement,
     NonStandardMechanism,
     OperationMode,
-    PlasmaState,
     PrimaryHeating,
     RepetitionRate,
     StellaratorType,
     TaxonomyConfidence,
     TokamakShape,
-    TritiumBreeding,
 )
 
 CSV_PATH = Path(__file__).parent.parent / "concept_analysis" / "table.csv"
@@ -73,9 +72,9 @@ E = TypeVar("E", bound=Enum)
 
 
 def _na_or_enum(value: str, enum_cls: type[E]) -> E | None:
-    """Map CSV value to enum, treating 'N/A' as None."""
+    """Map CSV value to enum, treating 'N/A' or empty as None."""
     value = value.strip()
-    if value == "N/A":
+    if value == "N/A" or value == "":
         return None
     # Direct lookup by value
     for member in enum_cls:
@@ -121,13 +120,11 @@ def _parse_row(row: dict[str, str]) -> ConceptTaxonomy:
         laser_approach=_na_or_enum(row["Laser Approach"], LaserApproach),
         fuel=FUEL_MAP[row["Fuel"].strip()],
         primary_heating=_na_or_enum(row["Primary Heating"], PrimaryHeating),
+        heating_type=row["Heating Type"].strip() or None,
+        driver_type=_na_or_enum(row["Driver Type"], DriverType),
         energy_capture=_na_or_enum(row["Energy Capture"], EnergyCapture),
-        plasma_state=_na_or_enum(row["Plasma State"], PlasmaState),
         magnet_type=_na_or_enum(row["Magnet Type"], MagnetType),
-        tritium_breeding=_na_or_enum(row["Tritium Breeding"], TritiumBreeding),
-        neutron_management=_na_or_enum(
-            row["Neutron Management"], NeutronManagement
-        ),
+        blanket_config=_na_or_enum(row["Blanket Config"], BlanketConfig),
         operation_mode=OperationMode(row["Operation Mode"].strip()),
         repetition_rate=_na_or_enum(row["Repetition Rate"], RepetitionRate),
         driver_technology=row["Driver Technology"].strip() or None,
@@ -138,74 +135,100 @@ def _parse_row(row: dict[str, str]) -> ConceptTaxonomy:
 # ---------------------------------------------------------------------------
 # Decision tree builder
 # ---------------------------------------------------------------------------
+#
+# ADR — display-only tree_group layer (2026-05-17):
+# v3 introduces six top-level display groups (MFE, IFE, MIF, Cmpt-Tor, Estatic,
+# Other) that sit *between* the four-bucket ConfinementFamily enum and the
+# decision tree the explorer renders. We deliberately do NOT extend
+# ConfinementFamily — doing so would cascade through taxonomy_models.py
+# validators, every per-concept JSON, lib/scoring.py, Phase 2a, and every test
+# fixture, in exchange for a UI-only benefit. Instead, tree_group(c) derives
+# a display group from existing architecture columns; _HIERARCHY here keys on
+# that derived string. Keep tree_group(), the scoring.py:detect_c2_category
+# pattern, and any other architecture-driven classifier consistent — if a
+# new mechanism or topology lands, update tree_group() and verify the test in
+# tests/test_seed_registry.py still partitions every CSV row into exactly one
+# group.
 
-# Hierarchy definition: for each family, which fields form the tree levels
-_HIERARCHY: dict[ConfinementFamily, list[tuple[str, str, str]]] = {
-    # (field_name, attribute_name, label)
-    ConfinementFamily.MFE: [
-        ("mfe_topology", "mfe_topology", "MFE Topology"),
-        # Sub-type depends on topology — handled dynamically
-    ],
-    ConfinementFamily.IFE: [
-        ("ife_driver", "ife_driver", "IFE Driver"),
-    ],
-    ConfinementFamily.MIF: [
-        ("mif_method", "mif_method", "MIF Method"),
-    ],
-    ConfinementFamily.NONSTANDARD: [
-        ("non_standard_mechanism", "non_standard_mechanism", "Mechanism"),
-    ],
+
+def tree_group(c: ConceptTaxonomy) -> str:
+    """v3 display-only sibling grouping for the decision tree.
+
+    Mirrors lib/scoring.py:detect_c2_category pattern (architecture columns,
+    no ID-prefix lookup); keep slug overrides in sync if any are added.
+
+    Returns one of: "MFE", "IFE", "MIF", "Cmpt-Tor", "Estatic", "Other".
+    """
+    if c.confinement_family == ConfinementFamily.NONSTANDARD:
+        if c.non_standard_mechanism == NonStandardMechanism.ELECTROSTATIC:
+            return "Estatic"
+        return "Other"
+    if (
+        c.confinement_family == ConfinementFamily.MFE
+        and c.mfe_topology == MFETopology.COMPACT_TOROID
+    ):
+        return "Cmpt-Tor"
+    return c.confinement_family.value  # "MFE" | "IFE" | "MIF"
+
+
+GROUP_LABELS: dict[str, str] = {
+    "MFE": "Magnetic Fusion Energy",
+    "IFE": "Inertial Fusion Energy",
+    "MIF": "Magneto-Inertial Fusion",
+    "Cmpt-Tor": "Compact Toroid",
+    "Estatic": "Electrostatic Confinement",
+    "Other": "Other Non-Standard",
 }
 
-# Sub-type fields keyed by (family, topology/driver value)
+# Display order of top-level groups in the rendered tree
+_GROUP_ORDER: list[str] = ["MFE", "IFE", "MIF", "Cmpt-Tor", "Estatic", "Other"]
+
+# Per-group level-1 grouping: (field_name, attribute_name).
+# A group with no entry collapses to a flat concept list under the group node.
+_GROUP_LEVEL1: dict[str, tuple[str, str]] = {
+    "MFE": ("mfe_topology", "mfe_topology"),
+    "IFE": ("ife_driver", "ife_driver"),
+    "MIF": ("mif_method", "mif_method"),
+    "Other": ("non_standard_mechanism", "non_standard_mechanism"),
+    # "Cmpt-Tor" and "Estatic" intentionally flat — small populations.
+}
+
+# Sub-type fields keyed by (field_name, level-1 value)
 _SUBTYPES: dict[tuple[str, str], tuple[str, str]] = {
     ("mfe_topology", "Tokamak"): ("tokamak_shape", "Tokamak Shape"),
     ("mfe_topology", "Stellarator"): ("stellarator_type", "Stellarator Type"),
     ("ife_driver", "Laser"): ("laser_approach", "Laser Approach"),
 }
 
-FAMILY_LABELS: dict[str, str] = {
-    "MFE": "Magnetic Fusion Energy",
-    "IFE": "Inertial Fusion Energy",
-    "MIF": "Magneto-Inertial Fusion",
-    "NONSTANDARD": "Non-Standard",
-}
-
 
 def _build_decision_tree(concepts: list[ConceptTaxonomy]) -> dict:
     """Build the decision tree JSON from the concept list."""
-    # Group by family
-    by_family: dict[str, list[ConceptTaxonomy]] = defaultdict(list)
+    # Group by display tree_group (not by ConfinementFamily enum — see ADR above)
+    by_group: dict[str, list[ConceptTaxonomy]] = defaultdict(list)
     for c in concepts:
-        by_family[c.confinement_family.value].append(c)
+        by_group[tree_group(c)].append(c)
 
-    family_children = []
-    for family_enum in [
-        ConfinementFamily.MFE,
-        ConfinementFamily.IFE,
-        ConfinementFamily.MIF,
-        ConfinementFamily.NONSTANDARD,
-    ]:
-        fval = family_enum.value
-        family_concepts = by_family.get(fval, [])
-        if not family_concepts:
+    group_children = []
+    for group in _GROUP_ORDER:
+        group_concepts = by_group.get(group, [])
+        if not group_concepts:
             continue
 
-        hierarchy = _HIERARCHY[family_enum]
-        if not hierarchy:
-            # No sub-levels, just list concepts
-            family_children.append({
-                "value": fval if fval != "NONSTANDARD" else "Non-Standard",
-                "label": FAMILY_LABELS[fval],
-                "concepts": [c.concept_id for c in family_concepts],
+        level1_cfg = _GROUP_LEVEL1.get(group)
+        if level1_cfg is None:
+            # Flat group — concepts as direct leaves
+            group_children.append({
+                "value": group,
+                "label": GROUP_LABELS[group],
+                "concepts": [c.concept_id for c in group_concepts],
             })
             continue
 
-        field_name, attr_name, _label = hierarchy[0]
+        field_name, attr_name = level1_cfg
 
         # Group by first hierarchy level
         by_level1: dict[str, list[ConceptTaxonomy]] = defaultdict(list)
-        for c in family_concepts:
+        for c in group_concepts:
             val = getattr(c, attr_name)
             if val is not None:
                 by_level1[val.value].append(c)
@@ -217,12 +240,10 @@ def _build_decision_tree(concepts: list[ConceptTaxonomy]) -> dict:
             if l1_val == "_none_":
                 continue
 
-            # Check for sub-type
             subtype_key = (field_name, l1_val)
             if subtype_key in _SUBTYPES:
-                sub_field, sub_label = _SUBTYPES[subtype_key]
+                sub_field, _sub_label = _SUBTYPES[subtype_key]
 
-                # Group by sub-type
                 by_sub: dict[str, list[ConceptTaxonomy]] = defaultdict(list)
                 for c in l1_concepts:
                     sub_val = getattr(c, sub_field)
@@ -241,7 +262,6 @@ def _build_decision_tree(concepts: list[ConceptTaxonomy]) -> dict:
                         "concepts": [c.concept_id for c in s_concepts],
                     })
 
-                # Sort sub-children by value for stable output
                 sub_children.sort(key=lambda x: x["value"])
 
                 level1_children.append({
@@ -251,30 +271,27 @@ def _build_decision_tree(concepts: list[ConceptTaxonomy]) -> dict:
                     "children": sub_children,
                 })
             else:
-                # No sub-type, concepts are leaves
                 level1_children.append({
                     "value": l1_val,
                     "label": l1_val,
                     "concepts": [c.concept_id for c in l1_concepts],
                 })
 
-        # Sort level1 children by value for stable output
         level1_children.sort(key=lambda x: x["value"])
 
-        family_node = {
-            "value": fval if fval != "NONSTANDARD" else "Non-Standard",
-            "label": FAMILY_LABELS[fval],
+        group_children.append({
+            "value": group,
+            "label": GROUP_LABELS[group],
             "field": field_name,
             "children": level1_children,
-        }
-        family_children.append(family_node)
+        })
 
     return {
         "version": "1.0",
         "root": {
-            "field": "confinement_family",
+            "field": "tree_group",
             "label": "Confinement Approach",
-            "children": family_children,
+            "children": group_children,
         },
     }
 

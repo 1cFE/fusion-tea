@@ -4,8 +4,8 @@
   "concepts": [
     {
       "concept_id": "01",
-      "slug": "hts-compact-tokamak",
-      "name": "HTS Compact Tokamak",
+      "slug": "hts-compact-tokamak-d-t",
+      "name": "HTS Compact Tokamak (D-T)",
       "company": "Commonwealth Fusion Systems",
       "confinement_family": "MFE",
       "mfe_topology": "Tokamak",
@@ -17,15 +17,18 @@
       "laser_approach": null,
       "fuel": "DT",
       "primary_heating": "RF (ICRH)",
+      "heating_type": "ICRH",
+      "driver_type": "Magnetic",
       "energy_capture": "Thermal (steam)",
-      "plasma_state": "Burning",
       "magnet_type": "HTS (wound)",
-      "tritium_breeding": "FLiBe blanket",
-      "neutron_management": "Integrated blanket/shield",
+      "blanket_config": "Molten salt",
       "operation_mode": "Quasi-steady",
       "repetition_rate": null,
       "driver_technology": "HTS magnets (REBCO, 20 T)",
-      "confidence": "high"
+      "confidence": "high",
+      "heating_type_parsed": [
+        "ICRH"
+      ]
     },
     {
       "concept_id": "02",
@@ -42,21 +45,24 @@
       "laser_approach": null,
       "fuel": "DD",
       "primary_heating": "Acoustic implosion",
+      "heating_type": "N/A (non-thermal)",
+      "driver_type": "Other",
       "energy_capture": "TBD",
-      "plasma_state": "Compressed",
       "magnet_type": null,
-      "tritium_breeding": null,
-      "neutron_management": "Heavy shielding (D-D)",
+      "blanket_config": null,
       "operation_mode": "Pulsed",
       "repetition_rate": "kHz",
       "driver_technology": "Ultrasonic transducers (acoustic cavitation)",
-      "confidence": "low"
+      "confidence": "low",
+      "heating_type_parsed": [
+        "N/A (non-thermal)"
+      ]
     },
     {
       "concept_id": "03",
       "slug": "laser-icf-liquid-jet-target-d-d",
       "name": "Laser ICF - Liquid Jet Target (D-D)",
-      "company": "Cortex Fusion Systems",
+      "company": "Cortex Fusion",
       "confinement_family": "IFE",
       "mfe_topology": null,
       "ife_driver": "Laser",
@@ -67,21 +73,24 @@
       "laser_approach": "Liquid jet",
       "fuel": "DD",
       "primary_heating": "Laser (ultrashort pulse)",
+      "heating_type": "N/A (compression-driven)",
+      "driver_type": "DPSSL Laser",
       "energy_capture": "TBD",
-      "plasma_state": "Compressed",
       "magnet_type": null,
-      "tritium_breeding": null,
-      "neutron_management": "Heavy shielding (D-D)",
+      "blanket_config": null,
       "operation_mode": "Pulsed",
       "repetition_rate": "kHz",
       "driver_technology": "Femtosecond laser + plasmonic nanoshell targets",
-      "confidence": "low"
+      "confidence": "low",
+      "heating_type_parsed": [
+        "N/A (compression-driven)"
+      ]
     },
     {
       "concept_id": "04",
-      "slug": "laser-icf-p-b11-fast-ignition",
-      "name": "Laser ICF - p-B11 Fast Ignition",
-      "company": "HB11 Energy",
+      "slug": "laser-icf-p-b11",
+      "name": "Laser ICF (p-B11)",
+      "company": "hb11",
       "confinement_family": "IFE",
       "mfe_topology": null,
       "ife_driver": "Laser",
@@ -92,20 +101,23 @@
       "laser_approach": "Fast ignition",
       "fuel": "PB11",
       "primary_heating": "Laser (fast ignition)",
+      "heating_type": "N/A (compression-driven)",
+      "driver_type": "DPSSL Laser",
       "energy_capture": "Thermal (steam)",
-      "plasma_state": "Compressed",
       "magnet_type": null,
-      "tritium_breeding": null,
-      "neutron_management": "Minimal (aneutronic)",
+      "blanket_config": null,
       "operation_mode": "Pulsed",
       "repetition_rate": "~1 Hz",
       "driver_technology": "Petawatt ps CPA laser + laser-driven kT field",
-      "confidence": "medium"
+      "confidence": "medium",
+      "heating_type_parsed": [
+        "N/A (compression-driven)"
+      ]
     },
     {
       "concept_id": "05",
-      "slug": "planar-coil-stellarator",
-      "name": "Planar Coil Stellarator",
+      "slug": "planar-coil-stellarator-d-t",
+      "name": "Planar Coil Stellarator (D-T)",
       "company": "Thea Energy",
       "confinement_family": "MFE",
       "mfe_topology": "Stellarator",
@@ -117,21 +129,24 @@
       "laser_approach": null,
       "fuel": "DT",
       "primary_heating": "RF (ECRH)",
+      "heating_type": "ECRH",
+      "driver_type": "Magnetic",
       "energy_capture": "Thermal (steam)",
-      "plasma_state": "Burning",
       "magnet_type": "HTS (planar array)",
-      "tritium_breeding": "LiPb blanket",
-      "neutron_management": "Integrated blanket/shield",
+      "blanket_config": "Liquid metal",
       "operation_mode": "Steady-state",
       "repetition_rate": null,
       "driver_technology": "Planar HTS coil array (12 encircling + 324 shaping, 20 T, software-controlled)",
-      "confidence": "high"
+      "confidence": "high",
+      "heating_type_parsed": [
+        "ECRH"
+      ]
     },
     {
       "concept_id": "06",
       "slug": "magnetic-mirror-p-b11",
       "name": "Magnetic Mirror (p-B11)",
-      "company": "Pale Blue Fusion",
+      "company": "Pale Blue",
       "confinement_family": "MFE",
       "mfe_topology": "Open/Linear",
       "ife_driver": null,
@@ -142,21 +157,24 @@
       "laser_approach": null,
       "fuel": "PB11",
       "primary_heating": "RF (ICRH)",
+      "heating_type": "ICRH",
+      "driver_type": "Magnetic",
       "energy_capture": "Direct (charged particle)",
-      "plasma_state": "Sustained",
       "magnet_type": "TBD",
-      "tritium_breeding": null,
-      "neutron_management": "Minimal (aneutronic)",
+      "blanket_config": null,
       "operation_mode": "Steady-state",
       "repetition_rate": null,
       "driver_technology": "Centrifugal mirror with alpha channeling (RF waves, E×B rotation, ponderomotive barriers)",
-      "confidence": "medium"
+      "confidence": "medium",
+      "heating_type_parsed": [
+        "ICRH"
+      ]
     },
     {
       "concept_id": "07",
       "slug": "maglif-d-t",
       "name": "MagLIF (D-T)",
-      "company": "Pacific Fusion, Fuse Energy Technologies",
+      "company": "Pacific Fusion",
       "confinement_family": "MIF",
       "mfe_topology": null,
       "ife_driver": null,
@@ -167,20 +185,23 @@
       "laser_approach": null,
       "fuel": "DT",
       "primary_heating": "Pulsed power implosion",
+      "heating_type": "N/A (compression-driven)",
+      "driver_type": "Magnetic pinch",
       "energy_capture": "Thermal (unspecified)",
-      "plasma_state": "Compressed",
-      "magnet_type": "Pulsed EM",
-      "tritium_breeding": "TBD",
-      "neutron_management": "Integrated blanket/shield",
+      "magnet_type": "None",
+      "blanket_config": "TBD",
       "operation_mode": "Pulsed",
       "repetition_rate": "Sub-Hz",
       "driver_technology": "Pulsed power (Z-machine class)",
-      "confidence": "medium-high"
+      "confidence": "medium-high",
+      "heating_type_parsed": [
+        "N/A (compression-driven)"
+      ]
     },
     {
       "concept_id": "08",
-      "slug": "frc-w-direct-conversion",
-      "name": "FRC w/ Direct Conversion",
+      "slug": "frc-w-direct-conversion-d-he3",
+      "name": "FRC w/ Direct Conversion (D-He3)",
       "company": "Helion Energy",
       "confinement_family": "MIF",
       "mfe_topology": null,
@@ -192,20 +213,23 @@
       "laser_approach": null,
       "fuel": "DHe3",
       "primary_heating": "Magnetic compression",
+      "heating_type": "N/A (compression-driven)",
+      "driver_type": "Magnetic",
       "energy_capture": "Direct (inductive)",
-      "plasma_state": "Transient",
-      "magnet_type": "Pulsed EM",
-      "tritium_breeding": "Self-bred (DD side)",
-      "neutron_management": "Reduced (D-He3)",
+      "magnet_type": "Resistive",
+      "blanket_config": "Other/hybrid",
       "operation_mode": "Pulsed",
       "repetition_rate": "~1 Hz",
       "driver_technology": "Pulsed EM coils (capacitor bank)",
-      "confidence": "high"
+      "confidence": "high",
+      "heating_type_parsed": [
+        "N/A (compression-driven)"
+      ]
     },
     {
       "concept_id": "09",
-      "slug": "qi-stellarator-hts",
-      "name": "QI Stellarator - HTS",
+      "slug": "qi-stellarator-hts-d-t",
+      "name": "QI Stellarator - HTS (D-T)",
       "company": "Proxima Fusion",
       "confinement_family": "MFE",
       "mfe_topology": "Stellarator",
@@ -217,20 +241,23 @@
       "laser_approach": null,
       "fuel": "DT",
       "primary_heating": "RF (ECRH)",
+      "heating_type": "ECRH",
+      "driver_type": "Magnetic",
       "energy_capture": "Thermal (unspecified)",
-      "plasma_state": "Burning",
       "magnet_type": "HTS (3D stellarator)",
-      "tritium_breeding": "LiPb blanket",
-      "neutron_management": "Integrated blanket/shield",
+      "blanket_config": "Liquid metal",
       "operation_mode": "Steady-state",
       "repetition_rate": null,
       "driver_technology": "3D HTS stellarator coils (REBCO, 20 T)",
-      "confidence": "medium"
+      "confidence": "medium",
+      "heating_type_parsed": [
+        "ECRH"
+      ]
     },
     {
       "concept_id": "10",
-      "slug": "large-scale-stellarator",
-      "name": "Large-Scale Stellarator",
+      "slug": "large-scale-stellarator-d-t",
+      "name": "Large-Scale Stellarator (D-T)",
       "company": "Gauss Fusion",
       "confinement_family": "MFE",
       "mfe_topology": "Stellarator",
@@ -242,15 +269,18 @@
       "laser_approach": null,
       "fuel": "DT",
       "primary_heating": "RF (ECRH)",
+      "heating_type": "ECRH",
+      "driver_type": "Magnetic",
       "energy_capture": "Thermal (unspecified)",
-      "plasma_state": "Burning",
       "magnet_type": "LTS+HTS",
-      "tritium_breeding": "Li blanket (unspecified)",
-      "neutron_management": "Heavy shielding (14 MeV)",
+      "blanket_config": "Liquid metal",
       "operation_mode": "Steady-state",
       "repetition_rate": null,
       "driver_technology": "Non-planar modular SC coils (LTS+HTS, 40 coils, 6T axis / 12-13T peak, demountable)",
-      "confidence": "medium"
+      "confidence": "medium",
+      "heating_type_parsed": [
+        "ECRH"
+      ]
     },
     {
       "concept_id": "11",
@@ -267,15 +297,19 @@
       "laser_approach": null,
       "fuel": "DT",
       "primary_heating": "RF + NBI",
+      "heating_type": "ICRH + NBI",
+      "driver_type": "Magnetic",
       "energy_capture": "Hybrid (thermal + direct)",
-      "plasma_state": "Sustained",
       "magnet_type": "HTS (wound)",
-      "tritium_breeding": "Li blanket (unspecified)",
-      "neutron_management": "Integrated blanket/shield",
+      "blanket_config": "Liquid metal",
       "operation_mode": "Steady-state",
       "repetition_rate": null,
       "driver_technology": "HTS mirror magnets (REBCO, 17+ T) + NBI + ECH",
-      "confidence": "medium-high"
+      "confidence": "medium-high",
+      "heating_type_parsed": [
+        "ICRH",
+        "NBI"
+      ]
     },
     {
       "concept_id": "12",
@@ -292,15 +326,18 @@
       "laser_approach": null,
       "fuel": "DT",
       "primary_heating": "RF (ICRH)",
+      "heating_type": "ICRH",
+      "driver_type": "Magnetic",
       "energy_capture": "Thermal (unspecified)",
-      "plasma_state": "Sustained",
       "magnet_type": "HTS (levitated dipole)",
-      "tritium_breeding": "Solid ceramic breeder (HCPB)",
-      "neutron_management": "Integrated blanket/shield",
+      "blanket_config": "Solid breeder",
       "operation_mode": "Quasi-steady",
       "repetition_rate": null,
       "driver_technology": "Levitated HTS dipole coil (REBCO, 23 T) with on-board flux pump",
-      "confidence": "high"
+      "confidence": "high",
+      "heating_type_parsed": [
+        "ICRH"
+      ]
     },
     {
       "concept_id": "13",
@@ -317,15 +354,18 @@
       "laser_approach": null,
       "fuel": "DT",
       "primary_heating": "Electrostatic acceleration",
+      "heating_type": "N/A (non-thermal)",
+      "driver_type": "Electrostatic",
       "energy_capture": "Thermal (unspecified)",
-      "plasma_state": "Non-burning",
       "magnet_type": "Electrostatic",
-      "tritium_breeding": "TBD",
-      "neutron_management": "Heavy shielding (14 MeV)",
+      "blanket_config": "TBD",
       "operation_mode": "Steady-state",
       "repetition_rate": null,
       "driver_technology": "High-voltage electrostatic cathode (300 kV) with E×B electron co-confinement",
-      "confidence": "medium-low"
+      "confidence": "medium-low",
+      "heating_type_parsed": [
+        "N/A (non-thermal)"
+      ]
     },
     {
       "concept_id": "14",
@@ -342,20 +382,23 @@
       "laser_approach": null,
       "fuel": "DT",
       "primary_heating": "Mechanical compression",
+      "heating_type": "N/A (compression-driven)",
+      "driver_type": "Mechanical/kinetic",
       "energy_capture": "Thermal (steam)",
-      "plasma_state": "Compressed",
-      "magnet_type": "Self-confined",
-      "tritium_breeding": "Liquid metal wall",
-      "neutron_management": "Integrated blanket/shield",
+      "magnet_type": "None",
+      "blanket_config": "Liquid metal",
       "operation_mode": "Pulsed",
       "repetition_rate": "~1 Hz",
       "driver_technology": "Pneumatic pistons + liquid metal",
-      "confidence": "high"
+      "confidence": "high",
+      "heating_type_parsed": [
+        "N/A (compression-driven)"
+      ]
     },
     {
       "concept_id": "15",
-      "slug": "sheared-flow-stabilized-z-pinch",
-      "name": "Sheared-Flow Stabilized Z-Pinch",
+      "slug": "sheared-flow-stabilized-z-pinch-d-t",
+      "name": "Sheared-Flow Stabilized Z-Pinch (D-T)",
       "company": "Zap Energy",
       "confinement_family": "MFE",
       "mfe_topology": "Open/Linear",
@@ -367,15 +410,18 @@
       "laser_approach": null,
       "fuel": "DT",
       "primary_heating": "Ohmic (self-pinch)",
+      "heating_type": "Ohmic",
+      "driver_type": "Magnetic pinch",
       "energy_capture": "Thermal (steam)",
-      "plasma_state": "Pinch",
-      "magnet_type": "Self-confined",
-      "tritium_breeding": "LiPb blanket",
-      "neutron_management": "Integrated blanket/shield",
+      "magnet_type": "None",
+      "blanket_config": "Liquid metal",
       "operation_mode": "Pulsed",
       "repetition_rate": "~10 Hz",
       "driver_technology": "Pulsed power (sheared-flow Z-pinch)",
-      "confidence": "high"
+      "confidence": "high",
+      "heating_type_parsed": [
+        "Ohmic"
+      ]
     },
     {
       "concept_id": "16",
@@ -392,15 +438,18 @@
       "laser_approach": null,
       "fuel": "DT",
       "primary_heating": "Muon catalysis",
+      "heating_type": "N/A (non-thermal)",
+      "driver_type": "Other",
       "energy_capture": "Thermal (unspecified)",
-      "plasma_state": null,
       "magnet_type": null,
-      "tritium_breeding": "TBD",
-      "neutron_management": "Heavy shielding (14 MeV)",
+      "blanket_config": "TBD",
       "operation_mode": "Steady-state",
       "repetition_rate": null,
       "driver_technology": "Muon source (accelerator)",
-      "confidence": "medium"
+      "confidence": "medium",
+      "heating_type_parsed": [
+        "N/A (non-thermal)"
+      ]
     },
     {
       "concept_id": "17a",
@@ -417,20 +466,23 @@
       "laser_approach": "Hybrid drive",
       "fuel": "DT",
       "primary_heating": "Laser (direct drive)",
+      "heating_type": "N/A (compression-driven)",
+      "driver_type": "Gas Laser",
       "energy_capture": "Thermal (unspecified)",
-      "plasma_state": "Compressed",
       "magnet_type": null,
-      "tritium_breeding": "FLiBe blanket",
-      "neutron_management": "Integrated blanket/shield",
+      "blanket_config": "Molten salt",
       "operation_mode": "Pulsed",
       "repetition_rate": "Sub-Hz",
       "driver_technology": "Excimer laser (KrF, 248 nm, 10+ MJ, ASPEN architecture)",
-      "confidence": "medium-high"
+      "confidence": "medium-high",
+      "heating_type_parsed": [
+        "N/A (compression-driven)"
+      ]
     },
     {
       "concept_id": "17b",
-      "slug": "laser-icf-fast-ignition-d-t",
-      "name": "Laser ICF - Fast Ignition (D-T)",
+      "slug": "laser-icf-direct-drive-fast-ignition-d-t",
+      "name": "Laser ICF - Direct Drive Fast Ignition (D-T)",
       "company": "Focused Energy",
       "confinement_family": "IFE",
       "mfe_topology": null,
@@ -442,20 +494,23 @@
       "laser_approach": "Fast ignition",
       "fuel": "DT",
       "primary_heating": "Laser (fast ignition)",
+      "heating_type": "N/A (compression-driven)",
+      "driver_type": "DPSSL Laser",
       "energy_capture": "Thermal (steam)",
-      "plasma_state": "Compressed",
       "magnet_type": null,
-      "tritium_breeding": "Li blanket (unspecified)",
-      "neutron_management": "Integrated blanket/shield",
+      "blanket_config": "Liquid metal",
       "operation_mode": "Pulsed",
       "repetition_rate": "~10 Hz",
       "driver_technology": "DPSSL (Nd:glass, 527 nm) + petawatt CPA ignition laser",
-      "confidence": "medium"
+      "confidence": "medium",
+      "heating_type_parsed": [
+        "N/A (compression-driven)"
+      ]
     },
     {
       "concept_id": "18",
-      "slug": "p-b11-frc",
-      "name": "p-B11 FRC",
+      "slug": "p-b11-frc-p-b11",
+      "name": "p-B11 FRC (p-B11)",
       "company": "TAE Technologies",
       "confinement_family": "MFE",
       "mfe_topology": "Compact Toroid",
@@ -467,15 +522,18 @@
       "laser_approach": null,
       "fuel": "PB11",
       "primary_heating": "NBI",
+      "heating_type": "NBI",
+      "driver_type": "Magnetic",
       "energy_capture": "Thermal (steam)",
-      "plasma_state": "Sustained",
       "magnet_type": "Resistive",
-      "tritium_breeding": null,
-      "neutron_management": "Minimal (aneutronic)",
+      "blanket_config": null,
       "operation_mode": "Steady-state",
       "repetition_rate": null,
       "driver_technology": "Neutral beam injection (high-energy, tangential)",
-      "confidence": "high"
+      "confidence": "high",
+      "heating_type_parsed": [
+        "NBI"
+      ]
     },
     {
       "concept_id": "19",
@@ -492,20 +550,23 @@
       "laser_approach": null,
       "fuel": "DHe3",
       "primary_heating": "RF (ECRH)",
+      "heating_type": "ECRH",
+      "driver_type": "Magnetic",
       "energy_capture": "Direct (charged particle)",
-      "plasma_state": "Sustained",
       "magnet_type": "HTS (levitated dipole)",
-      "tritium_breeding": null,
-      "neutron_management": "Reduced (D-He3)",
+      "blanket_config": null,
       "operation_mode": "Steady-state",
       "repetition_rate": null,
       "driver_technology": "Orbital HTS dipole coil (meter-scale, Falcon 9 deployable)",
-      "confidence": "low"
+      "confidence": "low",
+      "heating_type_parsed": [
+        "ECRH"
+      ]
     },
     {
       "concept_id": "20a",
-      "slug": "qi-modular-hts-stellarator-infinity-two",
-      "name": "QI Modular HTS Stellarator - Infinity Two",
+      "slug": "type-one-stellarator-d-t",
+      "name": "Type One Stellarator (D-T)",
       "company": "Type One Energy",
       "confinement_family": "MFE",
       "mfe_topology": "Stellarator",
@@ -517,20 +578,23 @@
       "laser_approach": null,
       "fuel": "DT",
       "primary_heating": "RF (ECRH)",
+      "heating_type": "ECRH",
+      "driver_type": "Magnetic",
       "energy_capture": "Thermal (steam)",
-      "plasma_state": "Burning",
       "magnet_type": "HTS (3D stellarator)",
-      "tritium_breeding": "Solid ceramic breeder (HCPB)",
-      "neutron_management": "Integrated blanket/shield",
+      "blanket_config": "Solid breeder",
       "operation_mode": "Steady-state",
       "repetition_rate": null,
       "driver_technology": "Modular HTS stellarator coils (REBCO, 9 T)",
-      "confidence": "high"
+      "confidence": "high",
+      "heating_type_parsed": [
+        "ECRH"
+      ]
     },
     {
       "concept_id": "20b",
-      "slug": "compact-liquid-wall-hts-stellarator",
-      "name": "Compact Liquid-Wall HTS Stellarator",
+      "slug": "renaissance-stellarator-d-t",
+      "name": "Renaissance Stellarator (D-T)",
       "company": "Renaissance Fusion",
       "confinement_family": "MFE",
       "mfe_topology": "Stellarator",
@@ -542,20 +606,23 @@
       "laser_approach": null,
       "fuel": "DT",
       "primary_heating": "NBI",
+      "heating_type": "NBI",
+      "driver_type": "Magnetic",
       "energy_capture": "Thermal (sCO2)",
-      "plasma_state": "Burning",
       "magnet_type": "HTS (3D stellarator)",
-      "tritium_breeding": "Liquid metal wall",
-      "neutron_management": "Integrated blanket/shield",
+      "blanket_config": "Other/hybrid",
       "operation_mode": "Steady-state",
       "repetition_rate": null,
       "driver_technology": "Laser-patterned HTS film on cylinders (REBCO, 10-15 T)",
-      "confidence": "high"
+      "confidence": "high",
+      "heating_type_parsed": [
+        "NBI"
+      ]
     },
     {
       "concept_id": "21",
-      "slug": "spherical-tokamak-hts",
-      "name": "Spherical Tokamak - HTS",
+      "slug": "spherical-tokamak-hts-d-t",
+      "name": "Spherical Tokamak - HTS (D-T)",
       "company": "Tokamak Energy",
       "confinement_family": "MFE",
       "mfe_topology": "Tokamak",
@@ -567,21 +634,24 @@
       "laser_approach": null,
       "fuel": "DT",
       "primary_heating": "RF (ECRH)",
+      "heating_type": "ECRH",
+      "driver_type": "Magnetic",
       "energy_capture": "Thermal (unspecified)",
-      "plasma_state": "Burning",
       "magnet_type": "HTS (wound)",
-      "tritium_breeding": "Liquid Li blanket",
-      "neutron_management": "Integrated blanket/shield",
+      "blanket_config": "Liquid metal",
       "operation_mode": "Quasi-steady",
       "repetition_rate": null,
       "driver_technology": "HTS magnets (REBCO, 5.25 T on-axis)",
-      "confidence": "medium"
+      "confidence": "medium",
+      "heating_type_parsed": [
+        "ECRH"
+      ]
     },
     {
       "concept_id": "22",
       "slug": "projectile-icf-d-t",
       "name": "Projectile ICF (D-T)",
-      "company": "First Light Fusion, NearStar Fusion",
+      "company": "First Light Fusion",
       "confinement_family": "IFE",
       "mfe_topology": null,
       "ife_driver": "Projectile",
@@ -592,15 +662,18 @@
       "laser_approach": null,
       "fuel": "DT",
       "primary_heating": "Projectile impact",
+      "heating_type": "N/A (compression-driven)",
+      "driver_type": "Mechanical/kinetic",
       "energy_capture": "Thermal (steam)",
-      "plasma_state": "Compressed",
       "magnet_type": null,
-      "tritium_breeding": "Liquid Li blanket",
-      "neutron_management": "Integrated blanket/shield",
+      "blanket_config": "Liquid metal",
       "operation_mode": "Pulsed",
       "repetition_rate": "Sub-Hz",
       "driver_technology": "Electromagnetic gun",
-      "confidence": "medium-high"
+      "confidence": "medium-high",
+      "heating_type_parsed": [
+        "N/A (compression-driven)"
+      ]
     },
     {
       "concept_id": "23",
@@ -617,15 +690,18 @@
       "laser_approach": "Ultrashort pulse",
       "fuel": "PB11",
       "primary_heating": "Laser (ultrashort pulse)",
+      "heating_type": "N/A (compression-driven)",
+      "driver_type": "DPSSL Laser",
       "energy_capture": "Hybrid (thermal + direct)",
-      "plasma_state": "Compressed",
       "magnet_type": null,
-      "tritium_breeding": null,
-      "neutron_management": "Minimal (aneutronic)",
+      "blanket_config": null,
       "operation_mode": "Pulsed",
       "repetition_rate": "~10 Hz",
       "driver_technology": "Femtosecond DPSSL + nanostructured Si targets (nanowire arrays, semiconductor lithography)",
-      "confidence": "medium-high"
+      "confidence": "medium-high",
+      "heating_type_parsed": [
+        "N/A (compression-driven)"
+      ]
     },
     {
       "concept_id": "24",
@@ -642,15 +718,18 @@
       "laser_approach": null,
       "fuel": "PB11",
       "primary_heating": "Electromagnetic pinch (DPF)",
+      "heating_type": "Ohmic",
+      "driver_type": "Magnetic pinch",
       "energy_capture": "Direct (charged particle)",
-      "plasma_state": "Pinch",
-      "magnet_type": "Self-confined",
-      "tritium_breeding": null,
-      "neutron_management": "Minimal (aneutronic)",
+      "magnet_type": "None",
+      "blanket_config": null,
       "operation_mode": "Pulsed",
       "repetition_rate": "High (>10 Hz)",
       "driver_technology": "Pulsed coaxial electrodes (capacitor bank, 2.7 MA)",
-      "confidence": "medium"
+      "confidence": "medium",
+      "heating_type_parsed": [
+        "Ohmic"
+      ]
     },
     {
       "concept_id": "25",
@@ -667,15 +746,18 @@
       "laser_approach": null,
       "fuel": "DT",
       "primary_heating": "Heavy ion beam",
+      "heating_type": "N/A (compression-driven)",
+      "driver_type": "Ion/particle beam",
       "energy_capture": "Thermal (steam)",
-      "plasma_state": "Compressed",
       "magnet_type": null,
-      "tritium_breeding": "Li blanket (unspecified)",
-      "neutron_management": "Integrated blanket/shield",
+      "blanket_config": "Liquid metal",
       "operation_mode": "Pulsed",
       "repetition_rate": "~10 Hz",
       "driver_technology": "Linear induction accelerator",
-      "confidence": "medium"
+      "confidence": "medium",
+      "heating_type_parsed": [
+        "N/A (compression-driven)"
+      ]
     },
     {
       "concept_id": "26",
@@ -692,15 +774,18 @@
       "laser_approach": "Indirect drive",
       "fuel": "DT",
       "primary_heating": "Laser (indirect drive)",
+      "heating_type": "N/A (compression-driven)",
+      "driver_type": "DPSSL Laser",
       "energy_capture": "Thermal (steam)",
-      "plasma_state": "Compressed",
       "magnet_type": null,
-      "tritium_breeding": "Liquid Li blanket",
-      "neutron_management": "Integrated blanket/shield",
+      "blanket_config": "Liquid metal",
       "operation_mode": "Pulsed",
       "repetition_rate": "~10 Hz",
       "driver_technology": "DPSSL (Thunderwall, 10 kJ x 1000+ beamlines, 10 Hz, 3w UV)",
-      "confidence": "medium-high"
+      "confidence": "medium-high",
+      "heating_type_parsed": [
+        "N/A (compression-driven)"
+      ]
     },
     {
       "concept_id": "27",
@@ -717,20 +802,23 @@
       "laser_approach": null,
       "fuel": "DT",
       "primary_heating": "Electrostatic acceleration",
+      "heating_type": "N/A (non-thermal)",
+      "driver_type": "Electrostatic",
       "energy_capture": "Thermal (unspecified)",
-      "plasma_state": "Confined",
       "magnet_type": "Resistive",
-      "tritium_breeding": "TBD",
-      "neutron_management": "Heavy shielding (14 MeV)",
+      "blanket_config": "TBD",
       "operation_mode": "Steady-state",
       "repetition_rate": null,
       "driver_technology": "Polyhedral magnetic cusp coils + electron beam injection",
-      "confidence": "medium"
+      "confidence": "medium",
+      "heating_type_parsed": [
+        "N/A (non-thermal)"
+      ]
     },
     {
       "concept_id": "28",
-      "slug": "hts-tokamak-full-hts",
-      "name": "HTS Tokamak - Full HTS",
+      "slug": "hts-tokamak-full-hts-d-t",
+      "name": "HTS Tokamak - Full HTS (D-T)",
       "company": "Energy Singularity",
       "confinement_family": "MFE",
       "mfe_topology": "Tokamak",
@@ -742,20 +830,23 @@
       "laser_approach": null,
       "fuel": "DT",
       "primary_heating": "RF (ICRH)",
+      "heating_type": "ICRH",
+      "driver_type": "Magnetic",
       "energy_capture": "Thermal (unspecified)",
-      "plasma_state": "Burning",
       "magnet_type": "HTS (wound)",
-      "tritium_breeding": "TBD",
-      "neutron_management": "Heavy shielding (14 MeV)",
+      "blanket_config": "TBD",
       "operation_mode": "Steady-state",
       "repetition_rate": null,
       "driver_technology": "HTS magnets (REBCO, 25 T)",
-      "confidence": "medium"
+      "confidence": "medium",
+      "heating_type_parsed": [
+        "ICRH"
+      ]
     },
     {
       "concept_id": "29",
-      "slug": "negative-triangularity-tokamak",
-      "name": "Negative Triangularity Tokamak",
+      "slug": "negative-triangularity-tokamak-d-t",
+      "name": "Negative Triangularity Tokamak (D-T)",
       "company": "Firefly Fusion",
       "confinement_family": "MFE",
       "mfe_topology": "Tokamak",
@@ -767,15 +858,18 @@
       "laser_approach": null,
       "fuel": "DT",
       "primary_heating": "RF (ECRH)",
+      "heating_type": "ECRH",
+      "driver_type": "Magnetic",
       "energy_capture": "Thermal (unspecified)",
-      "plasma_state": "Burning",
       "magnet_type": "HTS (wound)",
-      "tritium_breeding": "TBD",
-      "neutron_management": "Integrated blanket/shield",
+      "blanket_config": "TBD",
       "operation_mode": "Quasi-steady",
       "repetition_rate": null,
       "driver_technology": "HTS magnets + NT plasma shaping",
-      "confidence": "medium"
+      "confidence": "medium",
+      "heating_type_parsed": [
+        "ECRH"
+      ]
     },
     {
       "concept_id": "30",
@@ -792,21 +886,24 @@
       "laser_approach": "Indirect drive",
       "fuel": "DT",
       "primary_heating": "Laser (indirect drive)",
+      "heating_type": "N/A (compression-driven)",
+      "driver_type": "DPSSL Laser",
       "energy_capture": "Thermal (steam)",
-      "plasma_state": "Compressed",
       "magnet_type": null,
-      "tritium_breeding": "Liquid Li blanket",
-      "neutron_management": "Integrated blanket/shield",
+      "blanket_config": "Liquid metal",
       "operation_mode": "Pulsed",
       "repetition_rate": "~10 Hz",
       "driver_technology": "Diode-pumped solid-state laser (DPSSL, 10 MJ, ~1000 beamlines)",
-      "confidence": "medium-high"
+      "confidence": "medium-high",
+      "heating_type_parsed": [
+        "N/A (compression-driven)"
+      ]
     },
     {
       "concept_id": "31",
       "slug": "laser-icf-oec-architecture-d-t",
       "name": "Laser ICF - OEC Architecture (D-T)",
-      "company": "Blue Laser Fusion (BLF)",
+      "company": "Blue Laser Fusion",
       "confinement_family": "IFE",
       "mfe_topology": null,
       "ife_driver": "Laser",
@@ -817,20 +914,23 @@
       "laser_approach": "Direct drive",
       "fuel": "DT",
       "primary_heating": "Laser (direct drive)",
+      "heating_type": "N/A (compression-driven)",
+      "driver_type": "DPSSL Laser",
       "energy_capture": "Hybrid (thermal + direct)",
-      "plasma_state": "Compressed",
       "magnet_type": null,
-      "tritium_breeding": "LiPb blanket",
-      "neutron_management": "Integrated blanket/shield",
+      "blanket_config": "Liquid metal",
       "operation_mode": "Pulsed",
       "repetition_rate": "~10 Hz",
       "driver_technology": "CBC fiber laser + OEC, 5 MJ UV",
-      "confidence": "medium-high"
+      "confidence": "medium-high",
+      "heating_type_parsed": [
+        "N/A (compression-driven)"
+      ]
     },
     {
       "concept_id": "32",
-      "slug": "laser-icf-french-national-direct-drive-d-t",
-      "name": "Laser ICF - French National Direct Drive (D-T)",
+      "slug": "laser-icf-french-national-d-t",
+      "name": "Laser ICF - French National (D-T)",
       "company": "GenF Systems",
       "confinement_family": "IFE",
       "mfe_topology": null,
@@ -842,20 +942,23 @@
       "laser_approach": "Direct drive",
       "fuel": "DT",
       "primary_heating": "Laser (direct drive)",
+      "heating_type": "N/A (compression-driven)",
+      "driver_type": "DPSSL Laser",
       "energy_capture": "Thermal (unspecified)",
-      "plasma_state": "Compressed",
       "magnet_type": null,
-      "tritium_breeding": "Liquid Li blanket",
-      "neutron_management": "Integrated blanket/shield",
+      "blanket_config": "Liquid metal",
       "operation_mode": "Pulsed",
       "repetition_rate": "~10 Hz",
       "driver_technology": "Diode-pumped solid-state laser (DPSSL)",
-      "confidence": "medium"
+      "confidence": "medium",
+      "heating_type_parsed": [
+        "N/A (compression-driven)"
+      ]
     },
     {
       "concept_id": "33",
-      "slug": "state-backed-tokamak-best",
-      "name": "State-Backed Tokamak - BEST",
+      "slug": "state-backed-tokamak-best-d-t",
+      "name": "State-Backed Tokamak - BEST (D-T)",
       "company": "Neo Fusion",
       "confinement_family": "MFE",
       "mfe_topology": "Tokamak",
@@ -867,40 +970,20 @@
       "laser_approach": null,
       "fuel": "DT",
       "primary_heating": "RF + NBI",
+      "heating_type": "ICRH + ECRH + NBI",
+      "driver_type": "Magnetic",
       "energy_capture": "Thermal (unspecified)",
-      "plasma_state": "Burning",
       "magnet_type": "LTS+HTS",
-      "tritium_breeding": "TBD",
-      "neutron_management": "Heavy shielding (14 MeV)",
+      "blanket_config": "TBD",
       "operation_mode": "Quasi-steady",
       "repetition_rate": null,
       "driver_technology": "LTS+HTS magnets (Nb3Sn/YBCO, 6.15T) + multi-method H&CD (50 MW)",
-      "confidence": "medium"
-    },
-    {
-      "concept_id": "34",
-      "slug": "compact-spherical-tokamak-india",
-      "name": "Compact Spherical Tokamak - India",
-      "company": "Pranos Fusion",
-      "confinement_family": "MFE",
-      "mfe_topology": "Tokamak",
-      "ife_driver": null,
-      "mif_method": null,
-      "non_standard_mechanism": null,
-      "tokamak_shape": "Spherical",
-      "stellarator_type": null,
-      "laser_approach": null,
-      "fuel": "DT",
-      "primary_heating": "TBD",
-      "energy_capture": "Thermal (unspecified)",
-      "plasma_state": "Burning",
-      "magnet_type": "Unknown",
-      "tritium_breeding": "TBD",
-      "neutron_management": "Heavy shielding (14 MeV)",
-      "operation_mode": "Steady-state",
-      "repetition_rate": null,
-      "driver_technology": "Unknown",
-      "confidence": "low"
+      "confidence": "medium",
+      "heating_type_parsed": [
+        "ICRH",
+        "ECRH",
+        "NBI"
+      ]
     },
     {
       "concept_id": "35",
@@ -917,20 +1000,23 @@
       "laser_approach": null,
       "fuel": "DD",
       "primary_heating": "Unknown",
+      "heating_type": "TBD",
+      "driver_type": "TBD",
       "energy_capture": "Thermal (unspecified)",
-      "plasma_state": "Confined",
       "magnet_type": "Resistive",
-      "tritium_breeding": null,
-      "neutron_management": "Heavy shielding (D-D)",
+      "blanket_config": null,
       "operation_mode": "Steady-state",
       "repetition_rate": null,
       "driver_technology": "Internal dipole coil with magnetic tunnel supports",
-      "confidence": "medium-low"
+      "confidence": "medium-low",
+      "heating_type_parsed": [
+        "TBD"
+      ]
     },
     {
       "concept_id": "36",
-      "slug": "helical-coil-stellarator",
-      "name": "Helical Coil Stellarator",
+      "slug": "helical-coil-stellarator-d-t",
+      "name": "Helical Coil Stellarator (D-T)",
       "company": "Helical Fusion",
       "confinement_family": "MFE",
       "mfe_topology": "Stellarator",
@@ -942,15 +1028,102 @@
       "laser_approach": null,
       "fuel": "DT",
       "primary_heating": "RF (ECRH)",
+      "heating_type": "ECRH",
+      "driver_type": "Magnetic",
       "energy_capture": "Thermal (sCO2)",
-      "plasma_state": "Burning",
       "magnet_type": "HTS (3D stellarator)",
-      "tritium_breeding": "Liquid metal wall",
-      "neutron_management": "Integrated blanket/shield",
+      "blanket_config": "Liquid metal",
       "operation_mode": "Steady-state",
       "repetition_rate": null,
       "driver_technology": "Continuous helical HTS coils (REBCO WISE conductor, 8 T) + 250 GHz CW gyrotrons",
-      "confidence": "high"
+      "confidence": "high",
+      "heating_type_parsed": [
+        "ECRH"
+      ]
+    },
+    {
+      "concept_id": "37",
+      "slug": "magnetized-target-inertial-fusion-mtif-d-d",
+      "name": "Magnetized Target Inertial Fusion - MTIF (D-D)",
+      "company": "NearStar Fusion",
+      "confinement_family": "MIF",
+      "mfe_topology": null,
+      "ife_driver": null,
+      "mif_method": "Magnetized target",
+      "non_standard_mechanism": null,
+      "tokamak_shape": null,
+      "stellarator_type": null,
+      "laser_approach": null,
+      "fuel": "DD",
+      "primary_heating": "Mechanical compression",
+      "heating_type": "N/A (compression-driven)",
+      "driver_type": "Mechanical/kinetic",
+      "energy_capture": "Thermal (unspecified)",
+      "magnet_type": "None",
+      "blanket_config": "TBD",
+      "operation_mode": "Pulsed",
+      "repetition_rate": "Unknown",
+      "driver_technology": "Plasma armature railgun (~10 km/s into magnetized D-D targets)",
+      "confidence": "medium",
+      "heating_type_parsed": [
+        "N/A (compression-driven)"
+      ]
+    },
+    {
+      "concept_id": "38",
+      "slug": "particle-accelerator-driven-fusion-d-t",
+      "name": "Particle Accelerator-Driven Fusion (D-T)",
+      "company": "SHINE Technologies",
+      "confinement_family": "NONSTANDARD",
+      "mfe_topology": null,
+      "ife_driver": null,
+      "mif_method": null,
+      "non_standard_mechanism": "Electrostatic",
+      "tokamak_shape": null,
+      "stellarator_type": null,
+      "laser_approach": null,
+      "fuel": "DT",
+      "primary_heating": "Electrostatic acceleration",
+      "heating_type": "N/A (non-thermal)",
+      "driver_type": "Ion/particle beam",
+      "energy_capture": null,
+      "magnet_type": "None",
+      "blanket_config": "N/A (non-power)",
+      "operation_mode": "Steady-state",
+      "repetition_rate": null,
+      "driver_technology": "High-current particle accelerator (beam-on-target neutron source)",
+      "confidence": "medium-high",
+      "heating_type_parsed": [
+        "N/A (non-thermal)"
+      ]
+    },
+    {
+      "concept_id": "39",
+      "slug": "spherical-tokamak-cs-free-p-b11-p-b11",
+      "name": "Spherical Tokamak - CS-free p-B11 (p-B11)",
+      "company": "ENN Energy",
+      "confinement_family": "MFE",
+      "mfe_topology": "Tokamak",
+      "ife_driver": null,
+      "mif_method": null,
+      "non_standard_mechanism": null,
+      "tokamak_shape": "Spherical",
+      "stellarator_type": null,
+      "laser_approach": null,
+      "fuel": "PB11",
+      "primary_heating": "RF (ECRH)",
+      "heating_type": "ECRH",
+      "driver_type": "Magnetic",
+      "energy_capture": "Direct (charged particle)",
+      "magnet_type": "HTS (wound)",
+      "blanket_config": "N/A (no tritium)",
+      "operation_mode": "Quasi-steady",
+      "repetition_rate": null,
+      "driver_technology": "CS-free spherical tokamak with ECRH non-inductive current drive (EXL-50U / EHL-2)",
+      "confidence": "medium",
+      "heating_type_parsed": [
+        "ECRH"
+      ]
     }
   ]
 }

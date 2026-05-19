@@ -34,13 +34,13 @@ DESIGN_COLUMNS = [
     "Laser Approach",
     "Fuel",
     "Primary Heating",
+    "Heating Type",
     "Energy Capture",
-    "Plasma State",
     "Magnet Type",
-    "Tritium Breeding",
-    "Neutron Management",
+    "Blanket Config",
     "Operation Mode",
     "Repetition Rate",
+    "Driver Type",
 ]
 
 
@@ -149,22 +149,28 @@ VOCABULARY: dict[str, MappedTerm] = {
     "hts magnets": MappedTerm("Magnet Type", "contains", "HTS"),
     "superconducting magnets": MappedTerm("Magnet Type", "not", "Resistive"),
 
-    # Neutron Management
-    "heavy shielding": MappedTerm("Neutron Management", "contains", "Heavy"),
-    "heavy neutron shielding": MappedTerm("Neutron Management", "contains", "Heavy"),
-    "integrated blanket/shield": MappedTerm("Neutron Management", "exact", "Integrated blanket/shield"),
-    "minimal shielding": MappedTerm("Neutron Management", "contains", "Minimal"),
-    "reduced shielding": MappedTerm("Neutron Management", "contains", "Reduced"),
-
-    # Tritium Breeding
-    "tritium breeding": MappedTerm("Tritium Breeding", "not_na"),
-    "must breed tritium": MappedTerm("Tritium Breeding", "not_na"),
-    "tritium breeding required": MappedTerm("Tritium Breeding", "not_na"),
-    "no tritium breeding": MappedTerm("Tritium Breeding", "exact", "N/A"),
-    "flibe blanket": MappedTerm("Tritium Breeding", "contains", "FLiBe"),
-    "lipb blanket": MappedTerm("Tritium Breeding", "contains", "LiPb"),
-    "liquid lithium blanket": MappedTerm("Tritium Breeding", "contains", "Liquid Li"),
-    "liquid metal wall": MappedTerm("Tritium Breeding", "exact", "Liquid metal wall"),
+    # Blanket Config (v3 — replaces Tritium Breeding and Neutron Management)
+    "liquid metal blanket": MappedTerm("Blanket Config", "exact", "Liquid metal"),
+    "liquid metal": MappedTerm("Blanket Config", "exact", "Liquid metal"),
+    "liquid lithium blanket": MappedTerm("Blanket Config", "exact", "Liquid metal"),
+    "molten salt blanket": MappedTerm("Blanket Config", "exact", "Molten salt"),
+    "molten salt": MappedTerm("Blanket Config", "exact", "Molten salt"),
+    "flibe blanket": MappedTerm("Blanket Config", "exact", "Molten salt"),
+    "solid breeder": MappedTerm("Blanket Config", "exact", "Solid breeder"),
+    "solid breeder blanket": MappedTerm("Blanket Config", "exact", "Solid breeder"),
+    "hybrid blanket": MappedTerm("Blanket Config", "exact", "Other/hybrid"),
+    "other blanket": MappedTerm("Blanket Config", "exact", "Other/hybrid"),
+    "no tritium breeding": MappedTerm("Blanket Config", "exact", "N/A (no tritium)"),
+    "no blanket": MappedTerm("Blanket Config", "exact", "N/A (no tritium)"),
+    "non-power blanket": MappedTerm("Blanket Config", "exact", "N/A (non-power)"),
+    "tritium breeding": MappedTerm(
+        "Blanket Config", "in_set",
+        ["Liquid metal", "Molten salt", "Solid breeder", "Other/hybrid"],
+    ),
+    "must breed tritium": MappedTerm(
+        "Blanket Config", "in_set",
+        ["Liquid metal", "Molten salt", "Solid breeder", "Other/hybrid"],
+    ),
 
     # Energy Capture
     "thermal conversion": MappedTerm("Energy Capture", "contains", "Thermal"),
@@ -173,11 +179,6 @@ VOCABULARY: dict[str, MappedTerm] = {
     "direct energy conversion": MappedTerm("Energy Capture", "contains", "Direct"),
     "hybrid conversion": MappedTerm("Energy Capture", "contains", "Hybrid"),
 
-    # Plasma State
-    "burning plasma": MappedTerm("Plasma State", "exact", "Burning"),
-    "compressed plasma": MappedTerm("Plasma State", "exact", "Compressed"),
-    "sustained plasma": MappedTerm("Plasma State", "exact", "Sustained"),
-
     # Primary Heating
     "rf heating": MappedTerm("Primary Heating", "contains", "RF"),
     "neutral beam injection": MappedTerm("Primary Heating", "contains", "NBI"),
@@ -185,6 +186,24 @@ VOCABULARY: dict[str, MappedTerm] = {
     "ohmic heating": MappedTerm("Primary Heating", "contains", "Ohmic"),
     "laser heating": MappedTerm("Primary Heating", "contains", "Laser"),
     "compression heating": MappedTerm("Primary Heating", "contains", "compression"),
+
+    # Heating Type (P8 — typed)
+    "icrh": MappedTerm("Heating Type", "contains", "ICRH"),
+    "ecrh": MappedTerm("Heating Type", "contains", "ECRH"),
+    "ohmic": MappedTerm("Heating Type", "contains", "Ohmic"),
+    "compression-driven heating": MappedTerm("Heating Type", "exact", "N/A (compression-driven)"),
+    "non-thermal heating": MappedTerm("Heating Type", "exact", "N/A (non-thermal)"),
+
+    # Driver Type (P9 — typed)
+    "magnetic driver": MappedTerm("Driver Type", "exact", "Magnetic"),
+    "magnetic pinch driver": MappedTerm("Driver Type", "exact", "Magnetic pinch"),
+    "dpssl laser": MappedTerm("Driver Type", "exact", "DPSSL Laser"),
+    "gas laser": MappedTerm("Driver Type", "exact", "Gas Laser"),
+    "ion beam driver": MappedTerm("Driver Type", "exact", "Ion/particle beam"),
+    "ion/particle beam": MappedTerm("Driver Type", "exact", "Ion/particle beam"),
+    "mechanical driver": MappedTerm("Driver Type", "exact", "Mechanical/kinetic"),
+    "mechanical/kinetic": MappedTerm("Driver Type", "exact", "Mechanical/kinetic"),
+    "electrostatic driver": MappedTerm("Driver Type", "exact", "Electrostatic"),
 }
 
 
@@ -327,8 +346,8 @@ def _map_consequence(consequence: dict) -> MappedTerm | None:
 
     consequence may look like:
       {"variable": "magnet_type", "value": "not N/A"}
-      {"variable": "neutron_shielding", "value": "heavy"}
-      {"type": "activate", "variable": "tritium_breeding"}
+      {"variable": "blanket_config", "value": "liquid metal"}
+      {"type": "activate", "variable": "blanket_config"}
     """
     # Try the value
     value = consequence.get("value", "")
@@ -368,17 +387,17 @@ KEY_TO_COLUMN = {
     "topology": "MFE Topology",
     "fuel": "Fuel",
     "fuel_type": "Fuel",
-    "heating": "Primary Heating",
+    "heating": "Heating Type",
     "primary_heating": "Primary Heating",
+    "heating_type": "Heating Type",
+    "driver_type": "Driver Type",
     "energy_conversion": "Energy Capture",
     "energy_capture": "Energy Capture",
     "magnet_type": "Magnet Type",
     "magnets": "Magnet Type",
-    "tritium_breeding": "Tritium Breeding",
-    "neutron_management": "Neutron Management",
-    "neutron_shielding": "Neutron Management",
+    "blanket_config": "Blanket Config",
+    "blanket": "Blanket Config",
     "operation_mode": "Operation Mode",
-    "plasma_state": "Plasma State",
     "ife_driver": "IFE Driver",
     "driver": "IFE Driver",
     "repetition_rate": "Repetition Rate",
@@ -409,6 +428,38 @@ VALUE_ALIASES: dict[str, dict[str, str]] = {
         "d-he3": "D-He3",
         "p-b11": "p-B11",
         "d-d": "D-D",
+    },
+    "Blanket Config": {
+        "liquid metal": "Liquid metal",
+        "liquid lithium": "Liquid metal",
+        "flibe": "Molten salt",
+        "molten salt": "Molten salt",
+        "solid breeder": "Solid breeder",
+        "hybrid": "Other/hybrid",
+        "other": "Other/hybrid",
+        "none": "N/A (no tritium)",
+        "n/a": "N/A (no tritium)",
+    },
+    "Heating Type": {
+        "icrh": "ICRH",
+        "ecrh": "ECRH",
+        "nbi": "NBI",
+        "ohmic": "Ohmic",
+        "compression-driven": "N/A (compression-driven)",
+        "non-thermal": "N/A (non-thermal)",
+    },
+    "Driver Type": {
+        "magnetic": "Magnetic",
+        "magnetic pinch": "Magnetic pinch",
+        "dpssl laser": "DPSSL Laser",
+        "gas laser": "Gas Laser",
+        "ion beam": "Ion/particle beam",
+        "ion/particle beam": "Ion/particle beam",
+        "particle beam": "Ion/particle beam",
+        "mechanical": "Mechanical/kinetic",
+        "mechanical/kinetic": "Mechanical/kinetic",
+        "electrostatic": "Electrostatic",
+        "other": "Other",
     },
 }
 

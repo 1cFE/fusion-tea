@@ -1,7 +1,7 @@
 # Epic: Ontology v3 Migration
 
 **Epic ID**: ONTOLOGY-V3
-**Status**: Draft
+**Status**: In Progress (Items 1–3 complete 2026-05-17; Item 3 has two carry-forwards — see Item 3 notes)
 **Priority**: P0
 **Created**: 2026-05-17
 **Estimated Effort**: 5–8 days across three branches
@@ -39,7 +39,7 @@ Migrate the project from the v0.2.x concept ontology to v0.3.0: drop `Plasma Sta
 ## Success Criteria
 
 - [ ] `consistency-checks` branch merged to `main` (Item 1)
-- [ ] `fix/concept-renumbering-robustness` merged via a new branch with all code-side gaps fixed (Items 2–4)
+- [x] `fix/concept-renumbering-robustness` content adopted via cherry-pick-by-file onto `ontology-update` (Item 2 ✅ 2026-05-17; code-side gaps from Item 3 still pending)
 - [ ] `uv run python exploration/concept_explorer/seed_registry.py` generates a v3-shaped `decision_tree.json` reflecting the new top-level groups
 - [ ] `uv run python exploration/concept_explorer/extract_explorer_data.py` runs clean against the renumbered slate
 - [ ] `uv run python -m pytest exploration/concept_explorer/tests/` passes
@@ -55,11 +55,12 @@ Migrate the project from the v0.2.x concept ontology to v0.3.0: drop `Plasma Sta
 
 ## Backlog Items
 
-### Item 1: Land `consistency-checks` on `main`
+### Item 1: Land `consistency-checks` on `main` ✅ Complete (2026-05-17)
 
 **Type**: Code/Integration
 **Effort**: 0.5 day (review 1h, fixups 1h, PR 1h, merge 1h)
 **Dependencies**: None
+**Merged**: PR #15 → `main` as `a8a779e`
 
 **Objective**: Get the current in-flight availability/η_th standardization work merged to `main` so the v3 migration starts from a stable baseline.
 
@@ -75,9 +76,9 @@ Migrate the project from the v0.2.x concept ontology to v0.3.0: drop `Plasma Sta
 - Touching `table.csv`.
 
 **Success Criteria**:
-- [ ] `consistency-checks` branch merged to `main`
-- [ ] CI / smoke commands green on `main`
-- [ ] No uncommitted edits remain in the working tree
+- [x] `consistency-checks` branch merged to `main` (PR #15, `a8a779e`)
+- [x] CI / smoke commands green on `main`
+- [ ] No uncommitted edits remain in the working tree — `uv.lock` diff still pending review
 
 **Deliverables**:
 - Merged PR
@@ -85,50 +86,38 @@ Migrate the project from the v0.2.x concept ontology to v0.3.0: drop `Plasma Sta
 
 ---
 
-### Item 2: Merge ontology v3 branch (mechanical merge + immediate breakage fix)
+### Item 2: Merge ontology v3 branch (mechanical merge + immediate breakage fix) ✅ Complete (2026-05-17)
 
-**Type**: Code/Integration
-**Effort**: 1.5 days (spec 1h, design 2h, plan 1h, execute 8h)
-**Dependencies**: Item 1
+**Outcome**: Adopted v3 schema, new concepts (37/38/39), and architecture-driven classification from `origin/fix/concept-renumbering-robustness` (1b960a9) by cherry-pick-by-file onto `ontology-update`. Kept our existing concept IDs — no directory renames. Single commit `8db3ed2` after planning commit `244ca24`. See `.project/active/ontology-v3-merge/{spec,design,plan}.md` and `exploration/phase_1a/ID_MAPPING.md` for the renumber map and 26/30 fan-out rationale.
 
-**Objective**: Bring `origin/fix/concept-renumbering-robustness` onto a fresh branch off the updated `main`, resolve merge conflicts (most of which will be in availability/η_th files Item 1 touched), and get the codebase building.
+**Strategy revision vs. original spec**: We did NOT merge or adopt Mallory's renumbering. Instead we adopted only her schema + code + new concepts, translating her CSV onto our IDs via `exploration/phase_1a/translate_csv_to_ours.py`. Pranos dropped from CSV (directory left in place — Item 6). `20-modular-hts-stellarator/` orphan documented in ID_MAPPING.md, deferred to Item 6.
 
-**Scope**:
-1. Branch `ontology-v3-migration` off the updated `main`.
-2. Merge or cherry-pick `1b960a9` from `origin/fix/concept-renumbering-robustness`.
-3. Resolve conflicts in:
-   - `exploration/concept_analysis/analyses/*/model_setup.py`, `analysis.md`, `synthesis.md`, `model_output.txt` (overlap with Item 1's standardization changes — re-apply the standardization on top of the renumbered/reclassified files)
-   - `exploration/concept_analysis/scripts/standardize_eta_th.py`, `lib/scoring.py` (both files touched by both branches)
-4. Verify the merged tree builds:
-   - `uv run python exploration/concept_explorer/seed_registry.py` succeeds
-   - `uv run python exploration/concept_explorer/extract_explorer_data.py` succeeds
-   - `uv run python exploration/concept_analysis/scripts/run_analysis.py status` runs
-5. Re-run `seed_registry.py` to refresh `concept_registry.json` and `decision_tree.json` against the merged tree.
-6. Commit the merge.
+**Success criteria verification**:
+- [x] Single commit landed on `ontology-update` (`8db3ed2` after `244ca24`). Note: not `ontology-v3-migration` per original plan — branch was renamed during planning.
+- [x] `table.csv` has 40 rows (37 retained + 3 new), v3 columns, `Research ID` = our slug for every row.
+- [x] `seed_registry.py` succeeds; `concept_registry.json` has 40 entries.
+- [x] η_th values from Item 1 preserved (no `analyses/` files touched in this commit — FR-14).
+- [x] No references to old IDs in tracked files (we kept our IDs; Mallory's IDs only appear in pulled-verbatim v3 docs, intentionally — ID_MAPPING.md compensates).
+- [ ] `extract_explorer_data.py` clean run: **deferred to Item 5** (per-concept `{ID}.json` regeneration was explicitly out of scope).
 
-**Out of Scope**:
-- Fixing the known gaps from §4 addendum of `20260517_ontology_v3_delta.md` (Item 3).
-- Decision on CSV-vs-MD source of truth (Item 4).
-- Refreshing synthesis prose (Item 5).
-
-**Success Criteria**:
-- [ ] Merge commit lands cleanly on `ontology-v3-migration`
-- [ ] `table.csv` has 39 rows, v3 columns, populated `Research ID`
-- [ ] `seed_registry.py` and `extract_explorer_data.py` both run to completion
-- [ ] All availability/η_th changes from Item 1 are preserved on the renumbered/reclassified analyses
-- [ ] No references to old IDs in tracked files (audit via `grep -rE "17[ab]-|20[ab]-|22-projectile.*NearStar"`)
-
-**Deliverables**:
-- Branch `ontology-v3-migration` with merged history
-- Regenerated `concept_explorer/data/{concept_registry,decision_tree}.json`
+**Carry-forward items uncovered during execution** (folded into the right downstream items):
+- `run_analysis.py` had a dead `FREEFORM_CONCEPTS` import — fixed in this commit (1 line). Mentioned because Item 3 should audit for similar orphaned references.
+- `scoring.py` initially shipped without the `canonical_eta_th` import after stripping the inline definition. Caught in review; amended into `8db3ed2`. Lesson logged: Phase gates need behavioral smoke that reaches the function, not just module-load.
 
 ---
 
 ### Item 3: Close v3 code gaps and pass tests
 
+**Status**: ✅ Complete 2026-05-17 (with 2 carry-forwards to Item 5 — see below)
 **Type**: Implementation
 **Effort**: 1.5 days (spec 1h, design 2h, plan 1h, execute 8h)
 **Dependencies**: Item 2
+**Artifacts**: `.project/active/ontology-v3-close-gaps/{spec,design,plan}.md`
+**Commits on `ontology-update`**:
+- `ac320a4` Phase 1: `column_map.py` v3 schema (FR-1)
+- `f3f40c9` Phase 2: `tree_group` display layer + v3 test sweep (FR-2/3/5/7/11)
+- `42d04b2` Phase 3: architecture-driven `cadence_by_architecture` + `derive_tree_path` (FR-8/9/14)
+- `029b3ab` Phase 4: `verified_scores` regen against v3 classifier (FR-10 partial)
 
 **Objective**: Close the 9 gaps identified in `.project/research/20260517_ontology_v3_delta.md` §Addendum that the branch did not address, then get the test suite green.
 
@@ -150,18 +139,23 @@ Migrate the project from the v0.2.x concept ontology to v0.3.0: drop `Plasma Sta
 - Refreshing synthesis prose (Item 5).
 
 **Success Criteria**:
-- [ ] `uv run python -m pytest exploration/concept_explorer/tests/` passes
-- [ ] `uv run python exploration/phase_2a/expand.py` (or its current entry point) runs without `UNMAPPABLE` from dropped columns on a smoke-test concept
-- [ ] Explorer renders v3 tree groupings (Estatic / Other / Cmpt-Tor visible)
-- [ ] `decision_tree.json` reflects the new sibling structure
-- [ ] `oneoff_3d_clustering.py` and `generate_ontology_chart.py` produce identical output for unchanged concepts after the architecture-driven refactor
-- [ ] `browser-inspect` smoke test: zero console errors, all view tabs render
+- [x] `uv run python -m pytest exploration/concept_explorer/tests/` passes (176 passed, 2 skipped)
+- [x] `phase_2a/validate.py --summary` runs without `UNMAPPABLE` from dropped column names
+- [x] Explorer renders v3 tree groupings (`decision_tree.json` root field `tree_group`; six top-level keys MFE/IFE/MIF/Cmpt-Tor/Estatic/Other)
+- [x] `decision_tree.json` reflects the new sibling structure
+- [x] `oneoff_3d_clustering.py`: feature values byte-identical to baseline for retained concepts; KMeans cluster labels shift only because new concepts (37/38/39) join the dataset
+- [x] `generate_ontology_chart.py`: renders 40 concepts; pre-existing crash on missing family color also fixed
+- [ ] `browser-inspect` smoke test (deferred — see carry-forwards)
 
 **Deliverables**:
-- All 9 code changes committed
-- Updated test suite passing
-- Regenerated scores artifacts
-- `browser-inspect` session JSON saved to `/tmp/browser_inspect/<session>/` for the smoke test
+- 8 of 9 code changes committed (FR-4 and FR-6 verified no-op per spec revision); see commits above
+- Updated test suite passing (176 tests)
+- Regenerated `verified_scores.{json,md}` (`calibrated_scores.*` deferred)
+- `browser-inspect` smoke session — **deferred**
+
+**Carry-forwards into Item 5**:
+1. **`calibrated_scores.{json,md}` not regenerated** — `extract-scores` ran (deterministic), but the single cross-concept `calibrate` Claude call hit the session time cap and was killed. Five concepts (`04-laser-icf`, `11-magnetic-mirror`, `37-magnetized-target-inertial-fusion-mtif`, `38-particle-accelerator-driven-fusion`, `39-spherical-tokamak-cs-free-p-b11`) also lack Section-8 synthesis YAML and so are missing from `verified_scores.json`. Item 5's synthesis refresh should resynthesize those five and then run `calibrate` once afterward.
+2. **`browser-inspect` smoke not run** — taxonomy/compare/neighborhood views were not click-tested. The underlying contract (decision_tree.json shape, JS field labels) is exercised by the test suite (`test_taxonomy_server.py` confirms the new `tree_group` root field; `test_taxonomy_models.py` confirms the six top-level groups) but the visual gate is unverified. Run before Item 4's PR-to-`main`.
 
 ---
 
@@ -200,34 +194,49 @@ Migrate the project from the v0.2.x concept ontology to v0.3.0: drop `Plasma Sta
 
 ---
 
-### Item 5: Refresh synthesis prose for affected concepts
+### Item 5: Bring every concept to ≥3 analysis iterations
 
 **Type**: Execution
-**Effort**: 1–2 days (depending on how many concepts trigger and concept complexity)
+**Effort**: 2–4 days (3 new concepts from scratch + 6 under-iterated concepts)
 **Dependencies**: Item 4
 
-**Objective**: Bundle the existing P2 BACKLOG item "Refresh synthesis.md for 13 standardized concepts" with the v3-reclassification concepts so synthesis prose is refreshed once, not twice.
+**Objective**: Every concept in the slate has at least 3 iterations of analysis + model_setup so the cross-concept comparison floor is consistent. New v3 concepts that have CSV rows but no upstream artifacts get bootstrapped to the same bar.
 
 **Scope**:
-1. Identify the union of:
-   - The 13 concepts flagged by the availability standardization (from `.project/research/20260517-availability-policy-affected-concepts.md`)
-   - Concepts whose v3 classification or ID changed (per `RECLASSIFIED_CONCEPTS.md` on the merged branch)
-   - The 4 new concepts (27 Xcimer, 37 NearStar, 38 SHINE, 39 ENN) where synthesis may need a first pass or refresh
-2. Run synthesis refresh: `uv run python exploration/concept_analysis/scripts/run_analysis.py synthesize <ID>` (or equivalent) for each.
-3. Spot-check 3 randomly chosen refreshed `synthesis.md` files for: correct availability/η_th figures, correct taxonomic claims, no references to old IDs.
-4. Re-extract for the explorer: `uv run python exploration/concept_explorer/extract_explorer_data.py --concept <ID>` for each.
+
+Audited 2026-05-17 — 9 concepts below the bar:
+
+| Concept | Iters today | Action |
+|---|---|---|
+| `03-laser-icf-liquid-jet-target` | 1 | Run 2 more iters |
+| `04-laser-icf` (HB11) | 1 | Run 2 more iters |
+| `05-planar-coil-stellarator` | 1 | Run 2 more iters |
+| `11-magnetic-mirror` | 1 | Run 2 more iters |
+| `06-magnetic-mirror` | 2 | Run 1 more iter |
+| `21-spherical-tokamak-hts` | 2 | Run 1 more iter |
+| `37-magnetized-target-inertial-fusion-mtif` (NearStar) | 0 (no analyses dir) | Bootstrap research dossier + 3 iters |
+| `38-particle-accelerator-driven-fusion` (SHINE) | 0 (no analyses dir) | Bootstrap research dossier + 3 iters |
+| `39-spherical-tokamak-cs-free-p-b11` (ENN) | 0 (no analyses dir) | Bootstrap research dossier + 3 iters |
+
+Execution:
+1. For the 6 existing under-iterated concepts: `uv run python exploration/concept_analysis/scripts/run_analysis.py analyze <ID>` for the deficit iterations.
+2. For the 3 new concepts (37/38/39): create `knowledge/concept_research/{ID}/` dossiers first (pull primary sources for NearStar, SHINE, ENN), then run analysis pipeline to ≥3 iters.
+3. Re-extract for the explorer: `uv run python exploration/concept_explorer/extract_explorer_data.py --concept <ID>` for each touched concept.
 
 **Out of Scope**:
-- Full re-analysis (analyze stage) — synthesis-only.
-- Adding any new sources.
+- Synthesis refresh — not in scope here.
+- Raising the bar above 3 iters for concepts already at ≥3.
+- Adding new concepts beyond 37/38/39.
 
 **Success Criteria**:
-- [ ] Every affected concept's `synthesis.md` has updated frontmatter (`Stale: false`) and matches the model_output numbers
-- [ ] Spot-checks find no pre-renumbering references in the refreshed prose
-- [ ] `extract_explorer_data.py` runs clean for every refreshed concept
+- [ ] `for d in exploration/concept_analysis/analyses/*/; do ls -d "$d"iter-* | wc -l; done` shows every count ≥ 3
+- [ ] `37/`, `38/`, `39/` directories exist under both `knowledge/concept_research/` and `exploration/concept_analysis/analyses/`
+- [ ] `extract_explorer_data.py` runs clean for every touched concept
 
 **Deliverables**:
-- Refreshed `synthesis.md` for all affected concepts
+- Iterations added per the table above
+- Research dossiers for NearStar, SHINE, ENN under `knowledge/concept_research/`
+- Refreshed `concept_explorer/data/{ID}.json` for touched concepts
 - Refreshed `concept_explorer/data/{ID}.json` for the same set
 - Brief summary table at `.project/research/<date>_ontology-v3-synthesis-refresh.md` listing what changed per concept
 
@@ -350,4 +359,4 @@ Items 1–4 are strictly sequential because each writes to the same files the ne
 ---
 
 **Last Updated**: 2026-05-17
-**Next Action**: Item 1 — review `consistency-checks` diff, push, open PR
+**Next Action**: Item 2 — branch `ontology-v3-migration` off updated `main`, merge/cherry-pick `1b960a9` from `origin/fix/concept-renumbering-robustness`, resolve conflicts
