@@ -1,0 +1,147 @@
+[
+  {
+    "page_num": 0,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 1,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 2,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 3,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: replacement chars (\ufffd): 30",
+      "MATH: bracket-encoded operators: 1"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 4,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: replacement chars (\ufffd): 14"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 5,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: replacement chars (\ufffd): 3",
+      "TABLE: <br> artifacts in 9/73 table rows"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 6,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: replacement chars (\ufffd): 15"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 7,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: replacement chars (\ufffd): 11"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 8,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: replacement chars (\ufffd): 37"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 9,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: replacement chars (\ufffd): 47"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 10,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: replacement chars (\ufffd): 32",
+      "MATH: bracket-encoded operators: 1"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 11,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: strikethrough sequences: 1",
+      "MATH: replacement chars (\ufffd): 25",
+      "MATH: bracket-encoded operators: 1"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 12,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 13,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: replacement chars (\ufffd): 13"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 14,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: replacement chars (\ufffd): 9"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 15,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: replacement chars (\ufffd): 51"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 16,
+    "action": "claude_replace",
+    "reasons": [
+      "MATH: replacement chars (\ufffd): 23"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 17,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  },
+  {
+    "page_num": 18,
+    "action": "keep",
+    "reasons": [],
+    "details": {}
+  }
+]

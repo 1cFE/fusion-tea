@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fusion TEA — Down-Selection Methodology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   Custom Properties
+   ============================================================ */
+:root {
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-text: #1a1a2e;
+  --color-text-muted: #555;
+  --color-text-light: #777;
+  --color-border: #e0e0e0;
+  --color-accent: #2563eb;
+  --color-accent-light: #dbeafe;
+
+  /* Journey stage tokens */
+  --stage1: #64748b;       /* timeline / descriptive */
+  --stage1-bg: #f1f5f9;
+  --stage1-border: #cbd5e1;
+  --stage2: #2563eb;       /* first plant */
+  --stage2-bg: #eff6ff;
+  --stage2-border: #bfdbfe;
+  --stage3: #7c3aed;       /* chasm */
+  --stage3-bg: #f5f3ff;
+  --stage3-border: #c4b5fd;
+  --stage4: #c2410c;       /* learning curve */
+  --stage4-bg: #fff7ed;
+  --stage4-border: #fdba74;
+
+  --color-fail: #b91c1c;
+  --color-fail-bg: #fef2f2;
+  --color-fail-border: #fca5a5;
+  --color-lev: #15803d;
+  --color-lev-bg: #f0fdf4;
+  --color-lev-border: #86efac;
+
+  --sidebar-width: 240px;
+  --font-sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "SF Mono", "Fira Code", "Fira Mono", Menlo, Consolas, monospace;
+}
+
+/* ============================================================
+   Reset & Base
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   Layout
+   ============================================================ */
+.layout { display: flex; min-height: 100vh; }
+
+.sidebar {
+  position: fixed; top: 0; left: 0;
+  width: var(--sidebar-width); height: 100vh;
+  background: var(--color-text); color: #ccc;
+  overflow-y: auto; z-index: 100;
+  display: flex; flex-direction: column;
+}
+.sidebar-header { padding: 1.5rem 1.25rem 1rem; border-bottom: 1px solid #333; }
+.sidebar-header h1 { font-size: 1.05rem; color: #fff; font-weight: 700; letter-spacing: -0.02em; }
+.sidebar-header .subtitle { font-size: 0.72rem; color: #888; margin-top: 0.3rem; line-height: 1.4; }
+.sidebar nav { flex: 1; padding: 0.75rem 0; }
+.sidebar nav a {
+  display: block; padding: 0.5rem 1.25rem; color: #aaa; text-decoration: none;
+  font-size: 0.85rem; border-left: 3px solid transparent; transition: all 0.15s;
+}
+.sidebar nav a:hover { color: #fff; background: rgba(255,255,255,0.05); }
+.sidebar nav a.active { color: #fff; border-left-color: var(--color-accent); background: rgba(37,99,235,0.12); }
+.sidebar nav .nav-num { display: inline-block; width: 1.3rem; color: #666; font-size: 0.75rem; }
+.sidebar-footer { padding: 1rem 1.25rem; border-top: 1px solid #333; font-size: 0.7rem; color: #666; }
+
+.main { margin-left: var(--sidebar-width); flex: 1; max-width: 920px; padding: 3rem 3.5rem 6rem; }
+
+@media (max-width: 900px) {
+  .sidebar { width: 100%; height: auto; position: relative; }
+  .main { margin-left: 0; padding: 2rem 1.25rem 4rem; }
+}
+
+/* ============================================================
+   Typography
+   ============================================================ */
+h2 { font-size: 1.85rem; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 0.3rem; padding-top: 1rem; }
+h2 .section-num { color: var(--color-accent); font-weight: 500; margin-right: 0.4rem; }
+h3 { font-size: 1.2rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+h4 { font-size: 1.0rem; font-weight: 700; margin-top: 1.25rem; margin-bottom: 0.4rem; }
+p { margin-bottom: 0.9rem; }
+.lead { font-size: 1.1rem; color: var(--color-text-muted); margin-bottom: 1.5rem; line-height: 1.6; }
+.section-divider { border: none; border-top: 1px solid var(--color-border); margin: 3.5rem 0; }
+ul, ol { margin-left: 1.4rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.35rem; }
+strong { font-weight: 700; }
+em { font-style: italic; }
+
+/* ============================================================
+   Pipeline (Section 1)
+   ============================================================ */
+.pipeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin: 1.5rem 0 2rem;
+}
+@media (max-width: 700px) { .pipeline { grid-template-columns: 1fr 1fr; } }
+
+.pipeline-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 4px solid var(--stage1);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  font-size: 0.85rem;
+  display: flex; flex-direction: column;
+}
+.pipeline-card.s1 { border-top-color: var(--stage1); }
+.pipeline-card.s2 { border-top-color: var(--stage2); }
+.pipeline-card.s3 { border-top-color: var(--stage3); }
+.pipeline-card.s4 { border-top-color: var(--stage4); }
+
+.pipeline-card .pc-stage {
+  font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em;
+  font-weight: 700; margin-bottom: 0.15rem;
+}
+.pipeline-card.s1 .pc-stage { color: var(--stage1); }
+.pipeline-card.s2 .pc-stage { color: var(--stage2); }
+.pipeline-card.s3 .pc-stage { color: var(--stage3); }
+.pipeline-card.s4 .pc-stage { color: var(--stage4); }
+
+.pipeline-card .pc-name { font-weight: 700; font-size: 1.0rem; margin-bottom: 0.5rem; }
+.pipeline-card .pc-q { color: var(--color-text-muted); font-style: italic; margin-bottom: 0.65rem; font-size: 0.82rem; }
+.pipeline-card .pc-meta { font-size: 0.75rem; color: var(--color-text-light); margin-top: auto; }
+.pipeline-card .pc-meta div { padding: 0.15rem 0; }
+.pipeline-card .pc-meta .pc-label { font-weight: 600; color: var(--color-text-muted); }
+
+/* ============================================================
+   Stage callouts (Section 2)
+   ============================================================ */
+.stage-block {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 5px solid var(--stage1);
+  border-radius: 6px;
+  padding: 1.2rem 1.4rem;
+  margin: 1.25rem 0;
+}
+.stage-block.s1 { border-left-color: var(--stage1); }
+.stage-block.s2 { border-left-color: var(--stage2); }
+.stage-block.s3 { border-left-color: var(--stage3); }
+.stage-block.s4 { border-left-color: var(--stage4); }
+
+.stage-block h3 { margin-top: 0; }
+.stage-block .stage-tag {
+  display: inline-block; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em;
+  font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 3px; margin-bottom: 0.35rem;
+}
+.stage-block.s1 .stage-tag { background: var(--stage1-bg); color: var(--stage1); }
+.stage-block.s2 .stage-tag { background: var(--stage2-bg); color: var(--stage2); }
+.stage-block.s3 .stage-tag { background: var(--stage3-bg); color: var(--stage3); }
+.stage-block.s4 .stage-tag { background: var(--stage4-bg); color: var(--stage4); }
+
+/* Stage 4 base-rate callout */
+.base-rate-callout {
+  background: var(--stage4-bg);
+  border-left: 4px solid var(--stage4);
+  border-radius: 0 6px 6px 0;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0 1.5rem;
+  font-size: 0.95rem;
+}
+.base-rate-callout strong { color: var(--stage4); }
+
+/* ============================================================
+   Tables
+   ============================================================ */
+.table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.88rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 6px; overflow: hidden; }
+th, td { text-align: left; padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+th { font-weight: 700; background: var(--color-bg); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-text-muted); }
+tr:last-child td { border-bottom: none; }
+
+/* ============================================================
+   Cross-stage coda
+   ============================================================ */
+.coda {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  font-size: 0.92rem;
+}
+.coda h4 { margin-top: 0; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-muted); }
+.coda ul { margin-bottom: 0; }
+
+/* ============================================================
+   Method steps
+   ============================================================ */
+.method-step {
+  margin: 1.5rem 0 2rem;
+  border-left: 3px solid var(--color-accent);
+  padding-left: 1.25rem;
+}
+.method-step .step-num {
+  display: inline-block; width: 1.5rem; height: 1.5rem; line-height: 1.5rem;
+  background: var(--color-accent); color: #fff; border-radius: 50%;
+  text-align: center; font-weight: 700; font-size: 0.85rem;
+  margin-right: 0.5rem; vertical-align: 1px;
+}
+.concept-panel h3 .concept-tag { display: block; margin-top: 0.2rem; }
+.method-step h3 { display: inline; margin: 0; font-size: 1.25rem; }
+
+/* Tag format inline */
+.tag-format {
+  background: #f8fafc; border: 1px solid var(--color-border);
+  border-radius: 6px; padding: 0.75rem 1rem; margin: 0.75rem 0;
+  font-family: var(--font-mono); font-size: 0.85rem;
+}
+.tag-format .label { font-family: var(--font-sans); font-size: 0.72rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-right: 0.5rem; }
+
+/* ============================================================
+   Frames cards
+   ============================================================ */
+.frames {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  margin: 1rem 0 1.5rem;
+}
+@media (max-width: 800px) { .frames { grid-template-columns: 1fr; } }
+
+.frame-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-accent);
+  border-radius: 6px;
+  padding: 1rem 1.1rem;
+  font-size: 0.88rem;
+}
+.frame-card h4 { margin-top: 0; color: var(--color-accent); font-size: 1.05rem; }
+.frame-card .fc-row { margin-top: 0.5rem; font-size: 0.82rem; }
+.frame-card .fc-label {
+  display: inline-block; font-weight: 700; font-size: 0.68rem;
+  text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-text-muted);
+  margin-right: 0.3rem;
+}
+
+/* Map illuminates list */
+.themes { margin: 1rem 0 1.5rem; }
+.theme-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+.theme-item strong { display: block; margin-bottom: 0.15rem; }
+
+/* ============================================================
+   Code / tags
+   ============================================================ */
+code { font-family: var(--font-mono); font-size: 0.86em; background: #eef2f7; color: #1e293b; padding: 0.12rem 0.38rem; border-radius: 4px; }
+
+.tag-code {
+  font-family: var(--font-mono); font-size: 0.82rem;
+  background: #1e293b; color: #e2e8f0;
+  padding: 0.15rem 0.45rem; border-radius: 4px;
+  display: inline-block;
+}
+
+/* ============================================================
+   Worked examples
+   ============================================================ */
+.examples {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+@media (max-width: 1100px) { .examples { grid-template-columns: 1fr; } }
+
+.concept-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1.25rem 1.4rem;
+}
+.concept-panel h3 {
+  margin-top: 0; font-size: 1.15rem; padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--color-border);
+}
+.concept-panel .concept-tag {
+  font-size: 0.75rem; color: var(--color-text-muted); font-weight: 500; margin-left: 0.4rem;
+}
+
+.timeline-note {
+  background: var(--stage1-bg);
+  border-left: 3px solid var(--stage1);
+  border-radius: 0 4px 4px 0;
+  padding: 0.7rem 0.9rem;
+  margin: 0.75rem 0 1rem;
+  font-size: 0.86rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+.timeline-note strong { font-style: normal; color: var(--stage1); display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem; font-weight: 700; }
+
+.stage-section { margin: 1rem 0; }
+.stage-section .ss-header {
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.07em;
+  font-weight: 700; padding: 0.25rem 0.55rem; border-radius: 3px;
+  display: inline-block; margin-bottom: 0.4rem;
+}
+.stage-section.s2 .ss-header { background: var(--stage2-bg); color: var(--stage2); }
+.stage-section.s3 .ss-header { background: var(--stage3-bg); color: var(--stage3); }
+.stage-section.s4 .ss-header { background: var(--stage4-bg); color: var(--stage4); }
+
+.entry-group { margin: 0.5rem 0 0.75rem; }
+.entry-group .eg-label {
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;
+  font-weight: 700; margin-bottom: 0.3rem;
+}
+.entry-group.failures .eg-label { color: var(--color-fail); }
+.entry-group.leverages .eg-label { color: var(--color-lev); }
+
+.entry-list { list-style: none; margin-left: 0; }
+.entry-list li {
+  border-left: 3px solid var(--color-fail-border);
+  background: var(--color-fail-bg);
+  padding: 0.45rem 0.65rem;
+  margin-bottom: 0.4rem;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+.entry-list.leverages li {
+  border-left-color: var(--color-lev-border);
+  background: var(--color-lev-bg);
+}
+.entry-list code {
+  background: #1e293b; color: #e2e8f0; font-size: 0.78rem;
+  padding: 0.1rem 0.35rem; border-radius: 3px;
+}
+
+.qualifier {
+  display: inline-block;
+  font-size: 0.65rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  padding: 0.08rem 0.4rem; border-radius: 3px;
+  margin-left: 0.25rem; vertical-align: 1px;
+}
+.qualifier.uncond { background: #dcfce7; color: #166534; }
+.qualifier.gate { background: #fef3c7; color: #92400e; }
+
+.annot-row { margin-top: 0.85rem; font-size: 0.85rem; }
+.annot-row .annot-label {
+  display: inline-block; font-weight: 700; font-size: 0.68rem;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--color-text-muted); margin-right: 0.4rem;
+}
+
+/* Cross-concept observations */
+.observations {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin-top: 1.5rem;
+}
+.observations h3 { margin-top: 0; }
+.observations h4 {
+  font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--color-text-muted); margin-top: 1.25rem; margin-bottom: 0.4rem;
+}
+.observations ul { font-size: 0.9rem; }
+.observations code {
+  background: #1e293b; color: #e2e8f0; font-size: 0.78rem;
+}
+
+/* ============================================================
+   Concept colors (§3 map + §4)
+   ============================================================ */
+:root {
+  --c-arc: #2563eb;
+  --c-tae: #ea580c;
+  --c-gf: #16a34a;
+  --c-helion: #9333ea;
+}
+
+/* Trace stage strip */
+.trace-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.5rem;
+  margin: 0.75rem 0 1rem;
+}
+.ts-stage {
+  background: var(--color-surface);
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  border-left: 3px solid var(--stage1);
+}
+.ts-stage.s2 { border-left-color: var(--stage2); background: var(--stage2-bg); }
+.ts-stage.s3 { border-left-color: var(--stage3); background: var(--stage3-bg); }
+.ts-stage.s4 { border-left-color: var(--stage4); background: var(--stage4-bg); }
+.ts-stage .ts-label { display: block; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; margin-bottom: 0.25rem; }
+.ts-stage.s2 .ts-label { color: var(--stage2); }
+.ts-stage.s3 .ts-label { color: var(--stage3); }
+.ts-stage.s4 .ts-label { color: var(--stage4); }
+.ts-stage .ts-factors { font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-text-muted); }
+
+/* ============================================================
+   Map matrix
+   ============================================================ */
+.map-wrap { margin: 1rem 0 0.5rem; overflow-x: auto; }
+.map-matrix {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.7fr) repeat(4, minmax(78px, 1fr));
+  gap: 1px;
+  background: #d4d4d8;
+  border: 1px solid #d4d4d8;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  min-width: 640px;
+}
+.mm-matrix-2col {
+  grid-template-columns: minmax(220px, 1.7fr) repeat(2, minmax(110px, 1fr));
+}
+.mm-corner { background: var(--color-bg); }
+.mm-header {
+  background: var(--color-bg);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 0.55rem 0.4rem;
+  border-bottom: 2px solid var(--color-text);
+}
+.mm-header.arc { color: var(--c-arc); }
+.mm-header.tae { color: var(--c-tae); }
+.mm-header.gf { color: var(--c-gf); }
+.mm-header.helion { color: var(--c-helion); }
+.mm-header small { display: block; font-size: 0.62rem; font-weight: 500; color: var(--color-text-light); margin-top: 0.15rem; }
+
+.mm-section {
+  grid-column: 1 / -1;
+  background: var(--color-fail);
+  color: #fff;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 700;
+  padding: 0.4rem 0.75rem;
+}
+.mm-section.lev { background: var(--color-lev); }
+.mm-row-label {
+  background: var(--color-surface);
+  padding: 0.5rem 0.7rem;
+  display: flex; flex-direction: column; justify-content: center;
+  line-height: 1.3;
+}
+.mm-row-label .mm-code { font-family: var(--font-mono); font-size: 0.7rem; color: var(--color-text-light); margin-bottom: 0.1rem; }
+.mm-row-label .mm-desc { color: var(--color-text); font-weight: 500; font-size: 0.8rem; }
+
+.mm-cell {
+  background: var(--color-surface);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: 44px;
+  padding: 0.3rem;
+  text-align: center;
+}
+.mm-cell.absent-by-design { background: #f8fafc; }
+.mm-dot {
+  display: inline-block;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.mm-dot.arc { background: var(--c-arc); }
+.mm-dot.tae { background: var(--c-tae); }
+.mm-dot.gf { background: var(--c-gf); }
+.mm-dot.helion { background: var(--c-helion); }
+.mm-dot.s2 { background: var(--stage2); }
+.mm-dot.s3 { background: var(--stage3); }
+.mm-dot.s4 { background: var(--stage4); }
+.mm-dot.cross { background: #475569; }
+.mm-dot.outlined { background: transparent; border: 2.5px solid; }
+.mm-dot.outlined.arc { border-color: var(--c-arc); }
+.mm-dot.outlined.tae { border-color: var(--c-tae); }
+.mm-dot.outlined.gf { border-color: var(--c-gf); }
+.mm-dot.outlined.helion { border-color: var(--c-helion); }
+.mm-dot.outlined.s2 { background: transparent; border-color: var(--stage2); }
+.mm-dot.outlined.s3 { background: transparent; border-color: var(--stage3); }
+.mm-dot.outlined.s4 { background: transparent; border-color: var(--stage4); }
+.mm-dot.outlined.cross { background: transparent; border-color: #475569; }
+.mm-dots { display: inline-flex; gap: 4px; align-items: center; justify-content: center; flex-wrap: wrap; }
+.mm-absent { color: #cbd5e1; font-size: 1.2rem; font-weight: 500; line-height: 1; }
+.mm-band {
+  font-size: 0.62rem; color: var(--color-text-muted);
+  line-height: 1.15; margin-top: 3px;
+  font-family: var(--font-mono);
+}
+
+.mm-legend {
+  display: flex; flex-wrap: wrap; gap: 1rem 1.25rem;
+  font-size: 0.78rem; margin: 0.5rem 0 1.5rem;
+  align-items: center; color: var(--color-text-muted);
+}
+.mm-legend-item { display: inline-flex; align-items: center; gap: 0.35rem; }
+.mm-legend-item .mm-dot { width: 12px; height: 12px; border-width: 2px; }
+
+/* What the map surfaces */
+.surfaces { margin: 1rem 0 1.5rem; }
+.surface-block {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 4px;
+  padding: 0.7rem 1rem;
+  margin-bottom: 0.55rem;
+  font-size: 0.9rem;
+}
+.surface-block strong { display: block; font-size: 1rem; margin-bottom: 0.1rem; }
+.surface-block .surface-cue {
+  display: inline-block; font-size: 0.7rem;
+  color: var(--color-accent); margin-top: 0.35rem;
+  padding: 0.15rem 0.5rem; background: var(--color-accent-light); border-radius: 10px;
+}
+
+/* ============================================================
+   §4 mini-matrix + stage strip
+   ============================================================ */
+.concept-stage-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+  margin: 0.5rem 0 0.75rem;
+}
+.css-stage {
+  border-radius: 4px;
+  padding: 0.45rem 0.55rem;
+  font-size: 0.72rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--stage1);
+}
+.css-stage.s2 { border-left-color: var(--stage2); }
+.css-stage.s3 { border-left-color: var(--stage3); }
+.css-stage.s4 { border-left-color: var(--stage4); }
+.css-stage .css-label {
+  display: block; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.06em;
+  font-weight: 700; color: var(--color-text-muted); margin-bottom: 0.25rem;
+}
+.css-stage.s2 .css-label { color: var(--stage2); }
+.css-stage.s3 .css-label { color: var(--stage3); }
+.css-stage.s4 .css-label { color: var(--stage4); }
+.css-row { display: flex; align-items: center; gap: 0.35rem; padding: 0.1rem 0; }
+.css-row .css-key {
+  font-size: 0.62rem; min-width: 1.1rem;
+  font-weight: 700; text-transform: uppercase;
+}
+.css-row.failures .css-key { color: var(--color-fail); }
+.css-row.leverages .css-key { color: var(--color-lev); }
+.css-bars { display: flex; gap: 2px; flex-wrap: wrap; }
+.css-bar { width: 9px; height: 9px; border-radius: 2px; }
+.css-bar.failure { background: var(--color-fail); }
+.css-bar.leverage { background: var(--color-lev); }
+.css-bar.outlined { background: transparent; border: 1.5px solid; }
+.css-bar.failure.outlined { border-color: var(--color-fail); }
+.css-bar.leverage.outlined { border-color: var(--color-lev); }
+
+/* Annotation badges */
+.annot-badges {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+  margin: 0.6rem 0 0.5rem;
+}
+.annot-badge {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  font-size: 0.72rem; padding: 0.2rem 0.55rem;
+  border-radius: 12px;
+  background: var(--color-bg); border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+.annot-badge.warn { background: #fef3c7; border-color: #fcd34d; color: #92400e; }
+.annot-badge.absence { background: var(--stage1-bg); border-color: var(--stage1-border); color: var(--stage1); }
+.annot-badge.fallback { background: var(--stage3-bg); border-color: var(--stage3-border); color: var(--stage3); }
+.annot-badge.carrier { background: var(--color-fail-bg); border-color: var(--color-fail-border); color: var(--color-fail); }
+
+/* Full record details */
+details.full-record {
+  margin-top: 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+details.full-record summary {
+  font-size: 0.78rem; font-weight: 600;
+  padding: 0.45rem 0.7rem;
+  cursor: pointer;
+  color: var(--color-accent);
+  list-style: none;
+  display: flex; align-items: center; gap: 0.4rem;
+}
+details.full-record summary::before {
+  content: '\25B6'; font-size: 0.55rem; transition: transform 0.15s;
+}
+details.full-record[open] summary::before { transform: rotate(90deg); }
+details.full-record .full-body { padding: 0.5rem 0.85rem 0.75rem; border-top: 1px solid var(--color-border); }
+
+/* Annotated comparison overlay */
+.map-callouts {
+  margin: 0.75rem 0 1.25rem;
+  display: grid; gap: 0.5rem;
+}
+.callout-pin {
+  background: #fefce8;
+  border-left: 3px solid #ca8a04;
+  border-radius: 0 4px 4px 0;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+}
+.callout-pin strong { color: #854d0e; }
+
+/* Mini-matrix headings */
+.concept-panel h4.subhead {
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--color-text-muted); margin-top: 1rem; margin-bottom: 0.35rem;
+}
+
+/* ============================================================
+   §5 Outcome cards
+   ============================================================ */
+.outcomes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.25rem 0 1rem;
+}
+@media (max-width: 800px) { .outcomes-grid { grid-template-columns: 1fr; } }
+
+.outcome-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 4px solid var(--stage1);
+  border-radius: 8px;
+  padding: 1.1rem 1.25rem;
+  display: flex; flex-direction: column;
+}
+.outcome-card.s2 { border-top-color: var(--stage2); }
+.outcome-card.s3 { border-top-color: var(--stage3); }
+.outcome-card.s4 { border-top-color: var(--stage4); }
+
+.outcome-card .oc-header {
+  display: flex; align-items: baseline; gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+.outcome-card .oc-num {
+  font-size: 0.72rem; font-weight: 700;
+  color: var(--color-text-light);
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+.outcome-card.s2 .oc-num { color: var(--stage2); }
+.outcome-card.s3 .oc-num { color: var(--stage3); }
+.outcome-card.s4 .oc-num { color: var(--stage4); }
+.outcome-card strong { font-size: 1.0rem; font-weight: 700; }
+.outcome-card p {
+  font-size: 0.9rem; margin-bottom: 0.75rem;
+  color: var(--color-text-muted);
+  flex: 1;
+}
+.outcome-card .oc-cue {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: var(--color-accent);
+  background: var(--color-accent-light);
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  text-decoration: none;
+  margin-top: auto;
+}
+.outcome-card .oc-cue:hover { text-decoration: underline; }
+
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h1>Down-selection</h1>
+      <div class="subtitle">Choosing fusion concepts for deep-dive analysis</div>
+    </div>
+    <nav>
+      <a href="#journey"><span class="nav-num">1</span>Journey</a>
+      <a href="#evidence"><span class="nav-num">2</span>Evidence by stage</a>
+      <a href="#method"><span class="nav-num">3</span>The method</a>
+      <a href="#examples"><span class="nav-num">4</span>Worked examples</a>
+      <a href="#outcomes"><span class="nav-num">5</span>Outcome goals</a>
+    </nav>
+    <div class="sidebar-footer">Fusion TEA · methodology explainer</div>
+  </aside>
+
+  <main class="main">
+
+<!-- ============================================================
+     SECTION 1 — JOURNEY
+     ============================================================ -->
+<section id="journey">
+  <h2><span class="section-num">1.</span>From physics to cheap electricity</h2>
+  <p class="lead">No energy technology goes straight from physics demonstration to competitive cost. The path has four distinct stages, and each one kills technologies for different reasons.</p>
+
+  <div class="pipeline">
+    <div class="pipeline-card s1">
+      <div class="pc-stage">Stage 1</div>
+      <div class="pc-name">Physics proof</div>
+      <div class="pc-q">Does it produce net energy?</div>
+      <div class="pc-meta">
+        <div><span class="pc-label">Plants:</span> 0</div>
+        <div><span class="pc-label">Premium paid by:</span> Government R&amp;D, private R&amp;D capital</div>
+      </div>
+    </div>
+    <div class="pipeline-card s2">
+      <div class="pc-stage">Stage 2</div>
+      <div class="pc-name">First plant</div>
+      <div class="pc-q">Can a plant be built at <em>any</em> cost?</div>
+      <div class="pc-meta">
+        <div><span class="pc-label">Plants:</span> 1–3</div>
+        <div><span class="pc-label">Premium paid by:</span> Sovereign buyers, manufacturer loss-leaders</div>
+      </div>
+    </div>
+    <div class="pipeline-card s3">
+      <div class="pc-stage">Stage 3</div>
+      <div class="pc-name">Chasm crossing</div>
+      <div class="pc-q">Can real buyers finance a small fleet?</div>
+      <div class="pc-meta">
+        <div><span class="pc-label">Plants:</span> 5–20</div>
+        <div><span class="pc-label">Premium paid by:</span> Corporate anchors, policy-created markets</div>
+      </div>
+    </div>
+    <div class="pipeline-card s4">
+      <div class="pc-stage">Stage 4</div>
+      <div class="pc-name">Learning curve</div>
+      <div class="pc-q">Does cost descend with deployment?</div>
+      <div class="pc-meta">
+        <div><span class="pc-label">Plants:</span> 20+</div>
+        <div><span class="pc-label">Premium paid by:</span> Nobody — must compete unsubsidized</div>
+      </div>
+    </div>
+  </div>
+
+  <p>Every fusion concept must navigate this journey. But different concepts face their material risks at different stages. A compact HTS tokamak's biggest risks live at Stage 2 and Stage 3: can a $12B+ first plant get financed, can REBCO and tritium supply chains scale, can factory modularity deliver real learning at Stage 4? A beam-driven aneutronic FRC carries a long Stage-1 timeline note (the commercial plasma regime has never been measured) and a Stage-2 supply-class gap (no commercial 250&nbsp;keV NBI driver exists at fusion scale). A large stellarator might pass Stages 1–2 but die at Stage 3: can anyone replicate a $10B one-of-a-kind facility?</p>
+
+  <p>History is unambiguous on one point: no capital-intensive generation technology has reached commercial success without passing through every stage, and no technology has passed through every stage in less than 15–40 years. Solar PV took ~35 years from first terrestrial deployment to grid parity. Onshore wind took ~25 years. Nuclear fission never got there in most markets — it failed at Stage 4. (Nemet 2006; Grubler 2010; IRENA 2013; Lovering et al. 2016)</p>
+
+  <p>The portfolio logic follows directly from what the historical evidence says about <em>why</em> technologies die at each stage (Section&nbsp;2). We don't know which stages will prove hardest for fusion, or which structural features will matter most. An investor facing this uncertainty picks five concepts that take <em>structurally different bets</em> on the journey. If one concept's bet fails, another's might succeed precisely because it was betting on a different mechanism. The portfolio is informative because the bets are uncorrelated.</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- ============================================================
+     SECTION 2 — EVIDENCE BY STAGE
+     ============================================================ -->
+<section id="evidence">
+  <h2><span class="section-num">2.</span>What history teaches about each stage</h2>
+  <p class="lead">At each stage, historical precedent tells us which structural features predict survival and which predict failure. The findings below come from cross-technology studies of solar, nuclear, Li-ion, wind, and gas turbine cost trajectories.</p>
+
+  <div class="stage-block s1">
+    <span class="stage-tag">Stage 1 · Physics proof</span>
+    <h3>Why we don't gate on physics</h3>
+    <p>Stage 1 — "does the physics produce net energy?" — is recorded as a timeline note, not evaluated as a failure mode. We lack the expertise to adjudicate competing physics claims, and we are not in the business of picking concepts on physics. What we record per concept is current maturity (Q achieved, integrated-system demonstrations), distance to a Stage-2-ready commercial regime, and the supporting context (physics-paradigm co-development, scientific heritage, workforce depth). A compact HTS tokamak whose paradigm draws on ITER, JET, JT-60, and multiple private programs is on a shorter timeline than a beam-driven FRC whose commercial regime has never been measured. The timeline note rides alongside the Stage 2–4 assessment as descriptive context — it does not feed any tag, score, or selection rule.</p>
+  </div>
+
+  <div class="stage-block s2">
+    <span class="stage-tag">Stage 2 · First plant</span>
+    <h3>What kills technologies at the first plant</h3>
+    <p>Two intrinsic features dominate.</p>
+    <p><strong>Capital cost of the minimum viable plant (F2.a).</strong> Above ~$5B, the buyer pool shrinks to sovereigns and hyperscaler consortia. Very small units (&lt;$1B) widen the pool but may require multi-unit deployment to reach first-electricity scale. (OECD NEA 2020; NuScale's 12-pack pattern)</p>
+    <p><strong>Build-time risk (F2.b).</strong> A 7+ year build with regulatory ratcheting roughly doubles costs by itself. US nuclear construction times grew from 7 years (1971) to 12 years (1980), driving the negative learning curve. (Eash-Gates et al. 2020, <em>Joule</em>)</p>
+    <p>Intrinsic features aren't the whole story. A concept's relationship to its <em>ecosystem</em> also matters at Stage 2.</p>
+    <ul>
+      <li><strong>Regulatory framework (F2.c).</strong> Does a fit-for-purpose regulatory pathway exist? The NRC's February 2026 fusion framework (Part 30, distinct from Part 50/52) is a structural advantage for all fusion over fission — and aneutronic concepts may face even lighter treatment. (NRC 2026)</li>
+      <li><strong>Component supply (F2.d).</strong> Do critical components have an existing external supply, or must the concept build its own? CFS vertically integrated REBCO tape manufacturing; concepts using commodity copper coils inherit an existing supply chain (Wang et al. 2022). A second supply shape matters here: some concepts need a <em>supply class that doesn't exist at commercial scale at all</em> — TAE's 250&nbsp;keV proton NBI driver, Zap's pulsed-power supply at fleet scale. This capability-class gap is structurally distinct from the quantity-scaling gap of REBCO. Capability-class gaps cannot be addressed by riding someone else's learning curve, because no one else's curve runs through the right operating regime.</li>
+      <li><strong>Crossover platforms (E2.a) and intra-fusion early-mover effects (E2.b).</strong> Some concepts' component R&amp;D has defense, industrial, or grid applications that attract non-fusion investment to the FOAK. Pacific Fusion's implosion tech has defense applications; CFS's HTS magnets have grid/transport/MRI applications. This lowers effective FOAK financing cost via non-fusion revenue. (Kavlak et al. 2018 on solar's semiconductor ride-along)</li>
+    </ul>
+    <p><strong>Historical analogy.</strong> The nuclear FOAK era. Shippingport (1957) was 100% government-financed with a 50% cost overrun. GE and Westinghouse then offered 13 fixed-price turnkey contracts, absorbing ~$1B in combined losses — the manufacturer loss-leader wedge. Today's fusion parallel: CFS has raised ~$3B and may be implicitly following the same playbook. The Google/CFS PPA represents a newer wedge type — corporate anchor customer — that didn't exist for nuclear. (Grubler 2010)</p>
+  </div>
+
+  <div class="stage-block s3">
+    <span class="stage-tag">Stage 3 · Chasm crossing</span>
+    <h3>What kills technologies at the chasm</h3>
+    <p>The chasm is where the premium must shift from strategic and sovereign buyers to real commercial buyers. Four features predict whether a concept crosses it.</p>
+    <p><strong>Site-specialization fraction (F3.b).</strong> Site-built work is where megaproject cost disease lives. Labor productivity at recent US nuclear sites is 3–4× slower for steel and 8–13× slower for concrete than industry expectations. Concepts that are mostly "ship-and-install" diverge structurally from concepts that are mostly "build-on-site." (Eash-Gates et al. 2020; Flyvbjerg 2014, 2021)</p>
+    <p><strong>Replication unit size (F3.c).</strong> Can a single buyer commit to enough units to drive a learning round? At 1.5&nbsp;GW/unit, three plants is a $20B commitment. At 50&nbsp;MWe/unit, twelve plants is feasible for a hyperscaler data-center contract.</p>
+    <p><strong>Supply-chain maturity at fleet scale (F3.a).</strong> The key distinction: does the concept ride supply chains that already exist and scale for non-fusion reasons (the solar silicon/glass/aluminum pattern), or must it build its own (the nuclear specialty-qualification pattern)? The former gets external-market learning-curve discounts for free. Where supply dynamics matter, the distinction between <em>slack</em> (external supply has headroom for fusion demand) and <em>bottleneck</em> (combined demand strains the supply ceiling) is critical. Solar's silicon stayed slack through its chasm crossing; fusion's REBCO at fleet scale could go either way. (Nemet 2006; OECD NEA 2020)</p>
+    <p><strong>Regulatory amortization (F3.d).</strong> Can the second plant use the first plant's licensing work? Standardized designs with repeatable licensing amortize regulatory cost across the fleet. Site-specific, bespoke designs re-pay full regulatory cost each time — the chasm holds.</p>
+
+    <h4>No concept crosses the chasm alone</h4>
+    <p>A concept doesn't cross the chasm alone — and this is one of the most non-obvious features of the fusion landscape. ~8 fusion concepts need REBCO; ~8 need cryogenic target fabrication; ~4 need pulsed-power capacitors. The first concept to ship in each cohort builds supply-chain capability that later concepts inherit (the intra-fusion cohort effects sit at E3.a and E3.b). SPARC's REBCO winding capability becomes available to ARC and every other HTS-tokamak concept; ARC's FLiBe handling becomes available to MagLIF.</p>
+    <p>Beyond components, concepts in large shared-problem cohorts — FLiBe tritium extraction, high-heat-flux divertors, HTS quench protection — move faster than concepts with bespoke sub-problems, because R&amp;D solving a challenge for one concept benefits all concepts sharing that challenge. This fleet-level effect is invisible to single-concept analysis, and it recurs at every stage: at Stage 2, an earlier-shipping concept builds the supply chain a later concept's FOAK will use; at Stage 3, combined fusion demand drives scale-up faster than any single concept could; at Stage 4, shared-problem R&amp;D amortizes across the cohort. A concept's position in its co-development cohort — first mover vs. fast follower, large cohort vs. isolated — is a structural feature of its commercialization path.</p>
+  </div>
+
+  <div class="stage-block s4">
+    <span class="stage-tag">Stage 4 · Learning curve</span>
+    <h3>What kills technologies on the learning curve</h3>
+    <p>This is where the concept must compete on unsubsidized cost. The evidence base here is strongest and most sobering for fusion.</p>
+
+    <div class="base-rate-callout">
+      <strong>The base rate is bad news.</strong> The best empirical prediction for fusion's experience rate is <strong>~5%</strong> — far below the 8–20% assumed in most fusion TEA literature. Tang &amp; Schmidt (2025, <em>Nature Energy</em>) applied the Malhotra &amp; Schmidt complexity-customization typology to fusion via expert elicitation: MFE design complexity rated 6.8/7, LFE 6.4/7, both exceeding nuclear fission (6/7). This places fusion firmly in "Type 3" (complex, customized), alongside nuclear and CCS, with median experience rates of 0–5%. This is the number every concept's learning story must beat — and the reason a portfolio approach matters. If the base rate holds, the only concepts that reach competitive cost are those whose structural features give them access to learning mechanisms that Type 3 technologies normally lack. (Tang &amp; Schmidt 2025; Malhotra &amp; Schmidt 2020, <em>Joule</em>)
+    </div>
+
+    <p><strong>Unit granularity is the single strongest predictor</strong> of learning rate (R² = 0.33, Wilson et al. 2020, <em>Science</em>). Technologies with billions of identical small units (solar modules, battery cells) show 20–33% learning rates. Technologies with hundreds of large units (nuclear, CCGT) show 0–5%. Fusion plants sit at the extreme "lumpy" end of this spectrum.</p>
+
+    <p><strong>The number of independent cost-reduction knobs (F4.a) matters.</strong> Solar PV had 6+ independent mechanisms each accounting for &gt;10% of its cost decline (Kavlak et al. 2018, <em>Energy Policy</em>). Nuclear had few. The more independent knobs, the less likely improvement stalls when one mechanism is exhausted.</p>
+
+    <p><strong>Volume-driven vs. R&amp;D-driven learning are different paths (F4.b).</strong> Solar PV descends via volume (Wright's Law). Gas turbines descend via R&amp;D — learning-by-researching rate of 17.7% vs. learning-by-doing rate of 0.65% (Colpier &amp; Cornland 2002). Different concept architectures need different pathways. A volume-driven story for an inherently low-unit-count concept fails; an R&amp;D-driven story for a "many cheap modules" concept fails differently.</p>
+
+    <p><strong>Modularity imposes a cost penalty that only manufacturing volume can offset (F4.d).</strong> SMR OCC is ~70% greater by size alone; that penalty is offset only when manufacturing-volume learning accumulates across enough units. The crossover point is concept-specific. NuScale demonstrated that over-modularization can fail before the crossover is reached. (OECD NEA 2020; Mignacca &amp; Locatelli 2020)</p>
+
+    <h4>The winners-vs-stallers pattern</h4>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Feature</th><th>Winners (Solar, Li-ion)</th><th>Stallers (Nuclear LWR)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Standardized identical units</td><td>Yes</td><td>No (bespoke)</td></tr>
+          <tr><td>Factory-manufacturable</td><td>Yes</td><td>No (site-built)</td></tr>
+          <tr><td>Small unit size enabling volume</td><td>Yes (watts, cells)</td><td>No (GW-scale)</td></tr>
+          <tr><td>Multiple cost-reduction knobs</td><td>Yes (6+)</td><td>Few</td></tr>
+          <tr><td>Commodity materials</td><td>Yes (silicon, glass, aluminum)</td><td>Mixed (nuclear-grade)</td></tr>
+          <tr><td>Global competitive supply chain</td><td>Yes (China competition)</td><td>No (national, regulated)</td></tr>
+          <tr><td>Short project cycle</td><td>Weeks to months</td><td>7–15 years</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Fusion concepts vary across these features. Some (compact tokamaks, FRC, Z-pinch) sit closer to the solar end: small, potentially factory-built, modular. Others (ITER-class tokamaks, large stellarators, heavy-ion IFE) sit closer to the nuclear end: large, site-built, bespoke. The portfolio should include concepts from both ends — and from the middle — because we don't yet know which learning mechanism will prove dominant for fusion.</p>
+  </div>
+
+  <div class="coda">
+    <h4>Cross-stage effects</h4>
+    <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">Some factors aren't stage-specific — they recur across the journey with different bite at each stage.</p>
+    <ul style="font-size: 0.88rem; margin-bottom: 0;">
+      <li><strong>Tritium / Li-6 / Be supply</strong> — Stage 2: kg-scale availability for startup. Stage 3: scaled breeding before fleet. Stage 4: 100% self-sufficiency at fleet scale.</li>
+      <li><strong>First-wall / divertor / blanket lifetime</strong> — Stage 2: survives long enough to demonstrate. Stage 3: replacement frequency drives availability and O&amp;M. Stage 4: replacement is a recurring capex line.</li>
+      <li><strong>HTS conductor cost trajectory</strong> — Stage 2: REBCO needed at all. Stage 3: scale-up to fleet. Stage 4: $/kA-m must reach a defensible floor.</li>
+      <li><strong>Non-fusion industry co-development</strong> — At every stage, concepts whose critical components serve non-fusion markets get R&amp;D and supply-chain investment they didn't have to pay for.</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ============================================================
+     SECTION 3 — THE METHOD
+     ============================================================ -->
+<section id="method">
+  <h2><span class="section-num">3.</span>How we think about portfolio choice</h2>
+  <p class="lead">The method has three steps: <strong>trace</strong>, <strong>record</strong>, <strong>map</strong>.</p>
+
+  <div class="method-step">
+    <h3><span class="step-num">1</span> Trace</h3>
+    <p>For each candidate, walk Stages 2, 3, and 4. At each stage, assess every factor with its pole (failure or leverage) and qualifier (slack / bottleneck / capability-gap). Subline factors like F2.d wherever a concept uses more than one critical component. Stage 1 enters as a timeline note — we don't adjudicate physics.</p>
+    <div class="trace-strip">
+      <div class="ts-stage s2"><span class="ts-label">Stage 2 · FOAK</span><span class="ts-factors">F2.a · F2.b · F2.c · F2.d · E2.a · E2.b</span></div>
+      <div class="ts-stage s3"><span class="ts-label">Stage 3 · Chasm</span><span class="ts-factors">F3.a · F3.b · F3.c · F3.d · E3.a · E3.b</span></div>
+      <div class="ts-stage s4"><span class="ts-label">Stage 4 · Curve</span><span class="ts-factors">F4.a · F4.b · F4.c · F4.d · E4.a</span></div>
+    </div>
+  </div>
+
+  <div class="method-step">
+    <h3><span class="step-num">2</span> Record</h3>
+    <p>Each consequential entry carries a structured tag and a one-line rationale. Each leverage is marked <strong>unconditional</strong> or <strong>gate-conditional</strong>. Two optional annotation slots — <em>architecture fallback</em> and <em>structural absences</em> — capture decision-relevant features the tags can't.</p>
+    <div class="tag-format">
+      <span class="label">Form</span><code>&lt;factor-code&gt;[-&lt;subline&gt;]/&lt;descriptor&gt;</code>
+      <br><span class="label">Example</span><code>F2.d-REBCO/external-market-pull-slack</code> <span class="qualifier uncond">unconditional</span>
+    </div>
+  </div>
+
+  <div class="method-step">
+    <h3><span class="step-num">3</span> Map</h3>
+    <p>Lay all the records side by side. Failure-mode types form the top rows, leverage types the bottom rows; concepts are the columns. Cells show which concept carries which factor.</p>
+  </div>
+
+  <h3>The map · four concepts traced</h3>
+  <p style="font-size: 0.92rem; margin-bottom: 0.5rem;">Each column is a concept. Rows are grouped by underlying mechanism: failure-mode mechanisms on top, leverage mechanisms below. Dot color encodes which stage carries the entry (<span style="color: var(--stage2); font-weight: 700;">Stage 2</span> · <span style="color: var(--stage3); font-weight: 700;">Stage 3</span> · <span style="color: var(--stage4); font-weight: 700;">Stage 4</span>). A mechanism that bites at multiple stages shows multiple dots in the same cell — that's a cross-stage carrier read at a glance.</p>
+
+  <div class="map-wrap">
+  <div class="map-matrix" role="table" aria-label="Cross-concept map">
+    <div class="mm-corner"></div>
+    <div class="mm-header arc">ARC<small>HTS tokamak</small></div>
+    <div class="mm-header tae">TAE<small>p-B11 FRC</small></div>
+    <div class="mm-header gf">GF<small>MTF pneumatic</small></div>
+    <div class="mm-header helion">Helion<small>D-He3 FRC</small></div>
+
+    <div class="mm-section">Failure-mode mechanisms</div>
+
+    <div class="mm-row-label"><span class="mm-code">F2.a</span><span class="mm-desc">FOAK financing magnitude</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span></span><span class="mm-band">$5–15B</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span></span><span class="mm-band">$1–5B</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span></span><span class="mm-band">$5–10B hi case</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span></span><span class="mm-band">$1–5B</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F2.b</span><span class="mm-desc">Build-time risk (reg-ratchet zone)</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span></span><span class="mm-band">7+ yr</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span></span><span class="mm-band">5–7 yr</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F2.d → F3.a → F4.c</span><span class="mm-desc">Fuel-cycle inputs (no external market) — carrier across stages</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span><span class="mm-dot s3"></span><span class="mm-dot s4"></span></span><span class="mm-band">D-T (T·Li-6·Be·FLiBe)</span></div>
+    <div class="mm-cell absent-by-design"><span class="mm-absent">⊘</span><span class="mm-band">aneutronic</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span><span class="mm-dot s3"></span><span class="mm-dot s4"></span></span><span class="mm-band">D-T (T·Li-6)</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span><span class="mm-dot s3"></span><span class="mm-dot s4"></span></span><span class="mm-band">He-3 cycle</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F2.d → F3.a (→ F4.c)</span><span class="mm-desc">Driver capability-gap (no commercial supply class) — carrier across stages</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span><span class="mm-dot s3"></span></span><span class="mm-band">250 keV NBI</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span><span class="mm-dot s3"></span><span class="mm-dot s4"></span></span><span class="mm-band">1 Hz pneumatic</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span><span class="mm-dot s3"></span><span class="mm-dot s4"></span></span><span class="mm-band">$0.50/J cap</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F3.a</span><span class="mm-desc">REBCO trajectory (failure-pole-at-chasm)</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s3"></span></span><span class="mm-band">fleet bottleneck</span></div>
+    <div class="mm-cell absent-by-design"><span class="mm-absent">⊘</span><span class="mm-band">no HTS</span></div>
+    <div class="mm-cell absent-by-design"><span class="mm-absent">⊘</span><span class="mm-band">no HTS</span></div>
+    <div class="mm-cell absent-by-design"><span class="mm-absent">⊘</span><span class="mm-band">no HTS</span></div>
+
+    <div class="mm-section lev">Leverage mechanisms</div>
+
+    <div class="mm-row-label"><span class="mm-code">F2.d + F4.c</span><span class="mm-desc">REBCO external-market pull</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span><span class="mm-dot s4"></span></span><span class="mm-band">slack → dominant</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+    <div class="mm-cell absent-by-design"><span class="mm-absent">⊘</span></div>
+    <div class="mm-cell absent-by-design"><span class="mm-absent">⊘</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F2.d (→ F3.a → F4.c)</span><span class="mm-desc">Commodity magnets / BOP supply</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span></span><span class="mm-band">Cu coils</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span><span class="mm-dot s3"></span><span class="mm-dot s4"></span></span><span class="mm-band">Cu + ~50% steam BOP</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span></span><span class="mm-band">Al coils</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">E2.a + E4.a</span><span class="mm-desc">Crossover platform (non-fusion + architecture-proof)</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span></span><span class="mm-band">HTS grid/MRI</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span><span class="mm-dot outlined s4"></span></span><span class="mm-band">defense pulsed-power · direct conversion</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">E2.b + E3.a / E3.b</span><span class="mm-desc">Intra-fusion cohort (early-mover + shared supply / sub-problems)</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot outlined s2"></span><span class="mm-dot s3"></span></span><span class="mm-band">SPARC pre-build → ~8 REBCO</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot outlined s3"></span></span><span class="mm-band">~3 pulsed-power</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F2.c + F3.d</span><span class="mm-desc">Regulatory pathway (Part-30 fit + standardized amortization)</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot outlined s3"></span></span><span class="mm-band">F3.d gate-cond only</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span><span class="mm-dot s3"></span></span><span class="mm-band">aneutronic+ → cleanest</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot outlined s3"></span></span><span class="mm-band">F3.d gate-cond only</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s2"></span><span class="mm-dot s3"></span></span><span class="mm-band">low-tritium → modular</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F4.c</span><span class="mm-desc">External-market-dominant cost floor (leverage pole)</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s4"></span></span><span class="mm-band">REBCO</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s4"></span></span><span class="mm-band">B-11</span></div>
+    <div class="mm-cell"><span class="mm-dots"><span class="mm-dot s4"></span></span><span class="mm-band">steam BOP</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+  </div>
+  </div>
+
+  <div class="mm-legend">
+    <span class="mm-legend-item"><span class="mm-dot s2"></span>Stage 2 entry</span>
+    <span class="mm-legend-item"><span class="mm-dot s3"></span>Stage 3 entry</span>
+    <span class="mm-legend-item"><span class="mm-dot s4"></span>Stage 4 entry</span>
+    <span class="mm-legend-item"><span class="mm-dot outlined s3"></span>gate-conditional</span>
+    <span class="mm-legend-item"><span class="mm-absent" style="color:#94a3b8;">⊘</span> structural absence</span>
+    <span class="mm-legend-item"><span class="mm-absent" style="color:#cbd5e1;">·</span> not consequential</span>
+  </div>
+
+  <p style="font-size: 0.88rem; color: var(--color-text-muted);">A concept appears in every row whose mechanism its record carries. Multi-dot cells are cross-stage carriers — one mechanism biting at multiple stages. Empty rows identify concepts free of that failure; empty columns identify leverages no concept in the set yet holds. Coverage, uniqueness, and absence read off the page.</p>
+
+  <p style="font-size: 0.92rem; margin-top: 1.25rem;">What the methodology is built to illuminate — the classes of insight that emerge once a population of records sits on the same map — is laid out in §5.</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- ============================================================
+     SECTION 4 — WORKED EXAMPLES
+     ============================================================ -->
+<section id="examples">
+  <h2><span class="section-num">4.</span>Two concepts traced</h2>
+  <p class="lead">ARC and TAE in the trace format. Each panel renders the concept's entry counts per stage, its annotation badges, and the full tagged record behind a "View full record" toggle. Four concepts have been traced overall (ARC, TAE, General Fusion, Helion); the map in §3 shows all four.</p>
+
+  <div class="examples">
+
+    <!-- ARC -->
+    <div class="concept-panel">
+      <h3>Example A — ARC <span class="concept-tag">compact HTS tokamak · CFS</span></h3>
+
+      <div class="timeline-note">
+        <strong>Stage 1 · Timeline note</strong>
+        Compact-tokamak physics draws on ITER, JET, JT-60, and multiple private programs. SPARC is expected to demonstrate Q&nbsp;&gt;&nbsp;1 in 2027–28. ARC's commercial plasma regime is a modest extrapolation from SPARC. Short timeline to Stage-2-ready.
+      </div>
+
+      <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0.4rem;">Dense failure record dominated by D-T fuel cycle; leverage record rides REBCO supply and intra-fusion cohort.</p>
+
+      <h4 class="subhead">Entry counts per stage</h4>
+      <div class="concept-stage-strip">
+        <div class="css-stage s2">
+          <span class="css-label">Stage 2</span>
+          <div class="css-row failures"><span class="css-key">F·5</span><div class="css-bars"><span class="css-bar failure"></span><span class="css-bar failure"></span><span class="css-bar failure"></span><span class="css-bar failure"></span><span class="css-bar failure"></span></div></div>
+          <div class="css-row leverages"><span class="css-key">L·3</span><div class="css-bars"><span class="css-bar leverage"></span><span class="css-bar leverage"></span><span class="css-bar leverage outlined"></span></div></div>
+        </div>
+        <div class="css-stage s3">
+          <span class="css-label">Stage 3</span>
+          <div class="css-row failures"><span class="css-key">F·4</span><div class="css-bars"><span class="css-bar failure"></span><span class="css-bar failure"></span><span class="css-bar failure"></span><span class="css-bar failure"></span></div></div>
+          <div class="css-row leverages"><span class="css-key">L·2</span><div class="css-bars"><span class="css-bar leverage outlined"></span><span class="css-bar leverage"></span></div></div>
+        </div>
+        <div class="css-stage s4">
+          <span class="css-label">Stage 4</span>
+          <div class="css-row failures"><span class="css-key">F·3</span><div class="css-bars"><span class="css-bar failure"></span><span class="css-bar failure"></span><span class="css-bar failure"></span></div></div>
+          <div class="css-row leverages"><span class="css-key">L·1</span><div class="css-bars"><span class="css-bar leverage"></span></div></div>
+        </div>
+      </div>
+
+      <div class="annot-badges">
+        <span class="annot-badge carrier">⤬ Failure carrier · D-T fuel cycle (S2→S3→S4)</span>
+        <span class="annot-badge carrier">⤬ Leverage carrier · HTS conductor</span>
+        <span class="annot-badge warn">⚠ No architecture fallback</span>
+      </div>
+
+      <details class="full-record">
+        <summary>View full record · 12 failure-mode tags, 6 leverage tags</summary>
+        <div class="full-body">
+
+      <div class="stage-section s2">
+        <span class="ss-header">Stage 2 · FOAK affordability</span>
+        <div class="entry-group failures">
+          <div class="eg-label">Consequential failure modes</div>
+          <ul class="entry-list failures">
+            <li><code>F2.a/above-$5B-financing</code> — ~$12.6B minimum-viable plant, above the threshold where the buyer pool shrinks to sovereigns and hyperscaler consortia. Without a strategic anchor or sovereign commitment, the FOAK is unbuildable.</li>
+            <li><code>F2.b/build-time-7-plus</code> — 7–10 years post-SPARC, inside the regulatory-ratcheting zone that doubled US nuclear costs in the 1970s.</li>
+            <li><code>F2.d-FLiBe/no-external-market</code> — No industrial base for FLiBe at fusion plant scale; CFS must internalize or develop suppliers.</li>
+            <li><code>F2.d-Be/constrained-single-source</code> — Constrained global supply, single-source-dominated; FOAK kg-scale demand competes with defense and electronics.</li>
+            <li><code>F2.d-tritium-Li6/no-external-market</code> — No commercial market beyond declining CANDU output; FOAK startup tritium must be sourced from a shrinking pool.</li>
+          </ul>
+        </div>
+        <div class="entry-group leverages">
+          <div class="eg-label">Consequential leverages</div>
+          <ul class="entry-list leverages">
+            <li><code>F2.d-REBCO/external-market-pull-slack</code><span class="qualifier uncond">unconditional</span> — REBCO at ~$20/m delivered in 2025, down from $36–198/m in 2014, driven by MRI/grid/accelerator demand. ARC's FOAK gets this benefit without paying for it.</li>
+            <li><code>E2.a/crossover-grid-MRI-transport</code><span class="qualifier uncond">unconditional</span> — HTS magnet R&amp;D has defense, grid, MRI, and transport applications that underwrite the REBCO gigafactory CFS is building. The gigafactory has a non-fusion revenue floor even if ARC stalls.</li>
+            <li><code>E2.b/intra-fusion-early-mover-REBCO</code><span class="qualifier gate">gate-conditional</span> — SPARC pre-builds REBCO winding capability that ARC inherits. Conditional on SPARC shipping.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="stage-section s3">
+        <span class="ss-header">Stage 3 · Chasm crossing</span>
+        <div class="entry-group failures">
+          <div class="eg-label">Consequential failure modes</div>
+          <ul class="entry-list failures">
+            <li><code>F3.a-REBCO/fleet-bottleneck-risk</code> — At fleet scale, ARC plus seven other fusion concepts plus growing non-fusion HTS demand compete for REBCO production capacity. Slack at FOAK; could tip to bottleneck at chasm.</li>
+            <li><code>F3.a-FLiBe/fleet-supply-absent</code> — Failure pole carries from Stage 2; the fleet needs scaled FLiBe supply that doesn't yet exist.</li>
+            <li><code>F3.a-Li6/fleet-enrichment-absent</code> — Fleet-scale lithium-6 enrichment is not in place.</li>
+            <li><code>F3.a-tritium/fleet-breeding-required</code> — Scaled tritium breeding is required before fleet rollout.</li>
+          </ul>
+        </div>
+        <div class="entry-group leverages">
+          <div class="eg-label">Consequential leverages</div>
+          <ul class="entry-list leverages">
+            <li><code>F3.d/standardized-amortization</code><span class="qualifier gate">gate-conditional</span> — Standardized ARC design plus SPARC precedent supports an amortizing licensing template. Conditional on SPARC clearing licensing without major rework.</li>
+            <li><code>E3.a/cohort-large-REBCO</code><span class="qualifier uncond">unconditional</span> — ~8 concepts need REBCO; combined fusion demand drives shared scale-up.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="stage-section s4">
+        <span class="ss-header">Stage 4 · Learning-curve descent</span>
+        <div class="entry-group failures">
+          <div class="eg-label">Consequential failure modes</div>
+          <ul class="entry-list failures">
+            <li><code>F4.c-FLiBe/no-external-market</code> — No external market; long-run cost floor bounded by what fusion deployment alone can drive.</li>
+            <li><code>F4.c-Li6/no-external-market</code> — Same shape as FLiBe.</li>
+            <li><code>F4.c-Be/external-market-spec-mismatch</code> — External demand is real but the fusion-grade specification may not benefit from it.</li>
+          </ul>
+        </div>
+        <div class="entry-group leverages">
+          <div class="eg-label">Consequential leverages</div>
+          <ul class="entry-list leverages">
+            <li><code>F4.c-REBCO/external-market-dominant</code><span class="qualifier uncond">unconditional</span> — At fleet scale, MRI + grid + transport HTS demand likely co-dominates fusion demand, which means the REBCO cost floor is not bounded by fusion deployment volume alone.</li>
+          </ul>
+        </div>
+      </div>
+
+        </div>
+      </details>
+    </div>
+
+    <!-- TAE -->
+    <div class="concept-panel">
+      <h3>Example B — TAE <span class="concept-tag">beam-driven FRC · p-B11 aneutronic</span></h3>
+
+      <div class="timeline-note">
+        <strong>Stage 1 · Timeline note</strong>
+        TAE has reached confinement TRL 5–6 on D-D (C-2W). p-B11 in magnetic confinement has never reached net energy at any scale. Da Vinci's commissioning campaign <em>is</em> the physics demonstration; no parallel national-lab or private program exists. Long, uncertain timeline to Stage-2-ready.
+      </div>
+
+      <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0.4rem;">Sparse record. Aneutronic operation eliminates all D-T sublines; the headline structural feature is the NBI driver capability-gap carrying across Stages 2–3.</p>
+
+      <h4 class="subhead">Entry counts per stage</h4>
+      <div class="concept-stage-strip">
+        <div class="css-stage s2">
+          <span class="css-label">Stage 2</span>
+          <div class="css-row failures"><span class="css-key">F·2</span><div class="css-bars"><span class="css-bar failure"></span><span class="css-bar failure"></span></div></div>
+          <div class="css-row leverages"><span class="css-key">L·2</span><div class="css-bars"><span class="css-bar leverage"></span><span class="css-bar leverage"></span></div></div>
+        </div>
+        <div class="css-stage s3">
+          <span class="css-label">Stage 3</span>
+          <div class="css-row failures"><span class="css-key">F·1</span><div class="css-bars"><span class="css-bar failure"></span></div></div>
+          <div class="css-row leverages"><span class="css-key">L·1</span><div class="css-bars"><span class="css-bar leverage"></span></div></div>
+        </div>
+        <div class="css-stage s4">
+          <span class="css-label">Stage 4</span>
+          <div class="css-row failures"><span class="css-key">F·0</span><div class="css-bars"></div></div>
+          <div class="css-row leverages"><span class="css-key">L·1</span><div class="css-bars"><span class="css-bar leverage"></span></div></div>
+        </div>
+      </div>
+
+      <div class="annot-badges">
+        <span class="annot-badge carrier">⤬ Failure carrier · NBI driver capability-gap (S2→S3)</span>
+        <span class="annot-badge absence">Ø D-T fuel cycle absent (9 sublines)</span>
+        <span class="annot-badge warn">⚠ No architecture fallback</span>
+      </div>
+
+      <details class="full-record">
+        <summary>View full record · 3 failure-mode tags, 4 leverage tags</summary>
+        <div class="full-body">
+
+      <div class="stage-section s2">
+        <span class="ss-header">Stage 2 · FOAK affordability</span>
+        <div class="entry-group failures">
+          <div class="eg-label">Consequential failure modes</div>
+          <ul class="entry-list failures">
+            <li><code>F2.d-driver-supply/capability-gap</code> — A 250&nbsp;keV proton NBI driver at ~30&nbsp;MW has no commercial supply chain at fusion scale. ITER NNBI is an adjacent precedent, not a commercial supply. This is a capability-class gap; no external curve runs through TAE's required operating regime.</li>
+            <li><code>F2.a/$1-5B-financing</code> — ~$3–5B for a 50&nbsp;MWe initial plant. Smaller than the typical fusion FOAK and accessible to strategic-investor and hyperscaler consortia, but still consequential.</li>
+          </ul>
+        </div>
+        <div class="entry-group leverages">
+          <div class="eg-label">Consequential leverages</div>
+          <ul class="entry-list leverages">
+            <li><code>F2.c/Part-30-fit-aneutronic-accelerated</code><span class="qualifier uncond">unconditional</span> — Aneutronic operation with &lt;1% neutron fraction, no tritium, hands-on maintenance fits squarely within NRC Part 30. TAE is the best-positioned concept in the candidate set for the lighter regulatory pathway. Locked in by the fuel choice rather than by any physics or engineering gate closing.</li>
+            <li><code>F2.d-magnets/mature-commodity</code><span class="qualifier uncond">unconditional</span> — Resistive copper coils on a mature supply chain. No internalization required.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="stage-section s3">
+        <span class="ss-header">Stage 3 · Chasm crossing</span>
+        <div class="entry-group failures">
+          <div class="eg-label">Consequential failure modes</div>
+          <ul class="entry-list failures">
+            <li><code>F3.a-driver-supply/capability-gap-at-chasm</code> — High-energy NBI has no non-fusion industrial demand pull at chasm-era volumes. The opposite of REBCO's MRI/grid/transport leverage: external markets do not co-scale with fusion demand. Carries from Stage 2.</li>
+          </ul>
+        </div>
+        <div class="entry-group leverages">
+          <div class="eg-label">Consequential leverages</div>
+          <ul class="entry-list leverages">
+            <li><code>F3.d/standardized-amortization-cleanest</code><span class="qualifier uncond">unconditional</span> — Aneutronic + steady-state + standardized Da Vinci design is the cleanest amortization case in the candidate set — the first Part 30 license sets precedent for every subsequent identical unit, with no per-plant tritium accountancy re-litigation.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="stage-section s4">
+        <span class="ss-header">Stage 4 · Learning-curve descent</span>
+        <div class="entry-group failures">
+          <div class="eg-label">Consequential failure modes</div>
+          <ul class="entry-list failures">
+            <li style="background: var(--color-bg); border-left-color: var(--color-border); color: var(--color-text-muted); font-style: italic;">None beyond the Stage-3 driver-supply trajectory (carries forward but does not introduce a new Stage-4-specific cost-floor mechanism).</li>
+          </ul>
+        </div>
+        <div class="entry-group leverages">
+          <div class="eg-label">Consequential leverages</div>
+          <ul class="entry-list leverages">
+            <li><code>F4.c-B11/external-market-dominant</code><span class="qualifier uncond">unconditional</span> — B-11 separation chemistry is mature with a semiconductor-doping baseline market. External demand dominates fusion demand at any realistic deployment scale.</li>
+          </ul>
+        </div>
+      </div>
+
+        </div>
+      </details>
+    </div>
+
+  </div>
+
+  <!-- Cross-concept observations as annotated 2-column map -->
+  <h3>ARC vs. TAE · annotated comparison</h3>
+  <p style="font-size: 0.9rem; color: var(--color-text-muted);">The same map structure, projected onto two concepts. Cells where both populate are shared cells; cells filled by only one are unique-to-that-concept.</p>
+
+  <div class="map-wrap">
+  <div class="map-matrix mm-matrix-2col" role="table" aria-label="ARC vs TAE">
+    <div class="mm-corner"></div>
+    <div class="mm-header arc">ARC</div>
+    <div class="mm-header tae">TAE</div>
+
+    <div class="mm-section">Failure modes</div>
+
+    <div class="mm-row-label"><span class="mm-code">F2.a</span><span class="mm-desc">FOAK financing magnitude</span></div>
+    <div class="mm-cell" style="background: #fffbeb;"><span class="mm-dot arc"></span><span class="mm-band">$5–15B</span></div>
+    <div class="mm-cell" style="background: #fffbeb;"><span class="mm-dot tae"></span><span class="mm-band">$1–5B</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F2.b</span><span class="mm-desc">Build-time risk (7+ yr)</span></div>
+    <div class="mm-cell"><span class="mm-dot arc"></span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F2.d</span><span class="mm-desc">D-T fuel-cycle inputs (9 sublines in ARC)</span></div>
+    <div class="mm-cell"><span class="mm-dot arc"></span></div>
+    <div class="mm-cell absent-by-design"><span class="mm-absent">⊘</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F2.d</span><span class="mm-desc">Driver capability-gap</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+    <div class="mm-cell"><span class="mm-dot tae"></span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F3.a</span><span class="mm-desc">REBCO fleet bottleneck</span></div>
+    <div class="mm-cell"><span class="mm-dot arc"></span></div>
+    <div class="mm-cell absent-by-design"><span class="mm-absent">⊘</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F3.a</span><span class="mm-desc">D-T fuel cycle at fleet scale</span></div>
+    <div class="mm-cell"><span class="mm-dot arc"></span></div>
+    <div class="mm-cell absent-by-design"><span class="mm-absent">⊘</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F3.a</span><span class="mm-desc">Driver capability-gap at chasm</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+    <div class="mm-cell"><span class="mm-dot tae"></span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F4.c</span><span class="mm-desc">Specialty input cost floor</span></div>
+    <div class="mm-cell"><span class="mm-dot arc"></span><span class="mm-band">D-T inputs</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+
+    <div class="mm-section lev">Leverages</div>
+
+    <div class="mm-row-label"><span class="mm-code">F2.c</span><span class="mm-desc">NRC Part-30 fit (full D-T not consequential)</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+    <div class="mm-cell"><span class="mm-dot tae"></span><span class="mm-band">aneutronic+</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F2.d</span><span class="mm-desc">REBCO external-market pull</span></div>
+    <div class="mm-cell"><span class="mm-dot arc"></span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F2.d</span><span class="mm-desc">Commodity magnets / BOP</span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+    <div class="mm-cell"><span class="mm-dot tae"></span><span class="mm-band">Cu</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">E2.a</span><span class="mm-desc">Crossover platform (HTS · MRI · grid)</span></div>
+    <div class="mm-cell"><span class="mm-dot arc"></span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">E3.a</span><span class="mm-desc">Intra-fusion cohort (~8 REBCO)</span></div>
+    <div class="mm-cell"><span class="mm-dot arc"></span></div>
+    <div class="mm-cell"><span class="mm-absent">·</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F3.d</span><span class="mm-desc">Standardized amortization</span></div>
+    <div class="mm-cell" style="background: #fffbeb;"><span class="mm-dot outlined arc"></span><span class="mm-band">gate-cond</span></div>
+    <div class="mm-cell" style="background: #fffbeb;"><span class="mm-dot tae"></span><span class="mm-band">cleanest</span></div>
+
+    <div class="mm-row-label"><span class="mm-code">F4.c</span><span class="mm-desc">External-market-dominant floor</span></div>
+    <div class="mm-cell"><span class="mm-dot arc"></span><span class="mm-band">REBCO</span></div>
+    <div class="mm-cell"><span class="mm-dot tae"></span><span class="mm-band">B-11</span></div>
+  </div>
+  </div>
+
+  <div class="map-callouts">
+    <div class="callout-pin"><strong>Shared rows · F2.a financing magnitude / F3.d standardized amortization / F4.c external-market-dominant floor (highlighted).</strong> Both populate the same rows in different cells — ARC at $5–15B vs. TAE at $1–5B for F2.a; ARC gate-conditional vs. TAE unconditional for F3.d; ARC REBCO vs. TAE B-11 for F4.c. F2.c is no longer shared: ARC's full-D-T burden disqualifies the Part-30 leverage that TAE's aneutronic operation locks in.</div>
+    <div class="callout-pin"><strong>ARC-dense rows · D-T fuel cycle (9 sublines) + REBCO trajectory + all E-codes.</strong> ARC's deep-dive would be dominated by D-T fuel-cycle modeling.</div>
+    <div class="callout-pin"><strong>TAE structural absence · ⊘ across every D-T fuel-cycle row.</strong> Aneutronic operation eliminates an entire failure-mode class most candidates carry.</div>
+    <div class="callout-pin"><strong>TAE-unique cells · F2.c Part-30 fit (aneutronic-accelerated).</strong> ARC drops F2.c; only TAE (and Helion in low-tritium D-He3) carry the regulatory leverage as consequential.</div>
+    <div class="callout-pin"><strong>TAE empty E-codes.</strong> Zero crossover, zero intra-fusion cohort — TAE's leverages are locked in by chemistry and regulation rather than by adjacent industry pull.</div>
+  </div>
+
+  <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-top: 1rem;">Two concepts produce only a partial vocabulary; tags like <code>capability-gap-at-chasm</code> may collapse or split as more records appear. The point of the comparison is to read the cells — not the prose — and notice what the rows and columns reveal about coverage, isolation, and architectural choice.</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- ============================================================
+     SECTION 5 — OUTCOME GOALS
+     ============================================================ -->
+<section id="outcomes">
+  <h2><span class="section-num">5.</span>Outcome goals</h2>
+  <p class="lead">The methodology's value isn't the trace, the record, or the map by themselves. It's the high-level synthesis they enable: classes of question about fusion's structural future that no single concept's analysis can answer. These are example outcome goals — the kinds of insights this style of analysis is built to produce.</p>
+
+  <div class="outcomes-grid">
+    <div class="outcome-card s2">
+      <div class="oc-header"><span class="oc-num">01</span><strong>Fuel-cycle infrastructure bets</strong></div>
+      <p>Which concepts depend on a commercial D-T ecosystem materializing, which route around it (TAE p-B11), and which hedge sideways (Helion D-He3 with D-T fallback).</p>
+      <a class="oc-cue" href="#method">Read the fuel-cycle-inputs row in §3 · ARC + GF carry it at every stage; TAE marks ⊘; Helion carries He-3 instead</a>
+    </div>
+
+    <div class="outcome-card s3">
+      <div class="oc-header"><span class="oc-num">02</span><strong>Component industrial-base bets</strong></div>
+      <p>Which industrial bases have non-fusion crossover pull (HTS, defense pulsed-power) versus depend on fusion-internal scale alone (NBI, pneumatic).</p>
+      <a class="oc-cue" href="#method">Read the crossover-platform and driver-capability-gap rows in §3 · ARC + Helion ride external pull; TAE + GF stand alone</a>
+    </div>
+
+    <div class="outcome-card s3">
+      <div class="oc-header"><span class="oc-num">03</span><strong>Cohort isolation vs. cohort-rich bets</strong></div>
+      <p>How many leverage rows a concept populates. Many populated rows means the concept rides shared infrastructure; a sparse leverage column means it stands alone.</p>
+      <a class="oc-cue" href="#method">Compare leverage-section column density in §3 · ARC and Helion dense; TAE and GF sparse</a>
+    </div>
+
+    <div class="outcome-card s4">
+      <div class="oc-header"><span class="oc-num">04</span><strong>Architecture-proof bets</strong></div>
+      <p>Concepts whose architecture is portfolio-valuable independent of company outcome — direct conversion, novel-confinement-mode-proof, novel-fuel-cycle-proof.</p>
+      <a class="oc-cue" href="#method">Read row E4.a in §3 · only Helion populates it (gate-conditional on direct-conversion proof)</a>
+    </div>
+  </div>
+
+  <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-top: 1rem;">A portfolio composed against fuel-cycle diversity may look different from one composed against cohort-isolation diversity, even though both read the same map. Naming the outcome classes makes the map's analytical surface legible without prescribing a single portfolio answer.</p>
+</section>
+
+  </main>
+</div>
+
+<script>
+// Simple scrollspy for sidebar nav
+(function() {
+  const links = document.querySelectorAll('.sidebar nav a');
+  const sections = Array.from(links).map(a => document.querySelector(a.getAttribute('href')));
+  function onScroll() {
+    const y = window.scrollY + 120;
+    let active = 0;
+    sections.forEach((s, i) => { if (s && s.offsetTop <= y) active = i; });
+    links.forEach((a, i) => a.classList.toggle('active', i === active));
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+old_id,new_id,new_num,new_slug,disposition,pin_research_id,company,fuel
+01-hts-compact-tokamak,01-hts-compact-tokamak,01,hts-compact-tokamak,unchanged,,Commonwealth Fusion Systems,D-T
+02-acoustic-icf-sonofusion,02-acoustic-icf-sonofusion,02,acoustic-icf-sonofusion,unchanged,,Sonofusion Energy,D-D
+03-laser-icf-liquid-jet-target,03-laser-icf-liquid-jet-target,03,laser-icf-liquid-jet-target,unchanged,,Cortex Fusion Systems,D-D
+04-laser-icf,04-laser-icf,04,laser-icf,unchanged,,HB11 Energy,p-B11
+05-planar-coil-stellarator,05-planar-coil-stellarator,05,planar-coil-stellarator,unchanged,,Thea Energy,D-T
+06-magnetic-mirror,06-magnetic-mirror,06,magnetic-mirror,unchanged,,Pale Blue Fusion,p-B11
+07-maglif,07-maglif,07,maglif,unchanged,,"Pacific Fusion, Fuse Energy Technologies",D-T
+08-frc-w-direct-conversion,08-frc-w-direct-conversion,08,frc-w-direct-conversion,unchanged,,Helion Energy,D-He3
+09-qi-stellarator-hts,09-qi-stellarator-hts,09,qi-stellarator-hts,unchanged,,Proxima Fusion,D-T
+10-large-scale-stellarator,10-large-scale-stellarator,10,large-scale-stellarator,unchanged,,Gauss Fusion,D-T
+11-magnetic-mirror,11-magnetic-mirror,11,magnetic-mirror,unchanged,,Realta Fusion,D-T
+12-levitated-dipole,12-levitated-dipole,12,levitated-dipole,unchanged,,OpenStar Technologies,D-T
+13-electrostatic-hybrid,13-electrostatic-hybrid,13,electrostatic-hybrid,unchanged,,Avalanche Energy,D-T
+14-magnetized-target-fusion-pneumatic-compression,14-magnetized-target-fusion-pneumatic-compression,14,magnetized-target-fusion-pneumatic-compression,unchanged,,General Fusion,D-T
+15-sheared-flow-stabilized-z-pinch,15-sheared-flow-stabilized-z-pinch,15,sheared-flow-stabilized-z-pinch,unchanged,,Zap Energy,D-T
+16-muon-catalyzed-fusion,16-muon-catalyzed-fusion,16,muon-catalyzed-fusion,unchanged,,Acceleron Fusion,D-T
+17a-laser-icf-hybrid-drive,27-laser-icf-hybrid-direct-drive,27,laser-icf-hybrid-direct-drive,relabel,27-laser-icf-hybrid-direct-drive,Xcimer Energy,D-T
+17b-laser-icf-fast-ignition,17-laser-icf-direct-drive-fast-ignition,17,laser-icf-direct-drive-fast-ignition,relabel,17-laser-icf-direct-drive-fast-ignition,Focused Energy,D-T
+18-p-b11-frc,18-p-b11-frc,18,p-b11-frc,unchanged,,TAE Technologies,p-B11
+19-orbital-levitated-dipole,19-orbital-levitated-dipole,19,orbital-levitated-dipole,unchanged,,Zephyr Fusion,D-He3
+20a-type-one-stellarator,20-type-one-stellarator,20,type-one-stellarator,relabel,20a-type-one-stellarator,Type One Energy,D-T
+20b-renaissance-stellarator,21-renaissance-stellarator,21,renaissance-stellarator,relabel,20b-renaissance-stellarator,Renaissance Fusion,D-T
+21-spherical-tokamak-hts,22-spherical-tokamak-hts,22,spherical-tokamak-hts,relabel,21-spherical-tokamak-hts,Tokamak Energy,D-T
+22-projectile-icf,23-projectile-icf,23,projectile-icf,relabel,22-projectile-icf,"First Light Fusion, NearStar Fusion",D-T
+23-laser-icf-nanostructured-target,24-laser-icf-nanostructured-target,24,laser-icf-nanostructured-target,relabel,23-laser-icf-nanostructured-target,Marvel Fusion,p-B11
+24-dense-plasma-focus,25-dense-plasma-focus,25,dense-plasma-focus,relabel,24-dense-plasma-focus,LPPFusion,p-B11
+25-heavy-ion-beam-icf,26-heavy-ion-beam-icf,26,heavy-ion-beam-icf,relabel,25-heavy-ion-beam-icf,Intensity Energy,D-T
+26-laser-icf-indirect-drive,31-laser-icf-indirect-drive,31,laser-icf-indirect-drive,relabel,26-laser-icf-indirect-drive,Inertia Enterprises,D-T
+27-polywell,28-polywell,28,polywell,relabel,27-polywell,EMC2,D-T
+28-hts-tokamak-full-hts,29-hts-tokamak-full-hts,29,hts-tokamak-full-hts,relabel,28-hts-tokamak-full-hts,Energy Singularity,D-T
+29-negative-triangularity-tokamak,30-negative-triangularity-tokamak,30,negative-triangularity-tokamak,relabel,29-negative-triangularity-tokamak,Firefly Fusion,D-T
+30-laser-icf-nif-commercialization,,,,drop,,Inertia Enterprises,D-T
+31-laser-icf-oec-architecture,32-laser-icf-oec-architecture,32,laser-icf-oec-architecture,relabel,31-laser-icf-oec-architecture,Blue Laser Fusion (BLF),D-T
+32-laser-icf-french-national,33-laser-icf-french-national,33,laser-icf-french-national,relabel,32-laser-icf-french-national,GenF Systems,D-T
+33-state-backed-tokamak-best,34-state-backed-tokamak-best,34,state-backed-tokamak-best,relabel,33-state-backed-tokamak-best,Neo Fusion,D-T
+34-compact-spherical-tokamak-india,,,,drop,,Pranos Fusion,D-T
+35-polomac-magnetic-confinement,35-polomac-magnetic-confinement,35,polomac-magnetic-confinement,unchanged,,Deutelio,D-D
+36-helical-coil-stellarator,36-helical-coil-stellarator,36,helical-coil-stellarator,unchanged,,Helical Fusion,D-T
+,37-magnetized-target-inertial-fusion,37,magnetized-target-inertial-fusion,new,,NearStar Fusion,D-D
+,38-accelerator-driven-fusion,38,accelerator-driven-fusion,new,,SHINE Technologies,D-T
+,39-cs-free-spherical-tokamak-pb11,39,cs-free-spherical-tokamak-pb11,new,,ENN Energy,p-B11

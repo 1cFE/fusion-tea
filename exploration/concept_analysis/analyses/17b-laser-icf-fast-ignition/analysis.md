@@ -8,6 +8,8 @@ Approved-Date:
 Reuses: []
 ---
 
+> **See also:** `synthesis_concept_downselect.md` (this dir) and `knowledge/concept_research/17-laser-icf-direct-drive/dossier_17b_focused_concept_downselect.md` for additional TNSA proton-coupling, cone-target dynamics, and hot-spot energy-deposition narrative carried over from the `concept-downselect` branch via Option C overlay. See `.project/reports/2026-05-19-concept-downselect-rebase-audit.md` §2.2.
+
 # D1+ Analysis: Laser ICF - Fast Ignition (D-T)
 
 **Company**: Focused Energy  

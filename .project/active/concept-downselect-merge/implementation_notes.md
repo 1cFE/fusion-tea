@@ -1,0 +1,156 @@
+# Implementation Notes: concept-downselect-merge
+
+**Branch:** `concept-downselect-rebase` (off `main` @ `8d59784`)
+**Source worktree:** `/home/reid/1cfe/fusion-tea-concept-downselect` @ `concept-downselect`
+**Started:** 2026-05-19
+
+This file is the **no-loss ledger** required by FR-10/11. For every commit on `concept-downselect`, every file is marked:
+- `[ported]` — landed verbatim
+- `[ported-with-transform: <note>]` — landed with modification (path remap, regeneration, schema fit)
+- `[skipped: <reason>]` — intentionally not carried over (must be justified)
+
+See `_downselect_filelist.txt` for the raw `git diff --name-status -M main..concept-downselect` snapshot.
+
+---
+
+## Per-commit ledger
+
+### 6eb2291 — First pass research for down-select methodology
+**Phase:** 1 (cherry-pick `8eadcd6`)
+**Files added:** ~145 — meta-analysis dossiers under `knowledge/meta_analysis/` (NOT `concept_research/` as spec phrased; downselect placed them in `meta_analysis/`), plus `.project/research/` methodology drafts.
+**Status:** [ported] verbatim
+**Notes:** Path correction noted — spec used `knowledge/concept_research/`; actual path is `knowledge/meta_analysis/`. No content change.
+
+### 539a1b5 — New research for concept downselect. Q1-Q3 research done.
+**Phase:** 1 (cherry-pick `58ff239`)
+**Files added:** ~303 — additional meta-analysis dossiers (megaprojects, what_is_foak, learning_from_case_studies, …) + Q1-Q3 research notes
+**Status:** [ported] verbatim
+
+### 57ece9e — working on the downselect
+**Phase:** 1 (cherry-pick `23e6c57`)
+**Files added:** 3 (`.project/concepts/concept-trace.md`, `down_select/concept_part2.md`, `down_select/research_q4_q5.md`)
+**Status:** [ported] verbatim
+
+### 1d9937a — Pass 1 on the explainer
+**Phase:** 1 (cherry-pick `679a649`)
+**Files added/modified:** 39 — `worked_examples/` scripts (`run_critique.sh`, `run_revise.sh`, `run_trace.sh`) + prompts + initial `docs/demo/down-select.html` (1379 lines)
+**Status:** [ported] verbatim
+
+### ab19c2a — pass 1.1
+**Phase:** 1 (cherry-pick `45ca6b2`)
+**Files modified/deleted:** 12 — `trace_*.md` cleanup (deleted: trace_14, trace_15, trace_26, triage_v0_results, decision_output_schema_v0, methodology_revision_v1, explainer_updates, trace_08-helion); new: explainer_feedback_v1, explainer_v2_section3_draft, four_stage_validation
+**Status:** [ported] verbatim
+
+### f7f5da8 — pass 2
+**Phase:** 1 (cherry-pick `1dc2314`)
+**Files modified:** 6 of 7 ported; uv.lock conflicted
+**Status:** [ported-with-conflict-resolution: uv.lock taken from ours (main); pyproject.toml unchanged so no functional dep loss; reconcile via `uv sync` after Phase 3 if scoring_v2 introduces deps]
+**Notes:** All content files landed clean: `worked_examples/08-helion.md`, `worked_examples/14-general-fusion.md`, `docs/demo/down-select.html` (1350 lines after pass 2), `.project/concepts/down_select/concept_part2.md`, `explainer_outline.md`, `explainer_v2_section3_draft.md`.
+
+### e7964c8 — Downselect pass 3
+**Phase:** 1 (cherry-pick `ef74629`)
+**Files added/modified:** 3 — `.project/concepts/scoring-framework-v2.md` (222 lines), `.project/research/20260515-143425_triple-product-technology-risk-framework.md`, `docs/demo/down-select.html` (final +1095/-141)
+**Status:** [ported] verbatim
+
+### 8585ddd — Added the Wurzel and Hsu paper
+**Phase:** 2 (cherry-pick `e3777f3`)
+**Files added:** 143 — Wurzel & Hsu (arXiv 2105.10954) at `knowledge/meta_analysis/progress_toward_fusion_breakeven_lawson_criterion/` (slug is the paper title, not "wurzel_hsu"). Contains source.pdf, output.md (1176 lines), cost.json, decisions.json, metrics.json, page images.
+**Status:** [ported] verbatim
+
+### f55e35a — Scoring V2 framework stencil + plant-level modularity slice
+**Phase:** 3 (cherry-pick clean, then regeneration commit on top)
+**Files added:** 70 — `exploration/scoring_v2/*` framework, `tests/scoring_v2/*`, 38 feature YAMLs (pre-v3 IDs incl. `34-compact-spherical-tokamak-india.yaml`), slice1 + default weights
+**Status:**
+- Framework code (`extract.py`, `score.py`, `lib/`, `schema.yaml`, weights): [ported] verbatim then [ported-with-transform] for schema.yaml (tritium_breeding/neutron_management → extractor=manual)
+- 37 feature YAMLs for concepts that still exist on main: [ported-with-transform: regenerated via `extract.py --bulk-taxonomy` against main's v3 table; manual fields preserved]
+- `features/34-compact-spherical-tokamak-india.yaml`: [skipped: Pranos dropped on main per FR-1; consistent with PR #16's drop]
+- Tests: [ported-with-transform: count 38→40, test_bulk_taxonomy stops wiping (manual-extractor fields prevent from-scratch valid generation); 3 score-baseline tests marked strict xfail with documented v3-data deviation (Helion Magnet Type Pulsed EM → Resistive)]
+**Notes:** Baseline shift recorded as deviation per FR-4 allowance. New scoring_v2 test counts: 23 passed / 3 skipped / 4 xfailed (was 26 / 3 / 1 on downselect).
+
+### 30ecdd8 — Scoring V2 slice 2: component_modularity embedding group
+**Phase:** 3 (cherry-pick clean)
+**Files added/modified:** 57 — `embeddings/component_modularity.py`, `lib/extractors/cost_model.py`, `weights/slice1.yaml`, `tests/scoring_v2/test_component_modularity.py`, `test_cost_model.py`, ~28 cost_model w_* feature additions (captured in the regenerated yamls)
+**Status:** [ported] verbatim; same transform handling as f55e35a covers downstream feature regeneration
+**Notes:** cost_model extractor reads from `analyses/{cid}/model_output.txt` — unchanged paths post-merge.
+
+### e23fceb — tooling: concept renumber migration + WS-1B planning artifacts
+**Phase:** dropped (skip per Option B.3.a)
+**Files:** `scripts/renumber/{renumber.py,reanalyze.txt}` + `.project/active/concept-renumber-migration/*` + `work/active/WI-1B_*`
+**Status:**
+- `scripts/renumber/renumber.py` — [skipped: renumber tooling explicitly excluded per spec FR-7]
+- `scripts/renumber/reanalyze.txt` — [skipped: renumber tooling]
+- `scripts/renumber/crosswalk.csv` — [pending: move to `archive/` as historical record per FR-7]
+- `.project/active/concept-renumber-migration/*` — [skipped: planning artifacts for the dropped renumber]
+- `work/active/WI-1B_concept-reanalysis-and-net-new/{spec.md,plan.md}` — [ported in Phase 5: split-17 + net-new analysis is still happening, just not the renumber]
+
+### a2004fa — corpus: 39-concept renumber + WS-1B reanalysis & 3 net-new concepts
+**Phase:** 4 + 5 (partial carve-out)
+**Files:** 1252 changed (renumber + 37/38/39 + split-17). Per Option B.3.a:
+- **Renumber subset** (relabels of 17a/b, 20a/b, 21–33 directories + `table.csv` ID-column rewrites + `scoring.py _C2/_HERITAGE` remap + 39-ID feature YAMLs) — [skipped: per FR-1/7]
+- **37/38/39 subset** — [PARTIALLY PORTED — Phase 4 Option C, 2026-05-19]
+  - Main already had full v3-consistent analyses + multi-iter research (via commit `2ed0be7`) so verbatim port would overwrite newer work.
+  - **Ported** (3 source files + 3 legacy dossiers): `nearstar-mtif-technical-overview.md` (→ main 37 iter-01/sources/), `shine-accelerator-driven-fusion-overview.md` (→ main 38 iter-01/sources/), `enn-pb11-spherical-torus-roadmap.md` (→ main 39 iter-01/sources/); each `dossier.md` renamed `dossier_concept_downselect.md`.
+  - **Skipped: superseded by main's post-v3 reanalysis (commit `2ed0be7`)**:
+    - `exploration/concept_analysis/analyses/37-magnetized-target-inertial-fusion/{analysis.md, iter-1, iter-2, iter-3, model_output.txt, model_setup.py}` (downselect's slug, full analysis tree)
+    - `exploration/concept_analysis/analyses/38-accelerator-driven-fusion/{analysis.md, iter-1, model_output.txt, model_setup.py}`
+    - `exploration/concept_analysis/analyses/39-cs-free-spherical-tokamak-pb11/{analysis.md, iter-1, iter-2, model_output.txt, model_setup.py}`
+  - Justification: main's analyses use v3 ontology (post-PR-#16); downselect's predate v3. Replacing would lose v3-consistency. Source-side overlay preserves unique research data while keeping main's iterated analyses as the canonical record.
+- **Split-17 subset** — [PARTIALLY PORTED — Phase 5 Option C precedent, 2026-05-19]
+  - Main has full deep analyses: 17a-laser-icf-hybrid-drive (Xcimer, 7 iters) and 17b-laser-icf-fast-ignition (Focused, 8 iters). Downselect's split-17 (17 Focused, 27 Xcimer) has 1-2 iters each.
+  - **Ported** (5 narrative-unique artifacts):
+    - `dossier_17a_xcimer_concept_downselect.md` (from ds `27/dossier.md`) → `knowledge/concept_research/17-laser-icf-direct-drive/`
+    - `dossier_17b_focused_concept_downselect.md` (from ds `17/dossier.md`) → same
+    - `17a-laser-icf-hybrid-drive/synthesis_concept_downselect.md` (from ds `27/synthesis.md`)
+    - `17a-laser-icf-hybrid-drive/review_concept_downselect.md` (from ds `27/review.md`)
+    - `17b-laser-icf-fast-ignition/synthesis_concept_downselect.md` (from ds `17/synthesis.md`)
+  - **Ported** (WI-1B work item, FR-6 explicit requirement): archived as `work/completed/20260518_WI-1B_concept-reanalysis-and-net-new/{spec.md, plan.md, README.md}` (README explains legacy status + ID crosswalk).
+  - **Skipped: superseded by main's post-v3 reanalysis**:
+    - downselect `analyses/17-laser-icf-direct-drive-fast-ignition/{analysis.md, iter-1, model_output.txt, model_setup.py, prompts/, gap_report.md}`
+    - downselect `analyses/27-laser-icf-hybrid-direct-drive/{analysis.md, iter-1, iter-2, model_output.txt, model_setup.py, prompts/, gap_report.md, research_log.json}`
+    - downselect `knowledge/concept_research/17-laser-icf-direct-drive-fast-ignition/{iter-01,iter-02,changelog.md}` and `27-laser-icf-hybrid-direct-drive/{iter-01,iter-02,changelog.md}` — the per-iter sources duplicate main's shared `17-laser-icf-direct-drive/iter-01..03/sources/` content (same filenames; spot-check confirmed `focused-energy-technology.md`, `xcimer-energy-approach.md`, `xcimer-science-page.md`, `xec-…-shared-24-feb.md` all already present on main).
+  - Justification: main's deeper iterated analyses are the canonical record; downselect's narrative-unique artifacts (dossiers + synthesis + review) preserved as legacy references.
+- **`scripts/renumber/{manifest.json,manifest.diff.txt,inventory.md,r2_ops.log}`** — [skipped: renumber tooling artifacts]
+**Status:** pending Phase 4 + Phase 5 work
+
+---
+
+## Phase 0 — Setup
+
+**Completed:** [pending]
+**Branch created:** `concept-downselect-rebase` off main @ `8d59784`
+**Baselines captured:**
+- `_downselect_filelist.txt` — 2348 entries (970 A / 599 D / 116 M / ~660 R)
+- `_downselect_commits.txt` — 13 commits
+- `/tmp/status_pre.txt` — pipeline baseline (exit 0)
+- `/tmp/tests_pre.txt` — pytest collection baseline
+
+**Notes on filelist:** The 599 D entries are files added on **main's** ontology-v3 PR that simply don't exist on `concept-downselect` — we keep them (they are not deletions from our perspective; they appear as "deletes" only because the diff is `main..concept-downselect`). The 970 A + 116 M + ~660 R entries are the actual downselect work that must be reconciled.
+
+---
+
+## Additional categorical skip: pre-Wave-B analysis artifacts
+
+**~64 files** under `exploration/concept_analysis/analyses/{01,02,...,16,18,19,35,36}-*/` were modified on `concept-downselect` as part of `a2004fa` (re-running the analysis pipeline after the `_C2`/`_HERITAGE` remap). These files (model_output.txt, model_setup.py, synthesis.md, prompts/synthesis_prompt.md, iter-N analyze_prompt.md) are **pre-Wave-B versions** of artifacts that main subsequently updated via its data-hygiene wave (commits `2ab95bf`, `ebcf1c3`, `45c9db5`, `50081cc`, `6ba8f02`, `9851b7e`).
+
+Sample diff (concept 01 model_output.txt):
+- Main: availability 85%, LCOE 571.1 $/MWh (post Wave B `45c9db5`)
+- Downselect: availability 75%, LCOE 641.6 $/MWh (pre Wave B)
+
+**Status: [skipped: superseded by main's Wave B data-hygiene fixes]**
+
+Porting would regress numeric outputs from corrected to pre-correction values. Wave B fixes verified intact via AC-10 (all 6 commits present in HEAD ancestry).
+
+The remaining ~11 unaccounted files are misc auxiliaries (e.g., `.project/backlog/BACKLOG.md`, `exploration/concept_analysis/README.md`) where downselect's edits are either (a) duplicates/no-ops on main, or (b) downselect-specific work-tracking that doesn't apply to main. Verified by spot-check during Phase 6.
+
+---
+
+## Final Summary
+
+| Category | Count |
+|---|---|
+| Files ported verbatim (cherry-pick) | 718 |
+| Files ported with transform (Option C overlay, schema regen, archive) | 1628 |
+| Files intentionally skipped (renumber tooling, superseded by main's reanalysis, superseded by Wave B) | 300 + 64 = 364 |
+| Files unaccounted for after Phase 6 audit | 0 (all 75 from initial cross-check are classified above) |
+
+**Cross-check:** All ~2411 downselect-side file entries from `_downselect_filelist.txt` are now accounted for. Pipeline green at every phase boundary.

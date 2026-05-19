@@ -1,0 +1,18 @@
+# Default weight matrix for scoring_v2.
+# Three dimensions; weight 0 (or omission) means "no contribution."
+# Plain-text edits to this file propagate via re-running score.py — no LLM call.
+
+economic_potential: {}
+
+technical_feasibility: {}
+
+manufacturability_scale_out:
+  # Plant-level modularity group (slice 1) — halved for the 50/50 blend with
+  # the component-modularity group landed in slice 2.
+  min_viable_device_scale:        0.15
+  hardware_topology_complexity:   0.15
+  unit_multiplicity:              0.10
+  subsystem_stack_burden:         0.10
+  # Component-level modularity group (slice 2) — single aggregate of seven
+  # subsystem ratings blended by per-concept capex shares.
+  component_modularity_aggregate: 0.50

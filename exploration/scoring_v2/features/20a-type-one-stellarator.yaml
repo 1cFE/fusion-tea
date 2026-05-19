@@ -1,0 +1,103 @@
+_meta:
+  concept_id: 20a-type-one-stellarator
+  name: Type One Stellarator (D-T)
+confinement_family:
+  value: MFE
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+driver_technology:
+  value: Modular HTS stellarator coils (REBCO, 9 T)
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+energy_capture:
+  value: Thermal (steam)
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+fuel:
+  value: D-T
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+ife_driver:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+magnet_type:
+  value: HTS (3D stellarator)
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+mfe_topology:
+  value: Stellarator
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+mif_method:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+neutron_management:
+  value: Integrated blanket/shield
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+operation_mode:
+  value: Steady-state
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+stellarator_type:
+  value: Modular
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+tokamak_shape:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+tritium_breeding:
+  value: Solid ceramic breeder (HCPB)
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+w_aux:
+  value: 0.0755774344548711
+  provenance: analyses/20a-type-one-stellarator/model_output.txt
+  confidence: medium
+  extracted_at: '2026-05-17'
+w_blanket:
+  value: 0.08792826846581545
+  provenance: analyses/20a-type-one-stellarator/model_output.txt
+  confidence: medium
+  extracted_at: '2026-05-17'
+w_bop:
+  value: 0.05144715733028591
+  provenance: analyses/20a-type-one-stellarator/model_output.txt
+  confidence: medium
+  extracted_at: '2026-05-17'
+w_civil:
+  value: 0.22167769158077488
+  provenance: analyses/20a-type-one-stellarator/model_output.txt
+  confidence: medium
+  extracted_at: '2026-05-17'
+w_coils:
+  value: 0.5202294354218403
+  provenance: analyses/20a-type-one-stellarator/model_output.txt
+  confidence: medium
+  extracted_at: '2026-05-17'
+w_fuel_cycle:
+  value: 0.013054084346087071
+  provenance: analyses/20a-type-one-stellarator/model_output.txt
+  confidence: medium
+  extracted_at: '2026-05-17'
+w_vessel:
+  value: 0.030085928400325253
+  provenance: analyses/20a-type-one-stellarator/model_output.txt
+  confidence: medium
+  extracted_at: '2026-05-17'

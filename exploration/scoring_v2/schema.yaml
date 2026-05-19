@@ -1,0 +1,145 @@
+# Feature schema for scoring_v2.
+#
+# Single source of truth for what features exist, their type, valid values,
+# whether they are required, and which extractor populates them.
+#
+# Feature files (features/{concept_id}.yaml) are tool-managed by extract.py;
+# do not hand-edit unless you intend to (and run schema validation after).
+
+confinement_family:
+  type: enum
+  values: [MFE, IFE, MIF, Non-Standard]
+  required: true
+  extractor: taxonomy
+  taxonomy_column: "Confinement Family"
+
+mfe_topology:
+  type: enum
+  values: [Tokamak, Stellarator, "Open/Linear", "Compact Toroid", Dipole, "N/A"]
+  required: true
+  extractor: taxonomy
+  taxonomy_column: "MFE Topology"
+
+ife_driver:
+  type: enum
+  values: [Acoustic, "Heavy ion beam", Laser, Projectile, "N/A"]
+  required: true
+  extractor: taxonomy
+  taxonomy_column: "IFE Driver"
+
+mif_method:
+  type: enum
+  values: ["FRC compression", "Magnetized target", "N/A"]
+  required: true
+  extractor: taxonomy
+  taxonomy_column: "MIF Method"
+
+tokamak_shape:
+  type: enum
+  values: [Compact, Spherical, Standard, "Negative triangularity", "N/A"]
+  required: true
+  extractor: taxonomy
+  taxonomy_column: "Tokamak Shape"
+
+stellarator_type:
+  type: enum
+  values: ["Helical coil", Modular, "Planar coil", QI, "N/A"]
+  required: false
+  extractor: taxonomy
+  taxonomy_column: "Stellarator Type"
+
+magnet_type:
+  type: string
+  required: true
+  extractor: taxonomy
+  taxonomy_column: "Magnet Type"
+
+operation_mode:
+  type: enum
+  values: [Pulsed, "Quasi-steady", "Steady-state"]
+  required: true
+  extractor: taxonomy
+  taxonomy_column: "Operation Mode"
+
+driver_technology:
+  type: string
+  required: false
+  extractor: taxonomy
+  taxonomy_column: "Driver Technology"
+
+fuel:
+  type: enum
+  values: [D-T, D-D, D-He3, p-B11]
+  required: true
+  extractor: taxonomy
+  taxonomy_column: "Fuel"
+
+tritium_breeding:
+  type: string
+  required: true
+  extractor: manual
+  # Source column "Tritium Breeding" was dropped from table.csv by ontology v3 (PR #16).
+  # Values for concepts 01-36 came from the pre-v3 taxonomy and remain authoritative.
+  # For 37/38/39 (Mallory net-new) values are hand-filled per the concept's design.
+
+neutron_management:
+  type: enum
+  values:
+    - "Heavy shielding (14 MeV)"
+    - "Heavy shielding (D-D)"
+    - "Integrated blanket/shield"
+    - "Minimal (aneutronic)"
+    - "Reduced (D-He3)"
+  required: true
+  extractor: manual
+  # Source column "Neutron Management" was dropped from table.csv by ontology v3 (PR #16).
+  # Values for concepts 01-36 came from the pre-v3 taxonomy and remain authoritative.
+  # For 37/38/39 (Mallory net-new) values are hand-filled per the concept's design.
+
+# Added by slice 2 (component_modularity group).
+
+energy_capture:
+  type: string
+  required: true
+  extractor: taxonomy
+  taxonomy_column: "Energy Capture"
+
+# Per-concept capex weight shares, summing to 1.0 across the seven subsystems.
+# Populated by the cost_model extractor from
+# exploration/concept_analysis/analyses/{cid}/model_output.txt.
+# Absent when no model_output.txt exists for the concept (no fallback).
+
+w_vessel:
+  type: float
+  required: false
+  extractor: cost_model
+
+w_coils:
+  type: float
+  required: false
+  extractor: cost_model
+
+w_blanket:
+  type: float
+  required: false
+  extractor: cost_model
+
+w_bop:
+  type: float
+  required: false
+  extractor: cost_model
+
+w_fuel_cycle:
+  type: float
+  required: false
+  extractor: cost_model
+
+w_aux:
+  type: float
+  required: false
+  extractor: cost_model
+
+w_civil:
+  type: float
+  required: false
+  extractor: cost_model

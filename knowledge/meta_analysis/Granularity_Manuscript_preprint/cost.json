@@ -1,0 +1,11 @@
+[
+  {
+    "page_num": 3,
+    "cost_usd": 0.30075625,
+    "input_tokens": 7,
+    "output_tokens": 1260,
+    "model": "opus",
+    "elapsed_seconds": 43.621341705322266,
+    "table_index": null
+  }
+]

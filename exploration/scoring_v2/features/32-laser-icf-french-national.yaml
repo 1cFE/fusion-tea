@@ -1,0 +1,103 @@
+_meta:
+  concept_id: 32-laser-icf-french-national
+  name: Laser ICF - French National (D-T)
+confinement_family:
+  value: IFE
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+driver_technology:
+  value: Diode-pumped solid-state laser (DPSSL)
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+energy_capture:
+  value: Thermal (unspecified)
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+fuel:
+  value: D-T
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+ife_driver:
+  value: Laser
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+magnet_type:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+mfe_topology:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+mif_method:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+neutron_management:
+  value: Integrated blanket/shield
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+operation_mode:
+  value: Pulsed
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+stellarator_type:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+tokamak_shape:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+tritium_breeding:
+  value: Liquid Li blanket
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+w_aux:
+  value: 0.10029498525073746
+  provenance: analyses/32-laser-icf-french-national/model_output.txt
+  confidence: medium
+  extracted_at: '2026-05-17'
+w_blanket:
+  value: 0.14754935330156568
+  provenance: analyses/32-laser-icf-french-national/model_output.txt
+  confidence: medium
+  extracted_at: '2026-05-17'
+w_bop:
+  value: 0.15482943801527874
+  provenance: analyses/32-laser-icf-french-national/model_output.txt
+  confidence: medium
+  extracted_at: '2026-05-17'
+w_civil:
+  value: 0.29226230996142505
+  provenance: analyses/32-laser-icf-french-national/model_output.txt
+  confidence: medium
+  extracted_at: '2026-05-17'
+w_coils:
+  value: 0.18890401633764467
+  provenance: analyses/32-laser-icf-french-national/model_output.txt
+  confidence: medium
+  extracted_at: '2026-05-17'
+w_fuel_cycle:
+  value: 0.027305045004160047
+  provenance: analyses/32-laser-icf-french-national/model_output.txt
+  confidence: medium
+  extracted_at: '2026-05-17'
+w_vessel:
+  value: 0.08885485212918841
+  provenance: analyses/32-laser-icf-french-national/model_output.txt
+  confidence: medium
+  extracted_at: '2026-05-17'

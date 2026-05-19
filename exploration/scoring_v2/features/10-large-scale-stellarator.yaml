@@ -1,0 +1,103 @@
+_meta:
+  concept_id: 10-large-scale-stellarator
+  name: Large-Scale Stellarator (D-T)
+confinement_family:
+  value: MFE
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+driver_technology:
+  value: Non-planar modular SC coils (LTS+HTS, 40 coils, 6T axis / 12-13T peak, demountable)
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+energy_capture:
+  value: Thermal (unspecified)
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+fuel:
+  value: D-T
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+ife_driver:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+magnet_type:
+  value: LTS+HTS
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+mfe_topology:
+  value: Stellarator
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+mif_method:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+neutron_management:
+  value: Heavy shielding (14 MeV)
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+operation_mode:
+  value: Steady-state
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+stellarator_type:
+  value: QI
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+tokamak_shape:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-19'
+tritium_breeding:
+  value: Li blanket (unspecified)
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-17'
+w_aux:
+  value: 0.010473786520439843
+  provenance: analyses/10-large-scale-stellarator/model_output.txt
+  confidence: medium
+  extracted_at: '2026-05-17'
+w_blanket:
+  value: 0.21727304378100792
+  provenance: analyses/10-large-scale-stellarator/model_output.txt
+  confidence: medium
+  extracted_at: '2026-05-17'
+w_bop:
+  value: 0.06015899265964546
+  provenance: analyses/10-large-scale-stellarator/model_output.txt
+  confidence: medium
+  extracted_at: '2026-05-17'
+w_civil:
+  value: 0.14731482287405345
+  provenance: analyses/10-large-scale-stellarator/model_output.txt
+  confidence: medium
+  extracted_at: '2026-05-17'
+w_coils:
+  value: 0.37651956944323556
+  provenance: analyses/10-large-scale-stellarator/model_output.txt
+  confidence: medium
+  extracted_at: '2026-05-17'
+w_fuel_cycle:
+  value: 0.0
+  provenance: analyses/10-large-scale-stellarator/model_output.txt
+  confidence: medium
+  extracted_at: '2026-05-17'
+w_vessel:
+  value: 0.18825978472161778
+  provenance: analyses/10-large-scale-stellarator/model_output.txt
+  confidence: medium
+  extracted_at: '2026-05-17'
