@@ -5,42 +5,42 @@ confinement_family:
   value: MFE
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-19'
 driver_technology:
   value: Orbital HTS dipole coil (meter-scale, Falcon 9 deployable)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-19'
 energy_capture:
   value: Direct (charged particle)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-19'
 fuel:
   value: D-He3
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-19'
 ife_driver:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-19'
 magnet_type:
   value: HTS (levitated dipole)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-19'
 mfe_topology:
   value: Dipole
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-19'
 mif_method:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-19'
 neutron_management:
   value: Reduced (D-He3)
   provenance: taxonomy
@@ -50,17 +50,17 @@ operation_mode:
   value: Steady-state
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-19'
 stellarator_type:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-19'
 tokamak_shape:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-19'
 tritium_breeding:
   value: N/A
   provenance: taxonomy

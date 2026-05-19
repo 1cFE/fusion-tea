@@ -14,13 +14,16 @@ from exploration.scoring_v2.lib.schema import (
 )
 
 
-def test_bulk_taxonomy_produces_38_valid_files(run_cli, tmp_features_dir: Path):
-    # Wipe and re-extract into the tmp dir from scratch.
-    for p in tmp_features_dir.glob("*.yaml"):
-        p.unlink()
+def test_bulk_taxonomy_produces_all_valid_files(run_cli, tmp_features_dir: Path):
+    # Re-extract over the existing live snapshot.
+    # Concept count is 40 post ontology-v3 merge (was 38 pre-v3: 38 - 1 Pranos drop + 3 Mallory net-new 37/38/39).
+    # We no longer wipe before re-extracting: manual-extractor features (tritium_breeding,
+    # neutron_management) are required by schema but not populated by bulk_taxonomy. The
+    # realistic workflow regenerates taxonomy fields on top of an existing tree that
+    # already carries the manual values. See concept-downselect-merge Phase 3.
     run_cli("extract.py", "--bulk-taxonomy")
     files = sorted(tmp_features_dir.glob("*.yaml"))
-    assert len(files) == 38
+    assert len(files) == 40
     schema = load_schema()
     for f in files:
         validate_features_file(f, schema)

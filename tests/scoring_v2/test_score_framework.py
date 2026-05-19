@@ -16,10 +16,11 @@ def _read_csv(p: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(f))
 
 
-def test_score_runs_against_all_38(run_cli, tmp_scores_dir: Path):
+def test_score_runs_against_all_concepts(run_cli, tmp_scores_dir: Path):
     run_cli("score.py")
     rows = _read_csv(tmp_scores_dir / "table.csv")
-    assert len(rows) == 38
+    # Concept count is 40 post ontology-v3 merge (38 + 3 Mallory net-new - 1 Pranos drop).
+    assert len(rows) == 40
     expected_cols = {
         "concept_id", "name",
         "economic_potential", "technical_feasibility", "manufacturability_scale_out",

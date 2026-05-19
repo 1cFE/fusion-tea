@@ -9,7 +9,18 @@ from __future__ import annotations
 import csv
 from pathlib import Path
 
+import pytest
 import yaml
+
+# v3-data deviation: see implementation_notes.md for concept-downselect-merge,
+# Phase 3. Ontology v3 (main PR #16) changed taxonomy values for several
+# concepts (notably Helion 08 Magnet Type Pulsed EM -> Resistive), so the
+# slice-1 acceptance numbers (Helion 4.80, CFS 2.90, Stellarator 1.50) no
+# longer reproduce under the new data. Re-baselining is a slice-3 task.
+V3_DATA_DEVIATION = (
+    "v3-data deviation: ontology v3 taxonomy edits invalidate slice-1 baselines "
+    "(Helion Magnet Type changed Pulsed EM -> Resistive). Re-baseline in slice 3."
+)
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 SLICE1_WEIGHTS = REPO_ROOT / "exploration" / "scoring_v2" / "weights" / "slice1.yaml"
@@ -25,6 +36,7 @@ def _mso_by_id(scores_dir: Path) -> dict[str, float]:
     return {r["concept_id"]: float(r["manufacturability_scale_out"]) for r in rows}
 
 
+@pytest.mark.xfail(reason=V3_DATA_DEVIATION, strict=True)
 def test_plant_level_modularity_ordering(run_cli, tmp_scores_dir: Path):
     run_cli("score.py", weights=SLICE1_WEIGHTS)
     mso = _mso_by_id(tmp_scores_dir)

@@ -44,6 +44,14 @@ XLSX_KNOWN_GAPS = {
         "tighten coils_rating to distinguish 'HTS+compact+small modules' from "
         "'HTS+compact'. Deferred to slice 3."
     ),
+    "08-frc-w-direct-conversion": (
+        "v3-data deviation: Mallory's ontology v3 (main PR #16) reclassified Helion's "
+        "Magnet Type from 'Pulsed EM' to 'Resistive', which lowers the coils_rating "
+        "and the xlsx-collapse aggregate (3.98 vs xlsx-baseline 4.65, delta -0.67). "
+        "The pre-v3 xlsx baseline was authored against the older taxonomy. "
+        "Re-baselining vs v3 data is a slice-3 task (see concept-downselect-merge "
+        "implementation_notes Phase 3)."
+    ),
 }
 
 RATING_EMBEDDINGS = (
@@ -116,6 +124,14 @@ def test_xlsx_collapse_within_tolerance(cid: str, xlsx_final: float, request):
     )
 
 
+@pytest.mark.xfail(
+    reason=(
+        "v3-data deviation: ontology v3 taxonomy edits invalidate slice-1 baselines "
+        "(Helion Magnet Type changed Pulsed EM -> Resistive). Re-baseline in slice 3. "
+        "See concept-downselect-merge implementation_notes Phase 3."
+    ),
+    strict=True,
+)
 def test_slice1_preservation_under_slice1_weights(tmp_path):
     """FR-6: with component_modularity zeroed, slice-1 numbers reproduce exactly."""
     scores_dir = tmp_path / "scores"

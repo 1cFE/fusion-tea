@@ -77,8 +77,10 @@ fuel:
 tritium_breeding:
   type: string
   required: true
-  extractor: taxonomy
-  taxonomy_column: "Tritium Breeding"
+  extractor: manual
+  # Source column "Tritium Breeding" was dropped from table.csv by ontology v3 (PR #16).
+  # Values for concepts 01-36 came from the pre-v3 taxonomy and remain authoritative.
+  # For 37/38/39 (Mallory net-new) values are hand-filled per the concept's design.
 
 neutron_management:
   type: enum
@@ -89,8 +91,10 @@ neutron_management:
     - "Minimal (aneutronic)"
     - "Reduced (D-He3)"
   required: true
-  extractor: taxonomy
-  taxonomy_column: "Neutron Management"
+  extractor: manual
+  # Source column "Neutron Management" was dropped from table.csv by ontology v3 (PR #16).
+  # Values for concepts 01-36 came from the pre-v3 taxonomy and remain authoritative.
+  # For 37/38/39 (Mallory net-new) values are hand-filled per the concept's design.
 
 # Added by slice 2 (component_modularity group).
 

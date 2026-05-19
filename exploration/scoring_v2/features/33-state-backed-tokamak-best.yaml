@@ -1,46 +1,46 @@
 _meta:
   concept_id: 33-state-backed-tokamak-best
-  name: State-Backed Tokamak - BEST
+  name: State-Backed Tokamak - BEST (D-T)
 confinement_family:
   value: MFE
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-19'
 driver_technology:
   value: LTS+HTS magnets (Nb3Sn/YBCO, 6.15T) + multi-method H&CD (50 MW)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-19'
 energy_capture:
   value: Thermal (unspecified)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-19'
 fuel:
   value: D-T
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-19'
 ife_driver:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-19'
 magnet_type:
   value: LTS+HTS
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-19'
 mfe_topology:
   value: Tokamak
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-19'
 mif_method:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-19'
 neutron_management:
   value: Heavy shielding (14 MeV)
   provenance: taxonomy
@@ -50,17 +50,17 @@ operation_mode:
   value: Quasi-steady
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-19'
 stellarator_type:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-19'
 tokamak_shape:
   value: Standard
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-19'
 tritium_breeding:
   value: TBD
   provenance: taxonomy
