@@ -195,15 +195,15 @@ grep -E '^(37|38|39),' /home/reid/1cfe/fusion-tea-concept-downselect/exploration
 
 ### Steps
 
-- [ ] Run pre-flight; abort to plan revision if companies don't match
-- [ ] For each of 37/38/39:
-  - [ ] Identify source dir on downselect: `exploration/concept_analysis/analyses/{37|38|39}-*`
-  - [ ] Identify target dir on main: `exploration/concept_analysis/analyses/{37|38|39}-*` (slug may differ; preserve main's slug)
-  - [ ] Copy `analysis.md`, `iter-01/` (including `sources/`, `model_output.txt`, `metrics.json`), and any per-concept assets
-  - [ ] Copy companion `knowledge/concept_research/{37|38|39}-*` dossier (preserve main's slug if it has one)
-- [ ] Enrich `table.csv` rows 37/38/39 with cell values from downselect WHERE main has empty/stub values, preserving main's identity columns (ID, Concept Name, Company, Driver Technology, Research ID) per FR-2
-- [ ] Commit as `port: net-new concepts 37/38/39 analyses from concept-downselect`
-- [ ] Append to ledger: from `a2004fa`, mark the 37/38/39 file subset as `[ported-with-transform: overlaid on main slugs]`
+- [x] Run pre-flight; companies aligned (37=NearStar, 38=SHINE, 39=ENN). Slugs differ slightly between branches.
+- [x] **REPLAN — Option C adopted.** Main has full v3-consistent analyses + multi-iter research for 37/38/39 (via commit `2ed0be7` post-PR #16). Verbatim port would overwrite newer work. New approach:
+  - [x] Preserve main's iterated analyses untouched.
+  - [x] Overlay only downselect's unique source files (3 markdown files in `iter-01/sources/`).
+  - [x] Preserve downselect's dossier.md per concept as `dossier_concept_downselect.md` (legacy reference).
+  - [x] Skip downselect's `exploration/concept_analysis/analyses/3{7|8|9}-…/{analysis.md, iter-*, model_output.txt, model_setup.py}` as `[skipped: superseded by main's post-v3 reanalysis]`.
+- [x] `table.csv` rows 37/38/39 already enriched in Phase 3 (17 N/A cells filled for enum schema).
+- [x] Commit as `phase 4: overlay concept-downselect 37/38/39 research sources + dossiers (Option C)`
+- [x] Ledger updated.
 
 ### Validation
 
@@ -416,7 +416,16 @@ Open the PR against `main` with the acceptance-criteria checklist as the PR body
 - Schema-level change: tritium_breeding/neutron_management extractor change from taxonomy → manual is a functional change to the framework, not a content port. Justified because the source columns were dropped from main's v3 schema.
 
 ### Phase 4 Completion
-[same structure]
+**Completed:** 2026-05-19 13:35
+**Actual Changes:**
+- Tree-copy of 6 files: 3 source markdowns into main's `iter-01/sources/`, 3 legacy dossiers renamed to `dossier_concept_downselect.md`.
+- No changes to main's analyses (preserved untouched per Option C).
+
+**Issues:**
+- Reality diverged from plan: main was not stub-only on 37/38/39; main had run a full v3-consistent reanalysis (commit `2ed0be7`) with multi-iter content. Paused for user direction; Option C (overlay sources only) chosen.
+
+**Deviations:**
+- Spec FR-5 literal text ("downselect's 37/38/39 analyses MUST exist on main") not satisfied verbatim — main's analyses retained as the v3-consistent baseline. FR-5 intent (no source-data loss) honored via the overlay. Documented in ledger with full skip list and justification.
 
 ### Phase 5 Completion
 [same structure]

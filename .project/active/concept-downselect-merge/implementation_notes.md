@@ -87,7 +87,14 @@ See `_downselect_filelist.txt` for the raw `git diff --name-status -M main..conc
 **Phase:** 4 + 5 (partial carve-out)
 **Files:** 1252 changed (renumber + 37/38/39 + split-17). Per Option B.3.a:
 - **Renumber subset** (relabels of 17a/b, 20a/b, 21–33 directories + `table.csv` ID-column rewrites + `scoring.py _C2/_HERITAGE` remap + 39-ID feature YAMLs) — [skipped: per FR-1/7]
-- **37/38/39 subset** (NearStar/SHINE/ENN analyses + research dossiers) — [pending Phase 4]
+- **37/38/39 subset** — [PARTIALLY PORTED — Phase 4 Option C, 2026-05-19]
+  - Main already had full v3-consistent analyses + multi-iter research (via commit `2ed0be7`) so verbatim port would overwrite newer work.
+  - **Ported** (3 source files + 3 legacy dossiers): `nearstar-mtif-technical-overview.md` (→ main 37 iter-01/sources/), `shine-accelerator-driven-fusion-overview.md` (→ main 38 iter-01/sources/), `enn-pb11-spherical-torus-roadmap.md` (→ main 39 iter-01/sources/); each `dossier.md` renamed `dossier_concept_downselect.md`.
+  - **Skipped: superseded by main's post-v3 reanalysis (commit `2ed0be7`)**:
+    - `exploration/concept_analysis/analyses/37-magnetized-target-inertial-fusion/{analysis.md, iter-1, iter-2, iter-3, model_output.txt, model_setup.py}` (downselect's slug, full analysis tree)
+    - `exploration/concept_analysis/analyses/38-accelerator-driven-fusion/{analysis.md, iter-1, model_output.txt, model_setup.py}`
+    - `exploration/concept_analysis/analyses/39-cs-free-spherical-tokamak-pb11/{analysis.md, iter-1, iter-2, model_output.txt, model_setup.py}`
+  - Justification: main's analyses use v3 ontology (post-PR-#16); downselect's predate v3. Replacing would lose v3-consistency. Source-side overlay preserves unique research data while keeping main's iterated analyses as the canonical record.
 - **Split-17 subset** (Focused Energy + Xcimer separate analyses) — [pending Phase 5]
 - **`scripts/renumber/{manifest.json,manifest.diff.txt,inventory.md,r2_ops.log}`** — [skipped: renumber tooling artifacts]
 **Status:** pending Phase 4 + Phase 5 work
