@@ -16,46 +16,41 @@ See `_downselect_filelist.txt` for the raw `git diff --name-status -M main..conc
 ## Per-commit ledger
 
 ### 6eb2291 — First pass research for down-select methodology
-**Phase:** 1
-**Files added:** ~145 (research dossiers under `knowledge/concept_research/`, methodology drafts under `.project/research/`)
-**Status:** pending
-**Notes:**
+**Phase:** 1 (cherry-pick `8eadcd6`)
+**Files added:** ~145 — meta-analysis dossiers under `knowledge/meta_analysis/` (NOT `concept_research/` as spec phrased; downselect placed them in `meta_analysis/`), plus `.project/research/` methodology drafts.
+**Status:** [ported] verbatim
+**Notes:** Path correction noted — spec used `knowledge/concept_research/`; actual path is `knowledge/meta_analysis/`. No content change.
 
 ### 539a1b5 — New research for concept downselect. Q1-Q3 research done.
-**Phase:** 1
-**Files added:** ~303
-**Status:** pending
-**Notes:**
+**Phase:** 1 (cherry-pick `58ff239`)
+**Files added:** ~303 — additional meta-analysis dossiers (megaprojects, what_is_foak, learning_from_case_studies, …) + Q1-Q3 research notes
+**Status:** [ported] verbatim
 
 ### 57ece9e — working on the downselect
-**Phase:** 1
+**Phase:** 1 (cherry-pick `23e6c57`)
 **Files added:** 3 (`.project/concepts/concept-trace.md`, `down_select/concept_part2.md`, `down_select/research_q4_q5.md`)
-**Status:** pending
-**Notes:**
+**Status:** [ported] verbatim
 
 ### 1d9937a — Pass 1 on the explainer
-**Phase:** 1
-**Files added/modified:** 39 (worked_examples scripts/md, `docs/demo/down-select.html`)
-**Status:** pending
-**Notes:**
+**Phase:** 1 (cherry-pick `679a649`)
+**Files added/modified:** 39 — `worked_examples/` scripts (`run_critique.sh`, `run_revise.sh`, `run_trace.sh`) + prompts + initial `docs/demo/down-select.html` (1379 lines)
+**Status:** [ported] verbatim
 
 ### ab19c2a — pass 1.1
-**Phase:** 1
-**Files modified/deleted:** 12 (trace/triage cleanup)
-**Status:** pending
-**Notes:**
+**Phase:** 1 (cherry-pick `45ca6b2`)
+**Files modified/deleted:** 12 — `trace_*.md` cleanup (deleted: trace_14, trace_15, trace_26, triage_v0_results, decision_output_schema_v0, methodology_revision_v1, explainer_updates, trace_08-helion); new: explainer_feedback_v1, explainer_v2_section3_draft, four_stage_validation
+**Status:** [ported] verbatim
 
 ### f7f5da8 — pass 2
-**Phase:** 1
-**Files modified:** 7 (worked_examples expansions; `docs/demo/down-select.html`; `uv.lock`)
-**Status:** pending
-**Notes:**
+**Phase:** 1 (cherry-pick `1dc2314`)
+**Files modified:** 6 of 7 ported; uv.lock conflicted
+**Status:** [ported-with-conflict-resolution: uv.lock taken from ours (main); pyproject.toml unchanged so no functional dep loss; reconcile via `uv sync` after Phase 3 if scoring_v2 introduces deps]
+**Notes:** All content files landed clean: `worked_examples/08-helion.md`, `worked_examples/14-general-fusion.md`, `docs/demo/down-select.html` (1350 lines after pass 2), `.project/concepts/down_select/concept_part2.md`, `explainer_outline.md`, `explainer_v2_section3_draft.md`.
 
 ### e7964c8 — Downselect pass 3
-**Phase:** 1
-**Files modified/added:** 3 (`scoring-framework-v2.md`, triple-product risk research, `down-select.html`)
-**Status:** pending
-**Notes:**
+**Phase:** 1 (cherry-pick `ef74629`)
+**Files added/modified:** 3 — `.project/concepts/scoring-framework-v2.md` (222 lines), `.project/research/20260515-143425_triple-product-technology-risk-framework.md`, `docs/demo/down-select.html` (final +1095/-141)
+**Status:** [ported] verbatim
 
 ### 8585ddd — Added the Wurzel and Hsu paper
 **Phase:** 2

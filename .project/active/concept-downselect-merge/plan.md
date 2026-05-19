@@ -47,12 +47,12 @@ Create the working branch off `main`, capture the baseline state of `main` and t
 
 ### Steps
 
-- [ ] Confirm `main` head is `8d59784`: `git -C /home/reid/1cfe/fusion-tea log -1 --format=%H main`
-- [ ] Create branch: `git checkout -b concept-downselect-rebase main`
-- [ ] Capture pre-merge file ledger (downselect side): `git -C /home/reid/1cfe/fusion-tea-concept-downselect diff --name-status -M main..concept-downselect > .project/active/concept-downselect-merge/_downselect_filelist.txt`
-- [ ] Capture downselect commit list: `git -C /home/reid/1cfe/fusion-tea-concept-downselect log --oneline main..concept-downselect > .project/active/concept-downselect-merge/_downselect_commits.txt`
-- [ ] Create `implementation_notes.md` skeleton with one section per downselect commit
-- [ ] Initial pipeline baseline: `uv run agentic-mbse status > /tmp/status_pre.txt && uv run pytest --co -q > /tmp/tests_pre.txt 2>&1`
+- [x] Confirm `main` head is `8d59784`: `git -C /home/reid/1cfe/fusion-tea log -1 --format=%H main`
+- [x] Create branch: `git checkout -b concept-downselect-rebase main`
+- [x] Capture pre-merge file ledger (downselect side): `git -C /home/reid/1cfe/fusion-tea-concept-downselect diff --name-status -M main..concept-downselect > .project/active/concept-downselect-merge/_downselect_filelist.txt`
+- [x] Capture downselect commit list: `git -C /home/reid/1cfe/fusion-tea-concept-downselect log --oneline main..concept-downselect > .project/active/concept-downselect-merge/_downselect_commits.txt`
+- [x] Create `implementation_notes.md` skeleton with one section per downselect commit
+- [x] Initial pipeline baseline: `uv run agentic-mbse status > /tmp/status_pre.txt && uv run pytest --co -q > /tmp/tests_pre.txt 2>&1`
 
 ### Validation
 
@@ -77,10 +77,10 @@ These commits truly are disjoint from main. If `down-select.html` was edited on 
 
 ### Steps
 
-- [ ] Cherry-pick in order: `git cherry-pick 6eb2291 539a1b5 57ece9e 1d9937a ab19c2a f7f5da8 e7964c8`
-- [ ] If any conflict: resolve last-wins from downselect for `docs/demo/down-select.html` (the only realistic collision); log resolution in ledger
-- [ ] Append to ledger: for each of the 7 commits, list files-added/modified, mark `[ported]` or `[ported-with-conflict-resolution: <notes>]`
-- [ ] `uv run agentic-mbse status` exits 0
+- [x] Cherry-pick in order: `git cherry-pick 6eb2291 539a1b5 57ece9e 1d9937a ab19c2a f7f5da8 e7964c8`
+- [x] If any conflict: resolve last-wins from downselect for `docs/demo/down-select.html` (the only realistic collision); log resolution in ledger
+- [x] Append to ledger: for each of the 7 commits, list files-added/modified, mark `[ported]` or `[ported-with-conflict-resolution: <notes>]`
+- [x] `uv run agentic-mbse status` exits 0
 
 ### Validation
 
@@ -362,13 +362,34 @@ Open the PR against `main` with the acceptance-criteria checklist as the PR body
 [TO BE FILLED DURING IMPLEMENTATION]
 
 ### Phase 0 Completion
-**Completed:** —
-**Actual Changes:** —
-**Issues:** —
-**Deviations:** —
+**Completed:** 2026-05-19 12:30
+**Actual Changes:**
+- Branch `concept-downselect-rebase` created off main @ `8d59784`
+- Setup commit `9704b5d` lands planning artifacts (spec, plan, report, ledger skeleton) and baselines (`_downselect_filelist.txt`, `_downselect_commits.txt`)
+- Baseline: `agentic-mbse status` exit 0; pytest collects 538 tests (5 pre-existing unrelated collection errors under `generated/solar_battery/`)
+
+**Issues:** None.
+
+**Deviations:**
+- `_downselect_filelist.txt` regenerated with `diff.renameLimit=5000` after first attempt's "exhaustive rename detection was skipped" warning — final file is 2348 entries with rename detection on.
+- Pytest collection time is ~5min; baseline file is committed for audit but not re-run per phase (only `pytest tests/scoring_v2/` is gating in Phase 3, full suite in Phase 6).
 
 ### Phase 1 Completion
-[same structure]
+**Completed:** 2026-05-19 12:35
+**Actual Changes:**
+- 7 commits cherry-picked: `8eadcd6` (6eb2291), `58ff239` (539a1b5), `23e6c57` (57ece9e), `679a649` (1d9937a), `45ca6b2` (ab19c2a), `1dc2314` (f7f5da8), `ef74629` (e7964c8)
+- All meta-analysis dossiers landed under `knowledge/meta_analysis/` (not `knowledge/concept_research/` as the spec phrased — the actual downselect path was `meta_analysis/`); ledger reflects.
+- `.project/concepts/down_select/` populated (concept, research_q1_q3, research_q4_q5, four_stage_validation, explainer_outline + v2, worked_examples scripts/md, trace_*, etc.)
+- `docs/demo/down-select.html` lands at 1350 lines
+- `.project/concepts/scoring-framework-v2.md` (222 lines)
+- `.project/research/20260515-143425_triple-product-technology-risk-framework.md`
+
+**Issues:**
+- Conflict on `uv.lock` during `f7f5da8` (pass 2). Resolved take-ours; `pyproject.toml` was untouched so no real dep change needed at this point. Will reconcile via `uv sync` after Phase 3 if scoring_v2 introduces deps.
+
+**Deviations:**
+- `docs/demo/down-select.html` did NOT conflict — main had not modified it in the time window since merge-base, contrary to the cautious prediction in the plan. Clean landing.
+- Spec said meta-analysis dossiers go under `knowledge/concept_research/`; actual downselect path was `knowledge/meta_analysis/`. No file content changed; only the path-expectation note in the spec is mildly stale. Updating ledger accordingly.
 
 ### Phase 2 Completion
 [same structure]
