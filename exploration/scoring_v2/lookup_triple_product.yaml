@@ -1,0 +1,133 @@
+# Triple product lookup table metadata.
+#
+# Numerical values are NOT here — they live in weights/default.yaml under
+# technical_feasibility.required_triple_product and
+# technical_feasibility.achieved_triple_product.
+# This file documents provenance and rationale.
+
+required_triple_product:
+  description: |
+    Required triple product (n·T·τ in keV·s/m³) for scientific breakeven
+    (Q_sci = 1) at the optimal ion temperature for each fuel. Derived
+    from the Lawson criterion accounting for bremsstrahlung losses.
+    These are breakeven targets, not commercial operating targets.
+  entries:
+    D-T:
+      value: 3.0e21
+      source: "Wurzel & Hsu 2022, Fig. 2 (Lawson criterion, T_opt ≈ 15 keV)"
+    D-D:
+      value: 3.0e23
+      source: "Wurzel & Hsu 2022 (~100x harder than D-T)"
+    D-He3:
+      value: 5.0e22
+      source: "Wurzel & Hsu 2022 (~17x harder than D-T)"
+    p-B11:
+      value: 3.0e23
+      source: "Wurzel & Hsu 2022 (~100x harder than D-T, similar to D-D)"
+    Unknown:
+      value: 3.0e23
+      notes: "Conservative default — treat as advanced-fuel-class until disclosed."
+
+achieved_triple_product:
+  description: |
+    Best demonstrated triple product (n·T·τ in keV·s/m³) by architectural
+    family. Keys are 'Confinement Family|Confinement Concept' as emitted
+    by lib/extractors/derived.py. Families with no peer-reviewed
+    measurement are omitted; the embedding floors them at score 1.0.
+
+  mfe_tokamak:
+    value: 1.5e21
+    source: "JT-60U / JET equivalent D-T (Wurzel & Hsu 2022)"
+    notes: "Same value across compact / spherical / negative-T / standard variants."
+
+  mfe_stellarator:
+    value: 1.0e20
+    source: "W7-X 2025 records (IPP press release, May 22 2025)"
+    notes: "All stellarator variants (QI, modular, planar, helical) at same level."
+
+  mfe_frc_beam_driven:
+    value: 1.0e19
+    source: "TAE Norm; Wurzel & Hsu 2022 FRC data"
+    key: "MFE|FRC"
+
+  mfe_mirror:
+    value: 1.0e18
+    source: "GAMMA-10 era (no commercial-scale measurement since)"
+
+  mfe_z_pinch_sheared_flow:
+    value: 1.0e17
+    source: "Zap FuZE-3 pressure-based estimates (PRNewswire Nov 18 2025)"
+
+  mfe_levitated_dipole:
+    value: 1.0e17
+    source: "LDX results (historical, MIT)"
+
+  mif_frc_compression:
+    value: 1.0e19
+    source: "Helion Trenta disclosures"
+
+  mif_maglif:
+    value: 1.0e19
+    source: "Wurzel & Hsu 2022 (MagLIF Sandia data)"
+
+  mif_magnetized_target_pneumatic:
+    value: 1.0e18
+    source: "General Fusion PI / Plasma Compression demos"
+
+  ife_laser_direct_drive:
+    value: 5.0e21
+    source: "OMEGA hydro-equivalent / NIF-class direct drive"
+
+  ife_laser_indirect_drive:
+    value: 5.0e21
+    source: "NIF ignition 2022-2025 (Abu-Shawareb et al., PRL 132, 065102, 2024)"
+
+  ife_laser_fast_ignition:
+    value: 1.0e20
+    source: "FIREX (Osaka)"
+
+  ife_laser_ultrashort_pulse:
+    value: 1.0e18
+    source: "hb11 / nanostructured-target extrapolations (no peer-reviewed measurement)"
+    notes: "Optimistic placeholder; analyst should revisit if measurements emerge."
+
+  ife_laser_hybrid_drive:
+    value: 1.0e21
+    source: "OMEGA-class precedent (Xcimer's hybrid KrF approach)"
+
+  ife_heavy_ion:
+    value: 1.0e15
+    source: "NDCX-II / LBNL heavy-ion-beam research"
+
+  ife_projectile:
+    value: 1.0e17
+    source: "First Light demonstrations"
+
+  non_standard_plasma_focus:
+    value: 1.0e16
+    source: "LPP Fusion DPF (peer-reviewed)"
+
+no_data_concepts:
+  description: |
+    Families intentionally omitted from achieved_triple_product because
+    no peer-reviewed measurement exists for that architectural class.
+    The embedding scores these concepts at 1.0 via the no-data floor.
+  entries:
+    - "IFE|Laser ICF (liquid jet) (Cortex)"
+    - "IFE|Acoustic ICF (sonofusion)"
+    - "Non-Standard|Polywell"
+    - "Non-Standard|Electrostatic hybrid"
+    - "Non-Standard|Beam-target fusion (SHINE)"
+    - "Non-Standard|Muon-catalyzed fusion"
+
+laser_approach_modifier:
+  description: |
+    IFE-only modifier added to the bucket score after the gap-based
+    score is computed. Reflects the relative maturity of each laser
+    drive approach vs the NIF indirect-drive ignition benchmark.
+  values:
+    "Indirect drive":   {modifier:  0.0,  rationale: "NIF achieved ignition; reference point"}
+    "Direct drive":     {modifier: -0.25, rationale: "OMEGA hydro-equivalent ~75% of ignition"}
+    "Hybrid drive":     {modifier: -0.25, rationale: "Inherits OMEGA-class direct-drive precedent"}
+    "Fast ignition":    {modifier: -0.5,  rationale: "FIREX further from ignition pathway"}
+    "Ultrashort pulse": {modifier: -0.5,  rationale: "Different physics regime; less mature"}

@@ -68,9 +68,11 @@ def test_old_dimension_columns_gone(run_cli, tmp_scores_dir: Path):
         )
 
 
-# P3 wires modularity + supply_chain + customization + upper_cf (4 of 7).
-# P4 adds plant_complexity + technical_feasibility; P5 adds data_availability.
-_WIRED_AXES_NOW = {"modularity", "supply_chain", "customization", "upper_cf"}
+# P4 wires 6 of 7 axes (data_availability lands in P5).
+_WIRED_AXES_NOW = {
+    "modularity", "supply_chain", "customization", "upper_cf",
+    "plant_complexity", "technical_feasibility",
+}
 
 
 def test_wired_axes_score_others_null(run_cli, tmp_scores_dir: Path):

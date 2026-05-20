@@ -47,8 +47,12 @@ EXPECTED_AXES = (
 )
 
 # Axes whose embedding_weights are populated on the current branch.
-# P2 = modularity; P3 adds supply_chain, customization, upper_cf.
-WIRED_AXES_NOW = {"modularity", "supply_chain", "customization", "upper_cf"}
+# P2 = modularity; P3 = + supply_chain/customization/upper_cf;
+# P4 = + plant_complexity/technical_feasibility; P5 = + data_availability.
+WIRED_AXES_NOW = {
+    "modularity", "supply_chain", "customization", "upper_cf",
+    "plant_complexity", "technical_feasibility",
+}
 
 # Per-concept tolerance for predicted-score matching. The non-modularity
 # axes have known feature-data drift slated for P7 calibration review,
@@ -350,6 +354,8 @@ class TestSpecPredictedScoresLand:
         from tests.scoring_v2.test_supply_chain import KNOWN_DRIFTS as SC_DRIFTS  # noqa: PLC0415
         from tests.scoring_v2.test_customization import KNOWN_DRIFTS as CU_DRIFTS  # noqa: PLC0415
         from tests.scoring_v2.test_upper_cf import KNOWN_DRIFTS as UCF_DRIFTS  # noqa: PLC0415
+        from tests.scoring_v2.test_plant_complexity import KNOWN_DRIFTS as PC_DRIFTS  # noqa: PLC0415
+        from tests.scoring_v2.test_technical_feasibility import KNOWN_DRIFTS as TF_DRIFTS  # noqa: PLC0415
         run_cli("score.py")
         rows = _read_score_csv(tmp_scores_dir / "table.csv")
         out: dict = {}
@@ -359,10 +365,12 @@ class TestSpecPredictedScoresLand:
                 v = r[axis]
                 out[axis][r["concept_id"]] = float(v) if v else None
         out["_drifts_by_axis"] = {
-            "modularity":    set(MOD_DRIFTS),
-            "supply_chain":  set(SC_DRIFTS),
-            "customization": set(CU_DRIFTS),
-            "upper_cf":      set(UCF_DRIFTS),
+            "modularity":            set(MOD_DRIFTS),
+            "supply_chain":          set(SC_DRIFTS),
+            "customization":         set(CU_DRIFTS),
+            "upper_cf":              set(UCF_DRIFTS),
+            "plant_complexity":      set(PC_DRIFTS),
+            "technical_feasibility": set(TF_DRIFTS),
         }
         return out
 

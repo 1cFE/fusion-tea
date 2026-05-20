@@ -204,9 +204,37 @@ supply_chain:
     flibe:     0.5      # Moderate: half-weight to avoid double-counting Li-6 + Be
     kdp:       0.5      # Moderate: industrial manufacturing problem
 
+# ─────────────────────────────────────────────────────────────────────────
+# Plant Complexity — penalty-stack on 14 subsystem flags.
+#
+#   score = max(1.0, 5.0 - sum(severity_weights_of_triggered_subsystems))
+#
+# Triggers off ~10 v0.3.0 features. Critical (2.0), Severe (1.0), Moderate
+# (0.5) tiers per plant_complexity_implementation_spec.md.
+# ─────────────────────────────────────────────────────────────────────────
+
 plant_complexity:
   axis_weight: 1.0
-  embedding_weights: {}
+  embedding_weights:
+    plant_complexity_score: 1.0
+  subsystem_complexity_weights:
+    # Critical (2.0)
+    target_factory_high:        2.0     # target-using concept at >= 1 Hz rep rate
+    # Severe (1.0)
+    tritium_plant:              1.0
+    remote_maintenance:         1.0     # any neutronic fuel
+    cryoplant_lts:              1.0
+    high_power_aux:             1.0     # NBI / NBI+RF
+    disruption_mitigation:      1.0     # tokamak family + Z-pinch (sheared-flow)
+    pulsed_power_thermal:       1.0     # MIF / Z-pinch / DPF with thermal capture
+    # Moderate (0.5)
+    cryoplant_hts:              0.5
+    rf_aux:                     0.5     # ECRH / ICRH
+    hybrid_energy:              0.5     # Hybrid (thermal + direct)
+    target_factory_low:         0.5     # target-using concept at Sub-Hz
+    liquid_metal_handling:      0.5
+    current_drive:              0.5     # tokamak family + non-pulsed mode
+    levitation_stabilization:   0.5     # Levitated dipole concepts
 
 # ─────────────────────────────────────────────────────────────────────────
 # Customization — two sub-factors (thermal rejection + fuel safety)
@@ -244,9 +272,94 @@ upper_cf:
     neutronic_fuel:        1.0    # Severe: forced replacement outages
     non_renewable_blanket: 0.5    # Moderate: solid/static blanket replacement
 
+# ─────────────────────────────────────────────────────────────────────────
+# Technical Feasibility — triple-product gap on log scale.
+#
+#   gap = required[fuel] / achieved[family|concept]
+#   score = 5-tier bucket(log10(gap)) + laser_approach_modifier (IFE only)
+#
+# Source: Wurzel & Hsu 2022/2025 + supplementary references documented
+# in lookup_triple_product.yaml.
+# ─────────────────────────────────────────────────────────────────────────
+
 technical_feasibility:
   axis_weight: 1.0
-  embedding_weights: {}
+  embedding_weights:
+    technical_feasibility_score: 1.0
+
+  # Required triple product (n·T·τ in keV·s/m³) for Q_sci = 1 breakeven.
+  required_triple_product:
+    D-T:      3.0e21
+    D-D:      3.0e23
+    D-He3:    5.0e22
+    p-B11:    3.0e23
+    Unknown:  3.0e23
+
+  # Achieved triple product by architectural family|concept. Keys match
+  # the derived `confinement_concept` value (see lib/extractors/derived.py).
+  # Concepts whose family has no peer-reviewed measurement are omitted —
+  # the embedding returns None for them and the score floors at 1.0.
+  achieved_triple_product:
+    # Tokamak family — JT-60U/JET D-T projected equivalent
+    "MFE|Tokamak":                              1.5e21
+    "MFE|Compact tokamak":                      1.5e21
+    "MFE|Spherical tokamak":                    1.5e21
+    "MFE|Negative triangularity tokamak":       1.5e21
+
+    # Stellarator family — W7-X 2025 records, all variants treated equal
+    "MFE|Stellarator":                          1.0e20
+    "MFE|QI stellarator":                       1.0e20
+    "MFE|Modular stellarator":                  1.0e20
+    "MFE|Helical coil stellarator":             1.0e20
+    "MFE|Planar coil stellarator":              1.0e20
+
+    # MFE compact toroid (TAE-class FRC, beam-driven)
+    "MFE|FRC":                                  1.0e19
+
+    # MFE mirror / Z-pinch / dipole
+    "MFE|Mirror":                               1.0e18
+    "MFE|Z-pinch (sheared-flow)":               1.0e17
+    "MFE|Levitated dipole":                     1.0e17
+    "MFE|Levitated dipole (orbital)":           1.0e17
+
+    # MIF
+    "MIF|FRC compression (MIF)":                1.0e19    # Helion
+    "MIF|MagLIF":                               1.0e19    # Pacific Fusion
+    "MIF|Magnetized target fusion":             1.0e18    # General Fusion / NearStar
+
+    # IFE Laser variants
+    "IFE|Laser ICF (direct drive)":             5.0e21    # OMEGA/NIF class
+    "IFE|Laser ICF (indirect drive)":           5.0e21    # NIF ignition 2022-2025
+    "IFE|Laser ICF (fast ignition)":            1.0e20    # FIREX
+    "IFE|Laser ICF (ultrashort pulse)":         1.0e18    # hb11-class
+    "IFE|Laser ICF (hybrid drive)":             1.0e21    # OMEGA-class precedent
+    # "IFE|Laser ICF (liquid jet)" — Cortex: no triple-product measurement;
+    # falls through to floor via no-data treatment
+
+    # IFE non-laser drivers
+    "IFE|Heavy ion ICF":                        1.0e15    # NDCX-II / LBNL HIB research
+    "IFE|Projectile ICF":                       1.0e17    # First Light demos
+    # "IFE|Acoustic ICF (sonofusion)" — no peer-reviewed measurement; floor
+
+    # Non-Standard
+    "Non-Standard|Dense plasma focus":          1.0e16    # LPP DPF (peer-reviewed)
+    # "Non-Standard|Polywell" — IEC/Polywell no triple-product; floor
+    # "Non-Standard|Beam-target fusion" — SHINE: no plasma confinement; floor
+    # "Non-Standard|Muon-catalyzed fusion" — outside Lawson framework; floor
+    # "Non-Standard|Electrostatic hybrid" — no measurement; floor
+
+  # Laser approach modifier (IFE only). Reflects the relative maturity of
+  # each laser drive approach vs the NIF indirect-drive ignition benchmark.
+  # Added to the bucket score after the gap-based score is computed.
+  laser_approach_modifier:
+    "Indirect drive":                            0.00
+    "Direct drive":                             -0.25
+    "Hybrid drive":                             -0.25
+    "Fast ignition":                            -0.50
+    "Ultrashort pulse":                         -0.50
+    "N/A":                                       0.00
+    # "Liquid jet" intentionally omitted — Cortex is its own no-data
+    # architectural family, not a laser-approach variant of mainstream ICF
 
 data_availability:
   axis_weight: 1.0

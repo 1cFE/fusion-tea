@@ -796,3 +796,284 @@ def _operational_penalty_weight(
 def _upper_cf_score(operational_penalty_weight: float) -> float:
     """Upper-CF axis score: floor 1.0, ceiling 5.0."""
     return max(1.0, 5.0 - operational_penalty_weight)
+
+
+# =============================================================================
+# Plant Complexity axis (penalty-stack, 14 unique subsystem flags)
+#
+#   score = max(1.0, 5.0 - sum(severity_weights_of_triggered_subsystems))
+#
+# Triggers off ~10 v0.3.0 features. Subsystem flags include tritium plant,
+# remote maintenance, cryoplant (LTS vs HTS), target factory (high vs low
+# rep rate), pulsed-power-thermal coupling, aux heating, disruption
+# mitigation (tokamak family + sheared-flow Z-pinch), current drive,
+# liquid-metal handling, levitation stabilization, hybrid energy capture.
+# =============================================================================
+
+_PC_SUBSYSTEM_NAMES = (
+    "tritium_plant", "remote_maintenance", "hybrid_energy",
+    "cryoplant_lts", "cryoplant_hts",
+    "target_factory_high", "target_factory_low",
+    "pulsed_power_thermal", "high_power_aux", "rf_aux",
+    "disruption_mitigation", "current_drive",
+    "liquid_metal_handling", "levitation_stabilization",
+)
+
+# Confinement-concept sets used by trigger logic
+TOKAMAK_CONCEPTS = {
+    "Tokamak", "Compact tokamak", "Spherical tokamak",
+    "Negative triangularity tokamak",
+}
+DISRUPTION_PRONE_CONCEPTS = TOKAMAK_CONCEPTS | {"Z-pinch (sheared-flow)"}
+LEVITATED_DIPOLE_CONCEPTS = {"Levitated dipole", "Levitated dipole (orbital)"}
+
+# Repetition rates that trigger high / low rep-rate target factory tiers
+_HIGH_REP_RATES = {"~1 Hz", "~10 Hz", "High (>10 Hz)", "kHz"}
+_LOW_REP_RATES = {"Sub-Hz"}
+
+# IFE drivers that consume manufactured fuel targets per shot
+# (Acoustic implosion is in-bulk cavitation, NOT a manufactured target)
+_TARGET_USING_IFE_DRIVERS = {"Laser", "Heavy ion beam", "Projectile"}
+# MIF methods that consume manufactured fuel targets per shot
+# (Pneumatic compression / FRC compression compress in-situ plasma; MagLIF
+# uses a manufactured liner; "Magnetized target" / "Target compression"
+# also use a per-shot manufactured target)
+_TARGET_USING_MIF_METHODS = {"MagLIF", "Magnetized target", "Target compression"}
+
+
+def _load_pc_weights(weights_yaml: dict) -> dict[str, float]:
+    """Load plant_complexity subsystem severity weights, fail-loud on any
+    missing key."""
+    raw = (weights_yaml.get("plant_complexity", {})
+                       .get("subsystem_complexity_weights", {}))
+    missing = [s for s in _PC_SUBSYSTEM_NAMES if s not in raw]
+    if missing:
+        raise ValueError(
+            f"weights/default.yaml plant_complexity.subsystem_complexity_weights "
+            f"missing required keys: {missing}"
+        )
+    return {s: float(raw[s]) for s in _PC_SUBSYSTEM_NAMES}
+
+
+def _compute_triggered_pc_subsystems(
+    fuel, confinement_family, confinement_concept, ife_driver, mif_method,
+    magnet_type, blanket_config, energy_capture, primary_heating,
+    operation_mode, repetition_rate, weights,
+):
+    """Pure rule application — return the dict of triggered subsystem
+    flags and their weights for one concept's feature set."""
+    fuel = fuel or ""
+    cfam = confinement_family or ""
+    cconcept = confinement_concept or ""
+    ife_drv = ife_driver or ""
+    mif_meth = mif_method or ""
+    magnet = magnet_type or ""
+    raw_blanket = blanket_config or ""
+    energy = energy_capture or ""
+    heating = primary_heating or ""
+    op_mode = operation_mode or ""
+    rep_rate = repetition_rate or ""
+
+    # TBD blanket → Liquid metal default (matches Supply Chain TBD rule)
+    blanket = "Liquid metal" if raw_blanket == "TBD" else raw_blanket
+
+    triggered: dict[str, float] = {}
+
+    # Tritium plant: D-T except non-power neutron sources (SHINE-style)
+    if fuel == "D-T" and blanket != "N/A (non-power)":
+        triggered["tritium_plant"] = weights["tritium_plant"]
+
+    # Remote maintenance: any neutronic fuel
+    if fuel in ("D-T", "D-D"):
+        triggered["remote_maintenance"] = weights["remote_maintenance"]
+
+    # Hybrid energy capture (pure thermal NOT penalized — baseline cost)
+    if energy == "Hybrid (thermal + direct)":
+        triggered["hybrid_energy"] = weights["hybrid_energy"]
+    # TBD energy capture NOT penalized per analyst direction
+
+    # Cryoplant (mutually exclusive LTS / HTS)
+    if magnet in ("LTS", "LTS+HTS") or "LTS" in magnet:
+        triggered["cryoplant_lts"] = weights["cryoplant_lts"]
+    elif magnet.startswith("HTS"):
+        triggered["cryoplant_hts"] = weights["cryoplant_hts"]
+
+    # Auxiliary heating
+    if heating in ("NBI", "RF + NBI"):
+        triggered["high_power_aux"] = weights["high_power_aux"]
+    elif heating in ("RF (ECRH)", "RF (ICRH)"):
+        triggered["rf_aux"] = weights["rf_aux"]
+
+    # Target factory (mutually exclusive high / low)
+    uses_targets = (
+        (cfam == "IFE" and ife_drv in _TARGET_USING_IFE_DRIVERS)
+        or (cfam == "MIF" and mif_meth in _TARGET_USING_MIF_METHODS)
+    )
+    if uses_targets:
+        if rep_rate in _HIGH_REP_RATES:
+            triggered["target_factory_high"] = weights["target_factory_high"]
+        elif rep_rate in _LOW_REP_RATES:
+            triggered["target_factory_low"] = weights["target_factory_low"]
+
+    # Pulsed-power architecture with thermal-cycle energy capture
+    is_pulsed_power_arch = (
+        cfam == "MIF"
+        or "Z-pinch" in cconcept
+        or "Dense plasma focus" in cconcept
+    )
+    has_thermal = energy.startswith("Thermal") or energy == "Hybrid (thermal + direct)"
+    if is_pulsed_power_arch and has_thermal:
+        triggered["pulsed_power_thermal"] = weights["pulsed_power_thermal"]
+
+    # Disruption mitigation (tokamak family + sheared-flow Z-pinch)
+    if cconcept in DISRUPTION_PRONE_CONCEPTS:
+        triggered["disruption_mitigation"] = weights["disruption_mitigation"]
+
+    # Steady-state current drive (tokamaks only, non-pulsed operation)
+    if cconcept in TOKAMAK_CONCEPTS and op_mode in ("Steady-state", "Quasi-steady"):
+        triggered["current_drive"] = weights["current_drive"]
+
+    # Liquid metal blanket handling (FLiBe, LiPb, pure Li flows)
+    if blanket == "Liquid metal":
+        triggered["liquid_metal_handling"] = weights["liquid_metal_handling"]
+
+    # Levitated dipole mechanical stabilization (OpenStar, Zephyr)
+    if cconcept in LEVITATED_DIPOLE_CONCEPTS:
+        triggered["levitation_stabilization"] = weights["levitation_stabilization"]
+
+    return triggered
+
+
+@embedding(
+    "subsystem_complexity_weight",
+    inputs=[
+        "fuel", "confinement_family", "confinement_concept",
+        "ife_driver", "mif_method", "magnet_type", "blanket_config",
+        "energy_capture", "primary_heating", "operation_mode",
+        "repetition_rate",
+    ],
+)
+def _subsystem_complexity_weight(
+    fuel, confinement_family, confinement_concept, ife_driver, mif_method,
+    magnet_type, blanket_config, energy_capture, primary_heating,
+    operation_mode, repetition_rate,
+    *, weights_yaml: dict,
+) -> float:
+    """Sum of severity weights of all triggered plant-complexity flags."""
+    weights = _load_pc_weights(weights_yaml)
+    triggered = _compute_triggered_pc_subsystems(
+        fuel, confinement_family, confinement_concept, ife_driver, mif_method,
+        magnet_type, blanket_config, energy_capture, primary_heating,
+        operation_mode, repetition_rate, weights,
+    )
+    return sum(triggered.values())
+
+
+@embedding(
+    "plant_complexity_score",
+    inputs=["subsystem_complexity_weight"],
+)
+def _plant_complexity_score(subsystem_complexity_weight: float) -> float:
+    """Plant Complexity axis score: floor 1.0, ceiling 5.0."""
+    return max(1.0, 5.0 - subsystem_complexity_weight)
+
+
+# =============================================================================
+# Technical Feasibility axis (triple-product gap, log-scale bucket)
+#
+#   gap = required_triple_product[fuel] / achieved_triple_product[family|concept]
+#   score = bucket(log10(gap))           # 5-tier ladder
+#         + laser_approach_modifier      # IFE concepts only (Direct -0.25 etc.)
+#
+# Source: Wurzel & Hsu 2022/2025 + supplementary references documented in
+# lookup_triple_product.yaml.
+# =============================================================================
+
+import math  # only place this is needed; kept local-style for clarity
+
+# log10(gap) → score; first bucket whose max_log_gap >= log_gap wins.
+_TF_LOG_GAP_BUCKETS = (
+    (0.0, 5.0),    # at or above target (NIF-class ignition)
+    (1.0, 4.0),    # within 10x (within striking distance)
+    (3.0, 3.0),    # 10x-1000x (decades of incremental progress)
+    (5.0, 2.0),    # 1000x-100,000x (multiple architectural generations)
+)
+_TF_FLOOR_SCORE = 1.0   # > 5 orders of magnitude OR no data
+
+_TF_REQUIRED_FUELS = {"D-T", "D-D", "D-He3", "p-B11", "Unknown"}
+
+
+def _load_tf_tables(weights_yaml: dict) -> tuple[dict, dict]:
+    """Load (required_triple_product, achieved_triple_product) from default.yaml."""
+    tf = weights_yaml.get("technical_feasibility", {})
+    required = tf.get("required_triple_product")
+    achieved = tf.get("achieved_triple_product")
+    if required is None or achieved is None:
+        raise ValueError(
+            "weights/default.yaml technical_feasibility axis missing "
+            "required_triple_product or achieved_triple_product"
+        )
+    missing = _TF_REQUIRED_FUELS - set(required)
+    if missing:
+        raise ValueError(
+            f"technical_feasibility.required_triple_product missing fuels: {missing}"
+        )
+    return ({k: float(v) for k, v in required.items()},
+            {k: float(v) for k, v in achieved.items()})
+
+
+def _tf_score_from_log_gap(log_gap: float) -> float:
+    for max_log_gap, score in _TF_LOG_GAP_BUCKETS:
+        if log_gap <= max_log_gap:
+            return score
+    return _TF_FLOOR_SCORE
+
+
+@embedding(
+    "triple_product_gap",
+    inputs=["fuel", "confinement_family", "confinement_concept"],
+)
+def _triple_product_gap(
+    fuel: str, confinement_family: str, confinement_concept: str,
+    *, weights_yaml: dict,
+) -> float | None:
+    """Ratio of required to achieved triple product.
+
+    Returns None when no achieved measurement exists for the
+    architectural family — the score embedding floors these at 1.0.
+    """
+    fuel = fuel or "Unknown"
+    required, achieved = _load_tf_tables(weights_yaml)
+    if fuel not in required:
+        raise ValueError(
+            f"unknown fuel {fuel!r}; expected one of {sorted(required)}"
+        )
+    key = f"{confinement_family or ''}|{confinement_concept or ''}"
+    a = achieved.get(key)
+    if a is None or a <= 0:
+        return None
+    return required[fuel] / a
+
+
+@embedding(
+    "technical_feasibility_score",
+    inputs=["triple_product_gap", "confinement_family", "laser_approach"],
+)
+def _technical_feasibility_score(
+    triple_product_gap: float | None,
+    confinement_family: str, laser_approach: str,
+    *, weights_yaml: dict,
+) -> float:
+    """Map log10(gap) to the 5-tier score; apply IFE laser-approach modifier."""
+    if triple_product_gap is None:
+        return _TF_FLOOR_SCORE
+    if triple_product_gap <= 0 or math.isinf(triple_product_gap):
+        return _TF_FLOOR_SCORE
+    log_gap = math.log10(triple_product_gap)
+    score = _tf_score_from_log_gap(log_gap)
+    if confinement_family == "IFE" and laser_approach:
+        modifier = (weights_yaml.get("technical_feasibility", {})
+                                .get("laser_approach_modifier", {})
+                                .get(laser_approach, 0.0))
+        score = max(1.0, min(5.0, score + float(modifier)))
+    return score
