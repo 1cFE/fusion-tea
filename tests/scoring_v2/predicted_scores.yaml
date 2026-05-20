@@ -23,24 +23,58 @@
 # Tolerance: 0.05 (rounding). Updates require coordinated spec edit + this file.
 
 # ----------------------------------------------------------------------
-# Modularity (v5) — SPARSE anchors from spec body; full table TODO
+# Modularity (v5) — full 40 from modularity_matrix_v5.md (uploaded 2026-05-20)
+# Matrix IDs translated to v3 ontology IDs per the spec's "Known ID drift" table:
+#   matrix 17 = v3 17b (Focused Energy)
+#   matrix 27 = v3 17a (Xcimer)
+#   matrix 20/21 = v3 20a/20b (Type One / Renaissance)
+#   matrix 22-26 = v3 21-25 (shifted by 1)
+#   matrix 28-30 = v3 27-29 (shifted by 1)
+#   matrix 31 = v3 26 AND v3 30 (both Inertia concepts consolidated in v5)
+#   matrix 32-34 = v3 31-33 (shifted by 1)
+#   23 Marvel, 31 Blue Laser, 32 GenF: imputed in v5 from architectural peers
 # ----------------------------------------------------------------------
-# TODO: populate all 40 from modularity_matrix_v5.md when uploaded.
-# The 10 entries below are explicit anchors from the modularity spec body.
 modularity:
   "01-hts-compact-tokamak": 3.71              # CFS ARC (worked example A)
-  "07-maglif": 4.93                           # Pacific MagLIF
-  "08-frc-w-direct-conversion": 5.00          # Helion (worked example B)
-  "12-levitated-dipole": 2.68                 # OpenStar
-  "13-electrostatic-hybrid": 4.78             # Avalanche
+  "02-acoustic-icf-sonofusion": 4.59          # Sonofusion (desktop acoustic + 100 units)
+  "03-laser-icf-liquid-jet-target": 4.41      # Cortex (DPSSL D-D)
+  "04-laser-icf": 4.37                        # hb11 (DPSSL p-B11)
+  "05-planar-coil-stellarator": 3.11          # Thea planar
+  "06-magnetic-mirror": 4.08                  # Pale Blue (aneutronic mirror)
+  "07-maglif": 4.93                           # Pacific MagLIF (matrix #3)
+  "08-frc-w-direct-conversion": 5.00          # Helion (worked example B; top)
+  "09-qi-stellarator-hts": 3.03               # Proxima QI
+  "10-large-scale-stellarator": 3.03          # Gauss HELIAS
+  "11-magnetic-mirror": 4.01                  # Realta (D-T mirror)
+  "12-levitated-dipole": 2.68                 # OpenStar (single dipole → um=1)
+  "13-electrostatic-hybrid": 4.78             # Avalanche (desktop + 200 units)
   "14-magnetized-target-fusion-pneumatic-compression": 4.88  # General Fusion
-  "16-muon-catalyzed-fusion": 2.54            # Acceleron
-  "19-orbital-levitated-dipole": 2.70         # Zephyr
-  "33-state-backed-tokamak-best": 1.91        # BEST (worked example C)
-  "36-helical-coil-stellarator": 2.03         # Helical Fusion
-  "37-magnetized-target-inertial-fusion-mtif": 5.00  # NearStar MTIF
-  "38-particle-accelerator-driven-fusion": 2.54  # SHINE
-  # remaining ~28 concepts: null (pending v5 matrix)
+  "15-sheared-flow-stabilized-z-pinch": 4.07  # Zap (50 capacitor modules)
+  "16-muon-catalyzed-fusion": 2.54            # Acceleron (single accelerator)
+  "17a-laser-icf-hybrid-drive": 2.86          # Xcimer (matrix 27; ~4 e-beam tanks)
+  "17b-laser-icf-fast-ignition": 4.36         # Focused (matrix 17; DPSSL D-T)
+  "18-p-b11-frc": 3.77                        # TAE (aneutronic FRC)
+  "19-orbital-levitated-dipole": 2.70         # Zephyr (orbital dipole; um=1)
+  "20a-type-one-stellarator": 3.03            # Type One (matrix 20)
+  "20b-renaissance-stellarator": 3.03         # Renaissance (matrix 21)
+  "21-spherical-tokamak-hts": 3.59            # Tokamak Energy ST (matrix 22)
+  "22-projectile-icf": 3.80                   # First Light (matrix 23)
+  "23-laser-icf-nanostructured-target": 4.37  # Marvel (matrix 24; imputed from hb11)
+  "24-dense-plasma-focus": 3.59               # LPPFusion DPF (matrix 25)
+  "25-heavy-ion-beam-icf": 3.04               # Intensity heavy-ion (matrix 26; single accel)
+  "26-laser-icf-indirect-drive": 4.36         # Inertia indirect (matrix 31)
+  "27-polywell": 4.28                         # EMC2 Polywell (matrix 28; only 6 units)
+  "28-hts-tokamak-full-hts": 3.50             # Energy Singularity (matrix 29; integrated coils)
+  "29-negative-triangularity-tokamak": 3.71   # Firefly NTT (matrix 30; MANTA proxy)
+  "30-laser-icf-nif-commercialization": 4.36  # Inertia NIF-comm (matrix 31, same as #26)
+  "31-laser-icf-oec-architecture": 4.36       # Blue Laser OEC (matrix 32; imputed from Focused)
+  "32-laser-icf-french-national": 4.36        # GenF (matrix 33; imputed from Focused)
+  "33-state-backed-tokamak-best": 1.91        # BEST (matrix 34; worked example C; matrix bottom)
+  "35-polomac-magnetic-confinement": 2.84     # Polomac (D-D dipole; 4 poloidal magnets)
+  "36-helical-coil-stellarator": 2.03         # Helical Fusion (continuous winding → um=1)
+  "37-magnetized-target-inertial-fusion-mtif": 5.00  # NearStar MTIF (top tier with Helion)
+  "38-particle-accelerator-driven-fusion": 2.54  # SHINE (single accelerator)
+  "39-spherical-tokamak-cs-free-p-b11": 3.63  # ENN EHL-2 (compact spherical HTS + aneutronic)
 
 # ----------------------------------------------------------------------
 # Supply Chain — full 40 (from supply_chain_implementation_spec.md)
