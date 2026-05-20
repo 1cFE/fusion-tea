@@ -1,0 +1,1153 @@
+=== ls -laR ===
+knowledge/concept_research/17-laser-icf-direct-drive:
+total 76
+drwxrwxr-x  5 reid reid  4096 May 19 13:34 .
+drwxrwxr-x 43 reid reid  4096 May 17 22:22 ..
+-rw-rw-r--  1 reid reid  4238 Apr 11 14:52 changelog.md
+-rw-rw-r--  1 reid reid 15049 May 19 13:34 dossier_17a_xcimer_concept_downselect.md
+-rw-rw-r--  1 reid reid 14992 May 19 13:34 dossier_17b_focused_concept_downselect.md
+-rw-rw-r--  1 reid reid 14508 Apr 11 14:52 dossier.md
+drwxrwxr-x  3 reid reid  4096 Apr 11 14:52 iter-01
+drwxrwxr-x  3 reid reid  4096 Apr 11 14:52 iter-02
+drwxrwxr-x  3 reid reid  4096 Apr  5 21:51 iter-03
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-01:
+total 64
+drwxrwxr-x 3 reid reid  4096 Apr 11 14:52 .
+drwxrwxr-x 5 reid reid  4096 May 19 13:34 ..
+-rw-rw-r-- 1 reid reid 14940 Apr 11 14:52 output.md
+-rw-rw-r-- 1 reid reid 27780 Apr 11 14:52 prompt.md
+drwxrwxr-x 4 reid reid  4096 Apr 11 14:52 sources
+-rw-rw-r-- 1 reid reid  5131 Apr 11 14:52 synthesis_prompt.md
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-01/sources:
+total 24
+drwxrwxr-x 4 reid reid 4096 Apr 11 14:52 .
+drwxrwxr-x 3 reid reid 4096 Apr 11 14:52 ..
+drwxrwxr-x 2 reid reid 4096 Apr 11 14:52 focused-energy-technology
+-rw-rw-r-- 1 reid reid 1653 Apr 11 14:52 focused-energy-technology.md
+drwxrwxr-x 2 reid reid 4096 Apr 11 14:52 xcimer-energy-approach
+-rw-rw-r-- 1 reid reid 2398 Apr 11 14:52 xcimer-energy-approach.md
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-01/sources/focused-energy-technology:
+total 60
+drwxrwxr-x 2 reid reid  4096 Apr 11 14:52 .
+drwxrwxr-x 4 reid reid  4096 Apr 11 14:52 ..
+-rw-rw-r-- 1 reid reid   196 Apr 11 14:52 metrics.json
+-rw-rw-r-- 1 reid reid  1653 Apr 11 14:52 output.md
+-rw-rw-r-- 1 reid reid 44014 Mar 29 12:56 raw.html
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-01/sources/xcimer-energy-approach:
+total 128
+drwxrwxr-x 2 reid reid   4096 Apr 11 14:52 .
+drwxrwxr-x 4 reid reid   4096 Apr 11 14:52 ..
+-rw-rw-r-- 1 reid reid    197 Apr 11 14:52 metrics.json
+-rw-rw-r-- 1 reid reid   2398 Apr 11 14:52 output.md
+-rw-rw-r-- 1 reid reid 114078 Mar 29 12:56 raw.html
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-02:
+total 80
+drwxrwxr-x 3 reid reid  4096 Apr 11 14:52 .
+drwxrwxr-x 5 reid reid  4096 May 19 13:34 ..
+-rw-rw-r-- 1 reid reid 16965 Apr 11 14:52 output.md
+-rw-rw-r-- 1 reid reid 38535 Apr 11 14:52 prompt.md
+drwxrwxr-x 6 reid reid  4096 Apr 11 14:52 sources
+-rw-rw-r-- 1 reid reid  4451 Apr 11 14:52 synthesis_prompt.md
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources:
+total 156
+drwxrwxr-x 6 reid reid  4096 Apr 11 14:52 .
+drwxrwxr-x 3 reid reid  4096 Apr 11 14:52 ..
+drwxrwxr-x 2 reid reid  4096 Apr 11 14:52 focused-energy-callahan-interview
+-rw-rw-r-- 1 reid reid 13928 Apr 11 14:52 focused-energy-callahan-interview.md
+drwxrwxr-x 2 reid reid  4096 Apr 11 14:52 hylife-energy-conversion-notes
+-rw-rw-r-- 1 reid reid  4272 Apr 11 14:52 hylife-energy-conversion-notes.md
+drwxrwxr-x 2 reid reid  4096 Apr 11 14:52 xcimer-science-page
+-rw-rw-r-- 1 reid reid 17559 Apr 11 14:52 xcimer-science-page.md
+drwxrwxr-x 3 reid reid  4096 Apr 11 14:52 xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb
+-rw-rw-r-- 1 reid reid 89830 Apr 11 14:52 xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/focused-energy-callahan-interview:
+total 160
+drwxrwxr-x 2 reid reid   4096 Apr 11 14:52 .
+drwxrwxr-x 6 reid reid   4096 Apr 11 14:52 ..
+-rw-rw-r-- 1 reid reid    213 Apr 11 14:52 metrics.json
+-rw-rw-r-- 1 reid reid  13928 Apr 11 14:52 output.md
+-rw-rw-r-- 1 reid reid 131182 Mar 29 12:56 raw.html
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/hylife-energy-conversion-notes:
+total 72
+drwxrwxr-x 2 reid reid  4096 Apr 11 14:52 .
+drwxrwxr-x 6 reid reid  4096 Apr 11 14:52 ..
+-rw-rw-r-- 1 reid reid   221 Apr 11 14:52 metrics.json
+-rw-rw-r-- 1 reid reid  4272 Apr 11 14:52 output.md
+-rw-rw-r-- 1 reid reid 50580 Mar 29 12:56 raw.html
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/xcimer-science-page:
+total 180
+drwxrwxr-x 2 reid reid   4096 Apr 11 14:52 .
+drwxrwxr-x 6 reid reid   4096 Apr 11 14:52 ..
+-rw-rw-r-- 1 reid reid    197 Apr 11 14:52 metrics.json
+-rw-rw-r-- 1 reid reid  17559 Apr 11 14:52 output.md
+-rw-rw-r-- 1 reid reid 148969 Mar 29 12:56 raw.html
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb:
+total 112
+drwxrwxr-x 3 reid reid  4096 Apr 11 14:52 .
+drwxrwxr-x 6 reid reid  4096 Apr 11 14:52 ..
+-rw-rw-r-- 1 reid reid   820 Apr 11 14:52 cost.json
+-rw-rw-r-- 1 reid reid  3242 Apr 11 14:52 decisions.json
+drwxrwxr-x 2 reid reid  4096 Mar 29 15:26 images
+-rw-rw-r-- 1 reid reid   237 Apr 11 14:52 metrics.json
+-rw-rw-r-- 1 reid reid 89830 Apr 11 14:52 output.md
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb/images:
+total 6488
+drwxrwxr-x 2 reid reid   4096 Mar 29 15:26 .
+drwxrwxr-x 3 reid reid   4096 Apr 11 14:52 ..
+-rw-rw-r-- 1 reid reid 132583 Mar 29 15:24 page_000_table_0.png
+-rw-rw-r-- 1 reid reid  29546 Mar 29 15:24 page_017_table_0.png
+-rw-rw-r-- 1 reid reid 113503 Mar 29 15:24 page_019_table_0.png
+-rw-rw-r-- 1 reid reid  52427 Mar 29 15:24 page_024_table_0.png
+-rw-rw-r-- 1 reid reid 131400 Mar 29 15:24 XEC-20260224-Commercialization-of-LFE-Whtppr-SHARED-24-FEB-26.pdf-12-0.png
+-rw-rw-r-- 1 reid reid 299621 Mar 29 15:24 XEC-20260224-Commercialization-of-LFE-Whtppr-SHARED-24-FEB-26.pdf-13-0.png
+-rw-rw-r-- 1 reid reid 310015 Mar 29 15:24 XEC-20260224-Commercialization-of-LFE-Whtppr-SHARED-24-FEB-26.pdf-13-1.png
+-rw-rw-r-- 1 reid reid 504214 Mar 29 15:24 XEC-20260224-Commercialization-of-LFE-Whtppr-SHARED-24-FEB-26.pdf-13-2.png
+-rw-rw-r-- 1 reid reid 421602 Mar 29 15:24 XEC-20260224-Commercialization-of-LFE-Whtppr-SHARED-24-FEB-26.pdf-13-3.png
+-rw-rw-r-- 1 reid reid  31626 Mar 29 15:24 XEC-20260224-Commercialization-of-LFE-Whtppr-SHARED-24-FEB-26.pdf-14-0.png
+-rw-rw-r-- 1 reid reid  37487 Mar 29 15:24 XEC-20260224-Commercialization-of-LFE-Whtppr-SHARED-24-FEB-26.pdf-14-1.png
+-rw-rw-r-- 1 reid reid 230842 Mar 29 15:24 XEC-20260224-Commercialization-of-LFE-Whtppr-SHARED-24-FEB-26.pdf-16-0.png
+-rw-rw-r-- 1 reid reid 366242 Mar 29 15:24 XEC-20260224-Commercialization-of-LFE-Whtppr-SHARED-24-FEB-26.pdf-18-0.png
+-rw-rw-r-- 1 reid reid 557373 Mar 29 15:24 XEC-20260224-Commercialization-of-LFE-Whtppr-SHARED-24-FEB-26.pdf-18-1.png
+-rw-rw-r-- 1 reid reid 319616 Mar 29 15:24 XEC-20260224-Commercialization-of-LFE-Whtppr-SHARED-24-FEB-26.pdf-2-0.png
+-rw-rw-r-- 1 reid reid 214943 Mar 29 15:24 XEC-20260224-Commercialization-of-LFE-Whtppr-SHARED-24-FEB-26.pdf-21-0.png
+-rw-rw-r-- 1 reid reid 210843 Mar 29 15:24 XEC-20260224-Commercialization-of-LFE-Whtppr-SHARED-24-FEB-26.pdf-22-0.png
+-rw-rw-r-- 1 reid reid 536548 Mar 29 15:24 XEC-20260224-Commercialization-of-LFE-Whtppr-SHARED-24-FEB-26.pdf-22-1.png
+-rw-rw-r-- 1 reid reid 412916 Mar 29 15:24 XEC-20260224-Commercialization-of-LFE-Whtppr-SHARED-24-FEB-26.pdf-24-1.png
+-rw-rw-r-- 1 reid reid 397630 Mar 29 15:24 XEC-20260224-Commercialization-of-LFE-Whtppr-SHARED-24-FEB-26.pdf-24-2.png
+-rw-rw-r-- 1 reid reid 283204 Mar 29 15:24 XEC-20260224-Commercialization-of-LFE-Whtppr-SHARED-24-FEB-26.pdf-25-0.png
+-rw-rw-r-- 1 reid reid 307798 Mar 29 15:24 XEC-20260224-Commercialization-of-LFE-Whtppr-SHARED-24-FEB-26.pdf-25-1.png
+-rw-rw-r-- 1 reid reid 368181 Mar 29 15:24 XEC-20260224-Commercialization-of-LFE-Whtppr-SHARED-24-FEB-26.pdf-26-0.png
+-rw-rw-r-- 1 reid reid 230349 Mar 29 15:24 XEC-20260224-Commercialization-of-LFE-Whtppr-SHARED-24-FEB-26.pdf-4-0.png
+-rw-rw-r-- 1 reid reid  44991 Mar 29 15:24 XEC-20260224-Commercialization-of-LFE-Whtppr-SHARED-24-FEB-26.pdf-5-0.png
+-rw-rw-r-- 1 reid reid  29688 Mar 29 15:24 XEC-20260224-Commercialization-of-LFE-Whtppr-SHARED-24-FEB-26.pdf-5-1.png
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03:
+total 12
+drwxrwxr-x  3 reid reid 4096 Apr  5 21:51 .
+drwxrwxr-x  5 reid reid 4096 May 19 13:34 ..
+drwxrwxr-x 18 reid reid 4096 Apr 25 08:07 sources
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources:
+total 92
+drwxrwxr-x 18 reid reid 4096 Apr 25 08:07 .
+drwxrwxr-x  3 reid reid 4096 Apr  5 21:51 ..
+drwxrwxr-x  3 reid reid 4096 Apr 19 07:19 arpa-e-sites-default-files-migrated-a05-zuegel
+drwxrwxr-x  2 reid reid 4096 Apr 11 14:52 digital-ark-67531-metadc626683
+lrwxrwxrwx  1 reid reid   40 Apr 11 14:52 digital-ark-67531-metadc626683.md -> digital-ark-67531-metadc626683/output.md
+drwxrwxr-x  2 reid reid 4096 Apr 11 14:52 laserfocusworld-lasers-sources-article-14274951-can-high
+lrwxrwxrwx  1 reid reid   66 Apr 11 14:52 laserfocusworld-lasers-sources-article-14274951-can-high.md -> laserfocusworld-lasers-sources-article-14274951-can-high/output.md
+drwxrwxr-x  3 reid reid 4096 Apr 19 07:19 lasers-sites-lasers-files-2023-11-haefner-ilt-ife-workshop
+drwxrwxr-x  2 reid reid 4096 Apr 25 08:07 llnl-53961-llnl-releases-generalized-economics-model-fusion
+lrwxrwxrwx  1 reid reid   69 Apr 25 08:07 llnl-53961-llnl-releases-generalized-economics-model-fusion.md -> llnl-53961-llnl-releases-generalized-economics-model-fusion/output.md
+drwxrwxr-x  2 reid reid 4096 Apr 19 07:19 opg-oe-abstract-cfm
+drwxrwxr-x  2 reid reid 4096 Apr 11 14:52 optica-opn-home-articles-volume-34-june-2023-features
+lrwxrwxrwx  1 reid reid   63 Apr 11 14:52 optica-opn-home-articles-volume-34-june-2023-features.md -> optica-opn-home-articles-volume-34-june-2023-features/output.md
+drwxrwxr-x  2 reid reid 4096 Apr 11 14:52 osti-biblio-7021072
+lrwxrwxrwx  1 reid reid   29 Apr 11 14:52 osti-biblio-7021072.md -> osti-biblio-7021072/output.md
+drwxrwxr-x  3 reid reid 4096 Apr 25 08:07 osti-servlets-purl-1438678
+lrwxrwxrwx  1 reid reid   36 Apr 25 08:07 osti-servlets-purl-1438678.md -> osti-servlets-purl-1438678/output.md
+drwxrwxr-x  3 reid reid 4096 Apr 19 07:19 osti-servlets-purl-15013230
+drwxrwxr-x  3 reid reid 4096 Apr 11 14:52 osti-servlets-purl-2561299
+lrwxrwxrwx  1 reid reid   36 Apr 11 14:52 osti-servlets-purl-2561299.md -> osti-servlets-purl-2561299/output.md
+drwxrwxr-x  3 reid reid 4096 Apr 11 14:52 osti-servlets-purl-6137961
+lrwxrwxrwx  1 reid reid   36 Apr 11 14:52 osti-servlets-purl-6137961.md -> osti-servlets-purl-6137961/output.md
+drwxrwxr-x  3 reid reid 4096 Apr 19 07:19 osti-servlets-purl-622702
+drwxrwxr-x  2 reid reid 4096 Apr 25 08:07 pmc-articles-pmc7658748
+lrwxrwxrwx  1 reid reid   33 Apr 25 08:07 pmc-articles-pmc7658748.md -> pmc-articles-pmc7658748/output.md
+drwxrwxr-x  2 reid reid 4096 Apr 11 14:52 prnewswire-news-releases-focused-energy-and-amplitude-enter
+lrwxrwxrwx  1 reid reid   69 Apr 11 14:52 prnewswire-news-releases-focused-energy-and-amplitude-enter.md -> prnewswire-news-releases-focused-energy-and-amplitude-enter/output.md
+drwxrwxr-x  2 reid reid 4096 Apr 11 14:52 sciencedirect-science-article-pii-s0920379624001868
+lrwxrwxrwx  1 reid reid   61 Apr 11 14:52 sciencedirect-science-article-pii-s0920379624001868.md -> sciencedirect-science-article-pii-s0920379624001868/output.md
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/arpa-e-sites-default-files-migrated-a05-zuegel:
+total 1712
+drwxrwxr-x  3 reid reid    4096 Apr 19 07:19 .
+drwxrwxr-x 18 reid reid    4096 Apr 25 08:07 ..
+drwxrwxr-x  2 reid reid    4096 Apr 12 19:47 images
+-rw-------  1 reid reid 1740660 Apr 12 19:46 raw.pdf
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/arpa-e-sites-default-files-migrated-a05-zuegel/images:
+total 1928
+drwxrwxr-x 2 reid reid   4096 Apr 12 19:47 .
+drwxrwxr-x 3 reid reid   4096 Apr 19 07:19 ..
+-rw-rw-r-- 1 reid reid   4829 Apr 12 19:46 tmp73hk8rai.pdf-0001-01.png
+-rw-rw-r-- 1 reid reid 208954 Apr 12 19:46 tmp73hk8rai.pdf-0001-03.png
+-rw-rw-r-- 1 reid reid 154385 Apr 12 19:46 tmp73hk8rai.pdf-0001-04.png
+-rw-rw-r-- 1 reid reid   3072 Apr 12 19:46 tmp73hk8rai.pdf-0001-08.png
+-rw-rw-r-- 1 reid reid  70607 Apr 12 19:46 tmp73hk8rai.pdf-0001-09.png
+-rw-rw-r-- 1 reid reid  10067 Apr 12 19:46 tmp73hk8rai.pdf-0001-11.png
+-rw-rw-r-- 1 reid reid 212256 Apr 12 19:46 tmp73hk8rai.pdf-0002-01.png
+-rw-rw-r-- 1 reid reid  10198 Apr 12 19:46 tmp73hk8rai.pdf-0002-03.png
+-rw-rw-r-- 1 reid reid  30034 Apr 12 19:46 tmp73hk8rai.pdf-0003-10.png
+-rw-rw-r-- 1 reid reid  43473 Apr 12 19:46 tmp73hk8rai.pdf-0003-11.png
+-rw-rw-r-- 1 reid reid  18449 Apr 12 19:46 tmp73hk8rai.pdf-0003-17.png
+-rw-rw-r-- 1 reid reid  10155 Apr 12 19:46 tmp73hk8rai.pdf-0004-06.png
+-rw-rw-r-- 1 reid reid 109977 Apr 12 19:46 tmp73hk8rai.pdf-0005-04.png
+-rw-rw-r-- 1 reid reid  10240 Apr 12 19:46 tmp73hk8rai.pdf-0005-06.png
+-rw-rw-r-- 1 reid reid  51521 Apr 12 19:46 tmp73hk8rai.pdf-0006-01.png
+-rw-rw-r-- 1 reid reid  13895 Apr 12 19:46 tmp73hk8rai.pdf-0006-11.png
+-rw-rw-r-- 1 reid reid 205161 Apr 12 19:46 tmp73hk8rai.pdf-0007-02.png
+-rw-rw-r-- 1 reid reid  64948 Apr 12 19:46 tmp73hk8rai.pdf-0007-05.png
+-rw-rw-r-- 1 reid reid  10147 Apr 12 19:46 tmp73hk8rai.pdf-0007-06.png
+-rw-rw-r-- 1 reid reid  15441 Apr 12 19:46 tmp73hk8rai.pdf-0008-01.png
+-rw-rw-r-- 1 reid reid 161149 Apr 12 19:46 tmp73hk8rai.pdf-0008-04.png
+-rw-rw-r-- 1 reid reid  72639 Apr 12 19:46 tmp73hk8rai.pdf-0008-05.png
+-rw-rw-r-- 1 reid reid 167792 Apr 12 19:46 tmp73hk8rai.pdf-0008-06.png
+-rw-rw-r-- 1 reid reid 123602 Apr 12 19:46 tmp73hk8rai.pdf-0008-07.png
+-rw-rw-r-- 1 reid reid  64948 Apr 12 19:46 tmp73hk8rai.pdf-0008-08.png
+-rw-rw-r-- 1 reid reid  10272 Apr 12 19:46 tmp73hk8rai.pdf-0008-14.png
+-rw-rw-r-- 1 reid reid  19105 Apr 12 19:46 tmp73hk8rai.pdf-0009-03.png
+-rw-rw-r-- 1 reid reid  10261 Apr 12 19:46 tmp73hk8rai.pdf-0009-18.png
+-rw-rw-r-- 1 reid reid  10353 Apr 12 19:47 tmp73hk8rai.pdf-0010-02.png
+-rw-rw-r-- 1 reid reid  10156 Apr 12 19:47 tmp73hk8rai.pdf-0011-02.png
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/digital-ark-67531-metadc626683:
+total 184
+drwxrwxr-x  2 reid reid   4096 Apr 11 14:52 .
+drwxrwxr-x 18 reid reid   4096 Apr 25 08:07 ..
+-rw-rw-r--  1 reid reid    248 Apr 11 14:52 metrics.json
+-rw-rw-r--  1 reid reid   8895 Apr 11 14:52 output.md
+-rw-rw-r--  1 reid reid 163326 Apr  5 23:32 raw.html
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/laserfocusworld-lasers-sources-article-14274951-can-high:
+total 248
+drwxrwxr-x  2 reid reid   4096 Apr 11 14:52 .
+drwxrwxr-x 18 reid reid   4096 Apr 25 08:07 ..
+-rw-rw-r--  1 reid reid    234 Apr 11 14:52 metrics.json
+-rw-rw-r--  1 reid reid   8272 Apr 11 14:52 output.md
+-rw-rw-r--  1 reid reid 227553 Apr  5 21:55 raw.html
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/lasers-sites-lasers-files-2023-11-haefner-ilt-ife-workshop:
+total 240
+drwxrwxr-x  3 reid reid   4096 Apr 19 07:19 .
+drwxrwxr-x 18 reid reid   4096 Apr 25 08:07 ..
+drwxrwxr-x  2 reid reid   4096 Apr 12 20:08 images
+-rw-------  1 reid reid 231574 Apr 12 20:08 raw.pdf
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/lasers-sites-lasers-files-2023-11-haefner-ilt-ife-workshop/images:
+total 8
+drwxrwxr-x 2 reid reid 4096 Apr 12 20:08 .
+drwxrwxr-x 3 reid reid 4096 Apr 19 07:19 ..
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/llnl-53961-llnl-releases-generalized-economics-model-fusion:
+total 124
+drwxrwxr-x  2 reid reid   4096 Apr 25 08:07 .
+drwxrwxr-x 18 reid reid   4096 Apr 25 08:07 ..
+-rw-rw-r--  1 reid reid    222 Apr 25 08:07 metrics.json
+-rw-rw-r--  1 reid reid   3957 Apr 25 08:07 output.md
+-rw-rw-r--  1 reid reid 109445 Apr 19 14:35 raw.html
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/opg-oe-abstract-cfm:
+total 24
+drwxrwxr-x  2 reid reid  4096 Apr 19 07:19 .
+drwxrwxr-x 18 reid reid  4096 Apr 25 08:07 ..
+-rw-rw-r--  1 reid reid 15032 Apr 12 20:08 raw.html
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/optica-opn-home-articles-volume-34-june-2023-features:
+total 108
+drwxrwxr-x  2 reid reid  4096 Apr 11 14:52 .
+drwxrwxr-x 18 reid reid  4096 Apr 25 08:07 ..
+-rw-rw-r--  1 reid reid   211 Apr 11 14:52 metrics.json
+-rw-rw-r--  1 reid reid 18307 Apr 11 14:52 output.md
+-rw-rw-r--  1 reid reid 73890 Apr  5 21:55 raw.html
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/osti-biblio-7021072:
+total 68
+drwxrwxr-x  2 reid reid  4096 Apr 11 14:52 .
+drwxrwxr-x 18 reid reid  4096 Apr 25 08:07 ..
+-rw-rw-r--  1 reid reid   222 Apr 11 14:52 metrics.json
+-rw-rw-r--  1 reid reid  3079 Apr 11 14:52 output.md
+-rw-rw-r--  1 reid reid 50582 Apr  5 23:53 raw.html
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/osti-servlets-purl-1438678:
+total 140
+drwxrwxr-x  3 reid reid   4096 Apr 25 08:07 .
+drwxrwxr-x 18 reid reid   4096 Apr 25 08:07 ..
+-rw-rw-r--  1 reid reid    785 Apr 25 08:07 decisions.json
+drwxrwxr-x  2 reid reid   4096 Apr 19 14:36 images
+-rw-rw-r--  1 reid reid    213 Apr 25 08:07 metrics.json
+-rw-rw-r--  1 reid reid  18947 Apr 25 08:07 output.md
+-rw-------  1 reid reid 101294 Apr 19 14:36 raw.pdf
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/osti-servlets-purl-1438678/images:
+total 300
+drwxrwxr-x 2 reid reid  4096 Apr 19 14:36 .
+drwxrwxr-x 3 reid reid  4096 Apr 25 08:07 ..
+-rw-rw-r-- 1 reid reid  8506 Apr 19 14:36 tmp655byf_w.pdf-0001-01.png
+-rw-rw-r-- 1 reid reid 28832 Apr 19 14:36 tmp655byf_w.pdf-0004-01.png
+-rw-rw-r-- 1 reid reid 23756 Apr 19 14:36 tmp655byf_w.pdf-0005-01.png
+-rw-rw-r-- 1 reid reid 23031 Apr 19 14:36 tmp655byf_w.pdf-0006-00.png
+-rw-rw-r-- 1 reid reid 52148 Apr 19 14:36 tmp655byf_w.pdf-0006-03.png
+-rw-rw-r-- 1 reid reid 76728 Apr 19 14:36 tmp655byf_w.pdf-0007-04.png
+-rw-rw-r-- 1 reid reid 17625 Apr 19 14:36 tmp655byf_w.pdf-0008-01.png
+-rw-rw-r-- 1 reid reid 49524 Apr 19 14:36 tmp655byf_w.pdf-0008-04.png
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/osti-servlets-purl-15013230:
+total 400
+drwxrwxr-x  3 reid reid   4096 Apr 19 07:19 .
+drwxrwxr-x 18 reid reid   4096 Apr 25 08:07 ..
+drwxrwxr-x  2 reid reid   4096 Apr 12 19:47 images
+-rw-------  1 reid reid 396518 Apr 12 19:47 raw.pdf
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/osti-servlets-purl-15013230/images:
+total 568
+drwxrwxr-x 2 reid reid   4096 Apr 12 19:47 .
+drwxrwxr-x 3 reid reid   4096 Apr 19 07:19 ..
+-rw-rw-r-- 1 reid reid  78747 Apr 12 19:47 tmpy1t_fmjl.pdf-0004-14.png
+-rw-rw-r-- 1 reid reid 281646 Apr 12 19:47 tmpy1t_fmjl.pdf-0005-02.png
+-rw-rw-r-- 1 reid reid  14919 Apr 12 19:47 tmpy1t_fmjl.pdf-0005-07.png
+-rw-rw-r-- 1 reid reid 167631 Apr 12 19:47 tmpy1t_fmjl.pdf-0006-02.png
+-rw-rw-r-- 1 reid reid  20492 Apr 12 19:47 tmpy1t_fmjl.pdf-0006-03.png
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/osti-servlets-purl-2561299:
+total 428
+drwxrwxr-x  3 reid reid   4096 Apr 11 14:52 .
+drwxrwxr-x 18 reid reid   4096 Apr 25 08:07 ..
+-rw-rw-r--  1 reid reid    193 Apr 11 14:52 cost.json
+-rw-rw-r--  1 reid reid   1184 Apr 11 14:52 decisions.json
+drwxrwxr-x  2 reid reid   4096 Apr  5 23:52 images
+-rw-rw-r--  1 reid reid    222 Apr 11 14:52 metrics.json
+-rw-rw-r--  1 reid reid  23272 Apr 11 14:52 output.md
+-rw-------  1 reid reid 385442 Apr  5 23:52 raw.pdf
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/osti-servlets-purl-2561299/images:
+total 652
+drwxrwxr-x 2 reid reid   4096 Apr  5 23:52 .
+drwxrwxr-x 3 reid reid   4096 Apr 11 14:52 ..
+-rw-rw-r-- 1 reid reid   7471 Apr  5 23:52 page_004_eq_0.png
+-rw-rw-r-- 1 reid reid 160052 Apr  5 23:52 tmpu1el8ikd.pdf-0-0.png
+-rw-rw-r-- 1 reid reid 272499 Apr  5 23:52 tmpu1el8ikd.pdf-2-0.png
+-rw-rw-r-- 1 reid reid 139743 Apr  5 23:52 tmpu1el8ikd.pdf-2-1.png
+-rw-rw-r-- 1 reid reid  66846 Apr  5 23:52 tmpu1el8ikd.pdf-3-0.png
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/osti-servlets-purl-6137961:
+total 1652
+drwxrwxr-x  3 reid reid    4096 Apr 11 14:52 .
+drwxrwxr-x 18 reid reid    4096 Apr 25 08:07 ..
+-rw-rw-r--  1 reid reid    3758 Apr 11 14:52 cost.json
+-rw-rw-r--  1 reid reid   12982 Apr 11 14:52 decisions.json
+drwxrwxr-x  2 reid reid   28672 Apr  5 23:30 images
+-rw-rw-r--  1 reid reid     279 Apr 11 14:52 metrics.json
+-rw-rw-r--  1 reid reid  144483 Apr 11 14:52 output.md
+-rw-------  1 reid reid 1482156 Apr  5 23:22 raw.pdf
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/osti-servlets-purl-6137961/images:
+total 21936
+drwxrwxr-x 2 reid reid  28672 Apr  5 23:30 .
+drwxrwxr-x 3 reid reid   4096 Apr 11 14:52 ..
+-rw-rw-r-- 1 reid reid  12722 Apr  5 23:23 page_003_eq_0.png
+-rw-rw-r-- 1 reid reid  11297 Apr  5 23:23 page_004_eq_0.png
+-rw-rw-r-- 1 reid reid   3857 Apr  5 23:23 page_004_eq_1.png
+-rw-rw-r-- 1 reid reid   3725 Apr  5 23:23 page_004_eq_2.png
+-rw-rw-r-- 1 reid reid   7268 Apr  5 23:23 page_009_eq_0.png
+-rw-rw-r-- 1 reid reid   5147 Apr  5 23:23 page_009_eq_1.png
+-rw-rw-r-- 1 reid reid   3089 Apr  5 23:23 page_012_eq_0.png
+-rw-rw-r-- 1 reid reid   3917 Apr  5 23:23 page_012_eq_1.png
+-rw-rw-r-- 1 reid reid  10203 Apr  5 23:23 page_012_eq_2.png
+-rw-rw-r-- 1 reid reid   4213 Apr  5 23:23 page_012_eq_3.png
+-rw-rw-r-- 1 reid reid 295660 Apr  5 23:22 page_014_table_0.png
+-rw-rw-r-- 1 reid reid  31981 Apr  5 23:22 page_018_table_0.png
+-rw-rw-r-- 1 reid reid 208848 Apr  5 23:22 page_024_table_0.png
+-rw-rw-r-- 1 reid reid 107202 Apr  5 23:22 page_025_table_0.png
+-rw-rw-r-- 1 reid reid  58305 Apr  5 23:22 page_027_table_0.png
+-rw-rw-r-- 1 reid reid 158045 Apr  5 23:22 page_031_table_0.png
+-rw-rw-r-- 1 reid reid   7207 Apr  5 23:23 page_033_eq_0.png
+-rw-rw-r-- 1 reid reid 112704 Apr  5 23:22 page_037_table_0.png
+-rw-rw-r-- 1 reid reid  11571 Apr  5 23:23 page_039_eq_0.png
+-rw-rw-r-- 1 reid reid  13860 Apr  5 23:24 page_040_eq_0.png
+-rw-rw-r-- 1 reid reid  13514 Apr  5 23:24 page_040_eq_1.png
+-rw-rw-r-- 1 reid reid  21587 Apr  5 23:24 page_040_eq_2.png
+-rw-rw-r-- 1 reid reid   2301 Apr  5 23:24 page_040_eq_3.png
+-rw-rw-r-- 1 reid reid  66274 Apr  5 23:23 page_044_table_0.png
+-rw-rw-r-- 1 reid reid 171065 Apr  5 23:23 page_045_table_0.png
+-rw-rw-r-- 1 reid reid 105968 Apr  5 23:23 page_046_table_0.png
+-rw-rw-r-- 1 reid reid   4150 Apr  5 23:24 page_052_eq_0.png
+-rw-rw-r-- 1 reid reid   2597 Apr  5 23:24 page_052_eq_1.png
+-rw-rw-r-- 1 reid reid   5438 Apr  5 23:24 page_053_eq_0.png
+-rw-rw-r-- 1 reid reid   9410 Apr  5 23:24 page_054_eq_0.png
+-rw-rw-r-- 1 reid reid   6418 Apr  5 23:24 page_055_eq_0.png
+-rw-rw-r-- 1 reid reid   7795 Apr  5 23:24 page_055_eq_1.png
+-rw-rw-r-- 1 reid reid   4026 Apr  5 23:24 page_056_eq_0.png
+-rw-rw-r-- 1 reid reid   6089 Apr  5 23:24 page_056_eq_1.png
+-rw-rw-r-- 1 reid reid   3141 Apr  5 23:24 page_056_eq_2.png
+-rw-rw-r-- 1 reid reid  12994 Apr  5 23:24 page_056_eq_3.png
+-rw-rw-r-- 1 reid reid   4153 Apr  5 23:24 page_057_eq_0.png
+-rw-rw-r-- 1 reid reid   3109 Apr  5 23:24 page_057_eq_1.png
+-rw-rw-r-- 1 reid reid   2458 Apr  5 23:24 page_057_eq_2.png
+-rw-rw-r-- 1 reid reid   4000 Apr  5 23:24 page_057_eq_3.png
+-rw-rw-r-- 1 reid reid   5613 Apr  5 23:24 page_057_eq_4.png
+-rw-rw-r-- 1 reid reid   5435 Apr  5 23:24 page_057_eq_5.png
+-rw-rw-r-- 1 reid reid   3108 Apr  5 23:24 page_057_eq_6.png
+-rw-rw-r-- 1 reid reid  11467 Apr  5 23:24 page_058_eq_0.png
+-rw-rw-r-- 1 reid reid   3131 Apr  5 23:24 page_058_eq_1.png
+-rw-rw-r-- 1 reid reid   3047 Apr  5 23:24 page_058_eq_2.png
+-rw-rw-r-- 1 reid reid   5332 Apr  5 23:24 page_058_eq_3.png
+-rw-rw-r-- 1 reid reid   2732 Apr  5 23:24 page_058_eq_4.png
+-rw-rw-r-- 1 reid reid  24560 Apr  5 23:24 page_058_eq_5.png
+-rw-rw-r-- 1 reid reid   3549 Apr  5 23:24 page_058_eq_6.png
+-rw-rw-r-- 1 reid reid   7165 Apr  5 23:24 page_058_eq_7.png
+-rw-rw-r-- 1 reid reid   8378 Apr  5 23:24 page_059_eq_0.png
+-rw-rw-r-- 1 reid reid  21125 Apr  5 23:24 page_059_eq_1.png
+-rw-rw-r-- 1 reid reid  10321 Apr  5 23:24 page_059_eq_2.png
+-rw-rw-r-- 1 reid reid  75571 Apr  5 23:23 page_060_table_0.png
+-rw-rw-r-- 1 reid reid  55968 Apr  5 23:23 page_061_table_0.png
+-rw-rw-r-- 1 reid reid 251326 Apr  5 23:23 page_062_table_0.png
+-rw-rw-r-- 1 reid reid   5719 Apr  5 23:24 page_072_eq_0.png
+-rw-rw-r-- 1 reid reid  15717 Apr  5 23:24 page_072_eq_10.png
+-rw-rw-r-- 1 reid reid   6031 Apr  5 23:24 page_072_eq_1.png
+-rw-rw-r-- 1 reid reid  37684 Apr  5 23:24 page_072_eq_2.png
+-rw-rw-r-- 1 reid reid   7840 Apr  5 23:24 page_072_eq_3.png
+-rw-rw-r-- 1 reid reid   3227 Apr  5 23:24 page_072_eq_4.png
+-rw-rw-r-- 1 reid reid   6546 Apr  5 23:24 page_072_eq_5.png
+-rw-rw-r-- 1 reid reid   9730 Apr  5 23:24 page_072_eq_6.png
+-rw-rw-r-- 1 reid reid   3953 Apr  5 23:24 page_072_eq_7.png
+-rw-rw-r-- 1 reid reid   4866 Apr  5 23:24 page_072_eq_8.png
+-rw-rw-r-- 1 reid reid   3991 Apr  5 23:24 page_072_eq_9.png
+-rw-rw-r-- 1 reid reid  19195 Apr  5 23:24 page_073_eq_0.png
+-rw-rw-r-- 1 reid reid  22674 Apr  5 23:24 page_073_eq_1.png
+-rw-rw-r-- 1 reid reid   6937 Apr  5 23:24 page_073_eq_2.png
+-rw-rw-r-- 1 reid reid   9269 Apr  5 23:24 page_073_eq_3.png
+-rw-rw-r-- 1 reid reid  44430 Apr  5 23:24 page_073_eq_4.png
+-rw-rw-r-- 1 reid reid  10003 Apr  5 23:24 page_073_eq_5.png
+-rw-rw-r-- 1 reid reid   8473 Apr  5 23:24 page_073_eq_6.png
+-rw-rw-r-- 1 reid reid   8011 Apr  5 23:24 page_073_eq_7.png
+-rw-rw-r-- 1 reid reid   9033 Apr  5 23:24 page_073_eq_8.png
+-rw-rw-r-- 1 reid reid   4007 Apr  5 23:24 page_074_eq_0.png
+-rw-rw-r-- 1 reid reid   4159 Apr  5 23:24 page_074_eq_10.png
+-rw-rw-r-- 1 reid reid   6784 Apr  5 23:24 page_074_eq_11.png
+-rw-rw-r-- 1 reid reid  19151 Apr  5 23:24 page_074_eq_12.png
+-rw-rw-r-- 1 reid reid   7474 Apr  5 23:24 page_074_eq_13.png
+-rw-rw-r-- 1 reid reid   6083 Apr  5 23:24 page_074_eq_14.png
+-rw-rw-r-- 1 reid reid   6465 Apr  5 23:24 page_074_eq_15.png
+-rw-rw-r-- 1 reid reid   5898 Apr  5 23:24 page_074_eq_16.png
+-rw-rw-r-- 1 reid reid  18004 Apr  5 23:24 page_074_eq_17.png
+-rw-rw-r-- 1 reid reid   5457 Apr  5 23:24 page_074_eq_1.png
+-rw-rw-r-- 1 reid reid  17466 Apr  5 23:24 page_074_eq_2.png
+-rw-rw-r-- 1 reid reid   4820 Apr  5 23:24 page_074_eq_3.png
+-rw-rw-r-- 1 reid reid  19854 Apr  5 23:24 page_074_eq_4.png
+-rw-rw-r-- 1 reid reid  13902 Apr  5 23:24 page_074_eq_5.png
+-rw-rw-r-- 1 reid reid   6989 Apr  5 23:24 page_074_eq_6.png
+-rw-rw-r-- 1 reid reid   8009 Apr  5 23:24 page_074_eq_7.png
+-rw-rw-r-- 1 reid reid   9249 Apr  5 23:24 page_074_eq_8.png
+-rw-rw-r-- 1 reid reid  14732 Apr  5 23:24 page_074_eq_9.png
+-rw-rw-r-- 1 reid reid   8863 Apr  5 23:24 page_075_eq_0.png
+-rw-rw-r-- 1 reid reid  11334 Apr  5 23:24 page_075_eq_10.png
+-rw-rw-r-- 1 reid reid   5991 Apr  5 23:24 page_075_eq_11.png
+-rw-rw-r-- 1 reid reid  23613 Apr  5 23:24 page_075_eq_12.png
+-rw-rw-r-- 1 reid reid   7358 Apr  5 23:24 page_075_eq_13.png
+-rw-rw-r-- 1 reid reid  19062 Apr  5 23:24 page_075_eq_14.png
+-rw-rw-r-- 1 reid reid  44459 Apr  5 23:24 page_075_eq_1.png
+-rw-rw-r-- 1 reid reid  14814 Apr  5 23:24 page_075_eq_2.png
+-rw-rw-r-- 1 reid reid  13112 Apr  5 23:24 page_075_eq_3.png
+-rw-rw-r-- 1 reid reid  31281 Apr  5 23:24 page_075_eq_4.png
+-rw-rw-r-- 1 reid reid   6833 Apr  5 23:24 page_075_eq_5.png
+-rw-rw-r-- 1 reid reid   6234 Apr  5 23:24 page_075_eq_6.png
+-rw-rw-r-- 1 reid reid   6059 Apr  5 23:24 page_075_eq_7.png
+-rw-rw-r-- 1 reid reid 201993 Apr  5 23:24 page_075_eq_8.png
+-rw-rw-r-- 1 reid reid  16312 Apr  5 23:24 page_075_eq_9.png
+-rw-rw-r-- 1 reid reid  19887 Apr  5 23:24 page_076_eq_0.png
+-rw-rw-r-- 1 reid reid  20297 Apr  5 23:24 page_076_eq_1.png
+-rw-rw-r-- 1 reid reid  84498 Apr  5 23:24 page_076_eq_2.png
+-rw-rw-r-- 1 reid reid  23961 Apr  5 23:24 page_076_eq_3.png
+-rw-rw-r-- 1 reid reid  19139 Apr  5 23:24 page_076_eq_4.png
+-rw-rw-r-- 1 reid reid  14855 Apr  5 23:24 page_076_eq_5.png
+-rw-rw-r-- 1 reid reid  50204 Apr  5 23:24 page_076_eq_6.png
+-rw-rw-r-- 1 reid reid  11940 Apr  5 23:24 page_076_eq_7.png
+-rw-rw-r-- 1 reid reid   2499 Apr  5 23:24 page_076_eq_8.png
+-rw-rw-r-- 1 reid reid   9180 Apr  5 23:24 page_077_eq_0.png
+-rw-rw-r-- 1 reid reid   8677 Apr  5 23:24 page_077_eq_10.png
+-rw-rw-r-- 1 reid reid   5181 Apr  5 23:24 page_077_eq_11.png
+-rw-rw-r-- 1 reid reid   5042 Apr  5 23:24 page_077_eq_12.png
+-rw-rw-r-- 1 reid reid   8248 Apr  5 23:24 page_077_eq_13.png
+-rw-rw-r-- 1 reid reid  10108 Apr  5 23:24 page_077_eq_14.png
+-rw-rw-r-- 1 reid reid   7468 Apr  5 23:24 page_077_eq_1.png
+-rw-rw-r-- 1 reid reid  10915 Apr  5 23:24 page_077_eq_2.png
+-rw-rw-r-- 1 reid reid   8199 Apr  5 23:24 page_077_eq_3.png
+-rw-rw-r-- 1 reid reid  10096 Apr  5 23:24 page_077_eq_4.png
+-rw-rw-r-- 1 reid reid   5165 Apr  5 23:24 page_077_eq_5.png
+-rw-rw-r-- 1 reid reid  12166 Apr  5 23:24 page_077_eq_6.png
+-rw-rw-r-- 1 reid reid  10637 Apr  5 23:24 page_077_eq_7.png
+-rw-rw-r-- 1 reid reid  10607 Apr  5 23:24 page_077_eq_8.png
+-rw-rw-r-- 1 reid reid   3974 Apr  5 23:24 page_077_eq_9.png
+-rw-rw-r-- 1 reid reid   6448 Apr  5 23:24 page_078_eq_0.png
+-rw-rw-r-- 1 reid reid   4846 Apr  5 23:24 page_078_eq_10.png
+-rw-rw-r-- 1 reid reid   3370 Apr  5 23:24 page_078_eq_11.png
+-rw-rw-r-- 1 reid reid   3412 Apr  5 23:24 page_078_eq_12.png
+-rw-rw-r-- 1 reid reid   5828 Apr  5 23:24 page_078_eq_13.png
+-rw-rw-r-- 1 reid reid  28215 Apr  5 23:24 page_078_eq_14.png
+-rw-rw-r-- 1 reid reid  11852 Apr  5 23:24 page_078_eq_15.png
+-rw-rw-r-- 1 reid reid   7296 Apr  5 23:24 page_078_eq_1.png
+-rw-rw-r-- 1 reid reid  24800 Apr  5 23:24 page_078_eq_2.png
+-rw-rw-r-- 1 reid reid   9698 Apr  5 23:24 page_078_eq_3.png
+-rw-rw-r-- 1 reid reid   6757 Apr  5 23:24 page_078_eq_4.png
+-rw-rw-r-- 1 reid reid   1706 Apr  5 23:24 page_078_eq_5.png
+-rw-rw-r-- 1 reid reid   2873 Apr  5 23:24 page_078_eq_6.png
+-rw-rw-r-- 1 reid reid   2668 Apr  5 23:24 page_078_eq_7.png
+-rw-rw-r-- 1 reid reid   3114 Apr  5 23:24 page_078_eq_8.png
+-rw-rw-r-- 1 reid reid  24222 Apr  5 23:24 page_078_eq_9.png
+-rw-rw-r-- 1 reid reid   6434 Apr  5 23:24 page_079_eq_0.png
+-rw-rw-r-- 1 reid reid   5118 Apr  5 23:24 page_079_eq_10.png
+-rw-rw-r-- 1 reid reid   5150 Apr  5 23:24 page_079_eq_11.png
+-rw-rw-r-- 1 reid reid   9802 Apr  5 23:24 page_079_eq_12.png
+-rw-rw-r-- 1 reid reid  36049 Apr  5 23:24 page_079_eq_13.png
+-rw-rw-r-- 1 reid reid   8406 Apr  5 23:24 page_079_eq_14.png
+-rw-rw-r-- 1 reid reid   5620 Apr  5 23:24 page_079_eq_15.png
+-rw-rw-r-- 1 reid reid   7374 Apr  5 23:24 page_079_eq_1.png
+-rw-rw-r-- 1 reid reid   4038 Apr  5 23:24 page_079_eq_2.png
+-rw-rw-r-- 1 reid reid   7583 Apr  5 23:24 page_079_eq_3.png
+-rw-rw-r-- 1 reid reid   6197 Apr  5 23:24 page_079_eq_4.png
+-rw-rw-r-- 1 reid reid   4497 Apr  5 23:24 page_079_eq_5.png
+-rw-rw-r-- 1 reid reid   4715 Apr  5 23:24 page_079_eq_6.png
+-rw-rw-r-- 1 reid reid   9623 Apr  5 23:24 page_079_eq_7.png
+-rw-rw-r-- 1 reid reid   2670 Apr  5 23:24 page_079_eq_8.png
+-rw-rw-r-- 1 reid reid   7356 Apr  5 23:24 page_079_eq_9.png
+-rw-rw-r-- 1 reid reid  24007 Apr  5 23:24 page_080_eq_0.png
+-rw-rw-r-- 1 reid reid  12178 Apr  5 23:24 page_080_eq_1.png
+-rw-rw-r-- 1 reid reid  28852 Apr  5 23:24 page_080_eq_2.png
+-rw-rw-r-- 1 reid reid   5479 Apr  5 23:24 page_080_eq_3.png
+-rw-rw-r-- 1 reid reid   6922 Apr  5 23:24 page_080_eq_4.png
+-rw-rw-r-- 1 reid reid   4713 Apr  5 23:24 page_080_eq_5.png
+-rw-rw-r-- 1 reid reid  13879 Apr  5 23:24 page_080_eq_6.png
+-rw-rw-r-- 1 reid reid  19826 Apr  5 23:24 page_080_eq_7.png
+-rw-rw-r-- 1 reid reid  15328 Apr  5 23:24 page_080_eq_8.png
+-rw-rw-r-- 1 reid reid  22540 Apr  5 23:24 page_080_eq_9.png
+-rw-rw-r-- 1 reid reid   8228 Apr  5 23:24 page_081_eq_0.png
+-rw-rw-r-- 1 reid reid   2369 Apr  5 23:24 page_081_eq_10.png
+-rw-rw-r-- 1 reid reid  12175 Apr  5 23:24 page_081_eq_11.png
+-rw-rw-r-- 1 reid reid  13795 Apr  5 23:24 page_081_eq_1.png
+-rw-rw-r-- 1 reid reid   7922 Apr  5 23:24 page_081_eq_2.png
+-rw-rw-r-- 1 reid reid  67161 Apr  5 23:24 page_081_eq_3.png
+-rw-rw-r-- 1 reid reid  23172 Apr  5 23:24 page_081_eq_4.png
+-rw-rw-r-- 1 reid reid   5080 Apr  5 23:24 page_081_eq_5.png
+-rw-rw-r-- 1 reid reid  11463 Apr  5 23:24 page_081_eq_6.png
+-rw-rw-r-- 1 reid reid  18746 Apr  5 23:24 page_081_eq_7.png
+-rw-rw-r-- 1 reid reid  51666 Apr  5 23:24 page_081_eq_8.png
+-rw-rw-r-- 1 reid reid  11093 Apr  5 23:24 page_081_eq_9.png
+-rw-rw-r-- 1 reid reid  17808 Apr  5 23:24 page_082_eq_0.png
+-rw-rw-r-- 1 reid reid   5685 Apr  5 23:24 page_082_eq_10.png
+-rw-rw-r-- 1 reid reid  12338 Apr  5 23:24 page_082_eq_11.png
+-rw-rw-r-- 1 reid reid  12117 Apr  5 23:24 page_082_eq_12.png
+-rw-rw-r-- 1 reid reid   5581 Apr  5 23:24 page_082_eq_1.png
+-rw-rw-r-- 1 reid reid   7773 Apr  5 23:24 page_082_eq_2.png
+-rw-rw-r-- 1 reid reid  10131 Apr  5 23:24 page_082_eq_3.png
+-rw-rw-r-- 1 reid reid   9783 Apr  5 23:24 page_082_eq_4.png
+-rw-rw-r-- 1 reid reid  15720 Apr  5 23:24 page_082_eq_5.png
+-rw-rw-r-- 1 reid reid   2595 Apr  5 23:24 page_082_eq_6.png
+-rw-rw-r-- 1 reid reid   4936 Apr  5 23:24 page_082_eq_7.png
+-rw-rw-r-- 1 reid reid  10981 Apr  5 23:24 page_082_eq_8.png
+-rw-rw-r-- 1 reid reid  10563 Apr  5 23:24 page_082_eq_9.png
+-rw-rw-r-- 1 reid reid  14907 Apr  5 23:24 page_083_eq_0.png
+-rw-rw-r-- 1 reid reid  34285 Apr  5 23:24 page_083_eq_10.png
+-rw-rw-r-- 1 reid reid   7427 Apr  5 23:24 page_083_eq_11.png
+-rw-rw-r-- 1 reid reid   4939 Apr  5 23:24 page_083_eq_12.png
+-rw-rw-r-- 1 reid reid  16711 Apr  5 23:24 page_083_eq_13.png
+-rw-rw-r-- 1 reid reid   5502 Apr  5 23:24 page_083_eq_14.png
+-rw-rw-r-- 1 reid reid   3668 Apr  5 23:24 page_083_eq_15.png
+-rw-rw-r-- 1 reid reid  11111 Apr  5 23:24 page_083_eq_16.png
+-rw-rw-r-- 1 reid reid  12318 Apr  5 23:24 page_083_eq_17.png
+-rw-rw-r-- 1 reid reid   7129 Apr  5 23:24 page_083_eq_1.png
+-rw-rw-r-- 1 reid reid   5078 Apr  5 23:24 page_083_eq_2.png
+-rw-rw-r-- 1 reid reid  12744 Apr  5 23:24 page_083_eq_3.png
+-rw-rw-r-- 1 reid reid   6501 Apr  5 23:24 page_083_eq_4.png
+-rw-rw-r-- 1 reid reid   7034 Apr  5 23:24 page_083_eq_5.png
+-rw-rw-r-- 1 reid reid   9905 Apr  5 23:24 page_083_eq_6.png
+-rw-rw-r-- 1 reid reid  15602 Apr  5 23:24 page_083_eq_7.png
+-rw-rw-r-- 1 reid reid   8794 Apr  5 23:24 page_083_eq_8.png
+-rw-rw-r-- 1 reid reid  11399 Apr  5 23:24 page_083_eq_9.png
+-rw-rw-r-- 1 reid reid  12428 Apr  5 23:24 page_084_eq_0.png
+-rw-rw-r-- 1 reid reid   2334 Apr  5 23:24 page_084_eq_10.png
+-rw-rw-r-- 1 reid reid   7825 Apr  5 23:24 page_084_eq_11.png
+-rw-rw-r-- 1 reid reid   5277 Apr  5 23:24 page_084_eq_12.png
+-rw-rw-r-- 1 reid reid   4829 Apr  5 23:24 page_084_eq_13.png
+-rw-rw-r-- 1 reid reid   3734 Apr  5 23:24 page_084_eq_14.png
+-rw-rw-r-- 1 reid reid   4137 Apr  5 23:24 page_084_eq_15.png
+-rw-rw-r-- 1 reid reid   4080 Apr  5 23:24 page_084_eq_16.png
+-rw-rw-r-- 1 reid reid   4283 Apr  5 23:24 page_084_eq_17.png
+-rw-rw-r-- 1 reid reid   6846 Apr  5 23:24 page_084_eq_1.png
+-rw-rw-r-- 1 reid reid   4674 Apr  5 23:24 page_084_eq_2.png
+-rw-rw-r-- 1 reid reid   4710 Apr  5 23:24 page_084_eq_3.png
+-rw-rw-r-- 1 reid reid   9377 Apr  5 23:24 page_084_eq_4.png
+-rw-rw-r-- 1 reid reid   2706 Apr  5 23:24 page_084_eq_5.png
+-rw-rw-r-- 1 reid reid   7465 Apr  5 23:24 page_084_eq_6.png
+-rw-rw-r-- 1 reid reid   7534 Apr  5 23:24 page_084_eq_7.png
+-rw-rw-r-- 1 reid reid  19466 Apr  5 23:24 page_084_eq_8.png
+-rw-rw-r-- 1 reid reid   4987 Apr  5 23:24 page_084_eq_9.png
+-rw-rw-r-- 1 reid reid   6229 Apr  5 23:24 page_085_eq_0.png
+-rw-rw-r-- 1 reid reid   7541 Apr  5 23:24 page_085_eq_10.png
+-rw-rw-r-- 1 reid reid   4878 Apr  5 23:24 page_085_eq_11.png
+-rw-rw-r-- 1 reid reid  14977 Apr  5 23:24 page_085_eq_12.png
+-rw-rw-r-- 1 reid reid  10147 Apr  5 23:24 page_085_eq_1.png
+-rw-rw-r-- 1 reid reid  10455 Apr  5 23:24 page_085_eq_2.png
+-rw-rw-r-- 1 reid reid  10434 Apr  5 23:24 page_085_eq_3.png
+-rw-rw-r-- 1 reid reid  19034 Apr  5 23:24 page_085_eq_4.png
+-rw-rw-r-- 1 reid reid   9439 Apr  5 23:24 page_085_eq_5.png
+-rw-rw-r-- 1 reid reid  17643 Apr  5 23:24 page_085_eq_6.png
+-rw-rw-r-- 1 reid reid   9998 Apr  5 23:24 page_085_eq_7.png
+-rw-rw-r-- 1 reid reid  13292 Apr  5 23:24 page_085_eq_8.png
+-rw-rw-r-- 1 reid reid   5754 Apr  5 23:24 page_085_eq_9.png
+-rw-rw-r-- 1 reid reid  42273 Apr  5 23:24 page_086_eq_0.png
+-rw-rw-r-- 1 reid reid  21694 Apr  5 23:24 page_086_eq_1.png
+-rw-rw-r-- 1 reid reid 156800 Apr  5 23:24 page_086_eq_2.png
+-rw-rw-r-- 1 reid reid  21668 Apr  5 23:24 page_086_eq_3.png
+-rw-rw-r-- 1 reid reid  27035 Apr  5 23:24 page_086_eq_4.png
+-rw-rw-r-- 1 reid reid  18637 Apr  5 23:24 page_086_eq_5.png
+-rw-rw-r-- 1 reid reid  32907 Apr  5 23:23 page_086_table_0.png
+-rw-rw-r-- 1 reid reid  38645 Apr  5 23:24 page_087_eq_0.png
+-rw-rw-r-- 1 reid reid   6570 Apr  5 23:24 page_087_eq_10.png
+-rw-rw-r-- 1 reid reid   9995 Apr  5 23:24 page_087_eq_11.png
+-rw-rw-r-- 1 reid reid  13608 Apr  5 23:24 page_087_eq_1.png
+-rw-rw-r-- 1 reid reid   2392 Apr  5 23:24 page_087_eq_2.png
+-rw-rw-r-- 1 reid reid   4261 Apr  5 23:24 page_087_eq_3.png
+-rw-rw-r-- 1 reid reid  17300 Apr  5 23:24 page_087_eq_4.png
+-rw-rw-r-- 1 reid reid   5290 Apr  5 23:24 page_087_eq_5.png
+-rw-rw-r-- 1 reid reid  12662 Apr  5 23:24 page_087_eq_6.png
+-rw-rw-r-- 1 reid reid  12245 Apr  5 23:24 page_087_eq_7.png
+-rw-rw-r-- 1 reid reid   8864 Apr  5 23:24 page_087_eq_8.png
+-rw-rw-r-- 1 reid reid  21368 Apr  5 23:24 page_087_eq_9.png
+-rw-rw-r-- 1 reid reid  11415 Apr  5 23:24 page_088_eq_0.png
+-rw-rw-r-- 1 reid reid   7323 Apr  5 23:24 page_088_eq_10.png
+-rw-rw-r-- 1 reid reid   9323 Apr  5 23:24 page_088_eq_11.png
+-rw-rw-r-- 1 reid reid   3575 Apr  5 23:24 page_088_eq_12.png
+-rw-rw-r-- 1 reid reid   4904 Apr  5 23:24 page_088_eq_13.png
+-rw-rw-r-- 1 reid reid   6733 Apr  5 23:24 page_088_eq_14.png
+-rw-rw-r-- 1 reid reid  36339 Apr  5 23:24 page_088_eq_15.png
+-rw-rw-r-- 1 reid reid   6357 Apr  5 23:24 page_088_eq_16.png
+-rw-rw-r-- 1 reid reid   6762 Apr  5 23:24 page_088_eq_17.png
+-rw-rw-r-- 1 reid reid   7911 Apr  5 23:24 page_088_eq_1.png
+-rw-rw-r-- 1 reid reid  11686 Apr  5 23:24 page_088_eq_2.png
+-rw-rw-r-- 1 reid reid  13640 Apr  5 23:24 page_088_eq_3.png
+-rw-rw-r-- 1 reid reid  13705 Apr  5 23:24 page_088_eq_4.png
+-rw-rw-r-- 1 reid reid  14383 Apr  5 23:24 page_088_eq_5.png
+-rw-rw-r-- 1 reid reid   4594 Apr  5 23:24 page_088_eq_6.png
+-rw-rw-r-- 1 reid reid  11868 Apr  5 23:24 page_088_eq_7.png
+-rw-rw-r-- 1 reid reid  14513 Apr  5 23:24 page_088_eq_8.png
+-rw-rw-r-- 1 reid reid   4066 Apr  5 23:24 page_088_eq_9.png
+-rw-rw-r-- 1 reid reid 165420 Apr  5 23:23 page_088_table_0.png
+-rw-rw-r-- 1 reid reid   7310 Apr  5 23:24 page_089_eq_0.png
+-rw-rw-r-- 1 reid reid   9601 Apr  5 23:24 page_089_eq_10.png
+-rw-rw-r-- 1 reid reid   5515 Apr  5 23:24 page_089_eq_11.png
+-rw-rw-r-- 1 reid reid   6546 Apr  5 23:24 page_089_eq_12.png
+-rw-rw-r-- 1 reid reid  15852 Apr  5 23:24 page_089_eq_13.png
+-rw-rw-r-- 1 reid reid   2978 Apr  5 23:24 page_089_eq_14.png
+-rw-rw-r-- 1 reid reid   8518 Apr  5 23:24 page_089_eq_15.png
+-rw-rw-r-- 1 reid reid   8010 Apr  5 23:24 page_089_eq_16.png
+-rw-rw-r-- 1 reid reid  35687 Apr  5 23:24 page_089_eq_17.png
+-rw-rw-r-- 1 reid reid   6563 Apr  5 23:24 page_089_eq_18.png
+-rw-rw-r-- 1 reid reid   8766 Apr  5 23:24 page_089_eq_19.png
+-rw-rw-r-- 1 reid reid  10437 Apr  5 23:24 page_089_eq_1.png
+-rw-rw-r-- 1 reid reid   5624 Apr  5 23:24 page_089_eq_2.png
+-rw-rw-r-- 1 reid reid   7392 Apr  5 23:24 page_089_eq_3.png
+-rw-rw-r-- 1 reid reid   8133 Apr  5 23:24 page_089_eq_4.png
+-rw-rw-r-- 1 reid reid  95695 Apr  5 23:24 page_089_eq_5.png
+-rw-rw-r-- 1 reid reid   9825 Apr  5 23:24 page_089_eq_6.png
+-rw-rw-r-- 1 reid reid   3894 Apr  5 23:24 page_089_eq_7.png
+-rw-rw-r-- 1 reid reid   8534 Apr  5 23:24 page_089_eq_8.png
+-rw-rw-r-- 1 reid reid   3460 Apr  5 23:24 page_089_eq_9.png
+-rw-rw-r-- 1 reid reid 155661 Apr  5 23:23 page_089_table_0.png
+-rw-rw-r-- 1 reid reid   7136 Apr  5 23:24 page_090_eq_0.png
+-rw-rw-r-- 1 reid reid   4249 Apr  5 23:24 page_090_eq_1.png
+-rw-rw-r-- 1 reid reid   2640 Apr  5 23:24 page_090_eq_2.png
+-rw-rw-r-- 1 reid reid   4798 Apr  5 23:24 page_090_eq_3.png
+-rw-rw-r-- 1 reid reid   3880 Apr  5 23:24 page_090_eq_4.png
+-rw-rw-r-- 1 reid reid   4486 Apr  5 23:24 page_090_eq_5.png
+-rw-rw-r-- 1 reid reid   3539 Apr  5 23:24 page_090_eq_6.png
+-rw-rw-r-- 1 reid reid   2767 Apr  5 23:24 page_090_eq_7.png
+-rw-rw-r-- 1 reid reid  52234 Apr  5 23:23 page_090_table_0.png
+-rw-rw-r-- 1 reid reid   5083 Apr  5 23:24 page_091_eq_0.png
+-rw-rw-r-- 1 reid reid   5164 Apr  5 23:24 page_091_eq_1.png
+-rw-rw-r-- 1 reid reid   8013 Apr  5 23:24 page_091_eq_2.png
+-rw-rw-r-- 1 reid reid   3220 Apr  5 23:24 page_091_eq_3.png
+-rw-rw-r-- 1 reid reid   6562 Apr  5 23:24 page_091_eq_4.png
+-rw-rw-r-- 1 reid reid  10013 Apr  5 23:24 page_091_eq_5.png
+-rw-rw-r-- 1 reid reid  10008 Apr  5 23:24 page_091_eq_6.png
+-rw-rw-r-- 1 reid reid  72483 Apr  5 23:24 page_091_eq_7.png
+-rw-rw-r-- 1 reid reid   3922 Apr  5 23:24 page_091_eq_8.png
+-rw-rw-r-- 1 reid reid  13957 Apr  5 23:24 page_091_eq_9.png
+-rw-rw-r-- 1 reid reid  24044 Apr  5 23:24 page_092_eq_0.png
+-rw-rw-r-- 1 reid reid  27536 Apr  5 23:24 page_092_eq_1.png
+-rw-rw-r-- 1 reid reid  10532 Apr  5 23:24 page_092_eq_2.png
+-rw-rw-r-- 1 reid reid  13400 Apr  5 23:24 page_092_eq_3.png
+-rw-rw-r-- 1 reid reid  62661 Apr  5 23:24 page_092_eq_4.png
+-rw-rw-r-- 1 reid reid  14341 Apr  5 23:24 page_092_eq_5.png
+-rw-rw-r-- 1 reid reid  11672 Apr  5 23:24 page_092_eq_6.png
+-rw-rw-r-- 1 reid reid  11197 Apr  5 23:24 page_092_eq_7.png
+-rw-rw-r-- 1 reid reid  10257 Apr  5 23:24 page_093_eq_0.png
+-rw-rw-r-- 1 reid reid   7708 Apr  5 23:24 page_093_eq_10.png
+-rw-rw-r-- 1 reid reid  11120 Apr  5 23:24 page_093_eq_11.png
+-rw-rw-r-- 1 reid reid  52594 Apr  5 23:24 page_093_eq_12.png
+-rw-rw-r-- 1 reid reid   3713 Apr  5 23:24 page_093_eq_13.png
+-rw-rw-r-- 1 reid reid   5236 Apr  5 23:24 page_093_eq_14.png
+-rw-rw-r-- 1 reid reid  16294 Apr  5 23:24 page_093_eq_15.png
+-rw-rw-r-- 1 reid reid   6419 Apr  5 23:24 page_093_eq_16.png
+-rw-rw-r-- 1 reid reid   3778 Apr  5 23:24 page_093_eq_1.png
+-rw-rw-r-- 1 reid reid   4806 Apr  5 23:24 page_093_eq_2.png
+-rw-rw-r-- 1 reid reid  17426 Apr  5 23:24 page_093_eq_3.png
+-rw-rw-r-- 1 reid reid   4746 Apr  5 23:24 page_093_eq_4.png
+-rw-rw-r-- 1 reid reid  17806 Apr  5 23:24 page_093_eq_5.png
+-rw-rw-r-- 1 reid reid   4617 Apr  5 23:24 page_093_eq_6.png
+-rw-rw-r-- 1 reid reid  11245 Apr  5 23:24 page_093_eq_7.png
+-rw-rw-r-- 1 reid reid   6251 Apr  5 23:24 page_093_eq_8.png
+-rw-rw-r-- 1 reid reid   6531 Apr  5 23:24 page_093_eq_9.png
+-rw-rw-r-- 1 reid reid   6752 Apr  5 23:24 page_094_eq_0.png
+-rw-rw-r-- 1 reid reid  27263 Apr  5 23:24 page_094_eq_10.png
+-rw-rw-r-- 1 reid reid   6765 Apr  5 23:24 page_094_eq_11.png
+-rw-rw-r-- 1 reid reid   2866 Apr  5 23:24 page_094_eq_12.png
+-rw-rw-r-- 1 reid reid   5305 Apr  5 23:24 page_094_eq_13.png
+-rw-rw-r-- 1 reid reid   6960 Apr  5 23:24 page_094_eq_14.png
+-rw-rw-r-- 1 reid reid   5347 Apr  5 23:24 page_094_eq_15.png
+-rw-rw-r-- 1 reid reid  69889 Apr  5 23:24 page_094_eq_16.png
+-rw-rw-r-- 1 reid reid  15442 Apr  5 23:24 page_094_eq_17.png
+-rw-rw-r-- 1 reid reid  21602 Apr  5 23:24 page_094_eq_18.png
+-rw-rw-r-- 1 reid reid   4252 Apr  5 23:24 page_094_eq_1.png
+-rw-rw-r-- 1 reid reid  20667 Apr  5 23:24 page_094_eq_2.png
+-rw-rw-r-- 1 reid reid   6305 Apr  5 23:24 page_094_eq_3.png
+-rw-rw-r-- 1 reid reid   8986 Apr  5 23:24 page_094_eq_4.png
+-rw-rw-r-- 1 reid reid  16937 Apr  5 23:24 page_094_eq_5.png
+-rw-rw-r-- 1 reid reid   3667 Apr  5 23:24 page_094_eq_6.png
+-rw-rw-r-- 1 reid reid  10229 Apr  5 23:24 page_094_eq_7.png
+-rw-rw-r-- 1 reid reid  14256 Apr  5 23:24 page_094_eq_8.png
+-rw-rw-r-- 1 reid reid  10868 Apr  5 23:24 page_094_eq_9.png
+-rw-rw-r-- 1 reid reid  18554 Apr  5 23:24 page_095_eq_0.png
+-rw-rw-r-- 1 reid reid   6071 Apr  5 23:24 page_095_eq_1.png
+-rw-rw-r-- 1 reid reid  21128 Apr  5 23:24 page_095_eq_2.png
+-rw-rw-r-- 1 reid reid   6450 Apr  5 23:24 page_095_eq_3.png
+-rw-rw-r-- 1 reid reid  20376 Apr  5 23:24 page_095_eq_4.png
+-rw-rw-r-- 1 reid reid  85469 Apr  5 23:24 page_095_eq_5.png
+-rw-rw-r-- 1 reid reid  23937 Apr  5 23:24 page_095_eq_6.png
+-rw-rw-r-- 1 reid reid   4752 Apr  5 23:24 page_095_eq_7.png
+-rw-rw-r-- 1 reid reid  18413 Apr  5 23:24 page_095_eq_8.png
+-rw-rw-r-- 1 reid reid  38100 Apr  5 23:24 page_095_eq_9.png
+-rw-rw-r-- 1 reid reid  14139 Apr  5 23:24 page_096_eq_0.png
+-rw-rw-r-- 1 reid reid  13852 Apr  5 23:24 page_096_eq_10.png
+-rw-rw-r-- 1 reid reid   5799 Apr  5 23:24 page_096_eq_11.png
+-rw-rw-r-- 1 reid reid   4937 Apr  5 23:24 page_096_eq_12.png
+-rw-rw-r-- 1 reid reid  12284 Apr  5 23:24 page_096_eq_13.png
+-rw-rw-r-- 1 reid reid   4411 Apr  5 23:24 page_096_eq_14.png
+-rw-rw-r-- 1 reid reid   6494 Apr  5 23:24 page_096_eq_15.png
+-rw-rw-r-- 1 reid reid   2614 Apr  5 23:24 page_096_eq_1.png
+-rw-rw-r-- 1 reid reid   5068 Apr  5 23:24 page_096_eq_2.png
+-rw-rw-r-- 1 reid reid  12850 Apr  5 23:24 page_096_eq_3.png
+-rw-rw-r-- 1 reid reid  10643 Apr  5 23:24 page_096_eq_4.png
+-rw-rw-r-- 1 reid reid  15585 Apr  5 23:24 page_096_eq_5.png
+-rw-rw-r-- 1 reid reid   9624 Apr  5 23:24 page_096_eq_6.png
+-rw-rw-r-- 1 reid reid  25184 Apr  5 23:24 page_096_eq_7.png
+-rw-rw-r-- 1 reid reid  16071 Apr  5 23:24 page_096_eq_8.png
+-rw-rw-r-- 1 reid reid  13719 Apr  5 23:24 page_096_eq_9.png
+-rw-rw-r-- 1 reid reid   6700 Apr  5 23:24 page_097_eq_0.png
+-rw-rw-r-- 1 reid reid   6584 Apr  5 23:24 page_097_eq_10.png
+-rw-rw-r-- 1 reid reid   9138 Apr  5 23:24 page_097_eq_11.png
+-rw-rw-r-- 1 reid reid  10666 Apr  5 23:24 page_097_eq_12.png
+-rw-rw-r-- 1 reid reid   5735 Apr  5 23:24 page_097_eq_13.png
+-rw-rw-r-- 1 reid reid   4272 Apr  5 23:24 page_097_eq_14.png
+-rw-rw-r-- 1 reid reid   6577 Apr  5 23:24 page_097_eq_15.png
+-rw-rw-r-- 1 reid reid   3798 Apr  5 23:24 page_097_eq_16.png
+-rw-rw-r-- 1 reid reid   4934 Apr  5 23:24 page_097_eq_17.png
+-rw-rw-r-- 1 reid reid   5916 Apr  5 23:24 page_097_eq_18.png
+-rw-rw-r-- 1 reid reid   7607 Apr  5 23:24 page_097_eq_19.png
+-rw-rw-r-- 1 reid reid   7665 Apr  5 23:24 page_097_eq_1.png
+-rw-rw-r-- 1 reid reid  17650 Apr  5 23:24 page_097_eq_20.png
+-rw-rw-r-- 1 reid reid   3175 Apr  5 23:24 page_097_eq_21.png
+-rw-rw-r-- 1 reid reid  20644 Apr  5 23:24 page_097_eq_2.png
+-rw-rw-r-- 1 reid reid   3251 Apr  5 23:24 page_097_eq_3.png
+-rw-rw-r-- 1 reid reid   9350 Apr  5 23:24 page_097_eq_4.png
+-rw-rw-r-- 1 reid reid   4876 Apr  5 23:24 page_097_eq_5.png
+-rw-rw-r-- 1 reid reid   5585 Apr  5 23:24 page_097_eq_6.png
+-rw-rw-r-- 1 reid reid   8724 Apr  5 23:24 page_097_eq_7.png
+-rw-rw-r-- 1 reid reid  23667 Apr  5 23:24 page_097_eq_8.png
+-rw-rw-r-- 1 reid reid  10893 Apr  5 23:24 page_097_eq_9.png
+-rw-rw-r-- 1 reid reid   4292 Apr  5 23:24 page_098_eq_0.png
+-rw-rw-r-- 1 reid reid   2256 Apr  5 23:24 page_098_eq_10.png
+-rw-rw-r-- 1 reid reid   3754 Apr  5 23:24 page_098_eq_11.png
+-rw-rw-r-- 1 reid reid   2608 Apr  5 23:24 page_098_eq_12.png
+-rw-rw-r-- 1 reid reid   2770 Apr  5 23:24 page_098_eq_13.png
+-rw-rw-r-- 1 reid reid   8407 Apr  5 23:24 page_098_eq_1.png
+-rw-rw-r-- 1 reid reid   3350 Apr  5 23:24 page_098_eq_2.png
+-rw-rw-r-- 1 reid reid  35382 Apr  5 23:24 page_098_eq_3.png
+-rw-rw-r-- 1 reid reid   3795 Apr  5 23:24 page_098_eq_4.png
+-rw-rw-r-- 1 reid reid   4887 Apr  5 23:24 page_098_eq_5.png
+-rw-rw-r-- 1 reid reid   5933 Apr  5 23:24 page_098_eq_6.png
+-rw-rw-r-- 1 reid reid   3360 Apr  5 23:24 page_098_eq_7.png
+-rw-rw-r-- 1 reid reid   2930 Apr  5 23:24 page_098_eq_8.png
+-rw-rw-r-- 1 reid reid   4047 Apr  5 23:24 page_098_eq_9.png
+-rw-rw-r-- 1 reid reid  62680 Apr  5 23:23 page_100_table_0.png
+-rw-rw-r-- 1 reid reid 185095 Apr  5 23:22 tmp_mwsiw1l.pdf-0-full.png
+-rw-rw-r-- 1 reid reid 140160 Apr  5 23:22 tmp_mwsiw1l.pdf-100-full.png
+-rw-rw-r-- 1 reid reid 168432 Apr  5 23:22 tmp_mwsiw1l.pdf-10-full.png
+-rw-rw-r-- 1 reid reid 228890 Apr  5 23:22 tmp_mwsiw1l.pdf-11-full.png
+-rw-rw-r-- 1 reid reid 436521 Apr  5 23:22 tmp_mwsiw1l.pdf-12-full.png
+-rw-rw-r-- 1 reid reid 304468 Apr  5 23:22 tmp_mwsiw1l.pdf-13-full.png
+-rw-rw-r-- 1 reid reid 164972 Apr  5 23:22 tmp_mwsiw1l.pdf-14-full.png
+-rw-rw-r-- 1 reid reid 276877 Apr  5 23:22 tmp_mwsiw1l.pdf-15-full.png
+-rw-rw-r-- 1 reid reid 190787 Apr  5 23:22 tmp_mwsiw1l.pdf-16-full.png
+-rw-rw-r-- 1 reid reid 328077 Apr  5 23:22 tmp_mwsiw1l.pdf-17-full.png
+-rw-rw-r-- 1 reid reid  33958 Apr  5 23:22 tmp_mwsiw1l.pdf-18-full.png
+-rw-rw-r-- 1 reid reid  34974 Apr  5 23:22 tmp_mwsiw1l.pdf-19-full.png
+-rw-rw-r-- 1 reid reid 146468 Apr  5 23:22 tmp_mwsiw1l.pdf-1-full.png
+-rw-rw-r-- 1 reid reid 167852 Apr  5 23:22 tmp_mwsiw1l.pdf-20-full.png
+-rw-rw-r-- 1 reid reid 105827 Apr  5 23:22 tmp_mwsiw1l.pdf-21-full.png
+-rw-rw-r-- 1 reid reid 105592 Apr  5 23:22 tmp_mwsiw1l.pdf-22-full.png
+-rw-rw-r-- 1 reid reid 105213 Apr  5 23:22 tmp_mwsiw1l.pdf-23-full.png
+-rw-rw-r-- 1 reid reid 140923 Apr  5 23:22 tmp_mwsiw1l.pdf-24-full.png
+-rw-rw-r-- 1 reid reid  86915 Apr  5 23:22 tmp_mwsiw1l.pdf-25-full.png
+-rw-rw-r-- 1 reid reid  55921 Apr  5 23:22 tmp_mwsiw1l.pdf-26-full.png
+-rw-rw-r-- 1 reid reid  56475 Apr  5 23:22 tmp_mwsiw1l.pdf-27-full.png
+-rw-rw-r-- 1 reid reid 249844 Apr  5 23:22 tmp_mwsiw1l.pdf-28-full.png
+-rw-rw-r-- 1 reid reid 145938 Apr  5 23:22 tmp_mwsiw1l.pdf-29-full.png
+-rw-rw-r-- 1 reid reid 252727 Apr  5 23:22 tmp_mwsiw1l.pdf-2-full.png
+-rw-rw-r-- 1 reid reid 117155 Apr  5 23:22 tmp_mwsiw1l.pdf-30-full.png
+-rw-rw-r-- 1 reid reid  89972 Apr  5 23:22 tmp_mwsiw1l.pdf-31-full.png
+-rw-rw-r-- 1 reid reid 152057 Apr  5 23:22 tmp_mwsiw1l.pdf-32-full.png
+-rw-rw-r-- 1 reid reid 211052 Apr  5 23:22 tmp_mwsiw1l.pdf-33-full.png
+-rw-rw-r-- 1 reid reid 207444 Apr  5 23:22 tmp_mwsiw1l.pdf-34-full.png
+-rw-rw-r-- 1 reid reid  37555 Apr  5 23:22 tmp_mwsiw1l.pdf-35-full.png
+-rw-rw-r-- 1 reid reid 203705 Apr  5 23:22 tmp_mwsiw1l.pdf-36-full.png
+-rw-rw-r-- 1 reid reid 127975 Apr  5 23:22 tmp_mwsiw1l.pdf-37-full.png
+-rw-rw-r-- 1 reid reid 177448 Apr  5 23:22 tmp_mwsiw1l.pdf-38-full.png
+-rw-rw-r-- 1 reid reid 232150 Apr  5 23:22 tmp_mwsiw1l.pdf-39-full.png
+-rw-rw-r-- 1 reid reid 228503 Apr  5 23:22 tmp_mwsiw1l.pdf-3-full.png
+-rw-rw-r-- 1 reid reid 120170 Apr  5 23:22 tmp_mwsiw1l.pdf-40-full.png
+-rw-rw-r-- 1 reid reid 242486 Apr  5 23:22 tmp_mwsiw1l.pdf-41-full.png
+-rw-rw-r-- 1 reid reid 146237 Apr  5 23:22 tmp_mwsiw1l.pdf-42-full.png
+-rw-rw-r-- 1 reid reid 118469 Apr  5 23:22 tmp_mwsiw1l.pdf-43-full.png
+-rw-rw-r-- 1 reid reid  47075 Apr  5 23:22 tmp_mwsiw1l.pdf-44-full.png
+-rw-rw-r-- 1 reid reid 166810 Apr  5 23:22 tmp_mwsiw1l.pdf-45-full.png
+-rw-rw-r-- 1 reid reid 105659 Apr  5 23:22 tmp_mwsiw1l.pdf-46-full.png
+-rw-rw-r-- 1 reid reid 118076 Apr  5 23:22 tmp_mwsiw1l.pdf-47-full.png
+-rw-rw-r-- 1 reid reid  96403 Apr  5 23:22 tmp_mwsiw1l.pdf-48-full.png
+-rw-rw-r-- 1 reid reid 150618 Apr  5 23:22 tmp_mwsiw1l.pdf-49-full.png
+-rw-rw-r-- 1 reid reid 184980 Apr  5 23:22 tmp_mwsiw1l.pdf-4-full.png
+-rw-rw-r-- 1 reid reid 191586 Apr  5 23:22 tmp_mwsiw1l.pdf-50-full.png
+-rw-rw-r-- 1 reid reid 109045 Apr  5 23:22 tmp_mwsiw1l.pdf-51-full.png
+-rw-rw-r-- 1 reid reid 181490 Apr  5 23:22 tmp_mwsiw1l.pdf-52-full.png
+-rw-rw-r-- 1 reid reid 132501 Apr  5 23:22 tmp_mwsiw1l.pdf-53-full.png
+-rw-rw-r-- 1 reid reid 203058 Apr  5 23:22 tmp_mwsiw1l.pdf-54-full.png
+-rw-rw-r-- 1 reid reid 204883 Apr  5 23:22 tmp_mwsiw1l.pdf-55-full.png
+-rw-rw-r-- 1 reid reid 196694 Apr  5 23:22 tmp_mwsiw1l.pdf-56-full.png
+-rw-rw-r-- 1 reid reid 126949 Apr  5 23:22 tmp_mwsiw1l.pdf-57-full.png
+-rw-rw-r-- 1 reid reid  97702 Apr  5 23:22 tmp_mwsiw1l.pdf-58-full.png
+-rw-rw-r-- 1 reid reid 112885 Apr  5 23:22 tmp_mwsiw1l.pdf-59-full.png
+-rw-rw-r-- 1 reid reid 232263 Apr  5 23:22 tmp_mwsiw1l.pdf-5-full.png
+-rw-rw-r-- 1 reid reid  76624 Apr  5 23:22 tmp_mwsiw1l.pdf-60-full.png
+-rw-rw-r-- 1 reid reid  79282 Apr  5 23:22 tmp_mwsiw1l.pdf-61-full.png
+-rw-rw-r-- 1 reid reid 125529 Apr  5 23:22 tmp_mwsiw1l.pdf-62-full.png
+-rw-rw-r-- 1 reid reid 144897 Apr  5 23:22 tmp_mwsiw1l.pdf-63-full.png
+-rw-rw-r-- 1 reid reid 114849 Apr  5 23:22 tmp_mwsiw1l.pdf-64-full.png
+-rw-rw-r-- 1 reid reid 116857 Apr  5 23:22 tmp_mwsiw1l.pdf-65-full.png
+-rw-rw-r-- 1 reid reid  55852 Apr  5 23:22 tmp_mwsiw1l.pdf-66-full.png
+-rw-rw-r-- 1 reid reid  68489 Apr  5 23:22 tmp_mwsiw1l.pdf-67-full.png
+-rw-rw-r-- 1 reid reid 220632 Apr  5 23:22 tmp_mwsiw1l.pdf-68-full.png
+-rw-rw-r-- 1 reid reid 102632 Apr  5 23:22 tmp_mwsiw1l.pdf-69-full.png
+-rw-rw-r-- 1 reid reid 226545 Apr  5 23:22 tmp_mwsiw1l.pdf-6-full.png
+-rw-rw-r-- 1 reid reid  80267 Apr  5 23:22 tmp_mwsiw1l.pdf-70-full.png
+-rw-rw-r-- 1 reid reid  30430 Apr  5 23:22 tmp_mwsiw1l.pdf-71-full.png
+-rw-rw-r-- 1 reid reid 102351 Apr  5 23:22 tmp_mwsiw1l.pdf-72-full.png
+-rw-rw-r-- 1 reid reid 101584 Apr  5 23:22 tmp_mwsiw1l.pdf-73-full.png
+-rw-rw-r-- 1 reid reid  92417 Apr  5 23:22 tmp_mwsiw1l.pdf-74-full.png
+-rw-rw-r-- 1 reid reid  95106 Apr  5 23:22 tmp_mwsiw1l.pdf-75-full.png
+-rw-rw-r-- 1 reid reid 129000 Apr  5 23:22 tmp_mwsiw1l.pdf-76-full.png
+-rw-rw-r-- 1 reid reid 144647 Apr  5 23:22 tmp_mwsiw1l.pdf-77-full.png
+-rw-rw-r-- 1 reid reid 123423 Apr  5 23:22 tmp_mwsiw1l.pdf-78-full.png
+-rw-rw-r-- 1 reid reid  91329 Apr  5 23:22 tmp_mwsiw1l.pdf-79-full.png
+-rw-rw-r-- 1 reid reid  94476 Apr  5 23:22 tmp_mwsiw1l.pdf-7-full.png
+-rw-rw-r-- 1 reid reid  88175 Apr  5 23:22 tmp_mwsiw1l.pdf-80-full.png
+-rw-rw-r-- 1 reid reid 119710 Apr  5 23:22 tmp_mwsiw1l.pdf-81-full.png
+-rw-rw-r-- 1 reid reid 124889 Apr  5 23:22 tmp_mwsiw1l.pdf-82-full.png
+-rw-rw-r-- 1 reid reid 131377 Apr  5 23:22 tmp_mwsiw1l.pdf-83-full.png
+-rw-rw-r-- 1 reid reid 105706 Apr  5 23:22 tmp_mwsiw1l.pdf-84-full.png
+-rw-rw-r-- 1 reid reid 108520 Apr  5 23:22 tmp_mwsiw1l.pdf-85-full.png
+-rw-rw-r-- 1 reid reid 102458 Apr  5 23:22 tmp_mwsiw1l.pdf-86-full.png
+-rw-rw-r-- 1 reid reid 141060 Apr  5 23:22 tmp_mwsiw1l.pdf-87-full.png
+-rw-rw-r-- 1 reid reid 123523 Apr  5 23:22 tmp_mwsiw1l.pdf-88-full.png
+-rw-rw-r-- 1 reid reid 137239 Apr  5 23:22 tmp_mwsiw1l.pdf-89-full.png
+-rw-rw-r-- 1 reid reid  40213 Apr  5 23:22 tmp_mwsiw1l.pdf-8-full.png
+-rw-rw-r-- 1 reid reid  31487 Apr  5 23:22 tmp_mwsiw1l.pdf-90-full.png
+-rw-rw-r-- 1 reid reid  77453 Apr  5 23:22 tmp_mwsiw1l.pdf-91-full.png
+-rw-rw-r-- 1 reid reid 105052 Apr  5 23:22 tmp_mwsiw1l.pdf-92-full.png
+-rw-rw-r-- 1 reid reid  74561 Apr  5 23:22 tmp_mwsiw1l.pdf-93-full.png
+-rw-rw-r-- 1 reid reid 100384 Apr  5 23:22 tmp_mwsiw1l.pdf-94-full.png
+-rw-rw-r-- 1 reid reid 120360 Apr  5 23:22 tmp_mwsiw1l.pdf-95-full.png
+-rw-rw-r-- 1 reid reid  97035 Apr  5 23:22 tmp_mwsiw1l.pdf-96-full.png
+-rw-rw-r-- 1 reid reid  84460 Apr  5 23:22 tmp_mwsiw1l.pdf-97-full.png
+-rw-rw-r-- 1 reid reid  71496 Apr  5 23:22 tmp_mwsiw1l.pdf-98-full.png
+-rw-rw-r-- 1 reid reid 121143 Apr  5 23:22 tmp_mwsiw1l.pdf-99-full.png
+-rw-rw-r-- 1 reid reid 342346 Apr  5 23:22 tmp_mwsiw1l.pdf-9-full.png
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/osti-servlets-purl-622702:
+total 112
+drwxrwxr-x  3 reid reid  4096 Apr 19 07:19 .
+drwxrwxr-x 18 reid reid  4096 Apr 25 08:07 ..
+drwxrwxr-x  2 reid reid  4096 Apr 12 20:07 images
+-rw-------  1 reid reid 99753 Apr 12 20:07 raw.pdf
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/osti-servlets-purl-622702/images:
+total 28
+drwxrwxr-x 2 reid reid  4096 Apr 12 20:07 .
+drwxrwxr-x 3 reid reid  4096 Apr 19 07:19 ..
+-rw-rw-r-- 1 reid reid 13344 Apr 12 20:07 tmp8vxxezjr.pdf-0001-05.png
+-rw-rw-r-- 1 reid reid  3462 Apr 12 20:07 tmp8vxxezjr.pdf-0014-01.png
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/pmc-articles-pmc7658748:
+total 220
+drwxrwxr-x  2 reid reid   4096 Apr 25 08:07 .
+drwxrwxr-x 18 reid reid   4096 Apr 25 08:07 ..
+-rw-rw-r--  1 reid reid    239 Apr 25 08:07 metrics.json
+-rw-rw-r--  1 reid reid  44800 Apr 25 08:07 output.md
+-rw-rw-r--  1 reid reid 166371 Apr 19 14:35 raw.html
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/prnewswire-news-releases-focused-energy-and-amplitude-enter:
+total 228
+drwxrwxr-x  2 reid reid   4096 Apr 11 14:52 .
+drwxrwxr-x 18 reid reid   4096 Apr 25 08:07 ..
+-rw-rw-r--  1 reid reid    210 Apr 11 14:52 metrics.json
+-rw-rw-r--  1 reid reid   8276 Apr 11 14:52 output.md
+-rw-rw-r--  1 reid reid 208421 Apr  5 21:54 raw.html
+
+knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/sciencedirect-science-article-pii-s0920379624001868:
+total 192
+drwxrwxr-x  2 reid reid   4096 Apr 11 14:52 .
+drwxrwxr-x 18 reid reid   4096 Apr 25 08:07 ..
+-rw-rw-r--  1 reid reid    196 Apr 11 14:52 metrics.json
+-rw-rw-r--  1 reid reid   1833 Apr 11 14:52 output.md
+-rw-rw-r--  1 reid reid 178919 Apr  5 23:21 raw.html
+
+knowledge/concept_research/20-modular-hts-stellarator:
+total 44
+drwxrwxr-x  5 reid reid  4096 Apr 11 14:52 .
+drwxrwxr-x 43 reid reid  4096 May 17 22:22 ..
+-rw-rw-r--  1 reid reid  5123 Apr 11 14:52 changelog.md
+-rw-rw-r--  1 reid reid 13776 Apr 11 14:52 dossier.md
+drwxrwxr-x  3 reid reid  4096 Apr 11 14:52 iter-01
+drwxrwxr-x  3 reid reid  4096 Apr 11 14:52 iter-02
+drwxrwxr-x  3 reid reid  4096 Apr  5 21:57 iter-03
+
+knowledge/concept_research/20-modular-hts-stellarator/iter-01:
+total 52
+drwxrwxr-x 3 reid reid  4096 Apr 11 14:52 .
+drwxrwxr-x 5 reid reid  4096 Apr 11 14:52 ..
+-rw-rw-r-- 1 reid reid   863 Apr 11 14:52 output.md
+-rw-rw-r-- 1 reid reid 26497 Apr 11 14:52 prompt.md
+drwxrwxr-x 4 reid reid  4096 Apr 11 14:52 sources
+-rw-rw-r-- 1 reid reid  5224 Apr 11 14:52 synthesis_prompt.md
+
+knowledge/concept_research/20-modular-hts-stellarator/iter-01/sources:
+total 28
+drwxrwxr-x 4 reid reid 4096 Apr 11 14:52 .
+drwxrwxr-x 3 reid reid 4096 Apr 11 14:52 ..
+drwxrwxr-x 2 reid reid 4096 Apr 11 14:52 renaissance-fusion-technology
+-rw-rw-r-- 1 reid reid 4830 Apr 11 14:52 renaissance-fusion-technology.md
+drwxrwxr-x 2 reid reid 4096 Apr 11 14:52 type-one-energy-infinity-two-design
+-rw-rw-r-- 1 reid reid 3889 Apr 11 14:52 type-one-energy-infinity-two-design.md
+
+knowledge/concept_research/20-modular-hts-stellarator/iter-01/sources/renaissance-fusion-technology:
+total 3888
+drwxrwxr-x 2 reid reid    4096 Apr 11 14:52 .
+drwxrwxr-x 4 reid reid    4096 Apr 11 14:52 ..
+-rw-rw-r-- 1 reid reid     233 Apr 11 14:52 metrics.json
+-rw-rw-r-- 1 reid reid    4830 Apr 11 14:52 output.md
+-rw-rw-r-- 1 reid reid 3957588 Mar 29 13:18 raw.html
+
+knowledge/concept_research/20-modular-hts-stellarator/iter-01/sources/type-one-energy-infinity-two-design:
+total 120
+drwxrwxr-x 2 reid reid   4096 Apr 11 14:52 .
+drwxrwxr-x 4 reid reid   4096 Apr 11 14:52 ..
+-rw-rw-r-- 1 reid reid    223 Apr 11 14:52 metrics.json
+-rw-rw-r-- 1 reid reid   3889 Apr 11 14:52 output.md
+-rw-rw-r-- 1 reid reid 105996 Mar 29 13:19 raw.html
+
+knowledge/concept_research/20-modular-hts-stellarator/iter-02:
+total 72
+drwxrwxr-x 3 reid reid  4096 Apr 11 14:52 .
+drwxrwxr-x 5 reid reid  4096 Apr 11 14:52 ..
+-rw-rw-r-- 1 reid reid 14342 Apr 11 14:52 output.md
+-rw-rw-r-- 1 reid reid 34892 Apr 11 14:52 prompt.md
+drwxrwxr-x 4 reid reid  4096 Apr 11 14:52 sources
+-rw-rw-r-- 1 reid reid  4459 Apr 11 14:52 synthesis_prompt.md
+
+knowledge/concept_research/20-modular-hts-stellarator/iter-02/sources:
+total 160
+drwxrwxr-x 4 reid reid   4096 Apr 11 14:52 .
+drwxrwxr-x 3 reid reid   4096 Apr 11 14:52 ..
+drwxrwxr-x 3 reid reid   4096 Apr 11 14:52 renaissance-fusion-specs
+-rw-rw-r-- 1 reid reid 134683 Apr 11 14:52 renaissance-fusion-specs.md
+drwxrwxr-x 2 reid reid   4096 Apr 11 14:52 type-one-infinity-two-specs
+-rw-rw-r-- 1 reid reid  12116 Apr 11 14:52 type-one-infinity-two-specs.md
+
+knowledge/concept_research/20-modular-hts-stellarator/iter-02/sources/renaissance-fusion-specs:
+total 156
+drwxrwxr-x 3 reid reid   4096 Apr 11 14:52 .
+drwxrwxr-x 4 reid reid   4096 Apr 11 14:52 ..
+-rw-rw-r-- 1 reid reid   1587 Apr 11 14:52 cost.json
+-rw-rw-r-- 1 reid reid   3938 Apr 11 14:52 decisions.json
+drwxrwxr-x 2 reid reid   4096 Mar 29 13:34 images
+-rw-rw-r-- 1 reid reid    230 Apr 11 14:52 metrics.json
+-rw-rw-r-- 1 reid reid 134683 Apr 11 14:52 output.md
+
+knowledge/concept_research/20-modular-hts-stellarator/iter-02/sources/renaissance-fusion-specs/images:
+total 6260
+drwxrwxr-x 2 reid reid   4096 Mar 29 13:34 .
+drwxrwxr-x 3 reid reid   4096 Apr 11 14:52 ..
+-rw-rw-r-- 1 reid reid   6459 Mar 29 13:27 page_003_eq_0.png
+-rw-rw-r-- 1 reid reid   5166 Mar 29 13:27 page_003_eq_1.png
+-rw-rw-r-- 1 reid reid   6103 Mar 29 13:27 page_003_eq_2.png
+-rw-rw-r-- 1 reid reid   5696 Mar 29 13:27 page_003_eq_3.png
+-rw-rw-r-- 1 reid reid   7328 Mar 29 13:27 page_003_eq_4.png
+-rw-rw-r-- 1 reid reid   4392 Mar 29 13:27 page_003_eq_5.png
+-rw-rw-r-- 1 reid reid   5378 Mar 29 13:27 page_004_eq_0.png
+-rw-rw-r-- 1 reid reid   7309 Mar 29 13:27 page_004_eq_1.png
+-rw-rw-r-- 1 reid reid   3377 Mar 29 13:27 page_004_eq_2.png
+-rw-rw-r-- 1 reid reid   3666 Mar 29 13:27 page_004_eq_3.png
+-rw-rw-r-- 1 reid reid  10087 Mar 29 13:27 page_004_eq_4.png
+-rw-rw-r-- 1 reid reid  10401 Mar 29 13:27 page_004_eq_5.png
+-rw-rw-r-- 1 reid reid  14002 Mar 29 13:27 page_004_eq_6.png
+-rw-rw-r-- 1 reid reid   4030 Mar 29 13:27 page_004_eq_7.png
+-rw-rw-r-- 1 reid reid   7455 Mar 29 13:27 page_004_eq_8.png
+-rw-rw-r-- 1 reid reid   6293 Mar 29 13:27 page_004_eq_9.png
+-rw-rw-r-- 1 reid reid   6072 Mar 29 13:27 page_005_eq_0.png
+-rw-rw-r-- 1 reid reid   5651 Mar 29 13:27 page_005_eq_1.png
+-rw-rw-r-- 1 reid reid   3858 Mar 29 13:27 page_005_eq_2.png
+-rw-rw-r-- 1 reid reid   5649 Mar 29 13:28 page_006_eq_0.png
+-rw-rw-r-- 1 reid reid   6478 Mar 29 13:28 page_006_eq_1.png
+-rw-rw-r-- 1 reid reid  36542 Mar 29 13:27 page_006_table_0.png
+-rw-rw-r-- 1 reid reid 152470 Mar 29 13:27 page_006_table_1.png
+-rw-rw-r-- 1 reid reid  11889 Mar 29 13:28 page_007_eq_0.png
+-rw-rw-r-- 1 reid reid  22511 Mar 29 13:28 page_012_eq_0.png
+-rw-rw-r-- 1 reid reid 207605 Mar 29 13:27 page_018_table_0.png
+-rw-rw-r-- 1 reid reid  10494 Mar 29 13:28 page_019_eq_0.png
+-rw-rw-r-- 1 reid reid 168676 Mar 29 13:27 page_022_table_0.png
+-rw-rw-r-- 1 reid reid 216632 Mar 29 13:27 page_024_table_0.png
+-rw-rw-r-- 1 reid reid 174099 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-10-0.png
+-rw-rw-r-- 1 reid reid 520606 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-10-1.png
+-rw-rw-r-- 1 reid reid 164640 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-11-0.png
+-rw-rw-r-- 1 reid reid 113276 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-12-0.png
+-rw-rw-r-- 1 reid reid 412780 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-13-0.png
+-rw-rw-r-- 1 reid reid 186437 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-14-0.png
+-rw-rw-r-- 1 reid reid 265138 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-15-0.png
+-rw-rw-r-- 1 reid reid 104913 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-16-0.png
+-rw-rw-r-- 1 reid reid 198807 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-17-0.png
+-rw-rw-r-- 1 reid reid  63933 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-18-0.png
+-rw-rw-r-- 1 reid reid 311631 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-18-1.png
+-rw-rw-r-- 1 reid reid 104337 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-19-0.png
+-rw-rw-r-- 1 reid reid 126029 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-20-0.png
+-rw-rw-r-- 1 reid reid  79260 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-20-1.png
+-rw-rw-r-- 1 reid reid  99705 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-2-0.png
+-rw-rw-r-- 1 reid reid 106211 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-21-0.png
+-rw-rw-r-- 1 reid reid 150541 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-21-1.png
+-rw-rw-r-- 1 reid reid 119494 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-22-0.png
+-rw-rw-r-- 1 reid reid 122727 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-24-0.png
+-rw-rw-r-- 1 reid reid 116369 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-25-0.png
+-rw-rw-r-- 1 reid reid  70000 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-25-1.png
+-rw-rw-r-- 1 reid reid  60365 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-26-0.png
+-rw-rw-r-- 1 reid reid 279695 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-26-1.png
+-rw-rw-r-- 1 reid reid 239848 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-3-0.png
+-rw-rw-r-- 1 reid reid 558477 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-8-0.png
+-rw-rw-r-- 1 reid reid 108407 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-9-0.png
+-rw-rw-r-- 1 reid reid 478671 Mar 29 13:27 Prost_2024_Nucl._Fusion_64_026007.pdf-9-1.png
+
+knowledge/concept_research/20-modular-hts-stellarator/iter-02/sources/type-one-infinity-two-specs:
+total 812
+drwxrwxr-x 2 reid reid   4096 Apr 11 14:52 .
+drwxrwxr-x 4 reid reid   4096 Apr 11 14:52 ..
+-rw-rw-r-- 1 reid reid    210 Apr 11 14:52 metrics.json
+-rw-rw-r-- 1 reid reid  12116 Apr 11 14:52 output.md
+-rw-rw-r-- 1 reid reid 804041 Mar 29 13:21 raw.html
+
+knowledge/concept_research/20-modular-hts-stellarator/iter-03:
+total 12
+drwxrwxr-x 3 reid reid 4096 Apr  5 21:57 .
+drwxrwxr-x 5 reid reid 4096 Apr 11 14:52 ..
+drwxrwxr-x 2 reid reid 4096 Apr  5 21:57 sources
+
+knowledge/concept_research/20-modular-hts-stellarator/iter-03/sources:
+total 8
+drwxrwxr-x 2 reid reid 4096 Apr  5 21:57 .
+drwxrwxr-x 3 reid reid 4096 Apr  5 21:57 ..
+
+knowledge/concept_research/34-compact-spherical-tokamak-india:
+total 28
+drwxrwxr-x  4 reid reid 4096 Apr 11 14:52 .
+drwxrwxr-x 43 reid reid 4096 May 17 22:22 ..
+-rw-rw-r--  1 reid reid 2827 Apr 11 14:52 changelog.md
+-rw-rw-r--  1 reid reid 6616 Apr 11 14:52 dossier.md
+drwxrwxr-x  3 reid reid 4096 Apr 11 14:52 iter-01
+drwxrwxr-x  3 reid reid 4096 Apr 11 14:52 iter-02
+
+knowledge/concept_research/34-compact-spherical-tokamak-india/iter-01:
+total 52
+drwxrwxr-x 3 reid reid  4096 Apr 11 14:52 .
+drwxrwxr-x 4 reid reid  4096 Apr 11 14:52 ..
+-rw-rw-r-- 1 reid reid  1406 Apr 11 14:52 output.md
+-rw-rw-r-- 1 reid reid 26214 Apr 11 14:52 prompt.md
+drwxrwxr-x 2 reid reid  4096 Apr 11 14:52 sources
+-rw-rw-r-- 1 reid reid  5098 Apr 11 14:52 synthesis_prompt.md
+
+knowledge/concept_research/34-compact-spherical-tokamak-india/iter-01/sources:
+total 12
+drwxrwxr-x 2 reid reid 4096 Apr 11 14:52 .
+drwxrwxr-x 3 reid reid 4096 Apr 11 14:52 ..
+-rw-rw-r-- 1 reid reid 3771 Apr 11 14:52 pranos-fusion-overview.md
+
+knowledge/concept_research/34-compact-spherical-tokamak-india/iter-02:
+total 56
+drwxrwxr-x 3 reid reid  4096 Apr 11 14:52 .
+drwxrwxr-x 4 reid reid  4096 Apr 11 14:52 ..
+-rw-rw-r-- 1 reid reid  1100 Apr 11 14:52 output.md
+-rw-rw-r-- 1 reid reid 31104 Apr 11 14:52 prompt.md
+drwxrwxr-x 5 reid reid  4096 Apr 25 08:07 sources
+-rw-rw-r-- 1 reid reid  4489 Apr 11 14:52 synthesis_prompt.md
+
+knowledge/concept_research/34-compact-spherical-tokamak-india/iter-02/sources:
+total 28
+drwxrwxr-x 5 reid reid 4096 Apr 25 08:07 .
+drwxrwxr-x 3 reid reid 4096 Apr 11 14:52 ..
+drwxrwxr-x 2 reid reid 4096 Apr 25 08:07 arxiv-2603-11549
+lrwxrwxrwx 1 reid reid   26 Apr 25 08:07 arxiv-2603-11549.md -> arxiv-2603-11549/output.md
+-rw-rw-r-- 1 reid reid 1293 Apr 11 14:52 iaea-fuse-pranos-profile.md
+drwxrwxr-x 2 reid reid 4096 Apr 25 08:07 inc42-buzz-nuclear-fusion-startup-pranos-fusion-nets-6-8-mn
+lrwxrwxrwx 1 reid reid   69 Apr 25 08:07 inc42-buzz-nuclear-fusion-startup-pranos-fusion-nets-6-8-mn.md -> inc42-buzz-nuclear-fusion-startup-pranos-fusion-nets-6-8-mn/output.md
+drwxrwxr-x 2 reid reid 4096 Apr 25 08:07 pranosfusion
+lrwxrwxrwx 1 reid reid   22 Apr 25 08:07 pranosfusion.md -> pranosfusion/output.md
+
+knowledge/concept_research/34-compact-spherical-tokamak-india/iter-02/sources/arxiv-2603-11549:
+total 60
+drwxrwxr-x 2 reid reid  4096 Apr 25 08:07 .
+drwxrwxr-x 5 reid reid  4096 Apr 25 08:07 ..
+-rw-rw-r-- 1 reid reid   223 Apr 25 08:07 metrics.json
+-rw-rw-r-- 1 reid reid  3405 Apr 25 08:07 output.md
+-rw-rw-r-- 1 reid reid 45034 Apr 19 18:45 raw.html
+
+knowledge/concept_research/34-compact-spherical-tokamak-india/iter-02/sources/inc42-buzz-nuclear-fusion-startup-pranos-fusion-nets-6-8-mn:
+total 576
+drwxrwxr-x 2 reid reid   4096 Apr 25 08:07 .
+drwxrwxr-x 5 reid reid   4096 Apr 25 08:07 ..
+-rw-rw-r-- 1 reid reid    195 Apr 25 08:07 metrics.json
+-rw-rw-r-- 1 reid reid   1176 Apr 25 08:07 output.md
+-rw-rw-r-- 1 reid reid 571595 Apr 19 19:12 raw.html
+
+knowledge/concept_research/34-compact-spherical-tokamak-india/iter-02/sources/pranosfusion:
+total 364
+drwxrwxr-x 2 reid reid   4096 Apr 25 08:07 .
+drwxrwxr-x 5 reid reid   4096 Apr 25 08:07 ..
+-rw-rw-r-- 1 reid reid    222 Apr 25 08:07 metrics.json
+-rw-rw-r-- 1 reid reid   2019 Apr 25 08:07 output.md
+-rw-rw-r-- 1 reid reid 353359 Apr 19 19:12 raw.html
+
+=== sha256 of key dossiers/changelogs ===
+40e429171e0752edf87b7bbf0aeb22b0b8c2db2aab8e03fe2d5c571b73169573  17-laser-icf-direct-drive/changelog.md
+eeaf272f4ad91b0818fd6c12ce8c0c9969b7e45cd531fd9bbe5928796d3488f3  17-laser-icf-direct-drive/dossier.md
+833413970a9f2cc55e90319e6407ccf2c882132907bd17923249ed1a4563eb64  17-laser-icf-direct-drive/dossier_17b_focused_concept_downselect.md
+9c656978c06bd89650c2146b58ea689f4449ea02448096b9a3b402f4fdffe0b5  17-laser-icf-direct-drive/dossier_17a_xcimer_concept_downselect.md
+35140690aaa3dc8182169735efb609cf2992ecc6417160e3159ddc3489cba5fc  20-modular-hts-stellarator/changelog.md
+27d4029ab2b17c7cc546993e60e0568fe56dc8bb420133524890070c83513c08  20-modular-hts-stellarator/dossier.md
+0bc14efb8958121fc88aa96fc7291a9b2159872c1ae8191c1c1d3910dd208c36  34-compact-spherical-tokamak-india/changelog.md
+0939ad263ecc0f58826ed6e6783edf4c12161c2cf0cdb0a7137974344f4f4a5a  34-compact-spherical-tokamak-india/dossier.md
