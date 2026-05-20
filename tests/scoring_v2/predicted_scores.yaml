@@ -1,0 +1,299 @@
+# Predicted-scores conformance fixture for the 7-axis scoring framework.
+#
+# This file is the SINGLE SOURCE OF TRUTH for what scores the implementation
+# must reproduce. Each axis maps {concept_id: predicted_score}.
+#
+# `tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand`
+# parameterizes over this file. Concepts with null values are explicitly
+# un-anchored (no value in the spec to verify against); the test skips them.
+#
+# Scores are extracted verbatim from each axis's implementation spec:
+#   - modularity:           modularity_implementation_spec.md (sparse anchors only;
+#                            full table pending modularity_matrix_v5.md upload)
+#   - supply_chain:         supply_chain_implementation_spec.md (full 40)
+#   - plant_complexity:     plant_complexity_implementation_spec.md (planning-doc
+#                            enumerated set; remaining concepts null until
+#                            verified against actual v3-ontology features)
+#   - customization:        customization_implementation_spec.md (full 39)
+#   - upper_cf:             upper_cf_implementation_spec.md (full 39)
+#   - technical_feasibility: technical_feasibility_implementation_spec.md (full 39)
+#   - data_availability:    data_availability_implementation_spec.md
+#                            (concepts without gap reports: null)
+#
+# Tolerance: 0.05 (rounding). Updates require coordinated spec edit + this file.
+
+# ----------------------------------------------------------------------
+# Modularity (v5) — SPARSE anchors from spec body; full table TODO
+# ----------------------------------------------------------------------
+# TODO: populate all 40 from modularity_matrix_v5.md when uploaded.
+# The 10 entries below are explicit anchors from the modularity spec body.
+modularity:
+  "01-hts-compact-tokamak": 3.71              # CFS ARC (worked example A)
+  "07-maglif": 4.93                           # Pacific MagLIF
+  "08-frc-w-direct-conversion": 5.00          # Helion (worked example B)
+  "12-levitated-dipole": 2.68                 # OpenStar
+  "13-electrostatic-hybrid": 4.78             # Avalanche
+  "14-magnetized-target-fusion-pneumatic-compression": 4.88  # General Fusion
+  "16-muon-catalyzed-fusion": 2.54            # Acceleron
+  "19-orbital-levitated-dipole": 2.70         # Zephyr
+  "33-state-backed-tokamak-best": 1.91        # BEST (worked example C)
+  "36-helical-coil-stellarator": 2.03         # Helical Fusion
+  "37-magnetized-target-inertial-fusion-mtif": 5.00  # NearStar MTIF
+  "38-particle-accelerator-driven-fusion": 2.54  # SHINE
+  # remaining ~28 concepts: null (pending v5 matrix)
+
+# ----------------------------------------------------------------------
+# Supply Chain — full 40 (from supply_chain_implementation_spec.md)
+# ----------------------------------------------------------------------
+supply_chain:
+  "01-hts-compact-tokamak": 2.0
+  "02-acoustic-icf-sonofusion": 5.0
+  "03-laser-icf-liquid-jet-target": 4.0
+  "04-laser-icf": 4.0
+  "05-planar-coil-stellarator": 3.0
+  "06-magnetic-mirror": 5.0
+  "07-maglif": 3.0
+  "08-frc-w-direct-conversion": 2.0
+  "09-qi-stellarator-hts": 3.0
+  "10-large-scale-stellarator": 3.0
+  "11-magnetic-mirror": 3.0
+  "12-levitated-dipole": 2.5
+  "13-electrostatic-hybrid": 3.0
+  "14-magnetized-target-fusion-pneumatic-compression": 3.0
+  "15-sheared-flow-stabilized-z-pinch": 3.0
+  "16-muon-catalyzed-fusion": 3.0
+  "17a-laser-icf-hybrid-drive": 1.0
+  "17b-laser-icf-fast-ignition": 2.0
+  "18-p-b11-frc": 5.0
+  "19-orbital-levitated-dipole": 2.0
+  "20a-type-one-stellarator": 2.5
+  "20b-renaissance-stellarator": 2.5
+  "21-spherical-tokamak-hts": 3.0
+  "22-projectile-icf": 3.0
+  "23-laser-icf-nanostructured-target": 4.0
+  "24-dense-plasma-focus": 5.0
+  "25-heavy-ion-beam-icf": 3.0
+  "26-laser-icf-indirect-drive": 2.0
+  "27-polywell": 3.0
+  "28-hts-tokamak-full-hts": 3.0
+  "29-negative-triangularity-tokamak": 3.0
+  "30-laser-icf-nif-commercialization": 2.0
+  "31-laser-icf-oec-architecture": 2.0
+  "32-laser-icf-french-national": 2.0
+  "33-state-backed-tokamak-best": 3.0
+  "35-polomac-magnetic-confinement": 5.0
+  "36-helical-coil-stellarator": 3.0
+  "37-magnetized-target-inertial-fusion-mtif": 5.0
+  "38-particle-accelerator-driven-fusion": 4.0
+  "39-spherical-tokamak-cs-free-p-b11": 5.0
+
+# ----------------------------------------------------------------------
+# Plant Complexity — planning-doc enumerated subset (analyst-vetted)
+# Remaining concepts null pending verification against actual v3 features
+# ----------------------------------------------------------------------
+plant_complexity:
+  "01-hts-compact-tokamak": 1.0               # CFS ARC
+  "02-acoustic-icf-sonofusion": 4.0           # remote_maintenance only
+  "04-laser-icf": 3.0                         # hb11 (target_factory_high only)
+  "06-magnetic-mirror": 3.5                   # Pale Blue (cryo_hts + high_power_aux)
+  "07-maglif": 2.0                            # Pacific MagLIF (tritium + remote + pulsed_power_thermal)
+  "08-frc-w-direct-conversion": 5.0           # Helion (zero triggers)
+  "09-qi-stellarator-hts": 2.0                # Proxima QI
+  "11-magnetic-mirror": 1.5                   # Realta
+  "12-levitated-dipole": 1.5                  # OpenStar (with levitation_stabilization)
+  "13-electrostatic-hybrid": 3.0              # Avalanche
+  "14-magnetized-target-fusion-pneumatic-compression": 1.5  # General Fusion (pulsed_power_thermal + liquid_metal)
+  "15-sheared-flow-stabilized-z-pinch": 1.0   # Zap (pulsed_power + disruption + liquid_metal)
+  "17a-laser-icf-hybrid-drive": 1.0           # Xcimer KrF (target_factory_high)
+  "17b-laser-icf-fast-ignition": 1.0          # Focused DPSSL
+  "18-p-b11-frc": 3.5                         # TAE p-B11
+  "21-spherical-tokamak-hts": 1.0             # Tokamak Energy ST
+  "22-projectile-icf": 2.0                    # First Light (sub-Hz)
+  "24-dense-plasma-focus": 5.0                # LPP DPF (direct, aneutronic, no targets)
+  "25-heavy-ion-beam-icf": 1.0                # Intensity heavy-ion
+  "26-laser-icf-indirect-drive": 1.0          # Inertia DPSSL
+  "37-magnetized-target-inertial-fusion-mtif": 3.0  # NearStar D-D
+  "38-particle-accelerator-driven-fusion": 4.0  # SHINE (D-T non-power)
+  # remaining ~17 concepts: null (verify against table.csv features during P4)
+
+# ----------------------------------------------------------------------
+# Customization — full 39 (from customization_implementation_spec.md)
+# ----------------------------------------------------------------------
+customization:
+  "01-hts-compact-tokamak": 1.67
+  "02-acoustic-icf-sonofusion": 2.33
+  "03-laser-icf-liquid-jet-target": 2.33
+  "04-laser-icf": 5.00
+  "05-planar-coil-stellarator": 1.67
+  "06-magnetic-mirror": 5.00
+  "07-maglif": 1.67
+  "08-frc-w-direct-conversion": 4.33
+  "09-qi-stellarator-hts": 1.67
+  "10-large-scale-stellarator": 1.67
+  "11-magnetic-mirror": 1.67
+  "12-levitated-dipole": 1.67
+  "13-electrostatic-hybrid": 1.67
+  "14-magnetized-target-fusion-pneumatic-compression": 1.67
+  "15-sheared-flow-stabilized-z-pinch": 1.67
+  "16-muon-catalyzed-fusion": 1.67
+  "17a-laser-icf-hybrid-drive": 1.67
+  "17b-laser-icf-fast-ignition": 1.67
+  "18-p-b11-frc": 5.00
+  "19-orbital-levitated-dipole": 4.33
+  "20a-type-one-stellarator": 1.67
+  "20b-renaissance-stellarator": 1.67
+  "21-spherical-tokamak-hts": 1.67
+  "22-projectile-icf": 1.67
+  "23-laser-icf-nanostructured-target": 5.00
+  "24-dense-plasma-focus": 5.00
+  "25-heavy-ion-beam-icf": 1.67
+  "26-laser-icf-indirect-drive": 1.67
+  "27-polywell": 3.00
+  "28-hts-tokamak-full-hts": 1.67
+  "29-negative-triangularity-tokamak": 1.67
+  "30-laser-icf-nif-commercialization": 1.67
+  "31-laser-icf-oec-architecture": 1.67
+  "32-laser-icf-french-national": 1.67
+  "33-state-backed-tokamak-best": 1.67
+  "35-polomac-magnetic-confinement": 2.33
+  "36-helical-coil-stellarator": 1.67
+  "37-magnetized-target-inertial-fusion-mtif": 2.33
+  "38-particle-accelerator-driven-fusion": 1.67
+  "39-spherical-tokamak-cs-free-p-b11": 5.00
+
+# ----------------------------------------------------------------------
+# Upper Capacity Factor — full 39 (from upper_cf_implementation_spec.md)
+# ----------------------------------------------------------------------
+upper_cf:
+  "01-hts-compact-tokamak": 3.5
+  "02-acoustic-icf-sonofusion": 3.5
+  "03-laser-icf-liquid-jet-target": 3.5
+  "04-laser-icf": 4.5
+  "05-planar-coil-stellarator": 3.5
+  "06-magnetic-mirror": 5.0
+  "07-maglif": 3.0
+  "08-frc-w-direct-conversion": 4.5
+  "09-qi-stellarator-hts": 3.5
+  "10-large-scale-stellarator": 3.5
+  "11-magnetic-mirror": 3.5
+  "12-levitated-dipole": 3.5
+  "13-electrostatic-hybrid": 3.5
+  "14-magnetized-target-fusion-pneumatic-compression": 3.5
+  "15-sheared-flow-stabilized-z-pinch": 3.5
+  "16-muon-catalyzed-fusion": 3.5
+  "17a-laser-icf-hybrid-drive": 3.0
+  "17b-laser-icf-fast-ignition": 3.0
+  "18-p-b11-frc": 5.0
+  "19-orbital-levitated-dipole": 5.0
+  "20a-type-one-stellarator": 3.5
+  "20b-renaissance-stellarator": 3.5
+  "21-spherical-tokamak-hts": 3.5
+  "22-projectile-icf": 3.5
+  "23-laser-icf-nanostructured-target": 4.5
+  "24-dense-plasma-focus": 4.5
+  "25-heavy-ion-beam-icf": 3.5
+  "26-laser-icf-indirect-drive": 3.5
+  "27-polywell": 3.0
+  "28-hts-tokamak-full-hts": 3.5
+  "29-negative-triangularity-tokamak": 3.5
+  "30-laser-icf-nif-commercialization": 3.5
+  "31-laser-icf-oec-architecture": 3.5
+  "32-laser-icf-french-national": 3.0
+  "33-state-backed-tokamak-best": 3.0
+  "35-polomac-magnetic-confinement": 4.0
+  "36-helical-coil-stellarator": 4.0
+  "37-magnetized-target-inertial-fusion-mtif": 3.5
+  "38-particle-accelerator-driven-fusion": 4.0
+  "39-spherical-tokamak-cs-free-p-b11": 5.0
+
+# ----------------------------------------------------------------------
+# Technical Feasibility — full 39 (from technical_feasibility_implementation_spec.md)
+# Includes laser-approach modifiers per spec
+# ----------------------------------------------------------------------
+technical_feasibility:
+  "01-hts-compact-tokamak": 4.0           # D-T compact tokamak
+  "02-acoustic-icf-sonofusion": 1.0       # no-data (acoustic)
+  "03-laser-icf-liquid-jet-target": 1.0   # no-data (liquid jet)
+  "04-laser-icf": 1.0                     # p-B11 fast ignition — score 1 from gap (modifier doesn't move floor)
+  "05-planar-coil-stellarator": 3.0       # stellarator
+  "06-magnetic-mirror": 1.0               # p-B11 mirror
+  "07-maglif": 3.0                        # D-T MagLIF
+  "08-frc-w-direct-conversion": 2.0       # D-He3 FRC
+  "09-qi-stellarator-hts": 3.0
+  "10-large-scale-stellarator": 3.0
+  "11-magnetic-mirror": 2.0               # D-T mirror
+  "12-levitated-dipole": 2.0              # D-T dipole
+  "13-electrostatic-hybrid": 1.0          # no-data (electrostatic)
+  "14-magnetized-target-fusion-pneumatic-compression": 2.0
+  "15-sheared-flow-stabilized-z-pinch": 2.0
+  "16-muon-catalyzed-fusion": 1.0         # no-data (muon)
+  "17a-laser-icf-hybrid-drive": 3.75      # base 4.0 - 0.25 hybrid modifier
+  "17b-laser-icf-fast-ignition": 2.5      # base 3.0 - 0.5 fast-ignition modifier
+  "18-p-b11-frc": 1.0                     # p-B11 FRC
+  "19-orbital-levitated-dipole": 1.0      # D-He3 dipole
+  "20a-type-one-stellarator": 3.0
+  "20b-renaissance-stellarator": 3.0
+  "21-spherical-tokamak-hts": 4.0         # D-T spherical tokamak
+  "22-projectile-icf": 2.0                # D-T projectile
+  "23-laser-icf-nanostructured-target": 1.0  # p-B11 ultrashort
+  "24-dense-plasma-focus": 1.0            # p-B11 DPF
+  "25-heavy-ion-beam-icf": 1.0            # D-T HIB
+  "26-laser-icf-indirect-drive": 5.0      # NIF-class indirect
+  "27-polywell": 1.0                      # no-data (IEC)
+  "28-hts-tokamak-full-hts": 4.0
+  "29-negative-triangularity-tokamak": 4.0
+  "30-laser-icf-nif-commercialization": 5.0
+  "31-laser-icf-oec-architecture": 4.75   # base 5.0 - 0.25 direct-drive modifier
+  "32-laser-icf-french-national": 4.75
+  "33-state-backed-tokamak-best": 4.0
+  "35-polomac-magnetic-confinement": 1.0  # D-D MFE TBD topology
+  "36-helical-coil-stellarator": 3.0
+  "37-magnetized-target-inertial-fusion-mtif": 1.0  # D-D pneumatic MTF
+  "38-particle-accelerator-driven-fusion": 1.0  # no-data (accelerator)
+  "39-spherical-tokamak-cs-free-p-b11": 1.0  # p-B11 spherical tokamak (huge gap)
+
+# ----------------------------------------------------------------------
+# Data Availability — from data_availability_implementation_spec.md
+# Concepts without gap reports: null (composite skips axis)
+# ----------------------------------------------------------------------
+data_availability:
+  "01-hts-compact-tokamak": 2.0       # CFS ARC (6 blockers)
+  "02-acoustic-icf-sonofusion": 2.0   # Sonofusion (8 blockers)
+  "03-laser-icf-liquid-jet-target": 2.0   # Cortex (6 blockers)
+  "04-laser-icf": 3.0                 # hb11 (5 blockers)
+  "05-planar-coil-stellarator": 5.0   # Thea (0)
+  "06-magnetic-mirror": 3.0           # Pale Blue (5)
+  "07-maglif": 5.0                    # Pacific (0)
+  "08-frc-w-direct-conversion": 3.0   # Helion (5)
+  "09-qi-stellarator-hts": 4.0        # Proxima (1)
+  "10-large-scale-stellarator": 5.0   # Gauss (0)
+  "11-magnetic-mirror": 3.0           # Realta (4)
+  "12-levitated-dipole": 3.0          # OpenStar (3)
+  "13-electrostatic-hybrid": 2.0      # Avalanche (9)
+  "14-magnetized-target-fusion-pneumatic-compression": 3.0  # General Fusion (5)
+  "15-sheared-flow-stabilized-z-pinch": 4.0   # Zap (2)
+  "16-muon-catalyzed-fusion": 2.0     # Acceleron (6)
+  "17a-laser-icf-hybrid-drive": 5.0   # Xcimer (0)
+  "17b-laser-icf-fast-ignition": 2.0  # Focused (6)
+  "18-p-b11-frc": 2.0                 # TAE (6)
+  "19-orbital-levitated-dipole": 2.0  # Zephyr (6)
+  "20a-type-one-stellarator": 4.0     # Type One (2)
+  "20b-renaissance-stellarator": 3.0  # Renaissance (4)
+  "21-spherical-tokamak-hts": 2.0     # Tokamak Energy (6)
+  "22-projectile-icf": 3.0            # First Light (4)
+  "23-laser-icf-nanostructured-target": 2.0  # Marvel (7)
+  "24-dense-plasma-focus": 4.0        # LPP (2)
+  "25-heavy-ion-beam-icf": 5.0        # Intensity (0)
+  "26-laser-icf-indirect-drive": 3.0  # Inertia indirect (3)
+  "27-polywell": 4.0                  # Polywell (2)
+  "28-hts-tokamak-full-hts": 4.0      # Energy Singularity (1)
+  "29-negative-triangularity-tokamak": 4.0  # Firefly NTT (1)
+  "30-laser-icf-nif-commercialization": 4.0  # NIF-comm (2)
+  "31-laser-icf-oec-architecture": 5.0       # OEC (0)
+  "32-laser-icf-french-national": 4.0        # GenF (2)
+  "33-state-backed-tokamak-best": 5.0        # BEST (0)
+  "35-polomac-magnetic-confinement": 3.0     # Polomac (5)
+  "36-helical-coil-stellarator": 4.0         # Helical (1)
+  "37-magnetized-target-inertial-fusion-mtif": null  # no gap report yet
+  "38-particle-accelerator-driven-fusion": null      # no gap report yet
+  "39-spherical-tokamak-cs-free-p-b11": null         # no gap report yet
