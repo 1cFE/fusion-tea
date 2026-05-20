@@ -86,33 +86,18 @@ tokamak_shape:
   provenance: taxonomy
   confidence: high
   extracted_at: '2026-05-20'
-w_aux:
-  value: 0.10029498525073746
-  provenance: analyses/32-laser-icf-french-national/model_output.txt
-  confidence: medium
-  extracted_at: '2026-05-17'
+unit_count_estimate:
+  value: 200
+  provenance: modularity_implementation_spec.md Change E
+  confidence: high
+  extracted_at: '2026-05-20'
 w_blanket:
   value: 0.14754935330156568
   provenance: analyses/32-laser-icf-french-national/model_output.txt
   confidence: medium
   extracted_at: '2026-05-17'
-w_bop:
-  value: 0.15482943801527874
-  provenance: analyses/32-laser-icf-french-national/model_output.txt
-  confidence: medium
-  extracted_at: '2026-05-17'
-w_civil:
-  value: 0.29226230996142505
-  provenance: analyses/32-laser-icf-french-national/model_output.txt
-  confidence: medium
-  extracted_at: '2026-05-17'
 w_coils:
   value: 0.18890401633764467
-  provenance: analyses/32-laser-icf-french-national/model_output.txt
-  confidence: medium
-  extracted_at: '2026-05-17'
-w_fuel_cycle:
-  value: 0.027305045004160047
   provenance: analyses/32-laser-icf-french-national/model_output.txt
   confidence: medium
   extracted_at: '2026-05-17'

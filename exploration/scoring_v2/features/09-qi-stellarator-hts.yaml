@@ -86,33 +86,18 @@ tokamak_shape:
   provenance: taxonomy
   confidence: high
   extracted_at: '2026-05-20'
-w_aux:
-  value: 0.12439679504689065
-  provenance: analyses/09-qi-stellarator-hts/model_output.txt
-  confidence: medium
-  extracted_at: '2026-05-17'
+unit_count_estimate:
+  value: 50
+  provenance: modularity_implementation_spec.md Change E
+  confidence: high
+  extracted_at: '2026-05-20'
 w_blanket:
   value: 0.12997359555676954
   provenance: analyses/09-qi-stellarator-hts/model_output.txt
   confidence: medium
   extracted_at: '2026-05-17'
-w_bop:
-  value: 0.13463989802421925
-  provenance: analyses/09-qi-stellarator-hts/model_output.txt
-  confidence: medium
-  extracted_at: '2026-05-17'
-w_civil:
-  value: 0.38762177911317497
-  provenance: analyses/09-qi-stellarator-hts/model_output.txt
-  confidence: medium
-  extracted_at: '2026-05-17'
 w_coils:
   value: 0.13844122735136122
-  provenance: analyses/09-qi-stellarator-hts/model_output.txt
-  confidence: medium
-  extracted_at: '2026-05-17'
-w_fuel_cycle:
-  value: 0.028748975689702267
   provenance: analyses/09-qi-stellarator-hts/model_output.txt
   confidence: medium
   extracted_at: '2026-05-17'
