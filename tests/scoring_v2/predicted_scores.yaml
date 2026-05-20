@@ -112,7 +112,7 @@ plant_complexity:
   "24-dense-plasma-focus": 5.0                # LPP DPF (direct, aneutronic, no targets)
   "25-heavy-ion-beam-icf": 1.0                # Intensity heavy-ion
   "26-laser-icf-indirect-drive": 1.0          # Inertia DPSSL
-  "37-magnetized-target-inertial-fusion-mtif": 3.0  # NearStar D-D
+  "37-magnetized-target-inertial-fusion-mtif": 2.5  # NearStar D-D MTIF (target-using, sub-Hz: remote + pulsed_power_thermal + target_factory_low)
   "38-particle-accelerator-driven-fusion": 4.0  # SHINE (D-T non-power)
   # remaining ~17 concepts: null (verify against table.csv features during P4)
 

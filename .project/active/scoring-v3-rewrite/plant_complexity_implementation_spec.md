@@ -83,9 +83,9 @@ A concept "uses targets" if it consumes discrete manufactured fuel targets per s
 - **IFE Projectile impact** → uses targets ✓ (the projectile + target are manufactured)
 - **IFE Acoustic implosion** (Sonofusion) → does NOT use manufactured targets (cavitation in bulk fluid) ✗
 - **MIF MagLIF** → uses targets ✓ (the liner is manufactured per shot)
-- **MIF Magnetized target / Target compression** → uses targets ✓
+- **MIF Magnetized target / Target compression** → uses targets ✓ (includes NearStar MTIF's 50g fuel capsules at 10 km/s)
 - **MIF FRC compression** (Helion) → does NOT use targets (compresses pre-formed plasma) ✗
-- **MIF Pneumatic compression** (General Fusion) → uses targets ✓ (the central plasma puff is mechanically equivalent)
+- **MIF Pneumatic compression** (General Fusion) → does NOT use targets (compresses in-situ plasma puff in a Pb vortex, not a manufactured capsule) ✗
 - **MFE Z-pinch / DPF** → does NOT use targets (gas puff or wire array, not a manufactured capsule) ✗
 
 This refines the "uses_targets" predicate in the planning doc to exclude Acoustic explicitly. See Open Question #1 for analyst confirmation.
@@ -160,8 +160,11 @@ LOW_REP_RATES = {"Sub-Hz"}
 
 # IFE drivers that use discrete manufactured targets (excludes Acoustic)
 TARGET_USING_IFE_DRIVERS = {"Laser", "Heavy ion beam", "Projectile"}
-# MIF methods that use discrete manufactured targets (excludes FRC compression)
-TARGET_USING_MIF_METHODS = {"MagLIF", "Target compression", "Pneumatic compression"}
+# MIF methods that use discrete manufactured targets per shot.
+# Excludes Pneumatic compression (General Fusion — compresses in-situ plasma
+# puff in a Pb vortex, not a manufactured capsule) and FRC compression
+# (Helion — compresses pre-formed plasma).
+TARGET_USING_MIF_METHODS = {"MagLIF", "Magnetized target", "Target compression"}
 
 
 def _load_pc_weights(weights_yaml: dict) -> dict[str, float]:
@@ -477,7 +480,7 @@ Computed from the trigger logic + v3-ontology features per concept. Where the pl
 | 11 Realta mirror | tritium, remote, cryo_hts, high_power_aux | 3.5 | **1.5** |
 | 12 OpenStar | tritium, remote, cryo_hts, rf_aux, levitation | 3.5 | **1.5** |
 | 13 Avalanche | tritium, remote | 2.0 | **3.0** |
-| 14 General Fusion MTF | tritium, remote, pulsed_power_thermal, target_factory_high, liquid_metal | 4.5 | **1.0** |
+| 14 General Fusion MTF | tritium, remote, pulsed_power_thermal, liquid_metal | 3.5 | **1.5** |
 | 15 Zap Z-pinch | tritium, remote, pulsed_power_thermal, disruption_mitigation, liquid_metal | 4.5 | **1.0** |
 | 16 Acceleron muon | tritium, remote | 2.0 | **3.0** |
 | 17a Xcimer | tritium, remote, target_factory_high | 4.0 | **1.0** |
@@ -501,7 +504,7 @@ Computed from the trigger logic + v3-ontology features per concept. Where the pl
 | 33 BEST | tritium, remote, cryo_lts, rf_aux, disruption, current_drive | 4.5 | **1.0** |
 | 35 Deutelio Polomac | remote | 1.0 | **4.0** |
 | 36 Helical Fusion | tritium, remote, cryo_hts, rf_aux, liquid_metal | 3.5 | **1.5** |
-| 37 NearStar MTIF | remote, pulsed_power_thermal | 2.0 | **3.0** |
+| 37 NearStar MTIF | remote, pulsed_power_thermal, target_factory_low | 2.5 | **2.5** |
 | 38 SHINE | remote | 1.0 | **4.0** |
 | 39 ENN p-B11 ST | cryo_hts, high_power_aux, disruption, current_drive | 3.0 | **2.0** |
 
@@ -544,9 +547,19 @@ tests/scoring_v2/test_plant_complexity.py                          # NEW
 
 ## Open questions
 
-1. **Sonofusion target-factory carve-out (refines planning doc).** The planning doc's `uses_targets = (cfam == "IFE" or ...)` predicate would trigger target_factory for Sonofusion (IFE Acoustic). This spec refines to `(cfam == "IFE" and ife_driver in {Laser, Heavy ion beam, Projectile})` — explicitly excludes Acoustic. **Confirm**: is this the analyst's intent?
+1. ~~Sonofusion target-factory carve-out~~ **RESOLVED 2026-05-20**: Acoustic confirmed
+   not target-using (cavitation in bulk fluid, not manufactured capsules). Spec
+   excludes Acoustic from `TARGET_USING_IFE_DRIVERS`.
 
-2. **General Fusion (MIF Pneumatic) target-factory carve-out.** Planning doc text says "MIF concepts that compress already-injected plasma (FRC merging, plasma liner) do NOT use targets" — but General Fusion's plasma puff is mechanically equivalent to a target. This spec treats Pneumatic compression as target-using (target_factory_high fires at 1 Hz). **Confirm**: does General Fusion need a target factory, or does the in-situ plasma generation avoid it?
+2. ~~General Fusion + NearStar MIF target-factory carve-out~~ **RESOLVED 2026-05-20**:
+   - Pneumatic compression (General Fusion) → not target-using (compresses in-situ
+     plasma puff in Pb vortex).
+   - FRC compression (Helion) → not target-using (compresses pre-formed plasma).
+   - Magnetized target / MagLIF (Pacific MagLIF, NearStar MTIF) → target-using
+     (manufactured liner/capsule per shot).
+   - Spec's `TARGET_USING_MIF_METHODS = {MagLIF, Magnetized target, Target compression}`
+     reflects this. NearStar predicted score updated to 2.5 to reflect
+     target_factory_low firing at sub-Hz.
 
 3. **Tritium plant tier (Severe vs Critical)** — currently 1.0. ITER's tritium plant has no commercial precedent. Bumping to Critical (2.0) would floor all D-T concepts and increase D-T vs aneutronic contrast.
 
