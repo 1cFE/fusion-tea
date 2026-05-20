@@ -10,6 +10,7 @@ from typing import Any, Callable, Tuple
 from . import taxonomy as _taxonomy
 from . import manual as _manual
 from . import cost_model as _cost_model
+from . import derived as _derived
 
 Result = Tuple[Any, str, str]
 ExtractorFn = Callable[[str, str, dict], Result]
@@ -18,6 +19,7 @@ _IMPLEMENTED: dict[str, ExtractorFn] = {
     "taxonomy": _taxonomy.extract,
     "manual": _manual.extract,
     "cost_model": _cost_model.extract,
+    "derived": _derived.extract,
 }
 
 

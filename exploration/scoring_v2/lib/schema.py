@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SCHEMA_PATH = ROOT / "schema.yaml"
 FEATURES_DIR = ROOT / "features"
 
-_VALID_EXTRACTORS = {"taxonomy", "manual", "cost_model", "llm"}
+_VALID_EXTRACTORS = {"taxonomy", "manual", "cost_model", "derived", "llm"}
 
 
 class SchemaError(ValueError):

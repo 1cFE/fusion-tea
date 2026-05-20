@@ -5,6 +5,19 @@
 #
 # Feature files (features/{concept_id}.yaml) are tool-managed by extract.py;
 # do not hand-edit unless you intend to (and run schema validation after).
+#
+# v3 schema reconciliation (P1 of scoring-v3-rewrite):
+# - Added 5 taxonomy-extracted columns surfaced by ontology v0.3.0:
+#     primary_heating, blanket_config, repetition_rate, laser_approach,
+#     non_standard_mechanism
+# - Added derived feature `confinement_concept` (disambiguation per
+#   Technical Feasibility implementation spec).
+# - Added manual feature `gap_report_path` consumed by Data Availability axis.
+# - Retired pre-v3 orphans `tritium_breeding`, `neutron_management` (the
+#   source columns were dropped from table.csv by ontology v3 / PR #16; no
+#   downstream axis still depends on them).
+
+# ─── Confinement taxonomy ────────────────────────────────────────────────
 
 confinement_family:
   type: enum
@@ -34,6 +47,13 @@ mif_method:
   extractor: taxonomy
   taxonomy_column: "MIF Method"
 
+non_standard_mechanism:
+  type: enum
+  values: [Electrostatic, "Muon-catalyzed", "Plasma focus", "N/A"]
+  required: true
+  extractor: taxonomy
+  taxonomy_column: "Non-Standard Mechanism"
+
 tokamak_shape:
   type: enum
   values: [Compact, Spherical, Standard, "Negative triangularity", "N/A"]
@@ -48,24 +68,30 @@ stellarator_type:
   extractor: taxonomy
   taxonomy_column: "Stellarator Type"
 
-magnet_type:
-  type: string
-  required: true
-  extractor: taxonomy
-  taxonomy_column: "Magnet Type"
-
-operation_mode:
+laser_approach:
   type: enum
-  values: [Pulsed, "Quasi-steady", "Steady-state"]
+  values:
+    - "Direct drive"
+    - "Indirect drive"
+    - "Fast ignition"
+    - "Hybrid drive"
+    - "Liquid jet"
+    - "Ultrashort pulse"
+    - "N/A"
   required: true
   extractor: taxonomy
-  taxonomy_column: "Operation Mode"
+  taxonomy_column: "Laser Approach"
 
-driver_technology:
+# Derived: collapses confinement_family / mfe_topology / ife_driver / mif_method
+# / non_standard_mechanism / laser_approach into a single canonical concept
+# label used by Technical Feasibility (triple-product lookup) and reporting.
+# Disambiguation rules live in lib/extractors/derived.py.
+confinement_concept:
   type: string
-  required: false
-  extractor: taxonomy
-  taxonomy_column: "Driver Technology"
+  required: true
+  extractor: derived
+
+# ─── Fuel cycle & operation ──────────────────────────────────────────────
 
 fuel:
   type: enum
@@ -74,29 +100,63 @@ fuel:
   extractor: taxonomy
   taxonomy_column: "Fuel"
 
-tritium_breeding:
-  type: string
+operation_mode:
+  type: enum
+  values: [Pulsed, "Quasi-steady", "Steady-state"]
   required: true
-  extractor: manual
-  # Source column "Tritium Breeding" was dropped from table.csv by ontology v3 (PR #16).
-  # Values for concepts 01-36 came from the pre-v3 taxonomy and remain authoritative.
-  # For 37/38/39 (Mallory net-new) values are hand-filled per the concept's design.
+  extractor: taxonomy
+  taxonomy_column: "Operation Mode"
 
-neutron_management:
+repetition_rate:
   type: enum
   values:
-    - "Heavy shielding (14 MeV)"
-    - "Heavy shielding (D-D)"
-    - "Integrated blanket/shield"
-    - "Minimal (aneutronic)"
-    - "Reduced (D-He3)"
+    - "Sub-Hz"
+    - "~1 Hz"
+    - "~10 Hz"
+    - "High (>10 Hz)"
+    - "kHz"
+    - "Unknown"
+    - "N/A"
   required: true
-  extractor: manual
-  # Source column "Neutron Management" was dropped from table.csv by ontology v3 (PR #16).
-  # Values for concepts 01-36 came from the pre-v3 taxonomy and remain authoritative.
-  # For 37/38/39 (Mallory net-new) values are hand-filled per the concept's design.
+  extractor: taxonomy
+  taxonomy_column: "Repetition Rate"
 
-# Added by slice 2 (component_modularity group).
+# ─── Heating & drive ──────────────────────────────────────────────────────
+
+primary_heating:
+  type: string
+  required: true
+  extractor: taxonomy
+  taxonomy_column: "Primary Heating"
+
+driver_technology:
+  type: string
+  required: false
+  extractor: taxonomy
+  taxonomy_column: "Driver Technology"
+
+# ─── Magnet, blanket, energy capture ─────────────────────────────────────
+
+magnet_type:
+  type: string
+  required: true
+  extractor: taxonomy
+  taxonomy_column: "Magnet Type"
+
+blanket_config:
+  type: enum
+  values:
+    - "Liquid metal"
+    - "Molten salt"
+    - "Solid breeder"
+    - "Other/hybrid"
+    - "TBD"
+    - "N/A"
+    - "N/A (no tritium)"
+    - "N/A (non-power)"
+  required: true
+  extractor: taxonomy
+  taxonomy_column: "Blanket Config"
 
 energy_capture:
   type: string
@@ -104,10 +164,16 @@ energy_capture:
   extractor: taxonomy
   taxonomy_column: "Energy Capture"
 
-# Per-concept capex weight shares, summing to 1.0 across the seven subsystems.
-# Populated by the cost_model extractor from
-# exploration/concept_analysis/analyses/{cid}/model_output.txt.
-# Absent when no model_output.txt exists for the concept (no fallback).
+# ─── Capex weight shares (cost_model) ────────────────────────────────────
+#
+# Per-concept capex weight shares populated by the cost_model extractor from
+# exploration/concept_analysis/analyses/{cid}/model_output.txt. Absent when
+# no model_output.txt exists for the concept (no fallback).
+#
+# P2 of the scoring-v3 rewrite will retire w_bop, w_fuel_cycle, w_aux,
+# w_civil (modularity v5 only consumes vessel/coils/blanket via the
+# vessel/magnet/blanket modularity ratings). Retained here through P1 so
+# the schema validates against existing feature files unchanged.
 
 w_vessel:
   type: float
@@ -143,3 +209,13 @@ w_civil:
   type: float
   required: false
   extractor: cost_model
+
+# ─── Manual axis inputs ──────────────────────────────────────────────────
+
+# Relative path (from repo root) to the concept's gap report, consumed by
+# the Data Availability axis. `null` when no gap report exists; the axis
+# scores null in that case and the composite skip-and-rescales it out.
+gap_report_path:
+  type: string
+  required: false
+  extractor: manual
