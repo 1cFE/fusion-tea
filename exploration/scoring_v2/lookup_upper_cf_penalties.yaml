@@ -1,0 +1,55 @@
+# Upper Capacity Factor penalty metadata.
+#
+# Numerical severity weights are NOT here — they live in weights/default.yaml
+# under upper_cf.operational_penalty_weights.
+# Authoritative trigger logic in
+# embeddings/rulebook.py:_compute_triggered_cf_penalties.
+
+pulsed_operation:
+  tier: Moderate
+  trigger: "Fires when operation_mode = Pulsed"
+  features_used: [operation_mode]
+  estimated_cf_impact: "~10-15% reduction vs steady-state (dwell + recharge)"
+  rationale: |
+    Pulsed operation incurs dwell time between pulses for chamber
+    recovery, recharge, and plasma re-initiation. Recent grid studies
+    (Schwartz et al., Joule 2023) find pulsed vs steady-state has
+    "little impact on marginal value" when thermal storage is
+    integrated, but the architectural CF ceiling is still lower.
+
+neutronic_fuel:
+  tier: Severe
+  trigger: "Fires when fuel in {D-T, D-D}"
+  features_used: [fuel]
+  estimated_cf_impact: "~10-20% reduction from blanket/PFC replacement schedules"
+  rationale: |
+    Forced component replacement (blanket modules, plasma-facing
+    components) drives scheduled outages. Schwartz et al. find blanket
+    replacement costs and durability are "the most important
+    characteristics of a fusion plant" economically. Categorical CF
+    change, not tunable.
+
+non_renewable_blanket:
+  tier: Moderate
+  trigger: |
+    Fires when fuel in {D-T, D-D} AND blanket_config in
+    {Solid breeder, Molten salt, Other/hybrid}.
+    TBD blanket defaults to Liquid metal (per framework-wide TBD rule)
+    and therefore does NOT trigger this penalty.
+  features_used: [fuel, blanket_config]
+  estimated_cf_impact: "~5-10% additional reduction when stacked on neutronic"
+  rationale: |
+    Solid/static blankets degrade under neutron flux and require
+    physical replacement every 3-5 FPY. Liquid-metal blankets self-
+    renew via continuous circulation and avoid this penalty. Only
+    relevant alongside neutronic fuel — aneutronic concepts don't have
+    a breeding blanket to replace.
+
+bonus_axes_excluded:
+  description: |
+    Target factory recovery time, current drive reliability, disruption
+    frequency, and similar engineering-implementation CF drivers are
+    captured by the Plant Complexity axis as standalone subsystem
+    flags. They are intentionally NOT counted here to avoid double-
+    counting. This axis isolates the architecture-mandated CF ceiling,
+    not the engineering-implementation CF ceiling.

@@ -1,0 +1,92 @@
+# Supply chain bottleneck metadata.
+#
+# Numerical severity weights are NOT here — they live in
+# weights/default.yaml under supply_chain.bottleneck_severity_weights.
+# This file documents what the code does; the code in
+# embeddings/rulebook.py:_compute_triggered_bottlenecks() is the source
+# of truth for trigger rules.
+
+helium3:
+  tier: Critical
+  trigger: "Fires when fuel = D-He3"
+  features_used: [fuel]
+  current_supply: "15-60 kg/yr globally (US/Russia weapons byproduct); $18.7M/kg"
+  rationale: |
+    Produced only by tritium decay (12.3-yr half-life). No terrestrial
+    production scaling path. Lunar mining is decades away. Helion's
+    50MWe plant needs ~2 kg/yr — annual global supply fuels ~10-30
+    plants total, ever. Single Critical bottleneck imposes more penalty
+    than three Severe bottlenecks combined.
+
+tritium:
+  tier: Severe
+  trigger: "Fires when fuel = D-T"
+  features_used: [fuel]
+  current_supply: "~50 kg total stockpile; ~2 kg/yr CANDU production; declining"
+  rationale: |
+    Constrained to CANDU fleet but self-breeding from Li-6 is a credible
+    path (ARC, ITER, EU-DEMO all assume it). Startup tritium plus
+    breeding ratio demonstration are the binding problems.
+
+lithium6:
+  tier: Severe
+  trigger: |
+    Fires when fuel = D-T AND blanket_config in
+    {Liquid metal, Molten salt, Solid breeder, Other/hybrid}.
+    TBD blanket defaults to Liquid metal (per analyst-approved TBD rule)
+    and therefore DOES trigger this penalty.
+  features_used: [fuel, blanket_config]
+  rationale: |
+    No commercial enrichment exists; COLEX is Minamata-banned. Multi-
+    decade nation-state-scale buildout required, but chemistry/physics
+    is well-understood. SHINE-class neutron-source concepts (D-T but
+    blanket_config = N/A (non-power)) don't trigger — they buy tritium
+    externally rather than breeding.
+
+beryllium:
+  tier: Severe
+  trigger: |
+    Fires when fuel = D-T AND blanket_config in
+    {Solid breeder, Molten salt, Other/hybrid}.
+  features_used: [fuel, blanket_config]
+  rationale: |
+    Required as neutron multiplier in HCPB pebble beds (Solid breeder)
+    and as chemical constituent of FLiBe (Molten salt: LiF-BeF₂).
+    Other/hybrid included conservatively. Pure Liquid metal blankets
+    (LiPb, pure Li) don't need separate Be neutron multiplier.
+
+vanadium:
+  tier: Severe
+  trigger: "Fires when fuel = D-T AND blanket_config = Liquid metal"
+  features_used: [fuel, blanket_config]
+  rationale: |
+    V-Cr-Ti alloys are the natural structural material for liquid-
+    lithium blankets (chemical compatibility with lithium). The v0.3.0
+    schema groups LiPb, pure Li, Li-LiH, and other liquid-metal first
+    walls under "Liquid metal". Renaissance's hybrid Li-LiH + Pb pebble
+    is classified as Other/hybrid (not Liquid metal), so doesn't fire.
+
+flibe:
+  tier: Moderate
+  trigger: "Fires when blanket_config = Molten salt"
+  features_used: [blanket_config]
+  rationale: |
+    Half-weight to avoid double-counting — Li-6 and Be are already
+    counted separately when Molten salt blanket is selected. The FLiBe-
+    specific burden is molten-salt handling expertise, corrosion-
+    resistant alloys (Hastelloy-N class), and tritium-permeation
+    management.
+
+kdp:
+  tier: Moderate
+  trigger: |
+    Fires when confinement_family = IFE AND primary_heating starts with
+    'Laser'. All laser variants in v0.3.0 primary_heating start with
+    "Laser": Laser (indirect drive), Laser (direct drive), Laser
+    (fast ignition), Laser (ultrashort pulse).
+  features_used: [confinement_family, primary_heating]
+  rationale: |
+    Industrial-scale manufacturing problem rather than no-path-forward.
+    Slow boule growth cycles (1-2 months) + concentrated supplier base
+    (Cleveland Crystals US, Saint-Gobain heritage Russia). Partially
+    substitutable with LBO/BBO for some frequency conversion.

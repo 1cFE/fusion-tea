@@ -525,3 +525,274 @@ def _percent_mod(
         + (float(w_coils)   / total) * magnet_driver_modularity_rating
         + (float(w_blanket) / total) * blanket_modularity_rating
     )
+
+
+# =============================================================================
+# Supply Chain axis (penalty-stack)
+#
+#   score = max(1.0, 5.0 - sum(severity_weights_of_triggered_bottlenecks))
+#
+# 7 bottlenecks: helium3 (Critical 3.0), tritium/li6/Be/V (Severe 1.0 each),
+# FLiBe/KDP (Moderate 0.5 each). All triggers use v0.3.0 controlled-
+# vocabulary features (fuel / blanket_config / confinement_family /
+# primary_heating).
+# =============================================================================
+
+_BOTTLENECK_NAMES = (
+    "tritium", "lithium6", "helium3", "beryllium",
+    "vanadium", "flibe", "kdp",
+)
+
+_BREEDING_BLANKET_VALUES = {"Liquid metal", "Molten salt", "Solid breeder", "Other/hybrid"}
+_BERYLLIUM_BLANKET_VALUES = {"Solid breeder", "Molten salt", "Other/hybrid"}
+
+
+def _load_bottleneck_weights(weights_yaml: dict) -> dict[str, float]:
+    """Extract bottleneck severity weights from weights/default.yaml.
+
+    Fail-loud if any of the seven expected weights is missing — silent
+    defaults to zero would silently produce wrong scores.
+    """
+    raw = (weights_yaml.get("supply_chain", {})
+                       .get("bottleneck_severity_weights", {}))
+    missing = [b for b in _BOTTLENECK_NAMES if b not in raw]
+    if missing:
+        raise ValueError(
+            f"weights/default.yaml supply_chain.bottleneck_severity_weights "
+            f"missing required keys: {missing}"
+        )
+    return {b: float(raw[b]) for b in _BOTTLENECK_NAMES}
+
+
+def _compute_triggered_bottlenecks(
+    fuel: str, blanket_config: str, confinement_family: str,
+    primary_heating: str, weights: dict[str, float],
+) -> dict[str, float]:
+    """Pure rule application: features + weights → triggered bottlenecks.
+
+    TBD blanket defaults to "Liquid metal" (matches the framework-wide
+    TBD rule); the diagnostic block records this assumption.
+    """
+    raw_blanket = blanket_config or ""
+    blanket = "Liquid metal" if raw_blanket == "TBD" else raw_blanket
+    cf = confinement_family or ""
+    heating = primary_heating or ""
+    triggered: dict[str, float] = {}
+
+    if fuel == "D-T":
+        triggered["tritium"] = weights["tritium"]
+        if blanket in _BREEDING_BLANKET_VALUES:
+            triggered["lithium6"] = weights["lithium6"]
+        if blanket in _BERYLLIUM_BLANKET_VALUES:
+            triggered["beryllium"] = weights["beryllium"]
+        if blanket == "Liquid metal":
+            triggered["vanadium"] = weights["vanadium"]
+        if blanket == "Molten salt":
+            triggered["flibe"] = weights["flibe"]
+    elif fuel == "D-He3":
+        triggered["helium3"] = weights["helium3"]
+
+    if cf == "IFE" and heating.startswith("Laser"):
+        triggered["kdp"] = weights["kdp"]
+
+    return triggered
+
+
+@embedding(
+    "bottleneck_weight",
+    inputs=["fuel", "blanket_config", "confinement_family", "primary_heating"],
+)
+def _bottleneck_weight(
+    fuel: str, blanket_config: str, confinement_family: str,
+    primary_heating: str,
+    *, weights_yaml: dict,
+) -> float:
+    """Sum of severity weights of all triggered bottlenecks."""
+    sev = _load_bottleneck_weights(weights_yaml)
+    triggered = _compute_triggered_bottlenecks(
+        fuel, blanket_config, confinement_family, primary_heating, sev,
+    )
+    return sum(triggered.values())
+
+
+@embedding(
+    "supply_chain_score",
+    inputs=["bottleneck_weight"],
+)
+def _supply_chain_score(bottleneck_weight: float) -> float:
+    """Supply chain axis score: floor 1.0, ceiling 5.0."""
+    return max(1.0, 5.0 - bottleneck_weight)
+
+
+# =============================================================================
+# Customization axis (two sub-factors + rescale to 1-5)
+#
+#   raw = (thermal_rejection_score + fuel_safety_score) / 2     # 1.0 - 4.0
+#   score = 1.0 + (raw - 1.0) * (4.0 / 3.0)                     # 1.0 - 5.0
+#
+# Ported from C5 framework. Both sub-factors are 1-4; the rescale stretches
+# the natural [1, 4] range onto the framework's [1, 5] scale.
+# =============================================================================
+
+
+def _load_customization_weights(weights_yaml: dict) -> tuple[dict, dict]:
+    """Load (thermal_rejection_scores, fuel_safety_scores) from default.yaml."""
+    cust = weights_yaml.get("customization", {})
+    trs = cust.get("thermal_rejection_scores")
+    fss = cust.get("fuel_safety_scores")
+    if trs is None or fss is None:
+        raise ValueError(
+            "weights/default.yaml customization axis missing "
+            "thermal_rejection_scores or fuel_safety_scores"
+        )
+    required_thermal = {"direct_conversion", "hybrid", "thermal"}
+    missing_t = required_thermal - set(trs)
+    if missing_t:
+        raise ValueError(
+            f"customization.thermal_rejection_scores missing keys: {missing_t}"
+        )
+    required_fuel = {"p-B11", "D-He3", "D-D", "D-T"}
+    missing_f = required_fuel - set(fss)
+    if missing_f:
+        raise ValueError(
+            f"customization.fuel_safety_scores missing keys: {missing_f}"
+        )
+    return ({k: int(v) for k, v in trs.items()},
+            {k: int(v) for k, v in fss.items()})
+
+
+def _classify_thermal_rejection(energy_capture: str) -> str:
+    """Map energy_capture (v0.3.0 vocab) to direct_conversion / hybrid / thermal.
+
+    Thermal (*) / Pulsed power / Projectile impact / Neutron applications /
+    TBD all collapse to the standard-thermal bucket.
+    """
+    energy = energy_capture or ""
+    if energy.startswith("Direct"):
+        return "direct_conversion"
+    if energy == "Hybrid (thermal + direct)":
+        return "hybrid"
+    return "thermal"
+
+
+@embedding(
+    "thermal_rejection_score",
+    inputs=["energy_capture"],
+)
+def _thermal_rejection_score(
+    energy_capture: str,
+    *, weights_yaml: dict,
+) -> int:
+    """Sub-factor A: thermal-rejection footprint, 1-4."""
+    trs, _ = _load_customization_weights(weights_yaml)
+    return trs[_classify_thermal_rejection(energy_capture)]
+
+
+@embedding(
+    "fuel_safety_score",
+    inputs=["fuel"],
+)
+def _fuel_safety_score(
+    fuel: str,
+    *, weights_yaml: dict,
+) -> int:
+    """Sub-factor B: fuel safety profile, 1-4. Unknown/missing → conservative D-T."""
+    _, fss = _load_customization_weights(weights_yaml)
+    if not fuel or fuel == "Unknown":
+        return fss["D-T"]
+    if fuel not in fss:
+        raise ValueError(f"unknown fuel {fuel!r}; expected one of {sorted(fss)}")
+    return fss[fuel]
+
+
+@embedding(
+    "customization_score",
+    inputs=["thermal_rejection_score", "fuel_safety_score"],
+)
+def _customization_score(
+    thermal_rejection_score: int, fuel_safety_score: int,
+) -> float:
+    """Customization axis score: rescaled (A+B)/2 to [1.0, 5.0]."""
+    raw = (thermal_rejection_score + fuel_safety_score) / 2.0
+    return round(1.0 + (raw - 1.0) * (4.0 / 3.0), 2)
+
+
+# =============================================================================
+# Upper Capacity Factor axis (penalty-stack)
+#
+#   score = max(1.0, 5.0 - sum(severity_weights_of_triggered_penalties))
+#
+# 3 operational penalties: pulsed (Moderate 0.5), neutronic fuel (Severe
+# 1.0), non-renewable blanket conditional on neutronic (Moderate 0.5).
+# =============================================================================
+
+_UPPER_CF_PENALTY_NAMES = (
+    "pulsed_operation",
+    "neutronic_fuel",
+    "non_renewable_blanket",
+)
+
+_NEUTRONIC_FUELS = {"D-T", "D-D"}
+_STATIC_BLANKET_VALUES = {"Solid breeder", "Molten salt", "Other/hybrid"}
+_PULSED_OPERATION_MODES = {"Pulsed"}
+
+
+def _load_upper_cf_weights(weights_yaml: dict) -> dict[str, float]:
+    """Extract operational penalty weights from weights/default.yaml."""
+    raw = (weights_yaml.get("upper_cf", {})
+                       .get("operational_penalty_weights", {}))
+    missing = [p for p in _UPPER_CF_PENALTY_NAMES if p not in raw]
+    if missing:
+        raise ValueError(
+            f"weights/default.yaml upper_cf.operational_penalty_weights "
+            f"missing required keys: {missing}"
+        )
+    return {p: float(raw[p]) for p in _UPPER_CF_PENALTY_NAMES}
+
+
+def _compute_triggered_cf_penalties(
+    fuel: str, blanket_config: str, operation_mode: str,
+    weights: dict[str, float],
+) -> dict[str, float]:
+    """Pure rule application — returns dict of triggered penalty weights.
+
+    TBD blanket → Liquid metal default; Liquid metal is renewable so a
+    TBD-defaulted blanket does NOT trigger non_renewable_blanket.
+    """
+    raw_blanket = blanket_config or ""
+    blanket = "Liquid metal" if raw_blanket == "TBD" else raw_blanket
+    op_mode = operation_mode or ""
+    triggered: dict[str, float] = {}
+
+    if op_mode in _PULSED_OPERATION_MODES:
+        triggered["pulsed_operation"] = weights["pulsed_operation"]
+    if fuel in _NEUTRONIC_FUELS:
+        triggered["neutronic_fuel"] = weights["neutronic_fuel"]
+        if blanket in _STATIC_BLANKET_VALUES:
+            triggered["non_renewable_blanket"] = weights["non_renewable_blanket"]
+    return triggered
+
+
+@embedding(
+    "operational_penalty_weight",
+    inputs=["fuel", "blanket_config", "operation_mode"],
+)
+def _operational_penalty_weight(
+    fuel: str, blanket_config: str, operation_mode: str,
+    *, weights_yaml: dict,
+) -> float:
+    """Sum of severity weights of all triggered CF penalties."""
+    sev = _load_upper_cf_weights(weights_yaml)
+    triggered = _compute_triggered_cf_penalties(
+        fuel, blanket_config, operation_mode, sev,
+    )
+    return sum(triggered.values())
+
+
+@embedding(
+    "upper_cf_score",
+    inputs=["operational_penalty_weight"],
+)
+def _upper_cf_score(operational_penalty_weight: float) -> float:
+    """Upper-CF axis score: floor 1.0, ceiling 5.0."""
+    return max(1.0, 5.0 - operational_penalty_weight)

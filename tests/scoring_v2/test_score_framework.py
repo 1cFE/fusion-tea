@@ -68,41 +68,42 @@ def test_old_dimension_columns_gone(run_cli, tmp_scores_dir: Path):
         )
 
 
-def test_modularity_wired_others_null_on_this_pr(run_cli, tmp_scores_dir: Path):
-    """P2 only wires modularity. The other 6 axes have empty
-    embedding_weights placeholders → score null → composite_axes_included
-    only lists 'modularity'."""
+# P3 wires modularity + supply_chain + customization + upper_cf (4 of 7).
+# P4 adds plant_complexity + technical_feasibility; P5 adds data_availability.
+_WIRED_AXES_NOW = {"modularity", "supply_chain", "customization", "upper_cf"}
+
+
+def test_wired_axes_score_others_null(run_cli, tmp_scores_dir: Path):
+    """Wired axes (modularity, supply_chain, customization, upper_cf) score
+    a number; the remaining placeholder axes (plant_complexity,
+    technical_feasibility, data_availability) score null until P4/P5."""
     run_cli("score.py")
     rows = _read_csv(tmp_scores_dir / "table.csv")
     for r in rows:
-        # modularity scored for every concept
-        assert r["modularity"], f"{r['concept_id']}: modularity empty"
-        # The other 6 axes are null on this PR
         for axis in AXES:
-            if axis == "modularity":
-                continue
-            assert r[axis] == "", (
-                f"{r['concept_id']}: {axis} = {r[axis]!r} "
-                f"(expected null until P3-P5)"
-            )
-        # composite_axes_included is JSON ["modularity"] for every concept
+            if axis in _WIRED_AXES_NOW:
+                assert r[axis], f"{r['concept_id']}: {axis} empty"
+            else:
+                assert r[axis] == "", (
+                    f"{r['concept_id']}: {axis} = {r[axis]!r} (expected null)"
+                )
         included = json.loads(r["composite_axes_included"])
-        assert included == ["modularity"], (
+        assert set(included) == _WIRED_AXES_NOW, (
             f"{r['concept_id']}: composite_axes_included = {included}"
         )
 
 
-def test_composite_equals_modularity_when_only_axis_wired(
-    run_cli, tmp_scores_dir: Path,
-):
-    """With only modularity wired and axis_weight=1.0, composite == modularity
-    for every concept (the rescale-and-renormalize step is a no-op)."""
+def test_composite_is_mean_of_wired_axes(run_cli, tmp_scores_dir: Path):
+    """With four axes wired at axis_weight=1.0 each, the composite is the
+    arithmetic mean of the four axis scores."""
     run_cli("score.py")
     rows = _read_csv(tmp_scores_dir / "table.csv")
     for r in rows:
-        assert float(r["composite"]) == float(r["modularity"]), (
-            f"{r['concept_id']}: composite={r['composite']} vs "
-            f"modularity={r['modularity']}"
+        scored = [float(r[a]) for a in _WIRED_AXES_NOW]
+        expected = sum(scored) / len(scored)
+        actual = float(r["composite"])
+        assert abs(actual - expected) < 0.01, (
+            f"{r['concept_id']}: composite={actual} vs mean={expected:.4f}"
         )
 
 

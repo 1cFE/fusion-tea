@@ -1,0 +1,74 @@
+# Customization sub-factor metadata.
+#
+# Numerical scoring tables are NOT here — they live in weights/default.yaml
+# under customization.thermal_rejection_scores and customization.fuel_safety_scores.
+# Authoritative classification logic lives in embeddings/rulebook.py:
+#   - _classify_thermal_rejection() maps energy_capture values
+#   - _fuel_safety_score() reads fuel directly
+
+sub_factor_a_thermal_rejection:
+  description: |
+    Sub-factor A: thermal rejection footprint. How much waste-heat
+    infrastructure (cooling towers, water bodies, hybrid cooling) does
+    the plant require? Higher score = less infrastructure needed.
+  classifications:
+    direct_conversion:
+      score: 4
+      energy_capture_values: ["Direct (inductive)", "Direct (charged particle)"]
+      trigger_rule: "energy_capture starts with 'Direct'"
+      rationale: |
+        Direct conversion concepts bypass the thermal cycle entirely.
+        Waste heat is minimal and can be air-cooled.
+    hybrid:
+      score: 3
+      energy_capture_values: ["Hybrid (thermal + direct)"]
+      rationale: |
+        Hybrid configurations capture some energy via direct conversion
+        and some via thermal cycle.
+    thermal:
+      score: 2
+      energy_capture_values:
+        - "Thermal (steam) saturated"
+        - "Thermal (steam) superheated"
+        - "Thermal (steam) supercritical"
+        - "Thermal (steam)"
+        - "Thermal (sCO2)"
+        - "Thermal (helium Brayton)"
+        - "Thermal (combined cycle)"
+        - "Thermal (unspecified)"
+        - "Pulsed power implosion"
+        - "Projectile impact"
+        - "Neutron applications"
+        - "TBD"
+      trigger_rule: "any energy_capture not classified as direct_conversion or hybrid"
+      rationale: |
+        Standard thermal-cycle concepts require full cooling-tower
+        infrastructure. Pulsed/projectile/neutron concepts also buffer
+        thermal output to a conventional cycle. TBD defaults here
+        conservatively.
+
+sub_factor_b_fuel_safety:
+  description: |
+    Sub-factor B: fuel safety profile. How much licensing, exclusion-
+    zone planning, and tritium-handling infrastructure does the fuel
+    cycle impose? Higher score = less burden.
+  classifications:
+    p-B11:
+      score: 4
+      rationale: "Aneutronic, no tritium handling. Most site-agnostic fuel."
+    D-He3:
+      score: 3
+      rationale: "Low neutron fraction (D-D side reactions only), no tritium breeding."
+    D-D:
+      score: 2
+      rationale: "Lower-energy neutrons + trace tritium product, no breeding."
+    D-T:
+      score: 1
+      rationale: "Full tritium fuel cycle, 14 MeV neutron shielding, exclusion zones."
+
+site_specific_exclusion:
+  description: |
+    Site-specific advantages (proximity to water, brownfield reuse,
+    named sites, regulatory accommodations) must NOT inflate the
+    customization score. This axis measures the INTRINSIC architectural
+    site-customization burden, not opportunistic siting choices.

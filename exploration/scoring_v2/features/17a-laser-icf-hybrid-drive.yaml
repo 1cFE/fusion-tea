@@ -16,6 +16,19 @@ confinement_family:
   provenance: taxonomy
   confidence: high
   extracted_at: '2026-05-20'
+customization_diagnostics:
+  sub_factor_a:
+    feature: energy_capture
+    value: Thermal (unspecified)
+    classification: thermal
+    score: 2
+  sub_factor_b:
+    feature: fuel
+    value: D-T
+    score: 1
+  raw_average: 1.5
+  customization_score: 1.67
+  extracted_at: '2026-05-20'
 driver_technology:
   value: Excimer laser (KrF, 248 nm, 10+ MJ, ASPEN architecture)
   provenance: taxonomy
@@ -103,6 +116,17 @@ stellarator_type:
   provenance: taxonomy
   confidence: high
   extracted_at: '2026-05-20'
+supply_chain_diagnostics:
+  bottlenecks_triggered:
+    beryllium: 1.0
+    flibe: 0.5
+    kdp: 0.5
+    lithium6: 1.0
+    tritium: 1.0
+  bottleneck_weight: 4.0
+  supply_chain_score: 1.0
+  blanket_assumed: false
+  extracted_at: '2026-05-20'
 tokamak_shape:
   value: N/A
   provenance: taxonomy
@@ -112,6 +136,15 @@ unit_count_estimate:
   value: 4
   provenance: modularity_implementation_spec.md Change E
   confidence: high
+  extracted_at: '2026-05-20'
+upper_cf_diagnostics:
+  penalties_triggered:
+    neutronic_fuel: 1.0
+    non_renewable_blanket: 0.5
+    pulsed_operation: 0.5
+  operational_penalty_weight: 2.0
+  upper_cf_score: 3.0
+  blanket_assumed: false
   extracted_at: '2026-05-20'
 w_blanket:
   value: 0.09900733707380233
