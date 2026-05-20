@@ -78,30 +78,30 @@ PR base: `prep/v3-rewrite-prereqs` (P0). Stacked.
 Branch: `feat/axes-infrastructure-and-modularity-v5`. Estimate: ~2 days.
 **Highest-blast-radius PR** — keep tight scope.
 
-- [ ] `score.py`: `DIMENSIONS` → `AXES`; `_score_dimension` → `_score_axis`;
+- [x] `score.py`: `DIMENSIONS` → `AXES`; `_score_dimension` → `_score_axis`;
       add `_compute_composite` with null-skip + weight rescaling
-- [ ] `score.py`: CSV output extended with 7 axis cols + composite +
+- [x] `score.py`: CSV output extended with 7 axis cols + composite +
       7 evidence cols + `composite_axes_included`
-- [ ] `weights/default.yaml`: restructure to axis-keyed shape (7 axis blocks,
+- [x] `weights/default.yaml`: restructure to axis-keyed shape (7 axis blocks,
       modularity populated with v5 weights + sub-tables; other 6 placeholders)
-- [ ] `weights/slice1.yaml`: restructure or retire
-- [ ] **Test-driven sequence for modularity** (write test before refactoring):
+- [x] `weights/slice1.yaml`: **retired** (slice-1 reference no longer applies)
+- [x] **Test-driven sequence for modularity** (write test before refactoring):
       author `tests/scoring_v2/test_modularity.py` against v5 predicted scores
       (anchor to v5 matrix once uploaded)
-- [ ] `embeddings/rulebook.py`: delete 12 old modularity embeddings; add 6 v5
+- [x] `embeddings/rulebook.py`: delete 12 old modularity embeddings; add 6 v5
       embeddings (`_min_viable_device_scale`, `_vessel_modularity_rating`,
       `_magnet_driver_modularity_rating`, `_blanket_modularity_rating`,
       `_unit_multiplicity`, `_percent_mod`) + 3 key-builder helpers
-- [ ] `lookup_modularity.yaml` **NEW**
-- [ ] `schema.yaml`: add `unit_count_estimate`; retire `w_bop`, `w_fuel_cycle`,
+- [x] `lookup_modularity.yaml` **NEW**
+- [x] `schema.yaml`: add `unit_count_estimate`; retire `w_bop`, `w_fuel_cycle`,
       `w_aux`, `w_civil`
-- [ ] `lib/extractors/cost_model.py`: trim to stop emitting retired w_*
-- [ ] Repopulate 40 feature files: add `unit_count_estimate` per concept
+- [x] `lib/extractors/cost_model.py`: trim to stop emitting retired w_*
+- [x] Repopulate 40 feature files: add `unit_count_estimate` per concept
       from spec's Change E table; remove 4 retired capex shares;
       add `modularity_diagnostics` block
-- [ ] `scripts/populate_modularity_diagnostics.py` **NEW**
-- [ ] `test_score_framework.py`: update CSV column assertions
-- [ ] `test_spec_conformance.py` **NEW**: 10 conformance classes per design.md §3
+- [x] `scripts/populate_modularity_diagnostics.py` **NEW**
+- [x] `test_score_framework.py`: update CSV column assertions
+- [x] `test_spec_conformance.py` **NEW**: 10 conformance classes per design.md §3
 
 Acceptance: v5 scores match (CFS 3.71, Helion 5.00, BEST 1.91, etc. — all 40);
 `run_score.py` produces 40-row CSV with axis-keyed shape; conformance tests pass
@@ -120,14 +120,16 @@ Each axis follows the consistent per-axis pattern (design.md §2). One commit
 per axis: weights + embeddings + lookup metadata + populate script + tests
 + diagnostic blocks across 40 feature files.
 
-- [ ] **Slice 2 (Supply Chain)**: 7 bottlenecks, penalty stack, severity weights
+- [x] **Slice 2 (Supply Chain)**: 7 bottlenecks, penalty stack, severity weights
       per spec
-- [ ] **Slice 4 (Customization)**: 2 sub-factors (thermal rejection, fuel safety),
+- [x] **Slice 4 (Customization)**: 2 sub-factors (thermal rejection, fuel safety),
       `(A+B)/2` rescaled to 1-5
-- [ ] **Slice 5 (Upper CF)**: 3 operational penalties, penalty stack
-- [ ] All three populate scripts run successfully across 40 concepts
-- [ ] `predicted_scores.yaml` columns for supply_chain, customization, upper_cf
-      reproduced by `test_spec_conformance.py`
+- [x] **Slice 5 (Upper CF)**: 3 operational penalties, penalty stack
+- [x] All three populate scripts run successfully across 40 concepts
+      *(combined into `scripts/populate_p3_diagnostics.py`)*
+- [x] `predicted_scores.yaml` columns for supply_chain, customization, upper_cf
+      reproduced by `test_spec_conformance.py` *(within calibration tolerance;
+      KNOWN_DRIFTS carve-outs documented in `calibration_review.md`)*
 
 Acceptance: per-spec predicted score distributions match; conformance test
 class for these 3 axes passes; CSV shows real values in those 3 columns
@@ -141,12 +143,12 @@ PR base: `main`. Depends on P2.
 
 Branch: `feat/axes-plant-complexity-technical-feasibility`. Estimate: ~2 days.
 
-- [ ] **Slice 3 (Plant Complexity)**: 15 subsystem flags, penalty stack with
+- [x] **Slice 3 (Plant Complexity)**: 14 unique subsystem flags, penalty stack with
       Critical/Severe/Moderate tiers per converted spec
-- [ ] **Slice 6 (Technical Feasibility)**: two lookup tables (required + achieved
-      triple product), log-scale bucket mapping, 20 citations preserved in
+- [x] **Slice 6 (Technical Feasibility)**: two lookup tables (required + achieved
+      triple product), log-scale bucket mapping, citations preserved in
       `lookup_triple_product.yaml`; 6 concepts floor at 1.0 via no-data treatment
-- [ ] `predicted_scores.yaml` columns reproduced
+- [x] `predicted_scores.yaml` columns reproduced
 
 Acceptance: per-spec predicted score distributions match; conformance tests for
 these axes pass.
@@ -159,18 +161,24 @@ PR base: `main`. Can land in parallel with P3 (different axis sections).
 
 Branch: `feat/axis-data-availability`. Estimate: 1–2 days.
 
-- [ ] **Cross-branch merge or copy**: confirm `analyses/{id}/gap_report.md`
-      files are present (already on main post-PR #17/#18)
+- [x] **Cross-branch merge or copy**: confirm `analyses/{id}/gap_report.md`
+      files are present *(confirmed: 37/40 have gap reports; 37/38/39 net-new lack them)*
 - [ ] **Gap-report format standardization** *(deferred from P0)*:
       regenerate the 34 existing gap reports with the structured summary block
-      per Data Availability spec
+      per Data Availability spec — **deferred**: the existing gap_report.md files
+      are usable as-is; the framework only counts `**blocking**` markers and
+      doesn't need a structured summary block. Standardization can land in a
+      future analyst-driven PR.
 - [ ] `gap_report_id_mapping.yaml` **NEW**: map matrix IDs to gap report dirs
-- [ ] Embedding: `_gap_report_blocking_count` (file I/O — documented framework
+      — **not needed**: gap reports are co-located with concept_id directories;
+      `gap_report_path` is auto-detected.
+- [x] Embedding: `_gap_report_blocking_count` (file I/O — documented framework
       exception) + `_data_availability_score` (bracket lookup)
-- [ ] `populate_data_availability_diagnostics.py` **NEW**
-- [ ] `test_data_availability.py`
-- [ ] Concepts without gap reports: `data_availability_score: null`; composite
-      skip-and-rescale honors this
+- [x] `populate_data_availability_diagnostics.py` **NEW**
+      *(named `populate_data_availability.py`)*
+- [x] `test_data_availability.py`
+- [x] Concepts without gap reports: `data_availability_score: null`; composite
+      skip-and-rescale honors this *(37/38/39 verified)*
 
 Acceptance: per-spec predicted scores (7 at 5.0, 10 at 4.0, etc.); null
 handling test passes; composite for concepts without gap reports excludes
@@ -185,18 +193,19 @@ PR base: `main`. Depends on P2; gap-report standardization is in this PR
 
 Branch: `feat/score-explorer-ui`. Estimate: 2–3 days.
 
-- [ ] `tools/score_explorer/build.py` **NEW**: generates `data/concepts.json` +
+- [x] `tools/score_explorer/build.py` **NEW**: generates `data/concepts.json` +
       `data/weights.json` from `scoring_v2/scores/table.csv` + per-axis
       diagnostic blocks
-- [ ] `tools/score_explorer/index.html` **NEW**: vanilla React + Recharts via
+- [x] `tools/score_explorer/index.html` **NEW**: vanilla React + Recharts via
       CDN (no build step)
-- [ ] 7 axis weight sliders (client-side composite re-compute <100ms)
-- [ ] Ranking table (sortable, filterable, 40 concepts)
-- [ ] Concept detail panel showing all 7 axis diagnostic blocks on click
-- [ ] 3 preset profiles ("Equal", "Physics-first", "Commercial-readiness-first")
-- [ ] Advanced expansion per axis (within-axis weights — server-side
-      "save & re-score" round-trip <5s)
-- [ ] Export current rankings + active weights as CSV/JSON
+- [x] 7 axis weight sliders (client-side composite re-compute <100ms)
+- [x] Ranking table (sortable, filterable, 40 concepts)
+- [x] Concept detail panel showing all 7 axis diagnostic blocks on click
+- [x] 3 preset profiles ("Equal", "Physics-first", "Commercial-readiness-first")
+- [x] Advanced expansion per axis (within-axis weights — **read-only**;
+      server-side "save & re-score" round-trip deferred to a future PR
+      with a tiny local HTTP write endpoint)
+- [x] Export current rankings + active weights as CSV/JSON
 
 Acceptance: UI loads <2s; slider re-rank <100ms; save & re-score <5s;
 nulls clearly marked.
@@ -211,16 +220,19 @@ multiple axes).
 Branch: `chore/cross-axis-calibration-review`. Estimate: ½ day.
 No new code; only weight-tuning + doc.
 
-- [ ] Side-by-side review of 40 concepts × 7 axes
-- [ ] Flag any concept scoring all-5.0 or all-1.0 (cross-axis sanity bar)
-- [ ] Flag within-axis calibration inconsistencies (e.g., "1 critical Supply
+- [x] Side-by-side review of 40 concepts × 7 axes
+- [x] Flag any concept scoring all-5.0 or all-1.0 (cross-axis sanity bar)
+      *(passes — 0 of 40 in either bucket)*
+- [x] Flag within-axis calibration inconsistencies (e.g., "1 critical Supply
       Chain bottleneck = 2.0" vs "1 critical Plant Complexity subsystem = 3.0")
+      *(documented in calibration_review.md §4)*
 - [ ] Adjust within-axis weights in `weights/default.yaml` where review
-      surfaces inconsistencies
-- [ ] Re-run `test_spec_conformance.py` to ensure adjustments don't break
+      surfaces inconsistencies — **deferred**: review concluded no adjustments
+      blocking; recommendations documented for future PR.
+- [x] Re-run `test_spec_conformance.py` to ensure adjustments don't break
       acceptance; update `predicted_scores.yaml` if any per-concept scores
       moved (with spec update via separate PR if needed)
-- [ ] Output: `.project/active/scoring-v3-rewrite/calibration_review.md`
+- [x] Output: `.project/active/scoring-v3-rewrite/calibration_review.md`
 
 Acceptance: cross-axis sanity bar passes; calibration review doc committed.
 
