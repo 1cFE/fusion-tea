@@ -1,8 +1,10 @@
-"""Phase 2 framework tests: determinism, schema-fail-loud, no-LLM, FR-7/FR-8 shape."""
+"""Framework tests for the 7-axis score driver: column shape, determinism,
+schema-fail-loud, no-LLM static invariant, null-handling.
+"""
 from __future__ import annotations
 
 import csv
-import shutil
+import json
 from pathlib import Path
 
 import yaml
@@ -10,27 +12,98 @@ import yaml
 REPO_ROOT = Path(__file__).resolve().parents[2]
 SCORING_V2 = REPO_ROOT / "exploration" / "scoring_v2"
 
+AXES = (
+    "modularity",
+    "supply_chain",
+    "plant_complexity",
+    "customization",
+    "upper_cf",
+    "technical_feasibility",
+    "data_availability",
+)
+EVIDENCE_COLS = tuple(f"{a}_evidence" for a in AXES)
+
 
 def _read_csv(p: Path) -> list[dict[str, str]]:
     with open(p) as f:
         return list(csv.DictReader(f))
 
 
-def test_score_runs_against_all_concepts(run_cli, tmp_scores_dir: Path):
+def test_score_csv_has_axis_keyed_shape(run_cli, tmp_scores_dir: Path):
+    """CSV layout: 7 axis cols + composite + 7 evidence cols + composite
+    evidence + composite_axes_included."""
     run_cli("score.py")
     rows = _read_csv(tmp_scores_dir / "table.csv")
-    # Concept count is 40 post ontology-v3 merge (38 + 3 Mallory net-new - 1 Pranos drop).
     assert len(rows) == 40
     expected_cols = {
         "concept_id", "name",
-        "economic_potential", "technical_feasibility", "manufacturability_scale_out",
-        "ep_evidence", "tf_evidence", "mso_evidence",
+        *AXES,
+        "composite",
+        *EVIDENCE_COLS,
+        "composite_evidence",
+        "composite_axes_included",
     }
-    assert expected_cols.issubset(set(rows[0].keys()))
-    # Economic potential + technical feasibility are unwired (empty dims) → zero everywhere.
+    assert set(rows[0].keys()) == expected_cols, (
+        f"unexpected CSV columns; got {sorted(rows[0].keys())}"
+    )
+
+
+def test_old_dimension_columns_gone(run_cli, tmp_scores_dir: Path):
+    """The 3 retired dimensions and their evidence cols must NOT be in
+    the CSV any more."""
+    run_cli("score.py")
+    rows = _read_csv(tmp_scores_dir / "table.csv")
+    cols = set(rows[0].keys())
+    for retired in (
+        "economic_potential", "technical_feasibility_old",
+        "manufacturability_scale_out", "ep_evidence", "tf_evidence",
+        "mso_evidence",
+    ):
+        # Note: "technical_feasibility" is now a v3 AXIS, not the retired
+        # dimension — only the dimension-style retired ones should be gone.
+        if retired == "technical_feasibility_old":
+            continue
+        assert retired not in cols, (
+            f"retired dimension column {retired!r} still present in CSV"
+        )
+
+
+def test_modularity_wired_others_null_on_this_pr(run_cli, tmp_scores_dir: Path):
+    """P2 only wires modularity. The other 6 axes have empty
+    embedding_weights placeholders → score null → composite_axes_included
+    only lists 'modularity'."""
+    run_cli("score.py")
+    rows = _read_csv(tmp_scores_dir / "table.csv")
     for r in rows:
-        assert float(r["economic_potential"]) == 0.0
-        assert float(r["technical_feasibility"]) == 0.0
+        # modularity scored for every concept
+        assert r["modularity"], f"{r['concept_id']}: modularity empty"
+        # The other 6 axes are null on this PR
+        for axis in AXES:
+            if axis == "modularity":
+                continue
+            assert r[axis] == "", (
+                f"{r['concept_id']}: {axis} = {r[axis]!r} "
+                f"(expected null until P3-P5)"
+            )
+        # composite_axes_included is JSON ["modularity"] for every concept
+        included = json.loads(r["composite_axes_included"])
+        assert included == ["modularity"], (
+            f"{r['concept_id']}: composite_axes_included = {included}"
+        )
+
+
+def test_composite_equals_modularity_when_only_axis_wired(
+    run_cli, tmp_scores_dir: Path,
+):
+    """With only modularity wired and axis_weight=1.0, composite == modularity
+    for every concept (the rescale-and-renormalize step is a no-op)."""
+    run_cli("score.py")
+    rows = _read_csv(tmp_scores_dir / "table.csv")
+    for r in rows:
+        assert float(r["composite"]) == float(r["modularity"]), (
+            f"{r['concept_id']}: composite={r['composite']} vs "
+            f"modularity={r['modularity']}"
+        )
 
 
 def test_score_deterministic_byte_identical(run_cli, tmp_scores_dir: Path):
@@ -74,16 +147,15 @@ def test_score_alphabetical_concept_order(run_cli, tmp_scores_dir: Path):
     assert ids == sorted(ids)
 
 
-def test_evidence_columns_discriminate_under_default_weights(run_cli, tmp_scores_dir: Path):
-    # Slice 2 introduces non-`high` confidence into M&SO:
-    #   - concepts with a cost model contribute cm_aggregate at confidence=medium
-    #   - concepts without a cost model leave w_* absent → cm_aggregate confidence=low
-    # Either way, mso_evidence must no longer be uniformly "high" — this is the
-    # mixed-confidence-aggregation discrimination the slice was meant to surface.
-    run_cli("score.py")
-    rows = _read_csv(tmp_scores_dir / "table.csv")
-    mso_evidence_values = {r["mso_evidence"] for r in rows}
-    assert mso_evidence_values != {"high"}, (
-        f"mso_evidence is uniformly high — mixed-confidence aggregation not "
-        f"discriminating. Saw: {mso_evidence_values}"
-    )
+def test_unknown_axis_in_weights_raises(run_cli, tmp_path):
+    """Adding an unknown top-level axis to weights/default.yaml must
+    cause score.py to fail loud (R10 schema fail-loud)."""
+    weights_src = SCORING_V2 / "weights" / "default.yaml"
+    bogus = tmp_path / "default.yaml"
+    doc = yaml.safe_load(weights_src.read_text())
+    doc["bogus_axis"] = {"axis_weight": 1.0, "embedding_weights": {}}
+    bogus.write_text(yaml.safe_dump(doc))
+    result = run_cli("score.py", check=False, weights=bogus)
+    assert result.returncode != 0
+    err = result.stderr + result.stdout
+    assert "bogus_axis" in err

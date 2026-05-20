@@ -1,0 +1,124 @@
+# Modularity scoring metadata.
+#
+# Numerical lookup values live in weights/default.yaml under
+# modularity.mvs_lookup, modularity.vessel_lookup, etc. — that file is the
+# tunable runtime input.
+#
+# This file documents what each subsystem rating means qualitatively, the
+# lookup-key derivation rules, and rationale for v5 calibration choices.
+# It is read by the diagnostics populator and surfaced in the Score
+# Explorer UI; it is NOT read by the score driver.
+
+mvs_lookup:
+  description: |
+    Minimum viable device scale. How small can the smallest commercially
+    viable plant be?
+  scale:
+    "1": "ITER-class megaproject; no smaller variant possible"
+    "2": "Large stellarator / non-compact tokamak (W7-X / BEST class)"
+    "3": "Compact tokamak / projectile ICF / OEC-class laser"
+    "4": "FRC, mirror, Z-pinch, DPF, DPSSL laser at ~100 MW class"
+    "5": "MIF (Helion, MagLIF, NearStar), acoustic (Sonofusion), electrostatic (Polywell, Avalanche) — desktop/warehouse scale"
+  key_rules: |
+    Built from confinement_family / mfe_topology / ife_driver / mif_method
+    / non_standard_mechanism / tokamak_shape / driver_technology /
+    magnet_type / primary_heating / laser_approach.
+    The _mvs_key() helper in embeddings/rulebook.py implements the
+    disambiguation logic:
+      * Tokamak shape split: compact / spherical / negative-T / non-compact
+      * LTS-override: any "LTS" substring in magnet_type forces non-compact
+        (BEST is tagged shape=Compact but treated as non-compact in v5)
+      * Open/Linear split: primary_heating="Ohmic (self-pinch)" → Z-pinch;
+        else Mirror
+      * MIF split: primary_heating="Pulsed power implosion" → MagLIF;
+        mif_method contains "FRC" → FRC compression; else Pneumatic
+      * IFE Laser split: driver_technology contains "KrF"/"excimer" →
+        Xcimer-class; laser_approach="Liquid jet" → liquid jet; else
+        generic Laser
+      * Non-Standard: driver_technology contains "accelerator" overrides
+        nsm="Electrostatic" (SHINE classification)
+
+vessel_lookup:
+  description: |
+    Vessel subsystem modularity. How factory-built and replaceable is the
+    fusion chamber itself?
+  scale:
+    "1": "Single bespoke vessel, on-site assembly (ITER-class)"
+    "2": "Stellarator vacuum chamber — bespoke 3D geometry"
+    "3": "Compact MFE chamber — small but bespoke per plant"
+    "4": "IFE chamber or compact MFE with demountable sections"
+    "5": "MIF replaceable liner or chamber-less concept"
+  key_rules: |
+    Key: Confinement Family | topology/method | qualifier.
+    Tokamak shape disambiguates; MIF pneumatic gets a fuel-level split
+    (D-T harder than D-D); LTS-override matches mvs's rule. Built by
+    _vessel_key() in embeddings/rulebook.py.
+
+magnet_driver_lookup:
+  description: |
+    Magnet/driver subsystem modularity. How factory-built and replicated
+    is the magnetic confinement system (MFE) or driver hardware (IFE/MIF)?
+  scale:
+    "1": "Single bespoke driver (continuous helical winding, single heavy-
+          ion accelerator, ITER coil set, single levitated dipole)"
+    "2": "LTS coil set — multiple coils but each bespoke (BEST-class)"
+    "3": "Partial segmentation; resistive magnets; Z-pinch pulsed-power;
+          KrF excimer tanks; heavy-ion accelerator; muon accelerator"
+    "4": "Integrated HTS coils — segmented but not demountable
+          (Energy Singularity)"
+    "5": "Demountable HTS coils, DPSSL beamlines, capacitor brick arrays,
+          Marx pulsed-power, electrostatic IEC grids, pneumatic pistons,
+          plasma-armature railgun — full Lego-brick architecture"
+  key_rules: |
+    MFE: key by magnet_type with two special cases:
+      * primary_heating="Ohmic (self-pinch)" → Magnetic pinch (Z-pinch)
+      * stellarator_type="Helical coil" → continuous helical (Helical Fusion)
+    MIF/IFE/Non-Standard: key by driver_technology category.
+    Non-Standard "particle accelerator" detected via driver_technology
+    contains "accelerator" (overrides nsm="Electrostatic" for SHINE).
+    Match order: LTS+HTS combos before bare "HTS" (avoids substring
+    collision); KrF/excimer/gas-laser before generic DPSSL. Built by
+    _magnet_driver_key() in embeddings/rulebook.py.
+
+blanket_lookup:
+  description: |
+    Blanket subsystem modularity. How factory-built and replaceable is the
+    breeding/cooling blanket?
+  scale:
+    "1": "Heavily integrated blanket; replacement requires major shutdown"
+    "2": "Solid breeder pebble bed — replaceable but slow"
+    "3": "Standard ITER-class blanket"
+    "4": "Solid breeder modular (HCPB) or hybrid; or TBD-defaulted to
+          liquid metal per v5 BEST calibration"
+    "5": "Flowing liquid metal/molten salt (self-renewing), or no blanket
+          required (aneutronic fuel, D-D, D-He3, MIF)"
+  key_rules: |
+    Key: fuel | blanket_config. Aneutronic / no-tritium fuels (p-B11,
+    D-D, D-He3) short-circuit blanket_config and score 5 unconditionally.
+    D-T concepts score by blanket_config. TBD blanket → 4 per the v5
+    BEST calibration target (the spec's lookup table and narrative are
+    internally inconsistent on this — the calibration wins).
+
+unit_multiplicity:
+  description: |
+    Estimated count of identical factory-built precision units per plant.
+    Examples: DPSSL beamlines, capacitor modules, mirror cells, TF coil
+    segments, MagLIF Marx-generator bricks.
+  brackets:
+    - {count_range: "1",     score: 1, examples: "Single bespoke driver — accelerator, ITER coil set, helical winding, BEST"}
+    - {count_range: "2-4",   score: 2, examples: "Two-to-four bespoke segments (Xcimer KrF tanks, Polomac coils)"}
+    - {count_range: "5-10",  score: 3, examples: "Small replicated arrays — Polywell grids, DPF electrodes, p-B11 FRC NBIs"}
+    - {count_range: "11-30", score: 4, examples: "Tokamak TF coil sets (CFS 18, ENN 14, Energy Singularity 16), mirror cell chains"}
+    - {count_range: "≥31",   score: 5, examples: "Stellarator coil segments (40-50), MIF capacitor banks (60-100), DPSSL beamlines (200-1000), Sonofusion (100)"}
+  rationale: |
+    Saturates at N=31 — beyond that, additional copies don't add
+    modularity (and arguably add commissioning burden). The boundary
+    between brackets 3 (5-10) and 4 (11-30) lands all current tokamak
+    TF coil counts in the 4-bucket and all current stellarator coil
+    counts in the 5-bucket, matching the v5 calibration narrative.
+  population: |
+    The unit_count_estimate feature is populated manually per concept
+    from architecture analysis (see exploration/scoring_v2/scripts/
+    populate_unit_counts.py — the per-concept values are from the
+    v5 matrix's narrative cells via the modularity_implementation_spec
+    Change E table).

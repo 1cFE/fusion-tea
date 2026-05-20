@@ -57,6 +57,28 @@ mif_method:
   provenance: taxonomy
   confidence: high
   extracted_at: '2026-05-20'
+modularity_diagnostics:
+  min_viable_device_scale: 3.0
+  percent_mod: 4.6667
+  unit_multiplicity: 4.0
+  modularity_score: 3.6667
+  mvs_lookup_key: MFE|Tokamak (spherical)
+  vessel_lookup_key: MFE|Tokamak|spherical
+  magnet_driver_lookup_key: MFE|HTS (wound)|*
+  blanket_lookup_key: p-B11|*
+  vessel_modularity_rating: 4.0
+  magnet_driver_modularity_rating: 5.0
+  blanket_modularity_rating: 5.0
+  capex_shares_used:
+    w_vessel: null
+    w_coils: null
+    w_blanket: null
+    sum: 0.0
+    method: equal_weight_fallback_missing_capex
+  unit_count_estimate: 14
+  blanket_assumed: false
+  v5_calibration_target: 3.63
+  extracted_at: '2026-05-20'
 non_standard_mechanism:
   value: N/A
   provenance: taxonomy

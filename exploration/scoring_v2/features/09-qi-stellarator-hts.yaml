@@ -56,6 +56,28 @@ mif_method:
   provenance: taxonomy
   confidence: high
   extracted_at: '2026-05-20'
+modularity_diagnostics:
+  min_viable_device_scale: 2.0
+  percent_mod: 3.6278
+  unit_multiplicity: 5.0
+  modularity_score: 3.1569
+  mvs_lookup_key: MFE|Stellarator
+  vessel_lookup_key: MFE|Stellarator|*
+  magnet_driver_lookup_key: MFE|HTS (continuous helical)|*
+  blanket_lookup_key: D-T|Liquid metal
+  vessel_modularity_rating: 2.0
+  magnet_driver_modularity_rating: 3.0
+  blanket_modularity_rating: 5.0
+  capex_shares_used:
+    w_vessel: 0.0562
+    w_coils: 0.1384
+    w_blanket: 0.13
+    sum: 0.3246
+    method: capex_weighted
+  unit_count_estimate: 50
+  blanket_assumed: false
+  v5_calibration_target: 3.03
+  extracted_at: '2026-05-20'
 non_standard_mechanism:
   value: N/A
   provenance: taxonomy

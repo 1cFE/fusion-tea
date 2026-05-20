@@ -56,6 +56,28 @@ mif_method:
   provenance: taxonomy
   confidence: high
   extracted_at: '2026-05-20'
+modularity_diagnostics:
+  min_viable_device_scale: 3.0
+  percent_mod: 3.6667
+  unit_multiplicity: 2.0
+  modularity_score: 2.9167
+  mvs_lookup_key: IFE|Laser (Xcimer-class)
+  vessel_lookup_key: IFE|Laser|*
+  magnet_driver_lookup_key: IFE|*|Gas Laser
+  blanket_lookup_key: D-T|Molten salt
+  vessel_modularity_rating: 3.0
+  magnet_driver_modularity_rating: 3.0
+  blanket_modularity_rating: 5.0
+  capex_shares_used:
+    w_vessel: 0.0215
+    w_coils: 0.0037
+    w_blanket: 0.099
+    sum: 0.1242
+    method: equal_weight_fallback_sparse_capex
+  unit_count_estimate: 4
+  blanket_assumed: false
+  v5_calibration_target: 2.86
+  extracted_at: '2026-05-20'
 non_standard_mechanism:
   value: N/A
   provenance: taxonomy

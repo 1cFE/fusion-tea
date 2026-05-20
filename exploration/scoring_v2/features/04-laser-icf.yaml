@@ -56,6 +56,28 @@ mif_method:
   provenance: taxonomy
   confidence: high
   extracted_at: '2026-05-20'
+modularity_diagnostics:
+  min_viable_device_scale: 4.0
+  percent_mod: 4.3333
+  unit_multiplicity: 5.0
+  modularity_score: 4.3333
+  mvs_lookup_key: IFE|Laser
+  vessel_lookup_key: IFE|Laser|*
+  magnet_driver_lookup_key: IFE|*|DPSSL Laser
+  blanket_lookup_key: p-B11|*
+  vessel_modularity_rating: 3.0
+  magnet_driver_modularity_rating: 5.0
+  blanket_modularity_rating: 5.0
+  capex_shares_used:
+    w_vessel: 0.0
+    w_coils: 0.0
+    w_blanket: 0.0
+    sum: 0.0
+    method: equal_weight_fallback_sparse_capex
+  unit_count_estimate: 500
+  blanket_assumed: false
+  v5_calibration_target: 4.37
+  extracted_at: '2026-05-20'
 non_standard_mechanism:
   value: N/A
   provenance: taxonomy
