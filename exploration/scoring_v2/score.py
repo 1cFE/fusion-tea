@@ -4,13 +4,29 @@ Loads schema, validates every features/*.yaml, evaluates the embedding registry
 against each concept, applies weights, emits scores/table.csv. Deterministic
 (byte-identical across runs over unchanged inputs). No LLM. No file I/O from
 embedding functions (they receive their declared inputs as a dict).
+
+P2 of the scoring-v3 rewrite replaced the 3-dimension model
+(economic_potential / technical_feasibility / manufacturability_scale_out)
+with 7 peer axes + a weighted-average composite:
+
+    modularity, supply_chain, plant_complexity, customization,
+    upper_cf, technical_feasibility, data_availability
+    + composite
+
+Each axis declares `axis_weight` (composite contribution) and
+`embedding_weights` (within-axis blend) in weights/default.yaml. The
+composite skips null axes and rescales the remaining weights so a
+concept with 5 valid axes still gets a meaningful composite.
 """
 from __future__ import annotations
 
 import argparse
 import csv
+import inspect
+import json
 import sys
 from pathlib import Path
+from typing import Any
 
 import yaml
 
@@ -21,12 +37,17 @@ if str(REPO_ROOT) not in sys.path:
 from exploration.scoring_v2.lib import feature_io, schema as schema_mod
 from exploration.scoring_v2.embeddings import rulebook  # noqa: F401  registers embeddings
 
-DIMENSIONS = [
-    "economic_potential",
+# The seven peer axes. Order matters for CSV column layout.
+AXES = (
+    "modularity",
+    "supply_chain",
+    "plant_complexity",
+    "customization",
+    "upper_cf",
     "technical_feasibility",
-    "manufacturability_scale_out",
-]
-EVIDENCE_COLUMNS = ["ep_evidence", "tf_evidence", "mso_evidence"]
+    "data_availability",
+)
+
 CONFIDENCE_RANK = {"low": 0, "medium": 1, "high": 2}
 CONFIDENCE_NAME = {0: "low", 1: "medium", 2: "high"}
 
@@ -34,7 +55,9 @@ DEFAULT_SCORES_DIR = Path(__file__).resolve().parent / "scores"
 DEFAULT_WEIGHTS = Path(__file__).resolve().parent / "weights" / "default.yaml"
 
 
-def _evaluate_concept(doc: dict) -> tuple[dict[str, float | None], dict[str, str]]:
+def _evaluate_concept(
+    doc: dict, weights_yaml: dict, schema: dict
+) -> tuple[dict[str, float | None], dict[str, str]]:
     """Run every embedding against one concept's feature doc.
 
     Embeddings may declare other embeddings as inputs (a one-level dependency
@@ -43,9 +66,22 @@ def _evaluate_concept(doc: dict) -> tuple[dict[str, float | None], dict[str, str
     previously-resolved embeddings). Cycles or unresolvable embeddings get
     ``None`` and confidence "low".
 
-    Returns:
-        emb_values: {embedding_name: scalar or None}
-        emb_confidence: {embedding_name: min-confidence over inputs}
+    Input resolution rules (in priority order):
+      1. If the input is a feature block on disk → use its value/confidence
+      2. If the input is another embedding already resolved → use that
+      3. If the input is a schema-declared feature but absent for this
+         concept (necessarily `required: false`) → resolve to (None, "low")
+         so embeddings that explicitly handle missing inputs (e.g.
+         `_percent_mod`'s equal-weight fallback for missing capex shares)
+         can fire. validate_features_file ensures required: true features
+         are always present.
+      4. Otherwise the input is unresolvable → the embedding short-circuits
+         to None.
+
+    Embeddings whose signature includes a keyword-only `weights_yaml`
+    parameter (used by lookup-table-based embeddings) receive the parsed
+    weights dict as that kwarg; others do not. Detection is via
+    inspect.signature at registration time (see rulebook.py).
     """
     emb_values: dict[str, float | None] = {}
     emb_confidence: dict[str, str] = {}
@@ -58,6 +94,11 @@ def _evaluate_concept(doc: dict) -> tuple[dict[str, float | None], dict[str, str
             return True, block["value"], block["confidence"]
         if inp in emb_values:
             return True, emb_values[inp], emb_confidence.get(inp, "low")
+        if inp in schema:
+            # Schema-declared but absent for this concept (required:false).
+            # Resolve to None so the embedding can fire and apply its own
+            # missing-input policy.
+            return True, None, "low"
         return False, None, "low"
 
     while remaining:
@@ -68,6 +109,8 @@ def _evaluate_concept(doc: dict) -> tuple[dict[str, float | None], dict[str, str
             if not all(avail for avail, _, _ in states):
                 continue
             kwargs = {inp: v for inp, (_, v, _) in zip(emb.inputs, states)}
+            if emb.needs_weights:
+                kwargs["weights_yaml"] = weights_yaml
             try:
                 emb_values[name] = emb.fn(**kwargs)
             except Exception:
@@ -86,34 +129,104 @@ def _evaluate_concept(doc: dict) -> tuple[dict[str, float | None], dict[str, str
 
 def _validate_weights(weights: dict) -> None:
     registry = rulebook.REGISTRY
-    for dim, mapping in weights.items():
-        if dim not in DIMENSIONS:
-            raise ValueError(f"weights: unknown dimension {dim!r}")
-        if not mapping:
+    for key, block in weights.items():
+        if key == "composite":
             continue
-        for emb_name in mapping:
+        if key not in AXES:
+            raise ValueError(
+                f"weights: unknown top-level key {key!r}; expected one of "
+                f"{AXES} or 'composite'"
+            )
+        if not isinstance(block, dict):
+            raise ValueError(f"weights: axis {key!r} must be a mapping")
+        emb_weights = block.get("embedding_weights") or {}
+        for emb_name in emb_weights:
             if emb_name not in registry:
                 raise ValueError(
-                    f"weights: dimension {dim!r} references unregistered embedding {emb_name!r}"
+                    f"weights: axis {key!r} references unregistered embedding {emb_name!r}"
                 )
 
 
-def _score_dimension(
-    dim_weights: dict[str, float],
+def _score_axis(
+    axis_block: dict,
     emb_values: dict[str, float | None],
     emb_confidence: dict[str, str],
-) -> tuple[float, str]:
-    total = 0.0
+) -> tuple[float | None, str | None]:
+    """Compute a single axis score from its embedding_weights block.
+
+    Returns (None, None) if no embeddings are declared for the axis (the
+    axis is "not wired yet" — composite skips it) or if any non-zero-
+    weighted embedding evaluates to None (incomplete inputs — can't
+    confidently blend).
+
+    Embedding weights need not sum to 1.0; we normalize by the sum of
+    non-zero weights so the resulting score is in the same scale as the
+    individual embeddings (1-5).
+    """
+    weights = axis_block.get("embedding_weights") or {}
+    if not weights:
+        return None, None
+    total_w = 0.0
+    weighted_sum = 0.0
     min_rank: int | None = None
-    for emb_name, w in dim_weights.items():
+    for emb_name, w in weights.items():
+        w = float(w)
+        if w == 0:
+            continue
         v = emb_values.get(emb_name)
-        contribution = 0.0 if v is None else float(v) * float(w)
-        total += contribution
-        if w != 0:
-            r = CONFIDENCE_RANK[emb_confidence.get(emb_name, "low")]
-            min_rank = r if min_rank is None else min(min_rank, r)
+        if v is None:
+            return None, None
+        weighted_sum += float(v) * w
+        total_w += w
+        r = CONFIDENCE_RANK[emb_confidence.get(emb_name, "low")]
+        min_rank = r if min_rank is None else min(min_rank, r)
+    if total_w == 0:
+        return None, None
+    score = weighted_sum / total_w
     evidence = CONFIDENCE_NAME[min_rank] if min_rank is not None else "high"
-    return total, evidence
+    return score, evidence
+
+
+def _compute_composite(
+    axis_scores: dict[str, float | None],
+    axis_evidences: dict[str, str | None],
+    weights: dict,
+) -> tuple[float | None, str | None, list[str]]:
+    """Weighted-average composite over the non-null axis scores.
+
+    Null-handling per spec: axes whose score is None are excluded entirely
+    (rather than substituted to a floor); the remaining axis_weights are
+    rescaled to renormalize. Concepts with all-null axes produce a null
+    composite.
+
+    Returns (composite_score, composite_evidence, axes_included).
+    """
+    included = {
+        a: s for a, s in axis_scores.items() if s is not None
+    }
+    if not included:
+        return None, None, []
+    rescaled = {}
+    for a in included:
+        block = weights.get(a) or {}
+        rescaled[a] = float(block.get("axis_weight", 1.0))
+    norm = sum(rescaled.values())
+    if norm == 0:
+        return None, None, sorted(included.keys())
+    composite = sum(included[a] * rescaled[a] for a in included) / norm
+    # Composite evidence: minimum confidence across included axes.
+    ranks = [
+        CONFIDENCE_RANK[axis_evidences[a]]
+        for a in included
+        if axis_evidences.get(a)
+    ]
+    evidence = CONFIDENCE_NAME[min(ranks)] if ranks else None
+    return composite, evidence, sorted(included.keys())
+
+
+def _fmt_score(v: float | None) -> str:
+    """Format a score for CSV: 4-decimal float, or empty string for null."""
+    return "" if v is None else f"{v:.4f}"
 
 
 def run(features_dir: Path, scores_dir: Path, weights_path: Path) -> Path:
@@ -132,21 +245,41 @@ def run(features_dir: Path, scores_dir: Path, weights_path: Path) -> Path:
     for fpath in files:
         doc = yaml.safe_load(fpath.read_text())
         meta = doc["_meta"]
-        emb_values, emb_conf = _evaluate_concept(doc)
+        emb_values, emb_conf = _evaluate_concept(doc, weights, schema)
         row: dict[str, str] = {
             "concept_id": meta["concept_id"],
             "name": meta["name"],
         }
-        for dim, ev_col in zip(DIMENSIONS, EVIDENCE_COLUMNS):
-            score, evidence = _score_dimension(weights.get(dim) or {}, emb_values, emb_conf)
-            row[dim] = f"{score:.4f}"
-            row[ev_col] = evidence
+        axis_scores: dict[str, float | None] = {}
+        axis_evidences: dict[str, str | None] = {}
+        for axis in AXES:
+            score, evidence = _score_axis(
+                weights.get(axis) or {}, emb_values, emb_conf
+            )
+            axis_scores[axis] = score
+            axis_evidences[axis] = evidence
+            row[axis] = _fmt_score(score)
+            row[f"{axis}_evidence"] = evidence or ""
+
+        composite, composite_ev, axes_included = _compute_composite(
+            axis_scores, axis_evidences, weights
+        )
+        row["composite"] = _fmt_score(composite)
+        row["composite_evidence"] = composite_ev or ""
+        row["composite_axes_included"] = json.dumps(axes_included)
         rows.append(row)
 
     rows.sort(key=lambda r: r["concept_id"])
     scores_dir.mkdir(parents=True, exist_ok=True)
     out = scores_dir / "table.csv"
-    fieldnames = ["concept_id", "name", *DIMENSIONS, *EVIDENCE_COLUMNS]
+    fieldnames = [
+        "concept_id", "name",
+        *AXES,
+        "composite",
+        *(f"{a}_evidence" for a in AXES),
+        "composite_evidence",
+        "composite_axes_included",
+    ]
     with open(out, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()

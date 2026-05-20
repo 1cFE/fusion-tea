@@ -1,39 +1,41 @@
-concept_id,name,economic_potential,technical_feasibility,manufacturability_scale_out,ep_evidence,tf_evidence,mso_evidence
-01-hts-compact-tokamak,HTS Compact Tokamak,0.0000,0.0000,3.4511,high,high,medium
-02-acoustic-icf-sonofusion,Acoustic ICF / Sonofusion (D-D),0.0000,0.0000,1.6000,high,high,low
-03-laser-icf-liquid-jet-target,Laser ICF - Liquid Jet Target (D-D),0.0000,0.0000,2.7953,high,high,medium
-04-laser-icf,Laser ICF - p-B11 Fast Ignition,0.0000,0.0000,3.7282,high,high,medium
-05-planar-coil-stellarator,Planar Coil Stellarator,0.0000,0.0000,2.2659,high,high,medium
-06-magnetic-mirror,Magnetic Mirror (p-B11),0.0000,0.0000,4.1375,high,high,medium
-07-maglif,MagLIF (D-T),0.0000,0.0000,3.7000,high,high,medium
-08-frc-w-direct-conversion,FRC w/ Direct Conversion,0.0000,0.0000,4.5287,high,high,medium
-09-qi-stellarator-hts,QI Stellarator - HTS,0.0000,0.0000,2.1926,high,high,medium
-10-large-scale-stellarator,Large-Scale Stellarator,0.0000,0.0000,2.0089,high,high,medium
-11-magnetic-mirror,Magnetic Mirror (D-T),0.0000,0.0000,3.2761,high,high,medium
-12-levitated-dipole,Levitated Dipole (D-T),0.0000,0.0000,1.3000,high,high,low
-13-electrostatic-hybrid,Electrostatic Hybrid (D-T),0.0000,0.0000,1.2000,high,high,low
-14-magnetized-target-fusion-pneumatic-compression,Magnetized Target Fusion - Pneumatic Compression (D-T),0.0000,0.0000,3.4000,high,high,medium
-15-sheared-flow-stabilized-z-pinch,Sheared-Flow Stabilized Z-Pinch,0.0000,0.0000,1.8500,high,high,low
-16-muon-catalyzed-fusion,Muon-Catalyzed Fusion (D-T),0.0000,0.0000,1.2000,high,high,low
-17a-laser-icf-hybrid-drive,Laser ICF - Hybrid Direct Drive (D-T),0.0000,0.0000,3.0990,high,high,medium
-17b-laser-icf-fast-ignition,Laser ICF - Fast Ignition (D-T),0.0000,0.0000,3.0000,high,high,medium
-18-p-b11-frc,p-B11 FRC,0.0000,0.0000,1.6500,high,high,low
-19-orbital-levitated-dipole,Orbital Levitated Dipole (D-He3),0.0000,0.0000,1.5000,high,high,low
-20a-type-one-stellarator,QI Modular HTS Stellarator - Infinity Two,0.0000,0.0000,2.3316,high,high,medium
-20b-renaissance-stellarator,Compact Liquid-Wall HTS Stellarator,0.0000,0.0000,2.4487,high,high,medium
-21-spherical-tokamak-hts,Spherical Tokamak - HTS,0.0000,0.0000,3.2699,high,high,medium
-22-projectile-icf,Projectile ICF (D-T),0.0000,0.0000,1.5000,high,high,low
-23-laser-icf-nanostructured-target,Laser ICF - Nanostructured Target (p-B11),0.0000,0.0000,3.9533,high,high,medium
-24-dense-plasma-focus,Dense Plasma Focus (p-B11),0.0000,0.0000,1.6000,high,high,low
-25-heavy-ion-beam-icf,Heavy Ion Beam ICF (D-T),0.0000,0.0000,3.1500,high,high,medium
-26-laser-icf-indirect-drive,Laser ICF - Indirect Drive (D-T),0.0000,0.0000,3.0000,high,high,medium
-27-polywell,Polywell (D-T),0.0000,0.0000,1.2000,high,high,low
-28-hts-tokamak-full-hts,HTS Tokamak - Full HTS,0.0000,0.0000,2.9438,high,high,medium
-29-negative-triangularity-tokamak,Negative Triangularity Tokamak,0.0000,0.0000,2.4117,high,high,medium
-30-laser-icf-nif-commercialization,Laser ICF - NIF Commercialization (D-T),0.0000,0.0000,3.0000,high,high,medium
-31-laser-icf-oec-architecture,Laser ICF - OEC Architecture (D-T),0.0000,0.0000,3.0000,high,high,medium
-32-laser-icf-french-national,Laser ICF - French National Direct Drive (D-T),0.0000,0.0000,3.0000,high,high,medium
-33-state-backed-tokamak-best,State-Backed Tokamak - BEST,0.0000,0.0000,2.2921,high,high,medium
-34-compact-spherical-tokamak-india,Compact Spherical Tokamak - India,0.0000,0.0000,2.3835,high,high,medium
-35-polomac-magnetic-confinement,PoloMac Magnetic Confinement,0.0000,0.0000,1.4000,high,high,low
-36-helical-coil-stellarator,Helical Coil Stellarator,0.0000,0.0000,2.2596,high,high,medium
+concept_id,name,modularity,supply_chain,plant_complexity,customization,upper_cf,technical_feasibility,data_availability,composite,modularity_evidence,supply_chain_evidence,plant_complexity_evidence,customization_evidence,upper_cf_evidence,technical_feasibility_evidence,data_availability_evidence,composite_evidence,composite_axes_included
+01-hts-compact-tokamak,HTS Compact Tokamak (D-T),3.7438,,,,,,,3.7438,medium,,,,,,,medium,"[""modularity""]"
+02-acoustic-icf-sonofusion,Acoustic ICF / Sonofusion (D-D),4.6667,,,,,,,4.6667,low,,,,,,,low,"[""modularity""]"
+03-laser-icf-liquid-jet-target,Laser ICF - Liquid Jet Target (D-D),4.3333,,,,,,,4.3333,medium,,,,,,,medium,"[""modularity""]"
+04-laser-icf,Laser ICF (p-B11),4.3333,,,,,,,4.3333,medium,,,,,,,medium,"[""modularity""]"
+05-planar-coil-stellarator,Planar Coil Stellarator (D-T),3.4670,,,,,,,3.4670,medium,,,,,,,medium,"[""modularity""]"
+06-magnetic-mirror,Magnetic Mirror (p-B11),3.9167,,,,,,,3.9167,medium,,,,,,,medium,"[""modularity""]"
+07-maglif,MagLIF (D-T),4.9167,,,,,,,4.9167,medium,,,,,,,medium,"[""modularity""]"
+08-frc-w-direct-conversion,FRC w/ Direct Conversion (D-He3),5.0000,,,,,,,5.0000,medium,,,,,,,medium,"[""modularity""]"
+09-qi-stellarator-hts,QI Stellarator - HTS (D-T),3.1569,,,,,,,3.1569,medium,,,,,,,medium,"[""modularity""]"
+10-large-scale-stellarator,Large-Scale Stellarator (D-T),2.9584,,,,,,,2.9584,medium,,,,,,,medium,"[""modularity""]"
+11-magnetic-mirror,Magnetic Mirror (D-T),4.0833,,,,,,,4.0833,medium,,,,,,,medium,"[""modularity""]"
+12-levitated-dipole,Levitated Dipole (D-T),2.7500,,,,,,,2.7500,low,,,,,,,low,"[""modularity""]"
+13-electrostatic-hybrid,Electrostatic Hybrid (D-T),4.8333,,,,,,,4.8333,low,,,,,,,low,"[""modularity""]"
+14-magnetized-target-fusion-pneumatic-compression,Magnetized Target Fusion - Pneumatic Compression (D-T),4.9167,,,,,,,4.9167,medium,,,,,,,medium,"[""modularity""]"
+15-sheared-flow-stabilized-z-pinch,Sheared-Flow Stabilized Z-Pinch (D-T),4.1667,,,,,,,4.1667,low,,,,,,,low,"[""modularity""]"
+16-muon-catalyzed-fusion,Muon-Catalyzed Fusion (D-T),2.6667,,,,,,,2.6667,low,,,,,,,low,"[""modularity""]"
+17a-laser-icf-hybrid-drive,Laser ICF - Hybrid Direct Drive (D-T),2.9167,,,,,,,2.9167,medium,,,,,,,medium,"[""modularity""]"
+17b-laser-icf-fast-ignition,Laser ICF - Direct Drive Fast Ignition (D-T),4.3333,,,,,,,4.3333,medium,,,,,,,medium,"[""modularity""]"
+18-p-b11-frc,p-B11 FRC (p-B11),3.6667,,,,,,,3.6667,low,,,,,,,low,"[""modularity""]"
+19-orbital-levitated-dipole,Orbital Levitated Dipole (D-He3),2.8333,,,,,,,2.8333,low,,,,,,,low,"[""modularity""]"
+20a-type-one-stellarator,Type One Stellarator (D-T),3.0227,,,,,,,3.0227,medium,,,,,,,medium,"[""modularity""]"
+20b-renaissance-stellarator,Renaissance Stellarator (D-T),3.0000,,,,,,,3.0000,medium,,,,,,,medium,"[""modularity""]"
+21-spherical-tokamak-hts,Spherical Tokamak - HTS (D-T),3.6996,,,,,,,3.6996,medium,,,,,,,medium,"[""modularity""]"
+22-projectile-icf,Projectile ICF (D-T),3.8333,,,,,,,3.8333,low,,,,,,,low,"[""modularity""]"
+23-laser-icf-nanostructured-target,Laser ICF - Nanostructured Target (p-B11),4.3333,,,,,,,4.3333,medium,,,,,,,medium,"[""modularity""]"
+24-dense-plasma-focus,Dense Plasma Focus (p-B11),3.6667,,,,,,,3.6667,low,,,,,,,low,"[""modularity""]"
+25-heavy-ion-beam-icf,Heavy Ion Beam ICF (D-T),3.1667,,,,,,,3.1667,medium,,,,,,,medium,"[""modularity""]"
+26-laser-icf-indirect-drive,Laser ICF - Indirect Drive (D-T),4.4398,,,,,,,4.4398,medium,,,,,,,medium,"[""modularity""]"
+27-polywell,Polywell (D-T),4.3333,,,,,,,4.3333,low,,,,,,,low,"[""modularity""]"
+28-hts-tokamak-full-hts,HTS Tokamak - Full HTS (D-T),3.7200,,,,,,,3.7200,medium,,,,,,,medium,"[""modularity""]"
+29-negative-triangularity-tokamak,Negative Triangularity Tokamak (D-T),3.5000,,,,,,,3.5000,medium,,,,,,,medium,"[""modularity""]"
+30-laser-icf-nif-commercialization,Laser ICF - NIF Commercialization (D-T),4.3333,,,,,,,4.3333,medium,,,,,,,medium,"[""modularity""]"
+31-laser-icf-oec-architecture,Laser ICF - OEC Architecture (D-T),4.3333,,,,,,,4.3333,medium,,,,,,,medium,"[""modularity""]"
+32-laser-icf-french-national,Laser ICF - French National (D-T),4.3955,,,,,,,4.3955,medium,,,,,,,medium,"[""modularity""]"
+33-state-backed-tokamak-best,State-Backed Tokamak - BEST (D-T),2.0000,,,,,,,2.0000,medium,,,,,,,medium,"[""modularity""]"
+35-polomac-magnetic-confinement,PoloMac Magnetic Confinement,2.9167,,,,,,,2.9167,low,,,,,,,low,"[""modularity""]"
+36-helical-coil-stellarator,Helical Coil Stellarator (D-T),2.0212,,,,,,,2.0212,medium,,,,,,,medium,"[""modularity""]"
+37-magnetized-target-inertial-fusion-mtif,Magnetized Target Inertial Fusion - MTIF (D-D),5.0000,,,,,,,5.0000,low,,,,,,,low,"[""modularity""]"
+38-particle-accelerator-driven-fusion,Particle Accelerator-Driven Fusion (D-T),2.5833,,,,,,,2.5833,low,,,,,,,low,"[""modularity""]"
+39-spherical-tokamak-cs-free-p-b11,Spherical Tokamak - CS-free p-B11 (p-B11),3.6667,,,,,,,3.6667,low,,,,,,,low,"[""modularity""]"
