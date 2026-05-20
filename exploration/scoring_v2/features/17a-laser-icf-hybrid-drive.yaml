@@ -1,71 +1,91 @@
 _meta:
   concept_id: 17a-laser-icf-hybrid-drive
   name: Laser ICF - Hybrid Direct Drive (D-T)
+blanket_config:
+  value: Molten salt
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-20'
+confinement_concept:
+  value: Laser ICF (hybrid drive)
+  provenance: derived
+  confidence: high
+  extracted_at: '2026-05-20'
 confinement_family:
   value: IFE
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 driver_technology:
   value: Excimer laser (KrF, 248 nm, 10+ MJ, ASPEN architecture)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 energy_capture:
   value: Thermal (unspecified)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 fuel:
   value: D-T
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 ife_driver:
   value: Laser
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
+laser_approach:
+  value: Hybrid drive
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-20'
 magnet_type:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 mfe_topology:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 mif_method:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
-neutron_management:
-  value: Integrated blanket/shield
+  extracted_at: '2026-05-20'
+non_standard_mechanism:
+  value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-20'
 operation_mode:
   value: Pulsed
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
+primary_heating:
+  value: Laser (direct drive)
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-20'
+repetition_rate:
+  value: Sub-Hz
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-20'
 stellarator_type:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 tokamak_shape:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
-tritium_breeding:
-  value: FLiBe blanket
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-20'
 w_aux:
   value: 0.12714717306862322
   provenance: analyses/17a-laser-icf-hybrid-drive/model_output.txt

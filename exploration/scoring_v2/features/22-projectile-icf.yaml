@@ -1,68 +1,88 @@
 _meta:
   concept_id: 22-projectile-icf
   name: Projectile ICF (D-T)
+blanket_config:
+  value: Liquid metal
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-20'
+confinement_concept:
+  value: Projectile ICF
+  provenance: derived
+  confidence: high
+  extracted_at: '2026-05-20'
 confinement_family:
   value: IFE
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 driver_technology:
   value: Electromagnetic gun
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 energy_capture:
   value: Thermal (steam)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 fuel:
   value: D-T
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 ife_driver:
   value: Projectile
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
+laser_approach:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-20'
 magnet_type:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 mfe_topology:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 mif_method:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
-neutron_management:
-  value: Integrated blanket/shield
+  extracted_at: '2026-05-20'
+non_standard_mechanism:
+  value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-20'
 operation_mode:
   value: Pulsed
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
+primary_heating:
+  value: Projectile impact
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-20'
+repetition_rate:
+  value: Sub-Hz
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-20'
 stellarator_type:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 tokamak_shape:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
-tritium_breeding:
-  value: Liquid Li blanket
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-20'

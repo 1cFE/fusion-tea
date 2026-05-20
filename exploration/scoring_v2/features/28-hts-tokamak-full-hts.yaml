@@ -1,71 +1,91 @@
 _meta:
   concept_id: 28-hts-tokamak-full-hts
   name: HTS Tokamak - Full HTS (D-T)
+blanket_config:
+  value: TBD
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-20'
+confinement_concept:
+  value: Compact tokamak
+  provenance: derived
+  confidence: high
+  extracted_at: '2026-05-20'
 confinement_family:
   value: MFE
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 driver_technology:
   value: HTS magnets (REBCO, 25 T)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 energy_capture:
   value: Thermal (unspecified)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 fuel:
   value: D-T
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 ife_driver:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
+laser_approach:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-20'
 magnet_type:
   value: HTS (wound)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 mfe_topology:
   value: Tokamak
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 mif_method:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
-neutron_management:
-  value: Heavy shielding (14 MeV)
+  extracted_at: '2026-05-20'
+non_standard_mechanism:
+  value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-20'
 operation_mode:
   value: Steady-state
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
+primary_heating:
+  value: RF (ICRH)
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-20'
+repetition_rate:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-20'
 stellarator_type:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 tokamak_shape:
   value: Compact
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
-tritium_breeding:
-  value: TBD
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-20'
 w_aux:
   value: 0.21592992462823385
   provenance: analyses/28-hts-tokamak-full-hts/model_output.txt
