@@ -361,6 +361,22 @@ technical_feasibility:
     # "Liquid jet" intentionally omitted — Cortex is its own no-data
     # architectural family, not a laser-approach variant of mainstream ICF
 
+# ─────────────────────────────────────────────────────────────────────────
+# Data Availability — bracket schedule on **blocking** markers in
+# the analyses/{concept}/gap_report.md artifact.
+#
+# Returns null for concepts without a gap report; the composite skips
+# and rescales (NOT a floor).
+# ─────────────────────────────────────────────────────────────────────────
+
 data_availability:
   axis_weight: 1.0
-  embedding_weights: {}
+  embedding_weights:
+    data_availability_score: 1.0
+  blocking_count_brackets:
+    - {max_count: 0,    score: 5.0}     # No blockers: best-documented
+    - {max_count: 2,    score: 4.0}     # 1-2 blockers: minor specific gaps
+    - {max_count: 5,    score: 3.0}     # 3-5 blockers: multiple but tractable
+    - {max_count: 9,    score: 2.0}     # 6-9 blockers: significant gaps
+    # 10+: score 1.0 (floor)
+  floor_score: 1.0

@@ -68,44 +68,67 @@ def test_old_dimension_columns_gone(run_cli, tmp_scores_dir: Path):
         )
 
 
-# P4 wires 6 of 7 axes (data_availability lands in P5).
+# P5 lands all 7 axes wired.
 _WIRED_AXES_NOW = {
     "modularity", "supply_chain", "customization", "upper_cf",
-    "plant_complexity", "technical_feasibility",
+    "plant_complexity", "technical_feasibility", "data_availability",
+}
+
+# Concepts without a gap_report.md → data_availability scores null
+_NO_GAP_REPORT = {
+    "37-magnetized-target-inertial-fusion-mtif",
+    "38-particle-accelerator-driven-fusion",
+    "39-spherical-tokamak-cs-free-p-b11",
 }
 
 
-def test_wired_axes_score_others_null(run_cli, tmp_scores_dir: Path):
-    """Wired axes (modularity, supply_chain, customization, upper_cf) score
-    a number; the remaining placeholder axes (plant_complexity,
-    technical_feasibility, data_availability) score null until P4/P5."""
+def test_wired_axes_score(run_cli, tmp_scores_dir: Path):
+    """Every wired axis produces a non-empty score for every concept,
+    except data_availability which is null for concepts lacking a
+    gap_report.md (intentional honest-null per axis-spec)."""
     run_cli("score.py")
     rows = _read_csv(tmp_scores_dir / "table.csv")
     for r in rows:
+        cid = r["concept_id"]
         for axis in AXES:
-            if axis in _WIRED_AXES_NOW:
-                assert r[axis], f"{r['concept_id']}: {axis} empty"
-            else:
+            if axis == "data_availability" and cid in _NO_GAP_REPORT:
                 assert r[axis] == "", (
-                    f"{r['concept_id']}: {axis} = {r[axis]!r} (expected null)"
+                    f"{cid}: expected null data_availability (no gap report)"
                 )
-        included = json.loads(r["composite_axes_included"])
-        assert set(included) == _WIRED_AXES_NOW, (
-            f"{r['concept_id']}: composite_axes_included = {included}"
-        )
+            else:
+                assert r[axis], f"{cid}: {axis} empty"
 
 
-def test_composite_is_mean_of_wired_axes(run_cli, tmp_scores_dir: Path):
-    """With four axes wired at axis_weight=1.0 each, the composite is the
-    arithmetic mean of the four axis scores."""
+def test_composite_is_mean_of_included_axes(run_cli, tmp_scores_dir: Path):
+    """Composite is the arithmetic mean of the included (non-null) axis
+    scores when every axis_weight = 1.0. For concepts with all 7 axes
+    wired, that's the mean of 7; for the 3 with null data_availability,
+    that's the mean of 6 (skip-and-rescale)."""
     run_cli("score.py")
     rows = _read_csv(tmp_scores_dir / "table.csv")
     for r in rows:
-        scored = [float(r[a]) for a in _WIRED_AXES_NOW]
+        included = json.loads(r["composite_axes_included"])
+        scored = [float(r[a]) for a in included]
         expected = sum(scored) / len(scored)
         actual = float(r["composite"])
         assert abs(actual - expected) < 0.01, (
-            f"{r['concept_id']}: composite={actual} vs mean={expected:.4f}"
+            f"{r['concept_id']}: composite={actual} vs mean of "
+            f"{included} = {expected:.4f}"
+        )
+
+
+def test_composite_axes_included_matches_score_presence(
+    run_cli, tmp_scores_dir: Path,
+):
+    """composite_axes_included must list exactly the axes with non-empty
+    scores for that concept."""
+    run_cli("score.py")
+    rows = _read_csv(tmp_scores_dir / "table.csv")
+    for r in rows:
+        actually_scored = {a for a in AXES if r[a]}
+        included = set(json.loads(r["composite_axes_included"]))
+        assert included == actually_scored, (
+            f"{r['concept_id']}: included={included} vs scored={actually_scored}"
         )
 
 

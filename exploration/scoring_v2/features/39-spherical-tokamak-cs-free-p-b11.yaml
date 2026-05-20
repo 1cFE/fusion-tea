@@ -29,6 +29,12 @@ customization_diagnostics:
   raw_average: 4.0
   customization_score: 5.0
   extracted_at: '2026-05-20'
+data_availability_diagnostics:
+  gap_report_path: null
+  report_exists: false
+  blocking_count: null
+  data_availability_score: null
+  extracted_at: '2026-05-20'
 driver_technology:
   value: CS-free spherical tokamak with ECRH non-inductive current drive (EXL-50U
     / EHL-2)

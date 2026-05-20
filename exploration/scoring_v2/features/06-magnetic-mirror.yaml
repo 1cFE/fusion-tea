@@ -29,6 +29,12 @@ customization_diagnostics:
   raw_average: 4.0
   customization_score: 5.0
   extracted_at: '2026-05-20'
+data_availability_diagnostics:
+  gap_report_path: exploration/concept_analysis/analyses/06-magnetic-mirror/gap_report.md
+  report_exists: true
+  blocking_count: 5
+  data_availability_score: 3.0
+  extracted_at: '2026-05-20'
 driver_technology:
   value: "Centrifugal mirror with alpha channeling (RF waves, E\xC3\u2014B rotation,\
     \ ponderomotive barriers)"
@@ -43,6 +49,11 @@ energy_capture:
 fuel:
   value: p-B11
   provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-20'
+gap_report_path:
+  value: exploration/concept_analysis/analyses/06-magnetic-mirror/gap_report.md
+  provenance: auto-detected
   confidence: high
   extracted_at: '2026-05-20'
 ife_driver:

@@ -29,6 +29,12 @@ customization_diagnostics:
   raw_average: 1.5
   customization_score: 1.67
   extracted_at: '2026-05-20'
+data_availability_diagnostics:
+  gap_report_path: exploration/concept_analysis/analyses/13-electrostatic-hybrid/gap_report.md
+  report_exists: true
+  blocking_count: 9
+  data_availability_score: 2.0
+  extracted_at: '2026-05-20'
 driver_technology:
   value: "High-voltage electrostatic cathode (300 kV) with E\xC3\u2014B electron co-confinement"
   provenance: taxonomy
@@ -42,6 +48,11 @@ energy_capture:
 fuel:
   value: D-T
   provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-20'
+gap_report_path:
+  value: exploration/concept_analysis/analyses/13-electrostatic-hybrid/gap_report.md
+  provenance: auto-detected
   confidence: high
   extracted_at: '2026-05-20'
 ife_driver:

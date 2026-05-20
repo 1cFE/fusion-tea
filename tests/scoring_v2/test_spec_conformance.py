@@ -46,12 +46,10 @@ EXPECTED_AXES = (
     "data_availability",
 )
 
-# Axes whose embedding_weights are populated on the current branch.
-# P2 = modularity; P3 = + supply_chain/customization/upper_cf;
-# P4 = + plant_complexity/technical_feasibility; P5 = + data_availability.
+# All 7 axes are now wired (P5 lands data_availability).
 WIRED_AXES_NOW = {
     "modularity", "supply_chain", "customization", "upper_cf",
-    "plant_complexity", "technical_feasibility",
+    "plant_complexity", "technical_feasibility", "data_availability",
 }
 
 # Per-concept tolerance for predicted-score matching. The non-modularity
@@ -243,6 +241,9 @@ class TestNullHandlingConformance:
     """Composite skips null axes; concept-with-all-null axes gets null."""
 
     def test_unwired_axes_emit_null(self, run_cli, tmp_scores_dir: Path):
+        """Axes outside WIRED_AXES_NOW must score null. P5 wires all 7;
+        this test is a no-op for now but guards the invariant if a future
+        regression unwires an axis."""
         run_cli("score.py")
         rows = _read_score_csv(tmp_scores_dir / "table.csv")
         for r in rows:
@@ -253,14 +254,23 @@ class TestNullHandlingConformance:
                     f"{r['concept_id']}: unwired {axis} not null"
                 )
 
-    def test_composite_axes_included_lists_wired_axes(
+    def test_composite_axes_included_matches_score_presence(
         self, run_cli, tmp_scores_dir: Path,
     ):
+        """composite_axes_included lists exactly the axes with non-empty
+        scores for that concept — which equals WIRED_AXES_NOW for every
+        concept except those whose data_availability is null
+        (concepts without gap_report.md)."""
         run_cli("score.py")
         rows = _read_score_csv(tmp_scores_dir / "table.csv")
         for r in rows:
-            included = json.loads(r["composite_axes_included"])
-            assert set(included) == WIRED_AXES_NOW
+            included = set(json.loads(r["composite_axes_included"]))
+            actually_scored = {a for a in EXPECTED_AXES if r[a]}
+            assert included == actually_scored, (
+                f"{r['concept_id']}: included={included} vs scored={actually_scored}"
+            )
+            # Every concept must have at least all the always-wired axes
+            assert WIRED_AXES_NOW - {"data_availability"} <= included
 
 
 # ─── TestNoLlmInScorePath ────────────────────────────────────────────────
@@ -356,6 +366,7 @@ class TestSpecPredictedScoresLand:
         from tests.scoring_v2.test_upper_cf import KNOWN_DRIFTS as UCF_DRIFTS  # noqa: PLC0415
         from tests.scoring_v2.test_plant_complexity import KNOWN_DRIFTS as PC_DRIFTS  # noqa: PLC0415
         from tests.scoring_v2.test_technical_feasibility import KNOWN_DRIFTS as TF_DRIFTS  # noqa: PLC0415
+        from tests.scoring_v2.test_data_availability import KNOWN_DRIFTS as DA_DRIFTS  # noqa: PLC0415
         run_cli("score.py")
         rows = _read_score_csv(tmp_scores_dir / "table.csv")
         out: dict = {}
@@ -371,6 +382,7 @@ class TestSpecPredictedScoresLand:
             "upper_cf":              set(UCF_DRIFTS),
             "plant_complexity":      set(PC_DRIFTS),
             "technical_feasibility": set(TF_DRIFTS),
+            "data_availability":     set(DA_DRIFTS),
         }
         return out
 

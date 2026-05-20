@@ -29,6 +29,12 @@ customization_diagnostics:
   raw_average: 1.5
   customization_score: 1.67
   extracted_at: '2026-05-20'
+data_availability_diagnostics:
+  gap_report_path: null
+  report_exists: false
+  blocking_count: null
+  data_availability_score: null
+  extracted_at: '2026-05-20'
 driver_technology:
   value: High-current particle accelerator (beam-on-target neutron source)
   provenance: taxonomy
