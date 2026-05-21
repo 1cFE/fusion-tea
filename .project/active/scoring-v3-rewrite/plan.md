@@ -1,0 +1,237 @@
+# Plan — Scoring Framework v3 Rewrite
+
+**Spec:** [spec.md](spec.md) · **Design:** [design.md](design.md)
+**Created:** 2026-05-20
+
+Each PR branches off `main` directly, PR'd back via `gh pr create --base main`,
+merged + branch deleted on merge.
+
+---
+
+## P0 — Prereqs (this branch: `prep/v3-rewrite-prereqs`)
+
+Estimate: ~½ day. No `scoring_v2/` code touched.
+
+- [x] Author work item: `.project/active/scoring-v3-rewrite/{spec,design,plan}.md`
+- [ ] **Grep audit** — find downstream consumers of old dimension column names
+      (`economic_potential`, `technical_feasibility`, `manufacturability_scale_out`).
+      Output: `.project/active/scoring-v3-rewrite/audit_old_dimension_names.md`
+- [ ] **Plant complexity format conversion** — transform
+      `plant_complexity_scoring_plan.md` into impl-spec format matching the
+      other six axis specs (Change A/B/C/D sections, explicit YAML, embedding
+      code, populate script, tests). Output: replace the planning doc with the
+      impl spec in the project's spec storage location.
+- [ ] **Consolidate predicted-scores spreadsheet** —
+      `tests/scoring_v2/predicted_scores.yaml` populated from the 6
+      finished axis specs.  *(Modularity column pending v5 matrix upload.)*
+- [ ] **Awaiting upload**: `modularity_matrix_v5.md` from user to complete
+      modularity predicted scores.
+- [ ] PR: `prep/v3-rewrite-prereqs` → `main`. No code in `scoring_v2/`; just
+      planning artifacts + prereq deliverables.
+
+Acceptance: work item docs land, grep audit doc committed, plant complexity
+spec converted, predicted-scores YAML complete except modularity (or fully
+complete if v5 matrix arrives in time).
+
+---
+
+## P1 — Schema reconciliation (Slice 0)
+
+Branch: `feat/schema-v3-reconcile`. Estimate: ~1 day. Foundational.
+
+- [ ] `schema.yaml`: add `primary_heating`, `blanket_config`, `repetition_rate`,
+      `laser_approach`, `non_standard_mechanism`, `confinement_concept` (derived),
+      `gap_report_path` (manual)
+- [ ] `schema.yaml`: retire `tritium_breeding`, `neutron_management` (pre-v3 orphans)
+- [ ] `lib/extractors/taxonomy.py`: extend for 5 new v3 columns
+- [ ] `lib/extractors/derived.py` **NEW**: derive `confinement_concept`
+      from sub-columns (disambiguation rules per Tech Feasibility spec)
+- [ ] `lib/extractors/manual.py`: extend for `gap_report_path`
+- [ ] Repopulate all 40 `features/*.yaml` via re-running extractors
+- [ ] `tests/scoring_v2/test_extract.py`: extend for new features
+- [ ] Verify existing modularity scoring produces identical output
+      (regression check; v5 replacement comes in P2)
+
+Acceptance: schema validates all 40 feature files; ≥90% of new v3 features
+have non-Unknown values; `confinement_concept` and `gap_report_path` populated
+for all 40.
+
+PR base: `main`. Independent.
+
+---
+
+## P2 — Axis infrastructure + modularity v5 replacement (Slices 1 + 1b)
+
+Branch: `feat/axes-infrastructure-and-modularity-v5`. Estimate: ~2 days.
+**Highest-blast-radius PR** — keep tight scope.
+
+- [ ] `score.py`: `DIMENSIONS` → `AXES`; `_score_dimension` → `_score_axis`;
+      add `_compute_composite` with null-skip + weight rescaling
+- [ ] `score.py`: CSV output extended with 7 axis cols + composite +
+      7 evidence cols + `composite_axes_included`
+- [ ] `weights/default.yaml`: restructure to axis-keyed shape (7 axis blocks,
+      modularity populated with v5 weights + sub-tables; other 6 placeholders)
+- [ ] `weights/slice1.yaml`: restructure or retire
+- [ ] **Test-driven sequence for modularity** (write test before refactoring):
+      author `tests/scoring_v2/test_modularity.py` against v5 predicted scores
+      (anchor to v5 matrix once uploaded)
+- [ ] `embeddings/rulebook.py`: delete 12 old modularity embeddings; add 6 v5
+      embeddings (`_min_viable_device_scale`, `_vessel_modularity_rating`,
+      `_magnet_driver_modularity_rating`, `_blanket_modularity_rating`,
+      `_unit_multiplicity`, `_percent_mod`) + 3 key-builder helpers
+- [ ] `lookup_modularity.yaml` **NEW**
+- [ ] `schema.yaml`: add `unit_count_estimate`; retire `w_bop`, `w_fuel_cycle`,
+      `w_aux`, `w_civil`
+- [ ] `lib/extractors/cost_model.py`: trim to stop emitting retired w_*
+- [ ] Repopulate 40 feature files: add `unit_count_estimate` per concept
+      from spec's Change E table; remove 4 retired capex shares;
+      add `modularity_diagnostics` block
+- [ ] `scripts/populate_modularity_diagnostics.py` **NEW**
+- [ ] `test_score_framework.py`: update CSV column assertions
+- [ ] `test_spec_conformance.py` **NEW**: 10 conformance classes per design.md §3
+
+Acceptance: v5 scores match (CFS 3.71, Helion 5.00, BEST 1.91, etc. — all 40);
+`run_score.py` produces 40-row CSV with axis-keyed shape; conformance tests pass
+for axes wired so far (modularity + 6 axis placeholders); regression check on
+slice-1/2 modularity disabled (replaced not preserved).
+
+PR base: `main`. Depends on P1 merged.
+
+---
+
+## P3 — Three "easy" axes (Slices 2, 4, 5)
+
+Branch: `feat/axes-supply-chain-customization-upper-cf`. Estimate: ~2 days.
+
+Each axis follows the consistent per-axis pattern (design.md §2). One commit
+per axis: weights + embeddings + lookup metadata + populate script + tests
++ diagnostic blocks across 40 feature files.
+
+- [ ] **Slice 2 (Supply Chain)**: 7 bottlenecks, penalty stack, severity weights
+      per spec
+- [ ] **Slice 4 (Customization)**: 2 sub-factors (thermal rejection, fuel safety),
+      `(A+B)/2` rescaled to 1-5
+- [ ] **Slice 5 (Upper CF)**: 3 operational penalties, penalty stack
+- [ ] All three populate scripts run successfully across 40 concepts
+- [ ] `predicted_scores.yaml` columns for supply_chain, customization, upper_cf
+      reproduced by `test_spec_conformance.py`
+
+Acceptance: per-spec predicted score distributions match; conformance test
+class for these 3 axes passes; CSV shows real values in those 3 columns
+(no longer placeholders).
+
+PR base: `main`. Depends on P2.
+
+---
+
+## P4 — Two harder axes (Slices 3, 6)
+
+Branch: `feat/axes-plant-complexity-technical-feasibility`. Estimate: ~2 days.
+
+- [ ] **Slice 3 (Plant Complexity)**: 15 subsystem flags, penalty stack with
+      Critical/Severe/Moderate tiers per converted spec
+- [ ] **Slice 6 (Technical Feasibility)**: two lookup tables (required + achieved
+      triple product), log-scale bucket mapping, 20 citations preserved in
+      `lookup_triple_product.yaml`; 6 concepts floor at 1.0 via no-data treatment
+- [ ] `predicted_scores.yaml` columns reproduced
+
+Acceptance: per-spec predicted score distributions match; conformance tests for
+these axes pass.
+
+PR base: `main`. Can land in parallel with P3 (different axis sections).
+
+---
+
+## P5 — Data Availability (Slice 7)
+
+Branch: `feat/axis-data-availability`. Estimate: 1–2 days.
+
+- [ ] **Cross-branch merge or copy**: confirm `analyses/{id}/gap_report.md`
+      files are present (already on main post-PR #17/#18)
+- [ ] **Gap-report format standardization** *(deferred from P0)*:
+      regenerate the 34 existing gap reports with the structured summary block
+      per Data Availability spec
+- [ ] `gap_report_id_mapping.yaml` **NEW**: map matrix IDs to gap report dirs
+- [ ] Embedding: `_gap_report_blocking_count` (file I/O — documented framework
+      exception) + `_data_availability_score` (bracket lookup)
+- [ ] `populate_data_availability_diagnostics.py` **NEW**
+- [ ] `test_data_availability.py`
+- [ ] Concepts without gap reports: `data_availability_score: null`; composite
+      skip-and-rescale honors this
+
+Acceptance: per-spec predicted scores (7 at 5.0, 10 at 4.0, etc.); null
+handling test passes; composite for concepts without gap reports excludes
+the axis correctly.
+
+PR base: `main`. Depends on P2; gap-report standardization is in this PR
+(not P0 per 2026-05-20 decision).
+
+---
+
+## P6 — Score Explorer UI (Slice 8)
+
+Branch: `feat/score-explorer-ui`. Estimate: 2–3 days.
+
+- [ ] `tools/score_explorer/build.py` **NEW**: generates `data/concepts.json` +
+      `data/weights.json` from `scoring_v2/scores/table.csv` + per-axis
+      diagnostic blocks
+- [ ] `tools/score_explorer/index.html` **NEW**: vanilla React + Recharts via
+      CDN (no build step)
+- [ ] 7 axis weight sliders (client-side composite re-compute <100ms)
+- [ ] Ranking table (sortable, filterable, 40 concepts)
+- [ ] Concept detail panel showing all 7 axis diagnostic blocks on click
+- [ ] 3 preset profiles ("Equal", "Physics-first", "Commercial-readiness-first")
+- [ ] Advanced expansion per axis (within-axis weights — server-side
+      "save & re-score" round-trip <5s)
+- [ ] Export current rankings + active weights as CSV/JSON
+
+Acceptance: UI loads <2s; slider re-rank <100ms; save & re-score <5s;
+nulls clearly marked.
+
+PR base: `main`. Depends on at least P3 + P4 (so real scores exist for
+multiple axes).
+
+---
+
+## P7 — Cross-axis calibration review (Slice 9)
+
+Branch: `chore/cross-axis-calibration-review`. Estimate: ½ day.
+No new code; only weight-tuning + doc.
+
+- [ ] Side-by-side review of 40 concepts × 7 axes
+- [ ] Flag any concept scoring all-5.0 or all-1.0 (cross-axis sanity bar)
+- [ ] Flag within-axis calibration inconsistencies (e.g., "1 critical Supply
+      Chain bottleneck = 2.0" vs "1 critical Plant Complexity subsystem = 3.0")
+- [ ] Adjust within-axis weights in `weights/default.yaml` where review
+      surfaces inconsistencies
+- [ ] Re-run `test_spec_conformance.py` to ensure adjustments don't break
+      acceptance; update `predicted_scores.yaml` if any per-concept scores
+      moved (with spec update via separate PR if needed)
+- [ ] Output: `.project/active/scoring-v3-rewrite/calibration_review.md`
+
+Acceptance: cross-axis sanity bar passes; calibration review doc committed.
+
+PR base: `main`. Depends on P3, P4, P5 all merged.
+
+---
+
+## Sequencing summary
+
+```
+P0 (prereqs) ─→ P1 (schema) ─→ P2 (infra + modularity v5) ──┬─→ P3 (3 axes)
+                                                            ├─→ P4 (2 axes)
+                                                            └─→ P5 (data availability)
+                                                                       │
+                                                                  ─→ P6 (UI)
+                                                                       │
+                                                                  ─→ P7 (calibration)
+```
+
+P3, P4 parallelizable. P6 can start after any axis lands (UI built incrementally).
+
+Total: ~13–16 person-days across 8 PRs.
+
+## Tracking
+
+TodoWrite mirrors phases during execution.
+Each PR has a separate progress section in this plan (TBD).
