@@ -163,3 +163,18 @@ For the quantitative deliverable, the appropriate approach is:
 - Contrast the required parameters against the physics ceiling (~16,000 K demonstrated vs. ~10⁸ K needed) to bound the implausibility gap
 
 This is actually **analytically informative**: the back-solve exercise will show that even under heroic assumptions, the concept requires physics breakthroughs that are currently undemonstrated by 4 orders of magnitude. That conclusion is itself a useful output for the comparative study.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Insufficient Data"
+blocking_count: 8
+important_count: 4
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Poor"
+  system_function:            "Partial (physics challenges well-understood; engineering challenges entirely absent)"
+  subsystem_maturity:         "Poor"
+  materials_supply_chain:     "Partial (generic D-D fuel; no engineering-specific materials data)"
+  lcoe_parameter_extraction:  "Poor — no LCOE-relevant engineering data exists in available sources"
+```

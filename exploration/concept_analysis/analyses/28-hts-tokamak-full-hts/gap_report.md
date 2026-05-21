@@ -168,3 +168,18 @@ For the quantitative LCOE model, proceed by:
 5. Flagging all analogue-derived values explicitly — Energy Singularity has published essentially no cost data
 
 The two paywalled ScienceDirect papers are the highest-value unexplored sources and should be accessed if possible before the quantitative model is finalized, as they may contain plasma parameters and magnet manufacturing details that improve the cost basis beyond generic analogues.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Significant Gaps"
+blocking_count: 5
+important_count: 5
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Partial"
+  system_function:            "Partial"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Partial"
+  lcoe_parameter_extraction:  "Poor"
+```

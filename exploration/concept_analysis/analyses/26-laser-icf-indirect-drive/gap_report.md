@@ -174,3 +174,18 @@ I have all the materials I need. Let me write the gap assessment now.
 2. **For LCOE modeling**: Use LIFE power plant cost structure as the primary capital cost analogue (adjusted for modern laser efficiency improvements), HYLIFE-III for chamber/blanket costs, and stated per-target cost for operating cost. Flag all such extrapolations explicitly.
 3. **Before or during analysis**: Retrieve the ASPEN IFE Workshop 2022 slide deck (URL confirmed in dossier) and search for the LIFE power plant cost reports on OSTI — these are the two most impactful `not-yet-sourced` documents for LCOE parameter completeness.
 4. The Xcimer/Inertia asymmetry in published detail is itself an analysis finding: the concept's cost modeling basis is substantially stronger on the Xcimer/HYLIFE-III side than on the Inertia side. This should be called out explicitly in the analysis.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Mostly Ready"
+blocking_count: 2
+important_count: 7
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Moderate-to-Good"
+  system_function:            "Good"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Partial"
+  lcoe_parameter_extraction:  "Partial"
+```

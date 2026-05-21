@@ -172,3 +172,18 @@ For the quantitative model, the following assumptions will need to be stated exp
 - **Fusion gain**: use First Light's claimed 200–1000× range as a parameter sweep input; note no gain has been demonstrated
 
 The back-solve to $0.01/kWh will need to clearly flag that the binding constraint (target gain ≥200×) has never been demonstrated at any scale, and that even the $50/MWh company target appears optimistic given the absence of a credible path to Machine 4's velocity requirement.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Mostly Ready (with important caveats)"
+blocking_count: 7
+important_count: 6
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Moderate"
+  system_function:            "Partial"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Partial"
+  lcoe_parameter_extraction:  "Partial"
+```

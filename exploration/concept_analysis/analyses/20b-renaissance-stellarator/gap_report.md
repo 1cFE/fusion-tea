@@ -167,3 +167,18 @@ Now I have sufficient information to write the gap assessment. No extracted sour
 **Proceed to full analysis, with the NF 2024 paper extracted first.**
 
 The available data is sufficient for a solid qualitative write-up (D1 sections 1–3) and a partial quantitative LCOE model. The performance parameters (1 GWe, 34% net efficiency, steady-state, ~100% capacity factor) provide the denominator for LCOE and the physical framing for the cost model. The novel subsystems (laser-patterned HTS film, liquid metal wall) have no direct cost analogues — the analysis should use bounding estimates with explicit uncertainty ranges rather than precise cost figures. The "economically optimized design point" framing in the NF 2024 paper title is the strongest signal that capital cost data exists in the primary literature and has not been captured. Extracting that paper before writing the analysis is the highest-leverage action available.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Mostly Ready (with one critical extraction gap)"
+blocking_count: 4
+important_count: 7
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Moderate-to-Good (strong publications, no full plant study, sources not yet extracted)"
+  system_function:            "Partial"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Poor"
+  lcoe_parameter_extraction:  "Partial — performance and efficiency parameters available; capital and operating cost data largely absent"
+```

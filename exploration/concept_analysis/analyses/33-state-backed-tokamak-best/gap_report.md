@@ -159,3 +159,18 @@ Now I have everything I need. Let me write the gap assessment.
 The structural constraint is that **BEST is an experimental device**, so the D1+ analysis must explicitly adopt a two-layer framing: (a) what BEST itself tells us about technology readiness, and (b) what the CFEDR/PFPP downstream reactor would look like from an LCOE perspective. The quantitative model will rely on ITER/ARIES analogues for capital cost and should clearly flag this extrapolation. The blanket design uncertainty (5 candidate TBMs, no selection made) creates irreducible branching in cost scenarios that should be modeled explicitly.
 
 No blocking data gaps prevent a D1+ write-up from proceeding. The LCOE model will be analogue-based but defensible — which is appropriate for a pre-CFEDR concept at this stage of development.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Mostly Ready (with important framing caveat)"
+blocking_count: 4
+important_count: 6
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Good (device level) / Partial (power plant level)"
+  system_function:            "Partial"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Partial"
+  lcoe_parameter_extraction:  "Poor (as expected for an experimental device)"
+```

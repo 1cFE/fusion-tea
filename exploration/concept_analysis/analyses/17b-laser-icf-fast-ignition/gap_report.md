@@ -167,3 +167,18 @@ I have all the information I need. Let me write the gap assessment report.
 3. At least one IFE systems cost study (LIFE or HAPL) for capital cost analogues
 
 Without these, the quantitative model will require so many undisclosed inputs to be assumed that the back-solve to $0.01/kWh will be largely an exercise in assumption propagation rather than concept-specific analysis. The qualitative sections can be written now with the data in hand.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Significant Gaps"
+blocking_count: 6
+important_count: 7
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Partial"
+  system_function:            "Partial"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Poor"
+  lcoe_parameter_extraction:  "Poor"
+```

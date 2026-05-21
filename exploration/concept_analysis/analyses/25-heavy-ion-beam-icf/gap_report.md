@@ -151,3 +151,18 @@
 **Proceed to full analysis.** The data foundation is sufficient for a D1+ qualitative write-up and a parameterized LCOE model. Two detailed power plant studies provide subsystem-level cost structure, LCOE estimates, energy conversion details, and plant parameters — more than most pre-commercial concepts offer. The key action before writing is to **read OSTI 7021072 directly** (not just the current summary) to extract CAS-level capital costs, O&M breakdown, and capacity factor assumptions that are almost certainly in the full report but not captured in current source summaries.
 
 The most important analytical framing issue: there is no company, so the analysis should be structured as "national lab reference design (HYLIFE-II baseline)" rather than a company assessment. The "Intensity Energy" placeholder should be flagged explicitly. Physics uncertainties (final focus, target fabrication at scale, ignition demonstration) are the real risk factors, and the back-solve to $0.01/kWh will quickly reveal how sensitive LCOE is to the target fabrication cost assumption and driver capital cost — both well-characterized from HYLIFE-II.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Mostly Ready"
+blocking_count: 2
+important_count: 6
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Good"
+  system_function:            "Partial"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Partial"
+  lcoe_parameter_extraction:  "Good (for a 30-40 year old design)"
+```

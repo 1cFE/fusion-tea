@@ -173,3 +173,18 @@ Infinity Two is the best-documented private fusion concept for qualitative analy
 For the quantitative LCOE model, the immediate blocker is that the six primary papers have not been ingested. Many of the "missing" parameters (gross electrical, blanket energy multiplication, recirculating power, tritium inventory) are likely present in E65 and E86 and can be extracted with one ingestion pass. Once extracted, the remaining gaps are primarily capital cost estimates, which must be derived from analogues (ARIES-CS, W7-X, HELIAS studies) with transparent uncertainty bounds — the `proprietary` classification applies to company-internal cost estimates, but public analogue estimation is viable and appropriate for a first-pass LCOE.
 
 The most significant substantive uncertainty (not a sourcing gap) is the HTS 3D stellarator coil manufacturing cost at R=12.5m scale. No machine of this type has been built with HTS. This is a genuine `truly-unknown` / `derivable-with-wide-uncertainty` parameter that will dominate the capital cost sensitivity analysis.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Mostly Ready (with sourcing gap)"
+blocking_count: 3
+important_count: 8
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Good (physics/architecture); Poor (economics)"
+  system_function:            "Partial"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Partial"
+  lcoe_parameter_extraction:  "Poor (parameters known at concept level; quantitative values not extracted from papers)"
+```

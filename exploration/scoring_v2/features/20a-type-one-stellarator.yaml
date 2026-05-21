@@ -32,8 +32,9 @@ customization_diagnostics:
 data_availability_diagnostics:
   gap_report_path: exploration/concept_analysis/analyses/20a-type-one-stellarator/gap_report.md
   report_exists: true
-  blocking_count: 2
-  data_availability_score: 4.0
+  blocking_count: 3
+  count_source: structured_summary_block
+  data_availability_score: 3.0
   extracted_at: '2026-05-20'
 driver_technology:
   value: Modular HTS stellarator coils (REBCO, 9 T)

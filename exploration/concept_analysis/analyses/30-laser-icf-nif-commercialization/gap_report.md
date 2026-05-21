@@ -165,3 +165,18 @@
 The available sources are sufficient to write a credible qualitative narrative and establish the system architecture. The NIF ignition heritage gives Inertia the strongest physics credibility of any IFE concept, and the high-level performance targets are self-consistent enough to anchor an LCOE model scaffold. However, the LCOE model will be almost entirely driven by assumptions rather than data: no capital cost figures exist for DPSSL hardware, fusion chambers, or blankets; no O&M baseline is published; and the key cost driver (target fabrication at industrial scale — ~315 million targets/year for a 1.5 GW plant at 10 Hz) has no published cost analogue beyond the stated "<$1 goal."
 
 The single highest-value action before modeling: **locate and read the LLNL LIFE program plant studies** (Latkowski, Moir, et al., ~2010–2013). These were detailed engineering cost studies for a flashlamp-driven IFE concept using similar chamber and blanket architecture. They will provide the best available capital cost analogues, even though they predate ignition and use a different driver. The driver (DPSSL vs. flashlamp) is where LIFE costs least apply; the chamber, blanket, tritium system, and BOP are directly analogous.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Significant Gaps"
+blocking_count: 5
+important_count: 6
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Partial"
+  system_function:            "Partial"
+  subsystem_maturity:         "Poor"
+  materials_supply_chain:     "Partial"
+  lcoe_parameter_extraction:  "Poor"
+```

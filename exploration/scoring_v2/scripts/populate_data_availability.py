@@ -27,6 +27,7 @@ from exploration.scoring_v2.lib.extractors import taxonomy as taxonomy_ext
 from exploration.scoring_v2.embeddings import rulebook  # noqa: F401
 from exploration.scoring_v2.embeddings.rulebook import (
     _count_blocking_markers,
+    _structured_blocking_count,
     _da_score_from_count,
     _load_da_weights,
 )
@@ -79,15 +80,24 @@ def main() -> int:
             abs_path = REPO_ROOT / relpath
             try:
                 text = abs_path.read_text(encoding="utf-8")
-                count = _count_blocking_markers(text)
+                # Same source-of-truth precedence as the scoring embedding:
+                # the `## Structured summary` block's blocking_count, with
+                # the `**blocking**` prose regex as the legacy fallback.
+                structured = _structured_blocking_count(text)
+                count = (structured if structured is not None
+                         else _count_blocking_markers(text))
+                count_source = ("structured_summary_block" if structured is not None
+                                else "prose_regex_fallback")
                 score = _da_score_from_count(count, brackets, floor)
             except (OSError, UnicodeDecodeError):
                 count = None
                 score = None
+                count_source = "unreadable"
             block = {
                 "gap_report_path": relpath,
                 "report_exists": True,
                 "blocking_count": count,
+                "count_source": count_source,
                 "data_availability_score": score,
             }
         existing = doc.get("data_availability_diagnostics") or {}

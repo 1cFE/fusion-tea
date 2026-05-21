@@ -169,3 +169,18 @@ The Park et al. 2025 paper gives sufficient reactor design parameters (power, ga
 - **O&M**: Analogy to other steady-state MFE concepts
 
 The critical caveat for the entire analysis: the reactor design's viability rests on γ=0.1, an unvalidated free parameter. The LCOE model should treat Q (and by extension, gross electrical output and recirculating power fraction) as a highly uncertain input and show sensitivity sweeps. A Q significantly below 10 rapidly makes the concept nonviable for power production.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Significant Gaps"
+blocking_count: 7
+important_count: 4
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Limited"
+  system_function:            "Partial (challenges are well-characterized; resolutions are not)"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Poor"
+  lcoe_parameter_extraction:  "Poor"
+```

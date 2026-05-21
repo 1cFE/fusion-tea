@@ -175,3 +175,18 @@ The LCOE model (Deliverable 2) requires a methodological decision before coding:
 The $30M claim from the YC launch page is for the confinement volume (likely the magnet alone), not a system cost. The actual capital cost is dominated by unknowns: system mass × launch cost/kg + direct conversion hardware + power beaming transmitter. Without these, the quantitative model must be explicit that it is computing a lower bound on system capital cost and parametrically sweeping the unknown fractions.
 
 **Recommend**: Acquire the ARIES-III and Hasegawa 1987 full texts before writing the analysis — both are cited in the dossier and likely contain quantitative parameters (plasma conditions, direct conversion efficiency, reactor-scale cost estimates) that would substantially improve the analysis quality. Without them, every LCOE-relevant number will be first-principles inference.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Insufficient Data"
+blocking_count: 10
+important_count: 3
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Poor"
+  system_function:            "Partial (physics understood; engineering and economics not)"
+  subsystem_maturity:         "Partial (heritage physics demonstrated; most engineering subsystems at TRL 1-2)"
+  materials_supply_chain:     "Partial (He-3 supply well-documented elsewhere; orbital supply chain is unique)"
+  lcoe_parameter_extraction:  "Poor — almost no LCOE-relevant parameters available; standard LCOE framework may not apply"
+```

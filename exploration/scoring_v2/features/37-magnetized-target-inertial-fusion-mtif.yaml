@@ -30,10 +30,11 @@ customization_diagnostics:
   customization_score: 2.33
   extracted_at: '2026-05-20'
 data_availability_diagnostics:
-  gap_report_path: null
-  report_exists: false
-  blocking_count: null
-  data_availability_score: null
+  gap_report_path: exploration/concept_analysis/analyses/37-magnetized-target-inertial-fusion-mtif/gap_report.md
+  report_exists: true
+  blocking_count: 6
+  count_source: structured_summary_block
+  data_availability_score: 2.0
   extracted_at: '2026-05-20'
 driver_technology:
   value: Plasma armature railgun (~10 km/s into magnetized D-D targets)
@@ -48,6 +49,11 @@ energy_capture:
 fuel:
   value: D-D
   provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-20'
+gap_report_path:
+  value: exploration/concept_analysis/analyses/37-magnetized-target-inertial-fusion-mtif/gap_report.md
+  provenance: auto-detected
   confidence: high
   extracted_at: '2026-05-20'
 ife_driver:

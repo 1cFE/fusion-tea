@@ -193,3 +193,18 @@ Now I have everything I need. Let me write the assessment.
 - Capacitor/coil O&M: structurally the dominant cost driver (company-identified), but completely opaque — flag as the primary LCOE uncertainty
 
 The concept is unusual in that **the binding uncertainty is not the energy conversion system** (well-described and plausible) **but the core plasma physics** — D-He3 fusion has not been demonstrated, and reaching 750M°C from 150M°C demonstrated represents a 5× temperature increase. Any LCOE model should treat fusion gain Q as the primary sweep parameter and back-solve to what Q is needed for commercial viability.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Mostly Ready"
+blocking_count: 7
+important_count: 4
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Moderate (Rich for physics/concept, Limited for economics)"
+  system_function:            "Partial"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Partial"
+  lcoe_parameter_extraction:  "Poor for quantitative modeling; Partial for structural understanding"
+```

@@ -163,3 +163,18 @@
 2. Write the qualitative D1+ sections using available information — the data supports a candid assessment of a very early-stage concept with high uncertainty, which is itself analytically informative.
 3. For the quantitative model, build it as a **generic compact spherical tokamak** parameterized by HTS tokamak analogues (STEP, ST40/ST80, SPARC), clearly labeled as analogue-based rather than Pranos-specific. This is the honest and useful framing given the data situation.
 4. The back-solve to $0.01/kWh exercise can still be performed meaningfully using the generic compact tokamak model.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Insufficient Data"
+blocking_count: 12
+important_count: 3
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Poor"
+  system_function:            "Poor"
+  subsystem_maturity:         "Poor"
+  materials_supply_chain:     "Poor"
+  lcoe_parameter_extraction:  "Poor"
+```

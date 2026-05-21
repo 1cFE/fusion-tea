@@ -188,3 +188,18 @@ The data state is sufficient to write a well-grounded qualitative write-up and a
 The most important gap is the absence of any subsystem-level cost breakdown — the $5B is a single number with no decomposition. A bottom-up cost model is not feasible without this, but a top-down model with sensitivity analysis is tractable. The second-priority gap is confirmed power conversion efficiency; using a range of 40–55% for sCO2 covers the uncertainty reasonably.
 
 The Springer book chapter (DOI available) and the full AIP 2023 paper body should be attempted before finalizing the analysis, as they are the most likely sources to contain plasma parameter tables, power balance details, and possibly cost structure. All other gaps can be addressed through analogues, derivations, and explicitly stated assumptions.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Mostly Ready"
+blocking_count: 1
+important_count: 8
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Moderate"
+  system_function:            "Partial"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Partial"
+  lcoe_parameter_extraction:  "Partial"
+```

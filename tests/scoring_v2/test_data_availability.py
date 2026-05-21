@@ -10,6 +10,7 @@ import yaml
 from exploration.scoring_v2.embeddings.rulebook import (
     _BLOCKING_MARKER,
     _count_blocking_markers,
+    _structured_blocking_count,
     _da_score_from_count,
     _load_da_weights,
 )
@@ -22,20 +23,12 @@ BRACKETS, FLOOR = _load_da_weights(WEIGHTS)
 
 PER_CONCEPT_TOLERANCE = 0.55
 
-KNOWN_DRIFTS = {
-    # predicted_scores.yaml values were populated from an earlier gap_report
-    # state; the live gap_report.md files have different blocking counts.
-    # The framework's count of the current gap_report.md is the ground
-    # truth. P7 calibration could refresh the predicted_scores.yaml.
-    "21-spherical-tokamak-hts":            "predicted 2.0 vs live blocking_count=1 → 4.0",
-    "22-projectile-icf":                   "predicted 3.0 vs live blocking_count=6 → 2.0",
-    "23-laser-icf-nanostructured-target":  "predicted 2.0 vs live blocking_count=4 → 3.0",
-    "24-dense-plasma-focus":               "predicted 4.0 vs live blocking_count=7 → 2.0",
-    "25-heavy-ion-beam-icf":               "predicted 5.0 vs live blocking_count=2 → 4.0",
-    "26-laser-icf-indirect-drive":         "predicted 3.0 vs live blocking_count=0 → 5.0",
-    "27-polywell":                         "predicted 4.0 vs live blocking_count=3 → 3.0",
-    "31-laser-icf-oec-architecture":       "predicted 5.0 vs live blocking_count=4 → 3.0",
-}
+# Empty since the gap-report format standardization: every report now
+# carries a `## Structured summary` block, blocking_count is the
+# deduplicated structured count, and predicted_scores.yaml's
+# data_availability column was regenerated from those structured blocks
+# — so predicted == actual for this axis by construction.
+KNOWN_DRIFTS: dict[str, str] = {}
 
 
 def _read_actual(run_cli, tmp_scores_dir: Path) -> dict[str, float | None]:
@@ -85,6 +78,50 @@ class TestCounting:
         assert _count_blocking_markers("**important** **blocking**") == 1
 
 
+class TestStructuredSummaryCount:
+    """The structured `## Structured summary` block is the authoritative
+    blocking-count source; the prose regex is only the legacy fallback."""
+
+    def test_parses_blocking_count_field(self):
+        text = (
+            "# Gap Assessment\n\n## Structured summary (machine-readable)\n\n"
+            "```yaml\noverall_rating: \"Mostly Ready\"\n"
+            "blocking_count: 4\nimportant_count: 7\n```\n"
+        )
+        assert _structured_blocking_count(text) == 4
+
+    def test_returns_none_when_no_block(self):
+        text = "# Gap Assessment\n\nSome prose with **blocking** markers.\n"
+        assert _structured_blocking_count(text) is None
+
+    def test_structured_block_overrides_prose_regex(self):
+        """A report whose prose has many **blocking** bolds but whose
+        structured block says 4 must count as 4 (the dedup fix)."""
+        text = (
+            "**blocking** **blocking** **blocking** **blocking** "
+            "**blocking** **blocking**\n\n"
+            "## Structured summary (machine-readable)\n\n"
+            "```yaml\nblocking_count: 4\n```\n"
+        )
+        # prose regex would say 6; structured says 4
+        assert _count_blocking_markers(text) == 6
+        assert _structured_blocking_count(text) == 4
+
+    def test_every_gap_report_has_a_structured_block(self):
+        """After the format-standardization pass, every gap_report.md
+        carries a structured block with a blocking_count."""
+        analyses = REPO_ROOT / "exploration" / "concept_analysis" / "analyses"
+        reports = sorted(analyses.glob("*/gap_report.md"))
+        assert reports, "no gap reports found"
+        missing = []
+        for path in reports:
+            if _structured_blocking_count(path.read_text(encoding="utf-8")) is None:
+                missing.append(path.parent.name)
+        assert not missing, (
+            f"gap reports without a structured-summary block: {missing}"
+        )
+
+
 class TestBucketSchedule:
     def test_zero_blockers_top_score(self):
         assert _da_score_from_count(0, BRACKETS, FLOOR) == 5.0
@@ -114,37 +151,58 @@ class TestScoreInvariants:
                 continue
             assert 1.0 <= v <= 5.0, f"{cid}: {v}"
 
-    def test_concepts_without_gap_report_are_null(self, run_cli, tmp_scores_dir: Path):
+    def test_all_40_concepts_have_gap_reports(self, run_cli, tmp_scores_dir: Path):
+        """As of the gap-report-stub work, all 40 concepts have a
+        gap_report.md (37/38/39 — Mallory's net-new concepts — got
+        stub reports). No concept should score null on this axis."""
         scores = _read_actual(run_cli, tmp_scores_dir)
-        # 37/38/39 (Mallory net-new) lack gap reports → null
-        for cid in ("37-magnetized-target-inertial-fusion-mtif",
-                    "38-particle-accelerator-driven-fusion",
-                    "39-spherical-tokamak-cs-free-p-b11"):
-            assert scores[cid] is None, (
-                f"{cid}: expected null (no gap report), got {scores[cid]}"
-            )
-
-    def test_concepts_with_gap_report_score(self, run_cli, tmp_scores_dir: Path):
-        scores = _read_actual(run_cli, tmp_scores_dir)
-        # Every other concept should have a score
-        for cid, v in scores.items():
-            if cid in ("37-magnetized-target-inertial-fusion-mtif",
-                       "38-particle-accelerator-driven-fusion",
-                       "39-spherical-tokamak-cs-free-p-b11"):
-                continue
-            assert v is not None, f"{cid}: score is null but gap report should exist"
+        nulls = [cid for cid, v in scores.items() if v is None]
+        assert not nulls, f"concepts still missing a gap report: {nulls}"
 
 
-def test_corpus_drift_under_threshold(run_cli, tmp_scores_dir: Path):
-    """Most concepts match; the live-gap_report-vs-predicted_scores drifts
-    are documented (P7 refresh)."""
+class TestNullHandling:
+    """The null-handling path is no longer exercised by any live concept
+    (all 40 have reports), so it's pinned at the unit level here. R9 in
+    spec.md: a missing gap report yields a null score, not a floor."""
+
+    def test_score_embedding_returns_none_for_none_count(self):
+        from exploration.scoring_v2.embeddings.rulebook import (  # noqa: PLC0415
+            _data_availability_score,
+        )
+        assert _data_availability_score(None, weights_yaml=WEIGHTS) is None
+
+    def test_count_embedding_returns_none_for_empty_path(self):
+        from exploration.scoring_v2.embeddings.rulebook import (  # noqa: PLC0415
+            _gap_report_blocking_count,
+        )
+        assert _gap_report_blocking_count("") is None
+        assert _gap_report_blocking_count(None) is None
+
+    def test_count_embedding_returns_none_for_missing_file(self):
+        from exploration.scoring_v2.embeddings.rulebook import (  # noqa: PLC0415
+            _gap_report_blocking_count,
+        )
+        assert _gap_report_blocking_count(
+            "exploration/concept_analysis/analyses/__no_such_concept__/gap_report.md"
+        ) is None
+
+
+def test_predicted_scores_match_exactly(run_cli, tmp_scores_dir: Path):
+    """predicted_scores.yaml's data_availability column is regenerated
+    from the gap reports' structured blocks, so it must match the
+    framework's computed scores exactly — this axis has no calibration
+    gap, only a deterministic count."""
     predicted = yaml.safe_load(PREDICTED.read_text()).get("data_availability", {})
     actual = _read_actual(run_cli, tmp_scores_dir)
-    diffs = []
+    mismatches = []
     for cid, exp in predicted.items():
         v = actual.get(cid)
-        if v is None or exp is None:
+        if exp is None:
             continue
-        diffs.append(abs(v - float(exp)))
-    mean = sum(diffs) / len(diffs)
-    assert mean < 0.5, f"data_availability mean |diff| = {mean:.3f}"
+        if v is None or abs(v - float(exp)) > 1e-9:
+            mismatches.append(f"{cid}: predicted {exp} vs actual {v}")
+    assert not mismatches, (
+        "data_availability predicted != actual (re-run "
+        "add_gap_report_summary_blocks.py + score.py and refresh "
+        "predicted_scores.yaml):\n  " + "\n  ".join(mismatches)
+    )

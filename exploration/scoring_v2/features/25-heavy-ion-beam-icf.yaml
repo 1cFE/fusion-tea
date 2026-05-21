@@ -33,6 +33,7 @@ data_availability_diagnostics:
   gap_report_path: exploration/concept_analysis/analyses/25-heavy-ion-beam-icf/gap_report.md
   report_exists: true
   blocking_count: 2
+  count_source: structured_summary_block
   data_availability_score: 4.0
   extracted_at: '2026-05-20'
 driver_technology:

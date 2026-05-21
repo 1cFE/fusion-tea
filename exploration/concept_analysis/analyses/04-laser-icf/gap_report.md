@@ -175,3 +175,18 @@ The available sources support a solid **qualitative write-up** covering HB11's p
 The **quantitative LCOE model** faces two blocking unknowns that cannot be responsibly estimated without external analogues: (1) laser system capital cost at "thousands of commercial petawatt units" scale — no precedent exists, and (2) laser wall-plug efficiency — the difference between 1% and 10% changes recirculating power from ~3× to ~0.3× net output, a factor of 10 in effective plant capacity. Both of these must be treated as wide parametric sweeps rather than point estimates.
 
 Before running the quantitative model, extract the two unextracted papers (Phys. Rev. Research 2025 and Mehlhorn 2024 Physics of Plasmas) — the Mehlhorn perspective in particular may contain the only publicly available integrated technical assessment of this concept's feasibility and cost challenges. Without these, the model will rest almost entirely on the 2018 patent and company website claims, both of which are conceptual-stage documents with significant internal contradictions (energy conversion design pivot).
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Significant Gaps"
+blocking_count: 4
+important_count: 7
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Poor"
+  system_function:            "Partial"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Partial (inferable, not explicitly analyzed in sources)"
+  lcoe_parameter_extraction:  "Poor"
+```

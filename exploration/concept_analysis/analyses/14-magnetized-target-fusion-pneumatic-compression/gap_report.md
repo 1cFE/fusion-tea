@@ -171,3 +171,18 @@ For the quantitative LCOE model, proceed with the following posture:
 - **Assume recirculating power 20–40%** (wide range; this is the single largest uncertainty and should be the primary sensitivity axis).
 - **Capital cost**: Use a bottom-up analogue approach: BOP from fission analogues (~$1,000–1,500/kWe), piston/compression system as a novel cost item with wide uncertainty (±50%).
 - The back-solve to $0.01/kWh will be informative precisely because the piston recirculating power and capital cost uncertainties are so large — those become the binding constraints to discuss.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Mostly Ready (with significant LCOE-specific gaps)"
+blocking_count: 4
+important_count: 8
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Moderate"
+  system_function:            "Partial"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Partial"
+  lcoe_parameter_extraction:  "Unknown"
+```
