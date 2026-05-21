@@ -1,0 +1,5778 @@
+[
+  {
+    "company": "Commonwealth Fusion Systems",
+    "composite": 2.7734,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "01-hts-compact-tokamak",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (steam)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 1,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 4.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/01-hts-compact-tokamak/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-T|Molten salt",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "capex_weighted",
+          "sum": 0.8572,
+          "w_blanket": 0.0556,
+          "w_coils": 0.7804,
+          "w_vessel": 0.0212
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "MFE|HTS (wound)|*",
+        "magnet_driver_modularity_rating": 5.0,
+        "min_viable_device_scale": 3.0,
+        "modularity_score": 3.7438,
+        "mvs_lookup_key": "MFE|Tokamak (compact)",
+        "percent_mod": 4.9752,
+        "unit_count_estimate": 18,
+        "unit_multiplicity": 4.0,
+        "v5_calibration_target": 3.71,
+        "vessel_lookup_key": "MFE|Tokamak|compact",
+        "vessel_modularity_rating": 4.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 1.0,
+        "subsystem_complexity_weight": 4.5,
+        "subsystems_triggered": {
+          "cryoplant_hts": 0.5,
+          "current_drive": 0.5,
+          "disruption_mitigation": 1.0,
+          "remote_maintenance": 1.0,
+          "rf_aux": 0.5,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 3.5,
+        "bottlenecks_triggered": {
+          "beryllium": 1.0,
+          "flibe": 0.5,
+          "lithium6": 1.0,
+          "tritium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 1.5
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "MFE|Compact tokamak",
+        "achieved_triple_product": 1.5e+21,
+        "base_score_from_gap": 4.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 0.301,
+        "no_data_floor": false,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 4.0,
+        "triple_product_gap": 2.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.5,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0,
+          "non_renewable_blanket": 0.5
+        },
+        "upper_cf_score": 3.5
+      }
+    },
+    "display_name": "HTS Compact Tokamak",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "Molten salt",
+      "confinement_concept": "Compact tokamak",
+      "confinement_family": "MFE",
+      "driver_technology": "HTS magnets (REBCO, 20 T)",
+      "energy_capture": "Thermal (steam)",
+      "fuel": "D-T",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "HTS (wound)",
+      "mfe_topology": "Tokamak",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Quasi-steady",
+      "primary_heating": "RF (ICRH)",
+      "repetition_rate": "N/A",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "Compact",
+      "unit_count_estimate": 18
+    },
+    "name": "HTS Compact Tokamak (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 4.0,
+      "modularity": 3.7438,
+      "plant_complexity": 1.0,
+      "supply_chain": 1.5,
+      "technical_feasibility": 4.0,
+      "upper_cf": 3.5
+    }
+  },
+  {
+    "company": "Sonofusion Energy",
+    "composite": 3.2138,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "low",
+    "concept_id": "02-acoustic-icf-sonofusion",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 2.33,
+        "extracted_at": "2026-05-20",
+        "raw_average": 2.0,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "TBD"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 2,
+          "value": "D-D"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 8,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 2.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/02-acoustic-icf-sonofusion/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-D|*",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_missing_capex",
+          "sum": 0.0,
+          "w_blanket": null,
+          "w_coils": null,
+          "w_vessel": null
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "IFE|*|Acoustic",
+        "magnet_driver_modularity_rating": 3.0,
+        "min_viable_device_scale": 5.0,
+        "modularity_score": 4.6667,
+        "mvs_lookup_key": "IFE|Acoustic",
+        "percent_mod": 3.6667,
+        "unit_count_estimate": 100,
+        "unit_multiplicity": 5.0,
+        "v5_calibration_target": 4.59,
+        "vessel_lookup_key": "IFE|Acoustic|*",
+        "vessel_modularity_rating": 3.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 4.0,
+        "subsystem_complexity_weight": 1.0,
+        "subsystems_triggered": {
+          "remote_maintenance": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 0.0,
+        "bottlenecks_triggered": {},
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 5.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "IFE|Acoustic ICF (sonofusion)",
+        "achieved_triple_product": null,
+        "base_score_from_gap": 1.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": null,
+        "no_data_floor": true,
+        "required_triple_product": 3e+23,
+        "technical_feasibility_score": 1.0,
+        "triple_product_gap": null
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.5,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0,
+          "pulsed_operation": 0.5
+        },
+        "upper_cf_score": 3.5
+      }
+    },
+    "display_name": "Acoustic ICF / Sonofusion",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "low",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "N/A",
+      "confinement_concept": "Acoustic ICF (sonofusion)",
+      "confinement_family": "IFE",
+      "driver_technology": "Ultrasonic transducers (acoustic cavitation)",
+      "energy_capture": "TBD",
+      "fuel": "D-D",
+      "ife_driver": "Acoustic",
+      "laser_approach": "N/A",
+      "magnet_type": "N/A",
+      "mfe_topology": "N/A",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Pulsed",
+      "primary_heating": "Acoustic implosion",
+      "repetition_rate": "kHz",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 100
+    },
+    "name": "Acoustic ICF / Sonofusion (D-D)",
+    "scores": {
+      "customization": 2.33,
+      "data_availability": 2.0,
+      "modularity": 4.6667,
+      "plant_complexity": 4.0,
+      "supply_chain": 5.0,
+      "technical_feasibility": 1.0,
+      "upper_cf": 3.5
+    }
+  },
+  {
+    "company": "Cortex Fusion",
+    "composite": 2.809,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "03-laser-icf-liquid-jet-target",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 2.33,
+        "extracted_at": "2026-05-20",
+        "raw_average": 2.0,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "TBD"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 2,
+          "value": "D-D"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 7,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 2.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/03-laser-icf-liquid-jet-target/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-D|*",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_sparse_capex",
+          "sum": 0.0014,
+          "w_blanket": 0.0014,
+          "w_coils": 0.0,
+          "w_vessel": 0.0
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "IFE|*|DPSSL Laser",
+        "magnet_driver_modularity_rating": 5.0,
+        "min_viable_device_scale": 4.0,
+        "modularity_score": 4.3333,
+        "mvs_lookup_key": "IFE|Laser (liquid jet)",
+        "percent_mod": 4.3333,
+        "unit_count_estimate": 200,
+        "unit_multiplicity": 5.0,
+        "v5_calibration_target": 4.41,
+        "vessel_lookup_key": "IFE|Laser|*",
+        "vessel_modularity_rating": 3.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 2.0,
+        "subsystem_complexity_weight": 3.0,
+        "subsystems_triggered": {
+          "remote_maintenance": 1.0,
+          "target_factory_high": 2.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 0.5,
+        "bottlenecks_triggered": {
+          "kdp": 0.5
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 4.5
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "IFE|Laser ICF (liquid jet)",
+        "achieved_triple_product": null,
+        "base_score_from_gap": 1.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": null,
+        "no_data_floor": true,
+        "required_triple_product": 3e+23,
+        "technical_feasibility_score": 1.0,
+        "triple_product_gap": null
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.5,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0,
+          "pulsed_operation": 0.5
+        },
+        "upper_cf_score": 3.5
+      }
+    },
+    "display_name": "Laser ICF - Liquid Jet Target",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "N/A",
+      "confinement_concept": "Laser ICF (liquid jet)",
+      "confinement_family": "IFE",
+      "driver_technology": "Femtosecond laser + plasmonic nanoshell targets",
+      "energy_capture": "TBD",
+      "fuel": "D-D",
+      "ife_driver": "Laser",
+      "laser_approach": "Liquid jet",
+      "magnet_type": "N/A",
+      "mfe_topology": "N/A",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Pulsed",
+      "primary_heating": "Laser (ultrashort pulse)",
+      "repetition_rate": "kHz",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 200
+    },
+    "name": "Laser ICF - Liquid Jet Target (D-D)",
+    "scores": {
+      "customization": 2.33,
+      "data_availability": 2.0,
+      "modularity": 4.3333,
+      "plant_complexity": 2.0,
+      "supply_chain": 4.5,
+      "technical_feasibility": 1.0,
+      "upper_cf": 3.5
+    }
+  },
+  {
+    "company": "hb11",
+    "composite": 3.5005,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "04-laser-icf",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 3.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 3.0,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (steam)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 4,
+          "value": "p-B11"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 4,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 3.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/04-laser-icf/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "p-B11|*",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_sparse_capex",
+          "sum": 0.0,
+          "w_blanket": 0.0,
+          "w_coils": 0.0,
+          "w_vessel": 0.0
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "IFE|*|DPSSL Laser",
+        "magnet_driver_modularity_rating": 5.0,
+        "min_viable_device_scale": 4.0,
+        "modularity_score": 4.3333,
+        "mvs_lookup_key": "IFE|Laser",
+        "percent_mod": 4.3333,
+        "unit_count_estimate": 500,
+        "unit_multiplicity": 5.0,
+        "v5_calibration_target": 4.37,
+        "vessel_lookup_key": "IFE|Laser|*",
+        "vessel_modularity_rating": 3.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 3.0,
+        "subsystem_complexity_weight": 2.0,
+        "subsystems_triggered": {
+          "target_factory_high": 2.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 0.5,
+        "bottlenecks_triggered": {
+          "kdp": 0.5
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 4.5
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "IFE|Laser ICF (fast ignition)",
+        "achieved_triple_product": 1e+20,
+        "base_score_from_gap": 2.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": -0.5,
+        "log10_gap": 3.477,
+        "no_data_floor": false,
+        "required_triple_product": 3e+23,
+        "technical_feasibility_score": 1.5,
+        "triple_product_gap": 3000.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 0.5,
+        "penalties_triggered": {
+          "pulsed_operation": 0.5
+        },
+        "upper_cf_score": 4.5
+      }
+    },
+    "display_name": "Laser ICF",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "N/A",
+      "confinement_concept": "Laser ICF (fast ignition)",
+      "confinement_family": "IFE",
+      "driver_technology": "Petawatt ps CPA laser + laser-driven kT field",
+      "energy_capture": "Thermal (steam)",
+      "fuel": "p-B11",
+      "ife_driver": "Laser",
+      "laser_approach": "Fast ignition",
+      "magnet_type": "N/A",
+      "mfe_topology": "N/A",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Pulsed",
+      "primary_heating": "Laser (fast ignition)",
+      "repetition_rate": "~1 Hz",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 500
+    },
+    "name": "Laser ICF (p-B11)",
+    "scores": {
+      "customization": 3.67,
+      "data_availability": 3.0,
+      "modularity": 4.3333,
+      "plant_complexity": 3.0,
+      "supply_chain": 4.5,
+      "technical_feasibility": 1.5,
+      "upper_cf": 4.5
+    }
+  },
+  {
+    "company": "Thea Energy",
+    "composite": 2.6624,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "05-planar-coil-stellarator",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (steam)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 3,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 3.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/05-planar-coil-stellarator/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-T|Liquid metal",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "capex_weighted",
+          "sum": 0.6167,
+          "w_blanket": 0.0471,
+          "w_coils": 0.5424,
+          "w_vessel": 0.0272
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "MFE|HTS (planar)|*",
+        "magnet_driver_modularity_rating": 5.0,
+        "min_viable_device_scale": 2.0,
+        "modularity_score": 3.467,
+        "mvs_lookup_key": "MFE|Stellarator",
+        "percent_mod": 4.8678,
+        "unit_count_estimate": 40,
+        "unit_multiplicity": 5.0,
+        "v5_calibration_target": 3.11,
+        "vessel_lookup_key": "MFE|Stellarator|*",
+        "vessel_modularity_rating": 2.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 1.5,
+        "subsystem_complexity_weight": 3.5,
+        "subsystems_triggered": {
+          "cryoplant_hts": 0.5,
+          "liquid_metal_handling": 0.5,
+          "remote_maintenance": 1.0,
+          "rf_aux": 0.5,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 3.0,
+        "bottlenecks_triggered": {
+          "lithium6": 1.0,
+          "tritium": 1.0,
+          "vanadium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 2.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "MFE|Planar coil stellarator",
+        "achieved_triple_product": 1e+20,
+        "base_score_from_gap": 3.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 1.477,
+        "no_data_floor": false,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 3.0,
+        "triple_product_gap": 30.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.0,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0
+        },
+        "upper_cf_score": 4.0
+      }
+    },
+    "display_name": "Planar Coil Stellarator",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "Liquid metal",
+      "confinement_concept": "Planar coil stellarator",
+      "confinement_family": "MFE",
+      "driver_technology": "Planar HTS coil array (12 encircling + 324 shaping, 20 T, software-controlled)",
+      "energy_capture": "Thermal (steam)",
+      "fuel": "D-T",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "HTS (planar array)",
+      "mfe_topology": "Stellarator",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Steady-state",
+      "primary_heating": "RF (ECRH)",
+      "repetition_rate": "N/A",
+      "stellarator_type": "Planar coil",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 40
+    },
+    "name": "Planar Coil Stellarator (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 3.0,
+      "modularity": 3.467,
+      "plant_complexity": 1.5,
+      "supply_chain": 2.0,
+      "technical_feasibility": 3.0,
+      "upper_cf": 4.0
+    }
+  },
+  {
+    "company": "Pale Blue",
+    "composite": 3.631,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "06-magnetic-mirror",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 5.0,
+        "extracted_at": "2026-05-20",
+        "raw_average": 4.0,
+        "sub_factor_a": {
+          "classification": "direct_conversion",
+          "feature": "energy_capture",
+          "score": 4,
+          "value": "Direct (charged particle)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 4,
+          "value": "p-B11"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 13,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 1.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/06-magnetic-mirror/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "p-B11|*",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_sparse_capex",
+          "sum": 0.0,
+          "w_blanket": 0.0,
+          "w_coils": 0.0,
+          "w_vessel": 0.0
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "MFE|TBD|*",
+        "magnet_driver_modularity_rating": 3.0,
+        "min_viable_device_scale": 4.0,
+        "modularity_score": 3.9167,
+        "mvs_lookup_key": "MFE|Mirror",
+        "percent_mod": 3.6667,
+        "unit_count_estimate": 30,
+        "unit_multiplicity": 4.0,
+        "v5_calibration_target": 4.08,
+        "vessel_lookup_key": "MFE|Mirror|*",
+        "vessel_modularity_rating": 3.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 4.5,
+        "subsystem_complexity_weight": 0.5,
+        "subsystems_triggered": {
+          "rf_aux": 0.5
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 0.0,
+        "bottlenecks_triggered": {},
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 5.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "MFE|Mirror",
+        "achieved_triple_product": 1e+18,
+        "base_score_from_gap": 1.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 5.477,
+        "no_data_floor": false,
+        "required_triple_product": 3e+23,
+        "technical_feasibility_score": 1.0,
+        "triple_product_gap": 300000.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 0.0,
+        "penalties_triggered": {},
+        "upper_cf_score": 5.0
+      }
+    },
+    "display_name": "Magnetic Mirror",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "N/A",
+      "confinement_concept": "Mirror",
+      "confinement_family": "MFE",
+      "driver_technology": "Centrifugal mirror with alpha channeling (RF waves, EÃ—B rotation, ponderomotive barriers)",
+      "energy_capture": "Direct (charged particle)",
+      "fuel": "p-B11",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "TBD",
+      "mfe_topology": "Open/Linear",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Steady-state",
+      "primary_heating": "RF (ICRH)",
+      "repetition_rate": "N/A",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 30
+    },
+    "name": "Magnetic Mirror (p-B11)",
+    "scores": {
+      "customization": 5.0,
+      "data_availability": 1.0,
+      "modularity": 3.9167,
+      "plant_complexity": 4.5,
+      "supply_chain": 5.0,
+      "technical_feasibility": 1.0,
+      "upper_cf": 5.0
+    }
+  },
+  {
+    "company": "Pacific Fusion",
+    "composite": 2.7267,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "07-maglif",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (unspecified)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 3,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 3.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/07-maglif/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": true,
+        "blanket_lookup_key": "D-T|Liquid metal",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_sparse_capex",
+          "sum": 0.0227,
+          "w_blanket": 0.0227,
+          "w_coils": 0.0,
+          "w_vessel": 0.0
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "MIF|*|Pulsed power",
+        "magnet_driver_modularity_rating": 5.0,
+        "min_viable_device_scale": 5.0,
+        "modularity_score": 4.9167,
+        "mvs_lookup_key": "MIF|MagLIF",
+        "percent_mod": 4.6667,
+        "unit_count_estimate": 100,
+        "unit_multiplicity": 5.0,
+        "v5_calibration_target": 4.93,
+        "vessel_lookup_key": "MIF|Pneumatic compression|D-T",
+        "vessel_modularity_rating": 4.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": true,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 1.0,
+        "subsystem_complexity_weight": 4.0,
+        "subsystems_triggered": {
+          "liquid_metal_handling": 0.5,
+          "pulsed_power_thermal": 1.0,
+          "remote_maintenance": 1.0,
+          "target_factory_low": 0.5,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": true,
+        "bottleneck_weight": 3.0,
+        "bottlenecks_triggered": {
+          "lithium6": 1.0,
+          "tritium": 1.0,
+          "vanadium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 2.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "MIF|MagLIF",
+        "achieved_triple_product": 1e+19,
+        "base_score_from_gap": 3.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 2.477,
+        "no_data_floor": false,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 3.0,
+        "triple_product_gap": 300.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": true,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.5,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0,
+          "pulsed_operation": 0.5
+        },
+        "upper_cf_score": 3.5
+      }
+    },
+    "display_name": "MagLIF",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "TBD",
+      "confinement_concept": "MagLIF",
+      "confinement_family": "MIF",
+      "driver_technology": "Pulsed power (Z-machine class)",
+      "energy_capture": "Thermal (unspecified)",
+      "fuel": "D-T",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "None",
+      "mfe_topology": "N/A",
+      "mif_method": "Magnetized target",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Pulsed",
+      "primary_heating": "Pulsed power implosion",
+      "repetition_rate": "Sub-Hz",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 100
+    },
+    "name": "MagLIF (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 3.0,
+      "modularity": 4.9167,
+      "plant_complexity": 1.0,
+      "supply_chain": 2.0,
+      "technical_feasibility": 3.0,
+      "upper_cf": 3.5
+    }
+  },
+  {
+    "company": "Helion Energy",
+    "composite": 3.5471,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "08-frc-w-direct-conversion",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 4.33,
+        "extracted_at": "2026-05-20",
+        "raw_average": 3.5,
+        "sub_factor_a": {
+          "classification": "direct_conversion",
+          "feature": "energy_capture",
+          "score": 4,
+          "value": "Direct (inductive)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 3,
+          "value": "D-He3"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 7,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 2.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/08-frc-w-direct-conversion/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-He3|*",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_sparse_capex",
+          "sum": 0.1436,
+          "w_blanket": 0.0003,
+          "w_coils": 0.1379,
+          "w_vessel": 0.0053
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "MIF|*|Capacitor compression",
+        "magnet_driver_modularity_rating": 5.0,
+        "min_viable_device_scale": 5.0,
+        "modularity_score": 5.0,
+        "mvs_lookup_key": "MIF|FRC compression",
+        "percent_mod": 5.0,
+        "unit_count_estimate": 75,
+        "unit_multiplicity": 5.0,
+        "v5_calibration_target": 5.0,
+        "vessel_lookup_key": "MIF|FRC compression|*",
+        "vessel_modularity_rating": 5.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 5.0,
+        "subsystem_complexity_weight": 0.0,
+        "subsystems_triggered": {}
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 3.0,
+        "bottlenecks_triggered": {
+          "helium3": 3.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 2.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "MIF|FRC compression (MIF)",
+        "achieved_triple_product": 1e+19,
+        "base_score_from_gap": 2.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 3.699,
+        "no_data_floor": false,
+        "required_triple_product": 5e+22,
+        "technical_feasibility_score": 2.0,
+        "triple_product_gap": 5000.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 0.5,
+        "penalties_triggered": {
+          "pulsed_operation": 0.5
+        },
+        "upper_cf_score": 4.5
+      }
+    },
+    "display_name": "FRC w/ Direct Conversion",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "Other/hybrid",
+      "confinement_concept": "FRC compression (MIF)",
+      "confinement_family": "MIF",
+      "driver_technology": "Pulsed EM coils (capacitor bank)",
+      "energy_capture": "Direct (inductive)",
+      "fuel": "D-He3",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "Resistive",
+      "mfe_topology": "N/A",
+      "mif_method": "FRC compression",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Pulsed",
+      "primary_heating": "Magnetic compression",
+      "repetition_rate": "~1 Hz",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 75
+    },
+    "name": "FRC w/ Direct Conversion (D-He3)",
+    "scores": {
+      "customization": 4.33,
+      "data_availability": 2.0,
+      "modularity": 5.0,
+      "plant_complexity": 5.0,
+      "supply_chain": 2.0,
+      "technical_feasibility": 2.0,
+      "upper_cf": 4.5
+    }
+  },
+  {
+    "company": "Proxima Fusion",
+    "composite": 2.761,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "09-qi-stellarator-hts",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (unspecified)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 2,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 4.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/09-qi-stellarator-hts/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-T|Liquid metal",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "capex_weighted",
+          "sum": 0.3246,
+          "w_blanket": 0.13,
+          "w_coils": 0.1384,
+          "w_vessel": 0.0562
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "MFE|HTS (continuous helical)|*",
+        "magnet_driver_modularity_rating": 3.0,
+        "min_viable_device_scale": 2.0,
+        "modularity_score": 3.1569,
+        "mvs_lookup_key": "MFE|Stellarator",
+        "percent_mod": 3.6278,
+        "unit_count_estimate": 50,
+        "unit_multiplicity": 5.0,
+        "v5_calibration_target": 3.03,
+        "vessel_lookup_key": "MFE|Stellarator|*",
+        "vessel_modularity_rating": 2.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 1.5,
+        "subsystem_complexity_weight": 3.5,
+        "subsystems_triggered": {
+          "cryoplant_hts": 0.5,
+          "liquid_metal_handling": 0.5,
+          "remote_maintenance": 1.0,
+          "rf_aux": 0.5,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 3.0,
+        "bottlenecks_triggered": {
+          "lithium6": 1.0,
+          "tritium": 1.0,
+          "vanadium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 2.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "MFE|QI stellarator",
+        "achieved_triple_product": 1e+20,
+        "base_score_from_gap": 3.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 1.477,
+        "no_data_floor": false,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 3.0,
+        "triple_product_gap": 30.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.0,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0
+        },
+        "upper_cf_score": 4.0
+      }
+    },
+    "display_name": "QI Stellarator - HTS",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "Liquid metal",
+      "confinement_concept": "QI stellarator",
+      "confinement_family": "MFE",
+      "driver_technology": "3D HTS stellarator coils (REBCO, 20 T)",
+      "energy_capture": "Thermal (unspecified)",
+      "fuel": "D-T",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "HTS (3D stellarator)",
+      "mfe_topology": "Stellarator",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Steady-state",
+      "primary_heating": "RF (ECRH)",
+      "repetition_rate": "N/A",
+      "stellarator_type": "QI",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 50
+    },
+    "name": "QI Stellarator - HTS (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 4.0,
+      "modularity": 3.1569,
+      "plant_complexity": 1.5,
+      "supply_chain": 2.0,
+      "technical_feasibility": 3.0,
+      "upper_cf": 4.0
+    }
+  },
+  {
+    "company": "Gauss Fusion",
+    "composite": 2.8041,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "10-large-scale-stellarator",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (unspecified)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 0,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 5.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/10-large-scale-stellarator/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-T|Liquid metal",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "capex_weighted",
+          "sum": 0.7821,
+          "w_blanket": 0.2173,
+          "w_coils": 0.3765,
+          "w_vessel": 0.1883
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "MFE|LTS+HTS|*",
+        "magnet_driver_modularity_rating": 2.0,
+        "min_viable_device_scale": 2.0,
+        "modularity_score": 2.9584,
+        "mvs_lookup_key": "MFE|Stellarator",
+        "percent_mod": 2.8335,
+        "unit_count_estimate": 40,
+        "unit_multiplicity": 5.0,
+        "v5_calibration_target": 3.03,
+        "vessel_lookup_key": "MFE|Stellarator|*",
+        "vessel_modularity_rating": 2.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 1.0,
+        "subsystem_complexity_weight": 4.0,
+        "subsystems_triggered": {
+          "cryoplant_lts": 1.0,
+          "liquid_metal_handling": 0.5,
+          "remote_maintenance": 1.0,
+          "rf_aux": 0.5,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 3.0,
+        "bottlenecks_triggered": {
+          "lithium6": 1.0,
+          "tritium": 1.0,
+          "vanadium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 2.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "MFE|QI stellarator",
+        "achieved_triple_product": 1e+20,
+        "base_score_from_gap": 3.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 1.477,
+        "no_data_floor": false,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 3.0,
+        "triple_product_gap": 30.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.0,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0
+        },
+        "upper_cf_score": 4.0
+      }
+    },
+    "display_name": "Large-Scale Stellarator",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "Liquid metal",
+      "confinement_concept": "QI stellarator",
+      "confinement_family": "MFE",
+      "driver_technology": "Non-planar modular SC coils (LTS+HTS, 40 coils, 6T axis / 12-13T peak, demountable)",
+      "energy_capture": "Thermal (unspecified)",
+      "fuel": "D-T",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "LTS+HTS",
+      "mfe_topology": "Stellarator",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Steady-state",
+      "primary_heating": "RF (ECRH)",
+      "repetition_rate": "N/A",
+      "stellarator_type": "QI",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 40
+    },
+    "name": "Large-Scale Stellarator (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 5.0,
+      "modularity": 2.9584,
+      "plant_complexity": 1.0,
+      "supply_chain": 2.0,
+      "technical_feasibility": 3.0,
+      "upper_cf": 4.0
+    }
+  },
+  {
+    "company": "Realta Fusion",
+    "composite": 2.6305,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "11-magnetic-mirror",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 2.33,
+        "extracted_at": "2026-05-20",
+        "raw_average": 2.0,
+        "sub_factor_a": {
+          "classification": "hybrid",
+          "feature": "energy_capture",
+          "score": 3,
+          "value": "Hybrid (thermal + direct)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 4,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 3.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/11-magnetic-mirror/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-T|Liquid metal",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_sparse_capex",
+          "sum": 0.0103,
+          "w_blanket": 0.0103,
+          "w_coils": 0.0,
+          "w_vessel": 0.0
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "MFE|HTS (wound)|*",
+        "magnet_driver_modularity_rating": 5.0,
+        "min_viable_device_scale": 4.0,
+        "modularity_score": 4.0833,
+        "mvs_lookup_key": "MFE|Mirror",
+        "percent_mod": 4.3333,
+        "unit_count_estimate": 12,
+        "unit_multiplicity": 4.0,
+        "v5_calibration_target": 4.01,
+        "vessel_lookup_key": "MFE|Mirror|*",
+        "vessel_modularity_rating": 3.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 1.0,
+        "subsystem_complexity_weight": 4.5,
+        "subsystems_triggered": {
+          "cryoplant_hts": 0.5,
+          "high_power_aux": 1.0,
+          "hybrid_energy": 0.5,
+          "liquid_metal_handling": 0.5,
+          "remote_maintenance": 1.0,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 3.0,
+        "bottlenecks_triggered": {
+          "lithium6": 1.0,
+          "tritium": 1.0,
+          "vanadium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 2.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "MFE|Mirror",
+        "achieved_triple_product": 1e+18,
+        "base_score_from_gap": 2.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 3.477,
+        "no_data_floor": false,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 2.0,
+        "triple_product_gap": 3000.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.0,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0
+        },
+        "upper_cf_score": 4.0
+      }
+    },
+    "display_name": "Magnetic Mirror",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "Liquid metal",
+      "confinement_concept": "Mirror",
+      "confinement_family": "MFE",
+      "driver_technology": "HTS mirror magnets (REBCO, 17+ T) + NBI + ECH",
+      "energy_capture": "Hybrid (thermal + direct)",
+      "fuel": "D-T",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "HTS (wound)",
+      "mfe_topology": "Open/Linear",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Steady-state",
+      "primary_heating": "RF + NBI",
+      "repetition_rate": "N/A",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 12
+    },
+    "name": "Magnetic Mirror (D-T)",
+    "scores": {
+      "customization": 2.33,
+      "data_availability": 3.0,
+      "modularity": 4.0833,
+      "plant_complexity": 1.0,
+      "supply_chain": 2.0,
+      "technical_feasibility": 2.0,
+      "upper_cf": 4.0
+    }
+  },
+  {
+    "company": "OpenStar Technologies",
+    "composite": 2.3457,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "low",
+    "concept_id": "12-levitated-dipole",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (unspecified)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 4,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 3.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/12-levitated-dipole/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-T|Solid breeder",
+        "blanket_modularity_rating": 4.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_missing_capex",
+          "sum": 0.0,
+          "w_blanket": null,
+          "w_coils": null,
+          "w_vessel": null
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "MFE|HTS (wound)|*",
+        "magnet_driver_modularity_rating": 5.0,
+        "min_viable_device_scale": 3.0,
+        "modularity_score": 2.75,
+        "mvs_lookup_key": "MFE|Levitated dipole",
+        "percent_mod": 4.0,
+        "unit_count_estimate": 1,
+        "unit_multiplicity": 1.0,
+        "v5_calibration_target": 2.68,
+        "vessel_lookup_key": "MFE|Dipole|*",
+        "vessel_modularity_rating": 3.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 1.5,
+        "subsystem_complexity_weight": 3.5,
+        "subsystems_triggered": {
+          "cryoplant_hts": 0.5,
+          "levitation_stabilization": 0.5,
+          "remote_maintenance": 1.0,
+          "rf_aux": 0.5,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 3.0,
+        "bottlenecks_triggered": {
+          "beryllium": 1.0,
+          "lithium6": 1.0,
+          "tritium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 2.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "MFE|Levitated dipole",
+        "achieved_triple_product": 1e+17,
+        "base_score_from_gap": 2.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 4.477,
+        "no_data_floor": false,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 2.0,
+        "triple_product_gap": 30000.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.5,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0,
+          "non_renewable_blanket": 0.5
+        },
+        "upper_cf_score": 3.5
+      }
+    },
+    "display_name": "Levitated Dipole",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "low",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "Solid breeder",
+      "confinement_concept": "Levitated dipole",
+      "confinement_family": "MFE",
+      "driver_technology": "Levitated HTS dipole coil (REBCO, 23 T) with on-board flux pump",
+      "energy_capture": "Thermal (unspecified)",
+      "fuel": "D-T",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "HTS (levitated dipole)",
+      "mfe_topology": "Dipole",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Quasi-steady",
+      "primary_heating": "RF (ICRH)",
+      "repetition_rate": "N/A",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 1
+    },
+    "name": "Levitated Dipole (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 3.0,
+      "modularity": 2.75,
+      "plant_complexity": 1.5,
+      "supply_chain": 2.0,
+      "technical_feasibility": 2.0,
+      "upper_cf": 3.5
+    }
+  },
+  {
+    "company": "Avalanche Energy",
+    "composite": 2.5719,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "low",
+    "concept_id": "13-electrostatic-hybrid",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (unspecified)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 6,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 2.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/13-electrostatic-hybrid/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": true,
+        "blanket_lookup_key": "D-T|Liquid metal",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_missing_capex",
+          "sum": 0.0,
+          "w_blanket": null,
+          "w_coils": null,
+          "w_vessel": null
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "Non-Standard|*|IEC",
+        "magnet_driver_modularity_rating": 5.0,
+        "min_viable_device_scale": 5.0,
+        "modularity_score": 4.8333,
+        "mvs_lookup_key": "Non-Standard|Electrostatic",
+        "percent_mod": 4.3333,
+        "unit_count_estimate": 200,
+        "unit_multiplicity": 5.0,
+        "v5_calibration_target": 4.78,
+        "vessel_lookup_key": "Non-Standard|Electrostatic|*",
+        "vessel_modularity_rating": 3.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": true,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 2.5,
+        "subsystem_complexity_weight": 2.5,
+        "subsystems_triggered": {
+          "liquid_metal_handling": 0.5,
+          "remote_maintenance": 1.0,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": true,
+        "bottleneck_weight": 3.0,
+        "bottlenecks_triggered": {
+          "lithium6": 1.0,
+          "tritium": 1.0,
+          "vanadium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 2.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "Non-Standard|Electrostatic hybrid",
+        "achieved_triple_product": null,
+        "base_score_from_gap": 1.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": null,
+        "no_data_floor": true,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 1.0,
+        "triple_product_gap": null
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": true,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.0,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0
+        },
+        "upper_cf_score": 4.0
+      }
+    },
+    "display_name": "Electrostatic Hybrid",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "low",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "TBD",
+      "confinement_concept": "Electrostatic hybrid",
+      "confinement_family": "Non-Standard",
+      "driver_technology": "High-voltage electrostatic cathode (300 kV) with EÃ—B electron co-confinement",
+      "energy_capture": "Thermal (unspecified)",
+      "fuel": "D-T",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "Electrostatic",
+      "mfe_topology": "N/A",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "Electrostatic",
+      "operation_mode": "Steady-state",
+      "primary_heating": "Electrostatic acceleration",
+      "repetition_rate": "N/A",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 200
+    },
+    "name": "Electrostatic Hybrid (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 2.0,
+      "modularity": 4.8333,
+      "plant_complexity": 2.5,
+      "supply_chain": 2.0,
+      "technical_feasibility": 1.0,
+      "upper_cf": 4.0
+    }
+  },
+  {
+    "company": "General Fusion",
+    "composite": 2.5838,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "14-magnetized-target-fusion-pneumatic-compression",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (steam)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 4,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 3.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/14-magnetized-target-fusion-pneumatic-compression/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-T|Liquid metal",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_sparse_capex",
+          "sum": 0.0071,
+          "w_blanket": 0.0071,
+          "w_coils": 0.0,
+          "w_vessel": 0.0
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "MIF|*|Pneumatic",
+        "magnet_driver_modularity_rating": 5.0,
+        "min_viable_device_scale": 5.0,
+        "modularity_score": 4.9167,
+        "mvs_lookup_key": "MIF|Pneumatic compression",
+        "percent_mod": 4.6667,
+        "unit_count_estimate": 60,
+        "unit_multiplicity": 5.0,
+        "v5_calibration_target": 4.88,
+        "vessel_lookup_key": "MIF|Pneumatic compression|D-T",
+        "vessel_modularity_rating": 4.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 1.0,
+        "subsystem_complexity_weight": 5.5,
+        "subsystems_triggered": {
+          "liquid_metal_handling": 0.5,
+          "pulsed_power_thermal": 1.0,
+          "remote_maintenance": 1.0,
+          "target_factory_high": 2.0,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 3.0,
+        "bottlenecks_triggered": {
+          "lithium6": 1.0,
+          "tritium": 1.0,
+          "vanadium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 2.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "MIF|Magnetized target fusion",
+        "achieved_triple_product": 1e+18,
+        "base_score_from_gap": 2.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 3.477,
+        "no_data_floor": false,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 2.0,
+        "triple_product_gap": 3000.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.5,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0,
+          "pulsed_operation": 0.5
+        },
+        "upper_cf_score": 3.5
+      }
+    },
+    "display_name": "Magnetized Target Fusion - Pneumatic Compression",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "Liquid metal",
+      "confinement_concept": "Magnetized target fusion",
+      "confinement_family": "MIF",
+      "driver_technology": "Pneumatic pistons + liquid metal",
+      "energy_capture": "Thermal (steam)",
+      "fuel": "D-T",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "None",
+      "mfe_topology": "N/A",
+      "mif_method": "Magnetized target",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Pulsed",
+      "primary_heating": "Mechanical compression",
+      "repetition_rate": "~1 Hz",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 60
+    },
+    "name": "Magnetized Target Fusion - Pneumatic Compression (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 3.0,
+      "modularity": 4.9167,
+      "plant_complexity": 1.0,
+      "supply_chain": 2.0,
+      "technical_feasibility": 2.0,
+      "upper_cf": 3.5
+    }
+  },
+  {
+    "company": "Zap Energy",
+    "composite": 2.4767,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "low",
+    "concept_id": "15-sheared-flow-stabilized-z-pinch",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (steam)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 5,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 3.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/15-sheared-flow-stabilized-z-pinch/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-T|Liquid metal",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_missing_capex",
+          "sum": 0.0,
+          "w_blanket": null,
+          "w_coils": null,
+          "w_vessel": null
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "MFE|Magnetic pinch|*",
+        "magnet_driver_modularity_rating": 3.0,
+        "min_viable_device_scale": 4.0,
+        "modularity_score": 4.1667,
+        "mvs_lookup_key": "MFE|Z-pinch (sheared-flow)",
+        "percent_mod": 3.6667,
+        "unit_count_estimate": 50,
+        "unit_multiplicity": 5.0,
+        "v5_calibration_target": 4.07,
+        "vessel_lookup_key": "MFE|Mirror|*",
+        "vessel_modularity_rating": 3.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 1.0,
+        "subsystem_complexity_weight": 4.5,
+        "subsystems_triggered": {
+          "disruption_mitigation": 1.0,
+          "liquid_metal_handling": 0.5,
+          "pulsed_power_thermal": 1.0,
+          "remote_maintenance": 1.0,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 3.0,
+        "bottlenecks_triggered": {
+          "lithium6": 1.0,
+          "tritium": 1.0,
+          "vanadium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 2.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "MFE|Z-pinch (sheared-flow)",
+        "achieved_triple_product": 1e+17,
+        "base_score_from_gap": 2.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 4.477,
+        "no_data_floor": false,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 2.0,
+        "triple_product_gap": 30000.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.5,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0,
+          "pulsed_operation": 0.5
+        },
+        "upper_cf_score": 3.5
+      }
+    },
+    "display_name": "Sheared-Flow Stabilized Z-Pinch",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "low",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "Liquid metal",
+      "confinement_concept": "Z-pinch (sheared-flow)",
+      "confinement_family": "MFE",
+      "driver_technology": "Pulsed power (sheared-flow Z-pinch)",
+      "energy_capture": "Thermal (steam)",
+      "fuel": "D-T",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "None",
+      "mfe_topology": "Open/Linear",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Pulsed",
+      "primary_heating": "Ohmic (self-pinch)",
+      "repetition_rate": "~10 Hz",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 50
+    },
+    "name": "Sheared-Flow Stabilized Z-Pinch (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 3.0,
+      "modularity": 4.1667,
+      "plant_complexity": 1.0,
+      "supply_chain": 2.0,
+      "technical_feasibility": 2.0,
+      "upper_cf": 3.5
+    }
+  },
+  {
+    "company": "Acceleron Fusion",
+    "composite": 2.2624,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "low",
+    "concept_id": "16-muon-catalyzed-fusion",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (unspecified)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 6,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 2.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/16-muon-catalyzed-fusion/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": true,
+        "blanket_lookup_key": "D-T|Liquid metal",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_missing_capex",
+          "sum": 0.0,
+          "w_blanket": null,
+          "w_coils": null,
+          "w_vessel": null
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "Non-Standard|*|Particle accelerator",
+        "magnet_driver_modularity_rating": 3.0,
+        "min_viable_device_scale": 3.0,
+        "modularity_score": 2.6667,
+        "mvs_lookup_key": "Non-Standard|Particle accelerator",
+        "percent_mod": 3.6667,
+        "unit_count_estimate": 1,
+        "unit_multiplicity": 1.0,
+        "v5_calibration_target": 2.54,
+        "vessel_lookup_key": "Non-Standard|Muon-catalyzed|*",
+        "vessel_modularity_rating": 3.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": true,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 2.5,
+        "subsystem_complexity_weight": 2.5,
+        "subsystems_triggered": {
+          "liquid_metal_handling": 0.5,
+          "remote_maintenance": 1.0,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": true,
+        "bottleneck_weight": 3.0,
+        "bottlenecks_triggered": {
+          "lithium6": 1.0,
+          "tritium": 1.0,
+          "vanadium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 2.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "Non-Standard|Muon-catalyzed fusion",
+        "achieved_triple_product": null,
+        "base_score_from_gap": 1.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": null,
+        "no_data_floor": true,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 1.0,
+        "triple_product_gap": null
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": true,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.0,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0
+        },
+        "upper_cf_score": 4.0
+      }
+    },
+    "display_name": "Muon-Catalyzed Fusion",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "low",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "TBD",
+      "confinement_concept": "Muon-catalyzed fusion",
+      "confinement_family": "Non-Standard",
+      "driver_technology": "Muon source (accelerator)",
+      "energy_capture": "Thermal (unspecified)",
+      "fuel": "D-T",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "N/A",
+      "mfe_topology": "N/A",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "Muon-catalyzed",
+      "operation_mode": "Steady-state",
+      "primary_heating": "Muon catalysis",
+      "repetition_rate": "N/A",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 1
+    },
+    "name": "Muon-Catalyzed Fusion (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 2.0,
+      "modularity": 2.6667,
+      "plant_complexity": 2.5,
+      "supply_chain": 2.0,
+      "technical_feasibility": 1.0,
+      "upper_cf": 4.0
+    }
+  },
+  {
+    "company": "Xcimer Energy",
+    "composite": 2.5481,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "17a-laser-icf-hybrid-drive",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (unspecified)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 4,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 3.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/17a-laser-icf-hybrid-drive/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-T|Molten salt",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_sparse_capex",
+          "sum": 0.1242,
+          "w_blanket": 0.099,
+          "w_coils": 0.0037,
+          "w_vessel": 0.0215
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "IFE|*|Gas Laser",
+        "magnet_driver_modularity_rating": 3.0,
+        "min_viable_device_scale": 3.0,
+        "modularity_score": 2.9167,
+        "mvs_lookup_key": "IFE|Laser (Xcimer-class)",
+        "percent_mod": 3.6667,
+        "unit_count_estimate": 4,
+        "unit_multiplicity": 2.0,
+        "v5_calibration_target": 2.86,
+        "vessel_lookup_key": "IFE|Laser|*",
+        "vessel_modularity_rating": 3.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 2.5,
+        "subsystem_complexity_weight": 2.5,
+        "subsystems_triggered": {
+          "remote_maintenance": 1.0,
+          "target_factory_low": 0.5,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 4.0,
+        "bottlenecks_triggered": {
+          "beryllium": 1.0,
+          "flibe": 0.5,
+          "kdp": 0.5,
+          "lithium6": 1.0,
+          "tritium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 1.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "IFE|Laser ICF (hybrid drive)",
+        "achieved_triple_product": 1e+21,
+        "base_score_from_gap": 4.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": -0.25,
+        "log10_gap": 0.477,
+        "no_data_floor": false,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 3.75,
+        "triple_product_gap": 3.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 2.0,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0,
+          "non_renewable_blanket": 0.5,
+          "pulsed_operation": 0.5
+        },
+        "upper_cf_score": 3.0
+      }
+    },
+    "display_name": "Laser ICF - Hybrid Direct Drive",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "Molten salt",
+      "confinement_concept": "Laser ICF (hybrid drive)",
+      "confinement_family": "IFE",
+      "driver_technology": "Excimer laser (KrF, 248 nm, 10+ MJ, ASPEN architecture)",
+      "energy_capture": "Thermal (unspecified)",
+      "fuel": "D-T",
+      "ife_driver": "Laser",
+      "laser_approach": "Hybrid drive",
+      "magnet_type": "N/A",
+      "mfe_topology": "N/A",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Pulsed",
+      "primary_heating": "Laser (direct drive)",
+      "repetition_rate": "Sub-Hz",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 4
+    },
+    "name": "Laser ICF - Hybrid Direct Drive (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 3.0,
+      "modularity": 2.9167,
+      "plant_complexity": 2.5,
+      "supply_chain": 1.0,
+      "technical_feasibility": 3.75,
+      "upper_cf": 3.0
+    }
+  },
+  {
+    "company": "Focused Energy",
+    "composite": 2.3576,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "17b-laser-icf-fast-ignition",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (steam)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 6,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 2.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/17b-laser-icf-fast-ignition/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-T|Liquid metal",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_sparse_capex",
+          "sum": 0.1986,
+          "w_blanket": 0.0754,
+          "w_coils": 0.0048,
+          "w_vessel": 0.1184
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "IFE|*|DPSSL Laser",
+        "magnet_driver_modularity_rating": 5.0,
+        "min_viable_device_scale": 4.0,
+        "modularity_score": 4.3333,
+        "mvs_lookup_key": "IFE|Laser",
+        "percent_mod": 4.3333,
+        "unit_count_estimate": 200,
+        "unit_multiplicity": 5.0,
+        "v5_calibration_target": 4.36,
+        "vessel_lookup_key": "IFE|Laser|*",
+        "vessel_modularity_rating": 3.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 1.0,
+        "subsystem_complexity_weight": 4.5,
+        "subsystems_triggered": {
+          "liquid_metal_handling": 0.5,
+          "remote_maintenance": 1.0,
+          "target_factory_high": 2.0,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 3.5,
+        "bottlenecks_triggered": {
+          "kdp": 0.5,
+          "lithium6": 1.0,
+          "tritium": 1.0,
+          "vanadium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 1.5
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "IFE|Laser ICF (fast ignition)",
+        "achieved_triple_product": 1e+20,
+        "base_score_from_gap": 3.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": -0.5,
+        "log10_gap": 1.477,
+        "no_data_floor": false,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 2.5,
+        "triple_product_gap": 30.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.5,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0,
+          "pulsed_operation": 0.5
+        },
+        "upper_cf_score": 3.5
+      }
+    },
+    "display_name": "Laser ICF - Direct Drive Fast Ignition",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "Liquid metal",
+      "confinement_concept": "Laser ICF (fast ignition)",
+      "confinement_family": "IFE",
+      "driver_technology": "DPSSL (Nd:glass, 527 nm) + petawatt CPA ignition laser",
+      "energy_capture": "Thermal (steam)",
+      "fuel": "D-T",
+      "ife_driver": "Laser",
+      "laser_approach": "Fast ignition",
+      "magnet_type": "N/A",
+      "mfe_topology": "N/A",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Pulsed",
+      "primary_heating": "Laser (fast ignition)",
+      "repetition_rate": "~10 Hz",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 200
+    },
+    "name": "Laser ICF - Direct Drive Fast Ignition (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 2.0,
+      "modularity": 4.3333,
+      "plant_complexity": 1.0,
+      "supply_chain": 1.5,
+      "technical_feasibility": 2.5,
+      "upper_cf": 3.5
+    }
+  },
+  {
+    "company": "TAE Technologies",
+    "composite": 3.6195,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "low",
+    "concept_id": "18-p-b11-frc",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 3.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 3.0,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (steam)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 4,
+          "value": "p-B11"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 8,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 2.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/18-p-b11-frc/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "p-B11|*",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_missing_capex",
+          "sum": 0.0,
+          "w_blanket": null,
+          "w_coils": null,
+          "w_vessel": null
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "MFE|Resistive|*",
+        "magnet_driver_modularity_rating": 3.0,
+        "min_viable_device_scale": 4.0,
+        "modularity_score": 3.6667,
+        "mvs_lookup_key": "MFE|FRC",
+        "percent_mod": 3.6667,
+        "unit_count_estimate": 8,
+        "unit_multiplicity": 3.0,
+        "v5_calibration_target": 3.77,
+        "vessel_lookup_key": "MFE|FRC|*",
+        "vessel_modularity_rating": 3.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 4.0,
+        "subsystem_complexity_weight": 1.0,
+        "subsystems_triggered": {
+          "high_power_aux": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 0.0,
+        "bottlenecks_triggered": {},
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 5.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "MFE|FRC",
+        "achieved_triple_product": 1e+19,
+        "base_score_from_gap": 2.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 4.477,
+        "no_data_floor": false,
+        "required_triple_product": 3e+23,
+        "technical_feasibility_score": 2.0,
+        "triple_product_gap": 30000.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 0.0,
+        "penalties_triggered": {},
+        "upper_cf_score": 5.0
+      }
+    },
+    "display_name": "p-B11 FRC",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "low",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "N/A",
+      "confinement_concept": "FRC",
+      "confinement_family": "MFE",
+      "driver_technology": "Neutral beam injection (high-energy, tangential)",
+      "energy_capture": "Thermal (steam)",
+      "fuel": "p-B11",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "Resistive",
+      "mfe_topology": "Compact Toroid",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Steady-state",
+      "primary_heating": "NBI",
+      "repetition_rate": "N/A",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 8
+    },
+    "name": "p-B11 FRC (p-B11)",
+    "scores": {
+      "customization": 3.67,
+      "data_availability": 2.0,
+      "modularity": 3.6667,
+      "plant_complexity": 4.0,
+      "supply_chain": 5.0,
+      "technical_feasibility": 2.0,
+      "upper_cf": 5.0
+    }
+  },
+  {
+    "company": "Zephyr Fusion",
+    "composite": 2.809,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "low",
+    "concept_id": "19-orbital-levitated-dipole",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 4.33,
+        "extracted_at": "2026-05-20",
+        "raw_average": 3.5,
+        "sub_factor_a": {
+          "classification": "direct_conversion",
+          "feature": "energy_capture",
+          "score": 4,
+          "value": "Direct (charged particle)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 3,
+          "value": "D-He3"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 10,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 1.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/19-orbital-levitated-dipole/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-He3|*",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_missing_capex",
+          "sum": 0.0,
+          "w_blanket": null,
+          "w_coils": null,
+          "w_vessel": null
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "MFE|HTS (wound)|*",
+        "magnet_driver_modularity_rating": 5.0,
+        "min_viable_device_scale": 3.0,
+        "modularity_score": 2.8333,
+        "mvs_lookup_key": "MFE|Levitated dipole",
+        "percent_mod": 4.3333,
+        "unit_count_estimate": 1,
+        "unit_multiplicity": 1.0,
+        "v5_calibration_target": 2.7,
+        "vessel_lookup_key": "MFE|Dipole|*",
+        "vessel_modularity_rating": 3.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 3.5,
+        "subsystem_complexity_weight": 1.5,
+        "subsystems_triggered": {
+          "cryoplant_hts": 0.5,
+          "levitation_stabilization": 0.5,
+          "rf_aux": 0.5
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 3.0,
+        "bottlenecks_triggered": {
+          "helium3": 3.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 2.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "MFE|Levitated dipole (orbital)",
+        "achieved_triple_product": 1e+17,
+        "base_score_from_gap": 1.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 5.699,
+        "no_data_floor": false,
+        "required_triple_product": 5e+22,
+        "technical_feasibility_score": 1.0,
+        "triple_product_gap": 500000.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 0.0,
+        "penalties_triggered": {},
+        "upper_cf_score": 5.0
+      }
+    },
+    "display_name": "Orbital Levitated Dipole",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "low",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "N/A",
+      "confinement_concept": "Levitated dipole (orbital)",
+      "confinement_family": "MFE",
+      "driver_technology": "Orbital HTS dipole coil (meter-scale, Falcon 9 deployable)",
+      "energy_capture": "Direct (charged particle)",
+      "fuel": "D-He3",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "HTS (levitated dipole)",
+      "mfe_topology": "Dipole",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Steady-state",
+      "primary_heating": "RF (ECRH)",
+      "repetition_rate": "N/A",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 1
+    },
+    "name": "Orbital Levitated Dipole (D-He3)",
+    "scores": {
+      "customization": 4.33,
+      "data_availability": 1.0,
+      "modularity": 2.8333,
+      "plant_complexity": 3.5,
+      "supply_chain": 2.0,
+      "technical_feasibility": 1.0,
+      "upper_cf": 5.0
+    }
+  },
+  {
+    "company": "Type One Energy",
+    "composite": 2.599,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "20a-type-one-stellarator",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (steam)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 3,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 3.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/20a-type-one-stellarator/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-T|Solid breeder",
+        "blanket_modularity_rating": 4.0,
+        "capex_shares_used": {
+          "method": "capex_weighted",
+          "sum": 0.6382,
+          "w_blanket": 0.0879,
+          "w_coils": 0.5202,
+          "w_vessel": 0.0301
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "MFE|HTS (continuous helical)|*",
+        "magnet_driver_modularity_rating": 3.0,
+        "min_viable_device_scale": 2.0,
+        "modularity_score": 3.0227,
+        "mvs_lookup_key": "MFE|Stellarator",
+        "percent_mod": 3.0906,
+        "unit_count_estimate": 40,
+        "unit_multiplicity": 5.0,
+        "v5_calibration_target": 3.03,
+        "vessel_lookup_key": "MFE|Stellarator|*",
+        "vessel_modularity_rating": 2.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 2.0,
+        "subsystem_complexity_weight": 3.0,
+        "subsystems_triggered": {
+          "cryoplant_hts": 0.5,
+          "remote_maintenance": 1.0,
+          "rf_aux": 0.5,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 3.0,
+        "bottlenecks_triggered": {
+          "beryllium": 1.0,
+          "lithium6": 1.0,
+          "tritium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 2.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "MFE|Modular stellarator",
+        "achieved_triple_product": 1e+20,
+        "base_score_from_gap": 3.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 1.477,
+        "no_data_floor": false,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 3.0,
+        "triple_product_gap": 30.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.5,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0,
+          "non_renewable_blanket": 0.5
+        },
+        "upper_cf_score": 3.5
+      }
+    },
+    "display_name": "Type One Stellarator",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "Solid breeder",
+      "confinement_concept": "Modular stellarator",
+      "confinement_family": "MFE",
+      "driver_technology": "Modular HTS stellarator coils (REBCO, 9 T)",
+      "energy_capture": "Thermal (steam)",
+      "fuel": "D-T",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "HTS (3D stellarator)",
+      "mfe_topology": "Stellarator",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Steady-state",
+      "primary_heating": "RF (ECRH)",
+      "repetition_rate": "N/A",
+      "stellarator_type": "Modular",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 40
+    },
+    "name": "Type One Stellarator (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 3.0,
+      "modularity": 3.0227,
+      "plant_complexity": 2.0,
+      "supply_chain": 2.0,
+      "technical_feasibility": 3.0,
+      "upper_cf": 3.5
+    }
+  },
+  {
+    "company": "Renaissance Fusion",
+    "composite": 2.5243,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "20b-renaissance-stellarator",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (sCO2)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 4,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 3.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/20b-renaissance-stellarator/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-T|Other/hybrid",
+        "blanket_modularity_rating": 4.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_sparse_capex",
+          "sum": 0.0125,
+          "w_blanket": 0.0125,
+          "w_coils": 0.0,
+          "w_vessel": 0.0
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "MFE|HTS (continuous helical)|*",
+        "magnet_driver_modularity_rating": 3.0,
+        "min_viable_device_scale": 2.0,
+        "modularity_score": 3.0,
+        "mvs_lookup_key": "MFE|Stellarator",
+        "percent_mod": 3.0,
+        "unit_count_estimate": 40,
+        "unit_multiplicity": 5.0,
+        "v5_calibration_target": 3.03,
+        "vessel_lookup_key": "MFE|Stellarator|*",
+        "vessel_modularity_rating": 2.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 1.5,
+        "subsystem_complexity_weight": 3.5,
+        "subsystems_triggered": {
+          "cryoplant_hts": 0.5,
+          "high_power_aux": 1.0,
+          "remote_maintenance": 1.0,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 3.0,
+        "bottlenecks_triggered": {
+          "beryllium": 1.0,
+          "lithium6": 1.0,
+          "tritium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 2.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "MFE|Modular stellarator",
+        "achieved_triple_product": 1e+20,
+        "base_score_from_gap": 3.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 1.477,
+        "no_data_floor": false,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 3.0,
+        "triple_product_gap": 30.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.5,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0,
+          "non_renewable_blanket": 0.5
+        },
+        "upper_cf_score": 3.5
+      }
+    },
+    "display_name": "Renaissance Stellarator",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "Other/hybrid",
+      "confinement_concept": "Modular stellarator",
+      "confinement_family": "MFE",
+      "driver_technology": "Laser-patterned HTS film on cylinders (REBCO, 10-15 T)",
+      "energy_capture": "Thermal (sCO2)",
+      "fuel": "D-T",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "HTS (3D stellarator)",
+      "mfe_topology": "Stellarator",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Steady-state",
+      "primary_heating": "NBI",
+      "repetition_rate": "N/A",
+      "stellarator_type": "Modular",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 40
+    },
+    "name": "Renaissance Stellarator (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 3.0,
+      "modularity": 3.0,
+      "plant_complexity": 1.5,
+      "supply_chain": 2.0,
+      "technical_feasibility": 3.0,
+      "upper_cf": 3.5
+    }
+  },
+  {
+    "company": "Tokamak Energy",
+    "composite": 2.7671,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "21-spherical-tokamak-hts",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (unspecified)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 3,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 3.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/21-spherical-tokamak-hts/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-T|Liquid metal",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "capex_weighted",
+          "sum": 0.414,
+          "w_blanket": 0.1946,
+          "w_coils": 0.136,
+          "w_vessel": 0.0835
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "MFE|HTS (wound)|*",
+        "magnet_driver_modularity_rating": 5.0,
+        "min_viable_device_scale": 3.0,
+        "modularity_score": 3.6996,
+        "mvs_lookup_key": "MFE|Tokamak (spherical)",
+        "percent_mod": 4.7984,
+        "unit_count_estimate": 14,
+        "unit_multiplicity": 4.0,
+        "v5_calibration_target": 3.59,
+        "vessel_lookup_key": "MFE|Tokamak|spherical",
+        "vessel_modularity_rating": 4.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 1.0,
+        "subsystem_complexity_weight": 5.0,
+        "subsystems_triggered": {
+          "cryoplant_hts": 0.5,
+          "current_drive": 0.5,
+          "disruption_mitigation": 1.0,
+          "liquid_metal_handling": 0.5,
+          "remote_maintenance": 1.0,
+          "rf_aux": 0.5,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 3.0,
+        "bottlenecks_triggered": {
+          "lithium6": 1.0,
+          "tritium": 1.0,
+          "vanadium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 2.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "MFE|Spherical tokamak",
+        "achieved_triple_product": 1.5e+21,
+        "base_score_from_gap": 4.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 0.301,
+        "no_data_floor": false,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 4.0,
+        "triple_product_gap": 2.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.0,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0
+        },
+        "upper_cf_score": 4.0
+      }
+    },
+    "display_name": "Spherical Tokamak - HTS",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "Liquid metal",
+      "confinement_concept": "Spherical tokamak",
+      "confinement_family": "MFE",
+      "driver_technology": "HTS magnets (REBCO, 5.25 T on-axis)",
+      "energy_capture": "Thermal (unspecified)",
+      "fuel": "D-T",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "HTS (wound)",
+      "mfe_topology": "Tokamak",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Quasi-steady",
+      "primary_heating": "RF (ECRH)",
+      "repetition_rate": "N/A",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "Spherical",
+      "unit_count_estimate": 14
+    },
+    "name": "Spherical Tokamak - HTS (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 3.0,
+      "modularity": 3.6996,
+      "plant_complexity": 1.0,
+      "supply_chain": 2.0,
+      "technical_feasibility": 4.0,
+      "upper_cf": 4.0
+    }
+  },
+  {
+    "company": "First Light Fusion",
+    "composite": 2.429,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "low",
+    "concept_id": "22-projectile-icf",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (steam)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 7,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 2.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/22-projectile-icf/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-T|Liquid metal",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_missing_capex",
+          "sum": 0.0,
+          "w_blanket": null,
+          "w_coils": null,
+          "w_vessel": null
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "IFE|*|Projectile",
+        "magnet_driver_modularity_rating": 5.0,
+        "min_viable_device_scale": 3.0,
+        "modularity_score": 3.8333,
+        "mvs_lookup_key": "IFE|Projectile",
+        "percent_mod": 4.3333,
+        "unit_count_estimate": 50,
+        "unit_multiplicity": 5.0,
+        "v5_calibration_target": 3.8,
+        "vessel_lookup_key": "IFE|Projectile|*",
+        "vessel_modularity_rating": 3.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 2.0,
+        "subsystem_complexity_weight": 3.0,
+        "subsystems_triggered": {
+          "liquid_metal_handling": 0.5,
+          "remote_maintenance": 1.0,
+          "target_factory_low": 0.5,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 3.0,
+        "bottlenecks_triggered": {
+          "lithium6": 1.0,
+          "tritium": 1.0,
+          "vanadium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 2.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "IFE|Projectile ICF",
+        "achieved_triple_product": 1e+17,
+        "base_score_from_gap": 2.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 4.477,
+        "no_data_floor": false,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 2.0,
+        "triple_product_gap": 30000.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.5,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0,
+          "pulsed_operation": 0.5
+        },
+        "upper_cf_score": 3.5
+      }
+    },
+    "display_name": "Projectile ICF",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "low",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "Liquid metal",
+      "confinement_concept": "Projectile ICF",
+      "confinement_family": "IFE",
+      "driver_technology": "Electromagnetic gun",
+      "energy_capture": "Thermal (steam)",
+      "fuel": "D-T",
+      "ife_driver": "Projectile",
+      "laser_approach": "N/A",
+      "magnet_type": "N/A",
+      "mfe_topology": "N/A",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Pulsed",
+      "primary_heating": "Projectile impact",
+      "repetition_rate": "Sub-Hz",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 50
+    },
+    "name": "Projectile ICF (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 2.0,
+      "modularity": 3.8333,
+      "plant_complexity": 2.0,
+      "supply_chain": 2.0,
+      "technical_feasibility": 2.0,
+      "upper_cf": 3.5
+    }
+  },
+  {
+    "company": "Marvel Fusion",
+    "composite": 3.309,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "23-laser-icf-nanostructured-target",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 4.33,
+        "extracted_at": "2026-05-20",
+        "raw_average": 3.5,
+        "sub_factor_a": {
+          "classification": "hybrid",
+          "feature": "energy_capture",
+          "score": 3,
+          "value": "Hybrid (thermal + direct)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 4,
+          "value": "p-B11"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 7,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 2.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/23-laser-icf-nanostructured-target/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "p-B11|*",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_sparse_capex",
+          "sum": 0.0,
+          "w_blanket": 0.0,
+          "w_coils": 0.0,
+          "w_vessel": 0.0
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "IFE|*|DPSSL Laser",
+        "magnet_driver_modularity_rating": 5.0,
+        "min_viable_device_scale": 4.0,
+        "modularity_score": 4.3333,
+        "mvs_lookup_key": "IFE|Laser",
+        "percent_mod": 4.3333,
+        "unit_count_estimate": 500,
+        "unit_multiplicity": 5.0,
+        "v5_calibration_target": 4.37,
+        "vessel_lookup_key": "IFE|Laser|*",
+        "vessel_modularity_rating": 3.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 2.5,
+        "subsystem_complexity_weight": 2.5,
+        "subsystems_triggered": {
+          "hybrid_energy": 0.5,
+          "target_factory_high": 2.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 0.5,
+        "bottlenecks_triggered": {
+          "kdp": 0.5
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 4.5
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "IFE|Laser ICF (ultrashort pulse)",
+        "achieved_triple_product": 1e+18,
+        "base_score_from_gap": 1.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": -0.5,
+        "log10_gap": 5.477,
+        "no_data_floor": false,
+        "required_triple_product": 3e+23,
+        "technical_feasibility_score": 1.0,
+        "triple_product_gap": 300000.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 0.5,
+        "penalties_triggered": {
+          "pulsed_operation": 0.5
+        },
+        "upper_cf_score": 4.5
+      }
+    },
+    "display_name": "Laser ICF - Nanostructured Target",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "N/A",
+      "confinement_concept": "Laser ICF (ultrashort pulse)",
+      "confinement_family": "IFE",
+      "driver_technology": "Femtosecond DPSSL + nanostructured Si targets (nanowire arrays, semiconductor lithography)",
+      "energy_capture": "Hybrid (thermal + direct)",
+      "fuel": "p-B11",
+      "ife_driver": "Laser",
+      "laser_approach": "Ultrashort pulse",
+      "magnet_type": "N/A",
+      "mfe_topology": "N/A",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Pulsed",
+      "primary_heating": "Laser (ultrashort pulse)",
+      "repetition_rate": "~10 Hz",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 500
+    },
+    "name": "Laser ICF - Nanostructured Target (p-B11)",
+    "scores": {
+      "customization": 4.33,
+      "data_availability": 2.0,
+      "modularity": 4.3333,
+      "plant_complexity": 2.5,
+      "supply_chain": 4.5,
+      "technical_feasibility": 1.0,
+      "upper_cf": 4.5
+    }
+  },
+  {
+    "company": "LPPFusion",
+    "composite": 3.7381,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "low",
+    "concept_id": "24-dense-plasma-focus",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 5.0,
+        "extracted_at": "2026-05-20",
+        "raw_average": 4.0,
+        "sub_factor_a": {
+          "classification": "direct_conversion",
+          "feature": "energy_capture",
+          "score": 4,
+          "value": "Direct (charged particle)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 4,
+          "value": "p-B11"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 6,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 2.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/24-dense-plasma-focus/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "p-B11|*",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_missing_capex",
+          "sum": 0.0,
+          "w_blanket": null,
+          "w_coils": null,
+          "w_vessel": null
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "Non-Standard|*|Plasma focus",
+        "magnet_driver_modularity_rating": 3.0,
+        "min_viable_device_scale": 4.0,
+        "modularity_score": 3.6667,
+        "mvs_lookup_key": "Non-Standard|Plasma focus",
+        "percent_mod": 3.6667,
+        "unit_count_estimate": 8,
+        "unit_multiplicity": 3.0,
+        "v5_calibration_target": 3.59,
+        "vessel_lookup_key": "Non-Standard|Plasma focus|*",
+        "vessel_modularity_rating": 3.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 5.0,
+        "subsystem_complexity_weight": 0.0,
+        "subsystems_triggered": {}
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 0.0,
+        "bottlenecks_triggered": {},
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 5.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "Non-Standard|Dense plasma focus",
+        "achieved_triple_product": 1e+16,
+        "base_score_from_gap": 1.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 7.477,
+        "no_data_floor": false,
+        "required_triple_product": 3e+23,
+        "technical_feasibility_score": 1.0,
+        "triple_product_gap": 30000000.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 0.5,
+        "penalties_triggered": {
+          "pulsed_operation": 0.5
+        },
+        "upper_cf_score": 4.5
+      }
+    },
+    "display_name": "Dense Plasma Focus",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "low",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "N/A",
+      "confinement_concept": "Dense plasma focus",
+      "confinement_family": "Non-Standard",
+      "driver_technology": "Pulsed coaxial electrodes (capacitor bank, 2.7 MA)",
+      "energy_capture": "Direct (charged particle)",
+      "fuel": "p-B11",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "None",
+      "mfe_topology": "N/A",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "Plasma focus",
+      "operation_mode": "Pulsed",
+      "primary_heating": "Electromagnetic pinch (DPF)",
+      "repetition_rate": "High (>10 Hz)",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 8
+    },
+    "name": "Dense Plasma Focus (p-B11)",
+    "scores": {
+      "customization": 5.0,
+      "data_availability": 2.0,
+      "modularity": 3.6667,
+      "plant_complexity": 5.0,
+      "supply_chain": 5.0,
+      "technical_feasibility": 1.0,
+      "upper_cf": 4.5
+    }
+  },
+  {
+    "company": "Intensity Energy",
+    "composite": 2.3338,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "25-heavy-ion-beam-icf",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (steam)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 2,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 4.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/25-heavy-ion-beam-icf/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-T|Liquid metal",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_sparse_capex",
+          "sum": 0.0125,
+          "w_blanket": 0.0125,
+          "w_coils": 0.0,
+          "w_vessel": 0.0
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "IFE|*|Heavy ion beam",
+        "magnet_driver_modularity_rating": 3.0,
+        "min_viable_device_scale": 4.0,
+        "modularity_score": 3.1667,
+        "mvs_lookup_key": "IFE|Heavy ion beam",
+        "percent_mod": 3.6667,
+        "unit_count_estimate": 1,
+        "unit_multiplicity": 1.0,
+        "v5_calibration_target": 3.04,
+        "vessel_lookup_key": "IFE|Heavy ion beam|*",
+        "vessel_modularity_rating": 3.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 1.0,
+        "subsystem_complexity_weight": 4.5,
+        "subsystems_triggered": {
+          "liquid_metal_handling": 0.5,
+          "remote_maintenance": 1.0,
+          "target_factory_high": 2.0,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 3.0,
+        "bottlenecks_triggered": {
+          "lithium6": 1.0,
+          "tritium": 1.0,
+          "vanadium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 2.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "IFE|Heavy ion ICF",
+        "achieved_triple_product": 1000000000000000.0,
+        "base_score_from_gap": 1.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 6.477,
+        "no_data_floor": false,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 1.0,
+        "triple_product_gap": 3000000.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.5,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0,
+          "pulsed_operation": 0.5
+        },
+        "upper_cf_score": 3.5
+      }
+    },
+    "display_name": "Heavy Ion Beam ICF",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "Liquid metal",
+      "confinement_concept": "Heavy ion ICF",
+      "confinement_family": "IFE",
+      "driver_technology": "Linear induction accelerator",
+      "energy_capture": "Thermal (steam)",
+      "fuel": "D-T",
+      "ife_driver": "Heavy ion beam",
+      "laser_approach": "N/A",
+      "magnet_type": "N/A",
+      "mfe_topology": "N/A",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Pulsed",
+      "primary_heating": "Heavy ion beam",
+      "repetition_rate": "~10 Hz",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 1
+    },
+    "name": "Heavy Ion Beam ICF (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 4.0,
+      "modularity": 3.1667,
+      "plant_complexity": 1.0,
+      "supply_chain": 2.0,
+      "technical_feasibility": 1.0,
+      "upper_cf": 3.5
+    }
+  },
+  {
+    "company": "Inertia Enterprises",
+    "composite": 3.0157,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "26-laser-icf-indirect-drive",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (steam)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 2,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 4.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/26-laser-icf-indirect-drive/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-T|Liquid metal",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "capex_weighted",
+          "sum": 0.5187,
+          "w_blanket": 0.0399,
+          "w_coils": 0.4163,
+          "w_vessel": 0.0624
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "IFE|*|DPSSL Laser",
+        "magnet_driver_modularity_rating": 5.0,
+        "min_viable_device_scale": 4.0,
+        "modularity_score": 4.4398,
+        "mvs_lookup_key": "IFE|Laser",
+        "percent_mod": 4.7592,
+        "unit_count_estimate": 1000,
+        "unit_multiplicity": 5.0,
+        "v5_calibration_target": 4.36,
+        "vessel_lookup_key": "IFE|Laser|*",
+        "vessel_modularity_rating": 3.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 1.0,
+        "subsystem_complexity_weight": 4.5,
+        "subsystems_triggered": {
+          "liquid_metal_handling": 0.5,
+          "remote_maintenance": 1.0,
+          "target_factory_high": 2.0,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 3.5,
+        "bottlenecks_triggered": {
+          "kdp": 0.5,
+          "lithium6": 1.0,
+          "tritium": 1.0,
+          "vanadium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 1.5
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "IFE|Laser ICF (indirect drive)",
+        "achieved_triple_product": 5e+21,
+        "base_score_from_gap": 5.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": -0.222,
+        "no_data_floor": false,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 5.0,
+        "triple_product_gap": 0.6
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.5,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0,
+          "pulsed_operation": 0.5
+        },
+        "upper_cf_score": 3.5
+      }
+    },
+    "display_name": "Laser ICF - Indirect Drive",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "Liquid metal",
+      "confinement_concept": "Laser ICF (indirect drive)",
+      "confinement_family": "IFE",
+      "driver_technology": "DPSSL (Thunderwall, 10 kJ x 1000+ beamlines, 10 Hz, 3w UV)",
+      "energy_capture": "Thermal (steam)",
+      "fuel": "D-T",
+      "ife_driver": "Laser",
+      "laser_approach": "Indirect drive",
+      "magnet_type": "N/A",
+      "mfe_topology": "N/A",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Pulsed",
+      "primary_heating": "Laser (indirect drive)",
+      "repetition_rate": "~10 Hz",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 1000
+    },
+    "name": "Laser ICF - Indirect Drive (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 4.0,
+      "modularity": 4.4398,
+      "plant_complexity": 1.0,
+      "supply_chain": 1.5,
+      "technical_feasibility": 5.0,
+      "upper_cf": 3.5
+    }
+  },
+  {
+    "company": "EMC2",
+    "composite": 2.5005,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "low",
+    "concept_id": "27-polywell",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (unspecified)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 7,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 2.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/27-polywell/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": true,
+        "blanket_lookup_key": "D-T|Liquid metal",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_missing_capex",
+          "sum": 0.0,
+          "w_blanket": null,
+          "w_coils": null,
+          "w_vessel": null
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "Non-Standard|*|IEC",
+        "magnet_driver_modularity_rating": 5.0,
+        "min_viable_device_scale": 5.0,
+        "modularity_score": 4.3333,
+        "mvs_lookup_key": "Non-Standard|Electrostatic",
+        "percent_mod": 4.3333,
+        "unit_count_estimate": 6,
+        "unit_multiplicity": 3.0,
+        "v5_calibration_target": 4.28,
+        "vessel_lookup_key": "Non-Standard|Electrostatic|*",
+        "vessel_modularity_rating": 3.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": true,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 2.5,
+        "subsystem_complexity_weight": 2.5,
+        "subsystems_triggered": {
+          "liquid_metal_handling": 0.5,
+          "remote_maintenance": 1.0,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": true,
+        "bottleneck_weight": 3.0,
+        "bottlenecks_triggered": {
+          "lithium6": 1.0,
+          "tritium": 1.0,
+          "vanadium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 2.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "Non-Standard|Polywell",
+        "achieved_triple_product": null,
+        "base_score_from_gap": 1.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": null,
+        "no_data_floor": true,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 1.0,
+        "triple_product_gap": null
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": true,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.0,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0
+        },
+        "upper_cf_score": 4.0
+      }
+    },
+    "display_name": "Polywell",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "low",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "TBD",
+      "confinement_concept": "Polywell",
+      "confinement_family": "Non-Standard",
+      "driver_technology": "Polyhedral magnetic cusp coils + electron beam injection",
+      "energy_capture": "Thermal (unspecified)",
+      "fuel": "D-T",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "Resistive",
+      "mfe_topology": "N/A",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "Electrostatic",
+      "operation_mode": "Steady-state",
+      "primary_heating": "Electrostatic acceleration",
+      "repetition_rate": "N/A",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 6
+    },
+    "name": "Polywell (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 2.0,
+      "modularity": 4.3333,
+      "plant_complexity": 2.5,
+      "supply_chain": 2.0,
+      "technical_feasibility": 1.0,
+      "upper_cf": 4.0
+    }
+  },
+  {
+    "company": "Energy Singularity",
+    "composite": 2.77,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "28-hts-tokamak-full-hts",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (unspecified)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 5,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 3.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/28-hts-tokamak-full-hts/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": true,
+        "blanket_lookup_key": "D-T|Liquid metal",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "capex_weighted",
+          "sum": 0.3421,
+          "w_blanket": 0.0249,
+          "w_coils": 0.2762,
+          "w_vessel": 0.041
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "MFE|HTS (wound)|*",
+        "magnet_driver_modularity_rating": 5.0,
+        "min_viable_device_scale": 3.0,
+        "modularity_score": 3.72,
+        "mvs_lookup_key": "MFE|Tokamak (compact)",
+        "percent_mod": 4.8801,
+        "unit_count_estimate": 16,
+        "unit_multiplicity": 4.0,
+        "v5_calibration_target": 3.5,
+        "vessel_lookup_key": "MFE|Tokamak|compact",
+        "vessel_modularity_rating": 4.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": true,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 1.0,
+        "subsystem_complexity_weight": 5.0,
+        "subsystems_triggered": {
+          "cryoplant_hts": 0.5,
+          "current_drive": 0.5,
+          "disruption_mitigation": 1.0,
+          "liquid_metal_handling": 0.5,
+          "remote_maintenance": 1.0,
+          "rf_aux": 0.5,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": true,
+        "bottleneck_weight": 3.0,
+        "bottlenecks_triggered": {
+          "lithium6": 1.0,
+          "tritium": 1.0,
+          "vanadium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 2.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "MFE|Compact tokamak",
+        "achieved_triple_product": 1.5e+21,
+        "base_score_from_gap": 4.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 0.301,
+        "no_data_floor": false,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 4.0,
+        "triple_product_gap": 2.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": true,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.0,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0
+        },
+        "upper_cf_score": 4.0
+      }
+    },
+    "display_name": "HTS Tokamak - Full HTS",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "TBD",
+      "confinement_concept": "Compact tokamak",
+      "confinement_family": "MFE",
+      "driver_technology": "HTS magnets (REBCO, 25 T)",
+      "energy_capture": "Thermal (unspecified)",
+      "fuel": "D-T",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "HTS (wound)",
+      "mfe_topology": "Tokamak",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Steady-state",
+      "primary_heating": "RF (ICRH)",
+      "repetition_rate": "N/A",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "Compact",
+      "unit_count_estimate": 16
+    },
+    "name": "HTS Tokamak - Full HTS (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 3.0,
+      "modularity": 3.72,
+      "plant_complexity": 1.0,
+      "supply_chain": 2.0,
+      "technical_feasibility": 4.0,
+      "upper_cf": 4.0
+    }
+  },
+  {
+    "company": "Firefly Fusion",
+    "composite": 2.8814,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "29-negative-triangularity-tokamak",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (unspecified)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 1,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 4.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/29-negative-triangularity-tokamak/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": true,
+        "blanket_lookup_key": "D-T|Liquid metal",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_sparse_capex",
+          "sum": 0.0036,
+          "w_blanket": 0.0036,
+          "w_coils": 0.0,
+          "w_vessel": 0.0
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "MFE|HTS (wound)|*",
+        "magnet_driver_modularity_rating": 5.0,
+        "min_viable_device_scale": 3.0,
+        "modularity_score": 3.5,
+        "mvs_lookup_key": "MFE|Tokamak (negative-T)",
+        "percent_mod": 4.0,
+        "unit_count_estimate": 16,
+        "unit_multiplicity": 4.0,
+        "v5_calibration_target": 3.71,
+        "vessel_lookup_key": "MFE|Tokamak|non-compact",
+        "vessel_modularity_rating": 2.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": true,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 1.0,
+        "subsystem_complexity_weight": 5.0,
+        "subsystems_triggered": {
+          "cryoplant_hts": 0.5,
+          "current_drive": 0.5,
+          "disruption_mitigation": 1.0,
+          "liquid_metal_handling": 0.5,
+          "remote_maintenance": 1.0,
+          "rf_aux": 0.5,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": true,
+        "bottleneck_weight": 3.0,
+        "bottlenecks_triggered": {
+          "lithium6": 1.0,
+          "tritium": 1.0,
+          "vanadium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 2.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "MFE|Negative triangularity tokamak",
+        "achieved_triple_product": 1.5e+21,
+        "base_score_from_gap": 4.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 0.301,
+        "no_data_floor": false,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 4.0,
+        "triple_product_gap": 2.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": true,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.0,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0
+        },
+        "upper_cf_score": 4.0
+      }
+    },
+    "display_name": "Negative Triangularity Tokamak",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "TBD",
+      "confinement_concept": "Negative triangularity tokamak",
+      "confinement_family": "MFE",
+      "driver_technology": "HTS magnets + NT plasma shaping",
+      "energy_capture": "Thermal (unspecified)",
+      "fuel": "D-T",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "HTS (wound)",
+      "mfe_topology": "Tokamak",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Quasi-steady",
+      "primary_heating": "RF (ECRH)",
+      "repetition_rate": "N/A",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "Negative triangularity",
+      "unit_count_estimate": 16
+    },
+    "name": "Negative Triangularity Tokamak (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 4.0,
+      "modularity": 3.5,
+      "plant_complexity": 1.0,
+      "supply_chain": 2.0,
+      "technical_feasibility": 4.0,
+      "upper_cf": 4.0
+    }
+  },
+  {
+    "company": "Blue Laser Fusion",
+    "composite": 2.9162,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "31-laser-icf-oec-architecture",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 2.33,
+        "extracted_at": "2026-05-20",
+        "raw_average": 2.0,
+        "sub_factor_a": {
+          "classification": "hybrid",
+          "feature": "energy_capture",
+          "score": 3,
+          "value": "Hybrid (thermal + direct)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 4,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 3.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/31-laser-icf-oec-architecture/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-T|Liquid metal",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_sparse_capex",
+          "sum": 0.1765,
+          "w_blanket": 0.0634,
+          "w_coils": 0.004,
+          "w_vessel": 0.109
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "IFE|*|DPSSL Laser",
+        "magnet_driver_modularity_rating": 5.0,
+        "min_viable_device_scale": 4.0,
+        "modularity_score": 4.3333,
+        "mvs_lookup_key": "IFE|Laser",
+        "percent_mod": 4.3333,
+        "unit_count_estimate": 200,
+        "unit_multiplicity": 5.0,
+        "v5_calibration_target": 4.36,
+        "vessel_lookup_key": "IFE|Laser|*",
+        "vessel_modularity_rating": 3.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 1.0,
+        "subsystem_complexity_weight": 5.0,
+        "subsystems_triggered": {
+          "hybrid_energy": 0.5,
+          "liquid_metal_handling": 0.5,
+          "remote_maintenance": 1.0,
+          "target_factory_high": 2.0,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 3.5,
+        "bottlenecks_triggered": {
+          "kdp": 0.5,
+          "lithium6": 1.0,
+          "tritium": 1.0,
+          "vanadium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 1.5
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "IFE|Laser ICF (direct drive)",
+        "achieved_triple_product": 5e+21,
+        "base_score_from_gap": 5.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": -0.25,
+        "log10_gap": -0.222,
+        "no_data_floor": false,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 4.75,
+        "triple_product_gap": 0.6
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.5,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0,
+          "pulsed_operation": 0.5
+        },
+        "upper_cf_score": 3.5
+      }
+    },
+    "display_name": "Laser ICF - OEC Architecture",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "Liquid metal",
+      "confinement_concept": "Laser ICF (direct drive)",
+      "confinement_family": "IFE",
+      "driver_technology": "CBC fiber laser + OEC, 5 MJ UV",
+      "energy_capture": "Hybrid (thermal + direct)",
+      "fuel": "D-T",
+      "ife_driver": "Laser",
+      "laser_approach": "Direct drive",
+      "magnet_type": "N/A",
+      "mfe_topology": "N/A",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Pulsed",
+      "primary_heating": "Laser (direct drive)",
+      "repetition_rate": "~10 Hz",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 200
+    },
+    "name": "Laser ICF - OEC Architecture (D-T)",
+    "scores": {
+      "customization": 2.33,
+      "data_availability": 3.0,
+      "modularity": 4.3333,
+      "plant_complexity": 1.0,
+      "supply_chain": 1.5,
+      "technical_feasibility": 4.75,
+      "upper_cf": 3.5
+    }
+  },
+  {
+    "company": "GenF Systems",
+    "composite": 2.6879,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "32-laser-icf-french-national",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (unspecified)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 6,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 2.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/32-laser-icf-french-national/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-T|Liquid metal",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "capex_weighted",
+          "sum": 0.4253,
+          "w_blanket": 0.1475,
+          "w_coils": 0.1889,
+          "w_vessel": 0.0889
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "IFE|*|DPSSL Laser",
+        "magnet_driver_modularity_rating": 5.0,
+        "min_viable_device_scale": 4.0,
+        "modularity_score": 4.3955,
+        "mvs_lookup_key": "IFE|Laser",
+        "percent_mod": 4.5822,
+        "unit_count_estimate": 200,
+        "unit_multiplicity": 5.0,
+        "v5_calibration_target": 4.36,
+        "vessel_lookup_key": "IFE|Laser|*",
+        "vessel_modularity_rating": 3.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 1.0,
+        "subsystem_complexity_weight": 4.5,
+        "subsystems_triggered": {
+          "liquid_metal_handling": 0.5,
+          "remote_maintenance": 1.0,
+          "target_factory_high": 2.0,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 3.5,
+        "bottlenecks_triggered": {
+          "kdp": 0.5,
+          "lithium6": 1.0,
+          "tritium": 1.0,
+          "vanadium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 1.5
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "IFE|Laser ICF (direct drive)",
+        "achieved_triple_product": 5e+21,
+        "base_score_from_gap": 5.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": -0.25,
+        "log10_gap": -0.222,
+        "no_data_floor": false,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 4.75,
+        "triple_product_gap": 0.6
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.5,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0,
+          "pulsed_operation": 0.5
+        },
+        "upper_cf_score": 3.5
+      }
+    },
+    "display_name": "Laser ICF - French National",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "Liquid metal",
+      "confinement_concept": "Laser ICF (direct drive)",
+      "confinement_family": "IFE",
+      "driver_technology": "Diode-pumped solid-state laser (DPSSL)",
+      "energy_capture": "Thermal (unspecified)",
+      "fuel": "D-T",
+      "ife_driver": "Laser",
+      "laser_approach": "Direct drive",
+      "magnet_type": "N/A",
+      "mfe_topology": "N/A",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Pulsed",
+      "primary_heating": "Laser (direct drive)",
+      "repetition_rate": "~10 Hz",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 200
+    },
+    "name": "Laser ICF - French National (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 2.0,
+      "modularity": 4.3955,
+      "plant_complexity": 1.0,
+      "supply_chain": 1.5,
+      "technical_feasibility": 4.75,
+      "upper_cf": 3.5
+    }
+  },
+  {
+    "company": "Neo Fusion",
+    "composite": 2.5243,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "33-state-backed-tokamak-best",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (unspecified)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 4,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 3.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/33-state-backed-tokamak-best/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": true,
+        "blanket_lookup_key": "D-T|Liquid metal",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_sparse_capex",
+          "sum": 0.0112,
+          "w_blanket": 0.0112,
+          "w_coils": 0.0,
+          "w_vessel": 0.0
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "MFE|LTS+HTS|*",
+        "magnet_driver_modularity_rating": 2.0,
+        "min_viable_device_scale": 2.0,
+        "modularity_score": 2.0,
+        "mvs_lookup_key": "MFE|Tokamak (non-compact)",
+        "percent_mod": 3.0,
+        "unit_count_estimate": 1,
+        "unit_multiplicity": 1.0,
+        "v5_calibration_target": 1.91,
+        "vessel_lookup_key": "MFE|Tokamak|non-compact",
+        "vessel_modularity_rating": 2.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": true,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 1.0,
+        "subsystem_complexity_weight": 6.0,
+        "subsystems_triggered": {
+          "cryoplant_lts": 1.0,
+          "current_drive": 0.5,
+          "disruption_mitigation": 1.0,
+          "high_power_aux": 1.0,
+          "liquid_metal_handling": 0.5,
+          "remote_maintenance": 1.0,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": true,
+        "bottleneck_weight": 3.0,
+        "bottlenecks_triggered": {
+          "lithium6": 1.0,
+          "tritium": 1.0,
+          "vanadium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 2.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "MFE|Tokamak",
+        "achieved_triple_product": 1.5e+21,
+        "base_score_from_gap": 4.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 0.301,
+        "no_data_floor": false,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 4.0,
+        "triple_product_gap": 2.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": true,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.0,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0
+        },
+        "upper_cf_score": 4.0
+      }
+    },
+    "display_name": "State-Backed Tokamak - BEST",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "TBD",
+      "confinement_concept": "Tokamak",
+      "confinement_family": "MFE",
+      "driver_technology": "LTS+HTS magnets (Nb3Sn/YBCO, 6.15T) + multi-method H&CD (50 MW)",
+      "energy_capture": "Thermal (unspecified)",
+      "fuel": "D-T",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "LTS+HTS",
+      "mfe_topology": "Tokamak",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Quasi-steady",
+      "primary_heating": "RF + NBI",
+      "repetition_rate": "N/A",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "Standard",
+      "unit_count_estimate": 1
+    },
+    "name": "State-Backed Tokamak - BEST (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 3.0,
+      "modularity": 2.0,
+      "plant_complexity": 1.0,
+      "supply_chain": 2.0,
+      "technical_feasibility": 4.0,
+      "upper_cf": 4.0
+    }
+  },
+  {
+    "company": "Deutelio",
+    "composite": 2.9638,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "low",
+    "concept_id": "35-polomac-magnetic-confinement",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 2.33,
+        "extracted_at": "2026-05-20",
+        "raw_average": 2.0,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (unspecified)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 2,
+          "value": "D-D"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 9,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 2.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/35-polomac-magnetic-confinement/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-D|*",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_missing_capex",
+          "sum": 0.0,
+          "w_blanket": null,
+          "w_coils": null,
+          "w_vessel": null
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "MFE|Resistive|*",
+        "magnet_driver_modularity_rating": 3.0,
+        "min_viable_device_scale": 3.0,
+        "modularity_score": 2.9167,
+        "mvs_lookup_key": "MFE|Levitated dipole",
+        "percent_mod": 3.6667,
+        "unit_count_estimate": 4,
+        "unit_multiplicity": 2.0,
+        "v5_calibration_target": 2.84,
+        "vessel_lookup_key": "MFE|Dipole|*",
+        "vessel_modularity_rating": 3.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 3.5,
+        "subsystem_complexity_weight": 1.5,
+        "subsystems_triggered": {
+          "levitation_stabilization": 0.5,
+          "remote_maintenance": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 0.0,
+        "bottlenecks_triggered": {},
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 5.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "MFE|Levitated dipole",
+        "achieved_triple_product": 1e+17,
+        "base_score_from_gap": 1.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 6.477,
+        "no_data_floor": false,
+        "required_triple_product": 3e+23,
+        "technical_feasibility_score": 1.0,
+        "triple_product_gap": 3000000.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.0,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0
+        },
+        "upper_cf_score": 4.0
+      }
+    },
+    "display_name": "PoloMac Magnetic Confinement",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "low",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "N/A",
+      "confinement_concept": "Levitated dipole",
+      "confinement_family": "MFE",
+      "driver_technology": "Internal dipole coil with magnetic tunnel supports",
+      "energy_capture": "Thermal (unspecified)",
+      "fuel": "D-D",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "Resistive",
+      "mfe_topology": "Dipole",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Steady-state",
+      "primary_heating": "Unknown",
+      "repetition_rate": "N/A",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 4
+    },
+    "name": "PoloMac Magnetic Confinement",
+    "scores": {
+      "customization": 2.33,
+      "data_availability": 2.0,
+      "modularity": 2.9167,
+      "plant_complexity": 3.5,
+      "supply_chain": 5.0,
+      "technical_feasibility": 1.0,
+      "upper_cf": 4.0
+    }
+  },
+  {
+    "company": "Helical Fusion",
+    "composite": 2.5987,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "medium",
+    "concept_id": "36-helical-coil-stellarator",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (sCO2)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 1,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 4.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/36-helical-coil-stellarator/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-T|Liquid metal",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "capex_weighted",
+          "sum": 0.7282,
+          "w_blanket": 0.0407,
+          "w_coils": 0.668,
+          "w_vessel": 0.0195
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "MFE|HTS (continuous helical)|*",
+        "magnet_driver_modularity_rating": 3.0,
+        "min_viable_device_scale": 2.0,
+        "modularity_score": 2.0212,
+        "mvs_lookup_key": "MFE|Stellarator",
+        "percent_mod": 3.0849,
+        "unit_count_estimate": 1,
+        "unit_multiplicity": 1.0,
+        "v5_calibration_target": 2.03,
+        "vessel_lookup_key": "MFE|Stellarator|*",
+        "vessel_modularity_rating": 2.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 1.5,
+        "subsystem_complexity_weight": 3.5,
+        "subsystems_triggered": {
+          "cryoplant_hts": 0.5,
+          "liquid_metal_handling": 0.5,
+          "remote_maintenance": 1.0,
+          "rf_aux": 0.5,
+          "tritium_plant": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 3.0,
+        "bottlenecks_triggered": {
+          "lithium6": 1.0,
+          "tritium": 1.0,
+          "vanadium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 2.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "MFE|Helical coil stellarator",
+        "achieved_triple_product": 1e+20,
+        "base_score_from_gap": 3.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 1.477,
+        "no_data_floor": false,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 3.0,
+        "triple_product_gap": 30.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.0,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0
+        },
+        "upper_cf_score": 4.0
+      }
+    },
+    "display_name": "Helical Coil Stellarator",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "medium",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "Liquid metal",
+      "confinement_concept": "Helical coil stellarator",
+      "confinement_family": "MFE",
+      "driver_technology": "Continuous helical HTS coils (REBCO WISE conductor, 8 T) + 250 GHz CW gyrotrons",
+      "energy_capture": "Thermal (sCO2)",
+      "fuel": "D-T",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "HTS (3D stellarator)",
+      "mfe_topology": "Stellarator",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Steady-state",
+      "primary_heating": "RF (ECRH)",
+      "repetition_rate": "N/A",
+      "stellarator_type": "Helical coil",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 1
+    },
+    "name": "Helical Coil Stellarator (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 4.0,
+      "modularity": 2.0212,
+      "plant_complexity": 1.5,
+      "supply_chain": 2.0,
+      "technical_feasibility": 3.0,
+      "upper_cf": 4.0
+    }
+  },
+  {
+    "company": "NearStar Fusion",
+    "composite": 3.0471,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "low",
+    "concept_id": "37-magnetized-target-inertial-fusion-mtif",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 2.33,
+        "extracted_at": "2026-05-20",
+        "raw_average": 2.0,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "Thermal (unspecified)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 2,
+          "value": "D-D"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 6,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 2.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/37-magnetized-target-inertial-fusion-mtif/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": true,
+        "blanket_lookup_key": "D-D|*",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_missing_capex",
+          "sum": 0.0,
+          "w_blanket": null,
+          "w_coils": null,
+          "w_vessel": null
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "MIF|*|Railgun",
+        "magnet_driver_modularity_rating": 5.0,
+        "min_viable_device_scale": 5.0,
+        "modularity_score": 5.0,
+        "mvs_lookup_key": "MIF|Pneumatic compression",
+        "percent_mod": 5.0,
+        "unit_count_estimate": 100,
+        "unit_multiplicity": 5.0,
+        "v5_calibration_target": 5.0,
+        "vessel_lookup_key": "MIF|Pneumatic compression|D-D",
+        "vessel_modularity_rating": 5.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": true,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 2.5,
+        "subsystem_complexity_weight": 2.5,
+        "subsystems_triggered": {
+          "liquid_metal_handling": 0.5,
+          "pulsed_power_thermal": 1.0,
+          "remote_maintenance": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": true,
+        "bottleneck_weight": 0.0,
+        "bottlenecks_triggered": {},
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 5.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "MIF|Magnetized target fusion",
+        "achieved_triple_product": 1e+18,
+        "base_score_from_gap": 1.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 5.477,
+        "no_data_floor": false,
+        "required_triple_product": 3e+23,
+        "technical_feasibility_score": 1.0,
+        "triple_product_gap": 300000.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": true,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.5,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0,
+          "pulsed_operation": 0.5
+        },
+        "upper_cf_score": 3.5
+      }
+    },
+    "display_name": "Magnetized Target Inertial Fusion - MTIF",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "low",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "TBD",
+      "confinement_concept": "Magnetized target fusion",
+      "confinement_family": "MIF",
+      "driver_technology": "Plasma armature railgun (~10 km/s into magnetized D-D targets)",
+      "energy_capture": "Thermal (unspecified)",
+      "fuel": "D-D",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "None",
+      "mfe_topology": "N/A",
+      "mif_method": "Magnetized target",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Pulsed",
+      "primary_heating": "Mechanical compression",
+      "repetition_rate": "Unknown",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 100
+    },
+    "name": "Magnetized Target Inertial Fusion - MTIF (D-D)",
+    "scores": {
+      "customization": 2.33,
+      "data_availability": 2.0,
+      "modularity": 5.0,
+      "plant_complexity": 2.5,
+      "supply_chain": 5.0,
+      "technical_feasibility": 1.0,
+      "upper_cf": 3.5
+    }
+  },
+  {
+    "company": "SHINE Technologies",
+    "composite": 2.8933,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "low",
+    "concept_id": "38-particle-accelerator-driven-fusion",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 1.67,
+        "extracted_at": "2026-05-20",
+        "raw_average": 1.5,
+        "sub_factor_a": {
+          "classification": "thermal",
+          "feature": "energy_capture",
+          "score": 2,
+          "value": "N/A"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 1,
+          "value": "D-T"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 4,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 3.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/38-particle-accelerator-driven-fusion/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "D-T|N/A (non-power)",
+        "blanket_modularity_rating": 4.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_missing_capex",
+          "sum": 0.0,
+          "w_blanket": null,
+          "w_coils": null,
+          "w_vessel": null
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "Non-Standard|*|Particle accelerator",
+        "magnet_driver_modularity_rating": 3.0,
+        "min_viable_device_scale": 3.0,
+        "modularity_score": 2.5833,
+        "mvs_lookup_key": "Non-Standard|Particle accelerator",
+        "percent_mod": 3.3333,
+        "unit_count_estimate": 1,
+        "unit_multiplicity": 1.0,
+        "v5_calibration_target": 2.54,
+        "vessel_lookup_key": "Non-Standard|Electrostatic|*",
+        "vessel_modularity_rating": 3.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 4.0,
+        "subsystem_complexity_weight": 1.0,
+        "subsystems_triggered": {
+          "remote_maintenance": 1.0
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 1.0,
+        "bottlenecks_triggered": {
+          "tritium": 1.0
+        },
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 4.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "Non-Standard|Beam-target fusion",
+        "achieved_triple_product": null,
+        "base_score_from_gap": 1.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": null,
+        "no_data_floor": true,
+        "required_triple_product": 3e+21,
+        "technical_feasibility_score": 1.0,
+        "triple_product_gap": null
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 1.0,
+        "penalties_triggered": {
+          "neutronic_fuel": 1.0
+        },
+        "upper_cf_score": 4.0
+      }
+    },
+    "display_name": "Particle Accelerator-Driven Fusion",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "low",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "N/A (non-power)",
+      "confinement_concept": "Beam-target fusion",
+      "confinement_family": "Non-Standard",
+      "driver_technology": "High-current particle accelerator (beam-on-target neutron source)",
+      "energy_capture": "N/A",
+      "fuel": "D-T",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "None",
+      "mfe_topology": "N/A",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "Electrostatic",
+      "operation_mode": "Steady-state",
+      "primary_heating": "Electrostatic acceleration",
+      "repetition_rate": "N/A",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "N/A",
+      "unit_count_estimate": 1
+    },
+    "name": "Particle Accelerator-Driven Fusion (D-T)",
+    "scores": {
+      "customization": 1.67,
+      "data_availability": 3.0,
+      "modularity": 2.5833,
+      "plant_complexity": 4.0,
+      "supply_chain": 4.0,
+      "technical_feasibility": 1.0,
+      "upper_cf": 4.0
+    }
+  },
+  {
+    "company": "ENN Energy",
+    "composite": 3.7381,
+    "composite_axes_included": [
+      "customization",
+      "data_availability",
+      "modularity",
+      "plant_complexity",
+      "supply_chain",
+      "technical_feasibility",
+      "upper_cf"
+    ],
+    "composite_evidence": "low",
+    "concept_id": "39-spherical-tokamak-cs-free-p-b11",
+    "diagnostics": {
+      "customization_diagnostics": {
+        "customization_score": 5.0,
+        "extracted_at": "2026-05-20",
+        "raw_average": 4.0,
+        "sub_factor_a": {
+          "classification": "direct_conversion",
+          "feature": "energy_capture",
+          "score": 4,
+          "value": "Direct (charged particle)"
+        },
+        "sub_factor_b": {
+          "feature": "fuel",
+          "score": 4,
+          "value": "p-B11"
+        }
+      },
+      "data_availability_diagnostics": {
+        "blocking_count": 8,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 2.0,
+        "extracted_at": "2026-05-20",
+        "gap_report_path": "exploration/concept_analysis/analyses/39-spherical-tokamak-cs-free-p-b11/gap_report.md",
+        "report_exists": true
+      },
+      "modularity_diagnostics": {
+        "blanket_assumed": false,
+        "blanket_lookup_key": "p-B11|*",
+        "blanket_modularity_rating": 5.0,
+        "capex_shares_used": {
+          "method": "equal_weight_fallback_missing_capex",
+          "sum": 0.0,
+          "w_blanket": null,
+          "w_coils": null,
+          "w_vessel": null
+        },
+        "extracted_at": "2026-05-20",
+        "magnet_driver_lookup_key": "MFE|HTS (wound)|*",
+        "magnet_driver_modularity_rating": 5.0,
+        "min_viable_device_scale": 3.0,
+        "modularity_score": 3.6667,
+        "mvs_lookup_key": "MFE|Tokamak (spherical)",
+        "percent_mod": 4.6667,
+        "unit_count_estimate": 14,
+        "unit_multiplicity": 4.0,
+        "v5_calibration_target": 3.63,
+        "vessel_lookup_key": "MFE|Tokamak|spherical",
+        "vessel_modularity_rating": 4.0
+      },
+      "plant_complexity_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "plant_complexity_score": 2.5,
+        "subsystem_complexity_weight": 2.5,
+        "subsystems_triggered": {
+          "cryoplant_hts": 0.5,
+          "current_drive": 0.5,
+          "disruption_mitigation": 1.0,
+          "rf_aux": 0.5
+        }
+      },
+      "supply_chain_diagnostics": {
+        "blanket_assumed": false,
+        "bottleneck_weight": 0.0,
+        "bottlenecks_triggered": {},
+        "extracted_at": "2026-05-20",
+        "supply_chain_score": 5.0
+      },
+      "technical_feasibility_diagnostics": {
+        "achieved_lookup_key": "MFE|Spherical tokamak",
+        "achieved_triple_product": 1.5e+21,
+        "base_score_from_gap": 3.0,
+        "extracted_at": "2026-05-20",
+        "laser_approach_modifier": 0.0,
+        "log10_gap": 2.301,
+        "no_data_floor": false,
+        "required_triple_product": 3e+23,
+        "technical_feasibility_score": 3.0,
+        "triple_product_gap": 200.0
+      },
+      "upper_cf_diagnostics": {
+        "blanket_assumed": false,
+        "extracted_at": "2026-05-20",
+        "operational_penalty_weight": 0.0,
+        "penalties_triggered": {},
+        "upper_cf_score": 5.0
+      }
+    },
+    "display_name": "Spherical Tokamak - CS-free p-B11",
+    "evidence": {
+      "customization": "high",
+      "data_availability": "high",
+      "modularity": "low",
+      "plant_complexity": "high",
+      "supply_chain": "high",
+      "technical_feasibility": "high",
+      "upper_cf": "high"
+    },
+    "features": {
+      "blanket_config": "N/A (no tritium)",
+      "confinement_concept": "Spherical tokamak",
+      "confinement_family": "MFE",
+      "driver_technology": "CS-free spherical tokamak with ECRH non-inductive current drive (EXL-50U / EHL-2)",
+      "energy_capture": "Direct (charged particle)",
+      "fuel": "p-B11",
+      "ife_driver": "N/A",
+      "laser_approach": "N/A",
+      "magnet_type": "HTS (wound)",
+      "mfe_topology": "Tokamak",
+      "mif_method": "N/A",
+      "non_standard_mechanism": "N/A",
+      "operation_mode": "Quasi-steady",
+      "primary_heating": "RF (ECRH)",
+      "repetition_rate": "N/A",
+      "stellarator_type": "N/A",
+      "tokamak_shape": "Spherical",
+      "unit_count_estimate": 14
+    },
+    "name": "Spherical Tokamak - CS-free p-B11 (p-B11)",
+    "scores": {
+      "customization": 5.0,
+      "data_availability": 2.0,
+      "modularity": 3.6667,
+      "plant_complexity": 2.5,
+      "supply_chain": 5.0,
+      "technical_feasibility": 3.0,
+      "upper_cf": 5.0
+    }
+  }
+]
