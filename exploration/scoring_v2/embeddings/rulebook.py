@@ -981,7 +981,7 @@ def _plant_complexity_score(subsystem_complexity_weight: float) -> float:
 # =============================================================================
 # Technical Feasibility axis (triple-product gap, log-scale bucket)
 #
-#   gap = required_triple_product[fuel] / achieved_triple_product[family|concept]
+#   gap = required_triple_product[fuel][family] / achieved_triple_product[family|concept]
 #   score = bucket(log10(gap))           # 5-tier ladder
 #         + laser_approach_modifier      # IFE concepts only (Direct -0.25 etc.)
 #
@@ -1003,8 +1003,45 @@ _TF_FLOOR_SCORE = 1.0   # > 5 orders of magnitude OR no data
 _TF_REQUIRED_FUELS = {"D-T", "D-D", "D-He3", "p-B11", "Unknown"}
 
 
+def _coerce_required(required: dict) -> dict[str, dict[str, float]]:
+    """Normalize required_triple_product to {fuel: {family_or_'*': float}}.
+
+    A fuel maps to either a scalar (one breakeven target for every
+    confinement family) or a dict keyed by confinement family. The dict
+    form must carry a '*' default; family-specific keys override it.
+    Family keying exists for p-B11, whose effective breakeven target
+    depends on whether steady-state alpha channeling is realistic in the
+    confinement regime (see lookup_triple_product.yaml).
+    """
+    out: dict[str, dict[str, float]] = {}
+    for fuel, val in required.items():
+        if isinstance(val, dict):
+            if "*" not in val:
+                raise ValueError(
+                    f"required_triple_product[{fuel!r}] dict missing '*' default"
+                )
+            out[fuel] = {k: float(v) for k, v in val.items()}
+        else:
+            out[fuel] = {"*": float(val)}
+    return out
+
+
+def _required_for(required: dict, fuel: str, confinement_family: str) -> float:
+    """Required triple product for a (fuel, confinement family) pair.
+
+    ``required`` must be the normalized form from `_coerce_required`.
+    Falls back to the fuel's '*' default when the family has no entry.
+    """
+    by_family = required[fuel]
+    return by_family.get(confinement_family or "*", by_family["*"])
+
+
 def _load_tf_tables(weights_yaml: dict) -> tuple[dict, dict]:
-    """Load (required_triple_product, achieved_triple_product) from default.yaml."""
+    """Load (required_triple_product, achieved_triple_product) from default.yaml.
+
+    ``required`` is normalized to {fuel: {family_or_'*': float}};
+    ``achieved`` is {family|concept: float}.
+    """
     tf = weights_yaml.get("technical_feasibility", {})
     required = tf.get("required_triple_product")
     achieved = tf.get("achieved_triple_product")
@@ -1018,7 +1055,7 @@ def _load_tf_tables(weights_yaml: dict) -> tuple[dict, dict]:
         raise ValueError(
             f"technical_feasibility.required_triple_product missing fuels: {missing}"
         )
-    return ({k: float(v) for k, v in required.items()},
+    return (_coerce_required(required),
             {k: float(v) for k, v in achieved.items()})
 
 
@@ -1052,7 +1089,7 @@ def _triple_product_gap(
     a = achieved.get(key)
     if a is None or a <= 0:
         return None
-    return required[fuel] / a
+    return _required_for(required, fuel, confinement_family) / a
 
 
 @embedding(

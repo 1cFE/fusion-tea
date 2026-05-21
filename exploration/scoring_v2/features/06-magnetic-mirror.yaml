@@ -143,16 +143,16 @@ supply_chain_diagnostics:
   blanket_assumed: false
   extracted_at: '2026-05-20'
 technical_feasibility_diagnostics:
-  required_triple_product: 3.0e+23
+  required_triple_product: 5.0e+24
   achieved_triple_product: 1.0e+18
   achieved_lookup_key: MFE|Mirror
-  triple_product_gap: 300000.0
-  log10_gap: 5.477
+  triple_product_gap: 5000000.0
+  log10_gap: 6.699
   base_score_from_gap: 1.0
   laser_approach_modifier: 0.0
   technical_feasibility_score: 1.0
   no_data_floor: false
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-05-21'
 tokamak_shape:
   value: N/A
   provenance: taxonomy

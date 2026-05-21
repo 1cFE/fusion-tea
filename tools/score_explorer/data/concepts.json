@@ -443,7 +443,7 @@
   },
   {
     "company": "hb11",
-    "composite": 3.5005,
+    "composite": 3.429,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -525,14 +525,14 @@
       "technical_feasibility_diagnostics": {
         "achieved_lookup_key": "IFE|Laser ICF (fast ignition)",
         "achieved_triple_product": 1e+20,
-        "base_score_from_gap": 2.0,
-        "extracted_at": "2026-05-20",
+        "base_score_from_gap": 1.0,
+        "extracted_at": "2026-05-21",
         "laser_approach_modifier": -0.5,
-        "log10_gap": 3.477,
+        "log10_gap": 5.146,
         "no_data_floor": false,
-        "required_triple_product": 3e+23,
-        "technical_feasibility_score": 1.5,
-        "triple_product_gap": 3000.0
+        "required_triple_product": 1.4e+25,
+        "technical_feasibility_score": 1.0,
+        "triple_product_gap": 140000.0
       },
       "upper_cf_diagnostics": {
         "blanket_assumed": false,
@@ -581,7 +581,7 @@
       "modularity": 4.3333,
       "plant_complexity": 3.0,
       "supply_chain": 4.5,
-      "technical_feasibility": 1.5,
+      "technical_feasibility": 1.0,
       "upper_cf": 4.5
     }
   },
@@ -818,13 +818,13 @@
         "achieved_lookup_key": "MFE|Mirror",
         "achieved_triple_product": 1e+18,
         "base_score_from_gap": 1.0,
-        "extracted_at": "2026-05-20",
+        "extracted_at": "2026-05-21",
         "laser_approach_modifier": 0.0,
-        "log10_gap": 5.477,
+        "log10_gap": 6.699,
         "no_data_floor": false,
-        "required_triple_product": 3e+23,
+        "required_triple_product": 5e+24,
         "technical_feasibility_score": 1.0,
-        "triple_product_gap": 300000.0
+        "triple_product_gap": 5000000.0
       },
       "upper_cf_diagnostics": {
         "blanket_assumed": false,
@@ -2673,7 +2673,7 @@
   },
   {
     "company": "TAE Technologies",
-    "composite": 3.6195,
+    "composite": 3.4767,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -2753,14 +2753,14 @@
       "technical_feasibility_diagnostics": {
         "achieved_lookup_key": "MFE|FRC",
         "achieved_triple_product": 1e+19,
-        "base_score_from_gap": 2.0,
-        "extracted_at": "2026-05-20",
+        "base_score_from_gap": 1.0,
+        "extracted_at": "2026-05-21",
         "laser_approach_modifier": 0.0,
-        "log10_gap": 4.477,
+        "log10_gap": 5.699,
         "no_data_floor": false,
-        "required_triple_product": 3e+23,
-        "technical_feasibility_score": 2.0,
-        "triple_product_gap": 30000.0
+        "required_triple_product": 5e+24,
+        "technical_feasibility_score": 1.0,
+        "triple_product_gap": 500000.0
       },
       "upper_cf_diagnostics": {
         "blanket_assumed": false,
@@ -2807,7 +2807,7 @@
       "modularity": 3.6667,
       "plant_complexity": 4.0,
       "supply_chain": 5.0,
-      "technical_feasibility": 2.0,
+      "technical_feasibility": 1.0,
       "upper_cf": 5.0
     }
   },
@@ -3643,13 +3643,13 @@
         "achieved_lookup_key": "IFE|Laser ICF (ultrashort pulse)",
         "achieved_triple_product": 1e+18,
         "base_score_from_gap": 1.0,
-        "extracted_at": "2026-05-20",
+        "extracted_at": "2026-05-21",
         "laser_approach_modifier": -0.5,
-        "log10_gap": 5.477,
+        "log10_gap": 7.146,
         "no_data_floor": false,
-        "required_triple_product": 3e+23,
+        "required_triple_product": 1.4e+25,
         "technical_feasibility_score": 1.0,
-        "triple_product_gap": 300000.0
+        "triple_product_gap": 14000000.0
       },
       "upper_cf_diagnostics": {
         "blanket_assumed": false,
@@ -3783,13 +3783,13 @@
         "achieved_lookup_key": "Non-Standard|Dense plasma focus",
         "achieved_triple_product": 1e+16,
         "base_score_from_gap": 1.0,
-        "extracted_at": "2026-05-20",
+        "extracted_at": "2026-05-21",
         "laser_approach_modifier": 0.0,
-        "log10_gap": 7.477,
+        "log10_gap": 9.146,
         "no_data_floor": false,
-        "required_triple_product": 3e+23,
+        "required_triple_product": 1.4e+25,
         "technical_feasibility_score": 1.0,
-        "triple_product_gap": 30000000.0
+        "triple_product_gap": 1400000000.0
       },
       "upper_cf_diagnostics": {
         "blanket_assumed": false,
@@ -5634,7 +5634,7 @@
   },
   {
     "company": "ENN Energy",
-    "composite": 3.7381,
+    "composite": 3.5952,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -5717,14 +5717,14 @@
       "technical_feasibility_diagnostics": {
         "achieved_lookup_key": "MFE|Spherical tokamak",
         "achieved_triple_product": 1.5e+21,
-        "base_score_from_gap": 3.0,
-        "extracted_at": "2026-05-20",
+        "base_score_from_gap": 2.0,
+        "extracted_at": "2026-05-21",
         "laser_approach_modifier": 0.0,
-        "log10_gap": 2.301,
+        "log10_gap": 3.523,
         "no_data_floor": false,
-        "required_triple_product": 3e+23,
-        "technical_feasibility_score": 3.0,
-        "triple_product_gap": 200.0
+        "required_triple_product": 5e+24,
+        "technical_feasibility_score": 2.0,
+        "triple_product_gap": 3333.3333
       },
       "upper_cf_diagnostics": {
         "blanket_assumed": false,
@@ -5771,7 +5771,7 @@
       "modularity": 3.6667,
       "plant_complexity": 2.5,
       "supply_chain": 5.0,
-      "technical_feasibility": 3.0,
+      "technical_feasibility": 2.0,
       "upper_cf": 5.0
     }
   }
