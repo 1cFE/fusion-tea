@@ -1,0 +1,122 @@
+# Plant complexity subsystem metadata.
+#
+# Numerical severity weights live in weights/default.yaml under
+# plant_complexity.subsystem_complexity_weights. Authoritative trigger
+# logic in embeddings/rulebook.py:_compute_triggered_pc_subsystems().
+# This file is the documentation tag.
+
+target_factory_high:
+  tier: Critical
+  trigger: |
+    Target-using concept AND repetition_rate in
+    {~1 Hz, ~10 Hz, High (>10 Hz), kHz}.
+  features_used: [confinement_family, ife_driver, mif_method, repetition_rate]
+  rationale: |
+    A 1-10 Hz target-using fusion plant needs ~86,000-500,000 precision
+    targets/day. No commercial precedent. Target factory + injection +
+    chamber recovery between shots is a complete second plant alongside
+    the driver. Critical tier (2.0) — single-handedly the biggest
+    architecture rewrite of any plant complexity flag.
+
+target_factory_low:
+  tier: Moderate
+  trigger: "Target-using concept AND repetition_rate = Sub-Hz"
+  rationale: |
+    Sub-Hz target-using concepts (NIF-class, First Light burst-mode)
+    can produce targets in batches; significantly smaller industrial
+    burden than a 1-10 Hz continuous factory.
+
+tritium_plant:
+  tier: Severe
+  trigger: "fuel = D-T AND blanket_config != N/A (non-power)"
+  rationale: |
+    Tritium handling facility — fuel reprocessing, isotope separation,
+    storage, accountancy. SHINE (blanket_config = N/A (non-power))
+    buys tritium externally rather than breeding, so doesn't need this.
+
+remote_maintenance:
+  tier: Severe
+  trigger: "fuel in {D-T, D-D}"
+  rationale: |
+    Neutron-activated components require remote handling for all
+    maintenance operations. Adds a complete subsystem (hot cells, tele-
+    robotics, transport corridors).
+
+cryoplant_lts:
+  tier: Severe
+  trigger: 'magnet_type in {LTS, LTS+HTS} (substring "LTS" in magnet_type)'
+  rationale: |
+    Low-temperature superconductor cryoplants need 4 K refrigeration
+    (helium dilution). Substantially harder than HTS cryoplants
+    (20-77 K). BEST, ITER-class.
+
+cryoplant_hts:
+  tier: Moderate
+  trigger: "magnet_type starts with HTS (and no LTS substring)"
+  rationale: |
+    HTS-only cryoplants (REBCO at 20-77 K) — simpler than LTS but
+    still a substantial standalone subsystem with controls.
+
+high_power_aux:
+  tier: Severe
+  trigger: "primary_heating in {NBI, RF + NBI}"
+  rationale: |
+    NBI lines are MW-scale standalone facilities with ion sources,
+    accelerators, neutralizers, and beam dumps. Two-system NBI+RF
+    plants pay both costs.
+
+rf_aux:
+  tier: Moderate
+  trigger: "primary_heating in {RF (ECRH), RF (ICRH)}"
+  rationale: |
+    Gyrotron / ICRH plant — substantial but smaller than NBI. Includes
+    transmission lines and antennae but not the heavy beam-dump
+    infrastructure of NBI.
+
+pulsed_power_thermal:
+  tier: Severe
+  trigger: "(MIF OR Z-pinch OR DPF) AND thermal-cycle energy capture"
+  rationale: |
+    Pulsed-power architectures with thermal storage need an intermediate
+    coolant buffer to convert pulsed thermal energy into a steady
+    Rankine cycle. Adds a complete thermal-energy-storage facility.
+
+disruption_mitigation:
+  tier: Severe
+  trigger: "confinement_concept in tokamak family OR Z-pinch (sheared-flow)"
+  rationale: |
+    Massive gas injection, shattered pellet injection, runaway-electron
+    mitigation. Tokamaks must address disruptions as a categorical
+    safety constraint; sheared-flow Z-pinch shares the burden.
+
+current_drive:
+  tier: Moderate
+  trigger: "confinement_concept in tokamak family AND operation_mode in {Steady-state, Quasi-steady}"
+  rationale: |
+    Non-inductive current drive (LH, EC, NBCD) for steady-state
+    tokamaks. Adds a non-trivial RF/beam injection system on top of
+    aux heating.
+
+liquid_metal_handling:
+  tier: Moderate
+  trigger: "blanket_config = Liquid metal (after TBD-defaults)"
+  rationale: |
+    Lithium-bearing molten-metal loops require glove-box-class
+    handling, V-alloy structural compatibility, and corrosion
+    monitoring. Modest extra subsystem vs static blankets.
+
+levitation_stabilization:
+  tier: Moderate
+  trigger: "confinement_concept in {Levitated dipole, Levitated dipole (orbital)}"
+  rationale: |
+    Active magnetic levitation control for the floating ring magnet.
+    Distinctive to levitated-dipole concepts (OpenStar, Zephyr).
+
+hybrid_energy:
+  tier: Moderate
+  trigger: "energy_capture = Hybrid (thermal + direct)"
+  rationale: |
+    Dual-channel power conversion (thermal cycle + direct conversion)
+    adds genuine complexity above a baseline thermal cycle. Pure
+    thermal-only is NOT penalized (baseline plant cost). TBD is also
+    not penalized (gap captured by Data Availability axis).

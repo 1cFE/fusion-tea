@@ -101,6 +101,15 @@ operation_mode:
   provenance: taxonomy
   confidence: high
   extracted_at: '2026-05-20'
+plant_complexity_diagnostics:
+  subsystems_triggered:
+    cryoplant_hts: 0.5
+    levitation_stabilization: 0.5
+    rf_aux: 0.5
+  subsystem_complexity_weight: 1.5
+  plant_complexity_score: 3.5
+  blanket_assumed: false
+  extracted_at: '2026-05-20'
 primary_heating:
   value: RF (ECRH)
   provenance: taxonomy
@@ -122,6 +131,17 @@ supply_chain_diagnostics:
   bottleneck_weight: 3.0
   supply_chain_score: 2.0
   blanket_assumed: false
+  extracted_at: '2026-05-20'
+technical_feasibility_diagnostics:
+  required_triple_product: 5.0e+22
+  achieved_triple_product: 1.0e+17
+  achieved_lookup_key: MFE|Levitated dipole (orbital)
+  triple_product_gap: 500000.0
+  log10_gap: 5.699
+  base_score_from_gap: 1.0
+  laser_approach_modifier: 0.0
+  technical_feasibility_score: 1.0
+  no_data_floor: false
   extracted_at: '2026-05-20'
 tokamak_shape:
   value: N/A

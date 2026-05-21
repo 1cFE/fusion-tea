@@ -101,6 +101,19 @@ operation_mode:
   provenance: taxonomy
   confidence: high
   extracted_at: '2026-05-20'
+plant_complexity_diagnostics:
+  subsystems_triggered:
+    cryoplant_lts: 1.0
+    current_drive: 0.5
+    disruption_mitigation: 1.0
+    high_power_aux: 1.0
+    liquid_metal_handling: 0.5
+    remote_maintenance: 1.0
+    tritium_plant: 1.0
+  subsystem_complexity_weight: 6.0
+  plant_complexity_score: 1.0
+  blanket_assumed: true
+  extracted_at: '2026-05-20'
 primary_heating:
   value: RF + NBI
   provenance: taxonomy
@@ -124,6 +137,17 @@ supply_chain_diagnostics:
   bottleneck_weight: 3.0
   supply_chain_score: 2.0
   blanket_assumed: true
+  extracted_at: '2026-05-20'
+technical_feasibility_diagnostics:
+  required_triple_product: 3.0e+21
+  achieved_triple_product: 1.5e+21
+  achieved_lookup_key: MFE|Tokamak
+  triple_product_gap: 2.0
+  log10_gap: 0.301
+  base_score_from_gap: 4.0
+  laser_approach_modifier: 0.0
+  technical_feasibility_score: 4.0
+  no_data_floor: false
   extracted_at: '2026-05-20'
 tokamak_shape:
   value: Standard

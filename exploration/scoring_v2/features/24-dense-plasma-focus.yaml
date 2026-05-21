@@ -101,6 +101,12 @@ operation_mode:
   provenance: taxonomy
   confidence: high
   extracted_at: '2026-05-20'
+plant_complexity_diagnostics:
+  subsystems_triggered: {}
+  subsystem_complexity_weight: 0.0
+  plant_complexity_score: 5.0
+  blanket_assumed: false
+  extracted_at: '2026-05-20'
 primary_heating:
   value: Electromagnetic pinch (DPF)
   provenance: taxonomy
@@ -121,6 +127,17 @@ supply_chain_diagnostics:
   bottleneck_weight: 0.0
   supply_chain_score: 5.0
   blanket_assumed: false
+  extracted_at: '2026-05-20'
+technical_feasibility_diagnostics:
+  required_triple_product: 3.0e+23
+  achieved_triple_product: 1.0e+16
+  achieved_lookup_key: Non-Standard|Dense plasma focus
+  triple_product_gap: 30000000.0
+  log10_gap: 7.477
+  base_score_from_gap: 1.0
+  laser_approach_modifier: 0.0
+  technical_feasibility_score: 1.0
+  no_data_floor: false
   extracted_at: '2026-05-20'
 tokamak_shape:
   value: N/A
