@@ -1,0 +1,285 @@
+{
+  "axes": [
+    {
+      "axis_weight": 1.0,
+      "embedding_weights": {
+        "min_viable_device_scale": 0.5,
+        "percent_mod": 0.25,
+        "unit_multiplicity": 0.25
+      },
+      "name": "modularity",
+      "sub_tables": {
+        "blanket_lookup": {
+          "D-D|*": 5,
+          "D-He3|*": 5,
+          "D-T|Liquid metal": 5,
+          "D-T|Molten salt": 5,
+          "D-T|N/A": 5,
+          "D-T|N/A (no tritium)": 5,
+          "D-T|N/A (non-power)": 4,
+          "D-T|Other/hybrid": 4,
+          "D-T|Solid breeder": 4,
+          "D-T|TBD": 4,
+          "p-B11|*": 5
+        },
+        "magnet_driver_lookup": {
+          "IFE|*|*": 3,
+          "IFE|*|Acoustic": 3,
+          "IFE|*|DPSSL Laser": 5,
+          "IFE|*|Gas Laser": 3,
+          "IFE|*|Heavy ion beam": 3,
+          "IFE|*|Projectile": 5,
+          "MFE|*|*": 3,
+          "MFE|HTS (continuous helical)|*": 3,
+          "MFE|HTS (integrated)|*": 4,
+          "MFE|HTS (planar)|*": 5,
+          "MFE|HTS (segmented)|*": 5,
+          "MFE|HTS (wound)|*": 5,
+          "MFE|LTS+HTS|*": 2,
+          "MFE|LTS|*": 2,
+          "MFE|Magnetic pinch|*": 3,
+          "MFE|N/A|*": 3,
+          "MFE|Resistive|*": 3,
+          "MFE|TBD|*": 3,
+          "MIF|*|*": 5,
+          "MIF|*|Capacitor compression": 5,
+          "MIF|*|Pneumatic": 5,
+          "MIF|*|Pulsed power": 5,
+          "MIF|*|Railgun": 5,
+          "Non-Standard|*|*": 3,
+          "Non-Standard|*|IEC": 5,
+          "Non-Standard|*|Muon catalysis": 3,
+          "Non-Standard|*|Particle accelerator": 3,
+          "Non-Standard|*|Plasma focus": 3
+        },
+        "mvs_lookup": {
+          "IFE|Acoustic": 5,
+          "IFE|Heavy ion beam": 4,
+          "IFE|Laser": 4,
+          "IFE|Laser (Xcimer-class)": 3,
+          "IFE|Laser (liquid jet)": 4,
+          "IFE|Projectile": 3,
+          "MFE|FRC": 4,
+          "MFE|Levitated dipole": 3,
+          "MFE|Mirror": 4,
+          "MFE|Other": 3,
+          "MFE|Stellarator": 2,
+          "MFE|Tokamak (compact)": 3,
+          "MFE|Tokamak (negative-T)": 3,
+          "MFE|Tokamak (non-compact)": 2,
+          "MFE|Tokamak (spherical)": 3,
+          "MFE|Z-pinch (sheared-flow)": 4,
+          "MIF|FRC compression": 5,
+          "MIF|MagLIF": 5,
+          "MIF|Pneumatic compression": 5,
+          "Non-Standard|Electrostatic": 5,
+          "Non-Standard|Muon-catalyzed": 3,
+          "Non-Standard|Particle accelerator": 3,
+          "Non-Standard|Plasma focus": 4
+        },
+        "unit_count_brackets": [
+          {
+            "max_count": 1,
+            "score": 1
+          },
+          {
+            "max_count": 4,
+            "score": 2
+          },
+          {
+            "max_count": 10,
+            "score": 3
+          },
+          {
+            "max_count": 30,
+            "score": 4
+          }
+        ],
+        "unit_count_floor_score": 5,
+        "vessel_lookup": {
+          "IFE|Acoustic|*": 3,
+          "IFE|Heavy ion beam|*": 3,
+          "IFE|Laser|*": 3,
+          "IFE|Projectile|*": 3,
+          "MFE|Dipole|*": 3,
+          "MFE|FRC|*": 3,
+          "MFE|Mirror|*": 3,
+          "MFE|Other|*": 3,
+          "MFE|Stellarator|*": 2,
+          "MFE|Tokamak|compact": 4,
+          "MFE|Tokamak|non-compact": 2,
+          "MFE|Tokamak|spherical": 4,
+          "MFE|Z-pinch|*": 3,
+          "MIF|FRC compression|*": 5,
+          "MIF|MagLIF|*": 5,
+          "MIF|Pneumatic compression|D-D": 5,
+          "MIF|Pneumatic compression|D-T": 4,
+          "Non-Standard|Electrostatic|*": 3,
+          "Non-Standard|Muon-catalyzed|*": 3,
+          "Non-Standard|Particle accelerator|*": 3,
+          "Non-Standard|Plasma focus|*": 3
+        }
+      }
+    },
+    {
+      "axis_weight": 1.0,
+      "embedding_weights": {
+        "supply_chain_score": 1.0
+      },
+      "name": "supply_chain",
+      "sub_tables": {
+        "bottleneck_severity_weights": {
+          "beryllium": 1.0,
+          "flibe": 0.5,
+          "helium3": 3.0,
+          "kdp": 0.5,
+          "lithium6": 1.0,
+          "tritium": 1.0,
+          "vanadium": 1.0
+        }
+      }
+    },
+    {
+      "axis_weight": 1.0,
+      "embedding_weights": {
+        "plant_complexity_score": 1.0
+      },
+      "name": "plant_complexity",
+      "sub_tables": {
+        "subsystem_complexity_weights": {
+          "cryoplant_hts": 0.5,
+          "cryoplant_lts": 1.0,
+          "current_drive": 0.5,
+          "disruption_mitigation": 1.0,
+          "high_power_aux": 1.0,
+          "hybrid_energy": 0.5,
+          "levitation_stabilization": 0.5,
+          "liquid_metal_handling": 0.5,
+          "pulsed_power_thermal": 1.0,
+          "remote_maintenance": 1.0,
+          "rf_aux": 0.5,
+          "target_factory_high": 2.0,
+          "target_factory_low": 0.5,
+          "tritium_plant": 1.0
+        }
+      }
+    },
+    {
+      "axis_weight": 1.0,
+      "embedding_weights": {
+        "customization_score": 1.0
+      },
+      "name": "customization",
+      "sub_tables": {
+        "fuel_safety_scores": {
+          "D-D": 2,
+          "D-He3": 3,
+          "D-T": 1,
+          "p-B11": 4
+        },
+        "thermal_rejection_scores": {
+          "direct_conversion": 4,
+          "hybrid": 3,
+          "thermal": 2
+        }
+      }
+    },
+    {
+      "axis_weight": 1.0,
+      "embedding_weights": {
+        "upper_cf_score": 1.0
+      },
+      "name": "upper_cf",
+      "sub_tables": {
+        "operational_penalty_weights": {
+          "neutronic_fuel": 1.0,
+          "non_renewable_blanket": 0.5,
+          "pulsed_operation": 0.5
+        }
+      }
+    },
+    {
+      "axis_weight": 1.0,
+      "embedding_weights": {
+        "technical_feasibility_score": 1.0
+      },
+      "name": "technical_feasibility",
+      "sub_tables": {
+        "achieved_triple_product": {
+          "IFE|Heavy ion ICF": "1.0e15",
+          "IFE|Laser ICF (direct drive)": "5.0e21",
+          "IFE|Laser ICF (fast ignition)": "1.0e20",
+          "IFE|Laser ICF (hybrid drive)": "1.0e21",
+          "IFE|Laser ICF (indirect drive)": "5.0e21",
+          "IFE|Laser ICF (ultrashort pulse)": "1.0e18",
+          "IFE|Projectile ICF": "1.0e17",
+          "MFE|Compact tokamak": "1.5e21",
+          "MFE|FRC": "1.0e19",
+          "MFE|Helical coil stellarator": "1.0e20",
+          "MFE|Levitated dipole": "1.0e17",
+          "MFE|Levitated dipole (orbital)": "1.0e17",
+          "MFE|Mirror": "1.0e18",
+          "MFE|Modular stellarator": "1.0e20",
+          "MFE|Negative triangularity tokamak": "1.5e21",
+          "MFE|Planar coil stellarator": "1.0e20",
+          "MFE|QI stellarator": "1.0e20",
+          "MFE|Spherical tokamak": "1.5e21",
+          "MFE|Stellarator": "1.0e20",
+          "MFE|Tokamak": "1.5e21",
+          "MFE|Z-pinch (sheared-flow)": "1.0e17",
+          "MIF|FRC compression (MIF)": "1.0e19",
+          "MIF|MagLIF": "1.0e19",
+          "MIF|Magnetized target fusion": "1.0e18",
+          "Non-Standard|Dense plasma focus": "1.0e16"
+        },
+        "laser_approach_modifier": {
+          "Direct drive": -0.25,
+          "Fast ignition": -0.5,
+          "Hybrid drive": -0.25,
+          "Indirect drive": 0.0,
+          "N/A": 0.0,
+          "Ultrashort pulse": -0.5
+        },
+        "required_triple_product": {
+          "D-D": "3.0e23",
+          "D-He3": "5.0e22",
+          "D-T": "3.0e21",
+          "Unknown": "3.0e23",
+          "p-B11": "3.0e23"
+        }
+      }
+    },
+    {
+      "axis_weight": 1.0,
+      "embedding_weights": {
+        "data_availability_score": 1.0
+      },
+      "name": "data_availability",
+      "sub_tables": {
+        "blocking_count_brackets": [
+          {
+            "max_count": 0,
+            "score": 5.0
+          },
+          {
+            "max_count": 2,
+            "score": 4.0
+          },
+          {
+            "max_count": 5,
+            "score": 3.0
+          },
+          {
+            "max_count": 9,
+            "score": 2.0
+          }
+        ],
+        "floor_score": 1.0
+      }
+    }
+  ],
+  "composite": {
+    "formula": "weighted_average",
+    "null_handling": "skip"
+  }
+}
