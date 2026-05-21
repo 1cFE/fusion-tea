@@ -22,11 +22,11 @@ REQUIRED, ACHIEVED = _load_tf_tables(WEIGHTS)
 PER_CONCEPT_TOLERANCE = 0.55
 
 KNOWN_DRIFTS = {
-    # p-B11 concepts in tokamak / FRC families: the achieved triple product
-    # is for D-T-equivalent demos, not p-B11. P7 calibration could add
-    # fuel-specific entries to the achieved table.
-    "18-p-b11-frc":                       "TAE p-B11 FRC; spec floor 1.0 vs rules 2.0",
-    "39-spherical-tokamak-cs-free-p-b11": "ENN p-B11 spherical; spec floor 1.0 vs rules 3.0",
+    # ENN p-B11 spherical tokamak: the achieved triple product credits the
+    # confinement family with its (fuel-blind) D-T-equivalent demo, while
+    # required_triple_product[p-B11][MFE] is the alpha-channeled Ochs 2022
+    # target. Rules land at 2.0; the TF spec floored all p-B11 at 1.0.
+    "39-spherical-tokamak-cs-free-p-b11": "ENN p-B11 spherical; spec floor 1.0 vs rules 2.0",
 }
 
 
@@ -49,10 +49,14 @@ class TestWeightsSurface:
             assert fuel in REQUIRED
 
     def test_required_d_t_at_3e21(self):
-        assert REQUIRED["D-T"] == 3.0e21
+        # Scalar fuels normalize to a {'*': value} dict.
+        assert REQUIRED["D-T"] == {"*": 3.0e21}
 
-    def test_required_p_b11_at_3e23(self):
-        assert REQUIRED["p-B11"] == 3.0e23
+    def test_required_p_b11_family_keyed(self):
+        # p-B11 carries an un-channeled '*' default plus a steady-state
+        # magnetic override (alpha channeling realistic). See Ochs 2022.
+        assert REQUIRED["p-B11"]["*"] == 1.4e25
+        assert REQUIRED["p-B11"]["MFE"] == 5.0e24
 
     def test_achieved_has_major_families(self):
         for key in ("MFE|Compact tokamak", "MFE|Stellarator",

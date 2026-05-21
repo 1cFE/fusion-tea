@@ -123,7 +123,15 @@
                         padding: 6px 10px; border-radius: 4px; flex: 1; font-size: 13px; }
     .filter-bar select { background: var(--panel-2); color: var(--text); border: 1px solid var(--border);
                          padding: 6px 10px; border-radius: 4px; font-size: 13px; }
-    .filter-bar .count { color: var(--text-dim); font-size: 12px; }
+    .readiness-toggle { display: flex; align-items: center; gap: 8px; margin-top: 14px;
+                        padding: 10px 12px; background: var(--panel-2);
+                        border: 1px solid var(--border); border-radius: 4px;
+                        color: var(--text); font-size: 14px; cursor: pointer;
+                        user-select: none; }
+    .readiness-toggle:hover { border-color: var(--accent); }
+    .readiness-toggle input { cursor: pointer; margin: 0; width: 15px; height: 15px;
+                              accent-color: var(--accent); flex-shrink: 0; }
+    .readiness-toggle .rt-count { color: var(--text-dim); font-size: 12px; margin-left: 2px; }
 
     .detail { background: var(--panel); border: 1px solid var(--border); border-radius: 6px;
               padding: 16px; margin-top: 16px; }
@@ -257,9 +265,9 @@
     const PRESETS = {
       "Equal":            Object.fromEntries(AXES.map(a => [a, 1.0])),
       "Physics-first":    Object.fromEntries(AXES.map(a =>
-        [a, (a === "technical_feasibility" || a === "data_availability") ? 1.0 : 3.0])),
-      "Commercial-first": Object.fromEntries(AXES.map(a =>
         [a, (a === "technical_feasibility" || a === "data_availability") ? 3.0 : 1.0])),
+      "Commercial-first": Object.fromEntries(AXES.map(a =>
+        [a, (a === "technical_feasibility" || a === "data_availability") ? 1.0 : 3.0])),
     };
 
     // ── Onboarding walkthrough content ──────────────────────────────
@@ -745,6 +753,7 @@
       const [filter, setFilter] = useState("");
       const [fuelFilter, setFuelFilter] = useState("All");
       const [familyFilter, setFamilyFilter] = useState("All");
+      const [includeLowReadiness, setIncludeLowReadiness] = useState(false);
       const [sortBy, setSortBy] = useState("composite");
       const [sortDir, setSortDir] = useState("desc");
       const [loadError, setLoadError] = useState(null);
@@ -788,8 +797,15 @@
         }
         if (fuelFilter !== "All")   rows = rows.filter(c => c.features.fuel === fuelFilter);
         if (familyFilter !== "All") rows = rows.filter(c => c.features.confinement_family === familyFilter);
+        if (!includeLowReadiness) {
+          // Hide the low-readiness tier: Technical Feasibility at the floor (score <= 1).
+          rows = rows.filter(c => {
+            const tf = c.scores.technical_feasibility;
+            return tf == null || tf > 1;
+          });
+        }
         return rows;
-      }, [composited, filter, fuelFilter, familyFilter]);
+      }, [composited, filter, fuelFilter, familyFilter, includeLowReadiness]);
 
       const sorted = useMemo(() => {
         if (!filtered.length) return filtered;
@@ -877,6 +893,10 @@
 
       const fuels    = ["All", ...new Set(concepts.map(c => c.features.fuel).filter(Boolean))];
       const families = ["All", ...new Set(concepts.map(c => c.features.confinement_family).filter(Boolean))];
+      const lowReadinessCount = concepts.filter(c => {
+        const tf = c.scores.technical_feasibility;
+        return tf != null && tf <= 1;
+      }).length;
 
       const sliderRows = weights.axes.map(axisInfo => {
         const a = axisInfo.name;
@@ -1021,6 +1041,13 @@
               <button onClick=${exportCsv}>Export CSV</button>
               <button onClick=${exportJson}>Export JSON</button>
             </div>
+
+            <label class="readiness-toggle"
+                   title="Low-readiness tier = Technical Feasibility at the floor (score ≤ 1): the architectural family has no peer-reviewed triple-product measurement, or sits a very large gap from fusion breakeven. Hidden by default.">
+              <input type="checkbox" checked=${includeLowReadiness}
+                     onChange=${e => setIncludeLowReadiness(e.target.checked)}/>
+              <span>Include low-readiness tier <span class="rt-count">${lowReadinessCount} / ${concepts.length}</span></span>
+            </label>
           </aside>
 
           <main class="main">
@@ -1043,7 +1070,6 @@
               <select value=${familyFilter} onChange=${e => setFamilyFilter(e.target.value)}>
                 ${families.map(f => html`<option key=${f} value=${f}>Family: ${f}</option>`)}
               </select>
-              <span class="count">${sorted.length} / ${concepts.length}</span>
             </div>
 
             <table class="ranking">

@@ -11,6 +11,14 @@ required_triple_product:
     (Q_sci = 1) at the optimal ion temperature for each fuel. Derived
     from the Lawson criterion accounting for bremsstrahlung losses.
     These are breakeven targets, not commercial operating targets.
+
+    Most fuels carry a single scalar. p-B11 is keyed by confinement
+    family ('*' default + per-family overrides) because its effective
+    breakeven target depends on whether steady-state alpha channeling —
+    which recycles fast-alpha energy back into the fuel ions and lowers
+    the required n·T·τ — is realistic in that confinement regime. The
+    achieved table is deliberately NOT fuel-aware; the family keying
+    lives entirely on the required side.
   entries:
     D-T:
       value: 3.0e21
@@ -22,8 +30,27 @@ required_triple_product:
       value: 5.0e22
       source: "Wurzel & Hsu 2022 (~17x harder than D-T)"
     p-B11:
-      value: 3.0e23
-      source: "Wurzel & Hsu 2022 (~100x harder than D-T, similar to D-D)"
+      family_keyed: true
+      values:
+        "*":   1.4e25   # IFE / MIF / dense plasma focus — no steady-state channeling
+        MFE:   5.0e24   # steady-state magnetic — alpha channeling realistic
+      source: |
+        Ochs et al. 2022 (Phys. Plasmas 29, 052508), p-B11 power-balance
+        analysis. Un-channeled steady-state breakeven is recirculating-
+        power limited at n·T·τ ≈ 1.4e25 — the '*' default, applied to all
+        pulsed regimes (IFE, MIF, dense plasma focus) where steady-state
+        alpha channeling cannot be sustained. With alpha channeling
+        realistic in steady-state magnetic confinement (~50% of fast-alpha
+        energy recycled, no direct energy conversion), the effective MFE
+        target drops to ≈5.0e24.
+      notes: |
+        Replaces the prior flat 3.0e23 ("~100x harder than D-T, similar to
+        D-D") estimate, which materially under-counted p-B11 difficulty and
+        let p-B11 concepts inherit near-D-T feasibility. No ICF hot-spot /
+        areal-density penalty is applied to the IFE value — the model keeps
+        a single, interpretable triple-product axis rather than splicing in
+        a separate inertial-confinement criterion. Assumes alpha channeling
+        but NOT direct energy conversion (DEC).
     Unknown:
       value: 3.0e23
       notes: "Conservative default — treat as advanced-fuel-class until disclosed."

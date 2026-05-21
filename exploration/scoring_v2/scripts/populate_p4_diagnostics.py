@@ -24,6 +24,7 @@ from exploration.scoring_v2.embeddings.rulebook import (
     _load_pc_weights,
     _compute_triggered_pc_subsystems,
     _load_tf_tables,
+    _required_for,
     _tf_score_from_log_gap,
     _TF_FLOOR_SCORE,
 )
@@ -76,7 +77,7 @@ def _technical_feasibility_block(doc: dict, weights: dict) -> dict:
     cc = _v(doc, "confinement_concept")
     laser = _v(doc, "laser_approach")
     key = f"{cf}|{cc}"
-    required_value = required.get(fuel)
+    required_value = _required_for(required, fuel, cf) if fuel in required else None
     achieved_value = achieved.get(key)
     if achieved_value is None or achieved_value <= 0:
         gap = None

@@ -9,6 +9,8 @@
 
 This is a Claude Code implementation spec for the Technical Feasibility axis based on the Wurzel & Hsu (2022, 2025 update) triple product framework. The score measures how far a concept's architectural family is from the triple product required for breakeven.
 
+> **Amendment — 2026-05-21 (p-B11 required-target correction).** `required_triple_product` is no longer a flat `{fuel: scalar}` table. p-B11 is now keyed by confinement family: a `*` default of **1.4e25** (un-channeled, applied to IFE / MIF / dense plasma focus) plus an **MFE** override of **5.0e24** (steady-state alpha channeling realistic). Source: Ochs et al. 2022. The prior flat **3.0e23** under-counted p-B11 difficulty by ~1–2 orders of magnitude and let p-B11 concepts inherit near-D-T feasibility. The `achieved` table stays fuel-blind by design. Effect: ENN (39) 3.0→2.0, TAE p-B11 FRC (18) 2.0→1.0, hb11 (04) 1.5→1.0; concepts 06/23/24 unchanged at 1.0. Sections below (formula, the `required_triple_product` table, the rationale in "Why fuel sets the required value", and the worked score table) describe the superseded flat-table design — see `lookup_triple_product.yaml` and `weights/default.yaml` for the current values.
+
 ---
 
 ## Summary

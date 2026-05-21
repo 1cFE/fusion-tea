@@ -288,11 +288,19 @@ technical_feasibility:
     technical_feasibility_score: 1.0
 
   # Required triple product (n·T·τ in keV·s/m³) for Q_sci = 1 breakeven.
+  # A fuel maps to a single scalar, or — when the effective target depends
+  # on the confinement regime — to a dict keyed by confinement family with
+  # a mandatory '*' default. p-B11 is family-keyed: steady-state alpha
+  # channeling (which lowers the effective target) is only realistic in
+  # magnetic confinement; pulsed regimes (IFE, MIF, dense plasma focus)
+  # fall through to the un-channeled '*' value. See lookup_triple_product.yaml.
   required_triple_product:
     D-T:      3.0e21
     D-D:      3.0e23
     D-He3:    5.0e22
-    p-B11:    3.0e23
+    p-B11:
+      "*":    1.4e25     # pulsed / no steady-state channeling (raw Ochs 2022)
+      MFE:    5.0e24     # steady-state magnetic: alpha channeling realistic
     Unknown:  3.0e23
 
   # Achieved triple product by architectural family|concept. Keys match
