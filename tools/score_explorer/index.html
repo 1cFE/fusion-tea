@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fusion Concept Score Explorer</title>
+
+  <!-- React 18 + htm via CDN. No build step, no Babel — htm is a
+       ~600-byte tagged-template helper that builds React elements
+       directly. Tagged template literals are ES6; every modern browser
+       supports them natively. -->
+  <script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #161922;
+      --panel-2: #1d2230;
+      --border: #2a3142;
+      --text: #e6e8ee;
+      --text-dim: #a3a8b5;
+      --accent: #7aa2f7;
+      --accent-2: #9ece6a;
+      --warn: #e0af68;
+      --bad: #f7768e;
+      --null: #565f73;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text);
+                 font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    h1, h2, h3 { margin: 0; font-weight: 500; }
+    h1 { font-size: 20px; }
+    h2 { font-size: 15px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; }
+    h3 { font-size: 13px; color: var(--text-dim); }
+    .app { display: grid; grid-template-columns: 340px 1fr; min-height: 100vh; gap: 0; }
+    .sidebar { background: var(--panel); border-right: 1px solid var(--border); padding: 16px; overflow-y: auto; }
+    .main    { padding: 16px 24px; overflow-x: auto; }
+
+    .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .header .subtitle { color: var(--text-dim); font-size: 12px; }
+
+    .presets { display: flex; gap: 6px; margin: 8px 0 16px 0; flex-wrap: wrap; }
+    .presets button { background: var(--panel-2); color: var(--text); border: 1px solid var(--border);
+                      padding: 6px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; }
+    .presets button:hover { border-color: var(--accent); }
+    .presets button.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+
+    .slider-row { padding: 6px 0; }
+    .slider-row .label { display: flex; justify-content: space-between; margin-bottom: 4px; }
+    .slider-row .label .name { color: var(--text); }
+    .slider-row .label .value { color: var(--accent); font-variant-numeric: tabular-nums; }
+    .slider-row input[type=range] { width: 100%; }
+    .slider-row .advanced { font-size: 11px; color: var(--text-dim); cursor: pointer; margin-top: 2px;
+                            user-select: none; }
+    .slider-row .advanced:hover { color: var(--accent); }
+    .slider-row .advanced-panel { margin-top: 6px; padding: 8px; background: var(--bg);
+                                  border: 1px solid var(--border); border-radius: 4px; font-size: 11px;
+                                  font-family: ui-monospace, "SF Mono", Consolas, monospace; max-height: 200px; overflow-y: auto; }
+    .advanced-panel .table-name { color: var(--accent-2); margin-top: 4px; }
+    .advanced-panel .row { display: flex; justify-content: space-between; padding: 1px 0; }
+    .advanced-panel .row .k { color: var(--text-dim); }
+    .advanced-panel .row .v { color: var(--text); }
+
+    .actions { display: flex; gap: 8px; margin: 16px 0 8px 0; }
+    .actions button { background: var(--panel-2); color: var(--text); border: 1px solid var(--border);
+                      padding: 8px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; flex: 1; }
+    .actions button:hover { border-color: var(--accent); }
+    .actions button.primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+
+    table.ranking { width: 100%; border-collapse: collapse; }
+    table.ranking th, table.ranking td { padding: 6px 8px; border-bottom: 1px solid var(--border);
+                                          text-align: left; font-size: 12px; vertical-align: middle; }
+    table.ranking th { color: var(--text-dim); font-weight: 500; cursor: pointer; user-select: none;
+                       position: sticky; top: 0; background: var(--bg); z-index: 1; }
+    table.ranking th.sorted { color: var(--accent); }
+    table.ranking td.num { font-variant-numeric: tabular-nums; text-align: right; width: 60px; }
+    table.ranking td.composite { font-variant-numeric: tabular-nums; text-align: right; font-weight: 600;
+                                 color: var(--accent); }
+    table.ranking tr.selected { background: rgba(122, 162, 247, 0.10); }
+    table.ranking tr:hover { background: rgba(255, 255, 255, 0.02); cursor: pointer; }
+    .bar { display: inline-block; width: 50px; height: 6px; background: var(--null); border-radius: 2px;
+           vertical-align: middle; margin-right: 4px; overflow: hidden; }
+    .bar > i { display: block; height: 100%; background: var(--accent); }
+    .null { color: var(--null); }
+    .score-1 { color: var(--bad); }
+    .score-2 { color: var(--warn); }
+    .score-3 { color: var(--text); }
+    .score-4 { color: var(--accent-2); }
+    .score-5 { color: var(--accent-2); font-weight: 600; }
+
+    .filter-bar { display: flex; gap: 8px; margin-bottom: 8px; align-items: center; }
+    .filter-bar input { background: var(--panel-2); color: var(--text); border: 1px solid var(--border);
+                        padding: 6px 10px; border-radius: 4px; flex: 1; font-size: 13px; }
+    .filter-bar select { background: var(--panel-2); color: var(--text); border: 1px solid var(--border);
+                         padding: 6px 10px; border-radius: 4px; font-size: 13px; }
+    .filter-bar .count { color: var(--text-dim); font-size: 12px; }
+
+    .detail { background: var(--panel); border: 1px solid var(--border); border-radius: 6px;
+              padding: 16px; margin-top: 16px; }
+    .detail h2 { margin-bottom: 4px; }
+    .detail .concept-name { font-size: 18px; color: var(--text); margin-bottom: 8px; }
+    .detail .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                              gap: 6px 12px; font-size: 12px; margin-bottom: 16px; }
+    .detail .features-grid .k { color: var(--text-dim); }
+    .detail .features-grid .v { color: var(--text); }
+    .detail .diagnostic { background: var(--bg); border: 1px solid var(--border); border-radius: 4px;
+                          padding: 8px 12px; margin-bottom: 8px; }
+    .detail .diagnostic h3 { color: var(--accent); display: flex; justify-content: space-between; }
+    .detail .diagnostic h3 .axis-score { color: var(--text); font-size: 13px; font-variant-numeric: tabular-nums; }
+    .detail .diagnostic pre { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 11px;
+                              white-space: pre-wrap; word-break: break-word; margin: 6px 0 0 0;
+                              color: var(--text-dim); }
+
+    .footer { color: var(--text-dim); font-size: 11px; margin-top: 24px; padding-top: 16px;
+              border-top: 1px solid var(--border); }
+
+    .fatal-error { padding: 24px; max-width: 900px; margin: 40px auto; background: var(--panel);
+                   border: 1px solid var(--bad); border-radius: 6px; }
+    .fatal-error h2 { color: var(--bad); margin-bottom: 8px; }
+    .fatal-error pre { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 12px;
+                       background: var(--bg); padding: 12px; border-radius: 4px; overflow: auto;
+                       color: var(--warn); white-space: pre-wrap; word-break: break-word; }
+  </style>
+</head>
+<body>
+  <div id="root">Loading…</div>
+
+  <!-- Show any uncaught error directly on the page so the user doesn't
+       have to dig in DevTools to see what went wrong. -->
+  <script>
+    window.addEventListener("error", function (e) {
+      var el = document.getElementById("root");
+      if (el) {
+        el.innerHTML =
+          '<div class="fatal-error">' +
+          '<h2>Score Explorer failed to load</h2>' +
+          '<p>Open DevTools (F12) for full details. Top-line error:</p>' +
+          '<pre></pre>' +
+          '</div>';
+        el.querySelector("pre").textContent =
+          (e.error && (e.error.stack || e.error.message)) || e.message || String(e);
+      }
+    });
+    window.addEventListener("unhandledrejection", function (e) {
+      var el = document.getElementById("root");
+      if (el) {
+        el.innerHTML =
+          '<div class="fatal-error">' +
+          '<h2>Score Explorer: unhandled promise rejection</h2>' +
+          '<pre></pre>' +
+          '</div>';
+        el.querySelector("pre").textContent =
+          (e.reason && (e.reason.stack || e.reason.message)) || String(e.reason);
+      }
+    });
+  </script>
+
+  <script type="module">
+    import htm from "https://unpkg.com/htm@3.1.1?module";
+    const html = htm.bind(React.createElement);
+    const { useEffect, useMemo, useState } = React;
+
+    const AXES = [
+      "modularity", "supply_chain", "plant_complexity", "customization",
+      "upper_cf", "technical_feasibility", "data_availability",
+    ];
+    const AXIS_LABEL = {
+      modularity:            "Modularity",
+      supply_chain:          "Supply Chain",
+      plant_complexity:      "Plant Complexity",
+      customization:         "Customization",
+      upper_cf:              "Upper CF",
+      technical_feasibility: "Technical Feasibility",
+      data_availability:     "Data Availability",
+    };
+
+    const PRESETS = {
+      "Equal":            Object.fromEntries(AXES.map(a => [a, 1.0])),
+      "Physics-first":    Object.fromEntries(AXES.map(a => [a, a === "technical_feasibility" ? 2.0 : 1.0])),
+      "Commercial-first": Object.fromEntries(AXES.map(a =>
+        [a, ["modularity", "supply_chain", "plant_complexity"].includes(a) ? 1.5 : 1.0])),
+    };
+
+    function scoreClass(v) {
+      if (v == null) return "null";
+      const n = Math.round(v);
+      return `score-${Math.max(1, Math.min(5, n))}`;
+    }
+    function fmt(v, d = 2) { return v == null ? "—" : Number(v).toFixed(d); }
+
+    function recompositeOne(concept, axisWeights) {
+      const included = AXES.filter(a =>
+        concept.scores[a] != null && (axisWeights[a] || 0) > 0);
+      if (!included.length) return { composite: null, included: [] };
+      const norm = included.reduce((s, a) => s + axisWeights[a], 0);
+      if (norm === 0) return { composite: null, included };
+      const composite = included.reduce(
+        (s, a) => s + concept.scores[a] * axisWeights[a], 0) / norm;
+      return { composite, included };
+    }
+
+    function App() {
+      const [concepts, setConcepts] = useState(null);
+      const [weights, setWeights]   = useState(null);
+      const [axisWeights, setAxisWeights] = useState(null);
+      const [selected, setSelected] = useState(null);
+      const [activePreset, setActivePreset] = useState("Equal");
+      const [expandedAxis, setExpandedAxis] = useState(null);
+      const [filter, setFilter] = useState("");
+      const [fuelFilter, setFuelFilter] = useState("All");
+      const [familyFilter, setFamilyFilter] = useState("All");
+      const [sortBy, setSortBy] = useState("composite");
+      const [sortDir, setSortDir] = useState("desc");
+      const [loadError, setLoadError] = useState(null);
+
+      useEffect(() => {
+        Promise.all([
+          fetch("data/concepts.json").then(r => {
+            if (!r.ok) throw new Error(`concepts.json: HTTP ${r.status}`);
+            return r.json();
+          }),
+          fetch("data/weights.json").then(r => {
+            if (!r.ok) throw new Error(`weights.json: HTTP ${r.status}`);
+            return r.json();
+          }),
+        ]).then(([c, w]) => {
+          setConcepts(c);
+          setWeights(w);
+          setAxisWeights(Object.fromEntries(w.axes.map(a => [a.name, a.axis_weight])));
+        }).catch(e => setLoadError(e.message || String(e)));
+      }, []);
+
+      const composited = useMemo(() => {
+        if (!concepts || !axisWeights) return [];
+        return concepts.map(c => {
+          const { composite, included } = recompositeOne(c, axisWeights);
+          return Object.assign({}, c, { _composite: composite, _included: included });
+        });
+      }, [concepts, axisWeights]);
+
+      const filtered = useMemo(() => {
+        let rows = composited;
+        if (filter) {
+          const f = filter.toLowerCase();
+          rows = rows.filter(c =>
+            c.name.toLowerCase().includes(f) ||
+            c.concept_id.toLowerCase().includes(f));
+        }
+        if (fuelFilter !== "All")   rows = rows.filter(c => c.features.fuel === fuelFilter);
+        if (familyFilter !== "All") rows = rows.filter(c => c.features.confinement_family === familyFilter);
+        return rows;
+      }, [composited, filter, fuelFilter, familyFilter]);
+
+      const sorted = useMemo(() => {
+        if (!filtered.length) return filtered;
+        const dir = sortDir === "asc" ? 1 : -1;
+        return filtered.slice().sort((a, b) => {
+          let av, bv;
+          if (sortBy === "composite")  { av = a._composite; bv = b._composite; }
+          else if (sortBy === "name")  { return dir * a.name.localeCompare(b.name); }
+          else                          { av = a.scores[sortBy]; bv = b.scores[sortBy]; }
+          if (av == null && bv == null) return 0;
+          if (av == null) return 1;
+          if (bv == null) return -1;
+          return dir * (av - bv);
+        });
+      }, [filtered, sortBy, sortDir]);
+
+      function setAxisWeight(axis, value) {
+        setAxisWeights(prev => Object.assign({}, prev, { [axis]: value }));
+        setActivePreset(null);
+      }
+      function applyPreset(name) {
+        setActivePreset(name);
+        setAxisWeights(Object.assign({}, PRESETS[name]));
+      }
+      function exportCsv() {
+        const cols = ["concept_id", "name", ...AXES, "composite"];
+        const lines = [cols.join(",")];
+        sorted.forEach(c => {
+          lines.push([
+            c.concept_id,
+            `"${c.name.replace(/"/g, '""')}"`,
+            ...AXES.map(a => c.scores[a] != null ? c.scores[a].toFixed(4) : ""),
+            c._composite != null ? c._composite.toFixed(4) : "",
+          ].join(","));
+        });
+        downloadFile("rankings.csv", lines.join("\n"), "text/csv");
+      }
+      function exportJson() {
+        downloadFile("rankings.json", JSON.stringify({
+          axis_weights: axisWeights,
+          generated_at: new Date().toISOString(),
+          rankings: sorted.map(c => ({
+            concept_id: c.concept_id, name: c.name,
+            scores: c.scores, composite: c._composite,
+            composite_axes_included: c._included,
+          })),
+        }, null, 2), "application/json");
+      }
+      function downloadFile(name, content, mime) {
+        const blob = new Blob([content], { type: mime });
+        const url  = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url; a.download = name;
+        document.body.appendChild(a); a.click();
+        document.body.removeChild(a); URL.revokeObjectURL(url);
+      }
+
+      if (loadError) {
+        return html`
+          <div class="fatal-error">
+            <h2>Failed to load data</h2>
+            <pre>${loadError}</pre>
+            <p style=${{ color: "var(--text-dim)", marginTop: 12 }}>
+              Make sure you're serving the directory over HTTP
+              (not file://) and that data/concepts.json + data/weights.json
+              are present. Run
+              <code>uv run python tools/score_explorer/build.py</code>
+              from the repo root to regenerate them.
+            </p>
+          </div>
+        `;
+      }
+      if (!concepts || !weights || !axisWeights) {
+        return html`<div style=${{ padding: 24 }}>Loading…</div>`;
+      }
+
+      const fuels    = ["All", ...new Set(concepts.map(c => c.features.fuel).filter(Boolean))];
+      const families = ["All", ...new Set(concepts.map(c => c.features.confinement_family).filter(Boolean))];
+
+      const sliderRows = weights.axes.map(axisInfo => {
+        const a = axisInfo.name;
+        const w = axisWeights[a];
+        const hasSubTables = Object.keys(axisInfo.sub_tables || {}).length > 0;
+        const advancedPanel = expandedAxis === a && hasSubTables ? html`
+          <div class="advanced-panel">
+            ${Object.entries(axisInfo.sub_tables).map(([tname, tbl]) => html`
+              <div key=${tname}>
+                <div class="table-name">${tname}</div>
+                ${(Array.isArray(tbl)
+                  ? tbl.map((v, i) => [`#${i}`, JSON.stringify(v)])
+                  : Object.entries(tbl)
+                ).map(([k, v], i) => html`
+                  <div class="row" key=${i}>
+                    <span class="k">${k}</span>
+                    <span class="v">${typeof v === "object" ? JSON.stringify(v) : String(v)}</span>
+                  </div>
+                `)}
+              </div>
+            `)}
+            <div style=${{ marginTop: 6, color: "var(--text-dim)" }}>
+              Sub-tables are read-only here. Edit weights/default.yaml + re-run
+              score.py + build.py to change them.
+            </div>
+          </div>
+        ` : null;
+        return html`
+          <div class="slider-row" key=${a}>
+            <div class="label">
+              <span class="name">${AXIS_LABEL[a]}</span>
+              <span class="value">${w.toFixed(2)}</span>
+            </div>
+            <input type="range" min="0" max="3" step="0.05" value=${w}
+                   onChange=${e => setAxisWeight(a, parseFloat(e.target.value))}/>
+            ${hasSubTables ? html`
+              <div class="advanced"
+                   onClick=${() => setExpandedAxis(expandedAxis === a ? null : a)}>
+                ${expandedAxis === a ? "▾" : "▸"} Advanced (sub-tables)
+              </div>
+            ` : null}
+            ${advancedPanel}
+          </div>
+        `;
+      });
+
+      const tableRows = sorted.map(c => html`
+        <tr key=${c.concept_id}
+            class=${selected && selected.concept_id === c.concept_id ? "selected" : ""}
+            onClick=${() => setSelected(c)}>
+          <td>
+            <div style=${{ fontWeight: 500 }}>${c.name}</div>
+            <div style=${{ color: "var(--text-dim)", fontSize: 11 }}>
+              ${c.features.confinement_family} · ${c.features.fuel}
+            </div>
+          </td>
+          ${AXES.map(a => {
+            const v = c.scores[a];
+            return html`
+              <td key=${a} class=${`num ${scoreClass(v)}`}>
+                ${v != null ? html`<span class="bar"><i style=${{ width: `${v * 20}%` }}/></span>` : null}
+                ${fmt(v, 2)}
+              </td>
+            `;
+          })}
+          <td class="composite">${fmt(c._composite, 2)}</td>
+        </tr>
+      `);
+
+      const detailPanel = selected ? html`
+        <div class="detail">
+          <h2>Concept detail</h2>
+          <div class="concept-name">${selected.name}</div>
+
+          <h3>Features</h3>
+          <div class="features-grid">
+            ${Object.entries(selected.features).map(([k, v]) => html`
+              <div key=${k}><span class="k">${k}:</span> <span class="v">${String(v)}</span></div>
+            `)}
+          </div>
+
+          <h3>Composite</h3>
+          <div style=${{ marginBottom: 8, fontSize: 13 }}>
+            <span class=${scoreClass(selected._composite)} style=${{ fontSize: 18, fontWeight: 600 }}>
+              ${fmt(selected._composite, 2)}
+            </span>
+            ${" — "}
+            <span style=${{ color: "var(--text-dim)" }}>
+              weighted mean of ${selected._included.length} of 7 axes
+              ${selected._included.length < 7 ? html`
+                <span> (skipped: ${AXES.filter(a => !selected._included.includes(a))
+                                       .map(a => AXIS_LABEL[a]).join(", ")})</span>
+              ` : null}
+            </span>
+          </div>
+
+          <h3>Per-axis breakdown</h3>
+          ${AXES.map(a => {
+            const block = selected.diagnostics && selected.diagnostics[`${a}_diagnostics`];
+            const v = selected.scores[a];
+            return html`
+              <div class="diagnostic" key=${a}>
+                <h3>
+                  <span>${AXIS_LABEL[a]}</span>
+                  <span class=${`axis-score ${scoreClass(v)}`}>${fmt(v, 2)}</span>
+                </h3>
+                ${block
+                  ? html`<pre>${JSON.stringify(block, null, 2)}</pre>`
+                  : html`<div class="null" style=${{ fontSize: 12 }}>(no diagnostic block)</div>`
+                }
+              </div>
+            `;
+          })}
+        </div>
+      ` : null;
+
+      return html`
+        <div class="app">
+          <aside class="sidebar">
+            <h1>Score Explorer</h1>
+            <div class="subtitle">7 axes · ${concepts.length} concepts</div>
+
+            <h2 style=${{ marginTop: 18 }}>Presets</h2>
+            <div class="presets">
+              ${Object.keys(PRESETS).map(name => html`
+                <button key=${name}
+                        class=${activePreset === name ? "active" : ""}
+                        onClick=${() => applyPreset(name)}>${name}</button>
+              `)}
+            </div>
+
+            <h2>Axis weights</h2>
+            ${sliderRows}
+
+            <div class="actions">
+              <button onClick=${exportCsv}>Export CSV</button>
+              <button onClick=${exportJson}>Export JSON</button>
+            </div>
+          </aside>
+
+          <main class="main">
+            <div class="header">
+              <h1>Concept rankings</h1>
+              <div class="subtitle">
+                Slide an axis weight to re-rank instantly. Click a row for details.
+              </div>
+            </div>
+
+            <div class="filter-bar">
+              <input type="search" placeholder="Filter by name / ID…"
+                     value=${filter} onChange=${e => setFilter(e.target.value)}/>
+              <select value=${fuelFilter} onChange=${e => setFuelFilter(e.target.value)}>
+                ${fuels.map(f => html`<option key=${f} value=${f}>Fuel: ${f}</option>`)}
+              </select>
+              <select value=${familyFilter} onChange=${e => setFamilyFilter(e.target.value)}>
+                ${families.map(f => html`<option key=${f} value=${f}>Family: ${f}</option>`)}
+              </select>
+              <span class="count">${sorted.length} / ${concepts.length}</span>
+            </div>
+
+            <table class="ranking">
+              <thead>
+                <tr>
+                  <th class=${sortBy === "name" ? "sorted" : ""}
+                      onClick=${() => { setSortBy("name"); setSortDir(sortDir === "asc" ? "desc" : "asc"); }}>
+                    Concept
+                  </th>
+                  ${AXES.map(a => html`
+                    <th key=${a}
+                        class=${sortBy === a ? "sorted" : ""}
+                        title=${`Axis weight: ${axisWeights[a].toFixed(2)}`}
+                        onClick=${() => { setSortBy(a); setSortDir(sortDir === "asc" && sortBy === a ? "desc" : "asc"); }}>
+                      ${AXIS_LABEL[a]}
+                    </th>
+                  `)}
+                  <th class=${sortBy === "composite" ? "sorted" : ""}
+                      onClick=${() => { setSortBy("composite"); setSortDir(sortDir === "asc" ? "desc" : "asc"); }}>
+                    Composite
+                  </th>
+                </tr>
+              </thead>
+              <tbody>${tableRows}</tbody>
+            </table>
+
+            ${detailPanel}
+
+            <div class="footer">
+              Data generated by <code>tools/score_explorer/build.py</code>.
+              Edit <code>weights/default.yaml</code> and re-run
+              <code>score.py</code> + <code>build.py</code> to refresh.
+            </div>
+          </main>
+        </div>
+      `;
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(html`<${App}/>`);
+  </script>
+</body>
+</html>
