@@ -1077,3 +1077,85 @@ def _technical_feasibility_score(
                                 .get(laser_approach, 0.0))
         score = max(1.0, min(5.0, score + float(modifier)))
     return score
+
+
+# =============================================================================
+# Data Availability axis (gap-report blocking-marker count, bracket score)
+#
+# The one framework exception that does file I/O at score time. Reads
+# analyses/{concept}/gap_report.md (populated by the upstream Claude-judged
+# gap_check pipeline) and counts `**blocking**` markers, then maps to a
+# 1-5 score via a bracket schedule. Returns None when no gap report
+# exists — the composite scorer skips the axis for that concept.
+# =============================================================================
+
+import re  # only place this module needs re
+from pathlib import Path as _Path
+
+_BLOCKING_MARKER = re.compile(r"\*\*blocking\*\*", re.IGNORECASE)
+_REPO_ROOT = _Path(__file__).resolve().parents[3]
+
+
+def _load_da_weights(weights_yaml: dict) -> tuple[list, float]:
+    da = weights_yaml.get("data_availability", {})
+    brackets = da.get("blocking_count_brackets")
+    floor = da.get("floor_score")
+    if brackets is None or floor is None:
+        raise ValueError(
+            "weights/default.yaml data_availability axis missing "
+            "blocking_count_brackets or floor_score"
+        )
+    return brackets, float(floor)
+
+
+def _count_blocking_markers(report_text: str) -> int:
+    return len(_BLOCKING_MARKER.findall(report_text))
+
+
+def _da_score_from_count(count: int, brackets: list, floor: float) -> float:
+    for bracket in brackets:
+        if count <= bracket["max_count"]:
+            return float(bracket["score"])
+    return floor
+
+
+@embedding(
+    "gap_report_blocking_count",
+    inputs=["gap_report_path"],
+)
+def _gap_report_blocking_count(gap_report_path: str) -> int | None:
+    """Read the gap report and count **blocking** markers.
+
+    Documented framework exception: this embedding has a file-I/O side
+    effect — the gap report is the authoritative source and the
+    framework reads it rather than duplicating its content into the
+    feature file. The path can be absolute or repo-relative; we resolve
+    relative paths against the repo root.
+    """
+    if not gap_report_path:
+        return None
+    p = _Path(gap_report_path)
+    if not p.is_absolute():
+        p = _REPO_ROOT / p
+    if not p.exists():
+        return None
+    try:
+        text = p.read_text(encoding="utf-8")
+    except (OSError, UnicodeDecodeError):
+        return None
+    return _count_blocking_markers(text)
+
+
+@embedding(
+    "data_availability_score",
+    inputs=["gap_report_blocking_count"],
+)
+def _data_availability_score(
+    gap_report_blocking_count: int | None,
+    *, weights_yaml: dict,
+) -> float | None:
+    """Data Availability axis score: 1.0-5.0 (or None for no gap report)."""
+    if gap_report_blocking_count is None:
+        return None
+    brackets, floor = _load_da_weights(weights_yaml)
+    return _da_score_from_count(gap_report_blocking_count, brackets, floor)

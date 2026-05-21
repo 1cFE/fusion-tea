@@ -29,6 +29,12 @@ customization_diagnostics:
   raw_average: 2.0
   customization_score: 2.33
   extracted_at: '2026-05-20'
+data_availability_diagnostics:
+  gap_report_path: null
+  report_exists: false
+  blocking_count: null
+  data_availability_score: null
+  extracted_at: '2026-05-20'
 driver_technology:
   value: Plasma armature railgun (~10 km/s into magnetized D-D targets)
   provenance: taxonomy
