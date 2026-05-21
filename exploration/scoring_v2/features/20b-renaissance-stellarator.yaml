@@ -56,6 +56,28 @@ mif_method:
   provenance: taxonomy
   confidence: high
   extracted_at: '2026-05-20'
+modularity_diagnostics:
+  min_viable_device_scale: 2.0
+  percent_mod: 3.0
+  unit_multiplicity: 5.0
+  modularity_score: 3.0
+  mvs_lookup_key: MFE|Stellarator
+  vessel_lookup_key: MFE|Stellarator|*
+  magnet_driver_lookup_key: MFE|HTS (continuous helical)|*
+  blanket_lookup_key: D-T|Other/hybrid
+  vessel_modularity_rating: 2.0
+  magnet_driver_modularity_rating: 3.0
+  blanket_modularity_rating: 4.0
+  capex_shares_used:
+    w_vessel: 0.0
+    w_coils: 0.0
+    w_blanket: 0.0125
+    sum: 0.0125
+    method: equal_weight_fallback_sparse_capex
+  unit_count_estimate: 40
+  blanket_assumed: false
+  v5_calibration_target: 3.03
+  extracted_at: '2026-05-20'
 non_standard_mechanism:
   value: N/A
   provenance: taxonomy
@@ -86,32 +108,17 @@ tokamak_shape:
   provenance: taxonomy
   confidence: high
   extracted_at: '2026-05-20'
-w_aux:
-  value: 0.06820076705019176
-  provenance: analyses/20b-renaissance-stellarator/model_output.txt
-  confidence: medium
-  extracted_at: '2026-05-17'
+unit_count_estimate:
+  value: 40
+  provenance: modularity_implementation_spec.md Change E
+  confidence: high
+  extracted_at: '2026-05-20'
 w_blanket:
   value: 0.012506253126563283
   provenance: analyses/20b-renaissance-stellarator/model_output.txt
   confidence: medium
   extracted_at: '2026-05-17'
-w_bop:
-  value: 0.3536768384192096
-  provenance: analyses/20b-renaissance-stellarator/model_output.txt
-  confidence: medium
-  extracted_at: '2026-05-17'
-w_civil:
-  value: 0.5656161414040354
-  provenance: analyses/20b-renaissance-stellarator/model_output.txt
-  confidence: medium
-  extracted_at: '2026-05-17'
 w_coils:
-  value: 0.0
-  provenance: analyses/20b-renaissance-stellarator/model_output.txt
-  confidence: medium
-  extracted_at: '2026-05-17'
-w_fuel_cycle:
   value: 0.0
   provenance: analyses/20b-renaissance-stellarator/model_output.txt
   confidence: medium

@@ -69,6 +69,11 @@ def validate_features_file(path: Path | str, schema: dict[str, dict[str, Any]] |
                 raise SchemaError(
                     f"{path.name}: {feat_name}.value: expected float, got {type(value).__name__}"
                 )
+        elif entry["type"] == "int":
+            if not isinstance(value, int) or isinstance(value, bool):
+                raise SchemaError(
+                    f"{path.name}: {feat_name}.value: expected int, got {type(value).__name__}"
+                )
         else:
             raise SchemaError(f"{path.name}: {feat_name}: unknown type {entry['type']!r}")
 
@@ -81,9 +86,19 @@ def validate_features_file(path: Path | str, schema: dict[str, dict[str, Any]] |
                 f"{path.name}: {feat_name}.confidence: must be low|medium|high"
             )
 
-    # Reject unknown top-level keys (other than _meta) to prevent silent typos.
+    # Reject unknown top-level keys (other than _meta and per-axis
+    # `{axis}_diagnostics` blocks) to prevent silent typos. Diagnostic
+    # blocks are populated by the per-axis scripts (e.g.
+    # populate_modularity_diagnostics.py) and have arbitrary mapping
+    # shape; they are not subject to feature-style validation.
     for key in doc:
         if key == "_meta":
+            continue
+        if key.endswith("_diagnostics"):
+            if not isinstance(doc[key], dict):
+                raise SchemaError(
+                    f"{path.name}: {key}: must be a mapping"
+                )
             continue
         if key not in schema:
             raise SchemaError(f"{path.name}: unknown feature {key!r} (not declared in schema)")

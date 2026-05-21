@@ -1,18 +1,207 @@
-# Default weight matrix for scoring_v2.
-# Three dimensions; weight 0 (or omission) means "no contribution."
-# Plain-text edits to this file propagate via re-running score.py — no LLM call.
+# Default weight matrix for scoring_v2 — 7 peer axes + weighted-average composite.
+#
+# Each axis declares:
+#   axis_weight       — contribution to the composite (UI tunable, default 1.0)
+#   embedding_weights — within-axis blend; embeddings must be registered in
+#                       rulebook.py
+#   (optional)        — axis-specific sub-tables (lookup tables, severity
+#                       weights, bracket schedules) consumed by lookup-based
+#                       embeddings via the `weights_yaml` keyword arg.
+#
+# Plain-text edits propagate via re-running score.py. No LLM call.
+#
+# Only the modularity axis is fully populated in this PR; the other six axes
+# are placeholders that P3-P5 will populate. Until then their axis blocks
+# carry an empty `embedding_weights` dict so the framework treats them as
+# null (the composite skips and rescales).
 
-economic_potential: {}
+composite:
+  formula: weighted_average
+  null_handling: skip               # rescale remaining axis_weights when an
+                                    # axis is null (per design.md §1)
 
-technical_feasibility: {}
+# ─────────────────────────────────────────────────────────────────────────
+# Modularity (v5 three-component formula)
+#
+#   modularity_score = 0.50 × mvs + 0.25 × percent_mod + 0.25 × unit_multiplicity
+#
+# Source of truth: modularity_implementation_spec.md (Change A) and
+# modularity_matrix_v5.md (per-concept calibration scores).
+# ─────────────────────────────────────────────────────────────────────────
 
-manufacturability_scale_out:
-  # Plant-level modularity group (slice 1) — halved for the 50/50 blend with
-  # the component-modularity group landed in slice 2.
-  min_viable_device_scale:        0.15
-  hardware_topology_complexity:   0.15
-  unit_multiplicity:              0.10
-  subsystem_stack_burden:         0.10
-  # Component-level modularity group (slice 2) — single aggregate of seven
-  # subsystem ratings blended by per-concept capex shares.
-  component_modularity_aggregate: 0.50
+modularity:
+  axis_weight: 1.0
+  embedding_weights:
+    min_viable_device_scale:        0.50
+    percent_mod:                    0.25
+    unit_multiplicity:              0.25
+
+  # Unit-multiplicity bracket schedule. unit_count_estimate is bucketed into
+  # one of these score values; the first bracket whose max_count >= N wins.
+  # Floor is the unit_count_floor_score. Boundaries calibrated against the
+  # v5 matrix examples (CFS N=18 → 4, EMC2 N=6 → 3, Xcimer N=4 → 2,
+  # ENN N=14 → 4, Type One/Renaissance N=40 → 5).
+  unit_count_brackets:
+    - {max_count: 1,  score: 1}
+    - {max_count: 4,  score: 2}
+    - {max_count: 10, score: 3}
+    - {max_count: 30, score: 4}
+  unit_count_floor_score: 5
+
+  # Minimum viable device scale lookup. Keys built by _mvs_key() in rulebook.py
+  # from confinement_family / mfe_topology / ife_driver / mif_method /
+  # non_standard_mechanism / tokamak_shape / driver_technology /
+  # magnet_type. Covers all 40 concepts.
+  mvs_lookup:
+    # MFE Tokamaks — split by shape; LTS-override below sends BEST to non-compact
+    "MFE|Tokamak (compact)":              3      # CFS, Energy Singularity
+    "MFE|Tokamak (spherical)":            3      # Tokamak Energy ST, ENN EHL-2
+    "MFE|Tokamak (negative-T)":           3      # Firefly NTT
+    "MFE|Tokamak (non-compact)":          2      # BEST (LTS, large bespoke)
+
+    # MFE Stellarators
+    "MFE|Stellarator":                    2
+
+    # MFE Compact Toroid / FRC
+    "MFE|FRC":                            4
+
+    # MFE Open/Linear — disambiguated by primary_heating / driver_technology
+    "MFE|Mirror":                         4      # Pale Blue p-B11, Realta D-T
+    "MFE|Z-pinch (sheared-flow)":         4      # Zap (Ohmic self-pinch)
+
+    # MFE Dipole — orbital variant lives at same key (lookup-key-equal)
+    "MFE|Levitated dipole":               3
+    "MFE|Other":                          3      # Polomac (fallback for MFE dipole-like)
+
+    # MIF
+    "MIF|MagLIF":                         5      # Pacific MagLIF
+    "MIF|Pneumatic compression":          5      # General Fusion, NearStar MTIF
+    "MIF|FRC compression":                5      # Helion
+
+    # IFE Laser — Xcimer KrF gets its own key via driver_technology disambiguation
+    "IFE|Laser":                          4      # generic DPSSL baseline
+    "IFE|Laser (Xcimer-class)":           3      # KrF excimer (large e-beam tanks)
+    "IFE|Laser (liquid jet)":             4      # Cortex (driver_technology marker)
+
+    # IFE other drivers
+    "IFE|Heavy ion beam":                 4
+    "IFE|Projectile":                     3
+    "IFE|Acoustic":                       5
+
+    # Non-Standard
+    "Non-Standard|Electrostatic":         5
+    "Non-Standard|Plasma focus":          4
+    "Non-Standard|Muon-catalyzed":        3
+    "Non-Standard|Particle accelerator":  3
+
+  # Vessel subsystem modularity. Keyed by Confinement Family | topology/method
+  # | qualifier. Tokamak shape disambiguation; MIF pneumatic gets a fuel-level
+  # split (D-T harder than D-D).
+  vessel_lookup:
+    "MFE|Tokamak|compact":                4
+    "MFE|Tokamak|spherical":              4
+    "MFE|Tokamak|non-compact":            2
+    "MFE|Stellarator|*":                  2
+    "MFE|FRC|*":                          3
+    "MFE|Mirror|*":                       3
+    "MFE|Z-pinch|*":                      3
+    "MFE|Dipole|*":                       3
+    "MFE|Other|*":                        3
+
+    "MIF|MagLIF|*":                       5
+    "MIF|Pneumatic compression|D-T":      4
+    "MIF|Pneumatic compression|D-D":      5
+    "MIF|FRC compression|*":              5
+
+    "IFE|Laser|*":                        3
+    "IFE|Heavy ion beam|*":               3
+    "IFE|Projectile|*":                   3
+    "IFE|Acoustic|*":                     3
+
+    "Non-Standard|Electrostatic|*":       3
+    "Non-Standard|Plasma focus|*":        3
+    "Non-Standard|Muon-catalyzed|*":      3
+    "Non-Standard|Particle accelerator|*": 3
+
+  # Magnet/driver subsystem modularity. MFE keyed by magnet_type (with
+  # Z-pinch special case via primary_heating="Ohmic (self-pinch)");
+  # MIF/IFE/Non-Standard keyed by driver category.
+  magnet_driver_lookup:
+    "MFE|HTS (wound)|*":                  5
+    "MFE|HTS (integrated)|*":             4
+    "MFE|HTS (planar)|*":                 5
+    "MFE|HTS (segmented)|*":              5
+    "MFE|HTS (continuous helical)|*":     3
+    "MFE|LTS|*":                          2
+    "MFE|LTS+HTS|*":                      2
+    "MFE|Resistive|*":                    3
+    "MFE|Magnetic pinch|*":               3
+    "MFE|N/A|*":                          3      # MFE fallback when magnet_type missing
+    "MFE|TBD|*":                          3      # MFE fallback when magnet_type=TBD
+    "MFE|*|*":                            3      # MFE final fallback (exotic configs)
+
+    "MIF|*|Pulsed power":                 5
+    "MIF|*|Pneumatic":                    5
+    "MIF|*|Capacitor compression":        5
+    "MIF|*|Railgun":                      5      # NearStar plasma armature railgun
+    "MIF|*|*":                            5      # MIF fallback — Pneumatic-class by default
+
+    "IFE|*|DPSSL Laser":                  5
+    "IFE|*|Gas Laser":                    3
+    "IFE|*|Heavy ion beam":               3
+    "IFE|*|Projectile":                   5
+    "IFE|*|Acoustic":                     3
+    "IFE|*|*":                            3      # IFE fallback
+
+    "Non-Standard|*|IEC":                 5
+    "Non-Standard|*|Plasma focus":        3
+    "Non-Standard|*|Particle accelerator": 3
+    "Non-Standard|*|Muon catalysis":      3
+    "Non-Standard|*|*":                   3      # Non-Standard fallback
+
+  # Blanket subsystem modularity. Keyed by fuel | blanket_config.
+  blanket_lookup:
+    "p-B11|*":                            5
+    "D-D|*":                              5
+    "D-He3|*":                            5
+
+    "D-T|Liquid metal":                   5
+    "D-T|Molten salt":                    5
+    "D-T|Solid breeder":                  4
+    "D-T|Other/hybrid":                   4
+    # TBD → 4 per the v5 BEST calibration (spec is internally inconsistent
+    # between "TBD defaults to Liquid metal=5" and "BEST bl=4 in v5 matrix";
+    # the calibration target wins).
+    "D-T|TBD":                            4
+    "D-T|N/A":                            5
+    "D-T|N/A (no tritium)":               5
+    "D-T|N/A (non-power)":                4
+
+# ─────────────────────────────────────────────────────────────────────────
+# Placeholders for the six remaining axes (P3-P5 will populate).
+# Empty embedding_weights → axis scores null → composite skips and rescales.
+# ─────────────────────────────────────────────────────────────────────────
+
+supply_chain:
+  axis_weight: 1.0
+  embedding_weights: {}
+
+plant_complexity:
+  axis_weight: 1.0
+  embedding_weights: {}
+
+customization:
+  axis_weight: 1.0
+  embedding_weights: {}
+
+upper_cf:
+  axis_weight: 1.0
+  embedding_weights: {}
+
+technical_feasibility:
+  axis_weight: 1.0
+  embedding_weights: {}
+
+data_availability:
+  axis_weight: 1.0
+  embedding_weights: {}

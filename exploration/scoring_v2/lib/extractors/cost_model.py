@@ -1,17 +1,27 @@
 """Cost-model extractor.
 
 Parses exploration/concept_analysis/analyses/{concept_id}/model_output.txt and
-emits the seven `w_*` capex weight-share features used by the
-`component_modularity_aggregate` embedding.
+emits the three `w_*` capex weight-share features (w_vessel, w_coils,
+w_blanket) consumed by the modularity v5 `_percent_mod` embedding.
 
 Behavior per design (.project/active/scoring-v2-component-modularity-slice/design.md):
-- Sum `$` per subsystem bucket using the static CAS_TO_SUBSYSTEM dict below.
-- Each `w_*` is the bucket's share of the total covered $ (so the 7 sum to 1.0).
-- Codes seen in the file but absent from the dict are ignored (financial, indirect,
-  O&M, fuel, IDC, contingency — see the design note).
+- Sum `$` per subsystem bucket using the static CAS_TO_SUBSYSTEM dict below
+  (mapping kept across all 7 subsystems so the dollars are correctly
+  classified before normalization).
+- Each `w_*` is the bucket's share of the 7-subsystem total covered $ (so
+  the source shares sum to 1.0 across all 7; the v5 percent_mod embedding
+  renormalizes the 3 retained shares to sum to 1.0 within itself).
+- Codes seen in the file but absent from the dict are ignored (financial,
+  indirect, O&M, fuel, IDC, contingency — see the design note).
 - Codes in the dict not seen in the file contribute 0 to that bucket.
-- If `model_output.txt` does not exist for the concept, the extractor returns
-  no value (raises KeyError for the missing-feature path). No fallback.
+- If `model_output.txt` does not exist for the concept, the extractor
+  returns no value (raises KeyError). No fallback.
+
+P2 of the scoring-v3 rewrite trimmed the EMITTED_SUBSYSTEMS tuple from
+seven to three. The internal SUBSYSTEMS tuple stays at seven so the
+parser correctly aggregates dollars classified to the retired
+bop/fuel_cycle/aux/civil subsystems before normalization. Only the
+three retained subsystems are visible to the bulk extractor pipeline.
 
 The dispatcher signature `extract(cid, fname, schema_entry) -> (value, prov, conf)`
 is provided so the bulk pipeline can call this extractor like any other.
@@ -25,7 +35,14 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[4]
 ANALYSES_DIR = ROOT / "exploration" / "concept_analysis" / "analyses"
 
+# Internal bucket set: covers every subsystem the CAS-to-subsystem dict
+# below maps onto, so the parser can classify every $ in the file.
 SUBSYSTEMS = ("vessel", "coils", "blanket", "bop", "fuel_cycle", "aux", "civil")
+
+# Externally-exposed subsystem set: the modularity v5 percent_mod embedding
+# only consumes these three. P2 of the scoring-v3 rewrite retired the
+# other four (their shares dilute the modularity signal per v5).
+EMITTED_SUBSYSTEMS = ("vessel", "coils", "blanket")
 
 CAS_TO_SUBSYSTEM: dict[str, str] = {
     # vessel
@@ -152,13 +169,23 @@ def extract(
 
     Raises KeyError if no cost model exists for the concept — the bulk caller
     treats this as "leave the feature absent" rather than fabricating a value.
+
+    Only the three EMITTED_SUBSYSTEMS (vessel, coils, blanket) are
+    addressable through the dispatcher; the retired bop/fuel_cycle/aux/civil
+    raise ValueError per fail-loud policy.
     """
     if not feature_name.startswith("w_"):
         raise ValueError(
             f"cost_model extractor only handles w_* features, got {feature_name!r}"
         )
     subsystem = feature_name[2:]
-    if subsystem not in SUBSYSTEMS:
+    if subsystem not in EMITTED_SUBSYSTEMS:
+        if subsystem in SUBSYSTEMS:
+            raise ValueError(
+                f"cost_model: subsystem {subsystem!r} (feature {feature_name!r}) "
+                f"was retired by scoring-v3 P2 — only "
+                f"{EMITTED_SUBSYSTEMS} are emitted"
+            )
         raise ValueError(
             f"cost_model: unknown subsystem {subsystem!r} (feature {feature_name!r})"
         )

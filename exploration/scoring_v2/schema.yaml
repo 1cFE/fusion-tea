@@ -170,10 +170,10 @@ energy_capture:
 # exploration/concept_analysis/analyses/{cid}/model_output.txt. Absent when
 # no model_output.txt exists for the concept (no fallback).
 #
-# P2 of the scoring-v3 rewrite will retire w_bop, w_fuel_cycle, w_aux,
-# w_civil (modularity v5 only consumes vessel/coils/blanket via the
-# vessel/magnet/blanket modularity ratings). Retained here through P1 so
-# the schema validates against existing feature files unchanged.
+# P2 of the scoring-v3 rewrite retired w_bop, w_fuel_cycle, w_aux, w_civil:
+# the modularity v5 percent_mod formula only consumes vessel/coils/blanket
+# (the four retired subsystems "are rarely modularized in any concept and
+# dilute the signal" per the v5 calibration narrative).
 
 w_vessel:
   type: float
@@ -190,27 +190,19 @@ w_blanket:
   required: false
   extractor: cost_model
 
-w_bop:
-  type: float
-  required: false
-  extractor: cost_model
-
-w_fuel_cycle:
-  type: float
-  required: false
-  extractor: cost_model
-
-w_aux:
-  type: float
-  required: false
-  extractor: cost_model
-
-w_civil:
-  type: float
-  required: false
-  extractor: cost_model
-
 # ─── Manual axis inputs ──────────────────────────────────────────────────
+
+# Number of identical factory-built precision units per plant (TF coil
+# segments, DPSSL beamlines, capacitor brick arrays, mirror cells, etc.).
+# Consumed by the modularity v5 unit_multiplicity rating embedding via a
+# bracket schedule (N=1 → 1, N=2 → 2, N=5-10 → 3, N=15-30 → 4, N≥50 → 5).
+# Populated manually per concept from architecture analysis (per the v5
+# matrix's narrative cells); see modularity_implementation_spec.md
+# Change E for the source-of-truth per-concept values.
+unit_count_estimate:
+  type: int
+  required: true
+  extractor: manual
 
 # Relative path (from repo root) to the concept's gap report, consumed by
 # the Data Availability axis. `null` when no gap report exists; the axis
