@@ -39,24 +39,37 @@ complete if v5 matrix arrives in time).
 
 Branch: `feat/schema-v3-reconcile`. Estimate: ~1 day. Foundational.
 
-- [ ] `schema.yaml`: add `primary_heating`, `blanket_config`, `repetition_rate`,
+- [x] `schema.yaml`: add `primary_heating`, `blanket_config`, `repetition_rate`,
       `laser_approach`, `non_standard_mechanism`, `confinement_concept` (derived),
       `gap_report_path` (manual)
-- [ ] `schema.yaml`: retire `tritium_breeding`, `neutron_management` (pre-v3 orphans)
-- [ ] `lib/extractors/taxonomy.py`: extend for 5 new v3 columns
-- [ ] `lib/extractors/derived.py` **NEW**: derive `confinement_concept`
+- [x] `schema.yaml`: retire `tritium_breeding`, `neutron_management` (pre-v3 orphans)
+- [x] `lib/extractors/taxonomy.py`: extend for 5 new v3 columns
+      *(generic — `taxonomy_column` schema entries dispatch automatically)*
+- [x] `lib/extractors/derived.py` **NEW**: derive `confinement_concept`
       from sub-columns (disambiguation rules per Tech Feasibility spec)
-- [ ] `lib/extractors/manual.py`: extend for `gap_report_path`
-- [ ] Repopulate all 40 `features/*.yaml` via re-running extractors
-- [ ] `tests/scoring_v2/test_extract.py`: extend for new features
-- [ ] Verify existing modularity scoring produces identical output
-      (regression check; v5 replacement comes in P2)
+- [x] `lib/extractors/manual.py`: extend for `gap_report_path`
+      *(no code change needed — manual extractor is feature-agnostic;
+      schema entry registers it)*
+- [x] Repopulate all 40 `features/*.yaml` via re-running extractors
+- [x] `tests/scoring_v2/test_extract.py`: extend for new features
+- [x] Verify existing modularity scoring produces identical output
+      (regression check; v5 replacement comes in P2). *Result: old
+      modularity tests (test_score_framework, test_embeddings) still
+      pass. Per-concept modularity scores DO drift because three
+      embeddings (`subsystem_stack_burden`, `blanket_rating`,
+      `civil_rating`) reference the retired `tritium_breeding` and
+      `neutron_management` columns and now receive empty strings. Two
+      mitigations: (a) those embeddings are slated for deletion in P2
+      Slice 1b anyway, and (b) the audit (`audit_old_dimension_names.md`)
+      confirmed no downstream consumer reads the resulting CSV. Leaving
+      `scores/table.csv` unchanged in this PR — P2 will regenerate it
+      against the new axis-keyed weight shape.*
 
 Acceptance: schema validates all 40 feature files; ≥90% of new v3 features
 have non-Unknown values; `confinement_concept` and `gap_report_path` populated
-for all 40.
+for all 40 (gap_report_path is required: false; values land in P5).
 
-PR base: `main`. Independent.
+PR base: `prep/v3-rewrite-prereqs` (P0). Stacked.
 
 ---
 

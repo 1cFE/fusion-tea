@@ -1,71 +1,91 @@
 _meta:
   concept_id: 20a-type-one-stellarator
   name: Type One Stellarator (D-T)
+blanket_config:
+  value: Solid breeder
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-20'
+confinement_concept:
+  value: Modular stellarator
+  provenance: derived
+  confidence: high
+  extracted_at: '2026-05-20'
 confinement_family:
   value: MFE
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 driver_technology:
   value: Modular HTS stellarator coils (REBCO, 9 T)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 energy_capture:
   value: Thermal (steam)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 fuel:
   value: D-T
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 ife_driver:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
+laser_approach:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-20'
 magnet_type:
   value: HTS (3D stellarator)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 mfe_topology:
   value: Stellarator
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 mif_method:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
-neutron_management:
-  value: Integrated blanket/shield
+  extracted_at: '2026-05-20'
+non_standard_mechanism:
+  value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-20'
 operation_mode:
   value: Steady-state
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
+primary_heating:
+  value: RF (ECRH)
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-20'
+repetition_rate:
+  value: N/A
+  provenance: taxonomy
+  confidence: high
+  extracted_at: '2026-05-20'
 stellarator_type:
   value: Modular
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
+  extracted_at: '2026-05-20'
 tokamak_shape:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-19'
-tritium_breeding:
-  value: Solid ceramic breeder (HCPB)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-05-20'
 w_aux:
   value: 0.0755774344548711
   provenance: analyses/20a-type-one-stellarator/model_output.txt
