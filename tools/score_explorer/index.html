@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Fusion Concept Score Explorer</title>
 
-  <!-- React 18 + Recharts via CDN. No build step. -->
+  <!-- React 18 + htm via CDN. No build step, no Babel — htm is a
+       ~600-byte tagged-template helper that builds React elements
+       directly. Tagged template literals are ES6; every modern browser
+       supports them natively. -->
   <script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/recharts@2.13.3/umd/Recharts.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.25.6/babel.min.js"></script>
 
   <style>
     :root {
@@ -113,25 +114,56 @@
 
     .footer { color: var(--text-dim); font-size: 11px; margin-top: 24px; padding-top: 16px;
               border-top: 1px solid var(--border); }
+
+    .fatal-error { padding: 24px; max-width: 900px; margin: 40px auto; background: var(--panel);
+                   border: 1px solid var(--bad); border-radius: 6px; }
+    .fatal-error h2 { color: var(--bad); margin-bottom: 8px; }
+    .fatal-error pre { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 12px;
+                       background: var(--bg); padding: 12px; border-radius: 4px; overflow: auto;
+                       color: var(--warn); white-space: pre-wrap; word-break: break-word; }
   </style>
 </head>
 <body>
   <div id="root">Loading…</div>
 
-  <script type="text/babel" data-presets="env,react">
+  <!-- Show any uncaught error directly on the page so the user doesn't
+       have to dig in DevTools to see what went wrong. -->
+  <script>
+    window.addEventListener("error", function (e) {
+      var el = document.getElementById("root");
+      if (el) {
+        el.innerHTML =
+          '<div class="fatal-error">' +
+          '<h2>Score Explorer failed to load</h2>' +
+          '<p>Open DevTools (F12) for full details. Top-line error:</p>' +
+          '<pre></pre>' +
+          '</div>';
+        el.querySelector("pre").textContent =
+          (e.error && (e.error.stack || e.error.message)) || e.message || String(e);
+      }
+    });
+    window.addEventListener("unhandledrejection", function (e) {
+      var el = document.getElementById("root");
+      if (el) {
+        el.innerHTML =
+          '<div class="fatal-error">' +
+          '<h2>Score Explorer: unhandled promise rejection</h2>' +
+          '<pre></pre>' +
+          '</div>';
+        el.querySelector("pre").textContent =
+          (e.reason && (e.reason.stack || e.reason.message)) || String(e.reason);
+      }
+    });
+  </script>
+
+  <script type="module">
+    import htm from "https://unpkg.com/htm@3.1.1?module";
+    const html = htm.bind(React.createElement);
     const { useEffect, useMemo, useState } = React;
-    const {
-      ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip,
-    } = Recharts;
 
     const AXES = [
-      "modularity",
-      "supply_chain",
-      "plant_complexity",
-      "customization",
-      "upper_cf",
-      "technical_feasibility",
-      "data_availability",
+      "modularity", "supply_chain", "plant_complexity", "customization",
+      "upper_cf", "technical_feasibility", "data_availability",
     ];
     const AXIS_LABEL = {
       modularity:            "Modularity",
@@ -144,10 +176,10 @@
     };
 
     const PRESETS = {
-      "Equal":               Object.fromEntries(AXES.map(a => [a, 1.0])),
-      "Physics-first":       Object.fromEntries(AXES.map(a => [a, a === "technical_feasibility" ? 2.0 : 1.0])),
-      "Commercial-first":    Object.fromEntries(AXES.map(a => [a,
-        ["modularity", "supply_chain", "plant_complexity"].includes(a) ? 1.5 : 1.0])),
+      "Equal":            Object.fromEntries(AXES.map(a => [a, 1.0])),
+      "Physics-first":    Object.fromEntries(AXES.map(a => [a, a === "technical_feasibility" ? 2.0 : 1.0])),
+      "Commercial-first": Object.fromEntries(AXES.map(a =>
+        [a, ["modularity", "supply_chain", "plant_complexity"].includes(a) ? 1.5 : 1.0])),
     };
 
     function scoreClass(v) {
@@ -155,21 +187,22 @@
       const n = Math.round(v);
       return `score-${Math.max(1, Math.min(5, n))}`;
     }
-    function fmt(v, d=2) { return v == null ? "—" : Number(v).toFixed(d); }
+    function fmt(v, d = 2) { return v == null ? "—" : Number(v).toFixed(d); }
 
     function recompositeOne(concept, axisWeights) {
-      // Skip-and-rescale over non-null axis scores; same logic as score.py
-      const included = AXES.filter(a => concept.scores[a] != null && (axisWeights[a] || 0) > 0);
+      const included = AXES.filter(a =>
+        concept.scores[a] != null && (axisWeights[a] || 0) > 0);
       if (!included.length) return { composite: null, included: [] };
       const norm = included.reduce((s, a) => s + axisWeights[a], 0);
       if (norm === 0) return { composite: null, included };
-      const composite = included.reduce((s, a) => s + concept.scores[a] * axisWeights[a], 0) / norm;
+      const composite = included.reduce(
+        (s, a) => s + concept.scores[a] * axisWeights[a], 0) / norm;
       return { composite, included };
     }
 
     function App() {
       const [concepts, setConcepts] = useState(null);
-      const [weights, setWeights] = useState(null);
+      const [weights, setWeights]   = useState(null);
       const [axisWeights, setAxisWeights] = useState(null);
       const [selected, setSelected] = useState(null);
       const [activePreset, setActivePreset] = useState("Equal");
@@ -179,25 +212,30 @@
       const [familyFilter, setFamilyFilter] = useState("All");
       const [sortBy, setSortBy] = useState("composite");
       const [sortDir, setSortDir] = useState("desc");
+      const [loadError, setLoadError] = useState(null);
 
       useEffect(() => {
         Promise.all([
-          fetch("data/concepts.json").then(r => r.json()),
-          fetch("data/weights.json").then(r => r.json()),
+          fetch("data/concepts.json").then(r => {
+            if (!r.ok) throw new Error(`concepts.json: HTTP ${r.status}`);
+            return r.json();
+          }),
+          fetch("data/weights.json").then(r => {
+            if (!r.ok) throw new Error(`weights.json: HTTP ${r.status}`);
+            return r.json();
+          }),
         ]).then(([c, w]) => {
           setConcepts(c);
           setWeights(w);
           setAxisWeights(Object.fromEntries(w.axes.map(a => [a.name, a.axis_weight])));
-        }).catch(e => {
-          document.getElementById("root").innerText = `Failed to load data: ${e}`;
-        });
+        }).catch(e => setLoadError(e.message || String(e)));
       }, []);
 
       const composited = useMemo(() => {
         if (!concepts || !axisWeights) return [];
         return concepts.map(c => {
           const { composite, included } = recompositeOne(c, axisWeights);
-          return { ...c, _composite: composite, _included: included };
+          return Object.assign({}, c, { _composite: composite, _included: included });
         });
       }, [concepts, axisWeights]);
 
@@ -205,26 +243,23 @@
         let rows = composited;
         if (filter) {
           const f = filter.toLowerCase();
-          rows = rows.filter(c => c.name.toLowerCase().includes(f) ||
-                                   c.concept_id.toLowerCase().includes(f));
+          rows = rows.filter(c =>
+            c.name.toLowerCase().includes(f) ||
+            c.concept_id.toLowerCase().includes(f));
         }
-        if (fuelFilter !== "All") {
-          rows = rows.filter(c => c.features.fuel === fuelFilter);
-        }
-        if (familyFilter !== "All") {
-          rows = rows.filter(c => c.features.confinement_family === familyFilter);
-        }
+        if (fuelFilter !== "All")   rows = rows.filter(c => c.features.fuel === fuelFilter);
+        if (familyFilter !== "All") rows = rows.filter(c => c.features.confinement_family === familyFilter);
         return rows;
       }, [composited, filter, fuelFilter, familyFilter]);
 
       const sorted = useMemo(() => {
         if (!filtered.length) return filtered;
         const dir = sortDir === "asc" ? 1 : -1;
-        return [...filtered].sort((a, b) => {
+        return filtered.slice().sort((a, b) => {
           let av, bv;
-          if (sortBy === "composite") { av = a._composite; bv = b._composite; }
-          else if (sortBy === "name") { return dir * a.name.localeCompare(b.name); }
-          else { av = a.scores[sortBy]; bv = b.scores[sortBy]; }
+          if (sortBy === "composite")  { av = a._composite; bv = b._composite; }
+          else if (sortBy === "name")  { return dir * a.name.localeCompare(b.name); }
+          else                          { av = a.scores[sortBy]; bv = b.scores[sortBy]; }
           if (av == null && bv == null) return 0;
           if (av == null) return 1;
           if (bv == null) return -1;
@@ -233,31 +268,28 @@
       }, [filtered, sortBy, sortDir]);
 
       function setAxisWeight(axis, value) {
-        setAxisWeights(prev => ({ ...prev, [axis]: value }));
+        setAxisWeights(prev => Object.assign({}, prev, { [axis]: value }));
         setActivePreset(null);
       }
-
       function applyPreset(name) {
         setActivePreset(name);
-        setAxisWeights({ ...PRESETS[name] });
+        setAxisWeights(Object.assign({}, PRESETS[name]));
       }
-
       function exportCsv() {
         const cols = ["concept_id", "name", ...AXES, "composite"];
         const lines = [cols.join(",")];
         sorted.forEach(c => {
-          const row = [
+          lines.push([
             c.concept_id,
             `"${c.name.replace(/"/g, '""')}"`,
             ...AXES.map(a => c.scores[a] != null ? c.scores[a].toFixed(4) : ""),
             c._composite != null ? c._composite.toFixed(4) : "",
-          ];
-          lines.push(row.join(","));
+          ].join(","));
         });
         downloadFile("rankings.csv", lines.join("\n"), "text/csv");
       }
       function exportJson() {
-        const out = {
+        downloadFile("rankings.json", JSON.stringify({
           axis_weights: axisWeights,
           generated_at: new Date().toISOString(),
           rankings: sorted.map(c => ({
@@ -265,8 +297,7 @@
             scores: c.scores, composite: c._composite,
             composite_axes_included: c._included,
           })),
-        };
-        downloadFile("rankings.json", JSON.stringify(out, null, 2), "application/json");
+        }, null, 2), "application/json");
       }
       function downloadFile(name, content, mime) {
         const blob = new Blob([content], { type: mime });
@@ -277,203 +308,224 @@
         document.body.removeChild(a); URL.revokeObjectURL(url);
       }
 
-      if (!concepts || !weights || !axisWeights) return <div>Loading…</div>;
+      if (loadError) {
+        return html`
+          <div class="fatal-error">
+            <h2>Failed to load data</h2>
+            <pre>${loadError}</pre>
+            <p style=${{ color: "var(--text-dim)", marginTop: 12 }}>
+              Make sure you're serving the directory over HTTP
+              (not file://) and that data/concepts.json + data/weights.json
+              are present. Run
+              <code>uv run python tools/score_explorer/build.py</code>
+              from the repo root to regenerate them.
+            </p>
+          </div>
+        `;
+      }
+      if (!concepts || !weights || !axisWeights) {
+        return html`<div style=${{ padding: 24 }}>Loading…</div>`;
+      }
 
       const fuels    = ["All", ...new Set(concepts.map(c => c.features.fuel).filter(Boolean))];
       const families = ["All", ...new Set(concepts.map(c => c.features.confinement_family).filter(Boolean))];
 
-      return (
-        <div className="app">
-          <aside className="sidebar">
-            <h1>Score Explorer</h1>
-            <div className="subtitle">7 axes · {concepts.length} concepts</div>
+      const sliderRows = weights.axes.map(axisInfo => {
+        const a = axisInfo.name;
+        const w = axisWeights[a];
+        const hasSubTables = Object.keys(axisInfo.sub_tables || {}).length > 0;
+        const advancedPanel = expandedAxis === a && hasSubTables ? html`
+          <div class="advanced-panel">
+            ${Object.entries(axisInfo.sub_tables).map(([tname, tbl]) => html`
+              <div key=${tname}>
+                <div class="table-name">${tname}</div>
+                ${(Array.isArray(tbl)
+                  ? tbl.map((v, i) => [`#${i}`, JSON.stringify(v)])
+                  : Object.entries(tbl)
+                ).map(([k, v], i) => html`
+                  <div class="row" key=${i}>
+                    <span class="k">${k}</span>
+                    <span class="v">${typeof v === "object" ? JSON.stringify(v) : String(v)}</span>
+                  </div>
+                `)}
+              </div>
+            `)}
+            <div style=${{ marginTop: 6, color: "var(--text-dim)" }}>
+              Sub-tables are read-only here. Edit weights/default.yaml + re-run
+              score.py + build.py to change them.
+            </div>
+          </div>
+        ` : null;
+        return html`
+          <div class="slider-row" key=${a}>
+            <div class="label">
+              <span class="name">${AXIS_LABEL[a]}</span>
+              <span class="value">${w.toFixed(2)}</span>
+            </div>
+            <input type="range" min="0" max="3" step="0.05" value=${w}
+                   onChange=${e => setAxisWeight(a, parseFloat(e.target.value))}/>
+            ${hasSubTables ? html`
+              <div class="advanced"
+                   onClick=${() => setExpandedAxis(expandedAxis === a ? null : a)}>
+                ${expandedAxis === a ? "▾" : "▸"} Advanced (sub-tables)
+              </div>
+            ` : null}
+            ${advancedPanel}
+          </div>
+        `;
+      });
 
-            <h2 style={{ marginTop: 18 }}>Presets</h2>
-            <div className="presets">
-              {Object.keys(PRESETS).map(name =>
-                <button key={name}
-                        className={activePreset === name ? "active" : ""}
-                        onClick={() => applyPreset(name)}>{name}</button>
-              )}
+      const tableRows = sorted.map(c => html`
+        <tr key=${c.concept_id}
+            class=${selected && selected.concept_id === c.concept_id ? "selected" : ""}
+            onClick=${() => setSelected(c)}>
+          <td>
+            <div style=${{ fontWeight: 500 }}>${c.name}</div>
+            <div style=${{ color: "var(--text-dim)", fontSize: 11 }}>
+              ${c.features.confinement_family} · ${c.features.fuel}
+            </div>
+          </td>
+          ${AXES.map(a => {
+            const v = c.scores[a];
+            return html`
+              <td key=${a} class=${`num ${scoreClass(v)}`}>
+                ${v != null ? html`<span class="bar"><i style=${{ width: `${v * 20}%` }}/></span>` : null}
+                ${fmt(v, 2)}
+              </td>
+            `;
+          })}
+          <td class="composite">${fmt(c._composite, 2)}</td>
+        </tr>
+      `);
+
+      const detailPanel = selected ? html`
+        <div class="detail">
+          <h2>Concept detail</h2>
+          <div class="concept-name">${selected.name}</div>
+
+          <h3>Features</h3>
+          <div class="features-grid">
+            ${Object.entries(selected.features).map(([k, v]) => html`
+              <div key=${k}><span class="k">${k}:</span> <span class="v">${String(v)}</span></div>
+            `)}
+          </div>
+
+          <h3>Composite</h3>
+          <div style=${{ marginBottom: 8, fontSize: 13 }}>
+            <span class=${scoreClass(selected._composite)} style=${{ fontSize: 18, fontWeight: 600 }}>
+              ${fmt(selected._composite, 2)}
+            </span>
+            ${" — "}
+            <span style=${{ color: "var(--text-dim)" }}>
+              weighted mean of ${selected._included.length} of 7 axes
+              ${selected._included.length < 7 ? html`
+                <span> (skipped: ${AXES.filter(a => !selected._included.includes(a))
+                                       .map(a => AXIS_LABEL[a]).join(", ")})</span>
+              ` : null}
+            </span>
+          </div>
+
+          <h3>Per-axis breakdown</h3>
+          ${AXES.map(a => {
+            const block = selected.diagnostics && selected.diagnostics[`${a}_diagnostics`];
+            const v = selected.scores[a];
+            return html`
+              <div class="diagnostic" key=${a}>
+                <h3>
+                  <span>${AXIS_LABEL[a]}</span>
+                  <span class=${`axis-score ${scoreClass(v)}`}>${fmt(v, 2)}</span>
+                </h3>
+                ${block
+                  ? html`<pre>${JSON.stringify(block, null, 2)}</pre>`
+                  : html`<div class="null" style=${{ fontSize: 12 }}>(no diagnostic block)</div>`
+                }
+              </div>
+            `;
+          })}
+        </div>
+      ` : null;
+
+      return html`
+        <div class="app">
+          <aside class="sidebar">
+            <h1>Score Explorer</h1>
+            <div class="subtitle">7 axes · ${concepts.length} concepts</div>
+
+            <h2 style=${{ marginTop: 18 }}>Presets</h2>
+            <div class="presets">
+              ${Object.keys(PRESETS).map(name => html`
+                <button key=${name}
+                        class=${activePreset === name ? "active" : ""}
+                        onClick=${() => applyPreset(name)}>${name}</button>
+              `)}
             </div>
 
             <h2>Axis weights</h2>
-            {weights.axes.map(axisInfo => {
-              const a = axisInfo.name;
-              const w = axisWeights[a];
-              const hasSubTables = Object.keys(axisInfo.sub_tables || {}).length > 0;
-              return (
-                <div key={a} className="slider-row">
-                  <div className="label">
-                    <span className="name">{AXIS_LABEL[a]}</span>
-                    <span className="value">{w.toFixed(2)}</span>
-                  </div>
-                  <input type="range" min="0" max="3" step="0.05" value={w}
-                         onChange={e => setAxisWeight(a, parseFloat(e.target.value))}/>
-                  {hasSubTables && (
-                    <div className="advanced"
-                         onClick={() => setExpandedAxis(expandedAxis === a ? null : a)}>
-                      {expandedAxis === a ? "▾" : "▸"} Advanced (sub-tables)
-                    </div>
-                  )}
-                  {expandedAxis === a && hasSubTables && (
-                    <div className="advanced-panel">
-                      {Object.entries(axisInfo.sub_tables).map(([tname, tbl]) =>
-                        <div key={tname}>
-                          <div className="table-name">{tname}</div>
-                          {(Array.isArray(tbl) ? tbl : Object.entries(tbl)).map((entry, i) => {
-                            const [k, v] = Array.isArray(tbl) ? [`#${i}`, JSON.stringify(entry)] : entry;
-                            return (
-                              <div className="row" key={i}>
-                                <span className="k">{k}</span>
-                                <span className="v">{
-                                  typeof v === "object" ? JSON.stringify(v) : String(v)
-                                }</span>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      )}
-                      <div style={{ marginTop: 6, color: "var(--text-dim)" }}>
-                        Sub-tables are read-only here. Edit
-                        weights/default.yaml + re-run score.py + build.py
-                        to change them.
-                      </div>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+            ${sliderRows}
 
-            <div className="actions">
-              <button onClick={exportCsv}>Export CSV</button>
-              <button onClick={exportJson}>Export JSON</button>
+            <div class="actions">
+              <button onClick=${exportCsv}>Export CSV</button>
+              <button onClick=${exportJson}>Export JSON</button>
             </div>
           </aside>
 
-          <main className="main">
-            <div className="header">
+          <main class="main">
+            <div class="header">
               <h1>Concept rankings</h1>
-              <div className="subtitle">
+              <div class="subtitle">
                 Slide an axis weight to re-rank instantly. Click a row for details.
               </div>
             </div>
 
-            <div className="filter-bar">
+            <div class="filter-bar">
               <input type="search" placeholder="Filter by name / ID…"
-                     value={filter} onChange={e => setFilter(e.target.value)}/>
-              <select value={fuelFilter} onChange={e => setFuelFilter(e.target.value)}>
-                {fuels.map(f => <option key={f} value={f}>Fuel: {f}</option>)}
+                     value=${filter} onChange=${e => setFilter(e.target.value)}/>
+              <select value=${fuelFilter} onChange=${e => setFuelFilter(e.target.value)}>
+                ${fuels.map(f => html`<option key=${f} value=${f}>Fuel: ${f}</option>`)}
               </select>
-              <select value={familyFilter} onChange={e => setFamilyFilter(e.target.value)}>
-                {families.map(f => <option key={f} value={f}>Family: {f}</option>)}
+              <select value=${familyFilter} onChange=${e => setFamilyFilter(e.target.value)}>
+                ${families.map(f => html`<option key=${f} value=${f}>Family: ${f}</option>`)}
               </select>
-              <span className="count">{sorted.length} / {concepts.length}</span>
+              <span class="count">${sorted.length} / ${concepts.length}</span>
             </div>
 
-            <table className="ranking">
+            <table class="ranking">
               <thead>
                 <tr>
-                  <th className={sortBy === "name" ? "sorted" : ""}
-                      onClick={() => { setSortBy("name"); setSortDir(sortDir === "asc" ? "desc" : "asc"); }}>
+                  <th class=${sortBy === "name" ? "sorted" : ""}
+                      onClick=${() => { setSortBy("name"); setSortDir(sortDir === "asc" ? "desc" : "asc"); }}>
                     Concept
                   </th>
-                  {AXES.map(a =>
-                    <th key={a} className={sortBy === a ? "sorted" : ""}
-                        onClick={() => { setSortBy(a); setSortDir(sortDir === "asc" && sortBy === a ? "desc" : "asc"); }}
-                        title={`Axis weight: ${axisWeights[a].toFixed(2)}`}>
-                      {AXIS_LABEL[a]}
+                  ${AXES.map(a => html`
+                    <th key=${a}
+                        class=${sortBy === a ? "sorted" : ""}
+                        title=${`Axis weight: ${axisWeights[a].toFixed(2)}`}
+                        onClick=${() => { setSortBy(a); setSortDir(sortDir === "asc" && sortBy === a ? "desc" : "asc"); }}>
+                      ${AXIS_LABEL[a]}
                     </th>
-                  )}
-                  <th className={sortBy === "composite" ? "sorted" : ""}
-                      onClick={() => { setSortBy("composite"); setSortDir(sortDir === "asc" ? "desc" : "asc"); }}>
+                  `)}
+                  <th class=${sortBy === "composite" ? "sorted" : ""}
+                      onClick=${() => { setSortBy("composite"); setSortDir(sortDir === "asc" ? "desc" : "asc"); }}>
                     Composite
                   </th>
                 </tr>
               </thead>
-              <tbody>
-                {sorted.map(c => (
-                  <tr key={c.concept_id}
-                      className={selected?.concept_id === c.concept_id ? "selected" : ""}
-                      onClick={() => setSelected(c)}>
-                    <td>
-                      <div style={{ fontWeight: 500 }}>{c.name}</div>
-                      <div style={{ color: "var(--text-dim)", fontSize: 11 }}>
-                        {c.features.confinement_family} · {c.features.fuel}
-                      </div>
-                    </td>
-                    {AXES.map(a => {
-                      const v = c.scores[a];
-                      return (
-                        <td key={a} className={`num ${scoreClass(v)}`}>
-                          {v != null && <span className="bar"><i style={{ width: `${v * 20}%` }} /></span>}
-                          {fmt(v, 2)}
-                        </td>
-                      );
-                    })}
-                    <td className="composite">{fmt(c._composite, 2)}</td>
-                  </tr>
-                ))}
-              </tbody>
+              <tbody>${tableRows}</tbody>
             </table>
 
-            {selected && (
-              <div className="detail">
-                <h2>Concept detail</h2>
-                <div className="concept-name">{selected.name}</div>
+            ${detailPanel}
 
-                <h3>Features</h3>
-                <div className="features-grid">
-                  {Object.entries(selected.features).map(([k, v]) => (
-                    <div key={k}><span className="k">{k}:</span> <span className="v">{String(v)}</span></div>
-                  ))}
-                </div>
-
-                <h3>Composite</h3>
-                <div style={{ marginBottom: 8, fontSize: 13 }}>
-                  <span className={scoreClass(selected._composite)} style={{ fontSize: 18, fontWeight: 600 }}>
-                    {fmt(selected._composite, 2)}
-                  </span>
-                  {" — "}
-                  <span style={{ color: "var(--text-dim)" }}>
-                    weighted mean of {selected._included.length} of 7 axes
-                    {selected._included.length < 7 && (
-                      <> (skipped: {AXES.filter(a => !selected._included.includes(a)).map(a => AXIS_LABEL[a]).join(", ")})</>
-                    )}
-                  </span>
-                </div>
-
-                <h3>Per-axis breakdown</h3>
-                {AXES.map(a => {
-                  const block = selected.diagnostics?.[`${a}_diagnostics`];
-                  const v = selected.scores[a];
-                  return (
-                    <div key={a} className="diagnostic">
-                      <h3>
-                        <span>{AXIS_LABEL[a]}</span>
-                        <span className={`axis-score ${scoreClass(v)}`}>{fmt(v, 2)}</span>
-                      </h3>
-                      {block ? (
-                        <pre>{JSON.stringify(block, null, 2)}</pre>
-                      ) : (
-                        <div className="null" style={{ fontSize: 12 }}>(no diagnostic block)</div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-
-            <div className="footer">
+            <div class="footer">
               Data generated by <code>tools/score_explorer/build.py</code>.
-              Edit <code>weights/default.yaml</code> and re-run <code>score.py</code> + <code>build.py</code> to refresh.
+              Edit <code>weights/default.yaml</code> and re-run
+              <code>score.py</code> + <code>build.py</code> to refresh.
             </div>
           </main>
         </div>
-      );
+      `;
     }
 
-    ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+    ReactDOM.createRoot(document.getElementById("root")).render(html`<${App}/>`);
   </script>
 </body>
 </html>
