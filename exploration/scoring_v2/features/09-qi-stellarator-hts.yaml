@@ -16,6 +16,19 @@ confinement_family:
   provenance: taxonomy
   confidence: high
   extracted_at: '2026-05-20'
+customization_diagnostics:
+  sub_factor_a:
+    feature: energy_capture
+    value: Thermal (unspecified)
+    classification: thermal
+    score: 2
+  sub_factor_b:
+    feature: fuel
+    value: D-T
+    score: 1
+  raw_average: 1.5
+  customization_score: 1.67
+  extracted_at: '2026-05-20'
 driver_technology:
   value: 3D HTS stellarator coils (REBCO, 20 T)
   provenance: taxonomy
@@ -103,6 +116,15 @@ stellarator_type:
   provenance: taxonomy
   confidence: high
   extracted_at: '2026-05-20'
+supply_chain_diagnostics:
+  bottlenecks_triggered:
+    lithium6: 1.0
+    tritium: 1.0
+    vanadium: 1.0
+  bottleneck_weight: 3.0
+  supply_chain_score: 2.0
+  blanket_assumed: false
+  extracted_at: '2026-05-20'
 tokamak_shape:
   value: N/A
   provenance: taxonomy
@@ -112,6 +134,13 @@ unit_count_estimate:
   value: 50
   provenance: modularity_implementation_spec.md Change E
   confidence: high
+  extracted_at: '2026-05-20'
+upper_cf_diagnostics:
+  penalties_triggered:
+    neutronic_fuel: 1.0
+  operational_penalty_weight: 1.0
+  upper_cf_score: 4.0
+  blanket_assumed: false
   extracted_at: '2026-05-20'
 w_blanket:
   value: 0.12997359555676954

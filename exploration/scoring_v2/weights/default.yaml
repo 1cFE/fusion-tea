@@ -182,21 +182,67 @@ modularity:
 # Empty embedding_weights → axis scores null → composite skips and rescales.
 # ─────────────────────────────────────────────────────────────────────────
 
+# ─────────────────────────────────────────────────────────────────────────
+# Supply Chain — penalty-stack on critical-material bottlenecks
+#
+#   score = max(1.0, 5.0 - sum(severity_weights_of_triggered_bottlenecks))
+#
+# Triggers off fuel / blanket_config / confinement_family / primary_heating
+# per modularity_implementation_spec's supply_chain_implementation_spec.md.
+# ─────────────────────────────────────────────────────────────────────────
+
 supply_chain:
   axis_weight: 1.0
-  embedding_weights: {}
+  embedding_weights:
+    supply_chain_score: 1.0
+  bottleneck_severity_weights:
+    helium3:   3.0      # Critical: no terrestrial scaling path
+    tritium:   1.0      # Severe: CANDU-constrained, self-breeding the path
+    lithium6:  1.0      # Severe: no commercial enrichment exists
+    beryllium: 1.0      # Severe: single fusion plant ~ global annual supply
+    vanadium:  1.0      # Severe: nuclear-grade V-Cr-Ti at pilot scale only
+    flibe:     0.5      # Moderate: half-weight to avoid double-counting Li-6 + Be
+    kdp:       0.5      # Moderate: industrial manufacturing problem
 
 plant_complexity:
   axis_weight: 1.0
   embedding_weights: {}
 
+# ─────────────────────────────────────────────────────────────────────────
+# Customization — two sub-factors (thermal rejection + fuel safety)
+# rescaled from [1,4] to [1,5].
+# ─────────────────────────────────────────────────────────────────────────
+
 customization:
   axis_weight: 1.0
-  embedding_weights: {}
+  embedding_weights:
+    customization_score: 1.0
+  thermal_rejection_scores:
+    direct_conversion: 4    # Direct (inductive), Direct (charged particle)
+    hybrid:            3    # Hybrid (thermal + direct)
+    thermal:           2    # Thermal (*), Pulsed power, Projectile, Neutron, TBD
+  fuel_safety_scores:
+    p-B11:  4               # aneutronic, no tritium
+    D-He3:  3               # low neutron fraction, no tritium breeding
+    D-D:    2               # neutrons but no tritium handling
+    D-T:    1               # full tritium handling + breeding infrastructure
+
+# ─────────────────────────────────────────────────────────────────────────
+# Upper Capacity Factor — penalty-stack on operational architecture
+#
+#   score = max(1.0, 5.0 - sum(severity_weights_of_triggered_penalties))
+#
+# Triggers off fuel / blanket_config / operation_mode.
+# ─────────────────────────────────────────────────────────────────────────
 
 upper_cf:
   axis_weight: 1.0
-  embedding_weights: {}
+  embedding_weights:
+    upper_cf_score: 1.0
+  operational_penalty_weights:
+    pulsed_operation:      0.5    # Moderate: dwell + recharge between pulses
+    neutronic_fuel:        1.0    # Severe: forced replacement outages
+    non_renewable_blanket: 0.5    # Moderate: solid/static blanket replacement
 
 technical_feasibility:
   axis_weight: 1.0

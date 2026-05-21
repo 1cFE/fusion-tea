@@ -16,6 +16,19 @@ confinement_family:
   provenance: taxonomy
   confidence: high
   extracted_at: '2026-05-20'
+customization_diagnostics:
+  sub_factor_a:
+    feature: energy_capture
+    value: Direct (charged particle)
+    classification: direct_conversion
+    score: 4
+  sub_factor_b:
+    feature: fuel
+    value: p-B11
+    score: 4
+  raw_average: 4.0
+  customization_score: 5.0
+  extracted_at: '2026-05-20'
 driver_technology:
   value: CS-free spherical tokamak with ECRH non-inductive current drive (EXL-50U
     / EHL-2)
@@ -104,6 +117,12 @@ stellarator_type:
   provenance: taxonomy
   confidence: high
   extracted_at: '2026-05-20'
+supply_chain_diagnostics:
+  bottlenecks_triggered: {}
+  bottleneck_weight: 0.0
+  supply_chain_score: 5.0
+  blanket_assumed: false
+  extracted_at: '2026-05-20'
 tokamak_shape:
   value: Spherical
   provenance: taxonomy
@@ -113,4 +132,10 @@ unit_count_estimate:
   value: 14
   provenance: modularity_implementation_spec.md Change E
   confidence: high
+  extracted_at: '2026-05-20'
+upper_cf_diagnostics:
+  penalties_triggered: {}
+  operational_penalty_weight: 0.0
+  upper_cf_score: 5.0
+  blanket_assumed: false
   extracted_at: '2026-05-20'
