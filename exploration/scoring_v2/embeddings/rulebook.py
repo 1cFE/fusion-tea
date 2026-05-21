@@ -1084,15 +1084,30 @@ def _technical_feasibility_score(
 #
 # The one framework exception that does file I/O at score time. Reads
 # analyses/{concept}/gap_report.md (populated by the upstream Claude-judged
-# gap_check pipeline) and counts `**blocking**` markers, then maps to a
+# gap_check pipeline) and determines the blocking-gap count, then maps to a
 # 1-5 score via a bracket schedule. Returns None when no gap report
 # exists — the composite scorer skips the axis for that concept.
+#
+# Blocking-count source of truth (per data_availability_implementation_spec
+# §"Prerequisite: Standardize gap_report format"):
+#   1. The `## Structured summary (machine-readable)` YAML block at the end
+#      of the report — its `blocking_count:` field is authoritative. This
+#      is the analyst's deduplicated count of distinct blocking gaps.
+#   2. Fallback when no structured block exists: count `**blocking**`
+#      bold markers in the prose. This is the interim regex the spec
+#      flags as unreliable (it double-counts gaps restated across
+#      sections); used only until every report carries the block.
 # =============================================================================
 
 import re  # only place this module needs re
 from pathlib import Path as _Path
 
 _BLOCKING_MARKER = re.compile(r"\*\*blocking\*\*", re.IGNORECASE)
+# Within the `## Structured summary` block, capture `blocking_count: N`.
+_STRUCTURED_SUMMARY_RE = re.compile(
+    r"##\s*Structured summary.*?\bblocking_count\s*:\s*(\d+)",
+    re.IGNORECASE | re.DOTALL,
+)
 _REPO_ROOT = _Path(__file__).resolve().parents[3]
 
 
@@ -1109,7 +1124,19 @@ def _load_da_weights(weights_yaml: dict) -> tuple[list, float]:
 
 
 def _count_blocking_markers(report_text: str) -> int:
+    """Interim fallback: count `**blocking**` bold markers in the prose."""
     return len(_BLOCKING_MARKER.findall(report_text))
+
+
+def _structured_blocking_count(report_text: str) -> int | None:
+    """Return the `blocking_count` from the report's `## Structured summary`
+    block, or None if the report has no such block.
+
+    Parsed with a regex rather than a YAML load so rulebook.py keeps its
+    no-yaml-import invariant; only the single integer field is needed.
+    """
+    m = _STRUCTURED_SUMMARY_RE.search(report_text)
+    return int(m.group(1)) if m else None
 
 
 def _da_score_from_count(count: int, brackets: list, floor: float) -> float:
@@ -1124,7 +1151,12 @@ def _da_score_from_count(count: int, brackets: list, floor: float) -> float:
     inputs=["gap_report_path"],
 )
 def _gap_report_blocking_count(gap_report_path: str) -> int | None:
-    """Read the gap report and count **blocking** markers.
+    """Read the gap report and determine its blocking-gap count.
+
+    Prefers the `## Structured summary (machine-readable)` block's
+    `blocking_count:` field (the analyst's deduplicated count); falls
+    back to the `**blocking**` prose regex for reports that predate the
+    format standardization.
 
     Documented framework exception: this embedding has a file-I/O side
     effect — the gap report is the authoritative source and the
@@ -1143,6 +1175,9 @@ def _gap_report_blocking_count(gap_report_path: str) -> int | None:
         text = p.read_text(encoding="utf-8")
     except (OSError, UnicodeDecodeError):
         return None
+    structured = _structured_blocking_count(text)
+    if structured is not None:
+        return structured
     return _count_blocking_markers(text)
 
 

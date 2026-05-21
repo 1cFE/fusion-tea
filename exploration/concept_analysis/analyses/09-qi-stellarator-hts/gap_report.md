@@ -179,3 +179,18 @@ The Stellaris paper and Proxima tech page provide sufficient basis for TRL asses
 The Stellaris paper is one of the most detailed pre-commercial fusion power plant design studies available in the public literature — unusually so. Physics parameters, engineering geometry, materials, and subsystem descriptions are documented at a level that fully supports qualitative write-up and parametric LCOE modeling. The concept is well-characterized enough that most missing parameters are `derivable` or can be filled with `not-yet-sourced` analogues rather than being truly unknown.
 
 The main caveats to flag in the analysis are: (1) CapEx must be estimated from literature analogue ranges (2–10 $/W), not from a bottom-up Stellaris-specific cost model; (2) the 32% thermal efficiency is an assumption constrained by EUROFER97 temperature limits, not a detailed cycle study; (3) H₉₈ = 1.30 is the critical unvalidated physics assumption — if confinement falls short, Q and power output drop sharply; (4) 3D HTS coil manufacturing at power-plant scale has no demonstrated precedent and represents the single highest-risk TRL gap. These uncertainties can all be surfaced and parameterized in the LCOE model rather than treated as blockers.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Mostly Ready"
+blocking_count: 2
+important_count: 8
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Good"
+  system_function:            "Good"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Partial"
+  lcoe_parameter_extraction:  "Unknown"
+```

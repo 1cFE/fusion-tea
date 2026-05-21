@@ -161,3 +161,18 @@
 **Proceed to full analysis with caveats.** The qualitative sections (data availability, system function challenges, subsystem maturity, materials/supply chain) can be written to a high standard with the existing sources. The concept is well-defined, the two-company landscape is documented, and the physics basis is traceable to peer-reviewed literature.
 
 The quantitative LCOE model will be **assumption-heavy by necessity**. Q≥1 has not been demonstrated; no plant study exists; energy conversion efficiency is a marketing claim. The model should be structured as a parametric sensitivity analysis using stated targets as central estimates with wide uncertainty bands — the back-solve to $0.01/kWh will be informative precisely because it reveals how many simultaneous breakthroughs are required. The most important gaps to fill before building the model are: (1) a better laser system cost analogue from DPSSL literature, (2) the J. Fusion Energy 2023 HB11 paper extracted as a full source, and (3) a treatment of whether B-11 enrichment is required. None of these are strictly blocking — the analysis can proceed with documented assumptions.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Significant Gaps"
+blocking_count: 7
+important_count: 4
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Partial — qualitative landscape is reasonably well documented; quantitative/engineering data is sparse to absent"
+  system_function:            "Good — enough to write a thorough qualitative treatment"
+  subsystem_maturity:         "Partial — TRL assessments possible at subsystem level but rely on analogues; no published TRL self-assessments"
+  materials_supply_chain:     "Good — enough for a complete qualitative treatment; this is one of the concept's strengths"
+  lcoe_parameter_extraction:  "Poor — stated targets only; no validated parameters"
+```

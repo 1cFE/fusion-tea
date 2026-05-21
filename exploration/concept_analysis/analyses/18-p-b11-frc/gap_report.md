@@ -173,3 +173,18 @@ Now I have everything I need. Let me write the assessment.
 **Proceed to full analysis**, with explicit acknowledgment of quantitative constraints. The qualitative write-up (data availability, system function challenges, subsystem maturity, materials) can be produced at high quality with available sources — TAE is more communicative than most private fusion companies and the physics architecture is well-documented.
 
 The quantitative LCOE model is feasible but will be built almost entirely on assumptions and analogues for the cost-driving parameters. The two binding constraints are: **(1) Q value** — must be assumed; literature on p-B11 physics suggests a ceiling well below tokamak-class D-T concepts due to bremsstrahlung losses, and this should be quantified using published reactivity data rather than TAE's aspirational claims; and **(2) NBI recirculating power** — for a beam-driven concept, this is the dominant factor in net LCOE and is essentially unknown at reactor scale. Before running the model, sourcing the Nevins & Swain (or equivalent) p-B11 reactivity analysis would substantially improve the Q-ceiling estimate and is likely the highest-value pre-analysis data acquisition step.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Mostly Ready (with significant quantitative constraints)"
+blocking_count: 8
+important_count: 5
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Moderate"
+  system_function:            "Partial"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Poor"
+  lcoe_parameter_extraction:  "Unknown"
+```

@@ -32,8 +32,9 @@ customization_diagnostics:
 data_availability_diagnostics:
   gap_report_path: exploration/concept_analysis/analyses/35-polomac-magnetic-confinement/gap_report.md
   report_exists: true
-  blocking_count: 5
-  data_availability_score: 3.0
+  blocking_count: 9
+  count_source: structured_summary_block
+  data_availability_score: 2.0
   extracted_at: '2026-05-20'
 driver_technology:
   value: Internal dipole coil with magnetic tunnel supports

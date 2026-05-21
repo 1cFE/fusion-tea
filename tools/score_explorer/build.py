@@ -22,6 +22,7 @@ import yaml
 REPO_ROOT = Path(__file__).resolve().parents[2]
 SCORES_CSV = REPO_ROOT / "exploration" / "scoring_v2" / "scores" / "table.csv"
 FEATURES_DIR = REPO_ROOT / "exploration" / "scoring_v2" / "features"
+TAXONOMY_CSV = REPO_ROOT / "exploration" / "concept_analysis" / "table.csv"
 WEIGHTS_PATH = REPO_ROOT / "exploration" / "scoring_v2" / "weights" / "default.yaml"
 OUT_DIR = Path(__file__).resolve().parent / "data"
 
@@ -37,9 +38,46 @@ AXES = (
 
 DIAGNOSTIC_BLOCKS = tuple(f"{a}_diagnostics" for a in AXES)
 
+# Concepts the scoring framework scores but the Score Explorer UI hides.
+# Display-only exclusion — score.py still scores all 40; these just don't
+# appear in concepts.json.
+#   30-laser-icf-nif-commercialization: redundant with
+#     26-laser-icf-indirect-drive — both are Inertia Enterprises laser-ICF
+#     indirect-drive concepts (the modularity spec's v5 ID-drift table maps
+#     both to a single v5 matrix entry).
+EXCLUDED_FROM_UI = {
+    "30-laser-icf-nif-commercialization",
+}
+
 
 def _maybe_float(s: str) -> float | None:
     return float(s) if s else None
+
+
+def _load_taxonomy() -> dict[str, dict[str, str]]:
+    """Load the v3 ontology table indexed by concept ID. Provides the
+    Company column that the scoring CSV doesn't carry."""
+    out: dict[str, dict[str, str]] = {}
+    with open(TAXONOMY_CSV, encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            cid = r.get("ID", "").strip()
+            if cid:
+                out[cid] = r
+    return out
+
+
+# Trailing-fuel suffix stripper. Concept names like "HTS Compact Tokamak (D-T)"
+# duplicate the fuel that's already shown in the subheader.
+_FUEL_SUFFIXES = (" (D-T)", " (D-D)", " (D-He3)", " (p-B11)")
+
+
+def _display_name(name: str) -> str:
+    """Strip ' (D-T)' / ' (p-B11)' etc. trailing suffixes so the name is
+    consistent across concepts (the fuel lives in the subheader)."""
+    for suf in _FUEL_SUFFIXES:
+        if name.endswith(suf):
+            return name[: -len(suf)]
+    return name
 
 
 def _concept_features(doc: dict) -> dict:
@@ -65,10 +103,13 @@ def build_concepts() -> list[dict]:
     """Produce the concepts.json list."""
     with open(SCORES_CSV, encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
+    taxonomy = _load_taxonomy()
 
     out = []
     for row in rows:
         cid = row["concept_id"]
+        if cid in EXCLUDED_FROM_UI:
+            continue
         feature_path = FEATURES_DIR / f"{cid}.yaml"
         with open(feature_path, encoding="utf-8") as f:
             doc = yaml.safe_load(f) or {}
@@ -80,9 +121,12 @@ def build_concepts() -> list[dict]:
             composite_axes_included = json.loads(row["composite_axes_included"])
         except (json.JSONDecodeError, KeyError):
             pass
+        tax_row = taxonomy.get(cid, {})
         out.append({
             "concept_id": cid,
             "name": row["name"],
+            "display_name": _display_name(row["name"]),
+            "company": tax_row.get("Company", "").strip() or None,
             "scores": {a: _maybe_float(row.get(a, "")) for a in AXES},
             "composite": _maybe_float(row.get("composite", "")),
             "composite_axes_included": composite_axes_included,

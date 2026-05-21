@@ -171,3 +171,18 @@ Now I have everything I need. Let me write the assessment.
 **Proceed to full analysis with caveats.** The concept is well-enough understood to produce a first-pass LCOE model, but the model will be heavily analogue-driven. The physics layer (confinement, Q targets, DEC principle) is sufficiently documented. The cost layer is essentially empty — no plant study, no subsystem cost estimates, no thermal cycle specification. 
 
 The recommended approach: (1) extract the MARS study (it's in the dossier citations and on OSTI) as the primary cost analogue, applying scaling corrections for HTS magnets vs. copper coils and modern NBI vs. 1980s beamlines; (2) treat the DEC efficiency and thermal cycle efficiency as the two highest-sensitivity parameters and run sweeps; (3) treat the entire capital cost estimate as ±50% and document this explicitly. The back-solve to $0.01/kWh will be particularly illuminating here given the DEC pathway — the concept has a structural advantage in Q threshold that doesn't apply to thermal-only designs, but DEC cost and reliability are completely unvalidated.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Significant Gaps"
+blocking_count: 4
+important_count: 7
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Moderate"
+  system_function:            "Partial"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Poor"
+  lcoe_parameter_extraction:  "Unknown"
+```

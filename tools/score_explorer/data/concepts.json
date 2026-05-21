@@ -1,6 +1,7 @@
 [
   {
-    "composite": 2.4877,
+    "company": "Commonwealth Fusion Systems",
+    "composite": 2.7734,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -30,8 +31,9 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 6,
-        "data_availability_score": 2.0,
+        "blocking_count": 1,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 4.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/01-hts-compact-tokamak/gap_report.md",
         "report_exists": true
@@ -109,6 +111,7 @@
         "upper_cf_score": 3.5
       }
     },
+    "display_name": "HTS Compact Tokamak",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -141,7 +144,7 @@
     "name": "HTS Compact Tokamak (D-T)",
     "scores": {
       "customization": 1.67,
-      "data_availability": 2.0,
+      "data_availability": 4.0,
       "modularity": 3.7438,
       "plant_complexity": 1.0,
       "supply_chain": 1.5,
@@ -150,6 +153,7 @@
     }
   },
   {
+    "company": "Sonofusion Energy",
     "composite": 3.2138,
     "composite_axes_included": [
       "customization",
@@ -181,6 +185,7 @@
       },
       "data_availability_diagnostics": {
         "blocking_count": 8,
+        "count_source": "structured_summary_block",
         "data_availability_score": 2.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/02-acoustic-icf-sonofusion/gap_report.md",
@@ -249,6 +254,7 @@
         "upper_cf_score": 3.5
       }
     },
+    "display_name": "Acoustic ICF / Sonofusion",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -290,6 +296,7 @@
     }
   },
   {
+    "company": "Cortex Fusion",
     "composite": 2.809,
     "composite_axes_included": [
       "customization",
@@ -320,7 +327,8 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 6,
+        "blocking_count": 7,
+        "count_source": "structured_summary_block",
         "data_availability_score": 2.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/03-laser-icf-liquid-jet-target/gap_report.md",
@@ -392,6 +400,7 @@
         "upper_cf_score": 3.5
       }
     },
+    "display_name": "Laser ICF - Liquid Jet Target",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -433,6 +442,7 @@
     }
   },
   {
+    "company": "hb11",
     "composite": 3.5005,
     "composite_axes_included": [
       "customization",
@@ -463,7 +473,8 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 5,
+        "blocking_count": 4,
+        "count_source": "structured_summary_block",
         "data_availability_score": 3.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/04-laser-icf/gap_report.md",
@@ -533,6 +544,7 @@
         "upper_cf_score": 4.5
       }
     },
+    "display_name": "Laser ICF",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -574,7 +586,8 @@
     }
   },
   {
-    "composite": 2.9481,
+    "company": "Thea Energy",
+    "composite": 2.6624,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -604,8 +617,9 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 0,
-        "data_availability_score": 5.0,
+        "blocking_count": 3,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 3.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/05-planar-coil-stellarator/gap_report.md",
         "report_exists": true
@@ -680,6 +694,7 @@
         "upper_cf_score": 4.0
       }
     },
+    "display_name": "Planar Coil Stellarator",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -712,7 +727,7 @@
     "name": "Planar Coil Stellarator (D-T)",
     "scores": {
       "customization": 1.67,
-      "data_availability": 5.0,
+      "data_availability": 3.0,
       "modularity": 3.467,
       "plant_complexity": 1.5,
       "supply_chain": 2.0,
@@ -721,7 +736,8 @@
     }
   },
   {
-    "composite": 3.9167,
+    "company": "Pale Blue",
+    "composite": 3.631,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -751,8 +767,9 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 5,
-        "data_availability_score": 3.0,
+        "blocking_count": 13,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 1.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/06-magnetic-mirror/gap_report.md",
         "report_exists": true
@@ -817,6 +834,7 @@
         "upper_cf_score": 5.0
       }
     },
+    "display_name": "Magnetic Mirror",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -849,7 +867,7 @@
     "name": "Magnetic Mirror (p-B11)",
     "scores": {
       "customization": 5.0,
-      "data_availability": 3.0,
+      "data_availability": 1.0,
       "modularity": 3.9167,
       "plant_complexity": 4.5,
       "supply_chain": 5.0,
@@ -858,7 +876,8 @@
     }
   },
   {
-    "composite": 3.0124,
+    "company": "Pacific Fusion",
+    "composite": 2.7267,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -888,8 +907,9 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 0,
-        "data_availability_score": 5.0,
+        "blocking_count": 3,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 3.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/07-maglif/gap_report.md",
         "report_exists": true
@@ -965,6 +985,7 @@
         "upper_cf_score": 3.5
       }
     },
+    "display_name": "MagLIF",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -997,7 +1018,7 @@
     "name": "MagLIF (D-T)",
     "scores": {
       "customization": 1.67,
-      "data_availability": 5.0,
+      "data_availability": 3.0,
       "modularity": 4.9167,
       "plant_complexity": 1.0,
       "supply_chain": 2.0,
@@ -1006,7 +1027,8 @@
     }
   },
   {
-    "composite": 3.69,
+    "company": "Helion Energy",
+    "composite": 3.5471,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -1036,8 +1058,9 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 5,
-        "data_availability_score": 3.0,
+        "blocking_count": 7,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 2.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/08-frc-w-direct-conversion/gap_report.md",
         "report_exists": true
@@ -1104,6 +1127,7 @@
         "upper_cf_score": 4.5
       }
     },
+    "display_name": "FRC w/ Direct Conversion",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -1136,7 +1160,7 @@
     "name": "FRC w/ Direct Conversion (D-He3)",
     "scores": {
       "customization": 4.33,
-      "data_availability": 3.0,
+      "data_availability": 2.0,
       "modularity": 5.0,
       "plant_complexity": 5.0,
       "supply_chain": 2.0,
@@ -1145,6 +1169,7 @@
     }
   },
   {
+    "company": "Proxima Fusion",
     "composite": 2.761,
     "composite_axes_included": [
       "customization",
@@ -1175,7 +1200,8 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 1,
+        "blocking_count": 2,
+        "count_source": "structured_summary_block",
         "data_availability_score": 4.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/09-qi-stellarator-hts/gap_report.md",
@@ -1251,6 +1277,7 @@
         "upper_cf_score": 4.0
       }
     },
+    "display_name": "QI Stellarator - HTS",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -1292,6 +1319,7 @@
     }
   },
   {
+    "company": "Gauss Fusion",
     "composite": 2.8041,
     "composite_axes_included": [
       "customization",
@@ -1323,6 +1351,7 @@
       },
       "data_availability_diagnostics": {
         "blocking_count": 0,
+        "count_source": "structured_summary_block",
         "data_availability_score": 5.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/10-large-scale-stellarator/gap_report.md",
@@ -1398,6 +1427,7 @@
         "upper_cf_score": 4.0
       }
     },
+    "display_name": "Large-Scale Stellarator",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -1439,6 +1469,7 @@
     }
   },
   {
+    "company": "Realta Fusion",
     "composite": 2.6305,
     "composite_axes_included": [
       "customization",
@@ -1470,6 +1501,7 @@
       },
       "data_availability_diagnostics": {
         "blocking_count": 4,
+        "count_source": "structured_summary_block",
         "data_availability_score": 3.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/11-magnetic-mirror/gap_report.md",
@@ -1546,6 +1578,7 @@
         "upper_cf_score": 4.0
       }
     },
+    "display_name": "Magnetic Mirror",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -1587,6 +1620,7 @@
     }
   },
   {
+    "company": "OpenStar Technologies",
     "composite": 2.3457,
     "composite_axes_included": [
       "customization",
@@ -1617,7 +1651,8 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 3,
+        "blocking_count": 4,
+        "count_source": "structured_summary_block",
         "data_availability_score": 3.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/12-levitated-dipole/gap_report.md",
@@ -1694,6 +1729,7 @@
         "upper_cf_score": 3.5
       }
     },
+    "display_name": "Levitated Dipole",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -1735,6 +1771,7 @@
     }
   },
   {
+    "company": "Avalanche Energy",
     "composite": 2.5719,
     "composite_axes_included": [
       "customization",
@@ -1765,7 +1802,8 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 9,
+        "blocking_count": 6,
+        "count_source": "structured_summary_block",
         "data_availability_score": 2.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/13-electrostatic-hybrid/gap_report.md",
@@ -1839,6 +1877,7 @@
         "upper_cf_score": 4.0
       }
     },
+    "display_name": "Electrostatic Hybrid",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -1880,6 +1919,7 @@
     }
   },
   {
+    "company": "General Fusion",
     "composite": 2.5838,
     "composite_axes_included": [
       "customization",
@@ -1910,7 +1950,8 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 5,
+        "blocking_count": 4,
+        "count_source": "structured_summary_block",
         "data_availability_score": 3.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/14-magnetized-target-fusion-pneumatic-compression/gap_report.md",
@@ -1987,6 +2028,7 @@
         "upper_cf_score": 3.5
       }
     },
+    "display_name": "Magnetized Target Fusion - Pneumatic Compression",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -2028,7 +2070,8 @@
     }
   },
   {
-    "composite": 2.6195,
+    "company": "Zap Energy",
+    "composite": 2.4767,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -2058,8 +2101,9 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 2,
-        "data_availability_score": 4.0,
+        "blocking_count": 5,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 3.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/15-sheared-flow-stabilized-z-pinch/gap_report.md",
         "report_exists": true
@@ -2135,6 +2179,7 @@
         "upper_cf_score": 3.5
       }
     },
+    "display_name": "Sheared-Flow Stabilized Z-Pinch",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -2167,7 +2212,7 @@
     "name": "Sheared-Flow Stabilized Z-Pinch (D-T)",
     "scores": {
       "customization": 1.67,
-      "data_availability": 4.0,
+      "data_availability": 3.0,
       "modularity": 4.1667,
       "plant_complexity": 1.0,
       "supply_chain": 2.0,
@@ -2176,6 +2221,7 @@
     }
   },
   {
+    "company": "Acceleron Fusion",
     "composite": 2.2624,
     "composite_axes_included": [
       "customization",
@@ -2207,6 +2253,7 @@
       },
       "data_availability_diagnostics": {
         "blocking_count": 6,
+        "count_source": "structured_summary_block",
         "data_availability_score": 2.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/16-muon-catalyzed-fusion/gap_report.md",
@@ -2280,6 +2327,7 @@
         "upper_cf_score": 4.0
       }
     },
+    "display_name": "Muon-Catalyzed Fusion",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -2321,7 +2369,8 @@
     }
   },
   {
-    "composite": 2.8338,
+    "company": "Xcimer Energy",
+    "composite": 2.5481,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -2351,8 +2400,9 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 0,
-        "data_availability_score": 5.0,
+        "blocking_count": 4,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 3.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/17a-laser-icf-hybrid-drive/gap_report.md",
         "report_exists": true
@@ -2429,6 +2479,7 @@
         "upper_cf_score": 3.0
       }
     },
+    "display_name": "Laser ICF - Hybrid Direct Drive",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -2461,7 +2512,7 @@
     "name": "Laser ICF - Hybrid Direct Drive (D-T)",
     "scores": {
       "customization": 1.67,
-      "data_availability": 5.0,
+      "data_availability": 3.0,
       "modularity": 2.9167,
       "plant_complexity": 2.5,
       "supply_chain": 1.0,
@@ -2470,6 +2521,7 @@
     }
   },
   {
+    "company": "Focused Energy",
     "composite": 2.3576,
     "composite_axes_included": [
       "customization",
@@ -2501,6 +2553,7 @@
       },
       "data_availability_diagnostics": {
         "blocking_count": 6,
+        "count_source": "structured_summary_block",
         "data_availability_score": 2.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/17b-laser-icf-fast-ignition/gap_report.md",
@@ -2577,6 +2630,7 @@
         "upper_cf_score": 3.5
       }
     },
+    "display_name": "Laser ICF - Direct Drive Fast Ignition",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -2618,6 +2672,7 @@
     }
   },
   {
+    "company": "TAE Technologies",
     "composite": 3.6195,
     "composite_axes_included": [
       "customization",
@@ -2648,7 +2703,8 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 6,
+        "blocking_count": 8,
+        "count_source": "structured_summary_block",
         "data_availability_score": 2.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/18-p-b11-frc/gap_report.md",
@@ -2714,6 +2770,7 @@
         "upper_cf_score": 5.0
       }
     },
+    "display_name": "p-B11 FRC",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -2755,7 +2812,8 @@
     }
   },
   {
-    "composite": 2.9519,
+    "company": "Zephyr Fusion",
+    "composite": 2.809,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -2785,8 +2843,9 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 6,
-        "data_availability_score": 2.0,
+        "blocking_count": 10,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 1.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/19-orbital-levitated-dipole/gap_report.md",
         "report_exists": true
@@ -2855,6 +2914,7 @@
         "upper_cf_score": 5.0
       }
     },
+    "display_name": "Orbital Levitated Dipole",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -2887,7 +2947,7 @@
     "name": "Orbital Levitated Dipole (D-He3)",
     "scores": {
       "customization": 4.33,
-      "data_availability": 2.0,
+      "data_availability": 1.0,
       "modularity": 2.8333,
       "plant_complexity": 3.5,
       "supply_chain": 2.0,
@@ -2896,7 +2956,8 @@
     }
   },
   {
-    "composite": 2.7418,
+    "company": "Type One Energy",
+    "composite": 2.599,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -2926,8 +2987,9 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 2,
-        "data_availability_score": 4.0,
+        "blocking_count": 3,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 3.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/20a-type-one-stellarator/gap_report.md",
         "report_exists": true
@@ -3002,6 +3064,7 @@
         "upper_cf_score": 3.5
       }
     },
+    "display_name": "Type One Stellarator",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -3034,7 +3097,7 @@
     "name": "Type One Stellarator (D-T)",
     "scores": {
       "customization": 1.67,
-      "data_availability": 4.0,
+      "data_availability": 3.0,
       "modularity": 3.0227,
       "plant_complexity": 2.0,
       "supply_chain": 2.0,
@@ -3043,6 +3106,7 @@
     }
   },
   {
+    "company": "Renaissance Fusion",
     "composite": 2.5243,
     "composite_axes_included": [
       "customization",
@@ -3074,6 +3138,7 @@
       },
       "data_availability_diagnostics": {
         "blocking_count": 4,
+        "count_source": "structured_summary_block",
         "data_availability_score": 3.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/20b-renaissance-stellarator/gap_report.md",
@@ -3149,6 +3214,7 @@
         "upper_cf_score": 3.5
       }
     },
+    "display_name": "Renaissance Stellarator",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -3190,7 +3256,8 @@
     }
   },
   {
-    "composite": 2.9099,
+    "company": "Tokamak Energy",
+    "composite": 2.7671,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -3220,8 +3287,9 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 1,
-        "data_availability_score": 4.0,
+        "blocking_count": 3,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 3.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/21-spherical-tokamak-hts/gap_report.md",
         "report_exists": true
@@ -3298,6 +3366,7 @@
         "upper_cf_score": 4.0
       }
     },
+    "display_name": "Spherical Tokamak - HTS",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -3330,7 +3399,7 @@
     "name": "Spherical Tokamak - HTS (D-T)",
     "scores": {
       "customization": 1.67,
-      "data_availability": 4.0,
+      "data_availability": 3.0,
       "modularity": 3.6996,
       "plant_complexity": 1.0,
       "supply_chain": 2.0,
@@ -3339,6 +3408,7 @@
     }
   },
   {
+    "company": "First Light Fusion",
     "composite": 2.429,
     "composite_axes_included": [
       "customization",
@@ -3369,7 +3439,8 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 6,
+        "blocking_count": 7,
+        "count_source": "structured_summary_block",
         "data_availability_score": 2.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/22-projectile-icf/gap_report.md",
@@ -3445,6 +3516,7 @@
         "upper_cf_score": 3.5
       }
     },
+    "display_name": "Projectile ICF",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -3486,7 +3558,8 @@
     }
   },
   {
-    "composite": 3.4519,
+    "company": "Marvel Fusion",
+    "composite": 3.309,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -3516,8 +3589,9 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 4,
-        "data_availability_score": 3.0,
+        "blocking_count": 7,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 2.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/23-laser-icf-nanostructured-target/gap_report.md",
         "report_exists": true
@@ -3587,6 +3661,7 @@
         "upper_cf_score": 4.5
       }
     },
+    "display_name": "Laser ICF - Nanostructured Target",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -3619,7 +3694,7 @@
     "name": "Laser ICF - Nanostructured Target (p-B11)",
     "scores": {
       "customization": 4.33,
-      "data_availability": 3.0,
+      "data_availability": 2.0,
       "modularity": 4.3333,
       "plant_complexity": 2.5,
       "supply_chain": 4.5,
@@ -3628,6 +3703,7 @@
     }
   },
   {
+    "company": "LPPFusion",
     "composite": 3.7381,
     "composite_axes_included": [
       "customization",
@@ -3658,7 +3734,8 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 7,
+        "blocking_count": 6,
+        "count_source": "structured_summary_block",
         "data_availability_score": 2.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/24-dense-plasma-focus/gap_report.md",
@@ -3724,6 +3801,7 @@
         "upper_cf_score": 4.5
       }
     },
+    "display_name": "Dense Plasma Focus",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -3765,6 +3843,7 @@
     }
   },
   {
+    "company": "Intensity Energy",
     "composite": 2.3338,
     "composite_axes_included": [
       "customization",
@@ -3796,6 +3875,7 @@
       },
       "data_availability_diagnostics": {
         "blocking_count": 2,
+        "count_source": "structured_summary_block",
         "data_availability_score": 4.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/25-heavy-ion-beam-icf/gap_report.md",
@@ -3871,6 +3951,7 @@
         "upper_cf_score": 3.5
       }
     },
+    "display_name": "Heavy Ion Beam ICF",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -3912,7 +3993,8 @@
     }
   },
   {
-    "composite": 3.1585,
+    "company": "Inertia Enterprises",
+    "composite": 3.0157,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -3942,8 +4024,9 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 0,
-        "data_availability_score": 5.0,
+        "blocking_count": 2,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 4.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/26-laser-icf-indirect-drive/gap_report.md",
         "report_exists": true
@@ -4019,6 +4102,7 @@
         "upper_cf_score": 3.5
       }
     },
+    "display_name": "Laser ICF - Indirect Drive",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -4051,7 +4135,7 @@
     "name": "Laser ICF - Indirect Drive (D-T)",
     "scores": {
       "customization": 1.67,
-      "data_availability": 5.0,
+      "data_availability": 4.0,
       "modularity": 4.4398,
       "plant_complexity": 1.0,
       "supply_chain": 1.5,
@@ -4060,7 +4144,8 @@
     }
   },
   {
-    "composite": 2.6433,
+    "company": "EMC2",
+    "composite": 2.5005,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -4090,8 +4175,9 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 3,
-        "data_availability_score": 3.0,
+        "blocking_count": 7,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 2.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/27-polywell/gap_report.md",
         "report_exists": true
@@ -4164,6 +4250,7 @@
         "upper_cf_score": 4.0
       }
     },
+    "display_name": "Polywell",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -4196,7 +4283,7 @@
     "name": "Polywell (D-T)",
     "scores": {
       "customization": 1.67,
-      "data_availability": 3.0,
+      "data_availability": 2.0,
       "modularity": 4.3333,
       "plant_complexity": 2.5,
       "supply_chain": 2.0,
@@ -4205,7 +4292,8 @@
     }
   },
   {
-    "composite": 2.9129,
+    "company": "Energy Singularity",
+    "composite": 2.77,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -4235,8 +4323,9 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 2,
-        "data_availability_score": 4.0,
+        "blocking_count": 5,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 3.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/28-hts-tokamak-full-hts/gap_report.md",
         "report_exists": true
@@ -4313,6 +4402,7 @@
         "upper_cf_score": 4.0
       }
     },
+    "display_name": "HTS Tokamak - Full HTS",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -4345,7 +4435,7 @@
     "name": "HTS Tokamak - Full HTS (D-T)",
     "scores": {
       "customization": 1.67,
-      "data_availability": 4.0,
+      "data_availability": 3.0,
       "modularity": 3.72,
       "plant_complexity": 1.0,
       "supply_chain": 2.0,
@@ -4354,6 +4444,7 @@
     }
   },
   {
+    "company": "Firefly Fusion",
     "composite": 2.8814,
     "composite_axes_included": [
       "customization",
@@ -4384,7 +4475,8 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 2,
+        "blocking_count": 1,
+        "count_source": "structured_summary_block",
         "data_availability_score": 4.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/29-negative-triangularity-tokamak/gap_report.md",
@@ -4462,6 +4554,7 @@
         "upper_cf_score": 4.0
       }
     },
+    "display_name": "Negative Triangularity Tokamak",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -4503,154 +4596,7 @@
     }
   },
   {
-    "composite": 3.0005,
-    "composite_axes_included": [
-      "customization",
-      "data_availability",
-      "modularity",
-      "plant_complexity",
-      "supply_chain",
-      "technical_feasibility",
-      "upper_cf"
-    ],
-    "composite_evidence": "medium",
-    "concept_id": "30-laser-icf-nif-commercialization",
-    "diagnostics": {
-      "customization_diagnostics": {
-        "customization_score": 1.67,
-        "extracted_at": "2026-05-20",
-        "raw_average": 1.5,
-        "sub_factor_a": {
-          "classification": "thermal",
-          "feature": "energy_capture",
-          "score": 2,
-          "value": "Thermal (steam)"
-        },
-        "sub_factor_b": {
-          "feature": "fuel",
-          "score": 1,
-          "value": "D-T"
-        }
-      },
-      "data_availability_diagnostics": {
-        "blocking_count": 2,
-        "data_availability_score": 4.0,
-        "extracted_at": "2026-05-20",
-        "gap_report_path": "exploration/concept_analysis/analyses/30-laser-icf-nif-commercialization/gap_report.md",
-        "report_exists": true
-      },
-      "modularity_diagnostics": {
-        "blanket_assumed": false,
-        "blanket_lookup_key": "D-T|Liquid metal",
-        "blanket_modularity_rating": 5.0,
-        "capex_shares_used": {
-          "method": "equal_weight_fallback_sparse_capex",
-          "sum": 0.0102,
-          "w_blanket": 0.0102,
-          "w_coils": 0.0,
-          "w_vessel": 0.0
-        },
-        "extracted_at": "2026-05-20",
-        "magnet_driver_lookup_key": "IFE|*|DPSSL Laser",
-        "magnet_driver_modularity_rating": 5.0,
-        "min_viable_device_scale": 4.0,
-        "modularity_score": 4.3333,
-        "mvs_lookup_key": "IFE|Laser",
-        "percent_mod": 4.3333,
-        "unit_count_estimate": 1000,
-        "unit_multiplicity": 5.0,
-        "v5_calibration_target": 4.36,
-        "vessel_lookup_key": "IFE|Laser|*",
-        "vessel_modularity_rating": 3.0
-      },
-      "plant_complexity_diagnostics": {
-        "blanket_assumed": false,
-        "extracted_at": "2026-05-20",
-        "plant_complexity_score": 1.0,
-        "subsystem_complexity_weight": 4.5,
-        "subsystems_triggered": {
-          "liquid_metal_handling": 0.5,
-          "remote_maintenance": 1.0,
-          "target_factory_high": 2.0,
-          "tritium_plant": 1.0
-        }
-      },
-      "supply_chain_diagnostics": {
-        "blanket_assumed": false,
-        "bottleneck_weight": 3.5,
-        "bottlenecks_triggered": {
-          "kdp": 0.5,
-          "lithium6": 1.0,
-          "tritium": 1.0,
-          "vanadium": 1.0
-        },
-        "extracted_at": "2026-05-20",
-        "supply_chain_score": 1.5
-      },
-      "technical_feasibility_diagnostics": {
-        "achieved_lookup_key": "IFE|Laser ICF (indirect drive)",
-        "achieved_triple_product": 5e+21,
-        "base_score_from_gap": 5.0,
-        "extracted_at": "2026-05-20",
-        "laser_approach_modifier": 0.0,
-        "log10_gap": -0.222,
-        "no_data_floor": false,
-        "required_triple_product": 3e+21,
-        "technical_feasibility_score": 5.0,
-        "triple_product_gap": 0.6
-      },
-      "upper_cf_diagnostics": {
-        "blanket_assumed": false,
-        "extracted_at": "2026-05-20",
-        "operational_penalty_weight": 1.5,
-        "penalties_triggered": {
-          "neutronic_fuel": 1.0,
-          "pulsed_operation": 0.5
-        },
-        "upper_cf_score": 3.5
-      }
-    },
-    "evidence": {
-      "customization": "high",
-      "data_availability": "high",
-      "modularity": "medium",
-      "plant_complexity": "high",
-      "supply_chain": "high",
-      "technical_feasibility": "high",
-      "upper_cf": "high"
-    },
-    "features": {
-      "blanket_config": "Liquid metal",
-      "confinement_concept": "Laser ICF (indirect drive)",
-      "confinement_family": "IFE",
-      "driver_technology": "Diode-pumped solid-state laser (DPSSL, 10 MJ, ~1000 beamlines)",
-      "energy_capture": "Thermal (steam)",
-      "fuel": "D-T",
-      "ife_driver": "Laser",
-      "laser_approach": "Indirect drive",
-      "magnet_type": "N/A",
-      "mfe_topology": "N/A",
-      "mif_method": "N/A",
-      "non_standard_mechanism": "N/A",
-      "operation_mode": "Pulsed",
-      "primary_heating": "Laser (indirect drive)",
-      "repetition_rate": "~10 Hz",
-      "stellarator_type": "N/A",
-      "tokamak_shape": "N/A",
-      "unit_count_estimate": 1000
-    },
-    "name": "Laser ICF - NIF Commercialization (D-T)",
-    "scores": {
-      "customization": 1.67,
-      "data_availability": 4.0,
-      "modularity": 4.3333,
-      "plant_complexity": 1.0,
-      "supply_chain": 1.5,
-      "technical_feasibility": 5.0,
-      "upper_cf": 3.5
-    }
-  },
-  {
+    "company": "Blue Laser Fusion",
     "composite": 2.9162,
     "composite_axes_included": [
       "customization",
@@ -4682,6 +4628,7 @@
       },
       "data_availability_diagnostics": {
         "blocking_count": 4,
+        "count_source": "structured_summary_block",
         "data_availability_score": 3.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/31-laser-icf-oec-architecture/gap_report.md",
@@ -4759,6 +4706,7 @@
         "upper_cf_score": 3.5
       }
     },
+    "display_name": "Laser ICF - OEC Architecture",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -4800,7 +4748,8 @@
     }
   },
   {
-    "composite": 2.9736,
+    "company": "GenF Systems",
+    "composite": 2.6879,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -4830,8 +4779,9 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 2,
-        "data_availability_score": 4.0,
+        "blocking_count": 6,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 2.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/32-laser-icf-french-national/gap_report.md",
         "report_exists": true
@@ -4907,6 +4857,7 @@
         "upper_cf_score": 3.5
       }
     },
+    "display_name": "Laser ICF - French National",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -4939,7 +4890,7 @@
     "name": "Laser ICF - French National (D-T)",
     "scores": {
       "customization": 1.67,
-      "data_availability": 4.0,
+      "data_availability": 2.0,
       "modularity": 4.3955,
       "plant_complexity": 1.0,
       "supply_chain": 1.5,
@@ -4948,7 +4899,8 @@
     }
   },
   {
-    "composite": 2.81,
+    "company": "Neo Fusion",
+    "composite": 2.5243,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -4978,8 +4930,9 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 0,
-        "data_availability_score": 5.0,
+        "blocking_count": 4,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 3.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/33-state-backed-tokamak-best/gap_report.md",
         "report_exists": true
@@ -5056,6 +5009,7 @@
         "upper_cf_score": 4.0
       }
     },
+    "display_name": "State-Backed Tokamak - BEST",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -5088,7 +5042,7 @@
     "name": "State-Backed Tokamak - BEST (D-T)",
     "scores": {
       "customization": 1.67,
-      "data_availability": 5.0,
+      "data_availability": 3.0,
       "modularity": 2.0,
       "plant_complexity": 1.0,
       "supply_chain": 2.0,
@@ -5097,7 +5051,8 @@
     }
   },
   {
-    "composite": 3.1067,
+    "company": "Deutelio",
+    "composite": 2.9638,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -5127,8 +5082,9 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": 5,
-        "data_availability_score": 3.0,
+        "blocking_count": 9,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 2.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/35-polomac-magnetic-confinement/gap_report.md",
         "report_exists": true
@@ -5196,6 +5152,7 @@
         "upper_cf_score": 4.0
       }
     },
+    "display_name": "PoloMac Magnetic Confinement",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -5228,7 +5185,7 @@
     "name": "PoloMac Magnetic Confinement",
     "scores": {
       "customization": 2.33,
-      "data_availability": 3.0,
+      "data_availability": 2.0,
       "modularity": 2.9167,
       "plant_complexity": 3.5,
       "supply_chain": 5.0,
@@ -5237,6 +5194,7 @@
     }
   },
   {
+    "company": "Helical Fusion",
     "composite": 2.5987,
     "composite_axes_included": [
       "customization",
@@ -5268,6 +5226,7 @@
       },
       "data_availability_diagnostics": {
         "blocking_count": 1,
+        "count_source": "structured_summary_block",
         "data_availability_score": 4.0,
         "extracted_at": "2026-05-20",
         "gap_report_path": "exploration/concept_analysis/analyses/36-helical-coil-stellarator/gap_report.md",
@@ -5343,6 +5302,7 @@
         "upper_cf_score": 4.0
       }
     },
+    "display_name": "Helical Coil Stellarator",
     "evidence": {
       "customization": "high",
       "data_availability": "high",
@@ -5384,9 +5344,11 @@
     }
   },
   {
-    "composite": 3.2217,
+    "company": "NearStar Fusion",
+    "composite": 3.0471,
     "composite_axes_included": [
       "customization",
+      "data_availability",
       "modularity",
       "plant_complexity",
       "supply_chain",
@@ -5413,11 +5375,12 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": null,
-        "data_availability_score": null,
+        "blocking_count": 6,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 2.0,
         "extracted_at": "2026-05-20",
-        "gap_report_path": null,
-        "report_exists": false
+        "gap_report_path": "exploration/concept_analysis/analyses/37-magnetized-target-inertial-fusion-mtif/gap_report.md",
+        "report_exists": true
       },
       "modularity_diagnostics": {
         "blanket_assumed": true,
@@ -5484,9 +5447,10 @@
         "upper_cf_score": 3.5
       }
     },
+    "display_name": "Magnetized Target Inertial Fusion - MTIF",
     "evidence": {
       "customization": "high",
-      "data_availability": null,
+      "data_availability": "high",
       "modularity": "low",
       "plant_complexity": "high",
       "supply_chain": "high",
@@ -5516,7 +5480,7 @@
     "name": "Magnetized Target Inertial Fusion - MTIF (D-D)",
     "scores": {
       "customization": 2.33,
-      "data_availability": null,
+      "data_availability": 2.0,
       "modularity": 5.0,
       "plant_complexity": 2.5,
       "supply_chain": 5.0,
@@ -5525,9 +5489,11 @@
     }
   },
   {
-    "composite": 2.8756,
+    "company": "SHINE Technologies",
+    "composite": 2.8933,
     "composite_axes_included": [
       "customization",
+      "data_availability",
       "modularity",
       "plant_complexity",
       "supply_chain",
@@ -5554,11 +5520,12 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": null,
-        "data_availability_score": null,
+        "blocking_count": 4,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 3.0,
         "extracted_at": "2026-05-20",
-        "gap_report_path": null,
-        "report_exists": false
+        "gap_report_path": "exploration/concept_analysis/analyses/38-particle-accelerator-driven-fusion/gap_report.md",
+        "report_exists": true
       },
       "modularity_diagnostics": {
         "blanket_assumed": false,
@@ -5624,9 +5591,10 @@
         "upper_cf_score": 4.0
       }
     },
+    "display_name": "Particle Accelerator-Driven Fusion",
     "evidence": {
       "customization": "high",
-      "data_availability": null,
+      "data_availability": "high",
       "modularity": "low",
       "plant_complexity": "high",
       "supply_chain": "high",
@@ -5656,7 +5624,7 @@
     "name": "Particle Accelerator-Driven Fusion (D-T)",
     "scores": {
       "customization": 1.67,
-      "data_availability": null,
+      "data_availability": 3.0,
       "modularity": 2.5833,
       "plant_complexity": 4.0,
       "supply_chain": 4.0,
@@ -5665,9 +5633,11 @@
     }
   },
   {
-    "composite": 4.0278,
+    "company": "ENN Energy",
+    "composite": 3.7381,
     "composite_axes_included": [
       "customization",
+      "data_availability",
       "modularity",
       "plant_complexity",
       "supply_chain",
@@ -5694,11 +5664,12 @@
         }
       },
       "data_availability_diagnostics": {
-        "blocking_count": null,
-        "data_availability_score": null,
+        "blocking_count": 8,
+        "count_source": "structured_summary_block",
+        "data_availability_score": 2.0,
         "extracted_at": "2026-05-20",
-        "gap_report_path": null,
-        "report_exists": false
+        "gap_report_path": "exploration/concept_analysis/analyses/39-spherical-tokamak-cs-free-p-b11/gap_report.md",
+        "report_exists": true
       },
       "modularity_diagnostics": {
         "blanket_assumed": false,
@@ -5763,9 +5734,10 @@
         "upper_cf_score": 5.0
       }
     },
+    "display_name": "Spherical Tokamak - CS-free p-B11",
     "evidence": {
       "customization": "high",
-      "data_availability": null,
+      "data_availability": "high",
       "modularity": "low",
       "plant_complexity": "high",
       "supply_chain": "high",
@@ -5795,7 +5767,7 @@
     "name": "Spherical Tokamak - CS-free p-B11 (p-B11)",
     "scores": {
       "customization": 5.0,
-      "data_availability": null,
+      "data_availability": 2.0,
       "modularity": 3.6667,
       "plant_complexity": 2.5,
       "supply_chain": 5.0,

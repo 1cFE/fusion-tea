@@ -28,3 +28,18 @@ The data is sufficient to write all five D1+ qualitative sections and build a cr
 
 ### Most Impactful `not-yet-sourced` Item
 **HSR4/18 cost study (Beidler et al. ~2001, *Nuclear Fusion* 41)** — almost certainly contains subsystem cost fractions for the direct GIGA predecessor. This is the difference between a single-number LCOE model and a decomposed parametric one.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Mostly Ready"
+blocking_count: 0
+important_count: 2
+counting_method: "manual_prose_count"
+section_coverage:
+  availability_of_data:       "Unknown"
+  system_function:            "Unknown"
+  subsystem_maturity:         "Unknown"
+  materials_supply_chain:     "Unknown"
+  lcoe_parameter_extraction:  "Unknown"
+```

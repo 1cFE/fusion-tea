@@ -196,3 +196,18 @@ The qualitative sections (Availability, Challenges, Maturity, Materials) can be 
 The quantitative LCOE model faces blocking gaps in two areas: (a) net plant output and capital cost — currently only addressable via HYLIFE-II heritage analogs, which requires the HYLIFE-II Final Report full text; and (b) thermal efficiency — unresolved steam vs. Brayton ambiguity that directly multiplies into LCOE. Before building the model, retrieving the HYLIFE-III 2024 paper and the HYLIFE-II Final Report would substantially reduce the assumptions that must be stated and defended. The ASPEN PDF is also worth acquiring since the $20-30/J laser cost target is the single most important driver in the capital cost and is currently unverified in extracted text.
 
 The back-solve to $0.01/kWh can be performed with current data using stated assumptions, and it will be genuinely informative — the binding constraints (laser cost, target gain, thermal efficiency, capacity factor) are all identifiable from existing sources. The analysis should be explicit that LCOE central estimates are provisional pending these three documents.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Mostly Ready (with important sourcing gaps for quantitative LCOE work)"
+blocking_count: 4
+important_count: 8
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Good (qualitative), Partial (quantitative)"
+  system_function:            "Partial"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Partial"
+  lcoe_parameter_extraction:  "Unknown"
+```

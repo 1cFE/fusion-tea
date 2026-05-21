@@ -170,3 +170,18 @@
 For the quantitative LCOE model, a meaningful skeleton can be constructed using the confirmed parameters (1 GW plant, 10 Hz, gain >100 claimed) combined with European IFE analogue parameters for laser capital cost, DPSSL efficiency, and target fabrication. The **recirculating power fraction** will be the most important sensitivity: at gain=100 and ~15% laser wall-plug efficiency, recirculating power could consume ~60–70% of gross output, making net LCOE extremely sensitive to actual laser efficiency. This is a known binding constraint for laser IFE and should be the centerpiece of the back-solve analysis.
 
 **Before finalizing the analysis**, acquiring the Ribeyre et al. full text and any available IFSA25 proceedings would substantially improve confidence on blanket design, implosion gain curve, and reactor system integration parameters. These are the highest-leverage source gaps.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Significant Gaps"
+blocking_count: 6
+important_count: 5
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Limited"
+  system_function:            "Partial"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Poor"
+  lcoe_parameter_extraction:  "Poor (skeletal only)"
+```

@@ -162,3 +162,18 @@ Now I have everything I need. Let me write the assessment.
 **Proceed to full analysis.** The available data is sufficient for a D1+ qualitative write-up and a first-pass quantitative LCOE model with clearly stated assumptions. The key blocking gaps — Q value, fusion power, capital costs — are all amenable to bounded estimation using analogues from the broader tokamak plant study literature (ARIES, EUROfusion DEMO, STEP). Tokamak Energy's transparency on machine parameters, magnet technology, heating approach, and blanket concept gives a stronger foundation than most private fusion concepts at comparable development stage.
 
 The two most important analogue sources to acquire before writing the quantitative model are: (1) a STEP or EU DEMO system code output for capital cost scaling, and (2) an estimate of EC heating power requirements at pilot plant scale to constrain the recirculating power fraction. Both are tractable with targeted literature search. The analysis should note that the 450-750 MWe output range is explicitly tied to "technology and physics assumptions" per Tokamak Energy — this 40% uncertainty band should be reflected directly in the LCOE sensitivity sweep.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Mostly Ready"
+blocking_count: 3
+important_count: 8
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Moderate"
+  system_function:            "Good (challenges well-characterized)"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Partial"
+  lcoe_parameter_extraction:  "Unknown"
+```

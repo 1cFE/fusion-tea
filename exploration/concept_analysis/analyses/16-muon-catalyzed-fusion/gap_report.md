@@ -167,3 +167,18 @@ What a first-pass analysis *can* do with current sources:
 - Use proton accelerator cost analogs and D-T plant cost analogs as order-of-magnitude capital cost proxies
 
 What it cannot do: produce a defensible absolute LCOE estimate. The analysis should be framed explicitly as a parametric sensitivity study with all capital costs flagged as highly uncertain or missing, and the $0.025/kWh claim treated as a target to audit rather than a baseline to refine.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Insufficient Data"
+blocking_count: 6
+important_count: 6
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Poor"
+  system_function:            "Partial"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Poor"
+  lcoe_parameter_extraction:  "Unknown"
+```

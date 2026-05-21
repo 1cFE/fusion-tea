@@ -159,3 +159,18 @@ Now I have enough to write the full assessment. Let me produce it.
 **Proceed to full analysis**, with one priority source acquisition first: re-extract the full MANTA paper (Rutherford et al. 2024) to capture its subsystem cost breakdown. The high-level extracted source (`manta-reference-design.md`) captures enough to confirm MANTA is the right proxy, but the LCOE model will need per-subsystem capital cost fractions that are almost certainly in the full paper.
 
 The qualitative write-up can be completed now from current sources — NT plasma physics, MANTA reference design, and the Firefly parameter envelope provide enough material for all five D1+ narrative sections. The quantitative LCOE model will need MANTA's cost detail and should explicitly flag the three key uncertainties: (1) scaling from 450 MW MANTA to 50–100 MW Firefly, (2) heating method choice (ohmic vs. ICRF vs. ECRH — affects recirculating power by potentially 30+ percentage points), and (3) blanket lifetime/replacement cost. These should be treated as explicit sensitivity axes in the model rather than point estimates.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Mostly Ready"
+blocking_count: 1
+important_count: 7
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Partial (concept class: Good; Firefly specifically: Opaque)"
+  system_function:            "Partial"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Partial"
+  lcoe_parameter_extraction:  "Partial — sufficient for a first-pass model using MANTA as proxy; insufficient for Firefly-specific projections"
+```

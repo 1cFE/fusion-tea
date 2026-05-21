@@ -195,3 +195,18 @@ I now have enough to write the full gap assessment. Let me compile it.
 3. **Back-solve to $0.01/kWh**: Feasible. The largest sensitivities are: (a) REBCO tape cost learning curve, (b) annual sacrificial coil replacement cost, (c) whether η_th can exceed the assumed 40%, and (d) whether Q=15 is achievable under Bohm-like scaling. These can all be varied parametrically.
 
 **The one structural caution**: the paper explicitly avoids quoting specific capital costs or LCOE values, and OpenStar's own cost model is described as preliminary and unpublished. Any dollar estimates in the D1+ model will be analyst-constructed analogues, not OpenStar-endorsed figures. This should be stated clearly in the analysis.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Mostly Ready"
+blocking_count: 4
+important_count: 8
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Rich"
+  system_function:            "Good (challenges are well-articulated in the paper itself)"
+  subsystem_maturity:         "Partial (TRLs not formally stated, but implied by the published record)"
+  materials_supply_chain:     "Partial"
+  lcoe_parameter_extraction:  "Good on physics/performance parameters; zero on dollar costs"
+```

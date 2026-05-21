@@ -180,3 +180,18 @@ So the capex-only LCOE is ~0.085 c/kWh undiscounted — marginally consistent wi
 2. **Quantitative model**: Build an illustrative/bounding model only, using company-stated targets as the optimistic scenario. The model should make explicit that: device cost, conversion efficiency, electrode lifetime, and capacity factor are all assumed from unvalidated company claims. Back-solve to $0.01/kWh can be performed but the base case should be flagged as almost certainly optimistic by ≥10×.
 
 3. **Before a serious second-pass analysis**: acquire Lerner (2011) for any conceptual plant design; extract QMFE critiques from independent literature; and confirm whether the x-ray patent contains efficiency data. These three sources would substantially improve the analysis quality.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Insufficient Data"
+blocking_count: 6
+important_count: 5
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Poor"
+  system_function:            "Partial (qualitatively describable, quantitatively unresolvable)"
+  subsystem_maturity:         "Partial (qualitative TRL estimates possible, no quantitative data)"
+  materials_supply_chain:     "Partial (identifiable from physics; no sourced supply chain analysis)"
+  lcoe_parameter_extraction:  "Poor — company targets only, no engineering basis"
+```

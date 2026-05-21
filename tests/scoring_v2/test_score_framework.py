@@ -68,35 +68,25 @@ def test_old_dimension_columns_gone(run_cli, tmp_scores_dir: Path):
         )
 
 
-# P5 lands all 7 axes wired.
+# P5 lands all 7 axes wired; after the gap-report-stub work all 40
+# concepts have a gap_report.md, so every axis scores for every concept.
 _WIRED_AXES_NOW = {
     "modularity", "supply_chain", "customization", "upper_cf",
     "plant_complexity", "technical_feasibility", "data_availability",
 }
 
-# Concepts without a gap_report.md → data_availability scores null
-_NO_GAP_REPORT = {
-    "37-magnetized-target-inertial-fusion-mtif",
-    "38-particle-accelerator-driven-fusion",
-    "39-spherical-tokamak-cs-free-p-b11",
-}
-
 
 def test_wired_axes_score(run_cli, tmp_scores_dir: Path):
-    """Every wired axis produces a non-empty score for every concept,
-    except data_availability which is null for concepts lacking a
-    gap_report.md (intentional honest-null per axis-spec)."""
+    """Every wired axis produces a non-empty score for every concept.
+    All 40 concepts now have a gap_report.md, so data_availability is
+    no longer null for any concept (the null-handling path is unit-
+    tested in test_data_availability.py::TestNullHandling)."""
     run_cli("score.py")
     rows = _read_csv(tmp_scores_dir / "table.csv")
     for r in rows:
         cid = r["concept_id"]
         for axis in AXES:
-            if axis == "data_availability" and cid in _NO_GAP_REPORT:
-                assert r[axis] == "", (
-                    f"{cid}: expected null data_availability (no gap report)"
-                )
-            else:
-                assert r[axis], f"{cid}: {axis} empty"
+            assert r[axis], f"{cid}: {axis} empty"
 
 
 def test_composite_is_mean_of_included_axes(run_cli, tmp_scores_dir: Path):

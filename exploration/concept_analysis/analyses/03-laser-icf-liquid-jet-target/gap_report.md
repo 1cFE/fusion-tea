@@ -160,3 +160,18 @@ The concept has three fundamental blocking gaps that prevent LCOE estimation:
 3. **No validated performance parameters** (Q~100 projection has no experimental support; closest demonstrated benchmark is 14 orders of magnitude below target)
 
 The qualitative write-up can still be written and will be valuable: it should be structured around documenting the extraordinary claims, the 14-OOM performance gap to the nearest experimental benchmark, and the complete absence of engineering information — framing this as a concept that cannot yet be cost-modeled rather than one with uncertain costs. For the quantitative section, a "back-of-envelope analogue" approach using IFE laser driver cost data (SOMBRERO/HYLIFE-II) with explicit assumption documentation is the only viable path, and it should be prominently flagged as a placeholder pending Cortex-specific data.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Insufficient Data"
+blocking_count: 7
+important_count: 5
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Poor"
+  system_function:            "Partial (physics mechanism understood; engineering completely unknown)"
+  subsystem_maturity:         "Poor"
+  materials_supply_chain:     "Poor"
+  lcoe_parameter_extraction:  "Poor — nearly all LCOE parameters are missing or unverifiable"
+```

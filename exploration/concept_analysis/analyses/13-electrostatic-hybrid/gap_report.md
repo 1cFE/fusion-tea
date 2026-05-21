@@ -165,3 +165,18 @@
 The available data can support a qualitative narrative covering confinement physics, device architecture, near-term roadmap, and TRL assessments. The physics description is coherent and the dossier captures everything that has been made public. However, all five LCOE-critical parameters — capital cost, achieved Q, thermal conversion efficiency, recirculating power, and availability — are either `truly-unknown` or `proprietary`. A quantitative model built on current data would have no grounding for any of its major inputs.
 
 **Recommended path**: Retrieve full text of the two peer-reviewed papers before writing the analysis. These are the only non-marketing sources and likely contain quantitative plasma data (density, confinement time, fusion rate measurements) that could anchor the recirculating power and Q estimates. Even with those, a capital cost estimate and conversion efficiency will remain speculative — the analysis should make this explicit and use the back-solve direction ($0.01/kWh target) as the primary analytical frame rather than a bottom-up LCOE estimate.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Insufficient Data"
+blocking_count: 6
+important_count: 4
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Poor (Opaque)"
+  system_function:            "Partial"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Poor"
+  lcoe_parameter_extraction:  "Very Poor"
+```

@@ -168,3 +168,18 @@ Now I have everything I need. Let me write the gap assessment.
 ## Summary
 
 **Proceed to full analysis.** The Helios preconceptual design is one of the most well-documented pre-commercial fusion concepts available — the qualitative sections (data availability, system function challenges, subsystem maturity, materials) can be written to high quality from existing sources. The single blocking action before the quantitative LCOE model is reading the full Helios PDF for cost/economics sections, which are almost certainly present in the 200-page document but were not captured in Phase 1a's partial extraction. Secondary priority is extracting the 4 Nuclear Fusion (Jan 2025) papers for subsystem physics depth. With those two actions, this concept moves from "Mostly Ready" to "Ready."
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Mostly Ready"
+blocking_count: 3
+important_count: 8
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Good"
+  system_function:            "Good"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Partial"
+  lcoe_parameter_extraction:  "Partial"
+```

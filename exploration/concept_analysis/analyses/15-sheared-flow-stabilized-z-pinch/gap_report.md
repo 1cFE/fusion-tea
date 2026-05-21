@@ -175,3 +175,18 @@ Now I have everything I need. Let me write the gap assessment.
 The quantitative LCOE model will require explicit `derivable` assumptions for most economic parameters, since no capital cost estimates exist in the literature. The critical path is: assume Q=1 (FuZE-Q target, not yet achieved), assume recirculating power from the 10 Hz pulsed power system, estimate thermal efficiency from LiPb operating temperatures, and apply pulsed-power cost analogues for the driver system. The analysis should clearly flag that these are model assumptions, not published data, and the back-solve to $0.01/kWh will be highly informative precisely because no one has published whether this concept can plausibly reach that target.
 
 The two most critical data gaps — **Q value** and **capital cost structure** — are endemic to the current state of the technology (pre-breakeven, no plant study), not sourcing gaps. The qualitative uncertainty section should feature both prominently.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Mostly Ready"
+blocking_count: 5
+important_count: 7
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Moderate"
+  system_function:            "Partial"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Poor"
+  lcoe_parameter_extraction:  "Partial"
+```

@@ -170,3 +170,18 @@ Now I have everything needed. Let me write the gap assessment.
 **Proceed to full analysis with explicit caveat framing.** The qualitative sections (data availability, system function challenges, maturity) can be written with substance — the 29 papers and ARPA-E presentation provide enough to construct a rigorous narrative about why CHARM is physically interesting and where the major uncertainties lie. The materials section will be thin but honest.
 
 The quantitative LCOE model will require the analyst to construct almost every parameter from analogy or assumption — there are essentially no published capital cost estimates, no confirmed operating point, and no efficiency numbers for the novel subsystems (DEC, alpha channeling, rotation maintenance). Before coding, it is worth pulling the full text of the PRX Energy 2025 paper and the Ochs & Fisch 2024 breakeven paper, as these are the most likely sources of usable quantitative bounds. The back-solve to $0.01/kWh section may end up being the most informative part of the analysis, since this concept's case for competitive LCOE rests entirely on theoretical claims (no neutron damage, no tritium, direct energy conversion) that can be explored parametrically even without confirmed numbers.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Significant Gaps"
+blocking_count: 13
+important_count: 3
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Limited"
+  system_function:            "Good (qualitatively)"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Poor"
+  lcoe_parameter_extraction:  "Poor"
+```

@@ -37,13 +37,28 @@ def _run_build() -> None:
         )
 
 
+# The scoring framework scores 40 concepts; the UI hides
+# build.EXCLUDED_FROM_UI (currently just 30-laser-icf-nif-commercialization,
+# redundant with 26-laser-icf-indirect-drive — both Inertia Enterprises).
+EXPECTED_UI_CONCEPTS = 40 - 1
+
+
 def test_build_emits_concepts_json():
     _run_build()
     path = DATA_DIR / "concepts.json"
     assert path.exists()
     data = json.loads(path.read_text(encoding="utf-8"))
     assert isinstance(data, list)
-    assert len(data) == 40
+    assert len(data) == EXPECTED_UI_CONCEPTS
+
+
+def test_excluded_concept_absent_from_ui():
+    """build.EXCLUDED_FROM_UI concepts must not appear in concepts.json
+    even though score.py still scores them."""
+    _run_build()
+    data = json.loads((DATA_DIR / "concepts.json").read_text(encoding="utf-8"))
+    ids = {c["concept_id"] for c in data}
+    assert "30-laser-icf-nif-commercialization" not in ids
 
 
 def test_concepts_have_all_required_fields():
@@ -86,21 +101,23 @@ def test_modularity_sub_tables_in_weights_json():
         assert table in mod["sub_tables"], f"modularity.{table} missing"
 
 
-def test_null_data_availability_concepts_have_null_score():
-    """Concepts without a gap_report.md (37/38/39) must appear in the UI
-    with data_availability=null + composite_axes_included excluding it."""
+def test_all_concepts_score_all_seven_axes():
+    """After the gap-report-stub work every concept has a gap_report.md,
+    so every UI concept carries a non-null score on all 7 axes and a
+    7-axis composite."""
     _run_build()
     data = json.loads((DATA_DIR / "concepts.json").read_text(encoding="utf-8"))
-    by_id = {c["concept_id"]: c for c in data}
-    for cid in ("37-magnetized-target-inertial-fusion-mtif",
-                "38-particle-accelerator-driven-fusion",
-                "39-spherical-tokamak-cs-free-p-b11"):
-        c = by_id[cid]
-        assert c["scores"]["data_availability"] is None, cid
-        assert "data_availability" not in c["composite_axes_included"], cid
-        assert c["composite"] is not None, (
-            f"{cid}: composite should still be non-null (6 of 7 axes wired)"
+    assert len(data) == EXPECTED_UI_CONCEPTS
+    for c in data:
+        for axis in AXES:
+            assert c["scores"][axis] is not None, (
+                f"{c['concept_id']}: {axis} is null"
+            )
+        assert set(c["composite_axes_included"]) == set(AXES), (
+            f"{c['concept_id']}: composite_axes_included = "
+            f"{c['composite_axes_included']}"
         )
+        assert c["composite"] is not None, f"{c['concept_id']}: composite null"
 
 
 def test_composite_is_mean_of_included_axes():

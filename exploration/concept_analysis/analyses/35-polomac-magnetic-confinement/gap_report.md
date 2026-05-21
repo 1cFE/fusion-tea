@@ -168,3 +168,18 @@
 The two extracted source documents are abstract-level summaries; the full papers — particularly the CC-BY 2024 JTSP paper — should be retrieved first. The 2024 JTSP full text is freely available and is the single highest-priority action before analysis. The 2014 FED full text would be the second priority.
 
 Even with full papers in hand, PoloMac will be a "Limited/Opaque" rated concept. The quantitative LCOE model will necessarily be an analogy exercise borrowing from LDX and generic MFE plant studies, with the following parameters entirely assumed: Q, heating power, net electrical output, thermal efficiency, capital costs by subsystem, and O&M. All must be flagged explicitly as assumed, with broad uncertainty ranges (±50–100%). The concept's primary analytic value at D1+ stage is characterizing *what would need to be true* for the concept to be viable, not producing a grounded cost estimate.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Insufficient Data"
+blocking_count: 9
+important_count: 4
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Poor"
+  system_function:            "Poor"
+  subsystem_maturity:         "Poor"
+  materials_supply_chain:     "Partial (some inferences possible; no concept-specific data)"
+  lcoe_parameter_extraction:  "Poor"
+```

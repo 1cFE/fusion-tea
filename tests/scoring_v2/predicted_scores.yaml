@@ -288,46 +288,55 @@ technical_feasibility:
 
 # ----------------------------------------------------------------------
 # Data Availability — from data_availability_implementation_spec.md
-# Concepts without gap reports: null (composite skips axis)
+#
+# This axis is deterministic given the gap report: score = bucket(blocking_count).
+# After the gap-report format standardization (every report now carries a
+# `## Structured summary (machine-readable)` block — see
+# scripts/add_gap_report_summary_blocks.py), blocking_count is the
+# deduplicated count from that block, NOT the legacy `**blocking**` prose
+# regex (which double-counted gaps restated across sections). These
+# predicted values are regenerated directly from the structured blocks:
+# predicted == actual by construction for this axis. If a gap report
+# changes, re-run add_gap_report_summary_blocks.py + score.py and refresh.
 # ----------------------------------------------------------------------
 data_availability:
-  "01-hts-compact-tokamak": 2.0       # CFS ARC (6 blockers)
-  "02-acoustic-icf-sonofusion": 2.0   # Sonofusion (8 blockers)
-  "03-laser-icf-liquid-jet-target": 2.0   # Cortex (6 blockers)
-  "04-laser-icf": 3.0                 # hb11 (5 blockers)
-  "05-planar-coil-stellarator": 5.0   # Thea (0)
-  "06-magnetic-mirror": 3.0           # Pale Blue (5)
-  "07-maglif": 5.0                    # Pacific (0)
-  "08-frc-w-direct-conversion": 3.0   # Helion (5)
-  "09-qi-stellarator-hts": 4.0        # Proxima (1)
-  "10-large-scale-stellarator": 5.0   # Gauss (0)
-  "11-magnetic-mirror": 3.0           # Realta (4)
-  "12-levitated-dipole": 3.0          # OpenStar (3)
-  "13-electrostatic-hybrid": 2.0      # Avalanche (9)
-  "14-magnetized-target-fusion-pneumatic-compression": 3.0  # General Fusion (5)
-  "15-sheared-flow-stabilized-z-pinch": 4.0   # Zap (2)
-  "16-muon-catalyzed-fusion": 2.0     # Acceleron (6)
-  "17a-laser-icf-hybrid-drive": 5.0   # Xcimer (0)
-  "17b-laser-icf-fast-ignition": 2.0  # Focused (6)
-  "18-p-b11-frc": 2.0                 # TAE (6)
-  "19-orbital-levitated-dipole": 2.0  # Zephyr (6)
-  "20a-type-one-stellarator": 4.0     # Type One (2)
-  "20b-renaissance-stellarator": 3.0  # Renaissance (4)
-  "21-spherical-tokamak-hts": 2.0     # Tokamak Energy (6)
-  "22-projectile-icf": 3.0            # First Light (4)
-  "23-laser-icf-nanostructured-target": 2.0  # Marvel (7)
-  "24-dense-plasma-focus": 4.0        # LPP (2)
-  "25-heavy-ion-beam-icf": 5.0        # Intensity (0)
-  "26-laser-icf-indirect-drive": 3.0  # Inertia indirect (3)
-  "27-polywell": 4.0                  # Polywell (2)
-  "28-hts-tokamak-full-hts": 4.0      # Energy Singularity (1)
-  "29-negative-triangularity-tokamak": 4.0  # Firefly NTT (1)
-  "30-laser-icf-nif-commercialization": 4.0  # NIF-comm (2)
-  "31-laser-icf-oec-architecture": 5.0       # OEC (0)
-  "32-laser-icf-french-national": 4.0        # GenF (2)
-  "33-state-backed-tokamak-best": 5.0        # BEST (0)
-  "35-polomac-magnetic-confinement": 3.0     # Polomac (5)
-  "36-helical-coil-stellarator": 4.0         # Helical (1)
-  "37-magnetized-target-inertial-fusion-mtif": null  # no gap report yet
-  "38-particle-accelerator-driven-fusion": null      # no gap report yet
-  "39-spherical-tokamak-cs-free-p-b11": null         # no gap report yet
+  "01-hts-compact-tokamak":                            4.0   # 1 blocking
+  "02-acoustic-icf-sonofusion":                        2.0   # 8 blocking
+  "03-laser-icf-liquid-jet-target":                    2.0   # 7 blocking
+  "04-laser-icf":                                      3.0   # 4 blocking
+  "05-planar-coil-stellarator":                        3.0   # 3 blocking
+  "06-magnetic-mirror":                                1.0   # 13 blocking
+  "07-maglif":                                         3.0   # 3 blocking
+  "08-frc-w-direct-conversion":                        2.0   # 7 blocking
+  "09-qi-stellarator-hts":                             4.0   # 2 blocking
+  "10-large-scale-stellarator":                        5.0   # 0 blocking
+  "11-magnetic-mirror":                                3.0   # 4 blocking
+  "12-levitated-dipole":                               3.0   # 4 blocking
+  "13-electrostatic-hybrid":                           2.0   # 6 blocking
+  "14-magnetized-target-fusion-pneumatic-compression": 3.0   # 4 blocking
+  "15-sheared-flow-stabilized-z-pinch":                3.0   # 5 blocking
+  "16-muon-catalyzed-fusion":                          2.0   # 6 blocking
+  "17a-laser-icf-hybrid-drive":                        3.0   # 4 blocking
+  "17b-laser-icf-fast-ignition":                       2.0   # 6 blocking
+  "18-p-b11-frc":                                      2.0   # 8 blocking
+  "19-orbital-levitated-dipole":                       1.0   # 10 blocking
+  "20a-type-one-stellarator":                          3.0   # 3 blocking
+  "20b-renaissance-stellarator":                       3.0   # 4 blocking
+  "21-spherical-tokamak-hts":                          3.0   # 3 blocking
+  "22-projectile-icf":                                 2.0   # 7 blocking
+  "23-laser-icf-nanostructured-target":                2.0   # 7 blocking
+  "24-dense-plasma-focus":                             2.0   # 6 blocking
+  "25-heavy-ion-beam-icf":                             4.0   # 2 blocking
+  "26-laser-icf-indirect-drive":                       4.0   # 2 blocking
+  "27-polywell":                                       2.0   # 7 blocking
+  "28-hts-tokamak-full-hts":                           3.0   # 5 blocking
+  "29-negative-triangularity-tokamak":                 4.0   # 1 blocking
+  "30-laser-icf-nif-commercialization":                3.0   # 5 blocking
+  "31-laser-icf-oec-architecture":                     3.0   # 4 blocking
+  "32-laser-icf-french-national":                      2.0   # 6 blocking
+  "33-state-backed-tokamak-best":                      3.0   # 4 blocking
+  "35-polomac-magnetic-confinement":                   2.0   # 9 blocking
+  "36-helical-coil-stellarator":                       4.0   # 1 blocking
+  "37-magnetized-target-inertial-fusion-mtif":         2.0   # 6 blocking
+  "38-particle-accelerator-driven-fusion":             3.0   # 4 blocking
+  "39-spherical-tokamak-cs-free-p-b11":                2.0   # 8 blocking

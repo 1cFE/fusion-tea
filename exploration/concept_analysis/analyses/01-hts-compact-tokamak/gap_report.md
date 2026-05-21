@@ -1,13 +1,11 @@
-I now have sufficient material from all sources to write the gap assessment. Let me compile it:
-
----
-
 # Gap Assessment: HTS Compact Tokamak
+
+> **Revision 2026-05-20 — surgical regeneration.** Integrated Araiinejad & Shirvan 2025 (`knowledge/sources/tea_dt_mfe_cost_analysis/`), an independent bottom-up techno-economic analysis of "ARAI" — a modified-ARC D-T tokamak — treated here as an ARC-class cost analog per analyst decision (ARAI ≈ ARC, shared MIT/ARC origin). The source was already ingested repo-wide but never entered concept 01's Phase-1a research tree, so the original gap-check — which only sees concept-scoped sources — could not see it. Net effect: balance-of-plant cost, capacity factor, and vacuum-vessel replacement reclassified from blocking to important; `blocking_count` 4 → 1 (divertor only). This supersedes the original gap-check output.
 
 ## Overall Readiness
 **Rating**: Mostly Ready
 
-**Summary**: The HTS Compact Tokamak (CFS/ARC) is one of the best-documented private fusion concepts, with a published conceptual reactor design (Sorbom et al. 2015), a detailed plasma physics basis (Creely et al. 2020), a specific heating system study (Lin et al. 2020), and an independent power conversion analysis (Colliva et al. 2024). A first-pass LCOE model is buildable from available data, but with important caveats: the capital cost estimate in the ARC paper excludes balance of plant and is denominated in 2014 dollars for a 200 MWe design that has since evolved to 400 MWe. Key LCOE uncertainties — capacity factor, vacuum vessel replacement frequency, O&M costs — are present in the source material as engineering challenges but lack quantitative treatment. These are not showstoppers for a D1+ analysis; they are the analysis.
+**Summary**: The HTS Compact Tokamak (CFS/ARC) is one of the best-documented private fusion concepts, with a published conceptual reactor design (Sorbom et al. 2015), a detailed plasma physics basis (Creely et al. 2020), a specific heating system study (Lin et al. 2020), an independent power conversion analysis (Colliva et al. 2024), and — for plant-level economics — an independent ARC-class techno-economic analysis (Araiinejad & Shirvan 2025). A first-pass LCOE model is buildable from available data, with caveats: the ARC-paper capital estimate excludes balance of plant and is denominated in 2014 dollars for a 200 MWe design since evolved to 400 MWe. Araiinejad & Shirvan 2025 now supplies an ARC-class balance-of-plant, O&M, and LCOE envelope (NOAK lower/upper bounds at 350 MWe), which removes balance-of-plant cost, capacity factor, and vacuum-vessel replacement as blocking gaps — they remain important accuracy gaps pending CFS-specific data. The divertor — explicitly deferred in the 2015 ARC paper — is now the sole blocking LCOE gap.
 
 ---
 
@@ -21,14 +19,15 @@ I now have sufficient material from all sources to write the gap assessment. Let
 - Creely et al. 2020 (SPARC overview): SPARC physics parameters (Bt=12.2T, Ip=8.7MA, R=1.85m, targeting Q~11)
 - Lin et al. 2020 (ICRF physics): Detailed heating system physics, antenna design rationale, power absorption calculations
 - Colliva et al. 2024 (power conversion): Three-cycle comparison (Rankine 46%, sCO₂ 40%, He Brayton 32% net efficiency for ARC FNSF phase at 645 MWth input)
+- Araiinejad & Shirvan 2025 (TEA of D-T MC fusion power plants, `knowledge/sources/tea_dt_mfe_cost_analysis/`): independent bottom-up techno-economic analysis of "ARAI", a modified-ARC reactor (2015 ARC design with vanadium-alloy VV/plasma-facing components), scaled to a 350 MWe ARC-class plant. Provides a full plant-level cost breakdown — direct + indirect + balance of plant + O&M + decommissioning — at NOAK lower/upper bounds. Used as an ARC-class cost analog per analyst decision (ARAI ≈ ARC); an independent academic estimate, not CFS data.
 - CFS public communications (2025–2026): SPARC construction status, ARC site announcement (Virginia), 400 MWe target, investor disclosures
 - Dossier: All 12 differentiation columns filled at high/medium confidence
 
 **Missing**:
 - Updated ARC commercial design documentation (the public ARC design is 2015 vintage; the 400 MWe commercial plant remains undocumented publicly)
 - SPARC results (device is under construction; first plasma ~2027)
-- Detailed BoP cost breakdown
-- Site-level operational parameters (staffing, O&M cost estimates)
+- CFS-specific BoP cost breakdown (an ARC-class analog is now available — Araiinejad & Shirvan 2025 — but CFS's own BoP figures remain unpublished)
+- CFS-specific site-level operational parameters (staffing, O&M); analog O&M estimates now available from Araiinejad & Shirvan 2025
 
 **Gaps**:
 - Updated ARC commercial design parameters — `proprietary` — important (changes plant output from 200→400 MWe, affects all cost scaling)
@@ -155,15 +154,27 @@ The ARC paper provides 2014 material cost figures and quantities (Table 10 and T
 | Vacuum vessel fabricated cost | ~$92M (2014$) | Sorbom 2015 | l |
 | Operation mode | Quasi-steady (tens of minutes) | CFS communications | h |
 | SPARC parameters (B, R, Ip, ne, Te) | 12.2T, 1.85m, 8.7MA, 4×10²⁰m⁻³, 20 keV | Lin 2020 | h |
+| Overnight capital cost (ARC-class analog, NOAK) | 8,800–22,200 $/kW | Araiinejad & Shirvan 2025 | l |
+| BoP — turbine generator equipment | 535–550 $/kW | Araiinejad & Shirvan 2025 | m |
+| BoP — electric plant equipment | 274–402 $/kW | Araiinejad & Shirvan 2025 | m |
+| BoP — heat rejection system | 70–88 $/kW | Araiinejad & Shirvan 2025 | m |
+| Structures & site facilities | 819–1,317 $/kW | Araiinejad & Shirvan 2025 | l–m |
+| Indirect cost | 1,146–2,644 $/kW | Araiinejad & Shirvan 2025 | l–m |
+| Capacity factor (NOAK analog, not ARC-derived) | 0.5–0.7 | Araiinejad & Shirvan 2025 | l |
+| Annual O&M | 35–182 $/MWh | Araiinejad & Shirvan 2025 | l |
+| Replaceable-component O&M (VV + PFC) | 11–107 $/MWh | Araiinejad & Shirvan 2025 | l |
+| Fabricated VV + first wall cost | 109 $/kW (conventional fab) | Araiinejad & Shirvan 2025 | l |
+| Power-core fabrication cost assumption | $1,000/kg FOAK → $150/kg NOAK → $15/kg advanced mfg | Araiinejad & Shirvan 2025 | l |
+| LCOE (ARC-class analog, NOAK) | 140–550 $/MWh | Araiinejad & Shirvan 2025 | l |
 
 **Missing Parameters**:
 
 | Parameter | Gap Type | Criticality | Notes |
 |-----------|----------|-------------|-------|
-| Balance of plant capital cost | proprietary | **blocking** | ARC paper explicitly excludes BoP; typically 30–50% of total plant cost |
-| Capacity factor / availability | derivable | **blocking** | Depends on VV replacement schedule (6–12 months per VV) and plasma availability; not quantified. Can be estimated from VV replacement frequency |
-| Vacuum vessel replacement cost and schedule | derivable | **blocking** | VV lifetime ~6–12 months (44 DPA/FPY inner VV); each replacement adds $92M fabricated cost. This is a dominant OPEX driver. |
-| Divertor design, materials, replacement schedule | not-yet-sourced | **blocking** | Explicitly left open in ARC 2015; required for first wall OPEX estimate |
+| Balance of plant capital cost | derivable (analog) | important | CFS-specific BoP unpublished, but an ARC-class analog is now available (Araiinejad & Shirvan 2025: turbine generator, electric plant, heat rejection, structures, indirect — NOAK LB/UB). No longer blocking — build LCOE with stated-assumption BoP. |
+| Capacity factor / availability | derivable | important | Analog range 0.5–0.7 now available (Araiinejad & Shirvan 2025), enough to bound an LCOE model. Generic NPP/fossil-derived — does not reflect ARC's 6–12-month VV-replacement downtime; derive ARC-specific availability for accuracy. |
+| Vacuum vessel replacement cost and schedule | derivable | important | Costing methodology + figures now available (Araiinejad & Shirvan 2025: fabricated VV+FW 109 $/kW, replaceable-component O&M 11–107 $/MWh). Thesis assumes a 24-month vanadium VV; ARC's Inconel 718 inner VV is ~6–12 months — apply ARC's schedule with the analog costing. |
+| Divertor design, materials, replacement schedule | not-yet-sourced | **blocking** | Explicitly left open in ARC 2015; required for first-wall OPEX estimate. Araiinejad & Shirvan 2025 gives only a crude cost share (~10% of reactor plant equipment, "18 tungsten tiles") — no design, materials, or replacement schedule. Sole remaining blocking LCOE gap. |
 | Staffing / O&M cost rates | not-yet-sourced | important | No published estimates; ITER/tokamak analogues can inform |
 | Electricity for recirculating power (grid draw) | derivable | important | Qe is given (3–3.8); recirculating fraction derivable (~1/Qe ≈ 26–33%) |
 | ESS (energy storage system) cost | not-yet-sourced | important | Required to buffer pulsed operation; Colliva 2024 mentions but doesn't size or cost |
@@ -176,9 +187,9 @@ The ARC paper provides 2014 material cost figures and quantities (Table 10 and T
 
 ## Source Recommendations
 
-1. **BoP capital cost**: Search for fusion plant-level cost estimates using ARIES studies or fusion system codes. The ARIES-AT study (Najmabadi et al.) is a high-field advanced tokamak with detailed BoP costing. Use as an analog with scaling. `unverified — confirm existence before searching: "ARIES-AT full plant cost breakdown CAS"`
+1. **BoP capital cost** — *resolved (analog).* Araiinejad & Shirvan 2025 (`knowledge/sources/tea_dt_mfe_cost_analysis/`) provides a full bottom-up plant-level cost breakdown for an ARC-class D-T MC plant — direct, indirect, and BoP at NOAK lower/upper bounds. Use as the primary BoP analog, flagged as an independent academic estimate. The ARIES-AT study (Najmabadi et al.) remains a useful secondary cross-check.
 
-2. **Capacity factor / availability**: No CFS-specific publication exists. Derive from first principles: (a) VV replacement frequency [6–12 months], (b) time per replacement, (c) unplanned outage rate by analogy to JET/C-Mod. The ARC paper assumes modular replacement as a key availability improvement — model this explicitly.
+2. **Capacity factor / availability** — *partially addressed.* Araiinejad & Shirvan 2025 supplies a usable analog range (CF 0.5–0.7). No CFS-specific publication exists; for ARC accuracy still derive from first principles: (a) VV replacement frequency [6–12 months], (b) time per replacement, (c) unplanned outage rate by analogy to JET/C-Mod. The ARC paper assumes modular replacement as a key availability improvement — model this explicitly.
 
 3. **Divertor design and lifetime**: Search for CFS technical presentations at IAEA Fusion Energy Conference or ANS Fusion Engineering conference. May have updated ARC divertor design since 2015. Also applicable: ITER divertor experience as conservative analog. `unverified — search IAEA FEC 2023 proceedings for "ARC" or "CFS divertor"`
 
@@ -186,7 +197,7 @@ The ARC paper provides 2014 material cost figures and quantities (Table 10 and T
 
 5. **FLiBe production scale and cost**: MSR fission community is a close proxy. Search for FLiBe supply chain analysis in DOE Molten Salt Reactor R&D literature or Kairos Power publications (Kairos uses FLiBe as coolant for pebble bed fission). `not-yet-sourced — search "FLiBe production capacity Kairos" or "BeF2 supply chain fusion"`
 
-6. **O&M cost analogs**: The DEMO and ARIES plant studies provide staffing and scheduled maintenance cost estimates for large tokamaks. Apply scaling with adjustment for modular replacement advantage. These exist in published literature. `unverified — search "DEMO O&M cost tokamak" in Fusion Engineering and Design`
+6. **O&M cost analogs** — *addressed (analog).* Araiinejad & Shirvan 2025 provides FTE-based fixed O&M (50–95 staff) and variable O&M (total 35–182 $/MWh, replaceable-component share 11–107 $/MWh). DEMO and ARIES plant studies remain a useful cross-check. `unverified — search "DEMO O&M cost tokamak" in Fusion Engineering and Design`
 
 7. **Tritium startup and handling costs**: Reyes et al. 2021 or similar tritium fuel cycle analyses in NF or FED. Search for "tritium startup inventory fusion economics." `not-yet-sourced`
 
@@ -199,9 +210,24 @@ The ARC paper provides 2014 material cost figures and quantities (Table 10 and T
 The HTS Compact Tokamak has unusually rich publicly available technical data for a private fusion venture. The Sorbom 2015 ARC paper provides the physics, engineering rationale, a materials costing table, and an explicit R&D gap list — all in one document. The ICRF and power conversion papers add detail on two specific subsystems. This is enough to build a parameterized LCOE model with clearly stated assumptions.
 
 The main modeling challenges are:
-1. **Balance of plant is uncosted** in the primary source — use ARIES-AT or DEMO analogs, flag the assumption clearly.
-2. **Capacity factor is the dominant OPEX uncertainty** — the vacuum vessel has a 6–12 month irradiation lifetime, implying frequent replacement outages. The modular replacement design is CFS's answer, but no published downtime estimate exists. Model this parametrically.
-3. **The 2015 ARC design (200 MWe) ≠ the 2025 ARC commercial design (400 MWe)** — all capital cost numbers need to be rescaled, adjusted for inflation (2014→2026), and ideally updated with current REBCO pricing.
-4. **Divertor is a known gap** — the ARC paper explicitly deferred it. Use a tungsten divertor cost and replacement schedule from ITER analogs and flag it as a high-uncertainty line item.
+1. **Balance of plant** — uncosted in the primary source, but an ARC-class analog is now available (Araiinejad & Shirvan 2025: turbine generator 535–550 $/kW, electric plant 274–402 $/kW, heat rejection 70–88 $/kW, structures 819–1,317 $/kW, indirect 1,146–2,644 $/kW). Use these NOAK bounds, flagged as an independent academic analog; cross-check against ARIES-AT.
+2. **Capacity factor** — Araiinejad & Shirvan 2025 supplies an analog range (CF 0.5–0.7), enough to bound an LCOE model. But that range is generic NPP/fossil-derived; it does not reflect ARC's 6–12-month vacuum-vessel replacement cadence, so model availability parametrically from VV replacement frequency for ARC-specific accuracy.
+3. **The 2015 ARC design (200 MWe) ≠ the 2025 ARC commercial design (400 MWe)** — all capital cost numbers need rescaling, inflation adjustment (2014→2026), and ideally current REBCO pricing. Araiinejad & Shirvan 2025 models a 350 MWe ARC-class plant — a closer size match to the current 400 MWe target than the 2015 paper.
+4. **Divertor is the remaining blocking gap** — the ARC paper explicitly deferred it, and Araiinejad & Shirvan 2025 gives only a crude cost share (~10% of reactor plant equipment, "18 tungsten tiles"). Use a tungsten divertor cost and replacement schedule from ITER analogs and flag it as a high-uncertainty line item, or source an updated CFS/IAEA-FEC divertor design.
 
-Despite these gaps, the available data supports a D1+ analysis that covers all five required sections with honest uncertainty quantification. The missing items are engineering details that can be estimated from analogs — they do not indicate fundamental unknowns about the concept's technical viability or cost structure.
+Despite these gaps, the available data supports a D1+ analysis that covers all five required sections with honest uncertainty quantification. With the Araiinejad & Shirvan 2025 analog integrated, only the divertor remains a blocking LCOE gap; the rest are accuracy refinements estimable from analogs — they do not indicate fundamental unknowns about the concept's technical viability or cost structure.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Mostly Ready"
+blocking_count: 1
+important_count: 10
+counting_method: "section_5_missing_parameters"
+section_coverage:
+  availability_of_data:       "Good"
+  system_function:            "Good"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Partial"
+  lcoe_parameter_extraction:  "Unknown"
+```

@@ -22,3 +22,18 @@ The most important correction to the prior draft: SAND2006-7148 is **already sub
 3. **Commercial coupling efficiency** — demo is ~10%; commercial target unknown but constrains effective Q
 
 The Z-IFE SAND2006-7148 study provides the structural template; the analysis just needs explicit stated assumptions for translating from LTD to IMG architecture.
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "Mostly Ready"
+blocking_count: 3
+important_count: 0
+counting_method: "manual_prose_count"
+section_coverage:
+  availability_of_data:       "Unknown"
+  system_function:            "Unknown"
+  subsystem_maturity:         "Unknown"
+  materials_supply_chain:     "Unknown"
+  lcoe_parameter_extraction:  "Unknown"
+```
