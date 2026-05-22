@@ -88,7 +88,8 @@ _ETA_PIN = 20.0 / 60.0  # ≈ 0.333
 # Overrides BRAYTON_SCO2 preset (0.47) with HESTIA-specific aspirational target
 # UNCERTAIN: 20 kWe demo at 20% only; no fusion-coupled sCO₂ demonstration exists
 # Source: aip-2023-paper-abstract.md §II-F; helical-fusion-2025-2026-updates.md §sCO₂
-_ETA_TH_CENTRAL = 0.50
+_ETA_TH_CENTRAL = 0.48
+ # standardized from 0.5 per scoring_framework.md (Energy Capture: Thermal (sCO2))
 
 # Availability: canonical MCF steady-state D-T value per scoring_framework.md §Plant availability
 # Previously 0.83 (mid-range of published 80–85% FPP target); now policy-driven.
@@ -149,7 +150,7 @@ _SHARED_KWARGS = dict(
     eta_th=_ETA_TH_CENTRAL,
 
     eta_p=0.5,         # DEFAULT pumping efficiency
-    eta_de=0.85,       # DEFAULT (no DEC in Brayton cycle design)
+    eta_de=0.00,        # standardized from 0.85 per scoring_framework.md (Energy Capture: Thermal (sCO2))
     f_sub=0.03,        # DEFAULT subsystem power fraction
     f_dec=0.0,         # No direct energy conversion; all thermal Brayton
                        # Source: dossier.md §Energy Capture (sCO₂ Brayton)

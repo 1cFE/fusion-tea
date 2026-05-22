@@ -93,12 +93,12 @@ VESSEL_T = 0.20             # m — DEFAULT
 F_DEC = 0.85                # fraction of fusion power to DEC (alpha-heated fraction)
                             # analysis.md §Section 5: p-B11 all-charged-particle; bremsstrahlung 15%
 
-ETA_DE = 0.80               # UNCERTAIN: direct conversion efficiency
+ETA_DE = 0.70                # standardized from 0.8 per scoring_framework.md (Energy Capture: Direct (charged particle))
                             # analysis.md §Section 2, Challenge 2: theoretical 70–90%
                             # No engineering design published (TRL 1–2); 0.80 is optimistic
                             # dossier.md §Energy Capture: stated intent, no hardware
 
-ETA_TH = 0.35               # Fallback thermal efficiency for radiation fraction (15%)
+ETA_TH = 0.00                # standardized from 0.35 per scoring_framework.md (Energy Capture: Direct (charged particle))
                             # analysis.md §Section 7: fallback thermal cycle if DEC not realized
                             # DEFAULT: steam Rankine analogue; cross-reference 21-spherical-tokamak-hts
 
@@ -205,7 +205,19 @@ result_1gw = model.forward(
 # framework requires much greater fusion power → larger, costlier plant.
 result_dec_failure = model.forward(
     net_electric_mw=NET_ELECTRIC_MW,
-    **{**_SHARED_KWARGS, "eta_de": 0.0},
+    # DEVIATION (scenario override): explicit eta_th=0.35 to model the
+    # bremsstrahlung residual thermal channel when DEC fails entirely.
+    # Per-category canonical for Direct (charged particle) is eta_th=0.0;
+    # this scenario fixes a non-zero residual to keep the sensitivity test
+    # mathematically viable (with eta_th=0.0 + eta_de=0.0 the power balance
+    # is degenerate). Matches the printed scenario narrative "(eta_de=0.0
+    # → no DEC; only 15% radiation fraction at η_th=0.35)".
+    # Source: scoring_framework.md §"Justified deviations" sensitivity-sweep
+    # carve-out (a sensitivity scenario may pin a non-canonical value to
+    # probe a what-if). Canonical: eta_th=0.0, eta_de=0.70.
+    # Source: F_RAD=0.10 (bremsstrahlung + line radiation fraction, line
+    # ~136) + standard Rankine 0.35 = the residual channel modeled here.
+    **{**_SHARED_KWARGS, "eta_th": 0.35, "eta_de": 0.0},
 )
 
 # ── Results ───────────────────────────────────────────────────────────

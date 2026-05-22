@@ -87,7 +87,7 @@ _SHARED_KWARGS = dict(
     eta_p=0.5,               # DEFAULT [D]: pumping efficiency
     eta_pin=0.5,             # DEFAULT [D]: ECRH gyrotron wall-plug efficiency
                              #               (standard for 170 GHz ITER-spec gyrotrons)
-    eta_de=0.85,             # DEFAULT [D]: DEC efficiency; unused (f_dec=0.0)
+    eta_de=0.00,              # standardized from 0.85 per scoring_framework.md (Energy Capture: Thermal (steam))
     f_sub=0.03,              # DEFAULT [D]: miscellaneous subsystem fraction; bulk of
                              #               48 MWe facility load captured in p_xxx below
     f_dec=0.0,               # Pure steam Rankine; no DEC [A: recirculating power is

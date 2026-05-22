@@ -2,59 +2,59 @@ QI Modular HTS Stellarator — Infinity Two (Type One Energy)
   Config: 350 MWe net | 85% availability | 30 yr | NOAK
   Geometry: R0=12.5 m, A=10, a=1.25 m, κ=1.0
   Field: B_ax=9 T on-axis | Heating: ECRH-only (η_pin=0.52)
-  Thermal eff.: η_th=0.4 (UNCERTAIN — conservative below implied 47% from 880 MW thermal / 415 MWe gross)
+  Thermal eff.: η_th=0.35 (UNCERTAIN — conservative below implied 47% from 880 MW thermal / 415 MWe gross)
   Blanket: HCPB + Be multiplier | TBR=1.30 (OpenMC, JPP E86)
 
-LCOE:       318.3 $/MWh  [LOWER BOUND — coil cost (elasticity +0.99) uses framework default, likely understated]
-Overnight:  25500 $/kW
-Fusion:     990 MW | Net: 350 MW | Q_eng: 5.07
+LCOE:       325.4 $/MWh  [LOWER BOUND — coil cost (elasticity +0.99) uses framework default, likely understated]
+Overnight:  25988 $/kW
+Fusion:     1135 MW | Net: 350 MW | Q_eng: 5.07
 
-1 GW scaled (cross-concept): LCOE 157.4 $/MWh | Overnight 12199 $/kW
+1 GW scaled (cross-concept): LCOE 162.1 $/MWh | Overnight 12534 $/kW
 
 Code     Account                              M$
 ------------------------------------------------
 CAS10    Preconstruction                    16.9
-CAS21    Buildings                         339.4
-CAS22    Reactor Plant Equipment          4012.7
+CAS21    Buildings                         358.0
+CAS22    Reactor Plant Equipment          4078.5
 CAS23    Turbine Plant                      86.2
 CAS24    Electrical Plant                   36.7
 CAS25    Miscellaneous                      22.3
-CAS26    Heat Rejection                     37.2
+CAS26    Heat Rejection                     42.6
 CAS27    Special Materials                  70.0
 CAS28    Digital Twin                        5.0
 CAS29    Contingency                         0.0
-CAS30    Indirect Costs                   1536.5
+CAS30    Indirect Costs                   1566.4
 CAS40    Owner's Costs                      23.1
-CAS50    Supplementary                     273.6
-CAS60    IDC                              2465.3
-CAS70    O&M (annualized)                  109.9
-CAS80    Fuel (annualized)                   0.3
-CAS90    Financial                         719.2
+CAS50    Supplementary                     277.8
+CAS60    IDC                              2512.5
+CAS70    O&M (annualized)                  114.7
+CAS80    Fuel (annualized)                   0.4
+CAS90    Financial                         733.0
 ------------------------------------------------
-         Total Capital                    8925.0
+         Total Capital                    9095.9
 
 CAS22 sub-account detail:
 Code                 M$
 ------------------------
-  C220000        4012.7
-  C220101         354.3
-  C220102         225.0
+  C220000        4078.5
+  C220101         383.8
+  C220102         243.8
   C220103        2322.5
   C220104         150.0
   C220105          18.7
   C220106          59.1
   C220107          44.7
-  C220108          62.6
+  C220108          67.0
   C220109           0.0
   C220110          99.1
-  C220111         467.0
+  C220111         474.4
   C220112           0.0
-  C220200          79.5
-  C220300          25.8
-  C220400           2.1
+  C220200          81.1
+  C220300          25.9
+  C220400           2.4
   C220500          57.5
   C220600           5.0
-  C220700          39.8
+  C220700          43.4
 
 ============================================================
 Key Assumptions and Data Quality
@@ -67,7 +67,7 @@ Key Assumptions and Data Quality
   Q (fusion gain):                           > 40     [HIGH confidence]
   TBR (HCPB+Be, OpenMC):                    1.30     [HIGH confidence]
   Elongation κ (near-circular stellarator):  1.0    [DEFAULT — large-A stellarator]
-  Thermal efficiency η_th:                   0.4   [UNCERTAIN — conservative; implied 47% (415/880 MW thermal); Rankine unpublished]
+  Thermal efficiency η_th:                   0.35   [UNCERTAIN — conservative; implied 47% (415/880 MW thermal); Rankine unpublished]
   ECRH power p_input:                        20 MW  [MEDIUM — derived upper bound from Q>40]
   Heating η_pin (gyrotron):                  0.52   [MEDIUM — W7-X gyrotron analogue]
   Availability:                              85%   [CANONICAL — scoring_framework.md §Plant availability (MCF steady-state, D-T); 2-yr cycle gives ~96% theoretical max]
@@ -87,39 +87,39 @@ Coil Cost Scenario Sweep (C220103 — 3D HTS, elasticity ~+0.99)
 
   Multiplier         C220103 (M$)    LCOE 350MWe     LCOE 1GW
   ----------------------------------------------------------
-  1×  ← lower bound         2322.5        318.3 $/MWh    157.4 $/MWh
-  3×                       6967.4        591.8 $/MWh    253.1 $/MWh
-  5×                      11612.3        865.3 $/MWh    348.8 $/MWh
+  1×  ← lower bound         2322.5        325.4 $/MWh    162.1 $/MWh
+  3×                       6967.4        598.9 $/MWh    257.9 $/MWh
+  5×                      11612.3        872.5 $/MWh    353.6 $/MWh
 
-  LCOE range (350 MWe): 318–865 $/MWh depending on 3D HTS coil cost realization
-  The 1× base case (318 $/MWh) IS A LOWER BOUND and should not be cited as a central estimate.
+  LCOE range (350 MWe): 325–872 $/MWh depending on 3D HTS coil cost realization
+  The 1× base case (325 $/MWh) IS A LOWER BOUND and should not be cited as a central estimate.
 
 Sensitivity (elasticity = %LCOE / %param)
 ------------------------------------------------
 
 Engineering levers:
-  r_coil                               +0.9919
-  availability                         -0.9346
-  construction_time_yr                 +0.5496
-  b_max                                +0.4959
-  R0                                   +0.2019
-  elon                                 +0.2019
-  eta_th                               -0.1629
-  blanket_t                            +0.1517
-  plasma_t                             +0.1195
-  p_ecrh                               +0.0320
-  ht_shield_t                          +0.0272
-  eta_pin                              -0.0205
-  p_input                              +0.0201
-  mn                                   -0.0181
-  vessel_t                             +0.0136
-  p_cool                               +0.0080
-  f_sub                                +0.0070
+  r_coil                               +0.9698
+  availability                         -0.9309
+  construction_time_yr                 +0.5476
+  b_max                                +0.4849
+  elon                                 +0.2125
+  R0                                   +0.2125
+  eta_th                               -0.1743
+  blanket_t                            +0.1604
+  plasma_t                             +0.1260
+  p_ecrh                               +0.0313
+  ht_shield_t                          +0.0288
+  eta_pin                              -0.0214
+  p_input                              +0.0210
+  mn                                   -0.0203
+  vessel_t                             +0.0133
+  p_cool                               +0.0084
+  f_sub                                +0.0073
   structure_t                          +0.0058
-  p_trit                               +0.0053
+  p_trit                               +0.0056
   p_cryo                               +0.0040
-  p_house                              +0.0021
-  p_coils                              +0.0016
+  p_house                              +0.0022
+  p_coils                              +0.0017
   p_pump                               +0.0005
   eta_p                                -0.0000
   dd_f_T                               +0.0000
@@ -127,7 +127,6 @@ Engineering levers:
   dhe3_dd_frac                         +0.0000
   dhe3_f_T                             +0.0000
   dhe3_f_He3                           +0.0000
-  eta_de                               +0.0000
   B                                    +0.0000
   T_e                                  +0.0000
   n_e                                  +0.0000
@@ -138,35 +137,35 @@ Engineering levers:
   tau_ratio                            +0.0000
 
 Financial:
-  interest_rate                        +0.8764
-  inflation_rate                       +0.0317
+  interest_rate                        +0.8730
+  inflation_rate                       +0.0310
 
 Costing constants (top 15):
-  indirect_fraction                    +0.2090
-  blanket_unit_cost_dt                 +0.1372
-  installation_frac                    +0.0875
-  core_lifetime_dt                     -0.0650
-  om_cost_dt                           +0.0617
-  shield_unit_cost                     +0.0480
-  heating_ecrh_per_mw                  +0.0320
-  divertor_base                        +0.0243
-  remote_handling_dt_base              +0.0212
-  vessel_unit_cost                     +0.0126
-  construction_insurance_frac          +0.0124
-  fuel_handling_dt_base                +0.0108
-  power_supplies_base                  +0.0096
-  shipping_frac                        +0.0093
-  electric_per_mw                      +0.0070
+  indirect_fraction                    +0.2084
+  blanket_unit_cost_dt                 +0.1453
+  installation_frac                    +0.0869
+  core_lifetime_dt                     -0.0687
+  om_cost_dt                           +0.0603
+  shield_unit_cost                     +0.0509
+  heating_ecrh_per_mw                  +0.0313
+  divertor_base                        +0.0254
+  remote_handling_dt_base              +0.0207
+  vessel_unit_cost                     +0.0123
+  construction_insurance_frac          +0.0123
+  fuel_handling_dt_base                +0.0105
+  power_supplies_base                  +0.0093
+  shipping_frac                        +0.0092
+  fuel_recovery                        -0.0069
 
 ============================================================
 Availability Scenario Sweep (elasticity ≈ −0.93)
 ============================================================
   Scenario               Availability    LCOE 350MWe     LCOE 1GW
   --------------------------------------------------------------
-  pessimistic                        80%        335.2 $/MWh    165.4 $/MWh
-  canonical (central)  ← default     85%        318.3 $/MWh    157.4 $/MWh
-  mid-range                          93%        292.6 $/MWh    144.9 $/MWh
-  aspirational                       96%        284.0 $/MWh    140.7 $/MWh
+  pessimistic                        80%        342.6 $/MWh    170.3 $/MWh
+  canonical (central)  ← default     85%        325.4 $/MWh    162.1 $/MWh
+  mid-range                          93%        299.3 $/MWh    149.3 $/MWh
+  aspirational                       96%        290.6 $/MWh    145.0 $/MWh
 
-  LCOE range (350 MWe): 284–335 $/MWh across availability scenarios
+  LCOE range (350 MWe): 291–343 $/MWh across availability scenarios
   Both coil cost and availability uncertainty produce comparable LCOE ranges; neither should be treated as a fixed assumption.

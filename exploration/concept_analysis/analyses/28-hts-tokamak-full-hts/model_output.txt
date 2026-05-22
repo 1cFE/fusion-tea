@@ -7,52 +7,52 @@ C220103 hts_full_coil_premium: ×1.20 (framework base: $516M → with premium: $
 
 ── Base Case ──
    R0=2.0m  |  Net electric: 500 MWe  |  Availability: 85%
-   LCOE:             100.2 $/MWh
-   Overnight:         7461 $/kW
-   Fusion power:      1437 MW
+   LCOE:             102.4 $/MWh
+   Overnight:         7625 $/kW
+   Fusion power:      1649 MW
    Net electric:       500 MW
    Q_eng:             4.54
 
 ── Scenario A — CS Coil Reliability Fail ──
    R0=2.0m  |  Net electric: 500 MWe  |  Availability: 65%
-   LCOE:             128.8 $/MWh
-   Overnight:         7461 $/kW
-   Fusion power:      1437 MW
+   LCOE:             131.4 $/MWh
+   Overnight:         7625 $/kW
+   Fusion power:      1649 MW
    Net electric:       500 MW
    Q_eng:             4.54
 
 ── Scenario B — AI Control Underperforms ──
    R0=2.0m  |  Net electric: 500 MWe  |  Availability: 70%
-   LCOE:             120.3 $/MWh
-   Overnight:         7461 $/kW
-   Fusion power:      1437 MW
+   LCOE:             122.8 $/MWh
+   Overnight:         7625 $/kW
+   Fusion power:      1649 MW
    Net electric:       500 MW
    Q_eng:             4.54
 
 ── Scenario C — Small Machine ──
    R0=1.5m  |  Net electric: 250 MWe  |  Availability: 85%
-   LCOE:             158.0 $/MWh
-   Overnight:        12114 $/kW
-   Fusion power:       840 MW
+   LCOE:             160.7 $/MWh
+   Overnight:        12315 $/kW
+   Fusion power:       967 MW
    Net electric:       250 MW
    Q_eng:             2.87
 
 ── Scenario D — Large Machine ──
    R0=2.5m  |  Net electric: 800 MWe  |  Availability: 85%
-   LCOE:              77.7 $/MWh
-   Overnight:         5703 $/kW
-   Fusion power:      2153 MW
+   LCOE:              79.7 $/MWh
+   Overnight:         5854 $/kW
+   Fusion power:      2467 MW
    Net electric:       800 MW
    Q_eng:             6.32
 
 ── Unified LCOE Scenario Table (all five scenarios) ──
   Scenario                                        R0   MWe  Avail        LCOE   vs. Base
   ----------------------------------------------------------------------------------
-  Base Case                                      2.0   500    85%       100.2       0.0%
-  Scenario A — CS Coil Reliability Fail          2.0   500    65%       128.8     +28.5%
-  Scenario B — AI Control Underperforms          2.0   500    70%       120.3     +20.1%
-  Scenario C — Small Machine                     1.5   250    85%       158.0     +57.7%
-  Scenario D — Large Machine                     2.5   800    85%        77.7     -22.5%
+  Base Case                                      2.0   500    85%       102.4       0.0%
+  Scenario A — CS Coil Reliability Fail          2.0   500    65%       131.4     +28.4%
+  Scenario B — AI Control Underperforms          2.0   500    70%       122.8     +20.0%
+  Scenario C — Small Machine                     1.5   250    85%       160.7     +57.0%
+  Scenario D — Large Machine                     2.5   800    85%        79.7     -22.2%
 
   Note — Scenarios A/B bracket technical-bet failure modes at fixed design point.
   Scenarios C/D bracket design-point uncertainty (HH380 scale unknown).
@@ -61,46 +61,46 @@ C220103 hts_full_coil_premium: ×1.20 (framework base: $516M → with premium: $
   Code     Account                              M$
   ------------------------------------------------
   CAS10    Preconstruction                    17.2
-  CAS21    Buildings                         417.5
-  CAS22    Reactor Plant Equipment          1870.9
+  CAS21    Buildings                         444.8
+  CAS22    Reactor Plant Equipment          1894.5
   CAS23    Turbine Plant                     126.7
   CAS24    Electrical Plant                   54.0
   CAS25    Miscellaneous                      32.9
-  CAS26    Heat Rejection                     54.8
+  CAS26    Heat Rejection                     62.6
   CAS27    Special Materials                   7.5
   CAS28    Digital Twin                        5.0
   CAS29    Contingency                         0.0
-  CAS30    Indirect Costs                    428.2
+  CAS30    Indirect Costs                    438.0
   CAS40    Owner's Costs                      27.6
-  CAS50    Supplementary                     201.1
-  CAS60    IDC                               487.0
-  CAS70    O&M (annualized)                   72.0
-  CAS80    Fuel (annualized)                   0.4
-  CAS90    Financial                         300.6
+  CAS50    Supplementary                     203.8
+  CAS60    IDC                               497.7
+  CAS70    O&M (annualized)                   73.4
+  CAS80    Fuel (annualized)                   0.5
+  CAS90    Financial                         307.2
   ------------------------------------------------
-           Total Capital                    3730.3
+           Total Capital                    3812.3
 
 ── CAS22 Sub-Account Detail — Base Case ──
   Sub-account  Description                                M$
   -----------------------------------------------------------
-  C220101      First Wall + Blanket                     53.7
-  C220102      Shield                                   53.5
+  C220101      First Wall + Blanket                     58.2
+  C220102      Shield                                   58.0
   C220103      Coils — HTS full (TF+PF+CS) *           619.3
   C220104      Heating (ICRH)                          353.2
   C220105      Structure                                 5.4
   C220106      Vacuum System                            28.7
   C220107      Power Supplies                           58.6
-  C220108      Divertor                                 76.0
+  C220108      Divertor                                 81.2
   C220109      DEC Equipment                             0.0
-  C220111      Installation Labor                      177.1
+  C220111      Installation Labor                      179.1
   C220112      Isotope Separation                        0.0
-  C220200      Coolant System                          109.4
-  C220300      Auxiliary Cooling                        81.1
-  C220400      Radwaste                                  3.1
+  C220200      Coolant System                          111.4
+  C220300      Auxiliary Cooling                        81.3
+  C220400      Radwaste                                  3.6
   C220500      Fuel Handling                            73.9
   C220600      Other Equipment                           6.6
-  C220700      I&C                                      51.2
-  C220000      CAS22 Total                            1870.9
+  C220700      I&C                                      55.8
+  C220000      CAS22 Total                            1894.5
 
   * C220103 overridden: framework $516M × ×1.20 premium = $619M
     Premium represents incremental REBCO tape for PF+CS coils beyond TF-only HTS.
@@ -113,10 +113,10 @@ C220103 hts_full_coil_premium: ×1.20 (framework base: $516M → with premium: $
 
   Premium      C220103 (M$)   LCOE ($/MWh)  Delta vs ×1.0
   -------------------------------------------------------
-  ×1.0                 516           97.1          0.00%
-  ×1.1                 568           98.6         +1.60%
-  ×1.2                 619          100.2         +3.20% ← base case
-  ×1.3                 671          101.7         +4.80%
+  ×1.0                 516           99.2          0.00%
+  ×1.1                 568          100.8         +1.57%
+  ×1.2                 619          102.4         +3.13% ← base case
+  ×1.3                 671          103.9         +4.70%
 
   Interpretation: each 10% increase in full-HTS coil scope cost translates
   directly to a ~proportional increase in C220103, which propagates into CAS22,
@@ -129,10 +129,10 @@ C220103 hts_full_coil_premium: ×1.20 (framework base: $516M → with premium: $
 
   struct_t vessel_t   LCOE ($/MWh)   Δ vs 0.20/0.20
   ----------------------------------------------------
-      0.10     0.10           99.5            0.00%
-      0.15     0.15           99.8            0.00%
-      0.20     0.20          100.2            0.00% ← default / this model
-      0.25     0.25          100.6           +0.38%
+      0.10     0.10          101.6            0.00%
+      0.15     0.15          102.0            0.00%
+      0.20     0.20          102.4            0.00% ← default / this model
+      0.25     0.25          102.7           +0.37%
 
   Note: both structure_t and vessel_t are swept together at equal values.
   Cost drivers: structure volume at ~$0.15M/m³ (C220105),
@@ -146,7 +146,7 @@ C220103 hts_full_coil_premium: ×1.20 (framework base: $516M → with premium: $
   Blanket thickness:     0.6 m  [UNCERTAIN — no blanket design disclosed]
   Structure thickness:   0.2 m  [DEFAULT — steady_state_tokamak.yaml; matches peer group 01/21/29/33/34]
   Vessel thickness:      0.2 m  [DEFAULT — steady_state_tokamak.yaml; matches peer group 01/21/29/33/34]
-  Thermal efficiency:    40%    [UNCERTAIN — cycle type unknown; steam Rankine]
+  Thermal efficiency:    35%    [UNCERTAIN — cycle type unknown; steam Rankine]
   ICRH wall-plug η:      65%   [UNCERTAIN — 60–70% range; analysis.md §Ch.5]
   Cryo power:            8.0 MW   [UNCERTAIN — full HTS 20 K cryoplant estimate]
   Construction time:     5.0 yr  [UNCERTAIN — optimistic; <2 yr for HH70]
@@ -169,28 +169,28 @@ C220103 hts_full_coil_premium: ×1.20 (framework base: $516M → with premium: $
   C220103 overridden → zero gradient; sensitivity is over remaining params.
 
   Engineering levers:
-    availability                 -0.9545
-    construction_time_yr         +0.2695
-    eta_th                       -0.1532
-    p_nbi                        +0.1210
-    R0                           +0.0689
-    elon                         +0.0689
-    blanket_t                    +0.0478
-    r_coil                       +0.0434
-    mn                           -0.0423
-    eta_pin                      -0.0345
-    p_input                      +0.0329
-    plasma_t                     +0.0265
-    b_max                        +0.0217
-    p_cryo                       +0.0203
-    vessel_t                     +0.0111
-    ht_shield_t                  +0.0105
-    f_sub                        +0.0086
-    p_cool                       +0.0067
-    p_trit                       +0.0045
+    availability                 -0.9521
+    construction_time_yr         +0.2693
+    eta_th                       -0.1666
+    p_nbi                        +0.1184
+    elon                         +0.0721
+    R0                           +0.0721
+    blanket_t                    +0.0504
+    mn                           -0.0476
+    r_coil                       +0.0425
+    eta_pin                      -0.0359
+    p_input                      +0.0342
+    plasma_t                     +0.0278
+    b_max                        +0.0212
+    p_cryo                       +0.0201
+    ht_shield_t                  +0.0111
+    vessel_t                     +0.0109
+    f_sub                        +0.0090
+    p_cool                       +0.0070
+    p_trit                       +0.0047
     structure_t                  +0.0037
-    p_house                      +0.0022
-    p_coils                      +0.0022
+    p_house                      +0.0023
+    p_coils                      +0.0023
     p_pump                       +0.0009
     eta_p                        -0.0000
     dd_f_T                       +0.0000
@@ -198,7 +198,6 @@ C220103 hts_full_coil_premium: ×1.20 (framework base: $516M → with premium: $
     dhe3_dd_frac                 +0.0000
     dhe3_f_T                     +0.0000
     dhe3_f_He3                   +0.0000
-    eta_de                       +0.0000
     q95                          +0.0000
     f_GW                         +0.0000
     B                            +0.0000
@@ -217,7 +216,7 @@ C220103 hts_full_coil_premium: ×1.20 (framework base: $516M → with premium: $
     disruption_downtime          +0.0000
 
   Financial:
-    interest_rate                +0.6561
-    inflation_rate               +0.0565
+    interest_rate                +0.6563
+    inflation_rate               +0.0554
 
 ── End of model output ──

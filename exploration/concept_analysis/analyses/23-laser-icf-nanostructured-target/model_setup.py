@@ -75,7 +75,8 @@ ETA_PIN = 0.10
 # HB11 explicitly pivoted to steam cycle (~35-40%) as direct conversion not yet
 # tractable at scale. Using 0.40 as conservative primary estimate.
 # Source: dossier.md §Energy Capture; analysis.md §S2 Challenge 3; hb11-energy-technology.md
-ETA_TH_CONSERVATIVE = 0.40
+ETA_TH_CONSERVATIVE = 0.35
+ # standardized from 0.4 per scoring_framework.md (Energy Capture: Hybrid (thermal + direct))
 
 # UNCERTAIN: Plant availability — no pulsed laser IFE plant operational analogue.
 # Lower than D-T baseline (0.85) given higher TRL uncertainty on all subsystems.
@@ -156,7 +157,7 @@ result_hb11 = model.forward(
     q_eng=4.0,                        # UNCERTAIN; slightly lower Q for lower-rep design
     f_rep=1.0,                        # HB11 rep rate; hb11-energy-technology.md; analysis.md §5
     eta_pin=0.10,                     # UNCERTAIN; HB11 stated target
-    eta_th=0.55,                       # standardized from 0.38 per scoring_framework.md (Energy Capture: Hybrid (thermal + direct))
+    eta_th=0.35,                        # standardized from 0.55 per scoring_framework.md (Energy Capture: Hybrid (thermal + direct))
     mn=1.0,
     f_sub=0.03,
     p_pump=1.0,
@@ -373,7 +374,8 @@ _dec_params["eta_dec"] = 0.30  # mid-range base point for elasticity
 _dec_params["f_pdv"] = F_PDV_MARVEL
 _result_dec_base = model_dec.forward(
     net_electric_mw=NATIVE_MW,
-    eta_dec=0.30,
+    eta_dec=0.54,
+ # standardized from 0.3 per scoring_framework.md (Energy Capture: Hybrid (thermal + direct))
     f_pdv=F_PDV_MARVEL,
     **_SHARED_KWARGS,
 )

@@ -98,13 +98,17 @@ _SHARED_KWARGS = dict(
                             # arpa-e-fisch-2025-presentation.md §Why p-B11?
     eta_th=0.20,             # DEVIATION: scoring_framework.md §"Justified deviations" explicitly names
                             # 06-magnetic-mirror as a physics-forced derating case (bremsstrahlung
-                            # partial wall absorption). Per-category canonical (0.70 Direct CP) is
-                            # inapplicable because eta_de=0.70 separately captures the DEC channel;
-                            # eta_th must reflect only the thermal/radiation residual (~15-25% of
-                            # fusion power). Setting eta_th=0.70 would double-count the DEC pathway.
+                            # partial wall absorption). Per-category canonical for Direct (charged
+                            # particle) is (eta_th=0.00, eta_de=0.70); raising eta_th above zero
+                            # here represents thermal recovery of the radiation/wall-loss residual
+                            # only (~15-25% of fusion power). eta_de=0.70 separately captures the
+                            # DEC channel — setting eta_th=0.70 would double-count the DEC pathway.
                             # UNCERTAIN: No power balance numbers published.
                             # Source: analysis.md §S2 Challenge 5; §S5 "Thermal vs. direct
                             # conversion energy split: truly-unknown / important"
+                            # Source: .project/research/feedback_eta_th/06-magnetic-mirror.md §F-1
+                            # "Recommendation 1" — the original derivation of the eta_th=0.20
+                            # estimate from bremsstrahlung/wall-load energy balance.
     eta_p=0.5,              # Pumping efficiency; DEFAULT: mfe_mirror.yaml
     eta_pin=0.60,           # Heating wall-plug efficiency.
                             # UNCERTAIN: Covers RF system (alpha channeling antennas) and

@@ -57,7 +57,13 @@ ETA_PIN = 0.10            # Wall-plug-to-UV: η_w(IR) × η_3ω = 0.16 × 0.60
 Q_ENG = 5.69
 
 # Power conversion — optics-express-2025-paper.md §Table 2
-ETA_TH = 0.55              # standardized from 0.44 per scoring_framework.md (Energy Capture: Hybrid (thermal + direct))
+ETA_TH = 0.55              # DEVIATION: feeds ETA_TH_COMBINED blended formula below (the workaround
+                          # that the structural refactor will remove). 0.55 itself is the previous
+                          # (incorrect) hybrid canonical — pinned via DEVIATION until that refactor
+                          # lands so this PR doesn't partially change the blended-formula output.
+                          # Original sourced value before standardization was 0.44 (per
+                          # optics-express-2025-paper.md §Table 2). See backlog item
+                          # "Structural refactor of 08 + 31 to use pulsed_conversion=INDUCTIVE_DEC".
                           # η_th* = 0.40 (He Brayton) + 0.04 (exothermic Li-breeding boost)
                           # η_DEC = 0.44 (DEC, "conservative"; Rax et al. 2025 theory, TRL 1–2)
                           # MEDIUM confidence on thermal; LOW confidence on DEC
@@ -69,7 +75,11 @@ MN = 1.0                  # DEVIATION: from canonical 1.1 (D-T) — physics coup
 # DEC channel decomposition — needed to independently track sensitivity of each conversion path.
 # The framework's THERMAL pulsed_conversion mode uses a single eta_th; both channels must be
 # folded into ETA_TH_COMBINED so varying eta_dec independently requires a manual sweep (see below).
-ETA_DEC = 0.44            # DEC efficiency (charged particles; Rax et al. 2025 theory, TRL 1–2)
+ETA_DEC = 0.44            # DEVIATION: this is a module-level constant feeding the ETA_TH_COMBINED
+                          # blend below (a workaround the structural refactor will remove).
+                          # Canonical eta_de for Hybrid (thermal + direct) is 0.54. Marked
+                          # DEVIATION until the 08+31 structural refactor lands.
+                          # DEC efficiency (charged particles; Rax et al. 2025 theory, TRL 1–2)
 F_CHARGED = 0.30          # Charged-particle fraction of P_fus (alphas + fast ions)
 F_NEUTRON = 0.70          # Neutron fraction → thermal channel (He Brayton via LiPb blanket)
 ETA_TH_COMBINED = F_NEUTRON * ETA_TH + F_CHARGED * ETA_DEC  # = 0.44 when ETA_TH = ETA_DEC
@@ -95,7 +105,17 @@ _SHARED_KWARGS = dict(
     f_rep=F_REP_HZ,                  # 10 Hz; optics-express-2025-paper.md §Table 2
     eta_pin=ETA_PIN,                 # 0.10; optics-express-2025-paper.md §Table 2
     q_eng=Q_ENG,                     # 5.69; derived from G=160 power balance; see docstring
-    eta_th=ETA_TH_COMBINED,          # 0.44; F_NEUTRON×ETA_TH + F_CHARGED×ETA_DEC
+    eta_th=ETA_TH_COMBINED,          # DEVIATION: eta_th here is a *blended* (F_NEUTRON×ETA_TH +
+                                     # F_CHARGED×ETA_DEC) value, not the thermal-cycle efficiency
+                                     # costingfe expects. Per-category canonical for Hybrid
+                                     # (thermal + direct) is (eta_th=0.35, eta_de=0.54), applied
+                                     # independently by the cost engine. The correct structural
+                                     # fix is to split ETA_TH_COMBINED back into the two channels
+                                     # and wire f_dec / eta_de explicitly. Marked DEVIATION until
+                                     # that refactor lands — see backlog item "Structural refactor
+                                     # of 08 + 31 to use pulsed_conversion=INDUCTIVE_DEC". Issue
+                                     # #30 / .project/active/eta_th-double-count-fix/.
+                                     # 0.44 = F_NEUTRON×ETA_TH + F_CHARGED×ETA_DEC; source:
                                      # optics-express-2025-paper.md §Table 2
     mn=MN,                           # 1.0; Li-breeding boost embedded in η_th*
     f_rad=0.10,                      # DEFAULT: DT standard bremsstrahlung + line radiation fraction

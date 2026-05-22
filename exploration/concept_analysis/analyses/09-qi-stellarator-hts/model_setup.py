@@ -259,7 +259,7 @@ _SHARED = dict(
                                  # Current gyrotron state: ~50%; >60% possible with
                                  # multi-stage depressed collectors (future improvement)
                                  # Source: stellaris-design-details.md §2 (gyrotron note)
-    eta_de=0.85,                 # DEFAULT
+    eta_de=0.00,                  # standardized from 0.85 per scoring_framework.md (Energy Capture: Thermal (unspecified))
     f_sub=0.03,                  # DEFAULT subsystem power fraction
     f_dec=0.0,                   # Thermal Rankine only; no direct energy conversion
                                  # Source: dossier.md §Energy Capture

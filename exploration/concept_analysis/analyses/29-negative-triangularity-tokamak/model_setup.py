@@ -76,11 +76,11 @@ _SHARED_KWARGS = dict(
     p_icrf=40.0,      # 40 MW He-3 minority ICRF at 110 MHz; manta-reference-design.md §2.1
     mn=1.11,          # DEVIATION: from canonical 1.1 (D-T) — FLiBe blanket, TBR=1.15
                       # design; manta-reference-design.md §5.1
-    eta_th=0.38,      # Thermal-to-electric efficiency; back-calculated from MANTA
+    eta_th=0.35,       # standardized from 0.38 per scoring_framework.md (Energy Capture: Thermal (unspecified))
                       # power balance (see derivation in docstring)
     eta_pin=0.50,     # ICRF wall-plug efficiency; framework default for RF heating
     eta_p=0.50,       # Pumping efficiency — framework default
-    eta_de=0.85,      # Direct energy conversion efficiency — unused (f_dec=0.0)
+    eta_de=0.00,       # standardized from 0.85 per scoring_framework.md (Energy Capture: Thermal (unspecified))
     f_sub=0.03,       # Subsystem power fraction — framework default
     f_dec=0.0,        # No DEC — standard tokamak thermal cycle
     p_coils=3.0,      # UNCERTAIN: HTS coil power at 20 K (liquid H2 cooling);

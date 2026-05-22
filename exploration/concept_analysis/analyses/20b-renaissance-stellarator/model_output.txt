@@ -1,50 +1,50 @@
 Compact Liquid-Wall HTS Stellarator (Renaissance Fusion)
 1 GWe net — NOAK — sCO₂ Brayton-Rankine — ignited (Q=∞)
-LCOE: 128.8 $/MWh | Overnight: 10850 $/kW
-Fusion: 2657 MW | Net: 1000 MW | Q_eng: 3.0
+LCOE: 129.3 $/MWh | Overnight: 10906 $/kW
+Fusion: 2775 MW | Net: 1000 MW | Q_eng: 3.0
 
 Code     Account                              M$
 ------------------------------------------------
 CAS10    Preconstruction                    18.5
-CAS21    Buildings                         659.9
-CAS22    Reactor Plant Equipment          4342.4
+CAS21    Buildings                         675.2
+CAS22    Reactor Plant Equipment          4353.6
 CAS23    Turbine Plant                     232.2
 CAS24    Electrical Plant                  126.1
 CAS25    Miscellaneous                      76.8
-CAS26    Heat Rejection                     65.9
+CAS26    Heat Rejection                     68.7
 CAS27    Special Materials                  15.0
 CAS28    Digital Twin                        5.0
 CAS29    Contingency                         0.0
-CAS30    Indirect Costs                   1841.1
+CAS30    Indirect Costs                   1850.8
 CAS40    Owner's Costs                      39.0
-CAS50    Supplementary                     431.2
-CAS60    IDC                              2997.0
-CAS70    O&M (annualized)                  162.3
-CAS80    Fuel (annualized)                   1.5
-CAS90    Financial                         874.4
+CAS50    Supplementary                     432.6
+CAS60    IDC                              3012.4
+CAS70    O&M (annualized)                  162.6
+CAS80    Fuel (annualized)                   1.0
+CAS90    Financial                         878.9
 ------------------------------------------------
-         Total Capital                   10850.0
+         Total Capital                   10905.8
 
 CAS22 Detail:
   C220101           400.0  M$
-  C220102           184.4  M$
+  C220102           189.0  M$
   C220103          2261.9  M$
   C220104             0.0  M$
   C220105             9.3  M$
   C220106            33.9  M$
   C220107           106.2  M$
-  C220108           103.9  M$
+  C220108           106.0  M$
   C220109             0.0  M$
   C220110           183.6  M$
-  C220111           415.6  M$
+  C220111           416.8  M$
   C220112             0.0  M$
-  C220200           203.3  M$
-  C220300           226.1  M$
-  C220400             5.9  M$
+  C220200           204.1  M$
+  C220300           226.2  M$
+  C220400             6.1  M$
   C220500           120.0  M$
   C220600            11.5  M$
-  C220700            76.8  M$
-  C220000          4342.4  M$
+  C220700            78.9  M$
+  C220000          4353.6  M$
 
 Key Assumptions:
   [UNCERTAIN x3-10] C220103 coil cost: framework tape-winding model does NOT
@@ -65,23 +65,23 @@ Sensitivity (elasticity = %LCOE / %param)
 ------------------------------------------------
 
 Engineering levers:
-  availability                         -0.9358
-  r_coil                               +0.7624
-  construction_time_yr                 +0.5375
-  b_max                                +0.3812
-  eta_th                               -0.1134
-  p_pump                               +0.0577
-  R0                                   +0.0401
-  elon                                 +0.0401
-  mn                                   -0.0387
-  p_cryo                               +0.0287
-  ht_shield_t                          +0.0271
-  plasma_t                             +0.0185
-  f_sub                                +0.0072
-  blanket_t                            +0.0069
-  vessel_t                             +0.0062
-  eta_p                                -0.0032
+  availability                         -0.9364
+  r_coil                               +0.7592
+  construction_time_yr                 +0.5378
+  b_max                                +0.3796
+  eta_th                               -0.1162
+  p_pump                               +0.0584
+  R0                                   +0.0408
+  elon                                 +0.0408
+  mn                                   -0.0398
+  p_cryo                               +0.0286
+  ht_shield_t                          +0.0276
+  plasma_t                             +0.0188
+  f_sub                                +0.0073
+  blanket_t                            +0.0070
+  vessel_t                             +0.0061
   p_cool                               +0.0032
+  eta_p                                -0.0032
   structure_t                          +0.0025
   p_trit                               +0.0016
   p_house                              +0.0008
@@ -90,8 +90,8 @@ Engineering levers:
   dd_f_He3                             +0.0000
   dhe3_dd_frac                         +0.0000
   dhe3_f_T                             +0.0000
+  dhe3_f_He3                           +0.0000
   eta_pin                              +0.0000
-  eta_de                               +0.0000
   B                                    +0.0000
   T_e                                  +0.0000
   n_e                                  +0.0000
@@ -102,24 +102,24 @@ Engineering levers:
   tau_ratio                            +0.0000
 
 Financial:
-  interest_rate                        +0.8534
-  inflation_rate                       +0.0427
+  interest_rate                        +0.8544
+  inflation_rate                       +0.0423
 
 Costing constants (top 15):
-  indirect_fraction                    +0.2004
-  om_cost_dt                           +0.0823
+  indirect_fraction                    +0.2006
+  om_cost_dt                           +0.0820
   core_lifetime_dt                     -0.0627
   installation_frac                    +0.0614
-  divertor_base                        +0.0328
-  shield_unit_cost                     +0.0311
-  remote_handling_dt_base              +0.0309
+  divertor_base                        +0.0333
+  shield_unit_cost                     +0.0317
+  remote_handling_dt_base              +0.0308
   electric_per_mw                      +0.0190
-  power_supplies_base                  +0.0179
+  power_supplies_base                  +0.0178
   fuel_handling_dt_base                +0.0177
+  fuel_recovery                        -0.0146
   decom_provision_dt                   +0.0136
-  fuel_recovery                        -0.0135
-  construction_insurance_frac          +0.0118
-  misc_per_mw                          +0.0116
+  construction_insurance_frac          +0.0119
+  misc_per_mw                          +0.0115
   shipping_frac                        +0.0089
 
 Coil Cost Scenario Analysis (C220103):
@@ -128,11 +128,11 @@ Coil Cost Scenario Analysis (C220103):
 
   Scenario     Mult   C220103 M$   LCOE $/MWh  Note
   -----------------------------------------------------------------
-  low          0.3x      678.6         98.7  (optimistic: novel film process cheaper than tape-winding)
-  mid          1.0x     2261.9        128.8  (nominal: tape-winding analogue (inapplicable, placeholder))
-  high        10.0x    22619.5        516.5  (pessimistic: first-of-kind manufacturing premium)
+  low          0.3x      678.6         99.2  (optimistic: novel film process cheaper than tape-winding)
+  mid          1.0x     2261.9        129.3  (nominal: tape-winding analogue (inapplicable, placeholder))
+  high        10.0x    22619.5        517.0  (pessimistic: first-of-kind manufacturing premium)
 
-  LCOE range from coil cost uncertainty alone: 98.7 – 516.5 $/MWh (swing: 417.8 $/MWh)
+  LCOE range from coil cost uncertainty alone: 99.2 – 517.0 $/MWh (swing: 417.8 $/MWh)
 
 b_max Scenario Sweep (Peak Coil Field, 15–40 T published envelope):
   Sensitivity elasticity: +0.38 (4th-largest engineering lever)
@@ -141,13 +141,13 @@ b_max Scenario Sweep (Peak Coil Field, 15–40 T published envelope):
 
    b_max (T)   LCOE ($/MWh)  Note
   ------------------------------------------------------------
-          15          128.8  (baseline (primary design target)) ← baseline
-          20          145.2  (REBCO Jc knee threshold at 20 K)
-          25          161.6  (high-field operating regime)
-          30          177.9  (upper-mid design envelope)
-          40          210.7  (maximum published design target)
+          15          129.3  (baseline (primary design target)) ← baseline
+          20          145.7  (REBCO Jc knee threshold at 20 K)
+          25          162.1  (high-field operating regime)
+          30          178.5  (upper-mid design envelope)
+          40          211.2  (maximum published design target)
 
-  LCOE range from peak field uncertainty alone: 128.8 – 210.7 $/MWh (swing: 81.8 $/MWh)
+  LCOE range from peak field uncertainty alone: 129.3 – 211.2 $/MWh (swing: 81.8 $/MWh)
   Note: 15→40 T represents the published design uncertainty band, not
   a single well-characterised operating point. The 3–10× coil cost and
   the peak field uncertainty are compounding risks in C220103.

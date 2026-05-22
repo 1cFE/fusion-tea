@@ -102,7 +102,7 @@ VESSEL_T = 0.10             # DEFAULT: framework stellarator default
 
 # ── Power balance ─────────────────────────────────────────────────────
 
-ETA_TH = 0.40               # UNCERTAIN: thermal conversion efficiency.  Conservative estimate
+ETA_TH = 0.35                # standardized from 0.4 per scoring_framework.md (Energy Capture: Thermal (steam))
                             # below the implied value: 800 MW fusion × 1.10 (canonical mn) =
                             # 880 MW thermal; 350 MWe net + ~65 MWe recirculating → ~415 MWe
                             # gross; η_th ≈ 415/880 ≈ 0.47.  0.40 is intentionally conservative
@@ -131,7 +131,7 @@ MN = 1.10                   # CANONICAL: D-T neutron energy multiplier per scori
                             #   analysis.md §Section 5; J. Plasma Phys. 2025 E86
 
 ETA_P = 0.5                 # DEFAULT: pumping efficiency
-ETA_DE = 0.85               # DEFAULT: DEC efficiency (DEC not used — f_dec=0)
+ETA_DE = 0.00                # standardized from 0.85 per scoring_framework.md (Energy Capture: Thermal (steam))
 
 F_SUB = 0.03                # DEFAULT: subsystem power fraction of gross electric
 F_DEC = 0.0                 # No direct energy conversion; stellarator steady-state, ECRH only

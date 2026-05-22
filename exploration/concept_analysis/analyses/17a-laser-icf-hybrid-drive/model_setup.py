@@ -212,13 +212,13 @@ ETA_PIN1_LOW = 0.05  # UNCERTAIN lower bound — used in H-2 capsule gain floor
 
 # He Brayton (45%): HYLIFE-II heritage, well-matched to FLiBe primary loop
 # Source: HYLIFE-II 1994 — ~45% thermal efficiency for He Brayton at FLiBe temp
-ETA_TH_BRAYTON = 0.45  # He Brayton — HYLIFE heritage; high confidence for that design
+ETA_TH_BRAYTON = 0.35   # standardized from 0.45 per scoring_framework.md (Energy Capture: Thermal (unspecified))
 
 # Steam Rankine (33%): implied by Xcimer science page language ("steam turbines")
 # Source: [sci] §Energy Conversion: "generate steam, which in turn drives turbines"
 # UNCERTAIN: may be simplified marketing language; steam ~33% is the typical
 #   saturated/superheated steam cycle. If true, increases gross thermal requirement.
-ETA_TH_STEAM = 0.33  # UNCERTAIN: Steam Rankine; [sci] §Energy Conversion
+ETA_TH_STEAM = 0.35   # standardized from 0.33 per scoring_framework.md (Energy Capture: Thermal (unspecified))
 
 # ── FLiBe thick-liquid-wall pumping ──────────────────────────────────────────
 # The HYLIFE jet system recirculates dense FLiBe (ρ ≈ 1940 kg/m³) at high

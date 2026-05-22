@@ -180,11 +180,12 @@ result = model.forward(
     # "Supercritical Rankine is recommended" — arc-power-conversion-studies.md §3.2.
     # Net efficiency 46% confirmed independently by Colliva et al. 2024.
     # Source: arc-power-conversion-studies.md §3.2, Table 15
-    eta_th=0.46,
+    eta_th=0.35,
+ # standardized from 0.46 per scoring_framework.md (Energy Capture: Thermal (steam))
 
     eta_p=0.5,                    # DEFAULT pumping efficiency
     eta_pin=0.5,                  # DEFAULT heating system wall-plug efficiency
-    eta_de=0.85,                  # DEFAULT
+    eta_de=0.00,                   # standardized from 0.85 per scoring_framework.md (Energy Capture: Thermal (steam))
     f_sub=0.03,                   # DEFAULT subsystem power fraction
                                   # Cross-check: Schwartz et al. (arXiv:2405.01514) report
                                   # 5% active + 10% passive = 15% total parasitic load.
@@ -317,10 +318,12 @@ result_foak = model.forward(
     vessel_t=0.20,
     p_input=38.6,
     mn=1.1,
-    eta_th=0.46,
+    eta_th=0.35,
+ # standardized from 0.46 per scoring_framework.md (Energy Capture: Thermal (steam))
     eta_p=0.5,
     eta_pin=0.5,
-    eta_de=0.85,
+    eta_de=0.00,
+ # standardized from 0.85 per scoring_framework.md (Energy Capture: Thermal (steam))
     f_sub=0.03,
     f_dec=0.0,
     p_coils=2.0,

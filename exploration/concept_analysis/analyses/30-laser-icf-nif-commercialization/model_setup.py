@@ -98,7 +98,7 @@ _SHARED_KWARGS = dict(
     # Thermal efficiency: LLNL LIFE program analogue (liquid Li → steam Rankine)
     # Modern sCO2 cycle could reach ~50%; Inertia has not disclosed a confirmed value
     # Source: analysis §S5 [analogue, unsourced]; analysis §S2 Challenge 4
-    eta_th=0.45,                 # UNCERTAIN: LLNL LIFE analogue
+    eta_th=0.35,                  # standardized from 0.45 per scoring_framework.md (Energy Capture: Thermal (steam))
 
     mn=1.1,                      # DT neutron energy multiplier (standard D-T)
     f_rad=0.10,                  # Radiation fraction of ash power (DT default)

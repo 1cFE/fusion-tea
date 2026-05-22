@@ -156,7 +156,7 @@ _SHARED_KWARGS = dict(
     eta_pin=0.60,     # NNBI neutralization efficiency (startup sizing reference);
                       # NF 64 (2024) 026007; irrelevant at p_input=0
     eta_p=0.50,       # DEFAULT: pumping efficiency
-    eta_de=0.85,      # DEFAULT: DEC efficiency (no DEC deployed)
+    eta_de=0.00,       # standardized from 0.85 per scoring_framework.md (Energy Capture: Thermal (sCO2))
     f_sub=0.03,       # DEFAULT: subsystem power fraction
     f_dec=0.0,        # No direct energy converter
 

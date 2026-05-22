@@ -177,7 +177,8 @@ MN = 1.1
 # Blanket design undisclosed; value may vary with blanket material choice.
 # analysis.md §Section 2, Challenge 2; §Section 4: blanket material unknown.
 
-ETA_TH = 0.40
+ETA_TH = 0.35
+ # standardized from 0.4 per scoring_framework.md (Energy Capture: Thermal (unspecified))
 # UNCERTAIN: Thermal conversion efficiency. Power conversion cycle undisclosed.
 # analysis.md §Section 2, Challenge 1 and §Section 5 (gap #5: blocking).
 # 0.40 conservative steam Rankine assumption; sCO₂ Brayton could reach 0.45–0.50.
@@ -189,7 +190,7 @@ ETA_PIN = 0.65
 # analysis.md §Section 2, Challenge 5: "Wall-plug efficiency of ICRH is ~60–70%."
 # Using 0.65 (midpoint); vs. 0.50 framework default for generic heating.
 
-ETA_DE = 0.85    # DEFAULT: No DEC system disclosed for ES concept.
+ETA_DE = 0.00     # standardized from 0.85 per scoring_framework.md (Energy Capture: Thermal (unspecified))
 F_SUB = 0.03     # DEFAULT: Subsystem recirculating power fraction.
 F_DEC = 0.0      # DEFAULT: No DEC disclosed.
 

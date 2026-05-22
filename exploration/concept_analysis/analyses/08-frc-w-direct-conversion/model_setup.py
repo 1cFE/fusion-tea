@@ -263,7 +263,14 @@ result = model.forward(
                      # D-He3 fuel eliminates tritium breeding blanket entirely.
                      # Source: analysis.md §S4 Key Materials (No Tritium Breeding Blanket);
                      #         helion-website-technology.md §Fuel
-    eta_th=0.85,      # standardized from 0.9 per scoring_framework.md (Energy Capture: Direct (inductive))
+    eta_th=0.85,      # DEVIATION: eta_th here is a *hack* representing Helion's direct EM recovery
+                     #            efficiency, not the thermal-cycle efficiency costingfe expects.
+                     #            Per-category canonical for Direct (inductive) is (eta_th=0.00,
+                     #            eta_de=0.85). The correct structural fix is pulsed_conversion=
+                     #            INDUCTIVE_DEC + wired eta_de + f_dec, which costingfe supports.
+                     #            Marked DEVIATION until that refactor lands — see backlog item
+                     #            "Structural refactor of 08 + 31 to use pulsed_conversion=
+                     #            INDUCTIVE_DEC". Issue #30 / .project/active/eta_th-double-count-fix/.
                      # Three conflicting public data points:
                      #   >95% round-trip: subscale demo, >1M pulses with IGBTs.
                      #     Source: dossier.md §Energy Capture (synthesizes 2015 Helion press

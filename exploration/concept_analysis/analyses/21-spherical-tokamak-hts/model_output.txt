@@ -104,7 +104,6 @@ Engineering levers:
   dhe3_dd_frac                         +0.0000
   dhe3_f_T                             +0.0000
   dhe3_f_He3                           +0.0000
-  eta_de                               +0.0000
   q95                                  +0.0000
   f_GW                                 +0.0000
   B                                    +0.0000

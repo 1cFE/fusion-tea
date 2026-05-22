@@ -104,7 +104,7 @@ MN = 1.1                    # DEFAULT: neutron energy multiplier for outboard Li
                             # no ST-E1-specific data; framework default applied.
 
 ETA_P = 0.5                 # DEFAULT: pumping efficiency
-ETA_DE = 0.85               # DEFAULT: direct energy conversion efficiency (N/A — f_dec=0)
+ETA_DE = 0.00                # standardized from 0.85 per scoring_framework.md (Energy Capture: Thermal (unspecified))
 
 F_SUB = 0.03                # DEFAULT: subsystem power fraction of gross electric
 F_DEC = 0.0                 # No direct energy conversion; pulsed D-T, ECRH-only heating

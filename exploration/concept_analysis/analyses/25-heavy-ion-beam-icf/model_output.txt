@@ -1,8 +1,8 @@
 Heavy Ion Beam ICF (D-T) | HYLIFE-II archetype — Intensity Energy
 Native design: 940 MWe | 6 Hz | Recirculating induction linac + FLiBe wall
-LCOE:          98.2 $/MWh | Overnight: 6686 $/kW
-Fusion:        2667 MW | Net: 940 MW | Q_eng: 6.50
-Q_sci (target gain): 62.8  [HYLIFE-II nominal: 70 at 5 MJ]
+LCOE:          99.7 $/MWh | Overnight: 6793 $/kW
+Fusion:        2899 MW | Net: 940 MW | Q_eng: 6.50
+Q_sci (target gain): 68.3  [HYLIFE-II nominal: 70 at 5 MJ]
 Driver E/shot: 7.07 MJ  [HYLIFE-II stated: 5 MJ]
 
 Historical reference: HYLIFE-II LCOE = $65/MWh (early-1990s) → ~$162/MWh 2026 (CPI ×2.5)
@@ -10,29 +10,29 @@ Historical reference: HYLIFE-II LCOE = $65/MWh (early-1990s) → ~$162/MWh 2026 
 
 Code     Account                              M$
 ------------------------------------------------
-CAS10    Preconstruction                    18.4
-CAS21    Buildings                         622.3
-CAS22    Reactor Plant Equipment          2692.1
+CAS10    Preconstruction                    18.3
+CAS21    Buildings                         652.2
+CAS22    Reactor Plant Equipment          2717.0
 CAS23    Turbine Plant                     219.6
 CAS24    Electrical Plant                   93.5
 CAS25    Miscellaneous                      56.9
-CAS26    Heat Rejection                     99.9
+CAS26    Heat Rejection                    108.4
 CAS27    Special Materials                  14.1
 CAS28    Digital Twin                        5.0
 CAS29    Contingency                         0.0
-CAS30    Indirect Costs                    887.4
+CAS30    Indirect Costs                    902.2
 CAS40    Owner's Costs                      37.8
-CAS50    Supplementary                     337.1
-CAS60    IDC                              1201.3
-CAS70    O&M (annualized)                   99.1
-CAS80    Fuel (annualized)                   0.7
-CAS90    Financial                         506.5
+CAS50    Supplementary                     340.1
+CAS60    IDC                              1220.5
+CAS70    O&M (annualized)                  100.2
+CAS80    Fuel (annualized)                   0.8
+CAS90    Financial                         514.6
 ------------------------------------------------
-         Total Capital                    6285.3
+         Total Capital                    6385.7
 
 CAS22 sub-accounts:
-  C220101       186.8 M$
-  C220102       130.4 M$
+  C220101       196.3 M$
+  C220102       137.0 M$
   C220103         0.0 M$
   C220104      1400.0 M$
   C220105         8.5 M$
@@ -41,17 +41,17 @@ CAS22 sub-accounts:
   C220108       262.6 M$
   C220109         0.0 M$
   C220110        79.0 M$
-  C220111       170.3 M$
+  C220111       172.6 M$
   C220112         0.0 M$
-  C220200       192.8 M$
-  C220300        14.6 M$
-  C220400         5.7 M$
+  C220200       194.5 M$
+  C220300        14.9 M$
+  C220400         6.2 M$
   C220500       114.9 M$
   C220600        10.9 M$
-  C220700        75.6 M$
-  C220000 (Total)     2692.1 M$
+  C220700        79.8 M$
+  C220000 (Total)     2717.0 M$
 
-1 GWe scaled:  LCOE = 97.2 $/MWh | Overnight = 6646 $/kW
+1 GWe scaled:  LCOE = 98.7 $/MWh | Overnight = 6752 $/kW
 
 Key Assumptions and Uncertainties:
   C220104 = $1,400M  UNCERTAIN: $570M 1990s HYLIFE-II driver × 2.5 CPI
@@ -93,21 +93,21 @@ Sensitivity (elasticity = %LCOE / %param)
 ------------------------------------------------
 
 Engineering levers:
-  availability                         -0.9589
-  construction_time_yr                 +0.3698
-  q_eng                                -0.3211
-  plasma_t                             +0.2417
-  eta_th                               -0.2210
-  eta_pin                              +0.1486
-  blanket_t                            +0.1078
-  mn                                   -0.0672
-  f_sub                                -0.0417
-  ht_shield_t                          +0.0243
-  p_trit                               -0.0125
-  vessel_t                             +0.0094
-  p_house                              -0.0050
-  structure_t                          +0.0039
-  f_rep                                -0.0030
+  availability                         -0.9575
+  construction_time_yr                 +0.3701
+  q_eng                                -0.3179
+  plasma_t                             +0.2485
+  eta_th                               -0.2321
+  eta_pin                              +0.1459
+  blanket_t                            +0.1110
+  mn                                   -0.0717
+  f_sub                                -0.0409
+  ht_shield_t                          +0.0250
+  p_trit                               -0.0123
+  vessel_t                             +0.0093
+  p_house                              -0.0049
+  structure_t                          +0.0038
+  f_rep                                -0.0029
   p_cryo                               +0.0014
   p_pump                               -0.0013
   p_target                             -0.0010
@@ -120,24 +120,24 @@ Engineering levers:
   eta_dec                              +0.0000
 
 Financial:
-  interest_rate                        +0.7081
-  inflation_rate                       +0.0691
+  interest_rate                        +0.7095
+  inflation_rate                       +0.0679
 
 Costing constants (top 15):
-  om_cost_dt                           +0.1563
-  driver_heavy_ion_per_mw              +0.1498
-  indirect_fraction                    +0.1394
-  blanket_unit_cost_dt                 +0.0997
-  target_factory_base                  +0.0773
-  installation_frac                    +0.0439
-  core_lifetime_dt                     -0.0397
-  shield_unit_cost                     +0.0384
-  fuel_handling_dt_base                +0.0296
-  electric_per_mw                      +0.0247
-  decom_provision_dt                   +0.0241
-  remote_handling_dt_base              +0.0233
-  fuel_recovery                        -0.0225
-  misc_per_mw                          +0.0150
+  om_cost_dt                           +0.1534
+  driver_heavy_ion_per_mw              +0.1471
+  indirect_fraction                    +0.1398
+  blanket_unit_cost_dt                 +0.1028
+  target_factory_base                  +0.0758
+  installation_frac                    +0.0437
+  core_lifetime_dt                     -0.0409
+  shield_unit_cost                     +0.0396
+  fuel_handling_dt_base                +0.0291
+  electric_per_mw                      +0.0242
+  fuel_recovery                        -0.0240
+  decom_provision_dt                   +0.0237
+  remote_handling_dt_base              +0.0228
+  misc_per_mw                          +0.0148
   construction_insurance_frac          +0.0109
 
   Framework artifact notes (do not interpret as HIF design levers):
@@ -151,12 +151,12 @@ Driver Efficiency Scenario Sweep — physically-derived q_eng mapping:
   (q_eng derived from eta_pin via driver-dominated scaling: q_eng = 6.5 × eta/0.35)
   Scenario                                     eta_pin   q_eng   LCOE $/MWh    OC $/kW  Notes
   ------------------------------------------------------------------------------------------------
-  Laser ICF reference  (0.10 — 10%)               0.10    1.86        128.4       9016
-  Below HIF range      (0.25 — pessimistic)       0.25    4.64        101.2       6922
-  HIF low end          (0.30)                     0.30    5.57         99.4       6782
-  HIF mid-range        (0.35 — base case)         0.35    6.50         98.2       6686  <- base case
-  HIF high end         (0.40)                     0.40    7.43         97.3       6617
-  Above HIF range      (0.45 — optimistic)        0.45    8.36         96.6       6563
+  Laser ICF reference  (0.10 — 10%)               0.10    1.86        130.9       9196
+  Below HIF range      (0.25 — pessimistic)       0.25    4.64        102.8       7036
+  HIF low end          (0.30)                     0.30    5.57        101.0       6891
+  HIF mid-range        (0.35 — base case)         0.35    6.50         99.7       6793  <- base case
+  HIF high end         (0.40)                     0.40    7.43         98.7       6722
+  Above HIF range      (0.45 — optimistic)        0.45    8.36         98.0       6666
 
   Note: at laser ICF efficiency (eta_pin~0.10), derived q_eng ≈ 1.86 means ~53%
   recirculating power — the plant barely breaks even energetically. At HIF's 30-40%,
@@ -166,11 +166,11 @@ Driver Efficiency Scenario Sweep — physically-derived q_eng mapping:
 Driver Capital Cost Scenario Sweep (C220104, HYLIFE-II base: $1.4B 2026$):
   Scenario                                     C220104 M$   LCOE $/MWh    OC $/kW  Notes
   ----------------------------------------------------------------------------------------
-  Optimistic modular NOAK  ($0.7B)                    700         83.8       5511
-  Mid-range scenario       ($1.0B)                   1000         89.9       6015
-  HYLIFE-II inflated base  ($1.4B)                   1400         98.2       6686  <- base case
-  No-learning pessimistic  ($2.0B)                   2000        110.5       7694
-  Worst-case conservative  ($2.5B)                   2500        120.8       8534
+  Optimistic modular NOAK  ($0.7B)                    700         85.3       5618
+  Mid-range scenario       ($1.0B)                   1000         91.4       6122
+  HYLIFE-II inflated base  ($1.4B)                   1400         99.7       6793  <- base case
+  No-learning pessimistic  ($2.0B)                   2000        112.0       7801
+  Worst-case conservative  ($2.5B)                   2500        122.3       8641
 
   Note: modular induction linac architecture (identical cells, factory
   manufacturing) is frequently cited as a path to cost reduction from
@@ -180,11 +180,11 @@ Driver Capital Cost Scenario Sweep (C220104, HYLIFE-II base: $1.4B 2026$):
 Availability Scenario Sweep (dominant LCOE lever, elasticity ≈ −0.96):
   Scenario                                      Avail   LCOE $/MWh    OC $/kW  Notes
   ------------------------------------------------------------------------------------
-  Low availability   (70%)                       0.70        105.0       6686
-  Base case          (75%)                       0.75         98.2       6686  <- base case
-  Above-base         (80%)                       0.80         92.2       6686
-  Above-target       (85%)                       0.85         87.3       6686
-  High availability  (90%)                       0.90         82.6       6686
+  Low availability   (70%)                       0.70        106.5       6793
+  Base case          (75%)                       0.75         99.7       6793  <- base case
+  Above-base         (80%)                       0.80         93.7       6793
+  Above-target       (85%)                       0.85         88.6       6793
+  High availability  (90%)                       0.90         83.9       6793
 
   Note: availability is the single most controllable post-construction LCOE lever.
   Canonical base case is 0.75 (scoring_framework.md). At this level LCOE ≈ $100/MWh.
@@ -192,7 +192,7 @@ Availability Scenario Sweep (dominant LCOE lever, elasticity ≈ −0.96):
   delivery reliability are the key determinants. Source: analysis §S2 Challenge 3
 
 Regulatory Cost Scenario (Stewart & Shirvan 2022 fission-analog framework):
-  Base LCOE (no regulatory multiplier): 98.2 $/MWh
+  Base LCOE (no regulatory multiplier): 99.7 $/MWh
   Note: Stewart & Shirvan 2.2× construction cost multiplier applies as
   conservative upper bound for D-T IFE regulatory pathway.
   No HIF plant has entered regulatory process; no licensing pathway scoped.

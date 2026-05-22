@@ -1,54 +1,54 @@
 HTS Compact Tokamak — CFS ARC (261 MWe, 85% avail, 30 yr, NOAK)
-LCOE: 571.1 $/MWh | Overnight: 48194 $/kW
-Fusion: 730 MW | Net: 261 MW | Q_eng: 3.2
+LCOE: 576.4 $/MWh | Overnight: 48627 $/kW
+Fusion: 971 MW | Net: 261 MW | Q_eng: 3.2
 
 Code     Account                              M$
 ------------------------------------------------
 CAS10    Preconstruction                    16.7
-CAS21    Buildings                         300.6
-CAS22    Reactor Plant Equipment          8364.0
+CAS21    Buildings                         331.7
+CAS22    Reactor Plant Equipment          8405.2
 CAS23    Turbine Plant                      75.3
 CAS24    Electrical Plant                   32.1
 CAS25    Miscellaneous                      19.5
-CAS26    Heat Rejection                     28.3
+CAS26    Heat Rejection                     37.2
 CAS27    Special Materials                 146.0
 CAS28    Digital Twin                        5.0
 CAS29    Contingency                         0.0
-CAS30    Indirect Costs                   1495.1
+CAS30    Indirect Costs                   1508.7
 CAS40    Owner's Costs                      19.9
-CAS50    Supplementary                     434.0
-CAS60    IDC                              1642.1
-CAS70    O&M (annualized)                   96.0
-CAS80    Fuel (annualized)                   0.2
-CAS90    Financial                        1013.7
+CAS50    Supplementary                     437.7
+CAS60    IDC                              1656.9
+CAS70    O&M (annualized)                   97.2
+CAS80    Fuel (annualized)                   0.3
+CAS90    Financial                        1022.8
 ------------------------------------------------
-         Total Capital                   12578.5
+         Total Capital                   12691.8
 
 CAS22 Sub-accounts (Reactor Plant Equipment):
 Code         Account                                M$  Note
 ------------------------------------------------------------------------
 C220101      First Wall + FLiBe Blanket          348.4  [ARC §6 override]
-C220102      Shield                               90.9  [DEFAULT]
+C220102      Shield                              107.1  [DEFAULT]
 C220103      Coils (REBCO magnets+struct)       6901.0  [ARC §6 override]
 C220104      Heating System (ICRF+LHCD)          353.2  [DEFAULT]
 C220105      Primary Structure                    10.9  [DEFAULT]
 C220106      Vacuum Vessel (Inconel-718)         123.3  [ARC §6 override]
 C220107      Power Supplies                       40.7  [DEFAULT]
-C220108      Divertor                             54.6  [DEFAULT]
+C220108      Divertor                             62.6  [DEFAULT]
 C220109      DEC                                   0.0  [DEFAULT]
-C220111      Installation                        188.7  [DEFAULT]
+C220111      Installation                        195.5  [DEFAULT]
 C220112      Isotope Separation                    0.0  [DEFAULT]
-C220200      Coolant (FLiBe circuits)             61.7  [DEFAULT]
-C220300      Aux Cooling                          12.3  [DEFAULT]
-C220400      Rad Waste                             1.6  [DEFAULT]
+C220200      Coolant (FLiBe circuits)             64.7  [DEFAULT]
+C220300      Aux Cooling                          12.6  [DEFAULT]
+C220400      Rad Waste                             2.1  [DEFAULT]
 C220500      Fuel Handling (tritium)              46.9  [DEFAULT]
 C220600      Other Equipment                       3.9  [DEFAULT]
-C220700      I&C                                  33.3  [DEFAULT]
+C220700      I&C                                  39.8  [DEFAULT]
 ------------------------------------------------------------------------
-C220000      TOTAL                              8364.0
+C220000      TOTAL                              8405.2
 
 FOAK scenario (2× C220103 + contingency, same availability):
-  LCOE: 1068.2 $/MWh | Overnight: 94034 $/kW
+  LCOE: 1074.2 $/MWh | Overnight: 94531 $/kW
   (CATF IWG FOAK range: 150–200 $/MWh; NOAK range: 60–100 $/MWh)
   Source: arxiv-2602-19389 §2.1.5; analysis.md §2 Hypothesis 4
 
@@ -135,36 +135,35 @@ Sensitivity (elasticity = %LCOE / %param) — NOAK central estimate
 --------------------------------------------------
 
 Engineering levers:
-  availability                 -0.9535
-  construction_time_yr         +0.2941
-  p_nbi                        +0.0407
-  eta_th                       -0.0307
-  r_coil                       +0.0146
-  elon                         +0.0144
-  R0                           +0.0144
-  eta_pin                      -0.0120
-  p_input                      +0.0115
-  b_max                        +0.0073
-  mn                           -0.0072
-  plasma_t                     +0.0062
-  ht_shield_t                  +0.0057
-  blanket_t                    +0.0055
-  p_cool                       +0.0021
-  f_sub                        +0.0018
+  availability                 -0.9529
+  construction_time_yr         +0.2940
+  p_nbi                        +0.0403
+  eta_th                       -0.0374
+  R0                           +0.0164
+  elon                         +0.0164
+  r_coil                       +0.0145
+  eta_pin                      -0.0133
+  p_input                      +0.0129
+  mn                           -0.0095
+  b_max                        +0.0072
+  plasma_t                     +0.0071
+  ht_shield_t                  +0.0066
+  blanket_t                    +0.0063
+  p_cool                       +0.0024
+  f_sub                        +0.0020
+  p_trit                       +0.0017
   structure_t                  +0.0017
-  p_trit                       +0.0015
   vessel_t                     +0.0011
   p_cryo                       +0.0009
-  p_house                      +0.0006
+  p_house                      +0.0007
   p_coils                      +0.0003
-  p_pump                       +0.0001
+  p_pump                       +0.0002
   eta_p                        -0.0000
   dd_f_T                       +0.0000
   dd_f_He3                     +0.0000
   dhe3_dd_frac                 +0.0000
   dhe3_f_T                     +0.0000
   dhe3_f_He3                   +0.0000
-  eta_de                       +0.0000
   q95                          +0.0000
   f_GW                         +0.0000
   B                            +0.0000
@@ -183,5 +182,5 @@ Engineering levers:
   disruption_downtime          +0.0000
 
 Financial:
-  interest_rate                +0.7577
-  inflation_rate               +0.0137
+  interest_rate                +0.7574
+  inflation_rate               +0.0136

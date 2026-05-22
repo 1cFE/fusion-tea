@@ -1,53 +1,53 @@
 Magnetic Mirror (D-T) — Realta Fusion (CoSMo / Hammir)
 500 MWe commercial extrapolation | 85% availability | 30 yr | NOAK
 UNCERTAIN: plasma params from arXiv:2411.06644 pilot + MARS 1983 analogue
-LCOE: 106.2 $/MWh (10.62 ¢/kWh) | Overnight: 7195 $/kW
-1 GWe scaled: LCOE 75.2 $/MWh | Overnight 5097 $/kW
-Fusion: 1593 MW | Net: 500 MW | Q_eng: 4.4
+LCOE: 115.7 $/MWh (11.57 ¢/kWh) | Overnight: 8242 $/kW
+1 GWe scaled: LCOE 79.7 $/MWh | Overnight 5639 $/kW
+Fusion: 1637 MW | Net: 500 MW | Q_eng: 4.4
 Recirculating fraction: 22.7%
 
 Code     Account                              M$
 ------------------------------------------------
 CAS10    Preconstruction                    17.2
-CAS21    Buildings                         435.4
-CAS22    Reactor Plant Equipment          1760.3
-CAS23    Turbine Plant                     120.3
+CAS21    Buildings                         441.0
+CAS22    Reactor Plant Equipment          2129.6
+CAS23    Turbine Plant                     120.1
 CAS24    Electrical Plant                   54.5
 CAS25    Miscellaneous                      33.1
-CAS26    Heat Rejection                     57.7
+CAS26    Heat Rejection                     59.3
 CAS27    Special Materials                   7.5
 CAS28    Digital Twin                        5.0
 CAS29    Contingency                         0.0
-CAS30    Indirect Costs                    412.3
+CAS30    Indirect Costs                    475.0
 CAS40    Owner's Costs                      27.6
-CAS50    Supplementary                     197.0
-CAS60    IDC                               469.7
-CAS70    O&M (annualized)                  104.8
-CAS80    Fuel (annualized)                   0.7
-CAS90    Financial                         289.9
+CAS50    Supplementary                     213.0
+CAS60    IDC                               538.0
+CAS70    O&M (annualized)                   98.1
+CAS80    Fuel (annualized)                   0.4
+CAS90    Financial                         332.1
 ------------------------------------------------
-         Total Capital                    3597.7
+         Total Capital                    4121.0
 
 CAS22 Reactor Plant Equipment Breakdown:
 ------------------------------------------------
-  C220000                          1760.3 M$
-  C220101                           301.3 M$
-  C220102                           215.9 M$
-  C220103                           205.4 M$
+  C220000                          2129.6 M$
+  C220101                           306.1 M$
+  C220102                           219.3 M$
+  C220103                           513.4 M$
   C220104                           282.6 M$
   C220105                            16.5 M$
   C220106                            55.3 M$
   C220107                            59.0 M$
-  C220108                            78.0 M$
-  C220109                            19.4 M$
+  C220108                            79.1 M$
+  C220109                            24.6 M$
   C220110                            66.4 M$
-  C220111                           181.9 M$
-  C220200                           110.2 M$
-  C220300                            31.9 M$
-  C220400                             3.3 M$
+  C220111                           227.1 M$
+  C220200                           110.6 M$
+  C220300                            32.0 M$
+  C220400                             3.4 M$
   C220500                            73.9 M$
   C220600                             6.6 M$
-  C220700                            53.0 M$
+  C220700                            53.9 M$
 
 Key Assumptions (confidence: low — MARS 1983 analogues + arXiv pilot physics):
 ------------------------------------------------
@@ -72,34 +72,34 @@ Sensitivity (elasticity = %LCOE / %param)
 ------------------------------------------------
 
 Engineering levers:
-  availability                         -0.8740
-  chamber_length                       +0.2988
-  eta_th                               -0.2725
-  blanket_t                            +0.2479
-  construction_time_yr                 +0.2418
-  plasma_t                             +0.1416
-  r_coil                               +0.1327
-  p_nbi                                +0.0913
-  b_max                                +0.0664
-  eta_pin                              -0.0520
-  p_input                              +0.0496
-  ht_shield_t                          +0.0394
-  mn                                   -0.0359
-  vessel_t                             +0.0195
-  p_cool                               +0.0143
-  eta_de                               -0.0139
-  f_sub                                +0.0126
-  f_dec                                -0.0121
-  structure_t                          +0.0085
-  p_cryo                               +0.0073
-  p_trit                               +0.0065
-  p_coils                              +0.0052
-  p_house                              +0.0026
-  p_pump                               +0.0010
+  availability                         -0.8832
+  r_coil                               +0.3046
+  chamber_length                       +0.2784
+  eta_th                               -0.2548
+  construction_time_yr                 +0.2514
+  blanket_t                            +0.2311
+  b_max                                +0.1523
+  plasma_t                             +0.1320
+  p_nbi                                +0.0838
+  eta_pin                              -0.0484
+  p_input                              +0.0463
+  ht_shield_t                          +0.0367
+  mn                                   -0.0338
+  vessel_t                             +0.0179
+  p_cool                               +0.0133
+  eta_de                               -0.0124
+  f_sub                                +0.0117
+  f_dec                                -0.0107
+  structure_t                          +0.0078
+  p_cryo                               +0.0067
+  p_trit                               +0.0061
+  p_coils                              +0.0048
+  p_house                              +0.0024
+  p_pump                               +0.0009
   T_e                                  +0.0002
   B                                    +0.0002
   n_e                                  +0.0001
-  elon                                 +0.0001
+  elon                                 +0.0000
   plasma_volume                        +0.0000
   Z_eff                                +0.0000
   R_w                                  -0.0000
@@ -108,26 +108,27 @@ Engineering levers:
   dd_f_He3                             +0.0000
   dhe3_dd_frac                         +0.0000
   dhe3_f_T                             +0.0000
+  dhe3_f_He3                           +0.0000
   T_edge                               +0.0000
   tau_ratio                            +0.0000
 
 Financial:
-  interest_rate                        +0.5848
-  inflation_rate                       +0.0402
+  interest_rate                        +0.6206
+  inflation_rate                       +0.0313
 
 Costing constants (top 15):
-  blanket_unit_cost_dt                 +0.2058
-  om_cost_dt                           +0.1261
-  core_lifetime_dt                     -0.1225
-  indirect_fraction                    +0.0981
-  heating_nbi_per_mw                   +0.0913
-  shield_unit_cost                     +0.0698
-  divertor_base                        +0.0533
-  installation_frac                    +0.0516
-  remote_handling_dt_base              +0.0214
-  fuel_handling_dt_base                +0.0209
-  power_supplies_base                  +0.0191
-  vessel_unit_cost                     +0.0179
-  fuel_recovery                        -0.0162
-  electric_per_mw                      +0.0158
-  decom_provision_dt                   +0.0149
+  blanket_unit_cost_dt                 +0.1920
+  core_lifetime_dt                     -0.1142
+  indirect_fraction                    +0.1038
+  om_cost_dt                           +0.0984
+  heating_nbi_per_mw                   +0.0838
+  shield_unit_cost                     +0.0651
+  installation_frac                    +0.0591
+  divertor_base                        +0.0496
+  remote_handling_dt_base              +0.0197
+  fuel_handling_dt_base                +0.0192
+  power_supplies_base                  +0.0175
+  vessel_unit_cost                     +0.0164
+  fuel_recovery                        -0.0159
+  electric_per_mw                      +0.0145
+  decom_provision_dt                   +0.0137

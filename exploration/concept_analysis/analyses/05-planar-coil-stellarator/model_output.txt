@@ -1,52 +1,52 @@
 Planar Coil Stellarator (Thea Energy Helios) — FOAK, 390 MWe net, 88% availability
-LCOE: 241.4 $/MWh | Overnight: 21529 $/kW
-Fusion: 1036 MW | Net: 390 MW | Q_eng: 7.7
+LCOE: 245.7 $/MWh | Overnight: 21870 $/kW
+Fusion: 1184 MW | Net: 390 MW | Q_eng: 7.7
   (Helios targets: LCOE $150/MWh FOAK → $60/MWh at scale)
 
 Code     Account                              M$
 ------------------------------------------------
 CAS10    Preconstruction                    36.3
-CAS21    Buildings                         380.9
-CAS22    Reactor Plant Equipment          3850.5
+CAS21    Buildings                         401.9
+CAS22    Reactor Plant Equipment          3895.5
 CAS23    Turbine Plant                      88.6
 CAS24    Electrical Plant                   37.8
 CAS25    Miscellaneous                      23.0
-CAS26    Heat Rejection                     38.3
+CAS26    Heat Rejection                     43.8
 CAS27    Special Materials                   5.8
 CAS28    Digital Twin                        5.0
-CAS29    Contingency                       443.0
-CAS30    Indirect Costs                   1299.5
+CAS29    Contingency                       450.1
+CAS30    Indirect Costs                   1320.4
 CAS40    Owner's Costs                      24.4
-CAS50    Supplementary                     314.0
-CAS60    IDC                              1849.4
-CAS70    O&M (annualized)                   95.5
-CAS80    Fuel (annualized)                   0.6
-CAS90    Financial                         629.8
+CAS50    Supplementary                     318.0
+CAS60    IDC                              1878.6
+CAS70    O&M (annualized)                   98.6
+CAS80    Fuel (annualized)                   0.4
+CAS90    Financial                         639.8
 ------------------------------------------------
-         Total Capital                    8396.5
+         Total Capital                    8529.3
 
 CAS22 Sub-accounts (Reactor Plant Equipment):
 Code         Account                                M$  Note
 ----------------------------------------------------------------------------
-C220101      First Wall + LiPb Blanket           199.8  [DEFAULT]
-C220102      Shield                              159.1  [DEFAULT]
+C220101      First Wall + LiPb Blanket           216.5  [DEFAULT]
+C220102      Shield                              172.3  [DEFAULT]
 C220103      Coils (336 planar REBCO)           2322.5  [DEFAULT]
 C220104      Heating System (ECRH)               150.0  [DEFAULT]
 C220105      Primary Structure                    13.3  [DEFAULT]
 C220106      Vacuum Vessel                        41.8  [DEFAULT]
 C220107      Power Supplies                       45.6  [DEFAULT]
-C220108      Divertor (novel QA X-point)          63.5  [DEFAULT]
+C220108      Divertor (novel QA X-point)          67.9  [DEFAULT]
 C220109      DEC                                   0.0  [DEFAULT]
-C220111      Installation                        433.4  [DEFAULT]
+C220111      Installation                        438.3  [DEFAULT]
 C220112      Isotope Separation                    0.0  [DEFAULT]
-C220200      Coolant (He primary loop)            86.4  [DEFAULT]
-C220300      Aux Cooling                         124.3  [DEFAULT]
-C220400      Rad Waste                             2.2  [DEFAULT]
+C220200      Coolant (He primary loop)            88.1  [DEFAULT]
+C220300      Aux Cooling                         124.5  [DEFAULT]
+C220400      Rad Waste                             2.5  [DEFAULT]
 C220500      Fuel Handling (tritium)              62.1  [DEFAULT]
 C220600      Other Equipment                       5.4  [DEFAULT]
-C220700      I&C                                  40.6  [DEFAULT]
+C220700      I&C                                  44.2  [DEFAULT]
 ----------------------------------------------------------------------------
-C220000      TOTAL                              3850.5
+C220000      TOTAL                              3895.5
 
 Key Assumptions
 ===============
@@ -100,35 +100,35 @@ Sensitivity (elasticity = %LCOE / %param)
 ------------------------------------------------
 
 Engineering levers:
-  r_coil                       +1.0151
-  availability                 -0.9446
-  b_max                        +0.5076
-  construction_time_yr         +0.4461
-  R0                           +0.1315
-  elon                         +0.1315
-  eta_th                       -0.1298
-  plasma_t                     +0.0939
-  blanket_t                    +0.0733
-  p_ecrh                       +0.0328
+  r_coil                       +0.9974
+  availability                 -0.9415
+  b_max                        +0.4987
+  construction_time_yr         +0.4450
+  eta_th                       -0.1398
+  R0                           +0.1390
+  elon                         +0.1390
+  plasma_t                     +0.0994
+  blanket_t                    +0.0778
+  p_ecrh                       +0.0322
+  mn                           -0.0240
   p_cryo                       +0.0232
-  mn                           -0.0216
-  ht_shield_t                  +0.0197
-  vessel_t                     +0.0098
-  f_sub                        +0.0060
-  p_trit                       +0.0044
+  ht_shield_t                  +0.0209
+  vessel_t                     +0.0096
+  f_sub                        +0.0063
+  p_trit                       +0.0046
   structure_t                  +0.0041
-  p_cool                       +0.0036
-  p_house                      +0.0022
-  p_pump                       +0.0013
-  eta_pin                      -0.0009
+  p_cool                       +0.0037
+  p_house                      +0.0023
+  p_pump                       +0.0014
   p_coils                      +0.0009
+  eta_pin                      -0.0009
   p_input                      +0.0009
   eta_p                        -0.0000
   dd_f_T                       +0.0000
   dd_f_He3                     +0.0000
   dhe3_dd_frac                 +0.0000
   dhe3_f_T                     +0.0000
-  eta_de                       +0.0000
+  dhe3_f_He3                   +0.0000
   B                            +0.0000
   T_e                          +0.0000
   n_e                          +0.0000
@@ -139,22 +139,22 @@ Engineering levers:
   tau_ratio                    +0.0000
 
 Financial:
-  interest_rate                +0.9020
-  inflation_rate               +0.0449
+  interest_rate                +0.8999
+  inflation_rate               +0.0440
 
 Costing constants (top 15):
-  indirect_fraction            +0.1750
-  contingency_rate_foak        +0.0881
-  blanket_unit_cost_dt         +0.0847
-  installation_frac            +0.0831
-  om_cost_dt                   +0.0774
-  core_lifetime_dt             -0.0546
-  shield_unit_cost             +0.0348
-  heating_ecrh_per_mw          +0.0328
-  divertor_base                +0.0269
-  remote_handling_dt_base      +0.0220
+  indirect_fraction            +0.1748
+  blanket_unit_cost_dt         +0.0902
+  contingency_rate_foak        +0.0882
+  installation_frac            +0.0825
+  om_cost_dt                   +0.0761
+  core_lifetime_dt             -0.0579
+  shield_unit_cost             +0.0370
+  heating_ecrh_per_mw          +0.0322
+  divertor_base                +0.0283
+  remote_handling_dt_base      +0.0216
   construction_insurance_frac  +0.0135
-  fuel_handling_dt_base        +0.0119
-  shipping_frac                +0.0107
-  power_supplies_base          +0.0100
-  vessel_unit_cost             +0.0091
+  fuel_handling_dt_base        +0.0117
+  shipping_frac                +0.0106
+  power_supplies_base          +0.0098
+  vessel_unit_cost             +0.0090

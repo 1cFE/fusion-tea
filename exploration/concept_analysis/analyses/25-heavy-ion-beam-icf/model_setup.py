@@ -93,7 +93,7 @@ _SHARED_KWARGS = dict(
     # HYLIFE-II uses FLiBe primary coolant → secondary steam cycle
     # Modern sCO2 Brayton not evaluated for HIF (no published study)
     # Source: analysis §S5 [analogue, low confidence]; analysis §S3 BOP section
-    eta_th=0.38,                    # UNCERTAIN: steam Rankine analogue
+    eta_th=0.35,                     # standardized from 0.38 per scoring_framework.md (Energy Capture: Thermal (steam))
 
     mn=1.1,                         # DT neutron energy multiplier (standard D-T)
     f_rad=0.10,                     # Radiation fraction of ash power (DT default)

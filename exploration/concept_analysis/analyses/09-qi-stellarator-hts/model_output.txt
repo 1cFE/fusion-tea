@@ -1,14 +1,14 @@
 QI Stellarator — HTS (Proxima Fusion Stellaris) — 1 GWe, NOAK
 Scenario A: H4-true (ignited, 5 MW ECRH steady-state), 88% capacity factor
-LCOE (initial-build only):     106.4 $/MWh  [LOWER BOUND — excl. coil replacement]
-LCOE (replacement-inclusive):  110.8 $/MWh  [2 coil replacements, DEFAULT C220103]
-Overnight cost: 7938 $/kW | Fusion: 2768 MW | Net: 1000 MW | Q_eng: 5.5
+LCOE (initial-build only):     137.2 $/MWh  [LOWER BOUND — excl. coil replacement]
+LCOE (replacement-inclusive):  157.3 $/MWh  [2 coil replacements, DEFAULT C220103]
+Overnight cost: 10838 $/kW | Fusion: 3006 MW | Net: 1000 MW | Q_eng: 5.5
 NOTE: C220103 coil cost uses framework defaults (wound-coil calibration — LOWER BOUND;
       3D non-planar manufacturing premium not modeled; see Key Assumptions #3 and sweep)
 NOTE: Framework calibrated to ARIES-CS (QA stellarator); Stellaris is QI — topology
       difference may affect C220103 coil account; direction of bias unknown. (Assumption #13)
-NOTE: CAS22 ($3142 M) contains coils at C220103 and heating at C220104.
-      CAS21 ($930 M) = Buildings only, per ARIES CAS20X convention.
+NOTE: CAS22 ($5038 M) contains coils at C220103 and heating at C220104.
+      CAS21 ($679 M) = Buildings only, per ARIES CAS20X convention.
       CAS21 rated 'Small +' vs. HTS compact tokamak reference (R0≈3–4 m) due to larger
       reactor building footprint at R0≈13 m (partially offset by Gundremmingen site reuse).
       Source: analysis.md §7, CAS account structure note; feedback.md CF-CAS21.
@@ -16,25 +16,25 @@ NOTE: CAS22 ($3142 M) contains coils at C220103 and heating at C220104.
 Code     Account                              M$
 ------------------------------------------------
 CAS10    Preconstruction                    18.5
-CAS21    Buildings                         929.7
-CAS22    Reactor Plant Equipment          3141.6
+CAS21    Buildings                         679.2
+CAS22    Reactor Plant Equipment          5037.9
 CAS23    Turbine Plant                     241.9
 CAS24    Electrical Plant                  103.0
 CAS25    Miscellaneous                      62.7
-CAS26    Heat Rejection                     41.8
+CAS26    Heat Rejection                    119.4
 CAS27    Special Materials                  15.0
 CAS28    Digital Twin                        5.0
 CAS29    Contingency                         0.0
-CAS30    Indirect Costs                   1210.8
+CAS30    Indirect Costs                   1670.4
 CAS40    Owner's Costs                      39.0
-CAS50    Supplementary                     380.9
-CAS60    IDC                              1748.5
-CAS70    O&M (annualized)                  178.8
-CAS80    Fuel (annualized)                   1.4
-CAS90    Financial                         639.7
+CAS50    Supplementary                     459.0
+CAS60    IDC                              2387.2
+CAS70    O&M (annualized)                  183.6
+CAS80    Fuel (annualized)                   1.0
+CAS90    Financial                         873.4
 ------------------------------------------------
-         Total Capital                    7938.2
-NOTE: CAS70 = DEFAULT (178.8 M$/yr annualized) — O&M structural uplift
+         Total Capital                   10838.4
+NOTE: CAS70 = DEFAULT (183.6 M$/yr annualized) — O&M structural uplift
       vs. HTS compact tokamak reference NOT modeled. Port-access constraint from
       modular stellarator coil geometry implies higher blanket/divertor maintenance
       cost (direction: +; magnitude: unknown). See analysis.md §7 O&M delta paragraph
@@ -43,52 +43,52 @@ NOTE: CAS70 = DEFAULT (178.8 M$/yr annualized) — O&M structural uplift
 CAS22 Sub-accounts (Reactor Plant Equipment) — Scenario A (H4-true):
 Code         Account                                  M$  Note
 ------------------------------------------------------------------------------
-C220101      First Wall + WCLL Blanket             556.0  [DEFAULT]
-C220102      Shield                                425.0  [DEFAULT]
-C220103      Coils (3D HTS — LOWER BOUND)          516.1  [DEFAULT — LOWER BOUND; 3D manufacturing premium not modeled]
-C220104      Heating System (ECRH, 5 MW)           353.2  [DEFAULT]
+C220101      First Wall + WCLL Blanket             584.2  [DEFAULT]
+C220102      Shield                                446.5  [DEFAULT]
+C220103      Coils (3D HTS — LOWER BOUND)         2322.5  [DEFAULT — LOWER BOUND; 3D manufacturing premium not modeled]
+C220104      Heating System (ECRH, 5 MW)           150.0  [DEFAULT]
 C220105      Primary Structure                      30.8  [DEFAULT]
 C220106      Vacuum Vessel                         108.3  [DEFAULT]
 C220107      Power Supplies                         92.1  [DEFAULT]
-C220108      Divertor (island divertor)            107.7  [DEFAULT]
+C220108      Divertor (island divertor)            112.2  [DEFAULT]
 C220109      DEC                                     0.0  [DEFAULT]
-C220111      Installation                          329.7  [DEFAULT]
+C220111      Installation                          561.7  [DEFAULT]
 C220112      Isotope Separation                      0.0  [DEFAULT]
-C220200      Coolant (WCLL circuits)               204.8  [DEFAULT]
-C220300      Aux Cooling                            33.6  [DEFAULT]
-C220400      Rad Waste                               6.3  [DEFAULT]
+C220200      Coolant (WCLL circuits)               206.6  [DEFAULT]
+C220300      Aux Cooling                            33.9  [DEFAULT]
+C220400      Rad Waste                               6.9  [DEFAULT]
 C220500      Fuel Handling (tritium)               120.0  [DEFAULT]
 C220600      Other Equipment                        11.5  [DEFAULT]
-C220700      I&C                                    80.5  [DEFAULT]
+C220700      I&C                                    84.9  [DEFAULT]
 ------------------------------------------------------------------------------
-C220000      TOTAL                                3141.6
+C220000      TOTAL                                5037.9
 
 Scenario B: H4-false (50 MW sustained ECRH; per Stellaris Table 3 stated value)
-  LCOE (initial-build):        110.2 $/MWh | Overnight: 8250 $/kW
-  LCOE (replacement-incl.):    114.7 $/MWh [same coil cost, DEFAULT C220103]
-  Fusion: 2939 MW | Net: 1000 MW | Q_eng: 4.2
-  LCOE delta vs. Scenario A (initial-build): +3.8 $/MWh
+  LCOE (initial-build):        140.6 $/MWh | Overnight: 11105 $/kW
+  LCOE (replacement-incl.):    160.7 $/MWh [same coil cost, DEFAULT C220103]
+  Fusion: 3195 MW | Net: 1000 MW | Q_eng: 4.2
+  LCOE delta vs. Scenario A (initial-build): +3.4 $/MWh
   Source: stellaris-design-details.md Table 3 (H&CD column); analysis.md §2, H4
 
 Scenario H2a: Higher-Beta QI (4% Beta, R0≈11.6 m, Smaller Machine) [next-gen QI, not Stellaris v1]
-  LCOE (initial-build):        100.8 $/MWh | Overnight: 7585 $/kW
-  LCOE (replacement-incl.):    105.3 $/MWh [DEFAULT C220103]
-  Fusion: 2768 MW | Net: 1000 MW | Q_eng: 5.5
-  LCOE delta vs. Scenario A (initial-build): -5.6 $/MWh
+  LCOE (initial-build):        131.4 $/MWh | Overnight: 10469 $/kW
+  LCOE (replacement-incl.):    151.5 $/MWh [DEFAULT C220103]
+  Fusion: 3006 MW | Net: 1000 MW | Q_eng: 5.5
+  LCOE delta vs. Scenario A (initial-build): -5.8 $/MWh
   Source: analysis.md §2, H2a; arxiv-2512-08825.md (CIEMAT-QI4X beta ceiling 4%)
   NOTE: C220103 coil cost still LOWER BOUND; 3D premium not modeled in this scenario.
   NOTE: This scenario represents a future QI design lineage, NOT a Stellaris v1 variant.
         Do not interpret H2a as the upper end of a Stellaris design range.
 
 Coil cost multiplier sweep (C220103 3D manufacturing premium):
-Base C220103 (framework default): 516 M$ (wound-coil calibration)
+Base C220103 (framework default): 2322 M$ (wound-coil calibration)
 Source: analysis.md §7 (C220103 row); Brown (2018) IEEE TPS; analysis.md §2, H1
 Multiplier       C220103 (M$)   Init. LCOE   Repl $/MWh   Incl.Repl LCOE
 ------------------------------------------------------------------------
-  DEFAULT                 516       106.4         4.5           110.8
-  1.5×                    774       110.9         6.7           117.6
-  2.5×                   1290       120.0        11.2           131.1
-  5.0×                   2580       142.6        22.3           165.0
+  DEFAULT                2322       137.2        20.1           157.3
+  1.5×                   3484       157.7        30.1           187.8
+  2.5×                   5806       198.5        50.2           248.7
+  5.0×                  11612       300.5       100.4           400.9
   (1.5× = optimistic; 5× = pessimistic; SMC demo 2027 = first data point)
   Replacement-inclusive LCOE is the economically complete figure for cross-concept
   comparison. The initial-build figure does not appear in the compact HTS tokamak
@@ -102,9 +102,9 @@ CF-F1: Lower bound (85%) calibrated to ~1–4 yr blanket replacement interval
        (Queral et al. 2025; arxiv-2501-04640.md abstract)
 CF         Init. LCOE   Repl $/MWh   Incl.Repl LCOE  Note
 ------------------------------------------------------------------------
-  85%         109.7         4.6           114.3  floor (maintenance limits; ~1-yr replacement interval)
-  88%         106.4         4.5           110.8  central — Helios analogue
-  95%          99.3         4.1           103.5  optimistic — disruption-free
+  85%         141.7        20.8           162.5  floor (maintenance limits; ~1-yr replacement interval)
+  88%         137.2        20.1           157.3  central — Helios analogue
+  95%         128.0        18.6           146.6  optimistic — disruption-free
   UNCERTAIN: Proxima has not published a Stellaris capacity factor target.
   The 85–95% range comes from the Helios analogue (88%), W7-X experimental run-time
   (>97%, plant lower due to scheduled maintenance), and the disruption-free argument.
@@ -120,16 +120,16 @@ CF         Init. LCOE   Repl $/MWh   Incl.Repl LCOE  Note
   comparable CF estimate. Source: feedback.md CF-H2; analysis.md §2, H2.
 
 O&M multiplier sweep (CAS70 structural uplift — F-2 finding):
-Base CAS70 (framework default): 178.8 M$/yr → 23.2 $/MWh LCOE contribution
+Base CAS70 (framework default): 183.6 M$/yr → 23.8 $/MWh LCOE contribution
 NOTE: DEFAULT — O&M structural uplift vs. HTS compact tokamak reference not modeled.
       Port-access constraint from modular coil geometry implies higher maintenance cost
       (direction: +; magnitude: unknown). Source: analysis.md §7; feedback.md F-2.
 NOTE: CAS70 is not a supported cost_overrides key; LCOE delta computed analytically.
 Multiplier      CAS70 (M$/yr)   OM $/MWh   Total LCOE   Repl $/MWh   Incl.Repl LCOE
 --------------------------------------------------------------------------------
-  DEFAULT               178.8       23.2       106.4         4.5           110.8
-  1.5×                  268.2       34.8       118.0         4.5           122.4
-  2.0×                  357.7       46.4       129.6         4.5           134.0
+  DEFAULT               183.6       23.8       137.2        20.1           157.3
+  1.5×                  275.4       35.7       149.2        20.1           169.2
+  2.0×                  367.2       47.6       161.1        20.1           181.2
   (1× = framework default; 1.5× = moderate uplift; 2× = high uplift)
   Magnitude is truly unknown — no stellarator reactor O&M cost models published.
   O&M is the second-largest ongoing cost after financial charges; the default is a
@@ -142,10 +142,10 @@ Elasticity confirmed at +0.40 by autodiff below; ~4% LCOE per additional year
 Source: analysis.md §2 (construction_time sensitivity parameter); feedback.md F-3
 Time (yr)      Init. LCOE   Repl $/MWh   Incl.Repl LCOE  Note
 ------------------------------------------------------------------------------
-  7                101.1         4.5           105.6  optimistic — ARC-class compact tokamak schedule analogue
-  8                106.4         4.5           110.8  framework default (mfe_stellarator.yaml) ← central
-  10               117.8         4.5           122.2  pessimistic — first-of-kind 13 m machine with 3D coil install
-  12               130.5         4.5           135.0  worst-case — schedule slippage analogous to large fission projects
+  7                130.2        20.1           150.3  optimistic — ARC-class compact tokamak schedule analogue
+  8                137.2        20.1           157.3  framework default (mfe_stellarator.yaml) ← central
+  10               152.7        20.1           172.7  pessimistic — first-of-kind 13 m machine with 3D coil install
+  12               169.9        20.1           190.0  worst-case — schedule slippage analogous to large fission projects
   UNCERTAIN: No Stellaris construction schedule published; 8-yr default is a
   plausible starting estimate for a 13 m machine with complex 3D coil geometry.
   The financial expression of the scale penalty (Challenge 2) propagates into IDC
@@ -334,30 +334,35 @@ Sensitivity (elasticity = %LCOE / %param) — Scenario A (H4-true)
 ------------------------------------------------
 
 Engineering levers:
-  availability                 -0.8943
-  construction_time_yr         +0.4046
-  elon                         +0.3105
-  R0                           +0.3105
-  eta_th                       -0.2059
-  blanket_t                    +0.2011
-  plasma_t                     +0.1960
-  ht_shield_t                  +0.0452
-  p_coils                      +0.0447
-  vessel_t                     +0.0220
-  fuel_recovery                -0.0162
-  p_cool                       +0.0161
-  f_sub                        +0.0148
-  structure_t                  +0.0089
-  p_cryo                       +0.0043
-  eta_pin                      -0.0040
-  p_trit                       +0.0040
-  p_pump                       +0.0040
-  p_input                      +0.0040
-  p_house                      +0.0016
-  mn                           -0.0015
-  burn_fraction                -0.0009
-  eta_p                        -0.0000
-  eta_de                       +0.0000
+  availability                 -0.9146
+  r_coil                       +0.6780
+  construction_time_yr         +0.4242
+  b_max                        +0.3390
+  elon                         +0.2518
+  R0                           +0.2518
+  eta_th                       -0.2328
+  blanket_t                    +0.1635
+  plasma_t                     +0.1591
+  mn                           -0.0383
+  ht_shield_t                  +0.0368
+  p_coils                      +0.0313
+  p_ecrh                       +0.0219
+  vessel_t                     +0.0171
+  p_cool                       +0.0113
+  f_sub                        +0.0104
+  structure_t                  +0.0070
+  p_cryo                       +0.0033
+  p_trit                       +0.0028
+  eta_pin                      -0.0028
+  p_pump                       +0.0028
+  p_input                      +0.0028
+  p_house                      +0.0011
+  eta_p                        -0.0001
+  dd_f_T                       +0.0000
+  dd_f_He3                     +0.0000
+  dhe3_dd_frac                 +0.0000
+  dhe3_f_T                     +0.0000
+  dhe3_f_He3                   +0.0000
   B                            +0.0000
   T_e                          +0.0000
   n_e                          +0.0000
@@ -368,5 +373,5 @@ Engineering levers:
   tau_ratio                    +0.0000
 
 Financial:
-  interest_rate                +0.7178
-  inflation_rate               +0.0467
+  interest_rate                +0.7667
+  inflation_rate               +0.0360
