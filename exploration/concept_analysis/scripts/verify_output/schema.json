@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Canonical efficiency drift report (per concept)",
+  "description": "Output of verify_canonical_params.py for one model_setup.py file. Produced by Claude (Sonnet by default) and parsed back for the drift comparator. Schema-first design: each field has a deterministic structural shape so cross-run diffs are interpretable despite LLM phrasing variance.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "concept_id",
+    "energy_capture",
+    "canonical_eta_th",
+    "canonical_eta_de",
+    "observed_eta_th",
+    "observed_eta_de",
+    "deviations",
+    "narrative_contradictions",
+    "missing_kwargs",
+    "scenario_sweep_findings",
+    "confidence_notes",
+    "prompt_version"
+  ],
+  "properties": {
+    "concept_id": {
+      "type": "string",
+      "description": "Directory name under analyses/, e.g. '11-magnetic-mirror'."
+    },
+    "energy_capture": {
+      "type": "string",
+      "description": "Energy Capture value from table.csv for this concept."
+    },
+    "canonical_eta_th": {
+      "type": ["number", "null"],
+      "description": "Expected eta_th from lib/canonical_params._CANONICAL_EFFICIENCIES, or null when the energy_capture key is unrecognized."
+    },
+    "canonical_eta_de": {
+      "type": ["number", "null"],
+      "description": "Expected eta_de from lib/canonical_params._CANONICAL_EFFICIENCIES, or null when the energy_capture key is unrecognized."
+    },
+    "observed_eta_th": {
+      "type": ["array", "null"],
+      "description": "Each canonical (non-sweep) eta_th kwarg/constant assignment Claude found in the file. Null if no canonical eta_th line exists (e.g., custom-physics concepts without costingfe.forward()).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["line", "value", "context"],
+        "properties": {
+          "line": {"type": "integer", "description": "1-indexed line number."},
+          "value": {"type": "number", "description": "Numeric value found on that line."},
+          "context": {
+            "type": "string",
+            "enum": ["thermal-cycle", "overall-plant", "DEC", "blended", "other", "unclear"],
+            "description": "What the surrounding comments describe the value as."
+          }
+        }
+      }
+    },
+    "observed_eta_de": {
+      "type": ["array", "null"],
+      "description": "Each canonical (non-sweep) eta_de / eta_dec kwarg/constant assignment Claude found. Null if no eta_de line exists.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["line", "value", "context"],
+        "properties": {
+          "line": {"type": "integer"},
+          "value": {"type": "number"},
+          "context": {
+            "type": "string",
+            "enum": ["DEC", "EM-recovery", "alpha-channeling", "other", "unclear"]
+          }
+        }
+      }
+    },
+    "deviations": {
+      "type": "array",
+      "description": "Each '# DEVIATION:' annotation Claude found on an eta_th / eta_de line.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["axis", "line", "value", "has_source_citation"],
+        "properties": {
+          "axis": {"type": "string", "enum": ["eta_th", "eta_de"]},
+          "line": {"type": "integer"},
+          "value": {"type": "number"},
+          "has_source_citation": {"type": "boolean", "description": "True if the DEVIATION comment includes a Source: or §reference pointer."},
+          "rationale_summary": {"type": "string", "description": "Optional one-line paraphrase of the deviation rationale."}
+        }
+      }
+    },
+    "narrative_contradictions": {
+      "type": "array",
+      "description": "Cases where a kwarg value contradicts its own surrounding sourcing/narrative (e.g. eta_th=0.55 next to a 'MARS Rankine ~36%' comment block).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["axis", "line", "observed_value", "narrative_value_or_description", "severity"],
+        "properties": {
+          "axis": {"type": "string", "enum": ["eta_th", "eta_de"]},
+          "line": {"type": "integer"},
+          "observed_value": {"type": "number"},
+          "narrative_value_or_description": {"type": "string"},
+          "severity": {"type": "string", "enum": ["high", "medium", "low"]}
+        }
+      }
+    },
+    "missing_kwargs": {
+      "type": "array",
+      "description": "Kwargs implied by Energy Capture but absent from the file. For Hybrid concepts both eta_th and eta_de should be set; for Direct concepts eta_de must be set (eta_th may legitimately be absent if costingfe's auto-zero applies via pulsed_conversion=INDUCTIVE_DEC).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["axis", "reasoning"],
+        "properties": {
+          "axis": {"type": "string", "enum": ["eta_th", "eta_de"]},
+          "reasoning": {"type": "string"}
+        }
+      }
+    },
+    "scenario_sweep_findings": {
+      "type": "array",
+      "description": "Findings for eta_th / eta_de values sitting inside scenario sweep blocks (dict literals, lists, loops keyed by Conservative/Optimistic/Pessimistic/etc.). Sweep values are EXPECTED to differ from canonical and MUST NOT be flagged as drift. Flag only contradictions WITHIN the sweep — e.g. 'Optimistic' value equal to the 'Conservative' value (likely the standardizer flattened it).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["axis", "line", "value", "scenario_label", "concern"],
+        "properties": {
+          "axis": {"type": "string", "enum": ["eta_th", "eta_de"]},
+          "line": {"type": "integer"},
+          "value": {"type": "number"},
+          "scenario_label": {"type": "string", "description": "Conservative/Optimistic/etc."},
+          "concern": {"type": "string", "description": "Why this sweep value is suspect (e.g., 'standardized from 0.45 to 0.35, but scenario name is Optimistic — likely flattened by standardizer')."}
+        }
+      }
+    },
+    "confidence_notes": {
+      "type": "array",
+      "description": "Anything else Claude wants to surface — ambiguity, uncertainty about Energy Capture mapping, unusual structure, etc.",
+      "items": {"type": "string"}
+    },
+    "prompt_version": {
+      "type": "string",
+      "description": "Version string of the prompt template used. Increment when the prompt is changed in a way that affects output structure."
+    }
+  }
+}

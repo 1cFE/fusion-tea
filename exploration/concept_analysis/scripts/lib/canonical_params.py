@@ -16,54 +16,84 @@ from __future__ import annotations
 import re
 
 # ---------------------------------------------------------------------------
-# Canonical η_th by energy capture type
+# Canonical (η_th, η_de) by energy capture type
 # ---------------------------------------------------------------------------
+# Each entry is a (eta_th, eta_de) tuple matched to costingfe's actual parameter
+# semantics: eta_th is thermal-cycle-only (drives p_the = eta_th * p_th), eta_de
+# is DEC-only (drives p_dee = f_dec * eta_de * p_transport). Costingfe adds the
+# two channels: p_et = p_the + p_dee. Conflating them under a single canonical
+# (the pre-2026-05 shape) caused the eta_th double-count bug fixed by issue #30.
 
-_CANONICAL_ETA_TH: dict[str, float] = {
-    # Thermal cycles
-    "thermal (steam) saturated": 0.32,
-    "thermal (steam) superheated": 0.35,
-    "thermal (steam) supercritical": 0.42,
-    "thermal (steam)": 0.35,            # default to superheated
-    "thermal (sco2)": 0.48,
-    "thermal (helium brayton)": 0.45,
-    "thermal (combined cycle)": 0.50,
-    "thermal (unspecified)": 0.35,
-    # Direct / hybrid
-    "hybrid (thermal + direct)": 0.55,
-    "direct (inductive)": 0.85,
-    "direct (charged particle)": 0.70,
-    # Pulsed / unusual
-    "pulsed power implosion": 0.30,
-    "projectile impact": 0.30,
-    "tbd": 0.35,
-    "unknown": 0.35,
+_CANONICAL_EFFICIENCIES: dict[str, tuple[float, float]] = {
+    # Thermal cycles: cycle-only, no DEC channel.
+    "thermal (steam)":            (0.35, 0.0),
+    "thermal (sco2)":             (0.48, 0.0),
+    "thermal (unspecified)":      (0.35, 0.0),
+    # Hybrid: both a thermal blanket cycle AND a DEC channel on end-loss alphas.
+    "hybrid (thermal + direct)":  (0.35, 0.54),
+    # Direct: no thermal cycle; DEC carries the entire useful-electric channel.
+    "direct (inductive)":         (0.0,  0.85),
+    "direct (charged particle)":  (0.0,  0.70),
+    # Unspecified / placeholder: default to a steam-Rankine thermal cycle.
+    "tbd":                        (0.35, 0.0),
+    "unknown":                    (0.35, 0.0),
 }
 
 
+def _lookup_efficiencies(energy_capture: str) -> tuple[float, float]:
+    """Look up the (eta_th, eta_de) tuple for an Energy Capture key.
+
+    Case- and whitespace-insensitive. Falls back to a parenthetical-stripped
+    form if the literal key isn't found (e.g. "tbd (whatever)" → "tbd").
+    """
+    key = energy_capture.strip().lower()
+    if key in _CANONICAL_EFFICIENCIES:
+        return _CANONICAL_EFFICIENCIES[key]
+    base = re.sub(r"\s*\([^)]*\)\s*", "", key).strip()
+    if base in _CANONICAL_EFFICIENCIES:
+        return _CANONICAL_EFFICIENCIES[base]
+    raise ValueError(
+        f"Unknown energy capture type: {energy_capture!r}. "
+        f"Valid keys: {sorted(_CANONICAL_EFFICIENCIES.keys())}"
+    )
+
+
 def canonical_eta_th(energy_capture: str) -> float:
-    """Return the canonical thermal-to-electric efficiency for an energy capture type.
+    """Return the canonical thermal-cycle efficiency for an energy capture type.
 
-    The argument should match the ``Energy Capture`` column from ``table.csv``
-    (case- and whitespace-insensitive). Returns the canonical η_th defined in
-    ``prompt_templates/config/scoring_framework.md``.
+    Returns the eta_th component of the (eta_th, eta_de) tuple from
+    ``_CANONICAL_EFFICIENCIES``. This is the *cycle* efficiency that costingfe
+    multiplies by the thermal-blanket heat load (``p_the = eta_th * p_th``) —
+    NOT an overall plant efficiency. Direct-conversion concepts return 0.0
+    because they have no thermal cycle; their useful-electric channel comes
+    from ``canonical_eta_de``.
 
-    A model file may use a non-canonical value, but it must document the
-    deviation explicitly (see scoring_framework.md "Justified deviations").
+    Argument matches the ``Energy Capture`` column from ``table.csv``
+    (case/whitespace insensitive). See ``scoring_framework.md`` §"Energy
+    capture efficiencies (η_th, η_de)" for the full policy, including the
+    justified-deviation rule.
 
     Raises ``ValueError`` if the energy capture type is not recognized.
     """
-    key = energy_capture.strip().lower()
-    if key in _CANONICAL_ETA_TH:
-        return _CANONICAL_ETA_TH[key]
-    # Tolerate minor variations: strip parenthetical content for fallback
-    base = re.sub(r"\s*\([^)]*\)\s*", "", key).strip()
-    if base in _CANONICAL_ETA_TH:
-        return _CANONICAL_ETA_TH[base]
-    raise ValueError(
-        f"Unknown energy capture type: {energy_capture!r}. "
-        f"Valid keys: {sorted(_CANONICAL_ETA_TH.keys())}"
-    )
+    return _lookup_efficiencies(energy_capture)[0]
+
+
+def canonical_eta_de(energy_capture: str) -> float:
+    """Return the canonical Direct Energy Conversion (DEC) efficiency.
+
+    Returns the eta_de component of the (eta_th, eta_de) tuple from
+    ``_CANONICAL_EFFICIENCIES``. This is the DEC channel efficiency that
+    costingfe multiplies by the charged-particle end-loss transport
+    (``p_dee = f_dec * eta_de * p_transport``). Pure-thermal concepts return
+    0.0 because they have no DEC channel.
+
+    Argument matches the ``Energy Capture`` column from ``table.csv``
+    (case/whitespace insensitive). See ``scoring_framework.md`` §"Energy
+    capture efficiencies (η_th, η_de)" for the full policy.
+
+    Raises ``ValueError`` if the energy capture type is not recognized.
+    """
+    return _lookup_efficiencies(energy_capture)[1]
 
 
 # ---------------------------------------------------------------------------

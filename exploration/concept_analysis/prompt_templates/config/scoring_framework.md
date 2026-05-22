@@ -302,33 +302,61 @@ unless concept-specific evidence justifies a deviation. **Document any deviation
 explicitly** in the model file and in synthesis Section 2 (Modeling Approach),
 including the source of the alternative value.
 
-### Thermal-to-electric conversion efficiency (η_th)
+### Energy capture efficiencies (η_th, η_de)
 
-Look up the canonical η_th for the concept's energy-capture category:
+costingfe's physics layer distinguishes two efficiency channels and adds them:
 
-| Energy Capture (per `table.csv`) | Canonical η_th | Reasoning |
-|----------------------------------|----------------|-----------|
-| Thermal (steam) — saturated cycle | 0.32 | Coal-plant baseline; modest temperature |
-| Thermal (steam) — superheated, ≤500°C | 0.35 | Standard fusion baseline (most concepts) |
-| Thermal (steam) — supercritical, ~600°C | 0.42 | ARC-class advanced steam |
-| Thermal (sCO₂ Brayton) | 0.48 | High-T closed-loop, demonstrated 10 MWe pilots |
-| Thermal (helium Brayton) | 0.45 | GT-MHR-class design point |
-| Thermal (combined cycle, Brayton-Rankine) | 0.50 | Best thermal achievable |
-| Thermal (unspecified) | 0.35 | Default to superheated steam unless concept specifies |
-| Hybrid (thermal + direct) | 0.55 | Partial DEC; partial thermal |
-| Direct (inductive / EM compression) | 0.85 | Helion-style compressed-FRC EM recovery |
-| Direct (charged particle, ICC, alpha collection) | 0.70 | TAE ICC, mirror DEC; patent-stage but consistent target |
-| Pulsed power implosion | 0.30 | Inertial pulse loss; conservative |
-| Projectile impact | 0.30 | Same |
-| TBD / Unknown | 0.35 | Default to superheated steam |
+```
+p_the = eta_th * p_th                  # thermal-cycle heat load → electric
+p_dee = f_dec * eta_de * p_transport   # DEC end-loss channel → electric
+p_et  = p_the + p_dee                  # total useful electric power
+```
 
-**Justified deviations**: A concept may use a non-canonical η_th if (a) the
-underlying physics forces derating (e.g. a p-B11 plasma whose bremsstrahlung
-heat is partially absorbed by walls and contributes thermally — 06-magnetic-mirror's
-η_th=0.20 reflects this), or (b) the concept's published design specifies a
-specific cycle parameter from peer-reviewed sources. In both cases, the model
-file must include a comment identifying the deviation, the source, and the
-deviation magnitude vs. the canonical value.
+The canonical lookup therefore returns a **(η_th, η_de) pair** per Energy Capture
+category — η_th is the thermal-cycle efficiency only (NOT an overall plant
+efficiency); η_de is the DEC channel efficiency. Conflating them under a single
+value (the pre-2026-05 shape) double-counted the DEC contribution and silently
+under-stated LCOE for hybrid and direct concepts by 1-31%. See
+[issue #30](https://github.com/1cFE/fusion-tea/issues/30) and
+`.project/active/eta_th-double-count-fix/` for the fix details.
+
+| Energy Capture (per `table.csv`) | Canonical (η_th, η_de) | Reasoning |
+|----------------------------------|-------------------------|-----------|
+| Thermal (steam) | (0.35, 0.0) | Superheated-steam Rankine; no DEC channel |
+| Thermal (sCO₂) | (0.48, 0.0) | High-T closed-loop Brayton; no DEC channel |
+| Thermal (unspecified) | (0.35, 0.0) | Default to superheated steam; no DEC channel |
+| Hybrid (thermal + direct) | (0.35, 0.54) | Steam cycle on neutrons/wall load + MARS-class gridless DEC on charged-particle end loss |
+| Direct (inductive) | (0.0, 0.85) | Helion-style compressed-FRC EM recovery; no thermal cycle |
+| Direct (charged particle) | (0.0, 0.70) | TAE ICC, mirror DEC, alpha collection; no thermal cycle |
+| TBD / Unknown | (0.35, 0.0) | Default to superheated steam |
+
+**Removed categories** (no longer in `table.csv`, no canonical defined):
+`Thermal (steam) saturated`, `Thermal (steam) superheated`, `Thermal (steam) supercritical`,
+`Thermal (helium Brayton)`, `Thermal (combined cycle)`, `Pulsed power implosion`,
+`Projectile impact`. If a concept lands in `table.csv` with one of these labels, decide
+whether to fold it into one of the canonical-table rows above or to add a new row here.
+
+**Justified deviations**: A concept may use a non-canonical (η_th, η_de) pair —
+**on either axis independently** — when one of the following holds:
+- (a) The underlying physics forces a derating on one channel only. Worked
+  example: `06-magnetic-mirror` is Direct (charged particle), canonical
+  `(0.0, 0.70)`. Bremsstrahlung is partially absorbed by walls and contributes
+  thermally (~15-25% of fusion power), so the concept legitimately raises
+  η_th above zero (`eta_th=0.20`) while keeping η_de canonical. The model
+  file annotates the η_th line with `# DEVIATION:` and cites both
+  `scoring_framework.md §"Justified deviations"` and the original physics
+  derivation (`feedback_eta_th/06-magnetic-mirror.md §F-1`).
+- (b) The concept's published design specifies a specific cycle parameter
+  from peer-reviewed sources (e.g. an MARS-class gridless DEC measurement
+  citing 0.54 from `MARS 1983` for a concept that explicitly uses MARS as a
+  point of comparison).
+
+In both cases, the model file must mark the deviating line with
+`# DEVIATION: <one-line rationale>. Source: <file/url>. Canonical: <axis>=<value>.`
+The `# DEVIATION:` annotation is detected by the standardization script and is
+the only thing that protects the line from being rewritten to the canonical.
+Deviations on η_th do not affect standardization of η_de on the same file
+(and vice versa) — the regex passes are independent.
 
 ### Plant availability
 
@@ -432,12 +460,19 @@ strings that appear in `table.csv`. Import them in `model_setup.py`:
 
 ```python
 from lib.canonical_params import (
-    canonical_eta_th, canonical_availability, canonical_mn, canonical_lifetime_yr,
+    canonical_eta_th, canonical_eta_de, canonical_availability, canonical_mn, canonical_lifetime_yr,
 )
-ETA_TH       = canonical_eta_th("Thermal (steam)")                  # → 0.35
-AVAILABILITY = canonical_availability("MCF", "Steady-state", "D-T") # → 0.85
-MN           = canonical_mn("D-T")                                  # → 1.1
-LIFETIME_YR  = canonical_lifetime_yr("D-T")                         # → 30.0
+ETA_TH       = canonical_eta_th("Thermal (steam)")                   # → 0.35  (thermal-cycle only)
+ETA_DE       = canonical_eta_de("Thermal (steam)")                   # → 0.0   (no DEC channel)
+# Hybrid example — both axes nonzero:
+ETA_TH_H     = canonical_eta_th("Hybrid (thermal + direct)")         # → 0.35
+ETA_DE_H     = canonical_eta_de("Hybrid (thermal + direct)")         # → 0.54
+# Direct (charged particle) example — DEC carries the entire useful-electric channel:
+ETA_TH_D     = canonical_eta_th("Direct (charged particle)")         # → 0.0
+ETA_DE_D     = canonical_eta_de("Direct (charged particle)")         # → 0.70
+AVAILABILITY = canonical_availability("MCF", "Steady-state", "D-T")  # → 0.85
+MN           = canonical_mn("D-T")                                   # → 1.1
+LIFETIME_YR  = canonical_lifetime_yr("D-T")                          # → 30.0
 ```
 
 `canonical_availability(confinement_family, operation_mode, fuel)` accepts the
