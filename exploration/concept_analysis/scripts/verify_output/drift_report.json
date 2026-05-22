@@ -1,0 +1,2238 @@
+{
+  "summary": {
+    "counts": {
+      "clean": 5,
+      "drift": 34,
+      "scenario_sweep_concern": 0,
+      "unknown_canonical": 1
+    },
+    "per_concept": [
+      {
+        "concept_id": "04-laser-icf",
+        "energy_capture": "Thermal (steam)",
+        "status": "clean",
+        "flags": []
+      },
+      {
+        "concept_id": "01-hts-compact-tokamak",
+        "energy_capture": "Thermal (steam)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L193 (eta_th, medium): 0.35 vs 'Key Assumption #5 states 'Thermal efficiency: 46% net \u2014 supercritical Rankine at 250 bar / 540\u00b0C' citing arc-power-conversion-studies.md \u00a73.2 Table 15. The docstring also states 'eta_th = 0.46: supercritical Rankine at 250 bar / 540\u00b0C, ARC recommended cycle.' The inline comment '# standardized from 0.46' confirms the pre-standardization value was 0.46.'"
+        ]
+      },
+      {
+        "concept_id": "03-laser-icf-liquid-jet-target",
+        "energy_capture": "TBD",
+        "status": "drift",
+        "flags": [
+          "missing eta_de kwarg: eta_de is absent from the file and not passed to model.forward(). Energy capture is TBD, so the channel split is unresolved. However, canonical_eta_de=0.0 and the concept is modelled as thermal-only (Rankine placeholder), so costingfe's DEC channel would be inert if f_dec defaults to 0. Absence is consistent with canonical intent but the TBD classification means the correct split cannot be confirmed from sources \u2014 the file itself acknowledges the energy capture architecture is a BLOCKING unknown."
+        ]
+      },
+      {
+        "concept_id": "02-acoustic-icf-sonofusion",
+        "energy_capture": "TBD",
+        "status": "drift",
+        "flags": [
+          "missing eta_de kwarg: Energy capture is officially TBD. The model architecture is purely thermal (Rankine D\u2082O steam cycle); C220109 is explicitly set to 0.0 with comment 'NOT APPLICABLE \u2014 thermal cycle only' and no DEC efficiency parameter exists in the dataclass. This is consistent with canonical_eta_de = 0.0, so no DEC kwarg is expected. However, because energy_capture has not been formally confirmed as Thermal, the absence cannot be fully certified against the spec until the TBD is resolved. If energy_capture is later reclassified as Hybrid, eta_de would need to be added."
+        ]
+      },
+      {
+        "concept_id": "05-planar-coil-stellarator",
+        "energy_capture": "Thermal (steam)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L24 (eta_th, high): 0.35 vs 'Module docstring 'Key deviations from stellarator defaults' bullet states eta_th=0.40 (three-stage steam Rankine at 635\u00b0C; default=0.46 is optimistic) \u2014 the pre-standardization Helios-specific value, not the standardized kwarg of 0.35 now in code'",
+          "narrative contradiction L86 (eta_th, low): 0.35 vs 'Inline comment reads 'slightly below default 0.46 (Helios-specific value)' \u2014 the phrase 'Helios-specific value' implicitly refers to 0.40 (the pre-standardization number); now that 0.35 is in place this comment misdirects any reader trying to reconcile the kwarg with the source'",
+          "narrative contradiction L227 (eta_th, high): 0.35 vs 'Key Assumptions Summary #4 states 'eta_th = 0.40 (three-stage steam Rankine, 635\u00b0C superheated steam, 40.2% gross efficiency)' \u2014 documents the pre-standardization Helios value, directly contradicting the 0.35 kwarg actually passed to model.forward()'"
+        ]
+      },
+      {
+        "concept_id": "06-magnetic-mirror",
+        "energy_capture": "Direct (charged particle)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L118 (eta_de, low): 0.7 vs 'The surrounding comment block cites the historical MARS gridless DEC empirical measurement of ~54% (1983 MARS study) as the sole hardware reference and explicitly states 'eta_de=0.70 is above this empirical reference.' The value exceeds the only cited empirical benchmark by ~30% relative.'"
+        ]
+      },
+      {
+        "concept_id": "10-large-scale-stellarator",
+        "energy_capture": "Thermal (unspecified)",
+        "status": "clean",
+        "flags": []
+      },
+      {
+        "concept_id": "07-maglif",
+        "energy_capture": "Thermal (unspecified)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L124 (eta_th, high): 0.35 vs 'Comment block immediately following the ETA_TH assignment reads 'Using 0.42 per z-ife-sand2006-7148-thermal-cycles.md \u00a73.2 (steel-chamber near-term regime; 0.50 requires C-C composite chambers not yet commercially available)' \u2014 the value was standardized from 0.42 to 0.35 but this sourcing clause was not updated and now directly contradicts the assigned value'",
+          "narrative contradiction L45 (eta_th, high): 0.35 vs 'Module docstring iter-10 section states 'ETA_TH re-classified as Thermal (combined cycle, Brayton-Rankine); retained at 0.42 (steel-chamber near-term regime) as a justified deviation from the canonical 0.50' \u2014 the docstring records the pre-standardization state and makes no mention of 0.35'",
+          "narrative contradiction L379 (eta_th, medium): 0.35 vs 'KEY ASSUMPTIONS SUMMARY print block states 'Thermal eff.: 42% (combined Brayton-Rankine, steel chamber; C-C composite could reach 50% but not yet commercial)' \u2014 the printed human-readable summary still advertises the pre-standardization value'",
+          "narrative contradiction L662 (eta_th, medium): 0.35 vs 'ETA_TH \u00d7 ETA_PIN scenario matrix header print states 'Baseline: 0.42 (steel chamber, Z-IFE \u00a73.2 justified deviation)' \u2014 the printed label names 0.42 as the baseline, contradicting the actual canonical constant of 0.35 that feeds all forward calls'"
+        ]
+      },
+      {
+        "concept_id": "12-levitated-dipole",
+        "energy_capture": "Thermal (unspecified)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L93 (eta_th, medium): 0.35 vs 'Docstring at lines 95-99 states '40% is consistent with sCO2 Brayton or advanced steam Rankine' \u2014 referencing the pre-standardization value of 0.40. The field was standardized down to 0.35 but the docstring body was not updated, so the narrative endorses 0.40 while the model runs at 0.35.'"
+        ]
+      },
+      {
+        "concept_id": "09-qi-stellarator-hts",
+        "energy_capture": "Thermal (unspecified)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L254 (eta_th, medium): 0.35 vs '0.38 \u2014 the comment block immediately above eta_th=0.35 (lines ~248\u2013253) explicitly states 'Gross thermal efficiency: ~38% for steam Rankine at EUROFER97 temperature limit' and 'Stellaris (EUROFER97, 550\u00b0C limit \u2192 ~500\u00b0C steam): ~38%'; the docstring Key Deviations section states 'eta_th = 0.38 (EUROFER97-constrained steam Rankine; lower than ARC's 0.46)'; the docstring Thermal efficiency section also states 'Gross thermal efficiency \u2248 38%'; Key Assumption #4 in the printed output states '38% gross''"
+        ]
+      },
+      {
+        "concept_id": "14-magnetized-target-fusion-pneumatic-compression",
+        "energy_capture": "Thermal (steam)",
+        "status": "drift",
+        "flags": [
+          "missing eta_de kwarg: Energy capture is Thermal (steam); eta_de is absent from _SHARED_KWARGS. This is acceptable because f_dec=0.0 is explicitly set, making the DEC channel inert. No contradiction with canonical_eta_de=0.0."
+        ]
+      },
+      {
+        "concept_id": "15-sheared-flow-stabilized-z-pinch",
+        "energy_capture": "Thermal (steam)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L138 (eta_th, low): 0.35 vs 'Docstring above the field (lines ~141-145) states '38% is plausible for LiPb-cooled Rankine' and 'cycle design unpublished; 38% is plausible'. The inline standardization comment also shows the pre-standardization value was 0.38. The narrative consistently points to 0.38 as the physically motivated estimate, while 0.35 is the standardized canonical value.'"
+        ]
+      },
+      {
+        "concept_id": "16-muon-catalyzed-fusion",
+        "energy_capture": "Thermal (unspecified)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L193 (eta_th, low): 0.35 vs 'Docstring on eta_th field cites 'High-efficiency sCO\u2082 Brayton: ~45\u201352% demonstrated at 600\u2013800\u00b0C' as the engineering basis, suggesting the original author intended ~0.50. The standardization comment confirms it was changed from 0.5. The docstring narrative was not updated to match the standardized value, leaving a mismatch between the code value (0.35) and the cited performance range (45\u201352%).'"
+        ]
+      },
+      {
+        "concept_id": "08-frc-w-direct-conversion",
+        "energy_capture": "Direct (inductive)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L265 (eta_th, high): 0.85 vs 'Comment at line 283 states '0.90 adopted as central estimate'; module docstring (line 33) states 'eta_th=0.90 to represent the direct electromagnetic conversion efficiency'; docstring line 59 lists 'eta_th = 0.90 (vs 0.40)'; Key Assumptions print block hardcodes {0.90:.0%}. The kwarg value 0.85 is inconsistent with all four narrative references to 0.90.'",
+          "unsourced DEVIATION L265 (eta_th): value 0.85 lacks Source/\u00a7 citation",
+          "missing eta_de kwarg: Energy Capture is Direct (inductive); eta_de is entirely absent from model.forward(). The DEVIATION annotation itself states the correct structural fix requires eta_de=0.85 passed alongside pulsed_conversion=INDUCTIVE_DEC and f_dec. Until the refactor lands, eta_de is structurally missing and its role is incorrectly proxied through eta_th."
+        ]
+      },
+      {
+        "concept_id": "17b-laser-icf-fast-ignition",
+        "energy_capture": "Thermal (steam)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L73 (eta_th, medium): 0.35 vs 'Key Assumptions section (line ~259) states 'eta_th = 0.40 (Rankine): confirmed by Focused Energy'. Module docstring (line 14) also states 'eta_th = 0.40: Conventional steam Rankine, explicitly confirmed by Focused Energy'. The inline comment on line 74 says 'standardized from 0.4 per scoring_framework.md', confirming 0.40 was the original sourced value. The standardization comment explains the discrepancy, but the Key Assumptions print block still references 0.40, creating a misleading narrative for readers of the output.'"
+        ]
+      },
+      {
+        "concept_id": "11-magnetic-mirror",
+        "energy_capture": "Hybrid (thermal + direct)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L139 (eta_th, medium): 0.35 vs 'Inline comment immediately following the kwarg (line 139) reads 'MARS 1983 steam Rankine achieved ~36% overall plant efficiency' \u2014 frames eta_th as an overall-plant blended efficiency (the pre-fix interpretation) and cites 36% rather than the kwarg value 0.35'",
+          "narrative contradiction L36 (eta_th, low): 0.35 vs 'Module docstring 'Key deviations' section explicitly states 'eta_th = 0.36' \u2014 numerically stale and not updated when the standardizer changed the kwarg to 0.35'",
+          "narrative contradiction L291 (eta_th, low): 0.35 vs 'Key Assumptions print statement says 'eta_th = 0.36' \u2014 stale value not updated after standardization to 0.35'"
+        ]
+      },
+      {
+        "concept_id": "13-electrostatic-hybrid",
+        "energy_capture": "Thermal (unspecified)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L89 (eta_th, high): 0.35 vs 'thermal_efficiency field docstring states 'HIGH UNCERTAINTY \u2014 baseline uses 12% (thermoelectric scenario)' but the field value is 0.35 after standardization; the docstring was not updated when the default was changed'",
+          "narrative contradiction L30 (eta_th, medium): 0.35 vs 'module-level docstring states 'The baseline default uses Q=10 at \u03b7=12% (above thermoelectric break-even)' but the canonical thermal_efficiency default is now 0.35'",
+          "narrative contradiction L854 (eta_th, low): 0.35 vs 'main() labels the OrbitronPlantParams() default-instance baseline block as '# Q_engineering=10, \u03b7=12%, 1000 modules \u00d7 1 kWe input' but the instantiated OrbitronPlantParams() now defaults thermal_efficiency to 0.35, not 0.12'"
+        ]
+      },
+      {
+        "concept_id": "19-orbital-levitated-dipole",
+        "energy_capture": "Direct (charged particle)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L141 (eta_de, high): 0.7 vs 'The field docstring on the same line states Venetian blind DEC achieved '50\u201365% for non-fusion ions in 1970s experiments' and explicitly labels this an 'UPPER BOUND and likely OPTIMISTIC for 14.7 MeV protons'. The standardized value 0.70 exceeds the cited 50\u201365% upper bound by 5\u201320 percentage points. The narrative further states 'Actual efficiency for 14.7 MeV protons is truly-unknown', making the 0.70 assignment directly contradict the physical sourcing in its own docstring.'",
+          "missing eta_de kwarg: The file uses a concept-specific field named eta_dec rather than the canonical eta_de kwarg. No parameter named eta_de appears anywhere in the file. For Direct (charged particle), eta_de MUST be present; eta_dec serves the same physical role but does not satisfy the canonical costingfe kwarg interface. A future costingfe.forward() integration would require renaming or bridging this field."
+        ]
+      },
+      {
+        "concept_id": "18-p-b11-frc",
+        "energy_capture": "Thermal (steam)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L153 (eta_th, high): 0.35 vs 'The eta_th field docstring (lines ~155-161) states 'Standard steam Rankine at fusion-relevant temperatures: 30\u201335%; using 32%' \u2014 the phrase 'using 32%' implies 0.32, directly contradicting the actual default of 0.35. The same 0.32 figure is echoed in: the module docstring (~line 25, '\u03b7_th=0.32' in the Q_break worked example), the q_plasma field docstring (~line 97, '\u03b7_th=0.32'), the eta_nbi field docstring (~line 148, 'Q_break (steam, f_rad=0.15, \u03b7_th=0.32) \u2248 14.1'), the print_results Branch B label string ('~32% \u03b7'), and the physics preamble print block in main() ('Steam 32%'). The inline comment on line 154 ('# standardized from 0.32 per scoring_framework.md') explains the change but the docstring was not updated.'"
+        ]
+      },
+      {
+        "concept_id": "17a-laser-icf-hybrid-drive",
+        "energy_capture": "Thermal (unspecified)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L215 (eta_th, high): 0.35 vs 'Immediately preceding comment block reads 'He Brayton (45%): HYLIFE-II heritage' and 'Source: HYLIFE-II 1994 \u2014 ~45% thermal efficiency for He Brayton at FLiBe temp', explicitly naming 0.45 as the source value; the inline annotation '# standardized from 0.45' confirms the pre-standardization value was 0.45'",
+          "narrative contradiction L331 (eta_th, high): 0.35 vs 'Inline comment on the canonical forward call kwarg reads '# 0.45 He Brayton; HYLIFE heritage; [an] \u00a72.5 scenario A', naming 0.45 explicitly, but ETA_TH_BRAYTON resolves to 0.35'",
+          "narrative contradiction L221 (eta_th, medium): 0.35 vs 'Surrounding comment reads 'Steam Rankine (33%): implied by Xcimer science page language' and 'steam ~33% is the typical saturated/superheated steam cycle'; inline annotation reads '# standardized from 0.33' confirming pre-standardization value was 0.33'"
+        ]
+      },
+      {
+        "concept_id": "21-spherical-tokamak-hts",
+        "energy_capture": "Thermal (unspecified)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L160 (eta_th, medium): 0.35 vs 'Inline comment in _SHARED_KWARGS reads '# 0.33 \u2014 UNCERTAIN (steam Rankine analogue)'; the docstring (line 31) also records 'eta_th = 0.33' and the body comments at lines 87-88 state 'Central estimate 33% (steam Rankine)'. All three are stale references to the pre-standardization value.'",
+          "narrative contradiction L163 (eta_de, high): 0.0 vs 'Inline comment in _SHARED_KWARGS reads '# 0.85 \u2014 DEFAULT (DEC not used)'. ETA_DE was standardized from 0.85 to 0.00 at line 107, but the dict comment was never updated. The comment value (0.85) directly contradicts the active value (0.00).'"
+        ]
+      },
+      {
+        "concept_id": "22-projectile-icf",
+        "energy_capture": "Thermal (steam)",
+        "status": "clean",
+        "flags": []
+      },
+      {
+        "concept_id": "20b-renaissance-stellarator",
+        "energy_capture": "Thermal (sCO2)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L139 (eta_th, medium): 0.48 vs 'Module docstring 'Key deviations' section (line 34) states 'eta_th: 0.50 (sCO\u2082 combined cycle; PowerCycle.BRAYTON_SCO2 default = 0.47)'; model construction comment (line 54) reads 'eta_th overridden to 0.50 below' \u2014 both stale references to the pre-standardization value of 0.50'"
+        ]
+      },
+      {
+        "concept_id": "20a-type-one-stellarator",
+        "energy_capture": "Thermal (steam)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L108 (eta_th, medium): 0.35 vs 'Adjacent comment block reads '0.40 is intentionally conservative \u2014 Rankine efficiency at this operating point is unpublished'; describes 0.40 as the deliberate design choice, directly contradicting the actual constant value of 0.35'",
+          "narrative contradiction L204 (eta_th, medium): 0.35 vs 'Inline comment in _SHARED_KWARGS reads '# 0.40 \u2014 UNCERTAIN (conservative; implied 47% from 880 MW thermal / 415 MWe gross)'; asserts the passed value is 0.40 when ETA_TH is 0.35'",
+          "narrative contradiction L207 (eta_de, high): 0.0 vs 'Inline comment in _SHARED_KWARGS reads '# 0.85 \u2014 DEFAULT (DEC not used)'; directly states a value of 0.85 while the actual constant ETA_DE is 0.00 \u2014 a complete reversal'"
+        ]
+      },
+      {
+        "concept_id": "26-laser-icf-indirect-drive",
+        "energy_capture": "Thermal (steam)",
+        "status": "clean",
+        "flags": []
+      },
+      {
+        "concept_id": "25-heavy-ion-beam-icf",
+        "energy_capture": "Thermal (steam)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L245 (eta_th, medium): 0.35 vs 'Print statement outputs 'eta_th = 0.38 UNCERTAIN: conservative steam Rankine (1990s design era)' \u2014 the pre-standardization value. The actual kwarg at line 96 is 0.35 (standardized), but the Key Assumptions print block was not updated and still reports 0.38 to stdout.'",
+          "narrative contradiction L19 (eta_th, low): 0.35 vs 'Module docstring states 'eta_th = 0.38: conservative steam Rankine for 1990s-era design' in the Modeling approach section \u2014 the pre-standardization value. The actual kwarg is 0.35.'",
+          "narrative contradiction L33 (eta_th, low): 0.35 vs 'Module docstring 'Key deviations' section lists 'eta_th = 0.38 UNCERTAIN: steam Rankine analogue; no modern HIF thermal study' \u2014 again the pre-standardization value. The actual kwarg is 0.35.'"
+        ]
+      },
+      {
+        "concept_id": "24-dense-plasma-focus",
+        "energy_capture": "Direct (charged particle)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L102 (eta_de, medium): 0.7 vs 'Docstring cites LPPFusion's energy-recovery-linac analogy at ~85%; inline comment records standardization from 0.85 to 0.70, but the surrounding source narrative still anchors the device physics at 85%'",
+          "narrative contradiction L110 (eta_de, medium): 0.7 vs 'Docstring cites LPPFusion design estimate '80%+' for the X-ray photoelectric converter; inline comment records standardization from 0.80 to 0.70, leaving a mismatch between stated source value and model value'"
+        ]
+      },
+      {
+        "concept_id": "27-polywell",
+        "energy_capture": "Thermal (unspecified)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L106 (eta_th, medium): 0.35 vs 'Docstring on lines 108-112 cites 'analysis.md \u00a7Section 7 placeholder analogues: 40% Rankine baseline' as the source, but the field is set to 0.35 (35%). The standardization annotation '# standardized from 0.4' explains the discrepancy, but the docstring body still describes 40% as the design analogue without acknowledging the override.'"
+        ]
+      },
+      {
+        "concept_id": "28-hts-tokamak-full-hts",
+        "energy_capture": "Thermal (unspecified)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L185 (eta_th, medium): 0.35 vs 'Comment on line 185 reads '0.40 conservative steam Rankine assumption; sCO2 Brayton could reach 0.45\u20130.50' \u2014 describes the pre-standardization value; stale after ETA_TH was updated from 0.40 to 0.35'",
+          "narrative contradiction L77 (eta_th, medium): 0.35 vs 'Module docstring 'Key deviations' table (line 77) lists '- eta_th = 0.40: steam Rankine conservative; power cycle undisclosed' \u2014 stale after standardization to 0.35; docstring was not updated when the constant was changed'"
+        ]
+      },
+      {
+        "concept_id": "30-laser-icf-nif-commercialization",
+        "energy_capture": "Thermal (steam)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L241 (eta_th, high): 0.45 vs 'print statement hard-codes 'eta_th = 0.45' in the Key Assumptions output block; the canonical kwarg at line 101 was updated to 0.35 by the standardizer but this print was not, so model_output.txt will report the wrong value'",
+          "narrative contradiction L336 (eta_th, medium): 0.45 vs 'inline comment on _LIFE_ETA_TH = 0.44 reads '# thermal efficiency (model uses 0.45)' \u2014 the parenthetical is a stale description of the pre-standardization kwarg; canonical is now 0.35'",
+          "narrative contradiction L27 (eta_th, low): 0.45 vs 'module docstring bullet reads 'Thermal efficiency: LLNL LIFE analogue (45%); Inertia has not published a confirmed plant-level value' \u2014 the 45% figure describes the source analogue but the docstring does not note that the model was subsequently standardized to 0.35, which may mislead readers about the modeled value'"
+        ]
+      },
+      {
+        "concept_id": "29-negative-triangularity-tokamak",
+        "energy_capture": "Thermal (unspecified)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L79 (eta_th, medium): 0.35 vs 'Power-balance derivation comment block immediately above the kwarg (lines 69\u201371) explicitly computes eta_th = 204.5/539.5 \u2248 0.38 from MANTA figures. Module docstring line 15 also states 'eta_th=0.38 (back-calculated from MANTA power balance: 539 MW thermal \u2192 90 MWe net via steam Rankine \u2026)'. Both the inline derivation and the docstring anchor 0.38 as the physics-derived value, while the kwarg carries 0.35. The 'standardized from 0.38' annotation on line 79 acknowledges the change but the power-balance block and docstring were not updated.'"
+        ]
+      },
+      {
+        "concept_id": "32-laser-icf-french-national",
+        "energy_capture": "Thermal (unspecified)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L138 (eta_th, high): 0.35 vs 'Multiple surrounding comments specify 40% thermal efficiency: the module docstring states 'eta_th = 0.40: Ribeyre \u00a7III specifies Rankine/gas-turbine at 40%'; the q_eng derivation comment uses 'P_gross = \u03b7_th \u00d7 P_th = 0.40 \u00d7 3919 = 1568 MWe'; Key Assumption #1 states '\u03b7_th = 40%'; Key Assumption #9 states 'eta_th = 40%: Ribeyre \u00a7III specifies Rankine cycle or gas turbine at this efficiency'.'"
+        ]
+      },
+      {
+        "concept_id": "33-state-backed-tokamak-best",
+        "energy_capture": "Thermal (unspecified)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L166 (eta_th, low): 0.35 vs 'Surrounding comments state '34.7%' (0.347) from CFETR/BEST lineage studies, and the standardization annotation reads 'standardized from 0.347'. The docstring at the top of the file also states 'eta_th = 0.347'. The value 0.35 is the rounded canonical, but the narrative consistently describes 0.347.'",
+          "narrative contradiction L176 (eta_de, medium): 0.0 vs 'The standardization annotation reads 'standardized from 0.85 per scoring_framework.md'. An original eta_de of 0.85 would only be appropriate for a direct-energy-conversion channel; for a pure thermal tokamak with f_dec=0.0, this prior value suggests the field may have been misassigned before standardization.'"
+        ]
+      },
+      {
+        "concept_id": "23-laser-icf-nanostructured-target",
+        "energy_capture": "Hybrid (thermal + direct)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L78 (eta_th, high): 0.35 vs 'Multiple surrounding references describe the value as 0.40 / 40%: module docstring line 7 ('conservative 40% thermal efficiency'), docstring Key Deviations line 19 ('eta_th=0.40'), comment line 76 ('Using 0.40 as conservative primary estimate'), print label line 249 ('eta_th=40%'), and Key Assumptions print block line 322 ('eta_th = 40%'). None were updated when the standardizer changed the value from 0.40 to 0.35.'",
+          "narrative contradiction L377 (eta_de, medium): 0.54 vs 'The comment on _dec_params['eta_dec'] = 0.30 (line 373, 'mid-range base point for elasticity') and the print label on line 388 ('base eta_dec=30%') both describe 0.30 as the base point for the elasticity calculation, but the actual model_dec.forward() call at line 375 uses eta_dec=0.54. The _dec_params dict is never passed to the forward call and appears to be dead code left over from before the standardizer changed line 377 from 0.30 to 0.54.'",
+          "missing eta_de kwarg: Energy Capture is Hybrid (thermal + direct), which requires eta_de in the primary canonical call. _SHARED_KWARGS (lines 97\u2013131) contains eta_th but no eta_dec, so the primary result (result = model.forward(..., **_SHARED_KWARGS), line 134) and the 1 GW scale result both run without eta_dec. The DEC sensitivity base (_result_dec_base, line 375) has eta_dec=0.54, but that is a non-primary call used only for elasticity computation \u2014 it does not populate the economic output reported in model_output.txt."
+        ]
+      },
+      {
+        "concept_id": "31-laser-icf-oec-architecture",
+        "energy_capture": "Hybrid (thermal + direct)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L119 (eta_th, high): 0.517 vs 'Inline comment asserts '0.44 = F_NEUTRON\u00d7ETA_TH + F_CHARGED\u00d7ETA_DEC' but with ETA_TH=0.55 the formula yields 0.70\u00d70.55+0.30\u00d70.44=0.517, not 0.44; comment was not updated after ETA_TH was deviated from 0.44 to 0.55, leaving an arithmetic falsehood annotating the canonical call'",
+          "narrative contradiction L24 (eta_th, medium): 0.55 vs 'Module docstring 'Key deviations from defaults' still lists 'eta_th = 0.44 (vs RANKINE default 0.40)' but the current module-level ETA_TH = 0.55 after DEVIATION was applied; docstring not updated post-standardization'",
+          "unsourced DEVIATION L78 (eta_de): value 0.44 lacks Source/\u00a7 citation",
+          "missing eta_de kwarg: Hybrid energy capture requires a separate eta_de kwarg wired to the DEC channel in costingfe (via f_dec / eta_de); ETA_DEC=0.44 exists as a module-level constant but is never passed as eta_de to model.forward() \u2014 it is folded into ETA_TH_COMBINED instead, leaving the engine's DEC channel undriven and the two channels inseparable by the cost engine"
+        ]
+      },
+      {
+        "concept_id": "38-particle-accelerator-driven-fusion",
+        "energy_capture": "N/A",
+        "status": "unknown_canonical",
+        "flags": [
+          "Unrecognized Energy Capture key for canonical lookup (Unknown energy capture type: 'N/A'. Valid keys: ['direct (charged particle)', 'direct (inductive)', 'hybrid (thermal + direct)', 'tbd', 'thermal (sco2)', 'thermal (steam)', 'thermal (unspecified)', 'unknown']); skipped LLM call to save cost."
+        ]
+      },
+      {
+        "concept_id": "37-magnetized-target-inertial-fusion-mtif",
+        "energy_capture": "Thermal (unspecified)",
+        "status": "clean",
+        "flags": []
+      },
+      {
+        "concept_id": "36-helical-coil-stellarator",
+        "energy_capture": "Thermal (sCO2)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L40 (eta_th, medium): 0.48 vs 'Docstring states 'eta_th is overridden to 0.50 (conservative within the >50% published target)' but the actual constant _ETA_TH_CENTRAL = 0.48; docstring was not updated after standardization from 0.50 to 0.48'",
+          "narrative contradiction L44 (eta_th, medium): 0.48 vs 'Key-deviations block in docstring states 'sCO\u2082 Brayton cycle (BRAYTON_SCO2 preset; eta_th overridden to 0.50)' but actual value is 0.48; same stale docstring as line 40'"
+        ]
+      },
+      {
+        "concept_id": "35-polomac-magnetic-confinement",
+        "energy_capture": "Thermal (unspecified)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L134 (eta_th, medium): 0.35 vs 'Docstring (lines 136-142) reads 'ASSUMED: 0.38 is consistent with a steam Rankine cycle at fusion-relevant temperatures (T_exit ~500\u00b0C). Standard MFE assumption.' The narrative was written for the pre-standardization value of 0.38 and was not updated when the field was changed to 0.35; the docstring actively describes 0.38 as the assumed value.'"
+        ]
+      },
+      {
+        "concept_id": "39-spherical-tokamak-cs-free-p-b11",
+        "energy_capture": "Direct (charged particle)",
+        "status": "drift",
+        "flags": [
+          "narrative contradiction L172 (eta_th, high): 0.0 vs 'Inline _SHARED_KWARGS comment reads '# 0.35 \u2014 DEFAULT (fallback thermal for radiation fraction)' but ETA_TH is 0.00; stale numeric stub left over from pre-standardization value'",
+          "narrative contradiction L175 (eta_de, high): 0.7 vs 'Inline _SHARED_KWARGS comment reads '# 0.80 \u2014 UNCERTAIN (DEC theoretical efficiency)' but ETA_DE is 0.70; stale numeric stub left over from pre-standardization value'",
+          "narrative contradiction L21 (eta_de, medium): 0.7 vs 'Module docstring states 'Direct energy conversion (f_dec=0.85, eta_de=0.80) replaces steam Rankine cycle' \u2014 pre-standardization value; actual ETA_DE is now 0.70'",
+          "narrative contradiction L23 (eta_th, medium): 0.0 vs 'Module docstring states 'Radiation fraction (15%) captured thermally at eta_th=0.35' \u2014 pre-standardization value; actual ETA_TH is now 0.00'",
+          "narrative contradiction L103 (eta_th, low): 0.0 vs 'Continuation comment for ETA_TH reads '# DEFAULT: steam Rankine analogue; cross-reference 21-spherical-tokamak-hts' \u2014 describing a steam Rankine thermal cycle is misleading for a value of 0.00, which means no thermal conversion is modeled'",
+          "narrative contradiction L98 (eta_de, low): 0.7 vs 'Continuation comment for ETA_DE reads '# No engineering design published (TRL 1\u20132); 0.80 is optimistic' \u2014 refers to the pre-standardization value of 0.80 as 'optimistic', but the actual value is now 0.70 (the lower bound of the theoretical 70\u201390% range); the optimism claim is no longer self-consistent'",
+          "unsourced DEVIATION L215 (eta_th): value 0.35 lacks Source/\u00a7 citation",
+          "unsourced DEVIATION L215 (eta_de): value 0.0 lacks Source/\u00a7 citation"
+        ]
+      }
+    ]
+  },
+  "reports": [
+    {
+      "concept_id": "04-laser-icf",
+      "energy_capture": "Thermal (steam)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 218,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": null,
+      "deviations": [],
+      "narrative_contradictions": [],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [],
+      "confidence_notes": [
+        "eta_de is absent from the forward() call, which is correct for Thermal (steam) energy capture with f_dec=0 implied. No DEC channel applies.",
+        "The file documents an unresolved pivot between steam cycle (eta_th=0.35, used in this model) and direct electrostatic conversion (eta_th equivalent 0.60\u20130.80 per patent). The current canonical value is clearly the steam-cycle path per 2025 website.",
+        "eta_th=0.35 carries an UNCERTAIN annotation in comments but no formal # DEVIATION: tag, so it is not counted as a deviation. The value matches canonical.",
+        "No scenario sweep blocks are present in this file \u2014 no Conservative/Optimistic/Baseline dicts or loops over eta_th values."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "01-hts-compact-tokamak",
+      "energy_capture": "Thermal (steam)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 193,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        },
+        {
+          "line": 282,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": [
+        {
+          "line": 196,
+          "value": 0.0,
+          "context": "DEC"
+        },
+        {
+          "line": 285,
+          "value": 0.0,
+          "context": "DEC"
+        }
+      ],
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 193,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Key Assumption #5 states 'Thermal efficiency: 46% net \u2014 supercritical Rankine at 250 bar / 540\u00b0C' citing arc-power-conversion-studies.md \u00a73.2 Table 15. The docstring also states 'eta_th = 0.46: supercritical Rankine at 250 bar / 540\u00b0C, ARC recommended cycle.' The inline comment '# standardized from 0.46' confirms the pre-standardization value was 0.46.",
+          "severity": "medium"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [],
+      "confidence_notes": [
+        "Both forward calls (NOAK and FOAK) carry inline '# standardized from 0.46' comments on eta_th=0.35 and '# standardized from 0.85' comments on eta_de=0.00, making the standardization fully traceable.",
+        "eta_de=0.00 with f_dec=0.0 is consistent: no direct energy conversion path is active, so the DEC channel contributes zero regardless of eta_de value.",
+        "The narrative contradiction on eta_th is informational only \u2014 the standardizer explicitly changed 0.46 to 0.35 and annotated it. The 0.46 figure appears in Key Assumptions and the docstring as the ARC source value, not as a contradiction of intent.",
+        "The FOAK scenario uses identical eta_th=0.35 and eta_de=0.00 as the NOAK run, which is correct \u2014 it is a cost scenario branch, not an efficiency scenario.",
+        "No scenario sweep blocks with eta_th or eta_de values were found."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "03-laser-icf-liquid-jet-target",
+      "energy_capture": "TBD",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 112,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        },
+        {
+          "line": 230,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": null,
+      "deviations": [],
+      "narrative_contradictions": [],
+      "missing_kwargs": [
+        {
+          "axis": "eta_de",
+          "reasoning": "eta_de is absent from the file and not passed to model.forward(). Energy capture is TBD, so the channel split is unresolved. However, canonical_eta_de=0.0 and the concept is modelled as thermal-only (Rankine placeholder), so costingfe's DEC channel would be inert if f_dec defaults to 0. Absence is consistent with canonical intent but the TBD classification means the correct split cannot be confirmed from sources \u2014 the file itself acknowledges the energy capture architecture is a BLOCKING unknown."
+        }
+      ],
+      "scenario_sweep_findings": [],
+      "confidence_notes": [
+        "Energy capture architecture is explicitly flagged as BLOCKING UNKNOWN in both the module docstring (line 31, 35) and the ETA_TH comment block (lines 113\u2013116). ETA_TH=0.35 is a Rankine placeholder with no supporting Cortex source \u2014 the value was reduced from the ife_laser_ife.yaml default of 0.46, which is itself a generic laser-IFE prior, not concept-specific.",
+        "The power-balance comment block (lines 93\u201399) uses ETA_TH in an approximation formula (p_fus \u2248 1000/(0.35\u22120.10)) that treats it as the sole efficiency converting fusion heat to electricity, consistent with a thermal-only model and no DEC channel. This is internally self-consistent but the formula is in a comment, not the model physics.",
+        "No eta_de constant or kwarg appears anywhere in the file. With canonical_eta_de=0.0 and energy_capture=TBD, this absence is acceptable under the 'Thermal: eta_de may be absent' rule, but the TBD classification means it cannot be confirmed that a DEC channel is truly inapplicable \u2014 the Cortex D-D concept produces charged particles (3He, protons) that a future direct-conversion stage could exploit.",
+        "The assumptions table at line 321\u2013324 prints ETA_TH under the label 'eta_th (thermal eff.)' flagged BLOCKING UNCERTAIN, confirming the author's own assessment that this value has no source support.",
+        "No scenario sweep blocks (Conservative/Optimistic/Pessimistic dicts or loops) are present. The sensitivity analysis at lines 386\u2013394 uses model.sensitivity() \u2014 a library call \u2014 not manually enumerated scenario values, so no sweep irregularities apply."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "02-acoustic-icf-sonofusion",
+      "energy_capture": "TBD",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 170,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": null,
+      "deviations": [],
+      "narrative_contradictions": [],
+      "missing_kwargs": [
+        {
+          "axis": "eta_de",
+          "reasoning": "Energy capture is officially TBD. The model architecture is purely thermal (Rankine D\u2082O steam cycle); C220109 is explicitly set to 0.0 with comment 'NOT APPLICABLE \u2014 thermal cycle only' and no DEC efficiency parameter exists in the dataclass. This is consistent with canonical_eta_de = 0.0, so no DEC kwarg is expected. However, because energy_capture has not been formally confirmed as Thermal, the absence cannot be fully certified against the spec until the TBD is resolved. If energy_capture is later reclassified as Hybrid, eta_de would need to be added."
+        }
+      ],
+      "scenario_sweep_findings": [],
+      "confidence_notes": [
+        "The model does not use costingfe.forward(). It is a fully custom physics implementation. The thermal efficiency is applied in _compute_power() as p_et = p_th * self.thermal_efficiency, which correctly models only the thermal conversion channel with no DEC contribution, matching the (eta_th, eta_de=0) canonical pair.",
+        "The field is named thermal_efficiency (not eta_th) but maps semantically and computationally to eta_th: it governs the thermal-cycle output only. No blending with a DEC channel occurs anywhere in the power balance.",
+        "Scenario-sweep values for thermal_efficiency are clearly scoped: sensitivity sweep [0.28, 0.32, 0.35, 0.38, 0.42, 0.45], Conservative scenario 0.32, Optimistic scenario 0.40. These are appropriately distinct from each other and from the canonical 0.35; no standardizer-flattening anomaly detected.",
+        "The canonical call site is the module-level params = SonofusionPlantParams() with all defaults, which feeds thermal_efficiency=0.35 directly into compute(). The baseline_results = baseline.compute() call in main() also uses SonofusionPlantParams() defaults, confirming 0.35 as the canonical value throughout.",
+        "Energy capture TBD: the implemented physics is unambiguously thermal-only (Rankine on D\u2082O, no charged-particle or inductive direct conversion). Formal confirmation as Thermal would close the TBD without requiring any eta changes."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "05-planar-coil-stellarator",
+      "energy_capture": "Thermal (steam)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 84,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": [
+        {
+          "line": 90,
+          "value": 0.0,
+          "context": "DEC"
+        }
+      ],
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 24,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Module docstring 'Key deviations from stellarator defaults' bullet states eta_th=0.40 (three-stage steam Rankine at 635\u00b0C; default=0.46 is optimistic) \u2014 the pre-standardization Helios-specific value, not the standardized kwarg of 0.35 now in code",
+          "severity": "high"
+        },
+        {
+          "axis": "eta_th",
+          "line": 86,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Inline comment reads 'slightly below default 0.46 (Helios-specific value)' \u2014 the phrase 'Helios-specific value' implicitly refers to 0.40 (the pre-standardization number); now that 0.35 is in place this comment misdirects any reader trying to reconcile the kwarg with the source",
+          "severity": "low"
+        },
+        {
+          "axis": "eta_th",
+          "line": 227,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Key Assumptions Summary #4 states 'eta_th = 0.40 (three-stage steam Rankine, 635\u00b0C superheated steam, 40.2% gross efficiency)' \u2014 documents the pre-standardization Helios value, directly contradicting the 0.35 kwarg actually passed to model.forward()",
+          "severity": "high"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [],
+      "confidence_notes": [
+        "eta_th was standardized from 0.40 (Helios-specific three-stage superheated steam Rankine value per arXiv:2512.08027 \u00a7Energy Conversion) down to the canonical 0.35. Two narrative artifacts \u2014 the module docstring bullet (line 24) and Key Assumptions #4 (line ~227) \u2014 still document 0.40, creating an inconsistent audit trail. A reader tracing the kwarg back to its physical justification will find prose describing a different number.",
+        "eta_de was standardized from 0.85 to 0.00. A pre-standardization value of 0.85 is physically inconsistent with this concept's Thermal (steam) energy capture and explicit f_dec=0.0; there is no direct energy conversion channel in the Helios design. The origin of 0.85 is unattributed \u2014 it may be a copy-paste artefact from a direct-conversion concept template or the pre-fix double-counting bug that assigned a DEC efficiency to a thermal-only system.",
+        "The 'standardized from X' annotation pattern used on both lines (84, 90) is not a DEVIATION annotation and therefore does not satisfy the project's structured deviation documentation convention \u2014 no Source: or rationale_summary accompanies the standardization.",
+        "No scenario sweep blocks for eta_th or eta_de exist; the values appear only in _SHARED_KWARGS, which feeds both the native 390 MWe and scaled 1 GWe forward calls identically."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "06-magnetic-mirror",
+      "energy_capture": "Direct (charged particle)",
+      "canonical_eta_th": 0.0,
+      "canonical_eta_de": 0.7,
+      "observed_eta_th": [
+        {
+          "line": 99,
+          "value": 0.2,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": [
+        {
+          "line": 118,
+          "value": 0.7,
+          "context": "DEC"
+        }
+      ],
+      "deviations": [
+        {
+          "axis": "eta_th",
+          "line": 99,
+          "value": 0.2,
+          "has_source_citation": true,
+          "rationale_summary": "Physics-forced derating for bremsstrahlung partial wall absorption in p-B11 plasma. eta_th=0.20 represents thermal recovery of the radiation/wall-loss residual only (~15-25% of fusion power), not the DEC channel. eta_de=0.70 separately captures the DEC pathway; raising eta_th above zero here is explicitly described as avoiding double-counting. Canonical for Direct (charged particle) is eta_th=0.00. Sources: scoring_framework.md \u00a7Justified deviations (names this concept explicitly) and .project/research/feedback_eta_th/06-magnetic-mirror.md \u00a7F-1 Recommendation 1."
+        }
+      ],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_de",
+          "line": 118,
+          "observed_value": 0.7,
+          "narrative_value_or_description": "The surrounding comment block cites the historical MARS gridless DEC empirical measurement of ~54% (1983 MARS study) as the sole hardware reference and explicitly states 'eta_de=0.70 is above this empirical reference.' The value exceeds the only cited empirical benchmark by ~30% relative.",
+          "severity": "low"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [],
+      "confidence_notes": [
+        "eta_th=0.20 is a well-documented DEVIATION with two source citations (scoring_framework.md \u00a7Justified deviations and a per-concept feedback research file). The physical rationale \u2014 residual thermal capture of bremsstrahlung/wall-load losses forming a distinct channel from DEC \u2014 is internally consistent and explicitly guards against double-counting.",
+        "Both forward() calls (result and result_1gw) draw exclusively from _SHARED_KWARGS, so the same eta_th=0.20 and eta_de=0.70 are applied consistently to both runs. No divergence between the two forward() invocations.",
+        "eta_de=0.70 carries no DEVIATION annotation despite exceeding the only cited empirical benchmark (MARS 1983 ~54%). The comment acknowledges the gap but treats it as UNCERTAIN rather than a formal deviation. Whether this warrants a DEVIATION annotation is an editorial judgment; the value is within physics bounds per the cited PRX Energy 2025 paper.",
+        "The eta_th deviation sweep at the bottom (values [0.15, 0.20, 0.25, 0.30]) holds eta_de=0.70 and f_dec=0.85 fixed, consistent with the canonical forward() call. The range is physically motivated (uncertainty in residual thermal fraction). No standardizer flattening detected \u2014 the values span a meaningful range around the canonical deviation point.",
+        "The docstring Key deviations block (line 20) pre-announces eta_th~0.20 and line 24 pre-announces eta_de=0.70, providing a high-level summary that is fully consistent with the _SHARED_KWARGS values. No internal inconsistency between the narrative header and the kwarg values."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "10-large-scale-stellarator",
+      "energy_capture": "Thermal (unspecified)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 222,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": [
+        {
+          "line": 229,
+          "value": 0.0,
+          "context": "DEC"
+        }
+      ],
+      "deviations": [],
+      "narrative_contradictions": [],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [],
+      "confidence_notes": [
+        "eta_th=0.35 appears in all three sensitivity sweep model.forward() calls (noak_fraction sweep, blanket_complexity_multiplier sweep, capacity factor sweep) at the same value as the canonical call \u2014 consistent throughout",
+        "eta_de=0.0 and f_dec=0.0 are explicitly set in all calls with comments confirming DEC is not applicable for stellarators \u2014 correct for Thermal energy capture",
+        "The comment on eta_th line explicitly notes UNCERTAIN status and provides HCPB/steam Rankine sourcing consistent with 0.35 value \u2014 no narrative contradiction",
+        "Line numbers are approximate based on file structure; the canonical model.forward() call begins around line 183 and eta_th appears around line 222, eta_de around line 229"
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "07-maglif",
+      "energy_capture": "Thermal (unspecified)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 124,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": null,
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 124,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Comment block immediately following the ETA_TH assignment reads 'Using 0.42 per z-ife-sand2006-7148-thermal-cycles.md \u00a73.2 (steel-chamber near-term regime; 0.50 requires C-C composite chambers not yet commercially available)' \u2014 the value was standardized from 0.42 to 0.35 but this sourcing clause was not updated and now directly contradicts the assigned value",
+          "severity": "high"
+        },
+        {
+          "axis": "eta_th",
+          "line": 45,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Module docstring iter-10 section states 'ETA_TH re-classified as Thermal (combined cycle, Brayton-Rankine); retained at 0.42 (steel-chamber near-term regime) as a justified deviation from the canonical 0.50' \u2014 the docstring records the pre-standardization state and makes no mention of 0.35",
+          "severity": "high"
+        },
+        {
+          "axis": "eta_th",
+          "line": 379,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "KEY ASSUMPTIONS SUMMARY print block states 'Thermal eff.: 42% (combined Brayton-Rankine, steel chamber; C-C composite could reach 50% but not yet commercial)' \u2014 the printed human-readable summary still advertises the pre-standardization value",
+          "severity": "medium"
+        },
+        {
+          "axis": "eta_th",
+          "line": 662,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "ETA_TH \u00d7 ETA_PIN scenario matrix header print states 'Baseline: 0.42 (steel chamber, Z-IFE \u00a73.2 justified deviation)' \u2014 the printed label names 0.42 as the baseline, contradicting the actual canonical constant of 0.35 that feeds all forward calls",
+          "severity": "medium"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [],
+      "confidence_notes": [
+        "The standardizer changed ETA_TH from 0.42 to 0.35 and added a partial inline annotation ('standardized from 0.42 per scoring_framework.md (Energy Capture: Thermal (unspecified))') but left the remainder of the comment block intact. The surviving clause 'Using 0.42 per z-ife...' is now stale and contradicts the assigned value.",
+        "No DEVIATION annotation was added to document why 0.35 is used instead of the Z-IFE \u00a73.2 peer-reviewed value of 0.42 (steel-chamber near-term regime). The source citation for 0.42 is Tier-A quality (published Z-IFE study), so a DEVIATION annotation with Source pointer would be warranted if 0.35 is intentional.",
+        "The inline comment on line 125 reads 'cycle, Brayton-Rankine); canonical 0.50 per scoring_framework.md' \u2014 this is a sentence fragment, likely the second half of a comment that was split when the standardizer overwrote line 124. It implies the original comment said 'Thermal (combined cycle, Brayton-Rankine); canonical 0.50 per scoring_framework.md' but that context is now inconsistent with both the assigned value (0.35) and the canonical cited in the audit prompt (also 0.35). The reference to a canonical of 0.50 suggests the original classification was 'Thermal (combined cycle)' not 'Thermal (unspecified)'; the energy capture category appears to have been reclassified as part of the standardization pass.",
+        "The scenario matrix (lines ~648\u2013680) uses eta_th values of 0.42 and 0.50 as named sweep scenarios. These were not touched by the standardizer, which is correct behavior for sweep blocks. No irregularity in the sweep values themselves.",
+        "f_dec=0.0 is passed explicitly in the canonical forward() call (line 273); no eta_de kwarg appears anywhere in the file. For Thermal energy capture with f_dec=0.0 the DEC channel is inert and eta_de absence is correct \u2014 no missing kwarg.",
+        "The YIELD_PER_SHOT_GJ calibration expression on line ~487 (REP RATE SWEEP section) uses ETA_TH directly, so the algebraic sweep inherits the standardized 0.35 value at runtime even though the accompanying print header still says 'Baseline: 0.42'. The sweep LCOE values printed will be computed with 0.35, not 0.42 \u2014 a silent numeric inconsistency between the printed label and the computed result."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "12-levitated-dipole",
+      "energy_capture": "Thermal (unspecified)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 93,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": null,
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 93,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Docstring at lines 95-99 states '40% is consistent with sCO2 Brayton or advanced steam Rankine' \u2014 referencing the pre-standardization value of 0.40. The field was standardized down to 0.35 but the docstring body was not updated, so the narrative endorses 0.40 while the model runs at 0.35.",
+          "severity": "medium"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [
+        {
+          "axis": "eta_th",
+          "line": 893,
+          "value": 0.35,
+          "scenario_label": "Conservative",
+          "concern": "Annotated '# standardized from 0.37 per scoring_framework.md'. The standardizer overwrote the Conservative scenario's eta_th (0.37) with the Baseline canonical value (0.35). Conservative and Baseline are now identical on this axis, removing the downside thermal-efficiency leg from the scenario comparison."
+        },
+        {
+          "axis": "eta_th",
+          "line": 908,
+          "value": 0.35,
+          "scenario_label": "Optimistic",
+          "concern": "Annotated '# standardized from 0.44 per scoring_framework.md'. The standardizer overwrote the Optimistic scenario's eta_th (0.44) with the Baseline canonical value (0.35). All three named scenarios (Conservative, Baseline, Optimistic) now carry identical eta_th=0.35, collapsing the thermal-efficiency dimension of the scenario comparison entirely. The sensitivity sweep still spans 0.33\u20130.47, so the information exists but is unreachable through the scenario table."
+        }
+      ],
+      "confidence_notes": [
+        "This model uses a custom free-form physics implementation, not costingfe.forward(). The power balance p_et = p_th * eta_th maps cleanly to costingfe's thermal channel. No DEC channel or f_dec parameter is present, consistent with Thermal energy capture and canonical_eta_de=0.0.",
+        "The annotation pattern used throughout is '# standardized from <X> per scoring_framework.md', not the '# DEVIATION:' pattern. No formal DEVIATION annotations exist; deviations array is therefore empty.",
+        "The sensitivity sweep list (lines ~836\u2013843) covers eta_th values [0.33, 0.37, 0.40, 0.44, 0.47]. These include the pre-standardization source value (0.40) and the original Conservative (0.37) and Optimistic (0.44) scenario values. They are sweep values, not canonical, and are correctly excluded from observed_eta_th.",
+        "Scenario flattening is the main anomaly: standardizing scenario-block eta_th values to the canonical 0.35 was likely unintended \u2014 scenario blocks are expected to preserve concept-specific spread rather than inherit the canonical default."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "09-qi-stellarator-hts",
+      "energy_capture": "Thermal (unspecified)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 254,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": [
+        {
+          "line": 262,
+          "value": 0.0,
+          "context": "DEC"
+        }
+      ],
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 254,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "0.38 \u2014 the comment block immediately above eta_th=0.35 (lines ~248\u2013253) explicitly states 'Gross thermal efficiency: ~38% for steam Rankine at EUROFER97 temperature limit' and 'Stellaris (EUROFER97, 550\u00b0C limit \u2192 ~500\u00b0C steam): ~38%'; the docstring Key Deviations section states 'eta_th = 0.38 (EUROFER97-constrained steam Rankine; lower than ARC's 0.46)'; the docstring Thermal efficiency section also states 'Gross thermal efficiency \u2248 38%'; Key Assumption #4 in the printed output states '38% gross'",
+          "severity": "medium"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [],
+      "confidence_notes": [
+        "eta_th=0.35 carries a '# standardized from 0.38' annotation (line 255) documenting the canonical harmonization. However, the physics comment block immediately above (lines ~248\u2013253), the docstring Key Deviations entry, the docstring Thermal efficiency section, and Key Assumption #4 in the printed output all still describe the physics basis for 0.38 without being updated to reflect the new canonical value. The standardization annotation is present and correct, but surrounding prose remains inconsistent.",
+        "eta_de=0.00 carries a '# standardized from 0.85' annotation on the same line. Pre-standardization eta_de=0.85 was physically inert because f_dec=0.0 for this thermal-only concept (p_dee = f_dec * eta_de * p_transport = 0 regardless of eta_de when f_dec=0). The standardization to 0.0 is correct and eliminates any latent double-counting risk. The prior 0.85 value was likely a vestigial default assignment that had no cost-model effect.",
+        "All scenario forward calls (Scenarios B and H2a) and all parameter sweeps (coil cost multiplier, capacity factor, O&M, construction time) inherit eta_th and eta_de from _SHARED without modification. No sweep or scenario branch alters either axis.",
+        "f_dec=0.0 is explicitly set in _SHARED with a comment 'Thermal Rankine only; no direct energy conversion / Source: dossier.md \u00a7Energy Capture', providing independent corroboration that eta_de=0.0 is physically correct for this concept regardless of the standardization action."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "14-magnetized-target-fusion-pneumatic-compression",
+      "energy_capture": "Thermal (steam)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 207,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": null,
+      "deviations": [],
+      "narrative_contradictions": [],
+      "missing_kwargs": [
+        {
+          "axis": "eta_de",
+          "reasoning": "Energy capture is Thermal (steam); eta_de is absent from _SHARED_KWARGS. This is acceptable because f_dec=0.0 is explicitly set, making the DEC channel inert. No contradiction with canonical_eta_de=0.0."
+        }
+      ],
+      "scenario_sweep_findings": [],
+      "confidence_notes": [
+        "eta_th=0.35 is passed via _SHARED_KWARGS and flows into both model.forward() calls (native 300 MWe and scaled 1000 MWe). Both calls share the same kwargs dict, so the canonical value applies consistently.",
+        "eta_de is not explicitly present in the file. f_dec=0.0 is set, which suppresses the DEC channel entirely. The absence of eta_de is consistent with the canonical_eta_de=0.0 for a pure Rankine steam concept.",
+        "The docstring notes eta_th range 33\u201340% and uses 35% as midpoint. The inline comment at line 207 corroborates this as an UNCERTAIN value with low confidence, not a deviation from canonical.",
+        "No scenario sweep blocks (Conservative/Optimistic/Pessimistic dicts or loops over eta_th values) are present in the file. The sensitivity analysis is invoked via model.sensitivity(result.params) without sweeping eta_th directly.",
+        "No # DEVIATION: annotations are present on any eta_th or eta_de line."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "15-sheared-flow-stabilized-z-pinch",
+      "energy_capture": "Thermal (steam)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 138,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": null,
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 138,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Docstring above the field (lines ~141-145) states '38% is plausible for LiPb-cooled Rankine' and 'cycle design unpublished; 38% is plausible'. The inline standardization comment also shows the pre-standardization value was 0.38. The narrative consistently points to 0.38 as the physically motivated estimate, while 0.35 is the standardized canonical value.",
+          "severity": "low"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [
+        {
+          "axis": "eta_th",
+          "line": 761,
+          "value": 0.35,
+          "scenario_label": "Conservative (Q=7)",
+          "concern": "Standardization comment '# standardized from 0.33 per scoring_framework.md' is present inside this scenario block. The standardizer should not have changed sweep values; the Conservative scenario's native thermal_efficiency of 0.33 has been overwritten to 0.35, flattening the conservative end of the sweep."
+        },
+        {
+          "axis": "eta_th",
+          "line": 775,
+          "value": 0.35,
+          "scenario_label": "Optimistic (Q=15)",
+          "concern": "Standardization comment '# standardized from 0.42 per scoring_framework.md' is present inside this scenario block. The Optimistic scenario's native thermal_efficiency of 0.42 has been overwritten to 0.35, eliminating differentiation between Conservative and Optimistic thermal efficiency assumptions."
+        },
+        {
+          "axis": "eta_th",
+          "line": 784,
+          "value": 0.35,
+          "scenario_label": "Q=5 pessimistic",
+          "concern": "Standardization comment '# standardized from 0.33 per scoring_framework.md' is present inside this scenario block. The pessimistic scenario's native thermal_efficiency of 0.33 has been overwritten to 0.35, same as baseline and optimistic \u2014 all three non-baseline scenarios now share identical thermal_efficiency."
+        }
+      ],
+      "confidence_notes": [
+        "The canonical eta_th=0.35 on line 138 carries a '# standardized from 0.38' comment, confirming it was modified by the standardizer. The physics narrative in the docstring still references 0.38 as the plausible estimate, creating a minor narrative mismatch that is low severity since 0.35 is the correct canonical target.",
+        "eta_de is correctly absent: this is a Thermal (steam) concept with no direct energy conversion channel (C220109=0.0 in the code). No missing_kwargs issue.",
+        "The sensitivity sweep for 'thermal_efficiency' on line ~819 spans [0.30, 0.33, 0.35, 0.38, 0.40, 0.42] \u2014 this sweep was not touched by the standardizer and correctly explores the full range.",
+        "All three named scenarios (Conservative, Optimistic, Q=5 pessimistic) had their thermal_efficiency standardized to 0.35, which collapses meaningful scenario differentiation on this axis. The sweep still varies eta_th but the scenario table does not."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "16-muon-catalyzed-fusion",
+      "energy_capture": "Thermal (unspecified)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 193,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": null,
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 193,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Docstring on eta_th field cites 'High-efficiency sCO\u2082 Brayton: ~45\u201352% demonstrated at 600\u2013800\u00b0C' as the engineering basis, suggesting the original author intended ~0.50. The standardization comment confirms it was changed from 0.5. The docstring narrative was not updated to match the standardized value, leaving a mismatch between the code value (0.35) and the cited performance range (45\u201352%).",
+          "severity": "low"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [
+        {
+          "axis": "eta_th",
+          "line": 1014,
+          "value": 0.35,
+          "scenario_label": "Optimistic breakthrough",
+          "concern": "The 'Optimistic breakthrough' scenario has eta_th=0.35 with a standardization comment '# standardized from 0.52'. The standardizer appears to have overwritten a scenario-specific sweep value (0.52) with the canonical value (0.35). An optimistic scenario would be expected to retain a higher eta_th than the baseline, not be flattened to the same canonical value. This is a standardizer over-reach into scenario sweep territory."
+        }
+      ],
+      "confidence_notes": [
+        "This model does not use costingfe.forward() \u2014 it is a fully custom physics-first implementation. The eta_th parameter feeds directly into p_et = p_th * self.eta_th in _compute_power(), which is the canonical thermal conversion path. There is no f_dec or eta_de parameter anywhere in the model, consistent with a pure thermal capture concept where the DEC channel is inert.",
+        "The sensitivity sweep at lines ~997-1002 sweeps eta_th over [0.35, 0.40, 0.45, 0.50, 0.55, 0.60] \u2014 these are sweep values, not canonical, and are correct to evaluate even though they span values above the canonical 0.35.",
+        "The eta_th docstring narrative describes sCO\u2082 Brayton at 45\u201352% but the field value is 0.35 after standardization. The comment '# standardized from 0.5' is on the line immediately after the field assignment (line 194), confirming the original value was 0.5 which aligns with the narrative. This is a low-severity narrative contradiction: the docstring was not updated when the value was standardized.",
+        "No eta_de parameter exists anywhere in the file. This is correct for a pure Thermal energy capture concept \u2014 the DEC channel is not applicable to muon-catalyzed fusion which relies entirely on neutron/alpha thermalization."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "08-frc-w-direct-conversion",
+      "energy_capture": "Direct (inductive)",
+      "canonical_eta_th": 0.0,
+      "canonical_eta_de": 0.85,
+      "observed_eta_th": [
+        {
+          "line": 265,
+          "value": 0.85,
+          "context": "DEC"
+        }
+      ],
+      "observed_eta_de": null,
+      "deviations": [
+        {
+          "axis": "eta_th",
+          "line": 265,
+          "value": 0.85,
+          "has_source_citation": false,
+          "rationale_summary": "eta_th used as a structural hack representing Helion's direct EM energy recovery (DEC channel), not the thermal-cycle efficiency costingfe expects. Canonical Direct (inductive) is (eta_th=0.0, eta_de=0.85); correct fix is pulsed_conversion=INDUCTIVE_DEC + eta_de + f_dec. Deferred to tracked backlog item 'Structural refactor of 08 + 31 to use pulsed_conversion=INDUCTIVE_DEC' (Issue #30 / .project/active/eta_th-double-count-fix/)."
+        }
+      ],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 265,
+          "observed_value": 0.85,
+          "narrative_value_or_description": "Comment at line 283 states '0.90 adopted as central estimate'; module docstring (line 33) states 'eta_th=0.90 to represent the direct electromagnetic conversion efficiency'; docstring line 59 lists 'eta_th = 0.90 (vs 0.40)'; Key Assumptions print block hardcodes {0.90:.0%}. The kwarg value 0.85 is inconsistent with all four narrative references to 0.90.",
+          "severity": "high"
+        }
+      ],
+      "missing_kwargs": [
+        {
+          "axis": "eta_de",
+          "reasoning": "Energy Capture is Direct (inductive); eta_de is entirely absent from model.forward(). The DEVIATION annotation itself states the correct structural fix requires eta_de=0.85 passed alongside pulsed_conversion=INDUCTIVE_DEC and f_dec. Until the refactor lands, eta_de is structurally missing and its role is incorrectly proxied through eta_th."
+        }
+      ],
+      "scenario_sweep_findings": [],
+      "confidence_notes": [
+        "The kwarg value eta_th=0.85 was likely set by the standardizer to match the canonical eta_de target (0.85), but surrounding prose was not updated: the docstring, two inline comments, and the Key Assumptions print block all still reference 0.90 as the operative value. This creates a live discrepancy between what the model actually computes and what the output reports.",
+        "The DEVIATION annotation explicitly flags the structural issue: eta_th is proxying the DEC channel because the pulsed_conversion=INDUCTIVE_DEC pathway is not yet wired. The fix is a tracked backlog item (Issue #30), so the deviation is intentional and documented, but has_source_citation is false because the DEVIATION block itself carries no Source: or \u00a7reference pointer \u2014 only the physics-value commentary below it does.",
+        "f_dec is not passed to model.forward(); costingfe's implicit default (likely 0.0) disables the DEC pathway entirely. All conversion flows through the eta_th hack path, meaning no double-counting of the DEC contribution occurs \u2014 but the power-balance routing is structurally wrong relative to the canonical (eta_th=0.0, eta_de=0.85, f_dec>0) split and will produce different results once the refactor lands.",
+        "The concept maps ConfinementConcept.MAG_TARGET as a proxy since FRC is not natively supported; CAS22 cost defaults reflect MIF/IFE architecture assumptions. Extensive cost_overrides correct the most egregious mismatches, but accounts not explicitly overridden may still carry MIF defaults that are inappropriate for a pulsed colliding FRC."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "17b-laser-icf-fast-ignition",
+      "energy_capture": "Thermal (steam)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 73,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": null,
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 73,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Key Assumptions section (line ~259) states 'eta_th = 0.40 (Rankine): confirmed by Focused Energy'. Module docstring (line 14) also states 'eta_th = 0.40: Conventional steam Rankine, explicitly confirmed by Focused Energy'. The inline comment on line 74 says 'standardized from 0.4 per scoring_framework.md', confirming 0.40 was the original sourced value. The standardization comment explains the discrepancy, but the Key Assumptions print block still references 0.40, creating a misleading narrative for readers of the output.",
+          "severity": "medium"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [],
+      "confidence_notes": [
+        "ETA_TH = 0.35 on line 73 carries a '# standardized from 0.4 per scoring_framework.md (Energy Capture: Thermal (steam))' comment on line 74. The standardizer correctly changed the value but left the Key Assumptions print block (line ~259) referencing 0.40, and the module docstring (line 14) also still says 0.40. These stale references do not affect the cost engine but will mislead readers of the printed output.",
+        "No eta_de kwarg is present anywhere in the file. For Thermal (steam) energy capture with f_dec=0 this is expected \u2014 the DEC channel is inert.",
+        "The _base_fwd dict on line ~231 passes eta_th=ETA_TH (0.35), so all sweeps (F-1, F-2, rep-rate) consistently use the standardized value."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "11-magnetic-mirror",
+      "energy_capture": "Hybrid (thermal + direct)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.54,
+      "observed_eta_th": [
+        {
+          "line": 138,
+          "value": 0.35,
+          "context": "overall-plant"
+        }
+      ],
+      "observed_eta_de": [
+        {
+          "line": 156,
+          "value": 0.54,
+          "context": "DEC"
+        }
+      ],
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 139,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Inline comment immediately following the kwarg (line 139) reads 'MARS 1983 steam Rankine achieved ~36% overall plant efficiency' \u2014 frames eta_th as an overall-plant blended efficiency (the pre-fix interpretation) and cites 36% rather than the kwarg value 0.35",
+          "severity": "medium"
+        },
+        {
+          "axis": "eta_th",
+          "line": 36,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Module docstring 'Key deviations' section explicitly states 'eta_th = 0.36' \u2014 numerically stale and not updated when the standardizer changed the kwarg to 0.35",
+          "severity": "low"
+        },
+        {
+          "axis": "eta_th",
+          "line": 291,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Key Assumptions print statement says 'eta_th = 0.36' \u2014 stale value not updated after standardization to 0.35",
+          "severity": "low"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [],
+      "confidence_notes": [
+        "eta_th was standardized from 0.55 to 0.35 per inline annotation '# standardized from 0.55 per scoring_framework.md' on line 138. The surrounding narrative comment (lines 139\u2013141) was not updated and still describes the value as '~36% overall plant efficiency' \u2014 the pre-fix blended framing. The kwarg value is correct (0.35 = canonical) but the conceptual framing in the comment is the old overall-plant interpretation.",
+        "Both eta_th=0.35 (line 138) and eta_de=0.54 (line 156) match canonical values for Hybrid (thermal + direct). No formal # DEVIATION: annotations are present on either line.",
+        "The docstring Key deviations section (line 36) and the Key Assumptions print block (line 291) both reference eta_th=0.36, which is numerically stale and was not updated when the standardizer ran.",
+        "No scenario sweeps present in this file. Both forward() calls consume the same _SHARED_KWARGS dict, so there is a single canonical value set with no Conservative/Optimistic/Baseline variants."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "13-electrostatic-hybrid",
+      "energy_capture": "Thermal (unspecified)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 81,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": null,
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 89,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "thermal_efficiency field docstring states 'HIGH UNCERTAINTY \u2014 baseline uses 12% (thermoelectric scenario)' but the field value is 0.35 after standardization; the docstring was not updated when the default was changed",
+          "severity": "high"
+        },
+        {
+          "axis": "eta_th",
+          "line": 30,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "module-level docstring states 'The baseline default uses Q=10 at \u03b7=12% (above thermoelectric break-even)' but the canonical thermal_efficiency default is now 0.35",
+          "severity": "medium"
+        },
+        {
+          "axis": "eta_th",
+          "line": 854,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "main() labels the OrbitronPlantParams() default-instance baseline block as '# Q_engineering=10, \u03b7=12%, 1000 modules \u00d7 1 kWe input' but the instantiated OrbitronPlantParams() now defaults thermal_efficiency to 0.35, not 0.12",
+          "severity": "low"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [
+        {
+          "axis": "eta_th",
+          "line": 984,
+          "value": 0.12,
+          "scenario_label": "Q=10, thermoelectric (baseline)",
+          "concern": "Scenario is labeled '(baseline)' in the SCENARIO COMPARISON TABLE but explicitly passes thermal_efficiency=0.12, the pre-standardization value. The canonical OrbitronPlantParams() default is now 0.35, so the table's 'baseline' row no longer corresponds to the canonical instantiation and will produce a different LCOE than the canonical run."
+        },
+        {
+          "axis": "eta_th",
+          "line": 778,
+          "value": 0.12,
+          "scenario_label": "Thermoelectric (\u03b7=12%)",
+          "concern": "back_solve_lcoe_surface() sweeps thermal_efficiency over only [0.12, 0.30] as the two eta scenarios. The canonical default (0.35) is not represented in either scenario bin and therefore never appears in the printed LCOE surface \u2014 the post-standardization canonical value is effectively invisible in all model output."
+        }
+      ],
+      "confidence_notes": [
+        "Line 82 carries the annotation '# standardized from 0.12 per scoring_framework.md (Energy Capture: Thermal (unspecified))' immediately following the thermal_efficiency field definition. This is not a '# DEVIATION:' annotation so it is not reported in deviations; the observed value 0.35 matches canonical exactly.",
+        "The entire model narrative (module docstring, field docstring, sensitivity sweep baseline label, back_solve_lcoe_surface scenario structure, main() print headers, KEY BINDING CONSTRAINTS break-even commentary) was authored assuming \u03b7=12% as the thermoelectric baseline. The standardized value 0.35 falls in the 'multi-module turbine array (~25\u201335%)' range per the field docstring \u2014 a physically distinct operating regime from the thermoelectric scenario the surrounding text was written against.",
+        "No eta_de parameter exists. C220109 (Direct Energy Converter) is explicitly set to 0.0 with comment 'NOT APPLICABLE (thermal conversion)', consistent with Thermal energy capture. Absence of eta_de is expected and correct per the Thermal category rule.",
+        "The model implements its own physics layer (p_et_module = p_th_module * self.thermal_efficiency in _compute_power()) rather than calling costingfe.forward(). The standardized value feeds through the compute chain correctly; the mismatch is confined to documentation, print labels, and scenario table labeling.",
+        "Line numbers for main() and scenario_defs are approximate (estimated from file structure; the file is 1149 lines and the scenario_defs block is in the ~980\u20131010 range). All other line numbers (30, 81, 82, 89) were counted directly from the top of the file."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "19-orbital-levitated-dipole",
+      "energy_capture": "Direct (charged particle)",
+      "canonical_eta_th": 0.0,
+      "canonical_eta_de": 0.7,
+      "observed_eta_th": null,
+      "observed_eta_de": [
+        {
+          "line": 141,
+          "value": 0.7,
+          "context": "DEC"
+        }
+      ],
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_de",
+          "line": 141,
+          "observed_value": 0.7,
+          "narrative_value_or_description": "The field docstring on the same line states Venetian blind DEC achieved '50\u201365% for non-fusion ions in 1970s experiments' and explicitly labels this an 'UPPER BOUND and likely OPTIMISTIC for 14.7 MeV protons'. The standardized value 0.70 exceeds the cited 50\u201365% upper bound by 5\u201320 percentage points. The narrative further states 'Actual efficiency for 14.7 MeV protons is truly-unknown', making the 0.70 assignment directly contradict the physical sourcing in its own docstring.",
+          "severity": "high"
+        }
+      ],
+      "missing_kwargs": [
+        {
+          "axis": "eta_de",
+          "reasoning": "The file uses a concept-specific field named eta_dec rather than the canonical eta_de kwarg. No parameter named eta_de appears anywhere in the file. For Direct (charged particle), eta_de MUST be present; eta_dec serves the same physical role but does not satisfy the canonical costingfe kwarg interface. A future costingfe.forward() integration would require renaming or bridging this field."
+        }
+      ],
+      "scenario_sweep_findings": [
+        {
+          "axis": "eta_de",
+          "line": 1334,
+          "value": 0.57,
+          "scenario_label": "Pessimistic (baseline)",
+          "concern": "The pessimistic scenario explicitly passes eta_dec=0.57, which is the pre-standardization value recorded in the default field comment ('standardized from 0.57 per scoring_framework.md'). The standardizer updated the dataclass default to 0.70 but left this named scenario override at the original value. The canonical baseline now runs at 0.70 while the scenario labeled 'Pessimistic' runs at 0.57 \u2014 both values are now in the file simultaneously with no # DEVIATION annotation explaining the deliberate retention of 0.57 in the scenario block."
+        },
+        {
+          "axis": "eta_de",
+          "line": 1344,
+          "value": 0.57,
+          "scenario_label": "Moderate (better beaming)",
+          "concern": "The moderate scenario also passes eta_dec=0.57, identical to the pessimistic scenario. The two scenarios differ on eta_transmitter and Q_sci but share the same DEC efficiency. Having 'Pessimistic' and 'Moderate' at the same eta_dec=0.57 \u2014 while the canonical default was standardized to 0.70 \u2014 suggests the scenario table was authored against pre-standardization assumptions and was not updated when the baseline was changed. The canonical 0.70 value appears in no named scenario."
+        }
+      ],
+      "confidence_notes": [
+        "This model is a fully custom implementation and does not call costingfe.forward(). The canonical eta_th / eta_de kwarg names do not appear anywhere in the file. DEC channel efficiency is implemented via a concept-specific field eta_dec. The costingfe two-channel decomposition (p_the = eta_th * p_th; p_dee = f_dec * eta_de * p_transport) does not map cleanly onto this 4-stage beaming architecture, which chains DEC \u2192 phased-array transmitter \u2192 free-space propagation \u2192 rectenna.",
+        "The 'standardized from 0.57' annotation on eta_dec is not a # DEVIATION: annotation and was therefore excluded from the deviations array. It functions as an implicit standardization record. Its presence makes the narrative contradiction (value 0.70 exceeds the 50\u201365% upper bound cited in the same docstring) more significant: the original author's value of 0.57 was consistent with the 50\u201365% physical narrative, but the standardizer replaced it with 0.70 which the narrative does not support.",
+        "eta_th is absent from the file, which is appropriate for Direct (charged particle). The _compute_power method aliases p_th to p_charged (the charged particle input to the DEC stage), not to a thermal Rankine heat load. No thermal conversion efficiency exists in this model, consistent with canonical_eta_th = 0.0.",
+        "The sensitivity_sweep section includes eta_dec in the sweep list with values [0.20, 0.30, 0.40, 0.50, 0.57, 0.65, 0.80]. These are legitimate exploration values; the 0.57 entry there is not a standardization concern. Only the named scenario overrides (pessimistic, moderate) are flagged in scenario_sweep_findings.",
+        "The canonical eta_de = 0.70 appears only in the OrbitalDipolePlantParams() dataclass default field. It is not reproduced in any named scenario. All four named scenarios in the SCENARIO COMPARISON section use eta_dec values below 0.70 (0.57 or 0.65), meaning the concept explorer's scenario table effectively ignores the standardized value entirely."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "18-p-b11-frc",
+      "energy_capture": "Thermal (steam)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 153,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": null,
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 153,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "The eta_th field docstring (lines ~155-161) states 'Standard steam Rankine at fusion-relevant temperatures: 30\u201335%; using 32%' \u2014 the phrase 'using 32%' implies 0.32, directly contradicting the actual default of 0.35. The same 0.32 figure is echoed in: the module docstring (~line 25, '\u03b7_th=0.32' in the Q_break worked example), the q_plasma field docstring (~line 97, '\u03b7_th=0.32'), the eta_nbi field docstring (~line 148, 'Q_break (steam, f_rad=0.15, \u03b7_th=0.32) \u2248 14.1'), the print_results Branch B label string ('~32% \u03b7'), and the physics preamble print block in main() ('Steam 32%'). The inline comment on line 154 ('# standardized from 0.32 per scoring_framework.md') explains the change but the docstring was not updated.",
+          "severity": "high"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [],
+      "confidence_notes": [
+        "This is a free-form model that does not call costingfe.forward(). The thermal conversion is implemented as p_et = p_available * eta_conv (inside _compute_power), where eta_conv = self.eta_th when use_icc=False. There is no separate DEC end-loss channel; f_dec is implicitly zero throughout. The absence of eta_de is therefore structurally correct for this Thermal (steam) concept.",
+        "The '# standardized from 0.32 per scoring_framework.md (Energy Capture: Thermal (steam))' comment on line 154 has anomalous single-space indentation and sits between the field declaration and its docstring \u2014 a fingerprint of the standardizer inserting it inline. The field docstring was not updated to remove 'using 32%', which is the root cause of the narrative contradiction. No '# DEVIATION:' keyword was used, so the deviations array is empty.",
+        "eta_icc (= 0.90, ~line 163) is the Branch C ICC conversion efficiency. It is not an eta_de in the costingfe sense \u2014 it does not feed a DEC end-loss power channel alongside eta_th. Branch C substitutes eta_icc for eta_th entirely; the two branches are mutually exclusive via the use_icc flag. No simultaneous dual-channel accounting exists.",
+        "The sensitivity sweep for eta_th in main() covers [0.25, 0.28, 0.30, 0.32, 0.35, 0.38, 0.40]. Both the prior canonical (0.32) and the current canonical (0.35) appear in this range, which is expected and unremarkable \u2014 the sweep was not flattened by the standardizer."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "17a-laser-icf-hybrid-drive",
+      "energy_capture": "Thermal (unspecified)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 215,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": null,
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 215,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Immediately preceding comment block reads 'He Brayton (45%): HYLIFE-II heritage' and 'Source: HYLIFE-II 1994 \u2014 ~45% thermal efficiency for He Brayton at FLiBe temp', explicitly naming 0.45 as the source value; the inline annotation '# standardized from 0.45' confirms the pre-standardization value was 0.45",
+          "severity": "high"
+        },
+        {
+          "axis": "eta_th",
+          "line": 331,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Inline comment on the canonical forward call kwarg reads '# 0.45 He Brayton; HYLIFE heritage; [an] \u00a72.5 scenario A', naming 0.45 explicitly, but ETA_TH_BRAYTON resolves to 0.35",
+          "severity": "high"
+        },
+        {
+          "axis": "eta_th",
+          "line": 221,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Surrounding comment reads 'Steam Rankine (33%): implied by Xcimer science page language' and 'steam ~33% is the typical saturated/superheated steam cycle'; inline annotation reads '# standardized from 0.33' confirming pre-standardization value was 0.33",
+          "severity": "medium"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [
+        {
+          "axis": "eta_th",
+          "line": 221,
+          "value": 0.35,
+          "scenario_label": "H-3 Steam Rankine alternative",
+          "concern": "ETA_TH_STEAM carries a '# standardized from 0.33' annotation, meaning the standardizer changed this sweep-specific constant from 0.33 to 0.35 to match the canonical policy value. The H-3 scenario exists specifically to test 'He Brayton 45% vs Steam Rankine 33%', but both ETA_TH_BRAYTON and ETA_TH_STEAM now equal 0.35, making the H-3 thermal cycle comparison completely degenerate (identical LCOE for both rows). The standardizer should not have touched this value."
+        },
+        {
+          "axis": "eta_th",
+          "line": 342,
+          "value": 0.35,
+          "scenario_label": "H-3 Steam Rankine alternative (forward call kwarg)",
+          "concern": "Inline comment on the result_steam forward call reads '# 0.33 Steam Rankine; UNCERTAIN; [sci] \u00a7Energy Conversion', confirming the author's original intent was 0.33, but ETA_TH_STEAM has been standardized to 0.35. This stale comment is evidence the standardizer modified the constant after the call was written, without updating the call-site annotation."
+        }
+      ],
+      "confidence_notes": [
+        "Both ETA_TH_BRAYTON (from 0.45) and ETA_TH_STEAM (from 0.33) were standardized to 0.35 by the policy pipeline. The canonical value 0.35 matches the expected canonical_eta_th, so the primary cost run is correct, but the standardizer has collapsed the H-3 scenario sweep.",
+        "The H-3 thermal cycle sensitivity analysis (He Brayton vs Steam Rankine) is now degenerate: result_noak and result_steam will produce identical LCOE because eta_th is 0.35 in both calls. This is a modeling correctness issue, not a canonical-value issue.",
+        "Multiple print statements in the results section reference the pre-standardization values (e.g., 'He Brayton 45%' and 'Steam Rankine 33%') as string literals rather than derived from the constants; those labels will now be factually incorrect given the standardized values.",
+        "The H-2 sweep header print statement reads 'Fixed: ... He Brayton 45%' but ETA_TH_BRAYTON = 0.35, creating an additional stale label in the output.",
+        "No eta_de kwarg appears anywhere in the file. This is consistent with Thermal (unspecified) energy capture where the DEC channel is inactive (f_dec = 0); no missing kwarg is flagged.",
+        "No f_dec kwarg appears in _ENG or any forward call, which is correct for a purely thermal concept with no direct energy conversion channel."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "21-spherical-tokamak-hts",
+      "energy_capture": "Thermal (unspecified)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 85,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": [
+        {
+          "line": 107,
+          "value": 0.0,
+          "context": "DEC"
+        }
+      ],
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 160,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Inline comment in _SHARED_KWARGS reads '# 0.33 \u2014 UNCERTAIN (steam Rankine analogue)'; the docstring (line 31) also records 'eta_th = 0.33' and the body comments at lines 87-88 state 'Central estimate 33% (steam Rankine)'. All three are stale references to the pre-standardization value.",
+          "severity": "medium"
+        },
+        {
+          "axis": "eta_de",
+          "line": 163,
+          "observed_value": 0.0,
+          "narrative_value_or_description": "Inline comment in _SHARED_KWARGS reads '# 0.85 \u2014 DEFAULT (DEC not used)'. ETA_DE was standardized from 0.85 to 0.00 at line 107, but the dict comment was never updated. The comment value (0.85) directly contradicts the active value (0.00).",
+          "severity": "high"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [],
+      "confidence_notes": [
+        "ETA_TH was standardized from 0.33 to 0.35 (annotation on line 85) but three stale 0.33 references remain: docstring line 31, body comments lines 87-88, and the _SHARED_KWARGS inline comment at line 160. None is formatted as a formal # DEVIATION: tag.",
+        "ETA_DE was standardized from 0.85 to 0.00 (annotation on line 107) but the _SHARED_KWARGS inline comment at line 163 still reads '# 0.85 \u2014 DEFAULT (DEC not used)', a direct numeric contradiction of the active value.",
+        "The 'standardized from X' annotation style used on both eta_th (line 85) and eta_de (line 107) is not the same as a formal '# DEVIATION:' tag; these marks are noted here but produce no deviations[] entries.",
+        "f_dec=0.0 (line 110, passed at line 165) is consistent with eta_de=0.0; the DEC channel is correctly inert for this purely thermal concept, so no missing_kwargs apply.",
+        "No explicit scenario sweep dict or loop over eta_th or eta_de values was found in the 289 lines provided; model.sensitivity() drives the sensitivity block and does not expose individual sweep entries for per-axis audit."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "22-projectile-icf",
+      "energy_capture": "Thermal (steam)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 186,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": null,
+      "deviations": [],
+      "narrative_contradictions": [],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [],
+      "confidence_notes": [
+        "The standardization comment on line 187 reads '# standardized from 0.33 per scoring_framework.md (Energy Capture: Thermal (steam))' \u2014 the original value was 0.33, consistent with the surrounding docstring narrative ('Steam Rankine at this scale operates at 33-35%'). The standardized value of 0.35 is within the cited range so there is no narrative contradiction.",
+        "No eta_de kwarg exists anywhere in the file. This is correct for a Thermal (steam) concept with f_dec=0 \u2014 the DEC channel is inert and costingfe's pulsed_conversion logic correctly zero-contributes p_dee.",
+        "The power computation at line 434 uses self.thermal_efficiency directly as the sole conversion factor (p_et = p_th * self.thermal_efficiency), with no DEC term \u2014 consistent with a pure thermal-cycle architecture.",
+        "No scenario sweep blocks contain thermal_efficiency values; the six sensitivity sweeps cover fusion_yield_MJ, driver_cost_M_USD, driver_rep_rate_Hz, driver_efficiency, target_cost_USD, and plant_availability only."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "20b-renaissance-stellarator",
+      "energy_capture": "Thermal (sCO2)",
+      "canonical_eta_th": 0.48,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 139,
+          "value": 0.48,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": [
+        {
+          "line": 159,
+          "value": 0.0,
+          "context": "DEC"
+        }
+      ],
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 139,
+          "observed_value": 0.48,
+          "narrative_value_or_description": "Module docstring 'Key deviations' section (line 34) states 'eta_th: 0.50 (sCO\u2082 combined cycle; PowerCycle.BRAYTON_SCO2 default = 0.47)'; model construction comment (line 54) reads 'eta_th overridden to 0.50 below' \u2014 both stale references to the pre-standardization value of 0.50",
+          "severity": "medium"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [],
+      "confidence_notes": [
+        "eta_th standardized from 0.50 to 0.48 per scoring_framework.md; the inline comment on the kwarg line documents this, but the module docstring (line 34) and model construction comment (line 54) were not updated \u2014 both still show 0.50. A reader scanning the module header would conclude eta_th=0.50 is in use.",
+        "eta_de prior value of 0.85 (per 'standardized from 0.85' inline comment) is unusual; it likely came from a DEC-capable concept template. The standardized 0.00 is correct for Thermal (sCO2) with f_dec=0.0 explicitly set, making eta_de inert regardless of value.",
+        "Both canonical kwargs feed the single primary model.forward(net_electric_mw=NET_ELECTRIC_MW, **_SHARED_KWARGS) call at line ~201. No secondary canonical forward() call uses different eta_th or eta_de.",
+        "The coil cost scenario loop and b_max sweep loop reconstruct kwargs from _SHARED_KWARGS using dict unpacking and explicit exclusions \u2014 neither loop overrides eta_th or eta_de, so sweep runs inherit canonical values cleanly.",
+        "f_dec=0.0 is explicitly set in _SHARED_KWARGS, which zeros the DEC channel in costingfe regardless of eta_de. The eta_de=0.00 assignment is consistent and redundant (belt-and-suspenders), not a gap."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "20a-type-one-stellarator",
+      "energy_capture": "Thermal (steam)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 105,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": [
+        {
+          "line": 134,
+          "value": 0.0,
+          "context": "DEC"
+        }
+      ],
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 108,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Adjacent comment block reads '0.40 is intentionally conservative \u2014 Rankine efficiency at this operating point is unpublished'; describes 0.40 as the deliberate design choice, directly contradicting the actual constant value of 0.35",
+          "severity": "medium"
+        },
+        {
+          "axis": "eta_th",
+          "line": 204,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Inline comment in _SHARED_KWARGS reads '# 0.40 \u2014 UNCERTAIN (conservative; implied 47% from 880 MW thermal / 415 MWe gross)'; asserts the passed value is 0.40 when ETA_TH is 0.35",
+          "severity": "medium"
+        },
+        {
+          "axis": "eta_de",
+          "line": 207,
+          "observed_value": 0.0,
+          "narrative_value_or_description": "Inline comment in _SHARED_KWARGS reads '# 0.85 \u2014 DEFAULT (DEC not used)'; directly states a value of 0.85 while the actual constant ETA_DE is 0.00 \u2014 a complete reversal",
+          "severity": "high"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [],
+      "confidence_notes": [
+        "Both ETA_TH and ETA_DE carry '# standardized from X' annotations (0.4\u21920.35 for eta_th; 0.85\u21920.00 for eta_de), indicating the batch standardizer updated the constants but left the surrounding narrative \u2014 comment blocks, inline kwarg comments \u2014 un-updated.",
+        "ETA_DE was originally 0.85 despite this being a Thermal (steam) concept. This was semantically incorrect but computationally inert: F_DEC=0.0 is also set, so p_dee = f_dec * eta_de * p_transport = 0 regardless of eta_de's value. The standardizer correctly zeroed it.",
+        "Docstring lines 15 and 45 still reference 0.40 as the intended eta_th ('central estimate of 0.40 is used'; '- eta_th = 0.40 \u2014 UNCERTAIN'); these are stale after standardization but are file-level documentation rather than kwarg-adjacent comments, so they are not listed in narrative_contradictions.",
+        "The results section f-strings use {ETA_TH} and expand at runtime to 0.35, so all printed output is numerically correct. No hardcoded stale numeric literals appear in the print statements for eta_th or eta_de."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "26-laser-icf-indirect-drive",
+      "energy_capture": "Thermal (steam)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 92,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": null,
+      "deviations": [],
+      "narrative_contradictions": [],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [],
+      "confidence_notes": [
+        "eta_th=0.35 is consistently described as steam Rankine throughout the file (docstring, inline comment at line ~92, and Key Assumptions item 6). No contradiction with the canonical value.",
+        "eta_de is absent, which is correct for a pure Thermal (steam) energy capture concept \u2014 the DEC channel (f_dec=0) is inert and costingfe does not require eta_de in this configuration.",
+        "The file contains no scenario sweep over eta_th or eta_de. Availability, laser cost, and target factory are swept, but thermal efficiency is held fixed at 0.35 throughout.",
+        "A note in the docstring and Key Assumption 6 flags that Xcimer's claimed 45% helium Brayton (IFE Workshop 2022) is unresolved but explicitly NOT applied here. This is an acknowledged uncertainty, not a contradiction.",
+        "Two model.forward() calls exist (native 1.5 GWe and 1 GWe scaled), both drawing eta_th=0.35 from _SHARED_KWARGS. Consistent."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "25-heavy-ion-beam-icf",
+      "energy_capture": "Thermal (steam)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 96,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": null,
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 245,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Print statement outputs 'eta_th = 0.38 UNCERTAIN: conservative steam Rankine (1990s design era)' \u2014 the pre-standardization value. The actual kwarg at line 96 is 0.35 (standardized), but the Key Assumptions print block was not updated and still reports 0.38 to stdout.",
+          "severity": "medium"
+        },
+        {
+          "axis": "eta_th",
+          "line": 19,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Module docstring states 'eta_th = 0.38: conservative steam Rankine for 1990s-era design' in the Modeling approach section \u2014 the pre-standardization value. The actual kwarg is 0.35.",
+          "severity": "low"
+        },
+        {
+          "axis": "eta_th",
+          "line": 33,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Module docstring 'Key deviations' section lists 'eta_th = 0.38 UNCERTAIN: steam Rankine analogue; no modern HIF thermal study' \u2014 again the pre-standardization value. The actual kwarg is 0.35.",
+          "severity": "low"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [],
+      "confidence_notes": [
+        "The only eta_th occurrence in executable code is line 96 inside _SHARED_KWARGS, which feeds both model.forward() calls (line 158 and 164) via **_SHARED_KWARGS. No eta_th overrides appear in any sweep loop.",
+        "The driver efficiency sweep (lines 326\u2013349) and driver cost sweep (lines 364\u2013386) and availability sweep (lines 400\u2013421) do not touch eta_th or eta_de, so canonical eta_th=0.35 propagates into all scenario runs unchanged.",
+        "No eta_de kwarg is present anywhere in the file. For Thermal (steam) energy capture this is correct \u2014 the DEC channel is inert (f_dec=0) and eta_de absence is expected per costingfe conventions.",
+        "The inline comment on line 96 ('standardized from 0.38 per scoring_framework.md') correctly documents the standardization provenance. The three narrative contradiction sites (docstring lines 19, 33, and print line 245) all predate standardization and were not updated \u2014 the print output at line 245 actively misleads a reader of model_output.txt by reporting 0.38 as the operative value.",
+        "Energy Capture classification as Thermal (steam) is unambiguous: HYLIFE-II uses FLiBe primary coolant \u2192 secondary steam Rankine cycle with no direct-energy-conversion channel."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "24-dense-plasma-focus",
+      "energy_capture": "Direct (charged particle)",
+      "canonical_eta_th": 0.0,
+      "canonical_eta_de": 0.7,
+      "observed_eta_th": null,
+      "observed_eta_de": [
+        {
+          "line": 102,
+          "value": 0.7,
+          "context": "DEC"
+        },
+        {
+          "line": 110,
+          "value": 0.7,
+          "context": "DEC"
+        }
+      ],
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_de",
+          "line": 102,
+          "observed_value": 0.7,
+          "narrative_value_or_description": "Docstring cites LPPFusion's energy-recovery-linac analogy at ~85%; inline comment records standardization from 0.85 to 0.70, but the surrounding source narrative still anchors the device physics at 85%",
+          "severity": "medium"
+        },
+        {
+          "axis": "eta_de",
+          "line": 110,
+          "observed_value": 0.7,
+          "narrative_value_or_description": "Docstring cites LPPFusion design estimate '80%+' for the X-ray photoelectric converter; inline comment records standardization from 0.80 to 0.70, leaving a mismatch between stated source value and model value",
+          "severity": "medium"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [
+        {
+          "axis": "eta_de",
+          "line": 1020,
+          "value": 0.8,
+          "scenario_label": "Conservative (FOAK, pessimistic)",
+          "concern": "Conservative scenario sets eta_dec=0.80, which is HIGHER than the canonical/baseline 0.70; blended DEC efficiency (0.65*0.80 + 0.35*0.70 = 0.765) exceeds the baseline blended value (0.70). A pessimistic scenario should use lower DEC efficiency, not higher. This looks like the standardizer lowered the canonical value to 0.70 but the conservative scenario was not correspondingly adjusted, inverting the intended direction."
+        }
+      ],
+      "confidence_notes": [
+        "Model does not use costingfe.forward() \u2014 it is a fully custom pulsed-power implementation with its own per-shot energy balance; eta_th and eta_de are not kwargs to any standard costingfe interface call.",
+        "DEC is decomposed into two parallel sub-channels: eta_dec (ion beam decelerator, line ~102) and eta_xray (X-ray photoelectric converter, line ~110). Both are set to 0.70. No single eta_de kwarg exists; the two-channel split is physics-motivated by the p-B11 energy partitioning (f_ion_beam / 1-f_ion_beam).",
+        "eta_th is entirely absent as a model parameter. Thermal power is hardcoded as p_th = 0.0 in _compute_power(). This is architecturally correct for a fully aneutronic direct-conversion concept with no thermal cycle.",
+        "Blended effective DEC efficiency at baseline = f_ion_beam*eta_dec + (1-f_ion_beam)*eta_xray = 0.70*0.70 + 0.30*0.70 = 0.700, exactly matching canonical eta_de=0.70. The standardizer correctly landed both sub-channel values at 0.70.",
+        "Standardization is documented with inline '# standardized from X per scoring_framework.md' comments rather than the canonical '# DEVIATION:' prefix format. The deviations are present but in a non-standard annotation style; they carry no Source: or \u00a7reference pointer.",
+        "Optimistic and lpp_claim scenarios use eta_dec=0.85, eta_xray=0.80 \u2014 the pre-standardization original values \u2014 which is appropriate as optimistic upper bounds. No irregularity there.",
+        "Sensitivity sweep over eta_dec [0.50, 0.65, 0.75, 0.85, 0.92] is well-formed; values bracket both the standardized canonical (0.70) and the pre-standardization source value (0.85). No flattening anomaly detected."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "27-polywell",
+      "energy_capture": "Thermal (unspecified)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 106,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": null,
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 106,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Docstring on lines 108-112 cites 'analysis.md \u00a7Section 7 placeholder analogues: 40% Rankine baseline' as the source, but the field is set to 0.35 (35%). The standardization annotation '# standardized from 0.4' explains the discrepancy, but the docstring body still describes 40% as the design analogue without acknowledging the override.",
+          "severity": "medium"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [
+        {
+          "axis": "eta_th",
+          "line": 924,
+          "value": 0.35,
+          "scenario_label": "Conservative (\u03b3=0.2, FOAK)",
+          "concern": "Standardizer set thermal_efficiency=0.35 inside the Conservative scenario block (annotation: '# standardized from 0.38 per scoring_framework.md'). Scenario sweep kwargs should not be standardized; the original 0.38 represented a conservative BOP assumption distinct from the canonical 0.35."
+        },
+        {
+          "axis": "eta_th",
+          "line": 944,
+          "value": 0.35,
+          "scenario_label": "Optimistic (\u03b3=0.1, sCO2, NOAK)",
+          "concern": "Standardizer set thermal_efficiency=0.35 inside the Optimistic scenario block (annotation: '# standardized from 0.45 per scoring_framework.md'). Conservative and Optimistic now share identical thermal_efficiency=0.35, collapsing a meaningful \u00b15\u201310 percentage point scenario spread (0.38 conservative, 0.45 optimistic) to zero."
+        }
+      ],
+      "confidence_notes": [
+        "The model implements its own power balance (_compute_power) rather than calling costingfe.forward(). The formula r['p_et'] = self.thermal_efficiency * r['p_th'] is a pure thermal conversion with no DEC term, which is correct and consistent with Thermal energy capture and canonical eta_de=0.0.",
+        "C220109 (Direct Energy Converter) is explicitly hardcoded to 0.0 with the note 'Standard Rankine thermal cycle assumed; no direct conversion.' This confirms the absence of any DEC channel and is consistent with eta_de=0.0.",
+        "The thermal efficiency carries HIGH UNCERTAINTY throughout: no thermal cycle, coolant circuit, or BOP architecture has been specified or published for the Polywell. The 0.35 value is a conservative Rankine steam analogue with no Polywell-specific engineering basis; the docstring simultaneously cites a 40% Rankine baseline, creating the narrative contradiction noted above.",
+        "All three scenarios (conservative, moderate, optimistic) now have thermal_efficiency=0.35 after standardization. The original scenario spread (0.38 / 0.40 / 0.45) has been fully collapsed, removing a meaningful source of scenario differentiation in a concept where the BOP efficiency is described as completely unspecified and HIGH UNCERTAINTY."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "28-hts-tokamak-full-hts",
+      "energy_capture": "Thermal (unspecified)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 181,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": [
+        {
+          "line": 194,
+          "value": 0.0,
+          "context": "DEC"
+        }
+      ],
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 185,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Comment on line 185 reads '0.40 conservative steam Rankine assumption; sCO2 Brayton could reach 0.45\u20130.50' \u2014 describes the pre-standardization value; stale after ETA_TH was updated from 0.40 to 0.35",
+          "severity": "medium"
+        },
+        {
+          "axis": "eta_th",
+          "line": 77,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Module docstring 'Key deviations' table (line 77) lists '- eta_th = 0.40: steam Rankine conservative; power cycle undisclosed' \u2014 stale after standardization to 0.35; docstring was not updated when the constant was changed",
+          "severity": "medium"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [],
+      "confidence_notes": [
+        "ETA_TH = 0.35 matches canonical. The standardization annotation '# standardized from 0.4 per scoring_framework.md (Energy Capture: Thermal (unspecified))' appears on line 182, the line immediately below the assignment with a leading space \u2014 a formatting artifact suggesting the standardizer inserted it as a follow-on comment rather than a true inline comment. This does not affect execution.",
+        "ETA_DE = 0.00 matches canonical for a thermal concept with f_dec=0.0. The annotation '# standardized from 0.85' on line 194 records the pre-fix bug value (0.85), which would have incorrectly activated the DEC energy channel for a pure thermal concept. The correction to 0.0 is consistent with f_dec=0.0 declared two lines below.",
+        "Two stale narrative references to eta_th = 0.40 survive the standardization pass: the module docstring 'Key deviations' block (line 77) and the trailing comment block immediately below ETA_TH (line 185). Neither alters cost model execution since ETA_TH = 0.35 is what propagates into _base_kwargs(), but both will mislead readers of the analysis narrative.",
+        "All five scenario branches (Base, A, B, C, D) consume ETA_TH and ETA_DE exclusively through _base_kwargs(), which references the module-level constants directly. No scenario overrides either efficiency parameter, so canonical values are uniform across all runs. No sweep touches eta_th or eta_de."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "30-laser-icf-nif-commercialization",
+      "energy_capture": "Thermal (steam)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 101,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": null,
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 241,
+          "observed_value": 0.45,
+          "narrative_value_or_description": "print statement hard-codes 'eta_th = 0.45' in the Key Assumptions output block; the canonical kwarg at line 101 was updated to 0.35 by the standardizer but this print was not, so model_output.txt will report the wrong value",
+          "severity": "high"
+        },
+        {
+          "axis": "eta_th",
+          "line": 336,
+          "observed_value": 0.45,
+          "narrative_value_or_description": "inline comment on _LIFE_ETA_TH = 0.44 reads '# thermal efficiency (model uses 0.45)' \u2014 the parenthetical is a stale description of the pre-standardization kwarg; canonical is now 0.35",
+          "severity": "medium"
+        },
+        {
+          "axis": "eta_th",
+          "line": 27,
+          "observed_value": 0.45,
+          "narrative_value_or_description": "module docstring bullet reads 'Thermal efficiency: LLNL LIFE analogue (45%); Inertia has not published a confirmed plant-level value' \u2014 the 45% figure describes the source analogue but the docstring does not note that the model was subsequently standardized to 0.35, which may mislead readers about the modeled value",
+          "severity": "low"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [
+        {
+          "axis": "eta_th",
+          "line": 293,
+          "value": 0.45,
+          "scenario_label": "Q_sci Sweep (e_driver_mj=10 MJ fixed)",
+          "concern": "Q_sci sweep pre-computes _p_et, _q_eng_pt, and _p_net using a hardcoded 0.45 for eta_th, then passes the derived q_eng and p_net as override arguments to model.forward() which internally uses the canonical eta_th=0.35 from **_SWEEP_KWARGS. The sweep physics (power balance derivation) is therefore inconsistent with the model's actual thermal conversion \u2014 the standardizer updated the kwarg at line 101 but not this hardcoded value. Sweep LCOE outputs are biased by the mismatch between the assumed 0.45 in the pre-computation and the operative 0.35 in the cost engine."
+        }
+      ],
+      "confidence_notes": [
+        "The standardizer annotation at line 101 ('standardized from 0.45 per scoring_framework.md') confirms the kwarg was intentionally changed; no # DEVIATION: annotation is present, indicating this is a conforming standardization with no approved exception.",
+        "The LIFE calibration print at line 350 uses _SHARED_KWARGS['eta_th'] dynamically, so the printed LIFE comparison line will correctly show 35% and does not require a fix.",
+        "eta_de is absent throughout; for Thermal (steam) energy capture this is acceptable \u2014 the DEC channel is inert when f_dec=0 and costingfe does not require eta_de to be supplied.",
+        "Three stale 0.45 references remain post-standardization: line 241 (print statement \u2014 will produce incorrect model_output.txt), line 293 (sweep physics \u2014 physics/cost mismatch), line 336 (comment only \u2014 no runtime effect)."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "29-negative-triangularity-tokamak",
+      "energy_capture": "Thermal (unspecified)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 79,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": [
+        {
+          "line": 83,
+          "value": 0.0,
+          "context": "DEC"
+        }
+      ],
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 79,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Power-balance derivation comment block immediately above the kwarg (lines 69\u201371) explicitly computes eta_th = 204.5/539.5 \u2248 0.38 from MANTA figures. Module docstring line 15 also states 'eta_th=0.38 (back-calculated from MANTA power balance: 539 MW thermal \u2192 90 MWe net via steam Rankine \u2026)'. Both the inline derivation and the docstring anchor 0.38 as the physics-derived value, while the kwarg carries 0.35. The 'standardized from 0.38' annotation on line 79 acknowledges the change but the power-balance block and docstring were not updated.",
+          "severity": "medium"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [
+        {
+          "axis": "eta_th",
+          "line": 362,
+          "value": 0.38,
+          "scenario_label": "MANTA pilot-plant Rankine (baseline)",
+          "concern": "The thermal-efficiency scenario output table hardcodes the string literal '0.38' as the displayed eta_th for the baseline row, but the underlying c1.lcoe was computed from _SHARED_KWARGS with eta_th=0.35 (post-standardization). The standardizer updated the canonical kwarg but left this label string stale. The printed LCOE and overnight-cost numbers therefore reflect eta_th=0.35 while the table represents them as corresponding to 0.38, creating a silent mismatch in the model output artifact."
+        }
+      ],
+      "confidence_notes": [
+        "eta_de comment on line 83 reads 'standardized from 0.85'. An eta_de of 0.85 pre-standardization is anomalous for a tokamak with f_dec=0.0 \u2014 there is no DEC channel. The standardizer correctly zeroed it for Thermal energy capture, but the 'from 0.85' annotation implies the original file placed an incorrect non-zero value in eta_de, possibly a mistaken overall-plant efficiency or carry-over from a non-Thermal concept template.",
+        "The mn=1.11 kwarg (line 77) carries a proper '# DEVIATION:' annotation with a source citation (manta-reference-design.md \u00a75.1), confirming the DEVIATION pattern is in active use in this file. Its absence on eta_th and eta_de confirms those lines are treated as standardized conforming values, not concept-level physics overrides.",
+        "The ohmic-only branch and H_NA sweep inherit _SHARED_KWARGS intact and do not override eta_th or eta_de. No anomalies in those sweep blocks with respect to the efficiency axes.",
+        "The C220103 \u00b150% sweep also does not touch eta_th or eta_de. No anomalies."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "32-laser-icf-french-national",
+      "energy_capture": "Thermal (unspecified)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 138,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": null,
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 138,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Multiple surrounding comments specify 40% thermal efficiency: the module docstring states 'eta_th = 0.40: Ribeyre \u00a7III specifies Rankine/gas-turbine at 40%'; the q_eng derivation comment uses 'P_gross = \u03b7_th \u00d7 P_th = 0.40 \u00d7 3919 = 1568 MWe'; Key Assumption #1 states '\u03b7_th = 40%'; Key Assumption #9 states 'eta_th = 40%: Ribeyre \u00a7III specifies Rankine cycle or gas turbine at this efficiency'.",
+          "severity": "high"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [
+        {
+          "axis": "eta_th",
+          "line": 306,
+          "value": 0.35,
+          "scenario_label": "Laser cost sweep",
+          "concern": "Sweep call uses eta_th=0.35 with '# standardized from 0.4' annotation \u2014 sweep values should reflect the original physics basis (0.40 from Ribeyre \u00a7III), not the standardized canonical value. The standardizer appears to have propagated the override into sweep blocks."
+        },
+        {
+          "axis": "eta_th",
+          "line": 356,
+          "value": 0.35,
+          "scenario_label": "Target factory cost sweep",
+          "concern": "Same issue as laser cost sweep: sweep call uses eta_th=0.35 with '# standardized from 0.4' annotation. Sweep blocks should not carry the standardized value when the source physics basis is 0.40."
+        }
+      ],
+      "confidence_notes": [
+        "The canonical eta_th=0.35 (line 138) carries a '# standardized from 0.4 per scoring_framework.md' annotation, confirming it was overridden from the Ribeyre 2025 source value of 0.40. This creates a significant internal consistency problem: the q_eng=4.31 was computed using \u03b7_th=0.40 (P_gross = 0.40 \u00d7 3919 = 1568 MWe per the comment), but the model is now run with eta_th=0.35. These two values are incompatible \u2014 the q_eng kwarg embeds the 0.40 assumption, while the eta_th kwarg applies 0.35 to the thermal channel, likely resulting in an underestimated gross power.",
+        "eta_de is absent, which is correct for Thermal (unspecified) energy capture \u2014 the DEC channel is inactive (f_dec=0 implicit). No missing_kwargs issue.",
+        "The sweep calls at lines ~306 and ~356 also carry the standardized eta_th=0.35 with annotation comments, suggesting the standardizer touched sweep blocks it should not have modified.",
+        "All three model.forward() calls (canonical + 2 sweep loops) use eta_th=0.35, so the standardization was applied consistently across the file, but the q_eng inconsistency is present in all three."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "33-state-backed-tokamak-best",
+      "energy_capture": "Thermal (unspecified)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 166,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": [
+        {
+          "line": 176,
+          "value": 0.0,
+          "context": "DEC"
+        }
+      ],
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 166,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Surrounding comments state '34.7%' (0.347) from CFETR/BEST lineage studies, and the standardization annotation reads 'standardized from 0.347'. The docstring at the top of the file also states 'eta_th = 0.347'. The value 0.35 is the rounded canonical, but the narrative consistently describes 0.347.",
+          "severity": "low"
+        },
+        {
+          "axis": "eta_de",
+          "line": 176,
+          "observed_value": 0.0,
+          "narrative_value_or_description": "The standardization annotation reads 'standardized from 0.85 per scoring_framework.md'. An original eta_de of 0.85 would only be appropriate for a direct-energy-conversion channel; for a pure thermal tokamak with f_dec=0.0, this prior value suggests the field may have been misassigned before standardization.",
+          "severity": "medium"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [
+        {
+          "axis": "eta_th",
+          "line": 338,
+          "value": 0.264,
+          "scenario_label": "WCCB/ceramic breeder + Rankine",
+          "concern": "Sweep value looks reasonable (26.4% steam Rankine for water-cooled ceramic breeder). No issue flagged."
+        }
+      ],
+      "confidence_notes": [
+        "The inline annotation on eta_th (line 166) reads '# standardized from 0.347 per scoring_framework.md (Energy Capture: Thermal (unspecified))' \u2014 the standardizer replaced 0.347 with 0.35 as the canonical value. This is an expected standardization; no drift.",
+        "The inline annotation on eta_de (line 176) reads '# standardized from 0.85 per scoring_framework.md (Energy Capture: Thermal (unspecified))' \u2014 the pre-standardization value of 0.85 would imply a functioning DEC channel, but this is a pure thermal tokamak with f_dec=0.0. The original 0.85 value appears to have been a bug (likely the pre-2026-05 double-count issue); standardization correctly zeroed it.",
+        "f_dec=0.0 is explicitly set, confirming the DEC channel is inactive. eta_de=0.0 is therefore consistent with the physics.",
+        "The blanket scenario sweep uses a separate CostModel instance (_model_rankine) with eta_th=0.264; this is a proper scenario sweep and not a canonical kwarg.",
+        "The scenario forward calls for Chinese construction discount and regulatory factor scenarios reuse _SHARED_KWARGS directly (which includes eta_th=0.35 and eta_de=0.0), so no eta drift in those sweep calls.",
+        "No DEVIATION annotations are present on any eta_th or eta_de lines."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "23-laser-icf-nanostructured-target",
+      "energy_capture": "Hybrid (thermal + direct)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.54,
+      "observed_eta_th": [
+        {
+          "line": 78,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": [
+        {
+          "line": 377,
+          "value": 0.54,
+          "context": "DEC"
+        }
+      ],
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 78,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Multiple surrounding references describe the value as 0.40 / 40%: module docstring line 7 ('conservative 40% thermal efficiency'), docstring Key Deviations line 19 ('eta_th=0.40'), comment line 76 ('Using 0.40 as conservative primary estimate'), print label line 249 ('eta_th=40%'), and Key Assumptions print block line 322 ('eta_th = 40%'). None were updated when the standardizer changed the value from 0.40 to 0.35.",
+          "severity": "high"
+        },
+        {
+          "axis": "eta_de",
+          "line": 377,
+          "observed_value": 0.54,
+          "narrative_value_or_description": "The comment on _dec_params['eta_dec'] = 0.30 (line 373, 'mid-range base point for elasticity') and the print label on line 388 ('base eta_dec=30%') both describe 0.30 as the base point for the elasticity calculation, but the actual model_dec.forward() call at line 375 uses eta_dec=0.54. The _dec_params dict is never passed to the forward call and appears to be dead code left over from before the standardizer changed line 377 from 0.30 to 0.54.",
+          "severity": "medium"
+        }
+      ],
+      "missing_kwargs": [
+        {
+          "axis": "eta_de",
+          "reasoning": "Energy Capture is Hybrid (thermal + direct), which requires eta_de in the primary canonical call. _SHARED_KWARGS (lines 97\u2013131) contains eta_th but no eta_dec, so the primary result (result = model.forward(..., **_SHARED_KWARGS), line 134) and the 1 GW scale result both run without eta_dec. The DEC sensitivity base (_result_dec_base, line 375) has eta_dec=0.54, but that is a non-primary call used only for elasticity computation \u2014 it does not populate the economic output reported in model_output.txt."
+        }
+      ],
+      "scenario_sweep_findings": [
+        {
+          "axis": "eta_th",
+          "line": 160,
+          "value": 0.35,
+          "scenario_label": "HB11 Energy comparison scenario",
+          "concern": "Standardizer changed HB11 eta_th from 0.55 to 0.35 per inline annotation '# standardized from 0.55 per scoring_framework.md'. HB11 is a distinct design point with its own physics basis and should not be flattened to the Marvel canonical value. Additionally, the print header at line 258 labels this scenario 'eta_th=38%', which matches neither the original 0.55 nor the standardized 0.35, leaving the output label doubly stale."
+        }
+      ],
+      "confidence_notes": [
+        "No '# DEVIATION:' annotations exist anywhere in the file. All standardizer changes are marked with '# standardized from <X> per scoring_framework.md' either on a following standalone comment line (eta_th, line 79) or as an inline trailing comment (HB11 eta_th line 160, eta_dec line 378).",
+        "ETA_TH_CONSERVATIVE = 0.35 (line 78) carries a standalone comment on line 79: '# standardized from 0.4 per scoring_framework.md (Energy Capture: Hybrid (thermal + direct))'. The surrounding narrative block (lines 72\u201377) was not updated, leaving at least five stale '40%' references across the docstring, comments, and print labels.",
+        "eta_dec=0.54 (line 377) carries a trailing comment on line 378: '# standardized from 0.3 per scoring_framework.md'. The standardizer changed the sensitivity base-point from 0.30 to 0.54 to match canonical_eta_de but left the adjacent _dec_params['eta_dec'] = 0.30 (line 373) as unreachable dead code and the print label on line 388 ('base eta_dec=30%') stale.",
+        "The primary cost result (result = model.forward(), line 134) uses thermal-only physics. The Hybrid energy capture classification implies DEC is active, but the base-case economic output intentionally reflects steam Rankine only. The DEC path is modeled separately via model_dec in the sensitivity and sweep sections. This may be a deliberate conservative-base-case design choice, but it means the primary LCOE figure in model_output.txt does not include the hybrid conversion channel.",
+        "The DEC sweep list (ETA_DEC_SWEEP = [0.0, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60], line 94) and the for-loop body (lines 205\u2013234) contain no '# standardized from' annotations; the standardizer correctly left these sweep values untouched."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "31-laser-icf-oec-architecture",
+      "energy_capture": "Hybrid (thermal + direct)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.54,
+      "observed_eta_th": [
+        {
+          "line": 60,
+          "value": 0.55,
+          "context": "blended"
+        },
+        {
+          "line": 108,
+          "value": 0.517,
+          "context": "blended"
+        }
+      ],
+      "observed_eta_de": [
+        {
+          "line": 78,
+          "value": 0.44,
+          "context": "DEC"
+        }
+      ],
+      "deviations": [
+        {
+          "axis": "eta_th",
+          "line": 60,
+          "value": 0.55,
+          "has_source_citation": true,
+          "rationale_summary": "Pinned at 0.55 (previous incorrect hybrid canonical) to avoid changing ETA_TH_COMBINED blend output mid-PR; original sourced value was 0.44 per optics-express-2025-paper.md \u00a7Table 2; structural refactor to pulsed_conversion=INDUCTIVE_DEC pending"
+        },
+        {
+          "axis": "eta_de",
+          "line": 78,
+          "value": 0.44,
+          "has_source_citation": false,
+          "rationale_summary": "Module-level constant folded into ETA_TH_COMBINED blend workaround rather than passed as separate eta_de kwarg to the engine; canonical eta_de is 0.54; DEVIATION annotation until structural refactor of 08+31 lands"
+        },
+        {
+          "axis": "eta_th",
+          "line": 108,
+          "value": 0.517,
+          "has_source_citation": true,
+          "rationale_summary": "eta_th kwarg receives blended value (F_NEUTRON\u00d7ETA_TH + F_CHARGED\u00d7ETA_DEC = 0.517) instead of thermal-cycle efficiency only; costingfe expects separate thermal and DEC channels for Hybrid; correct fix is to wire f_dec and eta_de explicitly per Issue #30 / .project/active/eta_th-double-count-fix/"
+        }
+      ],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 119,
+          "observed_value": 0.517,
+          "narrative_value_or_description": "Inline comment asserts '0.44 = F_NEUTRON\u00d7ETA_TH + F_CHARGED\u00d7ETA_DEC' but with ETA_TH=0.55 the formula yields 0.70\u00d70.55+0.30\u00d70.44=0.517, not 0.44; comment was not updated after ETA_TH was deviated from 0.44 to 0.55, leaving an arithmetic falsehood annotating the canonical call",
+          "severity": "high"
+        },
+        {
+          "axis": "eta_th",
+          "line": 24,
+          "observed_value": 0.55,
+          "narrative_value_or_description": "Module docstring 'Key deviations from defaults' still lists 'eta_th = 0.44 (vs RANKINE default 0.40)' but the current module-level ETA_TH = 0.55 after DEVIATION was applied; docstring not updated post-standardization",
+          "severity": "medium"
+        }
+      ],
+      "missing_kwargs": [
+        {
+          "axis": "eta_de",
+          "reasoning": "Hybrid energy capture requires a separate eta_de kwarg wired to the DEC channel in costingfe (via f_dec / eta_de); ETA_DEC=0.44 exists as a module-level constant but is never passed as eta_de to model.forward() \u2014 it is folded into ETA_TH_COMBINED instead, leaving the engine's DEC channel undriven and the two channels inseparable by the cost engine"
+        }
+      ],
+      "scenario_sweep_findings": [
+        {
+          "axis": "eta_th",
+          "line": 288,
+          "value": 0.517,
+          "scenario_label": "DEC Efficiency Sensitivity \u2014 canonical sweep point (eta_dec=0.44, marked \u2190)",
+          "concern": "Sweep label at line 283 states '\u03b7_th (He Brayton + Li-breeding) fixed at 0.44' but the loop formula F_NEUTRON * ETA_TH references ETA_TH=0.55 (DEVIATION), so the thermal component is 0.385 not 0.308; at the canonical sweep point (eta_dec=0.44 \u2190) eta_eff=0.517 rather than 0.44 as the commentary implies \u2014 the sweep's stated baseline is internally inconsistent with ETA_TH's deviated value"
+        }
+      ],
+      "confidence_notes": [
+        "ETA_TH_COMBINED runtime value is 0.517 (0.70\u00d70.55 + 0.30\u00d70.44), not 0.44 as claimed in the inline comment at line 119; the arithmetic error was introduced when ETA_TH was deviated from 0.44 to 0.55 without updating the comment or the derived constant",
+        "The file does not use costingfe's native DEC pathway (pulsed_conversion=INDUCTIVE_DEC); both conversion channels are collapsed into a single blended eta_th passed to a THERMAL forward pass, so eta_de is never passed to the engine and the DEC cost and power contribution are not independently tracked",
+        "ETA_TH=0.55 is described as 'the previous (incorrect) hybrid canonical' pinned to avoid changing blended-formula output mid-PR, but this stated goal does not hold: the previous direct pass eta_th=0.55 yielded gross efficiency 0.55, whereas ETA_TH_COMBINED now evaluates to 0.517 \u2014 the pin does not preserve backward compatibility",
+        "The _q_eng_from_gain helper function (line 304) uses eta_th=ETA_TH (0.55) as its default, which is consistent with a pure thermal efficiency framing but inconsistent with ETA_TH_COMBINED=0.517 being the actual value passed to model.forward()",
+        "Line 108 observed value (0.517) is inferred from module-level constants ETA_TH=0.55 and ETA_DEC=0.44 via ETA_TH_COMBINED; it is not a numeric literal in the source"
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "38-particle-accelerator-driven-fusion",
+      "energy_capture": "N/A",
+      "canonical_eta_th": null,
+      "canonical_eta_de": null,
+      "observed_eta_th": null,
+      "observed_eta_de": null,
+      "deviations": [],
+      "narrative_contradictions": [],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [],
+      "confidence_notes": [
+        "Unrecognized Energy Capture key for canonical lookup (Unknown energy capture type: 'N/A'. Valid keys: ['direct (charged particle)', 'direct (inductive)', 'hybrid (thermal + direct)', 'tbd', 'thermal (sco2)', 'thermal (steam)', 'thermal (unspecified)', 'unknown']); skipped LLM call to save cost."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "37-magnetized-target-inertial-fusion-mtif",
+      "energy_capture": "Thermal (unspecified)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 79,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": null,
+      "deviations": [],
+      "narrative_contradictions": [],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [],
+      "confidence_notes": [
+        "eta_th=0.35 exactly matches canonical. Surrounding comments describe it as 'subcritical steam Rankine; coal-plant retrofit framing implies subcritical host plant (~33\u201336 %)' \u2014 midpoint 34.5 % rounds to 0.35; no contradiction.",
+        "eta_de is absent from the file. For Thermal energy capture with f_dec=0, the DEC channel is inert and eta_de absence is permissible per schema rules. canonical_eta_de=0.0 is consistent with no DEC channel.",
+        "The module docstring enumerates 'Key deviations from framework defaults' including eta_th=0.35 (vs. default 0.40 supercritical Rankine). This is module-level documentation of the deviation, not an inline # DEVIATION: annotation on the kwarg line itself, so no deviations[] entry is warranted.",
+        "The driver cost scenario loop (CF-F2) and rail consumable sweep (CF-F1) do not vary eta_th or eta_de \u2014 both pass **_SHARED_KWARGS unchanged. No sweep irregularities for these axes.",
+        "Both canonical forward calls (200 MWe and 1 GWe) receive eta_th via **_SHARED_KWARGS; the value is consistent across all model.forward() invocations in the file."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "36-helical-coil-stellarator",
+      "energy_capture": "Thermal (sCO2)",
+      "canonical_eta_th": 0.48,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 91,
+          "value": 0.48,
+          "context": "thermal-cycle"
+        },
+        {
+          "line": 150,
+          "value": 0.48,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": [
+        {
+          "line": 153,
+          "value": 0.0,
+          "context": "DEC"
+        }
+      ],
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 40,
+          "observed_value": 0.48,
+          "narrative_value_or_description": "Docstring states 'eta_th is overridden to 0.50 (conservative within the >50% published target)' but the actual constant _ETA_TH_CENTRAL = 0.48; docstring was not updated after standardization from 0.50 to 0.48",
+          "severity": "medium"
+        },
+        {
+          "axis": "eta_th",
+          "line": 44,
+          "observed_value": 0.48,
+          "narrative_value_or_description": "Key-deviations block in docstring states 'sCO\u2082 Brayton cycle (BRAYTON_SCO2 preset; eta_th overridden to 0.50)' but actual value is 0.48; same stale docstring as line 40",
+          "severity": "medium"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [
+        {
+          "axis": "eta_th",
+          "line": 377,
+          "value": 0.5,
+          "scenario_label": "HESTIA target (>50%) \u2014 design target \u2190 BASE",
+          "concern": "Entry labeled '\u2190 BASE' at 0.50 but the canonical constant was standardized from 0.50 to 0.48 (line 91). The sweep BASE marker was not updated after standardization and now misidentifies 0.50 as the base case; a reader following the sweep table as a guide would not reproduce the canonical forward-pass result."
+        }
+      ],
+      "confidence_notes": [
+        "Docstring at lines 40 and 44 explicitly names 0.50 as the overridden eta_th value in two independent places ('eta_th is overridden to 0.50' and 'eta_th overridden to 0.50'). The standardization note on line 92 documents the change to 0.48, but the docstring was not updated. The stale docstring is the only record of the pre-standardization intent and creates a misleading first impression for readers who stop at the module header.",
+        "eta_de=0.00 at line 153 carries '# standardized from 0.85 per scoring_framework.md'. A pre-standardization value of 0.85 for eta_de is anomalous for a purely thermal concept where f_dec=0.0 (DEC channel completely inactive). This implies the pre-fix file was placing a blended or overall-plant efficiency into the eta_de slot rather than a DEC-only value \u2014 consistent with the double-count pattern this fix targets. The standardizer correctly zeroed it.",
+        "The sCO\u2082 efficiency sweep at lines 371\u2013379 marks the 0.50 row as '\\u2190 BASE' with label 'design target'. Since the canonical was standardized to 0.48, the sweep's BASE label is now inconsistent with the actual canonical kwarg. Any cross-concept reader using the sweep table to identify the central-case assumption will anchor on 0.50, not 0.48."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "35-polomac-magnetic-confinement",
+      "energy_capture": "Thermal (unspecified)",
+      "canonical_eta_th": 0.35,
+      "canonical_eta_de": 0.0,
+      "observed_eta_th": [
+        {
+          "line": 134,
+          "value": 0.35,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": null,
+      "deviations": [],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 134,
+          "observed_value": 0.35,
+          "narrative_value_or_description": "Docstring (lines 136-142) reads 'ASSUMED: 0.38 is consistent with a steam Rankine cycle at fusion-relevant temperatures (T_exit ~500\u00b0C). Standard MFE assumption.' The narrative was written for the pre-standardization value of 0.38 and was not updated when the field was changed to 0.35; the docstring actively describes 0.38 as the assumed value.",
+          "severity": "medium"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [
+        {
+          "axis": "eta_th",
+          "line": 1018,
+          "value": 0.35,
+          "scenario_label": "Optimistic (D-D scenarios dict)",
+          "concern": "Annotated '# standardized from 0.42 per scoring_framework.md (Energy Capture: Thermal (unspecified))' \u2014 the standardizer modified a value inside a scenario sweep block, collapsing the Optimistic thermal efficiency from 0.42 to 0.35. This flattens the Optimistic scenario to match the Conservative and Moderate canonical value, eliminating thermal-efficiency spread across the three D-D scenarios."
+        },
+        {
+          "axis": "eta_th",
+          "line": 1090,
+          "value": 0.35,
+          "scenario_label": "Optimistic (D-T dt_scenarios dict)",
+          "concern": "Same standardization annotation ('# standardized from 0.42 per scoring_framework.md') appears in the D-T Optimistic scenario block \u2014 thermal_efficiency was 0.42 and was changed to 0.35 by the standardizer inside a sweep block. D-T Optimistic thermal efficiency is now identical to D-T Conservative and Moderate, collapsing the D-T scenario spread as well."
+        },
+        {
+          "axis": "eta_th",
+          "line": 996,
+          "value": 0.35,
+          "scenario_label": "Conservative (D-D scenarios dict)",
+          "concern": "Conservative scenario sets thermal_efficiency=0.35 explicitly with no annotation. This equals the Moderate default and the now-standardized Optimistic value, making all three D-D scenarios identical on this axis. Given the sensitivity sweep includes 0.30 as a lower bound, a Conservative scenario might be expected to use a value below the canonical. Cannot rule out that the standardizer also changed this value without leaving an annotation."
+        }
+      ],
+      "confidence_notes": [
+        "This model does not call costingfe.forward(). It is a fully custom free-form implementation. The thermal_efficiency dataclass field (line 134, default 0.35) serves as eta_th and is applied directly as p_et = p_th * self.thermal_efficiency in _compute_power(). The canonical observation is the field default, not a kwarg to a framework call.",
+        "No DEC channel is modeled. C220109 (Direct Energy Converter) is explicitly set to 0.0 in _compute_cas22(). The absence of eta_de is correct for a pure Thermal energy capture category; eta_de = 0.0 canonical is confirmed by design.",
+        "The '# standardized from 0.38' annotation at line 135 uses non-standard indentation (1 leading space vs. the 4-space field indentation), indicating it was appended after the fact rather than written inline. It does not use the '# DEVIATION:' prefix, so it is not counted as a formal deviation per schema rules \u2014 but it serves the same informational role.",
+        "The sensitivity sweep list at approximately line 960 includes thermal_efficiency values [0.30, 0.35, 0.38, 0.42, 0.46] as a plain Python list inside a tuple literal. These are correctly classified as sweep values and not subject to standardization concerns. The original Optimistic scenario value of 0.42 appears in this sweep range, consistent with the annotation on the Optimistic scenario block."
+      ],
+      "prompt_version": "1.0.0"
+    },
+    {
+      "concept_id": "39-spherical-tokamak-cs-free-p-b11",
+      "energy_capture": "Direct (charged particle)",
+      "canonical_eta_th": 0.0,
+      "canonical_eta_de": 0.7,
+      "observed_eta_th": [
+        {
+          "line": 101,
+          "value": 0.0,
+          "context": "thermal-cycle"
+        }
+      ],
+      "observed_eta_de": [
+        {
+          "line": 96,
+          "value": 0.7,
+          "context": "DEC"
+        }
+      ],
+      "deviations": [
+        {
+          "axis": "eta_th",
+          "line": 215,
+          "value": 0.35,
+          "has_source_citation": false,
+          "rationale_summary": "Scenario override for DEC failure test: eta_th=0.35 keeps power balance non-degenerate when eta_de=0.0; models bremsstrahlung residual thermal channel when DEC fails entirely; canonical is 0.0 for Direct (charged particle)"
+        },
+        {
+          "axis": "eta_de",
+          "line": 215,
+          "value": 0.0,
+          "has_source_citation": false,
+          "rationale_summary": "DEC failure scenario companion value: total DEC failure, no electricity recovered from alpha fraction; paired with eta_th=0.35 to avoid degenerate power balance"
+        }
+      ],
+      "narrative_contradictions": [
+        {
+          "axis": "eta_th",
+          "line": 172,
+          "observed_value": 0.0,
+          "narrative_value_or_description": "Inline _SHARED_KWARGS comment reads '# 0.35 \u2014 DEFAULT (fallback thermal for radiation fraction)' but ETA_TH is 0.00; stale numeric stub left over from pre-standardization value",
+          "severity": "high"
+        },
+        {
+          "axis": "eta_de",
+          "line": 175,
+          "observed_value": 0.7,
+          "narrative_value_or_description": "Inline _SHARED_KWARGS comment reads '# 0.80 \u2014 UNCERTAIN (DEC theoretical efficiency)' but ETA_DE is 0.70; stale numeric stub left over from pre-standardization value",
+          "severity": "high"
+        },
+        {
+          "axis": "eta_de",
+          "line": 21,
+          "observed_value": 0.7,
+          "narrative_value_or_description": "Module docstring states 'Direct energy conversion (f_dec=0.85, eta_de=0.80) replaces steam Rankine cycle' \u2014 pre-standardization value; actual ETA_DE is now 0.70",
+          "severity": "medium"
+        },
+        {
+          "axis": "eta_th",
+          "line": 23,
+          "observed_value": 0.0,
+          "narrative_value_or_description": "Module docstring states 'Radiation fraction (15%) captured thermally at eta_th=0.35' \u2014 pre-standardization value; actual ETA_TH is now 0.00",
+          "severity": "medium"
+        },
+        {
+          "axis": "eta_th",
+          "line": 103,
+          "observed_value": 0.0,
+          "narrative_value_or_description": "Continuation comment for ETA_TH reads '# DEFAULT: steam Rankine analogue; cross-reference 21-spherical-tokamak-hts' \u2014 describing a steam Rankine thermal cycle is misleading for a value of 0.00, which means no thermal conversion is modeled",
+          "severity": "low"
+        },
+        {
+          "axis": "eta_de",
+          "line": 98,
+          "observed_value": 0.7,
+          "narrative_value_or_description": "Continuation comment for ETA_DE reads '# No engineering design published (TRL 1\u20132); 0.80 is optimistic' \u2014 refers to the pre-standardization value of 0.80 as 'optimistic', but the actual value is now 0.70 (the lower bound of the theoretical 70\u201390% range); the optimism claim is no longer self-consistent",
+          "severity": "low"
+        }
+      ],
+      "missing_kwargs": [],
+      "scenario_sweep_findings": [],
+      "confidence_notes": [
+        "Module docstring (lines 21, 23) retains pre-standardization values eta_de=0.80 and eta_th=0.35; the constants ETA_DE and ETA_TH are correctly updated to 0.70 and 0.00 respectively, but the docstring was not refreshed.",
+        "_SHARED_KWARGS inline comments at lines 172 and 175 carry stale numeric stubs ('# 0.35' and '# 0.80') that directly contradict the module constants ETA_TH=0.00 and ETA_DE=0.70; the standardizer updated the constants but left the inline comment values unchanged.",
+        "The '# STALE: analysis-updated-iter-3' file-level marker suggests multiple incremental revision passes; the cluster of stale comments is consistent with a standardizer that updated constant definitions but did not scan continuation comments or the module docstring.",
+        "ETA_TH=0.00 matches the canonical policy for Direct (charged particle). The surrounding comment language ('fallback thermal cycle', 'steam Rankine analogue') was written for the pre-standardization value of 0.35 and is conceptually incorrect at 0.0 \u2014 a zero value means no thermal channel is active, not a zero-efficiency Rankine cycle.",
+        "The Key Assumptions summary print block (near end of file) labels ETA_TH as 'Fallback thermal efficiency \u03b7_th' with annotation '[DEFAULT \u2014 steam Rankine for radiation fraction]'; will print the correct 0.0 at runtime but the surrounding label implies a positive thermal cycle exists.",
+        "The DEC failure scenario (result_dec_failure) is properly marked with a DEVIATION annotation, provides clear rationale, and correctly identifies why eta_th=0.35 is needed to avoid a degenerate power balance. No anomaly in this scenario block."
+      ],
+      "prompt_version": "1.0.0"
+    }
+  ]
+}
