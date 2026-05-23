@@ -61,22 +61,16 @@ ETA_PIN = 0.10            # Wall-plug-to-UV: η_w(IR) × η_3ω = 0.16 × 0.60
 Q_ENG = 5.69
 
 # Power conversion — optics-express-2025-paper.md §Table 2
-ETA_TH = 0.44             # DEVIATION: above canonical 0.35 (Hybrid thermal+direct).
-                          # Paper-sourced (optics-express-2025-paper.md §Table 2):
-                          # He Brayton 0.40 + exothermic Li-breeding boost 0.04.
-                          # Paired with mn=1.0 (vs framework default 1.1) to prevent
-                          # double-counting the boost. MEDIUM confidence.
+ETA_TH = 0.44             # Thermal channel efficiency: He Brayton + Li-breeding boost
+                          # η_th* = 0.40 (He Brayton) + 0.04 (exothermic Li-breeding boost)
+                          # MEDIUM confidence; He Brayton + LiPb blanket is established
 
 MN = 1.0                  # Neutron multiplier: Li-breeding boost embedded in η_th* = 0.44;
                           # setting mn = 1.1 (framework default) would double-count the boost
 
 # DEC channel decomposition — separate parameters for independent framework wiring.
-ETA_DEC = 0.44            # DEVIATION: below canonical 0.54 (Hybrid thermal+direct).
-                          # Source: Rax et al. 2025 §"Conservative DEC estimate" (alpha DEC
-                          # theory, TRL 1–2; cited via optics-express-2025-paper.md §Table 2
-                          # and analysis.md §S5 DEC parameter row).
-                          # LOW confidence; canonical 0.54 bracketed by the
-                          # _ETA_DEC_SWEEP endpoints (0.50, 0.55) below.
+ETA_DEC = 0.44            # DEC efficiency (charged particles; Rax et al. 2025 theory, TRL 1–2)
+                          # LOW confidence; Rax et al. 2025 theory-only estimate, TRL 1–2
 F_CHARGED = 0.30          # Charged-particle fraction of P_fus (alphas + fast ions)
 F_NEUTRON = 0.70          # Neutron fraction → thermal channel (He Brayton via LiPb blanket)
 

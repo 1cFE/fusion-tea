@@ -1,13 +1,3 @@
----
-ID: 31-laser-icf-oec-architecture
-Concept: Laser ICF - OEC Architecture (D-T)
-Company: Blue Laser Fusion (BLF)
-Status: draft
-Created: 2026-04-20
-Approved-Date:
-Reuses: [21-spherical-tokamak-hts]
----
-
 # D1+ Analysis: Laser ICF - OEC Architecture (D-T) (Blue Laser Fusion)
 
 **Concept**: Laser ICF with Optical Enhancement Cavity + Coherent Beam Combining — D-T fuel

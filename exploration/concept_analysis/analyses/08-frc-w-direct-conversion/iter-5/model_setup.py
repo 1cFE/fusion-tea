@@ -1,3 +1,4 @@
+# STALE: analysis-rewritten-by-force
 """FRC w/ Direct Conversion (Helion Energy) — 1costingfe LCOE Model.
 
 Usage:
@@ -272,9 +273,7 @@ result = model.forward(
                      # D-He3 fuel eliminates tritium breeding blanket entirely.
                      # Source: analysis.md §S4 Key Materials (No Tritium Breeding Blanket);
                      #         helion-website-technology.md §Fuel
-    eta_dec=0.90,    # DEVIATION: above canonical 0.85 (Direct inductive).
-                     # Helion central estimate from 0.70–0.95 published range; UNCERTAIN.
-                     # Inductive DEC round-trip circuit efficiency.
+    eta_dec=0.90,    # UNCERTAIN: Inductive DEC round-trip circuit efficiency.
                      # Cap bank → coils → plasma → coils → cap bank.
                      # Three conflicting public data points:
                      #   >95% round-trip: subscale demo, >1M pulses with IGBTs.

@@ -1,0 +1,78 @@
+# 1costingfe Model Update: Laser ICF - OEC Architecture (D-T)
+
+## Mode: Feedback Pass (Edit Existing Model)
+
+An existing model from a prior iteration has been copied to `/home/reid/1cfe/fusion-tea-eta-th-fix/exploration/concept_analysis/analyses/31-laser-icf-oec-architecture/iter-4/model_setup.py`.
+
+**Your task**: Read the existing model at `/home/reid/1cfe/fusion-tea-eta-th-fix/exploration/concept_analysis/analyses/31-laser-icf-oec-architecture/iter-4/model_setup.py` and apply targeted edits based on the assessment findings below. Use the Edit tool to make changes — do NOT rewrite the file from scratch.
+
+**Rules**:
+- Preserve ALL existing sweeps, scenarios, parameters, and sensitivity analyses unless a finding specifically says to change them
+- Maintain the existing code structure and organization
+- Add new content incrementally — do not restructure working code
+- Every change must be traceable to a specific finding or a direct consequence of one
+
+
+## Assessment Findings
+
+The following findings were raised by the assessor. Focus on findings tagged `Category: model`. Findings tagged `Category: analysis` are informational — they describe prose changes the analysis agent is handling. You may still adjust model parameters if an analysis finding implies the model's assumptions are wrong.
+
+### F-1: Refactor ETA_TH_COMBINED hand-blended workaround to canonical thermal+direct hybrid wiring
+- **Target:** `model_setup.py` lines 60-117 (module-level `ETA_TH`, `ETA_DEC`, `F_CHARGED`, `F_NEUTRON`, `ETA_TH_COMBINED` constants and their three DEVIATION blocks at lines 60-66, 78-81, and 108-117) and the `model.forward(...)` call site that passes `eta_th=ETA_TH_COMBINED` (line 108); plus the helper `_p_net_same_laser` at line 310 which defaults `eta_th=ETA_TH_COMBINED`. The `MN = 1.0` DEVIATION at line 71 is UNRELATED (Li-breeding physics coupling) and MUST stay.
+- **Category:** model
+- **Finding:** The model defines `ETA_TH_COMBINED = F_NEUTRON * ETA_TH + F_CHARGED * ETA_DEC` (line 85) as a module-level pre-folded scalar and passes it as `eta_th` to `model.forward(...)`. This is the verifier-flagged double-count pattern issue #30 fixed structurally for 37 other concepts; the three DEVIATION blocks (lines 60-66, 78-81, 108-117) explicitly document the workaround as debt pending the structural refactor. The blended-formula comment at line 85 claims `= 0.44` but the arithmetic now yields 0.517 (`0.70*0.55 + 0.30*0.44 = 0.517`) — verifier-flagged HIGH-severity arithmetic-narrative contradiction. Concept 31's actual physics has both an active thermal channel (He-Brayton via LiPb blanket, 70% of P_fus from neutrons) AND an active direct channel (alpha DEC, 30% of P_fus from charged particles); `pulsed_thermal_forward` natively expresses this hybrid via separate `eta_th`, `eta_de`, `f_dec` parameters (see costingfe pointers below), so the hand-fold is unnecessary. Goal connection: standardization of energy-conversion parameters per scoring_framework.md §"Energy capture efficiencies" and elimination of the bug shape #30 closed for the rest of the fleet.
+- **Recommendation:**
+  1. Read these costingfe sources before editing (these are the only inputs needed to choose the mode and wire the parameters):
+     - `costingfe/types.py:28-30` — `PulsedConversion` enum (only two modes: `THERMAL`, `INDUCTIVE_DEC`).
+     - `costingfe/types.py:51-62` — `CONCEPT_DEFAULT_CONVERSION` map. Confirm what mode `LASER_IFE` defaults to.
+     - `costingfe/layers/physics.py:533-655` — `pulsed_thermal_forward`. Read the docstring (lines 563-566): "supports partial charged-particle direct capture via f_dec (default 0 = all ash thermalises) and eta_de (DEC efficiency). Mirrors the steady-state hybrid formula." Read the body (lines 591-604) to see how `f_dec` and `eta_de` blend with `eta_th` and `mn` natively — this is the hybrid formula the file currently hand-rolls as `ETA_TH_COMBINED`.
+     - `costingfe/layers/physics.py:754-880` — `pulsed_dec_forward`. Note this function takes `eta_dec`/`f_pdv` (driver-circulating topology, "cap bank → coils → plasma → coils → cap bank") and does NOT match concept 31's architecture (laser-driven IFE with separate thermal blanket plus alpha DEC).
+     - `exploration/concept_analysis/analyses/23-laser-icf-nanostructured-target/model_setup.py:33-46, 195-235` — precedent for `INDUCTIVE_DEC` wiring (concept 23's DEC variant). For comparison only — concept 31's physics is hybrid (thermal + direct), not pure-inductive.
+  2. Decide the `pulsed_conversion` mode for concept 31 based on which forward function's topology matches the physics (separate thermal channel via LiPb blanket + separate direct channel via alpha DEC). The choice MUST be supported either by costingfe's source above or by an explicit "neither mode fits — surfacing as costingfe gap" outcome (see spec FR-11). Do not guess.
+  3. Apply the structural fix:
+     a. Add `pulsed_conversion=PulsedConversion.<MODE>` to the `model.forward(...)` kwargs (import `PulsedConversion` from `costingfe`).
+     b. DELETE the module-level `ETA_TH_COMBINED` constant entirely (line 85) and DELETE its DEVIATION block at lines 108-117. There must be no module-level pre-folded scalar feeding `eta_th`.
+     c. Pass `eta_th`, `eta_de`, and `f_dec` as separate kwargs to `model.forward(...)` per the chosen forward function's signature. Source the values from the existing in-file constants and rationale:
+        - `eta_th` ← the He-Brayton+LiPb cycle efficiency currently named `ETA_TH` (0.55 per the existing comment block at lines 60-66). Adjust if the rationale comment names a more defensible value, but do not re-derive from external research.
+        - `eta_de` ← the alpha-DEC efficiency currently named `ETA_DEC` (0.44 per the existing comment block at lines 78-81).
+        - `f_dec` ← the charged-particle fraction currently named `F_CHARGED` (0.30, line 83).
+     d. DELETE the DEVIATION blocks at lines 60-66 and 78-81 (the workaround they protect no longer exists). Keep the value-rationale prose to the extent it remains accurate after rewiring; rewrite any text that still describes "blended workaround" framing. KEEP the `MN = 1.0` DEVIATION at line 71 — it is unrelated (Li-breeding physics coupling) and out of scope.
+     e. Add an inline comment immediately above `pulsed_conversion=...` justifying the mode choice in one or two sentences, naming the costingfe source line that backs the choice (and explicitly noting that the framework's native hybrid formula in `pulsed_thermal_forward` lines 591-604 is what makes `ETA_TH_COMBINED` removable).
+  4. Decide what to do with `_ETA_DEC_SWEEP` at lines 276-297 (see F-3). The sweep currently exists *because* the THERMAL-mode fold made `eta_dec` algebraically inert; after the refactor, `eta_de` becomes a live auto-diff input. Either (a) keep the sweep as a real DEC-elasticity sweep with updated semantics and a rewritten comment block (delete lines 276-281's "THERMAL pulsed_conversion mode folds both conversion channels" framing — that framing is now wrong), or (b) drop the sweep entirely as redundant with framework-native sensitivity, with a one-line comment explaining why.
+  5. Update the `_p_net_same_laser` helper at lines 309-312: change the default `eta_th=ETA_TH_COMBINED` to something consistent with the new wiring (likely `eta_th=ETA_TH`, or restructure the helper to accept the same hybrid kwargs `pulsed_thermal_forward` does). Update the `_q_eng_from_gain` helper at line 304 similarly if its `eta_th=ETA_TH` default still represents the wrong concept after the refactor.
+  6. Update the header docstring (lines 15, 24, 53) so the modeling-approach prose and the parameter callouts reflect the new wiring — no surviving "pulsed_conversion = THERMAL" or "eta_th = 0.44" callouts if those are no longer accurate. Update any neighboring print statements (e.g., line 245's `ETA_TH:.0%` print) to match.
+  7. Preserve all unrelated kwargs (`mn`, `eta_pin`, `eta_p`, `f_sub`, `p_pump`, `p_trit`, `p_house`, `p_cryo`, `p_target`, `p_coils`, geometry, `p_driver`, `e_uv_mj`, `f_rep`, etc.), all `cost_overrides`, the OEC mirror cost scenarios block, the sensitivity printout, and `MN = 1.0`'s DEVIATION. Do not touch any file outside `analyses/31-laser-icf-oec-architecture/`.
+- **Priority:** blocking
+
+### F-2: Reconcile analysis.md narrative with the new conversion wiring and the corrected arithmetic
+- **Target:** `analysis.md` Sections 2 (Challenges), 3 (Energy Capture / Power Conversion), 5 (Parameters). Specifically: any prose that names `ETA_TH_COMBINED`, "blended η_th", "hand-folded blend formula", "= 0.44", or the THERMAL-as-workaround framing; any parameter-row entry that cites `eta_th` as carrying the combined efficiency rather than the thermal-cycle efficiency alone.
+- **Category:** analysis
+- **Finding:** Issue #30's verifier sweep flagged 31 for narrative drift around the conversion wiring AND for the arithmetic-narrative contradiction in the blended-formula comment (claims = 0.44, actual = 0.517). Both issues vanish structurally once F-1 lands, but the narrative must be updated in lockstep or readers will see prose describing a workaround that no longer exists. Goal connection: analysis-vs-model consistency per analysis_goals.md and scoring_framework.md §"Energy capture efficiencies".
+- **Recommendation:**
+  1. After completing F-1, re-read analysis.md Sections 2, 3, 5. Identify every passage that references `ETA_TH_COMBINED`, the blended formula, "0.517", "0.44 combined", "THERMAL mode fold", or characterizes the THERMAL `pulsed_conversion` setting as a workaround.
+  2. Rewrite those passages to describe the thermal channel (He-Brayton via LiPb blanket, 70% of P_fus) and the direct channel (alpha DEC, 30% of P_fus) as two separate inputs handled by the framework's native hybrid formula (cite `pulsed_thermal_forward`). The S5 parameter table should list `eta_th`, `eta_de`, and `f_dec` as separate rows with their respective values; remove any `ETA_TH_COMBINED` row.
+  3. Keep all other narrative untouched — Li-breeding `MN` discussion, OEC architecture description, mirror cost scenarios, gap notes, sourcing prose, the Section 5 entries for non-conversion parameters. This finding is scoped to conversion-related narrative; other verifier-flagged drift on 31 rides along with the P2 batch (out of scope here).
+- **Priority:** important
+
+### F-3: Decide and document the fate of _ETA_DEC_SWEEP (lines 276-297)
+- **Target:** `model_setup.py` lines 276-297 (the comment block "The THERMAL pulsed_conversion mode folds both conversion channels..." plus the `_ETA_DEC_SWEEP` list, the loop, and the print statements at lines 282-297).
+- **Category:** model
+- **Finding:** `_ETA_DEC_SWEEP` exists as a workaround for the THERMAL-mode fold — it manually varies an effective `eta_th` to compensate for the fact that `eta_dec` is algebraically inert in the current wiring. After F-1's refactor, `eta_de` (or whichever DEC parameter the chosen mode uses) becomes a live auto-diff input and the manual sweep is either (a) genuinely useful as a real DEC-elasticity demonstration with rewritten semantics, or (b) redundant with the framework-native sensitivity printed earlier in the file. The decision affects whether downstream readers see a real DEC sensitivity or a stale workaround. The associated comment block at lines 276-281 explicitly cites "THERMAL pulsed_conversion mode folds both conversion channels into a single eta_th parameter" — that framing is structurally wrong after F-1 lands.
+- **Recommendation:**
+  1. Decide whether to keep or drop the sweep. The criterion: would re-running the sweep with the new wiring (varying `eta_de` directly via `pulsed_thermal_forward`) produce information not already shown by the framework-native sensitivity printout earlier in the file? If yes → keep; if no → drop.
+  2. If KEEPING: rewrite the comment block at lines 276-281 to describe the new semantics (real DEC elasticity now that `eta_de` is a live input); update the loop body so it varies `eta_de` (not a folded `eta_th`); verify the new sweep output shows non-zero LCOE variation across the swept values (it must, since `eta_de` is no longer algebraically inert). Update the closing prints at lines 296-297 to describe the new elasticity, not the pre-fold scaling.
+  3. If DROPPING: delete lines 276-297 entirely and add a one-line comment in their place noting that DEC elasticity is now covered by the framework-native auto-diff sensitivity (cite the line where that sensitivity is printed).
+  4. In either case: do not leave the existing comment block intact — its content becomes structurally false after F-1.
+- **Priority:** important
+
+
+## Reference Files
+
+- **Concept Analysis:** `/home/reid/1cfe/fusion-tea-eta-th-fix/exploration/concept_analysis/analyses/31-laser-icf-oec-architecture/analysis.md`
+- **Example:** `/home/reid/1cfe/1costingfe/examples/dt_tokamak.py`
+- **Defaults:** `/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/ife_laser_ife.yaml`
+- **README:** `/home/reid/1cfe/1costingfe/README.md`
+- **Costing Constants:** `/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml`
+
+## Output
+Write changes to: `/home/reid/1cfe/fusion-tea-eta-th-fix/exploration/concept_analysis/analyses/31-laser-icf-oec-architecture/iter-4/model_setup.py`

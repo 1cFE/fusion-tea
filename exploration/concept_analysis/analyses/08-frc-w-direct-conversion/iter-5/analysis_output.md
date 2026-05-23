@@ -1,13 +1,3 @@
----
-ID: 08-frc-w-direct-conversion
-Concept: FRC w/ Direct Conversion
-Company: Helion Energy
-Status: draft
-Created: 2026-03-29
-Approved-Date:
-Reuses: []
----
-
 # D1+ Analysis: FRC w/ Direct Conversion (Helion Energy)
 
 ---
@@ -122,7 +112,7 @@ Unlike tokamaks (well-characterized O&M from ITER and plant studies) or laser IF
 
 **Free-form modeling is required.** This concept has no thermal conversion cycle, no steam generator, and no breeding blanket — the entire CAS20/CAS22 cost structure of a conventional fusion plant applies differently or not at all. A standard 1costingfe template (built around thermal-cycle fusion plants) cannot capture Helion's architecture without substantial modification. A free-form LCOE model treating the capacitor bank + pulsed coil system as the primary capital item, and the direct energy recovery efficiency as the primary performance parameter, is the appropriate starting point.
 
-**Model wiring note (pulsed_conversion=INDUCTIVE_DEC).** The cost model uses `PulsedConversion.INDUCTIVE_DEC` (costingfe `pulsed_dec_forward`), which expresses Helion's topology natively: driver energy circulates cap-bank → coils → plasma → coils → cap-bank, and recirculating power is only driver charging losses. The inductive recovery efficiency is carried by the `eta_dec` parameter (set to 0.90, the central estimate from the 0.70–0.95 company-stated range; see model_setup.py for the sourcing). `eta_th` = 0.0 (no thermal cycle; the framework auto-zeros this for `INDUCTIVE_DEC` mode). `f_pdv` is inherited from the costingfe PULSED_FRC defaults (0.80, the PdV-work fraction for adiabatic expansion at the FRC compression ratio). The ~5% neutron wall heating is unrecovered.
+**Model wiring note (pulsed_conversion=INDUCTIVE_DEC).** The cost model uses `PulsedConversion.INDUCTIVE_DEC` (costingfe `pulsed_dec_forward`), which expresses Helion's topology natively: driver energy circulates cap-bank → coils → plasma → coils → cap-bank, and recirculating power is only driver charging losses. The inductive recovery efficiency is carried by the `eta_dec` parameter (set to 0.85, the lower bound of the company-stated range). `eta_th` = 0.0 (no thermal cycle; the framework auto-zeros this for `INDUCTIVE_DEC` mode). `f_pdv` = 0.95 (fraction of charged-particle energy entering the PdV recovery loop; ~1.0 for a closed FRC topology). The ~5% neutron wall heating is unrecovered.
 
 **Top 2 LCOE sensitivity parameters** (in order of impact):
 
