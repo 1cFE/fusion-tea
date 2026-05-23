@@ -1,11 +1,8 @@
-# Gap Assessment: HTS Compact Tokamak
-
-> **Revision 2026-05-20 — surgical regeneration.** Integrated Araiinejad & Shirvan 2025 (`knowledge/sources/tea_dt_mfe_cost_analysis/`), an independent bottom-up techno-economic analysis of "ARAI" — a modified-ARC D-T tokamak — treated here as an ARC-class cost analog per analyst decision (ARAI ≈ ARC, shared MIT/ARC origin). The source was already ingested repo-wide but never entered concept 01's Phase-1a research tree, so the original gap-check — which only sees concept-scoped sources — could not see it. Net effect: balance-of-plant cost, capacity factor, and vacuum-vessel replacement reclassified from blocking to important; `blocking_count` 4 → 1 (divertor only). This supersedes the original gap-check output.
+# Gap Assessment: HTS Compact Tokamak (D-T)
 
 ## Overall Readiness
 **Rating**: Mostly Ready
-
-**Summary**: The HTS Compact Tokamak (CFS/ARC) is one of the best-documented private fusion concepts, with a published conceptual reactor design (Sorbom et al. 2015), a detailed plasma physics basis (Creely et al. 2020), a specific heating system study (Lin et al. 2020), an independent power conversion analysis (Colliva et al. 2024), and — for plant-level economics — an independent ARC-class techno-economic analysis (Araiinejad & Shirvan 2025). A first-pass LCOE model is buildable from available data, with caveats: the ARC-paper capital estimate excludes balance of plant and is denominated in 2014 dollars for a 200 MWe design since evolved to 400 MWe. Araiinejad & Shirvan 2025 now supplies an ARC-class balance-of-plant, O&M, and LCOE envelope (NOAK lower/upper bounds at 350 MWe), which removes balance-of-plant cost, capacity factor, and vacuum-vessel replacement as blocking gaps — they remain important accuracy gaps pending CFS-specific data. The divertor — explicitly deferred in the 2015 ARC paper — is now the sole blocking LCOE gap.
+**Summary**: CFS/ARC is among the most thoroughly documented fusion concepts: a full conceptual design paper, dedicated NOAK TEA study modeled directly on ARC, power conversion cycle analysis, and a complete physics basis published in the J. Plasma Phys. 2020 special issue. All five D1+ qualitative sections can be written with good-to-partial coverage. One blocking gap (tritium start-up inventory cost, dependent on unvalidated FLiBe extraction rates) and six important gaps (detailed CAS breakdown, capacity factor, blanket replacement schedule, FLiBe T-extraction at scale, divertor design, first-wall/VV fusion-neutron lifetime) limit quantitative precision but do not prevent a first-pass analysis. Proceed to full analysis.
 
 ---
 
@@ -15,49 +12,47 @@
 **Coverage**: Good
 
 **Available**:
-- Sorbom et al. 2015 (ARC paper): Full conceptual design with physics basis, costing estimate ($5.5–5.6B fabricated, 2014$, excluding BoP), neutronics, materials analysis, and R&D gaps (Section 7). This is an unusually complete public document for a private venture.
-- Creely et al. 2020 (SPARC overview): SPARC physics parameters (Bt=12.2T, Ip=8.7MA, R=1.85m, targeting Q~11)
-- Lin et al. 2020 (ICRF physics): Detailed heating system physics, antenna design rationale, power absorption calculations
-- Colliva et al. 2024 (power conversion): Three-cycle comparison (Rankine 46%, sCO₂ 40%, He Brayton 32% net efficiency for ARC FNSF phase at 645 MWth input)
-- Araiinejad & Shirvan 2025 (TEA of D-T MC fusion power plants, `knowledge/sources/tea_dt_mfe_cost_analysis/`): independent bottom-up techno-economic analysis of "ARAI", a modified-ARC reactor (2015 ARC design with vanadium-alloy VV/plasma-facing components), scaled to a 350 MWe ARC-class plant. Provides a full plant-level cost breakdown — direct + indirect + balance of plant + O&M + decommissioning — at NOAK lower/upper bounds. Used as an ARC-class cost analog per analyst decision (ARAI ≈ ARC); an independent academic estimate, not CFS data.
-- CFS public communications (2025–2026): SPARC construction status, ARC site announcement (Virginia), 400 MWe target, investor disclosures
-- Dossier: All 12 differentiation columns filled at high/medium confidence
+- **Full ARC conceptual design** (Sorbom et al. 2015, `arc-reactor-specifications.md`): 30+ pages covering plasma physics, magnets, blanket/neutron shielding, heating systems, and Section 6 rough costing (~$5.56B total fabricated cost by material-volume scaling, versus ~$24B ITER by same method). Plasma parameters, engineering constraints, and R&D requirements all documented.
+- **SPARC overview** (Creely et al. 2020, referenced in dossier): device parameters including B_t=12.2 T, R=1.85 m, a=0.57 m, Q≥2 target. SPARC construction confirmed under way, first magnet installed January 2026 per `cfs-2025-2026-updates.md`.
+- **Power conversion analysis** (`arc-power-conversion-studies.md`, Colliva et al. 2024, Sapienza/Eni): GateCycle™ simulation of three cycles for ARC FNSF phase (645 MW_th input). Rankine: 46% net efficiency, 297 MWe net. CO₂ Brayton: 40.3%. He Brayton: 32%. Rankine identified as most promising on efficiency and commercial availability.
+- **ARC original Brayton baseline** (`arc-reactor-specifications.md`): He Brayton at 900 K → 40% efficiency (190 MWe, FNSF), up to 50% efficiency at 1200 K (261 MWe, aggressive pilot).
+- **Dedicated NOAK TEA** (`knowledge/sources/tea_dt_mfe_cost_analysis/output.md`, Araiinejad & Shirvan 2025, MIT Applied Energy): ARAI-FPP is explicitly a 350 MWe tokamak modeled on the MIT ARC concept. NOAK overnight capital costs $8,800–$22,200/kW; LCOE $140–$550/MWh. Finds fusion reactor equipment is dominant cost driver, consistent with ARC Section 6.
+- **REBCO tape supply chain** (`sciencedirect-science-article-pii-s2772830725000390.md`): PLD-REBCO at >200 A/4mm @20 K, 20 T; current pricing $20/m; global production >3,000 km/yr-12 mm (>50% of world HTS wire output). Directly constrains ARC magnet cost modeling.
+- **Li-6 supply paper** (`sciencedirect-science-article-pii-s092037961930835x.md`): European DEMO-oriented ICOMAX process for Li-6 enrichment; confirms Li-6 is not commercially available at required scale.
+- **Costing methodology** (`arxiv-2601-21724.md`, Woodruff 2026, pyFECONs framework; `arxiv-2602-19389.md`, CATF IWG 2026): Both read. The CATF paper explicitly covers HTS magnet cost modeling as Account 22.1.3 "swap-point" for MFE, with TRL-based maturity uncertainty and learning-rate uncertainty propagation. Provides methodology to build an ARC-like cost model. Cited FOAK LCOE range for compact tokamaks: 150–200 $/MWh; NOAK at 60–100 $/MWh.
+- **ARPA-E ALPHA revisit** (`knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/output.md`): CAS-level cost breakdown for four compact MIF concepts (~500 MWe). Average total capital cost $1.2B; BOP structure (CAS 21, 22.2, 22.5, 23, 24, 25, 26) provides analogues applicable to ARC. Note: CAS 22.1.3 coils average only $5.9M because these are non-magnet concepts — magnet costs not transferable. Fuel processing (CAS 22.5) average $124M is applicable.
+- **Maintenance optimization study** (`arxiv-2405-01514.md`, Schwartz et al. 2024): Tokamak maintenance strategy valuation in decarbonized US grid. Uses 85% net/gross ratio (5% active + 10% passive parasitic); shows 80% availability retains 87–91% of capacity value. Provides quantitative framework for ARC capacity factor assumption.
 
 **Missing**:
-- Updated ARC commercial design documentation (the public ARC design is 2015 vintage; the 400 MWe commercial plant remains undocumented publicly)
-- SPARC results (device is under construction; first plasma ~2027)
-- CFS-specific BoP cost breakdown (an ARC-class analog is now available — Araiinejad & Shirvan 2025 — but CFS's own BoP figures remain unpublished)
-- CFS-specific site-level operational parameters (staffing, O&M); analog O&M estimates now available from Araiinejad & Shirvan 2025
+- Current ARC commercial design (400 MWe, Virginia site) not yet fully published by CFS — proprietary
+- CFS has not disclosed detailed capital cost breakdown for ARC by subsystem — proprietary
 
 **Gaps**:
-- Updated ARC commercial design parameters — `proprietary` — important (changes plant output from 200→400 MWe, affects all cost scaling)
-- SPARC experimental results validating burning plasma physics — `not-yet-available` (SPARC not yet operating) — important but not blocking (ARC paper physics basis is well-documented)
-- CFS internal cost modeling for ARC at 400 MWe — `proprietary` — important
+- Detailed CAS cost breakdown for ARC/SPARC from CFS — proprietary — important
+- Post-2021 ARC design documentation (evolved from 200→400 MWe) — proprietary — important
 
 ---
 
 ### 2. Challenges in Capturing System Function
-**Coverage**: Good
+**Coverage**: Partial
 
 **Available**:
-The ARC paper (Section 7) is explicit about its engineering uncertainties. Key challenges are documented:
-
-- **Plasma regime (I-mode)**: ARC is designed around I-mode confinement (energy barrier without particle barrier), which avoids damaging ELMs. The paper flags that I-mode has been demonstrated at ≤6T; ARC operates at 9.2T, so confinement extrapolation carries physics uncertainty. SPARC will validate this.
-- **LHCD at 8 GHz**: The ARC paper identifies that klystron sources exist at 6 GHz but not 8 GHz. The heating system uses 25 MW LHCD (current drive) + 13.6 MW ICRF (heating). Lin et al. 2020 establishes ICRF physics clearly; LHCD is the less mature component.
-- **FLiBe behavior under radiation**: The paper explicitly flags unknown MHD effects on FLiBe flow at relevant magnetic fields, unknown radiation-assisted corrosion of Inconel 718 in FLiBe, and radiation effects on FLiBe resistivity.
-- **Tritium extraction from FLiBe**: Described as an active R&D area; the turnaround time for tritium extraction determines the tritium inventory requirement. The paper notes "few experiments have been built to assess the turnaround time."
-- **Quasi-steady operation**: ARC pulses for "tens of minutes" rather than continuous. The power conversion system requires an energy storage system (ESS) between the FLiBe intermediate circuit and the turbine. Colliva et al. 2024 notes this ESS and analyzes pulse-phase power (645 MWth), but dwell-phase dynamics are not quantified.
-- **Divertor design**: Explicitly left as "an open question" in the ARC 2015 paper. This is a significant cost and engineering uncertainty.
+- **I-mode confinement uncertainty**: ARC paper explicitly quantifies sensitivity to H₉₈ (design point H₉₈~2.8, well above standard H-mode ~1.0; FNSF mission achievable at H₈₉~2.2). ARC exploits weak degradation of I-mode with heating power (τ_E ∝ P_heat^−0.27 vs. H-mode −0.69). Physics arguments for achievability documented, but I-mode at ARC scale is extrapolated from C-Mod.
+- **Non-inductive scenario**: ACCOME code modeling of bootstrap (63%) + LHCD (25 MW) + ICRF (13.6 MW) combination; sensitivity analysis shows self-consistent operating point accessible. SPARC ICRF design documented in `sparc-icrf-heating-paper.md` at SPARC-specific parameters (120 MHz, 25 MW, 3He minority + 2nd harmonic T).
+- **FLiBe blanket complexity**: ARC paper discusses: (a) magnetic field effects on FLiBe flow/heat transfer are computationally investigated but not experimentally validated in fusion environment; (b) radiation-assisted corrosion of Inconel 718 in FLiBe not tested in D-T environment; (c) tritium extraction turnaround time not experimentally established at required scale.
+- **Pulsed operation / grid integration**: Colliva 2024 paper explicitly includes energy storage system (ESS) in FLiBe intermediate circuit to provide constant turbine load during dwell phases. ESS architecture identified but sizing not costed.
+- **Demountable joints**: ARC paper identifies joints as key R&D item; bench-top tests exist but reactor-level fields (23 T, ~8 MA) not yet demonstrated. PIT VIPER (pulsed magnet technology) now demonstrated at CFS for PF/CS.
 
 **Missing**:
-- Divertor technology selection and cost estimate
-- Quantitative ESS sizing and cost
-- FLiBe radiation chemistry data at ARC-relevant neutron flux
+- Divertor design: explicitly deferred in ARC 2015 paper ("left for later study"). No divertor design published.
+- Quantitative disruption frequency and mitigation design: qualitative discussion only
+- Quantitative tritium extraction turnaround time from FLiBe
 
 **Gaps**:
-- Divertor design, materials selection, replacement schedule — `not-yet-sourced` / `proprietary` — **blocking** for LCOE (divertor replacement is a major OPEX driver in tokamaks)
-- ESS sizing and cost — `not-yet-sourced` — important
-- LHCD wall-plug efficiency at 8 GHz — `derivable` from klystron analogs (medium confidence)
+- Divertor design: heat exhaust at ARC power density (~30 MW/m² scrape-off) — not-yet-sourced (no ARC divertor paper published) — important
+- FLiBe tritium extraction rate / inventory requirements — truly-unknown at ARC scale — important
+- I-mode scaling from C-Mod to ARC (x5 linear scale-up) — derivable (using published scaling + uncertainty bounds) — important
+- ESS (thermal storage) cost and sizing for pulsed operation — not-yet-sourced — nice-to-have
 
 ---
 
@@ -65,29 +60,25 @@ The ARC paper (Section 7) is explicit about its engineering uncertainties. Key c
 **Coverage**: Partial
 
 **Available**:
-The ARC paper and CFS public materials provide enough to make TRL assessments for most subsystems:
-
-| Subsystem | TRL Estimate | Basis |
-|-----------|-------------|-------|
-| HTS magnets (REBCO TF coils) | TRL 6–7 | 20T large-bore magnet demonstrated September 2021; SPARC magnet installation underway 2025–2026 |
-| ICRF heating system (~120 MHz, 25 MW) | TRL 5–6 | Physics validated on JET and TFTR (Lin 2020); SPARC-specific antenna requires engineering demonstration |
-| FLiBe blanket (tritium breeding + cooling) | TRL 3–4 | Concept well-understood from molten salt fission (MSRE); tritium extraction at power scale undemonstrated |
-| Tritium extraction from FLiBe | TRL 2–3 | Identified as R&D gap in ARC paper; no power-relevant experiments |
-| LHCD at 8 GHz | TRL 3–4 | 6 GHz klystrons demonstrated; 8 GHz is a technology stretch (per ARC paper Section 7.1) |
-| Power conversion (supercritical steam Rankine) | TRL 7–8 | Mature commercial technology; ARC-specific integration at 645 MWth TRL 5 |
-| Vacuum vessel (Inconel 718 + FLiBe) | TRL 3–4 | Corrosion data at 873K in FLiBe exists; radiation-assisted corrosion unknown |
-| TiH₂ neutron shielding | TRL 4–5 | Material properties established; large-scale structural application in reactor context novel |
-| Demountable HTS joints (REBCO) | TRL 4–5 | Bench-top demonstrations exist; reactor-scale validation pending SPARC |
+- **HTS TF magnets (TRL 5–6)**: 20 T large-bore REBCO magnet demonstrated September 2021; SPARC TF coils manufactured and first one installed January 2026. Full-scale demountable joint demonstration pending SPARC assembly.
+- **ICRF heating system (TRL 6–7)**: SPARC ICRF fully designed (`sparc-icrf-heating-paper.md`); 120 MHz fast wave system based on C-Mod heritage; 25 MW specified; megawatt-level RF sources within reach of present technology. Antenna impurity control addressed.
+- **REBCO tape production (TRL 7–8)**: $20/m, >3,000 km/yr global supply, PLD process well established (`sciencedirect-science-article-pii-s2772830725000390.md`). Adequate for SPARC; ARC fleet would require significant scale-up.
+- **Thermal power conversion (TRL 7–8)**: Supercritical steam Rankine cycle is commercial technology; Colliva 2024 confirms no new turbine technology needed for ARC FNSF phase.
+- **PF/CS magnets (TRL 5)**: PIT VIPER pulsed superconducting technology demonstrated by CFS for pulsed poloidal coils.
 
 **Missing**:
-- TRL assessment for plasma-facing components at ARC heat flux levels (first wall: W, divertor material TBD)
-- Cryogenic system TRL for 20K HTS operation at ARC scale
-- Digital twin / AI control system TRL (CFS + Siemens + NVIDIA partnership — mentioned in 2026 update, no technical specifics)
+- FLiBe blanket integrated with fusion neutron flux: TRL 2–3. The LLNL TBB assessment (`osti-servlets-purl-1305833.md`) covers DCLL blanket for generic MFE tokamak — not FLiBe specific. FLiBe has fission reactor heritage (MSRE, AHTR studies) but no fusion-integrated test.
+- Tritium extraction from FLiBe at scale: TRL 2–3. ARC paper cites only two references for possible extraction schemes; LLNL report notes no experiments have been built to assess turnover time.
+- Vacuum vessel/first wall (Inconel 718) in D-T neutron environment: TRL 3. REBCO fluence limit conservatively 9 FPY per MCNP; but Inconel 718 chromium transport under radiation-assisted corrosion in FLiBe uncharacterized.
+- LHCD at 8 GHz: TRL 4 (standard klystron sources at 5–6 GHz; 8 GHz not yet demonstrated). JAERI LHCD review (`osti-etdeweb-servlets-purl-10149275.md`) covers existing LHCD physics but does not address 8 GHz system specifically.
+- Remote maintenance with demountable coils at reactor scale: TRL 3–4 (concept demonstrated at bench scale with Vulcan, full-reactor demount pending SPARC)
 
 **Gaps**:
-- Divertor material and lifetime at ARC-scale heat flux — `not-yet-sourced` — **blocking** for LCOE
-- REBCO irradiation limits in fusion-relevant spectrum — `not-yet-sourced` (ARC paper notes no failure testing done) — important for lifetime calculation
-- Cryogenic system sizing and cost — `derivable` from ITER analogues — important
+- FLiBe blanket integrated test in fusion neutron environment — truly-unknown — important
+- Tritium extraction from FLiBe at required throughput — truly-unknown — important (relates to blocking gap §5)
+- First wall / Inconel 718 fusion neutron + FLiBe compatibility — truly-unknown — important
+- 8 GHz LHCD klystron demonstration — not-yet-sourced — nice-to-have
+- Demountable joint operation at 23 T, reactor scale — not-yet-sourced (SPARC will validate) — important
 
 ---
 
@@ -95,139 +86,88 @@ The ARC paper and CFS public materials provide enough to make TRL assessments fo
 **Coverage**: Partial
 
 **Available**:
-The ARC paper provides 2014 material cost figures and quantities (Table 10 and Table 11):
-
-| Material | Quantity (ARC) | 2014 Price | Notes |
-|----------|---------------|------------|-------|
-| REBCO tape | 5,730 km | $36–$198/m | Bulk quote range; dominant cost driver |
-| FLiBe | ~950 tonnes (blanket + HX) | $154/kg | Beryllium component is toxic and supply-limited |
-| Beryllium (multiplier) | ~3.82 tonnes | $257/kg | US production from Materion; export controls |
-| TiH₂ (shield) | ~380 tonnes | $26.4/kg | Limited commercial scale |
-| Inconel 718 | ~170 tonnes (VV + blanket tank) | $56/kg | Commercially available but neutron activation concerns |
-| Tungsten (first wall) | ~3.72 tonnes | $29/kg | Commercially available |
-
-**Key supply chain concerns (from ARC paper and general knowledge)**:
-- **REBCO tape**: Few commercial manufacturers (AMSC, SuperPower/Furukawa, Bruker, SuNAM, Theva). CFS has publicly disclosed manufacturing agreements. Price has declined since 2014 (~$36/m in bulk was the low end in 2015; current spot prices are in this range or lower). Supply for a commercial fleet of ARC reactors would require significant expansion.
-- **Beryllium**: Used as neutron multiplier in the vacuum vessel (FLiBe contains Be naturally). Primary US supplier is Materion. Beryllium is toxic to process and subject to export restrictions. Global supply is limited.
-- **Tritium**: Initial startup inventory needed (~0.5–1 kg/reactor). Global civilian tritium inventory is ~25 kg (primarily from CANDU reactors). At ARC scale (400 MWe), daily tritium consumption is ~150–200 g/day, requiring TBR > 1 from day one. FLiBe TBR ≥ 1.1 is the design target but undemonstrated.
-- **FLiBe at scale**: No large-scale commercial FLiBe production exists. BeF₂ production capacity is the bottleneck. Toxicity and cost make this a supply chain risk.
+- **REBCO tape**: $20/m, >3,000 km-12mm/yr global production (`sciencedirect-science-article-pii-s2772830725000390.md`). PLD process provides excellent in-field performance (>200 A/4mm @ 20 K, 20 T). Challenges remain in further cost reduction and process stability. ARC tape inventory is large but manageable given current production rates.
+- **FLiBe (LiF-BeF2)**: Long heritage from molten salt fission research (MSRE, AHTR). LiF is a commodity chemical. BeF2 production is specialty; beryllium sourcing (US and Kazakhstan producers) has well-characterized constraints.
+- **Li-6 enrichment**: Not commercially available at DEMO/ARC fleet scale (`sciencedirect-science-article-pii-s092037961930835x.md`). ICOMAX (mercury amalgam) process proposed as path for DEMO supply; requires decade-scale lead time. Current lithium isotope separation capacity insufficient for fleet deployment.
+- **Inconel 718 (vacuum vessel)**: Commercially available, well-characterized at ambient and elevated temperatures. ARC paper notes high nickel content increases activation — important for waste classification.
+- **TiH2 (neutron shielding)**: Powder form; ARC paper notes limited experimental data in fusion environment.
 
 **Missing**:
-- Current (2025/2026) REBCO tape pricing and CFS supply agreements
-- Quantitative FLiBe production capacity analysis
-- Tritium startup inventory plan for ARC commercial plant
+- REBCO tape scale-up for full ARC fleet (single ARC unit likely requires >100–200 km tape given SPARC scale); learning curve data at fleet scale
+- Beryllium sourcing and BeF2 availability for FLiBe inventory (full blanket + heat exchanger = ~500 m³ per ARC)
+- Tritium startup inventory supply: natural production from CANDU reactors and fission is limited; ARC-scale startup inventory requirements unknown pending FLiBe extraction data
 
 **Gaps**:
-- Current REBCO tape cost and supply commitment status — `proprietary`/`not-yet-sourced` — important (cost driver)
-- FLiBe production capacity at ARC-fleet scale — `not-yet-sourced` — important
-- Beryllium supply chain risk quantification — `derivable` from open US DOE beryllium supply data — nice-to-have
+- BeF2 supply chain at ARC fleet scale — not-yet-sourced — important
+- Li-6 enrichment at ARC fleet scale (ICOMAX not yet commercial) — derivable (DEMO studies apply) — important
+- Tritium startup procurement timeline and cost — truly-unknown (depends on FLiBe extraction rate and therefore inventory size) — blocking (contributes to §5 blocking gap)
+- REBCO tape fleet manufacturing scale-up cost trajectory — derivable (use learning rate from PLD paper + pyFECONs) — nice-to-have
+- Activated FLiBe waste management / classification — derivable — nice-to-have
 
 ---
 
 ### 5. LCOE Parameter Extraction
 **Available Parameters**:
-
 | Parameter | Value/Range | Source | Confidence |
 |-----------|-------------|--------|------------|
-| Fusion power (ARC 2015) | 525 MW | Sorbom 2015 | h |
-| Net electric power (ARC 2015, FNSF) | ~190 MW | Sorbom 2015 | m |
-| Net electric power (ARC 2015, conservative pilot) | ~233 MW | Sorbom 2015 | m |
-| Net electric power (current ARC target) | 400 MWe | CFS 2025-2026 | m |
-| On-axis B field | 9.2 T | Sorbom 2015 | h |
-| Major radius | 3.3 m | Sorbom 2015 | h |
-| Plasma gain Qp | ~13.6 | Sorbom 2015 | h |
-| Electrical gain Qe | 3.0–3.8 | Sorbom 2015 | m |
-| Thermal efficiency (Rankine, FNSF) | 46% net | Colliva 2024 | m |
-| Thermal efficiency (ARC 2015 He Brayton, FNSF) | ~40% | Sorbom 2015 | m |
-| Blanket outlet temperature (FNSF) | 900 K | Sorbom 2015 | h |
-| ICRF heating power (SPARC) | 25 MW | Lin 2020 | h |
-| LHCD power (ARC) | 25 MW | Sorbom 2015 | h |
-| Bootstrap fraction | ~63% | Sorbom 2015 | h |
-| TBR (FLiBe blanket) | ≥1.1 (up to 1.22) | Sorbom 2015 | m |
-| TF coil lifetime (neutron fluence limit) | ≥9 FPY | Sorbom 2015 | l–m |
-| Inner vacuum vessel lifetime | ~6–12 months | Sorbom 2015 | l |
-| Total fabricated cost (2014$, excl. BoP) | $5.5–5.6B | Sorbom 2015 | l |
-| REBCO tape cost | $36–$198/m (2014$) | Sorbom 2015 | l |
-| FLiBe cost | $154/kg (2014$) | Sorbom 2015 | l |
-| Magnet/structure fabricated cost | $5.1–5.2B (2014$) | Sorbom 2015 | l |
-| Blanket fabricated cost | ~$260M (2014$) | Sorbom 2015 | l |
-| Vacuum vessel fabricated cost | ~$92M (2014$) | Sorbom 2015 | l |
-| Operation mode | Quasi-steady (tens of minutes) | CFS communications | h |
-| SPARC parameters (B, R, Ip, ne, Te) | 12.2T, 1.85m, 8.7MA, 4×10²⁰m⁻³, 20 keV | Lin 2020 | h |
-| Overnight capital cost (ARC-class analog, NOAK) | 8,800–22,200 $/kW | Araiinejad & Shirvan 2025 | l |
-| BoP — turbine generator equipment | 535–550 $/kW | Araiinejad & Shirvan 2025 | m |
-| BoP — electric plant equipment | 274–402 $/kW | Araiinejad & Shirvan 2025 | m |
-| BoP — heat rejection system | 70–88 $/kW | Araiinejad & Shirvan 2025 | m |
-| Structures & site facilities | 819–1,317 $/kW | Araiinejad & Shirvan 2025 | l–m |
-| Indirect cost | 1,146–2,644 $/kW | Araiinejad & Shirvan 2025 | l–m |
-| Capacity factor (NOAK analog, not ARC-derived) | 0.5–0.7 | Araiinejad & Shirvan 2025 | l |
-| Annual O&M | 35–182 $/MWh | Araiinejad & Shirvan 2025 | l |
-| Replaceable-component O&M (VV + PFC) | 11–107 $/MWh | Araiinejad & Shirvan 2025 | l |
-| Fabricated VV + first wall cost | 109 $/kW (conventional fab) | Araiinejad & Shirvan 2025 | l |
-| Power-core fabrication cost assumption | $1,000/kg FOAK → $150/kg NOAK → $15/kg advanced mfg | Araiinejad & Shirvan 2025 | l |
-| LCOE (ARC-class analog, NOAK) | 140–550 $/MWh | Araiinejad & Shirvan 2025 | l |
+| Fusion power | 525 MW (ARC 2015) | `arc-reactor-specifications.md`, Table 1 | h |
+| Plasma gain Q_p | ~13.6 | `arc-reactor-specifications.md`, abstract | h |
+| Net electric output | 190–261 MWe (2015 design); 400 MWe (current target) | ARC paper §2; `cfs-2025-2026-updates.md` | m |
+| On-axis field B₀ | 9.2 T (ARC); 12.2 T (SPARC) | ARC paper Table 1; `sparc-icrf-heating-paper.md` | h |
+| Thermal efficiency (He Brayton, FNSF) | ~40% (900 K outlet) | `arc-reactor-specifications.md` §2 | m |
+| Thermal efficiency (Rankine, FNSF) | 46% net (645 MW_th in) | `arc-power-conversion-studies.md`, Table 6 | m |
+| Blanket TBR | ≥1.1 (baseline); up to 1.22 | ARC paper §5 | h |
+| Bootstrap fraction | 63% | ARC paper §3.4 | h |
+| REBCO tape price | ~$20/m | `sciencedirect...s2772830725000390.md` | m |
+| Component fabricated cost (2015 scaling) | ~$5.56B total | ARC paper §6 | l |
+| NOAK overnight capital cost (ARC-based) | $8,800–$22,200/kW | `tea_dt_mfe_cost_analysis/output.md`, Araiinejad 2025 | m |
+| NOAK LCOE (ARC-based) | $140–$550/MWh | `tea_dt_mfe_cost_analysis/output.md`, Araiinejad 2025 | m |
+| FOAK LCOE (compact tokamaks, industry) | 150–200 $/MWh | `arxiv-2602-19389.md` §2.1.5 | l |
+| Fuel processing (CAS 22.5) analogue | ~$124M | `knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/output.md` | l |
+| O&M costs analogue | ~$48M/yr | `knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/output.md` | l |
+| Optimal maintenance availability | 75–85% | `arxiv-2405-01514.md`, Schwartz 2024 | m |
+| First wall lifetime (TF coil fluence limit) | ≥9 FPY | ARC paper §5.2 | l |
 
 **Missing Parameters**:
-
 | Parameter | Gap Type | Criticality | Notes |
 |-----------|----------|-------------|-------|
-| Balance of plant capital cost | derivable (analog) | important | CFS-specific BoP unpublished, but an ARC-class analog is now available (Araiinejad & Shirvan 2025: turbine generator, electric plant, heat rejection, structures, indirect — NOAK LB/UB). No longer blocking — build LCOE with stated-assumption BoP. |
-| Capacity factor / availability | derivable | important | Analog range 0.5–0.7 now available (Araiinejad & Shirvan 2025), enough to bound an LCOE model. Generic NPP/fossil-derived — does not reflect ARC's 6–12-month VV-replacement downtime; derive ARC-specific availability for accuracy. |
-| Vacuum vessel replacement cost and schedule | derivable | important | Costing methodology + figures now available (Araiinejad & Shirvan 2025: fabricated VV+FW 109 $/kW, replaceable-component O&M 11–107 $/MWh). Thesis assumes a 24-month vanadium VV; ARC's Inconel 718 inner VV is ~6–12 months — apply ARC's schedule with the analog costing. |
-| Divertor design, materials, replacement schedule | not-yet-sourced | **blocking** | Explicitly left open in ARC 2015; required for first-wall OPEX estimate. Araiinejad & Shirvan 2025 gives only a crude cost share (~10% of reactor plant equipment, "18 tungsten tiles") — no design, materials, or replacement schedule. Sole remaining blocking LCOE gap. |
-| Staffing / O&M cost rates | not-yet-sourced | important | No published estimates; ITER/tokamak analogues can inform |
-| Electricity for recirculating power (grid draw) | derivable | important | Qe is given (3–3.8); recirculating fraction derivable (~1/Qe ≈ 26–33%) |
-| ESS (energy storage system) cost | not-yet-sourced | important | Required to buffer pulsed operation; Colliva 2024 mentions but doesn't size or cost |
-| REBCO tape current market price | not-yet-sourced | important | 2014 price range in source; market has evolved significantly |
-| Tritium startup inventory cost | derivable | important | ~0.5–1 kg at ~$30,000/g ≈ $15–30M; derivable from published tritium price estimates |
-| Cooling system and cryostat capital cost | derivable | important | 20K cooling for HTS coils; can estimate from ITER/W7-X analogs |
-| ARC at 400 MWe: updated capital cost | proprietary | important | 2015 paper designed 200–250 MWe; updated design is unpublished |
+| Tritium startup inventory (kg, cost) | truly-unknown | blocking | FLiBe extraction turnaround time uncharacterized; inventory could range from kg-tens of kg; cost $M–$B range. No ARC-specific published data. |
+| ARC-specific capacity factor | proprietary / derivable | important | CFS has not published; Schwartz 2024 supports 75–85% analogue assumption |
+| Detailed CAS breakdown for ARC | proprietary | important | Only total NOAK range known from Araiinejad 2025; subsystem allocation (magnets, blanket, BOP) requires inference from ARIES/pyFECONs framework |
+| Blanket replacement schedule / FPY lifetime | proprietary / derivable | important | FLiBe VV not published; 9 FPY TF fluence limit gives upper bound; actual schedule likely shorter |
+| FOAK vs. NOAK cost differential for ARC | derivable | important | Use pyFECONs CATF methodology and reference class forecasting (1.5–3× uplift) |
+| Divertor cost and replacement | not-yet-sourced | important | Divertor not designed in ARC 2015; no published ARC divertor cost estimate |
+| First wall / Inconel 718 replacement cost | truly-unknown | important | Radiation-assisted corrosion in FLiBe uncharacterized; lifetime uncertain |
 
 ---
 
 ## Source Recommendations
 
-1. **BoP capital cost** — *resolved (analog).* Araiinejad & Shirvan 2025 (`knowledge/sources/tea_dt_mfe_cost_analysis/`) provides a full bottom-up plant-level cost breakdown for an ARC-class D-T MC plant — direct, indirect, and BoP at NOAK lower/upper bounds. Use as the primary BoP analog, flagged as an independent academic estimate. The ARIES-AT study (Najmabadi et al.) remains a useful secondary cross-check.
-
-2. **Capacity factor / availability** — *partially addressed.* Araiinejad & Shirvan 2025 supplies a usable analog range (CF 0.5–0.7). No CFS-specific publication exists; for ARC accuracy still derive from first principles: (a) VV replacement frequency [6–12 months], (b) time per replacement, (c) unplanned outage rate by analogy to JET/C-Mod. The ARC paper assumes modular replacement as a key availability improvement — model this explicitly.
-
-3. **Divertor design and lifetime**: Search for CFS technical presentations at IAEA Fusion Energy Conference or ANS Fusion Engineering conference. May have updated ARC divertor design since 2015. Also applicable: ITER divertor experience as conservative analog. `unverified — search IAEA FEC 2023 proceedings for "ARC" or "CFS divertor"`
-
-4. **REBCO tape current pricing and supply**: Contact manufacturer pricing sheets or look for recent supply chain publications. SuperPower, AMSC, Bruker all publish pricing in some contexts. DOE HTS roadmap documents may have current cost targets. `not-yet-sourced — search DOE 2023 superconductor roadmap documents`
-
-5. **FLiBe production scale and cost**: MSR fission community is a close proxy. Search for FLiBe supply chain analysis in DOE Molten Salt Reactor R&D literature or Kairos Power publications (Kairos uses FLiBe as coolant for pebble bed fission). `not-yet-sourced — search "FLiBe production capacity Kairos" or "BeF2 supply chain fusion"`
-
-6. **O&M cost analogs** — *addressed (analog).* Araiinejad & Shirvan 2025 provides FTE-based fixed O&M (50–95 staff) and variable O&M (total 35–182 $/MWh, replaceable-component share 11–107 $/MWh). DEMO and ARIES plant studies remain a useful cross-check. `unverified — search "DEMO O&M cost tokamak" in Fusion Engineering and Design`
-
-7. **Tritium startup and handling costs**: Reyes et al. 2021 or similar tritium fuel cycle analyses in NF or FED. Search for "tritium startup inventory fusion economics." `not-yet-sourced`
+- **ARC divertor design**: Search OSTI / J. Fusion Engineering and Design for "ARC divertor" or "high-field-side divertor compact tokamak 2020-2026." A 2022–2025 PSFC study may exist. `unverified — confirm existence before searching`
+- **FLiBe tritium extraction turnaround time**: Search for "FLiBe tritium extraction" in OSTI, IAEA, and molten salt fission literature (ORNL MSR heritage). ORNL TM reports on MSRE tritium behavior are partially applicable. `not-yet-sourced — ORNL CF-71-8-10 and related documents exist in archive`
+- **CFS ARC detailed cost study**: Commonwealth Fusion Systems has not publicly released a CAS-level breakdown. Monitor CFS publications and conference papers (EPS, IAEA FEC, SOFE) for ARC economic analyses. `proprietary — no public disclosure expected before ARC FOAK construction`
+- **REBCO tape learning curve for fusion scale**: Search IEEE Transactions on Applied Superconductivity and SuperPower/Fujikura production cost publications for learning-rate quantification. `not-yet-sourced`
+- **Li-6 supply at ARC fleet scale**: The ICOMAX paper (cited in §4 sciencedirect source) directly addresses DEMO-scale supply; also check IAEA DEMO tritium breeding studies. Already partially addressed by `sciencedirect-science-article-pii-s092037961930835x.md`.
+- **Progress toward fusion breakeven (Wurzel & Hsu 2021)** at `knowledge/meta_analysis/progress_toward_fusion_breakeven_lawson_criterion/`: Not read in this assessment. After opening: this meta-analysis covers achieved nτE across MCF, ICF, MIF. For HTS Compact Tokamak, it would benchmark SPARC's projected performance (estimated nτE ~10²⁰ keV·s/m³) against historical devices. However, the physics state-of-the-art for tokamaks is already thoroughly documented in concept-scoped sources. This source adds marginal value for §3 (maturity) but does not address any of the six important gaps. **Disqualified** for this assessment — does not cover ARC/SPARC economic or engineering parameters and adds no new information to any current gap.
 
 ---
 
 ## Summary
+Proceed to full analysis. The HTS Compact Tokamak (D-T) has the richest public data of any advanced fusion startup concept: a full peer-reviewed conceptual design, a dedicated 2025 MIT TEA study explicitly modeled on ARC (Araiinejad & Shirvan), a power conversion cycle analysis (Colliva 2024), comprehensive SPARC physics basis papers, and the pyFECONs/CATF costing framework applicable to MFE HTS tokamaks. The one blocking gap — tritium startup inventory cost, gated on unpublished FLiBe extraction rates — can be handled in analysis by presenting a range using bounding assumptions from molten-salt fission experience. All other gaps are bridgeable with stated assumptions and fleet-wide analogues. The LCOE model can be constructed using: 400 MWe net output, 46% thermal efficiency (Rankine, Colliva 2024), $8,800–$22,200/kW capital cost (Araiinejad 2025), 75–85% capacity factor (Schwartz 2024 analogue), and ~$48–80M/yr O&M (ALPHA costing with HTS magnet cryo adder).
 
-**Proceed to full analysis**: Yes, with caveats.
-
-The HTS Compact Tokamak has unusually rich publicly available technical data for a private fusion venture. The Sorbom 2015 ARC paper provides the physics, engineering rationale, a materials costing table, and an explicit R&D gap list — all in one document. The ICRF and power conversion papers add detail on two specific subsystems. This is enough to build a parameterized LCOE model with clearly stated assumptions.
-
-The main modeling challenges are:
-1. **Balance of plant** — uncosted in the primary source, but an ARC-class analog is now available (Araiinejad & Shirvan 2025: turbine generator 535–550 $/kW, electric plant 274–402 $/kW, heat rejection 70–88 $/kW, structures 819–1,317 $/kW, indirect 1,146–2,644 $/kW). Use these NOAK bounds, flagged as an independent academic analog; cross-check against ARIES-AT.
-2. **Capacity factor** — Araiinejad & Shirvan 2025 supplies an analog range (CF 0.5–0.7), enough to bound an LCOE model. But that range is generic NPP/fossil-derived; it does not reflect ARC's 6–12-month vacuum-vessel replacement cadence, so model availability parametrically from VV replacement frequency for ARC-specific accuracy.
-3. **The 2015 ARC design (200 MWe) ≠ the 2025 ARC commercial design (400 MWe)** — all capital cost numbers need rescaling, inflation adjustment (2014→2026), and ideally current REBCO pricing. Araiinejad & Shirvan 2025 models a 350 MWe ARC-class plant — a closer size match to the current 400 MWe target than the 2015 paper.
-4. **Divertor is the remaining blocking gap** — the ARC paper explicitly deferred it, and Araiinejad & Shirvan 2025 gives only a crude cost share (~10% of reactor plant equipment, "18 tungsten tiles"). Use a tungsten divertor cost and replacement schedule from ITER analogs and flag it as a high-uncertainty line item, or source an updated CFS/IAEA-FEC divertor design.
-
-Despite these gaps, the available data supports a D1+ analysis that covers all five required sections with honest uncertainty quantification. With the Araiinejad & Shirvan 2025 analog integrated, only the divertor remains a blocking LCOE gap; the rest are accuracy refinements estimable from analogs — they do not indicate fundamental unknowns about the concept's technical viability or cost structure.
+---
 
 ## Structured summary (machine-readable)
 
 ```yaml
 overall_rating: "Mostly Ready"
 blocking_count: 1
-important_count: 10
-counting_method: "section_5_missing_parameters"
+important_count: 6
+counting_method: "all_sections_deduplicated — one blocking gap (tritium startup inventory cost, gated on unvalidated FLiBe extraction rate); six important gaps (detailed ARC CAS breakdown, ARC-specific capacity factor, blanket replacement schedule, FLiBe T-extraction at integrated scale, divertor design/cost, first wall / VV fusion-neutron lifetime)"
 section_coverage:
   availability_of_data:       "Good"
-  system_function:            "Good"
+  system_function:            "Partial"
   subsystem_maturity:         "Partial"
   materials_supply_chain:     "Partial"
-  lcoe_parameter_extraction:  "Unknown"
+  lcoe_parameter_extraction:  "Partial"
 ```

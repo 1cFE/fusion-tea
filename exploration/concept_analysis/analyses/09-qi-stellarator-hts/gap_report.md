@@ -1,184 +1,179 @@
-Now I have everything needed. Let me write the gap assessment report.
-
----
-
-# Gap Assessment: QI Stellarator - HTS
+# Gap Assessment: QI Stellarator - HTS (D-T)
 
 ## Overall Readiness
 **Rating**: Mostly Ready
-
-**Summary**: The Stellaris paper (Fusion Eng. & Design 2025) is exceptionally detailed for a pre-commercial fusion concept — it covers plasma physics, engineering design, subsystem specifications, and materials in depth across a 337 KB extracted document. The major gap is economic: no cost breakdown by subsystem exists, and the thermal efficiency figure (~32%) is an assumption rather than a detailed cycle study. A high-quality qualitative write-up and a parametric LCOE model can both be produced from available data, but cost estimates will be rough-order-of-magnitude analogues, not bottom-up.
+**Summary**: The Stellaris paper (FED 2025, full text extracted) provides exceptional coverage of physics and engineering — the richest conceptual design data in the current portfolio for any private fusion company. Physics and subsystem function are well characterized for a concept at this stage. The core gap for LCOE analysis is that Proxima explicitly defers all economic analysis to future work; no concept-specific capital cost estimate exists for any Stellaris subsystem, and the only cost figures in the paper are generic MFE literature ranges (1–10 $/W overnight, 20–100 $/MWh LCOE). An analog-based quantitative LCOE model is feasible using Helios, ARIES-CS, and TEA-MIT framework data, but a bottom-up Stellaris-specific estimate is not currently possible.
 
 ---
 
 ## Section Coverage
 
 ### 1. Availability of Data
-
-**Coverage**: Good
+**Coverage**: Moderate
 
 **Available**:
-- *Stellaris* peer-reviewed paper (Garabedian et al., Fusion Eng. & Design 2025, DOI: 10.1016/j.fusengdes.2025.114868) — published, open-access extracted, highly detailed. Covers plasma equilibrium, engineering parameters, blanket, magnets, divertor, heating, and shielding. Source: `stellaris-design-details.md` / `stellaris-paper-details.md` (both appear to be extractions of the same document).
-- Thea Energy *Helios* comparison paper (132 KB) — a second QI stellarator design by a different company that serves as an independent data point for design parameters and efficiency assumptions. Source: `helios-stellarator-comparison.md`.
-- Proxima Fusion technology page — describes StarFinder optimization framework, QI-HTS value proposition, and W7-X scientific heritage. Source: `proxima-fusion-technology-page.md`.
-- Proxima/RWE/Bavaria MoU press release (Feb 2026) — confirms Alpha demo (~€2B), site selection, financing structure (~20% private / ~20% Bavaria / RWE + federal), and supplier intent. Source: `proxima-fusion-2026-updates.md`.
+- **Full Stellaris paper** (Lion et al., FED 2025, `iter-01/sources/stellaris-design-details.md`): 30+ page peer-reviewed design study covering plasma optimization, heating, blanket, magnets, support structure, remote maintenance, and neutronics. Includes all key plasma and machine parameters (Table 1: R=12.7 m, a=1.5 m, B_axis=5.86 T, B_coil=14.4 T, 2700 MW fusion, ~1000 MW net electric, TBR 1.074).
+- **Proxima company communications**: Technology page, tritium blog, Faraday Factory Japan REBCO agreement, RWE/Bavaria/IPP MoU (Alpha €2B, Gundremmingen site for Stellaris).
+- **Helios stellarator comparison** (`iter-02/sources/helios-stellarator-comparison.md`, arXiv 2512.08027): Thea Energy's preconceptual stellarator plant study — the closest analog in concept family. Provides 390 MWe, 40% thermal efficiency, steam Rankine cycle, 88% capacity factor, biennial 84-day maintenance, 20 T HTS, TBR 1.3.
+- **W7-X physics heritage**: Wikipedia article and SOFE 2009 construction paper provide validated QI stellarator physics basis; W7-X demonstrated neoclassical transport reduction and detachment operation.
+- **Physics literature**: CIEMAT-QI4 turbulence paper (arXiv 2404.16440), Goodman et al. 2024 (arXiv 2405.19860), CIEMAT-QI4X (arXiv 2512.08825) confirm QI optimization advances that underpin Stellaris.
 
 **Missing**:
-- No dedicated power plant economics report or system code study (analogous to ARIES, EUROfusion DEMO cost studies, or the Helion/CFS investor disclosures) has been sourced.
-- No independent TRL assessment from a third party (e.g., European fusion assessment, DOE FPP-class review).
+- No Stellaris-specific economic study, capital cost estimate, or LCOE calculation. The Stellaris paper explicitly lists "in-depth studies of economic viability" as future work (`iter-01/sources/stellaris-design-details.md`, §3.2). The only cost numbers in the paper cite generic MFE literature (1–10 $/W; 20–100 $/MWh).
+- No published Alpha demo cost breakdown (only the €2B headline figure from the MoU press release).
 
 **Gaps**:
-- Formal power plant economics study for Stellaris — `not-yet-sourced` — **important** (needed for LCOE section; paper-based analogues can substitute)
-- Independent TRL verification — `not-yet-sourced` — **nice-to-have** (self-reported TRL from Proxima/paper is available; cross-check would improve confidence)
+- No concept-specific economic or plant study — proprietary — **blocking** (LCOE quantitative model cannot be concept-specific)
+- Alpha demo physics validation (Q>1) not yet demonstrated — truly-unknown — **important**
 
 ---
 
 ### 2. Challenges in Capturing System Function
-
 **Coverage**: Good
 
 **Available**:
-The Stellaris paper provides a strong basis for identifying cost-modeling challenges:
-- **3D non-planar coil geometry**: 50 modular HTS coils with complex winding packs, optimized via SQuID/StarFinder. No tokamak analogue exists for coil cost. The coil complexity (peak coil current 15.4 MA, stored energy 111 GJ) is described in detail — the challenge is translating geometry into cost, not understanding the geometry.
-- **ECRH heating at 230–240 GHz**: 50 MW from 7 gyrotrons per port × 8 ports = 56 gyrotrons. This frequency is at or beyond current industrial capability (W7-X uses 140 GHz). The paper notes this explicitly.
-- **Island divertor**: Physics well-described (4/4 island chain, tungsten-based), but heat exhaust modeling is acknowledged as still maturing. No demonstrated analog at power-plant wall loads (10 MW/m² target stated).
-- **WCLL blanket TBR**: TBR = 1.07 from neutronics modeling. Paper acknowledges this is a point estimate with sensitivity to geometry and enrichment — relevant to tritium self-sufficiency margin.
-- **Cryo-plant load**: 111 MW conduction to coils is stated. This is a significant recirculating power fraction (~11% of thermal output) with cost implications.
-- **Physics extrapolation**: The H₉₈ confinement enhancement factor required is 1.30 — a 30% improvement over the empirical W7-X scaling. This is the main unvalidated physics claim.
+The Stellaris paper addresses all major system function challenges with unusual completeness for a private company design study:
+- **Physics performance**: 0.5D power balance analysis, GENE+TANGO turbulence validation of temperature profiles. Two operating points (A: 1800→2700 MW, B: higher density) analyzed. Design point requires ISS04 confinement multiplier of 1.0 — no enhancement assumed.
+- **Heating**: ECRH (50 MW, 230–240 GHz) confirmed as primary method with port design validated for O1/X1 mode heating (`iter-01/sources/stellaris-design-details.md`, §2.5). Wall-plug efficiency issue acknowledged (gyrotron ~50%, multi-stage depressed collector target >60%).
+- **Divertor**: Island divertor validated for heat capture with EMC3-Lite simulations; 97–99% of SOL power captured under strong detachment assumption; peak heat flux 5–9.5 MW/m² depending on edge transport parameters (`iter-01/sources/stellaris-design-details.md`, §2.6).
+- **Power balance**: 3150 MW thermal with power multiplication 1.2 from WCLL blanket; 50 MW ECRH recirculating load included; ~1000 MW net electric implies ~32% overall efficiency.
+- **Steady-state operation**: Island divertor detachment control (following W7-X heritage), density profile control via pellet injection, minimal bootstrap current (23 kA — negligible for island location stability).
+- **Burn control**: Novel challenge noted — no demonstrated burn control scenario for stellarators; authors suggest density/temperature control via ECCD or coil detuning.
 
 **Missing**:
-- No detailed balance-of-plant (BoP) schematic or heat integration analysis. The 1/3 (~32%) thermal conversion efficiency is an assumption, not a cycle study.
-- No detailed remote maintenance (RM) cost/schedule analysis. RM complexity for non-planar 3D coils is expected to be higher than tokamaks but is not quantified.
+- Island divertor operation at reactor-relevant power (500 MW SOL exhaust after 90% radiation) not demonstrated at any scale; all W7-X data at <5 MW.
+- Burn control at ignition-level conditions is conceptually described but not supported by experimental data from stellarators.
+- Gyrotron efficiency at 240 GHz: highest demonstrated is ~170 GHz (W7-X); the Stellaris paper acknowledges 240 GHz gyrotrons are required but "future work" for development.
+- High-confinement mode (H-mode) access: The paper notes Stellaris's P/S ratio (~1.18 MW/m²) exceeds H-mode threshold for tokamaks and may require confinement correction — introduces downward uncertainty in plasma performance.
 
 **Gaps**:
-- Detailed steam/power cycle design and efficiency justification — `derivable` (can use generic stellarator/fusion plant BoP analogues, e.g., ~33% Rankine at 500°C EUROFER limit) — **important**
-- Remote maintenance cost model — `proprietary` / `not-yet-sourced` — **important** (remote maintenance is typically 10–20% of total OpEx in fusion plant studies; lacking it introduces a large uncertainty band)
-- 3D coil manufacturing cost model — `not-yet-sourced` — **important** (no published bottom-up cost model for non-planar HTS stellarator coils; analogue from ITER TF coils or CFS SPARC coils would be indirect)
-- ECRH system cost at 230–240 GHz — `not-yet-sourced` — **important** (current gyrotron cost analogues are at 140 GHz; higher frequency increases unit cost)
+- Island divertor at reactor-scale power flux — truly-unknown — **important**
+- Burn control and thermal stability at ignition-level conditions in QI stellarators — truly-unknown — **important**
+- 240 GHz high-power gyrotron capability at MW-scale (required for ECRH) — not-yet-sourced — **important**
+- H-mode confinement correction to design point unknown — truly-unknown — **nice-to-have** (could alter Q and required heating power)
 
 ---
 
 ### 3. Maturity of Key Subsystems and Components
-
 **Coverage**: Partial
 
 **Available**:
-The Stellaris paper and Proxima tech page provide sufficient basis for TRL assessments on most subsystems:
-
-| Subsystem | Basis Available | Implied TRL | Source |
-|-----------|----------------|-------------|--------|
-| QI plasma equilibrium / confinement physics | W7-X experimental validation at small scale | TRL 4–5 (device-scale demo, scaling unverified) | Stellaris paper §2 |
-| Island divertor | W7-AS and W7-X demonstrated, power-plant loads not tested | TRL 4 | Tech page, paper §3 |
-| HTS REBCO coils (20 T, stellarator geometry) | REBCO tape commercially available; 3D stellarator winding at scale not demonstrated | TRL 2–3 | Dossier, paper §4 |
-| ECRH at 230–240 GHz | W7-X runs at 140 GHz; 230 GHz systems in lab only | TRL 2–3 | Stellaris paper §5 |
-| WCLL blanket | EUROfusion DEMO-class design work; not yet prototyped for stellarator geometry | TRL 2–3 | Stellaris paper §6 |
-| Tungsten first wall | Demonstrated on JET, W7-X; power-plant lifetimes not validated | TRL 4–5 | Stellaris paper §3 |
-| Cryogenic pellet injection | Operational on W7-X; power-plant rep-rate not qualified | TRL 4 | Stellaris paper §5 |
-| EUROFER97 structure | Irradiation data available; power-plant fluence regime (>20 dpa) not yet qualified | TRL 4 | Stellaris paper §6 |
+| Subsystem | TRL Assessment | Source |
+|-----------|---------------|--------|
+| Plasma physics basis | TRL 4–5 (W7-X demonstrates QI neoclassical optimization) | W7-X Wikipedia; Stellaris paper §2.2 |
+| ECRH gyrotrons (140–170 GHz) | TRL 7–8 (operational in W7-X, ITER-class) | Stellaris paper §2.5 |
+| WCLL blanket concept | TRL 4 (EU DEMO program; same concept, tokamak geometry) | Stellaris paper §2.8; dossier |
+| EUROFER97 structural steel | TRL 6 (EU DEMO development, not fully irradiation-qualified) | Stellaris paper §2.8 |
+| HTS REBCO conductor (tape form) | TRL 5–6 (45.5 T record achieved; SPARC under construction) | Stellaris paper §2.9 |
+| 3D non-planar HTS stellarator coils | TRL 2–3 (no reactor-scale 3D REBCO coil; SMC demo planned 2027) | Dossier; Stellaris paper §2.9 |
+| Island divertor (W7-X scale) | TRL 5 (demonstrated in W7-X; detachment operation shown) | Stellaris paper §2.6 |
+| Sector-splitting remote maintenance | TRL 2–3 (conceptualized; not demonstrated for stellarator scale) | Stellaris paper §2.11 |
+| Tritium breeding (WCLL concept) | TRL 4 (EU DEMO, not stellarator-geometry validated) | Stellaris paper §2.8 |
 
 **Missing**:
-- No explicit TRL table appears in the Stellaris paper — TRL assessments above are inferred from the technical descriptions and the W7-X/DEMO literature heritage.
-- No magnet factory production rate or per-coil cost estimate is available.
+- 240 GHz gyrotrons at MW-scale are not demonstrated (required specifically for Stellaris field strength). W7-X gyrotrons operate at 140 GHz; ITER at 170 GHz; next generation needed.
+- 3D non-planar REBCO coil manufacturing at reactor scale: SMC demo targeting 2027 is the critical de-risking step; current TRL is estimated at 2–3 (design but no hardware demonstration). Five-fold difference in coil complexity from tokamak TF coils; W7-AS and W7-X used NbTi, not REBCO.
+- WCLL blanket adapted to complex stellarator geometry: EU DEMO heritage exists for uniform tokamak geometry; non-uniform stellarator radial build (0.95–1.37 m plasma-coil distance) creates heterogeneous neutron shielding demands not covered by available data.
+- First wall irradiation qualification at 14.1 MeV neutron fluence: IFMIF-DONES data expected ~2030s; Stellaris analysis uses ARC-DPA estimates with acknowledged uncertainties.
 
 **Gaps**:
-- Explicit TRL table for Stellaris subsystems — `not-yet-sourced` — **nice-to-have** (EUROfusion fusion plant roadmaps and W7-X companion papers may have TRL assessments for overlapping subsystems; unverified — confirm existence before searching)
-- 3D HTS coil winding demonstration at scale — `truly-unknown` (no one has wound a non-planar 20T HTS coil at power-plant current; this is a genuine TRL gap) — **blocking** for the technology, **important** for the analysis (flag as major risk)
+- 3D non-planar HTS coil manufacturing at reactor scale — not-yet-sourced — **important**
+- WCLL blanket TRL in stellarator geometry — not-yet-sourced — **important**
+- 240 GHz high-power gyrotron TRL (same gap as §2) — not-yet-sourced — **important**
+- First wall neutron irradiation qualification data — truly-unknown — **nice-to-have** (IFMIF expected 2030s)
 
 ---
 
 ### 4. Key Materials and Supply Chain Considerations
-
 **Coverage**: Partial
 
 **Available**:
-- **REBCO HTS tape**: Named explicitly as the conductor (20 T capable). Dossier notes REBCO supply chain risk (single-sourcing concern). Global REBCO production is dominated by a small number of manufacturers (SuperPower, SUNAM, SuNAM, Fujikura). The Stellaris paper does not quantify tape length or cost per meter.
-- **EUROFER97**: Structural material for blanket and vessel. European supply chain exists (Böhler/Uddeholms); used in JET and DEMO design studies. Production scale for a power plant is not quantified.
-- **Tungsten**: First wall and divertor armor. Established industrial supply; primary concern is manufacturing to power-plant specifications (plasma-facing surface quality, bonding to structural steel). Sources note W7-X demonstrated tungsten components.
-- **LiPb (lithium-lead eutectic)**: Blanket coolant and tritium breeder. Lithium enrichment (Li-6) required. Global Li-6 production is modest; enrichment is a non-trivial industrial step.
-- **Tritium startup inventory**: D-T fuel requires ~1–2 kg tritium startup charge (from Helios comparison source; Stellaris paper does not state this explicitly). Current global tritium inventory (~25 kg) is limited.
+- **REBCO tape supply**: Faraday Factory Japan signed agreement to supply HTS tape for the SMC demo magnet. Proxima states the SMC uses REBCO from this supplier. Supply chain for demo-scale coil is established.
+- **EUROFER97 structural steel**: Standard EU DEMO material, established supplier base in Europe.
+- **Lithium-lead (LiPb) breeding material**: Lead and lithium abundantly available. Li-6 enrichment is standard industry practice (global supply chain exists for ITER and other programs).
+- **Tungsten first-wall armor**: Established supply chain (W7-X and ITER use tungsten plasma-facing components).
+- **Cryogenic helium** (20 K operation): 20 K vs. LTS 4 K increases efficiency of cryo-plant and uses neon/helium cooling; supply chain more flexible than LTS.
+- **Proxima's magnet factory**: Planned with up to 1,000 jobs (Bavarian High-Tech Agenda); explicitly identified as necessary for Stellaris scale-up.
 
 **Missing**:
-- No supply chain risk quantification (cost, lead time, single-point-of-failure analysis) in any source.
-- No REBCO tape length/quantity estimate for Stellaris (needed to assess supply chain feasibility).
-- No Li-6 enrichment requirement calculation specific to Stellaris TBR = 1.07.
+- **REBCO tape quantity estimate for Stellaris**: 50 coils × ~25 m circumference = ~1,250 m total coil circumference; winding pack with ~300 turns per coil suggests hundreds of km of REBCO tape. No cost-per-kA-m estimate or total tape quantity published. At commercial HTS prices (~$10–100/kA-m depending on volume and performance), this is a potentially dominant capital cost item.
+- **3D coil manufacturing supply chain**: Non-planar stellarator coils require fundamentally different manufacturing than tokamak TF coils. No established industrial supply chain exists for complex 3D REBCO coils; W7-X NbTi coils cost ~€300M for the full coil set (50 coils; ~€6M per coil in NbTi — REBCO at higher field would be significantly more expensive).
+- **Li-6 enrichment at commercial scale**: Current global production is modest (ITER requirement); Stellaris WCLL with TBR 1.074 implies reliance on Li-6 enrichment for startup and net positive tritium production.
 
 **Gaps**:
-- REBCO tape quantity estimate for Stellaris coils — `derivable` (can estimate from coil geometry and current density specs in the paper) — **important**
-- REBCO production capacity vs. demand timeline — `not-yet-sourced` — **important** (IEA/DOE reports on critical mineral supply chains or published stellarator supply chain studies; unverified — confirm existence before searching)
-- Li-6 enrichment requirements and supply chain — `not-yet-sourced` — **important** (EUROfusion WCLL blanket studies address this; unverified — confirm existence before searching)
-- Tritium startup inventory source and cost — `not-yet-sourced` — **important** (CANDU-sourced tritium at ~$30k/g is the standard assumption; confirm applicability)
+- REBCO tape quantity and cost-per-kA-m at commercial scale — not-yet-sourced — **important**
+- Industrial supply chain for complex 3D REBCO stellarator coils — not-yet-sourced — **important**
+- Li-6 enrichment supply at commercial scale — not-yet-sourced — **nice-to-have**
+- Tritium startup inventory cost (~1–2 kg per the Helios analog; ~$30–130M at current prices) — not-yet-sourced — **nice-to-have**
 
 ---
 
 ### 5. LCOE Parameter Extraction
-
 **Available Parameters**:
-
 | Parameter | Value/Range | Source | Confidence |
 |-----------|-------------|--------|------------|
-| Peak fusion power | 2.7 GW | Stellaris paper Table 2 | High |
-| Peak thermal power | 3.1–3.3 GW | Stellaris paper | High |
-| Net electrical output | ~1 GW | Stellaris paper / dossier | Medium |
-| Thermal conversion efficiency | ~32% (stated as "1/3") | Stellaris paper §7 | Medium (assumed, not cycle-modeled) |
-| Auxiliary power — ECRH | 50 MW | Stellaris paper Table 2 | High |
-| Recirculating power — cryo | 111 MW | Stellaris paper Table 2 | High |
-| Plasma major radius | 12.7 m | Stellaris paper Table 2 | High |
-| Plasma minor radius | 1.5 m | Stellaris paper Table 2 | High |
-| Number of modular coils | 50 | Stellaris paper | High |
-| Peak coil field | 14.4 T (on-axis) / 20 T (at conductor) | Stellaris paper | High |
-| Stored magnetic energy | 111 GJ | Stellaris paper Table 2 | High |
-| Blanket TBR | 1.07 | Stellaris paper §6 | Medium |
-| Peak wall load | 4.05 MW/m² | Stellaris paper Table 2 | High |
-| Confinement gain (Q) | ~4–6 (fusion power / auxiliary power) | Stellaris paper (derived) | Medium |
-| H₉₈ confinement factor required | 1.30 | Stellaris paper §2 | Medium (unvalidated extrapolation) |
-| Alpha demo cost | ~€2B | Proxima/RWE MoU 2026 | Medium (announcement, not engineering estimate) |
-| ECRH system size | 56 gyrotrons × 1 MW each | Stellaris paper §5 | High |
-| Plasma volume | 448 m³ | Stellaris paper Table 2 | High |
-| Operation mode | Steady-state | Dossier / Stellaris paper | High |
-| Fuel type | D-T | Dossier | High |
+| Fusion power (peak) | 2700 MW | Stellaris paper, Table 1 | High |
+| Thermal power (blanket output) | ~3100–3300 MW (power mult 1.2) | Stellaris paper, §2.8 | High |
+| Net electric power | ~1000 MW | Stellaris paper, Table 1 | Medium |
+| Overall plant efficiency | ~32% | Derived: 1000 MWe / 3150 MWth | Medium |
+| Thermal efficiency (Rankine analog) | ~40% | Helios analog (helios-stellarator-comparison.md, Table 1) | Medium |
+| Fusion gain Q (implied) | ~36 at Point A (2700 MW / 75 MW input) | Stellaris paper, §2.3 operating points | Medium |
+| ECRH auxiliary power | 50 MW | Stellaris paper, §2.5 | High |
+| Operation mode | Steady-state, 24/7 | Intrinsic stellarator property; confirmed by Proxima | High |
+| TBR | 1.074 | Stellaris paper, §2.8, 3D OpenMC simulation | High |
+| First wall lifetime | ~4–5 FPY | Stellaris paper, §2.8, ARC-DPA model | Medium |
+| Coil lifetime | ~10 FPY at 2700 MW | Stellaris paper, §2.9, 3×10²² m⁻² fluence limit | Medium |
+| Maintenance strategy | Sector splitting, 4–5 year operating cycles | Stellaris paper, §2.11 | Medium |
+| Availability target | ~90% over 4.5-year cycle | Stellaris paper, §2.11 | Low (target, not confirmed) |
+| Maintenance downtime estimate | ~7 months (target: 5 months) | Stellaris paper, §2.11 | Low |
+| Capacity factor (analog) | 88% | Helios (biennial 84-day maintenance; helios-stellarator-comparison.md) | Medium |
+| Generic MFE overnight cost | 1–10 $/W | Cited in Stellaris paper from refs [10–13] | Low (too wide) |
+| Generic MFE LCOE | 20–100 $/MWh | Cited in Stellaris paper from refs [14–15] | Low (too wide) |
+| Compact fusion LCOE (analog) | 34–54 $/MWh avg ~43 $/MWh | ARPA-E ALPHA revisit (`knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/`) CapEx ~$2.4/W | Medium (different concept family) |
+| D-T MFE LCOE range (tokamak analog) | $140–550/MWh; OCC $8800–22,200/kW | TEA MIT (`knowledge/sources/tea_dt_mfe_cost_analysis/`) for 350 MWe ARC | Low (tokamak, conservative regulatory assumptions) |
 
 **Missing Parameters**:
-
 | Parameter | Gap Type | Criticality | Notes |
 |-----------|----------|-------------|-------|
-| Capacity factor (%) | derivable | Blocking | Steady-state operation claimed; no explicit CF stated. Can assume 85–90% with stated basis; needs flagging. |
-| CapEx breakdown by subsystem (magnets, blanket, vessel, BoP) | proprietary / not-yet-sourced | Blocking | No cost breakdown in any source. Alpha demo = €2B covers demo-scale. Power plant CapEx must be estimated from analogues ($/W literature ranges: 2–10 $/W for fusion). |
-| Blanket replacement schedule and cost | not-yet-sourced | Important | WCLL blanket lifetime under stellarator neutron flux not quantified. EUROfusion DEMO studies have blanket replacement intervals (~2–5 years); adapt with stated assumptions. |
-| First wall replacement cost | not-yet-sourced | Important | Tungsten first wall lifetime under 4 MW/m² load not stated. Analogues from tokamak studies needed. |
-| O&M staffing cost | truly-unknown | Important | No fusion power plant has operated at scale; all estimates are analogy-based. |
-| Tritium inventory and cost | not-yet-sourced | Important | ~1–2 kg startup from Helios source, not stated in Stellaris paper. Cost ~$30k/g → $30–60M startup inventory. |
-| ECRH system capital cost | not-yet-sourced | Important | 56 × 1 MW gyrotrons at 230–240 GHz. Cost per unit at this frequency not in sources; W7-X gyrotron analogues at 140 GHz available in literature. |
-| Thermal cycle details (sCO₂ vs Rankine, efficiency breakdown) | derivable | Important | "1/3 efficiency" is stated. EUROFER97 limit ~500°C constrains cycle to ~33–35% Rankine. Can derive with stated assumptions. |
-| Remote maintenance cost and schedule | proprietary | Important | Not published. Analogue: tokamak RM cost studies (e.g., ARIES, DEMO). |
-| Decommissioning cost | truly-unknown | Nice-to-have | Standard fusion plant assumption (~10–15% of overnight capital) can be applied. |
-| HTS coil manufacturing cost per coil | not-yet-sourced | Important | REBCO tape cost ~$10–50/m; coil geometry in paper allows tape-length estimate. Total magnet cost derivable with assumptions. |
-| Land/site cost | proprietary | Nice-to-have | Gundremmingen stated as site; decommissioned nuclear site may have infrastructure value. |
+| Capital cost by subsystem (magnets, blanket, BOP, structures) | proprietary | blocking | No Stellaris-specific estimate; Proxima explicitly defers economic analysis; 3D coil set has no cost analog |
+| 3D HTS stellarator coil cost | not-yet-sourced | blocking | 50 non-planar REBCO coils ~25 m circumference each; no published $/kA-m at this complexity; planar Helios coils are structurally different |
+| O&M costs (annual) | not-yet-sourced | important | Remote maintenance of 3D geometry with activated components; no stellarator-specific O&M study found; standard D-T MFE analog 1–2% capital/year |
+| Achievable capacity factor | derivable | important | 90% target plausible (Helios 88% analog); but 7-month maintenance estimate exceeds 5-month target; Stellaris operates on 4-year first wall cycles, 10-year coil cycles |
+| Steam Rankine cycle specification | derivable | important | WCLL water coolant at <500°C strongly implies Rankine; ~32% overall plant efficiency in Stellaris; Helios confirms 40% thermal efficiency for similar stellarator |
+| First wall/blanket replacement cost | not-yet-sourced | important | ~4-5 FPY replacement intervals; major activated component handling; no per-cycle cost estimate |
+| ECRH system capital cost | not-yet-sourced | important | 56 gyrotrons at 240 GHz (~1 MW each); ITER gyrotrons at 170 GHz ~$10M/unit; 240 GHz not yet demonstrated commercially |
+| Fuel cost (D and Li-6) | derivable | nice-to-have | Deuterium negligible; Li-6 for blanket and tritium startup well-characterized in ITER literature |
+| Decommissioning cost | derivable | nice-to-have | Standard nuclear decommissioning methodology applicable |
 
 ---
 
 ## Source Recommendations
 
-1. **EUROfusion DEMO WCLL blanket design studies** — addresses blanket replacement schedule, TBR sensitivity, and Li-6 enrichment requirements. Search: OSTI/EUROfusion publications on "WCLL blanket lifetime" or "WCLL replacement interval." — `not-yet-sourced` — unverified, confirm existence before searching.
+- **Stellaris economic study** (future Proxima publication): The Stellaris paper explicitly identifies this as future work. Search OSTI, FED, and arXiv for Proxima Fusion techno-economic analysis (2025–2026). _Search terms: "Stellaris" AND "cost" OR "LCOE" OR "economic" on Google Scholar/OSTI._ Flag as `unverified — confirm existence before searching`.
+- **ARIES-CS full economic study** (Najmabadi et al., Fusion Science and Technology, 2008): The ARIES-CS compact stellarator study contains a detailed CAS-level cost breakdown for a QA stellarator with LTS coils; applicable as cost structure analog even though magnets differ. OSTI ID 1014258 is the systems study abstract; full paper at FST Vol. 54, No. 3 (2008). _not-yet-sourced_.
+- **HTS coil cost studies from SPARC/CFS or Commonwealth Fusion Systems**: Published analyses of REBCO tape quantities, coil manufacturing costs, and $/kA-m scaling for high-field HTS coils. _not-yet-sourced — search PSFC, CFS reports, and FED for ARC magnet costing_.
+- **Alpha demo specifications** (to emerge 2026–2031): Proxima will publish Alpha detailed design specifications as milestones approach. These will provide the first physics-validated cost anchor for the Stellaris program.
+- **EU DEMO WCLL blanket economic analysis**: Full cost breakdown of the WCLL breeding blanket design from the EUROfusion DEMO project. Applicable to Stellaris's WCLL concept. _not-yet-sourced — search EUROfusion DEMO documentation portal_.
+- **240 GHz gyrotron development program**: KIT/IPP gyrotron development for ITER/DEMO frequency extension. Search IEE Transactions on Plasma Science and KIT publications for 240 GHz progress. _not-yet-sourced_.
 
-2. **ARIES-CS or HSR stellarator power plant studies** — published system-level cost models for compact stellarator power plants that predate Stellaris but establish parametric cost structures (magnets, blanket, BoP). Search: "ARIES Compact Stellarator" or "Helias Reactor HSR" cost study. — `not-yet-sourced` — ARIES-CS is a known publication (Raffray et al., ~2008); confirm the HSR study exists before citing.
-
-3. **CFS/SPARC magnet cost analogues** — REBCO HTS magnet cost modeling for high-field fusion magnets. CFS has published engineering cost information on SPARC's TF coils. Applicable as analogue for Stellaris coil cost estimation. — `not-yet-sourced` — unverified, confirm existence before searching.
-
-4. **W7-X companion engineering papers** — detailed cost breakdown for W7-X construction (total ~1B EUR for experimental device). Provides bottom-up magnet manufacturing cost data at relevant scale (though at 2.5 T, not 20 T). Search: "W7-X construction cost" or "Wendelstein 7-X magnet fabrication." — `not-yet-sourced` — unverified, confirm existence before searching.
-
-5. **Gyrotron cost literature at high frequency** — 140 GHz unit costs are well-documented (W7-X: ~€3–5M per 1 MW gyrotron); 230 GHz is at developmental stage. Search: "high-frequency gyrotron cost" or "ECRH system cost fusion." — `not-yet-sourced` — unverified, confirm existence before searching.
-
-6. **IEA/DOE critical mineral supply chain reports on REBCO tape** — quantify production bottleneck for HTS tape scale-up. Search: "REBCO supply chain fusion" or "HTS tape production capacity roadmap." — `not-yet-sourced` — unverified, confirm existence before searching.
+**Fleet-wide sources assessed and disqualified**:
+- **PyFECONS** (`/home/reid/PyFECONS`): Codebase that implements ARIES-style fusion costing algorithms. Without Stellaris-specific input parameters (coil geometry, blanket dimensions, support structure mass), running the code would return generic MFE estimates no more informative than the ARIES Cost Account Documentation (`knowledge/sources/aries_cost_account_documentation/`) already provides. The methodology is covered; the input data is what's missing. Disqualified.
+- **A simplified economic model for inertial fusion** (`knowledge/sources/a_simplified_economic_model_for_inertial_fusion/`): Hawker et al. IFE Monte Carlo model (laser/target-driven). Not applicable to MFE stellarator. Disqualified.
+- **Economic studies for heavy-ion-fusion electric power plants** (`knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/`): HIF driver economics for linear accelerator + target factory architecture. Not applicable to stellarator. Disqualified.
+- **Energy from Inertial Fusion** (`knowledge/sources/energy_from_inertial_fusion/`): 1992 IFE concept review. Not applicable. Disqualified.
+- **Accelerators for IFE production** (`knowledge/sources/accelerators_for_inertial_fusion_energy_production/`): IFE driver technology. Not applicable. Disqualified.
+- **Affordable, manageable, practical, and scalable (AMPS)** (`knowledge/sources/affordable_manageable_practical_and_scalable_amps_high/`): Pacific Fusion high-yield pulser IFE system. Not applicable. Disqualified.
+- **Commercialization of laser fusion energy** (`knowledge/sources/commercialization_of_laser_fusion_energy/`): Xcimer KrF excimer laser IFE. Not applicable. Disqualified.
+- **An Assessment of the Economics of Future Electric Power Generation Options** (`knowledge/sources/an_assessment_of_the_economics_of_future_electric_power/`): Historical ORNL benchmarking study. The MIT TEA paper (`knowledge/sources/tea_dt_mfe_cost_analysis/`) provides more recent and applicable D-T MFE LCOE ranges; this historical baseline adds no concept-specific content for Stellaris. Disqualified.
+- **Progress toward fusion energy breakeven** (`knowledge/meta_analysis/progress_toward_fusion_breakeven_lawson_criterion/`): Wurzel & Hsu (2021) Lawson parameter compilation. The Stellaris paper itself cites W7-X's peak triple product (5.1×10¹⁹ keV·s/m³ from W7-X, vs. 12.4×10²¹ for Stellaris target), establishing that two orders of magnitude of progress are required in triple product — this physics gap is already documented in the dossier. The Wurzel & Hsu compilation adds no new Stellaris-specific data. Disqualified.
 
 ---
 
 ## Summary
 
-**Proceed to full analysis with caveats noted.**
+**Proceed to full analysis.** The Stellaris concept has exceptional source coverage for physics and engineering relative to its development stage, justifying a high-quality D1+ qualitative analysis now. The quantitative LCOE model should be built on an explicit analog basis: Helios stellarator (390 MWe, 88% CF, 40% thermal efficiency, steam Rankine) for plant-level parameters; ARPA-E ALPHA revisit (~$34–54/MWh range) and ARIES cost account framework as the lower and methodological bounds; and MIT TEA D-T MFE ($140–550/MWh, $8800–22,200/kW) as the upper bound for a heavily regulated FOAK scenario. The single blocking gap — no concept-specific capital cost model — should be explicitly flagged in the analysis: the LCOE estimate will be analog-derived with ±50% uncertainty until Proxima publishes economic analysis or the Alpha demo provides cost anchors. The back-solve to $0.01/kWh should highlight 3D HTS coil cost as the dominant uncertainty driver, with Stellaris's ~1 GWe scale and steady-state operation as its strongest economic advantages over tokamak competitors.
 
-The Stellaris paper is one of the most detailed pre-commercial fusion power plant design studies available in the public literature — unusually so. Physics parameters, engineering geometry, materials, and subsystem descriptions are documented at a level that fully supports qualitative write-up and parametric LCOE modeling. The concept is well-characterized enough that most missing parameters are `derivable` or can be filled with `not-yet-sourced` analogues rather than being truly unknown.
-
-The main caveats to flag in the analysis are: (1) CapEx must be estimated from literature analogue ranges (2–10 $/W), not from a bottom-up Stellaris-specific cost model; (2) the 32% thermal efficiency is an assumption constrained by EUROFER97 temperature limits, not a detailed cycle study; (3) H₉₈ = 1.30 is the critical unvalidated physics assumption — if confinement falls short, Q and power output drop sharply; (4) 3D HTS coil manufacturing at power-plant scale has no demonstrated precedent and represents the single highest-risk TRL gap. These uncertainties can all be surfaced and parameterized in the LCOE model rather than treated as blockers.
+---
 
 ## Structured summary (machine-readable)
 
@@ -186,11 +181,11 @@ The main caveats to flag in the analysis are: (1) CapEx must be estimated from l
 overall_rating: "Mostly Ready"
 blocking_count: 2
 important_count: 8
-counting_method: "section_5_missing_parameters"
+counting_method: "all_sections_deduplicated — §1/§5 share one blocking gap (no concept-specific capital cost model); 3D HTS coil cost counted separately as second blocking (structurally distinct from generic capital cost, no analog); 8 important gaps deduplicated across §2-§5"
 section_coverage:
-  availability_of_data:       "Good"
+  availability_of_data:       "Moderate"
   system_function:            "Good"
   subsystem_maturity:         "Partial"
   materials_supply_chain:     "Partial"
-  lcoe_parameter_extraction:  "Unknown"
+  lcoe_parameter_extraction:  "Partial"
 ```

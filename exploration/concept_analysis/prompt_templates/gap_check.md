@@ -25,6 +25,29 @@ These are the primary technical sources extracted during Phase 1a research. Read
 
 {{source_file_list}}
 
+### Fleet-Wide TEA / Cost Analog Sources
+
+The following sources are registered in the repo-wide source index (`{{source_index_path}}`) but are **not** scoped to this specific concept. They are general fusion TEA references, cost analogs, codebases, and methodology papers that may apply across multiple concepts.
+
+Treat these as a candidate pool: most will not be relevant to this concept, but some may be — particularly for plant-level economics (balance of plant, O&M, decommissioning), CAS cost structure, capacity factor assumptions, or LCOE methodology, where a fleet-wide analog can resolve a concept-specific blocking gap.
+
+**Rules of use:**
+
+1. **Skim the index below first** to identify which fleet-wide sources are plausibly applicable to **{{concept_name}}** (match on confinement family, fuel cycle, plant type, or cost-modeling scope).
+2. **For every fleet source you flag as plausibly applicable, you MUST open `knowledge/sources/<source>/output.md` (or the path given in the index) using your Read tool before completing this assessment.** It is not acceptable to list a fleet source as relevant without reading it. After reading, you must do exactly one of:
+   - **(a) Integrate** — use the source's content to inform §1-5 of the report, with specific values, ranges, or page/section references that prove you opened the file, AND if the source addresses a gap that would otherwise be `blocking`, downgrade that gap (e.g. blocking → important, or important → nice-to-have) and explain why in the gap's note column.
+   - **(b) Explicitly disqualify** — state in §6 (Source Recommendations) why the source does not in fact address any current gap for this concept, citing what you saw when you opened it (one concrete sentence is enough). Generic "may be applicable downstream" language is not a disqualification.
+3. **Do not defer reading to a future step.** Phrases like "should be read before constructing the LCOE model" or "has not been read but is directly applicable" are forbidden — if a source is applicable, read it now; if it isn't, disqualify it per 2(b).
+4. **Cite by repo path** (e.g. `knowledge/sources/tea_dt_mfe_cost_analysis/`) when integrating a fleet-wide source into the assessment.
+5. **Prefer concept-scoped sources for concept-specific claims.** Use fleet-wide sources as cost analogs, methodology references, or to fill plant-level gaps the concept-scoped sources do not address.
+6. **Do not fabricate.** If a fleet-wide source is not actually applicable, do not force-cite it. If you cannot confirm what a source says without opening it, open it before citing — or do not cite it.
+
+#### Source Index Content
+
+```
+{{source_index_content}}
+```
+
 ### Reference Documents
 - **Analysis brief** (defines the D1+ section requirements): `{{brief_path}}`
 - **Schema** (controlled vocabulary and column definitions): `{{schema_path}}`
@@ -32,7 +55,7 @@ These are the primary technical sources extracted during Phase 1a research. Read
 ## Instructions
 
 1. **Read the dossier** to understand current knowledge state and confidence levels
-2. **Read each source document** to assess what technical content is available beyond the dossier summary
+2. **Read each Phase 1a source document** (concept-scoped, listed above) to assess what technical content is available beyond the dossier summary, and **selectively read fleet-wide sources** from the source index that you have judged plausibly relevant to this concept
 3. **For each of the 5 D1+ sections above**, assess:
    - What data is **available** (cite specific sources and what they cover)
    - What data is **missing** but needed for a thorough analysis
@@ -54,6 +77,15 @@ These are the primary technical sources extracted during Phase 1a research. Read
 6. **Source recommendations**: For `not-yet-sourced` gaps, suggest specific types of sources that might help (e.g., "published plant study," "system code output," "conference paper on blanket design"). Only reference specific papers if they appear in the dossier citations. Otherwise, suggest search strategies (e.g., "search OSTI for [topic]"). Flag any recommendation as `unverified — confirm existence before searching` if you are not certain the source exists.
 
 ## Output Format
+
+**Critical output protocol:**
+
+- **Do NOT use the Write or Edit tool.** Do not write the report to a file. The calling script captures your final assistant text response and writes it to `gap_report.md` itself. Anything you write to a file will be overwritten.
+- **Your entire final assistant message MUST be the complete, formatted markdown report — nothing else.** The very first character of your final message is the `#` of `# Gap Assessment: ...`. The very last characters are the closing ```` ``` ```` of the `## Structured summary` code block. Forbidden — and this is strict:
+  - **No preamble of any kind.** Do not write "I now have sufficient information…", "Here is the report:", "Based on my analysis…", "Let me write…", or any other lead-in sentence or paragraph before the `# Gap Assessment` heading.
+  - **No postamble of any kind.** Do not write "The assessment is complete", "Saved to…", "Let me know if…", or any commentary after the `## Structured summary` code block closes.
+  - **No meta commentary** about what you did, what you read, or what's coming. Source reading is evidenced by your in-report citations, not by narration.
+- It is fine — encouraged, in fact — to use the Read tool freely during your analysis to open source documents. Just put the final report in your text response, not in a file.
 
 Write your assessment as a structured markdown report:
 
@@ -98,6 +130,23 @@ Write your assessment as a structured markdown report:
 
 ## Summary
 [Final assessment: proceed to full analysis, or acquire more sources first?]
+
+## Structured summary (machine-readable)
+
+```yaml
+overall_rating: "[Ready / Mostly Ready / Significant Gaps / Insufficient Data]"
+blocking_count: [integer — total count of `blocking` gaps across all sections, deduplicated]
+important_count: [integer — total count of `important` gaps across all sections, deduplicated]
+counting_method: "[brief description of how you counted, e.g. 'section_5_missing_parameters' or 'all_sections_deduplicated']"
+section_coverage:
+  availability_of_data:       "[Good / Partial / Poor]"
+  system_function:            "[Good / Partial / Poor]"
+  subsystem_maturity:         "[Good / Partial / Poor]"
+  materials_supply_chain:     "[Good / Partial / Poor]"
+  lcoe_parameter_extraction:  "[Good / Partial / Poor]"
 ```
+```
+
+**Required:** The `## Structured summary` block at the end is **mandatory** — downstream scoring tooling parses `blocking_count:` from it. Do not omit this section.
 
 Do NOT fabricate data. If information doesn't exist in the provided sources, say so.

@@ -1,212 +1,157 @@
-I now have enough to write the full gap assessment. Let me compile it.
-
----
-
 # Gap Assessment: Levitated Dipole (D-T)
 
 ## Overall Readiness
 **Rating**: Mostly Ready
-
-**Summary**: OpenStar has published one of the most detailed first-principles power plant study of any private fusion startup (arXiv 2602.20564), providing comprehensive physics, engineering, and reactor parameter data for two design points (208 MWe and 75 MWe). The primary gaps are: (1) no dollar-denominated cost data — the paper explicitly defers this to a future publication; (2) no balance-of-plant thermal cycle specification; and (3) plasma confinement scaling is genuinely unknown, leaving Q=15 unvalidated at any fusion-relevant device scale. These gaps are real but do not block a D1+ analysis — enough data exists to structure a quantitative LCOE model with transparent assumptions, with clearly flagged unknowns.
+**Summary**: OpenStar's arXiv 2602.20564 (Simpson et al., 2026) provides exceptional depth for a pre-commercial concept — two full power plant design points with detailed physics, power balances, material masses, neutron transport, and an explicit optimization framework. Sections 1–4 of the D1+ analysis can be written at high quality. The critical gap is economic: OpenStar explicitly withholds absolute capital cost and LCOE figures, describing them as "preliminary results from a model currently in development" (§3.3), blocking Section 5 from being completed quantitatively without relying on fleet-wide analogs. A partial LCOE analysis is possible using the D-T MFE TEA analog (`knowledge/sources/tea_dt_mfe_cost_analysis/`), but key dipole-specific cost drivers (annual core magnet replacement, modular concrete vessel, REBCO tape at scale) are not captured by that source.
 
 ---
 
 ## Section Coverage
 
 ### 1. Availability of Data
-**Coverage**: Rich
+**Coverage**: Good
 
-**Available**:
-- arXiv 2602.20564 (Simpson et al., 2026): Full peer-reviewed power plant study with two FOAK design points, 0D power balance, plasma equilibrium, neutron transport (OpenMC), coil FEA, material mass inventories, and quantified duty cycle. Most detailed published plant study of any MFE startup.
-- arXiv 2508.17691 (Chisholm et al., 2026): Detailed Junior prototype paper: HTS coil specs, flux pump results, plasma heating systems, first plasma results.
-- OpenStar website / news coverage (IEEE Spectrum, Bloomberg, RNZ, NucNet): Company milestones, roadmap (Junior → Tahi → Maui → Tama Nui), funding (~NZD 35M + USD 21M), headcount (~80).
-- Wikipedia / LDX heritage literature: Physics heritage and experimental record from MIT LDX (2004–2014).
+**Available**: OpenStar has published two peer-reviewed papers and a public prototype roadmap. Simpson et al. 2026 (arXiv 2602.20564, 262 KB) is the primary source — a detailed FOAK power plant design study with full reactor geometry, power balance, neutron transport (OpenMC), structural mechanics (COMSOL FEA), material masses, and confinement physics. Chisholm et al. 2025 (arXiv 2508.17691) documents the Junior prototype. The Bloomberg and IEEE Spectrum articles confirm the Feb 2026 Junior demonstration and the Tahi/Maui/Tama Nui roadmap. The company has ~80 staff and is funded to ~NZD 35M (USD 21M). The concept has a 35-year academic heritage (LDX at MIT, RT-1 in Japan).
 
-**Missing**:
-- No published LCOE estimates or overnight capital cost values — paper explicitly states it is "in the process of developing" this model and will publish it as future work.
-- No published balance-of-plant design (thermal cycle, cooling water systems, power conversion unit).
-- No detailed blanket engineering design (beyond Li₂O baseline with TBR 1.1).
-- No Tahi design paper (planned, per §5 of 2602.20564).
+**Missing**: No third-party independent techno-economic assessment has been published. OpenStar's internal cost model is explicitly not yet published (paper §3.1 states "preliminary results from this model… subject to change… we avoid quoting specific values"). The concept has no DEMO-scale or commercial precursor — the nearest analogs (LDX, RT-1) are small academic experiments that did not produce fusion.
 
 **Gaps**:
-- Dollar-denominated cost model — `proprietary` (OpenStar has a preliminary model, per the paper) — **important** (needed for LCOE, can be estimated by analogy)
-- Balance-of-plant specifics — `truly-unknown` (not published anywhere) — **important** (thermal efficiency can be assumed at 40% from the paper's Table 2)
-- Confinement scaling validation — `truly-unknown` (no fusion-relevant dipole data exists) — **blocking** for verifying Q=15, but design can proceed with stated assumption
+- No published absolute cost estimate — proprietary — blocking (§5 consequence)
+- No independent third-party TEA or cost validation — not-yet-sourced — important
+- Academic heritage (LDX/RT-1) does not cover D-T neutronics at plant scale — truly-unknown — important
 
 ---
 
 ### 2. Challenges in Capturing System Function
-**Coverage**: Good (challenges are well-articulated in the paper itself)
+**Coverage**: Partial
 
-**Available**:
-- Paper explicitly acknowledges the key physics unknown: energy confinement time scaling. No empirical dipole scaling law exists (unlike H-98 for tokamaks). The paper uses Bohm vs. gyro-Bohm scaling as bounding assumptions.
-- The paper notes that alpha heating in the good-curvature region "is an ongoing area of active research" and its treatment in the power balance is approximate.
-- Good-curvature alpha energy is assumed to be fully radiated — simplified assumption, explicitly flagged.
-- Edge pedestal physics is unknown ("the physics defining viable conditions at the plasma edge is not well understood") — treated with tokamak I-mode upper bounds.
-- Plasma edge conditions affect confinement and wall loading but are unbenchmarked.
-- Duty cycle model is explicitly approximate (5-min dock time is an engineering target, not a demonstrated result).
+**Available**: The design paper (arXiv 2602.20564) provides exceptionally clear documentation of the key engineering innovations: (a) REBCO CICC coil with two-section sacrificial/permanent architecture; (b) on-board HTS flux pump (patented transformer-rectifier) maintaining ~30 kA without physical connections; (c) neon slush cryogenic reservoir for extended float time (~45 min per cycle); (d) W+B4C layered neutron shield radiatively cooled to first wall; (e) Li2O ceramic breeding blanket at TBR 1.1. The core magnet is physically decoupled from the vacuum vessel — the design's central maintenance advantage. Power balance (Table 9 in arXiv 2602.20564) is fully specified: 667 MW fusion → 741 MW thermal → 296 MW gross → 208 MW net for Reactor A, with explicit accounting for cryogenic loads, heating recirculating power, and duty cycle losses.
 
-**Missing**:
-- No validated confinement scaling law for dipoles. The LDX data gives one data point at low temperature — extrapolation to 10 keV spans orders of magnitude.
-- Alpha particle transport in good-curvature region is estimated, not modeled fully.
-- No system code (e.g., PROCESS) output for this concept — the optimization is done in the paper's bespoke code.
+**Missing**: Three genuine physics uncertainties remain unresolved and are acknowledged as such in the paper. First, energy confinement scaling has no experimental basis at fusion-relevant conditions — the paper's approach is explicitly reversed (design to minimize required τe, then back-calculate what a demonstration device must achieve). Second, edge pedestal physics is unknown — the paper assumes I-mode-like conditions (T_lcfs = 790 eV, p_lcfs = 10³ Pa) but states "will be confirmed with future levitated dipole experiments." Third, transport in the good-curvature region (Ψ < Ψ₀) is assumed to be classical but unverified — the paper notes "determining this is out of scope and will be a focus of future experiments." Divertor design is also unaddressed; the paper uses an outboard-limiter configuration as a "test of feasibility" only.
 
 **Gaps**:
-- Confinement scaling law — `truly-unknown` — **blocking** for validating Q=15 (but stated assumption enables LCOE model construction)
-- Good-curvature alpha transport — `truly-unknown` — **important** for power balance accuracy
-- Edge pedestal physics — `truly-unknown` — **important** (bounded in the model, so tractable)
-- No independent system code validation — `not-yet-sourced` — **nice-to-have** (PROCESS or similar has not been applied to this concept)
+- Energy confinement scaling law for dipoles — truly-unknown — blocking (the Qsci=15 target is unvalidatable without this; can only be noted as assumed)
+- Edge pedestal physics (magnitude of T_lcfs, p_lcfs) — truly-unknown — important
+- Good-curvature region transport — truly-unknown — important
+- Divertor design — not-yet-sourced — important (acknowledged in paper as required for final design; referenced papers on diverted dipole equilibria exist but not captured)
 
 ---
 
 ### 3. Maturity of Key Subsystems and Components
-**Coverage**: Partial (TRLs not formally stated, but implied by the published record)
+**Coverage**: Partial
 
-**Available**:
+**Available**: arXiv 2508.17691 (Junior) and arXiv 2602.20564 document TRL status for major subsystems with reasonable granularity. Junior demonstrated: (1) REBCO NI solder-impregnated coil to 600 A (42% of design), (2) flux pump charging to 95 MJ stored energy — world record for HTS flux pump delivery at time of publication, (3) levitated plasma confinement with He gas, (4) flat-density profiles consistent with supported operation (not yet levitated for plasma experiments). The design paper provides detailed analysis of REBCO tape critical current behavior under neutron irradiation, tungsten shield thermal creep, and FEA stress results for the coil structural overband.
 
-| Subsystem | Status | TRL (Implied) | Source |
-|-----------|--------|---------------|--------|
-| HTS core magnet (REBCO, ~5.6 T) | Demonstrated (Junior, Feb 2026) | TRL 4 | arXiv 2508.17691 |
-| On-board superconducting flux pump | Demonstrated at 170 kJ world record | TRL 4 | arXiv 2508.17691 |
-| Magnetic levitation system | Demonstrated (Feb 2026) | TRL 4 | Bloomberg, IEEE Spectrum |
-| Neon slush cryo reservoir | Conceptual design; no demonstration | TRL 2-3 | arXiv 2602.20564 §2.2.3 |
-| 23 T REBCO coil (power plant scale) | Conceptual design; Tahi targets 20 T | TRL 1-2 | arXiv 2602.20564 |
-| On-board neutron shield (W/B₄C) | Conceptual; OpenMC modeled | TRL 2 | arXiv 2602.20564 §4.3 |
-| CICC REBCO cable (30 kA) | Design concept; not manufactured | TRL 2-3 | arXiv 2602.20564 §4.1 |
-| Li₂O tritium breeding blanket | Baseline selection; no engineering design | TRL 2 | arXiv 2602.20564 §2.2.6 |
-| Reinforced concrete vacuum vessel | Conceptual design; structural engineering feasible | TRL 2-3 | arXiv 2602.20564 |
-| ICRH heating system (power plant) | Design target; Junior uses ECRH only | TRL 3 (in fusion context) | arXiv 2602.20564 §2.2.7 |
-| Sacrificial coil replacement system | Conceptual; modular dock/undock design | TRL 2 | arXiv 2602.20564 §2.3.1 |
+**Missing**: ICRH coupling in dipole magnetic geometry remains experimentally immature — the paper notes RT-1 results were "mixed" and Wallace et al. 2025 is ongoing. The flux pump has only been demonstrated at the Junior scale (170 kJ, ~5.6 T); the power plant requires ~20.8 GJ stored energy and 23 T — this is an enormous gap in stored energy (×100,000). The CICC architecture assumed in the power plant has not been built at any scale; the Junior uses NI pancake coils. Neon slush reservoir on a levitating magnet is an undemonstrated integration. No fusion neutron environment testing of any OpenStar component has occurred.
 
-**Missing**:
-- No formal TRL assessment published by OpenStar or any external reviewer.
-- No engineering design for tritium extraction and processing system.
-- No cryogenic system engineering at power-plant scale (neon slush infrastructure).
-- Blanket cooling scheme is explicitly unspecified.
+**TRL Estimates** (based on arXiv 2602.20564 and 2508.17691):
+
+| Subsystem | TRL | Basis |
+|-----------|-----|-------|
+| REBCO HTS coil (NI pancake, ~5.6 T) | 5 | Junior demonstrated |
+| REBCO CICC architecture (23 T, power plant) | 3 | Design only; SPARC analogy cited |
+| On-board HTS flux pump | 4 | Junior demonstrated at small scale |
+| Neon slush on-board reservoir (levitated) | 2 | Concept; materials properties characterized |
+| Levitated plasma confinement | 4 | Junior achieved first plasma; levitation demonstrated Feb 2026 |
+| ICRH on dipole plasma | 2 | RT-1 mixed results; RT-1 scale far below reactor |
+| W+B4C neutron shielding (geometry) | 3 | OpenMC design study; no fabrication at scale |
+| Li2O HCPB blanket | 4 | Well-studied in ITER context; dipole integration novel |
+| Energy confinement scaling | 1 | No fusion-relevant experimental data for levitated dipoles |
+| Hot-cell magnet replacement system | 1 | Concept described; not designed |
 
 **Gaps**:
-- Formal TRL assignments — `not-yet-sourced` — **nice-to-have** (can be inferred from published record)
-- Tritium processing system design — `truly-unknown` — **important** (can borrow from ITER/ARC analogues)
-- Neon supply/cryo infrastructure — `derivable` — **important** (paper flags hydrogen as an alternative if neon procurement is difficult)
-- Blanket cooling scheme — `truly-unknown` — **important** but doesn't block first-pass analysis
+- Flux pump scaling from 170 kJ → 20.8 GJ (×120,000) — truly-unknown — important
+- CICC architecture for levitated dipole application — not-yet-sourced — important
+- ICRH coupling efficiency in dipole magnetic geometry at relevant densities — not-yet-sourced — important
+- Confinement scaling to fusion-relevant conditions — truly-unknown — blocking (energy confinement)
 
 ---
 
 ### 4. Key Materials and Supply Chain Considerations
 **Coverage**: Partial
 
-**Available**:
-- REBCO tape: Paper gives full tape mass inventory. Reactor A requires **4,320 km** of REBCO tape; Reactor B requires 2,550 km. Paper cites current-generation SuperOx tape and upcoming Faraday Factory "Mirai" REBCO (~30% improvement in engineering current density). These figures allow direct comparison to current production volumes.
-- Tungsten: Reactor A uses **1,760 tonnes** of W tiles. Large but commercially available; no fundamental scarcity issue.
-- Li₂O: Reactor A blanket requires **3,490 tonnes** Li₂O. Requires enriched Li-6 (natural Li is ~7.5% Li-6). Li-6 enrichment is a supply chain concern — global enrichment capacity is limited and primarily defense-sector.
-- B₄C shield: Reactor A requires **82.3 tonnes** — commercially available, no supply concern.
-- Inconel 718 inner vessel: 325 tonnes — commercially available.
-- Reinforced concrete outer vessel: 38,700 tonnes — no supply concern.
-- Neon (cryogen): Paper acknowledges procurement risk and flags hydrogen as alternative. Neon is a byproduct of steel production; supply is geographically concentrated.
+**Available**: arXiv 2602.20564 provides complete material inventory for both reactor designs (Table 5). For Reactor A: 4,320 km REBCO tape, 1,760 tonnes tungsten tiles, 82.3 tonnes B4C, 168 tonnes WC, 199 tonnes SS316LN/Cu coil conduit, 351 tonnes SS316LN magnet structure, 3,490 tonnes Li2O blanket, 325 tonnes Inconel 718 inner vessel, 38,700 tonnes reinforced concrete outer vessel. The paper explicitly addresses neon supply ("if neon proves challenging, hydrogen is a viable alternative"), tungsten tile recrystallization behavior above 1600 K, and the 1-year tungsten cooldown before recycling. REBCO tape: the paper references Faraday Factory "Mirai" REBCO at >1000 A/mm² engineering current density as an expected improvement (+30% over current product), indicating awareness of supply chain trajectory.
 
-**Missing**:
-- No analysis of REBCO tape production scale-up requirements. Current global REBCO production is estimated at ~1,000–2,000 km/year; Reactor A requires 4,320 km. This is a potentially severe manufacturing bottleneck. The paper does not address this.
-- No Li-6 enrichment supply chain analysis.
-- No tritium startup inventory analysis (initial tritium load, external supply from CANDU/ITER).
+**Missing**: 4,320 km of REBCO tape is a massive scale-up challenge — current global annual REBCO production is estimated at hundreds of km for the highest-output manufacturers. No supply chain analysis or cost-at-scale estimate for REBCO procurement is published for this concept. Tungsten boride materials (identified as superior to W+B4C) are explicitly noted as "not yet manufactured at scale due to lower technological maturity." Hot cell remote handling systems for annual 2,500-tonne magnet replacements are mentioned conceptually but not designed. The ~38,700-tonne reinforced concrete outer vessel is compared to NASA's Space Power Facility as a size analogy, but no cost estimate is provided.
 
 **Gaps**:
-- REBCO tape production scale-up — `not-yet-sourced` — **blocking** for supply chain assessment (search OSTI/IEEE for REBCO market analyses; industry roadmaps from SuperOx, American Superconductor, Faraday Factory)
-- Li-6 enrichment capacity — `not-yet-sourced` — **important** (search for fusion Li-6 supply studies; IAEA reports)
-- Tritium startup inventory — `derivable` — **important** (can estimate from fusion power × breeding ratio × startup time using published methods e.g., Abdou et al.)
-- D supply — `derivable` — **nice-to-have** (deuterium is abundant; not a practical constraint)
+- REBCO tape at 4,320 km scale: supply chain and cost — not-yet-sourced — important (this is the single largest non-concrete cost driver; no published cost-at-scale for this quantity)
+- Tungsten boride materials manufacturing at scale — not-yet-sourced — nice-to-have (current design uses W+B4C which avoids this gap, but future designs require it)
+- Hot cell and remote handling systems for annual magnet replacement — not-yet-sourced — important
+- Neon supply chain at plant scale (6 t/year estimated per reactor) — derivable — nice-to-have
 
 ---
 
 ### 5. LCOE Parameter Extraction
-**Coverage**: Good on physics/performance parameters; zero on dollar costs
-
 **Available Parameters**:
-
 | Parameter | Value/Range | Source | Confidence |
 |-----------|-------------|--------|------------|
-| Net electric power (Reactor A) | 208 MW | arXiv 2602.20564, Table 5/9 | High |
-| Net electric power (Reactor B) | 74.5 MW | arXiv 2602.20564, Table 5/9 | High |
-| Fusion power (Reactor A) | 667 MW | arXiv 2602.20564, Table 9 | High |
-| Fusion power (Reactor B) | 237 MW | arXiv 2602.20564, Table 9 | High |
+| Net electric output (Reactor A) | 208 MW | arXiv 2602.20564, Table 5 | High |
+| Net electric output (Reactor B) | 74.5 MW | arXiv 2602.20564, Table 5 | High |
+| Fusion power (Reactor A) | 667 MW | arXiv 2602.20564, Table 6 | High |
 | Thermal power (Reactor A) | 741 MW | arXiv 2602.20564, Table 9 | High |
-| Thermal conversion efficiency (η_th) | 40% (assumed) | arXiv 2602.20564, Table 2 | Medium (assumed, not specified) |
-| ICRH efficiency (η_aux) | 70% | arXiv 2602.20564, Table 2 | Medium |
-| Cryogenic system efficiency (η_cryo) | 1.25% | arXiv 2602.20564, Table 2 | Medium |
-| Auxiliary heating power (Reactor A) | 44.5 MW (electrical draw: ~63.6 MW) | arXiv 2602.20564, Table 9 | High |
-| Sci Q | 15 (assumed target) | arXiv 2602.20564, §3.3 | Low (unvalidated) |
-| Core magnet duty cycle (f_d) | 90.1% (Reactor A), 90.2% (Reactor B) | arXiv 2602.20564, Table 5 | Medium |
-| Plant availability factor | 96% | arXiv 2602.20564, Table 5 | Medium |
-| Annual maintenance downtime | <2 weeks/year | arXiv 2602.20564, §2.3 | Medium |
-| Core magnet dock time | 5 min (design target) | arXiv 2602.20564, §3.2.5 | Low |
-| Sacrificial coil lifetime | ~1 year (Reactor A), ~1.4 yr (Reactor B) | arXiv 2602.20564, Table 8 | Medium |
-| Semi-permanent coil lifetime | ~12 years (Reactor A) | arXiv 2602.20564, Table 8 | Medium |
-| First wall lifetime | ~1.3 yr outboard (W tiles) | arXiv 2602.20564, §4.3 | Medium |
-| REBCO tape mass (Reactor A) | 4,320 km / 2,560 tonnes CM | arXiv 2602.20564, Table 5 | High |
-| Outer VV mass | 38,700 tonnes reinforced concrete | arXiv 2602.20564, Table 5 | High |
-| TBR | 1.1 | arXiv 2602.20564, §3.3 | Medium |
-| Core magnet stored energy | 20.8 GJ (Reactor A) | arXiv 2602.20564, §4.1 | High |
-| First wall radius | 20.6 m (Reactor A) | arXiv 2602.20564, Table 5 | High |
-| Junior prototype cost | < $10M USD | arXiv 2508.17691 | High |
+| Thermal efficiency (assumed) | 40% | arXiv 2602.20564, Table 2 | Medium (model assumption, not validated) |
+| ICRH heating efficiency (assumed) | 70% | arXiv 2602.20564, Table 2 | Medium (cited from ARIES-AT; not demonstrated for dipole) |
+| Cryogenic system COP | 1.25% | arXiv 2602.20564, Table 2 | Medium |
+| Plant availability factor | ~96% | arXiv 2602.20564, Table 5 | Medium |
+| Core magnet duty cycle | 90.1% | arXiv 2602.20564, Table 5 | Medium |
+| Auxiliary heating power (Reactor A) | 44.5 MW | arXiv 2602.20564, Table 9 | High |
+| Cryogenic power load | 1.31 MW | arXiv 2602.20564, Table 9 | Medium |
+| Annual core magnet replacement cycle | 1/year (sacrificial section) | arXiv 2602.20564, §2.3.1 | High |
+| REBCO tape quantity (Reactor A) | 4,320 km | arXiv 2602.20564, Table 5 | High |
+| Concrete outer vessel mass | 38,700 tonnes | arXiv 2602.20564, Table 5 | High |
+| Total reactor mass | 45,100 tonnes | arXiv 2602.20564, Table 5 | High |
+| LCOE (D-T MFE tokamak analog) | $140–550/MWh | knowledge/sources/tea_dt_mfe_cost_analysis/ | Low (different architecture) |
+| OCC (D-T MFE tokamak analog, NOAK) | $8,800–22,200/kWe | knowledge/sources/tea_dt_mfe_cost_analysis/ | Low (different architecture) |
+| LCOE (compact modular fusion, avg) | $43/MWh ($34–54 range) | knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/ | Low (MIF/Z-pinch concepts, not dipole) |
 
 **Missing Parameters**:
-
 | Parameter | Gap Type | Criticality | Notes |
 |-----------|----------|-------------|-------|
-| Overnight capital cost ($/kW or $total) | `proprietary` | Blocking | Paper explicitly defers to future publication; preliminary model exists at OpenStar |
-| LCOE ($/MWh) | `proprietary` | Blocking | Same — OpenStar has preliminary model |
-| REBCO tape unit cost ($/m at scale) | `not-yet-sourced` | Blocking | Key cost driver; current ~$50–100/m but scale matters; search SuperPower/American Superconductor pricing |
-| Core magnet fabrication cost | `derivable` | Blocking | Can estimate from tape mass × unit cost + structural materials |
-| Vacuum vessel construction cost | `derivable` | Important | Concrete VV is unusual — analogues from large civil engineering projects |
-| Balance of plant cost | `not-yet-sourced` | Important | No BoP design exists; use generic fusion BoP fractions from ARIES/PROCESS |
-| Tritium cycle operating cost | `not-yet-sourced` | Important | Annual T₂ consumption, breeding efficiency, processing cost — use ITER/ARC analogues |
-| Thermal cycle specification | `truly-unknown` | Important | η_th=40% is assumed in model; no Rankine vs sCO₂ decision published |
-| Blanket replacement cost & schedule | `truly-unknown` | Important | No engineering design; Li₂O blanket lifetime not specified |
-| ICRH system capital cost | `not-yet-sourced` | Important | Use ITER ICRH analogues; ~44.5 MW installed, ~70% efficiency |
-| First wall replacement cost | `derivable` | Important | Tungsten tiles ~1.3 yr outboard lifetime; can estimate from W mass × unit cost |
-| Staffing/O&M cost | `not-yet-sourced` | Important | No published estimate; use fusion plant analogue (ARIES, DEMO studies) |
-| Li-6 enrichment cost | `not-yet-sourced` | Nice-to-have | Annual tritium production; Li-6 is specialty enriched material |
+| Absolute overnight capital cost (CAS-level) | proprietary | blocking | Paper §3.3 explicitly states: "OpenStar is currently in the process of developing a model… topic of future work. We avoid quoting specific values here." Internal model exists but unpublished. |
+| Annual O&M cost | not-yet-sourced | blocking | No O&M analysis published for levitated dipole. Fleet analog from tea_dt_mfe_cost_analysis (CAS 60+ accounts) applicable at ±50% uncertainty. |
+| Thermal cycle type (Rankine vs sCO2) | truly-unknown | important | Confirmed absent after re-checking arXiv HTML; paper focuses on nuclear island only. BOP cycle not specified. |
+| Balance of plant capital cost (CAS 23–27) | not-yet-sourced | important | Partially addressable: tea_dt_mfe_cost_analysis provides ARC-like tokamak BOP (Rankine cycle turbine plant, electrical equipment, heat rejection) at 350 MWe — applicable analog for CAS 23–27 pending cycle type confirmation. This downgrades from blocking to important. |
+| First-wall and blanket replacement schedule/cost | not-yet-sourced | important | 4,020 m² first wall area; large Li2O blanket (3,490 tonnes). Replacement frequency unspecified. |
+| Annual core magnet replacement cost | not-yet-sourced | blocking | 2,560-tonne magnet replaced annually; hot cell required. No cost estimate published. REBCO tape cost at scale is key input. |
+| Construction time / interest during construction | not-yet-sourced | important | Needed for IDC calculation. Revisit_of_2017_costing uses 3-year construction time for modular fusion; partially applicable. |
+| Capacity factor / unplanned availability reduction | derivable | important | 96% stated in design paper but excludes unplanned outages in first commercial units. Standard FOAK derating to 75–85% is common practice but unsupported by data. |
+| Fuel cost (D-T supply chain) | derivable | nice-to-have | TBR=1.1 assumed sufficient for self-sufficiency. External tritium startup cost applies. Standard for D-T MFE. |
+| Decommissioning cost | not-yet-sourced | nice-to-have | Concrete vessel and activated tungsten. Comparable to fission plant decommissioning for regulatory purposes. |
+
+**Fleet-wide source integration**:
+
+- **TEA D-T MFE Cost Analysis** (`knowledge/sources/tea_dt_mfe_cost_analysis/`): Opened and read. Covers NOAK ARAI (ARC-like tokamak, 350 MWe) with OCC $8,800–22,200/kWe and LCOE $140–550/MWh. Uses EEDB COA framework (CAS 21–27 direct, 90+ indirect). The BOP cost structure (CAS 23 turbine-generator, 24 electrical plant, 26 heat rejection, 27 misc) is directly applicable to any D-T MFE plant including the levitated dipole, assuming Rankine cycle — this partial applicability allows the "BOP capital cost" gap to be downgraded from blocking to important. However, the reactor plant equipment cost (CAS 22) — dominated by the levitated dipole's unique core magnet — is not transferable. The LCOE range ($140–550/MWh) serves as a rough order-of-magnitude sanity check only.
+
+- **ARPA-E ALPHA Costing Revisit** (`knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/`): Opened and read. Covers four compact MIF/Z-pinch concepts (~500 MWe average, $43/MWh average LCOE, $2.4/W CapEx). The modular design assumptions (3-year construction, factory manufacturing) are partially analogous to the levitated dipole's expected deployment model. However, the four ALPHA concepts are MIF/Z-pinch and have fundamentally different physics, cost structures, and fuel cycles from the levitated dipole. The LCOE figure ($43/MWh) is useful only as a lower-bound benchmark for compact modular fusion economics and cannot be applied directly to the dipole.
 
 ---
 
 ## Source Recommendations
-
-1. **REBCO tape unit cost and production roadmap**: Search for market analyses from SuperPower, American Superconductor, Faraday Factory, or academic studies on HTS tape economics. Relevant search terms: "REBCO tape cost learning curve", "2G HTS tape production capacity". `unverified — confirm existence before searching`
-
-2. **Fusion BoP cost fractions**: ARIES and PROCESS/DEMO studies (e.g., Kovari et al., Franza et al.) provide generic BoP cost fractions (~25–40% of plant capital) that can be applied as analogues. These exist in the OSTI database. Search: "PROCESS fusion power plant cost model", "ARIES-ACT balance of plant".
-
-3. **Li-6 enrichment supply chain**: IAEA reports on tritium and Li-6. Search IAEA PRIS or IAEA-TECDOC series. Also: Abdou et al. tritium self-sufficiency studies (several published in Nuclear Fusion journal). `unverified — confirm exact papers before citing`
-
-4. **Tritium startup inventory**: Abdou et al. (2021), "Physics and technology considerations for the deuterium-tritium fuel cycle and conditions for tritium fuel self sufficiency," Nuclear Fusion — cited in the OpenStar paper as ref [58] (Sawan & Abdou 2006 version). Directly applicable for T inventory estimation.
-
-5. **ICRH capital cost analogues**: ITER ICRH system documentation (ITER Design Report, CDA) provides costed subsystem breakdowns. Search ITER.org technical reports.
-
-6. **Dipole confinement scaling**: No published empirical scaling law exists. The LDX papers (Boxer et al. 2010, Davis et al. 2014) are the closest available data — both cited in arXiv 2602.20564. These are the only external validation points for the confinement assumption.
+- **Annual magnet replacement cost** (blocking gap, proprietary): Search OSTI/arXiv for REBCO tape cost-at-scale studies — specifically "REBCO tape manufacturing cost projection" or "HTS tape learning curve fusion." The SPARC program (Commonwealth Fusion Systems) has published analysis of REBCO tape procurement at scale that may provide cost per meter as a transferable input. `unverified — confirm existence before searching`
+- **O&M cost analog** (blocking gap, not-yet-sourced): The ARIES-AT power plant study (referenced in TEA D-T MFE source) includes O&M cost assumptions for a comparable-scale D-T MFE tokamak; applicable as an analog pending blanket/magnet replacement-specific adjustments. Search ARIES-AT final reports on OSTI.
+- **Divertor design for levitated dipole** (important gap, not-yet-sourced): Wallace et al. 2025 ("Ion Cyclotron Heating in a Levitated Dipole Fusion Reactor") is cited in arXiv 2602.20564 — this paper may cover edge and scrape-off layer physics relevant to divertor design. `unverified — confirm existence before searching`
+- **REBCO tape at scale / supply chain**: Molodyk et al. 2021 ("Development and large volume production of extremely high current density YBa2Cu3O7 superconducting wires for fusion") is cited in arXiv 2602.20564 — it may contain production volume and cost data for REBCO at fusion-relevant scales. `unverified — confirm existence before searching`
+- **Thermal cycle type**: No publication is expected to resolve this; balance-of-plant cycle selection is genuinely internal to OpenStar. A reasonable analysis assumption is Rankine steam cycle at 40% (consistent with the paper's thermal efficiency assumption), with sensitivity to sCO2 Brayton at 45–48%.
 
 ---
 
 ## Summary
+**Proceed to full D1+ analysis with noted gaps.** The concept is exceptionally well-documented at the physics and nuclear-engineering layer for a pre-commercial company: two optimized design points, full power balances, neutron transport (OpenMC), and structural mechanics (COMSOL FEA) are all published. Sections 1–4 can be completed at D1+ quality. Section 5 (LCOE) is the weak link: OpenStar deliberately withholds absolute cost data pending finalization of their internal model, the annual core magnet replacement cost is a unique and unquantified cost driver, and the thermal cycle is unspecified. A D1+ LCOE section should present the power balance parameters that are known, apply the D-T MFE TEA source as a BOP analog (with explicit stated assumptions), flag the capital cost as proprietary/not-yet-available, and present the $140–550/MWh tokamak analog range only as a benchmark for comparison rather than as a concept-specific estimate. The two blocking quantitative LCOE gaps (absolute capital cost, O&M) do not prevent a qualitative or partial quantitative analysis.
 
-**Proceed to full analysis.** The OpenStar arXiv 2602.20564 paper is exceptional for a TRL 2–4 concept — it provides reactor-scale design points, detailed material inventories, quantified power balance, neutron transport, and explicit discussion of key unknowns. This is sufficient to support a D1+ analysis structured as:
-
-1. **Qualitative narrative**: Well-supported. Physics, engineering design, prototype status, roadmap, and key challenges are all publicly documented.
-
-2. **Quantitative LCOE model**: Requires analogue-based cost estimation for capital items. The key missing input is REBCO tape cost at scale (most sensitive parameter given 4,320 km for Reactor A). All performance/efficiency parameters needed for a 0D LCOE model are directly available from Table 2, Table 5, and Table 9 of the paper.
-
-3. **Back-solve to $0.01/kWh**: Feasible. The largest sensitivities are: (a) REBCO tape cost learning curve, (b) annual sacrificial coil replacement cost, (c) whether η_th can exceed the assumed 40%, and (d) whether Q=15 is achievable under Bohm-like scaling. These can all be varied parametrically.
-
-**The one structural caution**: the paper explicitly avoids quoting specific capital costs or LCOE values, and OpenStar's own cost model is described as preliminary and unpublished. Any dollar estimates in the D1+ model will be analyst-constructed analogues, not OpenStar-endorsed figures. This should be stated clearly in the analysis.
+---
 
 ## Structured summary (machine-readable)
 
 ```yaml
 overall_rating: "Mostly Ready"
-blocking_count: 4
+blocking_count: 2
 important_count: 8
-counting_method: "section_5_missing_parameters"
+counting_method: "deduplicated across all sections; blocking = prevents Section 5 quantitative LCOE completion (capital cost CAS breakdown [proprietary], annual O&M cost [not-yet-sourced]); important = reduces analysis quality but workable with assumptions or analogs (energy confinement scaling, edge pedestal physics, ICRH dipole coupling, flux pump scale-up, REBCO supply chain, thermal cycle, BOP capital cost, first-wall/blanket replacement cost)"
 section_coverage:
-  availability_of_data:       "Rich"
-  system_function:            "Good (challenges are well-articulated in the paper itself)"
-  subsystem_maturity:         "Partial (TRLs not formally stated, but implied by the published record)"
+  availability_of_data:       "Good"
+  system_function:            "Partial"
+  subsystem_maturity:         "Partial"
   materials_supply_chain:     "Partial"
-  lcoe_parameter_extraction:  "Good on physics/performance parameters; zero on dollar costs"
+  lcoe_parameter_extraction:  "Partial"
 ```

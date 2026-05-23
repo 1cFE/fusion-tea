@@ -39,6 +39,7 @@ from lib.paths import (
     REPO_ROOT,
     RESEARCH_DIR,
     SCHEMA_PATH,
+    SOURCE_INDEX_PATH,
     TABLE_PATH,
     TEMPLATES_DIR,
 )
@@ -217,6 +218,7 @@ def cmd_gap_check(concepts: list[dict], args: argparse.Namespace) -> None:
             continue
 
         sources = find_sources(rid)
+        source_index_content = SOURCE_INDEX_PATH.read_text(encoding="utf-8")
 
         template_text = (TEMPLATES_DIR / "gap_check.md").read_text(encoding="utf-8")
         prompt_text = fill_template(template_text, {
@@ -225,6 +227,8 @@ def cmd_gap_check(concepts: list[dict], args: argparse.Namespace) -> None:
             "company": c.get("Company", ""),
             "dossier_path": str(dossier_path),
             "source_file_list": format_source_list(sources),
+            "source_index_path": str(SOURCE_INDEX_PATH),
+            "source_index_content": source_index_content,
             "brief_path": str(BRIEF_PATH),
             "schema_path": str(SCHEMA_PATH),
         })

@@ -1,182 +1,156 @@
 # Gap Assessment: Electrostatic Hybrid (D-T)
 
 ## Overall Readiness
-**Rating**: Insufficient Data
-
-**Summary**: Avalanche Energy is pre-Q=1 and highly opaque. All available sources are company press releases and a technical blog post — no independent analyses, no plant studies, no peer-reviewed full-text data on device performance. Two peer-reviewed papers exist (AIP Advances 2024, Physics of Plasmas 2025) but only abstracts were captured. A qualitative narrative is feasible but any quantitative LCOE model would require fabricating nearly every input. The concept is too early-stage for a meaningful first-pass LCOE estimate without explicit acknowledgment that essentially all numbers are placeholders.
+**Rating**: Significant Gaps
+**Summary**: The Orbitron concept (Avalanche Energy) has one substantive peer-reviewed paper covering device physics and prototype engineering (AIP Advances, Aug 2024), supplemented by company press releases and a detailed CWFest 2023 technical presentation. These sources provide adequate coverage of confinement physics, subsystem architecture, and near-term milestones. However, the concept remains pre-Q=1, and there are no capital cost estimates, no published power balance with quantitative outputs, no thermal conversion system design, and no plant study of any kind. The LCOE section cannot be populated with real numbers — only aspirational targets and derived estimates would be possible. A qualitative analysis of concept function and subsystem maturity is feasible; quantitative LCOE modeling is not.
 
 ---
 
 ## Section Coverage
 
 ### 1. Availability of Data
-**Coverage**: Poor (Opaque)
+**Coverage**: Poor
 
-**Available**:
-- Company blog post (CWFest 2023) — best technical source; covers confinement physics, device geometry, performance targets, diagnostics
-- 300 kV milestone press release — voltage milestone, operating parameters (~3 W draw to maintain field)
-- $29M raise press release (2026) — confirms three peer-reviewed publications, near-term roadmap, FusionWERX facility
-- FusionWERX grant press release — neutron factory application, tritium licensing, facility specs
-- Orbitron product page — commercial framing, energy conversion statement, power target range
-- Talk-Polywell forum — community speculation (low authority; useful for flagging unresolved questions)
-- AIP Advances 14(8), 085025 (2024) and Physics of Plasmas 32(9), 092105 (2025) — cited but only abstracts captured
+**Available**: The primary technical source is the AIP Advances paper (Affolter et al., 2024; `osti-pages-servlets-purl-2582151.md`), which covers device physics, prototype design, key subsystems, and PIC simulations. The CWFest 2023 blog (`avalanche-cwfest2023-blog.md`) contains the best system-level discussion including a first-order Q model and power balance reasoning. Company press releases ($29M raise 2026, 300 kV milestone, FusionWERX launch) provide program status and commercial roadmap context. Three APS abstracts confirm experimental work at 100+ keV ion energies and space-charge limit characterization. All sources originate from Avalanche Energy or describe Avalanche's work; there are no independent assessments.
 
-**Missing**:
-- Full text of both peer-reviewed papers
-- Any independent technical or economic analysis
-- Any published plant or system study
+**Missing**: No independent peer review of the Q feasibility claim; no government reports, ARPA-E analysis, or academic benchmarking of the Orbitron concept specifically; only one peer-reviewed paper (full text) available, with a second paper (Physics of Plasmas 32(9), Sep 2025) referenced in the dossier but available only as a title; the APS DPP24 poster (NP12.69) captured as title/author list only.
 
 **Gaps**:
-- Full-text peer-reviewed papers — `not-yet-sourced` — **blocking** (abstracts only; these likely contain the only quantitative physics data outside company PR)
-- Independent technical analysis — `truly-unknown` (concept too early; no third parties have published analyses)
-- Published plant study or system code output — `truly-unknown` (concept is pre-Q=1; no commercial design exists)
-- Company technical white papers or presentations beyond marketing blog — `proprietary` — **important**
+- No independent techno-economic or technical assessment — `proprietary` / `not-yet-sourced` — **important**
+- Physics of Plasmas Sep 2025 paper not captured — `not-yet-sourced` — **important** (may contain confinement time data critical for §2)
+- All quantitative performance claims originate from the concept developer — `proprietary` — **important**
 
 ---
 
 ### 2. Challenges in Capturing System Function
 **Coverage**: Partial
 
-**Available**:
-- Confinement physics described qualitatively (E×B crossed-field, orbitrap-inspired, magnetron-like electron confinement)
-- Device geometry: plasma core "tens of centimeters," full system "fits in pickup bed"
-- Identified energy balance tension: ~1 kW input (600 W cathode + 400 W ion guns) targeting ~1 kW fusion power → Q~1 at breakeven only; recirculating power dominates the economics at this scale
-- Energy conversion stated as "thermal cycle with turbines" — acknowledged as impractical at 1–100 kWe scale even in the dossier
+**Available**: The AIP Advances paper provides detailed treatment of single-particle confinement physics (E×B orbits, magnetron electron confinement, electrostatically-plugged magnetic mirror), field perturbations at high density, and PIC simulations showing 5.4×10¹⁰ cm⁻³ average ion density with co-confinement (vs. 1.1×10⁹ cm⁻³ for pure ion plasma). Loss mechanisms identified include: Coulomb scattering (ion–ion, ion–electron), diffusion to conducting walls, diocotron instability (observed in pure electron simulations), electron cyclotron drift instability (potential), and Bremsstrahlung radiation. The CWFest blog explicitly addresses the Rider (1995) and Lampe/Manheimer (NRL) critiques of non-thermal fusion feasibility and describes a first-order Q model with a peak near 63 keV CoM energy and ~15 keV electron temperature for D-T — conditions where Deuterium-Tritium's Coulomb scattering term is balanced by electron-driven ion upscattering. The company claims density-scaled PIC results show the plasma survives past the Lampe-Manheimer thermalization time, but no quantitative confinement time at target density is published.
 
-**Missing**:
-- Recirculating power fraction at commercial operating conditions
-- Energy conversion pathway engineering (turbines at kWe scale are not viable; no alternative disclosed)
-- Coulomb collision and beam-beam thermalization rates at fusion density (critical for assessing whether thermal D-T or beam-beam fusion dominates — fundamentally different economics)
-- Brillouin-limit behavior at commercial density (flagged as "make or break" by forum source; simulation claims stability but no published data)
-- Ion loss mechanisms and cathode heating rates
+**Missing**: The fundamental challenge for cost modeling is that the non-thermal plasma Q>1 claim is undemonstrated and contested in the literature — no published power balance with actual simulated numbers is available; only a first-order model sketch exists. At operating density (~10¹¹ cm⁻³), ion confinement time is extrapolated from low-density measurements (<10⁸ cm⁻³). Energy conversion at 1–100 kWe scale is entirely unspecified; the turbine thermal cycle stated on the product page is implausible at these scales and almost certainly describes a long-term vision rather than a validated design.
 
 **Gaps**:
-- Recirculating power fraction — `derivable` with large uncertainty (inputs stated in press releases allow rough estimate, but scaling to Q>1 operation is undetermined) — **blocking**
-- Energy conversion pathway at sub-MW scale — `not-yet-sourced` (small-scale heat engines and thermoelectric options exist but no source discusses them for this device) — **blocking**
-- Beam-beam vs. thermal fusion regime — `not-yet-sourced` (full-text papers likely address this) — **blocking** (determines whether published fusion rates are achievable at power-relevant density)
-- Plasma density achievable above Brillouin limit — `proprietary` / `not-yet-sourced` — **blocking**
+- Non-thermal Q>1 feasibility: no quantitative published power balance at target operating conditions — `proprietary` (company likely has unpublished models) — **blocking**
+- Ion confinement time τ at target density (>10¹¹ cm⁻³): not measured, extrapolated only — `not-yet-sourced` (Physics of Plasmas Sep 2025 may address) — **blocking**
+- Bremsstrahlung power loss fraction at operating conditions: no published numbers — `proprietary` — **important**
+- Energy conversion system architecture at kWe scale: entirely unspecified — `truly-unknown` (no kWe-scale fusion thermal conversion precedent exists) — **blocking**
+- Collective instabilities at high density: diocotron and ECDI only studied at low density — `not-yet-sourced` — **important**
 
 ---
 
 ### 3. Maturity of Key Subsystems and Components
 **Coverage**: Partial
 
-**Available**:
-- High-voltage feedthrough at 300 kV sustained: demonstrated (cited as key innovation vs. prior 30–50 kV state of art) → TRL ~4
-- Ion confinement and elliptical orbit physics: demonstrated at laboratory scale → TRL ~3–4
-- E×B electron co-confinement: demonstrated at low power → TRL ~3
-- Permanent magnet electron confinement (0.05 T): demonstrated in NEO prototype → TRL ~4
-- Basic diagnostics (scintillators, He-3 counters, X-ray/neutron spectroscopy): mature technology → TRL 6–8
+**Available**: The AIP Advances paper provides the most detailed subsystem-level breakdown available:
+- **HV cathode/bushing**: Custom 300 kV UHV bushing designed and tested (MACOR insulator, Mo cathode, Cu anode). Conditioned to 300 kV; sustained for hours (2025 milestone). TRL ~3–4.
+- **Vacuum system**: Commercial cryopump (2500 l/s for H₂), base pressure ~10⁻⁹ Torr, operating pressure ~10⁻⁸ Torr with ion source. UHV requirement is well-understood from orbital ion trap heritage. TRL ~5 (off-shelf components at lab scale).
+- **Ion source**: Modified MARK I End Hall, 0.7 A discharge, up to 20 keV, 75% D⁺ / 20% D₂⁺ / 5% D₃⁺. Required beam current 1–10 mA for target density. TRL ~4.
+- **Electron source**: Field emission from conditioned Mo cathode (~1–10 mA leakage current); dedicated electron gun designed as backup. TRL ~3.
+- **Permanent magnets**: Neodymium Halbach array at 0.05 T operational. TRL ~5 for current prototype scale.
+- **HTS magnets (next-gen)**: Ordered but not yet deployed; targeting 0.5 T at mid-plane. Two specially designed HTS coil pairs. TRL ~2–3 for this application.
+- **Neutron diagnostics**: He-3 proportional counters, bubble detectors, PSD scintillators, neutron camera. TRL ~4–5 for individual components.
+- **Microwave interferometry**: 60 GHz V-band system for electron density. TRL ~3.
 
-**Missing**:
-- Q>1 operation: not demonstrated → TRL ~1–2
-- Energy conversion subsystem: not designed, not demonstrated → TRL ~1
-- Tritium breeding blanket: not designed → TRL ~1
-- Modular scaling to MW-class: not demonstrated → TRL ~1–2
-- Superconducting magnets at 0.3 T for this geometry: not built → TRL ~2–3
+**Missing**: No tritium fuel handling subsystem described for the Orbitron device itself (FusionWERX will have external tritium infrastructure via MoU with FFC, but no Orbitron-integrated D-T fuel injector design is described). No first wall or chamber material selection for D-T neutron bombardment. No thermal energy conversion system at any TRL. No tritium breeding blanket concept at any stage.
 
 **Gaps**:
-- TRL for energy conversion subsystem — `truly-unknown` (no design disclosed) — **blocking**
-- TRL for Q>1 plasma physics — `proprietary` (company likely has internal projections) — **blocking**
-- TRL for tritium breeding at compact scale — `truly-unknown` — **important**
-- Component lifetime under 14 MeV neutron fluence (cathode, HV feedthroughs, vacuum envelope) — `truly-unknown` — **blocking** (neutron-induced degradation of HV components is a severe challenge not addressed in any source)
+- Tritium fuel injector integrated with Orbitron (D-T operation): no design disclosed — `proprietary` — **important**
+- Thermal energy conversion system: no concept at kWe scale — `truly-unknown` — **blocking**
+- Tritium breeding blanket: explicitly TBD — `truly-unknown` at this stage — **important** (near-term tritium would be purchased)
+- First wall material for 14 MeV neutron environment: not specified — `not-yet-sourced` — **important**
+- HTS magnet specification (REBCO vs. Bi-2212, winding configuration): not disclosed — `proprietary` — **important**
 
 ---
 
 ### 4. Key Materials and Supply Chain Considerations
 **Coverage**: Poor
 
-**Available**:
-- D-T fuel: tritium supply concerns apply; FusionWERX has tritium handling license (expected fully operational 2027); near-term tritium will be purchased
-- Magnetic components: permanent magnets in current prototypes; superconducting magnets at 0.3 T targeted (low field — relatively accessible compared to tokamak HTS requirements)
-- Neutron shielding: concrete and steel ("concrete castle") — mature, abundant materials
-- Device scale: desktop/pickup-truck scale means material quantities per module are small
+**Available**: The AIP Advances paper identifies specific materials for the HV subsystem: molybdenum (cathode, for low field emission rates), copper (anode), MACOR ceramic (dielectric; 129 MV/m dielectric strength; machinable; used as UHV spacer), and potting compounds (oil, RTV silicone, or resin) at atmospheric pressure behind the bushing. Neodymium magnets for the 0.05 T Halbach array are used in current prototypes. Future research on alternative HV materials is noted as a priority item. Vacuum system uses commercial UHV components (cryopump). No supply chain analysis, no manufacturing readiness assessment, and no critical material risk analysis has been published.
 
-**Missing**:
-- HV cathode material specification (must survive neutron bombardment + electrical stress at 300 kV)
-- First wall / inner electrode material for D-T neutron environment
-- Vacuum chamber material and neutron activation concerns
-- HV feedthrough insulator material (ceramic type, neutron tolerance)
+**Missing**: The Orbitron's proposed 1–100 kWe modular product implies mass manufacturing, but no manufacturing readiness level (MRL) assessment exists. HTS wire type and quantity for the superconducting magnet upgrade is unspecified. Near-term tritium supply strategy is not analyzed beyond noting FusionWERX will have handling capability. No neutron-tolerant structural material has been identified for the chamber wall under D-T bombardment.
 
 **Gaps**:
-- Cathode and HV feedthrough material selection for neutron-exposed operation — `proprietary` — **blocking** (this is the defining engineering challenge; no source discusses it)
-- First wall material at compact geometry with high 14 MeV neutron flux — `not-yet-sourced` (IEC and fusor literature may have analogues) — **important**
-- Tritium breeding material if breeding blanket ever designed — `truly-unknown` — nice-to-have (near-term relies on purchased tritium)
-- Li-6 or beryllium requirements for any future breeding blanket — `truly-unknown` — nice-to-have
+- Manufacturing readiness for key proprietary components (HV bushing, cathode): no assessment — `proprietary` — **important**
+- HTS wire supply (type, quantity, vendor): not disclosed — `not-yet-sourced` — **important**
+- Tritium supply cost and sourcing for D-T program: not analyzed — `not-yet-sourced` — **important**
+- First wall material selection and neutron tolerance: not analyzed — `truly-unknown` at this TRL — **important**
+- MACOR alternative materials for HV: flagged as future work in AIP paper — `not-yet-sourced` — nice-to-have
 
 ---
 
 ### 5. LCOE Parameter Extraction
-**Coverage**: Very Poor
+**Coverage**: Poor
 
 **Available Parameters**:
 | Parameter | Value/Range | Source | Confidence |
 |-----------|-------------|--------|------------|
-| Target electrical output per module | 1–100 kWe | Orbitron page | m |
-| Target plant output (modular stacking) | 100s kW to MW | Orbitron page | l |
-| Input power (baseline) | ~1 kW (600W cathode + 400W ion guns) | CWFest 2023 blog | m |
-| Target Q | >1 (aspiration) | $29M PR, 300kV PR | l |
-| Current fusion power output | ~1 kW (target); sub-Q=1 demonstrated | CWFest 2023 blog | m |
-| Neutron output target | mid-10¹¹ n/s | CWFest 2023 blog | m |
-| Energy conversion pathway | Thermal cycle, turbines (D-T) | Orbitron page | l |
-| Operation mode | Steady-state | 300kV PR, $29M PR | m |
-| Fuel type | D-T (primary) | Multiple sources | h |
-| Device voltage | 300 kV sustained | 300kV PR | h |
+| Net electric power per module | 1–100 kWe | Orbitron product page | m |
+| Cathode voltage (operating target) | 300 kV | 300 kV press release, AIP paper | h |
+| Magnetic field (target) | 0.3–0.5 T | AIP paper, CWFest blog | m |
+| Ion density target | >10¹¹ cm⁻³ | AIP paper (PIC: 5.4×10¹⁰ cm⁻³ achieved in simulation) | l |
+| Input power at Q~1 estimate | ~1000 W (600 W cathode + 400 W ion guns) | CWFest blog | l |
+| Fusion power at 300 kV / 0.3 T | ~1 kW (D-T) | CWFest blog (PIC-derived) | l |
+| Neutron yield target (D-T) | mid-10¹¹ n/s | CWFest blog | l |
+| Energy conversion pathway | Thermal + turbines (type unspecified) | Orbitron product page | l |
+| Fuel type | D-T (primary), D-D (current experiments) | Multiple sources | h |
+| Scale-up approach | Modular stacking to MW scale | Press releases | m |
+| Capital to first commercial ops (aspirational) | <$1B (company stated goal) | CWFest blog | l |
 
 **Missing Parameters**:
 | Parameter | Gap Type | Criticality | Notes |
 |-----------|----------|-------------|-------|
-| Capital cost per module (or kWe) | `truly-unknown` | Blocking | No cost data published; no analogous system exists |
-| Achieved Q value (not target) | `proprietary` | Blocking | Company has internal data but has not published Q measurements |
-| Thermal conversion efficiency | `truly-unknown` | Blocking | Turbines at 1–100 kWe are implausible; no alternative specified |
-| Recirculating power fraction at commercial Q | `derivable` (crude) | Blocking | ~1 kW input vs. Q>1 fusion output; wall-plug efficiency dominates |
-| Component replacement schedule (cathode, HV, ion gun) | `proprietary` | Blocking | High-voltage components under neutron flux will degrade; no data |
-| Tritium fuel cost assumption (purchased) | `not-yet-sourced` | Important | Market price ~$30k/g; consumption rate calculable if Q and power are known |
-| Capacity factor / availability | `truly-unknown` | Blocking | No maintenance intervals or availability data disclosed |
-| Number of modules per MW plant | `derivable` | Important | Can be estimated from claimed 1–100 kWe range |
-| Balance of plant costs at MW scale | `not-yet-sourced` | Important | Small modular thermal plant literature may provide analogues |
-| Neutron shielding capital cost at commercial scale | `derivable` | Important | Concrete "castle" geometry known; structural analogues available |
-| Tritium breeding cost (if applicable) | `truly-unknown` | Nice-to-have | No breeding design; near-term = purchased tritium |
+| Capital cost breakdown (by CAS account) | truly-unknown | blocking | No plant study; device doesn't yet demonstrate net energy |
+| Thermal conversion efficiency (η_th) | truly-unknown | blocking | No cycle type specified; at 1–100 kWe, conventional steam turbines are not viable |
+| Plant capacity factor | truly-unknown | blocking | No maintenance model; no lifetime estimate |
+| Q at commercial scale (engineering gain) | truly-unknown | blocking | Only Q~1 targeted for D-T test; commercial plant needs Q_eng >1 after recirculation losses |
+| O&M costs | truly-unknown | blocking | No facility operating cost model exists |
+| Tritium cost ($/g) and annual consumption | not-yet-sourced | important | Near-term purchased tritium; breeding blanket TBD |
+| Plant lifetime | truly-unknown | important | Not disclosed |
+| First wall replacement schedule | truly-unknown | important | 14 MeV neutron fluence on compact geometry untested |
+| Decommissioning cost | derivable | nice-to-have | Could use fission analog at low activation levels |
+| Balance of plant costs | derivable | important | Could use standard power industry analogs if cycle type were known |
+
+**Fleet-wide source disposition**:
+
+- **ARPA-E ALPHA revisit** (`knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/`): Opened and read. The four concepts are Plasma-Jet MIF (HyperJet Fusion), Stabilized Liner Compressor (CFS), Staged Z-Pinch (MIFTI), and Flow-Stabilized Z-Pinch (Zap Energy) — all pulsed MIF at ~500 MWe plant scale. The Orbitron operates at 1–100 kWe per module, a scale 4–6 orders of magnitude smaller; the CAS cost structure and plant economics do not transfer. **Disqualified**: wrong confinement family, wrong power scale, no cost analog applicable to electrostatic kWe-scale devices.
+
+- **Progress toward fusion energy breakeven (Lawson criterion)** (`knowledge/meta_analysis/progress_toward_fusion_breakeven_lawson_criterion/`): Opened and read. The paper explicitly states it "does not consider non-thermal ion or electron populations such as those with beam-like distributions" and notes that non-thermal approaches face the Rider (1995) constraint. The Orbitron is a non-Maxwellian beam-beam device, placing it outside this paper's scope for Lawson benchmarking. The paper does confirm the fundamental theoretical challenge for non-thermal approaches cited in the CWFest blog. **Disqualified for Lawson benchmarking**: methodology explicitly excludes non-thermal plasma; no Orbitron-applicable data points exist in the compilation.
+
+- **TEA D-T MFE Cost Analysis** (`knowledge/sources/tea_dt_mfe_cost_analysis/`): Covers D-T MFE at ~1 GWe tokamak scale with CAS 20–29 cost breakdowns. The Orbitron is 7+ orders of magnitude smaller; BOP and cost driver structures are completely different. D-T fuel cycle fraction would be similarly irrelevant given the scale mismatch. **Disqualified**: scale mismatch makes all cost analogs inapplicable.
 
 ---
 
 ## Source Recommendations
 
-1. **AIP Advances 14(8), 085025 (August 2024)** — "The Orbitron: A crossed-field device for co-confinement of high energy ions and electrons" — full text. This is the primary peer-reviewed source on confinement physics; likely contains quantitative density, energy, and loss-rate data. `not-yet-sourced` — retrieve full text via institution access or Sci-Hub equivalent.
+1. **Physics of Plasmas 32(9), 092105 (Sep 2025)** — Avalanche paper "Mode-enhanced ion loading in a 100 kV orbitrap" — likely contains ion confinement time measurements and mode-loading characterization at higher density. `not-yet-sourced`; search OSTI or AIP Scitation. This is the highest-priority acquisition for §2 and §3.
 
-2. **Physics of Plasmas 32(9), 092105 (September 2025)** — "Mode-enhanced ion loading in a 100 kV orbitrap" — full text. Likely contains ion density, loading efficiency, and performance data at 100 kV. `not-yet-sourced` — same retrieval path as above.
+2. **APS DPP24 poster NP12.69 (Merthe et al., Oct 2024, Atlanta)** — "Collective Effects near the Ion Space-Charge Limit of the Orbitron" — abstract captured, content not available. Could contain experimental data on space-charge mitigation and confinement at higher density. `not-yet-sourced`; contact Avalanche or search OSTI for preprint.
 
-3. **APS DPP proceedings (2022–2025)** — search for "Orbitron" or "Avalanche Energy" in APS Division of Plasma Physics conference abstracts. Early-stage companies often present more technical detail at APS DPP than in press releases. `unverified — confirm existence before searching`
+3. **Fusion Fuel Cycles (FFC) MoU documentation** — Avalanche signed an MoU with FFC for tritium breeding blanket development. FFC may have published any D-T fuel cycle analysis relevant to small-scale fusion devices. Search FFC website and proceedings for tritium blanket sizing at kWe scale. `not-yet-sourced`; existence of any published analysis unverified.
 
-4. **DOE SBIR/STTR award database (SEED)** — search Avalanche Energy for any federal contracts with technical scope statements. These sometimes include performance targets and milestones. `unverified — confirm existence before searching`
+4. **IEC / Farnsworth-Hirsch fusor TRL and cost literature** — The Orbitron is a close relative of inertial electrostatic confinement (IEC) devices, which have more published literature on scaling, wall bombardment, and vacuum system costs. Search OSTI for "IEC fusion economics" or "neutron generator cost model." Might provide BOP cost analogs. `not-yet-sourced`; confirmed to exist as a research area.
 
-5. **ARPA-E OPEN or BETHE program award records** — Avalanche may have received ARPA-E funding; program documents typically include technical approach descriptions. `unverified — confirm existence before searching`
-
-6. **IEC/Fusor literature for cathode material analogues** — Search OSTI or Google Scholar for "IEC neutron source cathode lifetime" or "fusor tungsten cathode neutron damage." These studies on related devices (Farnsworth-Hirsch fusors) may provide neutron fluence tolerance data for HV cathode materials. `not-yet-sourced`
-
-7. **Small-scale heat engine and thermoelectric literature** — For the energy conversion gap, search for "kW-scale Stirling engine efficiency," "thermoelectric generator 1 kW," or "compact ORC 10 kW thermal" to find cost and efficiency analogues for the 1–100 kWe range that turbines cannot serve. `not-yet-sourced`
+5. **Small-scale neutron generator cost data** — Commercial D-T neutron generators (Adelphi, Sodern, ThermoFisher) publish cost and operating data in the 10⁸–10¹¹ n/s range. These are the closest commercial analogs to the FusionWERX neutron source application. Could anchor capital cost and O&M estimates for the near-term product. `not-yet-sourced`; search vendor literature and published nuclear instrumentation studies.
 
 ---
 
 ## Summary
 
-**Do not proceed directly to a full quantitative LCOE analysis without additional source work.**
+Sufficient data exists to write a qualitative description of the Orbitron concept — confinement mechanism, device architecture, subsystem TRL landscape, key physics challenges, and near-term program status. The AIP Advances 2024 paper in particular provides substantial engineering detail at prototype scale. However, the concept is pre-Q=1, has no capital cost data, no thermal conversion design, and no plant study. The LCOE section will require large assumptions (or explicit acknowledgment that no numbers can be responsibly derived). Acquiring the Physics of Plasmas Sep 2025 paper before writing §2 (system function) and §3 (subsystem maturity) would materially improve the confinement time characterization. The concept qualifies for a qualitative D1+ analysis with heavy caveats on LCOE — proceed with flagged assumptions rather than withholding analysis.
 
-The available data can support a qualitative narrative covering confinement physics, device architecture, near-term roadmap, and TRL assessments. The physics description is coherent and the dossier captures everything that has been made public. However, all five LCOE-critical parameters — capital cost, achieved Q, thermal conversion efficiency, recirculating power, and availability — are either `truly-unknown` or `proprietary`. A quantitative model built on current data would have no grounding for any of its major inputs.
-
-**Recommended path**: Retrieve full text of the two peer-reviewed papers before writing the analysis. These are the only non-marketing sources and likely contain quantitative plasma data (density, confinement time, fusion rate measurements) that could anchor the recirculating power and Q estimates. Even with those, a capital cost estimate and conversion efficiency will remain speculative — the analysis should make this explicit and use the back-solve direction ($0.01/kWh target) as the primary analytical frame rather than a bottom-up LCOE estimate.
+---
 
 ## Structured summary (machine-readable)
 
 ```yaml
-overall_rating: "Insufficient Data"
+overall_rating: "Significant Gaps"
 blocking_count: 6
-important_count: 4
-counting_method: "section_5_missing_parameters"
+important_count: 12
+counting_method: "all_sections_deduplicated — blocking: non-thermal Q feasibility, confinement time at target density, thermal conversion system architecture/efficiency, capital cost for Q>1 system, plant capacity factor, O&M costs (plant-level); important: no independent assessment, Physics of Plasmas paper not captured, bremsstrahlung budget unpublished, collective instabilities at high density, tritium breeding undefined, tritium fuel injector design, first wall material, HTS magnet specification, manufacturing readiness, HTS supply chain, tritium supply cost, balance of plant"
 section_coverage:
-  availability_of_data:       "Poor (Opaque)"
+  availability_of_data:       "Poor"
   system_function:            "Partial"
   subsystem_maturity:         "Partial"
   materials_supply_chain:     "Poor"
-  lcoe_parameter_extraction:  "Very Poor"
+  lcoe_parameter_extraction:  "Poor"
 ```

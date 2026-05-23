@@ -17,6 +17,7 @@ MEMORY_DIR = CONCEPT_ANALYSIS_DIR / "memory"
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 RESEARCH_DIR = REPO_ROOT / "knowledge" / "concept_research"
+SOURCE_INDEX_PATH = REPO_ROOT / "knowledge" / "SOURCE_INDEX.md"
 
 PHASE_1A_DIR = CONCEPT_ANALYSIS_DIR.parent / "phase_1a"
 SCHEMA_PATH = PHASE_1A_DIR / "schema.md"
