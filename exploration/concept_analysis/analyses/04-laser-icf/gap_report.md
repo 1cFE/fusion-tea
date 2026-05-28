@@ -1,40 +1,33 @@
-Now I have everything I need. Let me write the assessment.
-
----
-
-# Gap Assessment: Laser ICF - p-B11 Fast Ignition
+# Gap Assessment: Laser ICF (p-B11)
 
 ## Overall Readiness
 **Rating**: Significant Gaps
-
-**Summary**: HB11 Energy is an extremely early-stage startup (~TRL 2-3 overall) with a small public literature footprint, no published plant study, and no techno-economic analysis in the captured sources. Enough material exists for a qualitative write-up covering physics rationale, technology risks, and subsystem maturity — but quantitative LCOE modeling requires heavy use of analogues and first-principles estimates, with wide uncertainty bands. Two key papers (Phys. Rev. Research 2025, Mehlhorn 2024) remain unextracted and should be retrieved before analysis begins.
+**Summary**: HB11 Energy's concept has a clear theoretical basis and a useful high-level technoeconomic framework published in McKenzie et al. 2023 (Journal of Fusion Energy), but the concept is approximately four orders of magnitude from net energy gain in any published experiment, the combined two-laser scheme has never been tested together, and no CAS-level capital cost breakdown or plant study exists. Sections 1–4 (qualitative analysis) are feasible with available data and stated assumptions; a meaningful quantitative LCOE model requires parametric treatment of gain and several cost analogues borrowed from other IFE sources.
 
 ---
 
 ## Section Coverage
 
 ### 1. Availability of Data
-**Coverage**: Poor
+**Coverage**: Partial
 
 **Available**:
-- Company website (2025) — high-level reactor description, fuel, rep rate, power target, steam cycle claim (`hb11-technology-page-2025.md`)
-- Patent US10410752B2 (2018) — reactor geometry, laser specs, performance targets, original direct conversion design (`hb11-patent-reactor-design.md`)
-- Osaka LFEX experiment (Applied Sciences 2022) — alpha yield at 10^10/sr, confirms in-target geometry advantage (`hb11-osaka-experiment-2022.md`)
-- Company overview — funding (~A$12.8M total), team, commercial model, partnerships (`hb11-company-overview.md`)
-- Recent developments (2024–2025) — TINEX, Adelaide laser partnership (targeting >10% wall-plug), DOE INFUSE, Optica OPN profile (`hb11-recent-developments-2024-2025.md`)
-- New Atlas 2020 article — early direct conversion design (superseded) (`hb11-newatlas-article.md`)
+- Company website (HB11 Technology Page 2025, iter-02/sources/hb11-technology-page-2025.md) and 2018 patent (US10410752B2, iter-01/sources/hb11-patent-reactor-design.md) give reactor geometry, laser parameters, fuel dimensions, rep rate, and two energy conversion designs.
+- McKenzie et al. 2023 ("HB11—Understanding Hydrogen-Boron Fusion as a New Clean Energy Source," Journal of Fusion Energy 42:17; iter-03/sources/link-10-1007-s10894-023-00349-9.md) is the primary technoeconomic reference: laser efficiency target (20%), recirculating power fraction (f = 1/εηG), target gain requirement (100–300), conversion efficiency range (36–64%), diode cost/lifetime assumptions, 25-year plant lifetime, and LCOE market constraint ($35/MWh target).
+- Margarone et al. 2022 (Applied Sciences 12:1444; iter-01/sources/hb11-osaka-experiment-2022.md) documents best experimental result: ~10^10 α/sr at LFEX, 0.005% laser-to-alpha energy efficiency, ~4 orders of magnitude below breakeven.
+- News and media sources (iter-02, iter-03) document DOE INFUSE grant, TINEX membership (globenewswire, iter-03), Adelaide USPL partnership (A$8.2M), and 12 published experiments at three facilities.
+- Hawker 2020 (knowledge/sources/a_simplified_economic_model_for_inertial_fusion/) provides a technology-agnostic 14-parameter IFE LCOE model directly applicable to HB11: parameters G, yield/shot, driver efficiency η, conversion efficiency ε, rep rate, target cost, O&M, plant size, and discount rate all map to McKenzie 2023's framework. Hawker finds LCOE as low as $25/MWh with G > 500 and yield > 5 GJ/shot — providing quantitative benchmarks for how far HB11's targets are from competitive operation.
 
 **Missing**:
-- Published plant/system study (none exists publicly)
-- Detailed techno-economic analysis
-- Phys. Rev. Research (2025) — "Alpha particle production from Novel Targets" — not extracted (PDF binary)
-- Mehlhorn (2024) Physics of Plasmas perspective — not extracted (PDF binary)
-- Hora et al. theoretical papers underlying the "avalanche" p-B11 enhancement mechanism
+- No published plant study or detailed engineering design report
+- Phys. Rev. Research 2025 paper (alpha particle production from novel targets) not extracted — dossier flags this as an important recent result
+- Mehlhorn 2024 (Physics of Plasmas 31(2), "From KMS Fusion to HB11 Energy, a personal 50-year IFE perspective") not extracted — likely contains technoeconomic context and historical cost perspectives
+- Total funding (~A$12.8M) is very small relative to the concept's required development; company is pre-revenue and non-transparent about internal R&D milestones
 
 **Gaps**:
-- Phys. Rev. Research (2025) and Mehlhorn (2024) not extracted — `not-yet-sourced` — **blocking** (these are the most recent quantitative physics results; needed for current experimental state section)
-- No published plant study or system code — `truly-unknown` (does not exist publicly) — **important** (limits quantitative analysis to first-principles estimation)
-- No peer-reviewed techno-economic analysis of this concept — `truly-unknown` — **important**
+- Phys. Rev. Research 2025 and Mehlhorn 2024 not extracted — not-yet-sourced — important
+- No published plant study or detailed cost breakdown — proprietary — important
+- Company is opaque on internal target designs and experimental roadmap — proprietary — important
 
 ---
 
@@ -42,24 +35,22 @@ Now I have everything I need. Let me write the assessment.
 **Coverage**: Partial
 
 **Available**:
-- Core physics mechanism described (two-laser scheme, kT field, proton fast ignition) with enough detail to identify modeling challenges
-- Energy conversion pivot (direct → steam) documented, rationale unclear
-- Performance gap documented: ~4 orders of magnitude from net energy gain
-- "Thousands of commercial lasers" architecture stated but not detailed
-- Adelaide partnership targets >10% wall-plug laser efficiency (currently undemonstrated)
+- McKenzie 2023 explicitly describes three challenges for the LCOE model: (1) laser efficiency, (2) target gain, (3) target fabrication cost. It quantifies the recirculating power fraction (f = 1/εηG) and derives the ηG > 10 rule of thumb for viability, and ηG > 20 for 10% recirculating fraction.
+- McKenzie 2023 discusses competing energy conversion pathways: direct electrostatic (patent, TRL 1), direct conversion via photon intermediate (~45%), direct electrodynamic conversion (~50%), and MHD + Rankine hybrid (~64%). Current company website (2025) states "conventional steam cycle generator" — a significant pivot from the 2018 patent's direct electrostatic design.
+- The Osaka experiment confirms that the dominant physics challenge is proton-boron fusion yield enhancement: the conversion efficiency from laser energy to alpha-particle energy is 0.005%, requiring ~10^8 improvement to reach commercial targets.
+- McKenzie 2023 identifies the avalanche mechanism, bremsstrahlung reduction, degenerate plasma effects, non-equilibrium burn, and novel target geometry as the key physics levers — none of which have been experimentally validated for gain enhancement at the relevant scale.
+- The Xcimer paper (knowledge/sources/commercialization_of_laser_fusion_energy/) clarifies that the key IFE system challenge is laser efficiency × scientific gain > 10; Xcimer's KrF excimer laser targets <$100/J vs. DPSSL at $700–1,000/J — the latter being the current benchmark for HB11's CPA petawatt laser architecture.
 
 **Missing**:
-- Technical rationale for the direct→steam conversion pivot (no paper or technical note)
-- Detailed recirculating power fraction (laser wall-plug efficiency is the dominant system-function uncertainty)
-- Status of the "avalanche" mechanism: Hora's non-linear resonance enhancement is theoretically controversial — no experimental confirmation in sources
-- Integration challenge between kT field generation and fast ignition timing (not discussed)
-- Target injection system design at 1 Hz (not described beyond "pellet injection ~1/second")
+- The combined two-laser scheme (ns kT-field laser + ps PW ignition laser acting simultaneously) has never been tested experimentally. All published experiments use one-laser configurations (either pitcher-catcher or in-target). This is the core HB11 concept and its physics is entirely unvalidated in the lab.
+- Energy conversion design is unsettled: the 2018 patent describes direct electrostatic at −1.4 MV, the 2020 public messaging described direct charged-particle collection, and the 2025 website now states conventional steam cycle. No rationale for the pivot is published, and the engineering trade-off is unresolved.
+- The avalanche mechanism that underpins many of HB11's optimistic gain projections remains contested in the literature (Belloni 2021, McKenzie 2023 acknowledge this debate).
+- p-B11 cross-section at sub-100 keV and >3 MeV — the energy ranges most relevant to HB11's laser-accelerated proton scheme — remains uncertain (Sikora and Weller 2016 revised cross-sections upward at >10 MeV; McKenzie 2023 explicitly flags this as a blocking research challenge).
 
 **Gaps**:
-- No technical explanation for energy conversion pivot — `proprietary` (likely internal engineering decision) — **important** (changes the energy conversion efficiency and cost structure significantly)
-- Laser wall-plug efficiency: current petawatt systems ~0.1–1%; target is >10% — `not-yet-sourced` (Adelaide USPL group may publish) — **blocking** (recirculating power fraction is the dominant LCOE driver)
-- Avalanche enhancement mechanism: theoretical basis not validated — `truly-unknown` (controversial in literature) — **blocking** (gain of >500 relies on this; without it, concept is not viable)
-- Target injection/positioning at 1 Hz: no design published — `proprietary` — **important**
+- Combined two-laser scheme (kT-field + ps PW) never experimentally tested — truly-unknown — **blocking**
+- Energy conversion design unsettled (direct vs. steam cycle, efficiency range 36–64%) — proprietary/uncertain — important
+- p-B11 cross-section at laser-relevant energies partially unknown — not-yet-sourced — important
 
 ---
 
@@ -67,126 +58,124 @@ Now I have everything I need. Let me write the assessment.
 **Coverage**: Partial
 
 **Available**:
-- Fusion physics: ~10^10 alpha/sr at LFEX (2022), TARANIS, PALS experiments documented — establishes TRL 2–3 for core reaction
-- Petawatt ps laser: commercially available technology (CPA, TRL 6+), but not at 1 Hz rep rate
-- Kilotesla field generation: demonstrated in laser labs (patent basis, cited in company materials)
-- Steam cycle: TRL 9 (conventional technology)
-- Company explicitly describes "components first" commercialization — implies recognition that integrated system is far from demonstration
+- Petawatt CPA laser (ps): TRL ~6–7 at single-shot laboratory scale (Osaka LFEX, Belfast TARANIS, PALS Prague); not rep-rated. Adelaide USPL partnership (A$8.2M, 2025) targeting >10% wall-plug efficiency for commercial lasers — first Australian sovereign USPL manufacturing capability.
+- Nanosecond laser for kT magnetic field (Fujioka-type capacitor-coil target): TRL ~4 (demonstrated at Osaka, producing sub-kT fields; single-shot, consumable target). kT-scale fields reported at laser facilities.
+- p-B11 fuel target: TRL ~3 (BN targets used in experiments, but HB11's proprietary target designs — white graphene, borophene, modified BN with higher H content — are in early material research per McKenzie 2023).
+- Energy conversion system: TRL ~1–2 (two competing designs, neither demonstrated at any scale; direct electrostatic at −1.4 MV never built; steam cycle not designed for fusion-specific chamber environment).
+- Target injection and automated loading at 1 Hz: TRL ~1 (conceptual description in patent, no prototype demonstrated). TINEX collaboration (GA, SLAC, CSU, UCSD, LLNL — with HB11 as industry council member per globenewswire 2025) is developing target injection solutions for IFE broadly.
+- Balance of plant (steam cycle): TRL ~8–9 for generic steam cycle; TRL ~2–3 for fusion-specific chamber integration.
 
 **Missing**:
-- TRL of 1 Hz repetition rate petawatt laser (specifically: thermal management, component lifetime at rep rate)
-- TRL of kT field generation + fast ignition integrated demonstration (no combined experiment documented)
-- TRL of p-B11 pellet fabrication at commercial scale
-- Lifetime/replacement schedule for any reactor component
-- Target injection system TRL
+- No rep-rated demonstration of any laser + target combination at even 0.01 Hz
+- No prototype automated target loading system for the HB11 disposable capacitor-coil module
+- No chamber survivability data for repeated shots (target debris, shock loading of spherical vessel, optical window damage)
+- Wall-plug efficiency for the combined ns + ps laser system at commercial power levels not demonstrated
 
 **Gaps**:
-- 1 Hz petawatt laser TRL: ~2–3 at best (Adelaide project is a goal, not a result) — `not-yet-sourced` (check laser physics literature for rep-rate petawatt progress) — **blocking** (no 1 Hz petawatt exists; this is a fundamental enabling technology gap)
-- Combined kT field + fast ignition demonstration: not yet performed — `truly-unknown` (no experiment has combined both elements) — **blocking**
-- Pellet fabrication at 1 Hz, commercial scale: no data — `truly-unknown` — **important**
-- Lifetime data for any reactor component: none — `truly-unknown` — **nice-to-have** at this stage
+- Rep-rated operation (1 Hz) not demonstrated at any scale for any component — truly-unknown — important
+- Automated target injection and loading at commercial scale — truly-unknown — important
+- Chamber survivability (debris, shock, optical windows) under repetitive operation — truly-unknown — important
 
 ---
 
 ### 4. Key Materials and Supply Chain Considerations
-**Coverage**: Partial (inferable, not explicitly analyzed in sources)
+**Coverage**: Partial
 
 **Available**:
-- Fuel: p-B11 — natural boron is 80.1% B-11; no enrichment required for basic use (though enriched B-11 targets likely preferred for performance)
-- No tritium required — eliminates breeding blanket, Li-6, and tritium handling (significant advantage)
-- Minimal neutron shielding needed (aneutronic) — reduces activation, simplifies maintenance
-- Laser system uses "thousands of commercial lasers" — implies supply chain scalability by design
-- Nickel plates for capacitor-coil targets: commodity material
+- McKenzie 2023 quantifies boron availability: world reserves ~10^9 tons, of which 80% is B-11; annual consumption for a global HB11 energy economy estimated at <10^6 tons/year (1,000× less than confirmed reserves). No supply chain bottleneck.
+- Hydrogen (proton source): effectively unlimited. Solid-state HB11 fuel cylinder eliminates cryogenic tritium handling — a major manufacturing simplification versus D-T ICF.
+- Diode lifetime assumption (2.2 billion shots, $1/W replacement cost) is the key stated laser O&M driver in McKenzie 2023.
+- Silver cover layer (patent): minor quantity per target (3 laser vacuum wavelengths = sub-micron thickness on 1 cm × 0.2 mm cylinder ≈ nanograms per target). Supply chain not a concern.
+- Novel target materials (white graphene, borophene): McKenzie 2023 notes these allow solution-based manufacturing "amenable to large-scale manufacturing" — a favorable indicator, though TRL is very low.
 
 **Missing**:
-- No supply chain analysis in any source
-- CPA grating supply chain at scale: large-area diffraction gratings are a manufacturing bottleneck for petawatt lasers
-- Rare-earth gain media (e.g., Nd:glass, Ti:sapphire) at "thousands of units" scale
-- Boron enrichment supply chain (if enriched B-11 pellets are needed)
-- Target fabrication infrastructure (precision pellet manufacturing at 1 Hz)
+- Per-shot consumable capacitor-coil module manufacturing at 1 Hz scale: each shot destroys the magnetic field device (nickel plates, coil, quartz fiber support, fuel body). At 1 Hz, a 1 GW plant requires ~31.5 million target-plus-coil assemblies per year. No published cost estimate or manufacturing process design exists for this volume.
+- Laser glass and optical component supply chain for rep-rated PW lasers at commercial scale: current petawatt lasers rely on large-aperture optical components that are not commercially available at the rep-rate or quantity a power plant would require.
+- Boron isotopic enrichment (B-11 purity requirement): McKenzie 2023 flags that isotopically pure B-11 may be needed to truly achieve aneutronic operation; enrichment costs and supply chain not quantified.
 
 **Gaps**:
-- CPA grating and laser gain media at thousands-of-units scale: `not-yet-sourced` — **important** (search: high-power laser manufacturing supply chain literature, DARPA/DOD laser programs)
-- Enriched B-11 target supply: `not-yet-sourced` — **important** (search: boron isotope separation literature)
-- No materials or supply chain section exists in any source — all of the above requires inference and external research — `not-yet-sourced` — **important** overall
+- Per-shot target module (capacitor-coil + fuel) manufacturing at 31.5M units/year — derivable with large uncertainty — important
+- Optical components for rep-rated PW laser at commercial volume — not-yet-sourced — important
+- B-11 isotopic enrichment cost if required for aneutronic purity — derivable — nice-to-have
 
 ---
 
 ### 5. LCOE Parameter Extraction
-**Coverage**: Poor
-
 **Available Parameters**:
 
 | Parameter | Value/Range | Source | Confidence |
 |-----------|-------------|--------|------------|
-| Target plant power output | 1 GW baseload | Company website (hb11-technology-page-2025.md) | low — conceptual only |
-| Repetition rate | ~1 Hz | Patent + company website | medium — design intent, undemonstrated |
-| Energy per reaction (patent basis) | ~1 GJ (~280 kWh) | Patent US10410752B2 | low — based on gain >500, which is undemonstrated |
-| Laser input energy (ignition pulse) | ~30 kJ (patent) | Patent US10410752B2 | low — patent-era spec, may have evolved |
-| Laser input energy (field pulse) | >100 J (ns) | Patent US10410752B2 | low |
-| Fuel type | p-B11 (no tritium) | All sources | high |
-| Energy conversion | Steam cycle (conventional) | Company website 2025 | medium — no efficiency spec given |
-| Wall-plug laser efficiency target | >10% | Adelaide partnership 2025 | low — goal, not demonstrated |
-| Recirculating power | "A portion" recycled | Company website | very low — no fraction given |
-| Gain (Q) target | >500 (patent) | Patent US10410752B2 | very low — ~4 orders of magnitude from demonstrated |
-| Current alpha yield | ~10^10 /sr | Osaka 2022 experiment | high — experimental result |
-| Fuel cost analogue | Negligible (B-11 abundant) | Inferred | medium |
+| Rep rate (target) | ~1 Hz | Patent US10410752B2; HB11 website | h |
+| Target gain required for viability | G = 100–300 (assuming η=20%) | McKenzie et al. 2023 (iter-03/sources/link-10-1007-s10894-023-00349-9.md) | m |
+| Laser wall-plug efficiency (target) | 20% (DPSSL) | McKenzie et al. 2023 | m |
+| Recirculating power fraction target | ≤10% (competitive); 25% (minimum viable) | McKenzie et al. 2023 | m |
+| Conversion efficiency (steam) | 36–40% | McKenzie et al. 2023 | m |
+| Conversion efficiency (direct) | 45–50% (electrodynamic); 64% (MHD+Rankine) | McKenzie et al. 2023 | l |
+| Plant lifetime | 25 years (assumed, not neutron-limited) | McKenzie et al. 2023 | m |
+| Laser diode replacement cost | $1/W; 2.2 billion shot lifetime | McKenzie et al. 2023 | l |
+| DPSSL laser cost baseline | $700–1,000/J (current technology) | Xcimer whitepaper (knowledge/sources/commercialization_of_laser_fusion_energy/) | m |
+| IFE cost-competitive laser cost target | <$100/J (KrF excimer, Xcimer) | Xcimer whitepaper | m |
+| Minimum competitive LCOE (IFE parametric) | ~$25/MWh (G>500, yield >5 GJ/shot) | Hawker 2020 (knowledge/sources/a_simplified_economic_model_for_inertial_fusion/) | m |
+| LCOE market constraint tested | $35/MWh target, $350/MWh upper limit | McKenzie et al. 2023 | m |
+| Fusion energy per shot (patent claim) | ~1 GJ (G≈33,000 from 30 kJ input) | Patent US10410752B2 | l |
+| Fusion energy per shot (best experimental) | ~0.1 J per kJ laser energy (G ≈ 10^-4) | Margarone et al. 2022 | h |
+| Fuel cycle cost | Near-zero (no tritium, no cryogenics, boron abundant) | McKenzie et al. 2023 | h |
+| Neutron management cost | Minimal — aneutronic; thin shielding only | McKenzie et al. 2023 | h |
+| LCOE framework (14-parameter IFE model) | Directly applicable; same recirculating power formulation | Hawker 2020 (knowledge/sources/a_simplified_economic_model_for_inertial_fusion/) | h |
 
 **Missing Parameters**:
 
 | Parameter | Gap Type | Criticality | Notes |
 |-----------|----------|-------------|-------|
-| Laser system capital cost (array of thousands) | truly-unknown | blocking | No cost model for commercial petawatt array at this scale; NIF-analogues would drastically overestimate |
-| Wall-plug efficiency (achieved, not target) | truly-unknown | blocking | Current petawatt systems ~0.1–1%; >10% is a research goal. Dominates recirculating power fraction |
-| Target cost per shot at 1 Hz | truly-unknown | blocking | No manufacturing cost data; ICF DT target analogues exist but p-B11 pellet specs differ |
-| Steam cycle thermal efficiency | derivable | important | Can use conventional steam cycle values (33–40%) but no p-B11→thermal coupling design published |
-| Reactor vessel capital cost | truly-unknown | important | Patent gives geometry (1m sphere, SS), but no cost estimate |
-| Capacity factor / availability | truly-unknown | important | No maintenance schedule, no component lifetime data |
-| Balance of plant cost | derivable | important | Can use generic 1 GW steam plant analogues |
-| Target injection system cost | truly-unknown | important | No design beyond "pellet injection ~1/second" |
-| O&M cost structure | truly-unknown | important | No staffing, maintenance, or replacement schedule data |
-| Net electrical output (after recirculation) | derivable | important | Requires laser wall-plug efficiency — currently unknown |
-| Published system code / plant study | truly-unknown | blocking | Does not exist publicly |
+| Capital cost by subsystem (CAS 20–27: laser arrays, chamber/vessel, target handling, energy conversion, BOP) | truly-unknown | **blocking** | No plant study or published cost estimates for any HB11-specific subsystem; ARIES CAS framework (knowledge/sources/aries_cost_account_documentation/) provides category definitions from 1992 IFE designs but HB11-specific values must be estimated from scratch |
+| Net fusion gain (G) demonstrated or reliably extrapolated from combined two-laser scheme | truly-unknown | **blocking** | Current experiments are single-laser; combined ns kT-field + ps PW scheme never tested; ~4 orders of magnitude from breakeven using best available single-laser experiments; any LCOE model must parameterize G explicitly |
+| Commercial rep-rated laser system cost and architecture (30 kJ ps PW at 1 Hz) | truly-unknown | **blocking** | DPSSL at $700–1,000/J (Xcimer paper) provides upper-bound analog for HB11's CPA petawatt laser; HB11's eventual "arrays of commercial lasers" architecture targets lower cost but no commercial rep-rated PW laser at this scale exists; at DPSSL costs a 30 kJ system costs $21–30M per shot-energy-equivalent |
+| Target (capacitor-coil module) unit cost at production volume | derivable | important | McKenzie 2023 states "several dollars per target acceptable" at G=200; no manufacturing process or supply chain cost model published |
+| O&M costs beyond laser diode replacement | truly-unknown | important | Laser gas, optics, vacuum systems, target injection mechanism, chamber debris removal, diagnostics — not quantified |
+| Capacity factor / system availability | derivable | important | No rep-rated operation demonstrated; IFE analogues (Hawker) assume ~85% availability but this has no experimental basis for the HB11 configuration |
+| Energy conversion efficiency (validated design) | proprietary | important | Range known (36–64%) but chosen architecture unsettled; steam cycle vs. direct conversion affects both CAPEX and η |
 
 ---
 
 ## Source Recommendations
 
-1. **Extract Phys. Rev. Research (2025)** — DOI: PhysRevResearch.7.013230. Alpha particle production from novel targets. This is the most recent quantitative experimental result and likely contains updated yield data and target geometry details. PDF URL noted in dossier. — `not-yet-sourced`
+- **Phys. Rev. Research 7, 013230 (2025)** — "Alpha particle production from novel targets in laser-driven p-B fusion" (identified in dossier, PDF not extracted). Most recent HB11 experimental results with novel target materials. Recommend R2 pull and agentic-mbse extraction. Not-yet-sourced — confirm DOI `10.1103/PhysRevResearch.7.013230` before retrieving.
 
-2. **Extract Mehlhorn (2024) Physics of Plasmas perspective** — DOI: 10.1063/5.0170661. "From KMS Fusion to HB11 Energy, a personal 50 year IFE perspective." As a 50-year IFE retrospective by HB11's lead theoretician, this may contain the most substantive technical and programmatic assessment available publicly. High priority. — `not-yet-sourced`
+- **Mehlhorn 2024, Physics of Plasmas 31(2)** — "From KMS Fusion to HB11 Energy, a personal 50-year IFE perspective." Co-author is HB11 Chief Science Advisor; likely contains historical cost and technoeconomic context. Not-yet-sourced — confirm existence via DOI `10.1063/5.0170661`.
 
-3. **Search for Hora et al. p-B11 theoretical papers** — Heinrich Hora's nonlinear resonance / "avalanche" enhancement mechanism is the theoretical basis for HB11's gain claims. Understanding whether this has independent experimental support is essential for assessing the credibility of Q>500. Search: "Hora hydrogen boron fusion avalanche" on OSTI, arXiv, or Google Scholar. — `not-yet-sourced`, `unverified — confirm existence before searching`
+- **Laser & Particle Beams special issue (2023)** — Thirteen papers on H2-boron fusion mentioned in INFUSE grant press release (iter-02/sources/hb11-recent-developments-2024-2025.md). This volume likely contains the most current physics-of-gain results. Search OSTI/Cambridge Core for "Laser and Particle Beams 2023 proton boron special issue." Not-yet-sourced — unverified, confirm existence before searching.
 
-4. **Search for rep-rate petawatt laser literature** — The 1 Hz petawatt requirement is the key enabling technology. Search: "repetition rate petawatt laser wall-plug efficiency" on OSTI or in proceedings from CLEO/SPIE. The ELI-NP and ELI-Beamlines facilities have published on rep-rate petawatt development. — `not-yet-sourced`, `unverified — confirm existence before searching`
+- **ARIES 1992 IFE plant designs (Prometheus-L, Osiris, Sombrero)** — Referenced in ARIES cost account documentation (knowledge/sources/aries_cost_account_documentation/). These are costed IFE laser-driven plant designs from 1992 with CAS-level breakdowns that could provide order-of-magnitude analogues for HB11's non-laser subsystems (chamber, BOP, auxiliary systems). The ARIES cost account document itself was opened and confirms these designs exist and include IFE-specific cost algorithms. Search OSTI for UCID-21533 (Sombrero) and related reports.
 
-5. **Search for IFE target fabrication cost literature** — General Atomics, NRL, and LLNL have published target fabrication cost analyses for DT ICF targets. These are not direct analogues but provide a costing framework adaptable to p-B11 pellets. Search: "ICF target fabrication cost mass production" on OSTI. — `not-yet-sourced`, `unverified — confirm existence before searching`
+- **For capital cost analogue (laser arrays)**: The Xcimer whitepaper (knowledge/sources/commercialization_of_laser_fusion_energy/) opened and read — confirms DPSSL at $700–1,000/J and KrF target of <$100/J. These provide upper/target bounds for HB11's laser capital cost. No further search needed for laser cost bounding.
 
-6. **Search for direct energy conversion from charged particles literature** — Even though HB11 has pivoted to steam, the original direct conversion approach may be more physically motivated for an aneutronic fuel. Papers on inertial electrostatic conversion or alpha particle direct conversion would enable a comparison. Search: "direct energy conversion alpha particles inertial fusion" — `not-yet-sourced`, `unverified — confirm existence before searching`
+**Fleet-wide source disqualifications:**
+- `knowledge/sources/affordable_manageable_practical_and_scalable_amps_high/` (AMPS/Pacific Fusion): Opened and read. Pacific Fusion's pulser-driven MagLIF approach uses pulsed-power drivers and DT fuel — fundamentally different from HB11's laser + p-B11 architecture. Driver costs (pulser modules, water transmission lines), target physics (cryogenic DT liner), and tritium breeding are inapplicable. The paper's main value is contrasting laser IFE vs. pulser IFE efficiency, confirming that laser IFE has structural disadvantages at current driver efficiencies — useful context but adds no quantitative inputs for HB11.
+- `knowledge/sources/energy_from_inertial_fusion/` (Hogan et al. 1992): Opened and read. A 1992 Physics Today overview article focused on DT laser IFE and heavy-ion IFE using 1980s–early-1990s technology, predating chirped pulse amplification and the entire non-thermal laser fusion program that HB11 is based on. Contains no p-B11 economics data and no cost estimates relevant to CPA-laser architectures. Does not add materially to what is already available from Hawker (2020), Xcimer (2026), and McKenzie (2023).
+- `knowledge/sources/tea_dt_mfe_cost_analysis/` (TEA D-T MFE): Not opened — MFE-specific cost structure (magnetic coils, divertors, blankets, tritium breeding) is structurally incompatible with IFE cost accounts; BOP analogue would be swamped by concept-specific differences. Disqualified without opening based on scope mismatch (MFE vs. IFE).
+- `knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/` (ARPA-E ALPHA revisit): Not opened — the four ALPHA concepts are MIF/compact MFE variants (MSNW FRC, Helion, General Fusion MTF, Princeton FRC), not laser IFE. CAS framework is broadly applicable but concept-specific costs inapplicable. Disqualified based on concept family mismatch.
 
 ---
 
 ## Summary
 
-**Proceed to qualitative analysis now; defer quantitative model pending source extraction.**
+A D1+ analysis of HB11 is feasible as a qualitative exercise supported by parametric quantitative modeling, but carries unusually high fundamental uncertainty. The concept is approximately four orders of magnitude from net energy gain in any published experiment, the core two-laser scheme has never been tested together, and no plant-level capital cost estimates exist for any subsystem. The McKenzie et al. 2023 paper provides the only published TEA framework (gain requirement of 100–300, laser efficiency 20%, recirculating power fraction ≤10%) and the Hawker 2020 14-parameter IFE LCOE model provides a directly applicable methodology scaffold. Together, these allow a parametric LCOE model to be built, but the model will necessarily span many orders of magnitude in its uncertainty range.
 
-The available sources support a solid **qualitative write-up** covering HB11's physics approach, the extraordinary technology gap (~4 orders of magnitude from net gain), the pivot from direct to steam conversion, subsystem maturity assessments, and the dominant risk profile (laser wall-plug efficiency and Q validation). The aneutronic fuel cycle is a genuine structural advantage worth highlighting, as it eliminates tritium breeding costs entirely.
+**Recommended approach**: Proceed to analysis, treating target gain (G) as the central free parameter and back-solving from LCOE targets. Use Hawker's 14-parameter framework with McKenzie 2023's stated parameters as inputs. For capital costs, borrow DPSSL laser costs from Xcimer ($700–1,000/J as baseline, <$100/J as target) and use ARIES 1992 IFE BOP analogues for non-laser subsystems. Flag all inputs as "assumed" or "analog-based" given the absence of any plant study. Acquiring Phys. Rev. Research 2025 and Mehlhorn 2024 before writing would improve the experimental status section, but is not blocking for the analysis structure.
 
-The **quantitative LCOE model** faces two blocking unknowns that cannot be responsibly estimated without external analogues: (1) laser system capital cost at "thousands of commercial petawatt units" scale — no precedent exists, and (2) laser wall-plug efficiency — the difference between 1% and 10% changes recirculating power from ~3× to ~0.3× net output, a factor of 10 in effective plant capacity. Both of these must be treated as wide parametric sweeps rather than point estimates.
-
-Before running the quantitative model, extract the two unextracted papers (Phys. Rev. Research 2025 and Mehlhorn 2024 Physics of Plasmas) — the Mehlhorn perspective in particular may contain the only publicly available integrated technical assessment of this concept's feasibility and cost challenges. Without these, the model will rest almost entirely on the 2018 patent and company website claims, both of which are conceptual-stage documents with significant internal contradictions (energy conversion design pivot).
+---
 
 ## Structured summary (machine-readable)
 
 ```yaml
 overall_rating: "Significant Gaps"
-blocking_count: 4
-important_count: 7
-counting_method: "section_5_missing_parameters"
+blocking_count: 3
+important_count: 6
+counting_method: "all_sections_deduplicated — blocking: (1) net fusion gain / combined two-laser scheme unvalidated, (2) CAS-level capital cost absent, (3) commercial rep-rated laser system cost/architecture unknown; important: (1) energy conversion pathway unsettled, (2) target unit cost at scale, (3) O&M beyond diodes, (4) capacity factor/availability, (5) two most recent experimental papers not extracted, (6) automated target injection not developed"
 section_coverage:
-  availability_of_data:       "Poor"
+  availability_of_data:       "Partial"
   system_function:            "Partial"
   subsystem_maturity:         "Partial"
-  materials_supply_chain:     "Partial (inferable, not explicitly analyzed in sources)"
+  materials_supply_chain:     "Partial"
   lcoe_parameter_extraction:  "Poor"
 ```

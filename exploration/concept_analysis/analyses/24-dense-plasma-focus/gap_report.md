@@ -1,197 +1,185 @@
-I have everything I need. Here is the assessment:
-
----
-
 # Gap Assessment: Dense Plasma Focus (p-B11)
 
 ## Overall Readiness
-**Rating**: Insufficient Data
-
-**Summary**: The available source material is extremely thin — three brief extraction files totaling ~5 KB, all ultimately sourced from LPPFusion's own publications and website. The concept is at TRL 3–4 (physics experiments, far from net energy), and virtually all engineering subsystems (ion beam decelerator, x-ray converter, high-rep-rate driver) exist only at the conceptual/patent stage with no published prototype results, efficiency data, or engineering studies. A credible LCOE model cannot be built from these sources; only an illustrative bounding analysis using company-stated targets is possible. A qualitative narrative analysis is feasible but must be heavily caveated.
+**Rating**: Significant Gaps
+**Summary**: LPPFusion has a moderately transparent public record via two peer-reviewed company-authored papers and investor materials, providing good coverage of device physics and claimed performance targets. However, the concept sits at a pre-net-energy stage with no p-B11 reactions demonstrated yet, no direct conversion prototype, and no independent third-party cost analysis. A conceptual LCOE model is constructible from company claims, but every major output parameter (fusion yield, rep rate, efficiency, capital cost) rests on unverified projections rather than demonstrated results, making confidence in any LCOE estimate very low.
 
 ---
 
 ## Section Coverage
 
 ### 1. Availability of Data
-**Coverage**: Poor
+**Coverage**: Partial
 
 **Available**:
-- LPPFusion website technology pages (retrieved 2026-03-08): device description, power plant targets, development roadmap
-- Lerner et al. (2024) *Frontiers in Physics*: FF-2B device specs, fuel preparation details, plasma conditions, nτ targets
-- Lerner et al. (2023) *J. Fusion Energy* 42:7: summary of experimental achievements, nτT product, qualitative claims
-- Company executive summary (website): 5 MW target, <$1M construction cost claim, LCOE claim of <0.2 c/kWh
-- All available sources are either from LPPFusion itself (company website, Lerner as principal author) or secondary summaries
+- Two peer-reviewed papers (Lerner et al. 2023 *J. Fusion Energy* 42:7; Lerner & Hassan 2024 *Frontiers in Physics* 12:1438880) describing DPF physics, experimental results on FF-1/FF-2B, and the path to p-B11 net energy. Both are company-authored by LPPFusion staff.
+- Company investment materials: executive summary, "our plan to net energy," and technology pages (iter-02 sources) provide commercial targets, timelines, and high-level cost claims.
+- 60+ years of academic DPF literature provides context on the device class (referenced throughout Lerner 2023).
+- Wurzel & Hsu 2021 (`knowledge/meta_analysis/progress_toward_fusion_breakeven_lawson_criterion/`) provides independent context: they explicitly note that for DPF "it is not feasible to report a reliable, achieved Lawson parameter or triple product" due to non-Maxwellian ion distributions — confirming that standard physics-progress benchmarking cannot be applied to DPF.
+- US Patent #7,482,607 covers the DPF design with angular momentum control and direct conversion concept (referenced in sources but not extracted).
 
 **Missing**:
-- Independent third-party technical review of DPF physics claims
-- Any published plant study or system code analysis
-- Peer-reviewed critique or validation of the quantum magnetic field effect (QMFE) mechanism
-- Independent assessment of energy conversion subsystem viability
-- Financial disclosures or detailed cost models
+- No independent third-party engineering or cost study of Focus Fusion has been published
+- No government or national-lab assessment of LPPFusion's approach
+- No power plant design study from any organization other than LPPFusion
+- The Lerner 2011 *J. Fusion Energy* 30:367 paper (cited in dossier as containing the original conceptual power plant design) is referenced but not captured in the source set
+- No peer-reviewed paper from independent researchers experimentally validating QMFE in DPF conditions
 
 **Gaps**:
-- No independent technical literature — `proprietary/not-yet-sourced` — **blocking** for credibility assessment; all data comes from the company's principals
-- No published plant study (Lerner (2011) *J. Fusion Energy* 30:367 referenced in the dossier as possibly containing a conceptual power plant design, but not extracted) — `not-yet-sourced` — **important**
-- U.S. Patent #7,482,607 (x-ray conversion technology) not extracted — `not-yet-sourced` — **important**
+- No independent cost or engineering study — `not-yet-sourced` — **important**
+- Key 2011 Lerner power plant design paper not extracted — `not-yet-sourced` — **important**
+- No third-party validation of QMFE in DPF — `truly-unknown` (no independent experiment has confirmed this) — **blocking**
 
 ---
 
 ### 2. Challenges in Capturing System Function
-**Coverage**: Partial (qualitatively describable, quantitatively unresolvable)
+**Coverage**: Partial
 
-**Available**:
-- QMFE mechanism described qualitatively (simulations show fusion power can exceed bremsstrahlung by ~2×)
-- Two-channel energy conversion pathway described: ion beam decelerator + x-ray photoelectric (Frontiers 2024, website)
-- Pulsed operation mode, ~10 ns pulse, plasmoid physics
-- Known challenge flagged in dossier: electrode erosion at 200 Hz rep rate (no solutions cited)
-- nτ gap quantified: current best 2.4 × 10¹² s/cm³ vs. target 2 × 10¹³ s/cm³ (10× improvement needed); fusion yield gap: 0.26 J achieved vs. 30 kJ needed (~115,000×)
+**Available**: The sources document the main physical mechanism clearly (pulsed capacitor bank → current sheath → filament instability → plasmoid formation → ion beam + x-ray emission → direct conversion). Lerner 2023 describes the theoretical model quantitatively (scaling laws for yield vs. current, plasmoid radius, density). The energy conversion pathway is described conceptually (ion beam decelerator at ~85% efficiency from accelerator analogy; x-ray photoelectric converter at ~80% claimed efficiency).
 
-**Missing**:
-- Any prototype test data for ion beam decelerator (efficiency, engineering design)
-- Any prototype test data for x-ray photoelectric converter (efficiency, material requirements)
-- Recirculating power fraction at 200 Hz (capacitor bank recharge, cooling loads)
-- Electrode wear rate and replacement interval at target rep rate
-- Analysis of plasmoid-to-beam coupling efficiency (what fraction of plasmoid energy enters the decelerator)
-- Whether QMFE has been independently verified or is disputed in the literature
+**Missing and hard to model**:
+1. **QMFE physics** is the linchpin of p-B11 viability. Simulations show it reduces bremsstrahlung by up to 5× at Bc ~10 GG. These field strengths have never been measured in any laboratory — they would be the highest ever achieved. No independent experimental confirmation exists.
+2. **Shot-to-shot variability** is identified as a major inherent challenge (Lerner 2023: sensitivity to initial angular momentum means small perturbations cause large yield swings). Intrinsic irreproducibility makes capacity factor modeling extremely difficult.
+3. **p-B11 reactions have never been observed in FF-2B** (as of 2024 Frontiers paper: preparations are "nearly complete"). The entire commercial pathway depends on achieving this first.
+4. **Direct energy conversion subsystems** have never been built at any scale. Ion beam decelerator concept borrows from particle accelerator technology (~85% efficiency demonstrated in accelerator context), but adaptation to a fusion device is unproven. X-ray photoelectric converter has no prototype.
+5. **Yield scaling model reliability**: The I⁴ yield scaling has plateaued above 1 MA for 20+ years across multiple DPF devices. LPPFusion attributes this to impurity-driven filament disruption and oscillations, and claims resolution is in progress, but the plateau is a documented empirical observation that calls yield projections into question.
 
 **Gaps**:
-- Ion beam decelerator efficiency: `truly-unknown` (no published data anywhere) — **blocking** for LCOE
-- X-ray converter efficiency: `not-yet-sourced` (patent may contain data) — **blocking** for LCOE
-- QMFE validity: `not-yet-sourced` (independent literature exists) — **blocking** for viability assessment
-- Recirculating power / wall-plug Q: `derivable` only with assumed efficiencies — **important**
-- Electrode erosion solution: `truly-unknown` — **blocking** for capacity factor
+- QMFE experimental confirmation absent — `truly-unknown` — **blocking**
+- p-B11 reactions not yet achieved in DPF — `truly-unknown` (no external source can fill this) — **blocking**
+- Direct conversion efficiency unmeasured — `not-yet-sourced` (LPPFusion may have internal estimates; patent gives conceptual design only) — **blocking**
+- Yield plateau mechanism not fully resolved — `truly-unknown` — **blocking**
+- Shot-to-shot variability statistics for commercial projection — `proprietary` — **important**
 
 ---
 
 ### 3. Maturity of Key Subsystems and Components
-**Coverage**: Partial (qualitative TRL estimates possible, no quantitative data)
+**Coverage**: Partial
 
 **Available**:
-- DPF device (FF-2B): operational, achieving 2.7 MA, >200 keV ion energies, record nτT — TRL ~4
-- Decaborane fuel preparation: described in Frontiers 2024, planned tests — TRL ~4 for fuel handling
-- Beryllium electrode fabrication: demonstrated in FF-2B — TRL ~5 for fabrication, TRL ~3 for wear management
+- **DPF device (capacitor bank + electrodes)**: TRL 5. FF-2B demonstrated 2.7 MA single-shot operation. Beryllium electrodes installed 2019. Device cost ~$500k (Lerner 2024 Frontiers).
+- **Plasma purity control**: TRL 5-6 for D fuel. World-record zeff = 1.004 achieved (Lerner 2023). Represents a genuine experimental achievement.
+- **Decaborane fuel handling**: TRL 3-4. Isotopically pure fuel procured (93g for ~$56,000 = $600/g), handling and exhaust systems installed (Lerner 2024 Frontiers). No actual shots yet.
+- **Diamond photoconductive switches**: TRL 3. Two sources (compoundsemiconductor-119149; ipo-ipo-technologies) document prototype development at University of Illinois and LLNL. LLNL device shows 44 A/cm², ~20% efficiency, ~50 kW output. These are critical for reliable high-rep-rate switching but are at TRL 3 — no commercial product.
 
 **Missing**:
-- TRL of ion beam decelerator: no prototype, no test data — TRL ~1–2
-- TRL of x-ray photoelectric converter: patent exists but no experimental efficiency data — TRL ~1–2
-- TRL of high-rep-rate capacitor driver (200 Hz at MW scale): DPF at 16 Hz demonstrated elsewhere (NX2, Singapore), but at much lower energy and different application — TRL ~2–3
-- TRL of p-B11 ignition: not yet achieved in any device anywhere — TRL ~2–3 (relevant physics partially demonstrated, ignition not demonstrated)
-- TRL of thermal management at 200 Hz: undefined
+- **High-rep-rate operation (~200 Hz)**: Never demonstrated at fusion-relevant conditions. Singular data point is NX2 (Singapore) at 16 Hz for a small X-ray DPF — very different operating regime. TRL 1-2 for the commercial rep rate.
+- **Ion beam decelerator**: TRL 2. Concept exists in patent. No fusion-scale prototype. Accelerator deceleration technology is mature, but the specific geometry and power levels for DPF have never been built.
+- **X-ray photoelectric converter**: TRL 1-2. No prototype of any kind. Only described in the patent and conceptually in Lerner 2023. Calculated efficiency ~80%, but "such a device has never been made" (Lerner 2023, §Steps from Net Energy).
+- **Helium cooling at 10 kW/cm²**: TRL 2-3. Calculated to be feasible (Lerner 2023). Not experimentally demonstrated for DPF anode cooling.
+- **Electrode erosion at 200 Hz**: Entirely unknown. Lerner 2023 states electrode replacement target of "no more than once a month" but gives no experimental basis. This is a critical O&M cost driver.
 
 **Gaps**:
-- Ion beam decelerator TRL: `truly-unknown` (no published experiments) — **blocking**
-- X-ray converter TRL: `not-yet-sourced` (patent, possibly internal LPPFusion work) — **important**
-- 200 Hz driver TRL at relevant scale: `not-yet-sourced` (NX2 reports, pulsed power literature) — **important**
-- p-B11 ignition physics (independent): `not-yet-sourced` (QMFE critiques in plasma physics literature) — **blocking** for viability
+- 200 Hz operation undemonstrated — `truly-unknown` — **blocking**
+- X-ray photoelectric converter prototype absent — `truly-unknown` — **blocking**
+- Ion beam decelerator for DPF unbuilt — `not-yet-sourced` (literature on accelerator-based direct conversion exists; TRL uplift path unclear) — **important**
+- Electrode erosion rate at rep-rated operation — `truly-unknown` — **important**
+- Diamond switch scale-up to commercial power level — `not-yet-sourced` — **important**
 
 ---
 
 ### 4. Key Materials and Supply Chain Considerations
-**Coverage**: Partial (identifiable from physics; no sourced supply chain analysis)
+**Coverage**: Partial
 
 **Available**:
-- Fuel: proton (hydrogen) + boron-11. Isotopically pure B-10 decaborane used in FF-2B (B-10 enrichment specified at 0.07% B-10 content — wait, this means nearly pure B-11, since natural boron is ~20% B-10). Standard decaborane commercially available.
-- Electrode material: beryllium (FF-2B). Be identified as critical for impurity reduction.
-- No tritium, no helium-3, no superconducting magnets, no lithium-6 — key simplifying factors
+- **Boron-11 (natural)**: Abundant. "Switching fully to a Focus Fusion economy would require only about a 10% increase in boron production" (Lerner 2023). Not a supply concern at any scale.
+- **Boron-11 (isotopically pure)**: Isotopically pure B-11 in decaborane form exists but is custom laboratory-scale production at $600/g (iter-02 sources, lppfusion-proton-boron-p11b-fuel-arrives). Mass production pathway would reduce cost enormously per Lerner, but no industrial supplier has been identified publicly.
+- **Beryllium**: Identified as a critical material. Current global production ~400 t/year. Lerner 2023 estimates ~10× scale-up needed for a fully deployed Focus Fusion economy. Beryllium is not rare (comparable to lead in Earth's crust) but requires expensive, specialized processing due to high toxicity. Limited number of producers globally (primarily Materion in the US).
+- **Hydrogen (protons)**: Trivially abundant.
 
 **Missing**:
-- Beryllium supply chain assessment (beryllium is a strategic/critical material; U.S. primary producer is Materion; limited global supply; toxic manufacturing)
-- Electrode replacement rate at 200 Hz and its impact on Be consumption
-- Cost and availability of isotopically pure decaborane at commercial scale
-- Whether electrodes require other exotic materials (coatings, composites)
-- Manufacturing scalability for mass-produced 5 MW units (claimed path to mass production)
+- No supply chain analysis for isotopically pure B-11 at commercial scale. The lppfusion-proton-boron-p11b-fuel-arrives source notes that the 93g lot was made at two separate labs (Russia + Czech Republic) as a "custom item" — no industrial supplier identified.
+- No beryllium electrode fabrication cost at scale.
+- No assessment of diamond material supply for switching at commercial scale.
+- No analysis of electrode material cycling (beryllium dust/erosion/recycling).
 
 **Gaps**:
-- Be electrode consumption rate and supply chain: `not-yet-sourced` — **important** (Be is a known supply chain concern for fusion)
-- Decaborane enrichment cost at scale: `not-yet-sourced` — **important** for fuel cost LCOE inputs
-- Mass production pathway for DPF units: `proprietary` — **nice-to-have** (company claims but no engineering basis)
+- Commercial-scale isotopically pure B-11 supply chain — `not-yet-sourced` — **important**
+- Beryllium production scale-up economics — `not-yet-sourced` — **important**
+- Beryllium toxicity / manufacturing handling costs — `not-yet-sourced` — **nice-to-have**
+- Diamond switch manufacturing supply chain — `not-yet-sourced` — **nice-to-have**
 
 ---
 
 ### 5. LCOE Parameter Extraction
-**Coverage**: Poor — company targets only, no engineering basis
-
 **Available Parameters**:
+
 | Parameter | Value/Range | Source | Confidence |
 |-----------|-------------|--------|------------|
-| Net electric output per unit | 5 MW | LPPFusion website | l — design target |
-| Repetition rate target | ~200 Hz | LPPFusion website | l — undemonstrated |
-| Net energy per pulse | ~25 kJ | LPPFusion website | l — design target |
-| Device construction cost | <$1M per unit | Lerner 2024 / website | l — single data point, no breakdown |
-| LCOE claim | <0.2 c/kWh | LPPFusion website | l — no derivation provided |
-| Device mass | ~3 tons | LPPFusion website | m — plausible for described geometry |
-| Device volume | ~30 m³ | LPPFusion website | m — plausible |
-| Cap→x-ray conversion efficiency | >10% | Lerner 2024 Frontiers | l — stated without derivation |
-| Current fusion yield | 0.26 J/shot | LPPFusion website | h — experimental result |
-| Target fusion yield | 30 kJ/shot | LPPFusion website | l — design target |
-| nτ current best | 2.4 × 10¹² s/cm³ | Lerner 2024 Frontiers | h — experimental |
-| nτ target for ignition | >2 × 10¹³ s/cm³ | Lerner 2024 Frontiers | m — derived from physics |
-| Phase 2 development cost | ~$100M | LPPFusion website | l — company estimate |
+| Device capital cost (unit) | <$1M ($0.10/W) | Lerner 2023 JFE (company claim) | l |
+| Electrical output per unit | 5 MW net | Lerner 2023 JFE (calculated) | l |
+| Rep rate target | ~200 Hz | Lerner 2023 JFE / website | l |
+| Fusion energy per pulse | ~25 kJ net | Lerner 2023 JFE (calculated) | l |
+| Fuel cost | ~$0/kWh (5 kg/yr) | Lerner 2023 JFE | m |
+| Current device cost (FF-2B) | ~$500k | Lerner 2023 JFE | h |
+| Ion beam decelerator efficiency | ~85% (analog) | Lerner 2023 JFE (accelerator literature analogy) | l |
+| X-ray converter efficiency | ~80% (theoretical) | Lerner 2023 JFE (calculated) | l |
+| Electrode cooling rate target | ≤10 kW/cm² | Lerner 2023 JFE (calculated) | l |
+| Overall claimed LCOE | ~0.3 c/kWh | Lerner 2023 JFE (company estimate) | l |
+| Device mass | ~3 tons | Lerner 2023 JFE | m |
+| Electrode replacement interval target | ~monthly | Lerner 2023 JFE (target) | l |
+| Isotopically pure B-11 fuel cost (lab) | $600/g (lab scale) | lppfusion-proton-boron-p11b-fuel-arrives | h |
+| Physics energy budget (net energy threshold) | ~30 kJ/pulse | lppfusion-our-plan-to-net-energy | m |
+| Engineering phase budget | ~$100M | Lerner 2023 JFE / net energy plan | l |
 
 **Missing Parameters**:
+
 | Parameter | Gap Type | Criticality | Notes |
 |-----------|----------|-------------|-------|
-| Ion beam decelerator efficiency | truly-unknown | Blocking | No published prototype; core to direct conversion LCOE |
-| X-ray converter efficiency | not-yet-sourced | Blocking | Patent #7,482,607 may have design claims |
-| Overall wall-plug efficiency (electrical out / electrical in) | derivable | Blocking | Requires conversion efficiencies + cap bank round-trip |
-| Capacitor bank round-trip efficiency | not-yet-sourced | Blocking | Pulsed power literature; determines recirculating power |
-| Capacity factor / availability | truly-unknown | Blocking | Depends on electrode life, undemonstrated rep rate |
-| Electrode replacement interval and cost | truly-unknown | Blocking | Determines major OPEX driver |
-| O&M cost | truly-unknown | Important | No analogues published for this class of device |
-| Fuel cost (decaborane at scale) | not-yet-sourced | Important | Likely low but unquantified |
-| Balance of plant cost | derivable | Important | Can borrow from small-scale industrial power; but direct conversion BOP has no analogues |
-| FOAK vs NOAK capital cost | truly-unknown | Important | Company claims mass production pathway, no basis |
-| R&D amortization basis | truly-unknown | Nice-to-have | Company-financed; unclear what is included in <$1M claim |
-| Scaling law (Q vs device size/current) | not-yet-sourced | Important | DPF scaling literature exists; Lerner 2011 may contain this |
-
-**Internal consistency check on the company's LCOE claim**:
-The <0.2 c/kWh LCOE claim fails a simple sanity check. At $1M capex for a 5 MW unit, 90% capacity factor, and a generous 30-year life with no discount rate:
-- Annual energy = 5 MW × 8,760 hr × 0.9 = 39,420 MWh/yr
-- Capex annualized (undiscounted) = $1M / 30 = $33,333/yr
-- Capex LCOE component alone = $33,333 / 39,420 MWh = $0.85/MWh = 0.085 c/kWh
-
-So the capex-only LCOE is ~0.085 c/kWh undiscounted — marginally consistent with their claim only if operating costs are near-zero, electrode replacement is negligible, and no R&D amortization is included. This is implausible for any real device. The claim appears to exclude all development costs and assumes near-zero OPEX. This should be flagged explicitly in any analysis.
+| Demonstrated fusion yield (p-B11) | truly-unknown | blocking | Zero — no p-B11 shots yet; D yield is ~0.25 J vs. 30 kJ target |
+| Direct conversion system capital cost | truly-unknown | blocking | No design study; patent describes concept only |
+| Balance of plant capital cost | not-yet-sourced | blocking | No design; no direct conversion BOP analog exists in published literature |
+| Capacity factor | truly-unknown | blocking | No rep-rate operation demonstrated; no reliability data |
+| Electrode replacement cost at 200 Hz | truly-unknown | important | Erosion rate unknown; drives O&M strongly |
+| Cooling system capital cost | not-yet-sourced | important | He cooling at 10 kW/cm² for DPF tip — no design study |
+| Isotopically pure B-11 cost at scale | not-yet-sourced | important | Currently lab-scale only; mass-production cost unquantified |
+| O&M labor rate | not-yet-sourced | important | "Some maintenance every month" — no man-hours or cost breakdown |
+| Grid interconnection / BOP electrical | not-yet-sourced | important | For 5 MW modular unit; no design study |
+| Decommissioning / radioactive waste | derivable | nice-to-have | Minimal (trace C-11, minimal Be activation); low but non-zero |
+| Scaling Q or nτ for p-B11 | truly-unknown | blocking | Wurzel & Hsu 2021 confirm DPF cannot be placed on Lawson criterion plot — no reliable Q estimate exists |
 
 ---
 
 ## Source Recommendations
 
-1. **Lerner, E.J. (2011) "Theory and Experimental Program for p-B11 Fusion with the Dense Plasma Focus"** *J. Fusion Energy* 30:367 — `not-yet-sourced, unverified — confirm existence before searching`. Cited in dossier as potentially containing conceptual power plant design. May contain early LCOE estimates and scaling assumptions. Search: Springer link `doi:10.1007/s10894-010-9354-5` or similar.
+1. **Lerner, E.J., Murali, S.K., Haboub, A. (2011)** *J. Fusion Energy* **30**, 367 — Contains the original conceptual power plant design, full parameter table, and cost estimates that are the basis for all subsequent LPPFusion cost claims. Cited in dossier. **Search**: Search SpringerLink for DOI 10.1007/s10894-010-9380-7. `not-yet-sourced` — confirm existence before treating as accessible.
 
-2. **U.S. Patent #7,482,607** (LPPFusion x-ray conversion technology) — `not-yet-sourced`. May contain efficiency claims for photoelectric x-ray converter. Search: USPTO or Google Patents by number.
+2. **US Patent #7,482,607** (Method and apparatus for producing x-rays, ion beams, and nuclear fusion energy) — Contains the ion beam decelerator and x-ray photoelectric converter design. Publicly accessible via USPTO. `not-yet-sourced`.
 
-3. **Independent QMFE literature** — `not-yet-sourced`. Search for peer-reviewed responses to or citations of Lerner's QMFE papers in plasma physics / nuclear fusion journals. Look for Rider (1995), Nevins critiques of advanced fuels, and any direct responses to Lerner's bremsstrahlung suppression claims. This is essential for viability framing.
+3. **DPF review literature for independent assessment** — Scholz et al. 2019 (*J. Fusion Energy* 38:522) is cited in the Frontiers 2024 paper and assesses p-B11 feasibility in DPF. Search OSTI or Springer for this paper. `not-yet-sourced` — may provide independent physics assessment of whether QMFE conditions are achievable.
 
-4. **NX2 device technical reports (Nanyang Technological University, Singapore)** — `not-yet-sourced, unverified`. Dossier cites 16 Hz DPF rep rate; NX2 is the referenced device. Engineering details on rep-rate limits, electrode wear, and capacitor bank design would directly inform capacity factor and OPEX gaps.
+4. **NX2 device technical reports (Singapore Institute of Manufacturing Technology / NUSE group)** — NX2 has demonstrated 16 Hz DPF operation as an X-ray source. Engineering data on electrode lifetime and rep-rate operation would directly inform O&M and capacity factor estimates for Focus Fusion. **Search**: OSTI, NTU Singapore repositories. `not-yet-sourced` — confirm existence; papers may be sparse.
 
-5. **Pulsed power / capacitor bank efficiency literature** — `not-yet-sourced`. General pulsed power engineering literature covers capacitor bank round-trip efficiency at MA-class currents. Search IEEE Transactions on Plasma Science, Pulsed Power Conference proceedings.
+5. **Abolhasani et al. (2013)** *J. Fusion Energy* **32**, 189 — Cited in Lerner 2023 as independent QMFE study finding "fusion yield approximately 6× the input energy." This is one of the only independent QMFE assessments. Would strengthen or challenge the theoretical basis. `not-yet-sourced`.
 
-6. **Advanced fuel fusion viability reviews** — `not-yet-sourced`. Review papers on p-B11 viability (e.g., Putvinski et al. 2019 *Nuclear Fusion* "Fusion reactivity of the pB11 plasma revisited") provide independent basis for Q achievability. Essential for system function framing.
+**Fleet-wide source disqualifications:**
+
+- **TEA D-T MFE Cost Analysis** (`knowledge/sources/tea_dt_mfe_cost_analysis/`): Not opened; disqualified without opening — DPF uses direct conversion, no blanket, no tritium, no superconducting magnets. D-T MFE cost structure shares zero subsystems with DPF. No applicable cost analogues.
+- **ARIES Cost Account Documentation** (`knowledge/sources/aries_cost_account_documentation/`): Not directly applicable as a cost analog. DPF has no CAS22 magnets, no CAS23 blanket, no CAS24 shielding, and no CAS26 thermal cycle. The CAS framework could structure a DPF LCOE analysis in principle, but no ARIES-style subsystem costs map onto this device architecture.
+- **ARPA-E ALPHA Revisit** (`knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/`): Opened. Four concepts analyzed: Plasma-Jet MIF, Stabilized Liner Compressor, Staged Z-Pinch, Flow-stabilized Z-Pinch — DPF not included. Targets ~500 MWe at ~$2.4/W CapEx and ~$43/MWh LCOE. DPF targets 5 MW at <$1M/unit (~$0.20/W) via direct conversion — fundamentally different scale and architecture. No applicable cost analog for DPF's unique subsystems. Disqualified for this concept.
+- **Simplified IFE economic model (Hawker)** (`knowledge/sources/a_simplified_economic_model_for_inertial_fusion/`): Opened. Fourteen-parameter model built around IFE driver energy, target gain, rep rate, and thermal conversion efficiency. DPF has no thermal conversion cycle, and the "driver" is indistinguishable from the reactor chamber. Methodology provides a conceptual template for pulsed-device LCOE parameterization, but no numerical values transfer directly. Disqualified as a quantitative analog; may provide methodological inspiration only.
+- **Wurzel & Hsu 2021** (`knowledge/meta_analysis/progress_toward_fusion_breakeven_lawson_criterion/`): Opened and integrated. Explicitly discusses DPF: "it is not feasible to report a reliable, achieved Lawson parameter or triple product" for DPF because of non-Maxwellian distributions. This confirms that the Lawson-criterion gap for DPF is not merely unmeasured but fundamentally uncharacterizable by standard methods — the physics gap (§2 blocking) is more severe than for any other concept in the portfolio. Integrated into §2.
+- **Helios stellarator, HIF economics, energy from IFE, accelerators for IFE, AMPS, Xcimer, ORNL assessment**: Disqualified without opening — none address DPF device physics, direct conversion at this scale, or p-B11 aneutronic fuel cycles in an applicable way.
 
 ---
 
 ## Summary
 
-**Proceed to full analysis with significant caveats.** The available data is sufficient for a qualitative narrative analysis, but not for a credible bottom-up LCOE model. The recommended approach is:
+The Dense Plasma Focus (p-B11) concept is **constructible as a D1+ analysis** — LPPFusion's published papers and investment materials provide sufficient stated parameters to build a parameterized LCOE model. However, the analysis would be almost entirely composed of company claims with no independent verification, and the underlying physics (p-B11 ignition via QMFE, direct conversion efficiency, 200 Hz rep rate) has not been experimentally demonstrated at any scale. The concept has five blocking gaps: p-B11 reactions undemonstrated, QMFE unconfirmed, direct conversion efficiency unmeasured, 200 Hz rep rate undemonstrated, and no credible Q estimate. The most important additional source to acquire before D1+ analysis is Lerner 2011 *J. Fusion Energy* (the original power plant design paper), Abolhasani et al. 2013 (independent QMFE confirmation), and the LPPFusion patent. The analysis can proceed now but must be heavily caveated as speculative given the concept's pre-ignition status; the back-solve to $0.01/kWh is feasible because the company's own numbers are remarkably optimistic.
 
-1. **Qualitative narrative**: Write-up is feasible. Flag that: (a) all sources are company-originated; (b) the key enabling physics (QMFE, p-B11 ignition) is undemonstrated and independently disputed; (c) the concept is at TRL 3–4 globally; (d) the LCOE claim fails basic sanity-check arithmetic if any realistic OPEX is included.
-
-2. **Quantitative model**: Build an illustrative/bounding model only, using company-stated targets as the optimistic scenario. The model should make explicit that: device cost, conversion efficiency, electrode lifetime, and capacity factor are all assumed from unvalidated company claims. Back-solve to $0.01/kWh can be performed but the base case should be flagged as almost certainly optimistic by ≥10×.
-
-3. **Before a serious second-pass analysis**: acquire Lerner (2011) for any conceptual plant design; extract QMFE critiques from independent literature; and confirm whether the x-ray patent contains efficiency data. These three sources would substantially improve the analysis quality.
+---
 
 ## Structured summary (machine-readable)
 
 ```yaml
-overall_rating: "Insufficient Data"
-blocking_count: 6
-important_count: 5
-counting_method: "section_5_missing_parameters"
+overall_rating: "Significant Gaps"
+blocking_count: 5
+important_count: 9
+counting_method: "deduplicated across all sections: (blocking) p-B11 unrealized, QMFE unconfirmed, direct conversion unmeasured, 200Hz undemonstrated, Q/Lawson uncharacterizable; (important) no independent cost study, no plant design, no BOP cost, electrode erosion unknown, diamond switch unscaled, B11 supply chain unestablished, capacity factor unknown, ion beam decelerator unbuilt, O&M costs unquantified"
 section_coverage:
-  availability_of_data:       "Poor"
-  system_function:            "Partial (qualitatively describable, quantitatively unresolvable)"
-  subsystem_maturity:         "Partial (qualitative TRL estimates possible, no quantitative data)"
-  materials_supply_chain:     "Partial (identifiable from physics; no sourced supply chain analysis)"
-  lcoe_parameter_extraction:  "Poor — company targets only, no engineering basis"
+  availability_of_data:       "Partial"
+  system_function:            "Partial"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Partial"
+  lcoe_parameter_extraction:  "Poor"
 ```

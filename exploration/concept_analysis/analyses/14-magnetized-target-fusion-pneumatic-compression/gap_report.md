@@ -1,59 +1,40 @@
 # Gap Assessment: Magnetized Target Fusion - Pneumatic Compression (D-T)
 
 ## Overall Readiness
-**Rating**: Mostly Ready (with significant LCOE-specific gaps)
+**Rating**: Mostly Ready
 
-**Summary**: General Fusion is unusually transparent about physics and architecture for a private fusion company — the concept's operating principle, system configuration, liquid metal roles, and commercial targets are well-documented in peer-reviewed literature and company materials. However, essentially no cost data (capital, operating, or performance-economic parameters) has been published, and several critical commercial-scale subsystems (pneumatic piston array, liquid metal handling at 1 Hz, recirculating power fraction) have no public analogues or estimates. A first-pass LCOE model can be constructed with stated assumptions, but the capital cost side will require analogue-based estimation throughout.
+**Summary**: General Fusion has been moderately transparent about its technology, and the combination of company sources, the peer-reviewed FST 2025 tritium fuel cycle paper (SRNL), and the Wikipedia article provides solid coverage of concept function, subsystem architecture, and known engineering challenges. However, no published cost study or plant-level economic analysis exists for this concept, and several key commercial-scale engineering challenges (1 Hz vacuum re-establishment, pneumatic compression at 4 m scale, recirculating power fraction) remain undemonstrated or unpublished. A qualitative D1+ analysis can proceed, but the LCOE section will require explicit placeholders with stated derivation assumptions rather than source-backed values.
 
 ---
 
 ## Section Coverage
 
 ### 1. Availability of Data
-**Coverage**: Moderate
+**Coverage**: Good
 
-**Available**:
-- Peer-reviewed physics results from LM26 compression experiments (Nuclear Fusion journal, 2025 — cited in dossier sources)
-- FST 2025 paper (Fuel Cycles, doi:10.1080/15361055.2025.2526266): confirms pneumatic pistons, ~4 m cavity diameter, liquid metal composition candidates (Li vs. PbLi), tritium inventory analysis
-- IAEA FEC 2025 abstract: 50% scale confirmation, milestone targets (10 keV by 2025, Lawson by 2026)
-- Company website: concept description, tritium breeding role, liquid metal wall function, commercial target (300 MWe, ~1 Hz)
-- APS 2018 overview: compression parameter ranges (density 10²²→10²⁵ m⁻³, temp 0.1→10 keV, B-field 2→200 T)
-- 34 peer-reviewed publications and 210 patents (per company, though most not ingested)
+**Available**: Company sources (generalfusion.com technology and commercialization pages) provide a clear operational concept description — liquid metal liner, pneumatic pistons, ~4 m cavity, 1 Hz rep rate, 300 MWe from two 150 MWe modules, steam Rankine energy capture. The FST 2025 paper (SRNL/General Fusion, Fusion Science and Technology, DOI: 10.1080/15361055.2025.2526266) is the most substantive peer-reviewed source, covering tritium fuel cycle in detail for both LLE and pure Li blanket candidates. The IAEA FEC 2025 abstract and GlobeNewswire 2022 press release confirm plasma performance milestones (>10 ms confinement, >400 eV, compression time ~5 ms). The Wikipedia article documents the full R&D history, challenge list, funding (~$430M+), and cancelled UK Fusion Demonstration Program ($400M, 70% scale). Research collaboration partnerships are also documented: Kyoto Fusioneering (fuel cycle/liquid metal systems), Hatch (BOP engineering), CNL (plant integration studies).
 
-**Missing**:
-- Published plant/power study (no equivalent of ARIES, DEMO, or STARFIRE-style plant report)
-- Techno-economic assessment or pre-FEED study
-- System code outputs (no PROCESS or equivalent published)
-- Independent third-party technical reviews
+**Missing**: No published cost study or plant-level economic analysis. No detailed specifications for commercial-scale piston hardware (materials, count, stroke, synchronization tolerances at 4 m scale). The cancelled UK Fusion Demo Program would have contained the most engineering-complete plant design, but its detailed specifications were not published.
 
 **Gaps**:
-- No plant study or system code output — `proprietary` — **blocking** (no structured cost baseline exists)
-- 34 peer-reviewed publications largely uninspected — `not-yet-sourced` — **important** (technical details on piston design, liner dynamics, and plasma performance may exist)
-- No independent techno-economic analysis published — `truly-unknown` — **important** (academic groups have not yet published MTF cost models)
+- No published LCOE, capital cost, or plant study for GF MTF — proprietary — blocking
+- Commercial plant engineering specifications (piston count at 4 m scale, valve/seal design, BOP integration) — proprietary — important
+- Status and final design outputs of the cancelled UK Fusion Demo Program (70% scale, $400M) — not-yet-sourced — nice-to-have
 
 ---
 
 ### 2. Challenges in Capturing System Function
 **Coverage**: Partial
 
-**Available**:
-- Clear description of energy flow: fusion neutrons → liquid metal heating → heat exchanger → steam → turbine + piston power
-- Understanding of pulsed nature: ~1 Hz, ~1 ms compression, discrete burn events
-- Liquid metal triple function (compression medium, neutron absorber, tritium breeder) is well documented
-- Plasma formation via Marshall gun (compact toroid) is described
+**Available**: The operational cycle is well described: plasma injection via Marshall gun → pneumatic piston compression of liquid metal vortex → fusion burn (~1 ms timescale) → neutron energy capture in liquid metal → heat exchanger → steam turbine. The Wikipedia article explicitly lists the known engineering challenges acknowledged by the company's own CSO: liquid metal vaporization, plasma contamination by liquid metal impurities, implosion symmetry, kink instability of the liquid metal shaft, and flux diffusion in the liquid metal. A critical unresolved challenge also noted is re-establishing high-vacuum conditions in the time interval between pulses (< 1 second at commercial rep rate) — this is flagged as the most significant unresolved engineering obstacle for the commercial concept. GlobeNewswire 2022 confirms 5 ms compression time in prototype and 10 ms plasma confinement (sufficient margin). LM26 data (April 2025) shows integrated plasma compression with lithium liner was achieved, but using electromagnetic (not pneumatic) compression of solid (not liquid) lithium — a significant gap relative to the commercial concept.
 
-**Missing**:
-- **Recirculating power fraction**: Steam from the thermal cycle powers the pistons. The fraction of gross power consumed by piston recharging is undisclosed and could be 20–50%+ — this is the dominant LCOE driver after capital cost.
-- **Gain (Q) assumptions**: No commercial Q target has been published. Without Q, net electrical output cannot be calculated.
-- **Piston synchronization and reset time**: The pistons must fire, retract, and recharge within 1 second. Whether this is achievable with steam at commercial scale is undocumented.
-- **Plasma formation energy cost**: The Marshall gun consumes energy each pulse; no estimate available.
-- **Energy balance at 1 Hz**: No published analysis of whether the energy balance (power in from steam to pistons vs. power out from fusion) closes at the commercial scale.
+**Missing**: Net energy balance and recirculating power fraction (the pistons are steam-driven, partially self-powering, but the fraction of plant output consumed by compression drivers is not published). Scientific gain (Q_sci) projections for the commercial operating point are not public. Integrated liquid metal vortex + plasma compression with pneumatic pistons has not been demonstrated at any scale.
 
 **Gaps**:
-- Recirculating power fraction for piston system — `proprietary` — **blocking** (drives net electrical efficiency; cannot close energy balance without it)
-- Commercial Q target — `proprietary` — **blocking** (cannot estimate gross fusion power or energy gain)
-- Piston reset feasibility at 1 Hz — `not-yet-sourced` — **important** (mechanical engineering papers may exist; search OSTI/Google Scholar for "magnetized target fusion piston repetition" or General Fusion patent filings)
-- LM26 → commercial scale-up physics fidelity — `truly-unknown` — **important** (LM26 uses electromagnetic compression, not pneumatic; pneumatic system at commercial scale never tested)
+- 1 Hz vacuum re-establishment between pulses not solved; no published approach — truly-unknown / proprietary — blocking
+- Integrated liquid metal vortex compression with magnetized plasma not demonstrated (LM26 uses solid Li/EM compression) — truly-unknown (developmental gap) — blocking for cost model anchoring
+- Recirculating power fraction (piston steam consumption as fraction of gross output) — proprietary — blocking
+- Q_sci projections for commercial operating point — proprietary/not-yet-sourced — important
 
 ---
 
@@ -61,128 +42,106 @@
 **Coverage**: Partial
 
 **Available**:
-- **Plasma injector (Marshall gun / compact toroid)**: Demonstrated at LM26 scale (50% of commercial plasma size). >10 ms confinement time confirmed (peer-reviewed). TRL ~4.
-- **Electromagnetic compression (LM26 surrogate)**: Operational. 18 MJ coils, 2 m diameter. Ion temperature increase and 190× density compression confirmed. TRL ~4 for this configuration.
-- **Liquid metal handling (basic)**: General Fusion demonstrated liquid lithium contact with plasma (2019). TRL ~3.
-- **Steam Rankine BOP**: Mature commercial technology. TRL 9.
+- **Plasma injector (Marshall gun / PI3)**: TRL ~5-6 — demonstrated at 50% commercial scale; PI3 achieved >10 ms confinement, >400 eV, density ~6×10^19 m^-3 without active stabilization or auxiliary heating; published in *Nuclear Fusion* (peer-reviewed).
+- **Electromagnetic compression / solid lithium liner (LM26 proxy)**: TRL ~4 — LM26 first integrated plasma compression with solid lithium liner in April 2025; electromagnetic proxy for commercial pneumatic system.
+- **Liquid metal cavity compression (water proxy, 1:10 scale)**: TRL ~4 — 1,000+ shots on water cavity prototype validating symmetry and shape sufficient for fusion conditions when scaled; peer-reviewed results.
+- **Power conversion (steam Rankine)**: TRL ~8-9 — fully mature technology; liquid metal heat exchanger coupling is standard.
+- **Tritium processing**: TRL ~3-4 — detailed ASPEN Plus models developed by SRNL (FST 2025) for both LLE and Li blanket options, with startup inventories of 317 g (LLE) and ~847 g (Li); no demonstration facility.
+- **Liquid metal handling/pumping**: TRL ~5 — actively developed with Kyoto Fusioneering; no published performance data at commercial scale.
 
-**Missing**:
-- **Pneumatic piston array at commercial scale**: LM26 uses electromagnetic compression as a surrogate — the commercial pneumatic system has not been tested at any scale representative of the 4 m commercial cavity. This is the most critical undemonstrated subsystem.
-- **Liquid metal vortex formation at commercial rep rate**: Whether the liquid metal can form a stable vortex cavity, accept a plasma, be compressed, and be re-established 1×/second is undemonstrated.
-- **Tritium extraction system**: Li and PbLi extraction are analyzed in FST 2025 but no experimental demonstration cited.
-- **First wall / structural materials**: The liquid metal wall eliminates solid first-wall issues, but the pressure vessel and piston ports must survive radiation and thermal cycling.
+**Missing**: No formal TRL assessment by subsystem published. Commercial-scale pneumatic piston system (4 m cavity, 1 Hz, 100+ pistons) has not been built or tested. Seal and valve performance at 1 Hz pulsed liquid metal environment undemonstrated. The commercialization program (mid-2028 per roadmap) plans to demonstrate these, but no data exists yet.
 
 **Gaps**:
-- Pneumatic piston compression at any scale — `not-yet-sourced` — **blocking** (critical to TRL assessment; patent literature may contain design details; search USPTO/Google Patents for General Fusion piston patents)
-- Liquid metal vortex stability at commercial repetition rate — `truly-unknown` — **blocking** (no experiment approaching this has been reported)
-- Tritium extraction system TRL — `not-yet-sourced` — **important** (FST 2025 paper covers inventory but not extraction technology maturity)
-- Radiation damage to piston actuators/ports — `truly-unknown` — **important** (neutron streaming through piston channels is a unique challenge with no clear analogue)
+- Formal TRL assessment for commercial-scale subsystems not published — not-yet-sourced/proprietary — important
+- Commercial-scale pneumatic piston array (~4 m, 1 Hz, synchronized within 10 μs) — truly-unknown (not yet built) — blocking for TRL section
+- Piston-chamber seals and valves in pulsed liquid metal environment — truly-unknown — important
+- Tritium processing at relevant throughput scale — not-yet-sourced — important
 
 ---
 
 ### 4. Key Materials and Supply Chain Considerations
 **Coverage**: Partial
 
-**Available**:
-- Liquid metal identified as Li or PbLi (FST 2025 — both under evaluation)
-- TBR target ~1.5 (Fusion Conclusion blog, dossier)
-- Li-6 enrichment needed for tritium breeding from natural lithium is implicit (Li-6 is the active isotope)
-- D-T fuel cycle confirmed (standard tritium supply chain issues apply)
+**Available**: Liquid metal wall material candidates are well documented: lead-lithium eutectic (LLE, Pb-15.8 Li) or pure lithium (Li). FST 2025 paper (SRNL) provides detailed comparison including tritium extraction technologies, TBR values (1.40 for LLE, 1.25–1.80 for Li), in-process tritium inventories (303 g for LLE, 747–749 g for Li at steady state), and startup inventories. Lithium is globally available and not subject to significant supply chain risk. Lead for LLE is mature industrial material. Wikipedia notes plasma contamination by high-Z lead as a risk for LLE specifically, which is why pure Li is being explored despite its higher reactivity. Kyoto Fusioneering partnership addresses liquid metal system development.
 
-**Missing**:
-- **Li-6 enrichment requirement**: Li-6 is ~7.5% of natural lithium. Commercial tritium breeding requires enriched Li-6 (typically 30–90%). The commercial enrichment pathway (CECE process or other) is not discussed.
-- **Lithium inventory for a 300 MWe plant**: The liquid metal volume at ~4 m cavity at 1 Hz operation is significant. Total plant lithium inventory not published.
-- **Piston materials**: The commercial pistons must withstand steam pressure cycling, potentially neutron flux through piston ports, and thermal gradients. Material specifications are not published.
-- **Structural materials**: Pressure vessel, piston housing — material choices not disclosed.
-- **Lead supply (if PbLi)**: Lead-lithium eutectic is ~83% lead by mass. Large volume requirements; supply chain implications not analyzed.
+**Missing**: Piston and compression hardware material specifications (likely high-strength steel or specialized alloys) not published. Structural chamber materials under D-T neutron fluence not characterized for GF-specific geometry. Annual replacement schedule and costs for consumable components (liquid metal, seals) not published. No supply chain analysis for piston manufacturing at commercial scale.
 
 **Gaps**:
-- Li-6 enrichment pathway and cost — `not-yet-sourced` — **important** (standard fusion fuel cycle literature applies; ORNL and ITER documentation are authoritative)
-- Plant lithium/PbLi inventory (and associated cost) — `derivable` from cavity geometry and density assumptions — **important**
-- Piston material specifications — `proprietary` — **nice-to-have** (analogues from steam/pneumatic engineering exist)
-- Tritium startup inventory — `derivable` from TBR target and fusion power assumptions — **important**
+- Piston and structural material specifications under operational conditions — proprietary — important
+- Neutron activation and material replacement schedule for structural components — not-yet-sourced — important
+- Supply chain for commercial-scale liquid metal system (pumps, heat exchangers, extraction units at Kyoto Fusioneering scale) — not-yet-sourced — nice-to-have
 
 ---
 
 ### 5. LCOE Parameter Extraction
-
 **Available Parameters**:
 | Parameter | Value/Range | Source | Confidence |
 |-----------|-------------|--------|------------|
-| Plant power output | 300 MWe | LM26 milestones, GF commercialization page | h |
-| Repetition rate | ~1 Hz | Multiple sources | h |
-| Cavity diameter | ~4 m | FST 2025 paper | h |
-| Compression timescale | ~1 ms | APS 2018, technical details | h |
-| Pre-compression density | 10²² m⁻³ | APS 2018 | m |
-| Peak density | 10²⁵ m⁻³ | APS 2018 | m |
-| Pre-compression temperature | ~0.1 keV | APS 2018 | m |
-| Target temperature | 10 keV | LM26 milestones, IAEA FEC 2025 | h |
-| Energy conversion pathway | Steam Rankine | Multiple sources | h |
-| Tritium breeding ratio target | ~1.5 | Fusion Conclusion / dossier | m |
-| Plasma scale (LM26) | 50% of commercial | IAEA FEC 2025 | h |
-| Commercial deployment timeline | Early-mid 2030s | COMSOL, dossier | m |
-| Fuel type | D-T | All sources | h |
+| Net electric power | 300 MWe (2× 150 MWe modules) | generalfusion.com/commercialization-path | h |
+| Repetition rate | ~1 Hz | FST 2025, company sources | h |
+| Fuel cycle | D-T, tritium bred in-situ | FST 2025, company sources | h |
+| TBR (LLE blanket) | 1.40 | FST 2025 (SRNL/GF) | h |
+| TBR (Li blanket) | 1.25–1.80 | FST 2025 (SRNL/GF) | h |
+| Tritium startup inventory (LLE) | 317 g | FST 2025 | h |
+| Tritium startup inventory (Li) | 747–793 g | FST 2025 | h |
+| Plant doubling time | 56 days (LLE), 67 days (Li) | FST 2025 | h |
+| Cavity diameter (commercial) | ~4 m | FST 2025 | h |
+| Energy capture | Thermal/steam Rankine | Company sources | h |
+| FOAK target date | ~2035 | generalfusion.com | m |
+| MIF analog LCOE (ARPA-E ALPHA, 4 different concepts) | 34–54 $/MWh | `knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/` | l (analog only) |
+| MIF analog CapEx (~500 MWe modular) | $0.84–1.64B | `knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/` | l (analog only) |
+| MIF analog specific capital cost | 2.0–3.3 $/W | `knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/` | l (analog only) |
+| MIF analog O&M | $42–61 M/year | `knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/` | l (analog only) |
+
+**Note on ARPA-E ALPHA analog**: The Woodruff/ARPA-E revisit (`knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/`) covers four compact modular MIF concepts (PJMIF, Stabilized Liner Compressor, Staged Z-Pinch, Zap Energy) using the same CAS framework — none of which is General Fusion. These are the closest available public cost analogs for compact pulsed MIF plants at ~500 MWe scale. Key CAS line items relevant to GF: CAS 22.1.1 (First Wall/Blanket: $4–117M, average $57M), CAS 22.1.7 (Power Supplies — proxy for piston driver system: $12–140M, average $56M), CAS 27 (Special Materials including liquid metal: $1–267M, average $103M). These ranges reflect the wide uncertainty in novel MIF power core components and are usable as order-of-magnitude bounds only.
 
 **Missing Parameters**:
 | Parameter | Gap Type | Criticality | Notes |
 |-----------|----------|-------------|-------|
-| Fusion gain Q (commercial target) | proprietary | blocking | Cannot close energy balance or derive gross fusion power |
-| Recirculating power fraction (piston steam) | proprietary | blocking | Pistons powered by steam; fraction consumed could dominate net efficiency |
-| Thermal efficiency of steam cycle | derivable | important | No steam parameters published; standard Rankine ~33–38% can be assumed |
-| Capital cost (any subsystem) | proprietary | blocking | No plant cost study or breakdown published |
-| Piston system capital cost | proprietary | blocking | No analogues for this specific system exist in literature |
-| Liquid metal system capital cost | not-yet-sourced | important | Molten salt and LBE analogues from fission may provide bounds |
-| Annual piston replacement rate | proprietary | important | Mechanical fatigue in pulsed service is the key lifetime driver |
-| Liquid metal pump/handling opex | not-yet-sourced | important | Industrial analogues from sodium-cooled fission reactors may exist |
-| Plasma injector replacement rate | proprietary | important | Marshall gun wear at 1 Hz × 8760 hr/yr ≈ 31M shots/yr |
-| Capacity factor / availability | truly-unknown | important | No published estimate; piston maintenance cycles not disclosed |
-| Net plant efficiency (gross to net) | derivable | important | Requires Q, recirculating power, and thermal efficiency |
-| Tritium startup inventory cost | derivable | important | Standard D-T fusion economics; ~$30K/g current tritium price |
-| Plant footprint / land cost | not-yet-sourced | nice-to-have | No published plant layout |
+| Capital cost by CAS category (GF-specific) | proprietary | blocking | No plant study published; ARPA-E analog gives order-of-magnitude bounds only |
+| Recirculating power fraction (piston steam system) | proprietary | blocking | Critical for net output and LCOE; steam self-powering claimed but fraction not disclosed |
+| Q value / energy per pulse (commercial) | proprietary | blocking | Determines gross fusion power; 350-fold compression to achieve Lawson criterion stated but Q not quantified |
+| Capacity factor / plant availability | not-yet-sourced | important | No published estimate; ~1 Hz rep rate means pulse reliability drives availability |
+| Thermal conversion efficiency | derivable | important | Standard Rankine ~33%; not optimized parameters published |
+| Piston/driver capital cost | proprietary | blocking | Cost of pneumatic piston array is the unique GF cost driver; no public estimate |
+| O&M costs (GF-specific) | proprietary | important | No published estimate; ARPA-E analog gives $42–61 M/year for ~500 MWe |
+| Decommissioning cost | not-yet-sourced | nice-to-have | No published estimate; standard fusion plant assumptions could be borrowed |
+| Learning curve / Nth-of-a-kind cost reduction | proprietary | nice-to-have | ARPA-E ALPHA revisit applies ~learning curve credits yielding COE2 from COE1 |
 
 ---
 
 ## Source Recommendations
 
-1. **General Fusion patent portfolio** — `not-yet-sourced` — Search USPTO/Google Patents for "General Fusion" assignee. Piston design, synchronization control, and liquid metal vortex formation may be described in patents. Flag as `unverified — confirm existence before searching`.
+- **GF MTF cost study / plant design report** — search OSTI for any DOE-funded techno-economic study of General Fusion or MTF concepts from the INFUSE or other programs; search for Hatch engineering study outputs (Hatch is GF's BOP engineering partner); search FIA (Fusion Industry Association) annual reports for any published cost projections — `not-yet-sourced`, `unverified — confirm existence before searching`
+- **CNL plant integration study (2024)** — CNL and General Fusion launched a project in April 2024 to examine cost-effective plant integration designs (Wikipedia); any published output from this collaboration would directly address BOP and power conversion cost estimates — `not-yet-sourced`, `unverified — confirm existence before searching`
+- **ARPA-E ALPHA original 2017 Bechtel costing report** — the 2017 precursor to the Woodruff revisit; General Fusion was not one of the four ALPHA concepts but this report provides the full CAS treatment for pulsed MIF concepts — `not-yet-sourced`, confirmed referenced in revisit paper (http://woodruffscientific.com/pdf/ARPAE_Costing_Report_2017.pdf)
+- **Kyoto Fusioneering publications on liquid metal BOP** — Kyoto Fusioneering is GF's partner on tritium fuel cycle and liquid metal systems; search for any published cost or engineering analyses from this partnership — `not-yet-sourced`, `unverified — confirm existence before searching`
+- **LANL MTF program reports** — LANL has a longstanding MTF program (FRX-L experiments, CRADA with GF); search OSTI for LANL MTF plant concept reports — `not-yet-sourced`
 
-2. **General Fusion's 34 peer-reviewed publications** — `not-yet-sourced` — The dossier cites company press releases about peer-reviewed publications; the actual papers are likely on Google Scholar under "General Fusion" OR "magnetized target fusion" OR "MTF piston." APS and Nuclear Fusion journal are most likely venues.
-
-3. **OSTI search for MTF system studies** — `not-yet-sourced` — Search OSTI for "magnetized target fusion power plant" or "MTF economics." DOE-funded MTF work (e.g., LANL FRX-L program) may include system-level analyses. Flag as `unverified — confirm existence before searching`.
-
-4. **Lead-lithium / sodium-cooled fission BOP analogues** — `not-yet-sourced` — For liquid metal handling cost analogues, sodium fast reactor (SFR) plant studies (e.g., ARC-100, EBR-II) and Gen IV designs provide documented liquid metal pump, heat exchanger, and piping cost estimates. IAEA and DOE have published these.
-
-5. **ITER tritium systems documentation** — `not-yet-sourced` — For tritium extraction system costs and Li-6 enrichment chain, ITER's tritium breeding and processing documentation (published by ITER Organization) provides quantitative cost analogues usable with stated scale assumptions.
-
-6. **MTF system code / conceptual design study** — `truly-unknown` — No academic MTF plant study equivalent to ARIES (tokamak) is known to exist. If one exists, it would be transformative for LCOE estimation. Consider a search of IAEA Nuclear Fusion and Fusion Engineering and Design for "magnetized target fusion power plant study." Flag as `unverified — confirm existence before searching`.
+**Fleet-wide source dispositions:**
+- `knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/` — **Integrated**: provides the closest available public cost analog for compact modular MIF (four different concepts, same CAS framework). Covers four ARPA-E ALPHA concepts that are NOT General Fusion. The CAS 27 special materials range ($1–267M, avg $103M) directly informs liquid metal cost uncertainty; driver cost analog (CAS 22.1.7: $12–140M) provides bounds on piston system costs. Used as explicit analog with stated caveat.
+- `knowledge/sources/tea_dt_mfe_cost_analysis/` — **Disqualified**: tokamak-focused MFE study ($140–550/MWh LCOE), based on superconducting magnets and regulatory assumptions for large-scale MCF; architecturally inapplicable to MTF pulsed-mechanical concepts. Not usable as analog.
+- `knowledge/meta_analysis/progress_toward_fusion_breakeven_lawson_criterion/` — **Disqualified for LCOE**: provides physics performance compilation only; no cost data, no MTF-specific economic content. Useful for §3 (subsystem maturity / physics progress benchmarking) but provides no new data beyond what is already captured from concept-scoped sources.
 
 ---
 
 ## Summary
 
-**Proceed to full qualitative analysis now; quantitative LCOE requires explicit assumption documentation.**
+Proceed to full D1+ analysis with stated data limitations. The concept is unusually well-documented at the technology description and fuel cycle levels for a pre-commercial private company. Sections 1–4 can be written substantively, with the engineering challenge list (Section 2) being particularly rich. The LCOE section (Section 5) should be written with explicit analog-based estimates derived from the ARPA-E ALPHA revisit, with prominent uncertainty disclosure — no GF-specific cost data is public, and several cost-driving engineering questions (recirculating power, commercial piston costs, capacity factor) remain proprietary or unresolved. The analysis should note the significant financial and operational uncertainty from GF's May 2025 layoffs (~25% of workforce) and financing constraints, which affect the credibility of the 2035 FOAK timeline.
 
-The qualitative write-up (D1+ sections 1–3) can be completed at good quality with available data. General Fusion's concept is architecturally clear, the physics pathway is well-described, and subsystem TRLs can be assessed with moderate confidence. The key narrative gap — that the commercial pneumatic piston system has never been tested and represents the central unproven engineering bet — is itself well-evidenced and worth stating prominently.
-
-For the quantitative LCOE model, proceed with the following posture:
-- **Use 300 MWe output** as the fixed anchor.
-- **Assume Q = 5–20** as a range (commercial D-T MTF targets; no published value — document this assumption explicitly).
-- **Assume steam Rankine efficiency 33–35%** (standard, no GF-specific data).
-- **Assume recirculating power 20–40%** (wide range; this is the single largest uncertainty and should be the primary sensitivity axis).
-- **Capital cost**: Use a bottom-up analogue approach: BOP from fission analogues (~$1,000–1,500/kWe), piston/compression system as a novel cost item with wide uncertainty (±50%).
-- The back-solve to $0.01/kWh will be informative precisely because the piston recirculating power and capital cost uncertainties are so large — those become the binding constraints to discuss.
+---
 
 ## Structured summary (machine-readable)
 
 ```yaml
-overall_rating: "Mostly Ready (with significant LCOE-specific gaps)"
-blocking_count: 4
-important_count: 8
-counting_method: "section_5_missing_parameters"
+overall_rating: "Mostly Ready"
+blocking_count: 5
+important_count: 7
+counting_method: "deduplicated across all sections; LCOE blocking gaps counted once even if they appear in both §2 and §5 (recirculating power, Q value, piston cost, no cost study, 1 Hz vacuum re-establishment)"
 section_coverage:
-  availability_of_data:       "Moderate"
+  availability_of_data:       "Good"
   system_function:            "Partial"
   subsystem_maturity:         "Partial"
   materials_supply_chain:     "Partial"
-  lcoe_parameter_extraction:  "Unknown"
+  lcoe_parameter_extraction:  "Poor"
 ```

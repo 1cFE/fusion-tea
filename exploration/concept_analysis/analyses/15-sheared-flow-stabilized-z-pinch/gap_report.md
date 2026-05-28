@@ -1,40 +1,32 @@
-Now I have everything I need. Let me write the gap assessment.
-
----
-
-# Gap Assessment: Sheared-Flow Stabilized Z-Pinch
+# Gap Assessment: Sheared-Flow Stabilized Z-Pinch (D-T)
 
 ## Overall Readiness
 **Rating**: Mostly Ready
 
-**Summary**: The qualitative picture is well-supported — Zap Energy has published a reactor concept paper (Engineering Paradigms, FST 2023) and maintains an active public communications cadence, providing solid coverage of physics, architecture, and subsystem design intent. However, both key technical papers (FST 2023 and Physics of Plasmas 2023) are paywalled with only snippets captured in Phase 1a, and no capital cost estimates or quantitative plant studies have been published. The quantitative LCOE model will require substantial derivation and analogues, with Q value and recirculating power fraction being the critical unknowns.
+**Summary**: The SFS Z-pinch is unusually well-documented for a pre-commercial fusion concept. The Engineering Paradigms paper (Thompson et al., FST 2023) provides a coherent conceptual plant design with nominal power parameters, energy balance logic, and qualitative cost drivers. The ARPA-E ALPHA concepts study (Woodruff Scientific, 2020) explicitly costed the Zap Energy flow-stabilized Z-pinch alongside three other concepts, providing a CAS-structured LCOE benchmark (~$43/MWh for a ~500 MWe plant) even though concept-specific figures were delivered proprietary. The main gap is physics maturity: FuZE-3's best result (1.6 GPa pressure, ~1 keV electron temperature) is still orders of magnitude below the plant-relevant conditions (35 keV, Q > 10) assumed in the conceptual design, and no published Q estimates from experiments exist. Most cost-model parameters are derivable from published conceptual design values, but the critical pulsed power driver cost is highly uncertain and likely proprietary.
 
 ---
 
 ## Section Coverage
 
 ### 1. Availability of Data
-**Coverage**: Moderate
+**Coverage**: Good
 
 **Available**:
-- Zap Energy website explains the concept clearly and publicly (`zap-energy-website-how-it-works.md`)
-- Engineering Paradigms paper (FST 2023) provides reactor-level specs: 190 MWt, 10 Hz, LiPb blanket, TBR ~1.1, ~70% driver efficiency, steam Rankine, ~3 m reactor height — captured via search snippets and a third-party summary (`engineering-paradigms-paper-summary.md`)
-- Physics of Plasmas 2023 overview paper exists but is paywalled (no extracted content in Phase 1a)
-- Century paper (FST 2025) published — paywalled, but press releases and APS DPP abstract provide operational details (`century-and-fuze-a-updates-2025.md`)
-- FuZE-3 results confirmed via ScienceDaily summary (`fuze-3-gigapascal-results-2025.md`) and direct press release
-- ARPA-E project page confirms DOE-funded electrode development program
-- IEEE Spectrum article available for context
+- Full conceptual plant design paper (Thompson et al., FST 2023) covering plasma parameters at each development step, plant architecture, blanket concept, and efficiency rationale. Open access.
+- ARPA-E ALPHA concepts costing study (Woodruff Scientific 2020) explicitly includes Zap Energy's flow-stabilized Z-pinch; provides anonymized CAS-level cost averages across four pulsed modular concepts as a benchmark.
+- Experimental device progression (FuZE → FuZE-Q → FuZE-3) documented via press releases and APS DPP abstracts.
+- Century demo platform documented: 100 kW input power, 0.2 Hz, 500 kA, liquid bismuth wall, press releases confirm 50 MWe per module as Zap's stated plant target.
+- OSTI pulsed power roadmap (2025) characterizes pulsed power component supply chain gaps directly relevant to Z-pinch driver systems.
+- Zap Energy company: ~$330M raised, ~150 employees, DOE Milestone-Based Fusion Development Program participant — high corporate transparency relative to most alt-fusion startups.
 
 **Missing**:
-- Full text of Engineering Paradigms paper (FST 2023) — contains the most complete reactor design details
-- Full text of Physics of Plasmas 2023 overview paper
-- Any published power plant study with cost breakdown or economic projections
-- Zap Energy investor materials or company-published cost projections
+- Full text of paywalled key papers (Thompson FST 2023 — obtained via extracted PDF; Physics of Plasmas 2023 overview paper — NOT in sources; Century FST 2025 paper — NOT in sources beyond press release snippets).
+- The Physics of Plasmas 2023 paper (Levitt et al.) likely contains updated plasma physics basis but only the APS DPP 2025 abstract is available.
 
 **Gaps**:
-- Full Engineering Paradigms paper (FST 2023) — `not-yet-sourced` — **important**: snippets provide the key parameters but reactor design details (electrode geometry, blanket thickness, component masses) may be in the full paper
-- Full Physics of Plasmas 2023 overview — `not-yet-sourced` — **important**: likely contains confinement scaling and plasma parameter projections
-- Any cost or economic analysis — `truly-unknown` (no published estimates identified) — **blocking for quantitative model**
+- Full text of Physics of Plasmas 2023 overview paper — `not-yet-sourced` — nice-to-have (Thompson FST 2023 covers most content)
+- Full text of Century FST 2025 paper — `not-yet-sourced` — important (engineering platform details for plant power handling subsystems)
 
 ---
 
@@ -42,25 +34,22 @@ Now I have everything I need. Let me write the gap assessment.
 **Coverage**: Partial
 
 **Available**:
-- Core physics understood: ohmic heating via axial current, self-generated B-field, sheared-flow stabilization mechanism
-- Driver architecture clear: pulsed power capacitor bank + pulse-forming networks, passive design
-- Energy flow pathway clear: driver → plasma → neutrons + alphas → LiPb → steam cycle
-- Recirculating power pathway partially understood: wall-plug to cathode efficiency ~70%, but end-to-end Q and net electrical output not published
-- Rep rate scaling challenge explicitly documented: 0.2 Hz (Century) → 10 Hz (commercial), with power requirement scaling from 39 kW to ~10 MW average input
-- Electrode engineering is an active open problem (dedicated ARPA-E project)
+- Thompson FST 2023 provides clear system function description: pulsed axial current → pinch → ohmic heating → fusion → LiPb absorbs energy → steam Rankine cycle. No external magnets, no auxiliary heating.
+- Wall-plug to plasma electrical efficiency ~70% explicitly documented (AC-DC rectification ~90%, pulsed power modulator ~80%).
+- Pulsed operation analogy to internal combustion engine clearly articulated; load-following capability described.
+- Recirculating power discussion: tokamaks cited at 0.4-0.6 recirculating fraction; SFS Z-pinch argued to be lower due to direct coupling.
+- Engineering Paradigms paper identifies cathode as the primary materials challenge (direct plasma contact, neutron bombardment); all other solid structure shielded by LiPb.
+- OSTI pulsed power roadmap (2025) characterizes the key engineering challenge for all pulsed-power-driven fusion: high-voltage capacitor lifetime (currently 10⁴–10⁵ shots; plant needs 10⁹), solid-state switching for 50–200 kV at repetitive rates, and lead time for large-volume capacitor orders (4–6 years; 10,000–216,000 capacitors per plant).
 
 **Missing**:
-- Q value — FuZE-Q is designed for Q=1 but has not yet demonstrated breakeven; actual current Q is unquantified from available sources
-- Plasma scaling laws from current experiments to reactor conditions (1.5 MA FuZE-Q → commercial reactor current requirements)
-- Recirculating power fraction at commercial rep rate — this directly determines whether the concept is economically viable
-- Confinement time scaling with current and plasma conditions
-- Plasma-wall interaction details at high rep rate (electrode erosion, impurity injection)
+- The path from 0.2 Hz (Century current) to 10 Hz (commercial target) involves a ~50× increase in average input power, from ~100 kW to ~10 MW per module. The engineering challenges of this scaling are acknowledged but not quantified in published sources.
+- Tritium handling and extraction from LiPb at continuous-operation rates is not described in detail in public sources.
+- Actual recirculating power fraction at plant conditions: stated qualitatively as "better than tokamaks" but no published number.
 
 **Gaps**:
-- Q value / fusion gain demonstrated — `truly-unknown` (not yet achieved experimentally) — **blocking**: LCOE depends critically on Q
-- Recirculating power fraction at 10 Hz commercial scale — `proprietary` — **blocking**: determines net electrical output
-- Plasma scaling from FuZE-3/FuZE-Q to reactor current levels — `not-yet-sourced` (likely in Physics of Plasmas 2023 paper) — **important**
-- Electrode erosion/impurity injection rates — `truly-unknown` at the required rep rate — **important**
+- Recirculating power fraction (quantitative) — `proprietary` — important (critical for net electric efficiency calculation)
+- Rep-rate scaling from 0.2 Hz to 10 Hz engineering solution — `proprietary` — important (determines capacity factor trajectory)
+- Tritium extraction process details from LiPb — `not-yet-sourced` — nice-to-have (LiPb tritium extraction literature exists from ITER blanket studies)
 
 ---
 
@@ -68,125 +57,122 @@ Now I have everything I need. Let me write the gap assessment.
 **Coverage**: Partial
 
 **Available**:
-- **Plasma physics / sheared-flow stabilization**: FuZE demonstrated D-T fusion neutrons (confirmed by LLNL, 2021); FuZE-3 achieved 1.6 GPa total pressure — TRL ~4
-- **Pulsed power driver**: Century operating at 39 kW average, 500 kA per pulse, 0.2 Hz; passive PFN design is mature at single-shot scale — TRL ~4 at current rep rate, TRL ~2 at 10 Hz target
-- **Liquid metal wall system**: Century demonstrates liquid bismuth circulation with thermal management at 100 kW scale; vertically-oriented design validated at engineering level — TRL ~4 for Bi, TRL ~2-3 for LiPb with D-T plasma
-- **Steam Rankine energy conversion**: fully mature technology, applicable directly — TRL ~9
-- **Electrode technology**: ARPA-E project underway, explicitly described as needing development — TRL ~2-3
+- Plasma physics (TRL 3–4): FuZE-3 demonstrated 1.6 GPa total pressure, ~1 keV electron temperature, 3–5×10²⁴ m⁻³ density. Thermonuclear neutron production confirmed on FuZE (Zhang et al., PRL 2019). Still ~2 orders of magnitude below plant-relevant plasma conditions.
+- Pulsed power driver (TRL 4): Solid-state thyristor switches demonstrated at 80% efficiency at 5 Hz (Hegeler et al., 2011, cited in Thompson FST 2023). Century testing at 0.2 Hz with 100 kW. Path to 10 Hz and 10 MW per module not yet demonstrated.
+- Liquid metal wall (TRL 3–4): Century is "one of the largest tests of a plasma-facing liquid metal blanket to date." Liquid bismuth used in Century (not LiPb). 1,080 consecutive shots demonstrated.
+- Cathode durability (TRL 2–3): Identified as key challenge. Decades of arc smelting furnace experience cited as analogy (60 MW, non-nuclear). No direct testing at plant-relevant neutron flux.
+- Blanket/breeding (TRL 2–3): TBR ~1.1 calculated for LiPb; Monte Carlo simulations only. Not tested with actual D-T neutron flux.
+- Pulsed power supply chain (TRL 2–3): OSTI 2025 roadmap explicitly identifies this as a blocking supply chain gap across all pulsed fusion concepts; capacitor lifetime and solid-state switch development are pre-commercial.
 
 **Missing**:
-- TRL assessment for tritium breeding loop (LiPb processing, extraction, reinjection)
-- Tritium breeding has no experimental validation in this system
-- High-rep-rate electrode lifetime data
-- Capacity factor projections (maintenance intervals, component replacement schedules)
+- Q > 1 demonstration: Current experiments are sub-breakeven by orders of magnitude. No published estimate of when Q > 1 is expected.
+- TRL assessment for the LiPb tritium breeding system under actual neutron irradiation.
 
 **Gaps**:
-- Electrode lifetime under commercial conditions (500 kA+ at 10 Hz) — `truly-unknown` — **important**: drives replacement cost and availability
-- LiPb tritium breeding validation — `truly-unknown` (Century uses Bi, no D-T testing) — **important**
-- Rep rate scaling path from 0.2 Hz to 10 Hz — `proprietary` (internal roadmap) / `not-yet-sourced` — **important**
-- Capacitor bank lifetime and replacement at commercial rep rate — `truly-unknown` — **important**
+- Q > 1 / scientific breakeven demonstration — `truly-unknown` (hasn't happened yet) — blocking (required to anchor any cost model Q assumption)
+- Cathode lifetime under DT-relevant neutron flux — `proprietary` — important (drives scheduled replacement cost, major O&M driver)
+- Capacitor/switch lifetime at 10 Hz, 10⁹ shots — `truly-unknown` at required spec — blocking (supply chain fundamentally not ready per OSTI 2025 roadmap; no commercial product at required lifetime)
+- LiPb tritium breeding tested under neutron flux — `truly-unknown` (only Monte Carlo calculations) — important
 
 ---
 
 ### 4. Key Materials and Supply Chain Considerations
-**Coverage**: Poor
+**Coverage**: Partial
 
 **Available**:
-- Tritium supply dependency confirmed (D-T fuel); TBR ~1.1 from LiPb blanket, marginally self-sufficient
-- LiPb composition confirmed (17% Li, 83% Pb by mass); Li-6 enrichment likely needed for adequate TBR but not explicitly stated
-- No superconducting magnets, cryogens, or beryllium — eliminates several common critical material concerns
-- No target fabrication requirement (unlike ICF) — eliminates that supply chain challenge
-- Lead (Pb): abundant, no supply concerns
-- Bismuth: used only for Century (engineering demo), not commercial concept
+- LiPb eutectic (17% Li, 83% Pb): Properties documented; neutron multiplication via Pb(n,2n) reaction leveraged for TBR ~1.1. Activation products (²¹⁰Po, ²⁰³Hg) identified; ²⁰³Hg mitigable by isotope control. No superconducting magnets — eliminates dominant ITER/tokamak material cost driver.
+- Cathode material: Unspecified in published sources; arc smelting analogs cited. Copper or graphite-based analogues likely but not confirmed.
+- Capacitor dielectrics: OSTI 2025 roadmap characterizes current BOPP film capacitors at 1–3 J/cm³ energy density, 10⁴–10⁵ shot lifetime; advanced films (Peak Nano NanoPlex) could reduce volume by 4–8×. 10 year–15 year valley-of-death for new dielectric scale-up.
+- OSTI 2025: "If 150 fusion power plants were to be built today to service the United States, the time required to build the required capacitors is approximately 125–250 years given western world available manufacturers." Directly characterizes the Z-pinch supply chain bottleneck.
+- Solid-state switches: WBG materials (SiC MOSFETs at 6.5–10 kV commercial; custom at 15–20 kV); target 100–200 kV/100–200 kA switches do not currently exist.
 
 **Missing**:
-- Whether Li-6 enrichment is required (Li-6 fraction in natural Li is ~7.5%; enrichment affects blanket cost significantly)
-- Electrode material specifications and supply (high-current-density cathodes at 10 Hz)
-- Capacitor bank component supply chain at required scale (large pulsed-power capacitors)
-- LiPb total inventory requirement and lead activation concerns
-- Tritium inventory requirements and permeation through liquid metal
+- Lithium-6 enrichment needs for LiPb with adequate TBR — not explicitly stated in sources.
+- Lead supply chain: Lead is abundant but specific isotope or purity requirements not stated.
+- Structural material (first-wall surroundings, tank): Not specified in published sources.
 
 **Gaps**:
-- Li-6 enrichment requirement — `derivable` from TBR analysis — **important**: cost driver if enrichment needed
-- Electrode material specification and supply — `proprietary` — **nice-to-have**
-- High-rep-rate capacitor bank supply chain — `not-yet-sourced` — **nice-to-have**: analogues from pulsed power industry exist
-- Tritium inventory and permeation — `not-yet-sourced` (likely in FST 2023 paper or D-T fusion literature) — **important**
+- Cathode material specification and supply chain — `proprietary` — nice-to-have (small mass, replaceable)
+- Li-6 enrichment fraction needed for TBR — `not-yet-sourced` — important (affects tritium self-sufficiency)
+- High-rep-rate solid-state switch supply chain at 100–200 kV/100–200 kA — `truly-unknown` at required spec — blocking for commercial plant (per OSTI 2025 roadmap)
+- Capacitor supply chain at 10⁹ shot lifetime — `truly-unknown` at required spec — blocking for commercial plant
 
 ---
 
 ### 5. LCOE Parameter Extraction
-**Coverage**: Partial
-
 **Available Parameters**:
 | Parameter | Value/Range | Source | Confidence |
 |-----------|-------------|--------|------------|
-| Reactor thermal power | 190 MWt | Engineering Paradigms, FST 2023 | m (snippet only) |
-| Repetition rate (target) | 10 Hz | FST 2023; Zap website | h |
-| Current rep rate (Century) | 0.2 Hz | Century press releases | h |
-| Drive efficiency (wall-plug → cathode) | ~70% | Engineering Paradigms, FST 2023 | m |
-| Energy conversion pathway | Steam Rankine | FST 2023; Ben Bridger blog | h |
-| Tritium breeding ratio | ~1.1 | Engineering Paradigms, FST 2023 | m |
-| Blanket material | LiPb (17% Li, 83% Pb) | FST 2023; Zap website | h |
-| Reactor footprint | ~3 m tall | Engineering Paradigms, FST 2023 | m |
-| No external magnets | Confirmed | Multiple sources | h |
-| Plasma current range | 650 kA – 1.5 MA | FuZE-Q specs | h |
-| Driver bank energy (FuZE-Q scale) | ~1 MJ | fuze-q-and-fuze-3.md | h |
+| Thermal power per core | ~200 MWt | Thompson FST 2023, Table I | h |
+| Net electric power per module | ~50 MWe | Century press release (Zap) | m |
+| Net electric power (plant, 3–4 modules) | ~383–814 MWe | ARPA-E ALPHA (Woodruff 2020), Table 2 | m |
+| Repetition rate (commercial target) | 10 Hz | Thompson FST 2023, Zap website | h |
+| Fusion energy per pulse | 19 MJ | Thompson FST 2023, Table I | m |
+| Plant Q (fusion power / input power) | > 10 | Thompson FST 2023 | m |
+| Wall-plug to plasma efficiency | ~70% | Thompson FST 2023 (AC-DC ~90%, modulator ~80%) | h |
+| Energy conversion cycle | Steam Rankine | Thompson FST 2023, Ben Bridger blog | h |
+| Tritium breeding ratio | ~1.1 | Thompson FST 2023 (Monte Carlo only) | m |
+| Plant availability / capacity factor | 90% | ARPA-E ALPHA (Woodruff 2020, costing assumption) | m |
+| Total Capital Cost (benchmark, ~500 MWe 4-concept avg) | $1.2B avg ($0.8–1.6B range) | ARPA-E ALPHA (Woodruff 2020), Table 3 | l |
+| CapEx (benchmark) | ~2.4 $/W ($2.0–3.3) | ARPA-E ALPHA (Woodruff 2020), Table 4 | l |
+| LCOE (benchmark, learning-curve COE2) | ~43 $/MWh ($34–54 range) | ARPA-E ALPHA (Woodruff 2020), Table 4 | l |
+| O&M costs (benchmark) | ~48 M$/year ($42–61) | ARPA-E ALPHA (Woodruff 2020), Table 4 | l |
+| Scheduled replacement costs (benchmark) | ~17 M$/year ($6–30) | ARPA-E ALPHA (Woodruff 2020), Table 4 | l |
+| Power supplies CAS 22.1.7 (benchmark) | $55.8M avg ($11.9–140.4M) | ARPA-E ALPHA (Woodruff 2020), Table 3 | l |
+| First wall/blanket CAS 22.1.1 (benchmark) | $57.3M avg ($3.6–116.5M) | ARPA-E ALPHA (Woodruff 2020), Table 3 | l |
+| Special materials CAS 27 (LiPb, benchmark) | $103.1M avg ($1.4–266.9M) | ARPA-E ALPHA (Woodruff 2020), Table 3 | l |
+| Fuel cost | ~negligible | ARPA-E ALPHA (Woodruff 2020) ~$0.1M/yr | h |
+
+*Note: ARPA-E ALPHA values are anonymized averages across four concepts (Plasma-Jet MIF, Stabilized Liner Compressor, Staged Z-Pinch, and Flow-stabilized Z-Pinch). Zap Energy-specific CAS line items were delivered proprietary. Low confidence for Z-pinch-specific cost application.*
 
 **Missing Parameters**:
 | Parameter | Gap Type | Criticality | Notes |
 |-----------|----------|-------------|-------|
-| Q value (fusion gain) | truly-unknown | blocking | FuZE-Q targets Q=1, not yet demonstrated; current devices likely Q << 1 |
-| Net electrical output (MWe) | derivable | blocking | Requires Q and recirculating power fraction; ~63 MWe if 33% thermal efficiency, but recirculating power could dominate |
-| Recirculating power fraction at 10 Hz | proprietary | blocking | At 10 MW avg input and 190 MWt output, this is ~5% — but unconfirmed |
-| Capital cost by subsystem | truly-unknown | blocking | No published estimates; no analogues cited in sources |
-| Pulsed power system specific cost ($/kWe or $/J) | not-yet-sourced | blocking | Analogues from NIF, Z Machine, ICF drivers may exist |
-| Electrode replacement cost and lifetime | truly-unknown | important | ARPA-E project active — no data yet |
-| Capacity factor / availability | truly-unknown | important | No published maintenance schedule; pulsed systems can achieve high availability in principle |
-| Thermal efficiency of steam cycle | derivable | important | ~30-35% for steam Rankine at LiPb temperatures; LiPb operating temperature not published |
-| LiPb operating temperature | not-yet-sourced | important | Needed for steam cycle efficiency; likely in full FST 2023 paper |
-| Blanket capital cost | not-yet-sourced | important | Liquid metal system analogues (FNSF, tokamak blankets) may provide rough bounds |
-| O&M cost fraction | truly-unknown | important | No published estimates; comparable pulsed concepts (Z Machine) are research tools, not commercial analogues |
-| Plant electrical output target | proprietary | important | 190 MWt × efficiency − recirculation; Zap hasn't published a MWe target |
+| Net thermal-to-electric efficiency (quantitative) | derivable | blocking | 50 MWe / 200 MWt implies ~25% gross, but recirculating power fraction unknown; net unclear |
+| Recirculating power fraction | proprietary | blocking | Thompson FST 2023 argues "better than tokamaks" (0.4–0.6) but gives no number; plant Q > 10 implies substantial recirculation headroom |
+| Capital cost breakdown (Z-pinch specific, CAS 22.1.7 pulsed power driver) | proprietary | blocking | Widest cost range in ALPHA study ($11.9–140.4M for power supplies) — Zap's specific value proprietary |
+| Cathode replacement schedule and unit cost | proprietary | important | Dominant scheduled replacement cost driver; only qualitative treatment in published sources |
+| LiPb loop cost (pumps, heat exchangers, tritium extraction) | derivable | important | ITER/DEMO LiPb loop engineering studies exist; LiPb is common blanket material |
+| Plant scaling: modules per plant, shared infrastructure | proprietary | important | Thompson FST 2023 mentions multi-module plants sharing tritium infrastructure but no specific module count or cost allocation |
+| Capacity factor trajectory to commercial operation | proprietary | important | Century at 0.2 Hz; commercial at 10 Hz — no published ramp schedule or first-plant CF estimate |
+| O&M staffing and annual costs (Z-pinch specific) | derivable | important | Could use ARPA-E ALPHA analog ($48M/yr) scaled to single-concept estimates |
+| Physics performance gap to plant conditions | truly-unknown | blocking | 1.6 GPa / ~1 keV (FuZE-3) vs. 35 keV / Q > 10 required; 2+ orders of magnitude in T, ~3 in density |
 
 ---
 
 ## Source Recommendations
 
-1. **Full text of Engineering Paradigms for SFS Z-Pinch Fusion Energy (FST 2023)** — `not-yet-sourced` — institutional library access to Fusion Science & Technology would unlock blanket geometry, electrode design, and possibly cost discussion. Search: tandfonline.com DOI 10.1080/15361055.2023.2209131. *Flag: paper confirmed to exist; content beyond snippets unverified.*
+1. **Physics of Plasmas 2023 — "The Zap Energy approach to commercial fusion" (Levitt et al.)** — `not-yet-sourced`. This appears to be the primary peer-reviewed overview paper for the commercialization strategy. DOI: 10.1063/5.0211179 (AIP). May be open-access or available via OSTI. Search OSTI for the DOI. Would improve physics basis section.
 
-2. **Full text of "The Zap Energy approach to commercial fusion" (Physics of Plasmas 2023)** — `not-yet-sourced` — AIP open access check or institutional access. DOI: pubs.aip.org/aip/pop/article/30/9/090603. *Flag: confirmed to exist; AIP PoP articles are sometimes open access after a year.*
+2. **Century FST 2025 paper** — `not-yet-sourced`. Full engineering platform paper. DOI: 10.1080/15361055.2025.2532331 (Taylor & Francis). Likely paywalled; check if OSTI preprint available. Would provide quantitative Century performance data (shot count, thermal load, electrode erosion rates).
 
-3. **Full text of Century paper (FST 2025)** — `not-yet-sourced` — same journal; details on power handling architecture would inform rep-rate scaling and pulsed power cost modeling. *Flag: confirmed to exist; paywalled.*
+3. **FuZE-3 journal publication (planned for 2026 per Zap press release)** — `not-yet-sourced` (paper announced but not yet published as of research date). Monitor arXiv physics.plasm-ph for Zap Energy FuZE-3 results. Would provide triple product data at 1 keV / high density.
 
-4. **Pulsed power system cost analogues from ICF or defense literature** — `not-yet-sourced` — search OSTI for pulsed power driver cost studies (e.g., from Z Machine, NIF pulsed power, or NNSA driver technology reports). Z pinch pulsed power is architecturally similar to Z Machine drivers. *Flag: unverified — confirm existence before searching.*
+4. **ARPA-E ALPHA proprietary Z-pinch costing report** — `proprietary`. The Woodruff Scientific study delivered a proprietary CAS-level cost breakdown to Zap Energy. Not publicly available. The public report provides only four-concept anonymized averages. A future public release (e.g., DOE report database) is possible; search OSTI for Woodruff/Zap/ALPHA updates.
 
-5. **ARPA-E project reports on electrode technology development** — `not-yet-sourced` — ARPA-E project page links are indexed; final technical reports may be on OSTI. Search ARPA-E DE-AR0001554 or similar project number for electrode development deliverables. *Flag: unverified — ARPA-E project confirmed, but final reports may not be public.*
+5. **ITER/DEMO LiPb blanket engineering literature** — `not-yet-sourced`. Published LiPb loop cost scaling models from ITER and DEMO studies could provide analogous cost for LiPb heat transfer system (CAS 22.2 / 27). Search OSTI for "LiPb blanket cost" or "lithium lead tritium extraction cost."
 
-6. **Ben Levitt APS DPP 2025 presentation slides or proceedings** — `not-yet-sourced` — APS DPP proceedings sometimes have extended abstracts with quantitative data. The abstract cited mentions "progress towards commercial fusion." *Flag: abstract confirmed; full slides unverified.*
-
-7. **Tritium permeation and inventory literature for LiPb systems** — `not-yet-sourced` — large body of work from ITER TBM programs, FTF studies. Tritium behavior in flowing LiPb is well-studied in the tokamak context and could provide bounds for SFS Z-pinch. Search OSTI for "LiPb tritium permeation" or "flowing liquid metal tritium inventory."
+6. **Zap Energy DOE Milestone-Based Fusion Development Program milestone reports** — `not-yet-sourced`. DOE FES Milestone reports may contain performance data and cost projections. Search DOE FES website and OSTI for Zap Energy milestone program deliverables (`unverified — confirm existence before searching`).
 
 ---
 
 ## Summary
 
-**Proceed to full analysis.** The qualitative write-up is well-supported: physics rationale, architecture, device lineage, and the reactor concept's major design choices are all documented from public sources. The Engineering Paradigms paper (FST 2023) provides sufficient anchors (190 MWt, 10 Hz, LiPb, TBR ~1.1, steam Rankine, ~70% driver efficiency) for a first-pass quantitative model.
+The SFS Z-pinch is **ready for a D1+ qualitative analysis** and a **partial quantitative analysis**. The engineering concept is exceptionally well-articulated for its development stage — Thompson FST 2023 provides the most detailed public plant design of any pre-commercial alt-fusion concept in this project. The ARPA-E ALPHA study provides a CAS-structured LCOE estimate (~$43/MWh) directly applicable as a benchmark for the concept, though Zap-specific cost line items are proprietary. The main qualitative caveat — which should be prominently flagged in the analysis — is that demonstrated physics performance (1.6 GPa, ~1 keV) remains far from plant conditions (35 keV, Q > 10), making any cost model highly sensitive to whether sheared-flow stabilization holds at MA-scale currents. The pulsed power supply chain (capacitor lifetime, solid-state switch availability) is a genuinely blocking commercialization constraint identified by the 2025 OSTI roadmap. Proceed to full analysis with explicit uncertainty framing on: (1) physics extrapolation from current experiments to breakeven, (2) pulsed power driver cost (widest CAS variance in the ALPHA study), and (3) recirculating power fraction.
 
-The quantitative LCOE model will require explicit `derivable` assumptions for most economic parameters, since no capital cost estimates exist in the literature. The critical path is: assume Q=1 (FuZE-Q target, not yet achieved), assume recirculating power from the 10 Hz pulsed power system, estimate thermal efficiency from LiPb operating temperatures, and apply pulsed-power cost analogues for the driver system. The analysis should clearly flag that these are model assumptions, not published data, and the back-solve to $0.01/kWh will be highly informative precisely because no one has published whether this concept can plausibly reach that target.
-
-The two most critical data gaps — **Q value** and **capital cost structure** — are endemic to the current state of the technology (pre-breakeven, no plant study), not sourcing gaps. The qualitative uncertainty section should feature both prominently.
+---
 
 ## Structured summary (machine-readable)
 
 ```yaml
 overall_rating: "Mostly Ready"
-blocking_count: 5
-important_count: 7
-counting_method: "section_5_missing_parameters"
+blocking_count: 4
+important_count: 6
+counting_method: "section_5_missing_parameters_plus_sections_3_4_deduplicated: physics_gap_to_plant_conditions, net_electric_efficiency, pulsed_power_driver_cost (all blocking); capacitor_lifetime and solid_state_switch_availability collapsed into single supply_chain blocking gap from sections 3+4"
 section_coverage:
-  availability_of_data:       "Moderate"
+  availability_of_data:       "Good"
   system_function:            "Partial"
   subsystem_maturity:         "Partial"
-  materials_supply_chain:     "Poor"
+  materials_supply_chain:     "Partial"
   lcoe_parameter_extraction:  "Partial"
 ```

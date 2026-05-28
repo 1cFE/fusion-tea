@@ -1,34 +1,36 @@
-# Gap Assessment: Laser ICF - French National Direct Drive (D-T)
+# Gap Assessment: Laser ICF - French National (D-T)
 
 ## Overall Readiness
 **Rating**: Significant Gaps
-
-**Summary**: GenF Systems is an extremely early-stage company (founded January 2025, currently in Phase 1 modeling and simulation through 2027). Public information is limited to commercial website messaging, project funding announcements, and one paywalled peer-reviewed paper. Enough is available for a credible qualitative narrative and a rough-order-of-magnitude LCOE skeleton, but nearly all quantitative parameters require analogues borrowed from the broader European IFE literature rather than GenF-specific data. No plant study exists.
+**Summary**: GenF Systems (founded early 2024/January 2025) is at Phase 1 — modeling and simulation through 2027 — with no plant study, TEA, or cost data in the public domain. The Ribeyre et al. (2025) AIP Advances paper (co-authored by GenF/CEA) provides a solid analytical reactor framework including key physics-derived LCOE parameters. However, the three cost-dominant IFE parameters — driver capital cost, target manufacturing cost, and plant capital cost breakdown — are absent from the literature and must be estimated using fleet-wide IFE analogues, producing results with very wide uncertainty. Qualitative sections (system function, TRL, materials) can be written to D1+ quality from available sources.
 
 ---
 
 ## Section Coverage
 
 ### 1. Availability of Data
-**Coverage**: Limited
+**Coverage**: Poor
 
 **Available**:
-- GenF website pages (`genf-website-technology.md`, `genf-icf-article.md`): commercial-level description of concept, 10 Hz rep rate, 1 GW target, DT fuel, lithium blanket, direct drive rationale
-- TARANIS project details (`taranis-project-details.md`): funding by phase (€12–18.5M Phase 1, €200M Phase 2, €600M Phase 3), roadmap to 2050, partner roster (Thales, CEA, CNRS LULI/CELIA, Assystem, École Polytechnique)
-- Ribeyre et al. AIP Advances (2025) (`aip-advances-ribeyre-2025.md`): confirms liquid lithium blanket, tritium breeding reactions, co-authored by GenF/CEA researchers — **paywalled; only abstract-level details captured**
-- IFSA25 conference (Sept 2025): GenF presented 7 papers including implosion design, reactor system modeling, foam targets, first wall challenges — **titles captured but no paper content**
-- No published plant study. No system code outputs (though IFSA25 paper #7, "Inertial fusion reactor system modeling: precursor to a digital twin," suggests one is in progress)
+- Ribeyre et al. (2025) AIP Advances 15(9):095013 — full text (CC BY) from CEA/GenF authors; provides historical overview, reactor physics model (Eq. 1–2), hydroscaled target gain vs. laser energy curves, fuel requirements, and chamber radius estimation. Most technically substantive public document for this concept.
+- GenF website (technology, ICF article, news pages) — 1 GWe plant target, 10 Hz rep rate, direct drive scheme, liquid Li blanket, ~2 mm capsule with ~1 mg DT fuel, ~30% burn fraction, Thales/CEA/CNRS partnership structure.
+- CNRS TARANIS announcement (French) — three-phase roadmap (Phase 1: modeling to 2027–2028, Phase 2: technology brick validation to 2035, Phase 3: demonstrator first MWe by 2040, commercial by 2050), direct drive rationale, LPI/high rep-rate challenge framing.
+- ELI Beamlines 550-shot campaign (Aug 2025) — confirmed experimental activity at L4n ns-kJ laser; results not published.
+- IFSA25 participation — abstract-level information on first wall research (Ialovega, GenF) and GenF digital twin development; full presentations not publicly accessible.
+- ARPA-E/Zuegel DPSSL slide deck — IFE laser driver requirements, state of DPSSL technology, cost reduction priorities (PRO 4-1 through 4-7).
+- Scott et al. (OSTI:1833260) — experimental study of shock ignition LPI at ignition-scale plasma conditions on OMEGA; directly relevant to GenF's preferred ignition scheme.
 
 **Missing**:
-- Full text of Ribeyre et al. AIP Advances 2025
-- IFSA25 conference paper content (7 papers)
-- Any GenF/CEA system code results or plant design reports
-- Details from LMJ experimental campaigns (classified or unpublished)
+- Any plant-level cost study or TEA for this specific concept
+- TARANIS Phase 1 interim results (modeling, digital twin outputs)
+- ELI Beamlines campaign data (analysis not published)
+- IFSA25 full presentation content on first wall and digital twin
+- Company funding amount (the general €222M European commitment at Nuclear Energy Summit 2026 is not concept-specific)
 
 **Gaps**:
-- Full Ribeyre et al. paper text — `not-yet-sourced` — **important**: this is the most authoritative technical document; paywall is the only barrier
-- IFSA25 conference proceedings — `not-yet-sourced` — **blocking for quantitative work**: the reactor system modeling and implosion design papers likely contain the most relevant technical parameters
-- Published plant study — `truly-unknown` — **blocking**: none exists yet; GenF is in Phase 1 simulation
+- Published plant study or internal TEA — proprietary — **blocking**
+- ELI Beamlines / IFSA25 results — proprietary — **important**
+- TARANIS digital twin outputs — proprietary — **important**
 
 ---
 
@@ -36,25 +38,25 @@
 **Coverage**: Partial
 
 **Available**:
-- Direct-drive selection rationale: 4–5x better laser coupling efficiency vs. indirect drive; no hohlraum (removes X-ray conversion losses)
-- Key physics challenges named: laser-plasma instabilities (LPI), hydrodynamic instabilities; these are the canonical IFE challenges and are well-documented in public literature
-- IFSA25 title #1 ("Implosion and illumination design for laser driven fusion energy") confirms active implosion optimization work
-- Target: ~2mm capsule, up to 30% burn fraction, gain >100, up to 100+ MJ per implosion
-- First wall challenge acknowledged: dedicated IFSA25 paper (#6 by Ialovega) — no content available
-- Reactor system modeling: IFSA25 paper #7 ("precursor to a digital twin") by Chesneau — existence known, content not available
+- LPI in direct drive: Ribeyre (2025) §IV identifies laser–plasma instabilities (SBS, SRS, TPD) as the primary compression challenge; Scott et al. (OSTI:1833260) characterizes LPI at ignition-scale plasmas for shock ignition — convective SRS dominates at long density scale-lengths, hot-electron energy deposition 1–2.5% of laser energy, encouraging for MJ-scale shock ignition.
+- Hydrodynamic instability (RTI): Ribeyre (2025) discusses direct drive RTI sensitivity; ARPA-E/Zuegel slides frame shock ignition as a mitigation approach.
+- High rep-rate driver thermal management: CNRS announcement notes "fast laser cooling between shots" as a key challenge (CELIA contributes active cooling innovations enabling 10 Hz).
+- Target injection: Ribeyre (2025) quantifies injection requirements — 40–160 m/s in-flight velocity, 100–1,000g acceleration tolerance, cryogenic survival problem in high-temperature chamber.
+- Final optics: Ribeyre (2025) explicitly discusses fluence limits (≤4 J/cm² at 351 nm, below fused silica damage growth threshold) and scaling from LMJ 240-beam geometry to 8 m chamber.
+- Tritium breeding: Ribeyre (2025) documents that TBR > 1 has never been achieved in any experiment (highest reported: 3.57×10⁻⁴ with Li-6 or Li-7); liquid Li blanket concept flagged as preferred but unresolved.
+- First wall: Ribeyre (2025) cites wall temperature 1000–3000 K under neutron/ion flux; tantalum vs. tungsten under study (Ialovega IFSA25 reference in paper).
 
 **Missing**:
-- Quantified gain curve (Qfusion vs. laser energy input)
-- Laser-to-target coupling efficiency for their specific illumination scheme
-- Specific LPI mitigation approach (beam smoothing, wavelength, pulse shaping)
-- Neutron flux to first wall (determines materials damage rate)
-- Chamber clearing time between shots (determines achievable rep rate and availability)
+- Quantitative digital twin / system integration model outputs
+- Target injection tracking system design (for moving target at 10 Hz)
+- First wall material selection decision
+- Power cycle integration details (Rankine vs. sCO2 not resolved)
+- Quantitative availability / capacity factor model
 
 **Gaps**:
-- Gain curve / ignition threshold — `proprietary` (in Phase 1 simulation, not published) — **important**: can substitute with CELIA/LULI or ELI Beamlines analogue literature
-- First wall neutron fluence model — `not-yet-sourced` (IFSA25 paper #6) — **important**: determines first wall replacement schedule, which drives O&M cost
-- Illumination geometry details — `not-yet-sourced` (IFSA25 paper #1) — **important**: determines number of beamlines and laser architecture scale
-- Chamber clearing physics — `truly-unknown` at this stage — **nice-to-have**
+- Digital twin system integration model — proprietary — **important**
+- First wall material selection — proprietary (active research, pre-decision) — **important**
+- Power conversion cycle specification — proprietary — **nice-to-have**
 
 ---
 
@@ -62,126 +64,160 @@
 **Coverage**: Partial
 
 **Available**:
-- Overall program TRL: early — Phase 1 is modeling/simulation only (2024–2027); no integrated system demo
-- Laser driver: Thales is a leading DPSSL manufacturer; CELIA has patented active cooling for 10 Hz operation — TRL ~3–4 for high-rep-rate IFE-class DPSSL
-- ELI Beamlines experimental campaign (Aug 2025, 550 shots with L4n ns-kJ Nd:glass laser): calibration experiments — TRL ~3 for implosion physics validation
-- Cryogenic target production: named as Phase 2 (2027–2035) development milestone — TRL ~2–3
-- First wall: active CEA/GenF research (IFSA25 paper) — TRL ~1–2
-- Tritium breeding blanket: liquid Li mentioned; Phase 2 development — TRL ~2–3
-- Target injection at 10 Hz: named Phase 2 challenge — TRL ~1–2
+- DPSSL technology: Zuegel (ARPA-E) documents state of high-average-power DPSSLs — LUCIA (14 J/2 Hz, 13% efficiency), Mercury (13%), HAPLS pump at ELI Beamlines (RT helium gas cooling, Nd:phosphate glass), DiPOLE-100X (cryo He, Yb:YAG ceramics). Ribeyre (2025) assumes 10% wall-plug efficiency as realistic industrial projection. For GenF's 3 MJ, 10 Hz target, these demonstrate components at ≪1% of required output — ~50× energy scaling needed.
+- Direct drive ICF physics: NIF has demonstrated ignition 7× in indirect drive (gain 1.3–4). Direct drive physics demonstrated at sub-ignition scale (OMEGA). GenF's 550-shot ELI Beamlines campaign targets LPI mitigation at ns-kJ scale.
+- Shock ignition: OSTI:1833260 demonstrates encouraging LPI behavior at ignition-scale plasma conditions; physics not yet validated at full MJ scale in direct drive.
+- Tritium breeding: Laboratory-scale only; no fusion plant has demonstrated TBR > 1.
+- Power conversion: Rankine cycle analogue is mature (TRL 8+) from fission/conventional thermal.
 
-**Missing**:
-- Explicit TRL ratings from GenF or program assessments
-- Laser energy per beamline and number of beamlines for commercial system
-- Specific DPSSL architecture for the commercial reactor
-- Status of foam target fabrication (IFSA25 paper #3 on 2-photon polymerization — promising but content unavailable)
-- Cryogenic target production rate requirements and current demonstrated throughput
+**Subsystem TRL estimates**:
+| Subsystem | TRL | Basis |
+|-----------|-----|-------|
+| Direct drive ICF (physics) | 3–4 | NIF (indirect drive at ignition); OMEGA (direct drive sub-ignition) |
+| DPSSL driver (kJ class, 10 Hz) | 4–5 | LUCIA, Mercury, DiPOLE-100X demonstrated |
+| DPSSL driver (MJ class, 10 Hz) | 1–2 | No facility demonstrated; ~50× scaling required |
+| Shock ignition (MJ scale) | 2–3 | Theory + sub-scale experiments; ignition-scale LPI characterized |
+| Cryogenic direct-drive target fabrication | 3 | Research scale; no industrial process |
+| Target injection at 10 Hz (cryogenic) | 1–2 | Conceptual; survivability problem open |
+| Final optics (rep-rate compatible) | 2–3 | Fluence limits characterized; no rep-rated demonstration |
+| Tritium breeding blanket (TBR > 1) | 2 | No experiment has achieved TBR > 1 |
+| First wall (rep-rate IFE environment) | 2 | Tantalum/tungsten studies ongoing; no selection |
+| Target factory (86,400 targets/day) | 1 | No analog exists at this scale |
+| Power conversion (Rankine) | 8 | Mature analog from fission/conventional |
 
 **Gaps**:
-- Subsystem TRL table — `derivable` from European IFE roadmap literature (Euro Fusion IFE roadmap, HIPER study) combined with GenF-specific status — **important**: needed for qualitative write-up
-- Laser beamline count and energy per beamline — `not-yet-sourced` (IFSA25 papers or European IFE roadmap) — **important**: dominant capital cost driver
-- Foam target fabrication scalability — `not-yet-sourced` (IFSA25 paper #3) — **nice-to-have**
-- 10 Hz target injection TRL — `truly-unknown` at this stage — **important** for capacity factor
+- DPSSL at MJ class / 10 Hz — not-yet-sourced (component data exists; system demonstrator does not) — **blocking** (for TRL attestation)
+- Cryogenic target injection survival verification — truly-unknown — **important**
+- First wall qualification under rep-rated neutron/ion flux — truly-unknown — **important**
 
 ---
 
 ### 4. Key Materials and Supply Chain Considerations
-**Coverage**: Poor
+**Coverage**: Partial
 
 **Available**:
-- Fuel: D-T confirmed; tritium breeding via lithium blanket is the supply strategy
-- Blanket material: "lithium-based compound" (website) / "liquid lithium" (Ribeyre et al.) — specific alloy/compound not confirmed
-- Target: ~2mm spherical DT capsule with foam structure (IFSA25 paper #3 on 2-photon polymerization foam targets suggests polymer foam shell)
-- No critical materials beyond DT fuel cycle are discussed in available sources
+- Deuterium: Abundant, extractable from seawater (33 mg/m³ per Ribeyre 2025); no supply constraint.
+- Tritium supply: NEI Magazine and Power Technology articles confirm only CANDU reactors produce commercially available tritium (<2 kg/year at maximum per Ribeyre 2025), while a 10 Hz reactor consumes >1 kg/day — making on-site tritium breeding via Li blanket non-negotiable rather than optional.
+- Li-6 enrichment: NEI/Power Technology articles document that only Russia and China actively produce Li-6 at scale; COLEX process is the only industrial-scale method but carries mercury contamination risk; alternative methods (AVLIS, electrochemical) are pre-commercial; ITER demo blanket required ~200 kg enriched Li; DEMO estimates >60 t/GW. This is a critical supply chain risk acknowledged at the geopolitical level.
+- Laser gain medium: Nd:phosphate glass (current MJ-class) and Yb:YAG ceramics (DPSSL, DiPOLE-100X) — specialized suppliers exist but no industrial-scale DPSSL supply chain.
+- Laser diodes (pump source): Zuegel (ARPA-E) identifies cost reduction to $0.01/W as priority research need (PRO 4-2); current diode costs are the primary DPSSL capital cost driver.
+- Optical coatings: High-LIDT (laser-induced damage threshold) at UV wavelengths (351 nm) — specialized supply; Ribeyre (2025) cites damage growth threshold of ~5 J/cm² for fused silica at 351 nm; LMJ has operational experience managing optics at this fluence.
 
 **Missing**:
-- Li-6 enrichment requirement and supply chain assessment
-- First wall material specification (active research, not resolved)
-- DPSSL gain medium material (Yb:YAG or similar) at scale for commercial rep rate
-- Tritium inventory requirements and self-sufficiency timeline
-- Target factory cost and throughput requirements (10 Hz → 864,000 targets/day)
+- Li-6 enrichment supply chain strategy specific to GenF/TARANIS
+- Industrial-scale cryogenic DT target manufacturing supply chain
+- First wall material supply chain (tantalum coating at IFE scale)
+- Laser diode supply chain scaling projections specific to French/European industry
 
 **Gaps**:
-- First wall material — `not-yet-sourced` (IFSA25 paper #6) / `proprietary` — **blocking**: determines replacement schedule and O&M cost; can use analogue materials (tungsten, SiC composites) from broader IFE/ITER literature
-- Li-6 enrichment supply chain — `not-yet-sourced` — **important**: standard concern for all D-T concepts; search ORNL/EUROfusion blanket literature
-- Target fabrication at 10 Hz scale — `truly-unknown` for this concept; IFE community broadly acknowledges this as unsolved — **blocking for operating cost**: 10 targets/second is an undemonstrated manufacturing challenge
-- DPSSL gain medium supply chain — `not-yet-sourced` — **nice-to-have**: can use Thales analogues or European laser industry assessments
+- Li-6 enrichment: supply chain at commercial scale — not-yet-sourced — **blocking** (GenF/France strategy unclear; European Li-6 production absent)
+- Cryogenic DT target industrial supply chain — truly-unknown — **important**
+- Laser diode cost reduction pathway for GenF's specific DPSSL architecture — proprietary/not-yet-sourced — **important**
 
 ---
 
 ### 5. LCOE Parameter Extraction
-**Coverage**: Poor (skeletal only)
+**Coverage**: Poor
 
 **Available Parameters**:
+
+From concept-scoped sources:
 | Parameter | Value/Range | Source | Confidence |
 |-----------|-------------|--------|------------|
-| Plant electrical output | 1000 MW | GenF technology page | high |
-| Repetition rate | 10 Hz | GenF technology page | high |
-| Fuel per shot | ~1 mg DT | GenF ICF page | high |
-| Target diameter | ~2 mm | GenF ICF page, TARANIS details | high |
-| Target gain (claimed) | >100 | TARANIS details / GenF ICF page | medium |
-| Fusion energy per shot (claimed) | up to 100+ MJ | GenF ICF page | medium |
-| Fuel burn fraction | up to 30% | GenF ICF page | medium |
-| Program Phase 1 cost | €12–18.5M | TARANIS details | high |
-| Program Phase 2 cost | ~€200M | TARANIS details | medium |
-| Program Phase 3 cost | ~€600M | TARANIS details | medium |
-| Commercial target date | 2050 | GenF technology page | high |
-| Blanket concept | Liquid Li | Ribeyre et al. 2025 | medium |
+| Plant output | 1 GWe | GenF website | high |
+| Repetition rate | 10 Hz | GenF website | high |
+| Target gain G (Ed=3 MJ, 10 Hz) | ~120 | Ribeyre 2025, Fig. 3(b) | medium |
+| Laser energy Ed (baseline) | ~3 MJ (10 Hz) / ~1.5 MJ possible at 10 Hz 2ω | Ribeyre 2025, §IV | medium |
+| Driver efficiency ηd (DPSSL, industrial) | 10% | Ribeyre 2025, §III | medium |
+| Thermal efficiency ηth | 40% (Rankine, conservative bound) | Ribeyre 2025, §III | medium |
+| Blanket gain Gb | 1.2 (Li-6 standard exothermic reaction) | Ribeyre 2025, §III | medium |
+| Fuel consumption | ~4 mg DT/target, ~86,400 targets/day at 10 Hz | Ribeyre 2025, §III | medium |
+| Auxiliary power | ~5% of Pe,grid | Ribeyre 2025, §III | medium |
+| Fusion energy per shot | ~360 MJ (at G=120, Ed=3 MJ) | Ribeyre 2025, §III | medium |
+| Chamber radius | ~8 m (from x-ray fluence limit <1 J/cm²) | Ribeyre 2025, §III | medium |
+
+From fleet-wide sources (integrated after reading):
+
+From `knowledge/sources/commercialization_of_laser_fusion_energy/` (Xcimer 2026): DPSSL capital cost analog — NIF-derived DPSSL technology projects to ~$700–1,000/J-on-target; Xcimer's KrF excimer alternative targets <$100/J. For GenF's DPSSL-based approach, the NIF-derived DPSSL cost (~$700–1,000/J) represents an upper bound on driver cost; no lower-bound DPSSL estimate is available in the literature at MJ-class scale. This bounds — but does not resolve — the driver cost gap, downgrading it from blocking to important relative to the prior state where no bound existed.
+
+From `knowledge/sources/a_simplified_economic_model_for_inertial_fusion/` (Hawker 2020): The 14-parameter IFE LCOE model provides a technology-agnostic framework directly applicable to GenF's concept. Key analog values: plant cost analog ~$3,600/kWe (ex-driver, from HYLIFE design); O&M and yield cost constants bounded from nuclear power plant proxies; competitive LCOE targets of $25–100/MWh (optimistic to first-plant scenarios); discount rate sensitivity (2% government vs. >10% private). The framework can be applied to GenF parameters from Ribeyre (2025) to generate bounding LCOE estimates, resolving the methodology gap but not the company-specific parameter gaps.
+
+| Analog Parameter | Value/Range | Source | Confidence |
+|-----------------|-------------|--------|------------|
+| Plant cost analog (ex-driver, from HYLIFE) | ~$3,600/kWe | Hawker 2020, `knowledge/sources/a_simplified_economic_model_for_inertial_fusion/` | low (analog) |
+| DPSSL driver cost upper bound | $700–1,000/J | Xcimer 2026, `knowledge/sources/commercialization_of_laser_fusion_energy/` | medium |
+| Competitive LCOE first plant | $100/MWh (with nuclear) | Hawker 2020, `knowledge/sources/a_simplified_economic_model_for_inertial_fusion/` | low |
+| Competitive LCOE mature plants | $25–60/MWh (optimistic IFE) | Hawker 2020, `knowledge/sources/a_simplified_economic_model_for_inertial_fusion/` | low |
+| O&M cost analog | $50–200/kWe-yr (nuclear/power plant proxies) | Hawker 2020, `knowledge/sources/a_simplified_economic_model_for_inertial_fusion/` | low |
 
 **Missing Parameters**:
 | Parameter | Gap Type | Criticality | Notes |
 |-----------|----------|-------------|-------|
-| Laser capital cost ($/kJ or total system) | not-yet-sourced | blocking | Dominant capital cost driver; use European IFE roadmap (HiPER) or NIF analogue scaled to 10 Hz DPSSL; DPSSL cost projections exist in EUROfusion IFE literature |
-| Number of beamlines and energy per beamline | not-yet-sourced | blocking | Determines laser system scale; European IFE consensus ~10 kJ/beamline but not confirmed for GenF |
-| Laser wall-plug efficiency | not-yet-sourced | blocking | DPSSL ~10–20% wall-plug efficiency; critical for recirculating power fraction |
-| Thermal/electrical conversion efficiency | derivable | important | "Traditional power plant methods" suggests steam Rankine ~33–38%; sCO2 Brayton ~45% possible but unconfirmed |
-| First wall replacement schedule | not-yet-sourced/proprietary | blocking | Driven by neutron fluence; no first wall material yet chosen; use ITER/IFE analogue |
-| Target fabrication cost per shot | truly-unknown | blocking | No public estimate exists for any IFE concept at 10 Hz commercial scale; must estimate from NIF target cost + learning curve |
-| O&M cost rate | truly-unknown | important | No plant study; must derive from nuclear plant analogues |
-| Capacity factor / availability | derivable | important | 10 Hz op mode assumed continuous; maintenance-limited availability unknown; can estimate from analogue nuclear plants |
-| Tritium breeding ratio (TBR) and inventory | not-yet-sourced | important | Liquid Li TBR ~1.3–1.5 (from open literature); GenF-specific not published |
-| Balance of plant cost | derivable | important | Can use conventional nuclear BOP analogues scaled to 1 GW |
-| Net electrical output (after recirculating power) | derivable | blocking | Depends heavily on laser wall-plug efficiency and gain; at gain=100, laser WPE=15%, recirculating fraction ~67% — net output severely constrained |
+| Target manufacturing cost ($/target at 86,400/day) | proprietary / truly-unknown | **blocking** | No public analog for mass-production cryogenic DT targets; NIF targets cost orders of magnitude more than the $0.05–0.30/target estimated as needed for economic IFE |
+| Total plant capital cost (CAS breakdown) | not-yet-sourced | **blocking** | No published plant study; Hawker analog gives aggregate estimate only |
+| DPSSL capital cost at MJ scale, 10 Hz | not-yet-sourced | **important** | Xcimer bounds it at $700–1,000/J (NIF DPSSL upper bound); no MJ-class 10 Hz system costed |
+| First wall replacement cost and schedule | truly-unknown | **important** | Active research pre-material selection; no cost model possible |
+| O&M cost breakdown | not-yet-sourced | **important** | Hawker analog only; no IFE-specific O&M study |
+| Capacity factor / availability | derivable | **important** | IFE first-of-kind availability likely <70%; no specific model for this concept |
+| Tritium procurement cost (startup inventory) | not-yet-sourced | **important** | ~30 kg global supply at ~$30,000/g; startup inventory cost could be material |
+| Li-6 blanket cost (enrichment + material) | not-yet-sourced | **important** | DEMO estimates >60 t/GW enriched Li; cost depends on enrichment process |
+| Power conversion cycle (type + capital cost) | derivable (Rankine analog) | **nice-to-have** | ηth=40% Rankine is the working assumption; cycle not confirmed |
 
 ---
 
 ## Source Recommendations
 
-1. **Ribeyre et al. AIP Advances 2025 (full text)** — `not-yet-sourced` — obtain via institutional access or interlibrary loan; this is the highest-priority source; expected to contain reactor system parameters, gain curves, and blanket design specifics
+- **Target manufacturing cost analog**: Search OSTI and Fusion Science & Technology for IFE target factory cost studies, particularly LIFE (LLNL), HAPL program, and NRL direct drive target factory analyses. These exist from the 2000s–2015 era but were not captured in Phase 1a. Search term: "IFE target factory cost" or "cryogenic DT target mass production economics." — `not-yet-sourced`
 
-2. **IFSA25 conference proceedings** — `not-yet-sourced` — search IAEA INIS database, ResearchGate, or author pages for any of the 7 GenF/CEA papers; Hugo Chesneau's reactor system modeling paper (#7) and Barlow's implosion design paper (#1) are highest priority; `unverified — confirm proceedings publication before searching`
+- **European IFE roadmap (HiPER project)**: The HiPER project (European High Power Laser Energy Research facility) specifically addressed direct drive IFE engineering challenges including driver costs, chamber design, and first wall selection. Multiple public reports exist (2005–2013, EU FP6/FP7). Ribeyre (2025) cites HiPER designs directly. — `not-yet-sourced`, `unverified — confirm existence before searching`
 
-3. **HiPER project reports and European IFE roadmap** — `not-yet-sourced` — these define the European consensus on DPSSL driver costs, target specifications, and plant design for laser direct-drive IFE; directly applicable as a technology-class analogue; search OSTI or EUROfusion publications portal
+- **LIFE (Laser Inertial Fusion Energy) plant studies**: LLNL's LIFE program (2008–2013) produced multiple published plant studies with CAS-level cost breakdowns for laser IFE, including driver, target factory, and BOP costs. Directly applicable as cost analog for GenF's DPSSL + direct drive approach. Search OSTI for "LIFE fusion energy plant cost" or "Anklam LIFE" or Meier/Dunne LIFE references. — `not-yet-sourced`
 
-4. **IAEA FEC (Fusion Energy Conference) and NRL/CELIA high-rep-rate laser publications** — `not-yet-sourced` — for laser wall-plug efficiency, beamline architecture, and 10 Hz driver scaling; search IAEA INIS for "DPSSL IFE driver" or "high average power laser fusion"
+- **Sirius / Sirius-P conceptual design reports**: Cited by Ribeyre (2025) as the direct drive fusion reactor design reference for energy deposition fractions (75% neutron, 6% x-ray, 19% ions). Published by University of Wisconsin UMFDM series. May contain cost estimates for a direct drive laser IFE plant. — `not-yet-sourced`, `unverified — confirm existence before searching`
 
-5. **EUROfusion IFE conceptual design / LIFE plant study analogues** — `not-yet-sourced` — LLNL's LIFE concept (now discontinued) produced detailed plant cost breakdowns for laser IFE at 10 Hz that remain the most detailed public analogues; search OSTI for "LIFE laser IFE" or "Moses LIFE" papers; `unverified — confirm OSTI availability`
+- **DPSSL driver cost studies beyond Xcimer**: The Zuegel ARPA-E presentation frames cost reduction needs but does not provide current cost estimates for MJ-class systems. Search for LLNL Mercury program economics, Thales DPSSL cost roadmap, or European laser industry cost projections. — `not-yet-sourced`
 
-6. **CNRS CELIA publications on high-rep-rate laser active cooling** — `not-yet-sourced` — CELIA holds patents on active cooling enabling 10 Hz DPSSL operation; their publications would clarify driver architecture; search Google Scholar for CELIA CNRS fusion laser; `unverified — confirm relevance`
+**Fleet-wide source disqualifications (per Rule 2b)**:
 
-7. **NIF/OMEGA target fabrication cost estimates** — `not-yet-sourced` — NIF program published some target cost data; useful for bounding the target fabrication O&M term; search OSTI for "ICF target cost fabrication"
+- `knowledge/sources/tea_dt_mfe_cost_analysis/` — MFE-focused TEA covering tokamak/stellarator cost structure (CAS20-27 for magnetic confinement systems). Driver costs, target costs, and chamber design differ fundamentally from laser IFE. BOP costs in $/kWe would overlap with Hawker analog but would not improve precision. Disqualified.
+
+- `knowledge/sources/overview_of_the_helios_design_a_practical_planar_coil/` — Stellarator design (MFE), entirely different confinement approach. Not applicable to IFE cost structure or subsystem characterization. Disqualified.
+
+- `knowledge/sources/an_assessment_of_the_economics_of_future_electric_power/` — Historical ORNL benchmarking of fusion LCOE against competing generation options. Provides context for competitive LCOE targets already covered by Hawker (2020). Adds no concept-specific information. Disqualified.
+
+- `knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/` — Re-costing of four ALPHA concepts (magnetized target / plasma-based approaches). Their driver types, pulse energies, and chamber designs differ from laser IFE. The common CAS BOP structure is already covered by Hawker's analog. Disqualified.
+
+- `knowledge/sources/aries_cost_account_documentation/` — Definitive CAS framework reference but originally developed for MFE designs. While the indirect BOP accounts (CAS20 buildings, CAS22 heat transfer, CAS26 electrical plant) would apply to laser IFE, their magnetics-specific accounts (CAS21 reactor plant, including coils) don't map to IFE. Since Hawker's IFE-specific model and Xcimer's laser cost breakdown already address the available cost structure, ARIES does not resolve any current gap. Disqualified.
+
+- `knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/` — HIF driver economics. Driver technology (heavy ion accelerators), target coupling physics, and cost scaling differ fundamentally from DPSSL laser IFE. Not applicable. Disqualified.
+
+- `knowledge/sources/energy_from_inertial_fusion/` — 1992 comprehensive IAEA IFE review. Would be a useful historical reference for IFE subsystem identification, but ~34 years old; cost estimates are not useful in current context. The subsystem taxonomy is already covered by Ribeyre (2025) and Xcimer (2026) which are far more current. Disqualified on age/currency grounds.
+
+- `knowledge/sources/accelerators_for_inertial_fusion_energy_production/` — Accelerator/heavy-ion driver technologies. Not applicable to laser IFE. Disqualified.
+
+- `knowledge/sources/affordable_manageable_practical_and_scalable_amps_high/` — Pacific Fusion's high-yield pulser-driven IFE (pulsed power driver, high yield ~GJ, low rep-rate). Different driver type, very different operating regime (low Hz vs. GenF's 10 Hz). Some general IFE plant-level BOP costs might apply, but Hawker already covers this with better calibration to laser IFE. Disqualified.
+
+- `knowledge/meta_analysis/progress_toward_fusion_breakeven_lawson_criterion/` — Physics performance compilation. Useful for TRL benchmarking (§3) but direct drive ICF data is already covered by Ribeyre (2025) citations and the OSTI shock ignition paper. Does not address cost parameters. Disqualified.
 
 ---
 
 ## Summary
 
-**Proceed to analysis, with important caveats.** The available data is sufficient to write a credible qualitative narrative for Sections 1–3, drawing heavily on what is known about laser IFE as a technology class, with GenF-specific framing around their direct-drive choice, TARANIS partnership structure, and development roadmap. The narrative should be explicit that this is an extremely early-stage concept (Phase 1, no experimental ignition results, no plant study) and that most performance claims are simulation-based targets.
+Proceed to D1+ analysis with the following calibration: qualitative sections (data availability, system function challenges, TRL, materials/supply chain) can be written to high quality from available sources — particularly Ribeyre et al. (2025) which is the most technically authoritative public document for this concept. The LCOE section will necessarily rely heavily on fleet-wide IFE analogues (Hawker 2020 model framework, Xcimer 2026 for driver cost bounds) rather than GenF-specific cost data, which does not yet exist. The two blocking gaps — target manufacturing cost and total plant capital cost breakdown — should be flagged prominently in the analysis, and LCOE estimates presented as wide-range analogues rather than concept-specific projections. Before committing to quantitative LCOE estimation, a targeted search for LIFE program plant studies and HiPER project reports is strongly recommended, as these are the closest published direct-drive laser IFE cost analogs and are likely capturable from OSTI.
 
-For the quantitative LCOE model, a meaningful skeleton can be constructed using the confirmed parameters (1 GW plant, 10 Hz, gain >100 claimed) combined with European IFE analogue parameters for laser capital cost, DPSSL efficiency, and target fabrication. The **recirculating power fraction** will be the most important sensitivity: at gain=100 and ~15% laser wall-plug efficiency, recirculating power could consume ~60–70% of gross output, making net LCOE extremely sensitive to actual laser efficiency. This is a known binding constraint for laser IFE and should be the centerpiece of the back-solve analysis.
-
-**Before finalizing the analysis**, acquiring the Ribeyre et al. full text and any available IFSA25 proceedings would substantially improve confidence on blanket design, implosion gain curve, and reactor system integration parameters. These are the highest-leverage source gaps.
+---
 
 ## Structured summary (machine-readable)
 
 ```yaml
 overall_rating: "Significant Gaps"
-blocking_count: 6
-important_count: 5
-counting_method: "section_5_missing_parameters"
+blocking_count: 2
+important_count: 7
+counting_method: "deduplicated across all sections: blocking = target manufacturing cost at scale + total plant capital cost breakdown; important = DPSSL cost at MJ/10 Hz scale + first wall replacement cost + O&M breakdown + capacity factor model + tritium startup inventory + Li-6 blanket cost + DPSSL/10Hz TRL attestation"
 section_coverage:
-  availability_of_data:       "Limited"
+  availability_of_data:       "Poor"
   system_function:            "Partial"
   subsystem_maturity:         "Partial"
-  materials_supply_chain:     "Poor"
-  lcoe_parameter_extraction:  "Poor (skeletal only)"
+  materials_supply_chain:     "Partial"
+  lcoe_parameter_extraction:  "Poor"
 ```

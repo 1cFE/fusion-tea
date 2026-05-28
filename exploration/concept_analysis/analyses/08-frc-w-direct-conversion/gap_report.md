@@ -1,69 +1,42 @@
-Now I have everything I need. Let me write the assessment.
-
----
-
-# Gap Assessment: FRC w/ Direct Conversion
+# Gap Assessment: FRC w/ Direct Conversion (D-He3)
 
 ## Overall Readiness
 **Rating**: Mostly Ready
-
-**Summary**: Helion has unusually high public transparency for a private fusion company — the working principle, prototype history, fuel cycle, and energy recovery mechanism are all well-documented. All 12 differentiation columns are filled at high confidence. The main gaps are in LCOE-critical parameters: no published capital cost breakdown, D-He3 gain not yet demonstrated (D-T only as of Feb 2026), and net electricity production not yet confirmed. A qualitative D1+ analysis can proceed confidently; the quantitative LCOE model will require explicit assumptions for several key parameters.
+**Summary**: Helion Energy is among the most publicly documented private fusion companies, and the physics, technology architecture, and milestone history are well-supported by multiple independent sources. However, virtually all commercial-scale cost data (capital costs by subsystem, O&M, capacity factor, plant-level power balance) is proprietary, and two critical technical milestones remain undemonstrated as of the available sources: net electricity production and D-He3 operation at the required ~200M°C. Qualitative sections 1–3 can be written at high quality; sections 4–5 will require explicit analogue assumptions and gap acknowledgments.
 
 ---
 
 ## Section Coverage
 
 ### 1. Availability of Data
-**Coverage**: Moderate (Rich for physics/concept, Limited for economics)
+**Coverage**: Good
 
-**Available**:
-- **Company website** (`helion-website-technology.md`): comprehensive narrative on working principle, fuel cycle, energy recovery, prototype history, power targets
-- **ARPA-E presentation** (`docslib-helion-arpa-e-presentation.md`): quantitative plasma parameters (density, temperature, field, FRC velocity), 50 MW / 2 Hz design point, early energy balance (η·Gain = 0.2×1.2)
-- **Wikipedia** (`helion-prototype-generations.md`): full prototype history with measured parameters per generation (Venti triple product, Trenta densities/temperatures/confinement times), funding history, JASON/MITRE criticism summary
-- **Contrary Research** (`contrary-research-helion.md`): third-party synthesis including supply chain risk identification and business terms
-- **Helion Feb 2026 press release** (`helion-milestones-feb2026.md`): latest performance milestone (150M°C D-T, tritium regulatory approval), confirms D-He3 not yet demonstrated
-- **Peer-reviewed literature**: Nuclear Fusion 2011 (Kirtley et al., IPA plasmoid merging) referenced in ARPA-E source — not yet extracted
-- **Expert commentary**: PPPL critic (Jassby), DOE's Allain, Ryan McBride (Sandia), Alan Hoffman (FRC)
+**Available**: Helion has published more technical detail than almost any other private fusion company, across first-party website articles, peer-reviewed papers (Slough et al. *Nuclear Fusion* 51(5) 2011; Kirtley & Milroy *J. Fusion Energy* 2023), ARPA-E presentations (DocsLib ARPA-E presentation: 20T/40T specs, 2 Hz @ 50 MW design point), a detailed third-party research report (Contrary Research), and ongoing press coverage of milestone events. Seven prototype generations are documented. Polaris's Feb 2026 D-T milestone at 150M°C (13 keV) is independently confirmed by DOE/FES and Ryan McBride (Sandia/University of Michigan). Funding history ($500M Series E, $425M Series F, $5.4B valuation), power purchase agreements (50 MWe for Microsoft, 2028; 500 MWe Nucor 2030), and Orion construction (groundbreaking July 2025, Malaga, WA) are confirmed.
 
-**Missing**:
-- Independent technical assessments beyond JASON/MITRE 2018 summary
-- Peer-reviewed publications on Trenta or Polaris performance (most data is company press releases)
-- Published plant/system studies (no equivalent of a PROCESS run or system code output)
-- Cost analysis from any public source
+**Missing**: No published plant study (ARIES-equivalent), no peer-reviewed capital cost analysis, no independent techno-economic assessment. Orion specifications are entirely proprietary.
 
 **Gaps**:
-- No peer-reviewed Trenta/Polaris data publications — `not-yet-sourced` — **important** (all performance claims are company-reported)
-- JASON/MITRE 2018 technical report — `not-yet-sourced` — **important** (provides independent technical assessment; referenced in Wikipedia but not yet extracted)
-- No published plant study for Orion — `proprietary` — **blocking** for quantitative LCOE
+- Published plant study / design document for Orion — proprietary — important
+- Independent peer-reviewed cost or TEA study — not-yet-sourced — important
+- Achieved Polaris repetition rate — proprietary (milestone announcement did not disclose rep rate) — important
 
 ---
 
 ### 2. Challenges in Capturing System Function
-**Coverage**: Partial
+**Coverage**: Good
 
-**Available**:
-- Direct inductive energy recovery mechanism clearly described: expanding plasma pushes back on coils via Faraday induction, no steam cycle (`helion-website-technology.md`)
-- 95% round-trip energy recovery claimed on Grande (1M pulses) and required for net electricity (`contrary-research-helion.md`, `helion-website-technology.md`)
-- FRC formation, acceleration (>300 km/s), merging, and compression sequence described (`docslib-helion-arpa-e-presentation.md`)
-- He3 breeding pathway (DD→T→He3, t½=12.3 yr) described; patent held by Helion
-- Key physics challenge identified: simultaneous high compression and plasma stability (`helion-prototype-generations.md`, citing JASON report)
-- D-He3 fusion requires ~750M°C; only 150M°C (D-T) demonstrated — gap explicitly flagged in sources
-- Pulsed RLC circuit architecture described; capacitor bank as fundamental driver
+**Available**: The system function is documented in sufficient qualitative depth across multiple public sources. The RLC circuit analogy is confirmed by CEO Kirtley. The four-phase cycle (FRC formation → acceleration to >300 km/s → collision-compression → inductive energy recovery) is described in the ARPA-E presentation and peer-reviewed IPA papers. Direct inductive energy recovery via Faraday's law is documented with the key constraint: >95% of input energy must be recovered per pulse for net electricity. Energy recovery >95% demonstrated at subscale (>1 million pulses, Grande prototype). The non-ignition economics rationale (high-efficiency energy recovery relaxes the gain requirement) is described in the Helion article "How to Make Fusion Electricity Without Ignition," consistent with the Lawson criterion framework in Wurzel & Hsu (2021) (`knowledge/meta_analysis/progress_toward_fusion_breakeven_lawson_criterion/`) which explicitly addresses pulsed systems where η fraction of plasma energy is recovered.
 
-**Missing**:
-- Electrical subsystem modeling: circuit parameters, inductance, discharge timescales — none published
-- FRC stability scaling from prototype to commercial field strengths (40 T vs. 15 T demonstrated)
-- Wall loading quantification under 1 Hz sustained operation
-- He3 capture and recirculation subsystem: no design details published
-- Coil and capacitor failure modes under sustained high-rep-rate operation
-- Net electricity demonstration: explicitly not yet achieved (not achieved by Dec 2025 per Wikipedia)
+**Modeling challenges** (not gaps in source availability, but inherent to the concept):
+- The system is an electrical circuit, not a thermal-mechanical system — standard power plant LCOE models (steam cycle → turbine → generator) do not apply at all. The absence of a thermal cycle is the defining structural difference from all other fusion concepts in this analysis.
+- The achievable net gain (Q_eng) is a function of both plasma gain and round-trip energy recovery efficiency — the two must be analyzed together, not sequentially.
+- He3 self-breeding inventory dynamics: tritium (t½=12.3 yr) accumulates in the system, decaying to He3 at 5.5%/year. Full self-sufficiency is a multi-decade process. Startup requires a stock of He3 or a plan to operate D-D or D-T at reduced economics initially.
+- The pulsed operation mode creates fatigue loading on all structural components — chamber, coils, capacitors — at a rate and severity with no comparable industrial precedent.
 
 **Gaps**:
-- FRC stability at 40 T compression not demonstrated — `truly-unknown` — **blocking** (core physics risk)
-- D-He3 ignition/gain (requires 4× higher temperature than D-T demonstrated) — `truly-unknown` — **blocking** for commercial concept validation
-- Direct energy recovery efficiency at commercial pulse rate (1-2 Hz sustained) — `proprietary/truly-unknown` — **important** (95% is required threshold; only demonstrated at low rate)
-- He3 recirculation system design and efficiency — `proprietary` — **important** (unique to Helion; no published data)
-- Circuit parameters for quantitative efficiency modeling — `proprietary` — **important**
+- Q factor / scientific gain (Q_sci or Q_eng) achieved on any prototype — proprietary (never disclosed) — blocking
+- Round-trip energy recovery efficiency at Polaris scale — proprietary — important
+- He3 startup inventory quantity and sourcing plan — derivable (physics-based estimate possible) — important
 
 ---
 
@@ -71,140 +44,140 @@ Now I have everything I need. Let me write the assessment.
 **Coverage**: Partial
 
 **Available**:
-- **FRC formation and merging**: Demonstrated across 7 prototype generations; IPA experiments from 2005-2012; Polaris operating (TRL ~5-6)
-- **Magnetic compression**: >8 T on Trenta, 15 T+ on Polaris; 40 T commercial target; TRL ~4-5 for full-scale compression
-- **Plasma temperature**: 100M°C (Trenta), 150M°C D-T (Polaris); D-He3 requires ~750M°C — TRL ~2-3 for commercial fuel cycle
-- **Capacitor bank**: >50 MJ on Polaris; in-house manufacturing; TRL ~4 at current scale
-- **Aluminum pulsed coils**: Fabricated in-house; demonstrated on all prototypes; TRL ~4-5
-- **Repetition rate**: Trenta ~1 pulse/10 min; Polaris target 1 Hz (not confirmed achieved); commercial 2 Hz
-- **Energy recovery**: 95% claimed at Grande scale (1M pulses); TRL ~4 at small scale, much lower at commercial scale
+- **FRC formation and acceleration** (sequential field reversal, >300 km/s): TRL 5–6; demonstrated across 7 prototype generations, confirmed at Polaris scale with largest FRCs ever produced by Helion. Heritage traces to MSNW/UW IPA experiments 2005–2012.
+- **Magnetic compression to fusion conditions**: TRL 5–6; 40 T reactor target vs. 15 T+ demonstrated on Polaris. The 40 T requirement is the same as the ARPA-E experiment target (MITRE/JASON 2018 assessment flagged this as the primary challenge).
+- **Pulsed EM coils (Al, no superconductors)**: TRL 6–7; proven materials and manufacturing; Polaris coils operational.
+- **Capacitor bank (>50 MJ, tens of kV)**: TRL 5–6; Polaris bank demonstrated; partly manufactured in-house.
+- **Direct inductive energy recovery (IGBTs)**: TRL 5–6; >95% round-trip efficiency demonstrated for >1 million pulses at smaller scale (Grande, 2015); Polaris-scale demonstration in progress.
+- **Shielding (borated polyethylene + borated concrete)**: TRL 8–9; standard materials used in medical particle beam facilities; approximately 1-meter solid barrier confirmed.
+- **Regulatory**: Washington State HB 1018 (2025) classifies fusion as clean energy, enabling local permitting. Washington State DOH Large Broad Scope tritium license granted (Aug 2024). Permitting for Orion site underway.
 
-**Missing**:
-- TRL assessments for He3 separation/recirculation (novel; no published data)
-- Coil/capacitor replacement schedule and lifetime quantification under commercial rep rate
-- Plasma-facing component design for commercial neutron flux
-- Power conditioning and grid integration subsystem design
-- Tritium handling system TRL (regulatory approval received, but scale details unknown)
+**Poorly documented**:
+- Repetition rate scale-up: Trenta operated at ~1 pulse/10 min; Polaris targets 1 Hz — a ~600× step in rep rate. No intermediate milestones published.
+- Chamber / first wall lifetime under pulsed loading: not discussed in any public source.
+- Vacuum system and neutral gas management: not described for commercial scale.
+- He3 separation and fuel handling hardware: not documented publicly.
+- IGBT switching hardware at commercial power levels: not documented.
 
 **Gaps**:
-- He3 separation and recirculation TRL — `proprietary` — **important** (unique subsystem, critical for fuel economics)
-- Direct energy recovery at sustained 1-2 Hz commercial rep rate — `proprietary/truly-unknown` — **blocking** (95% efficiency not measured at target rate)
-- Long-duration coil/capacitor lifetime (10^9 commercial shot count) — `truly-unknown` — **important** (no analogous pulsed system at this scale)
-- Plasma-facing component design for 2.45 MeV neutron flux — `proprietary` — **important**
-- Tritium system TRL at commercial throughput — `proprietary` — **nice-to-have** (Helion minimizes external tritium need)
+- Achieved repetition rate on Polaris — proprietary — blocking (determines power output and economics)
+- D-He3 operation at ~200M°C — not yet demonstrated (Polaris still demonstrating D-T at 150M°C as of Feb 2026) — blocking (commercial fuel cycle unvalidated)
+- Net electricity demonstration on Polaris — not yet achieved (originally promised 2024, pushed to "during Polaris campaign") — blocking
+- Chamber / first wall lifetime and replacement schedule — proprietary — important
+- He3 separation and fuel handling TRL — not-yet-sourced — important
 
 ---
 
 ### 4. Key Materials and Supply Chain Considerations
-**Coverage**: Partial
+**Coverage**: Poor
 
-**Available**:
-- **Deuterium**: From water; abundant, low-cost — no supply risk
-- **He3**: Self-bred via DD→T→He3 decay; no external supply required (key competitive advantage); patent held (`helion-prototype-generations.md`)
-- **Aluminum coils**: Standard material, commodity supply; not superconducting — no exotic material requirement (`contrary-research-helion.md`)
-- **Coaxial cables**: Copper, aluminum, and "custom-metal alloys" (~720 miles total per Polaris) — custom alloys unspecified
-- **High-voltage pulsed capacitors**: In-house manufacturing; Helion itself identified this as "main potential risk" (`contrary-research-helion.md`)
-- **No exotic superconductors**: Major advantage vs. tokamak/stellarator approaches — no REBCO or Nb3Sn supply chain dependency
+**Available**: Contrary Research identifies Helion's supply chain as the "main potential risk." Some materials are confirmed:
+- **Coil material**: Aluminum (not superconductors); standard industrial supply
+- **Cable materials**: Copper, aluminum, custom alloys (~720 miles total in Polaris per website)
+- **Quartz tubes**: Manufactured in-house by Helion
+- **High-voltage capacitors**: Partly in-house, partly purchased
+- **High-voltage IGBTs**: Commercial semiconductor components; no specific manufacturer named
+- **Shielding**: Borated polyethylene and borated concrete — established supply chains (medical accelerator industry)
+- **Deuterium**: From water electrolysis; essentially unlimited at cost of ~$1–3/g; no supply constraint
+- **Helium-3**: Self-bred from DD side reactions; requires no external supply at commercial steady-state; startup requires either accumulated tritium/He3 from D-D campaigns or external purchase
 
-**Missing**:
-- Capacitor technology specification: dielectric type, voltage rating, energy density — not published
-- Manufacturing scale-up roadmap for capacitors: current production capacity vs. Orion requirements
-- "Custom-metal alloys" specification for coaxial cables
-- Borated polyethylene and concrete shielding quantities (mentioned but not quantified)
-- Neutron-activated component disposal and replacement cost
+**Missing**: No published bill of materials for commercial plant. The scale-up from >50 MJ prototype capacitor bank to a commercial power plant is undefined. There is no published analysis of capacitor bank lifetime, replacement rate, or supply chain.
 
 **Gaps**:
-- Capacitor scale-up manufacturing: production volume, cost per unit, replacement rate — `proprietary` — **blocking** (company-identified risk; drives a large fraction of capital and O&M cost)
-- Custom alloy specification for cables — `proprietary` — **nice-to-have**
-- Component activation and replacement logistics for commercial plant — `not-yet-sourced/derivable` — **important**
+- Commercial-scale capacitor bank specifications and supply chain — proprietary — important
+- High-voltage IGBT supply chain and replacement schedule — not-yet-sourced — important
+- He3 startup inventory strategy (quantity, cost, sourcing prior to self-bred sufficiency) — derivable — important
+- First wall / plasma-facing material specification — proprietary — important
+- Coil fabrication and replacement schedule at commercial rep rate — proprietary — important
+- Critical mineral dependencies — not-yet-sourced — nice-to-have (Al/Cu supply chains are commodity; no REEs or superconductors, which is an explicit advantage)
 
 ---
 
 ### 5. LCOE Parameter Extraction
-**Coverage**: Poor for quantitative modeling; Partial for structural understanding
-
 **Available Parameters**:
 
 | Parameter | Value/Range | Source | Confidence |
 |-----------|-------------|--------|------------|
-| Plant electrical output (Orion) | 50 MWe | Helion website, Wikipedia | H |
-| Plant electrical output (future) | 500 MWe | Wikipedia (Nucor agreement) | M |
-| Target repetition rate (commercial) | 2 Hz (ARPA-E design point) | ARPA-E presentation | M |
-| Target repetition rate (Polaris) | 1 Hz | Helion website | M |
-| Direct energy recovery efficiency (claimed) | 95% | Helion website, Contrary | M |
-| Energy conversion pathway | Direct inductive (no steam) | All sources | H |
-| Fuel input | Deuterium only (He3 self-bred) | All sources | H |
-| Compression magnetic field (commercial target) | 40 T | ARPA-E presentation | M |
-| Compression magnetic field (Polaris demonstrated) | 15 T+ | Helion website | H |
-| Early energy balance (ARPA-E) | η·Gain = 0.2 × 1.2 | ARPA-E presentation | L (old/conceptual) |
-| Input energy cost target | <$0.03/MJ | ARPA-E presentation | L (target only) |
-| Capacitor bank energy (Polaris) | >50 MJ | Helion website | H |
-| Plasma temperature (D-T achieved) | 150M°C (13 keV) | Feb 2026 press release | H |
-| Plasma temperature (D-He3 required) | ~750M°C | Contrary Research | M |
-| Neutron fraction (claimed, D-He3) | 5% | Helion website | M |
-| Operation start target (Orion/Microsoft) | 2028 | Wikipedia, press release | H |
-| Pulsed operation mode | Yes; ~24/7 at commercial scale | All sources | H |
+| First commercial plant output | 50 MWe | Contrary Research / Wikipedia (Microsoft PPA) | H |
+| Second plant output | 500 MWe | Wikipedia (Nucor agreement) | H |
+| Repetition rate (target) | ~1–2 Hz | ARPA-E presentation / website | H |
+| Capacitor bank size (prototype) | >50 MJ | Helion website (Polaris) | H |
+| Direct energy recovery efficiency (claimed) | 85–95% | Contrary Research / Helion website | M |
+| Energy recovery (subscale demonstrated) | >95% round-trip | Helion website (Grande, 1M+ pulses) | M |
+| Reactor compression field (commercial target) | 40 T | ARPA-E presentation | H |
+| Reactor compression field (Polaris) | 15 T+ | Helion website | H |
+| D-He3 energy per reaction | 18.3 MeV (3.6 α + 14.7 p) | Helion website | H |
+| Neutron energy fraction (D-He3, claimed) | ~5% | Helion website | M |
+| Fuel input | Deuterium only (from water) | Helion website | H |
+| No steam cycle / no turbines | Confirmed | Multiple sources | H |
+| No superconducting magnets | Confirmed (Al coils) | Contrary Research | H |
+| No tritium breeding blanket | Confirmed (self-bred He3) | Helion website | H |
+| Orion construction start | July 2025, Malaga WA | Wikipedia / Reuters | H |
+| Orion target delivery | 2028 (Microsoft) | Wikipedia | H |
+| LCOE target (aspirational, unverified) | 1–6 ¢/kWh | Thunder Said Energy | L |
+| CAS analogue: structures/site (MIF, 500 MWe) | $174–370M | ARPA-E ALPHA re-costing (`knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/`) | L (different concepts, different scale) |
+| CAS analogue: electric plant equipment (MIF, 500 MWe) | $44–93M | ARPA-E ALPHA re-costing (same source) | L |
+| CAS analogue: total LCOE range (MIF, 500 MWe) | $34–54/MWh | ARPA-E ALPHA re-costing (same source) | L (thermally-coupled MIF concepts, not direct conversion) |
+
+**ARPA-E ALPHA costing integration note**: The ALPHA re-costing (`knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/`) covers Plasma-Jet MIF (LANL/HyperJet), Stabilized Liner Compressor (CFS Inc.), Staged Z-Pinch (MIFTI), and Flow-stabilized Z-Pinch (Zap Energy) — none of which use direct inductive energy conversion. Helion is not among the four. CAS accounts that involve a steam/thermal cycle — turbine plant ($101–217M), main heat transfer ($63–184M) — do not apply to Helion. Accounts for structures/site, electric plant equipment, misc, and heat rejection (significantly reduced without steam cycle) provide lower-bound analogues only. Power supplies (22.1.7): $11.9–140.4M average $55.8M in the ALPHA study — Helion's capacitor bank is the dominant unique subsystem and would likely fall in or above this range at commercial scale, but the ALPHA concepts do not use large capacitor banks as the primary power conversion path. This source is useful for CAS framework methodology and BOP structure analogues, but does not resolve any blocking LCOE gaps.
 
 **Missing Parameters**:
 
 | Parameter | Gap Type | Criticality | Notes |
 |-----------|----------|-------------|-------|
-| Capital cost breakdown (Orion) | proprietary | blocking | No published cost; Orion under construction but no price disclosed |
-| Fusion gain Q (D-He3) | truly-unknown | blocking | D-He3 not yet demonstrated; D-T only as of Feb 2026 |
-| Net electricity demonstrated | truly-unknown | blocking | Explicitly not achieved as of Dec 2025; required before LCOE meaningful |
-| O&M cost structure | proprietary | blocking | No public data; capacitor/coil replacement dominates |
-| Capacitor replacement cost and schedule | proprietary | blocking | Helion's self-identified main risk; no data |
-| Coil replacement cost and lifetime | proprietary | blocking | Critical for O&M; no lifetime data at commercial rep rate |
-| Capacity factor / availability | derivable | important | Could estimate from rep rate × pulse duration; no published target |
-| Commercial fusion gain Q (design point) | not-yet-sourced | important | ARPA-E gives early design point (Q~1.2 × η=0.2); outdated |
-| Thermal waste fraction | derivable | important | ~5% neutrons deposited in shield; can estimate from D-He3 spectrum |
-| Plant construction cost (Orion) | proprietary | blocking | Microsoft PPA terms with "significant penalties" suggest real commitment, but cost undisclosed |
-| He3 recirculation energy cost | proprietary | important | Parasitic load from He3 capture system unknown |
-| Deuterium fuel cost | derivable | nice-to-have | ~$1,000/kg, consumption rate derivable from Q and shot energy |
-| Regulatory/licensing cost | not-yet-sourced | nice-to-have | State license obtained; federal NRC pathway unclear |
+| Capital cost by CAS subsystem | proprietary | blocking | Orion specs proprietary; no published plant study |
+| O&M cost (maintenance, replacement schedules) | proprietary | blocking | No published operations data |
+| Capacity factor / availability target | proprietary | blocking | No published RAMI analysis; rep rate not yet demonstrated at commercial scale |
+| Q factor / scientific/engineering gain | proprietary | blocking | Key for net electricity calculation; never publicly disclosed |
+| Commercial repetition rate achieved | proprietary | blocking | Polaris rep rate not disclosed in milestone announcement |
+| Capacitor bank cost at commercial scale | proprietary | important | Helion's largest unique cost driver; no published data |
+| Direct conversion system capital cost | proprietary | important | Novel system, no published cost model anywhere in literature |
+| He3 startup fuel inventory cost | derivable | important | Can be estimated from DD reaction fraction, tritium decay rate, and initial plasma conditions |
+| First wall / liner replacement schedule and cost | proprietary | important | Pulsed fatigue loading; no public data |
+| Plant construction cost (civil, modular) | not-yet-sourced | important | Modular factory-manufactured design; analogue from ALPHA costing exists but is for different plant scale (500 vs. 50 MWe) |
+| Net plant efficiency (wall-plug to wire) | not-yet-sourced | important | Derivable if Q and η_recovery are known; both are unknown |
 
 ---
 
 ## Source Recommendations
 
-1. **JASON/MITRE 2018 Helion Assessment** — search OSTI or DTIC for the full report (Wikipedia references: "Helion requires 40 T for commercial viability; 8 T in prototype; projected 2023 breakeven") — `not-yet-sourced` — *unverified: confirm existence before searching*
+- **ARPA-E ALPHA re-costing (Woodruff Scientific 2020)** — Integrated above. Covers four MIF concepts, none of which is Helion. Provides CAS structure analogues for structures, BOP, and electric plant equipment. Explicitly does not cover direct inductive conversion or large capacitor banks. Gap type: the ALPHA costing does not resolve any blocking gaps for this concept because the cost architecture differs fundamentally; it is useful only as a lower-bound structural analogue for non-power-conversion cost accounts.
 
-2. **Kirtley et al. (2011), Nuclear Fusion 51(5)** — "Creation of a high-temperature plasma through merging and compression of supersonic FRC plasmoids" — foundational peer-reviewed paper on IPA experiments — `not-yet-sourced` — confirmed cited in ARPA-E source
+- **Wurzel & Hsu (2021), Lawson criterion paper** — Integrated above. Provides FRC methodology for inferring triple products and peaking values (T₀/⟨T⟩=1.0, n₀/⟨n⟩=1.3 for FRC per Table V). Confirms FRC as a recognized MCF approach within the pulsed MIF category. Helion-specific data is not included (paper predates Trenta publication). Does not resolve any blocking LCOE gaps but supports TRL/physics analysis in sections 2–3.
 
-3. **ARPA-E ALPHA program final reports** — Helion received ARPA-E ALPHA contract (2015) for "Staged Magnetic Compression of FRC Targets"; final technical report may contain design-point parameters — search OSTI for ARPA-E ALPHA Helion final report — `not-yet-sourced` — *unverified: confirm existence before searching*
+- **Simplified IFE economic model (Hawker 2020)** — Disqualified. This paper addresses IFE (specifically laser-driver and related pulsed systems) with a 14-parameter Monte Carlo LCOE model centered on target gain, rep rate, and driver cost. Helion does not use targets, does not use a laser/HI driver, and does not use a steam cycle — the three foundational assumptions of the IFE model. The model cannot be applied to Helion's direct inductive conversion architecture without reconstruction from first principles.
 
-4. **Alan Hoffman FRC review literature** — quoted as expert in Helion press release (40+ years FRC experience); UW Madison FRC publications may provide scaling law context for compression stability — search Google Scholar for Hoffman FRC reviews — `not-yet-sourced`
+- **Helion ARPA-E ALPHA contract publications** (search ARPA-E ALPHA project archive for "Staged Magnetic Compression of FRC Targets" DE-AR0000393): Helion's own ALPHA contract may have produced public progress reports with quantitative plasma parameters. `not-yet-sourced` — search ARPA-E.energy.gov project pages and OSTI for final reports. `unverified — confirm existence before searching`.
 
-5. **Slough et al. IPA papers (2012-2014)** — John Slough (Helion co-founder) published on FRC plasmoid merging pre-commercialization; contains pre-commercial plasma parameters — `not-yet-sourced`
+- **Kirtley & Milroy (2023) FRC scaling paper** (J. Fusion Energy, doi:10.1007/s10894-023-00367-7) and its 2026 Comment (doi:10.1007/s10894-026-00554-2): Both cited in the dossier but not extracted as sources. These likely contain quantitative scaling analysis for FRC compression and heating that would support the system-function and TRL sections. `not-yet-sourced`. Priority: ingest via Zotero.
 
-6. **Contrary Research full report** — the sourced file appears to be a summary; the full report may contain more detail on Orion construction cost and timeline — `not-yet-sourced` — *unverified: confirm whether full report is accessible*
+- **MITRE/JASON 2018 report** ("Prospects for Low Cost Fusion Development," JSR-18-Task-011): Cited in Wikipedia on Helion and publicly available (ARPA-E website). Evaluated all ALPHA concepts including Helion. Flagged "whether they can simultaneously achieve sufficiently high compression while maintaining plasma stability" as the primary Helion challenge. Contains independent quantitative assessment. `not-yet-sourced`. Priority: ingest via Zotero.
 
-7. **DOE Fusion Energy Sciences press coverage of Polaris results** — Jean Paul Allain (DOE FES) quoted in press release; DOE FES may have published a supporting technical summary — search energy.gov/science — `not-yet-sourced` — *unverified*
+- **Slough et al. (2011) Nuclear Fusion** (doi:10.1088/0029-5515/51/5/053008): Cited in dossier but not extracted as a source. Contains quantitative FRC plasma parameter data from IPA experiments (300 km/s velocities, 2 keV D-D ion temperatures) providing the heritage physics baseline. `not-yet-sourced`. Priority: ingest.
+
+- **GeekWire articles on Polaris tour (2025) and manufacturing at scale (2025)**: Cited in dossier and describe subsystem architecture in accessible language. The manufacturing article reportedly discusses supply chain risks. These are brief journalism pieces but may add qualitative TRL detail for section 3. `not-yet-sourced` (URLs in dossier).
 
 ---
 
 ## Summary
 
-**Proceed to full qualitative analysis.** The data is sufficient to write a high-quality D1+ qualitative write-up. The physics mechanism, fuel cycle, prototype progression, maturity gaps, and supply chain risks are all well-documented — primarily from Helion's own communications but with enough external corroboration (ARPA-E, Wikipedia prototype table, expert quotes) to report with appropriate confidence levels.
+**Proceed to full qualitative analysis now.** The physics and technology architecture sections (1–3) can be completed at high quality with the existing sources. Section 4 (materials/supply chain) will be thin but can document what is known (aluminum coils, in-house quartz tubes, capacitors, cable materials) alongside explicit gap acknowledgments. Section 5 (LCOE) cannot produce a quantitative model from public sources: capital costs, O&M, capacity factor, and Q factor are all proprietary. The correct approach is to document the structural cost differentiators (no steam cycle, no superconductors, no tritium blanket = significant cost reductions vs. standard MFE), identify the unique cost drivers (capacitor bank, direct conversion hardware, pulsed fatigue maintenance), and use the ALPHA costing (`knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/`) for non-power-conversion BOP analogues while noting their limitations.
 
-**For quantitative LCOE modeling**, be explicit that several critical inputs require assumptions rather than extracted values:
-- D-He3 fusion gain Q: not yet demonstrated; use ARPA-E early design point (Q~1.2 × η=0.2) with wide uncertainty range
-- Capital cost: no public data; must build bottom-up estimate from component descriptions or use cost-per-watt analogues from other pulsed power systems
-- Capacitor/coil O&M: structurally the dominant cost driver (company-identified), but completely opaque — flag as the primary LCOE uncertainty
+Before detailed LCOE modeling, ingesting the Kirtley & Milroy (2023) scaling paper and the MITRE/JASON 2018 report would most materially improve the analysis. The Kirtley & Milroy paper may contain Q estimates or scaling projections; the JASON report provides an independent expert evaluation of achievability.
 
-The concept is unusual in that **the binding uncertainty is not the energy conversion system** (well-described and plausible) **but the core plasma physics** — D-He3 fusion has not been demonstrated, and reaching 750M°C from 150M°C demonstrated represents a 5× temperature increase. Any LCOE model should treat fusion gain Q as the primary sweep parameter and back-solve to what Q is needed for commercial viability.
+---
 
 ## Structured summary (machine-readable)
 
 ```yaml
 overall_rating: "Mostly Ready"
-blocking_count: 7
-important_count: 4
-counting_method: "section_5_missing_parameters"
+blocking_count: 6
+important_count: 6
+counting_method: "deduplicated_across_all_sections — six blocking gaps: (1) Q factor/gain never disclosed, (2) commercial repetition rate not demonstrated or disclosed, (3) net electricity not yet demonstrated on Polaris, (4) D-He3 operation at 200M°C not yet demonstrated, (5) capital costs by CAS subsystem proprietary, (6) O&M costs proprietary; six important gaps: (1) capacity factor/availability not published, (2) capacitor bank commercial-scale cost, (3) direct conversion system cost, (4) He3 startup inventory, (5) first wall/liner replacement schedule, (6) plant civil construction cost at 50 MWe scale"
 section_coverage:
-  availability_of_data:       "Moderate (Rich for physics/concept, Limited for economics)"
-  system_function:            "Partial"
+  availability_of_data:       "Good"
+  system_function:            "Good"
   subsystem_maturity:         "Partial"
-  materials_supply_chain:     "Partial"
-  lcoe_parameter_extraction:  "Poor for quantitative modeling; Partial for structural understanding"
+  materials_supply_chain:     "Poor"
+  lcoe_parameter_extraction:  "Poor"
 ```

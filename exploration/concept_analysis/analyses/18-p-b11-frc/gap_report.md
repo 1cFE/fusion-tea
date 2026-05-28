@@ -1,91 +1,72 @@
-Now I have everything I need. Let me write the assessment.
-
----
-
-# Gap Assessment: p-B11 FRC
+# Gap Assessment: p-B11 FRC (p-B11)
 
 ## Overall Readiness
-**Rating**: Mostly Ready (with significant quantitative constraints)
-**Summary**: TAE Technologies is unusually transparent for a private fusion company — public press releases, a 2025 Nature Communications paper, multiple New Atlas interviews, and a detailed FAQ provide solid coverage of concept architecture and physics strategy. The qualitative write-up can be produced at high quality. However, the quantitative LCOE model will be severely constrained: no plant cost study exists, no Q value or power balance has been published, and the physics gap between current experiments (~1 keV electrons, 40 ms lifetimes) and Da Vinci targets (~250 keV ions, sustained) is multi-order-of-magnitude and not publicly bridged. LCOE modeling will require heavy use of analogues and explicit assumptions about parameters that are either proprietary or genuinely unknown.
+**Rating**: Significant Gaps
+**Summary**: TAE Technologies is unusually transparent for a private fusion company, providing rich physics documentation through peer-reviewed publications, press releases, and FAQ content. However, the concept sits at a unique gap between deep experimental physics data (NBI-only FRC formation, C-2W parameters, Nature Communications 2025) and an almost complete absence of plant economics data. No published plant study, capital cost estimate, or power balance for a reactor-scale p-B11 FRC system exists. The physics basis for the key LCOE drivers — fusion gain Q at p-B11 conditions, NBI recirculating power fraction, and FRC confinement at 250 keV — remains undemonstrated and unquantified.
 
 ---
 
 ## Section Coverage
 
 ### 1. Availability of Data
-**Coverage**: Moderate
+**Coverage**: Partial
 
-**Available**:
-- Machine architecture and concept physics: well-covered by Grokipedia summary, Nature Comm 2025 paper, TAE FAQ, and C-2W machine details
-- Development roadmap and timeline: DJT merger announcement provides construction (2026), first plasma (2029), net energy (2030), power ops (2031)
-- Plant size targets: 50 MWe initial, 350–500 MWe at scale (ANS Nuclear Newswire, DJT merger)
-- Company financials: $1.2–1.3B raised, DJT merger >$6B valuation, 2,500+ patents
-- NBI system: eight-injector spec, 13 MW at 15–40 keV (C-2W), formation breakthrough in Nature Comm 2025
-- Energy conversion pathway: thermal/steam confirmed for Da Vinci (TAE FAQ); ICC patents documented (US7459654, US6628740, US6888907)
-- p-B11 fuel cycle: physics well-known; 2023 first magnetically-confined p-B11 fusion (with NIFS Japan)
+**Available**: TAE is among the more transparent private fusion companies. Available data include:
+- Peer-reviewed experimental physics: Nature Communications 2025 (NBI-only FRC formation, `iter-02/sources/nature-articles-s41467-025-58849-5.md`), Nuclear Fusion 2024 (C-2W enhanced performance, `iter-02/sources/osti-pages-servlets-purl-2441289.md`), IAEA FEC 2020 (`iter-02/sources/tae-c2w-machine-details.md`)
+- Comprehensive company communications: TAE FAQ (`iter-02/sources/tae-energy-conversion-clarification.md`), NBI breakthrough press release (`iter-01/sources/tae-nbi-breakthrough-2025.md`), DJT merger announcement (`iter-02/sources/tae-djt-merger-davinci-specs.md`)
+- Corporate history and technology overview: Grokipedia compilation (`iter-01/sources/grokipedia-tae-technologies.md`)
+- Patent literature: ICC design (US7459654B2, `iter-01/sources/tae-energy-conversion-notes.md`)
+- OSTI availability methodology: Waganer 2011 (`iter-02/sources/osti-servlets-purl-1001677.md`) — applicable for estimating plant availability scaling
+- Arxiv capacity factor paper (`iter-02/sources/arxiv-2103-12451.md`) — useful framework for recirculating power analysis
 
-**Missing**:
-- Peer-reviewed engineering or plant design papers (only one physics paper; no system code publications)
-- Published cost estimates or techno-economic analysis for Da Vinci
-- Investor technical presentations (likely contain more detail; not publicly available)
-- Engineering design documents for Da Vinci (none published)
+**Missing**: No published plant study for Da Vinci or any p-B11 FRC commercial concept. No published system code outputs. No CAS cost breakdown. All cost projections are qualitative ("50% less than tokamaks") without absolute values.
 
 **Gaps**:
-- No published plant study — `proprietary` — **blocking** for quantitative LCOE; must rely on analogues
-- No peer-reviewed papers on Da Vinci engineering design — `proprietary/not-yet-sourced` — **important** for subsystem TRL assessment
-- No published system code or power balance study — `proprietary` — **blocking** for recirculating power and net efficiency
+- Plant study or pre-conceptual design for Da Vinci — `proprietary` — **blocking**: no quantitative capital cost structure exists anywhere in the public domain
+- Published Q-factor projections or energy balance for reactor-scale p-B11 FRC — `truly-unknown`: no validated reactor design exists — **blocking**
+- Independent techno-economic assessment of p-B11 FRC — `not-yet-sourced` — **important**: TAE's own claims are unvetted by independent cost studies
 
 ---
 
 ### 2. Challenges in Capturing System Function
-**Coverage**: Partial
+**Coverage**: Good
 
-**Available**:
-- High-level identification of novel subsystems: NBI-only formation (new), ICC direct conversion (patented but not deployed), X-ray capture (early research)
-- Known physics challenge: p-B11 requires ~100–250 keV plasma temperatures; C-2W achieves ~1 keV electrons — a ~2-order-of-magnitude gap
-- Energy conversion tension: steam turbine (Da Vinci baseline) vs. ICC (future) — sources resolve this clearly
-- NBI as quadruple-duty system (formation, heating, current drive, stabilization) is well-documented
+**Available**: Sources clearly identify the key modeling challenges:
+- p-B11 physics challenges documented in `grokipedia-tae-technologies.md` and `nature-articles-s41467-025-58849-5.md`: bremsstrahlung dominance at high temperatures, low reaction cross-section requiring ~250 keV (vs current C-2W ~10 keV), no demonstrated net gain
+- NBI quadruple-duty architecture (formation + heating + current drive + stabilization) documented in Nature Comms 2025 and `tae-c2w-machine-details.md`; the recirculating power penalty of continuous NBI is the central LCOE risk
+- FRC stability challenges at reactor scale (tilt mode, interchange, anomalous transport) documented in `grokipedia-tae-technologies.md`
+- Capacity factor / recirculating power interaction analyzed conceptually in `arxiv-2103-12451.md` (Mulder et al. 2021) — shows that high recirculating power fraction combined with low capacity factor severely degrades plant efficiency; this is directly relevant to an NBI-driven concept
+- Energy conversion ambiguity: thermal steam confirmed for Da Vinci baseline (`tae-energy-conversion-clarification.md`), but ICC direct conversion research path is unresolved
 
-**Missing**:
-- Recirculating power fraction: NBI wall-plug efficiency at reactor scale (~10–30% typical for NBIs; critical for p-B11 power balance) — not in any source
-- Q value target for Da Vinci: nowhere stated publicly; C-2W is orders of magnitude below Q=1
-- Alpha particle confinement efficiency in FRC geometry at reactor temperatures
-- Soft X-ray energy fraction: p-B11 produces significant bremsstrahlung and synchrotron losses; how these are handled in Da Vinci's heat balance is not discussed
-- Detailed power flow model (NBI in → plasma heating losses → fusion alpha energy → thermal/steam extraction → net electricity)
+**Missing**: No published power balance for a reactor-scale FRC. The wall power loading from Bremsstrahlung radiation (dominant energy channel at p-B11 temperatures) has not been quantified publicly. The transition from ~40 ms plasma pulses to steady-state reactor operation is not analyzed in any published source.
 
 **Gaps**:
-- Q value (fusion gain) for Da Vinci — `proprietary` — **blocking** for any LCOE model; must assume or bracket
-- NBI wall-plug efficiency at reactor-relevant energies — `not-yet-sourced` — **blocking** for recirculating power calculation; NBI literature exists but TAE specifics are proprietary
-- Recirculating power fraction — `derivable` from NBI efficiency assumptions + power balance — **blocking** if not derived
-- X-ray/bremsstrahlung losses at 250 keV — `derivable` from p-B11 physics — **important**; this is the key loss channel for aneutronic p-B11 and substantially degrades effective Q
-- Alpha particle confinement in FRC at burn temperatures — `truly-unknown` (open physics question) — **blocking** for high-fidelity analysis; use TBD/range approach
+- NBI recirculating power fraction at reactor-scale Q — `truly-unknown` — **blocking**: all LCOE models are unconstrained without this; Mulder et al. framework exists but requires Q and NBI efficiency inputs that are not published
+- Bremsstrahlung power fraction and wall loading at 250 keV operational temperature — `truly-unknown` — **blocking**: determines whether thermal extraction is viable and what wall lifetime is
+- FRC confinement scaling law validation from ~10 keV (C-2W) to ~250 keV (Da Vinci target) — `truly-unknown` — **blocking**: the energy scaling law cited in C-2W papers has not been extrapolated to p-B11 reactor conditions in any public source
+- Steady-state plasma lifetime vs. fueling/impurity management at reactor scale — `not-yet-sourced` — **important**: current 40 ms limit is NBI-power-supply limited, but reactor-scale sustainment physics are not published
 
 ---
 
 ### 3. Maturity of Key Subsystems and Components
 **Coverage**: Partial
 
-**Available**:
-- NBI system (experimental scale): well-characterized at 13 MW, 15–40 keV; TRL ~6 for current implementation
-- FRC plasma formation (NBI-only): demonstrated on Norm (2025); TRL ~4–5 for NBI-only approach
-- p-B11 fusion in magnetically confined plasma: first demonstration 2023 (with NIFS); TRL ~2–3
-- Steam turbine BOP: commercial technology, TRL ~9
-- Copper/resistive coil magnets for FRC equilibrium: demonstrated on C-2W/Norman; TRL ~6
+**Available**: TRL assessments are well-supported for current experimental systems:
+- **NBI system** (TRL 5–6): Eight injectors, 13 MW total, 15–40 keV tunable energy, demonstrated at C-2W/Norm scale; NBI-only FRC formation is a peer-reviewed breakthrough (Nature Comms 2025). Reactor-scale NBI (likely much higher power) is not designed.
+- **FRC plasma confinement** (TRL 4): Demonstrated sustained beam-driven FRC at ~10 keV total temperature, ~40 ms (beam-limited), ~13 kJ total plasma energy at C-2W scale. The ~250 keV target for p-B11 is ~25× higher than achieved and has no demonstrated path.
+- **p-B11 fusion reactions** (TRL 2–3): First measurements of p-B11 fusion in magnetically confined plasma achieved at NIFS LHD in 2023 (cited in `grokipedia-tae-technologies.md`). No Q measurement. Far below breakeven.
+- **Steam turbine / thermal conversion** (TRL 9): Fully commercial; no development risk for this subsystem.
+- **Plasma control systems** (TRL 5–6): ML-assisted feedback control demonstrated at C-2W via Google collaboration; active edge biasing and magnetic coil feedback documented.
+- **Inverse Cyclotron Converter / ICC** (TRL 2–3): Patents exist (US7459654B2), but no prototype demonstrated. Claims >90% efficiency, but this is theoretical.
+- **Da Vinci reactor design** (TRL 1): Pre-conceptual; no published engineering design for any Da Vinci subsystem.
 
-**Missing**:
-- NBI at reactor-relevant energies: Da Vinci will need MeV-range beams for p-B11 (vs. 15–40 keV on C-2W); no sources address this upgrade path
-- ICC direct conversion hardware: only patents and theoretical descriptions; no prototype demonstrated
-- Da Vinci magnet design: unconfirmed whether resistive or superconducting at reactor scale
-- First wall materials for high-X-ray aneutronic environment: not discussed in any source
-- Divertor/exhaust system for FRC at reactor scale: FRC's open-field-line exhaust is a known challenge; not addressed in sources
-- High-temperature plasma sustainment: C-2W achieves ~1 keV; Da Vinci needs ~250 keV — the intermediate steps are entirely unspecified
+**Missing**: No TRL assessment for reactor-scale magnet systems (resistive coil design at Da Vinci dimensions). No divertor / exhaust system design for p-B11 alpha particle handling. No first wall design for Bremsstrahlung-dominated X-ray loading.
 
 **Gaps**:
-- High-energy NBI at reactor scale (MeV-range) — `not-yet-sourced` — **important**; ITER NBI and SNL neutral beam literature may provide analogues
-- ICC prototype/TRL — `proprietary` — **important** for long-term cost modeling; treat as speculative future upgrade
-- Da Vinci magnet design specification — `proprietary` — **important**; low impact given FRC's near-unity beta, but needed for completeness
-- First wall materials spec — `proprietary` — **important**; X-ray and alpha bombardment environment differs substantially from D-T
-- FRC divertor at reactor scale — `not-yet-sourced` — **important**; FRC open field line exhaust design is an active research area
+- Reactor-scale NBI system design (power level, injector count, beam energy for p-B11 operation) — `proprietary` — **important**
+- FRC tilt-mode and stability control at reactor separatrix radius (~1–2 m needed for net gain vs. 0.4 m at C-2W) — `truly-unknown` — **blocking**: TAE claims kinetic stabilization by fast ions, but this mechanism weakens at larger scales; documented in `grokipedia-tae-technologies.md`
+- Divertor and exhaust system for alpha particle and impurity management — `not-yet-sourced` — **important**
+- First wall / vessel design for Bremsstrahlung loading at 250 keV — `not-yet-sourced` — **important**
 
 ---
 
@@ -93,98 +74,98 @@ Now I have everything I need. Let me write the assessment.
 **Coverage**: Poor
 
 **Available**:
-- Fuel: hydrogen (abundant) and boron-11; TAE notes fuel is "virtually inexhaustible"
-- No tritium required — explicitly documented; eliminates Li-6, Li breeding blanket
-- No heavy neutron shielding — documented; hands-on maintenance possible
-- Copper coils for current machines (standard, no special supply chain)
-- TAE holds 2,500+ patents, suggesting significant proprietary manufacturing IP
+- No tritium supply chain required (aneutronic fuel confirmed, high confidence)
+- No heavy neutron shielding or remote handling infrastructure required
+- No beryllium, REBCO, or superconducting material dependencies evident from available sources
+- Copper resistive coils confirmed for experimental machines; likely for Da Vinci based on "simple geometry magnets" positioning (`grokipedia-tae-technologies.md`)
+- Boron-11 is 80% of natural boron (abundant, borax mineral deposits), documented in `grokipedia-tae-technologies.md`
+- NBI ion source components (gas injection, neutralizer, electrostatic acceleration) are established technology with industrial supply chains
 
-**Missing**:
-- Boron-11 enrichment: natural boron is ~80% B-11 / ~20% B-10; reactor-grade enrichment requirements, supply chain, and cost not discussed in any source
-- NBI injector materials at high energy: ion source grids, accelerator electrodes subject to erosion; reactor-scale replacement cycle
-- ICC electrode materials: segmented electrodes operating in 5 MHz / 0.6 T fields; no materials specification exists publicly
-- First wall material for soft X-ray and alpha environment
-- Any manufacturing bottleneck analysis
+**Missing**: No data on the degree of B-11 isotopic enrichment required for reactor-grade fuel (reactor-grade likely requires >99% B-11 vs. 80% natural abundance). No industrial-scale B-11 enrichment capacity exists. No analysis of NBI component lifetime at reactor power levels. No first wall material selection for X-ray dominated wall loading environment.
 
 **Gaps**:
-- B-11 enrichment supply chain and cost — `not-yet-sourced` — **important**; this is a recurring gap in p-B11 concept analyses; IAEA/DOE boron isotope reports likely exist
-- NBI injector longevity and replacement schedule — `not-yet-sourced` — **important** for O&M cost; ITER NBI maintenance data may provide analogues
-- ICC materials and manufacturing — `proprietary/truly-unknown` — **nice-to-have** for baseline Da Vinci (steam BOP), **important** if modeling long-term direct conversion path
-- First wall erosion lifetime — `truly-unknown` — **important** for capacity factor and O&M; p-B11 alpha bombardment of vessel walls is a novel environment
+- B-11 isotopic enrichment at commercial scale — `not-yet-sourced` — **important**: natural boron (80% B-11) may be sufficient or may not; reactor-grade requirements are unpublished; no commercial B-11 enrichment industry exists for fusion application
+- NBI component lifetime and replacement schedule at reactor power — `proprietary` — **important**: determines a major O&M cost driver
+- First wall material selection and lifetime under Bremsstrahlung X-ray loading — `truly-unknown` — **important**: p-B11 at 250 keV is Bremsstrahlung-dominated; wall design is conceptually different from neutron-shielded D-T concepts
+- Copper coil power dissipation and resistive magnet lifetime at Da Vinci scale — `proprietary` — **nice-to-have**
 
 ---
 
 ### 5. LCOE Parameter Extraction
-
 **Available Parameters**:
-
 | Parameter | Value/Range | Source | Confidence |
 |-----------|-------------|--------|------------|
-| Plant electrical output (initial) | 50 MWe | DJT merger announcement / ANS Newswire | h |
-| Plant electrical output (mature) | 350–500 MWe | DJT merger announcement | m |
-| Construction start | 2026 | DJT merger announcement | h |
-| First plasma | 2029 | DJT merger announcement | h |
-| Net energy capability | 2030 | DJT merger announcement | h |
-| Power operations | 2031 | DJT merger announcement | m |
-| Energy conversion type | Thermal/steam (Da Vinci baseline) | TAE FAQ, New Atlas | h |
-| Thermal efficiency (steam) | ~30–35% (analogue, not stated) | Standard steam cycle | m (analogue) |
-| Fusion reaction energy per event | 8.7 MeV (3 alphas) | p-B11 physics | h |
-| Target plasma temperature | ~250 keV (~3 billion °C) | Grokipedia (Da Vinci target) | m |
-| Fuel cost (H, B-11) | Very low (order: negligible) | General knowledge | m |
-| No tritium breeding blanket cost | N/A (eliminated) | Multiple sources | h |
-| No heavy shielding cost | Minimal (eliminated) | TAE website | h |
-| Operation mode | Steady-state | Multiple sources | h |
-| Magnet type (experimental) | Copper/resistive | C-2W machine details | h |
+| Target plant electrical output | 50 MWe (initial), 350–500 MWe (scale) | DJT merger/ANS Newswire (`iter-02/sources/tae-djt-merger-davinci-specs.md`) | m |
+| Energy conversion pathway | Thermal steam turbine (Da Vinci baseline) | TAE FAQ (`iter-02/sources/tae-energy-conversion-clarification.md`) | h |
+| Thermal efficiency (steam cycle) | ~33–38% | Standard steam cycle (derivable) | h |
+| Fuel type | p-B11 (abundant, low fuel cost) | TAE website, all sources | h |
+| Primary heating system | NBI, 8 injectors, 13 MW at C-2W scale | Nature Comms 2025; `iter-02/sources/tae-c2w-machine-details.md` | h (current device), l (reactor) |
+| Plasma temperature target (Da Vinci) | ~250 keV (~3 × 10⁹ °C) | `grokipedia-tae-technologies.md` | m |
+| Construction start target | 2026 (Da Vinci) | DJT merger press (`iter-02/sources/tae-djt-merger-davinci-specs.md`) | l (very optimistic) |
+| No tritium handling required | N/A | Fuel cycle definition | h |
+| No heavy neutron shielding | Minimal | TAE FAQ, concept definition | h |
+| Capacity factor framework | 1st-of-kind plants significantly below 87.6% (ARIES-AT 10th-OAK) | Waganer 2011 (`iter-02/sources/osti-servlets-purl-1001677.md`) | h (methodology), l (applied to p-B11 FRC) |
+| Approximate LCOE analog (modular fusion) | $34–54/MWh for ~500 MWe modular D-T concepts | ALPHA Revisit 2020 (`knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/`) | l (different fuel/concept) |
 
 **Missing Parameters**:
-
 | Parameter | Gap Type | Criticality | Notes |
 |-----------|----------|-------------|-------|
-| Q value / fusion gain (Da Vinci) | proprietary | blocking | No public statement; C-2W is far sub-breakeven; must bracket (e.g., Q=2–10) |
-| NBI wall-plug efficiency at reactor scale | not-yet-sourced | blocking | Determines recirculating power; current C-2W NBI is 13 MW input; Da Vinci NBI scale/efficiency unknown |
-| Recirculating power fraction | derivable | blocking | Must derive from Q + NBI efficiency assumptions; dominates net LCOE for beam-driven concepts |
-| Total plant capital cost | proprietary | blocking | No estimate published; no plant study exists; will need analogue-based estimate |
-| Capital cost by subsystem (CAS breakdown) | proprietary | blocking | No published breakdown; rough analogues only |
-| O&M cost estimate | proprietary | blocking | No published data; must estimate from fusion plant analogues |
-| NBI system capital cost at reactor scale | not-yet-sourced | important | ITER NBI cost data may provide analogue (unverified — confirm existence before searching) |
-| Capacity factor / availability | truly-unknown | important | Steady-state is favorable, but first wall and NBI maintenance schedules unknown |
-| NBI injector replacement schedule | not-yet-sourced | important | Drives O&M; ITER injector maintenance literature may help (unverified) |
-| ICC capital cost (if modeled) | proprietary/truly-unknown | nice-to-have | Only relevant if modeling long-term direct conversion path |
-| B-11 fuel cost (enriched) | not-yet-sourced | important | Enrichment cost largely unknown; natural boron is cheap but reactor-grade B-11 may not be |
-| Plant construction cost (Da Vinci) | proprietary | blocking | Only "smaller and less expensive" claims; no dollar figure |
-| Bremsstrahlung/synchrotron loss fraction | derivable | important | Physics is known; p-B11 at 250 keV loses significant energy to radiation; quantifiable from first principles |
-| Alpha particle confinement fraction in FRC | truly-unknown | blocking | Required for effective Q calculation; open physics research question |
+| Fusion gain Q at reactor conditions (p-B11, 250 keV) | truly-unknown | blocking | Central unknown; determines power balance; undemonstrated for p-B11 in any device |
+| NBI recirculating power fraction at reactor Q | truly-unknown | blocking | NBI is entire heating system; high recirculating power at low Q makes LCOE extremely sensitive; Mulder et al. (arxiv-2103-12451) framework is applicable but requires Q input |
+| Capital cost by CAS account for Da Vinci | proprietary / not-yet-sourced | blocking | No plant study exists; TAE claims "50% cheaper than tokamak" but no absolute figures published |
+| Balance of plant capital cost | derivable | important | No p-B11 FRC plant study; ALPHA costing BOP at ~$2.4/W CapEx for modular 500 MWe D-T concepts (`knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/`) provides order-of-magnitude analog but different concept |
+| NBI system capital cost at reactor scale | proprietary | blocking | NBI is the dominant power core cost; no published estimates for reactor-grade NBI systems at the required power level |
+| O&M cost (staffing, component replacement) | not-yet-sourced | important | No published estimates; major O&M driver will be NBI system maintenance |
+| Capacity factor / plant availability | derivable | important | Waganer 2011 methodology (`iter-02/sources/osti-servlets-purl-1001677.md`) can bound this; 1st-of-kind likely 50–70%; no TAE-specific figure |
+| ICC direct conversion efficiency and cost | proprietary | nice-to-have | Patents claim >90%; not Da Vinci baseline; relevant for long-term LCOE projection |
+| B-11 fuel cycle cost (enrichment) | not-yet-sourced | important | Natural boron may or may not suffice; no commercial B-11 enrichment precedent |
+| First wall / vessel capital cost | truly-unknown | important | X-ray rather than neutron loading environment; no design exists |
 
 ---
 
 ## Source Recommendations
 
-1. **B-11 enrichment costs and supply chain** — search IAEA Nuclear Data Section, DOE isotope program reports, or ORNL stable isotope production literature — `not-yet-sourced`
-2. **High-energy NBI capital and O&M cost analogues** — ITER NBI system cost estimates from ITER Organization project documentation or F4E procurement reports — `not-yet-sourced` — *unverified — confirm existence before searching*
-3. **p-B11 plasma physics: bremsstrahlung losses and effective Q ceiling** — published plasma physics literature (e.g., Nevins & Swain, Nuclear Fusion 2000, on p-B11 reactivity; Rider critique papers) — `not-yet-sourced` — these papers are well-known in the fusion community and likely exist; search Google Scholar for "proton boron-11 reactivity bremsstrahlung"
-4. **FRC power plant conceptual studies** — search OSTI for "field-reversed configuration power plant" or "FRC reactor study"; older DOE system studies (1980s–1990s) may give rough cost analogues even if based on different FRC physics — `not-yet-sourced` — *unverified — confirm existence before searching*
-5. **TAE engineering publications** — IAEA Fusion Energy Conference proceedings (FEC) often include TAE contributions (Gota et al.); these may contain more detailed machine parameters than press materials — `not-yet-sourced`; dossier cites "IAEA FEC papers (Gota et al.)" as a source type but none are extracted
-6. **Da Vinci reactor design details** — likely in TAE investor presentations or technical roadmap documents; not public — `proprietary`; no search strategy will resolve this
+**Fleet-wide source integrations and disqualifications:**
+
+- **ALPHA Revisit 2020** (`knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/`) — **Integrated (methodology analog, not direct).** Opened and read. The four costed concepts are Plasma-Jet MIF, Stabilized Liner, Staged Z-Pinch, and Flow-stabilized Z-Pinch — all D-T pulsed pinch/liner concepts, not p-B11 FRC. Their neutron power fraction (~80% of fusion power) and tritium/blanket systems are fundamentally absent from p-B11 FRC. However, the BOP methodology and modular plant cost results ($34–54/MWh LCOE, ~$2.4/W CapEx for 500 MWe) provide an order-of-magnitude analog for compact modular fusion LCOE with similar plant size. This addresses the "LCOE ballpark" question but does not resolve the concept-specific capital cost gap (which remains blocking).
+
+- **Waganer 2011 Availability Methodology** (`iter-02/sources/osti-servlets-purl-1001677.md`) — **Integrated.** Read. Provides a framework for estimating plant availability from 1st-of-kind to 10th-of-kind fusion plants. ARIES-AT achieved 87.6% for a 10th-of-kind tokamak. A 1st-of-kind p-B11 FRC plant would be significantly lower. This methodology can be used to bound capacity factor assumptions, downgrading the capacity factor gap from `blocking` → `derivable` with stated assumptions. Does not substitute for concept-specific maintenance data.
+
+- **Mulder et al. 2021** (`iter-02/sources/arxiv-2103-12451.md`) — **Integrated.** Read. Provides an analytical framework showing that high recirculating power combined with low capacity factor produces poor plant efficiency — directly applicable to NBI-driven TAE concept where recirculating power is inherently high. Demonstrates why Q and NBI wall-plug efficiency are the critical sensitivity parameters. Confirms that the NBI recirculating power gap is a blocking issue, not merely important.
+
+**Concept-specific gaps, `not-yet-sourced` recommendations:**
+
+1. **TAE's Copernicus design documentation** — TAE has described Copernicus as the net-energy validation machine preceding Da Vinci. If any public engineering specifications exist (conference papers, INFUSE reports), they would constrain reactor-scale NBI power requirements and magnet design. Search OSTI and DOE INFUSE program publications for TAE INFUSE awards (confirmed in DJT merger press, `iter-02/sources/tae-djt-merger-davinci-specs.md`). `unverified — confirm existence before searching`
+
+2. **Independent p-B11 physics assessments** — Papers analyzing the physics feasibility of net energy gain via p-B11 (e.g., Putvinski et al., Rider 1997 critique, Hay et al.) would anchor the Q-factor uncertainty and the bremsstrahlung/fusion power balance. These exist in the published literature. Search OSTI and arXiv for "proton boron-11 fusion power balance" and "aneutronic fusion bremsstrahlung breakeven." These directly address the blocking physics gaps.
+
+3. **NBI system cost studies** — NBI capital costs are relevant from ITER and JT-60SA programs. NBI injector cost data from ITER-scale studies would provide an analog for high-power NBI costs per MW. Search OSTI for "neutral beam injector capital cost" or ITER NBI cost estimates. `unverified — confirm existence before searching`
+
+4. **TAE INFUSE program technical reports** — DOE INFUSE program has funded TAE projects on spheromak injectors, simulations, and diagnostics since 2019 (documented in `grokipedia-tae-technologies.md`). These reports may contain more design detail than public press releases. Search DOE INFUSE award database for TAE Technologies.
 
 ---
 
 ## Summary
 
-**Proceed to full analysis**, with explicit acknowledgment of quantitative constraints. The qualitative write-up (data availability, system function challenges, subsystem maturity, materials) can be produced at high quality with available sources — TAE is more communicative than most private fusion companies and the physics architecture is well-documented.
+The available data is sufficient to characterize the p-B11 FRC concept qualitatively and perform a semi-quantitative LCOE analysis with large stated uncertainties. The physics architecture is well-documented (FRC confinement, NBI-only formation, p-B11 fuel cycle, thermal steam conversion for Da Vinci). The concept's cost advantages relative to D-T MFE are qualitatively clear (no tritium, no heavy shielding, simpler magnets).
 
-The quantitative LCOE model is feasible but will be built almost entirely on assumptions and analogues for the cost-driving parameters. The two binding constraints are: **(1) Q value** — must be assumed; literature on p-B11 physics suggests a ceiling well below tokamak-class D-T concepts due to bremsstrahlung losses, and this should be quantified using published reactivity data rather than TAE's aspirational claims; and **(2) NBI recirculating power** — for a beam-driven concept, this is the dominant factor in net LCOE and is essentially unknown at reactor scale. Before running the model, sourcing the Nevins & Swain (or equivalent) p-B11 reactivity analysis would substantially improve the Q-ceiling estimate and is likely the highest-value pre-analysis data acquisition step.
+However, the fundamental LCOE drivers are all blocking unknowns: the fusion gain Q at p-B11 conditions is undemonstrated, the NBI recirculating power fraction that will determine whether the concept can achieve net electricity export is unconstrained, no capital cost structure for any reactor-scale FRC system exists in the public literature, and the FRC confinement scaling from C-2W's ~10 keV to Da Vinci's ~250 keV target has no experimental validation. The concept sits at TRL 3–4 overall with the most optimistic element being the Norm machine's NBI-only formation breakthrough.
+
+**Recommendation**: Proceed to a full qualitative analysis using available physics data. For the quantitative LCOE model, construct a parametric model with Q and NBI efficiency as the two primary free parameters, use the Waganer (2011) methodology to bound capacity factor, and use the ALPHA Revisit BOP costs as order-of-magnitude anchors for plant-level costs. Explicitly flag that all cost estimates are order-of-magnitude until a p-B11 FRC plant study exists. Before building the model, read the independent p-B11 bremsstrahlung breakeven literature to bound the Q parameter space physically.
+
+---
 
 ## Structured summary (machine-readable)
 
 ```yaml
-overall_rating: "Mostly Ready (with significant quantitative constraints)"
-blocking_count: 8
-important_count: 5
-counting_method: "section_5_missing_parameters"
+overall_rating: "Significant Gaps"
+blocking_count: 5
+important_count: 6
+counting_method: "sections 1-5 deduplicated: blocking = proprietary plant study absence (§1), Q-factor/energy gain (§2+§5), NBI recirculating power fraction (§2+§5), FRC stability scaling to reactor size (§3), NBI system capital cost (§5); important = B-11 enrichment (§4), BOP capital cost (§5), O&M costs (§5), capacity factor (§5), divertor/first wall design (§3+§4), independent TEA assessment (§1)"
 section_coverage:
-  availability_of_data:       "Moderate"
-  system_function:            "Partial"
+  availability_of_data:       "Partial"
+  system_function:            "Good"
   subsystem_maturity:         "Partial"
   materials_supply_chain:     "Poor"
-  lcoe_parameter_extraction:  "Unknown"
+  lcoe_parameter_extraction:  "Poor"
 ```

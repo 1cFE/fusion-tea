@@ -1,33 +1,33 @@
 # Gap Assessment: Muon-Catalyzed Fusion (D-T)
 
 ## Overall Readiness
-**Rating**: Insufficient Data
-**Summary**: The source base is extremely thin — three short company-generated or physics-background documents totaling ~6 KB. Acceleron has published no plant study, no cost breakdown, and no independent system-level analysis. The sole quantitative LCOE figure ($0.025/kWh) comes from a single slide claim with assumptions stated but no supporting model. The concept is in early R&D (energy breakeven targeted ~2030), and the most critical physics parameters (300 fusions/muon, 3 GeV/muon production cost) are undemonstrated targets, not validated measurements.
+**Rating**: Significant Gaps
+**Summary**: The physics of muon-catalyzed fusion is well-documented in decades of experimental literature, and Acceleron's ARPA-E presentation (2025) provides a credible system architecture sketch with a single LCOE target ($0.025/kWh). However, Acceleron is a pre-breakeven startup (~2030 planned breakeven test at Brookhaven), its two key innovations — the novel active-target muon source and the commercial-scale fusion cell — have no published hardware validation or cost breakdown. A qualitative analysis of concept physics, challenges, and subsystem maturity is feasible; a quantitative LCOE model would rest almost entirely on unvalidated company claims and cannot be meaningfully constructed without additional sources.
 
 ---
 
 ## Section Coverage
 
 ### 1. Availability of Data
-**Coverage**: Poor
+**Coverage**: Partial
 
 **Available**:
-- Company-generated materials: ARPA-E BETHE presentation (July 2025) and company overview provide system-level intent, energy balance diagram, LCOE target, and roadmap
-- Physics background: Wikipedia-derived summary of muon catalysis mechanism, historical experiments (PSI, TRIUMF, RAL), and key parameters (alpha-sticking, fusions/muon at conventional conditions)
-- Experimental milestone: Oct 2024 PSI run with compressed D-T — 28 hours continuous fusion (proof-of-concept beam physics, not energy-positive)
-- Funding context: ARPA-E BETHE grants + $24M Series A (Dec 2024)
+- 60+ years of physics literature documenting muon-catalyzed fusion mechanisms, alpha-sticking probabilities, and catalytic cycle rates (Wikipedia: Muon-catalyzed fusion; PMC article, Yamashita et al. 2022; arXiv:2112.08399, Kamimura & Kino 2021; TRIUMF experimental program)
+- Experimental demonstration of 100–150 d-t fusions per muon achieved at LAMPF (Jones et al.); refined α-sticking probability ω₀ = 0.857% (Kamimura 2021) giving theoretical ceiling of 200–350 fusions/muon
+- Kelly, Hart & Rose (2021) μCF energy model: Q ≈ 130% thermal, 14% net electrical at current accelerator efficiency — published parametric energy balance
+- Acceleron ARPA-E BETHE presentation (July 2025): system architecture diagram, energy flow (3.4 GeV/muon, 47% recirculating power fraction), LCOE contour plot, Brayton cycle BOP, active-target muon source concept, Brookhaven breakeven roadmap
+- Acceleron company website: plant scale (~100 MW), operating temperature (500–1000°C), Series A funding, collaborations with PSI, Fermilab, ORNL, Argonne
+- OSTI/ORNL SNS SCL operation paper: 10-year operational experience with a 1 GeV superconducting proton linac (1.4 MW beam power, 90–92% facility availability, 99.5% SRF cavity availability) — directly analogous as an accelerator technology reference
 
 **Missing**:
-- Peer-reviewed papers from Acceleron (none identified; company founded 2023)
-- Published plant studies or techno-economic analyses from any source
-- Independent analysis from national labs or academic groups
-- ARPA-E BETHE technical progress reports (may exist but not sourced)
-- Historical μCF plant studies from 1980s–90s literature (Soviet, LANL, TRIUMF groups did publish some)
+- Independent peer-reviewed cost analysis of μCF power plants (none exists)
+- Published plant study or preconceptual design report
+- Acceleron engineering publications beyond ARPA-E slides
+- Data from the second μCF company (Norrønt AS, Norway) — not captured in Phase 1a
 
 **Gaps**:
-- Academic and historical μCF TEA literature — `not-yet-sourced` — **blocking**: would provide the only independent LCOE baseline
-- ARPA-E BETHE progress reports — `proprietary/not-yet-sourced` — **important**: may contain engineering detail beyond the slide deck
-- Any independent system-level analysis — `not-yet-sourced` — **blocking**
+- No independent plant study for μCF — `truly-unknown` — blocking
+- Norrønt AS/Ultrafusion data absent — `not-yet-sourced` — important
 
 ---
 
@@ -35,24 +35,20 @@
 **Coverage**: Partial
 
 **Available**:
-- Energy balance structure is documented: 3 GeV/muon → 300 fusions/muon → 25 MeV/fusion → 47% recirculating power fraction (from ARPA-E slide)
-- Key physics problem identified: alpha-sticking limits fusions/muon; historical ceiling 100–150, theoretical limit ~300
-- Accelerator design concept described: ML-optimized active-target with GEANT4 simulation, 64% assumed electrical-to-beam efficiency
-- Heat recycling concept noted (2.5 GeV recovered per muon)
-- Fusion cell concept: high-density D-T at 500–1000°C under compression
+- The energy balance chain is partially documented: ion beam → active target → pion production → muon yield → muon injection into D-T cell → catalytic cycling (governed by muon lifetime 2.2 μs, formation rate, alpha-sticking) → thermal energy deposition → power conversion. ARPA-E presentation shows a high-level energy flow with 3.4 GeV beam energy and 47% recirculating power fraction.
+- The PMC article (Yamashita 2022) provides an advanced kinetics model (EVM-SPM-FIF) showing that cycle rate increases with temperature, with optimum around T = 300–500 K at LHD densities — this is relevant to the high-density compressed-gas target approach Acceleron uses (diamond anvil cell achieving 2.2 LHD in 2024 experiments)
+- The α-sticking problem is well-characterized: at standard conditions ω₀ ~ 0.9%, but at high density the reactivation fraction can bring effective sticking to 0.3–0.5%, enabling higher per-muon yield
+- The SNS linac paper provides operational lessons for high-power pulsed superconducting linacs relevant to the muon-producing accelerator
 
 **Missing**:
-- Mechanism for heat recycling is not described — how 2.5 GeV is recovered from the muon source/accelerator exhaust is unspecified
-- Fusion cell physics at commercial density: pressure, temperature, geometry, and fusion rate per unit volume are not documented
-- How 300 fusions/muon is achieved: what conditions reduce alpha-sticking below the current ~0.5% minimum is not described beyond stating it is the goal
-- Revenue from heat sales in LCOE: the slide assumes this as an offset but provides no basis — what heat is being sold, at what temperature, to whom?
-- Accelerator efficiency (64%) is assumed; basis not stated
+- The active-target muon source design has no published technical specification beyond GEANT4 simulation sketches in ARPA-E slides; the pion-capture and muon-transport geometry is proprietary
+- The commercial fusion cell design is entirely unknown beyond the diamond anvil cell lab apparatus; no engineering concept for a continuously-operated power-scale cell has been published
+- The claimed 47% recirculating power fraction is a company simulation result; the efficiency chain (accelerator wall-plug efficiency, pion production cross-section, muon capture fraction, α-particle heat recapture) is not independently verified
 
 **Gaps**:
-- Alpha-sticking reduction mechanism — `proprietary` — **blocking**: this is the central unsolved physics problem; the analysis must bound it
-- Heat recycling subsystem design — `proprietary` — **important**: affects recirculating power fraction significantly
-- Commercial fusion cell design (pressure vessel, geometry, material) — `proprietary` — **important**: no cost analogue can be built without this
-- Revenue-from-heat-sales assumption basis — `proprietary` — **important**: affects apparent LCOE significantly and is non-standard
+- Active-target muon source function not publicly described beyond concept sketches — `proprietary` — blocking
+- Fusion cell scale-up path (diamond anvil → power plant) not addressed anywhere — `truly-unknown` — blocking
+- Recirculating power fraction chain not independently verifiable — `proprietary` — important
 
 ---
 
@@ -60,125 +56,118 @@
 **Coverage**: Partial
 
 **Available**:
-- Muon source (accelerator): GEANT4 simulations at R&D stage; active-target concept novel; superconducting version planned for commercial — TRL ~2–3
-- Fusion cell: PSI experiments demonstrate proof-of-concept μCF in compressed D-T; commercial-scale cell entirely undesigned — TRL ~3–4 for physics, ~1–2 for engineering
-- Balance of plant (Brayton cycle): mature commercial technology — TRL 8–9
-- Experimental validation: Oct 2024 PSI run (28 hours) — demonstrates muon-catalyzed fusion in compressed D-T but at beam intensity orders of magnitude below commercial scale
+- **D-T fusion physics**: TRL 6 — demonstrated repeatedly at PSI, TRIUMF, LAMPF at research scales
+- **Conventional proton/pion accelerator for muon production**: TRL 4–5 — existing research facilities (PSI πE1.2 beamline, used by Acceleron in 2024 tests); the SNS superconducting linac (OSTI source) operates at TRL 8–9 at 1 GeV/1.4 MW with 99.5% SRF cavity availability, demonstrating the accelerator technology base
+- **High-density D-T target at lab scale (diamond anvil cell)**: TRL 3 — Acceleron demonstrated compression to 2.2 LHD in solid DT (Oct 2024), with pressure/temperature cycling data shown in ARPA-E presentation
+- **Brayton cycle power conversion**: TRL 8–9 — commercially mature technology
+- **Tritium handling systems**: TRL 5–6 — well-established for D-T programs (ITER, ORNL); standard blanket TRL assessed at 4–5
+- **Neutron shielding (14 MeV, D-T)**: TRL 7–8 — no plasma confinement required; conventional radiation shielding infrastructure applies
+- **Novel active-target muon source (Acceleron's key innovation)**: TRL 2–3 — physics simulations (GEANT4 + Bayesian ML optimization), no published hardware validation of the energy cost improvement. ML-optimized geometry is at simulation stage.
 
 **Missing**:
-- TRL assessment for energy recovery system (heat recycling)
-- TRL for tritium breeding blanket (design unspecified)
-- TRL for high-density D-T fuel handling/circulation at scale
-- No accelerator cost scaling or design maturity documentation
-- No demonstration of any integrated system (all subsystems tested independently or not at all)
+- No published hardware validation of the active-target accelerator design; 3.4 GeV/muon claim is simulation-only (Acceleron ARPA-E 2025)
+- No TRL assessment for commercial fusion cell (power-plant scale); the diamond anvil cell is clearly TRL 3 at lab scale with no scale-up path published
+- No TRL assessment for tritium breeding blanket (type unspecified; blanket shown in system diagram without specification)
 
 **Gaps**:
-- Breeding blanket design and TRL — `proprietary/not-yet-sourced` — **important**: determines tritium self-sufficiency
-- Muon source cost and engineering readiness — `proprietary` — **important**: dominant capital cost driver
-- Energy recovery subsystem existence and TRL — `truly-unknown` — **blocking**: without this the energy balance claimed cannot be evaluated
-- Integrated system test results — `truly-unknown` — **blocking**: no integrated system has been built
+- Active-target muon source TRL unvalidated (simulation-only claim at TRL 2–3) — `proprietary` — blocking
+- Commercial fusion cell TRL undefined (no power-plant design exists) — `truly-unknown` — blocking
+- Tritium breeding blanket specification absent — `proprietary` — important
 
 ---
 
 ### 4. Key Materials and Supply Chain Considerations
-**Coverage**: Poor
+**Coverage**: Partial
 
 **Available**:
-- D-T fuel: standard D-T supply chain challenge (tritium production, handling)
-- Lithium-6 for breeding: implied by D-T concept; standard breeder material
-- 14.1 MeV neutron flux: requires heavy shielding — standard D-T challenge
-- Superconducting accelerator: mentioned as commercial design direction but magnet type unspecified
+- **Tritium supply**: same D-T tritium supply constraints as all D-T concepts; lithium-6 breeding blanket analog well-established. Wikipedia notes lithium-6 neutron capture as the standard breeding path.
+- **Deuterium**: abundant, commercially available, no supply constraint
+- **Superconducting accelerator materials (niobium, REBCO if HTS)**: commercial supply chains exist; SNS linac (OSTI) documents 10-year operational experience with niobium SRF cavities — field emission, multipacting, and cryomodule maintenance are known failure modes
+- **Diamond anvil cell materials**: diamonds used in lab experiments are not scalable to power-plant operation; an entirely different containment approach would be needed at commercial scale
 
 **Missing**:
-- Muon source target material: what the proton beam hits is not specified (tungsten? liquid metal? exotic target?)
-- Fusion cell material and pressure vessel specifications: operates at 500–1000°C under compression — material is unspecified
-- Superconducting magnet type for accelerator (NbTi, Nb3Sn, REBCO): cost and supply chain implications differ significantly
-- Diamond anvil cell used in PSI experiments — this technology is not scalable; what replaces it at commercial scale is not stated
-- Tritium inventory estimate for 100 MW plant
+- The commercial fusion cell material requirements are undefined (no power-plant design); it is unclear whether diamond anvil cells are even part of the commercial concept or just the current experimental apparatus
+- Breeding blanket material choice (FLiBe, LiPb, solid ceramic) unspecified
+- Accelerator structural and cryogenic materials specification absent at the commercial-scale
 
 **Gaps**:
-- Muon source target material — `proprietary` — **important**: may involve exotic or limited-supply materials
-- Commercial fusion cell material — `proprietary` — **important**: must survive neutron flux + high pressure at elevated temperature
-- SC accelerator magnet type — `proprietary` — **important**: REBCO vs. conventional SC has major cost implications
-- Scalable replacement for diamond anvil cell — `truly-unknown` — **blocking**: PSI experiments use lab-scale pressure apparatus; no commercial analog identified
+- Commercial fusion cell material requirements entirely undefined — `truly-unknown` — important
+- Tritium breeding blanket material unspecified — `proprietary` — important
+- No supply chain bottleneck analysis for novel muon source components — `not-yet-sourced` — nice-to-have
 
 ---
 
 ### 5. LCOE Parameter Extraction
-
 **Available Parameters**:
-
 | Parameter | Value/Range | Source | Confidence |
 |-----------|-------------|--------|------------|
-| LCOE target | $0.025/kWh | ARPA-E presentation (slide 21) | Low — aspirational claim, no model |
-| Recirculating power fraction | 47% | ARPA-E presentation (slide 5) | Low — derived from unvalidated targets |
-| Energy per D-T fusion | 17.6 MeV + ~4.8 MeV breeding = ~22–25 MeV | Physics source + ARPA-E | Medium — physics well-established |
-| Muon production energy target | 3 GeV/muon | ARPA-E presentation | Low — GEANT4 simulation target, not demonstrated |
-| Conventional muon production energy | 5–6 GeV/muon | Physics source | High — experimentally established |
-| Fusions per muon (experimental) | 100–150 | Physics source | High — experimentally measured |
-| Fusions per muon (target) | 300 | ARPA-E presentation | Low — theoretical limit, not demonstrated |
-| Alpha-sticking probability (measured) | ~0.3–1% | Physics source | High — experimentally measured |
-| Plant size target | 100 MW (electrical) | Company overview | Low — target only |
-| Energy conversion | Brayton cycle | ARPA-E presentation | Medium — mentioned but unspecified |
-| Accelerator efficiency (assumed) | 64% | ARPA-E presentation | Low — basis unstated |
-| Heat recycled per muon | 2.5 GeV | ARPA-E presentation | Low — mechanism not described |
+| LCOE target | $0.025/kWh | Acceleron ARPA-E 2025 | low |
+| Beam energy per muon | 3.4 GeV | Acceleron ARPA-E 2025 | low |
+| Fusions per muon (target) | 300 | Acceleron ARPA-E 2025 | low |
+| Fusions per muon (demonstrated) | 100–150 | LAMPF (Jones et al.), Wikipedia | high |
+| α-sticking probability | 0.3–0.9% | arXiv:2112.08399 (Kamimura 2021) | medium |
+| Recirculating power fraction | 47% | Acceleron ARPA-E 2025 | low |
+| Gross Q (thermal, Kelly 2021 model) | ~130% (current) | Wikipedia/Kelly 2021 | medium |
+| Net electrical efficiency (current) | ~14% (current) | Wikipedia/Kelly 2021 | medium |
+| Reactor scale | ~100 MW | Acceleron website | low |
+| Energy capture cycle | Brayton (unspecified subtype) | Acceleron ARPA-E 2025 | low |
+| D-T MFE BOP capital cost (analog) | $8,800–$22,200/kW (350 MWe tokamak) | `knowledge/sources/tea_dt_mfe_cost_analysis/` | medium |
+| Modular D-T fusion LCOE (analog floor) | $34–54/MWh for ~500 MWe | `knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/` | medium |
+| SRF linac availability (accelerator analog) | 99.5% SRF cavity, 90–92% facility | `knowledge/sources/osti-servlets-purl-1345779` (SNS SCL) | high |
+
+Note on fleet-source integration: The TEA D-T MFE analysis (`tea_dt_mfe_cost_analysis/`) provides capital cost structure for D-T balance-of-plant (thermal conversion, tritium breeding, shielding, O&M), applicable as an analog for μCF's non-accelerator plant costs, but does not resolve the blocking accelerator cost gap. The ARPA-E ALPHA revisit (`revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/`) provides a compact modular fusion BOP cost floor (~$2.4/W, $43/MWh LCOE average for 4 plasma-based ALPHA concepts), useful as a lower-bound analog but does not include μCF. Neither source provides accelerator cost data applicable to μCF — the dominant cost driver remains completely uncharacterized.
 
 **Missing Parameters**:
-
 | Parameter | Gap Type | Criticality | Notes |
 |-----------|----------|-------------|-------|
-| Capital cost breakdown (any subsystem) | proprietary | Blocking | No cost model published; no plant study exists |
-| Accelerator capital cost ($/muon/s or $/MW) | proprietary | Blocking | Dominant cost driver; no analog cost data provided |
-| Fusion cell capital cost | proprietary | Blocking | No design exists at commercial scale |
-| Thermal efficiency of Brayton cycle | derivable | Important | Type unspecified; sCO2 vs. air vs. He — can range 40–55% |
-| Capacity factor / availability | truly-unknown | Blocking | No maintenance model; accelerator uptime not discussed |
-| O&M cost estimates | truly-unknown | Blocking | No staffing, replacement schedule, or maintenance model |
-| Tritium handling cost | derivable | Important | Can be estimated from D-T plant analogs (ITER, DEMO studies) |
-| Plant lifetime assumption | truly-unknown | Important | Not stated; affects capital cost amortization |
-| Fuel cost (D-T, Li-6) | derivable | Important | Tritium market price well-characterized |
-| Revenue from heat sales | proprietary | Important | Included in LCOE claim; basis and magnitude not stated |
-| Fusion power density (MW/m³ in cell) | proprietary | Blocking | Required to size fusion cell and derive capital cost |
-| Neutron wall loading | truly-unknown | Important | Determines blanket/shield replacement schedule |
+| Accelerator capital cost (dominant cost driver) | proprietary / truly-unknown | blocking | No published cost for novel active-target design; conventional accelerators (PSI) cost tens of millions for research-scale; commercial-scale unknown |
+| Fusion cell capital cost | truly-unknown | blocking | No power-plant-scale cell design exists; diamond anvil cell is not a cost analog |
+| Validated system energy balance | proprietary | blocking | 47% recirculating power claim and 300 fusions/muon target are unvalidated simulation results; current state gives 14% net electrical efficiency (Kelly 2021) |
+| Accelerator O&M cost | not-yet-sourced | important | SNS SCL paper gives operational analog; detailed O&M fractions for μCF-scale linac not derived |
+| Tritium breeding system cost | not-yet-sourced | important | D-T MFE blanket cost analogs exist in fleet sources; blanket type unspecified blocks direct application |
+| Power conversion efficiency and cost | proprietary | important | Brayton cycle mentioned; subtype, efficiency, and cost not specified |
+| Capacity factor / plant availability | truly-unknown | important | No plant study; accelerator availability analog (~90–92% for SNS) suggestive but unconfirmed for this application |
+| O&M cost structure | not-yet-sourced | important | ARPA-E ALPHA revisit BOP O&M fractions applicable as analog but not μCF-specific |
+| Net electric output per module | proprietary | important | 100 MW scale mentioned on website; not confirmed in technical documents |
 
 ---
 
 ## Source Recommendations
 
-1. **Historical μCF plant studies (1980s–90s)** — `not-yet-sourced` — search OSTI or Google Scholar for "muon catalyzed fusion power plant" or "muon catalyzed fusion economics" (Petrov, Jones, Jändel, Rafelski). These groups published techno-economic analyses when μCF was seriously considered; they would provide the only published capital cost structure analog. `unverified — confirm existence before searching`
-
-2. **ARPA-E BETHE program technical reports** — `not-yet-sourced` — ARPA-E publishes project-level technical reports for BETHE awards. Acceleron had two NK Labs BETHE grants (2020, 2023); search ARPA-E project database for "NK Labs" or "Acceleron muon" for any published deliverables. `unverified — confirm existence before searching`
-
-3. **PSI experimental papers (2023–2025)** — `not-yet-sourced` — Acceleron ran experiments at PSI in 2024; any co-authored or PSI-authored papers describing fusion yields, pressures, or alpha-sticking at compressed conditions would provide the most current validated physics parameters. Search PSI publications database. `unverified — confirm existence before searching`
-
-4. **Proton accelerator cost literature** — `not-yet-sourced` — SNS (Spallation Neutron Source), ESS (European Spallation Source), and similar GeV-class proton accelerators have published construction cost data. These provide order-of-magnitude analogs for the muon source cost (even if Acceleron's active-target design is more compact). Available from DOE/OSTI reports.
-
-5. **Alpha-sticking experimental papers (RIKEN-RAL, PSI)** — `not-yet-sourced` — The most precise alpha-sticking measurements came from RIKEN-RAL and PSI. These are published in journals (e.g., *Physical Review Letters*, *Hyperfine Interactions*). They set the hard floor on fusions/muon and are needed to bound the "300 fusions/muon" claim. Author: Ishida, Matsuzaki, and collaborators. `unverified — confirm existence before searching`
+- **Norrønt AS (Norway) publications** — second μCF company; search their website and Google Scholar for any system design documents. `not-yet-sourced` — `unverified — confirm existence before searching`
+- **Kelly, Hart & Rose (2021), "An investigation of efficient muon production for use in muon catalyzed fusion," J. Phys. Energy 3(3)** — already cited in Wikipedia as the authoritative energy balance model; full paper extraction via DOI `10.1088/2515-7655/abfb4b` would provide quantitative LCOE parameter sensitivities. `not-yet-sourced`
+- **Jändel, Danos & Rafelski (1988), "Active target production of muons for muon-catalyzed fusion," Phys. Rev. C 37, 403** — the original active-target concept paper; provides theoretical basis for Acceleron's muon source design. `not-yet-sourced`
+- **ARPA-E BETHE program technical reports for Acceleron project** — search ARPA-E project database for published deliverables under "Conditions for High-Yield Muon Catalyzed Fusion" (Ara Knaian/Acceleron). `not-yet-sourced` — `unverified — confirm existence before searching`
+- **PSI muon facility operating cost literature** — PSI πE1.2 beamline operating reports could provide accelerator energy cost benchmarks (muons/kWh at existing facility). `not-yet-sourced`
+- **Disqualified fleet sources**: The following fleet-wide sources were opened and do not address μCF-specific gaps:
+  - `knowledge/sources/overview_of_the_helios_design_a_practical_planar_coil/` — stellarator-specific (planar coils, HTS magnets); no overlap with μCF's dominant cost driver (accelerator)
+  - `knowledge/sources/a_simplified_economic_model_for_inertial_fusion/` — Monte Carlo IFE LCOE model parameterized by target gain, fusion energy per shot, and driver efficiency; none of these map to μCF architecture
+  - `knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/` — HIF driver-dominated cost model; driver cost structure superficially similar but the physics (GJ-scale heavy-ion beam vs. continuous muon beam) makes it a poor analog
+  - `knowledge/sources/energy_from_inertial_fusion/` — 1992 IFE review; no μCF content
+  - `knowledge/sources/accelerators_for_inertial_fusion_energy_production/` — IFE driver review; covers induction linacs and RF linacs for target compression, not continuous muon production
+  - `knowledge/sources/commercialization_of_laser_fusion_energy/` — Xcimer KrF laser IFE; no overlap with μCF
+  - `knowledge/sources/affordable_manageable_practical_and_scalable_amps_high/` — Pacific Fusion high-yield IFE; no overlap with μCF
+  - `knowledge/sources/an_assessment_of_the_economics_of_future_electric_power/` — historical ORNL LCOE benchmarking; provides electricity cost context but no μCF-specific parameters
 
 ---
 
 ## Summary
 
-**Do not proceed to full analysis without additional sourcing.** The current source base — three short documents, all company-generated — is insufficient to support a credible D1+ analysis. The LCOE target ($0.025/kWh) is a slide-deck aspiration with no published cost model behind it. Every capital cost line item is missing. The two most critical physics parameters (300 fusions/muon, 3 GeV/muon production) are undemonstrated simulation targets, not validated measurements.
+Proceed to a partial D1+ analysis with explicit scope boundaries. The physics foundation is strong enough to write thorough sections on system function, subsystem maturity, and materials. The LCOE section should present Acceleron's parametric target ($0.025/kWh at 300 fusions/muon, 3.4 GeV/muon, 47% recirculating power) as an aspirational upper bound, contrast it with the Kelly 2021 model (14% net electrical efficiency at current state), and build a sensitivity framework around the two key physics parameters — fusions per muon and muon energy cost — that Acceleron's LCOE contour plot itself identifies as the pivotal variables. Additional sourcing (Kelly 2021 full paper, PSI facility operating data, ARPA-E project deliverables) would materially improve quantitative rigor but is not required to proceed with a qualified analysis.
 
-What a first-pass analysis *can* do with current sources:
-- Build a parametric physics model (energy balance as a function of fusions/muon and muon cost) using the well-established experimental physics
-- Bound the minimum requirements for energy breakeven (~300–500 fusions/muon depending on efficiency assumptions)
-- Perform a back-solve to show what Acceleron's claimed parameters would need to deliver at $0.025/kWh vs. $0.01/kWh
-- Use proton accelerator cost analogs and D-T plant cost analogs as order-of-magnitude capital cost proxies
-
-What it cannot do: produce a defensible absolute LCOE estimate. The analysis should be framed explicitly as a parametric sensitivity study with all capital costs flagged as highly uncertain or missing, and the $0.025/kWh claim treated as a target to audit rather than a baseline to refine.
+---
 
 ## Structured summary (machine-readable)
 
 ```yaml
-overall_rating: "Insufficient Data"
-blocking_count: 6
-important_count: 6
-counting_method: "section_5_missing_parameters"
+overall_rating: "Significant Gaps"
+blocking_count: 3
+important_count: 5
+counting_method: "deduplicated_across_all_sections — three unique blocking gaps: (1) novel active-target muon source unvalidated and uncosted, (2) commercial fusion cell undefined and uncosted, (3) 47%-recirculating-power / 300-fusions-per-muon energy balance unvalidated. Five unique important gaps: tritium blanket specification, power conversion specification, capacity factor, O&M structure, and alpha-sticking at operating density."
 section_coverage:
-  availability_of_data:       "Poor"
+  availability_of_data:       "Partial"
   system_function:            "Partial"
   subsystem_maturity:         "Partial"
-  materials_supply_chain:     "Poor"
-  lcoe_parameter_extraction:  "Unknown"
+  materials_supply_chain:     "Partial"
+  lcoe_parameter_extraction:  "Poor"
 ```

@@ -1,15 +1,8 @@
-Now I have everything I need. Let me write the gap assessment.
-
----
-
 # Gap Assessment: Orbital Levitated Dipole (D-He3)
 
 ## Overall Readiness
 **Rating**: Insufficient Data
-
-**Summary**: Zephyr Fusion is a pre-prototype, 2-person startup (founded 2025, YC F25) that has disclosed almost nothing beyond the existence of their concept. The academic heritage from LDX, Hasegawa 1987, and a 2026 D-T dipole reactor study (arxiv 2602.20564) provides a credible physics foundation, but Zephyr itself has not confirmed fuel type, heating method, energy conversion pathway, performance targets, or any cost-relevant engineering detail. Critically, the concept is an *orbital* power plant — a fundamentally different techno-economic system than any terrestrial fusion reactor — with no established LCOE methodology, no cost analogues, and launch cost dominating the capital structure in ways the standard fusion LCOE framework does not capture. A D1+ analysis can be written but must be heavily inference-based and clearly flagged as such.
-
----
+**Summary**: Zephyr Fusion (YC F25, founded 2025, 2 employees, pre-prototype) has disclosed no plasma performance targets, no energy conversion mechanism, and no reactor design in any public source. The concept's most fundamental parameters — Q value, net power output, heating method, and the fusion-to-beamable-power conversion chain — remain either proprietary or technically undefined. Additionally, the D-He3 fuel cycle requires He-3 at scales orders of magnitude beyond current global production, and no credible supply pathway exists at fusion scale. A qualitative narrative can be structured around dipole physics heritage and the orbital architecture concept; a quantitative LCOE model cannot be responsibly constructed.
 
 ## Section Coverage
 
@@ -17,176 +10,183 @@ Now I have everything I need. Let me write the gap assessment.
 **Coverage**: Poor
 
 **Available**:
-- YC launch page (`yc-launch-page.md`): confinement principle, HTS magnet scale, Falcon 9 deployability, megawatt-class power target, $30M claimed cost for magnetized volume exceeding ITER, founder credentials
-- NASASpaceFlight forum (`nasaspaceflight-forum-discussion.md`): community skepticism inventory — identifies every undisclosed element (energy conversion, shielding, power beaming path, tritium breeding)
-- LDX/RT-1 heritage (`levitated-dipole-technical-background.md`): demonstrated physics of levitated dipole confinement, heating methods used in experiments, τₑ ~ R² scaling, high-beta properties
-- arxiv 2602.20564 (OpenStar D-T dipole reactor study, via `dipole-reactor-heating-energy-conversion.md`): the only published modern dipole reactor design — 667 MW fusion power, 208 MW net electric, ICRH baseline, sacrificial shield lifetime (~1 year)
-- Hasegawa & Chen 1987 (PPPL-2627, via `dipole-reactor-heating-energy-conversion.md`): original D-He3 dipole reactor concept with direct energy conversion at separatrix, space propulsion parameters (1 kW/kg specific power)
-- ARIES-III D-He3 tokamak study (referenced via `dipole-reactor-heating-energy-conversion.md`): 47% net efficiency hybrid rectenna + thermal conversion, synchrotron radiation recovery concept
-- Comprehensive web survey (`zephyr-fusion-web-sources-2026.md`): exhaustive confirmation that no ARPA-E/DOE funding, no patents, no conference papers, no additional technical disclosures exist as of March 2026
+- YC launch page (`iter-01/sources/yc-launch-page.md`): physics basis (τₑ ~ R² scaling, dipole magnetosphere analogy), market positioning (orbital industrial power), hardware approach (meter-scale REBCO coil, Falcon 9 deployable), founder credentials (ORNL, LLNL, W7-X, DIII-D), claimed cost comparisons (ISS solar at ~$1B/MW, ITER at ~$650M/MW)
+- Community technical critique (`iter-01/sources/nasaspaceflight-forum-discussion.md`): identifies key gaps — no blanket, no heat output, no power conversion, no tritium breeding
+- Levitated dipole heritage (`iter-01/sources/levitated-dipole-technical-background.md`): LDX (MIT, Nature Physics 2010), RT-1 (U. Tokyo), OpenStar 2024 helium ionization demonstration, terrestrial dipole landscape
+- OpenStar D-T dipole reactor paper (`iter-02/sources/dipole-reactor-heating-energy-conversion.md`, arxiv 2602.20564): detailed D-T terrestrial levitated dipole engineering study — REBCO coil design, heating options with efficiency figures (ECRH 30-40%, ICRH 70%, NBI), neutron shielding, plant power balance equations, assumed thermal efficiency 40%, cryogenic efficiency 1.25%; D-T reactor designs at 667 MW fusion / 208 MW net electric
+- He-3 supply chain (`iter-02/sources/everycrsreport-reports-r41419.md`): CRS congressional report on He-3 shortage — historical prices ($40-85/liter from DOE auctions), production sources (primarily weapons tritium decay at ~15,000 liters/year peak), alternative sources (CANDU byproduct, particle accelerators, atmospheric extraction), quantified shortage context at neutron-detection scale
+- Power beaming context (`iter-02/sources/arxiv-2401-15267.md`): Caltech/MAPLE WPT experiment demonstrating flexible coherent WPT array in LEO for 8 months; RF pointing to ground confirmed (`iter-02/sources/nss-wp-content-uploads-2017-07-space-solar-power-workshop.md`): WPT microwave theory and SPS transmission efficiency framework
+- Web survey (`iter-02/sources/zephyr-fusion-web-sources-2026.md`): confirms no additional technical content beyond YC page across FusionXInvest, Fondo, DCD, LinkedIn sources
 
 **Missing**:
-- Any primary Zephyr technical disclosure beyond the YC launch page
-- Confirmation of fuel type, heating method, or energy conversion approach from the company
-- Any published plant study for a D-He3 *orbital* dipole
-- Performance targets (Q, ion temperature, plasma density, power output)
-- Timeline and milestones
+- Any Zephyr-authored technical document (paper, patent, conference presentation)
+- D-He3 orbital dipole design study — no peer-reviewed reactor study for this specific configuration exists
+- Teller et al. 1992 "Space Propulsion by Fusion in a Magnetic Dipole" — original orbital dipole proposal (referenced in YC page but not extracted)
+- Hasegawa & Chen 1987 PPPL-2627 — original D-He3 dipole proposal (referenced throughout but not extracted)
+- ARIES-III study — D-He3 advanced fuel tokamak with direct energy conversion analysis
 
 **Gaps**:
-- Company technical disclosure (fuel, heating, conversion) — `proprietary` — **blocking** (forces all key parameters to be inferred)
-- No orbital fusion power plant study of any kind exists — `truly-unknown` — **blocking** (no cost methodology precedent)
-- No Zephyr patents or conference presentations — `proprietary` — **important** (no mid-level technical detail available)
+- No company technical disclosures — proprietary — **blocking**
+- No D-He3 orbital dipole design study — truly-unknown — **blocking**
+- Teller 1992 and Hasegawa 1987 original papers not extracted — not-yet-sourced — important
 
 ---
 
 ### 2. Challenges in Capturing System Function
-**Coverage**: Partial (physics understood; engineering and economics not)
+**Coverage**: Poor
 
 **Available**:
-- The levitated dipole confinement physics is well-documented in LDX/RT-1 experiments and the arxiv 2602.20564 reactor study. The τₑ ~ R² scaling, high-beta advantage, and disruption-free steady-state operation are all experimentally grounded.
-- The D-He3 fuel cycle rationale — aneutronic primary reaction, 85% energy in charged particles, no blanket requirement — is clearly established in Hasegawa 1987 and consistent with orbital operation.
-- Direct charged particle conversion at the separatrix is physically well-motivated and the geometry is cited as "particularly suitable" for D-He3 in the academic literature.
-- The core insight (space vacuum eliminates vacuum vessel as energy loss channel) is documented and acknowledged by the community as physically valid.
+- Dipole confinement physics (LDX/RT-1 heritage): turbulent inward pinch confirmed, peaked pressure profiles, natural stability to interchange modes; τₑ ~ R² scaling motivates large plasma volumes
+- D-T dipole engineering analysis (`dipole-reactor-heating-energy-conversion.md`): equilibrium physics (Grad-Shafranov, Eq. 1-6), β limits, plasma edge conditions, energy confinement time framework, power balance model (Equations 9-20 in OpenStar paper); identifies that transport in the "good curvature" region approaching inner first closed flux surface is a key open physics question
+- Heating options with efficiency data: ECRH (30-40% wall-plug, high cutoff density, high-field-side launch), ICRH (70% efficiency, complex antenna geometry, ongoing investigation), NBI (mature, geometrically compatible with dipoles)
+- Power beaming infrastructure: microwave WPT demonstrated in LEO at small scale; transmission efficiency theory well-developed for SPS concepts
 
 **Missing**:
-- This concept doesn't fit the standard LCOE framework at all. The "plant" is an orbiting spacecraft with no grid connection — LCOE in $/kWh is only meaningful if power beaming losses and beaming infrastructure costs are included. No methodology exists for this.
-- D-He3 requires ~60 keV ion temperatures (vs. ~20 keV for D-T), implying a challenging heating power requirement. Without target plasma parameters, heating power cannot be estimated.
-- The relationship between orbital altitude, drag makeup, plasma confinement geometry, and power output is completely uncharacterized.
-- No description of how synchrotron radiation is managed (tolerable power load? recovered? radiated?)
-- The power beaming pathway (fusion energy → direct conversion → microwave/laser → ground/customer) has multiple efficiency stages, each unspecified.
+- D-He3 fusion performance in dipole geometry: D-He3 requires ~60 keV ion temperature vs. ~15 keV for D-T; triple product requirement is ~100× harder; no published analysis asks whether an orbital dipole can reach D-He3 burning conditions
+- Energy conversion chain: the full pathway from fusion-product charged particles (85% of D-He3 energy) through direct conversion at the separatrix, to DC power, to RF beam — undesigned and unanalyzed
+- Orbital plasma environment effects: LEO atomic oxygen erosion, charged particle belt radiation effects on plasma, microgravity effects on plasma fueling and particle injection
+- Fueling system design: D and He-3 injection on orbital platform not addressed
 
 **Gaps**:
-- No applicable LCOE framework for orbital power delivery — `truly-unknown` — **blocking** (requires methodological invention before the model can be scoped)
-- D-He3 plasma ignition/sustainment conditions not characterized for dipole geometry at orbital scale — `not-yet-sourced` (search: Hasegawa 1987 PPPL-2627 full text, arxiv dipole D-He3 reactor studies) — **important**
-- Power beaming losses and infrastructure cost — `truly-unknown` for this application — **blocking** (determines whether the concept can ever produce cheap electricity at the customer)
-- Heating power requirement and recirculating power fraction — `derivable` from D-He3 reactivity data + target plasma parameters, but no targets disclosed — **important**
+- Energy conversion pathway (fusion → beamable power) — proprietary/truly-unknown — **blocking**
+- D-He3 burning conditions in dipole geometry not modeled or published — not-yet-sourced — **blocking**
+- Orbital plasma environment effects on confinement — truly-unknown — important
+- On-orbit fueling system design — proprietary/not-yet-sourced — important
 
 ---
 
 ### 3. Maturity of Key Subsystems and Components
-**Coverage**: Partial (heritage physics demonstrated; most engineering subsystems at TRL 1-2)
+**Coverage**: Partial
 
 **Available**:
-- **Dipole confinement physics**: TRL 4-5. LDX (MIT/Columbia, 2004-2012) and RT-1 (U. Tokyo) demonstrated stable levitated dipole confinement with ECRH heating, density/pressure profiles consistent with theory, and high-beta operation.
-- **HTS magnet technology**: TRL 6-7 for terrestrial magnets. REBCO tape technology is commercially available; tokamak projects (SPARC, Commonwealth Fusion) have demonstrated high-field HTS magnets at meter scale. Space qualification of HTS magnets is lower (TRL 3-4).
-- **ECRH heating (ground-based)**: TRL 7-8 for terrestrial application. Demonstrated on LDX. Gyrotrons at industrial scale exist.
-- **NBI**: TRL 8-9 for terrestrial application. Mature technology.
+- **REBCO HTS coil (terrestrial)**: TRL 6-7. OpenStar Junior device validated 14-coil REBCO assembly with levitation and internal low-field shielding region (`dipole-reactor-heating-energy-conversion.md`). Commercial tape available from multiple vendors. Faraday Factory "Mirai" tape at >1000 A/mm² engineering current density.
+- **Orbital HTS deployment**: TRL 2-3. No superconducting magnet system has operated in LEO. The OpenStar paper's cryogenic slush strategy (neon slush, 5-minute docking intervals) is designed for terrestrial operation; an orbital equivalent is undesigned.
+- **ECRH heating (terrestrial)**: TRL 6-7. Demonstrated on LDX, RT-1, and W7-X. Orbital adaptation TRL 2-3 (no space plasma heating system built).
+- **ICRH (terrestrial)**: TRL 4-5 for dipole geometry (demonstrated on RT-1 with "mixed results" per OpenStar paper). Ongoing at OpenStar. Orbital adaptation TRL 2.
+- **Power beaming (microwave WPT)**: TRL 4-5. Caltech/MAPLE LEO WPT experiment demonstrated 8-month operation of flexible coherent arrays, RF beam pointing confirmed to ground stations (`arxiv-2401-15267.md`). Efficiency at SPS scale (>85% rectenna) is theoretical.
+- **Direct energy conversion**: TRL 2-3. Concept studied for D-He3 tokamak in ARIES-III (not extracted), no experimental demonstration.
+- **SpaceX Falcon 9 launch**: TRL 9. Rideshare economics available.
 
-**Missing** (no data available for any of these):
-- **Orbital HTS magnet deployment**: No demonstration of superconducting magnets sustained in LEO. Passive cooling in LEO thermal environment is uncharacterized for this application.
-- **Direct energy conversion at dipole separatrix**: TRL 1-2. Described theoretically in Hasegawa 1987 and ARIES-III but never built or tested at any scale.
-- **Microwave/laser power beaming from orbit**: Contested TRL (various demos exist for small-scale terrestrial and near-orbit). MW-class continuous power beaming is undemonstrated.
-- **Heating systems in space vacuum**: ECRH/ICRH/NBI in space environment — no heritage. RF systems in vacuum would need different engineering.
-- **Plasma fueling/refueling at orbital platform**: Unaddressed.
-- **Cryogenic maintenance in LEO**: Sustained HTS magnet operation over years requires thermal management strategy not described.
+**Missing**:
+- TRL for space-rated HTS cryogenic system (the orbital equivalent of neon slush docking strategy)
+- TRL for D-He3 direct conversion at dipole separatrix
+- TRL for He-3 fuel handling in orbit (pressurized gas management, radiation shielding of inventory)
+- System-level TRL integration for the complete orbital fusion platform
 
 **Gaps**:
-- Direct energy conversion technology at reactor scale — `truly-unknown` for orbital application — **blocking**
-- Space-qualified superconducting magnet (sustained multi-year operation) — `not-yet-sourced` (search: NASA/ESA superconducting magnet space qualification efforts, CERN for space, etc.) — **important**
-- Heating subsystem in space environment — `truly-unknown` — **important**
-- Fuel delivery / refueling logistics — `truly-unknown` — **important**
+- Space-hardened HTS cryogenic system: core engineering bet with no existing design — not-yet-sourced — **blocking**
+- Direct energy conversion TRL and engineering maturity — not-yet-sourced (ARIES-III not extracted) — important
+- He-3 on-orbit fuel handling: no published design — truly-unknown — important
 
 ---
 
 ### 4. Key Materials and Supply Chain Considerations
-**Coverage**: Partial (He-3 supply well-documented elsewhere; orbital supply chain is unique)
+**Coverage**: Partial (He-3 supply well-covered by CRS report; system-level supply chain poor)
 
 **Available**:
-- **HTS tape (REBCO)**: Supply chain is constrained but exists. The broader fusion industry (SPARC, many startups) is building this supply chain. Meter-scale coil for a single satellite is a small quantity relative to terrestrial reactor magnets.
-- **He-3 supply**: The D-He3 fuel choice has a well-documented supply gap in the literature. Terrestrial He-3 comes primarily from tritium decay (~15 kg/year from US/Russia weapons programs). Lunar He-3 mining remains speculative. This supply constraint is a fundamental challenge for any D-He3 concept, not unique to Zephyr.
-- **D (deuterium)**: Abundant, electrochemically separable from seawater. Not a supply concern.
+- **REBCO HTS tape**: Mature commercial supply chain (SuperOx, Fujikura, AMSC, Faraday Factory). Cost declining with demand growth from MRI and fusion programs. No supply chain bottleneck identified for this concept.
+- **He-3 fuel supply** (`everycrsreport-reports-r41419.md`): comprehensive CRS data —
+  - Historical auction price: $40-85/liter (U.S. DOE; pre-shortage)
+  - Primary production: tritium decay from nuclear weapons stockpile (~15,000 liters/year at peak U.S. production)
+  - By 2009, neutron-detection demand (thousands of liters/year) alone exceeded supply; federal rationing implemented
+  - Alternative sources: CANDU heavy-water reactor byproduct (small quantities), particle accelerator production (expensive), natural gas/atmosphere extraction (trace only), lunar regolith (long-term, speculative)
+  - No fusion-scale He-3 demand has ever been analyzed or planned for in any source reviewed
+- **Launch vehicle**: SpaceX Falcon 9 rideshare economics available; Falcon 9 fairing constrains coil geometry (YC launch page)
 
 **Missing**:
-- No estimate of He-3 consumption rate for a MW-class D-He3 dipole (requires plasma parameters)
-- No consideration of D-He3 fuel delivery logistics to orbital platform
-- Orbital logistics supply chain (launch cadence for fuel resupply) — novel problem with no precedent
-- Space-rated power electronics for direct conversion at MW scale — no supply chain exists
+- He-3 demand estimate for a MW-scale D-He3 fusion device: no calculation in any source; first-principles estimate suggests MW-class D-He3 fusion would consume more He-3 annually than the entire current global He-3 production
+- Current He-3 market pricing (post-2010): the CRS report is from 2010; prices rose dramatically after the shortage and current market is opaque
+- Radiation-hardened electronics supply chain for orbital plasma systems
+- Space-rated cryogenic system supply chain
 
 **Gaps**:
-- He-3 supply path to orbital platform — `truly-unknown` — **blocking** (if the fuel can't be delivered to orbit at scale, the concept can't operate)
-- He-3 fuel consumption rate — `derivable` from D-He3 reactivity + plasma parameters once targets are known — **important**
-- Space-rated MW-class direct conversion hardware — `truly-unknown` — **important**
-- REBCO tape quantity for meter-scale coil — `derivable` (small relative to terrestrial projects, manageable supply risk) — **nice-to-have**
+- He-3 supply at fusion scale: no viable production pathway exists — truly-unknown — **blocking**. Global production (~15,000 liters/year) is estimated to be orders of magnitude below what a MW-class D-He3 device would consume.
+- He-3 post-2010 market pricing: not captured — not-yet-sourced — important
+- Radiation-hardened cryogenic and plasma-system electronics: supply chain unassessed — not-yet-sourced — important
 
 ---
 
 ### 5. LCOE Parameter Extraction
-**Coverage**: Poor — almost no LCOE-relevant parameters available; standard LCOE framework may not apply
+**Coverage**: Poor
+
+**Note on metric applicability**: The orbital concept does not target terrestrial $/MWh LCOE. The value proposition is orbital power at $/kW to space customers. Standard CAS-based LCOE methodology partially applies (capital cost, O&M, utilization/capacity factor) but the power market is fundamentally different from grid electricity.
 
 **Available Parameters**:
-
 | Parameter | Value/Range | Source | Confidence |
 |-----------|-------------|--------|------------|
-| Magnetized plasma volume | ">ITER" (>840 m³ implied) | YC launch page | medium |
-| Capital cost (magnet/coil only) | <$30M | YC launch page | low (unverified claim) |
-| Net electrical output | "MW-class" | YC launch page | low (no number given) |
-| Confinement scaling | τₑ ~ R² | LDX heritage | high (physics) |
-| Launch vehicle | Falcon 9 (rideshare) | YC launch page | medium |
-| D-He3 charged particle fraction | ~85% | Hasegawa 1987 heritage | high (physics) |
-| ARIES-III D-He3 net efficiency (tokamak analogue) | 47% | ARIES-III via `dipole-reactor-heating-energy-conversion.md` | medium (different geometry) |
-| D-T dipole reactor analogue: net electric | 208 MW from 667 MW fusion | arxiv 2602.20564 | medium (different fuel) |
-| D-T dipole analogue: sacrificial shield replacement | ~1 year cycle | arxiv 2602.20564 | medium (different fuel/geometry) |
-| Hasegawa 1987 space parameter | 1 kW/kg specific power | `levitated-dipole-technical-background.md` | low (1987 design estimate) |
+| Target power class | MW-scale (unspecified) | YC launch page | l |
+| HTS coil technology | REBCO, up to 23 T peak (D-T analog) | OpenStar D-T dipole paper, §2.2.1 | l (analog) |
+| Thermal efficiency (D-T analog) | 40% | OpenStar D-T dipole, Table 2 | l (analog) |
+| ICRH auxiliary heating efficiency | 70% | OpenStar D-T dipole, Table 2 | l (analog) |
+| Cryogenic system efficiency | 1.25% | OpenStar D-T dipole, Table 2 | l (analog only) |
+| He-3 historical fuel price | $40–85/liter | CRS He-3 report, p.2 | l (outdated, pre-shortage) |
+| Terrestrial modular fusion LCOE analog | $34–54/MWh (~$43/MWh average) | ARPA-E ALPHA revisit (`knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/`) | l (analog only) |
+| ISS solar power cost reference | ~$1B/MW | YC launch page | m |
 
 **Missing Parameters**:
-
 | Parameter | Gap Type | Criticality | Notes |
 |-----------|----------|-------------|-------|
-| Capital cost breakdown (magnet, launch, direct conversion, power beaming) | proprietary + truly-unknown | blocking | $30M claim likely magnet-only; launch + power beaming system dominate |
-| Falcon 9 launch cost (rideshare) | not-yet-sourced | blocking | SpaceX pricing; $2-5k/kg to LEO is public — mass of system needed |
-| System mass (coil + support structure + heating + power electronics) | proprietary | blocking | Determines launch cost, which may dominate |
-| Target fusion power (MW) | proprietary | blocking | "MW-class" is all that's stated |
-| Target Q (fusion gain) | proprietary | blocking | Required to compute recirculating power and net output |
-| Heating power requirement | derivable (once Q and fusion power known) | blocking | ECRH at 30-40% efficiency is a major recirculating power cost |
-| Direct conversion efficiency (orbital separatrix) | truly-unknown | blocking | Never been built; 60-80% claimed in theory |
-| Power beaming efficiency (fusion → delivered electricity) | truly-unknown | blocking | Each step (conversion → beaming → receipt) has large loss; likely 20-40% end-to-end |
-| Power beaming infrastructure cost (ground/orbit receiver) | truly-unknown | blocking | May dominate system LCOE |
-| Capacity factor / on-orbit lifetime | proprietary | important | No satellite lifetime assumptions stated; degradation of HTS coil in LEO radiation environment unknown |
-| Operating cost (fuel resupply, orbital maintenance) | truly-unknown | blocking | On-orbit maintenance is either impossible or extremely expensive |
-| He-3 fuel consumption rate | derivable | important | Requires plasma parameters |
-| Replacement schedule (if any components fail) | truly-unknown | important | On-orbit replacement logistics are unique problem |
+| Fusion gain Q | proprietary | blocking | No target disclosed; D-He3 requires far higher confinement than D-T; Q<1 likely initially |
+| Net power output | proprietary | blocking | MW-class claimed but no specific target; required for all normalization |
+| Capital cost by subsystem (CAS) | truly-unknown | blocking | No plant study; orbital concept lacks standard CAS structure (no blanket, no steam cycle, no power block) |
+| Energy conversion efficiency | truly-unknown | blocking | Fusion → direct conversion → RF beam → rectenna chain undefined; end-to-end efficiency unknown |
+| Capacity factor / availability | truly-unknown | blocking | No plant design basis; orbital ops subject to debris avoidance, orbit decay, docking cycles |
+| O&M cost model | truly-unknown | blocking | On-orbit maintenance has no cost analog; resupply logistics undefined |
+| He-3 fuel cycle cost | truly-unknown | blocking | No fusion-scale He-3 supply exists; cost would be indeterminate |
+| Launch cost contribution | not-yet-sourced | important | Falcon 9 rideshare pricing exists but coil mass unspecified; not integrated |
+| Power beaming infrastructure cost | not-yet-sourced | important | Rectenna ground infrastructure, orbital relay costs not addressed |
+| Plant lifetime in LEO | truly-unknown | important | REBCO lifetime under LEO radiation environment uncharacterized |
 
 ---
 
 ## Source Recommendations
 
-1. **Hasegawa & Chen 1987 (PPPL-2627) full text** — cited in dossier, may contain quantitative D-He3 dipole reactor parameters (plasma density, temperature, power, direct conversion design). Priority: high. *Verify availability at INIS/IAEA: https://inis.iaea.org/records/05wfd-4pb29 — confirm before citing.*
+**Sources to acquire for qualitative analysis improvement**:
+- **Teller et al. 1992** "Space Propulsion by Fusion in a Magnetic Dipole," Fusion Technology: original orbital dipole proposal, physics case for D-He3 burning at large magnetospheric scale. Search OSTI/Fusion Technology journal archives. `not-yet-sourced`
+- **Hasegawa & Chen 1987** PPPL-2627: original D-He3 dipole design with direct conversion. Available via INIS or PPPL technical reports. `not-yet-sourced`
+- **ARIES-III study** (Najmabadi et al.): D-He3 advanced fuel tokamak with direct conversion of charged particles and synchrotron radiation rectennas — closest analog for energy conversion efficiency data. Search ARIES project publications via OSTI. `not-yet-sourced`
+- **Kesner et al. 2003** "Helium catalysed D-D fusion in a levitated dipole": D-D/He-3 fuel cycle analysis for dipole geometry (cited in OpenStar D-T paper). Journal of Plasma Physics. `not-yet-sourced`
+- **LDX experimental papers** (Boxer et al. 2010, Nature Physics; Garnier et al. 2006): quantitative achieved plasma parameters (n, T, β, τₑ) from the only levitated dipole demonstrating turbulent inward pinch. `not-yet-sourced`
+- **He-3 current pricing**: DOE Office of Isotope R&D and Production annual reports (post-2010). Current price is likely substantially higher than the $40-85/liter in the CRS report. `not-yet-sourced` — confirm existence before searching
+- **Wurzel & Hsu 2021** (meta_analysis/progress_toward_fusion_breakeven_lawson_criterion/): Contains levitated dipole LDX data point in their cross-concept physics progress compilation. Already in repo — recommend reading for TRL physics baseline.
 
-2. **ARIES-III D-He3 fusion reactor study** — cited in dossier (`fti.neep.wisc.edu/pdf/fdm815.pdf`). Full study likely contains capital cost breakdown, direct conversion efficiency, LCOE estimate. The most relevant analogue for D-He3 energy conversion economics, even though it's a tokamak. Priority: high. *Link appears in source documents — confirm file exists before using.*
+**Fleet-wide source disqualifications** (sources read or assessed; not applicable to this concept):
 
-3. **arxiv 2602.20564 (OpenStar D-T dipole reactor, 2026)** — already cited, partially extracted. Contains cost estimates for D-T terrestrial dipole. Can be used as lower bound / structural analogue for magnet and plasma-facing component costs, with heavy caveats. Priority: medium. *Exists — referenced in multiple source files.*
+- **ARPA-E ALPHA revisit** (`knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/`): Read. Provides terrestrial modular fusion LCOE analog ($34-54/MWh for ~500 MWe). Integrated as order-of-magnitude cost reference in §5. Does not downgrade any blocking gap: the orbital concept's economics differ fundamentally (no grid delivery, no conventional CAS structure, no terrestrial BOP), and the ALPHA concepts were D-T MIF concepts with standard power blocks.
 
-4. **MIT LDX program publications** — `https://www-internal.psfc.mit.edu/ldx/pubs/` cited in sources. May contain performance scaling analyses useful for extrapolating to reactor scale. Search for LDX design reports and FESAC presentations. Priority: medium. *Internal MIT URL — may not be publicly accessible; unverified — confirm existence before searching.*
+- **TEA D-T MFE Cost Analysis** (`knowledge/sources/tea_dt_mfe_cost_analysis/`): Applicable to D-T MFE with blanket, steam cycle, and tritium breeding. The orbital concept has none of these subsystems. The CAS structure provides vocabulary but no transferable cost data. Disqualified for quantitative use.
 
-5. **Space-based power systems LCOE literature** — No specific paper cited. Search: "space-based solar power LCOE", "SBSP techno-economic analysis", "orbital power plant economics". These are the closest cost-methodology analogues for Zephyr's business model (orbital source + power beaming to ground). This literature provides the only credible framework for estimating launch-cost-dominated capital structure. Priority: high for methodology. *Unverified — confirm existence before searching.*
+- **ARIES Cost Account Documentation** (`knowledge/sources/aries_cost_account_documentation/`): Standard CAS framework (accounts 20-27 direct, 90-98 indirect). Inapplicable: no CAS 23 (vacuum vessel/blanket), no CAS 24 (power turbine plant), no CAS 26 (heat rejection), no conventional BOP. An orbital concept requires a space-system cost framework, not CAS. Disqualified for quantitative use.
 
-6. **Zephyr Fusion new disclosures** — Monitor for: conference papers (FPA, IAEA FEC, APS-DPP), DOE/ARPA-E grant announcements, patent filings (USPTO search: "levitated dipole" + "orbital" + "fusion"), investor updates. As of March 2026, none exist. *No specific paper to cite — ongoing monitoring recommended.*
+- **A simplified economic model for inertial fusion** (`knowledge/sources/a_simplified_economic_model_for_inertial_fusion/`): IFE-specific Monte Carlo LCOE model for pulsed driver-target concepts. Different confinement family, different physics regime, different cost structure. Disqualified.
+
+- **Overview of the Helios Design** (`knowledge/sources/overview_of_the_helios_design_a_practical_planar_coil/`): Planar-coil stellarator, D-T, terrestrial. Different confinement, different fuel, no orbital infrastructure. Disqualified.
+
+- **Economic studies for heavy-ion-fusion**, **Energy from Inertial Fusion**, **Accelerators for IFE**, **AMPS high-yield IFE**, **Commercialization of laser fusion energy**: All IFE-specific, terrestrial, pulsed driver technologies. Disqualified.
+
+- **An Assessment of the Economics of Future Electric Power Generation Options** (`knowledge/sources/an_assessment_of_the_economics_of_future_electric_power/`): Historical terrestrial LCOE benchmarking against coal, nuclear, renewables. The orbital concept targets space power markets, not terrestrial grid competition. Benchmarking framework inapplicable. Disqualified.
+
+- **NSS WPT workshop** (`iter-02/sources/nss-wp-content-uploads-2017-07-space-solar-power-workshop.md`) and **arxiv 2401.15267** (`iter-02/sources/arxiv-2401-15267.md`): Read. These cover WPT transmission from orbit (not fusion-to-electricity conversion). The arxiv paper demonstrates LEO WPT array functionality but does not address the upstream conversion of fusion products to RF power. They confirm WPT infrastructure feasibility but do not resolve the energy conversion gap. Integrated as WPT context; do not downgrade any blocking gap.
+
+- **NTRS NASA comparison SPS vs. CSP** (`iter-02/sources/ntrs-api-citations-20140003205-downloads-20140003205.md`): Read. SPS-to-CSP efficiency comparison for 1 GW systems. Context on space power economics but no fusion content. Provides the observation that SPS total infrastructure area remains large regardless of solar cell efficiency — useful framing for orbital power limits but no applicability to fusion LCOE. Disqualified for quantitative use.
 
 ---
 
 ## Summary
 
-**Proceed to full analysis with heavy caveats — but restructure the LCOE model scope first.**
-
-The physics section (Section 2) can be written with moderate confidence, drawing on LDX/RT-1 heritage and the arxiv 2602.20564 reactor study. The maturity section (Section 3) can clearly delineate demonstrated physics (TRL 4-5) from unbuilt engineering subsystems (TRL 1-2). The materials section (Section 4) has enough to discuss He-3 supply and REBCO.
-
-The LCOE model (Deliverable 2) requires a methodological decision before coding: **standard fusion LCOE ($/kWh assuming grid connection) does not apply to an orbital power plant.** The analysis must either (a) frame LCOE in terms of delivered power at the customer endpoint — including power beaming losses and ground/orbit receiver infrastructure — or (b) analyze specific power (W/kg) as the more natural figure of merit for this concept, with LCOE back-derivation for a hypothetical customer. The Hasegawa 1987 "1 kW/kg" figure is the only existing target.
-
-The $30M claim from the YC launch page is for the confinement volume (likely the magnet alone), not a system cost. The actual capital cost is dominated by unknowns: system mass × launch cost/kg + direct conversion hardware + power beaming transmitter. Without these, the quantitative model must be explicit that it is computing a lower bound on system capital cost and parametrically sweeping the unknown fractions.
-
-**Recommend**: Acquire the ARIES-III and Hasegawa 1987 full texts before writing the analysis — both are cited in the dossier and likely contain quantitative parameters (plasma conditions, direct conversion efficiency, reactor-scale cost estimates) that would substantially improve the analysis quality. Without them, every LCOE-relevant number will be first-principles inference.
+Proceed to qualitative narrative analysis only. The concept can be described in terms of (1) the physics motivation for orbital dipole confinement advantage over terrestrial alternatives, (2) engineering challenges unique to space deployment — HTS cryogenics in LEO, direct conversion, power beaming chain, (3) He-3 supply as a potentially civilization-scale constraint with no current solution, and (4) positioning relative to terrestrial levitated dipole competitors (OpenStar, Deutelio) and other orbital power concepts (space solar). Do not attempt quantitative LCOE modeling without Zephyr or peer-reviewed disclosure of: plasma performance targets, energy conversion mechanism, and an architecture-level plant design. Sourcing Teller 1992, Hasegawa 1987 PPPL-2627, ARIES-III, LDX experimental papers, and Kesner 2003 would substantially enrich the qualitative analysis but would not unlock a quantitative LCOE unless a reactor design study also becomes available.
 
 ## Structured summary (machine-readable)
 
 ```yaml
 overall_rating: "Insufficient Data"
-blocking_count: 10
-important_count: 3
-counting_method: "section_5_missing_parameters"
+blocking_count: 7
+important_count: 8
+counting_method: "all_sections_deduplicated — blocking: (1) no plasma performance targets/Q, (2) energy conversion mechanism undefined, (3) no plant-level design/capital cost, (4) He-3 supply at fusion scale nonexistent, (5) capacity factor absent, (6) O&M cost model absent, (7) space-hardened HTS cryogenic system undesigned. Important: heating method undisclosed, D-He3 orbital plasma physics, He-3 post-2010 pricing, direct conversion TRL, launch cost not integrated, power beaming infrastructure cost, plant lifetime in LEO, He-3 on-orbit fuel handling."
 section_coverage:
   availability_of_data:       "Poor"
-  system_function:            "Partial (physics understood; engineering and economics not)"
-  subsystem_maturity:         "Partial (heritage physics demonstrated; most engineering subsystems at TRL 1-2)"
-  materials_supply_chain:     "Partial (He-3 supply well-documented elsewhere; orbital supply chain is unique)"
-  lcoe_parameter_extraction:  "Poor — almost no LCOE-relevant parameters available; standard LCOE framework may not apply"
+  system_function:            "Poor"
+  subsystem_maturity:         "Partial"
+  materials_supply_chain:     "Partial"
+  lcoe_parameter_extraction:  "Poor"
 ```

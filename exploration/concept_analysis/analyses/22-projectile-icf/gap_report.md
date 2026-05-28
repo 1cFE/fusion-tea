@@ -1,189 +1,165 @@
-Now I have everything I need. Let me write the assessment.
-
----
-
 # Gap Assessment: Projectile ICF (D-T)
 
 ## Overall Readiness
-**Rating**: Mostly Ready (with important caveats)
-**Summary**: First Light Fusion's extensive public disclosures provide enough architecture, performance targets, and cost anchors for a credible qualitative analysis and first-pass LCOE model. However, this concept has a fundamental structural problem: it has no active commercial pursuer (First Light pivoted to FLARE in Sept 2025; NearStar is properly MIF, not projectile ICF). The qualitative write-up must lead with this context. Quantitative modeling is feasible but will be heavily assumption-driven — subsystem cost breakdown data is absent, driver efficiency is unpublished, and the claimed gain (200–1000×) has never been demonstrated, creating compounding physics-to-cost uncertainty.
+**Rating**: Significant Gaps
+**Summary**: Taxonomy columns are essentially complete at high confidence, underpinned by First Light Fusion's (FLF) unusually transparent public disclosures before their September 2025 pivot to FLARE. However, the concept is now orphaned — no company is actively pursuing pure projectile ICF — which caps what can be learned from new research. The economic analysis layer is thin: FLF published a peer-reviewed LCOE model (Hawker 2020, co-founder-authored) with technology-agnostic 14-parameter structure and parameter ranges, but all three of the model's most sensitive inputs (target cost, driver cost, capacity factor) are either proprietary or truly unknown because no rep-rated demonstration at fusion-relevant projectile velocities has ever been conducted. A qualitative concept analysis is achievable; a quantitative LCOE model is not credibly constructable without extensive analogy-based assumptions that must be explicitly flagged.
 
 ---
 
 ## Section Coverage
 
 ### 1. Availability of Data
-**Coverage**: Moderate
+**Coverage**: Partial
 
-**Available**:
-- First Light Fusion published a substantial body of technical and commercial detail between 2011–2025, captured across all four source documents. This includes power plant architecture, TBR data (independently validated), cost targets, rep rate ranges, plant size targets, and the strategic pivot narrative.
-- First Light stated LCOE target (<$50/MWh), pilot plant cost target (<$1B for 150 MWe), and commercial plant cost (<$5B for ~500 MWe) — rare top-line cost disclosures for a fusion startup (`first-light-fusion-technology.md`).
-- TBR 1.8 was independently verified by TÜV SÜD UK (Feb 2026), giving the tritium breeding claim unusual credibility.
-- NearStar's public disclosures are thinner but captured (`nearstar-fusion-technology.md`, `nearstar-fusion-2025-update.md`): driver specs, fuel preference, modularity pitch, and funding stage.
+**Available**: FLF made unusually detailed public disclosures across its operational lifetime (2011–2025): power plant architecture (333 MWe, liquid Li blanket, steam Rankine), TBR 1.8 independently validated by TUV SUD UK (Feb 2026), tritium surplus projections (25 kg/yr net), driver cost data ($1.7/J for Machine 3, $2/J estimated for FLARE demonstration facility), target LCOE (<$50/MWh, peer-reviewed in Hawker 2020 *Phil. Trans. R. Soc. A*), and fusion demonstration result (April 2022, validated by UKAEA). The IP Group September 2025 press release provides the most recent consolidated technical disclosure including the FLARE pivot rationale. The Hawker 2020 paper (PMC7658748, read as concept-scoped source) is both the primary LCOE framework document and the fleet-wide "A simplified economic model for inertial fusion" — authored by FLF's co-founder, it provides the 14-parameter IFE LCOE model with Monte Carlo analysis showing LCOE as low as $25/MWh under optimistic-but-plausible assumptions. HYLIFE-era ICF plant design data is available via OSTI-6780071 (HYLIFE-II heat transport study, ~1000 MWe, direct capital cost $2,632M excluding IHX) and OSTI-6360934 (EM pumping of liquid Li in ICF, ~800 tonnes Li, flow rates 44–66 m³/s/chamber), providing hardware-level analog data for the liquid-Li blanket subsystem.
 
-**Missing**:
-- Peer-reviewed publications on projectile ICF gain physics (First Light published some target physics work; these are not captured in Phase 1a sources)
-- Any independent plant study or system code output for the projectile ICF concept
-- Published techno-economic analysis from any third party
+**Missing**: No full conceptual design study for a projectile ICF power plant exists (unlike HYLIFE for liquid-wall ICF or ARIES for MFE). No third-party cost analysis of the FLF concept has been published. NearStar Fusion's MTIF approach is represented in sources but is arguably a separate MIF concept. Post-pivot (Sep 2025), FLF is no longer developing a power plant and is pursuing technology licensing — future public disclosures about commercial plant design are unlikely.
 
 **Gaps**:
-- Peer-reviewed target physics papers — `not-yet-sourced` — important (would constrain gain credibility)
-- Independent TEA or LCOE study — `truly-unknown` — nice-to-have (unlikely to exist; concept is abandoned)
-- Active commercial development data post-pivot — `truly-unknown` — blocking for near-term commercial projections (concept is orphaned)
+- No published conceptual design study (power core, BOP, economics in CAS format) — `truly-unknown` — **blocking** for quantitative LCOE model, **important** for qualitative analysis
+- Post-pivot documentation of FLARE plant economics is marketing-level only ($100M–$200M demonstration facility, ~400 MW reactor) without engineering backup — `proprietary` — **important**
+- NearStar MTIF classification ambiguity (MIF vs. IFE) — `derivable` — **nice-to-have** (taxonomy decision upstream)
 
 ---
 
 ### 2. Challenges in Capturing System Function
 **Coverage**: Partial
 
-**Available**:
-- The system architecture is well described: EM gun driver → hypervelocity projectile → proprietary amplifier target → D-T implosion → liquid Li neutron absorption/tritium breeding → steam Rankine BOP. This chain is sufficient to structure an LCOE model.
-- The gain requirement (200–1000×) is stated and its commercial significance explained.
-- The "decoupled" nature of driver and BOP is clearly articulated: "after the lithium heat exchanger, the plant is identical to many other already working facilities."
-- The abandonment of Machine 4 (which would have been the gain-demonstration machine at 60 km/s / 100 MJ) is documented — this is the key physics gap that killed the concept.
+**Available**: The system architecture is well described at a conceptual level: hypervelocity projectile (6.5 km/s demonstrated, 60+ km/s required for gain) compresses a multi-cavity target, implosion focuses energy to ~10 TPa and <100 µm fuel volume, neutron pulse heats flowing liquid lithium curtain, heat exchanger drives steam Rankine cycle. The target design is the key amplification element — FLF's "controlled amplification technology" boosts projectile impact by >20× through multi-cavity pressure focusing. The system's defining complexity shift relative to laser IFE is moving sophistication from the driver (simple EM gun) to the target (complex multi-cavity design). The Hawker 2020 LCOE model captures the sub-Hz timing constraint (0.033–0.1 Hz) and its effect on economics: lower rep rate enables higher gain requirements but reduces target cost burden. The HYLIFE studies (OSTI sources) document the engineering challenges of liquid-Li-walled ICF chambers including pressure pulse management, EM pump design, and vacuum system requirements.
 
-**Missing**:
-- Driver wall-plug efficiency: how much grid electricity is consumed per shot to accelerate the projectile? Not disclosed anywhere in the sources.
-- Recirculating power fraction: closely related to driver efficiency; absent.
-- Fusion-energy-to-driver-energy coupling path: what fraction of fusion yield is captured vs. lost?
-- Target physics credibility: the "amplifier" that converts 6.5 km/s projectile to >70 km/s internal fuel velocity is entirely proprietary. The physics of this gain mechanism is the central uncertainty and not described in enough detail to evaluate.
-- Demonstrated Q: First Light achieved fusion (neutrons detected) but never Q>1. The gap between Q<0.001 (demonstrated) and Q=200–1000 (commercial claim) is enormous and unvalidated.
+**Missing**: The gain physics for the projectile ICF approach is fundamentally undemonstrated — FLF achieved ~50 neutrons (fusion, not gain), and the path from this to G=200 is analytically claimed but not validated. The specific amplification mechanism in the multi-cavity target is proprietary IP. The FLARE pivot introduces fast ignition physics (separate compression + ignition stages) as an additional undemonstrated element. Rep-rated operation of an EM gun at fusion-relevant energies (100 MJ scale) is an unresolved engineering problem: Machine 4 (targeting 60 km/s, 100 MJ stored energy) was cancelled in February 2025. The projectile delivery mechanism into the reaction chamber at sub-Hz rates, including reload mechanics for falling-target geometry, has no published engineering analysis.
 
 **Gaps**:
-- Driver wall-plug efficiency — `proprietary` — **blocking** for LCOE model (determines recirculating power; must be assumed)
-- Target amplifier physics detail — `proprietary` — **blocking** for gain credibility assessment (must use stated range with large uncertainty)
-- Demonstrated Q or credible Q roadmap — `not-yet-sourced` / `truly-unknown` — **blocking** (search for any First Light arxiv papers on target compression physics; `unverified — confirm existence before searching`)
-- Recirculating power fraction — `derivable` — important (can be estimated from gain × driver efficiency with stated assumptions)
+- Gain physics validation gap: current demonstrated result (~50 neutrons) is far below commercial-minimum G=200; path to gain undemonstrated and unverified — `truly-unknown` — **blocking**
+- Rep-rated EM gun operation at 60+ km/s projectile velocity: no precedent, Machine 4 cancelled — `truly-unknown` — **blocking**
+- Target amplification mechanism details: proprietary, published only as "multi-cavity" concept without geometry or material specifics — `proprietary` — **important**
+- FLARE fast-ignition integration with projectile compression: described only in white paper without physics calculation disclosure — `proprietary` — **important**
 
 ---
 
 ### 3. Maturity of Key Subsystems and Components
 **Coverage**: Partial
 
-**Available from sources**:
-- **EM launcher (driver)**: TRL 4–5. Machine 3 demonstrated 6.5 km/s. Machine 4 (targeting 60 km/s, commercially relevant) was cancelled before construction. The 10× velocity gap is the unresolved engineering challenge.
-- **Target / amplifier**: TRL 3–4. Fusion demonstrated (UKAEA validated, 2022). Gain demonstrated at what NIF calls record is ~4×; First Light needs 200–1000×. This is the biggest TRL gap in the entire concept.
-- **Liquid lithium blanket/breeding**: TRL 3–4. Design is detailed, TBR independently validated, but not built at any scale. Liquid metal handling at this scale is a known engineering challenge shared with other IFE/MFE concepts.
-- **Tritium handling systems**: TRL 5–6 (via ITER and fission industry experience, applicable here).
-- **Steam Rankine BOP**: TRL 9. Mature commercial technology; sources confirm "identical to many other already working facilities."
+**Available**: FLF provided TRL-relevant milestones in public disclosures: Machine 3 achieved 6.5 km/s projectile velocity (TRL 4–5 for sub-fusion-scale EM launcher), fusion neutrons detected and validated by UKAEA (April 2022, TRL 3–4 for target physics at fusion conditions), TBR 1.8 validated by TUV SUD UK via neutronics modeling (Feb 2026, TRL 4 for blanket design validation). The steam Rankine cycle (TRL 9) is standard existing technology. Liquid Li blanket technology has been studied at TRL 3–5 in HYLIFE program. The Wurzel & Hsu (2021) Lawson criterion compilation in the project's meta-analysis (`knowledge/meta_analysis/progress_toward_fusion_breakeven_lawson_criterion/`) would independently benchmark FLF's neutron yield against the broader IFE field, though this source was not read in detail.
 
-**Missing**:
-- TRL breakdown explicitly stated for any subsystem (these are inferred from source descriptions)
-- Any Materials and Components Readiness Level (McRL) assessment
-- Target fabrication at repetition rate (even sub-Hz): how are the ~1 cm cubic targets with multi-cavity proprietary amplifier structure manufactured at commercial scale? Not addressed in any source.
+**Missing**: No TRL assessment has been published for the rep-rated EM gun system. Machine 4 (which would have been the gain-scale driver) was cancelled. The overall system TRL for gain-capable projectile ICF is approximately TRL 2–3 (concept and analytical credibility established, single-shot fusion demonstrated, no integrated gain experiment). The specific TRL for mass-manufactured targets is unknown — current targets are individually fabricated prototypes costing far more than the $1–100/target range the Hawker model requires for competitive LCOE.
 
 **Gaps**:
-- Target fabrication at commercial rep rate — `proprietary` — **blocking** (no information on target manufacturing process, cost, or scalability)
-- EM driver scaling pathway (6.5 → 60 km/s) — `not-yet-sourced` / `truly-unknown` — **blocking** (Machine 4 was cancelled; this problem is unresolved)
-- Liquid Li system engineering challenges at scale — `not-yet-sourced` — important (search MHD pump literature, fission Li-cooled reactor experience; `unverified — confirm existence before searching`)
+| Subsystem | Available TRL | Gaps |
+|-----------|--------------|------|
+| EM gun driver (gain-scale, rep-rated) | TRL 2–3 | No rep-rated gain-scale machine existed; Machine 4 cancelled — `truly-unknown` |
+| Target design (gain-capable) | TRL 2–3 | Gain-positive target never demonstrated; proprietary geometry — `proprietary` |
+| Liquid Li blanket (operational) | TRL 3–4 | Neutronics validated, no dynamic operational testing — `not-yet-sourced` |
+| Steam Rankine + BOP | TRL 9 | No gaps |
+| Tritium processing | TRL 4–5 | Analogous to MFE programs; FLF claims 1-week self-sufficiency — `derivable` |
+| Target manufacturing at scale | TRL 1–2 | No manufacturing process defined; key business model uncertainty — `proprietary` |
 
 ---
 
 ### 4. Key Materials and Supply Chain Considerations
 **Coverage**: Partial
 
-**Available**:
-- **Lithium**: Liquid lithium is the primary blanket/breeding material. Large volumetric quantity needed (1-meter-thick flowing curtains). Li-6 enrichment needed for TBR optimization (though TBR 1.8 may allow natural lithium; not specified in sources).
-- **Tritium startup inventory**: D-T fuel requires initial tritium purchase before plant achieves self-sufficiency. At 333 MWe with 25 kg/yr net surplus, startup inventory requirements are non-trivial. Sources state self-sufficiency achievable "in as little as one week" which seems physically unrealistic and may reflect a misstatement.
-- **Target materials**: The "amplifier" target is cubic, ~1 cm, proprietary multi-cavity design. Materials not specified. Standard IFE targets use beryllium, diamond, or plastic ablators — none of these are explicitly mentioned.
-- **Conventional BOP**: No exotic materials in the steam Rankine cycle.
+**Available**: Liquid lithium is the dominant material concern. FLF explicitly costed natural lithium at ~$70M per reactor (vs. $143M–$451M for enriched Li-6 alternatives), confirming a natural Li design that avoids isotopic enrichment bottlenecks. The TBR 1.8 result means tritium self-sufficiency in as little as one week and a net surplus of 25 kg/yr at 333 MWe — substantially reducing tritium procurement complexity vs. other D-T concepts. HYLIFE-II design used ~800–960 tonnes of Flibe/liquid Li as blanket inventory (comparable scale). The EM gun uses conventional electromagnetic engineering materials (copper windings, structural steel, high-strength barrel materials). FLF explicitly claimed COTS technology reliance for the driver ("existing technologies," "existing supply chains"). The steam turbine supply chain is standard.
 
-**Missing**:
-- Target material composition (entirely proprietary)
-- Li-6 enrichment fraction required
-- Annual target production volume (shots/year at 0.033 Hz ≈ ~1M shots/year for 333 MWe — this is the scale question)
-- Tritium startup inventory quantification
+**Missing**: Target material composition is entirely proprietary — the multi-cavity target design is FLF's core IP and its material requirements are not disclosed. Barrel erosion rates for the EM gun at fusion-relevant kinetic energies are unknown (no rep-rated high-velocity EM gun exists at this scale). Lithium metal at the 800+ tonne scale per plant would stress current lithium supply chains; no supply analysis specific to projectile ICF has been published.
 
 **Gaps**:
-- Target material composition — `proprietary` — **important** (could affect cost significantly; must use analogue from NIF/hohlraum targets)
-- Target production volume and manufacturing process — `proprietary` — **blocking** for operating cost model (target cost/shot is often the dominant IFE operating cost)
-- Li-6 enrichment requirements and supply chain — `not-yet-sourced` — important (search ORNL or DOE Li isotope separation literature)
-- Tritium startup inventory — `derivable` — important (can be estimated from D-T burn rate at target Q and rep rate)
+- Target material composition and supply chain: entirely proprietary — `proprietary` — **important**
+- EM gun barrel erosion/lifetime at 0.033+ Hz rep rate and >60 km/s projectile velocity: no experimental data — `truly-unknown` — **important**
+- Lithium supply chain stress analysis for multi-plant deployment: no published analysis for this concept — `not-yet-sourced` — **nice-to-have**
 
 ---
 
 ### 5. LCOE Parameter Extraction
-**Coverage**: Partial
-
 **Available Parameters**:
-
 | Parameter | Value/Range | Source | Confidence |
-|---|---|---|---|
-| Plant electrical output (pilot) | ~150 MWe | first-light-fusion-technology.md | m |
-| Plant electrical output (commercial) | ~333–500 MWe | first-light-fusion-technology.md | m |
-| Total capital cost (pilot) | <$1B | first-light-fusion-technology.md | l (company target) |
-| Total capital cost (commercial) | <$5B | first-light-fusion-technology.md | l (company target) |
-| LCOE target | <$50/MWh | first-light-fusion-technology.md | l (company target) |
-| Claimed fusion gain | 200–1000× | first-light-fusion-technology.md | l (undemonstrated) |
-| Rep rate | 0.011–0.1 Hz (sub-Hz) | dossier.md | m |
-| Energy conversion pathway | Steam Rankine cycle | first-light-fusion-technology.md | h |
-| Thermal efficiency (steam Rankine) | ~33–38% | derivable from standard steam cycle | m (analogue) |
-| TBR | 1.8 | first-light-flare-pivot-update.md | h (independently validated) |
-| Net tritium surplus | 25 kg/yr at 333 MWe | first-light-fusion-technology.md | m |
-| Vessel replacement schedule | Lifetime-of-plant | first-light-fusion-technology.md | m (unvalidated claim) |
-| Driver cost per joule (FLARE, not projectile) | $2/J | first-light-flare-pivot-update.md | l (FLARE, not applicable directly) |
-| Demonstrator cost (FLARE) | $100–200M | first-light-flare-pivot-update.md | l (FLARE, not projectile) |
+|-----------|-------------|--------|------------|
+| Net electric output | 333 MWe (commercial); ~150 MWe (pilot) | IP Group/FLF press release Sep 2025; PRNewswire Apr 2022 | m |
+| Target gain (commercial minimum) | G ≥ 200; G = 1000 (target) | FLF FLARE white paper, IP Group Sep 2025 | m |
+| Repetition rate | 0.033 Hz (30 s/shot, pilot); 0.1 Hz (10 s/shot, 500 MW) | PRNewswire Apr 2022 | m-l (conflicting figures across sources) |
+| Driver cost (non-rep-rated Machine 3) | $1.7/J (2.5 MJ bank, $4.3M cost) | Hawker 2020, PMC7658748 | m |
+| FLARE demonstration facility cost | $100M–$200M at ~$2/J stored energy | IP Group news Sep 2025 | m |
+| Tritium breeding ratio | 1.8 (independently validated) | The Engineer / TUV SUD UK, Feb 2026 | h |
+| Thermal conversion cycle | Steam Rankine; standard existing BOP | FLF technology pages; PRNewswire Apr 2022 | h |
+| Li blanket cost (materials) | ~$70M natural Li per reactor | IP Group Sep 2025 | m |
+| Target LCOE objective | <$50/MWh | Hawker 2020 (Phil Trans R Soc 2020) | m |
+| Plant cost analog (HYLIFE) | ~$3,600/kWe (2020$); $2,632M total direct capital for single-chamber ~1000 MWe | Hawker 2020; OSTI-6780071 | m-l (dated analog) |
+| ARPA-E modular IFE/MIF LCOE analog | $43/MWh avg ($34–54 range); $2.4/W CapEx; ~$1.2B TCC for ~500 MWe | `knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/` | m (different driver technologies) |
+| Blanket energy multiple | 0.6–1.4 | Hawker 2020 | m |
+| Yield cost bound (Li-based) | $70k–$44M/GJ | Hawker 2020 | m |
+| Driver cost range (IFE analogs) | $1.7–$9.5/J (Machine 3 to NIF) | Hawker 2020 | m |
+| O&M cost range (IFE analogs) | $10–100/kWe-yr | Hawker 2020 | m |
+| Thermal efficiency (expected range) | 30–60% | Hawker 2020 | m |
 
 **Missing Parameters**:
-
 | Parameter | Gap Type | Criticality | Notes |
-|---|---|---|---|
-| Capital cost by subsystem (CAS breakdown) | proprietary | blocking | Only total cost targets stated; no subsystem breakdown |
-| Driver (EM gun) capital cost | proprietary | blocking | No figure for the projectile driver specifically |
-| Target cost per shot | proprietary | blocking | Most sensitive IFE operating cost; entirely unknown |
-| Annual target production volume | derivable | blocking | Derivable from rep rate × hours/year |
-| Driver wall-plug efficiency | proprietary | blocking | Determines recirculating power fraction |
-| Recirculating power (gross→net) | derivable | blocking | Need driver efficiency first; else must assume |
-| Capacity factor / availability | not-yet-sourced | important | Not stated; pulsed IFE analogues could inform |
-| Q (target fusion gain, demonstrated) | truly-unknown | blocking | Machine 3 achieved Q<<1; commercial needs 200–1000× |
-| D-T fuel cost (pre-self-sufficiency) | derivable | important | Tritium spot market ~$30k/g; derivable from burn rate |
-| O&M cost (non-fuel) | not-yet-sourced | important | No data; could use IFE plant study analogues |
-| Blanket/Li loop capital cost | not-yet-sourced | important | Analogues available from other liquid-metal blanket designs |
-| Thermal conversion efficiency (actual) | derivable | important | Steam Rankine ~33–38%; can be assumed with note |
-| First wall replacement cost | not applicable | — | Liquid Li blanket eliminates this cost item |
-| EM driver maintenance/replacement | truly-unknown | important | No data on EM launcher maintenance at commercial scale |
+|-----------|----------|-------------|-------|
+| Target cost per shot (manufacturing at scale) | proprietary | **blocking** | Hawker 2020 identifies target cost as a top-3 LCOE driver; FLF's target is core IP; current prototype costs are irrelevant; required range is $1–100/target |
+| Rep-rated EM gun driver capital cost | truly-unknown | **blocking** | Machine 4 (100 MJ, 60 km/s) was cancelled; no rep-rated gain-scale EM gun exists anywhere; Machine 3 cost ($1.7/J) is for non-rep-rated device |
+| Driver efficiency (wall-plug to kinetic energy) | proprietary/derivable | **blocking** | Critical for recirculating power fraction; Machine 3 specs (6.5 km/s, 2.5 MJ bank) do not disclose electrical efficiency |
+| Plant availability / capacity factor | truly-unknown | **blocking** | No rep-rated IFE driver anywhere near commercial operation; no experimental basis for projecting availability at sub-Hz rates |
+| Target manufacturing volume and cost trajectory | proprietary | **blocking** | FLF's "consumables business model" depends on mass-manufactured targets; trajectory from bespoke prototype to volume production completely uncharacterized |
+| EM gun driver lifetime (shots to replacement) | truly-unknown | **important** | Hawker 2020 shows driver lifetime is a significant LCOE sensitivity; no data for rep-rated EM guns |
+| O&M (EM gun maintenance, Li system) | truly-unknown | **important** | No published O&M data for projectile ICF; Hawker model range ($10–100/kWe-yr) spans an order of magnitude |
+| BOP capital cost breakdown (by CAS account) | derivable | **important** | Rankine cycle BOP can be estimated from ARPA-E ALPHA Revisit ($43/MWh, $2.4/W) but no concept-specific CAS breakdown |
+| Decommissioning cost | derivable | nice-to-have | Analogous to IFE programs |
 
 ---
 
 ## Source Recommendations
 
-1. **First Light Fusion arxiv/journal publications** on target physics and compression gain — `not-yet-sourced` — search arxiv for "First Light Fusion" or "projectile inertial confinement"; may include peer-reviewed work on amplifier target physics. `unverified — confirm existence before searching`
+**Integration notes (fleet-wide sources read and integrated):**
 
-2. **IFE plant studies (laser ICF analogues)** for capital cost structure and target cost — `not-yet-sourced` — the SOMBRERO, HYLIFE-II, or Prometheus-L plant studies from the 1990s contain CAS-level cost breakdowns for IFE concepts that can serve as structural analogues. These are in OSTI. Available via OSTI/DOE.
+- **`knowledge/sources/a_simplified_economic_model_for_inertial_fusion/` (Hawker 2020)** — Integrated throughout §5. This is the co-founder's peer-reviewed LCOE model (PMC7658748, also present as concept-scoped source). It directly addresses the methodology gap and provides bounding ranges for all 14 LCOE parameters. It confirms target cost and gain as the dominant cost levers at sub-Hz rep rates, grounding the blocking/important gap classification above. The Monte Carlo finding that LCOE <$25/MWh is achievable with G>500 and yield>5 GJ directly characterizes the FLF design point economics.
 
-3. **Electrothermal / electromagnetic launcher literature** for driver cost and efficiency — `not-yet-sourced` — railgun and coilgun cost-per-joule literature from DoD/DARPA programs could inform EM driver capital and wall-plug efficiency. Search DTIC or IEEE for "electromagnetic launcher efficiency commercial."  `unverified — confirm existence before searching`
+- **`knowledge/sources/revisit_of_the_2017_costing_for_four_arpa_e_alpha_concepts/`** — Integrated in §5 as IFE/MIF cost analog. The four ARPA-E ALPHA concepts (Plasma-Jet MIF, Stabilized Liner Compressor, Staged Z-Pinch, Flow-stabilized Z-Pinch) are pulsed-power approaches at ~500 MWe scale costed in a CAS framework. Average LCOE $43/MWh, CapEx $2.4/W, TCC ~$1.2B provide a plausible range anchor for projectile ICF BOP costs. Construction time 3 years (centralized manufacturing). This source downgraded the "BOP capital cost breakdown" gap from **blocking** to **important** — a credible CAS-level analog now exists.
 
-4. **Liquid lithium loop engineering literature** for blanket capital cost — `not-yet-sourced` — ITER liquid metal blanket module cost estimates, or fission Li-cooled reactor (MSRE, FFTF) O&M analogues. Search IAEA or ORNL reports.
+- **`knowledge/sources/affordable_manageable_practical_and_scalable_amps_high/`** — Read. Pacific Fusion's MagLIF-based pulser IFE is a different physical approach (electromagnetically driven liner compression vs. hypervelocity projectile impact), but §4 of the AMPS paper addresses engineering requirements for commercial power (component lifetime, chamber maintenance, tritium breeding) at a similar technology readiness level. The AMPS paper does not provide explicit commercial plant cost figures in the sections read. Does not resolve any blocking gaps for projectile ICF given driver technology difference. Classified as contextual analog only — does not change gap criticality ratings.
 
-5. **IFE target cost studies** — `not-yet-sourced` — DOE has funded IFE target fabrication cost studies (especially for NIF/laser ICF); these could anchor target cost/shot estimates even if the amplifier geometry differs. Search OSTI for "IFE target fabrication cost." `unverified — confirm existence before searching`
+**Disqualifications (fleet-wide sources reviewed and ruled out):**
 
-6. **NearStar Fusion 2025 concept paper** — `not-yet-sourced` — sources indicate NearStar planned to publish experimental results and a detailed concept paper in 2025. If published, it may contain driver specs and power plant economics. Search for NearStar Fusion publications or SBIR final report.
+- **`knowledge/sources/energy_from_inertial_fusion/`** — The 1992 IAEA review covers laser, heavy-ion, and light-ion IFE driver concepts. The hypervelocity EM-launcher approach pioneered by First Light Fusion (founded 2011) postdates this review entirely; it contains no projectile/EM-gun driver cost content and its 1992 target cost and driver efficiency data do not translate to a 2030s projectile ICF design. Disqualified.
+
+- **`knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/`** — Heavy-ion driver economics are dominated by accelerator cost scaling (cost per Joule scales with accelerator length and current). The EM gun driver in projectile ICF has a fundamentally different cost structure (pulsed energy storage, barrel replacement, projectile manufacturing) that does not map to HIF accelerator scaling. Disqualified.
+
+- **`knowledge/sources/tea_dt_mfe_cost_analysis/`** — D-T MFE (tokamak) cost methodology. Confinement architecture is incompatible with projectile ICF cost structure; steady-state plasma assumptions, magnet costs, and plasma heating system costs do not apply. BOP costs (steam Rankine) are already covered by ARPA-E ALPHA Revisit and HYLIFE-II. Disqualified.
+
+- **`knowledge/sources/aries_cost_account_documentation/`** — CAS framework reference. The CAS account structure (20–27 direct, 90–98 indirect) is already represented in the ARPA-E ALPHA Revisit which applies this framework to compact modular concepts comparable to projectile ICF in scale and development stage. No marginal value beyond what ARPA-E ALPHA Revisit provides. Disqualified.
+
+- **`knowledge/sources/commercialization_of_laser_fusion_energy/`** — Xcimer Energy's KrF excimer laser IFE whitepaper. Laser driver cost breakdown is specific to optical systems (~$100/J laser capital cost); this does not translate to EM gun drivers. Chamber and BOP analogy is marginal given the already available ARPA-E ALPHA Revisit. Disqualified.
+
+- **`knowledge/sources/overview_of_the_helios_design_a_practical_planar_coil/`** — Stellarator (MFE). Different confinement family. Disqualified.
+
+- **`knowledge/sources/an_assessment_of_the_economics_of_future_electric_power/`** — ORNL historical benchmarking of fusion LCOE against competing electricity sources. No concept-specific content for projectile ICF. Disqualified.
+
+**Not-yet-sourced gaps — search recommendations:**
+
+1. **Rep-rated electromagnetic launcher performance data**: Search OSTI for "electromagnetic launcher repetition rate inertial fusion" and "railgun repetition rate pulsed power" — legacy LLNL HYLIFE-era work may exist. Search IEEE Transactions on Plasma Science for EM launcher survivability. Flag: `unverified — confirm existence before searching`.
+2. **Target manufacturing cost trajectory for IFE**: Search OSTI for "IFE target fabrication cost" or "laser target mass production" — NIF target program has published cost analyses which could anchor the lower bound for FLF's projectile targets. Flag: `unverified`.
+3. **First Light Fusion grant applications or UKAEA program documents**: UK EPSRC, UKAEA Fusion Industry Program, and InnovateUK may have public project summaries with engineering specification data. Flag: `unverified`.
+4. **HYLIFE IFE reactor design study (Moir et al., 1990)** — Referenced multiple times in OSTI-6780071; the full HYLIFE design study would provide a complete CAS-level cost model for liquid-Li-walled ICF that is the closest analog to First Light's power plant architecture. Search OSTI for "HYLIFE reactor design" and "Moir 1990." Flag: `unverified — confirm existence before searching`.
 
 ---
 
 ## Summary
 
-**Proceed to full analysis with stated limitations.** The available data from First Light Fusion's public disclosures is sufficient to produce a credible qualitative write-up and a first-pass LCOE model — but both require explicit acknowledgment of the concept's unusual status: it is analytically interesting but commercially orphaned. The qualitative write-up should open with this context prominently.
+Proceed to full qualitative analysis with caveats. The concept's technology description, system architecture, and taxonomy classification are well-supported by an unusually detailed public record from First Light Fusion. A D1+ analysis can credibly cover sections 1–4 and partial section 5. However, a standalone quantitative LCOE model for Projectile ICF (D-T) is not constructable from available data: the three most LCOE-sensitive parameters (target cost per shot, rep-rated driver capital cost, capacity factor) are either proprietary to a company that has since pivoted or genuinely unknown because no rep-rated gain-scale projectile ICF driver has ever existed. Any quantitative LCOE estimate must explicitly use Hawker 2020's 14-parameter bounding framework and flag the result as "parameter-space exploration" rather than a design-point projection. The ARPA-E ALPHA Revisit ($34–54/MWh range for comparable-scale compact pulsed IFE) provides a useful independent cross-check.
 
-For the quantitative model, the following assumptions will need to be stated explicitly due to data gaps:
-- **Driver efficiency**: assume 10–30% (electromagnetic gun wall-plug efficiency range from analogues) — this is a high-leverage uncertain parameter
-- **Target cost/shot**: assume $10–$1,000 (spanning laser IFE target analogues to speculative amplifier manufacturing) — this is likely the dominant operating cost uncertainty
-- **Capital cost structure**: use SOMBRERO/HYLIFE-II IFE plant study ratios as structural analogues, scaled to First Light's total cost targets
-- **Fusion gain**: use First Light's claimed 200–1000× range as a parameter sweep input; note no gain has been demonstrated
+The concept's orphaned status (no active commercial pursuer since Sep 2025) means additional research iterations are unlikely to close the economic gaps — the data simply was never published and the company has changed direction. A follow-up gap with NearStar Fusion may warrant a separate MIF concept row rather than inclusion here.
 
-The back-solve to $0.01/kWh will need to clearly flag that the binding constraint (target gain ≥200×) has never been demonstrated at any scale, and that even the $50/MWh company target appears optimistic given the absence of a credible path to Machine 4's velocity requirement.
+---
 
 ## Structured summary (machine-readable)
 
 ```yaml
-overall_rating: "Mostly Ready (with important caveats)"
-blocking_count: 7
-important_count: 6
-counting_method: "section_5_missing_parameters"
+overall_rating: "Significant Gaps"
+blocking_count: 5
+important_count: 5
+counting_method: "unique_thematic_gaps_deduplicated_across_all_sections: (1) gain demonstration gap, (2) rep-rated EM gun driver performance/cost, (3) target manufacturing cost per shot, (4) plant availability/capacity factor, (5) driver efficiency; important: (1) target design details, (2) EM gun lifetime/O&M, (3) system-level O&M costs, (4) BOP CAS cost breakdown, (5) target supply chain"
 section_coverage:
-  availability_of_data:       "Moderate"
+  availability_of_data:       "Partial"
   system_function:            "Partial"
   subsystem_maturity:         "Partial"
   materials_supply_chain:     "Partial"
-  lcoe_parameter_extraction:  "Partial"
+  lcoe_parameter_extraction:  "Poor"
 ```
