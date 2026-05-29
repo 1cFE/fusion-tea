@@ -17,18 +17,15 @@ from exploration.scoring_v2.embeddings.rulebook import (
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 SCORING_V2 = REPO_ROOT / "exploration" / "scoring_v2"
-PREDICTED = REPO_ROOT / "tests" / "scoring_v2" / "predicted_scores.yaml"
 WEIGHTS = yaml.safe_load((SCORING_V2 / "weights" / "default.yaml").read_text())
 BRACKETS, FLOOR = _load_da_weights(WEIGHTS)
 
-PER_CONCEPT_TOLERANCE = 0.55
-
-# Empty since the gap-report format standardization: every report now
-# carries a `## Structured summary` block, blocking_count is the
-# deduplicated structured count, and predicted_scores.yaml's
-# data_availability column was regenerated from those structured blocks
-# — so predicted == actual for this axis by construction.
-KNOWN_DRIFTS: dict[str, str] = {}
+# DA is deterministic: gap-report blocking count -> bracket lookup -> score.
+# There is no spec-vs-rules calibration gap on this axis, so it is verified
+# exhaustively at the unit level (TestBucketSchedule covers every bracket
+# boundary, TestStructuredSummaryCount covers the parser, TestCounting
+# covers the prose-regex fallback). No per-concept predicted_scores fixture
+# is maintained; the test suite is decoupled from gap-report regenerations.
 
 
 def _read_actual(run_cli, tmp_scores_dir: Path) -> dict[str, float | None]:
@@ -187,22 +184,3 @@ class TestNullHandling:
         ) is None
 
 
-def test_predicted_scores_match_exactly(run_cli, tmp_scores_dir: Path):
-    """predicted_scores.yaml's data_availability column is regenerated
-    from the gap reports' structured blocks, so it must match the
-    framework's computed scores exactly — this axis has no calibration
-    gap, only a deterministic count."""
-    predicted = yaml.safe_load(PREDICTED.read_text()).get("data_availability", {})
-    actual = _read_actual(run_cli, tmp_scores_dir)
-    mismatches = []
-    for cid, exp in predicted.items():
-        v = actual.get(cid)
-        if exp is None:
-            continue
-        if v is None or abs(v - float(exp)) > 1e-9:
-            mismatches.append(f"{cid}: predicted {exp} vs actual {v}")
-    assert not mismatches, (
-        "data_availability predicted != actual (re-run "
-        "add_gap_report_summary_blocks.py + score.py and refresh "
-        "predicted_scores.yaml):\n  " + "\n  ".join(mismatches)
-    )

@@ -337,10 +337,20 @@ class TestCrossAxisSanity:
 
 
 def _expand_predicted_scores() -> list[tuple[str, str, float]]:
-    """Flatten predicted_scores.yaml into (axis, concept_id, expected)."""
+    """Flatten predicted_scores.yaml into (axis, concept_id, expected).
+
+    data_availability is intentionally excluded: it's a deterministic
+    bracket lookup on gap-report blocking counts with no spec-vs-rules
+    calibration gap, so it's exhaustively verified by synthetic unit
+    tests in test_data_availability.py (TestBucketSchedule and friends)
+    rather than by a per-concept fixture that would drift on every
+    gap-report regeneration.
+    """
     predicted = _read_predicted()
     out: list[tuple[str, str, float]] = []
     for axis in WIRED_AXES_NOW:
+        if axis == "data_availability":
+            continue
         for cid, val in (predicted.get(axis) or {}).items():
             if val is None:
                 continue
@@ -366,7 +376,7 @@ class TestSpecPredictedScoresLand:
         from tests.scoring_v2.test_upper_cf import KNOWN_DRIFTS as UCF_DRIFTS  # noqa: PLC0415
         from tests.scoring_v2.test_plant_complexity import KNOWN_DRIFTS as PC_DRIFTS  # noqa: PLC0415
         from tests.scoring_v2.test_technical_feasibility import KNOWN_DRIFTS as TF_DRIFTS  # noqa: PLC0415
-        from tests.scoring_v2.test_data_availability import KNOWN_DRIFTS as DA_DRIFTS  # noqa: PLC0415
+        # data_availability has no drifts — deterministic axis, no fixture.
         run_cli("score.py")
         rows = _read_score_csv(tmp_scores_dir / "table.csv")
         out: dict = {}
@@ -382,7 +392,7 @@ class TestSpecPredictedScoresLand:
             "upper_cf":              set(UCF_DRIFTS),
             "plant_complexity":      set(PC_DRIFTS),
             "technical_feasibility": set(TF_DRIFTS),
-            "data_availability":     set(DA_DRIFTS),
+            # data_availability omitted — axis is skipped in _expand_predicted_scores.
         }
         return out
 
