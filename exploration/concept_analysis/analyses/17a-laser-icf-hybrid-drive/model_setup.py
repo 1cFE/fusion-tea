@@ -192,19 +192,11 @@ P_IMPLOSION_MW = LASER_ENERGY_MJ * REP_RATE_HZ  # 5 MW average optical output
 # Source: [an] §Section 2.3: "only two beams...brief hohlraum pre-pulse"
 P_IGNITION_MW = 0.0
 
-# Laser wall-plug efficiency (eta_pin1)
-# NOAK target (Nth-of-a-kind): 7%, achieved with full Argos/SBS/NLO architecture
-# Demonstrated (NRL Electra, 750 J KrF): 7% at sub-kJ scale
-# Source: [XEC] §Challenge 3: "7% laser efficiency" for NOAK system
-# UNCERTAIN: not yet demonstrated at MJ scale; Xcimer aspirational target is 10%
-# iter-4 note: NRL Electra has since been converted to ArF; the 7% KrF wall-plug
-#   efficiency figure stands as a physical lower bound for the medium but the
-#   demonstration platform is no longer active as a KrF facility.
-# iter-5 note: Phoenix (1–2 kJ, Q2 2026) first private electron-beam excimer;
-#   will provide new efficiency data at this scale. Source: [i5] §Section 3.
-ETA_PIN1 = 0.07   # NOAK target — [XEC] §Challenge 3
-                  # Conservative vs Xcimer 10% aspirational; see sensitivity sweep
-ETA_PIN1_LOW = 0.05  # UNCERTAIN lower bound — used in H-2 capsule gain floor
+# Xcimer-claimed wall-plug efficiency targets — kept only for narrative print/H-2
+# sensitivity arithmetic. NOT passed to model.forward(): costingfe owns the actual
+# eta_pin used in the LCOE calculation via pulsed_laser_ife.yaml.
+ETA_PIN1 = 0.07   # Xcimer NOAK aspirational target — [XEC] §Challenge 3
+ETA_PIN1_LOW = 0.05  # H-2 lower-bound scenario value
 
 # ── Thermal cycle ─────────────────────────────────────────────────────────────
 # BLOCKING AMBIGUITY: cycle type unresolved in available sources.
@@ -284,15 +276,11 @@ def _overrides(laser_ms: float) -> dict:
 _ENG = dict(
     n_mod=1,
     construction_time_yr=5.0,    # DEFAULT: ife_laser_ife.yaml — no magnet assembly
-    interest_rate=0.07,           # DEFAULT: standard discount rate
-    inflation_rate=0.0245,        # DEFAULT: US long-run CPI
     # ── Laser driver ─────────────────────────────────────────────────────────
     p_implosion=P_IMPLOSION_MW,   # 5 MW avg; 10 MJ/pulse × 0.5 Hz
                                   # Source: [XEC] §Executive Summary
     p_ignition=P_IGNITION_MW,     # 0 MW; HDD unified laser, no separate igniter
                                   # Source: [an] §Section 2.3
-    eta_pin1=ETA_PIN1,            # 0.07 KrF wall-plug (NOAK); [XEC] §Challenge 3
-    eta_pin2=ETA_PIN1,            # same laser train; no separate ignition driver
     eta_p=0.5,                    # DEFAULT: ife_laser_ife.yaml (pumping efficiency)
     # ── Power balance ────────────────────────────────────────────────────────
     mn=1.1,                       # DEFAULT: FLiBe blanket neutron multiplier
@@ -326,8 +314,6 @@ result_noak = model.forward(
     net_electric_mw=NET_ELECTRIC_MW,
     availability=AVAILABILITY,
     lifetime_yr=LIFETIME_YR,
-    noak=True,
-    eta_th=ETA_TH_BRAYTON,        # 0.45 He Brayton; HYLIFE heritage; [an] §2.5 scenario A
     cost_overrides=_overrides(LASER_NOAK_MID_MS),
     **_ENG,
 )
@@ -337,8 +323,6 @@ result_steam = model.forward(
     net_electric_mw=NET_ELECTRIC_MW,
     availability=AVAILABILITY,
     lifetime_yr=LIFETIME_YR,
-    noak=True,
-    eta_th=ETA_TH_STEAM,          # 0.33 Steam Rankine; UNCERTAIN; [sci] §Energy Conversion
     cost_overrides=_overrides(LASER_NOAK_MID_MS),
     **_ENG,
 )
@@ -348,8 +332,6 @@ result_foak = model.forward(
     net_electric_mw=NET_ELECTRIC_MW,
     availability=AVAILABILITY,
     lifetime_yr=LIFETIME_YR,
-    noak=False,                   # FOAK: 10% contingency premium
-    eta_th=ETA_TH_BRAYTON,
     cost_overrides=_overrides(LASER_FOAK_MS),
     **_ENG,
 )
@@ -359,8 +341,6 @@ result_noak_low = model.forward(
     net_electric_mw=NET_ELECTRIC_MW,
     availability=AVAILABILITY,
     lifetime_yr=LIFETIME_YR,
-    noak=True,
-    eta_th=ETA_TH_BRAYTON,
     cost_overrides=_overrides(LASER_NOAK_LOW_MS),
     **_ENG,
 )
@@ -368,23 +348,25 @@ result_noak_high = model.forward(
     net_electric_mw=NET_ELECTRIC_MW,
     availability=AVAILABILITY,
     lifetime_yr=LIFETIME_YR,
-    noak=True,
-    eta_th=ETA_TH_BRAYTON,
     cost_overrides=_overrides(LASER_NOAK_HIGH_MS),
     **_ENG,
 )
 
 # ════════════════════════════════════════════════════════════════════════════
-# Results — base scenario (NOAK / He Brayton / $70/J laser)
+# Results — base scenario (NOAK / laser $70/J)
+# eta_th / eta_pin come from costingfe defaults (power_cycle preset and
+# pulsed_laser_ife.yaml); read back for downstream display and Qwp arithmetic.
 # ════════════════════════════════════════════════════════════════════════════
 c  = result_noak.costs
 pt = result_noak.power_table
-qwp = pt.q_sci * ETA_PIN1   # wall-plug gain = Qsci × η_wpe
+_eta_th  = float(result_noak.params["eta_th"])
+_eta_pin = float(result_noak.params["eta_pin"])
+qwp = pt.q_sci * _eta_pin   # wall-plug gain = Qsci × η_wpe
 
 print("=" * 70)
 print("Laser ICF — Hybrid Direct Drive, D-T  (Xcimer Energy / Athena)")
-print(f"Base scenario: NOAK | He Brayton {ETA_TH_BRAYTON*100:.0f}% | "
-      f"η_laser {ETA_PIN1*100:.0f}% | laser $70/J")
+print(f"Base scenario: NOAK | thermal cycle {_eta_th*100:.0f}% | "
+      f"η_laser {_eta_pin*100:.0f}% | laser $70/J")
 print(f"Net electric: {NET_ELECTRIC_MW:.0f} MWe | Availability: {AVAILABILITY:.0%} | "
       f"Lifetime: {LIFETIME_YR} yr")
 print("=" * 70)
@@ -392,7 +374,7 @@ print(f"LCOE:         {c.lcoe:.1f} $/MWh")
 print(f"Overnight:    {c.overnight_cost:.0f} $/kW")
 print(f"Fusion power: {pt.p_fus:.0f} MW | Net: {pt.p_net:.0f} MW | Q_eng: {pt.q_eng:.2f}")
 print(f"Qsci: {pt.q_sci:.0f} | Qwp: {qwp:.1f} | Recirc: {pt.rec_frac:.1%} "
-      f"(laser: {100 * (P_IMPLOSION_MW / ETA_PIN1) / float(pt.p_et):.1f}% of gross)")
+      f"(laser: {100 * (P_IMPLOSION_MW / _eta_pin) / float(pt.p_et):.1f}% of gross)")
 print()
 
 # ── Scenario comparison: H-1 (laser cost range) + H-3 (thermal cycle) ────────
@@ -468,8 +450,6 @@ for eta_label, eta_val in [("7% (NOAK target)", ETA_PIN1), ("5% (conservative)",
             net_electric_mw=float(p_net),
             availability=AVAILABILITY,
             lifetime_yr=LIFETIME_YR,
-            noak=True,
-            eta_th=ETA_TH_BRAYTON,
             cost_overrides=_overrides(LASER_NOAK_MID_MS),
             **_eng_h2,
         )

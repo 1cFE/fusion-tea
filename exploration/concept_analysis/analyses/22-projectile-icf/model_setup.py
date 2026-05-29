@@ -855,7 +855,6 @@ params = ProjectileICFPlantParams(
     driver_rep_rate_Hz=0.033,         # 30s cycle (pilot design point)
     target_cost_USD=5.0,
     li_inventory_cost_M_USD=70.0,
-    noak=True,
 )
 results = params.compute()
 
@@ -1073,7 +1072,6 @@ CRITICAL FRAMING (from analysis.md §Section 2):
         driver_rep_rate_Hz=0.033,    # 30s between shots (pilot design point)
         target_cost_USD=5.0,
         li_inventory_cost_M_USD=70.0,
-        noak=True,
     )
     # Implied gain: 30,000 / (100 × 0.30) = 1000× [optimistic FLF claim]
 
@@ -1159,7 +1157,6 @@ CRITICAL FRAMING (from analysis.md §Section 2):
             driver_rep_rate_Hz=0.033,
             target_cost_USD=10.0,           # Higher cost at lower yield
             li_inventory_cost_M_USD=143.0,  # Enriched Li needed
-            noak=False,                     # FOAK (technology unproven)
         ),
         "Moderate\n  (gain=500×, driver=$1B)": ProjectileICFPlantParams(
             fusion_yield_MJ=15_000.0,      # gain=500× at 100 MJ, 30% eff
@@ -1169,7 +1166,6 @@ CRITICAL FRAMING (from analysis.md §Section 2):
             driver_rep_rate_Hz=0.033,
             target_cost_USD=5.0,
             li_inventory_cost_M_USD=70.0,
-            noak=True,
         ),
         "Optimistic\n  (gain=1000×, driver=$500M)": ProjectileICFPlantParams(
             fusion_yield_MJ=30_000.0,      # gain=1000× — top of FLF claim range
@@ -1179,7 +1175,6 @@ CRITICAL FRAMING (from analysis.md §Section 2):
             driver_rep_rate_Hz=0.1,        # 10s rep rate (FLF commercial target)
             target_cost_USD=2.0,           # Mass production economy
             li_inventory_cost_M_USD=70.0,
-            noak=True,
         ),
     }
 
@@ -1207,7 +1202,6 @@ CRITICAL FRAMING (from analysis.md §Section 2):
         driver_cost_M_USD=500.0,
         driver_rep_rate_Hz=0.1,
         target_cost_USD=2.0,
-        noak=True,
     )
     for price in trit_prices:
         opt_p = ProjectileICFPlantParams(**{**opt_base.__dict__, "tritium_price_USD_per_g": price})

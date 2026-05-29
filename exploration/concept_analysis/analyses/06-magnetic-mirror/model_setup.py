@@ -59,9 +59,6 @@ _SHARED_KWARGS = dict(
     lifetime_yr=30,             # Standard reference; no concept-specific data
     n_mod=1,
     construction_time_yr=5.0,  # DEFAULT: mirror geometry simpler than tokamak; mfe_mirror.yaml
-    interest_rate=0.07,         # DEFAULT: standard reference
-    inflation_rate=0.02,        # DEFAULT: standard reference
-    noak=True,
 
     # ── Mirror geometry (cylindrical) ─────────────────────────────────────
     R0=0.0,                 # No axis offset — cylinder; mfe_mirror.yaml default
@@ -96,40 +93,13 @@ _SHARED_KWARGS = dict(
                             # Blanket neutron multiplication is negligible — set to 1.0.
                             # Source: analysis.md §S5 "Neutron energy fraction: <1%"
                             # arpa-e-fisch-2025-presentation.md §Why p-B11?
-    eta_th=0.20,             # DEVIATION: scoring_framework.md §"Justified deviations" explicitly names
-                            # 06-magnetic-mirror as a physics-forced derating case (bremsstrahlung
-                            # partial wall absorption). Per-category canonical (0.70 Direct CP) is
-                            # inapplicable because eta_de=0.70 separately captures the DEC channel;
-                            # eta_th must reflect only the thermal/radiation residual (~15-25% of
-                            # fusion power). Setting eta_th=0.70 would double-count the DEC pathway.
-                            # UNCERTAIN: No power balance numbers published.
-                            # Source: analysis.md §S2 Challenge 5; §S5 "Thermal vs. direct
-                            # conversion energy split: truly-unknown / important"
     eta_p=0.5,              # Pumping efficiency; DEFAULT: mfe_mirror.yaml
     eta_pin=0.60,           # Heating wall-plug efficiency.
                             # UNCERTAIN: Covers RF system (alpha channeling antennas) and
                             # biased electrode power supply efficiency. ICRF systems
                             # typically 50-70% wall-plug efficiency. Central estimate 60%.
                             # Source: analysis.md §S3 "RF Heating / Wave Launch: TRL 4-5 (generic)"
-    eta_de=0.70,            # DEC efficiency for rotation energy recovery.
-                            # UNCERTAIN — this is a speculative estimate.
-                            # Rax, Kolmes, Fisch (PRX Energy 4, 013007, 2025) establishes
-                            # physics efficiency upper bounds for adiabatic DEC in axisymmetric
-                            # fields; no engineering efficiency or hardware design published.
-                            # 0.70 is within range of physics limits but not validated.
-                            # Historical MARS gridless DEC measured ~54% (1983 MARS study);
-                            # eta_de=0.70 is above this empirical reference. See analysis.md §S7.
-                            # Source: analysis.md §S2 Challenge 5; §S3 "DEC: TRL 2-3"
-                            # technical-papers-summary.md §Related: Direct Energy Conversion
     f_sub=0.03,             # BOP subsystem fraction; DEFAULT: mfe_mirror.yaml
-    f_dec=0.85,             # Fraction of transport power going to DEC.
-                            # UNCERTAIN: Near-aneutronic p-B11 puts ~99% of fusion energy
-                            # in charged alpha particles. A large fraction is available for
-                            # direct conversion. 0.85 is an optimistic estimate reflecting
-                            # that rotation DEC captures most charged-particle power, with
-                            # ~15% captured as radiation (synchrotron + bremsstrahlung → thermal).
-                            # Source: analysis.md §S5 "Thermal vs. direct conversion energy split:
-                            # truly-unknown / important"; §S2 Challenge 1 (bremsstrahlung losses)
     p_coils=8.0,            # Superconducting solenoid coil power [MW].
                             # UNCERTAIN: Slightly above DT mirror default (5 MW) to account
                             # for multi-chamber geometry with inner and outer coil sets visible
@@ -185,7 +155,7 @@ c = result.costs
 pt = result.power_table
 
 print("Magnetic Mirror (p-B11) — Pale Blue Fusion (CHARM)")
-print("500 MWe target | 80% availability | 30 yr lifetime | NOAK")
+print("500 MWe target | 80% availability | 30 yr lifetime")
 print("WARNING: All plasma parameters are truly-unknown estimates (see analysis.md §5-6)")
 lcoe_ckwh = float(c.lcoe) / 10
 print(
@@ -239,8 +209,7 @@ for k, v in sorted(result.cas22_detail.items()):
 # ── Key Assumptions ───────────────────────────────────────────────────────
 print("\nKey Assumptions (all UNCERTAIN — no published design point):")
 print("-" * 48)
-print("  p-B11 near-aneutronic power balance:   mn=1.0, f_dec=0.85, eta_th=0.20")
-print("  DEC efficiency:                         eta_de=0.70  [physics limit per PRX Energy 2025]")
+print("  p-B11 near-aneutronic power balance:   mn=1.0 (eta_th/eta_de/f_dec from costingfe defaults)")
 print("  Total auxiliary power:                  p_input=60 MW  [rotation + RF alpha channeling]")
 print("  No tritium processing:                  p_trit=0.0")
 print("  Machine geometry:                       plasma_t=1.5 m, chamber_length=30 m [no design point]")
@@ -274,22 +243,3 @@ costing = sorted(sens["costing"].items(), key=lambda x: abs(x[1]), reverse=True)
 for k, v in costing[:15]:
     print(f"  {k:<36} {v:+.4f}")
 
-# ── eta_th deviation sweep ────────────────────────────────────────────────
-# Quantifies LCOE sensitivity to the thermal-channel efficiency assumption.
-# The residual thermal fraction is ≤15% of total power (f_dec=0.85), so
-# eta_th is expected to have small leverage — this sweep tests that claim.
-# Fixed: eta_de=0.70 (DEC channel), f_dec=0.85 (DEC fraction).
-print("\neta_th deviation sweep (DEC deviation carve-out — F-1)")
-print("  Fixed: eta_de=0.70, f_dec=0.85")
-print(f"  {'eta_th':<10} {'LCOE ($/MWh)':>14} {'delta vs 0.20 ($/MWh)':>22}")
-print("  " + "-" * 48)
-_eta_th_base_lcoe = None
-for _eta_th_val in [0.15, 0.20, 0.25, 0.30]:
-    _sweep_kwargs = {**_SHARED_KWARGS, "eta_th": _eta_th_val}
-    _r = model.forward(net_electric_mw=_NATIVE_MW, **_sweep_kwargs)
-    _lcoe = float(_r.costs.lcoe)
-    if _eta_th_val == 0.20:
-        _eta_th_base_lcoe = _lcoe
-    _delta = f"{_lcoe - _eta_th_base_lcoe:+.1f}" if _eta_th_base_lcoe is not None else "  (base)"
-    _marker = " ← model value" if _eta_th_val == 0.20 else ""
-    print(f"  {_eta_th_val:<10.2f} {_lcoe:>14.1f} {_delta:>22}{_marker}")

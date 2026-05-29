@@ -101,9 +101,6 @@ result = model.forward(
     n_mod=1,
     construction_time_yr=5.0,  # DEFAULT: ife_laser_ife.yaml; reasonable for IFE
                                 # (no large magnets → shorter than tokamak)
-    interest_rate=0.07,
-    inflation_rate=0.0245,
-    noak=True,
 
     # ── Geometry (spherical chamber, from patent) ─────────────────
     # Patent specifies spherical stainless steel chamber, ≥1 m diameter.
@@ -159,7 +156,6 @@ result = model.forward(
     #   Source for pivot: hb11-newatlas-article.md §Energy Conversion (direct, 2020)
     #                     hb11-technology-page-2025.md §Energy Conversion (steam, 2025)
     #                     analysis.md §Section 2, Challenge 4
-    eta_th=0.35,  # UNCERTAIN: Steam Rankine; direct conversion would be 0.60–0.80
 
     # Laser wall-plug efficiency:
     #   UNCERTAIN: Target of Adelaide USPL partnership (>10%).
@@ -167,8 +163,6 @@ result = model.forward(
     #   A 10% improvement represents a ~10× advance over demonstrated performance.
     #   Source: hb11-recent-developments-2024-2025.md §Adelaide Laser Partnership (2025)
     #           analysis.md §Section 2, Challenge 2
-    eta_pin1=0.10,  # UNCERTAIN: ps CPA petawatt laser wall-plug (target, not achieved)
-    eta_pin2=0.10,  # UNCERTAIN: ns laser wall-plug (assumed same; not stated)
 
     eta_p=0.5,     # DEFAULT: pumping efficiency
     f_sub=0.03,    # DEFAULT: subsystem power fraction

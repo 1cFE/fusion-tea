@@ -1190,9 +1190,7 @@ def main():
             plant_availability=0.50,
             thermal_efficiency=0.35,
             heating_system_cost_M=200.0,
-            interest_rate=0.10,
             construction_time_years=9.0,
-            noak=False,          # FOAK: higher contingency + pre-construction
         ),
         "Moderate": PoloMacPlantParams(
             # Baseline (defaults)
@@ -1208,7 +1206,6 @@ def main():
             thermal_efficiency=0.35,
  # standardized from 0.42 per scoring_framework.md (Energy Capture: Thermal (unspecified))
             heating_system_cost_M=100.0,
-            interest_rate=0.06,
             construction_time_years=6.0,
         ),
     }
@@ -1250,9 +1247,7 @@ def main():
             plant_availability=0.50,
             thermal_efficiency=0.35,
             heating_system_cost_M=200.0,
-            interest_rate=0.10,
             construction_time_years=9.0,
-            noak=False,
         ),
         "Moderate": PoloMacPlantParams(
             Q_sci=10.0,
@@ -1274,7 +1269,6 @@ def main():
             thermal_efficiency=0.35,
  # standardized from 0.42 per scoring_framework.md (Energy Capture: Thermal (unspecified))
             heating_system_cost_M=100.0,
-            interest_rate=0.06,
             construction_time_years=6.0,
         ),
     }

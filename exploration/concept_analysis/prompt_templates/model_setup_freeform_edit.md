@@ -11,6 +11,8 @@ An existing model from a prior iteration has been copied to `{{output_path}}`.
 - Maintain the existing code structure and organization
 - Add new content incrementally — do not restructure working code
 - Every change must be traceable to a specific finding or a direct consequence of one
+- **Never add, restore, or tune** any of: `interest_rate`, `inflation_rate`, NOAK flag, `eta_th`, `eta_de`, `f_dec`, `eta_dec` as per-instance overrides. These are corpus-wide defaults per issue #35 — hardcode them as `@dataclass` defaults matching costingfe (0.07, 0.02, NOAK=True, eta_th per `power_cycle` preset). See `model_setup_freeform.md` §"Mandatory Financial Defaults" for the required values.
+- Delete any existing sensitivity sweep or scenario table that varies any of those parameters.
 
 {{#if model_feedback}}
 ## Assessment Findings

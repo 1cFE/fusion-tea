@@ -153,9 +153,6 @@ result = model.forward(
 
     n_mod=1,                      # Single-module plant
     construction_time_yr=5.0,     # DEFAULT — compact; shorter than large LTS tokamak (6 yr)
-    interest_rate=0.07,           # DEFAULT — standard capital cost rate
-    inflation_rate=0.0245,        # DEFAULT
-    noak=True,                    # NOAK case; consistent with $154/kg FLiBe and $1.06M/tonne scaling
 
     # ── ARC geometry ─────────────────────────────────────────────────────
     # Primary geometry from Sorbom 2015 (arc-reactor-specifications.md §2).
@@ -180,11 +177,9 @@ result = model.forward(
     # "Supercritical Rankine is recommended" — arc-power-conversion-studies.md §3.2.
     # Net efficiency 46% confirmed independently by Colliva et al. 2024.
     # Source: arc-power-conversion-studies.md §3.2, Table 15
-    eta_th=0.46,
 
     eta_p=0.5,                    # DEFAULT pumping efficiency
     eta_pin=0.5,                  # DEFAULT heating system wall-plug efficiency
-    eta_de=0.85,                  # DEFAULT
     f_sub=0.03,                   # DEFAULT subsystem power fraction
                                   # Cross-check: Schwartz et al. (arXiv:2405.01514) report
                                   # 5% active + 10% passive = 15% total parasitic load.
@@ -192,8 +187,6 @@ result = model.forward(
                                   # (cryogenics, vacuum pumps, tritium handling) encoded
                                   # in p_cryo, p_trit, p_house below. Net derating ≈ 0.85×
                                   # gross. Source: arxiv-2405-01514.md §2.1
-    f_dec=0.0,                    # No direct energy conversion — thermal-only BOP.
-                                  # Source: dossier §Energy Capture; arc-power-conversion-studies.md
 
     p_coils=2.0,                  # DEFAULT coil resistive power [MW]; REBCO has low resistive loss
     p_cool=13.7,                  # DEFAULT cooling system power [MW] (FLiBe pumping included)
@@ -305,9 +298,6 @@ result_foak = model.forward(
     lifetime_yr=30,
     n_mod=1,
     construction_time_yr=5.0,
-    interest_rate=0.07,
-    inflation_rate=0.0245,
-    noak=False,                   # FOAK: adds 10% contingency (CAS29); plant_studies_foak
     R0=3.3,
     plasma_t=1.13,
     elon=1.84,
@@ -317,12 +307,9 @@ result_foak = model.forward(
     vessel_t=0.20,
     p_input=38.6,
     mn=1.1,
-    eta_th=0.46,
     eta_p=0.5,
     eta_pin=0.5,
-    eta_de=0.85,
     f_sub=0.03,
-    f_dec=0.0,
     p_coils=2.0,
     p_cool=13.7,
     p_pump=1.0,

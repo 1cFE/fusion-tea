@@ -85,9 +85,6 @@ _SHARED_KWARGS = dict(
     n_mod=1,
     construction_time_yr=5.0,   # DEFAULT: steady_state_mirror.yaml; linear geometry
                                  # simpler than toroid; modular center-cell assembly possible
-    interest_rate=0.07,          # DEFAULT: standard reference
-    inflation_rate=0.02,         # DEFAULT: standard reference
-    noak=True,
 
     # ── Mirror geometry (cylindrical center cell) ─────────────────────────
     R0=0.0,                  # No toroidal axis offset for cylinder; steady_state_mirror.yaml
@@ -134,13 +131,6 @@ _SHARED_KWARGS = dict(
                              # Consistent with MARS LiPb blanket (TBR ~1.15).
                              # Source: analysis.md §Section 8 "MARS Study (Logan 1983)" [low]
 
-    eta_th=0.55,              # standardized from 0.36 per scoring_framework.md (Energy Capture: Hybrid (thermal + direct))
-                             # MARS 1983 steam Rankine achieved ~36% overall plant efficiency.
-                             # Source: analysis.md §Section 5 "Thermal efficiency (MARS analogue):
-                             #   ~36%" [low confidence — MARS technology, not Realta-specific]
-                             # sCO2 could reach 40–45% if Realta selects a modern power cycle.
-                             # UNCERTAIN: blanket type and thermal cycle undisclosed.
-                             # Source: analysis.md §Section 2, Challenge 5
 
     eta_p=0.50,              # Pumping efficiency; DEFAULT: steady_state_mirror.yaml
 
@@ -152,26 +142,9 @@ _SHARED_KWARGS = dict(
                              # Source: analysis.md §Section 3 "ECH and HHFW: TRL 6–7"; "NBI: TRL 6–7"
                              # DEFAULT consistent with blended estimate.
 
-    eta_de=0.54,             # DEC efficiency on end-loss charged particles.
-                             # UNCERTAIN: Realta venetian-blind DEC is uncharacterized at
-                             # fusion conditions. Only analogue: MARS 1983 gridless DEC ~54%.
-                             # Source: analysis.md §Section 5 "DEC efficiency (MARS analogue): ~54%"
-                             #   [low confidence — MARS gridless ≠ Realta venetian-blind]
-                             # Source: analysis.md §Section 3 "DEC: TRL 4–5";
-                             #   Moir & Barr, Nuclear Fusion 1973 (50–65% range for DEC class)
 
     f_sub=0.03,              # BOP subsystem power fraction; DEFAULT: steady_state_mirror.yaml
 
-    f_dec=0.20,              # Fraction of end-loss transport power directed to DEC.
-                             # D-T nuclear physics: 80% of fusion energy in 14.1 MeV neutrons
-                             # (captured in thermal blanket), 20% in 3.5 MeV alpha particles
-                             # (potentially capturable by venetian-blind DEC at open ends).
-                             # f_dec = 0.20 reflects the physics-fixed alpha energy fraction.
-                             # Source: analysis.md §Section 2, Challenge 4 "Charged particle
-                             #   fraction (D-T physics): ~20%" [high confidence — nuclear physics]
-                             # Source: realta-fusion-hub-spotlight.md §Fuel & Reaction
-                             # UNCERTAIN: fraction of alphas that actually reach the DEC electrodes
-                             # (vs. deposited on wall/divertor) is unknown.
 
     p_coils=8.0,             # Solenoid coil power [MW].
                              # Elevated from default (5 MW) for 70 m commercial REBCO magnet set:

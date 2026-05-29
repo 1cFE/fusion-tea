@@ -102,15 +102,6 @@ VESSEL_T = 0.10             # DEFAULT: framework stellarator default
 
 # ── Power balance ─────────────────────────────────────────────────────
 
-ETA_TH = 0.40               # UNCERTAIN: thermal conversion efficiency.  Conservative estimate
-                            # below the implied value: 800 MW fusion × 1.10 (canonical mn) =
-                            # 880 MW thermal; 350 MWe net + ~65 MWe recirculating → ~415 MWe
-                            # gross; η_th ≈ 415/880 ≈ 0.47.  0.40 is intentionally conservative
-                            # — Rankine efficiency at this operating point is unpublished and
-                            # may vary with coolant/turbine design.  Published lower bound
-                            # "> 30%" is a floor, not the design operating point.
-                            # Source: analysis.md §Section 2, Challenge 3;
-                            #   analysis.md §Section 5 (Missing Parameters: thermal efficiency)
 
 ETA_PIN = 0.52              # ECRH gyrotron wall-plug efficiency.  Current-generation gyrotrons
                             # achieve ~50–55%.  Central estimate 52%.
@@ -131,10 +122,8 @@ MN = 1.10                   # CANONICAL: D-T neutron energy multiplier per scori
                             #   analysis.md §Section 5; J. Plasma Phys. 2025 E86
 
 ETA_P = 0.5                 # DEFAULT: pumping efficiency
-ETA_DE = 0.85               # DEFAULT: DEC efficiency (DEC not used — f_dec=0)
 
 F_SUB = 0.03                # DEFAULT: subsystem power fraction of gross electric
-F_DEC = 0.0                 # No direct energy conversion; stellarator steady-state, ECRH only
 
 P_COILS = 3.0               # DEFAULT: framework stellarator default; 3D HTS coils at 20–30 K
                             # have very low resistive losses; cryo overhead captured in p_cryo.
@@ -157,12 +146,6 @@ P_CRYO = 1.5                # UNCERTAIN: HTS at 20–30 K has lower cryo load th
 
 # ── Financial parameters ──────────────────────────────────────────────
 
-INTEREST_RATE = 0.07        # DEFAULT: standard project finance assumption
-INFLATION_RATE = 0.0245     # DEFAULT: US long-run CPI target
-NOAK = True                 # NOAK reference case (no contingency, mature supply chain).
-                            # NOTE: 3D HTS coil manufacturing is TRL 2–3 — a true NOAK
-                            # scenario requires demonstrated winding capability, which does
-                            # not yet exist.  NOAK is aspirational for this concept.
 
 # ── Cost overrides ────────────────────────────────────────────────────
 
@@ -185,9 +168,6 @@ _SHARED_KWARGS = dict(
     lifetime_yr=LIFETIME_YR,
     n_mod=1,
     construction_time_yr=CONSTRUCTION_TIME_YR,
-    interest_rate=INTEREST_RATE,
-    inflation_rate=INFLATION_RATE,
-    noak=NOAK,
 
     # Infinity Two geometry (published)
     R0=R0,                          # 12.5 m — published J. Plasma Phys. E65
@@ -201,12 +181,9 @@ _SHARED_KWARGS = dict(
     # Power balance
     p_input=P_INPUT_MW,             # 20 MW — ECRH upper bound from Q>40
     mn=MN,                          # 1.10 — CANONICAL (D-T per scoring_framework.md)
-    eta_th=ETA_TH,                  # 0.40 — UNCERTAIN (conservative; implied 47% from 880 MW thermal / 415 MWe gross)
     eta_p=ETA_P,                    # 0.5 — DEFAULT
     eta_pin=ETA_PIN,                # 0.52 — gyrotron wall-plug efficiency
-    eta_de=ETA_DE,                  # 0.85 — DEFAULT (DEC not used)
     f_sub=F_SUB,                    # 0.03 — DEFAULT
-    f_dec=F_DEC,                    # 0.0 — no DEC
     p_coils=P_COILS,                # 3.0 MW — DEFAULT (HTS, low resistive loss)
     p_cool=P_COOL,                  # 15.0 MW — DEFAULT (HCPB He coolant circuit)
     p_pump=P_PUMP,                  # 1.0 MW — DEFAULT
@@ -240,7 +217,7 @@ print("QI Modular HTS Stellarator — Infinity Two (Type One Energy)")
 print(f"  Config: {NET_ELECTRIC_MW:.0f} MWe net | {AVAILABILITY:.0%} availability | {LIFETIME_YR} yr | NOAK")
 print(f"  Geometry: R0={R0} m, A={ASPECT_RATIO}, a={PLASMA_T:.2f} m, κ={ELON}")
 print(f"  Field: B_ax=9 T on-axis | Heating: ECRH-only (η_pin={ETA_PIN})")
-print(f"  Thermal eff.: η_th={ETA_TH} (UNCERTAIN — conservative below implied 47% from 880 MW thermal / 415 MWe gross)")
+print(f"  Thermal eff.: η_th={result.params['eta_th']:.2f} (from costingfe power_cycle preset)")
 print(f"  Blanket: HCPB + Be multiplier | TBR=1.30 (OpenMC, JPP E86)")
 print()
 print(f"LCOE:       {c.lcoe:.1f} $/MWh  [LOWER BOUND — coil cost (elasticity +0.99) uses framework default, likely understated]")
@@ -299,7 +276,7 @@ print(f"  Fusion power:                              800 MW   [HIGH confidence]"
 print(f"  Q (fusion gain):                           > 40     [HIGH confidence]")
 print(f"  TBR (HCPB+Be, OpenMC):                    1.30     [HIGH confidence]")
 print(f"  Elongation κ (near-circular stellarator):  {ELON}    [DEFAULT — large-A stellarator]")
-print(f"  Thermal efficiency η_th:                   {ETA_TH}   [UNCERTAIN — conservative; implied 47% (415/880 MW thermal); Rankine unpublished]")
+print(f"  Thermal efficiency η_th:                   {result.params['eta_th']:.2f}   [from costingfe power_cycle preset]")
 print(f"  ECRH power p_input:                        {P_INPUT_MW:.0f} MW  [MEDIUM — derived upper bound from Q>40]")
 print(f"  Heating η_pin (gyrotron):                  {ETA_PIN}   [MEDIUM — W7-X gyrotron analogue]")
 print(f"  Availability:                              {AVAILABILITY:.0%}   [CANONICAL — scoring_framework.md §Plant availability (MCF steady-state, D-T); 2-yr cycle gives ~96% theoretical max]")

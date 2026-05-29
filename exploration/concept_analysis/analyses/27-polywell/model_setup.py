@@ -948,8 +948,6 @@ def main():
         coil_system_cost_M_USD=200.0,
         ebeam_system_cost_M_USD=130.0,
         plant_availability=0.70,
-        interest_rate=0.10,
-        noak=False,                 # FOAK
     )
 
     # Moderate: Park 2025 baseline (γ=0.1, Q≈12.6 as modeled)
@@ -964,9 +962,7 @@ def main():
         coil_system_cost_M_USD=100.0,
         ebeam_system_cost_M_USD=70.0,
         plant_availability=0.85,
-        interest_rate=0.06,
         construction_time_years=5.0,
-        noak=True,
     )
 
     # =========================================================================

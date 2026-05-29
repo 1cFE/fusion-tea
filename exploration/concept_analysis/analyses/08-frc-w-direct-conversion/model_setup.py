@@ -148,9 +148,6 @@ result = model.forward(
     n_mod=N_MODULES,
     construction_time_yr=4.0, # Factory-built modular assembly; compact linear geometry.
                               # Source: mif_mag_target.yaml default (4.0 yr)
-    interest_rate=0.07,
-    inflation_rate=0.02,
-    noak=True,
     # ── Cost overrides ────────────────────────────────────────────
     #
     # The MIF CAS22 defaults assume HTS superconducting coils ($50/kAm with
@@ -263,20 +260,6 @@ result = model.forward(
                      # D-He3 fuel eliminates tritium breeding blanket entirely.
                      # Source: analysis.md §S4 Key Materials (No Tritium Breeding Blanket);
                      #         helion-website-technology.md §Fuel
-    eta_th=0.85,      # standardized from 0.9 per scoring_framework.md (Energy Capture: Direct (inductive))
-                     # Three conflicting public data points:
-                     #   >95% round-trip: subscale demo, >1M pulses with IGBTs.
-                     #     Source: dossier.md §Energy Capture (synthesizes 2015 Helion press
-                     #     release; not independently verifiable from in-scope sources)
-                     #   85-95%: range stated without test conditions.
-                     #     Source: contrary-research-helion.md §Energy Recovery
-                     #   η=0.70: magnetic energy recovery only (ARPA-E design point).
-                     #     Source: docslib-helion-arpa-e-presentation.md §Energy Efficiency
-                     #   ~90%: stated in handwritten §Device Description.
-                     #     Source: handwritten/08-frc-w-direct-conversion.md §Device Description
-                     # 0.90 adopted as central estimate; sensitivity output shows leverage.
-                     # Note: ~5% neutron power fraction also converted at 90% (small error).
-                     # Source: analysis.md §S2 Challenge 1 and Challenge 6
     eta_p=0.5,       # Pumping efficiency. DEFAULT from MIF defaults.
     eta_pin=0.95,    # Pulsed power wall-plug efficiency (solid-state IGBT).
                      # Modern solid-state switching; demonstrated at subscale.

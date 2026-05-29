@@ -85,10 +85,7 @@ result = model.forward(
     # IFE construction simpler than tokamak (no magnet winding schedule).
     # Source: pulsed_laser_ife.yaml default
     construction_time_yr=5.0,
-    interest_rate=0.07,
-    inflation_rate=0.0245,
     n_mod=1,
-    noak=True,
 
     # ── IFE power balance — Ribeyre 2025 design point ────────────────
     # q_eng = 4.31: computed from Ribeyre 2025 forward power balance.
@@ -115,7 +112,6 @@ result = model.forward(
     # Rankine cycle (steam) or gas turbine at 40% thermal efficiency.
     # Ribeyre §III specifies this; consistent with framework RANKINE preset default.
     # Source: aip-advances-ribeyre-2025.md §III. REACTOR MODEL (medium confidence)
-    eta_th=0.35,
  # standardized from 0.4 per scoring_framework.md (Energy Capture: Thermal (unspecified))
 
     # Standard DT neutron energy multiplier; pulsed_laser_ife.yaml default
@@ -409,14 +405,10 @@ for cpj in [100, 333, 500, 700, 1000]:
         availability=0.75,
         lifetime_yr=30,
         construction_time_yr=5.0,
-        interest_rate=0.07,
-        inflation_rate=0.0245,
         n_mod=1,
-        noak=True,
         q_eng=4.31,
         eta_pin=0.10,
         f_rep=10.0,
-        eta_th=0.35,
  # standardized from 0.4 per scoring_framework.md (Energy Capture: Thermal (unspecified))
         mn=1.1,
         f_rad=0.10,
@@ -454,14 +446,10 @@ for tf_cost in [100, 244, 350, 500]:
         availability=0.75,
         lifetime_yr=30,
         construction_time_yr=5.0,
-        interest_rate=0.07,
-        inflation_rate=0.0245,
         n_mod=1,
-        noak=True,
         q_eng=4.31,
         eta_pin=0.10,
         f_rep=10.0,
-        eta_th=0.35,
  # standardized from 0.4 per scoring_framework.md (Energy Capture: Thermal (unspecified))
         mn=1.1,
         f_rad=0.10,

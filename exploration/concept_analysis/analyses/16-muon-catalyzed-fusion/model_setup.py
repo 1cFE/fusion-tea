@@ -1121,7 +1121,6 @@ def main() -> None:
             alpha_sticking_pct=0.4,
             acc_beam_power_MW=100,
             acc_capital_M=1000.0,     # ~2× cheaper accelerator at this lower energy
-            eta_th=0.35,
  # standardized from 0.52 per scoring_framework.md (Energy Capture: Thermal (unspecified))
         ),
     }

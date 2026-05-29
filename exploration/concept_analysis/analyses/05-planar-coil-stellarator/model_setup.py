@@ -58,10 +58,6 @@ _SHARED_KWARGS = dict(
     construction_time_yr=8.0,  # DEFAULT [D]: no Helios-specific timeline published;
                                # UNCERTAIN: planar coil winding is simpler than 3D coils
                                # but FOAK complexity keeps estimate at 8 yr
-    interest_rate=0.07,      # DEFAULT: standard LCOE financial assumption
-    inflation_rate=0.0245,   # DEFAULT: standard LCOE financial assumption
-    noak=False,              # FOAK: first-plant scenario; Thea LCOE target is $150/MWh
-                             # for first plant [A: "LCOE target (first plant): $150/MWh"]
 
     # ── Helios geometry ─────────────────────────────────────────────────────
     # Source: thea-energy-helios-arxiv-2512-08027.md §Plasma & Configuration
@@ -81,17 +77,11 @@ _SHARED_KWARGS = dict(
                              #      plasma self-heats via alpha particles; 10 MW ECRH only
                              #      at startup [B §Heating]; plasma is ignited (Q~958)
     mn=1.1,                  # DEFAULT [D]: standard D-T neutron energy multiplier
-    eta_th=0.35,              # standardized from 0.4 per scoring_framework.md (Energy Capture: Thermal (steam))
-                             #        superheated steam [B §Energy Conversion];
-                             #        slightly below default 0.46 (Helios-specific value)
     eta_p=0.5,               # DEFAULT [D]: pumping efficiency
     eta_pin=0.5,             # DEFAULT [D]: ECRH gyrotron wall-plug efficiency
                              #               (standard for 170 GHz ITER-spec gyrotrons)
-    eta_de=0.85,             # DEFAULT [D]: DEC efficiency; unused (f_dec=0.0)
     f_sub=0.03,              # DEFAULT [D]: miscellaneous subsystem fraction; bulk of
                              #               48 MWe facility load captured in p_xxx below
-    f_dec=0.0,               # Pure steam Rankine; no DEC [A: recirculating power is
-                             #               parasitic only]
 
     # Individual auxiliary loads — components of the 48 MWe facility total [A]
     p_coils=2.0,             # UNCERTAIN: 324 individually addressable HTS power supply

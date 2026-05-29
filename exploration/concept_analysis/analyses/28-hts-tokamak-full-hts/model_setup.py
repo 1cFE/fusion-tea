@@ -116,16 +116,6 @@ CONSTRUCTION_TIME_YR = 5.0
 # China-domestic supply chain advantage.
 # analysis.md §Section 7, Differentiators table.
 
-INTEREST_RATE = 0.07
-# DEFAULT: 7% weighted average cost of capital; no ES financing data.
-# analysis.md §Section 2: interest rate is "second lever" for capital-dominated
-# concepts; financing uncertainty adds risk premium not modeled here.
-
-INFLATION_RATE = 0.0245
-# DEFAULT: ~2.45% long-run inflation. China-domestic costs may differ materially.
-
-NOAK = True
-# Nth-of-a-kind assumption for concept TEA comparability.
 
 # ── Geometry at base scale (R=2.0 m) ─────────────────────────────────
 # Aspect ratio A = R0 / plasma_t = 4.0 maintained across all scale scenarios.
@@ -177,10 +167,6 @@ MN = 1.1
 # Blanket design undisclosed; value may vary with blanket material choice.
 # analysis.md §Section 2, Challenge 2; §Section 4: blanket material unknown.
 
-ETA_TH = 0.40
-# UNCERTAIN: Thermal conversion efficiency. Power conversion cycle undisclosed.
-# analysis.md §Section 2, Challenge 1 and §Section 5 (gap #5: blocking).
-# 0.40 conservative steam Rankine assumption; sCO₂ Brayton could reach 0.45–0.50.
 
 ETA_P = 0.5      # DEFAULT: Pumping efficiency.
 ETA_PIN = 0.65
@@ -189,9 +175,7 @@ ETA_PIN = 0.65
 # analysis.md §Section 2, Challenge 5: "Wall-plug efficiency of ICRH is ~60–70%."
 # Using 0.65 (midpoint); vs. 0.50 framework default for generic heating.
 
-ETA_DE = 0.85    # DEFAULT: No DEC system disclosed for ES concept.
 F_SUB = 0.03     # DEFAULT: Subsystem recirculating power fraction.
-F_DEC = 0.0      # DEFAULT: No DEC disclosed.
 
 P_COILS = 5.0
 # UNCERTAIN: Coil steady-state power [MW]. Full HTS (TF+PF+CS) at 20 K; resistive
@@ -238,9 +222,6 @@ def _base_kwargs(r0, net_electric_mw, plasma_t, availability):
         lifetime_yr=LIFETIME_YR,
         n_mod=1,
         construction_time_yr=CONSTRUCTION_TIME_YR,
-        interest_rate=INTEREST_RATE,
-        inflation_rate=INFLATION_RATE,
-        noak=NOAK,
         R0=r0,
         elon=ELON,
         plasma_t=plasma_t,
@@ -250,12 +231,9 @@ def _base_kwargs(r0, net_electric_mw, plasma_t, availability):
         vessel_t=VESSEL_T,
         p_input=P_INPUT,
         mn=MN,
-        eta_th=ETA_TH,
         eta_p=ETA_P,
         eta_pin=ETA_PIN,
-        eta_de=ETA_DE,
         f_sub=F_SUB,
-        f_dec=F_DEC,
         p_coils=P_COILS,
         p_cool=P_COOL,
         p_pump=P_PUMP,
@@ -560,11 +538,11 @@ print(f"  Elongation κ:          {ELON}       [UNCERTAIN — standard D-shaped]
 print(f"  Blanket thickness:     {BLANKET_T} m  [UNCERTAIN — no blanket design disclosed]")
 print(f"  Structure thickness:   {STRUCTURE_T} m  [DEFAULT — steady_state_tokamak.yaml; matches peer group 01/21/29/33/34]")
 print(f"  Vessel thickness:      {VESSEL_T} m  [DEFAULT — steady_state_tokamak.yaml; matches peer group 01/21/29/33/34]")
-print(f"  Thermal efficiency:    {ETA_TH:.0%}    [UNCERTAIN — cycle type unknown; steam Rankine]")
+print(f"  Thermal efficiency:    {r_base.params['eta_th']:.0%}    [from costingfe power_cycle preset]")
 print(f"  ICRH wall-plug η:      {ETA_PIN:.0%}   [UNCERTAIN — 60–70% range; analysis.md §Ch.5]")
 print(f"  Cryo power:            {P_CRYO} MW   [UNCERTAIN — full HTS 20 K cryoplant estimate]")
 print(f"  Construction time:     {CONSTRUCTION_TIME_YR} yr  [UNCERTAIN — optimistic; <2 yr for HH70]")
-print(f"  Interest rate:         {INTEREST_RATE:.0%}     [DEFAULT — no ES financing data]")
+print(f"  Interest rate:         {r_base.params['interest_rate']:.0%}     [from costingfe default]")
 print(f"  hts_full_coil_premium: ×{HTS_FULL_COIL_PREMIUM:.2f}    [UNCERTAIN — placeholder ×1.1–×1.3]")
 print()
 print("  Data rating: LIMITED — Energy Singularity discloses NO commercial design")

@@ -80,15 +80,6 @@ CONSTRUCTION_TIME_YR = 5.0
 # Comment in YAML: "No magnets, simpler." Applicable here — Cortex has no magnet
 # infrastructure, though the novel nanoshell supply chain may offset.
 
-INTEREST_RATE = 0.07
-# DEFAULT: 1costingfe costing_constants convention.
-
-INFLATION_RATE = 0.0245
-# DEFAULT: 1costingfe costing_constants convention.
-
-NOAK = False
-# FOAK: Concept is TRL 1 — no experimental results; applies 10% contingency (CAS29).
-# costing_constants.yaml: contingency_rate_foak = 0.10.
 
 # ── Power balance ─────────────────────────────────────────────────────────────
 # Derived from: Q~100 projection (arXiv:2503.15531), eta_th=0.35, eta_pin=0.10.
@@ -109,28 +100,10 @@ P_IGNITION_MW = 0.0
 # beam serves as both driver and igniter (plasmonic in-situ mechanism).
 # ife_laser_ife.yaml default: 0.1 MW — overridden to 0.
 
-ETA_TH = 0.35
-# UNCERTAIN (BLOCKING): Thermal-to-electric conversion efficiency.
-# analysis.md §Section 2, Challenge 1: "No energy capture architecture disclosed
-# by any Cortex source." This is a structural absence — the company has not described
-# any method for converting D-D fusion energy to electricity.
-# 0.35 is a placeholder Rankine cycle assumption for D-D neutron + charged-particle
-# heat deposition. It is NOT validated; actual architecture may differ entirely.
-# ife_laser_ife.yaml default: 0.46 — reduced here to reflect absence of validated design.
 
 ETA_P = 0.5
 # DEFAULT: Pumping efficiency. ife_laser_ife.yaml.
 
-ETA_PIN1 = 0.10
-# UNCERTAIN: Femtosecond laser wall-plug efficiency (implosion beam).
-# analysis.md §Section 4, Femtosecond Laser Components: "Ti:sapphire or Yb-fiber
-# systems." Ti:sapphire wall-plug: ~5–10%; Yb-fiber: up to 30%.
-# 0.10 is the upper bound for Ti:sapphire and a conservative estimate for Yb-fiber.
-# ife_laser_ife.yaml default: 0.10 — consistent with this assessment.
-
-ETA_PIN2 = 0.10
-# UNCERTAIN: Ignition laser wall-plug efficiency. Same fs architecture assumed.
-# ife_laser_ife.yaml default: 0.10.
 
 MN = 1.05
 # UNCERTAIN: Neutron energy multiplier (blanket energy multiplication factor).
@@ -220,17 +193,11 @@ result = model.forward(
     n_mod=1,
     # Financial
     construction_time_yr=CONSTRUCTION_TIME_YR,
-    interest_rate=INTEREST_RATE,
-    inflation_rate=INFLATION_RATE,
-    noak=NOAK,
     # Power balance
     p_implosion=P_IMPLOSION_MW,
     p_ignition=P_IGNITION_MW,
     mn=MN,
-    eta_th=ETA_TH,
     eta_p=ETA_P,
-    eta_pin1=ETA_PIN1,
-    eta_pin2=ETA_PIN2,
     f_sub=F_SUB,
     p_pump=P_PUMP,
     p_trit=P_TRIT,
@@ -318,10 +285,6 @@ print("=" * 65)
 
 assumptions = [
     # (parameter, value, flag, note)
-    ("eta_th (thermal eff.)",
-     f"{ETA_TH:.2f}",
-     "BLOCKING UNCERTAIN",
-     "No energy conversion architecture disclosed by Cortex. Rankine placeholder."),
     ("Availability",
      f"{AVAILABILITY:.2f}",
      "BLOCKING UNCERTAIN",
@@ -334,10 +297,6 @@ assumptions = [
      f"{P_IMPLOSION_MW:.0f}",
      "UNCERTAIN",
      "Scaled from 3 kW @ 1 MW fusion (Q=100) to 1 GWe. Very rough approximation."),
-    ("eta_pin1/2 (laser η)",
-     f"{ETA_PIN1:.2f}",
-     "UNCERTAIN",
-     "Ti:sapphire: 5–10%; Yb-fiber: up to 30%. No plant-scale data."),
     ("Gold nanoshell recycling",
      "Assumed 100%",
      "BLOCKING UNCERTAIN",

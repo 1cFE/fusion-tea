@@ -71,17 +71,8 @@ _SHARED_KWARGS = dict(
     n_mod=1,
     construction_time_yr=4.0,  # DEFAULT: pulsed_mag_target.yaml; compact chamber,
                                 # no superconducting magnet assembly bottleneck
-    interest_rate=0.07,         # DEFAULT: standard 7% real WACC
-    inflation_rate=0.0245,      # DEFAULT: 2.45% long-run US CPI
-    noak=True,                  # Nth-of-a-kind plant (hypothetical mature technology)
 
     # ── Power balance ───────────────────────────────────────────────────────
-    eta_th=0.35,                # Subcritical steam Rankine; coal-plant retrofit
-                                # framing implies subcritical host plant (~33–36 %);
-                                # midpoint chosen.
-                                # Source: nearstar-energy-capture-research.md §Key finding;
-                                # analysis.md §S5, Available Parameters row "Thermal
-                                # conversion efficiency"
     eta_pin=0.25,               # UNCERTAIN: railgun wall-plug (kinetic) efficiency.
                                 # Experimental plasma-armature railguns: 20–40 %.
                                 # No NearStar-specific value disclosed.

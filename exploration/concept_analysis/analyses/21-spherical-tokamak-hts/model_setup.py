@@ -82,11 +82,6 @@ VESSEL_T = 0.20             # DEFAULT: framework value
 
 # ── Power balance ─────────────────────────────────────────────────────
 
-ETA_TH = 0.35                # standardized from 0.33 per scoring_framework.md (Energy Capture: Thermal (unspecified))
-                            # by Tokamak Energy.  STEP ST research evaluates steam Rankine,
-                            # hybrid ORC, sCO2 Brayton; range 30–38%.  Central estimate 33%
-                            # (steam Rankine).
-                            # Source: analysis.md §Section 2, Challenge 1; ste1-pilot-plant-specs.md
 
 ETA_PIN = 0.52              # ECRH gyrotron wall-plug efficiency.  Flat-top uses ECRH only
                             # (O-mode) per Alieva et al. (2026); current-generation gyrotrons
@@ -104,10 +99,8 @@ MN = 1.1                    # DEFAULT: neutron energy multiplier for outboard Li
                             # no ST-E1-specific data; framework default applied.
 
 ETA_P = 0.5                 # DEFAULT: pumping efficiency
-ETA_DE = 0.85               # DEFAULT: direct energy conversion efficiency (N/A — f_dec=0)
 
 F_SUB = 0.03                # DEFAULT: subsystem power fraction of gross electric
-F_DEC = 0.0                 # No direct energy conversion; pulsed D-T, ECRH-only heating
 
 P_COILS = 2.0               # DEFAULT: HTS coils at 30 K have very low resistive losses;
                             # cryo overhead captured separately in p_cryo.
@@ -130,9 +123,6 @@ P_CRYO = 1.0                # UNCERTAIN: HTS at 30 K has much lower cryo power t
 
 # ── Financial parameters ──────────────────────────────────────────────
 
-INTEREST_RATE = 0.07        # DEFAULT: standard project finance assumption
-INFLATION_RATE = 0.0245     # DEFAULT: US long-run CPI target
-NOAK = True                 # NOAK reference case (no contingency, mature supply chain)
 
 # ── Shared kwargs (used for both native and 1 GW forward passes) ──────
 
@@ -141,9 +131,6 @@ _SHARED_KWARGS = dict(
     lifetime_yr=LIFETIME_YR,
     n_mod=1,
     construction_time_yr=CONSTRUCTION_TIME_YR,
-    interest_rate=INTEREST_RATE,
-    inflation_rate=INFLATION_RATE,
-    noak=NOAK,
 
     # ST-E1 Rev D geometry
     R0=R0,                          # 5.0 m — published
@@ -157,12 +144,9 @@ _SHARED_KWARGS = dict(
     # Power balance
     p_input=P_INPUT_MW,             # 50 MW — DEFAULT (ECRH power undisclosed)
     mn=MN,                          # 1.1 — DEFAULT
-    eta_th=ETA_TH,                  # 0.33 — UNCERTAIN (steam Rankine analogue)
     eta_p=ETA_P,                    # 0.5 — DEFAULT
     eta_pin=ETA_PIN,                # 0.52 — ECRH gyrotron wall-plug efficiency
-    eta_de=ETA_DE,                  # 0.85 — DEFAULT (DEC not used)
     f_sub=F_SUB,                    # 0.03 — DEFAULT
-    f_dec=F_DEC,                    # 0.0 — no DEC (pulsed D-T, ECRH-only)
     p_coils=P_COILS,                # 2.0 MW — DEFAULT (HTS, low resistive loss)
     p_cool=P_COOL,                  # 15.0 MW — UNCERTAIN (Li metal circuit)
     p_pump=P_PUMP,                  # 2.0 MW — UNCERTAIN (Li metal pumping)
@@ -204,7 +188,7 @@ print("Spherical Tokamak - HTS (Tokamak Energy ST-E1 Rev D)")
 print(f"  Config: {NET_ELECTRIC_MW:.0f} MWe net | {AVAILABILITY:.0%} availability | {LIFETIME_YR} yr | NOAK")
 print(f"  Geometry: R0={R0} m, A={ASPECT_RATIO}, a={PLASMA_T:.2f} m, κ={ELON}")
 print(f"  Field: B={5.25} T on-axis | Heating: ECRH-only (η_pin={ETA_PIN})")
-print(f"  Thermal eff.: η_th={ETA_TH} (UNCERTAIN — steam Rankine analogue)")
+print(f"  Thermal eff.: η_th={result.params['eta_th']:.2f} (from costingfe power_cycle preset)")
 print()
 print(f"LCOE:       {c.lcoe:.1f} $/MWh")
 print(f"Overnight:  {c.overnight_cost:.0f} $/kW")
@@ -259,7 +243,7 @@ print(f"  Major radius R0:                               {R0} m    [HIGH confide
 print(f"  Aspect ratio A → minor radius:                 {ASPECT_RATIO} → {PLASMA_T:.2f} m [HIGH confidence]")
 print(f"  Elongation κ:                                  {ELON}     [UNCERTAIN — analogue]")
 print(f"  On-axis field B:                               5.25 T  [HIGH confidence]")
-print(f"  Thermal efficiency η_th:                       {ETA_TH}   [UNCERTAIN — steam Rankine analogue]")
+print(f"  Thermal efficiency η_th:                       {result.params['eta_th']:.2f}   [from costingfe power_cycle preset]")
 print(f"  Heating (ECRH) wall-plug η_pin:               {ETA_PIN}   [MEDIUM — gyrotron analogue]")
 print(f"  Aux heating power p_input:                     {P_INPUT_MW:.0f} MW  [DEFAULT — undisclosed]")
 print(f"  Availability:                                  {AVAILABILITY:.0%}   [canonical — scoring_framework.md §Plant availability, MCF quasi-steady D-T]")

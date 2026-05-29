@@ -47,9 +47,6 @@ _SHARED_KWARGS = dict(
     n_mod=1,                    # Single-module plant
     construction_time_yr=7.0,   # UNCERTAIN: no Firefly/MANTA estimate; 7 yr typical
                                 # for first-of-kind fusion pilot plant
-    interest_rate=0.07,         # Standard project finance assumption
-    inflation_rate=0.0245,      # US long-run CPI target
-    noak=True,                  # Nth-of-a-kind; MANTA cost estimate is NOAK-adjacent
 
     # ── Geometry (MANTA §Table 1) ────────────────────────────────────────────
     R0=4.55,          # Major radius [m]; manta-reference-design.md §Table 1
@@ -76,13 +73,9 @@ _SHARED_KWARGS = dict(
     p_icrf=40.0,      # 40 MW He-3 minority ICRF at 110 MHz; manta-reference-design.md §2.1
     mn=1.11,          # DEVIATION: from canonical 1.1 (D-T) — FLiBe blanket, TBR=1.15
                       # design; manta-reference-design.md §5.1
-    eta_th=0.38,      # Thermal-to-electric efficiency; back-calculated from MANTA
-                      # power balance (see derivation in docstring)
     eta_pin=0.50,     # ICRF wall-plug efficiency; framework default for RF heating
     eta_p=0.50,       # Pumping efficiency — framework default
-    eta_de=0.85,      # Direct energy conversion efficiency — unused (f_dec=0.0)
     f_sub=0.03,       # Subsystem power fraction — framework default
-    f_dec=0.0,        # No DEC — standard tokamak thermal cycle
     p_coils=3.0,      # UNCERTAIN: HTS coil power at 20 K (liquid H2 cooling);
                       # MANTA targets REBCO at 11 T, 47.2 kA; cryogenic load ~1-3 MW
                       # for HTS vs ~50 MW for LTS; manta-reference-design.md §4

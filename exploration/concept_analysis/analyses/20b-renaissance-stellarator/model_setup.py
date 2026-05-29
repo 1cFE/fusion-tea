@@ -74,8 +74,6 @@ LIFETIME_YR = 30
 # Longer construction than default 8yr: first-of-kind laser-patterning manufacturing
 # and liquid metal wall integration add substantial first-plant schedule risk
 CONSTRUCTION_TIME_YR = 10
-INTEREST_RATE = 0.07
-INFLATION_RATE = 0.0245
 
 # ── Cost Overrides ───────────────────────────────────────────────────────────
 _COST_OVERRIDES = {
@@ -101,9 +99,6 @@ _SHARED_KWARGS = dict(
     lifetime_yr=LIFETIME_YR,
     n_mod=1,
     construction_time_yr=CONSTRUCTION_TIME_YR,
-    interest_rate=INTEREST_RATE,
-    inflation_rate=INFLATION_RATE,
-    noak=True,
 
     # ── Machine geometry — compact QI stellarator ────────────────────────────
     # Source: Nuclear Fusion 64 (2024) 026007
@@ -136,8 +131,6 @@ _SHARED_KWARGS = dict(
 
     # ── Power balance — sCO₂ Brayton-Rankine ─────────────────────────────────
     # Source: Energy Conversion and Management 276 (2023) 116572 (Fama et al.)
-    eta_th=0.48,       # standardized from 0.5 per scoring_framework.md (Energy Capture: Thermal (sCO2))
-                      # ECM 276 (2023) 116572; overrides PowerCycle.BRAYTON_SCO2 default (0.47)
 
     # Blanket energy multiplication factor (total thermal energy deposited per unit neutron power).
     # JNM 599 reports M_E = 1.07 for optimized Pb(10cm)+Li-LiH(22cm) config (design req: ≥1.0).
@@ -156,9 +149,7 @@ _SHARED_KWARGS = dict(
     eta_pin=0.60,     # NNBI neutralization efficiency (startup sizing reference);
                       # NF 64 (2024) 026007; irrelevant at p_input=0
     eta_p=0.50,       # DEFAULT: pumping efficiency
-    eta_de=0.85,      # DEFAULT: DEC efficiency (no DEC deployed)
     f_sub=0.03,       # DEFAULT: subsystem power fraction
-    f_dec=0.0,        # No direct energy converter
 
     # ── Recirculating parasitic loads ─────────────────────────────────────────
     # Published constraint: net efficiency = 34%, cycle efficiency = 50%

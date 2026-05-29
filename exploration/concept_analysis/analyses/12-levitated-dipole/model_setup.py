@@ -1047,7 +1047,6 @@ def main():
         W_shield_unit_cost_per_kg=200.0,
         sacrificial_handling_M_USD_yr=40.0,
         replacement_tape_multiplier=3.0,
-        eta_th=0.35,
  # standardized from 0.37 per scoring_framework.md (Energy Capture: Thermal (unspecified))
         maintenance_availability=0.90,
         cryo_system_cost_M_USD=200.0,
@@ -1060,7 +1059,6 @@ def main():
         W_shield_unit_cost_per_kg=100.0,
         sacrificial_handling_M_USD_yr=8.0,
         replacement_tape_multiplier=2.0,
-        eta_th=0.35,
  # standardized from 0.44 per scoring_framework.md (Energy Capture: Thermal (unspecified))
         maintenance_availability=0.96,
         cryo_system_cost_M_USD=100.0,

@@ -118,9 +118,6 @@ _SHARED_KWARGS = dict(
     # Source: analysis.md §3 (WISE HTS Helical Coil, TRL 3–5); §2, Challenge 1
     construction_time_yr=_CONSTRUCTION_YR,
 
-    interest_rate=0.07,      # DEFAULT standard WACC
-    inflation_rate=0.0245,   # DEFAULT
-    noak=True,               # NOAK central estimate (fleet manufacturing learning assumed)
 
     # ── Geometry ──────────────────────────────────────────────────────────────
     # R₀=7.8 m: direct from Table I (high confidence)
@@ -146,13 +143,9 @@ _SHARED_KWARGS = dict(
     # UNCERTAIN: only 20 kWe demo at 20% efficiency; 50% is the aspirational target
     # Source: aip-2023-paper-abstract.md §II-F; helical-fusion-2025-2026-updates.md §sCO₂;
     #         analysis.md §2, Challenge 4 (load-bearing assumption for Q_eng=2.0)
-    eta_th=_ETA_TH_CENTRAL,
 
     eta_p=0.5,         # DEFAULT pumping efficiency
-    eta_de=0.85,       # DEFAULT (no DEC in Brayton cycle design)
     f_sub=0.03,        # DEFAULT subsystem power fraction
-    f_dec=0.0,         # No direct energy conversion; all thermal Brayton
-                       # Source: dossier.md §Energy Capture (sCO₂ Brayton)
 
     # Effective gyrotron system efficiency (electrical → plasma): 20 MW / 60 MW = 1/3
     # 60 gyrotrons × 1 MW each wall-plug; 3 gyrotrons per ECH beam; 20 beams × 1 MW absorbed
@@ -736,7 +729,7 @@ print("Framework does not reproduce HESTIA's $10B (2023$) published cost anchor.
 print("Upper-bound LCOE: substitute $10B overnight cost at 70.4 MWe; hold all other parameters.")
 print()
 
-_i_rate_anch  = _SHARED_KWARGS["interest_rate"]
+_i_rate_anch  = float(result.params["interest_rate"])
 _lt_yr_anch   = 30
 _crf_anch = _i_rate_anch * (1 + _i_rate_anch)**_lt_yr_anch / ((1 + _i_rate_anch)**_lt_yr_anch - 1)
 _oc_framework_kw = float(c.overnight_cost)          # $/kW

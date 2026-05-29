@@ -93,7 +93,6 @@ _SHARED_KWARGS = dict(
     # HYLIFE-II uses FLiBe primary coolant → secondary steam cycle
     # Modern sCO2 Brayton not evaluated for HIF (no published study)
     # Source: analysis §S5 [analogue, low confidence]; analysis §S3 BOP section
-    eta_th=0.38,                    # UNCERTAIN: steam Rankine analogue
 
     mn=1.1,                         # DT neutron energy multiplier (standard D-T)
     f_rad=0.10,                     # Radiation fraction of ash power (DT default)
@@ -132,9 +131,6 @@ _SHARED_KWARGS = dict(
     # first-of-kind fusion chamber and liquid-wall systems.
     # Source: analysis §S3 LIA Driver section (HIBALL: ~3 km linac, HYLIFE-II: recirculating)
     construction_time_yr=7.0,       # Extended for accelerator complex complexity
-    interest_rate=0.07,
-    inflation_rate=0.0245,
-    noak=True,                      # NOAK: long-run commercial economics reference case
 
     # ── Cost overrides ─────────────────────────────────────────────────────────
     cost_overrides={

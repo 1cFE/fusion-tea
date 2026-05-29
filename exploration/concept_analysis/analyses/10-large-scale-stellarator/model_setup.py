@@ -130,8 +130,6 @@ CONSTRUCTION_TIME_YR = 10.0     # Construction time [yr]
                                 # but still more complex than compact concepts (default 8 yr).
                                 # Analysis §Section 2 Challenge 4 (scale extrapolation).
 
-INTEREST_RATE = 0.07            # Discount / interest rate [fraction]
-INFLATION_RATE = 0.0245         # Inflation rate [fraction]
 
 # ── Model creation ──────────────────────────────────────────────────────────
 
@@ -151,9 +149,6 @@ result = model.forward(
     lifetime_yr=LIFETIME_YR,
     n_mod=1,
     construction_time_yr=CONSTRUCTION_TIME_YR,
-    interest_rate=INTEREST_RATE,
-    inflation_rate=INFLATION_RATE,
-    noak=True,  # NOAK scenario; noak_fraction baked into CAS22 override above
 
     # ── Geometry (GIGA stated parameters) ──────────────────────────────────
     R0=18.0,                # Major radius [m]
@@ -190,20 +185,11 @@ result = model.forward(
                             # No current drive needed — rotational transform is geometric.
                             # Source: analysis.md §Section 2 Challenge 6 (ECRH section)
     mn=1.1,                 # Neutron energy multiplier; DEFAULT for DT blanket
-    eta_th=0.35,            # Gross thermal conversion efficiency [fraction]
-                            # UNCERTAIN: analysis.md §Section 2 Challenge 2
-                            # HCPB/steam Rankine ~35%; DCLL/advanced Brayton ~40%+
-                            # Source: helias-reactor-context.md §7 "~35% standard"
-                            # Net 33.3% (1 GWe / 3 GWth) consistent with 35% gross
-                            # minus ~5–7% recirculating power total.
     eta_p=0.50,             # Pumping efficiency; DEFAULT
     eta_pin=0.50,           # ECRH wall-plug efficiency [fraction]
                             # Source: analysis.md §Section 3 ECRH Heating Systems
                             # "current wall-plug efficiency ~50–55%"
-    eta_de=0.0,             # Direct energy conversion efficiency; not applicable
-                            # (stellarators do not use DEC)
     f_sub=0.03,             # Subsystem power fraction; DEFAULT
-    f_dec=0.0,              # DEC fraction; not applicable
     p_coils=3.0,            # Coil system auxiliary power [MW]; DEFAULT stellarator
                             # Joint ohmic loss: ~1 nΩ × (100 kA)² × 10,000 joints
                             # = 100 W total — negligible; dominant term is coil
@@ -370,9 +356,6 @@ for nf in noak_fractions:
         lifetime_yr=LIFETIME_YR,
         n_mod=1,
         construction_time_yr=CONSTRUCTION_TIME_YR,
-        interest_rate=INTEREST_RATE,
-        inflation_rate=INFLATION_RATE,
-        noak=True,
         R0=18.0, plasma_t=1.7, elon=1.0,
         blanket_t=0.60, ht_shield_t=0.20, structure_t=0.15, vessel_t=0.10,
         plasma_volume=1500.0, B=6.0, n_e=1.0e20, T_e=12.0, Z_eff=1.3,
@@ -411,9 +394,6 @@ for bcm in bcm_values:
         lifetime_yr=LIFETIME_YR,
         n_mod=1,
         construction_time_yr=CONSTRUCTION_TIME_YR,
-        interest_rate=INTEREST_RATE,
-        inflation_rate=INFLATION_RATE,
-        noak=True,
         R0=18.0, plasma_t=1.7, elon=1.0,
         blanket_t=0.60, ht_shield_t=0.20, structure_t=0.15, vessel_t=0.10,
         plasma_volume=1500.0, B=6.0, n_e=1.0e20, T_e=12.0, Z_eff=1.3,
@@ -453,9 +433,6 @@ for cf, note in cf_values:
         lifetime_yr=LIFETIME_YR,
         n_mod=1,
         construction_time_yr=CONSTRUCTION_TIME_YR,
-        interest_rate=INTEREST_RATE,
-        inflation_rate=INFLATION_RATE,
-        noak=True,
         R0=18.0, plasma_t=1.7, elon=1.0,
         blanket_t=0.60, ht_shield_t=0.20, structure_t=0.15, vessel_t=0.10,
         plasma_volume=1500.0, B=6.0, n_e=1.0e20, T_e=12.0, Z_eff=1.3,

@@ -90,17 +90,6 @@ VESSEL_T = 0.20             # m — DEFAULT
 # f_rad_pb11=0.15 (costing_constants.yaml): bremsstrahlung from Z=5 boron
 # → 85% of fusion energy in charged alphas available for direct energy conversion
 
-F_DEC = 0.85                # fraction of fusion power to DEC (alpha-heated fraction)
-                            # analysis.md §Section 5: p-B11 all-charged-particle; bremsstrahlung 15%
-
-ETA_DE = 0.80               # UNCERTAIN: direct conversion efficiency
-                            # analysis.md §Section 2, Challenge 2: theoretical 70–90%
-                            # No engineering design published (TRL 1–2); 0.80 is optimistic
-                            # dossier.md §Energy Capture: stated intent, no hardware
-
-ETA_TH = 0.35               # Fallback thermal efficiency for radiation fraction (15%)
-                            # analysis.md §Section 7: fallback thermal cycle if DEC not realized
-                            # DEFAULT: steam Rankine analogue; cross-reference 21-spherical-tokamak-hts
 
 ETA_PIN = 0.50              # Gyrotron wall-plug efficiency for ECRH current drive
                             # analysis.md §Section 7 (via cross-reference 21-spherical-tokamak-hts §S5)
@@ -131,10 +120,6 @@ P_HOUSE_MW = 4.0            # MW — DEFAULT: house loads
 P_CRYO_MW = 0.0             # MW — no cryogenics assumed for copper resistive coils
                             # analysis.md §Section 5, dossier.md §Magnet Type: EXL-50U copper coils
 
-# ── Financial parameters ──────────────────────────────────────────────
-INTEREST_RATE = 0.07        # DEFAULT: standard project finance assumption
-INFLATION_RATE = 0.0245     # DEFAULT: US long-run CPI target
-NOAK = True                 # NOAK reference case
 
 # ── Cost overrides ────────────────────────────────────────────────────
 # None applied — framework pb11 defaults used throughout:
@@ -152,9 +137,6 @@ _SHARED_KWARGS = dict(
     lifetime_yr=LIFETIME_YR,
     n_mod=1,
     construction_time_yr=CONSTRUCTION_TIME_YR,
-    interest_rate=INTEREST_RATE,
-    inflation_rate=INFLATION_RATE,
-    noak=NOAK,
 
     # Speculative commercial ST geometry
     R0=R0,                          # 3.5 m — UNCERTAIN (scaled from EHL-2)
@@ -169,12 +151,9 @@ _SHARED_KWARGS = dict(
     p_input=P_INPUT_MW,             # 200 MW — UNCERTAIN (CS-free ECRH current drive)
     mn=1.0,                         # no neutron energy multiplication (aneutronic)
                                     # analysis.md §Section 5: primary reaction produces no neutrons
-    eta_th=ETA_TH,                  # 0.35 — DEFAULT (fallback thermal for radiation fraction)
     eta_p=0.5,                      # DEFAULT: pumping efficiency
     eta_pin=ETA_PIN,                # 0.50 — gyrotron wall-plug efficiency
-    eta_de=ETA_DE,                  # 0.80 — UNCERTAIN (DEC theoretical efficiency)
     f_sub=0.03,                     # DEFAULT: subsystem power fraction
-    f_dec=F_DEC,                    # 0.85 — alpha particle fraction to DEC
     p_coils=P_COILS_MW,             # 50 MW — UNCERTAIN (copper resistive coil ohmic)
     p_cool=P_COOL_MW,               # 5 MW — reduced (no liquid metal circuit)
     p_pump=P_PUMP_MW,               # 1 MW — DEFAULT
@@ -215,7 +194,7 @@ pt = result.power_table
 print("Spherical Tokamak - CS-free p-B11 (ENN Energy) [SPECULATIVE PLACEHOLDER]")
 print(f"  Config: {NET_ELECTRIC_MW:.0f} MWe net | {AVAILABILITY:.0%} availability | {LIFETIME_YR} yr | NOAK")
 print(f"  Geometry: R0={R0} m, A={ASPECT_RATIO}, a={PLASMA_T:.2f} m, κ={ELON}")
-print(f"  Power: ECRH p_input={P_INPUT_MW:.0f} MW (CS-free) | η_pin={ETA_PIN} | η_de={ETA_DE} | f_dec={F_DEC}")
+print(f"  Power: ECRH p_input={P_INPUT_MW:.0f} MW (CS-free) | η_pin={ETA_PIN} | η_de={result.params['eta_de']:.2f} | f_dec={result.params['f_dec']:.2f}")
 print(f"  Coils: copper resistive p_coils={P_COILS_MW:.0f} MW (OPTIMISTIC — likely 5-10x higher)")
 print(f"  WARNING: p-B11 ignition unresolved; DEC TRL 1-2; all parameters speculative")
 print()
@@ -280,9 +259,9 @@ print(f"  Net electric (analyst assumption):             {NET_ELECTRIC_MW:.0f} M
 print(f"  Major radius R0:                               {R0} m    [UNCERTAIN — scaled from EHL-2 1.05 m]")
 print(f"  Aspect ratio A → minor radius:                 {ASPECT_RATIO} → {PLASMA_T:.2f} m [UNCERTAIN — analogue]")
 print(f"  Elongation κ:                                  {ELON}     [UNCERTAIN — ST analogue]")
-print(f"  Direct conversion efficiency η_de:             {ETA_DE}    [UNCERTAIN — theoretical 70-90%, TRL 1-2]")
+print(f"  Direct conversion efficiency η_de:             {result.params['eta_de']:.2f}    [from costingfe default]")
 print(f"  DEC power fraction f_dec:                      {F_DEC}    [UNCERTAIN — 1-f_rad_pb11=0.85]")
-print(f"  Fallback thermal efficiency η_th:              {ETA_TH}   [DEFAULT — steam Rankine for radiation fraction]")
+print(f"  Fallback thermal efficiency η_th:              {result.params['eta_th']:.2f}   [from costingfe power_cycle preset]")
 print(f"  ECRH wall-plug η_pin:                          {ETA_PIN}   [MEDIUM — gyrotron analogue; cross-ref 21-ST-HTS]")
 print(f"  Auxiliary input power (ECRH):                  {P_INPUT_MW:.0f} MW  [UNCERTAIN — CS-free current drive]")
 print(f"  Copper coil ohmic loss:                        {P_COILS_MW:.0f} MW  [UNCERTAIN — optimistic; HTS transition needed]")

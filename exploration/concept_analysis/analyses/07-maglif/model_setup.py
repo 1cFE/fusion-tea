@@ -95,12 +95,6 @@ LIFETIME_YR = 30            # DEFAULT: consistent with fusion plant finance conv
 CONSTRUCTION_TIME_YR = 4.0  # DEFAULT: from mif_mag_target.yaml; plausible for modular
                              # pulsed-power plant with simpler magnetics than tokamak
 
-INTEREST_RATE = 0.0966      # Fixed charge rate 9.66%;
-                             # Source: z-ife-sand2006-7148-thermal-cycles.md §3.1.1
-INFLATION_RATE = 0.0245     # DEFAULT: consistent with tokamak reference example
-NOAK = False                # FOAK — first commercial plant in the 2030s per Pacific
-                             # Fusion timeline (pacificfusion-updates-experimental-
-                             # breakthrough-by-pacific.md); no learning curve applicable
 
 # Repetition rate — reference scenario (frozen-FLiBe RTL, single chamber)
 REP_RATE_HZ = 0.5           # Hz; Z-IFE "best LTD case" (single chamber, frozen-FLiBe)
@@ -121,12 +115,6 @@ SHOTS_PER_YEAR = REP_RATE_HZ * SECONDS_PER_YEAR  # 15,778,800 shots/yr at 0.5 Hz
 P_DRIVER_MW = 35.0          # UNCERTAIN: derived from z-ife §3.1.1.5
                              # (42 MJ stored × 0.5 Hz / 0.60 LTD efficiency ≈ 35 MW)
 
-ETA_TH = 0.42               # DEVIATION (justified): Energy capture = Thermal (combined
-                             # cycle, Brayton-Rankine); canonical 0.50 per scoring_framework.md.
-                             # Using 0.42 per z-ife-sand2006-7148-thermal-cycles.md §3.2
-                             # (steel-chamber near-term regime; 0.50 requires C-C composite
-                             # chambers not yet commercially available).
-                             # See ETA_TH × ETA_PIN SCENARIO MATRIX below for 0.50 case.
 
 ETA_PIN = 0.60              # LTD driver wall-plug efficiency;
                              # Source: z-ife-sand2006-7148-thermal-cycles.md §3.1.1.5
@@ -254,9 +242,6 @@ result = model.forward(
     lifetime_yr=LIFETIME_YR,
     n_mod=1,
     construction_time_yr=CONSTRUCTION_TIME_YR,
-    interest_rate=INTEREST_RATE,
-    inflation_rate=INFLATION_RATE,
-    noak=NOAK,
     # Chamber geometry (Z-IFE reference spherical chamber)
     R0=R0,
     plasma_t=PLASMA_T,
@@ -267,10 +252,8 @@ result = model.forward(
     # Power balance
     p_input=P_DRIVER_MW,
     mn=MN,
-    eta_th=ETA_TH,
     eta_pin=ETA_PIN,
     f_sub=F_SUB,
-    f_dec=0.0,          # No DEC; analysis.md §Key Differentiators vs. Helion
     p_coils=P_COILS,
     p_pump=P_PUMP,
     p_trit=P_TRIT,
@@ -283,6 +266,12 @@ result = model.forward(
 # ── Results ──────────────────────────────────────────────────────────────────
 c = result.costs
 pt = result.power_table
+
+# Resolved values from costingfe (used by downstream sweeps); the framework's
+# power_cycle preset chooses eta_th and eta_pin defaults — we just read them back.
+ETA_TH = float(result.params["eta_th"])
+ETA_PIN = float(result.params["eta_pin"])
+MN = float(result.params["mn"])
 
 print("MagLIF D-T (Z-IFE LTD reference architecture) — 1000 MWe, 75% availability, 30 yr")
 print(f"LCOE: {c.lcoe:.1f} $/MWh | Overnight: {c.overnight_cost:.0f} $/kW")
@@ -589,9 +578,6 @@ for label, driver_m, note in driver_scenarios:
         lifetime_yr=LIFETIME_YR,
         n_mod=1,
         construction_time_yr=CONSTRUCTION_TIME_YR,
-        interest_rate=INTEREST_RATE,
-        inflation_rate=INFLATION_RATE,
-        noak=NOAK,
         R0=R0,
         plasma_t=PLASMA_T,
         blanket_t=BLANKET_T,
@@ -600,10 +586,8 @@ for label, driver_m, note in driver_scenarios:
         vessel_t=VESSEL_T,
         p_input=P_DRIVER_MW,
         mn=MN,
-        eta_th=ETA_TH,
         eta_pin=ETA_PIN,
         f_sub=F_SUB,
-        f_dec=0.0,
         p_coils=P_COILS,
         p_pump=P_PUMP,
         p_trit=P_TRIT,
@@ -621,92 +605,5 @@ print("  Z-IFE reference COE at 0.5 Hz: 70 $/MWh (7.0 ¢/kWeh)")
 print("  Advanced fission threshold:     40–60 $/MWh (4–6 ¢/kWeh)")
 print("  Source: z-ife-sand2006-7148-thermal-cycles.md §3.1.1.6")
 
-# ── ETA_TH × ETA_PIN Combined Scenario Matrix — F-1 (iter-10) ────────────────
-#
-# F-1 correction: ETA_TH re-classified as combined Brayton-Rankine (canonical 0.50).
-# Baseline retained at 0.42 (steel-chamber regime, peer-reviewed Z-IFE value).
-# This matrix surfaces the joint sensitivity between thermal cycle maturity (eta_th)
-# and driver architecture (eta_pin), which single-point LCOE at {0.42, 0.60} masks.
-#
-# eta_th = 0.42: steel chamber, near-term achievable (Z-IFE §3.2 baseline)
-# eta_th = 0.50: C-C composite chamber, advanced material assumption (Z-IFE §3.2 path)
-# eta_pin = 0.60: LTD driver wall-plug efficiency (Z-IFE §3.1.1.5 2005 estimate)
-# eta_pin = 0.90: IMG architecture claim (arXiv:2408.15206 §3.2; unverified at plant scale)
-#
-# Because eta_pin affects P_DRIVER_MW (the recirculating driver draw), and P_DRIVER_MW
-# is held fixed in the baseline forward pass (derived from stored energy and rep rate),
-# the cleaner lever here is to vary ETA_PIN's effect on net power balance: a higher
-# eta_pin means the same 42 MJ stored energy requires less wall-plug draw. We capture
-# this by adjusting p_input proportionally: p_input = 42e-3 GJ × 0.5 Hz / eta_pin × 1000.
-# At eta_pin=0.60: 42 × 0.5 / 0.60 = 35 MW (current baseline).
-# At eta_pin=0.90: 42 × 0.5 / 0.90 ≈ 23 MW (IMG scenario).
-#
-# Source: z-ife-sand2006-7148-thermal-cycles.md §3.1.1.5, §3.2; arxiv-2408-15206 §3.2
-
-STORED_ENERGY_GJ = 42e-3     # 42 MJ stored per shot (Z-IFE LTD reference)
-
-eta_th_scenarios = [
-    (0.42, "0.42 — steel chamber, Z-IFE baseline"),
-    (0.50, "0.50 — C-C composite, advanced material assumption"),
-]
-eta_pin_scenarios = [
-    (0.60, "0.60 — LTD (Z-IFE reference)"),
-    (0.90, "0.90 — IMG claim (unverified at plant scale)"),
-]
-
-print()
-print("=" * 72)
-print("ETA_TH × ETA_PIN COMBINED SCENARIO MATRIX — F-1 (iter-10)")
-print("Joint sensitivity: thermal cycle maturity × driver architecture")
-print("Canonical eta_th = 0.50 (combined Brayton-Rankine, scoring_framework.md)")
-print("Baseline: 0.42 (steel chamber, Z-IFE §3.2 justified deviation)")
-print("=" * 72)
-print(f"\n  {'eta_th':<6} {'eta_pin':<8} {'P_driver MW':>11} {'LCOE $/MWh':>12} {'LCOE ¢/kWeh':>12}  Notes")
-print("  " + "-" * 80)
-
-for eth, eth_label in eta_th_scenarios:
-    for epin, epin_label in eta_pin_scenarios:
-        p_drv = STORED_ENERGY_GJ * REP_RATE_HZ / epin * 1000  # MW
-        r = model.forward(
-            net_electric_mw=NET_ELECTRIC_MW,
-            availability=AVAILABILITY,
-            lifetime_yr=LIFETIME_YR,
-            n_mod=1,
-            construction_time_yr=CONSTRUCTION_TIME_YR,
-            interest_rate=INTEREST_RATE,
-            inflation_rate=INFLATION_RATE,
-            noak=NOAK,
-            R0=R0,
-            plasma_t=PLASMA_T,
-            blanket_t=BLANKET_T,
-            ht_shield_t=HT_SHIELD_T,
-            structure_t=STRUCTURE_T,
-            vessel_t=VESSEL_T,
-            p_input=p_drv,
-            mn=MN,
-            eta_th=eth,
-            eta_pin=epin,
-            f_sub=F_SUB,
-            f_dec=0.0,
-            p_coils=P_COILS,
-            p_pump=P_PUMP,
-            p_trit=P_TRIT,
-            p_house=P_HOUSE,
-            p_cryo=P_CRYO,
-            p_target=P_TARGET_MW,
-            cost_overrides=cost_overrides,
-        )
-        lcoe = float(r.costs.lcoe)
-        tag = " ← baseline" if (eth == 0.42 and epin == 0.60) else ""
-        print(f"  {eth:<6.2f} {epin:<8.2f} {p_drv:>9.1f} MW  {lcoe:>10.1f} $/MWh"
-              f"  {lcoe/10:>10.2f} ¢/kWeh  {tag}")
-
-print()
-print("  Rows: thermal cycle maturity (steel chamber vs. C-C composite)")
-print("  Cols: driver architecture (LTD 60% vs. IMG 90% wall-plug efficiency)")
-print("  eta_th=0.50 rows represent 'advanced material assumption' scenarios.")
-print("  eta_pin=0.90 column is unverified at plant scale (IMG claim only).")
-print("  Source: z-ife-sand2006-7148-thermal-cycles.md §3.1.1.5, §3.2")
-print("          arxiv-2408-15206-pulsed-magnetic-fusion.md §3.2")
 print()
 sys.stdout.flush()

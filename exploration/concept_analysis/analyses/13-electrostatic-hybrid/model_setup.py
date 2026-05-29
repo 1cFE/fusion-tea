@@ -1024,13 +1024,11 @@ def main():
         ("Q=10, turbine, NOAK, large plant",
          OrbitronPlantParams(Q_engineering=10.0, thermal_efficiency=0.30,
                              n_modules=5000, noak=True,
-                             hv_power_supply_cost_per_kW_USD=200.0,
-                             interest_rate=0.07)),
+                             hv_power_supply_cost_per_kW_USD=200.0)),
         ("Q=20, turbine, NOAK, large plant",
          OrbitronPlantParams(Q_engineering=20.0, thermal_efficiency=0.30,
                              n_modules=10000, noak=True,
-                             hv_power_supply_cost_per_kW_USD=150.0,
-                             interest_rate=0.07)),
+                             hv_power_supply_cost_per_kW_USD=150.0)),
     ]
 
     for name, p_scen in scenario_defs:

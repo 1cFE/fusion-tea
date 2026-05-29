@@ -1226,9 +1226,7 @@ def main():
         he3_cost_per_kg=30.0e6,
         launch_cost_per_kg=2700.0,
         eta_transmitter=0.15,
-        eta_dec=0.57,
         Q_sci=10.0,
-        noak=False,
     )
 
     # Moderate: market He3, Falcon 9, improved beaming (no phased-array steering)
@@ -1236,9 +1234,7 @@ def main():
         he3_cost_per_kg=30.0e6,
         launch_cost_per_kg=2700.0,
         eta_transmitter=0.50,    # non-steering tube efficiency (aspirational)
-        eta_dec=0.57,
         Q_sci=15.0,
-        noak=False,
     )
 
     # Optimistic-A: self-bred He3 (~$0), Starship era, no phased-array
@@ -1246,12 +1242,9 @@ def main():
         he3_cost_per_kg=0.0,       # self-bred (note: analysis shows this requires D-rich fuel)
         launch_cost_per_kg=200.0,  # Starship target
         eta_transmitter=0.50,      # high-efficiency tubes, no phased-array steering
-        eta_dec=0.65,              # upper bound DEC
         Q_sci=20.0,
         eta_rectenna=0.90,
-        interest_rate=0.06,
         plant_lifetime_years=15.0,
-        noak=True,
     )
 
     # Optimistic-B: as above + aggressive Q and improved beaming
@@ -1259,14 +1252,11 @@ def main():
         he3_cost_per_kg=0.0,
         launch_cost_per_kg=100.0,  # Starship mature pricing
         eta_transmitter=0.75,      # aspirational non-steering (not demonstrated)
-        eta_dec=0.65,
         eta_beam=0.89,
         eta_rectenna=0.90,
         Q_sci=30.0,
         plant_availability=0.92,
-        interest_rate=0.05,
         plant_lifetime_years=20.0,
-        noak=True,
     )
 
     scenarios = {

@@ -63,12 +63,6 @@ LIFETIME_YR = 30
 # Confidence: medium — target stated, not demonstrated at 10 Hz / plant scale.
 ETA_PIN = 0.10
 
-# Thermal cycle efficiency (Rankine steam).
-# Source: focused-energy-callahan-interview.md §Steam cycle —
-#   "We will use a conventional steam cycle to convert the heat into
-#   electricity." Explicitly confirmed. Rankine preset ≈ 40%.
-ETA_TH = 0.35
- # standardized from 0.4 per scoring_framework.md (Energy Capture: Thermal (steam))
 
 # Petawatt ignition laser cost premium over DPSSL compression laser.
 # Source: analysis.md §Challenge 2 — petawatt ignitor adds ~35–50% more
@@ -89,10 +83,6 @@ result = model.forward(
     availability=AVAILABILITY,
     lifetime_yr=LIFETIME_YR,
     construction_time_yr=5.0,    # DEFAULT: IFE default (shorter than MFE, no magnets)
-    interest_rate=0.07,          # DEFAULT: standard WACC
-    inflation_rate=0.0245,       # DEFAULT: US CPI long-run average
-    noak=True,                   # NOAK: long-run commercial scenario (FOAK not modeled;
-                                 #   fast ignition physics undemonstrated)
 
     # ── Physics / power balance ──────────────────────────────────────
     # Engineering gain. HIGHLY UNCERTAIN. Framework IFE default retained.
@@ -117,7 +107,6 @@ result = model.forward(
 
     # Thermal conversion efficiency.
     # Source: focused-energy-callahan-interview.md §Steam cycle.
-    eta_th=ETA_TH,
 
     # Neutron energy multiplier (Li blanket breeding reaction).
     # DEFAULT: standard IFE DT value. Blanket type undisclosed by Focused
@@ -285,13 +274,9 @@ _base_fwd = dict(
     availability=AVAILABILITY,
     lifetime_yr=LIFETIME_YR,
     construction_time_yr=5.0,
-    interest_rate=0.07,
-    inflation_rate=0.0245,
-    noak=True,
     q_eng=4.0,
     f_rep=10.0,
     eta_pin=ETA_PIN,
-    eta_th=ETA_TH,
     mn=1.1,
     f_rad=0.10,
     f_sub=0.03,

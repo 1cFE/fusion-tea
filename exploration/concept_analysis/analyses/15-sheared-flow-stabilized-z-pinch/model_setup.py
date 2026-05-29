@@ -960,7 +960,6 @@ def main():
             n_mod=10,
             electrode_replacement_cost_per_module_M=1.0,
             core_lifetime_FPY=5.0,
-            interest_rate=0.06,
             construction_time_years=5.0,
         ),
         "Q=5 pessimistic": SFSZPinchParams(

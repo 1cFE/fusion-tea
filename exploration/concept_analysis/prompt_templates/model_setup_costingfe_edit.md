@@ -11,6 +11,8 @@ An existing model from a prior iteration has been copied to `{{output_path}}`.
 - Maintain the existing code structure and organization
 - Add new content incrementally — do not restructure working code
 - Every change must be traceable to a specific finding or a direct consequence of one
+- **Never add or restore** any of: `noak`, `interest_rate`, `inflation_rate`, `eta_th`, `eta_de`, `f_dec`, `eta_dec`, `eta_pin1`, `eta_pin2`. These are owned by `1costingfe` per issue #35. If a finding asks you to "tune" any of them, the fix goes in costingfe (YAML / preset / `forward()` default), not here. See `model_setup_costingfe.md` §"Forbidden Parameters" for the full rationale.
+- Sensitivity sweeps or scenario matrices that vary any of those parameters are NOT allowed — delete any existing block that does.
 
 {{#if model_feedback}}
 ## Assessment Findings

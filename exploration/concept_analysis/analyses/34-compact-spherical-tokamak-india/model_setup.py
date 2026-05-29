@@ -51,12 +51,6 @@ _SHARED_KWARGS = dict(
                                     # analogous to or worse than Stewart & Shirvan (2022)
                                     # 2.2× building cost regulatory scenario
                                     # analysis.md §2 Challenge 6; §6 Gap 10
-    interest_rate=0.07,             # DEFAULT: 7% WACC
-    inflation_rate=0.0245,          # DEFAULT: 2.45% CPI
-    noak=True,                      # Nth-of-kind: company targets 2,500 modules
-                                    # (pranos-fusion-overview.md §Technology Description)
-                                    # Factory learning assumed; NOAK rate valid only if
-                                    # demonstrated performance precedes fleet commitment
 
     # ── Compact Spherical Tokamak Geometry ─────────────────────────────────
     # UNCERTAIN: All geometry values are analogues — no Pranos dimensions published.
@@ -86,21 +80,10 @@ _SHARED_KWARGS = dict(
     p_icrf=0.0,                     # DEFAULT
     p_lhcd=0.0,                     # DEFAULT
     mn=1.1,                         # DEFAULT: neutron energy multiplier
-    eta_th=0.30,                    # DEVIATION (justified): scoring_framework.md §"Justified deviations"
-                                    # — small-plant derating. UNCERTAIN: ±2 pp (no vendor datasheet sourced).
-                                    # Canonical 0.35 is utility-scale (~250+ MWe) implicit; 50 MWe industrial
-                                    # steam turbines lose 3–7 pp from off-design effects (single-extraction
-                                    # reheat, reduced HRSG complexity). Industrial 30–80 MWe class achieves
-                                    # 28–33% vs utility-scale ~40%.
-                                    # Cite: GE/Siemens 30–80 MWe steam turbine product class literature.
-                                    # See eta_th sweep below for LCOE sensitivity over {0.28, 0.30, 0.32, 0.35}.
-                                    # analysis.md §2 Challenge 4; §6 Gap 6
     eta_p=0.5,                      # DEFAULT: pumping efficiency
     eta_pin=0.5,                    # DEFAULT: heating wall-plug efficiency
-    eta_de=0.85,                    # DEFAULT: no DEC for tokamak
     f_sub=0.04,                     # UNCERTAIN: slightly higher subsystem fraction;
                                     # fixed loads are proportionally larger at 50 MWe
-    f_dec=0.0,                      # DEFAULT: no DEC for tokamak
     p_coils=2.0,                    # DEFAULT: coil power [MW]
     p_cool=8.0,                     # UNCERTAIN: reduced absolute cooling load for smaller
                                     # machine; proportionally similar fraction of gross

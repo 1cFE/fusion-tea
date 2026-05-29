@@ -224,9 +224,6 @@ _SHARED = dict(
                                  # (R0 ≈ 3–4 m). IDC (CAS60) is among the largest single cost
                                  # accounts. A 20% schedule extension adds ~8% to LCOE.
                                  # Source: feedback.md CF-F2; analysis.md §2 (construction time)
-    interest_rate=0.07,          # DEFAULT — standard capital cost rate
-    inflation_rate=0.0245,       # DEFAULT
-    noak=True,                   # NOAK central estimate
 
     # ── Geometry — Stellaris v1 (2.76% beta; see H2a scenario for 4% variant) ──
     # UNCERTAIN: major radius and plasma volume are blocking data gaps.
@@ -251,7 +248,6 @@ _SHARED = dict(
     # Net plant efficiency ~32% (1,000 MWe / 3,100 MWth; analysis.md §5).
     # Source: analysis.md §3 (Balance of Plant, Steam Rankine paragraph);
     #         helios-stellarator-comparison.md §2
-    eta_th=0.35,
  # standardized from 0.38 per scoring_framework.md (Energy Capture: Thermal (unspecified))
 
     eta_p=0.5,                   # DEFAULT pumping efficiency
@@ -259,10 +255,7 @@ _SHARED = dict(
                                  # Current gyrotron state: ~50%; >60% possible with
                                  # multi-stage depressed collectors (future improvement)
                                  # Source: stellaris-design-details.md §2 (gyrotron note)
-    eta_de=0.85,                 # DEFAULT
     f_sub=0.03,                  # DEFAULT subsystem power fraction
-    f_dec=0.0,                   # Thermal Rankine only; no direct energy conversion
-                                 # Source: dossier.md §Energy Capture
 
     # Coil system power: 111 MW conduction load from Stellaris Table 3
     # Published as "Conduction power to coils" — nuclear heating + thermal conduction

@@ -98,7 +98,6 @@ _SHARED_KWARGS = dict(
     # Thermal efficiency: LLNL LIFE program analogue (liquid Li → steam Rankine)
     # Modern sCO2 cycle could reach ~50%; Inertia has not disclosed a confirmed value
     # Source: analysis §S5 [analogue, unsourced]; analysis §S2 Challenge 4
-    eta_th=0.45,                 # UNCERTAIN: LLNL LIFE analogue
 
     mn=1.1,                      # DT neutron energy multiplier (standard D-T)
     f_rad=0.10,                  # Radiation fraction of ash power (DT default)
@@ -129,9 +128,6 @@ _SHARED_KWARGS = dict(
     # Extended construction time: novel first-of-kind large-scale IFE plant;
     # 10 Hz driver integration and liquid-Li first wall add complexity
     construction_time_yr=6.0,
-    interest_rate=0.07,
-    inflation_rate=0.0245,
-    noak=True,                   # NOAK: long-run commercial economics
 
     # ── Cost overrides ────────────────────────────────────────────────────────
     cost_overrides={
@@ -347,7 +343,7 @@ print(f"  Laser fraction:         {_LIFE_LASER_FRAC:.0%} (~${_LIFE_LASER_FRAC*_L
 print(f"  Target fuel:            ${_LIFE_TARGET_M:.0f}M/yr at ~900 MWe")
 print(f"  Non-fuel O&M:           ~19% (~${0.19*_LIFE_COE_2011:.0f}/MWh)")
 print(f"  Capital fraction:       ~60% of COE")
-print(f"  LIFE thermal eff:       {_LIFE_ETA_TH:.0%}  [model uses {_SHARED_KWARGS['eta_th']:.0%}]")
+print(f"  LIFE thermal eff:       {_LIFE_ETA_TH:.0%}  [model uses {result.params['eta_th']:.0%}]")
 print(f"  LIFE first-unit avail:  {_LIFE_AVAIL_FOAK:.0%}  [model uses NOAK {_SHARED_KWARGS['availability']:.0%}]")
 print(f"  Target cost cross-check (scaled to {NATIVE_MW:.0f} MWe):")
 print(f"    LIFE basis x(1500/900):  ${_life_target_scaled_m:.0f}M/yr")

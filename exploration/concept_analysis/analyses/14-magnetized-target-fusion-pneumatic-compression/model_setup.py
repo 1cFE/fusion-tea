@@ -101,11 +101,8 @@ _SHARED_KWARGS = dict(
     n_mod=1,
     # Single-plant architecture; no modular decomposition published by GF.
     construction_time_yr=CONSTRUCTION_TIME_YR,
-    interest_rate=0.07,
     # DEFAULT: standard fusion project WACC; no GF-specific financing disclosed.
-    inflation_rate=0.0245,
     # DEFAULT: US CPI long-run average; framework standard.
-    noak=False,
     # FOAK: TRL 2–3 for pneumatic compression system and liquid metal tritium
     # extraction (analysis.md §Section 3). No prior commercial plant of this
     # architecture exists. Contingency rate = 10% (framework FOAK default).
@@ -150,7 +147,6 @@ _SHARED_KWARGS = dict(
     # Using 1.1 as midpoint; TBR target ~1.5 confirmed.
     # Source: dossier §Tritium Breeding; general-fusion-fst-2025-fuel-cycles.md
     #         §TBR Analysis. DEFAULT framework value for DT MIF.
-    eta_th=0.35,
     # UNCERTAIN: Rankine steam cycle thermal efficiency.
     # Published range: 33–40% (analysis.md §Section 5, thermal efficiency row).
     # Liquid metal outlet temperature not disclosed; pure Li → need IHX
@@ -171,7 +167,6 @@ _SHARED_KWARGS = dict(
     # Confidence: medium.
     f_sub=0.03,
     # DEFAULT: subsystem parasitic power fraction (diagnostics, control, aux).
-    f_dec=0.0,
     # No direct energy conversion; all output via Rankine steam turbine.
     p_coils=0.5,
     # CT (compact toroid) injector guide field coils; small normal-conducting

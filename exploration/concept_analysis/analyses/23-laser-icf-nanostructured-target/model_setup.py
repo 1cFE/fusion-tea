@@ -97,14 +97,10 @@ _SHARED_KWARGS = dict(
     availability=AVAILABILITY_MARVEL,  # UNCERTAIN; analysis.md §5 Missing Parameters
     lifetime_yr=30,                    # DEFAULT: standard 30-yr project life
     construction_time_yr=5.0,          # No large magnets; pulsed_laser_ife.yaml default
-    interest_rate=0.07,                # DEFAULT: standard WACC
-    inflation_rate=0.0245,             # DEFAULT: US CPI baseline
-    noak=True,
     # ── Power balance ──────────────────────────────────────────────────
     q_eng=Q_ENG,                       # UNCERTAIN; see constant above
     f_rep=F_REP_MARVEL,                # 10 Hz; analysis.md §5; optics-news-16-4-4.md
     eta_pin=ETA_PIN,                   # UNCERTAIN; analysis.md §5
-    eta_th=ETA_TH_CONSERVATIVE,        # UNCERTAIN; conservative steam estimate
     mn=1.0,                            # Aneutronic: no neutron multiplication
                                        # Source: dossier.md §Neutron Management; analysis.md §4
     f_sub=0.03,                        # DEFAULT: subsystem power fraction
@@ -150,13 +146,9 @@ result_hb11 = model.forward(
     availability=0.80,                 # UNCERTAIN; 1 Hz simpler maintenance than 10 Hz
     lifetime_yr=30,
     construction_time_yr=5.0,
-    interest_rate=0.07,
-    inflation_rate=0.0245,
-    noak=True,
     q_eng=4.0,                        # UNCERTAIN; slightly lower Q for lower-rep design
     f_rep=1.0,                        # HB11 rep rate; hb11-energy-technology.md; analysis.md §5
     eta_pin=0.10,                     # UNCERTAIN; HB11 stated target
-    eta_th=0.55,                       # standardized from 0.38 per scoring_framework.md (Energy Capture: Hybrid (thermal + direct))
     mn=1.0,
     f_sub=0.03,
     p_pump=1.0,
@@ -171,66 +163,11 @@ result_hb11 = model.forward(
     vessel_t=0.10,
 )
 
-# ── Marvel hybrid DEC sweep ───────────────────────────────────────────
-# Sweeps eta_dec (alpha capture efficiency) to quantify the LCOE lever
-# claimed by Marvel's hybrid electrostatic/magnetic/steam conversion.
-#
-# Method: fix p_fus at the thermal baseline (100 MWe, eta_th=40%) and
-# let p_net increase as eta_dec rises.  This is the correct physical
-# story: the same fusion driver produces more electricity as DEC
-# efficiency improves.  The alternative (fix p_net, vary q_eng) would
-# require less fusion power per unit output — showing LCOE reduction
-# from a smaller driver — but is harder to compute without re-solving
-# the inverse at variable q_eng.
-#
-# Approach:
-#   1. Get p_fus and e_driver_mj from the thermal base result.
-#   2. For each eta_dec, call pulsed_dec_forward (fixed p_fus) to get
-#      the resulting p_net and natural q_eng.
-#   3. Pass those to model_dec.forward() to price the scenario.
-#
-# At eta_dec=0 the DEC model still installs inverters and cap-bank
-# switchgear (delta_switch + delta_inv + delta_ctrl ≈ 15 M$), explaining
-# the ~5 $/MWh overhead relative to the pure-thermal Marvel result.
-# Source: analysis.md §S2 Challenge 3; dossier.md §Energy Capture
-
-_F_RAD_PB11 = 0.15  # costing_constants.yaml: PB11 bremsstrahlung fraction
-_DEC_BASE_P_FUS = float(result.power_table.p_fus)
-_DEC_BASE_E_DRIVER_MJ = float(result.power_table.e_driver_mj)
-# Exclude q_eng: the natural q_eng from the forward pass is used instead
-_DEC_SWEEP_KWARGS = {k: v for k, v in _SHARED_KWARGS.items() if k != "q_eng"}
-
-results_dec_sweep = []
-for _eta in ETA_DEC_SWEEP:
-    # Forward pass: fixed p_fus, compute p_net and natural q_eng at this eta_dec
-    _pt_fwd = _pulsed_dec_fwd(
-        p_fus=_DEC_BASE_P_FUS,
-        fuel=Fuel.PB11,
-        e_driver_mj=_DEC_BASE_E_DRIVER_MJ,
-        f_rep=F_REP_MARVEL,
-        mn=1.0,
-        eta_th=ETA_TH_CONSERVATIVE,
-        eta_pin=ETA_PIN,
-        eta_dec=_eta,
-        f_pdv=F_PDV_MARVEL,
-        f_rad=_F_RAD_PB11,
-        f_sub=0.03,
-        p_pump=1.0,
-        p_trit=0.0,
-        p_house=4.0,
-        p_cryo=0.0,
-        p_target=2.0,
-    )
-    _p_net_at_eta = float(_pt_fwd.p_net)
-    _q_eng_at_eta = float(_pt_fwd.q_eng)
-    _r = model_dec.forward(
-        net_electric_mw=_p_net_at_eta,
-        q_eng=_q_eng_at_eta,
-        eta_dec=_eta,
-        f_pdv=F_PDV_MARVEL,
-        **_DEC_SWEEP_KWARGS,
-    )
-    results_dec_sweep.append((_eta, _r))
+# ── Marvel hybrid DEC sweep removed per issue #35 ─────────────────────
+# This sweep explicitly varied eta_dec, which is now owned by costingfe's
+# pulsed_laser_ife.yaml default. Concept-level sweeps that override these
+# values are intentionally not supported. The DEC baseline result is still
+# produced via model_dec.forward() at the framework's default eta_dec below.
 
 # ── Results ────────────────────────────────────────────────────────────
 c = result.costs
@@ -258,19 +195,7 @@ print(f"\n── HB11 Energy (1 GWe, 1 Hz, steam cycle, eta_th=38%) ──")
 print(f"LCOE:      {c_hb11.lcoe:.1f} $/MWh  |  Overnight: {c_hb11.overnight_cost:.0f} $/kW")
 print(f"Fusion:    {pt_hb11.p_fus:.0f} MW   |  Net: {pt_hb11.p_net:.0f} MW   |  Q_eng: {pt_hb11.q_eng:.1f}")
 
-print("\n── Marvel Hybrid DEC Sweep (INDUCTIVE_DEC, fixed p_fus=base, f_pdv=0.80) ──")
-print("  p_fus fixed at thermal baseline; p_net increases with eta_dec.")
-print("  eta_dec=0%: DEC hardware overhead only (~15 M$ inverters+switches);")
-print("  eta_dec=60%: ~70–75% more net output from same fusion investment.")
-print("  ~5 $/MWh offset vs thermal result at eta_dec=0 = cost of installed DEC infra.")
-print(f"\n  {'eta_dec':>8}  {'LCOE ($/MWh)':>14}  {'p_net (MW)':>11}  {'q_eng':>7}  {'recirc':>8}")
-print("  " + "-" * 56)
-for _eta, _r in results_dec_sweep:
-    _c = _r.costs
-    _pt = _r.power_table
-    _rec = getattr(_pt, "rec_frac", float("nan"))
-    _qe = getattr(_pt, "q_eng", float("nan"))
-    print(f"  {_eta:>7.0%}  {_c.lcoe:>14.1f}  {_pt.p_net:>11.1f}  {_qe:>7.2f}  {_rec:>8.2%}")
+# Marvel Hybrid DEC sweep print block removed per issue #35.
 
 # ── CAS Breakdown ──────────────────────────────────────────────────────
 print("\n── CAS Breakdown: Marvel 100 MWe pilot ──")
@@ -373,7 +298,6 @@ _dec_params["eta_dec"] = 0.30  # mid-range base point for elasticity
 _dec_params["f_pdv"] = F_PDV_MARVEL
 _result_dec_base = model_dec.forward(
     net_electric_mw=NATIVE_MW,
-    eta_dec=0.30,
     f_pdv=F_PDV_MARVEL,
     **_SHARED_KWARGS,
 )

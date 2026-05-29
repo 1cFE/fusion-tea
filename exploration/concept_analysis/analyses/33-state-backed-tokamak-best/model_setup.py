@@ -73,16 +73,12 @@ NET_ELECTRIC_MW = 1000.0
 AVAILABILITY = 0.85
 
 LIFETIME_YR = 30         # Standard commercial plant assumption; DEFAULT
-INTEREST_RATE = 0.07     # 7% real discount rate; DEFAULT
-INFLATION_RATE = 0.0245  # DEFAULT
 
 # Construction time: 8 years — large LTS tokamak with ITER-lessons but
 # Chinese construction efficiency assumed; ITER itself took 20+ years
 # UNCERTAIN: No PFPP schedule published
 CONSTRUCTION_TIME_YR = 8.0
 
-# NOAK = True: modeling the mature commercial PFPP, not a prototype or FOAK device
-NOAK = True
 
 # ── Shared kwargs ─────────────────────────────────────────────────────────────
 # Factored here for clarity; passed directly to model.forward()
@@ -93,9 +89,6 @@ _SHARED_KWARGS = dict(
     lifetime_yr=LIFETIME_YR,
     n_mod=1,
     construction_time_yr=CONSTRUCTION_TIME_YR,
-    interest_rate=INTEREST_RATE,
-    inflation_rate=INFLATION_RATE,
-    noak=NOAK,
 
     # ── Geometry: ARIES-ACT1 analogue for conventional-aspect-ratio LTS tokamak ─
     # Source: ARIES-ACT1 (osti-servlets-purl-1178069): R₀ = 6.25 m, B₀ = 6.0 T
@@ -139,7 +132,6 @@ _SHARED_KWARGS = dict(
     # Preferred cycle in published studies; not formally committed for PFPP
     # Literature range: 34.7% (preliminary) to 42.8–53.7% (advanced recompression)
     # UNCERTAIN: sCO2 not formally adopted; blanket coolant choice affects this
-    eta_th=0.347,        # Thermal efficiency; analysis.md §S2 Challenge 6, §S5
 
     # Heating system wall-plug efficiency: weighted average of BEST 4-method portfolio
     # NBI (60–70%) + ECRH (50–55%) + ICRH (70–80%) + LHCD (50–55%)
@@ -150,10 +142,8 @@ _SHARED_KWARGS = dict(
     eta_pin=0.60,        # H&CD wall-plug efficiency; analysis.md §S2 Challenge 4
 
     eta_p=0.5,           # Pumping efficiency; DEFAULT
-    eta_de=0.85,         # DEC efficiency; DEFAULT (no DEC for tokamak, f_dec=0)
     f_sub=0.04,          # Subsystem power fraction; slightly elevated for LTS
                          # support infrastructure; analysis.md §S3 Magnet System
-    f_dec=0.0,           # No direct energy conversion for tokamak; DEFAULT
 
     # Parasitic power consumers
     p_coils=5.0,         # Coil power [MW]; superconducting but quench protection,
@@ -258,7 +248,7 @@ print("Key Assumptions (PFPP Commercial Analogue — Very Low Confidence):")
 print(f"  Commercial PFPP native power:    {NET_ELECTRIC_MW:.0f} MWe (no published design point)")
 print(f"  Geometry analogue:               ARIES-ACT1 (R₀=6.25m, a=1.5625m, κ=1.7; osti-servlets-purl-1178069)")
 print(f"  Magnet technology:               LTS Nb3Sn/NbTi TF/PF + YBCO CS sub-coils")
-print(f"  Thermal efficiency:              {_SHARED_KWARGS['eta_th']:.3f} (sCO2 Brayton; CFETR study)")
+print(f"  Thermal efficiency:              {result.params['eta_th']:.3f} (from costingfe power_cycle preset)")
 print(f"  Availability:                    {AVAILABILITY:.0%} (canonical per scoring_framework.md §Plant availability; previously 0.80)")
 print(f"  Q value implied (commercial):    ~10 (drives p_input = {_SHARED_KWARGS['p_input']:.0f} MW)")
 print(f"  H&CD wall-plug efficiency:       {_SHARED_KWARGS['eta_pin']:.2f} (4-method portfolio avg)")
@@ -266,7 +256,7 @@ print(f"  Cryogenic load (LTS 4.5K):      {_SHARED_KWARGS['p_cryo']:.1f} MW (ITE
 print(f"  Blanket technology:              DEFAULT (PbLi; COOL/WCCB/WCLL undecided)")
 print(f"  Chinese construction discount:   NOT APPLIED (unknown magnitude in fusion context)")
 print(f"  Regulatory 2.2× factor:          NOT APPLIED (Chinese context uncertain)")
-print(f"  NOAK:                            {NOAK}")
+print(f"  NOAK:                            {result.params['noak']}")
 print(f"  Construction time:               {CONSTRUCTION_TIME_YR:.0f} yr (UNCERTAIN)")
 
 # ── Scenario analysis ────────────────────────────────────────────────────────

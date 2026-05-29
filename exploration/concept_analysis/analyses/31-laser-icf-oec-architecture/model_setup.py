@@ -56,23 +56,10 @@ ETA_PIN = 0.10            # Wall-plug-to-UV: η_w(IR) × η_3ω = 0.16 × 0.60
 #   → q_eng = 3542 / 623 = 5.69 → rec_frac ≈ 17.6% (paper states 17.0%; minor rounding)
 Q_ENG = 5.69
 
-# Power conversion — optics-express-2025-paper.md §Table 2
-ETA_TH = 0.55              # standardized from 0.44 per scoring_framework.md (Energy Capture: Hybrid (thermal + direct))
-                          # η_th* = 0.40 (He Brayton) + 0.04 (exothermic Li-breeding boost)
-                          # η_DEC = 0.44 (DEC, "conservative"; Rax et al. 2025 theory, TRL 1–2)
-                          # MEDIUM confidence on thermal; LOW confidence on DEC
 
 MN = 1.0                  # DEVIATION: from canonical 1.1 (D-T) — physics coupling. Li-breeding
                           # boost already embedded in η_th* = 0.44; setting mn = 1.1 (framework
                           # default) would double-count the boost
-
-# DEC channel decomposition — needed to independently track sensitivity of each conversion path.
-# The framework's THERMAL pulsed_conversion mode uses a single eta_th; both channels must be
-# folded into ETA_TH_COMBINED so varying eta_dec independently requires a manual sweep (see below).
-ETA_DEC = 0.44            # DEC efficiency (charged particles; Rax et al. 2025 theory, TRL 1–2)
-F_CHARGED = 0.30          # Charged-particle fraction of P_fus (alphas + fast ions)
-F_NEUTRON = 0.70          # Neutron fraction → thermal channel (He Brayton via LiPb blanket)
-ETA_TH_COMBINED = F_NEUTRON * ETA_TH + F_CHARGED * ETA_DEC  # = 0.44 when ETA_TH = ETA_DEC
 
 # Plant-level
 AVAILABILITY = 0.75       # UNCERTAIN: paper does not state; conservative for BLF's three
@@ -88,15 +75,10 @@ _SHARED_KWARGS = dict(
     n_mod=1,
     construction_time_yr=5.0,       # No superconducting magnets → shorter schedule;
                                      # pulsed_laser_ife.yaml default
-    interest_rate=0.07,
-    inflation_rate=0.0245,
-    noak=True,
     # ── Laser power balance ───────────────────────────────────────────
     f_rep=F_REP_HZ,                  # 10 Hz; optics-express-2025-paper.md §Table 2
     eta_pin=ETA_PIN,                 # 0.10; optics-express-2025-paper.md §Table 2
     q_eng=Q_ENG,                     # 5.69; derived from G=160 power balance; see docstring
-    eta_th=ETA_TH_COMBINED,          # 0.44; F_NEUTRON×ETA_TH + F_CHARGED×ETA_DEC
-                                     # optics-express-2025-paper.md §Table 2
     mn=MN,                           # 1.0; Li-breeding boost embedded in η_th*
     f_rad=0.10,                      # DEFAULT: DT standard bremsstrahlung + line radiation fraction
     f_sub=0.03,                      # DEFAULT: subsystem power fraction
@@ -222,7 +204,7 @@ print("\nKey Assumptions:")
 print(f"  G (target gain)   = 160       LOW CONFIDENCE — projected beyond CBET-mitigated baseline;")
 print(f"                                no multi-MJ experimental validation; blocking uncertainty")
 print(f"  η_pin (laser)     = {ETA_PIN:.0%}       UNCERTAIN — CW fiber laser claim; pulsed 10 Hz undemonstrated")
-print(f"  η_th (conversion) = {ETA_TH:.0%}       MEDIUM — He Brayton plausible; DEC η=44% is TRL 1–2 theory")
+print(f"  η_th (conversion) = {result.params['eta_th']:.0%}       [from costingfe power_cycle preset]")
 print(f"  f_rep             = {F_REP_HZ:.0f} Hz     design point; Hz-rate cryo target injection is unsolved")
 print(f"  availability      = {AVAILABILITY:.0%}       UNCERTAIN — not stated in paper; conservative for IFE")
 print(f"  C220104 laser cost: DEFAULT ($8M/MW DPSSL) — TRULY UNKNOWN for OEC architecture")
@@ -253,41 +235,23 @@ print("  NOTE: driver_laser_per_mw elasticity above is INAPPLICABLE for OEC arch
 print("  The DPSSL $/MW proxy uses glass-slab manufacturing costs (NIF heritage); OEC cost")
 print("  is dominated by 1,000 high-finesse mirrors — see OEC Mirror Cost Scenarios below.")
 
-# The THERMAL pulsed_conversion mode folds both conversion channels into a single eta_th
-# parameter (ETA_TH_COMBINED). Auto-diff therefore shows eta_dec = 0.0 elasticity because
-# it is not a free parameter in the THERMAL forward pass. The combined η_th elasticity
-# (shown above, ≈ −0.258) covers 100% of gross power. The DEC contribution (30% channel)
-# is proportionally about 30% of that elasticity: ≈ −0.077. The manual sweep below
-# separates the channels by holding η_th (He Brayton) fixed at 0.44 and varying η_DEC.
-print("\nDEC Efficiency Sensitivity (manual — THERMAL mode auto-diff folds both channels into η_th):")
-print("  η_th (He Brayton + Li-breeding) fixed at 0.44; DEC efficiency swept independently.")
-print(f"  {'η_DEC':>6} {'η_eff':>8} {'LCOE $/MWh':>11} {'Δ LCOE $/MWh':>14}")
-print("  " + "-" * 44)
-_ETA_DEC_SWEEP = [0.20, 0.30, 0.35, 0.40, 0.44, 0.50, 0.55]
-for _eta_dec_val in _ETA_DEC_SWEEP:
-    _eta_eff = F_NEUTRON * ETA_TH + F_CHARGED * _eta_dec_val
-    _kw_dec = dict(_SHARED_KWARGS)
-    _kw_dec["eta_th"] = _eta_eff
-    _r_dec_sens = model.forward(net_electric_mw=NATIVE_MW, **_kw_dec)
-    _lcoe_dec = float(_r_dec_sens.costs.lcoe)
-    _delta = _lcoe_dec - float(result.costs.lcoe)
-    _marker = " ←" if _eta_dec_val == ETA_DEC else ""
-    print(f"  {_eta_dec_val:>6.2f} {_eta_eff:>8.3f} {_lcoe_dec:>11.1f} {_delta:>+14.1f}{_marker}")
-print("  Implied DEC elasticity ≈ −0.077 (= F_CHARGED × combined η_th elasticity).")
-print("  Thermal channel (70%) and DEC channel (30%) sum to the auto-diff η_th result.")
+# DEC sensitivity sweep removed per issue #35: eta_th / eta_dec are owned by
+# costingfe (power_cycle preset and concept YAML) and concepts cannot override
+# them. The OEC-specific channel decomposition (F_NEUTRON × eta_th_thermal +
+# F_CHARGED × eta_dec) belongs in the framework, not per-concept.
 
 
 # ── Helper: q_eng from gain G ─────────────────────────────────────────
 # Physics formula: Q = eta_th*mn*G*eta_pin; q_eng = Q/(1 + f_sub*Q).
 # Ignores fixed aux loads (~16.5 MW << P_fus at 2800 MWe) — matches
 # design-point Q_ENG=5.69 within ~2%.
-def _q_eng_from_gain(G, eta_pin=ETA_PIN, eta_th=ETA_TH, mn=MN, f_sub=0.03):
+def _q_eng_from_gain(G, eta_pin=ETA_PIN, eta_th=float(result.params["eta_th"]), mn=MN, f_sub=0.03):
     Q = eta_th * mn * G * eta_pin
     return Q / (1.0 + f_sub * Q)
 
 
 def _p_net_same_laser(G, f_rep,
-                      e_uv_mj=5.0, eta_pin=ETA_PIN, eta_th=ETA_TH_COMBINED, mn=MN,
+                      e_uv_mj=5.0, eta_pin=ETA_PIN, eta_th=float(result.params["eta_th"]), mn=MN,
                       f_sub=0.03, p_pump=1.0, p_trit=10.0, p_house=4.0,
                       p_cryo=0.5, p_target_mw=1.0):
     """P_net [MWe] for the same 5 MJ/shot CBC-OEC laser at a given (G, f_rep).

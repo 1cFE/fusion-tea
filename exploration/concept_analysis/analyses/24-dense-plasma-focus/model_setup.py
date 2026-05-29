@@ -1022,16 +1022,13 @@ def main() -> None:
     conservative = DPFPlantParams(
         Q_sci=1.72,
         rep_rate_Hz=200.0,
-        eta_dec=0.80,
         eta_xray=0.70,
         f_ion_beam=0.65,
         plant_availability=0.65,
         electrode_cost_per_set_USD=20_000.0,
         cap_annual_replacement_frac=0.15,
         foak_multiplier=8.0,
-        interest_rate=0.12,
         n_mod=200,
-        noak=False,
     )
 
     # Moderate: FOAK, baseline performance, improved reliability
@@ -1041,16 +1038,13 @@ def main() -> None:
     optimistic = DPFPlantParams(
         Q_sci=2.5,
         rep_rate_Hz=200.0,
-        eta_dec=0.85,
         eta_xray=0.80,
         f_ion_beam=0.70,
         plant_availability=0.85,
         electrode_cost_per_set_USD=2_000.0,
         cap_annual_replacement_frac=0.05,
         foak_multiplier=1.0,
-        interest_rate=0.08,
         n_mod=200,
-        noak=True,
         construction_time_years=2.0,
         b11_cost_per_kg_USD=75.0,   # NOAK B-11 supply (1costingfe u_b11_noak)
     )
@@ -1059,7 +1053,6 @@ def main() -> None:
     lpp_claim = DPFPlantParams(
         Q_sci=3.0,
         rep_rate_Hz=200.0,
-        eta_dec=0.85,
         eta_xray=0.80,
         f_ion_beam=0.70,
         plant_availability=0.85,
@@ -1069,9 +1062,7 @@ def main() -> None:
         cap_bank_cost_M_NOAK=0.05,          # LPPFusion assumption
         device_structure_cost_M_NOAK=0.05,
         foak_multiplier=1.0,
-        interest_rate=0.05,
         n_mod=200,
-        noak=True,
         construction_time_years=2.0,
         b11_cost_per_kg_USD=75.0,
         om_fixed_base_M=5.0,                # LPPFusion implies very low O&M

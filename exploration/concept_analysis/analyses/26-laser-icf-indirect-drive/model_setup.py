@@ -71,10 +71,7 @@ _SHARED_KWARGS = dict(
     # IFE construction simpler than tokamak (no magnet winding schedule).
     # pulsed_laser_ife.yaml default
     construction_time_yr=5.0,
-    interest_rate=0.07,
-    inflation_rate=0.0245,
     n_mod=1,
-    noak=True,
 
     # ── IFE power balance — Inertia Enterprises design point ─────────
     # Q_engineering ~4: gross ~2 GWe, recirculating ~500 MW.
@@ -93,7 +90,6 @@ _SHARED_KWARGS = dict(
     # Xcimer's 45% helium Brayton (IFE Workshop 2022) conflicts with their
     # website claim of "steam" — unresolved; not applied here.
     # Source: analysis.md §3 Balance of Plant / §5 Table (low confidence)
-    eta_th=0.35,
 
     # Standard DT neutron energy multiplier; pulsed_laser_ife.yaml default
     mn=1.1,

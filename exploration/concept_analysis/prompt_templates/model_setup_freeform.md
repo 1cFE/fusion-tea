@@ -98,6 +98,29 @@ Follow the MagLIF exemplar's 5-layer structure adapted for {{concept_name}}:
 - O&M (CAS70), fuel/consumables (CAS80), capital charge (CAS90)
 - LCOE = annual revenue requirement / annual energy production
 
+## Mandatory Financial Defaults (issue #35) — CRITICAL
+
+Freeform / bespoke cost models bypass `1costingfe` but MUST use the same
+financial assumptions so cross-concept LCOE comparisons remain apples-to-apples.
+The following values are **NOT TUNABLE** at the concept level — hardcode them as
+the `@dataclass` defaults and do not expose them as per-instance overrides:
+
+| Parameter | Required value | Source (costingfe) |
+|---|---|---|
+| `interest_rate` | `0.07` | `CostModel.forward()` default |
+| `inflation_rate` | `0.02` | `CostModel.forward()` default |
+| `noak` / NOAK flag | `True` (this is a NOAK costing tool) | `CostModel.forward()` default |
+| `eta_th` (thermal cycle) | Match the concept's declared `power_cycle`: RANKINE 0.40 / BRAYTON_SCO2 0.47 / COMBINED 0.53 | `POWER_CYCLE_DEFAULTS` |
+
+Also forbidden as per-instance overrides: `eta_de`, `f_dec`, `eta_dec`. If the
+concept has a defensible architectural reason to differ from a default, the fix
+goes in `1costingfe` (or in the concept's YAML if it's architectural), not in
+this freeform script. Sensitivity sweeps or scenario tables that vary any of
+the above are NOT allowed.
+
+`eta_pin` (driver/heating wall-plug) and `eta_p` (pumping) MAY be concept-
+specific where the architecture requires it.
+
 ## Parameter Documentation (CRITICAL)
 
 Every parameter in the `@dataclass` MUST have a docstring with:
