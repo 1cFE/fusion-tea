@@ -32,10 +32,10 @@ customization_diagnostics:
 data_availability_diagnostics:
   gap_report_path: exploration/concept_analysis/analyses/16-muon-catalyzed-fusion/gap_report.md
   report_exists: true
-  blocking_count: 6
+  blocking_count: 3
   count_source: structured_summary_block
-  data_availability_score: 2.0
-  extracted_at: '2026-05-20'
+  data_availability_score: 3.0
+  extracted_at: '2026-05-22'
 driver_technology:
   value: Muon source (accelerator)
   provenance: taxonomy
@@ -55,7 +55,7 @@ gap_report_path:
   value: exploration/concept_analysis/analyses/16-muon-catalyzed-fusion/gap_report.md
   provenance: auto-detected
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-05-22'
 ife_driver:
   value: N/A
   provenance: taxonomy

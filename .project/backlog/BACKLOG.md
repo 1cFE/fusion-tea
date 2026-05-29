@@ -2,7 +2,7 @@
 
 Prioritized list of epics and features.
 
-**Last Updated**: 2026-05-17
+**Last Updated**: 2026-05-28
 
 ---
 
@@ -66,6 +66,12 @@ From the availability standardization (commit `45c9db5`); details in `.project/r
 | Non-D-T availability policy + standardize | P2 | The availability standardization script filtered to D-T. Four non-D-T concepts (`04` p-B11 pulsed, `06` p-B11 steady mirror, `08` D-He³ pulsed FRC, `23` p-B11 pulsed) were skipped. The current `scoring_framework.md` table says "D-D / D-³He / p-¹¹B → 0.85" with reasoning "Same MCF basis", which implies non-D-T should be 0.85 regardless of pulsed/steady. The `canonical_availability` helper currently returns 0.75 for any pulsed family regardless of fuel — contradicts the policy text. Decide actual policy, update helper, run the standardize pass for these 4 concepts. |
 | Concept 09 dual-site availability refactor | P3 | `09-qi-stellarator-hts/model_setup.py` has availability in two coupled sites: `_SHARED[availability]=0.88` (costingfe forward call, line 205) and `_AVAILABILITY_BASE=0.88` (custom replacement-cost calc, line 173 — comment says "matches _SHARED below"). Pre-marked as `# DEVIATION:` so the standardize script skipped 09. Either (a) refactor to a single `AVAILABILITY` constant used in both sites and move to canonical 0.85, or (b) promote to Tier-A retain at 0.88 if `helios-stellarator-comparison.md` 88% citation qualifies as a sourced commitment. |
 | Audit script for "DEFAULT" labels vs actual values | P3 | Walk every concept's `model_setup.py`, parse all kwargs, flag any value with a `# DEFAULT` comment whose actual value doesn't match the costingfe library default (or the canonical_eta_th/canonical_availability lookup). Report-only, no auto-fix. ~30-line script parallel in shape to `standardize_eta_th.py`. Surfaces silent drift before it becomes a policy dispute. Motivated by inflation_rate=0.0245 case in `.project/research/20260517-081444_model-setup-inconsistencies.md` §2. |
+
+### PR #33 (data availability refresh) follow-ups (2026-05-28)
+
+| Item | Priority | Description |
+|------|----------|-------------|
+| Refresh deployed Score Explorer UI after PR #33 | P2 | After PR #33 merges, mirror `tools/score_explorer/{index.html,data/concepts.json,data/weights.json}` → `docs/score-explorer/` and commit + push to main. Same straight-copy pattern as PR #28 (initial deploy) and PR #29 (TF correction refresh). Without this, the live URL at https://1cfe.github.io/fusion-tea/score-explorer/ will continue to show the pre-#32 data availability scores even though `tools/score_explorer/data/concepts.json` already has the refreshed values. Single commit, byte-level mirror of three files, ~5 min. |
 
 ---
 

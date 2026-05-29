@@ -17,8 +17,15 @@
 #   - customization:        customization_implementation_spec.md (full 39)
 #   - upper_cf:             upper_cf_implementation_spec.md (full 39)
 #   - technical_feasibility: technical_feasibility_implementation_spec.md (full 39)
-#   - data_availability:    data_availability_implementation_spec.md
-#                            (concepts without gap reports: null)
+#
+# data_availability is intentionally NOT included here. The axis is a
+# deterministic bucket lookup on the gap-report blocking count, with no
+# spec-vs-rules calibration gap to verify. It is exhaustively unit-tested
+# in test_data_availability.py (TestBucketSchedule covers every bracket
+# boundary; TestStructuredSummaryCount + TestCounting cover the parsers).
+# Keeping a per-concept fixture here would silently drift on every
+# gap-report regeneration without catching any failure mode the unit
+# tests don't already cover.
 #
 # Tolerance: 0.05 (rounding). Updates require coordinated spec edit + this file.
 
@@ -286,57 +293,4 @@ technical_feasibility:
   "38-particle-accelerator-driven-fusion": 1.0  # no-data (accelerator)
   "39-spherical-tokamak-cs-free-p-b11": 1.0  # p-B11 spherical tokamak (huge gap)
 
-# ----------------------------------------------------------------------
-# Data Availability — from data_availability_implementation_spec.md
-#
-# This axis is deterministic given the gap report: score = bucket(blocking_count).
-# After the gap-report format standardization (every report now carries a
-# `## Structured summary (machine-readable)` block — see
-# scripts/add_gap_report_summary_blocks.py), blocking_count is the
-# deduplicated count from that block, NOT the legacy `**blocking**` prose
-# regex (which double-counted gaps restated across sections). These
-# predicted values are regenerated directly from the structured blocks:
-# predicted == actual by construction for this axis. If a gap report
-# changes, re-run add_gap_report_summary_blocks.py + score.py and refresh.
-# ----------------------------------------------------------------------
-data_availability:
-  "01-hts-compact-tokamak":                            4.0   # 1 blocking
-  "02-acoustic-icf-sonofusion":                        2.0   # 8 blocking
-  "03-laser-icf-liquid-jet-target":                    2.0   # 7 blocking
-  "04-laser-icf":                                      3.0   # 4 blocking
-  "05-planar-coil-stellarator":                        3.0   # 3 blocking
-  "06-magnetic-mirror":                                1.0   # 13 blocking
-  "07-maglif":                                         3.0   # 3 blocking
-  "08-frc-w-direct-conversion":                        2.0   # 7 blocking
-  "09-qi-stellarator-hts":                             4.0   # 2 blocking
-  "10-large-scale-stellarator":                        5.0   # 0 blocking
-  "11-magnetic-mirror":                                3.0   # 4 blocking
-  "12-levitated-dipole":                               3.0   # 4 blocking
-  "13-electrostatic-hybrid":                           2.0   # 6 blocking
-  "14-magnetized-target-fusion-pneumatic-compression": 3.0   # 4 blocking
-  "15-sheared-flow-stabilized-z-pinch":                3.0   # 5 blocking
-  "16-muon-catalyzed-fusion":                          2.0   # 6 blocking
-  "17a-laser-icf-hybrid-drive":                        3.0   # 4 blocking
-  "17b-laser-icf-fast-ignition":                       2.0   # 6 blocking
-  "18-p-b11-frc":                                      2.0   # 8 blocking
-  "19-orbital-levitated-dipole":                       1.0   # 10 blocking
-  "20a-type-one-stellarator":                          3.0   # 3 blocking
-  "20b-renaissance-stellarator":                       3.0   # 4 blocking
-  "21-spherical-tokamak-hts":                          3.0   # 3 blocking
-  "22-projectile-icf":                                 2.0   # 7 blocking
-  "23-laser-icf-nanostructured-target":                2.0   # 7 blocking
-  "24-dense-plasma-focus":                             2.0   # 6 blocking
-  "25-heavy-ion-beam-icf":                             4.0   # 2 blocking
-  "26-laser-icf-indirect-drive":                       4.0   # 2 blocking
-  "27-polywell":                                       2.0   # 7 blocking
-  "28-hts-tokamak-full-hts":                           3.0   # 5 blocking
-  "29-negative-triangularity-tokamak":                 4.0   # 1 blocking
-  "30-laser-icf-nif-commercialization":                3.0   # 5 blocking
-  "31-laser-icf-oec-architecture":                     3.0   # 4 blocking
-  "32-laser-icf-french-national":                      2.0   # 6 blocking
-  "33-state-backed-tokamak-best":                      3.0   # 4 blocking
-  "35-polomac-magnetic-confinement":                   2.0   # 9 blocking
-  "36-helical-coil-stellarator":                       4.0   # 1 blocking
-  "37-magnetized-target-inertial-fusion-mtif":         2.0   # 6 blocking
-  "38-particle-accelerator-driven-fusion":             3.0   # 4 blocking
-  "39-spherical-tokamak-cs-free-p-b11":                2.0   # 8 blocking
+# data_availability section deliberately omitted — see file header.
