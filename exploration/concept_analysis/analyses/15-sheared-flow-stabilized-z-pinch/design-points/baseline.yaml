@@ -1,0 +1,37 @@
+proposal:
+  concept_id: 15-sheared-flow-stabilized-z-pinch
+  design_name: "Zap Energy SFS Z-Pinch Commercial Power Plant Module (Thompson et al. FST 2023; Zap October 2024)"
+  maturity_tier: paper-concept
+  grounding_confidence: medium
+  p_native_mwe: 50
+  primary_sources:
+    - knowledge/concept_research/15-sheared-flow-stabilized-z-pinch/iter-01/sources/engineering-paradigms-paper-summary.md
+    - knowledge/concept_research/15-sheared-flow-stabilized-z-pinch/iter-01/sources/century-demo-system.md
+  selection_rationale: |
+    Zap Energy publishes one commercial-scale design: a multi-module power plant whose
+    natural unit is a single SFS Z-pinch core. The Engineering Paradigms paper
+    (Thompson et al., FST 2023) establishes the module's thermal power (200 MWt), geometry
+    (~3 m diameter, ~25 m³ core), fuel (DT), LiPb blanket (TBR ~1.1), and driver efficiency
+    (~70%), but does not state net electrical output. The October 2024 Series D press release
+    adds the single published electrical figure: "a single Zap Energy module that will
+    produce 50 megawatts of electricity; future power plants will have multiple modules."
+    P_native is the per-module value (50 MWe) to preserve the natural replication unit;
+    n_mod = 20 at 1 GWe. No other commercial design with a P_native exists in the source
+    set — the FuZE device series and Century are physics/engineering platforms with no
+    electrical output by design.
+  alternatives_considered:
+    - design: "FuZE / FuZE-Q / FuZE-3 devices (Zap Energy physics R&D platform)"
+      reason_rejected: no electrical output by design; physics demonstrators at TRL 2–3
+      sensitivity_implication: >-
+        n/a — these devices have no P_native and cannot serve as a design point;
+        they are precursors to, not substitutes for, the commercial module concept
+    - design: "Century engineering test platform (October 2024)"
+      reason_rejected: non-DT (liquid bismuth, non-fusing), 100 kW input power, no electrical output by design
+      sensitivity_implication: >-
+        n/a — Century has no P_native; it is an engineering validation platform,
+        not a candidate commercial design
+    - design: "FuZE-A (upcoming physics device)"
+      reason_rejected: physics R&D platform under development; no electrical output by design
+      sensitivity_implication: >-
+        n/a — FuZE-A has no P_native; it is the next step in the physics program,
+        not a commercial design

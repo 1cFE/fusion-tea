@@ -1,0 +1,25 @@
+proposal:
+  concept_id: 28-hts-tokamak-full-hts
+  route_to_freeform: true
+  reason: |
+    Energy Singularity's portfolio contains three machines: HH70 (operating experimental
+    prototype, no electrical output by design), HH170 (physics Q > 10 demonstrator,
+    no electrical output by design), and HH380 (named demo power station, post-2030,
+    zero published specifications of any kind). Three research iterations exhausting
+    20+ English and Chinese-language sources found no P_native figure — not a
+    back-of-envelope estimate, not a scenario projection, not an aspirational MWe
+    target — for any machine in the portfolio. The co-founder's stated LCOE goal
+    ("reduce to the level of thermal power") is a strategic aspiration with no
+    attached electrical output number. There is no electrical design point anywhere
+    in the public record from which to anchor a cost projection.
+  designs_considered:
+    - design: HH70 (operating experimental tokamak, 2024)
+      reason_no_p_native: physics demonstrator with no electrical output by design;
+        operates at 0.6 T on-axis, no D-T plasmas produced
+    - design: HH170 (Q > 10 physics device, ~2027)
+      reason_no_p_native: physics science machine; "D-T equivalent" framing suggests
+        D-T may not be burned; no net electrical output stated or implied anywhere
+        in the source record
+    - design: HH380 (demo power station, post-2030)
+      reason_no_p_native: roadmap name only; zero engineering or performance
+        specifications publicly disclosed; no MWe figure in any source

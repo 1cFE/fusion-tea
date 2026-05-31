@@ -1,0 +1,81 @@
+proposal:
+  concept_id: 33-state-backed-tokamak-best
+  design_name: "ARIES-ACT1 advanced-physics / advanced-technology design (Kessel et al., Fusion Sci. Tech. 67 (2015))"
+  maturity_tier: paper-concept
+  grounding_confidence: high
+  p_native_mwe: 1000
+  primary_sources:
+    - knowledge/concept_research/33-state-backed-tokamak-best/iter-02/sources/osti-servlets-purl-1178069.md
+    - knowledge/concept_research/33-state-backed-tokamak-best/iter-01/sources/best-research-plan-v1.1-summary.md
+  selection_rationale: |
+    ARIES-ACT1 is the only design in this concept's corpus with a published net electric
+    power figure (1000 MWe) attached to a fully specified engineering design point —
+    geometry (R=6.25 m, B0=6.0 T, Ip=11 MA), SiC SCLL blanket at 58% thermal efficiency,
+    He-cooled W-alloy divertor, Q_engr=6.6, complete 3-D engineering CAD model,
+    neutronics with TBR=1.05, and full safety analysis. The Chinese roadmap that anchors
+    this concept's nominal identity (BEST -> CFEDR -> PFPP per BEST Research Plan v1.1)
+    has no published MWe at any maturity tier: BEST is experimental, CFEDR's mission
+    statement cites "net electrical power generation" without a figure, and PFPP is
+    named only. Among the four ARIES-ACT corners (all targeting 1000 MWe), ACT1 is the
+    headline advanced-physics / advanced-technology design point with the most-elaborated
+    engineering analysis and highest engineering Q. ARIES-ACT is a US national-lab
+    state-backed conceptual tokamak power plant and therefore fits the
+    state-backed-tokamak archetype.
+  alternatives_considered:
+    - design: "ARIES-ACT2 conservative-physics / advanced-technology design (Kessel et al.)"
+      reason_rejected: same 1000 MWe target but larger and lower-efficiency than ACT1; the four-corners study's conservative-physics counterpart, not the headline design
+      sensitivity_implication: >
+        If picked instead, P_native is unchanged (still 1000 MWe by construction) but
+        device size and capital intensity rise substantially (R=9.75 m vs 6.25 m,
+        B0=8.75 T vs 6.0 T, eta_th=45% vs 58%, Q_engr=3.1 vs 6.6) -> per-module
+        reactor-island cost and recirculating power rise -> 1 GWe LCOE shifts up
+        materially. Worth probing whenever the physics-assumption sensitivity is in
+        question (beta_N, H98 attainment).
+    - design: "ARIES-ACT3 and ARIES-ACT4 corner designs (Kessel et al.)"
+      reason_rejected: scoping corners of the same four-corners study rather than primary engineering design points; sparser published parameter set
+      sensitivity_implication: >
+        If picked instead, P_native unchanged (1000 MWe) but device size and recirculating
+        power shift between the ACT1 and ACT2 envelopes depending on which physics/tech
+        corner is chosen -> 1 GWe LCOE shifts in the same direction as ACT2 but to a
+        lesser degree. Worth probing if the cost analysis wants to bound the four-corners
+        physics-vs-technology trade.
+    - design: "CFEDR (China Fusion Engineering Demonstration Reactor)"
+      reason_rejected: no published net electric power, no published geometry, no engineering parameters - mission statement only
+      sensitivity_implication: >
+        If CFEDR publishes a design point with a stated MWe, that becomes the natural
+        design point for this Chinese-program-anchored concept. Direction unknown until
+        the figure is published; CFEDR's Pfus = 1.5-3.0 GW range suggests P_native could
+        land anywhere from ~500 MWe (low-efficiency) to >1 GWe (sCO2 Brayton at 40%) -
+        the 1 GWe LCOE direction depends entirely on where it lands. This is the primary
+        watch item for design-point revision.
+    - design: "CFETR Phase I baseline scenario (Liu et al. arXiv:1907.11919)"
+      reason_rejected: fusion-power design point only; no published net electric output
+      sensitivity_implication: >
+        If a published net electric figure for CFETR Phase I emerges (Pfus=171 MW x ~40%
+        sCO2 efficiency would imply ~70 MWe gross, lower net), P_native would be much
+        lower than ARIES-ACT1 -> many more modules at 1 GWe -> 1 GWe LCOE shifts up
+        substantially. Worth probing if the cost analysis is scoped to a CFETR-class
+        bridge facility rather than a commercial plant.
+    - design: "CFETR Phase II high-performance scenario (Liu et al. arXiv:1907.11919)"
+      reason_rejected: fusion-power design point only; no published net electric output (Pfus=1083.5 MW is fusion power, not electric)
+      sensitivity_implication: >
+        If a published net electric figure for CFETR Phase II emerges (Pfus=1083.5 MW x
+        ~40% sCO2 ~= 430 MWe gross before recirculating losses), P_native would be lower
+        than ARIES-ACT1 -> more modules at 1 GWe -> 1 GWe LCOE shifts up. Worth probing
+        once a Chinese-roadmap plant publishes a full electric design point.
+    - design: "BEST (Burning Plasma Experimental Superconducting Tokamak, ASIPP)"
+      reason_rejected: no electrical output by design; experimental burning-plasma facility analogous to SPARC
+      sensitivity_implication: "n/a - BEST has no P_native and cannot be used as a design point."
+    - design: "PFPP (Prototype Fusion Power Plant, China)"
+      reason_rejected: named only in the BEST Research Plan as the eventual commercial step after CFEDR; no specifications published
+      sensitivity_implication: >
+        If PFPP publishes a commercial design point with a stated MWe, that would be the
+        natural design point for this concept and would supersede ARIES-ACT1. Direction
+        unknown until specifications are published.
+    - design: "EU-DEMO, JA-DEMO, K-DEMO (peer state-backed DEMO programs)"
+      reason_rejected: referenced as peer state-backed DEMO programs but no DEMO-specific Pnet or engineering parameters extracted in this concept's corpus
+      sensitivity_implication: >
+        If a dedicated EU-DEMO or JA-DEMO source is ingested, those programs publish
+        targets in the ~300-500 MWe range (well below ARIES-ACT1's 1000 MWe) -> many
+        more modules at 1 GWe -> 1 GWe LCOE shifts up. Worth probing as a parallel
+        state-backed-tokamak sensitivity. Currently out of scope of the source corpus.

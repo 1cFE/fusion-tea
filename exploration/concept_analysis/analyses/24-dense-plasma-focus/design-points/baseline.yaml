@@ -1,0 +1,26 @@
+proposal:
+  concept_id: 24-dense-plasma-focus
+  design_name: "Focus Fusion commercial generator (Lerner et al. 2023)"
+  maturity_tier: paper-concept
+  grounding_confidence: low
+  p_native_mwe: 5.0
+  primary_sources:
+    - knowledge/concept_research/24-dense-plasma-focus/iter-01/sources/lerner-2023-jfe-paper.md
+    - knowledge/concept_research/24-dense-plasma-focus/iter-02/sources/lppfusion-investing-in-lppfusion-our-plan-to-net-energy/output.md
+  selection_rationale: |
+    The Focus Fusion commercial generator is the only LPPFusion design with a stated net
+    electrical output: ~25 kJ net electrical per pulse at ~200 Hz repetition, yielding 5 MW.
+    Both figures are computed in the Lerner 2023 JFE paper from first-principles cooling limits
+    and energy balance estimates; no separate engineered architecture document exists.
+    The 5 MW unit is described consistently across the peer-reviewed literature and company
+    public communications as the Phase 2 prototype and subsequent commercial product.
+    No other named commercial design exists in this portfolio. Grounding confidence is
+    low because P_native traces to back-of-envelope scaling arguments in a physics paper,
+    not to a documented engineering design with committed geometry and validated power balance.
+  alternatives_considered:
+    - design: "FF-2B experimental device"
+      reason_rejected: "physics research device, no net electrical output by design"
+      sensitivity_implication: "n/a — not a power generator design"
+    - design: "Phase 1 net-energy demonstrator"
+      reason_rejected: "scientific milestone device (30 kJ fusion yield target), no electrical output by design"
+      sensitivity_implication: "n/a — not a power generator design"

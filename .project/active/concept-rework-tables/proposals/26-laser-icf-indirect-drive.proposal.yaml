@@ -1,0 +1,32 @@
+proposal:
+  concept_id: 26-laser-icf-indirect-drive
+  design_name: "Inertia Enterprises utility-scale commercial power plant (Thunderwall DPSSL + NIF Hybrid-E indirect drive)"
+  maturity_tier: paper-concept
+  grounding_confidence: low
+  p_native_mwe: 1500
+  primary_sources:
+    - knowledge/concept_research/26-laser-icf-indirect-drive/iter-01/sources/inertia-enterprises-website-and-faq.md
+    - knowledge/concept_research/26-laser-icf-indirect-drive/iter-02/sources/inertia-enterprises-2026-update.md
+  selection_rationale: |
+    Inertia's 1,500 MWe commercial plant is the only candidate with P_native explicitly stated
+    in an ingested primary source ("1.5GW, Powers a city of one million people" on the Inertia
+    homepage; confirmed as "gigawatt, utility-scale fusion power plant" in the Series A
+    announcement). The preferred candidate by the selection rule — Xcimer Energy's ASPEN/Athena
+    pilot at ~400 MWe — has a stronger published technical portfolio but its P_native traces only
+    to unextracted roadmap documents (ASPEN IFE Workshop 2022 paper, TRUMPF/Xcimer white paper
+    Feb 2026); it cannot be cited to an ingested primary source. Inertia also has tighter
+    conceptual alignment with concept 26's "indirect drive" classification: Inertia explicitly
+    uses NIF Hybrid-E hohlraum targets, while Xcimer has evolved toward Hybrid Direct Drive and
+    is flagged for potential reclassification. The 1,500 MWe is a single-chamber plant; the
+    Thunderwall's 1,000 beamlines are parallel laser modules feeding one reaction chamber, so
+    P_native is the full plant electric output.
+  alternatives_considered:
+    - design: "Xcimer Energy ASPEN 'Athena' pilot plant (~400 MWe)"
+      reason_rejected: "P_native not stated in any ingested primary source; figure traces to ASPEN IFE Workshop 2022 paper and TRUMPF/Xcimer white paper (Feb 2026), neither extracted into source tree"
+      sensitivity_implication: "if picked instead, P_native falls substantially (400 vs 1,500 MWe) → more modules required to reach 1 GWe → 1 GWe LCOE shifts up, all else equal. This candidate would likely supersede Inertia once ASPEN IFE Workshop 2022 and TRUMPF/Xcimer Feb 2026 white paper are ingested — Xcimer has materially stronger published grounding and should be revisited."
+    - design: "Xcimer Energy commercial design (hundreds of MWe to >1 GWe range)"
+      reason_rejected: "stated as a range, not a single design point; no P_native extractable"
+      sensitivity_implication: "if a specific commercial figure were published (e.g., near 1 GWe), P_native would be lower than Inertia's 1,500 MWe → marginally more modules at 1 GWe → 1 GWe LCOE shifts slightly upward relative to Inertia."
+    - design: "LLNL LIFE (Laser Inertial Fusion Energy, ~1,000 MWe, canceled 2013)"
+      reason_rejected: "canceled concept; no active company or successor program; not a live design point"
+      sensitivity_implication: "LIFE was designed at ~1,000 MWe scale → one module per 1 GWe target, comparable to picking a lower-bound for Inertia → 1 GWe LCOE broadly similar. Historical anchor only; no engineering relevance to current competitive landscape."

@@ -1,0 +1,25 @@
+proposal:
+  concept_id: 20b-renaissance-stellarator
+  design_name: "1 GWe economically optimized compact liquid-wall HTS stellarator (Samulski et al., Nuclear Fusion 64 (2024) 026007)"
+  maturity_tier: paper-concept
+  grounding_confidence: high
+  p_native_mwe: 1000
+  primary_sources:
+    - knowledge/concept_research/20b-renaissance-stellarator/iter-01/sources/infoscience-bitstreams-7d2d7b2f-6f75-4ac2-93cb-6eef8a65df82/output.md
+    - knowledge/concept_research/20b-renaissance-stellarator/dossier.md
+  selection_rationale: |
+    The only design in Renaissance Fusion's published portfolio with a stated net
+    electrical output is the 1 GWe economically optimized machine from Nuclear Fusion
+    64 (2024) 026007. Its key parameters (R = 3.8 m, A = 4.1, B = 10.2 T, D-T fuel,
+    1 GWe net) are independently confirmed in the extracted JNM blanket paper (Table 1)
+    and the ECM power conversion paper (34% net efficiency). The 4-cylinder architecture
+    refers to 4 field-period segments of a single toroidal machine, not 4 independent
+    generating modules; P_native is therefore the whole-machine net output of 1000 MWe,
+    giving n_mod = 1 at the 1 GWe comparison point.
+  alternatives_considered:
+    - design: "6 T Helmholtz magnet demonstrator (MT29 Abstract, 2024)"
+      reason_rejected: physics demonstrator with no electrical output by design; a magnet validation milestone, not a reactor design candidate
+      sensitivity_implication: "n/a — this candidate has no P_native and cannot define a competing design-point branch"
+    - design: "(no other commercial or pilot design candidates)"
+      reason_rejected: single-design company; no near-term pilot, intermediate machine, or named alternative commercial plant exists in the published record
+      sensitivity_implication: "n/a — no alternative P_native exists to probe. If the company publishes a sub-commercial pilot design with a stated net output, that would become an alternative candidate worth comparing against the 1 GWe target."

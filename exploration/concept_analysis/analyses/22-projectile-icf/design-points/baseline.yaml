@@ -1,0 +1,50 @@
+proposal:
+  concept_id: 22-projectile-icf
+  design_name: "First Light projectile pilot plant (2022 pre-pivot ~150 MWe target)"
+  maturity_tier: paper-concept
+  grounding_confidence: low
+  p_native_mwe: 150
+  primary_sources:
+    - knowledge/concept_research/22-projectile-icf/iter-03/sources/prnewswire-news-releases-first-light-achieves-world-first.md
+    - knowledge/concept_research/22-projectile-icf/iter-01/sources/first-light-fusion-technology.md
+  selection_rationale: |
+    First Light's pre-pivot projectile pilot plant — ~150 MWe, <$1B, 2030s, with a
+    30-second shot cadence and the Machine 3 hyper-velocity gas gun (6.5 km/s, target
+    amplification to >70 km/s) as driver basis — is the only design point in any
+    primary source that attaches an electric power figure to the *projectile* ICF
+    architecture. The 333 MWe / 400 MWe figures from First Light's 2025–2026
+    communications belong to FLARE, the post-September-2025 pulsed-power-amplifier
+    architecture that explicitly replaces the projectile approach, and so cannot be
+    adopted as projectile ICF's design point without plant-stitching. The plant is
+    a single-chamber single-shot architecture, so P_native is the plant value, not a
+    per-module decomposition. Grounding is honestly `low`: the 150 MWe figure is a
+    company headline target rather than a documented engineering design point, and
+    the company itself walked away from the architecture in 2025.
+  alternatives_considered:
+    - design: "First Light 500 MWe commercial plant (pre-pivot long-term target)"
+      reason_rejected: aspirational scaling target referenced via the dossier without a self-contained primary-source design-point file; less grounded than the 150 MWe pilot
+      sensitivity_implication: >
+        If picked instead, P_native would be substantially higher (500 vs 150 MWe) →
+        many fewer modules at 1 GWe → 1 GWe LCOE shifts down. Worth probing only if a
+        primary source documenting projectile-architecture geometry at the 500 MWe
+        scale surfaces, which is unlikely now that First Light has abandoned the
+        projectile architecture.
+    - design: "First Light FLARE 333 MWe design point (post-pivot, TBR-1.8 context)"
+      reason_rejected: FLARE is a pulsed-power-amplifier / fast-ignition architecture, not projectile-driven; outside the concept scope
+      sensitivity_implication: >
+        If projectile ICF were redefined to follow First Light's portfolio into FLARE,
+        P_native would rise (333 vs 150 MWe) → fewer modules at 1 GWe → 1 GWe LCOE
+        shifts down. Worth probing only if upstream taxonomy reclassifies FLARE as
+        within the projectile-ICF family, which the dossier explicitly argues against.
+    - design: "First Light FLARE 400 MWe reactor (post-pivot commercial target)"
+      reason_rejected: same architectural mismatch as the 333 MWe FLARE figure; FLARE is non-projectile
+      sensitivity_implication: >
+        If projectile ICF were redefined to include FLARE, P_native would rise further
+        (400 vs 150 MWe) → fewer modules at 1 GWe → 1 GWe LCOE shifts down further.
+        Same gating condition as the 333 MWe FLARE alternative.
+    - design: "NearStar MTIF railgun plant"
+      reason_rejected: architecturally MTIF (magnetized fuel), D-D preferred, and no published P_native; dossier recommends a separate MIF concept row
+      sensitivity_implication: >
+        n/a for projectile-ICF row — NearStar has no published P_native to compare
+        against, and its inclusion is a taxonomy question (separate concept row), not
+        a within-concept sensitivity.

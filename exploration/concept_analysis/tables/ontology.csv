@@ -1,0 +1,41 @@
+concept_id,concept_name,confinement_family,confinement_subfamily,fuel,driver_class,conversion_path,notes
+01-hts-compact-tokamak,HTS Compact Tokamak (Commonwealth Fusion / ARC),MFE,tokamak,DT,magnetic-steady-state,thermal,REBCO HTS magnets; ARC pilot-class
+02-acoustic-icf-sonofusion,Acoustic ICF (Sonofusion),IFE,sonofusion,DD,acoustic,thermal,Acoustic-driven cavitation; no electrical or laser driver
+03-laser-icf-liquid-jet-target,Laser ICF Liquid-Jet Target (Cortex Fusion Systems),IFE,laser-ife,DD,laser-dpssl,thermal,Femtosecond DPSSL; gold-nanoshell + liquid-jet target architecture
+04-laser-icf,Laser ICF (HB11 Energy),IFE,laser-ife,PB11,laser-dpssl,direct-electrostatic,Petawatt laser + per-shot kT magnetic-field coil; aneutronic direct conversion from alpha products
+05-planar-coil-stellarator,Planar-Coil Stellarator (Thea Energy),MFE,stellarator,DT,magnetic-steady-state,thermal,Planar non-twisted coil geometry
+06-magnetic-mirror,Magnetic Mirror (Pale Blue),MFE,mirror,PB11,magnetic-steady-state,direct-electrostatic,Rotation-sustained DEC; aneutronic
+07-maglif,MagLIF (Pacific Fusion),MIF,maglif,DT,pulsed-power,thermal,Pulsed-power liner compression of magnetized target
+08-frc-w-direct-conversion,FRC w/ Direct Conversion (Helion Energy),MFE,frc,DHE3,magnetic-pulsed,inductive-dec,Colliding-FRC compression; inductive direct energy conversion
+09-qi-stellarator-hts,QI Stellarator HTS (Proxima Fusion / Stellaris),MFE,stellarator,DT,magnetic-steady-state,thermal,Quasi-isodynamic optimized stellarator with HTS coils
+10-large-scale-stellarator,Large-Scale Stellarator,MFE,stellarator,DT,magnetic-steady-state,thermal,Generic large stellarator design
+11-magnetic-mirror,Magnetic Mirror (Realta Fusion / CoSMo),MFE,mirror,DT,magnetic-steady-state,thermal,Steady-state DT tandem mirror
+12-levitated-dipole,Levitated Dipole (OpenStar Technologies),MFE,dipole,DT,magnetic-steady-state,thermal,Single levitated SC coil + stationary support coils
+13-electrostatic-hybrid,Electrostatic Hybrid (Orbitron),MFE,orbitron,DT,electrostatic-steady-state,thermal,Rotating-electrode crossed-field electrostatic confinement
+14-magnetized-target-fusion-pneumatic-compression,MTF Pneumatic Compression (General Fusion),MIF,mtf,DT,mechanical-pulsed,thermal,Pneumatic-piston driver + liquid-metal vortex chamber
+15-sheared-flow-stabilized-z-pinch,Sheared-Flow Z-Pinch (Zap Energy),MFE,z-pinch,DT,pulsed-power,thermal,Sheared-flow stabilization; gas-injection (no manufactured targets); 1 Hz rep rate
+16-muon-catalyzed-fusion,Muon-Catalyzed Fusion (Acceleron Fusion),OTHER,muon-catalyzed,DT,accelerator,thermal,Accelerator-produced muons catalyze fusion at low temperature
+17a-laser-icf-hybrid-drive,Laser ICF Hybrid Drive (Xcimer Energy),IFE,laser-ife,DT,laser-krf,thermal,KrF excimer laser; two-beam hybrid direct drive; FLiBe thick-liquid-wall chamber
+17b-laser-icf-fast-ignition,Laser ICF Fast Ignition (Focused Energy),IFE,laser-ife,DT,laser-dpssl,thermal,Separate compression + ignition lasers (fast ignition architecture)
+18-p-b11-frc,PB11 FRC (TAE Technologies),MFE,frc,PB11,magnetic-steady-state,direct-electrostatic,Linear geometry + steady-state NBI sustainment; FRC core inside mirror trap; end-cell DEC
+19-orbital-levitated-dipole,Orbital Levitated Dipole (Zephyr Energy),MFE,dipole,DT,magnetic-steady-state,thermal,Orbital deployment context introduces launch-cost factors absent in terrestrial designs
+20a-type-one-stellarator,Type One Stellarator (Type One Energy),MFE,stellarator,DT,magnetic-steady-state,thermal,
+20b-renaissance-stellarator,Renaissance Stellarator (Renaissance Fusion),MFE,stellarator,DT,magnetic-steady-state,thermal,
+21-spherical-tokamak-hts,Spherical Tokamak HTS (Tokamak Energy),MFE,spherical-tokamak,DT,magnetic-steady-state,thermal,Spherical aspect ratio with HTS magnets
+22-projectile-icf,Projectile ICF (First Light Fusion),IFE,projectile-ife,DT,projectile,thermal,EM/projectile launcher; amplifier target architecture
+23-laser-icf-nanostructured-target,Laser ICF Nanostructured Target (Marvel Fusion),IFE,laser-ife,PB11,laser-dpssl,inductive-dec,Nanostructured target; aneutronic with inductive DEC pulsed conversion
+24-dense-plasma-focus,Dense Plasma Focus (LPP Fusion),MFE,dpf,PB11,pulsed-power,direct-electrostatic,Beam-extracted direct conversion; aneutronic
+25-heavy-ion-beam-icf,Heavy-Ion Beam ICF,IFE,heavy-ion-ife,DT,heavy-ion,thermal,Heavy-ion accelerator driver
+26-laser-icf-indirect-drive,Laser ICF Indirect Drive (Inertia Thunderwall),IFE,laser-ife,DT,laser-dpssl,thermal,Indirect drive with hohlraum
+27-polywell,Polywell (EMC2),MFE,polywell,PB11,electrostatic-steady-state,direct-electrostatic,Polyhedral magnetic-well IEC; high-voltage feedthrough; electron injection
+28-hts-tokamak-full-hts,HTS Tokamak Full HTS,MFE,tokamak,DT,magnetic-steady-state,thermal,Full HTS magnet system across all coil sets
+29-negative-triangularity-tokamak,Negative-Triangularity Tokamak,MFE,tokamak,DT,magnetic-steady-state,thermal,Negative-triangularity plasma shape for divertor relief
+30-laser-icf-nif-commercialization,Laser ICF NIF Commercialization (Focused Energy LIFE-class),IFE,laser-ife,DT,laser-dpssl,thermal,LIFE-class DPSSL with indirect drive — ENUM calibration case
+31-laser-icf-oec-architecture,Laser ICF OEC Architecture (BLF),IFE,laser-ife,DT,laser-dpssl,thermal,Optical Energy Collection architecture; mirror cost dominates over laser
+32-laser-icf-french-national,Laser ICF French National (GenF),IFE,laser-ife,DT,laser-dpssl,thermal,DPSSL shock-ignition direct drive
+33-state-backed-tokamak-best,State-Backed Tokamak (Neo / ASIPP-class),MFE,tokamak,DT,magnetic-steady-state,thermal,Conventional ARIES-class tokamak
+35-polomac-magnetic-confinement,Polomac Magnetic Confinement (Deutelio),MFE,polomac,DT,magnetic-steady-state,thermal,Novel multipole magnetic geometry; no enum analog
+36-helical-coil-stellarator,Helical-Coil Stellarator (HESTIA),MFE,stellarator,DT,magnetic-steady-state,thermal,Helical (continuous coil) stellarator topology
+37-magnetized-target-inertial-fusion-mtif,MTIF (Magneto-Inertial Fusion Technologies),MIF,mtf,DD,mechanical-pulsed,thermal,Specific compression architecture; DD fuel
+38-particle-accelerator-driven-fusion,Particle Accelerator-Driven Fusion (SHINE-style),OTHER,accelerator-driven,DT,accelerator,thermal,Spallation-neutron-driven sub-critical assembly
+39-spherical-tokamak-cs-free-p-b11,Spherical Tokamak CS-Free PB11 (ENN),MFE,spherical-tokamak,PB11,magnetic-steady-state,direct-electrostatic,CS-free operation; aneutronic with planned DEC channel

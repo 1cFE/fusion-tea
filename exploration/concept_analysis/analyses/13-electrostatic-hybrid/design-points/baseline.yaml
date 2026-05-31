@@ -1,0 +1,51 @@
+proposal:
+  concept_id: 13-electrostatic-hybrid
+  design_name: "Orbitron commercial module — lower bound (Avalanche Energy product page / CWFest 2023)"
+  maturity_tier: paper-concept
+  grounding_confidence: low
+  p_native_mwe: 0.005
+  primary_sources:
+    - knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/avalanche-orbitron-page.md
+    - knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/avalanche-cwfest2023-blog.md
+  selection_rationale: |
+    All three Avalanche hardware designs (Neo, Marty, FusionWERX device) are physics demonstrators or
+    neutron production facilities with no electrical output by design and do not qualify as design
+    points. The only published P_native figures come from the aspirational commercial product page
+    (1–100 kWe per module; "from 5kW to 100s of kW capacity") and the CEO's CWFest 2023 statement
+    identifying 5–10 kWe as the first commercial scale step after Q>1. The 5 kWe lower bound is
+    anchored by both sources and is selected over the 100 kWe upper bound as the more grounded
+    value — it appears in two independent texts and is described as the immediate next commercial
+    milestone. No engineering design exists; there is no committed geometry, fuel cycle design, or
+    hardware program tied to this output level. P_native is the per-module value; the commercial
+    architecture is explicitly modular (many units stacked to megawatt-scale aggregate output).
+  alternatives_considered:
+    - design: "Neo prototype"
+      reason_rejected: "Physics demonstrator with no electrical output by design"
+      sensitivity_implication: |
+        No P_native — cannot establish a design-point. If a net-electric demonstration were derived
+        from Neo-class hardware, per-module output would be sub-kWe (the physics target is ~1 kW
+        fusion at Q≈1, with conversion losses making net electricity deeply negative at this scale),
+        pushing n_mod far above 200,000 modules at 1 GWe and making any comparison figure illustrative
+        only.
+    - design: "Marty prototype (Q≈1 DT physics target, 300 kV / 0.4 T)"
+      reason_rejected: "Physics demonstrator with no electrical output by design; at Q=1 the device is net-negative electrically after any realistic thermal conversion"
+      sensitivity_implication: |
+        No P_native as a commercial design. The Marty operating point (1 kW fusion in, 1 kW input)
+        implies net-negative electricity at any thermal conversion efficiency below 100%. If the Q>1
+        DT demonstration at FusionWERX yields a credible scaling law to net-positive operation, the
+        commercial design point would be reset from first principles — no directional estimate is
+        possible without that scaling result.
+    - design: "FusionWERX facility device (Q>1 DT test program, 2027)"
+      reason_rejected: "Explicitly a neutron production and test facility; no electrical output by design"
+      sensitivity_implication: |
+        No P_native. FusionWERX is the most likely trigger for a mandatory re-selection: if the Q>1
+        test program demonstrates net electricity and Avalanche publishes a commercial design derived
+        from it, this design point must be replaced. The direction and magnitude of the shift cannot
+        be estimated without the test result.
+    - design: "Orbitron commercial module — upper bound (100 kWe)"
+      reason_rejected: "Upper bound of product-page range; only one source mentions this value, with no technical elaboration or engineering anchor"
+      sensitivity_implication: |
+        If picked instead, P_native rises 20× (0.1 MWe vs. 0.005 MWe) → n_mod falls from ~200,000
+        to ~10,000 modules at 1 GWe → 1 GWe LCOE shifts substantially downward as per-module fixed
+        costs spread over far fewer units. Worth revisiting if Avalanche publishes an engineering
+        design anchored at higher per-module output.

@@ -1,0 +1,42 @@
+proposal:
+  concept_id: 21-spherical-tokamak-hts
+  design_name: "ST-E1 Revision D, technology-conservative case (Maartensson et al., DPP 2025)"
+  maturity_tier: paper-concept
+  grounding_confidence: medium
+  p_native_mwe: 450
+  primary_sources:
+    - knowledge/concept_research/21-spherical-tokamak-hts/iter-03/sources/tokamak-energy-st-e1-dpp2025-abstract.md
+    - knowledge/concept_research/21-spherical-tokamak-hts/iter-02/sources/tokamak-energy-st-e1-design-evolution.md
+    - knowledge/concept_research/21-spherical-tokamak-hts/iter-03/sources/tokamak-energy-ec-heating-pilot-plant.md
+  selection_rationale: |
+    ST-E1 Revision D is Tokamak Energy's final pre-conceptual design point, documented at APS DPP 2025
+    (Maartensson et al.), with published geometry (R=5.0m, A=2.3, B=5.25T on-axis), fuel (D-T),
+    and blanket (outboard liquid lithium, TBR=1.2). The published net power range is 450–750 MWe
+    depending on technology and physics assumptions; this is not a multi-phase design but a single
+    architecture with uncertainty bounds. The lower bound (450 MWe) is selected as the
+    technology-conservative anchor: it traces directly to the published primary source and does not
+    require optimistic assumptions not yet validated at hardware level. This design supersedes all
+    earlier ST-E1 iterations and is the basis for Tokamak Energy's DOE Milestone-Based Fusion
+    Development Program work.
+  alternatives_considered:
+    - design: "ST-E1 Revision D, technology-optimistic case (750 MWe)"
+      reason_rejected: "same design, upper uncertainty bound; requires optimistic technology and physics assumptions not yet validated"
+      sensitivity_implication: >
+        If picked instead, P_native rises substantially (750 vs. 450 MWe) → fewer modules at 1 GWe →
+        1 GWe LCOE shifts down. Worth probing if Tokamak Energy publishes an engineering basis for the
+        optimistic assumptions (e.g., higher thermal efficiency, higher Q).
+    - design: "ST-E1 early design, DPP 2024 iteration (A=2.0, R=4.25m, ~85 MWe)"
+      reason_rejected: "superseded earlier iteration; replaced by Revision D after the company's own six-month design cycle"
+      sensitivity_implication: >
+        If picked instead, P_native drops substantially (85 vs. 450 MWe) → many more modules at 1 GWe
+        → 1 GWe LCOE shifts up significantly. Not a viable pick — the company explicitly discarded
+        this design point; it represents the start of the design process, not the outcome.
+    - design: "ST-E1 2022 aspirational target (up to 200 MWe)"
+      reason_rejected: "pre-design aspirational figure with no published geometry; predates all engineering iterations"
+      sensitivity_implication: >
+        If picked instead, P_native is lower (200 vs. 450 MWe) → more modules at 1 GWe → 1 GWe LCOE
+        shifts up. Not a viable pick — this figure lacks any engineering basis and has been implicitly
+        superseded by Revision D's published range.
+    - design: "ST80-HTS bridging demonstrator"
+      reason_rejected: "physics demonstrator with no net electrical output by design; disqualified by selection rule"
+      sensitivity_implication: "n/a — no P_native exists for this device"

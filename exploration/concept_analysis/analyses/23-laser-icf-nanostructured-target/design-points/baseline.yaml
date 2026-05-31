@@ -1,0 +1,41 @@
+proposal:
+  concept_id: 23-laser-icf-nanostructured-target
+  design_name: "Marvel Fusion CFE-NANO Pilot Plant (EU Horizon EIC Project 101189082, 100 MWe, 2033 milestone)"
+  maturity_tier: paper-concept
+  grounding_confidence: medium
+  p_native_mwe: 100
+  primary_sources:
+    - knowledge/concept_research/23-laser-icf-nanostructured-target/iter-02/sources/marvel-fusion-2025-updates.md
+    - knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/optics-news-16-4-4/output.md
+    - knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/optics-news-15-10-4/output.md
+  selection_rationale: |
+    Marvel Fusion's 100 MWe pilot plant, the central milestone of EU Horizon EIC project
+    CFE-NANO (Project ID 101189082), is the only design in this concept's portfolio with a
+    published P_native traceable to a formal program document. The CORDIS project record
+    explicitly states "pilot powerplant by 2033 with 100 MW output" with Siemens Energy as
+    named development partner; a fully integrated power plant conceptual design is being
+    jointly developed but has not been published. No other candidate clears the threshold:
+    Marvel's commercial design (~500 lasers) has no stated electrical output in any available
+    source, and HB11's ~1 GW aspiration appears only in secondary journalism with no plant
+    architecture. The pilot is a single-unit design; P_native is the plant output.
+  alternatives_considered:
+    - design: "Marvel Fusion commercial plant (~500 laser systems)"
+      reason_rejected: no published electrical output for this configuration in any available source
+      sensitivity_implication: >
+        If the Siemens Energy conceptual design study yields a published commercial P_native
+        substantially above 100 MWe, fewer plants would be needed to reach 1 GWe → 1 GWe LCOE
+        would shift down from the pilot-based projection. Worth revisiting once the conceptual
+        design document is released; this is the single most likely near-term source of a
+        revised design point for this concept.
+    - design: "HB11 Energy ~1 GW baseload plant (data centre architecture)"
+      reason_rejected: P_native appears only in secondary journalism; no plant architecture, no laser count, no per-module output published; HB11 is the secondary company in this concept bucket with ~17× less funding
+      sensitivity_implication: >
+        HB11's 1 Hz, steam-cycle design would produce a materially different cost structure
+        from Marvel's — lower conversion efficiency (~35% steam vs. Marvel's claimed ~70%
+        hybrid), lower rep rate, and a different target economics regime (1 Hz vs. 10 Hz).
+        The two companies represent distinct design points that cannot be averaged; if HB11
+        were elevated to primary, the concept would require its own separate design-point
+        treatment with a steam-cycle cost scaffold rather than the hybrid conversion model.
+    - design: "HB11 Energy single-shot physics demonstrators (Texas Petawatt, NIF)"
+      reason_rejected: no electrical output by design; conducted on third-party national facility infrastructure; physics experiments, not power plant designs
+      sensitivity_implication: n/a

@@ -1,0 +1,26 @@
+proposal:
+  concept_id: 14-magnetized-target-fusion-pneumatic-compression
+  design_name: "GF MTF Commercial Power Plant — Krotez et al. 2023 SOFE conceptual design (150 MWe per module, two-module architecture)"
+  maturity_tier: paper-concept
+  grounding_confidence: high
+  p_native_mwe: 150
+  primary_sources:
+    - knowledge/concept_research/14-magnetized-target-fusion-pneumatic-compression/iter-04/sources/en-wiki-general-fusion/output.md
+    - knowledge/concept_research/14-magnetized-target-fusion-pneumatic-compression/iter-02/sources/general-fusion-fst-2025-fuel-cycles.md
+  selection_rationale: |
+    The Krotez et al. 2023 SOFE conceptual design is the only GF design with a
+    published electrical output: 300 MWe from two 150 MWe modules in tandem, as
+    reported by Wikipedia citing that paper directly. The FST 2025 peer-reviewed
+    paper (Flynn et al.) treats this as the design under study and grounds its
+    geometry (~4 m cavity), pneumatic piston driver, and DT fuel cycle parameters.
+    LM26 and the cancelled UK Fusion Demonstration Program both lack electrical
+    output by design and do not qualify. P_native is the per-module value (150 MWe)
+    because the design's natural architecture is two independent 150 MWe machines
+    running in tandem; scaling to 1 GWe adds modules, not grows the machine.
+  alternatives_considered:
+    - design: "LM26 (Lawson Machine 26)"
+      reason_rejected: no electrical output by design — 50% plasma scale physics demonstrator using electromagnetic theta-pinch surrogate
+      sensitivity_implication: "LM26 has no P_native and cannot serve as a design point. If LM26 or a successor produces unexpected electrical output data, revisit whether a sub-commercial design-point option becomes available. No directional LCOE shift applies — this is a route-to-freeform branch, not a P_native choice."
+    - design: "Fusion Demonstration Program (UK / Culham, 70% scale)"
+      reason_rejected: no electrical output by design — 70% scale physics prototype, on hold since 2023, 1 pulse/day repetition rate
+      sensitivity_implication: "No P_native; not a qualifying design point regardless of scale. If GF had built the UK FDP through to a net-electricity phase (which was never planned), it would have represented a sub-commercial pilot rather than a commercial design — routing to a different maturity tier, not a competing P_native."

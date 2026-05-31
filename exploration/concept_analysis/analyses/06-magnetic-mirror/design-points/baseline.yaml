@@ -1,0 +1,38 @@
+proposal:
+  concept_id: 06-magnetic-mirror
+  design_name: "Pale Blue Fusion CHARM commercial notional plant (operator-authored, 150 MWe)"
+  maturity_tier: paper-concept
+  grounding_confidence: low
+  p_native_mwe: 150
+  primary_sources:
+    - knowledge/concept_research/06-magnetic-mirror/iter-02/sources/arpa-e-2025-fisch-presentation-notes.md
+    - knowledge/concept_research/06-magnetic-mirror/iter-01/sources/technical-papers-summary.md
+    - knowledge/concept_research/06-magnetic-mirror/iter-01/sources/princeton-arpa-e-funding-2022.md
+  selection_rationale: |
+    No source-traceable P_native exists in any Pale Blue Fusion published material — not
+    in the July 2025 ARPA-E presentation, not in the Princeton press release (Fisch:
+    "purely theoretical"), not in any of the seven Fisch-group technical papers. The LLM
+    proposal step correctly routed this concept to freeform per the discipline rule.
+    The operator has overridden that routing and chosen 150 MWe as a notional P_native
+    so this concept stays in the 1 GWe cost comparison. The number is defensible by
+    analogy to other corpus entries: Realta's CoSMo Hammir (DT centrifugal mirror) is
+    50 MWe per module; HB11 (also PB11 fuel, ICF approach) is 500 MWe; modular mirror
+    architectures targeting commercial deployment typically sit in the 100–300 MWe
+    range, and PB11 reactivity argues for the larger end relative to a DT mirror. The
+    CHARM architecture (multi-chamber centrifugal mirror, p-B11, alpha channeling,
+    ponderomotive end-plug barriers) is published; the P_native is not. This row is
+    operator-authored, grounding_confidence: low, and will be asterisked in the
+    comparison view.
+  alternatives_considered:
+    - design: "(no published Pale Blue design with a P_native)"
+      reason_rejected: "No published source defines a P_native for any Pale Blue design; the LLM proposal step correctly identified this and routed to freeform. Operator override produced this row."
+      sensitivity_implication: "If Pale Blue publishes any reactor concept with a stated power output, replace this notional row with a source-grounded proposal."
+    - design: "CMFX (Centrifugal Mirror Fusion Experiment, University of Maryland)"
+      reason_rejected: "Separate group's physics demonstrator with D-D fuel; no electrical output by design; does not implement CHARM architecture, alpha channeling, ponderomotive barriers, or p-B11 fuel."
+      sensitivity_implication: "n/a — CMFX is not a Pale Blue design and cannot serve as a stand-in P_native source."
+    - design: "Notional P_native in 50–100 MWe range (small-module mirror analogue, Realta Hammir-like)"
+      reason_rejected: "PB11 fuel cycle requires substantially higher plasma parameters and chamber volume than DT mirrors of comparable architecture; choosing the small end of the modular-mirror range understates the natural unit size for a p-B11 centrifugal mirror."
+      sensitivity_implication: "If picked instead, P_native would be lower → more modules at 1 GWe → 1 GWe LCOE shifts up. Worth probing if Pale Blue ever publishes a per-chamber sizing that lands in this range."
+    - design: "Notional P_native in 300–500 MWe range (HB11-scale PB11 plant)"
+      reason_rejected: "HB11's 500 MWe scenario is an ICF (laser-driven) PB11 plant with a different architectural family; magnetic centrifugal mirror modules are typically pitched smaller than ICF reactor halls. Choosing the high end overstates the natural module size for a multi-chamber mirror."
+      sensitivity_implication: "If picked instead, P_native would be higher → fewer modules at 1 GWe → 1 GWe LCOE shifts down. Worth probing if Pale Blue publishes a single-chamber sizing or full-plant target at multi-hundred-MWe scale."

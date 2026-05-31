@@ -1,0 +1,19 @@
+proposal:
+  concept_id: 08-frc-w-direct-conversion
+  design_name: "Orion — Helion 8th-generation first commercial plant (50 MWe Microsoft PPA, 2028 target)"
+  maturity_tier: pilot-demonstrator
+  grounding_confidence: medium
+  p_native_mwe: 50
+  primary_sources:
+    - knowledge/concept_research/08-frc-w-direct-conversion/iter-01/sources/docslib-helion-arpa-e-presentation.md
+    - knowledge/concept_research/08-frc-w-direct-conversion/iter-02/sources/helion-prototype-generations.md
+    - knowledge/concept_research/08-frc-w-direct-conversion/iter-01/sources/helion-website-technology.md
+  selection_rationale: |
+    Orion is Helion's only named first-commercial plant with a published electrical output: 50 MWe committed via a binding Microsoft power purchase agreement for 2028 grid delivery, confirmed across the company's press releases, Reuters, Wikipedia, and the Feb 2026 milestone announcement. The ARPA-E Fusion Engine design study (DocsLib presentation) independently corroborates the same output at 50 MW with explicit architecture parameters (40 T compression field, 2 Hz repetition rate), providing the quantitative grounding that Orion's proprietary engineering documents do not make public. Polaris has no electrical output by design and is a physics demonstrator. The Nucor 500 MWe partnership has no published engineering parameters and cannot ground a P_native.
+  alternatives_considered:
+    - design: "Nucor 500 MWe commercial plant (2030 ambition)"
+      reason_rejected: no published engineering parameters; aspirational contract announcement only
+      sensitivity_implication: "if picked instead, P_native would rise substantially (500 vs 50 MWe) → far fewer modules at 1 GWe → 1 GWe LCOE would shift down materially. Worth revisiting if Helion publishes engineering specifications for the Nucor plant ahead of the 2030 target date."
+    - design: "Polaris — 7th-generation prototype (D-T physics demonstrator)"
+      reason_rejected: no electrical output by design; sub-scale physics prototype
+      sensitivity_implication: "n/a — Polaris is not a power-producing design point; no P_native to substitute"
