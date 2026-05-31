@@ -149,11 +149,13 @@ Also, like Item 2, this probe would run the Item 1 critic prompt as-is, which pr
 
 ## Phase 1 — Build the plumbing (informed by Phase 0)
 
-### Item 4: 1costingFE Library Preconditions
+### Item 4: 1costingFE Library Preconditions — ✅ COMPLETE (2026-05-31)
 
 **Type**: Code/Integration
-**Effort**: 0.25–0.5 day (Phase 0 has already traced the root cause; this is a small mechanical fix + tests).
+**Effort**: 0.25–0.5 day (Phase 0 has already traced the root cause; this is a small mechanical fix + tests). *Actual: ~0.25 day.*
 **Dependencies**: Item 1 (root cause traced and reproduced in Phase 0).
+**Spec**: [`.project/active/costingfe-library-preconditions/spec.md`](../active/costingfe-library-preconditions/spec.md)
+**Commit**: `1costingfe a2153ad` on branch `fix/scale-overrides-reference-frame`.
 
 **Files touched** (in `~/1cfe/1costingfe/`):
 - `src/costingfe/validation.py:90` — change `n_mod: int = Field(default=1, ge=1, strict=True)` to a positive float field.
@@ -175,10 +177,12 @@ reference_result = self.forward(net=override_reference_mw, n_mod=1, ...)
 So the reference frame matches what the analyst writes the override against — one module at the design-point native power.
 
 **Success Criteria**:
-- [ ] `n_mod` accepts any positive real value.
-- [ ] `_scale_overrides` reference forward uses `n_mod=1`; per-module reactor-island overrides pass through unchanged at native per-module power (ratio = 1.0 for power-dependent accounts when target per-module power = reference per-module power).
-- [ ] Regression test reproduces the Phase 0 prototype's two-knob call (`net=1000, n_mod=1000/P_native, override_reference_mw=P_native`) for at least one per-module power-dependent account and one plant-aggregate account; asserts correct scaling.
-- [ ] Library version pinned for downstream consumption.
+- [x] `n_mod` accepts any positive real value. *(validation.py:90 widened to `float`, `gt=0`.)*
+- [x] `_scale_overrides` reference forward uses `n_mod=1`; per-module reactor-island overrides pass through unchanged at native per-module power (ratio = 1.0 for power-dependent accounts when target per-module power = reference per-module power). *(model.py:865 — `dict(forward_kwargs, n_mod=1)`.)*
+- [x] Regression test reproduces the Phase 0 prototype's two-knob call for at least one per-module power-dependent account and one plant-aggregate account; asserts correct scaling. *(4 new tests in test_model.py: C220101 power-dependent passthrough, C220103 no-power-term passthrough, CAS27 per-module passthrough, CAS22 plant-aggregate scaling.)*
+- [x] Library version pinned for downstream consumption. *(Fusion-tea uses editable local install; no version bump required — fix is live.)*
+
+**Spot finding folded into the spec**: Phase 0's probe table labeled CAS27 as plant-aggregate, but its default `cas27_special_materials(cc, pt.p_net, ...)` reads `pt.p_net` which is per-module. CAS27 is therefore per-module and passes through unchanged under the fix. CAS22 is the actual plant-aggregate account (its default already sums `per_module_equipment * n_mod + labor + plant_wide`); the plant-aggregate regression test uses CAS22 instead of CAS27.
 
 ---
 
@@ -447,7 +451,7 @@ Phase 3 — Aspirational
 | Item 1: E2E manual prototype | ~1 d | 0 | — *(✅ complete)* |
 | ~~Item 2: Prompt-stability probe~~ | — | 0 | ⊘ superseded — selection now human-gated |
 | ~~Item 3: Critic acuity probe~~ | — | 0 | ⊘ superseded — Item 1 cleared bet #5; critic on-demand |
-| Item 4: Library preconditions | 0.5–1 d | 1 | Item 1 |
+| Item 4: Library preconditions | 0.5–1 d | 1 | Item 1 — *(✅ complete, ~0.25 d actual)* |
 | Item 5: Tables (×4) + sanity check | 1.5–2 d | 1 | Item 1 (parallel with Item 4) |
 | Item 6: Pipeline glue | 1–1.5 d | 1 | Item 5 |
 | Item 7: Helpers + validators | 1–1.5 d | 1 | Items 1, 4, 5 |
@@ -476,4 +480,4 @@ Items 4 and 5 can run in parallel; Items 7 and 9 can run in parallel after their
 ---
 
 **Last Updated**: 2026-05-31
-**Next Action**: Enter Phase 1. Phase 0 is complete (Item 1; Items 2 & 3 superseded). Start Items 4 (library `_scale_overrides` fix + non-integer `n_mod`) and 5 (build the four tables, incl. the new design-point table, with the batch-populate-then-hand-verify gate) — they run in parallel. Carry forward the one obligation: reshape, don't copy, the Item 1 prompts (Items 5/8/9).
+**Next Action**: Item 4 complete (2026-05-31; `1costingfe a2153ad`). Start Item 5 (build the four tables, incl. the new design-point table, with the batch-populate-then-hand-verify gate). Item 4's library fix unblocks Items 7, 8, 10. Carry forward the one obligation: reshape, don't copy, the Item 1 prompts (Items 5/8/9).
