@@ -599,3 +599,392 @@ class TestHasModelCategoryFindings:
             "- **Category:** model\n"
         )
         assert has_model_category_findings(text) is True
+
+
+# ---------------------------------------------------------------------------
+# Item 7 — structural model_setup.py validators (AST-based).
+# ---------------------------------------------------------------------------
+
+# The Phase 0 prototype is the live oracle for the *inline* form.
+PROTOTYPE_PATH = (
+    Path(__file__).parents[3]
+    / ".project/active/concept-rework-prototype/artifacts/model_setup.py"
+)
+PROTOTYPE_TEXT = PROTOTYPE_PATH.read_text(encoding="utf-8")
+
+# The production (Item 8) shape — the four-step helper form. Inlined here as a
+# fixture so the dual-form path can't silently pass only the prototype.
+HELPER_FORM_TEXT = '''\
+from lib.model_setup_helpers import run_native_and_1gw, print_cas_breakdown
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(R0=3.3, plasma_t=1.13, elon=1.84, eta_th=0.46, p_input=38.6)
+P_native = 233.0
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+
+overrides = [
+    {"account": "C220103", "value": 6901.0, "enabled": True,
+     "provenance": "derived", "source": "Sorbom 2015", "rationale": "magnet"},
+    {"account": "CAS27", "value": 146.0, "enabled": True,
+     "provenance": "derived", "source": "Araiinejad 2025", "rationale": "FLiBe"},
+]
+
+result, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+
+if __name__ == "__main__":
+    print_cas_breakdown(result, result_1gw, overrides)
+'''
+
+# Broken contract variants ---------------------------------------------------
+
+MISSING_RESULT_1GW = '''\
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+result = model.forward(net_electric_mw=233.0, n_mod=1)
+'''
+
+INLINE_NO_NET_1000 = '''\
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+result = model.forward(net_electric_mw=233.0, n_mod=1)
+result_1gw = model.forward(net_electric_mw=500.0, n_mod=2.0)
+'''
+
+HAS_DEFAULT_COMMENT = '''\
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+result = model.forward(net_electric_mw=233.0, n_mod=1)
+result_1gw = model.forward(
+    net_electric_mw=1000,
+    availability=0.85,  # DEFAULT: library default re-passed
+    n_mod=4.3,
+)
+'''
+
+
+class TestModelSetupContract:
+    def test_accepts_inline_prototype(self):
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(PROTOTYPE_TEXT)
+        assert r.valid, r.details
+        assert "inline" in r.details
+
+    def test_accepts_helper_form(self):
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(HELPER_FORM_TEXT)
+        assert r.valid, r.details
+        assert "helper" in r.details
+
+    def test_strict_rejects_inline(self):
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(PROTOTYPE_TEXT, strict_helper_only=True)
+        assert not r.valid
+
+    def test_strict_accepts_helper(self):
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(HELPER_FORM_TEXT, strict_helper_only=True)
+        assert r.valid, r.details
+
+    def test_rejects_missing_result_1gw(self):
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(MISSING_RESULT_1GW)
+        assert not r.valid
+        assert "result_1gw" in r.details
+
+    def test_rejects_inline_without_net_1000(self):
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(INLINE_NO_NET_1000)
+        assert not r.valid
+
+    def test_warns_on_default_comment(self):
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(HAS_DEFAULT_COMMENT)
+        assert r.valid  # advisory only
+        assert "DEFAULT" in r.details
+
+    def test_default_warning_suppressible(self):
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(
+            HAS_DEFAULT_COMMENT, warn_on_default_comments=False
+        )
+        assert r.valid
+        assert "DEFAULT" not in r.details
+
+    def test_rejects_syntax_error(self):
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract("result_1gw = (\n")
+        assert not r.valid
+        assert "SyntaxError" in r.details
+
+
+# ---------------------------------------------------------------------------
+# Item 7 — override registry validator.
+# ---------------------------------------------------------------------------
+
+MISSING_PROVENANCE = '''\
+overrides = [
+    {"account": "C220103", "value": 6901.0, "enabled": True,
+     "source": "Sorbom 2015", "rationale": "magnet"},
+]
+'''
+
+NONNUMERIC_VALUE = '''\
+overrides = [
+    {"account": "C220103", "value": "6901", "enabled": True,
+     "provenance": "derived", "source": "s", "rationale": "r"},
+]
+'''
+
+CONST_EXPRESSION_VALUE = '''\
+overrides = [
+    {"account": "C220103", "value": 5150 * 1.34, "enabled": True,
+     "provenance": "derived", "source": "s", "rationale": "r"},
+]
+'''
+
+RESULT_RELATIVE_VALUE = '''\
+overrides = [
+    {"account": "C220101", "value": 0.70 * result.costs.cas21, "enabled": True,
+     "provenance": "derived", "source": "s", "rationale": "30% prefab reduction"},
+]
+'''
+
+RESULT_1GW_VALUE = '''\
+overrides = [
+    {"account": "C220101", "value": 0.70 * result_1gw.costs.cas21, "enabled": True,
+     "provenance": "derived", "source": "s", "rationale": "wrong frame"},
+]
+'''
+
+PROVENANCE_GUESS = '''\
+overrides = [
+    {"account": "C220103", "value": 6901.0, "enabled": True,
+     "provenance": "guess", "source": "s", "rationale": "r"},
+]
+'''
+
+DUP_ACCOUNT = '''\
+overrides = [
+    {"account": "C220103", "value": 6901.0, "enabled": True,
+     "provenance": "derived", "source": "s", "rationale": "r"},
+    {"account": "C220103", "value": 42.0, "enabled": False,
+     "provenance": "direct", "source": "s", "rationale": "r"},
+]
+'''
+
+NO_OVERRIDES = '''\
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+'''
+
+
+class TestOverrideRegistry:
+    def test_accepts_prototype_registry(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(PROTOTYPE_TEXT)
+        assert r.valid, r.details
+
+    def test_accepts_helper_form_registry(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(HELPER_FORM_TEXT)
+        assert r.valid, r.details
+
+    def test_accepts_empty_registry(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry("overrides = []\n")
+        assert r.valid
+
+    def test_rejects_missing_provenance(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(MISSING_PROVENANCE)
+        assert not r.valid
+        assert "provenance" in r.details
+
+    def test_rejects_nonnumeric_value(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(NONNUMERIC_VALUE)
+        assert not r.valid
+
+    def test_accepts_constant_expression_value(self):
+        # A constant arithmetic expression (e.g. CPI inflation) is allowed; it
+        # documents its own derivation and folds to a number statically.
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(CONST_EXPRESSION_VALUE)
+        assert r.valid, r.details
+
+    def test_accepts_result_relative_value(self):
+        # A relative override referencing the native `result` is allowed; its
+        # numeric type is enforced at runtime, not statically.
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(RESULT_RELATIVE_VALUE)
+        assert r.valid, r.details
+
+    def test_rejects_result_1gw_frame(self):
+        # Referencing `result_1gw` is a frame error — overrides are written at
+        # the native (n_mod=1 / P_native) reference, not the 1 GWe projection.
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(RESULT_1GW_VALUE)
+        assert not r.valid
+        assert "result_1gw" in r.details
+
+    def test_rejects_provenance_guess(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(PROVENANCE_GUESS)
+        assert not r.valid
+
+    def test_rejects_duplicate_account(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(DUP_ACCOUNT)
+        assert not r.valid
+        assert "C220103" in r.details
+
+    def test_rejects_no_overrides_binding(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(NO_OVERRIDES)
+        assert not r.valid
+
+
+# ---------------------------------------------------------------------------
+# Item 7 — coherence checks (multi-input, advisory / cross-artifact).
+# ---------------------------------------------------------------------------
+
+# MS_233 / MS_400 differ only in P_native (the Phase 0 operator error).
+MS_233 = '''\
+P_native = 233.0
+overrides = [
+    {"account": "C220103", "value": 6901.0, "enabled": True,
+     "provenance": "direct", "source": "s", "rationale": "r"},
+]
+'''
+
+MS_400 = '''\
+P_native = 400.0
+overrides = [
+    {"account": "C220103", "value": 6901.0, "enabled": True,
+     "provenance": "direct", "source": "s", "rationale": "r"},
+]
+'''
+
+ROW = {"concept_id": "01-hts-compact-tokamak", "p_native_mwe": 233}
+
+# Provisional analysis.md leg: P_native agrees (233) but C220103 provenance is
+# `derived`, conflicting with MS_233's `direct`.
+ANALYSIS_DERIVED = '''\
+## Design Point
+
+P_native: 233 MWe
+
+## Overrides
+
+- C220103 — provenance: derived (magnet+structure)
+'''
+
+
+class TestDesignPointCoherence:
+    def test_two_legs_agree(self):
+        from lib.validators import validate_design_point_coherence
+
+        r = validate_design_point_coherence("01-hts-compact-tokamak", MS_233, ROW)
+        assert r.valid, r.details
+
+    def test_flags_pnative_operator_error(self):
+        from lib.validators import validate_design_point_coherence
+
+        r = validate_design_point_coherence("01-hts-compact-tokamak", MS_400, ROW)
+        assert not r.valid
+        assert "P_native" in r.details
+
+    def test_flags_provenance_mismatch_third_leg(self):
+        from lib.validators import validate_design_point_coherence
+
+        r = validate_design_point_coherence(
+            "01-hts-compact-tokamak", MS_233, ROW, ANALYSIS_DERIVED
+        )
+        assert not r.valid
+        assert "C220103" in r.details
+
+    def test_three_legs_agree(self):
+        """Analysis leg supplied and consistent (provenance direct == direct)."""
+        from lib.validators import validate_design_point_coherence
+
+        analysis_direct = (
+            "P_native: 233 MWe\n\n- C220103 — provenance: direct\n"
+        )
+        r = validate_design_point_coherence(
+            "01-hts-compact-tokamak", MS_233, ROW, analysis_direct
+        )
+        assert r.valid, r.details
+        assert "3-leg" in r.details
+
+    def test_missing_pnative_in_code(self):
+        from lib.validators import validate_design_point_coherence
+
+        r = validate_design_point_coherence(
+            "x", "overrides = []\n", ROW
+        )
+        assert not r.valid
+
+
+def _flagged(result) -> bool:
+    return "FLAG" in result.details
+
+
+class TestOverrideCountVsFitGrade:
+    def test_high_with_few_is_quiet(self):
+        from lib.validators import check_override_count_vs_fit_grade
+
+        r = check_override_count_vs_fit_grade("High", 4)
+        assert r.valid and not _flagged(r)
+
+    def test_high_with_many_flagged(self):
+        from lib.validators import check_override_count_vs_fit_grade
+
+        r = check_override_count_vs_fit_grade("High", 12)
+        assert r.valid and _flagged(r)
+
+    def test_low_with_zero_flagged(self):
+        from lib.validators import check_override_count_vs_fit_grade
+
+        r = check_override_count_vs_fit_grade("Low", 0)
+        assert r.valid and _flagged(r)
+
+    def test_med_with_zero_flagged(self):
+        from lib.validators import check_override_count_vs_fit_grade
+
+        r = check_override_count_vs_fit_grade("Med", 0)
+        assert r.valid and _flagged(r)
+
+    def test_low_with_some_is_quiet(self):
+        from lib.validators import check_override_count_vs_fit_grade
+
+        r = check_override_count_vs_fit_grade("Low", 3)
+        assert r.valid and not _flagged(r)
+
+    def test_none_grade_quiet(self):
+        from lib.validators import check_override_count_vs_fit_grade
+
+        r = check_override_count_vs_fit_grade("None", 0)
+        assert r.valid and not _flagged(r)
+
+    def test_boundary_high_eight_quiet(self):
+        """Threshold is strictly greater-than 8 — High+8 stays quiet."""
+        from lib.validators import check_override_count_vs_fit_grade
+
+        r = check_override_count_vs_fit_grade("High", 8)
+        assert r.valid and not _flagged(r)
