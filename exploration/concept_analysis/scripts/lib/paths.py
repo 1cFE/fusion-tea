@@ -9,6 +9,17 @@ from pathlib import Path
 # .parent = lib/, .parent.parent = scripts/, .parent.parent.parent = concept_analysis/
 CONCEPT_ANALYSIS_DIR = Path(__file__).resolve().parent.parent.parent
 TABLE_PATH = CONCEPT_ANALYSIS_DIR / "table.csv"
+
+# Item 5 upstream tables — the orchestrator's source of truth (keyed on concept_id).
+TABLES_DIR = CONCEPT_ANALYSIS_DIR / "tables"
+ONTOLOGY_PATH = TABLES_DIR / "ontology.csv"
+ARCHETYPE_FIT_PATH = TABLES_DIR / "archetype_fit.csv"
+COMPARABLES_PATH = TABLES_DIR / "comparables.csv"
+DESIGN_POINT_PATH = TABLES_DIR / "design_point.csv"
+# Judged-freeform discriminator; created lazily by Item 5's proposal batch.
+# Missing file means "no concepts judged freeform yet" (empty set), not an error.
+FREEFORM_ROUTES_PATH = TABLES_DIR / "design_point_freeform_routes.md"
+
 ANALYSES_DIR = CONCEPT_ANALYSIS_DIR / "analyses"
 HANDWRITTEN_DIR = CONCEPT_ANALYSIS_DIR / "handwritten"
 TEMPLATES_DIR = CONCEPT_ANALYSIS_DIR / "prompt_templates"

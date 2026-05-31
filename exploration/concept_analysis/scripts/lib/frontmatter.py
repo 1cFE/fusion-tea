@@ -4,6 +4,8 @@ import re
 from datetime import date
 from pathlib import Path
 
+from lib.concepts import get_comparison_status
+
 
 def parse_frontmatter(path: Path) -> dict:
     """Extract YAML frontmatter from a markdown file.
@@ -109,22 +111,63 @@ def remove_frontmatter_field(text: str, key: str) -> str:
     return "---" + fm_section + body
 
 
-def make_frontmatter(concept: dict) -> str:
-    """Generate YAML frontmatter deterministically.
+def make_frontmatter(record: dict) -> str:
+    """Generate the orchestrator-owned YAML frontmatter block from a record.
 
-    Reuses starts as [] — the agent updates it via Edit tool if it
-    references approved prior analyses during Stage 2.
+    All fields are deterministic table reads (design.md Invariant #2) and
+    orchestrator-owned: ``Confinement-Family``, ``Archetype``, ``Archetype-Fit``,
+    ``Comparison-Status``, ``Comparables``, and the four ``Design-Point-*`` /
+    ``P-Native`` / ``Grounding-Confidence`` fields are written once at concept
+    init and never edited by the analyzer (Invariant #3). ``Comparables``
+    replaces the retired ``Reuses:`` field.
+
+    Reads canonical snake_case keys, falling back to the read-only legacy
+    aliases so a record (or a legacy-shaped dict carrying the aliases) both work.
+    The four design-point fields are emitted only when ``design_point`` is set.
     """
-    today = date.today().isoformat()
+    cid = record.get("concept_id") or record.get("_id", "")
+    name = record.get("concept_name") or record.get("Concept Name", "")
+    company = record.get("company") or record.get("Company", "")
+    family = record.get("confinement_family") or record.get("Confinement Family", "")
+    archetype = record.get("archetype_enum", "") or ""
+    fit_grade = record.get("fit_grade", "") or ""
+    comparables = record.get("comparables") or []
+    design_point = record.get("design_point")
+    comparison_status = get_comparison_status(record)
+
     lines = [
         "---",
-        f"ID: {concept['_id']}",
-        f"Concept: {concept['Concept Name']}",
-        f"Company: {concept.get('Company', '')}",
+        f"ID: {cid}",
+        f"Concept: {name}",
+        f"Company: {company}",
         "Status: draft",
-        f"Created: {today}",
+        f"Created: {date.today().isoformat()}",
         "Approved-Date:",
-        "Reuses: []",
-        "---",
+        f"Confinement-Family: {family}",
+        # Archetype is empty for fit_grade=None concepts.
+        f"Archetype: {archetype}".rstrip(),
+        f"Archetype-Fit: {fit_grade}",
+        f"Comparison-Status: {comparison_status}",
     ]
+
+    # Comparables MUST be a YAML block list (one `  - id` per line), not a flow
+    # list, so parse_frontmatter's block-list parser round-trips it. Empty → [].
+    if comparables:
+        lines.append("Comparables:")
+        lines.extend(f"  - {c}" for c in comparables)
+    else:
+        lines.append("Comparables: []")
+
+    # Design-point selection fields — present only when a design_point.csv row
+    # exists. These are the *selection* (named plant, maturity, P_native,
+    # grounding); the quantitative geometry/physics stays in analyze (Item 8).
+    if design_point:
+        lines.extend([
+            f"Design-Point-Name: {design_point.get('design_name', '')}",
+            f"Design-Point-Maturity: {design_point.get('maturity_tier', '')}",
+            f"P-Native: {design_point.get('p_native_mwe', '')}",
+            f"Grounding-Confidence: {design_point.get('grounding_confidence', '')}",
+        ])
+
+    lines.append("---")
     return "\n".join(lines) + "\n"

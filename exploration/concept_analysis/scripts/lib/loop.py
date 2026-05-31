@@ -18,7 +18,7 @@ import time
 from pathlib import Path
 
 from lib.claude import invoke_claude, invoke_claude_validated, run_model
-from lib.concepts import get_costingfe_mapping, get_model_path, FUEL_MAPPING
+from lib.concepts import get_costingfe_library_hints, get_model_path
 from lib.frontmatter import make_frontmatter, parse_frontmatter
 from lib.iteration import (
     LoopState,
@@ -32,8 +32,6 @@ from lib.paths import (
     ANALYSES_DIR,
     CONCEPT_ANALYSIS_DIR,
     COSTINGFE_CONSTANTS_PATH,
-    COSTINGFE_DEFAULTS_DIR,
-    COSTINGFE_EXAMPLES_DIR,
     COSTINGFE_README_PATH,
     FREEFORM_EXEMPLAR_PATH,
     TEMPLATES_DIR,
@@ -439,7 +437,8 @@ def _run_cold_start(
         analysis_path.unlink(missing_ok=True)
         return False
 
-    # Assemble: read back frontmatter (Claude may have updated Reuses) + body
+    # Assemble: read back frontmatter (orchestrator-owned fields are written
+    # once at init and not analyzer-editable — design.md Invariant #3) + body
     fm_raw = analysis_path.read_text(encoding="utf-8").rstrip("\n") + "\n"
     body = body_path.read_text(encoding="utf-8")
     analysis_path.write_text(fm_raw + "\n" + body, encoding="utf-8")
@@ -713,18 +712,23 @@ def build_model_vars(
     edit_mode = bool(prior_model_path)
     if model_path_type == "costingfe":
         template_name = "model_setup_costingfe_edit.md" if edit_mode else "model_setup_costingfe.md"
-        mapping = get_costingfe_mapping(concept)
+        hints = get_costingfe_library_hints(concept)
         vars_dict = {
             "concept_name": concept["Concept Name"],
             "company": concept.get("Company", ""),
             "analysis_path": str(analysis_path),
-            "example_path": str(COSTINGFE_EXAMPLES_DIR / mapping["example"]),
-            "defaults_path": str(COSTINGFE_DEFAULTS_DIR / mapping["defaults"]),
+            "example_path": hints["example_path"],
+            # defaults_path / mapping_notes are retired: the library auto-loads
+            # per-archetype defaults from the enum, and notes migrated to
+            # archetype_fit.fit_rationale. Item 6→8 hazard A: ship empty
+            # placeholders so model_setup_costingfe.md still renders; Item 8's
+            # prompt rewrite removes both the variables and these keys together.
+            "defaults_path": "",
             "readme_path": str(COSTINGFE_README_PATH),
             "costing_constants_path": str(COSTINGFE_CONSTANTS_PATH),
-            "costingfe_concept": mapping["concept"],
-            "costingfe_fuel": FUEL_MAPPING.get(concept.get("Fuel", "D-T"), "DT"),
-            "mapping_notes": mapping.get("notes", ""),
+            "costingfe_concept": hints["costingfe_concept"],
+            "costingfe_fuel": hints["costingfe_fuel"],
+            "mapping_notes": "",
             "output_path": str(model_path),
             "model_feedback": model_feedback,
             "prior_model_path": prior_model_path,

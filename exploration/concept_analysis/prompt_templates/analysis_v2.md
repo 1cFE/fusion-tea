@@ -109,15 +109,14 @@ Write ONLY the analysis content (Sections 1-8). Do NOT include:
 
 Start the file with `# D1+ Analysis:` and end after Section 8.
 
-#### Step 2: Update Reuses (if applicable)
+#### Frontmatter is orchestrator-owned — do not edit it
 
-If you referenced any approved prior analyses, update the Reuses field in:
-`{{analysis_path}}`
-
-The file already contains `Reuses: []`. Use the Edit tool to replace it with the concept IDs you referenced, e.g.:
-`Reuses: [21-spherical-tokamak-hts, 28-hts-tokamak-full-hts]`
-
-If you did not reference any approved analyses, leave Reuses unchanged.
+The pipeline pre-populates the analysis frontmatter from the signed-off upstream
+tables. The fields `Comparables`, `Confinement-Family`, `Archetype`,
+`Archetype-Fit`, `Comparison-Status`, and the four `Design-Point-*` fields
+(`Design-Point-Name`, `Design-Point-Maturity`, `P-Native`, `Grounding-Confidence`)
+are determined upstream and are **not** analyzer-editable. Do not add, edit, or
+remove frontmatter fields — write only the analysis body (Step 1).
 {{/if}}
 
 {{#if feedback_pass}}
