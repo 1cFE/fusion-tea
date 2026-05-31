@@ -1,0 +1,64 @@
+/home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:250: UserWarning: Recirculating fraction = 0.676 > 0.5 — excessive parasitic power load
+  validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+Design Point: ARC commercial pilot, P_native = 233 MWe
+n_mod for 1 GWe NOAK projection = 1000/233 = 4.292
+
+--- NATIVE forward (P_native, n_mod=1, no overrides) ---
+LCOE: 184.3 $/MWh   Overnight: 13781 $/kW
+p_fus=672 MW   p_net=233 MW
+
+--- 1 GWe NOAK forward (two-knob, with overrides applied) ---
+LCOE: 667.8 $/MWh   Overnight: 56747 $/kW
+p_fus=672 MW   p_net=233 MW
+
+CAS         native (P_nat, n=1)       1 GWe (two-knob)
+--------------------------------------------------------
+CAS10                      16.6                   17.2
+CAS21                     290.3                  290.3
+CAS22                    1661.2                36665.1
+CAS23                      69.6                  298.5
+CAS24                      29.6                  127.2
+CAS25                      18.0                   77.4
+CAS26                      26.1                  112.2
+CAS27                       3.5                  626.6
+CAS28                       5.0                    5.0
+CAS29                       0.0                    0.0
+CAS30                     420.7                 7640.5
+CAS40                      18.8                   18.8
+CAS50                     133.9                 1719.0
+CAS60                     517.7                 9149.0
+CAS70                      60.7                  398.4
+CAS80                       0.2                    0.8
+CAS90                     258.8                 4573.0
+--------------------------------------------------------
+TOTAL                    3210.9                56746.8
+
+--- CAS22 sub-account detail (overrides ↓ marked) ---
+code             native        1 GWe  flag
+C220000          1661.2      36665.1
+C220101           130.3        542.9  <-- OVERRIDE
+C220102            86.7         86.7
+C220103           516.1       6901.0  <-- OVERRIDE
+C220104           353.2        353.2
+C220105            10.5         10.5
+C220106            50.2        191.9  <-- OVERRIDE
+C220107            38.5         38.5
+C220108            52.5         52.5
+C220109             0.0          0.0
+C220110            89.0         89.0
+C220111           185.8        185.8
+C220112             0.0          0.0
+C220200            56.3        205.2
+C220300            12.2         15.0
+C220400             1.5          6.4
+C220500            43.3        120.0
+C220600             3.6         11.5
+C220700            31.6         81.5
+
+--- Override-toggle probe (bet 1: library carries default story) ---
+All overrides ON:  LCOE = 667.8 $/MWh
+  C220103  OFF: LCOE =   228.3   Δ =  -439.5
+  C220101  OFF: LCOE =   605.5   Δ =   -62.3
+  C220106  OFF: LCOE =   658.0   Δ =    -9.8
+  CAS27    OFF: LCOE =   657.5   Δ =   -10.2
+  ALL OFF (library bare): LCOE = 146.0 $/MWh   Δ = -521.7

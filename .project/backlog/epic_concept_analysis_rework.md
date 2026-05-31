@@ -70,20 +70,29 @@ The concept-analysis pipeline produces per-concept LCOE numbers that look compar
 
 **What this is**: a hand-driven walkthrough of the rework on a single concept, with everything stubbed or hand-written. No helpers, no validators, no template files, no CLI subcommands. Goal is signal, not artifacts.
 
+**Key bets this exercises** (the rework rests on all six; the prototype is how we find out which hold):
+
+1. **Two-knob mechanism produces sensible numbers** — `forward(net=1000, n_mod=1000/P, override_reference_mw=P)` gives comparable per-account values once overrides scale through.
+2. **Library carries the default story** — for most concepts at most accounts, the bare library answer (given good spec inputs) is close enough that the override registry stays small. If a real concept needs 30 overrides, the framing collapses.
+3. **Agent can identify a Design Point from a dossier** — one named plant, native scale, source-cited, *coherently*. (Stability across re-runs is Item 2's job; this item just tests "can it do it once".)
+4. **Agent populates overrides honestly** — `value`, `provenance`, `source`, `rationale` actually trace to company-stated numbers, not LLM dressing-up of library defaults.
+5. **`model_critic` finds real issues** — looking at the artifacts, the critic surfaces things worth acting on, not generic boilerplate. (Acuity against *existing* artifacts is Item 3's job; this item just tests it against the prototype's freshly-made artifacts.)
+6. **Determinism-upstream is worth the up-front cost** — having the archetype-fit and comparables rows pre-populated noticeably tightens the analyze and critic prompts. If we don't feel the difference, the table layer needs re-justification.
+
 **Activities**:
 - Pick one concept with a clean dossier and a likely-High archetype fit.
-- Hand-write the archetype-fit row and a tiny comparables stub (just the rows needed for this concept).
-- Hand-draft the new analyze prompt and run it one-shot (`claude -p`) against the dossier. Read the Design Point block and override candidates by eye.
-- Hand-write the four-step `model_setup.py` using current 1costingFE; run it. Inspect `result` and `result_1gw` per-account values. Empirically check whether overrides scale sensibly under the two-knob call (i.e. de-risk Item 4's library precondition before formal test work).
-- Hand-draft the `model_critic` prompt and run it against the artifacts. Read its output.
+- Hand-write the archetype-fit row and a tiny comparables stub (just the rows needed for this concept). [Exercises bet #6.]
+- Hand-draft the new analyze prompt and run it one-shot (`claude -p`) against the dossier. Read the Design Point block and override candidates by eye. [Exercises bets #3, #4.]
+- Hand-write the four-step `model_setup.py` using current 1costingFE; run it. Inspect `result` and `result_1gw` per-account values; verify against current-pipeline numbers for the same concept. [Exercises bets #1, #2; empirically de-risks Item 4's library precondition before formal test work.]
+- Hand-draft the `model_critic` prompt and run it against the artifacts. Read its output. [Exercises bet #5.]
 - Write a short findings doc.
 
 **Success Criteria**:
-- [ ] Findings doc enumerates: which of the six key bets held, which wobbled, which broke.
-- [ ] If the 1costingFE override-scaling invariant holds empirically, Item 4 scope shrinks to "formalize as test"; if not, Item 4 scope grows and the fix is informed by what we saw.
-- [ ] Hand-drafted prompts (analyze, model_setup discipline note, critic) are saved as the starting point for Item 7's productionized versions.
+- [ ] Findings doc enumerates each of the six bets above with a verdict: **held / wobbled / broke**, with a one-paragraph "what we saw" per bet.
+- [ ] If bet #1 (override scaling under two-knob) held empirically, Item 4 scope shrinks to "formalize as test"; if it broke, Item 4 scope grows and the fix is informed by what we saw.
+- [ ] Hand-drafted prompts (analyze, model_setup discipline note, critic) are saved as the starting point for Items 8 and 9.
 
-**Kill switch**: if Design Point extraction is incoherent, or overrides come back as dressed-up library defaults with no real provenance, **stop and rethink** before committing to Phase 1.
+**Kill switch**: if bet #3 (Design Point extraction is incoherent) or bet #4 (overrides come back as dressed-up library defaults with no real provenance) breaks, **stop and rethink** before committing to Phase 1.
 
 **Deliverables**:
 - `.project/active/concept-rework-prototype/findings.md`
@@ -135,16 +144,32 @@ The concept-analysis pipeline produces per-concept LCOE numbers that look compar
 ### Item 4: 1costingFE Library Preconditions
 
 **Type**: Code/Integration
-**Effort**: 0.5–1 day (may shrink to ~0.25 day if Phase 0 empirically confirmed the override-scaling invariant already holds).
-**Dependencies**: Item 1 (Phase 0 findings determine scope).
+**Effort**: 0.25–0.5 day (Phase 0 has already traced the root cause; this is a small mechanical fix + tests).
+**Dependencies**: Item 1 (root cause traced and reproduced in Phase 0).
 
 **Files touched** (in `~/1cfe/1costingfe/`):
-- `src/costingfe/validation.py` — `n_mod` field constraint.
-- `src/costingfe/model.py` — `_scale_overrides` and `forward()` override paths (verify; modify only if Phase 0 or formal test finds a gap).
-- Library tests.
+- `src/costingfe/validation.py:90` — change `n_mod: int = Field(default=1, ge=1, strict=True)` to a positive float field.
+- `src/costingfe/model.py:849-896` — `_scale_overrides`: change the reference forward to use `n_mod=1` (see bugfix below).
+- Library tests covering both changes.
+
+**Bugfix (from Phase 0 findings)**:
+
+`_scale_overrides` currently runs its reference forward at `(net=override_reference_mw, n_mod=caller_n_mod)`. This makes per-module power in the reference run equal `override_reference_mw / caller_n_mod` instead of `override_reference_mw`. For accounts with thermal-power dependence (e.g. structure, vacuum vessel), the ratio used to scale the user's override is computed against the wrong reference, silently inflating per-module overrides.
+
+Concrete example from Phase 0 (ARC, P_native=400, n_mod=2.5): per-module C220101 override inflated 47% (caller wrote $349M intending "structure cost for one 400 MWe module"; library scaled it as if it meant "structure cost for one 160 MWe module"). At corrected P_native=233, n_mod=4.29, the same bug applies with a different ratio.
+
+Change the reference forward to:
+
+```python
+reference_result = self.forward(net=override_reference_mw, n_mod=1, ...)
+```
+
+So the reference frame matches what the analyst writes the override against — one module at the design-point native power.
 
 **Success Criteria**:
-- [ ] The two 1costingFE invariants the design depends on (non-integer `n_mod`; correct override scaling under the two-knob call) hold and are covered by tests.
+- [ ] `n_mod` accepts any positive real value.
+- [ ] `_scale_overrides` reference forward uses `n_mod=1`; per-module reactor-island overrides pass through unchanged at native per-module power (ratio = 1.0 for power-dependent accounts when target per-module power = reference per-module power).
+- [ ] Regression test reproduces the Phase 0 prototype's two-knob call (`net=1000, n_mod=1000/P_native, override_reference_mw=P_native`) for at least one per-module power-dependent account and one plant-aggregate account; asserts correct scaling.
 - [ ] Library version pinned for downstream consumption.
 
 ---
@@ -221,6 +246,12 @@ The concept-analysis pipeline produces per-concept LCOE numbers that look compar
 
 **Success Criteria**:
 - [ ] Dry-run on one concept produces an `analysis.md` containing the Design Point block and a `model_setup.py` matching the four-step shape.
+- [ ] `analysis.md`'s Design Point block carries the *full* specification of the target design point — every field downstream needs (name, maturity tier, `P_native`, geometry/physics/performance values, override provenance per account) is explicit and source-cited. Nothing required downstream is left implicit.
+- [ ] `model_setup_costingfe.md` prompt instructs the agent to **start by identifying the target design point from `analysis.md`** — reading `P_native`, the spec kwargs, and override provenance labels directly from the Design Point block rather than re-deriving them from the dossier.
+- [ ] `analysis_v2.md` prompt pins override `account` identifiers to the canonical 1costingFE namespace (`C220101`, `C220103`, `CAS27`, etc.) by injecting the account-code list as a schema. (Phase 0 finding: LLM defaulted to `CAS22.1.3`-style codes that would silently miss in the `cost_overrides` dict.)
+- [ ] `analysis_v2.md` prompt walks override discovery as an explicit per-account checklist over the canonical CAS accounts ("does the dossier name a quantity, mass, or unit cost for this account?") rather than open-ended discovery. (Phase 0 finding: open-ended discovery underproposed — analyze step surfaced 2 of 4 findable overrides for ARC.)
+- [ ] `model_setup_costingfe.md` prompt forbids overriding values that 1costingFE handles via defaults (`availability`, `lifetime_yr`, `interest_rate`, `inflation_rate`, `eta_th`, `eta_de`, and others). These are not per-concept analyst choices; the library defaults apply uniformly across all concepts.
+- [ ] Sweep / what-if text output remains allowed in `model_output.txt`; `result` and `result_1gw` remain the standardized baseline consumed by the explorer.
 - [ ] Assess/review output is parse-robust under the new validators (no reliance on the dropped regex paths).
 - [ ] Quality-standards doc reflects the new discipline (no re-passing of library defaults; every parameter describes the design point).
 
@@ -260,6 +291,7 @@ The concept-analysis pipeline produces per-concept LCOE numbers that look compar
 **Success Criteria**:
 - [ ] Explorer reads every pilot concept without a fallback path; family field resolves from frontmatter.
 - [ ] Every pilot `result_1gw` is at exactly `net_electric_mw=1000` via the two-knob mechanism.
+- [ ] Human-entered content (`review.md` and any other known human-authored artifact) is preserved before regeneration.
 - [ ] Pilot report enumerates issues found and any fixes folded back into templates/helpers/validators before bulk rollout.
 
 ---
@@ -283,32 +315,32 @@ The concept-analysis pipeline produces per-concept LCOE numbers that look compar
 
 ---
 
-### Item 8: Bulk Regeneration
+## Phase 3 — Aspirational
 
-**Type**: Execution
-**Effort**: 1–1.5 days (spec 0.5h, design 0.5h, plan 1h, execute 6–10h)
-**Dependencies**: Item 7 (pilot signs off the pipeline).
+### Item 12: Native-Scale Projection (per-family, where defensible)
 
-**Objective**: Regenerate every non-`None` fit-grade concept under the new pipeline; leave `None` concepts asterisked and untouched.
+**Type**: Research + Implementation
+**Effort**: TBD (~1–2 days for DT tokamak alone; scope grows per additional family).
+**Dependencies**: Item 11 (replication-floor baseline shipped first).
 
-**Scope**:
-1. For each non-`None` concept: snapshot any User-Decisions worth preserving; `cmd_regenerate_concept`.
-2. Spot-check via `model_critic` on a sample; run override-toggle invariant check on a few.
-3. Update `concept_explorer` snapshot/views; confirm comparison view is apples-to-apples.
-4. Asterisk freeform concepts in the explorer per design.
+**Status**: Aspirational. Does **not** block the rework's main delivery. The replication floor stays as the apples-to-apples cross-concept reference number; this item adds a *second*, family-conditional projection alongside it.
+
+**Why**: replication-floor numbers can read as damningly high to a reader who doesn't internalize the framing. Where the family's physics-of-scale-up is mature enough to defend a single-machine 1 GWe design (DT tokamak with 1costingFE is the clear case; most other families much less so), publishing both numbers — the conservative ceiling and the optimistic native-scale — gives reviewers a defensible **range**, and the two projections sanity-check each other.
+
+**Files touched**:
+- `prompt_templates/analysis_v2.md` — new "Scaling Story" section: what does 1costingFE and the literature say about how this family scales a single machine to 1 GWe? Document the physics-of-scale-up, regime limits, and what's known vs unknown. For families where native scaling isn't defensible, the section explicitly says so and explains why.
+- `prompt_templates/model_setup_costingfe.md` — when the scaling story supports it, attempt an additional `forward()` call producing `result_1gw_native` at `(net=1000, n_mod=1)` with the family-appropriate physics scaling. Gated on the Scaling Story's defensibility judgment.
+- `exploration/concept_explorer/extract_explorer_data.py` and views — present `result_1gw` (replication floor) and `result_1gw_native` (where it exists) as a range; asterisk concepts where only the floor is available.
 
 **Out of Scope**:
-- Touching freeform concepts' `analyses/{id}/`.
-- Editing `knowledge/concept_research/{id}/`.
+- Modifying the replication-floor projection or its role as the comparable cross-concept reference.
+- Inventing physics-of-scale-up where the literature doesn't support it.
+- Freeform / archetype-fit-`None` concepts.
 
 **Success Criteria**:
-- [ ] Every non-`None` concept has fresh artifacts conforming to the new contract.
-- [ ] Cross-concept comparison view shows uniform `result_1gw @ 1000 MWe` semantics.
-- [ ] Validator suite passes on every regenerated `model_setup.py`.
-
-**Deliverables**:
-- `.project/active/concept-rework-bulk/plan.md` and per-batch logs.
-- Regenerated artifacts under `exploration/concept_analysis/analyses/`.
+- [ ] At least one well-understood family (likely DT tokamak) has both `result_1gw` and `result_1gw_native` populated across its concepts, with a documented scaling rationale in each `analysis.md`.
+- [ ] For families where native scaling isn't defensible, the Scaling Story section documents the literature and explicitly states why scaling isn't attempted.
+- [ ] Explorer presents the two numbers as a range where both exist; reviewers can see the floor and the native-scale projection side by side.
 
 ---
 
@@ -349,6 +381,10 @@ Phase 2 — Rollout
         │
         ▼
   Item 11 (bulk regenerate)
+        │
+        ▼  [aspirational, non-blocking]
+Phase 3 — Aspirational
+  Item 12 (native-scale projection, per-family)
 ```
 
 ---
@@ -385,8 +421,11 @@ Phase 2 — Rollout
 | Item 9: model_critic | 0.5–1 d | 1 | Items 1, 5 |
 | Item 10: Explorer + pilot | 1.5–2 d | 2 | Items 4, 6, 7, 8, 9 |
 | Item 11: Bulk regeneration | 1–1.5 d | 2 | Item 10 |
+| Item 12: Native-scale projection (aspirational) | ~1–2 d per family | 3 | Item 11 |
 
 **Phase 0 gate**: review Item 1's findings doc before committing to Phase 1. If a key bet broke, redirect — don't just plow into the plumbing.
+
+**Phase 3 status**: aspirational. Does not block Phase 2 sign-off. Effort is per-family and scales with how many families we want to publish native-scale numbers for.
 
 Items 4 and 5 can run in parallel; Items 7 and 9 can run in parallel after their deps; Item 8 is the pacing gate before pilot.
 
